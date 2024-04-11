@@ -1,34 +1,51 @@
+# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: usrmusicman
+
 pkgbase=socalabs-wavetable
-pkgname=("${pkgbase}-lv2-bin" "${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
-pkgver=1.0.19
+pkgname=($pkgbase-lv2-bin $pkgbase-vst-bin $pkgbase-vst3-bin)
+pkgver=1.0.21
 pkgrel=1
-arch=('x86_64')
-url="https://socalabs.com/synths/wavetable/"
-license=('EULA')
-groups=('pro-audio')
-depends=('glibc' 'libcurl-gnutls')
-makedepends=('xdg-user-dirs' 'unzip')
-source=("${pkgbase}.zip::https://socalabs.com/files/get.php?id=Wavetable_Linux.zip")
-sha256sums=('9286baa304c078a5adc5b61ed3b577baa7c10b8d597db6d49f696339c7d5f6a8')
+arch=(x86_64)
+url='https://socalabs.com/synths/wavetable/'
+license=(BSD-3-Clause)
+groups=(pro-audio)
+depends=(freetype2 glibc gcc-libs)
+makedepends=(xdg-user-dirs unzip)
+source=("$pkgbase-$pkgver.zip::https://socalabs.com/files/get.php?id=Wavetable_Linux.zip"
+        "LICENSE-socalabs-wavetable::https://github.com/FigBug/Wavetable/blob/$pkgver/LICENSE")
+sha256sums=('3f3f08f67b562926c6cb4b3d7029233cecd50d28213c68251f26bb10223229fd'
+            'fa83c63301a1d02cbde2c7b7ffbe36d6a5be78e3d1123c7c1faf0d652b8eb401')
 
 package_socalabs-wavetable-lv2-bin() {
-	pkgdesc="Socalabs Retro Wavetable Synth (LV2)"
-	groups=('lv2-plugins')
-	install -Dm644 "$srcdir/Wavetable.lv2/dsp.ttl" "$pkgdir/usr/lib/lv2/Wavetable.lv2/dsp.ttl"
-	install -Dm755 "$srcdir/Wavetable.lv2/libWavetable.so" "$pkgdir/usr/lib/lv2/Wavetable.lv2/libWavetable.so"
-	install -Dm644 "$srcdir/Wavetable.lv2/manifest.ttl" "$pkgdir/usr/lib/lv2/Wavetable.lv2/manifest.ttl"
-	install -Dm644 "$srcdir/Wavetable.lv2/ui.ttl" "$pkgdir/usr/lib/lv2/Wavetable.lv2/ui.ttl"
+  depends+=(libasound.so libcurl.so libfreetype.so)
+  pkgdesc="Socalabs Retro Wavetable Synth (LV2)"
+  groups+=(lv2-plugins)
+  optdepends=('lv2-host: for loading the LV2 plugin')
+  install -v -Dm644 "$srcdir"/Wavetable.lv2/*.ttl -t "$pkgdir"/usr/lib/lv2/Wavetable.lv2
+  install -v -Dm755 "$srcdir"/Wavetable.lv2/*.so -t "$pkgdir"/usr/lib/lv2/Wavetable.lv2
+  install -v -Dm 644 "$srcdir"/LICENSE-socalabs-wavetable \
+    -t "$pkgdir"/usr/share/licenses/$pkgname
 }
 
 package_socalabs-wavetable-vst-bin() {
-	pkgdesc="Socalabs Retro Wavetable Synth (VST)"
-	groups=('vst-plugins')
-	install -Dm755 "$srcdir/Wavetable.so" "$pkgdir/usr/lib/vst/Wavetable.so"
+  depends+=(libasound.so libcurl.so libfreetype.so)
+  pkgdesc="Socalabs Retro Wavetable Synth (VST)"
+  groups+=(vst-plugins)
+  optdepends=('vst-host: for loading the VST2 plugin')
+  install -v -Dm755 "$srcdir"/Wavetable.so -t "$pkgdir"/usr/lib/vst
+  install -v -Dm 644 "$srcdir"/LICENSE-socalabs-wavetable \
+    -t "$pkgdir"/usr/share/licenses/$pkgname
 }
 
 package_socalabs-wavetable-vst3-bin() {
-	pkgdesc="Socalabs Retro Wavetable Synth (VST3)"
-	groups=('vst3-plugins')
-	install -Dm644 "$srcdir/Wavetable.vst3/Contents/Resources/moduleinfo.json" "$pkgdir/usr/lib/vst3/Wavetable.vst3/Contents/Resources/moduleinfo.json"
-	install -Dm755 "$srcdir/Wavetable.vst3/Contents/x86_64-linux/Wavetable.so" "$pkgdir/usr/lib/vst3/Wavetable.vst3/Contents/x86_64-linux/Wavetable.so"
+  depends+=(libasound.so libcurl.so libfreetype.so)
+  pkgdesc="Socalabs Retro Wavetable Synth (VST3)"
+  groups+=(vst3-plugins)
+  optdepends=('vst3-host: for loading the VST3 plugin')
+  install -v -Dm644 "$srcdir"/Wavetable.vst3/Contents/Resources/moduleinfo.json \
+    -t "$pkgdir"/usr/lib/vst3/Wavetable.vst3/Contents/Resources
+  install -v -Dm755 "$srcdir"/Wavetable.vst3/Contents/x86_64-linux/Wavetable.so \
+    -t "$pkgdir"/usr/lib/vst3/Wavetable.vst3/Contents/x86_64-linux/
+  install -v -Dm 644 "$srcdir"/LICENSE-socalabs-wavetable \
+    -t "$pkgdir"/usr/share/licenses/$pkgname
 }

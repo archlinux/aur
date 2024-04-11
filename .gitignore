@@ -1,0 +1,5 @@
+pkg/
+src/
+socalabs-wavetable-*.zip
+socalabs-wavetable-*-bin-*.pkg.tar.zst
+LICENSE-socalabs-wavetable

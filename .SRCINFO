@@ -1,25 +1,52 @@
 pkgbase = socalabs-wavetable
-	pkgver = 1.0.19
+	pkgver = 1.0.21
 	pkgrel = 1
 	url = https://socalabs.com/synths/wavetable/
 	arch = x86_64
 	groups = pro-audio
-	license = EULA
+	license = BSD-3-Clause
 	makedepends = xdg-user-dirs
 	makedepends = unzip
+	depends = freetype2
 	depends = glibc
-	depends = libcurl-gnutls
-	source = socalabs-wavetable.zip::https://socalabs.com/files/get.php?id=Wavetable_Linux.zip
-	sha256sums = 9286baa304c078a5adc5b61ed3b577baa7c10b8d597db6d49f696339c7d5f6a8
+	depends = gcc-libs
+	source = socalabs-wavetable-1.0.21.zip::https://socalabs.com/files/get.php?id=Wavetable_Linux.zip
+	source = LICENSE-socalabs-wavetable::https://github.com/FigBug/Wavetable/blob/1.0.21/LICENSE
+	sha256sums = 3f3f08f67b562926c6cb4b3d7029233cecd50d28213c68251f26bb10223229fd
+	sha256sums = fa83c63301a1d02cbde2c7b7ffbe36d6a5be78e3d1123c7c1faf0d652b8eb401
 
 pkgname = socalabs-wavetable-lv2-bin
 	pkgdesc = Socalabs Retro Wavetable Synth (LV2)
+	groups = pro-audio
 	groups = lv2-plugins
+	depends = freetype2
+	depends = glibc
+	depends = gcc-libs
+	depends = libasound.so
+	depends = libcurl.so
+	depends = libfreetype.so
+	optdepends = lv2-host: for loading the LV2 plugin
 
 pkgname = socalabs-wavetable-vst-bin
 	pkgdesc = Socalabs Retro Wavetable Synth (VST)
+	groups = pro-audio
 	groups = vst-plugins
+	depends = freetype2
+	depends = glibc
+	depends = gcc-libs
+	depends = libasound.so
+	depends = libcurl.so
+	depends = libfreetype.so
+	optdepends = vst-host: for loading the VST2 plugin
 
 pkgname = socalabs-wavetable-vst3-bin
 	pkgdesc = Socalabs Retro Wavetable Synth (VST3)
+	groups = pro-audio
 	groups = vst3-plugins
+	depends = freetype2
+	depends = glibc
+	depends = gcc-libs
+	depends = libasound.so
+	depends = libcurl.so
+	depends = libfreetype.so
+	optdepends = vst3-host: for loading the VST3 plugin
