@@ -3,13 +3,13 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.42.r20.g43c2ec04
+pkgver=1.2.54.r1.g391f8c1c
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL3')
-depends=('csdr-luarvique' 'python-csdr-luarvique' 'rtl-sdr' 'js8py' 'owrx_connector-luarvique' 'python-setuptools')
+depends=('csdr-luarvique' 'python-csdr-luarvique' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools')
 optdepends=(
     # decoding
     'python-digiham: use digital voice modes'
@@ -21,6 +21,7 @@ optdepends=(
     'wsjtx: decode FT8, FST4, FST4, Q65 digital modes'
     'msk144decoder: decode the MSK144 digimode'
     'direwolf: decode Packet Radio and optionally report data back to APRS-IS'
+    'js8py: decode JS8'
     'js8call: decode JS8'
     'dream-nox: decode DRM broadcasts'
     'dump1090: decode Mode-S and ADS-B traffic'
@@ -31,9 +32,13 @@ optdepends=(
     'multimon-ng: decode FLEX, POCSAG, and several other digital modes'
     'mbelib: Voice codecs for P25, ProVoice, Half Rate'
     'redsea: decode RDS information from FM broadcasts'
+    'python-csdr-eti: decode DAB broadcast signals'
+    'dablin: decode DAB broadcast signals'
+    'satdump: receive weather satellite transmissions'
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
+
     # device support
     'soapyremote: allows the usage of remote SDR devices using the SoapySDRServer'
     'soapyrtlsdr: provides additional support for rtl-sdr devices, such as the direct sampling mod'
