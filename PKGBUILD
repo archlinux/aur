@@ -7,7 +7,8 @@ pkgdesc='An interactive Git learning game!'
 arch=(x86_64)
 url='https://ohmygit.org/'
 license=(custom)
-makedepends=(godot3 godot3-export-templates zip)
+depends=(libglvnd libxcursor libxi libxinerama libxrandr libxrender)
+makedepends=(git godot3 godot3-export-templates xorg-server-xvfb zip)
 source=("${pkgname}::git+https://github.com/git-learning-game/oh-my-git.git"
         oh-my-git
         oh-my-git.desktop
@@ -43,7 +44,7 @@ build() {
     ln -sf --no-dereference /usr/share/godot/templates/"$godot_minor"* "$templates_dir/$godot_version"
   done
   # build game
-  HOME="${srcdir}" make linux
+  HOME="${srcdir}" xvfb-run make linux
 }
 
 package() {
