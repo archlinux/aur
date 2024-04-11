@@ -1,6 +1,6 @@
 pkgbase = mistral-nightly
 	pkgdesc = Cyclone V bitstream reverse-engineering project
-	pkgver = 20230606_d6bd02c
+	pkgver = 20240411_d509238
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Ravenslofty/mistral
@@ -15,7 +15,7 @@ pkgbase = mistral-nightly
 	depends = python
 	conflicts = mistral-git
 	options = !strip
-	source = mistral::git+https://github.com/Ravenslofty/mistral.git#commit=d6bd02c
+	source = mistral::git+https://github.com/Ravenslofty/mistral.git#commit=d509238
 	sha256sums = SKIP
 
 pkgname = mistral-nightly

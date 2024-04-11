@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=mistral-nightly
-pkgver=20230606_d6bd02c
+pkgver=20240411_d509238
 pkgrel=1
 epoch=1
 pkgdesc="Cyclone V bitstream reverse-engineering project"
@@ -18,7 +18,7 @@ conflicts=(
 )
 replaces=()
 source=(
-	"mistral::git+https://github.com/Ravenslofty/mistral.git#commit=d6bd02c"
+	"mistral::git+https://github.com/Ravenslofty/mistral.git#commit=d509238"
 )
 sha256sums=(
 	"SKIP"
