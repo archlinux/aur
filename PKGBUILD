@@ -3,32 +3,31 @@
 _pkgname=flexclust
 _pkgver=1.4-1
 pkgname=r-${_pkgname,,}
-pkgver=1.4.1
-pkgrel=3
-pkgdesc='Flexible Cluster Algorithms'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=6
+pkgdesc="Flexible Cluster Algorithms"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-modeltools
 )
 optdepends=(
   r-clue
-  r-cluster
   r-ellipse
   r-seriation
   r-skmeans
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d67977df059e622832358069509f8968d506074320a45d34bfd21c65f898538d')
+md5sums=('26881cc4609085245e8e3f401a27083f')
+b2sums=('bfde267137b7b7ece944efb3ec1f52def87344b6fc67ab4e3271c4d94e7d178f27ed2b2b7b97e138b55bff10d560f08531ce9976066d9fcf83667409e284e83f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

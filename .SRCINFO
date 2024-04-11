@@ -1,18 +1,17 @@
 pkgbase = r-flexclust
 	pkgdesc = Flexible Cluster Algorithms
 	pkgver = 1.4.1
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=flexclust
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-2.0-only
 	depends = r-modeltools
 	optdepends = r-clue
-	optdepends = r-cluster
 	optdepends = r-ellipse
 	optdepends = r-seriation
 	optdepends = r-skmeans
 	source = https://cran.r-project.org/src/contrib/flexclust_1.4-1.tar.gz
-	sha256sums = d67977df059e622832358069509f8968d506074320a45d34bfd21c65f898538d
+	md5sums = 26881cc4609085245e8e3f401a27083f
+	b2sums = bfde267137b7b7ece944efb3ec1f52def87344b6fc67ab4e3271c4d94e7d178f27ed2b2b7b97e138b55bff10d560f08531ce9976066d9fcf83667409e284e83f
 
 pkgname = r-flexclust
