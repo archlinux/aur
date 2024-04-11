@@ -4,7 +4,7 @@
 # Contributor: sukanka <su975853527 at gmail dot com>
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
-pkgver=3.0.8
+pkgver=3.0.9
 _electronversion=28
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.Use system-wide electron."
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}.desktop"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8a178986ad2532dbe45e31e7fef6d3dcc1ca360066939b2449d8cd4dd5eb8a8f'
+sha256sums=('89ea44f4abcd2516332dcfec753ebab16c4e9df1973f980c0e63224be38f7b16'
             'a8129c198d77a882ce930ccf094ced1d7dc9c0f0c3eca1f204e013bcfae5c8df'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
