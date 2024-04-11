@@ -8,8 +8,8 @@
 readonly _version_frappe="v15.21.0"
 
 pkgname="erpnext"
-pkgver="15.19.2"
-pkgrel="2"
+pkgver="15.20.1"
+pkgrel="1"
 pkgdesc="Free and open source Enterprise Resource Planning (ERP)."
 arch=("x86_64")
 url="https://github.com/frappe/${pkgname}"
@@ -25,7 +25,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.g
     "${pkgname}.sh"
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles")
-sha512sums=("d7e031b3f62f486e9f373af2d4ec599fea2ca6ee3888c4b40ebbc8a0536209a32b634a3661d216f12231c786de94991ef8616577f51d2d979fb0788489e6b42e"
+sha512sums=("cc2d7c170f15243434281f75b38954eeb18ace081e65d159198366f05cc7c621e154dca5bed7fd11719348556068bd5c4f79d192bac89f995c3a5389b1638262"
     "70baf45505c3cd21886fd7c820b528c655c5fa8c382f7991092ea14846eb42f43a8899232610f2dc213ea6a3cc6ead43130c083de676ecd4c93caca9283aa36e"
     "d8614473bd72404bec058981d2c9c3a91ed08b931539236a5d22209e5fdc6dc044ea719c8ed336bd8e64a49508cd290a5431bf339b87b0331bd9ede1d055e8ce"
     "661ca81b73544884c3024ec2c5fad689101c72f7467cf7720934bdded67eecdb666096365c4f8abe20c2fd13a1a5c831a990490872024fe3093e35459be8d47b")
