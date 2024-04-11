@@ -3,7 +3,7 @@
 pkgbase=assaultcube
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
 pkgver=1.3.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://assault.cubers.net/'
@@ -25,9 +25,9 @@ sha512sums=('8488c399036532859f7c83d094ac1443c52aa6367d106cc5889b80353ff1d501f7b
 
 _srcdir="AC-${pkgver}"
 
-_cflags=${CLANG_CFLAGS:-}
+_cflags=${CLANG_CFLAGS:-$CFLAGS}
 check_option 'lto' 'y' && _cflags+=' -flto=auto'
-_cxxflags=${CLANG_CXXFLAGS:-}
+_cxxflags=${CLANG_CXXFLAGS:-$CXXFLAGS}
 check_option 'lto' 'y' && _cxxflags+=' -flto=auto'
 
 prepare() {
@@ -37,7 +37,7 @@ prepare() {
 	sed -i 's|//#define PRODUCTION|#define PRODUCTION|' 'source/src/cube.h'
 	rm -rf 'source/include'
 	cd 'source/src'
-	sed -i "s/CXXFLAGS= -O3/CXXFLAGS= ${_cxxflags} -O3/" 'Makefile'
+	sed -i "s/CXXFLAGS= -O3/CXXFLAGS= ${_cxxflags}/" 'Makefile'
 }
 
 build() {
