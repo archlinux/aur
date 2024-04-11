@@ -1,0 +1,20 @@
+pkgbase = own3d-desktop-git
+	pkgdesc = Public Development Preview of the OWN3D Desktop App
+	pkgver = r5.e09e55b
+	pkgrel = 1
+	url = https://www.own3d.pro/
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nodejs
+	makedepends = gendesk
+	depends = electron29
+	provides = own3d-desktop=r5.e09e55b
+	conflicts = own3d-desktop
+	source = own3d-desktop.git::git+https://github.com/own3d/desktop.git
+	source = own3d-desktop.sh
+	sha256sums = SKIP
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = own3d-desktop-git
