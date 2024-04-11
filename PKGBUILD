@@ -30,10 +30,8 @@ package() {
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/share/applications"
   install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -d "$pkgdir/usr/share/metainfo"
   install -m755 "$srcdir/Rosary-1.0.0-Linux/bin/Rosary" "$pkgdir/usr/bin"
   install -m755 "$srcdir/Rosary-1.0.0-Linux/share/applications/Rosary.desktop" "$pkgdir/usr/share/applications"
-  echo "Here"
   install -m644 "$srcdir/Rosary-1.0.0-Linux/share/icons/hicolor/scalable/apps/bible.png" "$pkgdir/usr/share/icons/hicolor/scalable/apps/bible.png"
   cp -r "$srcdir/Rosary-1.0.0-Linux/share/rosary" "$pkgdir/usr/share/"
 
