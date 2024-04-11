@@ -1,7 +1,7 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=rofi-dmenu
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Symlink for using Rofi as a drop-in replacement to dmenu"
 arch=('any')
