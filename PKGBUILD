@@ -18,14 +18,14 @@ depends=(
 	"qt5-base"
 )
 optdepends=()
-makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost" "icestorm-nightly")
+makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost")
 conflicts=(
 	"nextpnr-git"
 	"nextpnr-all-nightly"
 )
 replaces=()
 source=(
-	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git"#commit=d3b53d8e
+	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=d3b53d8e"
 )
 sha256sums=(
 	"SKIP"

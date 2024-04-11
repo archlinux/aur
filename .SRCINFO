@@ -14,7 +14,6 @@ pkgbase = nextpnr-ice40-nightly
 	makedepends = gawk
 	makedepends = eigen
 	makedepends = boost
-	makedepends = icestorm-nightly
 	depends = yosys-nightly
 	depends = icestorm-nightly
 	depends = python
