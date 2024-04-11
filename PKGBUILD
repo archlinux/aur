@@ -10,11 +10,15 @@
 
 : ${_build_clang:=true}
 : ${_build_mold:=false}
+: ${_build_git_tools:=false}
 
 : ${_build_instrumented:=false}
 
 : ${_build_avx:=true}
 : ${_build_git:=true}
+
+unset _tooltype # clang-git, llvm-git, lld-git, mold-git
+[[ "${_build_git_tools::1}" == "t" ]] && _tooltype+="-git"
 
 unset _pkgtype
 [[ "${_build_instrumented::1}" == "t" ]] && _pkgtype+="-instrumented"
@@ -24,7 +28,7 @@ unset _pkgtype
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5659.r0.g9de38e50
+pkgver=1.7.5698.r0.g91b0b16
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -66,14 +70,16 @@ _main_package() {
 
   if [[ "${_build_clang::1}" == "t" ]] ; then
     makedepends+=(
-      clang
-      llvm
-      lld
+      "clang${_tooltype:-}"
+      "llvm${_tooltype:-}"
+      "lld${_tooltype:-}"
     )
   fi
 
   if [[ "${_build_mold::1}" == "t" ]] ; then
-    makedepends+=('mold')
+    makedepends+=(
+      "mold${_tooltype:-}"
+    )
   fi
 
   provides=("$_pkgname")
@@ -82,15 +88,9 @@ _main_package() {
   install="$_pkgname.install"
 
   if [[ "${_build_debug::1}" == "t" ]] ; then
-    options=(
-      'debug'
-      '!lto'
-    )
+    options=(debug !lto)
   else
-    options=(
-      '!debug'
-      'lto'
-    )
+    options=(!debug lto)
   fi
 
   _pkgsrc="$_pkgname"
@@ -113,20 +113,12 @@ _main_package() {
 _source_pcsx2() {
   source+=(
     'biojppm.rapidyaml'::'git+https://github.com/biojppm/rapidyaml.git'
-    'facebook.zstd'::'git+https://github.com/facebook/zstd.git'
     'fmtlib.fmt'::'git+https://github.com/fmtlib/fmt.git'
     'google.googletest'::'git+https://github.com/google/googletest.git'
-    'khronosgroup.glslang'::'git+https://github.com/KhronosGroup/glslang.git'
     'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-    'lz4'::'git+https://github.com/lz4/lz4.git'
     'microsoft.wil'::'git+https://github.com/microsoft/wil.git'
-    'webmproject.libwebp'::'git+https://github.com/webmproject/libwebp.git'
   )
   sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -136,16 +128,12 @@ _source_pcsx2() {
 
   _prepare_pcsx2() (
     cd "$_pkgsrc"
-    local -A _submodules=(
-      ['biojppm.rapidyaml']='3rdparty/rapidyaml/rapidyaml'
-      ['facebook.zstd']='3rdparty/zstd/zstd'
-      ['fmtlib.fmt']='3rdparty/fmt/fmt'
-      ['google.googletest']='3rdparty/gtest'
-      ['khronosgroup.glslang']='3rdparty/glslang/glslang'
-      ['khronosgroup.vulkan-headers']='3rdparty/vulkan-headers'
-      ['lz4']='3rdparty/lz4/lz4'
-      ['microsoft.wil']='3rdparty/wil'
-      ['webmproject.libwebp']='3rdparty/libwebp/libwebp'
+    local _submodules=(
+      'biojppm.rapidyaml'::'3rdparty/rapidyaml/rapidyaml'
+      'fmtlib.fmt'::'3rdparty/fmt/fmt'
+      'google.googletest'::'3rdparty/gtest'
+      'khronosgroup.vulkan-headers'::'3rdparty/vulkan-headers'
+      'microsoft.wil'::'3rdparty/wil'
     )
     _submodule_update
   )
@@ -162,8 +150,8 @@ _source_biojppm_rapidyaml() {
   _prepare_biojppm_rapidyaml() (
     cd "$_pkgsrc"
     cd '3rdparty/rapidyaml/rapidyaml'
-    local -A _submodules=(
-      ['biojppm.c4core']='ext/c4core'
+    local _submodules=(
+      'biojppm.c4core'::'ext/c4core'
     )
     _submodule_update
   )
@@ -171,8 +159,8 @@ _source_biojppm_rapidyaml() {
 
 _source_biojppm_c4core() {
   source+=(
-    'biojppm.debugbreak'::'git+https://github.com/biojppm/debugbreak.git'
     'biojppm.cmake'::'git+https://github.com/biojppm/cmake.git'
+    'biojppm.debugbreak'::'git+https://github.com/biojppm/debugbreak.git'
     'fastfloat.fast_float'::'git+https://github.com/fastfloat/fast_float.git'
   )
   sha256sums+=(
@@ -185,10 +173,10 @@ _source_biojppm_c4core() {
     cd "$_pkgsrc"
     cd '3rdparty/rapidyaml/rapidyaml'
     cd 'ext/c4core'
-    local -A _submodules=(
-      ['biojppm.debugbreak']='src/c4/ext/debugbreak'
-      ['biojppm.cmake']='cmake'
-      ['fastfloat.fast_float']='src/c4/ext/fast_float'
+    local _submodules=(
+      'biojppm.cmake'::'cmake'
+      'biojppm.debugbreak'::'src/c4/ext/debugbreak'
+      'fastfloat.fast_float'::'src/c4/ext/fast_float'
     )
     _submodule_update
   )
@@ -196,11 +184,6 @@ _source_biojppm_c4core() {
 
 # common functions
 prepare() {
-  cat <<'EOF' > "$_pkgname.sh"
-#!/usr/bin/env sh
-exec /opt/pcsx2/pcsx2-qt "$@"
-EOF
-
   local _gendesk_options=(
     -q -f -n
     --pkgname="$_pkgname"
@@ -216,11 +199,11 @@ EOF
   gendesk "${_gendesk_options[@]}"
 
   _submodule_update() {
-    local key
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    local _module
+    for _module in "${_submodules[@]}" ; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
@@ -236,12 +219,14 @@ EOF
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
+  export CC CXX CFLAGS CXXFLAGS LDFLAGS
   local _cmake_options
+
   _cmake_options+=(
     -S "$_pkgsrc"
     -B build
@@ -263,21 +248,19 @@ build() {
   fi
 
   if [[ "${_build_clang::1}" == "t" ]] ; then
-    export AR=llvm-ar
-    export NM=llvm-nm
-    export CC=clang
-    export CXX=clang++
+    CC=clang
+    CXX=clang++
   fi
 
   if [[ "${_build_mold::1}" == "t" ]] ; then
-    export LDFLAGS+=" -fuse-ld=mold"
+    LDFLAGS+=" -fuse-ld=mold"
   elif [[ "${_build_clang::1}" == "t" ]] ; then
-    export LDFLAGS+=" -fuse-ld=lld"
+    LDFLAGS+=" -fuse-ld=lld"
   fi
 
   if [[ "${_build_avx::1}" == "t" ]] ; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
 
     _cmake_options+=(-DDISABLE_ADVANCE_SIMD=OFF)
   else
@@ -288,14 +271,14 @@ build() {
   local _pgo_profile="$srcdir/$pkgname.profdata"
   if [[ "${_build_instrumented::1}" == "t" ]] ; then
     echo "Compiling with instrumentation."
-    export CFLAGS+=" -fprofile-generate"
-    export CXXFLAGS+=" -fprofile-generate"
+    CFLAGS+=" -fprofile-generate"
+    CXXFLAGS+=" -fprofile-generate"
   elif [[ "${_build_pgo::1}" == "t" ]] && [ -e "$_pgo_profile_old" ] ; then
     echo "Compiling with profile-guided optimization."
     cp --reflink=auto "$_pgo_profile_old" "$_pgo_profile"
 
-    export CFLAGS+=" -fprofile-use='$_pgo_profile'"
-    export CXXFLAGS+=" -fprofile-use='$_pgo_profile'"
+    CFLAGS+=" -fprofile-use='$_pgo_profile'"
+    CXXFLAGS+=" -fprofile-use='$_pgo_profile'"
   else
     echo "Compiling with standard optimization."
   fi
@@ -311,12 +294,27 @@ package() {
   install -Dm644 patches.zip -t "$pkgdir/opt/$_pkgname/resources/"
   cp --reflink=auto -r build/bin/* "$pkgdir/opt/$_pkgname/"
 
-  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/pcsx2-qt"
-
-  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/pcsx2-qt.desktop"
-
   install -Dm644 "$_pkgsrc/bin/resources/icons/AppIconLarge.png" \
     "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/pcsx2-qt" <<'END'
+#!/usr/bin/env sh
+exec /opt/pcsx2/pcsx2-qt "$@"
+END
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/pcsx2-qt.desktop" <<'END'
+[Desktop Entry]
+Type=Application
+Name=PCSX2
+Comment=Sony PlayStation 2 emulator
+Exec=/opt/pcsx2/pcsx2-qt
+Icon=pcsx2
+Terminal=false
+StartupNotify=true
+Categories=Game;Emulator;
+END
+
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
 
 # execute
