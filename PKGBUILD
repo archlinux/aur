@@ -1,8 +1,8 @@
 # Maintainer: <Charklie charliejohanid@gmail.com>
 pkgname=rsftch-git
 _pkgname=rsftch
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Lightning fast hardware fetch tool written in rust."
 url="https://github.com/charklie/rsftch"
 depends=('cargo' 'pciutils' 'sqlite' 'gcc-libs' 'glibc')
