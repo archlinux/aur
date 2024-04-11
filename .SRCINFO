@@ -1,7 +1,7 @@
 pkgbase = zing-21-bin
 	pkgdesc = Azul Platform Prime Stream Build (Formerly Zing) is a modern, TCK-compliant Java platform based on OpenJDK, free for development.
 	pkgver = 21.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docs.azul.com/prime/prime-quick-start-tar
 	install = zing-21-bin.install
 	arch = x86_64
