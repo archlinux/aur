@@ -3,25 +3,25 @@
 _pkgname=kSamples
 _pkgver=1.2-10
 pkgname=r-${_pkgname,,}
-pkgver=1.2.10
-pkgrel=1
-pkgdesc='K-Sample Rank Tests and their Combinations'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="K-Sample Rank Tests and their Combinations"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-suppdists
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2d66cc0511fb1be3190c5a285dcd93d02419468ee1ff5ae6d0838f16df2b578d')
+md5sums=('b3f45e87748adf618c76c59740fcf3f7')
+b2sums=('e9ed5b3adc7185061fb32fcabf09e2d6a396c4072c88f210669bb49aaa5a0254fca096180601428992dabc4a151a1016443024cdfdcd2390c2773fd01d46f958')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
