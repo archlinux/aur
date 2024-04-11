@@ -1,13 +1,13 @@
 pkgbase = r-rmallow
 	pkgdesc = Fit Multi-Modal Mallows' Models to Ranking Data
 	pkgver = 1.1
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=RMallow
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-combinat
 	source = https://cran.r-project.org/src/contrib/RMallow_1.1.tar.gz
-	sha256sums = 92bde4b75ae7bb60aabe451607d15deca123d63847c09c1173398d73c818cae8
+	md5sums = 9a469dee1335f52858881cac6018f842
+	b2sums = d3d06acabff8a649cd54d7f007183ec63729ed3094f58a5e71984dfb669fbab1d0c7e5306baeb75ca601fbb619533db4dc837e07827d4cb02c04eb8fc27f7e9e
 
 pkgname = r-rmallow

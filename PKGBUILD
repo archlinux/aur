@@ -3,25 +3,25 @@
 _pkgname=RMallow
 _pkgver=1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1
-pkgrel=4
+pkgver=${_pkgver//-/.}
+pkgrel=7
 pkgdesc="Fit Multi-Modal Mallows' Models to Ranking Data"
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-combinat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('92bde4b75ae7bb60aabe451607d15deca123d63847c09c1173398d73c818cae8')
+md5sums=('9a469dee1335f52858881cac6018f842')
+b2sums=('d3d06acabff8a649cd54d7f007183ec63729ed3094f58a5e71984dfb669fbab1d0c7e5306baeb75ca601fbb619533db4dc837e07827d4cb02c04eb8fc27f7e9e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
