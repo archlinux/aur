@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=SourceGit
+Comment=Free & OpenSource Git Client
+Exec=SourceGit
+Icon=sourcegit
+Type=Application
+Terminal=false
