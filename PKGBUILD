@@ -11,7 +11,7 @@ pkgname=(
   "${_name}-sycl-f32-git"
   "${_name}-vulkan-git"
 )
-pkgver=b2608.r3.a307375c0
+pkgver=b2646.r7.f7001ccc5
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
