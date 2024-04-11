@@ -1,0 +1,20 @@
+pkgbase = work-log-ify-git
+	pkgdesc = Track your work.Spend less time on what's required, more time on what's important.
+	pkgver = 1.33.7.r0.g6016fc9
+	pkgrel = 1
+	url = https://github.com/dmitrijs/WorkLogIfy
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	depends = electron26
+	provides = work-log-ify=1.33.7
+	conflicts = work-log-ify
+	source = work-log-ify.git::git+https://github.com/dmitrijs/WorkLogIfy.git
+	source = work-log-ify.sh
+	sha256sums = SKIP
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = work-log-ify-git
