@@ -1,15 +1,15 @@
 pkgbase = nodejs-reveal.js
 	pkgdesc = The HTML Presentation Framework
-	pkgver = 5.0.5
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/hakimel/reveal.js
 	arch = any
 	license = MIT
 	makedepends = npm
 	noextract = reveal.js-.tgz
-	source = reveal.js-5.0.5.tgz::https://registry.npmjs.org/reveal.js/-/reveal.js-5.0.5.tgz
+	source = reveal.js-5.1.0.tgz::https://registry.npmjs.org/reveal.js/-/reveal.js-5.1.0.tgz
 	source = LICENSE::https://github.com/hakimel/reveal.js/raw/master/LICENSE
-	sha256sums = 0dbfedacafe26684a2ccbafe6c8f7b6c04ea0de1e3e00eb3623227c12d77f66c
+	sha256sums = 524caf847e98033595943d994725dd357d20c7d07ad18afbaa932f1535e636e7
 	sha256sums = 34014800f4126ac2525e224166f099f26628612e95c41f76d70841b63138c989
 
 pkgname = nodejs-reveal.js
