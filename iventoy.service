@@ -7,6 +7,7 @@ After         = network-online.target
 
 [Service]
 Type             = forking
+PIDFile          = /run/iventoy.pid
 WorkingDirectory = /opt/iventoy
 ExecStart        = /usr/bin/iventoy -R start
 ExecStop         = /usr/bin/iventoy stop
