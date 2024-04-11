@@ -1,0 +1,5 @@
+[python-wslink]
+source = "github"
+github = "kitware/wslink"
+use_latest_release = "true"
+prefix = "v"
