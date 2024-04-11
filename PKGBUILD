@@ -3,7 +3,7 @@
 _pkgname=clevo-drivers
 pkgname=clevo-drivers-dkms-git
 pkgver=4.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface for Clevo hardware."
 url="https://gitlab.com/evorster/clevo-drivers"
 license=("Other")
