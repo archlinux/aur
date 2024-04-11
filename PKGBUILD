@@ -2,41 +2,50 @@
 
 _pkgname=labwc-tweaks
 pkgname=$_pkgname-git
-pkgver=r57.c52dc16
+pkgver=r76.7f2d04f
 pkgrel=1
 pkgdesc="Simple configuration GUI application for labwc"
 url="https://github.com/labwc/labwc-tweaks"
 license=(GPL2)
 arch=(x86_64)
 depends=(
-  gtk3
+  glib2
   libxml2
-  wayland
-  wayland-protocols
+  qt6-base
 )
 makedepends=(
-  meson
+  cmake
+  git
+  qt6-tools
 )
 source=(
-  $_pkgname::git+$url.git
+  "$_pkgname::git+$url.git"
 )
 sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  ( set -o pipefail
+  (
+    set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
 build() {
-  cd "$_pkgname"
-  arch-meson "$srcdir/build"
-  ninja -C "$srcdir/build"
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -S "$srcdir/$_pkgname"
+    -W no-dev
+  )
+  cmake ${cmake_options[@]}
+  cmake --build build --verbose
 }
 
 package() {
-  cd "$_pkgname"
-  DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+  DESTDIR="$pkgdir" cmake --install build
+  install -vDm 644 "$srcdir/$_pkgname/BSD-3-Clause" -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -vDm 644 "$srcdir/$_pkgname/README.md" -t "$pkgdir/usr/share/doc/$_pkgname/"
 }
