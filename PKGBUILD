@@ -2,24 +2,19 @@
 # Contributor: Xaryphon <xaryphon at tuta dot io>
 _pkgname=protonhax
 pkgname=$_pkgname-git
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Program to help executing outside programs in proton"
 arch=('x86_64')
 url="https://github.com/jcnils/protonhax"
 license=('BSD')
-makedepends=('tcc')
+makedepends=('git')
 source=('git+https://github.com/jcnils/protonhax.git')
 md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
-    cd $_pkgname
-    make
 }
 
 package() {
@@ -30,5 +25,4 @@ package() {
 
     install -d -m755 $pkgdir/usr/bin
     install -m755 protonhax $pkgdir/usr/bin/protonhax
-    install -m755 envload $pkgdir/usr/bin/envload
 }
