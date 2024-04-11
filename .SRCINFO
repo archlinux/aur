@@ -21,6 +21,7 @@ pkgbase = gamescope-sk
 	depends = libcap.so
 	depends = libdisplay-info.so
 	depends = libdrm
+	depends = libdecor
 	depends = libliftoff.so
 	depends = libinput
 	depends = libpipewire-0.3.so

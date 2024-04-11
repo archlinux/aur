@@ -15,6 +15,7 @@ depends=(
     libcap.so
     libdisplay-info.so
     libdrm
+    libdecor
     libliftoff.so
     libinput
     libpipewire-0.3.so
