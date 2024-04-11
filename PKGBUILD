@@ -2,13 +2,13 @@
 
 pkgname="stalwart-mail-bin"
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure & Modern All-in-One Mail Server (IMAP, JMAP, SMTP)"
 arch=("x86_64" "aarch64")
 url="https://stalw.art/"
 license=("AGPL-3.0")
 provides=("stalwart" "stalwart-mail")
-conflict=("stalwart" "stalwart-mail")
+conflicts=("stalwart" "stalwart-mail")
 optdepends=("stalwart-cli: command line interface"
             "postgresql: storage backend"
             "sqlite: storage backend"

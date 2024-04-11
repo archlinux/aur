@@ -1,7 +1,7 @@
 pkgbase = stalwart-mail-bin
 	pkgdesc = Secure & Modern All-in-One Mail Server (IMAP, JMAP, SMTP)
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stalw.art/
 	install = stalwart.install
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = stalwart-mail-bin
 	optdepends = redis: lookup storage backend
 	provides = stalwart
 	provides = stalwart-mail
+	conflicts = stalwart
+	conflicts = stalwart-mail
 	backup = etc/stalwart/config.toml
 	source = config.toml
 	source = stalwart.service
