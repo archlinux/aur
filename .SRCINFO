@@ -1,6 +1,6 @@
 pkgbase = rosary
 	pkgdesc = A Simple Bible App Written in Qt
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/RoseBlume/Rosary-Bible-App
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = rosary
 	depends = git
 	depends = qt6-base>=6.4
 	depends = qt6-declarative>=6.4
-	depends = qt6-webview>=6.4
+	depends = qt6-webengine>=6.4
 	optdepends = sudo: privilege elevation
 	optdepends = doas: privilege elevation
-	source = Rosary-1.0.0_x86_64.tar.gz::https://github.com/RoseBlume/Rosary-Bible-App/releases/download/Debianv1.0-1/Rosary-1.0.0_x86_64.tar.gz
-	sha256sums = 4a1f2c2248fe0383624e841560f3b6a989bf1442fbba3ef8606e2003510ec86e
+	source = Rosary-1.0.1_x86_64.tar.gz::https://github.com/RoseBlume/Rosary-Bible-App/releases/download/v1.0.1/Rosary-1.0.1_x86_64.tar.gz
+	sha256sums = 8ef69788fe9d30a44abf1b25e127845250610021040b6d77f74d32f028459ecc
 
 pkgname = rosary
