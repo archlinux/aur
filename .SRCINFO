@@ -8,7 +8,7 @@ pkgbase = delance-langserver
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	source = https://git.sr.ht/~self/delance-runtime/archive/v2024.4.100.tar.gz
-	sha256sums = 3ef8634948798c96b8749245eb108be002911e5600fdbff65ff5d2f5a497c5c1
+	source = https://git.sr.ht/~self/delance-runtime/archive/v2024.4.101.tar.gz
+	sha256sums = c75b331c785f1437a58633f420eada56922c333eb57a0912d8c59ef6c25b92b0
 
 pkgname = delance-langserver
