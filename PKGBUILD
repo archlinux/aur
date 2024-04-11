@@ -1,11 +1,11 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=prusa-slicer-git
-pkgver=2.6.0.beta4.r1.gdbc2584d8
+pkgver=2.7.4
 pkgrel=1
-pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
+pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r) (git version)"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
-url='https://github.com/prusa3d/PrusaSlicer'
+url="https://github.com/prusa3d/PrusaSlicer"
 license=('AGPL3')
 makedepends=(
     'git'
@@ -35,9 +35,11 @@ depends=(
 
 source=(
     "git+${url}"
+    "fix_num_constrexpr.patch"
 )
 sha256sums=(
     'SKIP'
+    '91d198af5eecaf6d1a71ad8b59f03e4fa7cefb02c714b3a26978ac8772f8296e'
 )
 conflicts=('prusa-slicer')
 
@@ -48,8 +50,8 @@ pkgver() {
 prepare() {
     cd "PrusaSlicer"
 
-    # Repair gcc13 build
-    git cherry-pick "72f6a4e7c7dccc47f203ce8c27b3022c6d7743e8"
+    # Repair clang15 build
+    patch --forward --strip=1 --input=../fix_num_constrexpr.patch
 
     rm "$srcdir/PrusaSlicer/cmake/modules/FindEXPAT.cmake"
 }
