@@ -12,6 +12,7 @@ pkgbase = yosys-nightly
 	makedepends = flex
 	makedepends = pkgconf
 	makedepends = gawk
+	makedepends = protobuf
 	makedepends = iverilog
 	depends = tcl
 	depends = libffi

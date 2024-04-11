@@ -12,11 +12,13 @@ groups=()
 options=("!strip")
 depends=("tcl" "libffi" "python" "boost-libs" "zlib" "readline")
 optdepends=("graphviz: Schematics display support" "xdot: Design netlist display support")
-makedepends=("git" "gcc" "bison" "flex" "pkgconf" "gawk" "iverilog")
+makedepends=("git" "gcc" "bison" "flex" "pkgconf" "gawk" "protobuf" "iverilog")
 conflicts=("yosys" "yosys-git")
 replaces=("yosys" "yosys-git")
-source=("yosys::git+https://github.com/YosysHQ/yosys.git#commit=47bdb3e32"
-		"yosys.conf")
+source=(
+	"yosys::git+https://github.com/YosysHQ/yosys.git#commit=47bdb3e32"
+	"yosys.conf"
+)
 sha256sums=(
 	"SKIP"
 	"7513c07ccaf3ff00b1692348ece8a44ee48a7b9f5318f773de78d7538e82c127"
