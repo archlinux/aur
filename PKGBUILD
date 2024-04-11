@@ -3,7 +3,7 @@
 pkgname=einat-ebpf-git
 _pkgname=einat-ebpf
 _target=einat
-pkgver=0.1.0.r17.g3c81872
+pkgver=0.1.1.r23.g07eafd1
 pkgrel=1
 pkgdesc="eBPF-based Endpoint-Independent NAT"
 arch=('x86_64')
@@ -13,8 +13,10 @@ depends=('glibc' 'gcc-libs' 'zlib' 'libelf')
 provides=('einat')
 conflicts=('einat')
 makedepends=('git' 'cargo' 'clang')
-source=("$_pkgname::git+https://github.com/EHfive/einat-ebpf.git")
-sha512sums=('SKIP')
+source=("$_pkgname::git+https://github.com/EHfive/einat-ebpf.git"
+        "einat.service")
+sha512sums=('SKIP'
+            '84948ad7dd40677eb723d8cc6820718e2f0b5bb5226871e5ded3d5bfc680a64af16dd72cd2ef5e36e1677d74505ec942c7ca1e4444fd7535d89214c5e730bd4f')
 options=(!lto !debug)
 
 pkgver(){
@@ -42,6 +44,7 @@ package() {
   install -Dm 755 "target/release/$_target" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 config.sample.toml -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 "$srcdir/einat.service" -t "$pkgdir/usr/lib/systemd/system"
 }
 
 # vim: ts=2 sw=2 et:

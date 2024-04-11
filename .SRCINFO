@@ -1,6 +1,6 @@
 pkgbase = einat-ebpf-git
 	pkgdesc = eBPF-based Endpoint-Independent NAT
-	pkgver = 0.1.0.r17.g3c81872
+	pkgver = 0.1.1.r23.g07eafd1
 	pkgrel = 1
 	url = https://github.com/EHfive/einat-ebpf
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = einat-ebpf-git
 	options = !lto
 	options = !debug
 	source = einat-ebpf::git+https://github.com/EHfive/einat-ebpf.git
+	source = einat.service
 	sha512sums = SKIP
+	sha512sums = 84948ad7dd40677eb723d8cc6820718e2f0b5bb5226871e5ded3d5bfc680a64af16dd72cd2ef5e36e1677d74505ec942c7ca1e4444fd7535d89214c5e730bd4f
 
 pkgname = einat-ebpf-git
