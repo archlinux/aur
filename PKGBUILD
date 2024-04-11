@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
 url="https://github.com/pyocd/pyOCD"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   python
   python-capstone
