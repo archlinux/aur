@@ -1,14 +1,16 @@
 pkgname=aichat-git
 _pkgname=aichat
-pkgver=0.8.0.r1.gf257931
+pkgver=0.16.0.r1.g9f19539
 pkgrel=1
 pkgdesc="Using ChatGPT/GPT-3.5/GPT-4 in the terminal"
 arch=('i686' 'x86_64')
 url="https://github.com/sigoden/aichat"
 license=('MIT' 'APACHE')
 makedepends=('git' 'cargo')
-conflicts=('aichat' 'aichat-bin')
+conflicts=('aichat')
+provides=('aichat')
 source=("git+https://github.com/sigoden/aichat")
+options=('!lto')
 sha256sums=('SKIP')
 
 
