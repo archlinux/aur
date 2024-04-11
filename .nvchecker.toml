@@ -1,0 +1,5 @@
+[psiphon-tunnel-core]
+source = "github"
+github = "psiphon-labs/psiphon-tunnel-core"
+prefix = "v"
+use_latest_release = true
