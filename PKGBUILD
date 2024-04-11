@@ -19,7 +19,7 @@ build() {
 	git config http.postBuffer 524288000
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release
+	cargo build --offline --release
 }
 
 package() {
