@@ -1,6 +1,6 @@
 pkgbase = ntfs2btrfs
 	pkgdesc = In-place conversion of Microsoft's NTFS filesystem to the open-source filesystem Btrfs
-	pkgver = 20230501
+	pkgver = 20240115
 	pkgrel = 1
 	url = https://github.com/maharmstone/ntfs2btrfs
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ntfs2btrfs
 	depends = zlib
 	depends = lzo
 	depends = zstd
-	source = https://github.com/maharmstone/ntfs2btrfs/archive/20230501/ntfs2btrfs-20230501.tar.gz
-	sha512sums = ad10850280f591cbdc169bb8e0b1768f7c4051b3110283c941ab76beb0d2b728d30ac64caecdbe6f90068b2486170ddced0704d741d1469944c58ecf0b168e0a
+	source = https://github.com/maharmstone/ntfs2btrfs/archive/20240115/ntfs2btrfs-20240115.tar.gz
+	sha512sums = c614e33b83a4dad25b07335f42161223804935bbee19a72a6576fe361a7edf91502773facc14c767e02abff03fd26d902ab2cd0d8f8bcde8ba10c56869d01873
 
 pkgname = ntfs2btrfs

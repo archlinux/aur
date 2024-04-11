@@ -1,7 +1,7 @@
 # Maintainer: Manuel Hüsers <aur@huesers.de>
 
 pkgname=ntfs2btrfs
-pkgver=20230501
+pkgver=20240115
 pkgrel=1
 pkgdesc="In-place conversion of Microsoft's NTFS filesystem to the open-source filesystem Btrfs"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('fmt' 'zlib' 'lzo' 'zstd')
 makedepends=('cmake' 'pkgconf')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('ad10850280f591cbdc169bb8e0b1768f7c4051b3110283c941ab76beb0d2b728d30ac64caecdbe6f90068b2486170ddced0704d741d1469944c58ecf0b168e0a')
+sha512sums=('c614e33b83a4dad25b07335f42161223804935bbee19a72a6576fe361a7edf91502773facc14c767e02abff03fd26d902ab2cd0d8f8bcde8ba10c56869d01873')
 
 build() {
 	cmake -B build -S "$pkgname-$pkgver" \
