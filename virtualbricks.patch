@@ -1,6 +1,6 @@
 diff --unified --recursive --text virtualbricks.orig/virtualbricks/gui/dialogs.py virtualbricks.new/virtualbricks/gui/dialogs.py
---- virtualbricks.orig/virtualbricks/gui/dialogs.py	2024-03-14 05:18:43.483389522 +0100
-+++ virtualbricks.new/virtualbricks/gui/dialogs.py	2024-03-14 05:20:20.271336337 +0100
+--- virtualbricks.orig/virtualbricks/gui/dialogs.py	2024-04-11 11:21:39.570442084 +0200
++++ virtualbricks.new/virtualbricks/gui/dialogs.py	2024-04-11 11:24:23.839342293 +0200
 @@ -2224,12 +2224,12 @@
          vbox.foreach(vbox.remove)
          for i, (name, dest) in enumerate(iter_model(store)):
@@ -18,9 +18,22 @@ diff --unified --recursive --text virtualbricks.orig/virtualbricks/gui/dialogs.p
              dlabel.set_ellipsize(Pango.EllipsizeMode.MIDDLE)
              box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
              box.pack_start(nlabel, False, True, 0)
+diff --unified --recursive --text virtualbricks.orig/virtualbricks/gui/gui.py virtualbricks.new/virtualbricks/gui/gui.py
+--- virtualbricks.orig/virtualbricks/gui/gui.py	2024-04-11 11:21:39.570442084 +0200
++++ virtualbricks.new/virtualbricks/gui/gui.py	2024-04-11 11:22:54.958133782 +0200
+@@ -22,6 +22,9 @@
+ import sys
+ import string
+ 
++import gi
++gi.require_version("Gdk", "3.0")
++
+ from gi.repository import GObject, Gdk, Gtk
+ from twisted.internet import error, defer, task, protocol, reactor
+ from twisted.python import filepath
 diff --unified --recursive --text virtualbricks.orig/virtualbricks/_settings.py virtualbricks.new/virtualbricks/_settings.py
---- virtualbricks.orig/virtualbricks/_settings.py	2024-03-14 05:18:43.483389522 +0100
-+++ virtualbricks.new/virtualbricks/_settings.py	2024-03-14 05:20:40.831607944 +0100
+--- virtualbricks.orig/virtualbricks/_settings.py	2024-04-11 11:21:39.567108705 +0200
++++ virtualbricks.new/virtualbricks/_settings.py	2024-04-11 11:22:39.981263477 +0200
 @@ -40,7 +40,7 @@
  DEFAULT_CONF = {
      "term": "/usr/bin/xterm",

@@ -1,7 +1,7 @@
 pkgbase = virtualbricks-develop-git
 	pkgdesc = Qemu/KVM and VDE frontend (git development branch)
 	pkgver = r2169.1017943
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/virtualsquare/virtualbricks
 	arch = any
 	license = GPL2
@@ -23,6 +23,6 @@ pkgbase = virtualbricks-develop-git
 	source = virtualbricks::git+https://github.com/virtualsquare/virtualbricks.git#branch=develop
 	source = virtualbricks.patch
 	sha256sums = SKIP
-	sha256sums = 0872b5032ec2a9208053fc48feb56930c62650573baba8265e7a2ddff6877471
+	sha256sums = d62e8df03f9ca96d6b6e1c271eeeed2fd6276f79ab37d7d12ad8a93e8b9731c7
 
 pkgname = virtualbricks-develop-git
