@@ -8,22 +8,23 @@
 
 pkgbase=actionfps
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
-pkgver=1.2.0.2
-pkgrel=6
+pkgver=1.2.0.2.r896.g80dcc7b
+pkgrel=1
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://actionfps.com'
 license=('ZLIB' 'custom')
 depends=('zlib' 'gcc-libs')
-makedepends=('mesa' 'clang' 'sdl' 'sdl_mixer' 'sdl_image' 'openal' 'libgl' 'glu' 'libogg' 'libvorbis' 'curl')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/ActionFPS/AC/archive/refs/tags/v${pkgver}.tar.gz"
+makedepends=('mesa' 'clang' 'sdl' 'sdl_mixer' 'sdl_image' 'openal' 'libgl' 'glu' 'libogg' 'libvorbis' 'curl' 'git')
+_commit='80dcc7b4281bfcf02439e93275b20ae58971b6dc'
+source=("assaultcube-$pkgbase::git+https://github.com/ActionFPS/AC.git#commit=${_commit}"
         'actionfps'
         'actionfps-server'
         'actionfps.desktop'
         'actionfps.png'
         "systemd-${pkgbase}-sysuser.conf"
         "systemd-${pkgbase}-server.service")
-sha512sums=('97a5eaa1fba716d6c29dd1dbcdf3a44fbdaa3c5ba1b350eae3834699d20784b7e4563c4bf729bf7552654aeabe2d577e188cf8ce0ccd5449f092df9cdd76341a'
+sha512sums=('3c2d75c8d445b44afbfba1844a187fcedceb6d300869d6d7b449bd7ae36126fff8fca6f9246873b23a68d8f5d7dc7c64909837c8393da5ef6b70b89cc0964a8c'
             'c99ae5698749d3c5f3003b2d8403c93ee1964b971a621e48c3013dff1f230a06819bdda5d250cf576186c45154875d900eb546dc71e4fb820299c5d0c12e9705'
             'ba4f9cb222e9440dea9c44ca7f492e26a012c850b96adc866b76a30ed93b0b9b38c0b67c63b03e310769801c1be41c604606ddd819af8bce3a6acbb6b91c30f4'
             'cb6d8a09aba2136aa3450979bcc577830db7b83791101decc819711357c887479e7f03b0515be18f3d0f781845e83a62e19c83a7b910f7059db550237c6b9a4f'
@@ -31,12 +32,20 @@ sha512sums=('97a5eaa1fba716d6c29dd1dbcdf3a44fbdaa3c5ba1b350eae3834699d20784b7e45
             'e14b9dd96b57d5f10981197d01de90007d5366330bd853d38eeaa4e866cebcd5d5567e3f6c538b0eff60e6dee9359d248e1c82db9b50b7f1482da0c6cc93e14c'
             'eecba69c8a9630152514b04bd7588fa23f0d0f43c31bed4e58bb872fc30738094e01b7613543d04033ac2b4eb88d1010ab610a88ea69afac24a1d2f9733215d1')
 
-_srcdir="AC-${pkgver}"
+_srcdir="assaultcube-$pkgbase"
 
-_cflags=${CLANG_CFLAGS:-}
+_cflags=${CLANG_CFLAGS:-$CFLAGS}
 check_option 'lto' 'y' && _cflags+=' -flto=auto'
-_cxxflags=${CLANG_CXXFLAGS:-}
+_cxxflags=${CLANG_CXXFLAGS:-$CXXFLAGS}
 check_option 'lto' 'y' && _cxxflags+=' -flto=auto'
+
+pkgver() {
+	cd "${_srcdir}"
+	( set -o pipefail
+		git describe --tags --abbrev=7 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	)
+}
 
 prepare() {
 	cd "${_srcdir}"
@@ -45,7 +54,7 @@ prepare() {
 	sed -i 's|CUBE_OPTIONFILE=-Cconfig/servercmdline.txt|CUBE_OPTIONFILE=-C/etc/actionfps/servercmdline.txt|' 'server.sh'
 	cd 'source/src'
 	sed -i 's|static inline float round|//static inline float round|' 'tools.h'
-	sed -i "s/CXXFLAGS= -O3/CXXFLAGS= ${_cxxflags} -O3/" 'Makefile'
+	sed -i "s/CXXFLAGS= -O3/CXXFLAGS= ${_cxxflags}/" 'Makefile'
 }
 
 build() {
@@ -58,7 +67,7 @@ package_actionfps-common() {
 	conflicts=('actionfps')
 	replaces=('actionfps')
 	
-	cp -r "${_srcdir}"/{bot,docs,config,scripts} \
+	cp -r "${_srcdir}"/{bot,docs,config} \
 		"${pkgdir}/usr/share/games/${pkgbase}"
 	
 	rm "${pkgdir}/usr/share/games/${pkgbase}/config/servercmdline.txt"
