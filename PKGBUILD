@@ -17,7 +17,6 @@ sha256sums=('9c6f0d8905a0c38ced61f2c5c1822e91d8a155e0128335a0534bfea2523c43c6')
 
 package() {
     cp -r "$srcdir/ugeeTablet-$pkgver-$_pkgver_sub/App/usr" "$pkgdir/usr"
-    cp -r "$srcdir/ugeeTablet-$pkgver-$_pkgver_sub/App/lib" "$pkgdir/lib"
-#    cp -r "$srcdir/ugeeTablet-$pkgver-$_pkgver_sub/App/lib" "$pkgdir/usr/lib"
+    cp -r "$srcdir/ugeeTablet-$pkgver-$_pkgver_sub/App/lib" "$pkgdir/usr/lib"
 #    cp -r "$srcdir/ugeeTablet-$pkgver-$_pkgver_sub/App/etc" "$pkgdir/etc"
 }
