@@ -4,7 +4,7 @@
 
 pkgname=bochs
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable x86 PC emulation software package, including GUI debugger"
 arch=('x86_64' 'pentium4' 'i686' 'i486')
 url="http://bochs.sourceforge.net/"
@@ -32,13 +32,11 @@ build() {
         --enable-cpu-level=6 \
         --enable-fpu \
         --enable-3dnow \
-        --enable-disasm \
         --enable-smp \
         --enable-x86-64 \
         --enable-avx \
 	--enable-evex \
         --enable-long-phy-address \
-        --enable-disasm \
         --enable-pcidev \
         --enable-usb \
         --enable-debugger
