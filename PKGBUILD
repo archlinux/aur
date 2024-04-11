@@ -3,7 +3,7 @@
 pkgname=vilearn-git
 _pkgname=vilearn
 pkgver=r10.00ee4a4
-pkgrel=2
+pkgrel=3
 pkgdesc="An interactive vi tutorial (git version)"
 arch=('any')
 url="https://git.sr.ht/~libele/vilearn"
@@ -26,7 +26,7 @@ pkgver() {
 package() {
   cd "$_pkgname"
 
-  bmake DESTDIR=${pkgdir} install
+  bmake DESTDIR=${pkgdir} BINDIR=/usr/bin MANDIR=/usr/share/man TUTORIALS=/usr/share/vilearn install
   install -Dm644 README.md "$pkgdir"/usr/share/vilearn/README
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/vilearn/LICENSE
 }
