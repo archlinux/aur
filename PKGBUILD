@@ -3,7 +3,7 @@
 
 # As of 1.0.32, the hash check is skipped.
 pkgname=labymod-appimage
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=2
 pkgdesc='LabyMod Launcher for launching LabyMod, which is a Minecraft client that adds bunch of useful features (This is an unofficial package)'
 url=https://www.labymod.net
