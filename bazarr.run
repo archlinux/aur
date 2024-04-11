@@ -1,4 +1,5 @@
 #!/bin/sh
-[ -r conf ] && . ./conf
+# groups snippet from https://docs.voidlinux.org/config/services/user-services.html
+groups="$(id -Gn bazarr | tr ' ' ':')"
 
-exec chpst -u bazarr:bazarr"$GRPS" python /usr/lib/bazarr/bazarr.py --no-update --config /var/lib/bazarr 2>&1
+exec chpst -u bazarr:$groups python /usr/lib/bazarr/bazarr.py --no-update --config /var/lib/bazarr 2>&1
