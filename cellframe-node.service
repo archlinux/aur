@@ -15,7 +15,6 @@ LogNamespace=cellframe
 StandardOutput=null
 StandardError=journal
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_IPC_LOCK CAP_KILL CAP_LEASE CAP_MKNOD CAP_NET_ADMIN CAP_NET_BROADCAST CAP_NET_RAW CAP_SYS_NICE CAP_SYS_RAWIO CAP_SYSLOG CAP_WAKE_ALARM CAP_SYS_RESOURCE CAP_DAC_READ_SEARCH
-OOMScoreAdjust=-900
 
 [Install]
 WantedBy=multi-user.target
