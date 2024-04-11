@@ -4,7 +4,7 @@
 pkgname='python-into-dbus'
 _srcname='into-dbus-python'
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Facilities for converting an object that inhabits core Python types, e.g., lists, ints, dicts, to an object that inhabits dbus-python types, e.g., dbus.Array, dbus.UInt32, dbus.Dictionary based on a specified dbus signature.'
 arch=('any')
 license=('Apache')
