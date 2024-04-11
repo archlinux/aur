@@ -4,6 +4,7 @@ pkgbase = owrx_connector-luarvique
 	pkgrel = 1
 	url = https://github.com/luarvique/owrx_connector
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
