@@ -1,7 +1,7 @@
 # Maintainer: Stefan Dimitrijevic <stefanstele95@hotmail.com>
 
 pkgname='linvam-git'
-pkgver=v0.6.2.r0.g08a80ff
+pkgver=v0.6.3.r0.gfbc492f
 pkgrel=1
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
@@ -14,6 +14,7 @@ makedepends=(
   'git'
 )
 depends=(
+  'xorg-xinput'
   'python'
   'python-pyqt6'
   'python-srt'
