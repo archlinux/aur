@@ -1,15 +1,15 @@
 pkgbase = r-celestial
 	pkgdesc = Collection of Common Astronomical Conversion Routines and Functions
 	pkgver = 1.4.6
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=celestial
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-nistunits
 	depends = r-pracma
 	depends = r-rann
 	source = https://cran.r-project.org/src/contrib/celestial_1.4.6.tar.gz
-	sha256sums = 9f647f41465ac65b254717698f1978871c378ad8e6ccaa693abf579437069abe
+	md5sums = aa1ad3e1f3252c636fc4904f22c83370
+	b2sums = fb0785a0bd01d4f1f3b65c59b33beb286443d72b4f8373f788abe123bb401dd23195f7007767eea3b7191ae61c43e1bdee9c4b913abacf3f290f16055d15fc50
 
 pkgname = r-celestial

@@ -3,27 +3,27 @@
 _pkgname=celestial
 _pkgver=1.4.6
 pkgname=r-${_pkgname,,}
-pkgver=1.4.6
-pkgrel=4
-pkgdesc='Collection of Common Astronomical Conversion Routines and Functions'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Collection of Common Astronomical Conversion Routines and Functions"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-nistunits
   r-pracma
   r-rann
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9f647f41465ac65b254717698f1978871c378ad8e6ccaa693abf579437069abe')
+md5sums=('aa1ad3e1f3252c636fc4904f22c83370')
+b2sums=('fb0785a0bd01d4f1f3b65c59b33beb286443d72b4f8373f788abe123bb401dd23195f7007767eea3b7191ae61c43e1bdee9c4b913abacf3f290f16055d15fc50')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
