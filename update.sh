@@ -19,5 +19,5 @@ fi
 makepkg --printsrcinfo > .SRCINFO
 
 # Commit changes
-#git add PKGBUILD .SRCINFO
-#git commit -m "feat: update to v${VERSION}"
+git add PKGBUILD .SRCINFO
+git commit -m "feat: update to v${VERSION}"
