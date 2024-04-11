@@ -1,13 +1,13 @@
 pkgbase = r-xlsxjars
 	pkgdesc = Package required POI jars for the xlsx package
 	pkgver = 0.6.1
-	pkgrel = 3
+	pkgrel = 8
 	url = https://cran.r-project.org/package=xlsxjars
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-rjava
 	source = https://cran.r-project.org/src/contrib/xlsxjars_0.6.1.tar.gz
-	sha256sums = 37c1517f95f8bca6e3514429394d2457b9e62383305eba288416fb53ab2e6ae6
+	md5sums = 5a1721d5733cb42f3a29e3f353e39166
+	b2sums = 3d3bb780c6078cfe6af6684fa56cdc2153700a6d53ce4ff6ffd8018a8b983eaab4bcafe8fc8d7e1cf7b9c51de7f8c51afce7f9f4bf64240e369aae8945713137
 
 pkgname = r-xlsxjars

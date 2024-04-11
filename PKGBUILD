@@ -3,25 +3,25 @@
 _pkgname=xlsxjars
 _pkgver=0.6.1
 pkgname=r-${_pkgname,,}
-pkgver=0.6.1
-pkgrel=3
-pkgdesc='Package required POI jars for the xlsx package'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=8
+pkgdesc="Package required POI jars for the xlsx package"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-rjava
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('37c1517f95f8bca6e3514429394d2457b9e62383305eba288416fb53ab2e6ae6')
+md5sums=('5a1721d5733cb42f3a29e3f353e39166')
+b2sums=('3d3bb780c6078cfe6af6684fa56cdc2153700a6d53ce4ff6ffd8018a8b983eaab4bcafe8fc8d7e1cf7b9c51de7f8c51afce7f9f4bf64240e369aae8945713137')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
