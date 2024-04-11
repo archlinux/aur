@@ -1,0 +1,13 @@
+pkgbase = goaiopmplus
+	pkgdesc = AIOPM but in Go
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = go
+	depends = git
+	depends = wget
+	source = https://github.com/VPeti1/CWAcces/raw/main/goaiopmplus.tar.gz
+	sha256sums = 29840c155058a4f5262af30cd1a71e4b9a9f4cb85a5567c13595790c4505759e
+
+pkgname = goaiopmplus
