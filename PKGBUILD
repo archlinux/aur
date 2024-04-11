@@ -1,6 +1,6 @@
 # Maintainer: Chair050 <tmiggia at proton dot me>
 pkgname=cook-framework
-pkgver=2.1.4
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='a wordlist generator, splitter, merger, finder, saver, creator'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 conflicts=('cook')
 source=("cook-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('5a3cd56c43710edbe269dcc007375c8b')
+md5sums=('708f08171f4a46c4ddf95ac5f4c6fc4d')
 
 build() {
 	cd "cook-${pkgver}/v2/cmd/cook/"
