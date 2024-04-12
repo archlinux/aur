@@ -1,7 +1,7 @@
 pkgbase = lib32-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
 	pkgver = 6.1.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = http://ffmpeg.org
 	arch = x86_64
@@ -72,19 +72,6 @@ pkgbase = lib32-ffmpeg
 	depends = lib32-zlib
 	optdepends = lib32-ladspa: LADSPA filters
 	optdepends = lib32-nvidia-utils: Nvidia NVDEC/NVENC support
-	options = debug
-	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=6f4048827982a8f48f71f551a6e1ed2362816eec
-	source = add-av_stream_get_first_dts-for-chromium.patch
-	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
-	b2sums = SKIP
-	b2sums = 555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de
-
-pkgname = lib32-ffmpeg
-	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
-	depends = lib32-libffmpeg
-
-pkgname = lib32-libffmpeg
-	pkgdesc = Complete solution to record, convert and stream audio and video - library (32 bit)
 	provides = libavcodec.so
 	provides = libavdevice.so
 	provides = libavfilter.so
@@ -93,4 +80,12 @@ pkgname = lib32-libffmpeg
 	provides = libpostproc.so
 	provides = libswresample.so
 	provides = libswscale.so
-	provides = lib32-ffmpeg
+	conflicts = lib32-libffmpeg
+	replaces = lib32-libffmpeg
+	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=6f4048827982a8f48f71f551a6e1ed2362816eec
+	source = add-av_stream_get_first_dts-for-chromium.patch
+	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
+	b2sums = SKIP
+	b2sums = 555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de
+
+pkgname = lib32-ffmpeg

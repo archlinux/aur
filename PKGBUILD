@@ -5,14 +5,16 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 _pkgbasename=ffmpeg
-pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
+pkgname=("lib32-$_pkgbasename")
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
 url="http://ffmpeg.org"
 license=('GPL-3.0-only')
+replaces=("lib32-lib$_pkgbasename")
+conflicts=("lib32-lib$_pkgbasename")
 depends=(
 #  "$_pkgbasename"
   "$_pkgbasename>=${epoch}:${pkgver}"
@@ -105,8 +107,18 @@ optdepends=(
 #  'onevpl-intel-gpu: Intel QuickSync support'
 #  'vapoursynth: VapourSynth support'
 )
+provides=(
+  'libavcodec.so'
+  'libavdevice.so'
+  'libavfilter.so'
+  'libavformat.so'
+  'libavutil.so'
+  'libpostproc.so'
+  'libswresample.so'
+  'libswscale.so'
+)
 options=(
-  debug
+#  debug
 )
 _tag=6f4048827982a8f48f71f551a6e1ed2362816eec
 source=(
@@ -145,6 +157,12 @@ prepare() {
 
   # Fix build with latest vulkan headers
   git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e
+
+  # avcodec/nvenc: stop using long deprecated format specifiers 
+  git cherry-pick -n 43b417d516b0fabbec1f02120d948f636b8a018e
+
+  # avcodec/nvenc: support SDK 12.2 bit depth API 
+  git cherry-pick -n 06c2a2c425f22e7dba5cad909737a631cc676e3f
 }
 
 pkgver() {
@@ -238,36 +256,8 @@ build() {
   make
 }
 
-package_lib32-libffmpeg() {
-  pkgdesc="Complete solution to record, convert and stream audio and video - library (32 bit)"
-  provides=(
-    'libavcodec.so'
-    'libavdevice.so'
-    'libavfilter.so'
-    'libavformat.so'
-    'libavutil.so'
-    'libpostproc.so'
-    'libswresample.so'
-    'libswscale.so'
-    'lib32-ffmpeg'
-  )
-
-  cd ${_pkgbasename}
-
-  make DESTDIR="${pkgdir}" install
-
-  rm -r "${pkgdir}"/usr/{include,bin,share}
-}
-
 package_lib32-ffmpeg() {
-  pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
-  depends=(
-    "lib32-libffmpeg"
-  )
-
-  cd ${_pkgbasename}
-
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" -C ffmpeg install
 
   # Keep files in bin since this is not a library only package. 
   # Use the same naming scheme as proposed in Arch's wiki:  https://wiki.archlinux.org/index.php/32-bit_package_guidelines
@@ -276,5 +266,5 @@ package_lib32-ffmpeg() {
     mv "$i" "$i"-32
   done
 
-  rm -r "${pkgdir}"/usr/{include,lib32,share}
+  rm -r "${pkgdir}"/usr/{include,share}
 }
