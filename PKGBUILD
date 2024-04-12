@@ -28,7 +28,7 @@ prepare() {
 build() {
   cd build
 
-  qmake ../${_pkgfqn}
+  qmake ../kde-$_pkgfqn
   make
 }
 
