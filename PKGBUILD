@@ -2,14 +2,14 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 _base=rasterio
 pkgname=python-${_base}
-pkgver=1.3.9
+pkgver=1.3.10
 pkgrel=1
 pkgdesc="Fast and direct raster I/O for use with Numpy and SciPy"
 url="https://github.com/${_base}/${_base}"
 license=(custom)
 arch=(x86_64)
-depends=(gdal python-affine python-attrs python-certifi python-cligj python-snuggs python-click-plugins python-setuptools)
-makedepends=(python-build python-installer cython python-wheel)
+depends=(gdal python-affine python-attrs python-certifi python-cligj python-snuggs python-click-plugins)
+makedepends=(python-build python-installer python-setuptools python-wheel cython)
 # checkdepends=(
 #   openexr
 #   cfitsio
@@ -35,7 +35,7 @@ optdepends=('ipython: for ipython support'
   'python-matplotlib: for plotting support'
   'python-swiftclient: for OpenStack support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('4e360446acdd8b243fa8acae38f9351c48fcb8ca99068fd547c92654a786dc3bd81f7e96147786686d95b786a366b3fdd4554f45ab23208a3a874c208f2a4e8f')
+sha512sums=('ff4ff5b1d67824669d4ec21e6fe1368ff05b00644c341392ee1807752536f4f77d3fbb13fd61aacd6943563ea24211fe9cad99609da20c58c42fa696df38f6eb')
 
 build() {
   cd ${_base}-${pkgver}
