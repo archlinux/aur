@@ -1,0 +1,5 @@
+[precice-config-visualizer-gui]
+source = "github"
+github = "precice/config-visualizer-gui"
+use_max_tag = "true"
+prefix = "v"
