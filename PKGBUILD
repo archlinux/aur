@@ -1,4 +1,4 @@
-# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 pkgname=gtksourceview3-fish-git
 pkgver=r1.86b94ce
 pkgrel=2
