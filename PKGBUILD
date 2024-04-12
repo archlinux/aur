@@ -3,7 +3,7 @@
 
 pkgname=geany-themes-git
 _gitname=geany-themes
-pkgver=1.24.57.gc174137
+pkgver=1.24.74.gb4b0ba9
 pkgrel=1
 pkgdesc='A collection of color schemes for geany.'
 arch=('any')
