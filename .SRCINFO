@@ -1,5 +1,5 @@
 pkgbase = rmt-bin
-	pkgdesc = Tracker for making Atari POKEY music.
+	pkgdesc = Raster Music Tracker for making Atari POKEY music.
 	pkgver = 1.34.00
 	pkgrel = 1
 	url =https://github.com/VinsCool/RASTER-Music-Tracker
