@@ -1,0 +1,17 @@
+pkgbase = bypass4netns
+	pkgdesc = Accelerates slirp4netns using SECCOMP_IOCTL_NOTIF_ADDFD. As fast as --net=host.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/rootless-containers/bypass4netns
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = slirp4netns
+	provides = bypass4netns=0.4.1
+	conflicts = bypass4netns
+	source = bypass4netns-0.4.1.tar.gz::https://github.com/rootless-containers/bypass4netns/archive/v0.4.1.tar.gz
+	validpgpkeys = 49524C6F9F638F1A
+	sha256sums = 60e8c4b0d4c67c374dc48273727ca3f6c0fe217b8abf1bbc5b426d529c568cb4
+
+pkgname = bypass4netns
