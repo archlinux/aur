@@ -1,6 +1,6 @@
 # Maintainer: Cosmin Gabriel Georgescu <cosmingg2013@gmail.com>
 pkgname="duckscript"
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Simple, extendable and embeddable scripting language."
 
@@ -10,14 +10,14 @@ arch=("x86_64")
 url="https://sagiegurari.github.io/duckscript/"
 
 # https://github.com/sagiegurari/duckscript/blob/master/LICENSE
-license=("Apache")
+license=("Apache-2.0")
 
 makedepends=("cargo")
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sagiegurari/duckscript/archive/$pkgver.tar.gz")
 
-sha512sums=('83507831fd694b3b57d14075387d1e6d28b688dd09c8a658825dfaa50f2a16f3bd4a9cf197115fa85332b5d0c484cf7abdcb0d74a86d331f6d90fd196d345ab0')
-b2sums=('ed5c004c55d7e367952206e04ae1019fcd750adf1a11c7f47d5f31320ff3d90b1c3a3180b05877014334ce88ae348c39b8021339de08e9020fbbc2b2ad3705ab')
+sha512sums=('d7c70194646083c4613ceff2c5b1a832c145e92829e2db479d9c3dc7d260e50fa270b9be6beefbb4233761fa63f203c5532ac2e7ff3e3d05258ac5a8269c3acc')
+b2sums=('bd6cf605d834da5a0a8c84b9d5ff9693e2a1f0bc770c80818ad6e1e0784ad26debc2f88c7264c52418e52ff08a3c974be23abcf8b02c9ebff6b000c922592741')
 
 
 prepare(){
