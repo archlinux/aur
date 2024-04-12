@@ -14,11 +14,6 @@ optdepends=('zenity: nice gui to select your songs folder')
 source=('git+https://github.com/shoplifterhd/obgk.git')
 md5sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
 	cd "$pkgname"
 	# idk a better way to ignore build()
