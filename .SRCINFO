@@ -1,0 +1,15 @@
+pkgbase = r-word2vec
+	pkgdesc = Distributed Representations of Words
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=word2vec
+	arch = x86_64
+	license = Apache
+	makedepends = r-rcppprogress
+	depends = r-rcpp
+	optdepends = r-udpipe
+	source = https://cran.r-project.org/src/contrib/word2vec_0.4.0.tar.gz
+	md5sums = 2fa2b87d0b3041086da4fd50135cbc4a
+	b2sums = 536a341372cda93dd75509ca1e8bd5a1de9654f489ad30ffab9890fc92f3798144e01c2825c9824d09f45eaba3716ca1807b31205c8376b57a0ee44951bdb8ad
+
+pkgname = r-word2vec
