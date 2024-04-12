@@ -14,7 +14,7 @@ sha256sums=('864a791d54cf68b4efb7e12ef0764c2af057909f01f23b647513e21ca30fadaa' '
 package() {
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/READMEN.md"
+	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 	install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 }
