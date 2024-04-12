@@ -1,6 +1,6 @@
 pkgbase = acast-bin
 	pkgdesc = A free and open source solution for recording terminal sessions and sharing them on the web.一个免费开源的终端会话录制和分享工具
-	pkgver = 0.3.9
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://asciinema.org/
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = acast-bin
 	provides = asciinema
 	conflicts = acast
 	conflicts = asciinema
-	source = LICENSE-0.3.9::https://raw.githubusercontent.com/gvcgo/asciinema/main/LICENSE
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/gvcgo/asciinema/v0.4.0/LICENSE
 	sha256sums = 7c7fdee1ffc06fe95ad9f1179188bab5c7a37f360b5876c8f13670d1ba3af22c
-	source_aarch64 = acast-0.3.9-aarch64.zip::https://github.com/gvcgo/asciinema/releases/download/v0.3.9/acast_linux-arm64.zip
-	sha256sums_aarch64 = 7f0ff216b737901f28d0f909c7f8e0d9576d633a66bfbe97ae37e57551979dde
-	source_x86_64 = acast-0.3.9-x86_64.zip::https://github.com/gvcgo/asciinema/releases/download/v0.3.9/acast_linux-amd64.zip
-	sha256sums_x86_64 = 70136c9e10b7dcf53ef9dcbb28dc4dc22f494f175f06b988c367849ad892dfcb
+	source_aarch64 = acast-0.4.0-aarch64.zip::https://github.com/gvcgo/asciinema/releases/download/v0.4.0/acast_linux-arm64.zip
+	sha256sums_aarch64 = 6653dd5dc8a32ce1221b3216e743b34bda74cfb4de543c47086d559a3b31b76e
+	source_x86_64 = acast-0.4.0-x86_64.zip::https://github.com/gvcgo/asciinema/releases/download/v0.4.0/acast_linux-amd64.zip
+	sha256sums_x86_64 = 8956ae3141a8916c035099b9c096ab68643d2f8e50e2c18af4b2645171cc8c45
 
 pkgname = acast-bin
