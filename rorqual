@@ -1,0 +1,3 @@
+#!/bin/sh
+source /opt/rorqual/virtualenv/bin/activate
+python -m rorqual
