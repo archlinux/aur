@@ -1,0 +1,5 @@
+[python-deepecho]
+source = "github"
+github = "sdv-dev/DeepEcho"
+use_latest_release = "true"
+prefix = "v"
