@@ -1,6 +1,6 @@
 pkgbase = openfpgaloader-bin
 	pkgdesc = Universal utility for programming FPGA
-	pkgver = 0.11.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/trabucayre/openFPGALoader
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = openfpgaloader-bin
 	depends = libudev.so
 	provides = openfpgaloader
 	conflicts = openfpgaloader
-	source = openfpgaloader-bin-0.11.0.tar.gz::https://github.com/trabucayre/openFPGALoader/releases/download/v0.11.0/ubtuntu22.04-openFPGALoader.tgz
-	sha256sums = e4fbb077d61185c6b06f90c988a6f426eccf4308d8e96dce5d96821f95eabefc
+	source = openfpgaloader-bin-0.12.1.tar.gz::https://github.com/trabucayre/openFPGALoader/releases/download/v0.12.1/ubtuntu22.04-openFPGALoader.tgz
+	sha256sums = 82c8d594c66bc4df4288d6081362c50605f3e7329da83f6f5ad7087088c38a4b
 
 pkgname = openfpgaloader-bin

@@ -1,7 +1,7 @@
 # Maintainer: glatavento <glatavento at outlook dot com>
 
 pkgname=openfpgaloader-bin
-pkgver=0.11.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Universal utility for programming FPGA"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libftdi' 'hidapi' 'libudev.so')
 provides=('openfpgaloader')
 conflicts=('openfpgaloader')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/trabucayre/openFPGALoader/releases/download/v${pkgver}/ubtuntu22.04-openFPGALoader.tgz")
-sha256sums=('e4fbb077d61185c6b06f90c988a6f426eccf4308d8e96dce5d96821f95eabefc')
+sha256sums=('82c8d594c66bc4df4288d6081362c50605f3e7329da83f6f5ad7087088c38a4b')
 
 prepare() {
   sed -i 's|MODE="664", GROUP="plugdev"|MODE="666"|g' "${srcdir}/etc/udev/rules.d/99-openfpgaloader.rules"
