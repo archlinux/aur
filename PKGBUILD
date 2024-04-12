@@ -1,5 +1,7 @@
 # Maintainer: Cross Nastasi <cross@dill.moe>
 
+# Note: If you have nothing better to do than play pretend package police because this doesn't meet your personal requirements, seethe away. Actual inquiries welcome.
+
 pkgname=yaycleaner
 pkgver=1.0
 pkgrel=1
