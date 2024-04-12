@@ -3,20 +3,25 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=xdg-desktop-portal
-pkgver=1.18.2
+pkgver=1.18.3
 pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://flatpak.github.io/xdg-desktop-portal/"
 arch=(x86_64)
-license=(LGPL)
+license=(LGPL-2.1-or-later)
 depends=(
   fuse3
+  gcc-libs
   gdk-pixbuf2
   geoclue
   glib2
+  glibc
+  json-glib
+  libpipewire
   pipewire
   rtkit
   systemd
+  systemd-libs
 )
 makedepends=(
   docbook-xsl
@@ -32,14 +37,8 @@ makedepends=(
   xmlto
 )
 optdepends=('xdg-desktop-portal-impl: Portal backends')
-_commit=fa8d41a2f9a5d30a1e41568b6fb53b046dce14dc  # tags/1.18.2
-source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
+source=("git+https://github.com/flatpak/xdg-desktop-portal#tag=$pkgver")
+b2sums=('a364e84b05f70c165a87d43c964438df4c70395c6d0364e5aaae2fed7b29a1cfd180b2d7339a20ad1220fc6bd9792bd347ff270f1c0f055caabda79be31dad7f')
 
 prepare() {
   cd $pkgname

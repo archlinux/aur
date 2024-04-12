@@ -1,10 +1,10 @@
 pkgbase = xdg-desktop-portal
 	pkgdesc = Desktop integration portals for sandboxed apps
-	pkgver = 1.18.2
+	pkgver = 1.18.3
 	pkgrel = 1
 	url = https://flatpak.github.io/xdg-desktop-portal/
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = docbook-xsl
 	makedepends = flatpak
 	makedepends = git
@@ -17,14 +17,19 @@ pkgbase = xdg-desktop-portal
 	makedepends = python-pytest
 	makedepends = xmlto
 	depends = fuse3
+	depends = gcc-libs
 	depends = gdk-pixbuf2
 	depends = geoclue
 	depends = glib2
+	depends = glibc
+	depends = json-glib
+	depends = libpipewire
 	depends = pipewire
 	depends = rtkit
 	depends = systemd
+	depends = systemd-libs
 	optdepends = xdg-desktop-portal-impl: Portal backends
-	source = git+https://github.com/flatpak/xdg-desktop-portal#commit=fa8d41a2f9a5d30a1e41568b6fb53b046dce14dc
-	b2sums = SKIP
+	source = git+https://github.com/flatpak/xdg-desktop-portal#tag=1.18.3
+	b2sums = a364e84b05f70c165a87d43c964438df4c70395c6d0364e5aaae2fed7b29a1cfd180b2d7339a20ad1220fc6bd9792bd347ff270f1c0f055caabda79be31dad7f
 
 pkgname = xdg-desktop-portal
