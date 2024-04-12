@@ -17,8 +17,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  version=$(grep -oP "version='\K[0-9]+\.[0-9]+\.[0-9]+(?=')" setup.py)  
-  printf "%s.%s" $version "$(git rev-parse --short HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+  version=$(grep -oP "version='\K[0-9]+\.[0-9]+\.[0-9]+(?=')" setup.py)
+  commit=$(git rev-parse --short HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+  printf "%s.%s" $version "$commit"
 }
 
 build() {
