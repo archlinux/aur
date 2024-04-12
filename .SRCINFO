@@ -1,0 +1,22 @@
+pkgbase = river-bedload-git
+	pkgdesc = Display information about river in json in the STDOUT.
+	pkgver = r9.9cdc0e0
+	pkgrel = 1
+	url = https://git.sr.ht/~novakane/river-bedload
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = zig
+	depends = glibc
+	depends = wayland
+	provides = river-bedload
+	conflicts = river-bedload
+	options = !strip
+	source = river-bedload-git::git+https://git.sr.ht/~novakane/river-bedload
+	sha256sums = SKIP
+
+pkgname = river-bedload-git
