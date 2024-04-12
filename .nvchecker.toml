@@ -1,0 +1,5 @@
+[python-fenicsprecice]
+source = "github"
+github = "precice/fenics-adapter"
+use_latest_release = "true"
+prefix = "v"
