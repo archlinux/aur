@@ -2,11 +2,11 @@
 
 pkgname=dae
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/${pkgname}"
-license=('AGPL')
+license=('AGPL-3.0-or-later')
 depends=(
 	'glibc'
 	'v2ray-geoip'
@@ -15,6 +15,7 @@ depends=(
 makedepends=('clang' 'go')
 backup=("etc/${pkgname}/config.${pkgname}")
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname}-full-src.zip")
+install="${pkgname}.install"
 sha256sums=('aad00888f7f3e8fae916297fede68d067894b5534148d261122bde2e7bba0b98')
 
 build() {
