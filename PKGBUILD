@@ -1,11 +1,11 @@
-# Maintainer: user <matmoul at the google email domain which is .com>
+# Maintainer: MatMoul <matmoul at the google email domain which is .com>
 
 _githubuser=gwenhael-le-moine
 _githubrepo=x48ng
-_pkgtagname=0.36.90
+_pkgtagname=0.37.0
 
 pkgname=x48ng
-pkgver=0.36.90
+pkgver=0.37.0
 pkgrel=1
 pkgdesc='A reboot of the x48 HP 48 emulator'
 arch=('any')
@@ -16,12 +16,12 @@ makedepends=('lua')
 install="${pkgname}.install"
 source=("${_githubrepo}-${pkgver}.tar.gz::https://github.com/${_githubuser}/${_githubrepo}/archive/refs/tags/${_pkgtagname}.tar.gz"
         'ui_text.c_1.patch')
-sha256sums=('8a12f5755d55b06637441887f4959fcc82aff7d97a27557baac2e42598a351e0'
+sha256sums=('b5d06fe04ff50c48f1316fca5dddbba54bf5b4595777c89330fe9b12021497c9'
             '94550704486e179bf0e1495b5fb6fc55c9663fe61d6e44dd45cff8bfe840f301')
 
 build() {
 	cd "${_githubrepo}-${pkgver}"
-        patch --forward --strip=1 --input="${srcdir}/ui_text.c_1.patch"
+	patch --forward --strip=1 --input="${srcdir}/ui_text.c_1.patch"
 	make GUI=x11
 }
 
