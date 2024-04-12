@@ -7,7 +7,7 @@
 
 pkgname=python-pex
 _pkgname=pex
-pkgver=2.3.0
+pkgver=2.3.1
 _srcdir="$_pkgname-$pkgver"
 pkgrel=1
 arch=('any')
@@ -21,7 +21,7 @@ changelog=CHANGES.md
 provides=('pex')
 replaces=('pex')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/pex-tool/pex/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('44e8a6b2c989dd6e75be9c6667f25be9664603b18733e69a3209e8defa01d13a')
+sha256sums=('f23495207a439cfd2e2ecd03fa1051855ad776ee2e553911acf04b0064d21276')
 
 build() {
 	cd "$_srcdir"
