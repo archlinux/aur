@@ -1,6 +1,6 @@
 pkgbase = socalabs-wavetable
 	pkgver = 1.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://socalabs.com/synths/wavetable/
 	arch = x86_64
 	groups = pro-audio
@@ -13,7 +13,7 @@ pkgbase = socalabs-wavetable
 	source = socalabs-wavetable-1.0.21.zip::https://socalabs.com/files/get.php?id=Wavetable_Linux.zip
 	source = LICENSE-socalabs-wavetable::https://github.com/FigBug/Wavetable/blob/1.0.21/LICENSE
 	sha256sums = 3f3f08f67b562926c6cb4b3d7029233cecd50d28213c68251f26bb10223229fd
-	sha256sums = fa83c63301a1d02cbde2c7b7ffbe36d6a5be78e3d1123c7c1faf0d652b8eb401
+	sha256sums = 9535cf936c4f4ab2c282097de7dc7289cac5126a6b59c1265f543965254cbec9
 
 pkgname = socalabs-wavetable-lv2-bin
 	pkgdesc = Socalabs Retro Wavetable Synth (LV2)
