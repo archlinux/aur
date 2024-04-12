@@ -1,8 +1,8 @@
 # Maintainer: 'Radiolin' <anton.osi2011@gmail.com>
 gitname=cassette
 pkgname=("${gitname}")
-pkgver=0.1
-pkgrel=4
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="GTK4/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux."
 arch=('x86_64')
 url="https://github.com/rirusha/${gitname}"
