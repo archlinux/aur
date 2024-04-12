@@ -1,14 +1,14 @@
 pkgbase = r-dta
 	pkgdesc = Dynamic Transcriptome Analysis
 	pkgver = 2.48.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/DTA
 	arch = any
-	license = Artistic2.0
-	depends = r
+	license = Artistic-2.0
 	depends = r-lsd
 	depends = r-scatterplot3d
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/DTA_2.48.0.tar.gz
-	sha256sums = 92879b39f654b9e4b7d09bd35b377765220b393d66c6422f29b7b2042ad8aafa
+	md5sums = 58705aacdbf08c61d4713273dbd9bc6f
+	b2sums = 67990ece33a8298b869231c92477c730f629988c7ebaf6d3f690bcc6e6fb1900d6c123dc36637a04490549b6e403b5b63405dcc433424209521c4b0592f1cd0a
 
 pkgname = r-dta
