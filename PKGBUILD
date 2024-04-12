@@ -1,16 +1,17 @@
 # Maintainer: Tor Vic <torvic9 AT mailbox DOT org>
 
 pkgname='mini-benchmarker'
-_ver=2.0
-pkgver=2.0.r9.g8f7b6d5
+_ver=2.1
+pkgver=2.1.r18.gd317a01
 pkgrel=1
 pkgdesc='A simple benchmarking script using stress-ng, perf, blender etc.'
 url="https://gitlab.com/torvic9/mini-benchmarker"
 arch=('x86_64')
 licence=('GPL3')
 depends=('gcc' 'make' 'cmake' 'time' 'perf' 'unzip'
-	 'nasm' 'inxi' 'argon2' 'wget' 'x265' 'xz' 'zstd'
+	 'nasm' 'inxi' 'argon2' 'wget' 'x265' 'xz' 'blender'
 	 'zlib' 'libdrm' 'git' 'python' 'primesieve' 'p7zip')
+optdepends=('stress-ng')
 source=(git+https://gitlab.com/torvic9/mini-benchmarker.git)
 sha512sums=('SKIP')
 
