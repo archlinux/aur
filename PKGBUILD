@@ -27,13 +27,13 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-  patch -d $_pkgfqn -p1 < qt5-quick3d-assimp-5.1.patch # Fix build with assimp 5.1
+  patch -d kde-$_pkgfqn -p1 < qt5-quick3d-assimp-5.1.patch # Fix build with assimp 5.1
 }
 
 build() {
   cd build
 
-  qmake ../${_pkgfqn}
+  qmake ../kde-$_pkgfqn
   make
 }
 
