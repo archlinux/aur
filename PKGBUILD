@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=command-circle-git
 _pkgname=CommandCircle
-pkgver=0.0.12.r6.gcd1848c
+pkgver=0.0.15.r0.g94e7aeb
 _electronversion=28
 pkgrel=1
 pkgdesc="Circle UI Desktop Application Launcher"
 arch=('any')
-url="https://github.com/nekobato/CommandCircle"
+url="https://github.com/nekobato/RoundDrop"
 license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
@@ -17,9 +17,9 @@ depends=(
 makedepends=(
     'gendesk'
     'git'
-    'nodejs'
+    'nodejs>=20'
     'npm'
-    'pnpm'
+    'pnpm>=8'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
@@ -35,7 +35,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
@@ -50,23 +50,23 @@ build() {
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
-    sed "s|--publish always|--dir|g" -i package.json
-    sed "s|release/\${version}|release|g" -i electron-builder.json5
+    sed "s|electron-builder --config|electron-builder -l --dir --config|g" -i package.json
+    sed "s|\/\${pkg.version}||g;/teamId/d" -i electron-builder.config.cjs
     pnpm install
-    pnpm run release
+    pnpm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -r "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024; do
-        install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/icons/png/${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname%-git}.git/public/icons/png/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
