@@ -3,26 +3,26 @@
 _pkgname=conicfit
 _pkgver=1.0.4
 pkgname=r-${_pkgname,,}
-pkgver=1.0.4
-pkgrel=4
-pkgdesc='Algorithms for Fitting Circles, Ellipses and Conics Based on the Work by Prof. Nikolai Chernov'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Algorithms for Fitting Circles, Ellipses and Conics Based on the Work by Prof. Nikolai Chernov"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
-  r
   r-geigen
   r-pracma
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ed24be4c32908e77319c64e6dab14718845e107a18566dbbe3ab621f5f27e0b4')
+md5sums=('7d0be38f6477670c1259136a8587f085')
+b2sums=('ef4a50290604db9cc32dcc2c85469748fc29e81987a85a030372c3e56df43812d59072178a7bdc24b5f3721713c7711112e6e14e0ee3a9ea1247f9b882961cf8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
