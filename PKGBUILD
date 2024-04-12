@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: wolftankk <wolftankk@gmail.com>
 pkgname=php-protobuf
-pkgver=4.26.0
+pkgver=4.26.1
 pkgrel=1
 pkgdesc="Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data."
 url="https://pecl.php.net/package/protobuf"
@@ -17,7 +17,7 @@ source=(
 	"http://pecl.php.net/get/protobuf-${pkgver}.tgz"
 )
 
-sha256sums=('40940c89668dc8a67a9f3a65b9f8b6a6da4fb68c78d39fde8e6de5eb1da2eb46')
+sha256sums=('bedfe568455857a3078e8bcc607b11d48fe9e4c44c2976fea75bdcbea0b10c97')
 
 build() {
   cd "$srcdir/protobuf-$pkgver/"
