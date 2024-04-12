@@ -1,13 +1,13 @@
 pkgbase = libcdk-co
 	pkgdesc = Compiler Development Kit, used for the CO course of IST university
-	pkgver = 18_202304130001
+	pkgver = 19_202403010000
 	pkgrel = 1
 	url = https://web.tecnico.ulisboa.pt/~david.matos/w/pt/index.php/Compiladores
 	arch = x86_64
 	groups = ist-co
 	license = GPL3
 	depends = python>=3
-	source = libcdk-co-18_202304130001.tar.gz::https://web.tecnico.ulisboa.pt/~david.matos/w/pt/images/a/a5/Libcdk18-202304130001.tar.bz2
-	sha256sums = e79620c78162e53db4382d0d83adbd12952931b3f638eeef91575376a8a77b6e
+	source = libcdk-co-19_202403010000.tar.gz::https://web.tecnico.ulisboa.pt/~david.matos/w/pt/images/c/c3/Libcdk19-202403010000.tar.bz2
+	sha256sums = e090f9dd958c4db4dd5afd93c174180488203a35acf43580323a987d6bdb7fe7
 
 pkgname = libcdk-co
