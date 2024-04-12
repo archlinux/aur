@@ -4,7 +4,7 @@
 _pkgname=hawkauthlib
 pkgname=python-hawkauthlib
 pkgver=2.0.0
-pkgrel=11
+pkgrel=12
 pkgdesc='Low-level python library for implementing MAC Access Authentication'
 arch=('any')
 url='https://github.com/mozilla-services/hawkauthlib'
@@ -14,6 +14,11 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-requests')
 source=("https://github.com/mozilla-services/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('5ad32548bffdf328284c4fb56770ed7a1a39309aa8639be95759df05aec7e6d1')
+
+prepare() {
+  cd $_pkgname-$pkgver
+  find -type f -exec sed -e 's|assertEquals|assertEqual|g' -i {} \; # Fix tests with python 3.12
+}
 
 build() {
   cd $_pkgname-$pkgver
