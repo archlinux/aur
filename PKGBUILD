@@ -10,6 +10,7 @@ provides=("${_pkgname}")
 arch=("x86_64")
 url="https://bellard.org/${_pkgname}"
 license=("MIT")
+depends=("ffmpeg")
 optdepends=("cuda: for --cuda options support")
 source=("${_pkgname}-${_pkgver}.tar.gz::${url}/${_pkgname}-${_pkgver}.tar.gz"
         "${_pkgname}")
