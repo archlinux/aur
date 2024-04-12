@@ -28,6 +28,6 @@ build() {
 }
 
 package() {  
-  install -Dm755 "${srcdir}/$pkgname/jj" "$pkgdir/usr/bin/jj"
-  install -Dm644 "${srcdir}/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$srcdir/$pkgname/jj" "$pkgdir/usr/bin/jj"
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
