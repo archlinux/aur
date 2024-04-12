@@ -1,0 +1,18 @@
+pkgbase = python-abydos
+	pkgdesc = NLP/IR library for Python
+	pkgver = 0.5.0
+	pkgrel = 6
+	url = https://github.com/chrislit/abydos
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	checkdepends = python-deprecation
+	checkdepends = python-nltk
+	makedepends = python-setuptools
+	depends = python-numpy
+	source = https://github.com/chrislit/abydos/archive/v0.5.0/abydos-0.5.0.tar.gz
+	source = python310.patch
+	sha256sums = 0d46be1a40cfcdcd9ff9d052828c6ea57f5e1e2378373761c963c4a0cfcc5512
+	sha256sums = 33d7c2d13f7e87c33c6f92caf934b6eb10b9503b1334068aee7b4de6bc2660e3
+
+pkgname = python-abydos
