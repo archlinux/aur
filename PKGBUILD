@@ -1,21 +1,21 @@
-# Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=sts
-pkgver=3.2.6
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="Improved version of the NIST Statistical Test Suite (STS)"
-url="https://github.com/arcetri/sts"
-arch=('x86_64')
+url=https://github.com/arcetri/sts
+arch=(x86_64)
 license=('custom:public-domain')
-depends=('fftw')
-source=("https://github.com/arcetri/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-b2sums=("050904c4ece877441cab089e24a6392dedf42d8d00360dc7cb5777b5eb2e6edaaaa586153b7a80d1c8e6c706037e7234114db017da9d93916d2d5539dedcae7c")
+depends=(fftw)
+source=(https://github.com/arcetri/$pkgname/archive/refs/tags/$pkgver.tar.gz)
+b2sums=(bfe676ba5cf83c64ed7ccb8de40540a94f41882ef3d77f57edc82129fc62bbe1de6c9ac429dc9c9aa144eddcb100af47e5e5b8102825cf86a3f084d24a7051b4)
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd $pkgname-$pkgver
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    make DESTBINDIR="${pkgdir}/usr/bin" install
+    cd $pkgname-$pkgver
+    make DESTBINDIR="${pkgdir}"/usr/bin install
 }
