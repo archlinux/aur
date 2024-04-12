@@ -1,36 +1,37 @@
-# Maintainer: Jesper Jensen <delusionallogic at gmail dot com> 
+# Maintainer: a821 at mail de
+# Contributor: Sergej Pupykin <pupykin.s+arch at gmail dot com>
+# Contributor: Roman Kyrylych <Roman.Kyrylych at mail dot com>
+# Contributor: Jesper Jensen <delusionallogic at gmail dot com>
 
 _pkgname=iniparser
-pkgname=${_pkgname}-git
-pkgver=77
+pkgname=iniparser-git
+pkgver=4.1.r80.rgf00e027
 pkgrel=1
+epoch=1
 pkgdesc='A free stand-alone ini file parsing library written in portable ANSI C'
-arch=('i686' 'x86_64' 'armv7h')
-url="https://github.com/ndevilla/${_pkgname}"
+arch=('x86_64')
+url="https://github.com/ndevilla/iniparser"
 license=('MIT')
 depends=('glibc')
-makedepends=('git')
-optdepends=()
-provides=("${_pkgname}")
+makedepends=('git' 'chrpath')
+provides=("${_pkgname}" 'libiniparser.so')
 conflicts=("${_pkgname}")
-source=("git://github.com/ndevilla/${_pkgname}.git")
-md5sums=('SKIP')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	git rev-list --count HEAD
+  git -C $_pkgname describe --tags | sed 's/^v//;s/-/.r/g;s/-/.g/'
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-	make PREFIX=/usr
+  make -C $_pkgname
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	install -D -m755 libiniparser.so.1 "${pkgdir}/usr/lib/libiniparser.so.1"
-	ln -s "libiniparser.so.1" "${pkgdir}/usr/lib/libiniparser.so"
-	install -D -m744 src/iniparser.h "${pkgdir}/usr/include/iniparser.h"
-	install -D -m744 src/dictionary.h "${pkgdir}/usr/include/dictionary.h"
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$_pkgname"
+  install -Dm644 src/{iniparser.h,dictionary.h} -t  "${pkgdir}/usr/include/"
+  install -Dm755 libiniparser.so.1 -t "${pkgdir}/usr/lib"
+  ln -sf "libiniparser.so.1" "${pkgdir}/usr/lib/libiniparser.so"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  chrpath -d "${pkgdir}"/usr/lib/libiniparser.so
 }
