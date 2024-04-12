@@ -1,5 +1,5 @@
 pkgname=glfwm
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="GLFW Manager - C++ wrapper with multi-threading"
 arch=('i686' 'x86_64')
@@ -20,4 +20,4 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 }
-sha256sums=('dc5de5e9239de1bc4ecc0ebf3a4e0e45aaca1b5b26c7a93ae8b951971ca43c87')
+sha256sums=('43e20f3fca07e40eb119fb1c9030a0eba499d0aee6d446f8f9dbc33f40b602c9')
