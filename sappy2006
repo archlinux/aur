@@ -44,4 +44,5 @@ else
     echo ""
 fi
 
-wine $SAPPYDIR/sappy.exe "$(winepath -w "$1")"
+[[ "$1" == "" ]] && wine $SAPPYDIR/sappy.exe # no args
+[[ "$1" != "" ]] && wine $SAPPYDIR/sappy.exe "$(winepath -w "$1")" # args
