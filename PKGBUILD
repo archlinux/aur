@@ -1,8 +1,9 @@
 # Maintainer: Carlos Galindo <arch -at- cgj.es>
+# Maintainer: Darkfish Tech <arch at darkfish dot com dot au>
 
 pkgname=nextcloud-app-files_retention
 _appname=files_retention
-pkgver=1.17.1
+pkgver=1.17.2
 pkgrel=1
 pkgdesc="Nextcloud app to delete files after a specified amount of days"
 arch=('any')
@@ -11,7 +12,7 @@ license=('AGPL3')
 makedepends=('npm' 'yq' 'rsync')
 groups=('nextcloud-apps')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('11781faf1a6ee3ec94ac2718bebc80e3882ab462702b883ee406c59b4c78ff36255269507cca4414162036d25b6328658f61e30757191a03a938889aec489c07')
+sha512sums=('f3685f3eb9750fdf2aeb2d4dbbe50a2bfb6841f00a7cd50b09bc689260da9949cbb8cb33bf11c5a9cb54e42e87744b3a2bee33bca5822462bf8c8739c20a4ebe')
 
 prepare() {
     mv "${srcdir}/${_appname}-${pkgver}" "${srcdir}/${_appname}"
