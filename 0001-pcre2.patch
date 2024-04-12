@@ -1,0 +1,581 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: gagan sidhu <gagan@hotmail.com>
+Date: Sun, 21 May 2023 15:47:36 -0600
+Subject: [PATCH 1/3] add pcre2 support
+
+(cherry picked from commit d3e95c87b32397815f6d5bcfc844259f2552697a)
+
+ Conflicts:
+	agent/mibgroup/host/data_access/swrun.c
+	agent/mibgroup/if-mib/data_access/interface.c
+	agent/mibgroup/struct.h
+	agent/mibgroup/ucd-snmp/proc.c
+	configure.d/config_os_libs1
+	include/net-snmp/data_access/interface.h
+---
+ agent/mibgroup/host/data_access/swrun.c       | 18 ++++++--
+ agent/mibgroup/if-mib/data_access/interface.c | 44 ++++++++++++++++---
+ agent/mibgroup/struct.h                       |  2 +-
+ agent/mibgroup/ucd-snmp/proc.c                | 27 +++++++++---
+ agent/mibgroup/ucd-snmp/proc.h                |  2 +-
+ configure.d/config_os_libs1                   | 27 ++++++++++++
+ configure.d/config_project_with_enable        |  4 ++
+ include/net-snmp/data_access/interface.h      |  9 +++-
+ include/net-snmp/data_access/swrun.h          |  2 +-
+ include/net-snmp/types.h                      |  2 +-
+ 10 files changed, 116 insertions(+), 21 deletions(-)
+
+diff --git a/agent/mibgroup/host/data_access/swrun.c b/agent/mibgroup/host/data_access/swrun.c
+index f58143a0b7..f0442b4493 100644
+--- a/agent/mibgroup/host/data_access/swrun.c
++++ b/agent/mibgroup/host/data_access/swrun.c
+@@ -17,7 +17,10 @@
+ #include "swrun.h"
+ #include "swrun_private.h"
+ 
+-#ifdef HAVE_PCRE_H
++#if defined(HAVE_PCRE2_H)
++#define PCRE2_CODE_UNIT_WIDTH 8
++#include <pcre2.h>
++#elif defined(HAVE_PCRE_H)
+ #include <pcre.h>
+ #endif
+ 
+@@ -100,14 +103,21 @@ swrun_max_processes( void )
+ #endif /* NETSNMP_FEATURE_REMOVE_SWRUN_MAX_PROCESSES */
+ 
+ #ifndef NETSNMP_FEATURE_REMOVE_SWRUN_COUNT_PROCESSES_BY_REGEX
+-#ifdef HAVE_PCRE_H
++#if defined(HAVE_PCRE2_H) || defined(HAVE_PCRE_H)
+ int
+ swrun_count_processes_by_regex( char *name, netsnmp_regex_ptr regexp )
+ {
+     netsnmp_swrun_entry *entry;
+     netsnmp_iterator  *it;
+     int i = 0;
++#ifdef HAVE_PCRE2_H
++    pcre2_match_data *ndx_match;
++    int *found_ndx;
++    ndx_match = pcre2_match_data_create(30, NULL);
++    found_ndx = pcre2_get_ovector_pointer(ndx_match);
++#elif HAVE_PCRE_H
+     int found_ndx[30];
++#endif
+     int found;
+     char fullCommand[64 + 128 + 128 + 3];
+ 
+@@ -125,7 +135,9 @@ swrun_count_processes_by_regex( char *name, netsnmp_regex_ptr regexp )
+         }
+     }
+     ITERATOR_RELEASE( it );
+-
++#ifdef HAVE_PCRE2_H
++    pcre2_match_data_free(ndx_match);
++#endif
+     return i;
+ }
+ #endif /* HAVE_PCRE_H */
+diff --git a/agent/mibgroup/if-mib/data_access/interface.c b/agent/mibgroup/if-mib/data_access/interface.c
+index 3f1b392864..5d714e9895 100644
+--- a/agent/mibgroup/if-mib/data_access/interface.c
++++ b/agent/mibgroup/if-mib/data_access/interface.c
+@@ -16,7 +16,11 @@
+ #include "if-mib/ifTable/ifTable.h"
+ #include "if-mib/data_access/interface.h"
+ #include "interface_private.h"
+-#if defined(HAVE_PCRE_H)
++
++#if defined(HAVE_PCRE2_H)
++#define PCRE2_CODE_UNIT_WIDTH 8
++#include <pcre2.h>
++#elif defined(HAVE_PCRE_H)
+ #include <pcre.h>
+ #elif defined(HAVE_REGEX_H)
+ #include <sys/types.h>
+@@ -824,7 +828,13 @@ int netsnmp_access_interface_max_reached(const char *name)
+ int netsnmp_access_interface_include(const char *name)
+ {
+     netsnmp_include_if_list *if_ptr;
+-#ifdef HAVE_PCRE_H
++#if defined(HAVE_PCRE2_H) 
++    //pcre_exec->pcre2_match
++    //ovector->pcre2_match_data
++    pcre2_match_data *ndx_match;
++    ndx_match = pcre2_match_data_create(3, NULL);
++    int *found_ndx = pcre2_get_ovector_pointer(ndx_match);
++#elif defined(HAVE_PCRE_H)
+     int                      found_ndx[3];
+ #endif
+ 
+@@ -840,7 +850,13 @@ int netsnmp_access_interface_include(const char *name)
+ 
+ 
+     for (if_ptr = include_list; if_ptr; if_ptr = if_ptr->next) {
+-#if defined(HAVE_PCRE_H)
++#if defined(HAVE_PCRE2_H)
++        if (pcre2_match(if_ptr->regex_ptr, name, strlen(name), 0, 0, 
++                                ndx_match, NULL) >= 0)  {
++                pcre2_match_data_free(ndx_match);
++                return TRUE;
++        }
++#elif defined(HAVE_PCRE_H)
+         if (pcre_exec(if_ptr->regex_ptr, NULL, name, strlen(name), 0, 0,
+                       found_ndx, 3) >= 0)
+             return TRUE;
+@@ -964,7 +980,13 @@ _parse_include_if_config(const char *token, char *cptr)
+ {
+     netsnmp_include_if_list *if_ptr, *if_new;
+     char                    *name, *st;
+-#if defined(HAVE_PCRE_H)
++#if defined(HAVE_PCRE2_H)
++    //we can only get the message upon calling pcre2_error_message.
++    // so an additional variable is required.
++    int                     pcre2_err_code;
++    unsigned char           pcre2_error[128];
++    int                     pcre2_error_offset;
++#elif defined(HAVE_PCRE_H)
+     const char              *pcre_error;
+     int                     pcre_error_offset;
+ #elif defined(HAVE_REGEX_H)
+@@ -996,7 +1018,15 @@ _parse_include_if_config(const char *token, char *cptr)
+             config_perror("Out of memory");
+             goto err;
+         }
+-#if defined(HAVE_PCRE_H)
++#if defined(HAVE_PCRE2_H)
++        if_new->regex_ptr = pcre2_compile(if_new->name, PCRE2_ZERO_TERMINATED, 0,
++                         &pcre2_err_code, &pcre2_error_offset, NULL);
++        if (!if_new->regex_ptr) {
++            pcre2_get_error_message(pcre2_err_code, pcre2_error, 128);
++            config_perror(pcre2_error);
++            goto err;
++        }
++#elif defined(HAVE_PCRE_H)
+         if_new->regex_ptr = pcre_compile(if_new->name, 0,  &pcre_error,
+                                          &pcre_error_offset, NULL);
+         if (!if_new->regex_ptr) {
+@@ -1032,7 +1062,7 @@ _parse_include_if_config(const char *token, char *cptr)
+ 
+ err:
+     if (if_new) {
+-#if defined(HAVE_PCRE_H) || defined(HAVE_REGEX_H)
++#if defined(HAVE_PCRE2_H) || defined(HAVE_PCRE_H) || defined(HAVE_REGEX_H)
+         free(if_new->regex_ptr);
+ #endif
+         free(if_new->name);
+@@ -1047,7 +1077,7 @@ _free_include_if_config(void)
+ 
+     while (if_ptr) {
+         if_next = if_ptr->next;
+-#if defined(HAVE_PCRE_H)
++#if defined(HAVE_PCRE2_H) || defined(HAVE_PCRE_H)
+         free(if_ptr->regex_ptr);
+ #elif defined(HAVE_REGEX_H)
+         regfree(if_ptr->regex_ptr);
+diff --git a/agent/mibgroup/struct.h b/agent/mibgroup/struct.h
+index d6c69c0449..d6d85e4124 100644
+--- a/agent/mibgroup/struct.h
++++ b/agent/mibgroup/struct.h
+@@ -30,7 +30,7 @@ struct extensible {
+ 
+ struct myproc {
+     char            name[STRMAX];
+-#ifdef HAVE_PCRE_H
++#if defined(HAVE_PCRE2_H) || defined(HAVE_PCRE_H)
+     netsnmp_regex_ptr regexp;
+ #endif
+     char            fixcmd[STRMAX];
+diff --git a/agent/mibgroup/ucd-snmp/proc.c b/agent/mibgroup/ucd-snmp/proc.c
+index 01704e8f39..f819122bc2 100644
+--- a/agent/mibgroup/ucd-snmp/proc.c
++++ b/agent/mibgroup/ucd-snmp/proc.c
+@@ -39,7 +39,10 @@
+ #  include <time.h>
+ # endif
+ #endif
+-#ifdef HAVE_PCRE_H
++#ifdef HAVE_PCRE2_H
++#define PCRE2_CODE_UNIT_WIDTH 8
++#include <pcre2.h>
++#elif HAVE_PCRE_H
+ #include <pcre.h>
+ #endif
+ 
+@@ -134,7 +137,7 @@ proc_free_config(void)
+     for (ptmp = procwatch; ptmp != NULL;) {
+         ptmp2 = ptmp;
+         ptmp = ptmp->next;
+-#ifdef HAVE_PCRE_H
++#if defined(HAVE_PCRE2_H) || defined(HAVE_PCRE_H)
+         free(ptmp2->regexp.regex_ptr);
+ #endif
+         free(ptmp2);
+@@ -208,7 +211,7 @@ proc_parse_config(const char *token, char *cptr)
+     if (*procp == NULL)
+         return;                 /* memory alloc error */
+     numprocs++;
+-#ifdef HAVE_PCRE_H
++#if defined(HAVE_PCRE2_H) || defined(HAVE_PCRE_H)
+     (*procp)->regexp.regex_ptr = NULL;
+ #endif
+     /*
+@@ -220,9 +223,22 @@ proc_parse_config(const char *token, char *cptr)
+         cptr = skip_not_white(cptr);
+         if ((cptr = skip_white(cptr))) {
+             (*procp)->min = atoi(cptr);
+-#ifdef HAVE_PCRE_H
++#if defined(HAVE_PCRE2_H) || defined(HAVE_PCRE_H)
+             cptr = skip_not_white(cptr);
+             if ((cptr = skip_white(cptr))) {
++                DEBUGMSGTL(("ucd-snmp/regexp_proc", "Loading regex %s\n", cptr));
++#ifdef HAVE_PCRE2_H
++                unsigned char pcre2_error_msg[128];
++                int pcre2_err_code;
++                int pcre2_error_offset;
++
++                (*procp)->regexp.regex_ptr =
++                    pcre2_compile(cptr, PCRE2_ZERO_TERMINATED, 0, &pcre2_err_code, &pcre2_error_offset, NULL);
++                pcre2_get_error_message(pcre2_err_code, pcre2_error_msg, 128);
++                if ((*procp)->regexp.regex_ptr == NULL) {
++                    config_perror(pcre2_error_msg);
++                }
++#elif HAVE_PCRE_H
+                 const char *pcre_error;
+                 int pcre_error_offset;
+ 
+@@ -232,6 +248,7 @@ proc_parse_config(const char *token, char *cptr)
+                 if ((*procp)->regexp.regex_ptr == NULL) {
+                     config_perror(pcre_error);
+                 }
++#endif
+             }
+ #endif
+         } else
+@@ -406,7 +423,7 @@ sh_count_procs(char *procname)
+   return swrun_count_processes_by_name( procname );
+ }
+ 
+-#ifdef HAVE_PCRE_H
++#if defined(HAVE_PCRE2_H) || defined(HAVE_PCRE_H)
+ netsnmp_feature_require(swrun_count_processes_by_regex);
+ int
+ sh_count_procs_by_regex(char *procname, netsnmp_regex_ptr regexp)
+diff --git a/agent/mibgroup/ucd-snmp/proc.h b/agent/mibgroup/ucd-snmp/proc.h
+index dd95082339..001fcfa3be 100644
+--- a/agent/mibgroup/ucd-snmp/proc.h
++++ b/agent/mibgroup/ucd-snmp/proc.h
+@@ -12,7 +12,7 @@ config_require(util_funcs)
+      extern WriteMethod fixProcError;
+      int sh_count_myprocs(struct myproc *);
+      int             sh_count_procs(char *);
+-#ifdef HAVE_PCRE_H
++#if defined(HAVE_PCRE2_H) || defined(HAVE_PCRE_H)
+      int sh_count_procs_by_regex(char *, netsnmp_regex_ptr);
+ #endif
+ 
+diff --git a/configure.d/config_os_libs1 b/configure.d/config_os_libs1
+index 3ccd41c1a8..0bbbf38701 100644
+--- a/configure.d/config_os_libs1
++++ b/configure.d/config_os_libs1
+@@ -97,6 +97,32 @@ LIBS="$netsnmp_save_LIBS"
+ #
+ #   regex in process table
+ #
++if test "x$with_pcre2" != "xno"; then
++  AC_CHECK_HEADER([pcre2.h], [
++      AC_DEFINE([HAVE_PCRE2_H], [1], [Define to 1 if you have <pcre2.h>.])
++      pcre2_h=yes
++    ],
++    [pcre2_h=no], [#define PCRE2_CODE_UNIT_WIDTH 8]
++  )
++fi
++if test "x$pcre2header_h" = "xno" -o "x$pcre2_h" = "xno" ; then
++  if test "x$with_pcre2" = "xyes" ; then
++    AC_MSG_ERROR([Could not find the pcre2 header file needed and was specifically asked to use pcre2 support])
++  else
++    with_pcre2=no
++  fi
++fi
++
++if test "x$with_pcre2" != "xno"; then
++  NETSNMP_SEARCH_LIBS([pcre2_match_8], [pcre2-8], [
++    LMIBLIBS="$LMIBLIBS -lpcre2-8"
++    ],,, LAGENTLIBS)
++  AC_SUBST(LAGENTLIBS)
++  AC_SUBST(LMIBLIBS)
++fi
++
++if test "x$with_pcre2" != "xyes"; then
++
+ if test "x$with_pcre" != "xno"; then
+   AC_CHECK_HEADER([pcre.h], [
+       AC_DEFINE([HAVE_PCRE_H], [1], [Define to 1 if you have <pcre.h>.])
+@@ -123,3 +149,4 @@ if test "x$with_pcre" != "xno"; then
+   AC_SUBST(LAGENTLIBS)
+   AC_SUBST(LMIBLIBS)
+ fi
++fi
+diff --git a/configure.d/config_project_with_enable b/configure.d/config_project_with_enable
+index cdf56deb69..b6dabfbf8d 100644
+--- a/configure.d/config_project_with_enable
++++ b/configure.d/config_project_with_enable
+@@ -160,6 +160,10 @@ NETSNMP_ARG_WITH(rpm,
+                                   management system when building the host MIB
+                                   module.])
+ 
++NETSNMP_ARG_WITH(pcre2-8,
++[  --without-pcre2                  Don't include pcre2 process searching
++                                  support in the agent.],
++      with_pcre2="$withval", with_pcre2="maybe")
+ 
+ NETSNMP_ARG_WITH(pcre,
+ [  --without-pcre                  Don't include pcre process searching
+diff --git a/include/net-snmp/data_access/interface.h b/include/net-snmp/data_access/interface.h
+index 36c32475f5..2c7c880340 100644
+--- a/include/net-snmp/data_access/interface.h
++++ b/include/net-snmp/data_access/interface.h
+@@ -10,7 +10,10 @@
+ extern          "C" {
+ #endif
+ 
+-#if defined(HAVE_PCRE_H)
++#if defined(HAVE_PCRE2_H)
++#define PCRE2_CODE_UNIT_WIDTH 8
++#include <pcre2.h>
++#elif defined(HAVE_PCRE_H)
+ #include <pcre.h>
+ #elif defined(HAVE_REGEX_H)
+ #include <regex.h>
+@@ -211,7 +214,9 @@ typedef struct _conf_if_list {
+     typedef netsnmp_conf_if_list conf_if_list; /* backwards compat */
+ 
+ typedef struct _include_if_list {
+-#if defined(HAVE_PCRE_H)
++#if defined(HAVE_PCRE2_H)
++    pcre2_code              *regex_ptr;
++#elif defined(HAVE_PCRE_H)
+     pcre                    *regex_ptr;
+ #elif defined(HAVE_REGEX_H)
+     regex_t                 *regex_ptr;
+diff --git a/include/net-snmp/data_access/swrun.h b/include/net-snmp/data_access/swrun.h
+index 2b8636b7a8..578f1ed6d7 100644
+--- a/include/net-snmp/data_access/swrun.h
++++ b/include/net-snmp/data_access/swrun.h
+@@ -90,7 +90,7 @@ extern "C" {
+     int  swrun_count_processes_by_name( char *name );
+ 
+ #if !defined(NETSNMP_FEATURE_REMOVE_SWRUN_COUNT_PROCESSES_BY_REGEX) \
+-    && defined(HAVE_PCRE_H)
++    && (defined(HAVE_PCRE2_H) || defined(HAVE_PCRE_H))
+     int  swrun_count_processes_by_regex(char *name, netsnmp_regex_ptr regexp);
+ #endif
+ 
+diff --git a/include/net-snmp/types.h b/include/net-snmp/types.h
+index d489f37b16..eb1b8f1b28 100644
+--- a/include/net-snmp/types.h
++++ b/include/net-snmp/types.h
+@@ -63,7 +63,7 @@ typedef long ssize_t;
+ typedef unsigned long int nfds_t;
+ #endif
+ 
+-#ifdef HAVE_PCRE_H
++#if defined(HAVE_PCRE2_H) || defined(HAVE_PCRE_H)
+ /*
+  * Abstract the pcre typedef such that not all *.c files have to include
+  * <pcre.h>.
+-- 
+2.43.2
+
+
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Bart Van Assche <bvanassche@acm.org>
+Date: Sun, 21 May 2023 16:18:56 -0700
+Subject: [PATCH 2/3] Improve pcre2 support
+
+Fix compiler warnings. Convert C++ comments to C comments. Make sure that
+declarations occur before statements.
+
+(cherry picked from commit 346b6f8959513320e5b674fd670c49ba2cd43af5)
+
+ Conflicts:
+	agent/mibgroup/host/data_access/swrun.c
+---
+ agent/mibgroup/host/data_access/swrun.c       | 16 +++++++---
+ agent/mibgroup/if-mib/data_access/interface.c | 32 ++++++++++---------
+ agent/mibgroup/ucd-snmp/proc.c                | 12 ++++---
+ 3 files changed, 35 insertions(+), 25 deletions(-)
+
+diff --git a/agent/mibgroup/host/data_access/swrun.c b/agent/mibgroup/host/data_access/swrun.c
+index f0442b4493..6bfb267531 100644
+--- a/agent/mibgroup/host/data_access/swrun.c
++++ b/agent/mibgroup/host/data_access/swrun.c
+@@ -111,10 +111,7 @@ swrun_count_processes_by_regex( char *name, netsnmp_regex_ptr regexp )
+     netsnmp_iterator  *it;
+     int i = 0;
+ #ifdef HAVE_PCRE2_H
+-    pcre2_match_data *ndx_match;
+-    int *found_ndx;
+-    ndx_match = pcre2_match_data_create(30, NULL);
+-    found_ndx = pcre2_get_ovector_pointer(ndx_match);
++    pcre2_match_data *ndx_match = pcre2_match_data_create(30, NULL);
+ #elif HAVE_PCRE_H
+     int found_ndx[30];
+ #endif
+@@ -122,14 +119,23 @@ swrun_count_processes_by_regex( char *name, netsnmp_regex_ptr regexp )
+     char fullCommand[64 + 128 + 128 + 3];
+ 
+     netsnmp_cache_check_and_reload(swrun_cache);
+-    if ( !swrun_container || !name || !regexp.regex_ptr )
++    if ( !swrun_container || !name || !regexp.regex_ptr ) {
++#ifdef HAVE_PCRE2_H
++        pcre2_match_data_free(ndx_match);
++#endif
+         return 0;    /* or -1 */
++    }
+ 
+     it = CONTAINER_ITERATOR( swrun_container );
+     while ((entry = (netsnmp_swrun_entry*)ITERATOR_NEXT( it )) != NULL) {
+         /* need to assemble full command back so regexps can get full picture */
+         sprintf(fullCommand, "%s %s", entry->hrSWRunPath, entry->hrSWRunParameters);
++#ifdef HAVE_PCRE2_H
++        found = pcre2_match(regexp.regex_ptr, (unsigned char *)fullCommand,
++                            strlen(fullCommand), 0, 0, ndx_match, NULL);
++#elif  HAVE_PCRE_H
+         found = pcre_exec(regexp.regex_ptr, NULL, fullCommand, strlen(fullCommand), 0, 0, found_ndx, 30);
++#endif
+         if (found > 0) {
+             i++;
+         }
+diff --git a/agent/mibgroup/if-mib/data_access/interface.c b/agent/mibgroup/if-mib/data_access/interface.c
+index 5d714e9895..eda9a17070 100644
+--- a/agent/mibgroup/if-mib/data_access/interface.c
++++ b/agent/mibgroup/if-mib/data_access/interface.c
+@@ -828,12 +828,8 @@ int netsnmp_access_interface_max_reached(const char *name)
+ int netsnmp_access_interface_include(const char *name)
+ {
+     netsnmp_include_if_list *if_ptr;
+-#if defined(HAVE_PCRE2_H) 
+-    //pcre_exec->pcre2_match
+-    //ovector->pcre2_match_data
+-    pcre2_match_data *ndx_match;
+-    ndx_match = pcre2_match_data_create(3, NULL);
+-    int *found_ndx = pcre2_get_ovector_pointer(ndx_match);
++#if defined(HAVE_PCRE2_H)
++    pcre2_match_data *ndx_match = pcre2_match_data_create(3, NULL);
+ #elif defined(HAVE_PCRE_H)
+     int                      found_ndx[3];
+ #endif
+@@ -851,8 +847,8 @@ int netsnmp_access_interface_include(const char *name)
+ 
+     for (if_ptr = include_list; if_ptr; if_ptr = if_ptr->next) {
+ #if defined(HAVE_PCRE2_H)
+-        if (pcre2_match(if_ptr->regex_ptr, name, strlen(name), 0, 0, 
+-                                ndx_match, NULL) >= 0)  {
++        if (pcre2_match(if_ptr->regex_ptr, (const unsigned char *)name,
++                        strlen(name), 0, 0, ndx_match, NULL) >= 0)  {
+                 pcre2_match_data_free(ndx_match);
+                 return TRUE;
+         }
+@@ -981,11 +977,13 @@ _parse_include_if_config(const char *token, char *cptr)
+     netsnmp_include_if_list *if_ptr, *if_new;
+     char                    *name, *st;
+ #if defined(HAVE_PCRE2_H)
+-    //we can only get the message upon calling pcre2_error_message.
+-    // so an additional variable is required.
++    /*
++     * We can only get the message upon calling pcre2_error_message.
++     * so an additional variable is required.
++     */
+     int                     pcre2_err_code;
+-    unsigned char           pcre2_error[128];
+-    int                     pcre2_error_offset;
++    char                    pcre2_error[128];
++    size_t                  pcre2_error_offset;
+ #elif defined(HAVE_PCRE_H)
+     const char              *pcre_error;
+     int                     pcre_error_offset;
+@@ -1019,10 +1017,14 @@ _parse_include_if_config(const char *token, char *cptr)
+             goto err;
+         }
+ #if defined(HAVE_PCRE2_H)
+-        if_new->regex_ptr = pcre2_compile(if_new->name, PCRE2_ZERO_TERMINATED, 0,
+-                         &pcre2_err_code, &pcre2_error_offset, NULL);
++        if_new->regex_ptr = pcre2_compile((const unsigned char *)if_new->name,
++                                          PCRE2_ZERO_TERMINATED, 0,
++                                          &pcre2_err_code, &pcre2_error_offset,
++                                          NULL);
+         if (!if_new->regex_ptr) {
+-            pcre2_get_error_message(pcre2_err_code, pcre2_error, 128);
++            pcre2_get_error_message(pcre2_err_code,
++                                    (unsigned char *)pcre2_error,
++                                    sizeof(pcre2_error));
+             config_perror(pcre2_error);
+             goto err;
+         }
+diff --git a/agent/mibgroup/ucd-snmp/proc.c b/agent/mibgroup/ucd-snmp/proc.c
+index f819122bc2..d10e428ecd 100644
+--- a/agent/mibgroup/ucd-snmp/proc.c
++++ b/agent/mibgroup/ucd-snmp/proc.c
+@@ -226,15 +226,17 @@ proc_parse_config(const char *token, char *cptr)
+ #if defined(HAVE_PCRE2_H) || defined(HAVE_PCRE_H)
+             cptr = skip_not_white(cptr);
+             if ((cptr = skip_white(cptr))) {
+-                DEBUGMSGTL(("ucd-snmp/regexp_proc", "Loading regex %s\n", cptr));
+ #ifdef HAVE_PCRE2_H
+-                unsigned char pcre2_error_msg[128];
++                char pcre2_error_msg[128];
+                 int pcre2_err_code;
+-                int pcre2_error_offset;
++                size_t pcre2_error_offset;
+ 
++                DEBUGMSGTL(("ucd-snmp/regexp_proc", "Loading regex %s\n", cptr));
+                 (*procp)->regexp.regex_ptr =
+-                    pcre2_compile(cptr, PCRE2_ZERO_TERMINATED, 0, &pcre2_err_code, &pcre2_error_offset, NULL);
+-                pcre2_get_error_message(pcre2_err_code, pcre2_error_msg, 128);
++                    pcre2_compile((const unsigned char *)cptr, PCRE2_ZERO_TERMINATED, 0, &pcre2_err_code, &pcre2_error_offset, NULL);
++                pcre2_get_error_message(pcre2_err_code,
++                                        (unsigned char *)pcre2_error_msg,
++                                        sizeof(pcre2_error_msg));
+                 if ((*procp)->regexp.regex_ptr == NULL) {
+                     config_perror(pcre2_error_msg);
+                 }
+-- 
+2.43.2
+
+
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Niels Baggesen <nba@users.sourceforge.net>
+Date: Mon, 22 May 2023 18:44:36 +0200
+Subject: [PATCH 3/3] if-mib/data_access/interface.c: plug a leak with pcre2
+
+(cherry picked from commit e5aadf1e78c624a8e4147d4b70a7795497a50e73)
+---
+ agent/mibgroup/if-mib/data_access/interface.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/agent/mibgroup/if-mib/data_access/interface.c b/agent/mibgroup/if-mib/data_access/interface.c
+index eda9a17070..82a77ab37b 100644
+--- a/agent/mibgroup/if-mib/data_access/interface.c
++++ b/agent/mibgroup/if-mib/data_access/interface.c
+@@ -829,7 +829,7 @@ int netsnmp_access_interface_include(const char *name)
+ {
+     netsnmp_include_if_list *if_ptr;
+ #if defined(HAVE_PCRE2_H)
+-    pcre2_match_data *ndx_match = pcre2_match_data_create(3, NULL);
++    pcre2_match_data *ndx_match;
+ #elif defined(HAVE_PCRE_H)
+     int                      found_ndx[3];
+ #endif
+@@ -844,6 +844,9 @@ int netsnmp_access_interface_include(const char *name)
+          */
+         return TRUE;
+ 
++#if defined(HAVE_PCRE2_H)
++    ndx_match = pcre2_match_data_create(3, NULL);
++#endif
+ 
+     for (if_ptr = include_list; if_ptr; if_ptr = if_ptr->next) {
+ #if defined(HAVE_PCRE2_H)
+-- 
+2.43.2
+
