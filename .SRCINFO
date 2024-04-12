@@ -20,7 +20,7 @@ pkgbase = xv
 	depends = zlib
 	depends = glibc
 	options = !emptydirs
-	source = git+https://github.com/jasper-software/xv.git#commit=bc95540a69b845b8b33c31225e6092bd07c51d9d
+	source = git+https://github.com/jasper-software/xv.git#tag=v5.0.0
 	source = license.txt
 	sha1sums = 17ed1cb8ff3a8397005b350cc3efb5fa4602d39e
 	sha1sums = 4561344e8f2c30eee9c55b14a14f062d89d6e7b7
