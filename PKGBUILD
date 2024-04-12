@@ -4,12 +4,15 @@ _pkgver=v1.0.70
 _channel=stable
 pkgname=lazycat-cloud-client
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc='懒猫微服'
 url='https://lazycat.cloud'
 arch=('x86_64')
 license=('custom')
 depends=(
+  'nspr'
+  'nss'
+  'alsa-lib'
   'gtk3'
   'zenity'
   'rclone'
@@ -28,7 +31,7 @@ sha256sums=('f6a4b5e38ef9382b425b994f3e1717402a9782200014c18ec502fece179dd342'
 package() {
   install -d ${pkgdir}/opt/lzc-client-desktop/
 
-  tar xf lzc-client-desktop_${_pkgver}.tar.zst -C ${pkgdir}/opt/lzc-client-desktop
+  tar --no-same-owner -xf lzc-client-desktop_${_pkgver}.tar.zst -C ${pkgdir}/opt/lzc-client-desktop
 
   # fix desktop file
   install -Dm755 ${srcdir}/lzc-client-desktop ${pkgdir}/usr/bin/lzc-client-desktop
@@ -43,5 +46,5 @@ package() {
 
   # remove rclone
   rm ${pkgdir}/opt/lzc-client-desktop/rclone
-  ln -s /bin/rclone ${pkgdir}/opt/lzc-client-desktop/rclone
+  ln -s /usr/bin/rclone ${pkgdir}/opt/lzc-client-desktop/rclone
 }

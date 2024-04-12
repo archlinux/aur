@@ -1,13 +1,16 @@
 pkgbase = lazycat-cloud-client
 	pkgdesc = 懒猫微服
 	pkgver = v1.0.70
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lazycat.cloud
 	install = lazycat-cloud-client.install
 	arch = x86_64
 	license = custom
 	makedepends = tar
 	makedepends = zstd
+	depends = nspr
+	depends = nss
+	depends = alsa-lib
 	depends = gtk3
 	depends = zenity
 	depends = rclone
