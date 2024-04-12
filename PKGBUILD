@@ -9,9 +9,8 @@
 
 _proj=curl
 pkgname=curl-c-ares
-_tag='8cd1397d3c5c9b1526c8d74530266a7a9a22294b' # git rev-parse v${_tag_name}
-_tag_name='8_6_0'
-pkgver="${_tag_name//_/.}"
+pkgver=8.7.1
+_git_tag="curl-${pkgver//./_}"
 pkgrel=2
 pkgdesc='command line tool and library for transferring data with URLs (built with c-ares)'
 arch=('x86_64')
@@ -33,7 +32,7 @@ makedepends=('git')
 provides=('curl' 'libcurl.so')
 conflicts=('curl')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
-source=("git+https://github.com/curl/${_proj}.git#tag=${_tag}?signed")
+source=("git+https://github.com/curl/${_proj}.git#tag=${_git_tag}-?signed")
 sha512sums=('SKIP')
 
 prepare() {
@@ -42,7 +41,7 @@ prepare() {
   # no '-DEV' in version, release date from tagged commit...
   sed -i \
     -e "/\WLIBCURL_VERSION\W/c #define LIBCURL_VERSION \"${pkgver}\"" \
-    -e "/\WLIBCURL_TIMESTAMP\W/c #define LIBCURL_TIMESTAMP \"$(git log -1 --format=%cs "${_tag}")\"" \
+    -e "/\WLIBCURL_TIMESTAMP\W/c #define LIBCURL_TIMESTAMP \"$(git log -1 --format=%cs "$_git_tag")\"" \
     include/curl/curlver.h
 
   autoreconf -fi
