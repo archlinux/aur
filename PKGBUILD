@@ -2,16 +2,17 @@
 _base=precice-config-visualizer
 pkgname=${_base}
 pkgdesc="A tool for visualizing a preCICE configuration file as a dot file"
-pkgver=0.2.0
+pkgver=1.1.1
 pkgrel=1
 arch=(any)
 url="https://github.com/precice/${_base/precice-/}"
 license=(GPL-3.0-or-later)
-depends=(python-lxml python-pydot xdot)
+depends=(python-lxml python-pydot python-typing_extensions)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
+optdepends=('precice-config-visualizer-gui: for gui support')
 source=(${_base/precice-/}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1677c75902bebc6519f3e203ad53833552c38c66e9d67d910b395881ce93d0348a1d0e1a438d9e0d55d78a54b7a68472a12c0b8cea3ef0e114867d2368109e59')
+sha512sums=('0678edbfd5b558a1cccc58ea61853d7015a0bfafc07c87a02074e4182e14c0e9811202b9b31bd0a1acf2f9d23511c588485f9ae2c5f38ce6b21855d1c9fed19c')
 
 build() {
   cd ${_base/precice-/}-${pkgver}
