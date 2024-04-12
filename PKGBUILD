@@ -2,15 +2,15 @@
 _pkgbin=internxt-drive
 pkgname=internxt-drive-bin
 provides=('internxt-drive')
-pkgver=1.9.9
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Internxt Drive sync client GUI"
-package="Internxt-Drive-${pkgver}.appimage"
+package="Internxt-Drive-${pkgver}.AppImage"
 arch=('x86_64')
 url='https://internxt.com'
 license=('AGPL3')
-source=("${package}::https://github.com/internxt/drive-desktop/releases/download/v${pkgver}/${package}")
-sha256sums=('6e38531df60aa932b073f2c3030ee2450605bc6a1419a2826e30564768662b3b')
+source=("${package}::https://github.com/internxt/drive-desktop-linux/releases/download/v${pkgver}/${package}")
+sha256sums=('3cbe04e806f55d576830b12e7231257d8c122478d19f171fd7af72ecaa1974b3')
 
 build() {
 	# Extract files from AppImage
