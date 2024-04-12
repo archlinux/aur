@@ -68,11 +68,11 @@ build() {
 
   "${srcdir}/$_proj/configure" \
     "${_configure_options[@]}" \
+    --enable-versioned-symbols \
     --with-fish-functions-dir=/usr/share/fish/vendor_completions.d/ \
     --with-openssl \
     --with-openssl-quic \
-    --with-zsh-functions-dir=/usr/share/zsh/site-functions/ \
-    --enable-versioned-symbols
+    --with-zsh-functions-dir=/usr/share/zsh/site-functions/
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
