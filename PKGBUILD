@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aihub-bin
 _pkgname=AIHub
-pkgver=1.4.3
+pkgver=1.5.0
 _electronversion=29
 pkgrel=1
-pkgdesc="A collection of large model capabilities, AI capabilities Electron client, with a minimalist interface, will support more AI capabilities in the future.一款集合众多大模型能力、AI能力的Electron客户端，具有极简的界面，将在未来支持更多AI能力."
+pkgdesc="A collection of large model capabilities of the client.一款集合多家大模型能力的客户端."
 arch=('x86_64')
 url="https://github.com/classfang/AIHub"
 license=('Apache-2.0')
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4f6cc7150e5af7f31261845a9e685f106599bc10f1b27115ddf9db61c798a718'
+sha256sums=('1fc02967b6e05a33948513ce59bb8537b9fe7dd576615bb8404439749605c5a2'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
