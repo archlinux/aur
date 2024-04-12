@@ -3,7 +3,7 @@
 
 pkgname=libcoverart-git
 _pkgname=libcoverart
-pkgver=r73.55f5ec0
+pkgver=r89.0983ff7
 pkgrel=1
 pkgdesc="C/C++ library for accessing the MusicBrainz Cover Art Archive"
 arch=('i686' 'x86_64')
