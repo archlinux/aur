@@ -24,10 +24,8 @@ makedepends=(
         'python-webcolors'
         'python-debugpy'
         'python-jupyter-server-terminals'
-
-        # other build-only deps
-        'python-types-python-dateutil'
         'python-rfc3986-validator'
+        'python-types-python-dateutil'
 )
 license=('MIT')
 arch=('any')
