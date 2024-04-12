@@ -14,7 +14,7 @@ makedepends=('qt5-tools' 'python' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 
              'gperf' 'nss' 'clang' 'nodejs')
 groups=('qt5')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/single/${_pkgfqn}.tar.xz"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/sing../$_pkgfqn.tar.xz"
          qt5-webengine-python3.patch
          no-qmake.patch)
 sha256sums=('9550ec8fc758d3d8d9090e261329700ddcd712e2dda97e5fcfeabfac22bea2ca'
