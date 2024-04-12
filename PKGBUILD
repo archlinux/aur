@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-flippernested
 _name=FlipperNestedRecovery
-pkgver=2.3.2
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="Recover keys from collected nonces using the Flipper Zero"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
     'python-wheel'
 )
 source=("${_name}-${pkgver}.tar.gz::https://github.com/AloneLiberty/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('41a5c9e362225f819e04544526279c222a922760a474c1663ae38a4b267ea748e0230fbb44c1a9a1936ed77428198416b838d5ce61e96e4ea0999085f6f22695')
+b2sums=('29bc49071d1c92c9e217c21aac0830775ce9bb9c6cd909b1b896ec510bd7e83b73303b1c12d6e851e37630eb2000fa465e27121e339cf9a705b104c7543f67ab')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
