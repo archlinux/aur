@@ -1,7 +1,7 @@
 pkgbase = gtksourceview3-fish-git
 	pkgdesc = GtkSourceView3 syntax highlighting for fish shell scripts.
 	pkgver = r1.86b94ce
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fish-shell/fish-shell/issues/1812
 	arch = any
 	license = LGPL-2.1-or-later
@@ -12,3 +12,4 @@ pkgbase = gtksourceview3-fish-git
 	md5sums = SKIP
 
 pkgname = gtksourceview3-fish-git
+	depends = gtksourceview3

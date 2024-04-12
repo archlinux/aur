@@ -1,7 +1,7 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 pkgname=gtksourceview3-fish-git
 pkgver=r1.86b94ce
-pkgrel=2
+pkgrel=3
 pkgdesc='GtkSourceView3 syntax highlighting for fish shell scripts.'
 arch=('any')
 url='https://github.com/fish-shell/fish-shell/issues/1812'
@@ -18,6 +18,7 @@ pkgver() {
 }
 
 package() {
+  depends=('gtksourceview3')
   cd "$srcdir/fish-syntax"
   install -Dm644 fish.lang "$pkgdir"/usr/share/gtksourceview-3.0/language-specs/fish.lang
 }
