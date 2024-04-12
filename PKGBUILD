@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-rdm
 _pkgname="Tiny RDM"
-pkgver=1.1.10
+pkgver=1.1.11
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
 arch=('any')
 url="https://redis.tinycraft.cc/"
@@ -28,7 +28,7 @@ options=(
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 )
-sha256sums=('b83e381147d980f01efde2d05486750bc3c129544b8a3098463358c39fe39d8a')
+sha256sums=('SKIP')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
