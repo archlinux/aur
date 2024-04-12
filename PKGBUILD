@@ -3,7 +3,7 @@
 # Contributor: Rich Li <rich@dranek.com>
 
 pkgname=python-cartopy
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="A cartographic Python library with Matplotlib support for visualisation"
 url="https://scitools.org.uk/cartopy/"
@@ -24,7 +24,7 @@ makedepends=(
     'python-setuptools-scm' 'python-wheel'
 )
 checkdepends=('python-pytest' 'python-pytest-mpl' 'python-flufl-lock')
-license=('LGPL3')
+license=('BSD-3-Clause')
 arch=('x86_64')
 
 _pypi=Cartopy
@@ -32,7 +32,7 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-    'b300f90120931d43f11ef87c064ea1dacec1b59a4940aa76ebf82cf09548bb49'
+    '231f37b35701f2ba31d94959cca75e6da04c2eea3a7f14ce1c75ee3b0eae7676'
 )
 
 prepare() {
@@ -40,29 +40,34 @@ prepare() {
 
     # Remove pre-processed Cython extensions so we can generate a local version.
     rm lib/cartopy/trace.cpp
-
-    # The Arch version of NumPy will always meet NEP29, so this is an unneeded dependency.
-    sed -i -e 's/oldest-supported-numpy/numpy/g' pyproject.toml
 }
 
 build() {
     cd "$_pypi-$pkgver"
-    FORCE_CYTHON=1 python -m build --wheel --no-isolation
+
+    # pyproject.toml specifies numpy>=2.0.0rc1, but states that this is for
+    # building the wheels they release and building against numpy 1.x is fine.
+    FORCE_CYTHON=1 python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
     cd "$_pypi-$pkgver"
-    local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer "dist/Cartopy-$pkgver-"*.whl
 
     # The deselected tests fail an image comparison due to small changes in the
     # size and position of text labels.
-    cd "build/lib.linux-$CARCH-cpython-${python_version}"
-    pytest cartopy \
+    test-env/bin/python -m pytest --import-mode importlib lib/cartopy/tests \
         -k "not test_gridliner and not test_contour_label and not test_annotate" \
         --ignore-glob="*mpl/test_ticks.py"
 }
 
 package() {
     cd "$_pypi-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" "dist/Cartopy-$pkgver-"*.whl
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+    # Remove tests from final package.
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    rm -r "$pkgdir/$site_packages/cartopy/tests"
 }
