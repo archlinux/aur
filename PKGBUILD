@@ -4,7 +4,7 @@
 _pkgname=PyBrowserID
 pkgname=python-browserid
 pkgver=0.14.0
-pkgrel=13
+pkgrel=14
 pkgdesc='Python client library for the BrowserID protocol'
 arch=('any')
 url='https://github.com/mozilla/PyBrowserID'
@@ -18,6 +18,7 @@ sha256sums=('2a59531db7a847fbc1cdd0449e601149e3bab33a8b5629f23bc40c5794b83932'
 prepare() {
   cd $_pkgname-$pkgver
   patch -Np1 -i ${srcdir}/unittest-mock.patch
+  find -type f -exec sed -e 's|assertEquals|assertEqual|g' -i {} \; # Fix tests with python 3.12
 }
 
 build() {
