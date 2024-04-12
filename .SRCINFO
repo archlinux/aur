@@ -1,7 +1,7 @@
 pkgbase = python-multiset
 	pkgdesc = A multiset implementation for python
-	pkgver = 3.0.2
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://github.com/wheerd/multiset
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-multiset
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
-	source = multiset-3.0.2.tar.gz::https://files.pythonhosted.org/packages/source/m/multiset/multiset-3.0.2.tar.gz
-	b2sums = babde68ad979e173e0afb6a87b05fc63f536d8a9f4dfc2c817f1237344efc684a7225e0d1ca19163007c43451e9a706db9aa489fa10e5e4ec84d85f15f4b5bf4
+	source = multiset-3.1.0.tar.gz::https://github.com/wheerd/multiset/archive/refs/tags/3.1.0.tar.gz
+	b2sums = 74b49e08e6b3d26169975229ba06db6c9d15066976ff35af40ba7d984d5e5c253e565dbb7fe1acfd8773de5c1de26d3f8a04a68b6516882faf8efb032652883a
 
 pkgname = python-multiset
