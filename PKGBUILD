@@ -4,12 +4,12 @@
 
 pkgname=boosteroid
 pkgver=1.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
 url="https://boosteroid.com/downloads"
 license=('custom')
-depends=("libva" "libvdpau" "libxcb" "traceroute" "ocl-icd" "pcre2" "libxi" "xcb-util-wm" "xcb-util-image" "xcb-util-renderutil" "xcb-util-keysyms" "xcb-util-keysyms" "fontconfig" "alsa-lib")
+depends=("libva" "libvdpau" "libxcb" "traceroute" "ocl-icd" "pcre2" "libxi" "xcb-util-wm" "xcb-util-image" "xcb-util-renderutil" "xcb-util-keysyms" "xcb-util-keysyms" "fontconfig" "alsa-lib" "pulseaudio-alsa")
 makedepends=("binutils" "tar" "coreutils" "wget")
 
 # Set Mozilla as curl useragent to circumvent 403 using curl
