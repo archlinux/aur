@@ -17,7 +17,6 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-
 build() {
   cd "$pkgname"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -29,7 +28,6 @@ build() {
 }
 
 package() {  
-  cd "$pkgname"
-  install -Dm755 jj "$pkgdir/usr/bin/jj"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "${srcdir}/$pkgname/jj" "$pkgdir/usr/bin/jj"
+  install -Dm644 "${srcdir}/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
