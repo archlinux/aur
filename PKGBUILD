@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontbakery
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A command-line tool for checking the quality of font projects'
 arch=(any)
@@ -39,7 +39,7 @@ makedepends=(python-{build,installer,wheel}
 _archive="$pkgname-$pkgver"
 # source=("$_archive.tgz::$url/archive/v$pkgver.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('eb511795ff9de6425e505e353849c634b68e712bc55940c581aad5bc7419626c')
+sha256sums=('75fa796728148adc54221da026a2bb834e57ddf804f65c9155468dd2e9b5f070')
 
 build() {
     cd "$_archive"
