@@ -1,7 +1,7 @@
 # Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 
 pkgname=turbomem-git
-pkgver=r135.b618013
+pkgver=r148.9440a14
 pkgrel=1
 pkgdesc="Linux driver for Intel Turbo Memory Controller (Robson) PCIe card"
 arch=('i686' 'x86_64')
