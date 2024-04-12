@@ -15,7 +15,7 @@ conflicts=(sk-chos-tool-git)
 replaces=(sk-chos-tool-git)
 source=(
     "$pkgname-${_addonver}.tar.gz::https://github.com/honjow/sk-holoiso-config/archive/refs/tags/v${_addonver}.tar.gz"
-    "$pkgname.AppImage::https://github.com/honjow/sk-chos-tool/releases/download/v${pkgver}/sk_chos_tool-latest-x86_64.AppImage"
+    "$pkgname-${pkgver}.AppImage::https://github.com/honjow/sk-chos-tool/releases/download/v${pkgver}/sk_chos_tool-latest-x86_64.AppImage"
     )
 sha256sums=(
     'SKIP'
@@ -40,7 +40,7 @@ package() {
     install -m755 -t "${pkgdir}/usr/share/${pkgname}/scripts" "${source_dir}/main/scripts"/*.*
 
     # AppImage
-    install -Dm755 "${srcdir}/sk-chos-tool.AppImage" "${pkgdir}/usr/share/${pkgname}/sk-chos-tool.AppImage"
+    install -Dm755 "${srcdir}/$pkgname-${pkgver}.AppImage" "${pkgdir}/usr/share/${pkgname}/sk-chos-tool.AppImage"
 
     # 主程序入口
     install -dm755 "${pkgdir}/usr/bin"
