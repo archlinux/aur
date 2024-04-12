@@ -1,54 +1,34 @@
-# Maintainer: Sebastian Meßlinger <sebastian.messlinger@posteo.de>
+# Maintainer: RiverOnVenus <error@zhui.dev>
+# Contributor: Sebastian Meßlinger <sebastian.messlinger@posteo.de>
 pkgname=dnslookup-git
-pkgver=1.10.0.r75.20230921.0acf48e
+pkgver=1.10.0.r1.gbbd6081
 pkgrel=1
 pkgdesc="Simple command line utility to make DNS lookups to the specified server"
-arch=(
-  'aarch64'
-  'armv6h'
-  'armv7h'
-  'i686'
-  'x86_64'
-)
+arch=('x86_64')
 url="https://github.com/ameshkov/dnslookup"
-license=('GPL3')
-depends=()
+license=('MIT')
 makedepends=('go' 'git')
-provides=("dnslookup=${pkgver}")
-conflicts=("dnslookup")
-source=('git+https://github.com/ameshkov/dnslookup.git')
-sha1sums=('SKIP')
+provides=('dnslookup')
+conflicts=('dnslookup')
+source=("$pkgname"::"git+${url}")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/dnslookup"
-
-  _ver="$(git describe  --tags | sed 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
-  _rev="$(git rev-list --count HEAD)"
-  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
-  _hash="$(git rev-parse --short HEAD)"
-
-  if [ -z "${_ver}" ]; then
-    error "Version could not be determined."
-    return 1
-  else
-    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
-  fi
+  cd "$pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-build(){
-    cd "${srcdir}/dnslookup"
-    mkdir -p "${srcdir}/gopath"
-    export GOPATH="${srcdir}/gopath"
-    go install -x -v -buildmode=pie -ldflags "-s -w" -trimpath
+build() {
+  cd "$pkgname"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o dnslookup main.go
 }
 
-package(){
-    mkdir -p "${pkgdir}/usr/bin"
-
-    if [ -v GOBIN ]; then
-      _binpath="${GOBIN}"
-    else
-      _binpath="${srcdir}/gopath/bin"
-    fi
-    install "${_binpath}/dnslookup" "${pkgdir}/usr/bin/dnslookup"
+package() {
+  install -Dm755 "$srcdir/$pkgname/dnslookup" "$pkgdir/usr/bin/dnslookup"
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
