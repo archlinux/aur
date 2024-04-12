@@ -1,7 +1,7 @@
 # Maintainer: LuckyTurtleDev [aur at lukas1818 dot de]
 # Contributor: Shantanu Tushar <shantanu@kde.org>
 
-_pkgtag=v2.1.1
+_pkgtag=v2.1.1 #auto updated by CI
 pkgname=ruqola
 pkgver=${_pkgtag/v}
 pkgrel=1
