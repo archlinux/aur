@@ -1,6 +1,6 @@
 pkgbase = finance-manager-git
 	pkgdesc = Simple application to manager revenue and expenses.
-	pkgver = 0.2.0.r1.gcb2ca1c
+	pkgver = 0.3.0.r7.gdf6072a
 	pkgrel = 1
 	url = https://github.com/programmingKyle/finance-manager
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = finance-manager-git
 	makedepends = base-devel
 	makedepends = gcc
 	depends = electron29
-	provides = finance-manager=0.2.0
+	provides = finance-manager=0.3.0
 	conflicts = finance-manager
 	source = finance-manager.git::git+https://github.com/programmingKyle/finance-manager.git
 	source = finance-manager.sh
