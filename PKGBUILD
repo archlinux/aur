@@ -1,6 +1,6 @@
 # Maintainer: RiverOnVenus <error@zhui.dev>
 pkgname=neco-git
-pkgver=0.1.0.r1.g8258e56
+pkgver=0.1.3.r0.g5364a33
 pkgrel=1
 pkgdesc="Concurrency library for C (coroutines)"
 arch=(any)
@@ -22,8 +22,7 @@ pkgver() {
 }
 
 package() {
-  cd "$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 neco.h "$pkgdir/usr/include/neco.h"
-  install -Dm755 libneco.so "$pkgdir/usr/lib/libneco.so"
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgname/neco.h" "$pkgdir/usr/include/neco.h"
+  install -Dm755 "$srcdir/$pkgname/libneco.so" "$pkgdir/usr/lib/libneco.so"
 }
