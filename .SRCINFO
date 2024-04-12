@@ -1,0 +1,15 @@
+pkgbase = adspower-global
+	pkgdesc = Protect your accounts, see the revenue growth.
+	pkgver = 6.2.29
+	pkgrel = 1
+	url = https://www.adspower.com
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = glibc
+	depends = bash
+	depends = electron
+	source = https://version.adspower.net/software/linux-x64-global/AdsPower-Global-6.2.29-x64.deb
+	sha256sums = c194a1a89a8de0ddf5f56cef0aa6079d40cabc5b52d4e04ef54533be813758d1
+
+pkgname = adspower-global
