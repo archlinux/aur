@@ -1,0 +1,27 @@
+pkgbase = r-genproseq
+	pkgdesc = Generating Protein Sequences with Deep Generative Models
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GenProSeq
+	arch = any
+	license = Artistic-2.0
+	checkdepends = r-testthat
+	depends = r-catencoders
+	depends = r-deeppincs
+	depends = r-keras
+	depends = r-mclust
+	depends = r-reticulate
+	depends = r-tensorflow
+	depends = r-ttgsea
+	depends = r-word2vec
+	optdepends = r-ggseqlogo
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-stringdist
+	optdepends = r-testthat
+	optdepends = r-vaexprs
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenProSeq_1.6.0.tar.gz
+	md5sums = 15e772912f2019256df52d192edd5402
+	b2sums = b8a9e9720d3008a3c655ca8b3917ec5f23da709e39a69e47cb3c2f87bb1c0f01a65bc3b62777ae2226cf5d506fa75cb2eed0a45519e8a33ce4d0f964adbb22af
+
+pkgname = r-genproseq
