@@ -1,47 +1,46 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 pkgname=stapxs-qq-lite-bin
-pkgver=2.6.3
+_pkgname=Stapxs.QQ.Lite
+pkgver=2.6.7
+_electronversion=27
 pkgrel=1
 epoch=
 pkgdesc="一个兼容 oicq-http 的非官方网页版 QQ 客户端, 使用 Vue 重制的全新版本."
-arch=('any')
-url="https://github.com/Stapxs/Stapxs-QQ-Lite-2.0"
+arch=('x86_64')
+url="https://stapxs.github.io/Stapxs-QQ-Lite-2.0/"
+_ghurl="https://github.com/Stapxs/Stapxs-QQ-Lite-2.0"
 license=('Apache-2.0')
-groups=()
-depends=('nss' 'xdg-utils' 'libxss' 'electron' 'bc' 'libnotify')
-makedepends=()
-checkdepends=()
-optdepends=(
-	'xdg-desktop-portal-kde: KDE 原生文件选取器'
-	'xdg-desktop-portal-lxqt: lxqt 原生文件选取器'
-	'xdg-desktop-portal-gnome: Gnome 原生文件选取器'
-	'xdg-desktop-portal: 原生文件选取器'
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    "electron${_electronversion}"
 )
-provides=(stapxs-qq-lite)
-conflicts=(stapxs-qq-lite)
-replaces=()
-install=${pkgname}.install
+makedepends=(
+    'fuse2'
+)
 source=(
-	icon.svg::"https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/raw/main/public/img/icons/icon.svg"
-	stapxs-qq-lite-bin
-	stapxs-qq-lite-bin.desktop
-	https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/releases/latest/download/stapxs-qq-lite-${pkgver}.tar.gz
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "${pkgname%-bin}.sh"
 )
-noextract=()
-md5sums=('7b579380eb715e47bee3201a79250a13'
-         '58d88260604e3a868ecf90bbb80fc941'
-         '2e398b351eb13ea64ca82707cfb8fc34'
-         '3f1518771a0f11d1bbe3ed948cfc540d')
-validpgpkeys=()
-
+sha256sums=('bc090c463957d47d608107b67c34fb623b609e9502180fe88999129eb8c0cf9d'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+}
 package() {
-	cd ${srcdir}
-	if [ -d stapxs-qq-lite-* ]; then
-		rm stapxs-qq-lite-* -r
-	fi
-	tar -xf "${srcdir}"/*.tar.gz
-	install -Dm755 "${srcdir}"/stapxs-qq-lite-bin "${pkgdir}"/usr/bin/stapxs-qq-lite-bin
-	install -Dm644 "${srcdir}"/stapxs-qq-lite-*/resources/app.asar "${pkgdir}"/opt/stapxs-qq-lite-bin/app.asar
-	install -Dm644 "${srcdir}"/icon.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/stapxs-qq-lite-bin.svg
-	install -Dm644 "${srcdir}"/stapxs-qq-lite-bin.desktop "${pkgdir}"/usr/share/applications/stapxs-qq-lite-bin.desktop
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
+	for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 1024x1024;do
+    	install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+			-t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+	done
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
