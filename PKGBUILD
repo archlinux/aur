@@ -3,14 +3,13 @@
 _pkgname=SBMLR
 _pkgver=1.98.0
 pkgname=r-${_pkgname,,}
-pkgver=1.98.0
-pkgrel=1
-pkgdesc='SBML-R Interface and Analysis Tools'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="SBML-R Interface and Analysis Tools"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-desolve
   r-xml
 )
@@ -18,14 +17,15 @@ optdepends=(
   r-rsbml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2abcd86c8baac8cea1698a321cb996dea62909b7407cadc793343bfef2cf90b2')
+md5sums=('36433007d11730737942753523a9d91e')
+b2sums=('6ed3aa4b75fe5adadd8a482ad75eea457798037ce167046cfcc7d0c69e43ba1729b80f712eacfce6ce96db6ffe4f4b7bfe0805a431fc0b02b998bbb7184a59cc')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
