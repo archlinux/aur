@@ -1,11 +1,11 @@
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 pkgname=gtksourceview3-fish-git
 pkgver=r1.86b94ce
-pkgrel=1
+pkgrel=2
 pkgdesc='GtkSourceView3 syntax highlighting for fish shell scripts.'
 arch=('any')
 url='https://github.com/fish-shell/fish-shell/issues/1812'
-license=('GPL')
+license=('LGPL-2.1-or-later')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
