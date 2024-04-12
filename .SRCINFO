@@ -1,0 +1,26 @@
+pkgbase = r-fastreer
+	pkgdesc = Phylogenetic, Distance and Other Calculations on VCF and Fasta Files
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/fastreeR
+	arch = any
+	license = GPL-3.0-only
+	checkdepends = r-testthat
+	depends = r-ape
+	depends = r-data.table
+	depends = r-dynamictreecut
+	depends = r-r.utils
+	depends = r-rjava
+	depends = r-stringr
+	optdepends = r-biocfilecache
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-memuse
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fastreeR_1.6.0.tar.gz
+	md5sums = e2b7164aeaa305f819536d9b85e4de12
+	b2sums = 773d006ed3f7ead8f6a95c179c28cc776c64a2ce07b7eb1fa8083deac2a480e3c9eb21e4942582b35bb41520401ff8a463ae64fe820aaa9aa680139a80ce27f1
+
+pkgname = r-fastreer
