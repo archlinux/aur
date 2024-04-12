@@ -16,7 +16,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=1.0.0.273.ga59a55120
+pkgver=1.0.0.660.g37a8dd5cb
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -189,6 +189,7 @@ package_pipewire-git() {
   _pick libs usr/share/pipewire/client.conf.avail/20-upmix.conf
   _pick libs usr/share/pipewire/client-rt.conf
   _pick libs usr/share/pipewire/client-rt.conf.avail/20-upmix.conf
+  _pick libs usr/share/man/man5/pipewire-client.conf.5
   _pick libs usr/share/man/man7/libpipewire-module-metadata.7
   _pick libs usr/share/man/man7/libpipewire-module-client-node.7
   _pick libs usr/share/man/man7/libpipewire-module-client-device.7
@@ -236,6 +237,9 @@ package_pipewire-git() {
   _pick audio usr/share/man/man1/pw-cat.1
   _pick audio usr/share/man/man1/pw-loopback.1
   _pick audio usr/share/man/man1/pw-mididump.1
+  _pick audio usr/share/man/man1/spa-acp-tool.1
+  _pick audio usr/share/man/man1/spa-resample.1
+  _pick audio usr/share/man/man5/pipewire-filter-chain.conf.5
   _pick audio usr/share/man/man7/libpipewire-module-avb.7
   _pick audio usr/share/man/man7/libpipewire-module-echo-cancel.7
   _pick audio usr/share/man/man7/libpipewire-module-fallback-sink.7
@@ -272,6 +276,7 @@ package_pipewire-git() {
   _pick jack "usr/lib/pipewire-${_api_ver}/libpipewire-module-netjack2-manager.so"
   _pick jack usr/lib/pkgconfig/jack.pc
   _pick jack usr/share/man/man1/pw-jack.1
+  _pick jack usr/share/man/man5/pipewire-jack.conf.5
   _pick jack usr/share/man/man7/libpipewire-module-netjack2-driver.7
   _pick jack usr/share/man/man7/libpipewire-module-netjack2-manager.7
   _pick jack usr/share/pipewire/jack.conf
@@ -291,6 +296,9 @@ package_pipewire-git() {
   _pick pulse usr/share/man/man7/pipewire-pulse-module-alsa-source.7
   _pick pulse usr/share/man/man7/pipewire-pulse-module-always-sink.7
   _pick pulse usr/share/man/man7/pipewire-pulse-module-combine-sink.7
+  _pick pulse usr/share/man/man7/pipewire-pulse-module-device-manager.7
+  _pick pulse usr/share/man/man7/pipewire-pulse-module-device-restore.7
+  _pick pulse usr/share/man/man7/pipewire-pulse-module-stream-restore.7
   _pick pulse usr/share/man/man7/pipewire-pulse-module-echo-cancel.7
   _pick pulse usr/share/man/man7/pipewire-pulse-module-gsettings.7
   _pick pulse usr/share/man/man7/pipewire-pulse-module-jackdbus-detect.7
@@ -319,6 +327,7 @@ package_pipewire-git() {
   _pick pulse usr/share/man/man7/pipewire-pulse-module-zeroconf-discover.7
   _pick pulse usr/share/man/man7/pipewire-pulse-module-zeroconf-publish.7
   _pick pulse usr/share/pipewire/pipewire-pulse.conf
+  _pick pulse usr/share/pipewire/pipewire-pulse.conf.avail/20-upmix.conf
   _pick pulse usr/share/alsa-card-profile
   _pick pulse usr/share/glib-2.0/schemas/org.freedesktop.pulseaudio.gschema.xml
 
@@ -338,6 +347,7 @@ package_pipewire-git() {
   _pick v4l2 usr/bin/pw-v4l2
   _pick v4l2 "usr/lib/pipewire-${_api_ver}/v4l2"
   _pick v4l2 "usr/lib/spa-${_spa_ver}/v4l2"
+  _pick v4l2 usr/share/man/man1/pw-v4l2.1
 
   _pick roc "usr/lib/pipewire-${_api_ver}/libpipewire-module-roc-sink.so"
   _pick roc "usr/lib/pipewire-${_api_ver}/libpipewire-module-roc-source.so"
@@ -613,7 +623,10 @@ package_pipewire-pulse-git() {
     'libpulse' 'libpulse.so'
     'systemd-libs' 'libsystemd.so'
   )
-  backup=('usr/share/pipewire/pipewire-pulse.conf')
+  backup=(
+    'usr/share/pipewire/pipewire-pulse.conf'
+    'usr/share/pipewire/pipewire-pulse.conf.avail/20-upmix.conf'
+  )
   provides=(
     "pipewire-pulse=${pkgver}"
     'pulseaudio'
