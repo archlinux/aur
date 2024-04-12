@@ -29,7 +29,7 @@ prepare() {
 build() {
   cd build
 
-  qmake ../${_pkgfqn} CONFIG+="lang-all handwriting"
+  qmake ../kde-$_pkgfqn CONFIG+="lang-all handwriting"
   make
 }
 
