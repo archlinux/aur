@@ -1,0 +1,9 @@
+pkgbase = pacmancleaner
+	pkgdesc = A script to clean orphaned packages using pacman
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = pacman
+
+pkgname = pacmancleaner
