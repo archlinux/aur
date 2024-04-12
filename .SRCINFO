@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-6.0
-	pkgver = 6.0.28.sdk128
+	pkgver = 6.0.29.sdk129
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = dotnet-core-6.0
 	optdepends = bash-completion: Bash completion support
 	options = !lto
 	options = staticlibs
-	source = dotnet-installer::git+https://github.com/dotnet/installer.git#tag=28e71a2d7eb0ca1c92dde910520e5c511109c7d6
+	source = dotnet-installer::git+https://github.com/dotnet/installer.git#tag=7c9bddb16035cbe6bf19e7cad6d2c694154529b4
 	source = dotnet.sh
 	source = dotnet-core-runtime-disable-package-validation.patch
 	source = dotnet-core-sdk-telemetry-optout.patch
