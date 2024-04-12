@@ -1,0 +1,16 @@
+pkgbase = r-shinycyjs
+	pkgdesc = Create Interactive Network Visualizations in R and 'shiny'
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=shinyCyJS
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-htmlwidgets
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/shinyCyJS_1.0.0.tar.gz
+	md5sums = b7023efef10fa2aa012650b4246ca2d4
+	b2sums = 8ca69a980ab3bbc729ae39069c705accf7835bb4f8f37a858b7d9556ea63221ad6e0eab043c4af4b1433c615d33351bcde3ada15657b0d67765f56aada10331b
+
+pkgname = r-shinycyjs
