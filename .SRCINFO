@@ -1,7 +1,7 @@
 pkgbase = python-pex
 	pkgdesc = Generates executable Python environments
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.pex-tool.org/
 	changelog = CHANGES.md
 	arch = any
