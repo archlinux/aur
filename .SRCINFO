@@ -1,0 +1,15 @@
+pkgbase = python-getkey
+	pkgdesc = Python library to easily read single chars and key strokes
+	pkgver = 0.6.5
+	pkgrel = 5
+	url = https://github.com/kcsaff/getkey
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-cov
+	makedepends = python-setuptools
+	makedepends = flake8
+	depends = python
+	source = https://github.com/kcsaff/getkey/archive/v0.6.5/python-getkey-0.6.5.tar.gz
+	sha256sums = 096792463ed0cd8ac92d7b2b6d23cff1c815b449403115034bed2029b378d54c
+
+pkgname = python-getkey

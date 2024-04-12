@@ -3,7 +3,7 @@
 _pkgname=getkey
 pkgname=python-getkey
 pkgver=0.6.5
-pkgrel=4
+pkgrel=5
 pkgdesc='Python library to easily read single chars and key strokes'
 arch=('any')
 url='https://github.com/kcsaff/getkey'
