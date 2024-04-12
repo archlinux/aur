@@ -1,0 +1,22 @@
+pkgbase = folio
+	pkgdesc = A beautiful markdown note-taking app for GNOME (forked from Paper).
+	pkgver = 24
+	pkgrel = 10
+	url = https://github.com/toolstack/folio
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = vala
+	makedepends = meson
+	makedepends = base-devel
+	depends = glib2
+	depends = gtk4
+	depends = libgee
+	depends = libadwaita
+	depends = gtksourceview5
+	provides = folio
+	conflicts = folio
+	source = git+https://github.com/toolstack/folio.git
+	md5sums = SKIP
+
+pkgname = folio
