@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# WINE Launcher script for Raster Music Tracker
+wine /usr/share/rmtracker/Rmt.exe "$(winepath -w "$1")"
