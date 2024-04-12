@@ -17,7 +17,7 @@ source=(https://www.coranac.com/files/usenti/usenti-1.7.10.zip
 noextract=($filename.zip)
 md5sums=('44e3497aff83af18db38f61d87611b94'
          '2ff2616c6bb2870c86c669d809ef8d5b'
-         '051a7f917278b2a9a2a8c56472425054'
+         'e87b28ec1074327e7b10c2c7c3dba5ba'
          'b2734ff60cb14379c53c900c696c5d78')
 license=('MIT')
 
