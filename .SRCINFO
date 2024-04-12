@@ -1,0 +1,16 @@
+pkgbase = own3d-desktop-bin
+	pkgdesc = Public Development Preview of the OWN3D Desktop App
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://www.own3d.pro/
+	arch = any
+	license = MIT
+	depends = electron29
+	provides = own3d-desktop=2.0.0
+	conflicts = own3d-desktop
+	source = own3d-desktop-2.0.0.deb::https://github.com/own3d/desktop/releases/download/2.0.0/own3d-desktop_2.0.0_amd64.deb
+	source = own3d-desktop.sh
+	sha256sums = c6015f235920c075f2e042e7b5d0872b1bf7b062c4e220d1ce8b444236444d63
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = own3d-desktop-bin
