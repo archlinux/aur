@@ -3,14 +3,13 @@
 _pkgname=Polychrome
 _pkgver=1.5.1
 pkgname=r-${_pkgname,,}
-pkgver=1.5.1
-pkgrel=1
-pkgdesc='Qualitative Palettes with Many Colors'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('Apache')
+pkgver=${_pkgver//-/.}
+pkgrel=4
+pkgdesc="Qualitative Palettes with Many Colors"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('Apache-2.0')
 depends=(
-  r
   r-colorspace
   r-scatterplot3d
 )
@@ -21,14 +20,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6fe7da62459d7b94b1a8516a4626971cf35b76331f46e36798b05d29aa00d143')
+md5sums=('884d7e7cabb5419dcda496678f310083')
+b2sums=('64322dcfe3554ccbcb479bffd668410ab7ca34aa947de88c1dfde53ca99ccb6d29ace77491e911e023a9d412622f844a2c0355fe19ed9320dcb88f2381fccfe2')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

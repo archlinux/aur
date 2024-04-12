@@ -1,11 +1,10 @@
 pkgbase = r-polychrome
 	pkgdesc = Qualitative Palettes with Many Colors
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=Polychrome
 	arch = any
-	license = Apache
-	depends = r
+	license = Apache-2.0
 	depends = r-colorspace
 	depends = r-scatterplot3d
 	optdepends = r-ggplot2
@@ -13,6 +12,7 @@ pkgbase = r-polychrome
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/Polychrome_1.5.1.tar.gz
-	sha256sums = 6fe7da62459d7b94b1a8516a4626971cf35b76331f46e36798b05d29aa00d143
+	md5sums = 884d7e7cabb5419dcda496678f310083
+	b2sums = 64322dcfe3554ccbcb479bffd668410ab7ca34aa947de88c1dfde53ca99ccb6d29ace77491e911e023a9d412622f844a2c0355fe19ed9320dcb88f2381fccfe2
 
 pkgname = r-polychrome
