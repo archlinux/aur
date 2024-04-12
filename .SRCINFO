@@ -1,7 +1,7 @@
 pkgbase = parlatype
 	pkgdesc = GNOME audio player for transcription
 	pkgver = 4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gkarsay/parlatype
 	arch = any
 	license = GPL3
@@ -19,6 +19,7 @@ pkgbase = parlatype
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = iso-codes
+	depends = libadwaita
 	optdepends = parlatype-libreoffice-extension: LibreOffice macros
 	source = https://github.com/gkarsay/parlatype/releases/download/v4.1/parlatype-4.1.tar.gz
 	b2sums = 6554c3702bb36da7c1242c783fa555b446c573a71a5cb862c4ac9dbae6f1cf6d3c9c880abce24f300fa932f88111646b55f16e7175b73e1c6a072810a0d68ddf
