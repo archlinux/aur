@@ -2,7 +2,7 @@
 
 pkgname=mdbook-footnote
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A preprocessor for mdbook to support the inclusion of footnotes"
 url="https://github.com/daviddrysdale/mdbook-footnote"
 arch=(x86_64)
