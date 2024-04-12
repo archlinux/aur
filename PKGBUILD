@@ -14,8 +14,8 @@ makedepends=(cmake git)
 options=(!emptydirs)
 source=(git+$url.git#tag=v$pkgver
         license.txt)
-sha1sums=('17ed1cb8ff3a8397005b350cc3efb5fa4602d39e'
-          '4561344e8f2c30eee9c55b14a14f062d89d6e7b7')
+sha256sums=('f3412fb6402a230b0f5d2be6031fa95a7bc92124ed2d2cf7b70724ab3a6c3dad'
+            '6bcd7861188e1e8fb90b68b6d660e519488b7bae02ac1cb46c9bc48aa235e451')
 
 prepare() {
   cd "$pkgname"
