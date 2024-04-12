@@ -1,0 +1,5 @@
+[openfoam-com-precice]
+source = "github"
+github = "precice/openfoam-adapter"
+use_latest_release = "true"
+prefix = "v"
