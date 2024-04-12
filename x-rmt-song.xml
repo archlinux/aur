@@ -2,7 +2,7 @@
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
     <mime-type type="application/x-rmt-song">
         <comment>Raster Music Tracker Song</comment>
-        <generic-icon name="x-rmt-song"/>
+        <icon name="x-rmt-song"/>
         <glob pattern="*.rmt"/>
         <glob pattern="*.RMT"/>
     </mime-type>
