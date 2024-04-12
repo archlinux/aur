@@ -18,7 +18,6 @@ pkgver() {
 }
 
 package() {
-  cd "$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm755 pkg.sh "$pkgdir/usr/bin/pkg.sh"
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$srcdir/$pkgname/pkg.sh" "$pkgdir/usr/bin/pkg.sh"
 }
