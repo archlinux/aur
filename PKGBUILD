@@ -3,7 +3,7 @@
 _pkgname=litejesd204b
 pkgname=python-$_pkgname
 pkgver=2021.08
-pkgrel=3
+pkgrel=4
 pkgdesc='Small footprint and configurable JESD204B core'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"

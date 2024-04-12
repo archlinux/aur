@@ -1,7 +1,7 @@
 pkgbase = python-litejesd204b
 	pkgdesc = Small footprint and configurable JESD204B core
 	pkgver = 2021.08
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/enjoy-digital/litejesd204b
 	arch = any
 	license = BSD-2-Clause
