@@ -4,6 +4,10 @@ post_install() {
     echo "WARNING: You MUST perform a forced library scan on all libraries to migrate properly to the new foundation. Failure to do so may result in data loss."
 }
 
+post_upgrade() {
+    echo "WARNING: You MUST perform a forced library scan on all libraries to migrate properly to the new foundation. Failure to do so may result in data loss."
+}
+
 post_remove() {
     userdel kavita
 }
