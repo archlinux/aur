@@ -1,6 +1,6 @@
 pkgbase = python-qiskit-experiments
 	pkgdesc = Qiskit Experiments package for IBM qiskit framework
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/Qiskit-Extensions/qiskit-experiments
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-qiskit-experiments
 	optdepends = python-scikit-learn: for discriminators
 	optdepends = python-qiskit-aer
 	optdepends = python-qiskit-dynamics: for the PulseBackend
-	source = qiskit-experiments-0.6.0.tar.gz::https://github.com/Qiskit-Extensions/qiskit-experiments/archive/refs/tags/0.6.0.tar.gz
-	b2sums = ca70a579f7f22c2a1f83a0f5a499f36af29a7be8155ec9e2ce62b9b6b23f23d4bbd6c08af54251fbf13ff8c9fd1a0da1b7635b0bf88227f7d85af00e8f5b1f55
+	source = qiskit-experiments-0.6.1.tar.gz::https://github.com/Qiskit-Extensions/qiskit-experiments/archive/refs/tags/0.6.1.tar.gz
+	b2sums = 862a45541d7b45f0adfe913c547afa8041dbaa66b747a18aa6944ddf43fbf1ef7a55b454969c5459e7d64d9c1da5eec435de7180e14a22cfa5a0d47a7a8fd60d
 
 pkgname = python-qiskit-experiments
