@@ -1,0 +1,5 @@
+[python-ctgan]
+source = "github"
+github = "sdv-dev/CTGAN"
+use_latest_release = "true"
+prefix = "v"
