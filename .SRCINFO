@@ -1,7 +1,7 @@
 pkgbase = python-nspektr
 	pkgdesc = A distribution package dependency inspector
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaraco/nspektr
 	arch = any
 	license = MIT
