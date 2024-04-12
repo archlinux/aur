@@ -35,7 +35,7 @@ package() {
   install -Dm644 rmtracker.desktop $pkgdir/usr/share/applications/rmtracker.desktop
   install -Dm644 rmtracker.png $pkgdir/usr/share/pixmaps/rmtracker.png
   install -Dm644 x-rmt-song.png $pkgdir/usr/share/pixmaps/x-rmt-song.png
-  install -Dm644 x-rmt-song.xml $pkgdir/usr/share/mime/application/x-rmt-song.xml
+  install -Dm644 x-rmt-song.xml $pkgdir/usr/share/mime/packages/x-rmt-song.xml
 
   mkdir -p $pkgdir/usr/share/rmtracker
 
