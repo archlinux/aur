@@ -1,6 +1,6 @@
 pkgbase = huenicorn
 	pkgdesc = Free bias lighting driver for Philips Hue™ devices
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 2
 	url = https://gitlab.com/openjowelsofts/huenicorn
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = huenicorn
 	optdepends = wayland
 	optdepends = glib2
 	optdepends = pipewire
-	source = git+https://gitlab.com/openjowelsofts/huenicorn.git#tag=v1.0.6
+	source = git+https://gitlab.com/openjowelsofts/huenicorn.git#tag=v1.0.7
 	source = https://huenicorn.org/releases/extra/huenicorn.sh
 	sha512sums = SKIP
 	sha512sums = SKIP
