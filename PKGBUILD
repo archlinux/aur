@@ -29,10 +29,11 @@ depends=('ca-certificates'
          'zlib' 'libz.so'
          'zstd' 'libzstd.so')
 makedepends=('git')
+checkdepends=('valgrind')
 provides=('curl' 'libcurl.so')
 conflicts=('curl')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
-source=("git+https://github.com/curl/${_proj}.git#tag=${_git_tag}-?signed")
+source=("git+https://github.com/curl/${_proj}.git#tag=${_git_tag}?signed")
 sha512sums=('SKIP')
 
 prepare() {
@@ -75,6 +76,12 @@ build() {
     --with-zsh-functions-dir=/usr/share/zsh/site-functions/
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
+}
+
+check() {
+  cd build-curl
+  # disable test 433, since it requires the glibc debug info
+  make TFLAGS="-v -a -k -p -j$(nproc) !433" test-nonflaky
 }
 
 package() {
