@@ -2,9 +2,9 @@
 
 _pkgname='geany-plugin-preview'
 pkgname="$_pkgname-git"
-pkgdesc="Plugin for Geany to preview lightweight markup languages"
+pkgdesc="Geany plugin to preview lightweight markup languages"
 url="https://github.com/xiota/geany-preview"
-pkgver=0.1.0.r2.g514930d
+pkgver=0.1.1.r0.g7e1d8f9
 pkgrel=1
 license=('GPL-3.0-or-later')
 arch=('x86_64')
@@ -16,9 +16,8 @@ depends=(
   'webkit2gtk-4.1'
 )
 makedepends=(
-  'cmake'
   'git'
-  'ninja'
+  'meson'
 )
 optdepends=(
   'asciidoc: Preview AsciiDoc'
@@ -41,25 +40,24 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgsrc"
 
-  git describe --long --tags --abbrev=7 \
-    | sed 's/^[^0-9]*//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  local _pkgver=$(
+    git describe --long --tags --abbrev=7 \
+      | sed 's/^[^0-9]*//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  )
+
+  [[ "$_branch" != "main" ]] && _pkgver+=".$_branch"
+
+  echo "$_pkgver"
 }
 
 build() {
-  local _cmake_options=(
-    -B build
-    -S "$_pkgsrc"
-    -G Ninja
-    -DCMAKE_BUILD_TYPE=None
-    -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_INSTALL_LIBDIR='lib'
-    -Wno-dev
-  )
+  cd "$_pkgsrc"
+  meson rewrite kwargs set project / version "$pkgver"
 
-  cmake "${_cmake_options[@]}"
-  cmake --build build
+  arch-meson ../build
+  meson compile -C ../build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  meson install -C build --destdir "$pkgdir"
 }
