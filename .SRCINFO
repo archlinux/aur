@@ -1,17 +1,21 @@
 pkgbase = libsavitar
 	pkgdesc = C++ implementation of 3mf loading with SIP python bindings
 	pkgver = 5.3.0
-	pkgrel = 0.1
+	pkgrel = 0.2
 	url = https://github.com/Ultimaker/libsavitar
 	arch = x86_64
 	license = AGPL
+	checkdepends = gtest
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python-pyqt5-sip
 	makedepends = sip
+	makedepends = git
 	depends = python
 	depends = pugixml
 	source = libsavitar-5.3.0.tar.gz::https://github.com/Ultimaker/libSavitar//archive/5.3.0.tar.gz
+	source = git+https://github.com/Ultimaker/conan-ultimaker-index.git
 	b2sums = fa9c745c6f86940e87e99b08d7ddbc933fe5e56cac583da9ecb7673efc7ce63de4be9729f4108e1de9867bd1d4cad311da6c2c3707d9ab075dcf873cc41a0bad
+	b2sums = SKIP
 
 pkgname = libsavitar
