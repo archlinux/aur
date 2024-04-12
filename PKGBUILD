@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=work-log-ify-git
 _pkgname=WorkLogIfy
-pkgver=1.33.7.r0.g6016fc9
+pkgver=1.33.10.r0.gaaae376
 _electronversion=26
 _nodeversion=18
 pkgrel=1
