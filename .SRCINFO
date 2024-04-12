@@ -1,0 +1,15 @@
+pkgbase = python-senf
+	pkgdesc = Python module for handling platform native strings
+	pkgver = 1.5.0
+	pkgrel = 6
+	url = https://github.com/quodlibet/senf
+	arch = any
+	license = MIT
+	checkdepends = python-hypothesis
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/senf/senf-1.5.0.tar.gz
+	sha512sums = 4a474e3bb7ceae07980e27c4d86240b862ec829e7b73fdf0fb43cfd1529cdff7fa7839fa56c354bb37adc950e848612bfd6e90234c8d4a7c143e302361ac7fe4
+
+pkgname = python-senf
