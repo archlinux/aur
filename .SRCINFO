@@ -1,0 +1,15 @@
+pkgbase = jj-git
+	pkgdesc = JSON Stream Editor (command line utility)
+	pkgver = 1.9.2.r3.gab3eb1e
+	pkgrel = 1
+	url = https://github.com/tidwall/jj
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = jj
+	conflicts = jj
+	source = jj-git::git+https://github.com/tidwall/jj
+	sha256sums = SKIP
+
+pkgname = jj-git
