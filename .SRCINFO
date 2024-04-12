@@ -1,7 +1,7 @@
 pkgbase = python-fxa
 	pkgdesc = Python library for interacting with the Firefox Accounts ecosystem
 	pkgver = 0.7.7
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/mozilla/PyFxA
 	arch = any
 	license = MPL-2.0
