@@ -1,16 +1,16 @@
 pkgbase = hp15c
 	pkgdesc = A simulator for the HP-15C programmable scientific RPN calculator
-	pkgver = 4.5.00.6308
+	pkgver = 4.6.00
 	pkgrel = 1
 	url = http://hp-15c.homepage.t-online.de/content_web.htm
 	arch = any
 	license = GPL3
 	depends = tcl
 	depends = tk
-	source = hp15c-4.5.00.6308.zip::https://hp-15c.homepage.t-online.de/downloads/HP-15C_4.5.00_Source.zip
+	source = hp15c-4.6.00.zip::https://hp-15c-simulator.de/versions/4.6.00/HP-15C_4.6.00_Source.zip
 	source = hp15c_runner.sh
 	source = hp15c.desktop
-	md5sums = 181d28da8d761514732f0f6b43849548
+	md5sums = a38709a3034268573ac7bd1f2247ec33
 	md5sums = 28b63da6ff5404acf6f305bdb35ca1b9
 	md5sums = bab776009feb1db971b92649c839ff1f
 
