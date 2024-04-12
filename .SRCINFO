@@ -1,20 +1,19 @@
 pkgbase = r-vioplot
 	pkgdesc = Violin Plot
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=vioplot
 	arch = any
-	license = BSD
-	depends = r
+	license = BSD-3-Clause
 	depends = r-sm
 	depends = r-zoo
-	optdepends = r-base
 	optdepends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/vioplot_0.4.0.tar.gz
-	sha256sums = 5729b483e3a4f7c81d2cc22c8bc5211b64e289734e9da5b5696c4974067867b5
+	md5sums = 88a2fe38c2c23da609a0931b5cd0b5de
+	b2sums = 55647bbacac0c3fa82ffe15d702cda47ba801adefe78c7debc0072ad2dd2a26ba9dfc36feeb393831de9ba1dc2f52bc5becf31b64fb07e59d4a4dc7f3451663d
 
 pkgname = r-vioplot
