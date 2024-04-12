@@ -1,6 +1,6 @@
 pkgbase = listenbrainz-mpd
 	pkgdesc = ListenBrainz submission client for MPD
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://codeberg.org/elomatreb/listenbrainz-mpd
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = listenbrainz-mpd
 	depends = sqlite
 	depends = libssl.so=3-64
 	depends = libcrypto.so=3-64
-	source = listenbrainz-mpd-2.3.3.tar.gz::https://static.crates.io/crates/listenbrainz-mpd/listenbrainz-mpd-2.3.3.crate
-	sha256sums = ae88298b61076a5bb26b562a2b4185989e213b1f498394c2d54e2a629613e315
+	source = listenbrainz-mpd-2.3.4.tar.gz::https://static.crates.io/crates/listenbrainz-mpd/listenbrainz-mpd-2.3.4.crate
+	b2sums = e21f7f3a732f89ee271290526d4bea70898e25a67c4ecc9d7fb270ec55dfca79f8c4fcb014738ed8a8585ab2ab4cbff68b5a4282f0b2951e5cf605d92bf7a81b
 
 pkgname = listenbrainz-mpd
