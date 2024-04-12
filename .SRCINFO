@@ -1,6 +1,6 @@
 pkgbase = tiny-rdm-git
 	pkgdesc = A modern lightweight cross-platform Redis desktop manager
-	pkgver = 1.1.10.r3.g1091f5d
+	pkgver = 1.1.11.r0.gfc0deac
 	pkgrel = 1
 	url = https://redis.tinycraft.cc/
 	arch = any
