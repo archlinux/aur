@@ -1,0 +1,14 @@
+pkgbase = pkg.sh-git
+	pkgdesc = A generalized package manager for whatever code
+	pkgver = 0.2.0.r0.g4d4c643
+	pkgrel = 1
+	url = https://github.com/tidwall/pkg.sh
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = pkg.sh
+	conflicts = pkg.sh
+	source = pkg.sh-git::git+https://github.com/tidwall/pkg.sh
+	sha256sums = SKIP
+
+pkgname = pkg.sh-git
