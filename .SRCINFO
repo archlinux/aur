@@ -1,6 +1,6 @@
 pkgbase = sra-tools-bin
 	pkgdesc = The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives
-	pkgver = 3.0.6
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = http://www.ncbi.nlm.nih.gov/books/NBK158900/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = sra-tools-bin
 	depends = perl
 	provides = sra-tools
 	provides = sratoolkit
-	source = sra-tools-bin-3.0.6.tar.gz::http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.6/sratoolkit.3.0.6-ubuntu64.tar.gz
+	source = sra-tools-bin-3.1.0.tar.gz::http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.1.0/sratoolkit.3.1.0-ubuntu64.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/ncbi/sra-tools/master/LICENSE
-	sha256sums = aed282adb5b3643aaf7b1685c08b8c583bb6fac1496400aa10f43852dd4c6084
+	sha256sums = 385250858b0b049cfd06017b7cd7161a1d422d4e63d02a7015a483af7e850364
 	sha256sums = 122edf134e4230505179e9a1891ac3fea334f1b67d767933e9e86dc5b49adfdb
 
 pkgname = sra-tools-bin
