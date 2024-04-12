@@ -1,3 +1,7 @@
+# curl -H 'Snap-Device-Series: 16' 'https://api.snapcraft.io/v2/snaps/info/skype'
+_snap_id='QRDEfjn4WJYnm0FzDKwqqRZZI77awQEV'
+_snap_rev_x86_64=342
+
 _name=skypeforlinux
 pkgname=${_name}-bin
 pkgver=8.117.0.202
@@ -29,9 +33,13 @@ optdepends=(
     'libappindicator-gtk3: system tray icon support'
 )
 
-# curl -H 'Snap-Device-Series: 16' 'https://api.snapcraft.io/v2/snaps/info/skype'
+_get_source() {
+    local rname="_snap_rev_${1}"
+    echo -n "${_name}-${pkgver}-${1}.snap::https://api.snapcraft.io/api/v1/snaps/download/${_snap_id}_${!rname}.snap"
+}
+
 source=('flags.sh')
-source_x86_64=("${_name}-${pkgver}-x86_64.snap::https://api.snapcraft.io/api/v1/snaps/download/QRDEfjn4WJYnm0FzDKwqqRZZI77awQEV_342.snap")
+source_x86_64=("$(_get_source 'x86_64')")
 
 sha256sums=('d83693ffd8034c21030262ac00ce529c8da7b0196ea4b4eb2168861fc2657a2a')
 sha256sums_x86_64=('7b8acb67490139ee4ab8be9756ed32345850f4ad018babf106d3e073e1f3e053')
