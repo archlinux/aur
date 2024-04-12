@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Type=Application
 Name=Raster Music Tracker
-Comment=Tracker for making Atari POKEY music.
+Comment=Tracker for making Atari POKEY music
 Exec=rmtracker
 Icon=rmtracker
 Terminal=false
