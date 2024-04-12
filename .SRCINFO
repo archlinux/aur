@@ -1,6 +1,6 @@
 pkgbase = python-rdt
 	pkgdesc = Reversible Data Transforms
-	pkgver = 1.10.1
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/sdv-dev/RDT
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-rdt
 	depends = python-scikit-learn
 	depends = python-faker
 	optdepends = python-copulas
-	source = RDT-1.10.1.tar.gz::https://github.com/sdv-dev/RDT/archive/v1.10.1.tar.gz
-	sha512sums = 031700656c6aa40bbcfff005cc2fc9767e470bae17b8377e77be9150890c3ccf53d78d46bf7d70834f0ee8e994cc5f523a28cfd8e7ef034da9d9ad0026542548
+	source = RDT-1.11.0.tar.gz::https://github.com/sdv-dev/RDT/archive/v1.11.0.tar.gz
+	sha512sums = feeaa9bf2148afd2e6da8dd916f3feaae2c7ea744771a283f4a979117d038f58287664f16ef96f227d5d780a392384954529352f377cd80a8d6ed7f1c678847c
 
 pkgname = python-rdt
