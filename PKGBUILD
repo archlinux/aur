@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 build() {
     cd "${gitname}/"
-    meson . _build --prefix=/usr
+    meson setup _build
     ninja -C _build
 }
 
