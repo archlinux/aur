@@ -2,7 +2,7 @@
 
 pkgname=quarto-cli-bin-pre-release
 pkgver="1.5.29"
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source scientific and technical publishing system built on Pandoc  (pre-release binary from official repo)"
 arch=('x86_64')
 license=('GPL')
@@ -19,7 +19,9 @@ package() {
 
     install -d -m755 "${pkgdir}/usr/bin"
     ln -s /opt/quarto/bin/quarto "${pkgdir}/usr/bin"
-    ln -s "/opt/quarto/bin/tools/${arch}/pandoc" "${pkgdir}/opt/quarto/bin/tools/pandoc" 
+    install -d "$pkgdir/usr/share/man/man1"
+    ln -s /opt/quarto/share/man/quarto-man.man "${pkgdir}/usr/share/man/man1/quarto.1"
+    ln -s "/opt/quarto/bin/tools/${CARCH}/pandoc" "${pkgdir}/opt/quarto/bin/tools/pandoc" 
 }
 
 sha256sums=('5256167b1b8f682e0a0685b848bd8b429eeb2f169fc92b347f762d08128fe897')
