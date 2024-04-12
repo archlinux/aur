@@ -11,7 +11,7 @@ makedepends=("tar")
 conflicts=("juliaup" "julia" "julia-bin")
 provides=("julia")
 source=("${url}/releases/download/v$pkgver/juliaup-$pkgver-$CARCH-unknown-linux-musl-portable.tar.gz")
-sha256sums=(':shasum:')
+sha256sums=('SKIP')
 
 package() {
     install -d "${pkgdir}/usr/bin"

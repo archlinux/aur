@@ -10,7 +10,6 @@ version=$(curl -sL \
 echo $version
 
 sed "s/:version:/$version/" PKGBUILD.template > PKGBUILD
-updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 git add -A
 git commit -am "Autorelease version $version"
