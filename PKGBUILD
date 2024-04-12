@@ -2,7 +2,7 @@
 
 pkgname=python-sanic-testing
 pkgver=23.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Core testing clients for Sanic'
 arch=("any")
 url='https://github.com/sanic-org/sanic-testing/'
