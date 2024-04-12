@@ -93,22 +93,21 @@ check() {
     export LD_LIBRARY_PATH="$ACE_ROOT/lib:$LD_LIBRARY_PATH"
     cd "$ACE_ROOT"
 
+    # Tests that are failing on my system
+    # (Clean chroot, kernel defaults sysctl, limits)
+    sed -i '/Bug_2610_Regression_Test/d' "$ACE_ROOT/tests/run_test.lst"
+    sed -i '/Bug_2740_Regression_Test/d' "$ACE_ROOT/tests/run_test.lst"
+    sed -i '/Bug_3943_Regression_Test/d' "$ACE_ROOT/tests/run_test.lst"
+    sed -i '/MT_Reference_Counted_Event_Handler_Test/d' "$ACE_ROOT/tests/run_test.lst"
+    sed -i '/INET_Addr_Test_IPV6/d' "$ACE_ROOT/tests/run_test.lst"
+    sed -i '/Multicast_Test_IPV6/d' "$ACE_ROOT/tests/run_test.lst"
+
     "$ACE_ROOT/bin/auto_run_tests.pl" -Config FIXED_BUGS_ONLY 2>&1 | tee tests.log
 
     local status=0
 
     echo "--- Failed tests:"
     if grep "auto_run_tests_finished" tests.log |
-        # Tests that are failing on my system
-        # (Clean chroot, kernel defaults sysctl, limits)
-        grep -v "Bug_2610_Regression_Test" |
-        grep -v "Bug_2740_Regression_Test" |
-        grep -v "Bug_3943_Regression_Test" |
-        grep -v "MT_Reference_Counted_Event_Handler_Test" |
-        grep -v "INET_Addr_Test_IPV6" |
-        grep -v "Multicast_Test_IPV6" |
-
-        # Tests that should not fail are left
         grep -v "Result:0"; then
             status=1
     else
