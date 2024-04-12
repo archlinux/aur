@@ -1,8 +1,9 @@
-# Maintainer: Ernesto Castellotti <mail@ernestocastellotti.it>
-# Co-Maintainer: Laurinyecz Zalán <laurinyeczzalan@gmail.com>
+# Maintainer: Felix Braun <hazzl@falix.de>
+# Contributor: Laurinyecz Zalán <laurinyeczzalan@gmail.com>
+# Contributor: Ernesto Castellotti <mail@ernestocastellotti.it>
 
 pkgname=boosteroid
-pkgver=1.5.1
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
@@ -15,7 +16,7 @@ makedepends=("binutils" "tar" "coreutils" "wget")
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 source=("https://boosteroid.com/linux/installer/boosteroid-install-x64.deb")
-md5sums=("9638890e59de0c9c5e50f52e14df97a7")
+md5sums=("936f6c2bd325ea8008fd3f4ac84251a0")
 
 prepare() {
   cd "$srcdir"
@@ -33,8 +34,9 @@ package() {
   cd "$srcdir"
   install -dm755 "$pkgdir"/usr/bin
   install -m755 "opt/BoosteroidGamesS.R.L./bin/Boosteroid" "$pkgdir"/usr/bin/"$pkgname"
-  install -dm755 "$pkgdir"/usr/share/{applications,icons/Boosteroid}
+  install -dm755 "$pkgdir"/usr/share/{applications,icons/Boosteroid,licenses/Boosteroid}
   install -m644 usr/share/applications/Boosteroid.desktop "$pkgdir"/usr/share/applications/Boosteroid.desktop
   install -m644 usr/share/icons/Boosteroid/icon.svg "$pkgdir"/usr/share/icons/Boosteroid/icon.svg
+  install -m644 opt/BoosteroidGamesS.R.L./bin/ToU.txt "$pkgdir"/usr/share/licenses/Boosteroid/ToU.txt
 }
 
