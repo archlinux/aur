@@ -1,7 +1,7 @@
 pkgbase = python-jsonschema-objects
 	pkgdesc = Return the jsonschema-objects true value of an iterable
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cwacek/python-jsonschema-objects
 	arch = any
 	license = MIT

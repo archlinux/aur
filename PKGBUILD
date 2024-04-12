@@ -2,7 +2,7 @@
 
 pkgname=python-jsonschema-objects
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Return the jsonschema-objects true value of an iterable"
 url="https://github.com/cwacek/python-jsonschema-objects"
 license=('MIT')
