@@ -1,92 +1,117 @@
-# Maintainer: MatrixDJ96
-# Contributor: mirh
-# Contributor: DJ_L
-# Contributor: josephgbr
+# Maintainer: Andrew Kozik <andrewkoz at live dot com>
 
+_name=backends
 pkgname=lib32-sane
-pkgver=1.2.1
-pkgrel=2
-pkgdesc='Scanner Access Now Easy (32-bits)'
-url='http://www.sane-project.org'
-arch=('x86_64')
-license=('GPL')
+pkgver=1.3.0
+pkgrel=1
+pkgdesc="Scanner Access Now Easy (32-bit)"
+arch=(x86_64)
+url="https://gitlab.com/sane-project/backends"
+license=(
+  GPL-2.0-or-later
+  LicenseRef-GPL-2.0-or-later-with-linking-exception
+)
 depends=(
-  'lib32-gcc-libs' # 'libgcc_s.so' 'libstdc++.so' 'libc.so'
-  'lib32-glibc' # 'libm.so'
-  'lib32-libieee1284' # 'libieee1284.so'
-  'lib32-net-snmp' # 'libnetsnmp.so'
-  'lib32-v4l-utils' # 'libv4l1.so'
-  'lib32-avahi' # 'libavahi-client.so' 'libavahi-common.so'
-  'lib32-curl' 'libcurl.so'
-  'lib32-libgphoto2' # 'libgphoto2.so' 'libgphoto2_port.so'
-  'lib32-glib2' 'libglib-2.0.so' 'libgobject-2.0.so'
-  'lib32-poppler-glib' 'libpoppler-glib.so'
-  'lib32-libtiff' 'libtiff.so'
-  'lib32-libusb' 'libusb-1.0.so'
-  'lib32-libxml2' 'libxml2.so'
-  'lib32-cairo' 'libcairo.so'
-  'lib32-libjpeg-turbo' 'libjpeg.so'
-  'lib32-libpng' 'libpng16.so'
-  "sane=${pkgver}"
+  ${pkgname#lib32-}
+  lib32-cairo
+  lib32-gcc-libs
+  lib32-glibc
+  lib32-libpng
+  lib32-libieee1284
+  lib32-net-snmp
+  lib32-v4l-utils
 )
 makedepends=(
-  'autoconf-archive'
-  'texlive-latexextra'
+  autoconf-archive
+  lib32-avahi
+  lib32-curl
+  lib32-glib2
+  lib32-libgphoto2
+  lib32-libjpeg-turbo
+  lib32-libtiff
+  lib32-libusb
+  lib32-libxml2
+  lib32-poppler-glib
+  python
+  texlive-latexextra
 )
-provides=('libsane.so')
-source=("https://gitlab.com/sane-project/backends/-/archive/${pkgver}/backends-${pkgver}.tar.gz")
-sha256sums=('11be4ef05a61277d18698c2c9d86495dff97557bc8da7af44e3f6ef5154e9ea8')
+optdepends=(
+  'lib32-sane-airscan: for scanners working in driverless mode'
+)
+provides=(libsane.so)
+source=(
+  $url/-/archive/$pkgver/$_name-$pkgver.tar.gz
+)
+sha512sums=('e1b139d2588dee2d4478b4b3001c1d164ef293bf268720c73b001fdfd5b18b0a2052c692b9af55a09c06ec4242de6a0006c7956a7da4253fc5fd1e560d3b528b')
+b2sums=('f6413f374f2d05bec08c3490c03ff6d69e0b902b5907acd6d96aa6ae255865adb9d3dd68b774795d33a8a19c27b5fe337af29e239e4178e1f3882f302d6bcdd2')
 
 prepare() {
-  mkdir -p build
+  # extract custom license exception
+  sed '1,41p' $_name-$pkgver/backend/dll.c > LicenseRef-GPL-2.0-or-later-with-linking-exception.txt
 
-  cd "backends-${pkgver}"
+  cd $_name-$pkgver
+  # copy translation files so they become reproducible: https://gitlab.com/sane-project/backends/-/issues/647
+  cp -v po/en{_GB,@quot}.po
+  cp -v po/en{_GB,@boldquot}.po
   # create version files, so that autotools macros can use them:
   # https://gitlab.com/sane-project/backends/-/issues/440
-  echo "${pkgver}" > .tarball-version
-  echo "${pkgver}" > .version
+  printf "%s\n" "$pkgver" > .tarball-version
+  printf "%s\n" "$pkgver" > .version
   autoreconf -fiv
 }
 
 build() {
-
   export CC="gcc -m32"
   export CXX="g++ -m32"
-  export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
+  export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
-  export SNMP_CONFIG_PATH="/usr/bin/net-snmp-config-32"
+  local configure_options=(
+    --host=i686-pc-linux-gnu
+    --prefix=/usr
+    --libdir=/usr/lib32
+    --disable-locking
+    --disable-rpath
+    --docdir="/usr/share/doc/$pkgname"
+    --enable-pthread
+    --localstatedir=/var
+    --sbindir=/usr/bin
+    --sysconfdir=/etc
+    --with-avahi
+    --with-libcurl
+    --with-pic
+    --with-poppler-glib
+    --with-systemd
+    --with-usb
+  )
 
-  cd build
-  ../"backends-${pkgver}"/configure \
-    --prefix=/usr \
-    --disable-locking \
-    --disable-rpath \
-    --with-docdir=/usr/share/doc/sane \
-    --enable-pthread \
-    --localstatedir=/var \
-    --sbindir=/usr/bin \
-    --sysconfdir=/etc \
-    --libdir=/usr/lib32 \
-    --with-avahi \
-    --with-libcurl \
-    --with-pic \
-    --with-poppler-glib \
-    --with-usb \
-    --host=i686-linux-gnu
+  cd $_name-$pkgver
+  ./configure "${configure_options[@]}"
 
   # circumvent overlinking in libraries
   sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' -i libtool
-
   make
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  depends+=(
+    lib32-avahi
+    lib32-curl
+    lib32-glib2
+    lib32-libgphoto2
+    lib32-libjpeg-turbo
+    lib32-libtiff
+    lib32-libusb
+    lib32-libxml2
+    lib32-poppler-glib
+  )
 
-  rm -rf "${pkgdir}/etc"
-  rm -rf "${pkgdir}/usr/bin"
-  rm -rf "${pkgdir}/usr/include"
-  rm -rf "${pkgdir}/usr/share"
+  cd $_name-$pkgver
 
-  install -Dm644 "backends-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  make DESTDIR="$pkgdir" install
+
+  # Remove conflicting files
+  rm -rf "${pkgdir}"/{etc,usr/{share,lib,include,bin}}
+
+  # install custom license
+  install -vDm 644 ../LicenseRef-GPL-2.0-or-later-with-linking-exception.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
