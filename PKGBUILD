@@ -1,6 +1,7 @@
-# Maintainer: Abdelhak Bougouffa <abougouffa@fedoraproject.org>
+# Maintainer: H. Ryott Glayzer <code@ryott.gay>
+# Contributor: Abdelhak Bougouffa <abougouffa@fedoraproject.org>
 pkgname=beamer-theme-metropolis
-pkgver=r476.2fa6084
+pkgver=1.2
 pkgrel=1
 pkgdesc="A modern LaTeX Beamer theme"
 url="https://github.com/matze/mtheme"
