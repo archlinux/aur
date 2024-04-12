@@ -20,6 +20,7 @@ configure() {
 
 if [ "$1" = "--mkpfx" ]; then # Force reconfigure prefix
     configure
+    exit 0
 elif [ "$1" = "--erase" ]; then # delete all data in prefix
     rm -rf $WINEPREFIX
     exit 0
@@ -43,4 +44,4 @@ else
     echo ""
 fi
 
-wine $SAPPYDIR/sappy.exe
+wine $SAPPYDIR/sappy.exe "$(winepath -w "$1")"
