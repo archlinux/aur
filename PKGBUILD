@@ -1,6 +1,6 @@
 _pkgname=ddns-go
 pkgname=${_pkgname}-bin
-pkgver="6.3.1"
+pkgver="6.3.2"
 pkgrel=1
 pkgdesc='A simple, easy-to-use ddns service optimized for Chinese Mainland users'
 license=('MIT')
@@ -13,8 +13,8 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('4a8086b2ef19c1c2f9c60f7cae5b852e6ce4a28a11709065f5099f001f8b6934'
             'caf121192d465753c553163c8cd6fe56b3a5d27edf9fbce489bb3c1e7c27fe65')
-sha256sums_x86_64=('fd1e52312d824f37cb643ccfb65b97c413a626734f92dae488a1b7733d6bd6b6')
-sha256sums_aarch64=('70a9aaba9f41a14bffa80fbf5608b0fea0b532f83ad691b9086ddfb4f89037bf')
+sha256sums_x86_64=('65c39e4f69335a3db7dafa563f6c5092b45261b05e9251e1116e851bb254e1ab')
+sha256sums_aarch64=('7da31157216b8a618e111915d62cf83aecc7bb5197ad26db3b9a7e159ae615ae')
 install=ddns-go.install
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = ddns-go-bin
 	pkgdesc = A simple, easy-to-use ddns service optimized for Chinese Mainland users
-	pkgver = 6.3.1
+	pkgver = 6.3.2
 	pkgrel = 1
 	url = https://github.com/jeessy2/ddns-go
 	install = ddns-go.install
@@ -13,9 +13,9 @@ pkgbase = ddns-go-bin
 	source = ddns-go.install
 	sha256sums = 4a8086b2ef19c1c2f9c60f7cae5b852e6ce4a28a11709065f5099f001f8b6934
 	sha256sums = caf121192d465753c553163c8cd6fe56b3a5d27edf9fbce489bb3c1e7c27fe65
-	source_x86_64 = https://github.com/jeessy2/ddns-go/releases/download/v6.3.1/ddns-go_6.3.1_linux_x86_64.tar.gz
-	sha256sums_x86_64 = fd1e52312d824f37cb643ccfb65b97c413a626734f92dae488a1b7733d6bd6b6
-	source_aarch64 = https://github.com/jeessy2/ddns-go/releases/download/v6.3.1/ddns-go_6.3.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 70a9aaba9f41a14bffa80fbf5608b0fea0b532f83ad691b9086ddfb4f89037bf
+	source_x86_64 = https://github.com/jeessy2/ddns-go/releases/download/v6.3.2/ddns-go_6.3.2_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 65c39e4f69335a3db7dafa563f6c5092b45261b05e9251e1116e851bb254e1ab
+	source_aarch64 = https://github.com/jeessy2/ddns-go/releases/download/v6.3.2/ddns-go_6.3.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7da31157216b8a618e111915d62cf83aecc7bb5197ad26db3b9a7e159ae615ae
 
 pkgname = ddns-go-bin
