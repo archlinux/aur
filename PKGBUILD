@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=own3d-desktop-git
 _pkgname="OWN3D Pro Desktop"
-pkgver=r5.e09e55b
+pkgver=2.0.0.r2.g245f401
 _electronversion=29
 pkgrel=1
 pkgdesc="Public Development Preview of the OWN3D Desktop App"
@@ -27,8 +27,7 @@ sha256sums=('SKIP'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    #git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
