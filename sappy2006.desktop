@@ -8,3 +8,4 @@ Icon=sappy2006
 Terminal=false
 StartupNotify=false
 Categories=Wine;AudioVideo;
+MimeType=application/x-gba-rom;
