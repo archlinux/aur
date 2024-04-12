@@ -24,6 +24,7 @@ pkgbase = cassette
 	depends = libxml2
 	depends = gstreamer
 	depends = webkitgtk-6.0
+	optdepends = glide
 	provides = cassette
 	conflicts = cassette
 	source = git+https://github.com/rirusha/cassette.git
