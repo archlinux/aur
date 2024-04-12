@@ -1,11 +1,10 @@
 pkgbase = r-here
 	pkgdesc = A Simpler Way to Find Your Files
 	pkgver = 1.0.1
-	pkgrel = 7
+	pkgrel = 9
 	url = https://cran.r-project.org/package=here
 	arch = any
 	license = MIT
-	depends = r
 	depends = r-rprojroot
 	optdepends = r-conflicted
 	optdepends = r-covr
@@ -20,6 +19,7 @@ pkgbase = r-here
 	optdepends = r-uuid
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/here_1.0.1.tar.gz
-	sha256sums = 08ed908033420d3d665c87248b3a14d1b6e2b37844bf736be620578c20ca346b
+	md5sums = 67367162e286ae95c06abb6e7d70dd75
+	b2sums = 840269e8beaf58ef987bdb54fe51110e39d3e071da0623cb9b687d752b80714837a415fdf7618b1c6fa02fe8f5facd0aa700e82d34f6d2ca4579294af410ac71
 
 pkgname = r-here
