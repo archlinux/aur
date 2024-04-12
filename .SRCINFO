@@ -1,6 +1,6 @@
 pkgbase = beamer-theme-metropolis
 	pkgdesc = A modern LaTeX Beamer theme
-	pkgver = r476.2fa6084
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/matze/mtheme
 	install = beamer-theme-metropolis.install
