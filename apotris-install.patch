@@ -13,16 +13,16 @@ index cbcfb10..6b6c4a7 100644
 +    install_data(filename, install_dir : 'share/apotris', install_mode : 'rw-r--r--')
  endforeach
 diff --git a/meson.build b/meson.build
-index 2c7318a..71d85ae 100644
+index f1964fc..8ddd9c0 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -215,7 +215,8 @@ if host_machine.system() != 'gba'
-         dependencies : dependencies,
-         link_args : link_args,
-         gui_app : true,
--        install_rpath: 'lib'
-+        install : true,
-+        install_dir : 'lib/apotris'
-     )
+@@ -294,7 +294,8 @@ if host_machine.system() != 'gba'
+             dependencies : dependencies,
+             link_args : link_args,
+             win_subsystem : 'windows',
+-            install_rpath: 'lib'
++            install : true,
++            install_dir : 'lib/apotris'
+         )
+     endif
  else
-     ##########################################
