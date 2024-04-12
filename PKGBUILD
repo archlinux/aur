@@ -1,14 +1,14 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=pineapple-pictures
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=2
 pkgdesc='Yet another lightweight image viewer'
 arch=('x86_64' 'aarch64')
 url='https://github.com/BLumia/pineapple-pictures/'
 license=('MIT')
 depends=(
-    'qt5-svg'
+    'qt6-svg'
     'exiv2'
 )
 makedepends=(
@@ -17,14 +17,14 @@ makedepends=(
     'cmake'
 )
 optdepends=(
-    'kimageformats5: XCF, EXR, PSD and other extra image format support'
-    'qt5-imageformats: TIFF, WEBP, and other extra image formats'
+    'kimageformats: XCF, EXR, PSD and other extra image format support'
+    'qt6-imageformats: TIFF, WEBP, and other extra image formats'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/BLumia/pineapple-pictures/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-	'39fe3f3db1c266f4779998e62fbfcc3ac4ac4341de87977ff1daa1015fcad54c'
+	'9f1f83afc455b15f3cfccf62cd661c7a11e3f425874c1b45a5336af5574e39bb'
 )
 
 build () {
