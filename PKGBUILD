@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aihub-git
 _pkgname=AIHub
-pkgver=1.4.3.r0.g4844dae
+pkgver=1.5.0.r0.g5d80a36
 _electronversion=29
 pkgrel=1
 pkgdesc="A collection of large model capabilities of the client.一款集合多家大模型能力的客户端"
@@ -15,19 +15,19 @@ depends=(
 )
 makedepends=(
     'npm'
-    'nodejs'
+    'nodejs>=21.1.0'
     'gendesk'
     'git'
 )
 source=(
-    "${pkgname//-/.}::git+${url}.git#tag=v${pkgver}"
+    "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh"
 )
-sha256sums=('9648d1914370a3a372c16be5d5bf132fb631fa20b9ab5496c451ddf37af2cdc0'
+sha256sums=('SKIP'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
