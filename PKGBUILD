@@ -35,7 +35,7 @@ package() {
     install -d "$pkgdir/usr/bin/"
 
     cp -r "$srcdir/$pkgname-$pkgver/publish/"* "$pkgdir/opt/$pkgname/"
-    ln -s "/opt/sourcegit/SourceGit" "$pkgdir/usr/bin/$_bin"
+    ln -s "/opt/$pkgname/$_bin" "$pkgdir/usr/bin/$_bin"
 
     install -Dm644 "sourcegit.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -Dm644 "$srcdir/$pkgname-$pkgver/App_256x256x32.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
