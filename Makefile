@@ -7,12 +7,12 @@ branch = master
 all: .SRCINFO
 
 fetch:
-	git remote show | grep github || git remote add $(remote) $(repo)
-	git fetch $(remote)
+	git remote show | grep -q "^$(remote)$$" || git remote add "$(remote)" "$(repo)"
+	git fetch "$(remote)"
 
-version: VERSION = "$(shell git describe --tags $(remote)/$(branch) | cut -d- -f1)"
+version: VERSION = $(shell git describe --tags $(remote)/$(branch) | cut -d- -f1)
 version: fetch
-	echo $(VERSION) > $@
+	echo "$(VERSION)" > $@
 	touch -d "$(shell git show -s --format=%ci $(VERSION))" $@
 
 PKGBUILD: version
