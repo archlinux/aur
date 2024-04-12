@@ -1,0 +1,5 @@
+[python-micro-manager-precice]
+source = "github"
+github = "precice/micro-manager"
+use_max_tag = "true"
+prefix = "v"
