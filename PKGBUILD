@@ -2,7 +2,7 @@
 
 pkgname=stylelint
 pkgver=16.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Mighty, modern CSS linter'
 arch=('any')
 url=https://stylelint.io
