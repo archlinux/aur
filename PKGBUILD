@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=gtksheet
-pkgver=4.3.5
+pkgver=4.3.13
 pkgrel=1
 pkgdesc="A spreadsheet widget for gtk3"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=(gtk3 pango cairo atk glade gobject-introspection)
 makedepends=(autoconf)
 source=(https://github.com/fpaquet/gtksheet/archive/V${pkgver}.tar.gz)
-sha256sums=('05671e656aee687294486d4041e2227fc971cd4fc7b43f6c1ca66a7c7b1ebf6d')
+sha256sums=('48db0b057de1792c705f20a2c756d819d6e05e6e9e27304c5bab7126093729b3')
 
 prepare() {
   cd gtksheet-${pkgver}
