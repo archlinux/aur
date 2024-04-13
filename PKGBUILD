@@ -2,7 +2,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname=wails
-pkgver=2.8.0
+pkgver=2.8.0 # renovate: datasource=github-tags depName=wailsapp/wails
 pkgrel=1
 pkgdesc="Create desktop apps using Go and Web Technologies"
 arch=(x86_64)
