@@ -1,0 +1,4 @@
+[playdate-sdk]
+source = "httpheader"
+url = "https://download-cdn.panic.com/playdate_sdk/Linux/PlaydateSDK-latest.tar.gz"
+regex = ".*SDK-(.*)\\.tar\\.gz"
