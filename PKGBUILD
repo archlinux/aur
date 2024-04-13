@@ -2,7 +2,7 @@
 
 _pkgname=imap_tools
 pkgname=python-imap-tools
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=2
 pkgdesc="Work with email and mailbox by IMAP"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=()
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/ikvk/imap_tools/archive/v$pkgver.tar.gz")
-sha256sums=('35542a5e275f7be60c337f208cedfdfa132c7f3cd663ecc774aed312af266958')
+sha256sums=('8439abe9446a328e2308d74b7f3bd30a1688d8e915250f9404a9b0993938d472')
 
 build() {
   cd "$_pkgname-$pkgver" || exit
