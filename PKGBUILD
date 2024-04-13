@@ -1,9 +1,9 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=harmonyvpktool
-pkgver=2.0.0.alpha.2
-_commit=21a253f3b2f19de9bdf17d1af33ad35a6c4bf865
-pkgrel=5
+pkgver=2.0.0.alpha.3
+_commit=26e3c9550a56bdf4fb1639fe89bded4f05fa7bc5
+pkgrel=1
 pkgdesc="An all new Titanfall VPK unpacker. Over 2x faster than the most popular alternative! (ALPHA pre-release)"
 url="https://github.com/harmonytf/HarmonyVPKTool"
 license=('GPL-3.0-or-later')
