@@ -1,0 +1,5 @@
+[aws-credential-1password]
+source = "github"
+github = "claui/aws-credential-1password"
+prefix = "v"
+use_max_tag = true
