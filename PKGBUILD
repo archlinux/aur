@@ -6,12 +6,12 @@ pkgrel=1
 pkgdesc="A bootstrapping and management tool for k0s clusters."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/k0sproject/k0sctl"
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('go>=1.21')
 provides=(k0sctl)
 validpgpkeys=(5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23)
 source=("git+https://github.com/k0sproject/k0sctl.git#commit=372a589d00374d047bd4bb93724d8fdc2f81ac08")
-sha256sums=('SKIP')
+sha256sums=('9dffb7280643ec3d721adac1a9f4a3ce468728cfdc981b32b9292a7ecd131695')
 
 build() {
   cd "k0sctl"
