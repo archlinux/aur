@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRBaseConverter
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,9 +19,9 @@ optdepends=(
   r-rtracklayer
   r-runit
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0164410dd1aea8865c0b1f6821572c14')
-b2sums=('f73cd6f9186f59a7a50554ec57e80e4800b825458dd08774ce5df7b4eaec6f7763edd266b8427ccf3f53890a2db1b8570d046d3b6c5a3bb6375e937945c602f1')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('c823ce909e1ae3a584fb5790fecf6b54')
+b2sums=('d2daa90dd62648bbb4a4f9e37cf6038aac0c313ddaa46ac07b317fbedbcc1e4a207dc2cd491888f30c8218bd7a8911c7052fb839b9e5acbcbd5108f3789963d4')
 
 build() {
   mkdir build
