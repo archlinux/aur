@@ -1,47 +1,41 @@
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
 pkgname=cute
-pkgver=2.0.0
-_pkgver=2_0_0
-_downloadid=61
-pkgrel=3
-pkgdesc="An easy to use C++ unit testing framework"
-arch=("any")
-url="http://www.cute-test.com/"
-license=("LGPL")
-depends=("boost-libs")
-source=("http://www.cute-test.com/attachments/download/${_downloadid}/${pkgname}${_pkgver}.tar.gz")
-sha256sums=('87ff94560a2fe8b978d06f40023b22c0ae9b87cf02716b019afe9f84551e14aa')
+_pkgname=CuTE
+pkgver=0.1.1
+pkgrel=1
+pkgdesc="TUI HTTP client with API/auth key management and request history/storage"
+arch=('x86_64')
+url="https://github.com/PThorpe92/CuTE"
+license=('GPL3')
+depends=('gcc-libs' 'curl')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('25a0e9c843d29912b4fe1f8c0a1904b10c0870d84c07752f6efd3977263e2e239dbb7c968ab5d4644bdbdf77582d9ef6e24b0b771b284fbe46f17fb84adc046c')
+options=('!lto')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "$_pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release --frozen
+}
 
 check() {
-  cd ${srcdir}/cute_tests
-  echo -e "\e[1m  \e[34m->\e[39m Building CUTE test suite...\e[0m"
-  g++ -Wall -I../cute_lib/ main.cpp \
-    test_cute.cpp \
-    test_cute_data_driven.cpp \
-    test_cute_equals.cpp \
-    test_cute_expect.cpp \
-    test_cute_filter_runner.cpp \
-    test_cute_relops.cpp \
-    test_cute_runner.cpp \
-    test_cute_suite.cpp \
-    test_cute_suite_test.cpp \
-    test_cute_test.cpp \
-    test_cute_test_incarnate.cpp \
-    test_cute_testmember.cpp \
-    test_cute_to_string.cpp \
-    test_cute_to_string_embedded.cpp \
-    test_repeated_test.cpp \
-    test_xml_file_opener.cpp \
-    test_xml_listener.cpp \
-    -o test
-  echo -e "\e[1m  \e[34m->\e[39m Running CUTE test suite...\e[0m"
-  ./test > /dev/null
-  echo -e "\e[1m  \e[34m->\e[39m OK!\e[0m"
+  cd "$_pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/include/cute
-  cd ${srcdir}/cute_lib/
-  cp *.h ${pkgdir}/usr/include/cute/
+  cd "$_pkgname-$pkgver"
+  install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
-
-# vim:set ts=2 sw=2 et:

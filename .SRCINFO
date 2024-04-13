@@ -1,13 +1,15 @@
 pkgbase = cute
-	pkgdesc = An easy to use C++ unit testing framework
-	pkgver = 2.0.0
-	pkgrel = 3
-	url = http://www.cute-test.com/
-	arch = any
-	license = LGPL
-	depends = boost-libs
-	source = http://www.cute-test.com/attachments/download/61/cute2_0_0.tar.gz
-	sha256sums = 87ff94560a2fe8b978d06f40023b22c0ae9b87cf02716b019afe9f84551e14aa
+	pkgdesc = TUI HTTP client with API/auth key management and request history/storage
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/PThorpe92/CuTE
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gcc-libs
+	depends = curl
+	options = !lto
+	source = cute-0.1.1.tar.gz::https://github.com/PThorpe92/CuTE/archive/v0.1.1.tar.gz
+	sha512sums = 25a0e9c843d29912b4fe1f8c0a1904b10c0870d84c07752f6efd3977263e2e239dbb7c968ab5d4644bdbdf77582d9ef6e24b0b771b284fbe46f17fb84adc046c
 
 pkgname = cute
-
