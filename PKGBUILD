@@ -26,7 +26,7 @@ package() {
   zip -r \
     "$pkgdir/usr/lib/firefox/browser/extensions/{b86e4813-687a-43e6-ab65-0bde4ab75758}.xpi" \
     * -x '.git*' 'audit/*'
-  strip-nondeterminism -t zip "$pkgdir"/usr/lib/firefox/browser/extensions/*.xpi
+  /usr/bin/vendor_perl/strip-nondeterminism -t zip "$pkgdir"/usr/lib/firefox/browser/extensions/*.xpi
 
   # create symlink for librewolf
   install -d "$pkgdir/usr/lib/librewolf/browser/extensions/"
