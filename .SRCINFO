@@ -1,17 +1,17 @@
 pkgbase = zaman
 	pkgdesc = A simple cli tool that prints (or saves) man pages in a PDF file for an easier reading
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/Antiz96/zaman
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = man-db
 	depends = zathura
 	optdepends = zathura-pdf-poppler: PDF support for zathura using the poppler engine
 	optdepends = zathura-pdf-mupdf: PDF support for zathura using the MuPDF backend
 	optdepends = rofi: Rofi support
 	optdepends = dmenu: Dmenu support
-	source = zaman-1.2.2.tar.gz::https://github.com/Antiz96/zaman/archive/v1.2.2.tar.gz
-	sha256sums = b040ff5b84d3fd19391636815ad4b421b517b7c5995f35c30ecf0ba627d20b2d
+	source = zaman-1.2.3.tar.gz::https://github.com/Antiz96/zaman/archive/v1.2.3.tar.gz
+	sha256sums = 457d61e0437615f7b823e7ac61a4e77b343363fa67ef97045317c5bd64b404f1
 
 pkgname = zaman

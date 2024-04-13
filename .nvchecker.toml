@@ -1,0 +1,6 @@
+[zaman]
+source = "github"
+github = "Antiz96/zaman"
+prefix = "v"
+use_max_tag = true
+exclude_regex = ".*(pre|a|alpha|b|beta|r|rc).*"
