@@ -1,0 +1,16 @@
+pkgbase = nrdiag-bin
+	pkgdesc = New Relic Diagnostics CLI tool
+	pkgver = 3.2.6
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	groups = newrelic
+	license = Apache
+	provides = nrdiag
+	conflicts = nrdiag
+	source_x86_64 = https://download.newrelic.com/nrdiag/nrdiag_3.2.6_Linux_x64.tar.gz
+	sha256sums_x86_64 = a3aa9b5c366eaa9dc8e6c8d63c577049d44cd41353c80009488134b139284133
+	source_aarch64 = https://download.newrelic.com/nrdiag/nrdiag_3.2.6_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4f5f17329ed358c29602c6120de84d7986abb84fdb63407615804853337dd2cf
+
+pkgname = nrdiag-bin
