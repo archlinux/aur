@@ -1,0 +1,4 @@
+[bizhawk-monort]
+source = "github"
+github = "TASVideos/BizHawk"
+use_latest_release = true
