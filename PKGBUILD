@@ -4,8 +4,8 @@
 
 _gemname=foreman
 pkgname=ruby-${_gemname}
-pkgver=0.87.2
-pkgrel=2
+pkgver=0.88.1
+pkgrel=1
 pkgdesc="Process manager for Procfile based applications"
 arch=('any')
 depends=('ruby')
@@ -17,7 +17,7 @@ source=(
 	"$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/ddollar/$_gemname/v$pkgver/LICENSE"
 )
 options=(!emptydirs)
-sha256sums=('2727bc6e2100bf80b76e391aefe8c30a9d172b4a8acf56f072f94ffeedeeef6b'
+sha256sums=('59c022125b6a328a2ce63da8d70b731f5dd13519e8d9a4184c696538088ea00a'
             '2ea6256739b0f021fc38053d3c9ce7103a404033b946c0d7f660b34097044d2e')
 
 package() {
