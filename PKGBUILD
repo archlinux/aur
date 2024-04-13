@@ -1,7 +1,7 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit-git
 pkgver=VERSION
-pkgrel=9
+pkgrel=10
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -46,6 +46,7 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
 	mkdir -p "$pkgdir/usr/bin"
+	ln -s "/opt/toit-sdk/bin/toit" "$pkgdir/usr/bin"
 	ln -s "/opt/toit-sdk/bin/toit.run" "$pkgdir/usr/bin"
 	ln -s "/opt/toit-sdk/bin/toit.compile" "$pkgdir/usr/bin"
 	ln -s "/opt/toit-sdk/bin/toit.pkg" "$pkgdir/usr/bin"
