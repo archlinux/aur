@@ -60,6 +60,14 @@ source=("${pkgname}::git+${url}.git#branch=master"
 sha256sums=('SKIP'
             '9e9d26e7df431299e84c92dda99a17cb471ee15b29a280adc34fb247891e8ca5')
 
+pkgver() {
+	git -C "$pkgname" describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
+}
+
+prepare() {
+	git -C "${pkgname}" am "${srcdir}"/frog.patch
+}
+
 build() {
 	cmake -B build -S "${pkgname}" \
 		-DCMAKE_BUILD_TYPE='Release' \
