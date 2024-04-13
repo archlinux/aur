@@ -1,7 +1,7 @@
 pkgbase = python-pyftdi
 	pkgdesc = FTDI device driver written in pure Python
 	pkgver = 0.55.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eblot/pyftdi
 	arch = any
 	license = BSD-3-Clause
