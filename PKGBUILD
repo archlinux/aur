@@ -13,6 +13,8 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
+    firefox
+    geckodriver
     glibc
     gc
     gcc-libs
@@ -24,9 +26,7 @@ depends=(
 makedepends=(git
     crystal
     shards)
-optdepends=("goldendict: Feature-rich dictionary lookup program supporting multiple dictionary formats"
-    "firefox: Standalone web browser from mozilla.org"
-    "geckodriver: Proxy for using W3C WebDriver-compatible clients to interact with Gecko-based browsers.")
+optdepends=("goldendict: Feature-rich dictionary lookup program supporting multiple dictionary formats")
 backup=()
 options=()
 install=
@@ -48,7 +48,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
     export LDFLAGS+=" -Wl,-z,relro,-z,now -Wl,-z,shstk"
-    make
+    make release
 }
 
 package() {
