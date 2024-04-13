@@ -5,10 +5,10 @@ pkgbase = libnpy
 	url = https://github.com/llohse/libnpy
 	arch = any
 	license = MIT
+	checkdepends = meson
 	checkdepends = cmake
 	checkdepends = catch2-v2
 	checkdepends = python-numpy
-	makedepends = meson
 	source = libnpy-1.0.1.tar.gz::https://github.com/llohse/libnpy/archive/v1.0.1.tar.gz
 	sha512sums = faeff4f620025f1f5358498dcfb2eed97aa27ece2a9ee323d177d1dce149d029e0cb0d4a9b5b356027c651ab591e7bd75aa09b6c079b851c27444183e95ff16b
 
