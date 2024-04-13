@@ -1,7 +1,7 @@
 # Maintainer: Sterophonick
 
-pkgname=winarcadia
-_pkgname='winarcadia'
+pkgname=winarcadia-bin
+_pkgname='winarcadia-bin'
 pkgver=32.2
 pkgrel=1
 pkgdesc='Emulator/Debugger of various Signetics 2650 game consoles'

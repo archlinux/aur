@@ -1,4 +1,4 @@
-pkgbase = winarcadia
+pkgbase = winarcadia-bin
 	pkgdesc = Emulator/Debugger of various Signetics 2650 game consoles
 	pkgver = 32.2
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = winarcadia
 	source = winarcadia.png
 	md5sums = 09e40489338dc664645a16601348458a
 
-pkgname = winarcadia
+pkgname = winarcadia-bin
 
