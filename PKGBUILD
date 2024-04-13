@@ -3,7 +3,7 @@
 
 pkgname=python-pytest-pylint
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='pytest plugin to check source code with pylint'
 arch=('any')
 url='https://github.com/carsongee/pytest-pylint'
@@ -23,7 +23,7 @@ makedepends=(
 )
 _commit='229b64fcef27c5ac436f3b3a3d0ca07df0bf8b52'
 source=("$pkgname::git+$url#commit=$_commit")
-b2sums=('SKIP')
+b2sums=('9d68725b60c7723e7c014212a0015c2fd2aad7099b271b922b41fdffd3b54225a4b3fd08c4a8aeb9354e10264b43e48df35093f2e7678af731ab7b7636f41e4b')
 
 pkgver() {
   cd "$pkgname"
