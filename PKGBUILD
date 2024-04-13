@@ -1,7 +1,7 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=irreader
 pkgver=1.6.13
-pkgrel=3
+pkgrel=1
 pkgdesc="订阅网页、RSS和Podcast，具备急速的阅读体验，"
 arch=(x86_64 aarch64)
 url="http://irreader.fatecore.com/"
@@ -37,11 +37,13 @@ exports.vip_source_limit = Infinity;
 	pushd app
 	cp -av $srcdir/napi-* ./node_modules/sqlite3/lib/binding
 	rm -vrf ./node_modules/node-gyp/
+	rm -vrf ./node_modules/sqlite3/{build-tmp-napi-v6,deps}
+	find . \( -name "cli.js" -or -name "bin.js" \) -delete
 }
 
 package() {
 	install -d $pkgdir/opt/$pkgname/
-	cp -av app $pkgdir/opt/$pkgname/
+	cp -a app $pkgdir/opt/$pkgname/
 	printf "#!/bin/sh
 exec electron11 /opt/$pkgname/app \"\$@\"
 " | install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname
