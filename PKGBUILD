@@ -4,11 +4,11 @@
 _gemname=httpclient-fixcerts
 pkgname=ruby-$_gemname
 pkgver=2.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Gives something like the functionality of libwww-perl (LWP) in Ruby'
 arch=(any)
 url='https://github.com/nahi/httpclient'
-license=("custom:RUBY")
+license=("Ruby")
 depends=(ruby)
 options=(!emptydirs)
 provides=("ruby-httpclient")

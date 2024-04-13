@@ -1,10 +1,10 @@
 pkgbase = ruby-httpclient-fixcerts
 	pkgdesc = Gives something like the functionality of libwww-perl (LWP) in Ruby
 	pkgver = 2.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nahi/httpclient
 	arch = any
-	license = custom:RUBY
+	license = Ruby
 	depends = ruby
 	provides = ruby-httpclient
 	noextract = httpclient-fixcerts-2.8.5.gem
