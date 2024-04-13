@@ -1,8 +1,8 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=stdin-to-modbus-shm
-pkgrel=2
-pkgver=1.4.0
+pkgrel=1
+pkgver=1.5.0
 pkgdesc="Read instructions from stdin and write them to a modbus shared memory"
 url="https://github.com/NikolasK-source/stdin_to_modbus_shm"
 license=('GPL-3.0-only')
