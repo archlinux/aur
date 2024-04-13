@@ -1,7 +1,7 @@
 # Maintainer: Darko Mesaros<d at rko dot rs>
 _pkgname="bedrust"
 pkgname=${_pkgname}-git
-pkgver=0.7.0.73.g365b233
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A command line tool to invoke and work with Large Language models on AWS, using Amazon Bedrock"
 arch=("x86_64")
