@@ -1,6 +1,6 @@
 pkgbase = bedrust-git
 	pkgdesc = A command line tool to invoke and work with Large Language models on AWS, using Amazon Bedrock
-	pkgver = 0.7.0.73.g365b233
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/darko-mesaros/bedrust
 	arch = x86_64
