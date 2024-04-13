@@ -1,0 +1,20 @@
+pkgbase = android-x86-64-rav1e
+	pkgdesc = An AV1 encoder focused on speed and safety (Android x86-64)
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/xiph/rav1e/
+	arch = any
+	license = custom:BSD
+	makedepends = android-rust
+	makedepends = nasm
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/xiph/rav1e/archive/refs/tags/v0.7.1.tar.gz
+	source = Cargo-rav1e-0.7.1.lock::https://github.com/xiph/rav1e/releases/download/v0.7.1/Cargo.lock
+	md5sums = 2e48f60bea23049a750f0721e30cdd54
+	md5sums = 3c8e14548d37d9fd0efad829bb979e76
+
+pkgname = android-x86-64-rav1e
