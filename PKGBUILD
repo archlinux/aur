@@ -2,7 +2,7 @@
 
 pkgname=python-hid-parser-git
 pkgver=0.0.3.r25.g4b7944f
-pkgrel=1
+pkgrel=2
 pkgdesc="Typed pure Python library to parse HID report descriptors"
 url="https://github.com/usb-tools/python-hid-parser"
 license=('MIT')
@@ -11,6 +11,8 @@ provides=("python-hid-parser")
 conflicts=("python-hid-parser")
 makedepends=(
   'python-setuptools'
+  'python-build'
+  'python-installer'
   'python-wheel'
   'python-pytest'
   'python-hypothesis'
