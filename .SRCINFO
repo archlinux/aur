@@ -1,6 +1,6 @@
 pkgbase = es
 	pkgdesc = Extensible Shell derived from Plan9 rc
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = http://wryun.github.io/es-shell/
 	install = es.install
@@ -9,8 +9,7 @@ pkgbase = es
 	makedepends = bison
 	depends = readline
 	depends = termcap
-	source = https://github.com/wryun/es-shell/releases/download/v0.9.1/es-0.9.1.tar.gz
-	sha512sums = 4dfa2096e14977437e5dea3ac89e65dc08b5abbb0433af711a1759d5f719f82b24fdcc85ff764526aaae627998da4022504bb21fe96adeb3e434f29356f39593
+	source = https://github.com/wryun/es-shell/releases/download/v0.9.2/es-0.9.2.tar.gz
+	b2sums = 7d317e046f7211eb4ce3c79573a5f6809e9e5928f63b3c3a08fe07c27af5cf50f2ecd30f7406a787d8a228b263e18bbc35d9025f7b94223b5b2b7d2f32eb730e
 
 pkgname = es
-
