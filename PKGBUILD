@@ -1,12 +1,12 @@
 pkgname=mixbus32c9
 pkgver=9.2.172
-pkgrel=1
+pkgrel=2
 pkgdesc="Harrison Consoles Mixbus 32C DAW (Version 9)"
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/mixbus32c"
 license=('EULA')
 groups=('pro-audio')
-depends=('glibc' 'libcurl-gnutls')
+depends=('cairo' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libsigc++' 'libx11' 'libxext' 'sh' 'taglib' 'libcurl-gnutls' 'dbus' 'fftw' 'fluidsynth' 'fontconfig' 'glib2' 'glibmm' 'jack' 'libarchive' 'liblo' 'libpulse' 'liblrdf' 'libltc' 'libpng' 'libsamplerate' 'libsndfile' 'libusb' 'libwebsockets' 'libxml2' 'lilv' 'pango' 'pangomm' 'readline' 'rubberband' 'vamp-plugin-sdk')
 makedepends=('xdg-user-dirs')
 optdepends=('avldrums.lv2: AVLinux drumkits'
 			'gmsynth.lv2: General MIDI LV2 Synth'
