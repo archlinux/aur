@@ -1,55 +1,70 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
-_pkgname='cecilia'
-pkgname="$_pkgname-git"
-_reponame="${_pkgname}5"
-pkgver='5.4.0.r2.gf8d35ad'
-pkgrel='3'
+# Maintainer:
+# Contributor: Daniel Peukert <dan.peukert@gmail.com>
+
+## useful links
+# http://ajaxsoundstudio.com/software/cecilia
+# https://github.com/belangeo/cecilia5
+
+_pkgname="cecilia"
+pkgname="cecilia-git"
+pkgver=5.4.1.r15.gc592f8e
+pkgrel=1
 pkgdesc='Audio signal processing environment aimed at sound designers - git version'
+url="https://github.com/belangeo/cecilia5"
+license=('GPL-3.0-or-later')
 arch=('any')
-url="http://ajaxsoundstudio.com/software/$_pkgname"
-license=('GPL3')
-depends=('python>=3.6.0' 'python-pyo>=1.0.3' 'python-numpy>=1.18' 'python-wxpython')
-makedepends=('git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$pkgname::git+https://github.com/belangeo/$_reponame")
+
+makedepends=(
+  'git'
+  'imagemagick'
+)
+
+provides=("cecilia")
+conflicts=("cecilia")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
-_sourcedirectory="$pkgname"
-
 pkgver() {
-	cd "$srcdir/$_sourcedirectory/"
-	git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory/"
+  depends+=(
+    'python'
+    'python-numpy'
+    'python-wxpython'
 
-	local _libdir="usr/lib/$_pkgname"
+    # AUR
+    'python-pyo'
+  )
 
-	install -Dm644 "${_reponame^}.py" "$pkgdir/$_libdir/${_reponame^}.py"
-	cp -r --no-preserve=ownership --preserve=mode 'Resources/' "$pkgdir/$_libdir/Resources/"
+  cd "$_pkgsrc"
+  local _libdir="usr/lib/cecilia"
 
-	install -dm755 "$pkgdir/usr/bin/"
-	cat << EOF > "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "Cecilia5.py" -t "$pkgdir/$_libdir/"
+  cp -r --no-preserve=ownership --preserve=mode 'Resources/' "$pkgdir/$_libdir/Resources/"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
-cd '/usr/lib/$_pkgname/'
-exec python '${_reponame^}.py' "\$@"
-EOF
-	chmod +x "$pkgdir/usr/bin/$_pkgname"
+cd '/$_libdir/'
+exec python 'Cecilia5.py' "\$@"
+END
 
-	install -dm755 "$pkgdir/usr/share/applications/"
-	cat << EOF > "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<END
 [Desktop Entry]
 Type=Application
-Name=${_pkgname^}
+Name=Cecilia
 Comment=Audio signal processing environment aimed at sound designers
 Icon=$_pkgname
-Exec=/usr/bin/$_pkgname
+Exec=$_pkgname
 Terminal=false
 Categories=AudioVideo;Audio;
-EOF
+END
 
-	install -dm755 "$pkgdir/usr/share/pixmaps/"
-	ln -sf "/$_libdir/Resources/${_reponame^}.ico" "$pkgdir/usr/share/pixmaps/$_pkgname.ico"
+  install -dm755 "$pkgdir/usr/share/pixmaps/"
+  convert "Resources/Cecilia5.ico[4]" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
