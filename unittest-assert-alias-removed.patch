@@ -1,0 +1,79 @@
+From 74946098ce136a5b4b1d5766ca573e999c785686 Mon Sep 17 00:00:00 2001
+From: Karthikeyan Singaravelan <tir.karthi@gmail.com>
+Date: Sat, 15 Jan 2022 05:05:40 +0000
+Subject: [PATCH] Use assertEqual instead of assertEquals for Python 3.11
+ compatibility.
+
+---
+ tests/test_srtfile.py | 10 +++++-----
+ tests/test_srtitem.py | 10 +++++-----
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/tests/test_srtfile.py b/tests/test_srtfile.py
+index 819aa4d..b24e8ac 100644
+--- a/tests/test_srtfile.py
++++ b/tests/test_srtfile.py
+@@ -117,8 +117,8 @@ def test_slice(self):
+                           459)
+ 
+     def test_at(self):
+-        self.assertEquals(len(self.file.at((0, 0, 31, 0))), 1)
+-        self.assertEquals(len(self.file.at(seconds=31)), 1)
++        self.assertEqual(len(self.file.at((0, 0, 31, 0))), 1)
++        self.assertEqual(len(self.file.at(seconds=31)), 1)
+ 
+ 
+ class TestShifting(unittest.TestCase):
+@@ -137,14 +137,14 @@ def test_single_item(self):
+         srt_file = SubRipFile([
+             SubRipItem(1, {'seconds': 1}, {'seconds': 2}, 'Hello')
+         ])
+-        self.assertEquals(srt_file.text, 'Hello')
++        self.assertEqual(srt_file.text, 'Hello')
+ 
+     def test_multiple_item(self):
+         srt_file = SubRipFile([
+             SubRipItem(1, {'seconds': 0}, {'seconds': 3}, 'Hello'),
+             SubRipItem(1, {'seconds': 1}, {'seconds': 2}, 'World !')
+         ])
+-        self.assertEquals(srt_file.text, 'Hello\nWorld !')
++        self.assertEqual(srt_file.text, 'Hello\nWorld !')
+ 
+ 
+ class TestDuckTyping(unittest.TestCase):
+@@ -251,7 +251,7 @@ def test_blank_lines(self):
+ 
+     def test_missing_indexes(self):
+         items = pysrt.open(os.path.join(self.base_path, 'no-indexes.srt'))
+-        self.assertEquals(len(items), 7)
++        self.assertEqual(len(items), 7)
+ 
+ if __name__ == '__main__':
+     unittest.main()
+diff --git a/tests/test_srtitem.py b/tests/test_srtitem.py
+index f4a6f2f..9d29538 100644
+--- a/tests/test_srtitem.py
++++ b/tests/test_srtitem.py
+@@ -197,17 +197,17 @@ def test_paring_error(self):
+ 
+     def test_string_index(self):
+         item = SubRipItem.from_string(self.string_index)
+-        self.assertEquals(item.index, 'foo')
+-        self.assertEquals(item.text, 'Hello !')
++        self.assertEqual(item.index, 'foo')
++        self.assertEqual(item.text, 'Hello !')
+ 
+     def test_no_index(self):
+         item = SubRipItem.from_string(self.no_index)
+-        self.assertEquals(item.index, None)
+-        self.assertEquals(item.text, 'Hello world !')
++        self.assertEqual(item.index, None)
++        self.assertEqual(item.text, 'Hello world !')
+ 
+     def test_junk_after_timestamp(self):
+         item = SubRipItem.from_string(self.junk_after_timestamp)
+-        self.assertEquals(item, self.item)
++        self.assertEqual(item, self.item)
+ 
+ if __name__ == '__main__':
+     unittest.main()

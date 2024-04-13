@@ -5,7 +5,7 @@
 
 pkgname=python-pysrt
 pkgver=1.1.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Python parser for SubRip (srt) files"
 arch=('any')
 url="https://github.com/byroot/pysrt"
@@ -13,8 +13,15 @@ license=('GPL3')
 depends=('python-chardet')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/byroot/pysrt/archive/v$pkgver.tar.gz")
-sha512sums=('0d6b3a7ce4c8733221bfb5c3e434233d1b221fedda3c145fafe124093f1f9090b99c175e79de386717ec5f8b564c62719f377651db95a8d3c382e2bf8dccb0a8')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/byroot/pysrt/archive/v$pkgver.tar.gz"
+	"unittest-assert-alias-removed.patch")
+sha512sums=('0d6b3a7ce4c8733221bfb5c3e434233d1b221fedda3c145fafe124093f1f9090b99c175e79de386717ec5f8b564c62719f377651db95a8d3c382e2bf8dccb0a8'
+            'ff2df11cb4fdcaf20697ed390a056b320858a13793e1d33134d75ed76b8f476f90531fcc49a592787747fb7b44d818bdac2224d64b101a42a5ab4da4c9003858')
+
+prepare() {
+  cd pysrt-$pkgver
+  patch -Np1 -i ${srcdir}/unittest-assert-alias-removed.patch	
+}
 
 build() {
   cd pysrt-$pkgver
