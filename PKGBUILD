@@ -2,7 +2,7 @@
 
 pkgname=molecule-plugins
 pkgver=23.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of molecule plugins"
 arch=(any)
 url="https://github.com/ansible-community/molecule-plugins"
