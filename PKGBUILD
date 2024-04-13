@@ -24,7 +24,7 @@ source_x86_64=("https://download.cnki.net/${pkgname}_${pkgver}_amd64.deb")
 
 # strip will cause cajviewer core dumped 
 options=('!strip')
-sha256sums_x86_64=('526e294b5d73e2d69ef76edf5417ba289f98d3fde9b7cc88331f58c4aa980b32')
+sha256sums_x86_64=('3142c633d74dcf34ebaca9b7653f88ad3619f0b7a6cb689487b6cc583ec926d3')
 
 _install() {
   find ${@: 2} -type f,l -exec install -Dm$1 {} ${pkgdir}/{} \;
