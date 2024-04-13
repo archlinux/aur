@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRmine
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Data package with miRNA-seq datasets from miRmine database as RangedSummarizedExperiment"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -18,9 +18,9 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4f2bfc5c74548b15515c808c2994a5f9')
-b2sums=('329ec39e901e026dcd62dc7e231350fde75c6718fe7b4bdd4407e1a7ab7836558364fdbecbaeb9ea90d7588da086219217f70f5f843c75a0799cbe7384b52c2d')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('a49fb63deed3bc3361263701c8f1ae52')
+b2sums=('7a504c61be16e867aecb67976bcd2e8c895dcd2f3c155990a7387402969db9bbb759dfcaaf75f19621aa9a628f0b51e3f14fd06cb7254f45be0cf7d690e47898')
 
 build() {
   mkdir build
