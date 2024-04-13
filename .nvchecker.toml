@@ -1,0 +1,5 @@
+[batch-rename]
+source = "github"
+github = "claui/batch_rename"
+prefix = "v"
+use_max_tag = true
