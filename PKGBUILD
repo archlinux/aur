@@ -3,9 +3,9 @@
 _pkgname=iminuit
 pkgbase="python-${_pkgname}"
 pkgname=("python-${_pkgname}" "python-${_pkgname}-docs")
-pkgver=2.21.3
-_commit=d83dc285b2789ceea620fb3dcdef609e6967d6b7  # refs/tags/v2.21.3
-pkgrel=1
+pkgver=2.25.2
+_commit=5b7bd08d66e8431378e95cbf172106c8424f0d80
+pkgrel=2
 pkgdesc="Python interface for MINUIT, a physics analysis tool for function minimization."
 arch=('x86_64')
 url="https://iminuit.readthedocs.io"
@@ -27,19 +27,16 @@ makedepends=(
   'python-numpy'
   'python-pillow'
   'python-pyrsistent'
-  'python-setuptools'
   'python-sphinx_rtd_theme'
-  'python-wheel'
+  'python-scikit-build-core'
 )
 checkdepends=('python-pytest' 'python-scipy' 'python-tabulate')
 options=(!emptydirs)
 source=(
   "${pkgbase}::git+https://github.com/scikit-hep/iminuit#commit=$_commit"
-  "${pkgbase}-pybind11::git+https://github.com/pybind/pybind11.git"
   "${pkgbase}-root::git+https://github.com/root-project/root.git"
 )
-sha256sums=('SKIP'
-            'SKIP'
+sha256sums=('e56605220e64561e04197037fcb45500a057e5a3873c67606ef9b328ef8c8ee9'
             'SKIP')
 
 _get_pyver () {
@@ -55,7 +52,6 @@ prepare() {
   git submodule init
 
   git config submodule."extern/root".url "${srcdir}/${pkgname}"-root
-  git submodule deinit "extern/pybind11"
 
   # root submodule reference is broken, fix it
   git -c protocol.file.allow=always submodule update --init --recursive
