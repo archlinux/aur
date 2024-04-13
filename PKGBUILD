@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SEPIRA
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Systems EPigenomics Inference of Regulatory Activity"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,9 +19,9 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c7ed46a5810d2e91210561758428a7fb')
-b2sums=('c29ec1fec144374cea25210d248323d1bd3492eae239a20e5f47abc62632b7ecdc4ca9a3dc1bbb8f6394920bf744a7105364af88bcd3ad313b8e02009883518a')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('e0d410ec6e6a43ff9e8c88eabc714a95')
+b2sums=('cc081507d2b8ae2ce0725d5dd1be35f46a60b3a2c94965f197e7cc2acb56c98075cb5b94df6c405fc46b0e642131c8838220927a9b3fde0066fec3d4573e9001')
 
 build() {
   mkdir build

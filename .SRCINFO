@@ -1,7 +1,7 @@
 pkgbase = r-sepira
 	pkgdesc = Systems EPigenomics Inference of Regulatory Activity
-	pkgver = 1.20.0
-	pkgrel = 2
+	pkgver = 1.22.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/SEPIRA
 	arch = any
 	license = GPL-3.0-only
@@ -11,8 +11,8 @@ pkgbase = r-sepira
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/SEPIRA_1.20.0.tar.gz
-	md5sums = c7ed46a5810d2e91210561758428a7fb
-	b2sums = c29ec1fec144374cea25210d248323d1bd3492eae239a20e5f47abc62632b7ecdc4ca9a3dc1bbb8f6394920bf744a7105364af88bcd3ad313b8e02009883518a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SEPIRA_1.22.0.tar.gz
+	md5sums = e0d410ec6e6a43ff9e8c88eabc714a95
+	b2sums = cc081507d2b8ae2ce0725d5dd1be35f46a60b3a2c94965f197e7cc2acb56c98075cb5b94df6c405fc46b0e642131c8838220927a9b3fde0066fec3d4573e9001
 
 pkgname = r-sepira
