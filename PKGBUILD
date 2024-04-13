@@ -6,7 +6,7 @@
 # Maintainer: JJ Style <aur@jj-style.slmail.me>
 _repo=gobal-player
 pkgname=gobal-player-tui
-pkgver=0.1.18
+pkgver=0.1.20
 pkgrel=1
 epoch=
 pkgdesc="Unofficial TUI app for Global Player radio."
@@ -27,7 +27,7 @@ install=
 changelog=
 source=("$_repo-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('2d59bc67e9f4f10194886d3bec79e29249115039bb736c1b53c3fa1ea7bbeeea')
+sha256sums=('9e6c64f0a45bcbd71e716aecf5416d8305a6bb3c35e15494f135531c592f2d2c')
 validpgpkeys=()
 
 build() {
