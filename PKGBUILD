@@ -1,10 +1,4 @@
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-# Contributor: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Ronald van Haren <ronald.archlinux.org>
-# Contributor: Eric Belanger <eric.archlinux.org>
-# Contributor: Fabio Scotoni <CCuleX.gmail.com>
-# Contributor: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Aldrin Morris D. Balitbit <aldrinbalitbit1127@gmail.com>
+# Maintainer: Aldrin Morris D. Balitbit <aldrinbalitbit1127@gmail.com>
 
 pkgname=extremetuxracer-svn
 _pkgname="${pkgname%-svn}"
