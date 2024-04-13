@@ -2,12 +2,12 @@
 pkgbase=python-regions
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="Astropy affilated package for region handling"
 arch=('i686' 'x86_64')
 url="http://astropy-regions.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm>=6.2'
              'cython<3.1.0'
              'python-wheel'
@@ -20,11 +20,10 @@ makedepends=('python-setuptools-scm>=6.2'
              'python-shapely')
 checkdepends=('python-pytest-arraydiff'
               'python-pytest-astropy-header'
-              'python-pytest-doctestplus'
-              'python-pytest-remotedata'
-              'python-matplotlib') # astropy already in makedepends
+              'python-pytest-remotedata') # astropy already in makedepends
+#             'python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6f1171d99c860623a3ff131c985c9557')
+md5sums=('34b1d0905ac72947f2619cc4638dc119')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -32,7 +31,7 @@ get_pyver() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
@@ -45,7 +44,7 @@ check() {
 }
 
 package_python-regions() {
-    depends=('python>=3.9' 'python-numpy>=1.22' 'python-astropy>=5.0')
+    depends=('python>=3.10' 'python-numpy>=1.23' 'python-astropy>=5.1')
     optdepends=('python-matplotlib>=3.5: Plotting support'
                 'python-shapely: Managing geometric objects'
                 'python-regions-doc: Documentation for AstroPy Regions')
