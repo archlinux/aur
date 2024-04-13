@@ -2,7 +2,7 @@
 # Co-Maintainer: Takase <takase1121@proton.me>
 
 pkgname=derper
-pkgver=1.62.1
+pkgver=1.64.0
 pkgrel=1
 
 pkgdesc='Tailscale runs DERP relay servers to help connect your nodes.'
@@ -21,7 +21,7 @@ source=("derper-v$pkgver.tar.gz::https://github.com/tailscale/tailscale/archive/
         derper.service
         derper.conf)
 
-sha256sums=('22737fae37e971fecdf49d6b741b99988868aa3f1e683e67e14b872a2c49ca1c'
+sha256sums=('a0b9b84fef37316a9eee2490668811cafb85b227839eca97bbff88f7ce58a815'
             '2547fa9f0bfb250507d5edfef3bb6304835c9de2c061386a89543eebf16a8bc8'
             'ecaebd5f1fb0853464afeece438269303e8590aec8689554516036575deabcfc')
 
