@@ -3,13 +3,14 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.54.r1.g391f8c1c
+pkgver=1.2.55.r0.g78c3498e
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL3')
 depends=('csdr-luarvique' 'python-csdr-luarvique' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools')
+install=openwebrx-plus.install
 optdepends=(
     # decoding
     'python-digiham: use digital voice modes'
@@ -38,6 +39,7 @@ optdepends=(
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
+    'python-paho-mqtt: send decoded signal data to an MQTT broker for further processing by third-party applications'
 
     # device support
     'soapyremote: allows the usage of remote SDR devices using the SoapySDRServer'
