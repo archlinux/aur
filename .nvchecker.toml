@@ -1,0 +1,5 @@
+[libnpy]
+source = "github"
+github = "llohse/libnpy"
+use_latest_release = "true"
+prefix = "v"
