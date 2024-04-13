@@ -21,6 +21,6 @@ check() {
 package() {
   # install headers
   install -d ${pkgdir}/usr/include/${pkgname}
-  install ${pkgname}-${pkgver}/include/*.h ${pkgdir}/usr/include/${pkgname}
+  install ${pkgname}-${pkgver}/include/npy.hpp ${pkgdir}/usr/include/${pkgname}
   install -Dm 644 ${pkgname}-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
