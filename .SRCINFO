@@ -1,0 +1,22 @@
+pkgbase = onagre
+	pkgdesc = General purpose application launcher for X and Wayland inspired by Rofi/Wofi and Alfred
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/onagre-launcher/onagre
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = fontconfig
+	depends = freetype2
+	depends = libxkbcommon
+	depends = pop-launcher
+	options = !debug
+	options = !lto
+	source = https://github.com/onagre-launcher/onagre/archive/1.0.0/onagre-1.0.0.tar.gz
+	source = 001.patch::https://github.com/onagre-launcher/onagre/commit/33655e33586818946377515945abb415ab105de5.patch
+	b2sums = 6ce9539df1b222ca8e19f9b6463b03c77f982555038c008f9f66abdd00f67cc1ee5536133c4e0b447a032cc6cc7f7d7f12cf4cb40067c4b63116f05264f910b8
+	b2sums = 63c8724514311254e16b273fb152ea6c641f2d6f142edac910d33e681e93506d0b71fdf6702d816e13f5e20769b75a5883434a2cd141eb2abb38b4a122c2aecd
+
+pkgname = onagre
