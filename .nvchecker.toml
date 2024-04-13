@@ -1,0 +1,5 @@
+[petsc4foam]
+source = "gitlab"
+gitlab = "modules/external-solver"
+host = "develop.openfoam.com"
+use_max_tag = true

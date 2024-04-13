@@ -1,0 +1,15 @@
+pkgbase = petsc4foam
+	pkgdesc = Exploration and testing of linear solvers, matrix operations
+	pkgver = v2312
+	pkgrel = 1
+	url = https://develop.openfoam.com/modules/external-solver
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = openfoam-com=v2312
+	depends = petsc
+	depends = hypre
+	conflicts = pets-complex
+	source = https://develop.openfoam.com/modules/external-solver/-/archive/v2312/external-solver-v2312.tar.gz
+	sha512sums = d7b7f1198c8bca471aee5cbb7336ae6afd03d0db9e5760aced04bae1f43ac622838d084f87631334941011751de3e5d932f783eafc439e745ff8c819d4663251
+
+pkgname = petsc4foam
