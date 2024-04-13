@@ -179,12 +179,17 @@ function execAppUnsafe() {
 function disableSandbox() {
 	if [[ $@ =~ "f5aaebc6-0014-4d30-beba-72bce57e0650" ]] && [[ $@ =~ "--actions" ]]; then
 		if [[ "${LANG}" =~ 'zh_CN' ]]; then
-			zenity --title "警告" --question --text="确认以继续危险操作..."
+			zenity --title "稍等片刻..." --icon=security-medium-symbolic --default-cancel --question --text="允许微信读取 / 修改所有个人数据?"
 		else
-			zenity --title "Alert" --question --text="Confirm to proceed dangerous operation..."
+			zenity --title "Hold on..." --icon=security-medium-symbolic --default-cancel --question --text="Do you wish WeChat to access and modify all of your data?"
 		fi
 		if [[ $? = 0 ]]; then
 			export trashAppUnsafe=1
+			if [[ "${LANG}" =~ 'zh_CN' ]]; then
+				zenity --error --title "沙盒已禁用" --icon=security-low-symbolic --text "用户数据不再被保护"
+			else
+				zenity --error --title "Sandbox disabled" --icon=security-low-symbolic --text "User data is potentially compromised"
+			fi
 		else
 			echo "[Critical] Request canceled by user"
 			exit 1
