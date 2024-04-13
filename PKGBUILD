@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=eegc
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Engineering Evaluation by Gene Categorization (eegc)"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -30,9 +30,9 @@ depends=(
 optdepends=(
   r-knitr
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('898230d2d6431f622202416e172d64e2')
-b2sums=('fb0eb18232a94d8517531151d771fa36a03ed5a52e7ccee64f338a55397f8b3a26ad3a158ff7b0d4a25049e428f15d7fda5a8d839b265b8ccecd2bd081c17307')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('b454926a77b06904f3560f0c28ee1299')
+b2sums=('2b020a24244315e197880675a85af2d618cb2c7384b2b7d9c30412e64e52ad806028dcfa45c7def4a2378e88e77335486a51c04e87ab37b72e5701b711b6a4d7')
 
 build() {
   mkdir build
