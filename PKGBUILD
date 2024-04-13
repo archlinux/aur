@@ -8,13 +8,15 @@ pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
 url='https://netradiant.gitlab.io/'
-license=('GPL' 'BSD' 'LGPL')
+license=('GPL2' 'BSD' 'LGPL2.1' 'Zlib')
 arch=('i686' 'x86_64')
 depends=('bash' 'cairo' 'gdk-pixbuf2' 'gcc-libs' 'glibc' 'glib2' 'gtk2' 'gtkglext' 'libglvnd' 'libjpeg-turbo' 'libpng' 'libwebp' 'libxml2' 'libx11' 'minizip' 'pango' 'zlib')
 makedepends=('cmake' 'git' 'make' 'svn' 'unzip' 'wget')
 provides=('netradiant' 'h2data' 'q2map' 'q3data' 'q3map2' 'qdata3')
-source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git")
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git"
+        "git+https://github.com/DaemonEngine/crunch.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}/"
@@ -23,8 +25,11 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgname}"
+
     # Fetch the Crunch submodule
-    git submodule update --init --recursive
+    git submodule init
+    git config submodule.libs/crunch.url "${srcdir}/crunch"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -39,7 +44,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DFHS_INSTALL=ON \
-    -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
+    -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
     -DDOWNLOAD_GAMEPACKS=ON \
     -DGAMEPACKS_LICENSE_LIST=free \
     -DGAMEPACKS_NAME_LIST=none
@@ -54,5 +59,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
     # Running update-mime-database will erase the map mime type anyway
-    rm -r ${pkgdir}/usr/share/mime/
+    rm -r "${pkgdir}/usr/share/mime/"
 }
