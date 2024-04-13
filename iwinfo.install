@@ -1,0 +1,18 @@
+#
+# Post upgrade for iwinfo
+# Set cap_net_raw,cap_net_admin on the wrapper
+#
+set_net_caps() {
+    prog='/usr/bin/iwinfo'
+    echo "Setting cap_net_raw,cap_net_admin on ${prog}"
+    /usr/bin/setcap cap_net_raw,cap_net_admin+eip ${prog}
+}
+post_install() {
+    vnew=$1
+    vold=$2
+    set_net_caps
+}
+post_upgrade() {
+    vnew=$1
+    set_net_caps
+}

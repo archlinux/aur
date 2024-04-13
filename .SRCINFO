@@ -1,0 +1,25 @@
+pkgbase = iwinfo
+	pkgdesc = Provide wifi information about capabilities and network(s)
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/gene-git/iwinfo
+	install = iwinfo.install
+	changelog = Changelog.rst
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-hatch
+	makedepends = rsync
+	makedepends = python-sphinx
+	makedepends = python-myst-parser
+	makedepends = texlive-latexextra
+	depends = python>3.10
+	depends = libcap-ng
+	depends = python-prctl
+	source = git+https://github.com/gene-git/iwinfo#tag=2.0.3
+	sha512sums = SKIP
+
+pkgname = iwinfo
