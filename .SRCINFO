@@ -5,7 +5,6 @@ pkgbase = macbook12-spi-driver-dkms
 	url = https://github.com/marc-git/macbook12-spi-driver
 	arch = i686
 	arch = x86_64
-	groups = 
 	license = GPL2
 	makedepends = git
 	depends = dkms

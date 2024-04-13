@@ -8,7 +8,6 @@ pkgdesc="Driver for the keyboard, touchpad and touchbar found in newer MacBook (
 arch=('i686' 'x86_64')
 url="https://github.com/marc-git/macbook12-spi-driver"
 license=('GPL2')
-groups=('')
 depends=('dkms')
 makedepends=('git')
 optdepends=()
