@@ -6,7 +6,7 @@ gitver=v6.8.6
 patchver=20240221.2
 patchname=more-uarches-for-kernel-6.8-rc4+.patch
 pkgver=6.8.v.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -16,16 +16,12 @@ options=('!strip')
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=$gitver"
         # the main kernel config files
         'config.x86_64'
-        # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset"
 	# patch from our graysky archlinux colleague
 	"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/$patchver/$patchname"
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'b80c6e2b5e298b083acc13c8f954bcd01fd8af91c7df43d912daf942050339c5'
-            #.preset file
-            'a7dda487e8277bfdf0dd0a6f578b219ae97de84b00df1822330e808c378df907'
+            'f3aaa784b63742d4734a2df1bb52369487969c6e8e42d75f3056186048edae1e'
             #grayskypatch
             'd69232afd0dd6982ae941cf2d1f577f4be2011e3bb847d1db37952acf416b5d3'
 )
@@ -78,7 +74,6 @@ _package() {
   pkgdesc="Linux kernel aimed at the znver2 AMD Ryzen CPU based hardware"
   depends=('coreutils' 'linux-firmware' 'kmod' 'lzop')
   optdepends=('crda: to set the correct wireless channels of your country')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
 
   cd "${_srcname}"
 
@@ -91,15 +86,6 @@ _package() {
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-
-  # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # remove build link
   rm -f "${pkgdir}"/lib/modules/${_kernver}/build
