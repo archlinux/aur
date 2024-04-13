@@ -13,7 +13,7 @@ fi
 
 # Verify that argument is provided
 if [[ -z $1 ]]; then
-    echo "Usage: $0 {g|sh|ag|cf}"
+    echo "Usage: $0 {g|sh|ag|cf|403|bg}"
     exit 1
 fi
 
@@ -31,9 +31,15 @@ case $1 in
     cf)
         nameservers=("nameserver 1.1.1.1" "nameserver 1.0.0.1")
         ;;
+    403)
+        nameservers=("nameserver 10.202.10.202" "nameserver 10.202.10.102")
+        ;;
+    bg)
+        nameservers=("nameserver 185.55.226.26" "nameserver 185.55.225.25")
+        ;;
     *)
         echo "Invalid option: $1"
-        echo "Usage: $0 {g|sh|ag|cf}"
+        echo "Usage: $0 {g|sh|ag|cf|403|bg}"
         exit 1
         ;;
 esac
