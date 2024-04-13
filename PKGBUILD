@@ -2,8 +2,8 @@
 _pkgname=gourou
 pkgname="${_pkgname}-bin"
 __pkgname="lib${_pkgname}"
-__commit="92a67312bd8f4d4461637c5cf7744ce24b7250c1"
-pkgver=0.8.5
+__commit="0d77cf55e1b0de1e8238d12c1e4015863135485d"
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
 	"$__man_link/adept_remove.1"
 )
 sha512sums=(
-        f528b98c7aef05337a75fb062735d966b72d709205945320d5e223c362099f581984457cc797f14a7ab59f4a784375eca2ff09fd8db76973886ddc184e13259f
+        a74df6a5a18ef6a49324e8874d1130320730ceba9f0a331f477d34647717ea586249d644b644c4b1436f409217bb9f638f64d6190aea8f87317e6a00919891da
         9cfaafb8ba99bf42713c9a99fd26d5a5b5f027e2fee1eba4e86f5161e1a8256ef691fbb135bd19b7ff9118eab89fc1a365e5ffc8fe9ef6cf080eec757ddd32b9
         b3cceb1ac60bedf75628c9cac56e2d246abe9378e58f959352b7ce133fabead3900f6ac3ccfa78f1163a923334ab6f724f77a2007144cd775aa45816a3398a51
         724e4c11491ca428995e3dfebf439a2a941b28b8cf08f5fa4fad93e3860196c21fe26962201bcc00d8875a970e3d7e321ebdf1b332157bb0fc920124dd12b42c
