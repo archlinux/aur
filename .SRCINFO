@@ -1,6 +1,6 @@
 pkgbase = colloid-gtk-theme-git
 	pkgdesc = Gtk theme for Linux
-	pkgver = 2023.10.28.r7.g06da74bb
+	pkgver = 2023.10.28.r17.g96f65423
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Colloid-gtk-theme
 	install = colloid-gtk-theme.install
@@ -21,6 +21,9 @@ pkgname = colloid-gtk-theme-git
 
 pkgname = colloid-dracula-gtk-theme-git
 	pkgdesc = Gtk Dracula theme for Linux
+
+pkgname = colloid-everforest-gtk-theme-git
+	pkgdesc = Gtk Everforest theme for Linux
 
 pkgname = colloid-nord-gtk-theme-git
 	pkgdesc = Gtk Nord theme for Linux
