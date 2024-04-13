@@ -1,7 +1,7 @@
 # Maintainer: Sterophonick
 pkgname=agbplay
 _pkgname='agbplay'
-pkgver=67c43bb
+pkgver=e685b49
 pkgrel=1
 pkgdesc='Music player for the most common GBA sound format'
 url='https://github.com/ipatix/agbplay'
