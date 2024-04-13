@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SCATEData
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Data for SCATE (Single-cell ATAC-seq Signal Extraction and Enhancement)"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -18,9 +18,9 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/3.17/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dd2241d946202b696c0a706b906425f4')
-b2sums=('a3e8aeaa2a5de51ccb7aadd2e840c419138f279b13c1feec7e445036785ddcd25af77cd5b9ec2dfbd77aa9f3e309dbdb6fc9288a763de8682f90bbcd6cf58757')
+source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('d2cc1103c55f35abcd3a593998e64e62')
+b2sums=('a67dc8f5b21ae22dfe8a4c78905afef2bd9061f0b8362e69a42d98354751a987cd8cfa7c5533b70264a317f22c8450c94af1f6aaf82078d4bb27b0d90e3c2308')
 
 build() {
   mkdir build
