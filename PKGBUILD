@@ -17,7 +17,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=19.0.0_r494519.f59911615295
+pkgver=19.0.0_r495593.26852565a5f6
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -26,9 +26,12 @@ makedepends=(git cmake libffi libedit ncurses libxml2
              libxcrypt python python-setuptools)
 # b361b5369ed4
 source=("git+https://github.com/llvm/llvm-project.git"
+                "libclc_Refactor_build_system_to_allow_in-tree_builds_#87622.patch::https://github.com/llvm/llvm-project/commit/72f9881c3ffcf4be6361c3e4312d91c9c8d94a98.patch"
 )
-md5sums=('SKIP')
-sha512sums=('SKIP')
+md5sums=('SKIP'
+         '3e82d9fda49a7aaa983d3b78443f8de6')
+sha512sums=('SKIP'
+            'd120e7426156115ba5338264dc3b8e48c253b0fc3cd24b14ddde3798d2bfc8f62eb06b88173d7738c72ea7a746a3b292a79af8528ade244528d1ccb35041621f')
 
 # explicitly disable lto & debug to reduce number of build hangs , resources needed and runtime issues
 options=(!lto !debug )
@@ -88,6 +91,10 @@ make help | grep -Po 'install-\K.*(?=-stripped)' | while read -r target; do
 done
 }
 
+prepare() {
+    # revert change to libclc that causes build failure, see https://github.com/llvm/llvm-project/issues/88626
+    patch --directory=llvm-project --reverse --strip=1 --input=$srcdir/libclc_Refactor_build_system_to_allow_in-tree_builds_#87622.patch
+}
 
 pkgver() {
     cd llvm-project/cmake/Modules
