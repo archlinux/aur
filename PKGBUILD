@@ -3,7 +3,7 @@
 pkgname=python-noseofyeti
 pkgver=2.4.6
 _commit=08bc8320f60cd45d1d04be3a88e74cc9b8bdad9f
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom pyton codec that provides an RSpec style dsl for python"
 url="https://github.com/delfick/nose-of-yeti"
 license=('MIT')

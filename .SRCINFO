@@ -1,7 +1,7 @@
 pkgbase = python-noseofyeti
 	pkgdesc = A custom pyton codec that provides an RSpec style dsl for python
 	pkgver = 2.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/delfick/nose-of-yeti
 	arch = any
 	license = MIT
