@@ -178,7 +178,7 @@ function execAppUnsafe() {
 
 function disableSandbox() {
 	if [[ $@ =~ "f5aaebc6-0014-4d30-beba-72bce57e0650" ]] && [[ $@ =~ "--actions" ]]; then
-		if [[ "LANG" =~ 'zh_CN' ]]; then
+		if [[ "${LANG}" =~ 'zh_CN' ]]; then
 			zenity --title "警告" --question --text="确认以继续危险操作..."
 		else
 			zenity --title "Alert" --question --text="Confirm to proceed dangerous operation..."
