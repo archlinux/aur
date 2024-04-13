@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cellscape
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Explores single cell copy number profiles in the context of a single cell tree"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -14,7 +14,6 @@ depends=(
   r-gtools
   r-htmlwidgets
   r-jsonlite
-  r-plyr
   r-reshape2
   r-stringr
 )
@@ -22,9 +21,9 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7df865c4752c43a3745b01f93654a00a')
-b2sums=('bf465c04a58beaef4f43856afce370abf722489eec6267b2f36e3b5a925a2e74eadb052662ceeb9f073174727f4ae69e256c4f60ae72fa147f09c88e248c203d')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('869f8784828e9550fc85b302037bf7bf')
+b2sums=('13d235c00e7fb8a0f73c9425e904f2b47f8b290ada868e5da817907f2baeb05d9d648daa22424dd7a2c4ad3c09d2ed211308856fdae5312e176f906a9b3eed30')
 
 build() {
   mkdir build
