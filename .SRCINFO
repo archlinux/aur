@@ -1,0 +1,22 @@
+pkgbase = nri-nginx-bin
+	pkgdesc = nginx integration for New Relic
+	pkgver = 3.4.5
+	pkgrel = 1
+	url = https://github.com/newrelic/nri-nginx
+	changelog = CHANGELOG
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	groups = newrelic
+	license = Apache
+	depends = newrelic-infra
+	provides = nri-nginx
+	conflicts = nri-nginx
+	source_aarch64 = https://github.com/newrelic/nri-nginx/releases/download/v3.4.5/nri-nginx_linux_3.4.5_arm64.tar.gz
+	sha256sums_aarch64 = ca310069b6dd3d803299cead8cb332bcbf9c4367526a533748bba89f39a54ee9
+	source_armv7h = https://github.com/newrelic/nri-nginx/releases/download/v3.4.5/nri-nginx_linux_3.4.5_arm.tar.gz
+	sha256sums_armv7h = dbc4999bb11cbccd4faf30471d842646075173237e8a593c98f69561d0d06345
+	source_x86_64 = https://github.com/newrelic/nri-nginx/releases/download/v3.4.5/nri-nginx_linux_3.4.5_amd64.tar.gz
+	sha256sums_x86_64 = d378e34a440c71cf4b0d73666d255e7d8c8e123b859521c324c340451b3302bc
+
+pkgname = nri-nginx-bin
