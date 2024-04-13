@@ -1,7 +1,7 @@
 pkgbase = eclipse-jee
 	pkgdesc = Highly extensible IDE (Enterprise Java and Web version)
 	pkgver = 4.31
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://www.eclipse.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = eclipse-jee
 	depends = java-runtime>=17
 	depends = webkit2gtk
 	depends = unzip
-	provides = eclipse=4.31-1
+	provides = eclipse=4.31-2
 	conflicts = eclipse
 	source = eclipse.desktop
 	sha512sums = 9da29da1fe9e4ac4b8f1a4faef158155399574752a317addf90f6a068019ad62906f8ce1db11e543c7fee7dbf3dd8273aa34fc86ff2354420371cdf9b017cdf3
