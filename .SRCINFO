@@ -3,6 +3,7 @@ pkgbase = openwebrx-plus
 	pkgver = 1.2.54
 	pkgrel = 1
 	url = https://luarvique.github.io/ppa/
+	install = openwebrx-plus.install
 	arch = any
 	license = AGPL3
 	depends = csdr-luarvique

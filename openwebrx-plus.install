@@ -1,0 +1,9 @@
+post_install() {
+    echo "No user account will be created after fresh installation."
+    echo "Please run the following command to know how to manage users:"
+    echo "sudo -u openwebrx openwebrx admin -h"
+}
+
+post_upgrade() {
+    :
+}

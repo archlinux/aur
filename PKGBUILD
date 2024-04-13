@@ -10,6 +10,7 @@ arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL3')
 depends=('csdr-luarvique' 'python-csdr-luarvique' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools')
+install="${pkgname}".install
 optdepends=(
     # decoding
     'python-digiham: use digital voice modes'
