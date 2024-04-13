@@ -1,10 +1,10 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
 _pkg_subver=4061
-_gamepkg=RimWorldRoyalty1-4-${_pkg_subver}Linux.tar.gz
+_gamepkg=RimWorldRoyalty1-5-${_pkg_subver}Linux.tar.gz
 
 pkgname=rimworld-royalty
-pkgver=1.4.${_pkg_subver}
+pkgver=1.5.${_pkg_subver}
 pkgrel=1
 pkgdesc="Expansion pack Royalty for the game Rimworld"
 arch=('i686' 'x86_64')
@@ -48,7 +48,7 @@ build() {
 package() {
   cd "$srcdir"
 
-  cd "$srcdir/RimWorldRoyalty1-4-${_pkg_subver}Linux"
+  cd "$srcdir/RimWorldRoyalty1-5-${_pkg_subver}Linux"
   install -dm755 "$pkgdir/opt/rimworld"
   cp -r Data "$pkgdir/opt/rimworld"
 
