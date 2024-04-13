@@ -1,0 +1,27 @@
+pkgbase = python-hist
+	pkgdesc = Python bindings for Boost's Histogram library.
+	pkgver = 2.7.2
+	pkgrel = 1
+	url = https://github.com/scikit-hep/hist
+	arch = any
+	license = custom:BSD3
+	checkdepends = python-pytest
+	checkdepends = python-pytest-benchmark
+	checkdepends = python-pytest-mpl
+	checkdepends = python-iminuit
+	checkdepends = python-mplhep
+	checkdepends = python-scipy
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python-boost-histogram
+	depends = python-histoprint
+	depends = python-typing_extensions
+	source = python-hist-2.7.2::git+https://github.com/scikit-hep/hist#tag=v2.7.2
+	sha256sums = 55011f93f9c5959141685c3f1ee2888a28fc484b41626562b34149350ba43824
+
+pkgname = python-hist
