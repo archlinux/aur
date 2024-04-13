@@ -4,7 +4,7 @@
 
 pkgname=cajviewer
 pkgver=9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CAJViewer for Linux. Document Viewer for TEB, CAJ, NH, KDH and PDF format"
 arch=('x86_64')
 url="http://cajviewer.cnki.net/"

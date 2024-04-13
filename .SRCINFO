@@ -1,7 +1,7 @@
 pkgbase = cajviewer
 	pkgdesc = CAJViewer for Linux. Document Viewer for TEB, CAJ, NH, KDH and PDF format
 	pkgver = 9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cajviewer.cnki.net/
 	arch = x86_64
 	license = custom
