@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=123.0.6312.122
+pkgver=124.0.6367.49
 pkgrel=1
 _manual_clone=0
 _system_clang=1
@@ -24,7 +24,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-no-matching-strcat.patch
         fix-numeric_limits.patch
         fix-undeclared-isnan.patch)
-sha256sums=('c883f192af7cb76cf46de4044349645b0fb0b5c42a1c0f7950a24c825c17f885'
+sha256sums=('6670d9c7b306bf9c332fa84696971256f92256d05d2a484b8e0a86cd31a62480'
             '1f6acf165578288dc84edc7d9dcfabf7d38f55153b63a37ee5afa929f0e2baad'
             '3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
