@@ -6,13 +6,11 @@ pkgbase = hyde-cli-git
 	arch = any
 	license = GPL
 	depends = fzf
-	depends = tree
 	depends = ttf-jetbrains-mono-nerd
 	provides = hyde-cli-git
 	conflicts = hyprdots-ctl
 	conflicts = hyde-cli-git
 	replaces = hyprdots-ctl
-	replaces = hyde-cli-git
 	source = git+https://github.com/kRHYME7/Hyde-cli#branch=master
 	sha256sums = SKIP
 

@@ -7,10 +7,10 @@ pkgdesc="CLI for Hyde, an Aesthetic, dynamic and minimal dots for hyprland"
 arch=('any')
 url="git+https://github.com/kRHYME7/Hyde-cli"
 license=('GPL')
-depends=( 'fzf' 'tree' 'ttf-jetbrains-mono-nerd' )
+depends=( 'fzf' 'ttf-jetbrains-mono-nerd' )
 provides=("${pkgname}")
 conflicts=("hyprdots-ctl" "hyde-cli-git")
-replaces=("hyprdots-ctl" "hyde-cli-git")
+replaces=("hyprdots-ctl")
 source=("git+https://github.com/kRHYME7/Hyde-cli#branch=master")
 sha256sums=('SKIP')
 
