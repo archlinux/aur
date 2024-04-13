@@ -1,0 +1,17 @@
+pkgbase = python-pytest-flake8
+	pkgdesc = pytest plugin to check FLAKE8 requirements
+	pkgver = 1.1.1
+	pkgrel = 3
+	url = https://github.com/tholo/pytest-flake8
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pytest
+	depends = flake8
+	source = python-pytest-flake8-1.1.1.tar.gz::https://github.com/tholo/pytest-flake8/archive/1.1.1.tar.gz
+	sha512sums = 7ad9b6da1fdb9f9ac8720820589d1a213b1c1bda8c2579d988d288031fb717916c81d100488200a4d64b880575041f34387c20685416ed789ced51063e814e13
+
+pkgname = python-pytest-flake8
