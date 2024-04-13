@@ -1,0 +1,5 @@
+[compose]
+source = "github"
+github = "claui/compose"
+prefix = "v"
+use_latest_release = true
