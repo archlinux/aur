@@ -4,19 +4,19 @@ _pname=${pkgbase#python-}
 _pyname=MyST-NB
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Parse and execute ipynb files in Sphinx"
 arch=('any')
 url="https://myst-nb.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-flit-core'
              'python-build'
              'python-installer')
 #            'python-sphinx-copybutton'
 #            'python-sphinx_design'
 #            'python-sphinx-book-theme'
-#            'python-myst-parser<0.19'
+#            'python-myst-parser'
 #            'python-jupyter-cache'
 #            'ipython'
 #            'jupyter-nbformat')    # needs coconut
@@ -40,7 +40,7 @@ checkdepends=('python-pytest-param-files'
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/executablebooks/MyST-NB/archive/refs/tags/v${pkgver}.tar.gz")
 #       'Makefile')
-md5sums=('9be8bfdf91399fe6e155f25c3a5694ed')
+md5sums=('5f46bd0e3a4f38e94be9c31df789aa98')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
