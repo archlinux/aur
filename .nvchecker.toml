@@ -1,0 +1,5 @@
+[dumux-precice]
+source = "github"
+github = "precice/dumux-adapter"
+use_latest_release = "true"
+prefix = "v"

@@ -1,0 +1,14 @@
+pkgbase = dumux-precice
+	pkgdesc = DuMuX-preCICE adapter
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/precice/dumux-adapter
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = dumux
+	depends = precice
+	source = dumux-adapter-2.0.0.tar.gz::https://github.com/precice/dumux-adapter/archive/v2.0.0.tar.gz
+	sha512sums = 466f685641619c734149d19e40b270872b70818041f0bfd2b10d0ea9f33c8e4ebfb822708fa7db25eabfd8d3f645fbc9c36caa0047772947c6bb3d18bead2e3f
+
+pkgname = dumux-precice
