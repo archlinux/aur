@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver='1.2.54'
+pkgver='1.2.55'
 pkgrel='1'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -59,7 +59,7 @@ source=(
     'openwebrx-plus.tmpfiles'
 )
 sha256sums=(
-    '78d0c6d4abd3b260789f6a0a023d95f99735f5ad33e2e5881d3ac9ec9d82ec6a'
+    '2c5d07ea832041c59938084af41727a3a58cbdfab85e3f7af06dc7f94d42e3ee'
     '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
     'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade'
 )
