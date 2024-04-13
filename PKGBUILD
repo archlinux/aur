@@ -3,7 +3,7 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-hidpi-xprop
-pkgver=23.2.5
+pkgver=23.2.6
 pkgrel=1
 arch=('x86_64')
 license=(
@@ -33,7 +33,7 @@ makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
              'xorg-font-util' 'wayland-protocols' 'mesa-libgl'
              'systemd' 'egl-wayland')
 source=(https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz{,.sig} hidpi.patch)
-sha512sums=('8cf90d51db7c4c7e8191b5919e6529fe577bc735bb1d00fbc0139cb67ef95d30eb56c2026f3b2f639745c6a621b33bbd60f9ebabdd12175148dd192393ce1169'
+sha512sums=('9e3c2253af335a559d0f890fa8f9bc381beca6531e0842d739ac15cbca008b3d07c0eefafd03611b04917c626861a7871a83657afa2a298994f4b162f714fc49'
             'SKIP'
             'a345c3be8c572931d43d59dc25a6a9b76cd7b8768106210aa243f102bded48231768b67fa3d25e8174a7f8f4ec9e0f073d600c2228efd6a545ccef3c9e6e7299')
 provides=('xorg-server-xwayland' 'xorg-xwayland' 'xorg-xwayland-lily')
@@ -42,7 +42,6 @@ replaces=('xorg-server-xwayland')
 #validpgpkeys=('B09FAF35BE914521980951145A81AF8E6ADBB200') # "Michel Daenzer <michel@daenzer.net>"
 validpgpkeys=('67DC86F2623FC5FD4BB5225D14706DBE1E4B4540') # "Olivier Fourdan <fourdan@xfce.org>"
 validpgpkeys+=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
-options=('debug')
 
 prepare() {
   cd ${srcdir}/xwayland-$pkgver
