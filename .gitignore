@@ -1,4 +1,5 @@
-*~
-tuxguitar-*-src.tar.gz
+pkg/
+src/
+tuxguitar-*
 *.log
 *.pkg.tar.*

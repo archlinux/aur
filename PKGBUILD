@@ -1,101 +1,67 @@
-# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Maintainer: Visne <visne2 at proton dot me>
+# Contributor: Stephan Springer <buzo+arch@Lini.de>
 # Contributor: Thanos Apostolou <thanosapostolou@outlook.com>
 # Contributor: Alexandre Moine <alexandre@moine.me>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: |AhIoRoS| < ahioros@gmail.com >
 
-pkgbase=tuxguitar
-pkgname=(tuxguitar tuxguitar-common tuxguitar-gtk2)
-pkgver=1.5.6
-pkgrel=5
-pkgdesc="multitrack guitar tablature editor and player"
-arch=('any')
-url="https://sourceforge.net/projects/tuxguitar/"
-license=('LGPL')
-depends=('java-runtime' 'alsa-lib')
-makedepends=('unzip' 'zip' 'ant' 'jack' 'fluidsynth' 'jdk-openjdk' 'maven')
-optdepends=('fluidsynth')
-source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz
-        tuxguitar
-        tuxguitar-gtk2)
-sha256sums=('441e561ffbb9d91470f255c817f6c30300f579bf9013032615efe3f6701af274'
-            'efeef39d43ecf5a87ed64abc7d8cf63a01f3c9b08bac0ea299bf959fcb7c216a'
-            '39f92c0de6fcf86635dec5ac3b83613ca980fa7d24f66888fd06e5bb2c7c571f')
-
-case $CARCH in
-  i686) _arch=x86;;
-  *) _arch=$CARCH;;
-esac
+pkgname=tuxguitar
+pkgver=1.6.2
+pkgrel=1
+pkgdesc='A multitrack guitar tablature editor and player'
+arch=('x86_64')
+url='https://www.tuxguitar.app/'
+license=('LGPL-3.0-or-later')
+depends=('java-runtime' 'gtk3' 'alsa-lib')
+makedepends=('unzip' 'gzip' 'wget' 'java-environment' 'maven' 'fluidsynth' 'jack' 'lv2' 'suil' 'lilv' 'qt5-base')
+optdepends=('fluidsynth: FluidSynth plugin support'
+            'lv2: LV2 plugin support'
+            'suil: LV2 plugin support'
+            'lilv: LV2 plugin support'
+            'qt5-base: LV2 plugin support'
+            'jack: Jack plugin support'
+            'lilypond: Compile exported LilyPond files')
+source=("tuxguitar-$pkgver::https://github.com/helge17/tuxguitar/archive/refs/tags/$pkgver.zip")
+sha256sums=('d0d8e8f64240379e8fc8f83dcdfd220f9c105dcc2879b56f6f1c3ad4ce256a11')
 
 prepare() {
-  cd tuxguitar-$pkgver-src
-  for file in pom.xml gervill/pom.xml TuxGuitar-lib/pom.xml; do
-      sed -i -e 's|<source>1\.7</source>|<source>1\.8</source>|g' \
-             -e 's|<target>1\.7</target>|<target>1\.8</target>|g' "$file"
-  done
-  sed -i 's|http://maven-eclipse.github.io/maven|https://maven-eclipse.github.io/maven|' pom.xml
+    cd tuxguitar-$pkgver
+
+    export MAVEN_OPTS="$MAVEN_OPTS -Duser.home=$srcdir"
+
+    # Install SWT manually (see https://github.com/helge17/tuxguitar/blob/1.6.2/INSTALL.md#download-and-install-swt-for-linux)
+    mkdir swt && cd swt
+    wget https://archive.eclipse.org/eclipse/downloads/drops4/R-4.26-202211231800/swt-4.26-gtk-linux-x86_64.zip -O swt.zip
+    unzip -o swt.zip
+    # Lie about version to fix wayland bug https://github.com/helge17/tuxguitar/issues/323
+    mvn install:install-file -Dfile=swt.jar -DgroupId=org.eclipse.swt -DartifactId=org.eclipse.swt.gtk.linux.x86_64 -Dpackaging=jar -Dversion=4.13
 }
 
 build() {
-  cd tuxguitar-$pkgver-src
-  export MAVEN_OPTS="$MAVEN_OPTS -Duser.home=$srcdir"
-  export JAVA_HOME=/usr/lib/jvm/default
+    cd tuxguitar-$pkgver/desktop/build-scripts/tuxguitar-linux-swt-x86_64
 
-  mvn clean install -P platform-linux-$_arch
-  for _i in build-scripts/{tuxguitar,native-modules/tuxguitar-{alsa,oss,jack,fluidsynth}}-linux-$_arch
-  do (
-    cd $_i
-    mvn clean install
-  ); done
-  # adapt LD_LIBRARY_PATH to Arch location
-  sed -i 's,^LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/jni$,LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/jvm/default-runtime/lib/server,' \
-      "build-scripts/tuxguitar-linux-$_arch/target/tuxguitar-$pkgver-linux-$_arch/tuxguitar.sh"
+    mvn -e clean verify -P native-modules
 }
 
-package_tuxguitar-common () {
-  arch=('x86_64')
-  cd tuxguitar-$pkgver-src/build-scripts
-  install -d "$pkgdir"/usr/share
-  cp -a tuxguitar-linux-$_arch/target/tuxguitar-$pkgver-linux-$_arch "$pkgdir"/usr/share/tuxguitar
-  cp -a native-modules/tuxguitar-{alsa,oss,jack,fluidsynth}-linux-$_arch/target/build/* \
-    "$pkgdir"/usr/share/tuxguitar/
+package() {
+    cd "$srcdir/tuxguitar-$pkgver/desktop/build-scripts/tuxguitar-linux-swt-x86_64/target/tuxguitar-SNAPSHOT-linux-swt-x86_64"
 
-  # icons
-  cd ..
-  for _i in 16 24 32 48 64 96; do
-    _dir="$pkgdir"/usr/share/icons/hicolor/${_i}x${_i}
-    install -d "$_dir"/{apps,mimetypes}
-    install -m644 TuxGuitar/share/skins/Lavender/icon-${_i}x${_i}.png "$_dir"/apps/tuxguitar.png
-    for _m in audio-x-{tuxguitar,gtp,ptb}; do
-      ln -sr "$_dir"/apps/tuxguitar.png "$_dir"/mimetypes/$_m.png
-    done
-  done 
-  
-  #misc
-  cd "${srcdir}/tuxguitar-$pkgver-src/misc"
-  install -Dm644 tuxguitar.xml "$pkgdir"/usr/share/mime/packages/tuxguitar.xml
-  install -Dm644 tuxguitar.desktop "$pkgdir"/usr/share/applications/tuxguitar.desktop
-  
-  # remove tuxguitar.sh
-  rm "${pkgdir}/usr/share/tuxguitar/tuxguitar.sh"
-}
+    # Man page has to be gzipped first
+    gzip share/man/man1/tuxguitar.1
 
-package_tuxguitar () {
-  depends=('tuxguitar-common' 'gtk3')
-  replaces=('tuxguitar-gtk3')
-  
-  install -Dm 755 tuxguitar "$pkgdir"/usr/bin/tuxguitar
-  install -Dm 755 "${srcdir}/tuxguitar-$pkgver-src/build-scripts/tuxguitar-linux-$_arch/target/tuxguitar-$pkgver-linux-$_arch/tuxguitar.sh" \
-                  "${pkgdir}/usr/share/tuxguitar/tuxguitar.sh"
-  sed -i s/SWT_GTK3=0/SWT_GTK3=1/g "${pkgdir}/usr/share/tuxguitar/tuxguitar.sh"
-}
+    # Install all files
+    mkdir -p "$pkgdir/opt/tuxguitar"
+    cp -a * "$pkgdir/opt/tuxguitar"
 
-package_tuxguitar-gtk2 () {
-  depends=('tuxguitar-common' 'gtk2')
-  conflicts=('tuxguitar')
-  provides=('tuxguitar')
-  
-  install -Dm 755 tuxguitar-gtk2 "$pkgdir"/usr/bin/tuxguitar
-  install -Dm 755 "${srcdir}/tuxguitar-$pkgver-src/build-scripts/tuxguitar-linux-$_arch/target/tuxguitar-$pkgver-linux-$_arch/tuxguitar.sh" \
-                  "${pkgdir}/usr/share/tuxguitar/tuxguitar.sh"
+    # Set up symlinks
+    cd "$pkgdir"
+
+    mkdir -p usr/bin
+    mkdir -p usr/share/{applications,man/man1,mime/packages,pixmaps}
+
+    ln -s /opt/tuxguitar/tuxguitar.sh usr/bin/tuxguitar
+    ln -s /opt/tuxguitar/share/applications/tuxguitar.desktop usr/share/applications/
+    ln -s /opt/tuxguitar/share/mime/packages/tuxguitar.xml usr/share/mime/packages/
+    ln -s /opt/tuxguitar/share/pixmaps/tuxguitar.xpm usr/share/pixmaps/
+    ln -s /opt/tuxguitar/share/man/man1/tuxguitar.1.gz usr/share/man/man1/tuxguitar.1.gz
 }
