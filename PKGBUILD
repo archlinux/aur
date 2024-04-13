@@ -92,8 +92,8 @@ fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
-_major=6.7
-pkgver=${_major}.11
+_major=6.8
+pkgver=${_major}.5
 _branch=6.x
 xanmod=1
 _revision=
@@ -138,14 +138,14 @@ _patches=()
 for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
-sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069' # kernel
+sha256sums=('c969dea4e8bb6be991bbf7c010ba0e0a5643a3a8d8fb0a2aaa053406f1e965f3' # kernel
             'SKIP'                                                             # kernel signature
-            '2b2eb30a19c6009f5384cc59543b0053c72068d47ce1cdaa8020a19889c0c160' # xanmod patch
+            'ce92f1ac419a541a812e445e6edcf1fb2cfc4a10b42d49294d936388702ceb44' # xanmod patch
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30' # choose-gcc-optimization.sh
-            'efa4beb4c177876a9a7faff57b8e4292db9fbb754915fb42c9d3a46055b9adc9' # 0001-bore.patch
+            '9195fe0b1d5b757db1d5cb0ec794033f5771f026072e47722d883053a00bf148' # 0001-bore.patch
             '02be008f054a44322a74f0615e8a0d3ad7d6c5bc80182472a9cefbded959ce61' # 0002-glitched-cfs.patch
             'b5c29ef7bb5cb0852c1f82da1f5f54113f2f4b7d1c413508675290283cd4f741' # 0003-glitched-eevdf-additions.patch
-            '552f0b87396cbdc92a9790e2b902416bb716032037b5f9a860bd65d39dc8f94f' # 0004-o3-optimization.patch
+            '17f09a045db6ed0767ead5ff76b74871cc1c7bd29a54296c7ad82ac1fcc3c80b' # 0004-o3-optimization.patch
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -193,7 +193,8 @@ prepare() {
   scripts/config --disable X86_EXTENDED_PLATFORM \
                  --disable BLK_DEBUG_FS \
                  --disable MEMORY_HOTPLUG \
-                 --disable CONFIG_ANDROID_BINDER_IPC
+                 --disable CONFIG_ANDROID_BINDER_IPC \
+                 --disable ACPI_DEBUGGER
 
   # Setting features for desktop use
   echo "Setting features for desktop use..."
