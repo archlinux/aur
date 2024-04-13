@@ -4,8 +4,8 @@
 pkgname=aliyunpan-gaozhangmin-bin
 _pkgname=XBYDriver
 url="https://github.com/gaozhangmin/aliyunpan"
-pkgrel=2
-pkgver=3.12.5
+pkgrel=1
+pkgver=3.13.3
 pkgdesc="阿里云盘小白羊版，gaozhangmin's fork"
 arch=("any")
 license=("MIT")
@@ -18,7 +18,7 @@ source=(
   "${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
   "aliyunpan-gaozhangmin.desktop"
 )
-sha256sums=('00bfc210c1ed52ee8d732625c71109384d52448536ea2affde0efe6e57e12c3d'
+sha256sums=('ee8bbf1f387c3bf6ba5f1dfbb743ef13386b4687a8fffb9b3a9285ef89b22179'
             '8dc19ab03306c3498b30659ebd8c1922e9145dd6b7851207f645bc33806ad63b')
 
 
