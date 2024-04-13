@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=19.0.0_r494108.f18600c87404
+pkgver=19.0.0_r495593.26852565a5f6
 pkgrel=1
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -11,11 +11,14 @@ url="https://libclc.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 provides=(libclc)
 conflicts=(libclc)
-makedepends=(llvm-minimal-git clang-minimal-git cmake  git python spirv-llvm-translator-minimal-git 'llvm-libs<19')
+makedepends=(llvm-minimal-git clang-minimal-git cmake  git python spirv-llvm-translator-minimal-git)
+# makedepends=(llvm-minimal-git clang-minimal-git cmake  git python spirv-llvm-translator-minimal-git 'llvm-libs<19')
 source=("git+https://github.com/llvm/llvm-project.git"
+"libclc_Refactor_build_system_to_allow_in-tree_builds_#87622.patch::https://github.com/llvm/llvm-project/commit/72f9881c3ffcf4be6361c3e4312d91c9c8d94a98.patch"
 )
-sha256sums=('SKIP')
-options=(!debug)
+sha256sums=('SKIP'
+            '142f7d406efc83e07483490763b604520ac2c9542744b05e1af0e9ae0a9d212b')
+options=(!lto !debug)
 
 prepare() {
   cd llvm-project
@@ -30,6 +33,9 @@ prepare() {
   # the 3rd removes (revision count) r461863 so only (the commit hash) 8064caf83fb1 remains
 
   git reset --hard $_commit_hash
+  
+  # revert change to libclc that causes build failure, see https://github.com/llvm/llvm-project/issues/88626
+  patch --reverse --strip=1 --input=$srcdir/libclc_Refactor_build_system_to_allow_in-tree_builds_#87622.patch
 }
 
 pkgver() {
