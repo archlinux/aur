@@ -3,7 +3,7 @@
 
 pkgname=netradiant-custom
 pkgver=20240309
-pkgrel=3
+pkgrel=4
 pkgdesc="The open-source, cross-platform level editor for id Tech based games (NetRadiant fork)"
 url="https://garux.github.io/NRC/"
 depends=('bash' 'gcc-libs' 'glib2' 'glibc' 'libjpeg-turbo' 'libpng' 'libxml2' 'qt5-base' 'zlib')
@@ -14,7 +14,7 @@ source=('git+https://github.com/Garux/netradiant-custom.git#commit=5daf2e265eb7b
 'netradiant-custom.desktop')
 sha256sums=('SKIP'
 'ec1256d5eb657b1e17ebb4ce1280598077b9c350408f9d778f41d5a30b3924e4')
-license=('GPL' 'BSD' 'LGPL')
+license=('GPL2' 'BSD' 'LGPL2.1')
 arch=('i686' 'x86_64')
 
 build () {
