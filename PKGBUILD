@@ -38,9 +38,9 @@ prepare() {
 }
 
 build() {
-    export MAVEN_OPTS="$MAVEN_OPTS -Duser.home=$srcdir"
-
     cd tuxguitar-$pkgver/desktop/build-scripts/tuxguitar-linux-swt-x86_64
+
+    export MAVEN_OPTS="$MAVEN_OPTS -Duser.home=$srcdir"
 
     mvn -e clean verify -P native-modules
 }
