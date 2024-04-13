@@ -1,0 +1,21 @@
+pkgbase = iortcw-bin
+	pkgdesc = Open source engine for Return to Castle Wolfenstein
+	pkgver = 1.51c
+	pkgrel = 1
+	url = https://gitlab.com/rtcw-bin
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = sdl2
+	depends = openal
+	depends = zenity
+	source_x86_64 = https://gitlab.com/rtcw-bin/iortcw-binaries/1.51c/-/raw/main/iortcw-linux-x64.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_i686 = https://gitlab.com/rtcw-bin/iortcw-binaries/1.51c/-/raw/main/iortcw-linux-i686.tar.xz
+	sha256sums_i686 = SKIP
+	source_aarch64 = https://gitlab.com/rtcw-bin/iortcw-binaries/1.51c/-/raw/main/iortcw-linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
+
+pkgname = iortcw-bin
