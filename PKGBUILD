@@ -5,7 +5,7 @@ _repo="https://github.com/toitlang/toit.git"
 _commit=fa5f367c5dc752447bd871bc75471eae6eb11b71
 _tag_no_dash="${_tag//-/}"
 pkgver="${_tag_no_dash#v}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -45,6 +45,7 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
 	mkdir -p "$pkgdir/usr/bin"
+	ln -s "/opt/toit-sdk/bin/toit" "$pkgdir/usr/bin"
 	ln -s "/opt/toit-sdk/bin/toit.run" "$pkgdir/usr/bin"
 	ln -s "/opt/toit-sdk/bin/toit.compile" "$pkgdir/usr/bin"
 	ln -s "/opt/toit-sdk/bin/toit.pkg" "$pkgdir/usr/bin"
