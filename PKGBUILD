@@ -18,9 +18,9 @@ source_x86_64=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgve
 source_aarch64=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-arm64.tar.gz")
 source_armv7h=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-arm.tar.gz")
 
-sha256sums_x86_64=('b4dca0ad2bd256c7c635de4196f0662e299c58222a575bf209a01fcb4dd5c7db')
-sha256sums_aarch64=('1b2f8c04e9d6ec5506e85cbba3c7ca5ef08d126ef93294ec295e1486502c12d3')
-sha256sums_armv7h=('51425330c43509cff51cdcdd74666dd4d7e46d01f1bde978e7ee4fbd453357c1')
+sha256sums_x86_64=('1da587858a60a557269b7ced2e0b1acc79bb432fdfa610118b36797d2dca348d')
+sha256sums_aarch64=('23638c303dc91da14d3c77c2ed2bb21dc88a9dab3188529fc2a896494b9cbd2d')
+sha256sums_armv7h=('08286ad6413be0358bdd002d1f750ffd23c6aac0db1056b79e1adef385d0bc8e')
 
 package() {
   install -Dm644 "$srcdir/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
