@@ -58,6 +58,7 @@ package() {
 
     cmake --install build
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "../crunch/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/crunch/license.txt"
     
     # Running update-mime-database will erase the map mime type anyway
     rm -r "${pkgdir}/usr/share/mime/"
