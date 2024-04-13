@@ -5,8 +5,8 @@ pkgbase = jarmemu
 	url = https://dwightstudio.fr/jarmemu
 	arch = any
 	license = GPL-3
-	source = https://github.com/Dwight-Studio/JArmEmu/releases/download/v0.1.10/JArmEmu-0.1.10-1.flatpak-arch-source.zip
-	sha256sums = 314e77ff0237615f3e24ddc1a84198c196a74d6f44636d94b9185b0bef9a8985
+	source = https://github.com/Dwight-Studio/JArmEmu/releases/download/v0.2.0/JArmEmu-0.2.0-1.flatpak-arch-source.zip
+	sha256sums = 6ae18bb9f1b2cdc69384c2172c2dc8fac17c61dbd6e89d0aa6514b9162bded24
 
 pkgname = jarmemu
 	depends = java-runtime>=21
