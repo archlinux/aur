@@ -1,0 +1,18 @@
+pkgbase = rtcw
+	pkgdesc = Return to Castle Wolfenstein game powered by the iortcw.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = iortcw-bin
+	depends = wget
+	depends = unzip
+	depends = yad
+	depends = aria2
+	source = https://gitlab.com/rtcw-bin/rtcw/-/archive/1.0.0/rtcw-1.0.0.tar.bz2
+	sha256sums = SKIP
+
+pkgname = rtcw
