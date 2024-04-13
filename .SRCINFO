@@ -1,6 +1,6 @@
 pkgbase = rimworld-anomaly
 	pkgdesc = Expansion pack Anomaly for the game Rimworld
-	pkgver = 1.4.4061
+	pkgver = 1.5.4061
 	pkgrel = 1
 	url = http://rimworldgame.com/
 	arch = i686
