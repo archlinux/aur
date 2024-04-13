@@ -1,10 +1,10 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
 _pkg_subver=4061
-_gamepkg=RimWorldIdeology1-4-${_pkg_subver}Linux.tar.gz
+_gamepkg=RimWorldIdeology1-5-${_pkg_subver}Linux.tar.gz
 
 pkgname=rimworld-ideology
-pkgver=1.4.${_pkg_subver}
+pkgver=1.5.${_pkg_subver}
 pkgrel=1
 pkgdesc="Expansion pack Ideology for the game Rimworld"
 arch=('i686' 'x86_64')
@@ -47,7 +47,7 @@ build() {
 package() {
   cd "$srcdir"
 
-  cd "$srcdir/RimWorldIdeology1-4-${_pkg_subver}Linux"
+  cd "$srcdir/RimWorldIdeology1-5-${_pkg_subver}Linux"
   install -dm755 "$pkgdir/opt/rimworld"
   cp -r Data "$pkgdir/opt/rimworld"
 
