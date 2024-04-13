@@ -2,7 +2,7 @@
 
 pkgname=gpu-screen-recorder-gtk-git
 pkgver=r258.a1e4f93
-pkgrel=1
+pkgrel=2
 pkgdesc='Gtk frontend to gpu-screen-recorder, a shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder-gtk"
@@ -16,6 +16,7 @@ sha512sums=('24faab1d4356309ad60e3123bac529756ae2691b21647e9ff717b853c03d6997756
 build() {
   cd "$srcdir"
   ./build.sh
+  strip gpu-screen-recorder-gtk
 }
 
 package() {
