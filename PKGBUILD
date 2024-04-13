@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SPONGE
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Sparse Partial Correlations On Gene Expression"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -50,9 +50,9 @@ optdepends=(
   r-testthat
   r-visnetwork
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4ec8bdffb258be839e469d1baa50c4e9')
-b2sums=('706ad7cd66b21bf22ba2d75d7e6c7cddbdfbdb7847ac46b45ececf10a8d1900ced409e3a487ae4f672095c30629f76529e69b2e5c83fdf38bee59dba1d7ae81a')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('627eb768a9021200f9bafc4e6402c58f')
+b2sums=('66a147d616fb2297a706848690759f2cf058875c5bf60d2edcdcf303bcb9bbb20d27284f446d0c6dd506b4bba9a1b8bc7cc057677e3595fbc549ceedc7dd7f87')
 
 build() {
   mkdir build
