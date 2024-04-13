@@ -4,7 +4,7 @@
 
 set -u
 pkgname=liquibase
-pkgver=4.26.0
+pkgver=4.27.0
 pkgrel=1
 pkgdesc='VCS source control tailored for database management'
 arch=('any')
@@ -16,7 +16,7 @@ _verwatch=("${_giturl}/releases.atom" '\s\+<link rel="alternate" type="text/html
 options=('!strip')
 source=("https://github.com/liquibase/liquibase/releases/download/v${pkgver}/liquibase-${pkgver}.tar.gz"
         "liquibase.profile")
-sha256sums=('46850b5fd21c548f969253cbbc97dc6c846198a8225581e3af5346ac8aa7dbf2'
+sha256sums=('50d89e1fc10249bf198f1a8ff2d81fd0b68e6ca0805db28a94d38649784d82f0'
             '7c1939e5b1aee63db199c86989726bbdf81102784512ed69f8595fddf80c30c0')
 package() {
   set -u
@@ -47,6 +47,14 @@ package() {
   ln -s "/usr/share/licenses/${pkgname}/"{commercial,oss} "${pkgdir}/opt/${pkgname}/licenses/"
   mv -v "${pkgdir}/opt/${pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   ln -s "/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE.txt"
+
+  # install doc files
+  # install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+  # for _doc in examples ABOUT.txt changelog.txt GETTING_STARTED.txt README.txt UNINSTALL.txt
+  # do
+  #   mv -v "${pkgdir}/opt/${pkgname}/${_doc}" "${pkgdir}/usr/share/doc/${pkgname}/"
+  #   ln -s "/usr/share/doc/${pkgname}/${_doc}" "${pkgdir}/opt/${pkgname}/"
+  # done
 
   # install shell completions
   install -Dvm644 "${pkgdir}/opt/${pkgname}/lib/liquibase_autocomplete.sh" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
