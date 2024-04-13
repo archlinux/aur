@@ -4,7 +4,7 @@
 
 pkgname=netradiant-git
 pkgver=r2555.7a730843
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
 url='https://netradiant.gitlab.io/'
@@ -45,6 +45,7 @@ build() {
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DFHS_INSTALL=ON \
     -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
+    -DRADIANT_ABOUTMSG="NetRadiant git build for Arch Linux" \
     -DDOWNLOAD_GAMEPACKS=ON \
     -DGAMEPACKS_LICENSE_LIST=free \
     -DGAMEPACKS_NAME_LIST=none
