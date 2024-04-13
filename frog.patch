@@ -1,0 +1,75 @@
+From b676c5dc5ca22dac0fb19949819a47d55f09edb4 Mon Sep 17 00:00:00 2001
+From: IroAlexis <iroalexis@outlook.fr>
+Date: Sat, 13 Apr 2024 12:11:55 +0200
+Subject: [PATCH] frog master race
+
+---
+ src/logo/ascii/arch.txt | 37 ++++++++++++++++++-------------------
+ src/logo/builtin.c      |  8 ++++----
+ 2 files changed, 22 insertions(+), 23 deletions(-)
+
+diff --git a/src/logo/ascii/arch.txt b/src/logo/ascii/arch.txt
+index b3d23475..52567e00 100644
+--- a/src/logo/ascii/arch.txt
++++ b/src/logo/ascii/arch.txt
+@@ -1,19 +1,18 @@
+-                  -`
+-                 .o+`
+-                `ooo/
+-               `+oooo:
+-              `+oooooo:
+-              -+oooooo+:
+-            `/:-:++oooo+:
+-           `/++++/+++++++:
+-          `/++++++++++++++:
+-         `/+++o$2oooooooo$1oooo/`
+-        ./$2ooosssso++osssssso$1+`
+-$2       .oossssso-````/ossssss+`
+-      -osssssso.      :ssssssso.
+-     :osssssss/        osssso+++.
+-    /ossssssss/        +ssssooo/-
+-  `/ossssso+/:-        -:/+osssso+-
+- `+sso+:-`                 `.-/+oso:
+-`++:.                           `-/+/
+-.`                                 `/
++       .---.`               `.---.
++    `/s$2yhhhy$1so-           -os$2yhhhy$1s/`
++   .s$2yNMdhNNhs$1s/``.---.``/s$2shNNhdMNy$1s.
++   +$2sdMh.`+MNss$1sssssssssss$2ssNM+`.hMds$1+
++   :s$2vNNdhNNhs$1sssssssssssss$2shNNhdNNv$1s:
++    /ss$2vhhhv$1sssssssssssssssss$2vhhhv$1ss/
++    .ossssssssssssssssssssssssssssso.
++   :sssssssssssssssssssssssssssssssss:
++  /sssssssssssssssssssssssssssssssssss/
++ :sssssssssssssoosssssssoosssssssssssss:
++ osssssssssssss$2oo$1sssssss$2oo$1ssssssssssssso
++ osssssssssssyyyyhhhhhhhyyyyssssssssssso
++ $2\$1yyyyyyhhd$2mmmmNNNNNNNNNNNmmmm$1dhhyyyyyy$2/
++  $2smmmNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmmms
++   $2/dNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNd/
++    $2`:sdNNNNNNNNNNNNNNNNNNNNNNNNNds:`
++       $2`-+shdNNNNNNNNNNNNNNNdhs+-`
++             $2`.-:///////:-.`
+diff --git a/src/logo/builtin.c b/src/logo/builtin.c
+index 0ea2b47d..d33dcb21 100644
+--- a/src/logo/builtin.c
++++ b/src/logo/builtin.c
+@@ -324,11 +324,11 @@ static const FFlogo A[] = {
+         .names = {"arch", "archlinux", "arch-linux", "archmerge"},
+         .lines = FASTFETCH_DATATEXT_LOGO_ARCH,
+         .colors = {
+-            FF_COLOR_FG_CYAN,
+-            FF_COLOR_FG_CYAN,
++            FF_COLOR_FG_GREEN,
++            FF_COLOR_FG_LIGHT_WHITE,
+         },
+-        .colorKeys = FF_COLOR_FG_CYAN,
+-        .colorTitle = FF_COLOR_FG_CYAN,
++        .colorKeys = FF_COLOR_FG_GREEN,
++        .colorTitle = FF_COLOR_FG_GREEN,
+     },
+     // Arch2
+     {
+-- 
+2.44.0
+

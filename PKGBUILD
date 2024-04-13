@@ -55,8 +55,10 @@ optdepends=(
   'zlib: Faster image output when using kitty graphics protocol'
   'libdrm: Displays detection'
 )
-source=("${pkgname}::git+${url}.git#branch=master")
-sha256sums=('SKIP')
+source=("${pkgname}::git+${url}.git#branch=master"
+        "frog.patch")
+sha256sums=('SKIP'
+            '9e9d26e7df431299e84c92dda99a17cb471ee15b29a280adc34fb247891e8ca5')
 
 build() {
 	cmake -B build -S "${pkgname}" \
