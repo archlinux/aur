@@ -1,0 +1,17 @@
+pkgbase = winarcadia
+	pkgdesc = Emulator/Debugger of various Signetics 2650 game consoles
+	pkgver = 32.2
+	pkgrel = 1
+	url = https://amigan.1emu.net/releases
+	arch = x86_64
+	arch = i686
+	makedepends = p7zip
+	depends = wine
+	source = https://amigan.1emu.net/releases/WinArcadia-bin.rar
+	source = winarcadia
+	source = winarcadia.desktop
+	source = winarcadia.png
+	md5sums = 09e40489338dc664645a16601348458a
+
+pkgname = winarcadia
+

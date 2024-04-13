@@ -1,0 +1,36 @@
+# Maintainer: Sterophonick
+
+pkgname=winarcadia
+_pkgname='winarcadia'
+pkgver=32.2
+pkgrel=1
+pkgdesc='Emulator/Debugger of various Signetics 2650 game consoles'
+url='https://amigan.1emu.net/releases'
+arch=(x86_64 i686)
+depends=('wine')
+makedepends=(p7zip)
+source=(https://amigan.1emu.net/releases/WinArcadia-bin.rar
+        winarcadia
+        winarcadia.desktop
+        winarcadia.png)
+noextract=(WinArcadia-bin.rar) # makepkg sucks at rars
+md5sums=('09e40489338dc664645a16601348458a'
+         'SKIP'
+         'SKIP'
+         'SKIP')
+
+prepare() {
+  mkdir -p $srcdir/zip
+  7z x WinArcadia-bin.rar -o$srcdir/zip
+}
+
+package() {
+  cd $srcdir
+  install -Dm755 winarcadia $pkgdir/usr/bin/winarcadia
+  install -Dm644 winarcadia.desktop $pkgdir/usr/share/applications/winarcadia.desktop
+  install -Dm644 winarcadia.png $pkgdir/usr/share/pixmaps/winarcadia.png
+
+  mkdir -p $pkgdir/usr/share/winarcadia/
+  cp -r zip/* $pkgdir/usr/share/winarcadia
+  chmod -R 777 $pkgdir/usr/share/winarcadia
+}
