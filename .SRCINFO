@@ -1,7 +1,7 @@
 pkgbase = python-alt-pytest-asyncio
 	pkgdesc = Alternative pytest plugin to pytest-asyncio
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/delfick/alt-pytest-asyncio
 	arch = any
 	license = MIT
