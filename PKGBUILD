@@ -1,5 +1,6 @@
 # Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
 # Maintainer: Thomas Queiroz <thomasqueirozb@gmail.com>
+# Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
 pkgname=qtspim
