@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNVgears
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A Framework of Functions to Combine, Analize and Interpret CNVs Calling Results"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -29,9 +29,9 @@ optdepends=(
   r-usethis
   r-variantannotation
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b1a4be3f56d83bfa3e3c7c67208641b2')
-b2sums=('3259fac597d894d6bffe75a997e9c0d8052fd30643f6b947ecfb62bf754a6979a3ea3196ad4324b0b79f56dffea09d879bc600df7cde46b9b43f899a14e3abba')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('f0eab3ecb6d1587e739595086c91d265')
+b2sums=('6b7c8ab9dc36b719f546010be2fa047cb06f4f9ec631d81187a686330087e2e3ffa219915e2446c3fbe82057852d004ef13be2342f7c98a32800ede8f35ebdf0')
 
 build() {
   mkdir build
