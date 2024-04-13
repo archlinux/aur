@@ -2,8 +2,8 @@
 
 _name=pyftdi
 pkgname=python-pyftdi
-pkgver=0.55.3
-pkgrel=2
+pkgver=0.55.4
+pkgrel=1
 pkgdesc="FTDI device driver written in pure Python"
 arch=(any)
 url="https://github.com/eblot/pyftdi"
@@ -22,9 +22,9 @@ makedepends=(
 checkdepends=(
   python-ruamel-yaml
 )
-source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha512sums=('6133fe89bd30453ba102ce136a41d8cc695f41c023f9545828593e63f32716f1490ff8eee5f745fc39a3511b0b44a6da55aef26066165a901d1101d2287a9304')
-b2sums=('de20e6bfddb7823bfcb6e159c4927dfc3c3d5795a1cf6c6ad9fe4b0d1d10680739d00f0290e131e63d36e5839204a9f6f08e44247a0b28661969a5df31d89efd')
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+sha512sums=('3998572f1af781327678d99ab89ee33bda42bea6320cf62ed4e65a3c6a891754f8f17763482e0d852bff9c73ab80af8c2df8c71ed70af9079512680064b24ede')
+b2sums=('4d680ff38bbb3b1abb320398fa7543f9524e52511ea3fbfcf08d00d1e69c345ad71341c3de5204c69c1023d6974fdefd763bf61d693e88a3154f2c710f5ab070')
 
 build() {
   cd $_name-$pkgver
