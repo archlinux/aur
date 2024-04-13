@@ -1,7 +1,7 @@
 pkgbase = r-estimatr
 	pkgdesc = Fast Estimators for Design-Based Inference
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=estimatr
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = r-estimatr
 	checkdepends = r-clubsandwich
 	checkdepends = r-emmeans
 	checkdepends = r-fabricatr
-	checkdepends = r-margins
 	checkdepends = r-randomizr
 	checkdepends = r-sandwich
 	checkdepends = r-stargazer

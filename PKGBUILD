@@ -4,7 +4,7 @@ _pkgname=estimatr
 _pkgver=1.0.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast Estimators for Design-Based Inference"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -24,7 +24,6 @@ checkdepends=(
   r-clubsandwich
   r-emmeans
   r-fabricatr
-  r-margins
   r-randomizr
   r-sandwich
   r-stargazer
