@@ -1,7 +1,7 @@
 pkgbase = tuxguitar
 	pkgdesc = A multitrack guitar tablature editor and player
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tuxguitar.app/
 	arch = x86_64
 	license = LGPL-3.0-or-later
