@@ -1,5 +1,6 @@
 pkgbase = agbplay
 	pkgdesc = Music player for the most common GBA sound format
+	pkgver = e685b49
 	pkgrel = 1
 	url = https://github.com/ipatix/agbplay
 	arch = x86_64
