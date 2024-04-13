@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RIPAT
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Retroviral Integration Pattern Analysis Tool (RIPAT)"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -24,9 +24,9 @@ depends=(
 optdepends=(
   r-knitr
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bd4406d3915176597b1b15ed47fc7e8a')
-b2sums=('1c8eac8c7dd7631a67591c367f3252467c067640611a850799717c268b7c8f77536027483c7f71073ec691e32d477fdd1e942f58d627f61e05f03087d430978b')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('d60e0694d56d610628f20d996efe258b')
+b2sums=('933377da51143c7af6ee2f3033a5c166b92fe51eeaeddaad6440191c04f7e1f31bd9ab049a54f32bc8899e7347023bf1e0107e82c1d615d126d971ac052aeea8')
 
 build() {
   mkdir build
