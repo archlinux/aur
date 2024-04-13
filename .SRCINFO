@@ -36,6 +36,7 @@ pkgbase = openwebrx-plus
 	optdepends = satdump: receive weather satellite transmissions
 	optdepends = imagemagick: automatically convert received images to the PNG format
 	optdepends = sox: sound processing tools
+	optdepends = python-paho-mqtt: send decoded signal data to an MQTT broker for further processing by third-party applications
 	optdepends = soapyremote: allows the usage of remote SDR devices using the SoapySDRServer
 	optdepends = soapyrtlsdr: provides additional support for rtl-sdr devices, such as the direct sampling mod
 	optdepends = soapysdrplay: interfacing with SDRPlay devices

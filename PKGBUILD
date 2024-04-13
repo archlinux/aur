@@ -39,6 +39,7 @@ optdepends=(
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
+    'python-paho-mqtt: send decoded signal data to an MQTT broker for further processing by third-party applications'
 
     # device support
     'soapyremote: allows the usage of remote SDR devices using the SoapySDRServer'
