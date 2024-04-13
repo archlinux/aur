@@ -1,0 +1,8 @@
+[aio-remote-neo]
+source = "jq"
+url = "https://www.mediola.com/wp-content/sub-projects/helpdesk/data/downloads.json"
+filter = ".de.software.aioremote.current.info.version"
+
+# Version 1.89.1 was yanked
+from_pattern = "1\\.89\\.1"
+to_pattern = "1.89.0"
