@@ -1,0 +1,4 @@
+[buck]
+source = "github"
+github = "facebook/buck2"
+use_max_tag = true
