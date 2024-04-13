@@ -1,6 +1,6 @@
 pkgbase = airgorah
-	pkgdesc = A WiFi auditing software that can perform deauth attacks and passwords cracking
-	pkgver = 0.7.1
+	pkgdesc = A WiFi security auditing software mainly based on aircrack-ng tools suite
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/martin-olivier/airgorah
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = airgorah
 	makedepends = glib2
 	depends = bash
 	depends = dbus
-	depends = systemd
+	depends = xterm
 	depends = polkit
 	depends = gtk4
 	depends = aircrack-ng
@@ -21,9 +21,9 @@ pkgbase = airgorah
 	depends = wireshark-cli
 	depends = mdk4
 	depends = adwaita-icon-theme
-	provides = airgorah=0.7.1
+	provides = airgorah=0.7.2
 	conflicts = airgorah
-	source = airgorah-0.7.1::https://github.com/martin-olivier/airgorah/archive/refs/tags/v0.7.1.tar.gz
-	sha256sums = 288625dc9bfd5b4ac943373242f9153ffc016787c914b265d8f79f8108c32eb1
+	source = airgorah-0.7.2::https://github.com/martin-olivier/airgorah/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = 453664661ba7dcf013a6ae61b5b5d19ef431eedcbad74bba0cad1fb6181c82f0
 
 pkgname = airgorah

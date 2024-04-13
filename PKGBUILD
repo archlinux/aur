@@ -1,15 +1,15 @@
 # Maintainer: molivier <martin dot olivier at live dot fr>
 
 pkgname=airgorah
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
-pkgdesc="A WiFi auditing software that can perform deauth attacks and passwords cracking"
+pkgdesc="A WiFi security auditing software mainly based on aircrack-ng tools suite"
 arch=("any")
 url="https://github.com/martin-olivier/airgorah"
 license=("MIT")
 
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('288625dc9bfd5b4ac943373242f9153ffc016787c914b265d8f79f8108c32eb1')
+sha256sums=('453664661ba7dcf013a6ae61b5b5d19ef431eedcbad74bba0cad1fb6181c82f0')
 
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")
@@ -17,6 +17,7 @@ conflicts=("${pkgname}")
 depends=(
     'bash'
     'dbus'
+    'xterm'
     'polkit'
     'gtk4'
     'aircrack-ng'
