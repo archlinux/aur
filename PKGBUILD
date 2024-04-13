@@ -7,7 +7,7 @@
 
 pkgname=tuxguitar
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A multitrack guitar tablature editor and player'
 arch=('x86_64')
 url='https://www.tuxguitar.app/'
