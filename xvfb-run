@@ -14,7 +14,6 @@
 # GNU General Public License can be found in the file COPYING.
 # --- T2-COPYRIGHT-NOTE-END ---
 
-# $Id$
 # from: http://necrotic.deadbeast.net/xsf/XFree86/trunk/debian/local/xvfb-run
 
 # This script starts an instance of Xvfb, the "fake" X server, runs a command

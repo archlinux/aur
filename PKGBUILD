@@ -4,7 +4,7 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 
-pkgver=21.1.12
+pkgver=21.1.13
 pkgrel=1
 arch=('x86_64')
 license=('LicenseRef-Adobe-Display-PostScript'
@@ -37,9 +37,10 @@ source=(xorg-server::git+https://gitlab.freedesktop.org/xorg/xserver.git?signed#
         freedesktop-bug-865.patch)
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF'  # Peter Hutterer (Who-T) <office@who-t.net>
               '67DC86F2623FC5FD4BB5225D14706DBE1E4B4540'  # Olivier Fourdan <fourdan@xfce.org>
-              'FD0004A26EADFE43A4C3F249C6F7AE200374452D') # Povilas Kanapickas <povilas@radix.lt>
-sha512sums=('3a5c406debc694112ab4dd1b248c20e84aeefd1cf4417f6131beffcd02e4449129b9488ff17e46f47627d3e7f05b90d55db8096ebb1ab098bfd820afc2d3278d'
-            '87c79b4a928e74463f96f58d277558783eac9b8ea6ba00d6bbbb67ad84c4d65b3792d960ea2a70089ae18162e82ae572a49ad36df169c974cc99dbaa51f63eb2'
+              'FD0004A26EADFE43A4C3F249C6F7AE200374452D' # Povilas Kanapickas <povilas@radix.lt>
+              '3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
+sha512sums=('8893b7e236ffb2001d75df98af6480548bc2f5c129d2df1e377730d26c0f0d6a6faf0bed5266a3f8cce9d07560efe90081b8a8d0a3b527330874fb33deb1ba3e'
+            '672375cb5028ba9cda286e317d17bd8c9a9039483e7f79c21f223fd08ba07655729e9f59a082f4b8f5d8de45a77a9e9affce1002fb8c6657e26ef1a490654e49'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22'
             'c3b541c7ac95c94f682577cacedc06e79427003a870cde844056a7662087873b59dc06933552bb867b16fc0387f8a061672df780454769f26aa3e53b13a94edf')
 
