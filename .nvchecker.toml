@@ -1,0 +1,5 @@
+[debootstrap-pureos]
+source = "gitlab"
+gitlab = "pureos/core/debootstrap"
+host = "source.puri.sm"
+use_max_tag = true
