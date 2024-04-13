@@ -1,7 +1,7 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
 	pkgver = 570
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hydrusnetwork.github.io/hydrus/
 	arch = any
 	license = custom
@@ -37,6 +37,7 @@ pkgbase = hydrus
 	optdepends = python-chardet: detect text encoding more accurately
 	optdepends = python-cloudscraper: bypass cloudflare "checking your browser" challenges
 	optdepends = python-dateutil: improved fuzzy date search
+	optdepends = python-dateparser: date string to timestamp parser for predicate system
 	optdepends = python-psd-tools: handle PSD files and extract thumbnails
 	optdepends = python-pympler: debug menus to profile memory usage
 	optdepends = python-cryptography: to generate certificates for accessing client API and server via HTTPS

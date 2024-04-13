@@ -4,7 +4,7 @@ options=(!strip)  # Don't strip libs because there aren't any
 pkgname=hydrus
 _pkgname=hydrus
 pkgver=570
-pkgrel=1
+pkgrel=2
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(custom)
@@ -27,6 +27,7 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'python-chardet: detect text encoding more accurately'
             'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
             'python-dateutil: improved fuzzy date search'
+            'python-dateparser: date string to timestamp parser for predicate system'
             'python-psd-tools: handle PSD files and extract thumbnails'
             'python-pympler: debug menus to profile memory usage'
             # 'python-pyqt6-charts: display bandwidth usage charts'
@@ -82,7 +83,7 @@ package() {
 
   # Install .desktop shortcut
   install -d -m755 "${pkgdir}/usr/share/applications"
-  install -m644 ../hydrus.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -m644 ../hydrus.desktop "${pkgdir}/usr/share/applications/io.github.hydrusnetwork.hydrus.desktop"
 
   # Install license files
   install -d -m755 "${pkgdir}/usr/share/licenses/${_pkgname}"
