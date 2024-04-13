@@ -2,7 +2,7 @@
 
 _gemname=reckon
 pkgname="ruby-${_gemname}"
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=0
 pkgdesc='Flexibly import bank account CSV files into Ledger for command-line accounting.'
 arch=(any)
@@ -18,4 +18,4 @@ package() {
 	gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
 	rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 }
-sha256sums=('ca013baf8a8f96a0f2b0bf4c5eb0d7a9fc6f0d74c5d1fb7c81d945c340518130')
+sha256sums=('c4c16d69f799f40227e1a2c14ddf668f8ac03d2c04eeb6af29969b2fdc1143a8')
