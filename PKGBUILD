@@ -6,7 +6,7 @@ gitver=v6.8.6
 patchver=20240221.2
 patchname=more-uarches-for-kernel-6.8-rc4+.patch
 pkgver=6.8.v.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -16,16 +16,12 @@ options=('!strip')
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=$gitver"
         # the main kernel config files
         'config.x86_64'
-        # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset"
         # linux package install directives for pacman
 	"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/$patchver/$patchname"
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '883badf09240a590a21a117b72b1fd1f8c8619f0f610a45d21998e358170f384'
-            #.preset file
-            'fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18'
+            '5ad3ceecdf48e14a8ed69482320b323f000b77ca75eca2fc8ab954b659f43f20'
             #grayskypatch file
             'd69232afd0dd6982ae941cf2d1f577f4be2011e3bb847d1db37952acf416b5d3'
 )
@@ -79,7 +75,6 @@ _package() {
   pkgdesc="Linux kernel with working amdgpu for Raven Ridge hardware"
   depends=('coreutils' 'linux-firmware' 'kmod' 'lzop')
   optdepends=('crda: to set the correct wireless channels of your country')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
 
   cd "${_srcname}"
 
@@ -92,15 +87,6 @@ _package() {
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-
-  # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # remove build link
   rm -f "${pkgdir}"/lib/modules/${_kernver}/build
