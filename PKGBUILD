@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=baySeq
-_pkgver=2.36.1
+_pkgver=2.36.2
 pkgname=r-${_pkgname,,}
-pkgver=2.36.1
+pkgver=2.36.2
 pkgrel=1
 pkgdesc='Empirical Bayesian analysis of patterns of differential expression in count data'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f507ecaf18cdd90e97ac160cede0b505368038ba8214315835fd3e3cc047a469')
+sha256sums=('e0f22567366b129fb9e29472f2e461252d3e62e974bf19508771d94f1d7d4430')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
