@@ -1,0 +1,12 @@
+pkgbase = vetch
+	pkgdesc = Veeeeery Tiny Fetch
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/eeec-cal/vetch
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = vetch::git+https://github.com/eeec-cal/vetch
+	sha256sums = SKIP
+
+pkgname = vetch
