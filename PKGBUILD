@@ -1,8 +1,9 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Alexandr Boiko <4le34n at gmail dot com>
 # Contributor: Brian F.G. <bidulock@openss7.org>
 pkgname=accel-ppp
-pkgver=1.12.0
-pkgrel=2
+pkgver=1.13.0
+pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -14,7 +15,7 @@ conflicts=('accel-ppp-git')
 install='accel-ppp.install'
 options=('docs')
 backup=('etc/accel-ppp.conf' 'etc/accel-ppp.lua' 'etc/snmp/accel-ppp.conf' 'usr/share/accel-ppp/radius/dictionary')
-source=("http://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.bz2"
+source=("https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz"
 	'accel-ppp.logrotate'
 	'accel-ppp.lua'
 	'accel-ppp.tmpfiles'
@@ -44,6 +45,7 @@ build() {
 	cmake \
 		-DCMAKE_SYSTEM_NAME=Linux \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DLOG_FILE=TRUE \
 		-DLOG_PGSQL=FALSE \
@@ -75,7 +77,7 @@ package() {
 	install -Dm0644 "$srcdir/$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('d0f2668e182ec99b64fcd6bc8fc2a19b'
+md5sums=('239f03b9e3b81d6a156950dd3e983b28'
          '0536dd60960e76cf5a6cdbf0518782d8'
          '1faebf39e7a665d756cae3e0e33831a9'
          '312fd63b9688a05b71a6b33ddd3a9f4b'
