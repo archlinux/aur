@@ -3,10 +3,11 @@ pkgname=(
   'colloid-gtk-theme-git'
   'colloid-dracula-gtk-theme-git'
   'colloid-everforest-gtk-theme-git'
+  'colloid-gruvbox-gtk-theme-git'
   'colloid-nord-gtk-theme-git'
 )
 pkgbase=colloid-gtk-theme-git
-pkgver=2023.10.28.r17.g96f65423
+pkgver=2023.10.28.r18.g2949b6a7
 pkgrel=1
 pkgdesc="Gtk theme for Linux"
 arch=('any')
@@ -55,6 +56,15 @@ package_colloid-everforest-gtk-theme-git() {
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -t all --tweaks everforest -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -s compact --tweaks everforest normal -d "$pkgdir/usr/share/themes"
+}
+
+package_colloid-gruvbox-gtk-theme-git() {
+  pkgdesc="Gtk Gruvbox theme for Linux"
+
+  cd Colloid-gtk-theme
+  install -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks gruvbox -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks gruvbox normal -d "$pkgdir/usr/share/themes"
 }
 
 package_colloid-nord-gtk-theme-git() {
