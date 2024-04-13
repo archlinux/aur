@@ -4,7 +4,7 @@
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
 pkgname=qtspim
-pkgver=9.1.23
+pkgver=9.1.24
 pkgrel=1
 pkgdesc="New user interface for spim, a MIPS simulator."
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="http://spimsimulator.sourceforge.net/"
 license=('BSD')
 depends=('qt5-base')
 makedepends=('qt5-tools' 'subversion' 'icu' 'bison')
-source=("svn://svn.code.sf.net/p/spimsimulator/code/#revision=754")
+source=("svn://svn.code.sf.net/p/spimsimulator/code/#revision=764")
 sha256sums=('SKIP')
 
 build() {
