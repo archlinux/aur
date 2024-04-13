@@ -1,0 +1,4 @@
+[aio-creator-neo]
+source = "jq"
+url = "https://www.mediola.com/wp-content/sub-projects/helpdesk/data/downloads.json"
+filter = ".de.software.neo.current.info.version"
