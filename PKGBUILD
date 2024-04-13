@@ -1,7 +1,7 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
 
 pkgname=bpftop-bin
-pkgver=0.4.1
+pkgver=0.4.1 # renovate: datasource=github-tags depName=Netflix/bpftop
 pkgrel=1
 pkgdesc='bpftop provides a dynamic real-time view of running eBPF programs.'
 url='https://github.com/Netflix/bpftop'
@@ -17,4 +17,3 @@ package() {
   cd "$srcdir"
   install -Dm755 bpftop "$pkgdir/usr/bin/bpftop"
 }
-
