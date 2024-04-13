@@ -1,7 +1,7 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=z-library-electron
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Stay connected to our library! use system electron"
 arch=(x86_64 aarch64)
 url="https://go-to-zlibrary.se/#desktop_app_tab"
