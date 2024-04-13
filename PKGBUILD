@@ -14,7 +14,7 @@ sha512sums=('466f685641619c734149d19e40b270872b70818041f0bfd2b10d0ea9f33c8e4ebfb
 
 prepare() {
   sed -i 's/DumuxPreciceTestMacros.cmake/#DumuxPreciceTestMacros.cmake/' ${pkgname/precice/adapter}-${pkgver}/cmake/modules/CMakeLists.txt
-  sed -i '2 a 	dumuxpreciceindexmapper.hh' ${pkgname/precice/adapter}-${pkgver}/${_base}/CMakeLists.txt
+  sed -i '2 a	\ \ \ \ dumuxpreciceindexmapper.hh' ${pkgname/precice/adapter}-${pkgver}/${_base}/CMakeLists.txt
   # https://stackoverflow.com/a/50949315/9302545
   sed -i 's/return/exit/' ${pkgname/precice/adapter}-${pkgver}/test/return-test-passed.sh
 }
