@@ -2,7 +2,7 @@
 pkgbase=schily-tools
 pkgname=(schily-tools-{sdd,star})
 pkgdesc='Set of tools maintained by Jorg Schilling'
-pkgver=2023.01.12
+pkgver=2024.03.21
 pkgrel=1
 url=https://codeberg.org/schilytools/schilytools
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(custom:CDDL)
 depends=(libcap)
 _version=${pkgver//./-}
 source=("https://mirrors.dotsrc.org/schilytools/schily-${_version}.tar.bz2")
-b2sums=('9604f43858b71783378ca90cf6563f8ab0cdbe0b993fc0ae4cf3bc8a0674f5e30bf6de5d01a0084669fa0b52cc779716dab054158354f9c0b63e49592c85e0c7')
+b2sums=('6e4487445e134092624b331d162bd9fd33ce88b19b8bad4eef7d0e16934fe08d131c70e9f07d6dfd651fea429f43bbff7ef8d73650535922a132ff02ff912bb6')
 
 _tools=(
 	sdd
