@@ -1,5 +1,5 @@
 pkgname=revc-git
-pkgver=1.0.r870.ga16fcd8d
+pkgver=1.0.r872.g37e9ec0
 pkgrel=1
 pkgdesc="Grand Theft Auto: Vice City reverse engineered"
 arch=(x86_64 aarch64)
@@ -18,6 +18,10 @@ pkgver(){
 	cd re3
 	git tag --force 1.0 e604be65d9b7845ee7ca975545fc9277c662bc11
 	git describe --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+prepare(){
+	cd re3
+	sed -i 's/glfwGetX11Display/glfwGetX11DisplayglfwGetX11Display/' src/CMakeLists.txt
 }
 build(){
 	cd re3
