@@ -1,11 +1,10 @@
 pkgbase = dumux-precice
 	pkgdesc = DuMuX-preCICE adapter
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/precice/dumux-adapter
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = cmake
 	depends = dumux
 	depends = precice
 	source = dumux-adapter-2.0.0.tar.gz::https://github.com/precice/dumux-adapter/archive/v2.0.0.tar.gz
