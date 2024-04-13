@@ -4,7 +4,7 @@
 pkgname=eclipse-java
 epoch=2
 pkgver=4.31
-pkgrel=1
+pkgrel=2
 _release=2024-03/R
 pkgdesc="Highly extensible IDE (Java version)"
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,12 @@ package() {
   install -d "${pkgdir}/usr/lib"
   cp -r "eclipse" "${pkgdir}/usr/lib/eclipse"
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/eclipse/eclipse" "${pkgdir}/usr/bin/eclipse"
+  #ln -s "/usr/lib/eclipse/eclipse" "${pkgdir}/usr/bin/eclipse"
+  cat > "${pkgdir}/usr/bin/eclipse" <<EOF
+#!/bin/sh
+env WEBKIT_DISABLE_DMABUF_RENDERER=1 /usr/lib/eclipse/eclipse
+EOF
+  chmod 755 "${pkgdir}/usr/bin/eclipse"
 
   install -Dm0644 "eclipse.desktop" "${pkgdir}/usr/share/applications/eclipse.desktop"
 
