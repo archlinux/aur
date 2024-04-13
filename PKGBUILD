@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRspongeR
-_pkgver=2.4.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Identification and analysis of miRNA sponge regulation"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -29,9 +29,9 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('52c6fe3ed5a289fd16c2e8c549402eb8')
-b2sums=('6e52fe85bd718a33be2fe3b6448b9639a951e44a75b4097cbe35de09fbf53f989b5e12d1f6d06dd2ad1d3657b0cccc812b33e145a14f181beb5845881cf144c5')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('145c70b6246eb437d83d3257b5eda98a')
+b2sums=('31e9d882e4179753ed3e1353f81f76a9b7d7cd22c34e7a8f49c205b6d0f7320cfdf8d099b7236e60daf179aac4f443c8657e75a8e4553013acf3e0a19146d850')
 
 build() {
   mkdir build
