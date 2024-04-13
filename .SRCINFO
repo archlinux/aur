@@ -1,7 +1,7 @@
 pkgbase = tuxguitar
 	pkgdesc = A multitrack guitar tablature editor and player
 	pkgver = 1.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tuxguitar.app/
 	arch = x86_64
 	license = LGPL-3.0-or-later
@@ -26,6 +26,8 @@ pkgbase = tuxguitar
 	optdepends = qt5-base: LV2 plugin support
 	optdepends = jack: Jack plugin support
 	optdepends = lilypond: Compile exported LilyPond files
+	replaces = tuxguitar-common
+	replaces = tuxguitar-gtk2
 	source = tuxguitar-1.6.2::https://github.com/helge17/tuxguitar/archive/refs/tags/1.6.2.zip
 	sha256sums = d0d8e8f64240379e8fc8f83dcdfd220f9c105dcc2879b56f6f1c3ad4ce256a11
 

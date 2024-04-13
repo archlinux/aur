@@ -7,7 +7,7 @@
 
 pkgname=tuxguitar
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A multitrack guitar tablature editor and player'
 arch=('x86_64')
 url='https://www.tuxguitar.app/'
@@ -21,6 +21,7 @@ optdepends=('fluidsynth: FluidSynth plugin support'
             'qt5-base: LV2 plugin support'
             'jack: Jack plugin support'
             'lilypond: Compile exported LilyPond files')
+replaces=('tuxguitar-common' 'tuxguitar-gtk2')
 source=("tuxguitar-$pkgver::https://github.com/helge17/tuxguitar/archive/refs/tags/$pkgver.zip")
 sha256sums=('d0d8e8f64240379e8fc8f83dcdfd220f9c105dcc2879b56f6f1c3ad4ce256a11')
 
