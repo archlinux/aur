@@ -1,6 +1,6 @@
 pkgbase = git-credential-github
 	pkgdesc = A simple git credentials helper for github
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 2
 	url = https://github.com/Xgames123/git-credential-github
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = git-credential-github
 	optdepends = xclip
 	conflicts = git-credential-github-git
 	replaces = gh-login
-	source = git-credential-github-2.1.0.tar.gz::https://github.com/Xgames123/git-credential-github/archive/2.1.0.tar.gz
-	sha256sums = 9536717baacc1def9723b059e3e635dd7d425f5f6e427dc29ba1a89cb92e5250
+	source = git-credential-github-2.2.0.tar.gz::https://github.com/Xgames123/git-credential-github/archive/2.2.0.tar.gz
+	sha256sums = 18578b90ba12cd6da6bda026adeb5e752a3ccd567e5bfa40fec473659743c221
 
 pkgname = git-credential-github
