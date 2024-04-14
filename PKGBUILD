@@ -3,11 +3,11 @@
 pkgname=lbt
 _author=gardenappl
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tools for interacting with the LBRY network'
 arch=('any')
 url='https://gitlab.com/gardenappl/lbt'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 optdepends=('lbrynet: install this unless you connect to a LBRY daemon on a separate machine')
 depends=('jq' 'curl')
 source=("https://gitlab.com/$_author/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
