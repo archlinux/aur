@@ -1,4 +1,4 @@
-From 57b0ad31125ac5d32d57396aa0fd16b328c9c5db Mon Sep 17 00:00:00 2001
+From 4311702ce418c6ff44ed159fcd095c6ecd5e67b0 Mon Sep 17 00:00:00 2001
 From: Claudia <claui@users.noreply.github.com>
 Date: Fri, 12 Apr 2024 21:11:06 +0200
 Subject: [PATCH] tests: add meaningful names to validation tests
@@ -37,38 +37,42 @@ the tests are named:
     […]::TestJsonValidator::test_validate_no_none_008_valid_metadata_author_1_6
 
 [1]: https://aur.archlinux.org/cgit/aur.git/diff/PKGBUILD?h=python-cyclonedx-lib&id=9c6ae556874a633a521407a77a9a85bb31da2047
+
+Signed-off-by: Claudia <claui@users.noreply.github.com>
 ---
- tests/__init__.py             | 9 ++++++++-
- tests/test_validation_json.py | 4 ++--
- tests/test_validation_xml.py  | 4 ++--
- 3 files changed, 12 insertions(+), 5 deletions(-)
+ tests/__init__.py             | 11 +++++++++--
+ tests/test_validation_json.py |  4 ++--
+ tests/test_validation_xml.py  |  4 ++--
+ 3 files changed, 13 insertions(+), 6 deletions(-)
 
 diff --git a/tests/__init__.py b/tests/__init__.py
-index 1ea9bf60..5f306a2e 100644
+index 1ea9bf60..02a82d2f 100644
 --- a/tests/__init__.py
 +++ b/tests/__init__.py
-@@ -16,7 +16,7 @@
+@@ -16,8 +16,8 @@
  # Copyright (c) OWASP Foundation. All Rights Reserved.
  import re
  from os import getenv, path
 -from os.path import join
+-from typing import TYPE_CHECKING, Any, Generator, Iterable, List, Optional, TypeVar, Union
 +from os.path import basename, join, splitext
- from typing import TYPE_CHECKING, Any, Generator, Iterable, List, Optional, TypeVar, Union
++from typing import TYPE_CHECKING, Any, Generator, Iterable, List, Optional, Tuple, TypeVar, Union
  from unittest import TestCase
  from uuid import UUID
+ 
 @@ -183,3 +183,10 @@ def is_valid_for_schema_version(purpose: Union[Any], sv: SchemaVersion) -> bool:
  
  def mksname(purpose: Union[Any], sv: SchemaVersion, f: OutputFormat) -> str:
      return f'{_get_purpose_as_str(purpose)}-{sv.to_version()}.{_SNAME_EXT[f]}'
 +
 +
-+class DpTuple(tuple[SchemaVersion, str]):
++class DpTuple(Tuple[SchemaVersion, str]):
 +    @property
 +    def __name__(self) -> str:
-+        test_data_file = self[1]
-+        return splitext(basename(test_data_file))[0]
++        schema_version, test_data_file = self
++        return f'{schema_version.to_version()}-{splitext(basename(test_data_file))[0]}'
 diff --git a/tests/test_validation_json.py b/tests/test_validation_json.py
-index 6e99acb7..8fc3b13e 100644
+index 6e99acb7..043592b0 100644
 --- a/tests/test_validation_json.py
 +++ b/tests/test_validation_json.py
 @@ -25,14 +25,14 @@
@@ -76,7 +80,7 @@ index 6e99acb7..8fc3b13e 100644
  from cyclonedx.schema import OutputFormat, SchemaVersion
  from cyclonedx.validation.json import JsonStrictValidator, JsonValidator
 -from tests import SCHEMA_TESTDATA_DIRECTORY
-+from tests import DpTuple, SCHEMA_TESTDATA_DIRECTORY
++from tests import SCHEMA_TESTDATA_DIRECTORY, DpTuple
  
  UNSUPPORTED_SCHEMA_VERSIONS = {SchemaVersion.V1_0, SchemaVersion.V1_1, }
  
@@ -89,7 +93,7 @@ index 6e99acb7..8fc3b13e 100644
      )
  
 diff --git a/tests/test_validation_xml.py b/tests/test_validation_xml.py
-index c97ee6f7..6c326cfb 100644
+index c97ee6f7..ac400c71 100644
 --- a/tests/test_validation_xml.py
 +++ b/tests/test_validation_xml.py
 @@ -25,14 +25,14 @@
@@ -97,7 +101,7 @@ index c97ee6f7..6c326cfb 100644
  from cyclonedx.schema import OutputFormat, SchemaVersion
  from cyclonedx.validation.xml import XmlValidator
 -from tests import SCHEMA_TESTDATA_DIRECTORY
-+from tests import DpTuple, SCHEMA_TESTDATA_DIRECTORY
++from tests import SCHEMA_TESTDATA_DIRECTORY, DpTuple
  
  UNSUPPORTED_SCHEMA_VERSIONS = set()
  
