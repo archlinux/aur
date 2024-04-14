@@ -1,7 +1,7 @@
 # Maintainer: hertg <aur@her.tg>
 # This file is generated automatically via CI
 pkgname=lightdm-theme-neon
-pkgver=0.2.3
+pkgver=0.2.4
 pkgdesc='Modern and customizable theme for web-greeter with a nostalgic neon look'
 pkgrel=1
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('npm' 'git')
 optdepends=()
 provides=()
 conflicts=()
-source=("${pkgname}-0.2.3.tar.gz::https://github.com/hertg/lightdm-neon/archive/refs/tags/v0.2.3.tar.gz")
+source=("${pkgname}-0.2.4.tar.gz::https://github.com/hertg/lightdm-neon/archive/refs/tags/v0.2.4.tar.gz")
 sha256sums=('SKIP')
 
 build() {
