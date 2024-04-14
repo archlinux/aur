@@ -1,6 +1,6 @@
 # Maintainer: Fang Erjing <szdytom@qq.com>
 pkgname=kd-bin
-pkgver=0.0.5
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="A crystal clean command-line dictionary."
 arch=('x86_64' 'aarch64')
