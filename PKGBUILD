@@ -3,28 +3,28 @@
 _pkgname=bioDist
 _pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
-pkgrel=1
-pkgdesc='Different distance measures'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Different distance measures"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-biobase
 )
 optdepends=(
   r-locfit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bf2b9c5d478f2845cb73c23bb1c4a0f0070fbb6c6d20cc36274ff18496f6f759')
+md5sums=('a0c907dc82834b4771074cd8164cf773')
+b2sums=('03d317db1886268164f1ee1ab60dc5de3120d3d497f4225f7197165bd2aa3805da7f0d4ee9261d04b2daea650c86399fd264ebfe0471e0af81bac43fa3dab4bd')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
