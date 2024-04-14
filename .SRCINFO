@@ -1,0 +1,14 @@
+pkgbase = gollum-bin
+	pkgdesc = A simple, Git-powered wiki with a sweet API and local frontend. Via upstream's bin
+	pkgver = 5.3.2
+	pkgrel = 1
+	url = http://github.com/gollum/gollum
+	install = gollum-bin.install
+	arch = x86_64
+	license = MIT
+	depends = java-runtime-headless
+	noextract = gollum-5.3.2.war
+	source = gollum-5.3.2.war::https://github.com/gollum/gollum/releases/download/v5.3.2/gollum.war
+	sha256sums = ce32a8bf4b2c29f22409598fb0d361487932a7ad05d28a495abf65b5179fec95
+
+pkgname = gollum-bin

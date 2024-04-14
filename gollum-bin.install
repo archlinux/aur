@@ -1,0 +1,13 @@
+print_instructions() {
+	echo "You can run the server like so:"
+	echo "java -jar /opt/gollum/gollum.war -S gollum <your-gollum-arguments-here>"
+	echo "see arguments here: https://github.com/gollum/gollum#configuration"
+}
+
+post_install() {
+	print_instructions
+}
+
+post_upgrade() {
+	print_instructions
+}
