@@ -31,6 +31,8 @@ check(){
 	cd "$srcdir/$_pkgname"
 	echo Updating database for check...
 	./update.sh
+	echo Grabbing test-images/1.png... # (bypassing git-lfs)
+	curl https://media.githubusercontent.com/media/knoellle/wfinfo-ng/master/test-images/1.png > test-images/1.png
 	env CARGO_INCREMENTAL=0 CFLAGS= cargo test --release
 }
 
