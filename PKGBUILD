@@ -3,7 +3,7 @@
 
 _pkgname=SerialTest
 pkgname=serialtest
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
 arch=('any')
@@ -39,7 +39,7 @@ _get_mirror() {
 
 source=("${_pkgname}-${pkgver}.tar.gz::$(_get_mirror _pkg_mirrors)"
         "${pkgname}.install")
-sha256sums=('a8ab4142e2c04b35e7218a83a3aeca573fcf9b028d1f8360d9b2957bbad59a9b'
+sha256sums=('66a3d2abd21e45aed5898e732236031b3148fa082cb26585dbab8a23cc1daaab'
             '303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4')
 
 build() {
