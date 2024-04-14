@@ -20,18 +20,18 @@ sha256sums=('2c86007e8320764fde01729eebc0e6403d50b18353ecee6082d12314297094ce'
             'SKIP')
 prepare() {
     sha256sum -c --ignore-missing sparrow-$pkgver-manifest.txt
-    gendesk --pkgname "${_pkgname}" --pkgdesc "$pkgdesc" --name=$_pkgname --exec="/usr/bin/${_pkgname}" -n --categories="Utility;Finance"
+    gendesk -q -f -n --pkgname "${_pkgname}" --pkgdesc "$pkgdesc" --name=$_pkgname --exec="/usr/bin/${_pkgname}" --categories="Utility;Finance"
 }
 
 package() {
     install -dm755 "${pkgdir}"/opt/${pkgname}/lib/
     install -dm755 "${pkgdir}"/usr/bin/
-	
+
     cp -a "${srcdir}"/${_pkgname}/bin "${pkgdir}"/opt/${pkgname}/
     cp -a "${srcdir}"/${_pkgname}/lib/app "${pkgdir}"/opt/${pkgname}/lib/
     cp -a "${srcdir}"/${_pkgname}/lib/runtime "${pkgdir}"/opt/${pkgname}/lib/
     cp -a "${srcdir}"/${_pkgname}/lib/*.so "${pkgdir}"/opt/${pkgname}/lib/
-	
+
     install -Dm644 "${srcdir}"/${_pkgname}/lib/${_pkgname}.png -t "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/
     install -Dm644 "${srcdir}"/${_pkgname}.desktop "${pkgdir}"/usr/share/applications/${_pkgname,,}-wallet.desktop
     ln -s "/opt/$pkgname/bin/${_pkgname}" "${pkgdir}"/usr/bin/
