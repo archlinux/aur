@@ -1,10 +1,10 @@
 pkgbase = off-en
 	pkgdesc = A surreal role-playing game (English translation)
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://off.fandom.com/wiki/Downloads
 	arch = any
-	license = custom:non-free
+	license = LicenseRef-Freeware
 	depends = easyrpg-player
 	source = https://github.com/gronoe/off-mac/releases/download/3.0.1/OFF.English.3.0.zip
 	source = OFF

@@ -2,11 +2,11 @@
 
 pkgname=off-en
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A surreal role-playing game (English translation)'
 url='https://off.fandom.com/wiki/Downloads'
 arch=('any')
-license=('custom:non-free')
+license=('LicenseRef-Freeware')
 depends=('easyrpg-player')
 source=("https://github.com/gronoe/off-mac/releases/download/$pkgver/OFF.English.3.0.zip"
         'OFF'
