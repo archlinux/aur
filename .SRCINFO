@@ -11,6 +11,6 @@ pkgbase = ruby-cfpropertylist
 	noextract = CFPropertyList-3.0.7.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/CFPropertyList-3.0.7.gem
-	sha1sums = ca6a0a48901e712218a95892abfc57d9da9c449f
+	sha256sums = c45721614aca8d5eb6fa216f2ec28ec38de1a94505e9766a20e98745492c3c4c
 
 pkgname = ruby-cfpropertylist

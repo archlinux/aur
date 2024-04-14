@@ -13,7 +13,7 @@ depends=(ruby-base64 ruby-nkf ruby-rexml)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('ca6a0a48901e712218a95892abfc57d9da9c449f')
+sha256sums=('c45721614aca8d5eb6fa216f2ec28ec38de1a94505e9766a20e98745492c3c4c')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
