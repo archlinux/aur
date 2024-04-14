@@ -2,20 +2,20 @@
 
 pkgbase=motu
 pkgname=('motu' 'motu-dkms')
-pkgver=r19.g516da18
+pkgver=r23.g655c39e
 pkgrel=1
 pkgdesc='Kernel module for MOTU MIDI devices'
 arch=('x86_64')
 url='https://github.com/vampirefrog/motu'
 license=('GPL3')
 makedepends=('git' 'linux-headers')
-_commit='516da186c9e2112cae84b3cf0d5979e23c52d62b'
+_commit='655c39e5d5f9ac7a83b1ab6fedb1c5aac0ff81ae'
 source=(
   "$pkgbase::git+$url#commit=$_commit"
   'Makefile'
   'dkms.conf'
 )
-b2sums=('SKIP'
+b2sums=('9b78ef28e83de58f0b036a3f837826421cb01c3c31e9e98b45b216671c713e9052e058719dd89643d5d37f7e02cf28c6a07173d36ca90bff3bc713b32dcb0a68'
         '4e8d84050bd1622e7463ac8ea821161ea441cc3aa3d80c1c9bddfe55ac642fa606d3d740aba1af94726a04f8d42d9c3f4062f368d4a4162958633f42ee9fc04e'
         'ede461a5f32df0919186e0afe66e5d19511cbf527ff1eb31fedc414e4d6de1fb887a9cea288442fab0e7e0b6fe52d8eef1f6fc7c6a8c0b1262f8d681fa28f360')
 
