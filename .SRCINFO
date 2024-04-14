@@ -1,6 +1,6 @@
 pkgbase = blender-studio-pipeline-git
 	pkgdesc = this will install Blender Media Viewer and Studio Addons. Learn more at https://projects.blender.org/studio/blender-studio-pipeline.git.
-	pkgver = r2352.3f5ce26
+	pkgver = r2359.96dbb49
 	pkgrel = 1
 	epoch = 0
 	url = https://projects.blender.org/studio/blender-studio-pipeline.git
