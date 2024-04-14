@@ -1,0 +1,16 @@
+pkgbase = tile-molestor
+	pkgdesc = Raster Music Tracker for making Atari POKEY music.
+	pkgver = 0.19
+	pkgrel = 1
+	url = https://www.romhacking.net/utilities/991/
+	arch = any
+	makedepends = p7zip
+	depends = jre17-openjdk
+	source = https://s3-external-1.amazonaws.com/romhacking-hacks/utilities/%5B991%5DTM019.7z
+	source = tile-molestor
+	source = tile-molestor.desktop
+	source = tile-molestor.png
+	md5sums = 759ced6b3d483ec256cd5fd2f74d4ac5
+
+pkgname = tile-molestor
+

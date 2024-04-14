@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /usr/share/tile-molestor/ # we need to be in the directory of the executable for it to work
+/usr/lib/jvm/java-17-openjdk/bin/java -jar TileMolester.jar $@

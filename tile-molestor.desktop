@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Tile Molestor
+Comment=Multi-format graphics editor for ROM hacking
+Exec=tile-molestor
+Icon=tile-molestor
+Terminal=false
+StartupNotify=false
+Categories=Java;Graphics;Development;
