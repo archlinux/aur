@@ -16,7 +16,7 @@ sha256sums=('c00589598d5ede19365f1d3eb4107df230b4b43951ce4c5d42e19b6ba734d0c0')
 
 pkgver() {
   cd Flowtime
-  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 build() {
