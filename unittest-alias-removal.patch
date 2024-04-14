@@ -1,0 +1,104 @@
+diff -aur tarantool-python-0.9.0.orig/test/suites/test_dml.py tarantool-python-0.9.0/test/suites/test_dml.py
+--- tarantool-python-0.9.0.orig/test/suites/test_dml.py	2024-04-14 11:19:53.467210795 +0200
++++ tarantool-python-0.9.0/test/suites/test_dml.py	2024-04-14 11:33:12.403615840 +0200
+@@ -128,7 +128,7 @@
+         self.assertSequenceEqual(self.con.delete('space_1', [20]), [])
+         self.assertSequenceEqual(self.con.select('space_1', [20], index='primary'), [])
+         # Check that <index_id> field has no meaning, yet.
+-        with self.assertRaisesRegexp(tarantool.DatabaseError,
++        with self.assertRaisesRegex(tarantool.DatabaseError,
+                 '(19, .*)'):
+                 self.con.delete('space_1', [1, 'tuple_21'])
+         self.assertSequenceEqual(self.con.select('space_1', [21], index='primary'), [[21, 1, 'tuple_21']])
+@@ -138,7 +138,7 @@
+         self.assertSequenceEqual(self.con.replace('space_1', [2, 2, 'tuple_3']), [[2, 2, 'tuple_3']])
+         self.assertSequenceEqual(self.con.select('space_1', 2), [[2, 2, 'tuple_3']])
+         # Check replace that isn't Ok.
+-        with self.assertRaisesRegexp(tarantool.DatabaseError,
++        with self.assertRaisesRegex(tarantool.DatabaseError,
+                 '(39, .*)'):
+             self.assertSequenceEqual(self.con.replace('space_1', [2, 2]), [[2, 2, 'tuple_2']])
+ 
+@@ -172,9 +172,9 @@
+         self.assertSequenceEqual(con.call('json.decode', '[123, 234, 345]'), [[123, 234, 345]])
+         self.assertSequenceEqual(con.call('json.decode', ['[123, 234, 345]']), [[123, 234, 345]])
+         self.assertSequenceEqual(con.call('json.decode', ('[123, 234, 345]',)), [[123, 234, 345]])
+-        with self.assertRaisesRegexp(tarantool.DatabaseError, '(32, .*)'):
++        with self.assertRaisesRegex(tarantool.DatabaseError, '(32, .*)'):
+             con.call('json.decode')
+-        with self.assertRaisesRegexp(tarantool.DatabaseError, '(32, .*)'):
++        with self.assertRaisesRegex(tarantool.DatabaseError, '(32, .*)'):
+             con.call('json.decode', '{[1, 2]: "world"}')
+         ans = con.call('fiber.time')
+         self.assertEqual(len(ans), 1)
+@@ -198,9 +198,9 @@
+         self.assertSequenceEqual(con.call('json.decode', '[123, 234, 345]'), [[123, 234, 345]])
+         self.assertSequenceEqual(con.call('json.decode', ['[123, 234, 345]']), [[123, 234, 345]])
+         self.assertSequenceEqual(con.call('json.decode', ('[123, 234, 345]',)), [[123, 234, 345]])
+-        with self.assertRaisesRegexp(tarantool.DatabaseError, '(32, .*)'):
++        with self.assertRaisesRegex(tarantool.DatabaseError, '(32, .*)'):
+             con.call('json.decode')
+-        with self.assertRaisesRegexp(tarantool.DatabaseError, '(32, .*)'):
++        with self.assertRaisesRegex(tarantool.DatabaseError, '(32, .*)'):
+             con.call('json.decode', '{[1, 2]: "world"}')
+         ans = con.call('fiber.time')
+         self.assertEqual(len(ans), 1)
+diff -aur tarantool-python-0.9.0.orig/test/suites/test_pool.py tarantool-python-0.9.0/test/suites/test_pool.py
+--- tarantool-python-0.9.0.orig/test/suites/test_pool.py	2024-04-14 11:19:53.467210795 +0200
++++ tarantool-python-0.9.0/test/suites/test_pool.py	2024-04-14 11:33:12.403615840 +0200
+@@ -524,11 +524,11 @@
+             user='test',
+             password='test',)
+ 
+-        self.assertEquals(self.pool.is_closed(), False)
++        self.assertEqual(self.pool.is_closed(), False)
+ 
+         self.pool.close()
+ 
+-        self.assertEquals(self.pool.is_closed(), True)
++        self.assertEqual(self.pool.is_closed(), True)
+ 
+     def tearDown(self):
+         if hasattr(self, 'pool'):
+diff -aur tarantool-python-0.9.0.orig/test/suites/test_schema.py tarantool-python-0.9.0/test/suites/test_schema.py
+--- tarantool-python-0.9.0.orig/test/suites/test_schema.py	2024-04-14 11:19:53.467210795 +0200
++++ tarantool-python-0.9.0/test/suites/test_schema.py	2024-04-14 11:33:12.403615840 +0200
+@@ -108,30 +108,30 @@
+         self.assertEqual(self.con.authenticate('test', 'test')._data, None)
+ 
+     def test_01_space_bad(self):
+-        with self.assertRaisesRegexp(tarantool.SchemaError,
++        with self.assertRaisesRegex(tarantool.SchemaError,
+                 'There\'s no space.*'):
+             self.sch.get_space(0)
+-        with self.assertRaisesRegexp(tarantool.SchemaError,
++        with self.assertRaisesRegex(tarantool.SchemaError,
+                 'There\'s no space.*'):
+             self.sch.get_space(0)
+-        with self.assertRaisesRegexp(tarantool.SchemaError,
++        with self.assertRaisesRegex(tarantool.SchemaError,
+                 'There\'s no space.*'):
+             self.sch.get_space('bad_name')
+ 
+     def test_02_index_bad(self):
+-        with self.assertRaisesRegexp(tarantool.SchemaError,
++        with self.assertRaisesRegex(tarantool.SchemaError,
+                 'There\'s no space.*'):
+             self.sch.get_index(0, 'primary')
+-        with self.assertRaisesRegexp(tarantool.SchemaError,
++        with self.assertRaisesRegex(tarantool.SchemaError,
+                 'There\'s no space.*'):
+             self.sch.get_index('bad_space', 'primary')
+-        with self.assertRaisesRegexp(tarantool.SchemaError,
++        with self.assertRaisesRegex(tarantool.SchemaError,
+                 'There\'s no index.*'):
+             self.sch.get_index(280, 'bad_index')
+-        with self.assertRaisesRegexp(tarantool.SchemaError,
++        with self.assertRaisesRegex(tarantool.SchemaError,
+                 'There\'s no index.*'):
+             self.sch.get_index(280, 'bad_index')
+-        with self.assertRaisesRegexp(tarantool.SchemaError,
++        with self.assertRaisesRegex(tarantool.SchemaError,
+                 'There\'s no index.*'):
+             self.sch.get_index(280, 3)
+ 
