@@ -14,7 +14,7 @@ md5sums=('0106914abde67de1c44cf67d2a1be557')
 build(){
 cd "$pkgname-$pkgver"
 ./configure --prefix=/usr --libexecdir=/usr/lib 
-make -j1
+make -j1 # https://savannah.gnu.org/support/index.php?111050
 }
 package(){
 cd "$pkgname-$pkgver"
