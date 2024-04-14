@@ -1,7 +1,7 @@
 # Maintainer: CrossScar <crossscarcs@gmail.com>
 pkgname=gng-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple puzzle game."
 arch=('x86_64')
 url="https://github.com/CommanderGL/gng"
@@ -24,6 +24,9 @@ build() {
 
 package() {
 	cd "$srcdir/gng/linux"
+  mkdir -p $pkgdir/usr/bin
+  mkdir -p $pkgdir/usr/share/applications
+  mkdir -p $pkgdir/usr/share/icons/hicolor/128x128/apps
   cp bin/gng $pkgdir/usr/bin/gng
   cp pkg/gng.desktop $pkgdir/usr/share/applications/gng.desktop
   cp ../assets/logo.png $pkgdir/usr/share/icons/hicolor/128x128/apps/gng.png
