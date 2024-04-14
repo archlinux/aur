@@ -3,14 +3,13 @@
 _pkgname=timeSeries
 _pkgver=4032.109
 pkgname=r-${_pkgname,,}
-pkgver=4032.109
-pkgrel=1
-pkgdesc='Financial Time Series Objects (Rmetrics)'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Financial Time Series Objects (Rmetrics)"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-timedate
 )
 optdepends=(
@@ -22,14 +21,15 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5e0c47584e0b01ea4011ed5ced217d95f8bb872611f6b029b0797d95eebd731f')
+md5sums=('645a2cd9432cacae6a7656b2a7c89662')
+b2sums=('4dd1be893e42639cc62d8256c7eb914544a373a9908e416c0ffc2ced002bea9c73d626ad0e87e0180e402c86a7815742e306024dc1b1ac4668ffc2c427e1f94a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
