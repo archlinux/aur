@@ -9,5 +9,4 @@ Description = Signing SystemD for SecureBoot
 When = PostTransaction
 Exec = /usr/bin/sbsign --key /%SIGN_LOCATION%/db/db.key --cert /%SIGN_LOCATION%/db/db.crt --output "/usr/lib/systemd/boot/efi/systemd-bootx64.efi" "/usr/lib/systemd/boot/efi/systemd-bootx64.efi"
 Depends = sbsigntools
-Depends = findutils
 Depends = grep

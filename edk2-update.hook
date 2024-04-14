@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = edk2-shell
+
+[Action]
+Description = Update EDK2 EFI Shell Binary
+When = PostTransaction
+Exec = /usr/bin/cp -uv /usr/share/edk2-shell/x64/Shell_Full.efi /boot/shellx64.efi
+Depends = coreutils

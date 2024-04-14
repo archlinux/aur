@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = edk2-shell
+
+[Action]
+Description = Signing EDK2 EFI Shell Binary for SecureBoot
+When = PostTransaction
+Exec = /usr/bin/sbsign --key /%SIGN_LOCATION%/db/db.key --cert /%SIGN_LOCATION%/db/db.crt --output "/usr/lib/systemd/boot/efi/systemd-bootx64.efi" "/usr/share/edk2-shell/x64/Shell_Full.efi"
+Depends = sbsigntools
+Depends = grep
