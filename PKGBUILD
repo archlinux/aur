@@ -23,7 +23,7 @@ pkgver() {
 
 build(){
 	cd "$srcdir/$_pkgname"
-	env CARGO_INCREMENTAL=0 CFLAGS= cargo build --release --locked
+	env CFLAGS= cargo build --release --locked
 	# following line is to remove the 'jq' dependency (specifically, trimming the " | jq ." part)
 	cut update.sh -d\  -f-2,6- > update.sh~; chmod --reference=update.sh update.sh~; mv -f update.sh~ update.sh
 }
@@ -34,7 +34,7 @@ check(){
 	./update.sh
 	echo Grabbing test-images/1.png... # (bypassing git-lfs)
 	curl https://media.githubusercontent.com/media/knoellle/wfinfo-ng/master/test-images/1.png > test-images/1.png
-	env CARGO_INCREMENTAL=0 CFLAGS= cargo test --release --locked -- --skip wfi_images_99_percent
+	env CFLAGS= cargo test --release --locked -- --skip wfi_images_99_percent
 }
 
 package() {
