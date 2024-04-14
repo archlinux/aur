@@ -3,12 +3,12 @@
 # Contributor: merlock <mlmatlock@gmail.com>
 
 pkgname=fahcontrol-gtk3-git
-pkgver=r191.17c0252
+pkgver=r203.3978c35
 pkgrel=1
 pkgdesc='Graphical monitor and control utility for the Folding@home client (python3/GTK3 fork)'
 url='https://foldingathome.org'
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('python' 'python-gobject' 'python-six' 'gtk3')
 makedepends=('python-setuptools' 'git')
 optdepends=('fahviewer: 3D simulation viewer')
