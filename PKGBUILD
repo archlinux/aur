@@ -3,7 +3,7 @@
 _pkgname=litepcie
 pkgname=python-$_pkgname
 pkgver=2021.08
-pkgrel=4
+pkgrel=5
 pkgdesc='Small footprint and configurable PCIe core'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
@@ -23,7 +23,9 @@ build() {
 check() {
   cd $_pkgname-$pkgver
 
-  pytest
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest -v
 }
 
 package() {
