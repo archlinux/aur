@@ -1,6 +1,6 @@
 pkgbase = fcitx5-mozc-ext-neologd
 	pkgdesc = Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)
-	pkgver = 2.29.5111.102.ga0fc18b
+	pkgver = 2.30.5432.102.g441b11c
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -30,17 +30,17 @@ pkgbase = fcitx5-mozc-ext-neologd
 	conflicts = fcitx-mozc-ut-unified
 	conflicts = fcitx-mozc-ut-unified-full
 	conflicts = fcitx5-mozc
-	source = git+https://github.com/fcitx/mozc.git#commit=a0fc18b
+	source = git+https://github.com/fcitx/mozc.git#commit=441b11c
 	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202110.zip
 	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-202110.zip
-	source = git+https://chromium.googlesource.com/breakpad/breakpad#commit=8988364
-	source = git+https://github.com/google/googletest.git#commit=65cfeca
-	source = git+https://chromium.googlesource.com/external/gyp#commit=c6d8b9f
+	source = git+https://chromium.googlesource.com/breakpad/breakpad#commit=e5dc1f8
+	source = git+https://github.com/google/googletest.git#commit=5197b1a
+	source = git+https://chromium.googlesource.com/external/gyp#commit=1615ec3
 	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=a4a6677
-	source = git+https://github.com/open-source-parsers/jsoncpp.git#commit=3d9bf8e
-	source = git+https://github.com/google/protobuf.git#commit=3560e23
-	source = git+https://github.com/abseil/abseil-cpp.git#commit=1feab4f
-	source = git+https://github.com/reasonset/mozcdict-ext.git#commit=1041a9c
+	source = git+https://github.com/open-source-parsers/jsoncpp.git#commit=69098a1
+	source = git+https://github.com/google/protobuf.git#commit=3f493d9
+	source = git+https://github.com/abseil/abseil-cpp.git#commit=8541930
+	source = git+https://github.com/reasonset/mozcdict-ext.git#commit=9a50ee1
 	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
 	sha512sums = SKIP
 	sha512sums = 606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc

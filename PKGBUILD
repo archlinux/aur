@@ -6,17 +6,17 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=a0fc18b
+_mozc_commit=441b11c
 
 ## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party
-_abseil_cpp_commit=1feab4f
-_breakpad_commit=8988364
-_gtest_commit=65cfeca
-_gyp_commit=c6d8b9f
+_abseil_cpp_commit=8541930
+_breakpad_commit=e5dc1f8
+_gtest_commit=5197b1a
+_gyp_commit=1615ec3
 _japanese_usage_dictionary_commit=a4a6677
-_jsoncpp_commit=3d9bf8e
-_protobuf_commit=3560e23
-_dictext_commit=1041a9c
+_jsoncpp_commit=69098a1
+_protobuf_commit=3f493d9
+_dictext_commit=9a50ee1
 
 ## the latest release from https://osdn.net/projects/ponsfoot-aur/storage/mozc/
 _zipcode_rel=202110
@@ -24,7 +24,7 @@ _zipcode_rel=202110
 _pkgbase=mozc
 pkgname=fcitx5-mozc-ext-neologd
 pkgdesc="Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)"
-pkgver=2.29.5111.102.ga0fc18b
+pkgver=2.30.5432.102.g441b11c
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/google/mozc"
@@ -67,6 +67,7 @@ pkgver(){
 
 prepare() {
   cd "$srcdir/mozc"
+  git config protocol.file.allow always
   git submodule init
   git config submodule.src/third_party/breakpad.url "$srcdir/breakpad"
   git config submodule.src/third_party/gtest.url "$srcdir/googletest"
