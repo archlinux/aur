@@ -10,7 +10,9 @@ url="https://www.castlestech.com/"
 license=('unknown')
 depends=('pcsclite')
 makedepends=('unzip')
-source=("${pkgname}-${pkgver}.zip::https://www.castlestech.com/wp-content/uploads/2016/08/201511920271676073.zip")
+# The original link is offline, so I uploaded a backup to archive.org
+#source=("${pkgname}-${pkgver}.zip::https://www.castlestech.com/wp-content/uploads/2016/08/201511920271676073.zip")
+source=("https://archive.org/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip")
 md5sums=('c4adcc5cb7f34f3a6092b1474c06c513')
 
 prepare() {
