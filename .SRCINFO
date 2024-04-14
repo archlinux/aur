@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-hue-lights
 	makedepends = gettext
 	makedepends = git
 	depends = gnome-shell
-	source = git+https://github.com/vchlum/hue-lights.git#commit=dbf4877e0d93260510f9b1257e9866a9bddeabda
+	source = git+https://github.com/vchlum/hue-lights.git#commit=634469f334995de7745f153998cb7cc6b6ee9e8e
 	sha512sums = SKIP
 
 pkgname = gnome-shell-extension-hue-lights

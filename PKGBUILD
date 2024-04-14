@@ -11,7 +11,7 @@ url="https://github.com/vchlum/hue-lights"
 license=('MIT')
 depends=('gnome-shell')
 makedepends=('intltool' 'gettext' 'git')
-_commit=dbf4877e0d93260510f9b1257e9866a9bddeabda
+_commit=634469f334995de7745f153998cb7cc6b6ee9e8e
 source=("git+https://github.com/vchlum/hue-lights.git#commit=$_commit")
 sha512sums=('SKIP')
 
