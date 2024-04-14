@@ -1,13 +1,13 @@
 pkgbase = r-stable
 	pkgdesc = Probability Functions and Generalized Regression Models for Stable Distributions
 	pkgver = 1.1.6
-	pkgrel = 6
+	pkgrel = 8
 	url = https://cran.r-project.org/package=stable
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-rmutil
 	source = https://cran.r-project.org/src/contrib/stable_1.1.6.tar.gz
-	sha256sums = 2238788a35b5aa9e175ad7b92348640c3dcad68b6ab0a0bc04aeec9084d29da4
+	md5sums = 16a7ec353ed33075f93b03e8c92a296c
+	b2sums = 362ea644461d67ce01cd241b4880d489f85eeead99e1f2b3f9d4a257c9db7bb0ff09d2510286e9e4ea644a6c0b51b4e00457e22ae8b4fa386b02dd3a10a37998
 
 pkgname = r-stable
