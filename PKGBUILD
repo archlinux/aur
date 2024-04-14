@@ -2,32 +2,15 @@
 
 _pkgname="ytmdl"
 pkgname="$_pkgname"
-pkgver=2023.11.26
-pkgrel=2
+pkgver=2024.04.14
+pkgrel=1
 pkgdesc="Download songs from YouTube with metadata from iTunes, Spotify, LastFM, etc"
 arch=("any")
 url="https://github.com/deepjyoti30/ytmdl"
 license=('MIT')
 
 depends=(
-  'python-beautifulsoup4'
-  'python-musicbrainzngs'
-  'python-mutagen'
-  'python-pyxdg'
-  'python-rich'
-  'python-unidecode'
-  'python-urllib3'
-  'python-ytmusicapi'
-  'yt-dlp'
-
-  # AUR
-  'downloader-cli'
-  'python-ffmpeg-python'
-  'python-itunespy'
-  'python-pydes'
-  'python-simber'
-  'python-spotipy'
-  'youtube-search-python'
+  'python'
 )
 makedepends=(
   'git'
@@ -38,8 +21,12 @@ makedepends=(
 )
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url#tag=$pkgver")
+source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
 sha256sums=("SKIP")
+
+prepare() {
+  sed -E -e '/ytmdl\.(bash|zsh)/d' -i "$_pkgsrc/setup.py"
+}
 
 build() {
   cd "$_pkgsrc"
@@ -49,6 +36,31 @@ build() {
 }
 
 package() {
+  depends+=(
+    'python-beautifulsoup4'
+    'python-musicbrainzngs'
+    'python-mutagen'
+    'python-pyxdg'
+    'python-rich'
+    'python-unidecode'
+    'python-ytmusicapi'
+    'yt-dlp'
+
+    # AUR
+    'downloader-cli'
+    'python-ffmpeg-python'
+    'python-itunespy'
+    'python-pydes'
+    'python-simber'
+    'python-spotipy'
+    'youtube-search-python'
+
+    ## implicit
+    #'python-urllib3'
+    #'python-colorama'
+    #'python-requests'
+  )
+
   cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
