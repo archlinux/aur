@@ -1,0 +1,16 @@
+pkgbase = xdbd-devel-git
+	pkgdesc = An open source development library
+	pkgver = r46.e6e7d25
+	pkgrel = 1
+	url = https://github.com/openbfdev/xdbd.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = fakeroot
+	source = xdbd::git+https://github.com/openbfdev/xdbd.git#branch=develop
+	md5sums = SKIP
+
+pkgname = xdbd-devel-git
