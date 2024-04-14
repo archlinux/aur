@@ -1,6 +1,6 @@
 pkgbase = beekeeper-studio-ultimate
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more - Ultimate edition
-	pkgver = 4.1.13
+	pkgver = 4.2.9
 	pkgrel = 1
 	url = https://github.com/beekeeper-studio/ultimate-releases
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = beekeeper-studio-ultimate
 	source = LICENSE.md
 	sha512sums = e6b9a9ac3c62cc2b040c4ece48ab27a29e1ba8fbf2c3d45f299aeb7c2b0a967acb8e84171f5d71f63ebedba52a8f376beab40e8889bda668341aa1d9da50bd47
 	sha512sums = be5c22a33b22a82c0a308ecfe66443915828a4f7f82f696dc429dcd4c8ea7e9f2a1087123c0fe3dc0599f9d7defe505fb88c18a52eb0b31f2d81f2e798090ef7
-	source_x86_64 = beekeeper-studio-ultimate-4.1.13-x86_64.AppImage::https://github.com/beekeeper-studio/ultimate-releases/releases/download/v4.1.13/Beekeeper-Studio-Ultimate-4.1.13.AppImage
-	sha512sums_x86_64 = df65ed37d112e8850758da6c123b6c03abb66cfd91a7af40fb9c8b0ddfe1cc8de5e9e5d063bd810d47104d7e9152dac86fd8a68f4ac597930ee09a59f32241b1
-	source_aarch64 = beekeeper-studio-ultimate-4.1.13-aarch64.AppImage::https://github.com/beekeeper-studio/ultimate-releases/releases/download/v4.1.13/Beekeeper-Studio-Ultimate-4.1.13-arm64.AppImage
-	sha512sums_aarch64 = 2696c6d9663fdd79ab4c7b9f74e67696ea6dbddf29a53614d4e2bf49c8a1c455052d2b2a921d3e0312fb2a7337e2bbb9a0055855358fbc7e2141c5013c4dfa09
+	source_x86_64 = beekeeper-studio-ultimate-4.2.9-x86_64.AppImage::https://github.com/beekeeper-studio/ultimate-releases/releases/download/v4.2.9/Beekeeper-Studio-Ultimate-4.2.9.AppImage
+	sha512sums_x86_64 = 5a8ed20ea5c276bdb2482773c78143031187482fefd8c820b1030d56a6f65e86404221b281c4921535d39e348e7be78f1c57a28feb1040b3c80278588936924f
+	source_aarch64 = beekeeper-studio-ultimate-4.2.9-aarch64.AppImage::https://github.com/beekeeper-studio/ultimate-releases/releases/download/v4.2.9/Beekeeper-Studio-Ultimate-4.2.9-arm64.AppImage
+	sha512sums_aarch64 = d3e567025cdb0967b37c1bdbb0255c09e161ca697c358d50e6d995286b05aee7e09727b6a25dc88f61ac7de5819d8f4857b7ae9ee3bf133a814205fa45dc66b5
 
 pkgname = beekeeper-studio-ultimate
