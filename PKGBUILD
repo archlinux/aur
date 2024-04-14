@@ -1,7 +1,7 @@
 # Maintainer: CrossScar <crossscarcs@gmail.com>
 pkgname=gng-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple puzzle game."
 arch=('x86_64')
 url="https://github.com/CommanderGL/gng"
@@ -10,7 +10,6 @@ depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'sudo')
 makedepends=('git')
 source=('gng::git+https://github.com/CommanderGL/gng.git')
 sha256sums=('SKIP')
-install="gng.install"
 
 prepare() {
 	cd "$srcdir/gng/linux"
