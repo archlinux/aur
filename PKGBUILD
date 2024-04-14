@@ -1,16 +1,19 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: DawfukFR <dawfukfr@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 _pkgname=polkit-qt6
 pkgname=$_pkgname-git
-pkgver=v0.114.0.r13.g590e710
+pkgver=v0.200.0.r0.gaa1c6c4
 pkgrel=1
 pkgdesc='A library that allows developers to access PolicyKit API with a nice Qt-style API'
 arch=('i686' 'x86_64')
 url='https://invent.kde.org/libraries/polkit-qt-1'
 license=('LGPL')
 depends=('polkit' 'qt6-base')
+provides=("polkit-qt6=${pkgver%.*.*}")
+conflicts=('polkit-qt6')
 makedepends=('git' 'cmake')
 source=("$_pkgname::git+https://invent.kde.org/libraries/polkit-qt-1.git")
 sha256sums=('SKIP')
