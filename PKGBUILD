@@ -7,7 +7,7 @@ pkgname=(
   'colloid-nord-gtk-theme-git'
 )
 pkgbase=colloid-gtk-theme-git
-pkgver=2023.10.28.r18.g2949b6a7
+pkgver=2024.04.14.r0.g2949b6a7
 pkgrel=1
 pkgdesc="Gtk theme for Linux"
 arch=('any')
@@ -17,8 +17,6 @@ makedepends=('git' 'sassc')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'colloid-icon-theme: Matching icon theme'
             'colloid-cursors: Matching cursor theme')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 options=('!strip')
 install="${pkgname%-git}.install"
 source=('git+https://github.com/vinceliuice/Colloid-gtk-theme.git')
@@ -30,6 +28,9 @@ pkgver() {
 }
 
 package_colloid-gtk-theme-git() {
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
   cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -d "$pkgdir/usr/share/themes"
@@ -42,6 +43,8 @@ package_colloid-gtk-theme-git() {
 
 package_colloid-dracula-gtk-theme-git() {
   pkgdesc="Gtk Dracula theme for Linux"
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
 
   cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
@@ -51,6 +54,8 @@ package_colloid-dracula-gtk-theme-git() {
 
 package_colloid-everforest-gtk-theme-git() {
   pkgdesc="Gtk Everforest theme for Linux"
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
 
   cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
@@ -60,6 +65,8 @@ package_colloid-everforest-gtk-theme-git() {
 
 package_colloid-gruvbox-gtk-theme-git() {
   pkgdesc="Gtk Gruvbox theme for Linux"
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
 
   cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
@@ -69,6 +76,8 @@ package_colloid-gruvbox-gtk-theme-git() {
 
 package_colloid-nord-gtk-theme-git() {
   pkgdesc="Gtk Nord theme for Linux"
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
 
   cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
