@@ -8,7 +8,7 @@ pkgdesc='Pluggable multi-language version manager'
 _sha='7ae1cfa2b8000687c2ef1ad57d5c47646fd96288'
 _short_sha="${_sha::7}"
 pkgver=0.34.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 _gh_owner='moonrepo'
 _gh_repo='proto'
@@ -41,6 +41,7 @@ build() {
 package() {
   cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
   install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 755 "target/release/${pkgname}-shim" "${pkgdir}/usr/bin/${pkgname}-shim"
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm 644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
