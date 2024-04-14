@@ -3,25 +3,25 @@
 _pkgname=LPEadj
 _pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
-pkgrel=1
-pkgdesc='A correction of the local pooled error (LPE) method to replace the asymptotic variance adjustment with an unbiased adjustment based on sample size.'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="A correction of the local pooled error (LPE) method to replace the asymptotic variance adjustment with an unbiased adjustment based on sample size"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
-  r
   r-lpe
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('576b43aa9bd16e28db957d92ab37bb557bc666d70f0c11c1178b679129a3a59e')
+md5sums=('ebb9c5bc6d113688787fadb2739bc75a')
+b2sums=('3ae835926e4b6ad55965ae6c67548fb9a935b0bec158ff1c59b7771428c441194a0b32fa457a8b4777d91d549ed1a0c751fe1dc7af59dd1a2ff0825f0abfd16d')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
