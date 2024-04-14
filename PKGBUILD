@@ -1,16 +1,16 @@
 # Maintainer: Jonathan Schleifer <js@nil.im>
 pkgname=('libobjfw' 'libobjfwrt' 'libobjfwtls' 'ofarc' 'ofdns' 'ofhash' 'ofhttp')
 pkgbase=objfw
-pkgver=1.0.12
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Portable, lightweight framework for the Objective-C language"
 arch=('x86_64')
 url="https://objfw.nil.im/"
-license=('custom:QPL' 'GPL3' 'GPL2')
+license=('LGPL3')
 groups=(objfw)
 makedepends=(clang)
-source=("$pkgbase-$pkgver.tar.gz::https://objfw.nil.im/downloads/$pkgbase-$pkgver.tar.gz")
-sha256sums=(d5f9d5dcb95c52f7b243b1b818a34be99cecaaa5afd6de1c5b2502214f5df7f7)
+source=("https://objfw.nil.im/downloads/$pkgbase-$pkgver.tar.gz")
+sha256sums=(0492a08f964180b7453c05bd9f0080e70b61171a9b5194a6d1b891370c24cfc0)
 
 build() {
 	cd "$pkgbase-$pkgver"
@@ -30,7 +30,7 @@ package_libobjfw() {
 	cd "$pkgbase-$pkgver"
 	make DESTDIR="$pkgdir/" install
 
-	for i in LICENSE.QPL LICENSE.GPLv3 LICENSE.GPLv2; do
+	for i in COPYING COPYING.LESSER; do
 		install -D -m 644 "$i" "$pkgdir/usr/share/licenses/$pkgname/$i"
 	done
 
@@ -43,6 +43,7 @@ package_libobjfw() {
 	rm -fr "$pkgdir/usr/include/ObjFWTLS"
 	rm -f "$pkgdir/usr/lib/libobjfwrt.so"*
 	rm -f "$pkgdir/usr/lib/libobjfwtls.so"*
+	rm -f "$pkgdir/usr/lib/objfw-config/ObjFWTLS.oc"
 	rm -fr "$pkgdir/usr/share/ofarc"
 	rm -fr "$pkgdir/usr/share/ofdns"
 	rm -fr "$pkgdir/usr/share/ofhash"
@@ -56,7 +57,7 @@ package_libobjfwrt() {
 	cd "$pkgbase-$pkgver"
 	make -C src/runtime DESTDIR="$pkgdir/" install
 
-	for i in LICENSE.QPL LICENSE.GPLv3 LICENSE.GPLv2; do
+	for i in COPYING COPYING.LESSER; do
 		install -D -m 644 "$i" "$pkgdir/usr/share/licenses/$pkgname/$i"
 	done
 }
@@ -68,7 +69,7 @@ package_libobjfwtls() {
 	cd "$pkgbase-$pkgver"
 	make -C src/tls DESTDIR="$pkgdir/" install
 
-	for i in LICENSE.QPL LICENSE.GPLv3 LICENSE.GPLv2; do
+	for i in COPYING COPYING.LESSER; do
 		install -D -m 644 "$i" "$pkgdir/usr/share/licenses/$pkgname/$i"
 	done
 }
@@ -80,7 +81,7 @@ package_ofarc() {
 	cd "$pkgbase-$pkgver"
 	make -C utils/ofarc DESTDIR="$pkgdir/" install
 
-	for i in LICENSE.QPL LICENSE.GPLv3 LICENSE.GPLv2; do
+	for i in COPYING COPYING.LESSER; do
 		install -D -m 644 "$i" "$pkgdir/usr/share/licenses/$pkgname/$i"
 	done
 }
@@ -92,7 +93,7 @@ package_ofdns() {
 	cd "$pkgbase-$pkgver"
 	make -C utils/ofdns DESTDIR="$pkgdir/" install
 
-	for i in LICENSE.QPL LICENSE.GPLv3 LICENSE.GPLv2; do
+	for i in COPYING COPYING.LESSER; do
 		install -D -m 644 "$i" "$pkgdir/usr/share/licenses/$pkgname/$i"
 	done
 }
@@ -104,7 +105,7 @@ package_ofhash() {
 	cd "$pkgbase-$pkgver"
 	make -C utils/ofhash DESTDIR="$pkgdir/" install
 
-	for i in LICENSE.QPL LICENSE.GPLv3 LICENSE.GPLv2; do
+	for i in COPYING COPYING.LESSER; do
 		install -D -m 644 "$i" "$pkgdir/usr/share/licenses/$pkgname/$i"
 	done
 }
@@ -116,7 +117,7 @@ package_ofhttp() {
 	cd "$pkgbase-$pkgver"
 	make -C utils/ofhttp DESTDIR="$pkgdir/" install
 
-	for i in LICENSE.QPL LICENSE.GPLv3 LICENSE.GPLv2; do
+	for i in COPYING COPYING.LESSER; do
 		install -D -m 644 "$i" "$pkgdir/usr/share/licenses/$pkgname/$i"
 	done
 }
