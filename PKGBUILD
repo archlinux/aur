@@ -1,13 +1,14 @@
+# Maintainer: cgar <notify-cgar -AT- outlook -DOT- com>
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=python-bencoder-pyx
 _name=bencoder.pyx
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Fast bencode implementation in Cython'
 arch=('x86_64')
-url='https://github.com/whtsky/bencoder.pyx/'
+url='https://github.com/whtsky/bencoder.pyx'
 license=('BSD')
 depends=('python')
 makedepends=(
@@ -18,7 +19,7 @@ makedepends=(
 	'python-wheel')
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('14c40ae805bba06ebe6ffe5f3b030d9b923477af001eea3b9cbc18bec368e040')
+sha256sums=('1d9a0984745afae967bee244c1d709930843b5391ee6fd5ad7fa40867adbdbc9')
 
 prepare() {
 	cd "$_name-$pkgver"
@@ -34,8 +35,8 @@ build() {
 check() {
 	cd "$_name-$pkgver"
 	local _pyver
-	_pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
-	PYTHONPATH="$(pwd)/build/lib.linux-${CARCH}-${_pyver}" pytest -x
+	_pyver="$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')"
+	PYTHONPATH="$(pwd)/build/lib.linux-$(uname -m)-cpython-${_pyver}" pytest -x
 }
 
 package() {
