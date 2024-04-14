@@ -1,9 +1,10 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: oliver <at> first . in - berlin . de
 
 pkgname=ocaml-xml-light
 pkgver=2.5
-pkgrel=1
-license=('LGPL')
+pkgrel=2
+license=('LGPL-2.1-or-later')
 arch=('i686' 'x86_64')
 pkgdesc="Objective Caml lightweight xml parser"
 url="http://tech.motion-twin.com/xmllight.html"
