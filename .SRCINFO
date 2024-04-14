@@ -1,0 +1,23 @@
+pkgbase = python-pep621
+	pkgdesc = PEP 621 metadata parsing
+	pkgver = 0.6.1
+	pkgrel = 2
+	url = https://github.com/FFY00/python-pep621
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-tomli
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-sphinx
+	makedepends = python-sphinx-autodoc-typehints
+	makedepends = python-sphinx-furo
+	depends = python-packaging
+	source = git+https://github.com/FFY00/python-pep621#tag=0.6.1?signed
+	validpgpkeys = 3DCE51D60930EBA47858BA4146F633CBB0EB4BF2
+	sha512sums = 4cd09e450c574701386818b0d1369f55f8f697df1d66f87d982c6be33253b26a22652c2e2b8408c8ca605d939cf0447fc80552b353bba8fde2b916c4ef11cecf
+
+pkgname = python-pep621
