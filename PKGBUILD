@@ -29,6 +29,8 @@ build(){
 
 check(){
 	cd "$srcdir/$_pkgname"
+	echo Updating database for check...
+	./update.sh
 	env CARGO_INCREMENTAL=0 CFLAGS= cargo test --release
 }
 
