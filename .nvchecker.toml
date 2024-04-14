@@ -1,0 +1,5 @@
+[luarocket]
+source = "github"
+github = "jcrd/luarocket"
+prefix = "v"
+use_latest_release = true
