@@ -1,5 +1,5 @@
-# Maintainer: 
-# Contributor: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Co-Maintainer: alphazo <archlinux-1229 at notracking dot email>
 pkgname=protonmail-desktop
 _pkgver=1.0.1-beta
 pkgver=${_pkgver//-/.}
