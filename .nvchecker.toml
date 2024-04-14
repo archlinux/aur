@@ -1,0 +1,5 @@
+[python-cyclonedx-lib]
+source = "github"
+github = "CycloneDX/cyclonedx-python-lib"
+prefix = "v"
+use_latest_release = true
