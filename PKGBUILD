@@ -8,6 +8,7 @@ pkgdesc="Simple command line utility to make DNS lookups to the specified server
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'mips' 'mips64')
 url="https://github.com/ameshkov/dnslookup"
 license=('MIT')
+depends=('glibc')
 makedepends=('go' 'git')
 provides=('dnslookup')
 conflicts=('dnslookup')
