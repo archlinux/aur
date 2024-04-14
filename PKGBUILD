@@ -1,12 +1,12 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=plasma6-applets-resources-monitor-git
 _gitpkgname=plasma-applet-resources-monitor
-pkgver=2.11.1.r18.ga26ad58
-pkgrel=2
-pkgdesc='A Plasma 6 applet for monitoring CPU, RAM and network traffic'
+pkgver=3.0.0.rc.1.r0.ga5cf7ce
+pkgrel=1
+pkgdesc='Plasmoid for monitoring CPU, memory, network traffic, GPUs and disks IO'
 arch=(any)
 url=https://github.com/orblazer/plasma-applet-resources-monitor
-license=(GPL-3.0-only)
+license=(GPL-3.0-or-later)
 depends=(
     kitemmodels
     kquickcharts
@@ -14,12 +14,15 @@ depends=(
     libplasma
     plasma5support
 )
+optdepends=(
+    "kdeplasma-addons: to support easier click action"
+)
 makedepends=(git)
 conflicts=(
     plasma5-applets-resources-monitor-git
     plasma6-applets-resources-monitor
 )
-source=($_gitpkgname::git+https://github.com/orblazer/${_gitpkgname}#branch=release-3.0)
+source=($_gitpkgname::git+https://github.com/orblazer/${_gitpkgname})
 b2sums=(SKIP)
 
 pkgver() {
@@ -30,6 +33,6 @@ pkgver() {
 # TODO: change to cmake when upstream porting to Plasma 6
 package() {
     cd $_gitpkgname
-    mkdir -p "$pkgdir/usr/share/plasma/plasmoids/org.kde.resourcesMonitor-fork/"
-    cp -r package/* "$pkgdir/usr/share/plasma/plasmoids/org.kde.resourcesMonitor-fork/"
+    mkdir -p "$pkgdir"/usr/share/plasma/plasmoids/org.kde.plasma.resources-monitor/
+    cp -r package/* "$pkgdir"/usr/share/plasma/plasmoids/org.kde.plasma.resources-monitor/
 }
