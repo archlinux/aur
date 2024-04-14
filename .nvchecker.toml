@@ -1,0 +1,5 @@
+[drawio-textconv]
+source = "github"
+github = "claui/drawio-textconv"
+prefix = "v"
+use_latest_release = true
