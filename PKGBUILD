@@ -3,26 +3,26 @@
 _pkgname=BAGS
 _pkgver=2.42.0
 pkgname=r-${_pkgname,,}
-pkgver=2.42.0
-pkgrel=1
-pkgdesc='A Bayesian Approach for Geneset Selection'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="A Bayesian Approach for Geneset Selection"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-biobase
   r-breastcancervdx
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b0f1661bd0d03c9405f8625f5daedb1bb335ac0e4962e63d22b951769fcaa60c')
+md5sums=('42c7a57422ddbb5c2d5263703a7e22d0')
+b2sums=('21b3fd710bd8be7b589b3aca2ce0364f771670565bcac7922cbab0d61878453fa1562a7e26adb77475eba6acac9cbcd693b62401e95d03e57fd3047d4b94afa6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
