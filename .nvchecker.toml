@@ -1,0 +1,5 @@
+[python-equinox]
+source = "github"
+github = "patrick-kidger/equinox"
+use_latest_release = "true"
+prefix = "v"
