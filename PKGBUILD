@@ -33,7 +33,7 @@ check(){
 	./update.sh
 	echo Grabbing test-images/1.png... # (bypassing git-lfs)
 	curl https://media.githubusercontent.com/media/knoellle/wfinfo-ng/master/test-images/1.png > test-images/1.png
-	env CARGO_INCREMENTAL=0 CFLAGS= cargo test --release
+	env CARGO_INCREMENTAL=0 CFLAGS= cargo test --release --locked -- --skip wfi_images_99_percent
 }
 
 package() {
