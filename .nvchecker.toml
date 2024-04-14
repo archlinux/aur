@@ -1,0 +1,5 @@
+[electron-fiddle]
+source = "github"
+github = "electron/fiddle"
+prefix = "v"
+use_latest_release = true
