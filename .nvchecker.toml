@@ -1,0 +1,4 @@
+[pwclient]
+source = "github"
+github = "getpatchwork/pwclient"
+use_max_tag = true
