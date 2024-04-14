@@ -1,12 +1,10 @@
 # Maintainer: b1ek <me@blek.codes>
-pkgbase=hey-duck
 pkgname=hey-duck
 pkgver=0.1.0
 pkgrel=1
 pkgdesc='Contact DuckDuckGo AI chat from your terminal'
 url="https://git.blek.codes/blek/hey"
 makedepends=('cargo' 'rust')
-provides=('hey-duck')
 arch=('any')
 
 source=('https://git.blek.codes/blek/hey/archive/0.1.0.tar.gz')
