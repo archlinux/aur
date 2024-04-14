@@ -1,11 +1,11 @@
 pkgbase = lightdm-theme-neon-bin
 	pkgdesc = Modern and customizable theme for web-greeter with a nostalgic neon look, binary version
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/hertg/lightdm-neon
 	arch = any
 	license = GPL
-	source = lightdm-theme-neon-bin-0.2.3.tar.gz::https://github.com/hertg/lightdm-neon/releases/download/v0.2.3/build.tar.gz
-	sha256sums = 1c3a34a06abb7e77c372a14759d924e51afd4cfed9fd699f9bc482e810594cd6
+	source = lightdm-theme-neon-bin-0.2.4.tar.gz::https://github.com/hertg/lightdm-neon/releases/download/v0.2.4/build.tar.gz
+	sha256sums = a9379a21161472ba1e47ad7c4d6bb7c0fff50cc382ac1a5940c56f7d73a41080
 
 pkgname = lightdm-theme-neon-bin
