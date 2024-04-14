@@ -1,17 +1,17 @@
 pkgbase = r-stopwords
 	pkgdesc = Multilingual Stopword Lists
 	pkgver = 2.3
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=stopwords
 	arch = any
 	license = MIT
-	depends = r
 	depends = r-isocodes
 	optdepends = r-covr
 	optdepends = r-quanteda
 	optdepends = r-spelling
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/stopwords_2.3.tar.gz
-	sha256sums = c5ec1c6ab1bad1786d87d7823d4b63abc94d2fd84ed7d8e985906e96fb6321b2
+	md5sums = 91b96c7bee56e9c6fc6a6945cfc47a67
+	b2sums = 68fac0df81eddf7433900b2b3909a24cf3f940ce322636657e2bc815d6be4e9e5bdf30d75cd8e44769d2b7d0103bd65aecc84f56d255220f5495472c5b4481ca
 
 pkgname = r-stopwords
