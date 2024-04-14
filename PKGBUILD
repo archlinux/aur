@@ -14,8 +14,8 @@ makedepends=('git' 'rust>=1.74' 'cargo' 'libxrandr' 'tesseract')
 optdepends=('mlocate: to autodetect EE.log location')
 provides=('wfinfo')
 #conflicts=('wfinfo')
-source=("$_pkgname::git+https://github.com/knoellle/wfinfo-ng.git")
-sha256sums=('SKIP')
+source=("$_pkgname::git+https://github.com/knoellle/wfinfo-ng.git" 'wfinfo.sh')
+sha256sums=('SKIP' '032f68674cd2ad6dc72995ee8d6640d683d2d36be76203cbac51b35da9331bab')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
