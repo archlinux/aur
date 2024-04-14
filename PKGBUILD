@@ -1,25 +1,26 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie & proton dot me>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=flowtime
-pkgver=6.1
+pkgver=6.5
 pkgrel=1
 pkgdesc="Get what motivates you done, without losing concentration"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Diego-Ivan/Flowtime"
-license=('GPL3')
-depends=('gstreamer' 'libadwaita' 'libportal-gtk4' 'libxml2' 'libgee')
-makedepends=('git' 'meson' 'vala')
+license=('GPL-3.0-or-later')
+depends=('libadwaita' 'libgee' 'libportal-gtk4' 'libxml2')
+makedepends=('blueprint-compiler' 'git' 'meson' 'vala')
 checkdepends=('appstream-glib')
-source=($pkgname::git+$url.git#tag=v$pkgver)
-b2sums=('SKIP')
+_commit=e6bc082a30e2e135086ad91435451b7da3751465  # tags/6.5^0
+source=("git+https://github.com/Diego-Ivan/Flowtime.git#commit=${_commit}")
+sha256sums=('c00589598d5ede19365f1d3eb4107df230b4b43951ce4c5d42e19b6ba734d0c0')
 
 pkgver() {
-  cd $pkgname
+  cd Flowtime
   git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson $pkgname build
+  arch-meson Flowtime build
   meson compile -C build
 }
 
