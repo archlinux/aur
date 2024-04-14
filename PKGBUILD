@@ -2,13 +2,13 @@
 # Contributor: Sebastian J. Bronner <waschtl@sbronner.com>
 
 pkgname=gwenhywfar-git
-pkgver=5.9.0+18+gd819db8e
+pkgver=5.11.1+3+g788314e4
 pkgrel=1
 pkgdesc="OS abstraction functions for various projects"
 arch=(x86_64 i686)
 url=https://www.aquamaniac.de/rdm/projects/gwenhywfar
-license=(LGPL)
-depends=(gnutls libgcrypt openssl)
+license=(LGPL-2.1-only)
+depends=(bash gcc-libs glib2 glibc gnutls libgcrypt libgpg-error openssl)
 makedepends=(git gtk3 qt5-base)
 optdepends=('gtk3: for the GTK3 UI' 'qt5-base: for the Qt5 UI')
 provides=(gwenhywfar)
@@ -35,10 +35,15 @@ pkgver() {
       }' \
       "$_sourcedir/configure.ac"
   )"
+  _tag="$(git -C "$_sourcedir" tag --list "${_version_base}*" | head -1)"
+  if [[ -z "${_tag}" ]]; then
+    printf >&2 'Unable to find tag that starts with %s\n' "${_tag}"
+    return 1
+  fi
 
   printf "%s+%s+g%s\n" \
     "${_version_base}" \
-    "$(git -C "$_sourcedir" rev-list --count "^${_version_base}" @)" \
+    "$(git -C "$_sourcedir" rev-list --count "^${_tag}" @)" \
     "$(git -C "$_sourcedir" describe --always --exclude='*')"
 }
 
