@@ -1,34 +1,38 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=pods
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Podman desktop application"
 arch=('x86_64' 'aarch64')
 url="https://github.com/marhkb/pods"
-license=('GPL3')
-depends=('libadwaita' 'libpanel' 'gtksourceview5' 'podman' 'vte4')
-makedepends=('meson' 'cargo')
+license=('GPL-3.0-or-later')
+depends=('gtksourceview5' 'libadwaita' 'libpanel' 'podman' 'vte4')
+makedepends=('cargo' 'meson')
 checkdepends=('appstream-glib')
-source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-b2sums=('9869211a47924b3d020a477b38d9b9dbb49d8f9ac87a60d612a7fa1bb13bdc2a7884734c8c1790e341c588ba1a80b7cd9145f4738ccbf11671b650c66e9fc57c')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('9c55c8af8bb83acf90ab14749e3ed9935cbd21acdb6c0d1e9c809432af9d32b7')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname-$pkgver" build
   meson compile -C build
 }
 
 check() {
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
   meson test -C build --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
