@@ -2,7 +2,7 @@
 
 pkgname=dreamchess
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="DreamChess is an open source chess game. It comes with its own engine called Dreamer."
 arch=(x86_64)
 url="https://github.com/dreamchess/dreamchess"
@@ -35,4 +35,5 @@ package() {
 	make -C cmake DESTDIR="$pkgdir" install
 	# Install music content
 	cp -av --no-preserve=ownership "$srcdir"/$pkgname-music-1.0/data/music "$pkgdir"/usr/share/$pkgname
+	install -vDm644 "$srcdir"/$pkgname-music-1.0/LICENSE "$pkgdir"/usr/share/doc/DreamChess/MUSIC-LICENSE.txt
 }

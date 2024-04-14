@@ -1,7 +1,7 @@
 pkgbase = dreamchess
 	pkgdesc = DreamChess is an open source chess game. It comes with its own engine called Dreamer.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dreamchess/dreamchess
 	arch = x86_64
 	license = GPL3
