@@ -1,0 +1,5 @@
+[private-internet-access-vpn]
+source = "github"
+github = "flamusdiu/python-pia"
+prefix = "v"
+use_latest_release = true
