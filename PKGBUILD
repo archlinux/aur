@@ -3,14 +3,13 @@
 _pkgname=gamlss
 _pkgver=5.4-22
 pkgname=r-${_pkgname,,}
-pkgver=5.4.22
-pkgrel=1
-pkgdesc='Generalised Additive Models for Location Scale and Shape'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Generalized Additive Models for Location Scale and Shape"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only OR GPL-3.0-only')
 depends=(
-  r
   r-gamlss.data
   r-gamlss.dist
 )
@@ -18,14 +17,15 @@ optdepends=(
   r-distributions3
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('01e6908df92691147b884a8d58025473e18d7bf58d5f5a2d7e4f18b2a451fe2d')
+md5sums=('59ad990bd4ea3698cfae1e10aa0e3d4d')
+b2sums=('9c5702ba4776e48edb61ff1ddd65974a290f0e6f8d227c1fe44fc92b8cceef8a569b5e04323ffa7cb4f90c715158910c5d9f69f2c59313a0fd08b48a07db7b45')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
