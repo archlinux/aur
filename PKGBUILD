@@ -3,25 +3,25 @@
 _pkgname=preseqR
 _pkgver=4.0.0
 pkgname=r-${_pkgname,,}
-pkgver=4.0.0
-pkgrel=4
-pkgdesc='Predicting Species Accumulation Curves'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Predicting Species Accumulation Curves"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-polynom
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0143db473fb9a811f9cf582a348226a5763e62d9857ce3ef4ec41412abb559bc')
+md5sums=('b85e80b8b229d743b67d36b312caa5de')
+b2sums=('a51ee7519d162f26c2072f5665898943d5a988d87ef5e777bd77c36881fe55b56508d6a3c583c5ac8da4c770f21351e33cf55961341b786ae068ab5d63c4bf16')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

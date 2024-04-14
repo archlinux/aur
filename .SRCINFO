@@ -1,13 +1,13 @@
 pkgbase = r-preseqr
 	pkgdesc = Predicting Species Accumulation Curves
 	pkgver = 4.0.0
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=preseqR
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-polynom
 	source = https://cran.r-project.org/src/contrib/preseqR_4.0.0.tar.gz
-	sha256sums = 0143db473fb9a811f9cf582a348226a5763e62d9857ce3ef4ec41412abb559bc
+	md5sums = b85e80b8b229d743b67d36b312caa5de
+	b2sums = a51ee7519d162f26c2072f5665898943d5a988d87ef5e777bd77c36881fe55b56508d6a3c583c5ac8da4c770f21351e33cf55961341b786ae068ab5d63c4bf16
 
 pkgname = r-preseqr
