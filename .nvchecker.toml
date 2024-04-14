@@ -1,0 +1,6 @@
+[embrilliance]
+source = "regex"
+url = "https://embrilliance.com/downloads"
+regex = "Embrilliance([^\"]+)Setup.exe"
+from_pattern = "(\\d)(\\d{2})(\\d+)"
+to_pattern = "\\g<1>.\\g<2>.\\g<3>"
