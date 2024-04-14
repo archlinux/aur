@@ -1,7 +1,7 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=papermerge-core
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Open Source Document Management System for Digital Archives (server)"
 arch=(any)
@@ -40,7 +40,7 @@ depends=(img2pdf
          uwsgi-plugin-python)
 makedepends=(python-build python-installer python-wheel python-poetry-core python-setuptools)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=('d2d80d2128c175f9189b76040e3f5c00230763f37a1f4303c835d15d1421351c')
+sha256sums=('3036de68cacc28ace83ef82c376ba0cf2ae081a2f235b9a97345ad66bf45d8f9')
 
 
 build() {
