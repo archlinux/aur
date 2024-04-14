@@ -1,7 +1,7 @@
 pkgbase = torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pytorch/vision
 	arch = x86_64
 	license = BSD-3-Clause
@@ -13,6 +13,7 @@ pkgbase = torchvision
 	makedepends = python-pytorch-opt-cuda
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = qt5-base
 	makedepends = nvidia-utils

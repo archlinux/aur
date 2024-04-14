@@ -19,7 +19,7 @@ _pkgname=vision
 pkgbase='torchvision'
 pkgname=('torchvision' 'torchvision-cuda' 'python-torchvision' 'python-torchvision-cuda')
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
@@ -45,6 +45,7 @@ makedepends=(
   python-pytorch-opt-cuda
   python-build
   python-installer
+  python-setuptools
   python-wheel
   qt5-base
   nvidia-utils
