@@ -1,6 +1,6 @@
 # Maintainer: CrossScar <crossscarcs@gmail.com>
 pkgname=gng-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.0.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A simple puzzle game."
 arch=('x86_64')
