@@ -1,21 +1,21 @@
 pkgbase = linux-xanmod-lts-linux-bin-x64v1
 	pkgdesc = The Linux kernel and modules with Xanmod patches - Current Stable (LTS) - Prebuilt version - x64v1
-	pkgver = 6.6.26
+	pkgver = 6.6.27
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = curl
 	makedepends = libxml2
-	noextract = https://sourceforge.net/projects/xanmod/files/releases/lts/6.6.26-xanmod1/6.6.26-x64v1-xanmod1/linux-image-6.6.26-x64v1-xanmod1_6.6.26-x64v1-xanmod1-0~20240410.gbd62b21_amd64.deb
-	noextract = https://sourceforge.net/projects/xanmod/files/releases/lts/6.6.26-xanmod1/6.6.26-x64v1-xanmod1/linux-headers-6.6.26-x64v1-xanmod1_6.6.26-x64v1-xanmod1-0~20240410.gbd62b21_amd64.deb
+	noextract = https://sourceforge.net/projects/xanmod/files/releases/lts/6.6.27-xanmod1/6.6.27-x64v1-xanmod1/linux-image-6.6.27-x64v1-xanmod1_6.6.27-x64v1-xanmod1-0~20240413.g4642d6e_amd64.deb
+	noextract = https://sourceforge.net/projects/xanmod/files/releases/lts/6.6.27-xanmod1/6.6.27-x64v1-xanmod1/linux-headers-6.6.27-x64v1-xanmod1_6.6.27-x64v1-xanmod1-0~20240413.g4642d6e_amd64.deb
 	options = !strip
-	source = https://sourceforge.net/projects/xanmod/files/releases/lts/6.6.26-xanmod1/6.6.26-x64v1-xanmod1/linux-image-6.6.26-x64v1-xanmod1_6.6.26-x64v1-xanmod1-0~20240410.gbd62b21_amd64.deb
-	source = https://sourceforge.net/projects/xanmod/files/releases/lts/6.6.26-xanmod1/6.6.26-x64v1-xanmod1/linux-headers-6.6.26-x64v1-xanmod1_6.6.26-x64v1-xanmod1-0~20240410.gbd62b21_amd64.deb
+	source = https://sourceforge.net/projects/xanmod/files/releases/lts/6.6.27-xanmod1/6.6.27-x64v1-xanmod1/linux-image-6.6.27-x64v1-xanmod1_6.6.27-x64v1-xanmod1-0~20240413.g4642d6e_amd64.deb
+	source = https://sourceforge.net/projects/xanmod/files/releases/lts/6.6.27-xanmod1/6.6.27-x64v1-xanmod1/linux-headers-6.6.27-x64v1-xanmod1_6.6.27-x64v1-xanmod1-0~20240413.g4642d6e_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 54394e5db6eb32661ed99a33af5cb9b52dac31e77bde6b9486941d1d0925fdc8
-	sha256sums = 9810c1aa32ae9aaff6df1f8cb3ba9eb549a20d9f20d0f2d84bd79d666ebe1f7f
+	sha256sums = 251b244715dd0c366f6086e961700391202d3424692f0f305474a79e549478f3
+	sha256sums = 2627ec945913d08a91c4b9c06ded7289d76bd7faeac7de78720d130dc75659fb
 
 pkgname = linux-xanmod-lts-linux-bin-x64v1
 
