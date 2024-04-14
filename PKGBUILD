@@ -17,18 +17,20 @@ pkgver() {
 	(
 		set -o pipefail
 		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" ||
-		git submodule update --init --recursive
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
 
 build() {
-	cmake -B build -S ${_gitname%-git} \
+	cd "${srcdir}/${_gitname}"
+	git submodule update --init --recursive
+	cmake -B build \
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D CMAKE_BUILD_TYPE=Release
 	cmake --build build -j$(nproc)
 }
 
 package() {
+	cd "${srcdir}/${_gitname}"
 	DESTDIR="$pkgdir" cmake --install build
 }
