@@ -1,0 +1,17 @@
+pkgbase = brother-hl-1110
+	pkgdesc = Brother HL-1110 CUPS Driver
+	pkgver = 3.0.1_1
+	pkgrel = 2
+	url = https://support.brother.com/g/b/producttop.aspx?c=us_ot&lang=en&prod=hl1110_us_eu_as
+	arch = x86_64
+	license = GPL2
+	depends = cups
+	depends = cups-pdf
+	depends = lprint
+	conflicts = brother-hl-1112
+	source = https://download.brother.com/welcome/dlf100422/hl1110cupswrapper-GPL_src-3.0.1-1.tar.gz
+	source = https://download.brother.com/welcome/dlf100419/hl1110lpr-3.0.1-1.i386.deb
+	sha256sums = be1dce6a4608cb253b0b382db30bf5885da46b010e8eb595b15c435e2487761c
+	sha256sums = 5af241782a0d500d7f47e06ea43d61127f4019b5b1c6e68b4c1cb4521a742c22
+
+pkgname = brother-hl-1110
