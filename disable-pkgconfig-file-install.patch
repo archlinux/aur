@@ -1,0 +1,15 @@
+diff --git a/cmake/install_helpers.cmake b/cmake/install_helpers.cmake
+index 898988142..1e1760270 100644
+--- a/cmake/install_helpers.cmake
++++ b/cmake/install_helpers.cmake
+@@ -73,8 +73,8 @@ function(ginkgo_install)
+         # Step 3: at install time, call the generation script which has all variables
+         #         except the install prefix already replaced. Use the install prefix
+         #         that is specified at install time
+-        install(SCRIPT "${Ginkgo_BINARY_DIR}/cmake/generate_pkg_$<CONFIG>.cmake"
+-            COMPONENT Ginkgo_Development)
++        #install(SCRIPT "${Ginkgo_BINARY_DIR}/cmake/generate_pkg_$<CONFIG>.cmake"
++        #    COMPONENT Ginkgo_Development)
+     endif()
+
+     # install the public header files
