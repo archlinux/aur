@@ -1,0 +1,5 @@
+[python-pip-audit]
+source = "github"
+github = "pypa/pip-audit"
+prefix = "v"
+use_latest_release = true
