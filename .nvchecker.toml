@@ -1,0 +1,6 @@
+[pkgx]
+source = "github"
+github = "pkgxdev/pkgx"
+prefix = "v"
+use_latest_release = true
+
