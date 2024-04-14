@@ -1,7 +1,7 @@
 pkgbase = android-file-transfer-git
 	pkgdesc = An interactive MTP client implemented in C++ using Qt toolkit
-	pkgver = 4.2.r49.ga9495bf
-	pkgrel = 3
+	pkgver = 4.3.r13.g2a48d30
+	pkgrel = 2
 	url = https://github.com/whoozle/android-file-transfer-linux
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = android-file-transfer-git
 	makedepends = git
 	makedepends = qt5-tools
 	makedepends = ninja
+	makedepends = pybind11
 	depends = qt5-base
 	depends = fuse2
 	depends = hicolor-icon-theme

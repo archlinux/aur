@@ -2,14 +2,14 @@
 # Contributor: Askhat Bakarov <sirocco{at}ngs{dot}ru>
 
 pkgname=android-file-transfer-git
-pkgver=4.2.r49.ga9495bf
-pkgrel=3
+pkgver=4.3.r13.g2a48d30
+pkgrel=2
 pkgdesc="An interactive MTP client implemented in C++ using Qt toolkit"
 arch=(x86_64 i686)
 url="https://github.com/whoozle/android-file-transfer-linux"
 license=(LGPL2.1)
 depends=(qt5-base fuse2 hicolor-icon-theme taglib)
-makedepends=(cmake git qt5-tools ninja)
+makedepends=(cmake git qt5-tools ninja pybind11)
 provides=(android-file-transfer)
 conflicts=(android-file-transfer android-file-transfer-linux)
 source=("git+https://github.com/whoozle/android-file-transfer-linux.git")
