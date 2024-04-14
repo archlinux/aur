@@ -1,0 +1,4 @@
+[distro-info]
+source = "jq"
+url = "https://sources.debian.org/api/src/distro-info"
+filter = ".versions | map(.version) | .[]"
