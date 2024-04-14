@@ -1,0 +1,14 @@
+pkgbase = blender-launcher-git
+	pkgdesc = Blender Launcher is a standalone software client that provides management for stable, daily and experimental builds of Blender 3D. It is a free open source project available for 64-bit Windows and Linux (GLIBC 2.31 and higher) operating systems.
+	pkgver = v2.1.24.r6.g522706a
+	pkgrel = 1
+	url = https://github.com/Victor-IX/Blender-Launcher-V2.git
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = python-pdm-backend
+	depends = yay
+	conflicts = blender-launcher-bin
+	source = git+https://github.com/Victor-IX/Blender-Launcher-V2.git
+	sha256sums = SKIP
+
+pkgname = blender-launcher-git
