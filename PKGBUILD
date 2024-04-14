@@ -2,7 +2,7 @@
 
 _pkgname="daed"
 pkgname="${_pkgname}-edge-git"
-pkgver=0.6.0rc1.r6.g48c4815
+pkgver=v0.4.0rc1.r488.187.684
 pkgrel=1
 pkgdesc="A modern dashboard for dae, bundled with latest dae-wing (backend API server) and dae (core)."
 arch=('x86_64' 'aarch64')
@@ -24,9 +24,13 @@ pkgver() {
 	cd "$srcdir/$_pkgname"
 	(
 		set -o pipefail
-                cd wing/dae-core
-		git describe --tags --long --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+		daed_version=$(git describe --tags --abbrev=0 2>/dev/null)
+        	daed_count=$(git rev-list --count HEAD)
+        	cd wing
+        	wing_count=$(git rev-list --count HEAD)
+        	cd dae-core
+        	dae_count=$(git rev-list --count HEAD)
+		printf "%s.r%s.%s.%s" "${daed_version}" "${daed_count}" "${wing_count}" "${dae_count}"
 	)
 }
 
