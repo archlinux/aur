@@ -1,12 +1,12 @@
 pkgbase = gnucash-select
 	pkgdesc = GnuCash File Selector
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/bulletmark/gnucash-select
 	arch = any
 	license = GPL3
-	depends = python-pysimplegui
-	source = gnucash-select-2.2.tar.gz::https://github.com/bulletmark/gnucash-select/archive/2.2.tar.gz
-	md5sums = 9c89029d4fd54a6cb19790baa4a93b1f
+	depends = python>=3.8
+	source = gnucash-select-2.3.tar.gz::https://github.com/bulletmark/gnucash-select/archive/2.3.tar.gz
+	md5sums = 93d0f28d9cd6d558361293bc91ad5a33
 
 pkgname = gnucash-select
