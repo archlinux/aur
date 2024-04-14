@@ -1,7 +1,7 @@
 pkgbase = proto-bin
 	pkgdesc = Pluggable multi-language version manager
 	pkgver = 0.34.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moonrepo/proto
 	arch = x86_64
 	license = MIT

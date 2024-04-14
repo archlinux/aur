@@ -7,7 +7,7 @@ _pkgname=proto
 pkgname="${_pkgname}-bin"
 pkgdesc='Pluggable multi-language version manager'
 pkgver=0.34.3
-pkgrel=1
+pkgrel=2
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -28,6 +28,7 @@ prepare() {
 package() {
   cd "proto_cli-${CARCH}-unknown-linux-gnu"
   install -Dm 755 "${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm 755 "${_pkgname}-shim" -t "${pkgdir}/usr/bin"
   install -Dm 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
   install -Dm 644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
