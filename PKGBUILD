@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='4.1.13'
-pkgrel='2'
+pkgver='4.2.9'
+pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 # If you're running on pentium4, you have to add it to the arch and source arrays of the electron18-bin AUR dependency
@@ -17,10 +17,10 @@ source=(
 	'electron-builder-config.diff'
 	'fix-argv.diff'
 )
-sha512sums=('230d81fd980461c5decdb6acd2266257997a218d11a1d37c8df469660a048f3dbe6e431ae481f2ee08390d4fa226e2961494d1a0dc00d206372db24fe78208e8'
+sha512sums=('7dde59cfdaf079e8e0629ae80a005a028b3d2a5a9d68cd8b6a5078a0f6addcd3e3d4ea9f767a527219fec3f5c90e104ff11534c5d7483b4aaf2b5b5f5810bcf2'
             'e6b9a9ac3c62cc2b040c4ece48ab27a29e1ba8fbf2c3d45f299aeb7c2b0a967acb8e84171f5d71f63ebedba52a8f376beab40e8889bda668341aa1d9da50bd47'
-            'e8d3a8d41bc15082096430e7fbfbd1deb15a82f7f1af6238f50cf2dc002e191913b21329123831522c7d4b9ea77dc441fa8b3a59c32c21f0ffa4c93256331cee'
-            '467d1ef0fc106db9cc878b11e197137f66648bd00e6e49de08ac596f06ee76369134707b0927d89ed001d43d4290b13388e48bdeb96dff1a5b339b03c8a22ff2')
+            '942fb32dd31bc2b45422d6caf17a920706eae4997873aad3cc1e0f721219cd2193490f8be0e108418eef24b546513595283d8cec2e75ee2192e66f49fbc5e161'
+            'ef966f4cc3358d76f3d5215881ffba6385d954ec1709e5b5708fff1c7544f84c45d4e7e31f63fe385d4bd87084deafa227e5fa6430019940bc5acc6d88e1e2c0')
 
 _sourcedirectory="$pkgname-$pkgver"
 
@@ -36,9 +36,9 @@ prepare() {
 	# Replace package name, flag file name and electron version in launcher script
 	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" -e "s/%%FLAGFILENAME%%/bks/g" "$srcdir/electron-launcher.sh"
 
-	# Update node-sass and sass-loader to be compatible with current node and Linux version
+	# Update sass-loader to be compatible with current node and Linux version
 	cd "$srcdir/$_sourcedirectory/apps/studio/"
-	yarn add 'node-sass@9.0.0' 'sass-loader@10.5.2' --ignore-engines
+	yarn add 'sass-loader@10.5.2' --ignore-engines
 
 	# Install dependencies
 	cd "$srcdir/$_sourcedirectory/"

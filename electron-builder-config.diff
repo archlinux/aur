@@ -1,8 +1,8 @@
 diff --git a/apps/studio/vue.config.js b/apps/studio/vue.config.js
-index 8fdc0e6b..5337a429 100644
+index 0ae4a982..59d1a8b9 100644
 --- a/apps/studio/vue.config.js
 +++ b/apps/studio/vue.config.js
-@@ -53,6 +53,8 @@ module.exports = {
+@@ -55,6 +55,8 @@ module.exports = {
          files: ['**/*', 'public/icons/**/*', '!**/node_gyp_bins/*'],
          afterSign: "electron-builder-notarize",
          afterPack: "./build/afterPack.js",
@@ -11,7 +11,7 @@ index 8fdc0e6b..5337a429 100644
          extraResources: [
            {
              from: 'build/launcher-script.sh',
-@@ -121,54 +123,22 @@ module.exports = {
+@@ -123,55 +125,21 @@ module.exports = {
              role: "Editor"
            }
          ],
@@ -20,7 +20,8 @@ index 8fdc0e6b..5337a429 100644
 -          entitlementsInherit: "./build/entitlements.mac.plist",
 -          icon: './public/icons/mac/bk-icon.icns',
 -          category: "public.app-category.developer-tools",
--          "hardenedRuntime": true
+-          "hardenedRuntime": true,
+-          publish: ['github']
 -        },
          linux: {
            icon: './public/icons/png/',
@@ -60,16 +61,15 @@ index 8fdc0e6b..5337a429 100644
 -        win: {
 -          icon: './public/icons/png/512x512.png',
 -          target: ['nsis', 'portable'],
--          sign: "./build/win/sign.js"
+-          publish: ['github'],
+-          sign: "./build/win/sign.js",
 -        },
 -        portable: {
 -          "artifactName": "${productName}-${version}-portable.exe",
--        },
 +        pacman: {
 +          fpm: [
 +            '--pacman-compression=none'
 +          ]
-+        }
+         }
        }
      }
-   },
