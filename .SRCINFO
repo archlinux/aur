@@ -10,6 +10,7 @@ pkgbase = cano-git
 	makedepends = gcc
 	depends = ncurses
 	depends = glibc
+	conflicts = cano
 	source = cano::git+https://github.com/CobbCoding1/cano.git
 	md5sums = SKIP
 

@@ -7,6 +7,7 @@ pkgdesc="Terminal-based modal text editor"
 arch=('x86_64')
 url="https://github.com/CobbCoding1/cano"
 license=('APACHE')
+conflicts=('cano')
 depends=('ncurses' 'glibc')
 makedepends=('git' 'make' 'gcc')
 source=("$_pkgname::git+https://github.com/CobbCoding1/$_pkgname.git")
