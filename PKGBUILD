@@ -11,6 +11,7 @@ depends=(
     "gtk3"
     "libxss"
     "nss"
+    "alsa-lib"
 )
 provides=('drawio-desktop')
 conflicts=('drawio-desktop')

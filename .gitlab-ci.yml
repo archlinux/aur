@@ -21,6 +21,23 @@ build:
     paths:
       - '*.pkg.tar.zst'
 
+test:
+  stage: test
+  image:
+    name: countstarlight/makepkg:latest
+    entrypoint: [""]
+  before_script:
+    - sudo pacman -Sy --noconfirm archlinux-keyring
+    - yay -Syu --noconfirm
+    - yay -Sy --noconfirm xorg-server-xvfb
+    - |
+      depends=()
+      . ./PKGBUILD
+      (pacman --deptest "${depends[@]}" || true) | xargs yay -Sy --noconfirm
+  script:
+    - yay --noconfirm -U *.pkg.tar.zst
+    - xvfb-run drawio -V
+
 deploy:
   stage: deploy
   image: bitnami/git:latest

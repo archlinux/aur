@@ -8,6 +8,7 @@ pkgbase = drawio-desktop-bin
 	depends = gtk3
 	depends = libxss
 	depends = nss
+	depends = alsa-lib
 	provides = drawio-desktop
 	conflicts = drawio-desktop
 	source = drawio-desktop-bin-24.2.5.deb::https://github.com/jgraph/drawio-desktop/releases/download/v24.2.5/drawio-amd64-24.2.5.deb
