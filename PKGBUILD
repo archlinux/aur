@@ -19,6 +19,7 @@ _scriptTailMd5sums[7.1]=1b231f3988603dbec4e857e247784295
 _scriptTailMd5sums[7.2]=d9edd2bb89870dc61692e73f81fe0efa
 _scriptTailMd5sums[7.3]=8cf896344365958462902bfb340201cd
 _scriptTailMd5sums[7.4]=b9878ccca286ec7faa4d230633294853
+_scriptTailMd5sums[7.4a]=6f987a683f17b3595cc5993c1b1375ed
 
 # locale, key account, original name, version, (optional) replacement name
 _prams_Austria=(de_AT 29762 'CEWE Fotowelt' 7.1.4)
@@ -27,9 +28,9 @@ _prams_Belgique=(fr_BE 28049 'CEWE Photoservice' 7.1.4)
 _prams_Czechia=(cs_CZ 4860 'CEWE fotosvet' 7.3.3 "CEWE fotosvět")
 _prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.5)
 _prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3)
-_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.4.2 'CEWE Fotobuch')
+_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.4.3 'CEWE Fotobuch')
 _prams_Fotowelt=(de_DE 6822 'CEWE Fotowelt' 7.4.0)
-_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.4.2)
+_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.4.3)
 _prams_Pixum=(de_DE 1291 'Pixum Fotowelt' 7.3.3)
 _prams_Italy=(it_IT 19991 'CEWE.IT Foto World' 7.1.5)
 _prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.5)
@@ -95,14 +96,16 @@ _installDir=/usr/share/$pkgname
 
 check() {
 	# from start of script, where parameters are set:
-	local setRightDownloadServer="$(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/p;d' "$src"install.pl | grep -Po '^my \$DOWNLOAD_SERVER\t+= "https://dls.photoprintit.com";')"
+	local setRightDownloadServer="$(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/p;d' "$src"install.pl | grep -Po '^my \$DOWNLOAD_SERVER\s+= "https://dls.photoprintit.com";')"
 	local mentionDownloadServer="$(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/p;d' "$src"install.pl | grep -Po '.*\$DOWNLOAD_SERVER[^\r]*')"
 	# for body of script, after parameters set:
 	local md5sum=$(md5sum <(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/d' "$src"install.pl) | grep -Po '^[^ ]*')
 
 	# only mention of server variable in parameter section should be to set correct server;
 	# md5sum of script body should match package version unless a setup file was provided:
-	[ "$mentionDownloadServer" == "$setRightDownloadServer" ] && [ "${_scriptTailMd5sums[${pkgver%.*}]}" == $md5sum -o -n "$_SETUP_FILE" ]
+	local index=${pkgver%.*}
+	[ $index = 7.4 -a ${pkgver#$index.} -gt 2 ] && index=7.4a
+	[ "$mentionDownloadServer" == "$setRightDownloadServer" ] && [ "${_scriptTailMd5sums[$index]}" == $md5sum -o -n "$_SETUP_FILE" ]
 }
 
 package() {
