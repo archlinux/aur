@@ -1,17 +1,15 @@
-# system requirements: zenity, yad
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=svDialogs
 _pkgver=1.1.0
 pkgname=r-${_pkgname,,}
-pkgver=1.1.0
-pkgrel=4
-pkgdesc='SciViews - Standard Dialog Boxes for Windows, MacOS and Linuxes'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=6
+pkgdesc="'SciViews' - Standard Dialog Boxes for Windows, MacOS and Linuxes"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-rstudioapi
   r-svgui
 )
@@ -21,16 +19,19 @@ optdepends=(
   r-rmarkdown
   r-spelling
   r-testthat
+  yad
+  zenity
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2ecab7e6ade510f9df9665308cf1b222bcef3bd5db8bd9ea204b81a8e92b6a7c')
+md5sums=('221117c06ec3a116d6c55d6b6c104334')
+b2sums=('4a8fe472d9adee3684cba3c11a76ac8ca3725a3d60a75dbe1dd4e24619131cb6298ca3f38c78e9b67718c957e485568e881bfe5289a5734e87f96483da17b927')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
