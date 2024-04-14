@@ -3,11 +3,11 @@
 pkgname=lbry-sync-ytdl
 _author=gardenappl
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Sync content to LBRY using youtube-dl'
 arch=('any')
 url="https://gitlab.com/$_author/$pkgname"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('jq' 'curl' 'lbrynet')
 makedepends=('perl')
 optdepends=('youtube-dl' 'yt-dlp: will be preferred instead of youtube-dl if installed')
