@@ -1,12 +1,12 @@
 # Maintainer: Wenxuan <wenxuangm@gmail.com>
 _pkgname="code-minimap"
 pkgname="${_pkgname}-git"
-pkgver=0.4.4.rc.0.20201111
+pkgver=0.6.7.20240414
 pkgrel=1
 pkgdesc="A high performance code minimap render"
 arch=(i686 x86_64)
 url="https://github.com/wfxr/${_pkgname}"
-license=("MIT" "APACHE")
+license=("MIT OR Apache-2.0")
 makedepends=("git" "rust" "cargo")
 conflicts=("${_pkgname}" "${_pkgname}-bin")
 provides=("${_pkgname}")
