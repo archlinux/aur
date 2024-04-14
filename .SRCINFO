@@ -1,7 +1,7 @@
 pkgbase = python-litepcie
 	pkgdesc = Small footprint and configurable PCIe core
 	pkgver = 2021.08
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/enjoy-digital/litepcie
 	arch = any
 	license = BSD-2-Clause
