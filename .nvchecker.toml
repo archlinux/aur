@@ -1,0 +1,5 @@
+[nesfab]
+source = "github"
+github = "pubby/nesfab"
+prefix = "v"
+use_latest_release = true
