@@ -12,12 +12,12 @@ pkgbase = chatgpt.sh
 	optdepends = imagemagick: edit input images
 	optdepends = xdg-utils: open images (xdg-open, open)
 	optdepends = sox: audio recorder (arecod, ffmpeg)
-	optdepends = mpv: audio player (sox, vlc, ffmpeg, afplay, play-audio)
+	optdepends = mpv: audio player (sox, vlc, ffmpeg, afplay)
 	optdepends = xsel: copy output to clipboard (xclip)
 	optdepends = python: count input tokens (tiktoken)
 	optdepends = bat: render markdown (pygmentize, glow, mdcat, mdless)
 	optdepends = w3m: dump url text (lynx, elinks, links)
-	source = chatgpt.sh-0.56.7::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=8b4782061bac6ae0a9f32b8952e42ce06256a564
+	source = chatgpt.sh-0.56.7::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=edc4adea7b5d1b2e91679170523ba2b8d28328a7
 	sha256sums = SKIP
 
 pkgname = chatgpt.sh

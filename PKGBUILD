@@ -2,7 +2,7 @@
 pkgname='chatgpt.sh'
 pkgver=0.56.7
 pkgrel=1
-_commit=8b4782061bac6ae0a9f32b8952e42ce06256a564
+_commit=edc4adea7b5d1b2e91679170523ba2b8d28328a7
 pkgdesc="Shell wrapper for OpenAI's ChatGPT, DALL-E, Whisper, and TTS. Features LocalAI, Ollama, Gemini and Mistral integration."
 url='https://gitlab.com/fenixdragao/shellchatgpt'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 	'imagemagick: edit input images'
 	'xdg-utils: open images (xdg-open, open)'
 	'sox: audio recorder (arecod, ffmpeg)'
-	'mpv: audio player (sox, vlc, ffmpeg, afplay, play-audio)'
+	'mpv: audio player (sox, vlc, ffmpeg, afplay)'
 	'xsel: copy output to clipboard (xclip)'
 	'python: count input tokens (tiktoken)'
 	'bat: render markdown (pygmentize, glow, mdcat, mdless)'
