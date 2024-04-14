@@ -3,14 +3,13 @@
 _pkgname=koRpus
 _pkgver=0.13-8
 pkgname=r-${_pkgname,,}
-pkgver=0.13.8
-pkgrel=4
-pkgdesc='Text Analysis with Emphasis on POS Tagging, Readability, and Lexical Diversity'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Text Analysis with Emphasis on POS Tagging, Readability, and Lexical Diversity"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
-  r
   r-data.table
   r-sylly
 )
@@ -24,7 +23,6 @@ optdepends=(
   r-korpus.lang.nl
   r-korpus.lang.pt
   r-korpus.lang.ru
-  r-rkward
   r-rmarkdown
   r-shiny
   r-snowballc
@@ -32,14 +30,15 @@ optdepends=(
   r-tm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0e9a4a332eeb33a0c9d0feab36ca1554ce5a3192717dc97a9ca3f011bf132a65')
+md5sums=('87f5cf19ee31e22af6e8f099290440d8')
+b2sums=('7d387b64e6a80d97d3aa00d9833ec2aca32cffa072dc3b1c09b3a7e3dbcf4a4a5ec765f886b1c30a2977296e50d1ba20d550aff992ef3f75a74f69e83d3eb043')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
