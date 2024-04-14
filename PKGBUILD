@@ -3,25 +3,25 @@
 _pkgname=EBarrays
 _pkgver=2.66.0
 pkgname=r-${_pkgname,,}
-pkgver=2.66.0
-pkgrel=1
-pkgdesc='Unified Approach for Simultaneous Gene Clustering and Differential Expression Identification'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Unified Approach for Simultaneous Gene Clustering and Differential Expression Identification"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f810ddcd8f363086be0df36bebe739785fb228f527822965b9a8a65e69f00dd5')
+md5sums=('d273e2e9411207653d4e079e14484026')
+b2sums=('e7ee39ac298e4fbfe93b83c5e11eafd0dd661d81d967586605a1b35d89309a839b5ed46a6922f8a4468bb40e617a88aa5297e04bc4ebc552ea931ff16999a1d8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
