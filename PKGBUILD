@@ -19,4 +19,18 @@ build() {
 package() {
     cd $srcdir/sonycardscanner
     make INSTALL_ROOT="$pkgdir" install
+    cat > ${pkgdir}/usr/share/applications/SonyCardScanner.desktop << EOF
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=$pkgver
+Type=Application
+Terminal=false
+Name=SonyCardScanner
+Exec=/usr/bin/SonyCardScanner -g
+Comment=Утилита для работы с камерами Sony
+Icon=/usr/share/icons/SonyCardScanner.svg
+StartupNotify=false
+Encoding=UTF-8
+Categories=Multimedia;Graphics;
+EOF
 }
