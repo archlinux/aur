@@ -1,0 +1,4 @@
+[tmpview-bin]
+source = "regex"
+url = "https://style64.org/releases"
+regex = "TMPview v([^/]+)/Style"
