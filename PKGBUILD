@@ -1,41 +1,51 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-# ex-Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=warp
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Fast and secure file transfer"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.gnome.org/World/warp"
-license=('GPL3')
-depends=('libadwaita')
-makedepends=('meson' 'cargo' 'itstool')
-checkdepends=('appstream-glib')
-conflicts=("$pkgname-share-files")
-replaces=("$pkgname-share-files")
-source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-b2sums=('4754aa91a53b80836b0de9931b70056030457985170de20ca3b63d279f6041ce3b5f9f96ea2ca6c5303e18a173c62d119fbcd93fb227bb7cce8cf5e882e24a8a')
+url="https://apps.gnome.org/Warp"
+license=('GPL-3.0-or-later')
+depends=('gst-plugins-bad' 'libadwaita')
+makedepends=('cargo' 'git' 'itstool' 'meson')
+optdepends=('yelp: View help')
+_commit=ce2e235adc5e27a7249af01a3b41193434725571  # tags/v0.7.0^0
+source=("git+https://gitlab.gnome.org/World/warp.git#commit=$_commit")
+sha256sums=('69276b052c89cffe0cedb108431d3aa6983b7697744348743b62c7c20750ccad')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
-  # Temporary solution to the issue: File name conflict
+  cd "$pkgname"
+  CFLAGS+=" -ffat-lto-objects"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+
+  # Temporary solution to the binary name conflict
   # https://www.yesodweb.com/book/web-application-interface
-  # https://bugs.archlinux.org/task/76026?project=5&string=haskell-wai-app-static
-  cd "$pkgname-v$pkgver"
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/haskell-wai-app-static/-/issues/1
   sed -i 's|warp %u|warp-share %u|g' data/app.drey.Warp.desktop.in.in
 }
 
 build() {
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  arch-meson "$pkgname-v$pkgver" build
+  arch-meson "$pkgname" build
   meson compile -C build
 }
- 
+
 check() {
   meson test -C build --print-errorlogs || :
 }
- 
+
 package() {
-  meson install -C build --destdir "$pkgdir"
-  
+  meson install -C build --no-rebuild --destdir "$pkgdir"
+
   mv "$pkgdir/usr/bin/warp" "$pkgdir/usr/bin/warp-share"
 }
