@@ -19,11 +19,8 @@ sha256sums=('7c10a68daa0c5c0c366ccc8b4b898bc94b32221d25aea2191df5b768f04b214c'
             '7a8507af8fd92a7acc68c34d6a7525b67e0c0419ef8a99cd620d459837c7d1e8')
 
 package() {
-	ls -l
 	install -D -m0755 ${pkgname}-check_mk_agent.linux-${pkgver} "${pkgdir}"/usr/bin/check_mk_agent
 	install -D -m0755 ${pkgname}-check_mk_caching_agent.linux-${pkgver} "${pkgdir}"/usr/bin/check_mk_caching_agent
-
 	install -D -m0644 -t "${pkgdir}"/usr/lib/systemd/system/ check_mk.socket check_mk@.service
-
 	install -d -m0755 "${pkgdir}"/var/lib/check_mk_agent/{cache,job,spool,local,plugins}
 }
