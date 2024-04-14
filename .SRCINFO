@@ -1,0 +1,17 @@
+pkgbase = haskell-posix-paths
+	pkgdesc = POSIX filepath/directory functionality
+	pkgver = 0.3.0.0
+	pkgrel = 1
+	url = git://github.com/JohnLato/posix-paths.git
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	makedepends = haskell-hunit
+	makedepends = haskell-quickcheck
+	makedepends = haskell-doctest
+	depends = ghc-libs
+	depends = haskell-unliftio
+	source = https://hackage.haskell.org/packages/archive/posix-paths/0.3.0.0/posix-paths-0.3.0.0.tar.gz
+	sha256sums = 82a89de8d2fafbfedbd3a23b1be31ada184cce5961f22e7fd22b2a75ad8757d2
+
+pkgname = haskell-posix-paths
