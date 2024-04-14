@@ -1,0 +1,5 @@
+[python-qualify]
+source = "github"
+github = "claui/qualify"
+prefix = "v"
+use_latest_release = true
