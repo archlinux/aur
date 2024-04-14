@@ -1,4 +1,4 @@
-# Maintainer: Charles Dong <charlesdong_2000@outlook.com>
+# Maintainer: Charles Dong <chardon_cs@protom.me>
 
 pkgname=stellarium-qt5-bin
 _pkgname=stellarium
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=()
 conflicts=($_pkgname ${_pkgname}-bin)
 provides=($_pkgname)
-validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF')
+validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
 
 _qtver=5
 _target="$_pkgname2-$pkgver-qt$_qtver-x86_64.AppImage"
