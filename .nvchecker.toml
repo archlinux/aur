@@ -1,0 +1,4 @@
+[hancho]
+source = "github"
+github = "aappleby/hancho"
+use_latest_release = true
