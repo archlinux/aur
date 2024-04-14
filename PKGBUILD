@@ -3,25 +3,25 @@
 _pkgname=DFP
 _pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
-pkgrel=1
-pkgdesc='Gene Selection'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Gene Selection"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1d347f527dce23081ebde84bdf47337af921921b4b686d5c265fb5f2a848ced6')
+md5sums=('5eb14fe67a6dd0599cd24c3473eec349')
+b2sums=('4f1fe36c47a3df3ae473996400d8650e0f3715b715ebb85ddaecf43ff6db63193021715313fe32f0c99320ddac33410e342f6e89e6e9bfa889d1dcbc424d2f29')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
