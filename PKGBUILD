@@ -3,12 +3,12 @@
 # Based on python-mpi4py, maintained by Bruno Pagani <archange@archlinux.org> and et.al.
 _base=mpi4py
 pkgname=python-${_base}-intel
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="Python bindings for the Message Passing Interface compiled with intel mpi"
 arch=(x86_64)
 url="https://github.com/${_base}/${_base}"
-license=('custom:BSD-2-clause')
+license=(BSD-2-Clause)
 depends=(python intel-oneapi-basekit) # intel-oneapi-dpcpp-cpp
 makedepends=(python-build python-installer python-setuptools python-wheel cython0)
 checkdepends=(python-pytest python-numba) # python-cupy
@@ -16,7 +16,7 @@ provides=(python-${_base})
 conflicts=(python-${_base})
 options=(!emptydirs)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('705f1e88952e78612284c70fd1b11abacd524aeb25a5d8db22f5d94b35446eea9f60d6078619bc12b20dc85dd944ea8b8b5d4b2faeeda7219d2271c685c07df1')
+sha512sums=('e99fa0aab13d8e3d2479880a4c920c621512925c6fa2706e7b46b8c3380ca061c1583be70dc5b94f40bf32c0ac7f4cfb508917429226227c52348548ebe0a0d9')
 
 build() {
   cd ${_base}-${pkgver}
@@ -29,11 +29,6 @@ build() {
 }
 
 check() {
-  if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
-    # We don’t have CUDA by default
-    export OMPI_MCA_opal_warn_on_missing_libcuda=0
-  fi
-
   # This is required starting with OpenMPI 3.0 when trying to run more
   # processes than the number of available cores
   export OMPI_MCA_rmaps_base_oversubscribe=yes

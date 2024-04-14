@@ -1,0 +1,5 @@
+[python-mpi4py-intel]
+source = "github"
+github = "mpi4py/mpi4py"
+use_latest_release = "true"
+prefix = "v"
