@@ -1,14 +1,14 @@
 pkgbase = r-mlmetrics
 	pkgdesc = Machine Learning Evaluation Metrics
-	pkgver = 1.1.1
-	pkgrel = 4
+	pkgver = 1.1.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=MLmetrics
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-rocr
 	optdepends = r-e1071
-	source = https://cran.r-project.org/src/contrib/MLmetrics_1.1.1.tar.gz
-	sha256sums = 777f1b76b16837387b830e2b65304ede234b9299d17efd09c7fd403356122118
+	source = https://cran.r-project.org/src/contrib/MLmetrics_1.1.3.tar.gz
+	sha256sums = 2c5735fc2a2728a71272aaf0d559bc7bc09b45476ea63d94cb7be84f0dbfaf85
 
 pkgname = r-mlmetrics
