@@ -1,8 +1,8 @@
 # Maintainer: Helio Loureiro <helio@loureiro.eng.br>
 pkgname=doh-relay-git
-pkgver=1.0.0+beta.9.r87.20240222.f4d8f69
+pkgver=1.0.0.r89.20240412.68c3226
 pkgrel=1
-gittag=v1.0.0-beta.9
+gittag=v1.0.0
 pkgdesc="DNS-over-HTTPS relay service."
 arch=(
   'aarch64'
