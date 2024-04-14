@@ -3,29 +3,26 @@
 _pkgname=RSEIS
 _pkgver=4.2-0
 pkgname=r-${_pkgname,,}
-pkgver=4.2.0
-pkgrel=1
-pkgdesc='Seismic Time Series Analysis Tools'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Seismic Time Series Analysis Tools"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-rpmg
   r-rwave
 )
-optdepends=(
-  r-stats
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('93ec391f69660fffdeee79a16b312522dada399a83a35758e69422145e682d14')
+md5sums=('1e48488c5c3420d62970461cead4195f')
+b2sums=('0e24adf228f9e9d6b6230be1cc57088506911cd6e3983a4e9df869d6862cf3e6b498c74e7581e0678ee9c50c825b745072b792c305a9ae99b711c010a1f48ea3')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
