@@ -1,0 +1,5 @@
+[python-norbert]
+source = "github"
+github = "sigsep/norbert"
+prefix = "v"
+use_latest_release = true
