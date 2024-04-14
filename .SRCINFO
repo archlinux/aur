@@ -1,0 +1,14 @@
+pkgbase = haskell-hmenu
+	pkgdesc = CLI fuzzy finder and launcher
+	pkgver = 0.1.0.1
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/hmenu
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-missingh
+	source = https://hackage.haskell.org/packages/archive/hmenu/0.1.0.1/hmenu-0.1.0.1.tar.gz
+	sha256sums = 374320143bdac2e9771639b8d30492791c2c34641f496cea618ccbd0fdb7a37a
+
+pkgname = haskell-hmenu
