@@ -2,7 +2,7 @@
 
 pkgname=qtcreator-spellchecker-plugin
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Spell Checker plugin for the Qt Creator IDE"
 groups=('qt')
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/CJCombrink/SpellChecker-Plugin"
 license=('LGPL-3.0-only' 'GPL-3.0-only')
 depends=(
     'qtcreator>=13.0.0' 'qtcreator<14.0.0'
-    'hunspell'
+    'hunspell' # Don't know why upstream binary does not link to hunspell but this does.
 )
 makedepends=(
     'cmake'
