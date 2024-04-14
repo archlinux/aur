@@ -1,13 +1,13 @@
 # Maintainer: JacobTech <Jacob@JacobTech.com>
 pkgname='luski-git'
-pkgver='r31.f7abb6e'
-pkgrel=1
+pkgver=r37.77ec87d
+pkgrel=2
 pkgdesc="Simple open source chat app"
 arch=('x86_64')
 url="https://www.jacobtech.com/Luski"
 license=('GPL-3.0-only')
 depends=('bash')
-makedepends=('git' 'dotnet-sdk')
+makedepends=('git' 'dotnet-sdk' 'grep')
 provides=('luski')
 conflicts=('luski-bin' 'luski-contained-bin')
 source=("luski-git::git+https://git.jacobtech.com/JacobTech.com/Luski.git#branch=main")
@@ -20,6 +20,13 @@ pkgver() {
 
 build() {
 	cd "$pkgname/Luski"
+	if dotnet nuget list source | grep -q 'https://nuget.jacobtech.com/v3/index.json'
+	then
+		echo "Package source found"
+	else
+		echo "Adding package source"
+		dotnet nuget add source https://nuget.jacobtech.com/v3/index.json -n JacobTech
+	fi
 	dotnet build -c Release -r linux-x64 --no-self-contained
 }
 
