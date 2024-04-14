@@ -1,22 +1,19 @@
 pkgbase = r-relations
 	pkgdesc = Data Structures and Algorithms for Relations
 	pkgver = 0.6.13
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=relations
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-only
 	depends = r-sets
 	depends = r-slam
 	optdepends = r-clue
 	optdepends = r-lpsolve
-	optdepends = r-methods
-	optdepends = r-rcplex
 	optdepends = r-rglpk
 	optdepends = r-rgraphviz
 	optdepends = r-rsymphony
-	optdepends = r-seriation
 	source = https://cran.r-project.org/src/contrib/relations_0.6-13.tar.gz
-	sha256sums = f859c336fb0c4a2df7f294b33d1d04f95c6988e5e76933e2e70bf291d904d9da
+	md5sums = 5c0e82a37c8f7fb8b74bb5a7ad7fd257
+	b2sums = 92cef36dc96a73a9e6043b11d84fcc546fe6f726846a0167414a2a5d36c9bdf9b8883a723dddee00a5a4824b33ddd90477b444ac0e84a1784552aeed3a5c91f2
 
 pkgname = r-relations

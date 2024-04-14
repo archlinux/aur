@@ -3,36 +3,33 @@
 _pkgname=relations
 _pkgver=0.6-13
 pkgname=r-${_pkgname,,}
-pkgver=0.6.13
-pkgrel=1
-pkgdesc='Data Structures and Algorithms for Relations'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Data Structures and Algorithms for Relations"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-sets
   r-slam
 )
 optdepends=(
   r-clue
   r-lpsolve
-  r-methods
-  r-rcplex
   r-rglpk
   r-rgraphviz
   r-rsymphony
-  r-seriation
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f859c336fb0c4a2df7f294b33d1d04f95c6988e5e76933e2e70bf291d904d9da')
+md5sums=('5c0e82a37c8f7fb8b74bb5a7ad7fd257')
+b2sums=('92cef36dc96a73a9e6043b11d84fcc546fe6f726846a0167414a2a5d36c9bdf9b8883a723dddee00a5a4824b33ddd90477b444ac0e84a1784552aeed3a5c91f2')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
