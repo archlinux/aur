@@ -9,15 +9,15 @@ Subject: [PATCH] Trap any kind of exception during plugin parsing (eg IOError
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 2866ceead87dd276b10ac845f9a996c67e350704..5ebd0cecc876ee8499b5010f2739db643cf9a50c 100644
+index b8906e79762235c514b6f32d0c8c7bd8c4474b0d..b78993cdb093198440ccbc9e7ed481c6f2d9759b 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -10164,7 +10164,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -10177,7 +10177,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                          if (inspect.isfunction(data) and inspect.getmodule(data) == mod
                                  or inspect.ismodule(data)):
                              setattr(self.__class__, name, data)
 -                except (SyntaxError, NameError, ImportError) as e:
 +                except (SyntaxError, NameError, ImportError, IOError) as e:
                      if os.environ.get('OSC_PLUGIN_FAIL_IGNORE'):
-                         print("%s: %s\n" % (os.path.join(plugin_dir, extfile), e), file=sys.stderr)
+                         print(f"{os.path.join(plugin_dir, extfile)}: {e}\n", file=sys.stderr)
                      else:

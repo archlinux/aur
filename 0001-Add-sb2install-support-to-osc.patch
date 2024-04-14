@@ -8,7 +8,7 @@ Subject: [PATCH] Add sb2install support to osc
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/osc/build.py b/osc/build.py
-index c93072af1d98e8ba4575f3084a39087a7920d483..096e6c40998e35650b857d09cce41cfc95e10f67 100644
+index b77b8ff2b7f4c50c6e0539c804b96b0e865db184..3f955f70c46dbcbec504dffb50ac993f1b53299b 100644
 --- a/osc/build.py
 +++ b/osc/build.py
 @@ -192,6 +192,7 @@ class Buildinfo:
@@ -29,7 +29,7 @@ index c93072af1d98e8ba4575f3084a39087a7920d483..096e6c40998e35650b857d09cce41cfc
              self.mp[i] = node.get(i)
  
          self.mp['buildarch'] = buildarch
-@@ -1430,6 +1432,7 @@ def main(apiurl, store, opts, argv):
+@@ -1435,6 +1437,7 @@ def main(apiurl, store, opts, argv):
  
      rpmlist.append('preinstall: ' + ' '.join(bi.preinstall_list) + '\n')
      rpmlist.append('vminstall: ' + ' '.join(bi.vminstall_list) + '\n')

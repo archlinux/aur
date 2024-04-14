@@ -9,10 +9,10 @@ Subject: [PATCH] Add -p to copyprj to enable copying of prjconf
  2 files changed, 8 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 46bbc28087338961ff09cabc964ae0024a73001c..c7ad5927974123bae6e31bd23057ffd6f6d1ecdd 100644
+index 3e44189b69155f645b063d93362f652df849b826..6e4b55ea04b037ae2fb0fb063a812849a0e523cc 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -2114,6 +2114,8 @@ class Osc(cmdln.Cmdln):
+@@ -2120,6 +2120,8 @@ class Osc(cmdln.Cmdln):
                          help='replicate the history of each package.')
      @cmdln.option('-o', '--make-older', action='store_true',
                          help='No idea')
@@ -21,7 +21,7 @@ index 46bbc28087338961ff09cabc964ae0024a73001c..c7ad5927974123bae6e31bd23057ffd6
      @cmdln.option('-r', '--re-sign', action='store_true',
                          help='re-sign the binaries')
      @cmdln.option('-m', '--message', metavar='TEXT',
-@@ -2156,6 +2158,7 @@ class Osc(cmdln.Cmdln):
+@@ -2162,6 +2164,7 @@ class Osc(cmdln.Cmdln):
          r = copy_prj(src_apiurl, src_project, dst_project,
                       withbinaries = opts.with_binaries,
                       withhistory = opts.with_history,
@@ -30,10 +30,10 @@ index 46bbc28087338961ff09cabc964ae0024a73001c..c7ad5927974123bae6e31bd23057ffd6
                       resign = opts.re_sign,
                       now = opts.now,
 diff --git a/osc/core.py b/osc/core.py
-index d3d4ca9cf3b3cfc6ad966fa3692cfa019d8d567c..d79c1bac7e35daa73a700344c23410be16adfe9e 100644
+index a20886bfe0c3705bed233368ac06f07392f33f5a..ab35e460da43def0bdc39b3c1c0499c4666df1c5 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -6282,8 +6282,10 @@ def copy_pac(
+@@ -6316,8 +6316,10 @@ def copy_pac(
  def copy_prj(src_apiurl, src_project, dst_project,
               withbinaries = False,
               withhistory = False,
@@ -44,7 +44,7 @@ index d3d4ca9cf3b3cfc6ad966fa3692cfa019d8d567c..d79c1bac7e35daa73a700344c23410be
               comment = None):
      """
      Create a copy of a project.
-@@ -6297,6 +6299,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -6331,6 +6333,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
          query['withbinaries'] = '1'
      if withhistory:
          query['withhistory'] = '1'
@@ -53,7 +53,7 @@ index d3d4ca9cf3b3cfc6ad966fa3692cfa019d8d567c..d79c1bac7e35daa73a700344c23410be
      if makeolder:
          query['makeolder'] = '1'
      if resign:
-@@ -6305,6 +6309,7 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -6339,6 +6343,7 @@ def copy_prj(src_apiurl, src_project, dst_project,
          query['comment'] = comment
      if now:
          query['nodelay'] = '1'
