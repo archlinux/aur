@@ -3,28 +3,25 @@
 _pkgname=ALL
 _pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
-pkgrel=1
-pkgdesc='A data package'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="A data package"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-biobase
 )
-optdepends=(
-  r-rpart
-)
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6c52471acf4bb77ed86e71c25e69ce5cc5235acec50785107b212934c6eec5db')
+md5sums=('b80eb482b4937ef4eac01027ac95a61a')
+b2sums=('0af64b306d65d415c302ad1e015dbc1b6e54ace2d2ed9b16196f095be7b6ead179d876c46dee1ea210f75dc152dfb59f567c4c1a4305dac180f06ad30871ceed')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
