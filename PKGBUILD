@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=savedesktop
 _app_id=io.github.vikdevelop.SaveDesktop
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Save and load KDE Plasma, Xfce and GNOME-based DE configuration"
 arch=('any')
@@ -9,12 +9,11 @@ url="https://github.com/vikdevelop/SaveDesktop"
 license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'libadwaita' 'python-dbus' 'python-gobject')
 makedepends=('git')
-checkdepends=('appstream')
-_commit=916cd098f7432211d015fc0b85073b29f64c52ab  # tags/3.2.1^0
+_commit=9899874b47924089e93b707fcb4582ce362fa446  # tags/3.2.2^0
 source=("git+https://github.com/vikdevelop/SaveDesktop.git#commit=${_commit}"
         "$pkgname.sh"
         'directories.patch')
-sha256sums=('b7028507feafa7613b9d9038f272bc3f57e5305f66c1063d5c1a667fb945b227'
+sha256sums=('07277927d34b6e01e1b5f3c0d316051cc28e5f7c560f68f0f5ade64b400d30f9'
             '2af6b49c1c166072fa3e0503e3f4b63e379d72d9b83b97f3f5dbf1a69383d79b'
             'd42f43417f54529f3db00c8888552f49ab4eab4e65defae46c49199fcbb6df37')
 
@@ -50,13 +49,7 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 "flatpak/icons/${_app_id}-symbolic.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"
-  install -Dm644 flatpak/symbolic-icons/desktop-symbolic.svg -t \
-     "$pkgdir/usr/share/icons/hicolor/symbolic/actions/"
-  install -Dm644 flatpak/symbolic-icons/exclamation_mark.png -t \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/actions/"
-  install -Dm644 flatpak/symbolic-icons/list-view.png -t \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/actions/"
-  install -Dm644 flatpak/symbolic-icons/preferences-system-symbolic.svg -t \
+  install -Dm644 flatpak/symbolic-icons/*.{svg,png} -t \
      "$pkgdir/usr/share/icons/hicolor/symbolic/actions/"
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
