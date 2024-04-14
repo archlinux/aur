@@ -1,0 +1,4 @@
+[numworks-epsilon]
+source = "github"
+github = "numworks/epsilon"
+use_max_tag = true
