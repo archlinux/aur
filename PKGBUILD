@@ -1,11 +1,12 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: 2ion <dev@2ion.de>
 pkgname=bunsen-common-git
 pkgver=r143.1f382a8
-pkgrel=1
+pkgrel=2
 pkgdesc="Shared shell scripts commonly used in BunsenLabs Linux projects"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-common"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('bash' 'ncurses')
 makedepends=('git')
 provides=("${pkgname%-git}")
