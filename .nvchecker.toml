@@ -1,0 +1,5 @@
+[fast_matrix_market]
+source = "github"
+github = "alugowski/fast_matrix_market"
+use_latest_release = "true"
+prefix = "v"
