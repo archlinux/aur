@@ -72,6 +72,7 @@ pkgbase = deepin-wine6-stable
 	replaces = deepin-wine6-stable-i386
 	replaces = deepin-wine6-stable-amd64
 	noextract = deepin-wine6-stable_6.0.0.58-1_amd64.deb
+	options = !strip
 	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable_6.0.0.58-1_amd64.deb
 	sha256sums = 693343911bd9145b38d11defdb6c7dc522aa1d69d2246319c542e9c26acf69d9
 

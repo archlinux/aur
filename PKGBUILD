@@ -18,6 +18,7 @@ provides=("deepin-wine6-stable-i386=$pkgver" "deepin-wine6-stable-amd64=$pkgver"
 replaces=("deepin-wine6-stable-i386" "deepin-wine6-stable-amd64")
 conflicts=("deepin-wine6-stable-i386" "deepin-wine6-stable-amd64")
 sha256sums=('693343911bd9145b38d11defdb6c7dc522aa1d69d2246319c542e9c26acf69d9')
+options=(!strip)
 depends=(
         'alsa-plugins' 'glib2' 'glibc' 'libgphoto2'
         'gst-plugins-base-libs' 'lcms2' 'libldap' 'mpg123'
