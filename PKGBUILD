@@ -3,14 +3,13 @@
 _pkgname=spatstat.data
 _pkgver=3.0-4
 pkgname=r-${_pkgname,,}
-pkgver=3.0.4
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="Datasets for 'spatstat' Family"
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-spatstat.utils
 )
 optdepends=(
@@ -21,14 +20,15 @@ optdepends=(
   r-spatstat.random
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d103343f4eb5b5cee184371ab1c3e141725b3d71c3b79cdab0eec5076dd116e8')
+md5sums=('21d5a23ffd441d3568230fc5bff15015')
+b2sums=('549579e633c1211cfb015e26d791860166ad5c5f4d9189f5a434638e141d0cce0af3a4210d28b00aae63f6bb64ad8bb1099f5d3e32b88fea75da3377a0ffd514')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
