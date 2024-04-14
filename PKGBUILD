@@ -3,14 +3,13 @@
 _pkgname=ddCt
 _pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
-pkgrel=1
-pkgdesc='The ddCt Algorithm for the Analysis of Quantitative Real-Time PCR (qRT-PCR)'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="The ddCt Algorithm for the Analysis of Quantitative Real-Time PCR (qRT-PCR)"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-3.0-only')
 depends=(
-  r
   r-biobase
   r-biocgenerics
   r-rcolorbrewer
@@ -21,14 +20,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('65a9ffeb5afacba0de8430b7196914572dccde47fe9924e70a89bbb86466f3d1')
+md5sums=('560588380b356d55a4e11811ae9100e6')
+b2sums=('0ab2bc2ffb444edc8edb9d00c0757f5f37b9abf8fb5f495e555d28e1629c7dfc1584702c0cc02c387e61ddfb9ca07d3d061b1b2e3ca0e574e6a9fc0ad9e3e5fd')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
