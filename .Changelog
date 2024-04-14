@@ -1,6 +1,10 @@
 # mpf-check-bin .Changelog
 
-## 2024-04-05 mpf-check-bin 3.1.5-1
+## 2024-04-05, mpf-check-bin 3.1.5-2
+
+* Add `!debug` option
+
+## 2024-04-05, mpf-check-bin 3.1.5-1
 
 * Bump to 3.1.5
 

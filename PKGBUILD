@@ -5,11 +5,11 @@ pkgname=mpf-check-bin
 url="https://github.com/SabreTools/MPF"
 arch=('x86_64')
 license=('GPL3')
-options=('!strip')
+options=('!strip' '!debug')
 pkgdesc="Media Preservation Frontend for Aaru and Redumper in C# (CLI Version)"
 provides=('mpf-check')
 pkgver=3.1.5
-pkgrel=1
+pkgrel=2
 source=('https://github.com/SabreTools/MPF/releases/download/3.1.5/MPF.Check_3.1.5_net8.0_linux-x64_release.zip'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE')
