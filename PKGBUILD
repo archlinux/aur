@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-hue-lights
 _pkgname=hue-lights
 pkgver=35
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Gnome Shell extension for Philips Hue compatible lights controlled by the Philips Hue Bridge and for controlling Philips Hue HDMI sync box. "
 arch=('any')
