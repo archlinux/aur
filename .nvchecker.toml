@@ -1,0 +1,4 @@
+[inkscape-axidraw-bin]
+source = "regex"
+url = "https://wiki.evilmadscientist.com/Axidraw_Software_Installation"
+regex = "The current software version is v. ([^,]+), released"
