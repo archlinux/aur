@@ -1,7 +1,7 @@
 # Maintainer: gigamicro <gammamicro@gmail.com>
 pkgname='wfinfo-ng-git'
 _pkgname="wfinfo-ng"
-pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
+pkgdesc="Analyze Warframe relic reward screen to determine platinum value of items."
 pkgver=0.1.0.105.gd5e7c43
 pkgrel=1
 epoch=1
