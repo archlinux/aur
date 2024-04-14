@@ -1,0 +1,16 @@
+pkgbase = python-repoze.profile
+	pkgdesc = Aggregate profiling for WSGI requests
+	pkgver = 2.3
+	pkgrel = 6
+	url = http://docs.repoze.org/profile/
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	makedepends = pyprof2calltree
+	depends = python
+	optdepends = pyprof2calltree
+	source = https://pypi.io/packages/source/r/repoze.profile/repoze.profile-2.3.tar.gz
+	sha256sums = a13e01a40f8780d4c445758159be191bbd14f45040c49888fb2335fefffd5b8e
+
+pkgname = python-repoze.profile
