@@ -3,35 +3,31 @@
 _pkgname=gsubfn
 _pkgver=0.7
 pkgname=r-${_pkgname,,}
-pkgver=0.7
-pkgrel=4
-pkgdesc='Utilities for Strings and Function Arguments'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Utilities for Strings and Function Arguments"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-proto
 )
 optdepends=(
-  r-boot
   r-chron
-  r-grid
-  r-lattice
   r-quantreg
   r-svunit
-  r-tcltk
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('89351df9e65722d2862f26a0a3985666de3c86e8400808ced8a6eb6e165a4602')
+md5sums=('7c3ac3d87b367aaf06a8add353fb162a')
+b2sums=('3800ab96f0f9f6118aa1fd3ea9e353646e168193ef1f41fdc1f0ead56511ecdbb795cd2e0c016658ffad5ff247afb009d0f7e9419da7ed18d7c00d3511afaac6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
