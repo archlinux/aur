@@ -1,0 +1,5 @@
+[pypipe]
+source = "github"
+github = "bugen/pypipe"
+prefix = "v"
+use_latest_release = true
