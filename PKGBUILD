@@ -3,7 +3,7 @@
 pkgname=lx-music-desktop-appimage
 pkgver=2.7.0
 pkgrel=1
-pkgdesc="一个基于electron的音乐软件"
+pkgdesc="一个免费&开源的音乐查找工具"
 arch=("x86_64")
 url="https://github.com/lyswhut/lx-music-desktop"
 license=("Apache-2.0")
