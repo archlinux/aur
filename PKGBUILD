@@ -1,4 +1,4 @@
-# Maintainer: Charles Dong <chardon_cs@protom.me>
+# Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=stellarium-qt5-bin
 _pkgname=stellarium
