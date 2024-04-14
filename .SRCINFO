@@ -1,13 +1,13 @@
 pkgbase = r-bcellviper
 	pkgdesc = Human B-cell transcriptional interactome and normal human B-cell expression data
 	pkgver = 1.38.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/bcellViper
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-biobase
 	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/bcellViper_1.38.0.tar.gz
-	sha256sums = 1009f48b1b743005ede62ebac66f95554df2db33d37298ed2998ba017e7931e1
+	md5sums = 7e93bbaa204826358c77282e2a370074
+	b2sums = 8db7e4be13e55185ef85ad5366e821de0f11677553e2197836e18f8a6053cda585828e020bfccb1eaaa2fb85a4c4c9fa3540b35dc6a9a3c4e31e3fa7d1b72b82
 
 pkgname = r-bcellviper
