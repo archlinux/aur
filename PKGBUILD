@@ -22,7 +22,6 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
@@ -34,6 +33,7 @@ prepare() {
 }
 
 build() {
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname" build
