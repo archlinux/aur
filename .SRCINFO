@@ -1,6 +1,6 @@
 pkgbase = vesc_tool-git
 	pkgdesc = VESC ESC graphical configuration tool
-	pkgver = r1403.24b62d1
+	pkgver = r1412.7c02f7f
 	pkgrel = 1
 	epoch = 1
 	url = https://vesc-project.com/vesc_tool
@@ -25,8 +25,6 @@ pkgbase = vesc_tool-git
 	source = vesc_tool-git::git+https://github.com/vedderb/vesc_tool.git
 	source = aur-build-qmake.patch
 	source = vesc-tool.desktop
-	source = vesc-tool.png
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -1,5 +1,5 @@
---- vesc_tool.pro	2024-04-07 11:01:38.869088704 +0200
-+++ vesc_tool.pro	2024-04-07 11:35:05.284270363 +0200
+--- /var/lib/archbuild/extra-x86_64/oskar/build/vesc_tool-git/vesc_tool/vesc_tool.pro	2024-04-14 14:07:19.371492688 +0200
++++ vesc_tool.pro	2024-04-14 14:09:40.747867361 +0200
 @@ -1,106 +1,40 @@
 -#-------------------------------------------------
 -#
@@ -154,7 +154,7 @@
 -    manifest.output = $$PWD/android/AndroidManifest.xml
 -    QMAKE_SUBSTITUTES += manifest
 -}
-+TARGET = vesc_tool_$$VT_VERSION
++TARGET = vesc_tool
  
  TEMPLATE = app
 -

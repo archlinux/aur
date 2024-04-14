@@ -1,6 +1,6 @@
 pkgname=vesc_tool-git
 epoch=1
-pkgver=r1403.24b62d1
+pkgver=r1412.7c02f7f
 pkgrel=1
 pkgdesc="VESC ESC graphical configuration tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -11,10 +11,8 @@ makedepends=('git' 'mold')
 conflicts=('vesc-tool')
 source=("$pkgname"::"git+https://github.com/vedderb/vesc_tool.git"
         'aur-build-qmake.patch'
-        'vesc-tool.desktop'
-        'vesc-tool.png')
+        'vesc-tool.desktop')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP')
 options=(!debug)
@@ -42,7 +40,7 @@ package() {
   install -Dm644 ../vesc-tool.desktop \
     "$pkgdir/usr/share/applications/vesc-tool.desktop"
 
-  install -Dm644 ../vesc-tool.png \
+  install -Dm644 'res/+theme_light/icons/v_icon-256.png' \
     "$pkgdir/usr/share/icons/vesc-tool.png"
 }
 
