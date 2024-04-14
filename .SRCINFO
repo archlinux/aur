@@ -1,6 +1,6 @@
 pkgbase = clangd-opt-git
 	pkgdesc = Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)
-	pkgver = 19.r6607.gfa1b807befdc
+	pkgver = 19.r8210.g00162162dd85
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = clangd-opt-git
 	makedepends = libffi
 	makedepends = libedit
 	makedepends = ncurses
+	makedepends = patch
 	makedepends = libxml2
 	makedepends = python-setuptools
 	makedepends = python-psutil
