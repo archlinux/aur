@@ -130,7 +130,7 @@
 : ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=19.r8210.g00162162dd85
+pkgver=19.r8212.gb8d0cba14bcf
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -303,7 +303,7 @@ build() {
 package() {
     cd build
 
-    cmake --install . --prefix "$pkgdir"/opt/clangd --component clangd
+    cmake --install . --prefix "$pkgdir"/opt/clangd --component clangd --strip
     # Install headers
     mkdir "$pkgdir"/opt/clangd/lib
     cp -r lib/clang "$pkgdir"/opt/clangd/lib/clang
