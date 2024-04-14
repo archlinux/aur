@@ -1,0 +1,5 @@
+[split700]
+source = "github"
+github = "gocha/split700"
+prefix = "v"
+use_latest_release = true
