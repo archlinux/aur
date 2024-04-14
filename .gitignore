@@ -1,0 +1,14 @@
+# Ignore package build directories
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.pkg.tar
+pkg/
+src/
+
+# Ignore files created by makepkg
+*.log
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst

@@ -1,0 +1,19 @@
+post_install() {
+    systemctl daemon-reload
+    echo "The systemd service for persistent data collection can be enabled with:"
+    echo "  systemctl enable below.service"
+    echo "  systemctl start below.service"
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl stop below.service
+    systemctl disable below.service
+}
+
+post_remove() {
+    systemctl daemon-reload
+}

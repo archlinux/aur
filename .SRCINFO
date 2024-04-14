@@ -1,0 +1,22 @@
+pkgbase = below
+	pkgdesc = A time traveling resource monitor for modern Linux systems
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/facebookincubator/below
+	install = below.install
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = clang
+	depends = glibc
+	depends = gcc-libs
+	depends = libelf
+	depends = zlib
+	options = !lto
+	options = !debug
+	source = below-0.8.1.tar.gz::https://github.com/facebookincubator/below/archive/refs/tags/v0.8.1.zip
+	source = below.install
+	sha256sums = 7b47d6d66167bb991b92a8eab3ff2b1d51339045ace190cdc09ab045f1f2e8cb
+	sha256sums = af3057fcf8bf411522d76cf5def98b6c871687002b44236a9fe34bf8a47d95c2
+
+pkgname = below
