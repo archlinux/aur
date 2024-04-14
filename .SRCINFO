@@ -5,6 +5,7 @@ pkgbase = rime-uggx
 	url = https://github.com/X1aomu/rime-uggx
 	arch = any
 	license = unknown
+	makedepends = librime
 	depends = rime-pinyin-simp
 	depends = rime-emoji
 	source = rime-uggx-1.4.0.tar.gz::https://github.com/X1aomu/rime-uggx/archive/v1.4.0.tar.gz
