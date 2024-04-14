@@ -2,27 +2,48 @@
 # ex-Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=decoder
-pkgver=0.4.1
+pkgver=0.5
 pkgrel=1
-pkgdesc='Scan and Generate QR Codes'
+pkgdesc="Scan and Generate QR Codes"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.gnome.org/World/decoder"
-license=('GPL3')
-depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'pipewire' 'zbar')
-makedepends=('meson' 'cargo' 'clang')
-checkdepends=('appstream-glib')
-source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('66b279fcdeeaa753c0bfda41c308c2d471ec9ff95054fe09e333765d2bb851df268ac7926d0f0375edab7d7dd962cc7b0ef93f6ae9ec640bed2dd5991b49eab0')
+url="https://apps.gnome.org/Decoder"
+license=('GPL-3.0-or-later')
+depends=(
+  'gst-plugins-bad'
+  'gst-plugins-base'
+  'gstreamer'
+  'libadwaita'
+  'zbar'
+)
+makedepends=(
+  'cargo'
+  'meson'
+)
+source=("https://gitlab.gnome.org/World/decoder/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('8837874883ee99152dde05a7ea9dbbbeccfee2cb6d64ca787e37aec4630c0180')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-  arch-meson --buildtype release "$pkgname-$pkgver" build
+  CFLAGS+=" -ffat-lto-objects"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  arch-meson "$pkgname-$pkgver" build
   meson compile -C build
 }
 
 check() {
+  CFLAGS+=" -ffat-lto-objects"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
   meson test -C build --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
