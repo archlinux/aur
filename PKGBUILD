@@ -1,9 +1,9 @@
 # maintainer: lcsmueller
 # contributor: mrtuxa<contact@mrtuxa.email>
 pkgname=concord-git
-pkgver=v2.2.0.r1.g38dc9b2e
+pkgver=dev
 pkgrel=1
-pkgdesc="A Discord API wrapper library made in C"
+pkgdesc="A Discord API wrapper library made in C (dev branch)"
 arch=('any')
 url="https://github.com/Cogmasters/concord"
 license=('MIT')
