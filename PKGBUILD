@@ -3,14 +3,13 @@
 _pkgname=clusterStab
 _pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
-pkgrel=1
-pkgdesc='Compute cluster stability scores for microarray data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Compute cluster stability scores for microarray data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-biobase
 )
 optdepends=(
@@ -18,14 +17,15 @@ optdepends=(
   r-genefilter
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('48dd977347cf111ec261d0ca0293a052b048fe212117b9b41656c14f8a49b383')
+md5sums=('87f3941fd121e6a60acdefd9a682ba9a')
+b2sums=('0c827e129446b74a48dfc24bb21d4d278fb9ff31ace1a6194adce8b55ea643a0ad2695302d0d045c1fcffa5f07b71b8e8508ced99c2504b73c3dde07306b410a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
