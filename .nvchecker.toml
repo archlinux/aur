@@ -1,0 +1,5 @@
+[en-croissant]
+source = "github"
+github = "franciscoBSalgueiro/en-croissant"
+prefix = "v"
+use_latest_release = true
