@@ -1,0 +1,13 @@
+pkgbase = rime-uggx
+	pkgdesc = 一个用于 RIME 的郑码输入方案
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/X1aomu/rime-uggx
+	arch = any
+	license = unknown
+	depends = rime-pinyin-simp
+	depends = rime-emoji
+	source = rime-uggx-1.4.0.tar.gz::https://github.com/X1aomu/rime-uggx/archive/v1.4.0.tar.gz
+	sha256sums = 64815629c0d3c94c9a94efa4e544312fc1b1791b4127768b5fa755f85b1eb18f
+
+pkgname = rime-uggx
