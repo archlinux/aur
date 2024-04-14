@@ -1,12 +1,13 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: 2ion <dev@2ion.de>
 pkgname=bunsen-openbox-pipemenus-git
-pkgver=r448.c1c32f8
+pkgver=r452.5e4e8c4
 pkgrel=1
 pkgdesc="Collection of Openbox pipemenus from BunsenLabs Linux"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-pipemenus"
 license=('GPL3')
-depends=('openbox' 'bunsen-common-git' 'zenity' 'wget' 'curl' 'picom' 'tar' 'python' 'python-paramiko' 'mesa' 'lua' 'lua-expat' 'lua-penlight' 'lua-posix-git' 'lua-socket' 'bunsen-utilities-git')
+depends=('bunsen-common' 'jgmenu' 'lua52' 'lua52-expat' 'lua52-penlight' 'lua52-posix' 'lua52-socket' 'mesa-utils' 'python3' 'python-lxml' 'python-paramiko' 'wget' 'xterm' 'yad')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
