@@ -1,0 +1,27 @@
+pkgbase = daed-edge-git
+	pkgdesc = A modern dashboard for dae, bundled with latest dae-wing (backend API server) and dae (core).
+	pkgver = 0.6.0rc1.r6.g48c4815
+	pkgrel = 1
+	url = https://github.com/daeuniverse/daed
+	install = daed.install
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later AND MIT
+	makedepends = git
+	makedepends = pnpm
+	makedepends = clang
+	makedepends = go
+	provides = daed
+	conflicts = daed
+	conflicts = daed-git
+	options = !debug
+	source = git+https://github.com/daeuniverse/daed.git
+	source = git+https://github.com/daeuniverse/dae-wing.git
+	source = git+https://github.com/daeuniverse/dae.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = daed-edge-git
+	depends = v2ray-geoip
+	depends = v2ray-domain-list-community
