@@ -24,12 +24,12 @@ pkgver() {
 
 build(){
 	cd "$srcdir/$_pkgname"
-	cargo build --release
+	env CARGO_INCREMENTAL=0 CFLAGS= cargo build --release --locked
 }
 
 check(){
 	cd "$srcdir/$_pkgname"
-	cargo test --release
+	env CARGO_INCREMENTAL=0 CFLAGS= cargo test --release
 }
 
 package() {
