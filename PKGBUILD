@@ -24,8 +24,7 @@ pkgver() {
 build(){
 	cd "$srcdir/$_pkgname"
 	env CFLAGS= cargo build --release --locked
-	# following line is to remove the 'jq' dependency (specifically, trimming the " | jq ." part)
-	cut update.sh -d\  -f-2,6- > update.sh~; chmod --reference=update.sh update.sh~; mv -f update.sh~ update.sh
+	sed 's/ | jq .//' -i "update.sh"
 }
 
 check(){
