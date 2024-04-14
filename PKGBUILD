@@ -3,14 +3,13 @@
 _pkgname=ecolitk
 _pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
-pkgrel=1
-pkgdesc='Meta-data and tools for E. coli'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Meta-data and tools for E. coli"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-biobase
 )
 optdepends=(
@@ -21,14 +20,15 @@ optdepends=(
   r-multtest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a3f0d59fd409127b6b8abc6a4654f9aa4f4bf5d52293eb14cbfb5393912ab8cd')
+md5sums=('58667dc1f403986935c98a97f2e0b9e2')
+b2sums=('f80d7374b0d6f51014f6246ffe7ee873c753115138004caacc5dac71f387d56bf3285f24902f763e658a6202c8204fb92852a2a41bda866f6b45f385455899f6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
