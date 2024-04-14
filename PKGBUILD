@@ -4,7 +4,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname='refind-git'
-pkgver=0.14.0.r845.g47af961
+pkgver=0.14.2.r0.g6c66e90
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='https://www.rodsbooks.com/refind/'
@@ -30,7 +30,7 @@ _arch='x64'
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}/"
-	printf '%s.r%s.g%s' "$(grep -Po 'REFIND_VERSION L"\K[\d.]+' "${srcdir}/${pkgname%-git}/include/version.h")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --abbrev=7 | sed 's/^v\.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
