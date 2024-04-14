@@ -1,0 +1,2049 @@
+From a040365318f540df920e50947413b7f5ec691f09 Mon Sep 17 00:00:00 2001
+From: Fatih Uzunoglu <fuzun54@outlook.com>
+Date: Thu, 4 Apr 2024 21:40:52 +0300
+Subject: [PATCH 1/7] qt: update to Qt 6.7.0
+
+---
+ modules/gui/qt/maininterface/compositor_dcomp.cpp         | 4 +++-
+ modules/gui/qt/maininterface/interface_window_handler.cpp | 2 +-
+ modules/gui/qt/player/player_controller_p.hpp             | 4 ++++
+ modules/gui/qt/playlist/playlist_controller_p.hpp         | 4 ++++
+ modules/gui/qt/playlist/playlist_model_p.hpp              | 4 ++++
+ modules/gui/qt/plugins.hpp                                | 4 ++++
+ modules/gui/qt/qt.cpp                                     | 8 ++++++++
+ modules/gui/qt/util/audio_device_model.cpp                | 2 +-
+ 8 files changed, 29 insertions(+), 3 deletions(-)
+
+diff --git a/modules/gui/qt/maininterface/compositor_dcomp.cpp b/modules/gui/qt/maininterface/compositor_dcomp.cpp
+index 6eb76cef6a09..fa35f84b0551 100644
+--- a/modules/gui/qt/maininterface/compositor_dcomp.cpp
++++ b/modules/gui/qt/maininterface/compositor_dcomp.cpp
+@@ -47,8 +47,10 @@
+ #endif
+ 
+ #if __has_include(<d3d12.h>) && __has_include(<d3d12sdklayers.h>)
+-#define QRhiD3D12_ACTIVE
+ #include <QtGui/private/qrhid3d12_p.h>
++#if (QT_VERSION < QT_VERSION_CHECK(6, 7, 0)) || defined(QRHI_D3D12_AVAILABLE)
++#define QRhiD3D12_ACTIVE
++#endif
+ #endif
+ 
+ #endif
+diff --git a/modules/gui/qt/maininterface/interface_window_handler.cpp b/modules/gui/qt/maininterface/interface_window_handler.cpp
+index ee73fb678765..3a23ea4d715e 100644
+--- a/modules/gui/qt/maininterface/interface_window_handler.cpp
++++ b/modules/gui/qt/maininterface/interface_window_handler.cpp
+@@ -67,7 +67,7 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
+ 
+         if (m_mainCtx->isHideAfterCreation())
+             m_window->hide();
+-    }, Qt::QueuedConnection, nullptr);
++    }, Qt::QueuedConnection);
+ 
+     m_window->setTitle("");
+ 
+diff --git a/modules/gui/qt/player/player_controller_p.hpp b/modules/gui/qt/player/player_controller_p.hpp
+index 92ae12a9cf5c..8c8059d4394d 100644
+--- a/modules/gui/qt/player/player_controller_p.hpp
++++ b/modules/gui/qt/player/player_controller_p.hpp
+@@ -59,7 +59,11 @@ public:
+     void callAsync(Fun&& fun)
+     {
+         Q_Q(PlayerController);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
++        QMetaObject::invokeMethod(q, [fun = std::forward<Fun>(fun)]() -> void* { fun(); return nullptr; }, Qt::QueuedConnection);
++#else
+         QMetaObject::invokeMethod(q, std::forward<Fun>(fun), Qt::QueuedConnection, nullptr);
++#endif
+     }
+ 
+ public:
+diff --git a/modules/gui/qt/playlist/playlist_controller_p.hpp b/modules/gui/qt/playlist/playlist_controller_p.hpp
+index 38e985e65cd4..c758ce4322fd 100644
+--- a/modules/gui/qt/playlist/playlist_controller_p.hpp
++++ b/modules/gui/qt/playlist/playlist_controller_p.hpp
+@@ -42,7 +42,11 @@ public:
+     inline void callAsync(Fun&& fun)
+     {
+         Q_Q(PlaylistController);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
++        QMetaObject::invokeMethod(q, [fun = std::forward<Fun>(fun)]() -> void* { fun(); return nullptr; }, Qt::QueuedConnection);
++#else
+         QMetaObject::invokeMethod(q, std::forward<Fun>(fun), Qt::QueuedConnection, nullptr);
++#endif
+     }
+ 
+     //playlist
+diff --git a/modules/gui/qt/playlist/playlist_model_p.hpp b/modules/gui/qt/playlist/playlist_model_p.hpp
+index 4f0acd14f530..ff86ffaa286b 100644
+--- a/modules/gui/qt/playlist/playlist_model_p.hpp
++++ b/modules/gui/qt/playlist/playlist_model_p.hpp
+@@ -41,7 +41,11 @@ public:
+     inline void callAsync(Fun&& fun)
+     {
+         Q_Q(PlaylistListModel);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
++        QMetaObject::invokeMethod(q, [fun = std::forward<Fun>(fun)]() -> void* { fun(); return nullptr; }, Qt::QueuedConnection);
++#else
+         QMetaObject::invokeMethod(q, std::forward<Fun>(fun), Qt::QueuedConnection, nullptr);
++#endif
+     }
+ 
+     void onItemsReset(const QVector<PlaylistItem>& items);
+diff --git a/modules/gui/qt/plugins.hpp b/modules/gui/qt/plugins.hpp
+index d817162c2268..2a84597db862 100644
+--- a/modules/gui/qt/plugins.hpp
++++ b/modules/gui/qt/plugins.hpp
+@@ -61,7 +61,11 @@
+     Q_IMPORT_QML_PLUGIN(QtQmlMetaPlugin)
+ 
+ #ifdef _WIN32
++#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
++    Q_IMPORT_PLUGIN(QModernWindowsStylePlugin)
++#else
+     Q_IMPORT_PLUGIN(QWindowsVistaStylePlugin)
++#endif
+     Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
+     Q_IMPORT_QML_PLUGIN(QtQuickControls2WindowsStylePlugin)
+     Q_IMPORT_QML_PLUGIN(QtQuickControls2NativeStylePlugin)
+diff --git a/modules/gui/qt/qt.cpp b/modules/gui/qt/qt.cpp
+index e622422858fb..c662d8a5f0f6 100644
+--- a/modules/gui/qt/qt.cpp
++++ b/modules/gui/qt/qt.cpp
+@@ -780,11 +780,19 @@ static void *Thread( void *obj )
+     Q_INIT_RESOURCE( qmake_QtQuick_Layouts );
+     Q_INIT_RESOURCE( qmake_QtQuick_Templates );
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
++    Q_INIT_RESOURCE( QuickControls2FusionStyleImpl_raw_qml_0 );
++    Q_INIT_RESOURCE( QuickControls2Fusion_raw_qml_0 );
++    Q_INIT_RESOURCE( qtquickcontrols2fusionstyle );
++    Q_INIT_RESOURCE( QuickControls2Basic_raw_qml_0 );
++    Q_INIT_RESOURCE( qtquickcontrols2basicstyle );
++#else
+     Q_INIT_RESOURCE( qtquickcontrols2fusionstyleimplplugin_raw_qml_0 );
+     Q_INIT_RESOURCE( qtquickcontrols2fusionstyleplugin_raw_qml_0 );
+     Q_INIT_RESOURCE( qtquickcontrols2fusionstyle );
+     Q_INIT_RESOURCE( qtquickcontrols2basicstyleplugin_raw_qml_0 );
+     Q_INIT_RESOURCE( qtquickcontrols2basicstyleplugin );
++#endif
+ 
+     Q_INIT_RESOURCE( qtgraphicaleffectsplugin_raw_qml_0 );
+     Q_INIT_RESOURCE( qtgraphicaleffectsprivate_raw_qml_0 );
+diff --git a/modules/gui/qt/util/audio_device_model.cpp b/modules/gui/qt/util/audio_device_model.cpp
+index 5dee16bd631e..7cdebaf28919 100644
+--- a/modules/gui/qt/util/audio_device_model.cpp
++++ b/modules/gui/qt/util/audio_device_model.cpp
+@@ -28,7 +28,7 @@ static void on_player_aout_device_changed(audio_output_t *,const char *device, v
+     AudioDeviceModel* that = static_cast<AudioDeviceModel*>(data);
+     QMetaObject::invokeMethod(that, [that, device=QString::fromUtf8(device)](){
+         that->updateCurrent(device);
+-    }, Qt::QueuedConnection, nullptr);
++    }, Qt::QueuedConnection);
+ }
+ 
+ }
+-- 
+GitLab
+
+
+From 07958a6475eb388b309caf0f749087378662dbe1 Mon Sep 17 00:00:00 2001
+From: Fatih Uzunoglu <fuzun54@outlook.com>
+Date: Thu, 4 Apr 2024 21:40:52 +0300
+Subject: [PATCH 2/7] contrib: qtbase: use the version variable for pkg check
+
+---
+ contrib/src/qt/rules.mak | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/src/qt/rules.mak b/contrib/src/qt/rules.mak
+index 445fdc1eba4c..34276233fb10 100644
+--- a/contrib/src/qt/rules.mak
++++ b/contrib/src/qt/rules.mak
+@@ -22,7 +22,7 @@ ifdef HAVE_WIN32
+ DEPS_qt += d3d12 $(DEPS_d3d12) dcomp $(DEPS_dcomp)
+ endif
+ 
+-ifeq ($(call need_pkg,"Qt6Core >= 6.6 Qt6Gui >= 6.6 Qt6Widgets >= 6.6 Qt6Network >= 6.6"),)
++ifeq ($(call need_pkg,"Qt6Core >= $(QTBASE_VERSION_MAJOR) Qt6Gui >= $(QTBASE_VERSION_MAJOR) Qt6Widgets >= $(QTBASE_VERSION_MAJOR)"),)
+ PKGS_FOUND += qt
+ endif
+ ifndef HAVE_CROSS_COMPILE
+-- 
+GitLab
+
+
+From 8d6d53df8dcfe977468d3b68bc5431effbcc8c73 Mon Sep 17 00:00:00 2001
+From: Fatih Uzunoglu <fuzun54@outlook.com>
+Date: Thu, 4 Apr 2024 21:40:52 +0300
+Subject: [PATCH 3/7] contrib: qtsvg: use the version variable for pkg check
+
+---
+ contrib/src/qtsvg/rules.mak | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/src/qtsvg/rules.mak b/contrib/src/qtsvg/rules.mak
+index b3905579673c..4c64a7901849 100644
+--- a/contrib/src/qtsvg/rules.mak
++++ b/contrib/src/qtsvg/rules.mak
+@@ -10,7 +10,7 @@ ifdef HAVE_WIN32
+ PKGS += qtsvg
+ endif
+ 
+-ifeq ($(call need_pkg,"Qt6Svg >= 6.6"),)
++ifeq ($(call need_pkg,"Qt6Svg >= $(QTSVG_VERSION_MAJOR)"),)
+ PKGS_FOUND += qtsvg
+ endif
+ 
+-- 
+GitLab
+
+
+From 8b7fcff88ef07af7159c4880e4c9b0b1f8c7954c Mon Sep 17 00:00:00 2001
+From: Fatih Uzunoglu <fuzun54@outlook.com>
+Date: Thu, 4 Apr 2024 21:40:52 +0300
+Subject: [PATCH 4/7] contrib: qtshadertools: use the version variable for pkg
+ check
+
+---
+ contrib/src/qtshadertools/rules.mak | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/src/qtshadertools/rules.mak b/contrib/src/qtshadertools/rules.mak
+index 9b86f3c45d8d..bdb0eab67d51 100644
+--- a/contrib/src/qtshadertools/rules.mak
++++ b/contrib/src/qtshadertools/rules.mak
+@@ -23,7 +23,7 @@ PKGS_TOOLS += qtshadertools-tools
+ endif
+ PKGS_ALL += qtshadertools-tools
+ 
+-ifeq ($(call need_pkg,"Qt6ShaderTools >= 6.6"),)
++ifeq ($(call need_pkg,"Qt6ShaderTools >= $(QTSHADERTOOLS_VERSION_MAJOR)"),)
+ PKGS_FOUND += qtshadertools
+ endif
+ ifndef HAVE_CROSS_COMPILE
+-- 
+GitLab
+
+
+From 908ec7f845f4458c0be85972d4e41f7388d5c5ed Mon Sep 17 00:00:00 2001
+From: Fatih Uzunoglu <fuzun54@outlook.com>
+Date: Thu, 4 Apr 2024 21:40:52 +0300
+Subject: [PATCH 5/7] contrib: qtdeclarative: use the version variable for pkg
+ check
+
+---
+ contrib/src/qtdeclarative/rules.mak | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/src/qtdeclarative/rules.mak b/contrib/src/qtdeclarative/rules.mak
+index 084c1111afef..6ac7065f40c2 100644
+--- a/contrib/src/qtdeclarative/rules.mak
++++ b/contrib/src/qtdeclarative/rules.mak
+@@ -19,7 +19,7 @@ PKGS_TOOLS += qtdeclarative-tools
+ endif
+ PKGS_ALL += qtdeclarative-tools
+ 
+-ifeq ($(call need_pkg,"Qt6Qml >= 6.6 Qt6Quick >= 6.6 Qt6QuickControls2 >= 6.6 Qt6QuickDialogs2 >= 6.6 Qt6QuickLayouts >= 6.6"),)
++ifeq ($(call need_pkg,"Qt6Qml >= $(QTDECLARATIVE_VERSION_MAJOR) Qt6Quick >= $(QTDECLARATIVE_VERSION_MAJOR) Qt6QuickControls2 >= $(QTDECLARATIVE_VERSION_MAJOR) Qt6QuickLayouts >= $(QTDECLARATIVE_VERSION_MAJOR) Qt6QmlWorkerScript >= $(QTDECLARATIVE_VERSION_MAJOR)"),)
+ PKGS_FOUND += qtdeclarative
+ endif
+ ifndef HAVE_CROSS_COMPILE
+-- 
+GitLab
+
+
+From 9c5f47b039752f68326210c0287e333f030911df Mon Sep 17 00:00:00 2001
+From: Fatih Uzunoglu <fuzun54@outlook.com>
+Date: Thu, 4 Apr 2024 21:40:52 +0300
+Subject: [PATCH 6/7] contrib: qt5compat: use the version variable for pkg
+ check
+
+---
+ contrib/src/qt5compat/rules.mak | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/src/qt5compat/rules.mak b/contrib/src/qt5compat/rules.mak
+index 0c2f37d44aea..e0b718b87835 100644
+--- a/contrib/src/qt5compat/rules.mak
++++ b/contrib/src/qt5compat/rules.mak
+@@ -10,7 +10,7 @@ ifdef HAVE_WIN32
+ PKGS += qt5compat
+ endif
+ 
+-ifeq ($(call need_pkg,"Qt6Core5Compat >= 6.6"),)
++ifeq ($(call need_pkg,"Qt6Core5Compat >= $(QT5COMPAT_VERSION_MAJOR)"),)
+ PKGS_FOUND += qt5compat
+ endif
+ 
+-- 
+GitLab
+
+
+From 0b38081e6c8b187afd2a9420e613a2836feb42d6 Mon Sep 17 00:00:00 2001
+From: Fatih Uzunoglu <fuzun54@outlook.com>
+Date: Thu, 4 Apr 2024 21:40:52 +0300
+Subject: [PATCH 7/7] contrib: update to Qt 6.7.0
+
+---
+ ...urces-into-static-libraries-not-obje.patch | 399 ------------------
+ ... 0001-Windows-Tray-Icon-Set-NOSOUND.patch} |  10 +-
+ ...-pkgconfig-pc-files-in-static-build.patch} |   6 +-
+ ...Revert-QMutex-remove-qmutex_win.cpp.patch} |  20 +-
+ ...4-Expose-QRhiImplementation-in-QRhi.patch} |  10 +-
+ ...lude-D3D12MemAlloc.h-in-header-file.patch} |  24 +-
+ ...ionCreateDevice3-first-if-available.patch} |  18 +-
+ ...-to-satisfy-Windows-7-compatibility.patch} | 317 +++++++++-----
+ contrib/src/qt/SHA512SUMS                     |   2 +-
+ contrib/src/qt/rules.mak                      |  19 +-
+ contrib/src/qt5compat/SHA512SUMS              |   2 +-
+ contrib/src/qt5compat/rules.mak               |   4 +-
+ ...0001-Fix-incorrect-library-inclusion.patch |   6 +-
+ ...02-Fix-build-with-no-feature-network.patch |  27 ++
+ .../0003-Disable-svgtoqml-tool.patch          |  27 ++
+ contrib/src/qtdeclarative/SHA512SUMS          |   2 +-
+ contrib/src/qtdeclarative/rules.mak           |   6 +-
+ ...Use-fxc2-through-wine-instead-of-fxc.patch |  19 +-
+ contrib/src/qtshadertools/SHA512SUMS          |   2 +-
+ contrib/src/qtshadertools/rules.mak           |   4 +-
+ contrib/src/qtsvg/SHA512SUMS                  |   2 +-
+ contrib/src/qtsvg/rules.mak                   |   4 +-
+ contrib/src/qtvlcdeps/vlcdeps.pro             |   2 +-
+ contrib/src/qtwayland/SHA512SUMS              |   2 +-
+ contrib/src/qtwayland/rules.mak               |   4 +-
+ 25 files changed, 358 insertions(+), 580 deletions(-)
+ delete mode 100644 contrib/src/qt/0001-CMake-Place-resources-into-static-libraries-not-obje.patch
+ rename contrib/src/qt/{0002-Windows-Tray-Icon-Set-NOSOUND.patch => 0001-Windows-Tray-Icon-Set-NOSOUND.patch} (77%)
+ rename contrib/src/qt/{0003-Try-to-generate-pkgconfig-pc-files-in-static-build.patch => 0002-Try-to-generate-pkgconfig-pc-files-in-static-build.patch} (86%)
+ rename contrib/src/qt/{0004-Revert-QMutex-remove-qmutex_win.cpp.patch => 0003-Revert-QMutex-remove-qmutex_win.cpp.patch} (90%)
+ rename contrib/src/qt/{0005-Expose-QRhiImplementation-in-QRhi.patch => 0004-Expose-QRhiImplementation-in-QRhi.patch} (70%)
+ rename contrib/src/qt/{0006-Do-not-include-D3D12MemAlloc.h-in-header-file.patch => 0005-Do-not-include-D3D12MemAlloc.h-in-header-file.patch} (77%)
+ rename contrib/src/qt/{0007-Try-DCompositionCreateDevice3-first-if-available.patch => 0006-Try-DCompositionCreateDevice3-first-if-available.patch} (71%)
+ rename contrib/src/qt/{0008-Try-to-satisfy-Windows-7-compatibility.patch => 0007-Try-to-satisfy-Windows-7-compatibility.patch} (84%)
+ create mode 100644 contrib/src/qtdeclarative/0002-Fix-build-with-no-feature-network.patch
+ create mode 100644 contrib/src/qtdeclarative/0003-Disable-svgtoqml-tool.patch
+
+diff --git a/contrib/src/qt/0001-CMake-Place-resources-into-static-libraries-not-obje.patch b/contrib/src/qt/0001-CMake-Place-resources-into-static-libraries-not-obje.patch
+deleted file mode 100644
+index 31276889fde5..000000000000
+--- a/contrib/src/qt/0001-CMake-Place-resources-into-static-libraries-not-obje.patch
++++ /dev/null
+@@ -1,399 +0,0 @@
+-From 2285a32c5ed2fe874ef13e9828e5f31d1c067001 Mon Sep 17 00:00:00 2001
+-From: Alexandru Croitor <alexandru.croitor@qt.io>
+-Date: Mon, 17 Apr 2023 13:36:27 +0200
+-Subject: [PATCH 1/8] CMake: Place resources into static libraries, not object
+- libraries
+-
+-Take 2.
+-Re-land previously reverted commit, due to not handling resource names
+-that are not valid c++ identifiers. Now we sanitize the resource names
+-just like rcc does by replacing non-alphanumeric characters with
+-underscores.
+-
+-Original commit message.
+-
+-During the Qt 5 -> Qt 6 and qmake -> CMake porting time frame, it was
+-decided to keep resources in an object file (object library), rather
+-than putting them directly into a static library when doing a static
+-Qt build, so that the build system can take care of linking the
+-object file directly into the executable and thus not forcing
+-project developers to manually initialize resources with
+-the Q_INIT_RESOURCE() macro in project code.
+-
+-This worked for most qmake and cmake projects, but it created
+-difficulties for other build systems, in the sense that these projects
+-would have to manually link to the resource object files, otherwise
+-they would get link time errors about undefined resource symbols,
+-assuming they kept the Q_INIT_RESOURCE() calls.
+-If the project code didn't contain Q_INIT_RESOURCE calls, the
+-situation would be even worse, the linker would not error out,
+-and the missing resources would only be discovered at runtime.
+-
+-It's also an issue in CMake projects that try to link to the
+-library files directly instead of using the library target names,
+-which means the object files would not be automatically linked in.
+-Many projects try to do that because we don't yet offer a convenient
+-way to install libraries and reuse them in other projects (the SDK
+-case), so projects end up shipping only the libraries, without the
+-resource object files.
+-
+-We can improve the situation by moving the resources back into their
+-associated static libraries, and only keeping a static initializer as
+-a separate object file / object library, which references the actual
+-resource initializer symbol, to ensure it does not get discarded
+-during linking.
+-
+-This way, projects that link using targets get no behavior difference,
+-whereas projects linking to static libraries directly can still
+-successfully build as long as their sources have all the necessary
+-Q_INIT_RESOURCE calls.
+-
+-To ensure the resource symbols do not get discarded, we use a few new
+-private macros. We declare the resource init symbols we want to keep as
+-extern symbols and then assign the symbol addresses to volatile
+-variables.
+-This prevents discarding the symbols with the compilers / linkers we
+-care about.
+-
+-It comes at the cost of an additional static initializer per resource,
+-but we would get the same + a bigger performance hit if we just used
+-Q_INIT_RESOURCE twice (once in the object lib and once in project
+-code), which internally needs to traverse a linked list of all
+-resources to check if a resource was initialized or not.
+-
+-For GHS / Integrity, we also need to use a GHS-specific pragma to keep
+-the symbols, which we currently use in qtdeclarative to ensure qml
+-plugin symbols are not discarded.
+-
+-The same macros will be used in a qtdeclarative change to prevent
+-discarding of resources when linking to static qml plugins.
+-
+-A cmake-based test case is added to verify that linking to static
+-libraries directly, without linking to the resource initializer
+-object libraries, works fine as long as the project code calls
+-Q_INIT_RESOURCE for the relevant resource.
+-
+-This reverts commit bc88bb34caf1185a25eda77ee022843c0ca988b0.
+-
+-Fixes: QTBUG-91448
+-Task-number: QTBUG-110243
+-Change-Id: Idce69db0cf79d3e32916750bfa61774ced977a7e
+----
+- src/corelib/CMakeLists.txt                    |  2 +
+- src/corelib/Qt6CoreMacros.cmake               | 50 +++++++++++++-
+- src/corelib/Qt6CoreResourceInit.in.cpp        | 14 ++++
+- src/corelib/global/qtsymbolmacros.h           | 65 +++++++++++++++++++
+- tests/auto/cmake/CMakeLists.txt               |  1 +
+- .../CMakeLists.txt                            | 33 ++++++++++
+- .../helper_lib.cpp                            |  4 ++
+- .../test_resource_without_obj_lib/main.cpp    | 28 ++++++++
+- .../resource.txt                              |  1 +
+- 9 files changed, 195 insertions(+), 3 deletions(-)
+- create mode 100644 src/corelib/Qt6CoreResourceInit.in.cpp
+- create mode 100644 src/corelib/global/qtsymbolmacros.h
+- create mode 100644 tests/auto/cmake/test_resource_without_obj_lib/CMakeLists.txt
+- create mode 100644 tests/auto/cmake/test_resource_without_obj_lib/helper_lib.cpp
+- create mode 100644 tests/auto/cmake/test_resource_without_obj_lib/main.cpp
+- create mode 100644 tests/auto/cmake/test_resource_without_obj_lib/resource.txt
+-
+-diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
+-index 1296ff0408..dff023581c 100644
+---- a/src/corelib/CMakeLists.txt
+-+++ b/src/corelib/CMakeLists.txt
+-@@ -89,6 +89,7 @@ qt_internal_add_module(Core
+-         global/qtpreprocessorsupport.h
+-         global/qtrace_p.h
+-         global/qtresource.h
+-+        global/qtsymbolmacros.h
+-         global/qttranslation.h
+-         global/qttypetraits.h
+-         global/qtversionchecks.h
+-@@ -345,6 +346,7 @@ qt_internal_add_module(Core
+-     EXTRA_CMAKE_FILES
+-     "${CMAKE_CURRENT_SOURCE_DIR}/Qt6CTestMacros.cmake"
+-     "${CMAKE_CURRENT_SOURCE_DIR}/Qt6CoreConfigureFileTemplate.in"
+-+    "${CMAKE_CURRENT_SOURCE_DIR}/Qt6CoreResourceInit.in.cpp"
+-     "${CMAKE_CURRENT_SOURCE_DIR}/Qt6CoreDeploySupport.cmake"
+-     "${config_build_dir}/QtInstallPaths.cmake"
+-     ${corelib_extra_cmake_files}
+-diff --git a/src/corelib/Qt6CoreMacros.cmake b/src/corelib/Qt6CoreMacros.cmake
+-index e082e586a6..95dfc045fb 100644
+---- a/src/corelib/Qt6CoreMacros.cmake
+-+++ b/src/corelib/Qt6CoreMacros.cmake
+-@@ -1749,16 +1749,29 @@ function(__qt_propagate_generated_resource target resource_name generated_source
+-         math(EXPR resource_count "${resource_count} + 1")
+-         set_target_properties(${target} PROPERTIES _qt_generated_resource_target_count ${resource_count})
+- 
+-+        __qt_internal_generate_init_resource_source_file(
+-+            resource_init_file ${target} ${resource_name})
+-+
+-         set(resource_target "${target}_resources_${resource_count}")
+--        add_library("${resource_target}" OBJECT "${generated_source_code}")
+-+        add_library("${resource_target}" OBJECT "${resource_init_file}")
+-         set_target_properties(${resource_target} PROPERTIES
+-             AUTOMOC FALSE
+-             AUTOUIC FALSE
+-             AUTORCC FALSE
+-         )
+-+        # Needed so that qtsymbolmacros.h and its dependent headers are already created / syncqt'ed.
+-+        if(TARGET Core_sync_headers)
+-+            set(headers_available_target "Core_sync_headers")
+-+        else()
+-+            set(headers_available_target "${QT_CMAKE_EXPORT_NAMESPACE}::Core")
+-+        endif()
+-+        add_dependencies(${resource_target} ${headers_available_target})
+-         target_compile_definitions("${resource_target}" PRIVATE
+-             "$<TARGET_PROPERTY:${QT_CMAKE_EXPORT_NAMESPACE}::Core,INTERFACE_COMPILE_DEFINITIONS>"
+-         )
+-+        target_include_directories("${resource_target}" PRIVATE
+-+            "$<TARGET_PROPERTY:${QT_CMAKE_EXPORT_NAMESPACE}::Core,INTERFACE_INCLUDE_DIRECTORIES>"
+-+        )
+-         _qt_internal_set_up_static_runtime_library("${resource_target}")
+- 
+-         # Special handling is required for the Core library resources. The linking of the Core
+-@@ -1777,7 +1790,7 @@ function(__qt_propagate_generated_resource target resource_name generated_source
+-         #    .rcc/qrc_qprintdialog.cpp
+-         file(RELATIVE_PATH generated_cpp_file_relative_path
+-             "${CMAKE_CURRENT_BINARY_DIR}"
+--            "${generated_source_code}")
+-+            "${resource_init_file}")
+-         set_property(TARGET ${resource_target} APPEND PROPERTY
+-             _qt_resource_generated_cpp_relative_path "${generated_cpp_file_relative_path}")
+- 
+-@@ -1791,8 +1804,39 @@ function(__qt_propagate_generated_resource target resource_name generated_source
+-         set(${output_generated_target} "${resource_target}" PARENT_SCOPE)
+-     else()
+-         set(${output_generated_target} "" PARENT_SCOPE)
+--        target_sources(${target} PRIVATE ${generated_source_code})
+-     endif()
+-+
+-+    target_sources(${target} PRIVATE ${generated_source_code})
+-+endfunction()
+-+
+-+function(__qt_internal_sanitize_resource_name out_var name)
+-+    # The sanitized output should match RCCResourceLibrary::writeInitializer()'s
+-+    # isAsciiLetterOrNumber-based substituion.
+-+    # MAKE_C_IDENTIFIER matches that, it replaces non-alphanumeric chars with underscores.
+-+    string(MAKE_C_IDENTIFIER "${name}" sanitized_resource_name)
+-+    set(${out_var} "${sanitized_resource_name}" PARENT_SCOPE)
+-+endfunction()
+-+
+-+function(__qt_internal_generate_init_resource_source_file out_var target resource_name)
+-+    set(template_file "${__qt_core_macros_module_base_dir}/Qt6CoreResourceInit.in.cpp")
+-+
+-+    # Gets replaced in the template
+-+    __qt_internal_sanitize_resource_name(RESOURCE_NAME "${resource_name}")
+-+    set(resource_init_path "${CMAKE_CURRENT_BINARY_DIR}/.rcc/qrc_${resource_name}_init.cpp")
+-+
+-+    configure_file("${template_file}" "${resource_init_path}" @ONLY)
+-+
+-+    set(scope_args "")
+-+    if(CMAKE_VERSION VERSION_GREATER_EQUAL "3.18")
+-+        set(scope_args TARGET_DIRECTORY ${target})
+-+    endif()
+-+    set_source_files_properties(${resource_init_path} ${scope_args} PROPERTIES
+-+        SKIP_AUTOGEN TRUE
+-+        SKIP_UNITY_BUILD_INCLUSION TRUE
+-+        SKIP_PRECOMPILE_HEADERS TRUE
+-+    )
+-+
+-+    set(${out_var} "${resource_init_path}" PARENT_SCOPE)
+- endfunction()
+- 
+- # Make file visible in IDEs.
+-diff --git a/src/corelib/Qt6CoreResourceInit.in.cpp b/src/corelib/Qt6CoreResourceInit.in.cpp
+-new file mode 100644
+-index 0000000000..0234ec8232
+---- /dev/null
+-+++ b/src/corelib/Qt6CoreResourceInit.in.cpp
+-@@ -0,0 +1,14 @@
+-+// Copyright (C) 2023 The Qt Company Ltd.
+-+// SPDX-License-Identifier: BSD-3-Clause
+-+
+-+// This file was generated by the qt_add_resources command.
+-+
+-+#include <QtCore/qtsymbolmacros.h>
+-+
+-+QT_DECLARE_EXTERN_RESOURCE(@RESOURCE_NAME@);
+-+
+-+namespace {
+-+    struct resourceReferenceKeeper {
+-+        resourceReferenceKeeper() { QT_KEEP_RESOURCE(@RESOURCE_NAME@); }
+-+    } resourceReferenceKeeperInstance;
+-+}
+-diff --git a/src/corelib/global/qtsymbolmacros.h b/src/corelib/global/qtsymbolmacros.h
+-new file mode 100644
+-index 0000000000..18cdc85f72
+---- /dev/null
+-+++ b/src/corelib/global/qtsymbolmacros.h
+-@@ -0,0 +1,65 @@
+-+// Copyright (C) 2023 The Qt Company Ltd.
+-+// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+-+
+-+#ifndef QTSYMBOLMACROS_H
+-+#define QTSYMBOLMACROS_H
+-+
+-+#if 0
+-+#  pragma qt_sync_stop_processing
+-+#endif
+-+
+-+// For GHS symbol keeping.
+-+#include <QtCore/qcompilerdetection.h>
+-+#include <QtCore/qtpreprocessorsupport.h>
+-+
+-+// For handling namespaced resources.
+-+#ifdef QT_NAMESPACE
+-+#  define QT_RCC_MANGLE_NAMESPACE0(x) x
+-+#  define QT_RCC_MANGLE_NAMESPACE1(a, b) a##_##b
+-+#  define QT_RCC_MANGLE_NAMESPACE2(a, b) QT_RCC_MANGLE_NAMESPACE1(a,b)
+-+#  define QT_RCC_MANGLE_NAMESPACE(name) QT_RCC_MANGLE_NAMESPACE2( \
+-+        QT_RCC_MANGLE_NAMESPACE0(name), QT_RCC_MANGLE_NAMESPACE0(QT_NAMESPACE))
+-+#else
+-+#   define QT_RCC_MANGLE_NAMESPACE(name) name
+-+#endif
+-+
+-+// GHS needs special handling to keep a symbol around.
+-+#if defined(Q_CC_GHS)
+-+#  define Q_GHS_KEEP_REFERENCE(S) QT_DO_PRAGMA(ghs reference S ##__Fv)
+-+#else
+-+#  define Q_GHS_KEEP_REFERENCE(S)
+-+#endif
+-+
+-+// Macros to ensure a symbol is not dropped by the linker even if it's not used.
+-+#define QT_DECLARE_EXTERN_SYMBOL(NAME, RETURN_TYPE) \
+-+    extern RETURN_TYPE NAME(); \
+-+    Q_GHS_KEEP_REFERENCE(NAME)
+-+
+-+#define QT_DECLARE_EXTERN_SYMBOL_INT(NAME) \
+-+    QT_DECLARE_EXTERN_SYMBOL(NAME, int)
+-+
+-+#define QT_DECLARE_EXTERN_SYMBOL_VOID(NAME) \
+-+    QT_DECLARE_EXTERN_SYMBOL(NAME, void)
+-+
+-+#define QT_KEEP_SYMBOL_VAR_NAME(NAME) NAME ## _keep
+-+
+-+#define QT_KEEP_SYMBOL_HELPER(NAME, VAR_NAME) \
+-+    volatile auto VAR_NAME = &NAME; \
+-+    Q_UNUSED(VAR_NAME)
+-+
+-+#define QT_KEEP_SYMBOL(NAME) \
+-+    QT_KEEP_SYMBOL_HELPER(NAME, QT_KEEP_SYMBOL_VAR_NAME(NAME))
+-+
+-+
+-+// Similar to the ones above, but for rcc resource symbols specifically.
+-+#define QT_GET_RESOURCE_INIT_SYMBOL(NAME) \
+-+    QT_RCC_MANGLE_NAMESPACE(qInitResources_ ## NAME)
+-+
+-+#define QT_DECLARE_EXTERN_RESOURCE(NAME) \
+-+    QT_DECLARE_EXTERN_SYMBOL_INT(QT_GET_RESOURCE_INIT_SYMBOL(NAME))
+-+
+-+#define QT_KEEP_RESOURCE(NAME) \
+-+    QT_KEEP_SYMBOL(QT_GET_RESOURCE_INIT_SYMBOL(NAME))
+-+
+-+#endif // QTSYMBOLMACROS_H
+-+
+-diff --git a/tests/auto/cmake/CMakeLists.txt b/tests/auto/cmake/CMakeLists.txt
+-index 975cc6fc7d..1ce6f8a020 100644
+---- a/tests/auto/cmake/CMakeLists.txt
+-+++ b/tests/auto/cmake/CMakeLists.txt
+-@@ -222,6 +222,7 @@ _qt_internal_test_expect_pass(test_multiple_find_package)
+- _qt_internal_test_expect_pass(test_add_resources_delayed_file)
+- _qt_internal_test_expect_pass(test_add_binary_resources_delayed_file BINARY test_add_binary_resources_delayed_file)
+- _qt_internal_test_expect_pass(test_qt_add_resources_rebuild)
+-+_qt_internal_test_expect_pass(test_resource_without_obj_lib BINARY test_resource_without_obj_lib)
+- 
+- if(NOT NO_GUI)
+-     _qt_internal_test_expect_pass(test_private_includes)
+-diff --git a/tests/auto/cmake/test_resource_without_obj_lib/CMakeLists.txt b/tests/auto/cmake/test_resource_without_obj_lib/CMakeLists.txt
+-new file mode 100644
+-index 0000000000..16563141f4
+---- /dev/null
+-+++ b/tests/auto/cmake/test_resource_without_obj_lib/CMakeLists.txt
+-@@ -0,0 +1,33 @@
+-+# Copyright (C) 2023 The Qt Company Ltd.
+-+# SPDX-License-Identifier: BSD-3-Clause
+-+
+-+cmake_minimum_required(VERSION 3.16)
+-+
+-+project(test_resource_without_obj_lib)
+-+
+-+if (EXISTS "${CMAKE_CURRENT_LIST_DIR}/FindPackageHints.cmake")
+-+    include("${CMAKE_CURRENT_LIST_DIR}/FindPackageHints.cmake")
+-+endif()
+-+
+-+find_package(Qt6 REQUIRED
+-+    COMPONENTS Core Test
+-+    HINTS ${Qt6Tests_PREFIX_PATH}
+-+)
+-+
+-+qt6_add_library(helper_lib STATIC helper_lib.cpp)
+-+qt6_add_resources(helper_lib "helper_res" FILES resource.txt PREFIX "/")
+-+
+-+# Link to Core, to ensure both the helper_lib and the main executable
+-+# inherit the QT_NAMESPACE if it is set, otherwise we get undefined
+-+# linker errors due to the mismatch in symbol names.
+-+target_link_libraries(helper_lib PRIVATE Qt6::Core)
+-+
+-+set(CMAKE_AUTOMOC ON)
+-+
+-+qt6_add_executable(test_resource_without_obj_lib main.cpp)
+-+target_link_libraries(test_resource_without_obj_lib PRIVATE Qt6::Core Qt6::Test)
+-+
+-+# Link against the library file and not the target, so that we can confirm
+-+# the ability to manually initialize the resource via Q_INIT_RESOURCE.
+-+target_link_libraries(test_resource_without_obj_lib PRIVATE $<TARGET_FILE:helper_lib>)
+-+
+-diff --git a/tests/auto/cmake/test_resource_without_obj_lib/helper_lib.cpp b/tests/auto/cmake/test_resource_without_obj_lib/helper_lib.cpp
+-new file mode 100644
+-index 0000000000..18371786a9
+---- /dev/null
+-+++ b/tests/auto/cmake/test_resource_without_obj_lib/helper_lib.cpp
+-@@ -0,0 +1,4 @@
+-+// Copyright (C) 2023 The Qt Company Ltd.
+-+// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+-+
+-+void nothing() {}
+-diff --git a/tests/auto/cmake/test_resource_without_obj_lib/main.cpp b/tests/auto/cmake/test_resource_without_obj_lib/main.cpp
+-new file mode 100644
+-index 0000000000..29ea0f7272
+---- /dev/null
+-+++ b/tests/auto/cmake/test_resource_without_obj_lib/main.cpp
+-@@ -0,0 +1,28 @@
+-+// Copyright (C) 2023 The Qt Company Ltd.
+-+// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+-+
+-+#include <QtCore/qtresource.h>
+-+#include <QtTest/QtTest>
+-+
+-+class TestManualResourceInit : public QObject
+-+{
+-+    Q_OBJECT
+-+private slots:
+-+    void initTestCase();
+-+    void resourceExistsAfterManualInit();
+-+};
+-+
+-+void TestManualResourceInit::initTestCase()
+-+{
+-+    // Manually initialize the resource like we used to do it in qt5 + qmake times.
+-+    Q_INIT_RESOURCE(helper_res);
+-+}
+-+
+-+void TestManualResourceInit::resourceExistsAfterManualInit()
+-+{
+-+    QVERIFY(QFile::exists(":/resource.txt"));
+-+}
+-+
+-+QTEST_MAIN(TestManualResourceInit)
+-+#include "main.moc"
+-+
+-diff --git a/tests/auto/cmake/test_resource_without_obj_lib/resource.txt b/tests/auto/cmake/test_resource_without_obj_lib/resource.txt
+-new file mode 100644
+-index 0000000000..7804a324a4
+---- /dev/null
+-+++ b/tests/auto/cmake/test_resource_without_obj_lib/resource.txt
+-@@ -0,0 +1 @@
+-+Test resource
+--- 
+-2.43.1
+-
+diff --git a/contrib/src/qt/0002-Windows-Tray-Icon-Set-NOSOUND.patch b/contrib/src/qt/0001-Windows-Tray-Icon-Set-NOSOUND.patch
+similarity index 77%
+rename from contrib/src/qt/0002-Windows-Tray-Icon-Set-NOSOUND.patch
+rename to contrib/src/qt/0001-Windows-Tray-Icon-Set-NOSOUND.patch
+index 2c76c1d4bb6c..ee892753ae69 100644
+--- a/contrib/src/qt/0002-Windows-Tray-Icon-Set-NOSOUND.patch
++++ b/contrib/src/qt/0001-Windows-Tray-Icon-Set-NOSOUND.patch
+@@ -1,17 +1,17 @@
+-From d05eac31981d69c4b29aaf38f9f0addb2b549fae Mon Sep 17 00:00:00 2001
++From 846a13b3703dc4bac6f7a9f3bbb6aa31fa5660f7 Mon Sep 17 00:00:00 2001
+ From: Fatih Uzunoglu <fuzun54@outlook.com>
+ Date: Tue, 9 Jan 2024 20:59:45 +0200
+-Subject: [PATCH 2/8] Windows Tray Icon Set NOSOUND
++Subject: [PATCH 1/7] Windows Tray Icon Set NOSOUND
+ 
+ ---
+  src/plugins/platforms/windows/qwindowssystemtrayicon.cpp | 3 +++
+  1 file changed, 3 insertions(+)
+ 
+ diff --git a/src/plugins/platforms/windows/qwindowssystemtrayicon.cpp b/src/plugins/platforms/windows/qwindowssystemtrayicon.cpp
+-index acad849a3d..fae00c2081 100644
++index ed88e250a2..835487a818 100644
+ --- a/src/plugins/platforms/windows/qwindowssystemtrayicon.cpp
+ +++ b/src/plugins/platforms/windows/qwindowssystemtrayicon.cpp
+-@@ -214,6 +214,9 @@ void QWindowsSystemTrayIcon::showMessage(const QString &title, const QString &me
++@@ -216,6 +216,9 @@ void QWindowsSystemTrayIcon::showMessage(const QString &title, const QString &me
+      qStringToLimitedWCharArray(message, tnd.szInfo, 256);
+      qStringToLimitedWCharArray(title, tnd.szInfoTitle, 64);
+  
+@@ -22,5 +22,5 @@ index acad849a3d..fae00c2081 100644
+  
+      const auto size = icon.actualSize(QSize(256, 256));
+ -- 
+-2.43.1
++2.44.0
+ 
+diff --git a/contrib/src/qt/0003-Try-to-generate-pkgconfig-pc-files-in-static-build.patch b/contrib/src/qt/0002-Try-to-generate-pkgconfig-pc-files-in-static-build.patch
+similarity index 86%
+rename from contrib/src/qt/0003-Try-to-generate-pkgconfig-pc-files-in-static-build.patch
+rename to contrib/src/qt/0002-Try-to-generate-pkgconfig-pc-files-in-static-build.patch
+index cdec53fd8312..dd60ae536fac 100644
+--- a/contrib/src/qt/0003-Try-to-generate-pkgconfig-pc-files-in-static-build.patch
++++ b/contrib/src/qt/0002-Try-to-generate-pkgconfig-pc-files-in-static-build.patch
+@@ -1,7 +1,7 @@
+-From d9d290432bfc482ba970bf215f1dcec59fa7da01 Mon Sep 17 00:00:00 2001
++From 25f81e4e301efa03c4b72eda8ea10249f2779b55 Mon Sep 17 00:00:00 2001
+ From: Fatih Uzunoglu <fuzun54@outlook.com>
+ Date: Mon, 8 Jan 2024 21:52:41 +0200
+-Subject: [PATCH 3/8] Try to generate pkgconfig pc files in static build
++Subject: [PATCH 2/7] Try to generate pkgconfig pc files in static build
+ 
+ ---
+  cmake/QtPkgConfigHelpers.cmake | 7 ++++---
+@@ -26,5 +26,5 @@ index dbe736c438..caacd4e8ed 100644
+      set(pkgconfig_file "${QT_CMAKE_EXPORT_NAMESPACE}${module}")
+      set(pkgconfig_name "${QT_CMAKE_EXPORT_NAMESPACE} ${module}")
+ -- 
+-2.43.1
++2.44.0
+ 
+diff --git a/contrib/src/qt/0004-Revert-QMutex-remove-qmutex_win.cpp.patch b/contrib/src/qt/0003-Revert-QMutex-remove-qmutex_win.cpp.patch
+similarity index 90%
+rename from contrib/src/qt/0004-Revert-QMutex-remove-qmutex_win.cpp.patch
+rename to contrib/src/qt/0003-Revert-QMutex-remove-qmutex_win.cpp.patch
+index 7fbfa1d71c94..51d405bcfc94 100644
+--- a/contrib/src/qt/0004-Revert-QMutex-remove-qmutex_win.cpp.patch
++++ b/contrib/src/qt/0003-Revert-QMutex-remove-qmutex_win.cpp.patch
+@@ -1,7 +1,7 @@
+-From 13ced07c50bc04b7f67001aa6521aee09f3cbfb8 Mon Sep 17 00:00:00 2001
++From a566b1d5192a99b41ae13706668b7c8bf786e204 Mon Sep 17 00:00:00 2001
+ From: Fatih Uzunoglu <fuzun54@outlook.com>
+ Date: Sun, 14 Jan 2024 23:34:29 +0200
+-Subject: [PATCH 4/8] Revert "QMutex: remove qmutex_win.cpp"
++Subject: [PATCH 3/7] Revert "QMutex: remove qmutex_win.cpp"
+ 
+ This reverts commit b6e30e9fee98f9cdfec4c54c980864f65632519c.
+ ---
+@@ -15,18 +15,18 @@ This reverts commit b6e30e9fee98f9cdfec4c54c980864f65632519c.
+  create mode 100644 src/corelib/thread/qmutex_win.cpp
+ 
+ diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
+-index dff023581c..d43ece2b9f 100644
++index bf24eec2cf..4809e32766 100644
+ --- a/src/corelib/CMakeLists.txt
+ +++ b/src/corelib/CMakeLists.txt
+-@@ -499,6 +499,7 @@ qt_internal_extend_target(Core CONDITION QT_FEATURE_animation
+- # from the wrong DLL at runtime and crash!
++@@ -524,6 +524,7 @@ qt_internal_extend_target(Core CONDITION QT_FEATURE_animation
+  qt_internal_extend_target(Core CONDITION QT_FEATURE_thread AND WIN32
+      SOURCES
++         thread/qfutex_win_p.h
+ +        thread/qmutex_win.cpp
+          thread/qwaitcondition_win.cpp
+      LIBRARIES
+          synchronization
+-@@ -1313,6 +1314,7 @@ qt_internal_extend_target(Core CONDITION QT_FEATURE_ctf AND QT_FEATURE_library
++@@ -1362,6 +1363,7 @@ qt_internal_extend_target(Core CONDITION QT_FEATURE_ctf
+  set_source_files_properties(
+      thread/qmutex_mac.cpp
+      thread/qmutex_unix.cpp
+@@ -53,10 +53,10 @@ index 9fa7e70da9..0c205fff66 100644
+  // We mean it.
+  //
+ diff --git a/src/corelib/thread/qmutex.cpp b/src/corelib/thread/qmutex.cpp
+-index b794d79e23..1a30b25ad5 100644
++index ec6c711a4f..97ccbdf3a4 100644
+ --- a/src/corelib/thread/qmutex.cpp
+ +++ b/src/corelib/thread/qmutex.cpp
+-@@ -913,10 +913,12 @@ void QMutexPrivate::derefWaiters(int value) noexcept
++@@ -908,10 +908,12 @@ void QMutexPrivate::derefWaiters(int value) noexcept
+  
+  QT_END_NAMESPACE
+  
+@@ -134,7 +134,7 @@ index 0000000000..8c7741c113
+ +
+ +QT_END_NAMESPACE
+ diff --git a/src/corelib/thread/qwaitcondition_p.h b/src/corelib/thread/qwaitcondition_p.h
+-index cfb36ca30b..01bb000366 100644
++index 14833d56ef..7b1becb3db 100644
+ --- a/src/corelib/thread/qwaitcondition_p.h
+ +++ b/src/corelib/thread/qwaitcondition_p.h
+ @@ -7,9 +7,10 @@
+@@ -152,5 +152,5 @@ index cfb36ca30b..01bb000366 100644
+  // We mean it.
+  //
+ -- 
+-2.43.1
++2.44.0
+ 
+diff --git a/contrib/src/qt/0005-Expose-QRhiImplementation-in-QRhi.patch b/contrib/src/qt/0004-Expose-QRhiImplementation-in-QRhi.patch
+similarity index 70%
+rename from contrib/src/qt/0005-Expose-QRhiImplementation-in-QRhi.patch
+rename to contrib/src/qt/0004-Expose-QRhiImplementation-in-QRhi.patch
+index 0bf6f9bcf009..4f1efb1c953b 100644
+--- a/contrib/src/qt/0005-Expose-QRhiImplementation-in-QRhi.patch
++++ b/contrib/src/qt/0004-Expose-QRhiImplementation-in-QRhi.patch
+@@ -1,17 +1,17 @@
+-From 94a5a61135c85489426896d2b164974128edf542 Mon Sep 17 00:00:00 2001
++From 5e7f3336f7a924a0401934d66512c4073aa785fc Mon Sep 17 00:00:00 2001
+ From: Fatih Uzunoglu <fuzun54@outlook.com>
+ Date: Thu, 18 Jan 2024 17:30:26 +0200
+-Subject: [PATCH 5/8] Expose QRhiImplementation in QRhi
++Subject: [PATCH 4/7] Expose QRhiImplementation in QRhi
+ 
+ ---
+  src/gui/rhi/qrhi.h | 3 +++
+  1 file changed, 3 insertions(+)
+ 
+ diff --git a/src/gui/rhi/qrhi.h b/src/gui/rhi/qrhi.h
+-index c96ab7b19c..1aa9d77c76 100644
++index f7a49dc292..a4c74dd837 100644
+ --- a/src/gui/rhi/qrhi.h
+ +++ b/src/gui/rhi/qrhi.h
+-@@ -1964,6 +1964,9 @@ protected:
++@@ -1987,6 +1987,9 @@ protected:
+  private:
+      Q_DISABLE_COPY(QRhi)
+      QRhiImplementation *d = nullptr;
+@@ -22,5 +22,5 @@ index c96ab7b19c..1aa9d77c76 100644
+  
+  Q_DECLARE_OPERATORS_FOR_FLAGS(QRhi::Flags)
+ -- 
+-2.43.1
++2.44.0
+ 
+diff --git a/contrib/src/qt/0006-Do-not-include-D3D12MemAlloc.h-in-header-file.patch b/contrib/src/qt/0005-Do-not-include-D3D12MemAlloc.h-in-header-file.patch
+similarity index 77%
+rename from contrib/src/qt/0006-Do-not-include-D3D12MemAlloc.h-in-header-file.patch
+rename to contrib/src/qt/0005-Do-not-include-D3D12MemAlloc.h-in-header-file.patch
+index 1cd23a3f6f12..d32f2b58bded 100644
+--- a/contrib/src/qt/0006-Do-not-include-D3D12MemAlloc.h-in-header-file.patch
++++ b/contrib/src/qt/0005-Do-not-include-D3D12MemAlloc.h-in-header-file.patch
+@@ -1,7 +1,7 @@
+-From 354c2ed8c581d9b0fc0bf776f653c270f307f075 Mon Sep 17 00:00:00 2001
++From 94a120d3668a29b3f08b3dcba68656038888a60d Mon Sep 17 00:00:00 2001
+ From: Fatih Uzunoglu <fuzun54@outlook.com>
+ Date: Mon, 22 Jan 2024 21:19:55 +0200
+-Subject: [PATCH 6/8] Do not include D3D12MemAlloc.h in header file
++Subject: [PATCH 5/7] Do not include D3D12MemAlloc.h in header file
+ 
+ ---
+  src/gui/rhi/qrhid3d12.cpp | 11 +++++++++++
+@@ -9,7 +9,7 @@ Subject: [PATCH 6/8] Do not include D3D12MemAlloc.h in header file
+  2 files changed, 18 insertions(+), 10 deletions(-)
+ 
+ diff --git a/src/gui/rhi/qrhid3d12.cpp b/src/gui/rhi/qrhid3d12.cpp
+-index 4a5e52bfc6..0787b9a0c8 100644
++index ce9c5dcbdb..ae6e4ac376 100644
+ --- a/src/gui/rhi/qrhid3d12.cpp
+ +++ b/src/gui/rhi/qrhid3d12.cpp
+ @@ -2,6 +2,7 @@
+@@ -17,10 +17,10 @@ index 4a5e52bfc6..0787b9a0c8 100644
+  
+  #include "qrhid3d12_p.h"
+ +#include "D3D12MemAlloc.h"
+- #include "qshader.h"
+- #include <QWindow>
+  #include <qmath.h>
+-@@ -124,6 +125,16 @@ QT_BEGIN_NAMESPACE
++ #include <QtCore/private/qsystemerror_p.h>
++ #include <comdef.h>
++@@ -123,6 +124,16 @@ QT_BEGIN_NAMESPACE
+  // https://learn.microsoft.com/en-us/windows/win32/direct3d12/hardware-feature-levels
+  static const D3D_FEATURE_LEVEL MIN_FEATURE_LEVEL = D3D_FEATURE_LEVEL_11_0;
+  
+@@ -38,10 +38,10 @@ index 4a5e52bfc6..0787b9a0c8 100644
+  {
+      debugLayer = params->enableDebugLayer;
+ diff --git a/src/gui/rhi/qrhid3d12_p.h b/src/gui/rhi/qrhid3d12_p.h
+-index a6954d279c..ef13cc214a 100644
++index c6d4123c09..08d11e9e47 100644
+ --- a/src/gui/rhi/qrhid3d12_p.h
+ +++ b/src/gui/rhi/qrhid3d12_p.h
+-@@ -28,7 +28,12 @@
++@@ -27,7 +27,12 @@
+  #include <dxgi1_6.h>
+  #include <dcomp.h>
+  
+@@ -53,9 +53,9 @@ index a6954d279c..ef13cc214a 100644
+ +    class Allocator;
+ +}
+  
+- QT_BEGIN_NAMESPACE
+- 
+-@@ -291,15 +296,7 @@ struct QD3D12Resource
++ // ID3D12Device2 and ID3D12GraphicsCommandList1 and types and enums introduced
++ // with those are hard requirements now. These should be declared in any
++@@ -311,15 +316,7 @@ struct QD3D12Resource
+          return pool->add({ resource, state, resource->GetDesc(), nullptr, nullptr, 0, false });
+      }
+  
+@@ -73,5 +73,5 @@ index a6954d279c..ef13cc214a 100644
+  
+  struct QD3D12Pipeline
+ -- 
+-2.43.1
++2.44.0
+ 
+diff --git a/contrib/src/qt/0007-Try-DCompositionCreateDevice3-first-if-available.patch b/contrib/src/qt/0006-Try-DCompositionCreateDevice3-first-if-available.patch
+similarity index 71%
+rename from contrib/src/qt/0007-Try-DCompositionCreateDevice3-first-if-available.patch
+rename to contrib/src/qt/0006-Try-DCompositionCreateDevice3-first-if-available.patch
+index f276876f07e1..781a054c6813 100644
+--- a/contrib/src/qt/0007-Try-DCompositionCreateDevice3-first-if-available.patch
++++ b/contrib/src/qt/0006-Try-DCompositionCreateDevice3-first-if-available.patch
+@@ -1,17 +1,17 @@
+-From 944575ba8b8e7817fd11cddbae2c2fc20eabd556 Mon Sep 17 00:00:00 2001
++From 2e74ca54c146bda95482900faba547e96ece24a1 Mon Sep 17 00:00:00 2001
+ From: Fatih Uzunoglu <fuzun54@outlook.com>
+ Date: Wed, 24 Jan 2024 16:31:06 +0200
+-Subject: [PATCH 7/8] Try DCompositionCreateDevice3() first if available
++Subject: [PATCH 6/7] Try DCompositionCreateDevice3() first if available
+ 
+ ---
+- src/gui/rhi/qrhid3dhelpers_p.h | 13 ++++++++++++-
++ src/gui/rhi/qrhid3dhelpers.cpp | 13 ++++++++++++-
+  1 file changed, 12 insertions(+), 1 deletion(-)
+ 
+-diff --git a/src/gui/rhi/qrhid3dhelpers_p.h b/src/gui/rhi/qrhid3dhelpers_p.h
+-index f20c042860..d78c5a2bb2 100644
+---- a/src/gui/rhi/qrhid3dhelpers_p.h
+-+++ b/src/gui/rhi/qrhid3dhelpers_p.h
+-@@ -45,7 +45,18 @@ inline IDCompositionDevice *createDirectCompositionDevice()
++diff --git a/src/gui/rhi/qrhid3dhelpers.cpp b/src/gui/rhi/qrhid3dhelpers.cpp
++index 216c358cbe..79efb386eb 100644
++--- a/src/gui/rhi/qrhid3dhelpers.cpp
+++++ b/src/gui/rhi/qrhid3dhelpers.cpp
++@@ -110,7 +110,18 @@ IDCompositionDevice *createDirectCompositionDevice()
+          _In_ REFIID iid,
+          _Outptr_ void **dcompositionDevice);
+      DCompositionCreateDeviceFuncPtr func = reinterpret_cast<DCompositionCreateDeviceFuncPtr>(
+@@ -32,5 +32,5 @@ index f20c042860..d78c5a2bb2 100644
+          qWarning("Unable to resolve DCompositionCreateDevice, perhaps dcomp.dll is missing?");
+          return nullptr;
+ -- 
+-2.43.1
++2.44.0
+ 
+diff --git a/contrib/src/qt/0008-Try-to-satisfy-Windows-7-compatibility.patch b/contrib/src/qt/0007-Try-to-satisfy-Windows-7-compatibility.patch
+similarity index 84%
+rename from contrib/src/qt/0008-Try-to-satisfy-Windows-7-compatibility.patch
+rename to contrib/src/qt/0007-Try-to-satisfy-Windows-7-compatibility.patch
+index d0c81cf1cf90..23255127db7f 100644
+--- a/contrib/src/qt/0008-Try-to-satisfy-Windows-7-compatibility.patch
++++ b/contrib/src/qt/0007-Try-to-satisfy-Windows-7-compatibility.patch
+@@ -1,35 +1,37 @@
+-From 2a54018b77e290b8613718de32c99f02e146a415 Mon Sep 17 00:00:00 2001
++From 09d078434fef71a34690b098720d8e6bfe7dc5f8 Mon Sep 17 00:00:00 2001
+ From: Fatih Uzunoglu <fuzun54@outlook.com>
+ Date: Mon, 22 Jan 2024 21:37:39 +0200
+-Subject: [PATCH 8/8] Try to satisfy Windows 7 compatibility
++Subject: [PATCH 7/7] Try to satisfy Windows 7 compatibility
+ 
+ ---
+  cmake/QtBaseConfigureTests.cmake              |  10 +-
+- src/corelib/CMakeLists.txt                    |  18 +--
++ src/corelib/CMakeLists.txt                    |  20 +--
+  src/corelib/global/qt_windows.h               |   6 +-
+  src/corelib/io/qfilesystemengine_win.cpp      |   5 +
+  src/corelib/kernel/qeventdispatcher_win.cpp   |  10 +-
+  src/corelib/kernel/qfunctions_win.cpp         |  13 +-
+- src/corelib/thread/qfutex_p.h                 |  41 +++++-
++ src/corelib/thread/qfutex_win_p.h             |  42 +++++-
+  src/corelib/thread/qmutex_win.cpp             |   4 +-
+  src/gui/CMakeLists.txt                        |   1 -
+- src/gui/rhi/qrhid3d11.cpp                     |   8 +-
+- src/gui/rhi/qrhid3d12.cpp                     |  67 +++++++++-
++ src/gui/rhi/qrhid3d11.cpp                     |   9 +-
++ src/gui/rhi/qrhid3d12.cpp                     |  68 +++++++++-
+  .../text/windows/qwindowsfontdatabasebase.cpp |  14 +-
+- src/plugins/platforms/direct2d/CMakeLists.txt |   1 -
++ .../networklistmanager/CMakeLists.txt         |   1 -
++ src/plugins/platforms/direct2d/CMakeLists.txt |   2 -
+  .../direct2d/qwindowsdirect2dcontext.cpp      |   1 +
+- src/plugins/platforms/windows/CMakeLists.txt  |   1 -
++ src/plugins/platforms/windows/CMakeLists.txt  |   2 -
+  .../platforms/windows/qtwindowsglobal.h       |   4 +
+  .../platforms/windows/qwin10helpers.cpp       |  24 +++-
+  .../platforms/windows/qwindowscontext.cpp     | 126 +++++++++++++++---
+- .../platforms/windows/qwindowscontext.h       |  94 +++++++++++++
++ .../platforms/windows/qwindowscontext.h       |  95 +++++++++++++
+  .../platforms/windows/qwindowsdrag.cpp        |  10 +-
+  .../platforms/windows/qwindowskeymapper.cpp   |  17 ++-
+  .../windows/qwindowspointerhandler.cpp        |  33 +++--
+  .../platforms/windows/qwindowsscreen.cpp      |  18 ++-
+  .../platforms/windows/qwindowstheme.cpp       |   6 +-
+- .../platforms/windows/qwindowswindow.cpp      |  46 +++++--
+- 25 files changed, 498 insertions(+), 80 deletions(-)
++ .../platforms/windows/qwindowswindow.cpp      |  48 +++++--
++ src/widgets/styles/qwindowsstyle.cpp          |  26 +++-
++ 27 files changed, 523 insertions(+), 92 deletions(-)
+ 
+ diff --git a/cmake/QtBaseConfigureTests.cmake b/cmake/QtBaseConfigureTests.cmake
+ index 7713def6bf..0af3d622f9 100644
+@@ -58,10 +60,10 @@ index 7713def6bf..0af3d622f9 100644
+              CACHE STRING "Qt platform specific pre-processor defines" FORCE)
+      endif()
+ diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
+-index d43ece2b9f..804c2c5cf0 100644
++index 4809e32766..ddf4c8057c 100644
+ --- a/src/corelib/CMakeLists.txt
+ +++ b/src/corelib/CMakeLists.txt
+-@@ -493,16 +493,16 @@ qt_internal_extend_target(Core CONDITION QT_FEATURE_animation
++@@ -517,17 +517,17 @@ qt_internal_extend_target(Core CONDITION QT_FEATURE_animation
+          animation/qvariantanimation.cpp animation/qvariantanimation.h animation/qvariantanimation_p.h
+  )
+  
+@@ -74,19 +76,32 @@ index d43ece2b9f..804c2c5cf0 100644
+ +# Which seems to be available on Windows 7 (for some reason)
+ +# but is broken.  Use the symbols from kernel32 instead.
+  qt_internal_extend_target(Core CONDITION QT_FEATURE_thread AND WIN32
+--    SOURCES
+--        thread/qmutex_win.cpp
+--        thread/qwaitcondition_win.cpp
++     SOURCES
++         thread/qfutex_win_p.h
++         thread/qmutex_win.cpp
++         thread/qwaitcondition_win.cpp
+ -    LIBRARIES
+ -        synchronization
+-+   SOURCES
+-+       thread/qmutex_win.cpp
+-+       thread/qwaitcondition_win.cpp
+-+   # LIBRARIES
+-+   #    synchronization
+++    # LIBRARIES
+++    #     synchronization
+  )
+  
+  qt_internal_extend_target(Core CONDITION WIN32
++@@ -821,10 +821,10 @@ qt_internal_extend_target(Core CONDITION WASM
++ )
++ 
++ # On MS-Win, clang has two flavors, one of which immitates MSVC (so claims to be it)
++-qt_internal_extend_target(Core CONDITION MSVC
++-    LIBRARIES
++-        runtimeobject
++-)
+++# qt_internal_extend_target(Core CONDITION MSVC
+++#    LIBRARIES
+++#        runtimeobject
+++# )
++ 
++ qt_internal_extend_target(Core CONDITION QT_FEATURE_icu
++     SOURCES
+ diff --git a/src/corelib/global/qt_windows.h b/src/corelib/global/qt_windows.h
+ index 5586d0b927..eb0264b4ee 100644
+ --- a/src/corelib/global/qt_windows.h
+@@ -128,10 +143,10 @@ index 67378e2b5d..580e141e2b 100644
+  #include "qoperatingsystemversion.h"
+  #include "qplatformdefs.h"
+ diff --git a/src/corelib/kernel/qeventdispatcher_win.cpp b/src/corelib/kernel/qeventdispatcher_win.cpp
+-index f7fd2a7b51..05499f6d00 100644
++index a7663b2481..78ad3d3ede 100644
+ --- a/src/corelib/kernel/qeventdispatcher_win.cpp
+ +++ b/src/corelib/kernel/qeventdispatcher_win.cpp
+-@@ -363,7 +363,15 @@ void QEventDispatcherWin32Private::registerTimer(WinTimerInfo *t)
++@@ -362,7 +362,15 @@ void QEventDispatcherWin32Private::registerTimer(WinTimerInfo *t)
+  
+      if (!ok) {
+          // user normal timers for (Very)CoarseTimers, or if no more multimedia timers available
+@@ -149,14 +164,14 @@ index f7fd2a7b51..05499f6d00 100644
+      if (!ok)
+          ok = SetTimer(internalHwnd, t->timerId, interval, nullptr);
+ diff --git a/src/corelib/kernel/qfunctions_win.cpp b/src/corelib/kernel/qfunctions_win.cpp
+-index d5ce3e5894..9a78a581e1 100644
++index d5ce3e5894..a712a1a74f 100644
+ --- a/src/corelib/kernel/qfunctions_win.cpp
+ +++ b/src/corelib/kernel/qfunctions_win.cpp
+ @@ -4,6 +4,7 @@
+  #include "qfunctions_win_p.h"
+  
+  #include <QtCore/qdebug.h>
+-+#include <plugin/qsystemlibrary_p.h>
+++#include <QtCore/private/qsystemlibrary_p.h>
+  
+  #include <combaseapi.h>
+  #include <objbase.h>
+@@ -179,23 +194,23 @@ index d5ce3e5894..9a78a581e1 100644
+          case ERROR_INSUFFICIENT_BUFFER:
+              return true;
+          case APPMODEL_ERROR_NO_PACKAGE:
+-diff --git a/src/corelib/thread/qfutex_p.h b/src/corelib/thread/qfutex_p.h
+-index 48f03f5ed0..e1af23c9d8 100644
+---- a/src/corelib/thread/qfutex_p.h
+-+++ b/src/corelib/thread/qfutex_p.h
+-@@ -16,6 +16,7 @@
+- //
+- 
++diff --git a/src/corelib/thread/qfutex_win_p.h b/src/corelib/thread/qfutex_win_p.h
++index 75a12bd82c..3d2aa021db 100644
++--- a/src/corelib/thread/qfutex_win_p.h
+++++ b/src/corelib/thread/qfutex_win_p.h
++@@ -18,37 +18,65 @@
+  #include <private/qglobal_p.h>
+-+#include <plugin/qsystemlibrary_p.h>
+- #include <QtCore/qtsan_impl.h>
++ #include <qdeadlinetimer.h>
++ #include <qtsan_impl.h>
+++#include <QtCore/private/qsystemlibrary_p.h>
+  
+- QT_BEGIN_NAMESPACE
+-@@ -113,29 +114,57 @@ QT_END_NAMESPACE
++ #include <qt_windows.h>
+  
++-#define QT_ALWAYS_USE_FUTEX
++-
+  QT_BEGIN_NAMESPACE
++ 
+  namespace QtWindowsFutex {
+--#define QT_ALWAYS_USE_FUTEX
+ -constexpr inline bool futexAvailable() { return true; }
+ +typedef BOOL(*WaitOnAddressCompat)(	_In_ volatile VOID *Address, _In_ PVOID CompareAddress, _In_ SIZE_T AddressSize, _In_ DWORD dwMilliseconds);
+ +typedef void(*WakeByAddressAllCompat)(_In_ PVOID Address);
+@@ -215,7 +230,7 @@ index 48f03f5ed0..e1af23c9d8 100644
+ +    funcs.waitOnAddress = (WaitOnAddressCompat)(synchWin8ApiSet.resolve("WaitOnAddress"));
+ +    funcs.wakeByAddressAll = (WakeByAddressAllCompat)(synchWin8ApiSet.resolve("WakeByAddressAll"));
+ +    funcs.wakeByAddressSingle = (WakeByAddressSingleCompat)(synchWin8ApiSet.resolve("WakeByAddressSingle"));
+-+ 
+++
+ +    return funcs;
+ +}();
+ +
+@@ -234,11 +249,12 @@ index 48f03f5ed0..e1af23c9d8 100644
+      QtTsan::futexAcquire(&futex);
+  }
+  template <typename Atomic>
+- inline bool futexWait(Atomic &futex, typename Atomic::Type expectedValue, qint64 nstimeout)
++ inline bool futexWait(Atomic &futex, typename Atomic::Type expectedValue, QDeadlineTimer deadline)
+  {
+--    BOOL r = WaitOnAddress(&futex, &expectedValue, sizeof(expectedValue), DWORD(nstimeout / 1000 / 1000));
+ +    assert(futexFuncs.waitOnAddress);
+-+    BOOL r = futexFuncs.waitOnAddress(&futex, &expectedValue, sizeof(expectedValue), DWORD(nstimeout / 1000 / 1000));
++     using namespace std::chrono;
++-    BOOL r = WaitOnAddress(&futex, &expectedValue, sizeof(expectedValue), DWORD(deadline.remainingTime()));
+++    BOOL r = futexFuncs.waitOnAddress(&futex, &expectedValue, sizeof(expectedValue), DWORD(deadline.remainingTime()));
+      return r || GetLastError() != ERROR_TIMEOUT;
+  }
+  template <typename Atomic> inline void futexWakeAll(Atomic &futex)
+@@ -253,7 +269,7 @@ index 48f03f5ed0..e1af23c9d8 100644
+ +    assert(futexFuncs.wakeByAddressSingle);
+ +    futexFuncs.wakeByAddressSingle(&futex);
+  }
+- }
++ } // namespace QtWindowsFutex
+  namespace QtFutex = QtWindowsFutex;
+ diff --git a/src/corelib/thread/qmutex_win.cpp b/src/corelib/thread/qmutex_win.cpp
+ index 8c7741c113..ce3586a90b 100644
+@@ -272,22 +288,30 @@ index 8c7741c113..ce3586a90b 100644
+  
+  void QMutexPrivate::wakeUp() noexcept
+ diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
+-index dded14bb31..c1b2e2d5d9 100644
++index 3207244afd..437a09c708 100644
+ --- a/src/gui/CMakeLists.txt
+ +++ b/src/gui/CMakeLists.txt
+-@@ -426,7 +426,6 @@ qt_internal_extend_target(Gui CONDITION WIN32
++@@ -433,7 +433,6 @@ qt_internal_extend_target(Gui CONDITION WIN32
+          d3d11
+          dxgi
+          dxguid
+ -        d3d12
+  )
+  
+- if(QT_FEATURE_egl)
++ if(QT_FEATURE_graphicsframecapture)
+ diff --git a/src/gui/rhi/qrhid3d11.cpp b/src/gui/rhi/qrhid3d11.cpp
+-index 8c4eac9b1f..ce59ac794e 100644
++index 92e4cacc16..844e9c072b 100644
+ --- a/src/gui/rhi/qrhid3d11.cpp
+ +++ b/src/gui/rhi/qrhid3d11.cpp
+-@@ -155,8 +155,14 @@ inline Int aligned(Int v, Int byteAlign)
++@@ -8,6 +8,7 @@
++ #include <qmath.h>
++ #include <QtCore/qcryptographichash.h>
++ #include <QtCore/private/qsystemerror_p.h>
+++#include <QtCore/private/qsystemlibrary_p.h>
++ #include "qrhid3dhelpers_p.h"
++ 
++ QT_BEGIN_NAMESPACE
++@@ -155,8 +156,14 @@ inline Int aligned(Int v, Int byteAlign)
+  
+  static IDXGIFactory1 *createDXGIFactory2()
+  {
+@@ -304,10 +328,18 @@ index 8c4eac9b1f..ce59ac794e 100644
+          qWarning("CreateDXGIFactory2() failed to create DXGI factory: %s",
+              qPrintable(QSystemError::windowsComString(hr)));
+ diff --git a/src/gui/rhi/qrhid3d12.cpp b/src/gui/rhi/qrhid3d12.cpp
+-index 0787b9a0c8..b3f484998a 100644
++index ae6e4ac376..bce22ee6ce 100644
+ --- a/src/gui/rhi/qrhid3d12.cpp
+ +++ b/src/gui/rhi/qrhid3d12.cpp
+-@@ -125,6 +125,17 @@ QT_BEGIN_NAMESPACE
++@@ -5,6 +5,7 @@
++ #include "D3D12MemAlloc.h"
++ #include <qmath.h>
++ #include <QtCore/private/qsystemerror_p.h>
+++#include <QtCore/private/qsystemlibrary_p.h>
++ #include <comdef.h>
++ #include "qrhid3dhelpers_p.h"
++ #include "cs_mipmap_p.h"
++@@ -124,6 +125,17 @@ QT_BEGIN_NAMESPACE
+  // https://learn.microsoft.com/en-us/windows/win32/direct3d12/hardware-feature-levels
+  static const D3D_FEATURE_LEVEL MIN_FEATURE_LEVEL = D3D_FEATURE_LEVEL_11_0;
+  
+@@ -325,7 +357,7 @@ index 0787b9a0c8..b3f484998a 100644
+  void QD3D12Resource::releaseResources()
+  {
+      if (owns) {
+-@@ -185,14 +196,23 @@ bool QRhiD3D12::create(QRhi::Flags flags)
++@@ -190,14 +202,23 @@ bool QRhiD3D12::create(QRhi::Flags flags)
+      UINT factoryFlags = 0;
+      if (debugLayer)
+          factoryFlags |= DXGI_CREATE_FACTORY_DEBUG;
+@@ -351,7 +383,7 @@ index 0787b9a0c8..b3f484998a 100644
+          }
+          if (SUCCEEDED(hr)) {
+              debugLayer = false;
+-@@ -214,7 +234,18 @@ bool QRhiD3D12::create(QRhi::Flags flags)
++@@ -219,7 +240,18 @@ bool QRhiD3D12::create(QRhi::Flags flags)
+  
+      if (debugLayer) {
+          ID3D12Debug1 *debug = nullptr;
+@@ -371,7 +403,7 @@ index 0787b9a0c8..b3f484998a 100644
+              qCDebug(QRHI_LOG_INFO, "Enabling D3D12 debug layer");
+              debug->EnableDebugLayer();
+              debug->Release();
+-@@ -284,7 +315,22 @@ bool QRhiD3D12::create(QRhi::Flags flags)
++@@ -287,7 +319,22 @@ bool QRhiD3D12::create(QRhi::Flags flags)
+          if (minimumFeatureLevel == 0)
+              minimumFeatureLevel = MIN_FEATURE_LEVEL;
+  
+@@ -393,9 +425,9 @@ index 0787b9a0c8..b3f484998a 100644
+ +
+ +        hr = d3D12CreateDevice(activeAdapter,
+                                 minimumFeatureLevel,
+-                                __uuidof(ID3D12Device),
++                                __uuidof(ID3D12Device2),
+                                 reinterpret_cast<void **>(&dev));
+-@@ -2587,7 +2633,12 @@ bool QD3D12MipmapGenerator::create(QRhiD3D12 *rhiD)
++@@ -2770,7 +2817,12 @@ bool QD3D12MipmapGenerator::create(QRhiD3D12 *rhiD)
+      rsDesc.Desc_1_1.pStaticSamplers = &samplerDesc;
+  
+      ID3DBlob *signature = nullptr;
+@@ -409,7 +441,7 @@ index 0787b9a0c8..b3f484998a 100644
+      if (FAILED(hr)) {
+          qWarning("Failed to serialize root signature: %s", qPrintable(QSystemError::windowsComString(hr)));
+          return false;
+-@@ -4857,7 +4908,11 @@ QD3D12ObjectHandle QD3D12ShaderResourceBindings::createRootSignature(const QD3D1
++@@ -5025,7 +5077,11 @@ QD3D12ObjectHandle QD3D12ShaderResourceBindings::createRootSignature(const QD3D1
+      rsDesc.Desc_1_1.Flags = D3D12_ROOT_SIGNATURE_FLAGS(rsFlags);
+  
+      ID3DBlob *signature = nullptr;
+@@ -423,18 +455,18 @@ index 0787b9a0c8..b3f484998a 100644
+          qWarning("Failed to serialize root signature: %s", qPrintable(QSystemError::windowsComString(hr)));
+          return {};
+ diff --git a/src/gui/text/windows/qwindowsfontdatabasebase.cpp b/src/gui/text/windows/qwindowsfontdatabasebase.cpp
+-index f9b36b4852..87d9e9b967 100644
++index cef739201b..72a786efbf 100644
+ --- a/src/gui/text/windows/qwindowsfontdatabasebase.cpp
+ +++ b/src/gui/text/windows/qwindowsfontdatabasebase.cpp
+ @@ -6,6 +6,7 @@
+  
+  #include <QtCore/QThreadStorage>
+  #include <QtCore/QtEndian>
+-+#include <private/qsystemlibrary_p.h>
+++#include <QtCore/private/qsystemlibrary_p.h>
+  
+  #if QT_CONFIG(directwrite)
+  #  if QT_CONFIG(directwrite3)
+-@@ -685,7 +686,18 @@ QFont QWindowsFontDatabaseBase::systemDefaultFont()
++@@ -704,7 +705,18 @@ QFont QWindowsFontDatabaseBase::systemDefaultFont()
+      // Qt 6: Obtain default GUI font (typically "Segoe UI, 9pt", see QTBUG-58610)
+      NONCLIENTMETRICS ncm = {};
+      ncm.cbSize = sizeof(ncm);
+@@ -454,18 +486,33 @@ index f9b36b4852..87d9e9b967 100644
+      const QFont systemFont = QWindowsFontDatabase::LOGFONT_to_QFont(ncm.lfMessageFont);
+      qCDebug(lcQpaFonts) << __FUNCTION__ << systemFont;
+      return systemFont;
++diff --git a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
++index f15eedf866..9e68765b89 100644
++--- a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
+++++ b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
++@@ -16,7 +16,6 @@ qt_internal_add_plugin(QNLMNIPlugin
++ 
++ qt_internal_extend_target(QNLMNIPlugin CONDITION MSVC
++     LIBRARIES
++-        runtimeobject
++         oleaut32
++ )
++ 
+ diff --git a/src/plugins/platforms/direct2d/CMakeLists.txt b/src/plugins/platforms/direct2d/CMakeLists.txt
+-index e21b230cd7..be6bd1d0ba 100644
++index fe4a237aff..4357652207 100644
+ --- a/src/plugins/platforms/direct2d/CMakeLists.txt
+ +++ b/src/plugins/platforms/direct2d/CMakeLists.txt
+-@@ -76,7 +76,6 @@ qt_internal_add_plugin(QWindowsDirect2DIntegrationPlugin
++@@ -77,10 +77,8 @@ qt_internal_add_plugin(QWindowsDirect2DIntegrationPlugin
+          winmm
+          winspool
+          wtsapi32
+ -        shcore
+          comdlg32
+          d3d9
+-         runtimeobject
++-        runtimeobject
++ )
++ 
++ # Resources:
+ diff --git a/src/plugins/platforms/direct2d/qwindowsdirect2dcontext.cpp b/src/plugins/platforms/direct2d/qwindowsdirect2dcontext.cpp
+ index 307ca2e550..8f1199e229 100644
+ --- a/src/plugins/platforms/direct2d/qwindowsdirect2dcontext.cpp
+@@ -479,19 +526,22 @@ index 307ca2e550..8f1199e229 100644
+  #include "qwindowsdirect2dhelpers.h"
+  #include "qwindowsdirect2dintegration.h"
+ diff --git a/src/plugins/platforms/windows/CMakeLists.txt b/src/plugins/platforms/windows/CMakeLists.txt
+-index ca1bbcb758..1ab2db7473 100644
++index ea119bfb1e..cb9be899a7 100644
+ --- a/src/plugins/platforms/windows/CMakeLists.txt
+ +++ b/src/plugins/platforms/windows/CMakeLists.txt
+-@@ -63,7 +63,6 @@ qt_internal_add_plugin(QWindowsIntegrationPlugin
++@@ -64,10 +64,8 @@ qt_internal_add_plugin(QWindowsIntegrationPlugin
+          winmm
+          winspool
+          wtsapi32
+ -        shcore
+          comdlg32
+          d3d9
+-         runtimeobject
++-        runtimeobject
++ )
++ 
++ # Resources:
+ diff --git a/src/plugins/platforms/windows/qtwindowsglobal.h b/src/plugins/platforms/windows/qtwindowsglobal.h
+-index 22787bd63e..95798a9a91 100644
++index 96a72600eb..067069d8de 100644
+ --- a/src/plugins/platforms/windows/qtwindowsglobal.h
+ +++ b/src/plugins/platforms/windows/qtwindowsglobal.h
+ @@ -60,6 +60,10 @@
+@@ -554,7 +604,7 @@ index 026e81cb0c..78c9bf2ea0 100644
+      if (FAILED(hr))
+          return false;
+ diff --git a/src/plugins/platforms/windows/qwindowscontext.cpp b/src/plugins/platforms/windows/qwindowscontext.cpp
+-index 43de7e7858..d9bafe7501 100644
++index c363b85cb3..0661f41aae 100644
+ --- a/src/plugins/platforms/windows/qwindowscontext.cpp
+ +++ b/src/plugins/platforms/windows/qwindowscontext.cpp
+ @@ -44,6 +44,8 @@
+@@ -564,9 +614,9 @@ index 43de7e7858..d9bafe7501 100644
+ +#include <QtCore/qoperatingsystemversion.h>
+ +#include <QtCore/private/qsystemlibrary_p.h>
+  #include <QtCore/private/qwinregistry_p.h>
+- #include <QtCore/private/qfactorycacheregistration_p.h>
+- #include <QtCore/private/qsystemerror_p.h>
+-@@ -118,6 +120,85 @@ static inline bool sessionManagerInteractionBlocked()
++ #if QT_CONFIG(cpp_winrt)
++ #  include <QtCore/private/qfactorycacheregistration_p.h>
++@@ -121,6 +123,85 @@ static inline bool sessionManagerInteractionBlocked()
+  static inline bool sessionManagerInteractionBlocked() { return false; }
+  #endif
+  
+@@ -652,7 +702,7 @@ index 43de7e7858..d9bafe7501 100644
+  QWindowsContext *QWindowsContext::m_instance = nullptr;
+  
+  /*!
+-@@ -161,6 +242,9 @@ bool QWindowsContextPrivate::m_v2DpiAware = false;
++@@ -164,6 +245,9 @@ bool QWindowsContextPrivate::m_v2DpiAware = false;
+  QWindowsContextPrivate::QWindowsContextPrivate()
+      : m_oleInitializeResult(OleInitialize(nullptr))
+  {
+@@ -662,7 +712,7 @@ index 43de7e7858..d9bafe7501 100644
+      if (m_pointerHandler.touchDevice() || m_mouseHandler.touchDevice())
+          m_systemInfo |= QWindowsContext::SI_SupportsTouch;
+      m_displayContext = GetDC(nullptr);
+-@@ -279,6 +363,12 @@ bool QWindowsContext::initPointer(unsigned integrationOptions)
++@@ -282,6 +366,12 @@ bool QWindowsContext::initPointer(unsigned integrationOptions)
+      if (integrationOptions & QWindowsIntegration::DontUseWMPointer)
+          return false;
+  
+@@ -675,7 +725,7 @@ index 43de7e7858..d9bafe7501 100644
+      d->m_systemInfo |= QWindowsContext::SI_SupportsPointer;
+      return true;
+  }
+-@@ -347,29 +437,31 @@ void QWindowsContext::setDetectAltGrModifier(bool a)
++@@ -350,29 +440,31 @@ void QWindowsContext::setDetectAltGrModifier(bool a)
+  }
+  
+  [[nodiscard]] static inline QtWindows::DpiAwareness
+@@ -716,7 +766,7 @@ index 43de7e7858..d9bafe7501 100644
+      return dpiAwarenessContextToQtDpiAwareness(context);
+  }
+  
+-@@ -382,7 +474,10 @@ QtWindows::DpiAwareness QWindowsContext::processDpiAwareness()
++@@ -385,7 +477,10 @@ QtWindows::DpiAwareness QWindowsContext::processDpiAwareness()
+      // return the default DPI_AWARENESS_CONTEXT for the process if
+      // SetThreadDpiAwarenessContext() was never called. So we can use
+      // it as an equivalent.
+@@ -728,7 +778,7 @@ index 43de7e7858..d9bafe7501 100644
+      return dpiAwarenessContextToQtDpiAwareness(context);
+  }
+  
+-@@ -442,11 +537,11 @@ bool QWindowsContext::setProcessDpiAwareness(QtWindows::DpiAwareness dpiAwarenes
++@@ -445,11 +540,11 @@ bool QWindowsContext::setProcessDpiAwareness(QtWindows::DpiAwareness dpiAwarenes
+      if (processDpiAwareness() == dpiAwareness)
+          return true;
+      const auto context = qtDpiAwarenessToDpiAwarenessContext(dpiAwareness);
+@@ -742,7 +792,7 @@ index 43de7e7858..d9bafe7501 100644
+          qCWarning(lcQpaWindow).noquote().nospace()
+              << "SetProcessDpiAwarenessContext() failed: "
+              << QSystemError::windowsString()
+-@@ -886,8 +981,8 @@ void QWindowsContext::forceNcCalcSize(HWND hwnd)
++@@ -891,8 +986,8 @@ void QWindowsContext::forceNcCalcSize(HWND hwnd)
+  bool QWindowsContext::systemParametersInfo(unsigned action, unsigned param, void *out,
+                                             unsigned dpi)
+  {
+@@ -753,7 +803,7 @@ index 43de7e7858..d9bafe7501 100644
+          : SystemParametersInfo(action, param, out, 0);
+      return result == TRUE;
+  }
+-@@ -975,7 +1070,8 @@ static bool enableNonClientDpiScaling(HWND hwnd)
++@@ -980,7 +1075,8 @@ static bool enableNonClientDpiScaling(HWND hwnd)
+  {
+      bool result = false;
+      if (QWindowsContext::windowDpiAwareness(hwnd) == QtWindows::DpiAwareness::PerMonitor) {
+@@ -764,13 +814,14 @@ index 43de7e7858..d9bafe7501 100644
+              const DWORD errorCode = GetLastError();
+              qErrnoWarning(int(errorCode), "EnableNonClientDpiScaling() failed for HWND %p (%lu)",
+ diff --git a/src/plugins/platforms/windows/qwindowscontext.h b/src/plugins/platforms/windows/qwindowscontext.h
+-index 1a3b47be5e..df9547ca85 100644
++index 1089224433..f6727a008a 100644
+ --- a/src/plugins/platforms/windows/qwindowscontext.h
+ +++ b/src/plugins/platforms/windows/qwindowscontext.h
+-@@ -44,6 +44,97 @@ class QPoint;
++@@ -44,6 +44,98 @@ struct QWindowsContextPrivate;
++ class QPoint;
+  class QKeyEvent;
+  class QPointingDevice;
+- 
+++
+ +struct QWindowsUser32DLL
+ +{
+ +    inline void init();
+@@ -865,7 +916,7 @@ index 1a3b47be5e..df9547ca85 100644
+  class QWindowsContext
+  {
+      Q_DISABLE_COPY_MOVE(QWindowsContext)
+-@@ -138,6 +229,9 @@ public:
++@@ -138,6 +230,9 @@ public:
+      QWindowsScreenManager &screenManager();
+      QWindowsTabletSupport *tabletSupport() const;
+  
+@@ -876,7 +927,7 @@ index 1a3b47be5e..df9547ca85 100644
+      void setAsyncExpose(bool value);
+  
+ diff --git a/src/plugins/platforms/windows/qwindowsdrag.cpp b/src/plugins/platforms/windows/qwindowsdrag.cpp
+-index 16025dcd46..eb128a7180 100644
++index c6f55c3509..ae26641d86 100644
+ --- a/src/plugins/platforms/windows/qwindowsdrag.cpp
+ +++ b/src/plugins/platforms/windows/qwindowsdrag.cpp
+ @@ -1,6 +1,11 @@
+@@ -891,7 +942,7 @@ index 16025dcd46..eb128a7180 100644
+  #include <QtCore/qt_windows.h>
+  #include "qwindowsdrag.h"
+  #include "qwindowscontext.h"
+-@@ -667,11 +672,14 @@ static HRESULT startDoDragDrop(LPDATAOBJECT pDataObj, LPDROPSOURCE pDropSource,
++@@ -669,11 +674,14 @@ static HRESULT startDoDragDrop(LPDATAOBJECT pDataObj, LPDROPSOURCE pDropSource,
+              }
+  
+              if (msg.message == WM_POINTERUPDATE) {
+@@ -908,10 +959,10 @@ index 16025dcd46..eb128a7180 100644
+  
+                  if (pointerInfo.pointerFlags & POINTER_FLAG_PRIMARY) {
+ diff --git a/src/plugins/platforms/windows/qwindowskeymapper.cpp b/src/plugins/platforms/windows/qwindowskeymapper.cpp
+-index fa46dec4aa..d33aae863a 100644
++index af1230d240..edcb2889fd 100644
+ --- a/src/plugins/platforms/windows/qwindowskeymapper.cpp
+ +++ b/src/plugins/platforms/windows/qwindowskeymapper.cpp
+-@@ -751,14 +751,23 @@ static inline QString messageKeyText(const MSG &msg)
++@@ -732,14 +732,23 @@ static inline QString messageKeyText(const MSG &msg)
+  
+  [[nodiscard]] static inline int getTitleBarHeight(const HWND hwnd)
+  {
+@@ -940,7 +991,7 @@ index fa46dec4aa..d33aae863a 100644
+  }
+  
+ diff --git a/src/plugins/platforms/windows/qwindowspointerhandler.cpp b/src/plugins/platforms/windows/qwindowspointerhandler.cpp
+-index 77ed0f84d7..e0bca057a0 100644
++index 9f1f25db8c..3660f2c0c8 100644
+ --- a/src/plugins/platforms/windows/qwindowspointerhandler.cpp
+ +++ b/src/plugins/platforms/windows/qwindowspointerhandler.cpp
+ @@ -1,6 +1,11 @@
+@@ -1016,7 +1067,7 @@ index 77ed0f84d7..e0bca057a0 100644
+                  qWarning() << "GetPointerPenInfoHistory() failed:" << qt_error_string();
+                  return false;
+              }
+-@@ -519,7 +531,8 @@ bool QWindowsPointerHandler::translateTouchEvent(QWindow *window, HWND hwnd,
++@@ -520,7 +532,8 @@ bool QWindowsPointerHandler::translateTouchEvent(QWindow *window, HWND hwnd,
+          inputIds.insert(touchPoint.id);
+  
+          // Avoid getting repeated messages for this frame if there are multiple pointerIds
+@@ -1026,7 +1077,7 @@ index 77ed0f84d7..e0bca057a0 100644
+      }
+  
+      // Some devices send touches for each finger in a different message/frame, instead of consolidating
+-@@ -565,7 +578,11 @@ bool QWindowsPointerHandler::translatePenEvent(QWindow *window, HWND hwnd, QtWin
++@@ -567,7 +580,11 @@ bool QWindowsPointerHandler::translatePenEvent(QWindow *window, HWND hwnd, QtWin
+      auto *penInfo = static_cast<POINTER_PEN_INFO *>(vPenInfo);
+  
+      RECT pRect, dRect;
+@@ -1092,10 +1143,10 @@ index a50f9fd4b0..ac5711e6a2 100644
+          case ORIENTATION_PREFERENCE_NONE:
+              break;
+ diff --git a/src/plugins/platforms/windows/qwindowstheme.cpp b/src/plugins/platforms/windows/qwindowstheme.cpp
+-index 4fccec98fb..9aa01c3e3a 100644
++index 2a01b0fa0d..b79155dab6 100644
+ --- a/src/plugins/platforms/windows/qwindowstheme.cpp
+ +++ b/src/plugins/platforms/windows/qwindowstheme.cpp
+-@@ -664,7 +664,11 @@ void QWindowsTheme::refreshFonts()
++@@ -672,7 +672,11 @@ void QWindowsTheme::refreshFonts()
+      fixedFont.setStyleHint(QFont::TypeWriter);
+  
+      LOGFONT lfIconTitleFont;
+@@ -1109,10 +1160,10 @@ index 4fccec98fb..9aa01c3e3a 100644
+  
+      m_fonts[SystemFont] = new QFont(QWindowsFontDatabase::systemDefaultFont());
+ diff --git a/src/plugins/platforms/windows/qwindowswindow.cpp b/src/plugins/platforms/windows/qwindowswindow.cpp
+-index 05eb41b6ab..cb9ed96d40 100644
++index c2c093faf4..d93b01f1ed 100644
+ --- a/src/plugins/platforms/windows/qwindowswindow.cpp
+ +++ b/src/plugins/platforms/windows/qwindowswindow.cpp
+-@@ -147,7 +147,7 @@ static QByteArray debugWinExStyle(DWORD exStyle)
++@@ -148,7 +148,7 @@ static QByteArray debugWinExStyle(DWORD exStyle)
+          rc += " WS_EX_NOACTIVATE";
+      if (exStyle & WS_EX_NOPARENTNOTIFY)
+          rc += " WS_EX_NOPARENTNOTIFY";
+@@ -1121,7 +1172,7 @@ index 05eb41b6ab..cb9ed96d40 100644
+          rc += " WS_EX_NOREDIRECTIONBITMAP";
+      if (exStyle & WS_EX_RIGHT)
+          rc += " WS_EX_RIGHT";
+-@@ -526,8 +526,11 @@ static inline void updateGLWindowSettings(const QWindow *w, HWND hwnd, Qt::Windo
++@@ -523,8 +523,11 @@ static inline void updateGLWindowSettings(const QWindow *w, HWND hwnd, Qt::Windo
+      // The width of the padded border will always be 0 if DWM composition is
+      // disabled, but since it will always be enabled and can't be programtically
+      // disabled from Windows 8, we are safe to go.
+@@ -1135,7 +1186,7 @@ index 05eb41b6ab..cb9ed96d40 100644
+  }
+  
+  /*!
+-@@ -537,11 +540,14 @@ static inline void updateGLWindowSettings(const QWindow *w, HWND hwnd, Qt::Windo
++@@ -534,11 +537,14 @@ static inline void updateGLWindowSettings(const QWindow *w, HWND hwnd, Qt::Windo
+  
+  static QMargins invisibleMargins(QPoint screenPoint)
+  {
+@@ -1151,7 +1202,7 @@ index 05eb41b6ab..cb9ed96d40 100644
+              const int gap = getResizeBorderThickness(dpiX);
+              return QMargins(gap, 0, gap, gap);
+          }
+-@@ -551,7 +557,12 @@ static QMargins invisibleMargins(QPoint screenPoint)
++@@ -548,7 +554,12 @@ static QMargins invisibleMargins(QPoint screenPoint)
+  
+  [[nodiscard]] static inline QMargins invisibleMargins(const HWND hwnd)
+  {
+@@ -1165,7 +1216,16 @@ index 05eb41b6ab..cb9ed96d40 100644
+      const int gap = getResizeBorderThickness(dpi);
+      return QMargins(gap, 0, gap, gap);
+  }
+-@@ -1067,7 +1078,14 @@ QMargins QWindowsGeometryHint::frame(const QWindow *w, DWORD style, DWORD exStyl
++@@ -841,7 +852,7 @@ void WindowCreationData::fromWindow(const QWindow *w, const Qt::WindowFlags flag
++ 
++         // Currently only compatible with D3D surfaces, use it with care.
++         if (qEnvironmentVariableIntValue("QT_QPA_DISABLE_REDIRECTION_SURFACE"))
++-            exStyle |= WS_EX_NOREDIRECTIONBITMAP;
+++            exStyle |= 0x00200000L /* WS_EX_NOREDIRECTIONBITMAP */;
++     }
++ }
++ 
++@@ -1068,7 +1079,14 @@ QMargins QWindowsGeometryHint::frame(const QWindow *w, DWORD style, DWORD exStyl
+          return {};
+      RECT rect = {0,0,0,0};
+      style &= ~DWORD(WS_OVERLAPPED); // Not permitted, see docs.
+@@ -1181,7 +1241,7 @@ index 05eb41b6ab..cb9ed96d40 100644
+          qErrnoWarning("%s: AdjustWindowRectExForDpi failed", __FUNCTION__);
+      }
+      const QMargins result(qAbs(rect.left), qAbs(rect.top),
+-@@ -1559,7 +1577,14 @@ void QWindowsWindow::initialize()
++@@ -1561,7 +1579,14 @@ void QWindowsWindow::initialize()
+              QWindowSystemInterface::handleGeometryChange<QWindowSystemInterface::SynchronousDelivery>(w, obtainedGeometry);
+          }
+      }
+@@ -1197,7 +1257,7 @@ index 05eb41b6ab..cb9ed96d40 100644
+  }
+  
+  QSurfaceFormat QWindowsWindow::format() const
+-@@ -2051,7 +2076,12 @@ void QWindowsWindow::handleDpiChanged(HWND hwnd, WPARAM wParam, LPARAM lParam)
++@@ -2056,7 +2081,12 @@ void QWindowsWindow::handleDpiChanged(HWND hwnd, WPARAM wParam, LPARAM lParam)
+  
+  void QWindowsWindow::handleDpiChangedAfterParent(HWND hwnd)
+  {
+@@ -1211,6 +1271,67 @@ index 05eb41b6ab..cb9ed96d40 100644
+      const qreal scale = dpiRelativeScale(dpi);
+      setSavedDpi(dpi);
+  
++diff --git a/src/widgets/styles/qwindowsstyle.cpp b/src/widgets/styles/qwindowsstyle.cpp
++index ae82f784ca..50d2e85871 100644
++--- a/src/widgets/styles/qwindowsstyle.cpp
+++++ b/src/widgets/styles/qwindowsstyle.cpp
++@@ -62,6 +62,7 @@
++ QT_BEGIN_NAMESPACE
++ 
++ #if defined(Q_OS_WIN)
+++#include <QtCore/private/qsystemlibrary_p.h>
++ 
++ QT_BEGIN_INCLUDE_NAMESPACE
++ #include "qt_windows.h"
++@@ -266,29 +267,42 @@ int QWindowsStylePrivate::pixelMetricFromSystemDp(QStyle::PixelMetric pm, const
++     // hardcode DPI to 1x 96 DPI.
++     const int dpi = 96;
++ 
+++    typedef int (*GetSystemMetricsForDpiFunc)(int, UINT);
+++    static GetSystemMetricsForDpiFunc getSystemMetricsForDpi = []() {
+++        QSystemLibrary user32dll(QLatin1String("user32"));
+++        return (GetSystemMetricsForDpiFunc)(user32dll.resolve("GetSystemMetricsForDpi"));
+++    }();
+++
+++    typedef BOOL (*SystemParametersInfoForDpiFunc)(UINT, UINT, PVOID, UINT, UINT);
+++    static SystemParametersInfoForDpiFunc systemParametersInfoForDpi = []() {
+++        QSystemLibrary user32dll(QLatin1String("user32"));
+++        return (SystemParametersInfoForDpiFunc)(user32dll.resolve("SystemParametersInfoForDpi"));
+++    }();
+++
++     switch (pm) {
++     case QStyle::PM_DockWidgetFrameWidth:
++-        return GetSystemMetricsForDpi(SM_CXFRAME, dpi);
+++        return getSystemMetricsForDpi ? getSystemMetricsForDpi(SM_CXFRAME, dpi) : GetSystemMetrics(SM_CXFRAME);
++ 
++     case QStyle::PM_TitleBarHeight: {
++         const int resizeBorderThickness =
++-            GetSystemMetricsForDpi(SM_CXSIZEFRAME, dpi) + GetSystemMetricsForDpi(SM_CXPADDEDBORDER, dpi);
+++            (getSystemMetricsForDpi ? getSystemMetricsForDpi(SM_CXSIZEFRAME, dpi) : GetSystemMetrics(SM_CXSIZEFRAME)) +
+++            (getSystemMetricsForDpi ? getSystemMetricsForDpi(SM_CXPADDEDBORDER, dpi) : GetSystemMetrics(SM_CXPADDEDBORDER));
++         if (widget && (widget->windowType() == Qt::Tool))
++-            return GetSystemMetricsForDpi(SM_CYSMCAPTION, dpi) + resizeBorderThickness;
++-        return GetSystemMetricsForDpi(SM_CYCAPTION, dpi) + resizeBorderThickness;
+++            return (getSystemMetricsForDpi ? getSystemMetricsForDpi(SM_CYSMCAPTION, dpi) : GetSystemMetrics(SM_CYSMCAPTION)) + resizeBorderThickness;
+++        return (getSystemMetricsForDpi ? getSystemMetricsForDpi(SM_CYCAPTION, dpi) : GetSystemMetrics(SM_CYCAPTION)) + resizeBorderThickness;
++     }
++ 
++     case QStyle::PM_ScrollBarExtent:
++         {
++             NONCLIENTMETRICS ncm;
++             ncm.cbSize = sizeof(NONCLIENTMETRICS);
++-            if (SystemParametersInfoForDpi(SPI_GETNONCLIENTMETRICS, sizeof(NONCLIENTMETRICS), &ncm, 0, dpi))
+++            if (systemParametersInfoForDpi ? systemParametersInfoForDpi(SPI_GETNONCLIENTMETRICS, sizeof(NONCLIENTMETRICS), &ncm, 0, dpi) : SystemParametersInfo(SPI_GETNONCLIENTMETRICS, sizeof(NONCLIENTMETRICS), &ncm, 0))
++                 return qMax(ncm.iScrollHeight, ncm.iScrollWidth);
++         }
++         break;
++ 
++     case  QStyle::PM_MdiSubWindowFrameWidth:
++-        return GetSystemMetricsForDpi(SM_CYFRAME, dpi);
+++        return getSystemMetricsForDpi ? getSystemMetricsForDpi(SM_CYFRAME, dpi) : GetSystemMetrics(SM_CYFRAME);
++ 
++     default:
++         break;
+ -- 
+-2.43.1
++2.44.0
+ 
+diff --git a/contrib/src/qt/SHA512SUMS b/contrib/src/qt/SHA512SUMS
+index ce54db63bdf9..88d1269ee2ec 100644
+--- a/contrib/src/qt/SHA512SUMS
++++ b/contrib/src/qt/SHA512SUMS
+@@ -1 +1 @@
+-ea343bcf269779a4e078ed8baddfbe6c5ec4a34275c7d72b3f3928da60feece2ddc9ce4a380c6536a4e1654b483cee8918f8ad3038904725d2dd1c653ae83ece qtbase-everywhere-src-6.6.2.tar.xz
++72896cc5a677361779f49d60dbdfc33a21d77bd479e0586b0beb03eee2016d613aee56e798143a489431a07a5e7a7db4c7c046105a11b63dd178768f3a7f195a qtbase-everywhere-src-6.7.0.tar.xz
+diff --git a/contrib/src/qt/rules.mak b/contrib/src/qt/rules.mak
+index 34276233fb10..1a50f1b6d425 100644
+--- a/contrib/src/qt/rules.mak
++++ b/contrib/src/qt/rules.mak
+@@ -1,7 +1,7 @@
+ # qtbase
+ 
+-QTBASE_VERSION_MAJOR := 6.6
+-QTBASE_VERSION := $(QTBASE_VERSION_MAJOR).2
++QTBASE_VERSION_MAJOR := 6.7
++QTBASE_VERSION := $(QTBASE_VERSION_MAJOR).0
+ # Insert potential -betaX suffix here:
+ QTBASE_VERSION_FULL := $(QTBASE_VERSION)
+ QTBASE_URL := $(QT)/$(QTBASE_VERSION_MAJOR)/$(QTBASE_VERSION_FULL)/submodules/qtbase-everywhere-src-$(QTBASE_VERSION_FULL).tar.xz
+@@ -42,14 +42,13 @@ $(TARBALLS)/qtbase-everywhere-src-$(QTBASE_VERSION_FULL).tar.xz:
+ 
+ qt: qtbase-everywhere-src-$(QTBASE_VERSION_FULL).tar.xz .sum-qt
+ 	$(UNPACK)
+-	$(APPLY) $(SRC)/qt/0001-CMake-Place-resources-into-static-libraries-not-obje.patch
+-	$(APPLY) $(SRC)/qt/0002-Windows-Tray-Icon-Set-NOSOUND.patch
+-	$(APPLY) $(SRC)/qt/0003-Try-to-generate-pkgconfig-pc-files-in-static-build.patch
+-	$(APPLY) $(SRC)/qt/0004-Revert-QMutex-remove-qmutex_win.cpp.patch
+-	$(APPLY) $(SRC)/qt/0005-Expose-QRhiImplementation-in-QRhi.patch
+-	$(APPLY) $(SRC)/qt/0006-Do-not-include-D3D12MemAlloc.h-in-header-file.patch
+-	$(APPLY) $(SRC)/qt/0007-Try-DCompositionCreateDevice3-first-if-available.patch
+-	$(APPLY) $(SRC)/qt/0008-Try-to-satisfy-Windows-7-compatibility.patch
++	$(APPLY) $(SRC)/qt/0001-Windows-Tray-Icon-Set-NOSOUND.patch
++	$(APPLY) $(SRC)/qt/0002-Try-to-generate-pkgconfig-pc-files-in-static-build.patch
++	$(APPLY) $(SRC)/qt/0003-Revert-QMutex-remove-qmutex_win.cpp.patch
++	$(APPLY) $(SRC)/qt/0004-Expose-QRhiImplementation-in-QRhi.patch
++	$(APPLY) $(SRC)/qt/0005-Do-not-include-D3D12MemAlloc.h-in-header-file.patch
++	$(APPLY) $(SRC)/qt/0006-Try-DCompositionCreateDevice3-first-if-available.patch
++	$(APPLY) $(SRC)/qt/0007-Try-to-satisfy-Windows-7-compatibility.patch
+ 	$(APPLY) $(SRC)/qt/0001-disable-precompiled-headers-when-forcing-WINVER-inte.patch
+ 	$(MOVE)
+ 
+diff --git a/contrib/src/qt5compat/SHA512SUMS b/contrib/src/qt5compat/SHA512SUMS
+index 3c3cfabae75a..9780372252a2 100644
+--- a/contrib/src/qt5compat/SHA512SUMS
++++ b/contrib/src/qt5compat/SHA512SUMS
+@@ -1 +1 @@
+-12e4142ce8e9b0863ee5d39c37f9a04ef696fd34c98b5d955464a1cfcc7d55ea8387b6238a49d9e9380f8c95f4b655ffa64fe250f27fee3d4e9f48065bcabb6a qt5compat-everywhere-src-6.6.2.tar.xz
++92115ca88b839171cf69360e0c3add64bb84305fdc28b9459da5eb69df79bfc2884616991ada898242e3614ac4f188dd76aa17889b5fb7fa72316a11efd61c85 qt5compat-everywhere-src-6.7.0.tar.xz
+diff --git a/contrib/src/qt5compat/rules.mak b/contrib/src/qt5compat/rules.mak
+index e0b718b87835..e5e794d516c8 100644
+--- a/contrib/src/qt5compat/rules.mak
++++ b/contrib/src/qt5compat/rules.mak
+@@ -1,7 +1,7 @@
+ # Qt5Compat
+ 
+-QT5COMPAT_VERSION_MAJOR := 6.6
+-QT5COMPAT_VERSION := $(QT5COMPAT_VERSION_MAJOR).2
++QT5COMPAT_VERSION_MAJOR := 6.7
++QT5COMPAT_VERSION := $(QT5COMPAT_VERSION_MAJOR).0
+ QT5COMPAT_URL := $(QT)/$(QT5COMPAT_VERSION_MAJOR)/$(QT5COMPAT_VERSION)/submodules/qt5compat-everywhere-src-$(QT5COMPAT_VERSION).tar.xz
+ 
+ DEPS_qt5compat += qtdeclarative $(DEPS_qtdeclarative) qtshadertools $(DEPS_qtshadertools)
+diff --git a/contrib/src/qtdeclarative/0001-Fix-incorrect-library-inclusion.patch b/contrib/src/qtdeclarative/0001-Fix-incorrect-library-inclusion.patch
+index f4e0a179cbb8..9e6460a2cf4f 100644
+--- a/contrib/src/qtdeclarative/0001-Fix-incorrect-library-inclusion.patch
++++ b/contrib/src/qtdeclarative/0001-Fix-incorrect-library-inclusion.patch
+@@ -1,7 +1,7 @@
+-From e7d7242242169efd9d9ac1b736006aada1edfc60 Mon Sep 17 00:00:00 2001
++From c68baab79783c2f103d779b9b9eb4de24781cd76 Mon Sep 17 00:00:00 2001
+ From: Fatih Uzunoglu <fuzun54@outlook.com>
+ Date: Fri, 12 Jan 2024 20:40:24 +0200
+-Subject: [PATCH] Fix incorrect library inclusion
++Subject: [PATCH 1/2] Fix incorrect library inclusion
+ 
+ ---
+  src/qmlintegration/CMakeLists.txt | 2 +-
+@@ -20,5 +20,5 @@ index 0dd54f53bd..e77232df84 100644
+          Qt::Core
+  )
+ -- 
+-2.43.1
++2.44.0
+ 
+diff --git a/contrib/src/qtdeclarative/0002-Fix-build-with-no-feature-network.patch b/contrib/src/qtdeclarative/0002-Fix-build-with-no-feature-network.patch
+new file mode 100644
+index 000000000000..72cf264e12eb
+--- /dev/null
++++ b/contrib/src/qtdeclarative/0002-Fix-build-with-no-feature-network.patch
+@@ -0,0 +1,27 @@
++From 3257a47d55493e6ccedda50ab4093716366d95b3 Mon Sep 17 00:00:00 2001
++From: Tasuku Suzuki <tasuku.suzuki@signal-slot.co.jp>
++Date: Tue, 21 Nov 2023 23:58:43 +0900
++Subject: [PATCH 2/2] Fix build with -no-feature-network
++
++Change-Id: Ib21012301da6afb5458f707b39a9a8079d93eb93
++Reviewed-by: Ulf Hermann <ulf.hermann@qt.io>
++---
++ src/qml/configure.cmake | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/src/qml/configure.cmake b/src/qml/configure.cmake
++index 2d0434643a..d1ff90bd54 100644
++--- a/src/qml/configure.cmake
+++++ b/src/qml/configure.cmake
++@@ -82,7 +82,7 @@ qt_feature("qml-ssl" PUBLIC
++     SECTION "QML"
++     LABEL "QML SSL support"
++     PURPOSE "Provides ssl support in QML."
++-    CONDITION QT_FEATURE_ssl
+++    CONDITION QT_FEATURE_qml_network AND QT_FEATURE_ssl
++ )
++ 
++ # On arm and arm64 we need a specialization of cacheFlush() for each OS to be
++-- 
++2.44.0
++
+diff --git a/contrib/src/qtdeclarative/0003-Disable-svgtoqml-tool.patch b/contrib/src/qtdeclarative/0003-Disable-svgtoqml-tool.patch
+new file mode 100644
+index 000000000000..5d379f3c966c
+--- /dev/null
++++ b/contrib/src/qtdeclarative/0003-Disable-svgtoqml-tool.patch
+@@ -0,0 +1,27 @@
++From 67e1a86fee2ad14704f1970de325ef8897400631 Mon Sep 17 00:00:00 2001
++From: Fatih Uzunoglu <fuzun54@outlook.com>
++Date: Mon, 1 Apr 2024 19:43:59 +0300
++Subject: [PATCH 3/3] Disable svgtoqml tool
++
++This tool requires a more extended build of host.
++We do not use svgtoqml, so disable it instead.
++---
++ tools/CMakeLists.txt | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
++index 5770183d88..21bf5f6fd7 100644
++--- a/tools/CMakeLists.txt
+++++ b/tools/CMakeLists.txt
++@@ -75,7 +75,7 @@ if(TARGET Qt::Quick
++         AND NOT IOS
++         AND NOT WASM
++         AND NOT rtems)
++-    add_subdirectory(svgtoqml)
+++    # add_subdirectory(svgtoqml)
++ endif()
++ if(QT_FEATURE_thread AND TARGET Qt::QuickTest AND NOT ANDROID AND NOT WASM AND NOT rtems)
++     add_subdirectory(qmltestrunner)
++-- 
++2.44.0
++
+diff --git a/contrib/src/qtdeclarative/SHA512SUMS b/contrib/src/qtdeclarative/SHA512SUMS
+index 29e0c4547bf0..ac394126acfb 100644
+--- a/contrib/src/qtdeclarative/SHA512SUMS
++++ b/contrib/src/qtdeclarative/SHA512SUMS
+@@ -1 +1 @@
+-944e9f824dd8ec47d9e23e716d09142c5942f4478238f207d70f1144993440afa7925f85f3fd4cb5659191dee6a142524db40c7144c69c8bec9817591324cee1 qtdeclarative-everywhere-src-6.6.2.tar.xz
++b189f3fc4ae9ad3e5c26aa56696b97cb2f1894cb23110928a31e5a62fb779578b492bec2f4dda5b31958a33eb2571ec4e1085ae6864442507be3ae0da83c96ee qtdeclarative-everywhere-src-6.7.0.tar.xz
+diff --git a/contrib/src/qtdeclarative/rules.mak b/contrib/src/qtdeclarative/rules.mak
+index 6ac7065f40c2..b304ef5528a9 100644
+--- a/contrib/src/qtdeclarative/rules.mak
++++ b/contrib/src/qtdeclarative/rules.mak
+@@ -1,7 +1,7 @@
+ # QtDeclarative
+ 
+-QTDECLARATIVE_VERSION_MAJOR := 6.6
+-QTDECLARATIVE_VERSION := $(QTDECLARATIVE_VERSION_MAJOR).2
++QTDECLARATIVE_VERSION_MAJOR := 6.7
++QTDECLARATIVE_VERSION := $(QTDECLARATIVE_VERSION_MAJOR).0
+ QTDECLARATIVE_URL := $(QT)/$(QTDECLARATIVE_VERSION_MAJOR)/$(QTDECLARATIVE_VERSION)/submodules/qtdeclarative-everywhere-src-$(QTDECLARATIVE_VERSION).tar.xz
+ 
+ DEPS_qtdeclarative-tools := qt-tools $(DEPS_qt-tools)
+@@ -40,6 +40,8 @@ $(TARBALLS)/qtdeclarative-everywhere-src-$(QTDECLARATIVE_VERSION).tar.xz:
+ qtdeclarative: qtdeclarative-everywhere-src-$(QTDECLARATIVE_VERSION).tar.xz .sum-qtdeclarative
+ 	$(UNPACK)
+ 	$(APPLY) $(SRC)/qtdeclarative/0001-Fix-incorrect-library-inclusion.patch
++	$(APPLY) $(SRC)/qtdeclarative/0002-Fix-build-with-no-feature-network.patch
++	$(APPLY) $(SRC)/qtdeclarative/0003-Disable-svgtoqml-tool.patch
+ 	$(MOVE)
+ 
+ QT_DECLARATIVE_CONFIG := \
+diff --git a/contrib/src/qtshadertools/0001-Use-fxc2-through-wine-instead-of-fxc.patch b/contrib/src/qtshadertools/0001-Use-fxc2-through-wine-instead-of-fxc.patch
+index 6a8edacf20c1..ebfd73309e49 100644
+--- a/contrib/src/qtshadertools/0001-Use-fxc2-through-wine-instead-of-fxc.patch
++++ b/contrib/src/qtshadertools/0001-Use-fxc2-through-wine-instead-of-fxc.patch
+@@ -1,14 +1,14 @@
+-From c596f3a817a22856e36db9df10615a8e722a33f7 Mon Sep 17 00:00:00 2001
++From 3a69753af76268f4e57ba50c05d13ca73d850e0b Mon Sep 17 00:00:00 2001
+ From: Fatih Uzunoglu <fuzun54@outlook.com>
+ Date: Wed, 21 Feb 2024 20:27:36 +0200
+ Subject: [PATCH] Use fxc2 through wine instead of fxc
+ 
+ ---
+- tools/qsb/qsb.cpp | 8 +++++---
+- 1 file changed, 5 insertions(+), 3 deletions(-)
++ tools/qsb/qsb.cpp | 9 +++++----
++ 1 file changed, 5 insertions(+), 4 deletions(-)
+ 
+ diff --git a/tools/qsb/qsb.cpp b/tools/qsb/qsb.cpp
+-index bc38e14..d1a96fe 100644
++index 3700a07a89..b761bb3913 100644
+ --- a/tools/qsb/qsb.cpp
+ +++ b/tools/qsb/qsb.cpp
+ @@ -81,6 +81,7 @@ static bool runProcess(const QString &binary, const QStringList &arguments,
+@@ -19,7 +19,7 @@ index bc38e14..d1a96fe 100644
+      p.start(binary, arguments);
+      const QString cmd = binary + QLatin1Char(' ') + arguments.join(QLatin1Char(' '));
+      if (!silent)
+-@@ -820,14 +821,15 @@ int main(int argc, char **argv)
++@@ -832,15 +833,15 @@ int main(int argc, char **argv)
+                                                QLatin1String("/nologo"),
+                                                QLatin1String("/E"), QString::fromLocal8Bit(s.entryPoint()),
+                                                QLatin1String("/T"), QString::fromLocal8Bit(typeArg),
+@@ -32,12 +32,13 @@ index bc38e14..d1a96fe 100644
+ +                    arguments.append("Z:" + QDir::toNativeSeparators(tmpIn));
+                      QByteArray output;
+                      QByteArray errorOutput;
+--                    bool success = runProcess(QLatin1String("fxc"), arguments, &output, &errorOutput);
+-+                    arguments.prepend(QStringLiteral("fxc2"));
++-                    const QString compilerName = useDxc ? QLatin1String("dxc") : QLatin1String("fxc");
++-                    bool success = runProcess(compilerName, arguments, &output, &errorOutput);
+++                    const QString compilerName = useDxc ? QLatin1String("dxc") : QLatin1String("fxc2");
+ +                    bool success = runProcess(QLatin1String("wine"), arguments, &output, &errorOutput);
+                      if (success) {
+                          const QByteArray bytecode = readFile(tmpOut, FileType::Binary);
+-                         if (!bytecode.isEmpty())
++                         if (!bytecode.isEmpty()) {
+ -- 
+-2.43.1
++2.44.0
+ 
+diff --git a/contrib/src/qtshadertools/SHA512SUMS b/contrib/src/qtshadertools/SHA512SUMS
+index 0d4db08d22c9..43c2a17042ea 100644
+--- a/contrib/src/qtshadertools/SHA512SUMS
++++ b/contrib/src/qtshadertools/SHA512SUMS
+@@ -1 +1 @@
+-f016b55d229bf331141bf439de2b094080c601efca524f2f904e8767e6c3d82f097e62e671014e44680bd63c966509eb45f55d1b661b56ed65b13f987e9bb9c5 qtshadertools-everywhere-src-6.6.2.tar.xz
++30f737093fcdba6b247425c21f15d5682454255fdcf04cbe9f822e5b549dcdbb6fa519bfbcd0f2ba8acfa775cec7c30a630b61d50e00afa8c017ae9a16a73497 qtshadertools-everywhere-src-6.7.0.tar.xz
+diff --git a/contrib/src/qtshadertools/rules.mak b/contrib/src/qtshadertools/rules.mak
+index bdb0eab67d51..7902a31f896c 100644
+--- a/contrib/src/qtshadertools/rules.mak
++++ b/contrib/src/qtshadertools/rules.mak
+@@ -1,8 +1,8 @@
+ # qtshadertools
+ # required for Qt5Compat, and for qtdeclarative.
+ 
+-QTSHADERTOOLS_VERSION_MAJOR := 6.6
+-QTSHADERTOOLS_VERSION := $(QTSHADERTOOLS_VERSION_MAJOR).2
++QTSHADERTOOLS_VERSION_MAJOR := 6.7
++QTSHADERTOOLS_VERSION := $(QTSHADERTOOLS_VERSION_MAJOR).0
+ QTSHADERTOOLS_URL := $(QT)/$(QTSHADERTOOLS_VERSION_MAJOR)/$(QTSHADERTOOLS_VERSION)/submodules/qtshadertools-everywhere-src-$(QTSHADERTOOLS_VERSION).tar.xz
+ 
+ DEPS_qtshadertools-tools := qt-tools $(DEPS_qt-tools)
+diff --git a/contrib/src/qtsvg/SHA512SUMS b/contrib/src/qtsvg/SHA512SUMS
+index 1c62c35eec00..b5825804186c 100644
+--- a/contrib/src/qtsvg/SHA512SUMS
++++ b/contrib/src/qtsvg/SHA512SUMS
+@@ -1 +1 @@
+-cdfc3fb9aa00eaedd232c2b93482154f97e4e37d48db62b91142ae0dcc9d03bb9aa07cdfaa77e2973e6bfb5fdcdbf4365e6b9c855ffc82b3542d4cd07c1857a7 qtsvg-everywhere-src-6.6.2.tar.xz
++b68e4e235f1a6b0ddbb130fbc06aa7ac06f074c5d33f588dd7049b5986ae070e1e4e976f22fba2bef81adc3beac8c4564a01c818b3594e06ab36d9939ce0e7b3 qtsvg-everywhere-src-6.7.0.tar.xz
+diff --git a/contrib/src/qtsvg/rules.mak b/contrib/src/qtsvg/rules.mak
+index 4c64a7901849..b39adad6c884 100644
+--- a/contrib/src/qtsvg/rules.mak
++++ b/contrib/src/qtsvg/rules.mak
+@@ -1,7 +1,7 @@
+ # qtsvg
+ 
+-QTSVG_VERSION_MAJOR := 6.6
+-QTSVG_VERSION := $(QTSVG_VERSION_MAJOR).2
++QTSVG_VERSION_MAJOR := 6.7
++QTSVG_VERSION := $(QTSVG_VERSION_MAJOR).0
+ QTSVG_URL := $(QT)/$(QTSVG_VERSION_MAJOR)/$(QTSVG_VERSION)/submodules/qtsvg-everywhere-src-$(QTSVG_VERSION).tar.xz
+ 
+ DEPS_qtsvg += qt $(DEPS_qt)
+diff --git a/contrib/src/qtvlcdeps/vlcdeps.pro b/contrib/src/qtvlcdeps/vlcdeps.pro
+index 47ddab434e5c..8fa139f13ac1 100644
+--- a/contrib/src/qtvlcdeps/vlcdeps.pro
++++ b/contrib/src/qtvlcdeps/vlcdeps.pro
+@@ -4,7 +4,7 @@ QT = core gui qml svg quick widgets quickcontrols2 network
+ QTPLUGIN = qsvgicon qsvg qjpeg qico
+ 
+ win32 {
+-QTPLUGIN += qwindows qwindowsvistastyle
++QTPLUGIN += qwindows qmodernwindowsstyle
+ }
+ 
+ linux {
+diff --git a/contrib/src/qtwayland/SHA512SUMS b/contrib/src/qtwayland/SHA512SUMS
+index 099b31ea4929..8cf0b14e4139 100644
+--- a/contrib/src/qtwayland/SHA512SUMS
++++ b/contrib/src/qtwayland/SHA512SUMS
+@@ -1 +1 @@
+-ed5539ac9515ba93822ee1dfdedd3ece46a51c50b23efd0fb90ead2728b651c41bec42a6e2e2caf72bda0f274940e9f00049bae42c1315e0226e4a42c708f664  qtwayland-everywhere-src-6.6.2.tar.xz
++cda0e0736f85656d05b2399970413ffc5082af4256c8b3087c3f1d06cad5ef5ad7cb8838513723569193df02cd3c3df3d5478d99464606c62c42629ef75c225f  qtwayland-everywhere-src-6.7.0.tar.xz
+diff --git a/contrib/src/qtwayland/rules.mak b/contrib/src/qtwayland/rules.mak
+index 848957c32802..7ce4c1149ea9 100644
+--- a/contrib/src/qtwayland/rules.mak
++++ b/contrib/src/qtwayland/rules.mak
+@@ -1,7 +1,7 @@
+ # qtwayland
+ 
+-QTWAYLAND_VERSION_MAJOR := 6.6
+-QTWAYLAND_VERSION := $(QTWAYLAND_VERSION_MAJOR).2
++QTWAYLAND_VERSION_MAJOR := 6.7
++QTWAYLAND_VERSION := $(QTWAYLAND_VERSION_MAJOR).0
+ QTWAYLAND_URL := $(QT)/$(QTWAYLAND_VERSION_MAJOR)/$(QTWAYLAND_VERSION)/submodules/qtwayland-everywhere-src-$(QTWAYLAND_VERSION).tar.xz
+ 
+ DEPS_qtwayland = qtdeclarative $(DEPS_qtdeclarative)
+-- 
+GitLab
+
