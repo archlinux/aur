@@ -6,6 +6,8 @@ pkgbase = vetch
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	depends = viu
+	depends = wmctrl
 	source = vetch::git+https://github.com/eeec-cal/vetch
 	sha256sums = SKIP
 

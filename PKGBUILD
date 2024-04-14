@@ -6,6 +6,7 @@ pkgdesc="Veeeeery Tiny Fetch"
 arch=('x86_64')
 url="https://github.com/eeec-cal/vetch"
 license=('MIT')
+depends=('viu' 'wmctrl')
 makedepends=('git')
 source=("vetch::git+https://github.com/eeec-cal/vetch")
 sha256sums=('SKIP')
