@@ -1,10 +1,10 @@
 pkgbase = ib-en
 	pkgdesc = Freeware horror adventure game by kouri (English translation)
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vgperson.com/games/ib.htm
 	arch = any
-	license = custom:non-free
+	license = LicenseRef-Freeware
 	makedepends = icoutils
 	depends = easyrpg-player
 	source = https://vgperson.com/games/Ib107.zip
