@@ -12,9 +12,9 @@ fi
 # wfinfo-ng will create multiple PNG files in $PWD
 # this would delete them, but we've already got a cache directory anyway
 #cleanup(){ echo Exit; rm ./*.png; exit 130; }; trap cleanup INT
-exec wfinfo-ng "$(
+exec wfinfo-ng "${1-$(
 # find EE.log with most recent modification time
 locate \*/Warframe/EE.log |
 xargs -rd \\n stat -c '%Y %n' |
 sort -n | tail -n 1 | cut -d ' ' -f 2-
-)"
+)}"
