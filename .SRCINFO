@@ -1,0 +1,15 @@
+pkgbase = python-socketpool
+	pkgdesc = A simple Python socket pool
+	pkgver = 0.5.3
+	pkgrel = 9
+	url = https://github.com/benoitc/socketpool
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	source = git+https://github.com/benoitc/socketpool.git#tag=0.5.3
+	sha512sums = SKIP
+
+pkgname = python-socketpool
