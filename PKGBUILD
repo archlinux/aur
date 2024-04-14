@@ -3,7 +3,7 @@
 
 pkgname=android-file-transfer-linux
 pkgver=4.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A reliable MTP client with a minimalistic UI similar to official Android File Transfer by Google. It just works."
 arch=('any')
 url="https://whoozle.github.io/android-file-transfer-linux/"
@@ -34,5 +34,5 @@ package() {
   DESTDIR="${pkgdir}" ninja -C "${srcdir}/${pkgname}-${pkgver}/build/" install
 
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  ln -s "${pkgdir}/usr/bin/android-file-transfer" "${pkgdir}/usr/bin/android-file-transfer-linux"
+  ln -s "/usr/bin/android-file-transfer" "${pkgdir}/usr/bin/android-file-transfer-linux"
 }
