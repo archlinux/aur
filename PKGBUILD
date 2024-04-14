@@ -8,9 +8,8 @@ epoch=1
 arch=('any') #TODO: verify this
 url="https://github.com/knoellle/wfinfo-ng"
 license=('GPL-3.0')
-depends=(curl)
-makedepends=(git rust\>=1.74 cargo libxrandr tesseract tesseract-data-eng  cmake clang libxi libxtst fontconfig)
-#checkdepends=('')
+depends=(curl '''''tesseract-data-eng''''')
+makedepends=(git rust\>=1.74 cmake clang libxtst fontconfig)
 optdepends=('mlocate: to autodetect EE.log location')
 provides=('wfinfo')
 #conflicts=('wfinfo')
