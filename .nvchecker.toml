@@ -1,0 +1,5 @@
+[python-py-serializable]
+source = "github"
+github = "madpah/serializable"
+prefix = "v"
+use_latest_release = true
