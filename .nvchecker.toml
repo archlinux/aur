@@ -1,0 +1,5 @@
+[python-packageurl]
+source = "github"
+github = "package-url/packageurl-python"
+prefix = "v"
+use_latest_release = true
