@@ -2,7 +2,7 @@
 # Please note that this is my first AUR package ever, let me know if I made any mistakes or you have any improvements.
 
 pkgname=stabilitymatrix
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc='Multi-Platform Package Manager for Stable Diffusion'
 arch=('any')
@@ -22,9 +22,9 @@ sha256sums=(
 
 prepare() {
     # dotnet apparently needs explicitly git cloning to build, it doesn't work with downloading the source code tarball from the release.
-    # Please contribute if you know a better way to do this. 
-    [ -e "$srcdir/StabilityMatrix" ] && rm -rf "$srcdir/StabilityMatrix" 
-    git clone https://github.com/LykosAI/StabilityMatrix --branch "v$pkgver" 
+    # Please contribute if you know a better way to do this.
+    [ -e "$srcdir/StabilityMatrix" ] && rm -rf "$srcdir/StabilityMatrix"
+    git clone https://github.com/LykosAI/StabilityMatrix --branch "v$pkgver"
 }
 
 build() {
@@ -37,7 +37,7 @@ package() {
     mv "$srcdir/StabilityMatrix/out" "${pkgdir}/opt/$pkgname"
 
     # Make a Data directory so that choosing portable mode doesn't error.
-    mkdir -m777 "$pkgdir/opt/$pkgname/Data" 
+    mkdir -m777 "$pkgdir/opt/$pkgname/Data"
 
     # Desktop file and icon
     install -Dm644 "zone.lykos.stabilitymatrix.desktop" "${pkgdir}/usr/share/applications/zone.lykos.stabilitymatrix.desktop"
