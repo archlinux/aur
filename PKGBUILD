@@ -2,16 +2,18 @@
 
 pkgname=python-pip-audit-git
 _gitpkgname=pip-audit
-pkgver=r563.bc3ab4f
+pkgver=r590.3f52615
 pkgrel=1
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
 url='https://github.com/pypa/pip-audit'
 license=('Apache-2.0')
 depends=(
+  'python'
   'python-cachecontrol'
   'python-cyclonedx-lib'
   'python-html5lib'
+  'python-packaging'
   'python-pip-api'
   'python-pip-requirements-parser'
   'python-requests'
@@ -28,7 +30,7 @@ makedepends=(
 )
 conflicts=('python-pip-audit')
 provides=('python-pip-audit')
-options=('!strip')
+options=('!debug' '!strip')
 source=("${_gitpkgname}::git+https://github.com/pypa/pip-audit.git")
 sha512sums=('SKIP')
 
