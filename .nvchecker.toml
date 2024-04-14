@@ -1,0 +1,5 @@
+[spc2it]
+source = "github"
+github = "uyjulian/spc2it"
+prefix = "v"
+use_latest_release = true
