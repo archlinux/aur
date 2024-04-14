@@ -1,5 +1,5 @@
 pkgbase = xdbd-git
-	pkgdesc = An open source development library
+	pkgdesc = adbd reimplement and cross platform
 	pkgver = r4.a39c864
 	pkgrel = 1
 	url = https://github.com/openbfdev/xdbd.git
