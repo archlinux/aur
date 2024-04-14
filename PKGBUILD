@@ -1,6 +1,6 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-# ex-Maintainer: Philip Goto <philip.goto@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie & proton dot me>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=decoder
 pkgver=0.5
 pkgrel=1
