@@ -3,26 +3,26 @@
 _pkgname=ACME
 _pkgver=2.58.0
 pkgname=r-${_pkgname,,}
-pkgver=2.58.0
-pkgrel=1
-pkgdesc='Algorithms for Calculating Microarray Enrichment (ACME)'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Algorithms for Calculating Microarray Enrichment (ACME)"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-biobase
   r-biocgenerics
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5dc9263e0ea8c630ea05baca08bb074c9126e909ba68ce12ebfe48122771c133')
+md5sums=('6668a82e0a26ac03c9697e2cf22eb75e')
+b2sums=('b40a536a153e30e369b645c8d9023514e5f4189a2b2c734c613bb819de34659bb865dae9540d19c1a0ab2e7212ec03a5d4f6c1f50f0a00c19ef887fdb34d66f3')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
