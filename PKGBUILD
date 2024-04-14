@@ -20,7 +20,7 @@ package() {
     cd $srcdir/sonycardscanner
     make INSTALL_ROOT="$pkgdir" install
     install -d "${pkgdir}/usr/share/icons/"
-    cp $srcdir/icons/icon.svg ${pkgdir}/usr/share/icons/SonyCardScanner.svg
+    cp icons/icon.svg ${pkgdir}/usr/share/icons/SonyCardScanner.svg
     install -d "${pkgdir}/usr/share/applications/"
     cat > ${pkgdir}/usr/share/applications/SonyCardScanner.desktop << EOF
 #!/usr/bin/env xdg-open
