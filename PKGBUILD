@@ -1,7 +1,7 @@
 # Maintainer: ccicnce113424 <ccicnce113424@gmail.com>
 pkgname=llin-git
 _pkgname=LLin
-pkgver=2024.312.0.r0.0011e3c
+pkgver=2024.413.0.r0.eac1c70
 pkgrel=1
 pkgdesc="An in-game music player and download accelerator for osu! lazer."
 arch=('x86_64')
@@ -31,10 +31,10 @@ build() {
 package() {
   cd "$srcdir/$_pkgname/output"
   install -d "$pkgdir/opt/osu-lazer/zh"
-  install -Dm644 zh/M.Resources.resources.dll "$pkgdir/opt/osu-lazer/zh"
-  install -Dm644 M.DBus.dll "$pkgdir/opt/osu-lazer"
-  install -Dm644 M.Resources.dll "$pkgdir/opt/osu-lazer"
-  install -Dm644 NetCoreServer.dll "$pkgdir/opt/osu-lazer"
-  install -Dm644 Tmds.DBus.dll "$pkgdir/opt/osu-lazer"
-  install -Dm644 osu.Game.Rulesets.IGPlayer.dll "$pkgdir/opt/osu-lazer"
+  install -Dm644 "$srcdir/$_pkgname/output/zh/M.Resources.resources.dll" "$pkgdir/opt/osu-lazer/zh"
+  install -Dm644 "$srcdir/$_pkgname/output/M.DBus.dll" "$pkgdir/opt/osu-lazer"
+  install -Dm644 "$srcdir/$_pkgname/output/M.Resources.dll" "$pkgdir/opt/osu-lazer"
+  install -Dm644 "$srcdir/$_pkgname/output/NetCoreServer.dll" "$pkgdir/opt/osu-lazer"
+  install -Dm644 "$srcdir/$_pkgname/output/Tmds.DBus.dll" "$pkgdir/opt/osu-lazer"
+  install -Dm644 "$srcdir/$_pkgname/output/osu.Game.Rulesets.IGPlayer.dll" "$pkgdir/opt/osu-lazer"
 }
