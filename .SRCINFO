@@ -1,0 +1,16 @@
+pkgbase = kde_gemini
+	pkgdesc = 自动切换kde桌面主题
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = www.github.com/leessmin/kde_gemini
+	arch = x86_64
+	license = LGPL3
+	depends = plasma-desktop>=5.20.0
+	noextract = $pkgname.tar.xz
+	options = !strip
+	source = https://github.com/leessmin/kde_gemini/releases/download/0.1.0/kde_gemini.tar.xz
+	source = kde_gemini.desktop
+	sha256sums = 75e043b78ed48bf3d8945c30623c3a22b89277138bc0f4968df95a6bf1bf5db2
+	sha256sums = 9a72f9fb0080e68045ea9aa070d316e5ed6b3fc339e7e1a9d6068c2a6c097656
+
+pkgname = kde_gemini
