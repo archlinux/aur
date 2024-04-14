@@ -29,7 +29,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname/output"
   install -d "$pkgdir/opt/osu-lazer/zh"
   install -Dm644 "$srcdir/$_pkgname/output/zh/M.Resources.resources.dll" "$pkgdir/opt/osu-lazer/zh"
   install -Dm644 "$srcdir/$_pkgname/output/M.DBus.dll" "$pkgdir/opt/osu-lazer"
