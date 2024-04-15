@@ -6,5 +6,4 @@ Comment=Change the bytes of any file by tweaking some simple settings.
 Exec=vinesauce-rom-corruptor
 Icon=vinesauce-rom-corruptor
 Terminal=false
-StartupNotify=false
 Categories=Wine;Game;
