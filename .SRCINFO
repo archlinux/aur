@@ -4,6 +4,7 @@ pkgbase = faac-drm
 	pkgrel = 2
 	url = https://www.audiocoding.com/
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	license = custom
 	depends = glibc
