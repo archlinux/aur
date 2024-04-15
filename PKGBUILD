@@ -3,7 +3,7 @@
 # Submitter:  not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=not1mm
-pkgver=24.4.9.4
+pkgver=24.4.15
 pkgrel=1
 pkgdesc="Ham Radio Contest Logger - Blatant ripoff of N1MM - Numbered Release"
 license=('GPL-3.0-only')
@@ -34,5 +34,5 @@ package() {
 #	install -Dm755 "not1mm/data/k6gte.not1mm.svg" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.svg"
 	install -Dm755 "not1mm/data/k6gte.not1mm-128.png" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.png"
 }
-md5sums=('66e5f25c8012c2e56466a889f5d262c1')
-sha256sums=('eb7736f352d5a937afe457fa9f80cd20a3a2abf226e10560729db6351114f3dc')
+md5sums=('ef8aa969e02cdbc6a9470f28099d7de6')
+sha256sums=('db0d28ba29f75b3db9567a5ca6a28a99e38c31f6c83e53d7b7ea5fe952d97409')
