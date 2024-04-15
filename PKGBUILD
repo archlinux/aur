@@ -1,10 +1,8 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=proton-vpn-gtk-app
-_gitpkgname=proton-vpn-gtk-app
-#_gitcommit=b2a9d4c3bba513078a0ddc9223e32fd3d44c2da4
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ProtonVPN GTK app, Maintained by Community"
 arch=("any")
 url="https://github.com/ProtonVPN/proton-vpn-gtk-app"
@@ -32,6 +30,7 @@ depends=("python-proton-core"
 		 "python-packaging"
 		 "python-pynacl"
 		 "python-pyopenssl"
+		 "python-sentry_sdk"
 		 "webkit2gtk"
 		 "dbus-python"
 		 "gtk3")
@@ -46,17 +45,17 @@ sha256sums=('SKIP'
 conflicts=('protonvpn-gui' 'python-proton-client')
 
 prepare() {
-		cd "$_gitpkgname"
+		cd "$pkgname"
     cat ../fix-startup-wm-class.patch | patch -p1
 }
 
 build() {
-    cd "$_gitpkgname"
+    cd "$pkgname"
     python setup.py build
 }
 
 package() {
-    cd "$_gitpkgname"
+    cd "$pkgname"
     install -d -m755 "${pkgdir}/usr/share/applications"
     install -d -m755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
 
