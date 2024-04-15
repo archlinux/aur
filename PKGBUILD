@@ -2,7 +2,7 @@
 pkgname=nocashgba-debugger
 _pkgname='nocashgba-debugger'
 pkgver=3.05
-pkgrel=1
+pkgrel=2
 pkgdesc='Game Boy Advance / Nintendo DS debugger and emulator'
 arch=(x86_64 i686)
 depends=('wine' 'winetricks')
