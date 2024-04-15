@@ -3,7 +3,7 @@ pkgname=xilinota-bin
 _pkgname=Xilinota
 pkgver=2.15.1
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source multi-platform note-taking application boasting instant syncing among devices and direct keeping of markdown files."
 arch=("x86_64")
 url="https://github.com/XilinJia/Xilinota"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9dc3709554b4a56fe3a4b56fc80ad15c8a30ee7a099800893bb2dbbc2b9c7c6b'
+sha256sums=('582bc309ca86fd536b086b791c31dd985b506bb7ba266db6de0f831d45c6ab8b'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
