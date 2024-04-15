@@ -2,7 +2,7 @@
 pkgname=cellframe-node-debug
 _pkgname=cellframe-node
 pkgver=5.2.506
-pkgrel=1
+pkgrel=2
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -27,7 +27,7 @@ md5sums=('SKIP'
          '7c1087eea7336d99c4af55119673b009'
          '47edb0d55d537e72f3de07ec6a72ea78'
          '72472d529b38f06a78f37ac659b18d65'
-         'ab49514b2af5b0f9dc3ff156bb768f93')
+         '42a6fdb6b79a93d0a31dd33a40456c9c')
 install=$_pkgname.install
 conflicts=(cellframe-dashboard cellframe-wallet cellframe-node)
 options=(!strip !debug)
