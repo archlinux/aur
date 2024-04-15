@@ -14,7 +14,8 @@
 # Contributor: muflax <muflax@gmail.com>
 # Contributor: coolkehon <coolkehon@gmail.com>
 
-pkgname=task
+_pkgname='task'
+pkgname='task2'
 pkgver=2.6.2
 pkgrel=2
 pkgdesc="Taskwarrior 2.X, a command-line todo list manager (prior to its breaking-change rewrite of version 3.0)"
@@ -24,20 +25,20 @@ license=('MIT')
 depends=('util-linux' 'gnutls')
 makedepends=('cmake')
 optdepends=('bash-completion: for bash completion' 'python: for python export addon' 'ruby: for ruby export addon' 'perl: for perl export addon' 'perl-json: for perl export addon')
-source=("https://taskwarrior.org/download/$pkgname-$pkgver.tar.gz")
+source=("https://taskwarrior.org/download/${_pkgname}-$pkgver.tar.gz")
 sha256sums=('b1d3a7f000cd0fd60640670064e0e001613c9e1cb2242b9b3a9066c78862cfec')
 provides=('task')
 conflicts=('task')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${_pkgname}-$pkgver"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${_pkgname}-$pkgver"
   make DESTDIR="$pkgdir" install
 
   # Note that we rename the bash completion script for bash-completion > 1.99, until upstream does so.
@@ -49,6 +50,6 @@ package() {
   install -Dm644 "$pkgdir/usr/share/doc/task/scripts/vim/syntax/taskedit.vim" "$pkgdir/usr/share/vim/vimfiles/syntax/taskedit.vim"
   install -Dm644 "$pkgdir/usr/share/doc/task/scripts/vim/syntax/taskrc.vim" "$pkgdir/usr/share/vim/vimfiles/syntax/taskrc.vim"
 
-  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/task/LICENSE"
+  install -Dm644 "$srcdir/${_pkgname}-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/task/LICENSE"
 }
 

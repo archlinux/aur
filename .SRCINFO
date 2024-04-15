@@ -1,4 +1,4 @@
-pkgbase = task
+pkgbase = task2
 	pkgdesc = Taskwarrior 2.X, a command-line todo list manager (prior to its breaking-change rewrite of version 3.0)
 	pkgver = 2.6.2
 	pkgrel = 2
@@ -18,4 +18,4 @@ pkgbase = task
 	source = https://taskwarrior.org/download/task-2.6.2.tar.gz
 	sha256sums = b1d3a7f000cd0fd60640670064e0e001613c9e1cb2242b9b3a9066c78862cfec
 
-pkgname = task
+pkgname = task2
