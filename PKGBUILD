@@ -3,7 +3,7 @@
 pkgname=proton-vpn-gtk-app
 _gitpkgname=proton-vpn-gtk-app
 #_gitcommit=b2a9d4c3bba513078a0ddc9223e32fd3d44c2da4
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="ProtonVPN GTK app, Maintained by Community"
 arch=("any")
