@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wj-markdown-editor-git
-pkgver=1.2.1.r0.g3236677
+pkgver=1.2.2.r0.g6b02072
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -59,9 +59,7 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|yarn build|yarn install \&\& yarn build|g;s|\& electron-builder|\& electron-builder -l --dir|g" -i package.json
-    cp "${srcdir}/${pkgname%-git}.git/${pkgname%-git}-web/src/assets/logo.png" "${srcdir}/${pkgname%-git}.git/${pkgname%-git}-electron/icon/favicon.png"
-    sed "s|favicon.ico|favicon.png|g" -i src/main.js
+    sed "s|\& electron-builder|\& electron-builder -l --dir|g" -i package.json
     sed "s|favicon.ico|favicon.png|g" -i src/util/common.js
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run make
