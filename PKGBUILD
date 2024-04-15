@@ -3,7 +3,7 @@
 
 pkgname=python-configparser
 _pkgname=configparser
-pkgver=6.0.1
+pkgver=7.0.0
 pkgrel=1
 pkgdesc='backport of configparser from Python 3'
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
 	'git'
 )
 source=("git+https://github.com/jaraco/${_pkgname}.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('ff07df61054ad7f485e555fc4c4a53a02a89b4c8f06eca27a21a092281797f6e')
 
 build() {
 	cd "${srcdir}/${_pkgname}"
