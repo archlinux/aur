@@ -1,7 +1,7 @@
 pkgbase = streamcontroller-plugin-tools-git
 	pkgdesc = Base for StreamController plugins
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/StreamController/streamcontroller-plugin-tools
 	arch = x86_64
 	license = GPL
