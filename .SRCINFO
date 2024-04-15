@@ -1,6 +1,6 @@
 pkgbase = last
 	pkgdesc = Genomic aligner for short reads https://doi.org/10.1093/nar/gkq010
-	pkgver = 1542
+	pkgver = 1543
 	pkgrel = 1
 	url = https://gitlab.com/mcfrith/last
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = last
 	depends = zlib
 	depends = bash
 	depends = python
-	source = https://gitlab.com/mcfrith/last/-/archive/1542/last-1542.tar.gz
-	sha256sums = f476879b194beef811d11fae61424ce0ec327fbe13ebfaa6617a1405fe9227f8
+	source = https://gitlab.com/mcfrith/last/-/archive/1543/last-1543.tar.gz
+	sha256sums = 354b4d10c60c23a25c39c0ae5921db263151d3d75281b6b510d1879a7113d284
 
 pkgname = last
