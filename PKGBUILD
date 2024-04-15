@@ -5,7 +5,7 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 
 pkgname=ttf-sil-fonts
-pkgver=10
+pkgver=11
 pkgrel=1
 pkgdesc='Metapackage depending on all OFL-licensed font packages from SIL'
 arch=(any)
@@ -13,6 +13,7 @@ url=https://software.sil.org/fonts
 license=(OFL-1.1-RFN)
 _ttffonts=(andika
            charis-sil
+           doulos-sil
            gentium-plus
            scheherazade-new)
 _silfonts=(abyssinica
@@ -21,7 +22,6 @@ _silfonts=(abyssinica
            apparatus
            awami-nastaliq
            dai-banna
-           doulos
            ezra
            galatia
            harmattan

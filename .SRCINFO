@@ -1,6 +1,6 @@
 pkgbase = ttf-sil-fonts
 	pkgdesc = Metapackage depending on all OFL-licensed font packages from SIL
-	pkgver = 10
+	pkgver = 11
 	pkgrel = 1
 	url = https://software.sil.org/fonts
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = ttf-sil-fonts
 	depends = ttf-sil-apparatus
 	depends = ttf-sil-awami-nastaliq
 	depends = ttf-sil-dai-banna
-	depends = ttf-sil-doulos
 	depends = ttf-sil-ezra
 	depends = ttf-sil-galatia
 	depends = ttf-sil-harmattan
