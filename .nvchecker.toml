@@ -1,4 +1,5 @@
 [devbox]
 source = "github"
 github = "jetpack-io/devbox"
+include_regex = '\d+\.\d+\.\d+'
 use_max_tag = true
