@@ -7,26 +7,34 @@ pkgver=0.3.3
 pkgrel=1
 pkgdesc='Cargo Subcommand for Microsoft HID Flashing Library for UF2 Bootloaders'
 url='https://crates.io/crates/cargo-hf2'
-license=('Apache' 'MIT')
+license=('Apache-2.0' 'MIT')
 
 depends=('gcc-libs' 'hidapi' 'libusb')
 makedepends=('cargo')
 optdepends=('adafruit-boards-udev: udev rule for adafruit boards')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/cargo-hf2/0.3.3/download")
+source=("$_crate-0.3.3.tar.gz::https://crates.io/api/v1/crates/cargo-hf2/0.3.3/download")
 sha512sums=('ea717e7031af5ed10756fec04af91fd4aba3157df3e6d2b1d79f141cb9f1a73669db95b6d521b2617baf05aed039f6024a622a7e1ae0ce62251bd46bd3ee1a8b')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.3.3"
 
-	cargo fetch --locked
+	export RUSTUP_TOOLCHAIN=stable
+
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.3.3"
+	
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
+
+	
 	cargo build \
 		--offline \
 		--locked \
@@ -34,7 +42,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-$pkgver"
+	cd "$srcdir/$_crate-0.3.3"
 	install -Dm755 "target/release/cargo-hf2" -t "$pkgdir/usr/bin"
-	install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE.md' -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
