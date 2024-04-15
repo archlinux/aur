@@ -11,6 +11,7 @@ pkgbase = virtualfish
     makedepends = python-poetry-core
 	depends = fish
     depends = python-packaging
+    depends = python-pkgconfig
     depends = python-psutil
     depends = python-virtualenv
     depends = python-setuptools
