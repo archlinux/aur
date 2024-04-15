@@ -1,6 +1,6 @@
 # Maintainer: Mattias Cockburn <mattias.cockburn@iits-consulting.de>
 pkgname=stackit-cli
-_pkgver=0.2.1
+_pkgver=0.2.2
 pkgver=$(tr -d '-' <<<${_pkgver})
 pkgrel=1
 epoch=
@@ -26,13 +26,13 @@ validpgpkeys=()
 
 build() {
 	cd "$pkgname-$_pkgver"
-  go build -v -o stackit-cli .
+  go build -v -o stackit .
 }
 
 package() {
 	cd "$pkgname-$_pkgver"
 	install -d -m 0755 "${pkgdir}/usr/bin"
-  install -m 0755 stackit-cli "${pkgdir}/usr/bin"
+  install -m 0755 stackit "${pkgdir}/usr/bin/"
 }
 
-sha256sums=('7ce3496c97a3987d3686333d5e29293aac1a84e6b25b746c10f15beec7ca7a41')
+sha256sums=('545658f9a79c0d0cbd8ed3ab5edf808f3ebafcdc2c5bc9e087777a82ef47f461')
