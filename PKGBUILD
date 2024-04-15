@@ -1,7 +1,7 @@
 # Maintainer: Robert Zhou <meep dot aur at meepzh dot com>
 
 pkgname=rez
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='An integrated package configuration, build and deployment system for software'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python>=3.7' 'python-pip' 'python-setuptools')
 optdepends=('bash-completion: command-line autocomplete with bash'
             'cmake: alternative build system')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/rez/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('dcd952a8257108aeb46531529c47900c44049c06a932f91522609e78fc2fee963e632982434364cc6528a1d35f042b3b822cdb866842f035c1bc3839ae9bad1f')
+b2sums=('13ea32fc9331a5e663524cdba04ccc648321e786ff9bfc9c13edfbdebc12ccecd90710c601150a5d246de17a53c6d55a46438057cb7935feaf282b401b835b49')
 
 options=(!strip)
 
