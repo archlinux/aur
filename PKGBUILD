@@ -1,10 +1,10 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 # Contributor: Joshua Rubin <me at jawa dot dev>
 pkgname=soapysdrplay3-luarvique-git
-pkgver=r139.fcac835
+pkgver=r148.ff1f38e
 pkgrel=1
 pkgdesc="Soapy SDR module for SDRPlay APIv3"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://www.sdrplay.com"
 license=('MIT')
 depends=('soapysdr' 'libsdrplay' 'gcc-libs')
