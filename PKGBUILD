@@ -3,14 +3,13 @@
 _pkgname=isomiRs
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
-pkgrel=1
-pkgdesc='Analyze isomiRs and miRNAs from small RNA-seq'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Analyze isomiRs and miRNAs from small RNA-seq"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-annotationdbi
   r-assertive.sets
   r-biobase
@@ -48,15 +47,18 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('88483aa9d9509faac83a0365993bcc9c38b4df4861bdb4ed1818d80cea51e2d4')
+md5sums=('95b301f966153c00b98359bb6a0986cd')
+b2sums=('f41937f7ca7df0495856663c132d850e2544c97df04f2e31009e2bddc078abf34f50f90e49876a39a2da8a1247f88ec3ab1b27d6dc1db70f1a15a2a18d1583c9')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
