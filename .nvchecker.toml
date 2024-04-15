@@ -1,0 +1,4 @@
+[front-panel-designer]
+source = "regex"
+url = "https://www.frontpanelexpress.com/front-panel-designer"
+regex = "/FrontDesign-[A-Z]+-([^\"]+)-amd64.deb"
