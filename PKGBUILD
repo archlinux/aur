@@ -3,7 +3,7 @@
 pkgname=uqm-megamod
 pkgver=0.8.3
 _pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of The Ur-Quan Masters that remasters the HD mod with a veritable smorgasbord of extra features and options by JHGuitarFreak (Kohr-Ah Death)."
 arch=("x86_64")
 url="https://github.com/JHGuitarFreak/UQM-MegaMod"
