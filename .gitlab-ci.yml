@@ -12,7 +12,7 @@ get_latest:
     - apk add bash
     - "[ -x ./update_pkgbuild.sh ] || chmod a+x ./update_pkgbuild.sh"
     - ./update_pkgbuild.sh
-    - diff PKGBUILD.old PKGBUILD || sed -i -e "s|^pkgrel=.*$|pkgrel=1|g"
+    - diff PKGBUILD.old PKGBUILD || sed -i -e "s|^pkgrel=.*$|pkgrel=1|g" PKGBUILD
   artifacts:
     paths:
       - "PKGBUILD"
