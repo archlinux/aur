@@ -3,7 +3,7 @@
 BUILDENV+=(!check)
 
 pkgname=nixpacks
-pkgver=1.21.2
+pkgver=1.21.3
 pkgrel=1
 pkgdesc='App source + Nix packages + Docker = Image'
 arch=(x86_64)
@@ -23,7 +23,7 @@ optdepends=('go: support go projects'
 options=('!lto')
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('b1cd2320080d9fbf3acd777b6a1a6e104dd62cc08091e1b98355feedfda1a703')
+sha256sums=('09a7451919f6c50be49ba6c9bbdc24586f904c19f9aa2ddb360fed82d16355c6')
 
 prepare() {
 	cd "$_archive"
@@ -43,9 +43,12 @@ build() {
 
 check() {
 	_srcenv
+	local skipped=(
+		'test_get_default_cache_key'
+		'docker_run_tests'
+	)
 	cargo test --frozen --all-features -- \
-		--skip 'test_get_default_cache_key' \
-		--skip 'docker_run_tests'
+		${skipped[@]/#/--skip }
 }
 
 package() {
