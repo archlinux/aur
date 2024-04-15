@@ -1,0 +1,27 @@
+pkgbase = myip-git
+	pkgdesc = Returns your public IP and the public IP to access the extranet.
+	pkgver = 0.4.6.r0.g0a123b9
+	pkgrel = 1
+	url = https://github.com/crystal-china/myip
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = crystal
+	makedepends = shards
+	depends = glibc
+	depends = gc
+	depends = gcc-libs
+	depends = libevent
+	depends = openssl
+	depends = pcre2
+	depends = zlib
+	optdepends = goldendict: Feature-rich dictionary lookup program supporting multiple dictionary formats
+	provides = myip
+	conflicts = myip
+	source = myip-git::git+https://github.com/crystal-china/myip.git
+	sha256sums = SKIP
+
+pkgname = myip-git
