@@ -1,6 +1,6 @@
 pkgbase = cargo-whatfeatures
 	pkgdesc = A cargo plugin to display features, versions and dependencies of crates.
-	pkgver = 0.9.10
+	pkgver = 0.9.11
 	pkgrel = 1
 	url = https://github.com/museun/cargo-whatfeatures
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cargo-whatfeatures
 	license = Apache
 	license = MIT
 	depends = cargo
-	source = cargo-whatfeatures-0.9.10.tar.gz::https://static.crates.io/crates/cargo-whatfeatures/cargo-whatfeatures-0.9.10.crate
-	sha512sums = d2988f4d024e85edba67e38da31e8630636583052808b9ef4749d323ca03348c5b87df89eb6e0cdc3fdd47e670162a9324244c0b20ae9a332d13325b737c3f9a
+	source = cargo-whatfeatures-0.9.11.tar.gz::https://static.crates.io/crates/cargo-whatfeatures/cargo-whatfeatures-0.9.11.crate
+	sha512sums = 989c1f322f229a23546ba62a938735c4cc707e5de682052e8103c1dcdc05835b31cfe6e393e05d9b4bcf7e1ab00344014d6cd753d22f57e69d4aed046f693237
 
 pkgname = cargo-whatfeatures
