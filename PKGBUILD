@@ -3,7 +3,7 @@
 pkgname=pizauth-git
 _pkgname="${pkgname%-git}"
 pkgver=1.0.4.r0.gcaf045c
-pkgrel=1
+pkgrel=2
 pkgdesc="OAuth2 token requester daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/ltratt/${_pkgname}"
@@ -47,6 +47,4 @@ package() {
         EXAMPLESDIR='/usr/share/' \
         DESTDIR="$pkgdir/" \
         install
-
-    install -Dm 644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
