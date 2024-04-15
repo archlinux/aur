@@ -8,6 +8,7 @@ pkgdesc="A fork of The Ur-Quan Masters that remasters the HD mod with a veritabl
 arch=("x86_64")
 url="https://github.com/JHGuitarFreak/UQM-MegaMod"
 license=("GPL2")
+options=("!debug")
 
 makedepends=("pkgconf" "lua")
 depends=("libogg" "libpng" "libvorbis" "libgl" "sdl2" "zlib" "glu" "libmikmod" "lua52" "uqm-megamod-data")
