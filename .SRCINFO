@@ -4,6 +4,7 @@ pkgbase = codecserver-mbelib-module-git
 	pkgrel = 1
 	url = https://github.com/fventuri/codecserver-mbelib-module
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
