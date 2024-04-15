@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
-pkgver=1.2.5.2
+pkgver=1.2.5.3
 _libgit2ver=1.1.1
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor"
@@ -30,8 +30,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-research-v${pkgver}-ubuntu22.04.deb"
     "libgit2-${_libgit2ver}::git+https://github.com/libgit2/libgit2.git#tag=v${_libgit2ver}"
 )
-sha256sums=('62081650da6281b3806416c0493bbb6ef5c9755a1b4f3c3df3101c6d9ca7b582'
-            '6b60a8f9341952390b087d9963f18456afe36ad0b0a63b7e28b70efe5864a225')
+sha256sums=('4b0a9aaad332a2bb4fc670f1a8de588f79dae8c17ebae6202e257d2f6e8434bf'
+            'SKIP')
 build() {
     cd "${srcdir}/libgit2-${_libgit2ver}"
     install -Dm755 -d build
