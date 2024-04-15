@@ -1,6 +1,6 @@
 pkgbase = stressapptest
 	pkgdesc = Stressful Application Test (or stressapptest, its unix name)
-	pkgver = 1.0.9
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/stressapptest/stressapptest
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = stressapptest
 	license = APACHE
 	depends = gcc-libs
 	depends = libaio
-	source = https://github.com/stressapptest/stressapptest/archive/v1.0.9.tar.gz
-	md5sums = d3a526c174c049dd7a1068dc74a62be2
+	source = https://github.com/stressapptest/stressapptest/archive/v1.0.11.tar.gz
+	md5sums = bf1c1d73b44b65f8a1584a61b4605097
 
 pkgname = stressapptest
-
