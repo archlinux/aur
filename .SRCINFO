@@ -1,0 +1,16 @@
+pkgbase = mkchrootb
+	pkgdesc = chroot-only AUR helper written in bash
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kylon/mkchrootb
+	arch = any
+	license = GPL-3.0-or-later
+	depends = jq
+	optdepends = tig
+	optdepends = vifm
+	optdepends = nano
+	optdepends = vi
+	source = https://raw.githubusercontent.com/kylon/mkchrootb/c78c768049323352dd784768730b3d10e8d30d04/mkchrootb
+	sha256sums = d5ca1e848d35213c9a2d413d5949c7448c9af37443de4ab99d39b5ed08fa38c7
+
+pkgname = mkchrootb
