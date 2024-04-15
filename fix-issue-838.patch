@@ -1,0 +1,13 @@
+diff -urN ldaptor-21.2.0.orig/ldaptor/test/test_config.py ldaptor-21.2.0/ldaptor/test/test_config.py
+--- ldaptor-21.2.0.orig/ldaptor/test/test_config.py	2021-03-01 02:38:33.000000000 +0300
++++ ldaptor-21.2.0/ldaptor/test/test_config.py	2024-04-16 00:24:27.936047808 +0300
+@@ -23,9 +23,6 @@
+     config_path = os.path.join(base_path, "test.cfg")
+     writeFile(config_path, content)
+ 
+-    # Reload with empty content to reduce the side effects.
+-    testCase.addCleanup(reloadFromContent, testCase, b"")
+-
+     return config.loadConfig(
+         configFiles=[config_path],
+         reload=True,

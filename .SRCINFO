@@ -1,0 +1,22 @@
+pkgbase = python-ldaptor
+	pkgdesc = LDAP server, client and utilities, using Twisted Python
+	pkgver = 21.2.0
+	pkgrel = 1
+	url = https://github.com/twisted/ldaptor
+	arch = any
+	license = MIT
+	checkdepends = python-pyopenssl
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-passlib
+	depends = python-twisted
+	depends = python-pyparsing
+	depends = python-zope-interface
+	source = python-ldaptor-21.2.0.tar.gz::https://github.com/twisted/ldaptor/archive/v21.2.0.tar.gz
+	source = fix-issue-838.patch
+	sha256sums = a9fb864aa141b65b8265bbb2760f13e6d0bf16a8ca6f5e2965f2392c5f4b86ba
+	sha256sums = 7054ddf990823ae4a2fae963e053a36f1662ab5875c425973e040119d65a9776
+
+pkgname = python-ldaptor
