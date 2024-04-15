@@ -7,8 +7,8 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/piggz/harbour-shutter"
 branch="main"
 license=('GPLv2+')
-depends=('qt5-multimedia' 'qt5-quickcontrols' 'qt5-sensors' 'libexif' 'libcamera' 'qt5-quickcontrols2' 'kirigami2')
-makedepends=('git' 'qt5-base')
+depends=('qt5-multimedia' 'qt5-quickcontrols' 'qt5-sensors' 'libexif' 'libcamera' 'qt5-quickcontrols2' 'kirigami2' 'opencv')
+makedepends=('git' 'qt5-base' 'vtk' 'hdf5' 'glew' 'abseil-cpp' 'fmt')
 checkdepends=()
 optdepends=()
 provides=('harbour-shutter')
@@ -24,7 +24,13 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	qmake FLAVOR=kirigami CONFIG+=release PREFIX=/usr .
+	qmake-qt5 \
+		PREFIX=/usr \
+		QMAKE_CFLAGS="${CFLAGS}" \
+		QMAKE_CXXFLAGS="${CXXFLAGS}" \
+		QMAKE_LFLAGS="${LDFLAGS}" \
+		FLAVOR="kirigami"
+
 	make
 }
 
