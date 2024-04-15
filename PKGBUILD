@@ -3,14 +3,13 @@
 _pkgname=TissueEnrich
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
-pkgrel=1
-pkgdesc='Tissue-specific gene enrichment analysis'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Tissue-specific gene enrichment analysis"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-dplyr
   r-ensurer
   r-ggplot2
@@ -24,15 +23,18 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d258d871cd7463b80af875d214dfa7a76abc9bb13c7f13604ffe04bf0dbc8c8f')
+md5sums=('5cc00925f523a6d82b216343e7f4b81a')
+b2sums=('d41c2a445c1ef71051e79dc00b1acfd4876a2153c92604a1362d9eec20aed59330e0947ec7e44827cac3a064961e889bb22d5134165d994e685aca5a3976ab27')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
