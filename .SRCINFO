@@ -1,11 +1,10 @@
 pkgbase = r-nanotator
 	pkgdesc = Next generation structural variant annotation and classification
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/nanotatoR
 	arch = any
-	license = custom
-	depends = r
+	license = LicenseRef-nanotatoR
 	depends = r-annotationdbi
 	depends = r-curl
 	depends = r-dplyr
@@ -26,6 +25,7 @@ pkgbase = r-nanotator
 	optdepends = r-rmarkdown
 	optdepends = r-yaml
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/nanotatoR_1.18.0.tar.gz
-	sha256sums = eb8200b0f4818ad032af934179ba779b1b9869d7a2e42b44bad5ccb3c823d0da
+	md5sums = e808c68591d98effbfdba4dbac07ac91
+	b2sums = 337e99575b94adc4658f8fa14e8358460f591effd1f723dc22f3f22492afd3aa7cb4e04d3e9a875db9208bdb1ca146082808fca0fadc5a154475f4c0582f75dd
 
 pkgname = r-nanotator
