@@ -10,8 +10,6 @@ pkgbase = graphmod-git
 	depends = gmp
 	provides = graphmod
 	source = git+https://github.com/yav/graphmod.git
-	source = ver-bump.patch
-	md5sums = SKIP
-	md5sums = 2b3d1196b85cb8c66cf82af52895d959
+	sha256sums = SKIP
 
 pkgname = graphmod-git

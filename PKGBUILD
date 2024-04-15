@@ -11,9 +11,8 @@ license=('custom')
 provides=("$_pkgname")
 depends=('gmp')
 makedepends=('stack')
-source=("git+${url}.git" ver-bump.patch)
-md5sums=('SKIP'
-         '2b3d1196b85cb8c66cf82af52895d959')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
@@ -22,7 +21,7 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    patch --forward --strip=1 --input="${srcdir}/ver-bump.patch"
+    stack config set resolver lts-21.8
 }
 
 build() {
