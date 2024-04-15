@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metap
-_pkgver=1.9
+_pkgver=1.10
 pkgname=r-${_pkgname,,}
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc='Meta-Analysis of Significance Values'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   r-qqconf
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6f22e6a9bd217e09e4d091f0fe22742b2f8dbe4a7fa94de9bca491b4f6d995f0')
+sha256sums=('fd57804c9ebd4c01232e5a9db50699a5a930993f30100e63bbe09567043088a2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
