@@ -5,7 +5,7 @@
 # Contributor: Maximilian Kindshofer <maximilian@kindshofer.net>
 
 _pkgbase=kitty
-_pkgver=0.33.0
+_pkgver=0.34.0
 _patchver=1
 _patchname=shade-transparency
 _suffix="${_patchname}-patch"
@@ -25,9 +25,9 @@ makedepends=('libxinerama' 'libxcursor' 'libxrandr' 'wayland-protocols' 'go' 'si
 source=("${_pkgbase}-${_pkgver}.tar.xz::https://github.com/kovidgoyal/${_pkgbase}/releases/download/v${_pkgver}/${_pkgbase}-${_pkgver}.tar.xz"
         "${_pkgbase}-${_pkgver}.tar.xz.sig::https://github.com/kovidgoyal/${_pkgbase}/releases/download/v${_pkgver}/${_pkgbase}-${_pkgver}.tar.xz.sig"
         "${_patchname}.patch")
-sha512sums=('5dad29e7ff0f83dd14138fd32ee3d556214251a5617ef9bd0c8a8b4032e26cf8973752d0b4221e06afd745ae4a12967fc1194f3d053b0e8451cb7ca97360fa35'
+sha512sums=('310084af59fb5832c9b87961d278601a8408fdcf4500083ffa5d4980ae600a2122a7477be23bfe0c374dec7955707894cb74cfd550ae577d66e39ed2e8b9c0f8'
             'SKIP'
-            'cfdc8251c45ca1e6bd55ac436d26b54cf06ff07d70a445b0a52fc9a8bb2301a56801e9dab7ad18e34bed2f6c4be08428249dec5e14deefd4e44aa4ef2bc3beb6')
+            '0d20f72a4a864e0d0da3e3b01e8ff9cf5f702cd1b6997400316b3b2426a4eb87a46879c8b9ea1662a7de1d6dbc0e3995b259f33c92bb34d3a80dd14344ffccae')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C')  # Kovid Goyal
 
 prepare() {
