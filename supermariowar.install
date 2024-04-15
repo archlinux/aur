@@ -1,0 +1,23 @@
+post_install() {
+    cat <<EOF
+      ##################################
+    Super Mario War successfully installed.
+        Run the game using the .desktop files
+        in /usr/share/applications directory,
+        OR with command bellow:
+        /usr/bin/smw --datadir /var/lib/supermariowar
+      ##################################
+EOF
+}
+
+post_upgrade() {
+    cat <<EOF
+      ##################################
+    Super Mario War successfully installed.
+        Run the game using the .desktop files
+        in /usr/share/applications directory,
+        OR with command bellow:
+        /usr/bin/smw --datadir /var/lib/supermariowar
+      ##################################
+EOF
+}
