@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
-pkgver=4.1.3.r4.g8dd7d14
+pkgver=4.1.3.r24.g6472577
 epoch=1
 pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
@@ -17,11 +17,11 @@ source=("$pkgname::git+$url.git"
 		"vtflib::git+https://github.com/StrataSource/VTFLib.git"
 		"saap::git+https://github.com/Trico-Everfire/SteamAppPathProvider.git"
 		"speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git"
-		"bufferstream::git+https://github.com/craftablescience/BufferStream.git"
 		"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git"
 		"sourcepp::git+https://github.com/craftablescience/sourcepp.git"
 		"miniaudio::git+https://github.com/mackron/miniaudio.git"
 		"discord::git+https://github.com/craftablescience/discord-rpc-clean.git"
+		"indicators::git+https://github.com/p-ranav/indicators.git"
 		#Submodule for submodules
 		"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
 sha256sums=('SKIP'
@@ -49,6 +49,7 @@ prepare() {
 	do
 		git config submodule.src/gui/thirdparty/$submodule.url "$srcdir/${submodule}"
 	done
+	git config submodule.src/cli/thirdparty/indicators.url "$srcdir/indicators"
 	git config submodule.src/cli/thirdparty/argparse.url "$srcdir/argparse"
 	git config submodule.src/lib/thirdparty/minizip-ng.url "$srcdir/minizip-ng"
 	git -c protocol.file.allow=always submodule update
