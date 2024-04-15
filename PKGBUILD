@@ -3,14 +3,13 @@
 _pkgname=Pi
 _pkgver=2.14.0
 pkgname=r-${_pkgname,,}
-pkgver=2.14.0
-pkgrel=1
-pkgdesc='Leveraging Genetic Evidence to Prioritise Drug Targets at the Gene and Pathway Level'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Leveraging Genetic Evidence to Prioritise Drug Targets at the Gene and Pathway Level"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-biocgenerics
   r-caret
   r-dnet
@@ -55,14 +54,15 @@ optdepends=(
   r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cddc5fe53952cd96fa284576204a45c1d016b4d26911723787625ae3c63d509a')
+md5sums=('cb989f0e8a3a1ab90a4a319c860ef602')
+b2sums=('1686a2a0049e92fbae97bd6b0fa977e3dadfebe5fd30de13d92ac879fbc8f1d1f94c770623e4ff341d522205eb768b689c645ad17982ef414ab33d0b449574fb')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
