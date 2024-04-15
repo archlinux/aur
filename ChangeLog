@@ -811,4 +811,11 @@ Fixes:
 New Features:
 - ClickUp tasks are now available in Morgen 🥳
 
+=== Morgen 3.4.0
+New Features:
+- Fastmail can now be connected to Morgen Assist. You can enable calendar automation using your Fastmail calendars as source or target calendars for Calendar Propagation, Automated Travel Time, Team Meeting Optimizer, and all other Morgen Assist workflows.
+- Our Outlook sync engine has been reimplemented from scratch to enable more robust authentication with personal Outlook accounts such as @outlook.com, @live.com, and @hotmail.com. If you have previously experienced difficulties connecting these accounts, reconnect using the Outlook (personal) option.
 
+Fixes:
+- A problem causing some long task labels to overflow has been fixed.
+- Morgen now provides better guidance in case of difficulties fetching tasks from third-party sources.
