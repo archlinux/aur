@@ -6,6 +6,7 @@ pkgbase = dsd-fme
 	install = dsd-fme.install
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:copyright
 	makedepends = cmake
 	depends = libpulse
