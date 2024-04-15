@@ -1,26 +1,23 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=python-proton-vpn-session
-_gitpkgname=python-proton-vpn-session
-#_gitcommit=5864beddfc638d802d388dfefafb414afbdedd61
-pkgver=0.6.5
-pkgrel=2
+pkgver=0.6.7
+pkgrel=1
 pkgdesc="The proton-vpn-session component provides utility classes to manage VPN sessions."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-session"
 license=("GPL3")
 groups=("ProtonVPN")
 makedepends=("git" "python-setuptools")
-source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#tag=v${pkgver}")
-#source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#commit=${_gitcommit}")
+source=("git+https://github.com/ProtonVPN/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-    cd "$_gitpkgname"
+    cd "$pkgname"
     python setup.py build
 }
 
 package() {
-    cd "$_gitpkgname"    
+    cd "$pkgname"    
     python setup.py install --root="$pkgdir" --optimize=1
 }

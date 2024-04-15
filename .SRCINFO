@@ -1,14 +1,14 @@
 pkgbase = python-proton-vpn-session
 	pkgdesc = The proton-vpn-session component provides utility classes to manage VPN sessions.
-	pkgver = 0.6.5
-	pkgrel = 2
+	pkgver = 0.6.7
+	pkgrel = 1
 	url = https://github.com/ProtonVPN/python-proton-vpn-session
 	arch = any
 	groups = ProtonVPN
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
-	source = git+https://github.com/ProtonVPN/python-proton-vpn-session.git#tag=v0.6.5
+	source = git+https://github.com/ProtonVPN/python-proton-vpn-session.git#tag=v0.6.7
 	sha256sums = SKIP
 
 pkgname = python-proton-vpn-session
