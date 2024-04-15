@@ -1,0 +1,20 @@
+pkgbase = cryptique-git
+	pkgdesc = A simple and secure file encryption tool
+	pkgver = 1.0.0.r0.g04a41b6
+	pkgrel = 1
+	url = https://github.com/truethari/Cryptique
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	depends = electron28
+	provides = cryptique=1.0.0
+	conflicts = cryptique
+	source = cryptique.git::git+https://github.com/truethari/Cryptique.git
+	source = cryptique.sh
+	sha256sums = SKIP
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+
+pkgname = cryptique-git
