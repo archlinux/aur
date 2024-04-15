@@ -1,10 +1,10 @@
-# Maintainer: Jobol <jobol@nonadev.net>
+# Maintainer: jobol <jobol@nonadev.net>
 pkgname=tr7
-pkgver=1.0.0
+pkgver=1.0.10
 pkgrel=1
 epoch=
 pkgdesc="A Tiny R7RS-small Scheme interpreter intended as an extension language for other applications."
-arch=(x86_64 i686)
+arch=(x86_64 i686 armv7h aarch64)
 url="https://gitlab.com/jobol/tr7"
 license=('custom:0BSD')
 groups=()
@@ -19,8 +19,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.com/jobol/tr7/-/archive/v1.0.0/tr7-v1.0.0.tar.gz")
-md5sums=("197e64f306b586cf651fa351ad816778")
+source=("https://gitlab.com/jobol/tr7/-/archive/v1.0.10/tr7-v1.0.10.tar.gz")
+md5sums=("8a069f1d7bc83da0dd8cdeff2c3db11c")
 noextract=()
 validpgpkeys=()
 
