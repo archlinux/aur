@@ -1,9 +1,9 @@
 # Maintainer Augusto Modanese <augusto.modanese@aalto.fi>
 
 pkgname=latex-template-lipics
-pkgver=2021.1.2
+pkgver=2021.1.3
 pkgmajver=$(cut -d'.' -f1 <<<"${pkgver}")
-pkgrel=4
+pkgrel=1
 pkgdesc="LaTeX template for LIPIcs (Leibniz International Proceedings in Informatics)"
 url="https://www.dagstuhl.de/en/publications/lipics"
 license=('CCPL:by')
@@ -12,7 +12,7 @@ source=(
 )
 arch=('any')
 sha256sums=(
-  '2308217cdf7a4c304b79ec4a8ad04fedf30852eb5608ef84d794846dd6203925'
+  'SKIP'
 )
 makedepends=('tar')
 depends=('texlive-core')
