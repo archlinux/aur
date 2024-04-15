@@ -4,6 +4,7 @@ pkgbase = libacars
 	pkgrel = 1
 	url = https://github.com/szpajder/libacars
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cmake
 	depends = zlib
