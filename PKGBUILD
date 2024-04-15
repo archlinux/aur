@@ -14,7 +14,7 @@ sha256sums=('f507d8cd281cb1c1ebf6021fc18ac20a85d8afbfc5ea4fe8eb0a3f54349bc9ba')
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    pytthon -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation
 }
 
 package() {
