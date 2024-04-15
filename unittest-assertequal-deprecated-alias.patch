@@ -1,0 +1,21 @@
+diff -aur wstools.old/tests/test_wsdl.py wstools/tests/test_wsdl.py
+--- wstools.old/tests/test_wsdl.py	2024-04-15 12:05:29.023409908 +0200
++++ wstools/tests/test_wsdl.py	2024-04-15 12:05:58.653578930 +0200
+@@ -70,7 +70,7 @@
+         for node in DOM.getElements(definition, tag_name, nspname):
+             name = DOM.getAttr(node, key)
+             comp = component[name]  # noqa F841
+-            self.failUnlessEqual(eval('comp.%s' % key), name)
++            self.assertEqual(eval('comp.%s' % key), name)
+ 
+     def checkXSDCollection(self, tag_name, component, node, key='name'):
+         for cnode in DOM.getElements(node, tag_name):
+@@ -126,7 +126,7 @@
+         try:
+             for key in self.wsdl.types.keys():
+                 schema = self.wsdl.types[key]
+-                self.failUnlessEqual(key, schema.getTargetNamespace())
++                self.assertEqual(key, schema.getTargetNamespace())
+ 
+             definition = self.wsdl.document.documentElement
+             version = DOM.WSDLUriToVersion(definition.namespaceURI)

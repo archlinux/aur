@@ -1,7 +1,7 @@
 pkgbase = python-wstools
 	pkgdesc = WSDL parsing services package for Web Services for Python
 	pkgver = 0.4.10
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/pycontribs/wstools
 	arch = any
 	license = BSD-3-Clause
@@ -17,7 +17,9 @@ pkgbase = python-wstools
 	depends = python-six
 	source = git+https://github.com/pycontribs/wstools.git#commit=c7f6c2973f5c598affa7def61d87e1775a6ac1d1
 	source = python310.patch
-	sha512sums = SKIP
+	source = unittest-assertequal-deprecated-alias.patch
+	sha512sums = 6b66434ac94a1828061ecf759d2fd5ef69216630ca7cdc47768d8969da98ddb9919deb9503eb3c0fff85dff9ff8252a41cb6b3cb66fcbbfdcdc3aceb7ea81c6c
 	sha512sums = d1eb690578eaf7f5e79d9dbc0494b545d88e124e11f9927c5c17c9e64b7cba209fbe5ad68b43afd84c850d22c36133e39e305d214ea55e8a7935e06a465f8947
+	sha512sums = c14e18e723ffc6edd087e31231196fefd9ca8be77f3f28e09f945c29641327ed899efe61054164dad536928a060a735f4c100d09d9119ef566fc746fb69f7ff6
 
 pkgname = python-wstools
