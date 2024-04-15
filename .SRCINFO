@@ -1,6 +1,6 @@
 pkgbase = r-tensorflow
 	pkgdesc = R Interface to 'TensorFlow'
-	pkgver = 2.15.0
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tensorflow
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-tensorflow
 	optdepends = r-pillar
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/tensorflow_2.15.0.tar.gz
-	sha256sums = 7ca9b4f5d9ac247baeca233400264adc3e728a74edd52f9ab724e2a94107c598
+	source = https://cran.r-project.org/src/contrib/tensorflow_2.16.0.tar.gz
+	sha256sums = f5afc70b42c93aff83b01c94b0a79b7dc6dbb720c2f7c7fb8bdf9429de9a7184
 
 pkgname = r-tensorflow
