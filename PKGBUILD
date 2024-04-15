@@ -2,7 +2,7 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='vhs-bin'
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='A tool for recording terminal GIFs'
 url='https://charm.sh/'
@@ -12,19 +12,20 @@ provides=('vhs')
 conflicts=('vhs')
 depends=('ffmpeg' 'ttyd')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.7.1/vhs_0.7.1_Linux_arm64.tar.gz")
-sha256sums_aarch64=('a1d3735ed1a5fa37451fb4abf0e06d963cabd1ed26fd5aa359853e12f16671ba')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.7.2/vhs_0.7.2_Linux_arm64.tar.gz")
+sha256sums_aarch64=('f2e51dd7b4c9cb1d75283c669bc13a9b59b42090e57cfe4fe32e9f0714136ad6')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.7.1/vhs_0.7.1_Linux_arm.tar.gz")
-sha256sums_armv7h=('3298df77cde217431522c8d8967d007cf5abd6a58b3d14fdc087a0374d7275ad')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.7.2/vhs_0.7.2_Linux_arm.tar.gz")
+sha256sums_armv7h=('f5554a64dcf5768857096cea6f796458a2f601f51c9ca07ea086a50ef0765ddb')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.7.1/vhs_0.7.1_Linux_i386.tar.gz")
-sha256sums_i686=('b1facaea7efee5e4d4de2a59d14e86eb6666ec849036df8703ca9f916bee8f1e')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.7.2/vhs_0.7.2_Linux_i386.tar.gz")
+sha256sums_i686=('1eb32469d6c6faabadbf99e3ea768ce01b9933d0bdd8cad25b28edd10e0f5bb1')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.7.1/vhs_0.7.1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('748443e0b5df89475499330b8943bf650cf0627250290cd5a11d38d3859e96d4')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.7.2/vhs_0.7.2_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('20c677ce9abfd4b4bb7ba883e66c6440758bea700f627f9b5e8297c083fcff4f')
 
 package() {
+  cd "${srcdir}/vhs_${pkgver}_Linux_${CARCH}"
   # bin
   install -Dm755 "./vhs" "${pkgdir}/usr/bin/vhs"
   # license
@@ -39,4 +40,6 @@ package() {
   install -Dm644 "./completions/vhs.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/vhs.fish"
   # man pages
   install -Dm644 "./manpages/vhs.1.gz" "${pkgdir}/usr/share/man/man1/vhs.1.gz"
+  # readme
+  install -Dm644 README* "${pkgdir}/usr/share/doc/vhs/"
 }
