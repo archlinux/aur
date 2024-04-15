@@ -1,8 +1,7 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=python-proton-vpn-connection
-_gitpkgname=python-proton-vpn-connection
-pkgver=0.14.2
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="The proton-vpn-connection component defines the interface that VPN connection backends should implement."
 arch=("any")
@@ -10,15 +9,15 @@ url="https://github.com/ProtonVPN/python-proton-vpn-connection"
 license=("GPL3")
 groups=("ProtonVPN")
 makedepends=("python-setuptools")
-source=("git+https://github.com/ProtonVPN/${_gitpkgname}.git#tag=v${pkgver}")
+source=("git+https://github.com/ProtonVPN/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-    cd "$_gitpkgname"
+    cd "$pkgname"
     python setup.py build
 }
 
 package() {
-    cd "$_gitpkgname"    
+    cd "$pkgname"    
     python setup.py install --root="$pkgdir" --optimize=1
 }
