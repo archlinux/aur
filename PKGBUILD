@@ -25,27 +25,25 @@ makedepends=(
 )
 source=(
   'git+https://github.com/avxsynth/avxsynth.git'
-  'https://ffmpeg.org/releases/ffmpeg-4.4.4.tar.bz2'
-  'https://github.com/FFMS/ffms2/archive/refs/tags/2.23.tar.gz'
+  'git+https://git.videolan.org/git/ffmpeg.git#tag=n4.4.4'
+  'git+https://github.com/FFMS/ffms2.git#tag=2.23'
   'https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/120.diff'
   'https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/121.diff'
   'https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/122.diff'
   'https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/126.diff'
   'c++11_fix.patch'
   'qt5.patch'
-  'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/effadce6c756247ea8bae32dc13bb3e6f464f0eb'
 )
 sha256sums=(
   'SKIP'
-  '47b1fbf70a2c090d9c0fae5910da11c6406ca92408bb69d8c935cd46c622c7ce'
-  'b09b2aa2b1c6f87f94a0a0dd8284b3c791cbe77f0f3df57af99ddebcd15273ed'
+  'SKIP'
+  'SKIP'
   '87952a30be26f6db89e5b1d89c9bdb9c9567654bdaa2ce80503ce28f8f0a272a'
   '6534ae6c2e09b3c13ca4d9c47e1d3a4c8895575d3202b0d3ab80b25504bff94d'
   'a2cf0517db8368c53912cde5cbd81d6f29cf0c4a5db5a25483284fe0b38012cb'
   'f6a825b6b5da58d7ebdb67252885262908bda86edf248b78771c8ffaef3e00b9'
   'ac83efa3a3a78ed4c1935ea47dafbdb46b9c6b03c1f4ab214850eda708ee0cc6'
   'fb155fc2dbdb2450c3761781c571ec4335d1fa5169bd1fb2332386eb047c6d8a'
-  'fec03e133521486ca258ae34ddf093eb6aab23f848c4332c367aadbfeaefda04'
 )
 options=('!lto')
 
@@ -71,9 +69,9 @@ prepare() {
   # Build on Qt5
   patch -p1 -i "${srcdir}/qt5.patch"
 
-  cd ../ffmpeg-4.4.4
-    # Build with binutils +2.41
-  patch -p1 -i "${srcdir}/effadce6c756247ea8bae32dc13bb3e6f464f0eb"
+  cd "${srcdir}/ffmpeg"
+  # Build with binutils +2.41
+  git cherry-pick effadce6c756247ea8bae32dc13bb3e6f464f0eb -m 1
 
 }
 
@@ -83,7 +81,7 @@ build() {
   export PYTHON=python
 
   cd "${srcdir}/build-ffmpeg"
-  ../ffmpeg-4.4.4/configure \
+  ../ffmpeg/configure \
     --prefix="${srcdir}/fakeroot" \
     --disable-{network,{encod,mux}ers,hwaccels,{in,out}devs,debug,programs,doc,vdpau,vaapi,cuda,cuvid,nvenc} \
     --enable-pic \
@@ -98,7 +96,7 @@ build() {
   export PKG_CONFIG_PATH="${PKG_CONFIG_LIBDIR}:/usr/lib/pkgconfig:/usr/share/pkgconfig"
 
   cd "${srcdir}/build-ffms2"
-  ../ffms2-2.23/configure \
+  ../ffms2/configure \
     --prefix="${srcdir}/fakeroot" \
     --enable-shared=no \
     --with-pic
