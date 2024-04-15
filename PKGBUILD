@@ -3,12 +3,12 @@ pkgname=m17-cxx-demod-git
 pkgver=v2.3.r16.g7e30f06
 pkgrel=2
 pkgdesc="M17 Demodulator in C++"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/mobilinkd/m17-cxx-demod"
 license=('GPL3')
 depends=('codec2' 'boost-libs' 'gcc-libs')
 provides=('m17-cxx-demod')
-makedepends=('cmake' 'git' 'patch')
+makedepends=('cmake' 'git' 'patch' 'boost')
 source=("$pkgname"::"git+https://github.com/mobilinkd/m17-cxx-demod.git" add_cstdint.patch)
 sha256sums=('SKIP' 'b8d39aef0d6ea193cc71a9a137d55ad1bcdbeda812dfa4fb17cb467e60c1b919')
 
