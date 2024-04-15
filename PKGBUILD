@@ -7,7 +7,7 @@ pkgdesc='An integrated package configuration, build and deployment system for so
 arch=('any')
 url='https://github.com/AcademySoftwareFoundation/rez'
 license=('Apache')
-depends=('python' 'python-yaml')  # Python 2.7 is supported as well. Replace with python2.
+depends=('python>=3' 'python-yaml')
 makedepends=('python>=3.7' 'python-pip' 'python-setuptools')
 optdepends=('bash-completion: command-line autocomplete with bash'
             'cmake: alternative build system')
