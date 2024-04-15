@@ -1,6 +1,6 @@
 pkgbase = nest
 	pkgdesc = Simulator for spiking neural network models
-	pkgver = 3.6
+	pkgver = 3.7
 	pkgrel = 1
 	url = https://www.nest-simulator.org/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = nest
 	makedepends = gsl
 	makedepends = openmpi
 	makedepends = python-mpi4py
-	source = nest-3.6.tar.gz::https://github.com/nest/nest-simulator/archive/v3.6.tar.gz
-	sha256sums = 68d6b11791e1284dc94fef35d84c08dd7a11322c0f1e1fc9b39c5e6882284922
+	source = nest-3.7.tar.gz::https://github.com/nest/nest-simulator/archive/v3.7.tar.gz
+	sha256sums = b313e03aa05a0d8053b895a1d14ea42e75805393c6daa0cbc62f9398d0dacd8b
 
 pkgname = nest
 	depends = bash
@@ -26,7 +26,6 @@ pkgname = nest
 	depends = python
 	depends = python-docopt
 	depends = python-mpi4py
-	depends = python-nest
 	depends = readline
 
 pkgname = python-nest
@@ -34,6 +33,7 @@ pkgname = python-nest
 	depends = gcc-libs
 	depends = glibc
 	depends = ipython
+	depends = nest
 	depends = python
 	depends = python-flask
 	depends = python-flask-cors

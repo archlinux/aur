@@ -4,7 +4,7 @@
 
 pkgbase=nest
 pkgname=(nest python-nest)
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="Simulator for spiking neural network models"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://www.nest-simulator.org/"
 license=('GPL-2.0-or-later')
 makedepends=('boost' 'cmake' 'cython' 'gsl' 'openmpi' 'python-mpi4py')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nest/nest-simulator/archive/v${pkgver}.tar.gz")
-sha256sums=('68d6b11791e1284dc94fef35d84c08dd7a11322c0f1e1fc9b39c5e6882284922')
+sha256sums=('b313e03aa05a0d8053b895a1d14ea42e75805393c6daa0cbc62f9398d0dacd8b')
 
 build() {
   cmake -B build -S "${pkgname}-simulator-${pkgver}" \
@@ -63,6 +63,7 @@ package_python-nest() {
   depends=('gcc-libs'
            'glibc'
            'ipython'
+           'nest'
            'python'
            'python-flask'
            'python-flask-cors'
