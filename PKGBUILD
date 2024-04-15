@@ -40,15 +40,16 @@ Categories=Utilities;" > $_pkgname.desktop
 }
 
 package() {
-# Create folders
+# Create directories
   mkdir -p "$pkgdir/opt/MRVN-Radiant" "$pkgdir/usr/bin"
 # Install
-  mv $_pkgname-$pkgver/* "$pkgdir/opt/MRVN-Radiant"
-  ln -s /opt/MRVN-Radiant/radiant "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 GPL LGPL LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
-  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  cd "$pkgdir/opt/MRVN-Radiant/bitmaps"
+  cd $_pkgname-$pkgver/bitmaps
   install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
   install -Dm644 logo.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
   install -Dm644 splash.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
+  cd "$srcdir"
+  install -Dm644 GPL LGPL LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
+  mv $_pkgname-$pkgver/* "$pkgdir/opt/MRVN-Radiant"
+  ln -s /opt/MRVN-Radiant/radiant "$pkgdir/usr/bin/$_pkgname"
 }
