@@ -1,7 +1,7 @@
 # Maintainer: qsqcqs
 pkgname='qwq'
-pkgver=nya
-pkgrel=1
+pkgver=nye
+pkgrel=4
 pkgdesc="uwu/qwq for terminal"
 arch=('x86_64')
 url="https://github.com/qsqcqs/qwq"
@@ -9,7 +9,10 @@ license=('GPL-3.0-or-later')
 depends=('python3')
 checkdepends=()
 optdepends=()
-replaces=('uwu-qwq')
+replaces=(
+'uwu-qwq'
+'uwu'
+)
 source=("https://github.com/qsqcqs/$pkgname/archive/refs/tags/qwq-v$pkgver.tar.gz")
 noextract=()
 validpgpkeys=()
@@ -26,4 +29,5 @@ package() {
 
 
 
-sha256sums=('f1cfae399c3628fcf429c7f964352d8c1daf857e7d24cec460744145de5e93f1')
+
+sha256sums=('217d5ee3c3181ea35f17fccbd7bf25559f33f3c98a9f8364d2907a69afa2bc9f')
