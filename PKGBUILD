@@ -2,7 +2,7 @@
 
 pkgname=uqm-megamod-data
 _pkgname=uqm-megamod
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Base content for the Ur-Quan Masters MegaMod by JHGuitarFreak (Kohr-Ah Death)."
 arch=("any")
@@ -16,7 +16,7 @@ source=(
 )
 
 md5sums=(
-  "6f21ae41751b4bed4ae98244730b9f97"
+  "0f65b232dec915fa17fdec70a85a00ae"
   "4f30efe3d129bd9a8bddd0d455c849f7"
   "c97a84d6a166d2e3a8815694162b80a8"
 )
