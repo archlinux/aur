@@ -1,0 +1,5 @@
+[funiculi]
+source = "github"
+github = "claui/funiculi"
+prefix = "v"
+use_latest_release = true
