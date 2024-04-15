@@ -1,12 +1,13 @@
 # Maintainer: Piroro-hs
 
 pkgname=ptyxis
-pkgver=46.0
+pkgver=46.1
 _vtever=0.76.0
+_vtecommit='ca9fd8cb3ccd2889ef18bc6c155291c4751e8dab'
 pkgrel=1
-pkgdesc="A terminal for a container-oriented desktop"
+pkgdesc='A terminal for a container-oriented desktop'
 arch=('x86_64')
-url="https://gitlab.gnome.org/chergert/ptyxis"
+url='https://gitlab.gnome.org/chergert/ptyxis'
 license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
 groups=()
 depends=('cairo'
@@ -27,7 +28,7 @@ depends=('cairo'
          'pango'
          'pcre2'
          'systemd-libs'
-         'vte-common')
+         "vte-common=$_vtever")
 makedepends=('git'
              'meson'
              'patchutils'
@@ -38,11 +39,11 @@ conflicts=()
 replaces=()
 backup=()
 source=("$pkgname::git+$url#tag=$pkgver"
-        "${pkgname}_vte::git+https://gitlab.gnome.org/GNOME/vte.git#tag=$_vtever"
+        "${pkgname}_vte::git+https://gitlab.gnome.org/GNOME/vte.git#commit=$_vtecommit"
         '0001-bundle-patched-vte.patch')
-sha256sums=('ce302fa4867e957542599642bc835a840b2496632c60fce53edba906ccf8f899'
-            '1b3c7c20f0c0c68e6a14f016f58a21f6fecf39079dbf46b2e01f436dc8f315a3'
-            'e60c1b17c6e8e6596b75569ea47a550487823bb0b729b21005c0fb6e7f55b71d')
+sha256sums=('0a87afb573622c361005a72aa966f1eab1c67fcd67e48918f54a859cd5632a1f'
+            '03d7cd6ff44d50cb475587ea1396eaf202e83cf902b9310e81363df2d1ac7ba7'
+            'f01dc15c90893e4aee78f8ca2b397a8d5df8668131c2d20bd8a6da2d36097122')
 
 prepare() {
   mkdir "$srcdir/$pkgname/subprojects"
