@@ -9,6 +9,7 @@ else
 	echo Update failed and no cached price info, exiting...
 	exit 2
 fi
+# EE.log location as first parameter?
 logloc="$1"; [ "$#" -ge 1 ] && shift
 logloc="${logloc:-$(
 # EE.log location set manually in cachedir?
@@ -23,7 +24,7 @@ if ! [ "$logloc" ]; then
 	exit 3
 fi
 if ! [ -r "$logloc" ]; then
-	echo Invalid or unreadable EE.log location \""$one"\", exiting...
+	echo Invalid or unreadable EE.log location \""$logloc"\", exiting...
 	exit 4
 fi
 # wfinfo-ng will create multiple PNG files in $PWD
