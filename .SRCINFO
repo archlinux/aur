@@ -1,7 +1,7 @@
 pkgbase = libcmaes-openmp
 	pkgdesc = C++11 library with Python bindings for high performance blackbox stochastic optimization using the CMA-ES algorithm for Covariance Matrix Adaptation Evolution Strategy. Build with OpenMP support.
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CMA-ES/libcmaes
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = libcmaes-openmp
 	makedepends = clang
 	makedepends = openmp
 	makedepends = ninja
+	makedepends = python-setuptools
 	depends = gcc-libs
 	optdepends = boost-libs: Python support
 	optdepends = python-numpy: Python support
