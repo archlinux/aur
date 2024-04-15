@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 # Contributor: Giulio Guzzinati <guzzinati.giulio at gmail>
 pkgname=imagej
-pkgver=1.54h
+pkgver=1.54i
 _pkgver=154
 _jar=ij-$pkgver.jar
 pkgrel=1
@@ -20,7 +20,7 @@ source=("http://wsr.imagej.net/distros/cross-platform/ij$_pkgver.zip"
         "microscope.xpm")
 noextract=("ij$_pkgver.zip")
 sha256sums=('f13e6d39ae0ac1e2635347e47d597df43716f68608221b819226559b8efa2450'
-            'f5a3879e98f078472d217566734aafae4c8a8c5adcc8bd180ceec454a50fe174'
+            '4bcdc3ef8e48170c6a3995eb6b11c5d834ab7a0d49b1eab805286b33bf32a6bc'
             'c223a3b2437501edd92176f87bbea75d994104e1545eea6c120ef8c774c7114e'
             '799188b0b2cf1dc684dc2f029dbd31a4b44b691b51fd5e42027a994452bc038e'
             'fd1479568b116a276ca1f645589a8e37ccaf767736c6cc0dcec9672225a82572')
