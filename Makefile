@@ -19,9 +19,8 @@ upload: .${PKG}.git .SRCINFO
 .%.git:
 	git clone --bare ssh://aur@aur.archlinux.org/$* $@
 
-src:
+src: PKGBUILD
 	makepkg -do
-	make -W PKGBUILD.in
 
 .SRCINFO: PKGBUILD
 	mksrcinfo
