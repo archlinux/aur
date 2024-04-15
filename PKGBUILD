@@ -19,7 +19,6 @@ sha256sums_x86_64=('9192e7d6f8eb78e1a511f7f1ce5a2854f923e363c4e3e30134a387b8f230
 sha256sums_aarch64=('cbf42d94a25f220330b76ce11deb4a185b385863bde9d2a72febf6fe3b1336ac')
 
 package() {
-  cd $_binname-$pkgver
   install -Dm755 $_binname "$pkgdir"/usr/bin/$_binname
   install -Dm644 LICENSE.txt -t "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
