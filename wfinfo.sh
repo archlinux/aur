@@ -2,13 +2,6 @@
 CACHEDIR=~/.cache/wfinfo-ng
 mkdir -pv "$CACHEDIR"
 cd "$CACHEDIR" || { echo Could not enter cache directory, exiting...; exit 1; }
-wfinfo-update ||
-if [ -f "$CACHEDIR/filtered_items.json" ] && [ -f "$CACHEDIR/prices.json" ]; then
-	echo Update failed, continuing...
-else
-	echo Update failed and no cached price info, exiting...
-	exit 2
-fi
 # EE.log location as first parameter?
 logloc="$1"; [ "$#" -ge 1 ] && shift
 logloc="${logloc:-$(
@@ -26,6 +19,13 @@ fi
 if ! [ -r "$logloc" ]; then
 	echo Invalid or unreadable EE.log location \""$logloc"\", exiting...
 	exit 4
+fi
+wfinfo-update ||
+if [ -f "$CACHEDIR/filtered_items.json" ] && [ -f "$CACHEDIR/prices.json" ]; then
+	echo Update failed, continuing...
+else
+	echo Update failed and no cached price info, exiting...
+	exit 2
 fi
 # wfinfo-ng will create multiple PNG files in $PWD
 # this would delete them, but we've already got a cache directory anyway
