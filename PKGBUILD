@@ -8,7 +8,7 @@ shopt -s extglob
 
 pkgname=pandoc-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=3.1.13.r18.g7eb2a143e
+pkgver=3.1.13.r56.g509cc3ac8
 pkgrel=1
 pkgdesc='Conversion between markup formats (static build, dynamic Lua support)'
 url='https://pandoc.org'
@@ -34,10 +34,15 @@ pkgver() {
         | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "$_pkgname"
+    stack config set resolver lts-22.19 # ghc-9.6.4
+    echo 'compiler: ghc-9.6.5' >> stack.yaml
+}
+
 build() {
     cd "$_pkgname"
 
-    stack setup
     stack build \
         --install-ghc \
         --ghc-options='-fdiagnostics-color=always' \
