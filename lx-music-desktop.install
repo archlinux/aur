@@ -5,9 +5,9 @@ post_install() {
 if type update-alternatives 2>/dev/null >&1; then
     # Remove previous link if it doesn't use update-alternatives
     if [ -L '/usr/bin/lx-music-desktop' -a -e '/usr/bin/lx-music-desktop' -a "`readlink '/usr/bin/lx-music-desktop'`" != '/etc/alternatives/lx-music-desktop' ]; then
-      rm -f '/usr/bin/lx-music-desktop'
+        rm -f '/usr/bin/lx-music-desktop'
     fi
-    update-alternatives --install '/usr/bin/lx-music-desktop' 'lx-music-desktop' '/opt/lx-music-desktop/lx-music-desktop' 100
+    update-alternatives --install '/usr/bin/lx-music-desktop' 'lx-music-desktop' '/opt/lx-music-desktop/lx-music-desktop' 100 || ln -sf '/opt/lx-music-desktop/lx-music-desktop' '/usr/bin/lx-music-desktop'
 else
     ln -sf '/opt/lx-music-desktop/lx-music-desktop' '/usr/bin/lx-music-desktop'
 fi
@@ -15,8 +15,13 @@ fi
 # SUID chrome-sandbox for Electron 5+
 chmod 4755 '/opt/lx-music-desktop/chrome-sandbox' || true
 
-update-mime-database /usr/share/mime || true
-update-desktop-database /usr/share/applications || true
+if hash update-mime-database 2>/dev/null; then
+    update-mime-database /usr/share/mime || true
+fi
+
+if hash update-desktop-database 2>/dev/null; then
+    update-desktop-database /usr/share/applications || true
+fi
 
 }
 post_remove() {
