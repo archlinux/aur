@@ -3,14 +3,13 @@
 _pkgname=VarfromPDB
 _pkgver=2.2.10
 pkgname=r-${_pkgname,,}
-pkgver=2.2.10
-pkgrel=4
-pkgdesc='Disease-Gene-Variant Relations Mining from the Public Databases and Literature'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Disease-Gene-Variant Relations Mining from the Public Databases and Literature"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-curl
   r-rismed
   r-stringi
@@ -21,17 +20,17 @@ depends=(
 optdepends=(
   r-knitr
   r-rmarkdown
-  r-tools
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ec303962a16317769d06e70482435af5127796897659208c1d52f305acf14826')
+source=("https://cran.r-project.org/src/contrib/Archive/$_pkgname/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('b7c92586fba4a698d4b488ba35eb2fbe')
+b2sums=('f3054e4bc1edd0f38be3ee4d909385352796404076df3fa478314ae84a68f48a196646739c3f08ebe22d7a3b532e5d1161110bba0e1b525d357fdd85a719638a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

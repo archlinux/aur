@@ -1,11 +1,10 @@
 pkgbase = r-varfrompdb
 	pkgdesc = Disease-Gene-Variant Relations Mining from the Public Databases and Literature
 	pkgver = 2.2.10
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=VarfromPDB
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-only
 	depends = r-curl
 	depends = r-rismed
 	depends = r-stringi
@@ -14,8 +13,8 @@ pkgbase = r-varfrompdb
 	depends = r-xml2r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	optdepends = r-tools
-	source = https://cran.r-project.org/src/contrib/VarfromPDB_2.2.10.tar.gz
-	sha256sums = ec303962a16317769d06e70482435af5127796897659208c1d52f305acf14826
+	source = https://cran.r-project.org/src/contrib/Archive/VarfromPDB/VarfromPDB_2.2.10.tar.gz
+	md5sums = b7c92586fba4a698d4b488ba35eb2fbe
+	b2sums = f3054e4bc1edd0f38be3ee4d909385352796404076df3fa478314ae84a68f48a196646739c3f08ebe22d7a3b532e5d1161110bba0e1b525d357fdd85a719638a
 
 pkgname = r-varfrompdb
