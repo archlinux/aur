@@ -2,7 +2,7 @@
 
 pkgbase=deepin-unioncode-git
 pkgname=deepin-unioncode-git
-pkgver=1.2.8.r12.gf0ca4e64
+pkgver=1.2.9.r90.g24d1ace
 pkgrel=1
 pkgdesc="IDE authored by deepin"
 arch=(x86_64
@@ -12,57 +12,70 @@ arch=(x86_64
     sw_64
     riscv64)
 url="https://github.com/linuxdeepin/deepin-unioncode"
-license=('GPL-3.0')
+license=('GPL-3.0-only')
 groups=()
 provides=(${pkgbase%-git})
 conflicts=(${pkgbase%-git})
 replaces=()
 depends=(
-    glib2
+    bash
+    capstone
+    clang
+    dbus
+    dtkcore
+    dtkwidget
+    dtkgui
+    gcc-libs
     glibc
-    dtkwidget)
+    hicolor-icon-theme
+    java-runtime
+    jsoncpp
+    json-c
+    libelf
+    libelfin
+    libunwind
+    libx11
+    qt5-base
+    qt5-declarative
+    qt5-location
+    qt5-script
+    qt5-webchannel
+    qt5-webengine
+    syntax-highlighting5
+    python
+    zstd)
 makedepends=(
     argtable
     cmake
     git
     ninja
     catch2
-    capstone
-    clang
-    dbus
-    dtkgui
     doxygen
     hiredis
     llvm
-    json-c
-    jsoncpp
     ncurses
-    libelf
-    libelfin
     libdwarf
     libmicrohttpd
-    libunwind
     libutf8proc
     libxi
     lxqt-build-tools
     qt5-tools
-    qt5-script
     openssl
     systemd
-    syntax-highlighting5
     pkgconf
-    python
-    zstd
     )
 checkdepends=()
 optdepends=()
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-options=('!strip')
+options=()
 
 pkgver() {
-    cd "${srcdir}/${pkgname}/"
-    git describe --long --tags | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 prepare()
@@ -71,7 +84,7 @@ prepare()
 }
 
 build() {
-    export LDFLAGS="-Wl,--no-as-needed"
+    export LDFLAGS="-Wl,-z,relro,-z,now -Wl,-z,shstk -Wl,--no-as-needed"
     cd "${srcdir}/${pkgname}"
 
 # See：https://wiki.archlinux.org/title/CMake_package_guidelines
