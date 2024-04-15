@@ -1,14 +1,15 @@
 # Maintainer: Legacy Installer <contact dot legacyinstaller at gmail dot com>
 # Contributor: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-qt5-git
-pkgver=3.5.r4.g6ec0d337e
+pkgver=4.1.1.r249.gf61e7ead9
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones (Built with qt5)'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
-depends=('alsa-lib' 'faudio' 'freetype2' 'libpng' 'libslirp' 'qt5-base' 'rtmidi' 'sdl2')
-makedepends=('git' 'cmake>=3.21' 'ninja' 'qt5-tools')
+depends=('fluidsynth' 'hicolor-icon-theme' 'libslirp' 'openal' 'qt5-base' 'rtmidi' 'sdl2' # explicit
+'freetype2' 'gcc-libs' 'glib2' 'glibc' 'libevdev' 'libglvnd' 'libpng' 'libx11' 'libxcb' 'libxext' 'libxi' 'libxkbcommon-x11' 'libxkbcommon' 'wayland' 'zlib') # implicit
+makedepends=('git' 'cmake>=3.21' 'extra-cmake-modules' 'ninja' 'qt5-tools' 'vde2' 'vulkan-headers')
 optdepends=(
     '86box-roms-git: ROM files'
     'discord-game-sdk: Discord Rich Presence'
@@ -30,12 +31,12 @@ pkgver() {
 
 build() {
     case "$CARCH" in
-        pentium4) _PRESET=regular;    _TOOLCHAIN=cmake/flags-gcc-i686.cmake ;;
-        x86_64)   _PRESET=regular;    _TOOLCHAIN=cmake/flags-gcc-x86_64.cmake ;;
-        arm7h)    _PRESET=regularndr; _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
-        aarch64)  _PRESET=regularndr; _TOOLCHAIN=cmake/flags-gcc-aarch64.cmake ;;
+        pentium4) _NDR=off; _TOOLCHAIN=cmake/flags-gcc-i686.cmake ;;
+        x86_64)   _NDR=off; _TOOLCHAIN=cmake/flags-gcc-x86_64.cmake ;;
+        arm7h)    _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
+        aarch64)  _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-aarch64.cmake ;;
     esac
-    cmake -S"${pkgname}" -Bbuild --preset "$_PRESET" --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DSLIRP_EXTERNAL=on
+    LDFLAGS='-z now' cmake -S"${pkgname}" -Bbuild --preset regular --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=off -DNEW_DYNAREC="$_NDR"
     cmake --build build
 }
 
