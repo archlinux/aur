@@ -24,8 +24,7 @@ function sourceXDG() {
 function manageDirs() {
 	createWrapIfNotExist "${XDG_DOCUMENTS_DIR}"/WeChat_Data
 	if [ -d "${HOME}/Documents/TrashBox" ]; then
-		mv "${HOME}/Documents/TrashBox"/* \
-			"${XDG_DOCUMENTS_DIR}"/WeChat_Data
+		echo "[Warn] Old user data may be present, check ${HOME}/Documents/TrashBox"
 	fi
 }
 
@@ -67,17 +66,29 @@ function lnDir() {
 		"${XDG_DOCUMENTS_DIR}"/xwechat_files
 }
 
+function importEnv() {
+	if [ -e "${XDG_DOCUMENTS_DIR}"/WeChat_Data/wechat.env ]; then
+		echo "[Info] Sourcing env vars..."
+		source "${XDG_DOCUMENTS_DIR}"/WeChat_Data/wechat.env
+	else
+		touch "${XDG_DOCUMENTS_DIR}"/WeChat_Data/wechat.env
+	fi
+}
+
 function cameraDect() {
-	export bwCamPar="--dev-bind-try /dev/video /dev/video"
+	bwCamPar=""
 	for camera in $(ls /dev/video*); do
-		echo "[Info] Binding camera ${camera}"
-		bwCamPar="${bwCamPar} --dev-bind ${camera} ${camera}"
+		if [ -e ${camera} ]; then
+			echo "[Info] Binding camera ${camera}"
+			bwCamPar="${bwCamPar} --dev-bind ${camera} ${camera}"
+		fi
 	done
 }
 
 function execApp() {
 	touch "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info
 	cameraDect
+	importEnv
 	bwrap \
 		--cap-drop ALL \
 		--dev /dev \
@@ -133,7 +144,7 @@ function execApp() {
 			/opt/wechat-uos-qt/files:/usr/lib/wechat-uos-qt/so \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
 		--setenv PATH /sandbox:"${PATH}" \
-		/opt/wechat-uos-qt/files/wechat
+		bash -c "export $(grep -v '^#' "${XDG_DOCUMENTS_DIR}"/WeChat_Data/wechat.env | xargs) && ${launchTarget}"
 }
 
 function dbusProxy() {
@@ -173,7 +184,7 @@ function execAppUnsafe() {
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
 		--setenv PATH /sandbox:"${PATH}" \
 		--setenv QT_PLUGIN_PATH "/usr/lib/qt/plugins /opt/wechat-uos-qt/files/wechat" \
-		/opt/wechat-uos-qt/files/wechat
+		"${launchTarget}"
 }
 
 function disableSandbox() {
@@ -205,6 +216,11 @@ function launch() {
 	inputMethod
 	moeDect
 	lnDir
+	if [[ $@ =~ "debug-shell" ]] && [[ $@ =~ "--actions" ]]; then
+		launchTarget="bash"
+	else
+		launchTarget="/opt/wechat-uos-qt/files/wechat"
+	fi
 	if [[ ${trashAppUnsafe} = 1 ]]; then
 		echo "Launching WeChat UOS (unsafe)..."
 		execAppUnsafe
