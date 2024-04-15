@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-x265
-	pkgdesc = Open Source H265/HEVC video encoder (android)
+	pkgdesc = Open Source H265/HEVC video encoder (Android x86-64)
 	pkgver = 3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/multicoreware/x265_git
 	arch = any
 	license = GPL
