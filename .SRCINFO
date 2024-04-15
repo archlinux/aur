@@ -20,6 +20,6 @@ pkgbase = wfinfo-ng-git
 	source = wfinfo-ng::git+https://github.com/knoellle/wfinfo-ng.git
 	source = wfinfo.sh
 	sha256sums = SKIP
-	sha256sums = 7800638a450794cb66e28d76e81c503750180eb79ef44135f89ddb6cdfc7baee
+	sha256sums = eab3243b7e80db668f398ddd6483e2f2ed212773146a8344f250f5b5e4faea31
 
 pkgname = wfinfo-ng-git
