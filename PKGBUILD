@@ -3,16 +3,43 @@
 # Contributor: catniptwinz <chris@peargrowersseries.com>
 
 pkgname="front-panel-designer"
-pkgver="6.3.6"
+pkgver="6.4.1"
 pkgrel="1"
 pkgdesc="Free CAD software that lets you design and order custom front panels and enclosures exactly to your specification."
 arch=("x86_64")
-url="http://www.frontpanelexpress.com/front_panel_designer/the_idea/"
-license=("custom")
-depends=("glu" "gtk2")
+url="https://www.frontpanelexpress.com/front-panel-designer"
+license=("LicenseRef-custom")
+depends=(
+    "cairo"
+    "curl"
+    "fontconfig"
+    "freetype2"
+    "gcc-libs"
+    "gdk-pixbuf2"
+    "glib2"
+    "glibc"
+    "gtk2"
+    "hicolor-icon-theme"
+    "libglvnd"
+    "libsm"
+    "libx11"
+    "libxext"
+    "libxi"
+    "libxmu"
+    "libxxf86vm"
+    "pango"
+    "zlib"
+)
+optdepends=(
+    "at-spi2-core: for placing orders"
+    "libidn2: for placing orders"
+    "libnghttp2: for placing orders"
+    "libpsl: for placing orders"
+    "libxtst: for placing orders"
+)
+options=("!debug" "!strip")
 source=("https://assets.frontpanelexpress.com/fpd/Version-$pkgver/FrontDesign-US-$pkgver-amd64.deb")
-options=("!strip")
-sha256sums=("1473d5072f4217348e932fa0e216b40432072e3b97b5c9b995597058a31ed612")
+sha256sums=("e44e26d6a1fde649ee98a0f6fa21bc53ad06b412c2d7def1eaec243aaabe98a6")
 
 package() {
   tar xf data.tar.xz -C "$pkgdir"
