@@ -1,17 +1,19 @@
 pkgbase = rc-sircmpwn
 	pkgdesc = an experimental shell for Unix inspired by Plan 9's rc
-	pkgver = r113.d85438e
+	pkgver = r233.2e5495e
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/rc
 	arch = x86_64
-	license = GPL3
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = hare
 	makedepends = hare-madeline
 	makedepends = scdoc
 	provides = rc
 	conflicts = rc
-	source = rc-sircmpwn::git+https://git.sr.ht/~sircmpwn/rc#commit=d85438e264bb156a467f4decfedbd1213ee56bec
-	md5sums = SKIP
+	source = rc-sircmpwn::git+https://git.sr.ht/~sircmpwn/rc#commit=2e5495ec7d82bf187f65ff1bbb8aadee4472ad15
+	sha256sums = d6ee6614d7ca39f603b588f3d553cf29c29fe850454309a82de23928a8b69507
 
 pkgname = rc-sircmpwn
