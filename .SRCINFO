@@ -1,0 +1,12 @@
+pkgbase = overmask
+	pkgdesc = Add a writeable overlay on top of read-only files
+	pkgver = 0.1.4.r55.g36bc082
+	pkgrel = 1
+	url = https://github.com/ErrorNoInternet/overmask
+	arch = any
+	license = LGPL3
+	makedepends = rust
+	source = git+https://github.com/ErrorNoInternet/overmask
+	sha256sums = SKIP
+
+pkgname = overmask
