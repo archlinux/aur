@@ -1,6 +1,6 @@
 pkgbase = dbeaver-arm
 	pkgdesc = Free universal SQL Client for developers and database administrators. Community Edition. Linux ARM version.
-	pkgver = 24.0.0
+	pkgver = 24.0.2
 	pkgrel = 0
 	url = https://dbeaver.io/
 	install = dbeaver-arm.install
@@ -10,7 +10,7 @@ pkgbase = dbeaver-arm
 	depends = gtk3
 	depends = gtk-update-icon-cache
 	depends = libsecret
-	source = dbeaver-arm-24.0.0.tar.gz::https://dbeaver.io/files/24.0.0/dbeaver-ce-24.0.0-linux.gtk.aarch64-nojdk.tar.gz
+	source = dbeaver-arm-24.0.2.tar.gz::https://dbeaver.io/files/24.0.2/dbeaver-ce-24.0.2-linux.gtk.aarch64-nojdk.tar.gz
 	source = dbeaver-arm.desktop
 	source = dbeaver-arm.sh
 	source = dbeaver-arm.hook
