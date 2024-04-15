@@ -3,7 +3,7 @@
 pkgname=streamcontroller-plugin-tools-git
 gitname=streamcontroller-plugin-tools
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Base for StreamController plugins"
 arch=('x86_64')
 url="https://github.com/StreamController/streamcontroller-plugin-tools"
@@ -23,6 +23,6 @@ build() {
 }
 
 package() {
-  python -m installer --destdir="${pkgdir}" ${srcdir}/${gitname}/dist/streamcontroller_plugin_tools-2.0.0-py3-none-any.whl
+  python -m installer --destdir="${pkgdir}" ${srcdir}/${gitname}/dist/*.whl
   # install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
