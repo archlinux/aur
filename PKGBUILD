@@ -1,10 +1,10 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=python-digiham-git
-pkgver=0.6.2.r7.g92bd79d
+pkgver=0.6.2.r8.g65fe48d
 pkgrel=1
 pkgdesc="Python bindings for the digiham library."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/jketterl/pydigiham"
 license=('GPL3')
 depends=('digiham' 'python' 'gcc-libs')
