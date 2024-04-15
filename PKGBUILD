@@ -1,5 +1,5 @@
-# Maintainer: Jovial Joe Jayarson <jovial7joe@hotmail.com>
-# Contributor: Jovial Joe Jayarson <jovial7joe@hotmail.com>
+# Maintainer: yozachar <dev@void.null>
+# Contributor: yozachar <dev@void.null>
 
 pkgname=plymouth-theme-aregression
 _themename=aregression
@@ -7,11 +7,11 @@ pkgver=2.1.0
 pkgrel=1
 pkgdesc="A sleek boot up plymouth progress bar"
 arch=("any")
-url="https://github.com/joe733/plymouth-theme-aregression"
+url="https://github.com/yozachar/plymouth-theme-aregression"
 license=("MIT")
 depends=("plymouth")
 makedepends=("git")
-source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/joe733/plymouth-theme-aregression/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/yozachar/plymouth-theme-aregression/archive/v${pkgver}.tar.gz")
 sha256sums=("72445b9db5003a3593cecbb23ee2fffb2f0391a3f5dbfd9d584b85c00e3ba7eb")
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
