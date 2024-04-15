@@ -3,7 +3,7 @@
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=dprint
-pkgver=0.45.0
+pkgver=0.45.1
 pkgrel=1
 pkgdesc='Pluggable and configurable code formatting platform'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('dprint-bin')
 makedepends=('cargo')
 options=('!lto') ## interferes with compiling
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('77d27ccbd8d866a6277792cdcb25599c78b6f47704456cf8bfc55bd4104cee91')
+sha256sums=('a7bbec480c535f49b17ff01e02d384e27c09d28d5610f4112e562c3a4f2ce590')
 
 prepare() {
 	cd "$pkgname-$pkgver"
