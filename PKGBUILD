@@ -2,10 +2,10 @@
 
 pkgname=redsea-git
 _pkgname=redsea
-pkgver=v0.20.r24.gc6e6b47
+pkgver=v0.21.r0.g5dcbec1
 pkgrel=1
 pkgdesc="RDS decoder for the command line "
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://github.com/windytan/redsea"
 license=(MIT)
 provides=('redsea')

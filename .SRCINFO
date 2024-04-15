@@ -1,9 +1,10 @@
 pkgbase = redsea-git
 	pkgdesc = RDS decoder for the command line
-	pkgver = v0.20.r24.gc6e6b47
+	pkgver = v0.21.r0.g5dcbec1
 	pkgrel = 1
 	url = https://github.com/windytan/redsea
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	depends = glibc
