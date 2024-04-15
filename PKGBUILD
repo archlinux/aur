@@ -1,4 +1,4 @@
-# Maintainer: Guillaume BOEHM <aur@gboehm.com>
+# Maintainer: Guillaume BOEHM <aur@mail.gboehm.com>
 pkgname=nordzy-cursors-hyprcursor
 pkgver=1.0.0
 pkgrel=1
