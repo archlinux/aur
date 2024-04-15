@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=No$gba Debugger
+Comment=Game Boy Advance / Nintendo DS debugger and emulator
+Exec=nocashgba-debugger
+Icon=nocashgba-debugger
+Terminal=false
+StartupNotify=false
+Categories=Wine;Game;Emulator;
+MimeType=application/x-gba-rom;application/x-nds-rom;

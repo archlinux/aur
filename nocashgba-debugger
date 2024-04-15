@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# WINE Launcher script for NO$GBA
+
+export WINEPREFIX=~/.nocashgba
+export NOCASHDIR=/usr/share/nocashgba-debugger
+
+[[ "$1" == "" ]] && wine $NOCASHDIR/NO\$GBA.EXE # no args
+[[ "$1" != "" ]] && wine $NOCASHDIR/NO\$GBA.EXE "$(winepath -w "$1")" # args

@@ -1,0 +1,16 @@
+pkgbase = nocashgba-debugger
+	pkgdesc = Game Boy Advance / Nintendo DS debugger and emulator
+	pkgver = 3.05
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	makedepends = p7zip
+	depends = wine
+	depends = winetricks
+	source = https://problemkaputt.de/no$gba.zip
+	source = nocashgba-debugger
+	source = nocashgba-debugger.desktop
+	source = nocashgba-debugger.png\
+	md5sum = 660df5b0ba4af13958babd48a796f1da
+
+pkgname = nocashgba-debugger
