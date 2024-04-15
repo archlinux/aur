@@ -1,9 +1,9 @@
-# Maintainer: Max Rossmannek <max.rossmannek@uzh.ch>
+# Maintainer: Max Rossmannek <max@rossmannek.de>
 # Contributor: Cullen Ross <cullenrss@gmail.com>
 
 pkgname=cobib
 pkgver=4.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Console Bibliography"
 arch=('any')
 license=('MIT')
