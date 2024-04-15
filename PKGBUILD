@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mqtt5-explorer-bin
 _pkgname="MQTT5 Explorer"
-pkgver=1.13.0
+pkgver=1.13.1
 _electronversion=28
 pkgrel=1
 pkgdesc="A simple yet feature-rich client to visualize data of any MQTT broker."
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f01e88b95e85a8fae0549d4d11813164845fa2e027a6b8bcb7a2f06673455828'
+sha256sums=('2159190761231850a76eb7217b06bca07c8a02c64b34a9dd6419e67b55042363'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
