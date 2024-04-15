@@ -1,0 +1,14 @@
+pkgbase = steam-powerbuttond-git
+	pkgdesc = Simple powerbutton daemon for steam with gamescope-session
+	pkgver = 24.04.r16.31e48dd
+	pkgrel = 1
+	url = https://github.com/aarron-lee/steam-powerbuttond
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-evdev
+	source = steam-powerbuttond::git+https://github.com/aarron-lee/steam-powerbuttond.git
+	sha256sums = SKIP
+
+pkgname = steam-powerbuttond-git
