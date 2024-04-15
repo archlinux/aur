@@ -1,0 +1,2 @@
+#!/bin/bash
+grep Ozone /usr/bin/teams-for-linux || sed "s/app.asar/app.asar --enable-features=UseOzonePlatform --ozone-platform=wayland/" -i /usr/bin/teams-for-linux

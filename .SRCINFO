@@ -1,0 +1,14 @@
+pkgbase = teams-for-linux-wayland-hook
+	pkgdesc = Pacman hook to change teams-for-linux to start with electron flags to start with wayland after install or upgrade.
+	pkgver = 1
+	pkgrel = 1
+	install = teams-for-linux-wayland-hook.install
+	arch = any
+	license = MIT
+	depends = teams-for-linux
+	source = teams-for-linux-wayland.hook
+	source = teams-for-linux-wayland
+	sha1sums = 929fea9c7e64cf4d1de78277df852fdeb99597fd
+	sha1sums = e59f8f67f089ec0dae9d8e9343a46a993bc6da41
+
+pkgname = teams-for-linux-wayland-hook

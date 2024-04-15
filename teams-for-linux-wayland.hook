@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = teams-for-linux
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = teams-for-linux-wayland-hook
+
+
+[Action]
+Description = Defaulting to Wayland support for teams-for-linux
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/teams-for-linux-wayland
