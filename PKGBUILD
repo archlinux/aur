@@ -1,10 +1,10 @@
-# Maintainer: Max Rossmannek <max.rossmannek@uzh.ch>
+# Maintainer: Max Rossmannek <max@rossmannek.de>
 # Contributor: Cullen Ross <cullenrss@gmail.com>
 
 _pkgname='cobib'
 pkgname="${_pkgname}-git"
 pkgver=r517.c6d4f59
-pkgrel=6
+pkgrel=7
 arch=('any')
 depends=('python' 'python-bibtexparser' 'python-beautifulsoup4' 'python-lxml' 'python-ruamel-yaml' 'python-pylatexenc' 'python-requests' 'python-requests-oauthlib' 'python-text-unidecode' 'python-rich' 'python-textual' 'python-markdown-it-py' 'python-mdit_py_plugins' 'python-linkify-it-py')
 license=('MIT')
