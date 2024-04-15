@@ -1,10 +1,10 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=dumphfdl
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Multichannel HFDL decoder"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/szpajder/dumphfdl"
 license=('GPL3')
 depends=('libacars' 'glib2' 'liquid-dsp' 'fftw' 'libconfig')
