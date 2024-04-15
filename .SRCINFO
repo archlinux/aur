@@ -13,6 +13,8 @@ pkgbase = task
 	optdepends = ruby: for ruby export addon
 	optdepends = perl: for perl export addon
 	optdepends = perl-json: for perl export addon
+	provides = task
+	conflicts = task
 	source = https://taskwarrior.org/download/task-2.6.2.tar.gz
 	sha256sums = b1d3a7f000cd0fd60640670064e0e001613c9e1cb2242b9b3a9066c78862cfec
 

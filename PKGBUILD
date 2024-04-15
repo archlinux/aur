@@ -26,6 +26,8 @@ makedepends=('cmake')
 optdepends=('bash-completion: for bash completion' 'python: for python export addon' 'ruby: for ruby export addon' 'perl: for perl export addon' 'perl-json: for perl export addon')
 source=("https://taskwarrior.org/download/$pkgname-$pkgver.tar.gz")
 sha256sums=('b1d3a7f000cd0fd60640670064e0e001613c9e1cb2242b9b3a9066c78862cfec')
+provides=('task')
+conflicts=('task')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
