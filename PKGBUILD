@@ -10,7 +10,7 @@ depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 #source=("https://gitlab.com/netlify-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 #Backup temp repo
-source=("https://github.com/netlifydesktop-pkg/application/archive/refs/tags/$pkgname-$pkgrel.tar.gz")
+source=("https://github.com/netlifydesktop-pkg/application/archive/refs/tags/$pkgver-$pkgrel.tar.gz")
 sha256sums=('SKIP')
 
 
