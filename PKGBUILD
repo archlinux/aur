@@ -47,6 +47,7 @@ sha256sums=(
   'fb155fc2dbdb2450c3761781c571ec4335d1fa5169bd1fb2332386eb047c6d8a'
   'fec03e133521486ca258ae34ddf093eb6aab23f848c4332c367aadbfeaefda04'
 )
+options=('!lto')
 
 pkgver() {
   cd avxsynth
@@ -88,6 +89,7 @@ build() {
     --enable-pic \
     --enable-avisynth \
     --enable-avresample \
+    --disable-decoder=opus \
     --enable-gpl
 
   make install
@@ -122,7 +124,7 @@ package_avxsynth-git() {
     'log4cpp'
     'pango' 'libpango-1.0.so' 'libpangocairo-1.0.so' 'libpangoft2-1.0.so'
     'sdl12-compat'
-    'lib32-libjpeg-turbo' 'libjpeg.so'
+    'libjpeg-turbo' 'libjpeg.so'
   )
   provides=('avxsynth')
   conflicts=('avxsynth')
