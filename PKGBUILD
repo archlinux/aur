@@ -7,10 +7,10 @@ pkgrel=1
 pkgdesc="Present the module dependencies of a program as a 'dot' graph"
 arch=('i686' 'x86_64')
 url="https://github.com/yav/${_pkgname}"
-license=('custom')
+license=('BSD-3-Clause')
 provides=("$_pkgname")
 depends=('gmp')
-makedepends=('stack')
+makedepends=('git' 'stack')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
