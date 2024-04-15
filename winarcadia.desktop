@@ -6,5 +6,4 @@ Comment=Emulator/Debugger of various Signetics 2650 game consoles
 Exec=winarcadia
 Icon=winarcadia
 Terminal=false
-StartupNotify=false
 Categories=Wine;Game;Emulator;
