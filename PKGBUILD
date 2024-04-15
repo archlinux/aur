@@ -3,14 +3,14 @@
 pkgname=uqm-megamod-addon-sol-textures
 _pkgname=uqm-megamod
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Improved textures for the planets in the Sol System for the Ur-Quan Masters MegaMod by JHGuitarFreak (Kohr-Ah Death)."
 arch=("any")
-url="https://github.com/JHGuitarFreak/UQM-MegaMod-Content"
+url="https://sourceforge.net/projects/uqm-mods/"
 license=("custom:CC BY-NC-SA 2.5")
 
 source=(
-  "mm-${pkgver}-sol-textures.uqm::https://master.dl.sourceforge.net/project/uqm-mods/MegaMod/${pkgver}/Content/Addons/mm-sol-textures.uqm?viasf=1"
+  "mm-sol-textures.uqm::https://sourceforge.net/projects/uqm-mods/files/MegaMod/${pkgver}/Content/Addons/mm-sol-textures.uqm"
   LICENSE
 )
 
@@ -19,9 +19,9 @@ md5sums=(
   "4f30efe3d129bd9a8bddd0d455c849f7"
 )
 
-noextract=("mm-${pkgver}-sol-textures.uqm")
+noextract=("mm-sol-textures.uqm")
 
 package() {
-  install -Dm644 "${srcdir}/mm-${pkgver}-sol-textures.uqm" "${pkgdir}/usr/share/uqm-megamod/content/addons/mm-${pkgver}-sol-textures.uqm"
+  install -Dm644 "${srcdir}/mm-sol-textures.uqm" "${pkgdir}/usr/share/uqm-megamod/content/addons/mm-sol-textures.uqm"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
