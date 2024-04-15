@@ -1,14 +1,15 @@
 pkgbase = privatebin-cli
 	pkgdesc = CLI for privatebin server
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gearnode/privatebin
 	install = privatebin-cli.install
 	arch = x86_64
+	arch = aarch64
 	license = ISC
 	makedepends = go
 	makedepends = pandoc
-	conflicts = privatebin-cli-git
+	conflicts = privatebin-cli-bin
 	options = !lto
 	source = privatebin-cli-2.0.1.tar.gz::https://github.com/gearnode/privatebin/archive/refs/tags/v2.0.1.tar.gz
 	sha256sums = f998b221f2a8da5a12e39bf0be8320ae39d2468827607c592b251b3e16af69db
