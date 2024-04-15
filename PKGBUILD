@@ -7,10 +7,10 @@ pkgrel=1
 pkgdesc='Manage Haskell stack snapshot builds and ghc versions (static build)'
 arch=('i686' 'x86_64')
 url="https://github.com/juhp/${_pkgname}"
-license=('BSD')
+license=('BSD-3-Clause')
 provides=("$_pkgname")
 depends=('gmp')
-makedepends=('stack')
+makedepends=('git' 'stack')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -37,4 +37,5 @@ check() {
 package() {
     cd "$_pkgname"
     stack install --local-bin-path "${pkgdir}/usr/bin"
+    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
