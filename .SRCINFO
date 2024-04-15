@@ -2,7 +2,7 @@ pkgbase = sddm-theme-astronaut
 	pkgdesc = Beautiful SDDM astronaut theme
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/joe733/sddm-theme-astronaut
+	url = https://github.com/totoro-ghost/sddm-astronaut
 	arch = any
 	license = LGPL3
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = sddm-theme-astronaut
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
-	source = git+https://github.com/joe733/sddm-theme-astronaut.git
+	source = git+https://github.com/totoro-ghost/sddm-astronaut
 	md5sums = SKIP
 
 pkgname = sddm-theme-astronaut
