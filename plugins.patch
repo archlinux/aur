@@ -1,5 +1,5 @@
 diff --git a/plugin.mk b/plugin.mk
-index 47438416..e1f70545 100644
+index 0a599244..cc2643d7 100644
 --- a/plugin.mk
 +++ b/plugin.mk
 @@ -1,9 +1,13 @@
@@ -18,7 +18,7 @@ index 47438416..e1f70545 100644
  
  ifndef SLUG
  $(error SLUG could not be found in manifest)
-@@ -33,10 +37,10 @@ ifdef ARCH_LIN
+@@ -29,10 +33,10 @@ ifdef ARCH_LIN
  	TARGET := $(TARGET).so
  	# This prevents static variables in the DSO (dynamic shared object) from being preserved after dlclose().
  	FLAGS += -fno-gnu-unique
@@ -30,14 +30,14 @@ index 47438416..e1f70545 100644
 +	FLAGS += -I/usr/include/vcvrack -I/usr/include/vcvrack/dep
 +	# Link shared libs
 +	LDFLAGS += -ldl
- 	RACK_USER_DIR ?= $(HOME)/.Rack2
+ 	XDG_DATA_HOME ?= $(HOME)/.local/share
+ 	RACK_USER_DIR ?= $(XDG_DATA_HOME)/Rack2
  endif
- 
 diff --git a/src/plugin.cpp b/src/plugin.cpp
-index 25621f66..33571d9e 100644
+index f039dd07..f292e6a9 100644
 --- a/src/plugin.cpp
 +++ b/src/plugin.cpp
-@@ -269,6 +269,9 @@ void init() {
+@@ -276,6 +276,9 @@ void init() {
  	if (settings::safeMode)
  		return;
  
