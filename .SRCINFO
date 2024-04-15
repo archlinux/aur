@@ -1,0 +1,22 @@
+pkgbase = unbted-bin
+	pkgdesc = Una's NBT Editor - an advanced interactive command-line NBT editor
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/unascribed/unbted
+	arch = any
+	license = GPL-3.0-only
+	license = Apache-2.0
+	license = MIT
+	provides = unbted=1.2.1
+	conflicts = unbted
+	noextract = unbted-1.2.1.jar
+	source = https://github.com/unascribed/unbted/releases/download/v1.2.1/unbted-1.2.1.jar
+	source = unbted
+	source = opennbt-LICENSE
+	sha256sums = 762410caa82174abd4ef37ced4877f03bf3bc27742e07c23c1d27137d2484a38
+	sha256sums = 061cfaf442065b272b5ec464384c422d30b9d0473ddd2e33c205b9f620a3bca4
+	sha256sums = cb16a84414fc7cccb56fd95cf3215f6c574ce9e921cbb4f270b313e3392e7a0f
+
+pkgname = unbted-bin
+	depends = java-runtime
+	depends = sh
