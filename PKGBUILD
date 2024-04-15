@@ -7,7 +7,7 @@
 pkgname=gamescope-nvidia
 _pkgname=gamescope
 pkgver=3.14.3
-pkgrel=1
+pkgrel=2
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
 url=https://github.com/sharkautarch/gamescope/tree/nvidia-fix

@@ -1,5 +1,20 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} Note:${bold} $1${all_off}\n"
+}
+
 do_setcap() {
-  setcap cap_sys_nice=eip $(realpath $(which gamescope))
+  note "${all_off}\"No CAP_SYS_NICE, falling back to regular-priority compute and threads.\""
+  msg_blue 'Use the following command to resolve the above output maybe print by Gamescope, but this probably will cause stutters.'
+  msg_blue "${all_off}setcap cap_sys_nice=eip \"\$(realpath \"\$(which gamescope)\")\""
 }
 
 post_install() {
