@@ -11,7 +11,7 @@ pkgbase = netlify-application
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/netlify-desktop/application/-/archive/1.1.1-1/application-1.1.1-1.tar.bz2
+	source = https://github.com/netlifydesktop-pkg/application/archive/refs/tags/netlify-application-1.tar.gz
 	sha256sums = SKIP
 
 pkgname = netlify-application
