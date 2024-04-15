@@ -68,7 +68,7 @@ package_mgba-sdl-git() {
 }
 
 package_mgba-qt-git() {
-  pkgdesc='A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy. Qt5 UI. (git build)'
+  pkgdesc='A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy. Qt6 UI. (git build)'
   depends=('libmgba-git' 'sdl2' 'qt6-multimedia')
   conflicts=('mgba-qt')
   provides=('mgba-qt')

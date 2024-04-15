@@ -42,7 +42,7 @@ pkgname = mgba-sdl-git
 	conflicts = mgba-sdl
 
 pkgname = mgba-qt-git
-	pkgdesc = A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy. Qt5 UI. (git build)
+	pkgdesc = A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy. Qt6 UI. (git build)
 	depends = libmgba-git
 	depends = sdl2
 	depends = qt6-multimedia
