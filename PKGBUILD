@@ -2,7 +2,7 @@
 
 pkgname=k0sctl
 pkgver=0.17.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A bootstrapping and management tool for k0s clusters."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/k0sproject/k0sctl"
@@ -16,7 +16,7 @@ sha256sums=('ad12a9c1932870663dd3274fb8a99ef1f1e92674d742929acbf1a4d08b1ca08c')
 build() {
   cd "k0sctl"
   local git_tag="$(git rev-parse --short=7 HEAD)"
-  local definitions="-X 'github.com/k0sproject/k0sctl/version.Environment=production' -X 'github.com/carlmjohnson/versioninfo.Revision=${git_tag}' -X 'github.com/carlmjohnson/versioninfo.Version=${pkgver}-${pkgrel}'"
+  local definitions="-X 'github.com/k0sproject/k0sctl/version.Environment=production' -X 'github.com/carlmjohnson/versioninfo.Revision=${git_tag}' -X 'github.com/carlmjohnson/versioninfo.Version=${pkgver}'"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
