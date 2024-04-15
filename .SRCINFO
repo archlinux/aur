@@ -1,0 +1,12 @@
+pkgbase = streamcontroller-plugin-tools-git
+	pkgdesc = Base for StreamController plugins
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/StreamController/streamcontroller-plugin-tools
+	arch = x86_64
+	license = GPL
+	provides = streamcontroller-plugin-tools
+	source = streamcontroller-plugin-tools::git+https://github.com/StreamController/streamcontroller-plugin-tools.git#commit=ac99ff7
+	sha512sums = SKIP
+
+pkgname = streamcontroller-plugin-tools-git
