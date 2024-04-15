@@ -5,6 +5,7 @@ pkgbase = dream-nox
 	url = https://sourceforge.net/projects/drm
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = patch
 	depends = faad2
