@@ -1,0 +1,6 @@
+pkg/
+src/
+**/*.uqm
+**/*.tar.*
+**/*.pkg.*
+LICENSE.txt
