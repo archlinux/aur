@@ -6,18 +6,18 @@
 # Maintainer: Cooky-12 cooky-12@qq.com
 provides=('bluez')
 pkgname=('bluez-ps3')
-pkgver=5.73
-pkgrel=1
+pkgver=5.74
+pkgrel=0
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL-2.0-only')
 makedepends=('dbus' 'libical' 'systemd' 'alsa-lib' 'json-c' 'ell' 'python-docutils') # 'python-pygments' 'cups')
-source=(https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.xz
-        bluetooth.modprobe fake-ps3.patch)
+source=(https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.xz fake-ps3.patch
+        bluetooth.modprobe)
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('257e9075ce05c70d48c5defd254e78c418416f7584b45f9dddc884ff88e3fc53'
-            '46c021be659c9a1c4e55afd04df0c059af1f3d98a96338236412e449bf7477b4'
-            '2eb8953fa0491315af34eaa940c77f7373cbd18d7f67acc780f460f3edb64ffb')
+sha256sums=('1b35d23099f6b66d1ab065c17bf9bf286e854063e9b17477b17804d70de9089a'
+            '2eb8953fa0491315af34eaa940c77f7373cbd18d7f67acc780f460f3edb64ffb'
+            '46c021be659c9a1c4e55afd04df0c059af1f3d98a96338236412e449bf7477b4')
 
 
 build() {
@@ -70,7 +70,7 @@ check() {
 
 package_bluez-ps3() {
   pkgdesc="Daemons for the bluetooth protocol stack ( add support for non shanwan fake ps3 controllers )"
-  depends=('systemd' 'dbus' 'glib2' 'alsa-lib' 'glibc')
+  depends=('systemd-libs' 'dbus' 'glib2' 'alsa-lib' 'glibc')
   backup=(etc/bluetooth/{main,input,network}.conf)
   conflicts=('bluez')
   _install fakeinstall/etc/bluetooth/main.conf
