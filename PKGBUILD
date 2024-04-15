@@ -3,11 +3,11 @@
 pkgname=python-async_interrupt
 _pkgname=async_interrupt
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library that provides interrupt context manager for asyncio"
 arch=('any')
 url="https://github.com/bdraco/async_interrupt"
-license=('MIT')
+license=('Apache')
 depends=('python')
 makedepends=('python-poetry')
 source=("https://files.pythonhosted.org/packages/source/a/async_interrupt/async_interrupt-${pkgver}.tar.gz")
