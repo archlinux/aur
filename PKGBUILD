@@ -2,7 +2,7 @@
 
 pkgname=overmask
 pkgver=0.1.4.r55.g36bc082
-pkgrel=2
+pkgrel=3
 pkgdesc='Add a writeable overlay on top of read-only files'
 arch=('any')
 url='https://github.com/ErrorNoInternet/overmask'
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 prepare() {
     cd "$srcdir/overmask"
 
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTUP_TOOLCHAIN=nightly
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
