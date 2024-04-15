@@ -12,7 +12,7 @@ fi
 # wfinfo-ng will create multiple PNG files in $PWD
 # this would delete them, but we've already got a cache directory anyway
 #cleanup(){ echo Exit; rm ./*.png; exit 130; }; trap cleanup INT
-exec wfinfo-ng "${1-$(
+exec wfinfo-ng "${1:-$(
 # EE.log location set manually in cachedir?
 cat "$CACHEDIR/EElogloc" 2>&- ||
 # find EE.log with most recent modification time
