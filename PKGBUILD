@@ -22,18 +22,15 @@ optdepends=('fluidsynth: FluidSynth plugin support'
             'jack: Jack plugin support'
             'lilypond: Compile exported LilyPond files')
 replaces=('tuxguitar-common' 'tuxguitar-gtk2')
-source=("tuxguitar-$pkgver::https://github.com/helge17/tuxguitar/archive/refs/tags/$pkgver.zip")
+source=("tuxguitar-$pkgver.zip::https://github.com/helge17/tuxguitar/archive/refs/tags/$pkgver.zip")
 sha256sums=('d0d8e8f64240379e8fc8f83dcdfd220f9c105dcc2879b56f6f1c3ad4ce256a11')
 
 prepare() {
-    cd tuxguitar-$pkgver
-
     export MAVEN_OPTS="$MAVEN_OPTS -Duser.home=$srcdir"
 
     # Install SWT manually (see https://github.com/helge17/tuxguitar/blob/1.6.2/INSTALL.md#download-and-install-swt-for-linux)
-    mkdir swt && cd swt
     wget https://archive.eclipse.org/eclipse/downloads/drops4/R-4.26-202211231800/swt-4.26-gtk-linux-x86_64.zip -O swt.zip
-    unzip -o swt.zip
+    unzip -o swt.zip swt.jar
     # Lie about version to fix wayland bug https://github.com/helge17/tuxguitar/issues/323
     mvn install:install-file -Dfile=swt.jar -DgroupId=org.eclipse.swt -DartifactId=org.eclipse.swt.gtk.linux.x86_64 -Dpackaging=jar -Dversion=4.13
 }
