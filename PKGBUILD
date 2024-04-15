@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('any')
@@ -37,7 +37,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('3144b069aeeba21d761c4f837a657826ff679d1d2a6d3ca91f323cc4c8745dee'
+sha256sums=('SKIP'
             '840eb0ad528d294064aa09b2b6df7a0e4a800249f43305c756cf78bee627fe1d')
 build() {
     sed -e "s|@appname@|${pkgname}|g" \
