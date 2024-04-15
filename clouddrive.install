@@ -18,7 +18,19 @@ Note: If the browser opens slowly or lags, please try using the browser's incogn
   Get the UID of another user: id -u username
   Get the GID of another user: id -g username
 5. Mount point provided by the AUR package: /media/clouddrive
-6. Purchase recommendation code: 7jp9Aajq
+6. The webdav mount point provided by default: /media/clouddrive-dav
+  Fill in clouddirve webdav username and password to: /etc/davfs2/secrets
+  eg:
+
+#  cat << EOF | sudo tee -a /etc/davfs2/secrets
+# # personal webdav, application password
+# /media/clouddrive-dav user@email.com  mypassword
+# EOF
+
+  Use systemd to set clouddrive-dav to start and enable it at boot time:
+  Root privileges: systemctl enable --now media-clouddrive-dav
+  Root privileges: systemctl status media-clouddrive-dav
+7. Purchase recommendation code: 7jp9Aajq
 -----------------------------------------------
 EOF
 
