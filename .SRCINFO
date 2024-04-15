@@ -1,17 +1,17 @@
 pkgbase = archiso-systemd-boot
 	pkgdesc = archiso as systemd-boot loader entry
-	pkgver = 2024.01.01
+	pkgver = 2024.04.01
 	pkgrel = 1
 	url = https://archlinux.org/download/
 	install = archiso-systemd-boot.install
 	arch = x86_64
 	license = GPL
 	depends = systemd
-	noextract = archlinux-2024.01.01-x86_64.iso
-	source = https://geo.mirror.pkgbuild.com/iso/2024.01.01/archlinux-2024.01.01-x86_64.iso
+	noextract = archlinux-2024.04.01-x86_64.iso
+	source = https://geo.mirror.pkgbuild.com/iso/2024.04.01/archlinux-2024.04.01-x86_64.iso
 	source = archiso-systemd-boot.install
 	source = arch-rescue.conf
-	b2sums = 734f95e7a2a737d884fdf2d39738bd8efea089d58bffff78ae1134ae9ab40af5e2bbc2ba502097473f6aa7fe595e355d9fa9f419231ad897d5de2749a3e36be6
+	b2sums = 30ccdbcbd00c222842332935358d6be7f64d19c21bb992b20a0ef6fb1d7b80c73508952593fd907c04dc3f3fb4552520047daa5681cd94d00860e557c4be72e2
 	b2sums = b407870bef382a49019b06ea4598cc4e53d4ff40da045f2a012fa2f858aa34001f7ecef067f48a008a471649e6dd1dfe2e42f1dc2696a44d1175812324e09bec
 	b2sums = ad6aa24e2bb0850d60c7f3888fa31bd834e74c87388a89b4141ff3b80d1edb7bc4d57483d8cd122a16515018fdcc8505462b00ea1ae82048653dfc7ada8dbe63
 
