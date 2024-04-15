@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=drawio-desktop-git
-pkgver=24.0.4.r2.g641da88
+pkgver=24.2.5.r1.gc7fbd59
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -20,7 +20,6 @@ makedepends=(
     'nvm'
     'libicns'
     'imagemagick'
-    'xz'
 )
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
@@ -44,7 +43,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --categories="Graphics" --exec="${pkgname%-git} %U"
@@ -59,10 +58,9 @@ build() {
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        sed "s|https|https:\/\/gh.con.sh\/https|g" -i .gitmodules
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
