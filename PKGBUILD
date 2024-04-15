@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 pkgname=moar
-pkgver=1.23.9
+pkgver=1.23.10
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=('x86_64' 'i686' 'pentium4' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=(BSD-2-Clause-Views)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz"::"$url/archive/v$pkgver.tar.gz")
-sha256sums=('0e88ff31268ba143e3c59e64751b16c720377c18afa257e2555a8c40ff66f69d')
+sha256sums=('51a26349f637452fef8d808fa5ad611befd49df0bd32779ef57ffe14b37d9e2b')
 
 prepare() {
 	cd "$pkgname-$pkgver"
