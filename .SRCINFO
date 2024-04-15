@@ -1,16 +1,16 @@
 pkgbase = cro-chain-maind-bin
 	pkgdesc = Crypto.org Chain CLI
-	pkgver = 4.2.5
-	pkgrel = 2
+	pkgver = 4.2.9
+	pkgrel = 1
 	url = https://github.com/crypto-org-chain/chain-main
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	provides = cro-chain-maind
 	conflicts = cro-chain-maind
-	source_x86_64 = chain-maind-4.2.5-x86_64.tar.gz::https://github.com/crypto-org-chain/chain-main/releases/download/v4.2.5/chain-main_4.2.5_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = acbc7c3fd1a1c1761f0e51e5bb49be24fea1fd0c708aedbdf74484aeb52c19ea
-	source_aarch64 = chain-maind-4.2.5-aarch64.tar.gz::https://github.com/crypto-org-chain/chain-main/releases/download/v4.2.5/chain-main_4.2.5_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 8365f80430324f1feb0fb699fd9447e6a5191b120387b76081ee53e36d97bb76
+	source_x86_64 = chain-maind-4.2.9-x86_64.tar.gz::https://github.com/crypto-org-chain/chain-main/releases/download/v4.2.9/chain-main_4.2.9_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6f9f36330ea89fa4f9f82905c756104cd4012a1378a97c2d62c3d79669df2ff1
+	source_aarch64 = chain-maind-4.2.9-aarch64.tar.gz::https://github.com/crypto-org-chain/chain-main/releases/download/v4.2.9/chain-main_4.2.9_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d76ed85bfb90a1a882a5872f047edd9f6a438af74578517bdd931a325f3e7328
 
 pkgname = cro-chain-maind-bin
