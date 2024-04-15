@@ -2,7 +2,7 @@
 # Maintainer: Robert Zhou <meep.aur@meepzh.com>
 
 pkgname=renderman
-pkgver=26.0.0.2323370
+pkgver=26.0.2323370
 pkgrel=1
 pkgdesc="Proprietary photorealistic 3D rendering software produced by Pixar Animation Studios"
 arch=('x86_64')
