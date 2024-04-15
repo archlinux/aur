@@ -3,12 +3,12 @@ pkgname=msk144decoder-git
 pkgver=r33.b4cfcfc
 pkgrel=2
 pkgdesc="MSK144, JT65, Q65 Console Stream Decoders"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/alexander-sholohov/msk144decoder"
 license=('GPL3' 'MIT')
-depends=('fftw' 'curl' 'gcc-libs')
+depends=('fftw' 'curl' 'gcc-libs' 'boost-libs')
 provides=('msk144decoder')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'boost')
 source=("$pkgname"::"git+https://github.com/alexander-sholohov/msk144decoder.git")
 sha256sums=('SKIP')
 
