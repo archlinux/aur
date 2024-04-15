@@ -1,12 +1,11 @@
 pkgbase = shutter-encoder-bin
 	pkgdesc = Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux
 	pkgver = 18.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.shutterencoder.com
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = libxml2
-	depends = libxtst
 	depends = freetype2
 	depends = libjpeg-turbo
 	depends = libxi
@@ -19,6 +18,7 @@ pkgbase = shutter-encoder-bin
 	depends = libbsd
 	depends = alsa-lib
 	depends = vulkan-icd-loader
+	depends = libxtst
 	provides = shutter-encoder=18.0
 	conflicts = shutter-encoder
 	source = shutter-encoder-18.0.deb::https://www.shutterencoder.com/Shutter%20Encoder%2018.0%20Linux%2064bits.deb

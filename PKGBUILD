@@ -2,7 +2,7 @@
 pkgname=shutter-encoder-bin
 _pkgname="Shutter Encoder"
 pkgver=18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux"
 arch=("x86_64")
 url="https://www.shutterencoder.com"
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'libxml2'
-    'libxtst'
     'freetype2'
     'libjpeg-turbo'
     'libxi'
@@ -25,6 +24,7 @@ depends=(
     'libbsd'
     'alsa-lib'
     'vulkan-icd-loader'
+    'libxtst'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/Shutter%20Encoder%20${pkgver}%20Linux%2064bits.deb"
