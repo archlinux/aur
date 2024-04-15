@@ -2,7 +2,7 @@
 
 _pkgname='obs-multi-rtmp'
 pkgname="${_pkgname}-git"
-pkgver=r386.b73168f
+pkgver=r427.2690281
 pkgrel=1
 pkgdesc='Multiple RTMP outputs plugin for OBS Studio. Git version.'
 arch=('x86_64')
