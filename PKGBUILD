@@ -1,7 +1,7 @@
 # Maintainer: Guillaume BOEHM <aur@mail.gboehm.com>
 pkgname=nordzy-cursors-hyprcursor
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprcursor port of https://github.com/alvatip/Nordzy-cursors."
 arch=(any)
 url="https://github.com/guillaumeboehm/Nordzy-cursors-hyprcursor"
@@ -12,8 +12,8 @@ source=(
 )
 noextract=("${source[@]##*/}")
 sha256sums=(
-    "8b3f47d997a2dba1d9711e471e5e1a762b0b621e6003c6082a68cc0abeca0c02"
-    "80faf7deff6fed660f17a40c90ed650606641ba8a33570632636ef05d89bafa2"
+    "9a4541fc9e317b6a5b4a61f59a38e76e94df9c6d7a018582c29f0be1cf7c6258"
+    "79ebe3fe728f84746f99b5e013a6600b37da54758ece9234e28f7820ffc3e521"
 )
 
 package() {
