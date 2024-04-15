@@ -13,7 +13,7 @@ pkgbase = syncthingdesktop
 	depends = libxss
 	depends = git
 	depends = syncthing
-	source = https://gitlab.com/syncthingdesktop/application/-/archive/1.0.1-1/application-1.0.1-1.tar.bz2
+	source = https://github.com/syncthingdesktop-pkg/application/archive/refs/tags/1.0.1-1.tar.gz
 	sha256sums = SKIP
 
 pkgname = syncthingdesktop
