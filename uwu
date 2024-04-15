@@ -2,65 +2,63 @@
 
 import re
 import sys
-b=0
+mrow=0
 if len(sys.argv) > 1:
-	b=sys.argv[1:]			
-	a=b[0]
-	b=b[1:]
-	while len(b) > 0:
-		a=a+' '+b[0]
-		b=b[1:]		
-	a=re.sub("thats","nyas",a)
-	a=re.sub("pretty|beautiful","pwetti",a)
-	a=re.sub("rl","w",a)
-	a=re.sub("r","w",a)
-	a=re.sub("l","w",a)
-	a=re.sub("ow","#@!a#@!o#@!",a)
-	a=re.sub("tha","#@!n#@!y#@!a#@!",a)
-	a=re.sub("(?<=\b)this(?=\b)","#@!d#@!i#@!s#@!",a)
-	a=re.sub("na","#@!n#@!y#@!a#@!",a)
-	a=re.sub("th","f",a)
-#	a=re.sub("(?<![b-df-hj-np-tv-xzB-DF-HJ-NP-TV-XZ])u","#@!w#@!u#@!",a)
-	a=re.sub("(?<![aeiouyYAEIOU])e[iya]","#@!y#@!e#@!i#@!",a)
-	a=re.sub("(?<![aeiouyYAEIOU])ie","#@!y#@!i#@!e#@!",a)
-	a=re.sub("(?<![aeiouyYAEIOU])es","#@!y#@!e#@!s#@!",a)
-	a=re.sub("(?<![aeiouyYAEIOU])a[e]","#@!y#@!a#@!e#@!",a)
-	a=re.sub("(?<![aeiouyYAEIOU])ai","#@!y#@!a#@!i#@!",a)
-	a=re.sub("(?<![aeiouyYAEIOU])o[ou]","#@!y#@!u#@!",a)
-	a=re.sub("(?<![aeiouyYAEIOU])oe","#@!y#@!o#@!",a)
-	a=re.sub("(?<![aeiouyYAEIOU])u[eu]","#@!u#@!w#@!u#@!",a)
-	a=re.sub("(?<![aeiouyYAEIOU])e[u]","#@!u#@!w#@!u#@!",a)
-	a=re.sub("o[uo]","ew",a)
-	a=re.sub("#@!","",a)
-	print(a)
+	mrow=sys.argv[1:]			
+	nya=mrow[0]
+	mrow=mrow[1:]
+	while len(mrow) > 0:
+		nya=nya+' '+mrow[0]
+		mrow=mrow[1:]		
+	nya=re.sub("thats","nyas",nya)
+	nya=re.sub("pretty|beautiful","pwetti",nya)
+	nya=re.sub("rl","w",nya)
+	nya=re.sub("r","w",nya)
+	nya=re.sub("l","w",nya)
+	nya=re.sub("ow","#@!a#@!o#@!",nya)
+	nya=re.sub("tha","#@!n#@!y#@!a#@!",nya)
+	nya=re.sub("(?<=\b)this(?=\b)","#@!d#@!i#@!s#@!",nya)
+	nya=re.sub("na","#@!n#@!y#@!a#@!",nya)
+	nya=re.sub("th","f",nya)
+	nya=re.sub("(?<![aeiouyYAEIOU])e[iya]","#@!y#@!e#@!i#@!",nya)
+	nya=re.sub("(?<![aeiouyYAEIOU])ie","#@!y#@!i#@!e#@!",nya)
+	nya=re.sub("(?<![aeiouyYAEIOU])es","#@!y#@!e#@!s#@!",nya)
+	nya=re.sub("(?<![aeiouyYAEIOU])a[e]","#@!y#@!a#@!e#@!",nya)
+	nya=re.sub("(?<![aeiouyYAEIOU])ai","#@!y#@!a#@!i#@!",nya)
+	nya=re.sub("(?<![aeiouyYAEIOU])o[ou]","#@!y#@!u#@!",nya)
+	nya=re.sub("(?<![aeiouyYAEIOU])oe","#@!y#@!o#@!",nya)
+	nya=re.sub("(?<![aeiouyYAEIOU])u[eu]","#@!u#@!w#@!u#@!",nya)
+	nya=re.sub("(?<![aeiouyYAEIOU])e[u]","#@!u#@!w#@!u#@!",nya)
+	nya=re.sub("o[uo]","ew",nya)
+	nya=re.sub("#@!","",nya)
+	print(nya)
 	exit()
 
-while b==0:
+while mrow==0:
 		try:
-			a=input()
-		a=re.sub("thats","nyas",a)
-		a=re.sub("pretty|beautiful","pwetti",a)
-		a=re.sub("rl","w",a)
-		a=re.sub("r","w",a)
-		a=re.sub("l","w",a)
-		a=re.sub("ow","#@!a#@!o#@!",a)
-		a=re.sub("tha","#@!n#@!y#@!a#@!",a)
-		a=re.sub("(?<=\b)this(?=\b)","#@!d#@!i#@!s#@!",a)
-		a=re.sub("na","#@!n#@!y#@!a#@!",a)
-		a=re.sub("th","f",a)
-#		a=re.sub("(?<![b-df-hj-np-tv-xzB-DF-HJ-NP-TV-XZ])u","#@!w#@!u#@!",a)
-		a=re.sub("(?<![aeiouyYAEIOU])e[iya]","#@!y#@!e#@!i#@!",a)
-		a=re.sub("(?<![aeiouyYAEIOU])ie","#@!y#@!i#@!e#@!",a)
-		a=re.sub("(?<![aeiouyYAEIOU])es","#@!y#@!e#@!s#@!",a)
-		a=re.sub("(?<![aeiouyYAEIOU])a[e]","#@!y#@!a#@!e#@!",a)
-		a=re.sub("(?<![aeiouyYAEIOU])ai","#@!y#@!a#@!i#@!",a)
-		a=re.sub("(?<![aeiouyYAEIOU])o[ou]","#@!y#@!u#@!",a)
-		a=re.sub("(?<![aeiouyYAEIOU])oe","#@!y#@!o#@!",a)
-		a=re.sub("(?<![aeiouyYAEIOU])u[eu]","#@!u#@!w#@!u#@!",a)
-		a=re.sub("(?<![aeiouyYAEIOU])e[u]","#@!u#@!w#@!u#@!",a)
-		a=re.sub("o[uo]","ew",a)
-		a=re.sub("#@!","",a)
-		print(a)
+			nya=input()
+		nya=re.sub("thats","nyas",nya)
+		nya=re.sub("pretty|beautiful","pwetti",nya)
+		nya=re.sub("rl","w",nya)
+		nya=re.sub("r","w",nya)
+		nya=re.sub("l","w",nya)
+		nya=re.sub("ow","#@!a#@!o#@!",nya)
+		nya=re.sub("tha","#@!n#@!y#@!a#@!",nya)
+		nya=re.sub("(?<=\b)this(?=\b)","#@!d#@!i#@!s#@!",nya)
+		nya=re.sub("na","#@!n#@!y#@!a#@!",nya)
+		nya=re.sub("th","f",nya)
+		nya=re.sub("(?<![aeiouyYAEIOU])e[iya]","#@!y#@!e#@!i#@!",nya)
+		nya=re.sub("(?<![aeiouyYAEIOU])ie","#@!y#@!i#@!e#@!",nya)
+		nya=re.sub("(?<![aeiouyYAEIOU])es","#@!y#@!e#@!s#@!",nya)
+		nya=re.sub("(?<![aeiouyYAEIOU])a[e]","#@!y#@!a#@!e#@!",nya)
+		nya=re.sub("(?<![aeiouyYAEIOU])ai","#@!y#@!a#@!i#@!",nya)
+		nya=re.sub("(?<![aeiouyYAEIOU])o[ou]","#@!y#@!u#@!",nya)
+		nya=re.sub("(?<![aeiouyYAEIOU])oe","#@!y#@!o#@!",nya)
+		nya=re.sub("(?<![aeiouyYAEIOU])u[eu]","#@!u#@!w#@!u#@!",nya)
+		nya=re.sub("(?<![aeiouyYAEIOU])e[u]","#@!u#@!w#@!u#@!",nya)
+		nya=re.sub("o[uo]","ew",nya)
+		nya=re.sub("#@!","",nya)
+		print(nya)
 		except EOFError:
-			b=1
+			mrow=1
 
