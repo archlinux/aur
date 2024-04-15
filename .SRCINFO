@@ -1,6 +1,6 @@
 pkgbase = geany-plugin-preview-git
 	pkgdesc = Geany plugin to preview lightweight markup languages
-	pkgver = 0.1.1.r0.g7e1d8f9
+	pkgver = 0.1.2.r0.gfffc62a
 	pkgrel = 1
 	url = https://github.com/xiota/geany-preview
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = geany-plugin-preview-git
 	optdepends = ttf-courier-prime: Export Fountain screenplays to PDF
 	provides = geany-plugin-preview
 	conflicts = geany-plugin-preview
+	options = !lto
 	source = geany-preview::git+https://github.com/xiota/geany-preview.git#branch=main
 	sha256sums = SKIP
 
