@@ -2,7 +2,7 @@
 
 pkgname=winarcadia-bin
 _pkgname='winarcadia-bin'
-pkgver=32.2
+pkgver=32.3
 pkgrel=1
 pkgdesc='Emulator/Debugger of various Signetics 2650 game consoles'
 url='https://amigan.1emu.net/releases'
@@ -14,7 +14,7 @@ source=(https://amigan.1emu.net/releases/WinArcadia-bin.rar
         winarcadia.desktop
         winarcadia.png)
 noextract=(WinArcadia-bin.rar) # makepkg sucks at rars
-md5sums=('09e40489338dc664645a16601348458a'
+md5sums=('SKIP' # this program is updated REALLY often :sob:
          'SKIP'
          'SKIP'
          'SKIP')
