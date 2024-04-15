@@ -1,8 +1,8 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=python-proton-keyring-linux-secretservice
-pkgver=0.0.1
-pkgrel=6
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="The proton-keyring-linux-secretservice component."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-keyring-linux-secretservice"
