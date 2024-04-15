@@ -1,0 +1,9 @@
+[Unit]
+Description=Configure usbfs_memory_mb for spinnaker-sdk
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'echo 1000 > /sys/module/usbcore/parameters/usbfs_memory_mb'
+
+[Install]
+WantedBy=multi-user.target
