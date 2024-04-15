@@ -6,46 +6,53 @@
 
 pkgname=gamescope-nvidia
 _pkgname=gamescope
-pkgver=3.14.2
+pkgver=3.14.3
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
 url=https://github.com/sharkautarch/gamescope/tree/nvidia-fix
-license=('BSD-2-Clause' 'BSD-3-Clause')
+license=('BSD-2-Clause')
 install="$_pkgname.install"
 depends=(
-  libpipewire
-  libcap
-  libliftoff
-  libxcomposite
-  libxdamage
-  libxkbcommon
-  libxmu
-  libxres
-  libxxf86vm
-  sdl2
-  openvr
-  vulkan-icd-loader
-  xorg-xwayland
-  wlroots)
+  'libpipewire'
+  'libcap'
+  'libliftoff'
+  'libxcomposite'
+  'libxdamage'
+  'libxkbcommon'
+  'libxmu'
+  'libxres'
+  'libxxf86vm'
+  'seatd' # wlroots deps
+  'xcb-util-errors' # wlroots deps
+  'libdisplay-info' # wlroots deps
+  'sdl2'
+  'openvr'
+  'vulkan-icd-loader'
+  'xorg-xwayland')
 makedepends=(
-  git
-  glm
-  vkroots
-  glslang
-  meson
-  ninja
-  spirv-headers
-  vulkan-headers
-  wayland-protocols)
+  'git'
+  'glm=1.0.0'
+  'glslang'
+  'meson'
+  'ninja'
+  'spirv-headers'
+  'vulkan-headers'
+  'wayland-protocols')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-  "git+https://github.com/ValveSoftware/gamescope.git#tag=$pkgver"
-  "git+https://github.com/Joshua-Ashton/reshade.git"
-  "0001-reverts-bd722f7.patch")
-sha1sums=('SKIP'
-          'SKIP'
+  "gamescope::git+https://github.com/ValveSoftware/gamescope.git#tag=$pkgver"
+  "reshade::git+https://github.com/Joshua-Ashton/reshade.git#commit=9fdbea6892f9959fdc18095d035976c574b268b7"
+  "vkroots::git+https://github.com/Joshua-Ashton/vkroots.git#commit=5c217cd43ca1ceecaa6acfc93a81cdc615929155"
+  "wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=a5c9826e6d7d8b504b07d1c02425e6f62b020791"
+  "stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9"
+  "reverts-bd722f7.patch")
+sha1sums=('842bc625941dcc054d45ede5967338de35470286'
+          '5860b457b6bb00d1fdfd6dd068516604e87a6466'
+          'a6a226a972eaef5bc2b009b75995e75b29a50d5b'
+          '0e6ccd1ec72dc3471594568097c922bec551fc3c'
+          'e89ef3e6ee66abf807ce78bb269809eb0a0ff63a'
           '6573136d575068266dcb67459545ab06db58758a')
 
 prepare() {
@@ -54,28 +61,30 @@ prepare() {
   for patch in "${source[@]}"; do
     if [[ $patch == *.patch ]]; then
       msg2 "Applying $patch"
-      patch --no-backup-if-mismatch -d "$_pkgname" -Np1 < "$patch"
+      patch --no-backup-if-mismatch -d gamescope -Np1 -i "$srcdir/$patch"
     fi
   done
 
-  msg2 'Retrieving build dependencies...'
   cd gamescope
 
+  # use system spirv-headers
+  sed -i "s|'.*spirv/unified1|'/usr/include/spirv/unified1|" src/meson.build
+
+  msg2 'Retrieving git build dependencies...'
   # configure build deps
   git -c submodule.src/reshade.url="$srcdir/reshade" \
+      -c submodule.subprojects/vkroots.url="$srcdir/vkroots" \
+      -c submodule.subprojects/wlroots.url="$srcdir/wlroots" \
       -c submodule.thirdparty/SPIRV-Headers.update=none \
-      -c submodule.subprojects/vkroots.update=none \
       -c submodule.subprojects/openvr.update=none \
-      -c submodule.subprojects/wlroots.update=none \
       -c submodule.subprojects/libdisplay-info.update=none \
       -c submodule.subprojects/libliftoff.update=none \
       -c protocol.file.allow=always submodule update --init --progress
 
-  # download meson wrap deps that can't be replaced with system one
+  msg2 'Retrieving meson build dependencies...'
+  # meson wrap deps that can't be replaced with system one
+  sed -i "s|^url =.*|url = file://$srcdir/stb|" subprojects/stb.wrap
   meson subprojects download stb
-
-  # use system spirv-headers
-  sed -i "s|'.*spirv/unified1|'/usr/include/spirv/unified1|" src/meson.build
 }
 
 pkgver() {
@@ -84,7 +93,7 @@ pkgver() {
 
 build() {
   arch-meson "$_pkgname" build \
-    -Dforce_fallback_for=stb \
+    -Dforce_fallback_for=stb,vkroots \
     -Dbenchmark=disabled \
     -Dpipewire=enabled
   meson compile -C build
