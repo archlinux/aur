@@ -2,7 +2,7 @@
 # Contributor: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-gcc
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='VHDL simulator - GCC back-end'
@@ -22,7 +22,7 @@ source=(
     "https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
 )
 sha256sums=(
-    '97c88b36b73e7b5086366c1dd49a4224f3b200142b60c005305fc5c8a835740c'
+    '0aab531b45a6613b0918f3ac6ec717b8acfad051d1abb1c39eb7490590c7a324'
     '949a5d4f99e786421a93b532b22ffab5578de7321369975b91aec97adfda8c3b'
 )
 
