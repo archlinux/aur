@@ -2,18 +2,18 @@
 
 pkgname=inkscape-openpaths-git
 pkgver=r8.10d0d7c
-pkgrel=1
+pkgrel=2
 pkgdesc='Inkscape extension for opening up closed paths, e. g. for single-line fonts in OPF/OTF/TTF format'
 arch=('any')
 url='https://gitlab.com/EllenWasbo/inkscape-extension-openpaths'
 
 # No license file present but the author has granted the GPL2 license here:
 # https://inkscape.org/~EllenWasbo/%E2%98%85openclosedpath
-license=('GPL2')
+license=('GPL-2.0-only')
 
-depends=('inkscape')
+depends=('inkscape' 'python')
 makedepends=('git')
-options=('!strip')
+options=('!debug' '!strip')
 
 source=(
   "${pkgname}::git+https://gitlab.com/EllenWasbo/inkscape-extension-openpaths.git"
