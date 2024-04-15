@@ -6,6 +6,5 @@ Comment=Tracker for making Atari POKEY music
 Exec=rmtracker
 Icon=rmtracker
 Terminal=false
-StartupNotify=false
 Categories=Wine;AudioVideo;Tracker;
 MimeType=application/x-rmt-song;
