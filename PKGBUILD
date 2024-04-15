@@ -52,4 +52,7 @@ package() {
   install -Dm644 assets/lazer-nuget.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/osu-lazer.png"
   install -Dm644 assets/lazer.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/osu-lazer.png"
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/osu-lazer-git/LICENCE"
+
+  # Fix Vulkan renderer. See: https://github.com/ppy/osu/discussions/27659#discussioncomment-9101487
+  ln -sf /usr/lib/libdl.so.2 "$pkgdir/opt/osu-lazer/libdl.so"
 }
