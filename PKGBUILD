@@ -7,7 +7,7 @@ arch=("any")
 url=https://github.com/justinmayer/virtualfish
 license=("custom:MIT")
 depends=("fish" "python-packaging" "python-pkgconfig" "python-psutil" "python-virtualenv")
-makedepends=("poetry-core" "python-installer")
+makedepends=("python-poetry-core" "python-installer")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('f507d8cd281cb1c1ebf6021fc18ac20a85d8afbfc5ea4fe8eb0a3f54349bc9ba')
 
