@@ -1,7 +1,8 @@
-# Maintainer: Marat Moustafine <moustafine-@t-tuta-d.t-io>
+# Maintainer: Razykov Vyacheslav <v.razykov@gmail.com>
+# Contributor: Marat Moustafine <moustafine-@t-tuta-d.t-io>
 
 pkgname=pvs-studio
-pkgver=7.29.79138.387
+pkgver=7.30.80678.389
 pkgrel=1
 pkgdesc='Static code analyzer for C, C++ and C#'
 arch=('pentium4' 'x86_64')
@@ -15,7 +16,7 @@ options=('!strip')
 install=$pkgname.install
 source=(http://cdn.$pkgname.com/$pkgname-$pkgver-${arch[1]}.tgz)
 source_pentium4=($pkgname.binfmt.d)
-sha256sums=('f54085c51e978e9c01c75a0c7cf8ca302a753b5ff0e0c89aac8035473a6446ba')
+sha256sums=('e4765a44e484f8f23cf2a61e5b8962e81187dce27fa16ca63efcb894af973797')
 sha256sums_pentium4=('fd7b1f7b48aa84205c1c0f60f630f1a33504e0e4904c5b0e8ae2477494899c97')
 
 package() {
