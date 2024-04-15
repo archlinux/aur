@@ -6,5 +6,4 @@ Comment=Multi-format graphics editor for ROM hacking
 Exec=tile-molestor
 Icon=tile-molestor
 Terminal=false
-StartupNotify=false
 Categories=Java;Graphics;Development;
