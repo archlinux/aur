@@ -75,7 +75,7 @@ sha256sums=('SKIP'
             'b717f2f61aeb3bf670fe60424a8cd638d51e73dc66bd84277fada289bf2330d8'
             'acced048ce6359f4f9f894ee648e4c47fd5093db3fce285b60f73b9f80bb7ac9'
             '4e6b32ea58ecfd6a2cce7e5ddf09160136714de8b58e41a9919b30e06e998178'
-            '3604daecd1db061c0ded213db17eaf9f87fc276e4540fed6ef9d68b7119f3603')
+            '771f34edae248b68ac6be654b2995fbc024840cb73fe3c20cd0b107b053fe992')
 options=(debug)
 
 pkgver() {
