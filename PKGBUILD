@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/ChimeraOS/gamescope-session"
 license=('MIT')
 groups=()
-depends=('gamescope')
+depends=('gamescope' 'read-edid')
 makedepends=('git')
 install=gamescope-session.install
 source=("${_gitdir}::git+https://github.com/3003n/${_gitdir}.git#branch=dev")
