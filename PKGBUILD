@@ -6,31 +6,34 @@
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.50.1
-pkgrel=2
+pkgver=3.52.0
+pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
-arch=(
-  'i686'
-  'x86_64'
-)
+arch=('x86_64')
 depends=(
-  'libhandy'
+  'dconf'
+  'glib2'
   'gsettings-desktop-schemas'
-  'vte3-notification>=0.74.0'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libhandy'
+  'libx11'
+  'pango'
+  'vte3-notification>=0.76.0'
 )
 makedepends=(
-  'git'
   'docbook-xsl'
-  'libnautilus-extension'
+  'git'
   'gnome-shell'
+  'libnautilus-extension'
   'meson'
+  'python-packaging'
   'yelp-tools'
 )
 optdepends=(
-  'gconf: for gnome-terminal-migration'
-  'libnautilus-extension: for "Open Terminal Here" in GNOME Files'
+  'libnautilus-extension: Nautilus integration'
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
@@ -48,18 +51,21 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-terminal.git#tag=${pkgver}"
   "${_fpatchfile100}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile100}"
   "${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
+  "gnome-terminal-cntr-ntfy-autottl-ts.patch"
 )
 sha256sums=(
   'SKIP'
   '5b8392072b90fb64dbaa9de90f9cfc8b873b328d520d90781bb4ef471a477cea'
   'a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9'
+  '9abda8b0c92d2f2a08304fe4e4e7e5024a7e29cd007eaf12c3acd67ee0cebb4f'
 )
 
 prepare () {
   cd ${_pkgname}
 
   # Apply patches
-  patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
+  #patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
+  patch -p1 -i "../gnome-terminal-cntr-ntfy-autottl-ts.patch"
 }
 
 build() {
