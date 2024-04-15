@@ -26,6 +26,10 @@ function manageDirs() {
 	if [ -d "${HOME}/Documents/TrashBox" ]; then
 		echo "[Warn] Old user data may be present, check ${HOME}/Documents/TrashBox"
 	fi
+	if [ -d "${XDG_DOCUMENTS_DIR}/WeChat_Data/文档" ]; then
+		mv "${XDG_DOCUMENTS_DIR}/WeChat_Data/文档" \
+			"${XDG_DOCUMENTS_DIR}/WeChat_Data/Documents"
+	fi
 }
 
 function detectXauth() {
@@ -62,8 +66,9 @@ function lnDir() {
 		ln -s "${XDG_DOCUMENTS_DIR}"/WeChat_Data/xwechat_files \
 			"${HOME}"/xwechat_files
 	fi
-	ln -sf "${XDG_DOCUMENTS_DIR}"/WeChat_Data/Documents/xwechat_files \
-		"${XDG_DOCUMENTS_DIR}"/xwechat_files
+	cd "${XDG_DOCUMENTS_DIR}"
+	ln -sf WeChat_Data/Documents/xwechat_files \
+		xwechat_files
 }
 
 function importEnv() {
@@ -123,7 +128,7 @@ function execApp() {
 			"${osRel}" \
 		--ro-bind /usr/share/wechat-uos-qt/license/etc/lsb-release \
 			/etc/lsb-release \
-		--ro-bind-try "${XDG_CONFIG_HOME}"/user-dirs.dirs \
+		--ro-bind /usr/lib/wechat-uos-qt/user-dirs.dirs \
 			"${XDG_CONFIG_HOME}"/user-dirs.dirs \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/fontconfig \
 			"${XDG_CONFIG_HOME}"/fontconfig \
