@@ -4,14 +4,15 @@ pkgbase=python-sphinx_mdinclude
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Markdown extension for Sphinx"
 arch=('any')
 url="https://sphinx-mdinclude.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-flit-core'
              'python-docutils>=0.16'
-             'python-mistune>=2.0'
+#            'python-mistune>=2.0'
+             'python-mistune2'
              'python-pygments>=2.8'
              'python-build'
              'python-installer'
@@ -35,18 +36,17 @@ build() {
     msg "Building Docs"
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../dist/lib" make html
+    PYTHONPATH="../dist/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-sphinx_mdinclude() {
-    depends=('python>=3.6' 'python-docutils>=0.16' 'python-mistune>=2.0' 'python-pygments>=2.8')
+    depends=('python>=3.6' 'python-docutils>=0.16' 'python-mistune2' 'python-pygments>=2.8')
     optdepends=('python-sphinx_mdinclude-doc: Documentation for ndcube')
     cd ${srcdir}/${_pyname}-${pkgver}
 

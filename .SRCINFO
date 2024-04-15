@@ -1,15 +1,15 @@
 pkgbase = python-sphinx_mdinclude
 	pkgdesc = Markdown extension for Sphinx
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sphinx-mdinclude.readthedocs.io
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pytest
 	checkdepends = python-sphinx
 	makedepends = python-flit-core
 	makedepends = python-docutils>=0.16
-	makedepends = python-mistune>=2.0
+	makedepends = python-mistune2
 	makedepends = python-pygments>=2.8
 	makedepends = python-build
 	makedepends = python-installer
@@ -22,7 +22,7 @@ pkgbase = python-sphinx_mdinclude
 pkgname = python-sphinx_mdinclude
 	depends = python>=3.6
 	depends = python-docutils>=0.16
-	depends = python-mistune>=2.0
+	depends = python-mistune2
 	depends = python-pygments>=2.8
 	optdepends = python-sphinx_mdinclude-doc: Documentation for ndcube
 
