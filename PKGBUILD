@@ -2,7 +2,7 @@
 # Maintainer: Mikata Riko <sanbikappa@qq.com>
 
 pkgname=krita-plugin-pythonplugindevelopertools-git
-pkgver=r53.d50402f
+pkgver=r61.aa16638
 pkgrel=1
 epoch=
 pkgdesc="Python plugin for Krita that assists with making python plugins for Krita"
@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/KnowZero/Krita-PythonPluginDeveloperTools"
 license=('unknow')
 depends=('krita' 'python-pyqt5')
+makedepends=('git')
 provides=('krita-plugin-pythonplugindevelopertools' 'krita-plugin-pythonplugindevelopertools-bin')
 conflicts=('krita-plugin-pythonplugindevelopertools' 'krita-plugin-pythonplugindevelopertools-bin')
 install=.install
