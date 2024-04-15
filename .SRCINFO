@@ -1,6 +1,6 @@
 pkgbase = swww
 	pkgdesc = A Solution to your Wayland Wallpaper Woes
-	pkgver = 0.9.1
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/LGFae/swww
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = swww
 	depends = glibc
 	depends = lz4
 	options = !lto
-	source = swww-0.9.1.tar.gz::https://github.com/LGFae/swww/archive/v0.9.1.tar.gz
-	sha256sums = c1f6cf2ccd4878e9cb5b6c6412494120535227516d3749694ac4e75ec68e0547
+	source = swww-0.9.3.tar.gz::https://github.com/LGFae/swww/archive/v0.9.3.tar.gz
+	sha256sums = b190f9fa63ca9952e12c8b3982862a75f714af5546e1c5e34adc17f9764b1bf4
 
 pkgname = swww

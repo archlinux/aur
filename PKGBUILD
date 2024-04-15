@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 
 pkgname=swww
-pkgver=0.9.1
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A Solution to your Wayland Wallpaper Woes"
 arch=(x86_64 aarch64)
@@ -19,7 +19,7 @@ makedepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c1f6cf2ccd4878e9cb5b6c6412494120535227516d3749694ac4e75ec68e0547')
+sha256sums=('b190f9fa63ca9952e12c8b3982862a75f714af5546e1c5e34adc17f9764b1bf4')
 
 _archive="$pkgname-$pkgver"
 
