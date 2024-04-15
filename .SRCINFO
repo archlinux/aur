@@ -4,6 +4,7 @@ pkgbase = cassette
 	pkgrel = 1
 	url = https://github.com/rirusha/cassette
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = meson
 	makedepends = ninja
