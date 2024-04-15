@@ -8,9 +8,9 @@ pkgrel=3
 pkgdesc='Papis plugin to import from Sci-Hub (incorporates upstream PR #62)'
 arch=('any')
 url='https://github.com/papis/scripts/tree/master/papis-scihub'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 #source=("$pkgname::git+${url%/$_plugname}.git")
 source=("$pkgname::git+https://github.com/hseg/scripts.git#branch=local") # PR62
 sha256sums=('SKIP')
