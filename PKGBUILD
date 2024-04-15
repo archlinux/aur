@@ -7,8 +7,8 @@ pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.3.17.0.r15.g2dfb0d5
 _pandoc_type=version
-_pandoc_ver=3.1.12.3
-_pandoc_commit=b1e2e452deb36e050c0b81c4c2351d5a829d2977
+_pandoc_ver=3.1.13
+_pandoc_commit=ab2b5e8bcd510542260c938d1c676bfc72bafe77
 pkgrel=1
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
@@ -42,6 +42,9 @@ EOF
 prepare() {
     cd "$pkgname"
     stack config set resolver lts-22.13 # ghc-9.6.4
+    _bumpVer texmath 0.12.8.8
+    _bumpVer typst 0.5.0.3
+    _bumpVer typst-symbols 0.1.6
 
     # if pandoc updates break the golden tests, cf
     # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
