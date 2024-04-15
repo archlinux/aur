@@ -8,7 +8,9 @@ url="https://gitlab.com/twitterdesktop/application"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-source=("https://gitlab.com/twitterdesktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+#source=("https://gitlab.com/twitterdesktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+#Backup temp repo
+source=("https://github.com/Twitterdesktop-pkg/application/archive/refs/tags/$pkgver-$pkgrel.tar.gz")
 sha256sums=('SKIP')
 
 
