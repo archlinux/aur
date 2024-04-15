@@ -6,7 +6,7 @@
 pkgname=osu-lazer
 _pkgname=osu
 pkgver=2024.412.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=('x86_64')
 url="https://osu.ppy.sh/"
@@ -43,4 +43,7 @@ package() {
   install -Dm644 assets/lazer-nuget.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/osu-lazer.png"
   install -Dm644 assets/lazer.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/osu-lazer.png"
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/osu-lazer/LICENCE"
+
+  # Fix Vulkan renderer. See: https://github.com/ppy/osu/discussions/27659#discussioncomment-9101487
+  ln -sf /usr/lib/libdl.so.2 "$pkgdir/opt/osu-lazer/libdl.so"
 }
