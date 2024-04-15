@@ -1,0 +1,19 @@
+pkgbase = 1panel-stable-bin
+	pkgdesc = 1Panel is a modern and open source Linux panel.
+	pkgver = v1.10.2_lts
+	pkgrel = 1
+	url = https://1panel.cn
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	optdepends = ufw
+	optdepends = firewalld
+	optdepends = docker
+	optdepends = docker-compose
+	conflicts = 1panel
+	conflicts = 1panel-bin
+	conflicts = 1panel-dev-bin
+	conflicts = 1panel-git
+	options = !debug
+
+pkgname = 1panel-stable-bin
