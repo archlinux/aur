@@ -11,34 +11,45 @@ pkgname=(
   'vte4-notification'
   'vte-notification-docs'
 )
-pkgver=0.74.2
-pkgrel=3
+pkgver=0.76.0
+pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget'
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
 arch=('x86_64')
 license=('LGPL')
-makedepends=(
+depends=(
   'cairo'
   'fribidi'
+  'gcc-libs'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'gnutls'
+  'icu'
+  'lz4'
+  'pango'
+  'pcre2'
+  'systemd'
+  'systemd-libs'
+)
+makedepends=(
+  'at-spi2-core'
   'gi-docgen'
   'git'
-  'gnutls'
   'gobject-introspection'
   'gperf'
   'gtk3'
   'gtk4'
   'meson'
-  'pcre2'
-  'systemd'
   'vala'
 )
 options=('!emptydirs' '!lto')
 
-# Fedora patches: https://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
+# Fedora patches: https://src.fedoraproject.org/rpms/vte291/tree
 _frepourl='https://src.fedoraproject.org/rpms/vte291'
 _frepobranch='rawhide'
 _fpatchfile100='vte291-cntnr-precmd-preexec-scroll.patch'
-_fcommit='effdc88925f27e048c767ea2ca951ef453d4c4b2'
+_fcommit='ae73dd4d48b9c0913142056154e1ebd1cc3bfbd8'
 
 source=(
   "git+https://gitlab.gnome.org/GNOME/vte#tag=${pkgver}"
@@ -46,7 +57,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '4e0dc098681f78241178f8aa33b6a59adf78bb13686540f0664285e080301b5b'
+  '069b97337be80aee2ba80958988d88bd8aadec98fd085393bf0f2fba45502c62'
 )
 
 prepare() {
@@ -78,7 +89,7 @@ _pick() {
 
 package_vte-notification-common() {
   pkgdesc='Common files used by vte and vte3/vte4'
-  depends=('sh')
+  depends=('glibc' 'sh')
   provides=("vte-common=${pkgver}")
   conflicts=('vte-common')
 
@@ -108,13 +119,9 @@ package_vte-notification-common() {
 
 package_vte3-notification() {
   pkgdesc+=" for use with GTK3 with Fedora patches"
-  depends=(
-    'cairo'
-    'fribidi'
-    'gnutls'
+  depends+=(
+    'at-spi2-core'
     'gtk3'
-    'pcre2'
-    'systemd'
     'vte-notification-common'
   )
   provides+=(
@@ -128,13 +135,8 @@ package_vte3-notification() {
 
 package_vte4-notification() {
   pkgdesc+=" for use with GTK4 with Fedora patches"
-  depends=(
-    'cairo'
-    'fribidi'
-    'gnutls'
+  depends+=(
     'gtk4'
-    'pcre2'
-    'systemd'
     'vte-notification-common'
   )
   provides+=(
@@ -148,6 +150,7 @@ package_vte4-notification() {
 
 package_vte-notification-docs() {
   pkgdesc+=" documentation"
+  depends=()
   provides+=("vte-docs=${pkgver}")
   conflicts=('vte-docs')
 
