@@ -2,8 +2,8 @@
 
 pkgname=privatebin-cli
 _binname=privatebin
-pkgver=1.4.0
-pkgrel=3
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='CLI for privatebin server'
 arch=('x86_64')
 url='https://github.com/gearnode/privatebin'
@@ -13,14 +13,18 @@ makedepends=('go' 'pandoc')
 options=(!lto)
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b957e7363618df1fe74b1b663d9a7d73c2b851736cb47e96d563ae4765dd3f58')
+sha256sums=('f998b221f2a8da5a12e39bf0be8320ae39d2468827607c592b251b3e16af69db')
 
 prepare() {
   cd $_binname-$pkgver
   export GOPATH="${srcdir}"
   go mod download
-  pandoc --standalone --to man doc/privatebin.1.md -o privatebin.1
-  pandoc --standalone --to man doc/privatebin.conf.5.md -o privatebin.conf.5
+
+  # Man
+  pandoc --standalone --to man -M footer=$pkgver doc/privatebin.1.md -o privatebin.1
+  pandoc --standalone --to man -M footer=$pkgver doc/privatebin-create.1.md -o privatebin-create.1
+  pandoc --standalone --to man -M footer=$pkgver doc/privatebin-show.1.md -o privatebin-show.1
+  pandoc --standalone --to man -M footer=$pkgver doc/privatebin.conf.5.md -o privatebin.conf.5
 }
 
 build() {
@@ -33,14 +37,16 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   go build \
-    -ldflags "-linkmode external -extldflags $LDFLAGS -X 'gearno.de/privatebin/internal/version.Version=$pkgver'" \
-    -o $_binname "cmd/privatebin/main.go"
+    -ldflags "-linkmode external -extldflags $LDFLAGS -X 'main.cliVersion=$pkgver'" \
+    -o $_binname cmd/privatebin/main.go cmd/privatebin/cfg.go
 }
 
 package() {
   cd $_binname-$pkgver
-  install -Dm644 LICENSE.txt -t "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
   install -Dm755 $_binname "$pkgdir"/usr/bin/$_binname
+  install -Dm644 LICENSE.txt -t "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
   install -Dm644 privatebin.1 -t "${pkgdir}"/usr/share/man/man1/
+  install -Dm644 privatebin-create.1 -t "${pkgdir}"/usr/share/man/man1/
+  install -Dm644 privatebin-show.1 -t "${pkgdir}"/usr/share/man/man1/
   install -Dm644 privatebin.conf.5 -t "${pkgdir}"/usr/share/man/man5/
 }
