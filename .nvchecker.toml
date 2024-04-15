@@ -1,5 +1,6 @@
 [lite-xl]
 source = "github"
 github = "lite-xl/lite-xl"
+include_regex = 'v\d+\.\d+\.\d+'
 prefix = "v"
 use_max_tag = true
