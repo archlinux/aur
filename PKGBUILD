@@ -10,7 +10,6 @@ url='https://github.com/gearnode/privatebin'
 license=('ISC')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-options=(!lto)
 install="$pkgname.install"
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/${_binname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/${_binname}_${pkgver}_linux_arm64.tar.gz")
