@@ -1,7 +1,7 @@
 pkgbase = scwrypts
 	pkgdesc = devops script runner for local and CI
 	pkgver = 4.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wrynegade/scwrypts.git
 	arch = any
 	license = GPL-3.0-or-later
@@ -16,7 +16,7 @@ pkgbase = scwrypts
 	depends = git
 	depends = sed
 	depends = zsh
-	optdepends = aws-cli: AWS-CLI-v2 support
+	optdepends = aws-cli-v2: AWS-CLI-v2 support
 	optdepends = docker: docker container utilities
 	optdepends = ffmpeg: video compression utilities
 	optdepends = helm: helm chart development

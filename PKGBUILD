@@ -1,7 +1,7 @@
 # Maintainer: Wryn (yage) Wagner yage@yage.io
 pkgname='scwrypts'
 pkgver=4.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='devops script runner for local and CI'
 url='https://github.com/wrynegade/scwrypts.git'
 license=('GPL-3.0-or-later')
@@ -26,7 +26,7 @@ depends=(
 	)
 
 optdepends=(
-	'aws-cli: AWS-CLI-v2 support'
+	'aws-cli-v2: AWS-CLI-v2 support'
 	'docker: docker container utilities'
 	'ffmpeg: video compression utilities'
 	'helm: helm chart development'
