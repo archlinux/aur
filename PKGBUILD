@@ -4,7 +4,7 @@ _pkgname=assertive.sets
 _pkgver=0.0-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="Assertions to Check Properties of Sets"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -15,7 +15,7 @@ depends=(
 optdepends=(
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/$_pkgname/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('060f193e9ae8c91487cf3478720d920c')
 b2sums=('02c2371971155a2607283f9a5f960a8fa21f8b787f4555b33a24d9566e29106532c779920a22affae18d22a6095af045a1b33b9d4183cc314c74f2fa44d1b4c1')
 

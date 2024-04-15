@@ -1,13 +1,13 @@
 pkgbase = r-assertive.sets
 	pkgdesc = Assertions to Check Properties of Sets
 	pkgver = 0.0.3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cran.r-project.org/package=assertive.sets
 	arch = any
 	license = GPL-3.0-or-later
 	depends = r-assertive.base
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/assertive.sets_0.0-3.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/assertive.sets/assertive.sets_0.0-3.tar.gz
 	md5sums = 060f193e9ae8c91487cf3478720d920c
 	b2sums = 02c2371971155a2607283f9a5f960a8fa21f8b787f4555b33a24d9566e29106532c779920a22affae18d22a6095af045a1b33b9d4183cc314c74f2fa44d1b4c1
 
