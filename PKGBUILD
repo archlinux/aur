@@ -1,8 +1,7 @@
-# Maintainer: Greyson Christoforo <first name at last name dot net>
 pkgname=rudolfs
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
-pkgdesc="A high-performance, caching Git LFS server"
+pkgdesc="A high-performance, caching Git LFS server with an AWS S3 and local storage back-end."
 arch=(x86_64)
 url="https://github.com/jasonwhite/rudolfs"
 license=(MIT)
@@ -11,28 +10,35 @@ cargo
 )
 depends=(
 gcc-libs
+glibc
+)
+checkdepends=(
+git-lfs
+)
+optdpends=(
+'git-lfs: local usage'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jasonwhite/rudolfs/archive/${pkgver}.tar.gz")
-sha256sums=('f0aa0e35911472015e2af037917f2b9098c1143f22672ff92fcffb324ec2189c')
+sha256sums=('d61c64b9c7ef388208cc8782361d18b3a33b353ccaea7ca46d57b29433e2bd63')
 
 prepare() {
-  cd rudolfs-${pkgver}
-  cargo fetch --locked --target x86_64-unknown-linux-gnu
-}
-
-build() {
-  cd rudolfs-${pkgver}
-  cargo build --release --frozen --all-targets
+	cd rudolfs-${pkgver}
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's|host: ||p')"
 }
 
 check() {
-  cd rudolfs-${pkgver}
-  cargo test --release --frozen
+	cd rudolfs-${pkgver}
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --locked --offline --all-features
 }
 
-package(){
-  cd rudolfs-${pkgver}
-  install -Dt "${pkgdir}/usr/bin" target/release/rudolfs
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
+
+package() {
+	cd rudolfs-${pkgver}
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	# TODO: figure out some what to use cargo install without triggering a full rebuild
+	cargo install --no-track --locked --offline --all-features --target-dir target --root "$pkgdir/usr/" --path .
 }
 
