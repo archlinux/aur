@@ -1,20 +1,31 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=lorem
-pkgver=1.3
+pkgver=1.4
+_commit=e1a94055c53ba692e8fa9a2e6974719502622d76
 pkgrel=1
 pkgdesc="Simple app to generate the Lorem Ipsum placeholder text"
-arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/design/lorem"
-license=('GPL3')
+license=('GPL-3.0-or-later')
+arch=('x86_64' 'aarch64')
 depends=('libadwaita')
-makedepends=('meson' 'cargo')
+makedepends=('cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
-source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('e060bf8c41cc26a7298009ce1735204a7484921e782db538ae59b31d9c6eb72ad9e65aacd70b20b4452a9ab959a82f4d2d1037df9b855d1e9a1540135f91b885')
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
+
+prepare() {
+  cd lorem
+  export CARGO_HOME="$srcdir/CARGO_HOME"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-  arch-meson $pkgname-$pkgver build
+  export CARGO_HOME="$srcdir/CARGO_HOME"
+  export RUSTUP_TOOLCHAIN=stable
+  arch-meson lorem build
   meson compile -C build
 }
 
@@ -23,5 +34,5 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
