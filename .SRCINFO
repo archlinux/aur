@@ -4,6 +4,7 @@ pkgbase = python-csdr-eti-git
 	pkgrel = 1
 	url = https://github.com/jketterl/pycsdr-eti
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
