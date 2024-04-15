@@ -1,7 +1,7 @@
 pkgbase = yaksha
 	pkgdesc = A Programming language with off-side rule syntax,and YakshaLisp sublanguage.
 	pkgver = 0.0.8
-	pkgrel = 2
+	pkgrel = 0
 	url = https://github.com/YakshaLang/Yaksha
 	arch = x86_64
 	license = GPL-3.0

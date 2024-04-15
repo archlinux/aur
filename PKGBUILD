@@ -4,7 +4,7 @@
 pkgname='yaksha'
 pkgver='0.0.8'
 prev='vP20240414.f76ff03'
-pkgrel='2'
+pkgrel='0'
 pkgdesc='A Programming language with off-side rule syntax,and YakshaLisp sublanguage.'
 arch=('x86_64')
 url='https://github.com/YakshaLang/Yaksha'
