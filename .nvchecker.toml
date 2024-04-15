@@ -1,0 +1,5 @@
+[python-lineax]
+source = "github"
+github = "google/lineax"
+use_latest_release = true
+prefix = "v"

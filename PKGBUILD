@@ -2,16 +2,16 @@
 _base=lineax
 pkgname=python-${_base}
 pkgdesc="Linear solvers in JAX and Equinox"
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 arch=(any)
 url="https://github.com/google/${_base}"
-license=(Apache)
+license=(Apache-2.0)
 depends=(python-equinox)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 # checkdepends=(python-pytest python-beartype)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('27129eb04fd1ab41f50b07fc18f91040d86419d67901fba23bd66221fabd659d5f47a90f35dfd387b09ba71ca4f0062bf9a4e4b0cfa252ec5d523e87321e53d8')
+sha512sums=('d2b6573b37b54a97a8d45b6c0306a348eff5ff3426102ced40e1710c4b032ad872d70363385fe07bc1f74ffa2bf667f6ef95c420b71de7a9aefba0e8390a6c56')
 
 build() {
   cd ${_base}-${pkgver}
