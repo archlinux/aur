@@ -1,11 +1,11 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=steam-powerbuttond-git
 _gitdir=steam-powerbuttond
-pkgver=24.04.r16.31e48dd
+pkgver=24.04.r19.abd2ff4
 pkgrel=1
 pkgdesc="Simple powerbutton daemon for steam with gamescope-session"
 arch=('any')
-url="https://github.com/aarron-lee/steam-powerbuttond"
+url="https://github.com/ShadowBlip/steam-powerbuttond"
 license=('GPL')
 groups=()
 depends=('python' 'python-evdev')
