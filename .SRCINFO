@@ -1,0 +1,13 @@
+pkgbase = fremen-transcriptor-bin
+	pkgdesc = Software to transcript ASCII into desert people's writing from popular sci-fi franchise
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/theKapcioszek/fremen-transcriptor
+	arch = x86_64
+	license = GPL3
+	provides = fremen-transcriptor
+	conflicts = fremen-transcriptor
+	source = https://github.com/theKapcioszek/fremen-transcriptor/releases/download/1.1/fremen-transcriptor-1.1_linux-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = fremen-transcriptor-bin
