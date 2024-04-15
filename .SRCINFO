@@ -10,7 +10,7 @@ pkgbase = nocashgba-debugger
 	source = https://problemkaputt.de/no$gba.zip
 	source = nocashgba-debugger
 	source = nocashgba-debugger.desktop
-	source = nocashgba-debugger.png\
+	source = nocashgba-debugger.png
 	md5sum = 660df5b0ba4af13958babd48a796f1da
 
 pkgname = nocashgba-debugger
