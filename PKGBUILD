@@ -3,7 +3,7 @@
 
 pkgname=typst-lsp
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Language server for Typst'
 arch=(i686 x86_64)
 url="https://github.com/nvarner/$pkgname"

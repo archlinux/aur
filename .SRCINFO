@@ -1,7 +1,7 @@
 pkgbase = typst-lsp
 	pkgdesc = Language server for Typst
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nvarner/typst-lsp
 	arch = i686
 	arch = x86_64
