@@ -4,7 +4,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-x265
 pkgver=3.5
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Open Source H265/HEVC video encoder (Android ${_android_arch})"
 license=('GPL')
@@ -13,91 +13,73 @@ depends=('android-ndk')
 makedepends=('android-cmake'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://bitbucket.org/multicoreware/x265_git/downloads/x265_${pkgver}.tar.gz"
-        "0001-Disable-neon.patch")
-md5sums=('deb5df5cb2ec17bdbae6ac6bbc3b1eef'
-         'fffb730725e5848d6f1fd87e50530452')
-
-prepare() {
-    cd "${srcdir}"/x265_${pkgver}
-
-    case "$_android_arch" in
-        aarch64)
-            patch -Np1 -i "../0001-Disable-neon.patch"
-            ;;
-        *)
-            ;;
-    esac
-}
+source=("https://bitbucket.org/multicoreware/x265_git/downloads/x265_${pkgver}.tar.gz")
+md5sums=('deb5df5cb2ec17bdbae6ac6bbc3b1eef')
 
 build() {
     cd "${srcdir}"/x265_${pkgver}
     source android-env ${_android_arch}
 
-    if [[ ${_android_arch} != x86 ]]; then
-        android-${_android_arch}-cmake \
-            -S source \
-            -B build-12 \
-            -DCMAKE_CXX_STANDARD=11 \
-            -DLIB_INSTALL_DIR=lib \
-            -DENABLE_SHARED=TRUE \
-            -DENABLE_CLI=FALSE \
-            -DHIGH_BIT_DEPTH=TRUE \
-            -DMAIN12=TRUE \
-            -DEXPORT_C_API=FALSE
-        sed -i 's|-lpthread||g' build-12/CMakeFiles/x265-shared.dir/link.txt
-        sed -i 's|-Wl,--no-undefined-version||g' build-12/CMakeFiles/x265-shared.dir/link.txt
-        sed -i 's|-Wl,--no-undefined||g' build-12/CMakeFiles/x265-shared.dir/link.txt
-        make -C build-12 $MAKEFLAGS
-
-        android-${_android_arch}-cmake \
-            -S source \
-            -B build-10 \
-            -DCMAKE_CXX_STANDARD=11 \
-            -DLIB_INSTALL_DIR=lib \
-            -DENABLE_SHARED=TRUE \
-            -DENABLE_CLI=FALSE \
-            -DHIGH_BIT_DEPTH=TRUE \
-            -DEXPORT_C_API=FALSE
-        sed -i 's|-lpthread||g' build-10/CMakeFiles/x265-shared.dir/link.txt
-        sed -i 's|-Wl,--no-undefined-version||g' build-10/CMakeFiles/x265-shared.dir/link.txt
-        sed -i 's|-Wl,--no-undefined||g' build-10/CMakeFiles/x265-shared.dir/link.txt
-        make -C build-10 $MAKEFLAGS
-
-        mkdir -p build-8
-        ln -s ../build-10/libx265.a build-8/libx265_main10.a
-        ln -s ../build-12/libx265.a build-8/libx265_main12.a
-
-        android-${_android_arch}-cmake \
-            -S source \
-            -B build-8 \
-            -DCMAKE_CXX_STANDARD=11 \
-            -DLIB_INSTALL_DIR=lib \
-            -DENABLE_SHARED=TRUE \
-            -DENABLE_CLI=FALSE \
-            -DEXTRA_LIB='x265_main10.a;x265_main12.a' \
-            -DEXTRA_LINK_FLAGS='-L.' \
-            -DLINKED_10BIT=TRUE \
-            -DLINKED_12BIT=TRUE
-        sed -i 's|-lpthread||g' build-8/CMakeFiles/x265-shared.dir/link.txt
-        sed -i 's|-Wl,--no-undefined-version||g' build-8/CMakeFiles/x265-shared.dir/link.txt
-        sed -i 's|-Wl,--no-undefined||g' build-8/CMakeFiles/x265-shared.dir/link.txt
-        make -C build-8 $MAKEFLAGS
+    if [[ "${_android_arch}" = armv7a-eabi || "${_android_arch}" = x86 ]]; then
+        ENABLE_PIC=TRUE
     else
-        mkdir build-8 && cd build-8
-
-        android-${_android_arch}-cmake \
-            -S source \
-            -B build-8 \
-            -DCMAKE_CXX_STANDARD=11 \
-            -DLIB_INSTALL_DIR=lib \
-            -DENABLE_SHARED=TRUE \
-            -DENABLE_CLI=FALSE
-        sed -i 's|-lpthread||g' build-8/CMakeFiles/x265-shared.dir/link.txt
-        sed -i 's|-Wl,--no-undefined-version||g' build-8/CMakeFiles/x265-shared.dir/link.txt
-        sed -i 's|-Wl,--no-undefined||g' build-8/CMakeFiles/x265-shared.dir/link.txt
-        make -C build-8 $MAKEFLAGS
+        ENABLE_PIC=FALSE
     fi
+
+    android-${_android_arch}-cmake \
+        -S source \
+        -B build-12 \
+        -DCMAKE_CXX_STANDARD=11 \
+        -DLIB_INSTALL_DIR=lib \
+        -DENABLE_SHARED=TRUE \
+        -DENABLE_PIC=${ENABLE_PIC} \
+        -DENABLE_ASSEMBLY=FALSE \
+        -DENABLE_CLI=FALSE \
+        -DHIGH_BIT_DEPTH=TRUE \
+        -DMAIN12=TRUE \
+        -DEXPORT_C_API=FALSE
+    sed -i 's|-lpthread||g' build-12/CMakeFiles/x265-shared.dir/link.txt
+    sed -i 's|-Wl,--no-undefined-version||g' build-12/CMakeFiles/x265-shared.dir/link.txt
+    sed -i 's|-Wl,--no-undefined||g' build-12/CMakeFiles/x265-shared.dir/link.txt
+    make -C build-12 $MAKEFLAGS
+
+    android-${_android_arch}-cmake \
+        -S source \
+        -B build-10 \
+        -DCMAKE_CXX_STANDARD=11 \
+        -DLIB_INSTALL_DIR=lib \
+        -DENABLE_SHARED=TRUE \
+        -DENABLE_PIC=${ENABLE_PIC} \
+        -DENABLE_ASSEMBLY=FALSE \
+        -DENABLE_CLI=FALSE \
+        -DHIGH_BIT_DEPTH=TRUE \
+        -DEXPORT_C_API=FALSE
+    sed -i 's|-lpthread||g' build-10/CMakeFiles/x265-shared.dir/link.txt
+    sed -i 's|-Wl,--no-undefined-version||g' build-10/CMakeFiles/x265-shared.dir/link.txt
+    sed -i 's|-Wl,--no-undefined||g' build-10/CMakeFiles/x265-shared.dir/link.txt
+    make -C build-10 $MAKEFLAGS
+
+    mkdir -p build-8
+    ln -s ../build-10/libx265.a build-8/libx265_main10.a
+    ln -s ../build-12/libx265.a build-8/libx265_main12.a
+
+    android-${_android_arch}-cmake \
+        -S source \
+        -B build-8 \
+        -DCMAKE_CXX_STANDARD=11 \
+        -DLIB_INSTALL_DIR=lib \
+        -DENABLE_SHARED=TRUE \
+        -DENABLE_PIC=${ENABLE_PIC} \
+        -DENABLE_ASSEMBLY=FALSE \
+        -DENABLE_CLI=FALSE \
+        -DEXTRA_LIB='x265_main10.a;x265_main12.a' \
+        -DEXTRA_LINK_FLAGS='-L.' \
+        -DLINKED_10BIT=TRUE \
+        -DLINKED_12BIT=TRUE
+    sed -i 's|-lpthread||g' build-8/CMakeFiles/x265-shared.dir/link.txt
+    sed -i 's|-Wl,--no-undefined-version||g' build-8/CMakeFiles/x265-shared.dir/link.txt
+    sed -i 's|-Wl,--no-undefined||g' build-8/CMakeFiles/x265-shared.dir/link.txt
+    make -C build-8 $MAKEFLAGS
 }
 
 package() {
