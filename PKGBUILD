@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lettura-bin
 _pkgname=lettura
-pkgver=0.1.15
-pkgrel=2
+pkgver=0.1.16
+pkgrel=1
 pkgdesc="Another free and open-source feed reader"
 arch=('x86_64')
 url="https://github.com/zhanglun/lettura"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/zhanglun/lettura/v${pkgver//_/-}/docs/LICENSE"
 )
-sha256sums=('cec380ff04f9579ccbbc0be63e78e9aa9d68cb0be99634d8bec206f8608a573e'
+sha256sums=('23c7f186d53d3a59995d43d3646483af13ef4e208a95fd73c0fd3ea005b6c0f1'
             'cb0e47679b2552a19d61430fbc452636d7e227b799ed7093d5c13e01798d091b')
 build() {
     bsdtar -xf "${srcdir}/data."*
