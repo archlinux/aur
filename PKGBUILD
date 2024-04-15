@@ -7,10 +7,10 @@ pkgrel=1
 pkgdesc="Format .cabal files"
 arch=('i686' 'x86_64')
 url="https://github.com/phadej/${_pkgname}"
-license=('custom')
+license=('GPL-3.0-or-later' 'BSD-3-Clause')
 provides=("$_pkgname")
 depends=('gmp')
-makedepends=('cabal-install')
+makedepends=('git' 'cabal-install')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
