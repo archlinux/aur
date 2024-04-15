@@ -5,14 +5,9 @@
 : ${_jrever:=8}
 : ${_jdkver:=17}
 
-: ${_build_git:=true}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
 # basic info
 _pkgname="pdftk"
-pkgname="$_pkgname${_pkgtype:-}"
+pkgname="$_pkgname-git"
 pkgver=3.3.3.r17.gd0d4a0b
 pkgrel=1
 pkgdesc="Command-line tool for working with PDFs"
@@ -38,6 +33,15 @@ _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
+_jdk_env() {
+  if [ -n "$_jdkver" ] ; then
+    export JAVA_HOME="/usr/lib/jvm/java-${_jdkver}-openjdk"
+    if ! grep "java-${_jdkver}" <<< "$PATH" ; then
+      export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin:$PATH"
+    fi
+  fi
+}
+
 pkgver() {
   cd "$_pkgsrc"
   local _tag=$(git tag | sort -rV | head -1)
@@ -47,18 +51,16 @@ pkgver() {
   printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
-prepare() {
-  [ -n "$_jdkver" ] && export JAVA_HOME="/usr/lib/jvm/java-${_jdkver}-openjdk"
-  [ -n "$_jdkver" ] && export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin:$PATH"
-  :
-}
-
 build() {
+  _jdk_env
+
   cd "$_pkgsrc"
   gradle -Dorg.gradle.daemon=false build
 }
 
 check() {
+  _jdk_env
+
   cd "$_pkgsrc"
   gradle -Dorg.gradle.daemon=false test
 }
