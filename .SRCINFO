@@ -6,6 +6,7 @@ pkgbase = ormolu-static-git
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = git
 	makedepends = stack
 	depends = gmp
 	provides = ormolu

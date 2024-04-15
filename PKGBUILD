@@ -12,7 +12,7 @@ url="https://github.com/tweag/${_pkgname}"
 license=('custom')
 provides=("$_pkgname")
 depends=('gmp')
-makedepends=('stack')
+makedepends=('git' 'stack')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
