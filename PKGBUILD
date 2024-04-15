@@ -18,7 +18,7 @@ conflicts=("pandoc-crossref")
 provides=("$_pkgname=${pkgver%%.r*}")
 replaces=('pandoc-crossref-bin' 'pandoc-crossref-static' 'pandoc-crossref-lite')
 depends=("pandoc=$_pandoc_ver")
-makedepends=('stack' 'pandoc' 'yq')
+makedepends=('git' 'stack' 'pandoc' 'yq')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
