@@ -4,16 +4,16 @@
 pkgname=kodi-addon-pvr-hts
 pkgbase=${pkgname}
 _gitname=pvr.hts
-pkgver=20.7.0
+pkgver=21.2.1
 
-_gitver=branch=Nexus
+_gitver=branch=Omega
 pkgrel=1
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/$_gitname"
 license=('GPL')
 groups=('kodi-addons')
-makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev>=21')
 depends=('kodi' 'p8-platform')
 source=("git+https://github.com/kodi-pvr/${_gitname}.git#${_gitver}")
 md5sums=('SKIP')
