@@ -1,5 +1,5 @@
 pkgbase = rusthound-ce-git
-	pkgdesc = BloodHound collector tool written in Rust.
+	pkgdesc = BloodHoundCE collector tool written in Rust.
 	pkgver = c4e8eb3
 	pkgrel = 1
 	url = https://github.com/NH-RED-TEAM/RustHound
