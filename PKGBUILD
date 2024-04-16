@@ -1,7 +1,7 @@
 # Maintainer: Emanuel Serpa <emanuelvserpa@gmail.com>
 
 pkgname=whatsapp-nativefier-wayland-hook
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Pacman hook to change whatsapp-nativefier to start with ozone-platform-hint=auto after install or upgrade."
 arch=("any")
