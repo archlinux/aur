@@ -1,6 +1,6 @@
 pkgbase = r-toster
 	pkgdesc = Two One-Sided Tests (TOST) Equivalence Testing
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=TOSTER
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-toster
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/TOSTER_0.8.1.tar.gz
-	sha256sums = 6d540c5c1c773b4556a57e08dc13876772405fcdd829901985b02e5194d23c13
+	source = https://cran.r-project.org/src/contrib/TOSTER_0.8.2.tar.gz
+	sha256sums = 0e81e7e036025171b5dae84d26b41c41a0926d544867039562d6cebe0d483587
 
 pkgname = r-toster
