@@ -5,7 +5,7 @@ _downname=QuarkCloudDrive
 _installpkgpath=quark-cloud-drive
 pkgver=3.0.5spark3
 _sparkpkgname="cn.${_officalname}.spark"
-pkgrel=4
+pkgrel=5
 pkgdesc="夸克网盘是夸克推出的一款云服务产品，可轻松进行照片、视频、文档、音频等文件的在线备份、同步和分享，并支持电脑/手机/iPad端等多个端。"
 arch=("x86_64")
 url="https://pan.quark.cn/"
@@ -19,6 +19,7 @@ depends=(
     'deepin-wine8-stable'
     'spark-dwine-helper'
     'xdg-utils'
+    'spark-transhell'
 )
 optdepends=(
     'wqy-microhei'
