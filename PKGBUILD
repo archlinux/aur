@@ -2,7 +2,7 @@
 pkgname=neolink-git
 _pkgname=neolink
 pkgver=0.6.3.rc.1.r34.gd354b90
-pkgrel=2
+pkgrel=3
 pkgdesc="An RTSP bridge to Reolink IP cameras."
 arch=('x86_64')
 url="https://github.com/QuantumEntangledAndy/${_pkgname}"
@@ -12,10 +12,9 @@ makedepends=('git' 'rust')
 source=("git+https://github.com/QuantumEntangledAndy/$_pkgname.git"
 				"$_pkgname.sysusers"
 				"$_pkgname.service")
-sha256sums=("SKIP"
-						"3286177dcb2bcbe5b56c8f59f8d15b6cf0ee70632a261109e72fe6797f153507"
-						"27d0ecc90731e703228efd1c922421cab01c6495943b6f07a97a8c20518c8a17"
-						"2316a242dede941daf121261652a67ae69bc1922415b6c2238f558cd584dda4a")
+sha256sums=('SKIP'
+            '27d0ecc90731e703228efd1c922421cab01c6495943b6f07a97a8c20518c8a17'
+            'c44fab36cad34172c794eea36e9bdc403f987246d8450223361ae4ab2286f097')
 
 backup=("etc/${_pkgname}.toml")
 
