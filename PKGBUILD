@@ -2,7 +2,7 @@
 # Maintainer: Dave Boutin <perfectlyfluffy at gmail dot com>
 
 pkgname='perfect28-bin'
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='perfect28 is a very simple command line benchmark that uses brute force to find the first 8 perfect numbers.'
 url='https://github.com/PerfectlyFluffy/perfect28'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('perfect28')
 conflicts=('perfect28')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/PerfectlyFluffy/perfect28/releases/download/v0.9.1/perfect28_Linux_arm64.tar.gz")
-sha256sums_aarch64=('9bd80f2d724a2c57636d95efff28a2ce7a3e91999dfda1703ba285f12eb4f044')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/PerfectlyFluffy/perfect28/releases/download/v0.9.2/perfect28_Linux_arm64.tar.gz")
+sha256sums_aarch64=('f23631585f31802260f8b860ac92cb005a0f8c3f7007ae9f40b57cbafe129c98')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/PerfectlyFluffy/perfect28/releases/download/v0.9.1/perfect28_Linux_armv7.tar.gz")
-sha256sums_armv7h=('96cc70073ca51a9935a92743d2e2e3e33f531f6d5ad763b6c779b4bf26b0ad05')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/PerfectlyFluffy/perfect28/releases/download/v0.9.2/perfect28_Linux_armv7.tar.gz")
+sha256sums_armv7h=('687bec20267d7c72b3dd545f1673ac68c833576e7dce9ec4cfa0ae6d16385752')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/PerfectlyFluffy/perfect28/releases/download/v0.9.1/perfect28_Linux_i386.tar.gz")
-sha256sums_i686=('f915076c246c2dd33fefbb6d470e9e8fe16469dff362b29df9799bfbd61e884e')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/PerfectlyFluffy/perfect28/releases/download/v0.9.2/perfect28_Linux_i386.tar.gz")
+sha256sums_i686=('9c0fd4317d337a847881f57cc440506874daf9e667a101bfbc765ee0aac6b925')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/PerfectlyFluffy/perfect28/releases/download/v0.9.1/perfect28_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('cc958237b9f0511258afe052c9d9ebb51b8d7a51ff406f027496c7e58931a207')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/PerfectlyFluffy/perfect28/releases/download/v0.9.2/perfect28_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('aa0f9319e47cc48d0aae1cd8e0792ffa9de5f6035061d8267fea3364d0d85d99')
 
 package() {
   # bin
