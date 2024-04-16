@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rmzqc
-_pkgver=0.5.3
+_pkgver=0.5.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Creation, Reading and Validation of 'mzqc' Files"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-jsonlite
   r-jsonvalidate
@@ -20,12 +20,12 @@ depends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('59234a876928a14bad060c8dcb346284')
-sha256sums=('afa6b742eebfaa04a4597b3679b29b7751eeddce612f5f40904b1f47fa06e470')
+md5sums=('7819309b6b845852bb5db64753824c05')
+b2sums=('0169164d31003ca85dca383f7e6431360a2dec36cbfcdcd6e299929f02398f9422a961055910fb33962550aff3f64c200ed2ac9ed712b4d71920691fc4016613')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
