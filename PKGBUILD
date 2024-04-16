@@ -6,13 +6,13 @@
 #
 pkgname="curlew"
 pkgver=0.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Easy to use, Free and Open-Source Multimedia converter for Linux in Python"
 url="https://curlew.sourceforge.io"
 arch=("any")
 license=('Waqf GPL')
 depends=("python" "python-gobject" "python-dbus" "python-xdg" "xdg-utils" "ffmpeg" "mediainfo")
-makedepends=("intltool" "librsvg")
+makedepends=("python-setuptools" "intltool" "librsvg")
 optdepends=("curl: uploader support")
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('8f645bc3a4897ac61eaec5be19c16b515d164552554ac0791a60731be1ea22a9')

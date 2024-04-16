@@ -1,10 +1,11 @@
 pkgbase = curlew
 	pkgdesc = Easy to use, Free and Open-Source Multimedia converter for Linux in Python
 	pkgver = 0.2.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://curlew.sourceforge.io
 	arch = any
 	license = Waqf GPL
+	makedepends = python-setuptools
 	makedepends = intltool
 	makedepends = librsvg
 	depends = python
