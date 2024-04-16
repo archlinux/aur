@@ -16,10 +16,10 @@ sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 sha256sums_i386=('SKIP')
 sha256sums_i686=('SKIP')
-source_x86_64=("https://gitlab.com/zelda3pkg/binaries/$pkgver/-/raw/main/zelda3-linux-x64.tar.xz")
-source_aarch64=("https://gitlab.com/zelda3pkg/binaries/$pkgver/-/raw/main/zelda3-linux-arm64.tar.xz")
-source_i386=("https://gitlab.com/zelda3pkg/binaries/$pkgver/-/raw/main/zelda3-linux-i686.tar.xz")
-source_i686=("https://gitlab.com/zelda3pkg/binaries/$pkgver/-/raw/main/zelda3-linux-i686.tar.xz")
+source_x86_64=("https://github.com/zelda3-pkg/zelda3-0.3-binaries/raw/main/zelda3-linux-x64.tar.xz")
+source_aarch64=("https://github.com/zelda3-pkg/zelda3-0.3-binaries/raw/main/zelda3-linux-arm64.tar.xz")
+source_i386=("https://github.com/zelda3-pkg/zelda3-0.3-binaries/raw/main/zelda3-linux-i686.tar.xz")
+source_i686=("https://github.com/zelda3-pkg/zelda3-0.3-binaries/raw/main/zelda3-linux-i686.tar.xz")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
