@@ -1,0 +1,20 @@
+pkgbase = matrix-webcam-git
+	pkgdesc = Take your video conference from within the matrix
+	pkgver = 0.4.2.r0.g7cbc54c
+	pkgrel = 1
+	url = https://github.com/joschuck/matrix-webcam
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-numpy
+	depends = python-opencv
+	depends = python-mediapipe-bin
+	depends = python-setuptools
+	depends = python-importlib-metadata
+	provides = matrix-webcam
+	conflicts = matrix-webcam
+	source = matrix-webcam-git::git+https://github.com/joschuck/matrix-webcam
+	sha256sums = SKIP
+
+pkgname = matrix-webcam-git
