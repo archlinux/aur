@@ -1,7 +1,7 @@
 pkgbase = renderman-for-houdini
 	pkgdesc = RenderMan plugin for Houdini
 	pkgver = 26.0.2323370
-	pkgrel = 1
+	pkgrel = 2
 	url = https://renderman.pixar.com/
 	install = renderman-for-houdini.install
 	arch = x86_64

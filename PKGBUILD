@@ -2,7 +2,7 @@
 
 pkgname=renderman-for-houdini
 pkgver=26.0.2323370
-pkgrel=1
+pkgrel=2
 pkgdesc="RenderMan plugin for Houdini"
 arch=('x86_64')
 url="https://renderman.pixar.com/"
