@@ -7,177 +7,126 @@
 
 ## options
 : ${_build_pgo:=true}
-: ${_build_pgo_reuse:=true}
+: ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=false}
-
-: ${_build_git:=true}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 ## basic info
 _pkgname="midori"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=11.2.2.r172.g42cde7a
+pkgname="$_pkgname-git"
+pkgver=11.3.1.r38.g621c242
 pkgrel=1
 pkgdesc="Web browser based on Floorp"
 url="https://github.com/goastian/midori-desktop"
 arch=('x86_64')
 license=('MPL-2.0')
 
-# main package
-_main_package() {
-  depends=(
-    dbus-glib
-    ffmpeg
-    gtk3
-    libevent
-    libjpeg
-    libpulse
-    libvpx.so
-    libwebp.so
-    libxss
-    libxt
-    mime-types
-    nspr
-    nss
-    pipewire
-    ttf-font
-    zlib
-  )
-  makedepends=(
-    cbindgen
-    clang
-    diffutils
-    dump_syms
-    git
-    imake
-    inetutils
-    jack
-    lld
-    llvm
-    mercurial
-    mesa
-    nasm
-    nodejs
-    python
-    rust
-    unzip
-    wasi-compiler-rt
-    wasi-libc
-    wasi-libc++
-    wasi-libc++abi
-    yasm
-    zip
-  )
-  optdepends=(
-    'hunspell-dictionary: Spell checking'
-    'libnotify: Notification integration'
-    'networkmanager: Location detection via available WiFi networks'
-    'speech-dispatcher: Text-to-Speech'
-    'xdg-desktop-portal: Screensharing with Wayland'
-  )
+depends=(
+  dbus-glib
+  ffmpeg
+  gtk3
+  libevent
+  libjpeg
+  libpulse
+  libvpx.so
+  libwebp.so
+  libxss
+  libxt
+  mime-types
+  nspr
+  nss
+  pipewire
+  ttf-font
+  zlib
+)
+makedepends=(
+  cbindgen
+  clang
+  diffutils
+  dump_syms
+  git
+  imake
+  inetutils
+  jack
+  lld
+  llvm
+  mercurial
+  mesa
+  mold
+  nasm
+  nodejs
+  python
+  rust
+  unzip
+  wasi-compiler-rt
+  wasi-libc
+  wasi-libc++
+  wasi-libc++abi
+  yasm
+  zip
+)
+optdepends=(
+  'hunspell-dictionary: Spell checking'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
 
-  if [[ "${_build_pgo::1}" == "t" ]] ; then
-    if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
-      makedepends+=(
-        xorg-server-xvfb
-      )
-    else
-      makedepends+=(
-        weston
-        xorg-xwayland
-        xwayland-run # AUR
-      )
-    fi
-  fi
-
-  options=(
-    !debug
-    !emptydirs
-    !lto
-    !makeflags
-    !strip
-  )
-
-  if [ "${_build_git::1}" != "t" ] ; then
-    _main_stable
-  else
-    _main_git
-  fi
-
-  : ${_lssver:=v2022.10.12}
-  noextract=("lss-${_lssver}.tar.gz")
-
-  source+=(
-    "lss-${_lssver}.tar.gz"::"https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/${_lssver}.tar.gz"
-    "$_pkgname.desktop"
-  )
-  sha256sums+=(
-    'SKIP'
-    '7ef0f85f2b111caa08a3e855cb4b6595b6d0f62b3de13ce59eea94a580eec470'
-  )
-}
-
-# stable package
-_main_stable() {
-  : ${_pkgver:=${pkgver%%.r*}}
-
-  _pkgsrc="midori-tensei"
-  source+=(
-    "$_pkgsrc"::"git+$url.git#tag=v$_pkgver"
-    "goastian.l10n-central"::"git+https://github.com/goastian/l10n-central.git"
-  )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-  )
-
-  _prepare() (
-    # submodules
-    cd "$srcdir/$_pkgsrc"
-    local _submodules=(
-      'goastian.l10n-central'::'l10n-central'
+if [[ "${_build_pgo::1}" == "t" ]] ; then
+  if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+    makedepends+=(
+      xorg-server-xvfb
     )
-    local _module
-    for _module in "${_submodules[@]}" ; do
-      git submodule init "${_module#*::}"
-      git submodule set-url "${_module#*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module#*::}"
-    done
-  )
+  else
+    makedepends+=(
+      weston
+      xorg-xwayland
+      xwayland-run # AUR
+    )
+  fi
+fi
 
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
+options=(
+  !debug
+  !emptydirs
+  !lto
+  !makeflags
+  !strip
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+: ${_lssver:=v2022.10.12}
+noextract=("lss-${_lssver}.tar.gz")
+
+_pkgsrc="midori-tensei"
+source=(
+  "$_pkgsrc"::"git+https://github.com/goastian/midori-desktop.git"
+  "goastian.l10n-central"::"git+https://github.com/goastian/l10n-central.git"
+  "lss-${_lssver}.tar.gz"::"https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/${_lssver}.tar.gz"
+  "$_pkgname.desktop"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  '7ef0f85f2b111caa08a3e855cb4b6595b6d0f62b3de13ce59eea94a580eec470'
+)
+
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-# git package
-_main_git() {
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
-
-  _pkgsrc="midori-tensei"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  _prepare() {
-    :
-  }
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-}
-
-# common functions
 prepare() {
-  _prepare
-
   mkdir -p mozbuild
   cd "$_pkgsrc"
+
+  # l10n
+  local _l10n_path="floorp/browser/locales/l10n-central"
+  [ ! -e "$_l10n_path" ] && ln -sf "$srcdir/goastian.l10n-central" "$_l10n_path"
 
   # prepare google breakpad
   local _lss_path="toolkit/crashreporter/google-breakpad/src/third_party/lss"
@@ -221,6 +170,7 @@ export MOZ_APP_REMOTINGNAME=$_pkgname
 # Floorp Upstream
 ac_add_options --enable-proxy-bypass-protection
 ac_add_options --enable-unverified-updates
+ac_add_options --with-l10n-base=${PWD@Q}/floorp/browser/locales/l10n-central
 MOZ_REQUIRE_SIGNING=
 
 # Keys
@@ -268,6 +218,7 @@ export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # Optimization
 ac_add_options --enable-optimize=-O3
+ac_add_options --enable-linker=mold
 ac_add_options --enable-lto=cross,full
 ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
@@ -279,16 +230,6 @@ export CXX='clang++'
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 END
-
-  if [[ "${_build_git::1}" == "t" ]] ; then
-    cat >>../mozconfig <<END
-ac_add_options --with-l10n-base=${PWD@Q}/floorp/browser/locales/l10n-central
-END
-  else
-    cat >>../mozconfig <<END
-ac_add_options --with-l10n-base=${PWD@Q}/l10n-central
-END
-  fi
 }
 
 build() {
@@ -490,6 +431,3 @@ END
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 }
-
-# execute
-_main_package
