@@ -3,7 +3,7 @@
 pkgname=nepali-calendar-gtk-git
 _pkgname=nepali-calendar
 pkgver=r27.3ea885a
-pkgrel=0
+pkgrel=1
 pkgdesc="A nepali calendar built with gtk3"
 arch=("any")
 url="https://github.com/nepali-bhasa/nepali-calendar"
@@ -22,14 +22,20 @@ pkgver() {
 build() {
 	cd "${_pkgname}"
 	make nepalical
-	sudo make install-cal
 }
 
 package() {
 	# Install binary
 	install -Dm755 "${srcdir}/${_pkgname}/bin/nepalical" "${pkgdir}/usr/bin/nepalical"
-	
+
+	# Install glade file
+  install -Dm644 "${srcdir}/${_pkgname}/nepalical.glade" "${pkgdir}/usr/share/nepalical/nepalical.glade"
+
 	# Install desktop file
 	install -Dm755 "${srcdir}/${_pkgname}/nepalical.desktop" "${pkgdir}/usr/share/applications/nepalical.desktop"
 }
 
+# Let users know about the location of the glade file and the binary
+pkgpostrm() {
+    echo "To run Nepali Calendar, execute 'nepalical' in your terminal or find it in your application menu under 'Nepali Calendar'."
+}
