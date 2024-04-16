@@ -1,9 +1,9 @@
-# Maintainer: Ruben Kharel <talkto@rubenk.com.np>
+# Maintainer: Ruben Kharel <aur-at-rubenk-dot-dev>
 # Contributor: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
 
 pkgname=chatgpt-desktop-git
 _pkgname=ChatGPT
-pkgver=0.12.0+r9+g6adb6e3
+pkgver=1.1.0+r8+gfe4f231
 pkgrel=1
 pkgdesc="ChatGPT Desktop Application (Mac, Windows and Linux)"
 arch=('x86_64'
@@ -16,15 +16,14 @@ provides=("chatgpt-desktop")
 conflicts=("chatgpt-desktop")
 makedepends=("imagemagick"
              "git"
-						 "cargo")
+			"cargo")
 depends=("hicolor-icon-theme"
          "openssl"
          "webkit2gtk")
 
 source=("git+https://github.com/lencx/ChatGPT.git"
         chat-gpt.desktop)
-md5sums=('SKIP'
-         '522e34cab26f9bf9247567e48f625f6d')
+sha256sums=('SKIP' 'fe7aaba6e26b964adba2cbf87bd415cbe928ea06ebea5317d177cfa1576eb9f5')
 
 pkgver() {
 	cd "${_pkgname}"
@@ -46,8 +45,8 @@ prepare() {
 build() {
 	cd "${_pkgname}"
 	export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-	cargo build --release --all-features # --frozen removed because some csv failed to download althought everything required was already download
+  	export CARGO_TARGET_DIR=target
+	cargo build --release --all-features # --frozen removed because some csv failed to download although everything required was already download
 	# will debug later
 }
 
