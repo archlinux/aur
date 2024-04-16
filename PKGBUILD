@@ -12,7 +12,7 @@ license=("MIT")
 depends=("plymouth")
 makedepends=("git")
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/yozachar/plymouth-theme-aregression/archive/v${pkgver}.tar.gz")
-sha256sums=("72445b9db5003a3593cecbb23ee2fffb2f0391a3f5dbfd9d584b85c00e3ba7eb")
+sha256sums=("f66d78516c2e25bf9e246cb16727733cf60b2cd7941f4331534b4284d2169f21")
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   _themedir="${pkgdir}/usr/share/plymouth/themes/${_themename}"
