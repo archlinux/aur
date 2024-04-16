@@ -4,32 +4,39 @@
 # Contributor: big_gie nbigaouette . at . gmail.com
 
 pkgname=gri
-pkgver=20240405.101042
-pkgrel=1
+pkgver=2.12.27
+pkgrel=2
+epoch=1
 pkgdesc="A script-based language for scientific graphics programming"
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL-3.0-or-later')
 url="http://gri.sourceforge.net/"
-depends=('perl' 'netcdf')
+depends=('perl' 'glibc' 'readline' 'gcc-libs' 'netcdf')
 makedepends=('ghostscript' 'netcdf' 'imagemagick' 'texlive-core' 'perl-perl4-corelibs' 'git')
-source=('gri::git+https://github.com/dankelley/gri.git#commit=d9969d1')
-md5sums=('fbe0f86bd394f679acab9d296f5e05d2')
+source=('gri::git+https://github.com/dankelley/gri.git')
+md5sums=('SKIP')
 options=('!makeflags')
 
+pkgver() {
+  cd "$pkgname"
+  awk 'NR==2 {print}' configure.ac | sed -e 's/.* \([0-9.]*\).*/\1/'
+  # git describe --long --abbrev=7 | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
+}
+
 prepare() {
-  cd $pkgname
+  cd "$pkgname"
   aclocal
 	autoconf
 	automake --add-missing
 }
 
 build() {
-  cd $pkgname
+  cd "$pkgname"
   CXXFLAGS+=" -fpermissive" ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR=$pkgdir install
+  cd "$pkgname"
+  make DESTDIR="$pkgdir" install
 }
