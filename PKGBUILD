@@ -32,8 +32,8 @@ esac
 
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=4.2.0+70.r13353.20240324.357c5342d
-pkgrel=1
+pkgver=4.2.0+88.r13371.20240416.550ec19a7
+pkgrel=2
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
   'i686'
@@ -351,7 +351,7 @@ package() {
 
   # Install more information
   msg2 "Installing extra documentation and license ..."
-  for _docfile in ABOUT-NLS AUTHORS ChangeLog* INSTALL NEWS README RELEASE_NOTES TODO version; do
+  for _docfile in ABOUT-NLS AUTHORS ChangeLog* INSTALL NEWS README RELEASE_NOTES version; do
       install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
   install -D -v -m644 "${srcdir}/git.log" "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
