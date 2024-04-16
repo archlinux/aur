@@ -1,12 +1,12 @@
 ## Maintainer: Adam <classygopher@gmail.com>
 pkgname=bolt-launcher
 pkgver=0.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Free open-source third-party implementation of the Jagex Launcher"
 license=('AGPL3')
 url="https://bolt.adamcake.com/"
 arch=('x86_64')
-depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'fmt9' 'gcc-libs' 'gdk-pixbuf2'
+depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'fmt' 'gcc-libs' 'gdk-pixbuf2'
          'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libarchive' 'libdrm' 'libx11' 'libxcb'
          'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa'
          'nspr' 'nss' 'pango')
@@ -14,16 +14,16 @@ makedepends=('cmake' 'git')
 optdepends=('jre17-openjdk: runelite/hdos' 'gtk2: rs3' 'openssl-1.1: rs3')
 source=("git+https://github.com/Adamcake/Bolt.git#tag=${pkgver}"
         "https://adamcake.com/cef/cef-114.0.5735.134-linux-x86_64-minimal-ungoogled.tar.gz"
-        "fmt9.patch"
+        "fmt.patch"
         "cef-no-fortify.patch")
 sha256sums=('SKIP'
             '72c8c43dcb61f778a807eb262b2c2ebcb2e1705756de5a9003484af0663aa924'
-            '6dadab1c269e8f7baefbd87fab34819b7a14985fa00512ea04ed959df6e07291'
+            'd6c2afbfc6e9d89cc0e8c8df5187ad9e56e8f3796d26aa5df353e7457d5577da'
             '20b60ea029fe7fc95d5b8e3d4dcf035a418267d0b3c445bd821205784b037258')
 
 prepare() {
   git -C "$srcdir/Bolt" submodule update --init --recursive
-  git -C "$srcdir/Bolt" apply "$srcdir/fmt9.patch"
+  git -C "$srcdir/Bolt" apply "$srcdir/fmt.patch"
   patch -p1 -d "$srcdir/cef_binary_114.2.11+g87c8807+chromium-114.0.5735.134_linux64_minimal" < "$srcdir/cef-no-fortify.patch"
 }
 

@@ -1,0 +1,36 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fdc8670..cb32ff2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -197,13 +197,13 @@ endif()
+ 
+ # This line needs to be updated manually with any new/deleted object files; cmake discourages GLOBbing source files
+ add_executable(bolt
+-    modules/fmt/src/format.cc src/main.cxx src/browser.cxx src/browser/app.cxx src/browser/client.cxx
++    src/main.cxx src/browser.cxx src/browser/app.cxx src/browser/client.cxx
+     src/browser/resource_handler.cxx src/browser/window_launcher.cxx ${WINDOW_LAUNCHER_OS_SPECIFIC}
+     src/mime.cxx src/file_manager/directory.cxx client_cmake_gen.cxx ${BOLT_FILE_MANAGER_LAUNCHER_GEN}
+ )
+ 
+ # Various build properties
+-target_include_directories(bolt PUBLIC ${CEF_ROOT} modules/fmt/include)
++target_include_directories(bolt PUBLIC ${CEF_ROOT})
+ set_target_properties(bolt PROPERTIES CXX_STANDARD 20 CXX_EXTENSIONS OFF)
+ target_link_libraries(bolt PUBLIC libcef_dll_wrapper)
+ if(UNIX AND NOT APPLE)
+@@ -275,11 +275,14 @@ if(NOT BOLT_SKIP_LIBRARIES)
+         add_library(${BOLT_PLUGIN_LIB_NAME} SHARED src/library/so/main.c src/library/plugin.c src/library/gl.c src/library/rwlock_posix.c modules/hashmap/hashmap.c)
+         install(TARGETS ${BOLT_PLUGIN_LIB_NAME} DESTINATION "${BOLT_LIBDIR}")
+     endif()
+-    target_include_directories(${BOLT_PLUGIN_LIB_NAME} PUBLIC "${CEF_ROOT}" "${BOLT_LUAJIT_INCLUDE_DIR}" modules/fmt/include)
++    target_include_directories(${BOLT_PLUGIN_LIB_NAME} PUBLIC "${CEF_ROOT}" "${BOLT_LUAJIT_INCLUDE_DIR}")
+     target_link_libraries(${BOLT_PLUGIN_LIB_NAME} luajit-5.1)
+     target_compile_definitions(bolt PUBLIC BOLT_LIB_NAME="${BOLT_PLUGIN_LIB_NAME}")
+ endif()
+ 
++find_package(fmt REQUIRED)
++target_link_libraries(bolt PUBLIC fmt)
++
+ # Finally, install shell script and metadata
+ if(NOT WIN32)
+     install(PROGRAMS "${CMAKE_CURRENT_BINARY_DIR}/bolt-run.sh" RENAME bolt DESTINATION ${BOLT_BINDIR})
