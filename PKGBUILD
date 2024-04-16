@@ -3,7 +3,7 @@
 _module='python-ffmpeg'
 _pkgname="python-$_module"
 pkgname="$_pkgname-git"
-pkgver=2.0.11.r0.gc0c4787
+pkgver=2.0.12.r0.gf8fafba
 pkgrel=1
 pkgdesc="Python binding for FFmpeg which provides sync and async APIs"
 url="https://github.com/jonghwanhyeon/python-ffmpeg"
@@ -20,32 +20,28 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-pytest-runner'
   'python-setuptools'
   'python-wheel'
 )
-
-provides=(
-  'python-ffmpeg'
+_checkdepends=(
+  'python-pytest-runner'
 )
+
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=(
-  'python-ffmpeg'
+  "$_pkgname"
   'python-ffmpeg-python'
 )
 
 options=(!emptydirs)
 
 _pkgsrc="$_module"
-
-provides+=("$_pkgname=${pkgver%%.r*}")
-conflicts+=("$_pkgname")
-
 source=("$_module"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
