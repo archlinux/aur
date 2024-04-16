@@ -2,8 +2,8 @@
 
 _module='python-ffmpeg'
 _pkgname="python-$_module"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.0.11
+pkgname="$_pkgname"
+pkgver=2.0.12
 pkgrel=1
 pkgdesc="Python binding for FFmpeg which provides sync and async APIs"
 url="https://github.com/jonghwanhyeon/python-ffmpeg"
@@ -19,16 +19,14 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
-  'python-pytest-runner'
   'python-setuptools'
   'python-wheel'
 )
-
-provides=(
-  'python-ffmpeg'
+_checkdepends=(
+  'python-pytest-runner'
 )
+
 conflicts=(
-  'python-ffmpeg'
   'python-ffmpeg-python'
 )
 
@@ -37,7 +35,7 @@ options=(!emptydirs)
 _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
 source+=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums+=('085604ae08ad7018109964fae38410c666d3c3391484eaa6648ac2e760e2bb18')
+sha256sums+=('ca72a9fb0af3fc175827a068a7c52813507140a63dc86df2b504ac5c1683bf18')
 
 build() {
   cd "$_pkgsrc"
