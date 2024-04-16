@@ -1,7 +1,7 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 _pkgname=ansel
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.r729.ge2c4a0a60
+pkgver=0.0.0.r748.g61eb38876
 pkgrel=1
 pkgdesc="Ansel is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs."
 arch=("i686" "x86_64")
@@ -10,7 +10,8 @@ license=("GPL3")
 depends=(
   "pugixml" "libjpeg-turbo" "colord-gtk" "openexr" "lensfun" "iso-codes" "zlib"
   "exiv2" "flickcurl" "openjpeg2" "graphicsmagick" "lua" "osm-gps-map"
-  "libsecret" "openmp" "gmic" "libavif" "jasper" "libjxl" "libraw" "libwebp"
+  "libsecret" "openmp" "gmic" "libavif" "libheif" "jasper" "libjxl" "libraw"
+  "libwebp"
 )
 optdepends=(
   "dcraw: base curve script"
