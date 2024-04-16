@@ -1,3 +1,51 @@
+Mullvad Browser 13.0.14 - April 16 2024
+ * All Platforms
+   * Updated Firefox to 115.10.0esr
+   * Updated uBlock Origin to 1.57.2
+   * Bug 271: After update, don't open the release page on Github. Instead link it in the startpage, like in Tor Browser [mullvad-browser]
+   * Bug 283: New identity complains about about:mullvad-browser [mullvad-browser]
+   * Bug 285: Rebase Mullvad Browser stable onto 115.10.0esr [mullvad-browser]
+   * Bug 41676: Set privacy.resistFingerprinting.testing.setTZtoUTC as a defense-in-depth [tor-browser]
+   * Bug 42236: Let users decide whether to load their home page on new identity. [tor-browser]
+   * Bug 42335: Do not localize the order of locales for app lang [tor-browser]
+   * Bug 42428: Timezone offset leak via document.lastModified [tor-browser]
+   * Bug 42468: App languages not sorted correctly in stable [tor-browser]
+   * Bug 42472: Timezone May leak from XSLT Date function [tor-browser]
+ * Linux
+   * Bug 41110: Avoid Fontconfig warning about "ambiguous path" [tor-browser-build]
+
+Mullvad Browser 13.5a6 - March 28 2024
+ * All Platforms
+   * Updated Firefox to 115.9.0esr
+   * Updated mullvad-browser-extension to 0.9.0
+   * Bug 234: Make User-Agent request header match RFP's navigator.userAgent [mullvad-browser]
+   * Bug 271: After update, don't open the release page on Github. Instead link it in the startpage, like in Tor Browser [mullvad-browser]
+   * Bug 274: Rebase Mullvad Browser alpha onto Firefox 115.9.0esr [mullvad-browser]
+   * Bug 41676: Set privacy.resistFingerprinting.testing.setTZtoUTC as a defense-in-depth [tor-browser]
+   * Bug 41916: Letterboxing preferences UI [tor-browser]
+   * Bug 41918: Add option to reuse last window size when letterboxing is enabled [tor-browser]
+   * Bug 42211: Fluent migration: new identity [tor-browser]
+   * Bug 42214: Fluent migration: security level [tor-browser]
+   * Bug 42236: Let users decide whether to load their home page on new identity. [tor-browser]
+   * Bug 42428: Timezone offset leak via document.lastModified [tor-browser]
+   * Bug 42443: Shrink the window to match letterboxing size when the emtpy area is doble-clicked [tor-browser]
+   * Bug 42472: Timezone May leak from XSLT Date function [tor-browser]
+   * Bug 42473: ESR 115.9.1 fixes [tor-browser]
+ * Windows
+   * Bug 80: Make 'Mullvad your default browser' does not work on Windows [mullvad-browser]
+   * Bug 42377: Hidden fonts are automatically added to the allow list [tor-browser]
+   * Bug 41089: Add filetype association to the installer of Mullvad Browser [tor-browser-build]
+ * Linux
+   * Bug 42438: Adapt the data import wizard to use the original $HOME on Linux [tor-browser]
+   * Bug 41110: Avoid Fontconfig warning about "ambiguous path" [tor-browser-build]
+ * Build System
+   * All Platforms
+     * Bug 41088: Remove use of projects/browser/run_scripts [tor-browser-build]
+     * Bug 41102: src archive does not match likely due to mismatched xz-utils version [tor-browser-build]
+     * Bug 40073: We should remove ./ when using 7-zip for zip files [rbm]
+   * Windows
+     * Bug 41097: authenticode-timestamping.sh fails to run again because tmp-timestamp already exists [tor-browser-build]
+
 Mullvad Browser 13.0.13 - March 22 2024
  * Windows + macOS + Linux
    * Updated Firefox to 115.9.1esr
