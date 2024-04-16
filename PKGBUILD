@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
-pkgver='4.1.1.20240412'
+pkgver='4.1.2.20240415'
 pkgrel='2'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
@@ -11,7 +11,7 @@ source=("https://github.com/bsc-performance-tools/$pkgname/archive/${pkgver%.*}.
         extrae-issue-27-fix-pie-address-translation.patch
         extrae-Fix-make-DESTDIR-.-install-for-Extrae-4.0.2.patch
         extrae-Fix-references-to-the-build-directory.patch)
-sha512sums=(8b147b08e7d049379f44abcf1a34b3fb04b9f619422111bec682d8a6c54690d48b966ab590a3249c274f7a6af1af970efb42086c8606bfd56d4b2dbdcaf603be
+sha512sums=(0191bf2cecc827ca2f76588e7e9be5840806a8c23c3288a412f8019a505ad892cc2617817945e073750eb10261a15b1b29a49d9c61484740ecc239ecde24f28b
             ce6e5f3994118783fd1e05de7336782e4df4eaf3b2a277174ea536b0d391f418cb36682c1e1b3adee3b4d2aa07f25af58998525c79d0567f7afa88dda048c413
             e90d108ac4531d68ba8bced44db71139cb7b4273f97ec994582150eb9d4f71960c525c1b3ad2fac95d678f91494b5299bfb00513a0a58cc5b6d916eb930af2d5
             a5085d4e974a98cb6266502e06bd2b5a45e213f7d322e8f6cffccbaf92a7f414641b6e6578f87f76dbbb3e4f89b3c268dc33e813c13ea5512e52d1b241317f2a)
