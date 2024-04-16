@@ -114,4 +114,5 @@ function package_wechat-uos-qt() {
 function package_wechat-uos-bwrap() {
 	conflicts+=(wechat-universal-bwrap wechat-beta-bwrap)
 	replaces+=(wechat-universal-bwrap wechat-beta-bwrap)
+	requires+=(wechat-uos-qt)
 }
