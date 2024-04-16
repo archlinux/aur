@@ -8,12 +8,12 @@ pkgbase = ortfodb-bin
 	provides = ortfodb
 	arch = aarch64
 	source_aarch64 = https://github.com/ortfo/db/releases/download/v1.4.0/ortfodb_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 968d65cfeb4f5b96e798da21d0fa902ed02256a3fb26fb845523a6ac38a6a8fa
+	sha256sums_aarch64 = c42b439dbd39b070e4ea375bff469840772b997dc9f04309423f3d73f5f52a20
 	arch = i686
 	source_i686 = https://github.com/ortfo/db/releases/download/v1.4.0/ortfodb_Linux_i386.tar.gz
-	sha256sums_i686 = 9d707cdf0194602e4bf651edbf239a018a9450bc497bbd38d912bb8257695d7e
+	sha256sums_i686 = 6114119dca74434a1e39485b26c9db29d61501aa9535e63254c34d631818fec2
 	arch = x86_64
 	source_x86_64 = https://github.com/ortfo/db/releases/download/v1.4.0/ortfodb_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = b502f91958f65e764f3047fb5d6ba0f714390bb54979aae6dd8ab2e76f99d991
+	sha256sums_x86_64 = cc389b2b0fb65f8090dc5072dc0dbec8cd8a315ce4752e4f039f4b24138a5e87
 	
 pkgname = ortfodb-bin
