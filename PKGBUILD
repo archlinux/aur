@@ -8,13 +8,14 @@ pkgname=odin-bin
 pkgver_fixed=${pkgver//_/-}
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
-arch=('x86_64')
+arch=("x86_64")
 url="https://odin-lang.org/"
-license=('BSD-2-Clause')
-depends=('clang' 'llvm-libs' 'libedit')
-provides=('odin')
-conflicts=('odin' 'odin-git')
-options=('staticlibs')
+license=("BSD-2-Clause")
+depends=("clang" "llvm-libs" "libedit")
+makedepends=("unzip" "patchelf")
+provides=("odin")
+conflicts=("odin" "odin-git")
+options=("staticlibs")
 
 source=(
   "https://github.com/odin-lang/Odin/releases/download/dev-$pkgver_fixed/odin-ubuntu-amd64-dev-$pkgver_fixed.zip"
@@ -26,6 +27,7 @@ sha256sums=(
 build() {
   unzip "${srcdir}/dist.zip"
   cd "${srcdir}/dist"
+  patchelf --replace-needed libedit.so.2 libedit.so.0 libLLVM-17.so.1
   chmod +x odin
 }
 
