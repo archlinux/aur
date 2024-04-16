@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=guiscrcpy-git
 pkgver=2023.1.1.r6.g9a912f9
 pkgrel=1
