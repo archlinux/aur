@@ -1,4 +1,4 @@
-pkgbase = wqy-microhei-patched
+pkgbase = wqy-microhei-kr-halfmarks
 	pkgdesc = A Sans-Serif style high quality CJK outline font (With kr patch, half-width quotation mark and closer brackets)
 	pkgver = 0.2.0_beta
 	pkgrel = 12

@@ -5,7 +5,6 @@
 # Contributor: wicast <wicastchen at hotmail>
 
 _pkgname=wqy-microhei
-pkgbase=$_pkgname-patched
 pkgname=$_pkgname-kr-halfmarks
 pkgver=0.2.0_beta
 pkgrel=12
@@ -15,9 +14,9 @@ arch=('any')
 license=('(Apache-2.0 OR GPL-3.0-or-later) WITH Font-exception-2.0')
 url="https://wenq.org"
 makedepends=('xdelta3')
-provides=("$_pkgname" "$pkgbase")
-conflicts=("$_pkgname" "$pkgbase")
-replaces=("$pkgbase")
+provides=("$_pkgname" "$_pkgname-patched")
+conflicts=("$_pkgname" "$_pkgname-patched")
+replaces=("$_pkgname-patched")
 source=("https://downloads.sourceforge.net/project/wqy/$_pkgname/${pkgver//_/-}/$_pkgname-${pkgver//_/-}.tar.gz"
         '44-wqy-microhei.conf'
         'wqy-microhei.ttc.xd3')
