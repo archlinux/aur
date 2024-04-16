@@ -1,4 +1,4 @@
-pkgbase = dnd-encounter-tracker-bin
+pkgbase = dnd-encounter-tracker
 	pkgdesc = DnD 5e CLI-based combat encounter tracker
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = dnd-encounter-tracker-bin
 	source = https://github.com/Glitch-Gecko/dnd-encounter-tracker/releases/download/v1.0.0/dnd-encounter-tracker-1.0.0-x86_64.tar.gz
 	sha256sums = c12aa63078eba7e84cae235a6297dca565155c33b4a23a2900bcd0d45f029045
 
-pkgname = dnd-encounter-tracker-bin
+pkgname = dnd-encounter-tracker
