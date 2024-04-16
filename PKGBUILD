@@ -12,7 +12,7 @@ url="http://tix.sourceforge.net/"
 license=("BSD")
 depends=('tk' 'libx11')
 source=("http://downloads.sourceforge.net/tix/Tix$pkgver-src.tar.gz"
-	"tix-8.4.3-tcl8.6.patch::https://bugs.archlinux.org/attachments/36882/10973/tix-8.4.3-tcl8.6.patch")
+	"tix-8.4.3-tcl8.6.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/dev-tcltk/tix/files/tix-8.4.3-tcl8.6.patch")
 md5sums=('2b8bf4b10a852264678182652f477e59'
          'c26297f9e1744dc38308a062ef00549e')
 
