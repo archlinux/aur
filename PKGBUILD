@@ -19,6 +19,7 @@ sha256sums=('8f645bc3a4897ac61eaec5be19c16b515d164552554ac0791a60731be1ea22a9')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i "130 a\      packages=[]," setup.py
 
   python setup.py install --prefix=/usr --root="${pkgdir}/" --optimize=1
 }
