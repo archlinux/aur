@@ -63,6 +63,5 @@ package() {
   install -Dm644 128x128.png "$pkgdir/$_icdr/128x128/apps/$pkgname.png"
   install -Dm644 128x128@2x.png "$pkgdir/$_icdr/256x256/apps/$pkgname.png"
   install -Dm644 icon.png "$pkgdir/$_icdr/512x512/apps/$pkgname.png"
-  cd ../target/release
-  install -Dm755 flight-core "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 ../target/release/flight-core "$pkgdir/usr/bin/$pkgname"
 }
