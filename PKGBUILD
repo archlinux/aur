@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=steam-powerbuttond-git
 _gitdir=steam-powerbuttond
-pkgver=24.04.r19.abd2ff4
+pkgver=24.04.r20.b5ad0f5
 pkgrel=1
 pkgdesc="Simple powerbutton daemon for steam with gamescope-session"
 arch=('any')
