@@ -1,15 +1,26 @@
 pkgbase = kplex-git
 	pkgdesc = NMEA-0183 multiplexer for GNU/Linux capable of managing inputs from serial lines, pseudo terminals and network interfaces.
-	pkgver = v1.4.r0.g715b18c
-	pkgrel = 1
+	pkgver = 1.4+2.r221.20200827.2433cea
+	pkgrel = 2
 	url = http://www.stripydog.com/kplex/
-	arch = any
-	license = GPL3
+	arch = i486
+	arch = i586
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	arch = armv6l
+	arch = armv7h
+	arch = armv7l
+	arch = armv8h
+	arch = loong64
+	arch = risc64
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = glibc
-	provides = kplex=v1.4.r0.g715b18c
-	source = kplex-git::git://github.com/stripydog/kplex
-	md5sums = SKIP
+	provides = kplex=1.4+2.r221.20200827.2433cea
+	conflicts = kplex
+	source = kplex::git+https://github.com/stripydog/kplex
+	sha256sums = SKIP
 
 pkgname = kplex-git
-
