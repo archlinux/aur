@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=xorg-server-bug865-bug1578
-pkgname=xorg-server-bug865-issue1578
+pkgname=xorg-server-bug865-bug1578
 
 pkgver=21.1.13
 pkgrel=1
@@ -90,7 +90,7 @@ _install() {
     rm -rf "${src}"
   done
 }
-package_xorg-server-bug865-issue1578() {
+package() {
   pkgdesc="Xorg X server with the patch for freedesktop bug 865 (need to kick hotkeys on release, not press) and issue 1578 (might ignore first scroll when direction is changed)"
   depends=(libepoxy libxfont2 pixman xorg-server-common libunwind
            dbus libgl xf86-input-libinput nettle
