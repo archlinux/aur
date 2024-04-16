@@ -2,10 +2,10 @@
 
 pkgname=fortune-mod-anarchism
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Anarchist fortune quotes"
 arch=('any')
-url="https://notabug.org/PangolinTurtle/BLAG-fortune"
+url="https://packages.debian.org/source/testing/blag-fortune"
 license=('custom:public domain')
 depends=('fortune-mod')
 groups=('fortune-mods')
