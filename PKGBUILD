@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-_qtver=6.6.2
+_qtver=6.7.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -18,6 +18,7 @@ depends=(brotli
          zlib
          zstd)
 makedepends=(cmake
+             git
              mariadb-libs
              ninja
              postgresql
@@ -32,17 +33,20 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 groups=(qt6)
 conflicts=(qt6-base)
 provides=(qt6-base)
-_pkgfn="qtbase-everywhere-src-$_qtver"
-source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
+_pkgfn=qtbase
+source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver
         qt6-base-cflags.patch
-        qt6-base-nostrip.patch)
-sha256sums=('b89b426b9852a17d3e96230ab0871346574d635c7914480a2a27f98ff942677b'
+        qt6-base-nostrip.patch
+        fix-wrong-cpp-if.patch::https://code.qt.io/cgit/qt/qtbase.git/patch/?id=68102202)
+sha256sums=('ee87abbfdf2d5bb204056bcb6c53e21c03e1abd779e3669faa56db7249c5e39e'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
-            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
+            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
+            '81c4821fb1c258603474771a267d450aa8b5d1d298443bc04620d70719c7eab7')
 
 prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
+  patch -d $_pkgfn -p1 < fix-wrong-cpp-if.patch # https://bugreports.qt.io/browse/QTBUG-123937
 }
 
 build() {
