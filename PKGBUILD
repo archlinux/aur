@@ -5,9 +5,9 @@
 
 pkgname=qt5-base-headless
 _basever=5.15.13
-pkgver=5.15.13+kde+r138
+pkgver=5.15.13+kde+r145
 pkgrel=1
-_commit=b9906b5233a80cab372c95ac4dd68b25bdca0646
+_commit=8d30c21cfb529edbdcfd32a928f97b4f861d20e2
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -23,26 +23,26 @@ conflicts=('qtchooser' 'qt5-base')
 provides=('qt5-base')
 groups=('qt5')
 _pkgfqn=qtbase
-source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
+source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         qmake-cflags.patch
         qmake-config.patch)
-sha256sums=('SKIP'
+sha256sums=('4f73f7214737f8d50b5a4bfeb80717b9ff2399ae4b065f3de028677d139b38b2'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4abc22150fa3e06b2fdcec32146abc9be4e316692aa4d5bd5aa53b4b726783fa')
 
 pkgver() {
-  cd $_pkgfqn
+  cd kde-$_pkgfqn
   echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
 }
 
 prepare() {
-  cd ${_pkgfqn}
+  cd kde-$_pkgfqn
   patch -p1 < ../qmake-cflags.patch # Use system CFLAGS in qmake
   patch -p1 < ../qmake-config.patch # Don't strip binaries with qmake and use -ltcg, cf. QTBUG-73834
 }
 
 build() {
-  cd ${_pkgfqn}
+  cd kde-$_pkgfqn
 
   ./configure -confirm-license -opensource -v \
     -prefix /usr \
@@ -85,7 +85,7 @@ build() {
 }
 
 package() {
-  cd ${_pkgfqn}
+  cd kde-$_pkgfqn
   make INSTALL_ROOT="${pkgdir}" install
 
   install -Dm644 LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgbase
