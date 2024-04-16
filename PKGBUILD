@@ -1,8 +1,8 @@
 # Maintainer: Tricia, `creyon` <gtcreyon@gmail.com>
 pkgname=python-flash-patcher
 _name=flash-patcher
-pkgver=6.1.0
-pkgrel=2
+pkgver=6.2.0
+pkgrel=1
 pkgdesc="Adobe Flash SWF file patching tool"
 arch=('any')
 url="https://github.com/rayyaw/flash-patcher"
@@ -28,3 +28,4 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
+b2sums=('3af5df8a9fdf18524f9a0992a2323c39e9eb43361a49cbffd889dd2cb6d84934cce3965afb67d000df0005d533d487fe20500751d323bc1b664013af1b770a20')
