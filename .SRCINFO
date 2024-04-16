@@ -1,0 +1,14 @@
+pkgbase = ttf-gabarito-git
+	pkgdesc = A light-hearted geometric sans typeface with 6 weights
+	pkgver = v1.000.r8.g1f3fb39
+	pkgrel = 1
+	url = https://github.com/naipefoundry/gabarito
+	arch = any
+	license = OFL-1.1
+	makedepends = git
+	provides = ttf-gabarito
+	conflicts = ttf-gabarito
+	source = gabarito-git::git+https://github.com/naipefoundry/gabarito.git
+	sha256sums = SKIP
+
+pkgname = ttf-gabarito-git
