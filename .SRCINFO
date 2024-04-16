@@ -18,4 +18,4 @@ pkgbase = wqy-microhei-patched
 	sha512sums = e443a5289b24ab1c405b3f1b5548f18bf1a63c54796e2e072c996680326de333ce2fb8d97aa41dbd5ac2cab99af1105e6c1a0f19313f832aa43ec4d6939f8b9e
 	sha512sums = f8c106089562647f2f33e8a01c7375e2f66319754aee990f74b8b9af19c010dd49028df66b8fdcfb1a394721e80d953da019046452d74a1ae381384e2ab5d6d4
 
-pkgname = wqy-microhei-kr-halfmarks
+pkgname = wqy-microhei-patched

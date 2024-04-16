@@ -6,7 +6,7 @@
 
 _pkgname=wqy-microhei
 pkgbase=$_pkgname-patched
-pkgname=$_pkgname-kr-halfmarks
+pkgname=$_pkgname-patched
 pkgver=0.2.0_beta
 pkgrel=12
 pkgdesc="A Sans-Serif style high quality CJK outline font \
