@@ -1,0 +1,13 @@
+pkgbase = electrum-abc-bin
+	pkgdesc = Lightweight eCash wallet
+	pkgver = 5.2.12
+	pkgrel = 1
+	url = https://bitcoinabc.org/electrum
+	arch = x86_64
+	license = MIT
+	provides = electrum-abc
+	validpgpkeys = D77BFAEDC2C0AD61D9D5DC32B838D022AFCF71C9
+	source_x86_64 = https://github.com/Bitcoin-ABC/ElectrumABC/releases/download/5.2.12/ElectrumABC-5.2.12-x86_64.AppImage
+	sha256sums_x86_64 = 2a8bd682cb9fbdb847d222f32a1f36579a6ef4b3f41a7c40d481b7312943f9d0
+
+pkgname = electrum-abc-bin
