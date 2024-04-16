@@ -1,0 +1,22 @@
+pkgbase = perfect28-bin
+	pkgdesc = perfect28 is a very simple command line benchmark that uses brute force to find the first 8 perfect numbers.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/PerfectlyFluffy/perfect28
+	license = MIT
+	conflicts = perfect28
+	provides = perfect28
+	arch = aarch64
+	source_aarch64 = https://github.com/PerfectlyFluffy/perfect28/releases/download/v0.9.1/perfect28_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9bd80f2d724a2c57636d95efff28a2ce7a3e91999dfda1703ba285f12eb4f044
+	arch = armv7h
+	source_armv7h = https://github.com/PerfectlyFluffy/perfect28/releases/download/v0.9.1/perfect28_Linux_armv7.tar.gz
+	sha256sums_armv7h = 96cc70073ca51a9935a92743d2e2e3e33f531f6d5ad763b6c779b4bf26b0ad05
+	arch = i686
+	source_i686 = https://github.com/PerfectlyFluffy/perfect28/releases/download/v0.9.1/perfect28_Linux_i386.tar.gz
+	sha256sums_i686 = f915076c246c2dd33fefbb6d470e9e8fe16469dff362b29df9799bfbd61e884e
+	arch = x86_64
+	source_x86_64 = https://github.com/PerfectlyFluffy/perfect28/releases/download/v0.9.1/perfect28_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = cc958237b9f0511258afe052c9d9ebb51b8d7a51ff406f027496c7e58931a207
+	
+pkgname = perfect28-bin
