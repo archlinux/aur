@@ -4,7 +4,7 @@
 _pkgname="xcp"
 pkgname="$_pkgname-git"
 pkgver=0.20.4.r4.g6356af3
-pkgrel=1
+pkgrel=2
 pkgdesc="An extended 'cp'"
 url="https://github.com/tarka/xcp"
 license=("GPL-3.0-only")
@@ -28,26 +28,36 @@ pkgver() {
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
+_cargo_env() {
   export CARGO_HOME="${CARGO_HOME:-$SRCDEST/cargo-home}"
   export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
   export CARGO_TARGET_DIR=target
+}
+
+prepare() {
+  _cargo_env
 
   cd "$_pkgsrc"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
+  _cargo_env
+
   cd "$_pkgsrc"
   cargo build --frozen --release --all-features
 }
 
 check() {
+  _cargo_env
+
   cd "$_pkgsrc"
   ./tests/scripts/test-linux.sh
 }
 
 package() {
+  _cargo_env
+
   cd "$_pkgsrc"
   install -Dm755 "$CARGO_TARGET_DIR/release/$_pkgname" -t "$pkgdir/usr/bin/"
   install -Dm644 "completions/$_pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
