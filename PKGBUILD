@@ -3,8 +3,8 @@
 
 pkgname=typora-plugin
 _pkgname=typora
-_typora_ver=1.8.8
-_plugin_ver=1.7.37
+_typora_ver=1.8.10
+_plugin_ver=1.8.22
 pkgver=${_typora_ver}+plugin+${_plugin_ver}
 pkgrel=1
 pkgdesc="A minimal markdown editor and reader. with obgnail/typora_plugin plugin."
@@ -23,9 +23,9 @@ source=(
     "$_pkgname.sh"
     "https://github.com/obgnail/typora_plugin/archive/refs/tags/${_plugin_ver}.tar.gz")
 sha512sums=(
-    'd107b1bda375fe72ac28b68e2f009b3a4bed2d2135ab005197fc33e1b965e6d8418162677f7179aaa696834fcb0d1acafcf53a98af5f07e451fe1c8b55391da8'
+    '6560774e283129fa556a916d412903893388194625472062a36dd84d771ae261974b0c6a3b4642b081e8e19a7bb9477720e00f39efa4934aa8301001127e69a6'
     'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
-    '68a41f4509a203bb500e22230720122a3ddf5da7774dbee76de0b77db866c9a5b7f5df887108c68e5ecb3afd5f2ce0e8be29b464f82afe568e22ae7795fe27ee')
+    'd636cfc5a11f37ea5c5fd09154995a10a870b14d609ada795d928f84e69bf2a942fa30f2926cb5c5bd3136d2702336ced1017ae111b2b6e0b6d6887a12ea8743')
 
 _patch_plugin() {
   tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
@@ -52,6 +52,6 @@ package() {
 	rmdir --ignore-fail-on-non-empty "$pkgdir/usr/share/doc/$_pkgname" "$pkgdir/usr/share/doc"
 	# remove change log from application comment
 	sed -i '/Change Log/d' "$pkgdir/usr/share/applications/typora.desktop"
-	# fix dir permissions
+	# fix permissions
 	find "$pkgdir" -type d -exec chmod 755 {} \;
 }
