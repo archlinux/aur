@@ -1,13 +1,14 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-casa-formats-io
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.2.2
+_pname=${pkgbase#python-}
+_pyname=${_pname//-/_}
+pkgname=("python-${_pname}" "python-${_pname}-doc")
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Code to handle I/O from/to data in CASA format Resources"
 arch=('i686' 'x86_64')
 url="https://casa-formats-io.readthedocs.io"
-license=('custom:LGPL2')
+license=('LGPL-2.0-only')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
@@ -19,7 +20,7 @@ makedepends=('python-setuptools-scm'
              'python-astropy')
 checkdepends=('python-pytest-openfiles')  # astropy and dask already in makedepends. glue-core for pdepend. doctestplus will die for no glue-core
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('21396ea840b70cbb25debd6a77af23f9')
+md5sums=('a8c9ce1f163d7efb844253f7272990af')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -33,7 +34,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
