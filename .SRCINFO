@@ -1,7 +1,7 @@
 pkgbase = python-lib4sbom
 	pkgdesc = Library to ingest and generate SBOMs
-	pkgver = 0.6.2
-	pkgrel = 1
+	pkgver = 0.7.0
+	pkgrel = 2
 	url = https://github.com/anthonyharrison/lib4sbom
 	arch = any
 	license = Apache-2.0
@@ -11,7 +11,8 @@ pkgbase = python-lib4sbom
 	depends = python-yaml
 	depends = python-semantic-version
 	depends = python-defusedxml
-	source = lib4sbom-0.6.2.tar.gz::https://github.com/anthonyharrison/lib4sbom/archive/refs/tags/v0.6.2.tar.gz
-	sha256sums = 3b208c17ad36d206d3880bb77eb07892cbbe87855f5577fc3929da5a4295fe92
+	depends = python-pytest
+	source = lib4sbom-0.7.0.tar.gz::https://github.com/anthonyharrison/lib4sbom/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 23c19831bcdc743470fa0623accbfffd9983b625e99c0602c0de359877a654a5
 
 pkgname = python-lib4sbom
