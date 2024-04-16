@@ -1,4 +1,4 @@
-pkgbase = dnd-encounter-tracker-bin
+pkgbase = dnd-encounter-tracker
 	pkgdesc = DnD 5e CLI-based combat encounter tracker
 	pkgver = 1.1.0
 	pkgrel = 1
