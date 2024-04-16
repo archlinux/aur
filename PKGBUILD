@@ -2,12 +2,13 @@
 
 _pkgname=sregex
 pkgname=sregex-git
-pkgver=r221.b1bf5b6
+pkgver=r222.c275d22
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A non-backtracking NFA/DFA-based Perl-compatible regex engine matching on large data streams."
 url="https://github.com/openresty/sregex"
 depends=('glibc')
+makedepends=('git')
 provides=("$_pkgname")
 license=('custom:BSD')
 source=("git+https://github.com/openresty/sregex")
