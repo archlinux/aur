@@ -1,7 +1,7 @@
 pkgbase = penpot
 	pkgdesc = The open-source design tool for design and code collaboration
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://penpot.app
 	arch = x86_64
 	license = MPL-2.0
@@ -26,7 +26,7 @@ pkgbase = penpot
 	depends = ghostscript
 	depends = netpbm
 	depends = potrace
-	optdepends = python-tabulater: for the penbot-manage script
+	optdepends = python-tabulator: for the penbot-manage script
 	optdepends = sfnt2woff: for uploading own fonts
 	optdepends = chromium: for making the exporter work
 	noextract = penpot-2.0.2.tgz
