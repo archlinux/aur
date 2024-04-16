@@ -1,9 +1,11 @@
 pkgbase = mcpelauncher-appimage
 	pkgdesc = Minecraft Bedrock Launcher for Linux
 	pkgver = 0.14.1.790
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/minecraft-linux/appimage-builder
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	license = MIT
 	depends = fuse2
@@ -11,7 +13,11 @@ pkgbase = mcpelauncher-appimage
 	provides = mcpelauncher-ui-qt
 	conflicts = mcpelauncher-ui-qt
 	options = !strip
-	source = https://github.com/minecraft-linux/appimage-builder/releases/download/v0.14.1-790/Minecraft_Bedrock_Launcher-x86_64-v0.14.1.790.AppImage
-	sha256sums = 22ec68127de07573829d8cc6a7049dad6cfcf2a6369a4ded2431c2c88e472a88
+	source_x86_64 = mcpelauncher-x86_64-0.14.1.790.AppImage::https://github.com/minecraft-linux/appimage-builder/releases/download/v0.14.1-790/Minecraft_Bedrock_Launcher-x86_64-v0.14.1.790.AppImage
+	sha512sums_x86_64 = 94e78dcf29b093fd6feaf2eb67fb075cf60aa00c2e576c6646b0288a9701118d2f8703f1d265cc646c94ba0fa51a6b8f4b5a842889f71c6c0acd5be2349d044e
+	source_armv7h = mcpelauncher-armv7h-0.14.1.790.AppImage::https://github.com/minecraft-linux/appimage-builder/releases/download/v0.14.1-790/Minecraft_Bedrock_Launcher-armhf-v0.14.1.790.AppImage
+	sha512sums_armv7h = 2da44e76e6c748de42b64527636f4a42547cdac216e2780988b032155d6d0e64bc754b75555e1c1dd6ee710e3b241c0336ba1d9c15044d25273a2588638efac9
+	source_aarch64 = mcpelauncher-aarch64-0.14.1.790.AppImage::https://github.com/minecraft-linux/appimage-builder/releases/download/v0.14.1-790/Minecraft_Bedrock_Launcher-arm64-v0.14.1.790.AppImage
+	sha512sums_aarch64 = a1c6580d625df21d7d16c381eb110d63108ad577c4f66d676ca7fddaa3cf496bede1a88e265642e3da9e12dab1e55f07030862f7f5786a858aaa983a445a6afd
 
 pkgname = mcpelauncher-appimage
