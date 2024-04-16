@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orature-bin
 _pkgname=Orature
-pkgver=1.9.3
-_subver=8693
-pkgrel=2
+pkgver=3.1.16
+_subver=9175
+pkgrel=1
 pkgdesc="An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc."
 arch=("x86_64")
 url="https://github.com/Bible-Translation-Tools/Orature"
@@ -14,6 +14,9 @@ depends=(
     'alsa-lib'
     'libxtst'
     'libxrender'
+    'ffmpeg'
+    'ffmpeg4.4'
+    'gtk3'
 )
 makedepends=(
     'gendesk'
@@ -22,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-${pkgver//_/-}+${_subver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c7b80629fc7fff701cf728923fec66f7bbb6def70d3720aeb59757aa1efcd8e6'
+sha256sums=('5ea6b8298eb0cb6c0458df1f9da9668bc33a1650e1deefb336816cebb1ec4ebd'
             '8e0043b31ea7234b44d4aeb8fa22ac8528073a4f95180700704aef924b81389c')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
