@@ -2,7 +2,7 @@
 
 pkgname=fortune-mod-helluva
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of fortune cookies containing quotes from the cast of Helluva Boss"
 arch=('any')
 license=('unknown')
@@ -16,8 +16,8 @@ sha256sums=('6c230b94449225e0aafc7fb5fffa8ee197922b40ea12b7f5f692e5de42caee13'
 	'1c33caccb110919382aa7909bd075002a0d8037c4478f9816bf0f7c4b41412c4')
 
 build(){
-	strfile ${srcdir}/beelzebub ${srcdir}/beelzebub
-        strfile ${srcdir}/blitz ${srcdir}/blitz
+	strfile ${srcdir}/beelzebub ${srcdir}/beelzebub.dat
+        strfile ${srcdir}/blitz ${srcdir}/blitz.dat
         strfile ${srcdir}/loona ${srcdir}/loona.dat
         strfile ${srcdir}/millie ${srcdir}/millie.dat
         strfile ${srcdir}/moxxie ${srcdir}/moxxie.dat
