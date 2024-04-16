@@ -10,7 +10,9 @@ depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("crunchyroll-bin")
 replace=("crunchyroll-bin")
-source=("https://gitlab.com/crunchyroll/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+#source=("https://gitlab.com/crunchyroll/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+#Backup temp repo
+source=("https://github.com/crunchyroll-pkg/crunchyroll/archive/refs/tags/$pkgver-$pkgrel.tar.gz")
 sha256sums=('SKIP')
 
 
