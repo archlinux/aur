@@ -5,87 +5,66 @@ _module='ffmpeg-python'
 _pkgname="python-$_module"
 pkgname="$_pkgname-git"
 pkgver=0.2.0.r41.gdf129c7
-pkgrel=1
+pkgrel=2
 pkgdesc="(old) Python bindings for FFmpeg with complex filtering support"
-arch=(any)
 url="https://github.com/kkroening/ffmpeg-python"
-license=('Apache')
-options=(!emptydirs)
+license=('Apache-2.0')
+arch=(any)
+
 depends=(
   'ffmpeg'
+  'python'
   'python-future'
   'python-graphviz'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
-  'python-pytest-runner'
   'python-setuptools'
   'python-wheel'
 )
 checkdepends=(
   'python-pytest'
   'python-pytest-mock'
+  'python-pytest-runner'
 )
 
-provides=(
-  'python-ffmpeg'
-)
-conflicts=(
-  'python-ffmpeg'
+options=(!emptydirs)
+
+provides+=("$_pkgname")
+conflicts+=(
+  "$_pkgname"
   'python-python-ffmpeg'
 )
 
-if [ x"$_pkgname" == x"$pkgname" ] ; then
-  # normal package
-  _pkgsrc="$_module-$pkgver"
+_pkgsrc="$_module"
+source=("$_pkgsrc"::"git+https://github.com/kkroening/ffmpeg-python")
+sha256sums=('SKIP')
 
-  source+=(
-    "$_module-$pkgver.tar.gz"::"https://github.com/kkroening/ffmpeg-python/archive/$pkgver.tar.gz"
-  )
-  sha256sums+=(
-    '01b6b7640f00585a404194a358358bdf7f4050cedcd99f41416ac8b27222c9f1'
-  )
-else
-  # x-git package
-  _pkgsrc="$_module"
-
-  makedepends+=('git')
-
-  provides+=("$_pkgname")
-  conflicts+=("$_pkgname")
-
-  source+=(
-    "$_module"::"git+https://github.com/kkroening/ffmpeg-python"
-  )
-  sha256sums+=(
-    'SKIP'
-  )
-
-  pkgver() {
-    cd "$srcdir/$_pkgsrc"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  }
-fi
+pkgver() {
+  cd "$srcdir/$_pkgsrc"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   sed -i -e 's/collections.Iterable/collections.abc.Iterable/g' ffmpeg/_run.py
 }
 
 build() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   python -m build --no-isolation --wheel
 }
 
 check(){
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   pytest || true
 }
 
 package() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
