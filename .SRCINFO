@@ -1,7 +1,7 @@
 pkgbase = onetagger
 	pkgdesc = Cross-platform music tagger with Beatport, Discogs, Musicbrainz, Spotify, Traxsource and many other services support.
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://onetagger.github.io/
 	arch = aarch64
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = onetagger
 	makedepends = pnpm
 	depends = alsa-lib
 	depends = webkit2gtk
-	options = !lto
 	source = https://github.com/Marekkon5/onetagger/archive/refs/tags/1.7.0.tar.gz
 	source = onetagger.desktop
 	sha256sums = ee8245d3a1b3e938e96dc6704d70f1913cfc20586c305ccec2502bc8503b17e2
