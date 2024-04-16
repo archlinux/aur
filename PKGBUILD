@@ -3,12 +3,12 @@
 # Contributor: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 pkgname=kpatch-git
-pkgver=0.9.9.r7.g8513926
-pkgrel=3
+pkgver=0.9.9.r18.gb363972
+pkgrel=1
 pkgdesc='Live kernel patching (git)'
 arch=(i686 x86_64)
 url=https://github.com/dynup/kpatch
-license=(GPL2)
+license=(GPL-2.0-only)
 depends=(bash libelf)
 makedepends=(git)
 checkdepends=(
