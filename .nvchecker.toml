@@ -1,0 +1,5 @@
+[su2]
+source = "github"
+github = "su2code/SU2"
+use_latest_release = true
+prefix = "v"
