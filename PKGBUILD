@@ -13,12 +13,10 @@
 
 : ${_build_private:=true}
 
-unset _pkgtype
-
 ## basic info
 _pkgname="floorp"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=11.11.2
+pkgname="$_pkgname"
+pkgver=11.12.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -113,14 +111,14 @@ _main_package() {
   )
 
   sha256sums=(
-    '18250e72d551e81ec34c7206c58c3026a465d5cdc780eb10cdc3ea050b2ff824'
+    '4d1c6b6c69b139e90f2ae6b192f2774f7525eaca265fcb58247a8c0a20a18ae5'
     'SKIP'
     'SKIP'
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
   )
 
   if [[ "${_build_private::1}" == "t" ]] ; then
-    license+=('CC-BY-NC-SA-4.0')
+    license+=('LicenseRef-Floorp')
     source+=("floorp-projects.private-components"::"git+https://github.com/Floorp-Projects/Floorp-private-components.git")
     sha256sums+=('SKIP')
   fi
@@ -456,6 +454,11 @@ END
     install -Dvm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
+
+  # license
+  if [[ "${_build_private::1}" == "t" ]] ; then
+    install -Dm644 "$_pkgsrc/floorp/Floorp-private-components/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.components"
+  fi
 }
 
 # execute
