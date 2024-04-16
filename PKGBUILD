@@ -1,8 +1,8 @@
 # Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=neolink-git
 _pkgname=neolink
-pkgver=0.6.3.rc.1.r1.g4a94a2d
-pkgrel=1
+pkgver=0.6.3.rc.1.r34.gd354b90
+pkgrel=2
 pkgdesc="An RTSP bridge to Reolink IP cameras."
 arch=('x86_64')
 url="https://github.com/QuantumEntangledAndy/${_pkgname}"
