@@ -1,19 +1,19 @@
 pkgbase = envex-bin
 	pkgdesc = A CLI tool for generating sample dotenv files from existing .env configurations
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/wickes1/envex
 	license = Apache
 	conflicts = envex
 	provides = envex
 	arch = aarch64
-	source_aarch64 = https://github.com/wickes1/envex/releases/download/v1.1.0/envex_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 7d123392429894e944a1470295086635c4ac9bef8e2e4339e50f4d3933f19c45
+	source_aarch64 = https://github.com/wickes1/envex/releases/download/v1.2.0/envex_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9235ac38362329e5d03af618cdc491545cb64eb96df0f6488c4485975de31c26
 	arch = i686
-	source_i686 = https://github.com/wickes1/envex/releases/download/v1.1.0/envex_Linux_i386.tar.gz
-	sha256sums_i686 = 6dbe3468565ba91948f231b089443c9f6650cd9e4c027c38dfa620adc46529af
+	source_i686 = https://github.com/wickes1/envex/releases/download/v1.2.0/envex_Linux_i386.tar.gz
+	sha256sums_i686 = 72c7b34a84e5ac807b002438bf87e4e2b99d884d7b354bf52a45b18dbcefabfa
 	arch = x86_64
-	source_x86_64 = https://github.com/wickes1/envex/releases/download/v1.1.0/envex_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 9def4cb5a6958ea0ac464cba0a8a46eb56a04cd8df60dcc3b212970339d9fe25
+	source_x86_64 = https://github.com/wickes1/envex/releases/download/v1.2.0/envex_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c1fc03322b40ee3fd1e3560daced5f6f1eab0726dfda0ae4a4c1123ab798da51
 	
 pkgname = envex-bin
