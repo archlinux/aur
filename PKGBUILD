@@ -4,7 +4,7 @@ _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
 pkgver=2.0.2
 babashka_version="1.3.189"
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
 url="https://penpot.app"
@@ -31,7 +31,7 @@ depends=(
 )
 makedepends=('clojure' 'git' 'curl' 'npm' 'rsync')
 optdepends=(
-  "python-tabulater: for the penbot-manage script"
+  "python-tabulator: for the penbot-manage script"
   "sfnt2woff: for uploading own fonts"
   "chromium: for making the exporter work"
 )
