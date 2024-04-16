@@ -1,20 +1,20 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-x-icons
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc='A mint/metal theme based on mintified versions of Clearlooks Revamp, Elementary and Faenza'
 arch=('any')
-url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
-license=(GPL3)
+url="https://github.com/linuxmint/mint-x-icons"
+license=('GPL3')
 depends=(
-    gdk-pixbuf2
-    gtk-update-icon-cache
-    hicolor-icon-theme
+    'gdk-pixbuf2'
+    'gtk-update-icon-cache'
+    'hicolor-icon-theme'
 )
 options=(!strip)
-source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('f1c83432f4fe3aea021f28c235d28878367ff9f77bbd7a44391becfa914c6a85')
+source=("http://packages.linuxmint.com/pool/main/m/$pkgname/${pkgname}_${pkgver}.tar.xz")
+sha256sums=('1492eca83a5e42738063f5f14f61022761bdf40c542020b1c85f1e81f8144738')
 
 package() {
     cd "${srcdir}"/"${pkgname}"
