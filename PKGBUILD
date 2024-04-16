@@ -1,10 +1,11 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 # Maintainer: Ista Zahn <istazahn@gmail.com>
 
-pkgname=python-glue-core
-_pyname=glue-core
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.18.0
+pkgbase=python-glue-core
+_pname=${pkgbase#python-}
+_pyname=${_pname//-/_}
+pkgname=("python-${_pname}" "python-${_pname}-doc")
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Core library for the glue multidimensional data visualization project"
 arch=('any')
@@ -26,6 +27,7 @@ makedepends=('python-setuptools-scm'
              'python-shapely'
              'ipython')
 checkdepends=('python-pytest-mpl'
+              'python-pytest-flake8'
               'python-astrodendro'
               'python-dask'
               'python-openpyxl'
@@ -33,7 +35,7 @@ checkdepends=('python-pytest-mpl'
               'python-scikit-image'
               'python-xlrd')  # matplotlib pandas echo astropy ipython shapely scipy already in makedepends, fast-histogram <- mpl-scatter-density; h5py <- astrodendro
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('96bad6d20a7788f0b4405ab906f9ea50fe25ad0a6eeb09582600b7b0ccf2294d')
+sha256sums=('b4eccd758ad1f723c65e6f56ec8ad7a34091e55e70a397975e01d31c83eedc2f')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -56,7 +58,6 @@ check() {
 }
 
 package_python-glue-core() {
-    cd "${srcdir}/${_pyname}-${pkgver}"
     depends=('python>=3.8'
              'python-numpy>=1.17'
              'python-matplotlib>=3.2'
@@ -80,6 +81,7 @@ package_python-glue-core() {
                 'python-scikit-image: highly recommended and domain-independent'
                 'python-glue-core-doc: Documentation for glue-core'
                 'glueviz-doc: Documentation for glueviz')
+    cd "${srcdir}/${_pyname}-${pkgver}"
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
