@@ -1,11 +1,11 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-l-icons
-pkgver=1.6.7
+pkgver=1.6.8
 pkgrel=1
 pkgdesc='A flat, colorful, and modern theme based on Paper and Moka. Legacy version'
 arch=('any')
-url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
+url="https://github.com/linuxmint/mint-x-icons"
 license=('GPL3')
 depends=(
     'gtk-update-icon-cache'
@@ -15,8 +15,8 @@ optdepends=(
     'mint-x-icons: enable additional icons to inheritage'
 )
 options=(!strip)
-source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('de0062789f7e34045eaf05cee017388d0faf089f35d3cea0424e256562f85396')
+source=("http://packages.linuxmint.com/pool/main/m/$pkgname/${pkgname}_${pkgver}.tar.xz")
+sha256sums=('fc2628f60979f3c574eded4a97cb783d557fbba28ed33f9a2182ac923777b1ed')
 
 package() {
   cd "${srcdir}"/"${pkgname}"
