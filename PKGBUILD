@@ -12,13 +12,13 @@ provides=('ortfodb')
 conflicts=('ortfodb')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ortfo/db/releases/download/v1.4.0/ortfodb_Linux_arm64.tar.gz")
-sha256sums_aarch64=('52317a64c1d85c0c91c374abc85ac742a9453a15835cb2327c98a1d6cc07e824')
+sha256sums_aarch64=('968d65cfeb4f5b96e798da21d0fa902ed02256a3fb26fb845523a6ac38a6a8fa')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ortfo/db/releases/download/v1.4.0/ortfodb_Linux_i386.tar.gz")
-sha256sums_i686=('ba3039e58d4ff612153af1059dd94b846e8603ad7a67f0f92c688459a801ebd3')
+sha256sums_i686=('9d707cdf0194602e4bf651edbf239a018a9450bc497bbd38d912bb8257695d7e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ortfo/db/releases/download/v1.4.0/ortfodb_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d1c525f446f3db61a055b72a3ca2543d217d8e659857f443ec7e139d6aa7505d')
+sha256sums_x86_64=('b502f91958f65e764f3047fb5d6ba0f714390bb54979aae6dd8ab2e76f99d991')
 
 package() {
   # bin
