@@ -2,9 +2,7 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=xorg-server-bug865-bug1578
 pkgname=xorg-server-bug865-issue1578
-
 pkgver=21.1.13
 pkgrel=1
 arch=('x86_64')
@@ -32,7 +30,7 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'meson' 'git')
-source=(xorg-server::git+https://gitlab.freedesktop.org/xorg/xserver.git?signed#tag=xorg-server-${pkgver}
+source=(xorg-server::git+https://gitlab.freedesktop.org/xorg/xserver.git#tag=xorg-server-${pkgver}
         freedesktop-bug-865.patch)
 sha512sums=('8893b7e236ffb2001d75df98af6480548bc2f5c129d2df1e377730d26c0f0d6a6faf0bed5266a3f8cce9d07560efe90081b8a8d0a3b527330874fb33deb1ba3e'
             'c3b541c7ac95c94f682577cacedc06e79427003a870cde844056a7662087873b59dc06933552bb867b16fc0387f8a061672df780454769f26aa3e53b13a94edf')
@@ -90,7 +88,7 @@ _install() {
     rm -rf "${src}"
   done
 }
-package_xorg-server-bug865-issue1578() {
+package() {
   pkgdesc="Xorg X server with the patch for freedesktop bug 865 (need to kick hotkeys on release, not press) and issue 1578 (might ignore first scroll when direction is changed)"
   depends=(libepoxy libxfont2 pixman xorg-server-common libunwind
            dbus libgl xf86-input-libinput nettle
