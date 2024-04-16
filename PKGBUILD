@@ -2,7 +2,7 @@
 # Modified based on hyprland-nvidia-nosystemd-git
 
 pkgname=hyprland-nosystemd-git
-pkgver=0.38.0.r105.582d6233-1 
+pkgver=0.39.0.r12.g79a139c9
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o systemd)"
 arch=(x86_64 aarch64)
@@ -10,10 +10,13 @@ url="https://github.com/hyprwm/Hyprland"
 license=('BSD')
 depends=(
     cairo
+    cpio
     gcc-libs
     glib2
     glibc
     glslang
+    hyprlang
+    hyprcursor
     libdisplay-info
     libdrm
     libglvnd
@@ -59,7 +62,7 @@ makedepends=(
 provides=("hyprland=${pkgver%%.r*}")
 conflicts=(hyprland)
 source=("$pkgname::git+https://github.com/hyprwm/Hyprland.git"
-  "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
+  "git+https://github.com/hyprwm/wlroots-hyprland.git"
   "git+https://github.com/hyprwm/hyprland-protocols.git"
   "git+https://github.com/canihavesomecoffee/udis86.git"
   "git+https://github.com/wolfpld/tracy.git"
@@ -88,14 +91,14 @@ pkgver() {
 prepare() {
     cd hyprland-nosystemd-git
     git submodule init
-    git config submodule.wlroots.url "$srcdir/wlroots"
+    git config submodule.subprojects/wlroots-hyprland.url "$srcdir/wlroots-hyprland"
     git config submodule.subprojects/hyprland-protocols.url "$srcdir/hyprland-protocols"
     git config submodule.subprojects/udis86.url "$srcdir/udis86"
     git config submodule.subprojects/tracy.url "$srcdir/tracy"
     git -c protocol.file.allow=always submodule update
 
-    git -C subprojects/wlroots reset --hard
-    sed -E -i -e "s/(soversion = .*$)/soversion = 13032/g" subprojects/wlroots/meson.build
+    git -C subprojects/wlroots-hyprland reset --hard
+    sed -E -i -e "s/(soversion = .*$)/soversion = 13032/g" subprojects/wlroots-hyprland/meson.build
 }
 
 build() {
@@ -122,6 +125,8 @@ package() {
     meson install -C build \
       --destdir "$pkgdir" \
       --skip-subprojects hyprland-protocols
+
+    mkdir -p "$pkgdir/usr/include/hyprland/wlroots"
     mv "$pkgdir/usr/include/wlr" "$pkgdir/usr/include/hyprland/wlroots"
 
     # resolve conflicts with system wlr
