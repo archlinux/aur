@@ -20,7 +20,7 @@ validpgpkeys=()
 
 
 package() {
-	cd "$pkgname-v$pkgver-$pkgrel"
+	cd "$pkgname-$pkgver-$pkgrel"
 	
     install -Dm644 uwu "${pkgdir}"/usr/bin/uwu
     install -Dm644 qwq "${pkgdir}"/usr/bin/qwq
