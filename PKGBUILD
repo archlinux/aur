@@ -3,7 +3,7 @@
 
 pkgname='ortfodb-bin'
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A readable, easy and enjoyable way to manage portfolio databases using directories and text files.'
 url='https://ortfo.org'
 arch=('aarch64' 'i686' 'x86_64')
@@ -11,29 +11,29 @@ license=('MIT')
 provides=('ortfodb')
 conflicts=('ortfodb')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ortfo/db/releases/v1.3.0/ortfodb_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b9cca7971868e584dbe57178ce08c50727452d03c51011a4e2d5b117012602a8')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ortfo/db/releases/download/v1.3.0/ortfodb_Linux_arm64.tar.gz")
+sha256sums_aarch64=('134b17154b79c5aa92ca28320987e1ec6917186a423713f90aa14ee5f19853b5')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ortfo/db/releases/v1.3.0/ortfodb_Linux_i386.tar.gz")
-sha256sums_i686=('57db9616106e1aeeda8a1b9ffb2c637587bbb0ff8ba2c48b28b5886b57c2f346')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ortfo/db/releases/download/v1.3.0/ortfodb_Linux_i386.tar.gz")
+sha256sums_i686=('62c069d4a46ad9ed16d659de9505a68d40708f9bb48052e744f48965d38a08a6')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ortfo/db/releases/v1.3.0/ortfodb_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('fcd965cc99cc460d9c4a97a237727949b4e62c433778545daaf1f76ff5720046')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ortfo/db/releases/download/v1.3.0/ortfodb_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('583df334db2b9a188f3cc624c78a21e39b993adb1445df85bf2a27683574331f')
 
 package() {
   # bin
-  install -Dm755 "./ortfodb" "${pkgdir}/usr/bin/ortfodb"
+  install -Dm755 "./ortfodb_linux_amd64" "${pkgdir}/usr/bin/ortfodb"
 
   # license
-  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/goreleaser/LICENSE"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/ortfodb/LICENSE"
 
   # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-  install -Dm644 "./completions.bash" "${pkgdir}/usr/share/bash-completion/completions/ortfodb"
-  install -Dm644 "./completions.zsh" "${pkgdir}/usr/share/zsh/site-functions/_ortfodb"
-  install -Dm644 "./completions.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/ortfodb.fish"
+  install -Dm644 "./completions/ortfodb.bash" "${pkgdir}/usr/share/bash-completion/completions/ortfodb"
+  install -Dm644 "./completions/ortfodb.zsh" "${pkgdir}/usr/share/zsh/site-functions/_ortfodb"
+  install -Dm644 "./completions/ortfodb.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/ortfodb.fish"
 
   # man pages
   for manpage in manpages; do
