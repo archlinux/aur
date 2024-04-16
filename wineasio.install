@@ -1,0 +1,4 @@
+post_install() {
+  echo "Your user must belong to the realtime group in order to use wineasio."
+  echo "This can be done with 'sudo usermod -aG realtime \$(whoami)'"
+}
