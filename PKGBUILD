@@ -3,7 +3,7 @@
 
 pkgname='kikoplay'
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3' 'MIT')
@@ -12,7 +12,7 @@ url="https://github.com/KikoPlayProject/KikoPlay"
 depends=('mpv' 'qhttpengine' 'qt5-websockets')
 makedepends=('cmake' 'git')
 optdepends=('aria2: for downloading')
-conflicts=('kikoplay-bin')
+conflicts=('kikoplay-bin' 'kikolpay-beta')
 source=(
     "https://github.com/KikoPlayProject/KikoPlay/archive/refs/tags/${pkgver}.tar.gz"
     "git+https://github.com/KikoPlayProject/KikoPlayScript"
@@ -32,6 +32,12 @@ prepare() {
 
     # adjust user manual location in usage tip
     sed -i 's|file:///{AppPath}\\KikoPlay使用说明.pdf|file:///usr/share/doc/kikoplay|g' "${srcdir}/KikoPlay/res/tip"
+
+    # makepkg.conf has default linker flag "-z pack-relative-relocs", which is
+    # unsupported by ld.gold.
+    # Use ld.bfd instead.
+    # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/21
+    sed -i 's|-fuse-ld=gold|-fuse-ld=bfd|' "${srcdir}/KikoPlay/KikoPlay.pro"
 }
 
 build() {
