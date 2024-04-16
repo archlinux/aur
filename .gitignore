@@ -1,5 +1,8 @@
-src
-pkg
+*
+!.gitignore
 
-*.tar.zst
-*.log
+!PKGBUILD
+!.SRCINFO
+!opennbt-LICENSE
+!unbted
+
