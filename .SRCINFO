@@ -1,7 +1,7 @@
 pkgbase = auto-epp
 	pkgdesc = Automatic EPP Changer for amd-pstate-epp
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jothi-prasath/auto-epp
 	arch = any
 	license = MIT
