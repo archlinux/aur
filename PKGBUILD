@@ -10,7 +10,7 @@ pkgname="${_pkgname}"-bin
 _subver="0.0"
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
     'aarch64'
@@ -25,7 +25,6 @@ license=(
 )
 provides=(
     "${_pkgname}=${pkgver}"
-    "${_projectname}=${pkgver}"
 )
 conflicts=("${_pkgname}")
 depends=(
