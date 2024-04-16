@@ -1,31 +1,31 @@
-# Maintainer: Hanna Rose <imhxnna@gmail.com>
+# Maintainer: Christopher Kaster <me@atomicptr.de>
+# Contributor: Hanna Rose <imhxnna@gmail.com>
+
+pkgver=2024_04a
 
 _srcname=odin
-
 pkgname=odin-bin
-pkgver=2021
-pkgrel=08
-epoch=1
+pkgver_fixed=${pkgver//_/-}
+pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=('x86_64')
 url="https://odin-lang.org/"
 license=('BSD-2-Clause')
-depends=('llvm11-libs')
-makedepends=('patchelf')
+depends=('clang' 'llvm-libs' 'libedit')
 provides=('odin')
-conflicts=('odin' 'odin-git' 'odin-src')
-options=('!strip')
+conflicts=('odin' 'odin-git')
+options=('staticlibs')
 
 source=(
-  "https://github.com/odin-lang/Odin/releases/download/dev-$pkgver-$pkgrel/odin-ubuntu-amd64-dev-$pkgver-$pkgrel.zip"
+  "https://github.com/odin-lang/Odin/releases/download/dev-$pkgver_fixed/odin-ubuntu-amd64-dev-$pkgver_fixed.zip"
 )
 sha256sums=(
-  '6413900482bc4dcc1edc330462da62434dcca7e775994920c10f8280ad14b211'
+  "c04ec0f1a44541fbd9b666449b7f70f835d0e4080ea6a82db355d57fab8b607c"
 )
 
 build() {
-  cd "${srcdir}/ubuntu_artifacts"
-  patchelf --replace-needed libLLVM-11.so.1 libLLVM-11.so odin
+  unzip "${srcdir}/dist.zip"
+  cd "${srcdir}/dist"
   chmod +x odin
 }
 
@@ -33,10 +33,14 @@ package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib/${_srcname}"
 
-  cd "${srcdir}/ubuntu_artifacts/"
+  cd "${srcdir}/dist/"
 
   cp odin "${pkgdir}/usr/lib/${_srcname}/odin"
-  cp -r core "${pkgdir}/usr/lib/${_srcname}/core"
+  cp libLLVM-17.so.1 "${pkgdir}/usr/lib/${_srcname}/libLLVM-17.so.1"
+  cp -r -a base "${pkgdir}/usr/lib/${_srcname}/base"
+  cp -r -a core "${pkgdir}/usr/lib/${_srcname}/core"
+  cp -r -a shared "${pkgdir}/usr/lib/${_srcname}/shared"
+  cp -r -a vendor "${pkgdir}/usr/lib/${_srcname}/vendor"
 
   ln -s "/usr/lib/${_srcname}/odin" "${pkgdir}/usr/bin/odin"
 
@@ -44,4 +48,9 @@ package() {
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_srcname}/README.md"
   curl -o LICENSE "https://raw.githubusercontent.com/odin-lang/Odin/master/LICENSE"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_srcname}/LICENSE"
+}
+
+check() {
+  cd "${srcdir}/dist"
+  ODIN_ROOT="${srcdir}/dist" ./odin check examples/all -strict-style
 }
