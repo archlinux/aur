@@ -1,0 +1,3 @@
+[python-cohere]
+source = "pypi"
+pypi = "cohere"
