@@ -4,10 +4,10 @@ _binname=${pkgname%-bin}
 pkgver=0.3.1
 _appimage=$_binname\_$pkgver\_amd64.AppImage
 pkgrel=2
-pkgdesc="The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)"
+pkgdesc='The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)'
 arch=(x86_64)
 url=https://github.com/YARC-Official/YARC-Launcher
-license=("custom: YARG License")
+license=('custom: YARG License')
 depends=(
 	cairo
 	gdk-pixbuf2
@@ -20,9 +20,9 @@ depends=(
 	webkit2gtk
 )
 optdepends=(
-	"hidapi: support for HID devices in-game"
-	"pulseaudio-alsa: audio support in-game"
-	"systemd-libs: libudev required in-game"
+	'hidapi: support for HID devices (in-game)'
+	'pulseaudio-alsa: audio support (in-game)'
+	'systemd-libs: access to HID devices (in-game)'
 )
 provides=($_binname)
 conflicts=($_binname)
@@ -40,14 +40,14 @@ prepare() {
 
 	cd squashfs-root/
 
-	# Add game category and remove comment
-	sed -i "2s/$/Game;/; 3d;9d" $_binname.desktop
+	# Add game category and delete comment
+	sed -i '2s/$/Game;/; 3d; 9d' $_binname.desktop
 }
 
 package() {
 	cd squashfs-root/
 
-	# 69-hid.rules
+	# udev rule (in-game)
 	install -dm755 $pkgdir/etc/udev/rules.d/
 
 	echo 'KERNEL=="hidraw*", TAG+="uaccess"' > $pkgdir/etc/udev/rules.d/69-hid.rules
@@ -55,12 +55,12 @@ package() {
 	# binary
 	install -Dm755 usr/bin/$_binname -t $pkgdir/usr/bin/
 
-	# .desktop
+	# desktop file
 	install -Dm644 $_binname.desktop -t $pkgdir/usr/share/applications/
 
 	# icons
 	for _size in 32x32 128x128 256x256@2; do
-		_iconpath=usr/share/icons/hicolor/$_size/apps
+		_iconpath=usr/share/icons/hicolor/$_size/apps/
 
 		install -Dm644 $_iconpath/$_binname.png -t $pkgdir/$_iconpath/
 	done
