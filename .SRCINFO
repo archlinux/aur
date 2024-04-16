@@ -1,15 +1,15 @@
 pkgbase = dmos
-	pkgdesc = Djot HTML renderer with syntax highlighting
-	pkgver = 0.1.0
+	pkgdesc = Djot HTML renderer with advanced features
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = https://git.sr.ht/~bitfehler/dmos
+	url = https://sr.ht/~bitfehler/dmos
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
 	options = !buildflags
-	source = dmos-0.1.0.tar.gz::https://git.sr.ht/~bitfehler/dmos/archive/v0.1.0.tar.gz
-	sha512sums = 0350be35cd85aaedba93cd99b6021df50db56355767fc1ee4b8c69c4da54e0bd8b73e3963ab8bcbc062066aa997af4145d311dbdf426a98f92ab310217c8d075
+	source = dmos-0.3.0.tar.gz::https://git.sr.ht/~bitfehler/dmos/archive/0.3.0.tar.gz
+	sha512sums = aa0f75851c27f917906b91993e4500f327c7b860974c439d380719cc61d1e69babf17509d119fb0c11e926045f827f8ffb9afd0dba1468be1c55e51d2caf9d28
 
 pkgname = dmos
