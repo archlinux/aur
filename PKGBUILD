@@ -11,7 +11,7 @@ pkgname=(
   "${_name}-sycl-f32-git"
   "${_name}-vulkan-git"
 )
-pkgver=b2646.r7.f7001ccc5
+pkgver=b2684
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -134,13 +134,13 @@ build() {
 
   echo "Build ${pkgbase} with Intel SYCL (f16)"
   source /opt/intel/oneapi/setvars.sh
-  cd "${srcdir}/${_name}-sycl"
+  cd "${srcdir}/${_name}-sycl-f16"
   cmake "${_cmake_sycl_16_args[@]}"
   cmake --build build
 
   echo "Build ${pkgbase} with Intel SYCL (f32)"
   source /opt/intel/oneapi/setvars.sh
-  cd "${srcdir}/${_name}-sycl"
+  cd "${srcdir}/${_name}-sycl-f32"
   cmake "${_cmake_sycl_32_args[@]}"
   cmake --build build
 }
@@ -215,7 +215,7 @@ package_llama.cpp-sycl-f16-git() {
   provides=("${_name}")
   conflicts=("${_name}")
 
-  cd "${_name}-sycl"
+  cd "${_name}-sycl-f16"
   DESTDIR="${pkgdir}" cmake --install build
   _package
 }
@@ -226,7 +226,7 @@ package_llama.cpp-sycl-f32-git() {
   provides=("${_name}")
   conflicts=("${_name}")
 
-  cd "${_name}-sycl"
+  cd "${_name}-sycl-f32"
   DESTDIR="${pkgdir}" cmake --install build
   _package
 }
