@@ -1,7 +1,7 @@
 # Maintainer: Sakari <sk308269317@outlook.com>
 
 pkgname=uuplugin-bin
-pkgver=4.7.16
+pkgver=4.14.4
 pkgrel=1
 pkgdesc="UU Steam Deck Plugin for General Linux"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
   "https://uu.gdl.netease.com/uuplugin/steam-deck-plugin-x86_64/v${pkgver}/uu.tar.gz"
   'uuplugin.service')
 md5sums=(
-  '68835a60496d4c8fa1a27c0d155b39a3'
+  '620d00053a912a4aac5b2c761dd5fe59'
   '5e2b2721fb74d674325ebedaff3253b1')
 
 package() {
