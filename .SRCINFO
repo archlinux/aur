@@ -3,7 +3,6 @@ pkgbase = dino-plus-git
 	pkgver = v0.4.3.fork.3.r14.gbec8a5b6
 	pkgrel = 1
 	url = https://github.com/mxlgv/dino
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
