@@ -1,4 +1,4 @@
 [minijinja]
 source = "github"
 github = "mitsuhiko/minijinja"
-use_max_tag = true
+use_latest_release = true
