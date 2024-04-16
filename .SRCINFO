@@ -1,0 +1,15 @@
+pkgbase = kpcli-go
+	pkgdesc = create, list and diff entries between keepass databases
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://github.com/robertranjan/kpcli
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = kpcli-go-1.0.10.tar.gz::https://github.com/robertranjan/kpcli/archive/v1.0.10.tar.gz
+	sha256sums = 89544fc53e7e0faa65d0b2e002655b7ffdc1890c9ab5d0064e668d22c227e7dd
+
+pkgname = kpcli-go
