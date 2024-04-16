@@ -1,0 +1,40 @@
+pkgbase = dino-plus-git
+	pkgdesc = Dino+ is a fork of Dino, a modern XMPP/Jabber client
+	pkgver = v0.4.3.fork.3.r14.gbec8a5b6
+	pkgrel = 1
+	url = https://github.com/mxlgv/dino
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = vala>=0.34
+	makedepends = ninja
+	depends = glib2>=2.38
+	depends = glib-networking
+	depends = gtk4
+	depends = gpgme
+	depends = libgee>=0.10
+	depends = libgcrypt
+	depends = libsoup3
+	depends = sqlite
+	depends = qrencode
+	depends = libsignal-protocol-c
+	depends = gspell
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugin-gtk
+	depends = webrtc-audio-processing
+	depends = libnice
+	depends = libsrtp
+	depends = libadwaita
+	depends = libcanberra
+	provides = dino-plus
+	conflicts = dino-plus
+	conflicts = dino-git
+	conflicts = dino
+	source = git+https://github.com/mxlgv/dino
+	sha512sums = SKIP
+
+pkgname = dino-plus-git
