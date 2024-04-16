@@ -5,7 +5,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libwmf
 pkgver=0.2.13
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A library for reading vector images in Microsoft's native Windows Metafile Format (WMF) (Android ${_android_arch})"
 url="http://wvware.sourceforge.net/libwmf.html"
@@ -32,9 +32,6 @@ build() {
     cd "${srcdir}/libwmf-$pkgver"
     source android-env ${_android_arch}
 
-#     --x-includes=DIR    X include files are in DIR
-#     --x-libraries=DIR   X library files are in DIR
-
     export CFLAGS="${CFLAGS} -I${ANDROID_PREFIX_INCLUDE}/libpng"
     export LDFLAGS="${LDFLAGS} -L\"${PWD}/src/.libs\""
 
@@ -48,7 +45,7 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
-    rm -f "${ANDROID_PREFIX_BIN}/"{wmf2eps,wmf2fig,wmf2gd,wmf2svg,wmf2x}
+    rm -f "${pkgdir}/${ANDROID_PREFIX_BIN}/"{wmf2eps,wmf2fig,wmf2gd,wmf2svg,wmf2x}
     find "${pkgdir}/${ANDROID_PREFIX_LIB}" -type f -name '*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
     find "${pkgdir}/${ANDROID_PREFIX_LIB}" -type f -name '*.a' -exec ${ANDROID_STRIP} -g {} \;
 }
