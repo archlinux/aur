@@ -1,0 +1,5 @@
+[python-trame-components]
+source = "github"
+github = "Kitware/trame-components"
+use_max_tag = true
+prefix = "v"
