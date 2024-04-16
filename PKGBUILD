@@ -8,7 +8,7 @@
 
 ## options
 : ${_build_pgo:=true}
-: ${_build_pgo_reuse:=true}
+: ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=false}
 
 : ${_build_private:=true}
@@ -17,7 +17,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname"
 pkgver=11.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 arch=('x86_64')
@@ -56,6 +56,7 @@ _main_package() {
     llvm
     mercurial
     mesa
+    mold
     nasm
     nodejs
     python
@@ -236,6 +237,7 @@ export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # Optimization
 ac_add_options --enable-optimize=-O3
+ac_add_options --enable-linker=mold
 ac_add_options --enable-lto=cross,full
 ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
@@ -457,7 +459,7 @@ END
 
   # license
   if [[ "${_build_private::1}" == "t" ]] ; then
-    install -Dm644 "$_pkgsrc/floorp/Floorp-private-components/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.components"
+    install -Dm644 "$srcdir/floorp-projects.private-components/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.components"
   fi
 }
 
