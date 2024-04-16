@@ -6,7 +6,7 @@
 # Contributor: Adam Rustler
 pkgname=prepros-bin
 _pkgname=Prepros
-pkgver=7.24.0
+pkgver=7.25.0
 _electronversion=25
 pkgrel=1
 pkgdesc="Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect."
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::https://downloads.prepros.io/v7/${pkgver}/${_pkgname}-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c0af1d9725c08c2bfbf1316a9fcc8a150f6f7151bd7df419b93421b0f7eef2c7'
+sha256sums=('92e10c915efed2b53c199a1dfa8704179580740e2b142871ce32b9ae0c55ceda'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
