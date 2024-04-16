@@ -1,13 +1,12 @@
 # Maintainer: Steve Engledow <steve@offend.me.uk>
 pkgname=heroes
 pkgver=0.21
-pkgrel=3
+pkgrel=4
 pkgdesc="Heroes is similar to the Tron and Nibbles games of yore, but includes many graphical improvements and new game features."
 url="http://heroes.sourceforge.net"
 arch=(x86_64)
 license=('GPL')
-depends=()
-makedepends=(libmikmod sdl)
+depends=(libmikmod sdl)
 source=("http://prdownloads.sourceforge.net/heroes/$pkgname-$pkgver.tar.gz"
         "http://prdownloads.sourceforge.net/heroes/$pkgname-data-1.5.tar.gz"
         "http://prdownloads.sourceforge.net/heroes/$pkgname-sound-tracks-1.0.tar.gz"
