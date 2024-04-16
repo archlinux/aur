@@ -5,7 +5,7 @@ pkgname=dino-plus-git
 pkgver=v0.4.3.fork.3.r14.gbec8a5b6
 pkgrel=1
 pkgdesc="Dino+ is a fork of Dino, a modern XMPP/Jabber client"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/mxlgv/dino"
 license=('GPL3')
 depends=('glib2>=2.38' 'glib-networking' 'gtk4' 'gpgme'
