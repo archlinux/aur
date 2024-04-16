@@ -1,16 +1,16 @@
 # Maintainer: Charlotte Lewer <dev@chlvr.net>
 
 pkgname=fortune-mod-anarchism
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="Anarchist fortune quotes"
 arch=('any')
 url="https://notabug.org/PangolinTurtle/BLAG-fortune"
 license=('custom:public domain')
 depends=('fortune-mod')
 groups=('fortune-mods')
-source=(${pkgname}-${pkgver}.tar.gz::https://notabug.org/PangolinTurtle/BLAG-fortune/archive/${pkgver}.tar.gz)
-sha256sums=(669b37d85d0617a7c411274eb371cd26453b3c41731abadc7abf2a29b515569e)
+source=(${pkgname}-${pkgver}.tar.gz::http://deb.debian.org/debian/pool/main/b/blag-fortune/blag-fortune_${pkgver}.orig.tar.gz)
+sha256sums=(2d35182e9496bc58103bdb6d2636e18f04e2b78bbfc6ea51d04924872859829a)
 
 build() {
 	cd "${srcdir}/blag-fortune"
