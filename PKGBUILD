@@ -2,8 +2,8 @@
 
 _gemname=rbvmomi2
 pkgname=ruby-$_gemname
-pkgver=3.7.0
-pkgrel=3
+pkgver=3.7.1
+pkgrel=1
 pkgdesc='Ruby interface to the VMware vSphere API'
 arch=(any)
 url='https://rubygems.org/gems/rbvmomi2'
@@ -12,11 +12,11 @@ depends=(ruby-builder ruby-json ruby-nokogiri ruby-optimist)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('95afc5b17c625c04912daf6f2a516733026e3c5272b22da5880af7749c60f13c')
+sha256sums=('365f7ce994ea9ec89de5543ac49a9580ff8167b1ac6789194b99a18488458774')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$_gemdir/gems/rbvmomi2-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 "$pkgdir/$_gemdir/gems/rbvmomi2-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
