@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='vrf-decompiler'
 _reponame='ValveResourceFormat'
-pkgver='9.0'
+pkgver='9.1'
 pkgrel='1'
 pkgdesc="File data viewer and decompiler for Valve's Source 2 resource file format"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('dotnet-runtime>=8.0.0' 'skia-sharp')
 makedepends=('dotnet-sdk>=8.0.0' 'git')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#tag=$pkgver?signed")
-sha512sums=('461d680a3eb83b1c3e181f5a4c272e9f8f4c38dcff09aad5cb864dd4759e6fa27c8844386a40a5fe2e199fb492bb27d0285677f335f831c3e11508cd124f04de')
+sha512sums=('c7e814e346c23cf4ccba02518d3a137883b1341fcda3ab6051af4a90bfe34588417f65b4490fe13a516bd6a2c8a0f148ee1fd3f6d3b863ad47d83ad7168693d9')
 validpgpkeys=('E58081FB804DF24DF217AB772B6E7BF31D171C61') # Pavel Djundik <github@xpaw.me> (https://github.com/xPaw.gpg)
 
 _sourcedirectory="$pkgname-$pkgver"
