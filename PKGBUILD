@@ -1,6 +1,6 @@
 # Maintainer: Jothi Prasath <jothiprasath2@gmail.com>
 pkgname=bash-scripts-git
-pkgver=r27.3597e45
+pkgver=r31.4d168de
 pkgrel=1
 pkgdesc="A collection of bash scripts from https://github.com/jothi-prasath/bash-scripts"
 arch=('any')
@@ -19,5 +19,5 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
   rm .git .gitignore README.md LICENSE *.sh -rf
-  find . -type f -exec install -Dm755 {} "${pkgdir}/usr/local/bin/{}" \;
+  find . -type f -exec install -Dm755 {} "${pkgdir}/usr/bin/{}" \;
 }
