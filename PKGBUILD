@@ -39,5 +39,3 @@ package() {
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
-
-https://gitlab.com/zelda3pkg/Zeldalttp/-/archive/1.0.2-1/zeldalttp-1.0.2-1.tar.bz2
