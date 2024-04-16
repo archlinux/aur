@@ -4,13 +4,13 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=7.0.4.r132.g31e41d04
+pkgver=7.1.6.r145.ge225bd27a
 pkgrel=1
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/easyeffects'
-license=('GPL3')
-depends=('fftw' 'libfmt.so' 'gsl' 'gtk4' 'libadwaita-1.so'
+license=('GPL-3.0-only')
+depends=('fftw' 'libfmt.so' 'gsl' 'gtk4' 'ladspa' 'libadwaita-1.so'
          'libbs2b.so' 'libebur128' 'libsamplerate.so'
          'libsigc-3.0.so' 'libsndfile.so' 'liblilv-0.so'
          'pipewire' 'rnnoise' 'soundtouch'
@@ -35,9 +35,9 @@ pkgver() {
 
 build() {
   arch-meson "${pkgname%%-git}" build
-  meson compile -C build
+  ninja -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
+  DESTDIR="${pkgdir}" ninja install -C build
 }
