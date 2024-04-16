@@ -1,7 +1,8 @@
 # Maintainer: qsqcqs
 pkgname='qwq'
-pkgver=nye
-pkgrel=4
+pkgver=nya
+pkgrel=2
+epoch=1
 pkgdesc="uwu/qwq for terminal"
 arch=('x86_64')
 url="https://github.com/qsqcqs/qwq"
@@ -13,7 +14,7 @@ replaces=(
 'uwu-qwq'
 'uwu'
 )
-source=("https://github.com/qsqcqs/$pkgname/archive/refs/tags/qwq-v$pkgver.tar.gz")
+source=("https://github.com/qsqcqs/$pkgname/archive/refs/tags/$pkgver-$pkgrel.tar.gz")
 noextract=()
 validpgpkeys=()
 
@@ -30,4 +31,4 @@ package() {
 
 
 
-sha256sums=('217d5ee3c3181ea35f17fccbd7bf25559f33f3c98a9f8364d2907a69afa2bc9f')
+sha256sums=('3ea7cd6ed6b018421aa405c013ca170bdfb59065db0d6642d36012ef15af44d8')
