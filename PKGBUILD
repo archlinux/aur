@@ -3,12 +3,13 @@
 # Contributor: Roberto Alsina <ralsina@kde.org>
 pkgname=skalibs
 pkgver=2.14.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose utility library for secure, small C development"
 url="http://www.skarnet.org/software/skalibs/"
 license=('ISC')
 arch=('i686' 'x86_64')
 depends=('glibc')
+options=('!lto')
 source=(http://www.skarnet.org/software/skalibs/$pkgname-$pkgver.tar.gz)
 sha256sums=('b6b79b816f4ba0b6801676b0ed4179b59c8c7809eeffe26db672e404636befc3')
 
