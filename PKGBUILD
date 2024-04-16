@@ -12,7 +12,7 @@ makedepends=('git' 'cmake')
 provides=("beseda")
 
 source=("https://github.com/psemiletov/beseda/archive/${pkgver}.tar.gz")
-md5sums=('75e9ce3cc263dc41b099df92c53b0877')
+md5sums=('d09f3c475db6b5ab5470d47ea03ece12')
 
 build() {
 	cd "${srcdir}/beseda-${pkgver}"
