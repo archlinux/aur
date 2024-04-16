@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=lite-xl-bin
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="A lightweight text editor written in Lua"
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=(
   "data.tar.xz"
 )
 sha256sums=(
-  'cfa8b69aa58017aca6fd106c81ad368b2ffd342c01cc58f80bb012cb096a125f'
+  'be8ee1b020d2d0faa599dfb43517c10e86dbfa5f3d2441e6e28553b8c145ad88'
   'd2a864dc6c4979ad6ed1cdda45069404bb4da095fe2e316f36d846f065b0571a'
 )
 
