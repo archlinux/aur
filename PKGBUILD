@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=2.9.3
-_electronversion=29
-_nodeversion=18
+pkgver=3.0.0
+_electronversion=30
+_nodeversion=20
 pkgrel=1
 pkgdesc="A GUI wrapper for png2icons, generates Apple ICNS and Microsoft ICO files from PNG files."
 arch=('any')
@@ -22,7 +22,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('01ef49e5b9204fc0a0664db412167aab02dbe63a020227b25ab9632423289157'
+sha256sums=('c54c34394b6d4c19e9408759494a104e900b10cfaefff395c6c62c8db51173af'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
