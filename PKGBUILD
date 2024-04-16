@@ -2,7 +2,7 @@
 
 pkgname=fortune-mod-helluva
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="A collection of fortune cookies containing quotes from the cast of Helluva Boss"
 arch=('any')
 license=('unknown')
@@ -33,5 +33,5 @@ package(){
         install -D -m644 ${srcdir}/millie ${pkgdir}/usr/share/fortune/millie
         install -D -m644 ${srcdir}/millie.dat ${pkgdir}/usr/share/fortune/millie.dat
         install -D -m644 ${srcdir}/moxxie ${pkgdir}/usr/share/fortune/moxxie
-        install -D -m644 ${srcdir}/moxxie ${pkgdir}/usr/share/fortune/moxxie.dat
+        install -D -m644 ${srcdir}/moxxie.dat ${pkgdir}/usr/share/fortune/moxxie.dat
 }
