@@ -1,11 +1,11 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-y-icons
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc='A flat, colorful, and modern theme based on Paper and Moka'
 arch=('any')
-url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
+url="https://github.com/linuxmint/mint-y-icons"
 license=('GPL3')
 depends=(
     'gtk-update-icon-cache'
@@ -15,8 +15,8 @@ optdepends=(
     'mint-x-icons: enable additional icons to inheritage'
 )
 options=(!strip)
-source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('9e25e6bb90af165e81036002ebf7e280bcc7805d4524d4c9a49f4f049763a40a')
+source=("http://packages.linuxmint.com/pool/main/m/$pkgname/${pkgname}_${pkgver}.tar.xz")
+sha256sums=('e8e038227b166edad672d0a4b95a5303c96a5e6fe4d34ee14fee9e28e5c2edae')
 
 package() {
   cd "${srcdir}"/"${pkgname}"
