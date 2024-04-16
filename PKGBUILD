@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("dnd-encounter-tracker")
 conflicts=("dnd-encounter-tracker")
 source=("https://github.com/Glitch-Gecko/dnd-encounter-tracker/releases/download/v$pkgver/dnd-encounter-tracker-$pkgver-x86_64.tar.gz")
-sha256sums=("c12aa63078eba7e84cae235a6297dca565155c33b4a23a2900bcd0d45f029045")
+sha256sums=('c12aa63078eba7e84cae235a6297dca565155c33b4a23a2900bcd0d45f029045')
 
 package() {
     install -Dm755 dnd-encounter-tracker -t "$pkgdir/usr/bin"
