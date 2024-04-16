@@ -2,7 +2,7 @@
 # Modified based on hyprland-nvidia-nosystemd-git
 
 pkgname=hyprland-nosystemd-git
-pkgver=0.35.0.r38.gfbf5ba87
+pkgver=0.38.0.r105.582d6233-1 
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o systemd)"
 arch=(x86_64 aarch64)
