@@ -5,7 +5,7 @@ pkgver=1.6.8
 pkgrel=1
 pkgdesc='A flat, colorful, and modern theme based on Paper and Moka. Legacy version'
 arch=('any')
-url="https://github.com/linuxmint/mint-x-icons"
+url="https://github.com/linuxmint/mint-l-icons"
 license=('GPL3')
 depends=(
     'gtk-update-icon-cache'
