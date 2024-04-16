@@ -3,26 +3,24 @@
 pkgname=streamcontroller-plugin-tools-git
 gitname=streamcontroller-plugin-tools
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Base for StreamController plugins"
 arch=('x86_64')
 url="https://github.com/StreamController/streamcontroller-plugin-tools"
 license=('GPL')
 depends=('python-rpyc' 'python-loguru')
 provides=('streamcontroller-plugin-tools')
-# source=("${pkgname}-${pkgver}.tar.gz::https://github.com/StreamController/streamcontroller-plugin-tools/archive/refs/tags/v${pkgver}.tar.gz")
-source=("${gitname}::git+https://github.com/StreamController/streamcontroller-plugin-tools.git#commit=ac99ff7")
+source=("${gitname}-${pkgver}.tar.gz::https://github.com/StreamController/streamcontroller-plugin-tools/archive/refs/tags/${pkgver}.tar.gz")
 
 # Upstream tar.gz
 
-sha512sums=('SKIP')
+sha512sums=('19a90d813f7ec3286e3b08b4141c2ad6776d1e949e370018edd4273ded2db3f22271353c38ad1efe90e9de1e39d4f62dfa1271e81cceb8b11772da264f2090d0')
 
 build() {
-  cd "${gitname}"
+  cd "${srcdir}"/"${gitname}"-"${pkgver}"
   python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-  python -m installer --destdir="${pkgdir}" ${srcdir}/${gitname}/dist/*.whl
-  # install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  python -m installer --destdir="${pkgdir}" "${srcdir}"/"${gitname}"-"${pkgver}"/dist/*.whl
 }
