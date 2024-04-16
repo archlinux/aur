@@ -2,7 +2,7 @@
 
 upstream_name=hawkmoth
 pkgname=python-sphinx-hawkmoth
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='Sphinx autodoc C extension'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD2')
 depends=('python-sphinx' 'clang')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=('https://github.com/jnikula/hawkmoth/archive/v'$pkgver'.tar.gz')
-sha256sums=('5fd94e7db6497f562b82e7003052920588f596837b250e3c3655eefeafc74cb4')
+sha256sums=('2eaabde9a74c4dce87e338ed2c33b555f3159ca2ea63346842f3df770cf3211a')
 
 build() {
 	cd $srcdir/$upstream_name-$pkgver
