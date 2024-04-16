@@ -1,0 +1,19 @@
+pkgbase = fortune-mod-helluva
+	pkgdesc = A collection of fortune cookies containing quotes from the cast of Helluva Boss
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = unknown
+	depends = fortune-mod
+	source = beelzebub
+	source = blitz
+	source = loona
+	source = millie
+	source = moxxie
+	sha256sums = 6c230b94449225e0aafc7fb5fffa8ee197922b40ea12b7f5f692e5de42caee13
+	sha256sums = 860286c39b361729d90243859808ab66dc6f86e5d77bf1253321bfb8014eef57
+	sha256sums = defc6f68b0e9c730620dedb3d93d4acc23931daeb9b39723d247c65feb912b99
+	sha256sums = c108db205a83a2ec5c06d0e75dd084f71a7b608b53b470dbb65d6efa337185e3
+	sha256sums = 1c33caccb110919382aa7909bd075002a0d8037c4478f9816bf0f7c4b41412c4
+
+pkgname = fortune-mod-helluva
