@@ -1,6 +1,6 @@
 # Maintainer: Callum Osmotherly <acheronfail@gmail.com>
 pkgname=i3stat
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A lightweight and batteries-included status_command for i3 and sway"
 arch=('x86_64')
@@ -10,7 +10,7 @@ conflicts=('i3stat-bin' 'i3stat-git')
 depends=('gcc-libs')
 makedepends=('clang' 'dbus' 'dunst' 'libfaketime' 'libpulse' 'i3-wm' 'imagemagick' 'scrot' 'xorg-server-xvfb')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-${pkgver//_/-}.crate")
-sha512sums=('5d67e1d6c5b35180dc0b2ec22ee7adf4fe1666634c0df8f80a352ef970cc34bfd8ae17857b1c30406905402ab8f2ea319e3d072dcc20d75e22bb7c5b3d03c721')
+sha512sums=('3c2bf24e086e43b6bf3eb09c58961366c3304440eeafd571324aa3ba73550e8040dd076c1c05cb29d74d8eb8c56746eb6503d7f3905d45f3956d2c66527a8bf9')
 
 # this is effectively a no-op for standard usages of the PKGBUILD, but it exists for
 # local testing of the PKGBUILD itself in the upstream repository (when the build version
