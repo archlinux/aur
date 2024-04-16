@@ -1,0 +1,4 @@
+[xeus-cling]
+source = "github"
+github = "jupyter-xeus/xeus-cling"
+use_max_tag = true
