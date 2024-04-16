@@ -1,5 +1,5 @@
 pkgbase = privatebin-cli-bin
-	pkgdesc = CLI for privatebin server
+	pkgdesc = A powerful CLI for creating and managing PrivateBin pastes with ease - binary package
 	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/gearnode/privatebin
