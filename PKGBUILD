@@ -1,6 +1,6 @@
 pkgname=rudolfs
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, caching Git LFS server with an AWS S3 and local storage back-end."
 arch=(x86_64)
 url="https://github.com/jasonwhite/rudolfs"
@@ -18,6 +18,7 @@ git-lfs
 optdpends=(
 'git-lfs: local usage'
 )
+options=(!lto)  # see https://github.com/briansmith/ring/issues/1444 and https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20#note_171886
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jasonwhite/rudolfs/archive/${pkgver}.tar.gz")
 sha256sums=('d61c64b9c7ef388208cc8782361d18b3a33b353ccaea7ca46d57b29433e2bd63')
 
