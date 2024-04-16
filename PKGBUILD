@@ -3,7 +3,7 @@
 
 pkgname='ortfodb-bin'
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A readable, easy and enjoyable way to manage portfolio databases using directories and text files.'
 url='https://ortfo.org'
 arch=('aarch64' 'i686' 'x86_64')
@@ -12,13 +12,13 @@ provides=('ortfodb')
 conflicts=('ortfodb')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ortfo/db/releases/download/v1.3.0/ortfodb_Linux_arm64.tar.gz")
-sha256sums_aarch64=('134b17154b79c5aa92ca28320987e1ec6917186a423713f90aa14ee5f19853b5')
+sha256sums_aarch64=('7b24a04e7c592f6b58bc328bb63d0d6947afb57f372e869c6250c0771843f421')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ortfo/db/releases/download/v1.3.0/ortfodb_Linux_i386.tar.gz")
-sha256sums_i686=('62c069d4a46ad9ed16d659de9505a68d40708f9bb48052e744f48965d38a08a6')
+sha256sums_i686=('825ffaa17553ed458f2ea8ee342303b192ccedce220e579716ff221e1f2ea80e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ortfo/db/releases/download/v1.3.0/ortfodb_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('583df334db2b9a188f3cc624c78a21e39b993adb1445df85bf2a27683574331f')
+sha256sums_x86_64=('5f113b21cc6728d16c6cb9883e7bc51d3eca258adea5576f8c97051d99d7b6c0')
 
 package() {
   # bin
@@ -37,6 +37,6 @@ package() {
 
   # man pages
   for manpage in manpages; do
-  install -Dm644 "$manpage" "${pkgdir}/usr/share/man/man1/$manpage"
+  install -Dm644 "$manpage" "${pkgdir}/usr/share/man/man1/$(basename manpage)"
   done
 }
