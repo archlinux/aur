@@ -7,7 +7,9 @@ arch=('pentium4' 'i386' 'i686' 'x86_64' 'aarch64')
 license=('GPL')
 depends=('zelda3-bin' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
-source=("https://gitlab.com/zelda3pkg/$_pkgname/-/archive/$pkgver-$pkgrel/$pkgname-$pkgver-$pkgrel.tar.bz2")
+#source=("https://gitlab.com/zelda3pkg/$_pkgname/-/archive/$pkgver-$pkgrel/$pkgname-$pkgver-$pkgrel.tar.bz2")
+#Backup temp repo
+source=("https://github.com/zelda3-pkg/zelda3/archive/refs/tags/$pkgname-$pkgver.tar.gz")
 sha256sums=("SKIP")
 
 package() {
@@ -37,3 +39,5 @@ package() {
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
+
+https://gitlab.com/zelda3pkg/Zeldalttp/-/archive/1.0.2-1/zeldalttp-1.0.2-1.tar.bz2
