@@ -1,0 +1,18 @@
+color_msg() {
+    printf "\e[1;33m$@\e[0m\n"
+}
+
+print_msg() {
+  color_msg "\nExample configuration is located in /usr/share/snx-rs/snx-rs.conf"
+  color_msg "You can view all configuration options by running 'snx-rs --help' command"
+  color_msg "If this is clean install, don't forget to enable the service!"
+  color_msg "systemctl enable --now snx-rs\n"
+}
+
+post_install() {
+  print_msg
+}
+
+post_upgrade() {
+  print_msg
+}
