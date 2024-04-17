@@ -10,7 +10,7 @@ pkgdesc='A dynamic Lisp dialect and bytecode vm'
 arch=('x86_64')
 url='https://janet-lang.org/'
 license=('MIT')
-provides=('janet-lang')
+provides=('janet')
 conflicts=('janet-lang' 'janet-lang-git')
 
 source=("https://github.com/janet-lang/janet/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.tar.gz")
