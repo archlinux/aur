@@ -2,10 +2,10 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v6.8.6
+gitver=v6.8.7
 patchver=20240221.2
 patchname=more-uarches-for-kernel-6.8-rc4+.patch
-pkgver=6.8.v.6
+pkgver=6.8.v.7
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -18,16 +18,12 @@ source=(
 	#'git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         # the main kernel config files
         'config.x86_64'
-        # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset"
 	# patch from our graysky archlinux colleague
 	"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/$patchver/$patchname"
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'ec765a0899e219b3669cc8f2ee850b71ac88033bd70f46b75dc25c376c221427'
-            #.preset file
-            'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
+            '1fb2041018c0dfaabd735f7a6f25c20f97b7323a356fb3e603353e9f974f0af0'
             #grayskypatch
             'd69232afd0dd6982ae941cf2d1f577f4be2011e3bb847d1db37952acf416b5d3'
            )
@@ -76,7 +72,6 @@ _package() {
   pkgdesc="Linux kernel slimmed down to only work on AMD hardware. Zero compatibility."
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'lzop')
   optdepends=('crda: to set the correct wireless channels of your country')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
 
   cd "${_srcname}"
 
@@ -89,15 +84,6 @@ _package() {
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-
-  # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # remove build link
   rm -f "${pkgdir}"/lib/modules/${_kernver}/build
