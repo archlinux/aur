@@ -4,6 +4,7 @@ pkgbase = igt-gpu-tools-git
 	pkgrel = 4
 	url = https://gitlab.freedesktop.org/drm/igt-gpu-tools
 	arch = x86_64
+	arch = i686
 	arch = aarch64
 	license = LicenseRef-several_in_onefile
 	makedepends = bison

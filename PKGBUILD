@@ -7,7 +7,11 @@ pkgver=1.28+606.g17a41dcf1e
 pkgrel=4
 pkgdesc="Collection of tools for development and testing of the DRM drivers."
 url="https://gitlab.freedesktop.org/drm/igt-gpu-tools"
-arch=("x86_64" "aarch64")
+arch=(
+  "x86_64"
+  'i686'
+  "aarch64"
+)
 license=("LicenseRef-several_in_onefile")
 makedepends=(
   'bison'
