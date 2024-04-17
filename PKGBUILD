@@ -6,10 +6,12 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
+## Release site to check for new versions: https://download.kde.org/stable/release-service/
+
 _pkgname=kate
 pkgname="${_pkgname}-root"
-pkgver=24.02.0
-pkgrel=3
+pkgver=24.02.2
+pkgrel=1
 arch=(
   'x86_64'
   'i686'
@@ -119,8 +121,8 @@ source=(
   "0001-Defuse-root-block.patch"
 )
 sha256sums=(
-  '9b1efcccf4e36efcdbc2eada6399cd8128ce187a19182400313062f75ee35f48'  # ${_pkgname}-${pkgver}.tar.xz
-  '87f291b7d75cd9db732eba60af5b355b3145b45fb9ce9d0cd194554988d4072a'  # ${_pkgname}-${pkgver}.tar.xz.sig
+  '1ddacb0939831a43e2b9c1abd8d7e5afefe76789842333263655370e99f5434d'  # ${_pkgname}-${pkgver}.tar.xz
+  'c03c2d7c0833cefe04a325876fd0c62d51315c0260c230fb398d2eb0e561d580'  # ${_pkgname}-${pkgver}.tar.xz.sig
   'abc7a33c8e8cd3a79ea4699bca0086c4146a9a43771a10fc60b97dcf62faca44'  # 0001-Defuse-root-block.patch
 )
 validpgpkeys=(
