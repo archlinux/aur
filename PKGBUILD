@@ -10,7 +10,7 @@ pkgname='wg-client'
 pkgdesc='Wireguard linux client (command line and gui)'
 _gitname='wg-client'
 
-pkgver=4.1.3
+pkgver=4.2.0
 pkgrel=1
 url="https://github.com/gene-git/wg-client"
 
@@ -29,6 +29,9 @@ makedepends=('git' 'python-build' 'python-wheel'  'python-installer' 'python-hat
 _mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
+
+touch "Changelog.rst"
+changelog="Changelog.rst"
 
 prepare() {
     cd "${_gitname}"
@@ -56,6 +59,7 @@ build() {
 
 package() {
     cd "${_gitname}"
+    cp Docs/Changelog.rst ${startdir}
     ./scripts/do-install ${pkgdir}
 }
 # vim:set ts=4 sts=4 sw=4 et:
