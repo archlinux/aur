@@ -1,0 +1,7 @@
+[linux-hardened]
+source = "git"
+git = "https://github.com/anthraxx/linux-hardened.git"
+use_max_tag = true
+include_regex = ".*-hardened[0-9]+"
+from_pattern = "(.*)-(hardened[0-9]+)"
+to_pattern = "\\1.\\2"
