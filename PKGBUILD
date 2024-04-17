@@ -1,7 +1,7 @@
 # Maintainer: Zosoled <zosoled@codecow.xyz>
 
 pkgname=greenlight-git
-pkgver=v2.2.1.r2.f71ee05
+pkgver=v2.3.1.r2.3462844
 pkgrel=1
 pkgdesc="Client for xCloud and Xbox home streaming."
 
