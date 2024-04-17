@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nuclia-sync-agent-bin
-pkgver=1.2.19
+pkgver=1.2.20
 _electronversion=27
 pkgrel=1
 pkgdesc="A small application that runs on your computer and keeps your files in sync with the Nuclia cloud."
@@ -16,7 +16,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e602fb148c41caffbc8e34a3b9071211e05cc097467c2948b67ca0d758a9f6fc'
+sha256sums=('22bbdd2c8b41d16d4d5eecd261915af660bedd873d968cca1debdd1d77b8647b'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
