@@ -1,7 +1,7 @@
 # Maintainer: Guillaume BOEHM <aur@mail.gboehm.com>
 _gitname="hyprcursor_dracula_kde"
 pkgname="hyprcursor-dracula-kde-git"
-pkgver=r8.5a6eebb
+pkgver=r12.d9a87d6
 pkgrel=1
 pkgdesc="A Hyprcursor imported from the Dracula KDE XCursor."
 arch=('any')
@@ -22,11 +22,12 @@ pkgver() {
 package() {
     cd "${srcdir}/${_gitname}" || return
 
-    tar zxvf hyprcursor_Dracula.tar.gz
+    hyprcursor-util --create . -o .
+    mv theme_Dracula hyprcursor_Dracula
 
-    mkdir -p "${pkgdir}/usr/share/icons"
+    install -dm755 "${pkgdir}/usr/share/icons/hyprcursor_Dracula"
+
     cp -r --no-preserve=ownership \
-        hyprcursor_Dracula \
+        hyprcursor_Dracula/* \
         "$pkgdir/usr/share/icons/hyprcursor_Dracula"
-    chown -R 644 "$pkgdir/usr/share/icons/hyprcursor_Dracula"
 }

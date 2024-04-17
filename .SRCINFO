@@ -1,6 +1,6 @@
 pkgbase = hyprcursor-dracula-kde-git
 	pkgdesc = A Hyprcursor imported from the Dracula KDE XCursor.
-	pkgver = r8.5a6eebb
+	pkgver = r12.d9a87d6
 	pkgrel = 1
 	url = https://github.com/guillaumeboehm/hyprcursor_dracula_kde
 	arch = any
