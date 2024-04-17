@@ -1,0 +1,12 @@
+[Unit]
+Description = Wayland clipboard persistence daemon
+ConditionEnviroment = WAYLAND_DISPLAY
+
+[Service]
+Type = simple
+ExecStart = /usr/bin/wl-clip-persist --clipboard regular
+Restart = on-failure
+
+[Install]
+WantedBy = default.target
+
