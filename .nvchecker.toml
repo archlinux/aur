@@ -1,0 +1,4 @@
+[jdupes]
+source = "git"
+git = "https://codeberg.org/jbruchon/jdupes.git"
+prefix = "v"
