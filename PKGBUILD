@@ -1,7 +1,7 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=eprosima-micro-xrce-dds-client
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="eProsima's XRCE DDS client"
 arch=('x86_64')
 url="https://github.com/eProsima/Micro-XRCE-DDS-Client"
@@ -28,8 +28,9 @@ build() {
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DUCLIENT_ISOLATED_INSTALL=OFF \
           -DUCLIENT_SUPERBUILD=OFF \
+          -DBUILD_SHARED_LIBS=ON \
           .
-    make -C build
+    cmake --build build --parallel 8
 }
 
 package() {
