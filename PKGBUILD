@@ -3,13 +3,13 @@
 
 pkgname=imgcat-git
 pkgver=2.6.0.r281.2ff5475
-pkgrel=1
+pkgrel=2
 pkgdesc="It's like cat, but for images"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/eddieantonio/imgcat"
 license=('ISC')
-depends=('ncurses' 'libjpeg' 'libpng>=1.0.0')
-makedepends=('cimg' 'git' 'termcap')
+depends=('ncurses' 'libjpeg' 'libpng>=1.0.0' 'termcap')
+makedepends=('cimg' 'git')
 source=("git+https://github.com/eddieantonio/${pkgname%-git}.git")
 md5sums=('SKIP')
 
