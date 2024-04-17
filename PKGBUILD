@@ -4,7 +4,7 @@
 _pkgname=suyu
 _branch=dev
 pkgname=suyu-dev-git
-pkgver=r27354.b911ac8516
+pkgver=r27383.f2bf013781
 pkgrel=1
 pkgdesc="suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (dev branch)"
 arch=(x86_64)
@@ -200,7 +200,7 @@ package() {
   install -Dm644 ${_pkgname}/dist/72-suyu-input.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 
   cd "${pkgdir}"/usr/share/applications
-  sed -i '12s/Exec=suyu/Exec=env QT_QPA_PLATFORM=xcb suyu/' org.suyu_emu.suyu.desktop
+  sed -i '12s/Exec=suyu/Exec=env QT_QPA_PLATFORM=xcb suyu/' dev.suyu_emu.suyu.desktop
 }
 
 # vim: ts=2 sw=2 et
