@@ -1,0 +1,27 @@
+pkgbase = tidgi-desktop-bin
+	pkgdesc = an privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API.
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://tidgi.fun/
+	arch = aarch64
+	arch = x86_64
+	license = MPL-2.0
+	depends = gtk3
+	depends = alsa-lib
+	depends = java-runtime
+	depends = nss
+	depends = curl
+	depends = nodejs
+	depends = nspr
+	depends = vulkan-icd-loader
+	provides = tidgi-desktop=0.9.4
+	conflicts = tidgi-desktop
+	conflicts = tidgi
+	options = !strip
+	options = !emptydirs
+	source_aarch64 = tidgi-desktop-0.9.4-aarch64.deb::https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.9.4/tidgi_0.9.4_arm64.deb
+	sha256sums_aarch64 = 20b793f9a63f4f5bd893858eada15c35fe8cfce2076b15f65fea583c21e816e0
+	source_x86_64 = tidgi-desktop-0.9.4-x86_64.deb::https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.9.4/tidgi_0.9.4_amd64.deb
+	sha256sums_x86_64 = 4c0d225cf1013e2841fac93eafbea898bef5f65046e783c80ba0fb06e4b0797a
+
+pkgname = tidgi-desktop-bin
