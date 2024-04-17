@@ -1,15 +1,16 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=jellything-git
-pkgver=0.1.0
-pkgrel=1
+pkgver=r617.0f17a9c
+pkgrel=2
 pkgdesc="Jellything media streaming server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://codeberg.org/metamuffin/jellything"
 license=('AGPL-3.0-only')
+options=(!lto)
 depends=('dav1d' 'libavif' 'zstd')
 optdepends=('ffmpeg: Transcoding')
-makedepends=('rustup' 'esbuild' 'nasm' 'meson' 'ninja' 'cmake' 'mdbook')
+makedepends=('rustup' 'esbuild' 'nasm' 'meson' 'ninja' 'cmake' 'mdbook' 'clang')
 backup=('etc/jellything.yaml' 'etc/jellything_secrets.yaml')
 install='jellything.install'
 source=("git+https://codeberg.org/metamuffin/jellything.git"
@@ -23,6 +24,7 @@ sha256sums=("SKIP"
             "SKIP"
             "SKIP")
 
+
 prepare() {
     cd "jellything"
     git submodule init
@@ -35,7 +37,9 @@ pkgver() {
 build() {
     cd "jellything"
     rustup default nightly
-    cargo +nightly build --release
+    # todo: aarch64 works by default, x86 requires clang, untested on i686 and arm
+    CFLAGS+=" -ffat-lto-objects"
+    CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=clang cargo +nightly build --release
     strip -s target/release/jellything
     strip -s target/release/jellytool
     ./target/release/generate_completions completions
