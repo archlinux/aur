@@ -13,10 +13,10 @@
 #urlPath:https://sac.chitubox.com/PCVersionUpdate/getInfo.do6?softwareType=17839&platform=4&majorVersion=2.0.0&silentVersion=0.0.0&login=0&customerMail=0startOpt 172 QSqlError("1555", "Unable to fetch row", "UNIQUE constraint failed: AdnormalTable.pid")
 
 pkgname=chitubox-free-bin
-pkgver=2.0.0
-RUNFILE='CHITUBOX_Basic_Linux_Installer_V2.0.run'
+pkgver=2.1.0
+RUNFILE='CHITUBOX_Basic_Linux_Installer_V2.1.run'
 
-pkgrel=2
+pkgrel=1
 pkgdesc='All-in-one SLA/DLP/LCD Slicer'
 
 makedepends=(
@@ -44,7 +44,7 @@ source=(
 	'local://chitubox-basic.xml'
 )
 
-sha256sums=('0231fd7183342c6ca5395bd738935bb10abb46c1704e2b13aaf3f73ca9ce7b75'
+sha256sums=('9b14dce266132a08c0534076e1c93b5f7186b35885e96746a6b1836285071743'
             'f3cb140e804119201d7efff6f23558eaa48278c213cb37848fb3ff1afc30deac'
             'fede9c1383063dbfade24289c1adeda505f2333b1206865a6696f0a9f6c7390b')
 
