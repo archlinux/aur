@@ -1,7 +1,7 @@
 pkgbase = imgcat-git
 	pkgdesc = It's like cat, but for images
 	pkgver = 2.6.0.r281.2ff5475
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eddieantonio/imgcat
 	arch = x86_64
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = imgcat-git
 	license = ISC
 	makedepends = cimg
 	makedepends = git
-	makedepends = termcap
 	depends = ncurses
 	depends = libjpeg
 	depends = libpng>=1.0.0
+	depends = termcap
 	source = git+https://github.com/eddieantonio/imgcat.git
 	md5sums = SKIP
 
