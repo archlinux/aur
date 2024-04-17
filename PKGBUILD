@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=screen-area-share
+pkgname=screen-area-share-bin
 _pkgname=ScreenAreaShare
 pkgver=1.3.3
 _electronversion=28
