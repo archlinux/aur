@@ -1,40 +1,25 @@
-# Maintainer: Joar Heimonen <joarheimonen@live.no>
-# Note: This is only an install script for Yuma123, not the actual project itself.
+# Maintainer: Fhilipe Coelho <fhilipecoelho.dev@gmail.com>
 
-pkgname=yuma123
-pkgver=1
+pkgname=hydra-launcher
+_pkgname=hydra-launcher
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Package description for yuma123"
+pkgdesc="No bullshit, just play"
 arch=('x86_64')
-url="https://github.com/vlvassilev/yuma123"
-#license=('GPL3')
+url="https://github.com/hydralauncher/hydra"
+license=('MIT')
+provides=('hydra-launcher')
 
-#depends=('vi' 'ffmpeg')
-#makedepends=('qt5-tools')
+source=()
 
-#source=("https://github.com/[your package].tar.gz")
-
-#sha512sums=("[paste sha512sum output]")
-
-
-build() {
-  cd "$srcdir"
-  # Your build
-   cd "$srcdir/yuma123"
-   make DESTDIR="${pkgdir}" install
-   mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
- }
+source_x86_64=("https://github.com/hydralauncher/hydra/releases/download/v${pkgver}/hydra_${pkgver}_amd64.deb")
+sha256sums_x86_64=('31a53ed03d48f59bdf31b1d56990c4cd1497fd38210bda357b455e0c13daf0aa')
 
 package() {
+  cd ${srcdir}
 
-  # Create necessary directories
-  #install -d "$pkgdir/usr/bin"
-
-
-  # Install additional files
-  #install -m644 usr/share/[package name]/[folder name]/* "$pkgdir/usr/share/[package name]/[folder name]"
-
-  # Change ownership
-  #chown -R "$USER:$USER" "$pkgdir/usr/share/[your package]"
-
+  tar -xf data.tar.zst -C ${pkgdir} --exclude='./control'
+  chmod go-w "${pkgdir}"/usr "${pkgdir}"/usr/bin
+  chmod -R go-w "${pkgdir}"/usr/share
 }
+
