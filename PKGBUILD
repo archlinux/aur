@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=emcee
 pkgname=python-${_pyname}-doc
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="Documentation for Python emcee"
 arch=('any')
@@ -15,19 +15,19 @@ makedepends=("python-${_pyname}=${pkgver}"
 #            'python-sphinx_rtd_theme'
 #            'jupyter-nbconvert'
 #            'pandoc'
-             'texlive-core'
-             'texlive-science')
+             'texlive-latexrecommended'
+             'texlive-mathscience')  # pdflatex.fmt, infwarerr.sty; algorithmic.sty
 #            'python-matplotlib'
 #            'python-celerite')
 source=("https://github.com/dfm/emcee/archive/v${pkgver}.tar.gz")
-md5sums=('581717cf24e4dbabc57882628aae5293')
+md5sums=('35fd94eb00b2a0544277564ce6623003')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
     make html
 
     cd ${srcdir}/${_pyname}-${pkgver}/document
-    make
+    make && make
 }
 
 package() {
