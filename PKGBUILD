@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=19.0.0_r495593.26852565a5f6
+pkgver=19.0.0_r496033.5a0942cd7423
 pkgrel=1
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -15,9 +15,15 @@ makedepends=(llvm-minimal-git clang-minimal-git cmake  git python spirv-llvm-tra
 # makedepends=(llvm-minimal-git clang-minimal-git cmake  git python spirv-llvm-translator-minimal-git 'llvm-libs<19')
 source=("git+https://github.com/llvm/llvm-project.git"
 "libclc_Refactor_build_system_to_allow_in-tree_builds_#87622.patch::https://github.com/llvm/llvm-project/commit/72f9881c3ffcf4be6361c3e4312d91c9c8d94a98.patch"
+"libclc_Give_built_bytecode_objects_a_.bc_extension_NFC.patch::https://github.com/llvm/llvm-project/commit/a0f8191af3945482f0f7a7c8f030e8c519a795b7.patch"
+"libclc_Fix_dependencies_between_targets.patch::https://github.com/llvm/llvm-project/commit/3d118f92081ea0c7048749dc5d08c8e8217be4eb.patch"
+"libclc_Improve_clarity_of_CMake_foreach_NFC.patch::https://github.com/llvm/llvm-project/commit/9d111286322ec99b32467eef3aeec6b588c49f18.patch"
 )
 sha256sums=('SKIP'
-            '142f7d406efc83e07483490763b604520ac2c9542744b05e1af0e9ae0a9d212b')
+            '142f7d406efc83e07483490763b604520ac2c9542744b05e1af0e9ae0a9d212b'
+            'ce8cb4bcf3033100bf80d2bbe9378584079bd539db9ccad943c1e029d9c9ac65'
+            '48378f2b474e518109d8f8b20fee7c079c5dff0d01b8658916d11ce650853257'
+            '9d70fadb2f9219d5d430240ee1485440666ce94110451647b7f5b5d5332592ca')
 options=(!lto !debug)
 
 prepare() {
@@ -34,7 +40,10 @@ prepare() {
 
   git reset --hard $_commit_hash
   
-  # revert change to libclc that causes build failure, see https://github.com/llvm/llvm-project/issues/88626
+  # revert changes to libclc that causes build failure, see https://github.com/llvm/llvm-project/issues/88626
+  patch --reverse --strip=1 --input=$srcdir/libclc_Improve_clarity_of_CMake_foreach_NFC.patch
+  patch --reverse --strip=1 --input=$srcdir/libclc_Fix_dependencies_between_targets.patch
+  patch --reverse --strip=1 --input=$srcdir/libclc_Give_built_bytecode_objects_a_.bc_extension_NFC.patch
   patch --reverse --strip=1 --input=$srcdir/libclc_Refactor_build_system_to_allow_in-tree_builds_#87622.patch
 }
 
