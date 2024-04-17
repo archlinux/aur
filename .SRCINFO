@@ -1,0 +1,13 @@
+pkgbase = qtilitools
+	pkgdesc = Scripts/commands used in the Qtilities organization
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/qtilities/qtilitools
+	arch = any
+	license = BSD-3-Clause
+	makedepends = cmake
+	depends = bash
+	source = qtilitools-0.1.2.tar.gz::https://github.com/qtilities/qtilitools/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = 79aa0c5f2b742b38346b83234a4e26d7b4a633f1eba47c89a9ee9309d7ef2a8d
+
+pkgname = qtilitools
