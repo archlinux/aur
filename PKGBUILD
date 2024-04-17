@@ -2,8 +2,8 @@
 
 pkgbase='juicity'
 pkgname=(${pkgbase}-{client,server})
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='A quic-based proxy protocol and implementation, inspired by tuic.'
 url='https://github.com/juicity/juicity'
 license=('AGPL-3.0-or-later')
@@ -13,7 +13,7 @@ makedepends=('go')
 
 source=("${pkgbase}-${pkgver}-full-src.zip"::"${url}/releases/download/v${pkgver}/${pkgbase}-full-src.zip")
 
-b2sums=('47422d4a4c971814cedbff7a647c3e910998fe199c5c21b709174bdfdfebb9161c62c060599a71b3ada0a0ceaacb99f3df74e2c95fe65ed4dde4f720b610594f')
+b2sums=('bd1d0b886f6d1cd73fc6f054815cef5a6977697752a214467266a9698f12e48e8a66ec0b8049f3ad3d9a1823d446ba6aca7b37d42ae41cee0777f4b3336560b2')
 
 prepare() {
   mkdir -v "${srcdir}/build"
@@ -26,9 +26,10 @@ build() {
   export GOMODCACHE="${srcdir}/go-mod"
   export GOFLAGS="-v -x -work -modcacherw -trimpath -buildmode=pie -mod=readonly"
 
-  cd "${srcdir}"
-  go build -o "${srcdir}/build" \
-    -ldflags "-w -s -linkmode external -X 'github.com/juicity/juicity/config.Version=${pkgver}-${pkgrel}'" \
+  go build \
+    -C "${srcdir}" \
+    -o "${srcdir}/build" \
+    -ldflags "-w -s -linkmode external -X 'github.com/juicity/juicity/config.Version=v${pkgver}-arch${pkgrel}'" \
     ./cmd/{server,client}
 }
 
