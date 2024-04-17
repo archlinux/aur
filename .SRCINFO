@@ -1,0 +1,11 @@
+pkgbase = projectdo
+	pkgdesc = Context-aware single-letter project commands to speed up your terminal workflow.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/paldepind/projectdo
+	arch = any
+	license = GPL-3.0-or-later
+	source = projectdo-0.2.1.tar.gz::https://github.com/paldepind/projectdo/archive/v0.2.1.tar.gz
+	sha256sums = 329b8abf29e19dc7ab524277974d011e72383db2dace0c7baccf8b201a669b4a
+
+pkgname = projectdo
