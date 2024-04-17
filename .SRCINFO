@@ -1,6 +1,6 @@
 pkgbase = ladybird-git
 	pkgdesc = Web browser built from scratch using the SerenityOS LibWeb engine
-	pkgver = r56231.387decbb01
+	pkgver = r60543.c87e32154a
 	pkgrel = 1
 	url = https://github.com/SerenityOS/serenity
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = ladybird-git
 	provides = ladybird
 	conflicts = ladybird
 	options = !lto
+	options = !debug
 	source = git+https://github.com/SerenityOS/serenity
 	source = ladybird.desktop
 	sha256sums = SKIP
