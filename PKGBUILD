@@ -3,7 +3,7 @@ pkgbase=python-casa-formats-io
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Code to handle I/O from/to data in CASA format Resources"
 arch=('i686' 'x86_64')
@@ -18,9 +18,9 @@ makedepends=('python-setuptools-scm'
              'python-sphinx-automodapi'
              'python-dask'
              'python-astropy')
-checkdepends=('python-pytest-openfiles')  # astropy and dask already in makedepends. glue-core for pdepend. doctestplus will die for no glue-core
+checkdepends=('python-pytest')  # astropy and dask already in makedepends. glue-core for pdepend. doctestplus will die for no glue-core
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a8c9ce1f163d7efb844253f7272990af')
+md5sums=('d4406b7d5330afc4a3edeae0a99eb881')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -47,7 +47,7 @@ check() {
 }
 
 package_python-casa-formats-io() {
-    depends=('python>=3.8' 'python-astropy>=4.0' 'python-dask>=2.0')
+    depends=('python>=3.9' 'python-astropy>=4.0' 'python-dask>=2.0')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
