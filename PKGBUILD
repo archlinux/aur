@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2-git
-pkgver=24.04.07.r0.gfe1ce050
+pkgver=24.04.07.r12.gf032defc
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -13,6 +13,7 @@ optdepends=('pulseaudio: PulseAudio support'
 conflicts=('qmplay2')
 provides=('qmplay2')
 makedepends=('ninja' 'clang' 'git' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'shaderc')
+options=(!lto)
 source=(
     'git+https://github.com/zaps166/QMPlay2.git'
     'git+https://github.com/zaps166/QmVk.git'
@@ -47,7 +48,7 @@ build() {
         ../QMPlay2 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DUSE_LINK_TIME_OPTIMIZATION=OFF \
+        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
         -DUSE_PCH=ON \
         -DUSE_GLSLC=ON \
         -DUSE_GIT_VERSION=ON
