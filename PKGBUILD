@@ -4,12 +4,12 @@
 _name=DearPyGui
 pkgname=python-dearpygui
 pkgver=1.11.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A fast and powerful Graphical User Interface Toolkit for Python with minimal dependencies'
 arch=(x86_64)
 url='https://github.com/hoffstadt/DearPyGui'
 license=('MIT')
-depends=(libglvnd libxcursor libxi libxinerama libxrandr python)
+depends=(glibc gcc-libs libglvnd libx11 libxcursor libxi libxinerama libxrandr python)
 makedepends=(git cmake python-build python-installer python-setuptools python-wheel)
 source=("git+$url#tag=v$pkgver"
         "git+https://github.com/ocornut/imgui"
