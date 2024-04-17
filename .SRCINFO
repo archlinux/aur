@@ -1,0 +1,22 @@
+pkgbase = unbted-git
+	pkgdesc = Una's NBT Editor - an advanced interactive command-line NBT editor
+	pkgver = 1.2.1.r1.ga2bd934
+	pkgrel = 1
+	url = https://git.sleeping.town/unascribed/unbted
+	arch = any
+	license = GPL-3.0-only
+	license = Apache-2.0
+	license = MIT
+	makedepends = git
+	makedepends = gradle<9
+	makedepends = java-environment<=17
+	provides = unbted
+	conflicts = unbted
+	source = git+https://github.com/unascribed/unbted.git
+	source = unbted.sh
+	sha256sums = SKIP
+	sha256sums = 56665e9227b213bd42fe7cffb5c955a55ab4ceb2573aeb8b84eda7a54a73945d
+
+pkgname = unbted-git
+	depends = java-runtime>=17
+	depends = sh
