@@ -4,6 +4,6 @@ post_install() {
 }
 
 post_upgrade() {
-	echo -e "\033[1;33mThis release changes the Tkey identity (CDI) compared to $1, i.e., you will not have the same Ed25519 keypair derived."
+	echo -e "\033[1;33mThis release changes the Tkey identity (CDI) compared to $2, i.e., you will not have the same Ed25519 keypair derived."
 }
 
