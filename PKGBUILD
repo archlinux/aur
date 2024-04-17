@@ -5,7 +5,7 @@
 # Get Last.fm API key and secret at https://www.last.fm/api/account/create
 
 # See https://github.com/flutter/flutter/issues/65400
-# for workarounds to `Insecure RPATH '<build path>' in opt/spotube/lib/libdart_*_plugin.so`
+# for workarounds to `Insecure RPATH '<build path>' in opt/spotube/lib/lib*_plugin.so`
 
 pkgname=spotube
 pkgver=3.6.0
