@@ -1,7 +1,7 @@
 pkgbase = libratp-barebox
 	pkgdesc = Remote interface for Barebox over a RATP link
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aleksander0m/libratp-barebox
 	arch = x86_64
 	license = LGPL-2.1-only

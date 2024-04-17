@@ -3,7 +3,7 @@
 pkgname=libratp-barebox
 pkgdesc='Remote interface for Barebox over a RATP link'
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 url=https://github.com/aleksander0m/libratp-barebox
 license=(LGPL-2.1-only)
 arch=(x86_64)
@@ -21,6 +21,7 @@ build () {
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr \
 		--enable-more-warnings=no \
+		--enable-gtk-doc \
 		--enable-silent-rules \
 		--disable-maintainer-mode \
 		--disable-dependency-tracking
