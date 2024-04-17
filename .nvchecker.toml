@@ -1,0 +1,4 @@
+[falltergeist]
+source = "github"
+github = "falltergeist/falltergeist"
+use_latest_release = true
