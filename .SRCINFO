@@ -1,17 +1,16 @@
 pkgbase = parsify-desktop
-	pkgdesc = Extendable calculator for the 21st Century
-	pkgver = 1.4.1
+	pkgdesc = Next generation notepad-based calculator, built with extendibility and privacy in mind.
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://parsify.app
 	arch = x86_64
 	license = MIT
-	makedepends = tar
-	depends = gtk3
-	depends = nss
-	source = parsify-desktop-1.4.1.deb::https://github.com/parsify-dev/desktop/releases/download/v1.4.1/parsify-desktop_1.4.1_amd64.deb
-	source = LICENSE::https://github.com/parsify-dev/desktop/raw/master/license
-	sha256sums = c63098b96f391b9c9aba70120f495e80abfb770e6b45a93b6f8550159437c895
-	sha256sums = 96a0f4a1f2e3895c759a26d58660499af0eeb342f9f929e4a6f0c14997449866
+	depends = electron21
+	provides = parsify-desktop=2.0.1
+	conflicts = parsify-desktop
+	source = parsify-desktop-2.0.1.deb::https://github.com/parsify-dev/desktop/releases/download/v2.0.1/Parsify-2.0.1-linux-amd64.deb
+	source = parsify-desktop.sh
+	sha256sums = be2dd9116fdbed8cd1052841db57375d384fe5bb9659c74bce50eacaefaefe48
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = parsify-desktop
-
