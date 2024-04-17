@@ -1,5 +1,5 @@
 pkgbase = web2pdf
-	pkgdesc = A CLI tool to extract a part of a website, create a PDF, and translate it to any language
+	pkgdesc = A CLI tool to extract a part of a website, create a PDF
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/simit22/web2pdf

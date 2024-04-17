@@ -2,7 +2,7 @@
 pkgname=web2pdf
 pkgver=1.0
 pkgrel=1
-pkgdesc="A CLI tool to extract a part of a website, create a PDF, and translate it to any language"
+pkgdesc="A CLI tool to extract a part of a website, create a PDF"
 arch=('any')
 url="https://github.com/simit22/web2pdf"
 license=('GPL')
