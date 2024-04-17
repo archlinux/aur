@@ -3,8 +3,8 @@
 # Contributor: Ashwin Vishnu <ashuwish+arch at gmail dot com>
 
 pkgname=sendanywhere
-pkgver=23.11.15
-pkgrel=3
+pkgver=24.3.8
+pkgrel=1
 arch=('x86_64')
 
 pkgdesc="Send Anywhere is a multi-platform file sharing service where users can directly share digital content in real time."
@@ -14,7 +14,7 @@ depends=('electron8')
 makedepends=('asar')
 
 source=("${pkgname}-${pkgver}.deb::https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb" "LICENSE")
-sha512sums=('2e6a6b7ba8806fc570939412de0cc82d5f05349667cf4e0619330515479394df80f414bab36ce868c0285810e0842ea3ef7706c47191dd3ac83d942893f47443'
+sha512sums=('1efd97e87385eced4ff7ee6ab6041665237ec2e160307b0bd326f5d65ca9c07f89d0c903addc4b84edae0e3f61bb0597ad70d0440a47981700665280ae964850'
             'aeb97a12f246d78cbf202354148b429a037997d68087bceed5d5ce5036443d779c2535138b54347579ddf05994a61b9333913f9261733f367d02e0e9cf7d0b5e')
 # If validity check fails, please leave a comment to remind me to update the package version
 
