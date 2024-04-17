@@ -1,0 +1,4 @@
+[libjodycode]
+source = "git"
+git = "https://codeberg.org/jbruchon/libjodycode.git"
+prefix = "v"
