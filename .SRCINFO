@@ -1,0 +1,18 @@
+pkgbase = python-plottable
+	pkgdesc = Beautifully customized tables with matplotlib
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/znstrider/plottable
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-pillow
+	source = https://files.pythonhosted.org/packages/source/p/plottable/plottable-0.1.5.tar.gz
+	sha256sums = 235d762a31c82129dc5bf74205c103a14b1e4393d0f921cc0231be5de884041d
+
+pkgname = python-plottable
