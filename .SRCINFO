@@ -1,10 +1,10 @@
 pkgbase = fondo
 	pkgdesc = Wallpaper App for Linux
 	pkgver = 1.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/calo001/fondo
 	arch = x86_64
-	license = GPL3
+	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
