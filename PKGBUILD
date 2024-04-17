@@ -3,7 +3,7 @@
 
 pkgname=python-fast-histogram
 _pyname=fast_histogram
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="Fast 1D and 2D histogram functions in Python"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest'
               'python-hypothesis')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('da27a74b5ad7ebaf04b4a855c2ade39a9d41fbdb6ee7f07cba159422045c7af2')
+sha256sums=('390973b98af22bda85c29dcf6f008ba0d626321e9bd3f5a9d7a43e5690ea69ea')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -31,7 +31,7 @@ build() {
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count \
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count \
 #       --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/fast_histogram/tests/test_histogram.py::test_1d_compare_with_numpy \
 #       --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/fast_histogram/tests/test_histogram.py::test_2d_compare_with_numpy \
 #       --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/fast_histogram/tests/test_histogram.py::test_dd_compare_with_numpy #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
