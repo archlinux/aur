@@ -2,8 +2,8 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=5.2.0
-_electronversion=29
+pkgver=5.3.0
+_electronversion=30
 _nodeversion=20
 pkgrel=1
 pkgdesc="GitHub notifications on your menu bar."
@@ -26,7 +26,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('6ca4aee918113be869561960de08454bbac7f21d946a522a67adae971dc7f1dc'
+sha256sums=('1beebddf22000f06723fc6d77943b7ce58cac6b58fb7db9be550487b14f04e94'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -59,7 +59,7 @@ build() {
     else
       echo "Your network is OK."
     fi
-    sed '/"AppImage",/d;s|"deb"|"dir"|g' -i package.json
+    sed 's|"AppImage", "deb", "rpm", "snap"|"dir"|g' -i package.json
     icotool -x assets/images/app-icon.ico -o assets/images/app-icon.png
     pnpm install
     pnpm run build
