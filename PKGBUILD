@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aihub-git
 _pkgname=AIHub
-pkgver=1.5.0.r0.g5d80a36
-_electronversion=29
+pkgver=1.5.1.r1.g9505257
+_electronversion=30
 pkgrel=1
 pkgdesc="A collection of large model capabilities of the client.一款集合多家大模型能力的客户端"
 arch=('any')
