@@ -4,7 +4,7 @@ _pkgname='rtl-433'
 _pkgvariantsuffix=''
 _vcssuffix='-git'
 pkgname="${_pkgname}${_pkgvariantsuffix}${_vcssuffix}"
-pkgver=nightly+26.r3486.20240326.693cf766
+pkgver=23.11+107.r3499.20240416.a2fe632c
 pkgrel=1
 pkgdesc="A generic software defined radio data receiver, mainly for the 433.92 MHz, 868 MHz (SRD), 315 MHz, 345 MHz, and 915 MHz ISM bands."
 arch=(
@@ -107,7 +107,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(git describe  --tags | sed 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
+  _ver="$(git describe --tags --exclude=nightly | sed 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
