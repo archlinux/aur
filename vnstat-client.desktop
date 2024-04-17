@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=vnStat Client
+Comment=GUI Client for vnStat Network Monitor for Linux or GNU/Linux
+Exec=vnstat-client %U
+Icon=vnstat-client
+Type=Application
+StartupNotify=true
+Categories=Network;

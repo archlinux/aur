@@ -1,0 +1,10 @@
+info() {
+    echo "############################################################"
+    echo "You should do this to make it run normally:"
+    echo "    $ sudo systemctl enable vnstat.service"
+    echo "    $ sudo systemctl start vnstat.service"
+    echo "############################################################"
+}
+post_install() {
+    info
+}
