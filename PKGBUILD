@@ -12,24 +12,24 @@
 _pkgname="ddcutil"
 pkgname="$_pkgname-git"
 pkgver=2.1.4.r94.g1ce8d58
-pkgrel=2
+pkgrel=3
 pkgdesc='Query and change Linux monitor settings using DDC/CI and USB.'
 url='https://github.com/rockowitz/ddcutil'
 license=('GPL-2.0-or-later')
 arch=('x86_64')
 
 depends=(
-	'glib2'
-	'i2c-tools'
-	'jansson'
-	'kmod'
-	'libdrm'
-	'libusb'
-	'libxrandr'
+  'glib2'
+  'i2c-tools'
+  'jansson'
+  'kmod'
+  'libdrm'
+  'libusb'
+  'libxrandr'
 )
 makedepends=(
-	'git'
-	'systemd'
+  'git'
+  'systemd'
 )
 
 provides+=("$_pkgname=${pkgver%%.r*}")
@@ -40,30 +40,29 @@ source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgsrc"
-	git describe --long --tags --abbrev=7 --exclude='*[a-z][a-z]*' |
-		sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+
+  # switch default branch, in case cache is out of date
+  _branch=$(git remote show origin | grep HEAD | sed 's&^.*: &&')
+  git checkout -f "$_branch"
+  git reset --hard HEAD
+
+  git describe --long --tags --abbrev=7 --exclude='*[a-z][a-z]*' |
+    sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$_pkgsrc"
-
-	# switch default branch, in case cache is out of date
-	_branch=$(git remote show origin | grep HEAD | sed 's&^.*: &&')
-	git checkout -f "$_branch"
-	git reset --hard HEAD
-
-	# back to regularly scheduled program
-	NOCONFIGURE=1 ./autogen.sh
+  cd "$_pkgsrc"
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-	cd "$_pkgsrc"
-	./configure --prefix=/usr
-	make
+  cd "$_pkgsrc"
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "$_pkgsrc"
-	make DESTDIR="$pkgdir" install
+  cd "$_pkgsrc"
+  make DESTDIR="$pkgdir" install
 }
