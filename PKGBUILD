@@ -4,21 +4,27 @@
 # Get Spotify API secrets at https://developer.spotify.com/, set callback url to http://localhost:4304/auth/spotify/callback
 # Get Last.fm API key and secret at https://www.last.fm/api/account/create
 
+# See https://github.com/flutter/flutter/issues/65400
+# for workarounds to `Insecure RPATH '<build path>' in opt/spotube/lib/libdart_*_plugin.so`
+
 pkgname=spotube
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
 url="https://spotube.krtirtho.dev/"
 license=("BSD-4-Clause")
 depends=("mpv" "libappindicator-gtk3" "libsecret" "libnotify" "at-spi2-core" "libepoxy")
-makedepends=("flutter>=3.16.0" "clang" "cmake" "ninja" "pkgconf" "gtk3" "imagemagick" "jsoncpp")
+makedepends=(
+    "flutter-tool>=3.16.0" "flutter-target-linux>=3.16.0" "clang" "cmake" "ninja"
+    "pkgconf" "gtk3" "imagemagick" "jsoncpp"
+)
 source=(
     "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('76b79fb139208564056a249f068a11ad4ce6224cbbc61f1e6cd75fb00e798738')
+sha256sums=('a47bb62acb7bf843aee1e5c2e490ae2d749c4235ec70181d5347e7474ddeb99e')
 
-_release_date=2024-03-08
+_release_date=2024-04-15
 
 prepare() {
     cd "$srcdir/spotube-$pkgver"
@@ -28,15 +34,12 @@ prepare() {
         echo "LASTFM_API_KEY=$MAKEPKG_SPOTUBE_LASTFM_API_KEY"
         echo "LASTFM_API_SECRET=$MAKEPKG_SPOTUBE_LASTFM_API_SECRET"
     } > .env
-    cp -r /opt/flutter "$srcdir"
-    export PATH="$srcdir/flutter/bin:$PATH"
     flutter config --no-analytics
     flutter config --enable-linux-desktop
     flutter pub get
 }
 build() {
     cd "$srcdir/spotube-$pkgver"
-    export PATH="$srcdir/flutter/bin:$PATH"
     dart run build_runner build --delete-conflicting-outputs --enable-experiment=records,patterns
     flutter build linux --release
     # This file is 509x509...
