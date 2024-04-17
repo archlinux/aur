@@ -12,6 +12,7 @@ pkgbase = pavucontrol-qt-git
 	makedepends = lxqt-build-tools-git
 	depends = libpulse
 	depends = qt6-base
+	optdepends = pulseaudio
 	provides = pavucontrol-qt
 	conflicts = pavucontrol-qt
 	source = git+https://github.com/lxqt/pavucontrol-qt.git

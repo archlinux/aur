@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/lxqt/$_pkgname"
 license=('GPL-2.0-only')
 depends=('libpulse' 'qt6-base')
+optdepends=('pulseaudio')
 makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
