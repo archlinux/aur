@@ -1,6 +1,6 @@
 pkgname=rewards-theater-obs-git
 _pkgname=RewardsTheater
-pkgver=1.0.5+5+g24c5a96
+pkgver=1.0.5+10+gcb3f491
 pkgrel=1
 pkgdesc="An OBS plugin that lets your viewers redeem videos or sounds on stream via channel points."
 
@@ -41,6 +41,6 @@ package() {
 	cd "${srcdir}/${_pkgname%-git}/build"
 	make DESTDIR="${pkgdir}/" install
 
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "${srcdir}/${_pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
