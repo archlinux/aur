@@ -1,7 +1,7 @@
 pkgbase = gummy
 	pkgdesc = Screen brightness/temperature manager for Linux
 	pkgver = 0.5.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/fusco/gummy
 	install = gummy.install
 	arch = x86_64
@@ -19,6 +19,8 @@ pkgbase = gummy
 	depends = systemd-libs
 	depends = xcb-util-image
 	source = fusco.gummy::git+https://codeberg.org/fusco/gummy.git#tag=0.5.9
-	sha256sums = SKIP
+	source = revert-e3a89af.patch
+	sha256sums = b29fdb78b98ff5ef17be3ddf13e9f28a5126b6f1b1149b4144c029830389e5c3
+	sha256sums = 5840c40eb942e82be88319c252bccfa921a034e7706dbc5f277f8ba886cd8feb
 
 pkgname = gummy
