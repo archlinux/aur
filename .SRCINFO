@@ -1,0 +1,15 @@
+pkgbase = web2pdf
+	pkgdesc = A CLI tool to extract a part of a website, create a PDF, and translate it to any language
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/simit22/web2pdf
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-reportlab
+	source = web2pdf.py
+	md5sums = SKIP
+
+pkgname = web2pdf
