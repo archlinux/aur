@@ -5,7 +5,7 @@ pkgname=(
 )
 pkgbase=python-jaraco.packaging
 _name=${pkgname#python-}
-pkgver=9.7.0
+pkgver=9.7.1
 pkgrel=1
 pkgdesc="Tools to supplement packaging Python releases"
 arch=('any')
@@ -29,7 +29,7 @@ makedepends=(
 #  'python-pytest'
 #)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('66c258a2143abfa9222dfa74fad39eb8ec4c2530e10d70479b994918d145be63')
+sha256sums=('e75cec0528085ac74f8fd65d886b944961830a4a286978fdcc1ec49d56a88ae4')
 
 build() {
   cd "$_name-$pkgver"
