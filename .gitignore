@@ -5,3 +5,4 @@ src/
 qrookie-*
 PKGBUILD-namcap.log
 .vscode/
+build
