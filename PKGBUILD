@@ -9,7 +9,7 @@ _ff_theme=official
 
 _pkgname=firefox-esr
 pkgname=firefox-esr-globalmenu
-pkgver=115.9.1
+pkgver=115.10.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)"
 url="https://www.mozilla.org/en-US/firefox/enterprise/"
@@ -73,14 +73,13 @@ validpgpkeys=(
 	# Mozilla Software Releases <release@mozilla.com>
 	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
 	'14F26682D0916CDD81E37B6D61B7B526D98F0353')
-sha1sums=(
-		'3ddd358e115719fa8476e17190b0eefff9475544'
-		'SKIP'
-		'bb4bbaddc549edd3506b5e955840fcebffcafb71'
-		'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
-		'559ce09fee54c849ea4da2bf881da37f5fc0cac9'
-		'076dc68b2ec6c454afe9b5a9b3fbb7908ce575b8'
-		'4193d307cfc152ef2813973b0eae4385a4a2a968')
+sha1sums=('fb7a9d9bd6632f83f8d3f1a67e31d69515aab3f7'
+          'SKIP'
+          'bb4bbaddc549edd3506b5e955840fcebffcafb71'
+          'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
+          '559ce09fee54c849ea4da2bf881da37f5fc0cac9'
+          '076dc68b2ec6c454afe9b5a9b3fbb7908ce575b8'
+          '4193d307cfc152ef2813973b0eae4385a4a2a968')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
