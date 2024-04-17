@@ -3,27 +3,37 @@
 
 _pkgname="filelight"
 pkgname="$_pkgname-git"
-pkgver=23.08.3.r5.g4241f24
+pkgver=24.02.2.r89.g45478b2
 pkgrel=1
 pkgdesc="View disk usage information"
-arch=('i686' 'x86_64')
 url='https://invent.kde.org/utilities/filelight'
-license=('GPL' 'LGPL' 'FDL')
+license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
+arch=('i686' 'x86_64')
 
 depends=(
-  'kdeclarative>=5.240.0'
-  'kio>=5.240.0'
-  'kirigami-addons>=0.11.75'
-  'kquickcharts>=5.240.0'
-  'qqc2-desktop-style>=5.240.0'
+  'kdeclarative'
+  'kio'
+  'kirigami-addons'
+  'kquickcharts'
+  'kxmlgui'
+  'qqc2-desktop-style'
+
+  ## implicit
+  #kconfig
+  #kcoreaddons
+  #ki18n
+  #kirigami
+  #kwidgetsaddons
+  #qt6-base
+  #qt6-declarative
 )
 makedepends=(
-  'extra-cmake-modules>=5.240.0'
+  'extra-cmake-modules'
   'git'
-  'kdoctools>=5.240.0'
+  'kdoctools'
 )
 
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
@@ -33,30 +43,12 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgsrc"
 
-  local _regex='^\s+<release version="([0-9]+\.[0-9]+(\.[0-9]+)?)".*>$'
-  local _file='misc/org.kde.filelight.appdata.xml'
+  local _tag=$(git tag | grep -Ev '\.[0-9]{2}$' | sort -rV | head -1)
+  local _version="${_tag#v}"
+  local _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  local _hash=$(git rev-parse --short=7 HEAD)
 
-  local _line=$(
-    grep -E "$_regex" "$_file" | head -1
-  )
-  local _version=$(
-    printf '%s' "$_line" | sed -E "s@$_regex@\1@"
-  )
-  local _commit=$(
-    git log -G "$_line" -1 --pretty=oneline --no-color -- "$_file" \
-      | sed 's@\ .*$@@'
-  )
-  local _revision=$(
-    git rev-list --count $_commit..HEAD
-  )
-  local _hash=$(
-    git rev-parse --short HEAD
-  )
-
-  printf '%s.r%s.g%s' \
-    "$_version" \
-    "$_revision" \
-    "$_hash"
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 build() {
@@ -79,5 +71,5 @@ package() {
     'hicolor-icon-theme'
   )
 
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
