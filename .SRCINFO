@@ -1,0 +1,15 @@
+pkgbase = libratp
+	pkgdesc = User space implementation of the RATP protocol (RFC 916)
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/aleksander0m/libratp
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gtk-doc
+	depends = libevent
+	source = libratp-0.0.6.tar.gz::https://github.com/aleksander0m/libratp/archive/refs/tags/0.0.6.tar.gz
+	b2sums = ca76ed028e962a39e3ca6e88706a2e28310ed5cd1b00563ef871ae1cab0ed2f32ebcb23c090b5feb1de8bb99b884233b1f31b68d40bb3b897df4bd9462c95e72
+
+pkgname = libratp
