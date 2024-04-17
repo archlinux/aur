@@ -1,6 +1,6 @@
 pkgbase = vvc-vtm
 	pkgdesc = VTM reference software for VVC (H.266)
-	pkgver = 23.1
+	pkgver = 23.2rc1
 	pkgrel = 1
 	url = https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = vvc-vtm
 	makedepends = lsb-release
 	makedepends = python
 	depends = gcc-libs
-	source = https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM/-/archive/VTM-23.1/VVCSoftware_VTM-VTM-23.1.tar.gz
-	b2sums = f75a5824345cea971b521d029329900139a921c47702c4a2aef8930cd35594615ed94d1333cb4ebcce22cd54951becfbe4115e6ddc07472e77a151487bae064f
+	source = https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM/-/archive/VTM-23.2rc1/VVCSoftware_VTM-VTM-23.2rc1.tar.gz
+	b2sums = f2ef9cb533182ba34e23bbca6e865368b194ed1e3fa39e02ddcf0dfbd7f2c9260b3381fce2366a6d75dbd93885812e70510e32c543ffb42c27dfa0dde315b08a
 
 pkgname = vvc-vtm
