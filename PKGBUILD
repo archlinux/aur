@@ -2,7 +2,7 @@
 pkgname=talecast-git
 _pkgname=TaleCast
 pkgver=r102.885ea21
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple CLI podcatcher"
 
 arch=(
@@ -44,7 +44,8 @@ build() {
 	cd "${_pkgname}"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --release --all-features --frozen
+	cargo build --release --all-features 
+	# --frozen removed forzen for now
 }
 
 package() {

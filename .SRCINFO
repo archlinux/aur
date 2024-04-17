@@ -1,7 +1,7 @@
 pkgbase = talecast-git
 	pkgdesc = Simple CLI podcatcher
 	pkgver = r102.885ea21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TBS1996/TaleCast
 	arch = x86_64
 	arch = i686
