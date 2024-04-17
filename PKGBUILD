@@ -9,15 +9,9 @@
 # http://ddcutil.com/
 # https://github.com/rockowitz/ddcutil
 
-## options
-: ${_build_git:=true}
-
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-## basic info
 _pkgname="ddcutil"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.1.0.r67.g90e67d7c
+pkgname="$_pkgname-git"
+pkgver=2.1.4.r94.g1ce8d58
 pkgrel=1
 pkgdesc='Query and change Linux monitor settings using DDC/CI and USB.'
 url='https://github.com/rockowitz/ddcutil'
@@ -25,17 +19,17 @@ license=('GPL-2.0-or-later')
 arch=('x86_64')
 
 depends=(
-  'glib2'
-  'i2c-tools'
-  'jansson'
-  'kmod'
-  'libdrm'
-  'libusb'
-  'libxrandr'
+	'glib2'
+	'i2c-tools'
+	'jansson'
+	'kmod'
+	'libdrm'
+	'libusb'
+	'libxrandr'
 )
 makedepends=(
-  'git'
-  'systemd'
+	'git'
+	'systemd'
 )
 
 provides+=("$_pkgname=${pkgver%%.r*}")
@@ -46,22 +40,29 @@ source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgsrc"
-  git describe --long --tags --abbrev=8 --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+	cd "$_pkgsrc"
+	git describe --long --tags --abbrev=7 --exclude='*[a-z][a-z]*' |
+		sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$_pkgsrc"
-  NOCONFIGURE=1 ./autogen.sh
+	cd "$_pkgsrc"
+
+	# switch default branch, in case cache is out of date
+	_branch=$(git remote show origin | grep HEAD | sed 's&^.*: &&')
+	git checkout -f branch "$_branch"
+
+	# back to regularly scheduled program
+	NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "$_pkgsrc"
-  ./configure --prefix=/usr
-  make
+	cd "$_pkgsrc"
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd "$_pkgsrc"
-  make DESTDIR="$pkgdir" install
+	cd "$_pkgsrc"
+	make DESTDIR="$pkgdir" install
 }
