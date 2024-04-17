@@ -1,0 +1,4 @@
+[libva-headless]
+source = "github"
+github = "intel/libva"
+use_latest_tag = true
