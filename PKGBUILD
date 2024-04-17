@@ -1,6 +1,6 @@
 # Maintainer: 
 pkgname=eprosima-micro-xrce-dds-gen
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=0
 pkgdesc="DDS-XRCE IDL code generator tool"
 arch=('any')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-    '8cd1e7df5105c8472a5558e91545651577b51ac63a31bd08de67e9e1b78626a493e7dca692131d04527e7a72d82c2788b333921791ca9e749108fee7e7936cad'
+    'd2dde161924e41398e90ad24d6461b69ec8b1a80e92b5fe38255c5d48cf75ee2fb6141f1c6380d7a5001e8a29ffd7e865c5c77643e5d5f86fd1057c383c13343'
     '56c3a957455dc6fb3528992f39565c023282879737f2c63c86a7fa698a8361cf6884cd18caf7d7adcbbaffc39015ee443031e5cf3272a5c0bfd3ff7a2dac337b'
 )
 
