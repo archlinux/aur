@@ -3,8 +3,8 @@
 
 _pkgname="gummy"
 pkgname="$_pkgname-git"
-pkgver=0.5.9.r1.g4b48fc3b
-pkgrel=1
+pkgver=0.5.9.r1.g4b48fc3
+pkgrel=2
 pkgdesc="Screen brightness/temperature manager for Linux"
 url="https://codeberg.org/fusco/gummy"
 license=('GPL-3.0-or-later')
@@ -36,14 +36,22 @@ _pkgsrc="fusco.gummy"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
-pkgver() {
+prepare() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=8 \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  _reverts=(
+    # fix glib cxx assert error
+    e3a89af2d8717a0d75623e63429ddb48892653f7
+  )
+  for _c in "${_reverts[@]}"; do
+    git log --oneline -1 "${_c}"
+    git revert -n "${_c}"
+  done
 }
 
-prepare() {
-  sed -e '46,48d' -i "$_pkgsrc/gummyd/gummyd/sd-dbus.cpp"
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {

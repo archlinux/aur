@@ -1,7 +1,7 @@
 pkgbase = gummy-git
 	pkgdesc = Screen brightness/temperature manager for Linux
-	pkgver = 0.5.9.r1.g4b48fc3b
-	pkgrel = 1
+	pkgver = 0.5.9.r1.g4b48fc3
+	pkgrel = 2
 	url = https://codeberg.org/fusco/gummy
 	install = gummy.install
 	arch = x86_64
