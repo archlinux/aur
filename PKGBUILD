@@ -16,7 +16,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=18.0.0_r479038.d16d149e3d96
+pkgver=19.0.0_r495959.9f3334e9932f
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -47,7 +47,7 @@ _python_optimize() {
 }
 
 pkgver() {
-    cd llvm-project/llvm
+    cd llvm-project/cmake/Modules
 
     # This will almost match the output of `llvm-config --version` when the
     # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
@@ -56,12 +56,11 @@ pkgver() {
             'BEGIN { ORS="." ; i=0 } \
              /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
              END { print "\n" }' \
-             CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+             LLVMVersion.cmake)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     echo "$_pkgver"
 }
 
 build() {
-    
     export CFLAGS+=" ${CPPFLAGS}"
     export CXXFLAGS+=" ${CPPFLAGS}"
     cmake \
@@ -113,14 +112,14 @@ package_llvm-git() {
               llvm compiler-rt clang lldb polly lld )
     # A package always provides itself, so there's no need to provide llvm-git
     conflicts=('llvm' 'compiler-rt' 'clang' 'lldb' 'polly' 'lld')
-    
+
     DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
 
     # Include lit for running lit-based tests in other projects
     pushd llvm-project/llvm/utils/lit
     python setup.py install --root="$pkgdir" -O1
     popd
-    
+
     # Move analyzer scripts out of /usr/libexec
     mv "$pkgdir"/usr/libexec/{ccc,c++}-analyzer "$pkgdir"/usr/lib/clang/
     mv "$pkgdir"/usr/libexec/analyze-{cc,c++} "$pkgdir"/usr/lib/clang/
@@ -142,7 +141,7 @@ package_llvm-git() {
     else
         mv "$pkgdir"/usr/share/doc/llvm/ocaml-html "$srcdir"/ocaml.doc
     fi
-    
+
     if [[ $CARCH == x86_64 ]]; then
         # Needed for multilib (https://bugs.archlinux.org/task/29951)
         # Header stub is taken from Fedora
@@ -184,7 +183,7 @@ package_llvm-libs-git() {
     # https://bugs.archlinux.org/task/28479
     install -d "$pkgdir"/usr/lib/bfd-plugins
     ln -s ../LLVMgold.so "$pkgdir"/usr/lib/bfd-plugins/LLVMgold.so
-    
+
     cd llvm-project/
     install -Dm644 llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/llvm-LICENSE
     install -Dm644 clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
@@ -200,7 +199,7 @@ package_llvm-ocaml-git() {
     depends=("llvm-git=$pkgver-$pkgrel" "ocaml" 'ocaml-ctypes')
     conflicts=('llvm-ocaml')
     provides=("llvm-ocaml")
-    
+
     install -d "$pkgdir"/{usr/lib,usr/share/doc/$pkgname}
     cp -a "$srcdir"/ocaml.lib "$pkgdir"/usr/lib/ocaml
     cp -a "$srcdir"/ocaml.doc "$pkgdir"/usr/share/doc/$pkgname/html
