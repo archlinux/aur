@@ -1,0 +1,25 @@
+pkgbase = trans-glxgears-git
+	pkgdesc = Transgender recolor of the glxgears mesa demo
+	pkgver = r29.f42d103
+	pkgrel = 1
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = freeglut
+	makedepends = glslang
+	makedepends = glu
+	makedepends = libdecor
+	makedepends = libxkbcommon-x11
+	makedepends = mesa
+	depends = freeglut
+	depends = glibc
+	depends = glu
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	provides = trans-glxgears
+	conflicts = trans-glxgears
+	source = glxgears::git+https://codeberg.org/LexxyFox/glxgears.git
+	sha256sums = SKIP
+
+pkgname = trans-glxgears-git
