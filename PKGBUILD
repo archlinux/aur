@@ -1,6 +1,6 @@
 # Maintainer: Joan Figueras <ffigue at gmail>
 # Maintainer: xiota / aur.chaotic.cx
-# Contributor (Parabola): fauno <fauno@kiwwwi.com.ar>
+# Contributor: (Parabola) fauno <fauno@kiwwwi.com.ar>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
@@ -19,29 +19,27 @@
 : ${_build_repatch:=false}
 
 : ${_build_pgo:=true}
-: ${_build_pgo_reuse:=true}
+: ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=true}
 
 # set to download only one language
 : ${_lang:=}
 
-if [ "${_build_prepatched::1}" != "t" ] || [ -n "$_pkgver" ] ; then
+if [ "${_build_prepatched::1}" != "t" ] || [ -n "$_pkgver" ]; then
   : ${_autoupdate:=false}
 fi
 
-if [ -n "$_srcinfo" ] ; then
+if [ -n "$_srcinfo" ]; then
   : ${_autoupdate:=false}
-  : ${_lang:=en_US}
+  : ${_lang:=en-US}
 fi
 
 : ${_autoupdate:=true}
 
-unset _pkgtype
-
 ## basic info
 _pkgname="icecat"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=115.9.1
+pkgname="$_pkgname"
+pkgver=115.10.0
 pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
 license=('MPL-2.0')
@@ -79,6 +77,7 @@ _main_package() {
     llvm
     mercurial
     mesa
+    mold
     nasm
     nodejs
     python
@@ -99,7 +98,7 @@ _main_package() {
     'xdg-desktop-portal: Screensharing with Wayland'
   )
 
-  if [ "${_build_prepatched::1}" != "t" ] ; then
+  if [ "${_build_prepatched::1}" != "t" ]; then
     makedepends+=(
       git
       m4
@@ -110,8 +109,8 @@ _main_package() {
     )
   fi
 
-  if [[ "${_build_pgo::1}" == "t" ]] ; then
-    if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+  if [[ "${_build_pgo::1}" == "t" ]]; then
+    if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
       makedepends+=(
         xorg-server-xvfb
       )
@@ -124,11 +123,6 @@ _main_package() {
     fi
   fi
 
-  if [ -n "$_pkgtype" ] ; then
-    provides=("$_pkgname=${pkgver%%.r*}")
-    conflicts=("$_pkgname")
-  fi
-
   options=(
     !debug
     !emptydirs
@@ -137,7 +131,7 @@ _main_package() {
     !strip
   )
 
-  if [[ "${_build_prepatched::1}" == "t" ]] ; then
+  if [[ "${_build_prepatched::1}" == "t" ]]; then
     url="https://icecatbrowser.org/"
     _update_version
 
@@ -150,8 +144,8 @@ _main_package() {
 
     noextract=("firefox-${pkgver}esr.source.tar.xz")
 
-    _commit=d1dab742d12e2ffacae70733b14016287fc46613
-    _ffsum=23657808bfefb8ba33a191645d4df776d5b8d99d453edde32b785d2a8846f929
+    _commit=40e114e5e8fd0b4d3621d6c8aebf0c78100578f2
+    _ffsum=0afd3c733d95f7047f258d1a9768d06d856217fe736d85bfb370db9dd926eef2
     _pkgsrc="$_pkgname-$pkgver"
     _pkgsrc_gnuzilla="gnuzilla-$_commit"
     _pkgext="tar.gz"
@@ -160,7 +154,7 @@ _main_package() {
       "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"{,.asc}
     )
     sha256sums+=(
-      '3d0bf1af544a195f7a8c1f165bd890dba472ec3d33a074d67db09a499b296e69'
+      'e254c2588f4f0640979fe6b59e11f0c2ccc0b65189231ce4f4daf1717b877468'
       "$_ffsum"
       'SKIP'
     )
@@ -188,11 +182,11 @@ _main_package() {
 }
 
 _make_icecat() {
-  if [[ "${_build_prepatched::1}" == "t" ]] ; then
+  if [[ "${_build_prepatched::1}" == "t" ]]; then
     return
   fi
 
-  if [ "${_build_repatch::1}" != "t" ] && [ -e "$SRCDEST/$_pkgsrc.tar.zst" ] ; then
+  if [ "${_build_repatch::1}" != "t" ] && [ -e "$SRCDEST/$_pkgsrc.tar.zst" ]; then
     echo "Restoring previously patched sources..."
     rm -rf "$srcdir/$_pkgsrc"
     bsdtar -xf "$SRCDEST/$_pkgsrc.tar.zst"
@@ -248,7 +242,7 @@ _make_icecat() {
   bash makeicecat
   popd
 
-  if [[ "${_build_save_source::1}" == "t" ]] ; then
+  if [[ "${_build_save_source::1}" == "t" ]]; then
     echo "Saving patched sources..."
     [ -e "$SRCDEST/$_pkgsrc.tar.zst" ] && rm -rf "$SRCDEST/$_pkgsrc.tar.zst"
     mv "$_pkgsrc_gnuzilla/output/$_pkgsrc" "$srcdir/"
@@ -259,7 +253,7 @@ _make_icecat() {
 
 # common functions
 prepare() {
-  cat >icecat.desktop <<END
+  cat > icecat.desktop << END
 [Desktop Entry]
 Version=1.0
 Name=IceCat
@@ -309,7 +303,7 @@ END
   sed -E -e '/^browser\/extensions\/.*$/d' -i "browser/installer/allowed-dupes.mn"
 
   # configure
-  cat >../mozconfig <<END
+  cat > ../mozconfig << END
 ac_add_options --enable-application=browser
 ac_add_options --disable-artifact-builds
 
@@ -320,7 +314,7 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
-ac_add_options --enable-linker=lld
+ac_add_options --enable-linker=mold
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -409,17 +403,17 @@ build() {
   ulimit -n 4096
 
   # Do 3-tier PGO
-  if [[ "${_build_pgo::1}" == "t" ]] ; then
+  if [[ "${_build_pgo::1}" == "t" ]]; then
     # find previous profile file...
     local _old_profdata _old_jarlog _pkgver_old tmp_old tmp_new
     _pkgver_prof=$(
       cd "${SRCDEST:-$startdir}"
-      for i in *.profdata ; do [ -f "$i" ] && echo "$i" ; done \
+      for i in *.profdata; do [ -f "$i" ] && echo "$i"; done \
         | sort -rV | head -1 | sed -E 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
     )
 
     # new profile for new major version
-    if [ "${_pkgver_prof%%.*}" != "${pkgver%%.*}" ] ; then
+    if [ "${_pkgver_prof%%.*}" != "${pkgver%%.*}" ]; then
       _build_pgo_reuse=false
       _pkgver_prof="$pkgver"
     fi
@@ -428,7 +422,7 @@ build() {
     _tmp_old=$(echo "${_pkgver_prof}" | cut -d'-' -f2 | cut -d'.' -f2)
     _tmp_new=$(echo "${pkgver}" | cut -d'-' -f2 | cut -d'.' -f2)
 
-    if [ "${_tmp_new:-0}" -gt "${_tmp_old:-0}" ] ; then
+    if [ "${_tmp_new:-0}" -gt "${_tmp_old:-0}" ]; then
       _build_pgo_reuse=false
       _pkgver_prof="$pkgver"
     fi
@@ -437,22 +431,22 @@ build() {
     local _old_jarlog="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-jarlog"
 
     # Restore old profile
-    if [[ "${_build_pgo_reuse::1}" == "t" ]] ; then
-      if [[ -s "$_old_profdata" ]] ; then
+    if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
+      if [[ -s "$_old_profdata" ]]; then
         echo "Restoring old profile data."
         cp --reflink=auto -f "$_old_profdata" merged.profdata
       fi
 
-      if [[ -s "$_old_jarlog" ]] ; then
+      if [[ -s "$_old_jarlog" ]]; then
         echo "Restoring old jar log."
         cp --reflink=auto -f "$_old_jarlog" jarlog
       fi
     fi
 
     # Make new profile
-    if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]] ; then
+    if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]]; then
       echo "Building instrumented browser..."
-      cat >.mozconfig ../mozconfig - <<END
+      cat > .mozconfig ../mozconfig - << END
 ac_add_options --enable-profile-generate=cross
 export MOZ_ENABLE_FULL_SYMBOLS=1
 END
@@ -461,7 +455,7 @@ END
       echo "Profiling instrumented browser..."
       ./mach package
 
-      if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+      if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
         local _headless_run=(
           xvfb-run
           -s "-screen 0 1920x1080x24 -nolisten local"
@@ -481,11 +475,11 @@ END
     fi
 
     echo "Building optimized browser..."
-    cat >.mozconfig ../mozconfig
+    cat > .mozconfig ../mozconfig
 
-    if [[ -s merged.profdata ]] ; then
+    if [[ -s merged.profdata ]]; then
       stat -c "Profile data found (%s bytes)" merged.profdata
-      cat >>.mozconfig - <<END
+      cat >> .mozconfig - << END
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 END
@@ -496,9 +490,9 @@ END
       echo "Profile data not found."
     fi
 
-    if [[ -s jarlog ]] ; then
+    if [[ -s jarlog ]]; then
       stat -c "Jar log found (%s bytes)" jarlog
-      cat >>.mozconfig - <<END
+      cat >> .mozconfig - << END
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
 
@@ -516,7 +510,7 @@ END
     ./mach build
   else
     echo "Building browser..."
-    cat >.mozconfig ../mozconfig
+    cat > .mozconfig ../mozconfig
 
     ./mach build
   fi
@@ -527,7 +521,7 @@ package() {
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "$vendorjs" <<END
+  install -Dvm644 /dev/stdin "$vendorjs" << END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -554,7 +548,7 @@ pref("services.settings.main.search-telemetry-v2.last_check", $(date +%s));
 END
 
   local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" <<END
+  install -Dvm644 /dev/stdin "$distini" << END
 [Global]
 id=archlinux
 version=${pkgver}
@@ -568,7 +562,7 @@ END
 
   # search provider
   local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini"
-  install -Dvm644 /dev/stdin "$sprovider" <<END
+  install -Dvm644 /dev/stdin "$sprovider" << END
 [Shell Search Provider]
 DesktopId=$_pkgname.desktop
 BusName=org.mozilla.${_pkgname//-/}.SearchProvider
@@ -601,7 +595,7 @@ END
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
-  if [[ "${_autoupdate::1}" != "t" ]] ; then
+  if [[ "${_autoupdate::1}" != "t" ]]; then
     return
   fi
 
@@ -609,7 +603,7 @@ _update_version() {
   local _pkgver_new=$(curl -Ssf "$_ver_url")
 
   # update _pkgver
-  if [ "$_pkgver" == "${_pkgver_new:?}" ] ; then
+  if [ "$_pkgver" == "${_pkgver_new:?}" ]; then
     _pkgver="${_pkgver_new:?}"
   fi
 }
