@@ -1,7 +1,7 @@
 # Maintainer: Allomyrina Volbot <volbot.tech@gmail.com>
 
 pkgname=ttf-greybeard-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='a chunky monospaced bitmap programming font for old nerds that hate eyestrain'
 arch=('any')
