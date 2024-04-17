@@ -1,0 +1,15 @@
+pkgbase = toxext-git
+	pkgdesc = An extension library for tox
+	pkgver = 0.0.3.r1.ga746a99
+	pkgrel = 1
+	url = https://github.com/toxext/toxext
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = toxcore
+	options = !lto
+	source = toxext-git::git+https://github.com/toxext/toxext
+	sha256sums = SKIP
+
+pkgname = toxext-git
