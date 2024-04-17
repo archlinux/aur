@@ -6,7 +6,7 @@ gitver=v6.8.7
 patchver=20240221.2
 patchname=more-uarches-for-kernel-6.8-rc4+.patch
 pkgver=6.8.v.7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '1fb2041018c0dfaabd735f7a6f25c20f97b7323a356fb3e603353e9f974f0af0'
+            '75c8d065beffd0f9c7ec752f0caed3671677daec5bf8f03ac58f9b1c25a36f73'
             #grayskypatch
             'd69232afd0dd6982ae941cf2d1f577f4be2011e3bb847d1db37952acf416b5d3'
            )
