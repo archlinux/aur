@@ -25,10 +25,11 @@ source=(
 sha256sums=('9edd06a62033d404a41f9cd88f216ce938b859df9e165b536b5e82eeae2a38c0'
             'a0e7dc022acc43d4eb96828ba0362bc1397607d5850e1b69ce5aa5ae90a74386'
             'a48e929dfffc7831cf2cb783aa51d38ddbfb3ee04bfa57d07947de8134f61ac3'
-            'e813e20b1fb1d24f9f019056c2983b6cb70b5aa00038c0f82ea618d1e26d5957'
+            'fa74b511a0645129b6fea7235604fd5433e3a99e2ea44e05e971bfa945ebe908'
             '0edcbdda3f3789973d30ab65589b5a0920a3b70b185e25544f60cc4669492475'
             'ab966cba68b02c7163cb3a210c59ef7e645d5a43fc1ad18869a2533e1b297fc8'
             'a77e1b23dd90f36345a43fc45afa738e458ea3b88d395f83c396516ba2efdfbd')
+
 
 
 prepare() {
@@ -51,5 +52,6 @@ package() {
   mkdir -p ${pkgdir}/usr/lib/sysusers.d
   install -Dm 644 tango-db.conf "${pkgdir}"/usr/lib/sysusers.d/tango-db.conf
   install -Dm 644 create_db_user.sql "${pkgdir}"/usr/share/tango/db/create_db_user.sql
+  install -Dm 644 build/create_db_tables.sql "${pkgdir}"/usr/share/tango/db/create_db_tables.sql
   install -Dm 644 check_and_create_db.sh "${pkgdir}"/usr/share/tango/db/check_and_create_db.sh
 }
