@@ -1,0 +1,22 @@
+pkgbase = fcitx5-cskk-git
+	pkgdesc = SKK input method plugin for fcitx5 that uses LibCSKK
+	pkgver = 1.2.0.r8.gb2f93ed
+	pkgrel = 1
+	url = https://github.com/fcitx/fcitx5-cskk
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = gettext
+	depends = fcitx5
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = fcitx5-qt
+	depends = cskk
+	provides = fcitx5-cskk
+	conflicts = fcitx5-cskk
+	source = git+https://github.com/fcitx/fcitx5-cskk.git
+	sha256sums = SKIP
+
+pkgname = fcitx5-cskk-git
