@@ -4,7 +4,7 @@
 _pkgname=igt-gpu-tools
 pkgname="$_pkgname-git"
 pkgver=1.28+606.g17a41dcf1e
-pkgrel=3
+pkgrel=4
 pkgdesc="Collection of tools for development and testing of the DRM drivers."
 url="https://gitlab.freedesktop.org/drm/igt-gpu-tools"
 arch=("x86_64" "aarch64")
@@ -36,7 +36,6 @@ depends=(
   libelf
   liboping
   libpciaccess
-  libudev
   libunwind
   libx11
   libxext

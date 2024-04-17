@@ -1,7 +1,7 @@
 pkgbase = igt-gpu-tools-git
 	pkgdesc = Collection of tools for development and testing of the DRM drivers.
 	pkgver = 1.28+606.g17a41dcf1e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.freedesktop.org/drm/igt-gpu-tools
 	arch = x86_64
 	arch = aarch64
@@ -30,7 +30,6 @@ pkgbase = igt-gpu-tools-git
 	depends = libelf
 	depends = liboping
 	depends = libpciaccess
-	depends = libudev
 	depends = libunwind
 	depends = libx11
 	depends = libxext
