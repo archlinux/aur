@@ -1,21 +1,21 @@
 # Maintainer: Isaac Ruben <isaac@rubenfamily.com>
 pkgname=similar-sort-git
-pkgver=r48.166a8d8
+pkgver=r49.c850114
 pkgrel=1
 pkgdesc="sort strings according to edit distance"
 arch=('x86_64')
-url="https://git.bytes.zone/brian/similar-sort"
+url="https://github.com/BrianHicks/similar-sort"
 license=('CC-BY-SA-4.0')
 groups=()
 depends=()
-makedepends=('git' 'cargo') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'cargo')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname%-git}::git+https://git.bytes.zone/brian/similar-sort.git")
+source=("${pkgname%-git}::git+https://github.com/BrianHicks/similar-sort.git")
 noextract=()
 sha256sums=('SKIP')
 
