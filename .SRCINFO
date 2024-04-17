@@ -1,11 +1,12 @@
 pkgbase = apk-editor-studio
 	pkgdesc = Powerful yet easy to use APK editor
 	pkgver = 1.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://qwertycube.com/apk-editor-studio
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-base
+	makedepends = qt5-tools
 	makedepends = cmake
 	depends = qt5-base
 	depends = java-runtime>=8

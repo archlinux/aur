@@ -2,7 +2,7 @@
 
 pkgname=apk-editor-studio
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Powerful yet easy to use APK editor"
 arch=('x86_64')
 url='https://qwertycube.com/apk-editor-studio'
@@ -14,7 +14,7 @@ depends=('qt5-base'
          'android-sdk-build-tools'
          'android-apktool')
 optdepends=('libsecret: Enable password manager backend')
-makedepends=('qt5-base' 'cmake')
+makedepends=('qt5-base' 'qt5-tools' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kefir500/apk-editor-studio/archive/v${pkgver}.tar.gz")
 sha256sums=('676d236c8025ae1b1ac15e9ebe0617eba1fb7bb7a2728841e6bbab451174d5c9')
 
