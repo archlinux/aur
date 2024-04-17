@@ -1,6 +1,6 @@
 pkgbase = zotero-extension-ocr
 	pkgdesc = Zotero Plugin for OCR.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/UB-Mannheim/zotero-ocr
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = zotero-extension-ocr
 	makedepends = zip
 	depends = poppler
 	depends = tesseract
-	source = zotero-ocr-0.7.0.xpi::https://github.com/UB-Mannheim/zotero-ocr/releases/download/0.7.0/zotero-ocr-0.7.0.xpi
-	sha256sums = b649b6a7b75138b65896eca1142999fd5dfa2e0db056c0cea17917a867cc095b
+	source = zotero-ocr-0.7.1.xpi::https://github.com/UB-Mannheim/zotero-ocr/releases/download/0.7.1/zotero-ocr-0.7.1.xpi
+	sha256sums = 9ac2a495b02c0a2feb7eab30ea3785d7f8d6c26a65bb7850878c845bf4506caa
 
 pkgname = zotero-extension-ocr
