@@ -19,10 +19,12 @@ function sourceXDG() {
 	else
 		source "${XDG_CONFIG_HOME}"/user-dirs.dirs
 	fi
+	if [[ ! ${XDG_DATA_HOME} ]]; then
+		export XDG_DATA_HOME="${HOME}"/.local/share
+	fi
 }
 
 function manageDirs() {
-	createWrapIfNotExist "${XDG_DOCUMENTS_DIR}"/WeChat_Data
 	if [ -d "${HOME}/Documents/TrashBox" ]; then
 		echo "[Warn] Old user data may be present, check ${HOME}/Documents/TrashBox"
 	fi
@@ -30,6 +32,15 @@ function manageDirs() {
 		mv "${XDG_DOCUMENTS_DIR}/WeChat_Data/文档" \
 			"${XDG_DOCUMENTS_DIR}/WeChat_Data/Documents"
 	fi
+	if [ -d "${XDG_DOCUMENTS_DIR}"/WeChat_Data ]; then
+		echo "[Info] Migrating user data..."
+		mv "${XDG_DOCUMENTS_DIR}"/WeChat_Data "${XDG_DATA_HOME}"/WeChat_Data
+	fi
+	if [ -d "${XDG_DOCUMENTS_DIR}"/xwechat_files ]; then
+		echo "[Info] Removing unused links..."
+		rm "${XDG_DOCUMENTS_DIR}"/xwechat_files
+	fi
+	createWrapIfNotExist "${XDG_DATA_HOME}"/WeChat_Data
 }
 
 function detectXauth() {
@@ -62,21 +73,20 @@ function inputMethod() {
 }
 
 function lnDir() {
-	if [ -d "${XDG_DOCUMENTS_DIR}"/WeChat_Data/xwechat_files ]; then
-		ln -s "${XDG_DOCUMENTS_DIR}"/WeChat_Data/xwechat_files \
+	if [ -d "${XDG_DATA_HOME}"/WeChat_Data/xwechat_files ]; then
+		ln -srf "${XDG_DATA_HOME}"/WeChat_Data/xwechat_files \
 			"${HOME}"/xwechat_files
 	fi
-	cd "${XDG_DOCUMENTS_DIR}"
-	ln -sf WeChat_Data/Documents/xwechat_files \
-		xwechat_files
+	#cd "${XDG_DOCUMENTS_DIR}"
+	#ln -sfr "${XDG_DATA_HOME}"/WeChat_Data/Documents/xwechat_files \
+	#	"${XDG_DOCUMENTS_DIR}"/xwechat_files
 }
 
 function importEnv() {
-	if [ -e "${XDG_DOCUMENTS_DIR}"/WeChat_Data/wechat.env ]; then
+	if [ -e "${XDG_DATA_HOME}"/WeChat_Data/wechat.env ]; then
 		echo "[Info] Sourcing env vars..."
-		source "${XDG_DOCUMENTS_DIR}"/WeChat_Data/wechat.env
 	else
-		touch "${XDG_DOCUMENTS_DIR}"/WeChat_Data/wechat.env
+		touch "${XDG_DATA_HOME}"/WeChat_Data/wechat.env
 	fi
 }
 
@@ -91,7 +101,7 @@ function cameraDect() {
 }
 
 function execApp() {
-	touch "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info
+	touch "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info
 	cameraDect
 	importEnv
 	bwrap \
@@ -117,7 +127,7 @@ function execApp() {
 			"${XDG_RUNTIME_DIR}/pulse" \
 		--ro-bind-try "${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
 			"${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
-		--bind "${XDG_DOCUMENTS_DIR}"/WeChat_Data "${HOME}" \
+		--bind "${XDG_DATA_HOME}"/WeChat_Data "${HOME}" \
 		--ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
 		--unshare-all \
 		--share-net \
@@ -138,9 +148,9 @@ function execApp() {
 			"${XDG_CONFIG_HOME}"/mimeapps.list \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/kdeglobals \
 			"${XDG_CONFIG_HOME}"/kdeglobals \
-		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info \
+		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \
 			"${XDG_RUNTIME_DIR}/.flatpak-info" \
-		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info \
+		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \
 			/.flatpak-info \
 		--dir "${XDG_DOCUMENTS_DIR}" \
 		${bwCamPar} \
@@ -149,7 +159,7 @@ function execApp() {
 			/opt/wechat-uos-qt/files:/usr/lib/wechat-uos-qt/so \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
 		--setenv PATH /sandbox:"${PATH}" \
-		bash -c "export $(grep -v '^#' "${XDG_DOCUMENTS_DIR}"/WeChat_Data/wechat.env | xargs) && ${launchTarget}"
+		bash -c "export $(grep -v '^#' "${XDG_DATA_HOME}"/WeChat_Data/wechat.env | xargs) && ${launchTarget}"
 }
 
 function dbusProxy() {
@@ -161,9 +171,9 @@ function dbusProxy() {
 		--ro-bind /usr/lib64 /usr/lib64 \
 		--ro-bind /usr/bin /usr/bin \
 		--bind "${XDG_RUNTIME_DIR}" "${XDG_RUNTIME_DIR}" \
-		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info \
+		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \
 			/.flatpak-info \
-		--ro-bind-try "${XDG_DOCUMENTS_DIR}"/WeChat_Data/.flatpak-info \
+		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \
 			"${XDG_RUNTIME_DIR}/.flatpak-info" \
 		--die-with-parent \
 		-- \
@@ -216,6 +226,12 @@ function disableSandbox() {
 	fi
 }
 
+function openDataDir() {
+	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "opendir" ]]; then
+		xdg-open "${XDG_DATA_HOME}"/WeChat_Data
+	fi
+}
+
 function launch() {
 	detectXauth
 	inputMethod
@@ -239,6 +255,7 @@ function launch() {
 
 disableSandbox $@
 sourceXDG
+openDataDir $@
 manageDirs
 launch $@
 
