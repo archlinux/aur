@@ -1,13 +1,14 @@
-# Maintainer: Jan Holthuis <holthuis.jan@googlemail.com> 
+# Contributor: Jan Holthuis <holthuis.jan@googlemail.com> 
 _gitname=pam_p11
 pkgname=pam_p11-git
-pkgver=20131210
+pkgver=pam_p11.0.6.0.r0.ga6d8605
 pkgrel=1
 pkgdesc="PAM module for using crpytographic PKCS11 tokens such as smart cards and usb crypto tokens for local authentication."
 arch=('i686' 'x86_64')
 url="https://github.com/OpenSC/OpenSC/wiki/pam_p11-simple-RSA-authentication-with-PKCS%2311-modules"
 license=('LGPL')
 depends=('libp11')
+makedepends=('git')
 provides=('pam_p11')
 source=('git+https://github.com/OpenSC/pam_p11.git')
 md5sums=('SKIP')
@@ -22,7 +23,7 @@ build() {
   cd "$srcdir/$_gitname"
   mkdir -p m4
   ./bootstrap
-  ./configure --prefix=/usr --disable-static
+  ./configure --libdir=/usr/lib --disable-static
   make
 }
 
