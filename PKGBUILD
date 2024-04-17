@@ -1,20 +1,21 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
+# Maintainer: Archttila <linux.alucard@gmail.com>
 
 pkgname=mpd-sacd
-pkgver=0.22.1
+pkgver=0.23.13
 pkgrel=1
-pkgdesc='MPD with patches for SACD and DVDA ISO playback.'
+pkgdesc='MPD with patches for SACD and DVDA ISO playback. (DVDA ISO playback temporary disabled)'
 url='https://sourceforge.net/p/sacddecoder/mpd/MPD.git/ci/master/tree/'
 license=('GPL')
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl' 'faad2'
+depends=('libao' 'ffmpeg4.4' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl' 'faad2'
 	'sqlite' 'jack' 'libmms' 'wavpack' 'avahi' 'libid3tag' 'yajl' 'libmpdclient'
-	'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'smbclient' 'libcdio-paranoia'
-	'libgme' 'zziplib' 'fluidsynth' 'libmikmod' 'wildmidi')
-makedepends=('boost' 'meson' 'python-sphinx' 'clang' 'ninja')
+	'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'libcdio-paranoia'
+	'libgme' 'zziplib' 'fluidsynth' 'libmikmod' 'wildmidi' 'twolame' 'liburing' 'openal')
+makedepends=('boost' 'meson' 'cmake' 'python-sphinx_rtd_theme' 'clang' 'ninja')
 conflicts=('mpd')
 provides=("mpd=${pkgver}")
-source=('mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git#commit=ed387398fa3287d840da791005ec8dad9a81cc7d'
+source=('mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git#commit=45f0d8fbce0f52b9aca1f9cce96dcf9c9e1413da'
 	'sysusers.d'
 	'tmpfiles.d'
 	'conf')
@@ -32,6 +33,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/mpd/build"
+	export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 	_opts=('-Ddocumentation=enabled'
 		'-Dchromaprint=disabled' # appears not to be used for anything
 		'-Dsidplay=disabled' # unclear why but disabled in the past
@@ -48,7 +50,7 @@ build() {
 		'-Dsoundcloud=enabled'
 		'-Dzzip=enabled'
 		'-Dsacdiso=true'
-		'-Ddvdaiso=true'
+		'-Ddvdaiso=false' # temporary disabled
 	)
 	env CC=clang CXX=clang++ arch-meson .. ${_opts[@]}
 	ninja

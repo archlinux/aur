@@ -1,6 +1,6 @@
 pkgbase = mpd-sacd
-	pkgdesc = MPD with patches for SACD and DVDA ISO playback.
-	pkgver = 0.22.1
+	pkgdesc = MPD with patches for SACD and DVDA ISO playback. (DVDA ISO playback temporary disabled)
+	pkgver = 0.23.13
 	pkgrel = 1
 	url = https://sourceforge.net/p/sacddecoder/mpd/MPD.git/ci/master/tree/
 	arch = i686
@@ -10,11 +10,12 @@ pkgbase = mpd-sacd
 	license = GPL
 	makedepends = boost
 	makedepends = meson
-	makedepends = python-sphinx
+	makedepends = cmake
+	makedepends = python-sphinx_rtd_theme
 	makedepends = clang
 	makedepends = ninja
 	depends = libao
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = libmodplug
 	depends = audiofile
 	depends = libshout
@@ -34,17 +35,19 @@ pkgbase = mpd-sacd
 	depends = libnfs
 	depends = libsamplerate
 	depends = libsoxr
-	depends = smbclient
 	depends = libcdio-paranoia
 	depends = libgme
 	depends = zziplib
 	depends = fluidsynth
 	depends = libmikmod
 	depends = wildmidi
-	provides = mpd=0.22.1
+	depends = twolame
+	depends = liburing
+	depends = openal
+	provides = mpd=0.23.13
 	conflicts = mpd
 	backup = etc/mpd.conf
-	source = mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git#commit=ed387398fa3287d840da791005ec8dad9a81cc7d
+	source = mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git#commit=45f0d8fbce0f52b9aca1f9cce96dcf9c9e1413da
 	source = sysusers.d
 	source = tmpfiles.d
 	source = conf
@@ -54,4 +57,3 @@ pkgbase = mpd-sacd
 	sha1sums = 291fd5cda9f0845834a553017327c4586bd853f6
 
 pkgname = mpd-sacd
-
