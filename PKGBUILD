@@ -1,15 +1,15 @@
 # Maintainer: Herbert Knapp
 pkgname="the-dark-mod-bin"
 pkgver=2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="First person stealth game inspired by the Thief series based on id Tech 4 engine"
 arch=('x86_64')
 url="https://www.thedarkmod.com/"
 license=('unknown')
 options=(!strip)
 makedepends=('xorg-server-xvfb' 'imagemagick' 'p7zip')
-source=('https://web.archive.org/web/20240309212858if_/https://update.thedarkmod.com/zipsync/tdm_installer.linux64.zip')
-sha256sums=('e96956bf330b079ac3a9801b4671d0f42fd369d8b08b94e8222dddb69bbe4f1f')
+source=('https://web.archive.org/web/20240417203942if_/https://update.thedarkmod.com/zipsync/tdm_installer.linux64.zip')
+sha256sums=('56754940823a49d07bd63efcba88a4f58ecd52cc0b3d244c49fdc996f37a687d')
 prepare() {
   chmod +x "${srcdir}/tdm_installer.linux64"
 }
