@@ -1,0 +1,6 @@
+post_install() {
+	echo -e "ZhipuAI installed successfully!"
+	echo -e "If you don\'t know how to use ZhipuAI API, you can check the TWO LINKS below."
+	echo -e "\033[34mAPI KEY LIST: \033[32mhttps://open.bigmodel.cn/usercenter/apikeys\033[0m"
+	echo -e "\033[34mAPI DOCUMENT: \033[32mhttps://maas.aminer.cn/dev/api\033[0m"
+}

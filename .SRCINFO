@@ -1,0 +1,15 @@
+pkgbase = python-zhipuai
+	pkgdesc = ZhipuAI LLM API SDK for Python
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/zhipuai/
+	install = zhipuai.install
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyjwt
+	source = zhipuai::git+https://github.com/MetaGLM/zhipuai-sdk-python-v4
+	sha256sums = SKIP
+
+pkgname = python-zhipuai
