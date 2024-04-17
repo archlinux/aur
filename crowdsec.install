@@ -8,23 +8,9 @@ post_install() {
     cscli hub update
 
     CSCLI_BIN_INSTALLED="/usr/bin/cscli" SILENT=true install_collection
-
-    API=$(cscli config show --key "Config.API.Server")
-    if [ "${API}" = "nil" ]; then
-        LAPI=false
-    else
-        PORT=$(cscli config show --key "Config.API.Server.ListenURI" | cut -d ":" -f2)
-    fi
-    if [ "${LAPI}" = false ] || [ -z "$(ss -nlt "sport = ${PORT}" | grep -v ^State)" ]; then
-        systemctl start crowdsec
-    else
-        echo "Not attempting to start crowdsec, port ${PORT} is already used or lapi was disabled"
-        echo "This port is configured through /etc/crowdsec/config.yaml and /etc/crowdsec/local_api_credentials.yaml"
-    fi
 }
 
 pre_upgrade() {
-    echo " $1 => $2 "
     MAJOR=$(echo "$2" | awk -F '.' '{print $1}')
     MINOR=$(echo "$2" | awk -F '.' '{print $2}')
 

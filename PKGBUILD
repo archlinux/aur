@@ -1,10 +1,10 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: Michael Asher <michael at we solve everything dot com>
-# Contributers: Stephen304
+# Contributor: Stephen304
 
 pkgname=crowdsec
-pkgver=1.6.0
-pkgrel=3
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="The open-source and collaborative security suite"
 arch=('aarch64' 'x86_64')
 url="https://www.crowdsec.net"
@@ -18,8 +18,8 @@ backup=(etc/crowdsec/{acquis,config,console,profiles,simulation}.yaml
 install=crowdsec.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crowdsecurity/crowdsec/archive/refs/tags/v${pkgver}.tar.gz"
         'crowdsec.install')
-sha256sums=('6d79d67383c7faed6c5b2019e4f01c6ed84334c8c45cd1736ff18a03167aa192'
-            'e3b80fd4a1a3579a1b822ddf5898f3402aba8e6cf718f1d91f0ee2f4fb90ad99')
+sha256sums=('867ab7a0725724d3ba5e13e5808668389756a2ce996da9ffc184949c9fabfd84'
+            'e2c45c4773fa28fc6528d662429c2bbe26b52df2cbc020a39e6737360f6752b5')
 
 prepare() {
     cd "${pkgname}-${pkgver}/config"
@@ -41,24 +41,17 @@ package() {
     install -Dm755 -t "${pkgdir}/usr/bin" cmd/crowdsec/crowdsec cmd/crowdsec-cli/cscli
     install -Dm755 -t "${pkgdir}/usr/share/${pkgname}" wizard.sh
     install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" config/crowdsec.service
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../LICENSE
+
     install -Dm644 -t "${pkgdir}/etc/${pkgname}" config/{acquis,config,console,profiles,simulation}.yaml
     install -Dm600 -t "${pkgdir}/etc/${pkgname}" config/{local_api_credentials,online_api_credentials}.yaml
     install -Dm644 -t "${pkgdir}/etc/${pkgname}/console" config/context.yaml
     install -Dm644 -t "${pkgdir}/etc/${pkgname}/patterns" config/patterns/*
 
-    install -Dm751 -t "${pkgdir}/usr/lib/${pkgname}/plugins" cmd/notification-email/notification-email
-    install -Dm751 -t "${pkgdir}/usr/lib/${pkgname}/plugins" cmd/notification-http/notification-http
-    install -Dm751 -t "${pkgdir}/usr/lib/${pkgname}/plugins" cmd/notification-sentinel/notification-sentinel
-    install -Dm751 -t "${pkgdir}/usr/lib/${pkgname}/plugins" cmd/notification-slack/notification-slack
-    install -Dm751 -t "${pkgdir}/usr/lib/${pkgname}/plugins" cmd/notification-splunk/notification-splunk
+    for i in email http sentinel slack splunk; do
+        install -Dm751 -t "${pkgdir}/usr/lib/${pkgname}/plugins" "cmd/notification-${i}/notification-${i}"
+        install -Dm644 -t "${pkgdir}/etc/${pkgname}/notifications" "cmd/notification-${i}/${i}.yaml"
+    done
 
-    install -Dm644 -t "${pkgdir}/etc/${pkgname}/notifications" cmd/notification-email/email.yaml
-    install -Dm644 -t "${pkgdir}/etc/${pkgname}/notifications" cmd/notification-http/http.yaml
-    install -Dm644 -t "${pkgdir}/etc/${pkgname}/notifications" cmd/notification-sentinel/sentinel.yaml
-    install -Dm644 -t "${pkgdir}/etc/${pkgname}/notifications" cmd/notification-slack/slack.yaml
-    install -Dm644 -t "${pkgdir}/etc/${pkgname}/notifications" cmd/notification-splunk/splunk.yaml
-
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../LICENSE
-
-    install -dm755 "${pkgdir}/var/lib/${pkgname}/data" "${pkgdir}/etc/${pkgname}/hub/"
+    install -dm755 "${pkgdir}/var/lib/${pkgname}/data" "${pkgdir}/etc/${pkgname}/hub"
 }
