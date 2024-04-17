@@ -2,7 +2,7 @@
 pkgdesc='Game Engine meets a Display Server meets a Multimedia Framework'
 pkgname='arcan-git'
 pkgver=r4353.ad9686c7
-pkgrel=1
+pkgrel=2
 license=('GPL2' 'LGPL' 'custom:BSD')
 arch=(aarch64 'x86_64')
 depends=('freetype2' 'harfbuzz' 'harfbuzz-icu' 'mesa' 'luajit' 'sqlite'
