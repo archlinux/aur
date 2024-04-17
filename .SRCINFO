@@ -1,6 +1,6 @@
 pkgbase = lib32-llvm-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit, git)
-	pkgver = 17.0.0_r464799.f2d9f84b3f32
+	pkgver = 19.0.0_r495961.17b86d5978af
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
