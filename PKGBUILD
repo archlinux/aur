@@ -12,7 +12,7 @@
 _pkgname="ddcutil"
 pkgname="$_pkgname-git"
 pkgver=2.1.4.r94.g1ce8d58
-pkgrel=1
+pkgrel=2
 pkgdesc='Query and change Linux monitor settings using DDC/CI and USB.'
 url='https://github.com/rockowitz/ddcutil'
 license=('GPL-2.0-or-later')
@@ -50,7 +50,8 @@ prepare() {
 
 	# switch default branch, in case cache is out of date
 	_branch=$(git remote show origin | grep HEAD | sed 's&^.*: &&')
-	git checkout -f branch "$_branch"
+	git checkout -f "$_branch"
+	git reset --hard HEAD
 
 	# back to regularly scheduled program
 	NOCONFIGURE=1 ./autogen.sh
