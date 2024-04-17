@@ -1,7 +1,7 @@
 pkgbase = keymapper-git
 	pkgdesc = A cross-platform context-aware keyremapper
 	pkgver = latest
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/houmain/keymapper
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = keymapper-git
 	depends = libx11
 	depends = dbus
 	depends = wayland
+	depends = libappindicator-gtk3
 	provides = keymapper
 	conflicts = keymapper
 	source = git+https://github.com/houmain/keymapper.git
