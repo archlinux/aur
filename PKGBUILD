@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Albert Mikaelyan <tahvok at gmail dot com>
 # Contributor: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
 
@@ -7,12 +8,12 @@ _pkgname=jenkinsapi
 pkgbase=python-${_pkgname}-git
 pkgname=("python-${_pkgname}-git")
 pkgver=0.3.11.r30.g4494278
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python API for accessing resources on a Jenkins continuous-integration server."
 arch=('any')
 url="https://github.com/${_gituser}/${_pkgname}"
 license=('MIT')
-makedepends=("python-build" "python-flit-core" "python-installer")
+makedepends=("git" "python-build" "python-flit-core" "python-installer")
 source=("${_pkgname}::git+https://github.com/pycontribs/jenkinsapi.git")
 
 sha256sums=('SKIP')
@@ -29,9 +30,11 @@ build() {
 }
 
 package_python-jenkinsapi-git() {
-  depends=("python" "python-requests" "python-pytz")
+  depends=("python-setuptools" "python-requests" "python-pytz")
+  optdepends=("python-requests-kerberos: for Kerberos support")
   conflicts=("python-${_pkgname}")
-
+  provides=("python-${_pkgname}")
   cd "${srcdir}/${_pkgname}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
