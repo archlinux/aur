@@ -1,0 +1,15 @@
+pkgbase = libratp-barebox
+	pkgdesc = Remote interface for Barebox over a RATP link
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/aleksander0m/libratp-barebox
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gtk-doc
+	depends = libratp
+	source = libratp-barebox-0.0.8.tar.gz::https://github.com/aleksander0m/libratp-barebox/archive/refs/tags/0.0.8.tar.gz
+	b2sums = 66908fe45fd76fef2f6aeddf5acf843d68015a90790310956bf37f6f50641a9aa28b2f0c9142917e508234f3de82b39a7d46ce087a2449f7cf0232883a3c46d7
+
+pkgname = libratp-barebox
