@@ -14,7 +14,7 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=17.0.0_r464799.f2d9f84b3f32
+pkgver=19.0.0_r495961.17b86d5978af
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
@@ -24,7 +24,7 @@ source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd llvm-project/llvm
+    cd llvm-project/cmake/Modules
 
     # This will almost match the output of `llvm-config --version` when the
     # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
@@ -33,14 +33,13 @@ pkgver() {
             'BEGIN { ORS="." ; i=0 } \
              /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
              END { print "\n" }' \
-             CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-    echo "${_pkgver//svn}"
+             LLVMVersion.cmake)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    echo "$_pkgver"
 }
 
 build() {
-
     export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-    
+
     LIB32_CFLAGS="$CFLAGS"" -m32"
     LIB32_CXXFLAGS="$CXXFLAGS"" -m32"
 
@@ -89,13 +88,12 @@ conflicts=('lib32-llvm' 'lib32-clang')
     mv "$pkgdir"/usr/lib32/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
     mv -f "$pkgdir"/usr/lib32/LLVMgold.so "$srcdir"
 
-    
     mv "$pkgdir"/usr/bin/llvm-config "$pkgdir"/usr/lib32/llvm-config
     mv "$pkgdir"/usr/include/llvm/Config/llvm-config.h \
     "$pkgdir"/usr/lib32/llvm-config-32.h
 
     rm -rf "$pkgdir"/usr/{bin,include,libexec,share/{doc,man,llvm,opt-viewer,scan-build,scan-view,clang}}
-      
+
     # Needed for multilib (https://bugs.archlinux.org/task/29951)
     # Header stub is taken from Fedora
     install -d "$pkgdir"/usr/include/llvm/Config
@@ -113,8 +111,8 @@ conflicts=('lib32-llvm' 'lib32-clang')
 
 package_lib32-llvm-libs-git() {
     depends=('lib32-gcc-libs' 'lib32-libffi' 'lib32-libxml2' 'lib32-ncurses' 'lib32-zlib' 'lib32-zstd')
-provides=('aur-lib32-llvm-libs-git' 'lib32-llvm-libs')
-    
+    provides=('aur-lib32-llvm-libs-git' 'lib32-llvm-libs')
+
     install -d "$pkgdir/usr/lib32"
 
     cp -P \
