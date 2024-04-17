@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Tool to administer wireguard VPN (server and user configs)'
 _gitname='wg_tool'
 
-pkgver=6.6.0
+pkgver=6.6.1
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
@@ -30,6 +30,9 @@ _mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
 
+touch "Changelog.rst"
+changelog="Changelog.rst"
+
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
@@ -44,6 +47,7 @@ build() {
 
 package() {
     cd "${_gitname}"
+    cp Docs/Changelog.rst ${startdir}
     ./scripts/do-install ${pkgdir}
 }
 # vim:set ts=4 sts=4 sw=4 et:
