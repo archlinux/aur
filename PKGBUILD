@@ -2,7 +2,7 @@
 pkgbase=web-eid-webextension
 pkgname=("firefox-extension-web-eid" "chromium-extension-web-eid")
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Web eID browser extension"
 arch=('any')
 url="https://web-eid.eu/"
@@ -60,7 +60,7 @@ package_chromium-extension-web-eid() {
     openssl rsa -pubout -outform DER < "$pkgbase.pem" > "$pkgbase.pub" 2>/dev/null
     crx_id=$(xxd -p -c0 "$pkgbase.crxid" | tr '0-9a-f' 'a-p')
     cd chrome
-    jq --ascii-output --arg key $(cat "../$pkgbase.pub" | base64 -w0) '. + {key: $key, default_locale: "en"}' manifest.json > manifest.json.new
+    jq --ascii-output --arg key $(cat "../$pkgbase.pub" | base64 -w0) '. + {key: $key}' manifest.json > manifest.json.new
     mv manifest.json.new manifest.json
     zip -qr -9 -X "../$pkgbase.zip" .
     cd ..
