@@ -1,46 +1,49 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 _pkgname=swayfx
 pkgname="$_pkgname-git"
-pkgver=r7023.9cd02fc4
-pkgrel=5
+pkgver=r7047.8ad2605c
+pkgrel=1
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
-makedepends=(
-	"git"
-	"meson"
-	"scdoc"
-	"wayland-protocols"
-)
+makedepends=(git meson ninja scdoc setconf wayland-protocols)
 depends=(
 	"cairo"
 	"gdk-pixbuf2"
 	"libevdev.so"
 	"libinput"
+	"libscenefx.so"
 	"libjson-c.so"
+	"libpixman-1.so"
 	"libudev.so"
 	"libwayland-server.so"
-	"libwlroots.so=11"
+	"libwlroots.so"
 	"libxcb"
 	"libxkbcommon.so"
 	"pango"
 	"pcre2"
 	"ttf-font"
+	"xcb-util-wm"
 )
 optdepends=(
-	"alacritty: Terminal emulator used by the default config"
-	"dmenu: Application launcher"
-	"grim: Screenshot utility"
-	"i3status: Status line"
+	"dmenu: dmenu_path support (used alongside wmenu in default $menu)"
+	"foot: Terminal emulator used in the default configuration"
+	"i3status: Status line generation"
 	"mako: Lightweight notification daemon"
-	"slurp: Select a region"
+	"polkit: System privilege control. Required if not using seatd service"
+	"swaybg: Wallpaper tool for sway"
+	"sway-contrib: Collection of user-contributed scripts for sway"
 	"swayidle: Idle management daemon"
 	"swaylock: Screen locker"
-	"wallutils: Timed wallpapers"
 	"waybar: Highly customizable bar"
+	"wmenu: Application launcher used in default config"
+	"xorg-xwayland: X11 support"
 	"xdg-desktop-portal-gtk: Default xdg-desktop-portal for file picking"
 	"xdg-desktop-portal-wlr: xdg-desktop-portal backend"
 )
-backup=(etc/sway/config)
+backup=(
+	etc/sway/config
+	etc/sway/config.d/50-systemd-user.conf
+)
 arch=("i686" "x86_64")
 url="https://github.com/WillPower3309/swayfx"
 source=("${pkgname%-*}::git+${url}.git"
@@ -49,7 +52,7 @@ source=("${pkgname%-*}::git+${url}.git"
 sha512sums=(
 	"SKIP"
 	"d5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e"
-	"790741df028822bf4d83170dea57e1c63f7d7938cf31969e4cd347b0fc07330322b603c9ec0091b7a3f425132bed9dee6f261074cc273555120858beaaaf5da1")
+	"4f9576b7218aef8152eb60e646985e96b13540b7a4fd34ba68fdc490199cf7a7b46bbee85587e41bffe81fc730222cf408d5712e6251edc85a0a0b0408c1a2df")
 provides=("sway" "swayfx")
 conflicts=("sway" "swayfx")
 options=(debug)
@@ -61,7 +64,6 @@ pkgver() {
 }
 
 build() {
-	export PKG_CONFIG_PATH='/usr/lib/wlroots0.16/pkgconfig'
 	arch-meson \
 		-Dwerror=false \
 		-Dsd-bus-provider=libsystemd \
@@ -74,10 +76,4 @@ package() {
 	install -Dm644 sway-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/sway-portals.conf"
 
 	DESTDIR="$pkgdir" meson install -C build
-
-	cd "$_pkgname"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
-		install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
-	done
 }
