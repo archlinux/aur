@@ -1,7 +1,7 @@
 pkgbase = jellything-git
 	pkgdesc = Jellything media streaming server
 	pkgver = r617.0f17a9c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/metamuffin/jellything
 	install = jellything.install
 	arch = i686
@@ -22,7 +22,6 @@ pkgbase = jellything-git
 	depends = libavif
 	depends = zstd
 	optdepends = ffmpeg: Transcoding
-	options = !lto
 	backup = etc/jellything.yaml
 	backup = etc/jellything_secrets.yaml
 	source = git+https://codeberg.org/metamuffin/jellything.git

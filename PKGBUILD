@@ -2,12 +2,11 @@
 
 pkgname=jellything-git
 pkgver=r617.0f17a9c
-pkgrel=2
+pkgrel=3
 pkgdesc="Jellything media streaming server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://codeberg.org/metamuffin/jellything"
 license=('AGPL-3.0-only')
-options=(!lto)
 depends=('dav1d' 'libavif' 'zstd')
 optdepends=('ffmpeg: Transcoding')
 makedepends=('rustup' 'esbuild' 'nasm' 'meson' 'ninja' 'cmake' 'mdbook' 'clang')
