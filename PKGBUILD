@@ -1,12 +1,13 @@
 pkgname=waylyrics
 pkgver=0.2.19
-pkgrel=1
+pkgrel=2
 pkgdesc="the furry way to show desktop lyrics"
 arch=("x86_64")
 url="https://waylyrics.github.io/waylyrics/waylyrics/"
 license=("MIT")
 depends=(
     "openssl" "dbus" "gcc-libs" "glibc" "glib2" "cairo" "dconf" "gtk4" "gettext"
+    "opencc"
 )
 makedepends=(
     "rust"
