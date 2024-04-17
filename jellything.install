@@ -1,0 +1,7 @@
+
+pre_upgrade() {
+    if [ -e /usr/bin/jellytool ]; then
+        echo 'Backing up the previous jellytool version...'
+        cp -v /usr/bin/jellytool{,.old}
+    fi
+}
