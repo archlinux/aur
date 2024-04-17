@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lala-companion-bin
-pkgver=0.0.11
-_electronversion=28
-pkgrel=3
+pkgver=0.0.12
+_electronversion=30
+pkgrel=1
 pkgdesc="3D personified desktop assistants, tuned for you, powered by AI vision and voice."
 arch=("x86_64")
 url="https://lalaland.chat/"
@@ -17,13 +17,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d78e77b06a7b6b32f2c54bdb75a8448b82b73ae74211ba71c7116bd0bf58d7a9'
+sha256sums=('b09f1f6bcd91db624a841c634ff2d5ef8568dbcc0cb0227940c5f633aab09249'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 } 
