@@ -1,6 +1,6 @@
 pkgbase = pixelflasher
 	pkgdesc = Pixel phone flashing GUI utility with features.
-	pkgver = 6.9.2.1
+	pkgver = 6.9.2.5
 	pkgrel = 1
 	url = https://github.com/badabing2005/PixelFlasher
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = pixelflasher
 	optdepends = android-tools: Use system platform tools
 	optdepends = scrcpy: Launch Screen Copy
 	options = !strip
-	source = PixelFlasher-6.9.2.1.tar.gz::https://github.com/badabing2005/PixelFlasher/archive/refs/tags/v6.9.2.1.tar.gz
+	source = PixelFlasher-6.9.2.5.tar.gz::https://github.com/badabing2005/PixelFlasher/archive/refs/tags/v6.9.2.5.tar.gz
 	source = PixelFlasher.desktop
-	sha256sums = ccfd2260d82f70121601b53866605c675357ec383a2cc5841125840e2db8be8f
+	sha256sums = 47e255d8b6a4fd444c36d80068bbf61d289eb5973534ce7b2ad71ec52f241dfe
 	sha256sums = 3f503e3e3b819562669e1d0a8a25043c478c8c1709b376642fd678caf3d8ee34
 
 pkgname = pixelflasher
