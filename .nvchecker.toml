@@ -1,0 +1,4 @@
+[python-vt-py]
+source = "github"
+github = "virustotal/vt-py"
+use_latest_release = "true"
