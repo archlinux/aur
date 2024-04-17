@@ -1,35 +1,44 @@
 # Maintainer: Dominicentek <dominicentekgaming@gmail.com>
 pkgname=saturn
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, all-in-one machinima studio for Super Mario 64."
 arch=('x86_64')
 depends=('sdl2' 'glew')
-source=('https://github.com/Llennpie/Saturn/archive/legacy.tar.gz')
-sha256sums=('a9ac36d73fa5142a6da5d94974dcaada2e7b206d2752e531369a4d5555f5dc85')
+makedepends=('gcc' 'make' 'git' 'python3')
+source=('https://github.com/Llennpie/Saturn/archive/legacy.tar.gz' 'makepkg.patch')
+sha256sums=(
+  'caaac8612185986214afcda28e8f67a3104464ec70e81726a622e86662742cbd'
+  '801329b27ed096584ec1d4ab3b9afba063318de1993c13990685c74e3b2cb6ee'
+)
 
 build() {
     cd "$srcdir/Saturn-legacy"
+    if [ ! -f "$srcdir/Saturn-legacy/.patched" ]; then
+        patch -p1 <"$srcdir/makepkg.patch"
+    fi
     make -j$(nproc)
 }
 
 package() {
-    INSTALL_PATH=$HOME/.local/share/v64saturn
-    DESKTOP_ENTRY=$HOME/.local/share/applications/saturn.desktop
-    mkdir -p $INSTALL_PATH/res
-    mkdir -p ~/.local/share/applications
-    cp "$srcdir/Saturn-legacy/build/us_pc/saturn.us.f3dex2e" $INSTALL_PATH/saturn
-    cp "$srcdir/Saturn-legacy/build/us_pc/libdiscord_game_sdk.so" $INSTALL_PATH
-    cp "$srcdir/Saturn-legacy/res/saturn-linuxicon.png" $INSTALL_PATH/res
-    cp -r "$srcdir/Saturn-legacy/dynos" $INSTALL_PATH
-    cp -r "$srcdir/Saturn-legacy/fonts" $INSTALL_PATH
-    chmod +x $INSTALL_PATH/saturn
+    V64SATURN=$HOME/.local/share/v64saturn
+    DESKTOP_ENTRY="$pkgdir/usr/share/applications/saturn.desktop"
+    mkdir -p "$V64SATURN/res"
+    mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/lib"
+    mkdir -p "$pkgdir/usr/share/icons"
+    mkdir -p "$pkgdir/usr/share/applications"
+    cp "$srcdir/Saturn-legacy/build/us_pc/saturn.us.f3dex2e" "$pkgdir/usr/bin/sm64-saturn"
+    cp "$srcdir/Saturn-legacy/build/us_pc/libdiscord_game_sdk.so" "$pkgdir/usr/lib"
+    cp "$srcdir/Saturn-legacy/res/saturn-linuxicon.png" "$pkgdir/usr/share/icons/sm64-saturn.png"
+    cp -r "$srcdir/Saturn-legacy/dynos" $V64SATURN
+    cp -r "$srcdir/Saturn-legacy/fonts" $V64SATURN
+    chmod +x "$pkgdir/usr/bin/sm64-saturn"
     echo "[Desktop Entry]" >> $DESKTOP_ENTRY
     echo "Name=Saturn" >> $DESKTOP_ENTRY
     echo "Comment=A cross-platform, all-in-one machinima studio for Super Mario 64." >> $DESKTOP_ENTRY
-    echo "Exec=$INSTALL_PATH/saturn" >> $DESKTOP_ENTRY
-    echo "Path=$INSTALL_PATH" >> $DESKTOP_ENTRY
-    echo "Icon=$INSTALL_PATH/res/saturn-linuxicon.png" >> $DESKTOP_ENTRY
+    echo "Exec=sm64-saturn" >> $DESKTOP_ENTRY
+    echo "Icon=sm64-saturn" >> $DESKTOP_ENTRY
     echo "Terminal=false" >> $DESKTOP_ENTRY
     echo "Categories=Game" >> $DESKTOP_ENTRY
 }
