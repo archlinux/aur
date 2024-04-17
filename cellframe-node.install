@@ -1,42 +1,42 @@
 showmsg() {
     cat << EOF
 
-    ########################################################################
-    ########################################################################
-    ##                                                                    ##
-    ##  Cellframe node                                                    ##
-    ##  ____________                                                      ##
-    ##                                                                    ##
-    ##  To start Cellframe node manually:                                 ##
-    ##                                                                    ##
-    ##      # Run from /opt/cellframe-node/bin                            ##
-    ##                                                                    ##
-    ##  Run automatically:                                                ##
-    ##                                                                    ##
-    ##      # systemctl enable --now cellframe-node.service               ##
-    ##                                                                    ##
-    ##      OPTIONAL (for more aggressive logrotating):                   ##
-    ##      # systemctl enable --now cellframe-node-logrotate.timer       ##
-    ##                                                                    ##
-    ##  Network configuration is set to full mode by default.             ##
-    ##  you can modify the network configuration parameters in:           ##
-    ##                                                                    ##
-    ##      # /opt/cellframe-node/etc/network/*.cfg                       ##
-    ##                                                                    ##
-    ##  General configuration file:                                       ##
-    ##                                                                    ##
-    ##      # /opt/cellframe-node/etc/cellframe-node.cfg                  ##
-    ##                                                                    ##
-    ##  Documentation:                                                    ##
-    ##                                                                    ##
-    ##      https://wiki.cellframe.net/en/home                            ##
-    ##                                                                    ##
-    ##  Setup a master node:                                              ##
-    ##                                                                    ##
-    ##      https://wiki.cellframe.net/en/soft/masternode                 ##
-    ##                                                                    ##
-    ########################################################################
-    ########################################################################
+    ################################################################################################
+    ################################################################################################
+    ##                                                                                            ##
+    ##  Cellframe node                                                                            ##
+    ##  ____________                                                                              ##
+    ##                                                                                            ##
+    ##  To start Cellframe node manually:                                                         ##
+    ##                                                                                            ##
+    ##      # Run from /opt/cellframe-node/bin                                                    ##
+    ##                                                                                            ##
+    ##  Run automatically:                                                                        ##
+    ##                                                                                            ##
+    ##      # systemctl enable --now cellframe-node.service                                       ##
+    ##                                                                                            ##
+    ##      OPTIONAL (for more aggressive logrotating):                                           ##
+    ##      # systemctl enable --now cellframe-node-logrotate.timer                               ##
+    ##                                                                                            ##
+    ##  Network configuration is set to full mode by default.                                     ##
+    ##  you can modify the network configuration parameters in:                                   ##
+    ##                                                                                            ##
+    ##      # /opt/cellframe-node/etc/network/*.cfg                                               ##
+    ##                                                                                            ##
+    ##  General configuration file:                                                               ##
+    ##                                                                                            ##
+    ##      # /opt/cellframe-node/etc/cellframe-node.cfg                                          ##
+    ##                                                                                            ##
+    ##  Documentation:                                                                            ##
+    ##                                                                                            ##
+    ##      https://wiki.cellframe.net/en/home                                                    ##
+    ##                                                                                            ##
+    ##  Setup a master node:                                                                      ##
+    ##                                                                                            ##
+    ##      https://wiki.cellframe.net/02.+Learn/Become+a+Master+Node/Master+Node+Manual+Setup    ##
+    ##                                                                                            ##
+    ################################################################################################
+    ################################################################################################
 EOF
 }
 
