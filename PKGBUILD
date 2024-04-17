@@ -3,7 +3,7 @@
 _pkgname=ginkgo
 pkgbase=ginkgo-hpc-git
 pkgname=(ginkgo-hpc{,-docs,-cuda,-hip}-git)
-pkgver=r7464.577caef4ca
+pkgver=r7470.b22b8592e2
 pkgrel=1
 pkgdesc="Numerical linear algebra software package"
 arch=(x86_64)
@@ -40,20 +40,12 @@ makedepends=(
   rocthrust
   roctracer
 )
-source=("git+https://github.com/ginkgo-project/$_pkgname.git"
-        disable-pkgconfig-file-install.patch)
-sha256sums=('SKIP'
-            '9aeae9a09de7efda77aa15dc4d57d859b58ea69ce473a549e065e5e2b01b13b7')
+source=("git+https://github.com/ginkgo-project/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  # FIXME: installing pkg-config file is broken https://github.com/ginkgo-project/ginkgo/issues/1595
-  cd $_pkgname
-  patch -Np1 -i ../disable-pkgconfig-file-install.patch
 }
 
 build() {
