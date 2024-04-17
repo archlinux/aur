@@ -1,6 +1,6 @@
 pkgname=riseup-vpn-git
 pkgrel=1
-pkgver=0.24.3.r1.g8dd1abf
+pkgver=0.24.3.r8.g095245a
 pkgdesc="RiseupVPN is a branded build of Bitmask VPN. Bitmask VPN is a minimal rewrite of the Bitmask VPN Client, written in golang, that for now lacks client authentication, and is preconfigured to use a single provider."
 url="https://0xacab.org/leap/bitmask-vpn"
 arch=('x86_64')
@@ -43,7 +43,7 @@ depends=(
 prepare() {
         cd "bitmask-vpn"
         sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/pickle/helpers.go
-        sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/vpn/launcher_linux.go
+        sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/launcher/launcher_linux.go
         sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/pickle/helpers/bitmask-root
         sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' helpers/se.leap.bitmask.policy
         PROVIDER=riseup make vendor
