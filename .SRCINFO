@@ -1,0 +1,28 @@
+pkgbase = dev_scream-dkms-git
+	pkgdesc = Linux kernel module that creates a device '/dev/scream', similar to '/dev/zero' but outputting random letter combinations of 'aAHh' (screaming).
+	pkgver = r16.20230811.4bcd1f7
+	pkgrel = 1
+	url = https://github.com/matlink/dev_scream
+	install = dev_scream-dkms.install
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = linux
+	depends = dkms
+	depends = linux
+	provides = dev_scream
+	provides = dev_scream-dkms
+	provides = dev_scream-git=r16.20230811.4bcd1f7
+	conflicts = dev_scream
+	conflicts = dev_scream-dkms
+	conflicts = dev_scream-git
+	source = dev_scream::git+https://github.com/matlink/dev_scream.git
+	source = dev_scream-dkms.conf.in
+	source = scream.modules-load.conf
+	source = dev_scream-dkms.install
+	sha256sums = SKIP
+	sha256sums = 64c5fbe7d7f2cbc9915952ab2c74545a7cc4f32977baae2ba8e0b6a9f41af333
+	sha256sums = e9b19eebf2d48369666e5e5657f6459ef9c14889d4a6737bd946e1a48fe82942
+	sha256sums = ae8deb764fd94fe1d002b7dfdd2b11fbe3e0dd6e743603b3702fe9db7a8c3088
+
+pkgname = dev_scream-dkms-git
