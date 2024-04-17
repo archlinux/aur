@@ -2,7 +2,7 @@
 
 pkgname=charcoal
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Charcoal, a command line dictionary"
 arch=('x86_64')
 reponame=charcoal
@@ -13,7 +13,6 @@ makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
 prepare() {
-  mv "$srcdir/$reponame-$pkgver" "$srcdir/$pkgname-$pkgver"
   cd "$srcdir/$pkgname-$pkgver"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
