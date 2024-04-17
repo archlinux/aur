@@ -5,7 +5,7 @@ pkgbase = backend-ai-desktop-bin
 	url = https://www.backend.ai/
 	arch = aarch64
 	arch = x86_64
-	license = LGPL-3.0-only
+	license = LGPL-3.0-or-later
 	makedepends = gendesk
 	depends = electron29
 	provides = backend-ai-desktop=24.03.2
@@ -17,8 +17,8 @@ pkgbase = backend-ai-desktop-bin
 	sha256sums = c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 	source_aarch64 = backend-ai-desktop-24.03.2-aarch64.zip::https://github.com/lablup/backend.ai-webui/releases/download/v24.03.2/backend.ai-desktop-24.03.2-linux-arm64.zip
-	sha256sums_aarch64 = 431a7b7ecacd8f2e6c78ff9c42ddb3c2bb01a528f50d66061ad79f8a70d711d2
+	sha256sums_aarch64 = 37b22c4066de188fa653f3861dde46a1ba746494c8b7d45f420ee48a0a6ce79c
 	source_x86_64 = backend-ai-desktop-24.03.2-x86_64.zip::https://github.com/lablup/backend.ai-webui/releases/download/v24.03.2/backend.ai-desktop-24.03.2-linux-x64.zip
-	sha256sums_x86_64 = 5b20b5085bb2fb54e14db7a08a0f4467ab52951e393260c3cc5be46d7a779270
+	sha256sums_x86_64 = 49277c509014366408d230b22bc392a2006e3e5ab92dd7788e99b1e445851896
 
 pkgname = backend-ai-desktop-bin

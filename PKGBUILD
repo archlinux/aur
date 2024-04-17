@@ -12,7 +12,7 @@ arch=(
 )
 url="https://www.backend.ai/"
 _ghurl="https://github.com/lablup/backend.ai-webui"
-license=('LGPL-3.0-only')
+license=('LGPL-3.0-or-later')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
     "${pkgname%-bin}"
@@ -33,8 +33,8 @@ source=(
 )
 sha256sums=('c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('431a7b7ecacd8f2e6c78ff9c42ddb3c2bb01a528f50d66061ad79f8a70d711d2')
-sha256sums_x86_64=('5b20b5085bb2fb54e14db7a08a0f4467ab52951e393260c3cc5be46d7a779270')
+sha256sums_aarch64=('37b22c4066de188fa653f3861dde46a1ba746494c8b7d45f420ee48a0a6ce79c')
+sha256sums_x86_64=('49277c509014366408d230b22bc392a2006e3e5ab92dd7788e99b1e445851896')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
