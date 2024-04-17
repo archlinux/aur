@@ -8,8 +8,8 @@
 set -u
 pkgname='libreswan'
 #pkgname+='-git'
-pkgver='4.12'
-pkgrel='2'
+pkgver='4.15'
+pkgrel='1'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
 arch=('i686' 'x86_64')
 arch+=('aarch64') # yjun naumovitch
@@ -30,9 +30,9 @@ source=(
   "https://download.libreswan.org/${pkgname}-${pkgver%%.r*}.tar.gz"
   'tmpfiles.conf'
 )
-md5sums=('a8dea4d464e1cc58a25cb00fa0298fc4'
+md5sums=('ded0c06c31790be39e8881174b40ce04'
          '77399a739ee99f8bc54837684d7c39d5')
-sha256sums=('ae85abe415f7becf4b6a2b9897e1712f27e5aac9c35dfbdddbcce0ad7dfd99f7'
+sha256sums=('fe60d7db398c8ee225055db365ec968a24aebcbc5c35061131fcffdad1be04af'
             '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
@@ -83,16 +83,9 @@ build() {
   set -u
   cd "${_srcdir}"
 
-  # Disable new warning introduced with GCC 6 (-Wunused-const-variable=)
+  # Disable preprocessor warnings, because the build failed with GCC 13.2
   local _cf=(
-    #-Wno-error=sign-compare
-    #-Wno-error=unused-const-variable
-    #-Wno-error=implicit-fallthrough
-    #-Wno-error=maybe-uninitialized
-    #-Wno-error=pointer-compare
-    #-Wno-error=format-truncation
-    #-DNSS_PKCS11_2_0_COMPAT=1 # nss 3.52 https://github.com/libreswan/libreswan/issues/342
-    -Wno-error=unused-result
+    -Wp,-w
   )
 
   CFLAGS="${CFLAGS} ${_cf[*]}" \
