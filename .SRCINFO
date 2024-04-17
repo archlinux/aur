@@ -1,6 +1,6 @@
 pkgbase = ttf-greybeard-bin
 	pkgdesc = a chunky monospaced bitmap programming font for old nerds that hate eyestrain
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/flowchartsman/greybeard
 	arch = any
