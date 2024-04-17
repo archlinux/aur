@@ -1,6 +1,6 @@
 pkgbase = mondoo
 	pkgdesc = Mondoo Client CLI for the Mondoo Policy as Code Platform
-	pkgver = 10.12.1
+	pkgver = 10.12.2
 	pkgrel = 1
 	url = https://mondoo.com
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mondoo
 	source = OSS-LICENSES.tar.xz
 	source = mondoo.service
 	source = mondoo.sh
-	sha256sums = f1a7d679603a68a01583d98252ca0079986962d3ceca9a47ce01e0640a42500f
+	sha256sums = 280941eab28ec977cb8f3d4c640331351e21128195eaee05e0101c39fef98891
 	sha256sums = cd99e204a986af5a91f46c43478b28f556a4f50fd9721844d0b600d45ac43cb8
 	sha256sums = b770c0e4c38aec2b9abd67e452cd0e76833fd83d9dd3690fcbad613d08a02f9c
 	sha256sums = 63b502366204dd5fa011866ea85e7236a82b0504e193a2b3f2235520a47790d0
