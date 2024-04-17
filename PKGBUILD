@@ -12,7 +12,7 @@
 _pkgname="ddcutil"
 pkgname="$_pkgname-git"
 pkgver=2.1.4.r94.g1ce8d58
-pkgrel=3
+pkgrel=1
 pkgdesc='Query and change Linux monitor settings using DDC/CI and USB.'
 url='https://github.com/rockowitz/ddcutil'
 license=('GPL-2.0-or-later')
@@ -32,23 +32,25 @@ makedepends=(
   'systemd'
 )
 
-provides+=("$_pkgname=${pkgver%%.r*}")
-conflicts+=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgname"::"git+$url.git")
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
 
-  # switch default branch, in case cache is out of date
-  _branch=$(git remote show origin | grep HEAD | sed 's&^.*: &&')
-  git checkout -f "$_branch"
-  git reset --hard HEAD
+  (
+    # switch default branch, in case cache is out of date
+    local _branch=$(git branch -a | grep 'remotes/origin/[0-9]' | sort -rV | head -1 | sed 's&^.*remotes/origin/&&')
+    git checkout -f "$_branch"
+    git reset --hard HEAD
+  ) > /dev/null
 
-  git describe --long --tags --abbrev=7 --exclude='*[a-z][a-z]*' |
-    sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --exclude='*[a-z][a-z]*' \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
