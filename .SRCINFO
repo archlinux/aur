@@ -1,6 +1,6 @@
 pkgbase = waterfox-bin
 	pkgdesc = Current/modern generation of customizable privacy-conscious web browser.
-	pkgver = G6.0.11
+	pkgver = G6.0.12
 	pkgrel = 1
 	url = https://www.waterfox.net
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = waterfox-bin
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-g=6.0.11
-	provides = waterfox=G6.0.11
+	provides = waterfox-g=6.0.12
+	provides = waterfox=G6.0.12
 	source = waterfox.desktop
-	source = https://cdn1.waterfox.net/waterfox/releases/G6.0.11/Linux_x86_64/waterfox-G6.0.11.tar.bz2
+	source = https://cdn1.waterfox.net/waterfox/releases/G6.0.12/Linux_x86_64/waterfox-G6.0.12.tar.bz2
 	sha512sums = d0ff0445021b975d52eee7dac27dfdc0d170da07f8a8dc1676ba53387c2006f0598c163b36b07abdbb411cfb61bf52b8222fc5882bdfa8dfcd13d99cb44c92b6
-	sha512sums = 2959f286e11a1aaa1da1e244ad4b3aac0ffe8b18a782e359d4be4ecf323d47f7f4d90d1399cd29e7abf35b3dee39b54dc359d81f93f9616f9e1242e7617524f9
+	sha512sums = 121f63f604ecea503b9a62cf4e718e2b1d1a74e142d7b17a7b89d290b2018e38eca469a0ad0b527fb2e4ad0dfee4a807fa3e7fd2b745a0360e2eda1fca76965d
 
 pkgname = waterfox-bin

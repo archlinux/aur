@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-bin
-_pkgver=6.0.11
+_pkgver=6.0.12
 pkgver=G${_pkgver}
 pkgrel=1
 pkgdesc="Current/modern generation of customizable privacy-conscious web browser."
@@ -69,4 +69,4 @@ END
 }
 
 sha512sums=('d0ff0445021b975d52eee7dac27dfdc0d170da07f8a8dc1676ba53387c2006f0598c163b36b07abdbb411cfb61bf52b8222fc5882bdfa8dfcd13d99cb44c92b6'
-            '2959f286e11a1aaa1da1e244ad4b3aac0ffe8b18a782e359d4be4ecf323d47f7f4d90d1399cd29e7abf35b3dee39b54dc359d81f93f9616f9e1242e7617524f9')
+            '121f63f604ecea503b9a62cf4e718e2b1d1a74e142d7b17a7b89d290b2018e38eca469a0ad0b527fb2e4ad0dfee4a807fa3e7fd2b745a0360e2eda1fca76965d')
