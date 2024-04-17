@@ -1,7 +1,7 @@
 pkgbase = eprosima-micro-cdr
 	pkgdesc = eProsima's Micro-CDR for serialization and deserialization
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eProsima/Micro-CDR
 	arch = x86_64
 	license = Apache

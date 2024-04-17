@@ -1,7 +1,7 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=eprosima-micro-cdr
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="eProsima's Micro-CDR for serialization and deserialization"
 arch=('x86_64')
 url="https://github.com/eProsima/Micro-CDR"
@@ -27,8 +27,9 @@ build() {
     cmake -B build \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DUCDR_ISOLATED_INSTALL=OFF \
+          -DBUILD_SHARED_LIBS=ON \
           .
-    make -C build
+    cmake --build build --parallel 8
 }
 
 package() {
