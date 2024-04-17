@@ -23,7 +23,7 @@ pkgver() {
 
 build(){
 	cd "$srcdir/$_pkgname"
-	env CFLAGS= cargo build --release --locked
+	env CFLAGS= cargo build --bin wfinfo --release --locked
 	sed 's/ | jq .//' -i "update.sh"
 }
 
@@ -33,7 +33,7 @@ check(){
 	./update.sh
 	echo Grabbing test-images/1.png... # (bypassing git-lfs)
 	curl https://media.githubusercontent.com/media/knoellle/wfinfo-ng/master/test-images/1.png > test-images/1.png
-	env CFLAGS= cargo test --release --locked -- --skip wfi_images_99_percent
+	env CFLAGS= cargo test --bin wfinfo --release --locked -- --skip wfi_images_99_percent
 }
 
 package() {
