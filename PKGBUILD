@@ -20,8 +20,8 @@ source=(
 	'audiobookshelf.conf.d'
 	'audiobookshelf.hook'
 	'audiobookshelf.service'
-    'audiobookshelf.sysusers'
-    'audiobookshelf.tmpfiles'
+	'audiobookshelf.sysusers'
+	'audiobookshelf.tmpfiles'
 )
 
 md5sums=(
