@@ -1,41 +1,46 @@
-# Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Filipe Bertelli <filipebertelli@tutanota.com>
 # Contributor: J. C. Hammons <jch at bitma dot st>
 # Contributor: Amr Okasha <amradel55 at gmail dot com>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
-
 pkgname=netron-bin
-pkgver=7.5.8
+_pkgname=Netron
+pkgver=7.6.0
+_electronversion=29
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
 arch=('x86_64')
-url='https://www.lutzroeder.com/ai'
+url="https://netron.app/"
+_ghurl="https://github.com/lutzroeder/netron"
 license=('MIT')
-provides=('netron')
-depends=('gtk3' 'nss' 'dbus-glib' 'libdbusmenu-glib' 'libindicator-gtk2' 'libdbusmenu-gtk2' 'alsa-lib')
-makedepends=('gendesk')
-options=('!strip')
-noextract=("${pkgname}-${pkgver}.AppImage")
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/lutzroeder/netron/releases/download/v${pkgver}/Netron-${pkgver}.AppImage"
-        'LICENSE::https://github.com/lutzroeder/netron/raw/main/LICENSE')
-sha256sums=('75c28e9fdeda8d2613f322df9877a6eb37d00e694da8b9f9539507bb454fa9d7'
-            '535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88')
-
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+depends=(
+    "electron${_electronversion}"
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/lutzroeder/netron/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('e24bc72ed883ef7e05f077d06ebcfc7b6fa0ab6b917723e09ddb89c1f4790431'
+            '535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+}
 package() {
-  chmod 755 ./${pkgname}-${pkgver}.AppImage
-  ./${pkgname}-${pkgver}.AppImage --appimage-extract
-  install -Dm644 squashfs-root/usr/share/icons/hicolor/0x0/apps/netron.png "${pkgdir}/usr/share/pixmaps/netron.png"
-  gendesk -f -n --pkgname "${pkgname%-bin}" \
-          --pkgdesc "$pkgdesc" \
-          --name "Netron" \
-          --comment "$pkgdesc" \
-          --exec "${pkgname%-bin}" \
-          --categories 'Development;Application;' \
-          --icon "${pkgname%-bin}"
-  install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/opt"
-  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
-  ln -s /opt/${pkgname%-bin}/AppRun "${pkgdir}/usr/bin/${pkgname%-bin}"
-  find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
