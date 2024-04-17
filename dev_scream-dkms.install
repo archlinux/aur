@@ -1,0 +1,15 @@
+post_install() {
+  printf '%s\n' "  -> By default, module 'scream' will be automatically loaded at boot due to '/usr/lib/modules-load.d/scream.conf'. '/dev/scream' should be automatically created."
+  printf '\n'
+  printf '%s\n' "  -> In order to load the module before reboot, type 'modprobe scream' as root."
+  # modprobe scream
+}
+
+post_upgrade() {
+  printf '%s\n' "  -> Module 'scream' is upgraded. In order to reload the new version before a reboot, type 'rmmod scream && modprobe scream' as root."
+}
+
+pre_remove() {
+  printf '%s\n' "  -> Unloading module 'scream'."
+  rmmod scream
+}
