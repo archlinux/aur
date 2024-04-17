@@ -2,7 +2,7 @@
 _pkgname=tidgi
 pkgname="${_pkgname}-desktop-bin"
 _appname=TidGi
-pkgver=0.9.4
+pkgver=0.9.6
 _electronversion=29
 pkgrel=1
 pkgdesc="an privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API."
@@ -36,8 +36,8 @@ options=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('20b793f9a63f4f5bd893858eada15c35fe8cfce2076b15f65fea583c21e816e0')
-sha256sums_x86_64=('4c0d225cf1013e2841fac93eafbea898bef5f65046e783c80ba0fb06e4b0797a')
+sha256sums_aarch64=('d818f74cb52787290480b7a5fc0567d889219028305a7aa4405c964f2f4250e0')
+sha256sums_x86_64=('25f8d1ad103a1b1e0526a9c47188dbac2fd6885da6d96288630d798d70a6a250')
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed "s|${_pkgname} %U|${pkgname%-bin} --no-sandbox %U|g" -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
