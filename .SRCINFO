@@ -1,0 +1,18 @@
+pkgbase = pdf_extbook-git
+	pkgdesc = Extract bookmarked PDF pages.
+	pkgver = r5.f0de5fa
+	pkgrel = 1
+	url = https://github.com/raffaem/pdf_extbook
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python3
+	depends = fzf
+	depends = pdftk
+	optdepends = qpdf: alternative page extraction engine
+	optdepends = pdfjam: alternative page extraction engine
+	provides = pdf_extbook
+	source = pdf_extbook_src::git+https://github.com/raffaem/pdf_extbook
+	sha256sums = SKIP
+
+pkgname = pdf_extbook-git
