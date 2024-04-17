@@ -11,7 +11,7 @@ depends=(
 	"gdk-pixbuf2"
 	"libevdev.so"
 	"libinput"
-	"libscenefx.so"
+	"scenefx-git"
 	"libjson-c.so"
 	"libpixman-1.so"
 	"libudev.so"
