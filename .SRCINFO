@@ -1,0 +1,14 @@
+pkgbase = aax-bruteforce
+	pkgdesc = Bruteforce decrypt key for AAX files.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MaxMatti/aax-bruteforce/
+	license = GPL-3.0-only
+	makedepends = clang
+	depends = gcc-libs
+	source = aax-bruteforce-1.0.tar.gz::https://github.com/MaxMatti/aax-bruteforce/archive/refs/tags/v1.0.tar.gz
+	source = aax-bruteforce-1.0-1.patch::https://github.com/MaxMatti/aax-bruteforce/pull/1.patch
+	sha256sums = 38cf551c060549932129ecf2878b9565273cea71c9145a6b9e19fe8488a3f47e
+	sha256sums = 23dc1f9e499105d5de93cdbace5f43f2fc060f10ea716a6e581eee2bc28e62a0
+
+pkgname = aax-bruteforce
