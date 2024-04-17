@@ -1,6 +1,6 @@
 # Maintainer: 
 pkgname=eprosima-fast-dds-gen
-pkgver=3.1.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Fast-DDS IDL code generator tool"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('java-environment' 'bash')
 makedepends=('gradle' 'git' 'jdk17-openjdk')
 optdepends=()
 noextract=()
-_idl_parser_revision=18d5941d011b0ca545bc9b1a4ec17787935fec87
+_idl_parser_revision=7acf712e282ec2a79edc2d8f57c6a32a1f5259b7
 
 source=(
     "https://github.com/eProsima/Fast-DDS-Gen/archive/refs/tags/v${pkgver}.tar.gz"
@@ -18,8 +18,8 @@ source=(
 )
 
 sha256sums=(
-    '775cd82db4b2989369f67a010851d426a6ca756bbb6d37adf98890c367cc273c'
-    '7ea59459d345213755c6b3e1583b79868675bc0cc1308cd32ba8abafb73d5753'
+    '823f8214e56c81f490569c91bf3f5742a74fc0af5605b54f32c4d7a220117d3f'
+    '76206f1e0783ad818abd5f537609aaf8742d36647400422baed78b6b81c66c00'
 )
 
 validpgpkeys=()
