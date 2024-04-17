@@ -1,7 +1,7 @@
 pkgbase = libratp
 	pkgdesc = User space implementation of the RATP protocol (RFC 916)
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aleksander0m/libratp
 	arch = x86_64
 	license = LGPL-2.1-only

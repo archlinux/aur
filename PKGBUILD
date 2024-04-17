@@ -3,7 +3,7 @@
 pkgname=libratp
 pkgdesc='User space implementation of the RATP protocol (RFC 916)'
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 url=https://github.com/aleksander0m/libratp
 license=(LGPL-2.1-only)
 arch=(x86_64)
@@ -19,7 +19,11 @@ prepare () {
 
 build () {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --enable-silent-rules --disable-maintainer-mode --disable-dependency-tracking
+	./configure --prefix=/usr \
+		--enable-silent-rules \
+		--enable-gtk-doc \
+		--disable-maintainer-mode \
+		--disable-dependency-tracking
 	make
 }
 
