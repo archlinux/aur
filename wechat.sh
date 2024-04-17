@@ -73,7 +73,8 @@ function inputMethod() {
 }
 
 function lnDir() {
-	if [ -d "${XDG_DATA_HOME}"/WeChat_Data/xwechat_files ]; then
+	# Deprecated function
+	if [ -d "${XDG_DATA_HOME}"/WeChat_Data/Documents/xwechat_files ]; then
 		ln -srf "${XDG_DATA_HOME}"/WeChat_Data/xwechat_files \
 			"${HOME}"/xwechat_files
 	fi
@@ -159,6 +160,8 @@ function execApp() {
 			/opt/wechat-uos-qt/files:/usr/lib/wechat-uos-qt/so \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
 		--setenv PATH /sandbox:"${PATH}" \
+		--setenv XDG_DOCUMENTS_DIR "${XDG_DOCUMENTS_DIR}" \
+		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
 		bash -c "export $(grep -v '^#' "${XDG_DATA_HOME}"/WeChat_Data/wechat.env | xargs) && ${launchTarget}"
 }
 
@@ -237,7 +240,7 @@ function launch() {
 	detectXauth
 	inputMethod
 	moeDect
-	lnDir
+	#lnDir
 	if [[ $@ =~ "debug-shell" ]] && [[ $@ =~ "--actions" ]]; then
 		launchTarget="bash"
 	else

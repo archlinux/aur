@@ -1,11 +1,14 @@
 #!/bin/bash
 
-echo "[Info] received a request: $@"
-
 fakeDirBase="${XDG_DOCUMENTS_DIR}/xwechat_files"
 realDirBase="${XDG_DATA_HOME}/WeChat_Data/Documents/xwechat_files"
 
-link=$(echo "$2" | sed "s|${fakeDirBase}|${reakDirBase}|g")
+#link=$(echo "$2" | sed "s|${fakeDirBase}|${reakDirBase}|g")
+link=$(echo "$2" | awk -v oldPath="${fakeDirBase}" -v newPath=${reakDirBase} '{gsub(oldPath, newPath)} 1')
+
+link="${realDirBase}${link}"
+
+echo "[Info] received a request: $@, translated to ${link}"
 
 if [ -f /usr/bin/dbus-send ]; then
 	echo "[Info] Initiating D-Bus call..."
