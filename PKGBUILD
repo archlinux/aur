@@ -1,10 +1,11 @@
-# Maintainer: Guillaume ETHEVE <admin@guillaume-etheve.fr>
+# Maintainer: kastik <kostas21422112@gmail.com>
+# Contributor: Guillaume ETHEVE <admin@guillaume-etheve.fr>
 # Contributor: Caleb Fontenot <foley2431@gmail.com>
 # Contributor: Angelo Verlain <hey@vixalien.com>
 
 pkgname=howdy-beta-git
 pkgver=2.6.1.r239.gc5b1766
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows Hello for Linux (Beta)"
 arch=('x86_64')
 url="https://github.com/boltgolt/howdy"
@@ -20,6 +21,7 @@ depends=(
     'python-click'
     'python-numpy'
     'python-opencv'
+    'libinih'
 )
 makedepends=(
     'cmake'
