@@ -1,8 +1,8 @@
 pkgbase = gx-codegen-git
 	pkgdesc = GX (感芯科技)芯片代码生成器，Qt编写，用于方便的配置各个线程的相关主频及栈空间参数，生成对应的lds文件与.h文件
-	pkgver = 1.0.r4.g5d52a96
+	pkgver = 1.0.r5.gf7217e2
 	pkgrel = 1
-	url = https://gitee.com/taotieren/GX_CodeGen
+	url = https://gitee.com/gxchip/GX_CodeGen
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
@@ -14,7 +14,7 @@ pkgbase = gx-codegen-git
 	depends = qt5-base
 	provides = gx-codegen
 	conflicts = gx-codegen
-	source = gx-codegen-git::git+https://gitee.com/taotieren/GX_CodeGen.git
+	source = gx-codegen-git::git+https://gitee.com/gxchip/GX_CodeGen.git
 	sha256sums = SKIP
 
 pkgname = gx-codegen-git

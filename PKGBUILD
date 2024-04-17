@@ -2,14 +2,13 @@
 
 _pkgname=GX_CodeGen
 pkgname=gx-codegen-git
-pkgver=1.0.r4.g5d52a96
+pkgver=1.0.r5.gf7217e2
 pkgrel=1
 pkgdesc="GX (感芯科技)芯片代码生成器，Qt编写，用于方便的配置各个线程的相关主频及栈空间参数，生成对应的lds文件与.h文件"
 arch=(x86_64
     aarch64
     riscv64)
-# url="https://gitee.com/gxchip/${_pkgname}"
-url="https://gitee.com/taotieren/${_pkgname}"
+url="https://gitee.com/gxchip/${_pkgname}"
 license=('LGPL-3.0-or-later')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
@@ -28,8 +27,6 @@ sha256sums=('SKIP')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
-    cd "${srcdir}/${pkgname}"
-    git checkout archlinux
 }
 
 pkgver() {
