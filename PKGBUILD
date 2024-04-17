@@ -2,7 +2,7 @@
 # Based on PKGBUILD by Kevin S <aur@eldenring.mozmail.com>
 pkgname=audiobookshelf
 pkgver=v2.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=('any')
 url="https://github.com/advplyr/audiobookshelf"
@@ -60,7 +60,7 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	"${srcdir}/${pkgname}"/node_modules/.bin/pkg -t node16-linux -o "${pkgdir}/usr/bin/audiobookshelf" .
+	"${srcdir}/${pkgname}"/node_modules/.bin/pkg -t node18-linux -o "${pkgdir}/usr/bin/audiobookshelf" .
 	install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m 644 "${srcdir}/audiobookshelf.conf.d" "${pkgdir}/etc/conf.d/audiobookshelf"
 	install -D -m 644 "${srcdir}/audiobookshelf.service" "${pkgdir}/usr/lib/systemd/system/audiobookshelf.service"
