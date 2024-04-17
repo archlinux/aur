@@ -2,14 +2,14 @@
 
 pkgname=xfb
 pkgver=1.23
-pkgrel=5
+pkgrel=6
 pkgdesc="Open-source Radio Automation"
 arch=('x86_64')
 url="https://github.com/netpack/XFB"
 license=('GPL3')
 
-depends=('qt5-base' 'qt5-tools' 'qt5-webkit' 'qt5-multimedia' 'perl-image-exiftool' 'ffmpeg' 'soundconverter' 'lame' 'sox' 'mplayer' 'mediainfo')
-optdepends=('audacity') #Thank you MisterEsse
+depends=('base-devel' 'patch' 'qt5-base' 'qt5-tools' 'qt5-webkit' 'qt5-multimedia' 'perl-image-exiftool' 'ffmpeg' 'lame' 'sox' 'mediainfo' )
+optdepends=('audacity' 'mplayer' 'soundconverter' ) #Thank you MisterEsse
 
 makedepends=('qt5-tools')
 
@@ -56,7 +56,7 @@ package() {
   # Install icon file
   install -m644 usr/share/xfb/xfb_icon.png "$pkgdir/usr/share/pixmaps/"
 
-
+  # Set the correct permissions on the database
   chmod +x "$pkgdir/usr/share/xfb/config/adb.db"
 
   # Create symbolic link in /usr/bin
