@@ -1,0 +1,5 @@
+[qimgv-light]
+source = "github"
+github = "easymodo/qimgv"
+prefix = "v"
+use_latest_release = true
