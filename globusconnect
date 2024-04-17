@@ -1,3 +1,5 @@
 #! /bin/sh
 cd /usr/lib/globusconnectpersonal
-/usr/lib/globusconnectpersonal/globusconnect "$@"
+export LD_PRELOAD="/usr/lib/libglib-2.0.so:/usr/lib/libgio-2.0.so:/usr/lib/libgmodule-2.0.so:/usr/lib/libmount.so"
+# Override broken PyInstaller libraries
+exec /usr/lib/globusconnectpersonal/globusconnect "$@"
