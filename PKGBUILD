@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/flowchartsman/greybeard'
 license=('MIT')
 conflicts=('ttf-greybeard' 'ttf-greybeard-git')
+provides=('ttf-greybeard')
 source=(
     "Greybeard-v${pkgver}-ttf.zip::${url}/releases/download/v${pkgver}/Greybeard-v${pkgver}-ttf.zip"
     "LICENSE::${url}/raw/v${pkgver}/LICENSE"
