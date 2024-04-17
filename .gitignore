@@ -1,0 +1,4 @@
+pkg/
+src/
+amber-search-git/
+*.zst

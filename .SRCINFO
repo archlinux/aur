@@ -1,7 +1,7 @@
 pkgbase = amber-search-git
-	pkgdesc = A code search and replace tool written by Rust, inspired by ack, ag, and other grep-like tools.
-	pkgver = v0.5.1.r3.68171b9
-	pkgrel = 2
+	pkgdesc = A code search and replace tool written in Rust. Inspired by ack, ag, and grep.
+	pkgver = v0.6.0.38.gf6e0
+	pkgrel = 1
 	url = https://github.com/dalance/amber
 	arch = x86_64
 	arch = i686
@@ -15,4 +15,3 @@ pkgbase = amber-search-git
 	md5sums = SKIP
 
 pkgname = amber-search-git
-
