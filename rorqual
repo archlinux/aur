@@ -1,3 +1,3 @@
 #!/bin/sh
-source /opt/rorqual/virtualenv/bin/activate
+export PYTHONPATH=/opt/rorqual/virtualenv/lib/python3.11/site-packages
 python -m rorqual
