@@ -1,8 +1,8 @@
 # Maintainer: LitiaEeloo <litiaeeloo@gmail.com>
 
 pkgname=charcoal
-pkgver=0.2.7
-pkgrel=2
+pkgver=0.2.8
+pkgrel=1
 pkgdesc="Charcoal, a command line dictionary"
 arch=('x86_64')
 reponame=charcoal
@@ -13,7 +13,7 @@ makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
 prepare() {
-  # mv "$srcdir/$reponame-$pkgver" "$srcdir/$pkgname-$pkgver"
+  mv "$srcdir/$reponame-$pkgver" "$srcdir/$pkgname-$pkgver"
   cd "$srcdir/$pkgname-$pkgver"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -38,4 +38,4 @@ package() {
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-sha256sums=('650841927eb8db80ed2bd23442cb270260ff730ca638269341033a84758f7ef8')
+sha256sums=('4ea009996496350dc8e17255fbaa676b20bcaf8ea251dd9379c018f5b0dd3a1a')
