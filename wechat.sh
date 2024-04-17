@@ -229,6 +229,7 @@ function disableSandbox() {
 function openDataDir() {
 	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "opendir" ]]; then
 		xdg-open "${XDG_DATA_HOME}"/WeChat_Data
+		exit $?
 	fi
 }
 
