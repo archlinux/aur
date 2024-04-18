@@ -1,12 +1,12 @@
 # Maintainer: Your Name <your_email@example.com>
 pkgname=web2pdf
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="A CLI tool to extract a part of a website, create a PDF"
 arch=('any')
 url="https://github.com/simit22/web2pdf"
 license=('GPL')
-depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-reportlab')
+depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-weasyprint')
 source=("web2pdf.py")
 md5sums=('SKIP')
 
