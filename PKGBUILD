@@ -2,9 +2,9 @@
 
 pkgname=python-outlines
 _pkgname=${pkgname#python-}
-pkgver=0.0.37
-_commit=803439a83d15ea4fcc452e1c367ffb41feb39ac2
-pkgrel=2
+pkgver=0.0.39
+_commit=2182dbcd36e55c09123e931b665ae4b5ca257ee9
+pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
 url="https://github.com/outlines-dev/outlines"
@@ -49,7 +49,7 @@ optdepends=(
   'python-llama-cpp: llama.cpp backend'
 )
 source=("git+$url.git#commit=$_commit")
-sha256sums=('942957ed6a00e8ac4096c1524f093d77614b8f6e9e9d39c69ffb5f1028989cc2')
+sha256sums=('9c2c9017d8b8b8b999b56bc8febb8409255cc71136de41da00f8cffebc3b06d6')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194') # GitHub <noreply@github.com>
 
 _archive="$_pkgname"
@@ -74,12 +74,13 @@ check() {
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  # Ignored test requires python-llama-cpp which I'm currently unable to
-  # install.
+  # Ignored test requires python-llama-cpp (which I'm currently unable to
+  # install) and vllm which is not yet packaged.
   pytest \
     --deselect tests/benchmark \
     --deselect tests/models/test_openai.py::test_openai_call \
     --ignore tests/generate/test_integration_llamacpp.py \
+    --ignore tests/generate/test_integration_vllm.py \
     --ignore tests/models/test_llama_cpp.py
 }
 
