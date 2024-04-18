@@ -4,8 +4,8 @@
 # -*- sh -*-
 
 pkgname='littlefs-fuse'
-pkgver=2.7.6
-pkgrel=2
+pkgver=2.7.7
+pkgrel=1
 pkgdesc='A FUSE wrapper that puts the littlefs in user-space'
 url='https://github.com/littlefs-project/littlefs-fuse'
 arch=('aarch64' 'x86_64')
@@ -28,8 +28,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
@@ -47,10 +47,10 @@ package() {
 }
 
 sha256sums=(
-  'eb6e01ada6d181c6022de4ff512797eb9b1b561b99ebb62a73062d260c66f957'
+  '3034e35115274bf0b7aa0352783430f11732719dd878a719e587ab9136ed416a'
 )
 b2sums=(
-  '0a850824a2fbd0de6fd3ebf94fdf916349cfa68b2ae09fefadbab9fe63f4cd41372cb71337f00691a21533ab6a6f97b972d1206a4fac6e23aa14e24eda472dfc'
+  '8b38f35f29334388dc2cf018e11cd64fb6ce1742fab2787e886fa86e34b0510f549b41885c167b09790b65c30de14ac5c581e588d67bf66f1804f4cc51a0b081'
 )
 
 # eof
