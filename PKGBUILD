@@ -2,7 +2,7 @@ phpbase=81
 suffix=
 extname=igbinary
 pkgname="php${phpbase}-${extname}${suffix}"
-pkgver=3.2.14
+pkgver=3.2.15
 pkgrel=1
 pkgdesc="php${phpbase} PECL extension igbinary"
 url="http://pecl.php.net/package/${extname}"
@@ -33,4 +33,4 @@ package() {
     "${pkgdir}/etc/php${phpbase}${suffix}/conf.d/${extname}.ini"
 }
 
-sha256sums=('6337147a4fb888072566674837bda9928ee06ee7f0114b4338b86c816232925d')
+sha256sums=('eff099b0343b45fbe9765d4b3d441064ddefbbf9cfb7198487de9bda6b8f4907')
