@@ -12,7 +12,7 @@ conflicts=('kde-service-menu-reimage')
 url="https://github.com/biglinux/kde-service-menu-reimage"
 pkgdesc="Manipulate images e their metadata v. mod"
 source=("https://github.com/biglinux/kde-service-menu-reimage/archive/refs/tags/kde-service-menu-reimage-${_pkgver}.tar.gz")
-sha256sums=('bd633918badf30e041440099f65870592f12fa4753dfa0cea337a548258795ed')
+sha256sums=('ab89835e6ab51a786933df5d3ce888e82924837a98ee0524e1d4953034d8cabb')
 
 package() {
     # Default Folder
