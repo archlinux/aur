@@ -3,14 +3,13 @@
 _pkgname=miRcomp
 _pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
-pkgrel=1
-pkgdesc='Tools to assess and compare miRNA expression estimatation methods'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Tools to assess and compare miRNA expression estimatation methods"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only OR GPL-3.0-only')
 depends=(
-  r
   r-biobase
   r-mircompdata
 )
@@ -23,14 +22,15 @@ optdepends=(
   r-shiny
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f54ee2b806f3da5ba09a1e0951ef2596ac22553a7717be8f7907ba7264af1713')
+md5sums=('06b97d8829ca13b60dd4869a48b684ab')
+b2sums=('5a1cccc61f8bcd4b8d24fc1f220d8fc44b7e09aa06ae724bfd52f755585193016a010c818e079aea7481409b03f79e50aa5dcfb32e5009073f4550419e65ff91')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
