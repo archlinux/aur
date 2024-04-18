@@ -3,8 +3,8 @@
 
 _pkgname="gummy"
 pkgname="$_pkgname-git"
-pkgver=0.5.9.r1.g4b48fc3
-pkgrel=2
+pkgver=0.6.0.r0.g24b77f3
+pkgrel=1
 pkgdesc="Screen brightness/temperature manager for Linux"
 url="https://codeberg.org/fusco/gummy"
 license=('GPL-3.0-or-later')
@@ -35,18 +35,6 @@ install="$_pkgname.install"
 _pkgsrc="fusco.gummy"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$_pkgsrc"
-  _reverts=(
-    # fix glib cxx assert error
-    e3a89af2d8717a0d75623e63429ddb48892653f7
-  )
-  for _c in "${_reverts[@]}"; do
-    git log --oneline -1 "${_c}"
-    git revert -n "${_c}"
-  done
-}
 
 pkgver() {
   cd "$_pkgsrc"
