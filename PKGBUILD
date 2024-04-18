@@ -3,25 +3,25 @@
 _pkgname=NOISeq
 _pkgver=2.46.0
 pkgname=r-${_pkgname,,}
-pkgver=2.46.0
-pkgrel=1
-pkgdesc='Exploratory analysis and differential expression for RNA-seq data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Exploratory analysis and differential expression for RNA-seq data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8b17b542bc278546c74a22c31fbd5e174530164b8355565ce5e90e7b08d34063')
+md5sums=('e7ea859871f96aa68269efa3a1e7dd46')
+b2sums=('e62cb5a315d817a5fa0958b1e14611281a526920d275c57b8bfb25d2bb296f148b92aaee8cbf605004243f7b01b9da3135ffdd44cd496d2624650e355fddb15e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
