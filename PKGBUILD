@@ -2,13 +2,13 @@
 
 pkgname=listmonk
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard'
 arch=(x86_64)
 url=https://listmonk.app
 license=(AGPL3)
 depends=(postgresql)
-makedepends=(go node-gyp nodejs yarn)
+makedepends=(go node-gyp nodejs-lts-fermium yarn)
 backup=(etc/listmonk/config.toml)
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/knadh/$pkgname/archive/v$pkgver.tar.gz"

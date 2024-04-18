@@ -1,14 +1,14 @@
 pkgbase = listmonk
 	pkgdesc = Self-hosted newsletter and mailing list manager with a modern dashboard
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://listmonk.app
 	install = listmonk.install
 	arch = x86_64
 	license = AGPL3
 	makedepends = go
 	makedepends = node-gyp
-	makedepends = nodejs
+	makedepends = nodejs-lts-fermium
 	makedepends = yarn
 	depends = postgresql
 	backup = etc/listmonk/config.toml
