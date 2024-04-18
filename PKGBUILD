@@ -2,7 +2,7 @@
 # ---
 pkgname="autolinux-dmenu"
 pkgdesc="The AutoLinux fork of dmenu"
-pkgver="0.2"
+pkgver=0.2.2
 pkgrel=1
 arch=(x86_64)
 url="https://gitlab.com/a4to/${pkgname}"
@@ -12,22 +12,23 @@ provides=(dmenu)
 conflicts=(dmenu)
 replaces=(dmenu)
 source=(
-  "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
+  "https://gitlab.com/a4to/autolinux-dmenu/-/archive/archive-0.2.2/autolinux-dmenu-archive-0.2.2.tar.gz"
 )
 sha512sums=(
-  'e25f96483ff8ebf6c233b6a2f5dbba9cc522ec4e3fa99f51893d8a76c763dda388949719513eb6cdb8ee3c405aebc304b34c6d48bbd27a46dfb89a811336b43a'
+  '1cd4453a8e54e3da6eed704c5e6191c9a8c4eb6a530c78983d1dba813ba2db33c1c09dcbb67be124573456e62ead63e6843a7376632cd432bb8a98ddcddcf64d'
 )
 md5sums=(
-  'a3ec7b8c24c44603c4b31b150be09fb9'
+  '0e1422f2076d2dedd9a911161b8c3ccc'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
 )
 
-pkgver() {
-	cd "${_pkgname}"
-  printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+#pkgver() {
+#	cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" >/dev/null 2>&1 ||
+#  cd "$srcdir/${pkgname}"
+#  printf "0.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" >/dev/null 2>&1 ||
