@@ -3,14 +3,13 @@
 _pkgname=multtest
 _pkgver=2.58.0
 pkgname=r-${_pkgname,,}
-pkgver=2.58.0
-pkgrel=1
-pkgdesc='Resampling-based multiple hypothesis testing'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Resampling-based multiple hypothesis testing"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
-  r
   r-biobase
   r-biocgenerics
 )
@@ -18,14 +17,15 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('92c40644fb6a3adbca9cba1da864482ec5db737fcbcfc8c4e3cadc2e5e161d69')
+md5sums=('7d81a8460781f4a86f01a9df5fcf50d7')
+b2sums=('c2f2834ead992b781ea49e10941d505885815379847d4c06bd02c263d247ea9b4993d258e118e8f4690e4015913a218aff94efc13a347a0d47f0c4de889d1c53')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
