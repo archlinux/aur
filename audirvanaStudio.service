@@ -1,0 +1,14 @@
+[Unit]
+Description=Run audirvanaStudio
+DefaultDependencies=no
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/audirvana/studio
+ExecStart=/opt/audirvana/studio/audirvanaStudio
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
