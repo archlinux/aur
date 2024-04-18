@@ -1,0 +1,14 @@
+[Unit]
+Description=Run audirvanaOrigin
+DefaultDependencies=no
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/audirvana/origin
+ExecStart=/opt/audirvana/origin/audirvanaOrigin
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
