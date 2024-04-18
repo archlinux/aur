@@ -34,8 +34,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgbase%-git}::git+${url}.git"
-    "${pkgbase%-git}-doc::git+${url}.wiki.git"
+source=("${pkgbase}::git+${url}.git"
+    "mfgtools-doc-git::git+${url}.wiki.git"
     "uuu-complete.bash")
 noextract=()
 sha256sums=('SKIP'
@@ -44,7 +44,7 @@ sha256sums=('SKIP'
 #validpgpkeys=()
 
 pkgver() {
-    cd "${srcdir}/${pkgbase%-git}"
+    cd "${srcdir}/${pkgbase}"
     ( set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^uuu_//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -53,13 +53,13 @@ pkgver() {
 
 prepare()
 {
-    git -C "${srcdir}/${pkgbase%-git}" clean -dfx
-#     cd "${srcdir}/${pkgbase%-git}"
+    git -C "${srcdir}/${pkgbase}" clean -dfx
+#     cd "${srcdir}/${pkgbase}"
 #     git submodule update --init --recursive
 }
 
 build() {
-    cd "${srcdir}/${pkgbase%-git}"
+    cd "${srcdir}/${pkgbase}"
     cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_BUILD_TYPE=None \
           -GNinja
@@ -70,11 +70,20 @@ build() {
 package_mfgtools-git() {
     provides=('uuu' 'mfgtool')
     conflicts=(${pkgname%-git})
+    depends=(
+    bzip2
+    gcc-libs
+    glibc
+    libusb
+    tinyxml2
+    openssl
+    zlib
+    zstd)
 
-    cd "${srcdir}/${pkgname%-git}/build"
-     DESTDIR="$pkgdir/" ninja -C "${srcdir}/${pkgname%-git}/build" install
+    cd "${srcdir}/${pkgbase}/build"
+     DESTDIR="$pkgdir/" ninja -C "${srcdir}/${pkgbase}/build" install
     install -Dm0644 "${srcdir}/uuu-complete.bash" "${pkgdir}/etc/bash_completion.d/uuu-complete.bash"
-    install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -Dm0644 "${srcdir}/${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -dm0755  "${pkgdir}/etc/udev/rules.d/"
     ./uuu/uuu -udev > "${pkgdir}/etc/udev/rules.d/70-uuu.rules"
 }
@@ -88,7 +97,7 @@ package_mfgtools-doc-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
-    cd "${srcdir}/${pkgname%-git}/"
+    cd "${srcdir}/${pkgname}/"
     find . -type f -name "*.asciidoc" -exec sh -c 'mv "$0" "${0%.asciidoc}"' {} \;
     sed -i 's|=====|====|g' Release-Notes
     echo "<revhistory>" > UUU-docinfo.xml
@@ -96,5 +105,5 @@ package_mfgtools-doc-git() {
     echo "</revhistory>" >> UUU-docinfo.xml
     a2x -L -a docinfo UUU
 
-    install -Dm0644 "${srcdir}/${pkgname%-git}/UUU.pdf" -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
+    install -Dm0644 "${srcdir}/${pkgname}/UUU.pdf" -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
