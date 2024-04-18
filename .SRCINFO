@@ -1,7 +1,7 @@
 pkgbase = prog8
 	pkgdesc = A high-level programming language designed for 6502 based devices
 	pkgver = 10.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/irmen/prog8
 	arch = any
 	license = GPL-3.0-only

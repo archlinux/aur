@@ -1,7 +1,7 @@
 # Maintainer: Adiee5 <adiee5@adiee5.ct8.pl>
 pkgname=prog8
 pkgver=10.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A high-level programming language designed for 6502 based devices"
 arch=("any")
 url="https://github.com/irmen/prog8"
@@ -30,7 +30,7 @@ sha256sums=("9ddc158f806349334061ab8c0ccc7d472656b15382bf412341428f375b09fe6a"
 	    "SKIP")
 
 package() {
-	install -Dm644 $srcdir/prog8c.jar "$pkgdir/usr/share/java/prog8/prog8c.jar"
+	install -Dm644 $srcdir/prog8c-$pkgver.jar "$pkgdir/usr/share/java/prog8/prog8c.jar"
 	install -Dm755 p8compile "$pkgdir/usr/bin/p8compile"
 	install -Dm755 p8compile "$pkgdir/usr/bin/prog8c"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
