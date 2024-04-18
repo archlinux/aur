@@ -1,12 +1,12 @@
 # Maintainer: Jovan Lanik <jox969@gmail.com>
 pkgname=gtklock-git
-pkgver=2.1.0.r14.g6732a03
+pkgver=2.1.0.r27.g48001a2
 pkgrel=1
 pkgdesc="GTK-based lockscreen for Wayland"
 arch=('x86_64')
 url="https://github.com/jovanlanik/gtklock"
 license=('GPL3')
-depends=(gtk3 gtk-layer-shell wayland pam)
+depends=(gtk3 gtk-session-lock wayland pam)
 makedepends=(meson git scdoc)
 provides=('gtklock')
 conflicts=('gtklock')
