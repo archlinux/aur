@@ -17,7 +17,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=19.0.0_r496033.5a0942cd7423
+pkgver=19.0.0_r496188.172f6ddfa766
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -26,21 +26,9 @@ makedepends=(git cmake libffi libedit ncurses libxml2
              libxcrypt python python-setuptools)
 # b361b5369ed4
 source=("git+https://github.com/llvm/llvm-project.git"
-                "libclc_Refactor_build_system_to_allow_in-tree_builds_#87622.patch::https://github.com/llvm/llvm-project/commit/72f9881c3ffcf4be6361c3e4312d91c9c8d94a98.patch"
-                "libclc_Give_built_bytecode_objects_a_.bc_extension_NFC.patch::https://github.com/llvm/llvm-project/commit/a0f8191af3945482f0f7a7c8f030e8c519a795b7.patch"
-                "libclc_Fix_dependencies_between_targets.patch::https://github.com/llvm/llvm-project/commit/3d118f92081ea0c7048749dc5d08c8e8217be4eb.patch"
-                "libclc_Improve_clarity_of_CMake_foreach_NFC.patch::https://github.com/llvm/llvm-project/commit/9d111286322ec99b32467eef3aeec6b588c49f18.patch"
 )
-md5sums=('SKIP'
-         '3e82d9fda49a7aaa983d3b78443f8de6'
-         'c4c91ef59252e479d6b199cb8d94f718'
-         '544c764a29c307ceb9c4ce8b7b98046c'
-         'c0fc210ecfce7b7169f3108804e68415')
-sha512sums=('SKIP'
-            'd120e7426156115ba5338264dc3b8e48c253b0fc3cd24b14ddde3798d2bfc8f62eb06b88173d7738c72ea7a746a3b292a79af8528ade244528d1ccb35041621f'
-            '5d533113e9696d7e187106af61f8288b0aa436656af48b585978bad798416c1352b5bba212e66f4335a4d3133d796446b75cc4e339de586aa344711547f4b7ed'
-            'deab534dfb50b018ffce2bf12a4fc84319446e740f2dbe5ca2de5ecae4d1b449972812e8659e41b1b27d54543af2c8408d327e6dc1926a467306f95cad209acc'
-            '7a02a22417fd0dbd528b509be4ee518f642055e29f7b3825a826bc0de1e52225c11c6a70c1dd4db07f9abb6706aefb4fc1d2ae6d21ce21d8044185bf75561324')
+md5sums=('SKIP')
+sha512sums=('SKIP')
 
 # explicitly disable lto & debug to reduce number of build hangs , resources needed and runtime issues
 options=(!lto !debug )
@@ -98,14 +86,6 @@ make help | grep -Po 'install-\K.*(?=-stripped)' | while read -r target; do
         echo $target
     fi
 done
-}
-
-prepare() {
-    # revert changes to libclc that causes build failure, see https://github.com/llvm/llvm-project/issues/88626
-    patch --directory=llvm-project --reverse --strip=1 --input=$srcdir/libclc_Improve_clarity_of_CMake_foreach_NFC.patch
-    patch --directory=llvm-project --reverse --strip=1 --input=$srcdir/libclc_Fix_dependencies_between_targets.patch
-    patch --directory=llvm-project --reverse --strip=1 --input=$srcdir/libclc_Give_built_bytecode_objects_a_.bc_extension_NFC.patch
-    patch --directory=llvm-project --reverse --strip=1 --input=$srcdir/libclc_Refactor_build_system_to_allow_in-tree_builds_#87622.patch
 }
 
 pkgver() {
