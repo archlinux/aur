@@ -1,19 +1,25 @@
 pkgbase = python-qdldl
 	pkgdesc = Python interface to the QDLDL free LDL factorization routine for quasi-definite linear systems
 	pkgver = 0.1.7.post2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oxfordcontrol/qdldl-python/
 	arch = x86_64
 	license = Apache-2.0
 	checkdepends = python-pytest
+	makedepends = cmake
+	makedepends = git
+	makedepends = pybind11
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = pybind11
-	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	depends = python
 	depends = python-scipy
-	source = https://pypi.org/packages/source/q/qdldl/qdldl-0.1.7.post2.tar.gz
-	sha256sums = 4b1539a5ec10cc757afd7156d7deb4006007cad86d774c9f0fdc3e34415557d3
+	source = git+https://github.com/osqp/qdldl-python#tag=v.0.1.7.post2
+	source = git+https://github.com/oxfordcontrol/qdldl
+	sha256sums = ae19247d07341d65a7f52fc48696f406cf44726cf839bd531367054fbcefcaca
+	sha256sums = SKIP
 
 pkgname = python-qdldl
