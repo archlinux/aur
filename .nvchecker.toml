@@ -1,0 +1,5 @@
+[python-trame-rca]
+source = "github"
+github = "Kitware/trame-rca"
+use_latest_release = "true"
+prefix = "v"
