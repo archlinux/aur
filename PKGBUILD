@@ -3,8 +3,8 @@
 
 _pkgname="gummy"
 pkgname="$_pkgname"
-pkgver=0.5.9
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Screen brightness/temperature manager for Linux"
 url="https://codeberg.org/fusco/gummy"
 license=('GPL-3.0-or-later')
@@ -30,24 +30,8 @@ makedepends=(
 install="$_pkgname.install"
 
 _pkgsrc="fusco.gummy"
-source=(
-  "$_pkgsrc"::"git+$url.git#tag=$pkgver"
-  "revert-e3a89af.patch"
-)
-sha256sums=(
-  'b29fdb78b98ff5ef17be3ddf13e9f28a5126b6f1b1149b4144c029830389e5c3'
-  '5840c40eb942e82be88319c252bccfa921a034e7706dbc5f277f8ba886cd8feb'
-)
-
-prepare() {
-  cd "$_pkgsrc"
-
-  # fix glib cxx assert error
-  patch -Np1 -i "../revert-e3a89af.patch"
-
-  # fix struct redefinition error
-  sed -e '46,48d' -i "gummyd/gummyd/sd-dbus.cpp"
-}
+source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
+sha256sums=('113d6511dc121e8f216c74ace8318976a27e4111177ea9b6f7270dece0a54f1d')
 
 build() {
   local _cmake_options=(
