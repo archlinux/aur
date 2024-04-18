@@ -1,0 +1,16 @@
+pkgbase = autolinux-dmenu
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.com/a4to/autolinux-dmenu
+	arch = x86_64
+	license = MIT
+	depends = ttf-hack
+	depends = ttf-joypixels
+	provides = dmenu
+	conflicts = dmenu
+	source = https://software.concise.cc/x86_64/autolinux-dmenu-0.2.0-1-x86_64.pkg.tar.xz
+	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
+	md5sums = 949feb58f7eef3d7a7c28ca09350d750
+	sha512sums = d9b50ef6887b78656b35b1a4f1e8f1ebd9c4948ee189131d260ed73fe71882f8e222a842cffe176287e05d510c27ddc52798c636092d99d50ee558c893fcabea
+
+pkgname = autolinux-dmenu
