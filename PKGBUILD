@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/siderolabs/talos"
 license=('MPL')
 source=("https://github.com/siderolabs/talos/releases/download/v${pkgver}/talosctl-linux-amd64")
-sha256sums=('3d9de4730c115e848c0ebef330d7b50a7ddcfcaf1e3e647af1cb149f17fda8bd')
+sha256sums=('99540b1d3bbc4d7bd41e8dfd5027941bed5eb29eff09756aed513b41e391eac9')
 options=(!strip)
 
 package() {
