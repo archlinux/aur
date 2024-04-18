@@ -1,0 +1,24 @@
+pkgbase = sbr2-bin
+	pkgdesc = A 3D Sonic fan game based off of Doom Legacy aka Sonic Robo Blast 2.
+	pkgver = 2.2.13
+	pkgrel = 1
+	url = https://gitlab.com/srb2-bin/sonic-robo-blast-2
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = libpng
+	depends = libgme
+	depends = srb2-data
+	depends = libopenmpt
+	source_x86_64 = git+https://gitlab.com/srb2-bin/sonic-robo-blast-2
+	source_x86_64 = https://gitlab.com/srb2-bin/binaries/2.2.13/-/raw/main/srb2-linux-x64.tar.xz
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = git+https://gitlab.com/srb2-bin/sonic-robo-blast-2
+	source_aarch64 = https://gitlab.com/srb2-bin/binaries/2.2.13/-/raw/main/srb2-linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
+
+pkgname = sbr2-bin
