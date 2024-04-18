@@ -3,14 +3,13 @@
 _pkgname=iterClust
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
-pkgrel=1
-pkgdesc='Iterative Clustering'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('custom')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Iterative Clustering"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LicenseRef-iterClust')
 depends=(
-  r
   r-biobase
 )
 optdepends=(
@@ -18,15 +17,18 @@ optdepends=(
   r-tsne
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cf36aa1aafeaa328e4c5483bbb88768b30fe8c37483834b34ccd7af20e63504c')
+md5sums=('af72d13d4200d5883ae63a99f0a49a69')
+b2sums=('9811c7f4888c26f41f5842cc110cca83ad5bf80a7735ef658a2e9dac7ebcb317975308b73fe42e1be7235ac76b38c731c08bd431a66c390dcb5a0da6609869f5')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
