@@ -1,0 +1,15 @@
+pkgbase = python-mycgi
+	pkgdesc = Python3 replacement for the deprecated cgi module
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/ronaaronson/mycgi
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = python-mycgi-0.0.4.tar.gz::https://github.com/ronaaronson/mycgi/archive/refs/tags/0.0.4.tar.gz
+	sha1sums = ccc7b185ebe6d44cadfed83380d9a13715b84c73
+
+pkgname = python-mycgi
