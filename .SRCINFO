@@ -1,0 +1,14 @@
+pkgbase = php83-igbinary
+	pkgdesc = php83 extension igbinary
+	pkgver = 3.2.15
+	pkgrel = 1
+	url = http://pecl.php.net/package/igbinary
+	arch = x86_64
+	license = PHP
+	makedepends = php83
+	depends = php83
+	backup = etc/php83/conf.d/igbinary.ini
+	source = http://pecl.php.net/get/igbinary-3.2.15.tgz
+	md5sums = de81e2f54bfbe741a7f2453bccf970e9
+
+pkgname = php83-igbinary
