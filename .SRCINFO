@@ -1,6 +1,6 @@
 pkgbase = python-ablog
 	pkgdesc = ABlog for blogging with Sphinx
-	pkgver = 0.11.6
+	pkgver = 0.11.8
 	pkgrel = 1
 	url = https://ablog.readthedocs.io
 	arch = any
@@ -16,10 +16,11 @@ pkgbase = python-ablog
 	makedepends = python-feedgen
 	makedepends = python-invoke
 	makedepends = python-watchdog
+	makedepends = python-sphinx
 	makedepends = pandoc
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/a/ablog/ablog-0.11.6.tar.gz
-	md5sums = b9b66158e3a5524b07f0513ae7878a73
+	source = https://files.pythonhosted.org/packages/source/a/ablog/ablog-0.11.8.tar.gz
+	md5sums = 30adf4a939e3c4e02f68cc83db514747
 
 pkgname = python-ablog
 	depends = python-sphinx>=5.0.0

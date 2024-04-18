@@ -2,7 +2,7 @@
 pkgbase=python-ablog
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.11.6
+pkgver=0.11.8
 pkgrel=1
 pkgdesc=" ABlog for blogging with Sphinx"
 arch=('any')
@@ -18,31 +18,32 @@ makedepends=('python-setuptools-scm'
              'python-feedgen'
              'python-invoke'
              'python-watchdog'
+             'python-sphinx'
              'pandoc'
              'graphviz')
 checkdepends=('python-pytest')
 # sphinx feedgen already in makedepends, feedgen depends on lxml
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/sunpy/ablog/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('b9b66158e3a5524b07f0513ae7878a73')
+md5sums=('30adf4a939e3c4e02f68cc83db514747')
 
-get_pyver() {
-    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
-}
-
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -i "/ignore:'imghdr'/a \	ignore:'sphinx.testing.path' is deprecated:sphinx.deprecation.RemovedInSphinx90Warning" setup.cfg
-}
+#get_pyver() {
+#    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+#}
+#
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    sed -i "/ignore:'imghdr'/a \	ignore:'sphinx.testing.path' is deprecated:sphinx.deprecation.RemovedInSphinx90Warning" setup.cfg
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    ln -rs ${srcdir}/${_pyname}-${pkgver}/src/${_pyname/-/_}*egg-info \
-        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
+#   ln -rs ${srcdir}/${_pyname}-${pkgver}/src/${_pyname/-/_}*egg-info \
+#       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
     PYTHONPATH="../build/lib" make -C docs html
 }
 
