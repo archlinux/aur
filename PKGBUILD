@@ -29,7 +29,7 @@ backup=(
 )
 options=()
 install="icingadb-web.install"
-changelog=
+changelog="icingadb-web.changelog"
 source=(
     "https://github.com/Icinga/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
     "commandtransports.ini"
