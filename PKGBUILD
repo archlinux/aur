@@ -2,7 +2,7 @@
 
 _basename=mrpack-install
 pkgname="${_basename}-bin"
-pkgver=0.16.9
+pkgver=0.16.10
 pkgrel=1
 pkgdesc="Modrinth Modpack server deployment"
 arch=('x86_64')
