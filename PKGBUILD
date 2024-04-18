@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="ReplayGain 2.0 loudness normalizer"
 arch=('x86_64')
 url="https://github.com/complexlogic/rsgain"
-license=('custom')
+license=('BSD-2-Clause')
 depends=(
   'libebur128'
   'libavcodec.so'
