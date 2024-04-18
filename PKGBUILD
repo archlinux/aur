@@ -1,10 +1,8 @@
-# Maintainer: Thore Bödecker <me [at] foxxx0 [dot] de>
-
 pkgname=php56-xdebug
 _pkgbase="${pkgname#php56-}"
 pkgver=2.5.5
 _pkgver="$(echo "${pkgver}" | tr '[:lower:]' '[:upper:]')"
-pkgrel=1
+pkgrel=2
 pkgdesc="php56 debugging extension"
 arch=('x86_64')
 url="http://www.xdebug.org"
@@ -12,7 +10,6 @@ license=('GPL')
 depends=('php56>=5.6.17-3')
 options=('!makeflags')
 backup=('etc/php56/conf.d/xdebug.ini')
-provides=("${_pkgbase}=${pkgver}-${pkgrel}" "php-${_pkgbase}=${pkgver}-${pkgrel}")
 source=("https://www.xdebug.org/files/${_pkgbase}-${pkgver}.tgz"
         "xdebug.ini")
 sha512sums=('9faab421bd90c03734c047d8c6dcc021c8bc665eb36781c692f194d04c7dca24fe1eb920ca8dc407e5bf4ae0912c4b917587f940f34b07171a8881d4cf8695d1'
