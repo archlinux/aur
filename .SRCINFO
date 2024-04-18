@@ -1,14 +1,14 @@
 pkgbase = r-readqpcr
 	pkgdesc = Read qPCR data
 	pkgver = 1.48.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/ReadqPCR
 	arch = any
-	license = LGPL
-	depends = r
+	license = LGPL-3.0-only
 	depends = r-biobase
 	optdepends = r-qpcr
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/ReadqPCR_1.48.0.tar.gz
-	sha256sums = 23316bb543f9860adc987b207c41488a0a3b0bfd28c37681415ba5f3555186a7
+	md5sums = b92a0fe88b39abffbc0c46c36a76a8de
+	b2sums = e429f64951a00d4da1c95b83a4f2d1c2d1f5b4d279d34be776ed640b751bf766913eace515f4a0b44c6efd5739cf2d936c88437a46961b29a53175e9824d7bbe
 
 pkgname = r-readqpcr
