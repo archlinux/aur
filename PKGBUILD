@@ -2,7 +2,7 @@
 # Contributor: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 
 pkgname=swww
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="A Solution to your Wayland Wallpaper Woes"
 arch=(x86_64 aarch64)
@@ -19,7 +19,7 @@ makedepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b190f9fa63ca9952e12c8b3982862a75f714af5546e1c5e34adc17f9764b1bf4')
+sha256sums=('87359135c6930776b6266fe611a97001fca5909bfb999aed0f9036f07533adf7')
 
 _archive="$pkgname-$pkgver"
 
