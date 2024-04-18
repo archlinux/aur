@@ -5,7 +5,7 @@
 pkgname=64gram-desktop
 _pkgname=64Gram
 pkgver=1.1.18
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/$
 noextract=("${_pkgname}-${pkgver}-full.tar.gz")
 
 sha512sums=('973814e177d6e54f94592c9dba1b3abef9f5f6b6d1ee1059dd26aaa6f0e1336d6670d0d9366b434e16d09016ecfaa95fad8b8b2f5f08d25050f276d788172430'
-            'c662524ca4f4a8df021ee94696d84896ed9a271df321933942806dda4544ea25f51a650ec8b4fc72f9a2219ea54cbfaf37b9604124f7263c86f74f1d647587ae'
+            '0e0f0dcb99ed6c7566e7a75404e39e16c27658eb5999e041a82aa975447ce8719ce6703cc36efc039e16a3ff3721f4a7c76df24f0ead9aa48ce5e23001142072'
             'd813a5ac6ff2208b693ecf494d7bf036087e223662f9f34aaaeafea0afe0fe798e867b9610f7221ea80319865502c20b61310d5a31634b888793873d63322463'
             'ea027bc2d40c74507adf32380444207210a8c31cdba57f3f468d23d8e9c7376647cc8c713f188660f9b1dacd9041227aafd5a27c7889f47ea3985712b6b74b8b')
 
