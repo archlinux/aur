@@ -3,25 +3,25 @@
 _pkgname=MiChip
 _pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
-pkgrel=1
-pkgdesc='MiChip Parsing and Summarizing Functions'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="MiChip Parsing and Summarizing Functions"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5697123140850b6fc6f2e5a1e6276c1b3c86409ca6977afa5eeacab7dc61e545')
+md5sums=('28daafdf6588314a9fad7a75b1671c10')
+b2sums=('53724155400095c7c637ed833198dce994dc08e3e34839d553a8a08de7fdbb20d085d5cfe0ad71d56e35d91c4e348aa9ba35e41ba815bee75cfbc8835c6b7c23')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
