@@ -1,4 +1,4 @@
-pkgname=sbr2-bin
+pkgname=srb2-bin
 pkgver=2.2.13
 pkgrel=1
 pkgdesc="A 3D Sonic fan game based off of Doom Legacy aka Sonic Robo Blast 2."
