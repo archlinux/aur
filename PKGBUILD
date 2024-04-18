@@ -1,7 +1,7 @@
-# Maintainer: Andras Czigany <andras dot czigany dot 'thirteen with digits' at gmail dot com>
+# Contributor: Andras Czigany <andras dot czigany dot 'thirteen with digits' at gmail dot com>
 
 pkgname=xorg-xgc
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Xaw-based graphics demo that shows/tests various features of the X11 core protocol graphics primitives."
 arch=(i686 x86_64)
@@ -10,8 +10,8 @@ license=('custom')
 depends=('libxaw')
 makedepends=('xorg-util-macros')
 groups=('xorg-apps' 'xorg')
-source=(http://xorg.freedesktop.org/archive/individual/app/xgc-${pkgver}.tar.bz2)
-sha256sums=('14828d9bda358ad57efc0206bc416ee33ba542091edb186485cca5389adc2f5e')
+source=(http://xorg.freedesktop.org/archive/individual/app/xgc-${pkgver}.tar.gz)
+sha256sums=('8b5cfc547c04a2bd0807be700349522c0e717e34387019dd209eefa83cfa74f0')
 
 build() {
   cd "${srcdir}/xgc-${pkgver}"
