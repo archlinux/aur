@@ -1,11 +1,11 @@
 pkgname=chess-tui
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A chess TUI implementation in rust 🦀"
 arch=('any')
 url="https://github.com/thomas-mauran/chess-tui"
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('17829180b0eac9c252f5450d63aac7173170a3ab91c500faeb064ca1d8301cf2')
+sha256sums=('cfbbf8935ee072ac05b4d7e51960eeb71ddf385256a6072c678a374af39540a8')
 makedepends=('cargo')
 
 prepare() {
