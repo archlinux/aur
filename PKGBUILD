@@ -18,10 +18,8 @@ license=('GPL2')
 makedepends=('cmake' 'fontconfig' 'libpipewire' 'libpulse'
 	'libsamplerate' 'libxi' 'libxpresent' 'libxss' 'obs-studio'
 	'spice-protocol' 'wayland-protocols')
-source=("looking-glass-${pkgver//_/-}.tar.gz::https://looking-glass.io/artifact/${pkgver//_/-}/source"
-	"module-kernel-64.patch")
-sha512sums=('SKIP'
-	'3fbd1e1bad334852deebf09c45bd1b2f38c64d8bc464c8a65f5e9ed2cef3cd48a3385e3f1909b1d1e95e3c2ff4c51345f4ec716e2547bd068c4c0c5524945c71')
+source=("looking-glass-${pkgver//_/-}.tar.gz::https://looking-glass.io/artifact/${pkgver//_/-}/source")
+sha512sums=('SKIP')
 
 _lgdir="${_pkgname}-${pkgver//_/-}"
 

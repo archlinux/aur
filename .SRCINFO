@@ -18,9 +18,7 @@ pkgbase = looking-glass-rc
 	makedepends = spice-protocol
 	makedepends = wayland-protocols
 	source = looking-glass-B7-rc1.tar.gz::https://looking-glass.io/artifact/B7-rc1/source
-	source = module-kernel-64.patch
 	sha512sums = SKIP
-	sha512sums = 3fbd1e1bad334852deebf09c45bd1b2f38c64d8bc464c8a65f5e9ed2cef3cd48a3385e3f1909b1d1e95e3c2ff4c51345f4ec716e2547bd068c4c0c5524945c71
 
 pkgname = looking-glass-rc
 	pkgdesc = A client application for accessing the LookingGlass IVSHMEM device of a VM
