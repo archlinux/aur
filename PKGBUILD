@@ -2,7 +2,7 @@
 # Contributor: xiretza
 
 pkgname=synapse-compress-state
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A tool to compress some state in a Synapse instance's database "
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ url="https://github.com/matrix-org/rust-synapse-compress-state"
 makedepends=('rust' 'python')
 license=('Apache')
 source=("${pkgname}-${pkgver}::https://github.com/matrix-org/rust-synapse-compress-state/archive/v${pkgver}.tar.gz")
-sha256sums=('6c21786767f54fa09c1bb9bb8335b56829b2f3b7aca112f5ce099dff77bf10cd')
+sha256sums=('a746e3ec531a370d140a1c3b03d28db107df484d507345db664d0b77256bbebb')
 
 prepare() {
   cd "${srcdir}/rust-${pkgname}-${pkgver}"
