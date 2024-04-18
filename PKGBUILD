@@ -1,7 +1,7 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=rofi-nerdy
-pkgver=v0.0.2.r0.g1a222a7
+pkgver=v0.0.3.r2.g8201934
 pkgrel=1
 pkgdesc='Nerd font icon selector plugin for rofi'
 arch=('x86_64')
