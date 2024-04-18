@@ -4,7 +4,7 @@
 
 pkgname=talosctl-bin
 pkgver=1.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="talosctl - utility for controling Talos"
 arch=('x86_64')
 url="https://github.com/siderolabs/talos"
