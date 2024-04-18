@@ -2,105 +2,64 @@
 
 # options
 : ${_autoupdate:=false}
-: ${_build_git:=false}
 
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+: ${_pkgtype:=-tabopts}
+
 [[ "${_autoupdate::1}" == "t" ]] && : ${_pkgver:=$(LANG=C LC_ALL=C pacman -Si extra/dolphin | sed -nE 's@^Version\s+: (.*)-.*$@\1@p' | head -1)}
 
 # basic info
-_gitname="dolphin"
-_pkgname="$_gitname-tabopts"
+_pkgname="dolphin"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=24.02.1
+pkgver=24.02.2
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
 license=('GPL-2.0-or-later')
 arch=(i686 x86_64)
 
-# main package
-_main_package() {
-  depends+=(
-    'baloo-widgets'
-    'kcmutils'
-    'kio-extras'
-    'knewstuff'
-    'kparts'
-    'kuserfeedback'
-    'plasma-activities'
-  )
-  makedepends+=(
-    'extra-cmake-modules>=5.200'
-    'git'
-    'kdoctools'
-  )
-  optdepends=(
-    'ffmpegthumbs: video thumbnails'
-    'kde-cli-tools: for editing file type options'
-    'kdegraphics-thumbnailers: PDF and PS thumbnails'
-    'kio-admin: for managing files as administrator'
-    'konsole: terminal panel'
-    'purpose: share context menu'
-  )
+depends=(
+  'baloo-widgets'
+  'kcmutils'
+  'kio-extras'
+  'knewstuff'
+  'kparts'
+  'kuserfeedback'
+  'plasma-activities'
+)
+makedepends=(
+  'extra-cmake-modules'
+  'git'
+  'kdoctools'
+)
+optdepends=(
+  'ffmpegthumbs: video thumbnails'
+  'kde-cli-tools: for editing file type options'
+  'kdegraphics-thumbnailers: PDF and PS thumbnails'
+  'kio-admin: for managing files as administrator'
+  'konsole: terminal panel'
+  'purpose: share context menu'
+)
 
-  provides=("$_gitname=${pkgver%%.r*}")
-  conflicts=("$_gitname")
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
-  if [ "${_build_git::1}" != "t" ] ; then
-    _main_stable
-  else
-    _main_git
-  fi
+: ${_pkgver:=${pkgver%%.r*}}
+: ${_patch_commit:=7cce4b12e43b046104bbfc9a6da481e97f4f2f3c}
+
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc"::"git+https://invent.kde.org/system/dolphin.git#tag=v$_pkgver"
+  "dolphin-tabopts-${_patch_commit::7}.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/${_patch_commit}.patch"
+)
+sha256sums=(
+  'SKIP'
+  'a299037d34c16d8e078e1f751ab6a921bae64f4804755864a5416da2f62db121'
+)
+
+pkgver() {
+  echo "${_pkgver:?}"
 }
 
-# stable package
-_main_stable() {
-  : ${_pkgver:=${pkgver%%.r*}}
-
-  _pkgsrc="$_gitname-$_pkgver"
-  _pkgext="tar.xz"
-  _dl_url="https://download.kde.org/stable/release-service"
-  source+=("$_pkgsrc.$_pkgext"::"$_dl_url/$_pkgver/src/$_pkgsrc.$_pkgext")
-
-  if [[ "${_autoupdate::1}" == "t" ]] ; then
-    sha256sums+=('SKIP')
-  else
-    sha256sums+=('597bb12c53984bae7310cda5e06dbed831fdae1a6e731f55bbc660b4a583da0e')
-  fi
-
-  source+=(
-    # "https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
-    "dolphin-tabopts-3.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/62b60d15f2680e46d143611d55dc7f9f74aed50f.patch"
-  )
-  sha256sums+=(
-    '390fbd2fe4cbd34001004ccca80b9677709d1d0f8f6a10b2b80659dc2dea6874'
-  )
-
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
-}
-
-# git package
-_main_git() {
-  _pkgsrc="$_gitname"
-  source+=(
-    "$_pkgsrc"::"git+https://invent.kde.org/system/dolphin.git"
-    "dolphin-tabopts-3.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/62b60d15f2680e46d143611d55dc7f9f74aed50f.patch"
-  )
-  sha256sums+=(
-    'SKIP'
-    '390fbd2fe4cbd34001004ccca80b9677709d1d0f8f6a10b2b80659dc2dea6874'
-  )
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  }
-}
-
-# common functions
 prepare() {
   cd "$_pkgsrc"
 
@@ -109,7 +68,7 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     src="${src%.zst}"
-    if [[ $src == *.patch ]] ; then
+    if [[ $src == *.patch ]]; then
       printf '\nApplying patch: %s\n' "$src"
       patch -Np1 -F100 -i "$srcdir/$src"
     fi
@@ -131,6 +90,3 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 }
-
-# execute
-_main_package

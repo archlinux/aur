@@ -1,12 +1,12 @@
 pkgbase = dolphin-tabopts
 	pkgdesc = KDE File Manager - with extended tab options
-	pkgver = 24.02.1
+	pkgver = 24.02.2
 	pkgrel = 1
 	url = https://invent.kde.org/xiota/dolphin/-/merge_requests/1
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
-	makedepends = extra-cmake-modules>=5.200
+	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = kdoctools
 	depends = baloo-widgets
@@ -22,11 +22,11 @@ pkgbase = dolphin-tabopts
 	optdepends = kio-admin: for managing files as administrator
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=24.02.1
+	provides = dolphin=24.02.2
 	conflicts = dolphin
-	source = dolphin-24.02.1.tar.xz::https://download.kde.org/stable/release-service/24.02.1/src/dolphin-24.02.1.tar.xz
-	source = dolphin-tabopts-3.patch::https://invent.kde.org/xiota/dolphin/-/commit/62b60d15f2680e46d143611d55dc7f9f74aed50f.patch
-	sha256sums = 597bb12c53984bae7310cda5e06dbed831fdae1a6e731f55bbc660b4a583da0e
-	sha256sums = 390fbd2fe4cbd34001004ccca80b9677709d1d0f8f6a10b2b80659dc2dea6874
+	source = dolphin::git+https://invent.kde.org/system/dolphin.git#tag=v24.02.2
+	source = dolphin-tabopts-7cce4b1.patch::https://invent.kde.org/xiota/dolphin/-/commit/7cce4b12e43b046104bbfc9a6da481e97f4f2f3c.patch
+	sha256sums = SKIP
+	sha256sums = a299037d34c16d8e078e1f751ab6a921bae64f4804755864a5416da2f62db121
 
 pkgname = dolphin-tabopts
