@@ -1,0 +1,4 @@
+[budgie-desktop]
+source = "git"
+git = "https://github.com/BuddiesOfBudgie/budgie-screensaver"
+prefix = "v"
