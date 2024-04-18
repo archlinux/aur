@@ -7,14 +7,13 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libdatrie
 pkgver=0.2.13
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Double-array trie library (Android ${_android_arch})"
 url='https://linux.thai.net/projects/datrie'
 license=('LGPL-2.1-or-later')
 depends=('android-ndk')
-makedepends=('android-configure'
-             'doxygen')
+makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-$pkgver.tar.xz")
 sha256sums=('12231bb2be2581a7f0fb9904092d24b0ed2a271a16835071ed97bed65267f4be')

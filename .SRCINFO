@@ -1,12 +1,11 @@
 pkgbase = android-x86-64-libdatrie
 	pkgdesc = Double-array trie library (Android x86-64)
 	pkgver = 0.2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linux.thai.net/projects/datrie
 	arch = any
 	license = LGPL-2.1-or-later
 	makedepends = android-configure
-	makedepends = doxygen
 	depends = android-ndk
 	options = !strip
 	options = !buildflags
