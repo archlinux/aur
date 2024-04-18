@@ -1,0 +1,5 @@
+[python-trame-markdown]
+source = "github"
+github = "Kitware/trame-markdown"
+use_latest_release = "true"
+prefix = "v"
