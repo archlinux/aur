@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh-git
-pkgver=0.28.0.r22.gd06c69b9
+pkgver=0.38.0.r75.g0155a295
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices'
 arch=(x86_64 aarch64 armv7h)
@@ -10,33 +10,47 @@ url='https://gitlab.gnome.org/World/Phosh/phosh'
 license=(GPL3)
 depends=(
 	gtk3
-	'libhandy>=1.1.90'
+	libhandy
 	gnome-desktop
 	gnome-session
 	upower
 	libpulse
 	gcr
-	feedbackd
 	libnm
 	evolution-data-server
-	# Replace this with phoc once it works.
-	#'phoc>=0.21.0'
-	phoc-embedded-wlroots
+	phoc
 	gnome-shell
 	callaudiod
 	polkit
 	libadwaita
 	evince
+
+	libical
+	libedataserverui4
+	squeekboard
+	fribidi
+	wayland
+	libsecret
 )
 makedepends=(
 	meson
 	git
 	wayland-protocols
 	python-docutils
+	python-packaging
+	feedbackd
 )
 checkdepends=(
 	xorg-server-xvfb
+	xorg-xauth
 )
+optdepends=(
+	'iio-sensor-proxy: accelerometer and other sensors'
+	'feedbackd: haptic/visual/audio feedback'
+	'xdg-desktop-portal-gtk: for screenshot support'
+	'xdg-desktop-portal-wlr: for screencasts support'
+)
+
 provides=(phosh)
 conflicts=(phosh)
 source=(
@@ -55,13 +69,19 @@ pkgver() {
 
 prepare() {
 	cd phosh
-
 	git submodule update --init
 }
 
 build() {
 	# If we don't set `libexecdir` then meson will try and place the phosh bin in /lib/phosh and collide with the dir so we put it in /lib/phosh/phosh
-	arch-meson --libexecdir="/usr/lib/phosh" -D tests=true -D phoc_tests=disabled -D man=true -D gtk_doc=false -D callui-i18n=true -D lockscreen-plugins=true -D systemd=true phosh _build 
+	arch-meson --libexecdir="/usr/lib/phosh" \
+	-D tests=true \
+	-D phoc_tests=disabled \
+	-D man=true -D gtk_doc=false \
+	-D callui-i18n=true \
+	-D lockscreen-plugins=true \
+	-D systemd=true \
+	phosh _build 
 	meson compile -C _build
 }
 
@@ -72,6 +92,11 @@ check() {
 package() {
 	DESTDIR="${pkgdir}" meson install -C _build
 
-		install -Dm644 "$srcdir"/pam_phosh \
-			"$pkgdir"/etc/pam.d/phosh
+	# make squeekboard the default keyboard 
+	mkdir -p "$pkgdir"/usr/share/applications
+	ln -s sm.puri.Squeekboard.desktop "$pkgdir"/usr/share/applications/sm.puri.OSK0.desktop
+
+
+	install -Dm644 "$srcdir"/pam_phosh \
+		"$pkgdir"/etc/pam.d/phosh
 }
