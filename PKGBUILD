@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.13.0.r0.g0c7a433
+pkgver=0.13.1.r12.gffae92e
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -72,10 +72,7 @@ depends+=("${_lua_deps[@]/#/lua-}"
           "${_lua_deps[@]/#/lua51-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
-makedepends=(autoconf-archive
-             cargo
-             clang
-             mold
+makedepends=(cargo
              node-prune
              yarn)
 provides=("${pkgname%-git}=$pkgver")
