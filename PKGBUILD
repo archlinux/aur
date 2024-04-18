@@ -1,7 +1,7 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=arch-update
-pkgver=1.14.3
+pkgver=1.14.4
 pkgrel=1
 pkgdesc="An update notifier/applier that assists you with important pre/post update tasks."
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('yay: AUR support'
 	    'sudo: Privilege elevation'
 	    'doas: Privilege elavation')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2f57d2c3bc87777e79ca752ba5d0210112186c48c81d8c7b4f49ee62113a8db6')
+sha256sums=('f685d5f1ecfc1c2eed973cfbbc5fcbbf54a81921eaf847b7cc934875eb0db862')
 
 package() {
 	cd "${pkgname}-${pkgver}"
