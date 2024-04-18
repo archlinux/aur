@@ -4,18 +4,18 @@
 
 pkgname=thunderbird-tbsync
 _name=tbsync
-_file=1024208
-pkgver=4.7
+_file=1026865
+pkgver=4.8
 pkgrel=1
 pkgdesc="Sync contacts, tasks and calendars to thunderbird using Exchange ActiveSync (EAS) and CalDAV/CardDAV"
 arch=('any')
 url="https://github.com/jobisoft/TbSync"
 license=('MPL2')
 groups=('office')
-depends=('thunderbird>=102.3' 'thunderbird<116')
+depends=('thunderbird>=115')
 source=("https://addons.thunderbird.net/thunderbird/downloads/file/${_file}/${_name}-${pkgver}-tb.xpi")
 noextract=("${_name}-${pkgver}-tb.xpi")
-sha512sums=('d58a4243c6e2731cac45c66348f239b32d16456c265abd7c70e0644bd9e39071ff3ccf9da72d3860d9d367ea354a3a1ec65a0a0a14884b71342cfa1a306e3eaa')
+sha512sums=('57b53b608890e23fb1ec8d19e4fb8f726ae685b930d0b1449ca924652411c7859b940a310b5f49044b47bb7cf275936969d4d2d281ba838df9938c5b6b37b352')
 
 package() {
   _extension_id="tbsync@jobisoft.de"
