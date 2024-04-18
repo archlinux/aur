@@ -1,25 +1,29 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=fixest
-_pkgver=0.11.2
+_pkgver=0.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Fast Fixed-Effects Estimations"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-dreamerr
   r-numderiv
   r-rcpp
   r-sandwich
+  r-stringmagic
 )
 checkdepends=(
   r-data.table
 )
 optdepends=(
+  r-aer
   r-data.table
+  r-emmeans
+  r-estimability
   r-ggplot2
   r-knitr
   r-lfe
@@ -30,12 +34,12 @@ optdepends=(
   r-tinytex
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9d2027d25c8a0081b878554544caf58b')
-sha256sums=('2dee113a0689e5c4dd842c451d35c9a94a5b37536f9484611a877c1ea10e2b65')
+md5sums=('aa85a1ad448d0f41fc02100eee502059')
+b2sums=('e1cad001e1ce16953f560bc0f1f95dd8b9d829ab5240cc01aaed4648a0d5762eb305d33f2eb7c453290b697c587bdd96d10e9d39388a31c887b86c780899e1da')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
