@@ -5,7 +5,7 @@
 # Contributor: Jonathon Fernyhough
 # Contributor: realqhc <https://github.com/realqhc>
 # Contributor: Brett Alcox <https://github.com/brettalcox>
-# Contributor: runsisi https://github.com/runsisi
+# Contributor: runsisi <https://github.com/runsisi>
 
 # Archlinux credits:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -18,7 +18,7 @@
 
 pkgname=mutter-x11-scaling
 pkgver=46.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -104,7 +104,7 @@ source=(
   # Mutter tags use SSH signatures which makepkg doesn't understand
   "git+https://gitlab.gnome.org/GNOME/mutter.git#tag=$pkgver"
   "https://gitlab.archlinux.org/archlinux/packaging/packages/mutter/-/raw/7a54f849bdbe1b61c54a615dd51c7d9ec0e36131/0001-drm-buffer-gbm-Do-not-call-ensure_fb_id-from-lock_fr.patch"
-  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/a3b0d22d435cac6a2ce4e9fef9ebcd994639c9b4/x11-Add-support-for-fractional-scaling-using-Randr.patch"
+  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/7aa432d4366fdd5a2687a78848b25da4f8ab5c68/x11-Add-support-for-fractional-scaling-using-Randr.patch"
   "https://salsa.debian.org/gnome-team/mutter/-/raw/e450692a81d20f65bea827212ce55236534711d3/debian/patches/debian/Support-Dynamic-triple-double-buffering.patch"
   "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3300.patch"
   "https://gitlab.manjaro.org/packages/extra/mutter-x11-scaling/-/raw/master/mutter-fix-x11-restart.patch"
@@ -113,7 +113,7 @@ source=(
 )
 b2sums=('04a14854c8ec2668a340b241102b7b2ebbc0387a9771a5bd2c2366419ee08e7ebb308f2288f4a64b9d08053e1897eb514a46802584d1590f8bcebde4a613afaa'
         'fed7d496b658a43b306e62a57c817c54990e8764103eae5479b8a96fbdf25da1ae6028126aa3cccda6239ff1f0c4e69bbe6f12e29804651c1a7b6ca40d6bf36c'
-        'c1b433d089bc63de2e7a4dc7e134d98639bc060d2219c67e6a17739281d526c30157963fdc13ee9aa021132d81e2f807bfda539536fb1f1de13e8c39b7ca28f9'
+        '2b1a70b961d70688396c072355accdd8a9fa5591feab7a22c849f54bcf2695cbe72267dc5e006385e95d114e8e7078045fa8b6a09d00c558eff04ec8dd38318a'
         '8ba8479a1ff4d8eb471df781d4a2b0a83c6299136fc35b935e537fad7f4071013bce1c62d3d82bfc31c0d6f34c1229a2032f778023356b84f32962262e9ed0f5'
         'f7ed9db52afa4e02a77347a521cab7e1a438735a988ba6229909365e7acad001599eacb423fce37b3d1ca276d1584797c2afe3ae715f554de84d87e791978475'
         'ba4febdabc89a8c608d2a9621d02a21c05b315bb586f91d34b0369c07f3e051a6333d62dd97ab18d0c5b1c8f453696d4851c55fc82a50e8843ae45068ab178ca'
