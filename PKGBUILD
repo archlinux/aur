@@ -1,5 +1,6 @@
 # Maintainer: Omar Pakker <archlinux@opakker.nl>
 # Maintainer: ston <2424284164@qq.com>
+# Maintainer: Merrkry <jeffpotvin930@gmail.com>
 
 _pkgname=looking-glass
 pkgbase=looking-glass-rc
@@ -8,21 +9,28 @@ pkgname=("${pkgbase}"
 	"${pkgbase}-host"
 	"obs-plugin-${pkgbase}")
 epoch=0
-pkgver=B6_rc1
+pkgver=B7_rc1
 pkgrel=1
-pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough(Candidate Version)"
+pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough. (Candidate Version)"
 url="https://looking-glass.io/"
 arch=('x86_64')
 license=('GPL2')
-makedepends=('cmake' 'fontconfig' 'spice-protocol' 'wayland-protocols'
-	'libxss' 'libxi' 'libxpresent' 'obs-studio')
-source=("looking-glass-${pkgver//_/-}.tar.gz::https://looking-glass.io/artifact/${pkgver//_/-}/source")
-sha512sums=('fa408140d0a0dc3f27b926f0b62b0561d681e58c1c7de3d567b5b5d5e6a4e991dcfd560f23c0d74df15b15a77a78ddcb545cbdc5b340a86273569870800701f8')
+makedepends=('cmake' 'fontconfig' 'libpipewire' 'libpulse'
+	'libsamplerate' 'libxi' 'libxpresent' 'libxss' 'obs-studio'
+	'spice-protocol' 'wayland-protocols')
+source=("looking-glass-${pkgver//_/-}.tar.gz::https://looking-glass.io/artifact/${pkgver//_/-}/source"
+	"module-kernel-64.patch")
+sha512sums=('SKIP'
+	'3fbd1e1bad334852deebf09c45bd1b2f38c64d8bc464c8a65f5e9ed2cef3cd48a3385e3f1909b1d1e95e3c2ff4c51345f4ec716e2547bd068c4c0c5524945c71')
 
 _lgdir="${_pkgname}-${pkgver//_/-}"
 
 prepare() {
-	sed -i '30a #include <linux/memremap.h>' "${srcdir}/${_lgdir}/module/kvmfr.c"
+	cd "${srcdir}/${_lgdir}"
+	patch -p1 <"${srcdir}/module-kernel-64.patch"
+
+	sed -i '1 i\#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"' \
+		"host/platform/Linux/capture/pipewire/src/portal.c"
 }
 
 build() {
@@ -38,8 +46,10 @@ build() {
 
 package_looking-glass-rc() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
-	depends=('libgl' 'libegl' 'nettle' 'fontconfig' 'libxss' 'libxi'
-		'libxinerama' 'libxcursor' 'libxpresent' 'libxkbcommon')
+	depends=('binutils' 'fontconfig' 'gcc-libs' 'glibc' 'gmp' 'libegl' 'libgl'
+		'libpipewire' 'libpulse' 'libsamplerate' 'libx11' 'libxcursor'
+		'libxfixes' 'libxi' 'libxinerama' 'libxkbcommon' 'libxpresent'
+		'libxss' 'nettle' 'wayland' 'zlib' 'zstd')
 	provides=("${_pkgname}")
 	conflicts=("${_pkgname}")
 	cd "${srcdir}/${_lgdir}/client/build"
@@ -60,7 +70,8 @@ package_looking-glass-rc-module-dkms() {
 
 package_looking-glass-rc-host() {
 	pkgdesc="Linux host application for pushing frame data to the LookingGlass IVSHMEM device"
-	depends=('libxcb' 'zlib')
+	depends=('binutils' 'gcc-libs' 'glib2' 'glibc'
+		'libpipewire' 'libxcb' 'zlib' 'zstd')
 	provides=("${_pkgname}-host")
 	conflicts=("${_pkgname}-host")
 	cd "${srcdir}/${_lgdir}/host/build"
@@ -69,7 +80,7 @@ package_looking-glass-rc-host() {
 
 package_obs-plugin-looking-glass-rc() {
 	pkgdesc="Plugin for OBS Studio to stream directly from Looking Glass without having to record the Looking Glass client"
-	depends=('obs-studio')
+	depends=('glibc' 'obs-studio')
 	provides=("obs-plugin-${_pkgname}")
 	conflicts=("obs-plugin-${_pkgname}")
 	install -Dm644 -t "${pkgdir}/usr/lib/obs-plugins" \
