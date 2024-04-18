@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-blur-my-shell-git
-pkgver=58.r7.g90b10b2
+pkgver=60.r10.g24f80e7
 _uuid=blur-my-shell@aunetx
 pkgrel=1
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
@@ -40,5 +40,5 @@ package() {
     "$pkgdir/usr/share/glib-2.0/schemas/"
   rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas"
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
