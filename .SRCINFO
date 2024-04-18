@@ -1,22 +1,21 @@
 pkgbase = ttf-dejavu-emojiless
-	pkgdesc = Derivate of DejaVu without characters listed as emoji, in order not to override color fonts
-	pkgver = 2.37
-	pkgrel = 3
-	url = https://dejavu-fonts.github.io/
+	pkgdesc = Font family based on the Bitstream Vera Fonts with a wider range of characters
+	pkgver = 2.37+18+g9b5d1b2f
+	pkgrel = 1
+	url = https://dejavu-fonts.github.io
 	arch = any
 	license = custom
 	makedepends = fontforge
+	makedepends = git
+	makedepends = perl-font-ttf
 	provides = ttf-font
 	provides = ttf-dejavu
 	conflicts = ttf-dejavu
-	source = https://downloads.sourceforge.net/project/dejavu/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2
-	source = remove-generic-name-assignment-and-aliasing.patch
+	source = git+https://github.com/dejavu-fonts/dejavu-fonts.git#commit=9b5d1b2ffeec20c7b46aa89c0223d783c02762cf
 	source = http://www.unicode.org/Public/emoji/1.0/emoji-data.txt
 	source = cleaner.py
-	sha256sums = fa9ca4d13871dd122f61258a80d01751d603b4d3ee14095d65453b4e846e17d7
-	sha256sums = 21d85a4f6ea7856074a4eb5c5fce6a10e764d11ff4336e92c4f009815efebb0c
+	sha256sums = 9d38fcff213462f880756a4c7005cc4b43e90f1ba59d2bcb61e18450d376601a
 	sha256sums = 4822fed8b857ca26490fe13ab504904a1da59ed18f34ed25cc27fcace0fdf88b
 	sha256sums = 67056b33de2550ecbb93d269eacd08d508f47892d5fc582d8bd0c211d5787b78
 
 pkgname = ttf-dejavu-emojiless
-
