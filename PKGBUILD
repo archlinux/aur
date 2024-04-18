@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SeqSQC
-_pkgver=1.24.0
+_pkgver=1.24.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A bioconductor package for sample quality check with next generation sequencing data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,7 +17,7 @@ depends=(
   r-ggally
   r-ggplot2
   r-iranges
-  r-rbokeh
+  r-plotly
   r-rcolorbrewer
   r-reshape2
   r-rmarkdown
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('10e877d23b5c1572319af0515baca2c1')
-b2sums=('d8b7330863a8ecdb6ebb1f66ff84576a28fae2a544b3d6f6067f2c3ecfc8d00e32571f9933685c9b27e78649702607e9187fcae247557494ddf2b7b5a0442b90')
+md5sums=('b1342a902d724d3ae17b2a6039d5d637')
+b2sums=('c2f817f4f7e70e761ee96fb480a858dc63db10a850075c702b416abb00b80c9b33b9de1347099d7e4b184d8ec50f351062ec9e0eafb13ed8fc9d58570a61edab')
 
 build() {
   mkdir build
