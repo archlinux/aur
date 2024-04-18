@@ -1,7 +1,7 @@
 # Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 pkgname=badvpn-git
-pkgver=r1949.4b7070d
-pkgrel=2
+pkgver=r1950.07268f0
+pkgrel=1
 pkgdesc="NCD scripting language, tun2socks proxifier, P2P VPN"
 arch=($CARCH)
 url=https://github.com/ambrop72/${pkgname%-git}
