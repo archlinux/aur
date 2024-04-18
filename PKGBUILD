@@ -6,17 +6,17 @@ pkgrel=1
 arch=(x86_64)
 url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
-depends=(ttf-hack ttf-joypixels)
+depends=(ttf-hack)
 provides=(dmenu)
 conflicts=(dmenu)
 source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'd9b50ef6887b78656b35b1a4f1e8f1ebd9c4948ee189131d260ed73fe71882f8e222a842cffe176287e05d510c27ddc52798c636092d99d50ee558c893fcabea'
+  '1443094ed863f4b88df481126cc842a8d70d58f295af09a676d743c1a5e7ea97b08e3a6d7989068725e00d60e34286e79c80ad243c8386f767a8062cc90c325c'
 )
 md5sums=(
-  '949feb58f7eef3d7a7c28ca09350d750'
+  'c214be3e92d658ee7c5f634509b09448'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
