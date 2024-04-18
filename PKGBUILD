@@ -3,14 +3,13 @@
 _pkgname=spkTools
 _pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
-pkgrel=1
-pkgdesc='Methods for Spike-in Arrays'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Methods for Spike-in Arrays"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-biobase
   r-gtools
   r-rcolorbrewer
@@ -19,14 +18,15 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a49043efbb289e10024f38c92c67228767b72345eb81c9f690479eb5428c82b2')
+md5sums=('9cc7d56d0cf0eec1e65d47d262525ba1')
+b2sums=('c04d82dc067bfdda40355cd123d7122bc1d375a06c6bdaea1a451ef52fe05a3e169db6f2afdffeb6542d1ec51ab3603b496b6f5457d5777958debf670613625e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
