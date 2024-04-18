@@ -1,7 +1,10 @@
+# Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
+
 pkgname=python-wandb
-pkgver=0.16.2
+_pkgname=${pkgname#python-}
+pkgver=0.16.3
 pkgrel=1
-pkgdesc='Weights and Biases - organize and analyze machine learning experiments'
+pkgdesc='A tool for visualizing and tracking your machine learning experiments'
 arch=('any')
 url='https://wandb.ai'
 license=('MIT')
@@ -18,24 +21,20 @@ depends=(
     'python-setproctitle'
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools'
-             'python-installer')
+             'python-wheel')
 provides=('python-wandb')
-conflicts=("python-wandb-git")
-source=(
-    'https://files.pythonhosted.org/packages/ba/83/3392af6af887b85b5f52ddc3a42e026e6c27637cdfd8705a0b945aba314f/wandb-0.16.2.tar.gz'
-)
-sha256sums=('e40cd79ea6272fe4762a80b9f47b172e141daeb3b56eb9d1e192ebd10752e64e')
+conflicts=('python-wandb-git')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('6afa740f7b0ca644052cdf44c6adaef27522bbb3a977ecde46aafd7d47f507d0')
 
 build() {
-    cd "wandb-$pkgver"
+    cd "$_pkgname-$pkgver"
     python -m build -nw
 }
-
 
 package() {
     python -m installer \
         --compile-bytecode=1 \
         --destdir=$pkgdir \
-        $srcdir/wandb-$pkgver/dist/wandb-$pkgver-*.whl
+        $srcdir/$_pkgname-$pkgver/dist/$_pkgname-$pkgver-*.whl
 }
-

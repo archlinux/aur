@@ -1,6 +1,6 @@
 pkgbase = python-wandb
-	pkgdesc = Weights and Biases - organize and analyze machine learning experiments
-	pkgver = 0.16.2
+	pkgdesc = A tool for visualizing and tracking your machine learning experiments
+	pkgver = 0.16.3
 	pkgrel = 1
 	url = https://wandb.ai
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-wandb
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-appdirs
 	depends = python-click
 	depends = python-docker-pycreds
@@ -21,7 +21,7 @@ pkgbase = python-wandb
 	depends = python-setproctitle
 	provides = python-wandb
 	conflicts = python-wandb-git
-	source = https://files.pythonhosted.org/packages/ba/83/3392af6af887b85b5f52ddc3a42e026e6c27637cdfd8705a0b945aba314f/wandb-0.16.2.tar.gz
-	sha256sums = e40cd79ea6272fe4762a80b9f47b172e141daeb3b56eb9d1e192ebd10752e64e
+	source = python-wandb-0.16.3.tar.gz::https://wandb.ai/archive/refs/tags/v0.16.3.tar.gz
+	sha256sums = 6afa740f7b0ca644052cdf44c6adaef27522bbb3a977ecde46aafd7d47f507d0
 
 pkgname = python-wandb
