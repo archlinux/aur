@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 
 pkgname=python-metpy
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 _basename="MetPy"
 _dirname="${_basename}-${pkgver}"
@@ -22,7 +22,7 @@ optdepends=(
 makedepends+=(python-build python-installer python-wheel python-setuptools-scm)
 checkdepends=('python-pytest' 'python-pytest-mpl' 'python-cartopy' 'python-shapely' 'python-netcdf4' 'python-packaging')
 source=("${pkgname}-${pkgver}::https://files.pythonhosted.org/packages/source/${_basename::1}/${_basename}/${_basename}-${pkgver}.tar.gz")
-sha256sums=('55bbcaaaef41027e67e051e3d2c029917217a2dd8768498d9dfca4939555ffdf')
+sha256sums=('eb065bac0d7818587fa38fa6c96dfe720d9d15b59af4e4866541894e267476bb')
 
 
 build() {
