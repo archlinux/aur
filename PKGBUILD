@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Standalone web interface for ASF."
 arch=('any')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
-license=('Apache')
+license=('Apache-2.0')
 depends=('asf')
 makedepends=('git' 'npm')
 provides=('asf-ui')
@@ -36,7 +36,7 @@ package() {
     # See https://github.com/npm/npm/issues/9359 for details.
     find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 
-    # npm gives ownership of ALL FILES to build user 
+    # npm gives ownership of ALL FILES to build user
     # https://bugs.archlinux.org/task/63396
     chown -R root:root "$pkgdir"
 }
