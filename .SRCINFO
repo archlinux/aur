@@ -1,6 +1,6 @@
 pkgbase = casparcg-server-git
 	pkgdesc = Software used to play out professional graphics, audio and video to multiple outputs
-	pkgver = 2.3.3.r187.g3c1d1f9
+	pkgver = 2.3.3.r200.g817a9a6
 	pkgrel = 1
 	url = https://github.com/CasparCG/server
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = casparcg-server-git
 	depends = openal
 	depends = sfml
 	depends = libxcomposite
+	depends = libxdamage
 	depends = libxkbcommon
 	depends = libxss
 	depends = libcups
