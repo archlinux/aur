@@ -3,14 +3,13 @@
 _pkgname=GeneExpressionSignature
 _pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
-pkgrel=1
-pkgdesc='Gene Expression Signature based Similarity Metric'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Gene Expression Signature based Similarity Metric"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-biobase
 )
 optdepends=(
@@ -21,14 +20,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3eef9f1b9b54d1e4974ea0a74be3ca967f44e7510e25521035e1dffb65b8a840')
+md5sums=('ee82254ee781e3cd6657c89d94e052b3')
+b2sums=('0046a7d5b8301e52923cc35e969de8a891c97da5156a67087e645705435a3e4ce3510b7ddb426db41d3e7e2641d181940edd39411ae8ab6481c5ad4e56fab631')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
