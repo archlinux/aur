@@ -1,15 +1,15 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=gibsonclient-git
-pkgver=r29.2bd52b0
+pkgver=r31.99350d1
 pkgrel=1
-pkgdesc='Client for Gibson - a high efficiency, tree based memory cache server.'
-arch=(i686 x86_64)
-url='http://gibson-db.in/'
-license=(BSD)
+pkgdesc='Client for Gibson - a high efficiency, tree based memory cache server'
+arch=(x86_64)
+url="https://github.com/evilsocket/libgibsonclient"
+license=(BSD-3-Clause)
 makedepends=(git cmake)
-source=(git://github.com/evilsocket/libgibsonclient
-        git://github.com/antirez/linenoise)
+source=(git+https://github.com/evilsocket/libgibsonclient
+        git+https://github.com/antirez/linenoise)
 sha1sums=('SKIP'
           'SKIP')
 
