@@ -3,14 +3,13 @@
 _pkgname=RTCA
 _pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.54.0
-pkgrel=1
-pkgdesc='Open-source toolkit to analyse data from xCELLigence System (RTCA)'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Open-source toolkit to analyse data from xCELLigence System (RTCA)"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-3.0-only')
 depends=(
-  r
   r-biobase
   r-gtools
   r-rcolorbrewer
@@ -19,14 +18,15 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7f8c010d92dc423dd6d0d40385e4bffd57e5256dfbe11ffa5e2fd763e9466fc5')
+md5sums=('8e1039d013ef1d5e08b48003ecffc25a')
+b2sums=('43586f308147142c56f6a1eb46f1a24a12373040043b4bdce83ee328e8d9c50711f80ae7216454e41874e034f4b95f54de2f56a03b031c4c4ced93426d545094')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
