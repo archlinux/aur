@@ -3,20 +3,20 @@
 
 # last/latest/longest "longterm maintenance" kernel releases
 # https://www.kernel.org/category/releases.html
-# 6.1 Greg Kroah-Hartman & Sasha Levin 2022-12-11 Dec, 2026
-_LLL_VER=6.1
-_LLL_SUBVER=77
+# 6.6 Greg Kroah-Hartman & Sasha Levin 2023-10-29 Dec, 2026
+_LLL_VER=6.6
+_LLL_SUBVER=27
 
 #PKGEXT='.pkg.tar'
 
 # Set x86-64 psABI level: https://dl.xanmod.org/check_x86-64_psabi.sh
 # Need XanMod patch
-# Possible values: v1 / v2 (default) / v3 / v4
-# Default v2 which use CONFIG_GENERIC_CPU2:
+# Possible values: v1 / v2 / v3 (default) / v4
+# Default v3 which use CONFIG_GENERIC_CPU3:
 # ref: https://github.com/xanmod/linux/tree/6.1/CONFIGS/xanmod/gcc
 # ref: https://xanmod.org/
 if [ -z ${_psABI_level} ]; then
-  _psABI_level=v2
+  _psABI_level=v3
 fi
 
 # Use HZ ticks 500 instead of Arch default 300
@@ -64,7 +64,7 @@ _Xanmod_PATCH_SRC="https://master.dl.sourceforge.net/project/xanmod/releases/lts
 #_CJKTTY_PATCH_URL="https://github.com/torvalds/linux/compare/v${_LLL_VER}...Gentoo-zh:${_LLL_VER}-utf8.patch"
 #_CJKTTY_PATCH_SRC="cjktty-${_LLL_VER}.patch::${_CJKTTY_PATCH_URL}"
 # https://github.com/zhmars/cjktty-patches
-_CJKTTY_COMMIT=303dff435a7a0fadbd6215cb59e52dcd656e1d47
+_CJKTTY_COMMIT=b43d618da6d6536338761a5fc7c9c377c318fb9e
 _CJKTTY_PATCH_SRC="https://github.com/zhmars/cjktty-patches/raw/${_CJKTTY_COMMIT}/v6.x/cjktty-${_LLL_VER}.patch"
 _CJKTTY_PATCH_PATCH=()
 
@@ -111,10 +111,10 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
+sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
             'SKIP'
-            '4422aa1a4dbcfd145fd081eec460d8bf42f3816f8b05bc94615c0a96c5352c37'
-            'c5bdf89d7867c368dfd7b7c16e5a50a99ca8022de28ab15315bdcb5dab8aad85'
+            '7fd321de9a72916a1aedca63c744f6035d71e5176c22a729870adfc674bbd446'
+            '47a008c8b3b684330f2b80beeaca20105ab3afcded9530b28b078821bd062ba6'
             'a8162641380b2681622d0f3c40ce130c9fd1cf6e176b5db18b95ba83609fbcf8')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -238,7 +238,6 @@ prepare() {
   diff -u ../config .config || :
 
   msg2 "Setting version..."
-  scripts/setlocalversion --save-scmversion
   if [ "${_psABI_level}" = 'v1' ]; then
     echo "" > localversion
   else
@@ -283,8 +282,8 @@ _package() {
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
   # https://github.com/archlinux/svntogit-packages/commit/a65a47973b7676de60add0f40277900a91c115f1
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
