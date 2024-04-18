@@ -1,7 +1,7 @@
 # Maintainer: Donien <donien.96@hotmail.com>
 
 pkgname="icingadb"
-pkgver="1.1.1"
+pkgver="1.2.0"
 pkgrel=1
 epoch=0
 pkgdesc="Icinga configuration and state database supporting multiple environments"
@@ -35,7 +35,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "8f4246765dc364917170905e38b01c62a6c44eab7d333c131fc46691a47c150a"
+    "f3452f796a471e848c2e51d2820444df8907be7f972cdd139e2abcd6f66a4890"
     "SKIP"
     "SKIP"
 )
