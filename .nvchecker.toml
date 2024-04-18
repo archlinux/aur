@@ -1,0 +1,5 @@
+[bite]
+source = "github"
+github = "WINSDK/bite"
+prefix = "V"
+use_latest_release = true
