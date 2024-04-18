@@ -1,0 +1,17 @@
+pkgbase = android-aarch64-libthai
+	pkgdesc = Thai language support library (Android aarch64)
+	pkgver = 0.1.29
+	pkgrel = 1
+	url = https://linux.thai.net/projects/libthai
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = android-configure
+	depends = android-aarch64-libdatrie
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://linux.thai.net/pub/thailinux/software/libthai/libthai-0.1.29.tar.xz
+	sha256sums = fc80cc7dcb50e11302b417cebd24f2d30a8b987292e77e003267b9100d0f4bcd
+
+pkgname = android-aarch64-libthai
