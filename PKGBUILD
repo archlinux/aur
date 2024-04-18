@@ -1,7 +1,7 @@
 pkgname=devilutionx-bin
 _pkgname=DevilutionX-bin
 pkgver=1.5.2
-pkgrel=3
+pkgrel=4
 _pkgrel_x86_64=1
 _pkgrel_i386=1
 _pkgrel_pentium4=1
@@ -37,7 +37,6 @@ package() {
    cd $srcdir
    cp -r $srcdir/devilutionx $destdir
    cp -r $srcdir/devilutionx.mpq $destdir
-
-   # Link to binary
-   ln -sf "$srcdir/devilutionx" "$pkgdir/usr/bin/devilutionx"
+   
+   install -Dm755 "$srcdir/devilutionx" "$pkgdir/usr/bin"
 }
