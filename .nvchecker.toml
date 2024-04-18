@@ -1,0 +1,5 @@
+[python-trame-plotly]
+source = "github"
+github = "Kitware/trame-plotly"
+use_latest_release = "true"
+prefix = "v"
