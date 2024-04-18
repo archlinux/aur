@@ -3,13 +3,14 @@
 pkgname=python-babelfont
 _pyname=${pkgname#python-}
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Interrogate and manipulate UFO, TTF and OTF fonts with a common interface'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
 license=(MIT)
 _pydeps=(defcon
          fontparts
+         orjson
          fonttools)
 depends=(python
          "${_pydeps[@]/#/python-}")
