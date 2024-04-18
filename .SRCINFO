@@ -1,0 +1,17 @@
+pkgbase = cosmic-applet-emoji-selector-git
+	pkgdesc = Emoji Selector for COSMIC DE
+	pkgver = r12.a20bf7e
+	pkgrel = 1
+	url = https://github.com/leb-kuchen/cosmic-applet-emoji-selector
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = cosmic-applets
+	depends = noto-fonts-emoji
+	provides = cosmic-applet-emoji-selector
+	conflicts = cosmic-applet-emoji-selector
+	source = git+https://github.com/leb-kuchen/cosmic-applet-emoji-selector.git
+	sha256sums = SKIP
+
+pkgname = cosmic-applet-emoji-selector-git
