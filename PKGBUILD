@@ -1,6 +1,6 @@
 # Maintainer: Thomas Mashos <thomas at mashos dot com>
 pkgname=syrinscape-boardgame-player
-pkgver=1.4.13_p0
+pkgver=1.5.0_p1
 pkgrel=1
 pkgdesc="Soundscape creator and sound design app for boardgame games"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!strip)
 source=("syrinscape-${pkgver//_/-}-linux-boardgame.tar.gz::https://www.syrinscape.com/get-download/syrinscape-${pkgver//_/-}-linux-scifi.tar.gz?type=linux&version=${pkgver//_/-}"
         "local://syrinscape-boardgame-player.desktop"
         )
-sha256sums=('3c78b6103754381226c074e22912b5f4b5bb3e6e86cf21b2dbac9df85f6c312c'  ## syrinscape-${pkgver//_/-}-linux-boardgame.tar.gz
+sha256sums=('dfa03eef76673b2a167864c1bb50cce3eee6c7e70fb8b5b78eb9cc346af0019e'  ## syrinscape-${pkgver//_/-}-linux-boardgame.tar.gz
             'SKIP'  ## syrinscape-boardgame-player.desktop
           ) 
 
