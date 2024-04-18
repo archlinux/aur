@@ -3,7 +3,7 @@
 _name=moderngl-window
 
 pkgname=python-moderngl-window
-pkgver=2.4.5
+pkgver=2.4.6
 pkgrel=1
 pkgdesc="A utility library for ModernGL making window creation and resource loading simple."
 
@@ -12,7 +12,7 @@ license=("MIT")
 url="https://github.com/moderngl/moderngl-window"
 
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('4305951d9753696ad2caa259af52c45eda8e02fee061d45cd364899942d2d00cf9ba23b8193a5a52e249f88da21df260efcd49e5f756f3743fdfbcf70144d405')
+sha512sums=('bef9eaece117d2205609a62658c6195c65df2bb65f1f64825ada101d335dd4d71623fa3d155ff891d9d3f03e741d5132f0f53041fefeb329cd742135ca5dd9a2')
 
 depends=(
     "python-moderngl"
