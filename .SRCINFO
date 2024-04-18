@@ -1,5 +1,5 @@
 pkgbase = ttf-dejavu-emojiless
-	pkgdesc = Font family based on the Bitstream Vera Fonts with a wider range of characters
+	pkgdesc = Derivate of DejaVu without characters listed as emoji, in order not to override color fonts
 	pkgver = 2.37+18+g9b5d1b2f
 	pkgrel = 1
 	url = https://dejavu-fonts.github.io
