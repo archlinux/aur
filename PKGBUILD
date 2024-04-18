@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.rc1.r0.gd6fc3b1
+pkgver=4.0.0.rc1.r5.g283e276
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -25,7 +25,6 @@ depends=('boost-libs'
          'libxml2'
          'postgresql-libs'
          'proj'
-         'python'
          'sqlite'
          'ttf-dejavu')
 makedepends=('boost'
