@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.37.0.r732.gfef04315a1
+pkgver=0.38.0.r51.g4d80e7b72c
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -150,7 +150,7 @@ build() {
 package() {
     meson install -C build --destdir "$pkgdir"
     install -D -m644 mpv/DOCS/{encoding.rst,tech-overview.txt} "${pkgdir}/usr/share/doc/mpv"
-    install -D -m644 mpv/TOOLS/lua/* -t "${pkgdir}/usr/share/mpv/scripts"
+    install -D -m644 mpv/TOOLS/{umpv,mpv_identify.sh,stats-conv.py,idet.sh,lua/*} -t "${pkgdir}/usr/share/mpv/scripts"
     
     # delete private entries only required for static linking
     sed -i -e '/Requires.private/d' -e '/Libs.private/d' "${pkgdir}/usr/lib/pkgconfig/mpv.pc"
