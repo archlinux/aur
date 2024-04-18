@@ -3,7 +3,7 @@
 pkgname=smw-git
 _pkgname=supermariowar
 pkgver=r1476.a781c755
-pkgrel=1
+pkgrel=2
 pkgdesc='Super Mario War multiplayer game.'
 url='https://github.com/mmatyas/supermariowar'
 arch=('i686' 'x86_64')
