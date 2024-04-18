@@ -1,0 +1,18 @@
+pkgbase = android-x86-libdatrie
+	pkgdesc = Double-array trie library (Android x86)
+	pkgver = 0.2.13
+	pkgrel = 1
+	url = https://linux.thai.net/projects/datrie
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = android-configure
+	makedepends = doxygen
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-0.2.13.tar.xz
+	sha256sums = 12231bb2be2581a7f0fb9904092d24b0ed2a271a16835071ed97bed65267f4be
+
+pkgname = android-x86-libdatrie
