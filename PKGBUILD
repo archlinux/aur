@@ -2,16 +2,16 @@
 # Contributor: Sebastian Gsänger <sebastian_gsaenger@web.de>
 # Contributor: chn <g897331845@gmail.com>
 pkgname=xwidgets
-pkgver=0.28.0
+pkgver=0.28.1
 pkgrel=1
 pkgdesc="C++ backend for Jupyter interactive widgets"
 arch=(x86_64)
 url="https://github.com/jupyter-xeus/${pkgname}"
-license=('custom:BSD-3-clause')
-depends=(xtl xeus xproperty nlohmann-json jupyter-widgetsnbextension)
+license=(BSD-3-Clause)
+depends=(xtl xeus xproperty nlohmann-json jupyterlab-widgets)
 makedepends=()
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jupyter-xeus/${pkgname}/archive/${pkgver}.tar.gz)
-sha512sums=('31447d0430906249a73093e20376003d6f4c1f0b43c009269c7378f6f0d53b2fb1a2941735fb33d1e4846fded04821c2ea03886b02e16bc1800160155d2dff3b')
+sha512sums=('9415468f8b458a8f51f9d04d3cdee032f1caafeec629bcf4d19e3d461362f93aecbac2de63240368aed9af7aa840d5ee055f1f6124e7ca5e7e50fec45efa3340')
 
 build() {
   cmake \
