@@ -1,15 +1,15 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=gibson-git
-pkgver=r228.4a287eb
+pkgver=r304.9710de4
 pkgrel=1
-pkgdesc='Gibson is a high efficiency, tree based memory cache server.'
-arch=(i686 x86_64)
-url='http://gibson-db.in/'
-license=(BSD)
+pkgdesc='A high efficiency, tree based memory cache server'
+arch=(x86_64)
+url="https://github.com/evilsocket/gibson"
+license=(BSD-3-Clause)
 makedepends=(git cmake)
 backup=(etc/gibson/gibson.conf)
-source=(git://github.com/evilsocket/gibson#branch=unstable
+source=("git+${url}"
         gibson.service)
 sha1sums=('SKIP'
           'e78f6f4988c56f91dfb287f83cf9ded0183ef091')
