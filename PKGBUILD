@@ -3,26 +3,26 @@
 _pkgname=KEGGandMetacoreDzPathwaysGEO
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
-pkgrel=1
-pkgdesc='Disease Datasets from GEO'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Disease Datasets from GEO"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-biobase
   r-biocgenerics
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7ae2c43cbd4add25c2003946c819f391a11ce8bd16a0d68a8e88915bfa2fb6e6')
+md5sums=('3a5180de47f1c28949b77db9f79b44ed')
+b2sums=('f447a252beb27db482cdcdbbd3a9e3aebe30e66de125012c54cefc4cbd8df11592c9cc90a73e8b6c4806d560c99329c7ccc74f74e1b9c9d5c76c443f2739fa9b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
