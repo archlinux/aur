@@ -1,6 +1,6 @@
 pkgbase = i3stat
 	pkgdesc = A lightweight and batteries-included status_command for i3 and sway
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/acheronfail/i3stat
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = i3stat
 	depends = gcc-libs
 	conflicts = i3stat-bin
 	conflicts = i3stat-git
-	source = i3stat-0.13.0.tar.gz::https://static.crates.io/crates/i3stat/i3stat-0.13.0.crate
-	sha512sums = 3c2bf24e086e43b6bf3eb09c58961366c3304440eeafd571324aa3ba73550e8040dd076c1c05cb29d74d8eb8c56746eb6503d7f3905d45f3956d2c66527a8bf9
+	source = i3stat-0.13.1.tar.gz::https://static.crates.io/crates/i3stat/i3stat-0.13.1.crate
+	sha512sums = 97a3653cacbfe54d7bae1e6a0297da5585b2e676aa81ed45b1b7975730faf69f8fdb0716d4af7a18fee24275d645ba8f0de02e5c17f8f453b8b28175aa70dff8
 
 pkgname = i3stat
