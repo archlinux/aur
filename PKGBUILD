@@ -27,7 +27,7 @@ backup=(
 )
 options=()
 install="icingadb.install"
-changelog=
+changelog="icingadb.changelog"
 source=(
     "https://github.com/Icinga/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
     "icingadb.sysusers"
