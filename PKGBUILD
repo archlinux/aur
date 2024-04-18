@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=netscanner
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Network scanner"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gcc-libs' 'iw')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c69bcb142dfce161fbfa89a58335710637187b7b9f0fd594e0dbf43ba0e83c4c5e70ebc5999ca34e7e0b90925dfaf5a065f6eff6f1398fbacae4201775064274')
+sha512sums=('8ce7b97532f5132829bc4acccb66954290e00923e6d8b1c0ac94f73c12ade9b91de8565b23fa0b5bd57bb7bd0dee9579cd46fc9b1e66e6582892421abf5b026b')
 
 prepare() {
   cd "$pkgname-$pkgver"
