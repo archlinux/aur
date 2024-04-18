@@ -11,7 +11,7 @@
 : ${_sccache:=}
 
 pkgname=onagre
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="General purpose application launcher for X and Wayland inspired by Rofi/Wofi and Alfred"
 arch=(x86_64)
@@ -21,15 +21,11 @@ depends=(gcc-libs glibc fontconfig freetype2 libxkbcommon pop-launcher)
 makedepends=(rust)
 [[ -n $_sccache ]] && makedepends+=(sccache)
 options=(!debug !lto)
-source=($url/archive/$pkgver/$pkgname-$pkgver.tar.gz
-        001.patch::$url/commit/33655e33586818946377515945abb415ab105de5.patch # feat: switch to redb for cache performance
-        )
-b2sums=('6ce9539df1b222ca8e19f9b6463b03c77f982555038c008f9f66abdd00f67cc1ee5536133c4e0b447a032cc6cc7f7d7f12cf4cb40067c4b63116f05264f910b8'
-        '63c8724514311254e16b273fb152ea6c641f2d6f142edac910d33e681e93506d0b71fdf6702d816e13f5e20769b75a5883434a2cd141eb2abb38b4a122c2aecd')
+source=($url/archive/$pkgver/$pkgname-$pkgver.tar.gz)
+b2sums=('6a55eabc644e89ce3cab58369d8afec23e0a8c6fd497c87cbcb2b0343b2603bfce6ca246b3d892de56f04aa4f290049f8076feffa5181f130c43bb4f24f5914a')
 
 prepare() {
     cd $pkgname-$pkgver
-    patch -Np1 < ../001.patch
     export CARGO_HOME="$srcdir"/$pkgname-$pkgver/.cargo
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
