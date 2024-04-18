@@ -1,9 +1,9 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-pytest-memray
-_name=${pkgname#python-}
-pkgver=1.5.0
-pkgrel=2
+_pkgname=${pkgname#python-}
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="A pytest plugin for easy integration of memray memory profiler"
 arch=(any)
 url="https://github.com/bloomberg/pytest-memray"
@@ -23,11 +23,10 @@ checkdepends=(
   python-flaky
   python-pytest-xdist
 )
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('67eb6d8a6225338f08ae05239e005601491da903077f7c28b1fdb2d06a137991')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('4e28f0265102f17b24dbc9df1b4bbfba7c0febedcb3cac36077a8e913e3b823e')
-
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
@@ -40,10 +39,10 @@ check() {
   cd "$_archive"
 
   rm -rf tmp_install
-  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=tmp_install dist/*.whl
 
-  export PYTHONPATH="$PWD/tmp_install/$_site_packages:$PYTHONPATH"
+  export PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH"
   pytest tests
 }
 
