@@ -12,10 +12,11 @@ depends=(
   glibc
 )
 makedepends=(cargo)
+options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/V$pkgver.tar.gz")
 sha256sums=('08768b7125aec6f1b02f633761304a757b0fd34a041942de3091a4078d615527')
 
-_archive="$pkgname-V$pkgver"
+_archive="$pkgname-$pkgver"
 
 prepare() {
   cd "$_archive"
@@ -42,7 +43,7 @@ check() {
 package() {
   cd "$_archive"
 
-  install -Dm755 -t "$pkgdir/usr/bin" target/release/srgn
+  install -Dm755 -t "$pkgdir/usr/bin" target/release/bite
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 
