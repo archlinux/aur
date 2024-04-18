@@ -1,6 +1,6 @@
 pkgbase = r-gsva
 	pkgdesc = Gene Set Variation Analysis for microarray and RNA-seq data
-	pkgver = 1.50.2
+	pkgver = 1.50.5
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GSVA
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = r-gsva
 	optdepends = r-shinybusy
 	optdepends = r-shinydashboard
 	optdepends = r-shinyjs
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSVA_1.50.2.tar.gz
-	sha256sums = 6109f333620e09fbabfd2595be11c862893bc38cbd407ba6ddd31fc84318f7f5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSVA_1.50.5.tar.gz
+	sha256sums = 5481badc5dabac2cfe6519ee2a098a03782bc78243ecd5a4a6b65e27cd192f58
 
 pkgname = r-gsva
