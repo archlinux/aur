@@ -1,0 +1,16 @@
+pkgbase = cosmic-applet-places-status-indicator-git
+	pkgdesc = Menu for quickly navigating places in the system on COSMIC DE
+	pkgver = r3.7e931c3
+	pkgrel = 1
+	url = https://github.com/leb-kuchen/cosmic-applet-places-status-indicator
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = cosmic-applets
+	provides = cosmic-applet-places-status-indicator
+	conflicts = cosmic-applet-places-status-indicator
+	source = git+https://github.com/leb-kuchen/cosmic-applet-places-status-indicator.git
+	sha256sums = SKIP
+
+pkgname = cosmic-applet-places-status-indicator-git
