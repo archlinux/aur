@@ -3,14 +3,13 @@
 _pkgname=GSEAlm
 _pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
-pkgrel=1
-pkgdesc='Linear Model Toolset for Gene Set Enrichment Analysis'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Linear Model Toolset for Gene Set Enrichment Analysis"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-biobase
 )
 optdepends=(
@@ -25,14 +24,15 @@ optdepends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('08e34285f60eb07ceda3ce3e78a9f7be1afce4716f12d73efe168b7e5e91aa46')
+md5sums=('b88623d080b75bb6775026e9e6c4dd9e')
+b2sums=('00622218eab3b7b88d78cef883856afe89f2c15ca58aca3f8754390c5e59fafc4e42288ce0266ddd4c790296a3fc0292ff5be0c752f0ce2fef3d965e3b2e1bba')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

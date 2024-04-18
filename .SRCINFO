@@ -1,11 +1,10 @@
 pkgbase = r-gsealm
 	pkgdesc = Linear Model Toolset for Gene Set Enrichment Analysis
 	pkgver = 1.62.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/GSEAlm
 	arch = any
-	license = Artistic2.0
-	depends = r
+	license = Artistic-2.0
 	depends = r-biobase
 	optdepends = r-all
 	optdepends = r-annotate
@@ -17,6 +16,7 @@ pkgbase = r-gsealm
 	optdepends = r-multtest
 	optdepends = r-rcolorbrewer
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSEAlm_1.62.0.tar.gz
-	sha256sums = 08e34285f60eb07ceda3ce3e78a9f7be1afce4716f12d73efe168b7e5e91aa46
+	md5sums = b88623d080b75bb6775026e9e6c4dd9e
+	b2sums = 00622218eab3b7b88d78cef883856afe89f2c15ca58aca3f8754390c5e59fafc4e42288ce0266ddd4c790296a3fc0292ff5be0c752f0ce2fef3d965e3b2e1bba
 
 pkgname = r-gsealm
