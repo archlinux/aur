@@ -1,13 +1,13 @@
 pkgbase = subdivx-get-git
-	pkgdesc = Download subtitles from subdivx.
-	pkgver = r84.5f94541
+	pkgdesc = Download subtitles from subdivx
+	pkgver = r85.6fc1e4e
 	pkgrel = 1
 	url = https://github.com/gnuy/subdivx-get
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = git+git://github.com/gnuy/subdivx-get
-	sha1sums = SKIP
+	makedepends = git
+	source = git+https://github.com/gnuy/subdivx-get
+	sha256sums = SKIP
 
 pkgname = subdivx-get-git

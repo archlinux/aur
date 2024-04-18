@@ -1,19 +1,18 @@
-# Maintainer: Gabriel Núñez Yuvé <gnuy@pm.me>
+# Contributor: Gabriel Núñez Yuvé <gnuy@pm.me>
+
 pkgname=subdivx-get-git
-_pkgname=subdivx-get
 license=('MIT')
-pkgdesc="Download subtitles from subdivx."
-pkgver=r84.5f94541
+pkgdesc="Download subtitles from subdivx"
+pkgver=r85.6fc1e4e
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/gnuy/subdivx-get'
-source=('git+git://github.com/gnuy/subdivx-get')
-depends=()
-makedepends=('go')
-sha1sums=('SKIP')
+source=("git+$url")
+makedepends=('go' 'git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "${pkgname%-git}"
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -21,11 +20,19 @@ pkgver() {
 }
 
 build(){
-  cd "$srcdir/$_pkgname"
-  GO111MODULE=on go build -o "$srcdir/bin/subdivx-get"
+  cd "${pkgname%-git}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" .
 }
 
 package() {
-  cd "$srcdir/bin"
-  install -Dm755 'subdivx-get' "$pkgdir/usr/bin/subdivx-get"
+  install -Dm755 'subdivx-get/subdivx-get' -t "$pkgdir/usr/bin"
 }
