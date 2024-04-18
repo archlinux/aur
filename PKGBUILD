@@ -1,6 +1,6 @@
 # Maintainer: Thomas Mashos <thomas at mashos dot com>
 pkgname=syrinscape-fantasy-player
-pkgver=1.4.13_p0
+pkgver=1.5.0_p1
 pkgrel=1
 pkgdesc="Soundscape creator and sound design app for fantasy games"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!strip)
 source=("syrinscape-${pkgver//_/-}-linux-fantasy.tar.gz::https://www.syrinscape.com/get-download/syrinscape-${pkgver//_/-}-linux-scifi.tar.gz?type=linux&version=${pkgver//_/-}"
         "local://syrinscape-fantasy-player.desktop"
         )
-sha256sums=('0f46ac897a7f145217e93076c54f006d8b9e5502812003084d7f53c4d9f8c4e8'  ## syrinscape-${pkgver//_/-}-linux-fantasy.tar.gz
+sha256sums=('32559409ad083ee9f02482144761c4eb39e5a359d35b1fa0085b1e75d3703059'  ## syrinscape-${pkgver//_/-}-linux-fantasy.tar.gz
             'SKIP'  ## syrinscape-fantasy-player.desktop
           ) 
 
