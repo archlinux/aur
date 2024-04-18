@@ -3,26 +3,26 @@
 _pkgname=PLPE
 _pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
-pkgrel=1
-pkgdesc='Local Pooled Error Test for Differential Expression with Paired High-throughput Data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Local Pooled Error Test for Differential Expression with Paired High-throughput Data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-biobase
   r-lpe
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('614f11be46858c8269ede6ccc5f5db513e78fb13d43ccbfef4008e43b932f079')
+md5sums=('1a4887a4c08676e0ce69331caacc297e')
+b2sums=('a97859986d46d665381b99261c66ee7808287a0cc328c13e25fed0815951bbd4e1bf8ef153c301a0e4d1cadf44e9b8f66fcda9351be450b74ecd685c918f4866')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
