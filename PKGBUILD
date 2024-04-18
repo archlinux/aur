@@ -25,15 +25,10 @@ pkgver() {
 
 
 prepare() {
-#	cp $srcdir/supermariowar
-#	cd -- "$srcdir/supermariowar"
      # init submodules and disable the ones we don't need, we want our system libraries instead
     cd "$_pkgname"
     echo git submodule init
     git submodule init data
-    #echo git submodule deinit dependencies/enet
-    #git submodule deinit dependencies/enet
-    #echo git config submodule.data.url "$srcdir/${_pkgname}-data"
     git config submodule.data.url "$srcdir/${_pkgname}-data"
 	echo git submodule update
     git config --global protocol.file.allow always
@@ -41,8 +36,6 @@ prepare() {
 }
 
 build() {
-#	cd -- "$srcdir/supermariowar/build/"
-#	cmake .. -DCMAKE_INSTALL_PREFIX:path="${pkgdir}/usr/" -DSMW_BINDIR:path="${pkgdir}/usr/bin" -DSMW_DATADIR:path="${pkgdir}/var/lib/smw" -DSMW_DOCDIR:path="${pkgdir}/usr/share/doc/smw/"
     cmake -B build -S "$_pkgname" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX:path="/usr/" \
@@ -56,8 +49,6 @@ build() {
 }
 
 package() {
-	#cd -- "$srcdir/supermariowar/build"
-	#make install
     DESTDIR="$pkgdir" cmake --install build
 	sed -i 's/\(--datadir[[:space:]]\)[^[:space:]]*/\1\/var\/lib\/smw/' "$pkgdir/usr/share/applications/supermariowar.desktop"
 	sed -i 's/\(--datadir[[:space:]]\)[^[:space:]]*/\1\/var\/lib\/smw/' "$pkgdir/usr/share/applications/supermariowar-leveleditor.desktop"
