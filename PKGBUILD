@@ -1,8 +1,9 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-sphinx-codeautolink
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.15.0
+_pname=${pkgbase#python-}
+_pyname=${_pname//-/_}
+pkgname=("python-${_pname}" "python-${_pname}-doc")
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="Automatic links from code examples to reference documentation"
 arch=('any')
@@ -14,13 +15,13 @@ makedepends=('python-setuptools'
              'python-installer'
              'python-sphinx'
              'python-sphinx_rtd_theme'
-             'python-beautifulsoup4'
              'python-matplotlib'
-             'ipython')
+             'ipython'
+             'python-beautifulsoup4')
 checkdepends=('python-pytest')    # sphinx, bs4, ipython already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'Makefile')
-md5sums=('8bc7687a42b720e1d6462d4a4f18abc7'
+md5sums=('619afb4a57da0becf56c7f982ffe8091'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 prepare() {
@@ -40,7 +41,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-sphinx-codeautolink() {
