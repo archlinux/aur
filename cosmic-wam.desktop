@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Cosmic WAM
+Comment=Cosmic Web App Manager
+Icon=cosmic-wam
+Exec=cosmic-wam
+Terminal=false
+Categories=Application;Network;
+StartupNotify=false

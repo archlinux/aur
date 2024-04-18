@@ -1,0 +1,19 @@
+pkgbase = cosmic-wam-git
+	pkgdesc = Web App Manager written with love and libcosmic.
+	pkgver = r54.c59ae0a
+	pkgrel = 1
+	url = https://github.com/elevenhsoft/cosmic-wam
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	provides = cosmic-wam
+	conflicts = cosmic-wam
+	source = git+https://github.com/elevenhsoft/cosmic-wam.git
+	source = cosmic-wam.desktop
+	sha256sums = SKIP
+	sha256sums = 3dc3d3eaf91108051add7e57c45d318f26f18cef9ea279ebf900f8ec87cf3794
+
+pkgname = cosmic-wam-git
