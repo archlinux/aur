@@ -1,4 +1,4 @@
-convertwithmoss-*
-/pkg
-/src
+pkg/
+src/
 *.tar.*
+*.zip

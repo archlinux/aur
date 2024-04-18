@@ -1,15 +1,14 @@
 pkgbase = convertwithmoss
-	pkgdesc = A tool for converting multi-sample from one format to another.
-	pkgver = 7.5.0
-	pkgrel = 1
+	pkgdesc = A tool for converting multi-samples from one format to another
+	pkgver = 8.0.0
+	pkgrel = 2
 	url = https://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html
-	arch = any
-	groups = pro-audio
-	license = LGPL3
+	arch = aarch64
+	arch = x86_64
+	license = LGPL-3.0-only
 	makedepends = maven
-	depends = java-runtime>=17
-	depends = java-openjfx
-	source = convertwithmoss-7.5.0.tar.gz::https://github.com/git-moss/ConvertWithMoss/archive/refs/tags/7.5.0.tar.gz
-	sha512sums = f705a55ab4c5fd04c6949ccc636386ed65c6c031cb5ba1ebdffe5cfef35007585b87cf0bbb19326ded908c2644c7e0f3d1a76250684f05236c3499bcbadf0510
+	depends = java-runtime>=16
+	source = convertwithmoss-8.0.0.tar.gz::https://github.com/git-moss/ConvertWithMoss/archive/refs/tags/8.0.0.tar.gz
+	sha256sums = 45b12cc8281feb50837d32b4c22bdf22e99b91a8d07dd666e761ea31e7db4f7e
 
 pkgname = convertwithmoss
