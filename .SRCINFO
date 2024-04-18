@@ -1,0 +1,17 @@
+pkgbase = mirth
+	pkgdesc = Compiler for the Mirth programming language
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/mirth-lang/mirth
+	arch = i686
+	arch = x86_64
+	license = BSD0
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	provides = mirth
+	conflicts = mirth
+	source = mirth::git+https://github.com/mirth-lang/mirth.git
+	sha256sums = SKIP
+
+pkgname = mirth-git
