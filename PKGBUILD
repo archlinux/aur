@@ -1,7 +1,7 @@
 # Maintainer: VVL <me@ivvl.ru>
 
 pkgname=zitadel
-pkgver=2.49.0
+pkgver=2.50.1
 pkgrel=1
 pkgdesc="Identity infrastructure, simplified for you"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://github.com/zitadel/zitadel/archive/refs/tags/v${pkgver}.tar.gz"
         "zitadel.tmpfiles"
         "config.yaml"
         "init.yaml")
-sha512sums=('c5cd498a28d45f7b9eba4deb386fb776765293998e246f6fbcce35cc2e77dd15db66f5c85dc0e936f8694f231c60f5186c2b5e3feda8a3a46a81318df3d80511'
+sha512sums=('c390d48a1461a112d3ffcdf82af242289c635a6f32d34971af6163fbd9e925d4bf9bb24ca3bf67048356001d803f5890a84f09effae6266c850776467fc34c23'
             '2d2a004537ff632daae1b9931764c1404495cf42ccf1bb96fbb7b6f47c0188b0f2da3e548fd7d90cebe5ab5045399729af3f1799564d11914df80dff244d10a5'
             'f497d8fdc43327a7bacc957b6c583a3dd81f3d1fe387869463cb23c5c0a8efcd04772f3fc528c528ebc6cb55d29e0d11ddf73bc7db7cf61655267b964bcc2f12'
             '7b847d89fb3d231d25a053b0a9a7fee2b184d17553b321fc403c86b122f349a65346a7e1522e1caa7e2c2dcef742358322e85ea1c2a0dd578e6e180a19553508'
