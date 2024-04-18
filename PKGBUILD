@@ -2,7 +2,7 @@
 
 pkgname=mautrix-meta
 _name=meta
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ source=(
   log-path.diff
 )
 backup=("etc/${pkgname}/${pkgname}.yaml")
-sha256sums=('701bb2efffcc3a7beb9227f0e63f215f7c242a252de4201fa9865487bdff47db'
+sha256sums=('b41a8349ab6045151a394cff21c3836e9bf77152b10c1a4620c1f272442ff1f3'
             '6888d152b7b6b0175160a452009b866eba53244ff844da9f6abeb02654e28be5'
             '7dfa012f34ec7f940b1c4111de701b97273b1c2f4075b2f5e67a4c2327f8fb2f'
             '221814dbeab867bcb5217e22cbdd2d4ba0031ac594bea5a79134f137ef302d22'
@@ -53,6 +53,7 @@ package() {
   install -Dm755 "$pkgname" "${pkgdir}/usr/bin/$pkgname"
   install -Dm644 "${srcdir}/sysusers-${pkgname}.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -dm755 "${pkgdir}/etc/${pkgname}"
   install -Dm644 "example-config.yaml" "${pkgdir}/etc/${pkgname}/${pkgname}.yaml"
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
