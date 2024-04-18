@@ -1,7 +1,7 @@
 pkgbase = kde-service-menu-reimage-mod
 	pkgdesc = Manipulate images e their metadata v. mod
 	pkgver = 24.03.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/biglinux/kde-service-menu-reimage
 	arch = any
 	license = GPL
