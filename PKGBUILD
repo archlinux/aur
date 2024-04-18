@@ -3,14 +3,13 @@
 _pkgname=rcellminerData
 _pkgver=2.24.0
 pkgname=r-${_pkgname,,}
-pkgver=2.24.0
-pkgrel=1
-pkgdesc='rcellminerData: Molecular Profiles and Drug Response for the NCI-60 Cell Lines'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Molecular Profiles and Drug Response for the NCI-60 Cell Lines"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-3.0-only')
 depends=(
-  r
   r-biobase
 )
 optdepends=(
@@ -21,14 +20,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e66ee1b2ff45428705b89fa9e0dc1ed9621de13a1997653ecc5b3885236cb13a')
+md5sums=('2f45852d4eeb438b6a1feb156200b2bc')
+b2sums=('9bb7bd00b38e89509f9ab1f6e43d5b1d3882a53f54625a53f6026af5e1265eea866ef36e9210a9c99f4256ca3b00fe2646ffcd199e8e1e687afc4a3c67dcfa72')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
