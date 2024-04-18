@@ -1,0 +1,23 @@
+pkgbase = python-qq-botpy
+	pkgdesc = qq-botpy 是基于机器人开放平台API 实现的机器人框架，目的提供一个易使用、开发效率高的开发框架。
+	pkgver = 1.2.1
+	pkgrel = 0
+	url = https://pypi.org/project/qq-botpy
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = pre-commit
+	depends = python
+	depends = python-apscheduler
+	depends = python-aiohttp>=3.7.4
+	depends = python-pyyaml
+	provides = qq-botpy
+	conflicts = qq-botpy
+	options = !strip
+	source = qq-botpy-1.2.1.tar.gz::https://files.pythonhosted.org/packages/source/q/qq-botpy/qq-botpy-1.2.1.tar.gz
+	sha256sums = 442172a0557a9b43d2777d1c5e072090a9d1a54d588d1c5da8d3efc014f4887f
+
+pkgname = python-qq-botpy
