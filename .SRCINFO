@@ -1,7 +1,7 @@
 pkgbase = php72-memcached
 	pkgdesc = php72 extension for interfacing with memcached via libmemcached library
 	pkgver = 3.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pecl.php.net/package/memcached
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,8 @@ pkgbase = php72-memcached
 	checkdepends = memcached
 	depends = php72
 	depends = libmemcached
-	provides = php-memcached=3.1.5-1
 	backup = etc/php72/conf.d/memcached.ini
 	source = https://pecl.php.net/get/memcached-3.1.5.tgz
 	sha512sums = 87d5fd079fcaad81139785d6766da71b23a1a0fe907d4b22f3a787af148a20412c11df11c4d98c165241658baf0d87c8a6b29de15db07a0f9d1fabc8aec8f0e9
 
 pkgname = php72-memcached
-
