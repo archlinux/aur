@@ -24,7 +24,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.8.6
+pkgver=6.8.7
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -56,17 +56,17 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
 sha256sums+=(
-  '9e723232d603ab45ebf043c34714c48f277ab195c29abcb8472f2a4c3a5a1995'
+  '291d1a1faf4e87b3b0ea9729080db887aafd1ff2fac1430ceca921e46bc22fae'
   'SKIP'
   'SKIP'
 )
 validpgpkeys=(
-  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
-  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
-  83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
+  ABAF11C65A2970B130ABE3C479BE3E4300411886 # Linus Torvalds
+  647F28654894E3BD457199BE38DBBDC86092693E # Greg Kroah-Hartman
+  83BC8889351B5DEBBB68416EB8AC08600F108CDF # Jan Alexander Steffens (heftig)
 )
 
-if [[ ${_build_vfio::1} == "t" ]] ; then
+if [[ ${_build_vfio::1} == "t" ]]; then
   source+=(
     1001-6.8.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
     1002-6.8.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
@@ -77,13 +77,13 @@ if [[ ${_build_vfio::1} == "t" ]] ; then
   )
 fi
 
-if [[ ${_build_arch_patch::1} == "t" ]] ; then
+if [[ ${_build_arch_patch::1} == "t" ]]; then
   _srctag=v${pkgver}-arch1
   _dl_url_arch='https://github.com/archlinux/linux'
 
   # if no new patch, use previous one
-  if grep 404 <(curl -sI $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst | head -1) > /dev/null ; then
-    _srctag=v${pkgver::4}$(( ${pkgver##*.} -1 ))-arch1
+  if grep 404 <(curl -sI $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst | head -1) > /dev/null; then
+    _srctag=v${pkgver::4}$((${pkgver##*.} - 1))-arch1
   fi
 
   source+=(
@@ -95,14 +95,14 @@ if [[ ${_build_arch_patch::1} == "t" ]] ; then
   )
 fi
 
-if [[ ${_build_clang::1} == "t" ]] ; then
+if [[ ${_build_clang::1} == "t" ]]; then
   makedepends+=(clang llvm lld)
 
   export LLVM=1
   export LLVM_IAS=1
 fi
 
-if [[ "${_build_v3::1}" == "t" ]] ; then
+if [[ "${_build_v3::1}" == "t" ]]; then
   export KCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
   export HOSTCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
   export HOSTCXXFLAGS="-march=x86-64-v3 -mtune=generic -O3"
@@ -116,12 +116,12 @@ _prepare_extra() {
   # remove extra version suffix
   sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
 
-  if [[ "${_build_clang::1}" == "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]]; then
     scripts/config --disable LTO_CLANG_FULL
     scripts/config --enable LTO_CLANG_THIN
   fi
 
-  if [[ "${_build_clang::1}" == "t" ]] || [[ "${_build_tracer::1}" != "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]] || [[ "${_build_tracer::1}" != "t" ]]; then
     echo "Disabling Tracers..."
     scripts/config \
       --disable CONFIG_FTRACE \
@@ -129,7 +129,7 @@ _prepare_extra() {
       --disable CONFIG_STACK_TRACER
   fi
 
-  if [[ "${_build_numa::1}" != "t" ]] ; then
+  if [[ "${_build_numa::1}" != "t" ]]; then
     echo "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
   fi
@@ -163,7 +163,7 @@ prepare() {
   _prepare_extra
 
   make -s kernelrelease > version
-  echo "Prepared $pkgbase version $(<version)"
+  echo "Prepared $pkgbase version $(< version)"
 }
 
 build() {
@@ -191,7 +191,7 @@ _package() {
   )
 
   cd $_srcname
-  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$(< version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
@@ -203,7 +203,7 @@ _package() {
 
   echo "Installing modules..."
   ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
-    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
+    DEPMOD=/doesnt/exist modules_install # Suppress depmod
 
   # remove build link
   rm "$modulesdir"/build
@@ -214,7 +214,7 @@ _package-headers() {
   depends=(pahole)
 
   cd $_srcname
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+  local builddir="$pkgdir/usr/lib/modules/$(< version)/build"
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
@@ -272,11 +272,11 @@ _package-headers() {
   local file
   while read -rd '' file; do
     case "$(file -Sib "$file")" in
-      application/x-sharedlib\;*)      # Libraries (.so)
+      application/x-sharedlib\;*) # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
-      application/x-archive\;*)        # Libraries (.a)
+      application/x-archive\;*) # Libraries (.a)
         strip -v $STRIP_STATIC "$file" ;;
-      application/x-executable\;*)     # Binaries
+      application/x-executable\;*) # Binaries
         strip -v $STRIP_BINARIES "$file" ;;
       application/x-pie-executable\;*) # Relocatable binaries
         strip -v $STRIP_SHARED "$file" ;;
@@ -295,7 +295,7 @@ _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel (ACS override and i915 VGA arbiter patches)"
 
   cd $_srcname
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+  local builddir="$pkgdir/usr/lib/modules/$(< version)/build"
 
   echo "Installing documentation..."
   local src dst
