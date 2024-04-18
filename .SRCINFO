@@ -17,7 +17,6 @@ pkgbase = pyradio-git
 	depends = python-dateutil
 	depends = python-netifaces
 	depends = python-rich
-	depends = ttf-dejavu
 	optdepends = mplayer: as backend
 	optdepends = mpv: as backend
 	optdepends = vlc: as backend
