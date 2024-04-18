@@ -1,18 +1,18 @@
 pkgbase = ledger-live
 	pkgdesc = Maintain your Ledger devices
-	pkgver = 2.77.2
+	pkgver = 2.79.0
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledger-live
 	arch = x86_64
 	license = MIT
 	makedepends = node-gyp
-	makedepends = fnm
 	makedepends = pnpm
+	makedepends = nvm
 	depends = ledger-udev
 	depends = electron28
-	source = ledger-live-2.77.2-264cacb.tar.gz::https://api.github.com/repos/LedgerHQ/ledger-live/tarball/264cacbc63746106284fe2545d7e149a6064a14a
+	source = ledger-live-2.79.0-6d09986.tar.gz::https://api.github.com/repos/LedgerHQ/ledger-live/tarball/6d0998607064658ed9968c1c94036617ce8f1a9e
 	source = ledger-live-desktop.sh
-	sha512sums = 44e604266ca509e44db58a1cd22ef8bb88b41186da0d2b8c99109e4c157be8fb420bcfbf736b0416316286f728646a8e90619f2abde1543ab26d50fbc4d8e2fd
+	sha512sums = caeea4ef98a3a2f005ae24cf728ee34c6a682e8cb4cc0a4399bf4cc3ce07dd742d85cf2aaa1877bafad080a9f221a6e5e6bcd7d491d5dfdc56417574066f5046
 	sha512sums = 70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755
 
 pkgname = ledger-live
