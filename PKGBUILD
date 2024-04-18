@@ -2,7 +2,7 @@
 # Co-Maintainer: Takase <takase1121@proton.me>
 
 pkgname=derper
-pkgver=1.64.1
+pkgver=1.64.2
 pkgrel=1
 
 pkgdesc='Tailscale runs DERP relay servers to help connect your nodes.'
