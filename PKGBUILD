@@ -2,7 +2,7 @@
 
 pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git)
-pkgver=1.5.141.r20.g959fb9e
+pkgver=1.5.179.r0.g02da3bf
 pkgrel=1
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
@@ -10,12 +10,15 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/nxp-imx/mfgtools"
 license=('BSD-3-Clause')
 groups=()
-depends=(bzip2
-    zlib
+depends=(
+    bzip2
+    gcc-libs
+    glibc
     libusb
-    libzip
     tinyxml2
-    openssl)
+    openssl
+    zlib
+    zstd)
 makedepends=(
     cmake
     git
@@ -42,7 +45,10 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${pkgbase%-git}"
-    git describe --long --tags |  sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/uuu_//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^uuu_//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 prepare()
