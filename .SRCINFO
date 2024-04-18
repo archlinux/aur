@@ -1,14 +1,14 @@
 pkgbase = r-psea
-	pkgdesc = Population-Specific Expression Analysis.
+	pkgdesc = Population-Specific Expression Analysis
 	pkgver = 1.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/PSEA
 	arch = any
-	license = Artistic2.0
-	depends = r
+	license = Artistic-2.0
 	depends = r-biobase
 	optdepends = r-biocstyle
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/PSEA_1.36.0.tar.gz
-	sha256sums = 5ee830e1b1f6b11afa00ee2394405c0a79d4ae69d3124fe622e7ff6b99eaf609
+	md5sums = c8f9f8210c265d722d76668e19a6fd7c
+	b2sums = 388de01f9286438d7fc5c35d1855768a6f90ce59734de754e5be3b6877c830e61a5cdf73d3f5167db30e9111f09bccb564fca4643aa51393f93cb75d55f3462b
 
 pkgname = r-psea
