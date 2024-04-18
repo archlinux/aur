@@ -5,7 +5,7 @@
 pkgname=ncspot-ncurses
 _pkgname=ncspot
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes."
 arch=('x86_64')
 url="https://github.com/hrkfdn/ncspot"
@@ -15,17 +15,17 @@ conflicts=('ncspot' 'ncspot-git' 'ncspot-bin')
 depends=('openssl' 'libpulse' 'libxcb' 'dbus' 'hicolor-icon-theme' 'gcc-libs' 'glibc' 'ncurses')
 makedepends=('cargo' 'python' 'pkgconf' 'ueberzug' 'pandoc-cli')
 optdepends=('ueberzug: display album art in terminal (X11)')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/hrkfdn/ncspot/archive/v.${pkgver}.tar.gz")
-b2sums=('27d773361bfd418446b16d7750e3f4a0413eb93825b8677e5a029930ef008c95278dc82719ce758b5170124a6fe68004ead909b401624c05e0fa58d8a0cacf47')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/hrkfdn/ncspot/archive/v${pkgver}.tar.gz")
+b2sums=('5f330654f755e61407e229de0b0f9ad3364d54c1dd180f26b83dfe6836601bcbebf940d545d54d886098c2c9e12e9a312f4ffc82999f226dc6b8767ca1c9bf7b')
 options=('!lto')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-v.${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-v.${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --no-default-features --features "share_clipboard pulseaudio_backend mpris notify cover ncurses_backend"
@@ -34,13 +34,13 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-v.${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --features cover
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-v.${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   install -Dm 755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm 644 "misc/ncspot.desktop" "${pkgdir}/usr/share/applications/ncspot.desktop"
   install -Dm 644 "images/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ncspot.svg"
