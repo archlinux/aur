@@ -1,34 +1,35 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=liboqs
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
-arch=('x86_64')
+arch=(x86_64)
 url="https://openquantumsafe.org/liboqs/"
-license=('MIT')
+license=(MIT)
 depends=(
-    'gcc-libs'
-    'openssl'
+    gcc-libs
+    openssl
 )
 makedepends=(
-    'cmake'
-    'doxygen'
-    'ninja'
+    cmake
+    doxygen
+    ninja
+    python # required for generating the docs
 )
 checkdepends=(
-    'python-pytest'
-    'python-pytest-xdist'
-    'python-yaml'
+    python-pytest
+    python-pytest-xdist
+    python-yaml
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-quantum-safe/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+source=($pkgname-$pkgver.tar.gz::https://github.com/open-quantum-safe/$pkgname/archive/refs/tags/$pkgver.tar.gz)
 b2sums=('6fda208f669f270b7c361a87c5b4d2bc59e3fac2d49a31c378650bc2b6a36a34e6627bf31785d5bbbb5609cc87ef280ff035c60961dfd3abe620035e88c9a433')
 
 build() {
-    cmake -G Ninja -B build -S "${pkgname}-${pkgver}"\
+    cmake -G Ninja -B build -S $pkgname-$pkgver\
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
+        -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
         -DOQS_ALGS_ENABLED=All \
         -DOQS_BUILD_ONLY_LIB=OFF \
         -DOQS_DIST_BUILD=ON \
@@ -49,7 +50,7 @@ check() {
 
 package() {
     ninja -C build install
-    install -D -m0644 "${pkgname}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -d "${pkgdir}/usr/share/doc/"
-    cp -r build/docs/html "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m0644 $pkgname-$pkgver/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -d "$pkgdir"/usr/share/doc/
+    cp -r build/docs/html "$pkgdir"/usr/share/doc/$pkgname
 }
