@@ -1,7 +1,7 @@
 # Maintainer: Infernio <infernio at icloud dot com>
 
 pkgname=btrfs-list
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Get a nice tree-style view of your btrfs subvolumes/snapshots, including their size, a la 'zfs list'"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/speed47/btrfs-list"
 license=('GPL2')
 depends=('perl' 'btrfs-progs')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/speed47/btrfs-list/archive/v${pkgver}.tar.gz")
-sha256sums=('9baa454c29ad8a78d9df835d5c74d1fa01da88a48e19b190b545744f695715d4')
+sha256sums=('8756e7e013c73d99344fd9a3ee8e9ca72cda5165b6fc2422c280239459c43519')
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
