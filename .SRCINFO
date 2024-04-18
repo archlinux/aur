@@ -1,0 +1,14 @@
+pkgbase = pyfluidsynth-git
+	pkgdesc = Python bindings for FluidSynth
+	pkgver = r66.98b22fb
+	pkgrel = 1
+	url = http://code.google.com/p/pyfluidsynth
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = fluidsynth
+	conflicts = pyfluidsynth
+	source = pyfluidsynth::git+https://github.com/nwhitehead/pyfluidsynth.git
+	md5sums = SKIP
+
+pkgname = pyfluidsynth-git
