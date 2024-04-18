@@ -1,4 +1,6 @@
 # Maintainer: Groctel <aur@taxorubio.com>
+# shellcheck disable=SC2034,SC2154,SC2164
+
 
 _name=fb2converter
 pkgname=fb2converter-bin
@@ -17,8 +19,7 @@ provides=("fb2c" "kindlegen")
 conflicts=("kindlegen")
 
 package () {
-    # cd "$srcdir/$pkgname-$pkgver" || exit
     install -D -m755 fb2c "$pkgdir/usr/bin/fb2c"
     install -D -m755 kindlegen "$pkgdir/usr/bin/kindlegen"
-    install -D -m644 /usr/share/licenses/common/GPL3/license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m644 /usr/share/licenses/spdx/GPL-3.0-only.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
