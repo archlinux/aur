@@ -1,7 +1,7 @@
 pkgbase = gcc12
 	pkgdesc = The GNU Compiler Collection
 	pkgver = 12.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gcc.gnu.org
 	arch = x86_64
 	license = GPL3
