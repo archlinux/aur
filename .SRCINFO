@@ -1,14 +1,13 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source Eurorack modular synthesizer simulator
-	pkgver = 2.5.0
-	pkgrel = 2
+	pkgver = 2.5.1
+	pkgrel = 1
 	url = https://vcvrack.com/
-	arch = x86_64
 	arch = aarch64
+	arch = x86_64
 	groups = pro-audio
 	license = custom
-	license = CCPL
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = alsa-lib
 	makedepends = cmake
 	makedepends = curl
@@ -28,7 +27,7 @@ pkgbase = vcvrack
 	depends = jansson
 	provides = vcvrack-fundamental=2.6.0
 	conflicts = vcvrack-fundamental
-	source = Rack::git+https://github.com/VCVRack/Rack#tag=f9e90eda901dad84f80f93d61f92afc5e37ad2bb
+	source = Rack::git+https://github.com/VCVRack/Rack#tag=3f133d8a0359b539bd262a4c3e1e6b4fb2ef83e6
 	source = filesystem.git::git+https://github.com/gulrak/filesystem
 	source = fuzzysearchdatabase.git::git+https://bitbucket.org/j_norberg/fuzzysearchdatabase
 	source = nanosvg.git::git+https://github.com/memononen/nanosvg
