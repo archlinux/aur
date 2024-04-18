@@ -2,7 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=godot-mono
 pkgname=godot-mono
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('pipewire-alsa: for audio support'
 provides=('godot')
 conflicts=('godot')
 source=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/godot-${pkgver}-stable.tar.xz")
-sha512sums=('ac09046532f5cf504bd57c867ac8fcb40b30848152cd6a95ee2a2d2c7e9cce027fdfceb66fcf1146e562cbca853a484da861c45c2a5fc0a63021d309bdf04590')
+sha512sums=('4a623063be5488957e1ede7e45b6865f6cd61bc954ac311587b9e97bed848a4083c4a7225d0a81bca285d854d33be9b07d7d0c21465c9f25b90e92b08090429c')
 
 prepare() {
   # Update the MIME info, ref FS#77810
