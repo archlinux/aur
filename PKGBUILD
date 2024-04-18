@@ -5,7 +5,7 @@ pkgbase=python-glue-core
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="Core library for the glue multidimensional data visualization project"
 arch=('any')
@@ -35,7 +35,7 @@ checkdepends=('python-pytest-mpl'
               'python-scikit-image'
               'python-xlrd')  # matplotlib pandas echo astropy ipython shapely scipy already in makedepends, fast-histogram <- mpl-scatter-density; h5py <- astrodendro
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('b4eccd758ad1f723c65e6f56ec8ad7a34091e55e70a397975e01d31c83eedc2f')
+sha256sums=('4886ab3cd437a3299b30784d492af401aba1e4f5f27b233008b7b2d2f906d53a')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
