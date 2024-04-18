@@ -10,7 +10,7 @@ pkgname=("${pkgbase}"
 	"obs-plugin-${pkgbase}")
 epoch=0
 pkgver=B7_rc1
-pkgrel=1
+pkgrel=1.1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough. (Candidate Version)"
 url="https://looking-glass.io/"
 arch=('x86_64')
@@ -25,13 +25,13 @@ sha512sums=('SKIP'
 
 _lgdir="${_pkgname}-${pkgver//_/-}"
 
-prepare() {
-	cd "${srcdir}/${_lgdir}"
-	patch -p1 <"${srcdir}/module-kernel-64.patch"
+# prepare() {
+# 	cd "${srcdir}/${_lgdir}"
+# 	patch -p1 <"${srcdir}/module-kernel-64.patch"
 
-	sed -i '1 i\#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"' \
-		"host/platform/Linux/capture/pipewire/src/portal.c"
-}
+# 	sed -i '1 i\#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"' \
+# 		"host/platform/Linux/capture/pipewire/src/portal.c"
+# }
 
 build() {
 	cd "${srcdir}/${_lgdir}"
