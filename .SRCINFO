@@ -1,14 +1,14 @@
 pkgbase = r-hybridmtest
 	pkgdesc = Hybrid Multiple Testing
 	pkgver = 1.46.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/HybridMTest
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-biobase
 	depends = r-fdrtool
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/HybridMTest_1.46.0.tar.gz
-	sha256sums = e1bc4ca4b8cd265346f180b072be4c267cecfc00d4a1b3b03c6d14d2148371ca
+	md5sums = a2b1764b0e458f82e6055a3ebdf90933
+	b2sums = 5cf6f18ee78817270556858f36d2048a99ae9848a0b0a94d17220aca293de089b6c88a78bbcabc428c6c629ed671079fb2e7261579a5dca38e100715ce601aca
 
 pkgname = r-hybridmtest
