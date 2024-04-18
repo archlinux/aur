@@ -12,6 +12,7 @@ url="http://code.google.com/p/pyfluidsynth"
 license=('LGPL')
 depends=('fluidsynth')
 makedepends=('git')
+provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}"::"git+https://github.com/nwhitehead/$_pkgname.git")
 md5sums=('SKIP')
