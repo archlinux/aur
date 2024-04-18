@@ -1,7 +1,7 @@
 pkgname=supermariowar-git
 pkgdesc='Super Mario War: A fan-made multiplayer Super Mario Bros. style deathmatch game'
 pkgver=1259
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url=https://github.com/mmatyas/supermariowar
 makedepends=( cmake )
