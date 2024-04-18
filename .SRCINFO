@@ -1,6 +1,6 @@
 pkgbase = pymdown-extensions
 	pkgdesc = Extensions for Python Markdown
-	pkgver = 10.7.1
+	pkgver = 10.8
 	pkgrel = 1
 	url = https://facelessuser.github.io/pymdown-extensions
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = pymdown-extensions
 	depends = python-markdown
 	depends = python-pyaml
 	optdepends = python-pygments: syntax highlighting
-	source = pymdown-extensions-10.7.1.tar.gz::https://github.com/facelessuser/pymdown-extensions/archive/10.7.1.tar.gz
-	sha256sums = 065d6a7844b79d729a52e02717a79309b45158904b305c5fa350266e5256b59b
+	source = pymdown-extensions-10.8.tar.gz::https://github.com/facelessuser/pymdown-extensions/archive/10.8.tar.gz
+	sha256sums = 4295202b3a3b1ea8898c2cc7251bde42356bc6dfb5247d9ddd02b3c1b6b5ac27
 
 pkgname = pymdown-extensions
