@@ -1,18 +1,27 @@
 # Contributor: Asuka Minato
 pkgname=typst-book-bin
-pkgver=0.1.1
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A simple tool for creating modern online books in pure typst"
-arch=(x86_64 aarch64)
-url="https://myriad-dreamin.github.io/typst-book/"
-license=('Apache')
-depends=(glibc gcc-libs)
-source_x86_64=("https://github.com/Myriad-Dreamin/typst-book/releases/download/v$pkgver/typst-book-x86_64-unknown-linux-gnu.tar.gz"
+arch=(
+	'aarch64'
+	'armv7h'
+	'x86_64'
 )
-source_aarch64=(https://github.com/Myriad-Dreamin/typst-book/releases/download/v$pkgver/typst-book-aarch64-unknown-linux-gnu.tar.gz)
-sha256sums_x86_64=('3a38eb0acef2257370014d5bb77722d4086cac297dd1f8992e74ab2210104dd8')
-sha256sums_aarch64=('cec75b2fafde7885fc318af0c2b25920feb19a78fc027bfeb6f3bf53a9a6daca')
-
+url="https://myriad-dreamin.github.io/typst-book/"
+_ghurl="https://github.com/Myriad-Dreamin/typst-book"
+license=('Apache-2.0')
+depends=(
+	'glibc'
+	'gcc-libs'
+)
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-aarch64-unknown-linux-gnu.tar.gz")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-arm-unknown-linux-gnueabihf.tar.gz")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_aarch64=('334c06a6be0c0c0275b691bd662353ced153e92b01b20174bad958732a0d7fd6')
+sha256sums_armv7h=('e0213b95ebd714d63d23b8d57dccdebfcab22dd7d64a116daa7395029882107e')
+sha256sums_x86_64=('85896dec27f151f68954fe340e7e2f5d2a80430da92c682f81c77bea66b42af2')
 package() {
-	find . -name "typst-book" -exec install -Dm755 {} -t $pkgdir/usr/bin \;
+	install -Dm755 "${srcdir}/${pkgname%-bin}-"*/bin/"${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+	install -Dm644 "${srcdir}/${pkgname%-bin}-"*/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
