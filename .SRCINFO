@@ -21,7 +21,7 @@ pkgbase = python-wandb
 	depends = python-setproctitle
 	provides = python-wandb
 	conflicts = python-wandb-git
-	source = python-wandb-0.16.3.tar.gz::https://wandb.ai/archive/refs/tags/v0.16.3.tar.gz
-	sha256sums = 6afa740f7b0ca644052cdf44c6adaef27522bbb3a977ecde46aafd7d47f507d0
+	source = python-wandb-0.16.3.tar.gz::https://github.com/wandb/wandb/archive/refs/tags/v0.16.3.tar.gz
+	sha256sums = afe98f23531e9eaffd03a43eefd8570f4abd092fcee1090281b223f6b1833b6c
 
 pkgname = python-wandb

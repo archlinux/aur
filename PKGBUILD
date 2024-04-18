@@ -24,8 +24,8 @@ makedepends=('python-build' 'python-installer' 'python-setuptools'
              'python-wheel')
 provides=('python-wandb')
 conflicts=('python-wandb-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6afa740f7b0ca644052cdf44c6adaef27522bbb3a977ecde46aafd7d47f507d0')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/wandb/wandb/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('afe98f23531e9eaffd03a43eefd8570f4abd092fcee1090281b223f6b1833b6c')
 
 build() {
     cd "$_pkgname-$pkgver"
