@@ -1,7 +1,7 @@
 pkgbase = beeper-latest-bin
 	pkgdesc = all your chats in one app
 	pkgver = 3.103.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beeper.com/
 	arch = x86_64
 	license = LicenseRef-beeper

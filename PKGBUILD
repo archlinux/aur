@@ -3,17 +3,16 @@
 ## options
 : ${_autoupdate:=true}
 
-: ${_system_electron:=true}
+: ${_system_electron:=false}
 : ${_install_path:=opt}
 
-unset _pkgtype
 : ${_pkgtype:=-latest-bin}
 
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=3.103.36
-pkgrel=1
+pkgrel=2
 pkgdesc="all your chats in one app"
 url="https://beeper.com/"
 license=('LicenseRef-beeper')
@@ -38,7 +37,7 @@ pkgver() {
 }
 
 prepare() {
-  cat <<'EOF' > "$_pkgname.sh"
+  cat << 'EOF' > "$_pkgname.sh"
 #!/usr/bin/env sh
 set -e
 
@@ -103,20 +102,20 @@ package() {
   depends+=('hicolor-icon-theme')
 
   # desktop file
-  install -Dm644 "$srcdir/squashfs-root/beeper.desktop"                                  "$pkgdir/usr/share/applications/beeper.desktop"
+  install -Dm644 "$srcdir/squashfs-root/beeper.desktop" "$pkgdir/usr/share/applications/beeper.desktop"
 
   # icons
-  for s in 16 32 48 64 128 256 512 1024 ; do
+  for s in 16 32 48 64 128 256 512 1024; do
     install -Dm644 \
-    "$srcdir/squashfs-root/usr/share/icons/hicolor/${s}x${s}/apps/beeper.png" \
-    -t "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps"
+      "$srcdir/squashfs-root/usr/share/icons/hicolor/${s}x${s}/apps/beeper.png" \
+      -t "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps"
   done
 
   # license files
   install -Dm644 "$srcdir/squashfs-root/LICENSE.electron.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 "$srcdir/squashfs-root/LICENSES.chromium.html" -t "$pkgdir/usr/share/licenses/$pkgname"
 
-  if [[ "${_system_electron::1}" == "t" ]] ; then
+  if [[ "${_system_electron::1}" == "t" ]]; then
     depends+=('electron')
     _package_asar
   else
@@ -131,14 +130,14 @@ package() {
 _update_version() {
   : ${_pkgver:=$pkgver}
 
-  if [[ "${_autoupdate::1}" != 't' ]] ; then
+  if [[ "${_autoupdate::1}" != 't' ]]; then
     return
   fi
 
   _dl_url="https://download.beeper.com/linux/appImage/x64"
 
   _filename=$(
-    curl -v --no-progress-meter -r 0-1 "$_dl_url" 2>&1 >/dev/null \
+    curl -v --no-progress-meter -r 0-1 "$_dl_url" 2>&1 > /dev/null \
       | grep content-disposition \
       | sed -E 's@^.*\bcontent-disposition:.*\bfilename="([^"]+)".*$@\1@'
   )
@@ -149,7 +148,7 @@ _update_version() {
   )
 
   # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
     _pkgver="$_pkgver_new"
   fi
 }
