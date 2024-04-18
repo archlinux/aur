@@ -9,6 +9,7 @@ pkgbase = python-mycgi
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	depends = python-multipart
 	source = python-mycgi-0.0.4.tar.gz::https://github.com/ronaaronson/mycgi/archive/refs/tags/0.0.4.tar.gz
 	sha1sums = ccc7b185ebe6d44cadfed83380d9a13715b84c73
 
