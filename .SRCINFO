@@ -1,0 +1,11 @@
+pkgbase = libnss-aad
+	pkgdesc = Name Service Switch (NSS) Module for Azure Entra ID
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/aad-for-linux/libnss-aad
+	arch = x86_64
+	license = GPL-3.0-only
+	source = http://security.ubuntu.com/ubuntu/pool/universe/a/aad-auth/libnss-aad_0.5.2_amd64.deb
+	sha256sums = cb64026fcd246fa4a323944607e32a6107ec871d44b58f288e118fbc98ea0aa2
+
+pkgname = libnss-aad
