@@ -6,7 +6,7 @@
 _gitname="tokenizers"
 _pkgname="python-$_gitname"
 pkgname="$_pkgname"
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc='Fast State-of-the-Art Tokenizers optimized for Research and Production'
 url="https://github.com/huggingface/tokenizers"
