@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full
-pkgver=0.37.0
-pkgrel=2
+pkgver=0.38.0
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
 license=('GPL')
@@ -13,10 +13,8 @@ depends=(
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
-        'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
-        'libxpresent' 'libpipewire' 'zimg' 'sndio' 'libsixel'
-    # AUR:
-        'spirv-cross'
+        'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'libxpresent'
+        'libpipewire' 'zimg' 'sndio' 'libsixel'
 )
 makedepends=('meson' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
@@ -27,7 +25,7 @@ provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
 source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz")
-sha256sums=('1d2d4adbaf048a2fa6ee134575032c4b2dad9a7efafd5b3e69b88db935afaddf')
+sha256sums=('86d9ef40b6058732f67b46d0bbda24a074fae860b3eaae05bab3145041303066')
 
 build() {
     arch-meson "mpv-${pkgver}" build \
@@ -65,6 +63,7 @@ build() {
         -Dalsa='enabled' \
         -Daudiounit='disabled' \
         -Dcoreaudio='disabled' \
+        -Davfoundation='disabled' \
         -Djack='enabled' \
         -Dopenal='enabled' \
         -Dopensles='disabled' \
@@ -96,17 +95,17 @@ build() {
         -Dgl-win32='disabled' \
         -Dgl-x11='enabled' \
         -Djpeg='enabled' \
-        -Drpi='disabled' \
         -Dsdl2-video='enabled' \
-        -Dshaderc='enabled' \
+        -Dshaderc='disabled' \
         -Dsixel='enabled' \
-        -Dspirv-cross='enabled' \
+        -Dspirv-cross='disabled' \
         -Dplain-gl='enabled' \
         -Dvdpau='enabled' \
         -Dvdpau-gl-x11='enabled' \
         -Dvaapi='enabled' \
         -Dvaapi-drm='enabled' \
         -Dvaapi-wayland='enabled' \
+        -Dvaapi-win32='disabled' \
         -Dvaapi-x11='enabled' \
         -Dvulkan='enabled' \
         -Dwayland='enabled' \
@@ -120,7 +119,6 @@ build() {
         -Dd3d9-hwaccel='disabled' \
         -Dgl-dxinterop-d3d9='disabled' \
         -Dios-gl='disabled' \
-        -Drpi-mmal='disabled' \
         -Dvideotoolbox-gl='disabled' \
         -Dvideotoolbox-pl='disabled' \
         -Dvulkan-interop='enabled' \
@@ -140,7 +138,7 @@ build() {
 package() {
     meson install -C build --destdir "$pkgdir"
     install -D -m644 "mpv-${pkgver}/DOCS"/{encoding.rst,tech-overview.txt} "${pkgdir}/usr/share/doc/mpv"
-    install -D -m644 "mpv-${pkgver}/TOOLS/lua"/* -t "${pkgdir}/usr/share/mpv/scripts"
+    install -D -m644 "mpv-${pkgver}/TOOLS"/{umpv,mpv_identify.sh,stats-conv.py,idet.sh,lua/*} -t "${pkgdir}/usr/share/mpv/scripts"
     
     # delete private entries only required for static linking
     sed -i -e '/Requires.private/d' -e '/Libs.private/d' "${pkgdir}/usr/lib/pkgconfig/mpv.pc"
