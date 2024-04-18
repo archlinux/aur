@@ -1,7 +1,7 @@
 _pkgname=gsp
 pkgname=$_pkgname-git
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc=" Better HTML syntax"
 url="https://git.sr.ht/~mango/gsp"
 arch=(x86_64)
@@ -20,7 +20,7 @@ build() {
 package() {
 	cd $_pkgname
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
-	install -Dm644 $_pkgname.1 -t "$pkgdir/usr/share/man/man1/$_pkgname.1"
-	install -Dm644 $_pkgname.5 -t "$pkgdir/usr/share/man/man5/$_pkgname.5"
+	install -Dm644 $_pkgname.1 -t "$pkgdir/usr/share/man/man1/"
+	install -Dm644 $_pkgname.5 -t "$pkgdir/usr/share/man/man5/"
 	install -Dm755 $_pkgname -t "$pkgdir/usr/bin/"
 }

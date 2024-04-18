@@ -1,7 +1,7 @@
 pkgbase = gsp-git
 	pkgdesc = Better HTML syntax
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~mango/gsp
 	arch = x86_64
 	license = 0BSD
