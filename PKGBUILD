@@ -3,7 +3,7 @@
 
 pkgname=python-beartype
 _pkgname=${pkgname#python-}
-pkgver=0.18.2
+pkgver=0.18.3
 pkgrel=1
 pkgdesc="Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python"
 arch=(any)
@@ -27,8 +27,8 @@ checkdepends=(
   python-pytest
   python-sphinx
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2ecd3a869856960476354c83ef8ff59b1a2a5ff1ea905de0e8b3adc814eebdab')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('5397e8436b675d1f60164d445437d99cdeb1d77dd7aa8df1ef3969f5534dd149')
 
 _archive="$_pkgname-$pkgver"
 
