@@ -8,8 +8,8 @@
  #include <utility>     // For methods on std::pair
  #if (!defined(_MSC_VER) && (__cplusplus >= 201103L)) || (defined(_MSC_VER) && (_MS_VER >= 1500))
  #include <type_traits>  // For integral constants, conditional metaprogramming, and type traits
---- a/python/setup.py	2023-11-30 11:12:06.956609312 +0000
-+++ a/python/setup.py	2023-11-30 11:27:05.200923183 +0000
+--- a/python/setup_cutlass.py	2023-11-30 11:12:06.956609312 +0000
++++ a/python/setup_cutlass.py	2023-11-30 11:27:05.200923183 +0000
 @@ -35,19 +35,6 @@
  import os
  import setuptools
