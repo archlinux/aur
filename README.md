@@ -4,6 +4,8 @@ A CLI tool to extract a part of a website, create a PDF
 
 (new version now support  both class and id , even some styling )
 
+(new version now support  --comic-mode read document for more info )
+
 ------
 
 > let me tell u a really fun story
@@ -43,7 +45,7 @@ available in aur
 
 if u wanna compile it yourself 
 
-1.  clone repository
+1. clone repository
 
 2. go to cloned file
 
@@ -60,6 +62,49 @@ if u wanna compile it yourself
 
 6. u can even make build its binary  yourself it is easy
 
+    
+
+# how to use ?
+
+``` usage: web2pdf.py [-h] [--id ID] [--class CLASS_NAME]
+     
+usage: web2pdf.py [-h] [--id ID] [--class CLASS_NAME]
+                  [--exclude EXCLUDE [EXCLUDE ...]] [--comic-mode]
+                  url pdf_name
+
+Save webpage content as PDF or images
+
+positional arguments:
+  url                   URL of the webpage to scrape
+  pdf_name              Name of the PDF file to save
+
+options:
+  -h, --help            show this help message and exit
+  --id ID               ID of the content to extract
+  --class CLASS_NAME    Class name of the content to extract
+  --exclude EXCLUDE [EXCLUDE ...]
+                        Class names of elements to exclude
+  --comic-mode          Save images and pdf them (like a real comic or manga)``` 
+
+```
+
+- `--comic-mode`    : sometimes u wanna download a manga or comic from INTERNET
+
+  they have a part that comic is saved using very long images that r put tougher  
+
+  downloading them one by one and make a pdf out of it is hard and somehow impossible 
+
+  you can use web2pdf using `--comic-mode` these times 
+
+  1. it will make a dir with the same name of pdf and save all of page images 
+  2. and than make a pdf out of it
+
+- ` --id ID               ID of the content to extract
+    --class CLASS_NAME    Class name of the content to extract
+    --exclude EXCLUDE [EXCLUDE ...]`
+
+  these args r optional by default it will make a pdf out of all website 
+
 
 
 # what to do next
@@ -73,4 +118,3 @@ if u wanna compile it yourself
 in the end i will be happy if u share your ideas about this script with me 
 
 TY so much ❤️
-

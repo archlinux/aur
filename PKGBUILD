@@ -6,7 +6,7 @@ pkgdesc="A CLI tool to extract a part of a website, create a PDF"
 arch=('any')
 url="https://github.com/simit22/web2pdf"
 license=('GPL')
-depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-weasyprint')
+depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-weasyprint' 'imagemagick')
 source=("web2pdf.py")
 md5sums=('SKIP')
 

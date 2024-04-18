@@ -9,6 +9,7 @@ pkgbase = web2pdf
 	depends = python-requests
 	depends = python-beautifulsoup4
 	depends = python-weasyprint
+	depends = imagemagick
 	source = web2pdf.py
 	md5sums = SKIP
 
