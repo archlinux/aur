@@ -24,6 +24,7 @@ pkgbase = pot-translation
 	provides = pot-translation
 	conflicts = pot-translation-bin
 	conflicts = pot-translation-git
+	options = !lto
 	source = pot-desktop-2.7.10.tar.gz::https://github.com/pot-app/pot-desktop/archive/refs/tags/2.7.10.tar.gz
 	sha512sums = 7528145a81e6f6fee63bec65f8dab83a266af307d6fa67594439bf8750d5935a31460b8290b26796ef8c70f0f8c4a8e07fa7c65bd8a1431e67b79a405daab84d
 

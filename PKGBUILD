@@ -16,6 +16,7 @@ makedepends=('nodejs' 'pnpm' 'rust' 'dbus')
 source=("${reponame}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
 sha512sums=('7528145a81e6f6fee63bec65f8dab83a266af307d6fa67594439bf8750d5935a31460b8290b26796ef8c70f0f8c4a8e07fa7c65bd8a1431e67b79a405daab84d')
+options=('!lto')
 
 prepare(){
     cd $srcdir/${reponame}-${pkgver}
