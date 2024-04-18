@@ -95,4 +95,8 @@ package(){
   # Remove usr/share/fonts directory
   pushd "$pkgdir"
   rm -rf usr/share/fonts
+
+  # Remove usr/bin/mapnik-test-visual
+  pushd "$pkgdir"
+  rm usr/bin/mapnik-test-visual
 }
