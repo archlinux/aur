@@ -3,10 +3,10 @@ To: hdegoede@redhat.com
 Cc: corentin.chary@gmail.com, ilpo.jarvinen@linux.intel.com,
 	platform-driver-x86@vger.kernel.org,
 	linux-kernel@vger.kernel.org, "Luke D. Jones" <luke@ljones.dev>
-Subject: [PATCH v1 5/9] platform/x86: asus-wmi: store a min default for ppt options
-Date: Tue,  2 Apr 2024 14:34:49 +1300	[thread overview]
-Message-ID: <20240402013453.18205-6-luke@ljones.dev> (raw)
-In-Reply-To: <20240402013453.18205-1-luke@ljones.dev>
+Subject: [PATCH v4 5/9] platform/x86: asus-wmi: store a min default for ppt options
+Date: Thu,  4 Apr 2024 13:16:48 +1300	[thread overview]
+Message-ID: <20240404001652.86207-6-luke@ljones.dev> (raw)
+In-Reply-To: <20240404001652.86207-1-luke@ljones.dev>
 
 Laptops with any of the ppt or nv tunables default to the minimum setting
 on boot so we can safely assume a stored value is correct.
@@ -16,16 +16,17 @@ reading of those values back. To prevent creating a series of byte holes
 in the struct the "<name>_available" bool is removed and
 `asus_sysfs_is_visible()` uses the `ASUS_WMI_DEVID_<name>` directly.
 
+Reviewed-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
  drivers/platform/x86/asus-wmi.c | 127 +++++++++++++++++++++++++-------
  1 file changed, 99 insertions(+), 28 deletions(-)
 
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index fcf976967325..0d304a04e7de 100644
+index 6c353b8e8da9..f13606fc62e6 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
-@@ -262,13 +262,13 @@ struct asus_wmi {
+@@ -273,13 +273,13 @@ struct asus_wmi {
  	u32 gpu_mux_dev;
  
  	/* Tunables provided by ASUS for gaming laptops */
@@ -46,7 +47,7 @@ index fcf976967325..0d304a04e7de 100644
  
  	u32 kbd_rgb_dev;
  	bool kbd_rgb_state_available;
-@@ -1020,11 +1020,21 @@ static ssize_t ppt_pl2_sppt_store(struct device *dev,
+@@ -1031,11 +1031,21 @@ static ssize_t ppt_pl2_sppt_store(struct device *dev,
  		return -EIO;
  	}
  
@@ -63,13 +64,13 @@ index fcf976967325..0d304a04e7de 100644
 +{
 +	struct asus_wmi *asus = dev_get_drvdata(dev);
 +
-+	return sysfs_emit(buf, "%d\n", asus->ppt_pl2_sppt);
++	return sysfs_emit(buf, "%u\n", asus->ppt_pl2_sppt);
 +}
 +static DEVICE_ATTR_RW(ppt_pl2_sppt);
  
  /* Tunable: PPT, Intel=PL1, AMD=SPL ******************************************/
  static ssize_t ppt_pl1_spl_store(struct device *dev,
-@@ -1054,11 +1064,20 @@ static ssize_t ppt_pl1_spl_store(struct device *dev,
+@@ -1065,11 +1075,20 @@ static ssize_t ppt_pl1_spl_store(struct device *dev,
  		return -EIO;
  	}
  
@@ -85,13 +86,13 @@ index fcf976967325..0d304a04e7de 100644
 +{
 +	struct asus_wmi *asus = dev_get_drvdata(dev);
 +
-+	return sysfs_emit(buf, "%d\n", asus->ppt_pl1_spl);
++	return sysfs_emit(buf, "%u\n", asus->ppt_pl1_spl);
 +}
 +static DEVICE_ATTR_RW(ppt_pl1_spl);
  
  /* Tunable: PPT APU FPPT ******************************************************/
  static ssize_t ppt_fppt_store(struct device *dev,
-@@ -1088,11 +1107,21 @@ static ssize_t ppt_fppt_store(struct device *dev,
+@@ -1099,11 +1118,21 @@ static ssize_t ppt_fppt_store(struct device *dev,
  		return -EIO;
  	}
  
@@ -108,13 +109,13 @@ index fcf976967325..0d304a04e7de 100644
 +{
 +	struct asus_wmi *asus = dev_get_drvdata(dev);
 +
-+	return sysfs_emit(buf, "%d\n", asus->ppt_fppt);
++	return sysfs_emit(buf, "%u\n", asus->ppt_fppt);
 +}
 +static DEVICE_ATTR_RW(ppt_fppt);
  
  /* Tunable: PPT APU SPPT *****************************************************/
  static ssize_t ppt_apu_sppt_store(struct device *dev,
-@@ -1122,11 +1151,21 @@ static ssize_t ppt_apu_sppt_store(struct device *dev,
+@@ -1133,11 +1162,21 @@ static ssize_t ppt_apu_sppt_store(struct device *dev,
  		return -EIO;
  	}
  
@@ -131,13 +132,13 @@ index fcf976967325..0d304a04e7de 100644
 +{
 +	struct asus_wmi *asus = dev_get_drvdata(dev);
 +
-+	return sysfs_emit(buf, "%d\n", asus->ppt_apu_sppt);
++	return sysfs_emit(buf, "%u\n", asus->ppt_apu_sppt);
 +}
 +static DEVICE_ATTR_RW(ppt_apu_sppt);
  
  /* Tunable: PPT platform SPPT ************************************************/
  static ssize_t ppt_platform_sppt_store(struct device *dev,
-@@ -1156,11 +1195,21 @@ static ssize_t ppt_platform_sppt_store(struct device *dev,
+@@ -1167,11 +1206,21 @@ static ssize_t ppt_platform_sppt_store(struct device *dev,
  		return -EIO;
  	}
  
@@ -154,13 +155,13 @@ index fcf976967325..0d304a04e7de 100644
 +{
 +	struct asus_wmi *asus = dev_get_drvdata(dev);
 +
-+	return sysfs_emit(buf, "%d\n", asus->ppt_platform_sppt);
++	return sysfs_emit(buf, "%u\n", asus->ppt_platform_sppt);
 +}
 +static DEVICE_ATTR_RW(ppt_platform_sppt);
  
  /* Tunable: NVIDIA dynamic boost *********************************************/
  static ssize_t nv_dynamic_boost_store(struct device *dev,
-@@ -1190,11 +1239,21 @@ static ssize_t nv_dynamic_boost_store(struct device *dev,
+@@ -1201,11 +1250,21 @@ static ssize_t nv_dynamic_boost_store(struct device *dev,
  		return -EIO;
  	}
  
@@ -177,13 +178,13 @@ index fcf976967325..0d304a04e7de 100644
 +{
 +	struct asus_wmi *asus = dev_get_drvdata(dev);
 +
-+	return sysfs_emit(buf, "%d\n", asus->nv_dynamic_boost);
++	return sysfs_emit(buf, "%u\n", asus->nv_dynamic_boost);
 +}
 +static DEVICE_ATTR_RW(nv_dynamic_boost);
  
  /* Tunable: NVIDIA temperature target ****************************************/
  static ssize_t nv_temp_target_store(struct device *dev,
-@@ -1224,11 +1283,21 @@ static ssize_t nv_temp_target_store(struct device *dev,
+@@ -1235,11 +1294,21 @@ static ssize_t nv_temp_target_store(struct device *dev,
  		return -EIO;
  	}
  
@@ -200,13 +201,13 @@ index fcf976967325..0d304a04e7de 100644
 +{
 +	struct asus_wmi *asus = dev_get_drvdata(dev);
 +
-+	return sysfs_emit(buf, "%d\n", asus->nv_temp_target);
++	return sysfs_emit(buf, "%u\n", asus->nv_temp_target);
 +}
 +static DEVICE_ATTR_RW(nv_temp_target);
  
  /* Battery ********************************************************************/
  
-@@ -4277,19 +4346,19 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+@@ -4295,19 +4364,19 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
  	else if (attr == &dev_attr_throttle_thermal_policy.attr)
  		ok = asus->throttle_thermal_policy_available;
  	else if (attr == &dev_attr_ppt_pl2_sppt.attr)
@@ -233,7 +234,7 @@ index fcf976967325..0d304a04e7de 100644
  	else if (attr == &dev_attr_boot_sound.attr)
  		devid = ASUS_WMI_DEVID_BOOT_SOUND;
  	else if (attr == &dev_attr_panel_od.attr)
-@@ -4535,18 +4604,20 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4553,18 +4622,20 @@ static int asus_wmi_add(struct platform_device *pdev)
  	if (err)
  		goto fail_platform;
  

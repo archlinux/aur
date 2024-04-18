@@ -3,10 +3,10 @@ To: hdegoede@redhat.com
 Cc: corentin.chary@gmail.com, ilpo.jarvinen@linux.intel.com,
 	platform-driver-x86@vger.kernel.org,
 	linux-kernel@vger.kernel.org, "Luke D. Jones" <luke@ljones.dev>
-Subject: [PATCH v1 2/9] platform/x86: asus-wmi: add support for Vivobook GPU MUX
-Date: Tue,  2 Apr 2024 14:34:46 +1300	[thread overview]
-Message-ID: <20240402013453.18205-3-luke@ljones.dev> (raw)
-In-Reply-To: <20240402013453.18205-1-luke@ljones.dev>
+Subject: [PATCH v4 2/9] platform/x86: asus-wmi: add support for Vivobook GPU MUX
+Date: Thu,  4 Apr 2024 13:16:45 +1300	[thread overview]
+Message-ID: <20240404001652.86207-3-luke@ljones.dev> (raw)
+In-Reply-To: <20240404001652.86207-1-luke@ljones.dev>
 
 Add support for the Vivobook dgpu MUX available on the ASUS Viviobook
 and some of the other ranges (Zen).
@@ -15,17 +15,18 @@ This MUX functions exactly the same as the existing ROG MUX support so
 the existing functionality now detects which MUX is available and uses
 that for control.
 
+Reviewed-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
- drivers/platform/x86/asus-wmi.c            | 23 +++++++++++++---------
+ drivers/platform/x86/asus-wmi.c            | 22 +++++++++++++---------
  include/linux/platform_data/x86/asus-wmi.h |  1 +
- 2 files changed, 15 insertions(+), 9 deletions(-)
+ 2 files changed, 14 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index 646f70c65097..7d7a9c8ee529 100644
+index aa2a3b402e33..1ab4380e9771 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
-@@ -259,7 +259,7 @@ struct asus_wmi {
+@@ -270,7 +270,7 @@ struct asus_wmi {
  	bool egpu_enable_available;
  	bool egpu_connect_available;
  	bool dgpu_disable_available;
@@ -34,7 +35,7 @@ index 646f70c65097..7d7a9c8ee529 100644
  
  	/* Tunables provided by ASUS for gaming laptops */
  	bool ppt_pl2_sppt_available;
-@@ -682,8 +682,8 @@ static ssize_t dgpu_disable_store(struct device *dev,
+@@ -693,8 +693,8 @@ static ssize_t dgpu_disable_store(struct device *dev,
  	if (disable > 1)
  		return -EINVAL;
  
@@ -45,7 +46,7 @@ index 646f70c65097..7d7a9c8ee529 100644
  		if (result < 0)
  			/* An error here may signal greater failure of GPU handling */
  			return result;
-@@ -748,8 +748,8 @@ static ssize_t egpu_enable_store(struct device *dev,
+@@ -759,8 +759,8 @@ static ssize_t egpu_enable_store(struct device *dev,
  		return err;
  	}
  
@@ -56,7 +57,7 @@ index 646f70c65097..7d7a9c8ee529 100644
  		if (result < 0) {
  			/* An error here may signal greater failure of GPU handling */
  			pr_warn("Failed to get gpu mux status: %d\n", result);
-@@ -802,7 +802,7 @@ static ssize_t gpu_mux_mode_show(struct device *dev,
+@@ -813,7 +813,7 @@ static ssize_t gpu_mux_mode_show(struct device *dev,
  	struct asus_wmi *asus = dev_get_drvdata(dev);
  	int result;
  
@@ -65,7 +66,7 @@ index 646f70c65097..7d7a9c8ee529 100644
  	if (result < 0)
  		return result;
  
-@@ -848,7 +848,7 @@ static ssize_t gpu_mux_mode_store(struct device *dev,
+@@ -859,7 +859,7 @@ static ssize_t gpu_mux_mode_store(struct device *dev,
  		}
  	}
  
@@ -74,7 +75,7 @@ index 646f70c65097..7d7a9c8ee529 100644
  	if (err) {
  		dev_err(dev, "Failed to set GPU MUX mode: %d\n", err);
  		return err;
-@@ -4221,7 +4221,7 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+@@ -4239,7 +4239,7 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
  	else if (attr == &dev_attr_dgpu_disable.attr)
  		ok = asus->dgpu_disable_available;
  	else if (attr == &dev_attr_gpu_mux_mode.attr)
@@ -83,7 +84,7 @@ index 646f70c65097..7d7a9c8ee529 100644
  	else if (attr == &dev_attr_fan_boost_mode.attr)
  		ok = asus->fan_boost_mode_available;
  	else if (attr == &dev_attr_throttle_thermal_policy.attr)
-@@ -4487,7 +4487,6 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4505,7 +4505,6 @@ static int asus_wmi_add(struct platform_device *pdev)
  	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
  	asus->egpu_connect_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU_CONNECTED);
  	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
@@ -91,15 +92,14 @@ index 646f70c65097..7d7a9c8ee529 100644
  	asus->kbd_rgb_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE);
  	asus->kbd_rgb_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_STATE);
  	asus->ppt_pl2_sppt_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_PPT_PL2_SPPT);
-@@ -4507,6 +4506,12 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4524,6 +4523,11 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_MINI_LED_MODE2))
  		asus->mini_led_dev_id = ASUS_WMI_DEVID_MINI_LED_MODE2;
- 	}
  
-+	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX)) {
++	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX))
 +		asus->gpu_mux_dev = ASUS_WMI_DEVID_GPU_MUX;
-+	} else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX_VIVO)) {
++	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX_VIVO))
 +		asus->gpu_mux_dev = ASUS_WMI_DEVID_GPU_MUX_VIVO;
-+	}
 +
  	err = fan_boost_mode_check_present(asus);
  	if (err)
@@ -118,5 +118,3 @@ index 9cadce10ad9a..b48b024dd844 100644
  #define ASUS_WMI_DEVID_TUF_RGB_MODE	0x00100056
 -- 
 2.44.0
-
-

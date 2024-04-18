@@ -3,21 +3,22 @@ To: hdegoede@redhat.com
 Cc: corentin.chary@gmail.com, ilpo.jarvinen@linux.intel.com,
 	platform-driver-x86@vger.kernel.org,
 	linux-kernel@vger.kernel.org, "Luke D. Jones" <luke@ljones.dev>
-Subject: [PATCH v1 1/9] platform/x86: asus-wmi: add support for 2024 ROG Mini-LED
-Date: Tue,  2 Apr 2024 14:34:45 +1300	[thread overview]
-Message-ID: <20240402013453.18205-2-luke@ljones.dev> (raw)
-In-Reply-To: <20240402013453.18205-1-luke@ljones.dev>
+Subject: [PATCH v4 1/9] platform/x86: asus-wmi: add support for 2024 ROG Mini-LED
+Date: Thu,  4 Apr 2024 13:16:44 +1300	[thread overview]
+Message-ID: <20240404001652.86207-2-luke@ljones.dev> (raw)
+In-Reply-To: <20240404001652.86207-1-luke@ljones.dev>
 
 Support the 2024 mini-led backlight and adjust the related functions
 to select the relevant dev-id. Also add `available_mini_led_mode` to the
 platform sysfs since the available mini-led levels can be different.
 
-Signed-off-by: Luke D. Jones <luke@ljones.dev>
+Reviewed-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
+signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
  .../ABI/testing/sysfs-platform-asus-wmi       |  8 ++
- drivers/platform/x86/asus-wmi.c               | 81 ++++++++++++++++---
+ drivers/platform/x86/asus-wmi.c               | 96 +++++++++++++++++--
  include/linux/platform_data/x86/asus-wmi.h    |  1 +
- 3 files changed, 79 insertions(+), 11 deletions(-)
+ 3 files changed, 95 insertions(+), 10 deletions(-)
 
 diff --git a/Documentation/ABI/testing/sysfs-platform-asus-wmi b/Documentation/ABI/testing/sysfs-platform-asus-wmi
 index 8a7e25bde085..ef1ac1a20a71 100644
@@ -39,10 +40,28 @@ index 8a7e25bde085..ef1ac1a20a71 100644
  What:		/sys/devices/platform/<platform>/ppt_pl1_spl
  Date:		Jun 2023
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index 3f07bbf809ef..646f70c65097 100644
+index 3f07bbf809ef..aa2a3b402e33 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
-@@ -288,7 +288,7 @@ struct asus_wmi {
+@@ -126,6 +126,17 @@ module_param(fnlock_default, bool, 0444);
+ #define ASUS_SCREENPAD_BRIGHT_MAX 255
+ #define ASUS_SCREENPAD_BRIGHT_DEFAULT 60
+ 
++#define ASUS_MINI_LED_MODE_MASK		0x03
++/* Standard modes for devices with only on/off */
++#define ASUS_MINI_LED_OFF		0x00
++#define ASUS_MINI_LED_ON		0x01
++/* New mode on some devices, define here to clarify remapping later */
++#define ASUS_MINI_LED_STRONG_MODE	0x02
++/* New modes for devices with 3 mini-led mode types */
++#define ASUS_MINI_LED_2024_WEAK		0x00
++#define ASUS_MINI_LED_2024_STRONG	0x01
++#define ASUS_MINI_LED_2024_OFF		0x02
++
+ /* Controls the power state of the USB0 hub on ROG Ally which input is on */
+ #define ASUS_USB0_PWR_EC0_CSEE "\\_SB.PCI0.SBRG.EC0.CSEE"
+ /* 300ms so far seems to produce a reliable result on AC and battery */
+@@ -288,7 +299,7 @@ struct asus_wmi {
  	bool battery_rsoc_available;
  
  	bool panel_overdrive_available;
@@ -51,75 +70,81 @@ index 3f07bbf809ef..646f70c65097 100644
  
  	struct hotplug_slot hotplug_slot;
  	struct mutex hotplug_lock;
-@@ -2108,13 +2108,30 @@ static ssize_t mini_led_mode_show(struct device *dev,
+@@ -2108,13 +2119,33 @@ static ssize_t mini_led_mode_show(struct device *dev,
  				   struct device_attribute *attr, char *buf)
  {
  	struct asus_wmi *asus = dev_get_drvdata(dev);
 -	int result;
 +	u32 value;
++	int err;
  
 -	result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_MINI_LED_MODE);
 -	if (result < 0)
 -		return result;
-+	asus_wmi_get_devstate(asus, asus->mini_led_dev_id, &value);
-+	value = value & 0x03; // only 3 modes on 2024 version
++	err = asus_wmi_get_devstate(asus, asus->mini_led_dev_id, &value);
++	if (err < 0)
++		return err;
++	value = value & ASUS_MINI_LED_MODE_MASK;
  
 -	return sysfs_emit(buf, "%d\n", result);
-+	/* Remap the mode values to match previous generation mini-led.
-+	 * Some BIOSes return -19 instead of 2, which is "mini-LED off", this
-+	 * appears to be a  BIOS bug.
++	/*
++	 * Remap the mode values to match previous generation mini-led. The last gen
++	 * WMI 0 == off, while on this version WMI 2 ==off (flipped).
 +	 */
 +	if (asus->mini_led_dev_id == ASUS_WMI_DEVID_MINI_LED_MODE2) {
 +		switch (value) {
-+		case 0:
-+			value = 1;
++		case ASUS_MINI_LED_2024_WEAK:
++			value = ASUS_MINI_LED_ON;
 +			break;
-+		case 1:
-+			value = 2;
++		case ASUS_MINI_LED_2024_STRONG:
++			value = ASUS_MINI_LED_STRONG_MODE;
 +			break;
-+		case 2:
-+			value = 0;
++		case ASUS_MINI_LED_2024_OFF:
++			value = ASUS_MINI_LED_OFF;
++			break;
 +		}
-+	} else if (value < 0) {
-+		return value;
 +	}
++
 +	return sysfs_emit(buf, "%d\n", value);
  }
  
  static ssize_t mini_led_mode_store(struct device *dev,
-@@ -2130,11 +2147,28 @@ static ssize_t mini_led_mode_store(struct device *dev,
+@@ -2130,11 +2161,32 @@ static ssize_t mini_led_mode_store(struct device *dev,
  	if (result)
  		return result;
  
 -	if (mode > 1)
-+	if (mode > 1 && asus->mini_led_dev_id == ASUS_WMI_DEVID_MINI_LED_MODE)
- 		return -EINVAL;
-+	if (mode > 2 && asus->mini_led_dev_id == ASUS_WMI_DEVID_MINI_LED_MODE2)
++	if (asus->mini_led_dev_id == ASUS_WMI_DEVID_MINI_LED_MODE &&
++		mode > ASUS_MINI_LED_ON)
 +		return -EINVAL;
++	if (asus->mini_led_dev_id == ASUS_WMI_DEVID_MINI_LED_MODE2 &&
++		mode > ASUS_MINI_LED_STRONG_MODE)
+ 		return -EINVAL;
+ 
+-	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_MINI_LED_MODE, mode, &result);
 +	/*
 +	 * Remap the mode values so expected behaviour is the same as the last
-+	 * generation of mini-LED
++	 * generation of mini-LED with 0 == off, 1 == on.
 +	 */
 +	if (asus->mini_led_dev_id == ASUS_WMI_DEVID_MINI_LED_MODE2) {
 +		switch (mode) {
-+		case 0:
-+			mode = 2;
++		case ASUS_MINI_LED_OFF:
++			mode = ASUS_MINI_LED_2024_OFF;
 +			break;
-+		case 1:
-+			mode = 0;
++		case ASUS_MINI_LED_ON:
++			mode = ASUS_MINI_LED_2024_WEAK;
 +			break;
-+		case 2:
-+			mode = 1;
++		case ASUS_MINI_LED_STRONG_MODE:
++			mode = ASUS_MINI_LED_2024_STRONG;
++			break;
 +		}
 +	}
  
--	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_MINI_LED_MODE, mode, &result);
--
 +	err = asus_wmi_set_devstate(asus->mini_led_dev_id, mode, &result);
  	if (err) {
  		pr_warn("Failed to set mini-LED: %d\n", err);
  		return err;
-@@ -2151,6 +2185,23 @@ static ssize_t mini_led_mode_store(struct device *dev,
+@@ -2151,6 +2203,23 @@ static ssize_t mini_led_mode_store(struct device *dev,
  }
  static DEVICE_ATTR_RW(mini_led_mode);
  
@@ -143,7 +168,7 @@ index 3f07bbf809ef..646f70c65097 100644
  /* Quirks *********************************************************************/
  
  static void asus_wmi_set_xusb2pr(struct asus_wmi *asus)
-@@ -4139,6 +4190,7 @@ static struct attribute *platform_attributes[] = {
+@@ -4139,6 +4208,7 @@ static struct attribute *platform_attributes[] = {
  	&dev_attr_nv_temp_target.attr,
  	&dev_attr_panel_od.attr,
  	&dev_attr_mini_led_mode.attr,
@@ -151,7 +176,7 @@ index 3f07bbf809ef..646f70c65097 100644
  	NULL
  };
  
-@@ -4191,7 +4243,9 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+@@ -4191,7 +4261,9 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
  	else if (attr == &dev_attr_panel_od.attr)
  		ok = asus->panel_overdrive_available;
  	else if (attr == &dev_attr_mini_led_mode.attr)
@@ -162,7 +187,7 @@ index 3f07bbf809ef..646f70c65097 100644
  
  	if (devid != -1)
  		ok = !(asus_wmi_get_devstate_simple(asus, devid) < 0);
-@@ -4444,10 +4498,15 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4444,10 +4516,14 @@ static int asus_wmi_add(struct platform_device *pdev)
  	asus->nv_dyn_boost_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_NV_DYN_BOOST);
  	asus->nv_temp_tgt_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_NV_THERM_TARGET);
  	asus->panel_overdrive_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_PANEL_OD);
@@ -170,11 +195,10 @@ index 3f07bbf809ef..646f70c65097 100644
  	asus->ally_mcu_usb_switch = acpi_has_method(NULL, ASUS_USB0_PWR_EC0_CSEE)
  						&& dmi_match(DMI_BOARD_NAME, "RC71L");
  
-+	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_MINI_LED_MODE)) {
++	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_MINI_LED_MODE))
 +		asus->mini_led_dev_id = ASUS_WMI_DEVID_MINI_LED_MODE;
-+	} else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_MINI_LED_MODE2)) {
++	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_MINI_LED_MODE2))
 +		asus->mini_led_dev_id = ASUS_WMI_DEVID_MINI_LED_MODE2;
-+	}
 +
  	err = fan_boost_mode_check_present(asus);
  	if (err)

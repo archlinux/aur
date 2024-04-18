@@ -3,32 +3,30 @@ To: hdegoede@redhat.com
 Cc: corentin.chary@gmail.com, ilpo.jarvinen@linux.intel.com,
 	platform-driver-x86@vger.kernel.org,
 	linux-kernel@vger.kernel.org, "Luke D. Jones" <luke@ljones.dev>
-Subject: [PATCH v1 8/9] platform/x86: asus-wmi: Add support for MCU powersave
-Date: Tue,  2 Apr 2024 14:34:52 +1300	[thread overview]
-Message-ID: <20240402013453.18205-9-luke@ljones.dev> (raw)
-In-Reply-To: <20240402013453.18205-1-luke@ljones.dev>
+Subject: [PATCH v4 8/9] platform/x86: asus-wmi: Add support for MCU powersave
+Date: Thu,  4 Apr 2024 13:16:51 +1300	[thread overview]
+Message-ID: <20240404001652.86207-9-luke@ljones.dev> (raw)
+In-Reply-To: <20240404001652.86207-1-luke@ljones.dev>
 
 Add support for an MCU powersave WMI call. This is intended to set the
 MCU in to a low-power mode when sleeping. This mode can cut sleep power
 use by around half.
 
+Reviewed-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
- .../ABI/testing/sysfs-platform-asus-wmi       | 11 +++-
+ .../ABI/testing/sysfs-platform-asus-wmi       |  9 ++++
  drivers/platform/x86/asus-wmi.c               | 50 +++++++++++++++++++
- 2 files changed, 60 insertions(+), 1 deletion(-)
+ 2 files changed, 59 insertions(+)
 
 diff --git a/Documentation/ABI/testing/sysfs-platform-asus-wmi b/Documentation/ABI/testing/sysfs-platform-asus-wmi
-index 41b92e53e88a..28144371a0f1 100644
+index 72933527d2e4..28144371a0f1 100644
 --- a/Documentation/ABI/testing/sysfs-platform-asus-wmi
 +++ b/Documentation/ABI/testing/sysfs-platform-asus-wmi
-@@ -202,4 +202,13 @@ Contact:	"Luke Jones" <luke@ljones.dev>
- Description:
+@@ -203,3 +203,12 @@ Description:
  		Set if the BIOS POST sound is played on boot.
  			* 0 - False,
--			* 1 - True
-\ No newline at end of file
-+			* 1 - True
+ 			* 1 - True
 +
 +What:		/sys/devices/platform/<platform>/mcu_powersave
 +Date:		Apr 2024
@@ -39,10 +37,10 @@ index 41b92e53e88a..28144371a0f1 100644
 +			* 0 - False,
 +			* 1 - True
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index ec249eca0d94..a6b648457908 100644
+index ab98f91e573c..d06d9e0c498c 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
-@@ -1292,6 +1292,53 @@ static ssize_t nv_temp_target_show(struct device *dev,
+@@ -1303,6 +1303,53 @@ static ssize_t nv_temp_target_show(struct device *dev,
  }
  static DEVICE_ATTR_RW(nv_temp_target);
  
@@ -96,7 +94,7 @@ index ec249eca0d94..a6b648457908 100644
  /* Battery ********************************************************************/
  
  /* The battery maximum charging percentage */
-@@ -4299,6 +4346,7 @@ static struct attribute *platform_attributes[] = {
+@@ -4317,6 +4364,7 @@ static struct attribute *platform_attributes[] = {
  	&dev_attr_ppt_platform_sppt.attr,
  	&dev_attr_nv_dynamic_boost.attr,
  	&dev_attr_nv_temp_target.attr,
@@ -104,7 +102,7 @@ index ec249eca0d94..a6b648457908 100644
  	&dev_attr_boot_sound.attr,
  	&dev_attr_panel_od.attr,
  	&dev_attr_mini_led_mode.attr,
-@@ -4352,6 +4400,8 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+@@ -4370,6 +4418,8 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
  		devid = ASUS_WMI_DEVID_NV_DYN_BOOST;
  	else if (attr == &dev_attr_nv_temp_target.attr)
  		devid = ASUS_WMI_DEVID_NV_THERM_TARGET;

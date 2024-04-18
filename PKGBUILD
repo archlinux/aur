@@ -4,7 +4,7 @@
 
 pkgbase=linux-g14
 pkgver=6.8.7.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
 _url='https://github.com/archlinux/linux'
@@ -54,19 +54,19 @@ source=(
 
   0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch
   amd-tablet-sfh.patch
-#  fix_amd_eDP_HDR_flickering.patch
 
-  0001-v2-platform-x86-asus-wmi-add-support-for-2024-ROG-Mini-LED.patch
-  0002-v2-platform-x86-asus-wmi-add-support-for-Vivobook-GPU-MUX.patch
-  0003-v2-platform-x86-asus-wmi-add-support-variant-of-TUF-RGB.patch
-  0004-v2-platform-x86-asus-wmi-support-toggling-POST-sound.patch
-  0005-v2-platform-x86-asus-wmi-store-a-min-default-for-ppt-op.patch
-  0006-v2-platform-x86-asus-wmi-adjust-formatting-of-ppt-fcts.patch
-  0007-v2-platform-x86-asus-wmi-ROG-Ally-increase-wait-time.patch
-  0008-v2-platform-x86-asus-wmi-add-support-for-MCU-powersave.patch
-  0009-v2-platform-x86-asus-wmi-add-clean-up-structs.patch
+  0001-v4-platform-x86-asus-wmi-add-support-for-2024-ROG-Mini-LED.patch
+  0002-v4-platform-x86-asus-wmi-add-support-for-Vivobook-GPU-MUX.patch
+  0003-v4-platform-x86-asus-wmi-add-support-variant-of-TUF-RGB.patch
+  0004-v4-platform-x86-asus-wmi-support-toggling-POST-sound.patch
+  0005-v4-platform-x86-asus-wmi-store-a-min-default-for-ppt-op.patch
+  0006-v4-platform-x86-asus-wmi-adjust-formatting-of-ppt-fcts.patch
+  0007-v4-platform-x86-asus-wmi-ROG-Ally-increase-wait-time.patch
+  0008-v4-platform-x86-asus-wmi-add-support-for-MCU-powersave.patch
+  0009-v4-platform-x86-asus-wmi-add-clean-up-structs.patch
   
   0001-HID-asus-fix-more-n-key-report-descriptors-if-n-key-.patch
+  0001-platform-x86-asus-wmi-add-support-for-vivobook-fan-p.patch
   0002-HID-asus-make-asus_kbd_init-generic-remove-rog_nkey_.patch
   0003-HID-asus-add-ROG-Ally-N-Key-ID-and-keycodes.patch
   0004-HID-asus-add-ROG-Z13-lightbar.patch
@@ -101,16 +101,17 @@ sha256sums=('291d1a1faf4e87b3b0ea9729080db887aafd1ff2fac1430ceca921e46bc22fae'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             '1edb362a762c8858374027e30ff58ae0014e117fdc05cc7db6da50f80e7aab87'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
-            '06375fa2bcc6fefd8d57c0d8a13b5af02d08318f3721c58fc0354970656f3b64'
-            'f64fbf3b7e817edd7267612531d5aba3d17b727d5151b5b9e620d616797cf3da'
-            '270fe67b07e8138be848958e9fa28ee8fecffd2e146ea68444c5200a9b09c2ed'
-            '1b53d1914fb0186585125fcd9db2367697e4c265bfd38378aa0f59cc4e0fb46d'
-            '9a5c4f2cc956933abcb9e1bd652dfad382108dd1f22844d6e5c393861a9ba35d'
-            '951fe0da7b7939665ffc5094a0d39641d4c73395c264237e082d8c54b2927dfb'
-            '66c25f11f3fc2cc0db9a3392400f072f1c3ac9408328128f075a9260f4eb01ef'
-            'd31ba415c2b65e3485d74f0268f1020dc49f31a6fe3316cf6c74a0690e96c81f'
-            '47ad6e0781f1df1f6a6d35b8f20c2bf9dbd7e8e0b92a332cb88145755afba77c'
+            'feaf5f5fb62e25e2369f92f77e8327dcd4cb4cf4bc6d0c91d9c7bc40c0f4de46'
+            'b9866121c69ce22b4651b3ef2a1956e6d0547e40a14d1224e2f367a4f716ca1a'
+            '6f2f248a5ac9b1a37324cbce8d29a65b22a2b20d4b3564c0dc6063789ae733ba'
+            '28f2b9bf5a1f4993bdc77d4d8ac32c1905edfeb3f4cce476f0f85a31b573bcd0'
+            'fa8de80231c933ca294315168d985ae18261e04e77ef17482c815a0703d6c5fb'
+            '62b297619e500b4453e2f3e0305c4dfb92185f69ebbdb67f99e8f76dad139f7a'
+            'c2c89baaf134c0151c3f7a3861d16194e32c91c7abc87f870733cab8c5b88389'
+            'f5b560d988c47033c44307da0b584599d1f59cc0028a594f4df87affffc219d5'
+            'de85da760f6692b284e39aa78479904d6ee78b349f1e98d1d210777f9ef17581'
             '3be072ed798becd91bae66a75d09235c9cb5e84547b1f4eb7768e954ba109e92'
+            '93c9a77f6c25494cecbe6b236bd2179065d5f5db5589dabaa425134c1a8c3481'
             'c1d96328d96964c2ce3ef7609fb7c07e97eb136dfab9f6d4efcce072a5739838'
             '2414dc71174c90b92f975a7d16cabc99ba509397d843132764ea9ee91b643dc0'
             '107a08aa610d3ba3c7ecec301df2ea8f345bc74107fcf4dac96fe9e89a23dcf1'
