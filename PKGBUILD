@@ -1,7 +1,7 @@
 # Maintainer: Adiee5 <adiee5@adiee5.ct8.pl>
 pkgname=prog8
 pkgver=10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level programming language designed for 6502 based devices"
 arch=("any")
 url="https://github.com/irmen/prog8"
@@ -13,7 +13,7 @@ optdepends=("x16-emulator: emulating Commander x16"
 #	    "vim: Editing prog8 code"
 #	    "nano: Editing prog8 code"
 	    )
-source=("prog8c.jar::https://github.com/irmen/prog8/releases/download/v$pkgver/prog8compiler-$pkgver-all.jar"
+source=("prog8c-$pkgver.jar::https://github.com/irmen/prog8/releases/download/v$pkgver/prog8compiler-$pkgver-all.jar"
 	"p8compile"
 	"prog8_detect.vim"
 	"https://raw.githubusercontent.com/irmen/prog8/master/LICENSE"
