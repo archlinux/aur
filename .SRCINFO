@@ -1,6 +1,6 @@
 pkgbase = php72-igbinary
 	pkgdesc = php72 extension igbinary
-	pkgver = 3.2.6
+	pkgver = 3.2.15
 	pkgrel = 1
 	url = http://pecl.php.net/package/igbinary
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = php72-igbinary
 	makedepends = php72
 	depends = php72
 	backup = etc/php72/conf.d/igbinary.ini
-	source = http://pecl.php.net/get/igbinary-3.2.6.tgz
-	md5sums = 6970abb34217faff470767c2b84ea2da
+	source = http://pecl.php.net/get/igbinary-3.2.15.tgz
+	md5sums = de81e2f54bfbe741a7f2453bccf970e9
 
 pkgname = php72-igbinary
