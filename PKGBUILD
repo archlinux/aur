@@ -3,14 +3,13 @@
 _pkgname=twilight
 _pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.78.0
-pkgrel=1
-pkgdesc='Estimation of local false discovery rate'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Estimation of local false discovery rate"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-biobase
 )
 optdepends=(
@@ -18,14 +17,15 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('70c3802ab0c4850d0a5bfcaba9b1e97c7ed66520c05bad30cd4c737d3ecaef01')
+md5sums=('fa6b01126ace9423edfc04757f6392b1')
+b2sums=('35d46c87242b3fe9e1bdbf089a2bee99801368001d5c5aa52a5ddf2f9e83ea2308ed7e78c2320e9ff02c018289e8dfce472d9368a1b2af4506c372d918a1f196')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
