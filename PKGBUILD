@@ -2,8 +2,8 @@
 
 pkgname=kde-service-menu-reimage-mod
 _pkgname=kde-service-menu-reimage
-pkgver=23.01.30
-_pkgver=${pkgver}-1658
+pkgver=24.03.23
+_pkgver=${pkgver}-1729
 pkgrel=1
 arch=('any')
 license=('GPL')
