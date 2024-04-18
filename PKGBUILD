@@ -10,10 +10,10 @@ license=('MIT')
 provides=(${pkgname})
 conflicts=(${pkgname}  ${pkgname%-git} asciidoctor-pdf)
 #replaces=(${pkgname})
-depends=(npm poppler ghostscript)
-makedepends=()
+depends=()
+makedepends=(git npm poppler ghostscript)
 backup=()
-options=('!strip')
+options=()
 install=
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
@@ -21,11 +21,15 @@ noextract=()
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 package() {
-    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}"
+    npm install -g --prefix "${pkgdir}/usr" $(npm pack)
 
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/cli/issues/1103 for details.
