@@ -2,7 +2,7 @@
 
 pkgname=snac2
 pkgver=2.51
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, minimalistic ActivityPub instance'
 arch=('x86_64' 'armv7h' 'aarch64' 'riscv32' 'riscv64')
 url='https://codeberg.org/grunfink/snac2'
@@ -17,7 +17,7 @@ prepare() {
 
 build() {
     cd ${pkgname}
-    make CFLAGS=-DNO_MASTODON_API
+    make
 }
 package() {
     cd ${pkgname}

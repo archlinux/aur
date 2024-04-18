@@ -1,7 +1,7 @@
 pkgbase = snac2
 	pkgdesc = A simple, minimalistic ActivityPub instance
 	pkgver = 2.51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/grunfink/snac2
 	arch = x86_64
 	arch = armv7h
