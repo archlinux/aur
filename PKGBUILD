@@ -3,27 +3,27 @@
 _pkgname=UNDO
 _pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
-pkgrel=1
-pkgdesc='Unsupervised Deconvolution of Tumor-Stromal Mixed Expressions'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Unsupervised Deconvolution of Tumor-Stromal Mixed Expressions"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-biobase
   r-biocgenerics
   r-nnls
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d145f6aa55e1a8c1ffd29533573a8ffbd404caebd156e2ea782151c71cf14852')
+md5sums=('a94665c036a09fbf3728f0a1ad220dfa')
+b2sums=('06d24ea76e21b19d94616e038a524e32612b9c1fe528777084e1aabf88d84456ca7d9c8c923b6ea2aa181d89254cde3c83ccc9eff4aabae3977314178fc95623')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
