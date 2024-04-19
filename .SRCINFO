@@ -1,0 +1,12 @@
+pkgbase = addr-book-combine-git
+	pkgdesc = Combine multiple aerc-style address books into a single address book, with de-duplication and smart sorting.
+	pkgver = .r9.11696f4
+	pkgrel = 1
+	url = https://git.sr.ht/~jcc/addr-book-combine
+	arch = any
+	license = GPL3
+	makedepends = go
+	source = git+https://git.sr.ht/~jcc/addr-book-combine
+	sha256sums = SKIP
+
+pkgname = addr-book-combine-git
