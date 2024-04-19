@@ -2,7 +2,7 @@
 # Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
 ## options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ]; then
   : ${_autoupdate:=false}
 else
   : ${_autoupdate:=true}
@@ -16,7 +16,7 @@ unset _pkgtype
 ## basic info
 _pkgname="ryujinx"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.1.1244
+pkgver=1.1.1284
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/Ryujinx/Ryujinx"
@@ -27,13 +27,13 @@ arch=(x86_64)
 _main_package() {
   makedepends=(
     'desktop-file-utils'
-    'dotnet-sdk>=8.0.3.sdk202' # AUR: dotnet-core-bin
+    'dotnet-sdk>=8.0.4.sdk204' # AUR: dotnet-core-bin
   )
 
   options=('!strip' '!debug')
   install="$_pkgname.install"
 
-  if [ "${_build_git::1}" != "t" ] ; then
+  if [ "${_build_git::1}" != "t" ]; then
     _main_stable
   else
     _main_git
@@ -68,7 +68,7 @@ _main_git() {
   pkgver() {
     cd "$_pkgsrc"
 
-    git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
       | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
   }
 }
@@ -110,10 +110,10 @@ package() {
   ln -s "/opt/ryujinx/Ryujinx.Gtk3" "$pkgdir/usr/bin/ryujinx.gtk"
 
   # .desktop
-  install -Dm644 distribution/linux/Ryujinx.desktop  "$pkgdir/usr/share/applications/ryujinx.desktop"
+  install -Dm644 distribution/linux/Ryujinx.desktop "$pkgdir/usr/share/applications/ryujinx.desktop"
 
   # icon
-  install -Dm644 distribution/misc/Logo.svg          "$pkgdir/usr/share/pixmaps/ryujinx.svg"
+  install -Dm644 distribution/misc/Logo.svg "$pkgdir/usr/share/pixmaps/ryujinx.svg"
 
   # mimetype
   install -Dm644 distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/ryujinx.xml"
@@ -141,7 +141,7 @@ package() {
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
-  if [[ "${_autoupdate::1}" != "t" ]] ; then
+  if [[ "${_autoupdate::1}" != "t" ]]; then
     return
   fi
 
@@ -155,7 +155,7 @@ _update_version() {
   local _pkgver_new="${_tag#v}"
 
   # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
     _pkgver="${_pkgver_new:?}"
   fi
 }
