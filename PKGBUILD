@@ -1,21 +1,29 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=gnome-shell-extension-gnome-clipboard-history-git
-pkgver=37.r253.g9a4d9c0
+pkgver=37.r263.gcb3cca8
 pkgrel=1
 pkgdesc="Gnome Clipboard History is a Gnome extension that saves what you've copied into an easily accessible, searchable history panel."
 arch=('any')
 url="https://github.com/SUPERCILEX/gnome-clipboard-history"
-license=('MIT')
+license=(
+  'MIT'
+)
 depends=(
-  'gnome-shell>=1:45'
+  'gnome-shell>=1:46'
 )
 makedepends=(
   'git'
   'zip'
 )
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" "gnome-shell-extension-clipboard-indicator-git" "gnome-shell-extension-clipboard-indicator")
+provides=(
+  "${pkgname%-git}"
+)
+conflicts=(
+  "${pkgname%-git}"
+  "gnome-shell-extension-clipboard-indicator-git"
+  "gnome-shell-extension-clipboard-indicator"
+)
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -28,16 +36,20 @@ pkgver() {
 }
 
 build() {
-  cd "$(dirname $(find -name 'metadata.json' -print -quit))"
+  cd "$(dirname "$(find . -name 'metadata.json' -print -quit)")"
   make bundle
 }
 
 package() {
-  cd "$(dirname $(find -name 'metadata.json' -print -quit))"
+  local uuid
+  local schema
+  local destdir
 
-  local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-  local schema=org.gnome.shell.extensions.clipboard-indicator.gschema.xml
-  local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
+  cd "$(dirname "$(find . -name 'metadata.json' -print -quit)")"
+
+  uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  schema=org.gnome.shell.extensions.clipboard-indicator.gschema.xml
+  destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
   bsdtar -xvf "bundle.zip" -C \
@@ -50,9 +62,11 @@ package() {
   cp -r "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/locale" "$pkgdir/usr/share/"
   rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/locale/"
 
-  install -Dm644 "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname}"
+  install -Dm644 "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/LICENSE" -t \
+    "$pkgdir/usr/share/licenses/${pkgname}"
   rm -f "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/LICENSE"
 
-  install -Dm644 "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/README.md" -t "$pkgdir/usr/share/doc/${pkgname}"
+  install -Dm644 "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/README.md" -t \
+    "$pkgdir/usr/share/doc/${pkgname}"
   rm -f "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/README.md"
 }
