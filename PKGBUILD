@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-applet-emoji-selector-git
-pkgver=r12.a20bf7e
+pkgver=0.1.1.r0.ge830bc9
 pkgrel=1
 pkgdesc="Emoji Selector for COSMIC DE"
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -38,4 +38,6 @@ package() {
   install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin/"
   install -Dm644 data/dev.dominiccgeh.CosmicAppletEmojiSelector.desktop -t \
     "$pkgdir/usr/share/applications/"
+  install -Dm644 data/icons/scalable/apps/*.svg -t \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 }

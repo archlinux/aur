@@ -1,6 +1,6 @@
 pkgbase = cosmic-applet-emoji-selector-git
 	pkgdesc = Emoji Selector for COSMIC DE
-	pkgver = r12.a20bf7e
+	pkgver = 0.1.1.r0.ge830bc9
 	pkgrel = 1
 	url = https://github.com/leb-kuchen/cosmic-applet-emoji-selector
 	arch = x86_64
