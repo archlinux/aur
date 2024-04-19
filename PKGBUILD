@@ -1,6 +1,6 @@
 # Maintainer: Emil Bay <archlinux@tixz.dk>
 pkgname=vega-protocol-bin
-pkgver=0.74.10
+pkgver=0.75.8
 pkgrel=1
 pkgdesc="A Go implementation of the Vega Protocol, a protocol for creating and trading derivatives on a fully decentralised network."
 arch=('x86_64' 'aarch64')
@@ -20,14 +20,14 @@ source_aarch64=(
   "https://github.com/vegaprotocol/vega/releases/download/v${pkgver}/visor-linux-arm64.zip"
 )
 
-sha256sums_x86_64=('26fa3458dce269bea8aa5863486b19c8d67ea4459717cb1855c74a73711f1102'
-                   'eedc92922f9149c9affea3610b46554a6a0a2bb7d2426c0101a75977ac7b23a4')
-sha256sums_aarch64=('b401e0372396a49f0148cf5dc91df22c69a4879ef078bec4e582c4e4fcdc67d6'
-                    '786e5f62937bb0f02398498fbb65a4cc4b1d06bf4fbaf8313b1e1990d3803967')
-b2sums_x86_64=('faec77b88926e6086faf97a9015a686229ef0a8eb4eeebf2a33a7dbddc8988e24bee29dda836527212c02b2cdef34d78ae573503df422a4c4fc27afd68eb0553'
-               '4bfe93eb02109e75854234f2928f6d88efe7f44e9d300c142820e7e0be291f6a48426aa372ff97efbae69362e217feac7428031955cff3ea8829621a0d258826')
-b2sums_aarch64=('a28f66f625f27b9a75beffdb05952c8bd94dda2a9c29430b1c73a1fdea936b2272eb51d990edeb8974230b8fd68b3c391c4a2e215d4d12fbca88b5fbe0199f9c'
-                'cc0597227f73bf9bc599e7fe8c76d80ac97a193fa0c9e4d6f6143dc57cca08e6307dcd147f4fd03ee072dcb4b2cd7a6e8c9fb4b1e9a8a4f232a59fbcf62e47c6')
+sha256sums_x86_64=('56b57f2bc69a82d4330fc7e83810136e53ee9a386c4085b58166c99364dce325'
+                   '6305aee709fdc59d69d796d655da8457cd92293207761357f432007753f02250')
+sha256sums_aarch64=('4e002206f6109ec4f362cb8da779fcbdd0efba12fa37157b231e444046222079'
+                    '675d31dfe82ae8238bfb5f7bc70f0307ea89bd6bc568267bfa6121aa105fda44')
+b2sums_x86_64=('114e9c95ce445c0fed992d0a1a4540c377f350860ad4a71bb999dddd0dc0ec2a40ae40096faed0b41c76fc2d955d6572a4d2f224e3eafbaf1525692753241af1'
+               'f300d6e7e7e28ee140d361aed8c8c8398c25f0f0ccffa15720cff749390a3009218fc05c42b8a81259035174f8f7f212bb4aaf9e8f3d6480f3630af516c90d85')
+b2sums_aarch64=('59184d793ab8463ca77c661062fedc0e45d39ed458af5d1565de5ba0adf1dd31a8b7e895b0364017c0836d71a279edf91110d5fdb9fe3554edfbbec4f8be6d44'
+                '33db8c12ebdfb2d7854ae4417c6f0e1d0d349ba57a50488ed958be6cbb2839dd9b05155816cc0c5e880372dbb441e62c6730b17589530035c4bdf6e0139b65bd')
 
 package() {
   install -Dm755 "${srcdir}/vega" "${pkgdir}/usr/bin/vega"
