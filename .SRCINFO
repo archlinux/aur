@@ -1,8 +1,8 @@
 pkgbase = dump-shm
 	pkgdesc = dump content of a shared memory to stdout
 	pkgver = 1.3.1
-	pkgrel = 1
-	url = https://github.com/NikolasK-source/dump_shm
+	pkgrel = 2
+	url = https://github.com/SHMModbus/dump_shm
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = dump-shm
 	makedepends = cxxsemaphore
 	depends = cxxshm
 	depends = cxxsemaphore
-	source = git+https://github.com/NikolasK-source/dump_shm.git#tag=v1.3.1
+	source = git+https://github.com/SHMModbus/dump_shm.git#tag=v1.3.1
 	sha256sums = SKIP
 
 pkgname = dump-shm

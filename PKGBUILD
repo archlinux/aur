@@ -1,15 +1,15 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=dump-shm
-pkgrel=1
+pkgrel=2
 pkgver=1.3.1
 pkgdesc="dump content of a shared memory to stdout"
-url="https://github.com/NikolasK-source/dump_shm"
+url="https://github.com/SHMModbus/dump_shm"
 license=('MIT')
 arch=('x86_64' 'aarch64')
 makedepends=('cmake' 'git' 'cxxopts' 'cxxshm' 'cxxsemaphore')
 depends=('cxxshm' 'cxxsemaphore')
-source=("git+https://github.com/NikolasK-source/dump_shm.git#tag=v${pkgver}")
+source=("git+https://github.com/SHMModbus/dump_shm.git#tag=v${pkgver}")
 
 sha256sums=('SKIP')
 
