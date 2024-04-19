@@ -1,0 +1,3 @@
+[signal-desktop-fix-sway]
+source = "manual"
+manual = "0.1.0"
