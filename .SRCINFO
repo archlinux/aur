@@ -1,0 +1,17 @@
+pkgbase = libjuice-git
+	pkgdesc = JUICE is a UDP Interactive Connectivity Establishment library
+	pkgver = 1.4.0.r0.gac0fc81
+	pkgrel = 1
+	url = https://github.com/paullouisageneau/libjuice
+	arch = i686
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = libjuice=1.4.0.r0.gac0fc81
+	conflicts = libjuice
+	source = git+https://github.com/paullouisageneau/libjuice.git
+	sha256sums = SKIP
+
+pkgname = libjuice-git
