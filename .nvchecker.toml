@@ -1,0 +1,5 @@
+[xxenv-latest]
+source = "github"
+github = "momo-lab/xxenv-latest"
+prefix = "v"
+use_max_tag = true
