@@ -35,7 +35,7 @@ depends=(
 optdepends=(
     'kde-cli-tools: file deletion support (kioclient5)'
     'pipewire: WebRTC desktop sharing under Wayland'
-    'qt5-base: enable Qt5 with --enable-features=AllowQt'
+    'qt6-base: enable Qt6 with --enable-features=AllowQt'
     'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
     'trash-cli: file deletion support (trash-put)'
     'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
@@ -52,12 +52,12 @@ source_x86_64=(
     "${pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-x64.zip"
     "${pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-x64.zip"
 )
-sha256sums_aarch64=('7f537954d754f3f34ec0fb070bbd59428246b9f841622fed5db1637b19f0d6eb'
-                    '15ed790aef1ca4c31ce6c300565a14bdb0f7787626724ea2fd890c8ebd23d60e')
-sha256sums_armv7h=('3f42df3c85cf34af433732e520bcc97f53007535091a3d2fd96df3b73e8f2d47'
-                   'dcd5d83842d746ad26950b5c38e1e0cf4efade98ec3b7da6284dddc07088b243')
-sha256sums_x86_64=('d86350376dafe8b1ed2d349a0a0ddd8df9063ed7e068c9a6166cd6a71dcfb830'
-                   '1cc20ecb1895f301e084e2b5c1d2f15806bb9c2f7dd8a33b9061b40b54d05dcb')
+sha256sums_aarch64=('45266df8ec12c15c80b97481544f1020df744138989b03c2ab3905f685b82a4f'
+                    'a9eca6f7659aa7379e8b8abb1dd2570bea8646f177ba9379705bd8f51fc6b745')
+sha256sums_armv7h=('9d8b31fbb0ff598f9a1decaa372ff7e333042471e315270a777f8985ce26930b'
+                   'd88125adf8a4c0262ff3f13cd2de22b0ed32dab6bf0b5dfd6fcf4b2c002c0f65')
+sha256sums_x86_64=('055c9c5a1afe4e10b4b684a8a2b4ca26e8a3f082cfc1787afb2232c03782b808'
+                   'e4563587eb428af2e2486f4bab0d8ba616ccffff09ab801f2a550c314ff71e80')
 package() {
     install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
     find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
