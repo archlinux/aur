@@ -2,7 +2,7 @@ pkgbase = stdin-to-modbus-shm
 	pkgdesc = Read instructions from stdin and write them to a modbus shared memory
 	pkgver = 1.5.0
 	pkgrel = 1
-	url = https://github.com/NikolasK-source/stdin_to_modbus_shm
+	url = https://github.com/SHMModbus/stdin_to_modbus_shm
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
@@ -13,7 +13,7 @@ pkgbase = stdin-to-modbus-shm
 	makedepends = cxxsemaphore
 	depends = cxxshm
 	depends = cxxsemaphore
-	source = git+https://github.com/NikolasK-source/stdin_to_modbus_shm#tag=v1.5.0
+	source = git+https://github.com/SHMModbus/stdin_to_modbus_shm#tag=v1.5.0
 	sha256sums = SKIP
 
 pkgname = stdin-to-modbus-shm
