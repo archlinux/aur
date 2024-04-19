@@ -1,7 +1,7 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 
 _cranname=ftsa
-_cranver=6.3
+_cranver=6.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(LGPL3)
 depends=('r>=3.5.0' r-forecast r-rainbow r-sde r-colorspace r-mass r-pcapp r-fda r-pdfcluster r-ecp r-strucchange r-e1071 r-psych r-fgarch r-kernsmooth r-vars r-boot r-fdapace r-laplacesdemon r-evgam r-roopsd r-glue)
 optdepends=()
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=(2cda35b98fc9058ed517f9ada8e9608f88f4ff9c6697a2bd885624d398408b01)
+sha256sums=(9bf08b19eda21ea3d4858aac0c333dc7d6728aaf4b18a28c7d98f9cf50c64393)
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"

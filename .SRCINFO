@@ -1,6 +1,6 @@
 pkgbase = r-ftsa
 	pkgdesc = Functional Time Series Analysis
-	pkgver = 6.3
+	pkgver = 6.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ftsa
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-ftsa
 	depends = r-evgam
 	depends = r-roopsd
 	depends = r-glue
-	source = https://cran.r-project.org/src/contrib/ftsa_6.3.tar.gz
-	sha256sums = 2cda35b98fc9058ed517f9ada8e9608f88f4ff9c6697a2bd885624d398408b01
+	source = https://cran.r-project.org/src/contrib/ftsa_6.4.tar.gz
+	sha256sums = 9bf08b19eda21ea3d4858aac0c333dc7d6728aaf4b18a28c7d98f9cf50c64393
 
 pkgname = r-ftsa
