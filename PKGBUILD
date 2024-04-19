@@ -1,13 +1,14 @@
-# Maintainer:Integral<luckys68@126.com>
-# Maintainer:ston<2424284164@qq.com>
+# Maintainer: Integral <integral@member.fsf.org>
+# Maintainer: ston <2424284164@qq.com>
+
 pkgname=kdocs-uos
 pkgver=3.5.2
 pkgrel=1
 pkgdesc="金山文档 Kingsoft documents (An online collaborative office software)."
 arch=('x86_64')
 url="https://www.kdocs.cn/"
-license=('custom')
-depends=('nss' 'alsa-lib' 'gtk3' 'dpkg')
+license=('LicenseRef-Kingsoft')
+depends=('nss' 'alsa-lib' 'gtk3' 'dpkg' 'lsb-release')
 optdepends=(
 	'pulseaudio: A featureful, general-purpose sound server.'
 	'lib32-libpulse: A featureful, general-purpose sound server (32-bit client libraries).'
@@ -28,8 +29,10 @@ package() {
 	# Launcher
 	mkdir -p "${pkgdir}/usr/bin/"
 	ln -s "/opt/apps/cn.kdocs.kdesktop/files/bin/kdesktop" "${pkgdir}/usr/bin/${pkgname}"
+
 	# Desktop Entry
 	install -Dm644 "${pkgdir}/opt/apps/cn.kdocs.kdesktop/entries/applications/cn.kdocs.kdesktop.desktop" -t "${pkgdir}/usr/share/applications/"
+
 	# License
 	install -Dm644 "${pkgdir}/opt/apps/cn.kdocs.kdesktop/files/lib/kdesktop/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -Dm644 "${pkgdir}/opt/apps/cn.kdocs.kdesktop/files/lib/kdesktop/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
