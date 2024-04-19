@@ -1,6 +1,6 @@
 # Maintainer: SinoCici <hsk6808065@163.com>
 pkgname=ideapad2024-power-management
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Manage power settings for the Lenovo Ideapad 2024 (IdeaPad Pro 5 (Gen 9)) with the CLI tool ideapad2024-power-manage, alongside a system tray icon for convenient access. Remember, you'll need to manually start the tray by executing ideapad2024-power-tray."
 arch=("any")
@@ -17,7 +17,7 @@ source=(
 	"$url/archive/refs/tags/$pkgver.tar.gz"
 )
 
-sha256sums=('7fce3d14facaa1f1139adf68c9fb6592d8e0f12a53fedc9f8adf7123d77e2ba3')
+sha256sums=('9d0e53d6a55b55876872355d955b77c8f008a14ea782ac3136bc0abe8d8a0ad7')
 
 build() {
 	# at this point the user can still be captured by $(whoami)
