@@ -1,0 +1,16 @@
+pkgbase = realitlscanner-git
+	pkgdesc = A TLS server scanner for Reality
+	pkgver = 0.2.1.r0.g9bf9dfaf
+	pkgrel = 1
+	url = https://github.com/XTLS/RealiTLScanner
+	arch = any
+	license = MPL-2.0
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = realitlscanner
+	conflicts = realitlscanner
+	source = git+https://github.com/XTLS/RealiTLScanner.git
+	sha256sums = SKIP
+
+pkgname = realitlscanner-git
