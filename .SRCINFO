@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
-	pkgver = b2684
+	pkgver = b2698
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = armv7h
@@ -16,7 +16,6 @@ pkgbase = llama.cpp-git
 	makedepends = openblas64
 	makedepends = rocm-hip-sdk
 	makedepends = vulkan-headers
-	optdepends = ccache: for caching builds
 	provides = llama.cpp
 	conflicts = llama.cpp
 	source = llama.cpp::git+https://github.com/ggerganov/llama.cpp

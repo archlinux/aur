@@ -11,7 +11,7 @@ pkgname=(
   "${_name}-sycl-f32-git"
   "${_name}-vulkan-git"
 )
-pkgver=b2684
+pkgver=b2698
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -29,7 +29,6 @@ makedepends=(
   'rocm-hip-sdk'
   'vulkan-headers'
 )
-optdepends=('ccache: for caching builds')
 conflicts=("${_name}")
 provides=("${_name}")
 source=("${_name}::git+${url}"
