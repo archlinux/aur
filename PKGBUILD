@@ -7,8 +7,8 @@ arch=('x86_64' 'aarch64')
 license=('GPL')
 depends=('soh-bin' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
-source=("https://gitlab.com/soh-bin/zeldamm/-/archive/$pkgver/$pkgname-1.0.0.tar.bz2")
-sha256sums=("SKIP")
+source=("https://gitlab.com/linuxbombay/soh-bin/zeldamm/-/archive/$pkgver/$pkgname-1.0.0.tar.bz2")
+sha256sums=('8bd9797a6dc6456998bc13d286a4a661f50fb6eb75a4e4ef4a4af6dfe6fb29e3')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"

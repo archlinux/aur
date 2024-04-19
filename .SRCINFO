@@ -10,7 +10,7 @@ pkgbase = zeldamm
 	depends = wget
 	depends = unzip
 	depends = yad
-	source = https://gitlab.com/soh-bin/zeldamm/-/archive/1.0.0/zeldamm-1.0.0.tar.bz2
-	sha256sums = SKIP
+	source = https://gitlab.com/linuxbombay/soh-bin/zeldamm/-/archive/1.0.0/zeldamm-1.0.0.tar.bz2
+	sha256sums = 8bd9797a6dc6456998bc13d286a4a661f50fb6eb75a4e4ef4a4af6dfe6fb29e3
 
 pkgname = zeldamm
