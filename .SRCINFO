@@ -1,7 +1,7 @@
 pkgbase = goldendict-ng-git
 	pkgdesc = The next generation GoldenDict (Supports Qt WebEngine & Qt6).
-	pkgver = 23.07.25.r4892.17cd4456
-	pkgrel = 1
+	pkgver = 24.02.16.r5372.cb37a91d
+	pkgrel = 2
 	url = https://github.com/xiaoyifang/goldendict-ng
 	arch = i686
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = goldendict-ng-git
 	depends = opencc
 	depends = xapian-core
 	depends = libzim
+	depends = qt6-base
 	depends = qt6-svg
 	depends = qt6-multimedia
 	depends = qt6-webengine

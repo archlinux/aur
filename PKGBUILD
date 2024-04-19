@@ -1,8 +1,8 @@
 # Maintainer: slbtty <shenlebantongying@gmail.com>
 
 pkgname=goldendict-ng-git
-pkgver=23.07.25.r4892.17cd4456
-pkgrel=1
+pkgver=24.02.16.r5372.cb37a91d
+pkgrel=2
 pkgdesc="The next generation GoldenDict (Supports Qt WebEngine & Qt6)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/xiaoyifang/goldendict-ng"
@@ -21,6 +21,7 @@ depends=(
 	opencc
 	xapian-core
 	libzim
+	qt6-base
 	qt6-svg
 	qt6-multimedia
 	qt6-webengine
