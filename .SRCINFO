@@ -1,7 +1,7 @@
 pkgbase = perl-alien-sdl
 	pkgdesc = Find and use the installed SDL library (contains architecture-specific configuration, determined at build time)
 	pkgver = 1.446
-	pkgrel = 16
+	pkgrel = 17
 	url = https://metacpan.org/dist/Alien-SDL
 	arch = aarch64
 	arch = armv7h

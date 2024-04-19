@@ -11,7 +11,7 @@
 _distname='Alien-SDL'
 pkgname="perl-${_distname@L}"
 pkgver=1.446
-pkgrel=16
+pkgrel=17
 pkgdesc="Find and use the installed SDL library (contains architecture-specific configuration, determined at build time)"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('LicenseRef-GPL-1.0-or-later OR Artistic-1.0-Perl')
@@ -54,6 +54,16 @@ build() {
     /usr/bin/perl Build
   )
 
+}
+
+check() {
+  cd "$srcdir/$_distdir"
+
+  ( unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Build test
+  )
 }
 
 package() {
