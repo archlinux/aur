@@ -10,7 +10,7 @@ pkgname=('yaru-sound-theme'
          'yaru-metacity-theme'
          'yaru-icon-theme'
          'yaru-session')
-pkgver=24.04.0
+pkgver=24.04.2
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=("https://github.com/ubuntu/yaru/archive/${pkgver}.tar.gz")
-sha256sums=('6619d8aea0b15548350566ddfabe801cb01ed62c5e8489adbf4112aceee72959')
+sha256sums=('386fb2c3663e0f81ec09844d244e0f9fcd13b3cfdc69797a5646b36e37183e60')
 
 build() {
   arch-meson $pkgbase-$pkgver build
