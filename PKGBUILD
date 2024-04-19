@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a65e8636680c1fb11c449ecb0c88771345a9535150b7a372bc615def6bea2c7c')
 
 build() {
-	arch-meson "$pkgname" build
+	arch-meson "$pkgname-$pkgver" build
 	meson compile -C build
 }
 
