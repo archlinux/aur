@@ -10,7 +10,7 @@ pkgbase = doom2
 	depends = wget
 	depends = unzip
 	depends = yad
-	source = https://gitlab.com/gzdoom-bin/doom2/-/archive/1.0.0/doom2-1.0.0.tar.bz2
-	sha256sums = SKIP
+	source = https://gitlab.com/linuxbombay/doom2/-/archive/1.0.0/doom2-1.0.0.tar.bz2
+	sha256sums = 7e9908dce1525c04e6ec5b958f071294fc7c69f12498b291b44a1206acc2451e
 
 pkgname = doom2
