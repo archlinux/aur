@@ -1,7 +1,7 @@
 # Maintainer: éclairevoyant
 
 pkgname=yambar
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Modular status panel for X11 and Wayland, inspired by polybar'
 arch=(x86_64)
@@ -14,7 +14,7 @@ optdepends=('alsa-lib: ALSA module'
             'libmpdclient: MPD module'
             'xcb-util-errors: better X error messages')
 makedepends=(git meson scdoc tllist xorgproto)
-source=("git+$url.git?signed#commit=c4e094de3e531675bae9ff76d7e6f0dfdcaecae9")
+source=("git+$url.git?signed#commit=a2d30b96fbb026621ec11692272f0117f35a00fd")
 b2sums=('SKIP')
 validpgpkeys=('B19964FBBA09664CC81027ED5BBD4992C116573F') # Daniel Eklöf (Git signing) <daniel@ekloef.se>
 

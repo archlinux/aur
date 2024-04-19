@@ -1,6 +1,6 @@
 pkgbase = yambar
 	pkgdesc = Modular status panel for X11 and Wayland, inspired by polybar
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://codeberg.org/dnkl/yambar
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = yambar
 	optdepends = json-c: XKB module
 	optdepends = libmpdclient: MPD module
 	optdepends = xcb-util-errors: better X error messages
-	source = git+https://codeberg.org/dnkl/yambar.git?signed#commit=c4e094de3e531675bae9ff76d7e6f0dfdcaecae9
+	source = git+https://codeberg.org/dnkl/yambar.git?signed#commit=a2d30b96fbb026621ec11692272f0117f35a00fd
 	validpgpkeys = B19964FBBA09664CC81027ED5BBD4992C116573F
 	b2sums = SKIP
 
