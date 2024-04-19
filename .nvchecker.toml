@@ -1,0 +1,4 @@
+[x16-rom]
+source = "github"
+github = "X16Community/x16-rom"
+use_latest_release = true
