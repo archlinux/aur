@@ -1,7 +1,7 @@
 pkgbase = anki-qt5
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build
-	pkgver = 23.12.1
-	pkgrel = 2
+	pkgver = 24.04.1
+	pkgrel = 1
 	url = https://apps.ankiweb.net/
 	changelog = anki-qt5.changelog
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = anki-qt5
 	makedepends = python-wheel
 	makedepends = nodejs>=18
 	makedepends = yarn
+	makedepends = mold
 	depends = python>=3.9
 	depends = python-beautifulsoup4
 	depends = python-waitress>=2.0.0
@@ -39,21 +40,21 @@ pkgbase = anki-qt5
 	conflicts = anki
 	conflicts = anki-bin
 	conflicts = anki-git
-	source = anki-qt5-23.12.1.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/23.12.1.tar.gz
-	source = anki-core-i18n-fb301cc62da3b7a83b4ea266d9a2e70cfc1a8418.tar.gz::https://github.com/ankitects/anki-core-i18n/archive/fb301cc62da3b7a83b4ea266d9a2e70cfc1a8418.tar.gz
-	source = anki-desktop-ftl-8c2191a7c797747cec767e3953bbbcc50acc5246.tar.gz::https://github.com/ankitects/anki-desktop-ftl/archive/8c2191a7c797747cec767e3953bbbcc50acc5246.tar.gz
-	source = disable-git-checks.patch
+	source = anki-qt5-24.04.1.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/24.04.1.tar.gz
+	source = anki-core-i18n-e3af3c983241448a239871ca573c9dd2fa5e8619.tar.gz::https://github.com/ankitects/anki-core-i18n/archive/e3af3c983241448a239871ca573c9dd2fa5e8619.tar.gz
+	source = anki-desktop-ftl-45155310c3302cbbbe645dec52ca196894422463.tar.gz::https://github.com/ankitects/anki-desktop-ftl/archive/45155310c3302cbbbe645dec52ca196894422463.tar.gz
 	source = no-update.patch
 	source = strip-formatter-deps.patch
 	source = strip-type-checking-deps.patch
 	source = force_qt5.patch
-	sha256sums = 2da86351d03339f0baaa9371b3f2db80ac22d22b787086468f32a726b06a1552
-	sha256sums = 3af5866ec4ec429465c63ac0484e3cacf6b0326ae30da07c715968d68c7e37d8
-	sha256sums = d07dfb1453a131943dde29d1683746432b0d4af04534deeda5daf9bceb31a87a
-	sha256sums = 94d8b6d6541ce0c00ab1ddc88d2f384a6535e9849891f30a02bb07bd60178086
+	source = strip-python-pip-system-certs.patch
+	sha256sums = 7cebd7745830392f9b6ec62c2300f3c45c934969b47f25275ecee0ee53f9aa68
+	sha256sums = 91dcc310b265a2d2b43d99a4af6b04790049b9f7fc927d4f68ba24db60c6025c
+	sha256sums = 32dd2158dc12a3e672862723715e5e775794412b96b7755066be8c823defa6b8
 	sha256sums = cc546f4e5af642af89f82be0375800c2721dd904c0a212cf46f6459495b75bff
 	sha256sums = 9858fefa254812980d252b29fc6f32bd19bb83ee7e5a96d72c707626ed5193a7
 	sha256sums = 198bc2ec14439e3ba41a03c4823f07df4b0c559c1dcbdaf678416ed12a720c2e
 	sha256sums = 02767ace172813cb2e8196838905dbc5fc7e26f853e988b9ff0bfc5276645a31
+	sha256sums = 2506cf9d5b0c47a2c519ec4bb0ef87e7921dca8db5cae39b0dae265d01e253b3
 
 pkgname = anki-qt5
