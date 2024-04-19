@@ -1,7 +1,7 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 
 _cranname=sysfonts
-_cranver=0.8.8
+_cranver=0.8.9
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=2
@@ -12,7 +12,7 @@ license=(GPL2)
 depends=(r)
 optdepends=(r-curl r-jsonlite)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=(f6b2a8d6af4803f895c29b45fe833983bd4ddc542c7d67ffca4f2740896d05bb)
+sha256sums=(52459c34a625a049d22ea6d6ab799428b954783da04a7c4487d47684b8659f88)
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
