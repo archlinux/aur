@@ -1,0 +1,5 @@
+[vspcplay]
+source = "github"
+github = "raphnet/vspcplay"
+prefix = "v"
+use_latest_release = true
