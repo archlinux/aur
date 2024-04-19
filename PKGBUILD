@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.37.0.r268.ga45518cf57
+pkgver=0.38.0.r60.ge855836ed1
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -403,6 +403,7 @@ prepare() {
     # audio output features
     '-Dalsa=enabled'
     '-Daudiounit=disabled'
+    '-Davfoundation=disabled'
     '-Dcoreaudio=disabled'
     '-Djack=enabled'
     '-Dopenal=enabled'
