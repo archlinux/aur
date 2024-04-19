@@ -1,9 +1,9 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-media-player-qt6-git
-pkgver=r1768.8080e5b
+pkgver=r1769.6bb1d62
 _webver=10.8.13
-pkgrel=4
+pkgrel=1
 pkgdesc='Jellyfin Desktop Client (Qt6)'
 arch=('i686' 'x86_64')
 license=('GPL')
