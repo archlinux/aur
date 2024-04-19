@@ -8,8 +8,6 @@ pkgbase = textidote-git
 	makedepends = git
 	makedepends = ant
 	depends = java-runtime-headless>=8
-	optdepends = libnotify: Error messages for textidote-desktop
-	optdepends = man-db: manual pages for textidote
 	optdepends = bash-completion: for completion when using bash
 	optdepends = zsh-completions: for completion when using zsh
 	provides = textidote
