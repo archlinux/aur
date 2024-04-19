@@ -2,7 +2,7 @@
 # Maintainer: daskol (Daniel Bershatsky) < bepshatsky at yandex dot ru >
 
 pkgname='python-datasets'
-pkgver=2.17.1
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='The largest hub of ready-to-use datasets for ML models with fast, easy-to-use and efficient data manipulation tools'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
 groups=('huggingface')
 source=("datasets-${pkgver}.tar.gz::https://github.com/huggingface/datasets/archive/refs/tags/${pkgver}.tar.gz"
         'python-datasets.diff')
-sha256sums=('50fae77029ef7c0705a906aad7799cfda90975824c2c5482dac953a8663c9b7c'
+sha256sums=('2440cdbfad6b0ea3efee2d9b6a2f4d630dab79a182537ffe3ad85897c3ec527e'
             'SKIP')
 
 prepare() {
