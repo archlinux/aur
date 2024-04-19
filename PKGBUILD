@@ -1,5 +1,5 @@
 pkgname=ruffle-bin
-pkgver=2024.03.19
+pkgver=2024.04.19
 pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_i386=1
@@ -10,28 +10,27 @@ pkgdesc="Unnofficial Ruffle bin package that supplies binaries for Linux x64, i3
 arch=('i386' 'pentium4' 'i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/ruffle-linux"
 license=('Apache' 'MIT')
-depends=(gtk3 libxcb zlib libxcb alsa-lib libxkbcommon-x11)
+depends=('gtk3' 'libxcb' 'zlib' 'libxcb' 'alsa-lib' 'libxkbcommon-x11')
 makedepends=('unzip')
 conflicts=(ruffle-git)
-makedepends=('unzip')
 sha256sums_x86_64=('SKIP' 'SKIP')
 sha256sums_i386=('SKIP' 'SKIP')
 sha256sums_pentium4=('SKIP' 'SKIP')
 sha256sums_i686=('SKIP' 'SKIP')
 sha256sums_aarch64=('SKIP' 'SKIP')
-source_x86_64=("https://gitlab.com/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-$pkgver-x64.tar.xz" 
+source_x86_64=("https://gitlab.com/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-x64.tar.xz" 
 "https://gitlab.com/ruffle-linux/ruffle/-/archive/ruffle-$pkgver/ruffle-$pkgver.tar.bz2")
 
-source_i386=("https://gitlab.com/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-$pkgver-i386.tar.xz" 
+source_i386=("https://gitlab.com/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-i686.tar.xz" 
 "https://gitlab.com/ruffle-linux/ruffle/-/archive/ruffle-$pkgver/ruffle-$pkgver.tar.bz2")
 
-source_pentium4=("https://gitlab.com/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-$pkgver-i386.tar.xz" 
+source_pentium4=("https://gitlab.com/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-i686.tar.xz" 
 "https://gitlab.com/ruffle-linux/ruffle/-/archive/ruffle-$pkgver/ruffle-$pkgver.tar.bz2")
 
-source_i686=("https://gitlab.com/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-$pkgver-i686.tar.xz" 
+source_i686=("https://gitlab.com/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-i686.tar.xz" 
 "https://gitlab.com/ruffle-linux/ruffle/-/archive/ruffle-$pkgver/ruffle-$pkgver.tar.bz2")
 
-source_aarch64=("https://gitlab.com/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-$pkgver-arm64.tar.xz" 
+source_aarch64=("https://gitlab.com/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-arm64.tar.xz" 
 "https://gitlab.com/ruffle-linux/ruffle/-/archive/ruffle-$pkgver/ruffle-$pkgver.tar.bz2")
 
 package() {
