@@ -3,14 +3,13 @@
 _pkgname=CodeDepends
 _pkgver=0.6.6
 pkgname=r-${_pkgname,,}
-pkgver=0.6.6
-pkgrel=1
-pkgdesc='Analysis of R Code for Reproducible Research and Code Comprehension'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Analysis of R Code for Reproducible Research and Code Comprehension"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-graph
   r-xml
 )
@@ -24,14 +23,15 @@ optdepends=(
   r-runit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7f815b03abe573b95ac9ed2e20caa7c5b5370aff710767e897575c2cf52c5857')
+md5sums=('a53bbc430f100300cfd77ac17d5eabbe')
+b2sums=('1fcc14437a6b63a52578af28254b42cd0fbec89e3b9ffa032a484081152eaec6197478ada79db00c37100a53281ad41173cdb40bd82f761d552c88583acdfd16')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
