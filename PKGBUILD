@@ -1,9 +1,10 @@
-# Mantainer: Aleksandr <contact at via dot aur>
+# Mantainer: Leillo1975 <leillo1975 at gmail dot com>
+# Contributor: Aleksandr <contact at via dot aur>
 # Contributor: Tim Wanders <tim241 at mailbox dot org>
-# Contributor: AdriÃƒÂ¡n Chaves FernÃƒÂ¡ndez, aka Gallaecio <adriyetichaves@gmail.com>
+# Contributor: AdriÃƒÂ¡n Chaves FernÃƒÂ¡ndez, aka Gallaecio <adriyetichaves at gmail dot com>
 
 pkgname=speed-dreams-svn
-pkgver=trunk
+pkgver=svn
 pkgrel=2
 pkgdesc="Speed Dreams is a fork of TORCS which aims to implement exciting new features, improving visual and physics realism."
 arch=('i686' 'x86_64')

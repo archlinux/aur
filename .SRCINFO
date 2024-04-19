@@ -1,6 +1,6 @@
 pkgbase = speed-dreams-svn
 	pkgdesc = Speed Dreams is a fork of TORCS which aims to implement exciting new features, improving visual and physics realism.
-	pkgver = trunk
+	pkgver = svn
 	pkgrel = 2
 	url = http://www.speed-dreams.net/
 	arch = i686
