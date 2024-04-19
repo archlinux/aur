@@ -3,7 +3,7 @@
 # Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=zrythm
-_pkgver=1.0.0-beta.6.6.1
+_pkgver=1.0.0-rc.0
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc='Highly automated and intuitive digital audio workstation'
@@ -21,11 +21,11 @@ depends=(
 	fluidsynth
 	graphene
 	graphviz
-	gtk4-git
+	gtk4
 	gtksourceview5
 	guile
 	json-glib
-	libadwaita-git
+	libadwaita
 	libaudec
 	libbacktrace
 	libcyaml
@@ -47,7 +47,7 @@ depends=(
 	sratom
 	vamp-plugin-sdk
 	xxhash
-	yyjson-git
+	yyjson
 	zix
 )
 makedepends=(git meson cmake ruby-sass help2man sassc)
@@ -56,7 +56,7 @@ options=('debug')
 source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc}
         "git+https://github.com/drobilla/zix.git"
         0001-gcc13-fixes.patch)
-sha256sums=('e62bdcb1d3f29bdb6df0aff1709f7882426d86d7d614e187c3ac138a9b8fc386'
+sha256sums=('23fbfb74ed249164a58fa1afbe2dbaeae0f937197dbb719768d0479d8938fbe9'
             'SKIP'
             'SKIP'
             'bb93eea519020e491f85c38ab3901ac530bbf747c4e7acc3aaea39f402091653')
