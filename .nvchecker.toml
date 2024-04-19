@@ -1,0 +1,5 @@
+[vmdebootstrap-pureos]
+source = "git"
+git = "http://git.liw.fi/vmdebootstrap"
+prefix = "vmdebootstrap-"
+use_max_tag = true
