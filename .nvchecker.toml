@@ -1,0 +1,4 @@
+[scribus-colornerd]
+source = "github"
+github = "jpederson/colornerd"
+use_latest_release = true
