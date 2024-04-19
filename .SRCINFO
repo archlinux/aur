@@ -1,7 +1,7 @@
 pkgbase = jellyfin-media-player-qt6-git
 	pkgdesc = Jellyfin Desktop Client (Qt6)
 	pkgver = r1768.8080e5b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jellyfin/jellyfin-media-player
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = jellyfin-media-player-qt6-git
 	depends = protobuf
 	depends = qt6-5compat
 	depends = qt6-webengine
+	optdepends = qt6-wayland: native Wayland support
 	provides = jellyfin-media-player
 	conflicts = jellyfin-media-player
 	source = git+https://github.com/jellyfin/jellyfin-media-player.git#branch=qt6

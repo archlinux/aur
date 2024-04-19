@@ -3,7 +3,7 @@
 pkgname=jellyfin-media-player-qt6-git
 pkgver=r1768.8080e5b
 _webver=10.8.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Jellyfin Desktop Client (Qt6)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -11,6 +11,9 @@ url='https://github.com/jellyfin/jellyfin-media-player'
 provides=('jellyfin-media-player')
 conflicts=('jellyfin-media-player')
 depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt6-5compat' 'qt6-webengine')
+optdepends=(
+    'qt6-wayland: native Wayland support'
+)
 makedepends=('cmake' 'git' 'python')
 source=('git+https://github.com/jellyfin/jellyfin-media-player.git#branch=qt6'
         "jellyfin-web_${_webver}.tar.gz::https://repo.jellyfin.org/releases/server/portable/versions/stable/web/${_webver}/jellyfin-web_${_webver}_portable.tar.gz")
