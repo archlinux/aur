@@ -1,6 +1,6 @@
 pkgbase = ezshare
 	pkgdesc = Easily share files, folders and clipboard over LAN - Like Google Drive but without internet
-	pkgver = 1.10.0
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://github.com/mifi/ezshare
 	changelog = changelog.md
@@ -10,10 +10,10 @@ pkgbase = ezshare
 	makedepends = jq
 	depends = glibc
 	depends = nodejs
-	noextract = ezshare-1.10.0.tgz
-	source = https://registry.npmjs.org/ezshare/-/ezshare-1.10.0.tgz
+	noextract = ezshare-1.10.2.tgz
+	source = https://registry.npmjs.org/ezshare/-/ezshare-1.10.2.tgz
 	source = https://raw.githubusercontent.com/mifi/ezshare/master/LICENSE
-	b2sums = 67a0ec4b4286865a8e65ef4bc86a4ccaeed1d42c791e483da1c3a42fd1e1b9814f45cfb8a7c5596b5be583ead02d9d086c148fb65c87efbb42c373125b516118
+	b2sums = 8b1f39e35ce6e3797cefac3f5a5abf40d5ad41fdaa44904e9e0ddc222ae128cca83ea07da404f74b81b0c83c90cb3111b81e1df0676325fdafd29998c2a3bd5f
 	b2sums = d4c7472ae3e92a22ca856eb72895a0862af5c283f21cc978ceef69af25f14dcc8e708a26154f697e9e22e4051e7bfa91e958e62aa3b4f6bf8c45f75f02cb6d13
 
 pkgname = ezshare
