@@ -1,0 +1,24 @@
+pkgbase = slimevr-beta-bin
+	pkgdesc = SlimeVR FBT software beta version
+	pkgver = 0.12.0rc.3
+	pkgrel = 1
+	url = https://github.com/SlimeVR/SlimeVR-Server/
+	install = slimevr-beta-bin.install
+	arch = x86_64
+	license = MIT,Apache-2.0
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = jdk-openjdk
+	depends = libappindicator-gtk3
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.12.0-rc.3/SlimeVR-amd64.deb
+	sha512sums_x86_64 = 8f83c59e92a10a9c8d040d005180201e44c82e51a56f888244e3b73d045f329386a24223166166a340bc964334c784815eb521c162544eec2aac58946c257f97
+
+pkgname = slimevr-beta-bin
