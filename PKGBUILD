@@ -3,24 +3,22 @@
 pkgbase=python-sphinx_mdinclude
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.5.4
+pkgrel=1
 pkgdesc="Markdown extension for Sphinx"
 arch=('any')
 url="https://sphinx-mdinclude.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-flit-core'
-             'python-docutils>=0.16'
-#            'python-mistune>=2.0'
-             'python-mistune2'
-             'python-pygments>=2.8'
              'python-build'
              'python-installer'
-             'python-sphinx')
-checkdepends=('python-pytest' 'python-sphinx')
+             'python-sphinx'
+#            'python-mistune>=2.0'
+             'python-mistune2')
+checkdepends=('python-pytest') # mistune sphinx already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'Makefile')
-md5sums=('4657ffb422d58014f4d7cc96e983164b'
+md5sums=('8692f1625de3f9a1838aca1f7af0351a'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 prepare() {
@@ -42,11 +40,11 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-sphinx_mdinclude() {
-    depends=('python>=3.6' 'python-docutils>=0.16' 'python-mistune2' 'python-pygments>=2.8')
+    depends=('python>=3.8' 'python-docutils>=0.16' 'python-mistune2' 'python-pygments>=2.8')
     optdepends=('python-sphinx_mdinclude-doc: Documentation for ndcube')
     cd ${srcdir}/${_pyname}-${pkgver}
 
