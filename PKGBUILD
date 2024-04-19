@@ -31,7 +31,5 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm755 "target/release/outfly" "$pkgdir/usr/bin/outfly"
-    install -Dm644 "doc/images/outfly.png" "$pkgdir/usr/share/pixmaps/outfly.png"
-    install -Dm644 "doc/data/outfly.desktop" "$pkgdir/usr/share/applications/outfly.desktop"
+    build/install.sh "$pkgdir"
 }
