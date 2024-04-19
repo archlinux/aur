@@ -8,7 +8,7 @@ pkgdesc="金山文档 Kingsoft documents (An online collaborative office softwar
 arch=('x86_64')
 url="https://www.kdocs.cn/"
 license=('LicenseRef-Kingsoft')
-depends=('nss' 'alsa-lib' 'gtk3' 'dpkg' 'lsb-release' 'electron')
+depends=('dpkg' 'lsb-release' 'electron')
 optdepends=(
 	'pulseaudio: A featureful, general-purpose sound server.'
 	'lib32-libpulse: A featureful, general-purpose sound server (32-bit client libraries).'
