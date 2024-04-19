@@ -1,0 +1,4 @@
+[python-glyphconstruction]
+source = "github"
+github = "typemytype/GlyphConstruction"
+use_max_tag = true
