@@ -2,13 +2,13 @@
 
 _pkgname=GX_ISPTool
 pkgname=gx-isptool-git
-pkgver=r18.e367e66
+pkgver=r20.dac5b44
 pkgrel=1
 pkgdesc="GX (感芯科技) 芯片下载工具，用于连接USB给GX芯片下载固件/调试固件，持续开发中，欢迎支持~"
 arch=(x86_64
     aarch64
     riscv64)
-url="https://gitee.com/gxchip/GX_ISPTool"
+url="https://gitee.com/gxchip/${_pkgname}"
 license=('LGPL-3.0-or-later')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
@@ -17,13 +17,15 @@ depends=(
     glibc
     gcc-libs
     hidapi
+# fonts depends
+#     noto-fonts-cjk
     qt5-base)
 makedepends=(git
     qt5-tools)
 backup=()
 options=()
 install=
-source=("${pkgname}::git+https://gitee.com/gxchip/${_pkgname}.git")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 prepare() {
