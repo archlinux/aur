@@ -1,6 +1,6 @@
 pkgbase = gtklock-userinfo-module
 	pkgdesc = gtklock module adding user info to the lockscreen
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/jovanlanik/gtklock-userinfo-module
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gtklock-userinfo-module
 	depends = gtk3
 	depends = accountsservice
 	depends = gtklock
-	source = gtklock-userinfo-module-2.0.0.tar.gz::https://github.com/jovanlanik/gtklock-userinfo-module/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 52f794cac1bf1a50746bb8c4cead55e249a5b8dcd245ef2279212debe8c6fa07
+	source = gtklock-userinfo-module-3.0.0.tar.gz::https://github.com/jovanlanik/gtklock-userinfo-module/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = 51c21cf90a5c830e8ba095e02734d2da512609ed47bc377abf45f100a9571fd1
 
 pkgname = gtklock-userinfo-module
