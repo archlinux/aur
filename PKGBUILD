@@ -1,7 +1,7 @@
 # Maintainer: Alan Sartorio
 
 pkgname=tela-icon-theme-bin
-pkgver=2022.02.21
+pkgver=2024.04.05
 pkgrel=1
 options=(!strip)
 arch=("any")
@@ -11,7 +11,7 @@ makedepends=('wget' 'curl')
 license=('GPL3')
 
 src_file=$pkgname-$pkgver.tar.xz
-file_id=1645432134
+file_id=1712349233
 file_size=2971828
 project_id=1279924
 
@@ -28,7 +28,7 @@ prepare() {
 	function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 	url=$(urldecode $(sed -rn 's|^ocs://.+url=(http.+)&type=.+$|\1|p'<<<"$ocs_url"))
 	wget -O "$src_file" "$url"
-	checksum="180f9625e49ad7cc26b8c1dfb12e99e3"
+	checksum="89980edc4e0ca87a6c2629b316a635cb"
 	[ "$checksum" = "$(md5sum $src_file | awk '{print $1}')" ] \
 		|| return 1
 }
