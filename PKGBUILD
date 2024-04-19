@@ -3,14 +3,13 @@
 _pkgname=hypergraph
 _pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
-pkgrel=1
-pkgdesc='A package providing hypergraph data structures'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="A package providing hypergraph data structures"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-graph
 )
 optdepends=(
@@ -18,14 +17,15 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b13eade58013768c012f27c52728b5143f174ab14cf0cfbdc64e36cbbe937299')
+md5sums=('e97653a8503ba0bcb6da1dbdf1a3552b')
+b2sums=('57bdd2177830647908c1d05f9dd1b2148e52a2479dc43d53508e29b0c953660ff300b91b1f7e3d358f2ecebb27a529a05d8030ee674479061f7beb70ec164404')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
