@@ -1,7 +1,7 @@
 pkgbase = lampray
 	pkgdesc = Linux Application Modding Platform. A native Linux mod manager.
 	pkgver = 1.3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/CHollingworth/Lampray
 	arch = x86_64
 	license = Unlicense
@@ -12,6 +12,8 @@ pkgbase = lampray
 	depends = sdl2
 	depends = zenity
 	source = lampray-1.3.2.tar.gz::https://github.com/CHollingworth/Lampray/archive/refs/tags/v1.3.2.tar.gz
+	source = Lampray.desktop
 	sha256sums = 2e15a016cd332aec7acbec34fddee405f7a3d591a09f5eec9f40c8f0e4df437d
+	sha256sums = d04bde0cafedecbd71fe506525c0738db68f0252fbe22c0b974401b2cc00e67f
 
 pkgname = lampray

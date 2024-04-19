@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lampray
+Comment=Baldur's Gate 3 and Cyberpunk mod manager for Linux.
+Exec=lampray
+Icon=station
+Terminal=false
+Type=Application
+Version=1.3.2
+Categories=Game;Utilities;
