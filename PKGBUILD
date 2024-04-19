@@ -5,14 +5,13 @@
 
 pkgname=seahub
 pkgver=11.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='The web frontend for seafile server'
 arch=('any')
 url='https://github.com/haiwen/seahub'
 license=('Apache')
 depends=(
     "seafile-server>=$pkgver"
-    'python-setuptools'
     'python-django'
     'python-django-statici18n'
     'python-django-webpack-loader'
