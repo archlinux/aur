@@ -1,6 +1,40 @@
 Version history
 ===============
 
+0.10.22
+-------
+
+2024-04-17
+
+Fix #427: Reveal trigger areas during play: When you activate the splat ruler,
+you also see trigger areas of gadgets (goals, traps, flingers, water, ...)
+as cyan hollow rectangles.
+
+Fix #487: Whenever Lix saves your user options to `./user/options.sdl`,
+Lix will also save unknown options that you happened to have in your options
+file from past or future Lix versions. This will be helpful in the future
+when you keep different versions in the same tree, e.g., for testing, and
+they're all version 0.10.22 or newer.
+
+Fix #472: In level and replay browsers, you can't simultaneously quit the
+browser and open the deletion confirmation dialog anymore. Before, the bug
+was: You returned to the main menu and still had the deletion dialog open.
+
+Fix tooltip font size. Now, the pause tooltip always shows in small letters.
+Before, the pause tooltip showed in the medium font when the mouse was at the
+screen edge in a scrollable level.
+
+Add three multiplayer maps by geoo: Pachinko (4-7 players),
+Zick-Zack Kunterbunt (4-8 players), Hanabi around the World (4 players).
+
+Reorder the singleplayer level directory: geoo's pack appears alphabetically
+among the other one-author packs.
+
+The Windows build script `win-build.bat` still prefers LDC, but now allows
+to build Lix with any compiler.
+
+
+
 0.10.21
 -------
 
