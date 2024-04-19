@@ -3,12 +3,13 @@
 _pkgbase=pandoc-plantuml-filter
 pkgname=${_pkgbase}-py
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Pandoc filter for PlantUML code blocks, python version'
 arch=('any')
 url='https://pypi.org/project/pandoc-plantuml-filter'
 license=('MIT')
 depends=('python' 'python-pandocfilters')
+optdepends=('pandoc-cli: using the filter')
 conflicts=('pandoc-plantuml-filter')
 replaces=('pandoc-plantuml-filter')
 source=("https://files.pythonhosted.org/packages/be/e2/e48d2c5053e566f89076a0d650d44ff8a1132701100da054c32fc557ee0d/${_pkgbase}-${pkgver}.tar.gz")
