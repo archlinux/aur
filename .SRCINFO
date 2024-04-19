@@ -1,0 +1,20 @@
+pkgbase = gtk-conf-git
+	pkgdesc = Configuration tool for GTK system properties
+	pkgver = r11.2e28f7e
+	pkgrel = 1
+	url = https://github.com/qtilities/gtk-conf
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = qtilitools
+	depends = glib2
+	depends = qt6-base
+	provides = gtk-conf
+	conflicts = gtk-conf
+	source = gtk-conf::git+https://github.com/qtilities/gtk-conf.git
+	sha512sums = SKIP
+
+pkgname = gtk-conf-git
