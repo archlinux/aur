@@ -1,7 +1,7 @@
 # Maintainer: Zhou Qiankang <wszqkzqk@qq.com>
 
 pkgname=varallel
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A cross-platform and easy to use CLI tool to run commands in parallel"
 url="https://github.com/wszqkzqk/varallel"
@@ -13,7 +13,7 @@ makedepends=(
     meson
 )
 source=("git+https://github.com/wszqkzqk/varallel.git#tag=${pkgver}")
-sha256sums=('f6fca2ca279739dcc8b3b199185b57dfec4e3fa57bd68c2c2166139e8f84da83')
+sha256sums=('07a36c617cfe05f7dda78c815a2ee1287e6a850bdddee994624fca323e797814')
 
 build() {
     arch-meson "${pkgname}" build
