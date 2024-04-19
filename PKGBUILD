@@ -1,18 +1,46 @@
-pkgname="cosmonium-bin"
-_pkgname="cosmonium"
-pkgver=0.3.0
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Mr.Smith1974
+pkgname=cosmonium-bin
+_pkgname=Cosmonium
+pkgver=0.3.0.dev837
 pkgrel=1
 pkgdesc="3D astronomy and space exploration program."
 arch=("x86_64")
 url='https://github.com/cosmonium/cosmonium'
-license=('GPL3')
-makedepends=()
-depends=()
-source=("https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}.dev581/${_pkgname}-${pkgver}.dev581_manylinux2014_x86_64.tar.gz")
-sha256sums=('ae51ac3c85f10bc925ad29d5fddf424515c23397c00abe5069511a04ecd4f767')
-
-
+license=('GPL-3.0-only')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+	'alsa-lib'
+	'nspr'
+	'gtk2'
+	'nss'
+)
+makedepends=(
+	'gendesk'
+)
+options=(
+    '!strip'
+)
+source=(
+	"${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}_manylinux2014_${CARCH}.tar.gz"
+	"${pkgname%-bin}.sh"
+)
+sha256sums=('f93dd4c6f7535b419b340968d06d232cd1bbba7094f5b5a93897d1c14e65ce6f'
+            '6a94dd1542c9f172f61db12717e70d89895d1b81665a4201bbf3456823d38b06')
+build() {
+	sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+	gendesk -q -f -n --categories="Science" --name="${_pkgname}" --exec="${pkgname%-bin}"
+}
 package() {
-	mkdir -vp "${pkgdir}/opt/${_pkgname}"
-	cp -r "${srcdir}/${_pkgname}/" "${pkgdir}/opt/"
+	install -Dm755 -d "${pkgdir}/opt"
+	cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
+	install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+	for _icons in 16 32 48 64 128 256 512;do
+		install -Dm644 "${srcdir}/${pkgname%-bin}/textures/${pkgname%-bin}-${_icons}.png" \
+			"${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname%-bin}.png"
+	done
+	install -Dm644 "${srcdir}/${pkgname%-bin}/License" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
