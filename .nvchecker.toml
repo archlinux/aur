@@ -1,0 +1,4 @@
+[python-qhue]
+source = "github"
+github = "quentinsf/qhue"
+use_latest_release = true
