@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-electron /usr/lib/superproductivity/app.asar "$@"
+exec @ELECTRON@ /usr/lib/superproductivity/app.asar "$@"
