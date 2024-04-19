@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 pkgname=beseda
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Accessibility ebook speech reader'
 arch=('x86_64')
 license=('GPL')
