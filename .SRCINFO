@@ -12,6 +12,7 @@ pkgbase = orchis-theme
 	conflicts = orchis-theme
 	replaces = orchis-theme-bin
 	options = !strip
+	options = !debug
 	source = orchis-theme-2024_04_18.tar.gz::https://github.com/vinceliuice/orchis-theme/archive/refs/tags/2024-04-18.tar.gz
 	sha256sums = b84c8b824c9d17c13ec74954a2479a7ca301effb506718ec09849f8ae8978818
 

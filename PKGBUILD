@@ -13,7 +13,7 @@ optdepends=('gtk-engine-murrine: for gtk2 themes'
             'vimix-cursors: recommended cursors theme')
 conflicts=("${pkgname}")
 replaces=("${pkgname}-bin")
-options=(!strip)
+options=(!strip !debug)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver//_/-}.tar.gz")
 sha256sums=('b84c8b824c9d17c13ec74954a2479a7ca301effb506718ec09849f8ae8978818')
 
