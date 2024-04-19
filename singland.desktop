@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=singland
-Exec=/opt/singland/singland %U
-Terminal=false
-Type=Application
-Icon=singland
-StartupWMClass=singland
-Comment=A GUI for sing-box
-Categories=Network;
