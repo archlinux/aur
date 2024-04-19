@@ -15,6 +15,6 @@ pkgbase = wwplot
 	depends = qt6-declarative
 	options = !emptydirs
 	source = wwplot-1.0.0::https://github.com/wwmm/wwplot/archive/v1.0.0.tar.gz
-	sha256sums = 9f25dad0c62d89ef38a85e4845079572b424b57d256a52d329c8948beb09e983
+	sha256sums = e2c04731dcd2c4c9ba37510504aef777adba0744ff7b3b8ddcf963dcc9bb6de8
 
 pkgname = wwplot
