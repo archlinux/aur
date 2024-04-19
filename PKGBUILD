@@ -1,26 +1,38 @@
-# Maintainer: Gyara <laxect39@gmail.com>
-
-pkgname=helio-workstation-bin
-pkgver=3.11
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Gyara <laxect39@gmail.com>
+_pkgname=helio
+pkgname="${_pkgname}-workstation-bin"
+_appname=Helio
+pkgver=3.12
 pkgrel=1
-pkgdesc="Helio is free and cross-platform lightweight music creation playground."
+pkgdesc="A free and open-source music sequencer for desktop and mobile platforms"
 arch=('x86_64')
 url="https://helio.fm/"
-license=('GPL3')
-depends=('libcurl-gnutls')
-options=('!strip' '!emptydirs')
-source=("https://ci.helio.fm/helio-${pkgver}-x64.deb")
-sha512sums=('1ba99a39b3b8a5afe57ed5f965df1fd0e03ef4ee20f181c64f3c8163e24220448988b076135459197bd9d670241ebce6e55dcd5d959b17285553c8216979203e')
-
+_ghurl="https://github.com/helio-fm/helio-sequencer"
+license=('GPL-3.0-only')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    'libcurl-gnutls'
+    'alsa-lib'
+    'libglvnd'
+)
+options=(
+    '!strip'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::https://ci.helio.fm/${_pkgname}-${pkgver}-x64.deb"
+)
+sha256sums=('65f02cd4c926e1b4419edc429660bd3848dcfcbdd914b4c4dbb44a189d52f872')
+build() {
+    bsdtar -xf "${srcdir}/data."*
+    sed "s|/usr/bin/${_pkgname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+}
 package(){
-    # Extract package data
-    tar xf data.tar.xz -C "${srcdir}"
-    cd "${srcdir}"
-    
-    install -Dm0755 usr/bin/helio "$pkgdir"/usr/bin/helio
-    install -Dm0755 usr/share/applications/Helio.desktop "$pkgdir"/usr/share/applications/helio.desktop
-    for i in 16x16 32x32 48x48 128x128 256x256; do
-        install -Dm644 usr/share/icons/hicolor/"$i"/apps/helio-workstation.png \
-            "$pkgdir"/usr/share/icons/hicolor/"$i"/apps/helio-workstation.png
+    install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    for _icons in 16x16 32x32 48x48 128x128 256x256; do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
 }
