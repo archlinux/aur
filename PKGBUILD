@@ -13,9 +13,9 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver//_/-}.ta
 sha256sums=('b84c8b824c9d17c13ec74954a2479a7ca301effb506718ec09849f8ae8978818')
 license=('GPL3')
 
-
 package() {
-	target=$pkgdir/usr/share/themes/
-	mkdir -p $target
-	tar -xJof "Orchis-theme-${pkgver//_/-}/release/Orchis.tar.xz" -C "$target"
+    cd "Orchis-theme-${pkgver//_/-}"
+
+    install -dm755 "$pkgdir/usr/share/themes"
+    ./install.sh --dest "$pkgdir/usr/share/themes"
 }
