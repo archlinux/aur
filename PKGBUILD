@@ -1,4 +1,4 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: S. Leduc <sebastien@sleduc.fr>
 # Contributor: redfish <redfish@galactica.pw>
@@ -8,7 +8,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=3.11.27
+pkgver=3.11.28
 pkgrel=1
 pkgdesc="Multipurpose automation tool for downloading media content from different sources"
 arch=(any)
@@ -83,7 +83,7 @@ source=(
   "flexget@.service"
 )
 sha256sums=(
-  'bd5e833effe8529cd56ccbedff2f888f315dcab7d13cfcdb4ad6eeffffe07547'
+  '057dfc7592b1c89150b4c0635a7342469ebd86cc8d3cdaf62b8aadf0f973b89d'
   '117de8d5cbe0ac53ecd3be3e579f2cfa62ef186ab36e382f857059380447c5aa'
   'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
 )
