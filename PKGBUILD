@@ -238,6 +238,14 @@ _make_icecat() {
   # don't redownload languages
   sed -E -e '/DEVEL/s&^(\s*)!.*continue$&\1continue&' -i makeicecat
 
+  # remove unwanted language data
+  for i in data/files-to-append/l10n/*; do
+    for j in "${_languages[@]}"; do
+      [ "$j" = "${i##*/}" ] && continue
+    done
+    rm -rf "$i"
+  done
+
   # produce icecat sources
   bash makeicecat
   popd
