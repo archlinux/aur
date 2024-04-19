@@ -8,10 +8,10 @@ url="https://github.com/sylvainhalle/${_base}"
 license=('GPL-3.0-only')
 provides=(${_base})
 depends=('java-runtime-headless>=8')
-optdepends=('libnotify: Error messages for textidote-desktop'
-  'man-db: manual pages for textidote'
+optdepends=(
   'bash-completion: for completion when using bash'
-  'zsh-completions: for completion when using zsh')
+  'zsh-completions: for completion when using zsh'
+  )
 makedepends=('git' 'ant')
 source=("git+${url}.git")
 sha512sums=('SKIP')
