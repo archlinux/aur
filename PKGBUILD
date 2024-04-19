@@ -2,9 +2,9 @@
 
 _pipname=fontdoctools
 pkgname=python-$_pipname
-_sha=5f2880db5e08
-pkgver=1.1
-pkgrel=3
+_sha=4c82c7711266
+pkgver=1.2.2
+pkgrel=1
 pkgdesc='tools that help in documenting and reviewing the design or the engineering of fonts'
 arch=(any)
 _namespace=LindenbergSW
@@ -18,7 +18,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_namespace-$_pipname-$_sha"
 source=("$_archive.zip::$url/get/$_sha.zip")
-sha256sums=('ea86f79b851dc28f62c2ec3ca5824a7906ed97688b96b0170de4f1a5b455be7c')
+sha256sums=('7d52482e2610720602019ac723a5225a62f876d87a5f4a0f7489ed3ae0073bef')
 
 build() {
     cd "$_archive"
