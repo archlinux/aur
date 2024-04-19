@@ -2,10 +2,10 @@
 
 pkgname=podlet
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate podman quadlet (systemd-like) files from a podman command "
 arch=('x86_64')
-url="https://github.com/k9withabone/podlet"
+url="https://github.com/containers/podlet"
 license=('custom: MPL-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
