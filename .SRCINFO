@@ -1,20 +1,24 @@
 pkgbase = gdevelop-bin
-	pkgdesc = Open-source, cross-platform game creator designed to be used by everyone - no programming skills required.
-	pkgver = 5.1.164
+	pkgdesc = A full-featured, no-code, open-source game development software.
+	pkgver = 5.3.199
 	pkgrel = 1
-	url = https://gdevelop-app.com/
+	url = https://gdevelop.io/
+	arch = aarch64
 	arch = x86_64
-	license = GPL
 	license = MIT
-	license = zlib/png
-	provides = gdevelop
+	makedepends = fuse2
+	makedepends = asar
+	depends = electron18
+	provides = gdevelop=5.3.199
 	conflicts = gdevelop
 	options = !strip
-	source = https://github.com/4ian/GDevelop/releases/download/v5.1.164/GDevelop-5-5.1.164.AppImage
-	source = https://github.com/4ian/GDevelop/raw/master/Core/docs/images/glogo.png
-	source = gdevelop.desktop
-	sha256sums = 3cf687d1288614b6e0335fe1cc7f53bf182bcd4ead19ee44a29829f58dd00456
-	sha256sums = 6ec8974d1c073442e1e653ac75d8ab4c1ed1cc1c2d14c6d73d6c50543a4f4b5f
-	sha256sums = d6074b92d0e5896a33cc007fa59eb35759569047b3a31d35108134beb538e039
+	source = LICENSE-5.3.199.md::https://raw.githubusercontent.com/4ian/GDevelop/v5.3.199/LICENSE.md
+	source = gdevelop.sh
+	sha256sums = 0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92
+	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	source_aarch64 = gdevelop-5.3.199-aarch64.AppImage::https://github.com/4ian/GDevelop/releases/download/v5.3.199/GDevelop-5-5.3.199-arm64.AppImage
+	sha256sums_aarch64 = 051c4d053371d96b86fbc86034a5b6381ae873fc3485fa33babe0d1a3216e7fe
+	source_x86_64 = gdevelop-5.3.199-x86_64.AppImage::https://github.com/4ian/GDevelop/releases/download/v5.3.199/GDevelop-5-5.3.199.AppImage
+	sha256sums_x86_64 = d32f855a5f67be0794e92edcd1a40451a24109629d8b8e2ab8b287ce68a01676
 
 pkgname = gdevelop-bin
