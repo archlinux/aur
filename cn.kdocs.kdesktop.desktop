@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=金山文档
+Comment=金山文档
+GenericName=kdesktop
+TryExec=/usr/bin/kdocs-uos
+Exec=/usr/bin/kdocs-uos %U
+Icon=/usr/share/icons/hicolor/256x256/apps/kdesktop.png
+Type=Application
+Terminal=false
+StartupWMClass=kdesktop
+Categories=Utility;
+MimeType=x-scheme-handler/wpsdocs;%
