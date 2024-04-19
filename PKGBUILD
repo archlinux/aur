@@ -2,7 +2,7 @@
 # Maintainer: Roman Zimbelmann <hut@hut.pm>
 
 pkgname=outfly-git
-pkgver=0.7.2_17_gbf3c8d5
+pkgver=0.7.2_18_g1d73cf8
 pkgrel=1
 pkgdesc="A breathtaking 3D space game in the rings of Jupiter"
 arch=('any')
@@ -32,4 +32,6 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     install -Dm755 "target/release/outfly" "$pkgdir/usr/bin/outfly"
+    install -Dm644 "doc/images/outfly.png" "$pkgdir/usr/share/pixmaps/outfly.png"
+    install -Dm644 "doc/data/outfly.desktop" "$pkgdir/usr/share/applications/outfly.desktop"
 }
