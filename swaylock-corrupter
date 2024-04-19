@@ -13,6 +13,6 @@ else
 		args="$args -i ${display}:${FILE}"
 	done
  
-	swaylock "$args" "$@"
+	swaylock $args "$@"
 	# double monitor fix by /u/queyenth
 fi
