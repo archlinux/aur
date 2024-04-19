@@ -102,10 +102,15 @@ function cameraDect() {
 }
 
 function execApp() {
+	# Wayland is not available for now
+	# 	--ro-bind-try "${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
+	#			"${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
+	
+	
 	touch "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info
 	cameraDect
 	importEnv
-	bwrap \
+	env -u WAYLAND_DISPLAY bwrap \
 		--cap-drop ALL \
 		--dev /dev \
 		--dev-bind /dev/dri /dev/dri \
@@ -126,8 +131,6 @@ function execApp() {
 		--bind "${busDir}/bus" "${XDG_RUNTIME_DIR}/bus" \
 		--ro-bind "${XDG_RUNTIME_DIR}/pulse" \
 			"${XDG_RUNTIME_DIR}/pulse" \
-		--ro-bind-try "${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
-			"${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
 		--bind "${XDG_DATA_HOME}"/WeChat_Data "${HOME}" \
 		--ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
 		--unshare-all \
