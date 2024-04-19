@@ -1,6 +1,6 @@
 pkgbase = session-desktop-bin
 	pkgdesc = Private messaging from your desktop
-	pkgver = 1.12.1
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://getsession.org
 	install = session-desktop-bin.install
@@ -19,7 +19,7 @@ pkgbase = session-desktop-bin
 	conflicts = session-desktop-git
 	conflicts = session-desktop-appimage
 	options = !strip
-	source = https://github.com/oxen-io/session-desktop/releases/download/v1.12.1/session-desktop-linux-amd64-1.12.1.deb
-	sha256sums = b3c24738095ab413d171820fb6cb28a5fd470979c41eb4c2ad9420d9dc8e7362
+	source = https://github.com/oxen-io/session-desktop/releases/download/v1.12.2/session-desktop-linux-amd64-1.12.2.deb
+	sha256sums = 1b6a73178c7e12011a8f5b07d1b35ca1579defcfbf880fe96656ba8082c7db8f
 
 pkgname = session-desktop-bin
