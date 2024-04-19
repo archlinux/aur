@@ -3,7 +3,7 @@
 
 _pkgname=SerialTest
 pkgname=serialtest-git
-pkgver=0.3.4.r4.gbe08080
+pkgver=0.3.5.r0.g37bc8da
 pkgrel=1
 pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
 arch=(
@@ -15,12 +15,18 @@ license=('GPL-3.0-only')
 provides=(${_pkgname})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
-depends=('qcustomplot' 'qt5-serialport' 'qt5-connectivity')
+depends=(
+    'gcc-libs'
+    'glibc'
+    'qcustomplot'
+    'qt5-base'
+    'qt5-serialport'
+    'qt5-connectivity')
 makedepends=('qt5-tools' 'git')
 backup=()
 options=()
 install=${pkgname}.install
-source=("${_pkgname}::git+${url}.git#branch=dev"
+source=("${_pkgname}::git+${url}.git"
         "${pkgname}.install")
 sha256sums=('SKIP'
             '303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4')
@@ -32,7 +38,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_pkgname}/"
-    git describe --long --tags | sed 's/V//g;s/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare()
