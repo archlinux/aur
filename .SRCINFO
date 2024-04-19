@@ -1,20 +1,16 @@
 pkgbase = amdgpud-git
 	pkgdesc = Fan control service for AMD GPUs.
-	pkgver = 1.0.12+15.r139.20240411.2d20203
+	pkgver = 1.0.12.r15.g2d20203
 	pkgrel = 1
 	url = https://github.com/eraden/amdgpud
 	arch = x86_64
-	license = Apache-2.0
-	license = MIT
+	license = Apache-2.0 OR MIT
+	makedepends = cargo-nightly
 	makedepends = git
-	makedepends = rustup
 	depends = gcc-libs
 	provides = amdgpud
 	conflicts = amdgpud
-	backup = etc/amdgpud/config.toml
-	source = amdgpud-git::git+https://github.com/eraden/amdgpud
-	source = config.toml
+	source = git+https://github.com/eraden/amdgpud.git
 	sha256sums = SKIP
-	sha256sums = 708070794d89e86d307fd17009e0410adf49adc471cfcde0fdec1f217c85f0de
 
 pkgname = amdgpud-git

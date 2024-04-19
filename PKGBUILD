@@ -1,99 +1,58 @@
-# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
-# Contributor: Luis Martinez (https://aur.archlinux.org/account/lmartinez-mirror)
-
+# Maintainer: 
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=amdgpud-git
-_name="${pkgname%-git}"
-pkgver=1.0.12+15.r139.20240411.2d20203
+pkgver=1.0.12.r15.g2d20203
 pkgrel=1
 pkgdesc="Fan control service for AMD GPUs."
 arch=('x86_64')
 url="https://github.com/eraden/amdgpud"
-license=('Apache-2.0' 'MIT')
-depends=(
-  'gcc-libs'
-)
-makedepends=(
-  'git'
-  # 'cargo'
-  'rustup' # 2023-11-27: -nightly is needed because otherwise compilation errors out with `error[E0554]: `#![feature]` may not be used on the stable release channel`.
-  # 'rust-nightly' # 2023-11-27: -nightly is needed because otherwise compilation errors out with `error[E0554]: `#![feature]` may not be used on the stable release channel`.
-)
-provides=("$_name")
-conflicts=("$_name")
-backup=("etc/$_name/config.toml")
-source=(
-  "$pkgname::git+$url"
-  'config.toml'
-)
-sha256sums=(
-  'SKIP'
-  '708070794d89e86d307fd17009e0410adf49adc471cfcde0fdec1f217c85f0de'
-)
-validpgpkeys=()
-
-# export RUSTUP_TOOLCHAIN=stable
-export RUSTUP_TOOLCHAIN=nightly
-export CARGO_TARGET_DIR=target
+license=('Apache-2.0 OR MIT')
+depends=('gcc-libs')
+makedepends=('cargo-nightly' 'git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+https://github.com/eraden/amdgpud.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  export CARGO_HOME="${srcdir}/.cargo"
-
-  cd "${srcdir}/${pkgname}"
-
-  _ver="$(git describe  --tags | sed 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
-  _rev="$(git rev-list --count HEAD)"
-  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
-  _hash="$(git rev-parse --short HEAD)"
-
-  if [ -z "${_ver}" ]; then
-    error "Version could not be determined."
-    return 1
-  else
-    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
-  fi
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  export CARGO_HOME="${srcdir}/.cargo"
-  rustup default nightly
-
-  cd "${srcdir}/${pkgname}"
-
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cd "${pkgname%-git}"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=nightly
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  export CARGO_HOME="${srcdir}/.cargo"
-
-  cd "${srcdir}/${pkgname}"
-
-  cargo build --release --frozen --all-features --target="$CARCH-unknown-linux-gnu"
+  cd "${pkgname%-git}"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=nightly
+  export CARGO_TARGET_DIR=target
+  cargo build --release
 }
 
 check() {
-  export CARGO_HOME="${srcdir}/.cargo"
-
-  cd "${srcdir}/${pkgname}"
-
-  cargo test --frozen --all-features --target="$CARCH-unknown-linux-gnu"
+  cd "${pkgname%-git}"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=nightly
+  cargo test
 }
 
 package() {
-  export CARGO_HOME="${srcdir}/.cargo"
-
-  cd "${srcdir}/${pkgname}"
-
-  find "target/$CARCH-unknown-linux-gnu/release/" \
+  cd "${pkgname%-git}"
+  find "target/release/" \
     -maxdepth 1 \
     -executable \
     -type f \
-    -exec install -Dvm755 -t "$pkgdir/usr/bin/" '{}' \+
+    -exec install -Dm755 -t "$pkgdir/usr/bin/" '{}' \+
   find services \
-    -maxdepth 1 \
-    -name '*.service' \
     -type f \
-    -exec install -Dvm644 -t "$pkgdir/usr/lib/systemd/system/" '{}' \+
-  install -Dvm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE*
-  install -Dvm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
-  install -Dvm644 -t "$pkgdir/etc/$_name/" "$srcdir/config.toml"
+    -name '*.service' \
+    -exec install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" '{}' \+
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 examples/*.toml -t "$pkgdir/usr/share/doc/${pkgname%-git}/examples/"
 }
