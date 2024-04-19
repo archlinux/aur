@@ -1,0 +1,4 @@
+[cadabra2]
+source = "github"
+github = "kpeeters/cadabra2"
+use_latest_release = "true"
