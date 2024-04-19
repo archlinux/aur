@@ -3,18 +3,20 @@
 
 pkgname=amdgpud-git
 _name="${pkgname%-git}"
-pkgver=1.0.12+2.r126.20231122.26dd62b
+pkgver=1.0.12+15.r139.20240411.2d20203
 pkgrel=1
 pkgdesc="Fan control service for AMD GPUs."
 arch=('x86_64')
 url="https://github.com/eraden/amdgpud"
-license=('Apache' 'MIT')
+license=('Apache-2.0' 'MIT')
 depends=(
   'gcc-libs'
 )
 makedepends=(
   'git'
-  'rust-nightly' # 2023-11-27: -nightly is needed because otherwise compilation errors out with `error[E0554]: `#![feature]` may not be used on the stable release channel`.
+  # 'cargo'
+  'rustup' # 2023-11-27: -nightly is needed because otherwise compilation errors out with `error[E0554]: `#![feature]` may not be used on the stable release channel`.
+  # 'rust-nightly' # 2023-11-27: -nightly is needed because otherwise compilation errors out with `error[E0554]: `#![feature]` may not be used on the stable release channel`.
 )
 provides=("$_name")
 conflicts=("$_name")
@@ -28,6 +30,10 @@ sha256sums=(
   '708070794d89e86d307fd17009e0410adf49adc471cfcde0fdec1f217c85f0de'
 )
 validpgpkeys=()
+
+# export RUSTUP_TOOLCHAIN=stable
+export RUSTUP_TOOLCHAIN=nightly
+export CARGO_TARGET_DIR=target
 
 pkgver() {
   export CARGO_HOME="${srcdir}/.cargo"
@@ -59,10 +65,6 @@ prepare() {
 build() {
   export CARGO_HOME="${srcdir}/.cargo"
 
-  # export RUSTUP_TOOLCHAIN=stable
-  export RUSTUP_TOOLCHAIN=nightly
-  export CARGO_TARGET_DIR=target
-
   cd "${srcdir}/${pkgname}"
 
   cargo build --release --frozen --all-features --target="$CARCH-unknown-linux-gnu"
@@ -70,9 +72,6 @@ build() {
 
 check() {
   export CARGO_HOME="${srcdir}/.cargo"
-
-  # export RUSTUP_TOOLCHAIN=stable
-  export RUSTUP_TOOLCHAIN=nightly
 
   cd "${srcdir}/${pkgname}"
 
@@ -88,13 +87,13 @@ package() {
     -maxdepth 1 \
     -executable \
     -type f \
-    -exec install -D -t "$pkgdir/usr/bin/" '{}' \+
+    -exec install -Dvm755 -t "$pkgdir/usr/bin/" '{}' \+
   find services \
     -maxdepth 1 \
     -name '*.service' \
     -type f \
-    -exec install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" '{}' \+
-  install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm644 "$srcdir/config.toml" -t "$pkgdir/etc/$_name/"
+    -exec install -Dvm644 -t "$pkgdir/usr/lib/systemd/system/" '{}' \+
+  install -Dvm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE*
+  install -Dvm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dvm644 -t "$pkgdir/etc/$_name/" "$srcdir/config.toml"
 }
