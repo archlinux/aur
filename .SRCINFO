@@ -1,7 +1,7 @@
 pkgbase = wago-modbus-coupler-shm
 	pkgdesc = sync wago modbus tcp coupler with shared memory
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SHMModbus/wago_modbus_coupler_shm
 	arch = x86_64
 	arch = aarch64

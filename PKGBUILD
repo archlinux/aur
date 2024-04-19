@@ -1,7 +1,7 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=wago-modbus-coupler-shm
-pkgrel=1
+pkgrel=2
 pkgver=1.1.1
 pkgdesc="sync wago modbus tcp coupler with shared memory"
 url="https://github.com/SHMModbus/wago_modbus_coupler_shm"
