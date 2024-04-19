@@ -1,0 +1,5 @@
+[submagic]
+source = "github"
+github = "claui/submagic"
+prefix = "v"
+use_latest_release = true
