@@ -4,12 +4,12 @@
 _pkgname=zhipuai
 pkgname=python-${_pkgname}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ZhipuAI LLM API SDK for Python'
 arch=(any)
 url="https://pypi.org/project/${_pkgname}/"
 license=(MIT)
-depends=(python python-pyjwt)
+depends=(python python-pyjwt python-httpx python-pydantic python-cachetools)
 makedepends=(python-setuptools)
 source=("${_pkgname}::git+https://github.com/MetaGLM/${_pkgname}-sdk-python-v4")
 sha256sums=('SKIP')
