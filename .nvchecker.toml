@@ -1,0 +1,5 @@
+[python-beziers]
+source = "github"
+github = "simoncozens/beziers.py"
+prefix = "v"
+use_max_tag = true
