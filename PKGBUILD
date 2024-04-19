@@ -7,8 +7,8 @@ pkgname=(
   "${pkgbase}-clblas"
   "${pkgbase}-openvino"
 )
-pkgver=1.5.4
-pkgrel=5
+pkgver=1.5.5
+pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -137,4 +137,4 @@ package_whisper.cpp-openvino() {
   _package
 }
 
-sha256sums=('06eed84de310fdf5408527e41e863ac3b80b8603576ba0521177464b1b341a3a')
+sha256sums=('27fa5c472657af2a6cee63de349a34b23d0f3781fa9b8ef301a940cf64964a79')
