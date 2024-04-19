@@ -1,7 +1,7 @@
 # Maintainer:
 
 # options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ]; then
   : ${_autoupdate:=false}
 else
   : ${_autoupdate:=true}
@@ -23,12 +23,6 @@ _main_package() {
 
   depends=()
   makedepends=()
-  optdepends=(
-    'gnome-keyring: for storing passwords in GNOME keyring'
-    'kdialog: for file dialogs in KDE'
-    'kwallet5: for storing passwords in KWallet'
-    'pipewire: WebRTC desktop sharing under Wayland'
-  )
 
   options=('!emptydirs' '!strip' '!debug')
 
@@ -46,7 +40,7 @@ _main_package() {
 
 # common functions
 prepare() {
-  install -Dvm644 /dev/stdin "$_pkgname.sh" <<END
+  install -Dvm644 /dev/stdin "$_pkgname.sh" << END
 #!/usr/bin/env bash
 
 # check microprocessor architecture level
@@ -181,7 +175,7 @@ package() {
   # clean-up
   echo "  -> Removing Debian Cron job, duplicate product logos and menu directory..."
   rm -r -- \
-  "$pkgdir/opt/chromium.org" \
+    "$pkgdir/opt/chromium.org" \
     "$pkgdir/etc/cron.daily/" \
     "$pkgdir/usr/share/doc/" \
     "$pkgdir/opt/$_pkgname/cron/" \
@@ -193,7 +187,7 @@ package() {
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
-  if [[ "${_autoupdate::1}" != "t" ]] ; then
+  if [[ "${_autoupdate::1}" != "t" ]]; then
     return
   fi
   local _blacklist _response _tags _tag _pkgver_new
@@ -207,14 +201,14 @@ _update_version() {
       | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
       | grep -Ev '[a-z]{2}'
   )
-  for i in "${_blacklist[@]}" ; do
-    _tags=${_tags/$i}
+  for i in "${_blacklist[@]}"; do
+    _tags=${_tags/$i/}
   done
   _tag=$(printf '%s' "$_tags" | sort -rV | head -1)
   _pkgver_new="${_tag#M}"
 
   # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
     _pkgver="${_pkgver_new:?}"
   fi
 }

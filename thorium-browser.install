@@ -4,11 +4,11 @@ msg_blue() {
 }
 
 note1() {
-  printf "${BLUE}==>${YELLOW} NOTE:${BOLD} $1${ALL_OFF}\n"
+  printf "${BLUE}==>${YELLOW} NOTE:${WHITE} $1${ALL_OFF}\n"
 }
 
 note2() {
-  printf "${BLUE}==>      ${BOLD} $1${ALL_OFF}\n"
+  printf "${BLUE}==>      ${WHITE} $1${ALL_OFF}\n"
 }
 
 ALL_OFF="$(tput sgr0)"

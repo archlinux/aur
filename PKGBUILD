@@ -3,7 +3,7 @@
 # Contributor: Dominik Adrian Grzywak <starterx4 at gmail dot com>
 
 # options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ]; then
   : ${_autoupdate:=false}
 else
   : ${_autoupdate:=true}
@@ -25,12 +25,6 @@ _main_package() {
 
   depends=()
   makedepends=()
-  optdepends=(
-    'gnome-keyring: for storing passwords in GNOME keyring'
-    'kdialog: for file dialogs in KDE'
-    'kwallet5: for storing passwords in KWallet'
-    'pipewire: WebRTC desktop sharing under Wayland'
-  )
 
   options=('!emptydirs' '!strip')
   install="$_pkgname.install"
@@ -49,7 +43,7 @@ _main_package() {
 
 # common functions
 prepare() {
-  install -Dvm644 /dev/stdin "$_pkgname.sh" <<END
+  install -Dvm644 /dev/stdin "$_pkgname.sh" << END
 #!/usr/bin/env bash
 
 # check microprocessor architecture level
@@ -148,7 +142,7 @@ package() {
   # clean-up
   echo "  -> Removing Debian Cron job, duplicate product logos and menu directory..."
   rm -r -- \
-  "$pkgdir/opt/chromium.org" \
+    "$pkgdir/opt/chromium.org" \
     "$pkgdir/etc/cron.daily/" \
     "$pkgdir/usr/share/doc/" \
     "$pkgdir/opt/$_pkgname/cron/" \
@@ -160,7 +154,7 @@ package() {
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
-  if [[ "${_autoupdate::1}" != "t" ]] ; then
+  if [[ "${_autoupdate::1}" != "t" ]]; then
     return
   fi
 
@@ -174,7 +168,7 @@ _update_version() {
   local _pkgver_new="${_tag#M}"
 
   # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
     _pkgver="${_pkgver_new:?}"
   fi
 }
