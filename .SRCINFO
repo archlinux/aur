@@ -1,0 +1,20 @@
+pkgbase = libsrtp-git
+	pkgdesc = Library for SRTP (Secure Realtime Transport Protocol)
+	pkgver = 2.6.0.r59.ge53e106
+	pkgrel = 1
+	url = https://github.com/cisco/libsrtp
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = libpcap
+	makedepends = meson
+	depends = glibc
+	depends = nss
+	provides = libsrtp=2.6.0.r59.ge53e106
+	conflicts = libsrtp
+	options = staticlibs
+	source = git+https://github.com/cisco/libsrtp.git
+	sha256sums = SKIP
+
+pkgname = libsrtp-git
