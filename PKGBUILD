@@ -7,8 +7,8 @@ arch=('x86_64' 'aarch64')
 license=('GPL')
 depends=('gzdoom-bin' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
-source=("https://gitlab.com/gzdoom-bin/doom/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=("SKIP")
+source=("https://gitlab.com/linuxbombay/doom/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
+sha256sums=('d3b3f23c67b22c7815ee497af34479859e95699100d03732e0a0526f05f17b76')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
