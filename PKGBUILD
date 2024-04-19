@@ -3,7 +3,7 @@
 
 pkgname=naps2-bin
 pkgver=7.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible."
 arch=("aarch64" "x86_64")
 url="https://www.naps2.com"
@@ -13,6 +13,7 @@ optdepends=(
   "sane-airscan: airscan support"
 )
 provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 options=("!strip" "!debug")
 source_aarch64=("https://github.com/cyanfish/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-linux-arm64.rpm")
 source_x86_64=("https://github.com/cyanfish/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-linux-x64.rpm")
