@@ -2,8 +2,8 @@
 
 pkgname=python-cyclonedx-lib
 _gitpkgname=cyclonedx-python-lib
-pkgver=7.1.0
-pkgrel=2
+pkgver=7.3.0
+pkgrel=1
 pkgdesc='Render and read CycloneDX, a lightweight BOM specification document format'
 arch=('any')
 url='https://github.com/CycloneDX/cyclonedx-python-lib'
@@ -34,21 +34,15 @@ options=('!debug' '!strip')
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v${pkgver}.tar.gz"
-  'github-pr-588.patch'
 )
 
 sha512sums=(
-  'b8a474b06176c320a13584a0b99a2dc5f730d4e3b4e1f5f5f0100ffb7c51e18d9260bfdd0e7c44b66103b98a88ec519ffb52cf994c81ef2b734189f71a476dca'
-  '6e39a3fd5631c65e0e25f6daff6296a2a21d0972b6aa6291c0246b5c25981eac764e02fe1afd96aac61f2dff635a01df5f8d6db82a8f7c1da813706df1438402'
+  '21dfcb6f6f49804786a7b4f4b429d6b03aa9e796152fb10d48627d2f2b5c41cddd3802e0a5ebce6e7f94a405b73d0f0d359b97f9a9bfdd0aad46bb2976b3088a'
 )
 
 prepare() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
   rm -rf dist # https://github.com/python-poetry/poetry/issues/1329
-
-  # Remove this patch once GitHub PR #588 has been accepted and
-  # a new stable release has landed.
-  patch -p1 < '../github-pr-588.patch'
 
   # Consistently failing during `check` in a clean chroot, but passing
   # outside chroot. Also passing in upstream CI. Needs more analysis.
