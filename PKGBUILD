@@ -3,7 +3,7 @@
 pkgname=goldendict-ng
 pkgver=24.01.22
 true_ver=24.01.22-LoongYear.3dddb3be
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation GoldenDict (Supports Qt WebEngine & Qt6)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/xiaoyifang/goldendict-ng"
