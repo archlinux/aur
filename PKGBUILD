@@ -1,15 +1,15 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=modbus-tcp-client-shm
-pkgrel=1
+pkgrel=2
 pkgver=1.6.2
 pkgdesc="modbus tcp client that stores its data (registers) in shared memory"
-url="https://github.com/NikolasK-source/modbus_tcp_client_shm"
+url="https://github.com/SHMModbus/modbus_tcp_client_shm"
 license=('GPL-3.0-only')
 arch=('x86_64' 'aarch64')
 makedepends=('cmake' 'git' 'cxxopts' 'cxxshm' 'cxxsemaphore' 'libmodbus')
 depends=('cxxshm' 'cxxsemaphore' 'libmodbus')
-source=("git+https://github.com/NikolasK-source/modbus_tcp_client_shm.git#tag=v${pkgver}")
+source=("git+https://github.com/SHMModbus/modbus_tcp_client_shm.git#tag=v${pkgver}")
 
 sha256sums=('SKIP')
 

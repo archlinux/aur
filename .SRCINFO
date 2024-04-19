@@ -1,8 +1,8 @@
 pkgbase = modbus-tcp-client-shm
 	pkgdesc = modbus tcp client that stores its data (registers) in shared memory
 	pkgver = 1.6.2
-	pkgrel = 1
-	url = https://github.com/NikolasK-source/modbus_tcp_client_shm
+	pkgrel = 2
+	url = https://github.com/SHMModbus/modbus_tcp_client_shm
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
@@ -15,7 +15,7 @@ pkgbase = modbus-tcp-client-shm
 	depends = cxxshm
 	depends = cxxsemaphore
 	depends = libmodbus
-	source = git+https://github.com/NikolasK-source/modbus_tcp_client_shm.git#tag=v1.6.2
+	source = git+https://github.com/SHMModbus/modbus_tcp_client_shm.git#tag=v1.6.2
 	sha256sums = SKIP
 
 pkgname = modbus-tcp-client-shm
