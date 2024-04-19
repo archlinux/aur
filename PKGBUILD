@@ -2,13 +2,14 @@
 
 pkgbase=mgba-git
 pkgname=('libmgba-git' 'mgba-sdl-git' 'mgba-qt-git')
-pkgver=0.11.0.r8402.d1a6e6b74
+pkgver=0.11.0.r8409.5d92c3ca0
 pkgrel=1
 arch=('x86_64')
 url='http://mgba.io/'
 license=('MPL-2.0')
-makedepends=('cmake' 'desktop-file-utils' 'ffmpeg' 'git' 'libedit' 'libepoxy' 'libpng'
-             'libzip' 'lua' 'ninja' 'sdl2' 'qt6-multimedia' 'qt6-tools' 'zlib')
+makedepends=('cmake' 'desktop-file-utils' 'ffmpeg' 'gcc-libs' 'glibc' 'git'
+             'json-c' 'libedit' 'libelf' 'libepoxy' 'libglvnd' 'libpng' 'libzip'
+             'lua' 'ninja' 'sdl2' 'qt6-base' 'qt6-multimedia' 'qt6-tools' 'zlib')
 source=("git+https://github.com/mgba-emu/mgba.git")
 sha1sums=('SKIP')
 
@@ -41,7 +42,7 @@ build() {
 
 package_libmgba-git() {
   pkgdesc='Shared library of mGBA (git build)'
-  depends=('ffmpeg' 'libedit' 'libepoxy' 'libpng' 'libzip' 'lua' 'sqlite' 'zlib')
+  depends=('ffmpeg' 'glibc' 'json-c' 'libedit' 'libelf' 'libepoxy' 'libpng' 'libzip' 'lua' 'sqlite' 'zlib')
   conflicts=('libmgba')
   provides=('libmgba')
 
@@ -56,7 +57,7 @@ package_libmgba-git() {
 
 package_mgba-sdl-git() {
   pkgdesc='A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy (git build)'
-  depends=('libmgba-git' 'sdl2')
+  depends=('glibc' 'libmgba-git' 'libpng' 'sdl2')
   conflicts=('mgba-sdl')
   provides=('mgba-sdl')
 
@@ -69,7 +70,7 @@ package_mgba-sdl-git() {
 
 package_mgba-qt-git() {
   pkgdesc='A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy. Qt6 UI. (git build)'
-  depends=('libmgba-git' 'sdl2' 'qt6-multimedia')
+  depends=('ffmpeg' 'gcc-libs' 'glibc' 'libglvnd' 'libmgba-git' 'sdl2' 'qt6-base' 'qt6-multimedia')
   conflicts=('mgba-qt')
   provides=('mgba-qt')
 
