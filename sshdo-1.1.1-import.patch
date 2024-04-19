@@ -1,0 +1,12 @@
+diff --git a/test_sshdo b/test_sshdo
+index 2c99fd2..2225901 100755
+--- a/test_sshdo
++++ b/test_sshdo
+@@ -31,6 +31,7 @@
+ from __future__ import print_function
+ import os, sys, glob, shutil, pprint, copy, pwd, grp
+ py2 = sys.version_info.major == 2
++sys.path.append(".")
+ none = None
+ 
+ def test_check_auth():

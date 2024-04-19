@@ -1,7 +1,7 @@
 pkgbase = sshdo
 	pkgdesc = Controls which commands may be executed via incoming ssh
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://raf.org/sshdo/
 	arch = any
 	license = GPL
@@ -10,7 +10,11 @@ pkgbase = sshdo
 	backup = etc/sshdoers
 	backup = etc/sshdo.banner
 	backup = etc/sshdoers.d
-	source = https://raf.org/sshdo/download/sshdo-1.1.1.tar.gz
+	source = https://github.com/raforg/sshdo/releases/download/v1.1.1/sshdo-1.1.1.tar.gz
+	source = sshdo-1.1.1-import.patch
 	sha256sums = 9b22e14fec786b692e8d6431a81e9b17ad8f6e62ae5d6ef9e9c643690bf33f90
+	sha256sums = 943eb6facce297b48be51a1ac917aa435aa35e4d9fa0155db1fe3d0ebaa929b5
+	sha512sums = 8c77e18d221255bca0d386ac54bd9a959f74a24fe48fed8b1152f954a2aa6780f44cbc86e91dce0204151a4661cba096b19e92a89a0b91167b457a0b85199073
+	sha512sums = 87265d45ef99d5118726f2aa0b3a0afbae24891163add788390ccb3a35629b28e0d311369c8015170928b0d6c5b0a0ca958a1a915662eaaf288595112d2bef71
 
 pkgname = sshdo
