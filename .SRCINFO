@@ -1,6 +1,6 @@
 pkgbase = apotris-git
 	pkgdesc = A block stacking puzzle game for the Game Boy Advance (Linux port)
-	pkgver = 3.4.6.r734.gc7672f8
+	pkgver = 3.4.6.r764.g0eb6d26
 	pkgrel = 1
 	url = https://apotris.com/
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = apotris-git
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = libogg
-	makedepends = libvorbis
+	makedepends = libopenmpt
 	makedepends = meson
 	makedepends = opus
 	makedepends = python
@@ -20,9 +20,8 @@ pkgbase = apotris-git
 	makedepends = xxd
 	depends = bash
 	depends = glibc
-	depends = libopenmpt
 	depends = sdl2
-	provides = apotris=3.4.6.r734.gc7672f8
+	provides = apotris=3.4.6.r764.g0eb6d26
 	conflicts = apotris
 	source = apotris::git+https://gitea.com/akouzoukos/apotris.git#branch=ports
 	source = soloud::git+https://github.com/akouzoukos/soloud.git
@@ -35,8 +34,12 @@ pkgbase = apotris-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = 6a5b652537461135895820391beb20bb2e64e312f08ddbd9ea8d313047118693556df26e89019e81b26c6650388597eebbc8ae4cf824739aadb41121d728ed80
-	b2sums = 217b5d7781dbdb227c7e81305743383304e5068b297b6d3be0bf88f04a8b9e642fa509ff6023748a38e5d7723184b02f0356a3293561de29edcc44007f943aaf
-	b2sums = 8df45e7ece2bbac199470498f3b27c0fef707fcfcc25fdffac04d9bb825c76d29004c43c5fa77e21e343d32e03b885cb59e9d13a3e909cdaf17aaa825b111237
+	b2sums = 20831722106d2b05118b2a3498f810a8cb5fc6c19dc99323b6417b5a9a669ddaa4da18299afca475ac2885a26e1909457c12482e3f6ae60ca32c15bdff98f976
+	b2sums = c2112dd1baf2490ff498d6292794c5268e3e18d6a23941ab360317123f043499abba5bb3b68e208ef33147307267eee446d089e4a6e37297326725510243947b
 	b2sums = 497d9ed7ed0c5d3bce10d23a14e5a6d4b39125045290048f8a4b813fd81767f9a459636c5e84fd17b3b0802fee6fd0afa0bddb0dbda7c04484a39a2bc176a0ba
 
 pkgname = apotris-git
+	depends = bash
+	depends = glibc
+	depends = sdl2
+	depends = libopenmpt.so
