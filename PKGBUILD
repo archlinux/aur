@@ -14,7 +14,6 @@ arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
 depends=('glibc' 'gcc-libs')
-optdepends=('ccache: for caching builds')
 makedepends=(
   'blas-openblas'
   'clblast'

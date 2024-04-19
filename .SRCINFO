@@ -15,7 +15,6 @@ pkgbase = whisper.cpp
 	makedepends = openvino
 	depends = glibc
 	depends = gcc-libs
-	optdepends = ccache: for caching builds
 	source = whisper.cpp-1.5.5.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.5.5.tar.gz
 	sha256sums = 27fa5c472657af2a6cee63de349a34b23d0f3781fa9b8ef301a940cf64964a79
 
