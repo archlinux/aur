@@ -1,0 +1,16 @@
+pkgbase = netscout-git
+	pkgdesc = Tool designed to bypass HTTP 403 (Forbidden) pages using various techniques.
+	pkgver = 0.1.0.772eba8f8b
+	pkgrel = 1
+	url = https://github.com/caio-ishikawa/netscout
+	arch = any
+	license = custom
+	depends = git
+	depends = go
+	provides = netscout
+	conflicts = netscout
+	conflicts = netscout-bin
+	source = git+https://github.com/caio-ishikawa/netscout
+	sha512sums = SKIP
+
+pkgname = netscout-git
