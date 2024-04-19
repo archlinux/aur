@@ -1,14 +1,14 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=shm-modbus
-pkgrel=1
+pkgrel=2
 pkgver=2.0.0
 pkgdesc="A collection of applications to simulate a shared memory based Modbus client"
-url="https://github.com/NikolasK-source/SHM_Modbus"
+url="https://github.com/SHMModbus/SHM_Modbus"
 license=('GPL-3.0-only')
 arch=('x86_64' 'aarch64')
 depends=('dump-shm' 'modbus-rtu-client-shm' 'modbus-tcp-client-shm' 'shared-mem-random' 'stdin-to-modbus-shm' 'write-shm' 'shm-modbus-signal-gen' 'wago-modbus-coupler-shm' 'shm-modbus-gui')
-source=("git+https://github.com/NikolasK-source/SHM_Modbus.git#tag=v${pkgver}"
+source=("git+https://github.com/SHMModbus/SHM_Modbus.git#tag=v${pkgver}"
         "https://gist.githubusercontent.com/NikolasK-source/25f30f740396723501a51a4bc075ced7/raw/bcd66db1a4f65fd3657fa12fffda2ee8b3de19c9/shm-modbus")
 
 sha256sums=('SKIP'
