@@ -1,15 +1,15 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=write-shm
-pkgrel=1
+pkgrel=2
 pkgver=1.1.1
 pkgdesc="Write to a shared memory"
-url="https://github.com/NikolasK-source/write_shm"
+url="https://github.com/SHMModbus/write_shm"
 license=('MIT')
 arch=('x86_64' 'aarch64')
 makedepends=('cmake' 'git' 'cxxopts' 'cxxshm' 'cxxsemaphore')
 depends=('cxxshm' 'cxxsemaphore')
-source=("git+https://github.com/NikolasK-source/write_shm.git#tag=v${pkgver}")
+source=("git+https://github.com/SHMModbus/write_shm.git#tag=v${pkgver}")
 
 sha256sums=('SKIP')
 
