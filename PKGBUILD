@@ -1,7 +1,7 @@
 # Maintainer: GhostNaN <GhostNaN@protonmail.com>
 _gitname=mpvpaper
 pkgname="$_gitname-git"
-pkgver=r80.8678234
+pkgver=r92.b03df48
 pkgrel=1
 pkgdesc="A video wallpaper program for wlroots based wayland compositors."
 arch=('i686' 'x86_64')
