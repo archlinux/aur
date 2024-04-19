@@ -1,7 +1,7 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-com>
 pkgname=netscout-git
 _pkgname=netscout
-pkgver=0.1.0.772eba8f8b
+pkgver=0.1.1.2f409df703
 pkgrel=1
 pkgdesc="Tool designed to bypass HTTP 403 (Forbidden) pages using various techniques."
 arch=('any')
