@@ -4,12 +4,12 @@
 
 _pkgname="sushi"
 pkgname="$_pkgname-git"
-pkgver=45.0.r3.gcd171b4
+pkgver=46.0.r1.g819642a
 pkgrel=1
 pkgdesc="A quick previewer for Nautilus"
 url="https://gitlab.gnome.org/GNOME/sushi"
-arch=(x86_64)
-license=(GPL2)
+license=('GPL-2.0-or-later')
+arch=('x86_64')
 
 depends=(
   'evince'
@@ -25,9 +25,6 @@ makedepends=(
   'meson'
 )
 optdepends=(
-  'gst-plugins-bad: Codecs for media support'
-  'gst-plugins-good: Codecs for media support'
-  'gst-plugins-ugly: Codecs for media support'
   'libreoffice: OpenDocument formats'
 )
 
@@ -40,7 +37,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -54,5 +51,5 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "${pkgdir:?}"
+  meson install -C build --destdir "$pkgdir"
 }
