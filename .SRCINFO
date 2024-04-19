@@ -1,6 +1,6 @@
 pkgbase = python-beartype
 	pkgdesc = Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python
-	pkgver = 0.18.3
+	pkgver = 0.18.4
 	pkgrel = 1
 	url = https://github.com/beartype/beartype
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-beartype
 	depends = python
 	depends = python-numpy
 	depends = python-typing-extensions
-	source = python-beartype-0.18.3.tar.gz::https://github.com/beartype/beartype/archive/v0.18.3.tar.gz
-	sha256sums = 5397e8436b675d1f60164d445437d99cdeb1d77dd7aa8df1ef3969f5534dd149
+	source = python-beartype-0.18.4.tar.gz::https://github.com/beartype/beartype/archive/v0.18.4.tar.gz
+	sha256sums = 090610a7acc9691973af10b8f8b1ce526d4f10def432a9b48a169668291c3930
 
 pkgname = python-beartype
