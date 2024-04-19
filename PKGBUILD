@@ -1,9 +1,10 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
 
 pkgname=snapcast
-_pkgname_snapos=snapos
-pkgver=0.27.0
-pkgrel=5
+pkgver=0.28.0
+pkgrel=1
+_pkgname_snapweb=snapweb
+_snapweb_version=0.7.0
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
@@ -16,23 +17,20 @@ makedepends=(cmake alsa-utils boost)
 install="snapcast.install"
 backup=('etc/default/snapserver' 'etc/default/snapclient' 'etc/snapserver.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/snapcast/archive/v${pkgver}.tar.gz"
-        "snapos-${pkgver}.tar.gz::https://github.com/badaix/snapos/archive/v${pkgver}.tar.gz"
+        "${_pkgname_snapweb}-${_snapweb_version}.zip::https://github.com/badaix/snapweb/releases/download/v${_snapweb_version}/snapweb.zip"
         "snapcast.sysusers"
         "snapcast.tmpfiles"
-        "snapcast.install"
-        "0001-Fix-build-with-GCC-13-1124.patch")
-sha256sums=('c662c6eafbaa42a4797a4ed6ba4a7602332abf99f6ba6ea88ff8ae59978a86ba'
-            '5f4f59dd6f39059c22687b29231e2c007a7d0ea0f920af6092f18eeba9a5e208'
+        "snapcast.install")
+noextract=("${_pkgname_snapweb}-${_snapweb_version}.zip")
+sha256sums=('7911037dd4b06fe98166db1d49a7cd83ccf131210d5aaad47507bfa0cfc31407'
+            '2acfc3538e4f4daefb0a2eac9126925f5a455dfd68b14ba5500fac5f1f82cb8f'
             '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
             'e8c3441c4ca646a9b66d61355e90862fd3481562ae3b4e0a4bc1c978464ae2c7'
-            '87945989ce215c3720e12e9d53642d7b1112f8276cd02d999fd7e27517aea126'
-            '4acc6196d2864592eb5a0181a56f00d1bbfff2d8bf8440b3783045d12cf89ef3')
+            '23a0390774279f8c5d02d3307cfb67f2e9360f42704bb4f13d8c43e091fe997f')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
-
-    # patch missing include for gcc 13
-    patch -p1 -i "$srcdir"/0001-Fix-build-with-GCC-13-1124.patch
+    mkdir -p ${_pkgname_snapweb}-${_snapweb_version}
+    bsdtar -xf ${_pkgname_snapweb}-${_snapweb_version}.zip -C ${_pkgname_snapweb}-${_snapweb_version}
 }
 
 build() {
@@ -51,23 +49,23 @@ package() {
     install -Dm644 server/snapserver.1 "${pkgdir}/usr/share/man/man1/snapserver.1"
     install -Dm644 server/etc/snapserver.conf "${pkgdir}/etc/snapserver.conf"
     # install snapweb
-    for file in server/etc/snapweb/*\.*; 
-        do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/snapweb/"; 
+    for file in ${srcdir}/${_pkgname_snapweb}-${_snapweb_version}/*\.*;
+        do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/snapweb/";
     done
-    for file in server/etc/snapweb/3rd-party/*\.*;
-        do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/snapweb/3rd-party/";
+    for file in ${srcdir}/${_pkgname_snapweb}-${_snapweb_version}/assets/*\.*;
+        do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/snapweb/assets/";
     done
-    for file in server/etc/plug-ins/*\.*; 
-        do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/plug-ins/"; 
+    for file in server/etc/plug-ins/*\.*;
+        do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/plug-ins/";
     done
 
     install -Dm755 bin/snapclient "${pkgdir}/usr/bin/snapclient"
     install -Dm644 client/snapclient.1 "${pkgdir}/usr/share/man/man1/snapclient.1"
 
-    install -Dm644 ${srcdir}/${_pkgname_snapos}-${pkgver}/debian/snapserver.service "${pkgdir}/usr/lib/systemd/system/snapserver.service"
-    install -Dm644 ${srcdir}/${_pkgname_snapos}-${pkgver}/debian/snapserver.default "${pkgdir}/etc/default/snapserver"
-    install -Dm644 ${srcdir}/${_pkgname_snapos}-${pkgver}/debian/snapclient.service "${pkgdir}/usr/lib/systemd/system/snapclient.service"
-    install -Dm644 ${srcdir}/${_pkgname_snapos}-${pkgver}/debian/snapclient.default "${pkgdir}/etc/default/snapclient"
+    install -Dm644 extras/package/debian/snapserver.service "${pkgdir}/usr/lib/systemd/system/snapserver.service"
+    install -Dm644 extras/package/debian/snapserver.default "${pkgdir}/etc/default/snapserver"
+    install -Dm644 extras/package/debian/snapclient.service "${pkgdir}/usr/lib/systemd/system/snapclient.service"
+    install -Dm644 extras/package/debian/snapclient.default "${pkgdir}/etc/default/snapclient"
 
     install -Dm644 "${srcdir}/snapcast.sysusers" "${pkgdir}/usr/lib/sysusers.d/snapclient.conf"
     install -Dm644 "${srcdir}/snapcast.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/snapclient.conf"
