@@ -3,7 +3,7 @@
 
 _crate="hickory-util"
 pkgname="hickory-util"
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc='Utilities that complement Hickory DNS. '
 url='https://hickory-dns.org/'
@@ -14,22 +14,22 @@ makedepends=('cargo')
 conflicts=('trust-dns-util')
 replaces=('trust-dns-util')
 
-source=("$_crate-0.24.0.tar.gz::https://crates.io/api/v1/crates/hickory-util/0.24.0/download")
-sha512sums=('3e96879a6cf2e0cf57321937f171a33d6e055f0d24a7434635224e90b153ebbbfb751742155e3a48783e453fc1454b029f5f5969ba79cda674c610ed138d0e75')
+source=("$_crate-0.24.1.tar.gz::https://crates.io/api/v1/crates/hickory-util/0.24.1/download")
+sha512sums=('c825eca03e8f7a275405d0d3641faee98cb3c683a04a51965625e443c34fa72a75222ecbbbbc86398f488e5989fb62d0ab18d4892c17d41fd21ab59d432d99f7')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-0.24.0"
+	cd "$srcdir/$_crate-0.24.1"
 
 	export RUSTUP_TOOLCHAIN=stable
 
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$srcdir/$_crate-0.24.0"
+	cd "$srcdir/$_crate-0.24.1"
 	
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -44,11 +44,11 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-0.24.0"
+	cd "$srcdir/$_crate-0.24.1"
 	install -Dm755 "target/release/dnskey-to-pem" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/get-root-ksks" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/pem-to-public-dnskey" -t "$pkgdir/usr/bin"
-	install -Dm755 "target/release/dns" -t "$pkgdir/usr/bin"
-	install -Dm755 "target/release/recurse" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/resolve" -t "$pkgdir/usr/bin"
+	install -Dm755 "target/release/recurse" -t "$pkgdir/usr/bin"
+	install -Dm755 "target/release/dns" -t "$pkgdir/usr/bin"
 }
