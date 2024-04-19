@@ -1,4 +1,5 @@
-# Maintainer: Jove Yu <yushijun110@126.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Jove Yu <yushijun110@126.com>
 pkgname=netease-cloud-music-gtk-bin
 _appname=com.gitee.gmg137.NeteaseCloudMusicGtk4
 pkgver=2.3.1
