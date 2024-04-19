@@ -2,15 +2,16 @@
 
 pkgname=flips
 # Each commit to master should be treated as a release as per upstream recommendation.
-pkgver=145
-_commit=eb3b86f0f5c8a61ab9b3d982ab949877b9060ea1
+pkgver=146
+_commit=20b0da9ab95d23da89f821bbddedb11b8e0e6531
 pkgrel=1
 pkgdesc="Patcher for IPS and BPS files"
-depends=('gtk3')
+depends=('at-spi2-core' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glibc' 'glib2' 'gtk3'
+         'harfbuzz' 'hicolor-icon-theme' 'pango' 'zlib')
 makedepends=('git')
 arch=('x86_64')
 url="https://github.com/Alcaro/Flips"
-license=('GPL')
+license=('GPL-3.0-or-later')
 source=("flips::git+https://github.com/Alcaro/Flips.git#commit=$_commit")
 sha256sums=('SKIP')
 
