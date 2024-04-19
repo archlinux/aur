@@ -1,0 +1,5 @@
+[python-soxr]
+source = "github"
+github = "dofuuz/python-soxr"
+prefix = "v"
+use_latest_release = true
