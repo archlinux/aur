@@ -1,6 +1,6 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
-_pkg_subver=4061
+_pkg_subver=4066
 _gamepkg=RimWorldRoyalty1-5-${_pkg_subver}Linux.tar.gz
 
 pkgname=rimworld-royalty
