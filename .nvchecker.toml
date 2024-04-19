@@ -1,0 +1,4 @@
+[python-pip-api]
+source = "github"
+github = "di/pip-api"
+use_latest_release = true
