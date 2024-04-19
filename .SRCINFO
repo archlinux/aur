@@ -1,10 +1,14 @@
 pkgbase = orchis-theme
 	pkgdesc = A Material Design theme for GNOME/GTK based desktop environments.
 	pkgver = 2024_04_18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/orchis-theme
 	arch = any
 	license = GPL3
+	optdepends = gtk-engine-murrine: for gtk2 themes
+	optdepends = gnome-themes-extra: for gtk2 themes
+	optdepends = tela-circle-icon-theme: recommended icon theme
+	optdepends = vimix-cursors: recommended cursors theme
 	conflicts = orchis-theme
 	replaces = orchis-theme-bin
 	options = !strip

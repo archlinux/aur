@@ -3,7 +3,7 @@
 pkgname=orchis-theme
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 pkgver=2024_04_18
-pkgrel=1
+pkgrel=2
 url="https://github.com/vinceliuice/${pkgname}"
 arch=('any')
 license=('GPL3')
