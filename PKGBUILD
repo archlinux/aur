@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=rp-bookshelf
-pkgver=r126.8583e42
+pkgver=r127.28f6d13
 pkgrel=1
 pkgdesc="Browser for Raspberry Pi Press publications in PDF format"
 arch=('x86_64')
