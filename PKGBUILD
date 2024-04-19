@@ -1,7 +1,7 @@
 # Maintainer: Bao Trinh <qubidt at gmail dot com>
 
 pkgname=python-darker
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Apply black reformatting to Python files only in regions changed since a given commit'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
 	'python-flynt: convert string literals to f-strings'
 )
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha512sums=('a73b81acace69bea1c6ebf7b9c7d2715ca4e4788087eec4d383c775136a2c251c818a65101a3e10504421eb0d41f0d186f3799494649ac4bc91ed4813e8332de')
+sha256sums=('05f5b60cb0098d2ba934fa457e273087eb3c284b34d766cd69ec548532dbccb0')
 
 prepare() {
 	cd "${pkgname}"
