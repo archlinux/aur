@@ -1,0 +1,4 @@
+[pychess-db]
+source = "github"
+github = "pychess/chess_db"
+use_max_tag = true
