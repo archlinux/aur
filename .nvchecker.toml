@@ -1,0 +1,4 @@
+[python-fontdoctools]
+source = "regex"
+url = "https://bitbucket.org/LindenbergSW/fontdoctools/raw/master/setup.py"
+regex = 'version="(\d+\.\d+\.\d+)"'
