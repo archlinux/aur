@@ -1,13 +1,13 @@
 pkgbase = tmuxinator
 	pkgdesc = Manage complex tmux sessions easily
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aziz/tmuxinator
 	arch = any
 	license = MIT
 	makedepends = ruby-bundler
 	depends = ruby
-	depends = ruby-erubis
+	depends = ruby-erubi
 	depends = ruby-thor
 	depends = ruby-xdg5
 	optdepends = zsh-completions: for ZSH completion
