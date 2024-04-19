@@ -9,8 +9,8 @@ replaces=('halflife')
 conflicts=('halflife')
 makedepends=('unzip')
 url="https://gitlab.com/half-life1"
-source=("https://gitlab.com/half-life1/halflife/-/archive/$pkgver/halflife-$pkgver.tar.bz2")
-sha256sums=("SKIP")
+source=("https://gitlab.com/linuxbombay/half-life1/halflife/-/archive/$pkgver/halflife-$pkgver.tar.bz2")
+sha256sums=('50e0dc1ca2b03953e4032ea51f3b8f8e8fb3f076ba6a0193cd6191aa65435b3f')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"

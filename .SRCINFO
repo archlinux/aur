@@ -15,7 +15,7 @@ pkgbase = halflife-xash3d-fwgs
 	depends = zenity
 	conflicts = halflife
 	replaces = halflife
-	source = https://gitlab.com/half-life1/halflife/-/archive/1.0.0/halflife-1.0.0.tar.bz2
-	sha256sums = SKIP
+	source = https://gitlab.com/linuxbombay/half-life1/halflife/-/archive/1.0.0/halflife-1.0.0.tar.bz2
+	sha256sums = 50e0dc1ca2b03953e4032ea51f3b8f8e8fb3f076ba6a0193cd6191aa65435b3f
 
 pkgname = halflife-xash3d-fwgs
