@@ -3,16 +3,17 @@
 _pkgname=RBGL
 _pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.78.0
-pkgrel=1
-pkgdesc='An interface to the BOOST graph library'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="An interface to the BOOST graph library"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
-  r-bh
   r-graph
+)
+makedepends=(
+  r-bh
 )
 optdepends=(
   r-biocgenerics
@@ -23,14 +24,15 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('241188ff70c1a1eb447ef3bd1f9d9d57a84537c2cd1d5f782923366c68a0b043')
+md5sums=('a18b5ad5c49f058b6f65a2bd0a4274d1')
+b2sums=('10e0630c3027ed81ca7045b03b1c85cf5755e077524907ef471477774270a37706d5db8d15c0023311a81f7e5b24eec4b345ba38424abfa33ec9562d89de72e7')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
