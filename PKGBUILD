@@ -11,7 +11,7 @@
 pkgname='perl-alien-sdl'
 _realname='Alien-SDL'
 pkgver=1.446
-pkgrel=14
+pkgrel=15
 pkgdesc='Build, find and use SDL binaries (package is specific to architecture and SDL package used at build-time)'
 arch=(
   'x86_64'
@@ -19,27 +19,20 @@ arch=(
   'aarch64'
   'armv7h'
 )
-license=('GPL')
+license=('LicenseRef-GPL-1.0-or-later OR Artistic-1.0-Perl')
 url="https://metacpan.org/dist/$_realname"
 depends=(
-  'perl>=5.008'
+  'perl'
   'perl-capture-tiny'
-  'perl-extutils-cbuilder'
-  'perl-file-sharedir>=1.00'
-  'perl-file-temp'
-  'perl-pathtools'
+  'perl-file-sharedir'
   'sdl'
 )
 makedepends=(
   'perl-archive-extract'
-  'perl-archive-tar'
   'perl-archive-zip'
-  'perl-digest-sha'
-  'perl-file-fetch>=0.24'
-  'perl-file-path>=2.08'
   'perl-file-which'
-  'perl-module-build>=0.36'
-  'perl-text-patch>=1.4'
+  'perl-module-build'
+  'perl-text-patch'
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/F/FR/FROGGS/$_realname-$pkgver.tar.gz")
@@ -63,4 +56,6 @@ build() {
 package() {
   cd "$_realname-$pkgver"
   perl Build install installdirs=vendor destdir="$pkgdir"
+
+  install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
 }

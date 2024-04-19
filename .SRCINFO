@@ -1,28 +1,21 @@
 pkgbase = perl-alien-sdl
 	pkgdesc = Build, find and use SDL binaries (package is specific to architecture and SDL package used at build-time)
 	pkgver = 1.446
-	pkgrel = 14
+	pkgrel = 15
 	url = https://metacpan.org/dist/Alien-SDL
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	arch = armv7h
-	license = GPL
+	license = LicenseRef-GPL-1.0-or-later OR Artistic-1.0-Perl
 	makedepends = perl-archive-extract
-	makedepends = perl-archive-tar
 	makedepends = perl-archive-zip
-	makedepends = perl-digest-sha
-	makedepends = perl-file-fetch>=0.24
-	makedepends = perl-file-path>=2.08
 	makedepends = perl-file-which
-	makedepends = perl-module-build>=0.36
-	makedepends = perl-text-patch>=1.4
-	depends = perl>=5.008
+	makedepends = perl-module-build
+	makedepends = perl-text-patch
+	depends = perl
 	depends = perl-capture-tiny
-	depends = perl-extutils-cbuilder
-	depends = perl-file-sharedir>=1.00
-	depends = perl-file-temp
-	depends = perl-pathtools
+	depends = perl-file-sharedir
 	depends = sdl
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/F/FR/FROGGS/Alien-SDL-1.446.tar.gz
