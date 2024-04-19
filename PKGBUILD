@@ -38,7 +38,7 @@ optdepends=(
     'qt6-base: enable Qt6 with --enable-features=AllowQt'
     'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
     'trash-cli: file deletion support (trash-put)'
-    'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
+    'xdg-utils: open URLs with desktop`s default'
 )
 source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-arm64.zip"

@@ -16,7 +16,7 @@ pkgbase = electron30-bin
 	optdepends = qt6-base: enable Qt6 with --enable-features=AllowQt
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
-	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
+	optdepends = xdg-utils: open URLs with desktop`s default
 	provides = electron30=30.0.1
 	conflicts = electron30
 	source_aarch64 = electron30-bin-chromedriver-30.0.1-aarch64.zip::https://github.com/electron/electron/releases/download/v30.0.1/chromedriver-v30.0.1-linux-arm64.zip
