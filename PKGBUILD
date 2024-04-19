@@ -1,7 +1,7 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 
 _cranname=textutils
-_cranver=0.3-2
+_cranver=0.4-1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=('r-utils')
 optdepends=('r-tinytest')
 source=(https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz)
-sha256sums=(b0eb2efe9bfcae9f460f673fd4679c81a82b25edd4a49dd5492e60e8412121a4)
+sha256sums=(c3f7c1fa46d27e8e04a43b67e1f7de8acbadc06b529fd99416a4044657562252)
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
