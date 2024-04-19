@@ -1,7 +1,7 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.info>
 
 pkgname=shm-modbus-signal-gen
-pkgrel=1
+pkgrel=2
 pkgver=1.0.2
 pkgdesc="System time based signal generator for stdin-to-modbus-shm"
 url="https://github.com/SHMModbus/shm-modbus-signal-gen"
