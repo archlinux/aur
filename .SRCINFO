@@ -1,0 +1,15 @@
+pkgbase = powertop-to-tmpfile
+	pkgdesc = Apply PowerTOP recommendations via a tmpfiles.d configuration file
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bbx0/powertop-to-tmpfile
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = help2man
+	depends = bash
+	depends = powertop
+	depends = sed
+	source = powertop-to-tmpfile-0.1.0.tar.gz::https://github.com/bbx0/powertop-to-tmpfile/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = ba00df43290db2a5519e84815751942d44139041ab4b273a63fc00df8ca5603daa342ce7bc4242257e24ef6f278a2e176368870b61dffd531b30034669799ce1
+
+pkgname = powertop-to-tmpfile
