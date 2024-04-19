@@ -3,7 +3,7 @@
 pkgname=zapzap-git
 _pkgname=com.rtosta.zapzap
 pkgver=5.3.r0.g9492650
-pkgrel=1
+pkgrel=2
 pkgdesc="WhatsApp desktop application written in Pyqt6 + PyQt6-WebEngine"
 arch=('x86_64')
 url="https://github.com/zapzap-linux/${pkgname%-git}" 
@@ -33,5 +33,5 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 share/icons/$_pkgname.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg
   install -Dm664 share/applications/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
-  install -Dm664 share/metainfo/$_pkgname.appdata.xml "$pkgdir"/share/metainfo/$_pkgname.appdata.xml
+  install -Dm664 share/metainfo/$_pkgname.appdata.xml "$pkgdir"/usr/share/metainfo/$_pkgname.appdata.xml
 }
