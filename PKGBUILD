@@ -5,12 +5,12 @@
 pkgname=python-cliapp-fiw
 _gitpkgname="${pkgname%-fiw}"
 pkgver=1.20180812.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python framework for Unix-like command line programs'
 arch=('any')
 url='https://blog.liw.fi/posts/cliapp/'
-license=('GPL2')
-depends=('python-yaml')
+license=('GPL-2.0-only')
+depends=('python' 'python-yaml')
 makedepends=(
   'python-build'
   'python-installer'
@@ -21,31 +21,36 @@ optdepends=(
   'python-pyxdg: to honor XDG_CONFIG_HOME for configuration files'
 )
 conflicts=('python-cliapp') # unrelated package
-options=('!strip')
+options=('!debug' '!strip')
 
 source=(
-  "${_gitpkgname}-${pkgver}.tar.xz::https://code.liw.fi/debian/pool/main/p/python-cliapp/python-cliapp_${pkgver}.orig.tar.xz"
+  "${_gitpkgname}-${pkgver}.tar.gz::http://git.liw.fi/cliapp/snapshot/cliapp-${pkgver}.tar.gz"
 )
 
 sha512sums=(
-  '63f2a31588f6c53d278af876dfc368737797105983da715a7196fe4629bc1b8e87bdc44ee2a6eb0e28117719477a754081852ad74dfcab5d8f2ea8e0e7853a8d'
+  '61b6f36abb3eefb1c52752e8eb1048c1629c86aa269fcac9c5ee4d875031a040c9c3824131f953dc9bfe568e9e99202750c2e8c11791afe3fce1c1872ce2510d'
 )
 
 prepare() {
+  cd "cliapp-${pkgver}"
   echo 'global-exclude *_tests.py' > MANIFEST.in
 }
 
 build() {
+  cd "cliapp-${pkgver}"
+
   # Build wheel from sdist so it honors MANIFEST.in, which prevents
   # tests from ending up inside the wheel
   python -m build --no-isolation
 }
 
 check() {
+  cd "cliapp-${pkgver}"
   python -m unittest cliapp/*_tests.py
 }
 
 package() {
+  cd "cliapp-${pkgver}"
   python -I -m installer --destdir="${pkgdir}" dist/*.whl
 
   echo >&2 'Packaging examples'

@@ -1,19 +1,21 @@
 pkgbase = python-cliapp-fiw
 	pkgdesc = Python framework for Unix-like command line programs
 	pkgver = 1.20180812.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blog.liw.fi/posts/cliapp/
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python
 	depends = python-yaml
 	optdepends = python-pyxdg: to honor XDG_CONFIG_HOME for configuration files
 	conflicts = python-cliapp
+	options = !debug
 	options = !strip
-	source = python-cliapp-1.20180812.1.tar.xz::https://code.liw.fi/debian/pool/main/p/python-cliapp/python-cliapp_1.20180812.1.orig.tar.xz
-	sha512sums = 63f2a31588f6c53d278af876dfc368737797105983da715a7196fe4629bc1b8e87bdc44ee2a6eb0e28117719477a754081852ad74dfcab5d8f2ea8e0e7853a8d
+	source = python-cliapp-1.20180812.1.tar.gz::http://git.liw.fi/cliapp/snapshot/cliapp-1.20180812.1.tar.gz
+	sha512sums = 61b6f36abb3eefb1c52752e8eb1048c1629c86aa269fcac9c5ee4d875031a040c9c3824131f953dc9bfe568e9e99202750c2e8c11791afe3fce1c1872ce2510d
 
 pkgname = python-cliapp-fiw
