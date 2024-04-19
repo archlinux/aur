@@ -1,20 +1,21 @@
 pkgbase = praat-git
-	pkgdesc = Doing Phonetics by computer (speech analysis)
-	pkgver = 6.1.09.r104.g9db902f
-	pkgrel = 3
-	url = https://www.praat.org/
+	pkgdesc = A speech analysis tool used for doing phonetics by computer
+	pkgver = 6.4.08
+	pkgrel = 1
+	url = https://www.praat.org
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = GPL
 	makedepends = git
 	depends = alsa-lib
-	depends = gtk2
+	depends = gtk3
 	depends = jack
 	depends = libpulse
 	depends = ttf-charis-sil
-	depends = ttf-sil-doulos
+	depends = ttf-doulos-sil
 	optdepends = ttf-sil-fonts
-	provides = praat
+	provides = praat=6.4.08
 	conflicts = praat
 	source = git+https://github.com/praat/praat.git
 	source = praat.1
@@ -28,4 +29,3 @@ pkgbase = praat-git
 	sha256sums = 07abf61475f22f83f0514a8fba1ec7bd3821d2b7f35b1215c1f3e1feb947d74b
 
 pkgname = praat-git
-
