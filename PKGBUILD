@@ -7,7 +7,7 @@ arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/Dj-Codeman/doge"
 license=('EPL-2.0')
 depends=('rust' 'pandoc')
-source=('https://github.com/Dj-Codeman/doge/archive/refs/tags/v0.2.5.tar.gz')
+source=('https://github.com/Dj-Codeman/doge/archive/refs/tags/v0.2.6.tar.gz')
 sha256sums=('ccbf0740d079ca2293ee150fda9f11275838da8cd3ba6fd73917ba8901299113')
 
 prepare() {
