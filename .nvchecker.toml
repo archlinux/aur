@@ -1,0 +1,4 @@
+[x16-emulator]
+source = "github"
+github = "X16Community/x16-emulator"
+use_latest_release = true
