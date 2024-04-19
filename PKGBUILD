@@ -1,31 +1,43 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
-
-pkgname=celeste-client-bin
-pkgver=0.5.1
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+#_getverurl="https://github.com/flathub/com.hunterwittenborn.Celeste/blob/master/com.hunterwittenborn.Celeste.yml"
+_pkgname=celeste
+pkgname="${_pkgname}-client-bin"
+_appname=com.hunterwittenborn.Celeste
+pkgver=0.8.1
+_snap="a9zAmHVl4doDwIGkptVyA7VI7fMlPPpE_34"
 pkgrel=1
 pkgdesc="GUI file synchronization client that can sync with any cloud provider "
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/hwittenborn/celeste"
-license=(GPL3)
-depends=(libadwaita rclone)
-optdepends=()
-makedepends=(squashfs-tools)
-provides=(celeste celeste-client)
-conflicts=(celeste celeste-client)
-source=(celeste-client.desktop
-        celeste-client.svg)
-_snap=a9zAmHVl4doDwIGkptVyA7VI7fMlPPpE_23
-source_x86_64=("celeste-client-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/${_snap}.snap")
-sha256sums=('4fc8f7a5e49e73c83c4f9d25b77f684adec2222aa09acf17e7884f3f5db3f928'
-            'e05c6fdac80934ce80f2e25a494b4f82e3784e760afb0b77bdc63c28f86a9896')
-sha256sums_x86_64=('8e7197dd608af82e405028dbf7816aabe2d2ee995c0b37260a282009c05a41c7')
+license=('GPL-3.0-only')
+provides=(
+    "${pkgname%-bin}=${pkgver}"
+    "${_pkgname}=${pkgver}"
+)
+conflicts=(
+    "${pkgname%-bin}"
+    "${_pkgname}"
+)
+depends=(
+    'libadwaita'
+    'rclone'
+)
+makedepends=(
+    'squashfs-tools'
+)
+source=()
 
+source=("${pkgname%-bin}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/${_snap}.snap")
+sha256sums=('fd2a6eb205b028060f3e7c1703d1c0a46f2b470c1f6c17c637d2ed4e1f25ab69')
 build() {
-  unsquashfs -f "celeste-client-${pkgver}.snap"
+    unsquashfs -f "${srcdir}/${pkgname%-bin}-${pkgver}.snap"
+    sed "s|Exec=${_pkgname}|Exec=${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
+        -i "${srcdir}/squashfs-root/usr/share/applications/${_appname}.desktop"
+    sed "s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/usr/share/metainfo/${_appname}.metainfo.xml"
 }
-
 package() {
-  install -D squashfs-root/usr/bin/celeste ${pkgdir}/usr/bin/celeste-client
-  install -D celeste-client.desktop -t ${pkgdir}/usr/share/applications
-  install -D celeste-client.svg -t ${pkgdir}/usr/share/icons/hicolor/scalable/apps
+    install -Dm755 "${srcdir}/squashfs-root/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -D "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/${_appname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/app/${pkgname%-bin}.svg"
 }
