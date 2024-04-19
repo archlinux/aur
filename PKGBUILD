@@ -2,22 +2,26 @@
 
 _pkgbase=pandoc-plantuml-filter
 pkgname=${_pkgbase}-py
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 pkgdesc='Pandoc filter for PlantUML code blocks, python version'
 arch=('any')
 url='https://pypi.org/project/pandoc-plantuml-filter'
 license=('MIT')
 depends=('python' 'python-pandocfilters')
-makedepends=('python-setuptools')
 conflicts=('pandoc-plantuml-filter')
 replaces=('pandoc-plantuml-filter')
-source=("https://files.pythonhosted.org/packages/2b/a6/d63364f4f89314efc29b541d9422532bd6825f0fa64f6e471ecce8500516/${_pkgbase}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/be/e2/e48d2c5053e566f89076a0d650d44ff8a1132701100da054c32fc557ee0d/${_pkgbase}-${pkgver}.tar.gz")
 sha256sums=(
-  '2a26b6375f2ee6d34ee2498fecf1d6c8ace5cf6f8bbe5745d186ebce5d1dc720'
+  'f6a5de219b82bb8e26f44a0f08f2fb32011ba04c0df753b294b7db9308646584'
   )
+
+build() {
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
 
 package() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
