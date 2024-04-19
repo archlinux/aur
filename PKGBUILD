@@ -8,8 +8,8 @@ url="https://gitlab.com/perfectdark"
 license=('GPL')
 depends=('pd-bin')
 makedepends=('unzip')
-sha256sums=('SKIP')
-source=("https://gitlab.com/perfectdark-aur/perfectdark/-/archive/$pkgver/perfectdark-$pkgver.tar.bz2")
+sha256sums=('d74c0d242b91ae79dfacfb449b88c7fc07f17b2d822332fb54ec50c754a00352')
+source=("https://gitlab.com/linuxbombay/perfectdark/perfectdark/-/archive/$pkgver/perfectdark-$pkgver.tar.bz2")
 
 package() {
    install -dm755 "$pkgdir/usr/share/games/$_pkgname"
