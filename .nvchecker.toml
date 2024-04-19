@@ -1,0 +1,5 @@
+[python-plotink]
+source = "github"
+github = "evil-mad/plotink"
+prefix = "v"
+use_max_tag = true
