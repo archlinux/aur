@@ -1,18 +1,28 @@
-Description: meson: Use dependency() for gpme
- Since version 0.51, we can rely on Meson to do the correct thing when
- calling `dependency('gpgme')`. This makes both the meson.build and the
- GPG version checking script quite a bit cleaner.
- It also remove the need for gpgme-config which isn't shipped currently
- in Debian by libgpgme-dev, by using pkgconfig.
- This patch is mostly an adaptation of https://gitlab.gnome.org/GNOME/seahorse/-/commit/f862919765f92640016604e65eb6c535fa9a80a2.
-Origin: other, https://gitlab.gnome.org/GNOME/seahorse/-/commit/f862919765f92640016604e65eb6c535fa9a80a2
-Forwarded: https://gitlab.gnome.org/GNOME/seahorse-nautilus/-/issues/9
-Last-Update: 2023-01-30
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Cl=C3=A9ment=20Hermann?= <nodens@debian.org>
+Date: Mon, 30 Jan 2023 14:28:19 +0000
+Subject: [PATCH] meson: Use dependency() for gpme
+
+Since version 0.51, we can rely on Meson to do the correct thing when
+calling `dependency('gpgme')`. This makes both the meson.build and the
+GPG version checking script quite a bit cleaner.
+
+It also remove the need for gpgme-config which isn't shipped currently
+in Debian by libgpgme-dev, by using pkgconfig.
+
+This patch is mostly an adaptation of
+https://gitlab.gnome.org/GNOME/seahorse/-/commit/f862919765f92640016604e65eb6c535fa9a80a2.
 ---
-This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+ meson.build                | 17 ++++-------------
+ meson/gpg_check_version.py | 20 ++++++++------------
+ tool/meson.build           |  2 +-
+ 3 files changed, 13 insertions(+), 26 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index c1efbfb861d3..e0afdfa56701 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -1,6 +1,6 @@
+@@ -1,71 +1,62 @@
  project('seahorse-nautilus', 'c',
    version: '3.11.92',
 -  meson_version: '>= 0.42',
@@ -20,15 +30,50 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
    license: 'GPL2+',
  )
  
-@@ -27,7 +27,6 @@
+ gnome = import('gnome')
+ i18n = import('i18n')
+ 
+ conf = configuration_data()
+ 
+ # Options
+ check_compatible_gpg = get_option('check-compatible-gpg')
+ libnotify_enabled = get_option('libnotify')
+ nautilus_ext_dir = get_option('nautilus-ext-dir')
+ 
+ # Some useful variables
+ cc = meson.get_compiler('c')
+ seahorse_nautilus_prefix = get_option('prefix')
+ po_dir = join_paths(meson.source_root(), 'po')
+ datadir = join_paths(seahorse_nautilus_prefix, get_option('datadir'))
+ bindir = join_paths(seahorse_nautilus_prefix, get_option('bindir'))
+ localedir = join_paths(seahorse_nautilus_prefix, get_option('localedir'))
+ config_h_dir = include_directories('.')
+ 
+ # Dependencies
  min_glib_version = '2.44'
  min_gtk_version = '3.18'
- accepted_gpg_versions= ['1.2.0', '1.4.0', '2.0.0', '2.1.0', '2.2.0', '2.3.0']
+-accepted_gpg_versions= ['1.2.0', '1.4.0', '2.0.0', '2.1.0', '2.2.0', '2.3.0']
 -min_gpgme_version = '1.0.0'
++accepted_gpg_versions= ['1.2.0', '1.4.0', '2.0.0', '2.1.0', '2.2.0', '2.3.0', '2.4.0']
  
  libnautilus_extension = dependency('libnautilus-extension-4', version: '>= 43.rc', required: false)
  if not libnautilus_extension.found()
-@@ -50,22 +49,14 @@
+   conf.set('USE_LIBNAUTILUS_3', true)
+   libnautilus_extension = dependency('libnautilus-extension', version: '>= 2.12.0', required: true)
+ endif
+ if nautilus_ext_dir == ''
+   nautilus_ext_dir = libnautilus_extension.get_pkgconfig_variable('extensiondir')
+ endif
+ message('Nautilus extension dir: "@0@"'.format(nautilus_ext_dir))
+ 
+ glib = dependency('gio-2.0', version: '>= ' + min_glib_version)
+ gio = dependency('gio-2.0', version: '>= ' + min_glib_version)
+ gtk = dependency('gtk+-3.0', version: '>= ' + min_gtk_version)
+ cryptui = dependency('cryptui-0.0', version: '>= 3.9.90')
+ gcr = dependency('gcr-3', version: '>= 3.4.0')
+ if libnotify_enabled
+   libnotify = dependency('libnotify', version: '>= 0.3')
+ endif
  
  gpg_check_version = find_program(join_paths('meson', 'gpg_check_version.py'))
  gpg_bin = find_program('gpg2', 'gpg')
@@ -53,9 +98,11 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  endif
  
  # Configuration
+diff --git a/meson/gpg_check_version.py b/meson/gpg_check_version.py
+index 4f1ccafdfe15..bad1036a07dc 100755
 --- a/meson/gpg_check_version.py
 +++ b/meson/gpg_check_version.py
-@@ -4,28 +4,24 @@
+@@ -4,39 +4,35 @@ import sys
  import subprocess
  
  # Parses the GPG version from the output of the --version flag.
@@ -91,7 +138,10 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  
  # Parse and print the version
  proc = subprocess.Popen([gpg_path, '--version'],
-@@ -36,7 +32,7 @@
+                         stdout=subprocess.PIPE,
+                         universal_newlines=True)
+ gpg_version = parse_version(proc.stdout.read())
+ print(gpg_version, end='')
  
  # Then return whether we're compatible with that version
  for accepted_version in accepted_versions:
@@ -100,9 +150,11 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
          sys.exit(0)
  
  sys.exit(1)
+diff --git a/tool/meson.build b/tool/meson.build
+index 779130516398..ddb196c0330b 100644
 --- a/tool/meson.build
 +++ b/tool/meson.build
-@@ -30,7 +30,7 @@
+@@ -30,7 +30,7 @@ seahorse_tool_dependencies = [
    gtk,
    gcr,
    cryptui,
