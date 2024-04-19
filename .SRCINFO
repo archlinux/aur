@@ -1,11 +1,11 @@
 pkgbase = ruby-libvirt
 	pkgdesc = Ruby bindings for libvirt.
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libvirt.org/ruby/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = LGPL-2.1-or-later
 	makedepends = rubygems
 	makedepends = ruby-rake
 	makedepends = ruby-rdoc

@@ -1,12 +1,13 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Husam Bilal <me@husam.dev>
 # Contributor: henning mueller <henning@orgizm.net>
 
 pkgname=ruby-libvirt
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby bindings for libvirt.'
 arch=(i686 x86_64)
-license=(GPL)
+license=(LGPL-2.1-or-later)
 url=http://libvirt.org/ruby/
 depends=(ruby libvirt)
 makedepends=(rubygems ruby-rake ruby-rdoc)
