@@ -16,7 +16,6 @@ optdepends=('libappindicator-gtk3: for tray support')
 provides=(session-messenger-desktop)
 conflicts=(session-messenger-desktop session-desktop session-desktop-git session-desktop-appimage)
 options=(!strip)
-install=$pkgname.install
 source=(https://github.com/oxen-io/session-desktop/releases/download/v$pkgver/session-desktop-linux-amd64-$pkgver.deb)
 sha256sums=('1b6a73178c7e12011a8f5b07d1b35ca1579defcfbf880fe96656ba8082c7db8f')
 
