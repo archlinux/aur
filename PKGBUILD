@@ -4,17 +4,19 @@ pkgname="bilibili-appimage"
 pkgver=1.13.2
 pkgrel=1
 pkgdesc="Bilibili official desktop client.基于哔哩哔哩官方客户端移植的Linux版本,支持漫游"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/msojocs/bilibili-linux"
 license=('MIT')
 options=(!strip)
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}-1/${pkgname%-appimage}-${pkgver}.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/msojocs/bilibili-linux/master/license")
-sha256sums=('dd5393eda79d41fafeba14d96e767944dbb07bd877b41eedf175e1e8b8ea1adc'
-            '21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468')
+source_x86_64=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}-1/${pkgname%-appimage}-${pkgver}.AppImage")
+source_aarch64=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}-1/${pkgname%-appimage}-${pkgver}-arm64.AppImage")
+source=("LICENSE::https://raw.githubusercontent.com/msojocs/bilibili-linux/master/license")
+sha256sums_x86_64=('dd5393eda79d41fafeba14d96e767944dbb07bd877b41eedf175e1e8b8ea1adc')
+sha256sums_aarch64=('63f73bea029937b1e2f80b129939b08f40c8e3ff0ca2891f4b8c0aae1ff9fb75')
+sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
