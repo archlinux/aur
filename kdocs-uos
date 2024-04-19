@@ -1,0 +1,3 @@
+#!/bin/bash
+
+electron /opt/apps/cn.kdocs.kdesktop/files/lib/kdesktop/resources/app.asar

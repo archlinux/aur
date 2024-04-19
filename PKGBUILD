@@ -8,7 +8,7 @@ pkgdesc="金山文档 Kingsoft documents (An online collaborative office softwar
 arch=('x86_64')
 url="https://www.kdocs.cn/"
 license=('LicenseRef-Kingsoft')
-depends=('nss' 'alsa-lib' 'gtk3' 'dpkg' 'lsb-release')
+depends=('nss' 'alsa-lib' 'gtk3' 'dpkg' 'lsb-release' 'electron')
 optdepends=(
 	'pulseaudio: A featureful, general-purpose sound server.'
 	'lib32-libpulse: A featureful, general-purpose sound server (32-bit client libraries).'
@@ -17,8 +17,10 @@ optdepends=(
 )
 source=(
 	"https://home-store-packages.uniontech.com/appstore/pool/appstore/c/cn.kdocs.kdesktop/cn.kdocs.kdesktop_${pkgver}_amd64.deb"
+	"kdocs-uos"
 )
-sha512sums=('2a2762726ee09bdecbc256bf9d4f4be4ad89d3915025c8110ad0e86c0af4f32238748949e341c81617d8a1170f9071955e7688f4cd9abd8956f216d192d1bdbc')
+sha512sums=('2a2762726ee09bdecbc256bf9d4f4be4ad89d3915025c8110ad0e86c0af4f32238748949e341c81617d8a1170f9071955e7688f4cd9abd8956f216d192d1bdbc'
+            'a107e3c596de8ce700d4f612a7b1e959e4f522017c11c569931bd1019a203ebf7b8b2af9f096f4a9fce7c55876b30ac3d9372f4c13146af8f444abdc23a600d5')
 
 package() {
 	echo "  -> Extracting the data.tar.xz..."
@@ -27,8 +29,7 @@ package() {
 	echo "  -> Installing..."
 
 	# Launcher
-	mkdir -p "${pkgdir}/usr/bin/"
-	ln -s "/opt/apps/cn.kdocs.kdesktop/files/bin/kdesktop" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${pkgname}" -t "${pkgdir}/usr/bin/"
 
 	# Desktop Entry
 	install -Dm644 "${pkgdir}/opt/apps/cn.kdocs.kdesktop/entries/applications/cn.kdocs.kdesktop.desktop" -t "${pkgdir}/usr/share/applications/"
