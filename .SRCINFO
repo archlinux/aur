@@ -1,10 +1,10 @@
 pkgbase = vcvrack-bin
 	pkgdesc = Open-source virtual modular synthesizer
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vcvrack.com/
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = alsa-lib
 	depends = libglvnd
 	depends = zenity

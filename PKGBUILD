@@ -6,10 +6,10 @@
 _pkgname=vcvrack
 pkgname=${_pkgname}-bin
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source virtual modular synthesizer'
 url='https://vcvrack.com/'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 arch=('x86_64')
 provides=('vcvrack' 'vcvrack-fundamental')
 conflicts=('vcvrack' 'vcvrack-fundamental')
@@ -27,7 +27,7 @@ package() {
 	cp -R Rack2Free "$pkgdir/opt/$_pkgname"
 
 	install -d "${pkgdir}/usr/share/applications"
-	install ../vcvrack.desktop "${pkgdir}/usr/share/applications"
+	install vcvrack.desktop "${pkgdir}/usr/share/applications"
 
 	install -D vcvrack "$pkgdir/usr/bin/vcvrack"
 }
