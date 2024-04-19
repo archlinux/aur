@@ -1,0 +1,22 @@
+pkgbase = android-armv7a-eabi-pango
+	pkgdesc = A library for layout and rendering of text (Android armv7a-eabi)
+	pkgver = 1.52.2
+	pkgrel = 1
+	url = https://www.pango.org/
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = android-meson
+	makedepends = gobject-introspection
+	depends = android-armv7a-eabi-cairo
+	depends = android-armv7a-eabi-fribidi
+	depends = android-armv7a-eabi-harfbuzz
+	depends = android-armv7a-eabi-libthai
+	depends = android-armv7a-eabi-libxft
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.gnome.org/GNOME/pango/-/archive/1.52.2/pango-1.52.2.tar.bz2
+	md5sums = 0be3c92b57b623eb499bce3db58bef6a
+
+pkgname = android-armv7a-eabi-pango
