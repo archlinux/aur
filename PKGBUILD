@@ -2,7 +2,7 @@
 # Contributor: Alexey Peschany <archlinux at sandboiii dot xyz>
 
 # options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ]; then
   : ${_autoupdate:=false}
 else
   : ${_autoupdate:=true}
@@ -24,13 +24,6 @@ arch=('x86_64')
 _main_package() {
   _update_version
 
-  optdepends=(
-    'ffmpeg: H264/AAC/MP3 decoding'
-    'hunspell: Spell checking'
-    'hyphen: Hyphenation'
-    'networkmanager: Location detection via available WiFi networks'
-  )
-
   options=('!emptydirs' '!strip')
   install="$_pkgname.install"
 
@@ -49,7 +42,7 @@ pkgver() {
 
 prepare() {
   # desktop
-  install -Dvm644 /dev/stdin "$_pkgname.desktop" <<END
+  install -Dvm644 /dev/stdin "$_pkgname.desktop" << END
 [Desktop Entry]
 Version=1.0
 Name=Mercury
@@ -80,7 +73,7 @@ Name=Open With Temporary User Profile
 Exec=$_pkgname --temp-profile
 END
 
-  install -Dvm644 /dev/stdin "$_pkgname.sh" <<END
+  install -Dvm644 /dev/stdin "$_pkgname.sh" << END
 #!/usr/bin/env bash
 
 # check microprocessor architecture level
@@ -146,11 +139,11 @@ package() {
   )
 
   local _filetype="zip"
-  if bsdtar -xf "$_dl_filename" -- data.tar.* &> /dev/null ; then
+  if bsdtar -xf "$_dl_filename" -- data.tar.* &> /dev/null; then
     _filetype="deb"
   fi
 
-  if [[ "${_filetype::1}" == 'z' ]] ; then
+  if [[ "${_filetype::1}" == 'z' ]]; then
     _package_zip
   else
     _package_deb
@@ -161,7 +154,7 @@ package() {
   install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 
   # icon
-  install -Dm644 "$pkgdir/opt/$_pkgname/browser/chrome/icons/default/default128.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"  
+  install -Dm644 "$pkgdir/opt/$_pkgname/browser/chrome/icons/default/default128.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
   # .desktop
   \rm -rf "$pkgdir/usr/share/applications/mercury-browser.desktop"
@@ -207,7 +200,7 @@ _package_zip() {
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
-  if [[ "${_autoupdate::1}" != "t" ]] ; then
+  if [[ "${_autoupdate::1}" != "t" ]]; then
     return
   fi
 
@@ -223,14 +216,14 @@ _update_version() {
       | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
       | grep -Ev '[a-z]{2}'
   )
-  for i in "${_blacklist[@]}" ; do
-    _tags=${_tags/$i}
+  for i in "${_blacklist[@]}"; do
+    _tags=${_tags/$i/}
   done
   _tag=$(printf '%s' "$_tags" | sort -rV | head -1)
   _pkgver_new="${_tag#v.}"
 
   # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
     _pkgver="${_pkgver_new:?}"
   fi
 }
