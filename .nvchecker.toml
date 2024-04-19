@@ -1,0 +1,5 @@
+[znapzupport]
+source = "github"
+github = "claui/znapzupport"
+prefix = "v"
+use_latest_release = true
