@@ -13,7 +13,7 @@ amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 pkgname=opencl-amd
 pkgdesc="ROCr OpenCL stack, supports Vega 10 and later products - Legacy OpenCL stack (Proprietary), supports legacy products older than Vega 10 - This package is intended to work along with the free amdgpu stack."            
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -21,9 +21,11 @@ license=('custom:AMD')
 makedepends=('wget')
 depends=('libdrm' 'ocl-icd' 'gcc-libs' 'numactl')
 provides=('opencl-driver' 'libdrm-amdgpu-amdgpu1' 'rocm-core' 'comgr' 'hip' 'hipcc' 'hip-dev' 'hip-doc' 'hip-samples' 'hsakmt-roct' 'hsakmt-roct-dev' 'hsa-rocr' 'hsa-rocr-dev' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 
-	'rocm-hip-runtime' 'rocdecode' 'rocdecode-dev' 'rocm-ocl-icd' 'rocm-opencl-icd-loader' 'rocm-opencl' 'rocm-opencl-dev' 'rocm-opencl-runtime' 'rocm-clang-ocl' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb' 'rocprofiler' 'rocprofiler-dev' 'rocprofiler-plugins' 'rocprofiler-register' 'roctracer' 'roctracer-dev' 'hsa-amd-aqlprofile' 'openmp-extras-runtime' 'rocm-cmake' 'rocm-utils' 'amd-smi-lib')
+	'rocm-hip-runtime' 'rocdecode' 'rocdecode-dev' 'rocm-ocl-icd' 'rocm-opencl-icd-loader' 'rocm-opencl' 'rocm-opencl-dev' 'rocm-opencl-runtime' 'rocm-clang-ocl' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb' 'rocprofiler' 'rocprofiler-dev' 'rocprofiler-plugins'
+	'rocprofiler-register' 'roctracer' 'roctracer-dev' 'hsa-amd-aqlprofile' 'openmp-extras-runtime' 'rocm-cmake' 'rocm-utils' 'rocm-smi-lib' 'amd-smi-lib')
 conflicts=('rocm-opencl-runtime' 'libdrm-amdgpu-amdgpu1' 'rocm-core' 'comgr' 'hip' 'hipcc' 'hip-dev' 'hip-doc' 'hip-samples' 'hsakmt-roct' 'hsakmt-roct-dev' 'hsa-rocr' 'hsa-rocr-dev' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 
-	'rocm-hip-runtime' 'rocdecode' 'rocdecode-dev' 'rocm-ocl-icd' 'rocm-opencl-icd-loader' 'rocm-opencl' 'rocm-opencl-dev' 'rocm-opencl-runtime' 'rocm-clang-ocl' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb' 'rocprofiler' 'rocprofiler-dev' 'rocprofiler-plugins' 'rocprofiler-register' 'roctracer' 'roctracer-dev' 'hsa-amd-aqlprofile' 'openmp-extras-runtime' 'rocm-cmake' 'rocm-utils' 'amd-smi-lib')
+	'rocm-hip-runtime' 'rocdecode' 'rocdecode-dev' 'rocm-ocl-icd' 'rocm-opencl-icd-loader' 'rocm-opencl' 'rocm-opencl-dev' 'rocm-opencl-runtime' 'rocm-clang-ocl' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb' 'rocprofiler' 'rocprofiler-dev' 'rocprofiler-plugins'
+	'rocprofiler-register' 'roctracer' 'roctracer-dev' 'hsa-amd-aqlprofile' 'openmp-extras-runtime' 'rocm-cmake' 'rocm-utils' 'rocm-smi-lib' 'amd-smi-lib')
 optdepends=('clinfo' 'opencl-amd-dev')
 
 source=(
@@ -54,6 +56,7 @@ source=(
 # ROCM DEV
 "https://repo.radeon.com/rocm/apt/6.1/pool/main/r/rocm-clang-ocl/rocm-clang-ocl_0.5.0.60100-82~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.1/pool/main/o/openmp-extras-runtime/openmp-extras-runtime_17.60.0.60100-82~22.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.1/pool/main/r/rocm-smi-lib/rocm-smi-lib_7.0.0.60100-82~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.1/pool/main/a/amd-smi-lib/amd-smi-lib_24.4.1.60100-82~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.1/pool/main/r/rocm-cmake/rocm-cmake_0.12.0.60100-82~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.1/pool/main/r/rocm-dbgapi/rocm-dbgapi_0.71.0.60100-82~22.04_amd64.deb"
@@ -98,6 +101,7 @@ sha256sums=(
 
 "09971cc998b51633b26f835141690a41e1992aa6e66b569b34407a0ac5460f8c"
 "23150f4e4987852a98a1a042de7ae394eaace89a6866531b8de9d94af5db9063"
+"792775cbf8474dcfea6420cc5f0e599d071bf848dae451b566a2b973ed0a9672"
 "fbef31daaafd77abf0911d08d1abbb3c1020a530bb53dab7c7507379fdb666a5"
 "28cd3df935237865d9562d8445075b93e94b3ec36db597e9a0964716b96666ff"
 "a769ea0c629b8cc219c4497d66de4e1d72b604c0de4fe0c5d11f43d656075429"
@@ -154,6 +158,7 @@ package() {
 	egz "${srcdir}/rocm-opencl-dev_2.0.0.60100-82~22.04_amd64.deb"
 	egz "${srcdir}/rocm-opencl-runtime_6.1.0.60100-82~22.04_amd64.deb"
 	exz "${srcdir}/rocm-clang-ocl_0.5.0.60100-82~22.04_amd64.deb"
+	egz "${srcdir}/rocm-smi-lib_7.0.0.60100-82~22.04_amd64.deb"
 	egz "${srcdir}/amd-smi-lib_24.4.1.60100-82~22.04_amd64.deb"
 	exz "${srcdir}/rocm-cmake_0.12.0.60100-82~22.04_amd64.deb"
 	egz "${srcdir}/rocm-dbgapi_0.71.0.60100-82~22.04_amd64.deb"
