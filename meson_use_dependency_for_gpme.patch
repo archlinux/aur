@@ -1,0 +1,113 @@
+Description: meson: Use dependency() for gpme
+ Since version 0.51, we can rely on Meson to do the correct thing when
+ calling `dependency('gpgme')`. This makes both the meson.build and the
+ GPG version checking script quite a bit cleaner.
+ It also remove the need for gpgme-config which isn't shipped currently
+ in Debian by libgpgme-dev, by using pkgconfig.
+ This patch is mostly an adaptation of https://gitlab.gnome.org/GNOME/seahorse/-/commit/f862919765f92640016604e65eb6c535fa9a80a2.
+Origin: other, https://gitlab.gnome.org/GNOME/seahorse/-/commit/f862919765f92640016604e65eb6c535fa9a80a2
+Forwarded: https://gitlab.gnome.org/GNOME/seahorse-nautilus/-/issues/9
+Last-Update: 2023-01-30
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/meson.build
++++ b/meson.build
+@@ -1,6 +1,6 @@
+ project('seahorse-nautilus', 'c',
+   version: '3.11.92',
+-  meson_version: '>= 0.42',
++  meson_version: '>= 0.51',
+   license: 'GPL2+',
+ )
+ 
+@@ -27,7 +27,6 @@
+ min_glib_version = '2.44'
+ min_gtk_version = '3.18'
+ accepted_gpg_versions= ['1.2.0', '1.4.0', '2.0.0', '2.1.0', '2.2.0', '2.3.0']
+-min_gpgme_version = '1.0.0'
+ 
+ libnautilus_extension = dependency('libnautilus-extension-4', version: '>= 43.rc', required: false)
+ if not libnautilus_extension.found()
+@@ -50,22 +49,14 @@
+ 
+ gpg_check_version = find_program(join_paths('meson', 'gpg_check_version.py'))
+ gpg_bin = find_program('gpg2', 'gpg')
+-gpgme = cc.find_library('gpgme')
+-gpgme_config = find_program('gpgme-config')
++gpgme_dep = dependency('gpgme', version: '>= 1.7.0')
+ if check_compatible_gpg
+-  gpg_version_check = run_command([gpg_check_version, gpg_bin.path(), 'false', accepted_gpg_versions ])
++  gpg_version_check = run_command([gpg_check_version, gpg_bin.path(), accepted_gpg_versions ])
+   gpg_version = gpg_version_check.stdout()
+   message('GnuPG Version: @0@'.format(gpg_version))
+   if gpg_version_check.returncode() != 0
+     error('Incompatible version of GnuPG. Accepted versions are: @0@'.format(accepted_gpg_versions))
+   endif
+-
+-  gpgme_version_check = run_command([gpg_check_version, gpgme_config.path(), 'true', min_gpgme_version ])
+-  gpgme_version = gpgme_version_check.stdout()
+-  message('GPGME version: @0@'.format(gpgme_version))
+-  if gpgme_version_check.returncode() != 0
+-    error('Incompatible version of GPGME. Minimal version required is @0@'.format(min_gpgme_version))
+-  endif
+ endif
+ 
+ # Configuration
+--- a/meson/gpg_check_version.py
++++ b/meson/gpg_check_version.py
+@@ -4,28 +4,24 @@
+ import subprocess
+ 
+ # Parses the GPG version from the output of the --version flag.
+-# Should work on the output for `gpg`, `gpg2` and `gpgme-config`.
++# Should work on the output for `gpg` and `gpg2`.
+ def parse_version(gpg_output):
+     version_line = gpg_output.splitlines()[0]
+     return version_line.strip().split(' ')[-1]
+ 
+ # Checks whether the GPG version is compatible with the given version.
+-# For GPG, this means that the major and minor version should be equal;
+-# for GPGME, this means only the major version should be equal.
+-def check_version(gpg_version, accepted_version, is_gpgme = False):
++# This means that the major and minor version should be equal;
++def check_version(gpg_version, accepted_version):
+     gpg_major, gpg_minor, gpg_micro = [int(ver) for ver in gpg_version.split('.', 2)]
+     acc_major, acc_minor, acc_micro = [int(ver) for ver in accepted_version.split('.', 2)]
+-    if is_gpgme:
+-        return gpg_major == acc_major and gpg_minor >= acc_minor and gpg_micro >= acc_micro
+-    else:
+-        return gpg_major == acc_major and gpg_minor == acc_minor and gpg_micro >= acc_micro
+ 
+-if len(sys.argv) <= 3:
++    return gpg_major == acc_major and gpg_minor == acc_minor and gpg_micro >= acc_micro
++
++if len(sys.argv) <= 2:
+     sys.exit(1)
+ 
+ gpg_path = sys.argv[1]
+-is_gpgme =  True if sys.argv[2].lower() == 'true' else False
+-accepted_versions = sys.argv[3:]
++accepted_versions = sys.argv[2:]
+ 
+ # Parse and print the version
+ proc = subprocess.Popen([gpg_path, '--version'],
+@@ -36,7 +32,7 @@
+ 
+ # Then return whether we're compatible with that version
+ for accepted_version in accepted_versions:
+-    if check_version(gpg_version, accepted_version, is_gpgme):
++    if check_version(gpg_version, accepted_version):
+         sys.exit(0)
+ 
+ sys.exit(1)
+--- a/tool/meson.build
++++ b/tool/meson.build
+@@ -30,7 +30,7 @@
+   gtk,
+   gcr,
+   cryptui,
+-  gpgme,
++  gpgme_dep,
+ ]
+ 
+ if libnotify_enabled
