@@ -1,15 +1,15 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=shared-mem-random
-pkgrel=1
+pkgrel=2
 pkgver=1.4.0
 pkgdesc="write random values to a shared memory"
-url="https://github.com/NikolasK-source/shared_mem_random"
+url="https://github.com/SHMModbus/shared_mem_random"
 license=('MIT')
 arch=('x86_64' 'aarch64')
 makedepends=('cmake' 'git' 'cxxopts' 'cxxitimer' 'cxxshm' 'cxxsemaphore')
 depends=('cxxitimer' 'cxxshm' 'cxxsemaphore')
-source=("git+https://github.com/NikolasK-source/shared_mem_random.git#tag=v${pkgver}")
+source=("git+https://github.com/SHMModbus/shared_mem_random.git#tag=v${pkgver}")
 
 sha256sums=('SKIP')
 
