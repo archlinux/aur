@@ -4,20 +4,21 @@
 pkgname='python-qh3'
 _pkgname="${pkgname}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.15.1
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
 license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
 depends=(
+  'gcc-libs'
   'glibc'
   'python'
-  'python-cryptography'
 )
 makedepends=(
   'python-build'
   'python-installer'
+  'python-maturin'
   'python-setuptools'
   'python-wheel'
 )
@@ -26,8 +27,9 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_srcname::1}/$_srcname/$_srcname-$pkgver.tar.gz"
 )
 sha256sums=(
-  '816c787f68855a28aa703be54956b21ff258e1650978a06b98a23bbf252cbe7e'
+  '7de8e346515f87841ace37d4c9b58866bbc8c17d6fa287be000b53482f95dac9'
 )
+options=('lto')
 
 build() {
   cd "$_srcname-$pkgver"
@@ -36,8 +38,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
