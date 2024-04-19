@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=carvel-tools
 pkgver=20240418
-pkgrel=1
+pkgrel=2
 pkgdesc='Deprecated: install carvel tools separately'
 url='https://carvel.dev'
 arch=(x86_64 aarch64)
@@ -13,10 +13,10 @@ license=(Apache)
 install='1.install'
 conflicts=(imgpkg kapp kbld kctrl kwt vendir ytt)
 provides=(imgpkg kapp kbld kctrl kwt vendir ytt)
-source_x86_64=(imgpkg-v0.42.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.42.0/imgpkg-linux-amd64 kapp-v0.62.0::https://github.com/carvel-dev/kapp/releases/download/v0.62.0/kapp-linux-amd64 kbld-v0.43.0::https://github.com/carvel-dev/kbld/releases/download/v0.43.0/kbld-linux-amd64 kctrl-v0.50.2::https://github.com/carvel-dev/kapp-controller/releases/download/v0.50.2/kctrl-linux-amd64 kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-amd64 vendir-v0.40.1::https://github.com/carvel-dev/vendir/releases/download/v0.40.1/vendir-linux-amd64 ytt-v0.49.0::https://github.com/carvel-dev/ytt/releases/download/v0.49.0/ytt-linux-amd64)
-source_aarch64=(imgpkg-v0.42.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.42.0/imgpkg-linux-arm64 kapp-v0.62.0::https://github.com/carvel-dev/kapp/releases/download/v0.62.0/kapp-linux-arm64 kbld-v0.43.0::https://github.com/carvel-dev/kbld/releases/download/v0.43.0/kbld-linux-arm64 kctrl-v0.50.2::https://github.com/carvel-dev/kapp-controller/releases/download/v0.50.2/kctrl-linux-arm64 kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-arm64 vendir-v0.40.1::https://github.com/carvel-dev/vendir/releases/download/v0.40.1/vendir-linux-arm64 ytt-v0.49.0::https://github.com/carvel-dev/ytt/releases/download/v0.49.0/ytt-linux-arm64)
-sha256sums_x86_64=(0bb6235af28abafc3458e30fbbd49e040aaa2189c4c39212a3c7a5a57ea83754 6eb24733364213967c434ca77a7b3516f80c962e1da1ba57ce4c495556cf1585 119e7d11e66e512896ce42aba9cc7f783388da3cbb258b793e7419a3167af2a9 d399b865ad2081cc4761d57de00d0d93ef297d7198e7e329c3f195e47af79573 1022483a8b59fe238e782a9138f1fee6ca61ecf7ccd1e5f0d98e95c56df94d87 d7c602d8882085be78cd02a575a6c3b437bb2fa1ff1067712f593d8cf05c94fa 357ec754446b1eda29dd529e088f617e85809726c686598ab03cfc1c79f43b56)
-sha256sums_aarch64=(fc7ad7465730297085e4c7deefc47e2e56713be957971935008460a9bc709a0a 10e2e0b165202ae355501516f0b34de066523a384970f8423d8295ca79c16133 562002e56ba13f6b148b2674b3ddd94b64dd53b73190fc1e84904232f5151627 1ee3a40b740fc78d88502b23d36036c66bae479829065a3ccbacd081a6074137 7b94a134cbde5ff2e245d102f54b9ac9f81b3fcc5e54a5cefecc1e5845b8a65f 43e98922103ef30995a11bd4491b138b635c9b7bf17f98475fb5a06c87392e1d a2d195b058884c0e36a918936076965b8efb426f7e00f6b7d7b99b82737c7299)
+source_x86_64=(imgpkg-v0.42.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.42.0/imgpkg-linux-amd64 kapp-v0.62.0::https://github.com/carvel-dev/kapp/releases/download/v0.62.0/kapp-linux-amd64 kbld-v0.43.0::https://github.com/carvel-dev/kbld/releases/download/v0.43.0/kbld-linux-amd64 kctrl-v0.51.0::https://github.com/carvel-dev/kapp-controller/releases/download/v0.51.0/kctrl-linux-amd64 kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-amd64 vendir-v0.40.1::https://github.com/carvel-dev/vendir/releases/download/v0.40.1/vendir-linux-amd64 ytt-v0.49.0::https://github.com/carvel-dev/ytt/releases/download/v0.49.0/ytt-linux-amd64)
+source_aarch64=(imgpkg-v0.42.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.42.0/imgpkg-linux-arm64 kapp-v0.62.0::https://github.com/carvel-dev/kapp/releases/download/v0.62.0/kapp-linux-arm64 kbld-v0.43.0::https://github.com/carvel-dev/kbld/releases/download/v0.43.0/kbld-linux-arm64 kctrl-v0.51.0::https://github.com/carvel-dev/kapp-controller/releases/download/v0.51.0/kctrl-linux-arm64 kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-arm64 vendir-v0.40.1::https://github.com/carvel-dev/vendir/releases/download/v0.40.1/vendir-linux-arm64 ytt-v0.49.0::https://github.com/carvel-dev/ytt/releases/download/v0.49.0/ytt-linux-arm64)
+sha256sums_x86_64=(0bb6235af28abafc3458e30fbbd49e040aaa2189c4c39212a3c7a5a57ea83754 6eb24733364213967c434ca77a7b3516f80c962e1da1ba57ce4c495556cf1585 119e7d11e66e512896ce42aba9cc7f783388da3cbb258b793e7419a3167af2a9 2de0eeada145888f8ac911c1f8a4e1d1b6b4202afd63cbca7f81bdc50d110b72 1022483a8b59fe238e782a9138f1fee6ca61ecf7ccd1e5f0d98e95c56df94d87 d7c602d8882085be78cd02a575a6c3b437bb2fa1ff1067712f593d8cf05c94fa 357ec754446b1eda29dd529e088f617e85809726c686598ab03cfc1c79f43b56)
+sha256sums_aarch64=(fc7ad7465730297085e4c7deefc47e2e56713be957971935008460a9bc709a0a 10e2e0b165202ae355501516f0b34de066523a384970f8423d8295ca79c16133 562002e56ba13f6b148b2674b3ddd94b64dd53b73190fc1e84904232f5151627 bdb68052e1791552bcb23231d0fefa45e98daf278555393a955bcbf1ebcd91ee 7b94a134cbde5ff2e245d102f54b9ac9f81b3fcc5e54a5cefecc1e5845b8a65f 43e98922103ef30995a11bd4491b138b635c9b7bf17f98475fb5a06c87392e1d a2d195b058884c0e36a918936076965b8efb426f7e00f6b7d7b99b82737c7299)
 package () 
 { 
     set -eo pipefail;
@@ -32,7 +32,7 @@ package ()
     "${pkgdir}/usr/bin/kapp" completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}-kapp.fish";
     "${pkgdir}/usr/bin/kapp" completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}-kapp";
     install -Dm 755 "${srcdir}/kbld-v0.43.0" "${pkgdir}/usr/bin/kbld";
-    install -Dm 755 "${srcdir}/kctrl-v0.50.2" "${pkgdir}/usr/bin/kctrl";
+    install -Dm 755 "${srcdir}/kctrl-v0.51.0" "${pkgdir}/usr/bin/kctrl";
     "${pkgdir}/usr/bin/kctrl" completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname}-kctrl";
     "${pkgdir}/usr/bin/kctrl" completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}-kctrl.fish";
     "${pkgdir}/usr/bin/kctrl" completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}-kctrl";
