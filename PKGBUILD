@@ -1,11 +1,11 @@
 # Maintainer: David Gonzalez <neko.eth0 AT gmail DOT com>
 # Contributor: Rob Cornish <jrmcornish AT gmail DOT com>
 pkgname=brscan-skey
-pkgver=0.3.1_2
-pkgrel=2
+pkgver=0.3.2_0
+pkgrel=1
 pkgdesc='Brother scan-key-tool'
 arch=('i686' 'x86_64')
-url='http://support.brother.com/g/s/id/linux/en'
+url='http://support.brother.com/'
 license=('custom:Brother')
 optdepends=('sane: for all default scanning scripts'
             'sendmail: for default "Scan to email" script'
@@ -13,16 +13,15 @@ optdepends=('sane: for all default scanning scripts'
             'cuneiform: for default "Scan to OCR" script')
 install=brscan-skey.install
 
-source_i686=("http://download.brother.com/welcome/dlf006649/$pkgname-${pkgver/_/-}.i386.rpm")
-sha256sums_i686=('685abebc798cd9823c1b7bdb0d81b4b16a0d651d92dc8688644fc4f42b8fef6b')
-
-source_x86_64=("http://download.brother.com/welcome/dlf006650/$pkgname-${pkgver/_/-}.x86_64.rpm")
-sha256sums_x86_64=('3a334b848a9fb018782f49fc6fd4d149387d0dd5460afa9d66bcb2df7ed0c553')
-
 source=('brscan-skey.service' 'brscan-skey-user.service' 'LICENSE.html')
-sha256sums=('80d1d92f71381c160a93ddac1bfcde1e7922dc84332f1f7561c6d328af7e7219'
-            '511e49ac6618f2c11e5ed3a4ce4c235bd5d46faa584974f318447b117759651a'
-            'd6ea4fdfb4b9009b105924ba3fd9c55b7487964cc07ba0cf2a2aa4e691c00e6a')
+source_i686=("http://download.brother.com/welcome/dlf006649/$pkgname-${pkgver/_/-}.i386.rpm")
+source_x86_64=("http://download.brother.com/welcome/dlf006650/$pkgname-${pkgver/_/-}.x86_64.rpm")
+
+b2sums=('834ef59d223b4ce5b34bd7257ced5660b820964869254b82b22dcb7d50a79bf452fd0677de037a013ffd780bfc39f8290e58652e056b67a35eaf524adf25653c'
+        '771fdb9cd7a45bf697b6e4ca3faa2299767226ebac1d0e0a6f5a90bd51b374f1f4ea90dc1c9211e166b1c40a2bcce5402ac267bb5f8db8d762e4b6500bd1d3a2'
+        '4bbfcab517ff0b2ee48aba4be84fcbe36ef26c4232563fa9fb1915c9c4b76785d38954b51f68792613bf109d3217833176070869ef5be0c312cf4b1db263d91f')
+b2sums_i686=('ce9303c3f449431a8220a0c0642c9c7d496051dc846ec6c595c9ec746641560c159ea9e8cbaa6985e7b1e941e7112acaabaa5921161b8e018666f29251d0f198')
+b2sums_x86_64=('aad0dbf532f571398278cc22b2597fa26f6544e431c567f3e2e1044793659d0142f6a8b9d43fa782be6fda2800af3ae93b4422bac6216371e73568dc8030af87')
 
 package() {
     cp -r "$srcdir"/opt "$pkgdir"
