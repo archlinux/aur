@@ -4,11 +4,11 @@ pkgname=wago-modbus-coupler-shm
 pkgrel=1
 pkgver=1.1.1
 pkgdesc="sync wago modbus tcp coupler with shared memory"
-url="https://github.com/NikolasK-source/wago_modbus_coupler_shm"
+url="https://github.com/SHMModbus/wago_modbus_coupler_shm"
 license=('MIT')
 arch=('x86_64' 'aarch64')
 makedepends=('cmake' 'git')
-source=("git+https://github.com/NikolasK-source/wago_modbus_coupler_shm.git#tag=v${pkgver}")
+source=("git+https://github.com/SHMModbus/wago_modbus_coupler_shm.git#tag=v${pkgver}")
 
 sha256sums=('SKIP')
 
