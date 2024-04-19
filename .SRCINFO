@@ -1,0 +1,22 @@
+pkgbase = android-x86-64-pango
+	pkgdesc = A library for layout and rendering of text (Android x86-64)
+	pkgver = 1.52.2
+	pkgrel = 1
+	url = https://www.pango.org/
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = android-meson
+	makedepends = gobject-introspection
+	depends = android-x86-64-cairo
+	depends = android-x86-64-fribidi
+	depends = android-x86-64-harfbuzz
+	depends = android-x86-64-libthai
+	depends = android-x86-64-libxft
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.gnome.org/GNOME/pango/-/archive/1.52.2/pango-1.52.2.tar.bz2
+	md5sums = 0be3c92b57b623eb499bce3db58bef6a
+
+pkgname = android-x86-64-pango
