@@ -6,7 +6,7 @@ _aqt=aqt
 _py=cp39
 
 pkgname=anki-bin
-pkgver=24.04
+pkgver=24.04.1
 pkgrel=1
 pkgdesc='Helps you remember facts (like words/phrases in a foreign language) efficiently.
 Installed with wheel.'
@@ -62,24 +62,21 @@ source=(
 	"anki-$pkgver.png::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.png"
 	"anki-$pkgver.xml::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.xml"
 	"anki-$pkgver.xpm::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.xpm"
-    "ignore-pip_system_certs.patch"
 )
 noextract=("${source[@]##*/}")
-sha256sums=('cfc89e1608c9817f1f3fea156e64a7e8824dbf88e7dabc7d49c5f1ff63d8361c'
-            'db1f77a93b134fd516ba5524927b6de86cab2207a9be09fe50efe0bf77eac602'
+sha256sums=('0ac1ffae65ee6e4f2a9e657de3311b04fa4166776b3ce89913539f7524f612a5'
+            '6b4814321e82e94c018d6f002543b148efe6a7c1d17c263f9660a97868f7baad'
             '9648e7e915f51f08e05c48ef5f39b4015922fe1cf3d7f2895535ef10ef4507ae'
             '8b9fec8fdf2897b4722f8cee169e9fb1e46cee90d3fb03ee12587e30c2f5dad7'
             '53db2e5bfeb00aa249667e09466a34bfacb17b61097875a8cdd93ee1a9380b9a'
             '97ad2134ef1a7686789c7becd8bd05dd8693cf0d3127951ca6ba7b29a80b402a'
             '2845a528fb3a064b67404a03d72bfaba9b421cb220b25228b815946c6553ce38'
-            'd814c62e38246b6e4ba73ee037647a29675925167518137f05a8f9e60c258b6e'
-            '55b55ce37bc23782b479ee9dc0fe706032a400d447f890dc34b0a9e6b0d8a590')
+            'd814c62e38246b6e4ba73ee037647a29675925167518137f05a8f9e60c258b6e')
 
 package() {
 	python -m installer --destdir="$pkgdir" $_anki_whl
 	python -m installer --destdir="$pkgdir" $_aqt_whl
 
-    patch --directory="$pkgdir" --forward --strip=1 --input="$srcdir/ignore-pip_system_certs.patch"
 	install -Dm755 runanki-$pkgver.py "$pkgdir/usr/bin/anki"
 	install -Dm644 anki-$pkgver.1 "$pkgdir/usr/share/man/man1/anki.1"
 	install -Dm644 anki-$pkgver.desktop "$pkgdir/usr/share/applications/anki.desktop"
