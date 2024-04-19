@@ -2,7 +2,7 @@
 
 pkgname=snapcast
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 _pkgname_snapweb=snapweb
 _snapweb_version=0.7.0
 pkgdesc="Synchronous multi-room audio player"
