@@ -1,0 +1,5 @@
+[python-museval]
+source = "github"
+github = "sigsep/sigsep-mus-eval"
+prefix = "v"
+use_latest_release = true
