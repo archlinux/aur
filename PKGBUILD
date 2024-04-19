@@ -2,7 +2,7 @@
 # Maintainer: ston <2424284164@qq.com>
 
 pkgname=kdocs-uos
-pkgver=3.5.2
+pkgver=3.7.7
 pkgrel=1
 pkgdesc="金山文档 Kingsoft documents (An online collaborative office software)."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 	"https://home-store-packages.uniontech.com/appstore/pool/appstore/c/cn.kdocs.kdesktop/cn.kdocs.kdesktop_${pkgver}_amd64.deb"
 	"kdocs-uos"
 )
-sha512sums=('2a2762726ee09bdecbc256bf9d4f4be4ad89d3915025c8110ad0e86c0af4f32238748949e341c81617d8a1170f9071955e7688f4cd9abd8956f216d192d1bdbc'
+sha512sums=('17c258ebc99a1b1825a6c47485ea3e5934a634c281fd1c967ecfbca4d7b5052482ea9dbb793ba70530d827c83c248e31d9cda5c47083ce6d477827d41caeb367'
             'a107e3c596de8ce700d4f612a7b1e959e4f522017c11c569931bd1019a203ebf7b8b2af9f096f4a9fce7c55876b30ac3d9372f4c13146af8f444abdc23a600d5')
 
 package() {
