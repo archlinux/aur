@@ -4,19 +4,19 @@
 # Author: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Maintainer: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=oscam-git
-pkgver=11719
+pkgver=11767
 pkgrel=1
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
-depends=('libusb' 'openssl' 'pcsclite')
-makedepends=('subversion')
+depends=('libusb' 'openssl' 'pcsclite' 'libdvbcsa')
+makedepends=('git')
 optdepends=('pcsclite: for use with PC/SC readers'
             'ccid: PC/SC reader generic driver')
 conflicts=('oscam-svn')
 install='oscam.install'
-source=("$pkgname::svn+https://svn.streamboard.tv/oscam/trunk"
+source=("$pkgname::git+https://git.streamboard.tv/common/oscam.git"
         'oscam.service'
         'oscam.sysuser')
 sha256sums=('SKIP'
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  LANG=C svn info | grep '^Revision:' | sed -e 's/^Revision: //'
+  ./config.sh --oscam-revision
 }
 
 build() {
@@ -40,7 +40,6 @@ build() {
        USE_PCSC=1 \
        OSCAM_BIN=oscam \
        LIST_SMARGO_BIN=list_smargo \
-       SVN_REV=$pkgver \
        EXTRA_CC_WARN=-w
 }
 
