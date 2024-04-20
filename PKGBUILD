@@ -6,7 +6,7 @@
 
 pkgname=asciiportal
 pkgver=1.3.8
-pkgrel=6
+pkgrel=7
 pkgdesc='Text based puzzle game inspired by the popular video game'
 arch=(x86_64)
 url='https://github.com/cymonsgames/ASCIIpOrtal'
@@ -18,7 +18,7 @@ source=("git+https://github.com/cymonsgames/ASCIIpOrtal.git#tag=v${pkgver%.8}-be
 	"patch1.patch::https://github.com/cymonsgames/ASCIIpOrtal/commit/f0157d8c01252ebcdd238ea2c42b3cce4531bac3.diff"
 	"patch2.patch::https://github.com/cymonsgames/ASCIIpOrtal/commit/7817f5c10b715ad44161fff998367aa449591d16.diff")
 
-sha256sums=('6bb7a25ed9eef8f8649b0a21d9b784cffd1a77c515061a436d56339a7d732b65'
+sha256sums=('SKIP'
             '390f21881377b331f1a65a3e54ccf91fba72a88146058cc146f914a1185de9d1'
             'dd8278ea45ff848a51bf66a577657ffaa7c3875316e7a0770a08b691c308606f'
             '8c3e334b3022f74ba46e3f5d85d0d375f5c7e5e5c2c17cae16fa36d98bcbd79e')
