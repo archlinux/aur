@@ -8,7 +8,7 @@ conflicts=('auth-thu')
 pkgdesc='A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool'
 arch=('x86_64')
 url='https://github.com/z4yx/GoAuthing'
-license=('GPL3')
+license=('GPL-3.0-only')
 source=(
   "$pkgname-$pkgver::https://github.com/z4yx/GoAuthing/releases/download/v$pkgver/auth-thu.linux.x86_64"
   "https://github.com/z4yx/GoAuthing/raw/v$pkgver/docs/goauthing.service"
