@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="dl-librescore"
-pkgver="0.35.9"
+pkgver="0.35.13"
 pkgrel="1"
 pkgdesc="Download sheet music from MuseScore."
 arch=("any")
@@ -16,7 +16,7 @@ depends=("bash" "nodejs")
 makedepends=("npm")
 source=("${pkgname}-v${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-v${pkgver}.tgz")
-sha512sums=("244faacd88290c05b7c451984c28f4ebb57787685d2aa69f09737ce2c570e8ee0869701ac59fda63bb07b2ef8d16d3460bef57714ab237e31450b6931ef1b134")
+sha512sums=("fad452231d050e4685ddf1b1cd067829d6ab344956e217178157574c72c08d31fbf2254795e038e46f05aebd14bde8305f68061f1fa4a2e8a9e7841d8fee50dc")
 
 package()
 {
