@@ -9,6 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/clash-verge-rev/clash-verge-rev"
 license=('GPL3')
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
+optdepends=('clash-meta' 'clash-meta-bin' 'clash-meta-alpha-git')
 conflicts=("$_pkgname" "$_pkgname-alpha" "$_pkgname-alpha-bin" "$_pkgname-git" "clash-verge-rev-bin" "clash-verge" "clash-verge-bin" "clash-nyanpasu" "clash-nyanpasu-bin" "clash-nyanpasu-git")
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/clash-verge_${pkgver}_amd64.deb")
