@@ -14,7 +14,7 @@ conflicts=('finamp')
 source=("$_pkgname::git+$url.git#branch=desktop-beta"
         "finamp.desktop")
 b2sums=('SKIP'
-        '6b22ee624af345191ff4ce60140ba48591b9b42100d679232ae73aa7c3ae5cff1b74e4bcc71346278b8395ab7e67b59c78812a52f614f549136529b4bcea0a89')
+        '12f2f43187df2af4c03134a78fa6587084c84d5280a9562230e021eaae0006dd252e64bfb300b0ba37bb48f7d31aeb352573f77084dfdb334eae8c582f74691d')
 
 pkgver() {
     cd "$_pkgname"

@@ -5,5 +5,5 @@ GenericName=Music Player
 Icon=finamp
 Exec=/opt/finamp/finamp
 Terminal=false
-Categories=Audio;Player;Music;
+Categories=AudioVideo;Audio;Player;Music;
 Comment=A Jellyfin music client for mobile and desktop
