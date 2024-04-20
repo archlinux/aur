@@ -2,7 +2,7 @@
 gitname=cassette
 pkgname=cassette-dev
 pkgver=0.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK4/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/rirusha/${gitname}"
