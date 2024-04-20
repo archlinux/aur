@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool"
 arch=('x86_64')
 url="https://github.com/z4yx/GoAuthing"
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('go')
 source=("auth-thu-$pkgver.tar.gz::https://github.com/z4yx/GoAuthing/archive/v$pkgver.tar.gz"
         "auth-thu.service"
