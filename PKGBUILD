@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
-kgname=cosmic-applibrary-git
+pkgname=cosmic-applibrary-git
 pkgver=r184.3349462
 pkgrel=1
 pkgdesc="WIP Cosmic App Library"
