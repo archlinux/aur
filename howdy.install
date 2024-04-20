@@ -1,0 +1,9 @@
+post_install() {
+	echo '[SETUP] 1. Remember to set a correct video device using `sudo howdy config`'
+	echo '[SETUP] 2. Test settings with `sudo howdy test`'
+	echo '[SETUP] 3. Add face model with `sudo howdy add`'
+	echo '[SETUP] 4. Add PAM policy `auth sufficient pam_howdy.so` to e.g. top of `/etc/pam.d/system-local-login`'
+	echo '[INFO] List of available video devices can be obtained with `v4l2-ctl --list-devices` from `v4l-utils` package'
+	echo '[INFO] More informations at the wiki: https://github.com/boltgolt/howdy/wiki/Cameras-that-have-been-verified-to-work-with-Howdy'
+	echo '[INFO] Arch Wiki page: https://wiki.archlinux.org/title/Howdy'
+}
