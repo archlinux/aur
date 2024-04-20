@@ -1,8 +1,8 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=libff7tk
 pkgver=1.0.0
-pkgrel=3
-provides=('libff7tk')
+pkgrel=4
+provides=("libff7tk=${pkgver}")
 conflicts=('libff7tk-git')
 pkgdesc="Final Fantasy 7 Tool library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
