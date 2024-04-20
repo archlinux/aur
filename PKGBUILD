@@ -2,7 +2,7 @@
 
 _pkgname="tsukimi"
 pkgname="${_pkgname}-git"
-pkgver=0.3.0.r103.gbd893fa
+pkgver=0.4.6.r177.g27fe863
 pkgrel=1
 pkgdesc='A simple third-party Emby client'
 arch=('x86_64')
@@ -12,6 +12,7 @@ provides=('tsukimi' 'tsukimi-git')
 conflicts=('tsukimi')
 depends=('mpv'
 	'ffmpeg'
+	'libadwaita'
 	'gtk4')
 makedepends=(
 	'git'
