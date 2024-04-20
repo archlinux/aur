@@ -5,12 +5,13 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kwt-bin
 pkgver=0.0.8
-pkgrel=9
+pkgrel=10
 pkgdesc='Kubernetes Workstation Tools CLI'
 url='https://github.com/carvel-dev/kwt'
 arch=(x86_64 aarch64)
 license=(apache-2.0)
 install=''
+conflicts=(kwt)
 provides=(kwt)
 source_x86_64=(kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-amd64)
 source_aarch64=(kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-arm64)
