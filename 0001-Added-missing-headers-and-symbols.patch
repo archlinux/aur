@@ -1,0 +1,27 @@
+--- a/src/cairo-ft-private.h
++++ b/src/cairo-ft-private.h
+@@ -38,6 +38,8 @@
+ #ifndef CAIRO_FT_PRIVATE_H
+ #define CAIRO_FT_PRIVATE_H
+ 
++#include <freetype/ftcolor.h>
++
+ #include "cairoint.h"
+ #include "cairo-ft.h"
+ 
+--- a/util/malloc-stats.c
++++ b/util/malloc-stats.c
+@@ -117,7 +117,13 @@
+ 	for (i = 0; i < num; i++)
+ 		addrs[i] = (void *) func_stats[i].addr;
+ 
++#if defined(__ANDROID_API__) && __ANDROID_API__ >= 33
+ 	strings = backtrace_symbols (addrs, num);
++#else
++	strings = malloc (num * sizeof (char *));
++	for (i = 0; i < num; i++)
++		strings[i] = "unknown";
++#endif
+ 
+ 	for (i = 0; i < num; i++) {
+ 		char *p;
