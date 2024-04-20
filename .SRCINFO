@@ -5,6 +5,7 @@ pkgbase = python-glasgow-git
 	url = https://github.com/GlasgowEmbedded/glasgow.git
 	arch = any
 	license = 0BSD
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-pdm
 	depends = python
