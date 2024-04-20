@@ -1,6 +1,6 @@
 pkgbase = r-factominer
 	pkgdesc = Multivariate Exploratory Data Analysis and Data Mining
-	pkgver = 2.10
+	pkgver = 2.11
 	pkgrel = 1
 	url = https://cran.r-project.org/package=FactoMineR
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-factominer
 	optdepends = r-knitr
 	optdepends = r-markdown
 	optdepends = r-missmda
-	source = https://cran.r-project.org/src/contrib/FactoMineR_2.10.tar.gz
-	sha256sums = dce4f4f8f8254c8a08c2ba379a075619c57573f72a711b053868b27f26044bce
+	source = https://cran.r-project.org/src/contrib/FactoMineR_2.11.tar.gz
+	sha256sums = 32c26b42cb4dd8d7a8c845f1e8562fa0e3ebded19d3c1284c3504df09974f063
 
 pkgname = r-factominer
