@@ -8,7 +8,7 @@ pkgdesc="MControlCenter is a Free and Open Source GNU/Linux application that all
 arch=('x86_64')
 url="https://github.com/guillaumeboehm/MControlCenter"
 license=('GPL3')
-depends=('qt6-tools' 'acpi_ec')
+depends=('qt6-tools')
 makedepends=()
 source=("git+https://github.com/guillaumeboehm/MControlCenter")
 md5sums=('SKIP')
@@ -18,6 +18,11 @@ conflict=('mcontrolcenter')
 pkgver() {
   cd "$srcdir/$_camel_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    echo "ec_sys" > $_pkgname-kmod.conf
+    echo "options ec_sys write_support=1" > $_pkgname-opts.conf
 }
 
 build() {
@@ -30,8 +35,11 @@ build() {
 }
 
 package() {
-    install -Dm 644 ../modprobe.d__mcontrolcenter-ec_sys.conf "${pkgdir}/etc/modprobe.d/mcontrolcenter-ec_sys.conf"
-    install -Dm 644 ../modules-load.d__mcontrolcenter-ec_sys.conf "${pkgdir}/etc/modules-load.d/mcontrolcenter-ec_sys.conf"
+    # load ec_sys on boot
+    install -Dm644 $_pkgname-kmod.conf $pkgdir/etc/modules-load.d/$_pkgname.conf
+
+    # set ec_sys options
+    install -Dm644 $_pkgname-opts.conf $pkgdir/etc/modprobe.d/$_pkgname.conf
 
     cd "$srcdir/$_camel_pkgname"
 

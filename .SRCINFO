@@ -6,7 +6,6 @@ pkgbase = mcontrolcenter-cli-git
 	arch = x86_64
 	license = GPL3
 	depends = qt6-tools
-	depends = acpi_ec
 	provides = mcontrolcenter
 	source = git+https://github.com/guillaumeboehm/MControlCenter
 	md5sums = SKIP
