@@ -1,11 +1,13 @@
 pkgbase = python-qh3
 	pkgdesc = Lightweight QUIC and HTTP/3 implementation in Python
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jawah/qh3
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = clang
+	makedepends = cmake
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-maturin
