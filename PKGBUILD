@@ -1,0 +1,66 @@
+# Maintainer: xihale <xihale.top@qq.com>
+# Reference: https://aur.archlinux.org/packages/motrix
+
+## options
+: ${_pkgtype:=-electron}
+
+pkgname="imfile$_pkgtype"
+pkgver=1.0.5
+pkgrel=1
+pkgdesc="A full-featured download manager"
+arch=("arm" "x86_64"  "i686")
+license=("MIT")
+depends=("electron")
+url="https://github.com/imfile-io/imfile-desktop/"
+
+source=(
+  imfile
+  imfile.desktop
+  "https://github.com/imfile-io/imfile-desktop/archive/refs/tags/v${pkgver}.zip"
+)
+
+sha256sums=(
+  "6a530e20c40bb8bf0b413758e64629a0be0468ef8c203282ea6a1a80409493be"
+  "eca6961cf9d367c2733af7e8176aeaa81c5b20c12be132ec5baa3f030c7d034b"
+  "5d0f026552cc59377b68550b3c66ad8928218c9923a9101f92c1f3ee1f1593f0"
+)
+
+build() {
+
+  cd ${srcdir}/imfile-desktop-${pkgver}
+
+  # build
+  if [ -x "$(command -v bun)" ]; then
+    bun install
+    bun run build:dir
+  elif [ -x "$(command -v pnpm)" ]; then
+    pnpm install
+    pnpm run build:dir
+  elif [ -x "$(command -v yarn)" ]; then
+    yarn install
+    yarn run build:dir
+  else
+    npm install
+    npm run build:dir
+  fi
+  
+}
+
+package() {
+
+  cd ${srcdir}/imfile-desktop-${pkgver}/release/linux-unpacked/resources
+
+  install -Dm 644 app.asar ${pkgdir}/opt/${pkgname}/app.asar
+  install -Dm 755 engine/aria2c ${pkgdir}/opt/${pkgname}/engine/aria2c
+  install -Dm 644 engine/aria2.conf ${pkgdir}/opt/${pkgname}/engine/aria2.conf
+
+  # binary wrapper
+  install -Dm 775 ${srcdir}/imfile ${pkgdir}/usr/bin/imfile
+
+  # desktop enrty
+  install -Dm 644 ${srcdir}/imfile.desktop ${pkgdir}/usr/share/applications/imfile.desktop
+
+  # icons
+  install -Dm 644 ${srcdir}/imfile-desktop-${pkgver}/build/256x256.png ${pkgdir}/usr/share/icons/imfile.png
+
+}

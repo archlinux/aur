@@ -1,0 +1,18 @@
+pkgbase = imfile-electron
+	pkgdesc = A full-featured download manager
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/imfile-io/imfile-desktop/
+	arch = arm
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = electron
+	source = imfile
+	source = imfile.desktop
+	source = https://github.com/imfile-io/imfile-desktop/archive/refs/tags/v1.0.5.zip
+	sha256sums = 6a530e20c40bb8bf0b413758e64629a0be0468ef8c203282ea6a1a80409493be
+	sha256sums = eca6961cf9d367c2733af7e8176aeaa81c5b20c12be132ec5baa3f030c7d034b
+	sha256sums = 5d0f026552cc59377b68550b3c66ad8928218c9923a9101f92c1f3ee1f1593f0
+
+pkgname = imfile-electron

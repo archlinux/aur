@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=imfile
+Comment=A full-featured download manager.
+Keywords=
+Exec=imfile
+TryExec=
+Terminal=false
+Icon=imfile
+Type=Application
+StartupNotify=false
+Categories=Network;FileTransfer;
