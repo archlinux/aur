@@ -4,12 +4,12 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Sonic the Hedgehog game powered by the rsdkv4 engine."
 arch=('x86_64' 'aarch64' 'i686')
-url="https://gitlab.com/SonicRSDK/sonicthehedgehog"
+url="https://gitlab.com/linuxbombay/sonicthehedgehog"
 license=('GPL')
 depends=('rsdkv4-bin' 'libogg' 'libvorbis' 'wget' 'sdl2' 'unzip' 'yad')
 makedepends=('unzip')
-source=("https://gitlab.com/SonicRSDK/sonicthehedgehog/-/archive/$pkgver-$pkgrel/sonicthehedgehog-$pkgver-$pkgrel.tar.bz2")
-sha256sums=("SKIP")
+source=("https://gitlab.com/linuxbombay/sonicthehedgehog/-/archive/$pkgver-$pkgrel/sonicthehedgehog-$pkgver-$pkgrel.tar")
+sha256sums=('84976089f69e93393d111c49dc6691b50e3a10aced722f661cee0358ae060d7e')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
