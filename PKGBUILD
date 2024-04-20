@@ -3,7 +3,7 @@
 _pkgname=libxeddsa
 pkgname="${_pkgname}-git"
 pkgver=r40.d725c816bb26
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit around Curve25519 and Ed25519 key pairs.'
 url="https://github.com/Syndace/${pkgname}"
 license=('MIT')
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
 	cd ${_pkgname}
-	cmake .
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
 }
 
 build() {
@@ -32,5 +32,5 @@ build() {
 
 package() {
     cd ${_pkgname}
-		make DESTDIR="$pkgdir/usr/" install
+		make DESTDIR="$pkgdir" install
 }

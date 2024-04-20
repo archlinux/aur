@@ -1,7 +1,7 @@
 pkgbase = libxeddsa-git
 	pkgdesc = A toolkit around Curve25519 and Ed25519 key pairs.
 	pkgver = r40.d725c816bb26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Syndace/libxeddsa-git
 	arch = x86_64
 	license = MIT
