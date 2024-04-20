@@ -2,8 +2,8 @@
 
 pkgname="clipton"
 pkgdesc="Clipboard manager with a Rofi frontend"
-pkgver=45
-pkgrel=2
+pkgver=47
+pkgrel=1
 arch=("x86_64")
 url="https://github.com/madprops/clipton"
 license=("Unlicense")
@@ -11,7 +11,7 @@ depends=("rofi" "xclip")
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('d2e409192fe3a0d89aa758d2b7a5eba9b07ff5b53d74e988dd402607e2c61114')
+sha256sums=('6a702466e292c71017c329919ad5d1272228ce2d889306fb6bee7085c2b3396a')
 
 package() {
   cd "${pkgname}-${pkgver}"
