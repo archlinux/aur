@@ -27,7 +27,7 @@ depends=(
     qt6-svg
     zlib
 )
-makedepends=(cmake boost qt6-svg qt6-tools)
+makedepends=(cmake boost qt6-tools)
 optdepends=('python: needed for torrent search tab')
 source=("https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-$pkgver.tar.xz")
 sha256sums=('8e62a24145582a0b36e8268a2e574c5d61a396d28a7d02b899ca59f2244a8913')

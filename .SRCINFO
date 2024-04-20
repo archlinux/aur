@@ -7,7 +7,6 @@ pkgbase = qbittorrent-libtorrent-v1
 	license = GPL-3.0-or-later AND OpenSSL
 	makedepends = cmake
 	makedepends = boost
-	makedepends = qt6-svg
 	makedepends = qt6-tools
 	depends = gcc-libs
 	depends = glibc
