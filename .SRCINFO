@@ -1,0 +1,18 @@
+pkgbase = prooftools-gtk-bin
+	pkgdesc = A symbolic logic proof tree generator
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://creativeandcritical.net/prooftools
+	arch = x86_64
+	license = custom
+	options = !debug
+	source = https://creativeandcritical.net/downloads/ProofTools-0.6.2-20200618-linux-x86-64bit-gtk2.tar.bz2
+	source = ProofTools.desktop
+	source = LICENSE
+	source = logo.png
+	sha256sums = 9206237de07440334f37c7f75343b8b13efbfbc9e2c18877b82b39b970c4d34f
+	sha256sums = ef18ec5b3d4c121ddc31265bf22af8c5e148e259a514c24ae61ca1051c55fac2
+	sha256sums = 326377edfe4658a0a87baa47634499d855c480168e530b4586fa4bda97a2d80f
+	sha256sums = 1b08eae320144b13b6fab38fbd267ad4508e29c274a94ddc148be0aff156d355
+
+pkgname = prooftools-gtk-bin

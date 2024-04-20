@@ -1,0 +1,10 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=ProofTools
+Comment=A symbolic logic proof tree generator
+Path=/opt/prooftools
+Exec=prooftools
+Icon=/opt/prooftools/logo.png
+Terminal=false
