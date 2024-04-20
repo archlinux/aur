@@ -1,6 +1,6 @@
 pkgbase = blackbox-tools-inav
-	pkgdesc = tools for examining INAV blackbox logs
-	pkgver = r187.5b29d9f
+	pkgdesc = tools for examining INAV blackbox logs - master
+	pkgver = r240.edbf99a
 	pkgrel = 1
 	url = https://github.com/iNavflight/blackbox-tools.git
 	arch = i686
