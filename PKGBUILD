@@ -6,11 +6,12 @@
 
 pkgname="imfile$_pkgtype"
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured download manager"
 arch=("arm" "x86_64"  "i686")
 license=("MIT")
-depends=("electron")
+depends=("electron>=23")
+makedepends=("nodejs")
 url="https://github.com/imfile-io/imfile-desktop/"
 
 source=(
@@ -39,11 +40,14 @@ build() {
   elif [ -x "$(command -v yarn)" ]; then
     yarn install
     yarn run build:dir
-  else
+  elif [ -x "$(command -v npm)" ]; then
     npm install
     npm run build:dir
+  else
+    echo "\033[0;31mPlease install at least one of 'bun', 'pnpm', 'yarn' or 'npm' to build."
+    exit
   fi
-  
+
 }
 
 package() {
