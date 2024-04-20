@@ -2,19 +2,17 @@
 
 pkgname=rdrview
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 _commit=30cb8782afeae5b15c7026d9f7801f3ceb330a62
 pkgdesc="Firefox Reader View as a command line tool"
 arch=(x86_64)
 url="https://github.com/eafer/$pkgname"
 license=(Apache-2.0)
 depends=(curl glibc libseccomp libxml2 xdg-utils)
-optdepends=('www-browser: open link in browser or'
-            'links2: open link in browser or'
-            'elinks: open link in browser or'
-            'links: open link in browser or'
-            'lynx: open link in browser or'
-            'w3m: open link in browser')
+optdepends=('elinks: open pages in elinks'
+            'links: open pages in links'
+            'lynx: open pages in lynx'
+            'w3m: open pages in w3m')
 options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
         001.patch::$url/commit/$_commit.patch)
