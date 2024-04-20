@@ -16,7 +16,6 @@ sha256sums=('4b24069c18f9b4542d61b43b1985f0e9768c4cd829facf5eeaab9333797b8974'
             '2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5')
 
 prepare () {
-	## Extract AIR Impulse Response
 	_archive="`xdg-user-dir DOWNLOAD`/AmpLockerLinux.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
