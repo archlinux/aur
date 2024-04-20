@@ -130,16 +130,18 @@
 : ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=19.r8212.gb8d0cba14bcf
+pkgver=19.r8943.gd8503a38b974
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
-license=('custom:Apache 2.0 with LLVM Exception')
+license=('Apache-2.0 WITH LLVM-exception')
 makedepends=('cmake' 'ninja' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses' 'patch'
-             'libxml2' 'python-setuptools' 'python-psutil' 'python-sphinx')
+             'libxml2' 'python-setuptools' 'python-psutil' 'python-sphinx' 'git')
+depends=('gcc-libs' 'glibc' 'ncurses' 'zlib' 'zstd')
 conflicts=('clangd-opt')
 replaces=('clangd-opt')
+provides=('clangd-opt')
 options=('!strip')
 source=("git+https://github.com/llvm/llvm-project.git#branch=main"
         'hover-doxygen-trunk.patch'
