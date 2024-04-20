@@ -1,7 +1,7 @@
 # Maintainer: Maxr1998 <aur@maxr1998.de>
 _pkgname=finamp
 pkgname=finamp-git
-pkgver=1711.ac09018f
+pkgver=1879.d1e9358f
 pkgrel=1
 pkgdesc="A Jellyfin music client for mobile and desktop"
 arch=("x86_64" "aarch64")
@@ -14,7 +14,7 @@ conflicts=('finamp')
 source=("$_pkgname::git+$url.git#branch=desktop-beta"
         "finamp.desktop")
 b2sums=('SKIP'
-        'd95378664c07eb1f439fe1bb863e6c6661fab98ccafcc80d0fc76fcdc9bd511c6ca38293b2947f5689e702e192a1891259fa78977a86af8dd28e2639e01e653b')
+        '6b22ee624af345191ff4ce60140ba48591b9b42100d679232ae73aa7c3ae5cff1b74e4bcc71346278b8395ab7e67b59c78812a52f614f549136529b4bcea0a89')
 
 pkgver() {
     cd "$_pkgname"
@@ -40,6 +40,8 @@ package() {
     install -Dm644 "finamp.desktop" -t "$pkgdir/usr/share/applications/"
 
     cd "$srcdir/$_pkgname"
+    install -dm755 "$pkgdir/usr/share/icons/hicolor"
+    cp -rdp --no-preserve=ownership "assets/icon/linux/." "$pkgdir/usr/share/icons/hicolor"
     install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/$_pkgname/"
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
