@@ -7,6 +7,7 @@ pkgbase = mcontrolcenter-cli-git
 	license = GPL3
 	depends = qt6-tools
 	provides = mcontrolcenter
+	conflicts = mcontrolcenter
 	source = git+https://github.com/guillaumeboehm/MControlCenter
 	md5sums = SKIP
 

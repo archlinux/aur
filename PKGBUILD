@@ -13,7 +13,7 @@ makedepends=()
 source=("git+https://github.com/guillaumeboehm/MControlCenter")
 md5sums=('SKIP')
 provides=('mcontrolcenter')
-conflict=('mcontrolcenter')
+conflicts=('mcontrolcenter')
 
 pkgver() {
   cd "$srcdir/$_camel_pkgname"
