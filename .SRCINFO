@@ -1,11 +1,14 @@
 pkgbase = python-nptyping
 	pkgdesc = Type hints for Numpy
 	pkgver = 2.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ramonhagenaars/nptyping
 	arch = x86_64
 	license = MIT
+	checkdepends = python-feedparser
+	checkdepends = python-pandas
 	checkdepends = python-pytest
+	checkdepends = python-pytest-mypy
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
