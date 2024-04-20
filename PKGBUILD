@@ -9,7 +9,10 @@ license=('GPL2')
 url='https://www.videolan.org/libdvdcss'
 depends=('glibc')
 makedepends=('git')
-provides=('libdvdcss')
+provides=(
+  'libdvdcss'
+  'libdvdcss.so'
+)
 conflicts=('libdvdcss')
 source=('git+https://code.videolan.org/videolan//libdvdcss.git')
 sha256sums=('SKIP')
