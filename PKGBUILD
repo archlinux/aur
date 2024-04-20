@@ -1,18 +1,19 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=d2vwitch-git
-pkgver=5.4.g04d3675
+pkgver=5.5.gf002376
 pkgrel=1
 pkgdesc="Cross-platform D2V creator. (GIT version)"
 arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=173090'
 license=('LGPL2.1' 'ISC')
 depends=(
-  'vapoursynth-plugin-d2vsource-git'
-  'ffmpeg4.4' 'libavcodec.so=58-64' 'libavformat.so=58-64' 'libavutil.so=56-64'
   'gcc-libs'
+  'glibc'
   'qt5-base'
+  'ffmpeg'
   'xdg-utils'
+  'vapoursynth-plugin-d2vsource-git'
 )
 makedepends=(
   'git'
@@ -43,8 +44,6 @@ prepare() {
 
 build() {
   cd build
-  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
-
   arch-meson ../d2vwitch \
     --libdir /usr/lib/vapoursynth
 
@@ -52,6 +51,13 @@ build() {
 }
 
 package(){
+  depends+=(
+#   'libc.so'
+#   'libgcc_s.so' 'libstdc++.so'
+#   'libQt5Widgets.so' 'libQt5Gui.so' 'libQt5Core.so'
+    'libavcodec.so' 'libavformat.so' 'libavutil.so'
+  )
+
   DESTDIR="${pkgdir}" ninja -C build install
 
   install -Dm644 "${srcdir}/d2vwitch.desktop" "${pkgdir}/usr/share/applications/d2vwitch.desktop"
