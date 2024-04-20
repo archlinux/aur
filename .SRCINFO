@@ -10,11 +10,7 @@ pkgbase = nut-multimedia-git
 	depends = glibc
 	provides = nut-multimedia
 	provides = libnut.so
-	provides = libnut-git
-	provides = libnut
 	conflicts = nut-multimedia
-	conflicts = libnut-git
-	conflicts = libnut
 	source = git+https://git.ffmpeg.org/nut.git
 	sha256sums = SKIP
 

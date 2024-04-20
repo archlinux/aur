@@ -8,18 +8,18 @@ arch=('x86_64')
 url='https://ffmpeg.org/nut.html'
 license=('GPL')
 depends=('glibc')
-makedepends=('git'
-             'doxygen'
-              )
-conflicts=('nut-multimedia'
-           'libnut-git'
-           'libnut'
-           )
-provides=('nut-multimedia'
-          'libnut.so'
-          'libnut-git'
-          'libnut'
-          )
+makedepends=(
+  'git'
+  'doxygen'
+)
+provides=(
+  'nut-multimedia'
+  'libnut.so'
+)
+conflicts=(
+  'nut-multimedia'
+)
+
 source=('git+https://git.ffmpeg.org/nut.git')
 sha256sums=('SKIP')
 
