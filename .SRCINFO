@@ -1,7 +1,7 @@
 pkgbase = obgk
 	pkgdesc = osu!stable video and background deleter
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shoplifterhd/obgk
 	arch = x86_64
 	license = Unlicense
