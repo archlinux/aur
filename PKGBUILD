@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('MIT')
 source=("https://github.com/AlexandrePTJ/kemai/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('2b77fcc915f2bdc6012d43cd65570363e2ca7ba38a424fe1242b1cfc3655f1eb')
-makedepends=('cmake' 'range-v3' 'magic_enum')
+makedepends=('cmake' 'range-v3' 'magic_enum' 'qt6-tools')
 depends=('qt6-base' 'spdlog' 'libxss' 'hicolor-icon-theme')
 
 build() {

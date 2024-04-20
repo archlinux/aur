@@ -9,6 +9,7 @@ pkgbase = kemai
 	makedepends = cmake
 	makedepends = range-v3
 	makedepends = magic_enum
+	makedepends = qt6-tools
 	depends = qt6-base
 	depends = spdlog
 	depends = libxss
