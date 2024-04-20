@@ -16,8 +16,8 @@
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.12.0
-pkgrel=2
+pkgver=11.12.1
+pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 arch=('x86_64')
@@ -77,8 +77,8 @@ _main_package() {
     'xdg-desktop-portal: Screensharing with Wayland'
   )
 
-  if [[ "${_build_pgo::1}" == "t" ]] ; then
-    if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+  if [[ "${_build_pgo::1}" == "t" ]]; then
+    if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
       makedepends+=(
         xorg-server-xvfb
       )
@@ -112,13 +112,13 @@ _main_package() {
   )
 
   sha256sums=(
-    '4d1c6b6c69b139e90f2ae6b192f2774f7525eaca265fcb58247a8c0a20a18ae5'
+    'ab04b5d14fdc722dd41ed7a46b08a65ac9cb6fd1a59cb9c109a4f82e7488023d'
     'SKIP'
     'SKIP'
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
   )
 
-  if [[ "${_build_private::1}" == "t" ]] ; then
+  if [[ "${_build_private::1}" == "t" ]]; then
     license+=('LicenseRef-Floorp')
     source+=("floorp-projects.private-components"::"git+https://github.com/Floorp-Projects/Floorp-private-components.git")
     sha256sums+=('SKIP')
@@ -140,12 +140,12 @@ prepare() {
       'floorp-projects.unified-l10n-central'::'browser/locales/l10n-central'
     )
 
-    if [[ "${_build_private::1}" == "t" ]] ; then
+    if [[ "${_build_private::1}" == "t" ]]; then
       _submodules+=('floorp-projects.private-components'::'Floorp-private-components')
     fi
 
     local _module
-    for _module in "${_submodules[@]}" ; do
+    for _module in "${_submodules[@]}"; do
       git submodule init "${_module##*::}"
       git submodule set-url "${_module##*::}" "$srcdir/${_module%%::*}"
       git -c protocol.file.allow=always submodule update "${_module##*::}"
@@ -159,7 +159,7 @@ prepare() {
   cp "floorp/apis"/api-*-key ./
 
   # configure
-  cat >../mozconfig <<END
+  cat > ../mozconfig << END
 ac_add_options --enable-application=browser
 ac_add_options --disable-artifact-builds
 
@@ -170,7 +170,7 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
-ac_add_options --enable-linker=lld
+ac_add_options --enable-linker=mold
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -237,7 +237,6 @@ export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # Optimization
 ac_add_options --enable-optimize=-O3
-ac_add_options --enable-linker=mold
 ac_add_options --enable-lto=cross,full
 ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
@@ -250,9 +249,9 @@ export NM=llvm-nm
 export RANLIB=llvm-ranlib
 END
 
-  if [[ "${_build_private::1}" == "t" ]] ; then
+  if [[ "${_build_private::1}" == "t" ]]; then
     echo "Enabling private components..."
-    cat >>../mozconfig <<END
+    cat >> ../mozconfig << END
 ac_add_options --enable-private-components
 END
   fi
@@ -275,17 +274,17 @@ build() {
   ulimit -n 4096
 
   # Do 3-tier PGO
-  if [[ "${_build_pgo::1}" == "t" ]] ; then
+  if [[ "${_build_pgo::1}" == "t" ]]; then
     # find previous profile file...
     local _old_profdata _old_jarlog _pkgver_old tmp_old tmp_new
     _pkgver_prof=$(
       cd "$SRCDEST"
-      for i in *.profdata ; do [ -f "$i" ] && echo "$i" ; done \
+      for i in *.profdata; do [ -f "$i" ] && echo "$i"; done \
         | sort -rV | head -1 | sed -E 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
     )
 
     # new profile for new major version
-    if [ "${_pkgver_prof%%.*}" != "${pkgver%%.*}" ] ; then
+    if [ "${_pkgver_prof%%.*}" != "${pkgver%%.*}" ]; then
       _build_pgo_reuse=false
       _pkgver_prof="$pkgver"
     fi
@@ -294,7 +293,7 @@ build() {
     _tmp_old=$(echo "${_pkgver_prof}" | cut -d'-' -f2 | cut -d'.' -f2)
     _tmp_new=$(echo "${pkgver}" | cut -d'-' -f2 | cut -d'.' -f2)
 
-    if [ "${_tmp_new:-0}" -gt "${_tmp_old:-0}" ] ; then
+    if [ "${_tmp_new:-0}" -gt "${_tmp_old:-0}" ]; then
       _build_pgo_reuse=false
       _pkgver_prof="$pkgver"
     fi
@@ -303,22 +302,22 @@ build() {
     local _old_jarlog="$SRCDEST/$_pkgname-$_pkgver_prof-jarlog"
 
     # Restore old profile
-    if [[ "${_build_pgo_reuse::1}" == "t" ]] ; then
-      if [[ -s "$_old_profdata" ]] ; then
+    if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
+      if [[ -s "$_old_profdata" ]]; then
         echo "Restoring old profile data."
         cp --reflink=auto -f "$_old_profdata" merged.profdata
       fi
 
-      if [[ -s "$_old_jarlog" ]] ; then
+      if [[ -s "$_old_jarlog" ]]; then
         echo "Restoring old jar log."
         cp --reflink=auto -f "$_old_jarlog" jarlog
       fi
     fi
 
     # Make new profile
-    if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]] ; then
+    if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]]; then
       echo "Building instrumented browser..."
-      cat >.mozconfig ../mozconfig - <<END
+      cat > .mozconfig ../mozconfig - << END
 ac_add_options --enable-profile-generate=cross
 export MOZ_ENABLE_FULL_SYMBOLS=1
 END
@@ -327,7 +326,7 @@ END
       echo "Profiling instrumented browser..."
       ./mach package
 
-      if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+      if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
         local _headless_run=(
           xvfb-run
           -s "-screen 0 1920x1080x24 -nolisten local"
@@ -347,11 +346,11 @@ END
     fi
 
     echo "Building optimized browser..."
-    cat >.mozconfig ../mozconfig
+    cat > .mozconfig ../mozconfig
 
-    if [[ -s merged.profdata ]] ; then
+    if [[ -s merged.profdata ]]; then
       stat -c "Profile data found (%s bytes)" merged.profdata
-      cat >>.mozconfig - <<END
+      cat >> .mozconfig - << END
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 END
@@ -362,9 +361,9 @@ END
       echo "Profile data not found."
     fi
 
-    if [[ -s jarlog ]] ; then
+    if [[ -s jarlog ]]; then
       stat -c "Jar log found (%s bytes)" jarlog
-      cat >>.mozconfig - <<END
+      cat >> .mozconfig - << END
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
 
@@ -377,7 +376,7 @@ END
     ./mach build
   else
     echo "Building browser..."
-    cat >.mozconfig ../mozconfig
+    cat > .mozconfig ../mozconfig
 
     ./mach build
   fi
@@ -388,7 +387,7 @@ package() {
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "$vendorjs" <<END
+  install -Dvm644 /dev/stdin "$vendorjs" << END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -415,7 +414,7 @@ pref("services.settings.main.search-telemetry-v2.last_check", $(date +%s));
 END
 
   local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" <<END
+  install -Dvm644 /dev/stdin "$distini" << END
 [Global]
 id=archlinux
 version=rolling
@@ -429,7 +428,7 @@ END
 
   # search provider
   local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini"
-  install -Dvm644 /dev/stdin "$sprovider" <<END
+  install -Dvm644 /dev/stdin "$sprovider" << END
 [Shell Search Provider]
 DesktopId=$_pkgname.desktop
 BusName=org.mozilla.${_pkgname//-/}.SearchProvider
@@ -458,7 +457,7 @@ END
   done
 
   # license
-  if [[ "${_build_private::1}" == "t" ]] ; then
+  if [[ "${_build_private::1}" == "t" ]]; then
     install -Dm644 "$srcdir/floorp-projects.private-components/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.components"
   fi
 }
