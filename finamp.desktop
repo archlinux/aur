@@ -1,7 +1,8 @@
 [Desktop Entry]
-Name=Finamp
-Exec=/opt/finamp/finamp
 Type=Application
+Name=Finamp
+GenericName=Music Player
+Exec=/opt/finamp/finamp
 Terminal=false
-Categories=Audio;Player;
+Categories=Audio;Player;Music;
 Comment=A Jellyfin music client for mobile and desktop
