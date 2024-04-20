@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='This package contains leanproject, a supporting tool for Lean mathlib'
 arch=('any')
 url="https://github.com/leanprover-community/mathlib-tools"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'python-toml'
   'python-pygithub'
