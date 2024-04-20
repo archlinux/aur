@@ -16,7 +16,7 @@ _pkgname="duckstation"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.1.6461
 pkgrel=1
-_pkgdesc="Playstation emulator"
+pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
 arch=('x86_64')
 license=('GPL-3.0-only')
@@ -50,7 +50,7 @@ makedepends=(
   'qt6-tools'
 )
 
-if [ "${_build_git::1}" != "t" ] ; then
+if [ "${_build_git::1}" != "t" ]; then
   _commit=359678a1678137f584760991dd4d45574fdbae12
 
   _pkgsrc="$_pkgname"
@@ -87,7 +87,7 @@ build() {
   LDFLAGS+=" -fuse-ld=mold"
   LTOFLAGS="-flto=thin"
 
-  if [[ "${_build_avx::1}" == "t" ]] ; then
+  if [[ "${_build_avx::1}" == "t" ]]; then
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
     export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
@@ -110,12 +110,12 @@ package() {
   install -dm755 "$pkgdir/opt/$_pkgname/"
   cp --reflink=auto -r build/bin/{resources,translations,duckstation-qt} "$pkgdir/opt/$_pkgname/"
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/duckstation-qt" <<END
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/duckstation-qt" << END
 #!/usr/bin/env bash
 exec /opt/$_pkgname/duckstation-qt "\$@"
 END
 
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/duckstation-qt.desktop" <<END
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/duckstation-qt.desktop" << END
 [Desktop Entry]
 Type=Application
 Name=DuckStation
