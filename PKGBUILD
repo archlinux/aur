@@ -1,5 +1,5 @@
 # Maintainer: Benji377 <demetzbenjamin23@gmail.com>
-pkgname=Raspirus
+pkgname=raspirus
 pkgver=1.1.3
 pkgrel=1
 pkgdesc="User- and resources-friendly signatures-based malware scanner"
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Raspirus/Raspirus/archive/r
 sha256sums=('SKIP')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "Raspirus-$pkgver"
 	npm install
 	mkdir out
 	cargo install --path src-tauri/
@@ -22,11 +22,11 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "Raspirus-$pkgver"
 	cargo tauri build -b none
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "Raspirus-$pkgver"
 	cp target/release/raspirus $pkgdir/usr/bin/
 }
