@@ -1,43 +1,47 @@
 # Maintainer: soloturn <soloturn@gmail.com>
-# Co-Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-applets-git
-pkgver=r591.ff21419
+pkgver=r880.e4a6f94
 pkgrel=1
-pkgdesc="applets for the COSMIC DE panel."
+pkgdesc="WIP applets for COSMIC Panel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applets"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 groups=('cosmic')
 depends=(
-  'gtk4' 'libinput' 'libglvnd' 'libpipewire' 'libpulse'
-  'libxkbcommon' 'pop-launcher' 'systemd-libs' 'wayland'
+  'cosmic-icons-git'
+  'dbus'
+  'libinput'
+  'libpulse'
+  'libxkbcommon'
 )
-makedepends=('cargo' 'clang' 'git' 'just' 'mold')
-provides=('cosmic-applets')
-conflicts=('cosmic-applets')
-options=('!lto')
-source=(
-  'git+https://github.com/pop-os/cosmic-applets.git'
+makedepends=(
+  'cargo'
+  'git'
+  'just'
+  'mold'
 )
-sha256sums=(
-  'SKIP'
-)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/pop-os/cosmic-applets.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/cosmic-applets"
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/cosmic-applets"
+  cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  just vendor
 }
 
 build() {
-  cd "$srcdir/cosmic-applets"
+  cd "${pkgname%-git}"
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   # note, consider rust build time optimisations: 
@@ -46,10 +50,10 @@ build() {
   # to not block user installing this pkg. to speed up build, use "mold" linker, see 
   # https://stackoverflow.com/questions/67511990/how-to-use-the-mold-linker-with-cargo
   RUSTFLAGS="-A warnings -C link-arg=-fuse-ld=mold"
-  nice just build
+  nice just build-vendored
 }
 
 package() {
-  cd "$srcdir/cosmic-applets"
+  cd "${pkgname%-git}"
   just rootdir="$pkgdir" install
 }
