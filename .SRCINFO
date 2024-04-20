@@ -1,0 +1,14 @@
+pkgbase = mdspan
+	pkgdesc = C++ performance portability programming ecosystem
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/kokkos/mdspan
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = gtest
+	makedepends = cmake
+	depends = bash
+	source = mdspan-0.6.0.tar.gz::https://github.com/kokkos/mdspan/archive/mdspan-0.6.0.tar.gz
+	sha512sums = d0e247b5ed5765f3ddd04634462c428b19beceb81b0b7d8221443b3f6ab122e232e85c15d56c208b244be2f6667d7e1db571848b61190b64ec110f7d31c3e0c9
+
+pkgname = mdspan
