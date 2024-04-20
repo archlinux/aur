@@ -131,7 +131,7 @@
 
 pkgname=clangd-opt-git
 pkgver=19.r8943.gd8503a38b974
-pkgrel=1
+pkgrel=2
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
