@@ -1,18 +1,17 @@
 # Maintainer: Marcel Hasler <mahasler at gmail dot com>
 pkgname=kde-cdemu-manager
-_pkgname=kde_cdemu
-pkgver=0.8.2
+pkgver=0.9
 pkgrel=1
 pkgdesc="KDE CDEmu Manager is a simple frontend for CDEmu."
 arch=('x86_64')
 url="https://github.com/marcelh83/kde-cdemu-manager"
-license=('GPL')
-depends=('gcc-libs' 'glibc' 'qt5-base' 'kconfigwidgets5' 'kcoreaddons5' 'kdbusaddons5' 'ki18n5' 'knotifications5' 'kwidgetsaddons5' 'kxmlgui5' 'cdemu-daemon>=2.0')
+license=('GPL-3.0-or-later')
+depends=('gcc-libs' 'glibc' 'qt6-base' 'kconfigwidgets' 'kcoreaddons' 'kdbusaddons' 'ki18n' 'knotifications' 'kstatusnotifieritem' 'kwidgetsaddons' 'kxmlgui' 'cdemu-daemon>=2.0')
 provides=('kde-cdemu-manager')
 conflicts=('kde-cdemu-manager')
 makedepends=('cmake' 'extra-cmake-modules')
-source=("https://github.com/marcelh83/kde-cdemu-manager/archive/refs/tags/v0.8.2.tar.gz")
-sha256sums=('2a62c7e526c312b70c48aa735b68bf689ab3dd0df66dc5ce3383853c3ba54644')
+source=("kde-cdemu-manager-0.9.tar.gz::https://github.com/marcelh83/kde-cdemu-manager/archive/refs/tags/v0.9.tar.gz")
+sha256sums=('c9e8f49d4967791c52eeffc0e5f2e4a8d3d176a7bf5f2b6c9469f58de15979ba')
 
 prepare() {
   mkdir -p build
@@ -20,9 +19,7 @@ prepare() {
 
 build() {
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        ../${pkgname}-${pkgver}
+  cmake -DCMAKE_INSTALL_PREFIX=$(qtpaths --install-prefix) ../${pkgname}-${pkgver}
   make
 }
 
