@@ -1,9 +1,10 @@
 pkgbase = pgbackrest
 	pkgdesc = Reliable PostgreSQL Backup & Restore
 	pkgver = 2.51
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pgbackrest/pgbackrest
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = meson
 	makedepends = libyaml
@@ -19,8 +20,8 @@ pkgbase = pgbackrest
 	depends = postgresql-libs
 	backup = etc/pgbackrest/pgbackrest.conf
 	source = pgbackrest-2.51.tar.gz::https://github.com/pgbackrest/pgbackrest/archive/release/2.51.tar.gz
-	source = fix-meson-install.patch
+	source = pgbackrest-2312.patch::https://github.com/pgbackrest/pgbackrest/pull/2312.patch
 	sha256sums = 9fa6760032927de448251fb1e5b824e2d17caf560796e74947275b72dc20ed2a
-	sha256sums = d86e3e47ce6d960c8e501b93c691f003f9fe001149c5b099fee0e2297c66f6c3
+	sha256sums = 06d91331905520397b811cfe62850e614a6371283787ce9ea508044a091380c4
 
 pkgname = pgbackrest

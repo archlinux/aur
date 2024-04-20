@@ -4,40 +4,37 @@
 
 pkgname='pgbackrest'
 pkgver='2.51'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Reliable PostgreSQL Backup & Restore'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
 license=('MIT')
 depends=('openssl' 'libxml2' 'icu' 'gcc-libs' 'bzip2' 'lz4'
          'xz' 'zstd' 'perl' 'postgresql-libs')
 makedepends=('meson' 'libyaml')
-source=(
-	"$pkgname-$pkgver.tar.gz::${url}/archive/release/${pkgver}.tar.gz"
-	"fix-meson-install.patch"
-)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/release/${pkgver}.tar.gz"
+	"${pkgname}-2312.patch::${url}/pull/2312.patch")
 sha256sums=('9fa6760032927de448251fb1e5b824e2d17caf560796e74947275b72dc20ed2a'
-            'd86e3e47ce6d960c8e501b93c691f003f9fe001149c5b099fee0e2297c66f6c3')
+            '06d91331905520397b811cfe62850e614a6371283787ce9ea508044a091380c4')
 backup=("etc/${pkgname}/${pkgname}.conf")
 
 prepare() {
-  cd "$pkgname-release-$pkgver"
-  patch -p1 < "$srcdir/fix-meson-install.patch"
-  meson subprojects download
+  patch -Ntp1 -i "../${pkgname}-2312.patch" -d "${pkgname}-release-${pkgver}" || :
+  arch-meson "${pkgname}-release-${pkgver}" "build"
 }
 
 build() {
-  arch-meson "$pkgname-release-$pkgver" build
-  meson compile -C build
+  meson compile -C "build"
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C "build" --destdir "${pkgdir}"
 
-  mkdir -p "${pkgdir}/etc/${pkgname}"
+  install -Dm0755 -d "${pkgdir}/etc/${pkgname}"
   echo "# Placeholder configuration file" > "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
   echo "# See the documentation at https://${pkgname}.org/configuration.html" >> \
     "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
 
-  install -Dm0644 "$pkgname-release-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 "${pkgname}-release-${pkgver}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
