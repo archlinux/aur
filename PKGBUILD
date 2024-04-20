@@ -1,26 +1,30 @@
-# Maintainer: Matthias De Bie <mattydebie@gmail.com>
-
-pkgname="kemai"
-pkgdesc="A QT5 client for kimai2"
-pkgver="0.5.0"
+# Maintainer: Danko Aleksejevs <danko@very.lv>
+# Contributor: Matthias De Bie <mattydebie@gmail.com>
+# Contributor: Yi donghoon <icq4ever@gmail.com>
+pkgname='kemai'
+pkgdesc='A QT6 client for Kimai time tracker'
+pkgver='0.10.0'
 pkgrel=1
 url="https://github.com/AlexandrePTJ/kemai"
 arch=('i686' 'x86_64')
 license=('MIT')
 source=("https://github.com/AlexandrePTJ/kemai/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c224f91e2e25ec9fd2bed18d5e5d63f988c36fb9f05b02992ffb4bb61b877f87')
-makedepends=("cmake")
-depends=("qt5-base")
+sha256sums=('2b77fcc915f2bdc6012d43cd65570363e2ca7ba38a424fe1242b1cfc3655f1eb')
+makedepends=('cmake' 'range-v3' 'magic_enum')
+depends=('qt6-base' 'spdlog' 'libxss' 'hicolor-icon-theme')
 
 build() {
-  cd kemai-${pkgver}
-  cmake . -B build -DCMAKE_BUILD_TYPE=Release
-  cmake --build build --config Release
+  cmake kemai-${pkgver} \
+    -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+    -DFETCHCONTENT_TRY_FIND_PACKAGE_MODE=ALWAYS \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-  mkdir ${pkgdir}/usr/bin -p
-  mkdir ${pkgdir}/usr/share/applications -p
-  cp -f kemai-${pkgver}/build/src/app/Kemai ${pkgdir}/usr/bin/
-  cp -f kemai-${pkgver}/bundle/linux/kemai.desktop ${pkgdir}/usr/share/applications/
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 kemai-${pkgver}/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
 }
