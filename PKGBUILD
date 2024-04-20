@@ -1,11 +1,10 @@
 # Maintainer: su226 <thesu226 at outlook dot com>
 
 pkgname=techmino
-pkgver="0.17.15"
+pkgver="0.17.16"
 _ccloader_ver="11.4.2"
-_zframework_ver="c498582a8cb9ddf3954c4538d383342c1ce14e88"
 _coldclear_ver="23c1cd6e4aa44f2a61daa839ae08dfd3cd5f9da3"
-pkgrel=2
+pkgrel=1
 epoch=
 pkgdesc="A collection of various modern block game rules, more ways to play, and some new things added for a new experience."
 arch=(x86_64)
@@ -27,23 +26,18 @@ install=
 changelog=
 source=("techmino-$pkgver.tar.gz::https://github.com/26F-Studio/Techmino/archive/refs/tags/v$pkgver.tar.gz"
         "ccloader-$_ccloader_ver.tar.gz::https://github.com/26F-Studio/cold_clear_ai_love2d_wrapper/archive/refs/tags/$_ccloader_ver.tar.gz"
-        "git+https://github.com/26F-Studio/Zframework.git#tag=$_zframework_ver"
         "git+https://github.com/26F-Studio/cold-clear.git#tag=$_coldclear_ver"
         "techmino.sh"
         "techmino.desktop")
 noextract=()
-sha256sums=("846214d06a372cb12a9ba44610342fda9cfe2cb45d44a4a7919eae7d28beaffb"
+sha256sums=("dc53bb84181e2a796be04c8e264ccef018f92a04a72eb1079ed913bd69c78219"
             "dc70324e88927763cc68eb86f73374a585d63cdb9773f2776c4ed679944742b5"
-            SKIP
             SKIP
             "9c8ac53a1264722b037ee8c72f5d0bc187ef9d106a3c2f949fb20537fb4c95f7"
             "d08469240ce6e919f250a205a47b9916bbdb464604d198f4fb8b37b91212da5e")
 validpgpkeys=()
 
 prepare() {
-	cd "$srcdir/Techmino-$pkgver"
-	rmdir Zframework
-	ln -s ../Zframework .
 	cd "$srcdir/cold_clear_ai_love2d_wrapper-$_ccloader_ver"
 	rmdir cold-clear
 	ln -s ../cold-clear .
