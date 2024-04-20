@@ -1,6 +1,6 @@
 # Maintainer: Stetsed <aur.arch@stetsed.xyz>
 pkgname=caddy-hetzner
-pkgver=2.6.2
+pkgver=2.7.6
 pkgrel=1
 pkgdesc="Caddy web server"
 arch=('any')
