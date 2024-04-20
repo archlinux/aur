@@ -9,7 +9,6 @@ pkgbase = libdvdnav-git
 	makedepends = libdvdread
 	depends = libdvdread.so
 	provides = libdvdnav
-	provides = libdvdnav.so
 	conflicts = libdvdnav
 	source = git+https://code.videolan.org/videolan/libdvdnav.git
 	sha256sums = SKIP

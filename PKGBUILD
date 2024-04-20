@@ -8,12 +8,11 @@ arch=('x86_64')
 license=('GPL2')
 url='https://dvdnav.mplayerhq.hu'
 depends=('libdvdread.so')
-makedepends=('git'
-             'libdvdread'
-             )
-provides=('libdvdnav'
-          'libdvdnav.so'
-          )
+makedepends=(
+ 'git'
+ 'libdvdread'
+)
+provides=('libdvdnav')
 conflicts=('libdvdnav')
 source=('git+https://code.videolan.org/videolan/libdvdnav.git')
 sha256sums=('SKIP')
