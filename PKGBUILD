@@ -3,7 +3,7 @@
 pkgname='obgk'
 _pkgname='obgk'
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="osu!stable video and background deleter"
 arch=('x86_64')
 url="https://github.com/shoplifterhd/obgk"
