@@ -34,6 +34,7 @@ pkgbase = amp-locker
 	depends = zlib
 	depends = zstd
 	optdepends = aa-snapshot-player: special amp modeller preset player plugin
+	provides = amp-locker
 	source = Amp Locker.desktop
 	source = Amp Locker Linker
 	source = amp-locker.png

@@ -8,6 +8,7 @@ license=('EULA')
 depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'keyutils' 'krb5' 'libcurl-gnutls' 'libffi' 'libnghttp2' 'libidn2' 'libp11-kit' 'libpng' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libxau' 'libxcb' 'libx11' 'nettle' 'openssl' 'pcre2' 'zlib' 'zstd')
 makedepends=('xdg-user-dirs' 'unzip')
 optdepends=('aa-snapshot-player: special amp modeller preset player plugin')
+provides=('amp-locker')
 source=('Amp Locker.desktop'
         'Amp Locker Linker'
         'amp-locker.png')
