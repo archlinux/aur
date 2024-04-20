@@ -23,4 +23,5 @@ build() {
 package() {
   cd $_name-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
