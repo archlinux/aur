@@ -3,13 +3,14 @@ pkgbase=python-stregion
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Python parser for ds9 region files"
 arch=('i686' 'x86_64')
 url="https://github.com/spacetelescope/stregion"
-license=('MIT' 'BSD')
+license=('MIT' 'BSD-3-Clause')
 makedepends=('python-setuptools-scm'
+             'cython'
              'python-wheel'
              'python-build'
              'python-installer'
@@ -23,7 +24,7 @@ checkdepends=('python-pytest'
               'python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://raw.githubusercontent.com/spacetelescope/stregion/master/LICENSE.txt"
-md5sums=('55bab99643ff9ab152d6852d65fe798b')
+md5sums=('3a515d1b8a3405ac99e3ee90df985814')
 
 get_pyinfo() {
      [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -53,7 +54,7 @@ check() {
 #   ln -rs doc/figures/test.reg .
     PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" pytest \
         --ignore=doc/figures/test_region_drawing.py \
-        --ignore=doc/figures/test_region_drawing2.py || warning "Tests failed" # -vv --color=yes
+        --ignore=doc/figures/test_region_drawing2.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-stregion() {
