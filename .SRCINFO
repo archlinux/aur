@@ -1,0 +1,27 @@
+pkgbase = clash-verge-rev-bin-concise
+	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri without kernel
+	pkgver = 1.5.11
+	pkgrel = 1
+	url = https://github.com/clash-verge-rev/clash-verge-rev
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libayatana-appindicator
+	conflicts = clash-verge-rev
+	conflicts = clash-verge-rev-alpha
+	conflicts = clash-verge-rev-alpha-bin
+	conflicts = clash-verge-rev-git
+	conflicts = clash-verge-rev-bin
+	conflicts = clash-verge
+	conflicts = clash-verge-bin
+	conflicts = clash-nyanpasu
+	conflicts = clash-nyanpasu-bin
+	conflicts = clash-nyanpasu-git
+	source_x86_64 = clash-verge-rev-1.5.11-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.5.11/clash-verge_1.5.11_amd64.deb
+	sha512sums_x86_64 = 4e707801ce650e52232733b14e6ccfa638af2a8f9152cff59568d424601f7d2247d1621e6a4ef9613a69a6c258bee866c0902cf26ca67e106cf20a6a3ec51cf5
+	source_aarch64 = clash-verge-rev-1.5.11-aarch64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.5.11/clash-verge_1.5.11_arm64.deb
+	sha512sums_aarch64 = 4cf2f783cd03ac33477504b3c3530f7b8331f2eb8520a24639d964980c9d360266a002b7482edb92a4163a87cdf1a76d5522f5e431b2668f3d0be6ae5221e83f
+
+pkgname = clash-verge-rev-bin-concise
