@@ -2,21 +2,20 @@
 
 pkgname=python-numpy-groupies
 _name=numpy-groupies
-pkgver=0.10.2
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='Optimised tools for group-indexing operations for python numpy'
 arch=("any")
 url="https://github.com/ml31415/numpy-groupies"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('python-numpy')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 optdepends=(
     'python-numba: for numba backend'
     'python-pandas: for pandas backend'
 )
-_commit=162fdb9bcf32c8748c264b513d15eb9390b498a6
-source=("git+${url}.git#commit=${_commit}")
-sha256sums=('SKIP')
+source=("git+${url}.git#tag=v${pkgver}")
+sha256sums=('9ac647bc9aeec60b81bde064f433383885546cecc9e9629a78bf151d1e38aaf6')
 
 build() {
     cd "${_name}"
