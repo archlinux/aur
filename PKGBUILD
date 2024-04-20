@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r122.bf15773
+pkgver=r123.2eadc4e
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -44,8 +44,6 @@ optdepends=(
   'flatpak: Flatpak support for Cosmic Store'
   'otf-fira-mono: Recommended Mono font'
   'otf-fira-sans: Recommended Sans font'
-  cosmic-files-git
-  cosmic-edit-git
 )
 
 _submodules=(
@@ -53,6 +51,8 @@ _submodules=(
   cosmic-applibrary
   cosmic-bg
   cosmic-comp
+  cosmic-edit
+  cosmic-files
   cosmic-greeter
   cosmic-launcher
   cosmic-notifications
@@ -90,6 +90,8 @@ source=(
   'git+https://github.com/pop-os/cosmic-applibrary.git'
   'git+https://github.com/pop-os/cosmic-bg.git'
   'git+https://github.com/pop-os/cosmic-comp.git'
+  'git+https://github.com/pop-os/cosmic-edit.git'
+  'git+https://github.com/pop-os/cosmic-files.git'
   'git+https://github.com/pop-os/cosmic-greeter.git'
   'git+https://github.com/pop-os/cosmic-icons.git'
   'git+https://github.com/pop-os/cosmic-launcher.git'
@@ -109,6 +111,8 @@ source=(
   'justfile.diff'
 )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
