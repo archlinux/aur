@@ -1,14 +1,13 @@
 pkgbase = encrypted_fs-bin
 	pkgdesc = An encrypted file system that mounts with FUSE on Linux. It can be used to create encrypted directories.
-	pkgver = 0.1.19
+	pkgver = 0.1.20
 	pkgrel = 1
 	url = https://github.com/radumarias/encrypted_fs
 	arch = x86_64
 	license = MIT OR Apache-2.0
 	provides = encrypted_fs
 	conflicts = encrypted_fs
-	source = https://github.com/radumarias/encrypted_fs_aur/releases/download/0.1.19/encrypted_fs-0.1.19-x86_64.tar.gz
-	md5sums = SKIP
-	sha256sums = 976d8bf3752a868c4eaab37cd241be887a8dece13957c09a4d9b29bc6efb4387
+	source = https://github.com/radumarias/encrypted_fs/releases/download/0.1.20/encrypted_fs-0.1.20-x86_64.tar.gz
+	sha256sums = e6cb5d56c286c5ad7c87260c1f5856bc17674f7e6b39ce99e2c952d75a29ad0e
 
 pkgname = encrypted_fs-bin
