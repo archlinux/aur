@@ -3,7 +3,7 @@
 _pkgname=goby
 pkgname=goby-community
 pkgver=2.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Attack surface mapping"
 arch=("x86_64")
 url="https://gobies.org/"
@@ -16,10 +16,13 @@ depends=(
 makedepends=('unzip')
 source=(
 	"https://$_pkgname-storage-public.oss-cn-beijing.aliyuncs.com/$pkgver/$_pkgname-linux-x64-$pkgver-Community.zip"
-	"$pkgname.desktop")
+	"$pkgname.desktop"
+	"$pkgname.png"
+	)
 sha256sums=(
 	'e9ecd230b3e2fed975b7a49ea6f3c2bf3f4a819170763dd59d826e45a9ca051b'
 	'0624f9c1aa7377ccb5bd6b6a54a3dbea3cdd1a1e838a154c73bd01d22ff5fc3f'
+	'11e10dc114bd6cd8ecfe018b277798f1c7727f113c15ebc09090682f8575bb1f'
 )
 prepare() {
 	cd "${srcdir}"
@@ -34,6 +37,6 @@ package() {
 	ln -s /opt/$pkgname/goby $pkgdir/usr/bin/$pkgname
 
 	install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-
+	install -Dm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 	chmod -R ugo+rwX $pkgdir/opt/$pkgname
 }
