@@ -1,7 +1,7 @@
 pkgbase=amp-locker
 pkgname=('amp-locker-standalone-bin' 'amp-locker-vst3-bin')
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://audioassault.mx/collections/amp-locker-gear/products/amp-locker"
 license=('EULA')
@@ -13,7 +13,7 @@ source=('Amp Locker.desktop'
         'Amp Locker Linker'
         'amp-locker.png')
 sha256sums=('4b24069c18f9b4542d61b43b1985f0e9768c4cd829facf5eeaab9333797b8974'
-            '088a438fe8f8c045c6a6d662e55671c84d36ee6ec4ce1dee4a6b6ec3f334d559'
+            '42f620330871d562d955936511b2be91db1f870940fd42fa5c1b92dc1d331858'
             '2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5')
 
 prepare () {
