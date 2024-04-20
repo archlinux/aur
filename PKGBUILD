@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Future-proof note-taking and publishing based on Zettelkasten"
 arch=(x86_64)
 url="https://github.com/srid/neuron"
-license=(AGPL3)
+license=('AGPL-3.0-only')
 source_x86_64=("https://github.com/srid/neuron/releases/download/${pkgver}/neuron"
                "neuron.sh")
 sha256sums_x86_64=('f16eedd05ca71f3f0e323072c95e4ee457feba8aa85e982154b2015515e88bb6'
