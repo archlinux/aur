@@ -3,7 +3,7 @@
 pkgname=imgcatr-git
 pkgver=0.1.4.r3.g4e1d839
 pkgrel=1
-pkgdesc="cat for images"
+pkgdesc="A CLI application for displaying images"
 arch=('x86_64')
 url="https://github.com/SilinMeng0510/imgcatr"
 license=('MIT')
