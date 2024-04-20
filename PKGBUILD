@@ -2,7 +2,7 @@
 # Maintainer: Ewen Le Bihan <ortfo@ewen.works>
 
 pkgname='ortfodb-bin'
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A readable, easy and enjoyable way to manage portfolio databases using directories and text files.'
 url='https://ortfo.org'
@@ -13,14 +13,14 @@ conflicts=('ortfodb')
 depends=('imagemagick' 'ffmpeg' 'libwebp')
 optdepends=('gifsicle: to convert videos to GIFs' 'poppler: to process PDFs')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ortfo/db/releases/download/v1.4.1/ortfodb_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b00b95e0f966e80648706c7cd662acd37c1768e19f652ed43a54a2ad3a1d93f3')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ortfo/db/releases/download/v1.5.0/ortfodb_Linux_arm64.tar.gz")
+sha256sums_aarch64=('9524c9273885cc09dda15838a547ecc94ec6c88701592ac1fbfe165d87c703e1')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ortfo/db/releases/download/v1.4.1/ortfodb_Linux_i386.tar.gz")
-sha256sums_i686=('1f747e5d0893280181947fb10a93b371e2415ba75801aa1b922bf60ffd33aa30')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ortfo/db/releases/download/v1.5.0/ortfodb_Linux_i386.tar.gz")
+sha256sums_i686=('623da707b01f6a8bf0a0522bcd509f90b47f08c0a416069c41335f6aca78d1dd')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ortfo/db/releases/download/v1.4.1/ortfodb_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('a4e68fbab3131f99e79b430abcacbea0d8a3e3b79a9fbfe42cfaf36ca4a4f974')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ortfo/db/releases/download/v1.5.0/ortfodb_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('5fd6c444505c73564356ddb3d98946a9c4649d41f6f173f3bbdb4074ded22424')
 
 package() {
   # bin
