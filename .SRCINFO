@@ -1,7 +1,7 @@
 pkgbase = kdocs-uos
 	pkgdesc = 金山文档 Kingsoft documents (An online collaborative office software).
 	pkgver = 3.7.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.kdocs.cn/
 	arch = x86_64
 	license = LicenseRef-Kingsoft

@@ -3,7 +3,7 @@
 
 pkgname=kdocs-uos
 pkgver=3.7.7
-pkgrel=2
+pkgrel=3
 pkgdesc="金山文档 Kingsoft documents (An online collaborative office software)."
 arch=('x86_64')
 url="https://www.kdocs.cn/"
@@ -41,8 +41,10 @@ package() {
 	# License
 	install -Dm644 "${pkgdir}/opt/apps/cn.kdocs.kdesktop/files/doc/kdesktop/copyright" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-	# Clean up unused files
-	rm -rf "${pkgdir}/opt/apps/cn.kdocs.kdesktop/entries/"
-	rm -rf ${pkgdir}/opt/apps/cn.kdocs.kdesktop/files/{bin,doc,lintian}
-	rm "${pkgdir}/opt/apps/cn.kdocs.kdesktop/info"
+	# Remove unused files
+	echo "  -> Removing unused files..."
+	cd "${pkgdir}/opt/"
+	find . -not -path */resources/* -type f -delete
+	find . -xtype l -delete
+	find . -empty -delete
 }
