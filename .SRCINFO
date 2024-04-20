@@ -1,12 +1,13 @@
 pkgbase = kbld-bin
 	pkgdesc = kbld seamlessly incorporates image building and image pushing into your development and deployment workflows
 	pkgver = 0.43.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://carvel.dev/kbld
 	arch = x86_64
 	arch = aarch64
 	license = apache-2.0
 	provides = kbld
+	conflicts = kbld
 	source_x86_64 = kbld-v0.43.0::https://github.com/carvel-dev/kbld/releases/download/v0.43.0/kbld-linux-amd64
 	sha256sums_x86_64 = 119e7d11e66e512896ce42aba9cc7f783388da3cbb258b793e7419a3167af2a9
 	source_aarch64 = kbld-v0.43.0::https://github.com/carvel-dev/kbld/releases/download/v0.43.0/kbld-linux-arm64
