@@ -30,7 +30,7 @@ optdepends=(
   'python-libpysal: tests'
   'python-palettable: tests'
 )
-makedepends=('python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('4441798d55a051e75206bf46dccfc8a8f8323aac8596d19961d11660c98677ca')
 
