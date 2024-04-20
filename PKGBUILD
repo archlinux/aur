@@ -2,7 +2,7 @@
 
 pkgname='liteloader-qqnt-markdown-git'
 _pkgname='LiteLoaderQQNT-Markdown'
-pkgver='1.0.0.0d1be2a'
+pkgver='1.1.0.1f2de88'
 pkgrel=1
 pkgdesc="LiteLoaderQQNT插件，为QQ添加Markdown支持"
 arch=('any')
