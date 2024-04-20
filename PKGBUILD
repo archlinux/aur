@@ -3,7 +3,7 @@
 
 pkgname=openspace-git
 _pkgname=OpenSpace
-pkgver=v0.18.0.1439.g041cb5c68b
+pkgver=v0.18.0.1574.g84bf1a559a
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
@@ -13,9 +13,11 @@ makedepends=('cmake' 'git' 'sed' 'glm' 'websocketpp')
 depends=('gdal' 'mpv' 'vulkan-headers' 'libxinerama' 'libxi' 'qt5-base' 'nss' 'at-spi2-core' 'libxcomposite')
 conflicts=('openspace')
 source=("git+https://github.com/OpenSpace/OpenSpace.git#branch=master"
-	"open-space")
+	"open-space"
+	"update-cfg.patch")
 sha256sums=('SKIP'
-		    3139c195175c28753e2cf2b337a29226291df3e43b73a3476ae83e2db8174555)
+		    56c958c21b0dc0cd2dc822f24788cd5889a222acd82407e6800b167e6c277681
+		    13693f537e469e10034a9335e1c8865939fa2f98cecfbe37b55f23ebae054210)
 
 options=(!debug)
 
@@ -27,7 +29,8 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/OpenSpace"
 		git submodule update --init --recursive
-
+		# patch main configuration file to enable local user execution.
+		patch openspace.cfg ../../update-cfg.patch
 }
 
 
@@ -124,6 +127,4 @@ package() {
 	cp "${srcdir}/${_pkgname}/CREDITS.md" "$pkgdir/opt/OpenSpace/."
 	cp "${srcdir}/${_pkgname}/LICENSE.md" "$pkgdir/opt/OpenSpace/."
 	cp "${srcdir}/${_pkgname}/README.md" "$pkgdir/opt/OpenSpace/."
-	mkdir -p "$pkgdir/opt/OpenSpaceData"
-	chmod 777 "$pkgdir/opt/OpenSpaceData"
 }

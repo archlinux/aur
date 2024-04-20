@@ -1,0 +1,37 @@
+--- a/src/OpenSpace/openspace.cfg
++++ b/src/OpenSpace/openspace.cfg
+@@ -97,7 +97,8 @@
+     DATA = "${BASE}/data",
+     ASSETS = "${DATA}/assets",
+     PROFILES = "${DATA}/profiles",
+-    USER = os.getenv("OPENSPACE_USER") or "${BASE}/user",
++    USER_HOME = os.getenv("HOME"),
++    USER = "${USER_HOME}/.config/openspace/user",
+     USER_ASSETS = "${USER}/data/assets",
+     USER_PROFILES = "${USER}/data/profiles",
+     USER_CONFIG = "${USER}/config",
+@@ -108,19 +109,19 @@
+     -- value.  Otherwise, fall back to the ${BASE}/sync folder instead.  This allows a
+     -- reuse of the sync folder between multiple OpenSpace installations by simply setting
+     -- that environment variable
+-    SYNC = os.getenv("OPENSPACE_SYNC") or "${BASE}/sync",
++    SYNC = os.getenv("OPENSPACE_SYNC") or "${USER}/../sync",
+     SCREENSHOTS = "${USER}/screenshots",
+     WEB = "${DATA}/web",
+     RECORDINGS = "${USER}/recordings",
+-    CACHE = "${BASE}/cache",
++    CACHE = "${USER}/../cache",
+     CONFIG = "${BASE}/config",
+     DOCUMENTATION = "${BASE}/documentation",
+-    LOGS = "${BASE}/logs",
++    LOGS = "${USER}/logs",
+     MODULES = "${BASE}/modules",
+     SCRIPTS = "${BASE}/scripts",
+     SHADERS = "${BASE}/shaders",
+-    TEMPORARY = "${BASE}/temp",
+-    GLOBEBROWSING = os.getenv("OPENSPACE_GLOBEBROWSING") or "${BASE}/../OpenSpaceData"
++    TEMPORARY = "${USER}/../temp",
++    GLOBEBROWSING = os.getenv("OPENSPACE_GLOBEBROWSING") or "${USER}/../OpenSpaceData"
+ }
+ 
+ ModuleConfigurations = {
