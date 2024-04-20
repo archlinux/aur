@@ -1,5 +1,5 @@
 pkgbase = ocaml-atd
-	pkgver = 2.12.0
+	pkgver = 2.15.0
 	pkgrel = 1
 	url = https://github.com/ahrefs/atd
 	arch = x86_64
@@ -21,9 +21,10 @@ pkgbase = ocaml-atd
 	depends = ocaml-biniou
 	depends = ocaml-yojson
 	depends = ocaml-re
+	depends = ocaml-cmdliner
 	options = !strip
-	source = https://github.com/ahrefs/atd/archive/2.12.0.tar.gz
-	sha256sums = 0F588DE2D9A7A765CB3BF35A2A3F687BCA460363EFA76E4C9CA167453AA14153
+	source = https://github.com/ahrefs/atd/archive/2.15.0.tar.gz
+	sha256sums = A0335917E816F67ED431651540603815C270507BA6C40E12FAC3AE3DBEC75C0E
 
 pkgname = ocaml-atd
 	pkgdesc = Adaptable type definitions for OCaml
@@ -48,7 +49,6 @@ pkgname = ocaml-atdj
 pkgname = ocaml-atdpy
 	pkgdesc = Python/mypy code generation for ATD APIs
 	depends = ocaml-atd
-	depends = ocaml-cmdliner
 
 pkgname = ocaml-atds
 	pkgdesc = ATD Code generator for Scala
@@ -57,4 +57,3 @@ pkgname = ocaml-atds
 pkgname = ocaml-atdts
 	pkgdesc = TypeScript code generation for ATD APIs
 	depends = ocaml-atd
-	depends = ocaml-cmdliner

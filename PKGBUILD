@@ -4,7 +4,7 @@
 
 pkgname=('ocaml-atd' 'ocaml-atdgen' 'ocaml-atdgen-runtime' 'ocaml-atdgen-codec-runtime' 'ocaml-atdj' 'ocaml-atdpy' 'ocaml-atds' 'ocaml-atdts')
 _oname=atd
-pkgver=2.12.0
+pkgver=2.15.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/ahrefs/atd"
@@ -14,12 +14,13 @@ depends=('ocaml>=4.08'
 	 'ocaml-easy-format'
 	 'ocaml-biniou'
 	 'ocaml-yojson'
-	 'ocaml-re')
+	 'ocaml-re'
+	 'ocaml-cmdliner')
 makedepends=('ocaml-findlib' 'dune>=2' 'opam' 'scala')
 checkdepends=('flake8' 'java-environment' 'mypy' 'nodejs' 'ocaml-alcotest' 'python-pytest' 'scala')
 options=(!strip)
 source=("https://github.com/ahrefs/${_oname}/archive/${pkgver}.tar.gz")
-sha256sums=('0F588DE2D9A7A765CB3BF35A2A3F687BCA460363EFA76E4C9CA167453AA14153')
+sha256sums=('A0335917E816F67ED431651540603815C270507BA6C40E12FAC3AE3DBEC75C0E')
 _dune="dune $(getopt "j::" $MAKEOPTS 2>/dev/null | sed 's/--/\n/g' | head -n 1)"
 
 prepare() {
@@ -86,7 +87,7 @@ package_ocaml-atdj() {
 
 package_ocaml-atdpy() {
 	pkgdesc="Python/mypy code generation for ATD APIs"
-	depends=('ocaml-atd' 'ocaml-cmdliner')
+	depends=('ocaml-atd')
 
 	_do_package atdpy
 }
@@ -100,7 +101,7 @@ package_ocaml-atds() {
 
 package_ocaml-atdts() {
 	pkgdesc="TypeScript code generation for ATD APIs"
-	depends=('ocaml-atd' 'ocaml-cmdliner')
+	depends=('ocaml-atd')
 
 	_do_package atdts
 }
