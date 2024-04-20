@@ -6,12 +6,12 @@ pkgbase = libdvdread-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = libdvdcss
-	depends = libdvdcss.so
+	depends = libdvdcss
 	provides = libdvdread
-	provides = libdvdread.so
 	conflicts = libdvdread
 	source = git+https://code.videolan.org/videolan/libdvdread.git
 	sha256sums = SKIP
 
 pkgname = libdvdread-git
+	depends = libdvdcss
+	depends = libdvdcss.so

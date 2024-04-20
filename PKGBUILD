@@ -7,13 +7,9 @@ pkgdesc="Library to access DVD disks. (GIT version)"
 arch=('x86_64')
 license=('GPL2')
 url='https://dvdnav.mplayerhq.hu'
-depends=('libdvdcss.so')
-makedepends=('git'
-             'libdvdcss'
-             )
-provides=('libdvdread'
-          'libdvdread.so'
-          )
+depends=('libdvdcss')
+makedepends=('git')
+provides=('libdvdread')
 conflicts=('libdvdread')
 source=('git+https://code.videolan.org/videolan/libdvdread.git')
 sha256sums=('SKIP')
@@ -41,5 +37,6 @@ build() {
 }
 
 package() {
+  depends+=('libdvdcss.so')
   make -C build DESTDIR="${pkgdir}" install
 }
