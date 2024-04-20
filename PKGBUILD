@@ -10,7 +10,7 @@ conflicts=('caj2pdf')
 pkgdesc='Convert CAJ (China Academic Journals) files to PDF.'
 arch=('x86_64')
 url='https://github.com/caj2pdf/caj2pdf'
-license=('custom:GLWTPL')
+license=('GLWTPL')
 depends=(
     'python-pypdf2'
     'mupdf-tools'
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=('git')
 source=(
-    "git+https://github.com/JeziL/caj2pdf.git"
+    "git+${url}"
     "tmp.patch"
     "lib.patch"
 )
