@@ -9,7 +9,7 @@
 : ${_build_pgo:=try}
 
 : ${_build_clang:=true}
-: ${_build_mold:=false}
+: ${_build_mold:=true}
 : ${_build_git_tools:=false}
 
 : ${_build_instrumented:=false}
@@ -28,7 +28,7 @@ unset _pkgtype
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5698.r0.g91b0b16
+pkgver=1.7.5720.r0.g6d8a906
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -55,7 +55,6 @@ _main_package() {
   makedepends=(
     cmake
     extra-cmake-modules
-    gendesk
     git
     libpipewire
     libpulse
@@ -68,7 +67,7 @@ _main_package() {
     'qt6-wayland: Wayland support'
   )
 
-  if [[ "${_build_clang::1}" == "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]]; then
     makedepends+=(
       "clang${_tooltype:-}"
       "llvm${_tooltype:-}"
@@ -76,7 +75,7 @@ _main_package() {
     )
   fi
 
-  if [[ "${_build_mold::1}" == "t" ]] ; then
+  if [[ "${_build_mold::1}" == "t" ]]; then
     makedepends+=(
       "mold${_tooltype:-}"
     )
@@ -87,18 +86,18 @@ _main_package() {
 
   install="$_pkgname.install"
 
-  if [[ "${_build_debug::1}" == "t" ]] ; then
+  if [[ "${_build_debug::1}" == "t" ]]; then
     options=(debug !lto)
   else
     options=(!debug lto)
   fi
 
   _pkgsrc="$_pkgname"
-  source+=(
+  source=(
     "$_pkgsrc"::"git+$url.git"
     "pcsx2_patches"::"git+https://github.com/PCSX2/pcsx2_patches.git"
   )
-  sha256sums+=(
+  sha256sums=(
     'SKIP'
     'SKIP'
   )
@@ -182,25 +181,60 @@ _source_biojppm_c4core() {
   )
 }
 
-# common functions
-prepare() {
-  local _gendesk_options=(
-    -q -f -n
-    --pkgname="$_pkgname"
-    --pkgdesc="$pkgdesc"
-    --name="PCSX2"
-    --exec="/opt/pcsx2/pcsx2-qt"
-    --icon="$_pkgname"
-    --terminal=false
-    --categories="Game;Emulator"
-    --startupnotify=true
+_build_pcsx2() {
+  local _cmake_pcsx2
+
+  _cmake_pcsx2+=(
+    -S "$_pkgsrc"
+    -B build_pcsx2
+    -G Ninja
+    -DCMAKE_BUILD_TYPE="Release"
   )
 
-  gendesk "${_gendesk_options[@]}"
+  if [[ "${_build_debug::1}" == "t" ]]; then
+    _cmake_pcsx2+=(
+      -DENABLE_TESTS=ON
+      -DUSE_ASAN=ON
+    )
+  else
+    _cmake_pcsx2+=(
+      -DENABLE_TESTS=OFF
+      -DUSE_ASAN=OFF
+      -Wno-dev
+    )
+  fi
 
+  if [[ "${_build_avx::1}" == "t" ]]; then
+    _cmake_pcsx2+=(-DDISABLE_ADVANCE_SIMD=OFF)
+  else
+    _cmake_pcsx2+=(-DDISABLE_ADVANCE_SIMD=ON)
+  fi
+
+  local _pgo_profile_old="${SRCDEST:-$startdir}/$pkgname.profdata"
+  local _pgo_profile="$srcdir/$pkgname.profdata"
+  if [[ "${_build_instrumented::1}" == "t" ]]; then
+    echo "Compiling with instrumentation."
+    CFLAGS+=" -fprofile-generate"
+    CXXFLAGS+=" -fprofile-generate"
+  elif [[ "${_build_pgo::1}" == "t" ]] && [ -e "$_pgo_profile_old" ]; then
+    echo "Compiling with profile-guided optimization."
+    cp --reflink=auto "$_pgo_profile_old" "$_pgo_profile"
+
+    CFLAGS+=" -fprofile-use='$_pgo_profile'"
+    CXXFLAGS+=" -fprofile-use='$_pgo_profile'"
+  else
+    echo "Compiling with standard optimization."
+  fi
+
+  cmake "${_cmake_pcsx2[@]}"
+  cmake --build build_pcsx2
+}
+
+# common functions
+prepare() {
   _submodule_update() {
     local _module
-    for _module in "${_submodules[@]}" ; do
+    for _module in "${_submodules[@]}"; do
       git submodule init "${_module##*::}"
       git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
       git -c protocol.file.allow=always submodule update "${_module##*::}"
@@ -215,6 +249,11 @@ prepare() {
   # prevent march=native
   sed -E -e 's@^(\s*)(add_compile_options\(.*march=native.*\))@\1message("skip: march=native")@' \
     -i "$_pkgsrc/cmake/BuildParameters.cmake"
+
+  # remove shaderc semantic debug
+  sed -e '/vk_khr_shader_non_semantic_info/d' \
+    -e '/SetEmitNonSemanticDebugInfo/d' \
+    -i "$_pkgsrc/pcsx2/GS/Renderers/Vulkan/VKShaderCache.cpp"
 }
 
 pkgver() {
@@ -225,66 +264,24 @@ pkgver() {
 
 build() {
   export CC CXX CFLAGS CXXFLAGS LDFLAGS
-  local _cmake_options
 
-  _cmake_options+=(
-    -S "$_pkgsrc"
-    -B build
-    -G Ninja
-    -DCMAKE_BUILD_TYPE="Release"
-  )
-
-  if [[ "${_build_debug::1}" == "t" ]] ; then
-    _cmake_options+=(
-      -DENABLE_TESTS=ON
-      -DUSE_ASAN=ON
-    )
-  else
-    _cmake_options+=(
-      -DENABLE_TESTS=OFF
-      -DUSE_ASAN=OFF
-      -Wno-dev
-    )
-  fi
-
-  if [[ "${_build_clang::1}" == "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]]; then
     CC=clang
     CXX=clang++
   fi
 
-  if [[ "${_build_mold::1}" == "t" ]] ; then
+  if [[ "${_build_mold::1}" == "t" ]]; then
     LDFLAGS+=" -fuse-ld=mold"
-  elif [[ "${_build_clang::1}" == "t" ]] ; then
+  elif [[ "${_build_clang::1}" == "t" ]]; then
     LDFLAGS+=" -fuse-ld=lld"
   fi
 
-  if [[ "${_build_avx::1}" == "t" ]] ; then
+  if [[ "${_build_avx::1}" == "t" ]]; then
     CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
     CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-
-    _cmake_options+=(-DDISABLE_ADVANCE_SIMD=OFF)
-  else
-    _cmake_options+=(-DDISABLE_ADVANCE_SIMD=ON)
   fi
 
-  local _pgo_profile_old="${SRCDEST:-$startdir}/$pkgname.profdata"
-  local _pgo_profile="$srcdir/$pkgname.profdata"
-  if [[ "${_build_instrumented::1}" == "t" ]] ; then
-    echo "Compiling with instrumentation."
-    CFLAGS+=" -fprofile-generate"
-    CXXFLAGS+=" -fprofile-generate"
-  elif [[ "${_build_pgo::1}" == "t" ]] && [ -e "$_pgo_profile_old" ] ; then
-    echo "Compiling with profile-guided optimization."
-    cp --reflink=auto "$_pgo_profile_old" "$_pgo_profile"
-
-    CFLAGS+=" -fprofile-use='$_pgo_profile'"
-    CXXFLAGS+=" -fprofile-use='$_pgo_profile'"
-  else
-    echo "Compiling with standard optimization."
-  fi
-
-  cmake "${_cmake_options[@]}"
-  cmake --build build
+  _build_pcsx2
 
   cd pcsx2_patches
   7z a -mx=9 -r ../patches.zip patches/.
@@ -292,17 +289,17 @@ build() {
 
 package() {
   install -Dm644 patches.zip -t "$pkgdir/opt/$_pkgname/resources/"
-  cp --reflink=auto -r build/bin/* "$pkgdir/opt/$_pkgname/"
+  cp --reflink=auto -r build_pcsx2/bin/* "$pkgdir/opt/$_pkgname/"
 
   install -Dm644 "$_pkgsrc/bin/resources/icons/AppIconLarge.png" \
     "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/pcsx2-qt" <<'END'
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/pcsx2-qt" << 'END'
 #!/usr/bin/env sh
 exec /opt/pcsx2/pcsx2-qt "$@"
 END
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/pcsx2-qt.desktop" <<'END'
+  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/pcsx2-qt.desktop" << 'END'
 [Desktop Entry]
 Type=Application
 Name=PCSX2
