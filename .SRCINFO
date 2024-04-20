@@ -1,0 +1,24 @@
+pkgbase = lexmark-aex
+	pkgdesc = CUPS printer driver for Lexmark MB2236, B2236
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.lexmark.com/
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = gcc-libs
+	depends = glibc
+	depends = ncurses
+	depends = libusb
+	depends = libxext
+	depends = libxtst
+	depends = libxi
+	depends = krb5
+	depends = lua
+	depends = java-runtime
+	conflicts = lexmark-aey
+	source = https://downloads.lexmark.com/downloads/drivers/Lexmark-AEX-PPD-Files.tar.Z
+	md5sums = ea61101dda3c74a82aa91e4a46bb840c
+	sha1sums = 4a33c0f5f448466ac9044002dc32839207092d64
+
+pkgname = lexmark-aex
