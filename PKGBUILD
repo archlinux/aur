@@ -10,7 +10,7 @@ pkgdesc='High-level geospatial data visualization library for Python'
 url='https://github.com/ResidentMario/geoplot'
 arch=('any')
 license=('MIT')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 depends=(
   'python-matplotlib'
   'python-seaborn'
