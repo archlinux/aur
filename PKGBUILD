@@ -1,6 +1,6 @@
-# Maintainer: OpenSorcerer <alex cat opensourcery dog eu>
+# Maintainer: OpenSorcerer <alex cat fossfed dog eu>
 pkgname=cntb
-pkgver=1.4.9
+pkgver=1.4.12
 pkgrel=1
 pkgdesc="Contabo Command Line Interface"
 arch=('i686' 'x86_64' 'aarch64')
