@@ -23,6 +23,7 @@ package() {
      if test -f "$FILE"
     then
         echo "$FILE exists skipping download."
+        cp -r "/usr/share/games/$_pkgname/Data.rsdk" "$pkgdir/usr/share/games/$_pkgname"
     else
         echo "$FILE does not exist, Starting download.."
         cd $srcdir/sonicthehedgehog2-$pkgver-$pkgrel
