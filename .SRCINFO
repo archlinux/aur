@@ -2,6 +2,7 @@ pkgbase = spacecadetpinball
 	pkgdesc = Space Cadet Pinball.
 	pkgver = 1.0.0
 	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/spacecadetpinball
 	arch = pentium4
 	arch = i386
 	arch = i686
@@ -13,7 +14,7 @@ pkgbase = spacecadetpinball
 	depends = wget
 	depends = unzip
 	depends = yad
-	source = https://gitlab.com/spacecadetpinball/spacecadetpinball/-/archive/1.0.0-1/spacecadetpinball-1.0.0-1.tar.bz2
-	sha256sums = SKIP
+	source = https://gitlab.com/linuxbombay/spacecadetpinball/spacecadetpinball/-/archive/1.0.0-1/spacecadetpinball-1.0.0-1.tar.bz2
+	sha256sums = 3a1faa884a0da6a60d165640804c43cbc8fd06eb571504df972c774b6cce15b8
 
 pkgname = spacecadetpinball

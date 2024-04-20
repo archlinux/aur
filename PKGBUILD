@@ -5,11 +5,12 @@ pkgrel=1
 pkgdesc="Space Cadet Pinball."
 arch=('x86_64' 'aarch64')
 arch=('pentium4' 'i386' 'i686' 'x86_64' 'aarch64')
+url=https://gitlab.com/linuxbombay/spacecadetpinball
 license=('GPL')
 depends=('scp-bin' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
-source=("https://gitlab.com/spacecadetpinball/spacecadetpinball/-/archive/$pkgver-$pkgrel/spacecadetpinball-$pkgver-$pkgrel.tar.bz2")
-sha256sums=("SKIP")
+source=("$url/spacecadetpinball/-/archive/$pkgver-$pkgrel/spacecadetpinball-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('3a1faa884a0da6a60d165640804c43cbc8fd06eb571504df972c774b6cce15b8')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
