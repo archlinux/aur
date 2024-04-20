@@ -5,16 +5,16 @@
 _pkgname=moc
 pkgname="${_pkgname}-pulse-svn"
 pkgver=r3005
-pkgrel=1
+pkgrel=2
 pkgdesc='An ncurses console audio player with support for pulseaudio (SVN)'
 url='http://moc.daper.net'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file' 'pulseaudio')
-makedepends=('speex' 'ffmpeg' 'taglib' 'libmpcdec' 'wavpack'
+depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file' 'sndio' 'pulseaudio')
+makedepends=('speex' 'ffmpeg4.4' 'taglib' 'libmpcdec' 'wavpack'
              'libmodplug' 'subversion' 'faad2' 'pulseaudio')
 optdepends=('speex: for using the speex plugin'
-            'ffmpeg: for using the ffmpeg plugin'
+            'ffmpeg4.4: for using the ffmpeg plugin'
             'taglib: for using the musepack plugin'
             'libmpcdec: for using the musepack plugin'
             'wavpack: for using the wavpack plugin'
@@ -45,11 +45,14 @@ prepare() {
   patch -p1 -i ../0001-Pulseaudio-backend.patch
 
   # re-configure
-  autoreconf -f -i -Wall,no-obsolete
+  autoreconf -i -f
 }
 
 build() {
   cd "$srcdir/$pkgname"
+
+  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
+
   ./configure --prefix=/usr --without-rcc --with-pulse \
     --with-alsa --with-oss --with-jack --with-aac --with-mp3 \
     --with-musepack --with-vorbis --with-flac --with-wavpack \
@@ -62,3 +65,5 @@ package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir" install
 }
+
+# vim: ts=2 sw=2
