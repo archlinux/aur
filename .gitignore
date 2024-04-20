@@ -1,5 +1,4 @@
 src/
 pkg/
-FTBA_linux_*.deb
+ftb-app-*.deb
 ftba-*.pkg.tar*
-*.log

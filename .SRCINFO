@@ -1,19 +1,19 @@
 pkgbase = ftba
 	pkgdesc = Offers many different styles of Minecraft modpacks to the community.
-	pkgver = 202401041638_9dc7936164
+	pkgver = 1.25.8
 	pkgrel = 1
+	epoch = 1
 	url = https://feed-the-beast.com/app
 	arch = x86_64
+	arch = aarch64
 	license = LGPL2.1
-	depends = java-runtime=17
 	depends = alsa-lib
 	depends = nss
 	depends = gtk3
-	optdepends = java-runtime=11: For playing some version of Minecraft with system Java.
-	optdepends = java-runtime=8: For playing some version of Minecraft with system Java.
-	source = https://apps.modpacks.ch/FTBApp/release/202401041638-9dc7936164/FTBA_linux_202401041638-9dc7936164.deb
-	source = ftb-app.desktop
-	sha256sums = 148f0b178da76a1600415491dc9c4856ad7b5ccc8ee542cac4cfa8f40be40027
-	sha256sums = 2b50da4dc2811b175e5602e91dfe18e981cba3e2e80deccb8f12b59776d8c530
+	optdepends = java-runtime: Playing Minecraft with system Java.
+	source_x86_64 = https://piston.feed-the-beast.com/app/ftb-app-1.25.8-amd64.deb
+	sha256sums_x86_64 = 5c304798857e3bc584a8762d85be84fbac812c157fac863de1c9bf20566fb013
+	source_aarch64 = https://piston.feed-the-beast.com/app/ftb-app-1.25.8-arm64.deb
+	sha256sums_aarch64 = 072d7d46c0cf7580f344dd03838744a74d097cbcaafaac0d9b5f642de62c3f4b
 
 pkgname = ftba
