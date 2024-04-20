@@ -3,7 +3,7 @@
 _pkgname=goby
 pkgname=goby-community
 pkgver=2.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Attack surface mapping"
 arch=("x86_64")
 url="https://gobies.org/"
@@ -26,7 +26,7 @@ sha256sums=(
 )
 prepare() {
 	cd "${srcdir}"
-	unzip  -o $_pkgname-linux-x64-$pkgver-Community.zip
+	unzip -q -o $_pkgname-linux-x64-$pkgver-Community.zip
 }
 
 package() {
