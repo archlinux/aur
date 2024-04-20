@@ -19,7 +19,7 @@ source=(
 
 pkgver() {
     cd "$_gitname"
-    echo "$(git describe --abbrev=4 --always --tags | sed 's/-/./g')"
+    git describe --abbrev=4 --always --tags | sed 's/-/./g'
 }
 
 prepare(){
