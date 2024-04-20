@@ -1,11 +1,12 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=libdmx
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='X11 Distributed Multihead extension library'
 arch=('x86_64' 'i686')
-license=('custom')
+license=('MIT')
 url='https://xorg.freedesktop.org/'
 depends=('libxext')
 makedepends=('xorg-util-macros')
