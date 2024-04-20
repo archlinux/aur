@@ -6,7 +6,7 @@ pkgrel=5
 pkgdesc="World's first video game in a font."
 arch=('any')
 url='https://github.com/mmulet/font-game-engine'
-license=('GPL3')
+license=('GPL-3.0-only')
 
 _fontfiles=(
     'fontemon_small.otf'

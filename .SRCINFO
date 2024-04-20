@@ -4,7 +4,7 @@ pkgbase = otf-fontemon
 	pkgrel = 5
 	url = https://github.com/mmulet/font-game-engine
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	source = otf-fontemon-1.0-5-fontemon_small.otf::https://github.com/mmulet/font-game-engine/releases/download/1.0/fontemon_small.otf
 	sha256sums = 9fa30993fbdd822ab8476ee992056f45d0abf0e31205291fa2cd142c8ec8300f
 
