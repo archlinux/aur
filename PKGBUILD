@@ -1,26 +1,39 @@
-# Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
+# Maintainer: RiverOnVenus <error@zhui.dev>
+# Contributor: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=imgcatr-git
-_pkgname=imgcatr
 pkgver=0.1.4.r3.g4e1d839
 pkgrel=1
 pkgdesc="cat for images"
 arch=('x86_64')
-url="https://github.com/SilinMeng0510/${_pkgname}"
+url="https://github.com/SilinMeng0510/imgcatr"
 license=('MIT')
-makedepends=('git' 'rust')
-source=("git+https://github.com/SilinMeng0510/$_pkgname.git")
+depends=('gcc-libs' 'glibc')
+makedepends=('git' 'cargo')
+provides=('imgcatr')
+conflicts=('imgcatr')
+source=("$pkgname"::"git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${_pkgname}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd $pkgname
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+	cd $pkgname
+	export RUSTUP_TOOLCHAIN=stable
+	cargo update
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$_pkgname"
-	cargo build --release --workspace
+	cd $pkgname
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 package() {
-	install -Dm755 "${_pkgname}/target/release/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname/target/release/imgcatr"
+	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
