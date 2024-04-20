@@ -1,7 +1,7 @@
 pkgbase = ipget
 	pkgdesc = wget for IPFS: retrieve files over IPFS and save them locally
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ipfs/ipget
 	arch = x86_64
 	license = MIT
