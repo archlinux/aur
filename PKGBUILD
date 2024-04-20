@@ -10,11 +10,11 @@ arch=('x86_64')
 url='https://github.com/z4yx/GoAuthing'
 license=('GPL-3.0-only')
 source=(
-  "$pkgname-$pkgver::https://github.com/z4yx/GoAuthing/releases/download/v$pkgver/auth-thu.linux.x86_64"
-  "https://github.com/z4yx/GoAuthing/raw/v$pkgver/docs/goauthing.service"
-  "https://github.com/z4yx/GoAuthing/raw/v$pkgver/docs/goauthing6.service"
-  "https://github.com/z4yx/GoAuthing/raw/v$pkgver/docs/goauthing6@.service"
-  "https://github.com/z4yx/GoAuthing/raw/v$pkgver/docs/goauthing@.service"
+  "$pkgname-$pkgver::$url/releases/download/v$pkgver/auth-thu.linux.$CARCH"
+  "$url/raw/v$pkgver/docs/goauthing.service"
+  "$url/raw/v$pkgver/docs/goauthing6.service"
+  "$url/raw/v$pkgver/docs/goauthing6@.service"
+  "$url/raw/v$pkgver/docs/goauthing@.service"
 )
 sha256sums=('c039a9dffa4aedec38b3544f2fb1f85cd2dde096f68977689147ce2f668c07f0'
             'cfef26f4e2bf6aa336713372f7e015c477da0c1c976e6a609a0398ddbc710e16'
