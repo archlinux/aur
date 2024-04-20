@@ -47,7 +47,7 @@ build() {
   # to not block user installing this pkg. to speed up build, use "mold" linker, see 
   # https://stackoverflow.com/questions/67511990/how-to-use-the-mold-linker-with-cargo
   RUSTFLAGS="-A warnings -C link-arg=-fuse-ld=mold"
-  nice just
+  nice just build-vendored
 }
 
 package() {
