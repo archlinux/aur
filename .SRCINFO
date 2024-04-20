@@ -1,6 +1,6 @@
 pkgbase = perl-finance-quote
 	pkgdesc = Get stock and mutual fund quotes from various exchanges
-	pkgver = 1.59
+	pkgver = 1.61
 	pkgrel = 1
 	url = https://metacpan.org/release/Finance-Quote
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = perl-finance-quote
 	depends = perl-libwww>=0
 	depends = perl>=5.10.1
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BP/BPSCHUCK/Finance-Quote-1.58.tar.gz
-	sha512sums = d14cb997b1cf7ae4442bedfbbe7384d35f3b9d50c1436267c2ce1e30811f018e6a64b62679e4a7d2c150668ec0e3fb20140739ee9e1cdddcf0b90727febcee4c
+	source = http://search.cpan.org/CPAN/authors/id/B/BP/BPSCHUCK/Finance-Quote-1.61.tar.gz
+	sha512sums = 80adc030db5afa882d51d2b651070fc669cefb4566a23d368eaf7c733c8524de3ff016a76d92f3c9ce584b1ed15eb456c1f44449cd8babbaa1aa00473afec5dc
 
 pkgname = perl-finance-quote

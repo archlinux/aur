@@ -4,7 +4,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-finance-quote'
-pkgver='1.59'
+pkgver='1.61'
 pkgrel='1'
 pkgdesc="Get stock and mutual fund quotes from various exchanges"
 arch=('any')
@@ -13,9 +13,9 @@ options=('!emptydirs')
 depends=('perl-date-manip>=0' 'perl-date-range>=0' 'perl-date-simple>=0' 'perl-datetime>=0' 'perl-datetime-format-iso8601>=0' 'perl-datetime-format-strptime>=0' 'perl-html-parser>=0' 'perl-html-tableextract>=0' 'perl-html-tokeparser-simple>=0' 'perl-html-tree>=0' 'perl-html-treebuilder-xpath>=0' 'perl-http-cookiejar>=0' 'perl-http-cookies>=0' 'perl-http-message>=0' 'perl-io-string>=0' 'perl-json>=0' 'perl-json-parse' 'perl-lwp-protocol-https>=0' 'perl-mozilla-ca>=0' 'perl-readonly>=0' 'perl-spreadsheet-xlsx>=0' 'perl-string-util>=0' 'perl-text-template>=0' 'perl-try-tiny>=0' 'perl-web-scraper>=0' 'perl-xml-libxml>=0' 'perl-libwww>=0' 'perl>=5.10.1')
 checkdepends=('perl-test-kwalitee>=0' 'perl-test-perl-critic>=0' 'perl-test-pod>=0' 'perl-test-pod-coverage>=1.00')
 url='https://metacpan.org/release/Finance-Quote'
-source=('http://search.cpan.org/CPAN/authors/id/B/BP/BPSCHUCK/Finance-Quote-1.58.tar.gz')
-sha512sums=('d14cb997b1cf7ae4442bedfbbe7384d35f3b9d50c1436267c2ce1e30811f018e6a64b62679e4a7d2c150668ec0e3fb20140739ee9e1cdddcf0b90727febcee4c')
-_distdir="Finance-Quote-1.58"
+source=('http://search.cpan.org/CPAN/authors/id/B/BP/BPSCHUCK/Finance-Quote-1.61.tar.gz')
+sha512sums=('80adc030db5afa882d51d2b651070fc669cefb4566a23d368eaf7c733c8524de3ff016a76d92f3c9ce584b1ed15eb456c1f44449cd8babbaa1aa00473afec5dc')
+_distdir="Finance-Quote-1.61"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
