@@ -1,8 +1,8 @@
 # Maintainer: ratata
 
 pkgname=minq-ananicy-git
-pkgver=2.2.1.r96.g6de4295
-pkgrel=3
+pkgver=2.2.1.r324.g1c843c8
+pkgrel=1
 pkgdesc="Minq Ananicy - fork of Ananicy with support for cmdline and more frequently updated rules"
 arch=('any')
 url="https://github.com/kuche1/minq-ananicy"
@@ -10,9 +10,10 @@ license=('GPL3')
 depends=('systemd' 'bash' 'schedtool')
 makedepends=('git' 'make')
 source=("$pkgname"::'git+https://github.com/kuche1/minq-ananicy.git#branch=master')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 install=$pkgname.install
 provides=(ananicy)
+conflicts=(ananicy-cpp)
 backup=('etc/ananicy.d/ananicy.conf')
 
 pkgver() {
