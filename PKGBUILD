@@ -3,15 +3,15 @@
 pkgname=libbluray-git
 pkgver=1.3.4.0.gbb5bc108
 pkgrel=1
-pkgdesc="Library to access Blu-Ray disks for video playback. (GIT version)"
+pkgdesc='Library to access Blu-Ray disks for video playback. (GIT version)'
 arch=('x86_64')
 license=('LGPL2.1')
 url='https://www.videolan.org/developers/libbluray.html'
 depends=(
-  'libxml2' 'libxml2.so'
-  'fontconfig' 'libfontconfig.so'
-  'freetype2' 'libfreetype.so'
-  'libudfread' 'libudfread.so'
+  'libxml2'
+  'fontconfig'
+  'freetype2'
+  'libudfread'
 )
 makedepends=(
   'git'
@@ -22,10 +22,7 @@ optdepends=(
   'libaacs: Enable AACS decryption'
   'java-runtime: BD-J library'
 )
-provides=(
-  'libbluray'
-  'libbluray.so'
-)
+provides=('libbluray')
 conflicts=('libbluray')
 source=('git+https://code.videolan.org/videolan/libbluray.git')
 sha256sums=('SKIP')
@@ -55,5 +52,12 @@ build() {
 }
 
 package() {
+  depends+=(
+    'libxml2.so'
+    'libfontconfig.so'
+    'libfreetype.so'
+    'libudfread.so'
+  )
+
   make -C build DESTDIR="${pkgdir}" install
 }
