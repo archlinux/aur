@@ -1,0 +1,18 @@
+pkgbase = lightcontrol
+	pkgdesc = This package provides the Light Control, which allows users to configure the Backlight / Brightness level and the temperature color of the display.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/EnSabahNurX/lightcontrol
+	install = lightcontrol.install
+	arch = any
+	groups = wheel
+	license = mit
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = python-gobject
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/EnSabahNurX/lightcontrol/blob/a5177032151e508bbf155c2037fe8b30c54ad5d2/lightcontrol.tar.xz
+	sha512sums = SKIP
+
+pkgname = lightcontrol
