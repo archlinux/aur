@@ -1,7 +1,7 @@
 # Maintainer: Ícar N. S. <icar.nin@protonmail.com>
 _name=crawley
 pkgname=$_name-bin
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="The unix-way web crawler"
 arch=(x86_64 aarch64)
@@ -9,10 +9,10 @@ url="https://github.com/s0rg/crawley"
 license=('MIT')
 provides=($_name)
 conflicts=($_name $_name-git)
-source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v${pkgver}/crawley_linux_x86_64_v${pkgver}.tar.gz")
-source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v${pkgver}/crawley_linux_arm64_v${pkgver}.tar.gz")
-sha256sums_x86_64=('acdc00a8577f2b3a718a41e87caef714e5833b4c12b09a9894b89c9b622019f2')
-sha256sums_aarch64=('a11ea4ab16cc8413f034e7385fd42431bcfd6a282505ec33fed92f72732a4e42')
+source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v${pkgver}/crawley_v${pkgver}_linux_x86_64.tar.gz")
+source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v${pkgver}/crawley_v${pkgver}_linux_arm64.tar.gz")
+sha256sums_x86_64=('9dc17f73a9500ca3ded09ddd4b7e07a124dd681ad3e73773c966fceedb90cd5f')
+sha256sums_aarch64=('0fe81f47c01c13470a342b9c95faea954206a30e5619d473cd113e0fa9790309')
 
 package() {
     install -Dm775 $_name "$pkgdir"/usr/bin/$_name
