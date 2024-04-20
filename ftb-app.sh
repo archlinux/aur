@@ -1,2 +1,2 @@
 #!/bin/bash
-exec electron22 /usr/lib/ftb-app/bin/app.asar "$@"
+FTB_APP_PATH=/usr/lib/ftb-app exec electron28 /usr/lib/ftb-app/app.asar "$@"
