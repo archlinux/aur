@@ -138,7 +138,7 @@ url="https://llvm.org/"
 license=('Apache-2.0 WITH LLVM-exception')
 makedepends=('cmake' 'ninja' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses' 'patch'
              'libxml2' 'python-setuptools' 'python-psutil' 'python-sphinx' 'git')
-depends=('ncurses' 'zstd')
+depends=('gcc-libs' 'glibc' 'ncurses' 'zlib' 'zstd')
 conflicts=('clangd-opt')
 replaces=('clangd-opt')
 provides=('clangd-opt')
