@@ -2,7 +2,7 @@
 pkgname=mdspan
 pkgver=0.6.0
 pkgrel=1
-pkgdesc="C++ performance portability programming ecosystem"
+pkgdesc="Reference implementation of mdspan targeting C++23"
 arch=(x86_64)
 url="https://github.com/kokkos/${pkgname}"
 license=(Apache-2.0)

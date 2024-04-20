@@ -1,5 +1,5 @@
 pkgbase = mdspan
-	pkgdesc = C++ performance portability programming ecosystem
+	pkgdesc = Reference implementation of mdspan targeting C++23
 	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/kokkos/mdspan
