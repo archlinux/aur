@@ -1,15 +1,11 @@
 pkgbase = ttf-monapo
 	pkgdesc = A Japanese font for viewing Japanese ascii arts properly
 	pkgver = 20170722
-	pkgrel = 2
-	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
+	pkgrel = 3
+	url = https://github.com/utuhiro78/modified-fonts
 	arch = any
-	license = custom
-	depends = fontconfig
-	depends = xorg-mkfontscale
-	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/monapo-20170722.tar.bz2
-	md5sums = f6bdac3e091923b6d726c4d0844ad110
-	b2sums = 1fcb1b0599e9268aa6e004bcf645be997adc340bfe4e192064354e64d830f7d231aa5919ff839dac4ca2f7f1e43a9e85e9aa43ea0153d47d59d658cecce2330e
+	license = IPA
+	source = https://github.com/utuhiro78/modified-fonts/raw/main/monapo-20170722.tar.xz
+	sha256sums = f1cf49006f9ef3079e95b2808c8727727aa664006502c9b52fa268bbe901d3cd
 
 pkgname = ttf-monapo
-
