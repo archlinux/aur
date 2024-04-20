@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSA
-_pkgver=1.03.2
+_pkgver=1.03.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=8
+pkgrel=1
 pkgdesc="Gene Set Analysis"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-impute
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('287111ee3bb2bbe301651cfac69f9c1b')
-b2sums=('fac269fab725e80b7ae38e9c91149e5e5910f830690cc26149bb4dab734413feba02aec165abe78f843c6933c8f445d7c5a99107f9659449096313a2f5fb6d1b')
+md5sums=('54162cce1f159a815e2f542498d17f37')
+b2sums=('cbeb925f101ab97ef59b36977d905fcc8dd69208c3f07e294871319e6c85d09b217ef0b0b4ce737d2b44639b48d10cb372ca71ec06d06a44a035fc78867192b5')
 
 build() {
   mkdir build
