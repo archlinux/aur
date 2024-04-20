@@ -1,7 +1,7 @@
 pkgbase = icingadb-web
 	pkgdesc = Provides a graphical interface to your Icinga monitoring
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/Icinga/icingadb-web
 	install = icingadb-web.install
@@ -9,7 +9,7 @@ pkgbase = icingadb-web
 	arch = any
 	license = GPL
 	depends = icingaweb2>=2.9
-	depends = icinga-php-library>=0.13
+	depends = icinga-php-library>=0.13.2
 	depends = icinga-php-thirdparty>=0.12
 	provides = icingadb-web
 	provides = icingaweb2-module-icingadb

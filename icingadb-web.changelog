@@ -1,3 +1,7 @@
+2024-04-20
+  - Changed dependency:
+    - icinga-php-library>=v0.13.2
+
 2024-04-18
   - New upstream release: Version 1.1.2
     https://github.com/Icinga/icingadb-web/releases/tag/v1.1.2

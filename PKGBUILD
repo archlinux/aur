@@ -2,7 +2,7 @@
 
 pkgname="icingadb-web"
 pkgver="1.1.2"
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Provides a graphical interface to your Icinga monitoring "
 arch=("any")
@@ -11,7 +11,7 @@ license=("GPL")
 groups=()
 depends=(
     "icingaweb2>=2.9"
-    "icinga-php-library>=0.13"
+    "icinga-php-library>=0.13.2"
     "icinga-php-thirdparty>=0.12"
 )
 makedepends=()
