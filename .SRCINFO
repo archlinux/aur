@@ -1,6 +1,6 @@
 pkgbase = jellyfin-rpc
 	pkgdesc = Displays the content you're currently watching on Discord
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Radiicall/jellyfin-rpc
 	install = jellyfin-rpc.install
@@ -10,7 +10,7 @@ pkgbase = jellyfin-rpc
 	depends = glibc
 	depends = gcc-libs
 	optdepends = python: for the configuration script
-	source = jellyfin-rpc-1.0.4.tar.gz::https://github.com/Radiicall/jellyfin-rpc/archive/refs/tags/1.0.4.tar.gz
-	sha512sums = 0cb152a43551bf7831aaf616d9363cc45dd50bc8808329215b2e5ce2724f3ebd469afa82669c688b6c9681ef87ece829b1c7937ad5ecb3e434f6416832045935
+	source = jellyfin-rpc-1.1.0.tar.gz::https://github.com/Radiicall/jellyfin-rpc/archive/refs/tags/1.1.0.tar.gz
+	sha512sums = 0d24e1a6432ed04aa263dfd108e5559e30ed07264a778b02f1ddf332bb0ac33cf2281961d227442da3a000154e8e1e5baf11a57bb458144f419b42539415d814
 
 pkgname = jellyfin-rpc
