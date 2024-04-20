@@ -2,7 +2,7 @@
 # Maintainer: hairlinehd <slimender123@gmail.com>
 pkgname='obgk'
 _pkgname='obgk'
-pkgver=39.b290ec3
+pkgver=latest
 pkgrel=1
 pkgdesc="osu!stable video and background deleter"
 arch=('x86_64')
