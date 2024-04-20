@@ -1,5 +1,5 @@
 pkgname=executor-git
-pkgver=0.1.0.r203.ga7451c9f
+pkgver=0.1.0.r437.g27c8ef28
 pkgrel=1
 pkgdesc="A modern fork of the classic Mac emulator"
 arch=('x86_64')
@@ -14,24 +14,8 @@ optdepends=('sdl2: for SDL 2 frontend'
             'waylandpp: for Wayland frontend')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/autc04/executor.git'
-        'git+https://github.com/autc04/PowerCore.git'
-        'git+https://github.com/vector-of-bool/cmrc.git'
-        'git+https://github.com/autc04/cxmon.git'
-        'git+https://github.com/LMDB/lmdb.git'
-        'git+https://github.com/autc04/lmdbxx.git'
-        'git+https://github.com/autc04/multiversal.git'
-        'git+https://github.com/autc04/syn68k.git'
-        'git+https://github.com/google/googletest.git')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+source=('git+https://github.com/autc04/executor.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -41,14 +25,6 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	git submodule init
-	git config submodule.PowerCore.url $srcdir/PowerCore
-	git config submodule.cmrc.url $srcdir/cmrc
-	git config submodule.cxmon.url $srcdir/cxmon
-	git config submodule.lmdb.url $srcdir/lmdb
-	git config submodule.lmdbxx.url $srcdir/lmdbxx
-	git config submodule.multiversal.url $srcdir/multiversal
-	git config submodule.syn68k.url $srcdir/syn68k
-	git config submodule.tests/googletest.url $srcdir/googletest
 	git submodule update
 }
 
