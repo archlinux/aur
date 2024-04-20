@@ -1,6 +1,6 @@
 pkgbase = vala-panel-applets-gpl-git
 	pkgdesc = Cyclically spawns a script/program, captures its output and displays the resulting string in the panel
-	pkgver = r46.d4c5a6d
+	pkgver = r89.5410ac8
 	pkgrel = 1
 	url = https://gitlab.com/vala-panel-project/vala-panel-applets-gpl
 	arch = i686
@@ -22,10 +22,5 @@ pkgname = vala-panel-applets-xembed-git
 	depends = vala-panel>=0.4.62
 	depends = libx11
 	depends = libxrender
-
-pkgname = vala-panel-applets-icontasks-git
-	pkgdesc = Budgie's icontasks for vala-panel
-	depends = gtk3
-	depends = vala-panel>=0.4.62
-	depends = libwnck3
-
+	provides = vala-panel-applets-xembed
+	conflicts = vala-panel-applets-xembed

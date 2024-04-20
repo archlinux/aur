@@ -9,11 +9,10 @@ _opts=(
 makedepends=('vala' 'gtk3' 'vala-panel>=0.4.62' 'libwnck3' 'meson' 'ninja' 'git')
 pkgname=(
 'vala-panel-applets-xembed-git'
-'vala-panel-applets-icontasks-git'
 )
 pkgbase=vala-panel-applets-gpl-git
 _pkgbase=vala-panel-applets-gpl
-pkgver=r46.d4c5a6d
+pkgver=r89.5410ac8
 pkgrel=1
 pkgdesc="Cyclically spawns a script/program, captures its output and displays the resulting string in the panel"
 url="https://gitlab.com/vala-panel-project/vala-panel-applets-gpl"
@@ -38,20 +37,12 @@ build(){
 package_vala-panel-applets-xembed-git(){
 	pkgdesc="Old XEmbed system tray for vala-panel"
 	depends=('gtk3' 'vala-panel>=0.4.62' 'libx11' 'libxrender')
+	provides=("vala-panel-applets-xembed")
+	conflicts=("vala-panel-applets-xembed")
 	DESTDIR="${pkgdir}" meson install -C build
 	rm -rf ${pkgdir}/usr/share/{vala-panel-applets,glib-2.0,locale}
 	rm -rf ${pkgdir}/usr/share/vala-panel/applets/{com.solus.icontasks,org.valapanel.flowtasks}.plugin
 	rm -rf ${pkgdir}/usr/lib/vala-panel/applets/{libicontasks,libflowtasks}.so
-}
-
-package_vala-panel-applets-icontasks-git(){
-	pkgdesc="Budgie's icontasks for vala-panel"
-	depends=('gtk3' 'vala-panel>=0.4.62' 'libwnck3')
-	DESTDIR="${pkgdir}" meson install -C build
-	rm -rf ${pkgdir}/usr/share/vala-panel-applets
-	rm -rf ${pkgdir}/usr/share/glib-2.0/schemas/org.valapanel.flowtasks.gschema.xml
-	rm -rf ${pkgdir}/usr/share/vala-panel/applets/{org.valapanel.xembed,org.valapanel.flowtasks}.plugin
-	rm -rf ${pkgdir}/usr/lib/vala-panel/applets/{libflowtasks,libxembed}.so
 }
 
 
