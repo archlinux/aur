@@ -3,7 +3,7 @@
 
 pkgname=outline-client-appimage
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
 conflicts=('outline-client-appimage-wayland' 'outline-client-appimage-git')
@@ -21,7 +21,7 @@ source=("Outline-Client_${pkgver}.AppImage::https://s3.amazonaws.com/outline-rel
         "outline-client1024.png"
         "outline-client.desktop"
         "outline-client-appimage.install")
-options=('!strip')
+options=('!strip' '!debug')
 depends=('fuse2' 'nss')
 install=${pkgname}.install
 
