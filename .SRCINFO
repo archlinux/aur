@@ -1,6 +1,6 @@
 pkgbase = neco-git
 	pkgdesc = Concurrency library for C (coroutines)
-	pkgver = 0.2.0.r0.ge7a1b30
+	pkgver = 0.2.1.r0.g2c3852d
 	pkgrel = 1
 	url = https://github.com/tidwall/neco
 	arch = x86_64
