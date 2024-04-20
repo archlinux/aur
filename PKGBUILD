@@ -17,7 +17,6 @@ md5sums=('SKIP')
 options=('strip')
 
 build() {
-    rm -rf ~/.cache/
     cd "${gitname}/"
     meson . _build --prefix=/usr
     meson configure -Dprofile=development _build
