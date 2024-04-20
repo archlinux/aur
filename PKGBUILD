@@ -1,8 +1,8 @@
 # Maintainer: su226 <thesu226 at outlook dot com>
 
 pkgname=quatrack
-pkgver="0.6.0"
-_zenitha_ver="60aa97f8ee43485c67af667e90e47aa2a73f5cc7"
+pkgver="0.6.2"
+_zenitha_ver="ed98686a0e7029fab8b034799a4f6dfa5893f801"
 pkgrel=1
 epoch=
 pkgdesc="Hit the keyboard/click the screen with the music beat, enjoy the geometric style animation, get higher scores, and challenge your record!"
@@ -27,7 +27,7 @@ source=("quatrack-$pkgver.tar.gz::https://github.com/26F-Studio/Quatrack/archive
         quatrack.sh
         quatrack.desktop)
 noextract=()
-sha256sums=(cae47342780c260c35e7c307d14f069aa06541ef1daffac3203d3863f09ee6e0
+sha256sums=(8b484ac1dfbf7eb3ae5e3f4c7eaa4a080b9def1f99ee1317e8cb548fb3d0729e
             SKIP
             77fdcc4f6989a4390f3da7d1573e39fc6a96e6f3f38210f864c2330870a94fca
             74d3f7cc58e7192ffbc86523e3c3f00542d39af882716461147803015301fa2f)
