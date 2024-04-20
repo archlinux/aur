@@ -8,6 +8,7 @@ pkgbase = obgk
 	makedepends = git
 	depends = bash
 	depends = fd
+	depends = findutils
 	optdepends = zenity: nice gui to select your songs folder
 	source = git+https://github.com/shoplifterhd/obgk.git
 	md5sums = SKIP
