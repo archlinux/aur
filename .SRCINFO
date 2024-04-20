@@ -43,4 +43,3 @@ pkgbase = executor-git
 	sha256sums = SKIP
 
 pkgname = executor-git
-
