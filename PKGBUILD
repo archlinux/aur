@@ -1,7 +1,7 @@
 # Use environment variable MAKEPKG_AYUGRAM_API_ID and MAKEPKG_AYUGRAM_API_HASH to override default values
 
 pkgname=ayugram-desktop
-pkgver=4.16
+pkgver=4.16.8
 pkgrel=1
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
@@ -26,12 +26,12 @@ source=(
     "AyuGram-v$pkgver.tar.gz::https://github.com/AyuGram/AyuGramDesktop/archive/refs/tags/v$pkgver.tar.gz"
 )
 declare -rAg _modules_name_map=(
-    [cmake]=https://github.com/desktop-app/cmake_helpers/archive/b875d0ae2bf457ec94aaddd08431753e14ec71ac.tar.gz
+    [cmake]=https://github.com/desktop-app/cmake_helpers/archive/4ec493812d25de1eccfedccc49a23c15d032b118.tar.gz
     [cmake/external/Implib.so]=https://github.com/yugr/Implib.so/archive/0ddaa715d2572b100f8248c0fa4450fbf895be14.tar.gz
     [cmake/external/glib/cppgir]=https://gitlab.com/mnauw/cppgir/-/archive/9c4f5820d94d62ab451501f016bfea97156518f4/cppgir-9c4f5820d94d62ab451501f016bfea97156518f4.tar.gz
     [cmake/external/glib/cppgir/expected-lite]=https://github.com/martinmoene/expected-lite/archive/95b9cb015fa17baa749c2b396b335906e1596a9e.tar.gz
     [Telegram/codegen]=https://github.com/desktop-app/codegen/archive/afed06a4c04d1a1cf7cfce4faca273e1f574462e.tar.gz
-    [Telegram/lib_base]=https://github.com/desktop-app/lib_base/archive/f95154033c670cf786fce82b005abde8a5d3922f.tar.gz
+    [Telegram/lib_base]=https://github.com/desktop-app/lib_base/archive/3d1ea724a80c3e3a431a88a653d24f4f418eaea8.tar.gz
     [Telegram/lib_crl]=https://github.com/desktop-app/lib_crl/archive/078006d29af0002e6cd8c61a405cdeaf65b37142.tar.gz
     [Telegram/lib_lottie]=https://github.com/desktop-app/lib_lottie/archive/1a700e5a0d7c3e2f617530354ff2a47c5c72bb4a.tar.gz
     [Telegram/lib_qr]=https://github.com/desktop-app/lib_qr/archive/501f4c3502fd872ab4d777df8911bdac32de7c48.tar.gz
@@ -39,7 +39,7 @@ declare -rAg _modules_name_map=(
     [Telegram/lib_spellcheck]=https://github.com/desktop-app/lib_spellcheck/archive/9b52030bfcd7e90e3e550231a3783ad1982fda78.tar.gz
     [Telegram/lib_storage]=https://github.com/desktop-app/lib_storage/archive/0971b69ca90f1697ef81276d9820dcd6d26de4ac.tar.gz
     [Telegram/lib_tl]=https://github.com/AyuGram/lib_tl/archive/11c8ae47ff9c9d69b0470700fff9ed924a97acd3.tar.gz
-    [Telegram/lib_ui]=https://github.com/AyuGram/lib_ui/archive/b893172343871ba854220c0ff670df4ae991bb97.tar.gz
+    [Telegram/lib_ui]=https://github.com/AyuGram/lib_ui/archive/cd767330a5b61852cba6663ffcfcc5fc91cc36a6.tar.gz
     [Telegram/lib_webrtc]=https://github.com/desktop-app/lib_webrtc/archive/1cbf5fa7d875074c40e76216a3047bd7c59996d7.tar.gz
     [Telegram/lib_webview]=https://github.com/desktop-app/lib_webview/archive/7c346c6b042266b5adb116a2114df1d46b37c03f.tar.gz
     [Telegram/ThirdParty/GSL]=https://github.com/desktop-app/GSL/archive/09938e870420b69a01f55c755207c871bc20b4e5.tar.gz
@@ -50,9 +50,10 @@ declare -rAg _modules_name_map=(
     [Telegram/ThirdParty/fcitx5-qt]=https://github.com/fcitx/fcitx5-qt/archive/cc77e32c0ab675a663a7c019b3bb8cfcc60c5ec3.tar.gz
     [Telegram/ThirdParty/hime]=https://github.com/hime-ime/hime/archive/9b3e6f9ab59d1fe4d9de73d3bf0fed7789f921c5.tar.gz
     [Telegram/ThirdParty/hunspell]=https://github.com/hunspell/hunspell/archive/22c3381e2066bed616250d373fc5c935598b564a.tar.gz
+    [Telegram/ThirdParty/jemalloc]=https://github.com/jemalloc/jemalloc/archive/54eaed1d8b56b1aa528be3bdd1877e59c56fa90c.tar.gz
     [Telegram/ThirdParty/kcoreaddons]=https://github.com/KDE/kcoreaddons/archive/79b99f162b200413671dbabe21c73356d9956e35.tar.gz
     [Telegram/ThirdParty/kimageformats]=https://github.com/KDE/kimageformats/archive/63a9de758f4132b73ea4535fd9dd7fde3138dc33.tar.gz
-    [Telegram/ThirdParty/libprisma]=https://github.com/desktop-app/libprisma/archive/adf35ba88160777ce5b8d122630852394c58279f.tar.gz
+    [Telegram/ThirdParty/libprisma]=https://github.com/desktop-app/libprisma/archive/23b0d70f9709da9b38561d5706891a134d18df76.tar.gz
     [Telegram/ThirdParty/libtgvoip]=https://github.com/telegramdesktop/libtgvoip/archive/25facad342c3280315f9ef553906f46c3eeba1e4.tar.gz
     [Telegram/ThirdParty/libtgvoip/cmake]=https://github.com/desktop-app/cmake_helpers/archive/39aa77999e4b3cdec080f8e7eec9a4a45ccf6fc3.tar.gz
     [Telegram/ThirdParty/lz4]=https://github.com/lz4/lz4/archive/5ff839680134437dbf4678f3d0c7b371d84f4964.tar.gz
@@ -82,17 +83,18 @@ do
         source+=("$source_str")
     fi
 done
-sha256sums=('b4fce8656b1c3e72ee3a294174259bfb2b42fbf7b96653d75f63ee11f9b22a2c'
+sha256sums=('fe6a98661e37c6cf86589e538a94e0bf4200f079eb8b2134774e01f38d94aab5'
             'd0d4ea2fddcbc7d10ace2c37309feb09da87e8ce7ced6ce73592da1359f4765f'
             '4af7bb71070bdf3840f92b134bcbcf7046cb2b6d57292e9abffcde9ecbf68d67'
             '8b4ba7258685e49c9b7f2c60925264c3b2713805ad21304404d5f6b77cd5582b'
             'cbc1f4bf8c28ffeb89852eda7056ff6aa80d49cb45736a583c931d5ceeccdcdd'
             '3e7253b2cc31bdf68fa50d105715158e649812e5ad6b4f1f6e5fd1e89b3ffdfd'
             'c9aa4e32eb5e475d0826154055ff4749c07bb46d83b12f1641d31557e944a16f'
-            '6b45bc8987bcd8f769954da20a327f8ac9271b6aeafdc944597838b92876319a'
+            '3616da099f09d30553c173326ec778315efdac0bcb0a00f4234e718d1a14dc90'
             '1142f3ccaf7750e4cf452aa9c39336b7029f2aee337957ef646da23a7b08ac62'
-            'd050b648598f639f872d68a2569e9e5a7929ac31fbc2649edc4c67c9efeec2ee'
+            '664e1c6fb6049b5a8bb453916cc193d42b6fb4219a80f9a8bea9bd223d31cb82'
             'c9c7364bc59fb9421e3f87c421b87ef910e140b4b8144511106dee4bf5f78f18'
+            '9b1afca339bd4e0579e73e92478ea26bb0c845dca7231de031e66c2f1a4ea5d9'
             '3454ad000136aef5d51a74a9c4714ed7e39914e30957f77ea18e8953ebe6cb78'
             '716fbe4fc85ecd36488afbbc635b59b5ab6aba5ed3b69d4a32a46eae5a453d38'
             '9c3073b602af6edf8c0d9355325b6f7eddc3732a0c958983fbbe775dd6e0662f'
@@ -106,10 +108,10 @@ sha256sums=('b4fce8656b1c3e72ee3a294174259bfb2b42fbf7b96653d75f63ee11f9b22a2c'
             'ec25bbd47ba895684e9f9a3dfbb9aa96a7573c4c84455542be23998d5eb0fad8'
             '612b5d89f58a578240b28a1304ffb0d085686ebe0137adf175ed0e3382b7ed58'
             '996fdbcc6f99f44963c867a701bf8ab4179f32f3536ed32895a009ab569a4d66'
-            '2a649f007d7526dfa1a2ce4496e9a1a59006e0fcba19643c80d07f5fe97d01b7'
+            'c8af5cdde985634fe6d448a7aa59d554f5bdd8f46ee460c6a3fc03979f20f123'
             '0de97c65d3833051ead485c2130d20049b32e0190a7bf965c8696544e749949c'
             'd80795686f3e58448c7b76830bb5c40847b7eaae1996c28f0422a029b66c2bb0'
-            'f5f94a60077a15a0c583318703c7f1104c48bba93c8cbfa66fb9b6b8dda07cdf'
+            'aba69c97d466e82a13ae6c1d52628c7f7ec8f85c5224f8634fa26a313ebcc95f'
             'd0752fbb2ef6dc9dd1484252fe1027282019c74168da9ed7852abdf94fc5d73e'
             '39a635a5a0f4e7d3887a1d7207892be5af5adcf1bc135062f3af72fe5ab7b470'
             '52a2e052beb67492225a38213108f1d7edd1940fd025cad3a4ae28c57d428419'
@@ -125,10 +127,16 @@ sha256sums=('b4fce8656b1c3e72ee3a294174259bfb2b42fbf7b96653d75f63ee11f9b22a2c'
 
 prepare() {
     cd "$srcdir/AyuGramDesktop-$pkgver"
-    _modules=(
+    declare -ra _modules=(
         cmake cmake/external/Implib.so cmake/external/glib/cppgir cmake/external/glib/cppgir/expected-lite
-        Telegram/codegen Telegram/lib_{base,crl,lottie,qr,rpl,spellcheck,storage,tl,ui,webrtc,webview}
-        Telegram/ThirdParty/{GSL,QR,cld3,dispatch,expected,fcitx5-qt,hime,hunspell,kcoreaddons,kimageformats,libprisma,libtgvoip{,/cmake},lz4,nimf,plasma-wayland-protocols,range-v3,rlottie,tgcalls,wayland,wayland-protocols,xxHash,xdg-desktop-portal}
+        Telegram/codegen Telegram/lib_base Telegram/lib_crl Telegram/lib_lottie Telegram/lib_qr Telegram/lib_rpl
+        Telegram/lib_spellcheck Telegram/lib_storage Telegram/lib_tl Telegram/lib_ui Telegram/lib_webrtc Telegram/lib_webview
+        Telegram/ThirdParty/GSL Telegram/ThirdParty/QR Telegram/ThirdParty/cld3 Telegram/ThirdParty/dispatch
+        Telegram/ThirdParty/expected Telegram/ThirdParty/fcitx5-qt Telegram/ThirdParty/hime Telegram/ThirdParty/hunspell
+        Telegram/ThirdParty/jemalloc Telegram/ThirdParty/kcoreaddons Telegram/ThirdParty/kimageformats Telegram/ThirdParty/libprisma
+        Telegram/ThirdParty/libtgvoip Telegram/ThirdParty/libtgvoip/cmake Telegram/ThirdParty/lz4 Telegram/ThirdParty/nimf
+        Telegram/ThirdParty/plasma-wayland-protocols Telegram/ThirdParty/range-v3 Telegram/ThirdParty/rlottie Telegram/ThirdParty/tgcalls
+        Telegram/ThirdParty/wayland Telegram/ThirdParty/wayland-protocols Telegram/ThirdParty/xxHash Telegram/ThirdParty/xdg-desktop-portal
     )
     for module in "${_modules[@]}"
     do
