@@ -17,13 +17,13 @@ package() {
     install -dm755 "$pkgdir/usr/share/pixmaps"
 
     # Packaging files
-    for dir in aod-*/ ; do mv "${dir}" "$_pkgname" ;done
-    cp -r "$srcdir/$_pkgname/$pkgname.png" "$pkgdir/usr/share/pixmaps"
-    cp -r "$srcdir/$_pkgname/." "$pkgdir/usr/share/games/$_pkgname"
-    install -Dm755 "$srcdir/$_pkgname/$pkgname" "$pkgdir/usr/bin"  
+    for dir in theadventuresofdemo-*/ ; do mv "${dir}" "$pkgname" ;done
+    cp -r "$srcdir/$pkgname/$pkgname.png" "$pkgdir/usr/share/pixmaps"
+    cp -r "$srcdir/$pkgname/." "$pkgdir/usr/share/games/$_pkgname"
+    install -Dm755 "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/bin"  
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$_pkgname/$pkgname.desktop" \
+    install -Dm644 "$srcdir/$pkgname/$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
