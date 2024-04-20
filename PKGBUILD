@@ -2,22 +2,28 @@
 
 pkgname=xss-lock-locked-hint
 pkgver=0.3.0.r8.g7b0b4dc
-pkgrel=2
-pkgdesc="Forked version of xss lock that supports logind's SetLockedHint"
-arch=('i686' 'x86_64')
+pkgrel=3
+pkgdesc="Use external locker as X screen saver. Fork with support for logind's SetLockedHint."
+arch=('x86_64')
 url="https://github.com/xdbob/xss-lock/tree/locked_hint"
 license=('MIT')
-depends=('xcb-util' 'systemd')
-makedepends=('cmake' 'python-docutils' 'git')
+depends=('glib2' 'xcb-util')
+makedepends=('cmake' 'git' 'python-docutils')
 optdepends=('bash-completion: for bash completion')
 provides=('xss-lock')
 conflicts=('xss-lock')
-source=("$pkgname::git+https://github.com/xdbob/xss-lock#branch=locked_hint")
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/xdbob/xss-lock#branch=locked_hint"
+        '0016-Do-not-core-dump-when-exiting-due-to-loss-of-X-conne.patch')
+sha256sums=('SKIP' '4063c3624f78fa592e1e36975acd43746d06866c00f8ab9500d3b578c538fc93')
 
 pkgver() {
   cd "$pkgname"
   git describe | sed 's/^v//; s/-/.r/; s/-/./'
+}
+
+prepare() {
+  cd "$pkgname"
+  patch -Np1 < "$srcdir/0016-Do-not-core-dump-when-exiting-due-to-loss-of-X-conne.patch"
 }
 
 build() {

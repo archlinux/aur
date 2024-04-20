@@ -1,20 +1,21 @@
 pkgbase = xss-lock-locked-hint
-	pkgdesc = Forked version of xss lock that supports logind's SetLockedHint
+	pkgdesc = Use external locker as X screen saver. Fork with support for logind's SetLockedHint.
 	pkgver = 0.3.0.r8.g7b0b4dc
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xdbob/xss-lock/tree/locked_hint
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = python-docutils
 	makedepends = git
+	makedepends = python-docutils
+	depends = glib2
 	depends = xcb-util
-	depends = systemd
 	optdepends = bash-completion: for bash completion
 	provides = xss-lock
 	conflicts = xss-lock
 	source = xss-lock-locked-hint::git+https://github.com/xdbob/xss-lock#branch=locked_hint
-	md5sums = SKIP
+	source = 0016-Do-not-core-dump-when-exiting-due-to-loss-of-X-conne.patch
+	sha256sums = SKIP
+	sha256sums = 4063c3624f78fa592e1e36975acd43746d06866c00f8ab9500d3b578c538fc93
 
 pkgname = xss-lock-locked-hint
