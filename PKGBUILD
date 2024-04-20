@@ -2,14 +2,13 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 ## options
-
-unset _pkgtype
+: ${_install_path:=opt}
 
 # basic info
 _pkgname=qtscrcpy
-pkgname="$_pkgname${_pkgtype:-}"
+pkgname="$_pkgname"
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache-2.0')
@@ -23,7 +22,6 @@ depends=(
 makedepends=(
   'chrpath'
   'cmake'
-  'gendesk'
   'git'
   'qt5-tools'
 )
@@ -46,28 +44,6 @@ sha256sums=(
 
 # common functions
 prepare() {
-  cat <<'EOF' > "$_pkgname.sh"
-#!/usr/bin/env sh
-
-export QTSCRCPY_CONFIG_PATH="/etc/qtscrcpy"
-exec /opt/qtscrcpy/QtScrcpy "$@"
-EOF
-
-  local _gendesk_options=(
-    -q -f -n
-    --pkgname="$_pkgname"
-    --pkgdesc="$pkgdesc"
-    --name="QtScrcpy"
-    --exec="$_pkgname %u"
-    --icon="$_pkgname"
-    --terminal=false
-    --categories="Development;Utility"
-    --mimetypes="application/epub+zip"
-    --startupnotify=true
-  )
-
-  gendesk "${_gendesk_options[@]}"
-
   cd "$_pkgsrc"
   git submodule init
   git config submodule.QtScrcpy/QtScrcpyCore.url "$srcdir/qtscrcpycore"
@@ -96,22 +72,42 @@ build() {
 
 package() {
   cd "$_pkgsrc"
-  install -Dm755 output/x64/None/QtScrcpy -t "$pkgdir/opt/$_pkgname/"
-  install -Dm644 output/x64/None/scrcpy-server -t "$pkgdir/opt/$_pkgname/"
-  install -Dm644 output/x64/None/sndcpy.apk "$pkgdir/opt/$_pkgname/"
-  install -Dm755 output/x64/None/sndcpy.sh "$pkgdir/opt/$_pkgname/"
+  install -Dm755 output/x64/None/QtScrcpy -t "$pkgdir/$_install_path/$_pkgname/"
+  install -Dm644 output/x64/None/scrcpy-server -t "$pkgdir/$_install_path/$_pkgname/"
+  install -Dm644 output/x64/None/sndcpy.apk "$pkgdir/$_install_path/$_pkgname/"
+  install -Dm755 output/x64/None/sndcpy.sh "$pkgdir/$_install_path/$_pkgname/"
 
   install -Dm644 backup/logo.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm644 config/config.ini -t "$pkgdir/etc/$_pkgname/"
 
-  cp -r keymap "$pkgdir/opt/$_pkgname/"
-  chmod 666 "$pkgdir/opt/$_pkgname/keymap"
+  cp -r keymap "$pkgdir/$_install_path/$_pkgname/"
 
-  install -Dm755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 "$srcdir/$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s "/$_install_path/$_pkgname/sndcpy.sh" "$pkgdir/usr/bin/"
 
-  ln -s "/opt/$_pkgname/sndcpy.sh" "$pkgdir/usr/bin/"
-
-  install -d "$pkgdir/usr/share/doc/$_pkgname"
+  install -dm755 "$pkgdir/usr/share/doc/$_pkgname"
   cp -r docs/* "$pkgdir/usr/share/doc/$_pkgname/"
+
+  # fix permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
+#!/usr/bin/env sh
+
+export QTSCRCPY_CONFIG_PATH="/etc/qtscrcpy"
+exec /$_install_path/qtscrcpy/QtScrcpy "\$@"
+END
+
+  install -Dm644 /dev/stdin -t "$pkgdir/usr/share/applications/" << END
+[Desktop Entry]
+Type=Application
+Name=QtScrcpy
+Comment=Android real-time screencast control tool
+Exec=$_pkgname %u
+Icon=$_pkgname
+Terminal=false
+StartupNotify=true
+Categories=Development;Utility;
+MimeType=application/epub+zip;
+END
 }
