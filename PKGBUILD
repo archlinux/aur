@@ -10,13 +10,13 @@ url="https://cartavis.org"
 license=('GPL3')
 depends=('zlib' 'hicolor-icon-theme' 'libidn11' 'rtmpdump')
 options=(!strip)
-_appimage="carta-4.1-x86_64.AppImage"
+_appimage="carta-v4.1.0-x86_64.AppImage"
 source_x86_64=("${pkgname}-v${pkgver}.tgz::https://github.com/CARTAvis/carta/releases/latest/download/carta.AppImage.x86_64.tgz"
                "LICENSE::https://raw.githubusercontent.com/CARTAvis/carta-backend/v${pkgver}/COPYING.md"
               )
 noextract=("${_appimage}")
 sha256sums_x86_64=(
- 'eb6580798f9cc5b27800bb3d8ce2680766dbbd8419e1f79128ebb38ac485d720'
+ 'd1267891b295977148e182bb8d7162fdc4be3b35b733473af77508efe73313a6'
  '26c03bc049c15fc5b9e52d791a06f1a6bc32f89edc8f8c701ab0aadf66e85b82')
                    
 
