@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Goby Community Edition
+Name[zh_CN]=Goby 社区版
+Comment=Attack surface mapping
+Exec=goby-community %U
+Icon=goby-community
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;Network;
+

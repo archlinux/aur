@@ -1,0 +1,18 @@
+pkgbase = goby-community
+	pkgdesc = Attack surface mapping
+	pkgver = 2.9.2
+	pkgrel = 1
+	url = https://gobies.org/
+	arch = x86_64
+	license = unknown
+	makedepends = unzip
+	depends = atk
+	depends = gtk3
+	options = !strip
+	options = !debug
+	source = https://goby-storage-public.oss-cn-beijing.aliyuncs.com/2.9.2/goby-linux-x64-2.9.2-Community.zip
+	source = goby-community.desktop
+	sha256sums = e9ecd230b3e2fed975b7a49ea6f3c2bf3f4a819170763dd59d826e45a9ca051b
+	sha256sums = 0624f9c1aa7377ccb5bd6b6a54a3dbea3cdd1a1e838a154c73bd01d22ff5fc3f
+
+pkgname = goby-community
