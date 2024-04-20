@@ -3,17 +3,19 @@
 
 pkgname=webchanges
 pkgver=3.21
-pkgrel=0
+pkgrel=1
 pkgdesc='Check web content for changes and notify'
 arch=('any')
 url='https://github.com/mborsetti/webchanges'
 license=('MIT' 'BSD')
 depends=('python-cssselect'
          'python-html2text'
+         'python-httpx'
          'python-lxml'
          'python-markdown2'
          'python-msgpack'
          'python-platformdirs'
+         'python-requests'
          'python-yaml'
          'python-urllib3')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
