@@ -1,0 +1,23 @@
+--- a/utils.mk
++++ b/utils.mk
+@@ -104,17 +104,15 @@ MKDIR                 ?= mkdir -p
+ RM                    ?= rm -f
+ TOUCH                 ?= touch
+ HARDLINK              ?= ln -f
+-DATE                  ?= date
++DATE                  ?= date -r ../../version.mk
+ GZIP_CMD              ?= gzip
+ CHMOD                 ?= chmod
+ OBJCOPY               ?= objcopy
+ XZ                    ?= xz
+-WHOAMI                ?= whoami
++WHOAMI                ?= printf '%s\n' archlinux_builder
+ PKG_CONFIG            ?= pkg-config
+ 
+-ifndef HOSTNAME
+-  HOSTNAME             = $(shell hostname)
+-endif
++HOSTNAME              ?= archlinux
+ 
+ 
+ NV_AUTO_DEPEND        ?= 1
