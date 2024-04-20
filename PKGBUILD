@@ -4,7 +4,7 @@
 
 _name=mapclassify
 pkgname=python-mapclassify
-pkgver=2.4.3
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='Classification schemes for choropleth mapping.'
 url='https://github.com/pysal/mapclassify'
@@ -32,16 +32,18 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('227465a610d90a6a78d4eebdfebe19433bca5262c843169d53c11be8603ab27ba9957170327ed2c861c5a859cdb5169600f6566723a592fb5a702488be57d0f6')
+sha256sums=('4441798d55a051e75206bf46dccfc8a8f8323aac8596d19961d11660c98677ca')
 
 build() {
   cd "$_name-$pkgver" || exit
-  export PYTHONHASHSEED=0
-  python setup.py build
+  python -m build --wheel --no-isolation
+  # export PYTHONHASHSEED=0
+  # python setup.py build
 }
 
 package() {
   cd "$_name-$pkgver" || exit
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  # python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 'LICENSE.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

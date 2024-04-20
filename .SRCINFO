@@ -1,6 +1,6 @@
 pkgbase = python-mapclassify
 	pkgdesc = Classification schemes for choropleth mapping.
-	pkgver = 2.4.3
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/pysal/mapclassify
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-mapclassify
 	optdepends = python-geopandas: tests
 	optdepends = python-libpysal: tests
 	optdepends = python-palettable: tests
-	source = https://files.pythonhosted.org/packages/source/m/mapclassify/mapclassify-2.4.3.tar.gz
-	b2sums = 227465a610d90a6a78d4eebdfebe19433bca5262c843169d53c11be8603ab27ba9957170327ed2c861c5a859cdb5169600f6566723a592fb5a702488be57d0f6
+	source = https://files.pythonhosted.org/packages/source/m/mapclassify/mapclassify-2.6.1.tar.gz
+	sha256sums = 4441798d55a051e75206bf46dccfc8a8f8323aac8596d19961d11660c98677ca
 
 pkgname = python-mapclassify
