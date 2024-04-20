@@ -1,21 +1,21 @@
 pkgbase = cosmic-bg-git
-	pkgver = r47.fe4bf3a
+	pkgver = r84.742a344
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-bg
 	arch = x86_64
 	arch = aarch64
 	groups = cosmic
-	license = GPL3
+	license = MPL-2.0
 	makedepends = cargo
 	makedepends = clang
 	makedepends = git
 	makedepends = just
 	makedepends = mold
+	makedepends = nasm
+	depends = hicolor-icon-theme
 	depends = libxkbcommon
-	depends = wayland
 	provides = cosmic-bg
 	conflicts = cosmic-bg
-	options = !lto
 	source = git+https://github.com/pop-os/cosmic-bg.git
 	sha256sums = SKIP
 

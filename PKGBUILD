@@ -1,41 +1,45 @@
 # Maintainer: soloturn <soloturn@gmail.com>
-# Co-Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-bg-git
-pkgver=r47.fe4bf3a
+pkgver=r84.742a344
 pkgrel=1
-pkgdes="background for the COSMIC DE."
+pkgdes="COSMIC session service which applies backgrounds to displays."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-bg"
-license=('GPL3')
+license=('MPL-2.0')
 groups=('cosmic')
 depends=(
-  'libxkbcommon' 'wayland'
+  'hicolor-icon-theme'
+  'libxkbcommon'
 )
-makedepends=('cargo' 'clang' 'git' 'just' 'mold')
-provides=('cosmic-bg')
-conflicts=('cosmic-bg')
-options=('!lto')
-source=(
-  'git+https://github.com/pop-os/cosmic-bg.git'
+makedepends=(
+  'cargo'
+  'clang'
+  'git'
+  'just'
+  'mold'
+  'nasm'
 )
-sha256sums=(
-  'SKIP'
-)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/pop-os/cosmic-bg.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/cosmic-bg"
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/cosmic-bg"
+  cd "${pkgname%-git}"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  just vendor
 }
 
 build() {
-  cd "$srcdir/cosmic-bg"
+  cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   # note, consider rust build time optimisations: 
   # https://matklad.github.io/2021/09/04/fast-rust-builds.html, 
@@ -47,6 +51,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/cosmic-bg"
+  cd "${pkgname%-git}"
   just rootdir="$pkgdir" install
 }
