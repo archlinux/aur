@@ -7,7 +7,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
 pkgver=11.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://floorp.app/"
 arch=('x86_64' 'aarch64')
@@ -34,15 +34,17 @@ conflicts=("$_pkgname")
 
 options=('!debug')
 
+_license="LICENSE-$pkgver-$pkgrel"
+
 source=(
   "floorp.desktop"
   "floorp.png"
-  "LICENSE-$pkgver"::"https://github.com/Floorp-Projects/Floorp-private-components/raw/main/LICENSE"
+  "$_license"::"https://github.com/Floorp-Projects/Floorp-private-components/raw/main/LICENSE"
 )
 sha256sums=(
   '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
   '853ba77377f296d3bf52f191131883702dd96d38084f78ea5ddb29821ac253d1'
-  'f2a7beca9aa40a9960848801b69acc5894ce333311150097a4851587108c17cc'
+  '52c7e2fac0ef006ba29e7deb8a3e763897187809603fd19026ccfc5bfb185662'
 )
 sha256sums_x86_64=('4838f6756da3bca67989683a005d9ab23a93187cd33919446ec4ab3c9ed21e01')
 sha256sums_aarch64=('253aa0069a1b507b0727580c9086ac8ed6bba848bc81014653e5fc9f045dd48b')
@@ -100,5 +102,5 @@ END
 END
 
   # license
-  install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.components"
+  install -Dm644 "$_license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.components"
 }
