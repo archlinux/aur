@@ -1,7 +1,7 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 pkgname=android-rust
-pkgver=1
+pkgver=2
 pkgrel=1
 arch=('any')
 pkgdesc="Script providing common environment variables and functions for Rust build on Android."
@@ -11,7 +11,7 @@ depends=('android-environment'
          'cargo-c'
          'rustup')
 source=('android-rust-env.sh')
-md5sums=('5c46880c932383df93abb6a0520ea3e2')
+md5sums=('b4cec673167780158ffd5d586c779529')
 
 package() {
     install -d ${pkgdir}/usr/bin
