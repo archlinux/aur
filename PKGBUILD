@@ -8,7 +8,7 @@ arch=("x86_64" "aarch64")
 url="https://github.com/jmshrv/finamp"
 license=('MPL-2.0')
 depends=('gtk3' 'pango')
-makedepends=('git' 'flutter' 'clang' 'cmake' 'ninja' 'xz')
+makedepends=('git' 'flutter-tool' 'flutter-target-linux' 'clang' 'cmake' 'ninja' 'xz')
 provides=('finamp')
 conflicts=('finamp')
 source=("$_pkgname::git+$url.git#branch=desktop-beta"
