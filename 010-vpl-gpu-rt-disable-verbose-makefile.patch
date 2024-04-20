@@ -1,0 +1,11 @@
+--- a/builder/profiles/onevpl.cmake
++++ b/builder/profiles/onevpl.cmake
+@@ -18,7 +18,7 @@
+ # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ # SOFTWARE.
+ 
+-set(CMAKE_VERBOSE_MAKEFILE ON)
++set(CMAKE_VERBOSE_MAKEFILE OFF)
+ 
+ 
+ function( make_runtime_name variant name )
