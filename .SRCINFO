@@ -10,6 +10,7 @@ pkgbase = python-nptyping
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python
 	depends = python-numpy
 	depends = python-typing_extensions
 	source = python-nptyping-2.5.0.tar.gz::https://github.com/ramonhagenaars/nptyping/archive/v2.5.0.tar.gz
