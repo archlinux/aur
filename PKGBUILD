@@ -11,13 +11,14 @@
 : ${_sccache:=}
 
 pkgname=niri
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
+_commit=6a80078259ca3e3854b0748a15e98c7293d0822a
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(aarch64 x86_64)
 url="https://github.com/YaLTeR/$pkgname"
 license=(GPL-3.0-or-later)
-depends=(cairo gcc-libs glib2 glibc libinput libpipewire libxkbcommon mesa pango pixman seatd systemd-libs)
+depends=(cairo gcc-libs glib2 glibc libinput libpipewire libxkbcommon mesa pango pixman seatd systemd-libs xdg-desktop-portal-gtk)
 makedepends=(clang rust)
 [[ -n $_sccache ]] && makedepends+=(sccache)
 optdepends=('fuzzel: application launcher similar to rofi drun mode'
@@ -26,28 +27,26 @@ optdepends=('fuzzel: application launcher similar to rofi drun mode'
             'mako: notification daemon for Wayland'
             'swaybg: wallpaper tool for Wayland compositors'
             'swaylock: screen locker for Wayland'
-            'xdg-desktop-portal-gtk: implements most of the basic functionality'
             'xdg-desktop-portal-gnome: screencasting support'
             'gnome-keyring: implements the secret portal, for certain apps to work'
-            'polkit-gnome: when apps need to ask for root permissions'
-            'meld: to synchronize config.kdl with new options from default-config.kdl')
+            'polkit-gnome: when apps need to ask for root permissions')
 options=(!debug !lto)
-install=$pkgname.install
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('474ee571dbe73b837e56f8d1a5ece20ce215f3419d0a0e71afed81412b1ab8509868af70872310f2d6e739f79d7d2146c42819e5166a615fe78fedc94bb1bf6a')
+b2sums=('deeea09391acaa5b576b230bf726cc5eb156ab918fe725929d9fbfbdcee273cd9790b2bf2b0ea1e85af405d1298d9c9a637c200c5297d3f002a58cb435d3308d')
 
 prepare() {
     cd $pkgname-$pkgver
-    export CARGO_HOME="$srcdir"/.cargo                                   # Download all to src directory, not in ~/.cargo
+    sed -i 's/"unknown commit"/"'${_commit:0:7}'"/' src/utils/mod.rs
+    export CARGO_HOME="$srcdir"/$pkgname-$pkgver/.cargo
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd $pkgname-$pkgver
-    [[ -n $_sccache ]] && export RUSTC_WRAPPER=sccache                   # If $_sccache not empty, build using binary cache
-    export RUSTFLAGS="--remap-path-prefix=$srcdir=/"                     # Prevent warning: 'Package contains reference to $srcdir'
-    export CARGO_HOME="$srcdir"/.cargo                                   # Use downloaded earlier from src directory, not from ~/.cargo
-    export CARGO_TARGET_DIR=target                                       # Place the output in target relative to the current directory
+    [[ -n $_sccache ]] && export RUSTC_WRAPPER=sccache
+    export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
+    export CARGO_HOME="$srcdir"/$pkgname-$pkgver/.cargo
+    export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 
