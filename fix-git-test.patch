@@ -1,0 +1,14 @@
+diff --git i/test/vcs/git.sh w/test/vcs/git.sh
+index 0ed09f1..5d43c71 100644
+--- i/test/vcs/git.sh
++++ w/test/vcs/git.sh
+@@ -1,8 +1,7 @@
+ git_init () {
+     WD=$1
+     mkdir -p "$WD"
+-    (cd "$WD" && git init)
+-
++    (cd "$WD" && git init && git config --local user.email "test@commit-patch-example.com" && git config --local user.name "Test User by commit-patch")
+     export VC_DIFF="git diff"
+     export VC_RM="true"
+     export DIFF_PREFIX="b/"

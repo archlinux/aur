@@ -1,0 +1,46 @@
+diff --git i/commit-patch w/commit-patch
+index 7bbddf6..b16e1e2 100755
+--- i/commit-patch
++++ w/commit-patch
+@@ -41,17 +41,7 @@ my $repo=".";
+ my $amend;
+ my %vc;
+ while (!$vc{name}) {
+-    if (-d "$repo/CVS" && $repo eq '.') {
+-        %vc = (name         => 'cvs',
+-               diff         => 'cvs diff -Nu',
+-               commit       => 'cvs commit',
+-               message      => sub { ('-m', $_[0]) },
+-               message_file => sub { ('-F', $_[0]) },
+-               add          => 'cvs add',
+-               remove       => 'cvs rm',
+-               patcharg     => '-p0',
+-               lsdiffarg    => []);
+-    } elsif (-d "$repo/.svn") {
++    if (-d "$repo/.svn") {
+         %vc = (name         => 'svn',
+                diff         => 'svn diff -x -u',
+                commit       => 'svn commit',
+diff --git i/test/vcs/cvs.sh w/test/vcs/cvs.sh
+deleted file mode 100644
+index 1faa009..0000000
+--- i/test/vcs/cvs.sh
++++ /dev/null
+@@ -1,17 +0,0 @@
+-cvs_init () {
+-    WD=$1
+-    REPO=$2
+-
+-    export CVSROOT="$REPO"
+-    cvs init
+-    mkdir "$REPO/test"
+-    cvs checkout -d "$WD" test
+-
+-    export VC_DIFF="cvs diff -N"
+-    export VC_RM="cvs rm"
+-    export DIFF_PREFIX=""
+-}
+-
+-cvs_cleanup () {
+-    true
+-}

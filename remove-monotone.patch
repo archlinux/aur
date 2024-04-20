@@ -1,0 +1,49 @@
+diff --git i/commit-patch w/commit-patch
+index b16e1e2..3aa6d68 100755
+--- i/commit-patch
++++ w/commit-patch
+@@ -91,17 +91,6 @@ while (!$vc{name}) {
+                message      => sub { ('-m', $_[0]) },
+                message_file => sub { ('-F', $_[0]) },
+                previous_message => sub { my $prev; run([qw(git log -1 --pretty=format:%s%n%b)], '>', \$prev); $prev });
+-        # Git is special cased below.
+-    } elsif (-d "$repo/_MTN") {
+-        %vc = (name         => 'mtn',
+-               diff         => 'mtn automate content_diff',
+-               commit       => 'mtn commit',
+-               message      => sub { ('-m', $_[0]) },
+-               message_file => sub { ('--message-file', $_[0]) },
+-               add          => 'mtn add',
+-               remove       => 'mtn drop',
+-               patcharg     => '-p0',
+-               lsdiffarg    => []);
+     } else {
+         $repo.="/..";
+         printf("Trying back a dir: $repo, abs:%s\n", abs_path($repo));
+diff --git i/test/vcs/mtn.sh w/test/vcs/mtn.sh
+deleted file mode 100644
+index f5be166..0000000
+--- i/test/vcs/mtn.sh
++++ /dev/null
+@@ -1,21 +0,0 @@
+-mtn_init () {
+-    WD=$1
+-    REPO=$2
+-
+-    export MTN_KEYDIR=$(mktemp -d "$TESTDIR_ABS/tmp/keydir.XXXXXXX")
+-
+-    # Monotone doesns't like the db dir to exist when you init it.
+-    [ -d "$REPO" ] && rmdir "$REPO"
+-
+-    mtn --keydir "$MTN_KEYDIR" db init --db="$REPO"
+-    mtn --keydir "$MTN_KEYDIR" --db="$REPO" --branch=test setup "$WD"
+-    (cd "$WD" && mtn automate generate_key commit-patch-automated-tester@example.com '')
+-
+-    export VC_DIFF="mtn diff --without-header"
+-    export VC_RM="mtn drop"
+-    export DIFF_PREFIX=""
+-}
+-
+-mtn_cleanup () {
+-    rm -rf "$MTN_KEYDIR"
+-}

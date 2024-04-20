@@ -1,0 +1,41 @@
+diff --git i/commit-patch w/commit-patch
+index 592d571..7bbddf6 100755
+--- i/commit-patch
++++ w/commit-patch
+@@ -93,17 +93,6 @@ while (!$vc{name}) {
+                remove       => 'true',
+                patcharg     => '-p1',
+                lsdiffarg    => [qw(--strip 1)]);
+-    } elsif (-d "$repo/.bzr") {
+-        %vc = (name         => 'bzr',
+-               diff         => 'bzr diff',
+-               commit       => 'bzr commit',
+-               message      => sub { ('-m', $_[0]) },
+-               message_file => sub { ('--file', $_[0]) },
+-               add          => 'bzr add',
+-               remove       => 'true',
+-               patcharg     => '-p0',
+-               lsdiffarg    => []);
+-        chdir $repo; # otherwise commit-partial from within a project subdir fails.
+     } elsif (-d "$repo/.git") {
+         %vc = (name         => 'git',
+                diff         => 'git diff --relative', # Use --relative here because "git diff | git apply --cached" fails to apply hunks from files not in your current dir tree
+diff --git i/test/vcs/bzr.sh w/test/vcs/bzr.sh
+deleted file mode 100644
+index 565e01c..0000000
+--- i/test/vcs/bzr.sh
++++ /dev/null
+@@ -1,13 +0,0 @@
+-bzr_init () {
+-    WD=$1
+-    mkdir -p "$WD"
+-    (cd "$WD" && bzr init && bzr whoami --branch "Chester McTester <chester@example.com>")
+-
+-    export VC_DIFF="bzr diff"
+-    export VC_RM="true"
+-    export DIFF_PREFIX=""
+-}
+-
+-bzr_cleanup () {
+-    true
+-}
