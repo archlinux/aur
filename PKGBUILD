@@ -2,7 +2,7 @@
 
 pkgname=hydra-launcher
 _pkgname=hydra-launcher
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="No bullshit, just play"
 arch=('x86_64')

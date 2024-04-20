@@ -1,12 +1,12 @@
 pkgbase = hydra-launcher
 	pkgdesc = No bullshit, just play
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/hydralauncher/hydra
 	arch = x86_64
 	license = MIT
 	provides = hydra-launcher
-	source_x86_64 = https://github.com/hydralauncher/hydra/releases/download/v1.0.1/hydra_1.0.1_amd64.deb
+	source_x86_64 = https://github.com/hydralauncher/hydra/releases/download/v1.1.0/hydra_1.1.0_amd64.deb
 	sha256sums_x86_64 = 31a53ed03d48f59bdf31b1d56990c4cd1497fd38210bda357b455e0c13daf0aa
 
 pkgname = hydra-launcher
