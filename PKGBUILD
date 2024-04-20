@@ -3,7 +3,7 @@
 
 pkgname=plasma6-runners-nordvpn
 reponame=NordVPNKrunner
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Nordvpn plasma 6 runner"
 arch=("any")
@@ -14,16 +14,9 @@ makedepends=("cmake" "extra-cmake-modules" "gettext" "qt6-tools")
 conflicts=('plasma5-runners-nordvpn')
 replaces=('plasma-runners-nordvpn')
 source=("https://github.com/alex1701c/${reponame}/archive/${pkgver}.tar.gz"
-        "https://s1.nordcdn.com/nordvpn/media/1.170.0/images/global/favicon/apple-touch-icon-57x57.png"
-        "https://github.com/alex1701c/NordVPNKrunner/commit/c9ce1a8cdbed63ee872f661c99120a86e8818910.patch")
-md5sums=('813e572250d28cbe8cfdd74324808120'
-         '45c79777d364ca2cc1665165aca77ea6'
-         '849bab482635f266229933c22d3c3dd7')
-
-prepare () {
-  cd "${reponame}-${pkgver}"
-  patch -Np1 -i ../c9ce1a8cdbed63ee872f661c99120a86e8818910.patch
-}
+        "https://s1.nordcdn.com/nordvpn/media/1.170.0/images/global/favicon/apple-touch-icon-57x57.png")
+md5sums=('84fd8536d83216b27206379ad0632c53'
+         '45c79777d364ca2cc1665165aca77ea6')
 
 build () {
   cd "${reponame}-${pkgver}"
