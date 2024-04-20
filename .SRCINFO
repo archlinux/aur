@@ -1,14 +1,14 @@
 pkgbase = imfile-electron
 	pkgdesc = A full-featured download manager
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/imfile-io/imfile-desktop/
 	arch = arm
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = nodejs
-	depends = electron>=23
+	depends = electron>=21
 	source = imfile
 	source = imfile.desktop
 	source = https://github.com/imfile-io/imfile-desktop/archive/refs/tags/v1.0.5.zip

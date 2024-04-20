@@ -6,11 +6,11 @@
 
 pkgname="imfile$_pkgtype"
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A full-featured download manager"
 arch=("arm" "x86_64"  "i686")
 license=("MIT")
-depends=("electron>=23")
+depends=("electron>=21")
 makedepends=("nodejs")
 url="https://github.com/imfile-io/imfile-desktop/"
 
