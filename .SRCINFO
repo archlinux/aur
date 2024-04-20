@@ -1,7 +1,7 @@
 pkgbase = unocss-language-server-bin
 	pkgdesc = A language server for unocss
 	pkgver = 0.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xna00/unocss-language-server
 	arch = any
 	license = MIT
