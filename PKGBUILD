@@ -12,7 +12,7 @@ groups=('wheel')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'python-gobject')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://github.com/EnSabahNurX/lightcontrol/blob/d6890fef8f1ae15d955a277c86b620d604ad2dbf/lightcontrol.tar.xz")
+source=("https://github.com/EnSabahNurX/lightcontrol/raw/main/lightcontrol.tar.xz")
 sha512sums=('SKIP')
 
 package(){

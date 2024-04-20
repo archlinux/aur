@@ -12,7 +12,7 @@ pkgbase = lightcontrol
 	depends = python-gobject
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/EnSabahNurX/lightcontrol/blob/d6890fef8f1ae15d955a277c86b620d604ad2dbf/lightcontrol.tar.xz
+	source = https://github.com/EnSabahNurX/lightcontrol/raw/main/lightcontrol.tar.xz
 	sha512sums = SKIP
 
 pkgname = lightcontrol
