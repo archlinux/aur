@@ -2,7 +2,7 @@
 pkgname=libff7tk-git
 pkgver=1.0.0.16
 pkgrel=1
-provides=('libff7tk')
+provides=("libff7tk=${pkgver}")
 conflicts=('libff7tk')
 pkgdesc="Final Fantasy 7 Tool library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
