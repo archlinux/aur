@@ -1,12 +1,12 @@
 pkgbase = gokapi
 	pkgdesc = Gokapi is a lightweight server to share files
-	pkgver = 1.8.1
-	pkgrel = 4
+	pkgver = 1.8.2
+	pkgrel = 1
 	url = https://github.com/Forceu/Gokapi
 	arch = x86_64
 	license = AGPL-3.0
 	backup = etc/gokapi/config.json
-	source = https://github.com/Forceu/Gokapi/releases/download/v1.8.1/gokapi-linux_amd64.zip
+	source = https://github.com/Forceu/Gokapi/releases/download/v1.8.2/gokapi-linux_amd64.zip
 	source = gokapi.tmpfiles
 	source = gokapi.sysusers
 	source = gokapi.service
