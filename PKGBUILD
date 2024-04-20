@@ -2,7 +2,7 @@
 
 _appname='freetz-ng-tools'
 pkgname="${_appname}-git"
-pkgver=r22642.4c34cb184
+pkgver=r23089.ea5ac032a
 pkgrel=1
 pkgdesc="Development tools of the Freetz-NG project"
 arch=('x86_64')
@@ -10,6 +10,9 @@ url='https://freetz-ng.github.io/freetz-ng/'
 license=('GPL2')
 depends=('sed')
 makedepends=('git' 'python' 'svn' 'unzip' 'wget' 'lib32-glibc' 'lib32-gcc-libs')
+# 2024-04-18 dreieck@aur.archlinux.org says build fails if the system
+# has link-time optimization enabled by default in its build configuration
+options+=('!lto')
 conflicts=("$_appname" 'freetz-tools' 'freetz-tools-git')
 provides=("$_appname" 'freetz-tools')
 replaces=('freetz-tools-git')

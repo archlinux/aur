@@ -1,6 +1,6 @@
 pkgbase = freetz-ng-tools-git
 	pkgdesc = Development tools of the Freetz-NG project
-	pkgver = r22642.4c34cb184
+	pkgver = r23089.ea5ac032a
 	pkgrel = 1
 	url = https://freetz-ng.github.io/freetz-ng/
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = freetz-ng-tools-git
 	conflicts = freetz-tools
 	conflicts = freetz-tools-git
 	replaces = freetz-tools-git
+	options = !lto
 	source = freetz-ng-tools::git+https://github.com/Freetz-NG/freetz-ng.git
 	sha384sums = SKIP
 
