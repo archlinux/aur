@@ -6,7 +6,7 @@
 pkgname=({freedm,freedoom}-git)
 pkgbase=freedoom-git
 pkgdesc="Free game data files for Doom gaming engines"
-pkgver=0.14.0.alpha.r7.g1e1b6301
+pkgver=0.14.0.alpha.r45.g8c335ccd
 pkgrel=1
 epoch=1
 arch=('any')
