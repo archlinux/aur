@@ -1,24 +1,40 @@
 # Maintainer: soloturn <soloturn@gmail.com>
-# Co-Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-settings-git
-pkgver=r106.a549e8b
+pkgver=r278.dd16b92
 pkgrel=1
-pkgdesc="settings for the COSMIC DE panel."
+pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 groups=('cosmic')
-makedepends=('cargo' 'clang' 'git' 'just' 'mold')
-provides=('cosmic-settings')
-conflicts=('cosmic-settings')
-options=('!lto')
-source=(
-  'git+https://github.com/pop-os/cosmic-settings.git'
+depends=(
+  'accountsservice'
+  'cosmic-icons-git'
+  'cosmic-randr-git'
+  'fontconfig'
+  'iso-codes'
+  'libinput'
+  'libxkbcommon'
+  'systemd-libs'
+  'wayland'
 )
-sha256sums=(
-  'SKIP'
+makedepends=(
+  'cargo'
+  'clang'
+  'git'
+  'just'
+  'mold'
 )
+optdepends=(
+  'otf-fira-mono: Recommended Mono font'
+  'otf-fira-sans: Recommended Sans font'
+)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/pop-os/cosmic-settings.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/cosmic-settings"
@@ -26,17 +42,15 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/cosmic-settings"
+  cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
-
-  # Use mold linker instead of lld
-  sed -i 's/lld/mold/g' justfile
+  just vendor
 }
 
 build() {
-  cd "$srcdir/cosmic-settings"
+  cd "${pkgname%-git}"
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   # note, consider rust build time optimisations: 
@@ -45,10 +59,10 @@ build() {
   # to not block user installing this pkg. to speed up build, use "mold" linker, see 
   # https://stackoverflow.com/questions/67511990/how-to-use-the-mold-linker-with-cargo
   #RUSTFLAGS="-A warnings -C link-arg=-fuse-ld=mold"
-  nice just build-release
+  nice just build-vendored
 }
 
 package() {
-  cd "$srcdir/cosmic-settings"
+  cd "${pkgname%-git}"
   just rootdir="$pkgdir" install
 }
