@@ -2,28 +2,33 @@
 # Contributor: Nick Cao <nickcao@nichi.co>
 pkgname=auth-thu
 pkgver=2.2.1
-pkgrel=1
-pkgdesc="A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool"
+pkgrel=2
+pkgdesc='A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool'
 arch=('x86_64')
-url="https://github.com/z4yx/GoAuthing"
+url='https://github.com/z4yx/GoAuthing'
 license=('GPL-3.0-only')
 makedepends=('go')
-source=("auth-thu-$pkgver.tar.gz::https://github.com/z4yx/GoAuthing/archive/v$pkgver.tar.gz"
-        "auth-thu.service"
-        "auth-thu.timer")
+source=("auth-thu-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        'auth-thu.service'
+        'auth-thu.timer')
 sha256sums=('69f178abe29c7e85e85e5762bfee6b4c4c69242806fbaa4b3f795e984925e63d'
             'd177a5a97e9e9c40a0aa4430024a68a5a08b3ac9ab5a11ce7e2e36185d04341c'
             'a780ea89449aa17d9fafa969dcfaf2e1deaa5098c39dcf38701415ef0dee5f78')
 
 build() {
     cd "GoAuthing-$pkgver"
-    CGO_ENABLED=0 go build -ldflags="-s -w" -o auth-thu ./cli
+    export CGO_CPPFLAGS="$CPPFLAGS"
+    export CGO_CFLAGS="$CFLAGS"
+    export CGO_CXXFLAGS="$CXXFLAGS"
+    export CGO_LDFLAGS="$LDFLAGS"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -o auth-thu ./cli
 }
 
 package() {
     cd "GoAuthing-$pkgver"
-    install -Dm755 "auth-thu" "$pkgdir/usr/bin/auth-thu"
-    install -Dm644 "$srcdir/auth-thu.service" "$pkgdir/usr/lib/systemd/user/auth-thu.service"
-    install -Dm644 "$srcdir/auth-thu.timer" "$pkgdir/usr/lib/systemd/user/auth-thu.timer"
+    install -Dm755 auth-thu -t "$pkgdir/usr/bin"
+    install -Dm644 "$srcdir/auth-thu.service" -t "$pkgdir/usr/lib/systemd/user"
+    install -Dm644 "$srcdir/auth-thu.timer" -t "$pkgdir/usr/lib/systemd/user"
 }
 
