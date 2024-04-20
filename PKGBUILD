@@ -3,12 +3,13 @@ _pkgname=Bluesky
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Unofficial bluesky desktop application"
+url=https://gitlab.com/linuxbombay/bluesky
 arch=('x86_64' 'aarch64')
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-source=("https://gitlab.com/bluesky-application/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('4841ed07c34f8c30a7c5ac78bbb0caf5790115693c6306880a31ddcf175d26f5')
 
 
 package() {
