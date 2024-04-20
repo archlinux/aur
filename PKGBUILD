@@ -8,6 +8,9 @@ arch=('any')
 url='https://github.com/GlasgowEmbedded/glasgow.git'
 license=('0BSD' 'Apache-2.0')
 depends=(python python-pyvcd python-libusb1 python-fx2 python-amaranth yosys nextpnr icestorm)
+optdepends=('python-aiohttp: For specific plugins (applets, loggers, etc.)',
+	    'python-aiohttp_remotes: For specific plugins (applets, loggers, etc.)'
+)
 makedepends=(python-build python-pdm)
 source=("git+https://github.com/GlasgowEmbedded/glasgow.git")
 sha256sums=('SKIP')
