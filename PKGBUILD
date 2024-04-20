@@ -1,6 +1,6 @@
 #!/bin/bash
-
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
+# Maintainer: Dringsim <dringsim@qq.com>
+# Contributor: PumpkinCheshire <me at pumpkincheshire dot top>
 
 _name=mapclassify
 pkgname=python-mapclassify
@@ -30,7 +30,7 @@ optdepends=(
   'python-libpysal: tests'
   'python-palettable: tests'
 )
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('4441798d55a051e75206bf46dccfc8a8f8323aac8596d19961d11660c98677ca')
 
