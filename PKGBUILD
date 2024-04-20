@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='一个可爱且任性的 B 站视频下载器'
 arch=('any')
 url='https://github.com/yutto-dev/yutto'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=(
     'python-aiofiles'
     'python-biliass'
