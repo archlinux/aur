@@ -9,10 +9,10 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=11.12.0
-_floorp_core_commit="c54e98bdcb80c3dd9e10fe668d9f1b052ac23e62"
+pkgver=11.12.2
+_floorp_core_commit="1ac82bbf62fe656f02aea7c9edb921a8c18b1fe1"
 _floorp_l10n_commit="b7a652ebf828e1c695a19903a568505d818463d2"
-_floorp_private_commit="fd03f5cc34377591f63a293e82f0b5eb55a8c5fc"
+_floorp_private_commit="f81d5691d20a51be32d671fc9d0058de7255f86a"
 pkgrel=1
 epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
@@ -84,13 +84,13 @@ source=(https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v"${pkgver}"
   "common::git+https://gitlab.com/garuda-linux/firedragon/common.git"
   "settings::git+https://gitlab.com/garuda-linux/firedragon/settings.git"
   "${pkgname}.desktop")
-sha256sums=('4d1c6b6c69b139e90f2ae6b192f2774f7525eaca265fcb58247a8c0a20a18ae5'
-  '04659d794809a3e2dcb13e051b8752ddf322364f552d389e9ece28f9285fabab'
-  '5f9a31c9a7166328ac364b9172e3b40bff822f142976fa009de5ada65a7dd938'
-  '58d690b35080a70d99a665c7fb8db0d6dfc229a37bdea7ff2111c922687141c7'
-  'SKIP'
-  'SKIP'
-  '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
+sha256sums=('6fdd272a75fb04df23706c8b693c46c0400ef072bb3b9a4c1f6dcefb11652e5d'
+            'fe330c900317a1a798932dd9d197e38e44ad2a8cd8f19d9a8a20b9e60e60c112'
+            '5f9a31c9a7166328ac364b9172e3b40bff822f142976fa009de5ada65a7dd938'
+            'dc846923451a747a4d1c4efd9a325db1f4b24e19dfefa277deefc346c6f5788c'
+            'SKIP'
+            'SKIP'
+            '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 install="${pkgname}.install"
 
 # Select the method of profiling
