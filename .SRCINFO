@@ -15,7 +15,7 @@ pkgbase = sonicthehedgehog2
 	depends = sdl2
 	depends = unzip
 	depends = yad
-	source = https://gitlab.com/SonicRSDK/sonicthehedgehog2/-/archive/1.0.2-1/sonicthehedgehog2-1.0.2-1.tar.bz2
-	sha256sums = SKIP
+	source = https://gitlab.com/linuxbombay/sonicthehedgehog2/-/archive/1.0.2-1/sonicthehedgehog2-1.0.2-1.tar.bz2
+	sha256sums = 8c119dd65746c8ae1a6fc43beb9b3f9a7277bb9837b28a13aac0e5a32a3f85ae
 
 pkgname = sonicthehedgehog2
