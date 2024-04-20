@@ -18,3 +18,6 @@ package() {
     install -Dm755 encrypted_fs -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+md5sums=('SKIP')
+
