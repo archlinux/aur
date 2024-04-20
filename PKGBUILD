@@ -12,7 +12,7 @@ arch=("$CARCH")
 provides=("encrypted_fs")
 conflicts=("encrypted_fs")
 source=("https://github.com/radumarias/encrypted_fs_aur/releases/download/$pkgver/encrypted_fs-$pkgver-$CARCH.tar.gz")
-sha256sums=('46f86c7b9199768bad0fbc98ee522b759d04cfa081d6bfbf5f248b9b9dce3e1d')
+sha256sums=('976d8bf3752a868c4eaab37cd241be887a8dece13957c09a4d9b29bc6efb4387')
 
 package() {
     install -Dm755 encrypted_fs -t "$pkgdir/usr/bin"
