@@ -9,7 +9,10 @@ license=('GPL2')
 url='https://dvdnav.mplayerhq.hu'
 depends=('libdvdcss')
 makedepends=('git')
-provides=('libdvdread')
+provides=(
+  'libdvdread'
+  'libdvdread.so'
+)
 conflicts=('libdvdread')
 source=('git+https://code.videolan.org/videolan/libdvdread.git')
 sha256sums=('SKIP')

@@ -8,6 +8,7 @@ pkgbase = libdvdread-git
 	makedepends = git
 	depends = libdvdcss
 	provides = libdvdread
+	provides = libdvdread.so
 	conflicts = libdvdread
 	source = git+https://code.videolan.org/videolan/libdvdread.git
 	sha256sums = SKIP
