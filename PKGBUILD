@@ -5,12 +5,13 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kctrl-bin
 pkgver=0.51.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Continuous delivery and package management for Kubernetes.'
 url='https://carvel.dev/kapp-controller'
 arch=(x86_64 aarch64)
 license=(apache-2.0)
 install=''
+conflicts=(kctrl)
 provides=(kctrl)
 source_x86_64=(kctrl-v0.51.0::https://github.com/carvel-dev/kapp-controller/releases/download/v0.51.0/kctrl-linux-amd64)
 source_aarch64=(kctrl-v0.51.0::https://github.com/carvel-dev/kapp-controller/releases/download/v0.51.0/kctrl-linux-arm64)
