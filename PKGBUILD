@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=protr
-_pkgver=1.7-0
+_pkgver=1.7-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Generating Various Numerical Representation Schemes for Protein Sequences"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e13e53d13fd27b7e4718a32df6ceeac5')
-b2sums=('6ef12b2ccacec70370e81fa055a3f66b1f2335eb18b5dfe1b1afd346c0a4b7915d8941b58765ab704718a484a4f886efbd1145c2fd3bcddab1083fd803a050db')
+md5sums=('cd8670e19c3830a3f73a63d353381448')
+b2sums=('8646784caaa71c364755aae443f3b2b84a4c921b01dd137aac43a5cc7e8be59fbc6268969132601d1f1201971c17f98865f2003090f182c17dd7ac6f2410ea3d')
 
 build() {
   mkdir build
