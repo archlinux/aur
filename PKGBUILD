@@ -5,7 +5,7 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hidpi-xprop
 pkgver=0.17.2
-pkgrel=5
+pkgrel=6
 license=(MIT)
 pkgdesc='Modular Wayland compositor library (stable, with patches)'
 url=https://gitlab.freedesktop.org/wlroots/wlroots
@@ -44,13 +44,13 @@ source=("${pkgname}::git+${url}#tag=${pkgver}"
         0002-Fix-configure_notify-event.patch
         0003-Fix-size-hints-under-Xwayland-scaling.patch
         4629.patch
-        xcb-send-message.patch)
+        4652.patch)
 sha512sums=('568d6f74a60ed4c1150cd9520df7a2bd55bc306732a4c8ccaa722bf7737075f9934dc48c330276d2a96d3ffa4aa35cc6023b09375557e89589eb026a3de5b5b9'
             'ca05b46c8222e6982c848944ff2afe7765a2e76bb90e29c9d5b5dde9b51a0038bce8b0d52d01c390c970319ef10614ab1454a66940bf3a5b6193fc7f189afe6b'
             '484c8a6848b1409a16403bf0c3e366bf5203716824c24e16efcdcdb71ff34c42b5da6e3da338fafea70ad80fcdd3d6e9f070fb809093d8b0b08ee0b2c95a4de4'
             '8e3e77f6df204b6e5aa770be61fc8a6525e295cc8acdb0084ce66463e78f11702cf066640b20d7ff9560bdcdf7fa626db2e90651dcd42670250f45ac0f636854'
             '5648d43fca061ee4b72dfb2cf41a8b100d7d7bb6a15a6e06a6f2bbbcdfb19495c38bb6f0bd8ca1604244eb7bf3aec9563395fc72e766bc1cf9b1767995513567'
-            '993bbf9543846aad04653d3430e494c0049db05dff901ffad4e53ee5cf589a5efc2b1985f70b8fcdff99da7a6a3fdf8098d1109134788575f4036b1e01bbc461')
+            '2ff1888718038653005a075aa132d95a02bd978188b48c3d5d046a18d19ac59f59eb96ccb026bcaaef6235db0f1778e21da262c653abb68eeb05e34ef7039da0')
 
 prepare () {
   cd "${pkgname}"
@@ -59,7 +59,7 @@ prepare () {
   patch -Np1 < ../0002-Fix-configure_notify-event.patch
   patch -Np1 < ../0003-Fix-size-hints-under-Xwayland-scaling.patch
   patch -Np1 < ../4629.patch
-  patch -Np1 < ../xcb-send-message.patch
+  patch -Np1 < ../4652.patch
 }
 
 build () {
