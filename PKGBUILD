@@ -1,6 +1,6 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=libff7tk-git
-pkgver=0.83.3.42
+pkgver=1.0.0.16
 pkgrel=1
 provides=('libff7tk')
 conflicts=('libff7tk')
@@ -10,7 +10,6 @@ url="https://github.com/sithlord48/ff7tk"
 license=('LGPL3')
 makedepends=('cmake' 'git' 'doxygen' 'clang')
 depends=('qt6-base' 'qt6-tools' 'qt6-svg' 'qt6-declarative' 'qt6-5compat' 'zlib') #Qt6)
-#optdepends=('otf-ipafont: font for displaying japanese')
 install=$pkgname.install
 source=('ff7tk::git+https://github.com/sithlord48/ff7tk.git')
 md5sums=(SKIP)
@@ -22,12 +21,10 @@ pkgver() {
 }
 
 build() {
-  cd "ff7tk"
-  cmake -S. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DQT_DEFAULT_MAJOR_VERSION=6
+  cmake -S ff7tk -B build -DCMAKE_INSTALL_PREFIX=/usr -DQT_DEFAULT_MAJOR_VERSION=6
   cmake --build build
 }
 
 package(){
-  cd "ff7tk"
   DESTDIR="$pkgdir" cmake --install build
 }
