@@ -1,0 +1,4 @@
+libxeddsa/
+pkg/
+*.pkg.tar.zst
+src/
