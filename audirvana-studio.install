@@ -1,0 +1,23 @@
+post_install() {
+echo "
+If the configuration directory is missing:
+mkdir -p ~/.config/audirvana
+echo "EulaAccepted = 1" > ~/.config/audirvana/audirvana-studio.ini
+
+avahi should be enabled first with: sudo systemctl enable --now avahi-daemon
+
+To start it: systemctl --user start audirvanaStudio
+To enable it at boot: systemctl --user enable audirvanaStudio
+}
+
+post_upgrade() {
+echo "
+If the configuration directory is missing:
+mkdir -p ~/.config/audirvana
+echo "EulaAccepted = 1" > ~/.config/audirvana/audirvana-studio.ini
+
+avahi should be enabled first with: sudo systemctl enable --now avahi-daemon
+
+To start it: systemctl --user start audirvanaStudio
+To enable it at boot: systemctl --user enable audirvanaStudio
+}
