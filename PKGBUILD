@@ -2,17 +2,22 @@
 # Maintainer: hairlinehd <slimender123@gmail.com>
 pkgname='obgk'
 _pkgname='obgk'
-pkgver=latest
+pkgver=39.b290ec3
 pkgrel=1
 pkgdesc="osu!stable video and background deleter"
 arch=('x86_64')
 url="https://github.com/shoplifterhd/obgk"
 license=('Unlicense')
-depends=('bash' 'fd')
+depends=('bash' 'fd' 'findutils')
 makedepends=('git')
 optdepends=('zenity: nice gui to select your songs folder')
 source=('git+https://github.com/shoplifterhd/obgk.git')
 md5sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 build() {
 	cd "$pkgname"
