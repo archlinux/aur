@@ -5,12 +5,13 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kapp-bin
 pkgver=0.62.0
-pkgrel=1
+pkgrel=2
 pkgdesc='kapp is a simple deployment tool focused on the concept of "Kubernetes application" — a set of resources with the same label'
 url='https://carvel.dev/kapp'
 arch=(x86_64 aarch64)
 license=(apache-2.0)
 install=''
+conflicts=(kapp)
 provides=(kapp)
 source_x86_64=(kapp-v0.62.0::https://github.com/carvel-dev/kapp/releases/download/v0.62.0/kapp-linux-amd64)
 source_aarch64=(kapp-v0.62.0::https://github.com/carvel-dev/kapp/releases/download/v0.62.0/kapp-linux-arm64)
