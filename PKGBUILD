@@ -5,7 +5,7 @@
 : ${_pkgtype:=-electron}
 
 pkgname="imfile$_pkgtype"
-pkgver=1.0.5
+pkgver=1.0.7
 pkgrel=3
 pkgdesc="A full-featured download manager"
 arch=("arm" "x86_64"  "i686")
@@ -23,7 +23,7 @@ source=(
 sha256sums=(
   "6a530e20c40bb8bf0b413758e64629a0be0468ef8c203282ea6a1a80409493be"
   "eca6961cf9d367c2733af7e8176aeaa81c5b20c12be132ec5baa3f030c7d034b"
-  "5d0f026552cc59377b68550b3c66ad8928218c9923a9101f92c1f3ee1f1593f0"
+  "fc6ea021e3cd28806086c60c31ef6f9da444e598df49e8dc9f28e7947be45029"
 )
 
 build() {
