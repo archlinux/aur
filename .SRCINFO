@@ -1,0 +1,27 @@
+pkgbase = cortexcommand
+	pkgdesc = Cortex Command Community Project
+	pkgver = 6.2.2
+	pkgrel = 1
+	url = https://cortex-command-community.github.io/
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_image
+	depends = tbb
+	depends = flac
+	depends = luajit
+	depends = minizip
+	depends = lz4
+	depends = libpng
+	depends = hicolor-icon-theme
+	provides = cortexcommand
+	conflicts = cortexcommand-git
+	source = cortexcommand::git+https://github.com/cortex-command-community/Cortex-Command-Community-Project.git#tag=v6.2.2
+	source = runner.patch::https://github.com/cortex-command-community/Cortex-Command-Community-Project/pull/128.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cortexcommand
