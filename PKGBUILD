@@ -1,8 +1,8 @@
-# Maintainer: gmes78 <gmes.078 at gmail dot com>
+# Maintainer: Joaquim Monteiro <joaquim dot monteiro at protonmail dot com>
 
 pkgname=python-blake3
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the BLAKE3 cryptographic hash function"
 arch=(x86_64 i686 aarch64 armv7h)
 url="https://github.com/oconnor663/blake3-py"
