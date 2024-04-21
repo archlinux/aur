@@ -1,11 +1,12 @@
 pkgbase = android-aarch64-portaudio
 	pkgdesc = A free, cross-platform, open source, audio I/O library. (Android aarch64)
 	pkgver = 19.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/portaudio/portaudio/
 	arch = any
 	license = MIT
 	makedepends = android-cmake
+	makedepends = android-aarch64-alsa-lib
 	depends = android-ndk
 	options = !strip
 	options = !buildflags
