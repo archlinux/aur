@@ -14,8 +14,8 @@
 pkgname=discord-electron
 _pkgname=discord
 pkgver=0.0.50
-pkgrel=1
-_electronver=29
+pkgrel=2
+_electronver=30
 _electronname="electron${_electronver}"
 pkgdesc="Discord using system provided electron (v${_electronver}) for increased security and performance"
 arch=('x86_64')
