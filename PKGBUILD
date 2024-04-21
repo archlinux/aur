@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=30.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -166,7 +166,7 @@ build() {
     -DCALM_DEPRECATION=ON \
     -Wno-dev
 
-  sed -i "s|OBS_VERSION =|OBS_VERSION = \"$_pkgver-tytan652-$pkgrel\"; //|" build/libobs/obsversion.c
+  sed -i "s|OBS_VERSION =|OBS_VERSION = \"$pkgver-tytan652-$pkgrel\"; //|" build/libobs/obsversion.c
 
   cmake --build build
 }
