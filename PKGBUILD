@@ -2,11 +2,11 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Martin Schmölzer <mschmoelzer@gmail.com>
 
-_target=riscv32-none-elf
+_target=riscv-none-elf
 pkgname=$_target-binutils
 pkgver=2.42
 pkgrel=1
-pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM EABI (bare-metal) target'
+pkgdesc='A set of programs to assemble and manipulate binary and object files for the RISC-V (bare-metal) target'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
