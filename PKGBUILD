@@ -4,8 +4,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-xz
 pkgver=5.6.1
-_pkgrver=5.4.5
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Library and command line tools for XZ and LZMA compressed files (Android ${_android_arch})"
 url="https://tukaani.org/xz"
@@ -16,11 +15,11 @@ makedepends=('android-configure'
              'po4a'
              'doxygen')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("http://deb.debian.org/debian/pool/main/x/xz-utils/xz-utils_${pkgver}+really${_pkgrver}.orig.tar.xz")
-md5sums=('1d33e0be05c53e7a5641acf5c8b35fdd')
+source=("https://github.com/tukaani-project/xz/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('b873d65db3e66157bf382a0fa9f90b7e')
 
 prepare() {
-    cd "${srcdir}/xz-${_pkgrver}"
+    cd "${srcdir}/xz-${pkgver}"
     source android-env ${_android_arch}
 
     check_ndk_version_ge_than 18.0
@@ -28,7 +27,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/xz-${_pkgrver}"
+    cd "${srcdir}/xz-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
@@ -43,7 +42,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/xz-${_pkgrver}"
+    cd "${srcdir}/xz-${pkgver}"
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
