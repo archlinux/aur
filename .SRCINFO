@@ -1,6 +1,6 @@
 pkgbase = python-cebra
 	pkgdesc = Consistent Embeddings of high-dimensional Recordings using Auxiliary variables
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://cebra.ai
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-cebra
 	optdepends = python-seaborn
 	optdepends = python-matplotlib
 	optdepends = python-h5py
-	source = https://files.pythonhosted.org/packages/95/d9/6ed3d5cc181e498b536f67e177b9f9adcbd72d30f9e884523f2a8c5a297e/cebra-0.2.0.tar.gz
-	md5sums = 6e066f6df69cd81b5c0de0742f437ac5
+	source = https://files.pythonhosted.org/packages/68/9c/4cb1f6e03bf31e955ec3073f9900020af9c6dfe2bbf9f390dbec9b24f999/cebra-0.4.0.tar.gz
+	md5sums = dee8d3ff269855f3bd8a5b1a4c34eb93
 
 pkgname = python-cebra
