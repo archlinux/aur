@@ -16,12 +16,11 @@
 # Ubuntu credits:
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
-pkgbase=mutter
-pkgname=$pkgbase-x11-scaling
+pkgname=mutter-x11-scaling
 pkgver=46.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
-url="https://gitlab.gnome.org/GNOME/$pkgbase"
+url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 depends=(
@@ -99,8 +98,8 @@ checkdepends=(
   wireplumber
   zenity
 )
-provides=($pkgbase=$pkgver libmutter-14.so)
-conflicts=($pkgbase)
+provides=(mutter=$pkgver libmutter-14.so)
+conflicts=(mutter)
 source=(
   # Mutter tags use SSH signatures which makepkg doesn't understand
   "git+$url.git#tag=${pkgver/[a-z]/.&}"
@@ -114,7 +113,7 @@ b2sums=('4acd4a192455890b12b2fc9b6553ed65bd2176307cd6c6683fc2ab476b7fa88f4b5e507
         'ba4febdabc89a8c608d2a9621d02a21c05b315bb586f91d34b0369c07f3e051a6333d62dd97ab18d0c5b1c8f453696d4851c55fc82a50e8843ae45068ab178ca')
 
 prepare() {
-  cd $pkgbase
+  cd mutter
 
   # https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/7050
   # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3329
@@ -141,7 +140,7 @@ build() {
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
-  arch-meson $pkgbase build "${meson_options[@]}"
+  arch-meson mutter build "${meson_options[@]}"
   meson compile -C build
 }
 
