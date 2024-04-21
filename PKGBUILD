@@ -1,7 +1,7 @@
 # Maintainer: Mike Yuan <me@yhndnzj.com>
 
 pkgname=ov
-pkgver=0.33.3
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="Feature-rich terminal-based text viewer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go' 'git')
 _tag="v$pkgver"
 source=("$pkgname::git+https://github.com/noborus/ov.git#tag=$_tag")
-b2sums=('SKIP')
+b2sums=('1615124d6627af59f2c9c619ea1cfe49dc1f1650827ee03f006179b7fff03ce6a8c003fa615c115c4422932f7e1acf5bbaa04afc4af40595927d2e7dc8bc10fb')
 
 prepare() {
     cd "$pkgname"
