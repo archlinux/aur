@@ -1,7 +1,7 @@
 pkgbase=aa-snapshot-maker
 pkgname=('aa-snapshot-maker-docs-bin' 'aa-snapshot-maker-standalone-bin')
 pkgver=1.0.9
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://audioassault.mx/products/snapshot-maker"
 license=('EULA')
@@ -31,5 +31,5 @@ package_aa-snapshot-maker-standalone-bin() {
     groups=('pro-audio')
     install -Dm755 "$srcdir/Snapshot Maker" "$pkgdir/usr/bin/AA Snapshot Maker Standalone"
     install -Dm644 "$srcdir/AA Snapshot Maker.desktop" "$pkgdir/usr/share/applications/AA Snapshot Maker.desktop"
-    install -Dm644 "$srcdir/aa-snapshot-maker.png" "$pkgdir/usr/share/icons/hicolor/192x192/aa-snapshot-maker.png"
+    install -Dm644 "$srcdir/aa-snapshot-maker.png" "$pkgdir/usr/share/icons/hicolor/192x192/apps/aa-snapshot-maker.png"
 }

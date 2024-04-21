@@ -1,6 +1,6 @@
 pkgbase = aa-snapshot-maker
 	pkgver = 1.0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://audioassault.mx/products/snapshot-maker
 	arch = x86_64
 	license = EULA
