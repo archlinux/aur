@@ -2,7 +2,7 @@
 
 _plug=bestsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r110.c85e198
+pkgver=r272.d676835
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ provides=("vapoursynth-plugin-${_plug}"
           'libbestsource.so')
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/vapoursynth/bestsource.git"
-        "libp2p::git+https://github.com/sekrit-twc/libp2p.git")
+        "libp2p::git+https://bitbucket.org/the-sekrit-twc/libp2p.git")
 sha256sums=('SKIP'
             'SKIP')
 options=('debug')
