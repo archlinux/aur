@@ -1,3 +1,4 @@
+# Maintainer: Niklas Reimer <niklas at backbord dot net>
 pkgname=python-titlecase
 _module='titlecase'
 pkgver=2.4.1
