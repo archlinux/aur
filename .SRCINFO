@@ -1,7 +1,7 @@
 pkgbase = pinta-git
 	pkgdesc = Drawing/editing program modeled after Paint.NET. It's goal is to provide a simplified alternative to GIMP for casual users
-	pkgver = r3406.ee146dc2
-	pkgrel = 2
+	pkgver = r3610.b79bd6a5
+	pkgrel = 1
 	url = https://pinta-project.com
 	arch = any
 	license = MIT

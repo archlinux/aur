@@ -3,8 +3,8 @@
 # Contributor: Javier Steinaker <jsteinaker@gmail.com>
 
 pkgname=pinta-git
-pkgver=r3406.ee146dc2
-pkgrel=2
+pkgver=r3610.b79bd6a5
+pkgrel=1
 pkgdesc="Drawing/editing program modeled after Paint.NET. It's goal is to provide a simplified alternative to GIMP for casual users"
 arch=(any)
 url="https://pinta-project.com"
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd "Pinta"
-  ./configure \
+  LANG=en_US.UTF-8 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var
