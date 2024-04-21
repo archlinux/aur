@@ -1,25 +1,31 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgname=gtk4-paper-plane
-pkgver=4.12.3
+pkgver=4.14.3
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (Version required by Paper Plane)"
 url="https://www.gtk.org/"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-license=(LGPL)
+license=(LGPL-2.1-or-later)
 depends=(
   adwaita-icon-theme
+  bash
   cairo
   cantarell-fonts
   dconf
   desktop-file-utils
   fontconfig
   fribidi
+  gcc-libs
   gdk-pixbuf2
   glib2
+  glibc
   graphene
+  gst-plugins-base-libs
   gst-plugins-bad-libs
+  gstreamer
   gtk-update-icon-cache
   harfbuzz
   iso-codes
@@ -46,6 +52,7 @@ depends=(
   pango
   shared-mime-info
   tracker3
+  vulkan-icd-loader
   wayland
 )
 makedepends=(
@@ -56,14 +63,14 @@ makedepends=(
   python-gobject
   sassc
   shaderc
+  vulkan-headers
   wayland-protocols
 )
 optdepends=('evince: Default print preview command')
 conflicts=(gtk4)
 provides=(gtk4=$pkgver libgtk-4.so)
 checkdepends=(weston)
-_commit=11ef4c8f43dca478d6acfaa31a3fea659946db26  # tags/4.12.3^0
-source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
+source=("git+https://gitlab.gnome.org/GNOME/gtk.git#tag=$pkgver"
         gtk-reversed-list-${pkgver}.patch::'https://raw.githubusercontent.com/paper-plane-developers/paper-plane/main/build-aux/gtk-reversed-list.patch'
         gtk4-querymodules.{hook,script})
 sha256sums=('SKIP'
@@ -71,17 +78,8 @@ sha256sums=('SKIP'
             'a5074ffc057a3041a4f851b4b4674cfc21f3cb9cc90c5414c3e91816a5d205e9'
             '92d08db5aa30bda276bc3d718e7ff9dd01dc40dcab45b359182dcc290054e24e')
 
-pkgver() {
-  cd gtk
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
-
 prepare() {
   cd gtk
-
-  # https://bugs.archlinux.org/task/79310
-  # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/6250
-  git cherry-pick -n 4d7277f72c8f4915f237e36982ffd7dfba524b15
 
   patch --forward --strip=1 --input="$srcdir/gtk-reversed-list-${pkgver}.patch"
 }
