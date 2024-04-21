@@ -1,18 +1,18 @@
 # Maintainer: intothegnu <intothegnu@protonmail.com>
 
 pkgname="neopassmenu"
-pkgver="1.0.6"
+pkgver="1.1.0"
 pkgrel="1"
-pkgdesc="Dmenu front end in POSIX shell for pass with navigation, selection from multi-line files, and support for dmenu equivalents"
+pkgdesc="Dmenu front end in POSIX shell for pass with, OTP, navigation, selection from multi-line files, and support for dmenu equivalents"
 arch=('any')
 depends=('pass' 'dmenu')
-optdepends=('xclip: clipboard automation (X11)' 'wl-clipboard: clipboard automation (Wayland)' 'xdotool: simulate keypresses (X11)' 'ydotool: simulate keypresses (Wayland)' 'sharutils: generate passwords')
+optdepends=('xclip: clipboard automation (X11)' 'wl-clipboard: clipboard automation (Wayland)' 'xdotool: simulate keypresses (X11)' 'ydotool: simulate keypresses (Wayland)' 'pass-otp: OTP support' 'sharutils: generate passwords')
 license=('BSD')
 
 url="https://notabug.org/BezierQuadratic/neopassmenu"
 
 source=("https://notabug.org/BezierQuadratic/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('ad08c58dd4ba8e79a5245e2ac229f616')
+md5sums=('0f2d082aedb45e1cc379f0cde65f65c7')
 
 package(){
 	mkdir -p "${pkgdir}/usr/bin"
