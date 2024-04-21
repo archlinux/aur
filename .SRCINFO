@@ -17,7 +17,6 @@ pkgbase = python-cebra
 	optdepends = python-seaborn
 	optdepends = python-matplotlib
 	optdepends = python-h5py
-	optdepends = python-argparse
 	source = https://files.pythonhosted.org/packages/95/d9/6ed3d5cc181e498b536f67e177b9f9adcbd72d30f9e884523f2a8c5a297e/cebra-0.2.0.tar.gz
 	md5sums = 6e066f6df69cd81b5c0de0742f437ac5
 

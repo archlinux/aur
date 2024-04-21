@@ -22,7 +22,6 @@ optdepends=(
     python-seaborn
     python-matplotlib
     python-h5py
-    python-argparse
 )
 license=('custom')
 arch=('any')
