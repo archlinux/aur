@@ -1,6 +1,6 @@
 pkgname=python-titlecase
 _module='titlecase'
-pkgver=2.2.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Python Port of John Gruber's titlecase.pl"
 url="https://github.com/ppannuto/python-titlecase"
@@ -9,7 +9,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/t/titlecase/titlecase-${pkgver}.tar.gz")
-md5sums=('a59fb1a51596c6aacf983442ac5947aa')
+md5sums=('f7b8a85bdd22e06b8a3b1cdbc0e5ddfc')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
