@@ -1,6 +1,6 @@
 # Maintainer: Swift Geek <swifgeek É google m Ä0m>
 # Contributor: Nick Ã˜stergaard <oe.nick at gmail dot com>
-DLAGENTS=('http::/usr/bin/curl -e "http://www.geeks3d.com/20131028/gputest-0-6-0-opengl-benchmark-for-windows-mac-os-x-and-linux-downloads/" -fLC - --retry 3 --retry-delay 3 -o %o %u')
+DLAGENTS=('https::/usr/bin/curl -e "https://www.geeks3d.com/20140304/gputest-0-7-0-opengl-benchmark-win-linux-osx-new-fp64-opengl-4-test-and-online-gpu-database/" -fLC - --retry 3 --retry-delay 3 -o %o %u')
 
 pkgname=gputest
 pkgver=0.7.0
@@ -13,7 +13,7 @@ depends=(gcc-libs mesa) # multilib?
 optdepends=('python2: tkinter gui'
             'tk: tkinter gui')
 makedepends=('unzip')
-source=("http://www.ozone3d.net/gputest/dl/GpuTest_Linux_x64_${pkgver}.zip" 'gputest.sh')
+source=("https://ozone3d.net/gputest/dl/GpuTest_Linux_x64_${pkgver}.zip" 'gputest.sh')
 md5sums=('54bdaa11c73fa08f2e0a47d639f4bdb8' 'SKIP')
 
 prepare() {
