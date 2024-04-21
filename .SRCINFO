@@ -1,7 +1,7 @@
 pkgbase = prjapicula
 	pkgdesc = Project Apicula bitstream documentation for Gowin FPGAs
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YosysHQ/apicula
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = prjapicula
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-pillow
-	depends = python-crcmod
+	depends = python-crc
 	depends = python-openpyxl
 	provides = prjapicula
 	source = apicula-0.12.tar.gz::https://files.pythonhosted.org/packages/source/A/Apycula/Apycula-0.12.tar.gz

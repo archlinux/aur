@@ -1,12 +1,12 @@
 # Maintainer: Richard Petri <git@rpls.de>
 pkgname=prjapicula
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Project Apicula bitstream documentation for Gowin FPGAs"
 arch=('i686' 'x86_64')
 url="https://github.com/YosysHQ/apicula"
 license=('MIT')
-depends=('python>=3.6' 'python-numpy' 'python-pandas' 'python-pillow' 'python-crcmod' 'python-openpyxl')
+depends=('python>=3.6' 'python-numpy' 'python-pandas' 'python-pillow' 'python-crc' 'python-openpyxl')
 makedepends=('python-setuptools')
 provides=('prjapicula')
 _name=Apycula
