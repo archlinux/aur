@@ -1,8 +1,9 @@
-# Maintainer: Matthew Gamble <git@matthewgamble.net>
+# Maintainer: Samsu F <samsu-f AT web DOT de>
+# Contributor: Matthew Gamble <git@matthewgamble.net>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=jtbl
-pkgver=1.2.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A simple CLI tool to print JSON and JSON Lines data as a table in the terminal"
 arch=("any")
@@ -11,7 +12,7 @@ license=("MIT")
 depends=("python" "python-tabulate")
 makedepends=("python-setuptools")
 source=("https://pypi.io/packages/source/j/jtbl/jtbl-${pkgver}.tar.gz")
-sha256sums=("1bc8d08a75cc584de4e13311e422bbdbec7b9334766cf2725d6862a1463ffa22")
+sha256sums=("7de0cb08ebb2b3a0658229a8edd4204c6944cbd9e3e04724a9ea235a61c115a5")
 
 build() {
     cd "jtbl-${pkgver}"
