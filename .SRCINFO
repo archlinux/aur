@@ -1,0 +1,13 @@
+pkgbase = clps
+	pkgdesc = Folder clearer
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/eeec-cal/clps
+	arch = x86_64
+	groups = torkit
+	license = MIT
+	makedepends = git
+	source = clps::git+https://github.com/eeec-cal/clps
+	sha256sums = SKIP
+
+pkgname = clps
