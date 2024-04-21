@@ -2,7 +2,7 @@
 
 pkgbase=mounriver-studio-toolchain-bin
 pkgname=($pkgbase mounriver-studio-toolchain-openocd-bin mounriver-studio-toolchain-riscv-gcc-bin mounriver-studio-toolchain-riscv-gcc12-bin)
-pkgver=1.90
+pkgver=1.91
 pkgrel=0
 arch=('x86_64')
 url='http://www.mounriver.com/'
@@ -18,7 +18,7 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
     'ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms).'
     'wchisp: WCH ISP Tool in Rust')
 source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V${pkgver}.tar.xz")
-sha256sums=('3ceeee75d260d0bd9482fec260ba48c91280884fbca175349c6dcd01d62c7ba8')
+sha256sums=('162a57a466e322ceab162edeaa0f4be521f9e3e8502a62bbcdca8fafc8a19a5d')
 options=('!strip')
 noextract=(${pkgbase}-${pkgver}.tar.xz)
 
