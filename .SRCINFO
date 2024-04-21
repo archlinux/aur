@@ -1,0 +1,14 @@
+pkgbase = brother-hll2402d
+	pkgdesc = Brother HL-L2402D CUPS driver
+	pkgver = 4.1.0_1
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = x86_64
+	arch = i686
+	license = custom:Brother
+	depends = cups
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf105952/hll2402dpdrv-4.1.0-1.i386.rpm
+	sha256sums = a8c4caf37273da667bbad8cd028316efd6ea222f9e491a9f4889905ae33422d5
+
+pkgname = brother-hll2402d
