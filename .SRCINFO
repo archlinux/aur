@@ -1,7 +1,7 @@
 pkgbase = plasma6-applets-mpdnowplaying
 	pkgdesc = MPD plasmoid for Plasma 6.
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marcelh83/mpdnowplaying
 	arch = x86_64
 	license = GPL-3.0-or-later
