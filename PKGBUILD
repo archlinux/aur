@@ -2,7 +2,7 @@
 # Maintainer: hairlinehd <slimender123@gmail.com>
 pkgname='obgk'
 _pkgname='obgk'
-pkgver=latest
+pkgver=r41.9365683
 pkgrel=2
 pkgdesc="osu!stable video and background deleter"
 arch=('x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
