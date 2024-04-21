@@ -1,7 +1,7 @@
 # Maintainer: exu <aur _a_ frm01 _d_ net>
 
 pkgname=supersonic-desktop-wayland
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic and Jellyfin music servers."
 _pkgname="${pkgname//-desktop-wayland/}"
@@ -16,7 +16,7 @@ optdepends=('libappindicator-gtk3: Systray indicator support'
             'org.freedesktop.secrets: Keyring password store support')
 makedepends=('go>=1.17')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c97c77fe831c0945122a4ab4c57abc7f0fc911bdf5c787499cafe55f07291791')
+sha256sums=('b59b2841f508d6be7f3695a468c8de41f0d78987ef920b206574169b706a98d9')
 
 build() {
     export GOPATH="$srcdir"/gopath
