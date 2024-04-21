@@ -1,7 +1,7 @@
 # Maintainer: Johan Svensson <johan@loxley.se>
 pkgname=xping
-pkgver=1.3
-pkgrel=3
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="A simple ping program continiously probing multiple hosts using icmp-echo"
 url="https://github.com/martintopholm/xping"
 arch=('x86_64')
