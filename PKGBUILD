@@ -14,7 +14,8 @@ optdepends=('python2: tkinter gui'
             'tk: tkinter gui')
 makedepends=('unzip')
 source=("https://ozone3d.net/gputest/dl/GpuTest_Linux_x64_${pkgver}.zip" 'gputest.sh')
-md5sums=('54bdaa11c73fa08f2e0a47d639f4bdb8' 'SKIP')
+sha256sums=('a6cbddfb40dc203735d63bc9609b24abde8613fbb649d0ef7d0d4515842ba263'
+            'SKIP')
 
 prepare() {
   cd "$srcdir/GpuTest_Linux_x64_${pkgver}"
