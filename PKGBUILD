@@ -1,15 +1,15 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor:  jyantis <yantis@yantis.net>
 # Contributor: Sandro Munda <munda.sandro@gmail.com>
 
 pkgname=python-watchdog-git
 pkgver=4.0.1.r1464.b92b6fa
-pkgrel=1
+pkgrel=2
 pkgdesc='Python 3 library to monitor filesystem events.'
 arch=('any')
 url='https://github.com/gorakhargosh/watchdog'
-license=('custom')
-depends=('python'
-         )
+license=('Apache-2.0')
+depends=('python')
 source=('git+https://github.com/gorakhargosh/watchdog.git')
 sha256sums=('SKIP')
 makedepends=('git' 'python-setuptools')
@@ -39,9 +39,6 @@ build() {
 
 package() {
   cd watchdog
-
-  # We don't need anything related to git in the package
-  rm -rf .git*
 
   python setup.py install --root="${pkgdir}" --optimize=1
 
