@@ -1,4 +1,5 @@
-# Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
+# Maintainer: Torben <git at letorbi dot com>
+# Contributor: Ranieri Althoff <ranisalt+aur at gmail dot com>
 
 pkgname=gnome-shell-extension-hot-edge-git
 pkgver=22
