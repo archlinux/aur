@@ -24,12 +24,14 @@ build() {
   cd "${srcdir}/${pkgname}-${_pkgvertag}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export CFLAGS="$CFLAGS -ffat-lto-objects"
   cargo build --frozen --release --all-features
 }
 
 check() {
   cd "${srcdir}/${pkgname}-${_pkgvertag}"
   export RUSTUP_TOOLCHAIN=stable
+  export CFLAGS="$CFLAGS -ffat-lto-objects"
   cargo test --frozen --all-features
 }
 
