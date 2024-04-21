@@ -1,5 +1,6 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Guillaume Alaux <guillaume@archlinux.org>
 # Contributor: William Gathoye <william + archlinux at gathoye dot be>
@@ -16,7 +17,7 @@ pkgname=(
   java21-openjfx-src
 )
 pkgver=21.0.3.u2
-pkgrel=2
+pkgrel=3
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64 x86_64_v3)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -47,6 +48,7 @@ makedepends=(
   webkit2gtk
   zip
 )
+options=(!lto)
 source=(
   "${pkgbase/${pkgver%%.*}/}-${pkgver//.u/+}.tar.gz::https://github.com/openjdk/jfx${pkgver%%.*}u/archive/refs/tags/${pkgver//.u/+}.tar.gz"
   gradle.properties
@@ -63,6 +65,11 @@ _jfxdir=jfx${pkgver%%.*}u-${pkgver//.u/-}
 prepare() {
   cd $_jfxdir
 
+  # Clean from potential previous runs
+  gradle --stop
+  rm -rf build
+  #gradle clean
+
   ln -sf ../gradle.properties .
   patch -Np1 -i ../java-openjfx-flags.patch
   patch -Np1 -i ../java-openjfx-no-xlocale.patch
@@ -77,6 +84,9 @@ build() {
 
   # build against ffmpeg4.4
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
+
+  # Workaround for situation where the linker treats whitespace as arguments
+  export LDFLAGS="${LDFLAGS//+([[:space:]]|[[:blank:]])/ }"
 
   gradle zips
 }
