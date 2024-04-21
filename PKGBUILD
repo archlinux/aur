@@ -6,7 +6,7 @@
 
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
-pkgver=46.0
+pkgver=46.1
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -87,20 +87,13 @@ _checkdepends=(
   wireplumber
   zenity
 )
-_commit=c4753689e3413cd9332d885dd0297b3b7d9ba9ca  # tags/46.0^0
 source=(
-  "$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+  # Mutter tags use SSH signatures which makepkg doesn't understand
+  "$pkgname::git+$url.git#tag=${pkgver/[a-z]/.&}"
   'mr1441.patch'
 )
-sha256sums=(
-  'SKIP'
-  '0146f9e566786164a0d59d4dbbd87a8a97c29af0dc074b830df44458e7ea5a28'
-)
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed -r 's/\.([a-z])/\1/;s/([a-z])\./\1/;s/[^-]*-g/r&/;s/-/+/g'
-}
+b2sums=('4acd4a192455890b12b2fc9b6553ed65bd2176307cd6c6683fc2ab476b7fa88f4b5e507a1209b3e900c68d94768f3cf749b4f5d87d25300b33a112182c8a62a7'
+        'b85b4129a7e3c79a076650b804c01f801bdb89ce896546bdedb97e445b289ec2784f11bfd9a29d78e8830769938d42d108e7bdca9c97ec6fc867c2be53867a24')
 
 prepare() {
   cd "$srcdir/$pkgname"
