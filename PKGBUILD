@@ -8,13 +8,14 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-portaudio
 pkgver=19.7.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A free, cross-platform, open source, audio I/O library. (Android ${_android_arch})"
 url="https://github.com/portaudio/portaudio/"
 license=('MIT')
 depends=('android-ndk')
-makedepends=('android-cmake')
+makedepends=('android-cmake'
+             "android-${_android_arch}-alsa-lib")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("$url/archive/v$pkgver/portaudio-v$pkgver.tar.gz")
 md5sums=('49ecd6de2350b3a1466116538f7be0e7')
