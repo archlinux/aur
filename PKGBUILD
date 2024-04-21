@@ -1,9 +1,8 @@
 # Maintainer: robertfoster
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
-# Contributor:
 
 pkgname=dhewm3
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Doom 3 engine with native 64-bit support, SDL, and OpenAL"
 arch=('i686' 'x86_64')
@@ -43,6 +42,6 @@ package() {
   install -dm755 "${pkgdir}/usr/share/dhewm3/d3xp"
 }
 
-sha256sums=('0652d85bcc470b8535dee0fc6badd57a82a183984f7a02a3fa13937436166eb0'
+sha256sums=('aedb72ddbab50a9ac2f279cce0675d3b707eeb2424651f389c27683541ccf44c'
   '642b56fe68ec0906abb11d3a27a7543bb23d76da50cffcec3f841fe3fa6ba069'
   '4f17fd5c3b7ada4c6d2445d760d9d83bf782398d40ad6369cd58f2c373b93b86')
