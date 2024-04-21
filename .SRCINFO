@@ -2,7 +2,7 @@ pkgbase = pmount-safe-removal
 	pkgdesc = mount removable devices as normal user, with safe removal of device
 	pkgver = 0.9.23
 	pkgrel = 7
-	url = http://pmount.alioth.debian.org/
+	url = https://packages.qa.debian.org/p/pmount.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -19,4 +19,3 @@ pkgbase = pmount-safe-removal
 	md5sums = a1c8ef20e809ab63b7f89d2c68b05620
 
 pkgname = pmount-safe-removal
-

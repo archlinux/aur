@@ -1,4 +1,4 @@
-# Maintainer: jjacky
+# Contributor: jjacky
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 _pkgname=pmount
@@ -8,7 +8,7 @@ pkgrel=7
 pkgdesc="mount removable devices as normal user, with safe removal of device"
 arch=(i686 x86_64)
 license=('GPL2')
-url="http://pmount.alioth.debian.org/"
+url="https://packages.qa.debian.org/p/pmount.html"
 backup=('etc/pmount.allow')
 depends=('sysfsutils>=2.0.0-1' 'bash' 'util-linux')
 makedepends=('intltool')
