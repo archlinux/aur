@@ -1,0 +1,14 @@
+pkgbase = php-legacy-yaml
+	pkgdesc = Support for YAML 1.1 (YAML Ain't Markup Language) serialization using the LibYAML library.
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://bd808.com/pecl-file_formats-yaml/
+	arch = x86_64
+	license = MIT
+	depends = php-legacy
+	depends = libyaml
+	backup = etc/php-legacy/conf.d/yaml.ini
+	source = https://pecl.php.net/get/yaml-2.2.3.tgz
+	sha256sums = 5937eb9722ddf6d64626799cfa024598ff2452ea157992e4e67331a253f90236
+
+pkgname = php-legacy-yaml
