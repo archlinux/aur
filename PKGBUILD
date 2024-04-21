@@ -1,15 +1,15 @@
-# Maintainer: Gustavo Jasso <gustavo at jasso dot info>
+# Maintainer: Niklas Reimer <niklas at backbord dot net>
 pkgname='python-getmac'
 _name=${pkgname#python-}
 pkgdesc="Pure-Python package to get the MAC address of network interfaces and hosts on the local network."
-pkgver=0.8.2
+pkgver=0.9.4
 pkgrel=1
 url="https://github.com/GhostofGoes/getmac"
 arch=('any')
 license=('MIT')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-md5sums=('cf1af0d5c0e5d1fe7f62401bcb726a26')
+md5sums=('4d107e743f0b47f39dc0e70eb3067f83')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
