@@ -2,7 +2,7 @@
 
 pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
@@ -11,11 +11,13 @@ license=('MIT')
 depends=('lua' 'zlib' 'libzip' 'libgit2' 'mbedtls2')
 makedepends=('meson')
 source=("${_gitname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4b6ea3292248d2d89feac75422da3fcc55b34e7f81f93ca30976439cd2ce5a7e')
+sha256sums=('2a8264d2fd3b3b5d1ef8d0321ebece257c2102493b00c1dca5660630bf48a755')
+
 
 build() {
   cd "${_gitname}-${pkgver}"
-  CFLAGS="$CFLAGS -DLPM_VERSION='\"${pkgver}\"' -DLPM_DEFAULT_RELEASE=''"
+  export CFLAGS+=" -DLPM_VERSION='\"${pkgver}\"' -DLPM_DEFAULT_RELEASE='' -I/usr/include/mbedtls2"
+  export LDFLAGS+=" -L/usr/lib/mbedtls2"
   arch-meson -Dstatic=true . build
   meson compile -C build
 }
