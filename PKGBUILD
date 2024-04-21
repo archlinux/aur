@@ -2,23 +2,24 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 pkgname=maestral-qt
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='A Qt interface for the Maestral daemon'
 arch=('any')
 url="https://github.com/SamSchott/maestral-qt"
 license=('MIT')
-depends=("maestral>=$pkgver"
+depends=("maestral=$pkgver"
          'python'
          'python-click'
          'python-markdown2'
          'python-packaging'
          'python-pyqt6'
+         'python-pyro5'
          'qt6-svg')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('gnome-shell-extension-appindicator: Gnome integration')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('97a0f05864477f077395bcff4ee601402e319587b12cb1dcf98713f50c7d18f0')
+sha256sums=('7c6dbc43be97d8c90f0a8d241f88db7196ef561656fe076e576c2dcf35e7b255')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -28,7 +29,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	python -m installer --destdir="${pkgdir}/" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -dvm664 "${pkgdir}/usr/share/licenses/$pkgname/"
-	ln -sv "$_site/maestral_qt-$pkgver.dist-info/LICENSE.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	install -Dvm644 LICENSE.txt "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
