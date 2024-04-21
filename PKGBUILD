@@ -1,7 +1,7 @@
 pkgbase=aa-snapshot-player
 pkgname=('aa-snapshot-player-standalone-bin' 'aa-snapshot-player-vst3-bin')
 pkgver=1.0.9
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://audioassault.mx/products/snapshot-player"
 license=('EULA')
@@ -11,7 +11,7 @@ optdepends=('amp-locker: amp modeller used to host plugin')
 provides=('aa-snapshot-player')
 source=('AA Snapshot Player.desktop'
         'aa-snapshot-player.png')
-sha256sums=('e7c4027c3e9ddbda444f7ae37849739da03830cda03972600845d90634fcbb38'
+sha256sums=('ef8c5ffcd4bf1a184cf53c7802beb21451c0d62c6a92dba1fee946fbaa2ef659'
             '2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5')
 
 prepare () {
