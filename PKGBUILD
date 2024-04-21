@@ -2,19 +2,19 @@
 # Contributor: leotheleon <71839579+leo-the-leon@users.noreply.github.com>
 
 pkgname=firealpaca
-pkgver=2.11.14
+pkgver=2.11.18
 _pkgver="${pkgver//./_}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple and easy digital painting software"
 arch=('x86_64')
 url="https://firealpaca.com/"
-license=('custom')
+license=('LicenseRef-eula')
 depends=('wine' 'hicolor-icon-theme')
 makedepends=('gendesk' 'icoutils')
 source=("${pkgname}-${pkgver}.zip"::"https://firealpaca.com/download/win64_zip"
         "${pkgname}"
         "LICENSE")
-sha256sums=('393e44addd057a2b7a37014b68956c0d6df9fb0cd0bada5a2a8129802e7902e5'
+sha256sums=('81325b802a40dcf1d11318f3a09dbb8817fbcbe5e642613a8ea15814a849730b'
             '4874184eef2414d48ab2903e52c65f46f5dc19571666e71d326f2051b28e16eb'
             '719e661613f89866257efa0aff7dd262cc101f83d47b97c4f54b052625a4ead4')
 
@@ -58,4 +58,3 @@ package() {
   # Install license file
   install -m 644 -D "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-

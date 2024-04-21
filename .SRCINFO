@@ -1,18 +1,18 @@
 pkgbase = firealpaca
 	pkgdesc = Simple and easy digital painting software
-	pkgver = 2.11.14
-	pkgrel = 2
+	pkgver = 2.11.18
+	pkgrel = 1
 	url = https://firealpaca.com/
 	arch = x86_64
-	license = custom
+	license = LicenseRef-eula
 	makedepends = gendesk
 	makedepends = icoutils
 	depends = wine
 	depends = hicolor-icon-theme
-	source = firealpaca-2.11.14.zip::https://firealpaca.com/download/win64_zip
+	source = firealpaca-2.11.18.zip::https://firealpaca.com/download/win64_zip
 	source = firealpaca
 	source = LICENSE
-	sha256sums = 393e44addd057a2b7a37014b68956c0d6df9fb0cd0bada5a2a8129802e7902e5
+	sha256sums = 81325b802a40dcf1d11318f3a09dbb8817fbcbe5e642613a8ea15814a849730b
 	sha256sums = 4874184eef2414d48ab2903e52c65f46f5dc19571666e71d326f2051b28e16eb
 	sha256sums = 719e661613f89866257efa0aff7dd262cc101f83d47b97c4f54b052625a4ead4
 
