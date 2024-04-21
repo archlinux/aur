@@ -22,19 +22,19 @@ source=("ulauncher::git+https://github.com/Ulauncher/Ulauncher.git")
 sha256sums=('SKIP')
 
 build() {
-  cd ulauncher
+  cd ulauncher || exit
   make prefs
-  env PATH=$(getconf PATH) python setup.py build
+  env PATH="$(getconf PATH)" python setup.py build
 }
 
 check() {
-  cd ulauncher
+  cd ulauncher || exit
   desktop-file-validate "io.ulauncher.Ulauncher.desktop"
 }
 
 package() {
-  cd ulauncher
+  cd ulauncher || exit
   export PYTHONHASHSEED=0
-  env PATH=$(getconf PATH) python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  env PATH="$(getconf PATH)" python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   find $pkgdir -type d -name __pycache__ | xargs rm -rf
 }
