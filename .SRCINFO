@@ -5,6 +5,7 @@ pkgbase = encryptedfs-bin
 	url = https://github.com/radumarias/encryptedfs
 	arch = x86_64
 	license = Apache-2.0
+	depends = fuse3
 	provides = encryptedfs
 	conflicts = encryptedfs
 	source = https://github.com/radumarias/encryptedfs/releases/download/0.1.22/encryptedfs-0.1.22-x86_64.tar.gz

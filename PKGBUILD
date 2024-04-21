@@ -9,6 +9,7 @@ pkgdesc="An encrypted file system that mounts with FUSE on Linux. It can be used
 url="https://github.com/radumarias/encryptedfs"
 license=("Apache-2.0")
 arch=("$CARCH")
+depends=("fuse3")
 provides=("encryptedfs")
 conflicts=("encryptedfs")
 source=("https://github.com/radumarias/encryptedfs/releases/download/$pkgver/encryptedfs-$pkgver-$CARCH.tar.gz")
