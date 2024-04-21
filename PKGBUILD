@@ -7,7 +7,7 @@
 
 pkgname=obs-studio-browser
 pkgver=30.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -160,7 +160,7 @@ build() {
     -DCALM_DEPRECATION=ON \
     -Wno-dev
 
-  sed -i "s|OBS_VERSION =|OBS_VERSION = \"$_pkgver-browser-$pkgrel\"; //|" build/libobs/obsversion.c
+  sed -i "s|OBS_VERSION =|OBS_VERSION = \"$pkgver-browser-$pkgrel\"; //|" build/libobs/obsversion.c
 
   cmake --build build
 }
