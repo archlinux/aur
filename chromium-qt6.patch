@@ -1,0 +1,9 @@
+--- a/ui/qt/BUILD.gn    2024-03-20 21:45:17.817038800 +0000
++++ b/ui/qt/BUILD.gn        2024-04-04 16:06:36.817852683 +0100
+@@ -61,6 +61,7 @@
+     packages = [
+       "Qt" + invoker.qt_version + "Core",
+       "Qt" + invoker.qt_version + "Widgets",
++      "Qt" + invoker.qt_version + "Gui",
+     ]
+   }

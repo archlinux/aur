@@ -4,80 +4,81 @@
 # Contributor: Misc <andreas.reis@gmail.com>
 # Contributor: Jeagoss <jgoliver@jeago.com>
 # Contributor: Saikrishna Arcot <saiarcot895@gmail.com> and Steven Newbury <steve@snewbury.org.uk> (First Authors of VAAPI patch)
-
-_USE_QT=0
-_USE_QT5=0
-_USE_QT6=0
 _USE_GTK=0
+
+# Select only one:
+_USE_QT5=0
+_USE_QT6=1
+
 _VERBOSE_OUTPUT=0
 
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=120.0.6073.0
+pkgver=126.0.6423.2
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
 url='http://www.chromium.org'
 license=('BSD')
 depends=(
-   'gcc-libs' # 'libgcc_s.so' 'libstdc++.so'
-   'glibc' # 'ld-linux-x86-64.so' 'libc.so' 'libm.so'
-   'flac' 'libFLAC.so'
-   'alsa-lib' 'libasound.so'
-#  'brotli' 'libbrotlidec.so'
-   'libcups' # 'libcups.so'
-   'dbus' 'libdbus-1.so'
-   'libdrm' # 'libdrm.so'
-   'expat' 'libexpat.so'
-   'libffi' 'libffi.so'
-   'libfontconfig.so' 'libfontconfig.so'
-#    'freetype2' 'libfreetype.so'
-   'glib2' 'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
-   'harfbuzz' 'libharfbuzz-subset.so' 'libharfbuzz.so'
-   'libjpeg-turbo' 'libjpeg.so'
-   'lcms2' 'liblcms2.so'
-   'openh264' 'libopenh264.so'
-   'opus' 'libopus.so'
-   'pango' 'libpango-1.0.so'
-   'libpipewire' 'libpipewire-0.3.so'
-   'libpng' 'libpng16.so'
-   'libpulse' 'libpulse.so'
-   'libwebp' 'libwebp.so' 'libwebpdemux.so' 'libwebpmux.so'
-   'libx11' # 'libX11.so'
-   'libxcb' # 'libxcb.so'
-   'libxcomposite' # 'libXcomposite.so'
-   'libxdamage' # 'libXdamage.so'
-   'libxext' # 'libXext.so'
-   'libxfixes' # 'libXfixes.so'
-   'libxkbcommon' 'libxkbcommon.so'
-   'libxml2' 'libxml2.so'
-   'libxrandr' # 'libXrandr.so'
-   'libxtst' # 'libXtst.so'
-   'libxslt' 'libxslt.so'
-   'mesa' # 'libgbm.so'
-   'nspr' # 'libnspr4.so'
-   'nss' # 'libnss3.so' 'libnssutil3.so' 'libsmime3.so'
-   'openjpeg2' # 'libopenjp2.so'
-   'hicolor-icon-theme'
-   'pciutils'
-   'xdg-utils'
-#   'double-conversion'
-#   'dav1d' 'libdav1d.so'
-#   'libyuv' 'libyuv.so'
-#   'jsoncpp' 'libjsoncpp.so'
-#   'aom' 'libaom.so'
-#   'libvpx' 'libvpx.so'
-#   'libva'
-#   'protobuf'
-#   'libevent' 'libevent-2.1.so'  'libevent_core-2.1.so'  'libevent_extra-2.1.so'  'libevent_openssl-2.1.so'  'libevent_pthreads-2.1.so'
-#   'ffmpeg' 'libavcodec.so'  'libavdevice.so'  'libavfilter.so'  'libavformat.so'  'libavutil.so'  'libpostproc.so'  'libswresample.so' 'libswscale.so'
-#   'icu'       # https://crbug.com/678661.
-#   're2' 'libre2.so'
-#   'snappy'
-#   'minizip'
-#   'libsrtp' 'libsrtp2.so'
+  'gcc-libs'
+  'glibc'
+  'flac'
+  'alsa-lib'
+#   'brotli'
+  'libcups'
+  'dbus'
+  'libdrm'
+  'expat'
+  'libffi'
+  'fontconfig'
+#   'freetype2'
+  'glib2'
+  'harfbuzz'
+  'libjpeg-turbo'
+  'lcms2'
+  'openh264'
+  'opus'
+  'pango'
+  'libpipewire'
+  'libpng'
+  'libpulse'
+  'libwebp'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon'
+  'libxml2'
+  'libxrandr'
+  'libxtst'
+  'libxslt'
+  'mesa'
+  'nspr'
+  'nss'
+  'openjpeg2'
+  'hicolor-icon-theme'
+  'pciutils'
+  'xdg-utils'
+#  'double-conversion'
+#  'dav1d'
+#  'libyuv'
+#  'jsoncpp'
+#  'aom'
+#  'libvpx'
+#  'libva'
+#  'protobuf'
+#  'libevent'
+#  'ffmpeg'
+#  'icu'       # https://crbug.com/678661.
+#  're2'
+#  'snappy'
+#  'minizip'
+#  'libsrtp'
 )
 makedepends=(
   'gperf'
@@ -115,13 +116,16 @@ source=(
   'gclient_args.gni'
   # Patch form Gentoo.
   'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-cross-compile.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-108-EnumTable-crash.patch'
   'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-111-InkDropHost-crash.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-117-system-zstd.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-124-libwebp-shim-sharpyuv.patch'
   # Misc Patches.
 
   # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
-  'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/chromium/trunk/use-oauth2-client-switches-as-default.patch'
+  'use-oauth2-client-switches-as-default.patch' #'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/chromium/trunk/use-oauth2-client-switches-as-default.patch'
   'system-opus.diff'
+  'chromium-qt6.patch' # https://issues.chromium.org/issues/332724863
+  'copy_config.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c/chromium/scripts/copy_config.sh?format=TEXT'
 )
 sha256sums=(
 #  "$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -133,13 +137,16 @@ sha256sums=(
   '8c403dd7d732e39b6660b3d841338794a9583fab75d597db13f53ad987b2e8d5'
   # Patch form Gentoo
   '9f8e90672e7914e1974ea73de48336800204a188b94d8b03e3ddd64a97f5e630'
-  '779861e51506a29d4a46c9380c0793bb3297624e47536cb8e71240818e7dd093'
   '960556d2b337e091a2954f14ba00b2f67ec7d54c2ff54302f98dcb9830ccd97f'
+  '3a71bf3b242a6c0936cac3d90587fded243d7c65f7967697c9a99bd1fb93d4a8'
+  '500da684872586baf3824def9c8a4d51a54177dfcc0a4f15a611897af80409ee'
   # Misc Patches
 
   # Patch from crbug (chromium bugtracker) or Arch chromium package
-  'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
-  '01aea13760430d1c6dee97faeabc52ac0d94f888fb2215ae33468ebc0e11558d'
+  'de110bfd8b35b2c31f5e673672c16eb2a3405e158f18ce47255a119e4bc95b1d'
+  '8db539e3665e98a8efb17c3a0e2a2a71f8d57729e3abf8d884d5e99e781f76b4'
+  'aa8f0ac027e0c7bd73f9359e6e6166288f49e3a31a241d43a54a3a9d71797b34'
+  'SKIP'
 )
 options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
 install=chromium-dev.install
@@ -148,31 +155,6 @@ _keeplibs=()
 _flags=()
 _use_system=()
 
-if [ "${_USE_QT}" == "1" ]; then
-  _flags+=('use_qt=true')
-  if [ "${_USE_QT5}" == "1" ]; then
-    depends+=('qt5-base') # 'libQt5Core.so' 'libQt5Gui.so' 'libQt5Widgets.so')
-    makedepends+=('qt5-tools')
-  fi
-  if [ "${_USE_QT6}" == "1" ]; then
-    depends+=('qt6-base') # 'libQt6Core.so' 'libQt6Gui.so' 'libQt6Widgets.so')
-    makedepends+=('qt6-tools')
-  fi
-    if [ "${_USE_QT5}" == "1" ]; then
-      _flags+=(
-        'use_qt6=false'
-        "moc_qt5_path=\"$(qtpaths --binaries-dir)\""
-      )
-    fi
-    if [ "${_USE_QT6}" == "1" ]; then
-      _flags+=(
-        'use_qt6=true'
-        "moc_qt6_path=\"/usr/lib/qt6\""
-      )
-    fi
-else
-  _flags+=('use_qt=false')
-fi
 if [ "${_USE_GTK}" == "1" ]; then
   depends+=(
     'cairo' 'libcairo.so'
@@ -198,6 +180,29 @@ else
     'enable_remoting=false' # side-efect if disable GTK :(
   )
 fi
+
+if [ "${_USE_QT5}" == "1" ] || [ "${_USE_QT6}" == "1" ]; then
+  _flags+=('use_qt=true')
+  if [ "${_USE_QT5}" == "1" ]; then
+    depends+=('qt5-base') # 'libQt5Core.so' 'libQt5Gui.so' 'libQt5Widgets.so')
+    makedepends+=('qt5-tools')
+    _flags+=(
+      'use_qt6=false'
+      "moc_qt5_path=\"$(qtpaths --binaries-dir)\""
+    )
+  fi
+  if [ "${_USE_QT6}" == "1" ]; then
+    depends+=('qt6-base') # 'libQt6Core.so' 'libQt6Gui.so' 'libQt6Widgets.so')
+    makedepends+=('qt6-tools')
+      _flags+=(
+      'use_qt6=true'
+      "moc_qt6_path=\"/usr/lib/qt6\""
+    )
+  fi
+else
+  _flags+=('use_qt=false')
+fi
+
 
 if [ "${_VERBOSE_OUTPUT}" == "1" ]; then
   _verbose_ffmpeg="'V=1',"
@@ -227,7 +232,6 @@ _keeplibs+=(
   'base/third_party/superfasthash'
   'base/third_party/symbolize'
   'base/third_party/valgrind'
-  'base/third_party/xdg_mime'
   'base/third_party/xdg_user_dirs'
   'buildtools/third_party/libc++'
   'buildtools/third_party/libc++abi'
@@ -297,6 +301,7 @@ _keeplibs+=(
   'third_party/devtools-frontend/src/front_end/third_party/chromium'
   'third_party/devtools-frontend/src/front_end/third_party/codemirror'
   'third_party/devtools-frontend/src/front_end/third_party/codemirror.next'
+  'third_party/devtools-frontend/src/front_end/third_party/csp_evaluator'
   'third_party/devtools-frontend/src/front_end/third_party/diff'
   'third_party/devtools-frontend/src/front_end/third_party/i18n'
   'third_party/devtools-frontend/src/front_end/third_party/intl-messageformat'
@@ -309,7 +314,6 @@ _keeplibs+=(
   'third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/rxjs'
   'third_party/devtools-frontend/src/front_end/third_party/vscode.web-custom-data'
   'third_party/devtools-frontend/src/front_end/third_party/wasmparser'
-  'third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n'
   'third_party/devtools-frontend/src/third_party'
   'third_party/distributed_point_functions'
   'third_party/dom_distiller_js'
@@ -341,6 +345,7 @@ _keeplibs+=(
   'third_party/jsoncpp'
   'third_party/jstemplate'
   'third_party/khronos'
+  'third_party/lens_server_proto'
   'third_party/leveldatabase'
   'third_party/libaddressinput'
   'third_party/libaom'
@@ -365,9 +370,10 @@ _keeplibs+=(
   'third_party/libwebm'
   'third_party/libx11'
   'third_party/libxcb-keysyms'
-  'third_party/libxml/chromium'
+  'third_party/libxml' #/chromium'
   'third_party/libyuv'
   'third_party/libzip'
+  'third_party/lit'
 #   'third_party/llvm'
   'third_party/lottie'
   'third_party/lss'
@@ -378,7 +384,7 @@ _keeplibs+=(
   'third_party/maldoca/src/third_party/zlibwrapper'
   'third_party/markupsafe'
   'third_party/material_color_utilities'
-  'third_party/mesa'
+  'third_party/mesa_headers'
   'third_party/metrics_proto'
   'third_party/minigbm'
   'third_party/modp_b64'
@@ -392,7 +398,6 @@ _keeplibs+=(
   'third_party/ots'
   'third_party/pdfium'
   'third_party/pdfium/third_party/agg23'
-  'third_party/pdfium/third_party/base'
   'third_party/pdfium/third_party/bigint'
   'third_party/pdfium/third_party/freetype'
   'third_party/pdfium/third_party/lcms'
@@ -424,18 +429,19 @@ _keeplibs+=(
   'third_party/skia/third_party/vulkanmemoryallocator'
   'third_party/smhasher'
   'third_party/sqlite'
-#  'third_party/swiftshader'
-#  'third_party/swiftshader/third_party/astc-encoder'
-#  'third_party/swiftshader/third_party/llvm-subzero'
-#  'third_party/swiftshader/third_party/marl'
-#  'third_party/swiftshader/third_party/subzero'
-#  'third_party/swiftshader/third_party/SPIRV-Headers'
-#  'third_party/swiftshader/third_party/SPIRV-Tools'
+  'third_party/swiftshader'
+  'third_party/swiftshader/third_party/astc-encoder'
+  'third_party/swiftshader/third_party/llvm-subzero'
+  'third_party/swiftshader/third_party/marl'
+  'third_party/swiftshader/third_party/subzero'
+  'third_party/swiftshader/third_party/SPIRV-Headers'
+  'third_party/swiftshader/third_party/SPIRV-Tools'
   'third_party/tensorflow_models'
   'third_party/tensorflow-text'
   'third_party/tflite'
   'third_party/tflite/src/third_party/eigen3'
   'third_party/tflite/src/third_party/fft2d'
+  'third_party/tflite/src/third_party/xla'
   'third_party/tflite/src/third_party/xla/third_party/tsl'
   'third_party/ruy'
   'third_party/six'
@@ -529,13 +535,6 @@ _flags+=(
   'use_system_libopenjpeg2=true'
   'use_system_libffi=true'
   'v8_use_libm_trig_functions=true'
-  'angle_link_glx=true'
-  'angle_enable_gl_desktop_frontend=true'
-  'angle_enable_swiftshader=false'
-  'angle_use_custom_libvulkan=false'
-  'enable_swiftshader=false'
-  'enable_swiftshader_vulkan=false'
-  'dawn_use_swiftshader=false'
 )
 
 # Set the bundled/external components.
@@ -581,7 +580,7 @@ _use_system+=(
   'libpng'
 #  'libvpx'                  # Some components hardcode the bundled code
   'libwebp'
-  'libxml'
+#   'libxml'
 #  'libXNVCtrl.gn'
   'libxslt'
 #  'libyuv'                  # Missing pkg-config file
@@ -596,6 +595,11 @@ _use_system+=(
 #  'woff2'                   # Fails due undefined symbols
 #  'zlib'                    # NaCL needs the bundled one
 )
+
+CFLAGS="${CFLAGS/-march=x86-64 -mtune=generic/}"
+CXXFLAGS="${CFLAGS/-march=x86-64 -mtune=generic/}"
+CFLAGS="${CFLAGS/-march=native/}"
+CXXFLAGS="${CFLAGS/-march=native/}"
 
 # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn).
 CFLAGS+=' -Wno-builtin-macro-redefined'
@@ -663,6 +667,9 @@ solutions = [
 ]
 EOF
 
+  # enable again nacl(?)
+  sed "s|'checkout_nacl': 'checkout_chromeos',|'checkout_nacl': 'host_os == \"linux\"',|g" -i chromium/DEPS
+
   export PATH+=":${PWD}/depot_tools" DEPOT_TOOLS_UPDATE=0
   export VPYTHON_BYPASS='manually managed python not supported by chrome operations'
 
@@ -721,13 +728,6 @@ EOF
 
   # Misc patches.
 
-  # little fix for detect atspi-2 2.50.0
-  git revert --no-edit fc09363
-
-  # Disable swiftshader
-  sed 's| target_cpu == "x64"))| target_cpu == "x64") \&\& enable_swiftshader_vulkan)|g' \
-    -i BUILD.gn
-
   # Pats to chromium dev's about why always they forget add/remove missing build rules.
   # Not this time (?).
 
@@ -756,8 +756,13 @@ EOF
 
   # # Patch from Gentoo
   patch -p1 -i "${srcdir}/chromium-cross-compile.patch"
-  patch -p1 -i "${srcdir}/chromium-108-EnumTable-crash.patch"
   patch -p1 -i "${srcdir}/chromium-111-InkDropHost-crash.patch"
+  patch -p1 -i "${srcdir}/chromium-117-system-zstd.patch"
+  patch -p1 -i "${srcdir}/chromium-124-libwebp-shim-sharpyuv.patch"
+
+  if [ "${_USE_QT6}" == "1" ]; then
+    patch -p1 -i "${srcdir}/chromium-qt6.patch"
+  fi
 
   mkdir -p buildtools/third_party/eu-strip/bin
   ln -sf /usr/bin/true buildtools/third_party/eu-strip/bin/eu-strip
@@ -778,21 +783,23 @@ EOF
 
   # Setup the linker in chromium.
   sed "s|-fuse-ld=lld|-fuse-ld=${_clang_path}${_lld}|g" \
-    -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py \
+    -i media/ffmpeg/scripts/build_ffmpeg.py \
     -i build/config/compiler/BUILD.gn
 
   # Setup bundled ffmpeg.
   # Add build verbose output.
   # setup all cores
+  # comment out --disable-iamf
   sed -e "s|'make', '-j|'make', $_verbose_ffmpeg '-j|g" \
       -e "s|parallel_jobs = 8|parallel_jobs = $(nproc)|g" \
-      -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
+      -i media/ffmpeg/scripts/build_ffmpeg.py
   sed -e "s|, \"src\"|, \"chromium\"|g" \
       -e 's|makeinfo|mkeinfo|g' \
-      -i third_party/ffmpeg/chromium/scripts/robo_lib/config.py
+      -i media/ffmpeg/scripts/robo_lib/config.py
+  sed '/iamf/s/^/#/g' -i media/ffmpeg/scripts/build_ffmpeg.py
 
   # Use system opus.
-  patch -p1 -i "${srcdir}/system-opus.diff"
+  patch -d media/ffmpeg -p4 -i "${srcdir}/system-opus.diff"
 
   # Use system openh264
   if [ -d /usr/include/openh264 ]; then
@@ -829,6 +836,8 @@ EOF
 build() {
   # set python for build pnacl.
   export PNACLPYTHON=/usr/bin/python
+#   'snappy'
+#   'minizip'
 
   export PATH="${_clang_path}:$PATH"
 
@@ -845,7 +854,7 @@ build() {
   # bfd plugin: LLVM gold plugin has failed to create LTO module: Unknown attribute kind (60) (Producer: 'LLVM9.0.0svn' Reader: 'LLVM 8.0.0')
   # when you have installed clang in the system.
   # Use bundled clang
-  chromium/scripts/build_ffmpeg.py linux x64 --branding ChromeOS -- \
+  ../../media/ffmpeg/scripts/build_ffmpeg.py linux x64 --branding ChromeOS -- \
     --enable-lto=no \
     --cc="${_clang_path}clang" \
     --cxx="${_clang_path}clang++" \
@@ -854,8 +863,9 @@ build() {
     --disable-doc
 #     --disable-asm
 
+  cat "${srcdir}/copy_config.base64" | base64 -d > chromium/scripts/copy_config.sh; chmod +x chromium/scripts/copy_config.sh
   chromium/scripts/copy_config.sh
-  chromium/scripts/generate_gn.py
+  ../../media/ffmpeg/scripts/generate_gn.py
   popd &> /dev/null
 
   msg2 "Starting building Chromium..."
@@ -869,6 +879,57 @@ build() {
 }
 
 package() {
+  depends+=(
+#     'libgcc_s.so' 'libstdc++.so'
+#     'ld-linux-x86-64.so' 'libc.so' 'libm.so'
+    'libFLAC.so'
+    'libasound.so'
+#    'libbrotlidec.so'
+#    'libcups.so'
+   'libdbus-1.so'
+#    'libdrm.so'
+   'libexpat.so'
+   'libffi.so'
+   'libfontconfig.so' 'libfontconfig.so'
+#    'libfreetype.so'
+   'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
+   'libharfbuzz-subset.so' 'libharfbuzz.so'
+   'libjpeg.so'
+   'liblcms2.so'
+   'libopenh264.so'
+   'libopus.so'
+   'libpango-1.0.so'
+   'libpipewire-0.3.so'
+   'libpng16.so'
+   'libpulse.so'
+   'libwebp.so' 'libwebpdemux.so' 'libwebpmux.so'
+#    'libX11.so'
+#    'libxcb.so'
+#    'libXcomposite.so'
+#    'libXdamage.so'
+#    'libXext.so'
+#    'libXfixes.so'
+   'libxkbcommon.so'
+   'libxml2.so'
+#    'libXrandr.so'
+#    'libXtst.so'
+   'libxslt.so'
+#    'libgbm.so'
+#    'libnspr4.so'
+#    'libnss3.so' 'libnssutil3.so' 'libsmime3.so'
+#    'libopenjp2.so'
+#    'libdav1d.so'
+#    'libyuv.so'
+#    'libjsoncpp.so'
+#    'libaom.so'
+#    'libvpx.so'
+#    'libva-drm.so=' 'libva-glx.so' 'libva-wayland.so' 'libva-x11.so' 'libva.so'
+#    'libprotobuf.so'
+#    'libevent-2.1.so'  'libevent_core-2.1.so'  'libevent_extra-2.1.so'  'libevent_openssl-2.1.so'  'libevent_pthreads-2.1.so'
+#    'libavcodec.so'  'libavdevice.so'  'libavfilter.so'  'libavformat.so'  'libavutil.so'  'libpostproc.so'  'libswresample.so' 'libswscale.so'
+#    'libre2.so'
+  )
+
   # Install launcher.
   make -C chromium-launcher \
     PREFIX=/usr \

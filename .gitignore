@@ -6,3 +6,5 @@
 !chromium-dev.svg
 !gclient_args.gni
 !system-opus.diff
+!chromium-qt6.patch
+!use-oauth2-client-switches-as-default.patch
