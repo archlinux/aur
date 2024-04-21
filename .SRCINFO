@@ -1,9 +1,10 @@
 pkgbase = penpot-desktop-bin
-	pkgdesc = Open-source design tool for design and code collaboration (binary release)
+	pkgdesc = Unofficial desktop app to Penpot — The open-source design tool for design and code collaboration. (binary release)
 	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://sudovanilla.com/code/Korbs/Penpot-Desktop/
 	arch = x86_64
+	arch = aarch64
 	license = MPL-2.0 license
 	makedepends = fuse2
 	depends = alsa-lib
@@ -18,5 +19,7 @@ pkgbase = penpot-desktop-bin
 	conflicts = penpot-desktop
 	source_x86_64 = penpot-desktop-0.3.1.AppImage::https://dl.sudovanilla.com/applications/penpot-desktop/latest/Penpot%20Desktop-0.3.1.AppImage
 	sha256sums_x86_64 = 48a50166200de21955ca286cb14d4a516bf9527c41c945e6047250fd70d4e691
+	source_aarch64 = penpot-desktop-0.3.1.AppImage::https://dl.sudovanilla.com/applications/penpot-desktop/latest/Penpot%20Desktop-0.3.1-arm64.AppImage
+	sha256sums_aarch64 = SKIP
 
 pkgname = penpot-desktop-bin
