@@ -1,7 +1,7 @@
 pkgbase = php-legacy-yaml
 	pkgdesc = Support for YAML 1.1 (YAML Ain't Markup Language) serialization using the LibYAML library.
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bd808.com/pecl-file_formats-yaml/
 	arch = x86_64
 	license = MIT

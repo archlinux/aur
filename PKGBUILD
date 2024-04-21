@@ -4,7 +4,7 @@
 pkgname=php-legacy-yaml
 _extname=yaml
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Support for YAML 1.1 (YAML Ain't Markup Language) serialization using the LibYAML library."
 arch=('x86_64')
 url="https://bd808.com/pecl-file_formats-yaml/"
@@ -25,7 +25,7 @@ package() {
 	cd "$srcdir/$_extname-$pkgver"
 	install -m0755 -d "$pkgdir/etc/php-legacy/conf.d/"
 	install -m0644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	echo "extension=$_extname.so" > "$pkgdir/etc/php-legacy/conf.d/$_extname.ini"
+	echo ";extension=$_extname" > "$pkgdir/etc/php-legacy/conf.d/$_extname.ini"
 	chmod 0644 "$pkgdir/etc/php-legacy/conf.d/$_extname.ini"
 	install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config-legacy --extension-dir)/$_extname.so"
 }
