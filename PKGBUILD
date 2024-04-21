@@ -11,9 +11,8 @@ depends=(
     'python-numpy'
     'python-opencv'
     'python-mediapipe-bin'
-    'python-setuptools'
-    'python-importlib-metadata')
-makedepends=('git')
+    )
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 provides=('matrix-webcam')
 conflicts=('matrix-webcam')
 source=("$pkgname"::"git+${url}")
@@ -26,11 +25,11 @@ pkgver() {
 
 build() {
     cd $pkgname
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd $pkgname
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
