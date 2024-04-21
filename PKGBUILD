@@ -1,17 +1,19 @@
-#AUR Maintainter: Javier Steinaker <jsteinaker@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Javier Steinaker <jsteinaker@gmail.com>
+
 pkgname=pinta-gtk3-git
-pkgver=r2357.8c4b93ae
+pkgver=r2618.6d26a525
 pkgrel=1
 pkgdesc="Drawing/editing program modeled after Paint.NET. It's goal is to provide a simplified alternative to GIMP for casual users"
 arch=('x86_64' 'i686')
 url="https://pinta-project.com"
 license=('MIT')
-depends=('mono' 'gtk-sharp-3' 'mono-addins' 'yelp-tools' 'intltool' 'dotnet-runtime')
+depends=('mono' 'gtk-sharp-3' 'mono-addins' 'yelp-tools' 'intltool' dotnet-runtime-7.0)
 makedepends=('git' 'dotnet-sdk' 'autoconf-archive')
 provides=('pinta')
 conflicts=('pinta')
 options=('!makeflags')
-source=(git+https://github.com/PintaProject/Pinta.git)
+source=(git+https://github.com/PintaProject/Pinta.git#branch=gtk3)
 md5sums=('SKIP')
 pkgver() {
 	cd "Pinta"
