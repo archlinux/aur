@@ -6,7 +6,7 @@
 _pkgbase=sway
 pkgname=sway-hidecursor-leftbar
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -34,6 +34,7 @@ backup=(
   etc/sway/config.d/50-systemd-user.conf
 )
 optdepends=(
+  'dmenu: dmenu_path support (used alongside wmenu in default $menu)'
   'foot: Terminal emulator used in the default configuration'
   'i3status: Status line generation'
   'mako: Lightweight notification daemon'
@@ -58,7 +59,7 @@ install=sway.install
 sha512sums=('1d2a47bb8b838573a32f3719a7329fd744119c2c7efc5e5a4168b2bacfb09a3901a569177e5e10c129141fafe00e823ab78c04b76b502d23caa7621bbccd5919'
             'SKIP'
             'd5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e'
-            'b9e708c775825c8124d8e154e523c90b8a32715050ba06f6dbcdd08d109eed484d128ccc8dcd6a49dc9cd51a0c9035779c2706b4d7a139115e85c4f54226b775'
+            '4f9576b7218aef8152eb60e646985e96b13540b7a4fd34ba68fdc490199cf7a7b46bbee85587e41bffe81fc730222cf408d5712e6251edc85a0a0b0408c1a2df'
             'f6068630b09d8dde28244cdaffb94038894b42d0f936ce1fe51aa85003e6a6724bee0d96ad842ff1649d3e4f37eeca68fcd9b415f137df98cb72a7fa18cbe790'
             '044a0d4b5c77c0b3de9a16a9cd4ee18ab3bfffccc4c874dc498765e02cb9c758e5febd8b3649d43a85f229c9ab78bf2ab0e4e925872f47c34702e19c20e60cd2')
 validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48'  # Simon Ser
@@ -80,7 +81,6 @@ prepare() {
 }
 
 build() {
-  export PKG_CONFIG_PATH='/usr/lib/wlroots0.16/pkgconfig'
   mkdir -p build
   arch-meson build "$_pkgbase-$pkgver" -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
   ninja -C build
