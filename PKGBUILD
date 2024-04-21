@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Python bindings for the BLAKE3 cryptographic hash function"
 arch=(x86_64 i686 aarch64 armv7h)
 url="https://github.com/oconnor663/blake3-py"
-license=('Apache' 'custom:CC0-1.0')
+license=('Apache-2.0' 'CC0-1.0')
 
 depends=('python')
 makedepends=('python-pip' 'rust')
