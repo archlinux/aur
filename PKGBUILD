@@ -4,7 +4,8 @@
 # Contributer: Arnaud
 
 pkgname=edgetx-companion
-pkgver=2.9.4
+pkgver=2.10.0
+_rc=-rc3
 pkgrel=1
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
@@ -14,23 +15,21 @@ depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt5-base' 'qt5-multimedia' 'sd
 optdepends=('dfu-util: tool for flashing stm32 based radios')
 makedepends=('arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib'
              'avr-gcc' 'avr-libc' 'bc' 'clang' 'cmake' 'fox' 'gcc' 'git' 'icu' 'python'
-             'python-lz4' 'python-pillow' 'python-pyqt5' 'qt5-svg' 'qt5-tools'
-             'qt5-translations' 'sed' 'xsd')
+             'python-jinja' 'python-lz4' 'python-pillow' 'python-pyqt5' 'qt5-svg'
+             'qt5-tools' 'qt5-translations' 'sed' 'xsd')
 options=('!debug')
 provides=('companion')
 conflicts=('companion')
-source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
-        "git+https://github.com/jbeder/yaml-cpp.git"
+source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver$_rc"
         "git+https://github.com/raphaelcoeffic/AccessDenied.git"
         "git+https://github.com/FreeRTOS/FreeRTOS-Kernel.git"
-        "git+https://github.com/edgetx/libopenui.git"
+        "git+https://github.com/adfernandes/segger-rtt.git"
         "git+https://github.com/FreeRTOS/FreeRTOS-Kernel-Community-Supported-Ports.git"
         "git+https://github.com/FreeRTOS/FreeRTOS-Kernel-Partner-Supported-Ports.git"
         "git+https://github.com/EdgeTX/lvgl.git"
         "git+https://github.com/nothings/stb.git"
         install.patch)
-b2sums=('SKIP'
-        'SKIP'
+b2sums=('3330392c092e883ccca0cc45132c95b10a89b9b3d8bf62c761ffcf75eaa1a837fe23c51a787cb0f4a936f1447b134e9dab75818ab11e1c86a530d9e27bf6e051'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -53,8 +52,7 @@ prepare() {
   done
   
   declare -A submodules=(
-    ["$_pkgbase/companion/src/thirdparty/"]="yaml-cpp"
-    ["$_pkgbase/radio/src/thirdparty/"]="AccessDenied FreeRTOS-Kernel libopenui"
+    ["$_pkgbase/radio/src/thirdparty/"]="AccessDenied FreeRTOS-Kernel Segger_RTT"
     ["$_pkgbase/radio/src/thirdparty/FreeRTOS/portable/ThirdParty/"]="FreeRTOS-Kernel-Community-Supported-Ports FreeRTOS-Kernel-Partner-Supported-Ports"
     ["$_pkgbase/radio/src/thirdparty/libopenui/thirdparty/"]="lvgl stb"
   )
