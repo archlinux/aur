@@ -1,26 +1,48 @@
-# Maintainer: Bot-wxt1221 <3264117476@qq.com>
-pkgname=warp-terminal-new
-pkgver=0.2024.03.12.08.02.stable.02
-_pkgver=0.2024.03.12.08.02.stable_02
+#Maintainer: AEnterprise <aenterprise@gearbot.rocks>
+pkgname=warp-terminal
+pkgver=0.2024.04.16.08.02.stable_00
 pkgrel=1
-arch=('x86_64')
-source=("https://releases.warp.dev/stable/v${_pkgver}/warp-terminal_${pkgver}_amd64.deb" warp-terminal-bin.desktop warp-terminal.png)
-md5sums=('c4276c8d6d215454d994014c83fb09ce'
-         '309a99bcbfaeb72715754008b3732a32'
-         '6cd2541e1189c29ceb576300ff3356c6')
+pkgdesc="Warp, the Rust-based terminal for developers and teams"
+license=('custom')
 
+arch=('x86_64')
+source=("https://releases.warp.dev/stable/v${pkgver}/warp-terminal-v${pkgver}-1-x86_64.pkg.tar.zst")
+md5sums=('7b280c693443d3eb6883018167d70c0d')
+depends=(
+curl
+default-cursors
+fontconfig
+libegl
+libx11
+libxcb
+libxcursor
+libxi
+libxkbcommon-x11
+opengl-driver
+xdg-utils
+zlib
+)
+optdepends=(
+'adwaita-cursors: for if there is no default cursor installed'
+'zenity: for file dialogs in Gnome'
+'kdialog: for file dialogs in KDE'
+'org.freedesktop.secrets: for securely storing passwords'
+)
+provides=("$pkgname")
 
 prepare() {
-    mv warp-terminal_${pkgver}_amd64.deb ${pkgname}_${pkgver}.deb
-    ar -x ${pkgname}_${pkgver}.deb
+    mv warp-terminal-v${pkgver}-1-x86_64.pkg.tar.zst ${pkgname}_${pkgver}.pkg.tar.zst
     mkdir ${pkgname}-${pkgver}
-    tar -xf data.tar.xz --directory="${pkgname}-${pkgver}"
+    tar -xf ${pkgname}_${pkgver}.pkg.tar.zst --directory="${pkgname}-${pkgver}"
 }
 
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm644 ../warp-terminal-bin.desktop ${pkgdir}/usr/share/applications/warp-terminal-bin.desktop
-  install -Dm644 ../warp-terminal.png "${pkgdir}"/usr/share/pixmaps/warp-terminal.png
-  cp -r ./ ${pkgdir}/
+    cd "$pkgname-${pkgver}"
+
+  install -Dm644 -d opt/warpdotdev/warp-terminal/ /opt/warpdotdev/warp-terminal
+  install -Dm644 -d usr/share/icons/hicolor /usr/share/icons/hicolor
+  install -Dm644 usr/share/bin/warp-terminal /usr/share/applications/bin/warp-terminal
+  install -Dm644 usr/share/applications/dev.warp.Warp.desktop /usr/share/applications/dev.warp.Warp.desktop
+
 }
