@@ -4,7 +4,7 @@
 pkgbase=python-emcee
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="Kick ass affine-invariant ensemble MCMC sampling"
 arch=('any')
@@ -23,7 +23,7 @@ checkdepends=('python-pytest'
               'python-scipy'
               'python-h5py')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('3a2b2f0358cfecabf42165f4c5c4daf0')
+md5sums=('9d0f7cbb4edb96bf397513ba2871e867')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
