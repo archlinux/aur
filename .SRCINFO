@@ -73,7 +73,7 @@ pkgbase = mutter-dynamic-buffering
 	source = mutter-dynamic-buffering::git+https://gitlab.gnome.org/GNOME/mutter.git#tag=46.1
 	source = mr1441.patch
 	b2sums = 4acd4a192455890b12b2fc9b6553ed65bd2176307cd6c6683fc2ab476b7fa88f4b5e507a1209b3e900c68d94768f3cf749b4f5d87d25300b33a112182c8a62a7
-	b2sums = b85b4129a7e3c79a076650b804c01f801bdb89ce896546bdedb97e445b289ec2784f11bfd9a29d78e8830769938d42d108e7bdca9c97ec6fc867c2be53867a24
+	b2sums = 1730136643b4158d6e0a0f642aa5976854017104cade4b8b64f6b94f7c9e1d20dbe8d5daee0178a9af8880d05e724c40d8615b67d265079d443777bff224724c
 
 pkgname = mutter-dynamic-buffering
 	provides = mutter
