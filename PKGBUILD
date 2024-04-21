@@ -9,6 +9,7 @@ pkgdesc="[DEPRECATED] moved to encryptedfs-bin. An encrypted file system that mo
 url="https://github.com/radumarias/encryptedfs"
 license=("Apache-2.0")
 arch=("$CARCH")
+depends=("fuse3")
 provides=("encrypted_fs")
 conflicts=("encrypted_fs")
 source=("https://github.com/radumarias/encrypted_fs/releases/download/$pkgver/encrypted_fs-$pkgver-$CARCH.tar.gz")
