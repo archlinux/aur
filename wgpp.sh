@@ -1,7 +1,7 @@
 #!/bin/bash
 # script: wg++ (WebGrab+Plus)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 09/01/2024
+# rev.date: 21/04/2024
 
 # vars
 WGPP_USR=$(whoami)
@@ -59,7 +59,17 @@ genFolder() {
 
 runScript() {
 	cd "$WGPP_CFGDIR"
-	sudo -u $WGPP_USR ./run.net.sh
+	# workaround for 'No Internet' issue
+	sudo ./run.net.sh
+	#sudo -u $WGPP_USR ./run.net.sh
+
+	# output 'guide.xml' file with pretty XML format
+	if [ ! -e "$WGPP_CFGDIR/latest.xml" ]; then
+		echo ":: Error, cannot find latest EPG XML data file named 'latest.xml'. Exiting."
+		exit 1
+	fi
+	xmllint --format latest.xml > guide.xml
+	exit 0
 }
 
 # args
