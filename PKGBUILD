@@ -4,12 +4,12 @@
 pkgname=redasm-beta
 _pkgver=3.0.0-beta5
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 url="https://github.com/REDasmOrg/REDasm"
 arch=(i686 x86_64)
 pkgdesc="The OpenSource Disassembler"
 license=(GPL3)
-depends=(qt5-base)
+depends=(qt5-base qt5-x11extras)
 makedepends=(git cmake patchelf)
 conflicts=(redasm)
 provides=(redasm)
@@ -20,13 +20,16 @@ source=("git+https://github.com/REDasmOrg/REDasm.git#tag=v${_pkgver}"
         "git+https://github.com/REDasmOrg/REDasm-Assemblers.git"
         "git+https://github.com/REDasmOrg/REDasm-Database.git"
         "git+https://github.com/Dax89/QHexView.git"
-        "git+https://github.com/aquynh/capstone.git"
+        "git+https://github.com/KDAB/KDDockWidgets"
+        #"git+https://github.com/aquynh/capstone.git"
+        "git+https://github.com/capstone-engine/capstone.git"
         "git+https://github.com/taocpp/json.git"
         "git+https://github.com/taocpp/PEGTL.git"
         "git+https://github.com/zyantific/zydis.git"
         "git+https://github.com/zyantific/zycore-c.git"
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -48,39 +51,41 @@ prepare() {
   git config submodule.submodules/assemblers.url "${srcdir}/REDasm-Assemblers"
   git config submodule.submodules/database.url "${srcdir}/REDasm-Database"
   git config submodule.libs/qhexview.url "${srcdir}/QHexView"
-  git submodule update
-  mkdir -p build
+  git config submodule.libs/KDDockWidgets.url "${srcdir}/KDDockWidgets"
+  git -c protocol.file.allow=always submodule update
 
   cd LibREDasm
   git submodule init
   git config submodule.rdcore/libs/taojson.url "${srcdir}/json"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd rdcore/libs/taojson
   git submodule init
   git config submodule.external/PEGTL.url "${srcdir}/PEGTL"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd "${srcdir}"/REDasm/submodules/assemblers
   git submodule init
   git config submodule.x86/zydis.url "${srcdir}/zydis"
   git config submodule.capstonebundle/capstone.url "${srcdir}/capstone"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd x86/zydis
   git submodule init
   git config submodule.dependencies/zycore.url "${srcdir}/zycore-c"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cd REDasm/build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake -B build -S "REDasm" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package() {
-  cd REDasm/build
+  cd build
   patchelf --set-rpath /usr/lib REDasm
   install -D -m755 REDasm ${pkgdir}/usr/bin/REDasm
   install -D -m755 LibREDasm/LibREDasm.so ${pkgdir}/usr/lib/LibREDasm.so
@@ -95,6 +100,6 @@ package() {
   install -m755 ./plugins/assemblers/mips/mips.so ${pkgdir}/usr/lib/redasm/
   install -m755 ./plugins/plugins/compiler/compiler.so ${pkgdir}/usr/lib/redasm/
 
-  install -D -m644 ../README.md ${pkgdir}/usr/share/doc/${pkgname}/README
-  install -D -m644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -D -m644 "${srcdir}"/REDasm/README.md ${pkgdir}/usr/share/doc/${pkgname}/README
+  install -D -m644 "${srcdir}"/REDasm/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }

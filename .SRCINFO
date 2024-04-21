@@ -1,7 +1,7 @@
 pkgbase = redasm-beta
 	pkgdesc = The OpenSource Disassembler
 	pkgver = 3.0.0.beta5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/REDasmOrg/REDasm
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = redasm-beta
 	makedepends = cmake
 	makedepends = patchelf
 	depends = qt5-base
+	depends = qt5-x11extras
 	provides = redasm
 	conflicts = redasm
 	source = git+https://github.com/REDasmOrg/REDasm.git#tag=v3.0.0-beta5
@@ -19,7 +20,8 @@ pkgbase = redasm-beta
 	source = git+https://github.com/REDasmOrg/REDasm-Assemblers.git
 	source = git+https://github.com/REDasmOrg/REDasm-Database.git
 	source = git+https://github.com/Dax89/QHexView.git
-	source = git+https://github.com/aquynh/capstone.git
+	source = git+https://github.com/KDAB/KDDockWidgets
+	source = git+https://github.com/capstone-engine/capstone.git
 	source = git+https://github.com/taocpp/json.git
 	source = git+https://github.com/taocpp/PEGTL.git
 	source = git+https://github.com/zyantific/zydis.git
@@ -36,6 +38,6 @@ pkgbase = redasm-beta
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = redasm-beta
-
