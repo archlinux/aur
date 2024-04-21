@@ -16,11 +16,12 @@
 # Ubuntu credits:
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
-pkgname=mutter-x11-scaling
-pkgver=46.0
-pkgrel=4
+pkgbase=mutter
+pkgname=$pkgbase-x11-scaling
+pkgver=46.1
+pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
-url="https://gitlab.gnome.org/GNOME/mutter"
+url="https://gitlab.gnome.org/GNOME/$pkgbase"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 depends=(
@@ -98,55 +99,33 @@ checkdepends=(
   wireplumber
   zenity
 )
-provides=(mutter=$pkgver libmutter-14.so)
-conflicts=(mutter)
+provides=($pkgbase=$pkgver libmutter-14.so)
+conflicts=($pkgbase)
 source=(
   # Mutter tags use SSH signatures which makepkg doesn't understand
-  "git+https://gitlab.gnome.org/GNOME/mutter.git#tag=$pkgver"
-  "https://gitlab.archlinux.org/archlinux/packaging/packages/mutter/-/raw/7a54f849bdbe1b61c54a615dd51c7d9ec0e36131/0001-drm-buffer-gbm-Do-not-call-ensure_fb_id-from-lock_fr.patch"
+  "git+$url.git#tag=${pkgver/[a-z]/.&}"
   "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/7aa432d4366fdd5a2687a78848b25da4f8ab5c68/x11-Add-support-for-fractional-scaling-using-Randr.patch"
-  "https://salsa.debian.org/gnome-team/mutter/-/raw/e450692a81d20f65bea827212ce55236534711d3/debian/patches/debian/Support-Dynamic-triple-double-buffering.patch"
-  "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3300.patch"
-  "https://gitlab.manjaro.org/packages/extra/mutter-x11-scaling/-/raw/master/mutter-fix-x11-restart.patch"
-  "https://gitlab.manjaro.org/packages/extra/mutter-x11-scaling/-/raw/master/compositor-x11-sync-again-at-the-end-of-before_paint.patch"
-  "https://gitlab.manjaro.org/packages/extra/mutter-x11-scaling/-/raw/master/compositor-sync-ring-allow-the-gpu_fence-to-be-moved.patch"
+  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/eff4767168c107ef268c7e8b32eaea41a224efb4/Support-Dynamic-triple-double-buffering.patch"
+  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/eff4767168c107ef268c7e8b32eaea41a224efb4/mutter-fix-x11-restart.patch"
 )
-b2sums=('04a14854c8ec2668a340b241102b7b2ebbc0387a9771a5bd2c2366419ee08e7ebb308f2288f4a64b9d08053e1897eb514a46802584d1590f8bcebde4a613afaa'
-        'fed7d496b658a43b306e62a57c817c54990e8764103eae5479b8a96fbdf25da1ae6028126aa3cccda6239ff1f0c4e69bbe6f12e29804651c1a7b6ca40d6bf36c'
+b2sums=('4acd4a192455890b12b2fc9b6553ed65bd2176307cd6c6683fc2ab476b7fa88f4b5e507a1209b3e900c68d94768f3cf749b4f5d87d25300b33a112182c8a62a7'
         '2b1a70b961d70688396c072355accdd8a9fa5591feab7a22c849f54bcf2695cbe72267dc5e006385e95d114e8e7078045fa8b6a09d00c558eff04ec8dd38318a'
-        '8ba8479a1ff4d8eb471df781d4a2b0a83c6299136fc35b935e537fad7f4071013bce1c62d3d82bfc31c0d6f34c1229a2032f778023356b84f32962262e9ed0f5'
-        'f7ed9db52afa4e02a77347a521cab7e1a438735a988ba6229909365e7acad001599eacb423fce37b3d1ca276d1584797c2afe3ae715f554de84d87e791978475'
-        'ba4febdabc89a8c608d2a9621d02a21c05b315bb586f91d34b0369c07f3e051a6333d62dd97ab18d0c5b1c8f453696d4851c55fc82a50e8843ae45068ab178ca'
-        '10d48fee50257775393f4ecf15d2736a8806c04dc39b8cfc2b1da51baee93859fb262505ee9c387b76cbe2598614602b3e6c86437b0fcbf485eaa79fe8ad3d10'
-        '18727bb9bce8327595bcdc58c1c58ae67aef0718408a6d668bb24afb966d33736ad2d07f4eb05acdf2b9521b1d6abd15abe842c29113488826bfa97888c3ad6b')
+        '35eeeb037ca337acca80485f26e7df43b8588458298b5bf015d19d6cb62423f4f2d948cfd92cf9efd0fcb3b1130e50ea14a7428abe8032845467f9b12baba5f3'
+        'ba4febdabc89a8c608d2a9621d02a21c05b315bb586f91d34b0369c07f3e051a6333d62dd97ab18d0c5b1c8f453696d4851c55fc82a50e8843ae45068ab178ca')
 
 prepare() {
-  cd mutter
-  
-  # Merge Request: Enable Explicit Sync On Wayland
-  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3300
-  patch -p1 -i "${srcdir}/3300.patch"
+  cd $pkgbase
 
   # https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/7050
   # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3329
   git apply -3 ../mutter-fix-x11-restart.patch
 
-  # https://gitlab.gnome.org/GNOME/mutter/-/issues/3410
-  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3590
-  git apply -3 ../compositor-x11-sync-again-at-the-end-of-before_paint.patch
-
-  # https://gitlab.gnome.org/GNOME/mutter/-/issues/3389
-  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3674
-  git apply -3 ../0001-drm-buffer-gbm-Do-not-call-ensure_fb_id-from-lock_fr.patch
-
-  # https://gitlab.gnome.org/GNOME/mutter/-/issues/3384
-  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3685
-  git apply -3 ../compositor-sync-ring-allow-the-gpu_fence-to-be-moved.patch
-
   # Add scaling support using randr under x11
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
   
-  # Support Dynamic triple double buffering
+  # Add dynamic triple/double buffering support
+  # https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3760
+  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
   patch -p1 -i "${srcdir}/Support-Dynamic-triple-double-buffering.patch"
 }
 
@@ -162,7 +141,7 @@ build() {
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
-  arch-meson mutter build "${meson_options[@]}"
+  arch-meson $pkgbase build "${meson_options[@]}"
   meson compile -C build
 }
 
