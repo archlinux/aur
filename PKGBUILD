@@ -5,7 +5,7 @@
 pkgname=kwin
 pkgver=6.0.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -80,14 +80,20 @@ makedepends=(extra-cmake-modules
              xorg-xwayland)
 optdepends=('maliit-keyboard: virtual keyboard for kwin-wayland')
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig}
+        https://invent.kde.org/plasma/kwin/-/commit/fbd78018.patch)
 install=$pkgname.install
 sha256sums=('f5552f8c5b179e272fee33a19249686573eabffddd5541bc31f8fd7069baa82b'
-            'SKIP')
+            'SKIP'
+            '57fb751d78c6dd50a1cf9285ab48cb5e76b7c9ec5fcc71bfe6c9d6c3151ce3f4')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < fbd78018.patch # Fix stuttering
+}
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
