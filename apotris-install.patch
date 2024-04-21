@@ -1,8 +1,8 @@
 diff --git a/meson.build b/meson.build
-index c49c4f1..7b6750d 100644
+index bb977b3..82eaf7c 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -288,6 +288,7 @@ if host_machine.system() != 'gba'
+@@ -294,6 +294,7 @@ if host_machine.system() != 'gba'
              dependencies : dependencies,
              link_args : link_args,
              win_subsystem : 'windows',
@@ -10,9 +10,9 @@ index c49c4f1..7b6750d 100644
              install : true
          )
          if host_machine.system() == 'darwin'
-@@ -296,7 +297,7 @@ if host_machine.system() != 'gba'
+@@ -302,7 +303,7 @@ if host_machine.system() != 'gba'
              install_data('dist' / 'Info.plist', install_dir : 'Contents')
-             install_subdir(audio_dir, install_dir : 'Contents/MacOS')
+             install_subdir(audio_dir, install_dir : 'Contents/Resources')
          else
 -            install_subdir(audio_dir, install_dir : '.')
 +            install_subdir(audio_dir, install_dir : 'share/apotris')
@@ -20,7 +20,7 @@ index c49c4f1..7b6750d 100644
      endif
  else
 diff --git a/source/liba_window.cpp b/source/liba_window.cpp
-index d07d8bd..8d5201a 100644
+index 5c05b92..8d44a59 100644
 --- a/source/liba_window.cpp
 +++ b/source/liba_window.cpp
 @@ -85,7 +85,7 @@ void windowInit(){

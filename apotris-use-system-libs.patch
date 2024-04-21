@@ -1,8 +1,8 @@
 diff --git a/meson.build b/meson.build
-index c49c4f1..7d9df84 100644
+index bb977b3..d5145c1 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -96,8 +96,6 @@ endif
+@@ -98,8 +98,6 @@ endif
  
  # Various helper libraries, subprojects, and scripts common to all builds
  fs = import('fs')
@@ -11,7 +11,7 @@ index c49c4f1..7d9df84 100644
  bin2s = files('tools/bin2s.py')
  call_bin2s = files('tools/callBin2S.py')
  if host_machine.system() == 'horizon'
-@@ -148,14 +146,14 @@ if host_machine.system() != 'gba'
+@@ -152,14 +150,14 @@ if host_machine.system() != 'gba'
          soloud = dependency('SoLoud', static : true, default_options : ['default_library=static'], fallback : ['SoLoud', 'soloud_dep'])
      else
          # Other required dependencies
@@ -19,7 +19,7 @@ index c49c4f1..7d9df84 100644
 +        openmpt = dependency('libopenmpt', static : true, default_options : ['default_library=static'], fallback : ['openmpt', 'openmpt_dep'])
          tilengine = dependency('Tilengine', static : true, default_options : ['default_library=static'], fallback : ['Tilengine', 'tilengine_dep'])
          if host_machine.system() == 'darwin'
-             sdl2_dep = subproject('sdl2', default_options : ['default_library=static']).get_variable('sdl2_dep')
+             sdl2_dep = subproject('sdl2', default_options : ['default_library=static', 'test=false']).get_variable('sdl2_dep')
          else
              sdl2_dep = dependency('sdl2', static : true, default_options : ['default_library=static'], fallback : ['sdl2', 'sdl2_dep'])
          endif
