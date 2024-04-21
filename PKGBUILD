@@ -2,7 +2,7 @@
 # Contributor: Ezekiel Bethel <mctinfoilball@gmail.com>
 
 pkgname=unrpyc
-pkgver=2.0.0.r0.g79895a1
+pkgver=2.0.1.r1.g11de7c0
 pkgrel=1
 epoch=2
 pkgdesc="A ren'py script decompiler"
