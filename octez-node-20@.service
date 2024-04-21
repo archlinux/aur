@@ -1,0 +1,10 @@
+[Unit]
+Description=octez-node
+
+[Service]
+Type=simple
+User=octez-node
+ExecStart=/usr/bin/octez-node-20 run --data-dir /var/lib/octez-node/%i
+
+[Install]
+WantedBy=multi-user.target
