@@ -4,7 +4,7 @@
 pkgname=lpm-git
 _pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=1.2.2.r0.gca1b1e3
+pkgver=1.2.8.r2.g9f5e1a5
 pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,8 @@ pkgver() {
 build() {
   cd "${_gitname}"
   FULL_VERSION=$(git describe --tags --long --exclude continuous --exclude latest)
-  CFLAGS="$CFLAGS -DLPM_VERSION='\"$FULL_VERSION\"' -DLPM_DEFAULT_RELEASE=''"
+  export CFLAGS+=" -DLPM_VERSION='\"$FULL_VERSION\"' -DLPM_DEFAULT_RELEASE='' -I/usr/include/mbedtls2"
+  export LDFLAGS+=" -L/usr/lib/mbedtls2"
   arch-meson -Dstatic=true . build
   meson compile -C build
 }
