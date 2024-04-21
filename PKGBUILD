@@ -6,6 +6,7 @@ pkgdesc="Extremely Elaborate Elegant Calendar"
 arch=('x86_64')
 url="https://github.com/eeec-cal/eeec"
 license=('MIT')
+groups=('torkit')
 depends=('awk')
 makedepends=('git')
 source=("eeec::git+https://github.com/eeec-cal/eeec")

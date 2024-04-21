@@ -4,6 +4,7 @@ pkgbase = eeec
 	pkgrel = 1
 	url = https://github.com/eeec-cal/eeec
 	arch = x86_64
+	groups = torkit
 	license = MIT
 	makedepends = git
 	depends = awk
