@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 pkgname=maestral
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='A light-weight and open-source Dropbox client'
 arch=('any')
@@ -22,31 +22,30 @@ depends=('hicolor-icon-theme'
          'python-pyro5'
          'python-requests'
          'python-rich'
-         'python-setuptools'
          'python-survey'
          'python-typing_extensions'
          'python-watchdog'
          'python-xattr')
 makedepends=('python-build'
              'python-installer'
-             'python-wheel'
-#             'python-sphinx'
-#             'python-sphinx-autoapi'
-#             'python-sphinx_rtd_theme'
-#             'python-sphinx_mdinclude'
-#             'python-sphinxext-opengraph')
-)
+             'python-setuptools'
+             'python-sphinx'
+             'python-sphinx-autoapi'
+             'python-sphinx_mdinclude'
+             'python-sphinx_rtd_theme'
+             'python-sphinxext-opengraph'
+             'python-wheel')
 checkdepends=('python-pytest')
 optdepends=('maestral-qt: Qt interface for the maestral daemon'
             'python-systemd: Syslog support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f9e1a54204082c006067aec8a224704a9c7c37977a9a4b06f308992b3205ec5e')
+sha256sums=('ee85ed411361d57d6cb8041b0a35b9f462caf3ca7cb47987369412c686dda942')
 
 build() {
 	cd "$pkgname-$pkgver"
 	python -m build --wheel --no-isolation
-#	cd docs
-#	sphinx-build -b man ./ ./_build/man/
+	cd docs
+	sphinx-build -b man ./ ./_build/man/
 }
 
 check() {
@@ -58,6 +57,6 @@ package() {
 	cd "$pkgname-$pkgver"
 	python -m installer --destdir="${pkgdir}/" dist/*.whl
 	install -Dvm644 README.md -t "${pkgdir}/usr/share/doc/$pkgname/"
-#	install -Dvm644 docs/_build/man/maestral.1 -t "${pkgdir}/usr/share/man/man1/"
+	install -Dvm644 docs/_build/man/maestral.1 -t "${pkgdir}/usr/share/man/man1/"
 	install -Dvm644 LICENSE.txt "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
