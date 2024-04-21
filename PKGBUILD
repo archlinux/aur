@@ -2,7 +2,7 @@
 
 pkgname=gsconnect
 pkgver=57
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE Connect implementation. CLI usage without Gnome environment"
 arch=(x86_64)
 url="https://github.com/GSConnect/gnome-shell-extension-$pkgname"
@@ -36,7 +36,4 @@ package() {
     DESTDIR="$pkgdir" meson install -C gvc-build
     DESTDIR="$pkgdir" meson install -C build
     install -Dm644 $pkgname.service -t "$pkgdir"/usr/lib/systemd/user/
-    install -d     "$pkgdir"/usr/bin/
-    ln -s /usr/share/gnome-shell/extensions/$pkgname@andyholmes.github.io/service/daemon.js    "$pkgdir"/usr/bin/$pkgname
-    ln -s /usr/share/gnome-shell/extensions/$pkgname@andyholmes.github.io/$pkgname-preferences "$pkgdir"/usr/bin/$pkgname-preferences
 }
