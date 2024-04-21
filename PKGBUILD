@@ -5,8 +5,8 @@
 pkgname=encrypted_fs-bin
 pkgver=0.1.21
 pkgrel=1
-pkgdesc="An encrypted file system that mounts with FUSE on Linux. It can be used to create encrypted directories."
-url="https://docs.rs/encrypted_fs"
+pkgdesc="[DEPRECATED] moved to encryptedfs-bin. An encrypted file system that mounts with FUSE on Linux. It can be used to create encrypted directories."
+url="https://github.com/radumarias/encryptedfs"
 license=("Apache-2.0")
 arch=("$CARCH")
 provides=("encrypted_fs")
