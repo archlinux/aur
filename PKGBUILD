@@ -8,11 +8,12 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(custom GPL-3.0-or-later)
 arch=(aarch64 x86_64)
+install=.install
 _plugin_name=Fundamental
 _plugin_ver=2.6.0
 _plugin_pkg=$pkgname-${_plugin_name,,}
@@ -36,6 +37,7 @@ source=(
   'tinyexpr.git::git+https://github.com/codeplea/tinyexpr'
   "$_plugin_pkg-$_plugin_ver.tar.gz::https://github.com/VCVRack/$_plugin_name/archive/v$_plugin_ver.tar.gz"
   'plugins.patch'
+  'wmclass.patch'
   'vcvrack.sh'
   'profile.sh'
   'trademark.eml'
@@ -52,6 +54,7 @@ sha256sums=('SKIP'
             'SKIP'
             '1e3662c1f5cf57e484e7f605028fbe032e1eab541b73e10453d36df400e68ae0'
             '3ad0ea63ce2d5bf62b27e7b51a6d098040435636939d36a584a9b609578a9c9e'
+            'f1abd73a4de8a97328ff0111fb59ab9f0bde42b2b8f0d2a2ee7fb964e47dbe5e'
             '21ac35c6ad4e5a29c32939b17baaf7ac1936077eda2214e28675eefcf2021db8'
             'e1da6ccf04bae3a2101151fec7ddd32e48ff92b0a1146b559fd3221c778d521f'
             '1159629aa90abb7c972c0f630d55d018b88a6b3bc3ff0bb9466cc06982f38641')
@@ -75,13 +78,13 @@ prepare() {
 
   # support building plugins and loading system-wide plugins
   patch -p1 -i ../plugins.patch
+  # set proper window manager class
+  patch -p1 -i ../wmclass.patch
 
   gendesk -f -n \
     --pkgname $pkgname \
-    --name "VCV Rack" \
-    --exec Rack \
     --pkgdesc "$pkgdesc" \
-    --genericname "Virtual modular synthesizer" \
+    --name "VCV Rack" \
     --categories "AudioVideo;Audio"
 }
 
@@ -109,7 +112,7 @@ package() {
   cd $_name
   install -vDm755 Rack -t "$pkgdir"/usr/lib/$pkgname
   install -vDm755 libRack.so -t "$pkgdir"/usr/lib
-  install -vDm755 "$srcdir"/vcvrack.sh "$pkgdir"/usr/bin/Rack
+  install -vDm755 "$srcdir"/vcvrack.sh "$pkgdir"/usr/bin/$pkgname
   install -vDm644 template.vcv Core.json cacert.pem -t "$pkgdir"/usr/lib/$pkgname
 
   # resources

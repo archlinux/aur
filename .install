@@ -1,0 +1,3 @@
+post_upgrade() {
+  echo "vcvrack 2.5.1-2 changed the binary name from Rack to vcvrack"
+}
