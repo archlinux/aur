@@ -1,0 +1,22 @@
+pkgbase = pixelfeeder
+	pkgdesc = Pixelfed import/export 3rd-party tool
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.com/bergentroll/pixelfeeder
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-argcomplete
+	depends = python-httpx
+	depends = python-pillow
+	depends = python-yaml
+	depends = python-xdg-base-dirs
+	optdepends = tk: for pixelfeeder-gui
+	source = pixelfeeder::https://gitlab.com/bergentroll/pixelfeeder/-/archive/v0.2.0/pixelfeeder-v0.2.0.tar.gz
+	sha256sums = 893e2d01b3b4ad58f04052484d6567ff9c21204abb22451b0ea78d035e2e9ded
+
+pkgname = pixelfeeder
