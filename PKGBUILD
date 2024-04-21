@@ -17,7 +17,7 @@ pkgname=(
   java21-openjfx-src
 )
 pkgver=21.0.3.u2
-pkgrel=3
+pkgrel=4
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64 x86_64_v3)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -111,7 +111,7 @@ package_java21-openjfx() {
   install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${pkgver%%.*}-openjdk,share/licenses}
   cp -dr --no-preserve=ownership build/sdk/lib "${pkgdir}"/usr/lib/jvm/java-${pkgver%%.*}-openjdk/
   cp -dr --no-preserve=ownership build/jmods "${pkgdir}"/usr/lib/jvm/java-${pkgver%%.*}-openjdk/
-  cp -dr --no-preserve=ownership build/sdk/legal "${pkgdir}"/usr/share/licenses/java-openjfx
+  cp -dr --no-preserve=ownership build/sdk/legal "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }
 
 package_java21-openjfx-doc() {
@@ -119,8 +119,8 @@ package_java21-openjfx-doc() {
   cd $_jfxdir
 
   install -dm 755 "${pkgdir}"/usr/share/{doc,licenses}
-  cp -dr --no-preserve=ownership build/javadoc "${pkgdir}"/usr/share/doc/java-openjfx
-  ln -s java-openjfx "${pkgdir}"/usr/share/licenses/java-openjfx-doc
+  cp -dr --no-preserve=ownership build/javadoc "${pkgdir}"/usr/share/doc/"${pkgbase}"
+  ln -s "${pkgbase}" "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }
 
 package_java21-openjfx-src() {
@@ -129,7 +129,7 @@ package_java21-openjfx-src() {
 
   install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${pkgver%%.*}-openjdk,share/licenses}
   install -m 644 build/sdk/src.zip "${pkgdir}"/usr/lib/jvm/java-${pkgver%%.*}-openjdk/javafx-src.zip
-  ln -s java-openjfx "${pkgdir}"/usr/share/licenses/java-openjfx-src
+  ln -s "${pkgbase}" "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:

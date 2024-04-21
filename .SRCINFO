@@ -1,7 +1,7 @@
 pkgbase = java21-openjfx
 	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version
 	pkgver = 21.0.3.u2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
 	arch = x86_64_v3
