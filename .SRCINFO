@@ -1,16 +1,18 @@
 pkgbase = dropbox-cli
 	pkgdesc = Command line interface for Dropbox
-	pkgver = 2024.04.08
+	pkgver = 2024.04.17
 	pkgrel = 1
-	url = http://www.dropbox.com
-	install = dropbox-cli.install
+	url = https://www.dropbox.com
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = dropbox
 	depends = python-gobject
-	source = dropbox-cli-2024.04.08.py::https://linux.dropbox.com/packages/dropbox.py
+	depends = gdk-pixbuf2
+	optdepends = gtk3: Dropbox update GUI
+	optdepends = python-gpgme: verify binary signature
+	source = https://linux.dropbox.com/packages/nautilus-dropbox-2024.04.17.tar.bz2
 	source = dropboxd-fallback.patch
-	sha256sums = 33e4463fdd6f90cab355e2f6b951c90160d7a3620cca63e3a676457e01d368f0
-	sha256sums = 3e4f5d44c58dbeb586bb9539551ea1206e8a1e4b025ac316c42ba24c53c8f077
+	sha256sums = a6a098cf16aa4747f40816ac793d59e37e8ae3b7080d0b30611d6c2b8663f2c1
+	sha256sums = 711ed63c6dfccfd05c6e9abaa291be9ac3c3909e84f788f568cb44dee2d48229
 
 pkgname = dropbox-cli

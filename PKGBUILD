@@ -1,3 +1,4 @@
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Fredy García <frealgagu at gmail dot com>
 # Contributor: Joel Teichroeb <joel@teichroeb.net>
 # Contributor: Matthias Maennich < arch .at. maennich.net >
@@ -5,30 +6,33 @@
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=dropbox-cli
-pkgver=2024.04.08
+pkgver=2024.04.17
 pkgrel=1
 pkgdesc="Command line interface for Dropbox"
 arch=("any")
-url="http://www.${pkgname%-cli}.com"
-license=("GPL")
-depends=("${pkgname%-cli}" "python-gobject")
-install="${pkgname}.install"
-source=(
-  "${pkgname}-${pkgver}.py::https://linux.${pkgname%-cli}.com/packages/${pkgname%-cli}.py"
-  "${pkgname%-cli}d-fallback.patch"
-)
-sha256sums=('33e4463fdd6f90cab355e2f6b951c90160d7a3620cca63e3a676457e01d368f0'
-            '3e4f5d44c58dbeb586bb9539551ea1206e8a1e4b025ac316c42ba24c53c8f077')
+url="https://www.dropbox.com"
+license=("GPL-3.0-or-later")
+depends=("dropbox" "python-gobject" "gdk-pixbuf2")
+optdepends=("gtk3: Dropbox update GUI"
+            "python-gpgme: verify binary signature")
+source=("https://linux.dropbox.com/packages/nautilus-dropbox-${pkgver}.tar.bz2"
+        "dropboxd-fallback.patch")
+sha256sums=('a6a098cf16aa4747f40816ac793d59e37e8ae3b7080d0b30611d6c2b8663f2c1'
+            '711ed63c6dfccfd05c6e9abaa291be9ac3c3909e84f788f568cb44dee2d48229')
 
 prepare() {
-  cp -L "${srcdir}/${pkgname}-${pkgver}.py" "${srcdir}/${pkgname}.py"
-
+  cd "nautilus-dropbox-${pkgver}"
   # Patch to point to /opt/dropbox/dropboxd in case of local user does not exist
-  patch -Np1 -i "${srcdir}/${pkgname%-cli}d-fallback.patch"
+  patch -Np1 -i "${srcdir}/dropboxd-fallback.patch"
+}
+
+build() {
+  cd "nautilus-dropbox-${pkgver}"
+  python3 build_dropbox.py "${pkgver}" "/usr/share/applications" < "dropbox.in" > "${pkgname}"
 }
 
 package() {
-  install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname}.py" "${pkgdir}/usr/share/${pkgname}/${pkgname}.py"
-  ln -s "/usr/share/${pkgname}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
+  cd "nautilus-dropbox-${pkgver}"
+  install -m 755 -D "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
+
