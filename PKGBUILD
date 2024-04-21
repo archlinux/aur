@@ -4,12 +4,12 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Super Mario World powered by smw"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/smw4"
+url="https://gitlab.com/linuxbombay/supermarioworld"
 license=('GPL')
 depends=('smw-bin')
 makedepends=('unzip')
-sha256sums=('SKIP')
-source=("https://gitlab.com/smw4/smw/-/archive/$pkgver-$pkgrel/smw-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('161f7a1c0fa4c961a5def6be28068dc4355c7d1787cedcc678b6d0bae02f8cc2')
+source=("$url/-/archive/$pkgver-$pkgrel/smw-$pkgver-$pkgrel.tar.bz2")
 
 package() {
    install -dm755 "$pkgdir/usr/share/games/$_pkgname"
@@ -34,7 +34,7 @@ package() {
    cp -r "$srcdir/$_pkgname/." "$pkgdir/usr/share/games/$_pkgname"
 
    #Binary
-   cp -r "$srcdir/$_pkgname/supermarioworld" "$pkgdir/usr/bin"
+   install -Dm755 "$srcdir/$_pkgname/supermarioworld" "$pkgdir/usr/bin"
 
    # Desktop Entry
    install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
