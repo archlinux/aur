@@ -4,7 +4,7 @@
 _pkgname=eidklient
 pkgname="${_pkgname}-native"
 pkgver=4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -34,7 +34,10 @@ sha256sums_i686=(
 sha256sums_x86_64=(
     af12b06ab573477253eae1c273caba782f801850cdbda2bb25a3aeeeb635aa45
 )
-options=("!strip")
+options=(
+    !debug
+    !strip
+)
 install=eidklient.install
 makedepends=(
     fuse2
