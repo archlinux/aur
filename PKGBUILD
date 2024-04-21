@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=bite
-pkgver=0.2.1
+pkgver=0.3
 pkgrel=1
 pkgdesc="Disassembler focused on comprehensive rust support"
 url="https://github.com/WINSDK/bite"
@@ -14,7 +14,7 @@ depends=(
 makedepends=(cargo)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/V$pkgver.tar.gz")
-sha256sums=('08768b7125aec6f1b02f633761304a757b0fd34a041942de3091a4078d615527')
+sha256sums=('601b8de971300983d30dccf0925cd067e355061201d2d7fb2bd56063b1987669')
 
 _archive="$pkgname-$pkgver"
 

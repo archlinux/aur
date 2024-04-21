@@ -1,6 +1,6 @@
 pkgbase = bite
 	pkgdesc = Disassembler focused on comprehensive rust support
-	pkgver = 0.2.1
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/WINSDK/bite
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bite
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = bite-0.2.1.tar.gz::https://github.com/WINSDK/bite/archive/V0.2.1.tar.gz
-	sha256sums = 08768b7125aec6f1b02f633761304a757b0fd34a041942de3091a4078d615527
+	source = bite-0.3.tar.gz::https://github.com/WINSDK/bite/archive/V0.3.tar.gz
+	sha256sums = 601b8de971300983d30dccf0925cd067e355061201d2d7fb2bd56063b1987669
 
 pkgname = bite
