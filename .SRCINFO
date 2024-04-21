@@ -16,6 +16,7 @@ pkgbase = penpot-desktop-bin
 	depends = mesa
 	depends = nss
 	provides = penpot-desktop
+	provides = penpot-desktop-bin
 	conflicts = penpot-desktop
 	source_x86_64 = penpot-desktop-0.3.1.AppImage::https://dl.sudovanilla.com/applications/penpot-desktop/latest/Penpot%20Desktop-0.3.1.AppImage
 	sha256sums_x86_64 = 48a50166200de21955ca286cb14d4a516bf9527c41c945e6047250fd70d4e691

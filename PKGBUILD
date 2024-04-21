@@ -10,7 +10,7 @@ license=('MPL-2.0 license')
 arch=('x86_64' 'aarch64')
 depends=('alsa-lib' 'libappindicator-gtk3' 'libnotify' 'libsodium' 'libxss' 'libxtst' 'mesa' 'nss')
 makedepends=('fuse2')
-provides=("$_pkgname")
+provides=("$_pkgname" "$pkgname")
 conflicts=("$_pkgname")
 if [ "$CARCH" == "x86_64" ]; then
     _appimage="$_pkgname-$pkgver.AppImage"
