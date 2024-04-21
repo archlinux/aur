@@ -1,0 +1,24 @@
+diff --unified --recursive --text src/lush/src/dldbfd.c src-patched/lush/src/dldbfd.c
+--- src/lush/src/dldbfd.c	2006-11-03 00:46:09.000000000 +0800
++++ src-patched/lush/src/dldbfd.c	2024-04-21 00:24:56.565453545 +0800
+@@ -845,7 +845,8 @@
+     /* Cleanup bss section */
+     if (sbss)
+     {
+-        bfd_set_section_size(ent->abfd, sbss, scommon);
++        bfd_set_section_size(/* ent->abfd, */sbss, scommon);	/* PATCH NOTE: 
++								 * BFD CHANGED THE SIGNATURE */
+         /* Take no risk with alignment */
+         if (sbss->alignment_power < 4)
+             sbss->alignment_power = 4;
+@@ -2347,7 +2348,9 @@
+                 }
+               }
+             /* Update I-cache */
+-            update_instruction_cache(p->vma, bfd_section_size(abfd, p));
++            update_instruction_cache(p->vma , bfd_section_size(/* abfd, */p));
++	    /* PATCH NOTE: 
++	     * BFD CHANGED THE SIGNATURE */
+         }
+     /* Mark module as relocated */
+     if (externalp)
