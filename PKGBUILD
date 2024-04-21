@@ -11,8 +11,9 @@ license=("Apache-2.0")
 arch=("$CARCH")
 provides=("encryptedfs")
 conflicts=("encryptedfs")
+depends=("fuse3")
 source=("https://github.com/radumarias/encryptedfs/releases/download/v$pkgver/encryptedfs-$pkgver-$CARCH.tar.gz")
-sha256sums=("87d1d66c973317d58e6e15b666fabde50d3e4f570d525fe914f0f72a639b742d")
+sha256sums=("246b7e469e72076349b4808507572c5ea717bbb0b5ea7cb66112d6992fb95c88")
 
 package() {
     install -Dm755 encryptedfs -t "$pkgdir/usr/bin"
