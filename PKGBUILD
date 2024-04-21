@@ -2,7 +2,7 @@
 
 pkgname=moonshine
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
@@ -21,6 +21,7 @@ depends=(
 )
 provides=(moonshine)
 conflicts=(moonshine)
+options=(!lto)
 
 source=(
 	"https://github.com/hgaiser/moonshine/archive/refs/tags/v$pkgver.tar.gz"
