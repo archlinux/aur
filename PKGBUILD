@@ -13,7 +13,6 @@ depends=(
     python-tqdm
     python-joblib
     python-scipy
-    python-literate-dataclasses
 )
 makedepends=(
     python-pytest-benchmark

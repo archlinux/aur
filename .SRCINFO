@@ -13,7 +13,6 @@ pkgbase = python-cebra
 	depends = python-tqdm
 	depends = python-joblib
 	depends = python-scipy
-	depends = python-literate-dataclasses
 	optdepends = python-werkzeug
 	optdepends = python-seaborn
 	optdepends = python-matplotlib
