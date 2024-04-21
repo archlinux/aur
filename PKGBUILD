@@ -7,12 +7,13 @@
 
 pkgname=dropbox-cli
 pkgver=2024.04.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface for Dropbox"
 arch=("any")
 url="https://www.dropbox.com"
 license=("GPL-3.0-or-later")
-depends=("dropbox" "python-gobject" "gdk-pixbuf2")
+makedepends=("gdk-pixbuf2")
+depends=("dropbox" "python-gobject")
 optdepends=("gtk3: Dropbox update GUI"
             "python-gpgme: verify binary signature")
 source=("https://linux.dropbox.com/packages/nautilus-dropbox-${pkgver}.tar.bz2"
