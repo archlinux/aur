@@ -6,7 +6,7 @@ pkgbase = talosctl-bin
 	arch = x86_64
 	license = MPL
 	options = !strip
-	source = https://github.com/siderolabs/talos/releases/download/v1.6.7/talosctl-linux-amd64
+	source = https://github.com/siderolabs/talos/releases/download/v1.7.0/talosctl-linux-amd64
 	sha256sums = b48d94c59d85868ae506eb68e79a60d248b45ed68b3122e75a8b8bcccdc77a28
 
 pkgname = talosctl-bin
