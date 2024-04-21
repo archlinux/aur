@@ -3,7 +3,7 @@
 
 pkgname=arronax
 pkgver=0.8.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A GTK based GUI program to create and modify starters (*.desktop files) for applications, files, and URIs."
 arch=('any')
 license=('GPL-3.0-or-later')
@@ -17,9 +17,11 @@ optdepends=('nemo-python: for Nemo extension'
 #source=("https://www.florian-diesch.de/software/arronax/dist/$pkgname-$pkgver.tar.gz"{,.gpg}
 _commit=acb6aaf4826cd8f3d92bdbec8116e317fe954a98  # 0.8.1
 source=("git+https://codeberg.org/diesch/arronax.git#commit=${_commit}"
-        'python311.patch')
-sha256sums=('SKIP'
-            'b62f06af537253f0fcaedcbcc8fbdf5c866a0bda4c5cd517ea4b263d93d52d0c')
+        'python311.patch'
+        "$pkgname.desktop")
+sha256sums=('03f5252ef7e5e80dee1c467ca5cd9126cb4cef559b10e68aef41fe1c7226958e'
+            'b62f06af537253f0fcaedcbcc8fbdf5c866a0bda4c5cd517ea4b263d93d52d0c'
+            'c5e08a4d45108c9b9e6cd25418149a97de0253dbc3602c510785de7a7a42b3eb')
 #validpgpkeys=('C2FF86E4B400D21D087A35B665F2466BB57F5641')  # Florian Diesch <diesch@spamfence.net>
 
 prepare() {
@@ -44,5 +46,7 @@ package() {
 
   # Not compatibile with Nautilus 43+
   rm -rf "$pkgdir/usr/share/nautilus-python/"
+
+  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }
 

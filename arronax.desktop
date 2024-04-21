@@ -1,0 +1,27 @@
+
+[Desktop Entry]
+Type=Application
+Version=1.0
+Hidden=false
+Terminal=false
+Icon=arronax
+Name=Arronax
+Name[bg]=Arronax
+Name[ca]=Arronax
+Name[de]=Arronax
+Name[es]=Arronax
+Name[fr]=Arronax
+Name[gl]=Arronax
+Name[hr]=Arronax
+Name[hu]=Arronax
+Name[it]=Arronax
+Name[ms]=Arronax
+Name[pt_BR]=Arronax
+Name[ro]=Arronax
+Name[ru]=Arronax
+Name[sr]=Аронакс
+Name[zh_CN]=Arronax
+Comment=Create and edit application starters, .desktop files and desktop shortcuts
+Exec=arronax %f
+Categories=Utility;GNOME
+MimeType=application/x-desktop

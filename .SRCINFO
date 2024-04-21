@@ -1,7 +1,7 @@
 pkgbase = arronax
 	pkgdesc = A GTK based GUI program to create and modify starters (*.desktop files) for applications, files, and URIs.
 	pkgver = 0.8.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.florian-diesch.de/software/arronax
 	arch = any
 	license = GPL-3.0-or-later
@@ -18,7 +18,9 @@ pkgbase = arronax
 	optdepends = thunarx-python: for Thunar plugin
 	source = git+https://codeberg.org/diesch/arronax.git#commit=acb6aaf4826cd8f3d92bdbec8116e317fe954a98
 	source = python311.patch
-	sha256sums = SKIP
+	source = arronax.desktop
+	sha256sums = 03f5252ef7e5e80dee1c467ca5cd9126cb4cef559b10e68aef41fe1c7226958e
 	sha256sums = b62f06af537253f0fcaedcbcc8fbdf5c866a0bda4c5cd517ea4b263d93d52d0c
+	sha256sums = c5e08a4d45108c9b9e6cd25418149a97de0253dbc3602c510785de7a7a42b3eb
 
 pkgname = arronax
