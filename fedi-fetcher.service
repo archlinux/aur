@@ -1,0 +1,37 @@
+[Unit]
+Description=FediFetcher Service
+After=network.target
+
+[Service]
+Type=simple
+User=fedi-fetcher
+Group=fedi-fetcher
+
+ExecStart=/usr/bin/fedi-fetcher -c=/etc/fedi-fetcher/config.json
+
+WorkingDirectory=~
+ReadWritePaths=/var/lib/fedi-fetcher
+ConfigurationDirectory=fedi-fetcher
+
+ProtectSystem=strict
+PrivateTmp=yes
+ProtectHome=yes
+ProtectKernelTunables=yes
+NoNewPrivileges=yes
+SystemCallArchitectures=native
+PrivateDevices=yes
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+ProtectKernelLogs=true
+ProtectHostname=true
+ProtectKernelModules=true
+PrivateUsers=true
+ProtectClock=true
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

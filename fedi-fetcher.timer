@@ -1,0 +1,10 @@
+[Unit]
+Description=FediFetcher Timer
+
+[Timer]
+# every hour
+OnCalendar=*-*-* *:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
