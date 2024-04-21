@@ -1,7 +1,7 @@
 # Maintainer: Steffen Schneider <stes@hey.com>
 pkgname=python-cebra
 _pkgname=cebra
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Consistent Embeddings of high-dimensional Recordings using Auxiliary variables"
 url="https://cebra.ai"
@@ -25,8 +25,9 @@ optdepends=(
 )
 license=('custom')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/95/d9/6ed3d5cc181e498b536f67e177b9f9adcbd72d30f9e884523f2a8c5a297e/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('6e066f6df69cd81b5c0de0742f437ac5')
+
+source=("https://files.pythonhosted.org/packages/68/9c/4cb1f6e03bf31e955ec3073f9900020af9c6dfe2bbf9f390dbec9b24f999/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('dee8d3ff269855f3bd8a5b1a4c34eb93')
 
 _site_packages=$(python -c 'import sys; print(sys.path[-1])')
 
