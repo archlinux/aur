@@ -3,7 +3,7 @@
 # Contributor: Nils Czernia <nils at czserver dot de>
 
 pkgname=grav
-pkgver=1.7.44
+pkgver=1.7.45
 pkgrel=1
 pkgdesc='Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS'
 arch=('any')
@@ -12,8 +12,11 @@ license=('MIT')
 provides=('grav')
 depends=( )
 optdepends=('php-apcu: Userland caching module for PHP' 
+            'php-legacy-apcu: Userland caching module for PHP' 
             'php-yaml: YAML de-/serialization using the LibYAML library'
+            'php-legacy-yaml: YAML de-/serialization using the LibYAML library'
             'php-fpm: FastCGI Process Manager'
+            'php-legacy-fpm: FastCGI Process Manager'
             'apache: High performance Unix-based HTTP server' 
             'nginx: Lightweight HTTP server and IMAP/POP3 proxy server'
             'uwsgi: Fast and highly tuneable application server'
@@ -28,7 +31,7 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/down
         "grav.php-fpm.ini"
         "grav.php-fpm.d.grav.conf"
         "grav.php-fpm.service.d.override.conf")
-sha256sums=('b8dba5e64fed3a43267f9d3fc383daa32fad6324ef5f3a73dd2ec98df8fed97a'
+sha256sums=('f7ced39f3b531443a599cab91c0a4ee525751bb9582cfd232d5a45f3667d88be'
             '80d8a9e6788fc7efca9ce78f96902d37a3e3c3df363224480db6901bd7d7fcb3'
             '125e08820ed477582d7ae716dac6495bca4eac485fa4d4263b11f2505fc355db'
             'ced168231a98be4816afc0a1928b54218c4ce4081be7b49acd704e2a9325f9db'
@@ -51,7 +54,7 @@ prepare() {
 }
 
 package() {
-  depends=('php>=7.3.6' 'php-gd')
+  depends=('php-interpreter' 'php-gd-interpreter')
   mkdir -p "${pkgdir}/usr/share/webapps"
   gravroot="${pkgdir}/usr/share/webapps/${pkgname}"
   cp -ar "${srcdir}/${pkgname}" "${gravroot}"

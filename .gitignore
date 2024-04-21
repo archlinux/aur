@@ -1,9 +1,7 @@
-.BUILDINFO
-.INSTALL
-.PKGINFO
-*.pkg.tar.zst
-grav-*.zip
-pkg
-src
-TODO
-test-*
+/*.pkg.tar.zst
+/grav-*.zip
+/pkg
+/src
+/TODO
+/test-*
+/build
