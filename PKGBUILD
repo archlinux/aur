@@ -1,7 +1,7 @@
 # Maintainer: intothegnu <intothegnu@protonmail.com>
 
 pkgname="neopassmenu"
-pkgver="1.1.0"
+pkgver="1.1.1"
 pkgrel="1"
 pkgdesc="Dmenu front end in POSIX shell for pass with, OTP, navigation, selection from multi-line files, and support for dmenu equivalents"
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 url="https://notabug.org/BezierQuadratic/neopassmenu"
 
 source=("https://notabug.org/BezierQuadratic/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('0f2d082aedb45e1cc379f0cde65f65c7')
+md5sums=('a268b7e0ba1ff723a3b97f85c7c1da43')
 
 package(){
 	mkdir -p "${pkgdir}/usr/bin"
