@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=mvfst
-pkgver=2024.04.08.00
+pkgver=2024.04.15.00
 pkgrel=1
 pkgdesc="An implementation of the QUIC transport protocol"
 arch=(x86_64)
@@ -67,7 +67,7 @@ provides=(
   libmvfst_transport_settings_functions.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f0745b81ec5fefd53ca43f6d399108e88264b8e14e329b47eba64f3872982160')
+sha256sums=('b195aa6fa2a62bf247a0aeb0d3ddfcb7b00d704997b233dc2892eb8cc1686f7c')
 
 _archive="$pkgname-$pkgver"
 
