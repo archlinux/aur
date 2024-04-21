@@ -1,7 +1,7 @@
 pkgbase = redasm
 	pkgdesc = The OpenSource Disassembler
 	pkgver = 2.1.1.fix
-	pkgrel = 1
+	pkgrel = 2
 	url = https://redasm.io/
 	arch = i686
 	arch = x86_64
@@ -12,11 +12,10 @@ pkgbase = redasm
 	source = git+https://github.com/REDasmOrg/REDasm.git#tag=v2.1.1-fix
 	source = git+https://github.com/REDasmOrg/REDasm-Library.git
 	source = git+https://github.com/Dax89/QHexView.git
-	source = git+https://github.com/aquynh/capstone.git
+	source = git+https://github.com/capstone-engine/capstone.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = redasm
-
