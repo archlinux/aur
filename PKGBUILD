@@ -1,8 +1,8 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-git
-pkgver=r178.cb37ebd
-pkgrel=2
+pkgver=r187.3ed1031
+pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
@@ -21,6 +21,7 @@ depends=(
 )
 provides=(moonshine)
 conflicts=(moonshine)
+options=(!lto)
 
 source=(
 	"${pkgname%-git}::git+https://github.com/hgaiser/moonshine"
