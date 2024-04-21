@@ -2,7 +2,7 @@
 # Contributor: Ranieri Althoff <ranisalt+aur at gmail dot com>
 
 pkgname=gnome-shell-extension-hot-edge-git
-pkgver=22
+pkgver=22.r55.0aeda4b
 pkgrel=1
 pkgdesc='Adds a hot edge that activates the overview to the bottom of the screen.'
 url='https://github.com/jdoda/hotedge'
@@ -16,7 +16,8 @@ source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  jq -r '.version' < "$pkgname/metadata.json"
+  cd "$pkgname"
+  printf "%s.r%s.%s" "$(jq -r '.version' < metadata.json)" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
