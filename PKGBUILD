@@ -16,7 +16,7 @@ pkgname=(
   java21-openjfx-src
 )
 pkgver=21.0.3.u2
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64 x86_64_v3)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -94,7 +94,7 @@ package_java21-openjfx() {
     'gtk3: GTK3 support',
     'webkit2gtk: Web support'
   )
-  provides=(java21-openjfx=${pkgver%%.*})
+  provides=(java-openjfx=${pkgver%%.*})
 
   cd $_jfxdir
 

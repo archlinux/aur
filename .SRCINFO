@@ -1,7 +1,7 @@
 pkgbase = java21-openjfx
 	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version
 	pkgver = 21.0.3.u2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
 	arch = x86_64_v3
@@ -48,7 +48,7 @@ pkgname = java21-openjfx
 	optdepends = gtk2: GTK2 support,
 	optdepends = gtk3: GTK3 support,
 	optdepends = webkit2gtk: Web support
-	provides = java21-openjfx=21
+	provides = java-openjfx=21
 
 pkgname = java21-openjfx-doc
 	arch = any
