@@ -1,0 +1,12 @@
+pkgbase = pama
+	pkgdesc = Simple and secure password manager made in Go
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = go
+	depends = git
+	source = https://github.com/VPeti1/CWAcces/raw/main/pama.tar.gz
+	sha256sums = 0d11c6b8ac5bd3e19e97f578f5e485dbabcaa9247b9ebb9fe7699bd93d730b9b
+
+pkgname = pama
