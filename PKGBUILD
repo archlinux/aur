@@ -2,8 +2,8 @@
 # Contributor: Roberto Rossini ("robymetallo") <roberto.rossini.9533@student.uu.se>
 
 pkgname=stringtie
-pkgver=2.2.1
-pkgrel=6
+pkgver=2.2.2
+pkgrel=1
 pkgdesc="A fast and highly efficient assembler of RNA-Seq\
  alignments into potential transcripts"
 
@@ -15,7 +15,7 @@ makedepends=('gcc' 'make' 'git')
 depends=('gcc-libs' 'zlib')
 
 source=("http://ccb.jhu.edu/software/$pkgname/dl/$pkgname-$pkgver.tar.gz")
-sha256sums=('ce4eec532bbbe39af462be844afa6395ab38fa3418ef5fc2431e2d6194129527')
+sha256sums=('f75f23b8466898d27984fb99cf6f828094fb3ed0307aed7af76e334acb997010')
 
 build() {
   cd $pkgname-$pkgver/
