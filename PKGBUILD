@@ -1,7 +1,7 @@
 # Maintainer: Your Name <tjmcgrew@gmail.com>
 pkgname=famistudio
 _pkgname=FamiStudio
-pkgver=4.1.3
+pkgver=4.2.0
 pkgrel=1
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://famistudio.org/"
 license=('MIT')
 groups=()
-depends=(dotnet-runtime openal libcanberra rtmidi libvorbis ffmpeg glfw-x11)
+depends=(dotnet-runtime dotnet-runtime-7.0 openal libcanberra rtmidi libvorbis ffmpeg glfw)
 makedepends=(dotnet-sdk)
 checkdepends=()
 optdepends=()
@@ -21,15 +21,18 @@ options=()
 install=
 changelog=
 source=("https://github.com/BleuBleu/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
-    "${pkgname}.desktop" "${_pkgname}.svg")
+    "${pkgname}.desktop" "${_pkgname}.svg"
+    "https://github.com/glfw/glfw/archive/refs/tags/3.3.10.tar.gz")
 noextract=()
 
-md5sums=('3e16490aad328bb0c337429d17371bb9'
+md5sums=('d7c0c6329263af515f7139564cdbb94c'
          '7cecbef97612ec8cf56a84e966382c87'
-         'a1156aa440fcc359acc3d43dbfd2d6f9')
-sha256sums=('b0bc0de4d5cac18a623f77ceeb55c1c132aababba1f9bc5abbb762fd01d54fde'
+         'a1156aa440fcc359acc3d43dbfd2d6f9'
+         'f6e72e39141fb7f9e71017d52781ee42')
+sha256sums=('5ffb0bf62b891bd0396d66f0842303a6d1be999287eb65782c7487b5fb3bf779'
             '2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537'
-            'f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8')
+            'f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8'
+            '4ff18a3377da465386374d8127e7b7349b685288cb8e17122f7e1179f73769d5')
 
 validpgpkeys=()
 
@@ -38,9 +41,17 @@ prepare() {
 }
 
 build() {
-	cd "$_pkgname-$pkgver"
-
     find -name \*.so -delete
+
+    # famistudio only works with glfw 3.3, so build glfw from source
+    cmake -B build \
+    -S "glfw-3.3.10" \
+        -DBUILD_SHARED_LIBS=ON \
+        -Wno-dev
+    cmake --build build
+    mv build/src/libglfw.so.3.3 "$_pkgname-$pkgver/$_pkgname/libglfw.so"
+
+	cd "$_pkgname-$pkgver"
 
     cd ThirdParty/NotSoFatso && ./build_linux.sh && cd -
     cp ThirdParty/NotSoFatso/libNotSoFatso.so FamiStudio/
@@ -60,9 +71,9 @@ build() {
     cd ThirdParty/Stb && ./build_linux.sh && cd -
     cp ThirdParty/Stb/libStb.so FamiStudio/
 
-#     touch ${_pkgname}/libopenal32.so ${_pkgname}/librtmidi.so ${_pkgname}/libVorbis.so
-    touch ${_pkgname}/libopenal32.so ${_pkgname}/libVorbis.so \
-        ${_pkgname}/libglfw.so ${_pkgname}/librtmidi.so 
+    touch ${_pkgname}/libopenal32.so
+    touch ${_pkgname}/libglfw.so
+    touch ${_pkgname}/librtmidi.so 
 
     dotnet build -c:Release ${_pkgname}/${_pkgname}.Linux.csproj
 }
@@ -74,18 +85,18 @@ package() {
     cp ${_pkgname}.svg "$pkgdir/usr/share/${pkgname}"
     cd ${_pkgname}-${pkgver}
 
-    rm ${_pkgname}/bin/Release/net6.0/libopenal32.so \
-       ${_pkgname}/bin/Release/net6.0/libglfw.so \
-       ${_pkgname}/bin/Release/net6.0/librtmidi.so
+    rm ${_pkgname}/bin/Release/net7.0/libopenal32.so
+#      rm ${_pkgname}/bin/Release/net7.0/libglfw.so
+    rm ${_pkgname}/bin/Release/net7.0/librtmidi.so
 
-    cp -r "Setup/Demo Songs" ${_pkgname}/bin/Release/net6.0/* \
+    cp -r "Setup/Demo Songs" ${_pkgname}/bin/Release/net7.0/* \
         "$pkgdir/usr/share/${pkgname}"
 
     cp LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
 
     ln -s /usr/lib/libopenal.so $pkgdir/usr/share/${pkgname}/libopenal32.so
+#      ln -s /usr/lib/libglfw.so $pkgdir/usr/share/${pkgname}/libglfw.so
     ln -s /usr/lib/librtmidi.so $pkgdir/usr/share/${pkgname}/librtmidi.so
-    ln -s /usr/lib/libglfw.so $pkgdir/usr/share/${pkgname}/libglfw.so
 
     echo -e "#!/bin/sh\n\ndotnet /usr/share/${pkgname}/${_pkgname}.dll \$*" \
         > $pkgdir/usr/bin/${pkgname}
