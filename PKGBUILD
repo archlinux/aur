@@ -1,6 +1,6 @@
 # Maintainer: Maksymilian Jopek <maks.aur@jopek.eu>
 pkgname=portablemc
-pkgver=4.2.1
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='An easy-to-use Python CLI Minecraft launcher'
 arch=('any')
@@ -10,12 +10,12 @@ depends=('python')
 provides=('portablemc')
 
 source=(
-  "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/8d/63/d60d2b80e5a0e8499b8db1ba8301bec956dfb3602a639df115e12eb4422f/portablemc-4.2.1.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/e6/d1/61fa495e7944597d4c6e61756ce175d7b3096f14fd7c3c67fa69da43e25d/portablemc-4.3.0.tar.gz"
   'portablemc'
 )
 
 sha256sums=(
-  '914b83a388712ab0f9118ccb41085d7594ead93bc421fec1cb599ff13369d02c'
+  '30c43339310b0bb0494cb91a6a3311cc6b565fe8b651fafa800c7ceb98aad35d'
   '65df24d73666d5a7f5eaac5beb48132b4f5cf0022878c3468afe7711cd275f45'
 )
 
