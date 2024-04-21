@@ -1,7 +1,7 @@
 pkgbase=aa-snapshot-player
 pkgname=('aa-snapshot-player-standalone-bin' 'aa-snapshot-player-vst3-bin')
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://audioassault.mx/products/snapshot-player"
 license=('EULA')
@@ -27,7 +27,7 @@ package_aa-snapshot-player-standalone-bin() {
     groups=('pro-audio')
     install -Dm755 "$srcdir/Snapshot Player Standalone" "$pkgdir/usr/bin/AA Snapshot Player Standalone"
     install -Dm644 "$srcdir/AA Snapshot Player.desktop" "$pkgdir/usr/share/applications/AA Snapshot Player.desktop"
-    install -Dm644 "$srcdir/aa-snapshot-player.png" "$pkgdir/usr/share/icons/hicolor/192x192/aa-snapshot-player.png"
+    install -Dm644 "$srcdir/aa-snapshot-player.png" "$pkgdir/usr/share/icons/hicolor/192x192/apps/aa-snapshot-player.png"
 }
 
 package_aa-snapshot-player-vst3-bin() {
