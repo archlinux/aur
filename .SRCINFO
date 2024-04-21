@@ -1,0 +1,13 @@
+pkgbase = pathify
+	pkgdesc = Move something to the path
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/eeec-cal/pathify
+	arch = x86_64
+	groups = torkit
+	license = MIT
+	makedepends = git
+	source = pathify::git+https://github.com/eeec-cal/pathify
+	sha256sums = SKIP
+
+pkgname = pathify
