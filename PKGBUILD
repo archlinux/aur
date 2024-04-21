@@ -1,7 +1,7 @@
 # Maintainer: Marcel Hasler <mahasler at gmail dot com>
 pkgname=kde-cdemu-manager
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE CDEmu Manager is a simple frontend for CDEmu."
 arch=('x86_64')
 url="https://github.com/marcelh83/kde-cdemu-manager"
@@ -19,7 +19,8 @@ prepare() {
 
 build() {
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=$(qtpaths --install-prefix) ../${pkgname}-${pkgver}
+  cmake ../${pkgname}-${pkgver} \
+    -DCMAKE_INSTALL_PREFIX=$(/usr/lib/qt6/bin/qtpaths6 --install-prefix)
   make
 }
 
