@@ -1,7 +1,7 @@
 # Maintainer: Keith Plant <kplantjr at gmail dot com>
 
 pkgname="wlroots-nvidia"
-pkgver="0.17.1"
+pkgver="0.17.2"
 pkgrel="1"
 pkgdesc="Modular Wayland compositor library, with fix for nvidia flickering"
 license=("MIT")
@@ -47,13 +47,16 @@ makedepends=(
 optdepends=(
 	'xorg-xwayland: Xwayland support'
 )
+options=(
+	'debug'
+)
 source=(
 	"$wl_pkgname-$pkgver.tar.gz::https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/$pkgver/downloads/wlroots-$pkgver.tar.gz"
 	"https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/$pkgver/downloads/wlroots-$pkgver.tar.gz.sig"
 	"nvidia.patch"
 )
 sha256sums=(
-	'd58d68e3f90d92de4d49fa43b4d75dc78f8af1d920d090729331cefbdfcf361b'
+	'f4007d3f71e190b9000ab4a30afd87833b034ab2602030a00af4465ffd4e997c'
 	'SKIP'
 	'bbbb2a7c825d241f119a73503e7a04482f8d5f03192feabc68601c75cf93ad0b'
 )
