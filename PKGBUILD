@@ -4,12 +4,12 @@ pkgver=1.0.3
 pkgrel=1
 pkgdesc="Unofficial Mewe desktop application."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/mewedesktop"
+url="https://gitlab.com/linuxbombay/mewedesktop"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-source=("https://gitlab.com/mewedesktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('095634901a8108adec1459220de6d3982b81e324941ae215bd17a06a0cb0b213')
 
 
 package() {
