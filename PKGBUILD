@@ -29,9 +29,10 @@ prepare() {
 }
 
 build() {
-	cmake -B build -S "${pkgname%-git}" \
-		-Wno-dev
-	make -C build
+	mkdir "$srcdir/${pkgname%-git}"/build 
+	cd "$srcdir/${pkgname%-git}"/build
+	cmake .. -DTWENTYFOUR=YES -Wno-dev
+	cmake --build .
 }
 
 package() {
