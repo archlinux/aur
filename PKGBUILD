@@ -1,5 +1,6 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Guillaume Alaux <guillaume@archlinux.org>
 # Contributor: William Gathoye <william + archlinux at gathoye dot be>
