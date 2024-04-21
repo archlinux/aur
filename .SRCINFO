@@ -1,15 +1,16 @@
 pkgbase = iqpuzzle
-	pkgdesc = A diverting and challenging pentomino puzzle.
-	pkgver = 1.2.9
+	pkgdesc = IQ challenging pentomino puzzle.
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/ElTh0r0/iqpuzzle/
 	arch = i686
 	arch = x86_64
-	license = GPL3
-	makedepends = qt5-tools
-	depends = qt5-base
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-base
 	depends = hicolor-icon-theme
-	source = iqpuzzle-1.2.9.tar.gz::https://github.com/ElTh0r0/iqpuzzle/archive/v1.2.9.tar.gz
-	sha256sums = b4bd8da720462b2902228091cbdcc4e181e37ed2e39f0c525867b8c1492461e1
+	source = iqpuzzle-1.3.0.tar.gz::https://github.com/ElTh0r0/iqpuzzle/archive/v1.3.0.tar.gz
+	sha256sums = ac7b3a152de2a95eb3fc972e32104b82d745535b78e9d073ca2a9d7ae9703651
 
 pkgname = iqpuzzle
