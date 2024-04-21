@@ -4,6 +4,7 @@ pkgbase = vetch
 	pkgrel = 1
 	url = https://github.com/eeec-cal/vetch
 	arch = x86_64
+	groups = torkit
 	license = MIT
 	makedepends = git
 	depends = viu
