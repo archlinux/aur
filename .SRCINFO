@@ -1,0 +1,25 @@
+pkgbase = alpaka-git
+	pkgdesc = Kirigami client for Ollama
+	pkgver = r304.df0b0c5
+	pkgrel = 1
+	url = https://apps.kde.org/alpaka/
+	arch = x86_64
+	groups = kde-applications
+	groups = kde-utilities
+	license = GPL-3.0-or-later
+	makedepends = extra-cmake-modules
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = kcoreaddons
+	depends = kconfig
+	depends = kirigami
+	depends = ki18n
+	depends = kstatusnotifieritem
+	depends = kwindowsystem
+	depends = kxmlgui
+	depends = kcrash
+	source = git+https://invent.kde.org/utilities/alpaka.git
+	sha256sums = SKIP
+
+pkgname = alpaka-git
