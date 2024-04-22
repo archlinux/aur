@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-icons
-pkgver=11.12.0
+pkgver=11.13.0
 pkgrel=1
 pkgdesc="Free SVG icons for popular brands"
 arch=('any')
@@ -17,7 +17,7 @@ options=(
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
 )
-sha256sums=('SKIP')
+sha256sums=('16d207b8aa26d03e44a899a3446b9c42af53bfbde89526251e6d59f6a5a405a7')
 package() {
     install -Dm644 "${srcdir}/${pkgname}.git/icons/"*.svg -t "${pkgdir}/usr/share/icons/${pkgname}/scalable"
     install -Dm644 "${srcdir}/${pkgname}.git/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"

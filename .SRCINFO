@@ -1,6 +1,6 @@
 pkgbase = simple-icons
 	pkgdesc = Free SVG icons for popular brands
-	pkgver = 11.12.0
+	pkgver = 11.13.0
 	pkgrel = 1
 	url = https://simpleicons.org/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = simple-icons
 	makedepends = git
 	conflicts = simple-icons
 	options = !strip
-	source = simple-icons.git::git+https://github.com/simple-icons/simple-icons.git#tag=11.12.0
-	sha256sums = SKIP
+	source = simple-icons.git::git+https://github.com/simple-icons/simple-icons.git#tag=11.13.0
+	sha256sums = 16d207b8aa26d03e44a899a3446b9c42af53bfbde89526251e6d59f6a5a405a7
 
 pkgname = simple-icons
