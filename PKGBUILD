@@ -24,7 +24,7 @@ package() {
   mkdir -p "${pkgdir}/opt/mzmine3"
   cp -r mzmine-community/build/jpackage/mzmine/ "${pkgdir}/opt/mzmine3"
   mkdir -p "${pkgdir}/usr/bin"
-  ln -sf ${pkgdir}/opt/mzmine3/mzmine/bin/mzmine "${pkgdir}/usr/bin/mzmine"
+  ln -sf "${pkgdir}/opt/mzmine3/mzmine/bin/mzmine" "${pkgdir}/usr/bin/mzmine"
 
   install -Dm0644 mzmine-community/build/resources/main/mzmineIcon.png "${pkgdir}/usr/share/icons/hicolor/256x256/mzmine"
   install -Dm0644 ../mzmine.desktop "${pkgdir}/usr/share/applications/mzmine.desktop"
