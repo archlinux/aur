@@ -1,14 +1,19 @@
 pkgbase = skm-bin
 	pkgdesc = A simple and powerful SSH keys manager
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://timothyye.github.io/skm
+	arch = aarch64
+	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = skm
-	source = skm-bin-0.8.6.tar.gz::https://github.com/TimothyYe/skm/releases/download/v0.8.6/skm_0.8.6_Linux_x86_64.tar.gz
-	source = LICENSE::https://github.com/TimothyYe/skm/raw/master/LICENSE
-	sha256sums = 5e1a4d476f513ae71de9cf12de5563b27a2e5fb74b39e062955195812f1ddaf5
-	sha256sums = 9135a22d94f05de75cba7a299488e9155bb15634660e992138d2eb263e657004
+	provides = skm=0.8.6
+	conflicts = skm
+	source_aarch64 = skm-0.8.6-aarch64.tar.gz::https://github.com/TimothyYe/skm/releases/download/v0.8.6/skm_0.8.6_Linux_arm64.tar.gz
+	sha256sums_aarch64 = e1c91bf31f2cf50e403b271e57cb92aa0edfe45d14e693cc39cb89c43e00c09a
+	source_i686 = skm-0.8.6-i686.tar.gz::https://github.com/TimothyYe/skm/releases/download/v0.8.6/skm_0.8.6_Linux_i386.tar.gz
+	sha256sums_i686 = c28716920e95131fc1de98ba3ed3c28bb3dfb1fec8aef3e27bc956c64ad83315
+	source_x86_64 = skm-0.8.6-x86_64.tar.gz::https://github.com/TimothyYe/skm/releases/download/v0.8.6/skm_0.8.6_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5e1a4d476f513ae71de9cf12de5563b27a2e5fb74b39e062955195812f1ddaf5
 
 pkgname = skm-bin
