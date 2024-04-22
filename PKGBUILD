@@ -1,4 +1,4 @@
-# Maintainer: Anakojm <https://anakojm.net/a-propos/#contact>
+# Maintainer: Anakojm <https://anakojm.net/about.html>
 
 pkgname="basta-git"
 pkgver="r33.191cdea"
