@@ -1,6 +1,6 @@
 #Maintainer: Nick Cottrell <RadioLogic>
 pkgname=powershell-empire
-pkgver=5.9.2
+pkgver=5.9.3
 pkgrel=1
 pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
 url="https://github.com/BC-SECURITY/Empire"
@@ -19,7 +19,7 @@ license=('BSD-3-Clause')
 provides=("${pkgname}")
 install=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BC-SECURITY/Empire/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('78a7a44fedc7e83ff1dcc2bfe3892d777c5757b5b225359fa90b55b4d3ba4799e013518d26b46ade47a725945f0c148d2a34a4fefd9d53a9917c37a67d9e9222')
+sha512sums=('5b5f2ebb298cdcb080817af9930932c657a33f938832d8d8037533552a033c198049453152ef0f26b65b221c4c533f4adcb33301681e611fc126bbe82b89bdfe')
 
 build() {
     # Creating virtualenv with dependencies
