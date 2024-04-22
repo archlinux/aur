@@ -7,7 +7,7 @@
 
 pkgname=nrf5x-command-line-tools
 _pkgname=nrf-command-line-tools
-pkgver=10.24.1
+pkgver=10.24.2
 pkgrel=0
 pkgdesc="Tools for programming Nordic nRF51, nRF52, nRF53 and nRF91 Series devices"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=('nrfjprog' 'mergehex' 'python-pynrfjprog')
 conflicts=('python-pynrfjprog' 'python-pynrfjprog-git')
 options=()
 source_x86_64=("https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-${pkgver%.*.*}-x-x/${pkgver//./-}/${_pkgname}-${pkgver}_linux-amd64.tar.gz")
-sha256sums_x86_64=('764592e87da331021777e89fefe5f799894c01eb27aaca59f2368b0d3ee90a19')
+sha256sums_x86_64=('9d65b0d80fccb567668fa41585c9261947b1740f52eba8d3a368cf6f8fd7b793')
 
 build() {
     cd ${_pkgname}/python
