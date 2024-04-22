@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=buildcache
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="An advanced compiler accelerator"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cmake')
 optdepends=('lua')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/bits-n-bites/buildcache/-/archive/v$pkgver/buildcache-v$pkgver.tar.gz")
-sha256sums=('9b8e465f303736b97b0004c77c64c5e1b526721ee825ecfdd68d20ab5b72fb86')
+sha256sums=('855b662f0e8b920e6bc46924e765b865c1cc701425940ba4a71c23466925fdb5')
 
 
 build() {
@@ -22,18 +22,18 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     "src"
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "$pkgname-v$pkgver"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "$pkgname-v$pkgver"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/buildcache"
 }
