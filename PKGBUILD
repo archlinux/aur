@@ -2,7 +2,7 @@
 
 pkgname=pyhgtmap
 pkgver=3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of official phyghtmap - Generate OSM contour lines from NASA SRTM data"
 _outname="${pkgname}-v${pkgver}"
 arch=('x86_64')
@@ -10,12 +10,15 @@ url="https://github.com/agrenott/pyhgtmap"
 license=('GPL2')
 depends=(
   'python-beautifulsoup4'
+  'python-class-registry'
   'python-colorlog'
   'python-contourpy'
   'python-matplotlib'
   'python-nptyping'
   'python-numpy'
   'python-npyosmium'
+  'python-pybind11-rdp'
+  'python-pydrive2'
   'python-scipy'
   'python-shapely'
 )
