@@ -3,3 +3,4 @@
 !.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
+!python3.12-compatibility.patch

@@ -1,11 +1,10 @@
 pkgbase = cmake-lint
 	pkgdesc = Check for coding style issues in CMake files
 	pkgver = 1.4.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/cmake-lint/cmake-lint
 	arch = any
 	license = Apache-2.0
-	checkdepends = python-mock
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
@@ -14,6 +13,8 @@ pkgbase = cmake-lint
 	makedepends = python-wheel
 	depends = python
 	source = cmake-lint-1.4.2.tar.gz::https://github.com/cmake-lint/cmake-lint/archive/1.4.2.tar.gz
+	source = python3.12-compatibility.patch
 	sha256sums = bf060987c74e07890f7314a4832c2e54ffb9c5c1e6d799387bc438010f918676
+	sha256sums = 4f1573fa02d542067f0d20eb178f50354bed451173c4f73175098ca4c6e569c1
 
 pkgname = cmake-lint
