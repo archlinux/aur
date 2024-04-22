@@ -1,12 +1,15 @@
 pkgbase = python-aiohttp-proxy-git
 	pkgdesc = SOCKS proxy connector for aiohttp. HTTP, HTTPS, SOCKS4(a) and SOCKS5(h) proxies are supported. (Git version)
-	pkgver = v0.1.1.r0.g131c0e4
-	pkgrel = 1
+	pkgver = v0.1.1.r6.g8810ab6
+	pkgrel = 2
 	url = https://github.com/Skactor/aiohttp-proxy
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-aiohttp
 	provides = python-aiohttp-proxy
@@ -15,4 +18,3 @@ pkgbase = python-aiohttp-proxy-git
 	sha512sums = SKIP
 
 pkgname = python-aiohttp-proxy-git
-
