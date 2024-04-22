@@ -1,7 +1,7 @@
 pkgbase=collab3
 pkgname=("$pkgbase-standalone-bin" "$pkgbase-vst-bin")
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 license=('EULA')
 url="https://github.com/augustofilocamo/superOrgan"
@@ -11,7 +11,7 @@ source=("https://github.com/augustofilocamo/superOrgan/releases/download/v${pkgv
 		"CollaB3.desktop")
 sha256sums=('9e4c14c53ba17e9871147423016f6644f2ca366c1e8c7062e6f63a36127ed381'
 			'8d29d2e7f50f504bd973b9abe0dbfdf4089a56caeecf309aa118d070f02d346b'
-			'eca8bea1eed8e14e353761501329dac56981095813b239a71d12d94350a7efda')
+			'a4d78c36d22d66897e3e79bc1928e5573cd74965db1cfe1ee63024c554c0f1f6')
 
 prepare() {
 	# Extract Package

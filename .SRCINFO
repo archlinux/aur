@@ -1,6 +1,6 @@
 pkgbase = collab3
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/augustofilocamo/superOrgan
 	arch = x86_64
 	license = EULA
@@ -24,7 +24,7 @@ pkgbase = collab3
 	source = CollaB3.desktop
 	sha256sums = 9e4c14c53ba17e9871147423016f6644f2ca366c1e8c7062e6f63a36127ed381
 	sha256sums = 8d29d2e7f50f504bd973b9abe0dbfdf4089a56caeecf309aa118d070f02d346b
-	sha256sums = eca8bea1eed8e14e353761501329dac56981095813b239a71d12d94350a7efda
+	sha256sums = a4d78c36d22d66897e3e79bc1928e5573cd74965db1cfe1ee63024c554c0f1f6
 
 pkgname = collab3-standalone-bin
 	pkgdesc = CollaB3 Tone Wheel Organ (Standalone)
