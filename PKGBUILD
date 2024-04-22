@@ -5,9 +5,9 @@
 # Contributor: dalto <dalto at fastmail dot com>
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
-_libffmpegver=0.86.0
+_libffmpegver=0.87.0
 pkgver=42.0.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -43,7 +43,7 @@ source=(
     "LICENSE-${pkgver}.html::${url}/en/webhelp/index.htm"
 )
 sha256sums=('a83b5922db4fc6d1037ce5122b4b3198a78e1d3f9f65882088886d8825fb1989'
-            'd9cf46f427f4d80a61e4cc5362fd4b706b0d6b08d6da7a083bfa04acc466fc12'
+            'e0d604a319b74c864ad48d632ad320a95f9b3b5b50f9d18431f18307f1208a2a'
             '489c5c87b68886265b8ece54cbb58f1754062d90f1546d25aa8e26e759addf62')
 build() {
     bsdtar -xf "${srcdir}/data."*
