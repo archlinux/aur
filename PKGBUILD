@@ -5,7 +5,7 @@
 
 pkgname=xcursor-breeze
 epoch=1
-pkgver=6.0.1
+pkgver=6.0.4
 pkgrel=1
 pkgdesc="KDE Plasma 6 'Breeze' cursor theme. This package is for usage in non-KDE Plasma desktops."
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL-2.0-or-later')
 depends=('libxcursor')
 conflicts=('breeze')
 source=("http://download.kde.org/stable/plasma/${pkgver}/breeze-${pkgver}.tar.xz")
-b2sums=('d3c1c5f179e31d62d5a313fe5b283a167eb96ed12d7b2181a5a2182ee8d005f71c202526c3fd521f558b209762c409ece7d929d00d631c14811691fe12ec6b31')
+b2sums=('1e54faf316cf5820bd5103b82034931c9ad15538d95ac9962cb6a00268ae0363446276e398bd46c471b0b8236bcafe1cb69d316fd6f8a9fce5e31d5cc67cf70f')
 
 package() {
 	install -dm755 "$pkgdir/usr/share/icons/"
