@@ -10,6 +10,7 @@ pkgbase = soh-bin
 	depends = sdl2
 	depends = sdl2_net
 	depends = libpng
+	depends = libzip
 	source_x86_64 = https://gitlab.com/linuxbombay/soh-bin/binaries/8.0.5/-/raw/main/soh-linux-x64.tar.xz
 	sha256sums_x86_64 = 1e955bae9318587729a45eb78decd502d9ead986e81eddbf7643d4101e922e6d
 	source_aarch64 = https://gitlab.com/linuxbombay/soh-bin/binaries/8.0.5/-/raw/main/soh-linux-arm64.tar.xz
