@@ -5,6 +5,7 @@ pkgbase = leavesmc-git
 	url = https://leavesmc.org/
 	arch = any
 	license = custom
+	makedepends = zulu-17-bin
 	depends = java-runtime>=17
 	depends = awk
 	optdepends = screen

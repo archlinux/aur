@@ -11,7 +11,7 @@ arch=('any')
 url="https://leavesmc.org/"
 license=('custom')
 depends=('java-runtime>=17' 'awk')
-maekdepends=('zulu-17-bin')
+makedepends=('zulu-17-bin')
 optdepends=('screen')
 conflicts=('leavesmc')
 source=("leavesmc.png"
