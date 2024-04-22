@@ -9,6 +9,7 @@ url='http://volatilityfoundation.org'
 license=('GPL')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+makedepends=('git')
 depends=('python2' 'python2-pycryptodome' 'python2-distorm')
 source=("${_pkgname}::git+https://github.com/volatilityfoundation/$_pkgname.git")
 md5sums=('SKIP')
