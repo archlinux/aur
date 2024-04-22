@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=upscayl-git
 _pkgname=Upscayl
-pkgver=2.10.0.r5.gf510414
+pkgver=2.10.9.r1.g1e96386
 pkgrel=1
 _electronversion=27
 _nodeversion=18
@@ -14,8 +14,6 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
-    'libvips'
-    'nodejs'
 )
 makedepends=(
     'git'
@@ -56,9 +54,9 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
