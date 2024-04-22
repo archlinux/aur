@@ -10,9 +10,9 @@ pkgbase = python-garth
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = python-pydantic
 	depends = python-oauthlib
 	depends = python-requests-oauthlib
+	depends = python-pydantic
 	source = python-garth.tar.gz::https://github.com/matin/garth/archive/0.4.45.tar.gz
 	sha256sums = 00e5fbfcada78cabcb1a531a230996eae02f6994626e4171f1cbd2c4234f1a82
 

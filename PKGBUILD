@@ -11,6 +11,7 @@ license=(MIT)
 depends=(
   python-oauthlib
   python-requests-oauthlib
+  python-pydantic
 )
 optdepends=()
 makedepends=(
@@ -18,7 +19,6 @@ makedepends=(
   python-installer
   python-setuptools
   python-wheel
-  python-pydantic
 )
 checkdepends=(python-oauthlib)
 
