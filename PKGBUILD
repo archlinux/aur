@@ -2,7 +2,7 @@
 # Maintainer: Roy Williams <fang64@gmail.com>
 
 pkgname=hamclock-huge
-pkgver=3.07
+pkgver=3.09
 pkgrel=1
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (3200x1920 version)"
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://github.com/kj7rrv/hamclock/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('014f108c31eab30ad260b6c9f006c8668b824924fa566f996ae6ef95678666cd')
+sha256sums=('46b4759f75de0abd7dd88f828d7f7548a89dfc0215d5ca9e7bb201bfe0707abd')
 validpgpkeys=()
 
 prepare() {
