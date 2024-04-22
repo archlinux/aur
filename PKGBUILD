@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=fbthrift
-pkgver=2024.04.08.00
+pkgver=2024.04.22.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server"
 arch=(x86_64)
@@ -29,6 +29,10 @@ makedepends=(
   cython
   gtest
   mvfst
+)
+optdepends=(
+  'python-snappy: Snappy compression support'
+  'python-zstandard: ZStandard compression support'
 )
 provides=(
   libasync.so
@@ -58,7 +62,7 @@ source=(
   "remove-python-six-dependency-from-cmake-files.patch"
 )
 sha256sums=(
-  '6a0082f49a22c1dbfa4248c37703922a1e5b0efc7dcc952191f91d4ffe24b22f'
+  '600e37bb744edd97bc7bb20de60041041e365811194fe87a6926be7380919c1f'
   'bedcf4d00d08263a943d0878b9a0fe68c0fafebd33b5445ae35f84a3e92540ec'
 )
 
