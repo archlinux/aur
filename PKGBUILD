@@ -1,19 +1,19 @@
 # Maintainer: zt64 <zt@zt64.dev>
 pkgname=jadx-git
-pkgdesc="Command line and GUI tools to produce Java source code from Android Dex and APK files"
-pkgver="r2190.ce527ed"
-pkgrel=1
+pkgdesc='Command line and GUI tools to produce Java source code from Android Dex and APK files'
+pkgver='r2190.ce527ed'
+pkgrel=2
 
-arch=("any")
-url="https://github.com/skylot/jadx"
-license=("Apache-2.0")
+arch=('any')
+url='https://github.com/skylot/jadx'
+license=('Apache-2.0')
 
-depends=("java-runtime>=11" "sh")
-makedepends=("git" "java-environment>=11")
+depends=('java-runtime>=11' 'sh')
+makedepends=('git' 'java-environment>=11')
 optdepends=()
 
-provides=("jadx")
-conflicts=("jadx")
+provides=('jadx')
+conflicts=('jadx')
 
 source=("$pkgname::git+$url.git")
 
@@ -26,7 +26,6 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-
   ./gradlew dist --no-daemon
 }
 
@@ -37,7 +36,7 @@ check() {
 
 
 package() {
-  cd ${pkgname}/build/jadx
+  cd "${pkgname}/build/jadx"
 
   install -Dm 755 bin/{jadx,jadx-gui} -t "${pkgdir}/usr/share/java/${pkgname}/bin"
   install -Dm 644 lib/* -t "${pkgdir}/usr/share/java/${pkgname}/lib"
