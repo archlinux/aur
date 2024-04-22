@@ -1,7 +1,7 @@
 # Maintainer: Sravan Balaji <sr98vn@gmail.com>
 pkgname=mangal-bin
 pkgver=4.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The most advanced cli manga downloader in the entire universe!"
 arch=('x86_64')
 url="https://github.com/metafates/mangal"
