@@ -1,0 +1,6 @@
+
+/pkg
+/src
+/*.tar.zst
+/pdf_extbook_src
+/update_SRCINFO.sh
