@@ -1,0 +1,6 @@
+*.log
+*.tar.gz
+*.tar.zst
+# Downloaded files
+*-x86_64-linux-gnu_static
+LICENSE
