@@ -1,12 +1,12 @@
 #Maintainer: Daniel Lehmann <daniellehmann28@outlook.de>
 pkgname=sliver-git
-pkgver=1.5.39.r0.gaf46878
+pkgver=1.5.39.r484.ga9f885a
 pkgrel=1
 pkgdesc="Sliver is a an opensource C2 framework designed by bishop fox"
 url="https://github.com/BishopFox/sliver"
 arch=('any')
 depends=()
-makedepends=('go>=1.18' 'make' 'sed' 'tar' 'curl' 'zip')
+makedepends=('go>=1.18' 'make' 'sed' 'tar' 'curl' 'zip' 'unzip' 'which')
 optdepends=()
 license=('BSD-3-Clause')
 provides=("${pkgname%-git}")
