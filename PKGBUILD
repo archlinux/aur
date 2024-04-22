@@ -8,7 +8,7 @@
 
 # Maintainer: Nick Cottrell <ncottrellweb@gmail.com>
 pkgname=rz-jsdec # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Provides js decompiler for rizin"
 arch=('any')
@@ -23,14 +23,14 @@ backup=()
 options=()
 install=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rizinorg/${pkgname#rz-}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bd42b8a95994a071d48536d6e04c1e163de71ade2c0ccac5b5058274b488478a')
+sha256sums=('2b2587dd117d48b284695416a7349a21c4dd30fbe75cc5890ed74945c9b474ea')
 
 build() {
-	cd "$srcdir/${pkgname#rz-}-${pkgver}/p"
-	meson -Djsc_folder=".." --prefix=$pkgdir/usr build
+    cd "$srcdir/${pkgname#rz-}-${pkgver}/"
+    meson setup build --prefix=$pkgdir/usr
 }
 
 package() {
-	cd "$srcdir/${pkgname#rz-}-${pkgver}/p"
-	ninja -C build install
+    cd "$srcdir/${pkgname#rz-}-${pkgver}/"
+    ninja -C build install
 }
