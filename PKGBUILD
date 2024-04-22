@@ -13,8 +13,8 @@ source_x86_64=(
     "${pkgname%-bin}-${pkgver}-client::https://github.com/BishopFox/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-client_linux"
     "${pkgname%-bin}-${pkgver}-server::https://github.com/BishopFox/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-server_linux"
 )
-sha256sums_x86_64=('afeb282bb991650ada2e73c65ed5a1770e1a3bc415b2e1e07462b854c077c93d'
-                   'ce75590d1d79bc808d98b70ec03355d1117ca54c3b49b6ba474aa704ea9a6c2e')
+sha256sums_x86_64=('c53bc13170b9ff26b0cca93715e947318e06cafe0d98cf825eabffe3c7f763cb'
+                   '2ce6ab2d48d613830f2cd7920ced86ca7b6782dbafe64af84ba476f71d08620e')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
