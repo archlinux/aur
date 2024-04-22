@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.rc1.r5.g283e276
+pkgver=4.0.0.rc1.r16.g751c96e
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -95,8 +95,4 @@ package(){
   # Remove usr/share/fonts directory
   pushd "$pkgdir"
   rm -rf usr/share/fonts
-
-  # Remove usr/bin/mapnik-test-visual
-  pushd "$pkgdir"
-  rm usr/bin/mapnik-test-visual
 }
