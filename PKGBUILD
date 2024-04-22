@@ -1,4 +1,4 @@
-# Maintainer: Anakojm <https://anakojm.net/a-propos/#contact>
+# Maintainer: Anakojm <https://anakojm.net/about.html>
 
 pkgname='python-krfzf'
 _pkgname='krfzf-py'
