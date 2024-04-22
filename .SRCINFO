@@ -1,17 +1,20 @@
 pkgbase = kpt-bin
-	pkgdesc = Toolchain which simplifies managing Kubernetes platforms and KRM-driven infrastructure
-	pkgver = 1.0.0_beta.30
+	pkgdesc = Automate Kubernetes Configuration Editing
+	pkgver = 1.0.0_beta.49
 	pkgrel = 1
-	url = https://kpt.dev
+	url = https://kpt.dev/
+	arch = aarch64
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	depends = diffutils
 	depends = docker
 	depends = git
 	depends = kubectl
-	provides = kpt
+	provides = kpt=1.0.0_beta.49
 	conflicts = kpt
-	source = kpt-1.0.0-beta.30::https://github.com/GoogleContainerTools/kpt/releases/download/v1.0.0-beta.30/kpt_linux_amd64
-	b2sums = ca8eb356802123f8b4c9c6c75b6161ccda34db2fafc1a52492e094b5cead1be62d54c9ba25d0f6bcd7a43ca26109a59ea51b0f3e9fc3d38d447d6e01e0b3f2da
+	source_aarch64 = kpt-1.0.0_beta.49-aarch64.tar.gz::https://github.com/kptdev/kpt/releases/download/v1.0.0-beta.49/kpt_linux_arm64-1.0.0-beta.49.tar.gz
+	sha256sums_aarch64 = 18dfb4540eeed32d2bdded612b3aa678cee6fdcdb14813e184c1a54b4ca35b56
+	source_x86_64 = kpt-1.0.0_beta.49-x86_64.tar.gz::https://github.com/kptdev/kpt/releases/download/v1.0.0-beta.49/kpt_linux_amd64-1.0.0-beta.49.tar.gz
+	sha256sums_x86_64 = 8de2996018992ea946c9002aa43c85250a78d9fa3eb1c8da24c7878d7d24b9b7
 
 pkgname = kpt-bin
