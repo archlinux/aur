@@ -16,7 +16,7 @@ package() {
    install -dm755 "$pkgdir/usr/share/pixmaps"
    install -dm755 "$pkgdir/usr/bin"
    
-   for dir in smw-*/ ; do mv "${dir}" "$_pkgname" ;done
+   for dir in supermarioworld-*/ ; do mv "${dir}" "$_pkgname" ;done
     # Check if smw_assets.dat exists so it doesn't redownload the file when it doesn't need to.
     FILE="/usr/share/games/$_pkgname/smw_assets.dat"
      if test -f "$FILE"
