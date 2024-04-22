@@ -1,0 +1,33 @@
+# Maintainer: Grayer0113 <grayer0113@outlook.com>
+
+pkgname=hmcl-bin-dev
+_ver=3.5.7.246
+pkgver=${_ver}
+pkgrel=1
+pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular.(development version)"
+arch=('any')
+url="https://github.com/HMCL-dev/HMCL"
+license=('GPL3')
+depends=('java-runtime' 'gtk2')
+optdepends=('java-openjfx')
+conflicts=('hmcl-dev' 'hmcl-dev-bin' 'hmcl-bin')
+source=("hmcl.desktop"
+        "hmcl-launch-script"
+        "hmcl-icon.png::https://raw.githubusercontent.com/HMCL-dev/HMCL/main/HMCL/image/hmcl.png"
+        "${pkgname}-${pkgver}-${pkgrel}.jar::https://github.com/HMCL-dev/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar"
+        "LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/main/LICENSE")
+sha256sums=('e2614d6d230df98368394eea8c4ac9b0be6ad8b2c84f056b21e460cd26635a67'
+            '66aefbbaaf317f310d7f6da11af27c93091bd292e98c0f406cfbdbd942ea5e44'
+            'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
+            '46eb9e7dc92c052a70ba1c738a09e551009b45aba62a9fbfbd4ef0697708b981'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+
+noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
+
+package() {
+  install -Dm644 "hmcl.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm755 "hmcl-launch-script" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "hmcl-icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+  install -Dm644 "${pkgname}-${pkgver}-${pkgrel}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+  install -Dm644 "LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}

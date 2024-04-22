@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [[ "$1" != "-p" ]]; then
+    WORKDIR=${XDG_CONFIG_HOME:-$HOME/.config}/hmcl-bin-dev
+    mkdir -p $WORKDIR
+    cd $WORKDIR
+fi
+
+exec java -jar /usr/share/java/hmcl-bin-dev/hmcl-bin-dev.jar "$@"
