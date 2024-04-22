@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=statusify-bin
 _pkgname=Statusify
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Discord rich presence configurator desktop app"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}.linux-${CARCH}.deb"
 )
-sha256sums=('097a1fc9283ea42566986083cfd477d5b612294ca5f5957569906dbad335891b')
+sha256sums=('8ae90391eaf7f80287d9fdbfd71215a5c5592c31d62d173a87d2073fa2c3d216')
 build() {
     bsdtar -xf "${srcdir}/data."*
 }
