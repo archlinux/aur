@@ -1,0 +1,7 @@
+# Ignore makepkg objects
+pkg/
+src/
+*.tar.zst
+
+# Ignore package repo information
+sliver/
