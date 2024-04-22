@@ -2,14 +2,14 @@
 
 pkgname=lune-git
 pkgver=0.8.3.r0.g34fc23d
-pkgrel=1
+pkgrel=2
 pkgdesc="[Latest Git Commit] A standalone Luau script runtime"
 arch=(x86_64 aarch64)
 conflicts=(lune lune-bin)
 url="https://lune-org.github.io/docs"
 license=(MPL2)
 depends=(glibc)
-makedepends=(cargo git)
+makedepends=(cargo cmake git)
 provides=(lune)
 conflicts=(lune)
 options=(!lto)
