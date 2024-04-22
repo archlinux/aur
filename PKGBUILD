@@ -1,15 +1,15 @@
-# Maintainer: gmes78 <joaquim dot monteiro at protonmail dot com>
+# Maintainer: Joaquim Monteiro <joaquim dot monteiro at protonmail dot com>
 
 pkgname=python-aiohttp-socks-git
-pkgver=v0.7.0.r0.g6936737
-pkgrel=1
+pkgver=v0.8.4.r0.gadb9bb0
+pkgrel=2
 pkgdesc="Proxy connector for aiohttp. Supports SOCKS4(a), SOCKS5, HTTP (tunneling) as well as proxy chains. (Git version)"
 arch=(any)
 url="https://github.com/romis2012/aiohttp-socks"
-license=("Apache")
+license=("Apache-2.0")
 
 depends=("python" "python-aiohttp" "python-python-socks")
-makedepends=("git" "python-setuptools")
+makedepends=("git" "python-build" "python-installer" "python-setuptools" "python-wheel")
 provides=("python-aiohttp-socks")
 conflicts=("python-aiohttp-socks")
 
@@ -21,7 +21,13 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+    cd "aiohttp-socks"
+    [[ -d dist/ ]] && rm -f dist/*.whl
+    python -m build --wheel --no-isolation
+}
+
 package() {
     cd "aiohttp-socks"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
