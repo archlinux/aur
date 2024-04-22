@@ -1,29 +1,26 @@
 # Maintainer: Peter blackman <peter at pblackman dot plus dot com>
+# 22-Apr-2024
 #
 
+_tag=33
 pkgname=cevomapgen
-pkgver=32
+pkgver=$_tag
 pkgrel=1
 pkgdesc="External Random Map Generator for C-evo"
 arch=('x86_64' 'aarch64')
-url="https://sourceforge.net/projects/$pkgname"
+url="https://git.code.sf.net/p/$pkgname/code"
 license=('GPL-3.0-or-later')
 depends=('qt6pas' 'glibc' 'libx11' 'hicolor-icon-theme')
-makedepends=('fpc' 'lazarus-qt6')
-source=("$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz"
-       "$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz.asc")
-sha256sums=('220f58e5dbc7cc5832f9d80fb74164d0923ae2b49feacd64957b25947d58ed41'
-            'SKIP')
-validpgpkeys=(14638444C9858E2A09B0259C211BCF562939AB8F)
-
+makedepends=('git' 'fpc' 'lazarus-qt6')
+source=("$pkgname-$pkgver"::git+$url#tag=$_tag)
+sha256sums=('def344d7670c2afa6fbbbf0d9884c09f5b31b2700edd0f11ef500e28e7c48fa8')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # currently cannot build with -pie as the RTL is not built with pie
+  # currently cannot build with -pie as fpc's RTL is not built with pie
   sed -i '/-k-pie/d' fpc.cfg
 }
-
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -31,7 +28,6 @@ build() {
   lazbuild --ws=qt6 -B --lazarusdir=/usr/lib/lazarus CevoMapGen.lpi
   fpc -ocevomapcheck CevoMapCheck
 }
-
 
 package() {
   cd "$pkgname-$pkgver"

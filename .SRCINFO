@@ -1,21 +1,19 @@
 pkgbase = cevomapgen
 	pkgdesc = External Random Map Generator for C-evo
-	pkgver = 32
+	pkgver = 33
 	pkgrel = 1
-	url = https://sourceforge.net/projects/cevomapgen
+	url = https://git.code.sf.net/p/cevomapgen/code
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = fpc
 	makedepends = lazarus-qt6
 	depends = qt6pas
 	depends = glibc
 	depends = libx11
 	depends = hicolor-icon-theme
-	source = https://sourceforge.net/projects/cevomapgen/files/Source/cevomapgen_32.orig.tar.xz
-	source = https://sourceforge.net/projects/cevomapgen/files/Source/cevomapgen_32.orig.tar.xz.asc
-	validpgpkeys = 14638444C9858E2A09B0259C211BCF562939AB8F
-	sha256sums = 220f58e5dbc7cc5832f9d80fb74164d0923ae2b49feacd64957b25947d58ed41
-	sha256sums = SKIP
+	source = cevomapgen-33::git+https://git.code.sf.net/p/cevomapgen/code#tag=33
+	sha256sums = def344d7670c2afa6fbbbf0d9884c09f5b31b2700edd0f11ef500e28e7c48fa8
 
 pkgname = cevomapgen
