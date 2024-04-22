@@ -5,7 +5,7 @@
 _basename=gossip
 _pkgname="${_basename}"
 pkgname="${_pkgname}-unstable-git"
-pkgver=0.10.0.unstable.r2964.20240323.56b6d8a6
+pkgver=0.11.0.unstable.r3151.20240422.084b21b3
 pkgrel=1
 pkgdesc="Nostr client, written in rust, egui based. Latest git checkout from 'unstable' branch."
 arch=(
