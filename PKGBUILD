@@ -1,6 +1,6 @@
-# Maintainer: Narthana Epa <narthana.epa@gmail.com>
+# Maintainer: Juneidy Wibowo <git@juneidy.wibowo.xyz>
+# Contributor: Narthana Epa <narthana.epa@gmail.com>
 # Contributor: Jack Mitchell <jack@embed.me.uk>
-# Contributor: Juneidy Wibowo <git@juneidy.wibowo.xyz>
 
 pkgname=buildkite-agent-bin
 pkgver=3.70.0
