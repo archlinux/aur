@@ -1,39 +1,32 @@
 # Maintainer: Skycoder42 <Skycoder42@users.noreply.github.com>
-pkgname='podman_backup'
+pkgbase='podman_backup'
+pkgname=('podman_backup' 'podman_backup-debug')
 pkgdesc='A small dart tool to push regular backups of podman volumes to a remote.'
-pkgver='1.2.1'
+pkgver='1.3.2'
 pkgrel=1
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64')
 url='https://github.com/Skycoder42/podman_backup'
 license=('BSD')
 depends=('podman' 'xz' 'systemd')
-makedepends=('dart>=3.0.0' 'dart<4.0.0')
-_pkgdir='podman_backup-1.2.1'
-source=("$_pkgdir.tar.gz::https://github.com/Skycoder42/podman_backup/archive/refs/tags/v1.2.1.tar.gz")
-b2sums=('109b6ba5d5a9eb46ce05800df2c6c9025b8d37d68ec7528d381337d2e562f7184fcef1530df95eb9d65d60c8f146819d16c837299aad520da6873f9546c2eb02')
+source=("sources.tar.gz::https://github.com/Skycoder42/podman_backup/archive/refs/tags/v1.3.2.tar.gz"
+        "bin.tar.xz::https://github.com/Skycoder42/podman_backup/releases/download/v1.3.2/binaries-linux.tar.xz"
+        "debug.tar.xz::https://github.com/Skycoder42/podman_backup/releases/download/v1.3.2/binaries-linux-debug-symbols.tar.xz")
+b2sums=('4e64d009e706007d3700671d456711db91b7f18ef7b363b4216b256f584388c2e96f10f6eea0a50c6909de5d4b890fbeee01478c0e35a39a8c3fb6ebdadc57e4'
+        'e1283dd583421814020459a001b78a1746db4c7bc46b60290e7dc7e932f1745e855d80c885f70b4a2a2b0325d37ebadd7ca8c4e7ffcd2a3d4b643994b89a1ee1'
+        '58acab6b2e102b4ddb49c979a34157f45f9f83feecf7c27e2e1fa29a8ee74d11f69b794063bb0d961be3372c5b016cead3bf30da22767ec06a07150a922b25b2')
 changelog='CHANGELOG.md'
 options=('!strip')
+_pkgdir="$pkgbase-$pkgver"
 
-prepare() {
+package_podman_backup() {
+  install -D -m755 'podman-backup' "$pkgdir/usr/bin/"'podman-backup'
   cd "$_pkgdir"
-  dart pub get
-}
-
-build() {
-  cd "$_pkgdir"
-  dart run build_runner build --delete-conflicting-outputs --release
-  dart compile exe -o 'bin/podman-backup' -S 'bin/podman-backup.symbols' 'bin/podman_backup.dart'
-}
-
-check() {
-  cd "$_pkgdir"
-  dart analyze --no-fatal-warnings
-  dart test --preset unit
-}
-
-package() {
-  cd "$_pkgdir"
-  install -D -m755 'bin/podman-backup' "$pkgdir/usr/bin/"'podman-backup'
   install -D -m644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/"'LICENSE'
+}
+
+package_podman_backup-debug() {
+  install -D -m644 'podman-backup.sym' "$pkgdir/usr/lib/debug/usr/bin/"'podman-backup'.sym
+  cd "$_pkgdir"
+  find . -exec install -D -m644 "{}" "$pkgdir/usr/src/debug/$pkgbase/{}" \;
 }
 
