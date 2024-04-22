@@ -1,44 +1,29 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer 2023-2024: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer 2024-: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
-_pkg="alacritty"
-_pkgname="${_pkg}-theme"
-pkgname="${_pkgname}-git"
-_aurver=0.0.1
-pkgver=0.0.1+914f463
+pkgname="alacritty-theme-git"
+_pkgname="${pkgname%-git}"
+pkgver=r219.5f906a4
 pkgrel=1
 pkgdesc="Collection of Alacritty color schemes."
 arch=('any')
-url="https://github.com/${_pkg}/${_pkgname}"
-license=('apache')
-depends=("${_pkg}")
+url="https://github.com/alacritty/${_pkgname}"
+license=('Apache-2.0')
+depends=("alacritty")
 makedepends=("git")
-source=(
-  "${_pkgname}::git+${url}"
-)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+${url}.git")
 b2sums=('SKIP')
 
 pkgver() {
-  local _pkgver
-  local _msg="fatal: No names found, cannot describe anything."
-  cd "${_pkgname}"
-  _pkgver="$(git describe --tags | sed 's/-/+/g')"
-  if [ "${_pkgver}" = "" ]; then
-    _pkgver="$(git describe --tags --always)"
-    echo "${_aurver}+${_pkgver}"
-  else
-    echo "${_pkgver}"
-  fi
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
-  provides=(
-    "${_pkgname}=${pkgver}"
-  )
-  conflicts=(
-    "${_pkgname}"
-  )
-  _srcdir="${srcdir}/${_pkgname}/themes"
+  cd "${srcdir}/${_pkgname}"
   _output="${pkgdir}/usr/share/alacritty"
-  install -dm755 "${_srcdir}" "${_output}"
-  cp -r "${_srcdir}" "${_output}"
+  install -Ddm 755 "${_output}"
+  cp -r "themes" "${_output}"
 }

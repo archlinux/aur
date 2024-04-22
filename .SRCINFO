@@ -1,15 +1,15 @@
 pkgbase = alacritty-theme-git
 	pkgdesc = Collection of Alacritty color schemes.
-	pkgver = 0.0.1+914f463
+	pkgver = r219.5f906a4
 	pkgrel = 1
 	url = https://github.com/alacritty/alacritty-theme
 	arch = any
-	license = apache
+	license = Apache-2.0
 	makedepends = git
 	depends = alacritty
-	source = alacritty-theme::git+https://github.com/alacritty/alacritty-theme
+	provides = alacritty-theme
+	conflicts = alacritty-theme
+	source = alacritty-theme::git+https://github.com/alacritty/alacritty-theme.git
 	b2sums = SKIP
 
 pkgname = alacritty-theme-git
-	provides = alacritty-theme=0.0.1+914f463
-	conflicts = alacritty-theme
