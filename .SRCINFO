@@ -1,6 +1,6 @@
 pkgbase = rz-jsdec-git
 	pkgdesc = Provides js decompiler for rizin
-	pkgver = v0.6.0.r2.3eb1a5b
+	pkgver = v0.7.0
 	pkgrel = 1
 	url = https://github.com/rizinorg/jsdec.git
 	arch = any

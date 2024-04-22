@@ -8,7 +8,7 @@
 
 # Maintainer: Nick Cottrell <ncottrellweb@gmail.com>
 pkgname=rz-jsdec-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=v0.6.0.r2.3eb1a5b
+pkgver=v0.7.0
 pkgrel=1
 pkgdesc="Provides js decompiler for rizin"
 arch=('any')
@@ -44,11 +44,11 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}/p"
-	meson -Djsc_folder=".." --prefix=$pkgdir/usr build
+	cd "$srcdir/${pkgname%-git}/"
+	meson setup build --prefix=$pkgdir/usr
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/p"
+	cd "$srcdir/${pkgname%-git}/"
 	ninja -C build install
 }
