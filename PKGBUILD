@@ -3,7 +3,7 @@
 _pkgname="flutter"
 pkgname="$_pkgname-bin"
 pkgver=3.19.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross platform widget toolkit for Dart (monolithic)"
 arch=("x86_64")
 url="https://github.com/flutter/flutter"
@@ -19,23 +19,33 @@ provides=(
 )
 conflicts=(
   dart
+  flutter-engine
+
   flutter
   flutter-common
   flutter-devel
-  flutter-engine
-  flutter-engine-android-google
-  flutter-engine-common-google
-  flutter-engine-linux-google
-  flutter-engine-web-google
+  flutter-engine-android-google-bin
+  flutter-engine-common-google-bin
+  flutter-engine-linux-google-bin
+  flutter-engine-web-google-bin
   flutter-gradle
-  flutter-gradle-google
+  flutter-gradle-google-bin
   flutter-intellij-patch
-  flutter-material-fonts-google
-  flutter-sky-engine-google
+  flutter-material-fonts-google-bin
+  flutter-sky-engine-google-bin
   flutter-target-android
   flutter-target-linux
   flutter-target-web
   flutter-tool
+
+  flutter-engine-android
+  flutter-engine-common
+  flutter-engine-linux
+  flutter-engine-web
+  flutter-gradle
+  flutter-material-fonts
+  flutter-sky-engine
+  flutter-tool-developer
 )
 
 install="$_pkgname.install"
