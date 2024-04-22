@@ -4,23 +4,23 @@
 
 _pkgname=lxqt-admin
 pkgname=${_pkgname}-git
-pkgver=0.13.0.85.g30115e4
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='LXQt system administration'
 arch=('i686' 'x86_64' 'armv6h')
-url='http://lxqt.org'
-license=('LGPL')
-depends=('libqtxdg-git' 'liblxqt-git' 'polkit')
+url="https://lxqt.github.io"
+license=("LGPL-2.1-only")
+depends=('liblxqt-git')
 optdepends=('lxqt-policykit-git: polkit authentication agent provided by LXQt')
-makedepends=('git' 'cmake' 'qt5-tools' 'lxqt-build-tools-git')
-provides=("${_pkgname}")
+makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/lxqt/${_pkgname}.git")
 sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --always | sed "s/-/./g"
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
