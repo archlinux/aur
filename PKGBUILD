@@ -2,7 +2,7 @@
 
 pkgname=rain
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A development workflow tool for working with AWS CloudFormation'
 arch=('x86_64')
 url="https://github.com/aws-cloudformation/rain"
@@ -22,7 +22,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -buildvcs=false"
   go build -o build ./cmd/...
 }
 
