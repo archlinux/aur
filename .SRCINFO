@@ -1,0 +1,13 @@
+pkgbase = base16-shell-preview
+	pkgdesc = A tool to preview and enable Base16 Shell themes in your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nvllsvm/base16-shell-preview
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/nvllsvm/base16-shell-preview/archive/1.0.0/base16-shell-preview-1.0.0.tar.gz
+	sha512sums = 669351fb5317bacee61f95d19a716565adca0cd842ce7ba631cb8234e9cd53c2adead48666959621836553d1733f0d788b56520feb8689bf1d5965e7b9eb3e40
+
+pkgname = base16-shell-preview
