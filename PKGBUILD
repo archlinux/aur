@@ -17,7 +17,7 @@ source=("hmcl.desktop"
         "${pkgname}-${pkgver}-${pkgrel}.jar::https://github.com/HMCL-dev/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar"
         "LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/main/LICENSE")
 sha256sums=('e2614d6d230df98368394eea8c4ac9b0be6ad8b2c84f056b21e460cd26635a67'
-            '66aefbbaaf317f310d7f6da11af27c93091bd292e98c0f406cfbdbd942ea5e44'
+            '1f266df2c05b1f157d95e22742c42815953f701570bb703298e5e28a9815475a'
             'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
             '46eb9e7dc92c052a70ba1c738a09e551009b45aba62a9fbfbd4ef0697708b981'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
