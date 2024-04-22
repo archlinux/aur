@@ -2,7 +2,7 @@
 
 pkgname=redisinsight-deb
 pkgver=2.48.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Redis Insight is a powerful desktop user interface that helps you visualize and optimize your data for Redis and Redis Stack. (Deb release)"
 arch=('x86_64')
 url='https://redis.com/redis-enterprise/redis-insight'
@@ -35,10 +35,6 @@ depends=('alsa-lib'
          'nspr'
          'pango'
 )
-makedepends=('curl' 
-             'yq'
-)
-
 source=("${pkgname}-${pkgver}.deb::https://download.redisinsight.redis.com/latest/RedisInsight-linux-amd64.deb"
         "redisinsight.sh"
         "https://github.com/RedisInsight/RedisInsight/raw/main/LICENSE")

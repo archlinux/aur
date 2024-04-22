@@ -1,12 +1,10 @@
 pkgbase = redisinsight-deb
 	pkgdesc = Redis Insight is a powerful desktop user interface that helps you visualize and optimize your data for Redis and Redis Stack. (Deb release)
 	pkgver = 2.48.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://redis.com/redis-enterprise/redis-insight
 	arch = x86_64
 	license = LicenseRef-SSPL
-	makedepends = curl
-	makedepends = yq
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = bash
