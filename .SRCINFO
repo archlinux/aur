@@ -1,0 +1,14 @@
+pkgbase = newgitall
+	pkgdesc = Gitall but in Go
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = go
+	depends = git
+	depends = wget
+	conflicts = gitall
+	source = https://github.com/VPeti1/CWAcces/raw/main/newgitall.tar.gz
+	sha256sums = b7c4c4670adbcd027352086ee4faa593eb78cff6ca51078332ccb1435ec2cd3b
+
+pkgname = newgitall
