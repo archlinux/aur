@@ -1,0 +1,18 @@
+pkgbase = quartz-utils
+	pkgdesc = Everyday CLI utilities that are easily pipable.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://noraj.github.io/quartz-utils/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = crystal
+	makedepends = shards
+	provides = quartz-utils
+	conflicts = quartz-utils-bin
+	conflicts = quartz-utils-git
+	source = https://github.com/noraj/quartz-utils/archive/refs/tags/0.0.2.tar.gz
+	sha512sums = 10aa7e70ab8ece5b712250ace8ae83ea81fded84d28281e5e20f8b359051922fc4adae88c11bb1c135d14f1c3cfef33efeb647da087e409337e8022c0e535ac5
+	b2sums = 72dc0d428c8ea8ba1e7cab549b1dd30762967f88be996f4749e6b2f45c217aad642e7f2afcbe117708117273fdf71c161c90e31a455738292f85b970156696e0
+
+pkgname = quartz-utils
