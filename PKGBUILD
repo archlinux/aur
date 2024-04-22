@@ -7,9 +7,9 @@ pkgrel=2
 pkgdesc='Hawk authentication strategy for the requests python library'
 arch=('any')
 url='https://github.com/mozilla-services/requests-hawk'
-license=('Apache')
+license=('Apache-2.0')
 depends=('python-mohawk' 'python-requests')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://github.com/mozilla-services/$_pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('9259bb0cb7be376e87708ad1535865ede4255072b3382d7119e8974072bb6b71')
 
@@ -19,15 +19,15 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd $_pkgname-$pkgver
-  python setup.py test
+  python -m unittest -v
 }
 
 package() {
-  cd $_pkgname-$pkgver 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd $_pkgname-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
