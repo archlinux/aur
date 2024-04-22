@@ -29,7 +29,7 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(gnome-shell-performance gnome-shell-performance-docs)
 fi
-pkgver=46.0+33+ge4f2edf9b
+pkgver=46.1
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
@@ -75,12 +75,12 @@ if [ -n "$_enable_check" ]; then
     xorg-server-xvfb
   )
 fi
-_commit=e4f2edf9bd56fa7a4af40a3959bbfb6359089b19  # tags/46.0^33
+_commit=0d0aadf013f78a7f7f1dc984d0d812971864b934  # tags/46.1^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
 )
-b2sums=('dfc8fc012cfdafaf4f7dc1a14c52885caf9178c2c41202fe6ae57c9e0a0f922c633d13a81b3403f83672a28cd84f635739e73792c7b266dc2ba0142b116c0d17'
+b2sums=('7aa8e21a0135a1c5536d19877747a86b1cfa1024b6c378db2364033d2a6b3a3e30875a08176423cc41c7c3a87bb76b5b67df5177aa6d209a726f0f3a3c15dd6a'
         'SKIP')
 
 pkgver() {
