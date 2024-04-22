@@ -1,40 +1,43 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-# Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
-# Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
-# Contributor: forest76 <forestt@poczta.onet.pl>
-# Contributor: Tilman Blumenbach <tilman@ax86.net>
-# Contributor: Christian Neukirchen <chneukirchen@gmail.com>
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=autotrace
-_date=20200219
-_revision=65
-pkgver=20200219.65.2.g16136eb
+pkgver=0.31.10
 pkgrel=1
-pkgdesc='An utility to trace bitmaps: convert bitmaps to vector graphics, with patches from Sacha Chua'
-arch=('i686' 'x86_64')
-url='https://github.com/autotrace/autotrace.git'
-license=('GPL' 'LGPL')
-depends=('libpng' 'pstoedit' 'graphicsmagick')
-makedepends=('intltool' 'git')
-options=('!libtool')
-source=("git+https://github.com/sachac/autotrace.git#commit=16136eb504794f9af389a5f4ac7339d3bf4b9a66")
-sha512sums=('SKIP')
+pkgdesc='A program for converting bitmap to vector graphics'
+arch=('x86_64')
+url='https://github.com/autotrace/autotrace/'
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
+depends=('glib2' 'imagemagick' 'libpng' 'ming' 'pstoedit')
+makedepends=('intltool')
+checkdepends=('procps-ng')
+source=("https://github.com/autotrace/autotrace/archive/${pkgver}/autotrace-${pkgver}.tar.gz"
+        '010-autotrace-fix-swf-output.patch')
+sha256sums=('14627f93bb02fe14eeda0163434a7cb9b1f316c0f1727f0bdf6323a831ffe80d'
+            'c0698678cb37b4a82d732f113ad4829d1b453d9db18001ffbe3044697b4852bc')
 
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's+travis.++' | tr - .
+prepare() {
+    cd "autotrace-${pkgver}"
+    patch -Np1 -i "${srcdir}/010-autotrace-fix-swf-output.patch"
+    ./autogen.sh
 }
 
 build() {
-  cd "$pkgname"
-  autoreconf -ivf
-  intltoolize --force
-  aclocal
-  ./configure --prefix=/usr --with-pstoedit --with-graphicsmagick
-  make
+    cd "autotrace-${pkgver}"
+    ./configure \
+        --prefix='/usr' \
+        --disable-static \
+        --with-magick \
+        --with-png \
+        --with-pstoedit
+    make
+    sed -i "s|@MAGICK_LIBS@|$(pkg-config --libs ImageMagick)|" autotrace.pc
+    sed -i "s|@MAGICK_CFLAGS@|$(pkg-config --cflags ImageMagick)|" autotrace.pc
+}
+
+check() {
+    make -C "autotrace-${pkgver}" check
 }
 
 package() {
-  cd "$pkgname"
-  make install DESTDIR="${pkgdir}"
+    make -C "autotrace-${pkgver}" DESTDIR="$pkgdir" install
 }

@@ -1,20 +1,21 @@
 pkgbase = autotrace
-	pkgdesc = An utility to trace bitmaps: convert bitmaps to vector graphics, with patches from Sacha Chua
-	pkgver = 20200219.65.2.g16136eb
+	pkgdesc = A program for converting bitmap to vector graphics
+	pkgver = 0.31.10
 	pkgrel = 1
-	url = https://github.com/autotrace/autotrace.git
-	arch = i686
+	url = https://github.com/autotrace/autotrace/
 	arch = x86_64
-	license = GPL
-	license = LGPL
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	checkdepends = procps-ng
 	makedepends = intltool
-	makedepends = git
+	depends = glib2
+	depends = imagemagick
 	depends = libpng
+	depends = ming
 	depends = pstoedit
-	depends = graphicsmagick
-	options = !libtool
-	source = git+https://github.com/sachac/autotrace.git#commit=16136eb504794f9af389a5f4ac7339d3bf4b9a66
-	sha512sums = SKIP
+	source = https://github.com/autotrace/autotrace/archive/0.31.10/autotrace-0.31.10.tar.gz
+	source = 010-autotrace-fix-swf-output.patch
+	sha256sums = 14627f93bb02fe14eeda0163434a7cb9b1f316c0f1727f0bdf6323a831ffe80d
+	sha256sums = c0698678cb37b4a82d732f113ad4829d1b453d9db18001ffbe3044697b4852bc
 
 pkgname = autotrace
-
