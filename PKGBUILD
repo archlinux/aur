@@ -2,7 +2,7 @@
 pkgbase=python-crds
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=11.17.19
+pkgver=11.17.20
 pkgrel=1
 pkgdesc="Calibration Reference Data System for HST and JWST"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-insta
 ##             'python-pylint'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'fix-roman-asdf-test.patch')
-md5sums=('856dc3a37289e10b5bea9270f92968e9')
+md5sums=('73d6b29500941b5de744708ad352a8ed')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -41,10 +41,11 @@ build() {
 #
 ##   mkdir -p crdscache
 ##   CRDS_TESTING_CACHE="crdscache" pytest -vv -l -ra --color=yes -o console_output_style=count #\
-## test/submit/test_submit.py .
+##   test/submit/test_submit.py .
 ##   metrisc_logger, stdatamodels
 #    pytest -vv -l -ra --color=yes -o console_output_style=count \
 #        --ignore=test/bestrefs/test_bestrefs.py \
+#        --ignore=test/certify/test_certify.py \
 #        --ignore=test/roman/test_roman.py \
 #        --ignore=test/test_build6.py \
 #        --ignore=test/test_list.py \
