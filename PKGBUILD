@@ -18,6 +18,7 @@ makedepends=(
 )
 provides=('ffplayout')
 conflicts=('ffplayout-git' 'ffplayout-unstable-git')
+replaces=('ffplayout-git' 'ffplayout-unstable-git')
 backup=('etc/ffplayout/ffplayout.yml')
 install='ffplayout.install'
 

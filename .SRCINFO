@@ -16,6 +16,8 @@ pkgbase = ffplayout
 	provides = ffplayout
 	conflicts = ffplayout-git
 	conflicts = ffplayout-unstable-git
+	replaces = ffplayout-git
+	replaces = ffplayout-unstable-git
 	options = !lto
 	backup = etc/ffplayout/ffplayout.yml
 	source = ffplayout-0.21.3::git+https://github.com/ffplayout/ffplayout.git#tag=v0.21.3
