@@ -1,6 +1,6 @@
 pkgbase = mint-x-icons
 	pkgdesc = A mint/metal theme based on mintified versions of Clearlooks Revamp, Elementary and Faenza
-	pkgver = 1.6.6
+	pkgver = 1.6.7
 	pkgrel = 1
 	url = https://github.com/linuxmint/mint-x-icons
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mint-x-icons
 	depends = gtk-update-icon-cache
 	depends = hicolor-icon-theme
 	options = !strip
-	source = http://packages.linuxmint.com/pool/main/m/mint-x-icons/mint-x-icons_1.6.6.tar.xz
-	sha256sums = 1492eca83a5e42738063f5f14f61022761bdf40c542020b1c85f1e81f8144738
+	source = http://packages.linuxmint.com/pool/main/m/mint-x-icons/mint-x-icons_1.6.7.tar.xz
+	sha256sums = 2b348a3d26e38a0f1d845022766fd915feee0f32cf849ef8ec0f34e06328dd8c
 
 pkgname = mint-x-icons
