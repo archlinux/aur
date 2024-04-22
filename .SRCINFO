@@ -1,0 +1,20 @@
+pkgbase = flowtestai-git
+	pkgdesc = GenAI powered OpenSource IDE for API first workflows.
+	pkgver = r351.36677dd
+	pkgrel = 1
+	url = https://flowtestai.gitbook.io/flowtestai
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	depends = electron29
+	provides = flowtestai=r351.36677dd
+	conflicts = flowtestai
+	source = flowtestai.git::git+https://github.com/FlowTestAI/FlowTest.git
+	source = flowtestai.sh
+	sha256sums = SKIP
+	sha256sums = 0c7b4041ba449cb35cb5cb23503be164af78e85572dda2d8db0ae3dc7fa2629c
+
+pkgname = flowtestai-git
