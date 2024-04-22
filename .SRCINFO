@@ -1,6 +1,6 @@
 pkgbase = earlyoom-git
 	pkgdesc = Early OOM Daemon for Linux
-	pkgver = 1.7.r34.gfabac1f
+	pkgver = 1.8.1.r1.ge6c7978
 	pkgrel = 1
 	url = https://github.com/rfjakob/earlyoom
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = earlyoom-git
 	makedepends = pandoc
 	depends = glibc
 	optdepends = systembus-notify: desktop notifications
-	provides = earlyoom=1.7.r34.gfabac1f
+	provides = earlyoom=1.8.1.r1.ge6c7978
 	conflicts = earlyoom
 	backup = etc/default/earlyoom
 	source = git+https://github.com/rfjakob/earlyoom.git
