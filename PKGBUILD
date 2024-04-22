@@ -3,8 +3,8 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=libusrsctp-git
-pkgver=0.9.5.0.r41.g1ade45c
-pkgrel=2
+pkgver=0.9.5.0.r231.gc4b52c3
+pkgrel=1
 pkgdesc='A portable SCTP userland stack'
 arch=(x86_64 i686)
 url='https://github.com/sctplab/usrsctp'
@@ -13,6 +13,7 @@ makedepends=(cmake git)
 conflicts=("${pkgname%-git}" usrsctp-git)
 provides=("${pkgname%-git}=$pkgver" usrsctp-git)
 replaces=(usrsctp-git)
+options=(!lto)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
