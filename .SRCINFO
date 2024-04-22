@@ -1,0 +1,15 @@
+pkgbase = tcobalt
+	pkgdesc = Command-line tool for downloading your favorite videos and songs from the internet
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/khyerdev/tcobalt
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	source = tcobalt-1.0.0.tar.gz::https://github.com/khyerdev/tcobalt/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = af4df7dcfc6d1de1cf232216a63bdc5b245651bbf32bdfc332f5d83b6b57c8e2
+
+pkgname = tcobalt
