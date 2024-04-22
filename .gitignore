@@ -1,0 +1,4 @@
+*.pkg.tar.zst
+/mzmine3
+/pkg
+/src
