@@ -1,7 +1,7 @@
 pkgbase = slimjet-beta-bin
 	pkgdesc = Fast, smart and powerful browser based on Blink
 	pkgver = 42.0.3.0
-	pkgrel = 4
+	pkgrel = 1
 	url = https://www.slimjet.com
 	arch = x86_64
 	license = LicenseRef-freeware
@@ -16,13 +16,15 @@ pkgbase = slimjet-beta-bin
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = ttf-liberation: fix fonts for some PDFs
 	optdepends = ttf-liberation: fix fonts for some PDFs
+	provides = slimjet
 	conflicts = slimjet35
 	conflicts = slimjet
+	conflicts = slimjet-beta
 	options = !emptydirs
 	options = !strip
 	source = slimjet-beta-42.0.3.0_amd64.deb::https://www.slimjetbrowser.com/beta/slimjet_amd64.deb
-	source = libffmpeg-0.86.0.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.86.0/0.86.0-linux-x64.zip
+	source = libffmpeg-0.87.0.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.87.0/0.87.0-linux-x64.zip
 	sha256sums = a83b5922db4fc6d1037ce5122b4b3198a78e1d3f9f65882088886d8825fb1989
-	sha256sums = d9cf46f427f4d80a61e4cc5362fd4b706b0d6b08d6da7a083bfa04acc466fc12
+	sha256sums = e0d604a319b74c864ad48d632ad320a95f9b3b5b50f9d18431f18307f1208a2a
 
 pkgname = slimjet-beta-bin
