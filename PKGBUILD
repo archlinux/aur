@@ -1,5 +1,5 @@
 pkgname=sliver-bin
-pkgver=1.5.41
+pkgver=1.5.42
 pkgrel=1
 pkgdesc="Sliver is a an opensource C2 framework designed by bishop fox"
 url="https://github.com/BishopFox/sliver"
