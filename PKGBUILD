@@ -2,7 +2,7 @@
 
 _pkgname="mpv-handler"
 pkgname="mpv-handler-git"
-pkgver=0.3.5.r0.gefd86a8
+pkgver=0.3.6.r0.gf1c1e5a
 pkgrel=1
 pkgdesc="Play website videos and songs with mpv & yt-dlp."
 arch=("x86_64")
@@ -50,5 +50,6 @@ package() {
   install -Dm755 "target/release/mpv-handler" "$pkgdir/usr/bin/mpv-handler"
   install -Dm644 "share/linux/config.toml" "$pkgdir/usr/share/doc/mpv-handler/config.toml"
   install -Dm644 "share/linux/mpv-handler.desktop" "$pkgdir/usr/share/applications/mpv-handler.desktop"
+  install -Dm644 "share/linux/mpv-handler-debug.desktop" "$pkgdir/usr/share/applications/mpv-handler-debug.desktop"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
