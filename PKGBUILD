@@ -2,8 +2,8 @@
 
 pkgname=deezer-enhanced-bin
 _pkgname=deezer-enhanced
-pkgver=0.3.3
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features, that is not just an electron wrapper.'
 arch=('x86_64')
 url="https://github.com/duzda/deezer-enhanced"
@@ -13,8 +13,8 @@ provides=('deezer-enhanced')
 conflicts=('deezer-enhanced')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.pacman"
 "https://raw.githubusercontent.com/duzda/deezer-enhanced/v$pkgver/LICENSE")
-sha256sums=(6135f432f4ac04a976deb506c09c481ae9b53d56f24178fefb6bf1c8a059d82c
-15f6dd3e1ca1d8d1ff5f2dddef7e0313307130e72f42f2048845a75cb8992395)
+sha256sums=(34b7f33f004a43b2c76ad85ad9c4f6c29c9d09c1f5285e1caced27812efa94d7
+f2f5c024ea86b461c5f5b13fc2155c027ea34c3e0e1350327ec805328fb13966)
 
 package() {
   # Main program
@@ -30,8 +30,8 @@ package() {
 
   # Post install
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/Deezer Enhanced/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/opt/deezer-enhanced/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   # SUID chrome-sandbox for Electron 5+
-  chmod 4755 "${pkgdir}/opt/Deezer Enhanced/chrome-sandbox" || true
+  chmod 4755 "${pkgdir}/opt/deezer-enhanced/chrome-sandbox" || true
 }
