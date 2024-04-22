@@ -1,11 +1,12 @@
 pkgbase = giza-git
 	pkgdesc = giza - a scientific plotting library for C/Fortran
-	pkgver = r715.a6cefc4
+	pkgver = r751.72d3703
 	pkgrel = 1
 	url = https://github.com/danieljprice/giza
-	arch = any
-	license = GPL2
+	arch = x86_64
+	license = LGPL-3.0-or-later
 	makedepends = git
+	makedepends = gcc-fortran
 	provides = giza
 	conflicts = giza
 	source = giza::git+https://github.com/danieljprice/giza.git#branch=master
