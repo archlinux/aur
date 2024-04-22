@@ -3,6 +3,7 @@
 
 pkgname="alacritty-theme-git"
 _pkgname="${pkgname%-git}"
+epoch=1
 pkgver=r219.5f906a4
 pkgrel=1
 pkgdesc="Collection of Alacritty color schemes."
