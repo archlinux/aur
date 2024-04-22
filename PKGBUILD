@@ -1,12 +1,12 @@
 #Maintainer: Daniel Lehmann <daniellehmann28@outlook.de>
 pkgname=powershell-empire-git
-pkgver=5.6.4.r0.g57a2fea
+pkgver=5.9.5.r0.gdc5840e
 pkgrel=1
 pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
 url="https://github.com/BC-SECURITY/Empire"
 arch=('any')
 depends=('dotnet-sdk-6.0' 'powershell' 'openssl')
-makedepends=('python-poetry')
+makedepends=('python-poetry' 'git')
 optdepends=(
     'mysql: stager data can be placed in database'
     'xar: enables generating .dmg stagers'
