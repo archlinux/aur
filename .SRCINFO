@@ -1,0 +1,13 @@
+pkgbase = hunspell-cy-git
+	pkgdesc = Hunspell dictionary for Welsh, Cymraeg
+	pkgver = r13.e25b2f1
+	pkgrel = 1
+	url = https://github.com/techiaith/hunspell-cy
+	arch = any
+	license = LGPL-3.0-or-later
+	makedepends = git
+	optdepends = hunspell: the spell checking libraries and apps
+	source = git+https://github.com/techiaith/hunspell-cy.git
+	sha1sums = SKIP
+
+pkgname = hunspell-cy-git
