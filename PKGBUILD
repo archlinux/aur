@@ -3,34 +3,34 @@
 
 _pkgname=libsysstat
 pkgname=$_pkgname-git
-pkgver=0.4.6
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='Library to query system statistics (net, resource usage, ...)'
+pkgdesc='Library to query system information like CPU and memory usage or network traffic'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/lxqt/libsysstat'
-license=('LGPL2.1')
-depends=('qt5-base')
+license=("LGPL-2.1-only")
+depends=('qt6-base')
 makedepends=('git' 'cmake' 'lxqt-build-tools-git')
-provides=("$_pkgname" "$_pkgname-qt5" "$_pkgname-qt5-git")
-conflicts=("$_pkgname" "$_pkgname-qt5" "$_pkgname-qt5-git")
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
+  cd $_pkgname
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
-	mkdir -p build
-	cd build
-	cmake "$srcdir/$_pkgname" \
+  mkdir -p build
+  cd build
+  cmake "$srcdir/$_pkgname" \
               -DCMAKE_INSTALL_PREFIX=/usr \
               -DCMAKE_INSTALL_LIBDIR=lib
-	make
+  make
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir" install
+  cd build
+  make DESTDIR="$pkgdir" install
 }
