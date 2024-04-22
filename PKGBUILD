@@ -4,7 +4,7 @@
 pkgname=swayosd-percentage-display-git
 _pkgname="${pkgname%-percentage-display-git}"
 _reponame=SwayOSD
-pkgver=r59.04a6652
+pkgver=r61.2463549
 pkgrel=1
 pkgdesc="A GTK based on screen display for keyboard shortcuts that shows percentages"
 arch=('x86_64' 'aarch64' 'i686')
@@ -14,7 +14,7 @@ depends=('gtk3' 'gtk-layer-shell' 'pulseaudio' 'libinput')
 makedepends=('git' 'cargo' 'meson' 'ninja')
 provides=("${_pkgname}" "${_pkgname}-git")
 conflicts=("${_pkgname}" "${_pkgname}-git")
-source=("git+${url}.git")
+source=("git+${url}.git#branch=volume-brightness-percentage")
 sha256sums=('SKIP')
 
 pkgver() {
