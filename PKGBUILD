@@ -6,19 +6,18 @@
 # Contributor: giacomogiorgianni@gmail.com
 
 pkgname=tesseract-game
-pkgver=1
-pkgrel=12
-_revision=2226
+pkgver=20240512
+pkgrel=1
 pkgdesc='Smooth FPS with map editing, instagib, DM and CTF'
 url='http://tesseract.gg/'
 arch=('x86_64' 'i686')
 license=('ZLIB')
 depends=('libgl' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'libpng' 'zlib')
-makedepends=('subversion' 'gendesk' 'imagemagick')
-source=("tesseract::svn://svn.tuxfamily.org/svnroot/tesseract/main#revision=$_revision"
+makedepends=('gendesk' 'imagemagick')
+source=('http://download.tuxfamily.org/tesseract/tesseract_2014_05_12_first_edition_linux.tar.xz'
         'tesseract.sh')
-sha256sums=('SKIP'
-            '34a03fb87b3f3e1f16d1744d42f566a36e67cbdeaee1876281857b341002566b')
+sha512sums=('a625775501b57c519c624bdd9b29d4f89d29c0caedbf6ad4143a65c1f9f9dc088d289953ce3d5043f3467cc8dd86ba9040e636a20a16d5114cf6e7434e089f96'
+	'425c47db63c2f094fcb1f9e10687c07ee515ff6e3b0ba2d81482a608f9a41edd7107be774d8e6707354d0ce4c1c2d3d92aee99da247e16dfbadc87a0c3085e9c')
 
 prepare() {
   gendesk -f -n --pkgname ${pkgname/-game} --pkgdesc "$pkgdesc" --exec "$pkgname"
