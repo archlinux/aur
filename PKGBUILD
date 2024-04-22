@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
-_pkgname=Flask-Limiter
+_pkgname=flask_limiter
 pkgname=python-flask-limiter
-pkgver=3.5.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Rate limiting for flask applications"
 url="https://flask-limiter.readthedocs.org"
@@ -11,12 +11,12 @@ license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 
-sha256sums=('8117e1040e5d5c31bf667d3b649fcba325f979d814a3d76a3a2331c3eab63c5e')
+sha256sums=('89e663cc8372fa5de5d6f965c5224720c2db5345668961a7076f15666e3213fb')
 
 # Depends on python-hiro, which isn't packaged
 # check() {
 #     cd "${srcdir}/${_pkgname}-${pkgver}"
-#     PYTHONPATH=./build/lib pytest
+ #     PYTHONPATH=./build/lib pytest
 # }
 
 prepare() {
