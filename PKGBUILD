@@ -4,6 +4,7 @@
 pkgname=rosary
 pkgver=1.0.4
 pkgrel=1
+pkgbase=rosary-tauri
 pkgdesc="A Bible App. (none)"
 arch=('x86_64')
 url=""

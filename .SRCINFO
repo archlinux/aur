@@ -1,4 +1,4 @@
-pkgbase = rosary
+pkgbase = rosary-tauri
 	pkgdesc = A Bible App. (none)
 	pkgver = 1.0.4
 	pkgrel = 1
