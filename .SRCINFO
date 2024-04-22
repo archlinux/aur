@@ -1,6 +1,6 @@
 pkgbase = aihub-git
 	pkgdesc = A collection of large model capabilities of the client.一款集合多家大模型能力的客户端
-	pkgver = 1.5.1.r1.g9505257
+	pkgver = 1.5.2.r2.g262ebe5
 	pkgrel = 1
 	url = https://github.com/classfang/AIHub
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = aihub-git
 	makedepends = gendesk
 	makedepends = git
 	depends = electron30
-	provides = aihub=1.5.1
+	provides = aihub=1.5.2
 	conflicts = aihub
 	source = aihub.git::git+https://github.com/classfang/AIHub.git
 	source = aihub.sh
