@@ -1,7 +1,7 @@
 # Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
 pkgname=marble-shell-theme
-pkgver=46.0.1
+pkgver=46.0.2
 pkgrel=1
 pkgdesc='Shell theme for GNOME DE'
 url='https://github.com/imarkoff/Marble-shell-theme'
@@ -11,7 +11,7 @@ source=(
     "https://github.com/imarkoff/Marble-shell-theme/releases/download/${pkgver//_/-}/Marble-shell.tar.gz"
 )
 sha256sums=(
-    "b7e67a075c4cfdffbcf3925554e7e5af56a6e62ef0b044b3bf959a465b06b541"
+    "d64189064b54f5f21a7382e71619ce7c9822541eed0dda62850a35014804e693"
 )
 
 package() {
