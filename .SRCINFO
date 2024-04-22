@@ -5,6 +5,7 @@ pkgbase = python-brutesleuth-git
 	url = https://github.com/rad10/BruteSleuth
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	provides = python-brutesleuth
