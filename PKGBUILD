@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kando-bin
-pkgver=0.6.0
+pkgver=0.7.0
 _electronversion=28
 pkgrel=1
 pkgdesc="A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions. "
@@ -27,7 +27,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kando-menu/kando/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4861d0ba9b1acdfe193b1c60e0061bab1e33c112002a866521665434bccada4b'
+sha256sums=('6d4bc00bd78873606be52ac824cde6f2436cfa3b1a093b8f08b6816a25553072'
             'fd6cb731b549de5452efacb0833cda7a328eb5263537d29ca18de9d7938f7bab'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
