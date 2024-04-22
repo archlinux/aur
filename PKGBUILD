@@ -12,7 +12,6 @@ license=('BSD-3-Clause')
 makedepends=('python-flit-core'
              'python-build'
              'python-installer'
-             'python-docutils'
              'python-sphinx'
              'python-mistune>=3.0')
 checkdepends=('python-pytest') # mistune sphinx already in makedepends
