@@ -1,8 +1,8 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=copyto-go-bin
-pkgver=1.2.10
+pkgver=1.3.0
 _app=copyto
-pkgrel=4
+pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 pkgdesc="copyto is a small command line app written in Go that allows you to easily one way sync between folders (binary release)"
 url="https://github.com/aegoroff/copyto"
@@ -10,9 +10,9 @@ license=('MIT')
 source_x86_64=("https://github.com/aegoroff/${_app}/releases/download/v${pkgver}/${_app}_${pkgver}_linux_amd64.tar.gz")
 source_armv7h=("https://github.com/aegoroff/${_app}/releases/download/v${pkgver}/${_app}_${pkgver}_linux_armv7.tar.gz")
 source_aarch64=("https://github.com/aegoroff/${_app}/releases/download/v${pkgver}/${_app}_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=(3ba48b213134a2cc06920fb4f272bab3f97f6a8377584d8af521344c1c19e7ac)
-sha256sums_armv7h=(cb2271b040bb4f3c0fcde48d92167eaa129154700e35210c49f6f506e1dd0043)
-sha256sums_aarch64=(5f2540981de0d490bd898f558a4f79ba908acff1209f5a8f5152b6bbfc501439)
+sha256sums_x86_64=('1be1fce42f4e522bbcd938484af310b85795f32a94b8f0d34267cf3b56eb0376')
+sha256sums_armv7h=('68ba85e7f1229c2537849ae8146c73959751136c89daf7859cfe7bbf340c3f23')
+sha256sums_aarch64=('dd50e562d560509be3f318791da20bd06d0d851b32b247089fe317a66e73eb4d')
 build() {
 	return 0
 }
