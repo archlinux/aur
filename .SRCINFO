@@ -1,0 +1,21 @@
+pkgbase = android-aarch64-hidapi
+	pkgdesc = Simple library for communicating with USB and Bluetooth HID devices (Android aarch64)
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/libusb/hidapi
+	arch = any
+	license = GPL3
+	license = BSD
+	license = custom
+	makedepends = android-cmake
+	makedepends = android-aarch64-libusb
+	depends = android-ndk
+	optdepends = android-aarch64-libusb: for hidapi-libusb
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/libusb/hidapi/archive/hidapi-0.14.0.tar.gz
+	md5sums = d65a951df6f566f90bbeb4414caf2c1e
+
+pkgname = android-aarch64-hidapi
