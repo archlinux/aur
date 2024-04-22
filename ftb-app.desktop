@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=FTB Electron App
+Exec="/usr/bin/ftb-app" %U
+Terminal=false
+Type=Application
+Icon=ftb-app
+StartupWMClass=FTB Electron App
+Comment=FTB Desktop App for downloading and managing Modpacks
+MimeType=x-scheme-handler/ftb;
+Categories=Game;
