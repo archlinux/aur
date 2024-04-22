@@ -2,18 +2,18 @@
 
 pkgbase=vosk-api
 pkgname=('vosk-api' 'python-vosk')
-pkgver=0.3.45
+pkgver=0.3.50
 pkgrel=1
 _openblas_ver=0.3.20
 _clapack_ver=3.2.1
 _model_small_ver=0.15
 _model_spk_ver=0.4
 _openfst_commit=7dfd808194105162f20084bb4d8e4ee4b65266d5
-_kaldi_commit=93ef0019b847272a239fbb485ef97f29feb1d587
+_kaldi_commit=2b69aed630e26fb2c700bba8c45f3bd012371c5c
 pkgdesc='Offline speech recognition toolkit'
 arch=('x86_64')
 url='https://alphacephei.com/vosk/'
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('git' 'cmake' 'gradle' 'python' 'python-build' 'python-cffi' 'python-installer'
              'python-requests' 'python-setuptools' 'python-srt' 'python-tqdm' 'python-websockets'
              'python-wheel' 'java-environment=17')
@@ -22,17 +22,17 @@ source=("https://github.com/alphacep/vosk-api/archive/v${pkgver}/${pkgbase}-${pk
         "https://github.com/xianyi/OpenBLAS/archive/v${_openblas_ver}/openblas-${_openblas_ver}.tar.gz"
         "https://github.com/alphacep/clapack/archive/v${_clapack_ver}/clapack-${_clapack_ver}.tar.gz"
         "kaldi-vosk-g${_kaldi_commit:0:7}.tar.gz"::"https://github.com/alphacep/kaldi/archive/${_kaldi_commit}.tar.gz"
-        "https://alphacephei.com/kaldi/models/vosk-model-small-en-us-${_model_small_ver}.zip"
+        "https://alphacephei.com/vosk/models/vosk-model-small-en-us-${_model_small_ver}.zip"
         "https://alphacephei.com/vosk/models/vosk-model-spk-${_model_spk_ver}.zip"
         "git+https://github.com/alphacep/openfst.git#commit=${_openfst_commit}")
 noextract=("vosk-model-small-en-us-${_model_small_ver}.zip")
-sha256sums=('930fb9cfa6c1b3035d3730feee7d670fb893caa0c71bd2159ee7623102674c26'
+sha256sums=('cc1067bcc599c9a2f5f38d4257caf2ac636ba244f7c965cee20293a41024f70f'
             '8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c'
             '8d8ff8259454cae392bb58bc4971fef1db632c9fb5cdf61255cd495bd6d6ac4d'
-            'f47a996af546884a8e1cb961323b796c5c238c1bbeabaf657bb300b760e431b2'
+            'fc025cae7246b780ba7ba85deeff0386ec272d901185058c0b5e614543d5676c'
             '30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498'
             'a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7'
-            'SKIP')
+            'cfab49539f89e7e0ceba228300c08343a6857c28d1afcfecaaa6656bc6ab675e')
 
 prepare() {
     mkdir -p models
@@ -55,7 +55,7 @@ build() {
     
     # clapack
     CFLAGS+=' -Wno-error=format-security -fcommon' cmake -B "build-clapack-${_clapack_ver}" -S "clapack-${_clapack_ver}" -Wno-dev
-    make -C "build-clapack-${_clapack_ver}"
+    cmake --build "build-clapack-${_clapack_ver}"
     while read -r -d '' _file
     do
         cp -af "$_file" "${srcdir}/OpenBLAS-${_openblas_ver}/install/lib"

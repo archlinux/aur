@@ -1,10 +1,10 @@
 pkgbase = vosk-api
 	pkgdesc = Offline speech recognition toolkit
-	pkgver = 0.3.45
+	pkgver = 0.3.50
 	pkgrel = 1
 	url = https://alphacephei.com/vosk/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	checkdepends = ffmpeg
 	checkdepends = python-numpy
 	makedepends = git
@@ -22,20 +22,20 @@ pkgbase = vosk-api
 	makedepends = python-wheel
 	makedepends = java-environment=17
 	noextract = vosk-model-small-en-us-0.15.zip
-	source = https://github.com/alphacep/vosk-api/archive/v0.3.45/vosk-api-0.3.45.tar.gz
+	source = https://github.com/alphacep/vosk-api/archive/v0.3.50/vosk-api-0.3.50.tar.gz
 	source = https://github.com/xianyi/OpenBLAS/archive/v0.3.20/openblas-0.3.20.tar.gz
 	source = https://github.com/alphacep/clapack/archive/v3.2.1/clapack-3.2.1.tar.gz
-	source = kaldi-vosk-g93ef001.tar.gz::https://github.com/alphacep/kaldi/archive/93ef0019b847272a239fbb485ef97f29feb1d587.tar.gz
-	source = https://alphacephei.com/kaldi/models/vosk-model-small-en-us-0.15.zip
+	source = kaldi-vosk-g2b69aed.tar.gz::https://github.com/alphacep/kaldi/archive/2b69aed630e26fb2c700bba8c45f3bd012371c5c.tar.gz
+	source = https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip
 	source = https://alphacephei.com/vosk/models/vosk-model-spk-0.4.zip
 	source = git+https://github.com/alphacep/openfst.git#commit=7dfd808194105162f20084bb4d8e4ee4b65266d5
-	sha256sums = 930fb9cfa6c1b3035d3730feee7d670fb893caa0c71bd2159ee7623102674c26
+	sha256sums = cc1067bcc599c9a2f5f38d4257caf2ac636ba244f7c965cee20293a41024f70f
 	sha256sums = 8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c
 	sha256sums = 8d8ff8259454cae392bb58bc4971fef1db632c9fb5cdf61255cd495bd6d6ac4d
-	sha256sums = f47a996af546884a8e1cb961323b796c5c238c1bbeabaf657bb300b760e431b2
+	sha256sums = fc025cae7246b780ba7ba85deeff0386ec272d901185058c0b5e614543d5676c
 	sha256sums = 30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498
 	sha256sums = a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7
-	sha256sums = SKIP
+	sha256sums = cfab49539f89e7e0ceba228300c08343a6857c28d1afcfecaaa6656bc6ab675e
 
 pkgname = vosk-api
 	depends = gcc-libs
@@ -49,4 +49,4 @@ pkgname = python-vosk
 	depends = python-srt
 	depends = python-tqdm
 	depends = python-websockets
-	depends = vosk-api=0.3.45
+	depends = vosk-api=0.3.50
