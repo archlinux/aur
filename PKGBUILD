@@ -41,5 +41,6 @@ package() {
   # man pages
   install -Dm644 "./manpages/vhs.1.gz" "${pkgdir}/usr/share/man/man1/vhs.1.gz"
   # readme
+  mkdir -pv "${pkgdir}/usr/share/doc/vhs/"
   install -Dm644 README* "${pkgdir}/usr/share/doc/vhs/"
 }
