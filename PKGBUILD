@@ -3,7 +3,7 @@
 
 pkgname=sunshine-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.23.0
+pkgver=0.23.1
 _gittag=v$pkgver
 pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight."
@@ -40,7 +40,7 @@ optdepends=('cuda: NvFBC capture support'
             'libdrm')
 conflicts=('sunshine')
 provides=('sunshine')
-b2sums=('e1c7103110497c0e31a93fcc0895de3b5e95edf4ccce2de18c26d4816a34e51e36ee8fadf7f3adf13c2d2c6a48196911b7bf53487684945527350f2fb7b486b5'
+b2sums=('1c357d77a1b24e70b122f34e14b3a54e57270f4ccbf2f2b6f9afc8b54e59ed4e9096bb8b9c7257d4ff93f2e8783763f8298b2461470d2e4bb149e070ea6b0238'
         '6d8d4bdbf645258545e50d01ea5a2a6ea85ba937bd6adaa659cb4106531b76613915ac24f54e60546c77e07b9b01ed702c441556c75080f0d29ef3005b7763d8')
 
 prepare() {
