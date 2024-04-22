@@ -18,6 +18,7 @@ depends=(gcc-libs
          kwindowsystem
          kxmlgui
          kcrash
+         ollama
 )
 makedepends=(extra-cmake-modules)
 groups=(kde-applications

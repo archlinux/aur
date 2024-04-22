@@ -19,6 +19,7 @@ pkgbase = alpaka-git
 	depends = kwindowsystem
 	depends = kxmlgui
 	depends = kcrash
+	depends = ollama
 	source = git+https://invent.kde.org/utilities/alpaka.git
 	sha256sums = SKIP
 
