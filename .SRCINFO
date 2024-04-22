@@ -1,14 +1,16 @@
 pkgbase = fxload
 	pkgdesc = fxload firmware loader. Used with udev or devfs/hotplug.
-	pkgver = 2008_10_13
-	pkgrel = 6
-	url = http://linux-hotplug.sourceforge.net/
-	arch = i686
+	pkgver = 1.0.26
+	pkgrel = 1
+	url = http://libusb.info/
+	arch = aarch64
 	arch = x86_64
-	license = GPL
-	depends = glibc
-	source = http://downloads.sourceforge.net/sourceforge/linux-hotplug/fxload-2008_10_13.tar.gz
-	md5sums = 4477a2457f064228bef4a93ba2f21692
+	license = LGPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkgconf
+	depends = libusb
+	source = https://github.com/libusb/libusb/archive/refs/tags/v1.0.26.tar.gz
+	sha256sums = a09bff99c74e03e582aa30759cada218ea8fa03580517e52d463c59c0b25e240
 
 pkgname = fxload
-
