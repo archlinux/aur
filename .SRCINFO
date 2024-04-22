@@ -1,7 +1,7 @@
 pkgbase = mzmine3
 	pkgver = 4.0.3
 	pkgrel = 1
-	url = https://mzio.io
+	url = https://www.mzmine.org
 	arch = any
 	license = GPL3
 	makedepends = java-environment>=21

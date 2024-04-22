@@ -3,7 +3,7 @@ pkgname=mzmine3
 pkgver=4.0.3
 pkgrel=1
 arch=('any')
-url="https://mzio.io"
+url="https://www.mzmine.org"
 license=('GPL3')
 depends=("java-runtime>=21" "hicolor-icon-theme")
 makedepends=("java-environment>=21" "archlinux-java-run")
