@@ -1,6 +1,6 @@
 pkgname=nbis
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NIST Biometric Image Software"
 arch=('x86_64')
 url="https://www.nist.gov/services-resources/software/nist-biometric-image-software-nbis"
@@ -8,11 +8,14 @@ license=('custom')
 depends=('libx11')
 makedepends=('cmake')
 options=('!makeflags')
-source=("https://nigos.nist.gov/nist/nbis/nbis_v5_0_0.zip")
-sha256sums=('0adf8ab0f6b0e4208de50ca00ba21d3d77112ecd66288757ddfed21f6bee92c3')
+source=("https://nigos.nist.gov/nist/nbis/nbis_v5_0_0.zip"
+            "0000-use-extern-header-an2k.patch")
+sha256sums=('0adf8ab0f6b0e4208de50ca00ba21d3d77112ecd66288757ddfed21f6bee92c3'
+            '2d2c50f4682469674a6b69d17c0f940162ac42e56e6d21b03594fa75bff19998')
 
 package() {
-  cd "$srcdir/Rel_$pkgver"
+  cd "${srcdir}/Rel_${pkgver}"
+  patch -p0 < "${srcdir}/0000-use-extern-header-an2k.patch"
   install -d "${pkgdir}/usr"
   ./setup.sh "${pkgdir}/usr"
   make config

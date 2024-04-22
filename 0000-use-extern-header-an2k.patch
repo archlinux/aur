@@ -1,0 +1,25 @@
+diff --color -ruN ./an2k/include/histogen.h ./an2k/include/histogen.h
+--- ./an2k/include/histogen.h	2015-03-03 20:54:02.000000000 +0000
++++ ./an2k/include/histogen.h	2024-04-22 14:58:04.000000000 +0100
+@@ -75,7 +75,7 @@
+   HISTO *next;
+ };
+ 
+-HISTO *histo_head;
++extern HISTO *histo_head;
+ 
+ enum {
+   INCLUDE_INVALID_FILES=5,
+diff --color -ruN ./an2k/src/bin/histogen/chkfile.c ./an2k/src/bin/histogen/chkfile.c
+--- ./an2k/src/bin/histogen/chkfile.c	2015-03-03 20:54:02.000000000 +0000
++++ ./an2k/src/bin/histogen/chkfile.c	2024-04-22 14:58:19.000000000 +0100
+@@ -388,6 +388,8 @@
+   }
+ }
+ 
++HISTO *histo_head;
++
+ /*****************************************************************************/
+ int initialize_linked_list() {
+ 
+Binary files ./a/nbis_v5_0_0.zip and ./b/nbis_v5_0_0.zip differ
