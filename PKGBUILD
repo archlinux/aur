@@ -1,23 +1,27 @@
-# Contributor: Andrew Rabert <ar@nullsum.net>
+# Maintainer: Andrew Rabert <ar@nullsum.net>
 
-pkgbase=mpd-art-box
-pkgname='mpd-art-box'
-pkgver=0.0.4
-_srcname="${pkgname}-${pkgver}"
-pkgrel=2
-pkgdesc="A window displaying the cover for the currently playing MPD track - nothing more"
+pkgname=mpd-art-box
+pkgver=0.0.9
+pkgrel=1
+pkgdesc="A window displaying the cover for the currently playing MPD track"
+url='https://github.com/nvllsvm/mpd-art-box'
 arch=('any')
-url="https://github.com/nvllsvm/mpd-art-box"
 license=('MIT')
 depends=(
     'python-configargparse' 
     'python-gobject' 
     'python-mpd2'
 )
-source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${_srcname}.tar.gz")
-sha256sums=('00a8a49e9b3cc63a8b1b7827b2d8a8b2ed90162ba7f96688c016b4c391ffa27b')
+makedepends=('python-setuptools')
+source=(https://github.com/nvllsvm/mpd-art-box/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('4a9534df31d2b2810b1546cc1e7f5337b1b79e35ae761116d9301501db6a4f33e07b1cf920c6cd1a821a146f8688149d2576a508422b99d8f556ec1ca9816315')
 
-package() {
-  cd "${srcdir}"/"${_srcname}"
-  install -D -m 755 mpd_art_box.py "$pkgdir"/usr/bin/mpd-art-box
+build() {
+  cd ${pkgname}-${pkgver}
+  python setup.py build
+}
+
+package(){
+  cd ${pkgname}-${pkgver}
+  python setup.py install -O1 --root="${pkgdir}" --prefix=/usr --skip-build
 }
