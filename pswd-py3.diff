@@ -1,0 +1,194 @@
+--- pswd.bak	2014-12-05 03:17:30.000000000 +0200
++++ pswd	2024-04-22 12:27:24.795769267 +0300
+@@ -130,14 +130,14 @@
+ 
+   # Hash token K1 times using SHA256
+   if QUIET == False:
+-    print "Generating User Token... (This is only done once)"
++    print("Generating User Token... (This is only done once)")
+   for i in range(0, K1):
+     if QUIET == False:
+       if i % 1000 == 0:
+         per = float(i) / float(K1)
+         pb(per)
+ 
+-    token = hashlib.sha256(token).hexdigest()
++    token = hashlib.sha256(token.encode("ascii")).hexdigest()
+ 
+   # Save token to cache
+   f = open(CACHE_FILE,'a')
+@@ -145,7 +145,7 @@
+   f.close()
+ 
+   if QUIET == False:
+-    print "";
++    print("");
+ 
+ 
+   # Return Final Step 1 Hash
+@@ -183,33 +183,31 @@
+   key = DOMAIN + PASSWORD + USER_TOKEN
+ 
+   # Hash the pswd K2-1 times using SHA256
+-  pswd = key
++  pswd = key.encode("ascii")
+   for i in range(1, K2):
+-    pswd = hashlib.sha256(pswd).hexdigest()
++    pswd = hashlib.sha256(pswd).hexdigest().encode("ascii")
+ 
+   # for the last hash: concatenate 2 hashes of pswd to lengthen the result
+-  pswd = hashlib.sha256(pswd + "1").hexdigest() + hashlib.sha256(pswd + "2").hexdigest()
+-
++  pswd = hashlib.sha256(pswd + b"1").hexdigest() + hashlib.sha256(pswd + b"2").hexdigest()
++  pswd = pswd.encode("ascii")
+ 
+   # convert to Base64
+-  pswd = base64.b64encode(pswd.decode("hex"))
++  pswd = base64.b64encode(pswd).decode("ascii")
+ 
+   # remove base64 characters: + / =
+   pswd = pswd.replace("+", "")
+   pswd = pswd.replace("/", "")
+   pswd = pswd.replace("=", "")
+ 
+-
+   # Trim the password to LENGTH
+   pswd = pswd[:LENGTH]
+ 
+-
+-
+   # generate nums string from the key
+-  temp = hashlib.sha256(key + "numbers1").hexdigest() + \
+-    hashlib.sha256(key + "numbers2").hexdigest() + \
+-    hashlib.sha256(key + "numbers3").hexdigest() + \
+-    hashlib.sha256(key + "numbers4").hexdigest()
++  key = key.encode("ascii")
++  temp = hashlib.sha256(key + b"numbers1").hexdigest() + \
++    hashlib.sha256(key + b"numbers2").hexdigest() + \
++    hashlib.sha256(key + b"numbers3").hexdigest() + \
++    hashlib.sha256(key + b"numbers4").hexdigest()
+ 
+ 
+   # pull out all digits from the hashed string
+@@ -236,7 +234,7 @@
+     num_index = num_index + 1   # increase num index
+     if (div <= 3):              # <= 3 creates too many symbols
+       div = 4                   # divide by at least 4
+-    num_of_symbols = LENGTH / div
++    num_of_symbols = LENGTH // div
+ 
+     # loop to add each symbol
+     for i in range(0, num_of_symbols):
+@@ -431,9 +429,9 @@
+   # define command line options
+   try:
+     opts, args = getopt.getopt(argv, "u:p:d:n:csa:t:x:y:qh", ["user=", "password=", "domain=", "token=", "cache=", "gettoken", "help"])
+-  except getopt.GetoptError, err:
+-    print "ERROR: " + str(err)
+-    print USAGE
++  except getopt.GetoptError as err:
++    print("ERROR: " + str(err))
++    print(USAGE)
+     sys.exit(2)
+ 
+ 
+@@ -449,7 +447,7 @@
+       try:
+         LENGTH = int(arg)
+       except ValueError:
+-        print "ERROR: length must be an integer"
++        print("ERROR: length must be an integer")
+         sys.exit(2)
+     elif opt in ("-c"):
+       UPPERCASE = not UPPERCASE
+@@ -461,13 +459,13 @@
+       try:
+         K1 = int(arg)
+       except ValueError:
+-        print "ERROR: -x must be an integer"
++        print("ERROR: -x must be an integer")
+         sys.exit(2)
+     elif opt in ("-y"):
+       try:
+         K2 = int(arg)
+       except ValueError:
+-        print "ERROR: -y must be an integer"
++        print("ERROR: -y must be an integer")
+         sys.exit(2)
+     elif opt in ("-q"):
+       QUIET = True
+@@ -478,7 +476,7 @@
+     elif opt in ("--token", "-t"):
+       USER_TOKEN = arg
+     elif opt in ("--help", "-h"):
+-      print USAGE
++      print(USAGE)
+       sys.exit(0)
+ 
+ 
+@@ -487,7 +485,7 @@
+ 
+ 
+   # Get User ID based on hash of USER
+-  USER_ID = hashlib.sha256(USER).hexdigest()
++  USER_ID = hashlib.sha256(USER.encode("ascii")).hexdigest()
+ 
+ 
+ 
+@@ -500,16 +498,16 @@
+     # Parameter Checks
+     # Need USER and PASSWORD
+     if USER == "":
+-      print "ERROR: user name must be provided with --user [user name]"
++      print("ERROR: user name must be provided with --user [user name]")
+       sys.exit(2)
+     elif PASSWORD == "":
+-      print "ERROR: master password must be provided with --password [master password]"
++      print("ERROR: master password must be provided with --password [master password]")
+       sys.exit(2)
+ 
+     # Get or Generate a USER TOKEN
+     USER_TOKEN = getToken()
+ 
+-    print USER_TOKEN
++    print(USER_TOKEN)
+ 
+     sys.exit(0)
+ 
+@@ -524,22 +522,22 @@
+ 
+   # Make sure USER and PASSWORD and DOMAIN are supplied
+   if USER == "":
+-    print "ERROR: user name must be provided with --user [user name]"
++    print("ERROR: user name must be provided with --user [user name]")
+     sys.exit(2)
+   elif PASSWORD == "":
+-    print "ERROR: master password must be provided with --password [master password]"
++    print("ERROR: master password must be provided with --password [master password]")
+     sys.exit(2)
+   elif DOMAIN == "":
+-    print "ERROR: the domain must be provided with --domain [domain]"
++    print("ERROR: the domain must be provided with --domain [domain]")
+     sys.exit(2)
+ 
+ 
+   # Check LENGTH is within range
+   if LENGTH < MIN_LENGTH:
+-    print "ERROR: the length cannot be less than " + str(MIN_LENGTH)
++    print("ERROR: the length cannot be less than " + str(MIN_LENGTH))
+     sys.exit(2)
+   elif LENGTH > MAX_LENGTH:
+-    print "ERROR: the length cannot be greater than " + str(MAX_LENGTH)
++    print("ERROR: the length cannot be greater than " + str(MAX_LENGTH))
+     sys.exit(2)
+ 
+ 
+@@ -571,7 +569,7 @@
+ 
+ 
+   if QUIET == False:
+-    print FINAL
++    print(FINAL)
+ 
+   # Attempt to copy the password to the user's clipboard
+   copy(FINAL)
