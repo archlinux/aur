@@ -1,12 +1,11 @@
 pkgbase = yambar-wayland
 	pkgdesc = Simplistic and highly configurable status panel for Wayland (No X11 support)
-	pkgver = 1.10.0
-	pkgrel = 5
+	pkgver = 1.11.0
+	pkgrel = 1
 	url = https://codeberg.org/dnkl/yambar
 	arch = any
 	license = MIT
 	checkdepends = libmpdclient
-	makedepends = git
 	makedepends = wayland-protocols
 	makedepends = meson
 	makedepends = ninja
@@ -24,8 +23,10 @@ pkgbase = yambar-wayland
 	optdepends = libmpdclient: for the MPD module
 	provides = yambar
 	conflicts = yambar
-	source = git+https://codeberg.org/dnkl/yambar.git?signed#commit=c4e094de3e531675bae9ff76d7e6f0dfdcaecae9
+	source = https://codeberg.org/dnkl/yambar/releases/download/1.11.0/yambar-1.11.0.tar.gz
+	source = https://codeberg.org/dnkl/yambar/releases/download/1.11.0/yambar-1.11.0.tar.gz.sig
 	validpgpkeys = B19964FBBA09664CC81027ED5BBD4992C116573F
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = yambar-wayland
