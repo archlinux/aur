@@ -1,0 +1,8 @@
+# Ignore makepkg files
+src/
+pkg/
+*.tar.zst
+
+# Ignoring package downloaded files
+sliver-*-client
+sliver-*-server
