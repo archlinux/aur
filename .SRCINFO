@@ -1,0 +1,13 @@
+pkgbase = mat_saleh-font
+	pkgdesc = Sans serif font made by Syafrizal a.k.a. Khurasan
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.dafont.com/mat-saleh.font
+	arch = any
+	license = unknown
+	source = https://dl.dafont.com/dl/?f=mat_saleh
+	sha512sums = SKIP
+
+pkgname = ttf-mat_saleh
+
+pkgname = otf-mat_saleh
