@@ -1,13 +1,13 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python2-incremental
 pkgver=22.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small library that versions your Python projects."
 url="https://github.com/twisted/incremental"
 arch=('any')
 license=('MIT')
 depends=('python2')
-makedepends=('python2-setuptools')
+makedepends=('python2-setuptools' 'python2-typing')
 checkdepends=('python2-pytest' 'python2-twisted' 'python2-click')
 _name="${pkgname#python2-}"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
