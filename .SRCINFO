@@ -14,6 +14,6 @@ pkgbase = sourcegit
 	source = sourcegit-8.8.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v8.8.tar.gz
 	source = sourcegit.desktop
 	sha256sums = 84cdbd39fb375c393dfee888473381406056bb74984525845f8fbecb087d42b1
-	sha256sums = 18e4e0df2b0ca3a50048f35cd193bd9b7f53e910ccd52c3405dead0bee1c3bc5
+	sha256sums = fa8e4f954679a6d71b8f0af28a0091ccd9511204dcc554488f3cd7fbeb3713c2
 
 pkgname = sourcegit
