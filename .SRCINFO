@@ -1,6 +1,6 @@
 pkgbase = bazarr-runit
 	pkgdesc = Runit service script for bazarr.
-	pkgver = 20240411
+	pkgver = 20240422
 	pkgrel = 1
 	url = https://bazarr.media
 	install = bazarr.install
@@ -9,8 +9,6 @@ pkgbase = bazarr-runit
 	depends = bazarr
 	depends = runit
 	source = bazarr.run
-	source = bazarr.log.run
 	sha256sums = 7232c3971621d3afa8f8377fee91c10e27eb7e1184861d96708906cfeccfd7f0
-	sha256sums = 2ea2c9f8c8fd2e140f8f1e0a43db5e1cdff91a6f1d95599bda58cae5d609a717
 
 pkgname = bazarr-runit
