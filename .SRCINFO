@@ -1,12 +1,12 @@
 pkgbase = autotrace-nomagick
 	pkgdesc = A program for converting bitmap to vector graphics (no ImageMagick dependency)
-	pkgver = 0.31.9
+	pkgver = 0.31.10
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/autotrace/autotrace/
 	arch = x86_64
-	license = GPL
-	license = LGPL
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
 	makedepends = intltool
 	depends = glib2
 	depends = libpng
@@ -14,9 +14,9 @@ pkgbase = autotrace-nomagick
 	depends = pstoedit-nomagick
 	provides = autotrace
 	conflicts = autotrace
-	source = https://github.com/autotrace/autotrace/archive/0.31.9/autotrace-0.31.9.tar.gz
+	source = https://github.com/autotrace/autotrace/archive/0.31.10/autotrace-0.31.10.tar.gz
 	source = 010-autotrace-fix-swf-output.patch
-	sha256sums = 670d43797b37e067e0317e90e2c05eedeeb8ab630cf794c2abc1079a84120a68
+	sha256sums = 14627f93bb02fe14eeda0163434a7cb9b1f316c0f1727f0bdf6323a831ffe80d
 	sha256sums = c0698678cb37b4a82d732f113ad4829d1b453d9db18001ffbe3044697b4852bc
 
 pkgname = autotrace-nomagick
