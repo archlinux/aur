@@ -1,6 +1,6 @@
 pkgname=ffplayout-unstable-git
-pkgver=r1893.7920c35
-pkgrel=1
+pkgver=r1967.664dbe4
+pkgrel=0
 pkgdesc="24/7 playout based on rust and ffmpeg (for ffplayout)"
 arch=('x86_64')
 url="https://github.com/jb-alvarado/ffplayout"
@@ -12,12 +12,13 @@ depends=(
 makedepends=(
   'rustup'
   'musl'
-  'nodejs-lts-hydrogen'
+  'nodejs-lts-iron'
   'npm'
   'pandoc'
 )
-provides=('ffplayout-unstable-git')
+provides=('ffplayout')
 conflicts=('ffplayout' 'ffplayout-git')
+replaces=('ffplayout' 'ffplayout-git')
 backup=('etc/ffplayout/ffplayout.yml')
 install='ffplayout.install'
 source=(
@@ -74,6 +75,7 @@ package() {
     install -Dm755 target/x86_64-unknown-linux-musl/release/ffplayout "${pkgdir}/usr/bin/ffplayout"
     install -Dm755 target/x86_64-unknown-linux-musl/release/ffpapi "${pkgdir}/usr/bin/ffpapi"
     install -Dm644 assets/ffplayout.yml "${pkgdir}/etc/ffplayout/ffplayout.yml"
+    install -Dm644 assets/advanced.yml "${pkgdir}/etc/ffplayout/advanced.yml"
     install -Dm644 assets/ffpapi.service "${pkgdir}/usr/lib/systemd/system/ffpapi.service"
     install -Dm644 assets/ffplayout.service "${pkgdir}/usr/lib/systemd/system/ffplayout.service"
     install -Dm644 assets/ffplayout@.service "${pkgdir}/usr/lib/systemd/system/ffplayout@.service"
