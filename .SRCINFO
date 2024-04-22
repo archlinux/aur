@@ -1,6 +1,6 @@
 pkgbase = kiview
 	pkgdesc = Quick files preview for dolphin
-	pkgver = 1.0.2
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/Nyre221/Kiview
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kiview
 	depends = kirigami
 	depends = qt6-multimedia
 	depends = qt6-webengine
-	source = https://github.com/Nyre221/Kiview/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 8135cd6b56b3b580fdd7ce223c78cf4be32033c44e3bca86a8d5c68389311956
+	source = https://github.com/Nyre221/Kiview/archive/refs/tags/v1.1.tar.gz
+	sha256sums = e068dd8a7fe18222ad70b677414f9a6ab0fe5f338eb2dbcd6119e68675071e8a
 
 pkgname = kiview

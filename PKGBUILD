@@ -2,7 +2,7 @@
 
 pkgname=kiview
 _pkgname=Kiview
-pkgver=1.0.2
+pkgver=1.1
 pkgrel=1
 pkgdesc="Quick files preview for dolphin"
 arch=('x86_64')
@@ -21,4 +21,4 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
 }
 
-sha256sums=('8135cd6b56b3b580fdd7ce223c78cf4be32033c44e3bca86a8d5c68389311956')
+sha256sums=('e068dd8a7fe18222ad70b677414f9a6ab0fe5f338eb2dbcd6119e68675071e8a')
