@@ -21,5 +21,3 @@ diff --color -ruN ./an2k/src/bin/histogen/chkfile.c ./an2k/src/bin/histogen/chkf
 +
  /*****************************************************************************/
  int initialize_linked_list() {
- 
-Binary files ./a/nbis_v5_0_0.zip and ./b/nbis_v5_0_0.zip differ
