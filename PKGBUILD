@@ -4,13 +4,13 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Unofficial 7Plus desktop application."
 arch=('x86_64' 'arm7h' 'aarch64')
-url="https://gitlab.com/7plus/application"
+url="https://gitlab.com/linuxbombay/7plus"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("Stan-bin")
-source=("https://gitlab.com/7plus/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('e4286ee8e7ceec78abcb512ed4f6d86cf854a083a5314d718777772dfd3f90b5')
 
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
