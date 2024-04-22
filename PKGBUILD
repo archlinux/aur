@@ -35,5 +35,5 @@ build() {
 
 package() {
     install -D -m755 "${_binarydir}/${_pkgname}" -t "${pkgdir}/usr/bin"
-    install -D -m644 "${_sourcedir}/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+    install -D -m644 "${_sourcedir}/${_pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
 }
