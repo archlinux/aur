@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-paperwm-redux-git
 	pkgdesc = Fork of PaperWM (a gnome scrolling window manager) focused on supporting the latest Gnome release(s) and continually implementing fixes and new features quickly.
-	pkgver = r3373.f373a21
+	pkgver = r3382.a1ba1b2
 	pkgrel = 1
 	url = https://github.com/PaperWM-redux/PaperWM
 	arch = any
