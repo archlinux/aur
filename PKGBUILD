@@ -2,7 +2,7 @@
 
 pkgbase=mounriver-studio-community-bin
 pkgname=(${pkgbase})
-pkgver=160
+pkgver=170
 pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
@@ -20,9 +20,11 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
     'ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms).'
     'wchisp: WCH ISP Tool in Rust')
 source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver}.tar.xz")
-sha256sums=('ea0c0a896dbfdcb5db5f013a91aa6ad800ad3d622b24f296251a43f0e7b8d172')
+sha256sums=('e1c5a2b61e21f4b9a696a37f95aaeb6ccc97b276b88a691400cf9da4d621efb0')
 options=('!strip')
 noextract=(${pkgbase}-${pkgver}.tar.xz)
+
+export LC_CTYPE="zh_CN.UTF-8"
 
 prepare() {
     tar -xf "${srcdir}/${pkgbase}-${pkgver}.tar.xz" --strip-components=1 -C "${srcdir}/"
@@ -30,7 +32,6 @@ prepare() {
 }
 
 package_mounriver-studio-community-bin() {
-    export LC_CTYPE="zh_CN.UTF-8"
     pkgdesc="为 Eclipse 平台爱好者提供的一款 RISC-V 内核芯片集成开发环境，支持 WCH 系列 MCU 的工程模板、代码编译、下载、调试等功能。 "
     depends=('bash'
              'libftdi-compat'
