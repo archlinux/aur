@@ -1,0 +1,23 @@
+pkgbase = android-x86-64-libxrandr
+	pkgdesc = X11 RandR extension library (Android x86-64)
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-x86-64-xorg-util-macros
+	makedepends = android-x86-64-xorgproto
+	depends = android-x86-64-libxext
+	depends = android-x86-64-libxrender
+	depends = android-x86-64-libx11
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXrandr-1.5.4.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXrandr-1.5.4.tar.xz.sig
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	md5sums = 24e0b72abe16efce9bf10579beaffc27
+	md5sums = SKIP
+
+pkgname = android-x86-64-libxrandr
