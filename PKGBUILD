@@ -1,6 +1,6 @@
 #Maintainer: Daniel Lehmann <daniellehmann28@outlook.de>
 pkgname=sliver-git
-pkgver=1.5.39.r484.ga9f885a
+pkgver=1.5.39.r1065.g6a30b8a
 pkgrel=1
 pkgdesc="Sliver is a an opensource C2 framework designed by bishop fox"
 url="https://github.com/BishopFox/sliver"
