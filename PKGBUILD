@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=acodec-bin
 _pkgname=ACodec
-pkgver=2.5.4
-pkgrel=6
+pkgver=2.5.5
+pkgrel=1
 pkgdesc="Encoder & decoder for various algorithms with graphical user interface."
 arch=(
     "aarch64"
@@ -21,10 +21,10 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/downloa
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-aarch64-bin.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-x86-bin.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-x86_64-bin.tar.gz")
-sha256sums_aarch64=('6cd4820eb31ba2aaf8d83d7fb250c248a97a90f0d3b651501ce10187922483bf')
-sha256sums_armv7h=('326442abe0b053e571d1bafe08a2ab7d1a26d14488b5f9473c7f7eeaa8fb7dd3')
-sha256sums_i686=('32e94dae17ff3e80341d4d5ebcb4a503e6b6c73a9a74e27c24cfa60771d5a342')
-sha256sums_x86_64=('42ba192af6a7b23ee11a9568ece9e7a3cb32ca99e9088b9cc8211c45b6e7b364')
+sha256sums_aarch64=('cee2d61fc1b077d620c09cb6e3e989587d23d7472781d6e44e01805f5a3f5656')
+sha256sums_armv7h=('20208ee3c85fc57b2c5084193d39b2db5404c5c26238b7439fcd13bffb8be2a5')
+sha256sums_i686=('9acd98f1246633388746bc37f314a8bb281e49d839dad037f5befa7d70ad715d')
+sha256sums_x86_64=('81aa0edf486a5a728c724b12d765678e4a15820732462b5d8a5a7d5725dd14ba')
 build() {
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
     cp "${srcdir}/${pkgname%-bin}.desktop" "${srcdir}/${pkgname%-bin}w.desktop"
