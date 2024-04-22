@@ -1,7 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lyricistant-bin
-pkgver=3.3.4
-_subver=web.electron
+pkgver=3.4.0
 _electronversion=30
 pkgrel=1
 pkgdesc="A helpful writing assistant for lyricists!"
@@ -19,12 +18,12 @@ depends=(
 makedepends=(
     'fuse2'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}%2B${_subver}/${pkgname%-bin}-linux_arm64.AppImage")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}%2B${_subver}/${pkgname%-bin}-linux_x86_64.AppImage")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux_arm64.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux_x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
 sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('920cd755a8c31e5da3aadab7d43ea38550296d974041f055fec3dbc46d77ba34')
-sha256sums_x86_64=('25c87e71050c923417cf05f9c6b7e039c47391c85b6149e315adc2c68de9e1fa')
+sha256sums_aarch64=('7b6132f1a49685cc02ed030320f06d6f41402c16b375f252828c7afa64fab09e')
+sha256sums_x86_64=('c919348081b6bcfb2e1373a0974a627d1b38474555c268f338afeee057cf8053')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
