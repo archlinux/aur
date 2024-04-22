@@ -1,4 +1,4 @@
-# Maintainer: Anakojm <https://anakojm.net/a-propos/#contact>
+# Maintainer: Anakojm <https://anakojm.net/about.html>
 
 pkgname="aoc-cli-git"
 pkgver="r111.8192ad5"
