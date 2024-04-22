@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.38.65.r0.g40e6bb08
+pkgver=1.38.70.r0.gd286159a
 _electronversion=26
 _nodeversion=18
 pkgrel=1
@@ -18,9 +18,9 @@ depends=(
 )
 makedepends=(
     'npm'
+    'pnpm'
     'git'
     'nvm'
-    'yarn'
     'gendesk'
     'python-setuptools'
     'base-devel'
@@ -58,8 +58,9 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
+    pnpm config set store-dir "${srcdir}/.pnpm_store"
+    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
+    pnpm config set link-workspace-packages true
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
@@ -68,8 +69,8 @@ build() {
         echo "Your network is OK."
     fi
     export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run prepare-build
+    pnpm install
+    pnpm run prepare-build
     npx electron-builder -l --dir
 }
 package() {
