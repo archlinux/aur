@@ -8,8 +8,9 @@ pkgrel='1'
 arch=('x86_64')
 url='https://github.com/yusufcanb/tlm'
 license=('Apache-2.0')
-depends=('ollama' 'glibc')
+depends=('glibc')
 makedepends=('go')
+optdepends=('ollama: ollama required, can be on another machine.')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/yusufcanb/tlm/archive/refs/tags/${pkgver}.tar.gz")
 b2sums=('fde1d7f1213895aea8730d4f2903950b89330b059aa0bdf8ca2aa581c3f72051167b51562c6f36cc16f314cb9ecc209b130a71a051cdb338d4057651aa9b0156')
 
