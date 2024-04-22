@@ -1,13 +1,12 @@
 pkgbase = ldtk-bin
 	pkgdesc = Modern and efficient 2D level editor with a strong focus on user-friendliness
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ldtk.io/
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
-	depends = electron24-bin
-	depends = hicolor-icon-theme
+	depends = electron24
 	depends = libdbusmenu-glib
 	provides = ldtk=1.5.3
 	conflicts = ldtk

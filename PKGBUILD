@@ -3,7 +3,7 @@ pkgname=ldtk-bin
 _pkgname=LDtk
 pkgver=1.5.3
 _electronversion=24
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern and efficient 2D level editor with a strong focus on user-friendliness"
 arch=('x86_64')
 url="https://ldtk.io/"
@@ -12,8 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
+    "electron${_electronversion}"
     'libdbusmenu-glib'
 )
 makedepends=(
@@ -30,7 +29,7 @@ sha256sums=('8bb1c870ab35d2cadfbf08a119d3049e7986a2a80558d2610babc67fcd502566'
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
           -e "s|@appname@|${pkgname%-bin}|g" \
-          -e "s|@runname@|app|g" \
+          -e "s|@runname@|app.asar|g" \
           -e "s|@options@|levelIndex=1|g" \
           -i "${srcdir}/${pkgname%-bin}.sh"
     mv "${srcdir}/${_pkgname} ${pkgver} installer.AppImage" "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
