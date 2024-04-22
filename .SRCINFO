@@ -1,0 +1,24 @@
+pkgbase = pispy-git
+	pkgdesc = A terminal-based tool for looking up stuff in PyPI
+	pkgver = 0.7.0.r0.g33f063e
+	pkgrel = 1
+	url = https://github.com/davep/pispy
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-httpx
+	depends = python-textual
+	depends = python-typing_extensions
+	depends = python-packaging
+	depends = python-linkify-it-py
+	provides = pispy
+	conflicts = pispy
+	source = pispy-git::git+https://github.com/davep/pispy
+	sha256sums = SKIP
+
+pkgname = pispy-git
