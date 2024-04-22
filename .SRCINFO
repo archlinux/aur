@@ -1,6 +1,6 @@
 pkgbase = mpr
 	pkgdesc = Wrapper for MicroPython mpremote tool
-	pkgver = 1.23
+	pkgver = 1.24
 	pkgrel = 1
 	url = https://github.com/bulletmark/mpr
 	arch = any
@@ -12,8 +12,9 @@ pkgbase = mpr
 	makedepends = python-setuptools-scm
 	depends = python>=3.6
 	depends = python-platformdirs
+	depends = python-argcomplete
 	depends = python-inotify-simple
-	source = mpr-1.23.tar.gz::https://github.com/bulletmark/mpr/archive/1.23.tar.gz
-	sha1sums = 05f302a2fc58aced9870bf90d1d57642b8917f4a
+	source = mpr-1.24.tar.gz::https://github.com/bulletmark/mpr/archive/1.24.tar.gz
+	sha1sums = 7f55a857250cbd4002efd5cf0cbdc369830f323e
 
 pkgname = mpr
