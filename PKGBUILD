@@ -8,7 +8,7 @@
 
 pkgname=ffmpeg-headless
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -106,7 +106,7 @@ provides=(
 conflicts=('ffmpeg')
 _tag='6f4048827982a8f48f71f551a6e1ed2362816eec'
 source=("$pkgname::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}")
-b2sums=('SKIP')
+b2sums=('9c19bd6b68d4224af2a93fdce199fd0ce9b00432c8818801d124ca993ac45a01d3a7618b66804c02c1f26787a5ca88d2d9f682f3e819cee8c2b6b3dc77e64052')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
@@ -125,6 +125,10 @@ prepare() {
   git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
   # Fix build with latest vulkan headers
   git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e
+  # avcodec/nvenc: stop using long deprecated format specifiers
+  git cherry-pick -n 43b417d516b0fabbec1f02120d948f636b8a018e
+  # avcodec/nvenc: support SDK 12.2 bit depth API
+  git cherry-pick -n 06c2a2c425f22e7dba5cad909737a631cc676e3f
 }
 
 pkgver() {
