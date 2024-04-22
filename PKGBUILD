@@ -1,26 +1,26 @@
-# Maintainer: Silvio <s.i.l.v.io..f.r.i.c.k.e@gmail.com>
-# Contribute via: https://github.com/silvio/archlinux-package--shellcheck-bin
-
+# Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: Silvio <s.i.l.v.io..f.r.i.c.k.e@gmail.com>
 # Contributor: katt <magunasu.b97@gmail.com>
 
-pkgname=shellcheck-bin
+_pkgname=shellcheck
+pkgname="${_pkgname}-bin"
 pkgdesc='Shell script analysis tool (binary release, static)'
 pkgver=0.10.0
 pkgrel=1
 url='https://shellcheck.net'
 arch=('x86_64' 'armv6h' 'aarch64')
 license=(GPL-3.0-only)
-provides=("shellcheck")
-conflicts=("shellcheck")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
-source_x86_64=("https://github.com/koalaman/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}.linux.x86_64.tar.xz")
-source_armv6h=("https://github.com/koalaman/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}.linux.armv6hf.tar.xz")
-source_aarch64=("https://github.com/koalaman/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}.linux.aarch64.tar.xz")
+source_x86_64=("https://github.com/koalaman/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux.x86_64.tar.xz")
+source_armv6h=("https://github.com/koalaman/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux.armv6hf.tar.xz")
+source_aarch64=("https://github.com/koalaman/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux.aarch64.tar.xz")
 
-sha512sums_x86_64=('31006830087c2b9ffe9fa36c1ab4a8b11c85078cac8203265d0cfd630c70a4a506e66dd9d7ccde964360ad95045894149de457db34f10cad76708c7a4aa544ca')
-sha512sums_armv6h=('466acfbd956d6a90f7e66c852b62fc0b9c236c1315ee58b0658780549f1b73c9a13cf203574de5969cf665f99046c4cff234813ffa45732eb7b0ea083350b4d1')
-sha512sums_aarch64=('77abeaa8bee293264ebfd94a2021bd490695ed5518f2da7c0f9ec4b402cd1e5da6642a0e9f953961510cef7351cc9afae7c7a528a597d1befd1867b8c69e15b1')
+b2sums_x86_64=('9cf6eeccb13770808a6efdedd27b85c925f0ab899a82ac8fdf8c16e9133d3f91b5b80900a3c1e11ee7b0b035aab1c08d439b682a479c5b47a218e55bc08562c5')
+b2sums_armv6h=('89788bf2de2c7c1fc1b78a64c1e28c08fea5fd29928c198cb80989191f63bcda6c9e0ebda5a5ffb471f7331292740486bc2f1cc894d30e8b704e6d2fb4a925f1')
+b2sums_aarch64=('6402fe9230c44dbf4620d019bd505246f06d7b96233d57b154f1b6a453f116e8c633768f8bce8f2031672a8df7dcac4de9ea5ebf6274444e450718b1cd300b4b')
 
 package() {
-    install -Dm755 "${pkgname%-bin}-v${pkgver}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${_pkgname}-v${pkgver}/${_pkgname}" -t "${pkgdir}/usr/bin"
 }
