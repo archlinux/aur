@@ -8,17 +8,13 @@ pkgdesc="Sans serif font made by Syafrizal a.k.a. Khurasan"
 arch=(any)
 url="https://www.dafont.com/mat-saleh.font"
 license=('unknown')
-source=("https://dl.dafont.com/dl/?f=mat_saleh")
+source=("${_reponame}.zip::https://dl.dafont.com/dl/?f=mat_saleh")
 sha512sums=('SKIP')
 
 package_ttf-mat_saleh() {
-  cd "${_reponame}"
-
   install -Dm644 -t "$pkgdir/usr/share/fonts/mat_saleh" *.ttf
 }
 
 package_otf-mat_saleh() {
-  cd "${_reponame}"
-
   install -Dm644 -t "$pkgdir/usr/share/fonts/mat_saleh" *.otf
 }
