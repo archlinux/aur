@@ -2,7 +2,9 @@
  * Vault configuration. See: https://vaultproject.io/docs/config/
  */
 
-backend "file" {
+ui = true
+
+storage "file" {
 	path = "/var/lib/vault"
 }
 

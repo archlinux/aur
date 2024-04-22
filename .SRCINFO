@@ -1,16 +1,14 @@
 pkgbase = vault-git
 	pkgdesc = A tool for managing secrets
-	pkgver = v0.8.0.r13.g4bbaaac6b
+	pkgver = v1.2.0.8635.g54304bf6f4
 	pkgrel = 1
 	url = https://vaultproject.io/
 	install = vault.install
 	arch = i686
 	arch = x86_64
-	license = MPL
-	makedepends = gox
-	makedepends = go
-	depends = glibc
-	depends = libcap
+	license = BUSL-1.1
+	makedepends = go>=1.21.8
+	makedepends = git
 	provides = vault
 	conflicts = vault
 	source = vault-git::git+https://github.com/hashicorp/vault/
@@ -18,7 +16,6 @@ pkgbase = vault-git
 	source = vault.hcl
 	sha512sums = SKIP
 	sha512sums = a97d10208fd99b29cf532c9b5882fe1bbb3faee1d1d706f95a9c379fef461c65a9f16c8530438920024e69871ebd8c7329e6b65025ad65092950bfb74ce393b3
-	sha512sums = 8c064aa5dcca84822c1fa85e9d0ff520df46f794b2e9c689a9b4f81f74279387b3aebc08b3ca26cf786c2fcf1a330e765bf5a511074c24f87e5346672346ba1c
+	sha512sums = ee6f91c766415fcd38d9929e9715609bd63abf1ccd6fc618c0655c09dadb1dfbf146c4e9ed7d789a8ff75a1dcdbbc17ff0bb1795e7dcc8f595d68d9b538fb67a
 
 pkgname = vault-git
-

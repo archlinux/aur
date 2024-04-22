@@ -1,0 +1,7 @@
+*
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore
+!/vault.install
+!/vault.service
+!/vault.hcl
