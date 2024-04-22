@@ -6,7 +6,7 @@ pkgdesc="Sliver is a an opensource C2 framework designed by bishop fox"
 url="https://github.com/BishopFox/sliver"
 arch=('any')
 depends=()
-makedepends=('go>=1.18' 'make' 'sed' 'tar' 'curl' 'zip' 'unzip' 'which')
+makedepends=('git' 'go>=1.18' 'make' 'sed' 'tar' 'curl' 'zip' 'unzip' 'which')
 optdepends=()
 license=('BSD-3-Clause')
 provides=("${pkgname%-git}")

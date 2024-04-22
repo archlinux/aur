@@ -5,6 +5,7 @@ pkgbase = sliver-git
 	url = https://github.com/BishopFox/sliver
 	arch = any
 	license = BSD-3-Clause
+	makedepends = git
 	makedepends = go>=1.18
 	makedepends = make
 	makedepends = sed
