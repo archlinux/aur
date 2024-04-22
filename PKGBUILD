@@ -4,9 +4,9 @@ _appname=GitHubDesktop
 pkgname="${_pkgname}-zh-bin"
 pkgver=3.3.12_linux2
 #_zhpkgver="${pkgver%_linux2}"
-_zhpkgver=3.3.13
+_zhpkgver=3.3.14
 _electronversion=28
-pkgrel=3
+pkgrel=4
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版"
 arch=(
     'aarch64'
@@ -34,11 +34,11 @@ source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/
 source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/release-${pkgver//_/-}/${_appname}-linux-armhf-${pkgver//_/-}.deb")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/release-${pkgver//_/-}/${_appname}-linux-amd64-${pkgver//_/-}.deb")
 source=(
-    "${_pkgname}-${_zhpkgver}-zh.7z::${_ghzhurl}/releases/download/${_zhpkgver}/${_appname}${_zhpkgver}.7z"
+    "${_pkgname}-${_zhpkgver}-zh.7z::${_ghzhurl}/releases/download/${_zhpkgver}/${_appname}.7z"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bb3ad0d6ba224e36988ffd2afd0a643885c93cf7b4901e3f1dea185e80c4f2e6'
+sha256sums=('2fa130e6dc7ccba95da7149e110f2ade789d0dee004a44d53b9e4a44f7684b2e'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 sha256sums_aarch64=('0bd782bee7ff4f05d08988d9f3cc528b26aa8bcf9ca699ab2e24984f24029268')
