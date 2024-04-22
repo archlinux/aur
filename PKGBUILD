@@ -1,48 +1,51 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-
+# Maintainer: zt64 <zt@zt64.dev>
 pkgname=jadx-git
-_gitname=jadx
-pkgver=0.8.0.735.a8febb2
+pkgdesc="Command line and GUI tools to produce Java source code from Android Dex and APK files"
+pkgver="r2190.ce527ed"
 pkgrel=1
-pkgdesc='Command line and GUI tools to produce Java source code from Android Dex and APK files'
-url='https://github.com/skylot/jadx'
-arch=('any')
-license=('Apache')
-depends=('java-runtime=8' 'bash' 'fontconfig' 'xorg-font-utils')
-makedepends=('git' 'java-environment=8' 'gradle')
-provides=('jadx')
-conflicts=('jadx')
-source=(${pkgname}::git+https://github.com/skylot/${_gitname})
-sha512sums=('SKIP')
+
+arch=("any")
+url="https://github.com/skylot/jadx"
+license=("Apache-2.0")
+
+depends=("java-runtime>=11" "sh")
+makedepends=("git" "java-environment>=11")
+optdepends=()
+
+provides=("jadx")
+conflicts=("jadx")
+
+source=("$pkgname::git+$url.git")
+
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|cut -dv -f2|cut -d- -f1)" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd ${pkgname}
-  gradle dist
+  cd "$pkgname"
+
+  ./gradlew dist --no-daemon
 }
 
 check() {
-  cd ${pkgname}
-  gradle test
+  cd "$pkgname"
+  ./gradlew test --no-daemon
 }
+
 
 package() {
   cd ${pkgname}/build/jadx
 
-  install -Dm 755 bin/{jadx,jadx-gui} -t "${pkgdir}/usr/share/java/${_gitname}/bin"
-  install -Dm 644 lib/* -t "${pkgdir}/usr/share/java/${_gitname}/lib"
+  install -Dm 755 bin/{jadx,jadx-gui} -t "${pkgdir}/usr/share/java/${pkgname}/bin"
+  install -Dm 644 lib/* -t "${pkgdir}/usr/share/java/${pkgname}/lib"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s /usr/share/java/${_gitname}/bin/jadx "${pkgdir}/usr/bin/jadx"
-  ln -s /usr/share/java/${_gitname}/bin/jadx-gui "${pkgdir}/usr/bin/jadx-gui"
+  ln -s /usr/share/java/${pkgname}/bin/jadx "${pkgdir}/usr/bin/jadx"
+  ln -s /usr/share/java/${pkgname}/bin/jadx-gui "${pkgdir}/usr/bin/jadx-gui"
 
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 NOTICE README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
-
-# vim: ts=2 sw=2 et:
