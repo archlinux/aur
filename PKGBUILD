@@ -2,14 +2,14 @@
 
 pkgname=lune
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="[Latest Stable Source] A standalone Luau script runtime"
 arch=(x86_64 aarch64)
 conflicts=(lune-git lune-bin)
 url="https://lune-org.github.io/docs"
 license=(MPL2)
 depends=(glibc)
-makedepends=(cargo)
+makedepends=(cargo cmake)
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/filiptibell/lune/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('f91ffc22ad6416231180197f39a437b7241131d80544ac7df88f56193875e50a')
