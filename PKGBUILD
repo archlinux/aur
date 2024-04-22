@@ -1,11 +1,11 @@
-# Maintainer: cqz5555 < cqzw555@163.com >
+# Contributor: cqz5555 < cqzw555@163.com >
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=python-visvis
 pkgver=1.14.0.r3.gd8f36d4
 _commit=d8f36d4b33554a24918c7043188ccffcc054690e
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for visualization of 1D to 4D data"
 url="https://github.com/almarklein/visvis"
 arch=('any')
@@ -26,13 +26,12 @@ makedepends=(
   'python-wheel'
 )
 optdepends=(
-  'pyside2: for another Qt5 GUI backend'
-  'pyside6: for another Qt6 GUI backend'
-  'python-glfw: for GLFW GUI backend'
-  'python-pyfltk: for an FLTK GUI backend'
-  'python-pyqt5: for a Qt5 GUI backend'
-  'python-pyqt6: for a Qt6 GUI backend'
-  'python-wxpython: for the WxWidgets GUI backend'
+  'pyside6: altenative Qt6 GUI backend'
+  'python-glfw: GLFW GUI backend'
+  'python-pyfltk: FLTK GUI backend'
+  'python-pyqt5: Qt5 GUI backend'
+  'python-pyqt6: Qt6 GUI backend'
+  'python-wxpython: WxWidgets GUI backend'
 )
 checkdepends=(
   'python-pytest'
