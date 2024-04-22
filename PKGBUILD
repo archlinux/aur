@@ -3,7 +3,7 @@
 _pkgname=liquidlauncher
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A LiquidBounce launcher for Minecraft, written in Rust using Tauri."
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=(!strip)
 _appimage="${_pkgname}_${pkgver}_amd64.AppImage"
 noextract=("${_appimage}")
 source=("https://github.com/CCBlueX/LiquidLauncher/releases/download/${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage.tar.gz")
-sha256sums=('472c5e193162cf6813aeb75ae34baa396e8814ad5b297131b758af0b8b704711')
+sha256sums=('1c1c26348a36a4a26ef9ead8bbe6fe8452b6f92850e0d72527f7b60a2b258951')
 
 prepare() {
     tar -xzf "${_appimage}.tar.gz"
