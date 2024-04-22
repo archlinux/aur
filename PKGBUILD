@@ -3,7 +3,7 @@
 pkgname=python-garth
 _name=${pkgname#python-}
 pkgver=0.4.45
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module for Garmin SSO auth + Connect client"
 arch=(any)
 url="https://github.com/matin/garth"
