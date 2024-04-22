@@ -1,6 +1,6 @@
 pkgbase = lucky
 	pkgdesc = A Crystal command-line tool for generating new Lucky Web Applications
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/luckyframework/lucky_cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lucky
 	depends = shards
 	provides = lucky
 	conflicts = lucky-git
-	source = https://github.com/luckyframework/lucky_cli/archive/v1.1.1.tar.gz
-	sha256sums = 8f1f74e3b8be11ad7fbd461dc395eee493ed6f8400c22b7b510033f851a24c50
+	source = https://github.com/luckyframework/lucky_cli/archive/v1.2.0.tar.gz
+	sha256sums = 3da15f5f8dd9a5e4855994559d2fc0279caf87c983b51440e2476e46116e37db
 
 pkgname = lucky
