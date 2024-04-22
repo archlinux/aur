@@ -1,7 +1,7 @@
 # Maintainer: 'Radiolin' <anton.osi2011@gmail.com>
 gitname=cassette
 pkgname=cassette-dev
-pkgver=0.1.4.1
+pkgver=0.1.4.20240422
 pkgrel=1
 pkgdesc="GTK4/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux."
 arch=('x86_64' 'aarch64')
