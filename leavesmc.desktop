@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=LeavesMC
+Comment=Fork of Paper aimed at repairing broken vanilla properties.
+Exec=leavesmc-gui
+Icon=leavesmc
+Terminal=fale
+StartupNotify=false
+Categories=Game;
+StartupWMClass=top.leavesmc.leaves

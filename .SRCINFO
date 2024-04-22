@@ -1,0 +1,23 @@
+pkgbase = leavesmc-git
+	pkgdesc = Fork of Paper aimed at repairing broken vanilla properties.
+	pkgver = 1.20.4+335f748
+	pkgrel = 2
+	url = https://leavesmc.org/
+	arch = any
+	license = custom
+	depends = java-runtime>=17
+	depends = awk
+	optdepends = screen
+	conflicts = leavesmc
+	source = leavesmc.png
+	source = leavesmc.desktop
+	source = leavesmc-launch-script
+	source = leavesmc-launch-script-gui
+	source = leavesmc-git::git+https://github.com/LeavesMC/Leaves.git
+	sha256sums = 720ee68108bbe12c362cf5ed05b3ad5b28bbaf53f3d7952d389bfc404a5baaac
+	sha256sums = bf4126de32cb04e8f9bf932d8b790105adec10f032b467061ab662e92d9400bf
+	sha256sums = 60eb9f0bf69f3250409405e7bce73059ce766fe41bc789bb002245a6dc11ff28
+	sha256sums = 075b414af5a20c909b028c2c07da219e1c3acb6dc2c214ba53c8082733354ff8
+	sha256sums = SKIP
+
+pkgname = leavesmc-git
