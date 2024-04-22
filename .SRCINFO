@@ -6,6 +6,7 @@ pkgbase = mangal-bin
 	arch = x86_64
 	license = MIT
 	provides = mangal
+	conflicts = mangal-git
 	source = https://github.com/metafates/mangal/releases/download/v4.0.6/mangal_4.0.6_Linux_x86_64.tar.gz
 	sha256sums = 396991e92e466849384aacbe338302b68592a4214dd14cd4ce62b05f7575fa61
 

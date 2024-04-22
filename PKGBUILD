@@ -9,6 +9,7 @@ license=('MIT')
 provides=('mangal')
 source=("https://github.com/metafates/mangal/releases/download/v${pkgver}/mangal_${pkgver}_Linux_${arch}.tar.gz")
 sha256sums=('396991e92e466849384aacbe338302b68592a4214dd14cd4ce62b05f7575fa61')
+conflicts=('mangal-git')
 
 package() {
 	install -Dm755 ./mangal "$pkgdir/usr/bin/mangal"
