@@ -2,7 +2,7 @@
 # Contributor: Polarian <polarian@polarian.dev>
 
 pkgname=saber
-pkgver=0.21.3
+pkgver=0.21.4
 pkgrel=1
 pkgdesc="The cross-platform notes app built for handwriting"
 arch=('x86_64')
@@ -22,12 +22,13 @@ depends=('at-spi2-core'
 makedepends=('clang' 'cmake' 'fvm' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "saber.sh")
-sha256sums=('1869973a8eb40fa243345235320a34becacdc4d09757fef5aa3307276c69f43a'
+sha256sums=('addf76163d0859754ac94e2ec19fcfe06623e8044a11ef73f861504127625956'
             '2b563ad53416aba926c6f6983daefbe3294be44ff95f3406fa5247ae596a4fa0')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
-    echo y | fvm global stable
+    fvm install stable
+    fvm global stable
 
     # Disable analytics and enable linux desktop
     fvm flutter --no-version-check config --no-analytics
