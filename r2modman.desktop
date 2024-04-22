@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=r2modman
+Exec=r2modman %U
+Terminal=false
+Type=Application
+Icon=r2modman
+StartupWMClass=r2modman
+Comment=A simple and easy to use mod manager for several games using Thunderstore.
+MimeType=x-scheme-handler/ror2mm;
+Categories=Game;
