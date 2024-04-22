@@ -8,7 +8,6 @@ pkgdesc="A transparent proxy program powered by cgroup2 and tproxy"
 arch=('x86_64')
 url="https://github.com/springzfx/cgproxy"
 license=('GPL-2.0-or-later')
-groups=()
 makedepends=('cmake' 'nlohmann-json' 'clang' 'bpf' 'libbpf')
 depends=('libbpf' 'iproute2' 'which')
 provides=('cgproxy')
@@ -24,7 +23,7 @@ function pkgver() {
 
 backup=('etc/cgproxy/config.json')
 
-function build(){
+function build() {
 	mkdir -p "${srcdir}/${pkgname}/build"
 	cd "${srcdir}/${pkgname}/build"
 	cmake -DCMAKE_BUILD_TYPE=Release \
@@ -35,7 +34,7 @@ function build(){
 	make
 }
 
-package_cgproxy-git(){
+function package() {
 	cd "${srcdir}/${pkgname}"/build
 	make DESTDIR="${pkgdir}" install
 }
