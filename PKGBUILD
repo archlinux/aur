@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
-pkgver=4.1.3.r24.g6472577
+pkgver=4.2.0.r0.g6ca847b
 epoch=1
 pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
@@ -22,9 +22,11 @@ source=("$pkgname::git+$url.git"
 		"miniaudio::git+https://github.com/mackron/miniaudio.git"
 		"discord::git+https://github.com/craftablescience/discord-rpc-clean.git"
 		"indicators::git+https://github.com/p-ranav/indicators.git"
+		"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
 		#Submodule for submodules
 		"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -52,6 +54,7 @@ prepare() {
 	git config submodule.src/cli/thirdparty/indicators.url "$srcdir/indicators"
 	git config submodule.src/cli/thirdparty/argparse.url "$srcdir/argparse"
 	git config submodule.src/lib/thirdparty/minizip-ng.url "$srcdir/minizip-ng"
+	git config submodule.src/lib/thirdparty/cryptopp.url "$srcdir/cryptopp"
 	git -c protocol.file.allow=always submodule update
 
 	cd "$srcdir/$pkgname/src/gui/thirdparty/sourcepp"
