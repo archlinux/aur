@@ -3,9 +3,9 @@ _appname=typora
 pkgname="${_appname}-free-with-plugin"
 _pkgname=Typora
 pkgver=0.11.18
-_pluginver=1.8.24
+_pluginver=1.8.26
 _electronversion=13
-pkgrel=4
+pkgrel=5
 pkgdesc="A minimal markdown editor and reader(free version). with obgnail/typora_plugin plugin."
 arch=(
     "aarch64"
@@ -35,7 +35,7 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_dlurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_dlurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
-sha256sums=('ca8b91d254c9c195acfdf740858358a6f96a1d55a0b1c4ba623d3559d951520f')
+sha256sums=('c37947e1976a24b8ca7c872326cdf11d73522c075ba05d409208cc097ba322f2')
 sha256sums_aarch64=('12ad46732c4da7d9414701c584fee942baf83b89165563f18ba03d859eb59ad8')
 sha256sums_x86_64=('a202935a754c4b7344cc947db143e12885e4a716ca5f70f607f0318c346bb6c6')
 build() {
