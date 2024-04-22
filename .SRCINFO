@@ -1,0 +1,13 @@
+pkgbase = pmrr
+	pkgdesc = Poor man's reboot-required
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Blutkoete/pmrr
+	arch = x86_64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	backup = etc/pmrr.conf
+	source = pmrr-1.0.1.tar.gz::https://github.com/Blutkoete/pmrr/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = b23365609cfeb3f5f2a20f7ed28348ac2c03004f45633a3d00c21fa8beaf2c8e
+
+pkgname = pmrr
