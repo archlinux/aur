@@ -1,7 +1,7 @@
 # Maintainer: kerel <kerel at mailbox dot org>
 
 pkgname=giza-git
-pkgver=r715.a6cefc4
+pkgver=r751.72d3703
 pkgrel=1
 pkgdesc="giza - a scientific plotting library for C/Fortran"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/danieljprice/giza"
 branch="master"
 license=('GPL2')
 depends=()
-makedepends=('git')
+makedepends=('git' 'gcc-fortran')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("giza::git+$url.git#branch=$branch")
