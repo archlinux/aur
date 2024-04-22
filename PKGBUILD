@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-library-callnumber-lc'
-pkgver='0.22'
+pkgver='0.23'
 pkgrel='1'
 pkgdesc="Deal with Library-of-Congress call numbers"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
-makedepends=()
-url='http://search.cpan.org/dist/Library-CallNumber-LC'
-source=('http://search.cpan.org/CPAN/authors/id/D/DB/DBWELLS/Library-CallNumber-LC-0.22.tar.gz')
-md5sums=('b25acaa6354e38b7623e084a1f9ce40a')
-sha512sums=('09dfda7c0b7ce549db583fd5a5a1fca726a2ef58cff150edc34861d872edbe0ac286071d6950d39d18e7b4aceef4d7db298c6f66736d019b859e420d14991cf8')
-_distdir="Library-CallNumber-LC-0.22"
+depends=('perl>=0')
+makedepends=('perl-module-build>=0.38')
+url='https://metacpan.org/release/Library-CallNumber-LC'
+source=('http://search.cpan.org/CPAN/authors/id/D/DB/DBWELLS/Library-CallNumber-LC-0.23.tar.gz')
+md5sums=('9b077cc9fc75f7142cd3f78ad91bb000')
+sha512sums=('f266149b829208dc95a0a7367e11a91f3925ba959b511a0fe0818d52371096350a5d663c5499c8a2df6cced5b82de4c3a968623fa9dab0ec72e09f3e4c1501b4')
+_distdir="Library-CallNumber-LC-0.23"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
