@@ -1,7 +1,7 @@
 pkgbase = realesrgan-ncnn-vulkan
 	pkgdesc = NCNN implementation of Real-ESRGAN
 	pkgver = 0.2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan
 	arch = x86_64
 	license = MIT
@@ -17,8 +17,10 @@ pkgbase = realesrgan-ncnn-vulkan
 	source = git+https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan#tag=v0.2.0
 	source = https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-ubuntu.zip
 	source = realesrgan-ncnn-vulkan
-	sha256sums = SKIP
+	source = cmake.patch
+	sha256sums = d07937c80a6befb563e9ab87e532ce8935cf653738427b1a905da322f957e283
 	sha256sums = e5aa6eb131234b87c0c51f82b89390f5e3e642b7b70f2b9bbe95b6a285a40c96
 	sha256sums = 058bc5167a00ff53a6a135ed033797a4d012bdb86e930ba4eb271ab4c848f8df
+	sha256sums = 8e1e31f2710893552caf3917585b945cd2054b7d9f9eabe6b8672ac97750ae9e
 
 pkgname = realesrgan-ncnn-vulkan
