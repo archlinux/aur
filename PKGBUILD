@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytdownloader-gui-bin
 _pkgname=YTDownloader
-pkgver=3.17.3
+pkgver=3.17.4
 _electronversion=27
-pkgrel=2
+pkgrel=1
 pkgdesc="A modern GUI App for downloading Videos and Audios from hundreds of sites."
 arch=('x86_64')
 url="https://ytdn.netlify.app/"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_Linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b65bbeff9e2566b08de71cc7165ce0aca89f34e26eff86dc4ab5697e3be85850'
+sha256sums=('5e2b35b3079ab8a87e36f2fe4925f3754042b42e16d8d0acf1381b02b3334f54'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
