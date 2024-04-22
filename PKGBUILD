@@ -1,5 +1,6 @@
 # Maintainer: Matthias Mailänder <matthias@mailaender.name>
 pkgname=mzmine3
+pkgdesc='mass-spectrometry data processing'
 pkgver=4.0.3
 pkgrel=1
 arch=('any')
