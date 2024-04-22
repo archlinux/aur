@@ -1,16 +1,17 @@
 pkgbase = python-orjson-git
 	pkgdesc = Fast, correct Python JSON library supporting dataclasses and datetimes (Git version)
-	pkgver = 2.5.2.r1.gd31e37b
-	pkgrel = 1
+	pkgver = 3.10.1.r0.g632345a
+	pkgrel = 2
 	url = https://github.com/ijl/orjson
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	arch = armv7h
-	license = Apache
+	license = Apache-2.0
 	license = MIT
 	makedepends = git
-	makedepends = python-pip
+	makedepends = python-installer
+	makedepends = python-maturin
 	makedepends = rust
 	depends = python
 	provides = python-orjson
@@ -19,4 +20,3 @@ pkgbase = python-orjson-git
 	sha512sums = SKIP
 
 pkgname = python-orjson-git
-
