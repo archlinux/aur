@@ -24,10 +24,7 @@ package() {
     rm -rf  $srcdir/iortcw-*
     cp -R $srcdir/* $pkgdir/usr/share/games/iortcw/
    #Binaries
-    ln -s /usr/share/games/iortcw/iowolfsp.* "$pkgdir/usr/bin/"
-    ln -s /usr/share/games/iortcw/iowolfmp.* "$pkgdir/usr/bin/"
-    ln -s /usr/share/games/iortcw/iowolfded.* "$pkgdir/usr/bin/"
-    #find /usr/share/games/iortcw/ -name 'iowolfsp.*' -exec ln -sf {} "$pkgdir/usr/bin/iowolfsp" \;
-    #find /usr/share/games/iortcw/ -name 'iowolfmp.*' -exec ln -sf {} "$pkgdir/usr/bin/iowolfmp" \;
-    #find /usr/share/games/iortcw/ -name 'iowolfded.*' -exec ln -sf {} "$pkgdir/usr/bin/iowolfded" \;
+    find /usr/share/games/iortcw/ -name 'iowolfsp.*' -exec ln -sf {} "$pkgdir/usr/bin/iowolfsp" \;
+    find /usr/share/games/iortcw/ -name 'iowolfmp.*' -exec ln -sf {} "$pkgdir/usr/bin/iowolfmp" \;
+    find /usr/share/games/iortcw/ -name 'iowolfded.*' -exec ln -sf {} "$pkgdir/usr/bin/iowolfded" \;
 }
