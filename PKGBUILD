@@ -1,11 +1,12 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Kyle Keen < keenerd at gmail >
 
 pkgname=ttf-glass-tty
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc='Hacking with style: ttf VT220'
 arch=('any')
-license=('custom:copyright')
+license=('Unlicense')
 url='http://sensi.org/~svo/glasstty/'
 #source=("http://sensi.org/~svo/glasstty/Glass_TTY_VT220.ttf")
 source=("http://www.spacerogue.net/images/Glass_TTY_VT220.ttf")
