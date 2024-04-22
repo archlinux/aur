@@ -3,48 +3,42 @@
 _pkgname="flutter"
 pkgname="$_pkgname-bin"
 pkgver=3.19.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform widget toolkit for Dart (monolithic)"
 arch=("x86_64")
 url="https://github.com/flutter/flutter"
 license=("BSD-3-Clause" "LicenseRef-Google-Patent-Grant")
 
 provides=(
+  dart
   flutter
-  flutter-engine
   flutter-tool
   flutter-target-linux
   flutter-target-android
   flutter-target-web
 )
 conflicts=(
-  # Need to conflict with all packages associated with
-  # aur/flutter and aur/flutter-artifacts-google-bin
-  # because they somehow interfere with this package.
+  dart
   flutter
   flutter-common
   flutter-devel
+  flutter-engine
   flutter-engine-android-google
-  flutter-engine-android-google-bin
   flutter-engine-common-google
-  flutter-engine-common-google-bin
   flutter-engine-linux-google
-  flutter-engine-linux-google-bin
   flutter-engine-web-google
-  flutter-engine-web-google-bin
   flutter-gradle
   flutter-gradle-google
-  flutter-gradle-google-bin
   flutter-intellij-patch
   flutter-material-fonts-google
-  flutter-material-fonts-google-bin
   flutter-sky-engine-google
-  flutter-sky-engine-google-bin
   flutter-target-android
   flutter-target-linux
   flutter-target-web
   flutter-tool
 )
+
+install="$_pkgname.install"
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.xz"
@@ -81,7 +75,7 @@ package() {
   bsdtar -xf "$srcdir/$_pkgsrc.$_pkgext" -C "$pkgdir/opt"
 
   install -Dm755 "flutter_init.sh" "$pkgdir/usr/bin/flutter_init"
-  install -Dm755 "flutter_dart.sh" "$pkgdir/usr/bin/flutter_dart"
+  install -Dm755 "flutter_dart.sh" "$pkgdir/usr/bin/dart"
   install -Dm755 "flutter.sh" "$pkgdir/usr/bin/flutter"
 
   install -Dm644 "$pkgdir/opt/flutter/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
@@ -115,6 +109,7 @@ END
 #!/usr/bin/env bash
 
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+
 APP_DIR="/opt/flutter"
 SAVE_DIR="$XDG_CACHE_HOME/flutter_local"
 MOUNT_DIR="$XDG_CACHE_HOME/flutter_sdk"
@@ -124,42 +119,37 @@ if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
   exit 1
 fi
 
-APP_DIR="/opt/flutter"
-
 if [ ! -e "$APP_DIR" ]; then
-  echo "flutter-bin is required, but not found."
+  echo "/opt/flutter not found."
   return 1
 fi
 
-if ! whereis unionfs-fuse > /dev/null 2>&1; then
-  echo "unionfs-fuse is required, but not found."
-  return 1
-fi
+_unionfs() {
+  if [ ! -e "$MOUNT_DIR/bin/flutter" ]; then
+    mkdir -p "$SAVE_DIR"
+    mkdir -p "$MOUNT_DIR"
 
-if [ ! -e "$MOUNT_DIR/bin/flutter" ]; then
-  echo "preparing flutter for use..."
+    if ! unionfs -o cow -o umask=000 "$SAVE_DIR=RW:$APP_DIR=RO" "$MOUNT_DIR" > /dev/null 2>&1; then
+      echo "unionfs failed"
+      return 1
+    fi
+  fi
+}
 
-  mkdir -p "$SAVE_DIR"
-  mkdir -p "$MOUNT_DIR"
-
-  if ! unionfs -o cow -o umask=000 "$SAVE_DIR=RW:$APP_DIR=RO" "$MOUNT_DIR"; then
-    # probably in clean chroot jail
-    # copy flutter for use
-    echo "... unionfs failed, copying to '$MOUNT_DIR'"
-    rm -rf "$MOUNT_DIR"
-    cp --reflink=auto -r --preserve=mode,timestamps /opt/flutter "$MOUNT_DIR"
-  else
-    echo "... flutter mounted with unionfs."
-    echo "... unmount when finished: fusermount -u \"$MOUNT_DIR\""
+if whoami | grep -E 'builduser|main-builder' > /dev/null 2>&1; then
+  export FLUTTER_ROOT="$APP_DIR"
+elif grep flutter <<< $(groups); then
+  export FLUTTER_ROOT="$APP_DIR"
+elif _unionfs; then
+  if [ -e "$MOUNT_DIR/bin" ]; then
+    if ! grep "$MOUNT_DIR" <<< "$PATH" > /dev/null2 >&1; then
+      export FLUTTER_ROOT="$MOUNT_DIR"
+    fi
   fi
 fi
 
-if [ -e "$MOUNT_DIR/bin" ]; then
-  if ! grep "$MOUNT_DIR" <<< "$PATH" > /dev/null; then
-    export PATH="$MOUNT_DIR/bin:$PATH"
-  fi
+if ! grep "$FLUTTER_ROOT" <<< "$PATH" > /dev/null 2>&1; then
+  export PATH="$FLUTTER_ROOT/bin:$PATH"
 fi
-
-echo
 END
 }

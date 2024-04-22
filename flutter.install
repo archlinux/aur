@@ -1,0 +1,23 @@
+post_install() {
+  groupadd -f flutter
+  setfacl -R -m "g:flutter:rwX" /opt/flutter
+
+  # needed to build with clean chroot scripts
+  for _builder in builduser main-builder; do
+    if grep "$_builder" /etc/passwd > /dev/null; then
+      setfacl -R -m "u:$_builder:rwX" /opt/flutter
+    fi
+  done
+
+  echo "Users may be added to the 'flutter' group:"
+  echo "   sudo usermod -a -G flutter"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "The 'flutter' group may be removed, if no longer needed:"
+  echo "   sudo groupdel flutter"
+}
