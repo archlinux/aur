@@ -1,7 +1,7 @@
 #Maintainer: VPeti1 (Vasko Peter) 
 
 pkgname=gohash
-pkgver=1
+pkgver=2
 pkgrel=1
 arch=('x86_64')
 
@@ -12,7 +12,7 @@ depends=('go' 'git' 'wget')
 
 source=("https://github.com/VPeti1/CWAcces/raw/main/gohash.tar.gz")
 
-sha256sums=('00fdb7b019ce012167f49be9188611f13bcaa0d7304103fdd7816e30b4e5069b')
+sha256sums=('6bb1c7b061c35c10abcab2c3c8caa6193ca5707bf36be8a5afd7e4688cf1bfb6')
 
 build() {
     cd "$srcdir"
