@@ -1,7 +1,7 @@
 # Maintainer: Sergey Mezentsev <thebits@yandex.ru>
 pkgname=elasticmq
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Amazon SQS compatible in-memory message queue"
 arch=('any')
 url="https://github.com/softwaremill/elasticmq"
