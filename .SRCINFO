@@ -5,6 +5,7 @@ pkgbase = rz-jsdec-git
 	url = https://github.com/rizinorg/jsdec.git
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = meson
 	makedepends = ninja
 	depends = rizin
