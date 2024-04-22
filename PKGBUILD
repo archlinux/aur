@@ -1,7 +1,7 @@
 # Maintainer: Stefan Dimitrijevic <stefanstele95@hotmail.com>
 
 pkgname='linvam'
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
@@ -34,7 +34,7 @@ conflicts=(
   'linvamrun'
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('565f46e4efc2b57a7f31995a0c56e8a48579bc6ee6bea287ec8d2049534afb4e')
+sha256sums=('a69a86ceb43de6a2151ba7f09224bc9c726fb3e4509118ab5c071727d8031ace')
 install=linvam.install
 
 build() {
