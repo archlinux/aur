@@ -3,7 +3,7 @@
 pkgname=shell-gpt
 _pkgname=${pkgname/-/_}
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT"
 arch=(any)
 url="https://github.com/TheR1D/shell_gpt"
@@ -39,6 +39,11 @@ prepare() {
   # files from the package.
   echo "[tool.hatch.build]" >> pyproject.toml
   echo "ignore-vcs = true" >> pyproject.toml
+
+  # Python 3.12 compatibility - called_once_with has been replaced with
+  # assert_called_once_with.
+  sed -i 's/mock_system.called_once_with/mock_system.assert_called_once_with/' \
+    tests/test_shell.py
 }
 
 build() {
