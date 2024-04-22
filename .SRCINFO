@@ -1,0 +1,25 @@
+pkgbase = rosary
+	pkgdesc = A Bible App. (none)
+	pkgver = 1.0.4
+	pkgrel = 1
+	install = rosary.install
+	arch = i686
+	arch = x86_64
+	license = mit
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk
+	options = !strip
+	options = !emptydirs
+	source_i686 = PUT_FULL_URL_FOR_DOWNLOADING_i386_DEB_PACKAGE_HERE
+	sha512sums_i686 = PUT_SHA512SUM_OF_i386_DEB_PACKAGE_HERE
+	source_x86_64 = https://github.com/RoseBlume/Rosary-Tauri/releases/download/v1.0.4/rosary-tauri-1.0.4-x86_64.deb
+	sha512sums_x86_64 = a78f6759aaffd268dd7966e6fe14e49a603f8b99c99807d7587992c904b4e602a4eeb7be61fe298f19188a43c63f096fe01d550d27b0e380303ac3efdcdd2076
+
+pkgname = rosary
