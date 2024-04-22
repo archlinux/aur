@@ -1,0 +1,14 @@
+[Unit]
+Description=Geph5 client Service for %i.
+After=network.target nss-lookup.target
+
+[Service]
+Type=exec
+User=%i
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+ExecStart=/usr/bin/geph5-client -c /home/%i/.config/geph5-prefs/settings
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
