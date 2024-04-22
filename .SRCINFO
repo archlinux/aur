@@ -1,7 +1,7 @@
 pkgbase = mutter-x11-scaling
 	pkgdesc = Window manager and compositor for GNOME with X11 fractional scaling patch
 	pkgver = 46.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -15,6 +15,7 @@ pkgbase = mutter-x11-scaling
 	makedepends = gobject-introspection
 	makedepends = gtk3
 	makedepends = meson
+	makedepends = python-packaging
 	makedepends = sysprof
 	makedepends = wayland-protocols
 	makedepends = xorg-server
