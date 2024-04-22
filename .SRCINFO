@@ -7,6 +7,7 @@ pkgbase = shellcheck-bin-doc
 	arch = armv6h
 	arch = aarch64
 	license = GPL-3.0-only
+	makedepends = pandoc
 	provides = shellcheck
 	conflicts = shellcheck
 	source = https://github.com/koalaman/shellcheck/archive/v0.10.0.tar.gz

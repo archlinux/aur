@@ -10,6 +10,7 @@ pkgrel=1
 url='https://shellcheck.net'
 arch=('x86_64' 'armv6h' 'aarch64')
 license=(GPL-3.0-only)
+makedepends=('pandoc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 # full source, for the man pages
@@ -27,6 +28,12 @@ b2sums_aarch64=('6402fe9230c44dbf4620d019bd505246f06d7b96233d57b154f1b6a453f116e
 _sourcedir="${_pkgname}-${pkgver}"
 _binarydir="${_pkgname}-v${pkgver}"
 
+build() {
+    cd "${_sourcedir}"
+    ./manpage
+}
+
 package() {
     install -D -m755 "${_binarydir}/${_pkgname}" -t "${pkgdir}/usr/bin"
+    install -D -m644 "${_sourcedir}/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 }
