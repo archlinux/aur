@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-rst.linker
 _name=${pkgname#python-}
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Can add links and perform other custom replacements to rst"
 arch=('any')
 url="https://github.com/jaraco/rst.linker"
@@ -35,7 +35,7 @@ makedepends=(
 #  'python-types-python-dateutil'
 #)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a9edcf4d192a29ad871bac53932ea974a67723833e9009ad0fa29289ba9457b3')
+sha256sums=('b6b019a00dc184ae81ff5c38ec292bd1c55b1ea25cf8ab1a88dc6d0e8249cb0f')
 
 build() {
   cd "$_name-$pkgver"
@@ -43,16 +43,18 @@ build() {
   python -m build --wheel --no-isolation
 
   # generate html docs
-  # this package requires itself to build docs :/
 #  PYTHONPATH=./ sphinx-build docs html
 
   # remove the sphinx-build leftovers
 #  rm -rf html/.{doctrees,buildinfo}
 }
 
-# flake-8::FLAKE8 - AttributeError: 'Application' object has no attribute 'parse_preliminary_options'
-
 #check() {
+
+#FAILED docs/conf.py::BLACK
+#FAILED rst/linker.py::BLACK
+#FAILED test_all.py::BLACK
+
 #  cd "$_name-$pkgver"
 #  python -m venv --clear --without-pip --system-site-packages .testenv
 #  .testenv/bin/python -m installer dist/*.whl
