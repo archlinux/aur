@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dash-player-bin
 _pkgname=DashPlayer
-pkgver=3.0.0
+pkgver=3.0.1
 _electronversion=28
 pkgrel=1
 pkgdesc="A video player designed specifically for English learning.一款专为英语学习打造的视频播放器"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/solidSpoon/DashPlayer/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('89b6536274579a249ab7a7ad65ce7bc81007bfc3fa54ac853158d76bfd11bcf4'
+sha256sums=('60e8bdde0edb044ebc9d544830a4d99dd85748ae3ee1341d31db3e3c2ed93b6b'
             '5e98c15fe806a18f79422d2cd0c4587129f4e03081b5ab4c030627d6f6840d68'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
