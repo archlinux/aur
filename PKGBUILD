@@ -5,9 +5,9 @@ pkgname="${_pkgname}-git"
 pkgver=0.7.r10.g791dc3f
 pkgrel=1
 pkgdesc='PulseAudio modules for xrdp. Git version, devel branch.'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7l' 'aarch64')
 url='https://github.com/neutrinolabs/pulseaudio-module-xrdp'
-license=('LGPL')
+license=('LGPL-2.1')
 depends=('pulseaudio' 'xrdp')
 makedepends=('git' 'meson' 'check' 'doxygen' 'perl-xml-parser')
 conflicts=("${_pkgname}")
@@ -15,19 +15,24 @@ provides=("${_pkgname}")
 install="${_pkgname}.install"
 
 _pulseaudio_ver="$(pulseaudio --version | awk '{print $NF}')"
-: "${_pulseaudio_ver:=16.1}"
+: "${_pulseaudio_ver:=17.0}"
 
-source=("git+${url}.git#branch=devel"
-        "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${_pulseaudio_ver}.tar.xz")
-sha256sums=('SKIP'
-            "$(curl -fs "${source[1]}.sha256sum" | awk '{print $1}')")
+source=(
+    "git+${url}.git#branch=devel"
+    "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${_pulseaudio_ver}.tar.xz")
+sha256sums=(
+    'SKIP'
+    "$(curl -fs "${source[1]}.sha256sum" | awk '{print $1}')"
+)
 
 pkgver() {
-    cd "${srcdir}/$_pkgname"
+    cd "$srcdir/$_pkgname"
 
-    git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([0-9]*-g),r\1,;s,-,.,g'
+    _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
+    _rev=$(git rev-list --count "$_tag"..HEAD)
+    _hash=$(git rev-parse --short HEAD)
+    printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//; s/-/_/'
 }
-
 
 prepare() {
     cd "${srcdir}/pulseaudio-${_pulseaudio_ver}"
