@@ -2,4 +2,9 @@
 if [[ -o xtrace ]]; then
   export XTRACE=true
 fi
-HELM_DIFF_USE_UPGRADE_DRY_RUN=true exec helmrelease "diff" "$@"
+
+# this flag doesn't work with the dry-run switch
+if [[ "$*" == *"--allow-unreleased"* ]]; then
+  HELM_DIFF_USE_UPGRADE_DRY_RUN=false
+fi
+HELM_DIFF_USE_UPGRADE_DRY_RUN="${HELM_DIFF_USE_UPGRADE_DRY_RUN:-true}" exec helmrelease "diff" "$@"
