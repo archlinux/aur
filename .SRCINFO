@@ -1,6 +1,6 @@
 pkgbase = bef-git
 	pkgdesc = An extensible, fast, and usable file utility to encode and decode interleaved erasure coded streams of data.
-	pkgver = r4.17e7132
+	pkgver = r5.e662748
 	pkgrel = 1
 	url = https://github.com/gbletr42/bef
 	arch = i686
