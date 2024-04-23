@@ -4,7 +4,7 @@
 # Contributor: sukanka <su975853527 at gmail dot com>
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
-pkgver=3.0.10
+pkgver=3.0.11
 _electronversion=28
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.Use system-wide electron."
@@ -12,18 +12,22 @@ arch=('x86_64')
 url="https://b3log.org/siyuan/"
 _ghurl="https://github.com/siyuan-note/siyuan"
 license=('AGPL-3.0-only')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=(
+    "${pkgname%-bin}"
+    "${_pkgname}"
+)
 depends=(
     "electron${_electronversion}"
 )
-provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
+makedepends=(
+    'fuse2'
+)
 source=(
-    "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz"
-    "${pkgname%-bin}.desktop"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('37158cb24f17add0f0edc630759576b185b7fdfe5368e964a221630f8d90846f'
-            'a8129c198d77a882ce930ccf094ced1d7dc9c0f0c3eca1f204e013bcfae5c8df'
+sha256sums=('9afc155fc4618d17a764dc1bb403592ba63d1c9b7bb192f37ece50fa0b9b8942'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
@@ -31,11 +35,16 @@ build() {
         -e "s|@runname@|app|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Utility|Office;Utility|g" \
+        -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/${_pkgname}-${pkgver}-linux/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}-linux/resources/app/electron/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
+    cp -r "${srcdir}/squashfs-root/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
