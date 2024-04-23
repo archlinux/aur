@@ -1,0 +1,22 @@
+pkgbase = android-armv7a-eabi-libxkbcommon
+	pkgdesc = Keymap handling library for toolkits and window systems (Android armv7a-eabi)
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://xkbcommon.org/
+	arch = any
+	license = MIT
+	makedepends = meson
+	makedepends = android-armv7a-eabi-libxcb
+	makedepends = android-armv7a-eabi-xorgproto
+	makedepends = android-armv7a-eabi-xkeyboard-config
+	makedepends = android-armv7a-eabi-libxml2
+	depends = android-armv7a-eabi-xkeyboard-config
+	depends = android-armv7a-eabi-libxml2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-1.7.0.tar.gz
+	md5sums = 6e7451406b508833fb6afc423fbdc508
+
+pkgname = android-armv7a-eabi-libxkbcommon
