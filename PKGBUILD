@@ -1,0 +1,32 @@
+# Maintainer: Hajos Attila <linux.alucard@gmail.com>
+
+pkgname=nudelta-appimage
+pkgver=0.7.4
+pkgrel=1
+pkgdesc="Open source NuPhy Console alternative"
+arch=(x86_64)
+url="https://github.com/donn/nudelta"
+license=("GPL")
+conflicts=('nudelta')
+_appimage="nudelta-amd64.AppImage"
+source=("${_appimage}::https://github.com/donn/nudelta/releases/download/${pkgver}/nudelta-amd64.AppImage"
+        "nudelta.desktop"
+        "nudelta.png")
+sha512sums=('SKIP'
+            '8b1e35e8bb50f654c6c27cdcf4c3722d22b646a47a7ad5c38dc7784b19627acee136ae574d5be52578e86415a2a6f1ac0a9bcfc82fa7913f279d58f0827eb706'
+            '07c37f9c4bbf6670f8762e624ce96bc987215d9c18c0e49637a1d431956ada86f63e048791d705a39060f43853d6dfe80471462b51e54d6722b38701891071c4')
+noextract=("${_appimage}")
+
+package() {
+    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/nudelta/${_appimage}"
+    
+    # desktop file
+    install -Dm 644 "${srcdir}/nudelta.desktop" "${pkgdir}/usr/share/applications/nudelta.desktop"
+
+    # icon
+    install -Dm 644 "${srcdir}/nudelta.png" "${pkgdir}/usr/share/pixmaps/nudelta.png"
+
+    # symlinks
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/opt/nudelta/${_appimage}" "${pkgdir}/usr/bin/nudelta"
+}
