@@ -1,0 +1,94 @@
+diff --git a/config.h.in b/config.h.in
+new file mode 100644
+index 0000000..9e7a26b
+--- /dev/null
++++ b/config.h.in
+@@ -0,0 +1,6 @@
++#ifndef SMALLFRY_CONFIG_H
++#define SMALLFRY_CONFIG_H
++
++#define LIBSMALLFRYVERSION "@version@"
++
++#endif // SMALLFRY_CONFIG_H //
+diff --git a/meson.build b/meson.build
+new file mode 100644
+index 0000000..8f8dc25
+--- /dev/null
++++ b/meson.build
+@@ -0,0 +1,38 @@
++project(
++  'smallfry',
++  'c',
++  license : 'ISC',
++  default_options : ['buildtype=release', 'prefix=/usr'],
++  version : '0.2.0'
++)
++
++cc = meson.get_compiler('c')
++libm_dep = cc.find_library('m', required: true)
++
++conf_data = configuration_data()
++conf_data.set('version', meson.project_version())
++
++config_h = configure_file(
++  input: 'config.h.in',
++  output: 'config.h',
++  configuration: conf_data,
++)
++
++lib = library(
++  meson.project_name(),
++  version: meson.project_version(),
++  sources: [
++    config_h,
++    'src/smallfry.c',
++  ],
++  dependencies: [libm_dep],
++  install: true,
++  install_dir: get_option('libdir'),
++)
++
++install_headers(
++  'src/smallfry.h',
++)
++
++pkg = import('pkgconfig')
++pkg.generate(lib)
+diff --git a/src/smallfry.c b/src/smallfry.c
+index 4f07cff..5edb8fc 100644
+--- a/src/smallfry.c
++++ b/src/smallfry.c
+@@ -18,11 +18,11 @@
+ #include <stdlib.h>
+ #include <math.h>
+ 
++#include "config.h"
+ #include "smallfry.h"
+ 
+ #define MAX(a, b) (((a) > (b)) ? (a) : (b))
+ #define MIN(a, b) (((a) < (b)) ? (a) : (b))
+-#define LIBSMALLFRYVERSION "0.2.0"
+ 
+ /* PSNR(a,b) = 10*log10(MAX * MAX / E((a-b)*(a-b)))
+  * MAX = 255 */
+diff --git a/src/smallfry.h b/src/smallfry.h
+index 63e1da2..62afa0d 100644
+--- a/src/smallfry.h
++++ b/src/smallfry.h
+@@ -14,8 +14,8 @@
+  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
+-#ifndef SMALLFLY_METRIC_H
+-#define SMALLFLY_METRIC_H
++#ifndef SMALLFRY_METRIC_H
++#define SMALLFRY_METRIC_H
+ 
+ float metric_smallfry (uint8_t *inbuf, uint8_t *outbuf, int width, int height);
+ float metric_cor (uint8_t *inbuf, uint8_t *outbuf, int width, int height);
+@@ -25,4 +25,4 @@ float metric_nhw (uint8_t *inbuf, uint8_t *outbuf, int width, int height);
+ float cor_sigma (float cor);
+ char* libsmallfry_version (void);
+ 
+-#endif // SMALLFLY_METRIC_H //
++#endif // SMALLFRY_METRIC_H //
