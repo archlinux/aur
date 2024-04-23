@@ -1,22 +1,21 @@
 pkgbase = qps-git
 	pkgdesc = Qt process manager
-	pkgver = 2.0.0.81.g057cf16
+	pkgver = 2.9.0
 	pkgrel = 1
-	url = https://github.com/lxqt/qps
+	url = https://lxqt-project.org
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = cmake
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	makedepends = lxqt-build-tools-git
-	depends = qt5-x11extras
-	depends = gtk-update-icon-cache
 	depends = liblxqt-git
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
 	provides = qps
 	conflicts = qps
 	source = git+https://github.com/lxqt/qps.git
 	sha256sums = SKIP
 
 pkgname = qps-git
-

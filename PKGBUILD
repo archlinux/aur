@@ -2,22 +2,22 @@
 
 _pkgname=qps
 pkgname=$_pkgname-git
-pkgver=2.0.0.81.g057cf16
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='Qt process manager'
 arch=('i686' 'x86_64')
-url='https://github.com/lxqt/qps'
-license=('GPL')
-depends=('qt5-x11extras' 'gtk-update-icon-cache' 'liblxqt-git')
-makedepends=('git' 'cmake' 'qt5-tools' 'lxqt-build-tools-git')
+url="https://lxqt-project.org"
+license=("GPL-2.0-only")
+depends=('liblxqt-git' 'hicolor-icon-theme' 'gtk-update-icon-cache')
+makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/lxqt/qps.git")
+source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=("SKIP")
 
 pkgver() {
     cd $_pkgname
-    git describe --always | sed 's:-:.:g'
+    git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
