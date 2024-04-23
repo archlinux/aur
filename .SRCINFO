@@ -11,6 +11,7 @@ pkgbase = exploitdb-git
 	optdepends = xclip: copy paths to the clipboard
 	optdepends = exploitdb-papers: Addition to exploitdb to include documents and papers
 	optdepends = exploitdb-bin-sploits: bin exploits
+	provides = exploitdb
 	conflicts = exploitdb
 	replaces = exploitdb
 	options = !strip

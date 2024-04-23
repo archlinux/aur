@@ -9,6 +9,7 @@ pkgdesc="Offensive Security's Exploit Database Archive"
 arch=('any')
 conflicts=('exploitdb')
 replaces=('exploitdb')
+provides=('exploitdb')
 url="https://www.exploit-db.com/"
 license=('GPL')
 makedepends=('git' 'sed')
