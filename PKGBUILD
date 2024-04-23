@@ -1,6 +1,4 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Roberto Alsina <ralsina@kde.org>
-# Contributor: scj <scj(at)archlinux(dot)us>
+# Maintainer: Denis Proskurin <dpvpro // gmail // com>
 
 pkgname=incron-next
 pkgver=0.5.14
