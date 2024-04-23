@@ -1,20 +1,20 @@
-# Maintainer: tacheometrist <tacheometrist@gmail.com>
+# Maintainer: tacheometrist <aur@tacheometrist.dev>
 
 pkgname=surrealist-bin
-pkgver=1.11.8
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Powerful graphical SurrealDB query playground and database explorer"
+pkgdesc="Surrealist is the ultimate way to visually manage your SurrealDB database"
 arch=("x86_64")
-url="https://surrealist.starlane.studio"
+url="https://surrealdb.com/docs/surrealist"
 license=("MIT")
 groups=()
 depends=("webkit2gtk" "gtk3")
 provides=("surrealist")
 conflicts=("surrealist")
-source=("https://github.com/StarlaneStudios/Surrealist/releases/download/v${pkgver//_/-}/surrealist-v${pkgver//_/-}-linux.deb")
+source=("https://github.com/surrealdb/surrealist/releases/download/surrealist-v${pkgver//_/-}/surrealist_${pkgver//_/-}_amd64.deb")
 md5sums=("SKIP")
 
 package() {
 	bsdtar -O -xf *.deb data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
-	echo "Comment=Powerful graphical SurrealDB query playground and database explorer" >> ${pkgdir}/usr/share/applications/surrealist.desktop
+	echo "Comment=Surrealist is the ultimate way to visually manage your SurrealDB database" >> ${pkgdir}/usr/share/applications/surrealist.desktop
 }
