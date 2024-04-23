@@ -3,15 +3,14 @@
 pkgname=incron-next
 pkgver=0.5.14
 pkgrel=1
-#_commit=f45c2f5ac4baea99b48e99a713d1f4ec1854aa76
 pkgdesc="Maintainable fork for incron package. MRs are welcome"
 arch=('x86_64')
 url="https://github.com/dpvpro/incron-next"
-license=('GPL')
-depends=('gcc-libs' 'bash')
+license=('GPL-3.0-or-later')
+depends=('gcc-libs' 'glibc')
+conflicts=('incron')
 makedepends=('git')
 options=('emptydirs')
-#source=("$pkgname-$pkgver.tar.gz::https://github.com/ar-/incron/archive/$pkgver.tar.gz"
 source=("git+https://github.com/dpvpro/incron-next"
         "incron.sysusers"
         "incron.tmpfiles"
@@ -24,9 +23,6 @@ sha256sums=('SKIP'
 prepare() {
   cd "${srcdir}"/$pkgname
   sed -i 's|$(DESTDIR)$(PREFIX)/sbin/|$(DESTDIR)$(PREFIX)/bin/|g' Makefile
-
-  # https://github.com/ar-/incron/pull/91
-  # patch -Np1 < ../0001-GetSafePath.patch
 }
 
 build() {
