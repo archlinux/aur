@@ -1,16 +1,17 @@
-pkgname=mingw-w64-pkg-config
+pkgname=llvm-mingw-w64-pkg-config
 pkgver=2
 pkgrel=4
-pkgdesc='Support pkg-config script (does not depend on any particular version of pkg-config). Useful for pkg-config powered cross-compiling with mingw-w64, see http://tinyurl.com/pkg-config-cross for more info'
+pkgdesc='Support pkg-config script (does not depend on any particular version of pkg-config). Useful for pkg-config powered cross-compiling with mingw-w64, see http://tinyurl.com/pkg-config-cross for more info (i686, x86_64, armv7, and aarch64)'
 arch=('any')
 url='http://pkg-config.freedesktop.org/'
 license=('zlib')
 depends=('pkg-config' 'mingw-w64-crt')
+provides=('mingw-w64-pkg-config')
 source=('mingw-pkgconfig.sh')
 install='mingw-w64-pkg-config.install'
 md5sums=('SKIP')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32 armv7-w64-mingw32 aarch64-w64-mingw32"
 
 build() {
   for _arch in ${_architectures}; do
