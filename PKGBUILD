@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=midori-bin
-pkgver=11.2.2
+pkgver=11.3.2
 pkgrel=1
 pkgdesc="Browser fork of Floorp fork of Firefox by Astian"
 arch=(x86_64)
@@ -15,9 +15,9 @@ depends=(gtk3 alsa-lib nspr dbus-glib nss
 )
 provides=(midori)
 conflicts=(midori)
+source_x86_64=("https://github.com/goastian/midori-desktop/releases/download/v${pkgver}/midori_${pkgver}_amd64.deb")
+sha256sums_x86_64=('2a7ef1bf11d6ba2faa68c04d82cf012ed6f8e15a612f20ce473d3ce5a55a0695')
 options=(!strip)
-source_x86_64=("https://astian.org/wp-content/uploads/midori-browser/linux/midori_${pkgver}_amd64.deb")
-sha256sums_x86_64=('21b3437ec8e8023a51594a42985d7e470f0ff92b7f782383276e17755b50216d')
 
 package() {
   bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
