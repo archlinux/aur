@@ -1,8 +1,7 @@
 # Maintainer: Shun Terabayashi <shunonymous@gmail.com>
 _repo=blender_mmd_tools
 pkgname=blender-plugin-mmd-tools-git
-_version=0.4.4
-pkgver=v2.9.1.r0.gb55b2c1
+pkgver=v4.0.0.r1.gc2160f0
 pkgrel=1
 pkgdesc="Blender addon for importing Models and Motions of MikuMikuDance."
 arch=('i686' 'x86_64')
@@ -11,7 +10,7 @@ license=('GPL3')
 groups=('blender')
 depends=('blender')
 makedepends=('git')
-source=("git+https://github.com/UuuNyaa/$_repo#branch=main")
+source=("git+https://github.com/UuuNyaa/$_repo#branch=blender-v4")
 md5sums=('SKIP')
 
 pkgver() {
