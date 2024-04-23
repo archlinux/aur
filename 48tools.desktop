@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=48tools
+Type=Application
+Terminal=false
+Exec=/usr/bin/48tools/48tools
+Icon=/usr/bin/48tools/resources/app/titleBarIcon.png
+Categories=Network;AudioVideo;Audio;Video;
+Keywords=snh;snh48;48tools;
+Comment[zh_CN]=48工具，提供公演、口袋48直播录源，公演、口袋48录播下载，封面下载，B站直播抓取，B站视频下载，A站直播抓取，A站视频下载，抖音视频下载，视频截取，视频导出gif，视频合并等功能。口袋48的pc版，可以看成员的直播、弹幕和录播。 
