@@ -2,8 +2,8 @@
 # Contributor: William Aass Dahlen <cznk@protonmail.com>
 
 pkgname=azure-kubelogin
-pkgver=0.1.2
-_commit=3509182dcb760eda0b6a8ae46eb5708347e758f6
+pkgver=0.1.3
+_commit=308f96875c026012123a3b0e95c8fc5473e95a33
 pkgrel=1
 pkgdesc="A Kubernetes credential (exec) plugin implementing azure authentication"
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(
 )
 conflicts=(kubelogin)
 source=("$pkgname::git+$url.git?signed#commit=$_commit")
-sha256sums=('2f58a75f810702506a5c7cfd1e2795f41a560a44e849b2b4342bd5222c2a1e7d')
+sha256sums=('eea093de28893769134fd147557317d555181e77ff4026d40f27e4d72fabb11f')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194') # GitHub <noreply@github.com>
 
 _archive="$pkgname"
