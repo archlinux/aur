@@ -11,6 +11,8 @@ license=('MIT')
 arch=('any')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
+provides=('mangal')
+conflicts=('mangal' 'mangal-bin')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"

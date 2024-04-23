@@ -1,6 +1,6 @@
 pkgbase = mangal-git
 	pkgdesc = The most advanced (yet simple) cli manga downloader in the entire universe!
-	pkgver = 4.0.6
+	pkgver = 4.0.6.r4.g165f7ca
 	pkgrel = 1
 	url = https://github.com/metafates/mangal
 	arch = any
@@ -8,6 +8,9 @@ pkgbase = mangal-git
 	makedepends = git
 	makedepends = go
 	makedepends = make
+	provides = mangal
+	conflicts = mangal
+	conflicts = mangal-bin
 	source = mangal::git+https://github.com/metafates/mangal.git
 	sha256sums = SKIP
 
