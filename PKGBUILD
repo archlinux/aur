@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc' 'sdl_image' 'sdl_mixer' 'sdl12-compat')
 source=("http://tong.nongnu.org/$pkgname-$pkgver.tar.gz"
 	"$pkgname.desktop")
 md5sums=('a9d70c7b2f637e9d95e6fbdf6d22782d'
-		 '4c99f05484e5c60708fd14272af2e357')
+	'4c99f05484e5c60708fd14272af2e357')
 
 build() {
 	cd "$srcdir/$pkgname"
