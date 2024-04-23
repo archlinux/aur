@@ -1,15 +1,18 @@
 pkgbase = libiqa-git
 	pkgdesc = Fast, accurate, and reliable C library for image quality assessment
 	pkgver = 1.1.3.r2.g4687a4c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ImageProcessing-ElectronicPublications/libiqa
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
+	makedepends = meson
 	depends = glibc
-	provides = libiqa
+	provides = libiqa=1.1.3
 	conflicts = libiqa
 	source = libiqa::git+https://github.com/ImageProcessing-ElectronicPublications/libiqa.git
+	source = meson.patch
 	sha256sums = SKIP
+	sha256sums = f747959b9495bc8403ea5b5c6e7894c5799219f98d2be506462ca9a95e6ef68b
 
 pkgname = libiqa-git
