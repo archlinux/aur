@@ -1,0 +1,5 @@
+[luabundler]
+source = "github"
+github = "Benjamin-Dobell/luabundler"
+prefix = "v"
+use_latest_tag = true
