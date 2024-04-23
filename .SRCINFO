@@ -1,11 +1,11 @@
 pkgbase = edgedb-cli-bin
 	pkgdesc = The edgedb command-line interface (CLI) provides an idiomatic way to install EdgeDB, spin up local instances, open a REPL, execute queries, manage auth roles, introspect schema, create migrations, and more.
-	pkgver = 4.1.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/edgedb/edgedb-cli
 	arch = x86_64
 	license = Apache
-	source = https://packages.edgedb.com/archive/x86_64-unknown-linux-musl/edgedb-cli-4.1.0+03ae624.zst
-	sha256sums = b005daf5832e51514153f27a224d438e22812d498a18884ff5edc712f048b81c
+	source = https://packages.edgedb.com/archive/x86_64-unknown-linux-musl/edgedb-cli-5.0.0+c9dfeec.zst
+	sha256sums = 7848fdb0d3e3961063e9783e74bb7b51d03e9cd0c7a78d5385952b236ba93b89
 
 pkgname = edgedb-cli-bin
