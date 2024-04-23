@@ -6,12 +6,11 @@ pkgrel=1
 pkgdesc="Unofficial Netlify desktop application"
 arch=('x86_64' 'aarch64')
 license=('GPL')
+url="https://gitlab.com/linuxbombay/netlify-desktop//application"
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-#source=("https://gitlab.com/netlify-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-#Backup temp repo
-source=("https://github.com/netlifydesktop-pkg/application/archive/refs/tags/$pkgver-$pkgrel.tar.gz")
-sha256sums=('SKIP')
+source=("$url/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('368c2e8388e670c6067a76859649a9d83a72447220c7da8612f741176bf4e2eb')
 
 
 package() {
