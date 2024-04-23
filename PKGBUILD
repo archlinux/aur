@@ -2,9 +2,9 @@
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 
 pkgname=amiberry
-pkgver=5.6.8
+pkgver=5.7.0
 pkgrel=1
-epoch=20240306
+epoch=20240423
 pkgdesc="Amiga Emulator for ARM Boards (amd64 build)"
 arch=('x86_64')
 url="https://github.com/BlitterStudio/amiberry"
@@ -14,8 +14,8 @@ makedepends=('glibc' 'git' 'cmake')
 provides=("amiberry=${pkgver}")
 conflicts=('amiberry')
 source=(https://github.com/BlitterStudio/amiberry/archive/refs/tags/v${pkgver}.tar.gz)
-md5sums=('d32508593cd823565eee64534e73f61a')
-sha256sums=('c8be828a6d24a467e530afd89674d5f0c08b4e0d3b981027b2134a22d5cff515')
+md5sums=('7510b9467e05a3af43096fa752dd0188')
+sha256sums=('c1ad8e98d9cbb00ca9572923a0757a2c934b06a795fb49d599781ea8ae4a82e6')
 
 build() {
   cd ${pkgname}-${pkgver}
