@@ -6,3 +6,4 @@ forgejo/*
 *.tar.xz
 *.tar.zst
 *.zip
+*.pkg.tar.zst
