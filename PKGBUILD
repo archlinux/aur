@@ -2,23 +2,23 @@
 
 _pkgname=lxqt-sudo
 pkgname=$_pkgname-git
-pkgver=0.9.0.5.ga2f898a
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Qt front-end for sudo. Part of but not restricted to LXQt."
 arch=("i686" "x86_64")
-url="https://github.com/lxde/lxqt-sudo"
-license=("LGPL2.1")
-depends=("qt5-base" "sudo" "liblxqt-git")
-optdepends=("oxygen-icons: fallback icon theme on systems without LXQt")
-makedepends=("git" "cmake" "qt5-tools")
+url="https://lxqt-project.org"
+license=('LGPL-2.1-only')
+depends=('sudo' 'liblxqt-git')
+optdepends=('oxygen-icons: fallback icon theme on systems without LXQt')
+makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/lxde/$_pkgname.git")
+source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/./g"
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
