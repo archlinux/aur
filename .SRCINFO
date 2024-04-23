@@ -1,0 +1,22 @@
+pkgbase = android-aarch64-libxkbcommon
+	pkgdesc = Keymap handling library for toolkits and window systems (Android aarch64)
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://xkbcommon.org/
+	arch = any
+	license = MIT
+	makedepends = meson
+	makedepends = android-aarch64-libxcb
+	makedepends = android-aarch64-xorgproto
+	makedepends = android-aarch64-xkeyboard-config
+	makedepends = android-aarch64-libxml2
+	depends = android-aarch64-xkeyboard-config
+	depends = android-aarch64-libxml2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-1.7.0.tar.gz
+	md5sums = 6e7451406b508833fb6afc423fbdc508
+
+pkgname = android-aarch64-libxkbcommon
