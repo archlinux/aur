@@ -1,7 +1,7 @@
 # Maintainer: MrHacker <david.munozm@proton.me>
 _pkgname=GPT-Telegramus
 pkgname=gpt-telegramus-git
-pkgver=5.2.5.r0.g4ace3864
+pkgver=5.4.2.r0.ge8a3611
 pkgrel=1
 pkgdesc="GPT-Telegramus is a Telegram bot that allows you to interact with various large language models (LLMs), including ChatGPT, Bing AI (also known as Sidney or EdgeGPT), and Gemini."
 url="https://github.com/F33RNI/GPT-Telegramus"
