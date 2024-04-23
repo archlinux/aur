@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-hwloc
 	pkgdesc = Portable Hardware Locality is a portable abstraction of hierarchical architectures (mingw-w64)
-	pkgver = 2.5.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://www.open-mpi.org/projects/hwloc/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-hwloc
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://www.open-mpi.org/software/hwloc/v2.5/downloads/hwloc-2.5.0.tar.bz2
-	sha256sums = a9cf9088be085bdd167c78b73ddf94d968fa73a8ccf62172481ba9342c4f52c8
+	source = https://www.open-mpi.org/software/hwloc/v2.10/downloads/hwloc-2.10.0.tar.bz2
+	sha256sums = 0305dd60c9de2fbe6519fe2a4e8fdc6d3db8de574a0ca7812b92e80c05ae1392
 
 pkgname = mingw-w64-hwloc
