@@ -14,11 +14,11 @@ conflicts=('iamb')
 provides=('iamb')
 source=(
 	"https://github.com/ulyssa/iamb/releases/download/v${pkgver}/iamb-v${pkgver}-x86_64-unknown-linux-musl.tgz"
-	"https://github.com/ulyssa/iamb/blob/v${pkgver}/LICENSE"
+	"https://raw.githubusercontent.com/ulyssa/iamb/v${pkgver}/LICENSE"
 )
 b2sums=(
 	'19e107466f129fc79e8088306a7074795878fdbba1600ad2b44d3957c5cee2f8d458d0fe01728dce31413f69a0ada3711aba9680ba9f679b962822c8fcdea75b'
-	'2131ab3cc70898c028ebd4e7722f2304eac5677c90006918501931fd3bc854127b08e4b5304483c48b7cddce64b69898fd09a12e40636a0c3f76be2463405c2e'
+	'43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85'
 )
 
 package() {
