@@ -2,7 +2,7 @@
 
 pkgname=clipmenu-git
 _gitname=clipmenu
-pkgver=6.2.0.r24.ga6e9d85
+pkgver=6.2.0.r32.gd80842e
 pkgrel=1
 pkgdesc='Clipboard management using dmenu'
 url='http://github.com/cdown/clipmenu'
@@ -23,5 +23,5 @@ pkgver() {
 
 package() {
     cd "${srcdir?}/$_gitname"
-    make install PREFIX="${pkgdir?}/usr"
+    make install DESTDIR="${pkgdir?}" PREFIX="/usr"
 }
