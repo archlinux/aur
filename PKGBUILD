@@ -2,11 +2,11 @@
 # Contributor: Anonymous
 
 pkgname=perl-pod-weaver
-pkgver=4.019
+pkgver=4.020
 pkgrel=1
 pkgdesc="A system for building Pod documents from templates"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=('perl-config-mvp' 'perl-config-mvp-reader-ini' 'perl-datetime'
          'perl-list-moreutils' 'perl-log-dispatchouli' 'perl-mixin-linewise'
          'perl-module-runtime' 'perl-moose' 'perl-params-util'
@@ -16,7 +16,7 @@ depends=('perl-config-mvp' 'perl-config-mvp-reader-ini' 'perl-datetime'
 checkdepends=('perl-ppi' 'perl-software-license' 'perl-test-differences')
 url="https://metacpan.org/release/Pod-Weaver"
 source=("https://www.cpan.org/modules/by-module/Pod/Pod-Weaver-${pkgver}.tar.gz")
-sha512sums=('f33130f0fdb81f219c9f41b0cd1ebc962ba28937f950b6b05e0245ee45650b09e2c37721989ba8ffb90779fc5912775f066f7826ffa3eb797b9b5af084372773')
+sha512sums=('fdea6528e67e15eddccd53e35e3e440dc54c1006dcd4408e273fcd828a4ff84dd8f8add0bd14bde798c9faf36f30bb7b2ca628e331c4f38921b3239cd61462f3')
 
 build() {
   cd "${srcdir}/Pod-Weaver-${pkgver}"
