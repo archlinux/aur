@@ -1,15 +1,15 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=perl-log-any-adapter-screen
-pkgver=0.140
+pkgver=0.141
 pkgrel=1
 pkgdesc="Send logs to screen, with colors and some other features"
 arch=('any')
 url="https://github.com/perlancar/perl-Log-Any-Adapter-Screen"
-license=('GPL' 'PerlArtistic')
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=('perl' 'perl-log-any')
 source=("https://www.cpan.org/modules/by-module/Log/Log-Any-Adapter-Screen-${pkgver}.tar.gz")
-sha512sums=('a7ded27bbc548108169e59964783ba6200c3afd798219bcd9daea47c390128db628c30392eb7eaebb93b5e3b59f51c717599518130b3ba31a1765cca3b4c362c')
+sha512sums=('825a3b71bf418c3f79723e96fb5db985182cf054fb07517bc4e1e2594efbfff37f94f3ca69e122b818feb6f8b5e6eca8fdb63b7997cf54a9ce099cce5d096471')
 
 build() {
   cd "${srcdir}/Log-Any-Adapter-Screen-${pkgver}"
