@@ -1,7 +1,7 @@
 pkgbase = beseda
 	pkgdesc = Accessibility ebook speech reader
-	pkgver = 1.2.0
-	pkgrel = 3
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/psemiletov/beseda
 	arch = x86_64
 	groups = lv2-plugins
@@ -13,7 +13,7 @@ pkgbase = beseda
 	depends = ncurses
 	depends = speech-dispatcher
 	provides = beseda
-	source = https://github.com/psemiletov/beseda/archive/1.2.0.tar.gz
-	md5sums = d09f3c475db6b5ab5470d47ea03ece12
+	source = https://github.com/psemiletov/beseda/archive/1.2.1.tar.gz
+	md5sums = 51c1f30f74b7556ad0d51fd82948ab03
 
 pkgname = beseda
