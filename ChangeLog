@@ -1,3 +1,9 @@
+2024-04-23 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 2.0.0rc1.r538.g2e47460-2 :
+	Added missing 'boost' make dependency
+	Added missing 'pugl' dependency
+
 2024-03-20 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 2.0.0rc1.r538.g2e47460-1 :

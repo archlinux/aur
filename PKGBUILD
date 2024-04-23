@@ -4,13 +4,15 @@
 _pkgname=lvtk
 pkgname=$_pkgname-git
 pkgver=2.0.0rc1.r538.g2e47460
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of C++ wrappers around the LV2 C API'
 arch=(x86_64)
 url='https://github.com/lvtk/lvtk'
 license=(GPL-3.0-or-later)
-depends=(gcc-libs glibc lv2 libx11 libxcursor libxext libxrandr)
-makedepends=(git meson cairo)
+depends=(gcc-libs glibc lv2 libx11 libxcursor libxext libxrandr pugl)
+makedepends=(boost git meson cairo)
+# Lua bindings are commented out in meson.build for now (2024-04-23)
+#optdepends=('lua: to use Lua bindings')
 conflicts=($_pkgname)
 provides=($_pkgname)
 source=("$_pkgname::git+https://github.com/lvtk/lvtk.git")
