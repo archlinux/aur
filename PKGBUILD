@@ -5,7 +5,7 @@
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 
 pkgname=watchman
-pkgver=2024.04.08.00
+pkgver=2024.04.22.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
@@ -40,7 +40,7 @@ source=(
   "watchman.socket"
 )
 sha256sums=(
-  'ce6a6a2efe795c794776abc6e996617468d34e7ed845dbf755103e1fb251910d'
+  'e9861178f959d7913648e9b5d45cf3072f96f91d16064bba527c4893df807cce'
   'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
   '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
   'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
