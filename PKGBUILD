@@ -21,28 +21,27 @@
 
 _basename=clapper
 pkgname="${_basename}"
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
-pkgdesc="A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering."
+pkgdesc="A modern media player powered by GStreamer and built for the GNOME desktop environment."
 arch=(any)
 url="https://github.com/Rafostar/clapper"
-license=("GPL-3.0")
+license=("GPL-3.0-or-later and LGPL-2.1-or-later")
 depends=(
-	"gtk4"
-	"gjs"
-	"glib2>=2.68.0" # glib-2.0, gmodule-2.0, gio-2.0
-	"wayland-protocols" # gtk4 non-default runtime dep
-	"hicolor-icon-theme"
+	"gtk4>=4.10.0"
+	"glib2>=2.76.0" # glib-2.0, gmodule-2.0, gio-2.0
 	"gstreamer>=1.20.0" # gstreamer-1.0, gstreamer-base-1.0
 	"gst-plugins-base>=1.20.0"
 	"gst-plugins-good>=1.20.0"
 	"gst-plugins-bad>=1.20.0"
-	"libadwaita"
+	"libadwaita>=1.4.0"
 	"libsoup3"
+	"libmicrodns"
 )
 makedepends=(
-	"meson>=0.50"
+	"meson>=0.64"
 	"gobject-introspection" # /usr/sbin/g-ir-scanner
+	"vala"
 )
 optdepends=(
 	"gst-libav>=1.20.0: Popular video decoders"
@@ -54,7 +53,7 @@ optdepends=(
 source=("${_basename}-${pkgver}::https://github.com/Rafostar/${_basename}/archive/${pkgver}.tar.gz")
 provides=("${_basename}" "libgst${_basename}-1.0")
 conflicts=("${_basename}")
-md5sums=("e8d358ab1f56e738656220a652af978a")
+md5sums=("49247b3ec760b24df08b38e50a697999")
 
 prepare() {
 	cd "${srcdir}/${_basename}-${pkgver}"
