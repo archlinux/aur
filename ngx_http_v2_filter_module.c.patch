@@ -1,6 +1,6 @@
---- nginx-1.24.0/src/http/v2/ngx_http_v2_filter_module.c	2023-04-10 22:45:34.000000000 -0300
-+++ nginx-1.24.0_custom/src/http/v2/ngx_http_v2_filter_module.c	2023-06-15 14:22:14.000000000 -0300
-@@ -148,19 +148,12 @@
+--- nginx-1.26.0/src/http/v2/ngx_http_v2_filter_module.c	2024-04-23 11:04:32.000000000 -0300
++++ nginx-1.26.0_patched/src/http/v2/ngx_http_v2_filter_module.c	2024-04-23 19:21:41.433118932 -0300
+@@ -115,19 +115,12 @@
      ngx_http_core_srv_conf_t  *cscf;
      u_char                     addr[NGX_SOCKADDR_STRLEN];
  
@@ -21,7 +21,7 @@
      stream = r->stream;
  
      if (!stream) {
-@@ -259,17 +252,9 @@
+@@ -217,17 +210,9 @@
  
      clcf = ngx_http_get_module_loc_conf(r, ngx_http_core_module);
  
@@ -38,11 +38,11 @@
 -        }
 +    if ( (r->headers_out.server == NULL) &&
 +         (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) ) {
-+        len += 1 + sizeof(nginx);
++      len += 1 + sizeof(nginx);
      }
  
      if (r->headers_out.date == NULL) {
-@@ -463,47 +448,15 @@
+@@ -421,47 +406,14 @@
          pos = ngx_sprintf(pos, "%03ui", r->headers_out.status);
      }
  
@@ -59,16 +59,17 @@
 -                           NGINX_VER_BUILD);
 +    if ( (r->headers_out.server == NULL) &&
 +         (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) ) {
++      ngx_log_debug0(NGX_LOG_DEBUG_HTTP, fc->log, 0,
++                     "http2 output header: \"server: ws\"");
  
 -        } else {
 -            ngx_log_debug0(NGX_LOG_DEBUG_HTTP, fc->log, 0,
 -                           "http2 output header: \"server: nginx\"");
 -        }
-+        ngx_log_debug0(NGX_LOG_DEBUG_HTTP, fc->log, 0,
-+                       "http2 output header: \"server: ws\"");
++      *pos++ = ngx_http_v2_inc_indexed(NGX_HTTP_V2_SERVER_INDEX);
  
-         *pos++ = ngx_http_v2_inc_indexed(NGX_HTTP_V2_SERVER_INDEX);
- 
+-        *pos++ = ngx_http_v2_inc_indexed(NGX_HTTP_V2_SERVER_INDEX);
+-
 -        if (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) {
 -            if (nginx_ver[0] == '\0') {
 -                p = ngx_http_v2_write_value(nginx_ver, (u_char *) NGINX_VER,
@@ -91,7 +92,7 @@
 -        } else {
 -            pos = ngx_cpymem(pos, nginx, sizeof(nginx));
 -        }
-+        pos = ngx_cpymem(pos, nginx, sizeof(nginx));
++      pos = ngx_cpymem(pos, nginx, sizeof(nginx));
      }
  
      if (r->headers_out.date == NULL) {

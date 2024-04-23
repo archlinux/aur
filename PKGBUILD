@@ -9,8 +9,8 @@
 pkgbase=nginx-without-server-header
 _pkgbase=nginx
 pkgname=($pkgbase $pkgbase'-src')
-pkgver=1.24.0
-pkgrel=6
+pkgver=1.26.0
+pkgrel=1
 _prefix_relative='etc/nginx'
 _prefix_full='/'$_prefix_relative
 arch=(x86_64)
@@ -18,7 +18,7 @@ url='https://nginx.org'
 license=(custom)
 makedepends=(pcre2 zlib openssl geoip mailcap libxcrypt)
 checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
-              memcached ffmpeg) 
+              memcached ffmpeg)
 conflicts=(nginx nginx-src)
 install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
@@ -30,17 +30,20 @@ source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         ngx_http_special_response.c.patch
         ngx_http_v2_filter_module.c.patch)
 
-validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
+# https://nginx.org/en/pgp_keys.html
+validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdounin@mdounin.ru>
+              '43387825DDB1BB97EC36BA5D007C8D7C15D87369'  # Roman Arutyunyan <r.arutyunyan@f5.com>
+              'D6786CE303D9A9022998DC6CC8464D549AF75C0A'  # Sergey Kandaurov <s.kandaurov@f5.com>
               '13C82A63B603576156E30A4EA0EA981B66B0D967') # Konstantin Pavlov <thresh@nginx.com>
-sha512sums=('1114e37de5664a8109c99cfb2faa1f42ff8ac63c932bcf3780d645e5ed32c0b2ac446f80305b4465994c8f9430604968e176ae464fd80f632d1cb2c8f6007ff3'
+sha512sums=('1f604a4a29f1b74eb56de7f1d8b0e5610fa055280b4ad2d3550c56926460de24da81b17485cffb358d8814061d4a9db1e0e5079af7921f1dc329e283e2775791'
             'SKIP'
             'ca7d8666177d31b6c4924e9ab44ddf3d5b596b51da04d38da002830b03bd176d49354bbdd2a496617d57f44111ad59833296af87d03ffe3fca6b99327a7b4c3c'
             '25b1054176b694dda940528df45432bdc80191ad9dd6f11b7bb02da43b3c38c592448664774ccde779bb6953f9d32a4fd55349dbad9b43a7db38a1410a47dc24'
-            '73760c31feaaca08a2e540de0d9f5b6a4bc607ddbf148b97cbd9fcc0ba315362380419911b6588dee40ace08cc1eec392e5379835bb0bfa444de01c935969c6a'
-            '7d5505520358cc1f00302d5330ccc3c51cea7dab3d0521d953406e632a5894f2243eb2f8b31bd6d53c20dbd17e4b45f4e7d6848dbd921ff0a2e622e424e5da38'
+            '67c5961fdc2b94f909127aaec2d8eb82b8d94efde24ea9c2d00311d692bc8c5265bd365032cb3be4b301602b945d2a627fab231398f4897175b43488e3ce92b8'
+            'c699cc4b828f410efa1ba15a4ebd619ff8ff6869366efdf7a9d87c16781d9c2039ac9acc3cf17e28baa81d37621a388b999674763110678fae30c9ce6230b6b6'
             '0ee8e33e6f515a662f03faf87bf9a67eaf820718443a084804ba1b423c56c7356830d4d86bb347d32934e2789d5e66f220a7d41a532f042b7af355497bc1e1aa'
             'b35e021d734157cb29c4609bdfb3155e139b7e630cc705be71a5ceaf23ab60dc4eacb0259a7345592dd739dd91b12d347a319620623638709ca9f3c2a22d8931'
-            '3c9d007eb324101024bc541af60cea9a2b770f2089fa518797b33412379f329a404b76c2ec0a7441ba1e444e751a6dc45249094ec722f2d0024553ebcff16243')
+            '08378f1c8a9d183e60dd65c1f193b74b93d93d7fb4d7d284b661986b2d486cdd74ebefe55a6381418e0019959ceb4670b8a69ed14b04620a923c4c9a49487966')
 
 _common_flags=(
   --with-compat
@@ -78,6 +81,7 @@ _stable_flags=(
 )
 
 prepare() {
+  ### START PATCHING ###
   local patch_src
   for patch_src in "${source[@]}"; do
     #src="${patch_src%%::*}"
@@ -86,6 +90,7 @@ prepare() {
     echo -n "Applying \"$patch_src\"... "
     patch -d "$srcdir/$_pkgbase-$pkgver" -Np1 < "$srcdir/$patch_src"
   done
+  ### END PATCHING ###
   cp -r $_pkgbase'-'$pkgver{,-src}
 }
 
