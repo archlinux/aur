@@ -6,8 +6,8 @@ pkgname="citra-appimage"
 #       2. go to https://github.com/PabloMK7/citra/releases
 #       3. copy release date to $pkgver
 #       4. copy commit to $_commit
-pkgver=20240406
-_commit=0c2f076
+pkgver=20240422
+_commit=a8e601a
 pkgrel=1
 epoch=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger, GUI version, already compiled"
@@ -28,7 +28,7 @@ depends=("ffmpeg"
          "sdl2")
 source=("https://github.com/PabloMK7/citra/releases/download/r$_commit/citra-linux-appimage-$pkgver-$_commit.tar.gz"
         "citra.desktop")
-b2sums=('dcf2475a4f7f4eef50a4bc807bc98b53b139860beaf3dbfee1d973fc191279d7f54e0d42a307c530f8318898d4134f107f79e2d88da4dcc3c94c8d338aff2bd3'
+b2sums=('ee973c62ace3baba8f25871ea9000f21b471f1e16c3da6c5a9ccd165a474d2975d819d465f968d219d969a2aaacd7b4f650f24ce1e4280492f264c2a1525300e'
         '1c12c015380367b599cb56cabfdcf9065e2cbb04e3145d0dcfdfc5e2cb404926c2851e58383c930f569b67da8f89095164b7d1f482f39fb5e1f5a1c26e1853b0')
 options=("!strip")
 
