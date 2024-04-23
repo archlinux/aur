@@ -12,7 +12,6 @@ pkgbase = fdpp
 	makedepends = clang
 	makedepends = nasm-segelf
 	makedepends = thunk_gen
-	makedepends = nasm
 	makedepends = git
 	depends = comcom64
 	depends = gcc-libs

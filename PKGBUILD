@@ -29,7 +29,7 @@ makedepends=(
   'clang'
   'nasm-segelf' # See https://github.com/dosemu2/fdpp/issues/233#issuecomment-1788601563
   'thunk_gen'
-  nasm          # to be removed after 1.7
+  #nasm          # to be removed after 1.7
 )
 if [ "${CARCH}" == "x86_64" ]; then
   export CROSS_LD='ld'
