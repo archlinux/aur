@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc')
 conflicts=('incron')
 makedepends=('git')
 options=('emptydirs')
-source=("git+https://github.com/dpvpro/incron-next"
+source=("https://github.com/dpvpro/incron-next"
         "incron.sysusers"
         "incron.tmpfiles"
         "incrond.service")
