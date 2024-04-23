@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=baize-toolbox-git
 _pkgname="白泽工具箱"
-pkgver=0.0.1.beta1.r6.g6002bb2
+pkgver=0.0.1.beta1.r12.g36b9455
 _electronversion=29
 _nodeversion=18
 pkgrel=1
@@ -9,11 +9,11 @@ pkgdesc="白泽工具箱是一款功能强大的多媒体工具，为用户提�
 arch=('any')
 url="https://baize.plume.vip/"
 _ghurl="https://github.com/baizeteam/baize-toolbox"
-license=("LicenseRef-unknown")
+license=("LGPL-3.0-only")
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-    "electron${_electronversion}"
+    #"electron${_electronversion}"
     'ffmpeg'
 )
 makedepends=(
@@ -26,9 +26,9 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
-sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+    #"${pkgname%-git}.sh"
+)
+sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -46,7 +46,7 @@ build() {
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} --no-sandbox %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -70,8 +70,16 @@ build() {
     pnpm run build:linux
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    #install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    #install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    #cp -r "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    #install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources/linux"
+    #ln -sf "/usr/bin/ffmpeg" "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources/linux/ffmpeg"
+    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
+    cp -r "${srcdir}/${pkgname%-git}.git/dist/linux-"*/* "${pkgdir}/opt/${pkgname%-git}"
+    ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/opt/${pkgname%-git}/resources/app.asar.unpacked/resources/linux"
+    ln -sf "/usr/bin/ffmpeg" "${pkgdir}/opt/${pkgname%-git}/resources/app.asar.unpacked/resources/linux/ffmpeg"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
