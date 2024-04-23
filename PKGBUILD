@@ -1,39 +1,50 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-# Contributor: rilian-la-te <ria.freelander@gmail.com>
-# Contributor: JoveYu <yushijun110@126.com>
+# Maintainer:
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
-# shellcheck disable=SC2034
-pkgname="vala-panel"
-pkgver=0.5.0
+_pkgname="vala-panel"
+pkgname="$_pkgname"
+pkgver=24.03
 pkgrel=1
-pkgdesc="Gtk3 panel for compositing window managers"
-url="https://gitlab.com/${pkgname}-project/${pkgname}"
-arch=('x86_64' 'pentium4' 'i686')
-license=('LGPL3')
-depends=('gtk3' 'libwnck3' 'gtk-layer-shell')
-makedepends=('git' 'meson' 'vala')
-optdepends=("${pkgname}-appmenu-valapanel: Global Menu"
-            "${pkgname}-sntray: SNI System tray"
-            "${pkgname}-applets-xembed: Old system tray"
-            "${pkgname}-applets-icontasks: Budgie tasklist"
-            "${pkgname}-applets-genmon: GenMon applet")
-source=("${pkgname}::git+${url}.git#tag=${pkgver}")
+pkgdesc="Panel for compositing window managers"
+url="https://gitlab.com/vala-panel-project/vala-panel"
+license=('LGPL-3.0-only')
+arch=('x86_64')
+
+depends=(
+  'gtk-layer-shell'
+  'gtk3'
+  'libwnck3'
+
+  ## implicit
+  #at-spi2-core
+  #cairo
+  #dconf
+  #gdk-pixbuf2
+  #glib2
+  #hicolor-icon-theme
+  #pango
+)
+makedepends=(
+  'git'
+  'meson'
+  'vala'
+  'gobject-introspection'
+)
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
-prepare() {
-  cd ${pkgname} || exit
-  git cherry-pick -n 52f40ce779cfa224266dd427cfe57afd83a28362
-}
-
-# shellcheck disable=SC2154
 build() {
-  meson build "${srcdir}/${pkgname}" --prefix=/usr --libdir=lib --libexecdir=lib -Dwnck=enabled -Dplatforms=x11,layer-shell
+  local _meson_options=(
+    -Dwnck=enabled
+    -Dplatforms=x11,wayland
+  )
+
+  arch-meson build "$_pkgsrc" "${_meson_options[@]}"
   meson compile -C build
 }
 
-# shellcheck disable=SC2154
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
+  DESTDIR="$pkgdir" meson install -C build
 }
-
-
