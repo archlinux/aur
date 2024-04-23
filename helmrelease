@@ -108,7 +108,7 @@ function helmrelease() {
   local helmReleaseYaml
   local numberOfHelmReleases
   local values
-  local index=0
+  local index
   local sourceParameter
   local yaml
   local remoteKubeconfig
@@ -124,9 +124,7 @@ function helmrelease() {
         yaml=$(cat)
         shift
         ;;
-      -[:digit:])
-        ;&
-      -[:digit:][:digit:])
+      -[0-9]*)
         index="${1/-/}"
         shift
         ;;
@@ -156,23 +154,27 @@ function helmrelease() {
   numberOfHelmReleases=$(<<< "$yaml" | yq -ers '[.[] | select(.kind == "HelmRelease")] | length')
   if [[ "$numberOfHelmReleases" -lt 1 ]]; then
     err 'There are no HelmReleases in the input'
-  elif [[ "$numberOfHelmReleases" != 1 ]] && [[ "$subCommand" == "install" ]]; then
-    info 'You can only install 1 HelmReleases at the same time, but you can do `-$index`;'
-    <<<"$yaml" | yq -ers '[.[] | select(.kind == "HelmRelease")] | . as $hrs | keys[] | "\(.): \($hrs[.] | "\(.metadata.namespace)/\(.metadata.name)")"' >&2
-    return 1
-  elif [[ "$numberOfHelmReleases" -gt 1 ]]; then
-    <<<"$yaml" | yq -erys '.[] | select(.kind != "HelmRelease") | select(.)' \
-      | if [[ "$subCommand" = "template" ]]; then
-      cat -
-    elif [[ "$subCommand" = "diff" ]]; then
-      kubectl diff -f - || true
-    fi
-    for index in {0..$((numberOfHelmReleases - 1))}; do
-      if [[ "$subCommand" = "template" ]]; then
-        echo ---
+  elif [[ "$numberOfHelmReleases" -gt 1 ]] && ! [[ -v index ]]; then
+    if [[ "$subCommand" == "install" ]]; then
+      info 'You can only install 1 HelmReleases at the same time, but you can do `-$index`;'
+      <<<"$yaml" | yq -ers '[.[] | select(.kind == "HelmRelease")] | . as $hrs | keys[] | "\(.): \($hrs[.] | "\(.metadata.namespace)/\(.metadata.name)")"' >&2
+      return 1
+    else
+      <<<"$yaml" | yq -erys '.[] | select(.kind != "HelmRelease") | select(.)' \
+        | if [[ "$subCommand" = "template" ]]; then
+        cat -
+      elif [[ "$subCommand" = "diff" ]]; then
+        kubectl diff -f - || true
       fi
-      <<<"$yaml" | yq -erys '([.[] | select(.kind == "HelmRelease")]['"$index"']),(.[] | select(.kind | IN(["GitRepository", "HelmRepository"][])))' | helmrelease "$subCommand" - -- "${@}"
-    done
+      for index in {0..$((numberOfHelmReleases - 1))}; do
+        if [[ "$subCommand" = "template" ]]; then
+          echo ---
+        fi
+        <<<"$yaml" | yq -erys '([.[] | select(.kind == "HelmRelease")]['"$index"']),(.[] | select(.kind | IN(["GitRepository", "HelmRepository"][])))' | helmrelease "$subCommand" - -- "${@}"
+      done
+    fi
+  else
+    index="${index:-0}"
   fi
 
   helmReleaseYaml=$(_hr_getYaml "$yaml" "$index" HelmRelease)
