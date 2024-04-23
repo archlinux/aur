@@ -1,0 +1,21 @@
+pkgbase = incron-next
+	pkgdesc = Like the regular cron but is driven by filesystem events instead of time periods
+	pkgver = 0.5.14
+	pkgrel = 1
+	url = https://github.com/dpvpro/incron-next
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gcc-libs
+	depends = bash
+	options = emptydirs
+	source = git+https://github.com/dpvpro/incron-next
+	source = incron.sysusers
+	source = incron.tmpfiles
+	source = incrond.service
+	sha256sums = SKIP
+	sha256sums = e5da0a3af368c286fa2b180015c9efc5aef5018c271a16620b8c30bfe6f9ccc2
+	sha256sums = 422c4a715da4037550d2f97de28f47f91d0b58983c188c6cf1d1233370e048a4
+	sha256sums = 5ff72411c704dd38823892d7fd13992509c3d906bfe0b4a5cafbe382e4e01c24
+
+pkgname = incron-next
