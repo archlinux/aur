@@ -4,12 +4,12 @@ pkgver=1.0.2
 pkgrel=1
 pkgdesc="Unofficial Simple Login desktop application."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/simplelogin"
+url="https://gitlab.com/linuxbombay/simplelogin"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-source=("https://gitlab.com/simplelogin/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('62bcb7786378ac82d166e2c2dfbb1d701bf1402d24c17319aa940ae313f2132b')
 
 
 package() {
