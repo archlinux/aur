@@ -1,7 +1,7 @@
 pkgbase = crunchy-cli
 	pkgdesc = Command-line downloader for Crunchyroll
-	pkgver = 3.5.0
-	pkgrel = 2
+	pkgver = 3.5.1
+	pkgrel = 1
 	url = https://github.com/crunchy-labs/crunchy-cli
 	arch = x86_64
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = crunchy-cli
 	depends = ffmpeg
 	depends = openssl
 	options = !lto
-	source = crunchy-cli-3.5.0.tar.gz::https://github.com/crunchy-labs/crunchy-cli/archive/refs/tags/v3.5.0.tar.gz
-	sha256sums = 0f6b278268269a4ae5e6bef4bd637f8ecc3632723271a285d9c62e2147a0b7e7
+	source = crunchy-cli-3.5.1.tar.gz::https://github.com/crunchy-labs/crunchy-cli/archive/refs/tags/v3.5.1.tar.gz
+	sha256sums = 480034f0f50c89ec125d4a1d3bd2c63a011ee92b6d7709868b4007e626ccd307
 
 pkgname = crunchy-cli
