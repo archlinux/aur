@@ -1,0 +1,17 @@
+pkgbase = exploitdb-papers-git
+	pkgdesc = Offensive Security's Exploit Database Archive
+	pkgver = 2022.11.22.r0.gd79ce5a
+	pkgrel = 1
+	url = https://www.exploit-db.com/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = sed
+	depends = exploitdb
+	conflicts = exploitdb-papers
+	replaces = exploitdb-papers
+	options = !strip
+	source = exploitdb-papers::git+https://gitlab.com/exploit-database/exploitdb-papers.git
+	sha512sums = SKIP
+
+pkgname = exploitdb-papers-git
