@@ -23,7 +23,7 @@ depends=(
   'python-requests'
   'python-requests-toolbelt'
   'python-rich'
-  'python-typing-extensions'
+  'python-typing_extensions'
   'vapoursynth-plugin-vardefunc-git'
 )
 makedepends=(
