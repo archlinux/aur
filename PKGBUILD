@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mubu-bin
 _pkgname=Mubu
-pkgver=4.0.1
+pkgver=4.0.2
 _electronversion=9
 pkgrel=1
 pkgdesc="一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe, use system electron)"
@@ -11,7 +11,7 @@ license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'p7zip'
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}.html::${url}/agreement"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('45a12d42e6d8f2d18bf22776ab7ec9d17e1b60aab071166ab4cba255ce5b91e1'
+sha256sums=('0dfdcec5c5346009a45b6bb5e48c50ce544a6cb53b7d4dc3f63ec33a9ece32b9'
             '023b3c0cc74ff7e75ab58817a51c3f20f309ad2c295b20c1d9f736fb33f1392b'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
