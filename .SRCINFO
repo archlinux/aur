@@ -1,0 +1,19 @@
+pkgbase = x265-mod-patman-git
+	pkgdesc = Open Source H265/HEVC video encoder (patman fork git version)
+	pkgver = 3.6+2+13.r0.g9a3dac6e5
+	pkgrel = 1
+	url = https://github.com/Patman86/x265-Mod-by-Patman
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = nasm
+	makedepends = ninja
+	depends = gcc-libs
+	provides = x265
+	provides = libx265.so
+	conflicts = x265
+	source = git+https://github.com/Patman86/x265-Mod-by-Patman.git
+	sha256sums = SKIP
+
+pkgname = x265-mod-patman-git
