@@ -1,16 +1,16 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-source-record
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.4
+pkgrel=1
 pkgdesc="Plugin for OBS Studio to add a filter that allows you to record a source"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/source-record.1285/"
-license=("GPL2")
+license=("GPL-2.0-or-later")
 depends=("obs-studio>=29")
 makedepends=("cmake" "git")
 options=("debug")
-source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=4e27c040031831f9e9959f4947a6904ebe0fa23a")
+source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=3c42da3785704d68ef800ac1d8f4b3fb890548e2")
 sha256sums=("SKIP")
 
 build() {
@@ -20,7 +20,8 @@ build() {
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
   -DQT_VERSION=6 \
-  -DCMAKE_C_FLAGS="-Wno-error=deprecated-declarations"
+  -DCMAKE_C_FLAGS="-Wno-error=deprecated-declarations" \
+  -Wno-dev
 
   cmake --build build
 }
