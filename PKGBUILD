@@ -3,17 +3,17 @@
 # Contributor: Your Name <abrahammurciano at gmail dot com>
 _base=agena
 pkgname=${_base}-bin
-pkgver=3.7.6
+pkgver=3.13.5
 pkgrel=1
 pkgdesc="An Algol-inspired procedural programming language designed for science, scripting, and other applications"
 arch=(x86_64)
 url="https://${_base}.sourceforge.net"
-license=(GPL)
+license=(GPL-2.0-or-later)
 depends=(libxext ncurses readline)
-source=(${pkgname}-${pkgver}.deb::https://master.dl.sourceforge.net/project/${_base}/Binaries/Agena%20${pkgver}/${_base}-${pkgver}a-linux.amd64.deb
+source=(${pkgname}-${pkgver}.deb::https://master.dl.sourceforge.net/project/${_base}/Binaries/Agena%20${pkgver}/${_base}-${pkgver}-linux.amd64.deb
   ${_base}.desktop)
-sha512sums=('c1e61200dcc3d3fdc17836c3a45274bb627d0b6c228fe85c11966b4c6c78b9a64562172c430bf01d8215c9b7f45a34f725a22945657eb4cbc67816650fdb4d0b'
-  '7b891c404b0a188d5c4012c9c239f6b94b20f1c7472897b9e310b8d7d9ee3013bef0904ebde4eef24e15e07011551b96928be718deb5495a8845b9786a063b0a')
+sha512sums=('e98a88ddf2a53e5c6e073a71c5eb9562b57641ecfbd9d547d349ce00b19728457fe564800231668775f8e0103203838b4813c24ff6cf7d3f9888012e508dedd5'
+            '813d95d40e351b9df43ef0bce93214b659ff851f81cb403a88e5bbddcb6f8e120ce216df3cb38ce3b5c2e11c498c68314b72d25ed17ae8158f420b560b626de2')
 
 prepare() {
   bsdtar xf data.tar.xz
