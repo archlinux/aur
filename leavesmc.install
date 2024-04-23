@@ -8,7 +8,6 @@ post_install() {
   echo "   如果这是你第一次运行服务端"
   echo "   你需要同意来自 Mojang 的 EULA"
   echo "   它位于 \"~/LeavesMC/\" 目录下"
-
 }
 
 post_upgrade() {
