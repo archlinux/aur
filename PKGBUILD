@@ -10,6 +10,7 @@ url="https://gitlab.com/pyg3t/pyg3t"
 license=(GPL-3.0-or-later)
 depends=(python)
 makedepends=(git python-setuptools python-build python-installer python-wheel)
+checkdepends=(python-pytest)
 provides=($_name)
 conflicts=($_name)
 source=(git+${url}.git)
@@ -26,6 +27,14 @@ pkgver() {
 build() {
   cd $_name
   python -m build --wheel --no-isolation
+}
+
+# Workaround for the tests requiring installed scripts (poselect, etc.)
+check() {
+  cd $_name
+  python -m installer --destdir='tmp_dir' dist/*.whl
+  export PATH="$PWD/tmp_dir/usr/bin:$PATH"
+  PYTHONPATH=$PWD python -m pytest
 }
 
 package() {

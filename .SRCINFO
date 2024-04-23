@@ -5,6 +5,7 @@ pkgbase = pyg3t-git
 	url = https://gitlab.com/pyg3t/pyg3t
 	arch = any
 	license = GPL-3.0-or-later
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-build
