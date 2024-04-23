@@ -1,5 +1,5 @@
 pkgbase = incron-next
-	pkgdesc = Like the regular cron but is driven by filesystem events instead of time periods
+	pkgdesc = Maintainable fork for incron package. MRs are welcome
 	pkgver = 0.5.14
 	pkgrel = 1
 	url = https://github.com/dpvpro/incron-next
