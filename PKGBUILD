@@ -2,7 +2,7 @@
 
 _pkgbase_=oxygen
 pkgname=${_pkgbase_}-cursors-extra
-pkgver=5.27.9
+pkgver=6.0.4
 pkgrel=1
 pkgdesc="KDE's Oxygen mouse cursor theme - the extra flavours"
 url="https://projects.kde.org/projects/kde/workspace/oxygen"
@@ -27,7 +27,7 @@ build() {
 	cmake .
 
 	for theme in ${_themelist_}; do
-		make theme-${theme}${_cursorsize_}
+		make -j1 theme-${theme}${_cursorsize_}
 	done
 }
 
@@ -44,4 +44,4 @@ package() {
 	done
 }
 
-sha256sums=('6420ebc7986d31c7e277a5862c9aaed959386e534530d10355d217b3cd36a973')
+sha256sums=('9150e00989a72cff35bb46c5ac9af25cabcee4cc18299c8be707bee84c5e546f')
