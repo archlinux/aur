@@ -1,5 +1,6 @@
 *
 !/firefox.cfg
 !/autoconfig.js
+!/autoconfig-no-sandbox.js
 !PKGBUILD
 !.SRCINFO
