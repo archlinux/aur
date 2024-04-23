@@ -1,27 +1,26 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 # Co-Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Co-Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 _pkgname=libqtxdg
 pkgname=$_pkgname-git
-pkgver=3.3.0.3.g7f32cc7
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Library providing freedesktop.org specs implementations for Qt."
 arch=("i686" "x86_64")
-url="https://lxqt.org"
-license=("LGPL2.1")
-depends=("qt5-base" "qt5-svg")
-makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
+url="https://lxqt-project.org"
+license=("LGPL-2.1-only")
+depends=('qt6-base' 'qt6-svg')
+makedepends=('git' 'cmake' 'lxqt-build-tools-git')
 checkdepends=("xorg-server-xvfb")
 provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname-qt5-git" "$_pkgname")
-replaces=("$_pkgname-qt5-git")
+conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
-
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/./g"
+  cd $_pkgname
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
@@ -36,7 +35,6 @@ build() {
 
 check() {
   cd build
-
   xvfb-run make test
 }
 
