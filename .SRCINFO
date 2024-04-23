@@ -1,6 +1,6 @@
 pkgbase = dosemu2-git
 	pkgdesc = Virtual machine that allows you to run DOS programs under Linux
-	pkgver = 2.0pre9.dev.r1795.ga235ad7e3
+	pkgver = 2.2.0pre9.2.r66.g99900648e
 	pkgrel = 1
 	url = https://github.com/dosemu2/dosemu2
 	arch = i686
@@ -28,8 +28,8 @@ pkgbase = dosemu2-git
 	optdepends = fluidsynth: MIDI support
 	optdepends = soundfont-fluid: or other SoundFont for MIDI support
 	optdepends = fbset: graphical display on console
-	provides = dosemu=2.0
-	provides = dosemu2=2.0
+	provides = dosemu=2.2.0
+	provides = dosemu2=2.2.0
 	conflicts = dosemu
 	conflicts = dosemu2
 	noextract = sed16bin.zip

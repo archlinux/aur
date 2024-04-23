@@ -27,7 +27,7 @@ _opt_keepdesktop=0
 
 _opt_fdpp=1
 # 0 = use freedos
-# 1 = use fdpp and comcom32 (boot only, freedos is still used for utilities)
+# 1 = use fdpp and comcom64 (boot only, freedos is still used for utilities)
 # 2 = use fdpp and freecom
 
 _opt_altcommand=0
@@ -38,7 +38,7 @@ _opt_altcommand=0
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre9.dev.r1795.ga235ad7e3
+pkgver=2.2.0pre9.2.r66.g99900648e
 pkgrel=1
 _pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
@@ -157,7 +157,7 @@ sha256sums=('SKIP'
 pkgver() {
   set -u
   cd 'dosemu2'
-  git describe --tag --long | sed -e 's/\([^-][0-9]\+-g\)/r\1/' -e 's/-/./g'
+  git describe --tag --long | sed -e 's/\([^-][0-9]\+-g\)/r\1/' -e 's/-/./g' -e 's:^dosemu::g'
   set +u
 }
 
@@ -486,10 +486,9 @@ build() {
   set -u
   cd 'dosemu2'
   if [ "${_opt_Debug}" -gt 1 ]; then
-    make -j1
+    nice make -j1
   else
-    local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-    nice make -s -j "${_nproc}"
+    nice make -s
   fi
   set +u
 }
