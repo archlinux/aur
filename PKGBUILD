@@ -1,40 +1,69 @@
-# Maintainer: TommyTran732 <contact@tommytran.io>
-# Contributor: Frederic Bezies <fredbezies@gmail.com>, Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>, LSUtigers3131
+# Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
+# Contributer: TommyTran732 <contact@tommytran.io>
+# Contributer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
+# Contributer: LSUtigers3131
 
-pkgname=pamac-flatpak
-pkgver=10.4.3
+_pkgname=pamac
+pkgname=${_pkgname}-flatpak
+pkgver=11.7.1
 pkgrel=1
-_pkgfixver=$pkgver
-
-pkgdesc="A Gtk3 frontend for libalpm (with AUR, Flatpak and AppIndicator support)"
+_srcdir="$_pkgname-$pkgver"
+pkgdesc="A GUI frontend for libalpm. With Flatpak support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://gitlab.manjaro.org/applications/pamac"
+url="https://gitlab.manjaro.org/applications/$_pkgname"
 license=('GPL3')
-depends=('libnotify' 'libpamac-flatpak>=10.3.0' 'libhandy' 'git' 'fakeroot' 'pkgconf' 'appstream-glib')
-optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
-            'fwupd: support firmware updates')
-makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'gobject-introspection' 'xorgproto' 'asciidoc')
-conflicts=('pamac' 'pamac-cli' 'pamac-gtk' 'pamac-qt' 'pamac-classic' 'pamac-aur' 'pamac-aur-git' 'pamac-all' 'pamac-all-git' 'pamac-flatpak-gnome' 'pacmac-nosnap')
-provides=('pamac')
+depends=(
+    'desktop-file-utils'
+    'gnutls'
+    'gtk4'
+    'libadwaita'
+    'libhandy'
+    'libnotify'
+    'libpamac-flatpak' 
+)
+optdepends=(
+    'lxsession: needed for authentification in Xfce, LXDE etc.'
+    'polkit-gnome: needed for authentification in Cinnamon, Gnome'
+    'plymouth: offline upgrades'
+)
+makedepends=(
+    'asciidoc'
+    'gettext'
+    'git'
+    'gobject-introspection'
+    'itstool'
+    'meson'
+    'ninja'
+    'vala'
+    'xorgproto'
+)
+#provides=(pamac)
+provides=("${_pkgname}=${pkgver}-${pkgrel}")
+conflicts=(
+    'pamac'
+    'pamac-aur'
+    'pamac-all'
+    'pamac-cli'
+    'pamac-nosnap'
+)
 options=(!emptydirs)
-install=pamac.install
-source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.bz2") 
-sha512sums=('011af395092c27c4e73f50b5f43e662b5fb5cd7ae920176c3702479fb05df958fa7ceaf206bfcdad016103d0fc9d6b94e0d94d27701e5afcad2ae92024c90e5c')
+source=("$url/-/archive/$pkgver/pamac-$pkgver.tar.gz")
+sha256sums=('bdf93f7efde43a1d0fa9ef9cceea409691f1d5e42bbd4fb0f9b3e38e0cd0c22a')
+
+_srcdir="$_pkgname-$pkgver"
 
 prepare() {
-  # adjust version string
-  sed -i -e "s|\"$_pkgfixver\"|\"$pkgver-$pkgrel\"|g" $srcdir/pamac-v$pkgver/src/version.vala
+	cd "$_srcdir"
+	# adjust version string
+	sed -i -e "s|\"$pkgver\"|\"$pkgver-$pkgrel\"|g" 'src/version.vala'
 }
 
 build() {
-  arch-meson --buildtype=release -Denable-fake-gnome-software=false $srcdir/pamac-v$pkgver build
-  meson compile -C build
-}
-
-check() {
-  meson test -C build --print-errorlogs
+	arch-meson "$_srcdir" 'build' -Denable-fake-gnome-software=false
+	meson compile -C 'build'
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+	meson install -C 'build' --destdir "$pkgdir"
+	install -Dm644 "$_srcdir/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
