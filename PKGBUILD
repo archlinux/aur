@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=edencommon
-pkgver=2024.04.08.00
+pkgver=2024.04.22.00
 pkgrel=1
 pkgdesc="Shared library for Watchman and Eden projects"
 arch=(x86_64)
@@ -36,7 +36,7 @@ source=(
   "fmt-v10.2-compatibility.patch"
 )
 sha256sums=(
-  '0c92545d95e996c7c9c42e0f0b1c66133aea7d1763df089028951964205c3154'
+  '6b558e3f78fb6e211e26c6e7a07b2b5a9073322b39c60afc3def21309b360053'
   '49178a7eac4639a82ae17ca54833f4147170c6ae1b573d382771d92d88891c66'
   '019ae5911f839b4ff15c8508ce2824956ac5b2f0bb94182766f76863a81dbb35'
 )
