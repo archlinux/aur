@@ -5,6 +5,7 @@ arch=('any')
 pkgdesc="CMake wrapper for MinGW (mingw-w64) (i686, x86_64, armv7, and aarch64)"
 depends=('cmake' 'llvm-mingw-w64-toolchain' 'llvm-mingw-w64-pkg-config' 'mingw-w64-environment')
 optdepends=('mingw-w64-wine: runtime support')
+conflicts=('mingw-w64-cmake')
 provides=('mingw-w64-cmake')
 license=("GPL")
 url="http://fedoraproject.org/wiki/MinGW"
