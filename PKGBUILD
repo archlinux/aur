@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=rare-git
-pkgver=1.5_beta2.r0.g2e88d86
+pkgver=1.10.11.201.r2.g8f018cb1
 pkgrel=1
 pkgdesc="GUI for legendary. An Epic Games Launcher open source alternative."
 arch=('any')
@@ -10,6 +10,7 @@ license=('GPL3')
 groups=()
 depends=(
 	"legendary"
+	"python-orjson"
 	"python-pillow"
 	"python-psutil"
 	"python-pypresence"
@@ -17,6 +18,7 @@ depends=(
 	"python-qtawesome"
 	"python-requests"
 	"python-setuptools"
+	"python-vdf"
 	"python-wheel"
 )
 makedepends=("git" "python-setuptools" "gendesk")
