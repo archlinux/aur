@@ -2,31 +2,42 @@
 
 _pkgname='xorgxrdp'
 pkgname="$_pkgname-git"
-pkgver=0.2.18.r70.g728cf99
+pkgver=0.10.1.r19.g43a3256
 pkgrel=1
 pkgdesc='Xorg drivers for xrdp. Git version, devel branch.'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7l' 'aarch64')
 url='https://github.com/neutrinolabs/xorgxrdp'
-license=('MIT')
+license=('X11')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+depends=('xorg-server')
 makedepends=('nasm' 'xorg-server-devel' 'xrdp-git')
+checkdepends=('check')
 options=('staticlibs')
 source=("git+$url#branch=devel")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
 
-    git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([0-9]*-g),r\1,;s,-,.,g'
+  _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
   cd "$srcdir/$_pkgname"
 
   ./bootstrap
-  ./configure --prefix="/usr"
+  ./configure --prefix="/usr" --enable-glamor
   make
+}
+
+check() {
+  cd "$srcdir/$_pkgname"
+
+  XORG=/usr/lib/Xorg make check
 }
 
 package() {
