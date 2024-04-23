@@ -1,6 +1,6 @@
 pkgbase = python-biosppy
 	pkgdesc = A toolbox for biosignal processing written in Python.
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/scientisst/BioSPPy
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = python-biosppy
 	depends = python-six
 	depends = python-joblib
 	depends = python-opencv
-	noextract = biosppy-2.2.0-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/b/biosppy/biosppy-2.2.0-py2.py3-none-any.whl
-	sha256sums = 4818724033b868b2833990dcc7858f7b5c1207799b385d8cecca27215b8ac186
+	noextract = biosppy-2.2.1-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/b/biosppy/biosppy-2.2.1-py2.py3-none-any.whl
+	sha256sums = 4023c0b48520c5353929c538bfb50ee4f3668bf424ca948e9b71d57de5a76ad4
 
 pkgname = python-biosppy

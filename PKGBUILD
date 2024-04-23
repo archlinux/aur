@@ -2,7 +2,7 @@
 
 _name=biosppy
 pkgname=python-${_name,,}
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A toolbox for biosignal processing written in Python."
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=('python-installer' 'python-wheel')
 
 _whl="${_name//-/_}-$pkgver-py2.py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py2.py3-none-any.whl")
-sha256sums=('4818724033b868b2833990dcc7858f7b5c1207799b385d8cecca27215b8ac186')
+sha256sums=('4023c0b48520c5353929c538bfb50ee4f3668bf424ca948e9b71d57de5a76ad4')
 
 noextract=("$_whl")
 package() {
