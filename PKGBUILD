@@ -8,7 +8,7 @@
 
 # Maintainer: Nick Cottrell <ncottrellweb@gmail.com>
 pkgname=rz-jsdec-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.7.0
+pkgver=0.7.0.r0.g0f966e3
 pkgrel=1
 pkgdesc="Provides js decompiler for rizin"
 arch=('any')
@@ -40,7 +40,7 @@ pkgver() {
 # are not available, is recommended.
 
 # Git, tags available
-	printf "%s" "$(git describe --tags| sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
