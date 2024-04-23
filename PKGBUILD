@@ -3,16 +3,16 @@ _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r16824.g982347f6a'
+pkgver='r17033.gf2ab25852'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - git version'
-# If you're running on armv7h or aarch64, use the electron28-bin package from the AUR for the electron28 dependency
-# If you're running on armv7h, you have to add it to the arch and source arrays of the electron28-bin AUR dependency
+# If you're running on armv7h or aarch64, use the electron29-bin package from the AUR for the electron29 dependency
+# If you're running on armv7h, you have to add it to the arch and source arrays of the electron29-bin AUR dependency
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
-_electronpkg='electron28'
+_electronpkg='electron29'
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
 makedepends=('git' 'npm>=8.19.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
