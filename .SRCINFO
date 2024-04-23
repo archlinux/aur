@@ -1,14 +1,14 @@
 pkgbase = stalwart-cli
 	pkgdesc = Stalwart CLI
-	pkgver = 0.7.1
-	pkgrel = 2
+	pkgver = 0.7.2
+	pkgrel = 1
 	url = https://stalw.art/
 	arch = x86_64
 	arch = aarch64
 	license = AGPL
-	source_x86_64 = https://github.com/stalwartlabs/mail-server/releases/download/v0.7.1/stalwart-cli-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = e42334c6d6b2e4387f4de839dabe14b7cd8866d99a239c8e4fc60621610524a8
-	source_aarch64 = https://github.com/stalwartlabs/mail-server/releases/download/v0.7.1/stalwart-cli-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 06bd4ec829ba06237c1d408fa2572db6fe2445c3d39af64431e923ffe971ae03
+	source_x86_64 = https://github.com/stalwartlabs/mail-server/releases/download/v0.7.2/stalwart-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e0635af39b4e3b214fc553bb48c72255df2d6cc252dd10eb4f6b99731ca4bba7
+	source_aarch64 = https://github.com/stalwartlabs/mail-server/releases/download/v0.7.2/stalwart-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c7f05746fc4c324aa7b17032ffd433d73a6d97aedfbb1151a9c8eab7edb11873
 
 pkgname = stalwart-cli
