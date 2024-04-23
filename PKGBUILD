@@ -1,8 +1,8 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app-bin
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -17,9 +17,13 @@ optdepends=(
     'xorg-xrandr: for older minecraft versions'
 )
 provides=('modrinth-app')
-conflicts=('modrinth-app' 'modrinth-app-git')
-source=("https://launcher-files.modrinth.com/versions/${pkgver}/linux/modrinth-app_${pkgver}_amd64.deb")
-sha256sums=('453e72dfaaff9e6f74224227bc2c0d5bb66ff4b424f747dffebb5e80f0449b2c')
+conflicts=('modrinth-app')
+source=(
+    "https://launcher-files.modrinth.com/versions/${pkgver}/linux/modrinth-app_${pkgver}_amd64.deb"
+    "modrinth-app"
+)
+sha256sums=('0a91ddf6328492c33a2aa63059d6c371fb7ed8e6ce172f715b4eb28ee8cb6124'
+            '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9')
 
 build() {
     cd "$srcdir/"
@@ -28,4 +32,7 @@ build() {
 
 package() {
     cp -r "${srcdir}/usr/" "${pkgdir}"
+    mkdir -p "${pkgdir}/opt/modrinth-app"
+    mv "${pkgdir}/usr/bin/modrinth-app" "${pkgdir}/opt/modrinth-app/"
+    install -Dm755 "${srcdir}/modrinth-app" "${pkgdir}/usr/bin/"
 }
