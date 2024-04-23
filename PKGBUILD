@@ -1,7 +1,7 @@
 #
 # PKGBUILD file for package clapper
 #
-# Copyright (C) 2020/21 sp1rit
+# Copyright (C) 2020-24 sp1rit
 # Copyright (C) 2020  Rafostar
 #
 # This program is free software: you can redistribute it and/or modify
