@@ -2,9 +2,9 @@
 # Contributor: Schrottfresse <schrottfresse at gmx dot de>
 
 pkgname=tlclient
-pkgver=4.15.0
-_buildnr=3258
-pkgrel=3
+pkgver=4.16.0
+_buildnr=3389
+pkgrel=1
 pkgdesc="A remote desktop application"
 arch=('x86_64' 'armv7h')
 url="https://www.cendio.com/thinlinc/download"
@@ -16,8 +16,8 @@ optdepends=('cups: required for remote printing'
 source=('tlclient.desktop' 'tlclient.png')
 sha256sums=('caa7417fa2f6a530bef2c6ca05f4c8a219ec85add7884fbb7368c0bf18be2988'
             'e0cd5d5b6d752672cc207ad098fe2882268d92c3958adf38d571481e1910c5ef')
-sha256sums_x86_64=('9b1ffc0a1481296d2cd92bdf9a8b94a905b161e8af1301a23c67a4c55fe15bba')
-sha256sums_armv7h=('201527870fac6a6d9e8374e9c6a311df2ccdf29927fddf146a7c23abdfe227d6')
+sha256sums_x86_64=('ea3a92186cbaf71cc4ab692b3baeadd94b3836242e58705a38fe3683f4f18691')
+sha256sums_armv7h=('ec5f602e7d7732dce6b3ba2a48f2908c4a5660652d8fe0f0029556c08a26f624')
 
 source_x86_64=("https://www.cendio.com/downloads/clients/tl-$pkgver-$_buildnr-client-linux-dynamic-x86_64.tar.gz")
 source_armv7h=("https://www.cendio.com/downloads/clients/tl-$pkgver-$_buildnr-client-linux-dynamic-armhf.tar.gz")
