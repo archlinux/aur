@@ -23,7 +23,7 @@ pkgver() {
   _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
   _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//; s/-/_/'
 }
 
 build() {
