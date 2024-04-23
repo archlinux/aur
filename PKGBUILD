@@ -1,6 +1,6 @@
 # Maintainer: Funami
 pkgname=lux-dl-bin
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Fast and simple video download library and CLI tool written in Go"
 arch=('x86_64' 'i686' 'armv6h' 'aarch64')
@@ -20,10 +20,10 @@ noextract=("$pkgname-$pkgver-x86_64.tar.gz"
            "$pkgname-$pkgver-armv6h.tar.gz"
            "$pkgname-$pkgver-aarch64.tar.gz")
 sha256sums=('84167971d27937f2786018fb023ef08bcd310ca37c0983d7385cfb64cfe4fc8c')
-sha256sums_x86_64=('c4b3122a454418c6018c9e3e8f9e686dfdafddc87622bf3eb7a15a6933e94e3c')
-sha256sums_i686=('17d26b3bcd66294a39295097c3b0ad69470655de4dd425864d2a6d0e9829c463')
-sha256sums_armv6h=('34c7d54a8870a502a2dc329dd43200aa05781d38fbd69c73b39961ff8c40f3f7')
-sha256sums_aarch64=('a58f7bb019691276473fe8dd93b7c2aac4ff942ba68e1319cd3d06b98cb1eb37')
+sha256sums_x86_64=('59c80b75733d3d4c8b661aacd2dfda4c8542f0d7c477dcc33884a8bc11f037a3')
+sha256sums_i686=('82c9179cfaf890e08a79070cc47f1e24c978f3bff9c4386d8c01a6937866af20')
+sha256sums_armv6h=('55654879ccc4452374e12dab3df5c6caa4401627e870941696c339be0e4402b5')
+sha256sums_aarch64=('3cd12b23dd646b0bef61ccf3835b16bfc0a51ef9d7d8cba8eb6dc3cbd73eb692')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver-$CARCH"
