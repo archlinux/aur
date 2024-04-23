@@ -1,0 +1,4 @@
+[hunspell-da]
+source = "regex"
+url = "https://stavekontrolden.dk/?dictionaries=1"
+regex = "da_DK-((?:\\d|\\.)+)\\.aff"
