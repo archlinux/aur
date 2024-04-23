@@ -1,9 +1,9 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-picologging
-_name=${pkgname#python-}
+_pkgname=${pkgname#python-}
 pkgver=0.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="An optimized logging library for Python"
 arch=(x86_64)
 url="https://github.com/microsoft/picologging"
@@ -28,29 +28,16 @@ checkdepends=(
   python-pytest
   python-pytest-memray
 )
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('ed5e9d31c2d06fd02d4304bfb98cb200acbf11e1f03d6a5b341263cf312a18b2')
 
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-  "remove-build-dependencies-cmake-ninja.patch"
-)
-sha256sums=(
-  'ed5e9d31c2d06fd02d4304bfb98cb200acbf11e1f03d6a5b341263cf312a18b2'
-  '7a74c72ad8fafa38116b5c717092024d607a426b2040b625267dadc190e90c4b'
-)
-
-_archive="$_name-$pkgver"
-
-prepare() {
-  cd "$_archive"
-
-  patch --forward --strip=1 --input="$srcdir/remove-build-dependencies-cmake-ninja.patch"
-}
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
 
   export CMAKE_ARGS=-Wno-dev
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
@@ -59,8 +46,8 @@ check() {
   rm -rf tmp_install
   python -m installer --destdir=tmp_install dist/*.whl
 
-  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  export PYTHONPATH="$PWD/tmp_install/$_site_packages:$PYTHONPATH"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$site_packages"
   # Deselected test fails with MEMORY PROBLEMS in a chroot.
   pytest \
     --deselect tests/unit/test_logger.py::test_nested_frame_stack
