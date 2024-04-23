@@ -1,0 +1,15 @@
+#!/bin/sh
+
+post_install() {
+  echo ":: If this is your first time running the server."
+  echo "   You need to agree to the EULA from Mojang,"
+  echo "   It is located under the directory \"~/LeavesMC/\""
+  echo "   "
+  echo "   如果这是你第一次运行服务端"
+  echo "   你需要同意来自 Mojang 的 EULA"
+  echo "   它位于 \"~/LeavesMC/\" 目录下"
+}
+
+post_upgrade() {
+  post_install
+} 

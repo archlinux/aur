@@ -2,27 +2,30 @@
 
 pkgname=leavesmc
 _pkgver=1.20.4
-_build=335f748
+_build=a4724ba
 pkgver="${_pkgver}+${_build}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Fork of Paper aimed at repairing broken vanilla properties."
 arch=('any')
 url="https://leavesmc.org/"
 license=('custom')
 depends=('java-runtime>=17')
-optdepends=('screen')
+optdepends=('screen: Used to continue running the server after closing the terminal.')
 provides=('leavesmc-git')
 conflicts=('leavesmc-git')
+install=${pkgname}.install
 source=("leavesmc.png"
         "leavesmc.desktop"
         "leavesmc-launch-script"
+        "leavesmc.install"
         "${pkgname}-${pkgver}.jar"::"https://github.com/LeavesMC/Leaves/releases/download/${_pkgver}-${_build}/leaves-${_pkgver}.jar"
         "LICENSE_GPL"::"https://github.com/LeavesMC/Leaves/raw/master/licenses/GPL.md"
         "LICENSE_MIT"::"https://github.com/LeavesMC/Leaves/raw/master/licenses/MIT.md")
 sha256sums=("720ee68108bbe12c362cf5ed05b3ad5b28bbaf53f3d7952d389bfc404a5baaac"
             "4a03cc59260564cbd176260250a4256e56793d4e82e40c61d421dd549c981022"
             "d967d878d6d2d80e034ba31fb1852cc45243c9339bede3959d1274b1f1761367"
-            "182f945c5c277b883b6fd22d62aeec88c52d834c4c161ce79a9aa6abc21e06ec"
+            "9201491e35529696a09d92e219e667b23b90e0b3c40a545a3c9bd7d85a7969de"
+            "c05bdc5c7e40be2776a06098f641a73432ae747a757a8f4e08b554bea7bc1dee"
             "0e1372769c3ea4ce2a8fb0955a02adf8e88d1804c6143518dee9f969eb0911f7"
             "559c62b6c55d1288098a4f744832081cdb7e0015139636cbbad1ad6cbe55ffea")
 

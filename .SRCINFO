@@ -1,24 +1,27 @@
 pkgbase = leavesmc
 	pkgdesc = Fork of Paper aimed at repairing broken vanilla properties.
-	pkgver = 1.20.4+335f748
-	pkgrel = 3
+	pkgver = 1.20.4+a4724ba
+	pkgrel = 1
 	url = https://leavesmc.org/
+	install = leavesmc.install
 	arch = any
 	license = custom
 	depends = java-runtime>=17
-	optdepends = screen
+	optdepends = screen: Used to continue running the server after closing the terminal.
 	provides = leavesmc-git
 	conflicts = leavesmc-git
 	source = leavesmc.png
 	source = leavesmc.desktop
 	source = leavesmc-launch-script
-	source = leavesmc-1.20.4+335f748.jar::https://github.com/LeavesMC/Leaves/releases/download/1.20.4-335f748/leaves-1.20.4.jar
+	source = leavesmc.install
+	source = leavesmc-1.20.4+a4724ba.jar::https://github.com/LeavesMC/Leaves/releases/download/1.20.4-a4724ba/leaves-1.20.4.jar
 	source = LICENSE_GPL::https://github.com/LeavesMC/Leaves/raw/master/licenses/GPL.md
 	source = LICENSE_MIT::https://github.com/LeavesMC/Leaves/raw/master/licenses/MIT.md
 	sha256sums = 720ee68108bbe12c362cf5ed05b3ad5b28bbaf53f3d7952d389bfc404a5baaac
 	sha256sums = 4a03cc59260564cbd176260250a4256e56793d4e82e40c61d421dd549c981022
 	sha256sums = d967d878d6d2d80e034ba31fb1852cc45243c9339bede3959d1274b1f1761367
-	sha256sums = 182f945c5c277b883b6fd22d62aeec88c52d834c4c161ce79a9aa6abc21e06ec
+	sha256sums = 9201491e35529696a09d92e219e667b23b90e0b3c40a545a3c9bd7d85a7969de
+	sha256sums = c05bdc5c7e40be2776a06098f641a73432ae747a757a8f4e08b554bea7bc1dee
 	sha256sums = 0e1372769c3ea4ce2a8fb0955a02adf8e88d1804c6143518dee9f969eb0911f7
 	sha256sums = 559c62b6c55d1288098a4f744832081cdb7e0015139636cbbad1ad6cbe55ffea
 
