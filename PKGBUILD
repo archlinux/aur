@@ -2,41 +2,56 @@
 
 _pkgname=xorgxrdp
 pkgname=xorgxrdp-glamor
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp, with glamor enabled. Only works on Intel and AMD GPUs."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7l' 'aarch64')
 url="https://github.com/neutrinolabs/xorgxrdp"
-license=('MIT')
-provides=('xorgxrdp')
-conflicts=('xorgxrdp')
+license=('X11')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 depends=('xorg-server')
 makedepends=('nasm' 'xorg-server-devel' 'xrdp')
+checkdepends=('check')
 options=('staticlibs')
-source=("$url/releases/download/v$pkgver/xorgxrdp-$pkgver.tar.gz"{,.asc}
-        'glamor.patch')
-sha256sums=('d947f2fe79f1ed62dd8526237c9b9027a51bb2b3fce7e51fc3f57926751cf86b'
-            'SKIP'
-            '10d289d1a11c9a5a8b4c6af534c2f9e7900ae2b4351860a063ba572010d95912')
-validpgpkeys=('61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB')  # Koichiro IWAO <meta@vmeta.jp>
+source=(
+  "$url/archive/refs/tags/v$pkgver.tar.gz"
+  'glamor.patch'
+)
+sha256sums=(
+  '4cff18d1095d0fe2a177834a089ff9759e758f924ee3332b71f508f7aec9ffbe'
+  '10d289d1a11c9a5a8b4c6af534c2f9e7900ae2b4351860a063ba572010d95912'
+)
 
-prepare () {
-  cd "$_pkgname-$pkgver"
+prepare() {
+  cd "$srcdir/$_pkgname-$pkgver"
 
   # https://github.com/neutrinolabs/xrdp/issues/1029#issuecomment-724105386
   patch -p1 -i"$srcdir/glamor.patch"
 }
 
-build () {
-  cd "$_pkgname-$pkgver"
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
 
-  ./configure --prefix="/usr" --enable-glamor
+  ./bootstrap
+
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+    ./configure --prefix=/usr \
+    --enable-glamor
+
   make
 }
 
-package () {
-  cd "$_pkgname-$pkgver"
+check() {
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  # https://github.com/neutrinolabs/xorgxrdp/pull/308
+  XORG=/usr/lib/Xorg make check
+}
+
+package() {
+  cd "$srcdir/$_pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm644 'COPYING' -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
