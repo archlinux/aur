@@ -4,8 +4,8 @@
 
 pkgname='dex-idp'
 pkgdesc='OpenID Connect Identity (OIDC) and OAuth 2.0 Provider with Pluggable Connectors'
-pkgver='2.37.0'
-_tag=08bb7fb98b164ab078be17ecda4077b2d21c9bb3
+pkgver='2.39.1'
+_tag=3705207f0190a7dc55b85a076b83b58d77fdafec
 pkgrel='1'
 url="https://github.com/dexidp/dex"
 license=('Apache')
