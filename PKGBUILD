@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=muffon-bin
-pkgver=2.0.2
-_electronversion=28
-pkgrel=3
+pkgver=2.0.3
+_electronversion=29
+pkgrel=1
 pkgdesc="Music streaming browser,retrieves audio, video and metadata from various Internet sources."
 arch=('x86_64')
 url="https://muffon.netlify.app/"
@@ -17,13 +17,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('90d9932012a0c3b2b265fb0dac3a15221735f27aa7ea4e832ec3a77c94974801'
+sha256sums=('f8c95fa2bcad631402fcd65986293c853a7942011e3b6a24194fdc0ba1a4d8f3'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g;s|Audio;|AudioVideo;|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
