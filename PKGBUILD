@@ -1,39 +1,25 @@
+# Maintainer: Ryan Barillos < ryan dot barillos at proton dot me >
 # Maintainer: Cimu Wang <cimu58@gmail.com>
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Robert Cegliński <rob.ceglinski@gmail.com>
 
-_name=ClearUrls
+# Custom variables
+_name=clearurls
+_id="{74145f27-f039-47ce-a470-a662b129930a}"
+
+
 pkgname=firefox-clearurls
-pkgver=1.23.1
-pkgrel=2
-pkgdesc='Removes tracking elements from URLs'
+pkgver=1.26.1
+pkgrel=1
+pkgdesc="Remove tracking elements from URL's to protect privacy while browsing."
 arch=('any')
-url=https://clearurls.xyz
+url="https://addons.mozilla.org/en-US/firefox/addon/$_name/"
 license=('LGPL3')
 groups=('firefox-addons')
-makedepends=('strip-nondeterminism' 'zip')
-#source=("https://gitlab.com/KevinRoebert/$_name/-/archive/$pkgver/$_name-$pkgver.tar.gz")
-source=("https://github.com/$_name/Addon/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('1a9f22a4b77f32a150056e4633cfc0d6')
+source=("$_name-$pkgver.xpi::https://addons.mozilla.org/firefox/downloads/latest/$_name/latest.xpi")
+md5sums=('58ff2220a7c9eee3e22bc3d0c50eef32')
 
-prepare() {
-  cd Addon-$pkgver
-  sed -i 's/"default_locale": "en",/"default_locale": "en",\
-    "browser_specific_settings": {\
-      "gecko": {\
-        "id": "{74145f27-f039-47ce-a470-a662b129930a}"\
-      }\
-    },/' manifest.json
-}
 
 package() {
-  cd Addon-$pkgver
-  install -d "$pkgdir"/usr/lib/firefox/browser/extensions
-  zip -r \
-    "$pkgdir"/usr/lib/firefox/browser/extensions/{74145f27-f039-47ce-a470-a662b129930a}.xpi \
-    clearurls.js browser-polyfill.js manifest.json img/* external_js/* html/* \
-    core_js/* css/* fonts/* _locales/*
-  strip-nondeterminism -t zip "$pkgdir"/usr/lib/firefox/browser/extensions/*
+  install -Dm644 ${_name}-${pkgver}.xpi "${pkgdir}/usr/lib/firefox/browser/extensions/${_id}.xpi"
 }
-
-# vim:set ts=2 sw=2 et:
