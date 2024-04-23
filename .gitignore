@@ -1,8 +1,5 @@
-ttl2c
-src
-pkg
-ttl2c-git-*.tar.xz
+ttl2c/
+src/
+pkg/
+ttl2c-git-*.pkg.tar.*
 ttl2c-git-*.src.tar.gz
-.AURINFO
-
-
