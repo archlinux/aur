@@ -2,15 +2,15 @@
 _name=staticx
 pkgname=$_name
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Build static self-extracting app from dynamic executable"
 arch=('x86_64')
 url="https://github.com/JonathonReinhart/staticx"
 license=('GPL' 'custom')
 groups=()
-depends=('python')
-makedepends=(python-build python-installer python-wheel)
+depends=(binutils patchelf python)
+makedepends=(python-build python-installer python-wheel musl)
 checkdepends=()
 optdepends=()
 provides=()
@@ -27,6 +27,7 @@ validpgpkeys=()
 
 
 build() {
+    export BOOTLOADER_CC=/usr/bin/musl-gcc
     cd $_name-$pkgver
     python -m build --wheel --no-isolation
 }
