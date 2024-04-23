@@ -1,17 +1,17 @@
 pkgbase = perl-string-copyright
 	pkgdesc = Representation of text-based copyright statements
-	pkgver = 0.003011
-	pkgrel = 2
+	pkgver = 0.003014
+	pkgrel = 1
 	url = https://salsa.debian.org/build-common-team/string-copyright
 	arch = any
-	license = AGPL3
+	license = AGPL-3.0-or-later
 	checkdepends = perl-test2-suite
 	checkdepends = perl-test-without-module
 	depends = perl
 	depends = perl-exporter-tiny
-	depends = perl-number-range
+	depends = perl-set-intspan
 	optdepends = perl-re-engine-re2
-	source = https://www.cpan.org/modules/by-module/String/String-Copyright-0.003011.tar.gz
-	sha512sums = dc7a4a15e8f2c6d47ffd2e61003717eb7fc3c8c7f299f8dc02242573b7a3025fbd4fe306e14e255ea0aa66a64a7fd2564b8373d488c9f45a203012161c91c1bc
+	source = https://www.cpan.org/modules/by-module/String/String-Copyright-0.003014.tar.gz
+	sha512sums = 39874b267fcd01e6ffbcdae15af74918fddcb586c2f0708ba30b47957a4e6613689776b9e80a649689374a913b2c6c285ed58823620b6553cd56d6d99e632f08
 
 pkgname = perl-string-copyright
