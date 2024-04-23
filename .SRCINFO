@@ -1,0 +1,14 @@
+pkgbase = pkl-bin
+	pkgdesc = A configuration as code language with rich validation and tooling.
+	pkgver = 0.25.3
+	pkgrel = 1
+	url = https://pkl-lang.org
+	arch = x86_64
+	license = Apache
+	provides = pkl
+	conflicts = pkl
+	conflicts = pkl-git
+	source_x86_64 = https://github.com/apple/pkl/releases/download/0.25.3/pkl-linux-amd64
+	sha256sums_x86_64 = fb2c8ad5de113a1246599e893492736b79e73bdf986ba4caf305cd09aae82c10
+
+pkgname = pkl-bin
