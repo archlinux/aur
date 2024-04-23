@@ -1,9 +1,9 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore-bin
-pkgver=2.19.1
-pkgrel=2
-pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
+pkgver=2.21.1
+pkgrel=1
+pkgdesc="Installer/Updater/Launcher for Northstar (binary release)"
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("flightcore")
 _appimage=flight-core_${pkgver}_amd64.AppImage
 source=("$url/releases/download/v$pkgver/$_appimage"
         "$url/archive/refs/heads/main.zip")
-sha256sums=('b94a5c808ac44072296d0484bdb4493c2d4557761ae0d84b037c9fdbc8f1f020'
+sha256sums=('954a0317a5533c5500fbef125f34f253c43cfb0f5b91a67281aa093aecac2747'
             'SKIP')
 
 prepare() {
@@ -31,6 +31,7 @@ package() {
   install -Dm755 squashfs-root/usr/bin/flight-core "$pkgdir/usr/bin/flightcore"
   cd FlightCore-main
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/flightcore"
+  install -Dm644 README.md docs/DEV-TOOLS.md docs/FAQ.md docs/TROUBLESHOOTING.md -t "$pkgdir/usr/share/doc/flightcore"
   cd src-tauri
   install -Dm644 icons/32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/flightcore.png"
   install -Dm644 icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/flightcore.png"
