@@ -1,6 +1,7 @@
 gitea/
 pkg/
 src/
+forgejo/*
 *.tar.gz
 *.tar.xz
 *.tar.zst

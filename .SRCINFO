@@ -1,7 +1,7 @@
 pkgbase = forgejo-git
 	pkgdesc = Self-hosted, lightweight software forge. A "soft" fork of Gitea.
-	pkgver = v1.20.0_dev_2391_gd26aea842
-	pkgrel = 0
+	pkgver = v8.0.0_dev_592_g5c5cc42fe0
+	pkgrel = 1
 	url = https://forgejo.org
 	arch = x86_64
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = forgejo-git
 	provides = forgejo
 	conflicts = forgejo
 	backup = etc/forgejo/app.ini
-	source = git+https://codeberg.org/forgejo/forgejo#branch=forgejo
+	source = forgejo::git+https://codeberg.org/forgejo/forgejo.git
 	source = forgejo.tmpfiles
 	source = forgejo.service
 	source = forgejo.sysusers

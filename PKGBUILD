@@ -11,8 +11,8 @@
 
 _pkgname='forgejo'
 pkgname=forgejo-git
-pkgver=v1.20.0_dev_2391_gd26aea842
-pkgrel=0
+pkgver=v8.0.0.dev.r592.g5c5cc42fe0
+pkgrel=1
 pkgdesc='Self-hosted, lightweight software forge. A "soft" fork of Gitea.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://forgejo.org'
@@ -32,10 +32,10 @@ backup=('etc/forgejo/app.ini')
 conflicts=('forgejo')
 provides=('forgejo')
 source=(
-    git+https://codeberg.org/forgejo/forgejo#branch=forgejo
-    forgejo.tmpfiles
-    forgejo.service
-    forgejo.sysusers
+    "${_pkgname}::git+https://codeberg.org/${_pkgname}/${_pkgname}.git"
+    "${_pkgname}.tmpfiles"
+    "${_pkgname}.service"
+    "${_pkgname}.sysusers"
     app.ini
 )
 sha512sums=('SKIP'
@@ -46,7 +46,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --tags --long | sed s/-/_/g
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -66,11 +66,11 @@ build() {
   export LDFLAGS="-X 'code.gitea.io/gitea/modules/setting.AppWorkPath=/var/lib/forgejo/'"
   export EXTRA_GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   export TAGS="bindata sqlite sqlite_unlock_notify pam"
-  make -j1 # building in parallel breaks the bindata target which relies on execution order
+  make -j
 }
 
 package() {
-  install -Dm755 ${_pkgname}/gitea "${pkgdir}"/usr/bin/${_pkgname}
+  # install -Dm755 ${_pkgname}/gitea "${pkgdir}"/usr/bin/${_pkgname}
   install -Dm644 ${_pkgname}/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
   install -Dm644 ${_pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
