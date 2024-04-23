@@ -1,17 +1,18 @@
-pkgname=mingw-w64-cmake
+pkgname=llvm-mingw-w64-cmake
 pkgver=1
 pkgrel=40
 arch=('any')
-pkgdesc="CMake wrapper for MinGW (mingw-w64)"
-depends=('cmake' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-environment')
+pkgdesc="CMake wrapper for MinGW (mingw-w64) (i686, x86_64, armv7, and aarch64)"
+depends=('cmake' 'llvm-mingw-w64-toolchain' 'llvm-mingw-w64-pkg-config' 'mingw-w64-environment')
 optdepends=('mingw-w64-wine: runtime support')
+provides=('mingw-w64-cmake')
 license=("GPL")
 url="http://fedoraproject.org/wiki/MinGW"
 source=("mingw-cmake.sh"
         "toolchain-mingw.cmake")
 sha256sums=('SKIP' 'SKIP')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32 armv7-w64-mingw32 aarch64-w64-mingw32"
 
 build() {
   for _arch in ${_architectures}; do
