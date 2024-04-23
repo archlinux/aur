@@ -1,12 +1,11 @@
 pkgbase = secretfinder-git
 	pkgdesc = Find sensitive data (apikeys, accesstoken,jwt,..) and search anything on javascript files
-	pkgver = r39.ca5e1a1
+	pkgver = r14.a0283cb
 	pkgrel = 1
 	url = https://github.com/m4ll0k/SecretFinder
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = python-argparse
 	depends = python-jsbeautifier
 	depends = python-lxml
 	depends = python-requests-file
@@ -16,4 +15,3 @@ pkgbase = secretfinder-git
 	sha256sums = SKIP
 
 pkgname = secretfinder-git
-

@@ -1,15 +1,15 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _name='SecretFinder'
 _pkgname="${_name,,}"
 pkgname="${_pkgname}-git"
-pkgver=r39.ca5e1a1
+pkgver=r14.a0283cb
 pkgrel=1
 pkgdesc='Find sensitive data (apikeys, accesstoken,jwt,..) and search anything on javascript files'
 arch=('any')
 url='https://github.com/m4ll0k/SecretFinder'
 license=('GPL3')
-depends=('python-argparse' 'python-jsbeautifier' 'python-lxml' 'python-requests-file')
+depends=('python-jsbeautifier' 'python-lxml' 'python-requests-file')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
