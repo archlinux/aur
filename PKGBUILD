@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=only-refs-bin
 _pkgname="OnlyRefs"
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Organize all of your refences, notes, bookmarks and more ... 🌃"
 arch=("x86_64")
@@ -17,7 +17,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )
-sha256sums=('60431c66a80cf385a4cf401d2b5772ff751e739811219633e803d806f8d56ab6')
+sha256sums=('aef808afcef0c02fbee751797940a85e4464fdc5c61087f789000e42a0cd4de2')
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed "s|Name=${pkgname%-bin}|Name=${_pkgname}|g;s|Categories=|Categories=Utility;|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
