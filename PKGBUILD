@@ -6,7 +6,7 @@ _pkgname='fdpp'
 pkgname='fdpp'
 #pkgname+='-git'
 epoch=0
-pkgver=1.7
+pkgver=1.7.r143.ge39aa5e
 pkgrel=1
 pkgdesc='64 bit FreeDOS++ for dosemu2'
 arch=(
@@ -18,7 +18,7 @@ license=(
   'GPL-3.0-or-later'
 )
 depends=(
-  'comcom32'
+  'comcom64'
   'gcc-libs'
   'glibc'
   'libelf'
@@ -63,13 +63,14 @@ prepare() {
   set +u
 }
 
-if [ "${pkgname%-git}" != "${pkgname}" ]; then
-  source[0]="git+${url}.git" #commit=37ced10"
+if [ "${pkgname%-git}" != "${pkgname}" ] || :; then
+  source[0]="git+${url}.git#commit=e39aa5e00f6dfecbac346a338e7c369d4f6b6ae8"
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
   b2sums[0]='SKIP'
   conflicts+=("${pkgname%-git}")
   provides+=("${pkgname%-git}=${pkgver%%.r*}")
+  makedepends+=('git')
   _srcdir="${pkgname%-git}"
 pkgver() {
   cd "${_srcdir}"
