@@ -1,8 +1,8 @@
 # Maintainer: Allomyrina Volbot <volbot.tech@gmail.com>
 
 pkgname=ttf-greybeard-bin
-pkgver=1.0.1
-pkgrel=1
+pkgver=1.0.0
+pkgrel=2
 pkgdesc='a chunky monospaced bitmap programming font for old nerds that hate eyestrain'
 arch=('any')
 url='https://github.com/flowchartsman/greybeard'
