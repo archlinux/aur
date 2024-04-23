@@ -1,15 +1,16 @@
 pkgbase = obs-command-source
 	pkgdesc = This plugin provides a dummy source to execute arbitrary command when scene is switched
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/dummy-source-to-execute-command.952/
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
+	depends = glibc
 	depends = obs-studio>=28
 	options = debug
-	source = obs-command-source-0.4.0.tar.gz::https://github.com/norihiro/obs-command-source/archive/0.4.0.tar.gz
-	sha256sums = a604d53553afb3e5ff050eaa43f468f07a3cc1573347889e6fab854569b01238
+	source = obs-command-source-0.5.0.tar.gz::https://github.com/norihiro/obs-command-source/archive/0.5.0.tar.gz
+	sha256sums = 866e14c8f9666b2c662797058f912c7cd70315b16acb7416a7dd3af15e42a836
 
 pkgname = obs-command-source
