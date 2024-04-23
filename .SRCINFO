@@ -1,11 +1,13 @@
-pkgbase = mingw-w64-environment
-	pkgdesc = Script providing common environment variables and functions for MinGW (mingw-w64)
+pkgbase = llvm-mingw-w64-environment
+	pkgdesc = Script providing common environment variables and functions for MinGW (mingw-w64) (fixed for armv7 and aarch64)
 	pkgver = 1
 	pkgrel = 5
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = any
 	license = BSD
+	provides = mingw-w64-environment
+	conflicts = mingw-w64-environment
 	source = mingw-env.sh
 	sha256sums = SKIP
 
-pkgname = mingw-w64-environment
+pkgname = llvm-mingw-w64-environment
