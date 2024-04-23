@@ -9,7 +9,7 @@ pkgbase = xrdp-git
 	arch = armv6h
 	arch = armv7l
 	arch = aarch64
-	license = Apache
+	license = Apache-2.0
 	checkdepends = check
 	makedepends = nasm
 	makedepends = cmocka
@@ -28,9 +28,11 @@ pkgbase = xrdp-git
 	backup = etc/xrdp/cert.pem
 	backup = etc/xrdp/key.pem
 	backup = etc/xrdp/startwm.sh
+	backup = etc/xrdp/reconnectwm.sh
+	backup = etc/default/xrdp
 	source = git+https://github.com/neutrinolabs/xrdp#branch=devel
 	source = arch-config.diff
 	sha256sums = SKIP
-	sha256sums = 893855d4e7e792e8efaa2379cdf8ca0d2377ae8daf5756c93db3119aa3a3a91c
+	sha256sums = bbee3e132915dcc838983d8b9e6c4cecd97b2dcc920e38b3d0689227781ca956
 
 pkgname = xrdp-git
