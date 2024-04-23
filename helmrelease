@@ -155,9 +155,11 @@ function helmrelease() {
 
   numberOfHelmReleases=$(<<< "$yaml" | yq -ers '[.[] | select(.kind == "HelmRelease")] | length')
   if [[ "$numberOfHelmReleases" -lt 1 ]]; then
-    err "There are no HelmReleases in the input"
+    err 'There are no HelmReleases in the input'
   elif [[ "$numberOfHelmReleases" != 1 ]] && [[ "$subCommand" == "install" ]]; then
-    err "You can only install 1 HelmReleases at the same time"
+    info 'You can only install 1 HelmReleases at the same time, but you can do `-$index`;'
+    <<<"$yaml" | yq -ers '[.[] | select(.kind == "HelmRelease")] | . as $hrs | keys[] | "\(.): \($hrs[.] | "\(.metadata.namespace)/\(.metadata.name)")"' >&2
+    return 1
   elif [[ "$numberOfHelmReleases" -gt 1 ]]; then
     <<<"$yaml" | yq -erys '.[] | select(.kind != "HelmRelease") | select(.)' \
       | if [[ "$subCommand" = "template" ]]; then
