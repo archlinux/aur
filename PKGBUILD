@@ -1,4 +1,4 @@
-# former Maintainer: Thomas Fanninger <thomas AT fanninger DOT at>
+# Contributor: Thomas Fanninger <thomas AT fanninger DOT at>
 # Contributor: Mohammed Yaseen Mowzer <moyamodehacker@gmail.com>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
@@ -6,12 +6,12 @@
 pkgname='python-yowsup'
 pkgdesc='The open source cross platform Whatsapp library powering Wazapp - Python 2'
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The open source cross platform Whatsapp library powering Wazapp"
 url="https://github.com/tgalal/yowsup"
 arch=('any')
 license=('GPL')
-depends=('python' 'python-dateutil' 'python-argparse' 'python-axolotl' 'python-pillow' 'python-consonance-git' 'python-dissononce-git')
+depends=('python' 'python-dateutil' 'python-axolotl' 'python-pillow' 'python-consonance-git' 'python-dissononce-git' 'python-appdirs')
 makedepends=('python-setuptools' 'python-six')
 provide=('python-yowsup')
 conflicts=('yowsup-client-git' 'python-yowsup-git')
