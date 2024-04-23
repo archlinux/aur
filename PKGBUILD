@@ -4,12 +4,12 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Diablo is an action role-playing video game developed by Blizzard North and released by Blizzard Entertainment Powered by the Devilution engine"
 arch=('x86_64' 'i686' 'pentium4' 'aarch64')
-url="https://gitlab.com/devilutionx-bin/diablo"
+url="https://gitlab.com/linuxbombay/diablo"
 license=('GPL')
 depends=('devilutionx-bin' 'git' 'aria2' 'yad' 'p7zip')
 makedepends=('unzip')
-source=("https://gitlab.com/devilutionx-bin/diablo/-/archive/$pkgver-$pkgrel/diablo-$pkgver.tar.bz2")
-sha256sums=('SKIP')
+source=("$url/-/archive/$pkgver-$pkgrel/diablo-$pkgver.tar.bz2")
+sha256sums=('93a7983256ffe425022293571c5266dbd9b731f987d3325eed0afa811fc88721')
 
 package() {
     install -dm755 "$pkgdir/usr/share/games/$_pkgname"
@@ -26,16 +26,10 @@ package() {
     else
         echo "$FILE does not exist, Starting download.."
         cd $srcdir
-        aria2c -Z \
-  "https://gamearchive-diablo.netlify.app/diablo-hellfire-mpq.7z.001" \
-  "https://gamearchive-diablo.netlify.app/diablo-hellfire-mpq.7z.002" \
-  "https://gamearchive-diablo.netlify.app/diablo-hellfire-mpq.7z.003" \
-  "https://gamearchive-diablo.netlify.app/diablo-hellfire-mpq.7z.004" \
-  "https://gamearchive-diablo.netlify.app/diablo-hellfire-mpq.7z.005" \
-  "https://gamearchive-diablo.netlify.app/diablo-hellfire-mpq.7z.006" \
-  "https://gamearchive-diablo.netlify.app/diablo-hellfire-mpq.7z.007"
+       #Switching to Archive.org backup instead
+        aria2c -x4 https://archive.org/download/diablo-hellfire-mpq/diablo-hellfire-mpq.zip
 
-        7z x diablo-hellfire-mpq.7z.001
+       unzip diablo-hellfire-mpq.zip
         mv *.mpq "$pkgdir/usr/share/games/$_pkgname"
     fi
         cd $_pkgname  
