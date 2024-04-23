@@ -1,0 +1,21 @@
+diff -aur package.pristine/Makefile.PL package.new/Makefile.PL
+--- package.pristine/Makefile.PL	2023-06-19 02:57:16.000000000 +0200
++++ package.new/Makefile.PL	2024-04-23 23:05:56.859606566 +0200
+@@ -79,7 +79,7 @@
+   }
+ 
+   if ($gcc_version >= 4.8) {
+-    $opt{DEFINE} .= " -std=c++11";
++    $opt{DEFINE} .= " -std=c++17";
+   } else {
+     say "Need gcc version new enough to support C++11, exiting.";
+     exit 1;
+@@ -90,7 +90,7 @@
+   say "Compiling on clang $clang_version";
+ 
+   if ($clang_version >= 3) {
+-    $opt{DEFINE} .= " -std=c++11";
++    $opt{DEFINE} .= " -std=c++17";
+   } else {
+     say "Need clang version new enough to support C++11, this will probably fail.";
+   }
