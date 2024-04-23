@@ -4,7 +4,7 @@
 # Contributor: Tarn Burton <twburton at gmail dot com>
 _base=cadabra
 pkgname=${_base}2
-pkgver=2.4.5.6
+pkgver=2.4.5.7
 pkgrel=1
 pkgdesc="A field-theory motivated approach to computer algebra"
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(boost cmake) # system-wide pybind11 is not used, instead bundled ye
 optdepends=('mathjax: Doxygen documentation'
   'doxygen: Doxygen documentation')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/kpeeters/${pkgname}/archive/${pkgver}.tar.gz)
-sha512sums=('e0e9af7d492077137e6edba334b74b36905bfec633096a714158881c3bdd424d174b4a1f9053cd570f6652f53aa445a22220f44b396cf3c0fb69860d6d4aecc7')
+sha512sums=('860e166ba965fdd6e8afa4265d62ae388f33b8468912e63f7575a819419b9ee90a93e058e7aa4a9c44c80afef9fcce96c7b9d3fd1d35b3059a82548e54804328')
 
 build() {
   cmake \
