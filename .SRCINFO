@@ -1,6 +1,6 @@
 pkgbase = qualcoder-bin
 	pkgdesc = Qualitative data analysis for text, images, audio and video written in python3 and Qt6
-	pkgver = 3.4
+	pkgver = 3.5
 	pkgrel = 1
 	url = https://qualcoder.wordpress.com/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = qualcoder-bin
 	conflicts = qualcoder
 	source = qualcoder.png
 	source = qualcoder.desktop
-	source = QualCoder-3.4::https://github.com/ccbogel/QualCoder/releases/download/3.4/QualCoder-3.4-Ubuntu22
+	source = QualCoder-3.5::https://github.com/ccbogel/QualCoder/releases/download/3.5/QualCoder-3.5-Ubuntu22
 	b2sums = 8d60ab1d9c9ebebbd54a480ab5ffb3af8a795b97722c1bf3fb9e6d34ae11f749d9ed49f351e0f11f7c0f249ec0b80cbf48782cab629443b17a2443fef9dfd89a
 	b2sums = eff60218c9f7aa0675210df3d46c5f31cf345475a66a3c0ca46742442d301367a0448f3e54cdfb688fe32f3399c7830f9bb4753195d7f89e3df062f7dd2d0d6f
-	b2sums = e2eacb0fe5c7221279f71c15e1d3b4fabc0a3d4f3ac90877c44c1182d5422dbf78dbf5d5b718f614e13f1756c75603c1d34d58a320b9b515d68df61c725162e9
+	b2sums = 8a9110f453dd4c3a5331653174871247c9dfe42b20917fe35030d024cd3d617e6b6874a6125d58ace05fe2570703d8f057799f0428aeeb11b15a80f70e6e03fd
 
 pkgname = qualcoder-bin
