@@ -1,7 +1,7 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef-git
 _pkgname=pacdef
-pkgver=1.5.0+r0.g1d5f3d5
+pkgver=1.6.0+r12.g7e85bc3
 pkgrel=1
 pkgdesc='multi-backend declarative package manager for Linux'
 url="https://github.com/steven-omaha/${_pkgname}"
@@ -30,7 +30,7 @@ package() {
   install -Dm644 _completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_pacdef"
 
   install -Dm644 man/pacdef.8 "${pkgdir}/usr/share/man/man8/pacdef.8"
-  install -Dm644 man/pacdef.yaml.5 "${pkgdir}/usr/share/man/man5/pacdef.yaml.5"
+  install -Dm644 man/pacdef.toml.5 "${pkgdir}/usr/share/man/man5/pacdef.toml.5"
 }
 
 pkgver() {
