@@ -7,6 +7,7 @@ pkgver=2022.11.22.r0.gd79ce5a
 pkgrel=1
 pkgdesc="Offensive Security's Exploit Database Archive"
 arch=('any')
+provides=('exploitdb-papers')
 conflicts=('exploitdb-papers')
 replaces=('exploitdb-papers')
 url="https://www.exploit-db.com/"

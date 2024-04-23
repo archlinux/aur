@@ -8,6 +8,7 @@ pkgbase = exploitdb-papers-git
 	makedepends = git
 	makedepends = sed
 	depends = exploitdb
+	provides = exploitdb-papers
 	conflicts = exploitdb-papers
 	replaces = exploitdb-papers
 	options = !strip
