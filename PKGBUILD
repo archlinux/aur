@@ -2,7 +2,7 @@
 
 pkgname=incron-next
 pkgver=0.5.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Maintainable fork for incron package. MRs are welcome"
 arch=('x86_64')
 url="https://github.com/dpvpro/incron-next"
