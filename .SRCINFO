@@ -1,16 +1,10 @@
 pkgbase = r-gtable
 	pkgdesc = Arrange ‘Grobs’ in Tables
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gtable
 	arch = any
 	license = MIT
-	checkdepends = r-covr
-	checkdepends = r-ggplot2
-	checkdepends = r-knitr
-	checkdepends = r-profvis
-	checkdepends = r-rmarkdown
-	checkdepends = r-testthat>=3.0.0
 	depends = r>=3.5
 	depends = r-cli
 	depends = r-glue
@@ -21,7 +15,7 @@ pkgbase = r-gtable
 	optdepends = r-knitr
 	optdepends = r-profvis
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/gtable_0.3.4.tar.gz
-	b2sums = 6c2975721cbbfbf3ebff542cbdc436f3302bd81e45be421bc9586364195e2c71a57b247b51ee13057d600e24147b5f80852a9b4dabc12144d8e9c0e0feba4e7b
+	source = https://cran.r-project.org/src/contrib/gtable_0.3.5.tar.gz
+	b2sums = 4fbc57d8bcf2c2a0abe32cab3e1226ba6471df883439f2e9fa222615181067be0faa1423091a0341dbab0e5eb48ad297328bd0e9da598b00d92438450edbbbf5
 
 pkgname = r-gtable
