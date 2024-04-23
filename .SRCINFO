@@ -1,0 +1,13 @@
+pkgbase = python-async-executor
+	pkgdesc = Async execution pool
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/nvllsvm/async-executor
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/nvllsvm/async-executor/archive/0.1.1/python-async-executor-0.1.1.tar.gz
+	sha512sums = eb6303b599fb2638f0723158917cb383ee1cbe851bfd0012409eff1f475176584fdb63b7fa330df282c59520974f0f17172be45cb972b61b253a3db5220184fc
+
+pkgname = python-async-executor
