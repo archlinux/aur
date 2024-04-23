@@ -5,7 +5,7 @@ pkgbase = lightzone
 	url = https://github.com/ktgw0316/LightZone/
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = java-environment=17
+	makedepends = java-environment=21
 	makedepends = ant
 	makedepends = autoconf
 	makedepends = gcc
@@ -17,7 +17,7 @@ pkgbase = lightzone
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
-	depends = java-runtime>=17
+	depends = java-runtime>=21
 	depends = javahelp2
 	depends = lcms2
 	depends = lensfun
