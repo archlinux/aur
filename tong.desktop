@@ -6,4 +6,4 @@ Icon=/usr/share/pixmaps/tong.png
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=Game;ArcadeGame;
+Categories=Game
