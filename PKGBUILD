@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname='python-gql'
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Python GraphQL client"
 arch=('any')
 provides=()
@@ -11,6 +11,7 @@ url="https://github.com/graphql-python/gql"
 license=('MIT')
 depends=(
 	'python-aiohttp'
+	'python-anyio'
 	'python-backoff'
 	'python-graphql-core'
 	'python-requests'
@@ -19,7 +20,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('311d77282dd78e7a8b6f7519c7513f2375c0b938b40588d41443745e59260ba5')
+sha256sums=('f96f8c8721a782d7dea0a3cd584c87ff53825a9fecc7c66ac9715788015b6009')
 
 prepare() {
 	cd "$srcdir"
