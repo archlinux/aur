@@ -3,14 +3,14 @@
 
 pkgname=gossip
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="gossip nostr client, rust, egui based."
 arch=('x86_64')
 url="https://github.com/mikedilger/gossip"
 license=(MIT)
-makedepends=(cargo git mold)
-provides=($pkgname)
-conflicts=($pkgname)
+conflicts=(ffmpeg-git)
+makedepends=(cargo git mold clang)
+optdepends=(xdg-utils)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/mikedilger/gossip/archive/refs/tags/v${pkgver}.tar.gz"
   "$pkgname.desktop"
@@ -20,17 +20,20 @@ sha256sums=(
   'cf28c5863c0f5f6766d98cb18189761f95f2a0a7c166a39afa4ffa2578a703af'
 )
 
-#prepare() {
-#  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-#}
+prepare() {
+  cd $pkgname-$pkgver
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  RUSTFLAGS="-C link-arg=-fuse-ld=mold -C target-cpu=native --cfg tokio_unstable"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
   cd $pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   RUSTFLAGS="-C link-arg=-fuse-ld=mold -C target-cpu=native --cfg tokio_unstable"
-  # cargo build --frozen --release --all-features
-  cargo build --release --all-features
+  cargo build --locked --offline --release --all-features
 }
 
 package() {
