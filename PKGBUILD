@@ -11,8 +11,11 @@ pkgdesc='The official GUI for MongoDB - Isolated Edition'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
-
-_electronpkg='electron28'
+if [[ "$_target" =~ -beta$ ]]; then
+	_electronpkg='electron29'
+else
+	_electronpkg='electron28'
+fi
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
 makedepends=('git' 'npm>=8.19.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
