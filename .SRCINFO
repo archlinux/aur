@@ -1,14 +1,17 @@
 pkgbase = pyg3t
 	pkgdesc = Python gettext Translation Toolkit
-	pkgver = 0.5.0
-	pkgrel = 2
-	url = https://github.com/pyg3t/pyg3t
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://gitlab.com/pyg3t/pyg3t
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = pyg3t-0.5.0.tar.gz::https://github.com/pyg3t/pyg3t/archive/0.5.0.tar.gz
-	sha256sums = 45bcdd4c8ee01491cc66f3e42c632245e9572e7fd1f2ae184fa1839db3e809ba
+	source = https://gitlab.com/pyg3t/pyg3t/-/archive/0.6.0/pyg3t-0.6.0.tar.gz
+	sha256sums = f2eaf64efe844688162ab4497a587ca794f426d51217e4dbb48fdc87caa67546
 
 pkgname = pyg3t
-
