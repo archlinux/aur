@@ -30,13 +30,18 @@ build() {
   cd "$srcdir/$_pkgname"
 
   ./bootstrap
-  ./configure --prefix="/usr" --enable-glamor
+
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+    ./configure --prefix=/usr \
+    --enable-glamor
+
   make
 }
 
 check() {
   cd "$srcdir/$_pkgname"
 
+  # https://github.com/neutrinolabs/xorgxrdp/pull/308
   XORG=/usr/lib/Xorg make check
 }
 
