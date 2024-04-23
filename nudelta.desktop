@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=nudelta
+GenericName=nudelta
+Comment=Open source NuPhy Console alternative
+Exec=/usr/bin/nudelta %u
+Icon=nudelta
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Utility
