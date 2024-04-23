@@ -4,7 +4,7 @@
 _modname="nginx-module-vts"
 pkgname=nginx-mod-vts
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Nginx virtual host traffic status module"
 arch=('x86_64')
 depends=('nginx')
