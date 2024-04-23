@@ -3,21 +3,25 @@
 pkgname='pulseaudio-module-xrdp'
 pkgver='0.7'
 pkgrel='1'
-pkgdesc='PulseAudio modules for xrdp'
-arch=('i686' 'x86_64')
+pkgdesc='PulseAudio modules for xrdp.'
+arch=('i686' 'x86_64' 'armv6h' 'armv7l' 'aarch64')
 url="https://github.com/neutrinolabs/pulseaudio-module-xrdp"
-license=('LGPL')
+license=('LGPL-2.1')
 depends=('pulseaudio' 'xrdp')
 makedepends=('meson' 'check' 'doxygen' 'perl-xml-parser')
 install="${pkgname}.install"
 
 _pulseaudio_ver="$(pulseaudio --version | awk '{print $NF}')"
-: "${_pulseaudio_ver:=16.1}"
+: "${_pulseaudio_ver:=17.0}"
 
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${_pulseaudio_ver}.tar.xz")
-sha256sums=('be101538ebe891bd4ae9d533559b99cf07abf0bbce399f50f2d248f35c160a9d'
-            "$(curl -fs "${source[1]}.sha256sum" | awk '{print $1}')")
+source=(
+    "${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${_pulseaudio_ver}.tar.xz"
+)
+sha256sums=(
+    'be101538ebe891bd4ae9d533559b99cf07abf0bbce399f50f2d248f35c160a9d'
+    "$(curl -fs "${source[1]}.sha256sum" | awk '{print $1}')"
+)
 
 prepare() {
     cd "${srcdir}/pulseaudio-${_pulseaudio_ver}"
