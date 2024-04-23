@@ -9,7 +9,7 @@ url="https://github.com/duan602728596/48tools"
 license=('GPL3')
 depends=('ffmpeg')
 options=('!strip' '!emptydirs')
-source=("${pkgname}-${pkgver}-linux64.zip::${url}/releases/tag/${pkgname}-${pkgver}-linux64.zip" "48tools.desktop")
+source=("${pkgname}-${pkgver}-linux64.zip::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux64.zip" "48tools.desktop")
 sha512sums=('394ef9176261db37e2d28a5a32cb09c3493f9d780d80243e320de593a87bbc6af6460c70cfe09dfe6288e35e56d82befd4e9c58e4996fef2eb49d60e069c67f1' 'f23eeb875ef8f01dfab6ca1bce97cc1965c6e454b6e199ed71d70026604eafa35767649bd61dc6e2de321ca79e00889012d85a1175350294d9a8860289a29916')
 
 package(){
