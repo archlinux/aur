@@ -1,14 +1,14 @@
 pkgbase = amazon-ssm-agent-bin
-	pkgdesc = Amazon SSM Agent for managing EC2 Instances using the SSM APIs.
-	pkgver = 3.3.131.0
+	pkgdesc = Amazon SSM Agent for managing EC2 Instances using the SSM APIs. See: https://aws.amazon.com/documentation/systems-manager/ for details
+	pkgver = 3.3.337.0
 	pkgrel = 1
-	url = https://aws.amazon.com/documentation/systems-manager/
+	url = https://github.com/aws/amazon-ssm-agent
 	arch = x86_64
 	license = APACHE
 	depends = glibc
 	provides = amazon-ssm-agent
 	conflicts = amazon-ssm-agent
-	source = https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/3.3.131.0/debian_amd64/amazon-ssm-agent.deb
-	md5sums = d64560b2a2e93800a2cb29ec83b9a3ec
+	source = https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/3.3.337.0/debian_amd64/amazon-ssm-agent.deb
+	md5sums = 00de7f1cee4e565a7827d83bd6ced122
 
 pkgname = amazon-ssm-agent-bin
