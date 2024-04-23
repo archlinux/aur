@@ -4,7 +4,8 @@
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 
 pkgname=iscan
-pkgver=2.30.4.2
+_pkgver=2.30.4-2
+pkgver=${_pkgver//-/.}
 pkgrel=3
 pkgdesc="EPSON Image Scan! front-end for scanners and all-in-ones"
 arch=('x86_64')
@@ -15,7 +16,8 @@ provides=('iscan')
 conflicts=('iscan-for-epson-v500-photo' 'epson-perfection-v10-v100-scanner-driver-aio')
 makedepends=('gettext' 'gimp')
 optdepends=('iscan-data: Image Scan! data files required for some devices')
-source=("http://support.epson.net/linux/src/scanner/iscan/${pkgname}_${pkgver%.*}-${pkgver/*.}.tar.gz"
+source=(#"http://support.epson.net/linux/src/scanner/iscan/${pkgname}_${pkgver%.*}-${pkgver/*.}.tar.gz"
+        "https://sourceforge.net/projects/fabiololix-os-archive/files/src/iscan_${_pkgver}.tar.gz"
         "libpng15.patch"
         "jpegstream.cc.patch"
         "epkowa.conf"
