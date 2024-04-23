@@ -1,20 +1,20 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=randtests
-_pkgver=1.0.1
+_pkgver=1.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=1
 pkgdesc="Testing Randomness in R"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a0fb51dea0ad222e57f10c703f84552c')
-b2sums=('c06a4885aca05e82f8ef664095d18adeab5be4ca7370cdcd3f2897005e793cc33b8fae55b5a0ebeb11d326d92deaa8117b3d96a028eab79a12c469c9a64717eb')
+md5sums=('1ce6d8ab51563e0776e7d055367d4f15')
+b2sums=('9fd6a9b31073ee3892a2a20e9103404fcc6ec1918d614e7bd2e97606a9b76d6741f47cea4a07a77d47192ef05e1c9833bc698f320dfc53e3900d7087a6050053')
 
 build() {
   mkdir build
