@@ -2,15 +2,13 @@ pkgname=libelectron
 pkgver=1.0.21
 pkgrel=1
 arch=("x86_64" "aarch64")
-url="https://gitlab.com/libelectron/libelectron"
+url="https://gitlab.com/linuxbombay/libelectron/libelectron"
 license=('GPL')
 depends=('npm' 'git' 'icu')
 pkgdesc="A collection of npm dependencies for electron packages."
 makedepends=('unzip')
-#source=("https://gitlab.com/libelectron/libelectron/-/archive/$pkgver-$pkgrel/libelectron-$pkgver-1.tar.bz2")
-#Backup temp repo
-source=("https://github.com/libelectron/libelectron/archive/refs/tags/$pkgver-$pkgrel.tar.gz")
-sha256sums=('SKIP')
+source=("$url/-/archive/$pkgver-$pkgrel/libelectron-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('a01953052b63a97155999fbfa05fc50a038d49150b1c5ec8e73625e0c64f2d9f')
 
 package() {
     for dir in $pkgname-$pkgver-$pkgrel ; do mv "${dir}" "$pkgname" ;done
