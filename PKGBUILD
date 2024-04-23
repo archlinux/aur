@@ -1,11 +1,11 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Shane Stone <shanewstone at gmail>
 
 pkgname=proselint
-_name=${pkgname#python-}
-pkgver=0.13.0
-pkgrel=5
+_pkgname=${pkgname#python-}
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="A linter for prose"
 arch=(any)
 url="https://github.com/amperser/proselint"
@@ -13,7 +13,6 @@ license=(BSD-3-Clause)
 depends=(
   python
   python-click
-  python-future
 )
 makedepends=(
   python-build
@@ -22,11 +21,10 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('f3076f88a0a1d79d097ef5da395e4dddede8f8db3b5175be1e30bcf4fab90eda')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('019783cb13a5b6546389764bdd2e505648063315b4307113ff8a93d03bde62e4')
-
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"

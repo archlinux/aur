@@ -1,7 +1,7 @@
 pkgbase = proselint
 	pkgdesc = A linter for prose
-	pkgver = 0.13.0
-	pkgrel = 5
+	pkgver = 0.14.0
+	pkgrel = 1
 	url = https://github.com/amperser/proselint
 	arch = any
 	license = BSD-3-Clause
@@ -12,8 +12,7 @@ pkgbase = proselint
 	makedepends = python-wheel
 	depends = python
 	depends = python-click
-	depends = python-future
-	source = proselint-0.13.0.tar.gz::https://github.com/amperser/proselint/archive/refs/tags/0.13.0.tar.gz
-	sha256sums = 019783cb13a5b6546389764bdd2e505648063315b4307113ff8a93d03bde62e4
+	source = proselint-0.14.0.tar.gz::https://github.com/amperser/proselint/archive/0.14.0.tar.gz
+	sha256sums = f3076f88a0a1d79d097ef5da395e4dddede8f8db3b5175be1e30bcf4fab90eda
 
 pkgname = proselint
