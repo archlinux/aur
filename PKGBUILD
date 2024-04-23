@@ -1,4 +1,4 @@
-# Maintainer: Anakojm <https://anakojm.net/a-propos/#contact>
+# Maintainer: Anakojm <https://anakojm.net/about.html>
 
 pkgname=fortune-mod-leftism-git
 _pkgname=leftist-quote
@@ -14,19 +14,18 @@ groups=('fortune-mods')
 source=("git+$url.git")
 sha256sums=("SKIP")
 
-pkgver() {
-    cd "$srcdir/$_pkgname"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+pkgver(){
+        cd "$srcdir/$_pkgname"
+        echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-
-build() {
-	cd "${srcdir}/$_pkgname"
-	strfile ${_pkgname}s
+build(){
+        cd "${srcdir}/$_pkgname"
+        strfile ${_pkgname}s
 }
 
-package() {
-	cd "${srcdir}/$_pkgname"
-	install -dm755 -- "${pkgdir}/usr/share/fortune"
-	install -m644 -- ${_pkgname}s ${_pkgname}s.dat "${pkgdir}/usr/share/fortune"
+package(){
+        cd "${srcdir}/$_pkgname"
+        install -dm755 -- "${pkgdir}/usr/share/fortune"
+        install -m644 -- ${_pkgname}s ${_pkgname}s.dat "${pkgdir}/usr/share/fortune"
 }
