@@ -16,12 +16,12 @@ makedepends=('git' 'go')
 optdepends=('google-cloud-sdk: authentication helper')
 source=("$pkgname-$pkgver::https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('834dfc23970f33725ddafe73c4b9afa9232197894599f5e93b528df007740944')
-_gourl=github.com/googlecloudplatform/gcsfuse
+_gourl=github.com/googlecloudplatform/gcsfuse/v2
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" 
-  go build "$_gourl/v2"
-  CGO_ENABLED=1 go build -buildmode=pie -o "mount.gcsfuse" "$_gourl/v2/tools/mount_gcsfuse"
+  go build "$_gourl"
+  CGO_ENABLED=1 go build -buildmode=pie -o "mount.gcsfuse" "$_gourl/tools/mount_gcsfuse"
 }
 
 package() {
