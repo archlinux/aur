@@ -2,7 +2,7 @@
 # Maintainer: Adrian Insaurralde <adrianinsaval at gmail dot com>
 
 pkgname=freecad-git
-pkgver=0.22.0.35039.ge937cc1efc
+pkgver=0.22.0.36999.ged77603af9
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
@@ -10,6 +10,7 @@ url='https://www.freecad.org/'
 license=('LGPL')
 depends=(
 boost-libs
+coin
 fmt
 glew
 jsoncpp
@@ -17,20 +18,16 @@ med
 netcdf
 opencascade
 openmpi
-pyside2
-pyside2-tools
+pyside6
+pyside6-tools
 python-yaml
 python-matplotlib
 python-packaging
 python-pivy
 python-ply
-qt5-svg
-qt5-tools
-qt5-webengine
-qt5-webchannel
-qt5-x11extras
-qt5-xmlpatterns
-qt5-base
+qt6-svg
+qt6-tools
+qt6-base
 shared-mime-info
 vtk
 verdict
@@ -40,21 +37,17 @@ yaml-cpp
 makedepends=(
 boost
 cmake
-coin
 eigen
 git
 ninja
 nlohmann-json
-python-shiboken2
-shiboken2
+shiboken6
 swig
 )
 checkdepends=(
 pugixml
 )
 optdepends=(
-'povray: ray tracing support'
-'luxcorerender: ray tracing support'
 'libspnav: 3D mouse support'
 'openscad: OpenSCAD support'
 'graphviz: dependency graph support'
@@ -80,49 +73,43 @@ prepare() {
 }
 
 build() {
-  cd FreeCAD
-
-  cmake -Wno-dev -G Ninja -B build -S . \
-    -D BUILD_ENABLE_CXX_STD=C++17 \
-    -D BUILD_FEM=ON \
-    -D BUILD_MESH=ON \
+  cmake \
+    -B build \
     -D BUILD_FLAT_MESH=ON \
-    -D BUILD_MESH_PART=ON \
-    -D BUILD_SHIP=ON \
     -D BUILD_DESIGNER_PLUGIN=ON \
-    -D CMAKE_BUILD_TYPE=None \
-    -D CMAKE_C_FLAGS="${CFLAGS} -fPIC -w" \
-    -D CMAKE_CXX_FLAGS="${CXXFLAGS} -fPIC -w" \
+    -D FREECAD_QT_VERSION=6 \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_C_FLAGS="$CFLAGS -ffat-lto-objects -fPIC -w" \
+    -D CMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects -fPIC -w" \
+    -D CMAKE_INSTALL_DATADIR=/usr/share/freecad \
+    -D CMAKE_INSTALL_DATAROOTDIR=/usr/share \
+    -D CMAKE_INSTALL_DOCDIR=/usr/share/freecad/doc \
+    -D CMAKE_INSTALL_PREFIX=/usr/lib/freecad \
     -D FREECAD_USE_EXTERNAL_PIVY=ON \
     -D FREECAD_USE_QT_FILEDIALOG=ON \
     -D INSTALL_TO_SITEPACKAGES=ON \
-    -D CMAKE_INSTALL_PREFIX='/usr/lib/freecad' \
-    -D CMAKE_INSTALL_DATADIR='../../share/freecad' \
-    -D CMAKE_INSTALL_DATAROOTDIR='/usr/share' \
-    -D CMAKE_INSTALL_DOCDIR='/usr/share/doc/freecad'
-
-  cmake --build build
+    -D ENABLE_DEVELOPER_TESTS=OFF \
+    -G Ninja \
+    -S FreeCAD \
+    -W no-dev
+  ninja -C build
 }
 
 check() {
-  cd FreeCAD/build
+  cd build
   LD_LIBRARY_PATH=lib bin/FreeCADCmd --console --run-test 0
 }
 
 package() {
-  cd FreeCAD
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="$pkgdir" ninja -C build install
   
-  # package thumbnailer
-  install src/Tools/freecad-thumbnailer "${pkgdir}/usr/lib/freecad/bin/freecad-thumbnailer"
-  
-  # links for bin
-  mkdir -p "${pkgdir}"/usr/bin
-  FILES="${pkgdir}"/usr/lib/freecad/bin/*
-  for f in $FILES
-  do
-    ln -s '../lib/freecad/bin/'$(basename $f) "${pkgdir}"/usr/bin/$(basename $f)
-  done
+  # tools
+  install -Dm755 FreeCAD/src/Tools/{freecad-thumbnailer,fcinfo} -t "$pkgdir/usr/bin/"
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
+  # symlinks
+  install -d "$pkgdir/usr/bin"
+  ln -sf /usr/lib/freecad/bin/FreeCAD "$pkgdir/usr/bin/freecad"
+  ln -sf /usr/lib/freecad/bin/FreeCAD "$pkgdir/usr/bin/FreeCAD"
+  ln -sf /usr/lib/freecad/bin/FreeCADCmd "$pkgdir/usr/bin/freecadcmd"
+  ln -sf /usr/lib/freecad/bin/FreeCADCmd "$pkgdir/usr/bin/FreeCADCmd"
 }
