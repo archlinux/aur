@@ -1,0 +1,2 @@
+#!/bin/sh
+env WEBKIT_DISABLE_DMABUF_RENDERER=1 /opt/modrinth-app/modrinth-app "$@"

@@ -1,8 +1,8 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -17,13 +17,14 @@ depends=(
 optdepends=(
     'xorg-xrandr: for older minecraft versions'
 )
-conflicts=('modrinth-app-bin' 'modrinth-app-git')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/modrinth/theseus/archive/refs/tags/v${pkgver}.tar.gz"
     "modrinth-app.desktop"
+    "modrinth-app"
 )
-sha256sums=('b924ce16288f55b93ab26ec8511154d7e16fe38780065ea58082cb56bd045e8f'
-            'ad8f7ffea0435881acdd7ecb560443e281982727dc7c715885367e9466bc0a62')
+sha256sums=('ddcf965803ede4f730d3bf8d47c947899a7ff9e3ccf9261ba4e48848dc608627'
+            'ad8f7ffea0435881acdd7ecb560443e281982727dc7c715885367e9466bc0a62'
+            '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9')
 options=('!lto')
 
 prepare() {
@@ -33,7 +34,7 @@ prepare() {
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
     cd "theseus_gui"
-    pnpm install --frozen-lockfile --no-optional
+    pnpm install --frozen-lockfile
 }
 
 build() {
@@ -55,7 +56,8 @@ check() {
 }
 
 package() {
-    install -Dm755 "$srcdir"/theseus-"$pkgver"/target/release/theseus_gui "$pkgdir"/usr/bin/modrinth-app
+    install -Dm755 "$srcdir"/modrinth-app "$pkgdir"/usr/bin/modrinth-app
+    install -Dm755 "$srcdir"/theseus-"$pkgver"/target/release/theseus_gui "$pkgdir"/opt/modrinth-app/modrinth-app
     
     install -Dm644 "$srcdir"/theseus-"$pkgver"/theseus_gui/src-tauri/icons/128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/modrinth-app.png
     install -Dm644 "$srcdir"/theseus-"$pkgver"/theseus_gui/src-tauri/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
