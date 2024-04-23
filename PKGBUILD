@@ -1,6 +1,6 @@
 # Maintainer: Sadique Azmi sadiquemobaraka5@gmail.com
 pkgname=llogin
-pkgver=r3.a404249
+pkgver=0.1.2.r0.g27d6567
 pkgrel=1
 pkgdesc="LPU WiFi Manager: A Rust-based CLI tool for managing Lovely Professional University's WiFi connections. Features include account login, stored account listing, and connection verification."
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=(!debug)
 
 pkgver() {
   cd "$srcdir/LPU-WiFi-Manager/"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
