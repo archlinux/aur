@@ -1,4 +1,4 @@
-# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 # transition pkgbuild while figuring out python2/python3 versions
@@ -6,11 +6,11 @@
 pkgname=dreampie
 pkgver=1.3.0.20220116
 _commit=f615e9c63380d5987a820025fbb9dfe28ab96897
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python shell which is designed to be reliable and fun."
 arch=('any')
 url="https://github.com/noamraph/dreampie"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('pygtksourceview2')
 optdepends=('python2-matplotlib: for interactive plotting')
 source=($pkgname-$pkgver.zip::https://github.com/noamraph/dreampie/archive/$_commit.zip)
