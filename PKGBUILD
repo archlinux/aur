@@ -3,18 +3,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-expect'
-pkgver='1.35'
+pkgver='1.38'
 pkgrel='1'
 pkgdesc="automate interactions with command line programs that expose a text terminal interface."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-io-tty' 'perl>=5.6.0')
+depends=('perl-io-tty>=1.11' 'perl>=5.6.0')
 makedepends=()
 url='https://metacpan.org/release/Expect'
 source=("http://search.cpan.org/CPAN/authors/id/J/JA/JACOBY/Expect-${pkgver}.tar.gz")
-md5sums=('f7170964058cfb4a73567284a64c8cee')
-sha512sums=('97ff1969323cf0bcdecc792199111e273e1a4c032a9cdecac1acb521a280e772256c1a8c5433b4da1f34a585d83608522e9f00cf3c5a0a30211662a5373ef0b7')
+md5sums=('0b3e2b619a46f9c16aa7d9ff457ee37f')
+sha512sums=('8dfaad3d471c848091696f9ab465b6ee6ffe16501bd0f4980f2a56df0fe7a12bdc62c47145b7c60c9a7ac90b56b7417bd20b695cea8e383f4da069a4f00ddd98')
 _distdir="Expect-${pkgver}"
 
 build() {
