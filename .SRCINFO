@@ -2,6 +2,7 @@ pkgbase = cavestory
 	pkgdesc = Cave Story powered by the nxengine-evo.
 	pkgver = 1.0.0
 	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/cavestory
 	arch = x86_64
 	arch = i386
 	arch = i686
@@ -12,7 +13,7 @@ pkgbase = cavestory
 	depends = wget
 	depends = unzip
 	depends = yad
-	source = https://gitlab.com/cavestory-bin/cavestory/-/archive/1.0.0/cavestory-1.0.0.tar.bz2
-	sha256sums = SKIP
+	source = https://gitlab.com/linuxbombay/cavestory/-/archive/1.0.0/cavestory-1.0.0.tar.bz2
+	sha256sums = 07162645e3a0916b9bd7cbf1bab89f4120f03865db7e7cabc3cb11879cd2f275
 
 pkgname = cavestory

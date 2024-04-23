@@ -3,12 +3,13 @@ _pkgname=CaveStory
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Cave Story powered by the nxengine-evo."
+url="https://gitlab.com/linuxbombay/cavestory"
 arch=('x86_64' 'i386' 'i686' 'aarch64')
 license=('GPL')
 depends=('nxengine-evo-bin' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
-source=("https://gitlab.com/cavestory-bin/cavestory/-/archive/$pkgver/cavestory-$pkgver.tar.bz2")
-sha256sums=("SKIP")
+source=("$url/-/archive/$pkgver/cavestory-$pkgver.tar.bz2")
+sha256sums=('07162645e3a0916b9bd7cbf1bab89f4120f03865db7e7cabc3cb11879cd2f275')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
