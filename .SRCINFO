@@ -1,12 +1,12 @@
 pkgbase = firefox-blocktube
 	pkgdesc = YouTube content blocker.
-	pkgver = 0.4.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/blocktube/
 	arch = any
 	groups = firefox-addons
 	license = GPL3
-	source = blocktube-0.4.0.xpi::https://addons.mozilla.org/firefox/downloads/latest/blocktube/latest.xpi
-	sha256sums = 09e79457ecf19596570fdef9f90d4374861785738f71d3558b013be7208477d2
+	source = blocktube-0.4.2.xpi::https://addons.mozilla.org/firefox/downloads/latest/blocktube/latest.xpi
+	md5sums = 3a1218f7687516a0d1e38c9e46829762
 
 pkgname = firefox-blocktube
