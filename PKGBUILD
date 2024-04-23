@@ -1,7 +1,7 @@
 # Maintainer GI Jack <GI_Jack@hackermail.com>
 
 pkgname=aflplusplus
-pkgver=4.09c
+pkgver=4.20c
 pkgrel=1
 pkgdesc="afl++ is afl with community patches, AFLfast power schedules, qemu 3.1 upgrade + laf-intel support, MOpt mutators, InsTrim instrumentation, unicorn_mode and a lot more!"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('afl')
 optdepends=('qemu: use QEMU with afl'
             'lld')
 source=("https://github.com/AFLplusplus/AFLplusplus/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2d3b2e4f066b1f3eda17faff147dfa3e4b16fba044257361aca51a2322c5122d')
+sha256sums=('855ddefbe9c88911146c1b7cb50dc5423b7623a7a59343f34f31bf038a865a24')
 
 prepare() {
   cd "AFLplusplus-${pkgver}"
