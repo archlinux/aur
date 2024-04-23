@@ -1,15 +1,16 @@
 # Maintainer: Chih-Hsuan Yen <base64_decode("eWFuMTIxMjUgQVQgYXJjaGxpbnV4IERPVCBvcmc=")>
+# Co-Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 _pkgname=qtxdg-tools
 pkgname=$_pkgname-git
-pkgver=0.0.0.r23.891ee9e
+pkgver=4.0.0
 pkgrel=1
-pkgdesc="libqtxdg user tools"
+pkgdesc="User tools for libqtxdg"
 arch=("x86_64")
-url="https://github.com/lxqt/qtxdg-tools"
-license=("LGPL2.1")
-depends=("qt5-base" "libqtxdg-git")
-makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
+url="https://lxqt-project.org"
+license=("LGPL-2.1-only")
+depends=('libqtxdg-git')
+makedepends=('git' 'cmake' 'lxqt-build-tools-git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
@@ -17,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "0.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
