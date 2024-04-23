@@ -34,7 +34,7 @@ check() {
   cd $_name
   python -m installer --destdir='tmp_dir' dist/*.whl
   export PATH="$PWD/tmp_dir/usr/bin:$PATH"
-  PYTHONPATH=$PWD python -m pytest
+  PYTHONPATH=$PWD python -m pytest -vv
 }
 
 package() {
