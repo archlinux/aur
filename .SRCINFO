@@ -1,11 +1,11 @@
 pkgbase = geany-highlightselectedword
 	pkgdesc = Geany plugin that highlights all instances of the currently selected word
 	pkgver = 20160801
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/geanyhighlightselectedword/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = geany
 	source = https://downloads.sourceforge.net/project/geanyhighlightselectedword/GeanyHighlightSelectedWord_2016-08-01T00-53-19.zip
 	sha256sums = ab9d8dd680c8b446e4433bec5c3c2a329d30c1b65c2e2ecdaff95444454acfcd

@@ -5,10 +5,10 @@
 _pkgname="geany-highlightselectedword"
 pkgname="$_pkgname"
 pkgver=20160801
-pkgrel=2
+pkgrel=3
 pkgdesc="Geany plugin that highlights all instances of the currently selected word"
 url="https://sourceforge.net/projects/geanyhighlightselectedword/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
 
 depends=(
