@@ -1,14 +1,14 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=bcm2835
-pkgver=1.73
+pkgver=1.75
 pkgrel=1
 pkgdesc="C library for the Raspberry Pi"
 arch=('armv6h' 'armv7h' 'armv8h' 'i686' 'x86_64')
 url="https://www.airspayce.com/mikem/bcm2835/"
 license=('GPL3')
 source=("https://www.airspayce.com/mikem/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('a5ec8bb12adb105a7aabeb773007624d4c50518994e266cf27e3548728c6eab366cf25f518b9f95f8e63d52e4bcf7c7921b2cfc7236c20760997f7ec8f48b7e9')
+sha512sums=('81cd4f83df4bdbc59c93140623bc423f64b7aff2baee6562cfef0e8aaca70787fc2da7c58b0194a3dcf39a04c53fe09fc3583222b3397455d42bd5d124e858e2')
 
 build() {
   cd "$pkgname-$pkgver"
