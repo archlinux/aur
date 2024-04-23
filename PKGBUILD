@@ -31,7 +31,7 @@ package() {
     install -dm755 "${pkgdir}/opt/${pkgname%-c2-git}/"
     cp -r "${srcdir}/${pkgname%-git}"/{Core/,env/,Villain.py} "${pkgdir}/opt/${pkgname%-c2-git}/"
     chmod -R 0755 "${pkgdir}/opt/${pkgname%-c2-git}/"
-    find "${pkgdir}/opt/${pkgname%-c2-git}/" -type f -exec chmod 0644 {} \;
+    find "${pkgdir}/opt/${pkgname%-c2-git}/" \( -name 'Villain.py' -or -path "${pkgdir}/opt/${pkgname%-c2-git}/env/*" \) -prune -type f -exec chmod 0644 {} \;
 
     # Installing executable
     install -dm755 "${pkgdir}/usr/bin/"
