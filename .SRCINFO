@@ -1,6 +1,6 @@
 pkgbase = dl-distro
 	pkgdesc = Bash script for downloading and verifying OS images.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://codeberg.org/bashuser30/dl-distro
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = dl-distro
 	optdepends = gnupg
 	optdepends = minisign: Void Linux verification
 	optdepends = signify: OpenBSD verification
-	source = https://codeberg.org/bashuser30/dl-distro/archive/v2.0.1.tar.gz
-	sha256sums = 51454f524bcd295ff3775cc3394488731fd9ea99b051068dc699a1f6df3e199a
+	source = https://codeberg.org/bashuser30/dl-distro/archive/v2.0.2.tar.gz
+	sha256sums = 64301e554ec68d32b0294edc76176995652c2d6b11d9c75afb40b78531818e71
 
 pkgname = dl-distro
