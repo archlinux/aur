@@ -1,6 +1,6 @@
 #Maintainer: Bartłomiej Szostak <kapcioszek2137@gmail.com>
 pkgname=fremen-transcriptor-bin
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Software to transcript ASCII into desert people's writing from popular sci-fi franchise"
 arch=('x86_64')
@@ -13,11 +13,11 @@ provides=('fremen-transcriptor')
 conflicts=('fremen-transcriptor')
 backup=()
 install=
-source=("https://github.com/theKapcioszek/fremen-transcriptor/releases/download/1.2/fremen-transcriptor-1.2_linux-x86_64.tar.gz")
+source=("https://github.com/theKapcioszek/fremen-transcriptor/releases/download/1.3/fremen-transcriptor-1.3_linux-x86_64.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-  cd "fremen-transcriptor-1.2_linux-x86_64"
+  cd "fremen-transcriptor-1.3_linux-x86_64"
   mkdir $pkgdir/opt
   mkdir $pkgdir/usr/
   mkdir $pkgdir/usr/bin
