@@ -52,7 +52,9 @@ build() {
   cd "$srcdir/$_pkgname"
 
   ./bootstrap
-  ./configure --prefix=/usr \
+
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+    ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --sbindir=/usr/bin \
