@@ -4,23 +4,22 @@
 _pkgname=liblxqt
 pkgname=$_pkgname-git
 epoch=1
-pkgver=1.3.0.4.gc7407ff
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Common base library for LXQt components."
 arch=("i686" "x86_64")
-url="https://lxqt.org"
-license=("GPL" "LGPL")
-depends=("qt5-base" "qt5-x11extras" "kwindowsystem5" "libqtxdg-git" "libxss" "polkit-qt5")
-makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
+url="https://lxqt-project.org"
+license=('LGPL-2.1-only')
+depends=('libxss' 'qt6-base' 'polkit-qt6' 'kwindowsystem' 'libqtxdg-git')
+makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
-
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/./g"
+  cd $_pkgname
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
