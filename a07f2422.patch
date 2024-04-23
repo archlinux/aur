@@ -1,0 +1,37 @@
+From a07f24228a94aab2bdeb3caaf7a4d694c0180ed7 Mon Sep 17 00:00:00 2001
+From: Felix Ernst <felixernst@kde.org>
+Date: Wed, 17 Apr 2024 07:32:27 +0000
+Subject: [PATCH] Fix crash while entering selection mode with Qt6.7
+
+`deleteLater()` on a non-existing object seems to cause a crash with
+Qt6.7. This makes some sense but wasn't the case previously.
+
+I didn't test this yet but it is a harmless change so if anyone can confirm we can IMO merge directly.
+
+This was brought up in https://invent.kde.org/system/dolphin/-/merge_requests/764#note_920935, reported in the bug linked below, and the sentry crash reporting page also has a few dozen reports (https://crash-reports.kde.org/organizations/kde/issues/13589/?project=4&query=is%3Aunresolved&referrer=issue-stream&stream_index=1).
+
+Dolphin 24.02 is also affected but we are already past the last bug fix release for it.
+
+BUG: 485599
+---
+ src/selectionmode/bottombarcontentscontainer.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/selectionmode/bottombarcontentscontainer.cpp b/src/selectionmode/bottombarcontentscontainer.cpp
+index d571b0302a..0e3087a9c5 100644
+--- a/src/selectionmode/bottombarcontentscontainer.cpp
++++ b/src/selectionmode/bottombarcontentscontainer.cpp
+@@ -483,7 +483,9 @@ std::vector<QAction *> BottomBarContentsContainer::contextActionsFor(const KFile
+     if (selectedItems.isEmpty()) {
+         // There are no contextual actions to show for these items.
+         // We might even want to hide this bar in this case. To make this clear, we reset m_internalContextMenu.
+-        m_internalContextMenu.release()->deleteLater();
++        if (m_internalContextMenu) {
++            m_internalContextMenu.release()->deleteLater();
++        }
+         return std::vector<QAction *>{};
+     }
+ 
+-- 
+GitLab
+
