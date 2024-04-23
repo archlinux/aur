@@ -1,5 +1,5 @@
 # $Id$
-# Contributor: Chad Voegele <cavoegele@gmail.com>
+# Contributor: Kushagra J <volodarolathana@tutanota.com>
 
 pkgname=nand2tetris
 pkgver=2.7
