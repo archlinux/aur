@@ -3,7 +3,7 @@
 pkgname=spotify-player-full-pipe
 pkgver=0.18.0
 pkgrel=1
-pkgdesc="A terminal Spotify player - compiled with pulse/pipewire, clipboard, lyrics, and image support"
+pkgdesc="A terminal Spotify player - compiled with pulse/pipewire, lyrics, and image support"
 arch=('x86_64')
 url="https://github.com/aome510/spotify-player"
 license=('MIT')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 build() {
 	cd "spotify-player-${pkgver}"
 
-	cargo build --release --no-default-features --locked --features pulseaudio-backend,lyric-finder,clipboard,media-control,sixel,streaming,notify,daemon
+	cargo build --release --no-default-features --locked --features pulseaudio-backend,lyric-finder,media-control,sixel,streaming,notify,daemon
 }
 
 package() {

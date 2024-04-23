@@ -1,5 +1,5 @@
 pkgbase = spotify-player-full-pipe
-	pkgdesc = A terminal Spotify player - compiled with pulse/pipewire, clipboard, lyrics, and image support
+	pkgdesc = A terminal Spotify player - compiled with pulse/pipewire, lyrics, and image support
 	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/aome510/spotify-player
