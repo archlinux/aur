@@ -1,0 +1,16 @@
+pkgbase = sway-easyfocus-git
+	pkgdesc = A tool to help efficiently focus windows in Sway inspired by i3-easyfocus.
+	pkgver = r42.2bef3f5
+	pkgrel = 1
+	url = https://github.com/edzdez/sway-easyfocus
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gtk3
+	depends = gtk-layer-shell
+	provides = sway-easyfocus
+	source = git+https://github.com/edzdez/sway-easyfocus
+	sha256sums = SKIP
+
+pkgname = sway-easyfocus-git
