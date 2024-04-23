@@ -4,6 +4,7 @@ pkgrel=11
 arch=('any')
 pkgdesc="configure wrapper for MinGW (mingw-w64) (i686, x86_64, armv7, and aarch64)"
 depends=('llvm-mingw-w64-toolchain' 'llvm-mingw-w64-pkg-config' 'mingw-w64-environment')
+conflicts=('mingw-w64-configure')
 provides=('mingw-w64-configure')
 license=("GPL")
 url="http://fedoraproject.org/wiki/MinGW"
