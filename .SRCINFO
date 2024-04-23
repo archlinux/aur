@@ -1,6 +1,6 @@
 pkgbase = proxygen
 	pkgdesc = A collection of C++ HTTP libraries including an easy to use HTTP server
-	pkgver = 2024.04.08.00
+	pkgver = 2024.04.22.00
 	pkgrel = 1
 	url = https://github.com/facebook/proxygen
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = proxygen
 	provides = libproxygendeviousbaton.so
 	provides = libproxygenhqloggerhelper.so
 	provides = libproxygenhttpserver.so
-	source = proxygen-2024.04.08.00.tar.gz::https://github.com/facebook/proxygen/archive/v2024.04.08.00.tar.gz
-	sha256sums = 7b1d01a4a2203862c1f66d99dbf0c72f660e3e3457347fc27d57b74461dc9e89
+	source = proxygen-2024.04.22.00.tar.gz::https://github.com/facebook/proxygen/archive/v2024.04.22.00.tar.gz
+	sha256sums = 931e1721e0f455d8c9ec6027f345db4e30b73cf3c39d162c308a3968ee95e6a8
 
 pkgname = proxygen
