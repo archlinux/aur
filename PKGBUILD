@@ -1,31 +1,75 @@
-# Maintainer: TommyTran732 <contact@tommytran.io>
-# Contributor: Frederic Bezies <fredbezies@gmail.com>, Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>, LSUtigers3131
+# Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
+# Contributer: TommyTran732 <contact@tommytran.io>
+# Contributer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
+# Contributer: LSUtigers3131
 
-pkgname=libpamac-flatpak
 _pkgname=libpamac
-pkgver=11.4.1
+pkgname=$_pkgname-flatpak
+pkgver=11.6.4
 pkgrel=1
-pkgdesc="Library for Pamac package manager based on libalpm - flatpak and support enabled"
+epoch=1
+_srcdir="$_pkgname-$pkgver"
+#_srcdir="$_pkgname"
+pkgdesc="Pamac package manager library based on libalpm. With Flatpak support"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/libpamac"
 license=('GPL3')
-depends=('pacman>=6.0' 'pacman<6.1' 'flatpak' 'archlinux-appstream-data-pamac')
-makedepends=('gettext' 'itstool' 'vala' 'meson' 'gobject-introspection' 'xorgproto' 'asciidoc')
-options=(!emptydirs)
-conflicts=('libpamac' 'libpamac-aur' 'libpamac-full' 'libpamac-full-dev' 'libpamac-nosnap')
-source=(https://gitlab.manjaro.org/applications/libpamac/-/archive/$pkgver/libpamac-$pkgver.tar.bz2)
-sha512sums=('db81375cfb2c7a4939b324c5ed62f59f759f8d0ac957c4af5cb629a33613ad82b5d820cab9300d3ba634e082db13f6edef4663f18d010e763880e3dcb6c7fed8')
+depends=(
+    'appstream-glib'
+    'archlinux-appstream-data'
+    'dbus-glib'
+    'flatpak'
+    'glib2'
+    'gnutls'
+    'json-glib'
+    'libnotify'
+    'libsoup3'
+    'pacman'
+    'polkit'
+    'vte3'    
+)
+makedepends=(
+    'asciidoc'
+    'gettext'
+    'git'
+    'gobject-introspection'
+    'intltool'
+    'meson'
+    'ninja'
+    'vala'
+)
+provides=('libpamac')
+conflicts=(
+    'libpamac'
+    'libpamac-aur'
+    'libpamac-full'
+    'libpamac-nosnap'
+)
+options=(!emptydirs !strip)
+backup=('etc/pamac.conf')
+install='pamac.install'
+source=($_pkgname-$pkgver.tar.bz2::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2)
+sha256sums=('4ac54679e25004d6af8154340bac2e060c3a109a6bcb336f54ce025b2d68f080')
+#source=(
+#    "git+https://gitlab.manjaro.org/applications/libpamac.git#commit=e74fe0e1c15f4fd14d02ff12650be3fde47287d7"
+#    "${pkgname}-appstream-1.0.patch"    
+#)
+#sha256sums=(
+#    'SKIP'
+#    '23beff3d0bc9e1bf30b3ab45910faeb89125c392d9b95d6de83020ac88698851'
+#)
+
+#prepare() {
+#	cd "$_srcdir"
+#	patch -p1 -i "${srcdir}/${pkgname}-appstream-1.0.patch"
+#}
 
 build() {
-  arch-meson -Denable-flatpak=true -Denable-snap=false --buildtype=release $_pkgname-$pkgver build
-  meson compile -C build
-}
-
-check() {
-  meson test -C build --print-errorlogs
+	arch-meson "$_srcdir" 'build' -Denable-snap=false -Denable-flatpak=true -Denable-aur=true -Denable-appstream=true
+	meson compile -C 'build'
 }
 
 package() {
-  backup=('etc/pamac.conf')
-  meson install -C build --destdir "$pkgdir"
+	meson install -C 'build' --destdir="$pkgdir"
+	install -Dm644 "$_srcdir/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
