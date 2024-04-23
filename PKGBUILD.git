@@ -1,6 +1,6 @@
 pkgname=pkcs11-provider
 _commit=$(git -C ~/src/security/pkcs11-provider rev-parse HEAD)
-pkgver=0.3
+pkgver=0.3.r56.g57804f2
 pkgrel=1
 pkgdesc="OpenSSL 3.0 provider for PKCS#11 hardware-backed private keys"
 url="https://github.com/latchset/pkcs11-provider"
@@ -11,11 +11,9 @@ depends=(
   p11-kit
 )
 makedepends=(
-  autoconf-archive
-  automake
   gcc
   git
-  libtool
+  meson
 )
 checkdepends=(
   expect
@@ -32,25 +30,19 @@ pkgver() {
   git describe --tags | sed "s/^v//; s/-/.r/; s/-/./"
 }
 
-prepare() {
-  cd $pkgname
-  autoreconf -fi
-}
-
 build() {
   cd $pkgname
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make
+  meson setup build --wipe --prefix=/usr --sysconfdir=/etc
+  meson compile -C build
 }
 
 check() {
-  cd $pkgname
-  make check
+  meson test -C $pkgname/build
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  meson install -C $pkgname/build --destdir="$pkgdir"
+  install -Dm644 $pkgname/README.md "$pkgdir"/usr/share/doc/pkcs11-provider/README.md
 }
 
 # vim: ts=2:sw=2:et
