@@ -32,12 +32,12 @@ package() {
   cd FlightCore-main
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/flightcore"
   cd docs
-  install -Dm644 ../README.md DEV-TOOLS.md FAQ.md TROUBLESHOOTING.md\
-  -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 ../README.md DEV-TOOLS.md DEVELOPMENT.md FAQ.md TROUBLESHOOTING.md\
+  -t "$pkgdir/usr/share/doc/flightcore"
   cd ../src-tauri/icons
   _icdr=usr/share/icons/hicolor
-  install -Dm644 32x32.png "$pkgdir/$_icdr/32x32/apps/$pkgname.png"
-  install -Dm644 128x128.png "$pkgdir/$_icdr/128x128/apps/$pkgname.png"
-  install -Dm644 128x128@2x.png "$pkgdir/$_icdr/256x256/apps/$pkgname.png"
-  install -Dm644 icon.png "$pkgdir/$_icdr/512x512/apps/$pkgname.png"
+  install -Dm644 32x32.png "$pkgdir/$_icdr/32x32/apps/flightcore.png"
+  install -Dm644 128x128.png "$pkgdir/$_icdr/128x128/apps/flightcore.png"
+  install -Dm644 128x128@2x.png "$pkgdir/$_icdr/256x256/apps/flightcore.png"
+  install -Dm644 icon.png "$pkgdir/$_icdr/512x512/apps/flightcore.png"
 }
