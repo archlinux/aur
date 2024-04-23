@@ -2,15 +2,15 @@
 # Contributor: Chad Voegele <cavoegele@gmail.com>
 
 pkgname=nand2tetris
-pkgver=2.6
-pkgrel=5
+pkgver=2.7
+pkgrel=1
 pkgdesc="Software suite accompanying Nand2Tetris course."
 arch=('any')
 url="http://www.nand2tetris.org/"
 license=('GPL')
 depends=('java-runtime')
 makedepends=('git')
-source=('nand2tetris::git+https://github.com/oconnor663/nand2tetris.git'
+source=('nand2tetris::git+https://github.com/kushagra-xo/nand2tetris.git'
         n2tCPUEmulator.run
         n2tVMEmulator.run
         n2tJackCompiler.run
@@ -33,10 +33,10 @@ sha256sums=(SKIP
             '2cd1b2c93dd68de97b7c3d9504dc850f4b60774065a70aa8496ba82c7889dc89')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/${pkgname%-VCS}"
+    latest_tag=$(git describe --tags --abbrev=0)
+    echo "${latest_tag}"
 }
-
 
 package() {
   cd ${srcdir}/${pkgname}
