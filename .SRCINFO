@@ -9,6 +9,7 @@ pkgbase = llvm-mingw-w64-pkg-config
 	depends = pkg-config
 	depends = mingw-w64-crt
 	provides = mingw-w64-pkg-config
+	conflicts = mingw-w64-pkg-config
 	source = mingw-pkgconfig.sh
 	md5sums = SKIP
 

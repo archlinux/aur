@@ -6,6 +6,7 @@ arch=('any')
 url='http://pkg-config.freedesktop.org/'
 license=('zlib')
 depends=('pkg-config' 'mingw-w64-crt')
+conflicts=('mingw-w64-pkg-config')
 provides=('mingw-w64-pkg-config')
 source=('mingw-pkgconfig.sh')
 install='mingw-w64-pkg-config.install'
