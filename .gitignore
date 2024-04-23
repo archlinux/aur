@@ -1,4 +1,4 @@
-/pkg
-/src
-/pugl*
-*.tar.*
+pkg/
+src/
+pugl/
+pugl-*.pkg.tar.*
