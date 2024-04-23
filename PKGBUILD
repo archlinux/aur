@@ -4,19 +4,16 @@
 
 _pkgname=lxqt-panel
 pkgname=$_pkgname-git
-pkgver=1.3.0.37.g73e2f88e
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='The LXQt desktop panel'
 arch=('i686' 'x86_64')
 url='https://github.com/lxqt/lxqt-panel'
-license=('GPL2')
-depends=(
-      "alsa-lib" "libpulse" "lm_sensors" "libstatgrab" "libsysstat-git" "libxtst"
-      "solid5"
-      "menu-cache" "libxcomposite" "lxqt-menu-data-git" "libdbusmenu-qt5"
-      "lxqt-globalkeys-git"
-)
-makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
+license=("LGPL-2.1-only")
+depends=('libstatgrab' 'libsysstat-git' 'libxtst' 'alsa-lib' 'libpulse'
+         'layer-shell-qt' 'solid' 'kwindowsystem'
+         'libdbusmenu-lxqt-git' 'liblxqt-git' 'lxqt-menu-data-git' 'lxqt-globalkeys-git')
+makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+${url}.git")
@@ -24,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
       cd "$srcdir/$_pkgname"
-      git describe --always | sed "s/-/./g"
+      git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
