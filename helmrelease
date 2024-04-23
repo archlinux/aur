@@ -169,7 +169,7 @@ function helmrelease() {
       if [[ "$subCommand" = "template" ]]; then
         echo ---
       fi
-      <<<"$yaml" | yq -erys '([.[] | select(.kind == "HelmRelease")]['"$index"']),(.[] | select(.kind | IN(["GitRepository", "HelmRepository"][])))' | helmrelease "$subCommand" -
+      <<<"$yaml" | yq -erys '([.[] | select(.kind == "HelmRelease")]['"$index"']),(.[] | select(.kind | IN(["GitRepository", "HelmRepository"][])))' | helmrelease "$subCommand" - -- "${@}"
     done
   fi
 
