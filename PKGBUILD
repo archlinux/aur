@@ -1,8 +1,8 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-iron-base
-pkgver=2024.02.09
-pkgrel=3
+pkgver=2024.04.23
+pkgrel=1
 _rosdist="Iron Irwini"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -39,7 +39,7 @@ source=(
     "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
     "ros2-variants-0.10.0.tar.gz::https://github.com/ros2/variants/archive/0.10.0.tar.gz"
 )
-sha256sums=('125ee95bedfdfe450a6e2dc82b6f47891c9abdb29ef225fb88af678efb33ce66'
+sha256sums=('71188fe6498a3c665a04510bddf26585b156916b7fc6fd70580d18a58c752602'
             'df17f20c0168f4553e40023b8e324d93bdcc1f39932df785cb1d55051076e3f6')
 
 prepare() {
