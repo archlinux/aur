@@ -1,0 +1,18 @@
+pkgbase = simple-sddm-theme-git
+	pkgdesc = A Simple theme variant for the SDDM Login Manager
+	pkgver = r13.6888ccc
+	pkgrel = 1
+	url = https://github.com/JaKooLit/simple-sddm
+	arch = any
+	license = LGPL2
+	license = GPL3
+	makedepends = git
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = sddm
+	backup = usr/share/sddm/themes/simple-sddm/theme.conf
+	source = git+https://github.com/JaKooLit/simple-sddm
+	sha256sums = SKIP
+
+pkgname = simple-sddm-theme-git
