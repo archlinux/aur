@@ -1,0 +1,14 @@
+post_install() {
+        _sign_location='etc/secureboot/keys'
+        uuidgen --random > $_sign_location/GUID.txt
+
+        for pair in PK=PK KEK=PK db=KEK; do
+            key="${pair%=*}"
+            from="${pair#*=}"
+            msg "Generating $key.key"
+            openssl req -newkey rsa:2048 -nodes -keyout $_sign_location/$key/$key.key -new -x509 -sha256 -days 3650 -subj "/CN=Self-generated Key Exchange Key/" -out $_sign_location/$key/$key.crt
+            openssl x509 -outform DER -in $_sign_location/$key/$key.crt -out $_sign_location/$key/$key.der
+            sbsiglist --owner "$_sign_location/GUID.txt" --type x509 --output "$_sign_location/$key/$key.esl" "$_sign_location/$key/$key.der"
+            sbvarsign --key "$_sign_location/$from/$from.key" --cert "$_sign_location/$from/$from.crt" --output "$_sign_location/$key/$key.auth" "$key" "$_sign_location/$key/$key.esl"
+        done
+}
