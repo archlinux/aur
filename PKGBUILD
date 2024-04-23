@@ -2,14 +2,14 @@
 
 _name=pyg3t
 pkgname=$_name-git
-pkgver=0.5.1.r335.c6ee292
+pkgver=0.5.1.r401.3939d89
 pkgrel=1
 pkgdesc="Python GetText Translation Toolkit"
 arch=(any)
 url="https://gitlab.com/pyg3t/pyg3t"
-license=('GPL3')
-depends=('python-dateutil')
-makedepends=('git' 'python-setuptools')
+license=(GPL-3.0-or-later)
+depends=(python)
+makedepends=(git python-setuptools python-build python-installer python-wheel)
 provides=($_name)
 conflicts=($_name)
 source=(git+${url}.git)
@@ -24,11 +24,11 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_name"
-  python setup.py build
+  cd $_name
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_name"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd $_name
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
