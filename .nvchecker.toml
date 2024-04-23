@@ -1,0 +1,4 @@
+[python-pywikibot]
+source = "github"
+github = "wikimedia/pywikibot"
+use_max_tag = "true"
