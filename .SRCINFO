@@ -1,6 +1,6 @@
 pkgbase = waylyrics
 	pkgdesc = the furry way to show desktop lyrics
-	pkgver = 0.2.20
+	pkgver = 0.2.21
 	pkgrel = 1
 	url = https://waylyrics.github.io/waylyrics/waylyrics/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = waylyrics
 	depends = gettext
 	depends = opencc
 	options = !lto
-	source = waylyrics-0.2.20.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v0.2.20.tar.gz
-	sha256sums = 684bf2ff469c1c5963d2d993a4bccfa36cf530c4e465e7f6ef07d725ce9546d3
+	source = waylyrics-0.2.21.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v0.2.21.tar.gz
+	sha256sums = aa3cb37821a898581c464214f2238d3c4d0dafbdb9caaa69ec1a50f9b8032a70
 
 pkgname = waylyrics
 	depends = openssl
