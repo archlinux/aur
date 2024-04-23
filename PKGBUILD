@@ -1,23 +1,24 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=retroarch-assets
 pkgname=$_pkgname-git
-pkgver=r464.b57c6e5d
+pkgver=1.17.0.r4.g912f65274
 pkgrel=1
 pkgdesc="Assets needed for RetroArch"
 arch=('any')
 url="https://github.com/libretro/retroarch-assets"
-license=('CCPL:by')
+license=('CC-BY-4.0')
 groups=('libretro')
 makedepends=('git')
 optdepends=('retroarch')
 provides=("$_pkgname" retroarch-assets-{glui,ozone,xmb})
 conflicts=("$_pkgname")
+options=('!strip')
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
