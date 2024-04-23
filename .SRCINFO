@@ -1,6 +1,6 @@
 pkgbase = cmake-language-server
 	pkgdesc = Python based cmake language server
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/regen100/cmake-language-server
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = cmake-language-server
 	depends = python-pyparsing
 	depends = cmake-format
 	depends = cmake
-	source = cmake-language-server-0.1.9.tar.gz::https://github.com/regen100/cmake-language-server/archive/v0.1.9.tar.gz
-	sha256sums = 8db5472db8cb2c2aadfe21b6c7e66fb0e6dcd421ab5a0f569a2971c7e3fec33f
+	source = cmake-language-server-0.1.10.tar.gz::https://github.com/regen100/cmake-language-server/archive/v0.1.10.tar.gz
+	sha256sums = 8faaf3bce811b4de5b060a0b9eb664b18b506310d4e96b6b77f958dbb24b3639
 
 pkgname = cmake-language-server
