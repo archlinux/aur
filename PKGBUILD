@@ -9,8 +9,8 @@ url="https://github.com/IM1corp/YummyAPI"
 license=('GPL2')
 depends=('python' 'python-beautifulsoup4' 'python-aiohttp' 'python-json5')
 makedepends=('python-pip')
-source=("https://files.pythonhosted.org/packages/9d/d7/2f5faa1eb203f0b5f1f0f88aced226316639ef9b04294d48be5b896bd851/yummyanime-0.0.7-py3-none-any.whl")
-sha256sums=('2bf91a26ad030a181b01cf9ed39f77ef0892a36b111daffd1b90444be75ffb18')
+source=("https://files.pythonhosted.org/packages/c6/0b/e25dafa7215f40252c36d6d8b4d21f0358c1142b1f71722b5afab0342989/yummyanime-0.0.7-py3-none-any.whl")
+sha256sums=('068d02c57cac5127a3785075db5e85a40c94da0d7ca9abdcd4bafd5c539f41e7')
 
 package() {
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
