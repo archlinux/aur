@@ -4,8 +4,8 @@
 # Contributor: crov
 pkgname=vdr-chanman
 pkgver=0.0.13
-_vdrapi=2.6.6
-pkgrel=5
+_vdrapi=2.6.7
+pkgrel=6
 pkgdesc="Change channel with a multi level choice"
 url="https://github.com/vdr-projects/vdr-plugin-chanman"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
