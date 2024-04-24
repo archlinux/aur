@@ -1,7 +1,7 @@
 pkgbase = r-rematch
 	pkgdesc = Match Regular Expressions with a Nicer 'API'
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rematch
 	arch = any
 	license = MIT
