@@ -2,7 +2,7 @@
 # Maintainer: Aron Young <tkf6fkt at gmail dot com>
 _pkgname=obsidian
 pkgname=obsidian-bin
-pkgver=1.5.11
+pkgver=1.5.12
 pkgrel=1
 pkgdesc="A powerful knowledge base that works on top of a local folder of plain text Markdown files"
 arch=('x86_64' 'aarch64')

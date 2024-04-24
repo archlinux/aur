@@ -1,6 +1,6 @@
 pkgbase = obsidian-bin
 	pkgdesc = A powerful knowledge base that works on top of a local folder of plain text Markdown files
-	pkgver = 1.5.11
+	pkgver = 1.5.12
 	pkgrel = 1
 	url = https://github.com/obsidianmd/obsidian-releases
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = obsidian-bin
 	conflicts = obsidian
 	options = !debug
 	options = !strip
-	source_x86_64 = obsidian-bin-1.5.11-x86_64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.11/Obsidian-1.5.11.AppImage
+	source_x86_64 = obsidian-bin-1.5.12-x86_64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.12/Obsidian-1.5.12.AppImage
 	sha256sums_x86_64 = aa65d9992a7b60f676936fbc80d616f45cf9b3468c4ab60730123b727f4cf2ee
-	source_aarch64 = obsidian-bin-1.5.11-aarch64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.11/Obsidian-1.5.11-arm64.AppImage
+	source_aarch64 = obsidian-bin-1.5.12-aarch64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.12/Obsidian-1.5.12-arm64.AppImage
 	sha256sums_aarch64 = dc057e7d8d1359b456da24bd081374ba367a14c09d2994bc41579deb16a49909
 
 pkgname = obsidian-bin
