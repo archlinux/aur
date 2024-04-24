@@ -1,17 +1,17 @@
-# Maintainer: Johan Svensson <johan@loxley.se>
+# Contributor: Johan Svensson <johan@loxley.se>
 pkgname=logwarn
-pkgver=1.0.11
+pkgver=1.0.17
 pkgrel=1
 pkgdesc="Utility for finding interesting messages in log files"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/logwarn"
 license=('APACHE')
-source=(https://logwarn.googlecode.com/files/logwarn-$pkgver.tar.gz)
-sha256sums=('fe5d7e5a40908489a243f2d7ccb37af583e74f072e3cb6012e5b3f3e68e0bad8')
+source=(https://github.com/archiecobbs/logwarn/archive/refs/tags/$pkgver.tar.gz)
+sha256sums=('e928522045dee389862dce8031fb45e4db2a17ab94062427c1d00c54d1e5d29f')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
-
+    ./autogen.sh
     ./configure
     make
 }
@@ -27,5 +27,5 @@ package() {
     gzip -c $srcdir/$pkgname-$pkgver/$pkgname.1 > $pkgdir/usr/share/man/man1/$pkgname.1.gz
 
     mv COPYING $pkgdir/usr/share/licenses/$pkgname/
-    mv AUTHORS CHANGES README $pkgdir/usr/share/doc/$pkgname/
+    mv AUTHORS CHANGES README.md $pkgdir/usr/share/doc/$pkgname/
 }

@@ -1,13 +1,12 @@
 pkgbase = logwarn
 	pkgdesc = Utility for finding interesting messages in log files
-	pkgver = 1.0.11
+	pkgver = 1.0.17
 	pkgrel = 1
 	url = https://code.google.com/p/logwarn
 	arch = i686
 	arch = x86_64
 	license = APACHE
-	source = https://logwarn.googlecode.com/files/logwarn-1.0.11.tar.gz
-	sha256sums = fe5d7e5a40908489a243f2d7ccb37af583e74f072e3cb6012e5b3f3e68e0bad8
+	source = https://github.com/archiecobbs/logwarn/archive/refs/tags/1.0.17.tar.gz
+	sha256sums = e928522045dee389862dce8031fb45e4db2a17ab94062427c1d00c54d1e5d29f
 
 pkgname = logwarn
-
