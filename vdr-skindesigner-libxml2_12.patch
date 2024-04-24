@@ -1,0 +1,36 @@
+From 71b3e514c6c7f8eb76751ce04f1e3dd8f3037b25 Mon Sep 17 00:00:00 2001
+From: kamel5 <vdr.kamel5 (at) gmx (dot) net>
+Date: Thu, 4 Jan 2024 11:16:35 +0100
+Subject: [PATCH] Fix build error with xml2 version 2.12
+
+---
+ extensions/libxmlwrapper.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/extensions/libxmlwrapper.c b/extensions/libxmlwrapper.c
+index 47bae91c..82304ac1 100644
+--- a/extensions/libxmlwrapper.c
++++ b/extensions/libxmlwrapper.c
+@@ -1,7 +1,7 @@
+ #include "helpers.h"
+ #include "libxmlwrapper.h"
+ 
+-void SkinDesignerXMLErrorHandler (void * userData, xmlErrorPtr error) {
++void SkinDesignerXMLErrorHandler (void * userData, const xmlErrorPtr error) {
+     esyslog("skindesigner: Error in XML: %s", error->message);
+ }
+ 
+@@ -10,8 +10,8 @@ cLibXMLWrapper::cLibXMLWrapper(void) {
+     doc = NULL;
+     root = NULL;
+ 
+-    initGenericErrorDefaultFunc(NULL);
+-    xmlSetStructuredErrorFunc(NULL, SkinDesignerXMLErrorHandler);
++    xmlSetGenericErrorFunc(NULL, NULL);
++    xmlSetStructuredErrorFunc(NULL, (xmlStructuredErrorFunc)SkinDesignerXMLErrorHandler);
+     ctxt = xmlNewParserCtxt();
+ }
+ 
+-- 
+GitLab
+
