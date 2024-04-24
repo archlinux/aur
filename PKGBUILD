@@ -3,9 +3,9 @@
 pkgname=leavesmc-git
 _pkgname=leavesmc
 _pkgver=1.20.4
-_build=a4724ba
+_build=e7c14b8
 pkgver="${_pkgver}+${_build}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Fork of Paper aimed at repairing broken vanilla properties."
 arch=('any')
 url="https://leavesmc.org/"
