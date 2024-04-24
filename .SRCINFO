@@ -1,6 +1,6 @@
 pkgbase = varallel
 	pkgdesc = A cross-platform and easy to use CLI tool to run commands in parallel
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/wszqkzqk/varallel
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = varallel
 	makedepends = vala
 	makedepends = meson
 	depends = glib2
-	source = git+https://github.com/wszqkzqk/varallel.git#tag=0.3.6
-	sha256sums = dc7abd439dff2430ef9b9701aa07daa5c016bf0b645e9e009136a64512697fe3
+	source = git+https://github.com/wszqkzqk/varallel.git#tag=0.3.7
+	sha256sums = 3c1d2dfc312d80599312b8c2462a8a521abf16069ae2389da8c1e529c0991e79
 
 pkgname = varallel
