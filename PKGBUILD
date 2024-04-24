@@ -2,8 +2,8 @@
 
 _pkgname=goby
 pkgname=goby-community
-pkgver=2.9.2
-pkgrel=3
+pkgver=2.9.3
+pkgrel=1
 pkgdesc="Attack surface mapping"
 arch=("x86_64")
 url="https://gobies.org/"
@@ -12,6 +12,8 @@ options=("!strip" "!debug")
 depends=(
 	"atk"
 	"gtk3"
+	"libcap"
+	"libpcap"
 )
 makedepends=('unzip')
 source=(
@@ -20,7 +22,7 @@ source=(
 	"$pkgname.png"
 	)
 sha256sums=(
-	'e9ecd230b3e2fed975b7a49ea6f3c2bf3f4a819170763dd59d826e45a9ca051b'
+	'071ee4b63385ad3da064bc46f090a8724090e5e74f8fd25a0ab026b6ed8472f8'
 	'0624f9c1aa7377ccb5bd6b6a54a3dbea3cdd1a1e838a154c73bd01d22ff5fc3f'
 	'11e10dc114bd6cd8ecfe018b277798f1c7727f113c15ebc09090682f8575bb1f'
 )
