@@ -1,7 +1,7 @@
 pkgbase = r-ps
 	pkgdesc = List, Query, Manipulate System Processes
 	pkgver = 1.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=ps
 	arch = x86_64
 	license = MIT
