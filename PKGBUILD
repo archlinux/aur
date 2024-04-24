@@ -4,13 +4,13 @@
  
 pkgname=audio-recorder
 pkgver=3.3.4
-pkgrel=1
+pkgrel=2
 _ubuntucodename=jammy
 pkgdesc="Audio Recorder Application"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://launchpad.net/~audio-recorder'
-license=('GPL3')
-depends=('gst-plugins-base' 'gst-plugins-good' 'libappindicator-gtk3')
+license=('GPL-3.0-or-later')
+depends=('cairo' 'dconf' 'gdk-pixbuf2' 'glibc' 'glib2' 'gst-plugins-base' 'gst-plugins-good' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3')
 makedepends=('intltool')
 optdepends=('pulseaudio: support for the pulsesrc plugin'
             'pipewire: support for the pipewiresrc plugin'
