@@ -1,6 +1,6 @@
 pkgbase = yuzu-early-access-appimage
 	pkgdesc = Nintendo Switch emulator - Early Access builds
-	pkgver = 3591
+	pkgver = 4176
 	pkgrel = 1
 	url = https://pineappleea.github.io/
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = yuzu-early-access-appimage
 	conflicts = pineapple-ea-bin
 	noextract = Linux-Yuzu-EA-3591.AppImage
 	options = !strip
-	source = https://github.com/pineappleEA/pineapple-src/releases/download/EA-3591/Linux-Yuzu-EA-3591.AppImage
+	source = https://github.com/pineappleEA/pineapple-src/releases/download/EA-4176/Linux-Yuzu-EA-4176.AppImage
 	md5sums = SKIP
 
 pkgname = yuzu-early-access-appimage
