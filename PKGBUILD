@@ -4,21 +4,21 @@ _pkgname=deming
 _pkgver=1.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Deming, Theil-Sen, Passing-Bablock and Total Least Squares Regression"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(LGPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d63daf672291763deca4518eb39f7be2')
-sha256sums=('4190b5d9b6a76cbb33c24f3c1d291e416526fc610f3f10f5c3579a1957c6a3fb')
+b2sums=('8958dac958762112a0fa36976aada09df369650f351a1969f34dd6655fd07eb7680904f9e2c30c134769e307da2a4e6d111b6367ea3916e2c85c9fc6060ebc5a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
