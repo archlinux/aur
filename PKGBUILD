@@ -1,9 +1,10 @@
-# Maintainer: Emanuel Fernandes <efernandes@tektorque.com>
+# Contributor: Emanuel Fernandes <efernandes@tektorque.com>
+# Maintainer: tee < teeaur at duck dot com >
 
 _channel=latest
 pkgname="tws-$_channel"
-_pkgver=10.12
-pkgver="$_pkgver.2c"
+_pkgver=10.28
+pkgver="$_pkgver.1h"
 pkgrel=1
 pkgdesc='IntereactiveBrokers Trader Workstation'
 arch=('x86_64')
@@ -12,7 +13,7 @@ license=('custom')
 depends=()
 optdepends=()
 source=("https://download2.interactivebrokers.com/installers/tws/$_channel-standalone/$pkgname-standalone-linux-x64.sh")
-sha512sums=('067ddb23e69b53412401e8bc19bf3815fe3cd832c8b8563377fedd6da7beacadd1e058205c8e4fbf270a8dc5f4dca1840a7f43b6e0875cfacddea409046383ad')
+b2sums=('ed6bd1a1ec93e17a208e1321bca1a89ca16ab903415d8558371d46f154c12fa03a4735d2ed2286b81904717ee4499f2ab86b6cd844d6411983ad305e3383044d')
 
 prepare() {
     # unattended mode
@@ -23,7 +24,8 @@ prepare() {
         "$srcdir/$pkgname/.install4j/response.varfile" \
         "$srcdir/$pkgname/.install4j/install.prop" \
         "$srcdir/$pkgname/.install4j/files.log" \
-        "$srcdir/$pkgname/.install4j/installation.log"
+        "$srcdir/$pkgname/.install4j/installation.log" \
+        "$srcdir/$pkgname/.install4j/install4j_9xwk2g-tws.desktop"
 }
 
 package() {
@@ -39,3 +41,4 @@ package() {
     ln -s /opt/$pkgname/.install4/tws.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
     ln -s "/opt/$pkgname/Trader Workstation $_pkgver.desktop" "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
+# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
