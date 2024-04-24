@@ -43,6 +43,9 @@ package() {
     find empire{/,.py} -type f -exec install -Dm644 {} "${pkgdir}/opt/${pkgname}/{}" \;
     find {.venv,empire}/ -type l -exec cp -a {} "${pkgdir}/opt/${pkgname}/{}" \;
 
+    # Installing docs
+    cd "${srcdir}/Empire-${pkgver}/docs/"
+    find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 
     # Installing executable
     echo -e "#!/bin/bash\ncd /opt/${pkgname}/\n.venv/bin/python3 empire.py \$@" > "${srcdir}/powershell-empire"
