@@ -1,7 +1,7 @@
 pkgbase = r-httpcode
 	pkgdesc = 'HTTP' Status Code Helper
 	pkgver = 0.3.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://cran.r-project.org/package=httpcode
 	arch = any
 	license = MIT
