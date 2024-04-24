@@ -1,6 +1,6 @@
 pkgbase = atlas-celeste-git
 	pkgdesc = Render and visualize paths for Celeste TASes
-	pkgver = 1.0.0.r3.108db8b
+	pkgver = 1.1.0.r33.e42ec3b
 	pkgrel = 1
 	url = https://github.com/jakobhellermann/Atlas
 	arch = x86_64
