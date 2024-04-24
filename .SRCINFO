@@ -1,10 +1,10 @@
 pkgbase = r-chromstardata
 	pkgdesc = ChIP-seq data for Demonstration Purposes
 	pkgver = 1.28.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/chromstaRData
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r
 	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/chromstaRData_1.28.0.tar.gz
 	md5sums = 7f4a965a6b5aa71874a5cca39046cabf
