@@ -1,0 +1,2 @@
+#!/bin/sh
+OPENSSL_CONF=/opt/XIVLauncher/openssl_fix.cnf exec /opt/XIVLauncher/XIVLauncher.Core
