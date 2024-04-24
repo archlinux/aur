@@ -1,10 +1,10 @@
 pkgbase = r-pls
 	pkgdesc = Partial Least Squares and Principal Component Regression
 	pkgver = 2.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=pls
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r
 	optdepends = r-rmpi
 	optdepends = r-runit
