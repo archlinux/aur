@@ -5,11 +5,11 @@ _pkgname=fastmatch
 _pkgver=1.1-4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast 'match()' Function"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   r
 )
