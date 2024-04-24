@@ -1,0 +1,5 @@
+[jsonoid-discovery]
+source = "github"
+github = "dataunitylab/jsonoid-discovery"
+prefix = "v"
+use_latest_release = true
