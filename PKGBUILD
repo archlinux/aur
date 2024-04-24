@@ -4,11 +4,11 @@ _pkgname=dixonTest
 _pkgver=1.0.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Dixon's Ratio Test for Outlier Detection"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r
 )
