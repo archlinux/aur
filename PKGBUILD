@@ -1,25 +1,25 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
-# Co-Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Co-Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=lxqt-powermanagement
 pkgname=$_pkgname-git
-pkgver=1.3.0.8.g93e1441
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="LXQt power management daemon"
 arch=("i686" "x86_64")
-url="https://lxqt.org"
-license=("GPL2")
-depends=("liblxqt-git" "lxqt-globalkeys-git" "qt5-svg" "qt5-x11extras" "upower" "kidletime5" "solid5" "hicolor-icon-theme")
-makedepends=("cmake" "git" "qt5-tools" "lxqt-build-tools-git")
+url="https://lxqt-project.org"
+license=("LGPL-2.1-only")
+depends=('upower' 'kidletime' 'solid' 'qt6-svg' 'liblxqt-git' 'lxqt-globalkeys-git' 'hicolor-icon-theme')
+makedepends=('cmake' 'git' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
-
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/./g"
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
