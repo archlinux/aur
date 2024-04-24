@@ -1,6 +1,6 @@
 pkgbase = mint-l-icons
 	pkgdesc = A flat, colorful, and modern theme based on Paper and Moka. Legacy version
-	pkgver = 1.6.9
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/linuxmint/mint-l-icons
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mint-l-icons
 	depends = hicolor-icon-theme
 	optdepends = mint-x-icons: enable additional icons to inheritage
 	options = !strip
-	source = http://packages.linuxmint.com/pool/main/m/mint-l-icons/mint-l-icons_1.6.9.tar.xz
-	sha256sums = 5bcb3607ffedf565d6108406ffd427fecd39ebb19563712d02d829b0cf4d62f7
+	source = http://packages.linuxmint.com/pool/main/m/mint-l-icons/mint-l-icons_1.7.0.tar.xz
+	sha256sums = 1ea9a614f47f39a0b93a0b857a4e735141b12ac46920c47fa3768881d1f335c5
 
 pkgname = mint-l-icons
