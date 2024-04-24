@@ -4,11 +4,11 @@ _pkgname=beanplot
 _pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=10
 pkgdesc="Visualization via Beanplots (Like Boxplot/Stripchart/Violin Plot)"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   r
 )
