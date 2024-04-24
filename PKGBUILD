@@ -4,12 +4,12 @@ pkgname=leavesmc
 _pkgver=1.20.4
 _build=a4724ba
 pkgver="${_pkgver}+${_build}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of Paper aimed at repairing broken vanilla properties."
 arch=('any')
 url="https://leavesmc.org/"
 license=('custom')
-depends=('java-runtime>=17')
+depends=('zulu-21-bin')
 optdepends=('screen: Used to continue running the server after closing the terminal.')
 provides=('leavesmc-git')
 conflicts=('leavesmc-git')
@@ -23,7 +23,7 @@ source=("leavesmc.png"
         "LICENSE_MIT"::"https://github.com/LeavesMC/Leaves/raw/master/licenses/MIT.md")
 sha256sums=("720ee68108bbe12c362cf5ed05b3ad5b28bbaf53f3d7952d389bfc404a5baaac"
             "4a03cc59260564cbd176260250a4256e56793d4e82e40c61d421dd549c981022"
-            "d967d878d6d2d80e034ba31fb1852cc45243c9339bede3959d1274b1f1761367"
+            "8d2cad3c8e9f7e9f2c6ba88235b75dfc8ba0b2729b39fdad06c23aeb8910f681"
             "af0f7f846da7e5da02193538d5120fdb40cc3730e1ec0574c23583bc0b03841f"
             "c05bdc5c7e40be2776a06098f641a73432ae747a757a8f4e08b554bea7bc1dee"
             "0e1372769c3ea4ce2a8fb0955a02adf8e88d1804c6143518dee9f969eb0911f7"
