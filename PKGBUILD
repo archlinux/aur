@@ -30,12 +30,12 @@ pkgver() {
 build() {
     # Creating virtualenv with dependencies
     cd "${srcdir}/${pkgname%-git}/"
-    virtualenv -p python3 env
-    source "${srcdir}/${pkgname%-git}/env/bin/activate"
-    poetry install --no-root --compile
-    deactivate
 
-    chmod +x "${srcdir}/${pkgname%-git}/empire.py"
+    # Setting poetry settings and install
+    poetry config --local virtualenvs.in-project true
+    poetry config --local virtualenvs.prefer-active-python true
+    poetry install --no-root --compile
+
     # grab openssl certs
     cd "${srcdir}/${pkgname%-git}/setup/"
     bash ./cert.sh
