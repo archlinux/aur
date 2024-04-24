@@ -1,10 +1,10 @@
 pkgbase = r-amap
 	pkgdesc = Another Multidimensional Analysis Package
 	pkgver = 0.8.19
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=amap
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
 	depends = r
 	optdepends = r-biobase
