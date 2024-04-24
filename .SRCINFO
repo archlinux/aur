@@ -1,12 +1,15 @@
 pkgbase = villain-c2-git
 	pkgdesc = Modern and malleable post-exploitation command and control framework
 	pkgver = 1c9084f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/t3l3machus/Villain
 	arch = any
 	license = CC-BY-NC-ND-4.0
 	makedepends = git
 	makedepends = python-virtualenv
+	makedepends = coreutils
+	makedepends = findutils
+	makedepends = sed
 	depends = python3
 	source = villain-c2::git+https://github.com/t3l3machus/Villain.git#branch=main
 	sha256sums = SKIP

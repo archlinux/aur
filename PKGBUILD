@@ -2,13 +2,13 @@
 
 pkgname=villain-c2-git
 pkgver=1c9084f
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern and malleable post-exploitation command and control framework"
 arch=('any')
 url="https://github.com/t3l3machus/Villain"
 license=('CC-BY-NC-ND-4.0')
 depends=('python3')
-makedepends=('git' 'python-virtualenv')
+makedepends=('git' 'python-virtualenv' 'coreutils' 'findutils' 'sed')
 source=("${pkgname%-git}::git+https://github.com/t3l3machus/Villain.git#branch=main")
 sha256sums=('SKIP')
 
@@ -22,21 +22,19 @@ build() {
     cd "${srcdir}/${pkgname%-git}/"
     virtualenv -p python3 env
     "${srcdir}/${pkgname%-git}/env/bin"/pip3 install -r "${srcdir}/${pkgname%-git}/requirements.txt"
-
-    chmod +x "${srcdir}/${pkgname%-git}/Villain.py"
 }
 
 package() {
     # Creating package folder
-    install -dm755 "${pkgdir}/opt/${pkgname%-c2-git}/"
-    cp -r "${srcdir}/${pkgname%-git}"/{Core/,env/,Villain.py} "${pkgdir}/opt/${pkgname%-c2-git}/"
-    chmod -R 0755 "${pkgdir}/opt/${pkgname%-c2-git}/"
-    find "${pkgdir}/opt/${pkgname%-c2-git}/" \( -name 'Villain.py' -or -path "${pkgdir}/opt/${pkgname%-c2-git}/env/*" \) -prune -type f -exec chmod 0644 {} \;
+    cd "${srcdir}/${pkgname%-git}/"
+    find -type d -exec install -dm755 "${pkgdir}/opt/${pkgname%-c2-git}/{}" \; \
+        -or -path './Core/*' \( -type f -exec install -Dm644 {} "${pkgdir}/opt/${pkgname%-c2-git}/{}" \; \
+        -or -type l -exec cp -a {} "${pkgdir}/opt/${pkgname%-c2-git}/{}" \; \)
+    install -Dm755 "${srcdir}/${pkgname%-git}/Villain.py" "${pkgdir}/opt/${pkgname%-c2-git}/Villain.py"
 
     # Installing executable
-    install -dm755 "${pkgdir}/usr/bin/"
-    echo -e "#!/bin/sh\ncd /opt/${pkgname%-c2-git}/\n/opt/${pkgname%-c2-git}/env/bin/python3 Villain.py \$@" > "${pkgdir}/usr/bin/villain"
-    chmod 0755 "${pkgdir}/usr/bin/villain"
+    echo -e "#!/bin/sh\ncd /opt/${pkgname%-c2-git}/\nenv/bin/python3 Villain.py \$@" > "${srcdir}/villain"
+    install -Dm755 "${srcdir}/villain" "${pkgdir}/usr/bin/villain"
 
     # Adding license
     install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
