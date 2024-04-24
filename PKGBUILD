@@ -15,13 +15,19 @@ conflicts=('cgproxy')
 
 source=("${pkgname}::git+https://github.com/springzfx/cgproxy#branch=master")
 md5sums=('SKIP')
+backup=('etc/cgproxy/config.json')
 
 function pkgver() {
-	cd "$pkgname"
+	cd "${srcdir}/${pkgname}"
 	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-backup=('etc/cgproxy/config.json')
+function prepare() {
+	cd "${srcdir}/${pkgname}"
+	
+	# Cherry Pick Pull Request #52
+	git cherry-pick -n d7990c0c2f1a1add5f863d35c670ec6aa720f1d3^..0b2c9a4c8264c2c4464ac38b12a60b96adf364f6
+}
 
 function build() {
 	mkdir -p "${srcdir}/${pkgname}/build"
