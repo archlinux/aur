@@ -1,10 +1,10 @@
 pkgbase = r-orgmassspecr
 	pkgdesc = Organic Mass Spectrometry
 	pkgver = 0.5.3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cran.r-project.org/package=OrgMassSpecR
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown

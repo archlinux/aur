@@ -4,11 +4,11 @@ _pkgname=OrgMassSpecR
 _pkgver=0.5-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="Organic Mass Spectrometry"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(BSD)
+license=('BSD-2-Clause')
 depends=(
   r
 )
