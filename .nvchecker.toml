@@ -1,0 +1,5 @@
+[python-devito]
+source = "github"
+github = "devitocodes/devito"
+use_max_tag = true
+prefix = "v"
