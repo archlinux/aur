@@ -1,10 +1,10 @@
 pkgbase = r-mvtnorm
 	pkgdesc = Multivariate Normal and t Distributions
 	pkgver = 1.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=mvtnorm
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = gcc-fortran
 	depends = blas
 	depends = lapack
