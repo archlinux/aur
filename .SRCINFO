@@ -1,10 +1,10 @@
 pkgbase = r-rcircos
 	pkgdesc = Circos 2D Track Plot
 	pkgver = 1.2.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cran.r-project.org/package=RCircos
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/RCircos_1.2.2.tar.gz
 	md5sums = a1bf14fdaa2933f090ceab87803f9988
