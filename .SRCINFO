@@ -1,10 +1,10 @@
 pkgbase = r-benfordtests
 	pkgdesc = Statistical Tests for Evaluating Conformity to Benford's Law
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=BenfordTests
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/BenfordTests_1.2.0.tar.gz
 	md5sums = 8a93a90942af387ab4951c7d6c74892e
