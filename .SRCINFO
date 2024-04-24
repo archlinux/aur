@@ -1,10 +1,10 @@
 pkgbase = r-gridbase
 	pkgdesc = Integration of base and grid graphics
 	pkgver = 0.4.7
-	pkgrel = 9
+	pkgrel = 10
 	url = https://cran.r-project.org/package=gridBase
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/gridBase_0.4-7.tar.gz
 	md5sums = 6d5064a85f5c966a92ee468ae44c5f1f
