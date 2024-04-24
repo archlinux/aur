@@ -9,9 +9,9 @@ pkgbase = realm-studio-bin
 	depends = electron27
 	provides = realm-studio=15.0.1
 	conflicts = realm-studio
-	source = realm-studio-15.0.1.AppImage::https://static.realm.io/downloads/realm-studio/Realm%20Studio-15.0.1.AppImage
+	source = realm-studio-15.0.1.AppImage::https://github.com/realm/realm-studio/releases/download/v15.0.1/Realm.Studio-15.0.1.AppImage
 	source = realm-studio.sh
-	sha256sums = 04bd7634ecb9e7bddec493a5b0338c11a1b3b907486246f9ab6bfd87fe8ce27b
+	sha256sums = af385768cbc01d443ac24ec889642de936ca1d3b0f176a396de9193bd0c15b31
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = realm-studio-bin

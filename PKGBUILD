@@ -19,10 +19,10 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_dlurl}/realm-studio/Realm%20Studio-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('04bd7634ecb9e7bddec493a5b0338c11a1b3b907486246f9ab6bfd87fe8ce27b'
+sha256sums=('af385768cbc01d443ac24ec889642de936ca1d3b0f176a396de9193bd0c15b31'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
