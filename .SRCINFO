@@ -1,10 +1,10 @@
 pkgbase = r-rjson
 	pkgdesc = JSON for R
 	pkgver = 0.2.21
-	pkgrel = 11
+	pkgrel = 12
 	url = https://cran.r-project.org/package=rjson
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/rjson_0.2.21.tar.gz
 	md5sums = 1670add2df4997c5ea615a6803d356a3
