@@ -11,7 +11,7 @@ _pyver=3.10
 _ubuntuver=22.04
 pkgname=acestream-engine
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Ace Stream engine"
 arch=("x86_64")
 url="https://acestream.org"
@@ -22,19 +22,16 @@ depends=(
 makedepends=(
   python-installer
 )
-optdepends=(
-  "pygtk: GTK+ gui support"
-)
 backup=("usr/lib/$pkgname/acestream.conf")
 install="$pkgname.install"
 source=(
   "$pkgname-$pkgver.tar.gz::https://download.acestream.media/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64_py${_pyver}.tar.gz"
-  "https://files.pythonhosted.org/packages/00/2e/800365d138ef6b3036ef40e78dea88b7b02f6e85399fb5b85a2de9a095c8/apsw-3.45.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
-  "https://files.pythonhosted.org/packages/c9/7c/43d81bdd5a915923c3bad5bb4bff401ea00ccc8e28433fb6083d2e3bf58e/cffi-1.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
-  "https://files.pythonhosted.org/packages/61/8a/a0a71720da1c61fd6a55a1962ec1280cebc4552c319efe744c8aa99d28c5/lxml-5.2.1-cp310-cp310-manylinux_2_28_x86_64.whl"
-  "https://files.pythonhosted.org/packages/ee/87/f1bb6a595f14a327e8285b9eb54d41fef76c585a0edef0a45f6fc95de125/PyNaCl-1.5.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl"
-  "https://files.pythonhosted.org/packages/af/20/5f29ec45462360e7f61e8688af9fe4a0afae057edfabdada662e11bf97e7/pycryptodome-3.20.0-cp35-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
-  "https://files.pythonhosted.org/packages/f7/29/13965af254e3373bceae8fb9a0e6ea0d0e571171b80d6646932131d6439b/setuptools-69.5.1-py3-none-any.whl"
+  "https://files.pythonhosted.org/packages/cp310/a/apsw/apsw-3.45.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+  "https://files.pythonhosted.org/packages/cp310/c/cffi/cffi-1.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+  "https://files.pythonhosted.org/packages/cp310/l/lxml/lxml-5.2.1-cp310-cp310-manylinux_2_28_x86_64.whl"
+  "https://files.pythonhosted.org/packages/cp36/p/PyNaCl/PyNaCl-1.5.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl"
+  "https://files.pythonhosted.org/packages/cp35/p/pycryptodome/pycryptodome-3.20.0-cp35-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+  "https://files.pythonhosted.org/packages/py3/s/setuptools/setuptools-69.5.1-py3-none-any.whl"
   "$pkgname.desktop"
   "$pkgname.service"
   "LICENSE"
