@@ -1,10 +1,10 @@
 pkgbase = r-ellipse
 	pkgdesc = Functions for Drawing Ellipses and Ellipse-Like Confidence Regions
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ellipse
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/ellipse_0.5.0.tar.gz
 	md5sums = ebe98db0904bf2228bdc8c79ac19c665
