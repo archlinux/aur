@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Atlas
+Exec=/usr/bin/atlas-celeste
+Terminal=false
+Type=Application
+Icon=atlas
+StartupWMClass=atlas
+Comment=Render and visualize paths for Celeste TASes

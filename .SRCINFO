@@ -1,0 +1,20 @@
+pkgbase = atlas-celeste
+	pkgdesc = Render and visualize paths for Celeste TASes
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/jakobhellermann/Atlas
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = imagemagick
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/jakobhellermann/Atlas/archive/1.1.0/Atlas-1.1.0.tar.gz
+	source = atlas.desktop
+	sha1sums = ffcf72b9455383c6ad46397e1128c57870581448
+	sha1sums = 9921557096f013a3ef46ee24773a58e0bdb6a56e
+
+pkgname = atlas-celeste
