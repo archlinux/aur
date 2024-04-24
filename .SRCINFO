@@ -1,10 +1,10 @@
 pkgbase = r-fnn
 	pkgdesc = Fast Nearest Neighbor Search Algorithms and Applications
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=FNN
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-chemometrics
 	optdepends = r-mvtnorm
