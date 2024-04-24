@@ -13,8 +13,8 @@ conflicts=('obsidian')
 options+=('!strip')
 source_x86_64=(${pkgname}-${pkgver}-x86_64.AppImage::"${url}/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage")
 source_aarch64=(${pkgname}-${pkgver}-aarch64.AppImage::"${url}/releases/download/v${pkgver}/Obsidian-${pkgver}-arm64.AppImage")
-sha256sums_x86_64=('73f6d9e2bad7a6766d3d40b24757afe042f4d90f082efefdab8b8a31193b2494')
-sha256sums_aarch64=('14e16dba3157525572d3e0fa4ea091ae86ff9e58dca56802193bf97c205ae838')
+sha256sums_x86_64=('aa65d9992a7b60f676936fbc80d616f45cf9b3468c4ab60730123b727f4cf2ee')
+sha256sums_aarch64=('dc057e7d8d1359b456da24bd081374ba367a14c09d2994bc41579deb16a49909')
 
 # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/19
 # https://sourceware.org/bugzilla/show_bug.cgi?id=31504
