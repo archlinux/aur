@@ -1,10 +1,10 @@
 pkgbase = r-clue
 	pkgdesc = Cluster Ensembles
 	pkgver = 0.3.65
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=clue
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r
 	optdepends = r-e1071
 	optdepends = r-lpsolve
