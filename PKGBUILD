@@ -4,8 +4,8 @@
 pkgname=vdr-epgfixer
 pkgver=0.3.1_21_g354f28b
 _gitver=354f28b0112ba27f08f6509243b410899f74b6ed
-_vdrapi=2.6.6
-pkgrel=10
+_vdrapi=2.6.7
+pkgrel=11
 pkgdesc="VDR plugin for doing extra fixing of EPG data"
 url='https://github.com/vdr-projects/vdr-plugin-epgfixer'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
