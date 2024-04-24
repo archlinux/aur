@@ -1,0 +1,16 @@
+pkgbase = vscodium-electron-marketplace
+	pkgdesc = Enable vscode marketplace in vscodium-electron
+	pkgver = 1.88.1
+	pkgrel = 1
+	url = https://marketplace.visualstudio.com/vscode
+	install = vscodium-electron-marketplace.install
+	arch = any
+	license = unknown
+	source = vscodium-electron-marketplace.hook
+	source = patch.py
+	sha256sums = d37a1669e611cfdb8eb10ade87f4fc8fd08db7444ce3e5746aa26330224b9252
+	sha256sums = 031690c95801436018c40bc3f607186b2c2a484b318907333b9227fc7fbf27e8
+
+pkgname = vscodium-electron-marketplace
+	depends = vscodium-electron
+	depends = python

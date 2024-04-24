@@ -1,0 +1,15 @@
+post_install() {
+  /usr/lib/vscodium/patch.py
+}
+
+pre_upgrade() {
+  /usr/lib/vscodium/patch.py -R
+}
+
+post_upgrade() {
+  /usr/lib/vscodium/patch.py
+}
+
+pre_remove() {
+  /usr/lib/vscodium/patch.py -R
+}
