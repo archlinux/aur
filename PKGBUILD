@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imfile-git
 _pkgname=imFile
-pkgver=1.0.7.r21.g76a00c4
+pkgver=1.0.7.r40.gae99883
 _electronversion=30
 _nodeversion=18
 pkgrel=1
