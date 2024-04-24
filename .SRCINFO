@@ -1,5 +1,5 @@
 pkgbase = mcu-jlink-pack
-	pkgver = r3.ca213e4
+	pkgver = r4.417ca8e
 	pkgrel = 1
 	url = https://github.com/taotieren/mcu-jlink-pack
 	arch = any

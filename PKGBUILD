@@ -2,7 +2,7 @@
 
 pkgbase=mcu-jlink-pack
 pkgname=({airmcu,mcu,hkmicrochip,holtek}-jlink-pack)
-pkgver=r3.ca213e4
+pkgver=r4.417ca8e
 pkgrel=1
 epoch=
 arch=('any')
