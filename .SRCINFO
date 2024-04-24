@@ -1,10 +1,10 @@
 pkgbase = r-iso
 	pkgdesc = Functions to Perform Isotonic Regression
 	pkgver = 0.0.21
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=Iso
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
 	depends = r
 	source = https://cran.r-project.org/src/contrib/Iso_0.0-21.tar.gz
