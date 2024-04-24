@@ -1,7 +1,7 @@
 #Maintainer: Nick Cottrell <RadioLogic>
 pkgname=powershell-empire
 pkgver=5.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
 url="https://github.com/BC-SECURITY/Empire"
 arch=('any')
