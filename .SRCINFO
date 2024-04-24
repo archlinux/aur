@@ -1,10 +1,10 @@
 pkgbase = r-rlab
 	pkgdesc = Functions and Datasets Required for ST370 Class
 	pkgver = 4.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://cran.r-project.org/package=Rlab
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/Rlab_4.0.tar.gz
 	md5sums = 37be3a8dbc0898ecd033f160c0123eb7

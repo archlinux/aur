@@ -4,11 +4,11 @@ _pkgname=Rlab
 _pkgver=4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=7
 pkgdesc="Functions and Datasets Required for ST370 Class"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
