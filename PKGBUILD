@@ -2,21 +2,21 @@
 
 pkgname=xfb
 pkgver=1.23
-pkgrel=6
+pkgrel=7
 pkgdesc="Open-source Radio Automation"
 arch=('x86_64')
 url="https://github.com/netpack/XFB"
 license=('GPL3')
 
 depends=('base-devel' 'patch' 'qt5-base' 'qt5-tools' 'qt5-webkit' 'qt5-multimedia' 'perl-image-exiftool' 'ffmpeg' 'lame' 'sox' 'mediainfo' )
-optdepends=('audacity' 'mplayer' 'soundconverter' ) #Thank you MisterEsse
+optdepends=('audacity' 'mplayer' 'soundconverter' 'yt-dlp') #Thank you MisterEsse
 
 makedepends=('qt5-tools')
 
 
 source=("https://github.com/netpack/XFB/releases/download/v1.23/xfb-1.23.tar.gz")
 
-sha512sums=("b92a5a48a64a26b5c43c0d696736328fd17cb7a65aa85c9bda9b4bc45a8bd0ff05644767e10547dac0c2a57f81f4d1356c5c34db860f3731f49b2e4c2e01a656")
+sha512sums=("24b5d94add818686595474efd0a415822ba62c7d2b147a51f21cb2e60ef59c9927a791d508216b424e3bf0e1f7136459b8e8b5340e1a7015045cc599a1e346f2")
 
 
 build() {
@@ -71,7 +71,7 @@ package() {
   echo "Installation of XFB completed successfully!"
   echo "The configuration file is: /etc/xfb/xfb.conf"
   echo "The shared folders are under: /usr/share/xfb"
-  echo "You may want to install youtube-dl"
+  echo "You may want to install yt-dlp"
   echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
   echo "Thank you for installing XFB! I hope you enjoy it! Made with love & linux!"
 }

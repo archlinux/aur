@@ -1,7 +1,7 @@
 pkgbase = xfb
 	pkgdesc = Open-source Radio Automation
 	pkgver = 1.23
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/netpack/XFB
 	arch = x86_64
 	license = GPL3
@@ -20,7 +20,8 @@ pkgbase = xfb
 	optdepends = audacity
 	optdepends = mplayer
 	optdepends = soundconverter
+	optdepends = yt-dlp
 	source = https://github.com/netpack/XFB/releases/download/v1.23/xfb-1.23.tar.gz
-	sha512sums = b92a5a48a64a26b5c43c0d696736328fd17cb7a65aa85c9bda9b4bc45a8bd0ff05644767e10547dac0c2a57f81f4d1356c5c34db860f3731f49b2e4c2e01a656
+	sha512sums = 24b5d94add818686595474efd0a415822ba62c7d2b147a51f21cb2e60ef59c9927a791d508216b424e3bf0e1f7136459b8e8b5340e1a7015045cc599a1e346f2
 
 pkgname = xfb
