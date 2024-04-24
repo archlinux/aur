@@ -1,0 +1,12 @@
+pkgbase = svlint-bin
+	pkgdesc = SystemVerilog linter compliant with IEEE1800-2017
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/dalance/svlint
+	arch = x86_64
+	license = MIT
+	conflicts = svlint
+	source = svlint-bin-0.9.2.zip::https://github.com/dalance/svlint/releases/download/v0.9.2/svlint-v0.9.2-x86_64-lnx.zip
+	sha256sums = 61ac04c2311862243e34d3db8282a3d9423a0b018b2842053bf0db249a6e4f4e
+
+pkgname = svlint-bin
