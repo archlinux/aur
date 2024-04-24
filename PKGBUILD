@@ -5,11 +5,11 @@ _pkgname=slam
 _pkgver=0.1-50
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=12
+pkgrel=13
 pkgdesc="Sparse Lightweight Arrays and Matrices"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   blas
   r
