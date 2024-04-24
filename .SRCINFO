@@ -1,7 +1,7 @@
 pkgbase = vdr-xmltv2vdr
 	pkgdesc = Add epg info from epg sources into vdr
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vdr-projects/vdr-plugin-xmltv2vdr
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = vdr-xmltv2vdr
 	depends = libxslt
 	depends = libzip
 	depends = sqlite
-	depends = vdr-api=2.6.6
+	depends = vdr-api=2.6.7
 	backup = etc/vdr/conf.avail/50-xmltv2vdr.conf
 	source = vdr-xmltv2vdr-0.2.3.tar.gz::https://github.com/vdr-projects/vdr-plugin-xmltv2vdr/archive/refs/tags/0.2.3.tar.gz
 	source = 50-xmltv2vdr.conf
