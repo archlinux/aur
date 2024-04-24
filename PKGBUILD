@@ -18,7 +18,7 @@ optdepends=(
 license=('BSD-3-Clause')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=
+backup=("opt/${pkgname%-git}/client/config.yaml" "opt/${pkgname%-git}/server/config.yaml")
 source=("${pkgname%-git}::git+https://github.com/BC-SECURITY/Empire.git")
 sha256sums=('SKIP')
 
@@ -56,4 +56,8 @@ package() {
     # Installing license
     install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 
+    # Adding link to configs
+    install -dm755 "${pkgdir}/etc/"
+    ln -s "/opt/${pkgname%-git}/empire/client/config.yaml" "${pkgdir}/etc/empire_client.yml"
+    ln -s "/opt/${pkgname%-git}/empire/server/config.yaml" "${pkgdir}/etc/empire_server.yml"
 }
