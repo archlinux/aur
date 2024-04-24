@@ -1,21 +1,21 @@
 pkgbase = vdr-externalplayer
 	pkgdesc = use external players in VDR
-	pkgver = 0.3.5
-	pkgrel = 8
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://www.uli-eckhardt.de/vdr/external.en.shtml
 	arch = x86_64
 	arch = i686
 	arch = arm
 	arch = armv6h
 	arch = armv7h
-	license = GPL2
+	license = GPL-2.0-only
 	depends = gcc-libs
-	depends = vdr-api=2.6.6
+	depends = vdr-api=2.6.7
 	backup = etc/vdr/conf.avail/50-externalplayer.conf
 	backup = var/lib/vdr/plugins/externalplayer/externalplayer.conf
-	source = https://www.uli-eckhardt.de/vdr/download/vdr-externalplayer-0.3.5.tgz
+	source = https://www.uli-eckhardt.de/vdr/download/vdr-externalplayer-0.4.0.tgz
 	source = 50-externalplayer.conf
-	sha256sums = 8307db0106bdea39ae21157bc496a832fbf7998d94c592aacb8bb69143f81df9
+	sha256sums = df6db3240ed5c626f24419a1a91b17bf7365ac24d438a835695f8134988c71f4
 	sha256sums = 743dcfe9caa98289634c6020b8b9de4011e2d8946630b37b68edea5428058359
 
 pkgname = vdr-externalplayer
