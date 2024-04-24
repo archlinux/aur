@@ -1,20 +1,20 @@
 pkgbase = lxqt-about-git
 	pkgdesc = LXQt about dialog.
-	pkgver = 0.13.0.79.g04d70e0
-	pkgrel = 2
-	url = https://lxqt.org
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://lxqt-project.org
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = cmake
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	makedepends = lxqt-build-tools-git
 	depends = liblxqt-git
-	provides = lxqt-about=0.13.0.79.g04d70e0
+	depends = hicolor-icon-theme
+	provides = lxqt-about=2.0.0
 	conflicts = lxqt-about
 	source = git+https://github.com/lxqt/lxqt-about.git
 	sha256sums = SKIP
 
 pkgname = lxqt-about-git
-

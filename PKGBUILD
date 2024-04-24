@@ -1,25 +1,25 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
-# Co-Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Co-Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=lxqt-about
 pkgname=$_pkgname-git
-pkgver=0.13.0.79.g04d70e0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="LXQt about dialog."
 arch=("i686" "x86_64")
-url="https://lxqt.org"
-license=("GPL2")
-depends=("liblxqt-git")
-makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
+url="https://lxqt-project.org"
+license=("GPL-2.0-only")
+depends=('liblxqt-git' 'hicolor-icon-theme')
+makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
-
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/./g"
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
