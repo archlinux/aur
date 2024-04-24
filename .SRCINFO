@@ -1,7 +1,7 @@
 pkgbase = r-laplacesdemon
 	pkgdesc = Complete Environment for Bayesian Inference
 	pkgver = 16.1.6
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cran.r-project.org/package=LaplacesDemon
 	arch = any
 	license = MIT
