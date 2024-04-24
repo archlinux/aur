@@ -24,12 +24,12 @@ sha512sums=('887501d162fa82d349a803129bd88c090a0f169cf14eeb23babccc5af3a1b370141
 build() {
     # Creating virtualenv with dependencies
     cd "${srcdir}/Empire-${pkgver}/"
-    virtualenv -p python3 env
-    source "${srcdir}/Empire-${pkgver}/env/bin/activate"
-    poetry install --no-root --compile
-    deactivate
 
-    chmod +x "${srcdir}/Empire-${pkgver}/empire.py"
+    # Setting poetry settings and install
+    poetry config --local virtualenvs.in-project true
+    poetry config --local virtualenvs.prefer-active-python true
+    poetry install --no-root --compile
+
     # grab openssl certs
     cd "${srcdir}/Empire-${pkgver}/setup/"
     bash ./cert.sh
