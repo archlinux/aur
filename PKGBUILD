@@ -10,7 +10,7 @@ pkgbase=nginx-without-server-header
 _pkgbase=nginx
 pkgname=($pkgbase $pkgbase'-src')
 pkgver=1.26.0
-pkgrel=2
+pkgrel=3
 _prefix_relative='etc/nginx'
 _prefix_full='/'$_prefix_relative
 arch=(x86_64)
@@ -28,7 +28,8 @@ source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         ngx_http_core_module.h.patch
         ngx_http_header_filter_module.c.patch
         ngx_http_special_response.c.patch
-        ngx_http_v2_filter_module.c.patch)
+        ngx_http_v2_filter_module.c.patch
+        ngx_http_v3_filter_module.c.patch)
 
 # https://nginx.org/en/pgp_keys.html
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdounin@mdounin.ru>
@@ -43,7 +44,8 @@ sha512sums=('1f604a4a29f1b74eb56de7f1d8b0e5610fa055280b4ad2d3550c56926460de24da8
             'c699cc4b828f410efa1ba15a4ebd619ff8ff6869366efdf7a9d87c16781d9c2039ac9acc3cf17e28baa81d37621a388b999674763110678fae30c9ce6230b6b6'
             '0ee8e33e6f515a662f03faf87bf9a67eaf820718443a084804ba1b423c56c7356830d4d86bb347d32934e2789d5e66f220a7d41a532f042b7af355497bc1e1aa'
             'b35e021d734157cb29c4609bdfb3155e139b7e630cc705be71a5ceaf23ab60dc4eacb0259a7345592dd739dd91b12d347a319620623638709ca9f3c2a22d8931'
-            '08378f1c8a9d183e60dd65c1f193b74b93d93d7fb4d7d284b661986b2d486cdd74ebefe55a6381418e0019959ceb4670b8a69ed14b04620a923c4c9a49487966')
+            '08378f1c8a9d183e60dd65c1f193b74b93d93d7fb4d7d284b661986b2d486cdd74ebefe55a6381418e0019959ceb4670b8a69ed14b04620a923c4c9a49487966'
+            '9a0e9ec2738343f0676c89bc65e77f47dc68069cb75953786d0158b3c73178742d7788e6c94f923056aa850806462e5586ecb329ff91f3e09e1f1b9429dc4e75')
 
 _common_flags=(
   --with-compat
