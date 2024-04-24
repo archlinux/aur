@@ -1,10 +1,10 @@
 pkgbase = r-cohcapanno
 	pkgdesc = Annotations for City of Hope CpG Island Analysis Pipeline
 	pkgver = 1.38.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/COHCAPanno
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r
 	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/COHCAPanno_1.38.0.tar.gz
 	md5sums = 78fd4891651a8a62779fe402a13ba6b1
