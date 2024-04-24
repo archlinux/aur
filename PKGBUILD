@@ -2,7 +2,7 @@
 # Maintainer: Alphaweighted <ceres@alphaweighted.com>
 
 pkgname='awts-cli-bin'
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Command-line tool for interacting with AWTS systematic trading system environments'
 url='https://alphaweighted.com'
@@ -11,11 +11,11 @@ license=('CC-BY-ND-4.0')
 provides=('awts-cli')
 conflicts=('awts-cli')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/alphaweighted/cli/releases/download/v0.3.1/awts-cli_Linux_arm64.tar.gz")
-sha256sums_aarch64=('e8f20b5b8b52127e0c50bd0f9f906a581f8cf40aa681ddfcac3d992c54a7aa30')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/alphaweighted/cli/releases/download/v0.4.0/awts-cli_Linux_arm64.tar.gz")
+sha256sums_aarch64=('02a2140c6d9035673d5032e4b5d76ca1dfdfc71eeed94083696c39ed80dbeae5')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/alphaweighted/cli/releases/download/v0.3.1/awts-cli_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('ba03a6f79c507acce446f75f57fc4f842a9355aff43c9775b493afb780057fcc')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/alphaweighted/cli/releases/download/v0.4.0/awts-cli_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('289f0767a18745a29268ff4f3e7adb27d8a50574ed4b5d7d716d6b616a2c972b')
 
 package() {
   install -Dm755 "./awts" "${pkgdir}/usr/bin/awts"
