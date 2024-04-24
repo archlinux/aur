@@ -3,9 +3,9 @@
 # based on aur/balena-etcher: Matthew McGinn <mamcgi@gmail.com>
 pkgname=etcher-git
 _pkgname=balenaEtcher
-pkgver=1.19.8.r0.gdc5c68a6
+pkgver=1.19.10.r0.gb1323524
 _electronversion=27
-_nodeversion=18
+_nodeversion=20
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=('any')
