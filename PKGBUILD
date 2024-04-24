@@ -2,8 +2,8 @@
 
 _name=GUN4ALL-GUI
 pkgname=gun4all-gui
-pkgver=1.2
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='Configuration utility for the IR-GUN4ALL DIY light-gun system.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/SeongGino/GUN4ALL-GUI'
@@ -13,7 +13,7 @@ makedepends=('cmake')
 install=$pkgname.install
 source=("https://github.com/SeongGino/GUN4ALL-GUI/archive/refs/tags/v${pkgver}.tar.gz"
         'GUN4ALL-GUI.desktop')
-md5sums=('e1fc095cf29de803aa4f3689087caea8'
+md5sums=('1b6bc617c1f2b770a4ca6416dfd4dccd'
          '5a34660fff6347e05463589e51b90bec')
 
 build() {
