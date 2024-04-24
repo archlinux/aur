@@ -1,10 +1,10 @@
 pkgbase = r-microbenchmark
 	pkgdesc = Accurate Timing Functions
 	pkgver = 1.4.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=microbenchmark
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	depends = r
 	optdepends = r-ggplot2
 	optdepends = r-multcomp

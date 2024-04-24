@@ -4,11 +4,11 @@ _pkgname=microbenchmark
 _pkgver=1.4.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Accurate Timing Functions"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(BSD)
+license=('BSD-2-Clause')
 depends=(
   r
 )
