@@ -1,10 +1,10 @@
 pkgbase = r-dynamictreecut
 	pkgdesc = Methods for Detection of Clusters in Hierarchical Clustering Dendrograms
 	pkgver = 1.63.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://cran.r-project.org/package=dynamicTreeCut
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/dynamicTreeCut_1.63-1.tar.gz
 	md5sums = 51be13b9a5c07558b89d3ec6f9fc5363

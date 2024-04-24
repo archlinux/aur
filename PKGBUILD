@@ -4,11 +4,11 @@ _pkgname=dynamicTreeCut
 _pkgver=1.63-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=10
 pkgdesc="Methods for Detection of Clusters in Hierarchical Clustering Dendrograms"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
