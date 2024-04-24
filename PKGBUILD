@@ -7,7 +7,7 @@
 
 pkgname=systemtap
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Infrastructure to simplify the gathering of information about the running Linux system"
 url="https://sourceware.org/systemtap/"
 arch=('x86_64')
@@ -40,7 +40,13 @@ build() {
 	make
 }
 
+check() {
+	cd "${pkgname}-${pkgver}"
+	make check
+}
+
 package() {
 	cd "${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
+	rm -r "${pkgdir}/usr/include/sys"
 }
