@@ -1,10 +1,10 @@
 pkgbase = r-rmtstat
 	pkgdesc = Distributions, Statistics and Tests Derived from Random Matrix Theory
 	pkgver = 0.3.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://cran.r-project.org/package=RMTstat
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	depends = r
 	source = https://cran.r-project.org/src/contrib/RMTstat_0.3.1.tar.gz
 	md5sums = 71e2f2fd478902ab0135522b01d15e95

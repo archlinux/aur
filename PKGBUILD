@@ -4,11 +4,11 @@ _pkgname=RMTstat
 _pkgver=0.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=8
+pkgrel=9
 pkgdesc="Distributions, Statistics and Tests Derived from Random Matrix Theory"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(BSD)
+license=('BSD-3-Clause')
 depends=(
   r
 )
