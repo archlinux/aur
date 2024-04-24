@@ -1,10 +1,10 @@
 pkgbase = r-bufferedmatrix
 	pkgdesc = A matrix data storage object held in temporary files
 	pkgver = 1.66.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/BufferedMatrix
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.0-or-later
 	depends = r
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/BufferedMatrix_1.66.0.tar.gz
 	md5sums = a4ad95db528526463e6dfca80975815e
