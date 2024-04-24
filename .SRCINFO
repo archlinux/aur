@@ -1,10 +1,10 @@
 pkgbase = r-maps
 	pkgdesc = Draw Geographical Maps
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=maps
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r
 	optdepends = r-mapdata
 	optdepends = r-mapproj
