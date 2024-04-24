@@ -4,11 +4,11 @@ _pkgname=wavethresh
 _pkgver=4.7.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Wavelets Statistics and Transforms"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
