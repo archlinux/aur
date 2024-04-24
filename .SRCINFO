@@ -1,10 +1,10 @@
 pkgbase = r-nnls
 	pkgdesc = The Lawson-Hanson Algorithm for Non-Negative Least Squares (NNLS)
 	pkgver = 1.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://cran.r-project.org/package=nnls
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
 	depends = r
 	optdepends = r-bvls
