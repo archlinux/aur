@@ -1,36 +1,45 @@
 # Maintainer: Fabrix Xm <fabrix.xm@gmail.com>
 _pkgname=lesana
 pkgname=lesana-git
-pkgver=v0.9.1.r18.g744139f
+pkgver=v0.10.0.r0.g1dd720e
 pkgrel=1
 pkgdesc="Manage collection inventories throught yaml files, develop version"
 arch=('any')
 url="https://lesana.trueelena.org/"
-license=(GPL3)
-depends=('python-dateutil' 'python-jinja' 'python-ruamel-yaml' 'python-xapian' 'python-setuptools' 'python-hazwaz')
-optdepends=('python-argcomplete: enable commandline tab completion' 'python-gitpython: git integration') 
-makedepends=('git' 'python-setuptools')
-provides=(lesana)
+license=(AGPL-3.0-or-later)
+depends=('python' 'python-dateutil' 'python-jinja' 'python-ruamel-yaml' 'python-xapian' 'python-setuptools' 'python-hazwaz')
+optdepends=(
+    'python-argcomplete: enable commandline tab completion'
+    'git: git integration'
+    'sh: git integration'
+    'python-gitpython: git integration'
+    'python-requests: openlibrary integration'
+) 
+makedepends=(git python-build python-installer python-wheel python-setuptools-scm)
+provides=(lesana=${pkgver})
 conflicts=(lesana)
 source=("git+https://git.sr.ht/~valhalla/lesana")
 md5sums=(SKIP)
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${_pkgname}"
-  sed -i.bpk "s/find_packages()/find_packages(exclude=['tests',])/" setup.py
+  git clean -dfx
 }
 
 build() {
   cd "${_pkgname}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_pkgname}"
-  python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm0755 scripts/lesana ${pkgdir}/usr/bin/lesana
+  install -Dm0755 scripts/openlibrary2lesana ${pkgdir}/usr/bin/openlibrary2lesana
+  install -Dm0755 scripts/tellico2lesana ${pkgdir}/usr/bin/tellico2lesana
 }
