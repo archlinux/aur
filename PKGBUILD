@@ -4,11 +4,11 @@ _pkgname=tensor
 _pkgver=1.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=10
 pkgdesc="Tensor product of arrays"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
