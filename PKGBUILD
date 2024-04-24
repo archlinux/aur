@@ -4,11 +4,11 @@ _pkgname=entropy
 _pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=10
 pkgdesc="Estimation of Entropy, Mutual Information and Related Quantities"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-or-later')
 depends=(
   r
 )
