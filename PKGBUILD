@@ -2,7 +2,7 @@
 
 pkgbase=linux-flowx13
 pkgver=6.8.7.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
@@ -47,13 +47,13 @@ sha256sums=('291d1a1faf4e87b3b0ea9729080db887aafd1ff2fac1430ceca921e46bc22fae'
             'SKIP'
             'a49b47f89187d2fce6c79f263683bc06b152974b4cf8d8faee535e4bcf04adc7'
             'SKIP'
-            '39d0c1e31b905fc7409a372b1371d440f3f95af61cdaed6dc791dcab4d2b611b'
+            '3b6e6d0f7f0e6c2c5ff3614b680132b7d568e4c23cf9dc8e833e176fb970c42c'
             '92b8cee96a70a2f27db6ff8899e47b18884e289f3c2eb05500b37c5db6f23fe8')
 b2sums=('e8626a99c6c5769a8126d5ee1c7962c3df3c7a8c689193ffa864c4a4b8e72daeeaf22c3e3bb6ba5490eca3ef64c32a4a12980360a196444a53abadd791cd1855'
         'SKIP'
         'ae851de7fbe18ace280440a0125e5a0d864e4d648e1161ad03c99eaabf7d228d6c9c6869520ddd14b546c14e30b17c6a191d947ad4e9652cd8af9d9ad209eef3'
         'SKIP'
-        'ea1e6753e019bcb944c5eeba37837e3f460e3214dd9c0a3454258b3f9a2e53bf90575f3e7c1ea7648c1f0c4dcf6d9ef2bb7baa5434b04e55383ad6809114d373'
+        '3cceed93d989f168bbb9b18e99d2bb264e72da3ae6de34f94630eba0605be3577d139b62ab602ae8c3295796310fc7345577be234b288b9f1d4a2c61cbd5c015'
         '5b4cff2ab2ce1d2464eb4b0b1398e2ad1af85c1322b9187e19894a7dff19e094ad0b7190122be5fdadde283d9433591bf6b55a045354d0abe5351bd4cd410dc4')
 
 
