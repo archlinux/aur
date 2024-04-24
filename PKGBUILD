@@ -1,7 +1,7 @@
 #Maintainer: Nick Cottrell <RadioLogic>
 pkgname=powershell-empire
 pkgver=5.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
 url="https://github.com/BC-SECURITY/Empire"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 )
 license=('BSD-3-Clause')
 provides=("${pkgname}")
-backup=("opt/${pkgname}/client/config.yaml" "opt/${pkgname}/server/config.yaml")
+backup=("opt/${pkgname}/empire/client/config.yaml" "opt/${pkgname}/empire/server/config.yaml")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BC-SECURITY/Empire/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('887501d162fa82d349a803129bd88c090a0f169cf14eeb23babccc5af3a1b37014152632e18ddc1eb54b88c13e4d0c8010f002ff09ff0575711e15d50966f343')
 
