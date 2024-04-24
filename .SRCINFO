@@ -1,0 +1,18 @@
+pkgbase = beets-drop2beets
+	pkgdesc = A Beets plug-in that imports singles as soon as they are dropped in a folder.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/martinkirch/drop2beets
+	arch = any
+	license = WTFPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-poetry
+	depends = python-watchdog
+	depends = beets
+	source = drop2beets-2.0.1.tar.gz::https://files.pythonhosted.org/packages/source/d/drop2beets/drop2beets-2.0.1.tar.gz
+	sha256sums = cd8fdd336f77ed0ed79e2051f7282d9ddb5caa2507f3b2e850afce18c2bca216
+
+pkgname = beets-drop2beets
