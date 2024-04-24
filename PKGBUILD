@@ -2,7 +2,7 @@
 
 _pkgname=sentrum
 pkgname=$_pkgname-git
-pkgver=0.1.0
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Daemon that monitors watch-only bitcoin wallets"
 arch=('any')
@@ -13,9 +13,7 @@ makedepends=('cargo' 'git')
 source=("git+$url"
     "$_pkgname.sysusers"
     "$_pkgname.tmpfiles")
-sha256sums=('SKIP'
-            'a4037f74fac93f099f7b11dff3399d74cc933b38748369b263f6f2e03e3024e1'
-            'a1a6fc23534730cd9fa016a7beca37d88bd6a04d38d10f02e6c213212f4630d6')
+sha256sums=('SKIP')
 backup=("etc/$_pkgname/$_pkgname.toml")
 options=('!lto')
 provides=('sentrum')
@@ -45,12 +43,11 @@ package() {
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
 
-    install -Dm644 contrib/$_pkgname.service "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-    install -Dm644 "$srcdir/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
-    install -Dm644 "$srcdir/$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
-    install -Dm644 $_pkgname.sample.toml "$pkgdir/etc/$_pkgname/$_pkgname.toml"
+    install -Dm644 "contrib/systemd/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+    install -Dm644 "contrib/systemd/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+    install -Dm644 "contrib/systemd/$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
+    install -Dm644 "$_pkgname.sample.toml" "$pkgdir/etc/$_pkgname/$_pkgname.toml"
 
-
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/${_pkgname}/README.md"
+    install -Dm644 "man/$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
     install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE.txt"
 }
