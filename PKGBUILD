@@ -1,32 +1,46 @@
+# Maintainer:
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: tocer.deng <tocer.deng@gmail.com>
 
 pkgname=apvlv
-pkgver=0.4.0
-pkgrel=2
-pkgdesc='PDF/DJVU/TXT viewer which behaves like vi'
+pkgver=0.5.0
+pkgrel=1
+pkgdesc="A PDF/DJVU/EPUB viewer which behaves like Vim"
 arch=('x86_64')
-url="https://github.com/naihe2010/apvlv/"
-license=('GPL2')
-depends=('gtk3' 'poppler-glib' 'djvulibre' 'webkit2gtk' 'ebook-tools')
-makedepends=('cmake' 'ghostscript')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e33e5914a0969e98d3fb08d88f4c83efc63143dcb472ec610b0bc110e096536f')
+url="https://github.com/naihe2010/apvlv"
+license=('GPL-2.0-or-later')
+depends=('cairo'
+         'djvulibre'
+         'ebook-tools'
+         'gcc-libs'
+         'gdk-pixbuf2'
+         'glib2'
+         'glibc'
+         'gtk3'
+         'libxml2'
+         'pango'
+         'poppler-glib'
+         'webkit2gtk')
 backup=('etc/apvlvrc')
+makedepends=('cmake' 'freetype2' 'ghostscript')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}-final.tar.gz")
+sha256sums=('d98edf23c3da0704bf85d07bfa4477393af3824e1fa8b1e28e69997bb84732b2')
 
 build() {
-  cd $pkgname-$pkgver
-  [[ -d build ]] || mkdir -p build
-  cd build
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-        -DAPVLV_WITH_DJVU=yes -DAPVLV_WITH_TXT=yes ..
-  make
+  cmake -B build -S "${pkgname}-${pkgver}-final" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DAPVLV_WITH_DJVU=ON \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-  cd $pkgname-$pkgver/build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --install build
+
+  install -d "${pkgdir}/usr/share/man/man1"
+  mv "${pkgdir}/usr/share/man/apvlv.1" "${pkgdir}/usr/share/man/man1"
 }
