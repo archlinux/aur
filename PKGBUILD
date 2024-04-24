@@ -4,11 +4,11 @@ _pkgname=Nozzle.R1
 _pkgver=1.1-1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=7
 pkgdesc="Nozzle Reports"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(LGPL2.1)
+license=('LGPL-2.0-only')
 depends=(
   r
 )
