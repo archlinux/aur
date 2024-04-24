@@ -1,10 +1,10 @@
 pkgbase = r-stabledist
 	pkgdesc = Stable Distribution Functions
 	pkgver = 0.7.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://cran.r-project.org/package=stabledist
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-fbasics
 	optdepends = r-fmstable
