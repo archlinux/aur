@@ -1,34 +1,44 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=citations
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Manage your bibliographies using the BibTeX format"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://gitlab.gnome.org/World/citations"
-license=('GPL3')
-depends=('libadwaita' 'poppler-glib' 'gtksourceview5')
-makedepends=('meson' 'cargo')
-checkdepends=('appstream-glib')
-source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('14954eab3f9bbd5e00cf67d74768174d38a2097da2a8fe4cda143e967e2dc19f81a3ec8ce467e7d926583ff4a6f3ff51e3a938705a5583d037dd488aed029569')
+license=('GPL-3.0-or-later')
+depends=('cairo'
+         'dconf'
+         'gcc-libs'
+         'glib2'
+         'glibc'
+         'gtk4'
+         'gtksourceview5'
+         'hicolor-icon-theme'
+         'libadwaita'
+         'openssl'
+         'poppler-glib')
+makedepends=('cargo' 'meson')
+source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+b2sums=('2453f8876b36d4b546a6a26f2fe18b42354f8667644ff65da04ac0868065cf035214cdd48139f4773feb10f9f0054273e97756203a9e40ff1d8a958087670c82')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
-  arch-meson "$pkgname-$pkgver" build
+  arch-meson "${pkgname}-${pkgver}" build
   meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir "${pkgdir}"
 }
