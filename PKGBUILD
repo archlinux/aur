@@ -1,6 +1,6 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=wpaperd
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Wallpaper daemon for Wayland.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libxkbcommon' 'mesa' 'wayland')
 makedepends=('cargo' 'scdoc')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('da072a2c1ace6ef930dce1a3cd8676de492c7277e1c737837a97e8476fdd9cd4')
+sha256sums=('4ed30c90dc14fa629ac977ace3ca4a146a33d85f73d2d49915643fbb9ea53ab9')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
