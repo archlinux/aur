@@ -4,11 +4,11 @@ _pkgname=aplpack
 _pkgver=1.3.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=7
 pkgdesc="Another Plot Package: 'Bagplots', 'Iconplots', 'Summaryplots', Slider Functions and Others"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
   tk
