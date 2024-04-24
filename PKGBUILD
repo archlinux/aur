@@ -38,10 +38,12 @@ build() {
 package() {
     # Installing into opt
     cd "${srcdir}/Empire-${pkgver}/"
+    find {.venv,empire}/ -type d -exec install -dm755 "${pkgdir}/opt/${pkgname}/{}" \; \
+        -or -path '.venv/*' -type f -exec install -D {} "${pkgdir}/opt/${pkgname}/{}" \; \
+        -or -path 'empire/*' -type f -exec install -Dm644 {} "${pkgdir}/opt/${pkgname}/{}" \; \
+        -or -type l -exec cp -a {} "${pkgdir}/opt/${pkgname}/{}" \;
     install -dm766 "${pkgdir}/opt/${pkgname}/empire"/{client,server}/downloads/
-    find .venv/ -type f -exec install -D {} "${pkgdir}/opt/${pkgname}/{}" \;
-    find empire{/,.py} -type f -exec install -Dm644 {} "${pkgdir}/opt/${pkgname}/{}" \;
-    find {.venv,empire}/ -type l -exec cp -a {} "${pkgdir}/opt/${pkgname}/{}" \;
+    install -Dm755 "${srcdir}/Empire-${pkgver}/empire.py" "${pkgdir}/opt/${pkgname}/empire.py"
 
     # Installing docs
     cd "${srcdir}/Empire-${pkgver}/docs/"
