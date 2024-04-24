@@ -17,7 +17,7 @@ depends=(
     'gcc-libs'
     'glibc'
     'hicolor-icon-theme'
-    'java-runtime>=21'
+    'java-runtime>=17'
     'javahelp2'
     'lcms2'
     'lensfun'
@@ -26,7 +26,7 @@ depends=(
     'libraw'
     'libxml2'
 )
-makedepends=('java-environment=21'
+makedepends=('java-environment>=17'
     'ant'
     'autoconf'
     'gcc'
@@ -52,6 +52,10 @@ prepare() {
 build() {
   if [ -d /usr/lib/jvm/java-21-openjdk ]; then
     export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+    export MAKEPKG_JAVA_VERSION=21
+  elif [ -d /usr/lib/jvm/java-17-openjdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+    export MAKEPKG_JAVA_VERSION=17
   else
     export JAVA_HOME=/usr/lib/jvm/default
   fi
