@@ -1,10 +1,10 @@
 pkgbase = r-scatterplot3d
 	pkgdesc = 3D Scatter Plot
 	pkgver = 0.3.44
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=scatterplot3d
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/scatterplot3d_0.3-44.tar.gz
 	md5sums = 0acaab2e9eba4ece27e1444f769d006b
