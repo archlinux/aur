@@ -1,8 +1,8 @@
 pkgbase = encryptedfs-bin
-	pkgdesc = An encrypted file system that mounts with FUSE on Linux. It can be used to create encrypted directories.
+	pkgdesc = [DEPRECATED] moved to rencfs. An encrypted file system that mounts with FUSE on Linux. It can be used to create encrypted directories.
 	pkgver = 0.1.26
 	pkgrel = 1
-	url = https://github.com/radumarias/encryptedfs
+	url = https://github.com/radumarias/rencfs
 	arch = x86_64
 	license = Apache-2.0
 	depends = fuse3
