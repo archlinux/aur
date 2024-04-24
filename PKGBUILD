@@ -4,11 +4,11 @@ _pkgname=locfdr
 _pkgver=1.1-8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="Computes Local False Discovery Rates"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   r
 )

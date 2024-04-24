@@ -1,10 +1,10 @@
 pkgbase = r-locfdr
 	pkgdesc = Computes Local False Discovery Rates
 	pkgver = 1.1.8
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cran.r-project.org/package=locfdr
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/locfdr_1.1-8.tar.gz
 	md5sums = d4ee3349e9cb39b70bfff94ff665d2aa
