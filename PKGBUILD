@@ -7,7 +7,7 @@ pkgdesc="Modern and malleable post-exploitation command and control framework"
 arch=('any')
 url="https://github.com/t3l3machus/Villain"
 license=('CC-BY-NC-ND-4.0')
-depends=('python3')
+depends=('python')
 makedepends=('git' 'python-virtualenv' 'coreutils' 'findutils' 'sed')
 source=("${pkgname%-git}::git+https://github.com/t3l3machus/Villain.git#branch=main")
 sha256sums=('SKIP')

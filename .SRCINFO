@@ -10,7 +10,7 @@ pkgbase = villain-c2-git
 	makedepends = coreutils
 	makedepends = findutils
 	makedepends = sed
-	depends = python3
+	depends = python
 	source = villain-c2::git+https://github.com/t3l3machus/Villain.git#branch=main
 	sha256sums = SKIP
 
