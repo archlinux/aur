@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/springzfx/cgproxy"
 license=('GPL-2.0-or-later')
 makedepends=('cmake' 'nlohmann-json' 'clang' 'bpf' 'libbpf')
-depends=('libbpf' 'iproute2' 'which')
+depends=("libbpf" "iproute2" "which" "nftables" "iptables-nft" "bash" "glibc" "gcc-libs")
 provides=('cgproxy')
 conflicts=('cgproxy')
 
