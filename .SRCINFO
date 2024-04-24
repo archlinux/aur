@@ -1,14 +1,14 @@
 pkgbase = r-rose
 	pkgdesc = Random Over-Sampling Examples
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=ROSE
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r
 	optdepends = r-tree
 	source = https://cran.r-project.org/src/contrib/ROSE_0.0-4.tar.gz
 	md5sums = 73db406449aae225ad8580e309fb433b
-	sha256sums = 7750b764f30e2a1cd9bd8768897e83e5e1395f505908fb8923fb76f5e64f7b78
+	b2sums = b854cda1c185b1e231974f028d3ef6f7f5df4b3d16ef19b5ee17cf429b60be12544a75b4a8c2c066f1ed67b46b412e1c6bc1b83accbc107db8855a6b6f581ee1
 
 pkgname = r-rose
