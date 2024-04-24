@@ -3,7 +3,7 @@
 _pkgname="flutter"
 pkgname="$_pkgname-bin"
 pkgver=3.19.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross platform widget toolkit for Dart (monolithic)"
 arch=("x86_64")
 url="https://github.com/flutter/flutter"
@@ -152,7 +152,7 @@ elif grep flutter <<< $(groups); then
   export FLUTTER_ROOT="$APP_DIR"
 elif _unionfs; then
   if [ -e "$MOUNT_DIR/bin" ]; then
-    if ! grep "$MOUNT_DIR" <<< "$PATH" > /dev/null2 >&1; then
+    if ! grep "$MOUNT_DIR" <<< "$PATH" > /dev/null 2>&1; then
       export FLUTTER_ROOT="$MOUNT_DIR"
     fi
   fi
