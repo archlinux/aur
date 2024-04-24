@@ -1,4 +1,4 @@
-# Maintainer: zach <zacharyschwentor@gmail.com>
+# Maintainer: ZachAR3 <Zach4R3@gmail.com>
 # Contributor: klee <klee at fedora dot email>
 
 pkgname=yuzu-early-access-appimage
