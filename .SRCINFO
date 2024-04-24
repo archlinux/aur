@@ -1,10 +1,10 @@
 pkgbase = r-squash
 	pkgdesc = Color-Based Plots for Multivariate Visualization
 	pkgver = 1.0.9
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cran.r-project.org/package=squash
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r
 	source = https://cran.r-project.org/src/contrib/squash_1.0.9.tar.gz
 	md5sums = 1b89b5972d72f95b976f0deedf50c2ac
