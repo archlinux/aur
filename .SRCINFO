@@ -1,6 +1,6 @@
 pkgbase = graphs
 	pkgdesc = Plot and manipulate data (Gnome Circle app)
-	pkgver = 1.7.2
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://welcome.gnome.org/app/Graphs/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = graphs
 	depends = python-sympy
 	depends = gobject-introspection
 	conflicts = graphs-git
-	source = https://gitlab.gnome.org/World/Graphs/-/archive/v1.7.2/Graphs-v1.7.2.tar.gz
-	sha256sums = 90616099e3224c1fae0bfbe23faedf635936f101bae2f75e28fc8d7c2a845638
+	source = https://gitlab.gnome.org/World/Graphs/-/archive/v1.8.0/Graphs-v1.8.0.tar.gz
+	sha256sums = fb72387b8c692db434bc50a5cf851405b1d3f6be7cd274e461cecd57d3ac19af
 
 pkgname = graphs
