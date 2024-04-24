@@ -39,7 +39,7 @@ prepare() {
 
 build() {
 	cd "hamclock-$pkgver/ESPHamClock"
-	make -j 4 hamclock-800x480
+	make -j $(nproc) hamclock-800x480
 }
 
 package() {
