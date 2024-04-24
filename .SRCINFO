@@ -1,7 +1,7 @@
 pkgbase = vdr-restfulapi
 	pkgdesc = Restful-API Control for VDR
 	pkgver = 0.2.6.6
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/yavdr/vdr-plugin-restfulapi
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vdr-restfulapi
 	license = GPL2
 	depends = cxxtools
 	depends = graphicsmagick
-	depends = vdr-api=2.6.6
+	depends = vdr-api=2.6.7
 	backup = etc/vdr/conf.avail/50-restfulapi.conf
 	backup = var/lib/vdr/plugins/restfulapi/API.html
 	backup = var/lib/vdr/plugins/restfulapi/osd.css
