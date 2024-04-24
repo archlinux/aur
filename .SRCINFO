@@ -1,14 +1,14 @@
 pkgbase = r-tiff
 	pkgdesc = Read and Write TIFF Images
 	pkgver = 0.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=tiff
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only OR GPL-3.0-only
 	depends = libtiff
 	depends = r
 	source = https://cran.r-project.org/src/contrib/tiff_0.1-12.tar.gz
 	md5sums = 2e24ff9e6afffa8243c6d1a5356aa374
-	sha256sums = df10ce719f92597572763182f7cb03686b8d7fb9123d036a4daf5b10738e815c
+	b2sums = 1c9197bd392f7e9d805b4f7555e787fb4a131c7a8171538401ce41a8a4902a798bf70a903f8a22e35c9c0b34ae4e66144dd21fe07c59864bd0ac4a998eaf631b
 
 pkgname = r-tiff
