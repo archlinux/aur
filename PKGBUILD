@@ -10,11 +10,11 @@ _pkgname=git2r
 _pkgver=0.33.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides Access to Git Repositories"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL2)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   libgit2
   r
@@ -24,11 +24,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('5bb26ea3f304fd762ecc3a770fc94a8a')
-sha256sums=('1855b68d0e22566f1c255fdcb8e13282a2bebf55cbc804a8591dc8047f0e1895')
+b2sums=('085af9b5c9f30ce4ff8905da8d27c7417bef41a6b37ba4a4f3b531173dcd536340c0fd390b42de9dab898c16229f9c48603fb815c77d7dcd1b93a579a4815046')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
