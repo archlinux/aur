@@ -2,7 +2,7 @@
 
 _pkgbase=synapse-admin
 pkgname=${_pkgbase}-git
-pkgver=r71.26b8cea
+pkgver=r360.b112689
 pkgrel=1
 pkgdesc="A Matrix administration panel using react-admin"
 arch=(any)
@@ -27,10 +27,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${_pkgbase}"
-  yarn build
-  #Fix https://github.com/Awesome-Technologies/synapse-admin/issues/11
-  sed -i 's-src="/-src="-g' build/index.html
-  sed -i 's-href="/-href="-g' build/index.html
+  yarn build --base=./
 }
 
 package() {
@@ -38,6 +35,6 @@ package() {
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
   mkdir -p "${pkgdir}/usr/share/webapps/${_pkgbase}"
-  cp -r build/* "${pkgdir}/usr/share/webapps/${_pkgbase}/"
+  cp -r dist/* "${pkgdir}/usr/share/webapps/${_pkgbase}/"
 
 }

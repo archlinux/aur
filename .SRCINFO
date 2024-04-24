@@ -1,7 +1,8 @@
 pkgbase = synapse-admin-git
 	pkgdesc = A Matrix administration panel using react-admin
-	pkgver = r14.475aa11
+	pkgver = r360.b112689
 	pkgrel = 1
+	url = https://github.com/Awesome-Technologies/synapse-admin
 	arch = any
 	license = Apache2.0
 	makedepends = git
@@ -12,4 +13,3 @@ pkgbase = synapse-admin-git
 	sha256sums = SKIP
 
 pkgname = synapse-admin-git
-
