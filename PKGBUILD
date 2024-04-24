@@ -4,11 +4,11 @@ _pkgname=Rsubread
 _pkgver=2.16.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Mapping, quantification and variant analysis of sequencing data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-or-later')
 depends=(
   r
   zlib
