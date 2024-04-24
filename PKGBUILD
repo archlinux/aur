@@ -4,11 +4,11 @@ _pkgname=CircStats
 _pkgver=0.2-6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="Circular Statistics, from \"Topics in Circular Statistics\" (2001)"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   r
 )
