@@ -1,14 +1,16 @@
-# Maintainer: Isaac Ruben <isaac at rubenfamily dot com>
+# Maintainer: Carson Rueter <swurl at swurl dot x y z>
+# Contributor: Isaac Ruben <isaac at rubenfamily dot com>
 pkgname='pathplanner-bin'
-pkgver="v2024.1.4"
+_pkgver="2024.1.7"
+pkgver="v$_pkgver"
 pkgrel=1
 pkgdesc="A simple yet powerful motion profile generator for FRC robots"
 arch=("x86_64")
 url="https://github.com/mjansen4857/pathplanner"
 license=('MIT')
 provides=("pathplanner")
-source=("$pkgname-$pkgver.zip::https://github.com/mjansen4857/pathplanner/releases/download/$pkgver/PathPlanner-Linux-$pkgver.zip")
-sha256sums=('cc599d943badf048df0d5fcf5e73500f62d78b3ea1c7dd53cbe8dc7bc903c404')
+source=("$pkgname-$pkgver.zip::https://github.com/mjansen4857/pathplanner/releases/download/$_pkgver/PathPlanner-Linux-$pkgver.zip")
+sha256sums=('ae6f2bce4ef3fdd5cf46ce6a3b42aca60b332b29267298b24dccc4e19b700ed2')
 
 prepare() {
 	{
