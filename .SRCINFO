@@ -23,7 +23,8 @@ pkgbase = clapper
 	optdepends = gst-plugin-va>=1.20.0: Intel/AMD video acceleration (experimental)
 	optdepends = gtuber>=r242: Play videos from various services
 	provides = clapper
-	provides = libgstclapper-1.0
+	provides = libclapper-0.0
+	provides = libclapper-gtk-0.0
 	conflicts = clapper
 	source = clapper-0.6.0::https://github.com/Rafostar/clapper/archive/0.6.0.tar.gz
 	md5sums = 49247b3ec760b24df08b38e50a697999

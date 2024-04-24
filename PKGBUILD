@@ -20,6 +20,7 @@
 # Maintainer: sp1rit <sp1ritCS@protonmail.com>
 
 _basename=clapper
+_libver=0.0
 pkgname="${_basename}"
 pkgver=0.6.0
 pkgrel=1
@@ -51,7 +52,7 @@ optdepends=(
 	"gtuber>=r242: Play videos from various services"
 )
 source=("${_basename}-${pkgver}::https://github.com/Rafostar/${_basename}/archive/${pkgver}.tar.gz")
-provides=("${_basename}" "libgst${_basename}-1.0")
+provides=("${_basename}" "lib${_basename}-${_libver}" "lib${_basename}-gtk-${_libver}")
 conflicts=("${_basename}")
 md5sums=("49247b3ec760b24df08b38e50a697999")
 
