@@ -1,0 +1,29 @@
+diff --git a/subprojects/libsmallfry/config.h.in b/subprojects/libsmallfry/config.h.in
+new file mode 100644
+index 0000000..9e7a26b
+--- /dev/null
++++ b/subprojects/libsmallfry/config.h.in
+@@ -0,0 +1,6 @@
++#ifndef SMALLFRY_CONFIG_H
++#define SMALLFRY_CONFIG_H
++
++#define LIBSMALLFRYVERSION "@version@"
++
++#endif // SMALLFRY_CONFIG_H //
+diff --git a/subprojects/libsmallfry/src/smallfry.c b/subprojects/libsmallfry/src/smallfry.c
+index 4f07cff..5edb8fc 100644
+--- a/subprojects/libsmallfry/src/smallfry.c
++++ b/subprojects/libsmallfry/src/smallfry.c
+@@ -18,11 +18,11 @@
+ #include <stdlib.h>
+ #include <math.h>
+ 
++#include "config.h"
+ #include "smallfry.h"
+ 
+ #define MAX(a, b) (((a) > (b)) ? (a) : (b))
+ #define MIN(a, b) (((a) < (b)) ? (a) : (b))
+-#define LIBSMALLFRYVERSION "0.2.0"
+ 
+ /* PSNR(a,b) = 10*log10(MAX * MAX / E((a-b)*(a-b)))
+  * MAX = 255 */

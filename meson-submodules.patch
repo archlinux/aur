@@ -1,0 +1,207 @@
+diff --git a/meson.build b/meson.build
+new file mode 100644
+index 0000000..d400bbd
+--- /dev/null
++++ b/meson.build
+@@ -0,0 +1,99 @@
++project(
++  'jpeg-recompress',
++  'c',
++  license : 'MIT',
++  default_options : ['buildtype=release', 'prefix=/usr'],
++  version : '2.6.4'
++)
++
++cc = meson.get_compiler('c')
++libm_dep = cc.find_library('m', required: true)
++
++libjpeg = dependency('libjpeg')
++libwebp = dependency('libwebp')
++
++libiqa = dependency(
++  'iqa',
++  fallback: ['libiqa', 'libiqa_dep'],
++  default_options: ['default_library=static'],
++)
++
++libsmallfry = dependency(
++  'smallfry',
++  fallback: ['libsmallfry', 'libsmallfry_dep'],
++  default_options: ['default_library=static'],
++)
++
++libjmetrics = static_library(
++  'jmetrics',
++  sources: [
++    'src/jmetrics.c',
++  ],
++  dependencies: [libiqa, libsmallfry],
++  install: false,
++)
++
++libjmetrics_dep = declare_dependency(
++  link_with: libjmetrics,
++)
++
++jpeg_compare = executable(
++  'jpeg-compare',
++  sources: [
++    'src/jpeg-compare.c',
++  ],
++  dependencies: [libiqa, libjmetrics_dep, libm_dep, libsmallfry, libjpeg],
++  install: true,
++  install_dir: get_option('bindir'),
++)
++
++jpeg_hash = executable(
++  'jpeg-hash',
++  sources: [
++    'src/jpeg-hash.c',
++  ],
++  dependencies: [libiqa, libjpeg, libjmetrics_dep,  libsmallfry],
++  install: true,
++  install_dir: get_option('bindir'),
++)
++
++jpeg_recompress = executable(
++  'jpeg-recompress',
++  sources: [
++    'src/jpeg-recompress.c',
++  ],
++  dependencies: [libiqa, libjmetrics_dep, libm_dep, libsmallfry, libjpeg],
++  install: true,
++  install_dir: get_option('bindir'),
++)
++
++jpeg_zfpoint = executable(
++  'jpeg-zfpoint',
++  sources: [
++    'src/jpeg-zfpoint.c',
++  ],
++  dependencies: [libiqa, libjmetrics_dep, libm_dep, libsmallfry, libjpeg],
++  install: true,
++  install_dir: get_option('bindir'),
++)
++
++webp_compress = executable(
++  'webp-compress',
++  sources: [
++    'src/webp-compress.c',
++  ],
++  dependencies: [libiqa, libjmetrics_dep, libm_dep, libsmallfry, libjpeg, libwebp],
++  install: true,
++  install_dir: get_option('bindir'),
++)
++
++install_man(
++  [
++    'man/man1/jpeg-compare.1',
++    'man/man1/jpeg-hash.1',
++    'man/man1/jpeg-recompress.1',
++    'man/man1/jpeg-zfpoint.1',
++    'man/man1/webp-compress.1',
++  ],
++  install_dir: get_option('mandir') / 'man1',
++)
+diff --git a/subprojects/libiqa/meson.build b/subprojects/libiqa/meson.build
+new file mode 100644
+index 0000000..dc8ac2c
+--- /dev/null
++++ b/subprojects/libiqa/meson.build
+@@ -0,0 +1,44 @@
++project(
++  'iqa',
++  'c',
++  license : 'BSD-3-Clause',
++  default_options : ['buildtype=release', 'prefix=/usr'],
++  version : '1.1.3'
++)
++
++cc = meson.get_compiler('c')
++libm_dep = cc.find_library('m', required: true)
++
++libiqa_inc = include_directories('include')
++libiqa = library(
++  meson.project_name(),
++  version: meson.project_version(),
++  sources: [
++    'source/convolve.c',
++    'source/decimate.c',
++    'source/math_utils.c',
++    'source/ms_ssim.c',
++    'source/mse.c',
++    'source/psnr.c',
++    'source/ssim.c',
++  ],
++  dependencies: [libm_dep],
++  include_directories: libiqa_inc,
++  install: not meson.is_subproject(),
++  install_dir: get_option('libdir'),
++)
++
++libiqa_dep = declare_dependency(
++  include_directories: libiqa_inc,
++  link_with: libiqa,
++)
++
++if not meson.is_subproject()
++  pkg = import('pkgconfig')
++  pkg.generate(libiqa)
++
++  install_headers(
++    'include/iqa.h',
++    'include/iqa_os.h',
++  )
++endif
+diff --git a/subprojects/libsmallfry/meson.build b/subprojects/libsmallfry/meson.build
+new file mode 100644
+index 0000000..5fe3344
+--- /dev/null
++++ b/subprojects/libsmallfry/meson.build
+@@ -0,0 +1,46 @@
++project(
++  'smallfry',
++  'c',
++  license : 'ISC',
++  default_options : ['buildtype=release', 'prefix=/usr'],
++  version : '0.2.0'
++)
++
++cc = meson.get_compiler('c')
++libm_dep = cc.find_library('m', required: true)
++
++conf_data = configuration_data()
++conf_data.set('version', meson.project_version())
++
++config_h = configure_file(
++  input: 'config.h.in',
++  output: 'config.h',
++  configuration: conf_data,
++)
++
++libsmallfry_inc = include_directories('src')
++libsmallfry = library(
++  meson.project_name(),
++  version: meson.project_version(),
++  sources: [
++    config_h,
++    'src/smallfry.c',
++  ],
++  dependencies: [libm_dep],
++  install: not meson.is_subproject(),
++  install_dir: get_option('libdir'),
++)
++
++libsmallfry_dep = declare_dependency(
++  include_directories: libsmallfry_inc,
++  link_with: libsmallfry
++)
++
++if not meson.is_subproject()
++  pkg = import('pkgconfig')
++  pkg.generate(libsmallfry)
++
++  install_headers(
++    'src/smallfry.h',
++  )
++endif
