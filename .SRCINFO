@@ -1,10 +1,10 @@
 pkgbase = r-acde
 	pkgdesc = Artificial Components Detection of Differentially Expressed Genes
 	pkgver = 1.32.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/acde
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r
 	optdepends = r-biocgenerics
 	optdepends = r-runit
