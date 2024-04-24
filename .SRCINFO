@@ -1,7 +1,7 @@
 pkgbase = xivlauncher-cn-bin
 	pkgdesc = Custom Launcher for Final Fantasy XIV Online CN
 	pkgver = 1.0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ottercorp/XIVLauncher.Core
 	arch = x86_64
 	license = GPL
