@@ -1,16 +1,16 @@
 pkgbase = r-msdata
 	pkgdesc = Various Mass Spectrometry raw data example files
 	pkgver = 0.42.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/msdata
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-msnbase
 	optdepends = r-mzr
 	optdepends = r-xcms
 	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/msdata_0.42.0.tar.gz
 	md5sums = 3ef7fea0866799a767fb8ac2d1da0a16
-	sha256sums = f9bb1dc20327d800807abe991ccf9b3b45a39f0b1e4cc039f21bb4f9b1fca1ca
+	b2sums = 495933ab05adf467dda24e884b91969b55f8eec014c5264e7bb555be04e1cadacdf4302a869d91080f210c5702dbd6992b6c81c7fda24c5dbcbd8e0eaf1f400e
 
 pkgname = r-msdata
