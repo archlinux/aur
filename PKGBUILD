@@ -4,11 +4,11 @@ _pkgname=SamSPECTRAL
 _pkgver=1.56.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Identifies cell population in flow cytometry data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
 )

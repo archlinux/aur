@@ -1,10 +1,10 @@
 pkgbase = r-samspectral
 	pkgdesc = Identifies cell population in flow cytometry data
 	pkgver = 1.56.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/SamSPECTRAL
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/SamSPECTRAL_1.56.0.tar.gz
 	md5sums = 2724bc54054c093fac88a672a6b173d6
