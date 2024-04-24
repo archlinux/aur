@@ -1,24 +1,25 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Maintainer: Chih-Hsuan Yen <base64_decode("eWFuMTIxMjUgQVQgYXJjaGxpbnV4IERPVCBvcmc=")>
+# Co-Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=lxqt-runner
 pkgname=$_pkgname-git
-pkgver=1.3.0.14.gd0b23ab
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="The LXQt application launcher"
 arch=("i686" "x86_64")
-url="https://lxqt.org"
-license=("GPL2")
-depends=("kwindowsystem5" "lxqt-globalkeys-git" "muparser")
-makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
+url="https://lxqt-project.org"
+license=("LGPL-2.1-only")
+depends=('layer-shell-qt' 'kwindowsystem' 'lxqt-globalkeys-git' 'muparser')
+makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
-
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/./g"
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
