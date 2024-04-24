@@ -16,7 +16,7 @@ optdepends=(
   'ttf-ms-fonts: for better fonts'
 )
 install=${pkgname}.install
-source=("${_pkgname}-${pkgver}.exe::https://download.mikrotik.com/winbox/${pkgver}/${_pkgname}64.exe"
+source=("${_pkgname}-${pkgver}.exe::https://download.mikrotik.com/routeros/winbox/${pkgver}/winbox64.exe"
         "${_pkgname}.desktop"
         "${_pkgname}.png"
         "${_pkgname}")
