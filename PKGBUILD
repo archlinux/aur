@@ -4,11 +4,11 @@ _pkgname=RJSONIO
 _pkgver=1.3-1.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Serialize R Objects to JSON, JavaScript Object Notation"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(BSD)
+license=('BSD-3-Clause')
 depends=(
   r
 )
