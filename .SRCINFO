@@ -1,0 +1,22 @@
+pkgbase = android-x86-libxi
+	pkgdesc = X11 Input extension library (Android x86)
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://xorg.freedesktop.org
+	arch = any
+	license = custom
+	makedepends = android-x86-xorg-util-macros
+	makedepends = android-x86-xorgproto
+	depends = android-x86-libxext
+	depends = android-x86-libxfixes
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org/releases/individual/lib/libXi-1.8.1.tar.xz
+	source = https://xorg.freedesktop.org/releases/individual/lib/libXi-1.8.1.tar.xz.sig
+	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
+	md5sums = 89ac74ad6829c08d5c8ae8f48d363b06
+	md5sums = SKIP
+
+pkgname = android-x86-libxi
