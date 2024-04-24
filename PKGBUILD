@@ -4,7 +4,7 @@
 
 pkgname=lx-music
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 _electron=electron28
 pkgdesc='An Electron-based music player'
 arch=('x86_64' 'aarch64')
@@ -12,41 +12,43 @@ url='https://github.com/lyswhut/lx-music-desktop'
 license=('Apache')
 depends=("${_electron}")
 makedepends=('asar' 'npm' 'git' 'node-gyp'
-'jq' 'moreutils'
+	'jq' 'moreutils'
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "$pkgname.sh"
-        "$pkgname.desktop"
-        'dev-app-update.yml'
-        )
+	"$pkgname.sh"
+	"$pkgname.desktop"
+	'dev-app-update.yml'
+)
 sha256sums=('43d4e43b20b91fb2d76eacab865f27240700b6f7cbbcb31dbc394a058c23de03'
-            '1171a3688a136b75aa0493d5737cfb1e8c386a48030c8ca313d4cac48c0630e3'
-            '732e98dfe569768c3cc90abbe8b1f6d24726dd2cb61317f57f8d5fe77fdefe2f'
-            'ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423')
+	'1171a3688a136b75aa0493d5737cfb1e8c386a48030c8ca313d4cac48c0630e3'
+	'732e98dfe569768c3cc90abbe8b1f6d24726dd2cb61317f57f8d5fe77fdefe2f'
+	'ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423'
+)
 
 prepare() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
 
 	local electronDist="/usr/lib/${_electron}"
-	local electronVersion="$(< $electronDist/version)"
-	# electronVersion="${electronVersion%.*}.0"
+	local electronVersion="$(<$electronDist/version)"
 	jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
 	jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
 	jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
 
 	sed -i "s|__ELECTRON__|${_electron}|g" "${srcdir}/${pkgname}.sh"
-
+	# disable autoupdater
+	sed -i "/common.tryAutoUpdate/s/true/false/" src/common/defaultSetting.ts
 }
 
 build() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
 	export HOME=${srcdir}
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	npm install
 	npm run pack:dir
 }
 
 package() {
-    install -Dm644 'dev-app-update.yml' -t  "$pkgdir/usr/lib/lx-music/"
+	install -Dm644 'dev-app-update.yml' -t "$pkgdir/usr/lib/lx-music/"
 	install -Dm755 lx-music.sh "$pkgdir/usr/bin/lx-music"
 	install -Dm644 lx-music.desktop -t "$pkgdir/usr/share/applications/"
 
@@ -62,9 +64,8 @@ package() {
 	cp -a --no-preserve=ownership licenses "$pkgdir/usr/share/licenses/lx-music/"
 
 	# clean other platform.
-	for native in {bufferutil,utf-8-validate};
-	do
+	for native in {bufferutil,utf-8-validate}; do
 		cd ${pkgdir}/usr/lib/lx-music/node_modules/$native/prebuilds
 		rm -rf darwin-* win32-*
-	done;
+	done
 }
