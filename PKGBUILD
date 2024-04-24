@@ -172,7 +172,7 @@ prepare() {
 	### 添加zfs补丁
 	cd ${srcdir}/"zfs"
 	./autogen.sh
-	sed -i "s|\$(uname -r)|${pkgver}-clear-sun|g" configure
+	sed -i "s|\$(uname -r)|${pkgver}-clear-cjktty-zfs|g" configure
 	./configure CC=gcc --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
 		--datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
 		--libexecdir=/usr/lib/zfs --with-config=kernel \
