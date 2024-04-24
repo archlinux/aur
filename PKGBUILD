@@ -1,9 +1,9 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
-# Co-Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Co-Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=liblxqt
 pkgname=$_pkgname-git
-epoch=1
 pkgver=2.0.0
 pkgrel=1
 pkgdesc="Common base library for LXQt components."
