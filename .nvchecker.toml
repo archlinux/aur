@@ -1,0 +1,5 @@
+[python-fenics-ffcx]
+source = "github"
+github = "FEniCS/ffcx"
+use_max_tag = "true"
+prefix = "v"
