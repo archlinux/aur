@@ -4,11 +4,11 @@ _pkgname=AneuFinderData
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="WGSCS Data for Demonstration Purposes"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(custom)
+license=('LicenseRef-AneuFinderData')
 depends=(
   r
 )
