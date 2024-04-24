@@ -91,6 +91,8 @@ build() {
   CFLAGS+=' -fcommon'
   # build against ffmpeg4.4
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
+  # ensure jdk 8 is used when building
+  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 
   ../gradle-4.8/bin/gradle
 }
