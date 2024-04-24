@@ -8,9 +8,9 @@ _commit=5790d253972c9d78a0c2aece527eda5b134bbbf7
 # The patch version is the timestamp of the above git commit, obtain via `git show -s --format=%ct`
 _ct=1713773202
 pkgver="2.1.${_ct}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua 5.1'
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://luajit.org/'
 license=('MIT')
 depends=('mingw-w64-crt')
@@ -30,20 +30,19 @@ build() {
     fi
     cd ${srcdir}/LuaJIT-build-${_target}/src
 
-    make clean
+    _host_cc="gcc -m64"
     if [ "$_target" == "i686-w64-mingw32" ]; then
-        make amalg PREFIX=/usr/$_target BUILDMODE=dynamic HOST_CC="gcc -m32" CROSS=${_target}- TARGET_SYS=Windows
-    else
-        make amalg PREFIX=/usr/$_target BUILDMODE=dynamic HOST_CC="gcc -m64" CROSS=${_target}- TARGET_SYS=Windows
+      _host_cc="gcc -m32"
     fi
+
+    # TARGET_STRIP below avoids early stripping
+
+    make clean
+    make amalg PREFIX=/usr/$_target BUILDMODE=dynamic HOST_CC="$_host_cc" CROSS=${_target}- TARGET_STRIP=" @:" TARGET_SYS=Windows
     cp lua51.dll ../
 
     make clean
-    if [ "$_target" == "i686-w64-mingw32" ]; then
-        make amalg PREFIX=/usr/$_target BUILDMODE=static HOST_CC="gcc -m32" CROSS=${_target}- TARGET_SYS=Windows
-    else
-        make amalg PREFIX=/usr/$_target BUILDMODE=static HOST_CC="gcc -m64" CROSS=${_target}- TARGET_SYS=Windows
-    fi
+    make amalg PREFIX=/usr/$_target BUILDMODE=static HOST_CC="$_host_cc" CROSS=${_target}- TARGET_STRIP=" @:" TARGET_SYS=Windows
   done
 }
 
@@ -69,5 +68,9 @@ package() {
     cp etc/luajit.pc "$pkgdir"/usr/${_target}/lib/pkgconfig/
     ${_target}-strip --strip-unneeded "$pkgdir"/usr/${_target}/bin/*.dll
     ${_target}-strip -g "$pkgdir"/usr/${_target}/lib/*.a
+
+    sed -e "s|^prefix=.*|prefix=/usr/${_target}|" \
+        -e "s|^relver=.*|relver=$(cat .relver)|" \
+        -i "$pkgdir"/usr/${_target}/lib/pkgconfig/luajit.pc
   done
 }
