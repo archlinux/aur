@@ -4,11 +4,11 @@ _pkgname=impute
 _pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Imputation for microarray data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   r
 )
