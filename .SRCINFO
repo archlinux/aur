@@ -1,7 +1,7 @@
 pkgbase = lesana
 	pkgdesc = Manage collection inventories throught yaml files, develop version
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lesana.trueelena.org/
 	arch = any
 	license = AGPL-3.0-or-later
@@ -20,6 +20,8 @@ pkgbase = lesana
 	optdepends = sh: git integration
 	optdepends = python-gitpython: git integration
 	source = https://git.sr.ht/~valhalla/lesana/archive/v0.10.1.tar.gz
+	source = pyproject.toml.patch
 	sha256sums = 9e858cc10ba57132f10b16ecf32f54f8a0dc96783bf0283473340db4536c2e25
+	sha256sums = 0db3be7a5e6d0246fbc90dd0fc61c5d765cea49c03133c2a6ce4224ec1d6d2f5
 
 pkgname = lesana

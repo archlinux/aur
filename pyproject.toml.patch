@@ -1,0 +1,31 @@
+--- a/pyproject.toml	2024-04-24 16:19:21.420395714 +0200
++++ b/pyproject.toml	2024-04-24 16:20:33.304790713 +0200
+@@ -1,9 +1,10 @@
+ [build-system]
+-requires = ["setuptools", "setuptools-scm"]
++requires = ["setuptools"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+ name = "lesana"
++version = "0.10.1"
+ authors = [
+     {name = "Elena ``of Valhalla'' Grandi", email = "valhalla@trueelena.org"},
+ ]
+@@ -34,7 +35,6 @@
+     "python-dateutil",
+     #"xapian >= 1.4",
+ ]
+-dynamic = ["version"]
+ 
+ [project.optional-dependencies]
+ cli = [
+@@ -54,8 +54,6 @@
+ Changelog = "https://git.sr.ht/~valhalla/lesana/tree/master/item/CHANGELOG.rst"
+ "Mailing lists" = "https://sr.ht/~valhalla/lesana/lists"
+ 
+-[tool.setuptools_scm]
+-version_file = "lesana/_version.py"
+ 
+ [[tool.mypy.overrides]]
+ module = [
