@@ -1,0 +1,13 @@
+[Unit]
+Description=Plexamp
+After=pipewire.socket
+Requires=pipewire.socket
+
+[Service]
+Type=simple
+ExecStart=node /opt/plexamp-headless/js/index.js
+Restart=on-failure
+
+[Install]
+Also=pipewire.socket
+WantedBy=default.target
