@@ -4,11 +4,11 @@ _pkgname=binr
 _pkgver=1.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="Cut Numeric Values into Evenly Distributed Groups"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(Apache)
+license=('Apache-2.0')
 depends=(
   r
 )
