@@ -1,14 +1,14 @@
 pkgbase = goby-community
 	pkgdesc = Attack surface mapping
 	pkgver = 2.9.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gobies.org/
 	arch = x86_64
 	license = unknown
 	makedepends = unzip
+	makedepends = libcap
 	depends = atk
 	depends = gtk3
-	depends = libcap
 	depends = libpcap
 	options = !strip
 	options = !debug
