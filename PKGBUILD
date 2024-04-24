@@ -5,11 +5,11 @@ _pkgname=SnowballC
 _pkgver=0.7.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Snowball Stemmers Based on the C 'libstemmer' UTF-8 Library"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(BSD)
+license=('BSD-3-Clause')
 depends=(
   libstemmer
   r
