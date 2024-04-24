@@ -1,10 +1,10 @@
 pkgbase = r-biocbaseutils
 	pkgdesc = General utility functions for developing Bioconductor packages
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/BiocBaseUtils
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r
 	optdepends = r-biocstyle
 	optdepends = r-knitr
