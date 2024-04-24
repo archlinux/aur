@@ -1,11 +1,11 @@
 pkgbase = unciv-bin
 	pkgdesc = Open-source remake of Civilization V
 	pkgver = 4.11.7
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/yairm210/Unciv
 	arch = any
 	license = MPL-2.0
-	depends = java-environment
+	depends = java-runtime
 	depends = bash
 	depends = xorg-xrandr
 	provides = unciv
