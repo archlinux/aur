@@ -4,11 +4,11 @@ _pkgname=oaqc
 _pkgver=1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Computation of the Orbit-Aware Quad Census"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
@@ -19,11 +19,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('035a9d6aebcc688ab3cb16d3d47a28cd')
-sha256sums=('4e56c8bbe6803223fcef79d35efe08aa18b95efc4d495d6e16b93edfd3a180e5')
+b2sums=('74f44785b29d8e9994d3cbf7915c035e05b7d1ba2e5431430ae74b4c25ada532f5f9cf06785a1ceee68986fc78951e552dd750d08b5f7ef879370d6062e661fe')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {

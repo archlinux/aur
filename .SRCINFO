@@ -1,16 +1,16 @@
 pkgbase = r-oaqc
 	pkgdesc = Computation of the Orbit-Aware Quad Census
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=oaqc
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r
 	optdepends = r-igraph
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/oaqc_1.0.tar.gz
 	md5sums = 035a9d6aebcc688ab3cb16d3d47a28cd
-	sha256sums = 4e56c8bbe6803223fcef79d35efe08aa18b95efc4d495d6e16b93edfd3a180e5
+	b2sums = 74f44785b29d8e9994d3cbf7915c035e05b7d1ba2e5431430ae74b4c25ada532f5f9cf06785a1ceee68986fc78951e552dd750d08b5f7ef879370d6062e661fe
 
 pkgname = r-oaqc
