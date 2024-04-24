@@ -4,11 +4,11 @@ _pkgname=PoiClaClu
 _pkgver=1.0.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=10
 pkgdesc="Classification and Clustering of Sequencing Data Based on a Poisson Model"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   r
 )

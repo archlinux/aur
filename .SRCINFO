@@ -1,10 +1,10 @@
 pkgbase = r-poiclaclu
 	pkgdesc = Classification and Clustering of Sequencing Data Based on a Poisson Model
 	pkgver = 1.0.2.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://cran.r-project.org/package=PoiClaClu
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/PoiClaClu_1.0.2.1.tar.gz
 	md5sums = 0b6a96b5e02ab7fcad913e7f6c538d12
