@@ -5,21 +5,21 @@ _pkgname=ssanv
 _pkgver=1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=4
 pkgdesc="Sample Size Adjusted for Nonadherence or Variability of Input Parameters"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b31deb0e2ab0dbbf8ed512eb148126ef')
-sha256sums=('4dea3fefe2d9da6a3020d19dea2ebc6634df38cbce0415fb16b0d4fe5551449d')
+b2sums=('0182b46469296d233f4ee0089d3615f76961086772b88cf476b5fcc8e84187de428c58e80758537a65c51c3bcb04f13f3ad2addf67e4c36034ce484cdbf1b866')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
