@@ -1,10 +1,10 @@
 pkgbase = r-logging
 	pkgdesc = R Logging Package
 	pkgver = 0.10.108
-	pkgrel = 9
+	pkgrel = 10
 	url = https://cran.r-project.org/package=logging
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r
 	optdepends = r-crayon
 	optdepends = r-testthat
