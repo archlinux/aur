@@ -3,16 +3,16 @@
 pkgname=nanobind
 pkgdesc="tiny and efficient C++/Python bindings"
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://${pkgname}.readthedocs.io"
-license=('custom:BSD-3-clause')
+license=(BSD-3-Clause)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel cmake eigen git)
 checkdepends=(python-pytest python-scipy python-pytorch python-tensorflow python-jax)
 source=(${pkgname}-${pkgver}::git+https://github.com/wjakob/${pkgname}.git#tag=v${pkgver}
   git+https://github.com/Tessil/robin-map.git)
-sha512sums=('SKIP'
+sha512sums=('dedd52be1a1cc5c57ffafdeaf9b26443ed19f104c5aa22d650dbbd96d3644d8f06da461961a5138ac3b8816c3c29fd2ae044cbed789cb08441495a07376cc178'
             'SKIP')
 
 prepare() {
