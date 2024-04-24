@@ -6,6 +6,7 @@ pkgbase = mingw-w64-libheif
 	arch = any
 	license = LGPL
 	makedepends = mingw-w64-cmake
+	makedepends = ninja
 	depends = mingw-w64-crt
 	depends = mingw-w64-libpng
 	depends = mingw-w64-aom
@@ -21,6 +22,8 @@ pkgbase = mingw-w64-libheif
 	options = !buildflags
 	options = staticlibs
 	source = libheif-1.17.6.tar.gz::https://github.com/strukturag/libheif/archive/v1.17.6.tar.gz
+	source = https://github.com/strukturag/libheif/commit/a911b26a902c5f89fee2dc20ac4dfaafcb8144ec.patch
 	sha256sums = 55bae7858bfd1679923d4a7db08ce1dcf3216667fa8f1da193a0577876b8a904
+	sha256sums = 53a7eeb0f0f1c9fb076a6f56c6753abf8e30cf625355c54e720cc028ae9c1ce9
 
 pkgname = mingw-w64-libheif

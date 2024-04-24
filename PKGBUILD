@@ -20,13 +20,15 @@ depends=(
 	'mingw-w64-svt-av1' # Only for x86_64
 	'mingw-w64-openjpeg2'
 )
-makedepends=('mingw-w64-cmake')
+makedepends=('mingw-w64-cmake' 'ninja')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('55bae7858bfd1679923d4a7db08ce1dcf3216667fa8f1da193a0577876b8a904')
+sha256sums=('55bae7858bfd1679923d4a7db08ce1dcf3216667fa8f1da193a0577876b8a904'
+            '53a7eeb0f0f1c9fb076a6f56c6753abf8e30cf625355c54e720cc028ae9c1ce9')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz"
+	"https://github.com/strukturag/libheif/commit/a911b26a902c5f89fee2dc20ac4dfaafcb8144ec.patch"
 )
 
 _srcdir="${_pkgname}-${pkgver}"
@@ -50,6 +52,8 @@ _flags=(
 prepare() {
 	cd "${_srcdir}"
 	
+	patch -p1 -i "$srcdir/a911b26a902c5f89fee2dc20ac4dfaafcb8144ec.patch"
+	
 	(cat << EOF
 include(LibFindMacros)
 libfind_pkg_check_modules(RAV1E rav1e)
@@ -62,12 +66,12 @@ EOF
 
 build() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
 			-DBUILD_SHARED_LIBS=OFF \
 			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
 		cmake --build "build-${_arch}"
 	done
 }
