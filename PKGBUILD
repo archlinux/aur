@@ -19,14 +19,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/defold/defold/releases/download/1.7.0/Defold-x86_64-linux.tar.gz"
+source=("https://github.com/defold/defold/releases/download/1.7.0/Defold-x86_64-linux.zip"
 	"https://github.com/defold/defold/releases/download/1.7.0/defoldsdk.zip"
 	"https://github.com/defold/defold/releases/download/1.7.0/bob.jar"
 	"Defold.desktop"
 	"LICENSE"
 	"logo.zip")
 noextract=("bob.jar")
-md5sums=("74f11d2f051f496b826e7d6375e9c6d7"
+md5sums=("c8ce986432bb4d30729afbc4a5f9b99f"
 	"a52bd351b2fcd1d02b9f5446d5edbae9"
 	"02d06c08d7fb5f5e93731108a1d06a32"
 	"9510a5ccb9310a95e80452330b0c4de8"
