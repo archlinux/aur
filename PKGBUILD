@@ -1,42 +1,77 @@
-# Maintainer: Shengyu Zhang <la@archlinuxcn.org>
-
-_pkgname=uivonim
-pkgname=${_pkgname}-git
-pkgver=v0.28.0.24.gd23b6ea
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Shengyu Zhang <la@archlinuxcn.org>
+pkgname=uivonim-git
+_pkgname=Uivonim
+pkgver=0.29.0.r112.ge63bfe5
+_electronversion=27
+_nodeversion=18
 pkgrel=1
-pkgdesc="A Neovim GUI designed for programming"
-arch=('x86_64')
-license=('AGPL')
-url="https://glitchtron.org/veonim/"
-makedepends=('npm' 'git')
-depends=('neovim')
-optdepends=()
-source=("git+https://github.com/smolck/${_pkgname}"
-        "${_pkgname}.sh"
-        "${_pkgname}.desktop")
-
+pkgdesc="Fork of the Veonim Neovim GUI."
+arch=('any')
+license=('AGPL-3.0-only')
+url="https://github.com/smolck/uivonim"
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver%.r*}")
+depends=(
+    "electron${_electronversion}"
+    'nodejs'
+)
+makedepends=(
+    'npm'
+    'git'
+    'nvm'
+    'gendesk'
+    'base-devel'
+    'gcc'
+)
+source=(
+    "${pkgname//-/.}::git+${url}.git"
+    "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '8de71b3528e4f40b77d114080a1bb7a2ade4ad73dd6f9799c2cb640d78209af2'
-            '17ab49bb6e0f74bc11052554cd0a8f341d772a993fe821143b256bad01d55d4f')
-
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
-    cd ${_pkgname}
-    git describe --tags | sed 's/-/./g'
+    cd "${srcdir}/${pkgname//-/.}"
+    git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
-    cd ${_pkgname}
-    npm ci
-    npm run build
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@runname@|app|g" \
+        -e "s|@options@||g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
+    _ensure_local_nvm
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    cd "${srcdir}/${pkgname//-/.}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+    else
+        echo "Your network is OK."
+    fi
+    sed "/- 'zip'/d;s|- 'appimage'|- 'dir'|g" -i electron-builder.yml
+    npm install
     npm run package
 }
-
 package() {
-    cd ${_pkgname}
-
-    install -d ${pkgdir}/opt
-    cp -R dist/linux-unpacked "${pkgdir}/opt/${_pkgname}"
-    install -Dm755 ${srcdir}/${_pkgname}.sh "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 ${srcdir}/${_pkgname}/art/icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
-    install -Dm644 ${srcdir}/${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/art/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
