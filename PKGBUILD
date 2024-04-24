@@ -4,11 +4,11 @@ _pkgname=tsne
 _pkgver=0.1-3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=8
+pkgrel=9
 pkgdesc="T-Distributed Stochastic Neighbor Embedding for R (t-SNE)"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
