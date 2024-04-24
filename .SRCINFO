@@ -1,0 +1,20 @@
+pkgbase = sentrum-bin
+	pkgdesc = Daemon that monitors watch-only bitcoin wallets
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/sommerfelddev/sentrum
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	backup = etc/sentrum/sentrum.toml
+	source = https://github.com/sommerfelddev/sentrum/releases/download/v0.1.7/sentrum-v0.1.7-linux-x86_64.tar.gz
+	source = https://github.com/sommerfelddev/sentrum/releases/download/v0.1.7/sentrum-v0.1.7-manifest.txt
+	source = https://github.com/sommerfelddev/sentrum/releases/download/v0.1.7/sentrum-v0.1.7-manifest.txt.asc
+	validpgpkeys = B79DF5F37D7F9B0F390238D53298945F717C85F8
+	sha256sums = 4013871ff1ce90cb654981a7e5752a4ae70c4a91b6d19ccf35e194a13e0766c9
+	sha256sums = 10c31a229224c7ac9b168ecc1e962a10ac6d84d22d06c65c9c0a5abd32bb6e2a
+	sha256sums = SKIP
+
+pkgname = sentrum-bin
