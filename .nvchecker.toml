@@ -1,0 +1,5 @@
+[python-cryptoparser]
+source = "gitlab"
+gitlab = "coroner/CryptoParser"
+use_max_tag = true
+prefix = "v"
