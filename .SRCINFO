@@ -1,6 +1,6 @@
-pkgbase = labwc-git
+pkgbase = labwc-wlroots-018-git
 	pkgdesc = stacking wayland compositor with look and feel from openbox (git version)
-	pkgver = 0.6.6.r21.gaab8061d
+	pkgver = 0.7.1.r138.gca0299d2
 	pkgrel = 1
 	url = https://github.com/labwc/labwc
 	arch = x86_64
@@ -13,14 +13,21 @@ pkgbase = labwc-git
 	depends = librsvg
 	depends = pango
 	depends = seatd
-	depends = wlroots>=0.17
-	depends = wlroots<0.18
+	depends = wlroots-git
 	depends = wayland
 	depends = xorg-xwayland
 	optdepends = bemenu: default launcher via Alt+F3
 	provides = labwc
 	conflicts = labwc
 	source = git+https://github.com/labwc/labwc.git
+	source = https://github.com/labwc/labwc/pull/1641.patch
+	source = labwc-atomic-modesetting-tearing.patch
+	source = labwc-fix-xwayland-unmanaged-restack.patch
+	source = override_redirect.patch
 	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 63792a6012b41b164e3a9194d522f9ac
+	md5sums = 66d673743c2c2aabc7bc27b30f488bf0
+	md5sums = d5a2b2205636263fdd12c36d4cd19089
 
-pkgname = labwc-git
+pkgname = labwc-wlroots-018-git

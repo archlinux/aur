@@ -1,0 +1,24 @@
+commit b5246aac36a485af7f098fb6668b0105c4214ca5
+Author: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date:   Wed Apr 24 01:52:23 2024 +0200
+
+    [untested] disable restacking of unmanaged windows
+
+diff --git a/src/xwayland.c b/src/xwayland.c
+index 3a936456..59d2127e 100644
+--- a/src/xwayland.c
++++ b/src/xwayland.c
+@@ -754,13 +754,6 @@ xwayland_view_move_to_front(struct view *view)
+ 	 */
+ 	wlr_xwayland_surface_restack(xwayland_surface_from_view(view),
+ 		NULL, XCB_STACK_MODE_ABOVE);
+-	/* Restack unmanaged surfaces on top */
+-	struct wl_list *list = &view->server->unmanaged_surfaces;
+-	struct xwayland_unmanaged *u;
+-	wl_list_for_each(u, list, link) {
+-		wlr_xwayland_surface_restack(u->xwayland_surface,
+-			NULL, XCB_STACK_MODE_ABOVE);
+-	}
+ }
+ 
+ static void
