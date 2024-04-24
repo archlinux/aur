@@ -4,11 +4,11 @@ _pkgname=CopyhelpeR
 _pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Helper files for CopywriteR"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   r
 )
