@@ -4,11 +4,11 @@ _pkgname=pbmcapply
 _pkgver=1.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="Tracking the Progress of Mc*pply with Progress Bar"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(MIT)
+license=('MIT')
 depends=(
   r
 )
