@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Minifox
+Comment=A client for the Fox Weiqi Server
+Path=/usr/bin
+Exec=minifox
+Icon=minifox
+Terminal=false

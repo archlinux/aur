@@ -1,0 +1,23 @@
+pkgbase = minifox-bin
+	pkgdesc = A client for the Fox Weiqi Server
+	pkgver = 0.14
+	pkgrel = 1
+	url = https://openfoxwq.github.io/
+	arch = x86_64
+	license = custom:nonfree
+	depends = bash
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = libglvnd
+	depends = libpng
+	source = https://github.com/openfoxwq/openfoxwq.github.io/releases/download/v0.14/minifox-v0.14-linux.zip
+	source = minifox.sh
+	source = minifox.desktop
+	source = icon.png
+	sha256sums = 6ad0f61c8a9963e123051a7ec2b01fd8ac0b7b297bfe6a6b17e75266a988aa27
+	sha256sums = 57556f6a07ebeb16cf408e433a1c77646ed8add518b2d02bff09b72b59783dd7
+	sha256sums = 0fa02fc495afb200d0eb919f1f63c9619cf4bc6f919c206264615d3cd7477d2d
+	sha256sums = 9752e83fd9b96d0897173922a9507fc4c92be4583279b390d31decb184931314
+
+pkgname = minifox-bin
