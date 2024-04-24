@@ -1,10 +1,10 @@
 pkgbase = r-gofkernel
 	pkgdesc = Testing Goodness-of-Fit with the Kernel Density Estimator
 	pkgver = 2.1.1
-	pkgrel = 10
+	pkgrel = 11
 	url = https://cran.r-project.org/package=GoFKernel
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/GoFKernel_2.1-1.tar.gz
 	md5sums = 2874ad08b0f92ea2f286e1f812881755
