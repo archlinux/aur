@@ -1,10 +1,10 @@
 pkgbase = r-tximportdata
 	pkgdesc = provides the output of running various transcript abundance quantifiers on a set of 6 RNA-seq samples from the GEUVADIS project
 	pkgver = 1.30.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bioconductor.org/packages/tximportData
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-markdown
