@@ -4,11 +4,11 @@ _pkgname=RPMM
 _pkgver=1.25
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=10
 pkgdesc="Recursively Partitioned Mixture Model"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
