@@ -1,10 +1,10 @@
 pkgbase = r-writexls
 	pkgdesc = Cross-Platform Perl Based R Function to Create Excel 2003 (XLS) and Excel 2007 (XLSX) Files
 	pkgver = 6.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=WriteXLS
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = perl-archive-zip
 	depends = perl-parse-recdescent
 	depends = perl-text-csv
