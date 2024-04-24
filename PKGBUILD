@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-vompserver
 pkgver=0.5.1
-pkgrel=1
-_vdrapi=2.6.6
+pkgrel=2
+_vdrapi=2.6.7
 pkgdesc="Server side of VOMP"
 url="https://www.loggytronic.com/vomp.php"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
