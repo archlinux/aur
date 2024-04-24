@@ -1,7 +1,7 @@
 pkgbase = r-trust
 	pkgdesc = Trust Region Optimization
 	pkgver = 0.1.8
-	pkgrel = 9
+	pkgrel = 10
 	url = https://cran.r-project.org/package=trust
 	arch = any
 	license = MIT
