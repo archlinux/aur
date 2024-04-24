@@ -1,10 +1,10 @@
 pkgbase = r-registry
 	pkgdesc = Infrastructure for R Package Registries
 	pkgver = 0.5.1
-	pkgrel = 10
+	pkgrel = 11
 	url = https://cran.r-project.org/package=registry
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/registry_0.5-1.tar.gz
 	md5sums = 7ae0c72093167cee00545d49511c4c0b
