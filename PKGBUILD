@@ -1,7 +1,7 @@
 # Maintainer: Stephen Smith <stephen304@gmail.com>
 pkgname=tty2gif-git
 _pkgname=tty2gif
-pkgver=.8a9f400
+pkgver=0.2.r4.ge7d2c39
 pkgrel=1
 pkgdesc="tty2gif let you record scripts and their outputs into both binary and gif formats."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo $(git rev-list --count xft-master).$(git rev-parse --short master)
+  git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

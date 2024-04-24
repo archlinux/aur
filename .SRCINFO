@@ -1,6 +1,6 @@
 pkgbase = tty2gif-git
 	pkgdesc = tty2gif let you record scripts and their outputs into both binary and gif formats.
-	pkgver = .8a9f400
+	pkgver = 0.2.r4.ge7d2c39
 	pkgrel = 1
 	url = https://github.com/z24/tty2gif
 	arch = i686
@@ -14,4 +14,3 @@ pkgbase = tty2gif-git
 	sha256sums = SKIP
 
 pkgname = tty2gif-git
-
