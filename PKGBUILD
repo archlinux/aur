@@ -9,7 +9,7 @@
 
 pkgname=ffmpeg-libfdk_aac
 pkgver=6.1.1
-pkgrel=7
+pkgrel=8
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -146,6 +146,10 @@ prepare() {
   git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
   # Fix build with latest vulkan headers
   git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e
+  # avcodec/nvenc: stop using long deprecated format specifiers
+  git cherry-pick -n 3481f8d99fc44f5516957e774b7f2da74c33beb8
+  # avcodec/nvenc: support SDK 12.2 bit depth API
+  git cherry-pick -n 38346298973e3869d895e0ad3ca3b19dc598c5c8
 }
 
 pkgver() {
