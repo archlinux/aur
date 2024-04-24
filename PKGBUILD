@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=baize-toolbox-git
 _pkgname="白泽工具箱"
-pkgver=0.0.1.beta1.r12.g36b9455
+pkgver=0.0.1.beta1.r13.gbd64c16
 _electronversion=29
 _nodeversion=18
 pkgrel=1
@@ -13,7 +13,7 @@ license=("LGPL-3.0-only")
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-    #"electron${_electronversion}"
+    "electron${_electronversion}"
     'ffmpeg'
 )
 makedepends=(
@@ -28,7 +28,8 @@ source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
     #"${pkgname%-git}.sh"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -40,11 +41,11 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-git}.sh"
+    #sed -e "s|@electronversion@|${_electronversion}|" \
+    #    -e "s|@appname@|${pkgname%-git}|g" \
+    #    -e "s|@runname@|app.asar|g" \
+    #    -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
+    #    -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} --no-sandbox %U"
     cd "${srcdir}/${pkgname%-git}.git"
