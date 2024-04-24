@@ -15,7 +15,7 @@
 pkgname=gnome-control-center-x11-scaling
 _pkgname=gnome-control-center
 pkgver=46.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL-2.0-or-later)
@@ -136,6 +136,7 @@ prepare() {
 build() {
   local meson_options=(
     -D documentation=true
+    -D location-services=enabled
     -D malcontent=true
   )
 
