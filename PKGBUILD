@@ -2,22 +2,22 @@
 
 _pkgname=lxqt-themes
 pkgname=$_pkgname-git
-pkgver=r112.f1737e9
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Themes, graphics and icons for LXQt'
 arch=('any')
-url='https://github.com/lxde/lxqt-themes'
-license=('LGPL')
+url="https://lxqt-project.org"
+license=("LGPL-2.1-only")
 depends=('hicolor-icon-theme')
 makedepends=('git' 'cmake' 'lxqt-build-tools-git')
 provides=("$_pkgname")
-conflicts=("$_pkgname" "lxqt-common"{,-git})
-source=("git+https://github.com/lxde/$_pkgname.git")
+conflicts=("$_pkgname")
+source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
       cd $_pkgname
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+      git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
