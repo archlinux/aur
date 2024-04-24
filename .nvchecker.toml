@@ -1,0 +1,4 @@
+[python-fenics-ufl]
+source = "github"
+github = "FEniCS/ufl"
+use_max_tag = "true"
