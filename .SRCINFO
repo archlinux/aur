@@ -1,4 +1,4 @@
-pkgbase = nmsxtiles-git
+pkgbase = nmsxtiles
 	pkgdesc = nMSXtiles is a tile and sprite editor for MSX in screen modes SC2 and SC4
 	pkgver = 0.9.6.0
 	pkgrel = 1
