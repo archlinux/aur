@@ -48,6 +48,9 @@ package() {
     find empire{/,.py} -type f -exec install -Dm644 {} "${pkgdir}/opt/${pkgname%-git}/{}" \;
     find {.venv,empire}/ -type l -exec cp -a {} "${pkgdir}/opt/${pkgname%-git}/{}" \;
 
+    # Installing docs
+    cd "${srcdir}/${pkgname%-git}/docs/"
+    find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname%-git}/{}" \;
 
     # Installing executable
     echo -e "#!/bin/bash\ncd /opt/${pkgname%-git}/\n.venv/bin/python3 empire.py \$@" > "${srcdir}/${pkgname%-git}/powershell-empire"
