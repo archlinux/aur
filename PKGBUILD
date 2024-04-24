@@ -20,13 +20,14 @@
 # Maintainer: sp1rit <sp1ritCS@protonmail.com>
 
 _basename=clapper
+_libver=0.0
 pkgname="${_basename}-git"
-pkgver=r1134.48b5a7c
+pkgver=r1183.f0f4801
 pkgrel=1
 pkgdesc="A modern media player powered by GStreamer and built for the GNOME desktop environment."
 arch=(any)
 url="https://github.com/Rafostar/clapper"
-license=("GPL-3.0 and LGPL-2.1")
+license=("GPL-3.0-or-later and LGPL-2.1-or-later")
 depends=(
 	"gtk4>=4.1.0"
 	"glib2>=2.76.0" # glib-2.0, gmodule-2.0, gio-2.0
@@ -52,7 +53,7 @@ optdepends=(
 	"gtuber>=r242: Play videos from various services"
 )
 source=("${_basename}::git+https://github.com/Rafostar/${_basename}.git")
-provides=("${_basename}" "libgst${_basename}-1.0")
+provides=("${_basename}" "lib${_basename}-${_libver}" "lib${_basename}-gtk-${_libver}")
 conflicts=("${_basename}")
 md5sums=("SKIP")
 
