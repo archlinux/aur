@@ -4,11 +4,11 @@ _pkgname=beeswarm
 _pkgver=0.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=10
 pkgdesc="The Bee Swarm Plot, an Alternative to Stripchart"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(Artistic2.0)
+license=('Artistic-2.0')
 depends=(
   r
 )
