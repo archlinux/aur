@@ -30,11 +30,5 @@ package() {
   # executable
   install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
   # man pages
-  install -Dm0644 -t "${pkgdir}/usr/share/man/man1" man/wpaperd.1
   install -Dm0644 -t "${pkgdir}/usr/share/man/man5" man/wpaperd-output.5
-  # completion
-  install -Dm0644 completions/${pkgname}.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm0644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" completions/${pkgname}.fish
-  install -Dm0644 -t "${pkgdir}/usr/share/zsh/site-functions" completions/_${pkgname}
-  install -Dm0644 -t "${pkgdir}/usr/share/elvish/completions" completions/${pkgname}.elv
 }
