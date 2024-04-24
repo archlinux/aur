@@ -2,17 +2,17 @@
 
 pkgname=nginx-mod-sticky
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mod-}"
 _rep_name='nginx_'$_modname'_module_ng'
 _mod_dir=$pkgname'_v'$pkgver
 
-pkgdesc="NGINX sticky module - add a sticky cookie to be always forwarded to the same upstream server."
+pkgdesc='NGINX sticky module - add a sticky cookie to be always forwarded to the same upstream server - tested with NGINX 1.26.0.'
 arch=('x86_64')
 depends=('nginx')
 makedepends=('nginx-src')
-url="https://github.com/fabianofurtado/nginx_sticky_module_ng"
+url='https://github.com/fabianofurtado/nginx_sticky_module_ng'
 license=('GPL3')
 
 source=(

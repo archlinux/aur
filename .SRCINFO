@@ -1,7 +1,7 @@
 pkgbase = nginx-mod-sticky
-	pkgdesc = NGINX sticky module - add a sticky cookie to be always forwarded to the same upstream server.
+	pkgdesc = NGINX sticky module - add a sticky cookie to be always forwarded to the same upstream server - tested with NGINX 1.26.0.
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fabianofurtado/nginx_sticky_module_ng
 	arch = x86_64
 	license = GPL3
