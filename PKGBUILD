@@ -1,6 +1,6 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=river-bsp-layout
-pkgver=1.1.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Binary space partitioned layout for the tiling Wayland compositor River"
 arch=('x86_64')
@@ -11,21 +11,23 @@ depends=(
 )
 makedepends=(
   'cargo'
+  'git'
 )
 provides=(
   'river-bsp-layout'
 )
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "${pkgname}"::"git+${url}#tag=v${pkgver}"
+  #"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 b2sums=(
-  'e776ba5464aa016f007971f5bde17d2eb5daff821a1d8610a4004ae942064fe7fa7054441720ae20cd6a5e2c4ea1b589a203ff461d27f3d4a439ffce7b51ac87'
+  '9e19ed8cd7ba118d6134a5a7c607e26163642a5e03f0f82a1b9234f663e57c66c9b9ab4cd6b5291c351be0a17733771a335fe60ec9465e83a5456442b21c6aff'
 )
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -33,19 +35,19 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   cargo build --frozen --release --all-features
 }
 
 check() {
   export RUSTUP_TOOLCHAIN=stable
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   cargo test --frozen --all-features
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname}"
   install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
