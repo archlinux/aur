@@ -1,10 +1,10 @@
 pkgbase = r-ucminf
 	pkgdesc = General-Purpose Unconstrained Non-Linear Optimization
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ucminf
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
 	depends = blas
 	depends = r
