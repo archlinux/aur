@@ -6,7 +6,7 @@ pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
 url="https://github.com/BC-SECURITY/Empire"
 arch=('any')
 depends=('dotnet-sdk-6.0' 'powershell' 'openssl')
-makedepends=('python-poetry')
+makedepends=('tar' 'python-poetry' 'findutils')
 optdepends=(
     'mysql: stager data can be placed in database'
     'xar: enables generating .dmg stagers'
@@ -37,20 +37,18 @@ build() {
 
 package() {
     # Installing into opt
-    mkdir -p "${pkgdir}/opt/${pkgname}"
-    cp -r "${srcdir}/Empire-${pkgver}/empire/" "${pkgdir}/opt/${pkgname}/"
-    cp -r "${srcdir}/Empire-${pkgver}/env/" "${pkgdir}/opt/${pkgname}/"
-    chmod -R 755 "${pkgdir}/opt/${pkgname}/"
-    install -m755 "${srcdir}/Empire-${pkgver}/empire.py" "${pkgdir}/opt/${pkgname}/empire.py"
-    chmod -R 766 "${pkgdir}/opt/${pkgname}/empire/client/downloads/"
-    chmod -R 766 "${pkgdir}/opt/${pkgname}/empire/server/downloads/"
+    cd "${srcdir}/Empire-${pkgver}/"
+    install -dm766 "${pkgdir}/opt/${pkgname}/empire"/{client,server}/downloads/
+    find .venv/ -type f -exec install -D {} "${pkgdir}/opt/${pkgname}/{}" \;
+    find empire{/,.py} -type f -exec install -Dm644 {} "${pkgdir}/opt/${pkgname}/{}" \;
+    find {.venv,empire}/ -type l -exec cp -a {} "${pkgdir}/opt/${pkgname}/{}" \;
+
 
     # Installing executable
-    mkdir -p "${pkgdir}/usr/bin/"
-    echo -e "#!/bin/bash\ncd /opt/${pkgname}/\nsource /opt/${pkgname}/env/bin/activate\npython3 ./empire.py \$@" > "${pkgdir}/usr/bin/powershell-empire"
-    chmod +x "${pkgdir}/usr/bin/powershell-empire"
+    echo -e "#!/bin/bash\ncd /opt/${pkgname}/\n.venv/bin/python3 empire.py \$@" > "${srcdir}/powershell-empire"
+    install -Dm755 "${srcdir}/powershell-empire" "${pkgdir}/usr/bin/powershell-empire"
 
     # Installing license
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -m644 "${srcdir}/Empire-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/Empire-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
 }
