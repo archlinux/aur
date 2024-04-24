@@ -1,7 +1,7 @@
 pkgbase = r-safetensors
 	pkgdesc = Safetensors File Format
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=safetensors
 	arch = any
 	license = MIT
