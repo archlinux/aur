@@ -6,4 +6,4 @@ pkg
 *.part
 *.pkg.tar.*
 *.log
-*.bsp
+*de*.b*p*

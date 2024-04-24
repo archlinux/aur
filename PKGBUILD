@@ -2,8 +2,8 @@
 pkgbase=python-jplephem
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.21
-pkgrel=2
+pkgver=2.22
+pkgrel=1
 pkgdesc="Use a JPL ephemeris to predict planet positions"
 arch=('any')
 url="https://github.com/brandon-rhodes/python-jplephem"
@@ -12,12 +12,13 @@ makedepends=('python-setuptools'
              'python-wheel'
              'python-build'
              'python-installer')
-checkdepends=('python-nose'
-              'python-numpy')
+checkdepends=('python-numpy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://github.com/brandon-rhodes/python-jplephem/raw/master/ci/de405.bsp"
-        "https://github.com/brandon-rhodes/python-jplephem/raw/master/ci/de421.bsp")
-md5sums=('3b289a5e7b4a8b3437c8ca9f1dc5f361'
+        "https://github.com/brandon-rhodes/python-jplephem/raw/master/ci/de421.bsp"
+        "https://github.com/brandon-rhodes/python-jplephem/raw/master/ci/moon_pa_de421_1900-2050.bpc")
+md5sums=('0e3a43b25a51f1dcd027773b1e0dd85d'
+         'SKIP'
          'SKIP'
          'SKIP')
 
@@ -29,7 +30,7 @@ get_pyinfo() {
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    cp ${srcdir}/*.bsp .
+    cp ${srcdir}/*de*b*p* .
 }
 
 build() {
@@ -41,8 +42,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   python -m unittest discover jplephem
-    nosetests || warning "Tests failed" # -v -x
+    python -m unittest || warning "Tests failed" # discover -v
 }
 
 package_python-jplephem() {
