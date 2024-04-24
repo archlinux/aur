@@ -2,7 +2,7 @@
 # Maintainer: Roman Zimbelmann <hut@hut.pm>
 
 pkgname=outfly-git
-pkgver=0.7.2_21_ged1ef1b
+pkgver=0.8.0_5_gc7e439a
 pkgrel=1
 pkgdesc="A breathtaking 3D space game in the rings of Jupiter"
 arch=('any')
@@ -31,5 +31,5 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    build/linux/install.sh "$pkgdir"
+    src/build/linux/install.sh "$pkgdir"
 }
