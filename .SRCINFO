@@ -1,7 +1,7 @@
 pkgbase = vdr-epgsync
 	pkgdesc = Import the EPG of a remote VDR
 	pkgver = 1.0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/vdr-projects/vdr-plugin-epgsync
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = vdr-epgsync
 	arch = armv7h
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=2.6.6
+	depends = vdr-api=2.6.7
 	backup = etc/vdr/conf.avail/50-epgsync.conf
 	source = vdr-epgsync-1.0.2.tar.gz::https://github.com/vdr-projects/vdr-plugin-epgsync/archive/refs/tags/1.0.2.tar.gz
 	sha256sums = 246a9abf9a7b3294d624f1eb9fe46453130464dfd0cd6ff8f49ace2b5272b5be
