@@ -4,11 +4,11 @@ _pkgname=additivityTests
 _pkgver=1.1-4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=7
 pkgdesc="Additivity Tests in the Two Way Anova with Single Sub-Class Numbers"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r
 )
