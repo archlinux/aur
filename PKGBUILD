@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spacemesh-bin
 _pkgname=Spacemesh
-pkgver=1.4.1
+pkgver=1.5.0
 _electronversion=25
 pkgrel=1
 pkgdesc="Spacemesh App (Smesher + Wallet)"
@@ -16,7 +16,7 @@ license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'ocl-icd'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_downurl}/v${pkgver}/${pkgname%-bin}_app_${pkgver}_arm64.deb")
@@ -25,8 +25,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('797855fb52d1c8b316600987a74de1d2701639f8cd229ace603f04959956d606')
-sha256sums_x86_64=('d1ba2ece6556602a2cb672a5199908913fad6416f56d6b04c9da85451ac4e8fd')
+sha256sums_aarch64=('83850350f08c8c1834f689db99dbb2fb1f98e333f9af731223ac08309a1a0351')
+sha256sums_x86_64=('debb5621a40ee329c90aaf2a35f3c8aa8af2f2cab07f557445b70cbc41b04733')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
