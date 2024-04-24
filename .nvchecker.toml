@@ -1,0 +1,5 @@
+[python-fenics-basix]
+source = "github"
+github = "FEniCS/basix"
+use_max_tag = "true"
+prefix = "v"
