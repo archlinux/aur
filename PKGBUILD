@@ -42,10 +42,6 @@ source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('73692028fd00dbe7366ee4cc7bd1942a5c6c18d8a54b67230c3fd6a8fd1938b1')
 validpgpkeys=()
 
-prepare() {
-  cd "$_name-$pkgver"
-}
-
 build() {
   cd "$_name-$pkgver"
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
