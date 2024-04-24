@@ -1,10 +1,10 @@
 pkgbase = r-sgeostat
 	pkgdesc = An Object-Oriented Framework for Geostatistical Modeling in S+
 	pkgver = 1.0.27
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cran.r-project.org/package=sgeostat
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
 	depends = r
 	source = https://cran.r-project.org/src/contrib/sgeostat_1.0-27.tar.gz

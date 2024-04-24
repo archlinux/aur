@@ -4,11 +4,11 @@ _pkgname=sgeostat
 _pkgver=1.0-27
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="An Object-Oriented Framework for Geostatistical Modeling in S+"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
