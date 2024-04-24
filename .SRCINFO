@@ -1,5 +1,5 @@
 pkgbase = vdr
-	pkgver = 2.6.6
+	pkgver = 2.6.7
 	pkgrel = 1
 	url = http://tvdr.de/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = vdr
 	makedepends = ttf-font
 	makedepends = systemd
 	makedepends = ncurses
-	source = vdr-2.6.6.tar.bz2::http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/2.6.6;sf=tbz2
+	source = vdr-2.6.7.tar.bz2::http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/2.6.7;sf=tbz2
 	source = Make.config
 	source = vdr-MainMenuHooks.patch
 	source = 00-vdr.conf
@@ -28,7 +28,7 @@ pkgbase = vdr
 	source = shutdown-wrapper.c
 	source = vdr.service
 	source = vdr.sysuser
-	sha256sums = 41334beed94bf3e4c222b354ae7d2241154845238d1fdd5accfa9d5f103d545b
+	sha256sums = b27addea2d1cd6919d03d865a14ae043cacc600b1e4670530ef3bbeb6b3083e1
 	sha256sums = 6d5a69501e65046b708841c38f066f4598baa7c4b52f382e70fe2f69c01a233f
 	sha256sums = 4c553065d24ee4dc001c06ff588494db44982b7debe9a1e6cd1a8903beb7c87b
 	sha256sums = 86f2469f459e2aabfc0ab703fc8435e458e89c4879376e900160d083924097b3
@@ -52,7 +52,7 @@ pkgname = vdr
 	depends = ttf-font
 	optdepends = lirc-utils: remote control support
 	optdepends = vdr-xorg: To start X11
-	provides = vdr-api=2.6.6
+	provides = vdr-api=2.6.7
 	conflicts = runvdr-extreme
 	replaces = runvdr-extreme
 	options = emptydirs
@@ -67,7 +67,7 @@ pkgname = vdr
 
 pkgname = vdr-examples
 	pkgdesc = Plugins for vdr to show some possible features
-	depends = vdr-api=2.6.6
+	depends = vdr-api=2.6.7
 	depends = gcc-libs
 	depends = ncurses
 	backup = etc/vdr/conf.avail/50-epgtableid0.conf
