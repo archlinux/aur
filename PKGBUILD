@@ -3,7 +3,7 @@
 _pkgname=goby
 pkgname=goby-community
 pkgver=2.9.3
-pkgrel=1
+pkgrel=3
 pkgdesc="Attack surface mapping"
 arch=("x86_64")
 url="https://gobies.org/"
@@ -12,10 +12,12 @@ options=("!strip" "!debug")
 depends=(
 	"atk"
 	"gtk3"
-	"libcap"
 	"libpcap"
 )
-makedepends=('unzip')
+makedepends=(
+	'unzip'
+	"libcap"
+	)
 source=(
 	"https://$_pkgname-storage-public.oss-cn-beijing.aliyuncs.com/$pkgver/$_pkgname-linux-x64-$pkgver-Community.zip"
 	"$pkgname.desktop"
@@ -41,4 +43,5 @@ package() {
 	install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 	install -Dm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 	chmod -R ugo+rwX $pkgdir/opt/$pkgname
+	setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' $pkgdir/opt/$pkgname/golib/goby-cmd-linux
 }
