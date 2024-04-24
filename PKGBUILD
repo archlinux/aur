@@ -4,11 +4,11 @@ _pkgname=alabaster.schemas
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Schemas for the Alabaster Framework"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r
 )
@@ -19,11 +19,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('308883d85ab416d45eaa55428463d308')
-sha256sums=('c1d74a8560654dcc4bf1254b39bc0e15938387038be9eec91daf1cd72569976b')
+b2sums=('7217359f4cd406850f14ad148abc9437594ee7b65416315ceb5d3807a70c4081ef3b7b40beb5e5f651a5eebda70f0b7c86b91ef30764284a295fa366aa85ae74')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
