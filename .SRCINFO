@@ -1,12 +1,12 @@
 pkgbase = wenger-toolchains
 	pkgdesc = This is toolchain managerment tools
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 0
 	url = https://github.com/wengerbinning/toolchains
 	install = toolchains.install
 	arch = any
 	license = GPL
-	source = wenger-toolchains-v0.6.tar.gz::https://github.com/wengerbinning/toolchains/archive/refs/tags/v0.6.tar.gz#
+	source = wenger-toolchains-v0.7.tar.gz::https://github.com/wengerbinning/toolchains/archive/refs/tags/v0.7.tar.gz#
 	sha256sums = SKIP
 
 pkgname = wenger-toolchains
