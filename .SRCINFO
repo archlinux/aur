@@ -1,10 +1,10 @@
 pkgbase = r-poibin
 	pkgdesc = The Poisson Binomial Distribution
 	pkgver = 1.5
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cran.r-project.org/package=poibin
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/poibin_1.5.tar.gz
 	md5sums = ccb27983b15b6670ae4b454bea9bd0a1

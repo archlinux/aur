@@ -4,11 +4,11 @@ _pkgname=poibin
 _pkgver=1.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="The Poisson Binomial Distribution"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   r
 )
