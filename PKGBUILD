@@ -3,8 +3,8 @@
 pkgname=igdm-bin
 _pkgname=IGdm
 pkgver=3.0.4
-_electronversion=13
-pkgrel=8
+_electronversion=10
+pkgrel=9
 pkgdesc="Desktop application for Instagram DMs"
 arch=('x86_64')
 url="https://github.com/igdmapps/igdm"
