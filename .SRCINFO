@@ -1,7 +1,7 @@
 pkgbase = vdr-svdrposd
 	pkgdesc = Make contents of OSD menu available via SVDRP
 	pkgver = 1.0.0
-	pkgrel = 25
+	pkgrel = 26
 	url = https://github.com/vdr-projects/vdr-plugin-svdrposd
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = vdr-svdrposd
 	arch = armv7h
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=2.6.6
+	depends = vdr-api=2.6.7
 	backup = etc/vdr/conf.avail/50-svdrposd.conf
 	source = vdr-svdrposd-1.0.0.tar.gz::https://github.com/vdr-projects/vdr-plugin-svdrposd/archive/refs/tags/1.0.0.tar.gz
 	sha256sums = c5233a61d6295eb06e5ff0b9a886420e8ceabf270d78f2c7814ed8f58c38acd7
