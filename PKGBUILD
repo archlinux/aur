@@ -6,7 +6,7 @@ pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
 url="https://github.com/BC-SECURITY/Empire"
 arch=('any')
 depends=('dotnet-sdk-6.0' 'powershell' 'openssl')
-makedepends=('python-poetry' 'git')
+makedepends=('git' 'python-poetry' 'findutils')
 optdepends=(
     'mysql: stager data can be placed in database'
     'xar: enables generating .dmg stagers'
@@ -23,8 +23,8 @@ source=("${pkgname%-git}::git+https://github.com/BC-SECURITY/Empire.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+    cd "$srcdir/${pkgname%-git}"
+    printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
@@ -42,20 +42,18 @@ build() {
 }
 package() {
     # Installing into opt
-    mkdir -p "${pkgdir}/opt/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}/empire" "${pkgdir}/opt/${pkgname%-git}/"
-    cp -r "${srcdir}/${pkgname%-git}/env/" "${pkgdir}/opt/${pkgname%-git}/"
-    chmod -R 755 "${pkgdir}/opt/${pkgname%-git}"
-    install -m755 "${srcdir}/${pkgname%-git}/empire.py" "${pkgdir}/opt/${pkgname%-git}/empire.py"
-    chmod -R 766 "${pkgdir}/opt/${pkgname%-git}/empire/client/downloads/"
-    chmod -R 766 "${pkgdir}/opt/${pkgname%-git}/empire/server/downloads/"
+    cd "${srcdir}/${pkgname%-git}/"
+    install -dm766 "${pkgdir}/opt/${pkgname%-git}/empire"/{client,server}/downloads/
+    find .venv/ -type f -exec install -D {} "${pkgdir}/opt/${pkgname%-git}/{}" \;
+    find empire{/,.py} -type f -exec install -Dm644 {} "${pkgdir}/opt/${pkgname%-git}/{}" \;
+    find {.venv,empire}/ -type l -exec cp -a {} "${pkgdir}/opt/${pkgname%-git}/{}" \;
+
 
     # Installing executable
-    mkdir -p "${pkgdir}/usr/bin/"
-    echo -e "#!/bin/bash\ncd /opt/${pkgname%-git}/\nsource /opt/${pkgname%-git}/env/bin/activate\npython3 ./empire.py \$@" > "${pkgdir}/usr/bin/powershell-empire"
-    chmod +x "${pkgdir}/usr/bin/powershell-empire"
+    echo -e "#!/bin/bash\ncd /opt/${pkgname%-git}/\n.venv/bin/python3 empire.py \$@" > "${srcdir}/${pkgname%-git}/powershell-empire"
+    install -Dm755 "${srcdir}/${pkgname%-git}/powershell-empire" "${pkgdir}/usr/bin/powershell-empire"
 
     # Installing license
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -m644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+
 }
