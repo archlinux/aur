@@ -1,6 +1,6 @@
 pkgname=waylyrics
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="the furry way to show desktop lyrics"
 arch=("x86_64")
 url="https://waylyrics.github.io/waylyrics/waylyrics/"
@@ -38,12 +38,16 @@ check() {
 }
 package() {
     depends+=("hicolor-icon-theme")
+    local _id=io.github.waylyrics.Waylyrics
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 io.poly000.waylyrics.desktop \
-        "$pkgdir/usr/share/applications/io.poly000.waylyrics.desktop"
-    install -Dm644 io.poly000.waylyrics.gschema.xml \
-        "$pkgdir/usr/share/glib-2.0/schemas/io.poly000.waylyrics.gschema.xml"
+    install -Dm644 metainfo/$_id.desktop \
+        "$pkgdir/usr/share/applications/$_id.desktop"
+    install -Dm644 metainfo/$_id.gschema.xml \
+        "$pkgdir/usr/share/glib-2.0/schemas/$_id.gschema.xml"
+    install -Dm644 metainfo/$_id.metainfo.xml \
+        "$pkgdir/usr/share/metainfo/$_id.metainfo.xml"
+    local theme locale
     for theme in themes/*.css
     do
         echo "Installing theme $theme..."
@@ -57,7 +61,7 @@ package() {
         msgfmt "$locale" -o - | install -Dm644 /dev/stdin \
             "$pkgdir/usr/share/locale/$mo"
     done
-    install -Dm644 res/icons/hicolor/scalable/apps/io.poly000.waylyrics.svg \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.poly000.waylyrics.svg"
+    install -Dm644 res/icons/hicolor/scalable/apps/$_id.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_id.svg"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
