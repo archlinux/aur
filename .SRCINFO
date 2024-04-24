@@ -1,10 +1,10 @@
 pkgbase = r-bh
 	pkgdesc = Boost C++ Header Files
 	pkgver = 1.84.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=BH
 	arch = any
-	license = Boost
+	license = BSL-1.0
 	depends = boost
 	depends = r
 	source = https://cran.r-project.org/src/contrib/BH_1.84.0-0.tar.gz
