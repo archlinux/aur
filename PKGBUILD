@@ -5,21 +5,21 @@ _pkgname=RNASeqPower
 _pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Sample size for RNAseq studies"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(LGPL)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('38da142eb3ee64f2e7684ead27e4520f')
-sha256sums=('24a9f4de36a5885161ea16b3316d7e7eacbbfdd395f4b3037fcf89f1eeeb1126')
+b2sums=('c2037b9e100bb3aa2e5e79354b65faf55f1c5499230cce5a590d3b0ef1856a1fcbc789f4a34a0b817cd09bcdbd67ac242685467209a601b25d55efe5634f7be0')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
