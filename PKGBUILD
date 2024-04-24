@@ -30,17 +30,8 @@ checkdepends=(
   'python-pytest-ruff'
   'python-types-python-dateutil'
 )
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('73692028fd00dbe7366ee4cc7bd1942a5c6c18d8a54b67230c3fd6a8fd1938b1')
-validpgpkeys=()
 
 build() {
   cd "$_name-$pkgver"
