@@ -1,0 +1,4 @@
+[allure-commandline]
+source = "github"
+github = "allure-framework/allure2"
+use_latest_release = "true"
