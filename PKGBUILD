@@ -3,7 +3,7 @@
 _pkgname=sentrum
 pkgname=$_pkgname-bin
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon that monitors watch-only bitcoin wallets"
 arch=('x86_64')
 url="https://github.com/sommerfelddev/$_pkgname"
@@ -16,6 +16,8 @@ sha256sums=('4013871ff1ce90cb654981a7e5752a4ae70c4a91b6d19ccf35e194a13e0766c9'
             'SKIP')
 validpgpkeys=('B79DF5F37D7F9B0F390238D53298945F717C85F8')
 backup=("etc/$_pkgname/$_pkgname.toml")
+provides=('sentrum')
+confllicts=('sentrum')
 
 prepare() {
     sha256sum --check --ignore-missing "$_pkgname-v$pkgver-manifest.txt"
