@@ -1,0 +1,16 @@
+pkgbase = prometheus-tasmota-power-exporter
+	pkgdesc = Prometheus Tasmota Power Exporter
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/CommanderRedYT/tasmota-power-exporter
+	arch = any
+	license = GPLv3
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-prometheus_client
+	depends = python-requests
+	source = https://github.com/CommanderRedYT/tasmota-power-exporter/archive/refs/tags/1.0.3.tar.gz
+	sha256sums = 3933f9149fe49383d2217d29492f2584539691aaa2015527a6725e292b90d7e5
+
+pkgname = prometheus-tasmota-power-exporter
