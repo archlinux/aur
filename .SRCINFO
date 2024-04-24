@@ -1,6 +1,6 @@
 pkgbase = antimony-git
 	pkgdesc = Graph-based 3D CSG CAD modeller
-	pkgver = 0.9.3b.r12.2618d096
+	pkgver = 0.9.3b.r38.f6a56dd7
 	pkgrel = 1
 	url = http://www.mattkeeter.com/projects/antimony/3/
 	arch = x86_64
@@ -10,14 +10,17 @@ pkgbase = antimony-git
 	makedepends = lemon
 	makedepends = flex
 	makedepends = boost
+	depends = glibc
+	depends = gcc-libs
+	depends = libpng
 	depends = qt5-base
 	depends = python
 	depends = boost-libs
+	depends = hicolor-icon-theme
 	provides = antimony-git
-	source = antimony-git::git://github.com/mkeeter/antimony.git
+	source = antimony-git::git+https://github.com/mkeeter/antimony.git
 	source = antimony.desktop
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = antimony-git
-

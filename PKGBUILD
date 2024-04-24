@@ -2,16 +2,16 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Earnestly
 pkgname=antimony-git
-pkgver=0.9.3b.r12.2618d096
+pkgver=0.9.3b.r38.f6a56dd7
 pkgrel=1
 pkgdesc="Graph-based 3D CSG CAD modeller"
 arch=(x86_64)
 url="http://www.mattkeeter.com/projects/antimony/3/"
 license=('MIT')
-depends=('qt5-base' 'python' 'boost-libs')
+depends=('glibc' 'gcc-libs' 'libpng' 'qt5-base' 'python' 'boost-libs' 'hicolor-icon-theme')
 makedepends=('git' 'ninja' 'lemon' 'flex' 'boost')
 provides=(${pkgname})
-source=("${pkgname}::git://github.com/mkeeter/antimony.git" "antimony.desktop")
+source=("${pkgname}::git+https://github.com/mkeeter/antimony.git" "antimony.desktop")
 md5sums=('SKIP' 'SKIP')
 
 pkgver() {
@@ -37,5 +37,5 @@ package() {
 	cp deploy/icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/antimony.svg
 
 	mkdir -p ${pkgdir}/usr/share/applications
-	cp ../antimony.desktop ${pkgdir}/usr/share/applications/antinomy.desktop
+	cp ../antimony.desktop ${pkgdir}/usr/share/applications/antimony.desktop
 }
