@@ -29,7 +29,7 @@ pkgbase = linux-clear-cjktty
 	sha256sums = SKIP
 
 pkgname = linux-clear-cjktty
-	pkgdesc = The Clear Linux内核,带有cjktty并开启kexec kernel and modules
+	pkgdesc = Clear Linux内核,带有cjktty并开启kexec
 	install = linux.install
 	depends = coreutils
 	depends = kmod
@@ -42,5 +42,5 @@ pkgname = linux-clear-cjktty
 	provides = KSMBD-MODULE
 
 pkgname = linux-clear-cjktty-headers
-	pkgdesc = Headers and scripts for building modules for the Clear Linux内核,带有cjktty并开启kexec kernel
+	pkgdesc = Clear Linux内核,带有cjktty并开启kexec
 	depends = pahole
