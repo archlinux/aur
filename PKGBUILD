@@ -12,7 +12,7 @@ fi
 # basic info
 _pkgname="logseq-desktop"
 pkgname="$_pkgname-bin"
-pkgver=0.10.8
+pkgver=0.10.9
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
@@ -136,15 +136,9 @@ _update_version() {
     return
   fi
 
-  _response=$(curl -Ssf "$url/releases.atom")
-
-  _pkgver_new=$(
-    printf '%s' "$_response" \
-      | grep '/releases/tag/' \
-      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}' | sort -V | tail -1
-  )
-
+  _response=$(curl -SsfL "https://api.github.com/repos/logseq/logseq/releases/latest")
+  _pkgver_new=$(printf '%s' "$_response" | grep -oP '"tag_name": "\K(.*?)(?=")')
+  
   # update _pkgver
   if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
     _pkgver="${_pkgver_new:?}"
