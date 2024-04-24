@@ -1,12 +1,14 @@
 pkgbase = exploitdb-bin-sploits-git
 	pkgdesc = Offensive Security's Exploit Database Archive
 	pkgver = 2022.11.22.r0.g23245b8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.exploit-db.com/
 	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = sed
+	makedepends = coreutils
+	makedepends = findutils
 	depends = exploitdb
 	provides = exploitdb-bin-sploits
 	conflicts = exploitdb-bin-sploits
