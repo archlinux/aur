@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=realm-studio-git
 _pkgname="Realm Studio"
-pkgver=15.0.0.r0.ge4905c42
+pkgver=15.0.1.r0.g36c20587
 _electronversion=27
-_nodeversion=16
+_nodeversion=18
 pkgrel=1
 pkgdesc='A tool, any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.'
 arch=('x86_64')
@@ -25,7 +25,8 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 pkgver() {
@@ -65,6 +66,7 @@ build() {
     fi
     sed '/"AppImage",/d;s|"tar.gz"|"dir"|g' -i package.json
     npm install
+    npm run prepackage
     npm run package
 }
 package() {
