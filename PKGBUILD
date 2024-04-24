@@ -3,30 +3,22 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgbase=xineliboutput
 pkgname=(vdr-xineliboutput xineliboutput-frontends xineliboutput-xineplug)
-pkgver=2.2.0
-_gitver=279926fee2ea471da8f367cd76b7215118b9bc37
-_vdrapi=2.6.6
-pkgrel=9
+pkgver=2.3.0
+_gitver=16af8504099ddfbcba75f191d9465130d6eeb56c
+_vdrapi=2.6.7
+pkgrel=1
 url="https://www.sourceforge.net/projects/xineliboutput"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
-license=('GPL2')
+license=('GPL-2.0-or-later')
 makedepends=('avahi' 'dbus-glib' 'git' 'glu' 'libcec' 'libextractor' 'libxrandr' 'mesa' "vdr-api=${_vdrapi}" 'xine-lib')
 source=("$pkgbase::git://git.code.sf.net/p/xineliboutput/git#commit=$_gitver"
         "50-$pkgbase.conf")
-md5sums=('SKIP'
-         'c3b2b26732606b4f95ca95cea6ce2084')
+sha256sums=('296d2ccaaa584ccf9b0491ebf3a03e7e6333d6a5900a2803119dce38016b0ded'
+            'a608928d27df92fb7467ae91da0feaf472254192c84c4af4393a958cc84af919')
 
 pkgver() {
   cd "${srcdir}/$pkgbase"
   git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${srcdir}/$pkgbase"
-
-  # Make xineliboutput use "gl.pc" instead of "opengl.pc"
-  # This is needed to have some legacy stuff that is still needed here
-  sed -ri 's/(\s|-)opengl(\s|$)/\1gl\2/g' configure
 }
 
 build() {
