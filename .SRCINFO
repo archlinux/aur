@@ -1,11 +1,11 @@
 pkgbase = tws
 	pkgdesc = IntereactiveBrokers Trader Workstation
-	pkgver = 981.3f
+	pkgver = 10.19.2l
 	pkgrel = 1
 	url = https://www.interactivebrokers.com/en/trading/tws.php#tws-software
 	arch = x86_64
 	license = custom
 	source = https://download2.interactivebrokers.com/installers/tws/stable-standalone/tws-stable-standalone-linux-x64.sh
-	sha512sums = 5825eec9c400ff68fd29092dcbee19efea2e23dbd8553e7413dbbcdac9ee322cc31489140fed8331c8e082bc5cc70bcdd23f0c1db5c3e7687fb6e44afac88da3
+	b2sums = e00803aff1d384231f55c390cec9d200b86aa62be5ecd0a6f28bff479ead66f38ff167a525321988ae36cfb31980f1b3e65dd55d8ca18d243a276cb986111cc9
 
 pkgname = tws
