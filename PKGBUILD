@@ -1,36 +1,36 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Co-Maintainer: Peter Mattern <pmattern at arcor dot de>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=lxqt-notificationd
 pkgname=$_pkgname-git
-pkgver=1.3.0.15.g51541d5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="LXQt notification daemon and library."
 arch=("i686" "x86_64")
-url="https://lxqt.org"
-license=("LGPL2.1")
-depends=("qt5-base" "liblxqt-git" "kwindowsystem5")
-makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
+url="https://lxqt-project.org"
+license=("LGPL-2.1-only")
+depends=('layer-shell-qt' 'liblxqt-git' 'kwindowsystem')
+makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname" "notification-daemon")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
-
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
+  cd "$srcdir/$_pkgname"
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
-	mkdir -p build
-	cd build
-	cmake "$srcdir/$_pkgname" \
-		-DCMAKE_INSTALL_PREFIX=/usr
-	make
+  mkdir -p build
+  cd build
+  cmake "$srcdir/$_pkgname" \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir" install
+  cd build
+  make DESTDIR="$pkgdir" install
 }
