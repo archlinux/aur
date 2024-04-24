@@ -1,10 +1,10 @@
 pkgbase = r-tximport
 	pkgdesc = Import and summarize transcript-level estimates for transcript- and gene-level analysis
 	pkgver = 1.30.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bioconductor.org/packages/tximport
 	arch = any
-	license = LGPL
+	license = LGPL-2.0-or-later
 	depends = r
 	optdepends = r-arrow
 	optdepends = r-deseq2

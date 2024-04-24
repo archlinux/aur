@@ -4,11 +4,11 @@ _pkgname=tximport
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="Import and summarize transcript-level estimates for transcript- and gene-level analysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(LGPL)
+license=('LGPL-2.0-or-later')
 depends=(
   r
 )
