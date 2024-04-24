@@ -1,0 +1,5 @@
+[python-eth-keys]
+source = "github"
+github = "ethereum/eth-keys"
+use_max_tag = true
+prefix = "v"
