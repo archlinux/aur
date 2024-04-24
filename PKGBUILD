@@ -1,19 +1,20 @@
 # Maintainer: Docler <hello@docler.me>
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=fvm-bin
-pkgver=3.1.3
-pkgrel=2
+pkgver=3.1.4
+pkgrel=1
 pkgdesc="Flutter Version Management: A simple CLI to manage Flutter SDK versions"
 arch=('x86_64')
 url="https://github.com/leoafarias/fvm"
 license=('MIT')
-depends=('bash' 'glibc' 'git' 'unzip')
+depends=('bash' 'git' 'glibc' 'unzip')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${url}/releases/download/${pkgver}/fvm-${pkgver}-linux-x64.tar.gz"
         "${pkgname}.sh")
-sha256sums=('a86aa8f218c9463c37c63db60c748a7816d40e6a600e75ba670fd264c82c985f'
-            'a4b23cdb2a96907fc9c1ca041baa6e440e7a91b1af9749974a105c2b5ead7a5b')
+sha256sums=('0eb28aea782352207e94013f38e66de257e1ac5a5bb4538f1e67c75caabe06fb'
+            'eafcf25a0db7cc51f242fea20bd0d3e83060d5abfefb16146c7862b74e6c3893')
 
 package() {
   install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/fvm"
