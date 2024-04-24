@@ -1,0 +1,17 @@
+pkgbase = gimp-stable-appimage
+	pkgdesc = GNU Image Manipulation Program Stable Edition built from PPAs and JuNest (Arch Linux)
+	pkgver = 2.10.36
+	pkgrel = 6
+	url = https://github.com/ivan-hc/GIMP-appimage
+	arch = x86_64
+	license = GPL3
+	conflicts = gimp
+	noextract = GNU-Image-Manipulation-Program_2.10.36-6-archimage3.4-x86_64.AppImage
+	source = GNU-Image-Manipulation-Program_2.10.36-6-archimage3.4-x86_64.AppImage::https://github.com/ivan-hc/GIMP-appimage/releases/download/continuous-stable/GNU-Image-Manipulation-Program_2.10.36-6-archimage3.4-x86_64.AppImage
+	source = gimp.desktop
+	source = gimp.png
+	sha512sums = SKIP
+	sha512sums = aae594d973acb338ce23f450693a0afb622451f3456d5c7fd58b6d17c534f3a76b108539de37906010f869adf0a38c8e1914d9e6824c3a49caf075ccc8a9ae06
+	sha512sums = 1a4deb31dff111fec6ebd3c0d9441aa265f0808d316a76b9703acebf4be1299337c17e01a7602e6ea99dceedbe9787ac0663bed5aa4347cb986ec60e4f38d7b0
+
+pkgname = gimp-stable-appimage
