@@ -1,8 +1,8 @@
 # Maintainer: Sich <little_sich@tuta.io>
 pkgname=celestia-qt5-git
-pkgver=r7028.f5512c459
+pkgver=r7102.8ae5818db
 pkgrel=1
-pkgdesc="Real-time space simulation (git version with Qt5 frontend and video capture support)"
+pkgdesc="Real-time space simulation (git version with Qt5 and video capture)"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 url="https://celestiaproject.space"
@@ -18,6 +18,11 @@ sha512sums=('SKIP'
 pkgver() {
     cd "$srcdir/Celestia"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$srcdir/Celestia"
+	git submodule update --init
 }
 
 build() {
