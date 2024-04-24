@@ -1,10 +1,10 @@
 pkgbase = r-matrixcalc
 	pkgdesc = Collection of Functions for Matrix Calculations
 	pkgver = 1.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=matrixcalc
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/matrixcalc_1.0-6.tar.gz
 	md5sums = 3b7acd84cfbe8085fab05d2f40ff0c79
