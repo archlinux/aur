@@ -1,4 +1,4 @@
-pkgbase = hurl
+pkgbase = hurl-grab
 	pkgdesc = HTTP/HTTPS/Gopher file grabber
 	pkgver = 0.8
 	pkgrel = 1
@@ -9,8 +9,9 @@ pkgbase = hurl
 	arch = armv7h
 	license = ISC
 	depends = libretls
+	conflicts = hurl
 	conflicts = hurl-bin
 	source = https://codemadness.org/releases/hurl/hurl-0.8.tar.gz
 	sha256sums = 00facf1f6aa507af8544f50ad6722d1f13724b3553dba2aed1ab86c4d76b42c1
 
-pkgname = hurl
+pkgname = hurl-grab
