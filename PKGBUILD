@@ -5,6 +5,7 @@ pkgver=0.8.9
 pkgrel=1
 pkgdesc="Permanently free DeepL API written in Golang"
 arch=('x86_64' 'i686' 'aarch64' 'mips')
+conlicts=('deeplx')
 url="https://github.com/OwO-Network/DeepLX"
 license=('MIT')
 provides=('deeplx')
