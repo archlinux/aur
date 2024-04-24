@@ -10,7 +10,7 @@
 
 pkgver=26.6.10
 _gcc_patches=116-patchset-2
-pkgrel=4
+pkgrel=5
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -61,8 +61,10 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
 options=('!lto') # Electron adds its own flags for ThinLTO
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         "https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patches/chromium-$_gcc_patches.tar.xz"
+        # Chromium
         REVERT-disable-autoupgrading-debug-info.patch
-        compiler-rt-16.patch
+        compiler-rt-adjust-paths.patch
+        # Electron
         default_app-icon.patch
         electron-launcher.sh
         electron.desktop
@@ -216,12 +218,12 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_vulkan-deps_vulkan-validation-layers_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-ValidationLayers.git#commit=e2be2287f4820ed578d1adeca981736146a74d9a
         # END managed sources
        )
-sha256sums=('SKIP'
+sha256sums=('5e418ac1e7f3bdd1f4858b351409a36ca7c69adaecae82f6d0b643216b4574da'
             '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
-            '8a2649dcc6ff8d8f24ddbe40dc2a171824f681c6f33c39c4792b645b87c9dcab'
+            'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
-            'b0ac3422a6ab04859b40d4d7c0fd5f703c893c9ec145c9894c468fbc0a4d457c'
+            'b406bc9adb7fadcfbd26f204f3e0ef8c31a41fa09181edb28626167ac58fe038'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             'ff9ebd86b0010e1c604d47303ab209b1d76c3e888c423166779cefbc22de297f'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
@@ -229,147 +231,147 @@ sha256sums=('SKIP'
             '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c'
             'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
             '3ae82375ba212c31fd4ba6f1fa4e2445eeca8eb8c952176131ad57c0258db224'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            '4504f8fc447b7dde1f07f2a85161553e1bf4b87439c8c15039db04ef4d595556'
+            '3d5af1414e90349a6f412d8264c9b613346a38adecf226447d1d0d511f9410d3'
+            '9fe7199f791719f711ece2ee4cdbcbc4bbae42a95df70fb2f583b5b48af3fb2c'
+            '3ff2f108019f2639c665a0f15d45b40c900683e1fd5643f7c4ca589c1e87d9e0'
+            '6d573a01fc79a7183135f86b1a0f2fb161fc75533e11606c0918a852fbdb08af'
+            '91097214ef1d200b95252095af41e526685a3149c28955cac37f7418f01e9f95'
+            '0bc717d20a3f971145cc76c8a7486a7a0513ddfe1da53b569295a55d0c08c1ba'
+            '5abf726ce9e19c0b0e7818a7ced615a1a6d16f306e7315b9e6db53118c0669b5'
+            '045eb27642ac8f49b52efec7c52bb6ea3c908552ffadc50449a23b27da7a4737'
+            '8a8c21768a1f3764e6887cfc907dd857e9fc00a1269dd858e2ba98d70aef889d'
+            'a62dd76d5ebcae2e2302509f057d21c35ffd69549ee7cdac47b2a85616dcc9be'
+            'e25c1b40e5bf636638a448ec1efea3757d588b0ba8395c900dbc3fdda5634eac'
+            '2a6fdb612135525bc5aecafd6c4c1b3e175cac306b08e19df6a85f2f8af64555'
+            'c63267990f1776f4870ba350a8fc96bdf8107c7cf7c7ca2b26e8b69f309728c4'
+            '7ba7fe319a5b532e85aecbf34dc8f1b9176f4dcb512043fa9a4b78742eddafc4'
+            'cd20d3f67c34baf1e66d488506db48b9b3022bbd769817ff037e5562ca4935b3'
+            '4520f73d15eca0daed5afcb57fcaac8f53aa2ab1140457480140d59341ed1088'
+            '693e4d777f8d684f7a48a0bd61abe322d70c669fff0f8036f66fed05c87b0fc1'
+            'd6045d4ebf49f14b994e58fbd2a84f95ca43a23f627db19b20cbfad1a0f49016'
+            '580078d0e6e5dfd1ae1f935978e04270012fb594ed4ce435bf98963d4541715a'
+            '8aa235007b2e20938623f88014765f99bd41b7c6a0ab70ed34a78ddf3e87fcff'
+            'f26ffeb73fd2b7f91d863f2c7333fdfc4c25c608bb8774d42942b403cf82578b'
+            '20e7783deb29e24aa46bdee407fcb083c3e7a682ee51f3b51af12e288dfab800'
+            'd4f65ed7b1862681f7a81dc91de144c5830a8fa03a05851c4531d3dcbcb50a41'
+            '8b97c25874c17644300d1cbe6ac1fceb705bf18297e27699ba20497fc47ae239'
+            'e6a28c25e3d93c9c37414149ff44ac7a1bbb4d8a167061f8ee9679dc065af1bb'
+            '9e950d9f0bf7f0b52de6744de0922583b4b32281e87f0488c2d1cfc533665aa5'
+            '6125206b56f365874ba812038dbcd4271f8a73235ab4d211c42b7fd2d636bbc8'
+            'a69429e3718d543bdb59de22e116c16aa1bc56ab6cb2e50b52f09a6711adccbf'
+            '4f5fd6719234fbc67c517e20e2170db66d37455d69bec880624a0a0304a0e91c'
+            '4c26f5c3c2024d5f174ce218707cefa69f2373d5e6020803ca6a7687af33d68d'
+            '9fd46021a91d5e3bb3ece7c2696ef4ee147b65318b849f5bfc72f21383723628'
+            'cd1735ebf1b4e09f8ad266ba18cc4342a7ccdcaecf530916daefb57e79ef28c3'
+            '15b6e8197381bba5a764b90d9151940837c52139dd038ff87bb2fb2788f7cfeb'
+            '47f3f3d044cc0658274833022db1e7695964b1da8f37cb905882d15457212fba'
+            '9a0ea3757e2c81f756a39869b8530e16332764a4a27b8435ceb927f82d9bad4c'
+            '6258126c4c354ccacd0ec5f9f82c6970d576359c7aba86e44277b459d1645325'
+            'a0a63972529db8a951ff20f7de1d2084fc9990ab0ac0deec9a4210529b5a7ab0'
+            'cf96ae84ef29434dd20b0f2daca6013373dd6e47c87cde3aa03abce0500a9f03'
+            'b348d5594d3e4707e440e8d2834aeac821bbce91a551515550118b26086fc688'
+            '590333d14900d5117d082a5f31907d09552612f7b864c3ddc4dc0b00012e36c9'
+            '5d0c4f261d36707f926fa9ef9a39349f1cccac8ae6443a8f8571c1625eb90c41'
+            '1a1e2859649a95beef8dba22e8c77735652a212bc88a9bb4dfe1458667dcabbc'
+            '792d29bbb3fdcfdf21face515e6b9fba1a14ee7bdc82f0cff9620592925425c9'
+            'b153da5dab2fc13bf544ae1090e73c5e03e4e60f4eb49886dc1394a191af4385'
+            '12081574c11ef21850e9d2cf62580216296a6b7af48f679e6c28e05a376d1f3d'
+            '0f27ab5434870f31886d7c958ced4ff335a09a1080637fb50afdf95db19e3442'
+            '1daad4312a440dcf765e8ae269c8d2d2d0a03449e4f0fe46af61ec3c8ee6a190'
+            '88cdf771889253831a8873b3234e80cd0b6604bd1fc31a93cff36fa9c2281159'
+            'af81f653b73270d4b8f9d1e92ecf39821498c08f4ca5c69872e39bac90b40083'
+            '5a720c28ef8557e80c4b660b2000529c0de428a05b34d0ced5bc56b1097a69ec'
+            '409ee4de1d8d203c839118b398d508788cdd270ec9295b3c5375ac33f39c12af'
+            '92fe0e99dea519a56b80321646b7b2b674564f4e8d036cbbf4d98e8588531720'
+            '7d7695d49c65c0ab2beddc47f1ef26d27206e23c5856d64e74bc3bc29bc116e6'
+            '9f58ce3d45baf6796965aa79109af62c330f82b97d320bb5d7bbbdea0e579a92'
+            '0debfc572068aeab2fa4e6e7ba45fc14a402fa735423cc9bbfc5ce94a8cd074d'
+            '4460e87be27812c5153bfeb46ac3e10a21e97df876f2b431d912e9939aa7390a'
+            '0ab4822c55ba19e7f4ed25a5301293e4cc9e6b4296e9c2774b75de6c6af42ad0'
+            '63e3cc92fb9b5b9181082eb8ba1574a11e4c36272d10930c4bd7610fed17308a'
+            'da95a7b91ee75e5053ccd0333610598372fa6ba285c6ff0dc70e47b5c3c069db'
+            '9f651546c591559629b8878929ad790e241682fbf708af1d15e1299ad3a2b93b'
+            '08b59f3198d736a0846d9ee2f6d848a3db72d4503d026176ef683c595a8825b4'
+            'efc097a82dc71ef67e9ac8904097bf84f47a5e52ff2d36b4bb5e8183afb2625d'
+            'd4d1cd477f04f3859646a6eed8c70027903dd48b7e699f381a65b8da807006da'
+            '66b8f66432b1325861b5f411c71ec49fa171d9a0063bf958242ddde6ce09c12f'
+            '9c888babaaf59afc855d944e8b26ab573d5e80026dc3bc8dc64720b8f5bb27a2'
+            'f5a58a4d6af406744a454a44507719a2b3ac0efa40db1bf7501b00af9c5c2662'
+            'f90cb311a300832f764a36141fe4ffbda8d3303787bcc12805acc09066c7ba75'
+            'cc74c39e0133905a1f4f264590b44282df4231b73972e7a9708b311e46e00f88'
+            'fe2f23319ca61ecb2fac8e586ad71fe36ba340fd4f5c4d0372d0e119d5c264e0'
+            'baa1f2f43280eab4d42804da031bb6bd007ec24ac32519154696c5f680e0f850'
+            '4070e77bf7afd9fb949067f63c3580d1f5badacfe4c2ab187129ba20446efd04'
+            '9c8de69ad47af04565a89920c08f44694f97d7a16f8f23610e5beaf9f38cb71c'
+            '25906418111df0d29db783092d94148e130592d722393ad4bd76809c6f63f9bd'
+            '698e598c6f94a46eb9a26020a74d8904def28553157712af8afc3e809771ff25'
+            '9341676174943fbc5268e023c3e572171289fc4748401723a6dcaef50f793dcd'
+            '8fec639132e23fef03747590224a6cf24ff05b00df363676cb2a6e471596c307'
+            '7b32c27a5513c451032132fe5dc724de23d3b0738a0609a96bd44deee1d46681'
+            '946d37947365c6a27f74486f2959590d2afb5eb44aafa7f6b6106d2b53e98e9f'
+            '33810d30dcd83520e16e0be2ddc1eec0dc2c3154f32c8d103c2988a43f7ada78'
+            'e475d42b746955422ff9e905354091d0b17cdb2c8989cc6beb6470e76a4aa1dd'
+            'c7ef8205f3c0455cca339e50014c2e07a41e41cce0e872f1c1a788532516a89b'
+            '9010695b87eef676b62ec429879972c135987dab6eb53b0a4edf1b5a7cb0bb8b'
+            'd49593e7559dfd1c0e3d7200b26241fd3116ab487bbd09d2dea30c2478ab77bd'
+            'd1c16289a7869f143d72e6d574d4f27f439fd2fd027064dcce1dd6a6aee75d00'
+            '1f3ed3b9c74a3553539687d0797fd29e202e5c00dd465df443420bea36888e4d'
+            '6e85f70dbf86332f34917709a21286ea4b045fdde267b737d2776ad53a443043'
+            '9be73b03901d5ce6b73084c90dd95209bd9b26bc0cd74cef5fe0e0c945613e47'
+            'df60dc30eee1377d6f1804df7af6a35040f404da26555f609e6ea12f68884399'
+            '6a2158505bbc60e19f3052e41bbaf6e11415505aca8f189139862efaa4cea0b7'
+            '3047e861dc6768a97bb19ab35db13dacf49670a4f5749d0c31a74dda7ae9975e'
+            '99995f0ca85ab0e85bd291e5336657df41409a48ca5439dcaf162d8b11ac0ec6'
+            'dc1206af7485794e1644097b08736e39c8fa50296e514561f8805c6d28b58925'
+            '599bbbabf9e2dc2006dd9e3e9636c4f648360726173793bf6a5a5414698762c5'
+            'da44d0a7894200bf698975a9b61e998378f09fa492c2bdaa972de58fb16d539d'
+            '3b5b7fbd1e2bba122aaed974fc3747f1ca9c42ad6ce3b4a6b0a2611e90d46459'
+            '6ae92aba38014d15bfd754e6dc854eab20b1c538afdd5acf4f234cf96ba4e780'
+            '3624b28203c972ea54b490342be74fbd99d4b4748123f9e2837a54ca01c8b392'
+            'bd724ee01b93651b4ec6ba62ba64d23e153ea7100be760ccaee4a1e6e32787a6'
+            '8e93b0405fe99f63603cfde3c561203ab791a976d753ebeb5d158a1077bf2688'
+            '3b59c51c486a0f8cf73c881fb72275869d96f959ed686b0f8bfc490a10bf7cae'
+            '108a67f21c2bdf2dbc4838f3ba32c992325a29cb62a14b377f8a04a9ad5b2b82'
+            '3de14a29fa4f362be3c7202dd8caf13ad4e603d9c47ca6b3af59e6ab2e21c8c8'
+            '77020ae2c7260a02ecd7b7a3b563fc2ab175852a37cbb1d0b6a37be2be4661b2'
+            '965802bae3a0b3809747f4ad117a1d7da3d756a22d0f2bc56f5e4460dce16709'
+            '0759ec2070d0a2a395cf3dff4c51d3047007335d4e8b84a7f1b72f36047ee8af'
+            '814c404aab38032cc56c307ef7b8d9b1443b1743388c36e9395a99e1cedc6a72'
+            '1da28304d237ba934e76394107e46fed0e4120fd2b257f1c667c2d11b52d959b'
+            'a9a8839d08232091a0cd381f51380a0a6ebe841f5a8e50a6047aae7b8e34c681'
+            '02696a90c7831e3fa903df105573c5f10f4934602fb0e90c846fb44213c40b27'
+            '023bbbf685576bfb7054a662905e8d45b44fe528a2e81661fd14cf113eeb4b13'
+            'e349caf78be0db63383e614fc36c63918b5ce5de43e38aab8df39e63cbba6f3a'
+            'ef2e77db90d8bddc56c748ce1b5d872dfaa8cdb98ab3ca497887ec4d02c0aae0'
+            '6a7be311617446dd1534863e8f3e02159caaa9c4efbc7d2564c83c1a4faaa31b'
+            '2d2b64a30b8fdab74ec93f2d4b0eb65a05a4fba5840cad7f89a7e68fdb49c329'
+            '8fa4f52720fb5fce6a0cefcdf119f57f3b419078dc543ba9567b77eb7fba8604'
+            '4c7ac322f685f62d8296723978b1353718c97c76e884c43a4aed3dcca62e1bc7'
+            '71191c953111a08a0e0df6a724bd331a9efb1994b872d2c081f3214324097720'
+            'ff9991e380168634d45ec15f209ae5dea305a80fb4cb21dde21abd2c9c2261a2'
+            'e67cdb017c07a7ec72a06f1062dc2f124d97527869604575fe48610ff98b581a'
+            '716cc81139f11a2b438802d37f245f885fc9a0c69ef429a11b156145c903a932'
+            '69e9b9ebe952bc722f52c87ee956f2f56419af57a2ad6644608520448683ce6e'
+            '1b705b1c27472ee5a10c531ab043fd5ebc0229acd3353b040246f1920bfa0737'
+            '670d707f588762f5a2bf7f9794f79cbb2f0cf49c798971f673220157bdd5378f'
+            'b0214aeba69453365d24e9a717aa1f5fd8d2a95a8858a233496dddaf6200309f'
+            '757b656ae79d5434222143221700a193593a5f07ca6b1ce0104fb167c0ef6590'
+            'af7fcf80a4d5f12c29eb1c442194de7635947657ed51cccc0c4e3d14dee3add6'
+            '355d9ea34b8773a8f0705c07fb76c266ba6bb26ab3b877c22a712f20b51b2da6'
+            '785f769c6c0d465f79038ec4f4c210025043285c345041667b122296c6b961e1'
+            'c07cb7d7fe3b65ffe869aea3e236cb4e68b36f997df39508da6ab051ad1b330f'
+            '0434674e57fc3c000ca5b0a496d51bb8f8b6422e24547c8698450fba0e459bcd'
+            '75b897d38208c985cbe08443ad9253db04a716066fd92b0d05f2fd2fee32b4ff'
+            '7d89448b9cccc0e2309ce34fef37ed85fd08fd2b030422e456fc531ebb1e8f80'
+            '64893ba0826ee99778ba361fb9813bd5273ccee7b7ace490d27569695bec35b3'
+            '57b9d58bc5d3cadfbe39b479f346a4774e1656043aeac60d98cc71365fbfecfb'
+            'd38cf4fcba5daa384b0ff216ff62f0f1afb99d90696207a6f9b2b7abf76139ba'
+            '6f8d48ce7ecc586a6a64efa34dc2dad0c76387f2d7607d837ec8aaa8cc913d87'
+            '62e6208ae7faf8313bf66fdf6a15e802784df3e2fae015dc0fde8bd738693cf0'
+            '5ee6ea6b71581b2c9df6b7a5b875c7475700d936bb381c98239435fed684fc39'
+            '2bdb51cebac07f81620419ac8de7941b64b1d62a8259ff4babbdfece93708d43'
+            '4cc539a5bd3db1eae7eac9136bedc753311efac13b87398a28db6d50b88ccf10')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -386,7 +388,7 @@ declare -gA _system_libs=(
   [jsoncpp]="jsoncpp libjsoncpp.so"
   #[libaom]=aom      # https://aomedia.googlesource.com/aom/+/706ee36dcc82
   #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
-  [libdrm]=libdrm # libdrm.so
+  # [libdrm]=libdrm # libdrm.so
   [libjpeg]="libjpeg libjpeg.so"
   [libpng]="libpng libpng16.so"
   #[libvpx]=libvpx
@@ -438,7 +440,6 @@ prepare() {
     --gs-url-base=chromium-optimization-profiles/pgo_profiles
   depot_tools/download_from_google_storage.py --no_resume --extract --no_auth \
     --bucket chromium-nodejs -s src/third_party/node/node_modules.tar.gz.sha1
-
   patch -Np1 -i "${srcdir}/std-vector-non-const.patch" -d src/electron
 
   src/electron/script/apply_all_patches.py \
@@ -462,8 +463,8 @@ prepare() {
   # Revert addition of compiler flag that needs newer clang
   patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
 
-  # Allow libclang_rt.builtins from compiler-rt 16 to be used
-  patch -Np1 -i ../compiler-rt-16.patch
+  # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
+  patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
@@ -516,10 +517,8 @@ build() {
   local _flags=(
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
-    'clang_base_path="/usr"'
-    'clang_use_chrome_plugins=false'
+    'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
-    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
     'blink_enable_generated_code_formatting=false'
@@ -530,10 +529,9 @@ build() {
     'use_custom_libcxx=false'
     'use_sysroot=false'
     'use_system_libffi=true'
-    'enable_hangout_services_extension=true'
+    'enable_hangout_services_extension=false'
     'enable_widevine=false'
     'enable_nacl=false'
-    'rust_sysroot_absolute="/usr"'
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
@@ -544,7 +542,10 @@ build() {
     clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
 
   _flags+=(
+    'clang_base_path="/usr"'
+    'clang_use_chrome_plugins=false'
     "clang_version=\"$_clang_version\""
+    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
   )
 
   # Allow the use of nightly features with stable Rust compiler
@@ -552,6 +553,7 @@ build() {
   export RUSTC_BOOTSTRAP=1
 
   _flags+=(
+    'rust_sysroot_absolute="/usr"'
     "rustc_version=\"$(rustc --version)\""
   )
 
