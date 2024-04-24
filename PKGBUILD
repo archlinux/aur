@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=NiaAML
 pkgname=python-${_base,,}
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Python automated machine learning framework"
 url="https://github.com/firefly-cpp/${_base}"
@@ -11,7 +11,7 @@ depends=(python-niapy python-scikit-learn)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('277550856057c5f61fefb7618c9cde9335062f2ee91f69de8028b20284a4c771886363f273f6fb1f6ea619faef6f97bbb36413ee2ed0cf327fc66f46a394be2c')
+sha512sums=('91d72f5bc5f566cee6225e59a1abc7fa1d64e346bef57a8fe4aaa9320e2594655c7d965d2fbfd76e95a8b0464d2f37c6e8451828717091529984e123c2917cff')
 
 build() {
   cd ${_base}-${pkgver}
