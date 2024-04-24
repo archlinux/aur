@@ -17,7 +17,7 @@ optdepends=(
 )
 license=('BSD-3-Clause')
 provides=("${pkgname}")
-install=
+backup=("opt/${pkgname}/client/config.yaml" "opt/${pkgname}/server/config.yaml")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BC-SECURITY/Empire/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('887501d162fa82d349a803129bd88c090a0f169cf14eeb23babccc5af3a1b37014152632e18ddc1eb54b88c13e4d0c8010f002ff09ff0575711e15d50966f343')
 
@@ -54,4 +54,8 @@ package() {
     # Installing license
     install -Dm644 "${srcdir}/Empire-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
+    # Adding link to configs
+    install -dm755 "${pkgdir}/etc/"
+    ln -s "/opt/${pkgname}/empire/client/config.yaml" "${pkgdir}/etc/empire_client.yml"
+    ln -s "/opt/${pkgname}/empire/server/config.yaml" "${pkgdir}/etc/empire_server.yml"
 }
