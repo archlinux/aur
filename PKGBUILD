@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=124.0.6367.60
+pkgver=124.0.6367.78
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -21,10 +21,9 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'rust' 'qt5-base' 'java-runtime-headless' 'git')
+             'rust' 'qt5-base' 'qt6-base' 'java-runtime-headless' 'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
-            'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
@@ -34,12 +33,14 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         drop-flag-unsupported-by-clang17.patch
         compiler-rt-adjust-paths.patch
+        qt-6.7.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('ebd553527149cb8477a522df90acd6cea2388a6f431e2db589a0301df1d0cae2'
+sha256sums=('697ea9e8591e0a74deea260a50441711b1ea499ca19e91d6012c5b4d200d1acf'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'c2bc4e65ed2a4e23528dd10d5c15bf99f880b7bbb789cc720d451b78098a7e12'
             '3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
+            'e30623f36c54f4af3a8aa7d9400f7d2bed6ef560f15d665d2aa8fd777cb2565f'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 if (( _manual_clone )); then
@@ -124,6 +125,9 @@ prepare() {
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
+
+  # Fix build with Qt 6.7
+  patch -Np1 -i ../qt-6.7.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
@@ -296,6 +300,7 @@ package() {
     chrome_200_percent.pak
     chrome_crashpad_handler
     libqt5_shim.so
+    libqt6_shim.so
     resources.pak
     v8_context_snapshot.bin
 
