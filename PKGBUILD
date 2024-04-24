@@ -1,17 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fishpi-bin
-pkgver=1.3.5
+pkgver=1.3.6
 _electronversion=16
-pkgrel=10
+pkgrel=1
 pkgdesc="摸鱼派新版客户端"
 arch=('x86_64')
 url="https://fishpi.cn"
 _ghurl="https://github.com/imlinhanchao/fishpi-desktop"
-license=('LicenseRef-custom')
+license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -19,12 +19,10 @@ makedepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux.tar.gz"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/imlinhanchao/fishpi-desktop/master/build/icons/256x256.png"
-    "LICENSE-${pkgver}.html::${url}/privacy"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('87dad81ad2f57bb136254df8c52e06613e24d296ce3aa39b722b6271dd6c44f5'
+sha256sums=('2294b4ea950998faaf3f19546b7fc91f8e126a259cbb79e09456ac2e60b35422'
             'c8d477f31fadf5c61c54afbc28ddf06af73dfa062b53ce70c47e1092eb05bc94'
-            '297384f1b1b182685453ce1c25ec88de538555fe88ce9bf97545525e31ea357e'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
@@ -41,5 +39,5 @@ package() {
    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}-linux/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-   install -Dm644 "${srcdir}/LICENSE-${pkgver}.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
+   install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}-linux/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
