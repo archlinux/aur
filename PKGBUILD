@@ -7,7 +7,7 @@ url='https://github.com/wengerbinning/toolchains'
 license=('GPL')
 arch=('any')
 
-pkgver='0.6'
+pkgver='0.7'
 pkgrel='0'
 
 # backup=('etc/ipsec.conf' 'etc/ipsec.secrets' 'etc/pam.d/pluto')
