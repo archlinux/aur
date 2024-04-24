@@ -1,7 +1,7 @@
 # Maintainer: Jichi Zhang <jichi@1435.es>
 
 pkgname=intel-npu-driver-bin
-pkgver=1.4.0.20240322_8393323322
+pkgver=1.2.0.20240404_8553879914
 pkgrel=1
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
 arch=(x86_64)
