@@ -1,0 +1,28 @@
+--- a/pyproject.toml	2024-04-24 16:24:49.071314264 +0200
++++ b/pyproject.toml	2024-04-24 16:26:12.298867647 +0200
+@@ -1,9 +1,10 @@
+ [build-system]
+-requires = ["setuptools", "setuptools-scm"]
++requires = ["setuptools"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+ name = "hazwaz"
++version = "0.0.3"
+ authors = [
+     {name = "Elena ``of Valhalla'' Grandi", email = "valhalla@trueelena.org"},
+ ]
+@@ -24,7 +25,6 @@
+     'Topic :: Software Development :: Libraries :: Python Modules',
+     'Topic :: Software Development :: User Interfaces',
+ ]
+-dynamic = ["version"]
+ 
+ [project.urls]
+ Homepage = "https://hazwaz.trueelena.org/"
+@@ -35,5 +35,3 @@
+ Tracker = "https://todo.sr.ht/~valhalla/hazwaz"
+ Changelog = "https://git.sr.ht/~valhalla/hazwaz/tree/master/item/CHANGELOG.rst"
+ 
+-[tool.setuptools_scm]
+-version_file = "hazwaz/_version.py"
