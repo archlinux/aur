@@ -4,11 +4,11 @@ _pkgname=waveslim
 _pkgver=1.8.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=7
 pkgdesc="Basic Wavelet Routines for One-, Two-, and Three-Dimensional Signal Processing"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(BSD)
+license=('BSD-3-Clause')
 depends=(
   r
 )
