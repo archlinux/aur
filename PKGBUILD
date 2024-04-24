@@ -27,6 +27,8 @@ function prepare() {
 	
 	# Cherry Pick Pull Request #52
 	git cherry-pick -n d7990c0c2f1a1add5f863d35c670ec6aa720f1d3^..0b2c9a4c8264c2c4464ac38b12a60b96adf364f6
+	git cherry-pick -n 3e68415864bacfe7fdbb73c08f403f867b440253
+	git cherry-pick -n cb809d4033a0fb30ad22c03d98e0792793835f07
 }
 
 function build() {
