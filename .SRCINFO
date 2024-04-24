@@ -1,13 +1,12 @@
 pkgbase = invoiceplane
 	pkgdesc = Self hosted invoicing for freelancers and small businesses
-	pkgver = 1.5.11
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://invoiceplane.com/
 	arch = any
 	license = MIT
 	depends = php
-	source = invoiceplane-1.5.11.zip::https://www.invoiceplane.org/download/v1.5.11
-	sha256sums = 4de189ee5a0c8b57c075d9b6d48cf2ebbd8802c504fd57dc91634da26f07ef8c
+	source = invoiceplane-1.6.1.zip::https://www.invoiceplane.org/download/v1.6.1
+	sha256sums = ebabd7c44e294d432498f6a52e026b0adda997605258e277b622792b9c2ca586
 
 pkgname = invoiceplane
-

@@ -4,7 +4,7 @@
 # Contributor: Witit Sujjapong <switit@gmail.com>
 
 pkgname=invoiceplane
-pkgver=1.5.11
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Self hosted invoicing for freelancers and small businesses"
 arch=('any')
@@ -13,12 +13,12 @@ license=('MIT')
 depends=('php')
 #optdepends=('php-mysql: for MySQL database support')
 source=("${pkgname}-${pkgver}.zip::https://www.invoiceplane.org/download/v${pkgver}")
-sha256sums=('4de189ee5a0c8b57c075d9b6d48cf2ebbd8802c504fd57dc91634da26f07ef8c')
+sha256sums=('ebabd7c44e294d432498f6a52e026b0adda997605258e277b622792b9c2ca586')
 
 package() {
     cd ${srcdir}
-    install -dm755 "${pkgdir}/usr/share/webapps/invoiceplane" 
+    install -dm755 "ip" "${pkgdir}/usr/share/webapps/invoiceplane"
     rm "${pkgname}-${pkgver}.zip"
-    install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    cp -a * "${pkgdir}/usr/share/webapps/invoiceplane"
+    install -Dm644 "ip/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a ip/* "${pkgdir}/usr/share/webapps/invoiceplane"
 }
