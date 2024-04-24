@@ -1,43 +1,64 @@
-# Maintainer: Nicola Squartini <tensor5@gmail.com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=caprine
-pkgver=1.4.1
-pkgrel=2
-pkgdesc='Unofficial Facebook Messenger app'
+pkgver=2.60.1
+pkgrel=1
+pkgdesc='Elegant Facebook Messenger desktop app'
 arch=('any')
 url='https://github.com/sindresorhus/caprine'
 license=('MIT')
-depends=('electron')
-makedepends=('npm')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sindresorhus/caprine/archive/${pkgver}.tar.gz"
+depends=('electron27')
+makedepends=('git' 'npm')
+options=(!emptydirs)
+source=("git+https://github.com/sindresorhus/caprine.git#tag=v${pkgver}"
         'caprine.desktop'
-        'caprine.sh')
-sha256sums=('37c6a1609dca3460def6379581c73559881ceac1f00d38a82efdd151877a83f4'
-            '5e689717a895a16b1b939c25216d8e16518a3562105d8da3897563f7e57db106'
-            'dc2529dafc224f5f9544d8a34df6bd602495c7d4612ec36d88778707a64e8df9')
+        'caprine.js')
+sha256sums=('bd996b5c16123fa4bec9f1326aed71c17777576cd2b592af038c5d2ce760a851'
+            'ddb693c06b0d4adf41c799fd4d97c2d9c106669034f69f7af53a63cc45911a97'
+            'effb2c3d24b57433bc5d404b3fa40ac7f403f4b60252d983f2ec6de2098cba32')
 
 build() {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}
 
-    npm install --production
+    npm install --ignore-scripts
+    npx --yes patch-package
+    npx tsc
+    rm -r node_modules
+    npm install --ignore-scripts --production
+    npx --yes patch-package
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}
 
-    _appdir=/usr/lib/${pkgname}
+    appdir=/usr/lib/${pkgname}
 
-    install -d "${pkgdir}"${_appdir}
-    cp -r * "${pkgdir}"${_appdir}
+    install -d "${pkgdir}"${appdir}
+    cp -r * "${pkgdir}"${appdir}
 
-    install -D -m755 "${srcdir}"/${pkgname}.sh "${pkgdir}"/usr/bin/${pkgname}
-    install -D -m644 "${srcdir}"/${pkgname}.desktop \
+    install -dm755 "${pkgdir}/usr/share/pixmaps"
+    install -m644 build/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
+    install -Dm755 "${srcdir}"/${pkgname}.js "${pkgdir}"/usr/bin/${pkgname}
+    install -Dm644 "${srcdir}"/${pkgname}.desktop \
             "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 
-    install -d "${pkgdir}"/usr/share/licenses/${pkgname}
-    ln -s ../../../lib/${pkgname}/license "${pkgdir}"/usr/share/licenses/${pkgname}
+    install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}
+    ln -s $(realpath -m --relative-to=/usr/share/licenses/${pkgname} ${appdir}/license) \
+        "${pkgdir}"/usr/share/licenses/${pkgname}
 
     # Clean up
-    find "${pkgdir}" -name "package.json" \
-        -exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${_appdir}|" -i {} \;
+    rm -r "${pkgdir}"${appdir}/{build,source,tsconfig.json}
+    find "${pkgdir}"${appdir} \
+        -name "package.json" \
+            -exec sed -e "s|${srcdir}/${pkgname}|${appdir}|" \
+                -i {} \; \
+        -or -name ".*" -prune -exec rm -r '{}' \; \
+        -or -name "bin" -prune -exec rm -r '{}' \; \
+        -or -name "example" -prune -exec rm -r '{}' \; \
+        -or -name "examples" -prune -exec rm -r '{}' \; \
+        -or -name "man" -prune -exec rm -r '{}' \; \
+        -or -name "scripts" -prune -exec rm -r '{}' \; \
+        -or -name "test" -prune -exec rm -r '{}' \;
 }
