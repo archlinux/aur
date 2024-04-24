@@ -1,10 +1,10 @@
 pkgbase = r-mus
 	pkgdesc = Monetary Unit Sampling and Estimation Methods, Widely Used in Auditing
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=MUS
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-desctools
 	optdepends = r-pander
