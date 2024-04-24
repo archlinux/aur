@@ -4,11 +4,11 @@ _pkgname=hash
 _pkgver=2.2.6.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Full Featured Implementation of Hash Tables/Associative Arrays/Dictionaries"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
