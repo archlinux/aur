@@ -1,7 +1,7 @@
 #Maintainer: Daniel Lehmann <daniellehmann28@outlook.de>
 pkgname=powershell-empire-git
 pkgver=5.9.5.r0.gdc5840e
-pkgrel=1
+pkgrel=2
 pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
 url="https://github.com/BC-SECURITY/Empire"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 license=('BSD-3-Clause')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-backup=("opt/${pkgname%-git}/client/config.yaml" "opt/${pkgname%-git}/server/config.yaml")
+backup=("opt/${pkgname%-git}/empire/client/config.yaml" "opt/${pkgname%-git}/empire/server/config.yaml")
 source=("${pkgname%-git}::git+https://github.com/BC-SECURITY/Empire.git")
 sha256sums=('SKIP')
 
