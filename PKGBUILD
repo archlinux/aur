@@ -4,21 +4,21 @@ _pkgname=MatrixEQTL
 _pkgver=2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Matrix eQTL: Ultra Fast eQTL Analysis via Large Matrix Operations"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(LGPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('LGPL-3.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('a0fef869db8c28dc36a72fe62afd1309')
-sha256sums=('881acaba080a836e71302f06b11cbc78c6a5fdbc89d6c8979b84c81657812683')
+b2sums=('386b68c235f6dbabc499b55ec213b5a37d7fe0e54f384ceea75fb6e41463b00c790cc0331656c793437805c2ff34ba7b1a950a9d1059c67542bed89405d498a6')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
