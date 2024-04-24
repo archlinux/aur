@@ -1,6 +1,6 @@
 pkgbase = electron-widgets-git
 	pkgdesc = A desktop application developed using Electron.js and Node.js. The application allows users to create and manage widgets on their desktops.
-	pkgver = 2.0.0.r20.g7c29c04
+	pkgver = 2.0.2.r2.g5280c33
 	pkgrel = 1
 	url = https://electron-widgets.vercel.app/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = electron-widgets-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	depends = electron29
-	provides = electron-widgets=2.0.0
+	depends = electron30
+	provides = electron-widgets=2.0.2
 	conflicts = electron-widgets
 	source = electron-widgets.git::git+https://github.com/sametcn99/electron-widgets.git
 	source = electron-widgets.sh

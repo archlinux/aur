@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-widgets-git
 _pkgname="Electron-Widgets"
-pkgver=2.0.0.r20.g7c29c04
-_electronversion=29
+pkgver=2.0.2.r2.g5280c33
+_electronversion=30
 _nodeversion=20
 pkgrel=1
 pkgdesc="A desktop application developed using Electron.js and Node.js. The application allows users to create and manage widgets on their desktops."
