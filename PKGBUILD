@@ -1,27 +1,27 @@
 pkgbase=gcc9-bin
 pkgname=(g{cc,++,fortran}9-bin)
-pkgver=9.5.0_5ubuntu1
+pkgver=9.5.0_6ubuntu2
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - C frontend (series 9.x)'
 arch=(x86_64 aarch64)
 license=({,L}GPL FDL custom)
-_arch=${CARCH/x86_/amd};_arch=${_arch/arch/rm}
+_arch=${CARCH/x86_/amd} _arch=${_arch/arch/rm}
 _dist=noble
 [ $_arch = arm64 ] && _dist=lunar	# mantic needs glibc 2.38
 url=https://packages.ubuntu.com/$_dist/source/gcc-9
-_pkgver=9.5.0-5ubuntu1
+_pkgver=9.5.0-6ubuntu2
 source_x86_64=(http://archive.ubuntu.com/ubuntu/pool/universe/g/gcc-9/{cpp-9,gcc-9,libgcc-9-dev,g++-9,libstdc++-9-dev,gfortran-9}_${_pkgver}_amd64.deb)
 source_aarch64=(http://ports.ubuntu.com/pool/universe/g/gcc-9/{cpp-9,gcc-9,libgcc-9-dev,g++-9,libstdc++-9-dev,gfortran-9}_9.5.0-3ubuntu1_arm64.deb)
 noextract=(
 	${source_x86_64[@]##*/}
 	${source_aarch64[@]##*/})
 sha256sums_x86_64=(
-	45372b90c63121e222339b99cc753451846eabe679960548bad2e5aa56578cb0
-	149b37e76b8b80cbfa1a288a636b94a9ed5b0e385b1f35bcf844d928b50dc53b
-	1f3c5d793fb0d211cd732a0e3d41314b2a03b5680fdadd8c708b4e85a539b2ec
-	fe4cc15d80744ea5845ccca7db6fb2317f09c7b141a43efa987310c2763e8e20
-	fa59c506a5bc2fca56a4eaaf677c6a45729f9585a692d9bba757593e8212e967
-	1a4262b216bd8eebe940dd54feb2191a011e8280595b4683b0ee438b84957d1a)
+	3735441b7bc5659ee44a3b99d3551c023817eb3e5ff32cd2f2c74f7c103d060e
+	a51a5fe2d9ab2f0887ac6845454c4a516dcb071c9fcbbc0a5f057b376bf2dc42
+	b7895cdde615e116f6aa3007a257bc7b78ac7d34b37d83be9ae6a71af2b6559e
+	0ed635d28634b07163ff5213d588555812ce93d4a42a104d9f942bbb9e7272ff
+	9370c8db885cb2dd362c48bfbd13cc6583d0ddbb9c44dd7f6305723b82e4eb06
+	c1d43d0ed3a065064127132c2c459125857c47c650a8916d513d4172ba3df89e)
 sha256sums_aarch64=(
 	913fac987229d6eae7387bb31bc5813d86efd8f6b0ea1bad5b731589df9ce08c
 	c18a03d2b309199f8eb21730244b2a15e6580800d35e6c25354f28413c45b3e7
