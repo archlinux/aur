@@ -1,10 +1,10 @@
 pkgbase = r-mglm
 	pkgdesc = Multivariate Response Generalized Linear Models
 	pkgver = 0.2.1
-	pkgrel = 10
+	pkgrel = 11
 	url = https://cran.r-project.org/package=MGLM
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-ggplot2
 	optdepends = r-knitr
