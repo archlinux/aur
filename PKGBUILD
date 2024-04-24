@@ -3,8 +3,8 @@
 # Contributor: strawberry <strawberry@puppygock.gay>
 
 pkgname="conduit"
-pkgver=0.6.0
-pkgrel=4
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Simple, fast and reliable chat server powered by Matrix"
 arch=("x86_64" "aarch64" "armv7h" "armv6h")
 url="https://conduit.rs/"
@@ -15,7 +15,7 @@ makedepends=("cargo" "clang" "git" "rust")
 backup=("etc/conduit-matrix/$pkgname.toml")
 source=("git+https://gitlab.com/famedly/$pkgname.git#commit=0c2cfda3ae923d9e922d5edf379e4d8976a52d4e"
         $pkgname.{service,sysusers,tmpfiles,toml})
-b2sums=('SKIP'
+b2sums=('9618e162eed16c3b6bb9b303bf41f08e3b9cc6fb709d2d8f1f69e4841790d957fa769b44a49b081c67b328b05c3bb913850d079af3a20a2baf31585f4cb01017'
         '3530a017149ce79371ec1b269c2a484f4782eea622f7a3d495bfb4577502e38f3ddf32cdd4e2a9b0d85efc62be28873203c2b0baaead405ae8eda4c686df9c0d'
         '4d6acac3e3d43b63fb62c5c6cfc0c83609ee8787c0777b62355815d0c125c67b0063a3d3deff2eba92b502c3b2cf330a76671a45bcc6206faeffb87c38ce5e85'
         'd23699d33e02103f3854ef0dc02a64cc8bc4b6921bd443e4155574ca029e10b8a3f64e82904422a2df3b16ba84edfe15b5380c99b1e4c473189bb69bf63cecef'
