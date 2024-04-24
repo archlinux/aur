@@ -5,8 +5,8 @@ pkgrel=2
 pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
 url="https://github.com/BC-SECURITY/Empire"
 arch=('any')
-depends=('dotnet-sdk-6.0' 'powershell' 'openssl')
-makedepends=('tar' 'python-poetry' 'findutils')
+depends=('python' 'dotnet-sdk-6.0' 'powershell' 'openssl')
+makedepends=('tar' 'python-poetry' 'findutils' 'coreutils' 'openssl')
 optdepends=(
     'mysql: stager data can be placed in database'
     'xar: enables generating .dmg stagers'
