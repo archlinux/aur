@@ -8,6 +8,8 @@ pkgbase = python-yummyanime
 	makedepends = python-pip
 	depends = python
 	depends = python-beautifulsoup4
+	depends = python-aiohttp
+	depends = python-json5
 	source = https://files.pythonhosted.org/packages/4a/bf/5c7fb45e3ceb5073322738008368c918a484efa898f4779f56c856a18f5f/yummyanime-0.0.5-py3-none-any.whl
 	sha256sums = 84d731c7bc7b61d71ab30da28f7fe6acdf9423cd8bfa4893a398d01123cde412
 
