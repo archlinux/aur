@@ -1,0 +1,17 @@
+pkgbase = python-jaraco.versioning
+	pkgdesc = More sophisticated version manipulation (than packaging)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/jaraco/jaraco.versioning
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-packaging
+	source = jaraco.versioning-1.1.0.tar.gz::https://github.com/jaraco/jaraco.versioning/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = e160ba954c385e38b153ba1d00f27fb02ce65a63bfb2b23b0d0ec5c6fe963f35
+
+pkgname = python-jaraco.versioning
