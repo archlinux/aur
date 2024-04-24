@@ -1,10 +1,10 @@
 pkgbase = r-moments
 	pkgdesc = Moments, Cumulants, Skewness, Kurtosis and Related Tests
 	pkgver = 0.14.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cran.r-project.org/package=moments
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/moments_0.14.1.tar.gz
 	md5sums = 622afd35702c45ad010c106af2457458
