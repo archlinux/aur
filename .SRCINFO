@@ -1,7 +1,7 @@
 pkgbase = nanobind
 	pkgdesc = tiny and efficient C++/Python bindings
 	pkgver = 1.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nanobind.readthedocs.io
 	arch = any
 	license = BSD-3-Clause
