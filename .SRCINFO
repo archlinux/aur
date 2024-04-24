@@ -1,6 +1,6 @@
 pkgbase = python-rst.linker
-	pkgdesc = Can add links and perform other custom replacements to rst
-	pkgver = 2.5.0
+	pkgdesc = Tools for adding metadata and hyperlinks to reStructuredText
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/jaraco/rst.linker
 	arch = any
@@ -9,9 +9,10 @@ pkgbase = python-rst.linker
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
-	depends = python-dateutil
+	depends = python-jaraco.vcs
+	depends = python-jaraco.context
 	depends = python-six
-	source = rst.linker-2.5.0.tar.gz::https://github.com/jaraco/rst.linker/archive/refs/tags/v2.5.0.tar.gz
-	sha256sums = b6b019a00dc184ae81ff5c38ec292bd1c55b1ea25cf8ab1a88dc6d0e8249cb0f
+	source = rst.linker-2.6.0.tar.gz::https://github.com/jaraco/rst.linker/archive/refs/tags/v2.6.0.tar.gz
+	sha256sums = 0f45f2542e0888ebc6b611291ad7ee80448d3cf70b24cf587dabe5ca189cc8b5
 
 pkgname = python-rst.linker
