@@ -1,7 +1,8 @@
+# Maintainer: Bartłomiej Szostak <kapcioszek2137@gmail.com>
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=docx2tex
-pkgver=1.5
+pkgver=1.9
 pkgrel=1
 pkgdesc="Converts Microsoft Word docx to LaTeX"
 arch=('any')
@@ -14,7 +15,7 @@ depends=('java-runtime>=7'
 makedepends=('unzip')
 noextract=("${pkgname}-${pkgver}.zip")
 source=("${pkgname}-${pkgver}.zip::https://github.com/transpect/docx2tex/releases/download/v.${pkgver}/docx2tex-${pkgver}-release.zip")
-sha256sums=('0b152f808b52a23b7f21044c9ce819fc03783cb60c089c5e8700fca965d8528b')
+sha256sums=('6369b5c3fb19b867b3083bb88ccff2c08bebb6c4aed18e7f5facb75e4ff1683e')
 
 package() {
   install -d "${pkgdir}/opt"

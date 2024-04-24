@@ -1,6 +1,6 @@
 pkgbase = docx2tex
 	pkgdesc = Converts Microsoft Word docx to LaTeX
-	pkgver = 1.5
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/transpect/docx2tex
 	install = docx2tex.install
@@ -10,9 +10,8 @@ pkgbase = docx2tex
 	depends = java-runtime>=7
 	depends = ruby
 	depends = bash
-	noextract = docx2tex-1.5.zip
-	source = docx2tex-1.5.zip::https://github.com/transpect/docx2tex/releases/download/v.1.5/docx2tex-1.5-release.zip
-	sha256sums = 0b152f808b52a23b7f21044c9ce819fc03783cb60c089c5e8700fca965d8528b
+	noextract = docx2tex-1.9.zip
+	source = docx2tex-1.9.zip::https://github.com/transpect/docx2tex/releases/download/v.1.9/docx2tex-1.9-release.zip
+	sha256sums = 6369b5c3fb19b867b3083bb88ccff2c08bebb6c4aed18e7f5facb75e4ff1683e
 
 pkgname = docx2tex
-

@@ -1,3 +1,4 @@
+# Maintainer: Bartłomiej Szostak <kapcioszek2137@gmail.com>
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 post_remove() {
