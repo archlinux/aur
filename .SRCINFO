@@ -1,10 +1,10 @@
 pkgbase = r-ecosolver
 	pkgdesc = Embedded Conic Solver in R
 	pkgver = 0.5.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ECOSolveR
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = r
 	optdepends = r-covr
 	optdepends = r-knitr
