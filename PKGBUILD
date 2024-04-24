@@ -4,8 +4,8 @@
 pkgname='python-qh3'
 _pkgname="${pkgname}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
@@ -29,7 +29,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_srcname::1}/$_srcname/$_srcname-$pkgver.tar.gz"
 )
 sha256sums=(
-  '6435d7bba67272e3a698a52a1fe9224837860fc973600494ba157083fe417b58'
+  '93f9d5db7690f3c7dfb9b42ab78dce6d3c2a6b57fa7dc8b1be9bd14b933b6bf5'
 )
 options=('lto')
 
