@@ -1,8 +1,8 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=iyuuplus
-pkgver=20240205.034109
-pkgrel=2
+pkgver=20240423.030801
+pkgrel=1
 pkgdesc="IYUU Auto Reseed Plus | IYUU 自动辅种工具"
 arch=("any")
 url="https://github.com/ledccn/IYUUPlus"

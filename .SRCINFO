@@ -1,7 +1,7 @@
 pkgbase = iyuuplus
 	pkgdesc = IYUU Auto Reseed Plus | IYUU 自动辅种工具
-	pkgver = 20240205.034109
-	pkgrel = 2
+	pkgver = 20240423.030801
+	pkgrel = 1
 	url = https://github.com/ledccn/IYUUPlus
 	arch = any
 	license = MulanPSL-1.0
