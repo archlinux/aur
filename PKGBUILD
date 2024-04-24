@@ -4,15 +4,13 @@
 
 pkgname=vscodium-electron-features
 pkgver=1.88.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Unblock some features in vscodium-electron'
 arch=('any')
 url='https://github.com/microsoft/vscode'
 license=('unknown')
 depends=('vscodium-electron' 'python' 'python-requests')
 optdepends=('org.freedesktop.secrets: for settings sync feature')
-provides=('vscodium-electron-features')
-conflicts=('vscodium-electron-features')
 install="${pkgname}.install"
 source=("${pkgname}.hook"
         'patch.py'

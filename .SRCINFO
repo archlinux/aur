@@ -1,7 +1,7 @@
 pkgbase = vscodium-electron-features
 	pkgdesc = Unblock some features in vscodium-electron
 	pkgver = 1.88.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/vscode
 	install = vscodium-electron-features.install
 	arch = any
@@ -10,8 +10,6 @@ pkgbase = vscodium-electron-features
 	depends = python
 	depends = python-requests
 	optdepends = org.freedesktop.secrets: for settings sync feature
-	provides = vscodium-electron-features
-	conflicts = vscodium-electron-features
 	source = vscodium-electron-features.hook
 	source = patch.py
 	source = patch.json
