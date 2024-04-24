@@ -43,10 +43,12 @@ build() {
 package() {
     # Installing into opt
     cd "${srcdir}/${pkgname%-git}/"
+    find {.venv,empire}/ -type d -exec install -dm755 "${pkgdir}/opt/${pkgname%-git}/{}" \; \
+        -or -path '.venv/*' -type f -exec install -D {} "${pkgdir}/opt/${pkgname%-git}/{}" \; \
+        -or -path 'empire/*' -type f -exec install -Dm644 {} "${pkgdir}/opt/${pkgname%-git}/{}" \; \
+        -or -type l -exec cp -a {} "${pkgdir}/opt/${pkgname%-git}/{}" \;
     install -dm766 "${pkgdir}/opt/${pkgname%-git}/empire"/{client,server}/downloads/
-    find .venv/ -type f -exec install -D {} "${pkgdir}/opt/${pkgname%-git}/{}" \;
-    find empire{/,.py} -type f -exec install -Dm644 {} "${pkgdir}/opt/${pkgname%-git}/{}" \;
-    find {.venv,empire}/ -type l -exec cp -a {} "${pkgdir}/opt/${pkgname%-git}/{}" \;
+    install -Dm755 "${srcdir}/${pkgname%-git}/empire.py" "${pkgdir}/opt/${pkgname%-git}/empire.py"
 
     # Installing docs
     cd "${srcdir}/${pkgname%-git}/docs/"
