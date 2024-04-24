@@ -4,11 +4,11 @@ _pkgname=bootstrap
 _pkgver=2019.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="Functions for the Book \"An Introduction to the Bootstrap\""
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(BSD)
+license=('BSD-3-Clause')
 depends=(
   r
 )
