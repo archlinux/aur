@@ -5,6 +5,7 @@ pkgbase = sliver-bin
 	url = https://github.com/BishopFox/sliver
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = coreutils
 	provides = sliver
 	source_x86_64 = sliver-1.5.42-client::https://github.com/BishopFox/sliver/releases/download/v1.5.42/sliver-client_linux
 	source_x86_64 = sliver-1.5.42-server::https://github.com/BishopFox/sliver/releases/download/v1.5.42/sliver-server_linux
