@@ -4,11 +4,11 @@ _pkgname=simpleCache
 _pkgver=0.4.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="Simply Caching R Objects"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(BSD)
+license=('BSD-2-Clause')
 depends=(
   r
 )
