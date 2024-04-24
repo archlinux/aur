@@ -1,6 +1,6 @@
 pkgbase = mounter-elite-plus
 	pkgdesc = The Fastest ISO Manager on the Planet, written in C++
-	pkgver = 2.8.4
+	pkgver = 2.8.5
 	pkgrel = 1
 	url = https://github.com/siyia2/mounter-elite-plus
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mounter-elite-plus
 	depends = sudo
 	optdepends = ccd2iso: BIN/IMG conversion support
 	optdepends = mdf2iso: MDF/MDS conversion support
-	source = https://github.com/siyia2/mounter-elite-plus/archive/v2.8.4.tar.gz
-	md5sums = 0cc43f2d8a00a6d56eade2b3889eb9c5
+	source = https://github.com/siyia2/mounter-elite-plus/archive/v2.8.5.tar.gz
+	md5sums = a1d8e158c51b8bc444afc0a32c2a3db9
 
 pkgname = mounter-elite-plus
