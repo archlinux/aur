@@ -1,5 +1,5 @@
 pkgbase = gimp-stable-appimage
-	pkgdesc = GNU Image Manipulation Program Stable Edition built from PPAs and JuNest (Arch Linux)
+	pkgdesc = GNU Image Manipulation Program. Continuous Stable builds (JuNest Arch Linux-based AppImages)
 	pkgver = 2.10.36
 	pkgrel = 6
 	url = https://github.com/ivan-hc/GIMP-appimage

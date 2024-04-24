@@ -3,7 +3,7 @@
 pkgname=gimp-stable-appimage
 pkgver=2.10.36
 pkgrel=6
-pkgdesc="GNU Image Manipulation Program Stable Edition built from PPAs and JuNest (Arch Linux)"
+pkgdesc="GNU Image Manipulation Program. Continuous Stable builds (JuNest Arch Linux-based AppImages)"
 url="https://github.com/ivan-hc/GIMP-appimage"
 arch=(x86_64)
 license=("GPL3")
