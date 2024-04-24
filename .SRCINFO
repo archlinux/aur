@@ -1,7 +1,7 @@
 pkgbase = slippi-mainline
 	pkgdesc = https://slippi.gg/about
 	pkgver = v4.0.0.mainline.beta.4.r0.g4a06679391
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/project-slippi/dolphin
 	arch = x86_64
 	license = GPL2

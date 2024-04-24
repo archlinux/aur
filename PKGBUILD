@@ -2,7 +2,7 @@
 
 pkgname="slippi-mainline"
 pkgver='v4.0.0.mainline.beta.4.r0.g4a06679391'
-pkgrel=0
+pkgrel=1
 pkgdesc='https://slippi.gg/about'
 arch=('x86_64')
 url="https://github.com/project-slippi/dolphin"
@@ -109,7 +109,6 @@ prepare() {
                 git -c protocol.file.allow=always submodule update "$_path"
         done
 
-
         cd Externals/cubeb/cubeb
         git submodule init cmake/sanitizers-cmake
         git config submodule.cmake/sanitizers-cmake.url "${srcdir}"/"$pkgname"-sanitizers-cmake
@@ -123,20 +122,23 @@ pkgver() {
 }
 
 build() {
-
-        export LDFLAGS="-Wl,--copy-dt-needed-entries"
-        export CFLAGS+=' -I/usr/include/mbedtls2'
-        export CXXFLAGS+=' -I/usr/include/mbedtls2'
-        export LDFLAGS+=' -L/usr/lib/mbedtls2'
-
-        CMAKE_FLAGS='-DLINUX_LOCAL_DEV=true -DSLIPPI_PLAYBACK=false -DUSE_SYSTEM_LIBS=ON -DENABLE_TESTS=OFF -DENABLE_NOGUI=OFF -DUSE_SYSTEM_ENET=OFF -DENABLE_CLI_TOOL=OFF -DUSE_SYSTEM_LIBMGBA=OFF -DUSE_SYSTEM_MINIZIP=OFF -Wno-dev'
-
         cd "$srcdir/$_sourcedirectory/"
-        mkdir -p build
-        cd build
-        cmake ${CMAKE_FLAGS} ../
-        cmake --build . --target dolphin-emu -- -j"$(nproc)"
+        export LDFLAGS+=" -Wl,--copy-dt-needed-entries"
 
+        cmake -S '.' -B 'build/' -G Ninja \
+                -DLINUX_LOCAL_DEV=true \
+                -DCMAKE_BUILD_TYPE=None \
+                -DSLIPPI_PLAYBACK=false \
+                -DUSE_SYSTEM_LIBS=ON \
+                -DENABLE_TESTS=OFF \
+                -DENABLE_NOGUI=OFF \
+                -DENABLE_CLI_TOOL=OFF \
+                -DUSE_SYSTEM_LIBMGBA=OFF \
+                -DUSE_SYSTEM_ENET=OFF \
+                -DUSE_SYSTEM_MINIZIP=OFF \
+                -Wno-dev
+
+        cmake --build 'build/'
 }
 
 package() {
@@ -145,7 +147,7 @@ package() {
         conflicts=("$pkgname" "slippi-online")
 
         cd "$srcdir/$_sourcedirectory/"
-        make DESTDIR="$pkgdir" -C 'build/' install
+        DESTDIR="$pkgdir" cmake --install 'build/'
         mv "$pkgdir/usr/local/bin/$_dolphinemu" "$pkgdir/usr/local/bin/$pkgname"
         cp -r "Data/Sys/" "$pkgdir/usr/local/bin/"
         rm -r "$pkgdir/usr/local/share/man/"
