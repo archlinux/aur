@@ -18,7 +18,6 @@ provides=(
 )
 source=(
   "${pkgname}"::"git+${url}#tag=v${pkgver}"
-  #"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 b2sums=(
   '9e19ed8cd7ba118d6134a5a7c607e26163642a5e03f0f82a1b9234f663e57c66c9b9ab4cd6b5291c351be0a17733771a335fe60ec9465e83a5456442b21c6aff'
