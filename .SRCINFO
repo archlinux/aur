@@ -1,6 +1,6 @@
 pkgbase = nginx-without-server-header
 	pkgver = 1.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nginx.org
 	install = nginx.install
 	arch = x86_64

@@ -10,7 +10,7 @@ pkgbase=nginx-without-server-header
 _pkgbase=nginx
 pkgname=($pkgbase $pkgbase'-src')
 pkgver=1.26.0
-pkgrel=1
+pkgrel=2
 _prefix_relative='etc/nginx'
 _prefix_full='/'$_prefix_relative
 arch=(x86_64)
@@ -66,6 +66,7 @@ _common_flags=(
   --with-http_stub_status_module
   --with-http_sub_module
   --with-http_v2_module
+  --with-http_v3_module
   --with-mail
   --with-mail_ssl_module
   --with-pcre-jit
