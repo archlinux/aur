@@ -1,7 +1,7 @@
 pkgbase = vmware-workstation-openrc
 	pkgdesc = The industry standard for running multiple operating systems as virtual machines on a single Linux PC. Modified to use OpenRC.
 	pkgver = 17.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vmware.com/products/workstation-for-linux.html
 	install = vmware-workstation.install
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = vmware-workstation-openrc
 	conflicts = vmware-workstation
 	options = !strip
 	options = emptydirs
+	options = !debug
 	backup = etc/vmware/config
 	backup = etc/conf.d/vmware
 	source = https://download3.vmware.com/software/WKST-1751-LX/VMware-Workstation-Full-17.5.1-23298084.x86_64.bundle
@@ -54,7 +55,7 @@ pkgbase = vmware-workstation-openrc
 	sha256sums = 452c1bfebac52f4808ba5f4bf2fc3eae9858f8745d60c13d3c46e7550a3e1eb1
 	sha256sums = 10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e
 	sha256sums = 273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac
-	sha256sums = 6b7c5dbf7d2237496943aca10b0e7337ed4da32ff80767fe2566a78c2fe6bf1e
-	sha256sums = cf64b63e2afed22cec1983cf8e1a4d9492a5df2e9eb468cc3205e7e086a67b47
+	sha256sums = 2bd592c28c383264a14167ddca8686912ddbadb1ba16d40560d75b082d439ed7
+	sha256sums = 4332a189c79ce15fa4d59dc45cffc78f42f48cfbb059b5eeafbb43a9cac835ba
 
 pkgname = vmware-workstation-openrc

@@ -1,6 +1,6 @@
 --- a/vmnet/Makefile
 +++ b/vmnet/Makefile
-@@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
+@@ -43,7 +43,11 @@
  endif
  
  
@@ -14,7 +14,7 @@
  ifdef LINUXINCLUDE
 --- a/vmnet/driver.c
 +++ b/vmnet/driver.c
-@@ -279,7 +279,7 @@ VNetRemovePortFromList(const VNetPort *port) // IN: port to remove from list
+@@ -279,7 +279,7 @@
  /*
   *----------------------------------------------------------------------
   *
@@ -23,7 +23,7 @@
   *
   *      linux module entry point. Called by /sbin/insmod command.
   *      Initializes module and Registers this driver for a
-@@ -296,7 +296,7 @@ VNetRemovePortFromList(const VNetPort *port) // IN: port to remove from list
+@@ -296,7 +296,7 @@
   */
  
  int
@@ -32,7 +32,7 @@
  {
     int retval;
  
-@@ -358,7 +358,7 @@ init_module(void)
+@@ -358,7 +358,7 @@
  /*
   *----------------------------------------------------------------------
   *
@@ -41,7 +41,7 @@
   *
   *      Called by /sbin/rmmod.  Unregisters this driver for a
   *      vnet major #, and deinitializes the modules.  The 64-bit
-@@ -375,7 +375,7 @@ init_module(void)
+@@ -375,7 +375,7 @@
   */
  
  void
@@ -50,7 +50,7 @@
  {
     unregister_chrdev(VNET_MAJOR_NUMBER, "vmnet");
     VNetProtoUnregister();
-@@ -1670,3 +1670,5 @@ MODULE_LICENSE("GPL v2");
+@@ -1670,3 +1670,5 @@
   * by default (i.e., neither mkinitrd nor modprobe will accept it).
   */
  MODULE_INFO(supported, "external");

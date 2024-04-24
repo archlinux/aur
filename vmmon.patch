@@ -1,6 +1,6 @@
 --- a/vmmon/Makefile
 +++ b/vmmon/Makefile
-@@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
+@@ -43,7 +43,11 @@
  endif
  
  
@@ -235,3 +235,15 @@ index 5d08f33a..c1e6c671 100644
  HostIFStartTimer(Bool rateChanged,  //IN: Did rate change?
                   unsigned int rate) //IN: current clock rate
  {
+Fix from https://communities.vmware.com/t5/VMware-Workstation-Pro/Workstation-17-5-0-vmware-clk-spinning-on-CPU-when-Linux-VMs-are/m-p/2996282
+--- a/vmmon-only/linux/hostif.c
++++ b/vmmon-only/linux/hostif.c
+@@ -3350,7 +3350,7 @@
+     * threads running in the monitor on all physical CPUs.
+     */
+ 
+-   if (rate > MIN_RATE) {
++   if (false) {
+       if (!linuxState.fastClockThread) {
+          struct task_struct *rtcTask;
+ 
