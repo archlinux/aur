@@ -1,10 +1,10 @@
 pkgbase = r-preprocesscore
 	pkgdesc = A collection of pre-processing functions
 	pkgver = 1.64.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/preprocessCore
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.0-or-later
 	depends = lapack
 	depends = r
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/preprocessCore_1.64.0.tar.gz
