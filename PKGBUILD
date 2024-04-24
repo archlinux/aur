@@ -4,42 +4,43 @@
 _ENABLE_CPU=${_ENABLE_CPU:-1}
 _ENABLE_CUDA=${_ENABLE_CUDA:-1}
 _ENABLE_ROCM=${_ENABLE_ROCM:-1}
-# if GPU_TARGETS and AMDGPU_TARGETS are not set, populate build architecture list from arch:python-pytorch@2.2.0-1
+# if GPU_TARGETS and AMDGPU_TARGETS are not set, populate build architecture list from arch:python-pytorch@2.2.2-3
 _AMDGPU_TARGETS="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
 if test -n "$GPU_TARGETS"; then _AMDGPU_TARGETS="$GPU_TARGETS"; fi
 if test -n "$AMDGPU_TARGETS"; then _AMDGPU_TARGETS="$AMDGPU_TARGETS"; fi
 # available GO_TAGS (use space as seperator): tts tinydream stablediffusion
 _GO_TAGS="${_GO_TAGS:-}"
-_OPTIONAL_BACKENDS="${_OPTIONAL_BACKENDS:-}"
+_OPTIONAL_GRPC="${_OPTIONAL_GRPC:-}"
 # optional args for main Makefile calling
 _OPTIONAL_MAKE_ARGS="${_OPTIONAL_MAKE_ARGS:-}"
-# limit exteranl sources to llama.cpp, go-piper, whisper.cpp, go-bert and go-tiny-dream and submodules
-_EXTERNAL_SOURCES="${_EXTERNAL_SOURCES:-backend/cpp/llama/llama.cpp sources/go-piper sources/whisper.cpp sources/go-bert sources/go-tiny-dream}"
-
+# limit external sources to llama.cpp, go-piper, whisper.cpp, go-bert and go-tiny-dream and submodules
+# disabled sources: sources/go-llama.cpp sources/gpt4all sources/go-rwkv.cpp sources/go-stable-diffusion sources/go-bert
+_EXTERNAL_SOURCES="${_EXTERNAL_SOURCES:-backend/cpp/llama/llama.cpp sources/go-piper sources/whisper.cpp sources/go-tiny-dream}"
 if test -n "$(echo "$_GO_TAGS" | grep -o "tts")"; then
-  _OPTIONAL_BACKENDS="backend-assets/grpc/piper $_OPTIONAL_BACKENDS"
+  _OPTIONAL_GRPC="backend-assets/grpc/piper $_OPTIONAL_GRPC"
 fi
 if test -n "$(echo "$_GO_TAGS" | grep -o "stablediffusion")"; then
-  _OPTIONAL_BACKENDS="backend-assets/grpc/stablediffusion $_OPTIONAL_BACKENDS"
+  _OPTIONAL_GRPC="backend-assets/grpc/stablediffusion $_OPTIONAL_GRPC"
 fi
 if test -n "$(echo "$_GO_TAGS" | grep -o "tinydream")"; then
-  _OPTIONAL_BACKENDS="backend-assets/grpc/tinydream $_OPTIONAL_BACKENDS"
+  _OPTIONAL_GRPC="backend-assets/grpc/tinydream $_OPTIONAL_GRPC"
 fi
-# list of backends to be build
-_GRPC_BACKENDS="$_OPTIONAL_BACKENDS backend-assets/grpc/llama-cpp backend-assets/grpc/whisper backend-assets/grpc/bert-embeddings"
+# backends to be build: llama-cpp, local-store, whisper
+# disabled backends: all python, bert-embeddings llama-ggml gpt4all rwkv 
+_GRPC_BACKENDS="$_OPTIONAL_GRPC backend-assets/grpc/llama-cpp backend-assets/grpc/local-store backend-assets/grpc/whisper"
 _pkgname="localai"
 
 pkgbase="${_pkgname}-git"
 pkgname=()
-pkgver=v2.9.0.43.g595a73fc
+pkgver=2.12.3.112.g9dbd217c
 pkgrel=1
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
 arch=('x86_64')
 
-provides=('localai')
-conflicts=('localai')
+provides=('localai' "local-ai=${pkgver}")
+conflicts=('localai' 'local-ai')
 
 depends=(
   'grpc'
@@ -48,6 +49,8 @@ makedepends=(
   'go'
   'git'
   'cmake'
+  'protoc-gen-go'
+  'protoc-gen-go-grpc'
   'opencv'
   'blas-openblas'
   'sdl2'
@@ -97,8 +100,8 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${srcdir}/../${_pkgname}"
-  (git describe --always --tags | tr "-" ".")
+  cd "${srcdir}/${_pkgname}"
+  (git describe --always --tags | tr "-" "." | tail -c +2)
 }
 
 prepare() {
@@ -111,7 +114,7 @@ prepare() {
   echo "_GO_TAGS=$_GO_TAGS"
   echo "_OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS"
   echo "_EXTERNAL_SOURCES=$_EXTERNAL_SOURCES"
-  echo "_OPTIONAL_BACKENDS=$OPTIONAL_BACKENDS"
+  echo "_OPTIONAL_GRPC=$_OPTIONAL_GRPC"
   echo "_GRPC_BACKENDS=$_GRPC_BACKENDS"
 
   # modify get-sources
@@ -120,7 +123,8 @@ prepare() {
   # remove go mod edits for inactive backend sources
   sed -ri 's#.+\-replace github.com/nomic-ai/gpt4all/gpt4all.+##g' Makefile
   sed -ri 's#.+\-replace github.com/donomii/go-rwkv.cpp.+##g' Makefile
-  sed -ri 's#.+\-replace github.com/go-skynet/go-ggml-transformers.cpp.+##g' Makefile
+  sed -ri 's#.+\-replace github.com/go-skynet/go-llama.cpp.+##g' Makefile
+  sed -ri 's#.+\-replace github.com/go-skynet/go-bert.cpp.+##g' Makefile
   sed -ri 's#.+\-replace github.com/mudler/go-stable-diffusion.+##g' Makefile
 
   # verbose output of find
@@ -191,10 +195,12 @@ build() {
 _package_install() {
   install -Dm755 "local-ai" "${pkgdir}/usr/bin/local-ai"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
 package_localai-git() {
   cd "${srcdir}/${_pkgname}-cpu"
+  depends+=('openblas')
   _package_install
 }
 
@@ -208,6 +214,6 @@ package_localai-git-cuda() {
 package_localai-git-rocm() {
   cd "${srcdir}/${_pkgname}-rocm"
   pkgdesc+=' (with ROCM support)'
-  depends+=('rocm-hip-runtime')
+  depends+=('rocm-hip-runtime' 'hipblas' 'rocblas')
   _package_install
 }

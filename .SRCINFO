@@ -1,6 +1,6 @@
 pkgbase = localai-git
 	pkgdesc = Self-hosted OpenAI API alternative - Open Source, community-driven and local-first.
-	pkgver = v2.9.0.43.g595a73fc
+	pkgver = 2.12.3.112.g9dbd217c
 	pkgrel = 1
 	url = https://github.com/mudler/LocalAI
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = localai-git
 	makedepends = go
 	makedepends = git
 	makedepends = cmake
+	makedepends = protoc-gen-go
+	makedepends = protoc-gen-go-grpc
 	makedepends = opencv
 	makedepends = blas-openblas
 	makedepends = sdl2
@@ -22,11 +24,15 @@ pkgbase = localai-git
 	makedepends = magma-hip
 	depends = grpc
 	provides = localai
+	provides = local-ai=2.12.3.112.g9dbd217c
 	conflicts = localai
+	conflicts = local-ai
 	source = localai::git+https://github.com/mudler/LocalAI
 	sha256sums = SKIP
 
 pkgname = localai-git
+	depends = grpc
+	depends = openblas
 
 pkgname = localai-git-cuda
 	pkgdesc = Self-hosted OpenAI API alternative - Open Source, community-driven and local-first. (with CUDA support)
@@ -37,3 +43,5 @@ pkgname = localai-git-rocm
 	pkgdesc = Self-hosted OpenAI API alternative - Open Source, community-driven and local-first. (with ROCM support)
 	depends = grpc
 	depends = rocm-hip-runtime
+	depends = hipblas
+	depends = rocblas
