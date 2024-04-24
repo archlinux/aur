@@ -10,9 +10,7 @@ url="https://github.com/sommerfelddev/$_pkgname"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'openssl')
 makedepends=('cargo' 'git')
-source=("git+$url"
-    "$_pkgname.sysusers"
-    "$_pkgname.tmpfiles")
+source=("git+$url")
 sha256sums=('SKIP')
 backup=("etc/$_pkgname/$_pkgname.toml")
 options=('!lto')

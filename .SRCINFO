@@ -14,8 +14,6 @@ pkgbase = sentrum-git
 	options = !lto
 	backup = etc/sentrum/sentrum.toml
 	source = git+https://github.com/sommerfelddev/sentrum
-	source = sentrum.sysusers
-	source = sentrum.tmpfiles
 	sha256sums = SKIP
 
 pkgname = sentrum-git
