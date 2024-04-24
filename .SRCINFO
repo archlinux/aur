@@ -1,10 +1,10 @@
 pkgbase = r-profmem
 	pkgdesc = Simple Memory Profiling for R
 	pkgver = 0.6.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://cran.r-project.org/package=profmem
 	arch = any
-	license = LGPL
+	license = LGPL-2.1-or-later
 	depends = r
 	optdepends = r-markdown
 	optdepends = r-microbenchmark
