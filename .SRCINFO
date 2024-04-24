@@ -1,4 +1,4 @@
-pkgbase = defold
+pkgbase = defold-engine
 	pkgdesc = Defold is a completely free to use game engine for development of desktop, mobile and web games.
 	pkgver = 1.7.0
 	pkgrel = 1
@@ -20,4 +20,4 @@ pkgbase = defold
 	md5sums = 12ddd6bdaaf6397931608af50492f005
 	md5sums = 2e220c9bf4a7e2f5aa3b81cfd7b8c8fe
 
-pkgname = defold
+pkgname = defold-engine

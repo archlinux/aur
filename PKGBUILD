@@ -1,5 +1,5 @@
 # Maintainer: cyteon <cyteon on discord>
-pkgname=defold
+pkgname=defold-engine
 pkgver=1.7.0
 pkgrel=1
 epoch=
