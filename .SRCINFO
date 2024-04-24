@@ -1,14 +1,14 @@
 pkgbase = r-fontbitstreamvera
 	pkgdesc = Fonts with 'Bitstream Vera Fonts' License
 	pkgver = 0.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://cran.r-project.org/package=fontBitstreamVera
 	arch = any
-	license = custom
+	license = Bitstream-Vera
 	depends = r
 	depends = ttf-bitstream-vera
 	source = https://cran.r-project.org/src/contrib/fontBitstreamVera_0.1.1.tar.gz
 	md5sums = c32821c06d909336ace68f2df3d8710e
-	sha256sums = 3298b3dd95605bdda0c5fce5594c9bedde6aa63d89b216d5c83c6c092b6d375a
+	b2sums = a9a5a0d8db6547a317789150d3e073f604d13c38cf583e14d20ab61659f6dd185b873acf809095245deef10d8dc909b39998eb3755506aebb3b3a5117cf50790
 
 pkgname = r-fontbitstreamvera
