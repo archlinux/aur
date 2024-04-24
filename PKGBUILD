@@ -4,21 +4,21 @@ _pkgname=JASPAR2016
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Data package for JASPAR 2016"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('2976e4678291944f664396385049180b')
-sha256sums=('fefe5f2854ac17a1f9995578d1ab9f22c2cb24a2d90b599064d85b795c12dd37')
+b2sums=('05bc6075e71cf3f6aa930476a7cade5e5fd699276d23c0c4a44544d120f7c56d1ff708f8df0aca01abd8a90628258c65fb5025a66818e604e01b3387b8048f3b')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
