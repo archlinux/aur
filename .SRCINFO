@@ -1,10 +1,10 @@
 pkgbase = r-svunit
 	pkgdesc = 'SciViews' - Unit, Integration and System Testing
 	pkgver = 1.0.6
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cran.r-project.org/package=svUnit
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r
 	optdepends = r-covr
 	optdepends = r-knitr
