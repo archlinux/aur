@@ -1,16 +1,16 @@
 pkgbase = r-rttf2pt1
 	pkgdesc = 'ttf2pt1' Program
 	pkgver = 1.3.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=Rttf2pt1
 	arch = x86_64
-	license = custom
+	license = LicenseRef-Rttf2pt1
 	depends = r
 	source = https://cran.r-project.org/src/contrib/Rttf2pt1_1.3.12.tar.gz
 	source = Rttf2pt1-use-ldflags.patch::https://github.com/wch/Rttf2pt1/pull/23.patch
 	md5sums = 993029fbdbaeb22d5b20368d071a1dcd
 	md5sums = 5b143bc1fa8b037ad0a72da32165e7bf
-	sha256sums = 0b4b7a303990369a6944de817b6bd220b400942fcabf42c04fb5b56f1b40a583
-	sha256sums = 27bacf2cae051bca1598f5c062f2cf1fbd4101e5bb8034c0585e2840d80d8cb6
+	b2sums = 6c264e8e6f066efefd3acf68d60089da7b879ae0a9971aea1640e519d534142976ea1d0824e6d2c26ba9098f8b0db149d4c38c0be016f5c663afceb7102f2bec
+	b2sums = febed18b56f75bba58a2505f413bb5934fd3a8b06d7e78b0e1574caacc236ba9180c31349bb6eacd91726e671a5981a272da2a123f48d2f574ad6d6c3ca677a5
 
 pkgname = r-rttf2pt1

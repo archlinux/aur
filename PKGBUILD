@@ -6,11 +6,11 @@ _pkgname=Rttf2pt1
 _pkgver=1.3.12
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="'ttf2pt1' Program"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(custom)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('LicenseRef-Rttf2pt1')
 depends=(
   r
 )
@@ -18,8 +18,8 @@ source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "$_pkgname-use-ldflags.patch::https://github.com/wch/Rttf2pt1/pull/23.patch")
 md5sums=('993029fbdbaeb22d5b20368d071a1dcd'
          '5b143bc1fa8b037ad0a72da32165e7bf')
-sha256sums=('0b4b7a303990369a6944de817b6bd220b400942fcabf42c04fb5b56f1b40a583'
-            '27bacf2cae051bca1598f5c062f2cf1fbd4101e5bb8034c0585e2840d80d8cb6')
+b2sums=('6c264e8e6f066efefd3acf68d60089da7b879ae0a9971aea1640e519d534142976ea1d0824e6d2c26ba9098f8b0db149d4c38c0be016f5c663afceb7102f2bec'
+        'febed18b56f75bba58a2505f413bb5934fd3a8b06d7e78b0e1574caacc236ba9180c31349bb6eacd91726e671a5981a272da2a123f48d2f574ad6d6c3ca677a5')
 
 prepare() {
   cd "$_pkgname"
@@ -28,8 +28,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
