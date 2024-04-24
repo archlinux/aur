@@ -1,10 +1,10 @@
 pkgbase = r-binom
 	pkgdesc = Binomial Confidence Intervals for Several Parameterizations
 	pkgver = 1.1.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://cran.r-project.org/package=binom
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-ggplot2
 	optdepends = r-polynom
