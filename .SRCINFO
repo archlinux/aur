@@ -1,10 +1,10 @@
 pkgbase = r-rcpp
 	pkgdesc = Seamless R and C++ Integration
 	pkgver = 1.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=Rcpp
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	checkdepends = r-tinytest
 	depends = r
 	optdepends = r-inline
