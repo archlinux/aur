@@ -1,13 +1,13 @@
 pkgbase = r-rbeta2009
 	pkgdesc = The Beta Random Number and Dirichlet Random Vector Generating Functions
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rBeta2009
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/rBeta2009_1.0.tar.gz
 	md5sums = 38000662ab8b2318b24447ca0bfa984b
-	sha256sums = d8be1df85ff880a2849013b0c4ab80138b1ae32273e803a9196a25db2ced5f52
+	b2sums = d5858245bcbda9eb9b12d789922282db025c559159fa83d03f21927fb3d664b685abc4e5c4b571eaf9d6f806a5f0c3e883a6b46671efb453030af7efd4d21562
 
 pkgname = r-rbeta2009

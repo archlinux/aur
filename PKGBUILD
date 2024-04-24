@@ -4,21 +4,21 @@ _pkgname=rBeta2009
 _pkgver=1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="The Beta Random Number and Dirichlet Random Vector Generating Functions"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL2)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('38000662ab8b2318b24447ca0bfa984b')
-sha256sums=('d8be1df85ff880a2849013b0c4ab80138b1ae32273e803a9196a25db2ced5f52')
+b2sums=('d5858245bcbda9eb9b12d789922282db025c559159fa83d03f21927fb3d664b685abc4e5c4b571eaf9d6f806a5f0c3e883a6b46671efb453030af7efd4d21562')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
