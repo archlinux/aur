@@ -1,10 +1,10 @@
 pkgbase = r-scs
 	pkgdesc = Splitting Conic Solver
 	pkgver = 3.2.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=scs
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = blas
 	depends = lapack
 	depends = r
