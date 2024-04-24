@@ -4,7 +4,7 @@
 
 pkgname=exploitdb-git
 pkgver=2024.04.22.r0.g9eb5c7b
-pkgrel=1
+pkgrel=2
 pkgdesc="Offensive Security's Exploit Database Archive"
 arch=('any')
 conflicts=('exploitdb')
@@ -12,7 +12,7 @@ replaces=('exploitdb')
 provides=('exploitdb')
 url="https://www.exploit-db.com/"
 license=('GPL')
-makedepends=('git' 'sed')
+makedepends=('git' 'sed' 'coreutils' 'findutils' 'patch')
 optdepends=('libxml2: to check nmap XML results'
             'xclip: copy paths to the clipboard'
             'exploitdb-papers: Addition to exploitdb to include documents and papers'
@@ -41,17 +41,11 @@ package() {
     install -Dm644 "${srcdir}/${pkgname%-git}/.searchsploit_rc" "${pkgdir}/etc/searchsploit_rc"
 
     # Placing files into package destination
-    mkdir -p "${pkgdir}/usr/share/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}/exploits/" "${pkgdir}/usr/share/${pkgname%-git}/"
-    cp "${srcdir}/${pkgname%-git}/files_exploits.csv" "${pkgdir}/usr/share/${pkgname%-git}/"
-    cp -r "${srcdir}/${pkgname%-git}/shellcodes/" "${pkgdir}/usr/share/${pkgname%-git}/"
-    cp "${srcdir}/${pkgname%-git}/files_shellcodes.csv" "${pkgdir}/usr/share/${pkgname%-git}/"
-    chmod -R 755 "${pkgdir}/usr/share/${pkgname%-git}/"
-    find "${pkgdir}/usr/share/${pkgname%-git}/" -type f -exec chmod 644 {} \;
+    cd "${srcdir}/${pkgname%-git}/"
+    find {exploits/,shellcodes/,files_exploits.csv,files_shellcodes.csv} -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname%-git}/{}" \;
 
     # Installing license
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
-    install -m644 "${srcdir}/${pkgname%-git}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
 
 # vim: ts=4 sw=4 et:
