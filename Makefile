@@ -13,7 +13,7 @@ fetch:
 version: VERSION = $(shell git describe --tags $(remote)/$(branch) | cut -d- -f1)
 version: fetch
 	echo "$(VERSION)" > $@
-	touch -d "$(shell git show -s --format=%ci $(VERSION))" $@
+	touch -d "$(shell git -c log.showSignature=false show -s --format=%ci $(VERSION))" $@
 
 PKGBUILD: version
 %: %.in
