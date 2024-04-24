@@ -1,79 +1,79 @@
-# Maintainer: Jacqueline Fisher <jcfisher@reality-overwritten.net>
-
-pkgname="postybirb"
-pkgver=2.3.44
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Jacqueline Fisher <jcfisher@reality-overwritten.net>
+pkgname=postybirb
+_pkgname=PostyBirb
+pkgver=4.0.1
+_electronversion=26
+_nodeversion=18
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
-url="https://www.postybirb.com"
-arch=('any')
-
-## Node uses different arch names than makepkg
-case "$CARCH" in
-	i686)    _arch=ia32;;
-	x86_64)  _arch=x64;;
-	armv7h)  _arch=armv7l;;
-	aarch64) _arch=arm64;;
-	*)       _arch=DUMMY;;
-esac
-
-license=('BSD')
-depends=('electron12')
-makedepends=('npm' 'nodejs-lts-fermium' 'python2')
-source=("$pkgname-v$pkgver.tar.gz::https://github.com/mvdicarlo/postybirb//archive/v${pkgver}.tar.gz"
-        "${pkgname%}.desktop"
-        "${pkgname%}.sh"
-        "buildOptimizer.patch")
-sha512sums=('ad1babad7bfb4e404b15d74756fa79b541b8dae5cbea527da7ef29fc0451bc84708ddc45ec479800e8d857e930a734ca3ccba259dac53af7a798883e66be9105'
-            '313afe3d7f1ea7da37cfff24d3976fbc926739d76d03114dd7d237ff91221ccc5ab28fcb3d3ab14b31235bd0de20e07b39ba1f42caba7f22ae3a2278e75384fd'
-            '60401f5c094cab8d41475da350178e969a86d940c3d132999277cee84d78203d0e23e109fb0886daa831387bb3ec6db9f0e1af940db61e3b9079304d703fa48c'
-            'b4d3f076bb676bd7ac874177d6b06bae54d647c1c540dc800d20c05e90dbb537f1f406ae299e0c682b305485c343a7149fbcfbac04d5b1425e5d3e1e13e175e6')
-
-prepare() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    #source /usr/share/nvm/init-nvm.sh && nvm install 15.14.0
-    patch --strip=1 < ../buildOptimizer.patch
+arch=('x86_64')
+url="https://www.postybirb.com/"
+_ghurl="https://github.com/mvdicarlo/postybirb"
+license=('BSD-3-Clause')
+provides=("${pkgname}")
+conflicts=(
+    "${pkgname}"
+    "${pkgname}-plus"
+)
+depends=(
+    "electron${_electronversion}"
+)
+makedepends=(
+    'npm'
+    'yarn'
+    'git'
+    'nvm'
+    'gendesk'
+    'base-devel'
+    'gcc'
+    'python'
+)
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.sh")
+sha256sums=('a4d8cac51aff8d0f7f5a9487a9d34f9f4db46c894e6659c3904dc102bf7a22aa'
+            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
-
 build() {
-	cd "$srcdir/${pkgname}-${pkgver}"
-	#source /usr/share/nvm/init-nvm.sh && nvm use --delete-prefix v15.14.0 --silent
-	
-	HOME="$srcdir/.node-gyp" npm ci
-	sed -i "s|${srcdir}/${pkgname}-${pkgver}/node_modules/sshpk|.|g" node_modules/sshpk/package.json
-	HOME="$srcdir/.node-gyp" npm run prod
-	
-	#use system electron version
-	#see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
-	electronDist=/usr/lib/electron12/
-    electronVer=$(electron12 --version | tail -c +2)
-    
-	cd "$srcdir/${pkgname}-${pkgver}/electron"
-	export npm_config_target=${electronVer}
-    export npm_config_arch=${_arch}
-    export npm_config_target_arch=${_arch}
-    export npm_config_disturl=https://atom.io/download/electron
-    export npm_config_runtime=electron
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@options@||g" \
+        -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
-    sed -i '/"electron":/d' package.json
-    HOME="$srcdir/.node-gyp" npm ci
-    sed -i "s|${srcdir}/${pkgname}-${pkgver}/electron/node_modules/sshpk|.|g" node_modules/sshpk/package.json
-    ./node_modules/.bin/electron-builder --linux --${_arch} --dir=release -c.electronDist=$electronDist \
-         -c.electronVersion=$electronVer
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
+    #export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+    else
+        echo "Your network is OK."
+    fi
+    sed -i "s|\/packages||g" electron-builder.yml
+    yarn install --cache-folder "${srcdir}/.yarn_cache" --frozen-lockfile --prefer-offline
+    yarn run build:prod
+    npx electron-builder -l --dir
 }
-
-
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    
-    install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-    cp -dr --no-preserve=ownership electron/release/linux-unpacked/resources/* "${pkgdir}/usr/lib/${pkgname}/"
-    
-    install -Dm644 electron/build/icons/icon_256x256x32.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
-    
-    install -dm755 "${pkgdir}/usr/bin"
-    install -Dm755 "$srcdir/${pkgname%}.sh" "$pkgdir/usr/bin/${pkgname%}"
-    
-    install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/postybirb/LICENSE"
-    
-    install -Dm644 "$srcdir/${pkgname%}.desktop" -t "$pkgdir/usr/share/applications"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packaging-resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
