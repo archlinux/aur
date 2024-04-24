@@ -1,10 +1,10 @@
 pkgbase = r-bigassertr
 	pkgdesc = Assertion and Message Functions
 	pkgver = 0.1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=bigassertr
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r
 	optdepends = r-covr
 	optdepends = r-testthat
