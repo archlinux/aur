@@ -1,7 +1,7 @@
 pkgbase = r-etrunct
 	pkgdesc = Computes Moments of Univariate Truncated t Distribution
 	pkgver = 0.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://cran.r-project.org/package=etrunct
 	arch = any
 	license = MIT
