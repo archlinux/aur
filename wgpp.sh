@@ -1,7 +1,7 @@
 #!/bin/bash
 # script: wg++ (WebGrab+Plus)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 21/04/2024
+# rev.date: 24/04/2024
 
 # vars
 WGPP_USR=$(whoami)
@@ -13,19 +13,43 @@ WGPP_SYS=/usr/share/wg++
 # functions
 helpMsg() {
 	echo "WebGrab+Plus EPG/XMLTV grabber"
-	echo "Usage: $WGPP_EXE [-d|--dir <CUSTOM_DIR>] [-g|--generate] [-d <CUSTOM_DIR> -g]"
+	echo "Usage: $WGPP_EXE [-d|--dir <CUSTOM_DIR>] [-g|--generate] [-d <CUSTOM_DIR> -g] [-u|--update] [-d <CUSTOM_DIR> -u]"
 	echo "       $WGPP_EXE -h|-?|--help"
 	echo
 	echo "Options:"
 	echo "  -d <CUSTOM_DIR>         Run from custom configuration folder <CUSTOM_DIR>."
 	echo "  -g                      Create new configuration folder 'wg++' in user's home directory."
 	echo "  -d <CUSTOM_DIR> -g      Create new custom configuration folder <CUSTOM_DIR>."
+	echo "  -u                      Update to latest 'siteini.pack' and channel list files."
+	echo "  -d <CUSTOM_DIR> -u      Update custom configuration folder to latest 'siteini.pack' and channel list files."
 }
 
 missingSysFiles() {
 	if [ ! -e "$WGPP_CFGDIR/install.sh" -o ! -e "$WGPP_CFGDIR/run.net.sh" ]; then
 		cp -r -u $WGPP_SYS/* "$WGPP_CFGDIR" 2>/dev/null
 		echo ":: Restored missing script files 'install.sh' and/or 'run.net.sh'."
+	fi
+}
+
+updateSiteIni() {
+	SITEINI_URL="http://webgrabplus.com/sites/default/files/download/ini/SiteIniPack_current.zip"
+
+	if ! type unzip > /dev/null; then
+		echo ":: Unzip (unzip) is not installed. Please install it first before updating 'siteini.pack'."
+		exit 1
+	fi
+
+	if [ -d "$WGPP_CFGDIR/siteini.pack" ]; then
+		echo ":: Starting update of '$WGPP_CFGDIR/siteini.pack' to latest release."
+		cd "$WGPP_CFGDIR"
+		curl -LO $SITEINI_URL
+		unzip -o "SiteIniPack_current.zip" "siteini.pack/*"
+		rm -f "SiteIniPack_current.zip"
+	else
+		echo ":: Error, cannot find folder 'siteini.pack'. Recreating folder."
+		echo ":: Please re-run 'update' of 'siteini.pack' now."
+		mkdir -v -p "$WGPP_CFGDIR/siteini.pack"
+		exit 1
 	fi
 }
 
@@ -85,6 +109,10 @@ do
 			;;
 		-g|--generate|-[Gg]enerate)
 			genFolder
+			;;
+		-u|--update|-[Uu]pdate)
+			updateSiteIni
+			exit 0
 			;;
 		-?|--?|-h|--help|-[Hh]elp)
 			helpMsg
