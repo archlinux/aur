@@ -1,10 +1,10 @@
 pkgbase = r-whisker
 	pkgdesc = {{mustache}} for R, Logicless Templating
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=whisker
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r
 	optdepends = r-markdown
 	source = https://cran.r-project.org/src/contrib/whisker_0.4.1.tar.gz
