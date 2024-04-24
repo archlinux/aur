@@ -25,8 +25,8 @@ sha512sums=('SKIP'
             'e170da5b974975c6c23c5b09e8c1825bbb17446fb506f2d00f92f86f94394acf18a53458bd90969de38da642fc1f7abb08ba940969108002dab17415b88211d6')
 
 pkgver() {
-	cd "${srcdir}/${pkgname%-git}"
-	printf "%s" "$(git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+    cd "${srcdir}/${pkgname%-git}"
+    printf "%s" "$(git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 prepare() {
