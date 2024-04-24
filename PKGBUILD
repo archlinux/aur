@@ -5,7 +5,7 @@ pkgname=(
 #  'ctranslate2-docs'
 )
 pkgbase=ctranslate2
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
@@ -36,8 +36,7 @@ makedepends=(
 #  'python-yaml'
 #)
 options=('!lto')  ## lto-wrapper fails with CUDA options enabled
-_commit=e491a5146c88e61a91da132043aced8e606a0859  # tags/v4.2.0^0
-source=("git+https://github.com/OpenNMT/CTranslate2.git#commit=$_commit"
+source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/jarro2783/cxxopts.git'
         'git+https://github.com/NVIDIA/thrust.git'
         'git+https://github.com/google/googletest.git'
@@ -46,7 +45,7 @@ source=("git+https://github.com/OpenNMT/CTranslate2.git#commit=$_commit"
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git'
         'git+https://github.com/NVIDIA/cub.git')
-sha256sums=('42597a2174e3a49b35bb12a9d0aecba7f8193f8c45bc6174e07431d1259dc3bd'
+sha256sums=('f064b79eec45a841cbc17e56ec7d6df79bf75e612946d82603781bc8f9d1a0cd'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -55,11 +54,6 @@ sha256sums=('42597a2174e3a49b35bb12a9d0aecba7f8193f8c45bc6174e07431d1259dc3bd'
             'SKIP'
             'SKIP'
             'SKIP')
-
-pkgver() {
-  cd CTranslate2
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
 
 prepare() {
   cd CTranslate2
