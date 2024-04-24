@@ -30,7 +30,7 @@ prepare() {
 
 build() {
     cd "$pkgname"
-    RUSTFLAGS="$RUSTFLAGS --remap-path-prefix $PWD=/" CARGO_TARGET_DIR=target cargo build --release --locked
+    RUSTFLAGS="$RUSTFLAGS --remap-path-prefix $PWD=/" CARGO_TARGET_DIR=target cargo build --release --frozen
 }
 
 package() {
