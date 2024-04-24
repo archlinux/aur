@@ -1,18 +1,19 @@
+# Maintainer: Bartłomiej Szostak <kapcioszek2137@gmail.com>
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Iru Cai <https://vimacs.wehack.space>
 # Contributor: Pierpaolo Valerio
 
 pkgname=(dpic dpic-docs)
-pkgver=2023.02.01
-pkgrel=2
+pkgver=2024.01.01
+pkgrel=1
 pkgdesc="A pic language interpreter."
 arch=('x86_64')
 url="https://ece.uwaterloo.ca/~aplevich/dpic"
 license=('BSD')
 changelog=CHANGES
 source=("$pkgname-$pkgver.tar.gz::$url/$pkgname-$pkgver.tar.gz")
-sha256sums=('d059ff28c04552066c164fb146fee8e0101b953e46e75919b3dcfaa99b031ae6')
+sha256sums=('161901ac9af86d7305512ba1b5649404fb4c803a0fab062627cc3c5895ad872f')
 
 build() {
 	cd "$pkgname-$pkgver"
