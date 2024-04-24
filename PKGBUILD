@@ -161,9 +161,10 @@ prepare() {
 	scripts/config -e CONFIG_KEXEC \
 		-e CONFIG_KEXEC_FILE \
 		-e CONFIG_KEXEC_SIG \
-		-e CONFIG_KEXEC_BZIMAGE_VERIFY_SIG \
 		-e CONFIG_KEXEC_JUMP \
-		-e CONFIG_KEXEC_CORE
+		-e CONFIG_KEXEC_CORE \
+		-e CONFIG_CRASH_DUMP \
+		-e CONFIG_RELOCATABLE
 
 	### 编译zfs前面的准备
 	make ${BUILD_FLAGS[*]} CFLAGS="-O2 -march=native" CXXFLAGS="-O2 -march=native -lstdc++" prepare -j$(nproc)
