@@ -4,11 +4,11 @@ _pkgname=HSAUR3
 _pkgver=1.0-14
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=4
 pkgdesc="A Handbook of Statistical Analyses Using R (3rd Edition)"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL2)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
@@ -43,11 +43,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('f2cd2053cefc5025deb4bdc0307249e1')
-sha256sums=('97af7c47ec07604e9adc48c91300cc6285852c82c5f0742d722e1c4d2ca151bb')
+b2sums=('51e230397ff0f0797d1c283a4c3b7a9d820a97125b6ea3035978ac4f349f54324fd99642d1666e99c62268a8d4250f4fdf32833b580cdefc6913dfa1a4b5a396')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
