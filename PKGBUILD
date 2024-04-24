@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epg2vdr
 pkgver=1.2.16
-pkgrel=2
-_vdrapi=2.6.6
+pkgrel=3
+_vdrapi=2.6.7
 pkgdesc="Used to retrieve EPG data into the VDR"
 url="https://github.com/horchi/vdr-plugin-epg2vdr"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
