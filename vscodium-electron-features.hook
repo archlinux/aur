@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = vscodium-electron
+
+[Action]
+Description = [vscodium-electron-features] Patching product.json...
+Exec = /usr/share/vscodium-electron-features/patch.py vscodium-electron-features patch
+When = PostTransaction
