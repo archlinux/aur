@@ -2,7 +2,7 @@
 pkgname=runjs-bin
 pkgver=2.12.0
 pkgrel=1
-pkgdesc="RunJS is an JavaScript playground that auto-evaluates your code as you type and outputs the results to a console pane"
+pkgdesc="The JavaScript playgroundfor your desktop, Explore and experiment with JavaScript and TypeScript, visualise your ideas and get instant feedback as you type."
 arch=("x86_64" "aarch64")
 url="https://github.com/lukehaas/RunJS"
 license=("Commercial")
