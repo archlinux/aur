@@ -1,13 +1,12 @@
 diff '--color=auto' -ur labwc.orig/src/xwayland-unmanaged.c labwc/src/xwayland-unmanaged.c
 --- labwc.orig/src/xwayland-unmanaged.c	2024-04-08 19:41:34.060874182 -0700
 +++ labwc/src/xwayland-unmanaged.c	2024-04-08 19:42:43.921866124 -0700
-@@ -42,7 +42,8 @@
+@@ -41,8 +41,6 @@
+ 	struct wlr_xwayland_surface *xsurface = unmanaged->xwayland_surface;
  	assert(!unmanaged->node);
  
- 	/* Stack new surface on top */
+-	/* Stack new surface on top */
 -	wlr_xwayland_surface_restack(xsurface, NULL, XCB_STACK_MODE_ABOVE);
-+	if(!xsurface->override_redirect)
-+		wlr_xwayland_surface_restack(xsurface, NULL, XCB_STACK_MODE_ABOVE);
  	wl_list_append(&unmanaged->server->unmanaged_surfaces, &unmanaged->link);
  
  	CONNECT_SIGNAL(xsurface, unmanaged, set_geometry);

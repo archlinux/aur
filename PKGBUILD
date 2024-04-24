@@ -19,9 +19,9 @@ source=("git+https://github.com/labwc/${_pkgname}.git"
         'labwc-fix-xwayland-unmanaged-restack.patch'
         'override_redirect.patch')
 md5sums=('SKIP'
-         'SKIP'
+         '63807aa376164b20fec480bcd375d8ea'
          '63792a6012b41b164e3a9194d522f9ac'
-         '66d673743c2c2aabc7bc27b30f488bf0'
+         'f4a7cd21681f8c49505f28aed8d5e878'
          'd5a2b2205636263fdd12c36d4cd19089')
 
 prepare() {
