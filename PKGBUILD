@@ -1,25 +1,25 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
-# Co-Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Co-Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=screengrab
 pkgname=$_pkgname-git
-pkgver=2.6.0.15.g896ccd7
+pkgver=2.8.0.r1.g400be37
 pkgrel=1
 pkgdesc="Crossplatform tool for grabbing screenshots of your desktop."
 arch=("i686" "x86_64")
 url="https://github.com/lxqt/screengrab"
-license=("GPL2")
-depends=("qt5-base" "qt5-x11extras" "kwindowsystem5" "libqtxdg-git" "libx11" "libxcb" "hicolor-icon-theme")
-makedepends=("git" "cmake" "qt5-tools")
+license=("GPL-2.0-only")
+depends=('kwindowsystem' 'libqtxdg-git' 'hicolor-icon-theme')
+makedepends=('git' 'cmake' 'qt6-tools')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname")
 sha256sums=('SKIP')
 
-
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/./g"
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
