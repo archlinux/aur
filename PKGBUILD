@@ -6,7 +6,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-hidpi-xprop-git"
-pkgver=0.38.0.r105.582d6233
+pkgver=0.39.1.r63.34413d1f
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
@@ -54,6 +54,7 @@ makedepends=(
 	meson
 	wayland-protocols
 	xorgproto
+	hyprwayland-scanner
 )
 source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
         "git+https://github.com/hyprwm/wlroots-hyprland.git"
@@ -117,12 +118,17 @@ package() {
 	install -Dm644 subprojects/wlroots-hyprland/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-wlroots-hyprland"
 	install -Dm644 subprojects/udis86/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-udis86"
 	install -Dm644 docs/*.1 -t "${pkgdir}/usr/share/man/man1"
+	for cmd in hyprctl hyprpm; do
+		install -Dm644 "${cmd}/${cmd}.bash" "${pkgdir}/usr/share/bash-completion/completions/$cmd"
+		install -Dm644 "${cmd}/${cmd}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_$cmd"
+		install -Dm644 "$cmd/$cmd.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
+	done
 	install -d "${pkgdir}/usr/include/hyprland/protocols"
 	install -d "${pkgdir}/usr/include/hyprland/wlroots-hyprland"
 	cp -R src ${pkgdir}/usr/include/hyprland/
 	cp -R ${pkgdir}/tmpwlr/usr/local/include/* ${pkgdir}/usr/include/hyprland/wlroots-hyprland/
 	find ${pkgdir}/usr/include/hyprland/ -type f ! -name '*.h*' -delete
 	rm -rf ${pkgdir}/tmpwlr
-	cp protocols/*-protocol.h ${pkgdir}/usr/include/hyprland/protocols
+	cp protocols/*.h* ${pkgdir}/usr/include/hyprland/protocols
 	install -Dm644 build/hyprland.pc -t "${pkgdir}/usr/share/pkgconfig"
 }
