@@ -1,5 +1,5 @@
 pkgname=mingw-w64-python312-bin
-pkgver=3.12.2
+pkgver=3.12.3
 _pybasever=312
 pkgrel=1
 pkgdesc="The Python programming language (native MSVC version) (mingw-w64)"
@@ -16,9 +16,9 @@ source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win3
         wine-python.sh)
 noextract=("python-${pkgver}-embed-win32.zip"
            "python-${pkgver}-embed-amd64.zip")
-sha256sums=('281fbf681dd44400c2c44ee01377738556bc64d1e26192840caac817f4177d6e'
-            '144ee3fa0c4171f98ec554ac01bb44ee1e895d154609f143b1d20b52c3fe383e'
-            'a7c4f6a9dc423d8c328003254ab0c9338b83037bd787d680826a5bf84308116e'
+sha256sums=('2ef205c29c2ad97a953d6c53f1d2a76474888d4893f5e34f02b367847e7d6079'
+            '38b265fc0612027a126ae54d2485101f041b61893e41ef4f421dee6ac618a99e'
+            'a6b9459f45a6ebbbc1af44f5762623fa355a0c87208ed417628b379d762dddb0'
             'a76a4715e87d3ed4aca6babc8715de8de94513dae4c683c1681551c43698b5ae')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
