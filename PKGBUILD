@@ -4,11 +4,11 @@ _pkgname=fuzzyjoin
 _pkgver=0.1.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Join Tables Together on Inexact Matching"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-dplyr
   r-geosphere
@@ -37,11 +37,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d472d77dec7889760a9323a90aacc89e')
-sha256sums=('47eaefb73ce8553301e15359bc0e071222fc463c334ca486fa04c68d3e86b968')
+b2sums=('ff0cf054f08099bca90b1a54e6238e5811963f73c98526d6aed76172b7c5728103e5aa72a6d913a8ce5c6db223f0a4e989a814a6d7996b0c536d65ce2442b085')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
