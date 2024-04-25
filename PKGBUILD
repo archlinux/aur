@@ -5,11 +5,11 @@ _pkgname=ggformula
 _pkgver=0.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Formula Interface to the Grammar of Graphics"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-ggplot2
   r-ggridges
@@ -43,11 +43,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8eee6fba1dc5081b680ecd4ae73c42b4')
-sha256sums=('d569f83e059f9e4836bd513f92706fb8a614300f744dcc47bf86e8dafd8e776d')
+b2sums=('a6b768aec50214bf45ba706ee5946c66b84602d610dac4a11aa6164acfaea457fb292b5b33ca36d53602a1469475a1bfe430d9e5afe2633323382f5d9f7575be')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
