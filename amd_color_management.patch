@@ -1,18 +1,16 @@
-From 85432af61b779a02b636fdc29d98aba5e89fcff7 Mon Sep 17 00:00:00 2001
-From: Andrew O'Neil <andy@andyofniall.net>
-Date: Sat, 24 Feb 2024 11:40:08 +1100
-Subject: [PATCH] Update AMD color management for Linux 6.8
+commit c1d144ec250a6076692b466965aa962db20f8d54
+Author: Andrew O'Neil <andy@andyofniall.net>
+Date:   Thu Apr 25 16:30:28 2024 +1000
 
----
- src/drm.cpp       | 258 ++++++++++++++++++++++++++--------------------
- src/drm_include.h |  76 +++++++-------
- 2 files changed, 188 insertions(+), 146 deletions(-)
+    Reapply "drm: Update AMD color management for Linux 6.8"
+    
+    This reverts commit 6a73eddd699e9f831f0356d009da7e4bb1c13e7d.
 
 diff --git a/src/drm.cpp b/src/drm.cpp
-index 9420ccbe4..29b8d06f5 100644
+index 86ed0cc..b3570b7 100644
 --- a/src/drm.cpp
 +++ b/src/drm.cpp
-@@ -148,15 +148,15 @@ namespace gamescope
+@@ -202,15 +202,15 @@ namespace gamescope
  			std::optional<CDRMAtomicProperty> rotation;
  			std::optional<CDRMAtomicProperty> COLOR_ENCODING;
  			std::optional<CDRMAtomicProperty> COLOR_RANGE;
@@ -37,7 +35,7 @@ index 9420ccbe4..29b8d06f5 100644
  			std::optional<CDRMAtomicProperty> DUMMY_END;
  		};
  		      PlaneProperties &GetProperties()       { return m_Props; }
-@@ -187,7 +187,7 @@ namespace gamescope
+@@ -241,7 +241,7 @@ namespace gamescope
  			std::optional<CDRMAtomicProperty> CTM;
  			std::optional<CDRMAtomicProperty> VRR_ENABLED;
  			std::optional<CDRMAtomicProperty> OUT_FENCE_PTR;
@@ -46,7 +44,7 @@ index 9420ccbe4..29b8d06f5 100644
  			std::optional<CDRMAtomicProperty> DUMMY_END;
  		};
  		      CRTCProperties &GetProperties()       { return m_Props; }
-@@ -401,7 +401,7 @@ struct drm_t {
+@@ -451,7 +451,7 @@ struct drm_t {
  		uint32_t color_mgmt_serial;
  		std::shared_ptr<gamescope::BackendBlob> lut3d_id[ EOTF_Count ];
  		std::shared_ptr<gamescope::BackendBlob> shaperlut_id[ EOTF_Count ];
@@ -54,8 +52,8 @@ index 9420ccbe4..29b8d06f5 100644
 +		amdgpu_transfer_function output_tf = AMDGPU_TRANSFER_FUNCTION_DEFAULT;
  	} current, pending;
  
- 	/* FBs in the atomic request, but not yet submitted to KMS */
-@@ -1287,8 +1287,8 @@ void finish_drm(struct drm_t *drm)
+ 	// FBs in the atomic request, but not yet submitted to KMS
+@@ -1311,8 +1311,8 @@ void finish_drm(struct drm_t *drm)
  		if ( pCRTC->GetProperties().OUT_FENCE_PTR )
  			pCRTC->GetProperties().OUT_FENCE_PTR->SetPendingValue( req, 0, true );
  
@@ -66,7 +64,7 @@ index 9420ccbe4..29b8d06f5 100644
  	}
  
  	for ( std::unique_ptr< gamescope::CDRMPlane > &pPlane : drm->planes )
-@@ -1313,32 +1313,32 @@ void finish_drm(struct drm_t *drm)
+@@ -1338,32 +1338,32 @@ void finish_drm(struct drm_t *drm)
  		//if ( pPlane->GetProperties().zpos )
  		//	pPlane->GetProperties().zpos->SetPendingValue( req, , true );
  
@@ -117,7 +115,7 @@ index 9420ccbe4..29b8d06f5 100644
  	}
  
  	// We can't do a non-blocking commit here or else risk EBUSY in case the
-@@ -1637,37 +1637,73 @@ struct LiftoffStateCacheEntryKasher
+@@ -1604,37 +1604,73 @@ struct LiftoffStateCacheEntryKasher
  
  std::unordered_set<LiftoffStateCacheEntry, LiftoffStateCacheEntryKasher> g_LiftoffStateCache;
  
@@ -199,28 +197,21 @@ index 9420ccbe4..29b8d06f5 100644
  	}
  }
  
-@@ -1862,33 +1898,33 @@ namespace gamescope
+@@ -1822,8 +1858,8 @@ namespace gamescope
  		auto rawProperties = GetRawProperties();
  		if ( rawProperties )
  		{
 -			m_Props.type                     = CDRMAtomicProperty::Instantiate( "type",                     this, *rawProperties );
 -			m_Props.IN_FORMATS               = CDRMAtomicProperty::Instantiate( "IN_FORMATS",               this, *rawProperties );
--
--			m_Props.FB_ID                    = CDRMAtomicProperty::Instantiate( "FB_ID",                    this, *rawProperties );
--			m_Props.CRTC_ID                  = CDRMAtomicProperty::Instantiate( "CRTC_ID",                  this, *rawProperties );
--			m_Props.SRC_X                    = CDRMAtomicProperty::Instantiate( "SRC_X",                    this, *rawProperties );
--			m_Props.SRC_Y                    = CDRMAtomicProperty::Instantiate( "SRC_Y",                    this, *rawProperties );
--			m_Props.SRC_W                    = CDRMAtomicProperty::Instantiate( "SRC_W",                    this, *rawProperties );
--			m_Props.SRC_H                    = CDRMAtomicProperty::Instantiate( "SRC_H",                    this, *rawProperties );
--			m_Props.CRTC_X                   = CDRMAtomicProperty::Instantiate( "CRTC_X",                   this, *rawProperties );
--			m_Props.CRTC_Y                   = CDRMAtomicProperty::Instantiate( "CRTC_Y",                   this, *rawProperties );
--			m_Props.CRTC_W                   = CDRMAtomicProperty::Instantiate( "CRTC_W",                   this, *rawProperties );
--			m_Props.CRTC_H                   = CDRMAtomicProperty::Instantiate( "CRTC_H",                   this, *rawProperties );
--			m_Props.zpos                     = CDRMAtomicProperty::Instantiate( "zpos",                     this, *rawProperties );
--			m_Props.alpha                    = CDRMAtomicProperty::Instantiate( "alpha",                    this, *rawProperties );
--			m_Props.rotation                 = CDRMAtomicProperty::Instantiate( "rotation",                 this, *rawProperties );
--			m_Props.COLOR_ENCODING           = CDRMAtomicProperty::Instantiate( "COLOR_ENCODING",           this, *rawProperties );
--			m_Props.COLOR_RANGE              = CDRMAtomicProperty::Instantiate( "COLOR_RANGE",              this, *rawProperties );
++			m_Props.type                  = CDRMAtomicProperty::Instantiate( "type",                  this, *rawProperties );
++			m_Props.IN_FORMATS            = CDRMAtomicProperty::Instantiate( "IN_FORMATS",            this, *rawProperties );
+ 
+ 			m_Props.FB_ID                    = CDRMAtomicProperty::Instantiate( "FB_ID",                    this, *rawProperties );
+ 			m_Props.IN_FENCE_FD              = CDRMAtomicProperty::Instantiate( "IN_FENCE_FD",              this, *rawProperties );
+@@ -1841,15 +1877,15 @@ namespace gamescope
+ 			m_Props.rotation                 = CDRMAtomicProperty::Instantiate( "rotation",                 this, *rawProperties );
+ 			m_Props.COLOR_ENCODING           = CDRMAtomicProperty::Instantiate( "COLOR_ENCODING",           this, *rawProperties );
+ 			m_Props.COLOR_RANGE              = CDRMAtomicProperty::Instantiate( "COLOR_RANGE",              this, *rawProperties );
 -			m_Props.VALVE1_PLANE_DEGAMMA_TF  = CDRMAtomicProperty::Instantiate( "VALVE1_PLANE_DEGAMMA_TF",  this, *rawProperties );
 -			m_Props.VALVE1_PLANE_DEGAMMA_LUT = CDRMAtomicProperty::Instantiate( "VALVE1_PLANE_DEGAMMA_LUT", this, *rawProperties );
 -			m_Props.VALVE1_PLANE_CTM         = CDRMAtomicProperty::Instantiate( "VALVE1_PLANE_CTM",         this, *rawProperties );
@@ -230,37 +221,19 @@ index 9420ccbe4..29b8d06f5 100644
 -			m_Props.VALVE1_PLANE_LUT3D       = CDRMAtomicProperty::Instantiate( "VALVE1_PLANE_LUT3D",       this, *rawProperties );
 -			m_Props.VALVE1_PLANE_BLEND_TF    = CDRMAtomicProperty::Instantiate( "VALVE1_PLANE_BLEND_TF",    this, *rawProperties );
 -			m_Props.VALVE1_PLANE_BLEND_LUT   = CDRMAtomicProperty::Instantiate( "VALVE1_PLANE_BLEND_LUT",   this, *rawProperties );
-+			m_Props.type                  = CDRMAtomicProperty::Instantiate( "type",                  this, *rawProperties );
-+			m_Props.IN_FORMATS            = CDRMAtomicProperty::Instantiate( "IN_FORMATS",            this, *rawProperties );
-+
-+			m_Props.FB_ID                 = CDRMAtomicProperty::Instantiate( "FB_ID",                 this, *rawProperties );
-+			m_Props.CRTC_ID               = CDRMAtomicProperty::Instantiate( "CRTC_ID",               this, *rawProperties );
-+			m_Props.SRC_X                 = CDRMAtomicProperty::Instantiate( "SRC_X",                 this, *rawProperties );
-+			m_Props.SRC_Y                 = CDRMAtomicProperty::Instantiate( "SRC_Y",                 this, *rawProperties );
-+			m_Props.SRC_W                 = CDRMAtomicProperty::Instantiate( "SRC_W",                 this, *rawProperties );
-+			m_Props.SRC_H                 = CDRMAtomicProperty::Instantiate( "SRC_H",                 this, *rawProperties );
-+			m_Props.CRTC_X                = CDRMAtomicProperty::Instantiate( "CRTC_X",                this, *rawProperties );
-+			m_Props.CRTC_Y                = CDRMAtomicProperty::Instantiate( "CRTC_Y",                this, *rawProperties );
-+			m_Props.CRTC_W                = CDRMAtomicProperty::Instantiate( "CRTC_W",                this, *rawProperties );
-+			m_Props.CRTC_H                = CDRMAtomicProperty::Instantiate( "CRTC_H",                this, *rawProperties );
-+			m_Props.zpos                  = CDRMAtomicProperty::Instantiate( "zpos",                  this, *rawProperties );
-+			m_Props.alpha                 = CDRMAtomicProperty::Instantiate( "alpha",                 this, *rawProperties );
-+			m_Props.rotation              = CDRMAtomicProperty::Instantiate( "rotation",              this, *rawProperties );
-+			m_Props.COLOR_ENCODING        = CDRMAtomicProperty::Instantiate( "COLOR_ENCODING",        this, *rawProperties );
-+			m_Props.COLOR_RANGE           = CDRMAtomicProperty::Instantiate( "COLOR_RANGE",           this, *rawProperties );
-+			m_Props.AMD_PLANE_DEGAMMA_TF  = CDRMAtomicProperty::Instantiate( "AMD_PLANE_DEGAMMA_TF",  this, *rawProperties );
-+			m_Props.AMD_PLANE_DEGAMMA_LUT = CDRMAtomicProperty::Instantiate( "AMD_PLANE_DEGAMMA_LUT", this, *rawProperties );
-+			m_Props.AMD_PLANE_CTM         = CDRMAtomicProperty::Instantiate( "AMD_PLANE_CTM",         this, *rawProperties );
-+			m_Props.AMD_PLANE_HDR_MULT    = CDRMAtomicProperty::Instantiate( "AMD_PLANE_HDR_MULT",    this, *rawProperties );
-+			m_Props.AMD_PLANE_SHAPER_LUT  = CDRMAtomicProperty::Instantiate( "AMD_PLANE_SHAPER_LUT",  this, *rawProperties );
-+			m_Props.AMD_PLANE_SHAPER_TF   = CDRMAtomicProperty::Instantiate( "AMD_PLANE_SHAPER_TF",   this, *rawProperties );
-+			m_Props.AMD_PLANE_LUT3D       = CDRMAtomicProperty::Instantiate( "AMD_PLANE_LUT3D",       this, *rawProperties );
-+			m_Props.AMD_PLANE_BLEND_TF    = CDRMAtomicProperty::Instantiate( "AMD_PLANE_BLEND_TF",    this, *rawProperties );
-+			m_Props.AMD_PLANE_BLEND_LUT   = CDRMAtomicProperty::Instantiate( "AMD_PLANE_BLEND_LUT",   this, *rawProperties );
++			m_Props.AMD_PLANE_DEGAMMA_TF     = CDRMAtomicProperty::Instantiate( "AMD_PLANE_DEGAMMA_TF",     this, *rawProperties );
++			m_Props.AMD_PLANE_DEGAMMA_LUT    = CDRMAtomicProperty::Instantiate( "AMD_PLANE_DEGAMMA_LUT",    this, *rawProperties );
++			m_Props.AMD_PLANE_CTM            = CDRMAtomicProperty::Instantiate( "AMD_PLANE_CTM",            this, *rawProperties );
++			m_Props.AMD_PLANE_HDR_MULT       = CDRMAtomicProperty::Instantiate( "AMD_PLANE_HDR_MULT",       this, *rawProperties );
++			m_Props.AMD_PLANE_SHAPER_LUT     = CDRMAtomicProperty::Instantiate( "AMD_PLANE_SHAPER_LUT",     this, *rawProperties );
++			m_Props.AMD_PLANE_SHAPER_TF      = CDRMAtomicProperty::Instantiate( "AMD_PLANE_SHAPER_TF",      this, *rawProperties );
++			m_Props.AMD_PLANE_LUT3D          = CDRMAtomicProperty::Instantiate( "AMD_PLANE_LUT3D",          this, *rawProperties );
++			m_Props.AMD_PLANE_BLEND_TF       = CDRMAtomicProperty::Instantiate( "AMD_PLANE_BLEND_TF",       this, *rawProperties );
++			m_Props.AMD_PLANE_BLEND_LUT      = CDRMAtomicProperty::Instantiate( "AMD_PLANE_BLEND_LUT",      this, *rawProperties );
  		}
  	}
  
-@@ -1908,14 +1944,14 @@ namespace gamescope
+@@ -1869,14 +1905,14 @@ namespace gamescope
  		auto rawProperties = GetRawProperties();
  		if ( rawProperties )
  		{
@@ -283,7 +256,7 @@ index 9420ccbe4..29b8d06f5 100644
  		}
  	}
  
-@@ -2376,8 +2412,8 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
+@@ -2357,8 +2393,8 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
  
  				if ( drm_supports_color_mgmt( drm ) )
  				{
@@ -294,7 +267,7 @@ index 9420ccbe4..29b8d06f5 100644
  
  					if ( entry.layerState[i].ycbcr )
  					{
-@@ -2389,27 +2425,27 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
+@@ -2370,27 +2406,27 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
  						//
  						// Doing LINEAR/DEFAULT here introduces banding so... this is the best way.
  						// (sRGB DEGAMMA does NOT work on YUV planes!)
@@ -304,14 +277,14 @@ index 9420ccbe4..29b8d06f5 100644
 +						shaper_tf = AMDGPU_TRANSFER_FUNCTION_BT709_INV_OETF;
  					}
  
- 					if (!g_bDisableDegamma)
+ 					if (!cv_drm_debug_disable_degamma_tf)
 -						liftoff_layer_set_property( drm->lo_layers[ i ], "VALVE1_PLANE_DEGAMMA_TF", degamma_tf );
 +						liftoff_layer_set_property( drm->lo_layers[ i ], "AMD_PLANE_DEGAMMA_TF", degamma_tf );
  					else
 -						liftoff_layer_set_property( drm->lo_layers[ i ], "VALVE1_PLANE_DEGAMMA_TF", 0 );
 +						liftoff_layer_set_property( drm->lo_layers[ i ], "AMD_PLANE_DEGAMMA_TF", 0 );
  
- 					if ( !g_bDisableShaperAnd3DLUT )
+ 					if ( !cv_drm_debug_disable_shaper_and_3dlut )
  					{
 -						liftoff_layer_set_property( drm->lo_layers[ i ], "VALVE1_PLANE_SHAPER_LUT", drm->pending.shaperlut_id[ ColorSpaceToEOTFIndex( entry.layerState[i].colorspace ) ]->GetBlobValue() );
 -						liftoff_layer_set_property( drm->lo_layers[ i ], "VALVE1_PLANE_SHAPER_TF", shaper_tf );
@@ -332,7 +305,7 @@ index 9420ccbe4..29b8d06f5 100644
  					}
  				}
  			}
-@@ -2417,25 +2453,25 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
+@@ -2398,25 +2434,25 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
  			{
  				if ( drm_supports_color_mgmt( drm ) )
  				{
@@ -351,7 +324,7 @@ index 9420ccbe4..29b8d06f5 100644
  
  			if ( drm_supports_color_mgmt( drm ) )
  			{
- 				if (!g_bDisableBlendTF && !bSinglePlane)
+ 				if (!cv_drm_debug_disable_blend_tf && !bSinglePlane)
 -					liftoff_layer_set_property( drm->lo_layers[ i ], "VALVE1_PLANE_BLEND_TF", drm->pending.output_tf );
 +					liftoff_layer_set_property( drm->lo_layers[ i ], "AMD_PLANE_BLEND_TF", drm->pending.output_tf );
  				else
@@ -367,7 +340,7 @@ index 9420ccbe4..29b8d06f5 100644
  			}
  		}
  		else
-@@ -2447,12 +2483,12 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
+@@ -2429,12 +2465,12 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
  
  			if ( drm_supports_color_mgmt( drm ) )
  			{
@@ -386,7 +359,7 @@ index 9420ccbe4..29b8d06f5 100644
  			}
  		}
  	}
-@@ -2533,7 +2569,7 @@ int drm_prepare( struct drm_t *drm, bool async, const struct FrameInfo_t *frameI
+@@ -2515,7 +2551,7 @@ int drm_prepare( struct drm_t *drm, bool async, const struct FrameInfo_t *frameI
  			drm->needs_modeset = true;
  	}
  
@@ -395,8 +368,8 @@ index 9420ccbe4..29b8d06f5 100644
  
  	const bool bWantsHDR10 = g_bOutputHDREnabled && frameInfo->outputEncodingEOTF == EOTF_PQ;
  	gamescope::BackendBlob *pHDRMetadata = nullptr;
-@@ -2571,17 +2607,17 @@ int drm_prepare( struct drm_t *drm, bool async, const struct FrameInfo_t *frameI
- 		if ( !g_bDisableRegamma && !bSinglePlane )
+@@ -2554,17 +2590,17 @@ int drm_prepare( struct drm_t *drm, bool async, const struct FrameInfo_t *frameI
+ 		if ( !cv_drm_debug_disable_output_tf && !bSinglePlane )
  		{
  			drm->pending.output_tf = g_bOutputHDREnabled
 -				? DRM_VALVE1_TRANSFER_FUNCTION_PQ
@@ -417,7 +390,7 @@ index 9420ccbe4..29b8d06f5 100644
  	}
  
  	uint32_t flags = DRM_MODE_ATOMIC_NONBLOCK;
-@@ -2644,8 +2680,8 @@ int drm_prepare( struct drm_t *drm, bool async, const struct FrameInfo_t *frameI
+@@ -2627,8 +2663,8 @@ int drm_prepare( struct drm_t *drm, bool async, const struct FrameInfo_t *frameI
  			if ( pCRTC->GetProperties().OUT_FENCE_PTR )
  				pCRTC->GetProperties().OUT_FENCE_PTR->SetPendingValue( drm->req, 0, bForceInRequest );
  
@@ -428,28 +401,33 @@ index 9420ccbe4..29b8d06f5 100644
  		}
  
  		if ( drm->pConnector )
-@@ -2679,8 +2715,8 @@ int drm_prepare( struct drm_t *drm, bool async, const struct FrameInfo_t *frameI
+@@ -2662,12 +2698,12 @@ int drm_prepare( struct drm_t *drm, bool async, const struct FrameInfo_t *frameI
  
  	if ( drm->pCRTC )
  	{
 -		if ( drm->pCRTC->GetProperties().VALVE1_CRTC_REGAMMA_TF )
--			drm->pCRTC->GetProperties().VALVE1_CRTC_REGAMMA_TF->SetPendingValue( drm->req, drm->pending.output_tf, bForceInRequest );
 +		if ( drm->pCRTC->GetProperties().AMD_CRTC_REGAMMA_TF )
-+			drm->pCRTC->GetProperties().AMD_CRTC_REGAMMA_TF->SetPendingValue( drm->req, inverse_tf(drm->pending.output_tf), bForceInRequest );
+ 		{
+ 			if ( !cv_drm_debug_disable_regamma_tf )
+-				drm->pCRTC->GetProperties().VALVE1_CRTC_REGAMMA_TF->SetPendingValue( drm->req, drm->pending.output_tf, bForceInRequest );
++				drm->pCRTC->GetProperties().AMD_CRTC_REGAMMA_TF->SetPendingValue( drm->req, inverse_tf( drm->pending.output_tf ), bForceInRequest );
+ 			else
+-				drm->pCRTC->GetProperties().VALVE1_CRTC_REGAMMA_TF->SetPendingValue( drm->req, DRM_VALVE1_TRANSFER_FUNCTION_DEFAULT, bForceInRequest );
++				drm->pCRTC->GetProperties().AMD_CRTC_REGAMMA_TF->SetPendingValue( drm->req, AMDGPU_TRANSFER_FUNCTION_DEFAULT, bForceInRequest );
+ 		}
  	}
  
- 	drm->flags = flags;
-@@ -2995,7 +3031,7 @@ bool drm_supports_color_mgmt(struct drm_t *drm)
+@@ -2983,7 +3019,7 @@ bool drm_supports_color_mgmt(struct drm_t *drm)
  	if ( !drm->pPrimaryPlane )
  		return false;
  
 -	return drm->pPrimaryPlane->GetProperties().VALVE1_PLANE_CTM.has_value();
-+	return drm->pPrimaryPlane->GetProperties().AMD_PLANE_CTM.has_value();
++	return drm->pPrimaryPlane->GetProperties().AMD_PLANE_CTM.has_value() && drm->pPrimaryPlane->GetProperties().AMD_PLANE_BLEND_TF.has_value();
  }
  
  std::span<const uint32_t> drm_get_valid_refresh_rates( struct drm_t *drm )
 diff --git a/src/drm_include.h b/src/drm_include.h
-index 500c3040a..d0ed3ce9e 100644
+index 500c304..d0ed3ce 100644
 --- a/src/drm_include.h
 +++ b/src/drm_include.h
 @@ -28,19 +28,22 @@ enum drm_color_range {

@@ -1,7 +1,7 @@
 pkgbase = gamescope-amd-color
 	pkgdesc = SteamOS session compositing window manager, patched for experimental AMD color management
-	pkgver = 3.14.2
-	pkgrel = 3
+	pkgver = 3.14.6
+	pkgrel = 1
 	url = https://github.com/ValveSoftware/gamescope
 	install = gamescope.install
 	arch = x86_64
@@ -42,13 +42,9 @@ pkgbase = gamescope-amd-color
 	optdepends = linux-amd-color: Linux kernel with experimental AMD color management enabled
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/ValveSoftware/gamescope.git#tag=3.14.2
+	source = git+https://github.com/ValveSoftware/gamescope.git#tag=3.14.6
 	source = amd_color_management.patch
-	source = openvr_2_only.patch
-	source = fix_app_hdr_metadata.patch
-	b2sums = SKIP
-	b2sums = a2df86c41ba2186df5a93a689f3af8af3e5bd2c5d99712a75e893d3d9ef99a553e8503c78cee3acb496f34785728f024cf8c6fe57f88ba12a3d3a6913deddcf0
-	b2sums = e8f886757d1e4fe690de583de007bfec812a19e87c91a7349e84eb94b0ef6f4bb9a9d71c81045164efdb680e23cf4d47e24f6f706dd9c1ee2f0385a9d12f3432
-	b2sums = eacfebc628ebe0eb59d6c2113900c4a6f7c4d69b0d80546469ec8daea21bb89db2523c9f9d5f5e796986fec0044aec2e9c44453e5206cd22bfd29f6e7aa1a870
+	b2sums = 6445b507637103bde17fbf65fb3e9043bcb6b74424038f4a4c1fc7d631ce51f52ed15e297daba3d6e76891762a7ce82598501fd4a9e075f1bf41f221e82232dd
+	b2sums = e5c24512fff1ce115eb51e254eb59c696f01d6d19467afe2f835c88aaaeee1087ae75e27d87858dab5aded7878ccecf029106e0ddd5decb538da8229b29f211b
 
 pkgname = gamescope-amd-color
