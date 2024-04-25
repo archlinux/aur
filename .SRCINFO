@@ -1,10 +1,10 @@
 pkgbase = r-bayesm
 	pkgdesc = Bayesian Inference for Marketing/Micro-Econometrics
 	pkgver = 3.1.6
-	pkgrel = 2
+	pkgrel = 4
 	url = https://cran.r-project.org/package=bayesm
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = r-rcpparmadillo
 	depends = blas
 	depends = lapack
@@ -13,6 +13,6 @@ pkgbase = r-bayesm
 	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/bayesm_3.1-6.tar.gz
 	md5sums = 3ce1e250505c319ef9b0b9b113cfead8
-	sha256sums = 17d72b9cdc090845f98e7a04640380d0baef8bc23d1487c8f64dc192fdb93cb5
+	b2sums = ed525df663da61a7aaef86bfb21b7cc48e9f1d15fbc543ae190ea7307cbac85dff2ce4f59b1c5ecd05ab52fdb8980fa4e6b601e292f7bae4890a68cf14eec81a
 
 pkgname = r-bayesm

@@ -5,11 +5,11 @@ _pkgname=bayesm
 _pkgver=3.1-6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=4
 pkgdesc="Bayesian Inference for Marketing/Micro-Econometrics"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   blas
   lapack
@@ -24,11 +24,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('3ce1e250505c319ef9b0b9b113cfead8')
-sha256sums=('17d72b9cdc090845f98e7a04640380d0baef8bc23d1487c8f64dc192fdb93cb5')
+b2sums=('ed525df663da61a7aaef86bfb21b7cc48e9f1d15fbc543ae190ea7307cbac85dff2ce4f59b1c5ecd05ab52fdb8980fa4e6b601e292f7bae4890a68cf14eec81a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
