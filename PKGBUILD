@@ -2,9 +2,10 @@
 # Contributor: Barfin
 # Contributor: DanielH, agstrc
 
-pkgname=iriunwebcam-bin
+_pkgname="iriunwebcam"
+pkgname="$_pkgname-bin"
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Use your phone's camera as a wireless webcam in your PC"
 url="https://iriun.com/"
 license=('LicenseRef-Iriun')
@@ -19,6 +20,8 @@ sha256sums=(
   'eb2ba875d0b419ab7d6327a933d619d1b9eed51f89d49e55ed789bf8f37f75be'
 )
 
+options=('!emptydirs')
+
 package() {
   depends+=(
     'alsa-lib'
@@ -29,7 +32,7 @@ package() {
   tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
 
   # move binary
-  install -Dm644 "$pkgdir/usr/local/bin/iriunwebcam" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$pkgdir/usr/local/bin/iriunwebcam" -t "$pkgdir/usr/bin/"
   rm -rf "$pkgdir/usr/local"
 
   # fix desktop
