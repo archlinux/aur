@@ -4,11 +4,11 @@ _pkgname=benford.analysis
 _pkgver=0.1.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Benford Analysis for Data Validation and Forensic Analytics"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-data.table
 )

@@ -1,10 +1,10 @@
 pkgbase = r-benford.analysis
 	pkgdesc = Benford Analysis for Data Validation and Forensic Analytics
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=benford.analysis
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	depends = r-data.table
 	optdepends = r-testthat
