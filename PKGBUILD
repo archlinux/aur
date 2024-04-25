@@ -1,6 +1,6 @@
 # Maintainer: Balazs Ruzsa <ruzsa.balazs@gmail.com>
 pkgname=retro-debugger-git
-pkgver=v0.64.66.r0.a69c371
+pkgver=v0.64.66.r1.83245f8
 pkgrel=1
 pkgdesc="Multiplatform debugger APIs host for retro computers: C64 (Vice), Atari800 and NES (NestopiaUE)"
 arch=(x86_64)
@@ -11,12 +11,10 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 source=(
   'RetroDebugger::git+https://github.com/slajerek/RetroDebugger.git'
-  'RetroDebugger.patch'
   'MTEngineSDL::git+https://github.com/slajerek/MTEngineSDL.git'
 )
 md5sums=(
   'SKIP'
-  'a5a353c01ab92a5b50fb758e5771ab6e'
   'SKIP'
 )
 
@@ -28,7 +26,6 @@ pkgver() {
 prepare() {
 	cd "$srcdir/MTEngineSDL"
 	cd "$srcdir/RetroDebugger"
-	patch -p1 -i "$srcdir/RetroDebugger.patch"
 }
 
 build() {
