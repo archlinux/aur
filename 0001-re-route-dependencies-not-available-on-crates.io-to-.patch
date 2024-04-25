@@ -158,7 +158,8 @@ index 837e4363..9d0a8fdd 100644
 +proxmox-lang = { path = "../proxmox/proxmox-lang" }
  #proxmox-ldap = { path = "../proxmox/proxmox-ldap" }
  #proxmox-metrics = { path = "../proxmox/proxmox-metrics" }
- #proxmox-notify = { path = "../proxmox/proxmox-notify" }
+-#proxmox-notify = { path = "../proxmox/proxmox-notify" }
++proxmox-notify = { path = "../proxmox/proxmox-notify" }
  #proxmox-openid = { path = "../proxmox/proxmox-openid" }
 -#proxmox-rest-server = { path = "../proxmox/proxmox-rest-server" }
 -#proxmox-router = { path = "../proxmox/proxmox-router" }
