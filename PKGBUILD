@@ -13,7 +13,7 @@ provides=("signal-message-scheduler")
 conflicts=("signal-message-scheduler")
 depends=("signal-cli")
 source=("https://github.com/VVhitehead/signal-message-scheduler/releases/download/v$pkgver/signal-message-scheduler-$pkgver-x86_64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('64dd676c4a869b435ff9b4c85d7b69a29fa0d310eb5cd7d27054124175a901ef')
 
 package() {
     install -Dm755 signal-message-scheduler -t "$pkgdir/usr/bin"
