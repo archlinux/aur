@@ -4,11 +4,11 @@ _pkgname=mashr
 _pkgver=0.2.79
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Multivariate Adaptive Shrinkage"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(BSD)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('BSD-3-Clause')
 depends=(
   blas
   gsl
@@ -42,11 +42,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('3ddec828c72b1d1b594f35a3934e7f88')
-sha256sums=('158b3670277523fa3168a46a9d80a1f6dd7063091b54584cd170eb70bf85f886')
+b2sums=('6bf494ce40e788cf4584cdc60d3feeed81db1623f19658a7db6f96f00c37d8cfda8d70b8f40208cb81df5ec72170764c19dc6dc407296f77f2f8db5e6a6596d0')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
