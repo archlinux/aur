@@ -5,11 +5,11 @@ _pkgname=rugarch
 _pkgver=1.5-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Univariate GARCH Models"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-chron
   r-ks
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('98d9cb00c50db386ca21f716656df2b6')
-sha256sums=('9ffe510807ebafaa689a357c10df3523e3231b473b3eae18783f528c1577de1e')
+b2sums=('7b10a89b3709e56f38b5060064a2d654d3c2b8103ee2274296b961eaf1e8c7cd24c99ec3817485240cff0bc5703cbdd007b564ce9ecf37ec964ed0ffae937a78')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
