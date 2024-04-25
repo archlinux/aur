@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libavif-git
-pkgver=1.0.4.r472.gb2ecd8e4
+pkgver=1.0.4.r476.gf56a1f18
 pkgrel=1
 pkgdesc="Library for encoding and decoding .avif files"
 arch=('i686' 'x86_64')
 url="https://github.com/AOMediaCodec/libavif"
 license=('BSD-2-Clause')
-depends=('glibc' 'aom' 'dav1d' 'libjpeg' 'libpng' 'librav1e.so' 'libyuv' 'svt-av1')
+depends=('glibc' 'aom' 'dav1d' 'libjpeg' 'libpng' 'librav1e.so' 'libsharpyuv.so' 'libyuv' 'svt-av1')
 makedepends=('git' 'cmake' 'nasm' 'pkgconf' 'gdk-pixbuf2')
 provides=("libavif=$pkgver")
 conflicts=('libavif')
@@ -33,11 +33,12 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DAVIF_BUILD_APPS=ON \
+    -DAVIF_BUILD_GDK_PIXBUF=ON \
     -DAVIF_CODEC_AOM=SYSTEM \
     -DAVIF_CODEC_DAV1D=SYSTEM \
     -DAVIF_CODEC_RAV1E=SYSTEM \
     -DAVIF_CODEC_SVT=SYSTEM \
-    -DAVIF_BUILD_GDK_PIXBUF=ON \
+    -DAVIF_LIBSHARPYUV=SYSTEM \
     ./
   cmake --build "_build"
 }
