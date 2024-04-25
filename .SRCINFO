@@ -1,6 +1,6 @@
 pkgbase = nextpnr-ecp5-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - for ecp5
-	pkgver = 20240424_nextpnr_0.7_28_gedcafcf0
+	pkgver = 20240425_nextpnr_0.7_28_gedcafcf0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
