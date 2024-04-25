@@ -7,11 +7,11 @@ _pkgname=hunspell
 _pkgver=3.0.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="High-Performance Stemmer, Tokenizer, and Spell Checker"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(LGPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only OR LGPL-2.1-only OR MPL-1.1')
 depends=(
   r-digest
   r-rcpp
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8bd560b5bc128d9307a3d0e344a6a9b4')
-sha256sums=('fdaa1473a62dff2a5923b9bd958d87e546069ca22ce113f44e88c761338442f3')
+b2sums=('567a527dadfbb8f5d81c00f9cb88469b2418189484e1040c375dc3cd50a92db9a03e899ba2e596c4618c4a7ea86afc10d983cae4bff9f34051d176c1ae0b4d20')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
