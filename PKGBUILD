@@ -27,9 +27,7 @@ sha256sums=('21a6654911daf24d7ed6abf8e2fcb1c7331b3cce64053a96faead3fbe98e9fb3'
             '26e87976d170c78e458ac44e65d305374aef67d2ab44a17bce151e86a2b783e5')
 
 build() {
-	cd epg-$pkgver
-	npm i --cache ../npm-cache
-	cd ..
+	npm i --cache npm-cache --prefix epg-$pkgver
 	bsdtar -a -cf epg-$pkgver.tgz epg-$pkgver
 }
 
