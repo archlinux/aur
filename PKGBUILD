@@ -13,7 +13,11 @@ provides=("signal-message-scheduler")
 conflicts=("signal-message-scheduler")
 depends=("signal-cli")
 source=("https://github.com/VVhitehead/signal-message-scheduler/releases/download/v$pkgver/signal-message-scheduler-$pkgver-x86_64.tar.gz")
+<<<<<<< HEAD
 sha256sums=("64dd676c4a869b435ff9b4c85d7b69a29fa0d310eb5cd7d27054124175a901ef")
+=======
+sha256sums=('641dcda717050e53e03497d4d600cf0956983f704068cf6b64fedbad2ba10581')
+>>>>>>> 2cec36f (add pkgbuild and srcinfo)
 
 package() {
     install -Dm755 smsch -t "$pkgdir/usr/bin"
