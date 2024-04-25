@@ -10,6 +10,7 @@ depends=('zsh' 'dunst')
 conflicts=('zsh-auto-notify')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Amir1453/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('SKIP')
 changelog=changelog
 
 package() {
