@@ -4,11 +4,11 @@ _pkgname=sampleSelection
 _pkgver=1.2-12
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Sample Selection Models"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-formula
   r-maxlik
@@ -23,11 +23,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('f64dba3ee084522778f3fe7f33c60ba4')
-sha256sums=('be0584c2a017843a2dbc34e9c42d7c5c15992e276bcc5c1b7b47382218e2a1aa')
+b2sums=('89f02a465c5409abdd1bce5073dd59a84cbbac1e87f4cee5739e965824cb626d1332bd2b58d388ca3bea3b402dd7dce61879dedce63b6be7af331a1e3791d54a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
