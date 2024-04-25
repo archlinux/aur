@@ -4,11 +4,11 @@ _pkgname=alphahull
 _pkgver=2.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Generalization of the Convex Hull of a Sample of Points in the Plane"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only OR GPL-3.0-only')
 depends=(
   r-ggplot2
   r-interp
@@ -20,11 +20,11 @@ depends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('1ea4cc665f6cde31c63cc9e50a6c801f')
-sha256sums=('82104b049b945b62b5b62f1520ff789a77638ab7e91650e50d6eb191373a8012')
+b2sums=('ed8f9c06843683039b34d90e3c45613f60e49deeb5a16efecb58032a67e7b019ba4e9f10b831585f312c854eb54f5ede644182783992309d36f308eeb4a86f7f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
