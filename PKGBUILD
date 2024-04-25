@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=upscayl-git
 _pkgname=Upscayl
-pkgver=2.10.9.r1.g1e96386
+pkgver=2.11.0.r1.gd31224d
 pkgrel=1
 _electronversion=27
 _nodeversion=18
@@ -20,6 +20,8 @@ makedepends=(
     'npm'
     'nvm'
     'elfutils'
+    'base-devel'
+    'gcc'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
