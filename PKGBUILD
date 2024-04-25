@@ -13,7 +13,7 @@ sha256sums=('1f4d6fdde384c36bc8297e639cc5ece98817e6bbbe7e54e21ed20b1ff8f6fe7f')
 prepare() {
   cd "${srcdir}"/Assimulo-Assimulo-$pkgver
 
-  curl -L https://github.com/modelon-community/Assimulo/pull/87.patch | patch -p1
+  curl -L https://github.com/modelon-community/Assimulo/pull/87.patch | patch -p1 || :
 
   # use shared lib
   sed -i "s|BLASname_t+'.a'|BLASname_t+'.so'|g" setup.py
