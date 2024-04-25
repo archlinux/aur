@@ -1,14 +1,14 @@
 pkgbase = tasker-permissions-git
 	pkgdesc = Utility to easily grant Tasker permissions
 	pkgver = 0.2.0.r2.ga137604
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/joaomgcd/Tasker-Permissions
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = npm
 	depends = android-tools
-	depends = electron28
+	depends = electron30
 	provides = tasker-permissions
 	conflicts = tasker-permissions
 	source = tasker-permissions::git+https://github.com/joaomgcd/Tasker-Permissions.git
