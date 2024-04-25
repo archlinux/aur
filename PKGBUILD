@@ -3,7 +3,7 @@
 pkgname=roadrunner
 epoch=1
 pkgver=2024.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
@@ -42,8 +42,8 @@ build() {
 	CGO_ENABLED=0 go build \
 		-trimpath \
 		-ldflags "-s\
-		 -X github.com/roadrunner-server/roadrunner/v2023/internal/meta.version=${pkgver}\
-		 -X github.com/roadrunner-server/roadrunner/v2023/internal/meta.buildTime=$(date +%FT%T%z)" \
+		 -X github.com/roadrunner-server/roadrunner/v2024/internal/meta.version=${pkgver}\
+		 -X github.com/roadrunner-server/roadrunner/v2024/internal/meta.buildTime=$(date +%FT%T%z)" \
 		-o ./roadrunner \
 		./cmd/rr
 }
