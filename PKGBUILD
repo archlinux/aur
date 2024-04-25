@@ -5,11 +5,11 @@ _pkgname=OmnipathR
 _pkgver=3.10.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="OmniPath web service client and more"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-checkmate
   r-crayon
@@ -63,11 +63,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('c51296b40e8d580f14dc3ff6839495f6')
-sha256sums=('99c3976d8f1e48dc00f5208ee100e8f24e97138cbfef917bdcfaaf0327597ff1')
+b2sums=('cd9c59b16075a498a448dee58c997c2b110cd8db4aaef0211a8c83c12000c5de5a9eb81b9132ca601a4eb7d2845881603a987b70c5906920d1c7859caf949abe')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
