@@ -7,7 +7,7 @@ url="https://github.com/polytopelabs/homebrew-tap"
 license=('Unknown')
 depends=()
 options=('!strip' '!debug')
-source=('https://polytope.com/releases/polytope-cli-$pkgver-linux-amd64.gz')
+source=("pt-$pkgver-linux-amd64.gz::https://polytope.com/releases/polytope-cli-$pkgver-linux-amd64.gz")
 sha256sums=('3df71ea60b5ffd28bae516b6c6eb25c5ee682d4a1119fa53171b55d5bc94f5cf')
 
 package() {
