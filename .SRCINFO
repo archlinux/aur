@@ -1,0 +1,17 @@
+pkgbase = libsgm-git
+	pkgdesc = Stereo Semi Global Matching by cuda
+	pkgver = 3.1.0.r0.g5ec81db
+	pkgrel = 1
+	url = https://github.com/fixstars/libSGM
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	depends = cuda
+	depends = opencv-cuda
+	provides = libsgm
+	source = libsgm::git+https://github.com/fixstars/libSGM.git
+	source = git+https://github.com/google/googletest.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libsgm-git
