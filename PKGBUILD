@@ -4,11 +4,11 @@ _pkgname=HDCI
 _pkgver=1.0-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="High Dimensional Confidence Interval Based on Lasso and Bootstrap"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL2)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-doparallel
   r-foreach
@@ -19,11 +19,11 @@ depends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('806dea67dc386f8782b82ad5172fb234')
-sha256sums=('7fb6f89df772fe8feb9e3e00e567600318b9ec16059c4c20acfef93549d9ab73')
+b2sums=('1b9f0cbee90ecbb2d7ca64d6dc8200d9c1e21c6fe6cb6a84a71de4f54f7ff09fc2ae564da87e4e397d36b9a3940ca2d685c2b2d821141743e24f3e50b85b2f33')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
