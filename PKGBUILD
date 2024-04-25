@@ -5,11 +5,11 @@ _pkgname=mockr
 _pkgver=0.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Mocking in R"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-rlang
   r-withr
@@ -28,11 +28,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('64562ef53ff44054bec118181cd72e65')
-sha256sums=('23ef5941eeed6a20b7670e78ef54a406ecd1eb9b57da2d4ca92ae03696f27a58')
+b2sums=('4c30b5de474f4a35bb0ca766d99fbe96426c196b507c75b3329b8d1f9477ddeda7b2a22d7d2ab67ba740e441a737f7d77591f7d2714c68eb79c8079b267c53cf')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
