@@ -4,11 +4,11 @@ _pkgname=redux
 _pkgver=1.1.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="R Bindings to 'hiredis'"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL2)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   hiredis
   r-r6
@@ -26,11 +26,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('13eb2a35ff97ad02e09b1e42ec8cff7c')
-sha256sums=('201d7c89840f3d698fe94ec3fe4088a19c2a9dc19ee7ec300d5deeadd2606fb1')
+b2sums=('7f92928ecb8fac5feac29169ad2ca086b2539c661dd459e2f82b51b0f0dfd643e42e37a353c4eeeb3de5f51f33d702da50f7c604ee9f62de38de6344dff1f8c5')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
