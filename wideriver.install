@@ -1,0 +1,41 @@
+off="$(tput sgr0)"
+bold="$(tput bold)"
+
+# Colored makepkg-like functions
+
+# yellow
+title() {
+    printf "${bold}$(tput setaf 3)${1}${off}"
+}
+
+# blue
+section() {
+    printf "${bold}$(tput setaf 4)${1}${off}"
+}
+
+# magenta
+issue() {
+    printf "${bold}$(tput setaf 5)${1}${off}"
+}
+
+# green
+pr() {
+	printf "${bold}$(tput setaf 2)${1}${off}"
+}
+
+# cyan
+author() {
+	printf "${bold}$(tput setaf 6)${1}${off}"
+}
+
+post_install() {
+	printf "$(title '1.1.0')\n"
+	printf "$(section 'New Features:')\n"
+	printf "  $(issue '#4'): add inner, outer and smart gaps by $(author '@kyechou') in $(pr '#8')\n"
+	printf "$(section "Bug Fixes:")\n"
+	printf "  $(issue '#9'): ensure border-width 0 is always applied at startup by $(author '@alex-courtis') in $(pr '#10')\n"
+}
+
+post_upgrade() {
+	post_install
+}

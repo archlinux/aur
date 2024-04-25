@@ -1,6 +1,6 @@
 # Maintainer: Alexander Courtis <alex@courtis.org>
 pkgname=wideriver
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="tiling window manager for the river wayland compositor"
 arch=('x86_64')
@@ -9,7 +9,8 @@ license=('MIT')
 depends=('wayland' 'wlroots' 'libinput')
 makedepends=('git' 'make' 'gcc')
 source=("https://github.com/alex-courtis/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a7d2db8af774343b10a6f1613a92a3063044c0cbfe7301e71850b524beea5fd1')
+sha256sums=('cda5ff3df7fc206ff96fb54200cffd248ffdc4766b198b97e39cb04f32810a9e')
+install=wideriver.install
 
 build() {
 	cd "$pkgname-$pkgver"
