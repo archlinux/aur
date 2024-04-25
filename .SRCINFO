@@ -1,6 +1,6 @@
 pkgbase = hotspot
 	pkgdesc = The Linux perf GUI for performance analysis
-	pkgver = 20240412
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/KDAB/hotspot
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = hotspot
 	makedepends = cmake>=3.16.0
 	makedepends = desktop-file-utils
 	makedepends = extra-cmake-modules
-	makedepends = git
 	depends = elfutils
 	depends = kconfig
 	depends = kconfigwidgets
@@ -22,16 +21,12 @@ pkgbase = hotspot
 	depends = kparts
 	depends = libelf
 	depends = perf
-	depends = qt6-base
+	depends = qt6-base>=6.4
 	depends = rustc-demangle>=0.1.18-2
 	depends = solid
 	depends = syntax-highlighting
 	depends = threadweaver
-	source = git+https://github.com/KDAB/hotspot#commit=d274358cefa0aa989d760091dc30a2f8a8030560
-	source = git+https://github.com/KDAB/perfparser.git
-	source = git+https://github.com/koenpoppe/PrefixTickLabels
-	b2sums = 55c9f16b657773e5eec8a0be8242de9b205298d22f2731df2209028ea74fbedc70e906b799595fc1a16e4676a993c7401b82b24bbd555c9af8249192a5dc6f24
-	b2sums = SKIP
-	b2sums = SKIP
+	source = https://github.com/KDAB/hotspot/releases/download/v1.5.0/hotspot-v1.5.0.tar.gz
+	b2sums = 930f256fbe94068145d9366c1c7d0a1a75fca955d70d1acd9d698a888c7249404a832e579883f1bf18268578a664e10fdbb870ef328b51d55e8d1b59cb830da4
 
 pkgname = hotspot

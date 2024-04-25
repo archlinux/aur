@@ -2,8 +2,7 @@
 # Contributor: Florian Lindner <florian.lindner@xgm.de>
 
 pkgname=hotspot
-pkgver=20240412
-_commit=d274358cefa0aa989d760091dc30a2f8a8030560
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('x86_64')
@@ -24,41 +23,24 @@ depends=(
     'libelf'
     'perf'
     # 'qcustomplot' # currently it doesn't build
-    'qt6-base'
+    'qt6-base>=6.4'
     'rustc-demangle>=0.1.18-2'
     'solid'
     'syntax-highlighting'
     'threadweaver'
 )
-makedepends=('cmake>=3.16.0' 'desktop-file-utils' 'extra-cmake-modules' 'git')
-source=("git+$url#commit=$_commit"
-        "git+https://github.com/KDAB/perfparser.git"
-        "git+https://github.com/koenpoppe/PrefixTickLabels")
-b2sums=('55c9f16b657773e5eec8a0be8242de9b205298d22f2731df2209028ea74fbedc70e906b799595fc1a16e4676a993c7401b82b24bbd555c9af8249192a5dc6f24'
-        'SKIP'
-        'SKIP')
-
-pkgver() {
-    cd $pkgname
-    git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d' $_commit
-}
-
-prepare() {
-    cd $pkgname
-    git submodule init
-    git config submodule.3rdparty/perfparser.url       "$srcdir/perfparser"
-    git config submodule.3rdparty/PrefixTickLabels.url "$srcdir/PrefixTickLabels"
-    git -c protocol.file.allow=always submodule update
-}
+makedepends=('cmake>=3.16.0' 'desktop-file-utils' 'extra-cmake-modules')
+source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
+b2sums=('930f256fbe94068145d9366c1c7d0a1a75fca955d70d1acd9d698a888c7249404a832e579883f1bf18268578a664e10fdbb870ef328b51d55e8d1b59cb830da4')
 
 build() {
-    cd $pkgname
+    cd $pkgname-v$pkgver
     cmake -DBUILD_TESTING=off -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DQT6_BUILD=on .
     cmake --build .
 }
 
 package() {
-    cd $pkgname
+    cd $pkgname-v$pkgver
     DESTDIR="$pkgdir" cmake --install .
     desktop-file-install com.kdab.hotspot.desktop --dir="$pkgdir/usr/share/applications/"
 }
