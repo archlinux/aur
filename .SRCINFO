@@ -1,10 +1,10 @@
 pkgbase = r-highr
 	pkgdesc = Syntax Highlighting for R Source Code
 	pkgver = 0.10
-	pkgrel = 3
+	pkgrel = 5
 	url = https://cran.r-project.org/package=highr
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	checkdepends = r-testit
 	depends = r-xfun
 	optdepends = r-knitr
@@ -12,6 +12,6 @@ pkgbase = r-highr
 	optdepends = r-testit
 	source = https://cran.r-project.org/src/contrib/highr_0.10.tar.gz
 	md5sums = 75ac8d38e8c9b56e40220daebb00c4ea
-	sha256sums = ec55bc1ff66390ed66806dc2a7b6c17dbfd089b3d73fe2e369017f8cb4bc347b
+	b2sums = bcfdbde2d2b0fd0878d220c06d826cc02a10243605cddf2ccad0e297972ae42329c377627b1a1a3ebf979e28867f630be980a96cb453443c1686f917496ded17
 
 pkgname = r-highr
