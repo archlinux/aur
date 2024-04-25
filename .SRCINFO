@@ -1,7 +1,7 @@
 pkgbase = tieba-cloud-sign
 	pkgdesc = Baidu Tieba Cloud Sign | 百度贴吧云签到
 	pkgver = 20231124.154303
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MoeNetwork/Tieba-Cloud-Sign
 	arch = any
 	license = custom
@@ -9,12 +9,15 @@ pkgbase = tieba-cloud-sign
 	depends = mariadb
 	depends = php-fpm
 	optdepends = php-gd: image processing for generating verification codes
-	optdepends = caddy: reverse proxy php service
-	optdepends = nginx: reverse proxy php service
-	optdepends = traefik: reverse proxy php service
+	optdepends = apache: http service
+	optdepends = caddy: http service
+	optdepends = nginx: http service
+	backup = srv/tieba-cloud-sign/config.php
 	source = tieba-cloud-sign::git+https://github.com/MoeNetwork/Tieba-Cloud-Sign
 	source = tieba-cloud-sign.crontab
+	source = tieba-cloud-sign.tmpfiles
 	sha256sums = SKIP
 	sha256sums = e12cea2de704c077dcbaa137d8bb25c3b166082c7b3e78d010517ea9822fdaba
+	sha256sums = 60586ea4deff1434c80421c8ffa47d074fa125c9297140d58ed2f83c82d3e130
 
 pkgname = tieba-cloud-sign
