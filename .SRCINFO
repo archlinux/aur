@@ -1,16 +1,16 @@
 pkgbase = r-ddrtree
 	pkgdesc = Learning Principal Graphs with DDRTree
 	pkgver = 0.1.5
-	pkgrel = 7
+	pkgrel = 9
 	url = https://cran.r-project.org/package=DDRTree
 	arch = x86_64
-	license = Artistic2.0
+	license = Artistic-2.0
 	makedepends = r-bh
 	makedepends = r-rcppeigen
 	depends = r-irlba
 	depends = r-rcpp
 	source = https://cran.r-project.org/src/contrib/DDRTree_0.1.5.tar.gz
 	md5sums = b9970fe30d198db164d071f87abd17a5
-	sha256sums = d351ec029461b43c0dcc7c30d9f378753b31ba16c6dbf667869df279b874459b
+	b2sums = 0ac4018cfe0828f0451a545d37ebe93b4a3a63df79ee373cd7826b30632913794ced043a077e167d9f77211d1870ff443ce252a7035489a73f21afd42bb67f7e
 
 pkgname = r-ddrtree
