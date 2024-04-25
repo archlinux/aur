@@ -5,24 +5,23 @@ Subject: [PATCH] re-route dependencies not available on crates.io to git repos
 
 Signed-off-by: Thomas Lamprecht <thomas@lamprecht.org>
 ---
- Cargo.toml | 130 +++++++++--------------------------------------------
- 1 file changed, 21 insertions(+), 109 deletions(-)
+ Cargo.toml | 141 +++++++++++--------------------------------------------------
+ 1 file changed, 24 insertions(+), 117 deletions(-)
 
 diff --git a/Cargo.toml b/Cargo.toml
-index 0c86cd1b..7d5c282b 100644
+index 837e4363..9d0a8fdd 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -41,9 +41,6 @@ members = [
+@@ -41,8 +41,6 @@ members = [
  
      "proxmox-backup-banner",
      "proxmox-backup-client",
 -    "proxmox-file-restore",
 -    "proxmox-restore-daemon",
--    "proxmox-rrd",
  
      "pxar-bin",
  ]
-@@ -103,7 +100,6 @@ proxmox-rrd = { path = "proxmox-rrd" }
+@@ -103,7 +101,6 @@ pbs-tools = { path = "pbs-tools" }
  # regular crates
  anyhow = "1.0"
  async-trait = "0.1.56"
@@ -30,7 +29,7 @@ index 0c86cd1b..7d5c282b 100644
  base64 = "0.13"
  bitflags = "1.2.1"
  bytes = "1.0"
-@@ -115,7 +111,6 @@ flate2 = "1.0"
+@@ -117,7 +114,6 @@ flate2 = "1.0"
  foreign-types = "0.3"
  futures = "0.3"
  h2 = { version = "0.3", features = [ "stream" ] }
@@ -38,7 +37,7 @@ index 0c86cd1b..7d5c282b 100644
  hex = "0.4.3"
  http = "0.2"
  hyper = { version = "0.14", features = [ "full" ] }
-@@ -152,128 +148,41 @@ walkdir = "2"
+@@ -152,132 +148,43 @@ walkdir = "2"
  xdg = "2.2"
  zstd = { version = "0.12", features = [ "bindgen" ] }
  
@@ -50,6 +49,7 @@ index 0c86cd1b..7d5c282b 100644
 -bitflags.workspace = true
 -bytes.workspace = true
 -cidr.workspace = true
+-const_format.workspace = true
 -crc32fast.workspace = true
 -crossbeam-channel.workspace = true
 -endian_trait.workspace = true
@@ -101,6 +101,7 @@ index 0c86cd1b..7d5c282b 100644
 -proxmox-lang.workspace = true
 -proxmox-ldap.workspace = true
 -proxmox-metrics.workspace = true
+-proxmox-notify = { workspace = true, features = [ "pbs-context" ] }
 -proxmox-openid.workspace = true
 -proxmox-rest-server = { workspace = true, features = [ "rate-limited-stream" ] }
 -proxmox-router = { workspace = true, features = [ "cli", "server"] }
@@ -117,7 +118,7 @@ index 0c86cd1b..7d5c282b 100644
 -
 -# in their respective repo
 -pathpatterns.workspace = true
--proxmox-acme-rs.workspace = true
+-proxmox-acme.workspace = true
 -pxar.workspace = true
 -
 -# proxmox-backup workspace/internal crates
@@ -135,7 +136,7 @@ index 0c86cd1b..7d5c282b 100644
  # NOTE: You must run `cargo update` after changing this for it to take effect!
  [patch.crates-io]
  
- #proxmox-apt = { path = "../proxmox/proxmox-apt" }
+-#proxmox-apt = { path = "../proxmox/proxmox-apt" }
 -#proxmox-async = { path = "../proxmox/proxmox-async" }
 -#proxmox-auth-api = { path = "../proxmox/proxmox-auth-api" }
 -#proxmox-borrow = { path = "../proxmox/proxmox-borrow" }
@@ -145,8 +146,7 @@ index 0c86cd1b..7d5c282b 100644
 -#proxmox-human-byte = { path = "../proxmox/proxmox-human-byte" }
 -#proxmox-io = { path = "../proxmox/proxmox-io" }
 -#proxmox-lang = { path = "../proxmox/proxmox-lang" }
--#proxmox-ldap = { path = "../proxmox/proxmox-ldap" }
--#proxmox-metrics = { path = "../proxmox/proxmox-metrics" }
++proxmox-apt = { path = "../proxmox/proxmox-apt" }
 +proxmox-async = { path = "../proxmox/proxmox-async" }
 +proxmox-auth-api = { path = "../proxmox/proxmox-auth-api" }
 +proxmox-borrow = { path = "../proxmox/proxmox-borrow" }
@@ -156,11 +156,15 @@ index 0c86cd1b..7d5c282b 100644
 +proxmox-human-byte = { path = "../proxmox/proxmox-human-byte" }
 +proxmox-io = { path = "../proxmox/proxmox-io" }
 +proxmox-lang = { path = "../proxmox/proxmox-lang" }
-+proxmox-ldap = { path = "../proxmox/proxmox-ldap" }
-+proxmox-metrics = { path = "../proxmox/proxmox-metrics" }
+ #proxmox-ldap = { path = "../proxmox/proxmox-ldap" }
+ #proxmox-metrics = { path = "../proxmox/proxmox-metrics" }
+ #proxmox-notify = { path = "../proxmox/proxmox-notify" }
  #proxmox-openid = { path = "../proxmox/proxmox-openid" }
 -#proxmox-rest-server = { path = "../proxmox/proxmox-rest-server" }
 -#proxmox-router = { path = "../proxmox/proxmox-router" }
++proxmox-rest-server = { path = "../proxmox/proxmox-rest-server" }
++proxmox-router = { path = "../proxmox/proxmox-router" }
+ #proxmox-rrd = { path = "../proxmox/proxmox-rrd" }
 -#proxmox-schema = { path = "../proxmox/proxmox-schema" }
 -#proxmox-section-config = { path = "../proxmox/proxmox-section-config" }
 -#proxmox-serde = { path = "../proxmox/proxmox-serde" }
@@ -171,8 +175,6 @@ index 0c86cd1b..7d5c282b 100644
 -#proxmox-tfa = { path = "../proxmox/proxmox-tfa" }
 -#proxmox-time = { path = "../proxmox/proxmox-time" }
 -#proxmox-uuid = { path = "../proxmox/proxmox-uuid" }
-+proxmox-rest-server = { path = "../proxmox/proxmox-rest-server" }
-+proxmox-router = { path = "../proxmox/proxmox-router" }
 +proxmox-schema = { path = "../proxmox/proxmox-schema" }
 +proxmox-section-config = { path = "../proxmox/proxmox-section-config" }
 +proxmox-serde = { path = "../proxmox/proxmox-serde" }
@@ -184,7 +186,7 @@ index 0c86cd1b..7d5c282b 100644
 +proxmox-time = { path = "../proxmox/proxmox-time" }
 +proxmox-uuid = { path = "../proxmox/proxmox-uuid" }
  
- #proxmox-acme-rs = { path = "../proxmox-acme-rs" }
+ #proxmox-acme = { path = "../proxmox/proxmox-acme" }
 -#pathpatterns = {path = "../pathpatterns" }
 -#pxar = { path = "../pxar" }
 +pathpatterns = {path = "../pathpatterns" }

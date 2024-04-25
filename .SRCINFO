@@ -17,6 +17,7 @@ pkgbase = proxmox-backup-client
 	depends = fuse3
 	depends = gcc-libs
 	depends = openssl
+	options = !lto
 	source = proxmox-backup-client-3.1.2::git://git.proxmox.com/git/proxmox-backup.git#tag=v3.1.2
 	source = proxmox::git://git.proxmox.com/git/proxmox.git#commit=50b79198f83659e77b810fe0eedaa79b140744db
 	source = proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git

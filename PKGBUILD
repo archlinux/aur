@@ -14,6 +14,7 @@ depends=(
     'openssl'
 )
 makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'python-sphinx')
+options=(!lto)
 source=(
     "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
     "proxmox::git://git.proxmox.com/git/proxmox.git#commit=50b79198f83659e77b810fe0eedaa79b140744db"
