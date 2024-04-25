@@ -1,10 +1,10 @@
 pkgbase = r-brisc
 	pkgdesc = Fast Inference for Large Spatial Datasets using BRISC
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=BRISC
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = blas
 	depends = lapack
 	depends = r-matrixstats
@@ -13,6 +13,6 @@ pkgbase = r-brisc
 	depends = r-rdist
 	source = https://cran.r-project.org/src/contrib/BRISC_1.0.5.tar.gz
 	md5sums = c82f874ae549ae510030a8c6735bccc2
-	sha256sums = 89e44bf9f684c948c3c581c732fe8b4b27607e7506e3948dc4da3eca06a8f71a
+	b2sums = 008b348d2f0b774355c38b7cc2a9710e20129348ef9d2a87e8d985ff55c6c7ac32128d8241d412228de66d85bc3653b37bd25617a1e90c47507ea8d760e31335
 
 pkgname = r-brisc

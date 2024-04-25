@@ -4,11 +4,11 @@ _pkgname=BRISC
 _pkgver=1.0.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Fast Inference for Large Spatial Datasets using BRISC"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   blas
   lapack
@@ -19,11 +19,11 @@ depends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('c82f874ae549ae510030a8c6735bccc2')
-sha256sums=('89e44bf9f684c948c3c581c732fe8b4b27607e7506e3948dc4da3eca06a8f71a')
+b2sums=('008b348d2f0b774355c38b7cc2a9710e20129348ef9d2a87e8d985ff55c6c7ac32128d8241d412228de66d85bc3653b37bd25617a1e90c47507ea8d760e31335')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
