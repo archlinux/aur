@@ -1,0 +1,105 @@
+diff --git a/gdsfmt/inst/include/R_GDS_CPP.h b/gdsfmt/inst/include/R_GDS_CPP.h
+index f216cb9..7f3c644 100755
+--- a/gdsfmt/inst/include/R_GDS_CPP.h
++++ b/gdsfmt/inst/include/R_GDS_CPP.h
+@@ -76,7 +76,7 @@ namespace CoreArray
+ 	/// catch block for CoreArray library
+ 	#define COREARRAY_CATCH    \
+ 		CORE_CATCH(has_error = true); \
+-		if (has_error) error(GDS_GetError()); \
++		if (has_error) Rf_error("%s", GDS_GetError()); \
+ 		return rv_ans;
+ 
+ 
+diff --git a/gdsfmt/src/R_CoreArray.cpp b/gdsfmt/src/R_CoreArray.cpp
+index f2a3db1..d296525 100755
+--- a/gdsfmt/src/R_CoreArray.cpp
++++ b/gdsfmt/src/R_CoreArray.cpp
+@@ -213,7 +213,7 @@ static void gdsfile_free(SEXP ptr_obj)
+ 		CORE_TRY
+ 			GDS_File_Close(file);
+ 		CORE_CATCH(has_error = true);
+-		if (has_error) error(GDS_GetError());
++		if (has_error) error("%s", GDS_GetError());
+ 	}
+ }
+ 
+diff --git a/gdsfmt/src/gdsfmt.cpp b/gdsfmt/src/gdsfmt.cpp
+index 810f6b2..ad15d94 100755
+--- a/gdsfmt/src/gdsfmt.cpp
++++ b/gdsfmt/src/gdsfmt.cpp
+@@ -1074,7 +1074,7 @@ COREARRAY_DLL_EXPORT SEXP gdsNodeIndex(SEXP Node, SEXP Path, SEXP Index,
+ 			if (nProtected > 0)
+ 				UNPROTECT(nProtected);
+ 		} else
+-			error(GDS_GetError());
++			error("%s", GDS_GetError());
+ 	}
+ 
+ 	return rv_ans;
+@@ -1436,9 +1436,9 @@ COREARRAY_DLL_EXPORT SEXP gdsAddNode(SEXP Node, SEXP NodeName, SEXP Val,
+ 			FixStr_Len = Rf_asInteger(val);
+ 			if ((FixStr_Len==NA_INTEGER) || (FixStr_Len <= 0))
+ 				error("'maxlen' should be a positive integer.");
+-			if (XLENGTH(Param) > 1) error(ERR_UNUSED);
++			if (XLENGTH(Param) > 1) error("%s", ERR_UNUSED);
+ 		} else {
+-			if (XLENGTH(Param) > 0) error(ERR_UNUSED);
++			if (XLENGTH(Param) > 0) error("%s", ERR_UNUSED);
+ 		}
+ 	} else if (IsElement(stm, PackedReal))
+ 	{
+@@ -1462,14 +1462,14 @@ COREARRAY_DLL_EXPORT SEXP gdsAddNode(SEXP Node, SEXP NodeName, SEXP Val,
+ 					error("'scale' should not be NaN.");
+ 			} else
+ 				n--;
+-			if (XLENGTH(Param) > n) error(ERR_UNUSED);
++			if (XLENGTH(Param) > n) error("%s", ERR_UNUSED);
+ 		} else {
+-			if (XLENGTH(Param) > 0) error(ERR_UNUSED);
++			if (XLENGTH(Param) > 0) error("%s", ERR_UNUSED);
+ 		}
+ 	} else {
+ 		if (!Rf_isNull(Param))
+ 		{
+-			if (XLENGTH(Param) > 0) error(ERR_UNUSED);
++			if (XLENGTH(Param) > 0) error("%s", ERR_UNUSED);
+ 		}
+ 	}
+ 
+@@ -2107,7 +2107,7 @@ COREARRAY_DLL_EXPORT SEXP gdsObjReadData(SEXP Node, SEXP Start, SEXP Count,
+ 			if (Obj == NULL)
+ 				throw ErrGDSFmt(ERR_NO_DATA);
+ 		CORE_CATCH(has_error = true);
+-		if (has_error) error(GDS_GetError());
++		if (has_error) error("%s", GDS_GetError());
+ 	}
+ 
+ 	CdAbstractArray::TArrayDim DStart, DLen;
+@@ -2683,7 +2683,7 @@ COREARRAY_DLL_EXPORT SEXP gdsObjWriteAll(SEXP Node, SEXP Val, SEXP Check)
+ 			if (Obj == NULL)
+ 				throw ErrGDSFmt(ERR_NO_DATA);
+ 		CORE_CATCH(has_error = true);
+-		if (has_error) error(GDS_GetError());
++		if (has_error) error("%s", GDS_GetError());
+ 	}
+ 
+ 	int nProtected = 0;
+@@ -2808,7 +2808,7 @@ COREARRAY_DLL_EXPORT SEXP gdsObjWriteData(SEXP Node, SEXP Val,
+ 			if (Obj == NULL)
+ 				throw ErrGDSFmt(ERR_NO_DATA);
+ 		CORE_CATCH(has_error = true);
+-		if (has_error) error(GDS_GetError());
++		if (has_error) error("%s", GDS_GetError());
+ 	}
+ 
+ 	CdAbstractArray::TArrayDim DStart, DLen;
+@@ -2942,7 +2942,7 @@ COREARRAY_DLL_EXPORT SEXP gdsObjSetDim(SEXP Node, SEXP DLen, SEXP Permute)
+ 			if (Obj == NULL)
+ 				throw ErrGDSFmt(ERR_NO_DATA);
+ 		CORE_CATCH(has_error = true);
+-		if (has_error) error(GDS_GetError());
++		if (has_error) error("%s", GDS_GetError());
+ 	}
+ 
+ 	PROTECT(DLen = Rf_coerceVector(DLen, INTSXP));
