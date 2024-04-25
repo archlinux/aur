@@ -4,7 +4,6 @@ Wants=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/usr/share/listmonk
 ExecStart=/usr/bin/listmonk --config /etc/listmonk/config.toml
 User=listmonk
 Group=listmonk
