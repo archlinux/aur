@@ -6,11 +6,11 @@ _pkgname=bindr
 _pkgver=0.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Parametrized Active Bindings"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r
 )
@@ -22,11 +22,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('cfa02c563196a79bf8bb4db2e66585fd')
-sha256sums=('7c785ca77ceb3ab9282148bcecf64d1857d35f5b800531d49483622fe67505d0')
+b2sums=('e0b2f10f92aaaaaf2dbc01aed9198143609d2ee1e1e8b720713aea2dd1087eb0883bfcab5be7df8c08135391ebed075dd37ac1590d589d00a60a4a6ca92d2634')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
