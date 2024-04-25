@@ -10,14 +10,14 @@
 # If you are coming from the > 0.3.2 BETA please read the instructions:
 # 
 # 1. Install `anytype-legacy`
-# 2. Follow the instructions HERE: https://community.anytype.io/t/anytype-legacy-to-beta-migration-trail-guide/9274 
+# 2. Follow the instructions HERE: https://community.anytype.io/t/anytype-legacy-to-migration-trail-guide/9274 
 #    UP to the point 2., BUT NOT 3.
 # 3. Now install `anytype-bin` (this package) and now you can follow point 3. and login with the recovery phrase.
 # 
 # Thanks.
 #                                            
 pkgname=anytype-electron-bin
-pkgver=0.39.30
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
@@ -29,9 +29,9 @@ provides=('anytype')
 conflicts=('anytype'
            'anytype-legacy')
 source=(
-	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}-beta/anytype_${pkgver}-beta_amd64.deb"
+	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}/anytype_${pkgver}_amd64.deb"
     )
-sha256sums=('3d0e551f08429614ba6c0cee33ee5514b510006a250ec9ea11c8887a250ae75c')
+sha256sums=('f9a5f05b2eabefd7f3d11a807e5bb1f944e94c40ecc8d920174b42a4e76f0607')
 
 package() {
   	tar -xvf data.tar.* -C $pkgdir
