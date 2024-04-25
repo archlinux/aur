@@ -4,11 +4,11 @@ _pkgname=biodbNci
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="a library for connecting to the National Cancer Institute (USA) CACTUS Database"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(AGPL3)
+license=('AGPL-3.0-only')
 depends=(
   r-biodb
   r-chk
