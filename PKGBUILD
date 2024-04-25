@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=finance-manager-git
 _pkgname="Finance Manager"
-pkgver=0.6.0.r2.g2401578
+pkgver=0.7.0.r2.g5f297cb
 _electronversion=29
 _nodeversion=18
 pkgrel=1
