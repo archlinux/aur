@@ -4,11 +4,11 @@ _pkgname=nonnest2
 _pkgver=0.5-6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=4
 pkgdesc="Tests of Non-Nested Models"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only OR GPL-3.0-only')
 depends=(
   r-compquadform
   r-lavaan
@@ -39,11 +39,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('404b9edab7bb21841bd359fdfc2c5c82')
-sha256sums=('b59144f50fb264fd0d40ee770bf25047bf0f37fa154620d8fe0a91c0065061e8')
+b2sums=('af58375640612ccb0fb847ed813f23697279310b2fcf31b7a94af6266fb9be8bb2804f56a3c7c505c892a4e54818d1316acd5546ec54849b68752406ba2c1da4')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

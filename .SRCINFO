@@ -1,10 +1,10 @@
 pkgbase = r-nonnest2
 	pkgdesc = Tests of Non-Nested Models
 	pkgver = 0.5.6
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=nonnest2
 	arch = any
-	license = GPL
+	license = GPL-2.0-only OR GPL-3.0-only
 	checkdepends = r-aer
 	checkdepends = r-faraway
 	checkdepends = r-mlogit
@@ -29,6 +29,6 @@ pkgbase = r-nonnest2
 	optdepends = r-tidysem
 	source = https://cran.r-project.org/src/contrib/nonnest2_0.5-6.tar.gz
 	md5sums = 404b9edab7bb21841bd359fdfc2c5c82
-	sha256sums = b59144f50fb264fd0d40ee770bf25047bf0f37fa154620d8fe0a91c0065061e8
+	b2sums = af58375640612ccb0fb847ed813f23697279310b2fcf31b7a94af6266fb9be8bb2804f56a3c7c505c892a4e54818d1316acd5546ec54849b68752406ba2c1da4
 
 pkgname = r-nonnest2
