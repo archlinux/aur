@@ -1,5 +1,5 @@
 pkgname=waylyrics
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="the furry way to show desktop lyrics"
 arch=("x86_64")
@@ -15,7 +15,7 @@ makedepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('89051316a5831b75a8b664284278c5e405ebc95884e64312837f355bfc8ee55a')
+sha256sums=('fff54a243aede005b0e1e7cd4b2709308eac57b6e94f7909802262c9103c0056')
 options=("!lto")
 
 prepare() {
