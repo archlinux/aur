@@ -5,11 +5,11 @@ _pkgname=ggwordcloud
 _pkgver=0.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A Word Cloud Geom for 'ggplot2'"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-colorspace
   r-ggplot2
@@ -35,11 +35,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('7ba9894b559065f9141fac1dc964eceb')
-sha256sums=('b7bbbc02eff4f6519edc0e854b3bd4d9f9fc34e61ebc4e540869814ffdbe7db9')
+b2sums=('2e0e8740580dc75c8986f08c4071499faf97f47ed9ac5af11bf4ec993725aca5b03baf3e3240d4caeb0d2284086fb6a870ec8b8743118a43d8af53c103306ac0')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
