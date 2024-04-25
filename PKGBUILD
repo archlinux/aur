@@ -4,11 +4,11 @@ _pkgname=exdex
 _pkgver=1.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Estimation of the Extremal Index"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-chandwich
   r-rcpp
@@ -30,11 +30,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('a30891a6c53ec03fa527562dedba2b2f')
-sha256sums=('e6668c37c5c3762f550373f4e24a0fdd3af74b7d38562c0930c0abfe4499abee')
+b2sums=('27e3826fbc428de426a8daa3d8b33faef9b21d2fcc59f7b41f6e7632294f973872b362bb061c307b89c25322e8e47d48a4dfc0a95fb8ad4591eda8780f1d2cf4')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
