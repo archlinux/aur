@@ -1,4 +1,6 @@
-# Maintainer: Yusuke Miyazaki <miyazaki.dev (at) gmail.com>
+# Maintainer: Sachirou Inoue <ne-sachirou (at) hatena.ne.jp>
+# Maintainer: Kyohei Kadota <lufia (at) lufia.org>
+# Contributor: Yusuke Miyazaki <miyazaki.dev (at) gmail.com>
 pkgname=mackerel-agent
 pkgver=0.80.0
 pkgrel=1
