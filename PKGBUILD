@@ -22,7 +22,7 @@ source=(
     "${pkgname}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('2ba0bf3b4445fef813c808db3b3509a221a020ebbc2ab6c1d6bbcb70134d65d5'
+sha256sums=('da54f5811304101c841eea26330029976c490a22cacbfc5d85b2e700f5ac37ee'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
