@@ -1,10 +1,10 @@
 pkgbase = r-glmx
 	pkgdesc = Generalized Linear Models Extended
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=glmx
 	arch = any
-	license = GPL
+	license = GPL-2.0-only OR GPL-3.0-only
 	depends = r-formula
 	depends = r-lmtest
 	depends = r-sandwich
@@ -14,6 +14,6 @@ pkgbase = r-glmx
 	optdepends = r-pscl
 	source = https://cran.r-project.org/src/contrib/glmx_0.2-0.tar.gz
 	md5sums = 809eac8845e282100ce327852a725682
-	sha256sums = fd95fdadc61924a1463d9417161edf62469ba58bcb5e2af4249749f09defcf1d
+	b2sums = 6888d018faf6bcae905986e462a586536b81f32a63c0f57d8c712dfef50dc424af24bd213c2865effb8bcacbd992eba46166b07900357a32277a3d1abdfc8589
 
 pkgname = r-glmx
