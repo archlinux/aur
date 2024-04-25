@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=whatsapp-for-linux-bin
 _origname=com.github.eneshecan.WhatsAppForLinux
-pkgver=1.6.4
-pkgrel=5
+pkgver=1.6.5
+pkgrel=1
 pkgdesc="An unofficial WhatsApp desktop application for Linux."
 arch=('x86_64')
 url="https://github.com/eneshecan/whatsapp-for-linux"
@@ -17,16 +17,16 @@ depends=(
     'glibmm'
     'libsigc++'
     'gtk3'
-    'webkit2gtk'
-    'hicolor-icon-theme'
+    'webkit2gtk-4.1'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )
-sha256sums=('f8c0dc44cd2122962325211238489089c7024b6bc75391254701af6591295d89')
+sha256sums=('c3635b90ce19519153d2cf694ef4d19aaf585d44481e4d804f8cafdb388e2580')
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed "s|${_origname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_origname}.desktop"
+    sed "s|${_origname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/metainfo/${_origname}.appdata.xml"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
