@@ -4,10 +4,10 @@ _pkgname=spData
 _pkgver=2.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Datasets for Spatial Analysis"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=('CC0-1.0')
 depends=(
   r-sp
@@ -20,11 +20,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('41aae4a68e1e038d28ff80af8388ee8f')
-sha256sums=('4b2c1f597049f2c78a7e2b7538c067e2b57e2f12291d19210b1eef702664848b')
+b2sums=('69677c220d1af9dc1c5f61228c6d132774f3567a0c979c89d97bf4b733fe8e3b78fb81665b53283cfa1caefda23f1c5e55e07cd6405e4b1b58898ead38ebcc44')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
