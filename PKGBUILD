@@ -5,11 +5,11 @@ _pkgname=av
 _pkgver=0.9.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Working with Audio and Video in R"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   ffmpeg
   r
@@ -25,11 +25,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('3a990a185d9fee9b5d520d0598fefc2f')
-sha256sums=('37c7d55b62877484228c21509c098183c8a2bc5f2790880c3fe1d0496033d77f')
+b2sums=('8a6bd2490717a533c9f1898bd5e3c56adac338f4e1913a7fbfdb2527f88da80d39380e6919945f331e891f87b51ff1efcc5c70ace17bfa60440a11e5adb0ccc0')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
