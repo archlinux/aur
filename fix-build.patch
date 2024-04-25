@@ -1,0 +1,15 @@
+diff --git a/HilbertVis/src/make_wiggle_vector.c b/HilbertVis/src/make_wiggle_vector.c
+index ea852b9..cd17689 100644
+--- a/HilbertVis/src/make_wiggle_vector.c
++++ b/HilbertVis/src/make_wiggle_vector.c
+@@ -11,9 +11,7 @@ SEXP make_wiggle_vector( SEXP start, SEXP end, SEXP value, SEXP chrlength )
+ 
+    for( i = 0; i < length(start); i++ ) {
+       if( INTEGER(end)[i] < INTEGER(start)[i] ) {
+-         char buf[200];
+-	 snprintf( buf, 200, "end[%d] < start[%d]", i+1, i+1 );
+-         error( buf );
++         error( "end[%d] < start[%d]", i+1, i+1 );
+       }
+       if( INTEGER(end)[i] > length(res) )
+ 	 error( "'chrlength' is too small" );	 
