@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=iyuuplus
-pkgver=20240425.104422
+pkgver=20240425.184422
 pkgrel=1
 epoch=2
 pkgdesc="IYUU Auto Reseed Plus"
