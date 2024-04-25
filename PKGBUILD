@@ -1,23 +1,32 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=naken_asm
-pkgver=2023.01.11
+pkgver=2024.02.10
 pkgrel=1
 pkgdesc="Assembler for MSP430, dsPIC, ARM, MIPS, 65xx, 68000, 8051/8052, Atmel AVR8, and others"
-url=http://www.mikekohn.net/micro/naken_asm.php
-license=(GPL3)
+url=https://www.mikekohn.net/micro/naken_asm.php
+license=(GPL-3.0-or-later)
 arch=(i686 x86_64)
-depends=(readline)
+depends=(readline glibc gcc-libs)
+optdepends=('python: used by some of the included scripts')
 conflicts=(naken_asm-git)
-options=(!lto)
 _pkgver=${pkgver//./-}
-source=("http://www.mikekohn.net/downloads/${pkgname}/${pkgname}-${_pkgver}.tar.gz")
-b2sums=('593182a596585cc0aefa3bee837bf19dfc9cf33a9233aa1b98128b06cf0869c5b803b310e32d2b9304378f508e95a6b49a68eb54cf48591e02df576758eede39')
+source=("https://www.mikekohn.net/downloads/${pkgname}/${pkgname}-${_pkgver}.tar.gz")
+b2sums=('82d7e67d077677069ee5eb1fc187769578ee02894695eaa439e3d46680ec822d41f7434c65877cedbe8142da680e760ca06f286f58c02e4736976d7c50b98048')
 
 build () {
 	cd "${pkgname}-${_pkgver}"
 	./configure --install-prefix="${pkgdir}/usr" \
-		--include-path="/usr/share/${pkgname}/includes" \
-		--cflags="$CFLAGS" --ldflags="$LDFLAGS"
+		--include-path="/usr/share/${pkgname}/includes"
+
+	# Fixup compiler flags. This is easier to do by appending to the
+	# config.mak file created by the configure script than trying to
+	# bend the script behaviour to our wishes.
+	cat >> config.mak <<-EOF
+	CFLAGS := \$(filter-out -O2 -O3,\$(CFLAGS)) $CFLAGS
+	CXXFLAGS := \$(filter-out -O2 -O3,\$(CXXFLAGS)) $CXXFLAGS
+	LDFLAGS := \$(LDFLAGS) $LDFLAGS
+	EOF
+
 	make
 }
 
