@@ -1,0 +1,13 @@
+pkgbase = quick-aliases
+	pkgdesc = Quick Aliases is a utility allows to save complex or lengthy commands under a name
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Skiftsu/quick-aliases
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/Skiftsu/quick-aliases.git
+	sha256sums = SKIP
+
+pkgname = quick-aliases
