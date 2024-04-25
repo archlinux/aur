@@ -4,11 +4,11 @@ _pkgname=fabricatr
 _pkgver=1.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Imagine Your Data Before You Collect It"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(MIT)
+license=('MIT')
 depends=(
   r-rlang
 )

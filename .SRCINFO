@@ -1,7 +1,7 @@
 pkgbase = r-fabricatr
 	pkgdesc = Imagine Your Data Before You Collect It
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=fabricatr
 	arch = any
 	license = MIT
