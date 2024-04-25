@@ -3,9 +3,9 @@
 _pkgname=libxeddsa
 pkgname="${_pkgname}-git"
 pkgver=r40.d725c816bb26
-pkgrel=2
+pkgrel=3
 pkgdesc='A toolkit around Curve25519 and Ed25519 key pairs.'
-url="https://github.com/Syndace/${pkgname}"
+url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
 arch=('x86_64')
 makedepends=('git' 'cmake' 'libsodium')
