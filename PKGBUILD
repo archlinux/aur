@@ -2,7 +2,7 @@
 pkgname=clash-nyanpasu-git
 _pkgname=clash-nyanpasu
 pkgver=pre.release.r14.g521324da
-pkgrel=1
+pkgrel=2
 pkgdesc="A Clash GUI based on tauri."
 arch=('any')
 url="https://github.com/LibNyanpasu/clash-nyanpasu"
