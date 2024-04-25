@@ -4,11 +4,11 @@ _pkgname=RAREsim
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Simulation of Rare Variant Genetic Data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-nloptr
 )
@@ -25,11 +25,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('6ec5b86f348e2d4ffb365da80651041e')
-sha256sums=('8fb2a823bf1b18ea70eb886ed8726c47896ac240156499e90943fd36f1de213f')
+b2sums=('69a42dad5f8ab11644d225e10bad7186e76d293f6c7437d93ead7ebc311876d1d41fe2baf7789f9f8668c81d4eb2e96edddcc3134db1e8c0ca915bb0fdd0fa27')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
