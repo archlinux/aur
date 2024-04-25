@@ -5,11 +5,11 @@ _pkgname=GEOmap
 _pkgver=2.5-5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Topographic and Geologic Mapping"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-fields
   r-mba
@@ -22,11 +22,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('f24aae5a7eb4f18d67db573e5472db09')
-sha256sums=('8a17a78926cda3f885584f797db6765d218f89b39eda512ff8af379651fb483f')
+b2sums=('e68fd40060f1656675d501e41b9cb6191b476da44a17e90af90eca1697afcc6cd3c844f5e70e0aabfeb32a76d647beedef6a56a7990a5db9fd4acdbfac136cc3')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
