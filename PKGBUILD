@@ -1,8 +1,8 @@
 # Maintainer: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 
 pkgname=libaegis
-pkgver=0.1.16
-pkgrel=4
+pkgver=0.1.17
+pkgrel=1
 pkgdesc="Portable C implementations of the AEGIS family of high-performance authenticated encryption algorithms. "
 arch=('i686' 'x86_64' 'aarch64')
 makedepends=('cmake')
