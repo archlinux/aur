@@ -5,11 +5,11 @@ _pkgname=DNABarcodes
 _pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for creating and analysing DNA barcodes used in Next Generation Sequencing multiplexing experiments"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-bh
   r-rcpp
@@ -21,11 +21,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('6047e393e89e644fbf9aa4aa5a9faa64')
-sha256sums=('09263a219f974c60eeb384fc391a47d967eac19d6ffe81e8f77c433d4b99a48b')
+b2sums=('1b8e3d059da945d15655803f988514f47e1df305fe3b3aa6b93f0e5c06af7e7fd103c15709ecd2540f30325a636b1d6b51aeb2198bc58224503cd5385a28593e')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
