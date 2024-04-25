@@ -2,7 +2,7 @@
 
 pkgname=hqplayer-embedded-sse
 _debpkgname=hqplayer-embedded
-_debpkgver=5.5.3-16intel
+_debpkgver=5.6.0-17intel
 pkgver=5.5.3
 pkgrel=1
 pkgdesc="Signalyst HQPlayer Embedded
@@ -17,7 +17,7 @@ source=("https://www.signalyst.eu/bins/hqplayerd/jammy/hqplayerd_"$_debpkgver"_a
         'hqplayerd.service'
         'hqplayerd_user.service'
         )
-sha256sums=('48c9aa27c7487c4022b99860f6071862150fbbaa64c11bc4b8d78ce271927c7c'
+sha256sums=('5c1088f8d9b47f9dd5f401f39f3bd5714a7ed71491e1daf0fd33141ec911069b'
             '9aa79c67c22924c02b2c43cacbd3fac21dd9abbd146819ce46fe2b34f0193ef0'
             '5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a')
 install=${pkgname}.install
