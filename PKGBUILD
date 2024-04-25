@@ -5,11 +5,11 @@ _pkgname=opencpu
 _pkgver=2.2.11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Producing and Reproducing Results"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(Apache)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('Apache-2.0')
 depends=(
   pandoc
   r-brew
@@ -40,11 +40,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('24b7991213fd80293dbd775721ee3bb7')
-sha256sums=('7a80dca3c1c712e89c887c206c03de4487e4402a4d41563344bb76c4fe72bbc1')
+b2sums=('b603b93462575bf66ce42798b200024d06b4fa7c5a4a1167d46aa092f9ab453eee5d0e005bdbc5908e130091b6cfa3604f43cf05b05c1475d51d6f36baf2364f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
