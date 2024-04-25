@@ -5,11 +5,11 @@ _pkgname=biodbHmdb
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="a library for connecting to the HMDB Database"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(AGPL3)
+license=('AGPL-3.0-only')
 depends=(
   r-biodb
   r-r6
