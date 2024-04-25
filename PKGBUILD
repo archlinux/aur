@@ -6,7 +6,7 @@
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=electrum-git
-pkgver=4.5.4.r13.g88843f244
+pkgver=4.5.4.r66.g2a4c5d94f
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=('desktop-file-utils: update desktop icon'
             'python-btchip: Ledger hardware wallet support'
             'python-ckcc-protocol: Coldcard wallet hardware support'
             'python-bitbox02: BitBox wallet hardware support'
-            'python-cbor: Blockstream Jade hardware wallet communication'
+            'python-cbor2: Blockstream Jade hardware wallet communication'
             'python-pyserial: Blockstream Jade hardware wallet serial port extension' 
             'python-matplotlib: plot transaction history in graphical mode'
             'python-rpyc: send commands to Electrum Python console from an external script'

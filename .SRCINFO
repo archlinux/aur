@@ -1,6 +1,6 @@
 pkgbase = electrum-git
 	pkgdesc = Lightweight Bitcoin wallet
-	pkgver = 4.5.4.r13.g88843f244
+	pkgver = 4.5.4.r66.g2a4c5d94f
 	pkgrel = 1
 	url = https://github.com/spesmilo/electrum
 	install = electrum.install
@@ -42,7 +42,7 @@ pkgbase = electrum-git
 	optdepends = python-btchip: Ledger hardware wallet support
 	optdepends = python-ckcc-protocol: Coldcard wallet hardware support
 	optdepends = python-bitbox02: BitBox wallet hardware support
-	optdepends = python-cbor: Blockstream Jade hardware wallet communication
+	optdepends = python-cbor2: Blockstream Jade hardware wallet communication
 	optdepends = python-pyserial: Blockstream Jade hardware wallet serial port extension
 	optdepends = python-matplotlib: plot transaction history in graphical mode
 	optdepends = python-rpyc: send commands to Electrum Python console from an external script
