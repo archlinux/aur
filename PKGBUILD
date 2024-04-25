@@ -1,21 +1,29 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname='spacedrive'
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc='Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.'
 arch=('x86_64')
 url='https://spacedrive.com/'
 license=('AGPL3')
 conflicts=('spacedrive-git')
-source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/spacedriveapp/spacedrive/archive/refs/tags/${pkgver}.tar.gz")
+source=(
+	"${pkgname}-v${pkgver}.tar.gz::https://github.com/spacedriveapp/spacedrive/archive/refs/tags/${pkgver}.tar.gz"
+	"0001-Fix-BLAKE3-2441.patch"
+)
 depends=('ffmpeg' 'libheif' 'gtk3' 'webkit2gtk' 'pango' 'gdk-pixbuf2' 'cairo' 'libsoup' 'glib2')
-makedepends=('cargo' 'pnpm' 'clang' 'git' 'lld')
-sha256sums=('138767969406df87dc2cd064cc8b05c1c8632cd41a2619cbccce84ba0e6a91c2')
+makedepends=('cargo' 'pnpm>=9' 'clang' 'git' 'lld')
+sha256sums=(
+	'8c9c9cf229ab91287874bcf4142a84b858a54c7b1cac148fb0a604bf4fd2abcf'
+	'41ed3c7dbc4c6658972c248187d3c9b4e00668d449478297b5c92aa9e7412096'
+)
+makeopts=(!lto)
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
 
+	patch -p1 -i ../0001-Fix-BLAKE3-2441.patch
 	pnpm install
 }
 
@@ -23,8 +31,9 @@ build() {
 	cd "${pkgname}-${pkgver}"
 
 	export CARGO_TARGET_DIR=target
-	export RUSTFLAGS='-Clinker-plugin-lto -Clinker=clang -Clink-arg=-fuse-ld=lld'
+	export RUSTFLAGS='-Clinker=clang -Clink-arg=-fuse-ld=lld'
 	export CC=clang
+	export COREPACK_ENABLE_STRICT=0
 
 	pnpm prep
 	pnpm tauri build --bundles app -- --no-default-features

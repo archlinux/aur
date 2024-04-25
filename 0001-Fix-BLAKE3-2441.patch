@@ -1,0 +1,150 @@
+From fbc01c10872cfdf9bb48127f05da876e1b0de297 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?V=C3=ADtor=20Vasconcellos?= <vasconcellos.dev@gmail.com>
+Date: Thu, 2 May 2024 06:15:05 -0300
+Subject: [PATCH] Fix BLAKE3 (#2441)
+
+* Update BLAKE3
+
+* Auto fmt
+
+* Revert BLAKE3 to 1.5.0 fork
+---
+ Cargo.lock                        |  2 +-
+ Cargo.toml                        | 44 +++++++++++++++----------------
+ apps/desktop/src-tauri/Cargo.toml | 27 +++++++++----------
+ 3 files changed, 34 insertions(+), 39 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 546521aa..8d01b14e 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1231,7 +1231,7 @@ dependencies = [
+ [[package]]
+ name = "blake3"
+ version = "1.5.0"
+-source = "git+https://github.com/brxken128/blake3?rev=d3aab416c12a75c2bfabce33bcd594e428a79069#d3aab416c12a75c2bfabce33bcd594e428a79069"
++source = "git+https://github.com/spacedriveapp/blake3.git?rev=d3aab416c12a75c2bfabce33bcd594e428a79069#d3aab416c12a75c2bfabce33bcd594e428a79069"
+ dependencies = [
+  "arrayref",
+  "arrayvec",
+diff --git a/Cargo.toml b/Cargo.toml
+index 437a2dbf..56ef7989 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -1,17 +1,17 @@
+ [workspace]
+ resolver = "2"
+ members = [
+-    "core",
+-    "core/crates/*",
+-    "crates/*",
+-    "apps/cli",
+-    "apps/p2p-relay",
+-    "apps/desktop/src-tauri",
+-    "apps/desktop/crates/*",
+-    "apps/mobile/modules/sd-core/core",
+-    "apps/mobile/modules/sd-core/android/crate",
+-    "apps/mobile/modules/sd-core/ios/crate",
+-    "apps/server",
++	"core",
++	"core/crates/*",
++	"crates/*",
++	"apps/cli",
++	"apps/p2p-relay",
++	"apps/desktop/src-tauri",
++	"apps/desktop/crates/*",
++	"apps/mobile/modules/sd-core/core",
++	"apps/mobile/modules/sd-core/android/crate",
++	"apps/mobile/modules/sd-core/ios/crate",
++	"apps/server",
+ ]
+ 
+ [workspace.package]
+@@ -22,19 +22,19 @@ repository = "https://github.com/spacedriveapp/spacedrive"
+ [workspace.dependencies]
+ # First party dependencies
+ prisma-client-rust = { git = "https://github.com/spacedriveapp/prisma-client-rust", rev = "f99d6f5566570f3ab1edecb7a172ad25b03d95af", features = [
+-    "specta",
+-    "sqlite-create-many",
+-    "migrations",
+-    "sqlite",
++	"specta",
++	"sqlite-create-many",
++	"migrations",
++	"sqlite",
+ ], default-features = false }
+ prisma-client-rust-cli = { git = "https://github.com/spacedriveapp/prisma-client-rust", rev = "f99d6f5566570f3ab1edecb7a172ad25b03d95af", features = [
+-    "specta",
+-    "sqlite-create-many",
+-    "migrations",
+-    "sqlite",
++	"specta",
++	"sqlite-create-many",
++	"migrations",
++	"sqlite",
+ ], default-features = false }
+ prisma-client-rust-sdk = { git = "https://github.com/spacedriveapp/prisma-client-rust", rev = "f99d6f5566570f3ab1edecb7a172ad25b03d95af", features = [
+-    "sqlite",
++	"sqlite",
+ ], default-features = false }
+ 
+ tracing = "0.1.40"
+@@ -107,9 +107,7 @@ libp2p-core = { git = "https://github.com/spacedriveapp/rust-libp2p.git", rev =
+ libp2p-swarm = { git = "https://github.com/spacedriveapp/rust-libp2p.git", rev = "a005656df7e82059a0eb2e333ebada4731d23f8c" }
+ libp2p-stream = { git = "https://github.com/spacedriveapp/rust-libp2p.git", rev = "a005656df7e82059a0eb2e333ebada4731d23f8c" }
+ 
+-# aes = { git = "https://github.com/RustCrypto/block-ciphers", rev = "5837233f86419dbe75b8e3824349e30f6bc40b22" }
+-
+-blake3 = { git = "https://github.com/brxken128/blake3", rev = "d3aab416c12a75c2bfabce33bcd594e428a79069" }
++blake3 = { git = "https://github.com/spacedriveapp/blake3.git", rev = "d3aab416c12a75c2bfabce33bcd594e428a79069" }
+ 
+ [profile.dev]
+ # Make compilation faster on macOS
+diff --git a/apps/desktop/src-tauri/Cargo.toml b/apps/desktop/src-tauri/Cargo.toml
+index 63088ca3..372f8ad8 100644
+--- a/apps/desktop/src-tauri/Cargo.toml
++++ b/apps/desktop/src-tauri/Cargo.toml
+@@ -10,10 +10,7 @@ edition = { workspace = true }
+ 
+ [dependencies]
+ # Spacedrive Sub-crates
+-sd-core = { path = "../../../core", features = [
+-	"ffmpeg",
+-	"heif",
+-] }
++sd-core = { path = "../../../core", features = ["ffmpeg", "heif"] }
+ sd-fda = { path = "../../../crates/fda" }
+ sd-prisma = { path = "../../../crates/prisma" }
+ 
+@@ -34,17 +31,17 @@ thiserror.workspace = true
+ 
+ opener = { version = "0.6.1", features = ["reveal"] }
+ tauri = { version = "=1.5.3", features = [
+-    "macos-private-api",
+-    "path-all",
+-    "protocol-all",
+-    "os-all",
+-    "shell-all",
+-    "dialog-all",
+-    "linux-protocol-headers",
+-    "updater",
+-    "window-all",
+-    "native-tls-vendored",
+-    "tracing",
++	"macos-private-api",
++	"path-all",
++	"protocol-all",
++	"os-all",
++	"shell-all",
++	"dialog-all",
++	"linux-protocol-headers",
++	"updater",
++	"window-all",
++	"native-tls-vendored",
++	"tracing",
+ ] }
+ directories = "5.0.1"
+ 
+-- 
+2.45.1
+
