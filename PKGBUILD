@@ -2,15 +2,14 @@
 pkgname=joindesktop-git
 _app_id=com.joaomgcd.join
 pkgver=1.1.2.r2.ga4748ff
-pkgrel=6
-_electronversion=28
+pkgrel=7
+_electronversion=30
 pkgdesc="An official desktop app for Join by Joaoapps built in Electron."
 arch=('x86_64')
 url="https://joaoapps.com/join/desktop"
 license=('unknown')
 depends=("electron${_electronversion}")
 makedepends=('git' 'npm')
-optdepends=('libnotify: for native notifications')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/joaomgcd/JoinDesktop.git'
