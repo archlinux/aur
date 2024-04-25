@@ -6,11 +6,11 @@ _pkgname=googledrive
 _pkgver=2.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="An Interface to Google Drive"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-cli
   r-gargle
@@ -43,11 +43,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('2741deb58d88bacd81489316df7cf9e2')
-sha256sums=('0b8b4f74ba3630b0347249a32a80bc5fc2e8b63ad2952702f30162bd2d38fb82')
+b2sums=('39ec06e696788ae0c4a1a5a6fb39e71010b5f79b54237e9c75556a6bd012bd3575a5b64d3ce73b9689bd48038704d74bfc0abe66227844e20186fb5a41090e67')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
