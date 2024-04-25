@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=iMIBrowser
-Comment=iReasoning MIB browser tool for SNMP API.
+Comment=iReasoning Freeware MIB browser tool for SNMP API
 GenericName=SNMP MIB browser tool
 Exec=/usr/bin/imibrowser
 Terminal=false

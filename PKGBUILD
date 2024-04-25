@@ -2,26 +2,48 @@
 
 pkgname=imibrowser
 pkgver=14.5.4751
-pkgrel=1
-pkgdesc="iReasoning MIB browser tool for SNMP API."
+pkgrel=2
+pkgdesc="iReasoning Freeware MIB browser tool for SNMP API"
 url="https://www.ireasoning.com/mibbrowser.shtml"
-arch=('x86_64')
-license=('custom' 'GPL')
-depends=('jre-openjdk')
-makedepends=('imagemagick')
+arch=(x86_64)
+license=(
+	custom
+	GPL
+)
+depends=(jre-openjdk)
+makedepends=(imagemagick)
 source=("$pkgname-$pkgver.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
 	"iMIBrowser.desktop")
 sha256sums=('dd441e6ebdb4aa929b027fb1a52f65d545865d90db1fd38d575c5c63902cb5e2'
-            '5d2ca5f1199f429a09f700476753bfdabd111acbf4fdaf7ea43ae8ed3879aa29')
+	'ecfc557a66cb3e11f50c0034019fff55960d4b9551ba0639754ed14647cb6446')
 
 prepare() {
 	# Information about license agreement for free Personal Edition version
-	printf "Please read carefully through MIB Browser License Agreement (Personal Edition) at\nhttps://www.ireasoning.com/downloadmibbrowserlicense.shtml\n"
+	msg2 "Please read carefully through MIB Browser License Agreement (Personal Edition) at"
+	msg2 "https://www.ireasoning.com/downloadmibbrowserlicense.shtml"
 
-# Create executable /usr/bin file
-cat > imibrowser.sh <<EOF
+	# Acceptance of the software license agreement
+	while true; do
+		read -p "Do you accept the software license agreement? (y/n) " yn
+
+		case $yn in
+		[yY])
+			msg2 "Accepted agreement."
+			break
+			;;
+		[nN])
+			msg2 "Declined agreement, exiting."
+			exit
+			;;
+		*) echo "Invalid response" ;;
+		esac
+
+	done
+
+	# Create executable /usr/bin file
+	cat >imibrowser.sh <<EOF
 #!/bin/sh
-nohup /opt/imibrowser/browser.sh &
+/opt/imibrowser/browser.sh &
 EOF
 }
 
@@ -34,9 +56,7 @@ package() {
 	install -Dm755 "$srcdir"/ireasoning/mibbrowser/*.sh "$pkgdir"/opt/$pkgname
 	install -Dm644 "$srcdir"/ireasoning/mibbrowser/audio/alarm.wav "$pkgdir"/opt/$pkgname/audio/alarm.wav
 	install -Dm644 "$srcdir"/ireasoning/mibbrowser/scripts/sample.txt "$pkgdir"/opt/$pkgname/scripts/sample.txt
-
-	cd "$srcdir"/ireasoning/mibbrowser
-	cp -a --no-preserve='ownership' config docs images lib mibs "$pkgdir"/opt/$pkgname
+	cp -a --no-preserve='ownership' "$srcdir"/ireasoning/mibbrowser/{config,docs,images,lib,mibs} "$pkgdir"/opt/$pkgname
 
 	# Install license files
 	install -Dm644 "$srcdir"/ireasoning/mibbrowser/license.txt \
@@ -46,19 +66,24 @@ package() {
 
 	# Install icons
 	for d in 16 24 32 48 128 256; do
-		mkdir -p "$pkgdir"/usr/share/icons/hicolor/${d}x${d}/apps
+		install -d "$pkgdir"/usr/share/icons/hicolor/${d}x${d}/apps
 	done
 
 	for i in 16 24 32 48 128 256; do
-		if 	[ $i = '16' ];	then layer=5;
-		elif 	[ $i = '24' ];	then layer=4;
-		elif 	[ $i = '32' ];	then layer=3;
-		elif 	[ $i = '48' ];	then layer=2;
-		elif 	[ $i = '128' ];	then layer=1;
-		elif 	[ $i = '256' ];	then layer=0; fi
+		if [ $i = '16' ]; then
+			layer=5
+		elif [ $i = '24' ]; then
+			layer=4
+		elif [ $i = '32' ]; then
+			layer=3
+		elif [ $i = '48' ]; then
+			layer=2
+		elif [ $i = '128' ]; then
+			layer=1
+		elif [ $i = '256' ]; then layer=0; fi
 
-	convert "$srcdir"/ireasoning/mibbrowser/images/browser.ico[${layer}] -define icon:auto-resize=${icons} \
-		"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png
+		convert "$srcdir"/ireasoning/mibbrowser/images/browser.ico[${layer}] -define icon:auto-resize=${icons} \
+			"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png
 	done
 
 	# Install /usr/share/pixmaps png file
