@@ -1,7 +1,7 @@
 pkgbase = python-xeddsa
 	pkgdesc = A python implementation of the XEdDSA signature scheme
-	pkgver = 0.6.0.beta
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/Syndace/python-xeddsa
 	arch = x86_64
 	license = MIT
@@ -9,12 +9,18 @@ pkgbase = python-xeddsa
 	makedepends = python-setuptools
 	makedepends = cmake
 	makedepends = libsodium
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = glibc
+	depends = libxeddsa
+	depends = python-cffi
 	depends = python-libnacl
 	depends = python-pynacl
 	provides = python-xeddsa
 	conflicts = python-xeddsa
-	source = python-xeddsa::git+https://github.com/Syndace/python-xeddsa.git#tag=v0.6.0-beta
-	sha256sums = SKIP
+	source = https://github.com/Syndace/python-xeddsa/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = b72b3265b7d69809aae8fcf063e0f2a72f1c600a47cc625813d5bda5a15b1731
 
 pkgname = python-xeddsa

@@ -1,41 +1,41 @@
-# Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
+# Maintainer: Sam Whited <sam@samwhited.com>
+# Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
-_tag=v0.6.0-beta
 pkgname=python-xeddsa
-pkgver=0.6.0.beta
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A python implementation of the XEdDSA signature scheme"
 url='https://github.com/Syndace/python-xeddsa'
 license=('MIT')
 arch=('x86_64')
-makedepends=('git' 'python-setuptools' 'cmake' 'libsodium')
-source=("${pkgname}::git+https://github.com/Syndace/python-xeddsa.git#tag=${_tag}")
-sha256sums=('SKIP')
-depends=('glibc' 'python-libnacl' 'python-pynacl')
+makedepends=(
+	'git'
+	'python-setuptools'
+	'cmake'
+	'libsodium'
+	'python-pip'
+	'python-build'
+	'python-installer'
+	'python-wheel'
+)
+source=("https://github.com/Syndace/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('b72b3265b7d69809aae8fcf063e0f2a72f1c600a47cc625813d5bda5a15b1731')
+depends=(
+	'glibc'
+	'libxeddsa'
+	'python-cffi'
+	'python-libnacl'
+	'python-pynacl'
+)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
-pkgver() {
-    cd ${pkgname}
-    printf "%s" "$(git describe --tags | sed -e 's/^v//;s/-/./')"
-}
-
 build() {
-    cd ${pkgname}
-    python3 setup.py build
-
-    cd ref10
-    mkdir -p build && cd build
-    cmake ..
+	cd ${pkgname}-${pkgver}
+	python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${pkgname}
-    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-
-    install -m755 -d "${pkgdir}/usr/lib"
-    install -Dm 644 \
-      ref10/bin/libcrypto_scalarmult_dynamic.so \
-      ref10/bin/libcrypto_sign_dynamic.so \
-      "${pkgdir}/usr/lib"
+	cd ${pkgname}-${pkgver}
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
