@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=clash-nyanpasu-git
 _pkgname=clash-nyanpasu
-pkgver=pre.release.r2.g780b6d41
+pkgver=pre.release.r14.g521324da
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
 arch=('any')
@@ -57,14 +57,18 @@ function build(){
 	#pnpm dev
 	pnpm build
 }
-package(){
+function package() {
 	cd "${srcdir}/clash-nyanpasu"
 	install -Dm755 "${srcdir}/clash-nyanpasu/backend/target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
 
 	install -d "${pkgdir}/usr/lib/${_pkgname}/resources"
 	ln -sf /etc/clash/Country.mmdb -t "${pkgdir}/usr/lib/${_pkgname}/resources"
 
-	install -Dm644 src/assets/image/logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+	if [ -f frontend/nyanpasu/src/assets/image/logo.svg ]; then
+		install -Dm644 frontend/nyanpasu/src/assets/image/logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+	else
+		install -Dm644 src/assets/image/logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+	fi
 
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 	install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
