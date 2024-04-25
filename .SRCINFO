@@ -1,10 +1,10 @@
 pkgbase = r-samplingbook
 	pkgdesc = Survey Sampling Procedures
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=samplingbook
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	checkdepends = r-testthat
 	depends = r-pps
 	depends = r-sampling

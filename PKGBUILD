@@ -4,11 +4,11 @@ _pkgname=samplingbook
 _pkgver=1.2.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Survey Sampling Procedures"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r-pps
   r-sampling
