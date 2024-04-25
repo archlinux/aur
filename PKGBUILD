@@ -4,11 +4,11 @@ _pkgname=magrene
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Motif Analysis In Gene Regulatory Networks"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biocparallel
 )
@@ -26,11 +26,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('7d02392d3081830451c4fae90ed50177')
-sha256sums=('ee31dbd6c43aad68d5996c9f90923c85bee592a31157e601d0365cb6db2d7878')
+b2sums=('d207aa0c2c8e4b9381ab32297860a5255462950657d3efbda66dd634f6ff3d34b2550e718393efb72007cbb0448257f0d7b74f01d5d9ddfb2e8f9b50b933de1c')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
