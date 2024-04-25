@@ -4,11 +4,11 @@ _pkgname=analogue
 _pkgver=0.17-6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Analogue and Weighted Averaging Methods for Palaeoecology"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL2)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-brglm
   r-princurve
@@ -22,11 +22,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('f4fcf06d896fa95e76d79da19c19e6ff')
-sha256sums=('71070f4e669b161a8bec355bf678cc94bb78ba87ee0625cbd8cd53b7ac45b030')
+b2sums=('15146a90a5893e2ee1d11fb918edb106c9a3cc0f5d84fe012fd879a34f01fd50fe704c7bfb50fce333f0fd33280d693101c351fe0321ff618ae44ec6a1c6b876')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
