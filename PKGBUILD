@@ -1,44 +1,110 @@
 # Maintainer: wowario <wowario[at]protonmail[dot]com>
-# Contributor: wowario <wowario[at]protonmail[dot]com>
+# Contributor: Giorgi Taba K'obakhidze <t@gtk.ge>
 
 pkgname=wowlet-git
 _pkgname=wowlet
-pkgver=3.0.0.ae33c2f1b0
-pkgrel=1
+pkgver=4.1.1.r2.g330edac
+pkgrel=4
 pkgdesc='a free Wownero desktop wallet'
-license=('BSD')
 arch=('x86_64')
+license=('BSD')
 url="https://git.wownero.com/wowlet/wowlet"
-depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'miniupnpc' 'libgcrypt' 'qrencode' 'libsodium' 'libpgm' 'expat' 'qt5-base' 'qt5-websockets' 'qt5-svg' 'tor' 'qt5-multimedia')
-makedepends=('git' 'cmake' 'boost')
+depends=('openssl' 'readline' 'zeromq' 'hidapi' 'protobuf' 'libusb' 'miniupnpc' 'libgcrypt' 'qrencode' 'expat' 'qt5-base' 'qt5-websockets' 'qt5-svg' 'tor' 'qt5-multimedia')
+makedepends=('git' 'cmake' 'boost' 'wownero-seed-git')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
-source=("${pkgname}"::"git+https://git.wownero.com/wowlet/wowlet")
+source=("git+https://git.wownero.com/wowlet/wowlet"
+        "git+https://github.com/KDAB/KDMacTouchBar"
+        "git+https://github.com/dlbeer/quirc"
+        "git+https://git.wownero.com/wownero/wownero"
+        "git+https://github.com/Tencent/rapidjson"
+        "git+https://github.com/google/googletest"
+        "git+https://github.com/trezor/trezor-common"
+        "git+https://github.com/ethereum-lists/tokens"
+        "git+https://github.com/monero-project/supercop"
+        "git+https://git.wownero.com/wownero/RandomWOW"
+        "wownero-include-cstdint.patch")
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            4ed7d996e36cf4cb6406ce70042e424f718e32b262b7cbf112fd9fb2708976d2)
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  git submodule init
+  git config submodule.contrib/KDMacTouchBar.url "$srcdir/KDMacTouchBar"
+  git config submodule.contrib/quirc.url "$srcdir/quirc"
+  git config submodule.wownero.url "$srcdir/wownero"
+  git -c protocol.file.allow=always submodule update
+
+  (
+    cd wownero
+    git submodule init
+    git config submodule.external/rapidjson.url "$srcdir/rapidjson"
+    git config submodule.external/trezor-common.url "$srcdir/trezor-common"
+    git config submodule.external/supercop.url "$srcdir/supercop"
+    git config submodule.external/randomwow.url "$srcdir/RandomWOW"
+    git -c protocol.file.allow=always submodule update
+    patch -Np1 < "${srcdir}/wownero-include-cstdint.patch" || [ $? -eq 1 ]
+
+    (
+      cd external/rapidjson
+      git submodule init
+      git config submodule.thirdparty/gtest.url "$srcdir/googletest"
+      git -c protocol.file.allow=always submodule update
+    )
+
+    (
+      cd "$srcdir/trezor-common"
+      git submodule init
+      git config submodule.defs/ethereum/tokens.url "$srcdir/tokens"
+      git -c protocol.file.allow=always submodule update
+    )
+  )
+}
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   mkdir -p build
   cd build
-  cmake ..
+  export CFLAGS="-fPIC" CPPFLAGS="-fPIC" CXXFLAGS="-fPIC"
+  cmake -DMANUAL_SUBMODULES=1 -DUSE_DEVICE_TREZOR=OFF -DUSE_SINGLE_BUILDDIR=ON -DDEV_MODE=ON -DSTACK_TRACE=OFF -DARCH=x86-64 ..
   make
 }
 
 package_wowlet-git() {
-  install -Dm755 "${srcdir}/${pkgname}/build/bin/wowlet" "${pkgdir}/usr/bin/wowlet"
-  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cd "${srcdir}/${_pkgname}"
+  install -Dm755 build/bin/wowlet "${pkgdir}/usr/bin/wowlet"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -d "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -Dm644 "${srcdir}/${pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README"
-  install -Dm644 "${srcdir}/${pkgname}/docs/SECURITY.md" "${pkgdir}/usr/share/doc/${_pkgname}/SECURITY"
-  install -Dm644 "${srcdir}/${pkgname}/docs/HACKING.md" "${pkgdir}/usr/share/doc/${_pkgname}/HACKING"
-  install -Dm644 "${srcdir}/${pkgname}/src/assets/org.wowlet.wowlet.desktop" "${pkgdir}/usr/share/applications/org.wowlet.wowlet.desktop"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  install -Dm644 docs/SECURITY.md "${pkgdir}/usr/share/doc/${_pkgname}/SECURITY"
+  install -Dm644 docs/HACKING.md "${pkgdir}/usr/share/doc/${_pkgname}/HACKING"
+  install -Dm644 src/assets/org.wowlet.wowlet.desktop "${pkgdir}/usr/share/applications/org.wowlet.wowlet.desktop"
   install -d "${pkgdir}/usr/share/man/man1/"
-  install -Dm644 "${srcdir}/${pkgname}/src/assets/wowlet.1.gz" "${pkgdir}/usr/share/man/man1/wowlet.1.gz"
-  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/wowlet.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wowlet.svg"
-  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/48x48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/wowlet.png"
-  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/64x64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/wowlet.png"
-  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/96x96.png" "${pkgdir}/usr/share/icons/hicolor/96x96/apps/wowlet.png"
-  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/wowlet.png"
-  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/192x192.png" "${pkgdir}/usr/share/icons/hicolor/192x192/apps/wowlet.png"
-  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/wowlet.png"
+  install -Dm644 src/assets/wowlet.1.gz "${pkgdir}/usr/share/man/man1/wowlet.1.gz"
+  install -Dm644 src/assets/images/appicons/wowlet.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wowlet.svg"
+  install -Dm644 src/assets/images/appicons/48x48.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/wowlet.png"
+  install -Dm644 src/assets/images/appicons/64x64.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/wowlet.png"
+  install -Dm644 src/assets/images/appicons/96x96.png "${pkgdir}/usr/share/icons/hicolor/96x96/apps/wowlet.png"
+  install -Dm644 src/assets/images/appicons/128x128.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/wowlet.png"
+  install -Dm644 src/assets/images/appicons/192x192.png "${pkgdir}/usr/share/icons/hicolor/192x192/apps/wowlet.png"
+  install -Dm644 src/assets/images/appicons/256x256.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/wowlet.png"
 }

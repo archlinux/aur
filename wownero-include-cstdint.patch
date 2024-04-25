@@ -1,0 +1,48 @@
+diff --git a/contrib/epee/include/file_io_utils.h b/contrib/epee/include/file_io_utils.h
+index da05520c1..de95e58c3 100644
+--- a/contrib/epee/include/file_io_utils.h
++++ b/contrib/epee/include/file_io_utils.h
+@@ -29,6 +29,7 @@
+ 
+ #include <string>
+ #include <ctime>
++#include <cstdint>
+ 
+ namespace epee
+ {
+diff --git a/contrib/epee/include/storages/parserse_base_utils.h b/contrib/epee/include/storages/parserse_base_utils.h
+index 898813ff9..4658eba77 100644
+--- a/contrib/epee/include/storages/parserse_base_utils.h
++++ b/contrib/epee/include/storages/parserse_base_utils.h
+@@ -30,6 +30,7 @@
+ 
+ #include <boost/utility/string_ref_fwd.hpp>
+ #include <string>
++#include <cstdint>
+ 
+ namespace epee 
+ {
+diff --git a/src/common/combinator.h b/src/common/combinator.h
+index 0d35e4786..f322aeba7 100644
+--- a/src/common/combinator.h
++++ b/src/common/combinator.h
+@@ -34,6 +34,7 @@
+ #include <iostream>
+ #include <vector>
+ #include <stdexcept>
++#include <cstdint>
+ 
+ namespace tools {
+ 
+diff --git a/src/wallet/api/wallet2_api.h b/src/wallet/api/wallet2_api.h
+index 31c60e972..cbd9b3a67 100644
+--- a/src/wallet/api/wallet2_api.h
++++ b/src/wallet/api/wallet2_api.h
+@@ -38,6 +38,7 @@
+ #include <ctime>
+ #include <iostream>
+ #include <stdexcept>
++#include <cstdint>
+ 
+ //  Public interface for libwallet library
+ namespace Monero {
