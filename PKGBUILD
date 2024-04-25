@@ -4,11 +4,11 @@ _pkgname=Rarr
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Read Zarr Files in R"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   blosc
   lz4
@@ -33,8 +33,8 @@ source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_
         "system-libs.patch")
 md5sums=('94af864ae3de3557840993a429944ea2'
          '83d4df5360e4cf2088753078dc2970b6')
-sha256sums=('997592c52d8d0aa11680d0f40df11765d57e65a1f9c5e61671ff4513d31d4cfb'
-            '023d93a3ac3c339eb00c1e79f8ac54f48fac514f43f2246b5aa17014551974f2')
+b2sums=('1ed0ea1b9eb24b60fcbebcd56ebb49f149a82b3d3218d0f86214537836c051f07cfcceac84ac53711005249cbd5c157b55371c629510de7457f9054b1dee9d1c'
+        '137df7ed9d8504b913aebd2588a8d88651d6a46bb8985981f0aa3032244372fd163b48c691b1fd2918d8f9aa3834b2538f6a4901bb01538fa8a0875e0f771353')
 
 prepare() {
   cd "$_pkgname"
@@ -44,8 +44,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
