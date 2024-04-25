@@ -5,11 +5,11 @@ _pkgname=gap
 _pkgver=1.5-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Genetic Analysis Package"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-dplyr
   r-gap.datasets
@@ -54,11 +54,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('69266dcc6a164090d5c0c9a22b3b839e')
-sha256sums=('6e19f9d822460867fcb97fe917730ce0f87218893a6a7edae42caaa401b452ce')
+b2sums=('9e7e7844d91258fa55b7351db9fd1fa14e2adb4a4a3eee7fdd871da6bf2e915d7669be655a71b1134a2afd560225c0c702a887e8caedd966f559e325f04908a4')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
