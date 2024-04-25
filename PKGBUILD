@@ -3,7 +3,7 @@
 pkgname=wg++
 pkgver=5.1.5
 pkgrel=3
-pkgdesc="WebGrab+Plus is a multi-site incremental xmltv epg grabber"
+pkgdesc="WebGrab+Plus is a Freeware, closed-source multi-site incremental XMLTV EPG grabber"
 arch=(any)
 url="http://webgrabplus.com/"
 license=(custom)
