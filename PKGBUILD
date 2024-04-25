@@ -5,11 +5,11 @@ _pkgname=tidytree
 _pkgver=0.4.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A Tidy Tool for Phylogenetic Tree Data Manipulation"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(Artistic2.0)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-ape
   r-cli
@@ -34,11 +34,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0b27b0d945a7fb845ca9d8d1d57a1d2b')
-sha256sums=('dba909ba767283fa76795a67e048ff1c8cd339c7e44f64c9698c70ecb3d92292')
+b2sums=('c3de340b952341d25239d9bfa7de20276b435e32153e3b51c728d423097e9188991052d3e0e2253d53f41e3d770adfd8f00716033ac19fdda25e60ca4bd540f0')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
