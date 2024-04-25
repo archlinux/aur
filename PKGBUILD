@@ -4,11 +4,11 @@ _pkgname=updateObject
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Find/fix old serialized S4 instances"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   git
   r-biocgenerics
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0d69cbbcd4bd9c5f31d905a47f6af212')
-sha256sums=('aaf3864680f6405523a92ecef102842f6192028c53279d63c7e34ee922ca2b28')
+b2sums=('226d5f51bda4d2fe770aa218f94c8890a37f3ae9bf977ff2507d910cde3e3fa80e95a37a408cc996650f8dc43402a9c2789f519693bf2fe1b6d3c0e6ae286861')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
