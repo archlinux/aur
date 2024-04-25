@@ -4,11 +4,11 @@ _pkgname=torch
 _pkgver=0.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensors and Neural Networks with 'GPU' Acceleration"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(MIT)
+license=('MIT')
 depends=(
   r-bit64
   r-callr
