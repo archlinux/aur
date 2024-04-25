@@ -4,22 +4,22 @@
 _pkgname=speedglm
 _pkgver=0.3-5
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=2
+pkgver=${_pkgver//-/.}
+pkgrel=3
 pkgdesc="Fitting Linear and Generalized Linear Models to Large Data Sets"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-biglm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('48a7f9d2722b0142fc0372a6d8769acf')
-sha256sums=('f8663677c10ff324c5639402060ddd2b1a1e917445cb0f8f84e146b85e82bb4b')
+b2sums=('90d883e2ed6c6de16c08bf24566cd347e4fe6f5a47389a38913c012723e59813c461fe1b8a94757c0739593a4a58dae8664ee07e8c6bb1f9900080494ec0c971')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
