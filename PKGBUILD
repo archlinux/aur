@@ -3,7 +3,7 @@
 pkgname=wownero-seed-git
 _pkgname="${pkgname%-git}"
 pkgver=0.3.0.r1.gd3f68be
-pkgrel=10
+pkgrel=11
 pkgdesc='14-word mnemonic seed for Wownero'
 arch=('x86_64')
 url="https://git.wownero.com/wowlet/${_pkgname}"
@@ -25,11 +25,11 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	cmake -DCMAKE_BUILD_TYPE=Release -B build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -B build
 	make -C build
 }
 
 package() {
 	cd "$pkgname"
-	make -C build DESTDIR="$pkgdir/" PREFIX=/usr install
+	make -C build DESTDIR="$pkgdir" install
 }
