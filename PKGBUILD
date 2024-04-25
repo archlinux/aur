@@ -3,7 +3,7 @@
 
 _hkgname=pointfree
 pkgname=haskell-pointfree
-pkgver=1.1.1.11
+pkgver=1.1.1.12
 pkgrel=1
 pkgdesc="Tool for refactoring expressions into pointfree form"
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -14,7 +14,7 @@ depends=('gmp' 'ghc' 'ghc-libs' 'haskell-src-exts')
 checkdepends=('haskell-hunit' 'haskell-quickcheck')
 options=('strip')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-md5sums=('88eb005b3c15d95a554786e0eac9f9a0')
+md5sums=('307634c1871c173dca089fb44b8a785f')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}" || exit 1
