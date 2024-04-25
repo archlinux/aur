@@ -5,11 +5,11 @@ _pkgname=lfa
 _pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Logistic Factor Analysis for Categorical Data"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
   blas
   lapack
@@ -28,11 +28,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('83d3c5671422b432d992834ae675e020')
-sha256sums=('da4a0a2b7dd815a87544c06cb28860fea4601045d308726068f61f210edf3cf7')
+b2sums=('31f9c77c84c6429d885b8fe205ae95112a48cb64540b974d66c4eda03fdecb2855c7ee1c08c36a0b43bd6e03a27ffe580231c857110cef7ae182f59903e2655a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
