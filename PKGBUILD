@@ -7,9 +7,9 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
-_commit=cd94190cffe52260f033a07cc94e6973bf94b060
+_commit=222b36d7bd3a98616eae82993552098747268d5e
 pkgname=h2o-git
-pkgver=2.2.0.8001
+pkgver=2.2.0.8004
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
@@ -43,7 +43,7 @@ prepare() {
         git submodule update --init --recursive
         
         # libressl-3.8
-        git apply ${srcdir}/neverbleed-fix-when-lacking-engines.patch
+        #git apply ${srcdir}/neverbleed-fix-when-lacking-engines.patch
 
 	# set CMake minimal version to 3.9 to set CMP0039 to new
 	sed -i 's/VERSION 2.8.12/VERSION 3.9/g' CMakeLists.txt
