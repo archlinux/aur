@@ -156,9 +156,11 @@ prepare() {
 	scripts/config -e CONFIG_KEXEC \
 		-e CONFIG_KEXEC_FILE \
 		-e CONFIG_KEXEC_SIG \
-		-e CONFIG_KEXEC_BZIMAGE_VERIFY_SIG \
 		-e CONFIG_KEXEC_JUMP \
-		-e CONFIG_KEXEC_CORE
+		-e CONFIG_KEXEC_CORE \
+		-e CONFIG_CRASH_DUMP \
+		-e CONFIG_CRASH_CORE \
+		-e CONFIG_RELOCATABLE
 
 	### 设置配置
 	echo "Setting config..."
