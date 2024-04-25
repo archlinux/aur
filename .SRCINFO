@@ -1,13 +1,13 @@
 pkgbase = dex2jar
 	pkgdesc = Tools to work with android .dex and java .class files
-	pkgver = 2.1
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/pxb1988/dex2jar
 	arch = any
 	license = Apache
 	depends = java-runtime
 	depends = bash
-	source = https://github.com/pxb1988/dex2jar/releases/download/v2.1/dex2jar-2.1.zip
-	sha256sums = 7a9bdf843d43de4d1e94ec2e7b6f55825017b0c4a7ee39ff82660e2493a46f08
+	source = https://github.com/pxb1988/dex2jar/releases/download/v2.4/dex-tools-v2.4.zip
+	sha256sums = ee7c45eb3c1d2474a6145d8d447e651a736a22d9664b6d3d3be5a5a817dda23a
 
 pkgname = dex2jar
