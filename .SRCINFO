@@ -1,0 +1,24 @@
+pkgbase = android-armv7a-eabi-fftw
+	pkgdesc = A library for computing the discrete Fourier transform (DFT) (Android armv7a-eabi)
+	pkgver = 3.3.10
+	pkgrel = 1
+	url = http://www.fftw.org/
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = android-cmake
+	makedepends = android-armv7a-eabi-openmpi
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://www.fftw.org/fftw-3.3.10.tar.gz
+	md5sums = 8ccbf6a5ea78a16dbc3e1306e234cc5c
+
+pkgname = android-armv7a-eabi-fftw
+	depends = android-ndk
+	optdepends = android-armv7a-eabi-fftw-openmpi: for OpenMPI integration
+
+pkgname = android-armv7a-eabi-fftw-openmpi
+	pkgdesc = A library for computing the discrete Fourier transform (DFT) (Android armv7a-eabi) - OpenMPI libraries (Android armv7a-eabi)
+	depends = android-armv7a-eabi-fftw
+	depends = android-armv7a-eabi-openmpi
