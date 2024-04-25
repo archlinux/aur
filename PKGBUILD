@@ -5,11 +5,11 @@ _pkgname=pdftools
 _pkgver=3.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Text Extraction, Rendering and Converting of PDF Documents"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   poppler
   poppler-data
@@ -27,11 +27,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b0cdb2d649557b5902e81a8e9e215eb5')
-sha256sums=('0b9d7b2100a6d7959c56e144285b9638ca6ff4a7f484a31ff814a99d71482c64')
+b2sums=('58dfdd194d9ffd11c1e4a6816223237fc29cedc6c038eecec76211cc43f66d311421f2ba6c29ae69ee230ed05b37f936f3c1e3887bc3cc9e8d0cfc9fc43cd029')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
