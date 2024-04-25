@@ -1,11 +1,11 @@
 pkgbase = kinesis-tailr-bin
 	pkgdesc = Kinesis tail tool
-	pkgver = 0.5.8
+	pkgver = 0.5.9
 	pkgrel = 1
 	url = https://github.com/grumlimited/kinesis-tailr
 	arch = x86_64
 	license = GPLv3
-	source = https://github.com/grumlimited/kinesis-tailr/releases/download/0.5.8/kinesis-tailr-0.5.8-x86_64.deb
-	md5sums = 4836c5f798674ed8e55292ec27fae151
+	source = https://github.com/grumlimited/kinesis-tailr/releases/download/0.5.9/kinesis-tailr-0.5.9-x86_64.deb
+	md5sums = 7e24fd68486eefcdc87172c0c995c813
 
 pkgname = kinesis-tailr-bin
