@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=stringmagic
-_pkgver=1.1.0
+_pkgver=1.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dc71f4f3d14034bf20fc380d32969c4c')
-b2sums=('62b7944777aafb6e12929f8c036ce5a4faa164b3e942e3e593dd71b4efff7fc197baa96a0e98a8cae63dcd43cfbb73e2c422b6b1f6a8a64d8a5bbc043dff9eb6')
+md5sums=('deaeb5f8c0d1beb10f15b64427c0eae9')
+b2sums=('a5bdedec51103d0dbb131da4f27fbbba1c734c56eabe2a541360f0b5bc4119bcbe66dee676a87b38faa119baa04020cf5230995ec00a3b772dda55b06e29d216')
 
 build() {
   mkdir build
