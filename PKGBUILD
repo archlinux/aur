@@ -7,11 +7,11 @@ _pkgname=spam
 _pkgver=2.10-0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="SPArse Matrix"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(BSD)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('LGPL-2.0-only OR BSD-3-Clause')
 depends=(
   blas
   lapack
@@ -35,7 +35,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('544bbc0a7ae76ef34ed01bf61c666f82')
-sha256sums=('719c86a23801ecf051ffd8291912ee3567af4010e74af470fbf09e274728ac79')
+b2sums=('5a112675245f0937367334ad0f86330f7813ac51b8a2e0690a464bd8d925048214e55d96a0a18933daee2551a93fb8d553b6c27bbb8e25106366b799a882f384')
 
 prepare() {
   # skip tests that require r-fields
@@ -44,8 +44,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
