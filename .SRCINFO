@@ -1,0 +1,15 @@
+pkgbase = checksec-rs
+	pkgdesc = Fast multi-platform (ELF/PE/MachO) binary checksec written in Rust
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/etke/checksec.rs
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = fakeroot
+	makedepends = binutils
+	conflicts = checksec
+	source = checksec-rs-0.0.9.tar.gz::https://github.com/etke/checksec.rs/archive/refs/tags/v0.0.9.tar.gz
+	b2sums = 2edbb6945f72fe7cca0f33617686a614e941264f234db9c59c59ccf3a3cfe1ad66b0373623bce622dd70834e833acf1f5a3785045c5a15b8e56938693d75e10d
+
+pkgname = checksec-rs
