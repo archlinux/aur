@@ -5,11 +5,11 @@ _pkgname=pingr
 _pkgver=2.0.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Check if a Remote Computer is Up"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   iputils
   r-processx
@@ -23,11 +23,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('1fa6ce8bcbbeda3df39c59180a3ad149')
-sha256sums=('3c29c0be588c3fee267a2c0f60faa08e37682ba001db6c0249b065abc6aed863')
+b2sums=('8225e5149694fce445964acd30c61b548c30d6397fcd22feea94dd679d6430be6f235dbdbb012481735f8f5b3f303a57d99675ad71e1711f8b78478c5e3edddf')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
