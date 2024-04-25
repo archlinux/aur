@@ -1,10 +1,10 @@
 pkgbase = r-ordinal
 	pkgdesc = Regression Models for Ordinal Data
 	pkgver = 2023.12.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=ordinal
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	checkdepends = r-testthat
 	depends = r-numderiv
 	depends = r-ucminf
@@ -13,6 +13,6 @@ pkgbase = r-ordinal
 	optdepends = r-xtable
 	source = https://cran.r-project.org/src/contrib/ordinal_2023.12-4.tar.gz
 	md5sums = a14e655e739d633b0d4e19220509f638
-	sha256sums = f5582ad983dfd2ffbaf1e90b49af6f2cc319953d1fcb33f31c6c6f335cbd9fa2
+	b2sums = 622114d4acd1c44e0d2f41d53d7832e9364b3acb5431c719887d80e56b32638dc146c277badca314c930a32a534a20fc4cc3f397d0b8bca76305a1aa69f7e742
 
 pkgname = r-ordinal
