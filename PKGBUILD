@@ -1,18 +1,19 @@
-# Maintainer: Peter Wu <lekensteyn at gmail dot com>
+# Maintainer: Jack Yu <jackyu1996 at gmail dot com>
+# Contributor: Peter Wu <lekensteyn at gmail dot com>
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 pkgname=dex2jar
-pkgver=2.1
+pkgver=2.4
 pkgrel=1
 pkgdesc="Tools to work with android .dex and java .class files"
 arch=(any)
 url="https://github.com/pxb1988/dex2jar"
 license=('Apache')
 depends=('java-runtime' 'bash')
-source=("https://github.com/pxb1988/dex2jar/releases/download/v${pkgver}/dex2jar-${pkgver}.zip")
-sha256sums=('7a9bdf843d43de4d1e94ec2e7b6f55825017b0c4a7ee39ff82660e2493a46f08')
+source=("https://github.com/pxb1988/dex2jar/releases/download/v${pkgver}/dex-tools-v${pkgver}.zip")
+sha256sums=('ee7c45eb3c1d2474a6145d8d447e651a736a22d9664b6d3d3be5a5a817dda23a')
 
 package() {
-  cd "$srcdir/dex-tools-$pkgver"
+  cd "$srcdir/dex-tools-v$pkgver"
 
   mkdir -p "$pkgdir/usr/bin/"
   mkdir -p "$pkgdir/opt/dex2jar/lib/"
