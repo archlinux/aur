@@ -4,11 +4,11 @@ _pkgname=FCPS
 _pkgver=1.3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Fundamental Clustering Problems Suite"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   pandoc
   r-datavisualizations
@@ -75,11 +75,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('749ba6fd6322916b39cfcbc8843280a8')
-sha256sums=('d1e5e06700a81fe529f52ef1f65977d3c786f33df262f4f89238d2622dc7ba97')
+b2sums=('0d822e5c94194edca9738be6c939a190f1b66820a8df173fd99d301e7744b497312e467d4a903cd9421661159b5a502c799bf94e0e35caf8d1fb89f86a26ad99')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
