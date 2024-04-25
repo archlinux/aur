@@ -1,10 +1,11 @@
 pkgbase = ghq
 	pkgdesc = Remote repository management made easy
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/x-motemen/ghq
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = git

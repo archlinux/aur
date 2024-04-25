@@ -3,9 +3,9 @@
 
 pkgname=ghq
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote repository management made easy"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/x-motemen/ghq"
 license=('MIT')
 makedepends=('go'  'git')     # Yes, you're right; no git-depended lines in the PKGBUILD but `make test` requires git...
