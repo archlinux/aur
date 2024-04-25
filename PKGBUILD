@@ -7,11 +7,11 @@ _pkgname=rio
 _pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="A Swiss-Army Knife for Data I/O"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL2)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-curl
   r-data.table
@@ -55,11 +55,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('10999152910a11bcccc2b85e78cfda4f')
-sha256sums=('754c137c5588870f75665d0acc149f0ef28250edc057d5d4ac6fa25ba9547bee')
+b2sums=('dfe07373a3c0430a651de382a4ba13e3d079ff4e63cb9f51752e3314cf3dc1eec849039c737213983efd1b2a92e60752adfe65e9743d2bcd8917f27e660d7602')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
