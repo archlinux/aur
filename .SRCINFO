@@ -2,7 +2,6 @@ pkgbase = thunarx-python-git
 	pkgdesc = Thunarx Python Bindings
 	pkgver = 0.5.2.r138.67c9983
 	pkgrel = 1
-	epoch = 1
 	url = https://goodies.xfce.org/projects/bindings/thunarx-python
 	arch = i686
 	arch = x86_64

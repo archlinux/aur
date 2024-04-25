@@ -3,7 +3,6 @@
 
 _pkgname=thunarx-python
 pkgname=$_pkgname-git
-epoch=1
 pkgver=0.5.2.r138.67c9983
 pkgrel=1
 pkgdesc="Thunarx Python Bindings"
