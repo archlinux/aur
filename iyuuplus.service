@@ -7,7 +7,7 @@ After       = network-online.target php-fpm.service mariadb.service
 User = iyuuplus
 Group = iyuuplus
 Restart = on-failure
-ExecStart = /usr/bin/iyuuplus start
+ExecStart = /srv/iyuuplus/start.php start
 
 [Install]
 WantedBy = multi-user.target

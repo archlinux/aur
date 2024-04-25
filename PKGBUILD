@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=iyuuplus
-pkgver=20240425.121223
+pkgver=20240425.153446
 pkgrel=1
 epoch=2
 pkgdesc="IYUU Auto Reseed Plus"
@@ -15,9 +15,9 @@ source=("${pkgname}::git+${url}"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 sha256sums=('SKIP'
-            '2518b01fca4b6b49f37c4eba9bc0aaf31d787a016daa6baa5812b3632b92c3f3'
-            '74636a75d9e2837db2441805c50117def6f63dc7671ea3ff83c12361d246650d'
-            '743176e2e49ed2b51ffb562731c6f785718ffa9fdf58479c668f17abcf4463db')
+            'c7cb5e1ce12fdcb72f70f4c1dafce6650668256653f578bd7d825c6e7f7ace81'
+            'e64af1d0d088fa30e864897a43597026ee95f5e2590e79ac4055786795c60622'
+            '4c0928194248ce56deab7a1eeec78d4a3827d7e8fbceba142b46d4f9c8eed387')
 options=(!strip !debug)
 
 pkgver() {
@@ -36,9 +36,6 @@ package() {
 
     rm -rf .dockerignore docker runtime windows.* gg.sh LICENSE README.md
     find . \( -iname ".git*" -o -iname "README.md" \) | sort | while read line; do rm -rf "$line"; done
-    find . -type f -exec install -Dm644 {} "${pkgdir}/var/lib/${pkgname}/"{} \;
-    chmod 755 "${pkgdir}/var/lib/${pkgname}/start.php"
-
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/var/lib/${pkgname}/start.php" "${pkgdir}/usr/bin/${pkgname}"
+    find . -type f -exec install -Dm644 {} "${pkgdir}/srv/${pkgname}/"{} \;
+    chmod 755 "${pkgdir}/srv/${pkgname}/start.php"
 }
