@@ -4,11 +4,11 @@ _pkgname=ggtreeDendro
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Drawing 'dendrogram' using 'ggtree'"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-ggplot2
   r-ggtree
@@ -30,11 +30,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('e5839d466e08665eb2475a99fb74e833')
-sha256sums=('ace77cc34d998168e516ef377b563d49d9d8895135fdc6cdb9359544f6b2df3e')
+b2sums=('efc1dbc33976571770de4b4536df82de4d9304ae41665dfdfbcd3a9fc2f685bcfdead26a977acbacd1fea658ace5fcc50572304d4db8da63b8110e6ca52eec1b')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
