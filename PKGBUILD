@@ -18,7 +18,11 @@ sha256sums=('SKIP' '79a10b27dc87328fbb35bb7c10f3eb33ff6459c55e301ada4db2f352ae5f
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	printf %s "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+	grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1|tr -d \\n
+	printf .
+	git rev-list --count HEAD|tr -d \\n
+	printf .g
+	git rev-parse --short HEAD|tr -d \\n
 }
 
 build(){
