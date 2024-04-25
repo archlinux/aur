@@ -178,8 +178,9 @@ prepare() {
 	./configure CC=gcc --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
 		--datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
 		--libexecdir=/usr/lib/zfs --with-config=kernel \
-		--enable-linux-builtin \
-		--with-linux=${srcdir}/$_srcname
+		--enable-linux-builtin=yes \
+		--with-linux=${srcdir}/${_srcname} \
+		--with-linux-obj=${srcdir}/${_srcname}
 	./copy-builtin ${srcdir}/${_srcname}
 
 	### 开启zfs选项
