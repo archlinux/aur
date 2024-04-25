@@ -1,22 +1,23 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=iyuuplus
-pkgver=20240423.030801
+pkgver=20240425.121223
 pkgrel=1
-pkgdesc="IYUU Auto Reseed Plus | IYUU 自动辅种工具"
+epoch=2
+pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
-url="https://github.com/ledccn/IYUUPlus"
-license=("MulanPSL-1.0")
-depends=("php-fpm")
+url="https://github.com/ledccn/iyuuplus-dev"
+license=("MIT")
+depends=("php-fpm" "php-gd" "php-sodium" "php-sqlite")
 source=("${pkgname}::git+${url}"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 sha256sums=('SKIP'
-            '6e1e437b71fcfe19e542254181d39eb479e16fea5fcaf5d1179d7ec8cd176520'
+            '2518b01fca4b6b49f37c4eba9bc0aaf31d787a016daa6baa5812b3632b92c3f3'
             '74636a75d9e2837db2441805c50117def6f63dc7671ea3ff83c12361d246650d'
-            '35defea40aa4a403e07f9cd4474479a41cabc306b8c0f29192cd39f77f76e4f9')
-options=(!strip)
+            '743176e2e49ed2b51ffb562731c6f785718ffa9fdf58479c668f17abcf4463db')
+options=(!strip !debug)
 
 pkgver() {
     cd "${pkgname}"
@@ -24,18 +25,19 @@ pkgver() {
 }
 
 package() {
-    install -Dm644 "${pkgname}.service"   "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    install -Dm644 "${pkgname}.sysusers"  "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    install -Dm644 "${pkgname}.tmpfiles"  "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-    install -Dm644 "${pkgname}/LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "${pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-    rm -rf "${pkgname}/"{LICENSE,README.md,.dockerignore,docker,nssm,runtime,*.cmd,windows.*,todo.*,gg.sh}
-    find "${pkgname}" -iname ".git*" | sort | while read line; do rm -rf "$line"; done
-    find "${pkgname}" -type f -exec install -Dm644 {} "${pkgdir}/usr/share/"{} \;
-    chmod 755 "${pkgdir}/usr/share/${pkgname}/start.php"
+    cd "${pkgname}"
+    install -Dm644 LICENSE               "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md             "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    rm -rf .dockerignore docker runtime windows.* gg.sh LICENSE README.md
+    find . \( -iname ".git*" -o -iname "README.md" \) | sort | while read line; do rm -rf "$line"; done
+    find . -type f -exec install -Dm644 {} "${pkgdir}/var/lib/${pkgname}/"{} \;
+    chmod 755 "${pkgdir}/var/lib/${pkgname}/start.php"
 
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/usr/share/${pkgname}/start.php"       "${pkgdir}/usr/bin/${pkgname}"
-    ln -s "/var/lib/${pkgname}"/{db,runtime,.env} "${pkgdir}/usr/share/${pkgname}"
+    ln -s "/var/lib/${pkgname}/start.php" "${pkgdir}/usr/bin/${pkgname}"
 }
