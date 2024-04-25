@@ -2,7 +2,7 @@
 # Maintainer: SuicideCatt <fr7g31@gmail.com>
 
 pkgname=msdfgen-git
-pkgver=1.11.r8.g937f31f
+pkgver=1.11.r14.g5dc5f62
 pkgrel=1
 pkgdesc="Multi-channel signed distance field generator binary and library"
 url=https://github.com/Chlumsky/msdfgen
