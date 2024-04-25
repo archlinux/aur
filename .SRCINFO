@@ -1,6 +1,6 @@
 pkgbase = animestream-git
 	pkgdesc = A simple project designed for streaming and downloading your favorite anime!
-	pkgver = 1.0.0.alpha_4.r1.g7c6045e
+	pkgver = 1.0.0.alpha_5.r0.g8e062e0
 	pkgrel = 1
 	url = https://github.com/frostnova721/animestream-electron
 	arch = any
