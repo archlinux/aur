@@ -1,11 +1,12 @@
 pkgbase = koboldcpp-hipblas
 	pkgdesc = An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)
 	pkgver = 1.63.yr1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YellowRoseCx/koboldcpp-rocm
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = python
+	depends = cblas
 	depends = openblas
 	depends = clblast
 	depends = vulkan-icd-loader
