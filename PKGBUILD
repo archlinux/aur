@@ -4,11 +4,11 @@ _pkgname=jsonvalidate
 _pkgver=1.3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Validate 'JSON' Schema"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-v8
 )
@@ -24,11 +24,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('aeb5c0cc44825e0a9a8a5678e7eb5fe2')
-sha256sums=('2b6c08bfa9ba043151a41d914b24b776583a140ee93a448191d5d0af46aadb57')
+b2sums=('93a5b5365d642a852c1a710009a6ed1c35a650fe3ca1acbd787889c07b85b3ba23817072edb5680b5b9527230dfdae7ec4ff1e3fb13aad36bb910139b8f7d8d0')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
