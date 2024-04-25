@@ -1,10 +1,11 @@
 # Maintainer: Cedric Roijakkers <cedric [the at sign goes here] roijakkers [the dot sign goes here] be>.
 # Inspired from the PKGBUILD for ferdi-git.
 
-_electron='electron29'
+_electron='electron30'
+_recipes_commit='7ab6497fbd7bc64c3f2b17b587d273c9bbd155c8'
 
 pkgname="ferdium-electron"
-pkgver=6.7.2
+pkgver=6.7.3
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -16,19 +17,17 @@ makedepends=('git' 'python' 'jq' 'asar'
              'nodejs')
 provides=('ferdium')
 conflicts=('ferdium')
-source=("$pkgname::git+https://github.com/ferdium/ferdium-app#tag=v$pkgver"
-        'ferdium-recipes::git+https://github.com/ferdium/ferdium-recipes.git#branch=main'
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ferdium/ferdium-app/archive/v$pkgver.tar.gz"
+        "ferdium-recipes-$pkgver.tar.gz::https://github.com/ferdium/ferdium-recipes/archive/$_recipes_commit.tar.gz"
         ferdium.desktop)
-sha256sums=('SKIP'
-            'SKIP'
+sha256sums=('fda8e2683b10c4c2b13eab3f2de79c5357df0d0eb7f639bb4e5889c979327fcb'
+            '328d5882238c7fb12db7fc37c6e8d9ee97575d30baa9e6c57fad574f0f29a015'
             'd6e129220ed947cb5fa205211dabc6311a3d9c92434b6bc8deb2fae802c0b0d0')
 
 prepare() {
-  cd "$pkgname"
+  cd "ferdium-app-$pkgver"
 
-  git submodule init
-  git config submodule.recipes.url "$srcdir/ferdium-recipes"
-  git -c protocol.file.allow=always submodule update
+  cp -Tr "$srcdir/ferdium-recipes-$_recipes_commit" recipes
 
   local node_ver=$(node -v | sed -e 's/^v//')
   local pnpm_ver=$(pnpm -v)
@@ -49,16 +48,15 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"
+  cd "ferdium-app-$pkgver"
 
   export CI=true
 
-  pnpm install --no-frozen-lockfile
-  pnpm run prepare-code || true
+  pnpm install --no-frozen-lockfile --ignore-script
 
   cd "recipes"
 
-  pnpm install --no-frozen-lockfile
+  pnpm install --no-frozen-lockfile --ignore-script
   pnpm run package
 
   cd ..
@@ -70,7 +68,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname"
+  cd "ferdium-app-$pkgver"
 
   install -dm0755 "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/ferdium" <<EOF
