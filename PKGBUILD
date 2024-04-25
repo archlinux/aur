@@ -4,11 +4,11 @@ _pkgname=loder
 _pkgver=0.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Dependency-Free Access to PNG Image Files"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(BSD)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('BSD-3-Clause')
 depends=(
   r
 )
@@ -21,11 +21,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('07ee60b41a730f551f95da3865d23760')
-sha256sums=('7e1b977a8e62b29717866a61c98245860fa32ae5ab3d8362096d8e296acc83a6')
+b2sums=('d3375432458dd878a3a05e68f86fa00f9d0f98f85a1ff4f350dfcc06a5996c9f0211c8528b968d7d65121c2df7de049b45446fc7d0c4bad1b0c04af04cbdf301')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
