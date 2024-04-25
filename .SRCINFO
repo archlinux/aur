@@ -1,0 +1,24 @@
+pkgbase = android-x86-fftw
+	pkgdesc = A library for computing the discrete Fourier transform (DFT) (Android x86)
+	pkgver = 3.3.10
+	pkgrel = 1
+	url = http://www.fftw.org/
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = android-cmake
+	makedepends = android-x86-openmpi
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://www.fftw.org/fftw-3.3.10.tar.gz
+	md5sums = 8ccbf6a5ea78a16dbc3e1306e234cc5c
+
+pkgname = android-x86-fftw
+	depends = android-ndk
+	optdepends = android-x86-fftw-openmpi: for OpenMPI integration
+
+pkgname = android-x86-fftw-openmpi
+	pkgdesc = A library for computing the discrete Fourier transform (DFT) (Android x86) - OpenMPI libraries (Android x86)
+	depends = android-x86-fftw
+	depends = android-x86-openmpi
