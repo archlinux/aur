@@ -1,12 +1,15 @@
 
 ## arg 1:  the new package version
 post_install() {
-	sudo odbcinst -i -d -f /opt/ibm/iaccess/unixodbcregistration
+    echo "Using the IBM i Access ODBC driver requires it to be registered."
+    echo "To register IBM i Access ODBC driver, run as root:"
+    echo "  odbcinst -i -d -f /opt/ibm/iaccess/unixodbcregistration"
 }
 
 
 ## arg 1:  the old package version
 pre_remove() {
-    sudo odbcinst -u -d -n "IBM i Access ODBC Driver"
-    sudo odbcinst -u -d -n "IBM i Access ODBC Driver 64-bit"
+    echo "To unregister IBM i Access ODBC driver, run following commands as root:"
+    echo '  odbcinst -u -d -n "IBM i Access ODBC Driver"'
+    echo '  odbcinst -u -d -n "IBM i Access ODBC Driver 64-bit"'
 }

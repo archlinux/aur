@@ -3,7 +3,7 @@
 pkgname=ibm-iaccess
 pkgver=1.1.0.27
 _upstreamrel=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ODBC driver IBM i Access Client Solutions"
 arch=(x86_64)
 url="http://www-03.ibm.com/systems/power/software/i/access/linux.html"

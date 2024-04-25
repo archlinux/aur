@@ -1,7 +1,7 @@
 pkgbase = ibm-iaccess
 	pkgdesc = ODBC driver IBM i Access Client Solutions
 	pkgver = 1.1.0.27
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www-03.ibm.com/systems/power/software/i/access/linux.html
 	install = .INSTALL
 	arch = x86_64
