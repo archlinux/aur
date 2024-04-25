@@ -4,11 +4,11 @@ _pkgname=sfarrow
 _pkgver=0.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Read/Write Simple Feature Objects ('sf') with 'Apache' 'Arrow'"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-arrow
   r-dplyr
@@ -21,11 +21,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('a2e14236864928f98ae8c27590b7c3be')
-sha256sums=('0f5db73f8c3058b0aad6343d2376186028cc443a7df1c515b3a1171e14f454c3')
+b2sums=('4717ed27d5d345e1fd0dc403c8d4cfb7b7bff5f9d56086139766698c06d1b8d2442433bb3020d7ca18370f53fce114a690cbd3760f31d90f1ce37db723cf5f56')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
