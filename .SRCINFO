@@ -1,10 +1,10 @@
 pkgbase = r-seq.hotspot
 	pkgdesc = Targeted sequencing panel design based on mutation hotspots
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/seq.hotSPOT
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-testthat
 	depends = r-hash
 	depends = r-r.utils
@@ -14,6 +14,6 @@ pkgbase = r-seq.hotspot
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/seq.hotSPOT_1.2.0.tar.gz
 	md5sums = 37e04dc7e1bb05af58c50cb7701388c7
-	sha256sums = c2d8d16107c19421edc26bda43b97e5862d19a4689421e5ded9df9834fd76167
+	b2sums = 085b5706f92bd5fac7d5c40e4639198ea4a6b6bcde999b67618412736803b4ece570648142a20251a8bbac3ca4b42661be81b9e5de6f20d01ea0b8425fd7f2e7
 
 pkgname = r-seq.hotspot
