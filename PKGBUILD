@@ -11,14 +11,14 @@ optdepends=()
 provides=('emoji-fontconfig')
 conflicts=()
 options=()
-source=('90-emoji.conf')
-sha256sums=('5a89a1b452835e647be6b267fff0f4c8fd3b06387697bc28582250b65911fc04')
+source=('50-emoji.conf')
+sha256sums=('a6afa3d792fe92fa2bd20c19ffa8042de8aec24b3c8f0d2f1e8e00d809fd4079')
 
 package() {
     local conf_avail='usr/share/fontconfig/conf.avail/'
     local conf_d='usr/share/fontconfig/conf.default/'
 
-    install -Dm655 '90-emoji.conf' -t "${pkgdir}/${conf_avail}"
+    install -Dm655 "${source[0]}" -t "${pkgdir}/${conf_avail}"
     mkdir -p "${pkgdir}/${conf_d}"
-    ln -s "/${conf_avail}/90-emoji.conf" "${pkgdir}/${conf_d}"
+    ln -s "/${conf_avail}/${source[0]}" "${pkgdir}/${conf_d}"
 }
