@@ -6,11 +6,11 @@ _pkgname=gargle
 _pkgver=1.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for Working with Google APIs"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-cli
   r-fs
@@ -41,11 +41,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d18b3d01e31e0dd4f4482aed5b85dc9c')
-sha256sums=('4a5beb046eb50a168b4baf5d1fcd8ac20d698e7fcb6b6ef46a436ded5b039001')
+b2sums=('83fe70d3d334aebbf6a29be3906acd2cdffc050ba967d12c9eb433dfae47458929f94d3635a3a852e3b4ed9dba3cb77c4d03d59e485c33bba436b1f25628b1b8')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
