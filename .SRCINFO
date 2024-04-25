@@ -1,10 +1,10 @@
 pkgbase = r-msbackendsql
 	pkgdesc = SQL-based Mass Spectrometry Data Backend
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MsBackendSql
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-msdata
 	checkdepends = r-mzr
 	checkdepends = r-rsqlite
@@ -30,6 +30,6 @@ pkgbase = r-msbackendsql
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsBackendSql_1.2.0.tar.gz
 	md5sums = c5d7c6ce9c877e7c0bbbc1b63a71eb70
-	sha256sums = 40c5538d884b82603ecb7f1b0e0fa2ad49ba4849eda48ad6be0f7af6ae2788c8
+	b2sums = 64f46f0675e57a53cb8b6963d175d888a498cbe09641e702ade67bc003eddaef969d1fa7e35b47b3625a6a3ead88172d51703d762e164b9a246fe12554b39dc7
 
 pkgname = r-msbackendsql

@@ -4,11 +4,11 @@ _pkgname=MsBackendSql
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="SQL-based Mass Spectrometry Data Backend"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biocgenerics
   r-biocparallel
@@ -40,11 +40,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('c5d7c6ce9c877e7c0bbbc1b63a71eb70')
-sha256sums=('40c5538d884b82603ecb7f1b0e0fa2ad49ba4849eda48ad6be0f7af6ae2788c8')
+b2sums=('64f46f0675e57a53cb8b6963d175d888a498cbe09641e702ade67bc003eddaef969d1fa7e35b47b3625a6a3ead88172d51703d762e164b9a246fe12554b39dc7')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
