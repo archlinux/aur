@@ -1,0 +1,12 @@
+
+## arg 1:  the new package version
+post_install() {
+	sudo odbcinst -i -d -f /opt/ibm/iaccess/unixodbcregistration
+}
+
+
+## arg 1:  the old package version
+pre_remove() {
+    sudo odbcinst -u -d -n "IBM i Access ODBC Driver"
+    sudo odbcinst -u -d -n "IBM i Access ODBC Driver 64-bit"
+}
