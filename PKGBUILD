@@ -4,11 +4,11 @@ _pkgname=BioCartaImage
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="BioCarta Pathway Images"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-magick
 )
@@ -23,11 +23,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8190c93a49f3d53085b3e6e44d482ffa')
-sha256sums=('69b3c5c40dd8d896714b644630bb8b579ec08c61f2114bfc7049c047b7fde076')
+b2sums=('b6af180aa1af89ce01037e1e9a4964fa255266bd9d9336be2a2feee79baa57ee49e1f19c2382a86a7ebc03c70491a6debeffc1a1c3455acf35827ea24ec8f01d')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
