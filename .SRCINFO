@@ -1,7 +1,7 @@
 pkgbase = r-jquerylib
 	pkgdesc = Obtain 'jQuery' as an HTML Dependency Object
 	pkgver = 0.1.4
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cran.r-project.org/package=jquerylib
 	arch = any
 	license = MIT
@@ -10,6 +10,6 @@ pkgbase = r-jquerylib
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/jquerylib_0.1.4.tar.gz
 	md5sums = 3607a34ac45ff420bc325d84eab4b0cb
-	sha256sums = f0bcc11dcde3a6ff180277e45c24642d3da3c8690900e38f44495efbc9064411
+	b2sums = 0ba0d526302b5e2fb5aac5010fe6ad25e124aacc846068f8895d20cb794761542e74869ae1e11a5b7738e6ecb2a1d5b5ec9148ba69030c30cb7c679a5f0b508b
 
 pkgname = r-jquerylib
