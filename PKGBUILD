@@ -41,7 +41,20 @@ check(){
 }
 
 package() {
+	# wrapper script
 	install -D -m755 "$srcdir/wfinfo.sh" "$pkgdir/usr/bin/wfinfo"
+	# (edited from upstream) update script
 	install -D -m755 "$srcdir/$_pkgname/update.sh" "$pkgdir/usr/bin/wfinfo-update"
+	# main binary
 	install -D -m755 "$srcdir/$_pkgname/target/release/wfinfo" "$pkgdir/usr/bin/wfinfo-ng"
+	# Following can be added by 1. removing '--bin wfinfo' from the cargo build/test above and 2. uncommenting them here
+	# Sanctuary Onslaught indicator helper, watches key $1 (only 1-4) and turns red for $2 seconds
+	#install -D -m755 "$srcdir/$_pkgname/target/release/ability-timer" "$pkgdir/usr/bin/wfinfo-ability-timer"
+	# same as main binary (dumps into $PWD! needs databases in $PWD!), but takes filenames of images as args instead of its own screenshots
+	#install -D -m755 "$srcdir/$_pkgname/target/release/image" "$pkgdir/usr/bin/wfinfo-image"
+	# lists all relics in tier $1 (also accepts 'tracedump') by expected plat value for $2 players (opt, default 4)
+	#install -D -m755 "$srcdir/$_pkgname/target/release/relics" "$pkgdir/usr/bin/wfinfo-relics"
+	# probably not useful unless you plan to contribute upstream:
+	# debugger for theme detection or compensation, takes image args
+	#install -D -m755 "$srcdir/$_pkgname/target/release/theme_tune" "$pkgdir/usr/bin/wfinfo-theme-tune"
 }
