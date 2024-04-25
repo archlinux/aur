@@ -1,10 +1,10 @@
 pkgbase = r-beyondbenford
 	pkgdesc = Compare the Goodness of Fit of Benford's and Blondeau Da Silva's Digit Distributions to a Given Dataset
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=BeyondBenford
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r-ggplot2
 	source = https://cran.r-project.org/src/contrib/BeyondBenford_1.4.tar.gz
 	md5sums = a761dc896448643d91f7f27de529fd23

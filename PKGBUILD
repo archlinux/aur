@@ -4,11 +4,11 @@ _pkgname=BeyondBenford
 _pkgver=1.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Compare the Goodness of Fit of Benford's and Blondeau Da Silva's Digit Distributions to a Given Dataset"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   r-ggplot2
 )
