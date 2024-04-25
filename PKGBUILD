@@ -4,11 +4,11 @@ _pkgname=phytools
 _pkgver=2.1-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Phylogenetic Tools for Comparative Biology (and Other Things)"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r-ape
   r-clustergeneration

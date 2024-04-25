@@ -1,10 +1,10 @@
 pkgbase = r-phytools
 	pkgdesc = Phylogenetic Tools for Comparative Biology (and Other Things)
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=phytools
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r-ape
 	depends = r-clustergeneration
 	depends = r-coda
