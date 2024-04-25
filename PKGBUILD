@@ -3,33 +3,34 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=fragments-git
-pkgver=1.9.1.r54.gae38fee
+pkgver=3.0.0.r12.gd048235
 pkgrel=2
 pkgdesc="BitTorrent client for GNOME"
 arch=(i686 x86_64 armv6h armv7h)
 url="https://gitlab.gnome.org/World/Fragments"
 license=(GPL3)
 depends=(gtk4 libadwaita transmission-cli)
-makedepends=(git meson rust)
+makedepends=(git meson cargo)
 provides=(fragments)
 conflicts=(fragments)
+options=(!lto)
 source=("git+https://gitlab.gnome.org/World/Fragments.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd Fragments
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd Fragments
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    arch-meson Fragments build
-    ninja -C build
+  arch-meson Fragments build
+  ninja -C build
 }
 
 check() {
-    ninja -C build test
+  ninja -C build test
 }
 
 package() {
-    DESTDIR="$pkgdir/" ninja -C build install
+  DESTDIR="$pkgdir/" ninja -C build install
 }
