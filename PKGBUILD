@@ -4,11 +4,11 @@ _pkgname=biodbNcbi
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
-pkgdesc="a library for connecting to NCBI Databases."
+pkgrel=4
+pkgdesc="a library for connecting to NCBI Databases"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(AGPL3)
+license=('AGPL-3.0-only')
 depends=(
   r-biodb
   r-chk
