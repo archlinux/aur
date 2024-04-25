@@ -1,7 +1,7 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 
 pkgname=waynergy
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 pkgdesc="Synergy client for wayland compositors"
 arch=(x86_64)
@@ -14,7 +14,7 @@ optdepends=(
 	'gnome-session: Idle inhibition for GNOME'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/r-c-f/waynergy/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('217f4ac619e3b0feb5ba248912a6b29b')
+md5sums=('e94305fa9de56881d911d0f27d3b210d')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
