@@ -1,6 +1,6 @@
 # Maintainer: Amolith <amolith@secluded.site>
 pkgname="backblaze-b2-bin"
-pkgver=3.16.1
+pkgver=3.19.1
 _pkgid="${pkgname%-bin}-${pkgver}"
 pkgrel=1
 pkgdesc="Backblaze B2 Command Line Client"
