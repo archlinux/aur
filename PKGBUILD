@@ -1,4 +1,5 @@
-# Maintainer: TimeTrap <zhaoyuanpan at gmail dot com>
+# Maintainer: Menghuan1918 <menghuan2003 at outlook dot com>
+# Contributor: TimeTrap <zhaoyuanpan at gmail dot com>
 # Contributor: Jingu <xiuluo dot android at gmail dot com>
 # Contributor: Usama <eruzzamma at gmail dot com>
 pkgname=cursor-appimage
