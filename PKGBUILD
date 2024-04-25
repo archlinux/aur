@@ -4,11 +4,11 @@ _pkgname=crch
 _pkgver=1.1-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Censored Regression with Conditional Heteroscedasticity"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only OR GPL-3.0-only')
 depends=(
   r-formula
   r-ordinal
@@ -23,11 +23,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('a34563d6831ca92c894669ba9020dc19')
-sha256sums=('38a7a72fcbdcdc7a7a256e80b08f2213a8e3073acc091d175f3a141c11ae8ac7')
+b2sums=('6c6f23005df72e34b2ba7cb336499ca8260ec5d7b0a3680a450df1d8fdc0ffb3c552749a3396ed8b65775a4593ce5196ea7e82905bb48e7e3e98ddf345cdcddb')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
