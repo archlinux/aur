@@ -6,11 +6,11 @@ _pkgname=ids
 _pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="Generate Random Identifiers"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-openssl
   r-uuid
@@ -26,11 +26,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('da97e1c97b795a9c0e4f51dcb1d928bb')
-sha256sums=('b6212a186063c23116c5cbd3cca65dbb8977dd737261e4526ebee8f64852cfe8')
+b2sums=('550bd19df5ca0fc966e58b88a62afd1e6656d727e741517ca0128fe4ec5e22afde588d96f76218e559f6f30f188e1c86cba3ce4f6a50135a6203073706bfb990')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
