@@ -4,7 +4,7 @@ _repo=coreutils
 _pkgname=bonsai-$_repo
 pkgname=$_pkgname-git
 pkgver=r173.c97201f
-pkgrel=7
+pkgrel=8
 pkgdesc="New core utilities for a new era."
 arch=('any')
 url="https://git.tebibyte.media/bonsai/coreutils"
@@ -26,6 +26,11 @@ pkgver() {
   )
 }
 
+build() {
+	cd "$_repo"
+	make
+}
+
 # for when testing works
 #
 # check() {
@@ -36,7 +41,7 @@ pkgver() {
 package() {
 	profile_d="$pkgdir/etc/profile.d"
 	mkdir -p "$profile_d"
-	mv bonsai.sh "$profile_d"
+	cp bonsai.sh "$profile_d"
 
 	cd "$_repo"
 	make install PREFIX="$pkgdir/opt/bonsai"
