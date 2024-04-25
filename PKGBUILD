@@ -4,11 +4,11 @@ _pkgname=compSPOT
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool for identifying and comparing significantly mutated genomic hotspots"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(Artistic2.0)
+license=('Artistic-2.0')
 depends=(
   r-data.table
   r-ggplot2

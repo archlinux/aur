@@ -1,10 +1,10 @@
 pkgbase = r-compspot
 	pkgdesc = Tool for identifying and comparing significantly mutated genomic hotspots
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bioconductor.org/packages/compSPOT
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-testthat
 	depends = r-data.table
 	depends = r-ggplot2
