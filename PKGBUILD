@@ -17,7 +17,7 @@ provides=(clash-nyanpasu)
 conflicts=()
 
 sha512sums=('SKIP' '085ba585e531f430050cb5fba6221228091c5c59d7c73004eba6c305a794a270e067ce971b92afa23c7d3b6024e4ad208061a2048b219ff42175a28c9d41ee82')
-options=(!lto)
+options=(!lto !debug)
 
 function prepare(){
 	cd "${srcdir}/clash-nyanpasu"
@@ -57,7 +57,11 @@ package(){
 	install -d "${pkgdir}/usr/lib/${_pkgname}/resources"
 	ln -sf /etc/clash/Country.mmdb -t "${pkgdir}/usr/lib/${_pkgname}/resources"
 
-	install -Dm644 src/assets/image/logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+	if [ -f frontend/nyanpasu/src/assets/image/logo.svg ]; then
+		install -Dm644 frontend/nyanpasu/src/assets/image/logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+	else
+		install -Dm644 src/assets/image/logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+	fi
 
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 	install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

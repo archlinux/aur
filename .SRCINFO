@@ -21,6 +21,7 @@ pkgbase = clash-nyanpasu
 	optdepends = clash-rs
 	provides = clash-nyanpasu
 	options = !lto
+	options = !debug
 	source = git+https://github.com/keiko233/clash-nyanpasu.git#tag=v1.5.1
 	source = clash-nyanpasu.desktop
 	sha512sums = SKIP
