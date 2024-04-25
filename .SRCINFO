@@ -1,0 +1,15 @@
+pkgbase = zsh-auto-dunstify
+	pkgdesc = Zsh plugin that sends out a notification when a long running task has completed
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Amir1453/zsh-auto-dunstify	
+  install = zsh-auto-dunstify.install
+	changelog = changelog
+	arch = any
+	license = GPL-3.0-or-later
+	depends = zsh
+	depends = libnotify
+	source = zsh-auto-notify-0.1.0.tar.gz::https://github.com/Amir1453/zsh-auto-dunstify/archive/0.1.0.tar.gz
+	sha512sums = 
+
+pkgname = zsh-auto-dunstify
