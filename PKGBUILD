@@ -4,11 +4,11 @@ _pkgname=bigutilsr
 _pkgver=0.3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Utility Functions for Large-scale Data"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-bigassertr
   r-bigparallelr
@@ -33,11 +33,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('49ad25ab76efaab30f5dbaed238f2b31')
-sha256sums=('b44b458f4b540deff5af1f956d1dbd138f4fc138cd2d77e35e69d873c406d024')
+b2sums=('def3d1a5c1f5d69016d3569e694df90f531f5b869a0434b83cd7ad9aefc4998196ab9907847db75ed48a218a401f6fc9f241c11518908d928c607df84ec995f8')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
