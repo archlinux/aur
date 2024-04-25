@@ -33,9 +33,9 @@ optdepends=(
 	'nvidia-libgl: NVIDIA support'
 	'nvidia-utils: NVIDIA support'
 	'wine: More up-to-date, less buggy SLVoice support'
-  'xdg-desktop-portal-gtk: File picker portal (example)'
-  'xdg-desktop-portal-kde: File picker portal (example)'
-  'xdg-desktop-portal-hyprland: File picker portal (example)')
+	'xdg-desktop-portal-gtk: File picker portal (example)'
+	'xdg-desktop-portal-kde: File picker portal (example)'
+	'xdg-desktop-portal-hyprland: File picker portal (example)')
 provides=('alchemy-viewer')
 # The release url format changes often, please keep this comment for easy switching.
 source=('https://git.alchemyviewer.org/api/v4/projects/'"${_project_id}"'/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.xz")
