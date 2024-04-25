@@ -5,11 +5,11 @@ _pkgname=protolite
 _pkgver=2.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Highly Optimized Protocol Buffer Serializers"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   protobuf
   r-jsonlite
@@ -27,11 +27,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('7c76e71112d0d88673e133d126ff46ad')
-sha256sums=('53ef24d51a8348f97bec39d254df3b97bd8b3d9bbffb81d6b06aad849cf78ce9')
+b2sums=('93608e51a492e37147a4adb577f7e9bde0508d603ba514be6d458a988edf6dbbe2d90c32f0ac3fbd3e4b643fbcb77fde5b8b0ca095a639814b4d87d61d11706c')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
