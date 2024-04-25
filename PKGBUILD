@@ -4,11 +4,11 @@ _pkgname=tidylog
 _pkgver=1.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Logging for 'dplyr' and 'tidyr' Functions"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-clisymbols
   r-dplyr
@@ -29,11 +29,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('17c4e3a5589ac9a1a0653ba54e979d52')
-sha256sums=('67625de38920e1c3c9f6a996de4ef406a0d23eeef6d3b846e52630afc0a8ca1c')
+b2sums=('74b34c2d2c510f5061da626c59176f896f8d8dc455115b3a34beb1b360172e4d0220c2b8d020813b99119f5dc19d56356ee1c6ca4ee1cfb0e2f32ddf1a698500')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
