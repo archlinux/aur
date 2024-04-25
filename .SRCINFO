@@ -1,10 +1,10 @@
 pkgbase = r-regsem
 	pkgdesc = Regularized Structural Equation Modeling
 	pkgver = 1.9.5
-	pkgrel = 2
+	pkgrel = 5
 	url = https://cran.r-project.org/package=regsem
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = r-rcpparmadillo
 	depends = blas
 	depends = lapack
@@ -31,6 +31,6 @@ pkgbase = r-regsem
 	optdepends = r-stringr
 	source = https://cran.r-project.org/src/contrib/regsem_1.9.5.tar.gz
 	md5sums = c248f10f794c10229eba611f3e252dd4
-	sha256sums = 7392bd644efe82f96da0df470a962de398f1d0162273cba1ff31c2ecd7f17a53
+	b2sums = 23c6b3dc00b13fa2c4c80e7916ab4b4cf398285b7aba01479639a818ad669d11e15c4e43051fc7f5f1cac98b080e924ec54e0ba8208095bda558d30fbf8dcabc
 
 pkgname = r-regsem

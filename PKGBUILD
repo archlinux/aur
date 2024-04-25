@@ -5,11 +5,11 @@ _pkgname=regsem
 _pkgver=1.9.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=5
 pkgdesc="Regularized Structural Equation Modeling"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   blas
   lapack
@@ -42,11 +42,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('c248f10f794c10229eba611f3e252dd4')
-sha256sums=('7392bd644efe82f96da0df470a962de398f1d0162273cba1ff31c2ecd7f17a53')
+b2sums=('23c6b3dc00b13fa2c4c80e7916ab4b4cf398285b7aba01479639a818ad669d11e15c4e43051fc7f5f1cac98b080e924ec54e0ba8208095bda558d30fbf8dcabc')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
