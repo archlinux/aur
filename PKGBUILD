@@ -4,11 +4,11 @@ _pkgname=animation
 _pkgver=2.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="A Gallery of Animations in Statistics and Utilities to Create Animations"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-magick
 )
@@ -23,11 +23,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('57e4bbd7c116ac0e6077eb613aa5ecf4')
-sha256sums=('88418f1b04ec785963bad492f30eb48b05914e9e5d88c7eef705d949cbd7e469')
+b2sums=('45b9d6b5d6be782b568bde5412f1dc784d0ed2b3c74e25d2ac32a337ebc3eca733c2ca46833e034684e531833db6f3bb67947cacbf4342a65bae67cc6d67a57a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

@@ -1,10 +1,10 @@
 pkgbase = r-animation
 	pkgdesc = A Gallery of Animations in Statistics and Utilities to Create Animations
 	pkgver = 2.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=animation
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	checkdepends = r-testit
 	depends = r-magick
 	optdepends = ffmpeg: saveVideo()
@@ -13,6 +13,6 @@ pkgbase = r-animation
 	optdepends = r-testit
 	source = https://cran.r-project.org/src/contrib/animation_2.7.tar.gz
 	md5sums = 57e4bbd7c116ac0e6077eb613aa5ecf4
-	sha256sums = 88418f1b04ec785963bad492f30eb48b05914e9e5d88c7eef705d949cbd7e469
+	b2sums = 45b9d6b5d6be782b568bde5412f1dc784d0ed2b3c74e25d2ac32a337ebc3eca733c2ca46833e034684e531833db6f3bb67947cacbf4342a65bae67cc6d67a57a
 
 pkgname = r-animation
