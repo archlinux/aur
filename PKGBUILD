@@ -4,11 +4,11 @@ _pkgname=mvabund
 _pkgver=4.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=4
 pkgdesc="Statistical Methods for Analysing Multivariate Abundance Data"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(LGPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('LGPL-2.1-or-later')
 depends=(
   gsl
   r-rcpp
@@ -26,11 +26,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('5ff7cf64b64e2d8ca4df9c3d198d3cf4')
-sha256sums=('ed6946c95609443584081100cd38624d2309f7f5d210fd4b8ec12ad25bd27a06')
+b2sums=('ab7bd5a031fc6e83019990af229221f6662ec3a3b855b96d7a39594fd52a47949d95658472fab4ddbc86c016d3cdceb9755f0121456cd98a7adcc28a9a7514e7')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
