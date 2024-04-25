@@ -6,11 +6,11 @@ _pkgname=geosphere
 _pkgver=1.5-18
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Spherical Trigonometry"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
   r-rcpp
   r-sp
@@ -20,11 +20,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('46dd202b43575a2e12a2bf93723dbddf')
-sha256sums=('99ff6ff050cc8c2d565b6bb1488607fc7950a6d448930f8d9642eccefbc6dac0')
+b2sums=('ef2d0b5349bde7214e05fea24eb6c3bbd5228ab0af8deec8eb88c990279f0e70548e3ba548c4ab446679d97a02683ac87f5280b9fa1b128954f1dc33aceace21')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
