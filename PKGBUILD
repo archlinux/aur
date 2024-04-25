@@ -6,11 +6,11 @@ _pkgname=docopt
 _pkgver=0.7.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="Command-Line Interface Specification Language"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r
 )
@@ -22,11 +22,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('97952edaf3093ed9801bd2eb1c557923')
-sha256sums=('9f473887e4607e9b21fd4ab02e802858d0ac2ca6dad9e357a9d884a47fe4b0ff')
+b2sums=('49983c3aaba151f634c9aaab31305a6ee597d80838b756923d9246ae6e8132c92bf28d6529693222a6a5cffeca45da11f9d62da9a82b96bf98c7b7342373bd80')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
