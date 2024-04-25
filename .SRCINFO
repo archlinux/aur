@@ -1,0 +1,12 @@
+pkgbase = lvc
+	pkgdesc = A simple version control system
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = go
+	depends = git
+	source = https://github.com/VPeti1/CWAcces/raw/main/lvc.tar.gz
+	sha256sums = af2fdf466b0d110a881308ed7618fa042cd4d78d456040fd06919d82f2c323e3
+
+pkgname = lvc
