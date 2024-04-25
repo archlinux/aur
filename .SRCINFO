@@ -1,7 +1,7 @@
 pkgbase = r-mbqtl
 	pkgdesc = A package for SNP-Taxa mGWAS analysis
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bioconductor.org/packages/mbQTL
 	arch = any
 	license = MIT
