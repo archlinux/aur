@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 pkgname=lightdm-arctica-greeter
-pkgver=0.99.3.0
+pkgver=0.99.5.0
 pkgrel=1
 pkgdesc="The greeter (login screen) application for Arctica. It is implemented as a LightDM greeter."
 arch=(i686 x86_64)
@@ -12,10 +12,8 @@ depends=(cantarell-fonts ayatana-ido libayatana-indicator lightdm
 makedepends=(mate-common mate-settings-daemon marco imagemagick
              intltool librsvg vala libpam-x2go libpam-freerdp2)
 optdepends=("mate-themes: mate themes")
-source=("https://github.com/ArcticaProject/arctica-greeter/archive/"$pkgver".tar.gz"
-        50-arctica-greeter.rules)
-sha512sums=('85b39ae155de1e17c5f000be46161e469ba7825542bba77e06200fc78bd294a01f737eedf0269718cb04df775cdeccd7adfaca492493d105c127d13f6e436cf8'
-            '5d0f1b8221dfe02670df3ba88011dc0ce744bfd4205a9900dd8096de222358a740a384a47f13ed4e5b94e24d4a8ff5639117464c61a689dd7bd9025a0900f529')
+source=("https://github.com/ArcticaProject/arctica-greeter/archive/"$pkgver".tar.gz")
+sha512sums=('eaf3a25b6855b088d745b23afa10c74cc0a6c6b0426fe6d9aa2f54ef52b762c935a033e2bc04e91a69f54aa5be9bb19fe159a8777fc7954f6b7f1611815ab4da')
 
 build() {
     cd "arctica-greeter-${pkgver}"
@@ -34,17 +32,6 @@ package() {
 
     make DESTDIR="${pkgdir}" install
 
-    # Install PolicyKit file for allowing the lightdm user to use NetworkManager
-    # Note: PolicyKit no longer reads pkla files after version 0.107, so Ubuntu's
-    # policy file won't work.
-    install -dm750 "${pkgdir}/usr/share/polkit-1/rules.d/"
-    install -m644 "${srcdir}/50-arctica-greeter.rules" \
-        "${pkgdir}/usr/share/polkit-1/rules.d/"
-
-    # Install LightDM configuration file to set the Unity greeter as the default
-    install -dm755 "${pkgdir}/usr/share/lightdm/lightdm.conf.d/"
-    install -m644 debian/90-arctica-greeter.conf \
-                  "${pkgdir}/usr/share/lightdm/lightdm.conf.d/"
 
     # Use language packs
     rm -r "${pkgdir}/usr/share/locale/"
