@@ -2,13 +2,13 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Kurt Marasco <celilo _at_ lavabit _dot_ com>
 # Contributor: Pascal Ernster <aur at hardfalcon dot net>
-_watch=('https://www.hiawatha-webserver.org/changelog' '\"version\">(\d[\d.]*\d+)<')
+_watch=('https://hiawatha.leisink.net/changelog' '\"version\">(\d[\d.]*\d+)<')
 
 pkgname=hiawatha
 pkgver=11.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure and advanced webserver"
-url="https://www.hiawatha-webserver.org/"
+url="https://hiawatha.leisink.net/"
 arch=('x86_64')
 license=('GPL2')
 depends=('libxslt' 'mbedtls' 'libxcrypt')
@@ -18,7 +18,7 @@ makedepends=('cmake')
 backup=('etc/hiawatha/hiawatha.conf'
         'etc/hiawatha/cgi-wrapper.conf'
         'etc/hiawatha/mimetype.conf')
-source=("https://www.hiawatha-webserver.org/files/$pkgname-$pkgver.tar.gz" 
+source=("https://hiawatha.leisink.net/files/$pkgname-$pkgver.tar.gz" 
         'hiawatha.conf.sample'
         'hiawatha.service'
         'lefh-renew.service'
