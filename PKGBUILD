@@ -2,19 +2,19 @@
 
 pkgname=python-asn1tools
 pkgver=0.156.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Python package for ASN.1 parsing, encoding and decoding'
 arch=(any)
 url='https://github.com/eerimoq/asn1tools.git'
 license=('MIT')
 depends=(
-    python 
+    python
     licenses
     python-prompt_toolkit
     python-diskcache
 )
-makedepends=(python-pip)
-checkdepends=(python-pytest python-trio)
+makedepends=(python-setuptools python-pip python-build python-installer)
+checkdepends=(python-pytest python-trio python-bitstruct)
 source=(
     asn1tools-$pkgver.tar.gz::https://github.com/eerimoq/asn1tools/archive/$pkgver.tar.gz
     00-handle-odd-numbered-hex-strings.patch
@@ -29,15 +29,20 @@ sha1sums=(
 )
 
 prepare() {
-    patch -p1 -d asn1tools-$pkgver <../00-handle-odd-numbered-hex-strings.patch
+    patch -p1 -d asn1tools-$pkgver <"$srcdir/00-handle-odd-numbered-hex-strings.patch"
 }
 
 build() {
     cd asn1tools-$pkgver
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd asn1tools-$pkgver
-    python setup.py install -O1 --root="$pkgdir" --skip-build
+    python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
+}
+
+check() {
+    cd asn1tools-$pkgver
+    pytest
 }
