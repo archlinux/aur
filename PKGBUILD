@@ -1,6 +1,6 @@
 # Maintainer: rpkak <rpkak@users.noreply.github.com>
 pkgname='packcc'
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 epoch=
 pkgdesc="A parser generator for C"
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arithy/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c436d0a733dc2d1763b364ff87bf528a52981e51b2f730442868c706dd8cbf65')
+sha256sums=('b9bea7b2dee2a9bbc4d513a912b52d646556161a4f97e1074c9c9a509f2cc343')
 validpgpkeys=()
 
 build() {
