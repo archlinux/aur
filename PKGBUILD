@@ -5,11 +5,11 @@ _pkgname=osqp
 _pkgver=0.6.3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Quadratic Programming Solver using the 'OSQP' Library"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(Apache)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('Apache-2.0')
 depends=(
   r-r6
   r-rcpp
@@ -27,11 +27,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d6b45409799ce483514cada5818fa47a')
-sha256sums=('18543b329a42be0f419dff4aa42f4401c2afb18f46276ce359853494dd803244')
+b2sums=('34f744c65d04a2213721fd82b1116bae8d3c8f748a5dd164e77abf89be24a115c482c79e6d99b6bd89e438019badde7015f5b216a4e69cfb1369f1defe335877')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
