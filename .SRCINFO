@@ -23,7 +23,7 @@ pkgbase = fastgame-git
 	optdepends = libx11
 	provides = fastgame
 	conflicts = fastgame
-	source = git+https://github.com/wwmm/fastgame.git#branch=fgqt
+	source = git+https://github.com/wwmm/fastgame.git
 	sha512sums = SKIP
 
 pkgname = fastgame-git
