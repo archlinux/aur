@@ -4,11 +4,11 @@ _pkgname=scoringRules
 _pkgver=1.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=4
 pkgdesc="Scoring Rules for Parametric and Simulated Distribution Forecasts"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   blas
   lapack
@@ -33,11 +33,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('be9a9c10613e5ff981b72b32b8da30d9')
-sha256sums=('393ff96e17e70c31ede7c30fff36cea2d1f7863be2339b523ab2960c6510c5e3')
+b2sums=('b087771cf7c26e0623fdf40f60288daf020e284898a5ed45663f2933248ce9708f929e936f74127fd97d85a56466103008c231f21e137234aec8de9a9dd3cde8')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
