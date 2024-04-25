@@ -4,11 +4,11 @@ _pkgname=TSAR
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Thermal Shift Analysis in R"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(AGPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('AGPL-3.0-only')
 depends=(
   r-dplyr
   r-ggplot2
@@ -36,11 +36,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('7cc8589151c5b03e247590bbd7dc04dd')
-sha256sums=('bc75e3ad29377425c1da1b43cef760445d71ea47d8fc0a0390705d3778b9f0cd')
+b2sums=('d9205a69412876f57d55f9f9d30d6133eb296b132b104bcdf2622e9c57018c063c5ba09b3d545444021a19c8650bffc86464595e888dd148a7f8bfa3c6b92e8d')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
