@@ -4,11 +4,11 @@ _pkgname=optimParallel
 _pkgver=1.0-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Parallel Version of the L-BFGS-B Optimization Method"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
@@ -29,11 +29,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('f41a14e30017e5e034f7a1a58d4e8f4c')
-sha256sums=('0f9bc62c23d9005130f2892bf5eaecf308fa48a727bdd5e19b7dcd1d95f30a9d')
+b2sums=('5c824734bb06993a23daedd5a5a79f73125c83ece6847613d1059ff1218b321140439e6b63d23c2664cb2c2aba9e1ab3519c8c51b03ddcddf8067081741a5eb9')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
