@@ -5,11 +5,11 @@ _pkgname=Maaslin2
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc='"Multivariable Association Discovery in Population-scale Meta-omics Studies"'
+pkgrel=2
+pkgdesc="\"Multivariable Association Discovery in Population-scale Meta-omics Studies\""
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biglm
   r-car
@@ -45,11 +45,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0f92778b2d59935191e2ac58621da8f5')
-sha256sums=('38261a85db7dce552590110eed241e679307f5e6c0b67f1667d68c65c86e25b5')
+b2sums=('12044401aa69766bed5624aa042dbd47ae0dbc5e7e10973367eb154f03079919be6be0dae23eec40daa1f0c24e1ba348db1f073f0c97b0c6bbd5fbc079370def')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

@@ -1,7 +1,7 @@
 pkgbase = r-maaslin2
 	pkgdesc = "Multivariable Association Discovery in Population-scale Meta-omics Studies"
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/Maaslin2
 	arch = any
 	license = MIT
@@ -34,6 +34,6 @@ pkgbase = r-maaslin2
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/Maaslin2_1.16.0.tar.gz
 	md5sums = 0f92778b2d59935191e2ac58621da8f5
-	sha256sums = 38261a85db7dce552590110eed241e679307f5e6c0b67f1667d68c65c86e25b5
+	b2sums = 12044401aa69766bed5624aa042dbd47ae0dbc5e7e10973367eb154f03079919be6be0dae23eec40daa1f0c24e1ba348db1f073f0c97b0c6bbd5fbc079370def
 
 pkgname = r-maaslin2
