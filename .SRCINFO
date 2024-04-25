@@ -1,10 +1,10 @@
 pkgbase = r-dreamerr
 	pkgdesc = Error Handling Made Easy
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=dreamerr
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r-formula
 	depends = r-stringmagic
 	optdepends = r-knitr

@@ -4,11 +4,11 @@ _pkgname=dreamerr
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Error Handling Made Easy"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-formula
   r-stringmagic
