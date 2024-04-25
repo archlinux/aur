@@ -6,11 +6,11 @@ _pkgname=googlesheets4
 _pkgver=1.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Access Google Sheets using the Sheets API V4"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-cellranger
   r-cli
@@ -40,11 +40,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8b017d8e142ceb41bd0baaee823a6508')
-sha256sums=('c5cc63348c54b9de8492e7b12b249245746ea1ff33e306f12431f4fc9386fccf')
+b2sums=('04bb2cf042e8dfa20bb78e3ca6ec99db861ecd1ecacfe68f78153688cd67bcd35f651cd5bcbe1ddd2b7115c6ab0cc348b3e22d992361978955840f35eed6a660')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
