@@ -4,11 +4,11 @@ _pkgname=roastgsa
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Rotation based gene set analysis"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biobase
   r-ggplot2
@@ -27,11 +27,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('83d20d90ed18c719222042ae3d9f46d3')
-sha256sums=('705d83610754235e57d8eddd828caa1eb7296029d963507a68d0d2073b5861b6')
+b2sums=('6249a11b17cd1e80eb8e9967039377d76e095c3449be4419ad33a3eb02b876c73898fa8fb45cbf24c7e5be270e263c0f0f02f0d7606fa6208da47df56eac2c12')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
