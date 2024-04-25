@@ -4,11 +4,11 @@ _pkgname=STdeconvolve
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Reference-free Cell-Type Deconvolution of Multi-Cellular Spatially Resolved Transcriptomics Data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biocparallel
   r-clue
@@ -36,11 +36,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('2908e0d59713b2c3ef6c7bc549d0d123')
-sha256sums=('172c5e0ed57d279eaebc7496e7be51af4d460aa2902495abbc5a6aee91077c9b')
+b2sums=('31482b2e1bd35dbb54de4b4f1a47b18669b9a430f94851f0c469632145e1012e4beb302d5c5aa009eb34ed6c78613aa0b5bb7b893916812ec57a90f4aa731798')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

@@ -1,10 +1,10 @@
 pkgbase = r-stdeconvolve
 	pkgdesc = Reference-free Cell-Type Deconvolution of Multi-Cellular Spatially Resolved Transcriptomics Data
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/STdeconvolve
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	depends = r-biocparallel
 	depends = r-clue
@@ -26,6 +26,6 @@ pkgbase = r-stdeconvolve
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/STdeconvolve_1.6.0.tar.gz
 	md5sums = 2908e0d59713b2c3ef6c7bc549d0d123
-	sha256sums = 172c5e0ed57d279eaebc7496e7be51af4d460aa2902495abbc5a6aee91077c9b
+	b2sums = 31482b2e1bd35dbb54de4b4f1a47b18669b9a430f94851f0c469632145e1012e4beb302d5c5aa009eb34ed6c78613aa0b5bb7b893916812ec57a90f4aa731798
 
 pkgname = r-stdeconvolve
