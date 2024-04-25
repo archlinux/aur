@@ -5,11 +5,11 @@ _pkgname=biodb
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="a library and a development framework for connecting to chemical and biological databases"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(AGPL3)
+license=('AGPL-3.0-only')
 depends=(
   r-biocfilecache
   r-chk
