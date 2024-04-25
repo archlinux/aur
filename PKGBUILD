@@ -4,11 +4,11 @@ _pkgname=ccImpute
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="an accurate and scalable consensus clustering based approach to impute dropout events in the single-cell RNA-seq data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-biocparallel
   r-matrixstats

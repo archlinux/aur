@@ -1,10 +1,10 @@
 pkgbase = r-ccimpute
 	pkgdesc = an accurate and scalable consensus clustering based approach to impute dropout events in the single-cell RNA-seq data
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bioconductor.org/packages/ccImpute
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	makedepends = r-rcppeigen
 	depends = r-biocparallel
