@@ -1,16 +1,16 @@
 pkgbase = r-jomo
 	pkgdesc = Multilevel Joint Modelling Multiple Imputation
 	pkgver = 2.7.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=jomo
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r-lme4
 	depends = r-ordinal
 	depends = r-tibble
 	optdepends = r-mitml
 	source = https://cran.r-project.org/src/contrib/jomo_2.7-6.tar.gz
 	md5sums = 473d277969676494a6df604b477809e9
-	sha256sums = 3ffa2a5521d4969fe77b23cd3ab201afdf8db3f8f708b1276c33083c01d7e2da
+	b2sums = b0b4f6ec30a0178fc484ee71c052ec21606308e13bf9db5240917d004d3e212e41ff9656ea0124e2ebf4203e7808959c05c9fe6af078cf5ae065823cc22d820e
 
 pkgname = r-jomo
