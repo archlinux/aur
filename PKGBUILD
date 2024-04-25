@@ -4,21 +4,21 @@ _pkgname=truncreg
 _pkgver=0.2-5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=4
 pkgdesc="Truncated Gaussian Regression Models"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-maxlik
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('6ddc73494a349da69b23f859ffe89a54')
-sha256sums=('3e8e6a09eb0a34f2af8b40eb368c2e47bbd6697e0874b595940cad300b948be9')
+b2sums=('b9b229a93b11c1030f8d3ecf2a3d94cbccda8cddbdf19ee0f8a13469d47ac620312e30a910ad3e8b5fd3b935722ad9b00c52c6e135c7be5f5d4bd6fbc3670030')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
