@@ -3,7 +3,7 @@
 pkgname=emoji-fontconfig
 pkgver=1.0.0
 pkgrel=1
-pkgdesc='Fontconfig to enable Emoji fonts where emojis can be displayed'
+pkgdesc='fontconfig to enable a Emoji(pictogram) font that can display Emoji(pictograms).'
 arch=('any')
 license=('CC-PDDC')
 depends=()
