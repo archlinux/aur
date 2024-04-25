@@ -1,7 +1,7 @@
 pkgbase = mpv-acestream
 	pkgdesc = Lua script that adds AceStream protocol handler to mpv player
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Digitalone1/mpv-acestream
 	install = mpv-acestream.install
 	arch = any
@@ -12,6 +12,6 @@ pkgbase = mpv-acestream
 	b2sums = 92b697c41f5dec7f0761580e15d3c85c246b1c0de9aa211aa4a0efa3a1988575592411c4695003ff52133b328a7ac7ba11163ec3187bc4f80aeb729476fe15e1
 
 pkgname = mpv-acestream
-	depends = acestream-engine-py3
+	depends = acestream-engine
 	depends = mpv
-	optdepends = kio5: acestream protocol support on KDE Plasma 5
+	optdepends = kio: acestream protocol support on KDE Plasma
