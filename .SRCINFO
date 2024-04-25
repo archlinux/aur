@@ -1,6 +1,6 @@
 pkgbase = obs-plugin-waveform-bin
 	pkgdesc = Waveform is an audio spectral analysis plugin for OBS Studio
-	pkgver = 1.6.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/phandasm/waveform
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = obs-plugin-waveform-bin
 	conflicts = obs-plugin-waveform-git
 	options = !strip
 	options = emptydirs
-	source = https://github.com/phandasm/waveform/releases/download/v1.6.1/Waveform_v1.6.1_Ubuntu_x86_64.deb
-	sha256sums = 8ac0bdc4e9f4d5b9de1318f73c440413485a0f4e7422d4dbf9a0bb61193951d1
+	source = https://github.com/phandasm/waveform/releases/download/v1.8.0/Waveform_v1.8.0_Ubuntu_x86_64.deb
+	sha256sums = 71e67a96dd5986aea4c433d10811119aa7939fa6851d30b09248c56aea34a11d
 
 pkgname = obs-plugin-waveform-bin
