@@ -4,11 +4,11 @@ _pkgname=harmony
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, Sensitive, and Accurate Integration of Single Cell Data"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   blas
   lapack
@@ -42,11 +42,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('4c40181d0401b1e3e6350d40806b08ed')
-sha256sums=('a63c7d7cbbc5d183e8f919552e9d73044e0a89660856e80861a00eb5d25ac7b5')
+b2sums=('76e995259caee2c193719909078db536cab8114480bc8591c3da49f8ef20f615729f26af0384a9c93137d449dfe95a67c7f9d1d440f0b174f2db0dccec168fd2')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
