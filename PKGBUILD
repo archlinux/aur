@@ -3,7 +3,7 @@
 _org='stack-of-tasks'
 _pkgname=eigenpy
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('boost-libs' 'eigen' 'gcc-libs' 'glibc')
 optdepends=('doxygen')
 makedepends=('cmake' 'boost' 'python-numpy')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('853a0612c341fd4e0136545e065f9e0d5e3177f62a00176a09667e2ffca66416'
+sha256sums=('f01eb2df88f3f470d7bd0c90716170e59f1495f5631525646c9f9378db5c127a'
             'SKIP')
 validpgpkeys=(
         'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
