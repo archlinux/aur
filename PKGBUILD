@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=libgnt3-hg
-pkgver=2.14.5r1467.e9f4e4f0cf13
+pkgver=2.14.5r1477.768a0bf53a98
 epoch=1
 pkgrel=1
 pkgdesc="The GLib Ncurses Toolkit"
