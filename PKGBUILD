@@ -5,11 +5,11 @@ _pkgname=NCIgraph
 _pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Pathways from the NCI Pathways Database"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-graph
   r-kegggraph
@@ -22,11 +22,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('ed568ded26dce9e64d5f38606e65c13d')
-sha256sums=('661bebfac48019277075f230d08b25a64ae99f867903faef3e769ba1c0c8698a')
+b2sums=('9dbd131ba314a900ce7bb8c10155ad5fc25e0dc0c0c622ab03b06e62e83f25f2f947b96f319a215046fe7b458396dbe2f9f06fab842be44bc2542f1e1484c2f3')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
