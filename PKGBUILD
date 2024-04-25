@@ -4,11 +4,11 @@ _pkgname=rtkore
 _pkgver=1.6.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="'STK++' Core Library Integration to 'R' using 'Rcpp'"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r-inline
   r-rcpp

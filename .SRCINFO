@@ -1,10 +1,10 @@
 pkgbase = r-rtkore
 	pkgdesc = 'STK++' Core Library Integration to 'R' using 'Rcpp'
 	pkgver = 1.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=rtkore
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r-inline
 	depends = r-rcpp
 	source = https://cran.r-project.org/src/contrib/rtkore_1.6.10.tar.gz
