@@ -4,11 +4,11 @@ _pkgname=mlogit
 _pkgver=1.1-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=4
 pkgdesc="Multinomial Logit Models"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-dfidx
   r-formula
@@ -27,11 +27,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('08c4273d0762bd0044cf6677c927df9b')
-sha256sums=('6f3ea97db410be929a3078422f3d354d2f17855a21bbdc7c2c09d901e233d143')
+b2sums=('fafd1fc1f2bb6bd1cd4dabd71769a179e26be97ed1211377c9bf83c612aa3e864ad52f0b679b85f6f8465bc28a33faf182c523b171d55975fade45df27c7be15')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {

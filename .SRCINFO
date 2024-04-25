@@ -1,10 +1,10 @@
 pkgbase = r-mlogit
 	pkgdesc = Multinomial Logit Models
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=mlogit
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r-dfidx
 	depends = r-formula
 	depends = r-lmtest
@@ -19,6 +19,6 @@ pkgbase = r-mlogit
 	optdepends = r-texreg
 	source = https://cran.r-project.org/src/contrib/mlogit_1.1-1.tar.gz
 	md5sums = 08c4273d0762bd0044cf6677c927df9b
-	sha256sums = 6f3ea97db410be929a3078422f3d354d2f17855a21bbdc7c2c09d901e233d143
+	b2sums = fafd1fc1f2bb6bd1cd4dabd71769a179e26be97ed1211377c9bf83c612aa3e864ad52f0b679b85f6f8465bc28a33faf182c523b171d55975fade45df27c7be15
 
 pkgname = r-mlogit
