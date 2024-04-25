@@ -4,21 +4,21 @@ _pkgname=poLCA
 _pkgver=1.6.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Polytomous Variable Latent Class Analysis"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-scatterplot3d
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('1880d580c0b060ac7708458440462726')
-sha256sums=('ed8c60a42bff0402c9ba2f9ce1422dd171e711c1a64498c4d96010ddb29f6b16')
+b2sums=('93d26d26a8d172f7d5ff6326f6feaa9c84ccc0282301aff190725b9c9b63ab2fafb98a55b5ee014339615f342c92c6ca251bd7e3dd76bdd93e08b24667e6a498')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
