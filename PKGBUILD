@@ -4,11 +4,11 @@ _pkgname=revdbayes
 _pkgver=1.5.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Ratio-of-Uniforms Sampling for Bayesian Extreme Value Analysis"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   lapack
   r-bayesplot
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('f19c7af715a6a845ca9a615276bc4603')
-sha256sums=('506919cdbe1c415f906d4dab1611a9027d271c580781a7a6ff3bdeb77e029fdd')
+b2sums=('19b33bcbf6dc4ab868c70ded29dbebef83e8228105dfe4e71ec6f2c5ca6605e439064c1edce92c883de892eff2a52a360e96f8eba39b96109236a3f84ebbf2be')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
