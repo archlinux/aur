@@ -1,6 +1,6 @@
 # Mantenedor: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=gitsync
-pkgver=0.0.21
+pkgver=0.0.23
 pkgrel=1
 pkgdesc="GitSyncMaster: Effortlessly Automate Git Repository Updates, Including Committing and Pulling, Across Directory Structures."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSD 3-Clause')
 depends=('python')
 
 source=("https://github.com/felipealfonsog/GitSyncMaster/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('fef90825adb80f88615307fdea2ebb06c2d5070e8714a9c24e9c007a541d61ba')
+sha256sums=('283740a693498e0cc968cff556bdaba5f9543f322882def48a117a73c5773f4b')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
