@@ -2,7 +2,7 @@
 
 _pkgname=addr-book-combine
 pkgname=$_pkgname-git
-pkgver=.r9.11696f4
+pkgver=r9.11696f4
 pkgrel=1
 pkgdesc='Combine multiple aerc-style address books into a single address book, with de-duplication and smart sorting.'
 arch=('any')
@@ -17,7 +17,12 @@ pkgver() {
   TAG=$(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/^v//')
   COMMIT=$(git rev-parse --short HEAD)
   REVISION=$(git rev-list --count HEAD)
-  printf "%s.r%s.%s" "$TAG" "$REVISION" "$COMMIT"
+  if [[ -n "$TAG" ]]
+  then
+    printf "%s.r%s.%s" "$TAG" "$REVISION" "$COMMIT"
+  else
+    printf "r%s.%s" "$REVISION" "$COMMIT"
+  fi
 }
 
 prepare(){
