@@ -4,7 +4,7 @@
 # Contributor: Stephan Eisvogel <eisvogel at embinet dot de
 
 pkgname=pdfcpu
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A PDF processor written in Go.'
 arch=(x86_64)
@@ -12,7 +12,7 @@ url='https://github.com/hhrutter/pdfcpu'
 license=('Apache')
 makedepends=(go)
 source=($url/archive/v$pkgver.tar.gz)
-b2sums=('f3655ca08ce600eadd3660c6e03b9dcb0ba47cd7b62ece18a3f1f6cf8927c5a9ef620bffcc54f4b70915b4917a3b242d27314df76bf54668977b25b88772a8ef')
+b2sums=('b6b90eb5ec1c4013ec62302f2edd55aaa280732c8892244f38c1c32490312d8829ce4246801d727f7212705df76df12248e3b2884cdf3d949cd0448a0f006b95')
 
 build() {
     cd $pkgname-$pkgver/cmd/pdfcpu
