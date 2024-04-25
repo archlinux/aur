@@ -3,11 +3,12 @@
 pkgname=wownero-seed-git
 _pkgname="${pkgname%-git}"
 pkgver=0.3.0.r1.gd3f68be
-pkgrel=7
+pkgrel=10
 pkgdesc='14-word mnemonic seed for Wownero'
 arch=('x86_64')
 url="https://git.wownero.com/wowlet/${_pkgname}"
 license=('MIT')
+options=('!strip')
 makedepends=('git' 'cmake')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

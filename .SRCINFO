@@ -1,7 +1,7 @@
 pkgbase = wownero-seed-git
 	pkgdesc = 14-word mnemonic seed for Wownero
 	pkgver = 0.3.0.r1.gd3f68be
-	pkgrel = 6
+	pkgrel = 10
 	url = https://git.wownero.com/wowlet/wownero-seed
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = wownero-seed-git
 	makedepends = cmake
 	provides = wownero-seed
 	conflicts = wownero-seed
+	options = !strip
 	source = wownero-seed-git::git+https://git.wownero.com/wowlet/wownero-seed
 	sha256sums = SKIP
 
