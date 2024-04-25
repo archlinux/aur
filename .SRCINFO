@@ -1,10 +1,10 @@
 pkgbase = r-ibreakdown
 	pkgdesc = Model Agnostic Instance Level Variable Attributions
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=iBreakDown
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r-ggplot2
 	optdepends = r-covr
 	optdepends = r-dalex
