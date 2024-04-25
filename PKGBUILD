@@ -4,11 +4,11 @@ _pkgname=BiocFHIR
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Illustration of FHIR ingestion and transformation using R"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biocbaseutils
   r-dplyr
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('788951417cde10ad9434dd443db47f80')
-sha256sums=('7c181c170fc085c884ec4b1bc4a53cd402e18c2a99691a2ce5feb7799827d7eb')
+b2sums=('53c87974284f1d63d889f9f5eacb00706f3ba7ae92238b82a3b50f8cbd5e8da1b0d5c91d0550178c5dc09e83b7e608f8a43c3050d26d5262c4140cb33cdd4795')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
