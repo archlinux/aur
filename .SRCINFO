@@ -1,7 +1,7 @@
 pkgbase = r-xopen
 	pkgdesc = Open System Files, 'URLs', Anything
-	pkgver = 1.0.0
-	pkgrel = 7
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=xopen
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = r-xopen
 	depends = r-processx
 	optdepends = r-ps
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/xopen_1.0.0.tar.gz
-	sha256sums = e207603844d69c226142be95281ba2f4a056b9d8cbfae7791ba60535637b3bef
+	source = https://cran.r-project.org/src/contrib/xopen_1.0.1.tar.gz
+	sha256sums = e3b278b8c324a1aa2650141dd89d01253eea5c2555007422c797915689b29aec
 
 pkgname = r-xopen
