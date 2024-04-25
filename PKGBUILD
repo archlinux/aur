@@ -1,29 +1,30 @@
 # Maintainer: Marcin Rzeźnicki <marcin.rzeznicki@gmail.com>
 
 pkgname=berserk
-pkgver=12
+pkgver=13
 pkgrel=1
 pkgdesc="UCI compliant chess engine written in C"
 arch=(x86_64)
 url='https://www.chessengeria.eu/berserk'
 license=('GPL3')
 depends=(glibc)
+makedepends=(clang)
 checkdepends=(expect)
 options=(!strip)
-_main_network='fb675dad41b4'
+_main_network='d43206fe90e4'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jhonnold/berserk/archive/refs/tags/${pkgver}.tar.gz"
         "https://github.com/jhonnold/berserk/releases/download/${pkgver}/berserk-${_main_network}.nn")
-sha512sums=('3a8af9ea9b3bbbe93aa9e24a81855fc5e9432e517f677e3012ce805dc480d6791c309dc50b02dee13c2718dc6bf18f908cb6a31147af8ea041ea6e2dbe61fc25'
-            '7f2adf7d7b721ab3c63cbd51480554dcbd16d6236eeb2c55e6606574d8950ccb68f0d3205eb2aa9e99d6f051648f182e4d8e72b3309ad2c54cf1fe09b24819db')
+sha512sums=('93a76a1039f019354beee8ffbfee5177e390a0c91cf2e6e05a3b7d4922f4388a2b42196dd4d774be3f13739fca0430b829e284d6c80ab4f07efe786402f2521a'
+            '9246815caf76127a2c10951adc478f04f7d535a97d785ec6eca8fc1bce770e31a7e9aaedfc9c9274ea6b8a5b115473b9a68b1ee83dd2a81cdcfeccba07588e85')
 
 prepare() {
-    ln -sf "${srcdir}/berserk-${_main_network}.nn" "${pkgname}-${pkgver}/src/networks/main_network.nn"
+    ln -sf "${srcdir}/berserk-${_main_network}.nn" "${pkgname}-${pkgver}/src/main_network.nn"
 }
 
 build() {
     cd "${pkgname}-${pkgver}"
     cd src
-    make EVALFILE="networks/main_network.nn" basic
+    make EVALFILE="main_network.nn" build
 }
 
 check() {
