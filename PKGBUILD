@@ -5,11 +5,11 @@ _pkgname=ggplotify
 _pkgver=0.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Convert Plot to 'grob' or 'ggplot' Object"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(Artistic2.0)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-ggplot2
   r-gridgraphics
@@ -27,11 +27,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('3bd4a51a0406a4b44f456aa75a8093df')
-sha256sums=('01bae5759e14e211bddb04413e094ba31399b513989894ea08602d202f990e87')
+b2sums=('7c6a1c21ddbaced450fa0bf4edc0210211cbaa951d6535e3118ade4a193092964fef2474c79d15b74121dc1b552fba06f6a49c80e2e1570f957a8b933c4d3d1a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
