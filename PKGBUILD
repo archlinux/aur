@@ -5,11 +5,11 @@ _pkgname=MatchIt
 _pkgver=4.5.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Nonparametric Preprocessing for Parametric Causal Inference"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-backports
   r-chk
@@ -43,11 +43,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('868543cc83c7567510e676e52daf3819')
-sha256sums=('ae39cafdd3a52487e3ebff1b49642f516cf64321fea90fa57ce3d545a259859e')
+b2sums=('6597495f6815ddb2f4e7e0355043263da776bbcdc31cb189ce19ad484d4ab350345c0af89b2d9695800b46082303cc1f10bbcda6171bc00931d1c0f71360d65f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
