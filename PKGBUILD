@@ -3,7 +3,7 @@
 _pkgbase=gplugin
 pkgbase="$_pkgbase-hg"
 pkgname=("$_pkgbase-hg" "$_pkgbase-docs-hg")
-pkgver=2003.b8f1ba3e24fc
+pkgver=2020.7027845d098d
 pkgdesc="GObject based library that implements a reusable plugin system"
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,8 +11,6 @@ url="https://keep.imfreedom.org/gplugin/gplugin/"
 license=('LGPL-2.0-or-later')
 makedepends=('mercurial' 'meson' 'gobject-introspection' 'gtk3' 'perl-glib-object-introspection'
              'python-gobject' 'lua-lgi' 'libxslt' 'help2man' 'vala' 'gi-docgen' 'gtk4')
-provides=("$_pkgbase=0.0.23")
-conflicts=("$_pkgbase")
 source=("$_pkgbase::hg+https://keep.imfreedom.org/gplugin/gplugin#branch=default")
 sha256sums=('SKIP')
 
@@ -43,6 +41,7 @@ package_gplugin-hg() {
             'python-gobject: for Python support'
             'lua53-lgi: for Lua support'
             'glib-perl: for perl support')
+  conflicts=('gplugin')
 
   DESTDIR="$pkgdir" ninja -C build install
 
@@ -53,6 +52,7 @@ package_gplugin-hg() {
 package_gplugin-docs-hg() {
 pkgdesc+=" (documentation)"
   depends=()
+  conflicts=(gplugin-docs)
 
   mv docs/* "$pkgdir"
 }
