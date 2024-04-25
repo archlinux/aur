@@ -1,10 +1,10 @@
 pkgbase = r-eztune
 	pkgdesc = Tunes AdaBoost, Elastic Net, Support Vector Machines, and Gradient Boosting Machines
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=EZtune
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r-ada
 	depends = r-biocstyle
 	depends = r-e1071
@@ -22,6 +22,6 @@ pkgbase = r-eztune
 	optdepends = r-yardstick
 	source = https://cran.r-project.org/src/contrib/EZtune_3.1.1.tar.gz
 	md5sums = 53c7837a42f53ac7def3dd6eb750d5e3
-	sha256sums = d3d57b42cb436b805fc066ea7e0eb25c164f51795c250eb23eaaf2b5dea29a69
+	b2sums = e5c4f2b521837b0b674faefbca7283d50440980d81cc7235c1fa6a16592e21b9eaf29bd03a8577de22be579c7551f0414edebcb6ec9353fbba1f2ed80d38e52c
 
 pkgname = r-eztune
