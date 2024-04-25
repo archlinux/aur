@@ -5,11 +5,11 @@ _pkgname=exactci
 _pkgver=1.4-4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=5
 pkgdesc="Exact P-Values and Matching Confidence Intervals for Simple Discrete Parametric Cases"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-ssanv
   r-testthat
@@ -22,11 +22,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('447f19a10800a1e7ac09201268e83c3a')
-sha256sums=('d01c8cd298b96a9b07d1e671bc2844e339020717fd3012d217c05eada53e3e04')
+b2sums=('b1a387879c8b8c4d88ebf327b326ae87fee69b78cc7c0cbd63b70a50840767a6ee66f4f60e0c73aa3cee430c746fe4bbe83cc0d70800fb02c465b0530cdf2e79')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
