@@ -9,7 +9,6 @@ pkgbase = python-pyfmi
 	makedepends = cython
 	depends = fmilib
 	depends = python-scipy
-	depends = python-lxml
 	depends = python-assimulo
 	source = https://github.com/modelon/PyFMI/archive/PyFMI-2.12.0.tar.gz
 	sha256sums = d1b4afc9771e2f631f3f9741539f56a7ff42267f60ff87a4aea83e21fa09fea5
