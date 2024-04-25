@@ -1,36 +1,22 @@
-# Maintainer: Alexander Lehmann <afwlehmann@googlemail.com>
+# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Contributor: Alexander Lehmann <afwlehmann@googlemail.com>
 pkgname=pasmo
-pkgver=0.5.4.beta2
+pkgver=0.5.5
 pkgrel=1
-epoch=
-pkgdesc="Portable Z80 cross assembler"
-arch=('any')
-url="http://pasmo.speccy.org/"
-license=('GPLv2')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("http://pasmo.speccy.org/bin/$pkgname-$pkgver.tgz")
-noextract=()
-md5sums=(c85b0b7935ea174f9a57821019f464fa)
-validpgpkeys=()
+pkgdesc='Portable Z80 cross assembler'
+arch=(x86_64)
+url=https://pasmo.speccy.org
+license=(GPL-2.0-only)
+source=("$url/bin/$pkgname-$pkgver.tar.gz")
+b2sums=('b571747454e4fc9c679619c3e72ee0ec93b03a669b14c6ec75c34a3823c294d921ef20ee0ba83c08c0f5a9bb7961a3a1adc5bcfb052e4d3a7afd1e826039ad9f')
 
-build() {
+build () {
     cd "$pkgname-$pkgver"
     ./configure --prefix=/usr
     make
 }
 
-package() {
+package () {
     cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
     install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
@@ -42,4 +28,9 @@ package() {
         README \
         pasmodoc.html
     install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}/examples" *.asm
+}
+
+check () {
+	cd "$pkgname-$pkgver"
+	make check
 }
