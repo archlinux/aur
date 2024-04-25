@@ -4,11 +4,11 @@ _pkgname=rSpectral
 _pkgver=1.0.0.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Spectral Modularity Clustering"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL2)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   blas
   lapack
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('53afeed2a8faf838905764c2e67b968a')
-sha256sums=('ddc03a1a1c11088f66ad55613ae389c252c60e819570c998a8cf2832a9f4cf89')
+b2sums=('70e4d9994d541d00ef3739457831bbae50201baca48cc1639558ef06d9a4e7a95052c9b3d096d7065b30e69538125bcf131ebab4593fba7bdf1069f4e40ac593')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
