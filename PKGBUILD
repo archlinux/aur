@@ -7,11 +7,11 @@ _pkgname=modelr
 _pkgver=0.1.11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=5
 pkgdesc="Modelling Functions that Work with the Pipe"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-broom
   r-magrittr
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('ddfa4fdf1446004a7b75289eb81e8548')
-sha256sums=('94ebd506e9ccf3bf25318be6a182f8f89c3669a77b41864a0b9dbcc1d4337bd3')
+b2sums=('6c62146c0cabac40fef457b497e327d0fcf542a9f324c612a65146958886e1daca174bbf91a29913e1b6a45f15cd0e2b75552e438459a81f7e20b6ee25877a5d')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
