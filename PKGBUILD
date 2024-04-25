@@ -4,11 +4,11 @@ _pkgname=shinylogs
 _pkgver=0.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Record Everything that Happens in a 'Shiny' Application"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-anytime
   r-bit64
@@ -35,11 +35,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('25ffc5c472d557ee69e2d18aa4ae352d')
-sha256sums=('527e362c0f00571d2463187c90486563922e813c988037d989764cc13ff829f0')
+b2sums=('56d2eb8e93a9bd049c364b419de69084756f75cdce18e94c81a452514b0475b4fa220d262d7b1ae3afdabafc22f29506ed1989884755a761733457e04ba55c0c')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
