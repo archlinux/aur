@@ -1,0 +1,18 @@
+diff --git a/configure.ac b/configure.ac
+index add86bc..37aa2b2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -248,13 +248,6 @@ if test "$MPI_ROOT" != "NONEED"; then
+ 	fi
+ fi
+ 
+-if test "$MPITYPE" = "OPENMPI" ; then
+-   AC_CHECK_PROG(ORTED, orted, yes, no)
+-   if test "$ORTED" = no ; then
+-       AC_MSG_ERROR(Cannot find orted. Rmpi needs orted to run.)
+-   fi
+-fi
+-
+ if test "$MPITYPE" = "LAM" ; then
+ 	echo "Try to find liblam.so ..."
+ 	if test -f ${MPI_ROOT}/lib/liblam.so; then
