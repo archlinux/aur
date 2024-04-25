@@ -4,11 +4,11 @@ _pkgname=automap
 _pkgver=1.1-9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Automatic Interpolation Package"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-ggplot2
   r-gstat
@@ -19,11 +19,11 @@ depends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('e73467a1c2fa43bd4f4f536ec51ad71b')
-sha256sums=('f3070aed385352d2595ceddd74cb03cd71965f2e60b675832d16ec2ead6f3a43')
+b2sums=('76a53f530f4d17d27f3b70aca6d27b8539b6035caa0a406755e553b429cac386f4bb438ef115de859b6794356605ee824c72d975821f123c0da6cfb828d20678')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
