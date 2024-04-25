@@ -5,11 +5,11 @@ _pkgname=RMySQL
 _pkgver=0.10.27
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Database Interface and 'MySQL' Driver for R"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL2)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   mariadb-libs
   r-dbi
@@ -24,11 +24,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('82055849b6008a804c59c5f1a9dafdaf')
-sha256sums=('f1735b689cd9bdb9c776a16138eaa1f6c5cbdbab5c1d292e1240e3bbf105bfab')
+b2sums=('3a846ffffae569da472cc75e9cccfd55b3ea35c05ba159f736f317e634884e74fe7f92146c7b24a04896680fdca91a7a76468b69a948447875ddc1a6fd212c47')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
