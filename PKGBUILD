@@ -164,6 +164,7 @@ prepare() {
 		-e CONFIG_KEXEC_JUMP \
 		-e CONFIG_KEXEC_CORE \
 		-e CONFIG_CRASH_DUMP \
+		-e CONFIG_CRASH_CORE \
 		-e CONFIG_RELOCATABLE
 
 	### 编译zfs前面的准备
