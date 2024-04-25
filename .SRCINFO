@@ -1,7 +1,7 @@
 pkgbase = r-archive
 	pkgdesc = Multi-Format Archive and Compression Support
 	pkgver = 1.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=archive
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,6 @@ pkgbase = r-archive
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/archive_1.1.7.tar.gz
 	md5sums = f3504e5b4704312ce00d704d1e186083
-	sha256sums = 11efd69302d4fbc940b740451a4284cdc348e3401ae70d2de37612130ee07d7c
+	b2sums = fb1f724126b14fd39a0df05a05538894343f7411c872769f9fdfed34ce2d4b8f42300c3121ad54e5867f59f9828a558b7e0851e75bed64c1abec53d669f7afde
 
 pkgname = r-archive
