@@ -6,6 +6,7 @@ pkgbase = iyuuplus
 	url = https://github.com/ledccn/iyuuplus-dev
 	arch = any
 	license = MIT
+	depends = mariadb
 	depends = php-fpm
 	depends = php-gd
 	depends = php-sodium

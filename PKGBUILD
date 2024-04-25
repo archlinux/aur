@@ -8,7 +8,7 @@ pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
 url="https://github.com/ledccn/iyuuplus-dev"
 license=("MIT")
-depends=("php-fpm" "php-gd" "php-sodium" "php-sqlite")
+depends=("mariadb" "php-fpm" "php-gd" "php-sodium" "php-sqlite")
 source=("${pkgname}::git+${url}"
         "${pkgname}.service"
         "${pkgname}.sysusers"
