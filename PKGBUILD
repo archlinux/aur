@@ -6,11 +6,11 @@ _pkgname=GeneNet
 _pkgver=1.2.16
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="Modeling and Inferring Gene Networks"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
   r-corpcor
   r-fdrtool
@@ -22,11 +22,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8547162999d1f2af1cf03389f2b27a57')
-sha256sums=('c1e98073ccdaa18f4952630bfe4fc0617106eeaf7ed94d347cb2773bd48333e4')
+b2sums=('80b80557c10e081219013509498deea3d72448c4226d19912a9206b9db633756f1dc6e1fa7ed63f593cceb4330aecf1c38263f5d7adc8d4e03a6572997d25969')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
