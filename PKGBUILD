@@ -5,11 +5,11 @@ _pkgname=bibtex
 _pkgver=0.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=4
 pkgdesc="Bibtex Parser"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-backports
 )
@@ -22,7 +22,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('c74ef856ea66f1c3bf23d2920c64c148')
-sha256sums=('f3c1a0a4e666c4addd73ff13ce8ce073d73d10ebca36d333328ade8a0b493ed1')
+b2sums=('32ecb614d4a0bf4c8ab38af7b55270cc62ced0791b1f53ec269c89893fe2fe83b5bfefc7220b84aa2fef909e9cb8478b45e49448a21e487fc5bb2714ee5271b5')
 
 prepare() {
   cd "$_pkgname/tests/testthat"
@@ -36,8 +36,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
