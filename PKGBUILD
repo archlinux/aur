@@ -5,11 +5,11 @@ _pkgname=webutils
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility Functions for Developing Web Applications"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-curl
   r-jsonlite
@@ -24,11 +24,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b22bccdb361730d8aa1d7cf2cbd3e9fa')
-sha256sums=('51243a1d7843dbb3968e7725c2266e1d68dcec43b919c320033f611ff9ca7f3c')
+b2sums=('fc480ff6e4e8829c9acb6988a6fffeb63ea373dda9f1f53f38d8c9f44395db9f1e669334236d76bbc06d9f237109f5e3120ac821c25564fba5e1ab8030e295ee')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
