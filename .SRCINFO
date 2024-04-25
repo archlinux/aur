@@ -1,10 +1,10 @@
 pkgbase = r-clubsandwich
 	pkgdesc = Cluster-Robust (Sandwich) Variance Estimators with Small-Sample Corrections
 	pkgver = 0.5.10
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=clubSandwich
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-aer
 	checkdepends = r-cardata
 	checkdepends = r-geepack
@@ -35,6 +35,6 @@ pkgbase = r-clubsandwich
 	optdepends = r-zoo
 	source = https://cran.r-project.org/src/contrib/clubSandwich_0.5.10.tar.gz
 	md5sums = e1902cb9a93ccf46f1eedf96396280d9
-	sha256sums = daf0b372f0e6aae141d45b78b69c6f680c774f201691a1333400073001c6a463
+	b2sums = a727b95f91f8f4d4284bd5abeae6905cafb64626e2cdb978eab527e09c1d90d3d86be4de73df35308e446dceb6d451bca298500d6fef57b8b15f91d2d2757f42
 
 pkgname = r-clubsandwich

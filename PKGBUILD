@@ -4,11 +4,11 @@ _pkgname=clubSandwich
 _pkgver=0.5.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=4
 pkgdesc="Cluster-Robust (Sandwich) Variance Estimators with Small-Sample Corrections"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-sandwich
 )
@@ -45,11 +45,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('e1902cb9a93ccf46f1eedf96396280d9')
-sha256sums=('daf0b372f0e6aae141d45b78b69c6f680c774f201691a1333400073001c6a463')
+b2sums=('a727b95f91f8f4d4284bd5abeae6905cafb64626e2cdb978eab527e09c1d90d3d86be4de73df35308e446dceb6d451bca298500d6fef57b8b15f91d2d2757f42')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
