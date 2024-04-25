@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 pkgname=mintmenu
-pkgver=6.1.2
+pkgver=6.1.7
 pkgrel=1
 pkgdesc="Mint Menu for MATE"
 arch=('any')
