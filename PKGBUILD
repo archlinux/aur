@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=hyprland-nox
-pkgver=0.38.0
+pkgver=0.39.1
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ depends=('cairo'
          'pango'
          'pixman'
          'seatd'
-         'systemd-libs' # libudev
+         'systemd-libs'
          'tomlplusplus'
          'wayland')
 makedepends=('cmake'
@@ -41,10 +41,10 @@ conflicts=("${pkgname%-nox}")
 replaces=()
 backup=()
 source=("$pkgname::git+$url#tag=v$pkgver"
-        "${pkgname}_wlroots::git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
+        "${pkgname}_wlroots-hyprland::git+https://github.com/hyprwm/wlroots-hyprland.git"
         "${pkgname}_hyprland-protocols::git+https://github.com/hyprwm/hyprland-protocols.git"
         "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git")
-sha256sums=('939b439b8f5804afc7b8b5afd206a1b33245dcb0a85836c9863fcb0afda73982'
+sha256sums=('64cb3ae405a1282f15e1382d996683b080bf2d193861049420a7ea510c5fe95b'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -53,7 +53,7 @@ prepare() {
   cd "$srcdir/$pkgname"
   git submodule init
   git submodule deinit subprojects/tracy
-  git config submodule.wlroots.url "$srcdir/${pkgname}_wlroots"
+  git config submodule.subprojects/wlroots-hyprland.url "$srcdir/${pkgname}_wlroots-hyprland"
   git config submodule.subprojects/hyprland-protocols.url "$srcdir/${pkgname}_hyprland-protocols"
   git config submodule.subprojects/udis86.url "$srcdir/${pkgname}_udis86"
   git -c protocol.file.allow=always submodule update
