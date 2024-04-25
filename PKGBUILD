@@ -5,11 +5,11 @@ _pkgname=waffle
 _pkgver=1.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Create Waffle Chart Visualizations"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-curl
   r-dt
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('5d8baee6c96eb2a1e7b8001ef159f45e')
-sha256sums=('e650803b4ec3c6a0aca02b1d9430d23d603d86f9782d90b96f698a6b692de09f')
+b2sums=('177be7d9eb1abcc7c223088ec34ecfec636f6157648f60f57872e13f1ae007052c9e1b6226073618afbde65a942291b96ac82ada2882aa261a4c376377e2e6d4')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
