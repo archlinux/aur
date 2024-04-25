@@ -1,10 +1,10 @@
 pkgbase = r-tca
 	pkgdesc = Tensor Composition Analysis
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=TCA
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r-config
 	depends = r-data.table
 	depends = r-futile.logger
@@ -21,6 +21,6 @@ pkgbase = r-tca
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/TCA_1.2.1.tar.gz
 	md5sums = cfd6fc03ef50d2b7685ee902f44d8ef6
-	sha256sums = 8bd3ab276b966802b0022cccefead65d2c3f85ef43e775ff629b907c2ad0d7bf
+	b2sums = 0f88ec8bf4e730fa95e244f8116b16dbf68dbd45d66c294e2e96a1ceecd8de0550854064471a4bf2fe8fbaec3d2a3f17073bdd64793ae877070c775765e70268
 
 pkgname = r-tca
