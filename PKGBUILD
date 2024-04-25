@@ -1,24 +1,23 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Andrew Lorimer <andrew@lorimer.id.au>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
-_pkgname=listmonk
-pkgname=$_pkgname-bin
+pkgname=listmonk-bin
 pkgver=3.0.0
 pkgrel=1
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard (binary release)'
-arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/knadh/listmonk"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
+arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 depends=('postgresql')
-provides=("$_pkgname")
-conflicts=("$_pkgname" "$_pkgname"-git)
+provides=("listmonk")
+conflicts=("listmonk" "listmonk-git")
 options=(!strip !debug)
 backup=(etc/listmonk/config.toml)
-install=$_pkgname.install
-source=("$_pkgname-$pkgver.toml::https://raw.githubusercontent.com/knadh/$_pkgname/v$pkgver/config.toml.sample"
-        "$_pkgname.conf"
-        "$_pkgname.service")
+install=listmonk.install
+source=("listmonk-$pkgver.toml::$url/raw/v$pkgver/config.toml.sample"
+        "listmonk.conf"
+        "listmonk.service")
 sha256sums=('4941b1bd6d9ebc84b4ee1f9e3cf7aa651484a8bc857864ba40eda7bb67789c18'
             '5cfc186438df2408ed88a5bec3a9a4b5f2afb0d3aec41c4cc63b2f5eb810b3cb'
             '4852f206b7763ba047ba123d663cadb806f437967154ebe837845198b3266533')
@@ -34,8 +33,8 @@ sha256sums_armv6h=('d70eab28b24d19b22c12d32fafdba56112f39950019aff9d33526e7f44ab
 sha256sums_armv7h=('8f405404901f1283b2ebddf1118f884c72883e981b3b70c2266c1cc523e48794')
 
 package() {
-  install -Dm644 $_pkgname-$pkgver.toml "$pkgdir/etc/$_pkgname/config.toml"
-  install -Dm644 $_pkgname.service -t "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 $_pkgname.conf -t "$pkgdir/usr/lib/sysusers.d"
-  install -Dm755 $_pkgname -t "$pkgdir/usr/bin"
+  install -Dm644 listmonk-$pkgver.toml "$pkgdir/etc/listmonk/config.toml"
+  install -Dm644 listmonk.service -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 listmonk.conf -t "$pkgdir/usr/lib/sysusers.d"
+  install -Dm755 listmonk -t "$pkgdir/usr/bin"
 }
