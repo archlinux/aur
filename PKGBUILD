@@ -4,11 +4,11 @@ _pkgname=plasmut
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Stratifying mutations observed in cell-free DNA and white blood cells as germline, hematopoietic, or somatic"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-dplyr
   r-tibble
@@ -29,11 +29,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8681d905157c0cbb8b46e48cbe4ecde9')
-sha256sums=('306cec1a35232cf05ed7c3d5b2e0aabbd4393347003c1dd4502d5f95e3f447ac')
+b2sums=('f13dd4f636f19a34b2ea5e8c8388b04d77720b6b2b8b1cd67e073e2ddcaf70d0ebebd12e2a3915e45fe237566462bc740e39833f5369f45f99702d9e8558f343')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
