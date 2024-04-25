@@ -4,7 +4,7 @@
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r550.18847fc
+pkgver=r663.4e91999
 pkgrel=1
 pkgdesc='A "hierarchical spreadsheet" as a replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases.'
 url="https://strlen.com/treesheets/"
