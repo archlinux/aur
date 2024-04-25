@@ -1,7 +1,7 @@
 pkgbase = r-harrypotter
 	pkgdesc = Palettes Generated from All "Harry Potter" Movies
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=harrypotter
 	arch = any
 	license = MIT
@@ -12,6 +12,6 @@ pkgbase = r-harrypotter
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/harrypotter_2.1.1.tar.gz
 	md5sums = f032c91d396ce69e965431316883473d
-	sha256sums = 192d1256ba770a66a6136647147ee822f249895543119980cb8c927b33d87ac8
+	b2sums = dbfb77a38a4028d011aa8e36ee744e34ef5a0d75b59aedaff28b3328704ab19b125b480b567bdc8022180665a9534c51cad653c58f334ead2127480015d4ba5c
 
 pkgname = r-harrypotter
