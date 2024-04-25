@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://armorgames.com/user/Louissi"
 license=('custom')
 depends=('flashplayer-standalone')
-source=('https:///https://github.com/Brx86/yun/releases/download/2/age-of-war-2.tar.gz')
+source=('https://github.com/Brx86/yun/releases/download/2/age-of-war-2.tar.gz')
 md5sums=('862cc4c58d46f3a87a61fbca62869dcf')
 noextract=()
 
