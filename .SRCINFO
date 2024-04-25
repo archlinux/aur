@@ -1,10 +1,10 @@
 pkgbase = r-mvnfast
 	pkgdesc = Fast Multivariate Normal and Student's t Methods
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=mvnfast
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = r-bh
 	makedepends = r-rcpparmadillo
 	depends = blas
@@ -19,6 +19,6 @@ pkgbase = r-mvnfast
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/mvnfast_0.2.8.tar.gz
 	md5sums = 7f86b01f428f34145a2fd143b441e9bf
-	sha256sums = 8871e0ce54b87afc556fd94ca77c3db72dcbb8c245558287e0fe342e30eec9a0
+	b2sums = 47e120c7d1345828f1a3cff881c41229c9c17d1d435d103aa692cab54b6d3acd6a8507c1e816f7d0a8f4332ad0cca9f29ccb1ea4c979c801eeb1f4095f3eb214
 
 pkgname = r-mvnfast
