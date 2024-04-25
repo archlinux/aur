@@ -3,12 +3,12 @@
 
 pkgname=cgproxy-git
 pkgver=0.20.r0.g86fe42ec
-pkgrel=1
+pkgrel=2
 pkgdesc="A transparent proxy program powered by cgroup2 and tproxy"
 arch=('x86_64')
 url="https://github.com/springzfx/cgproxy"
 license=('GPL-2.0-or-later')
-makedepends=('cmake' 'nlohmann-json' 'clang' 'bpf' 'libbpf')
+makedepends=('cmake' 'nlohmann-json' 'clang' 'bpf' 'libbpf' "git")
 depends=("libbpf" "iproute2" "which" "nftables" "iptables-nft" "bash" "glibc" "gcc-libs")
 provides=('cgproxy')
 conflicts=('cgproxy')
