@@ -4,11 +4,11 @@ _pkgname=BiocHail
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="basilisk and hail"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-basilisk
   r-biocfilecache
@@ -25,11 +25,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('4707c299d0bb3b41001065a753d89f33')
-sha256sums=('d56801f227b645e29814530e326c1820e35d5c78aaf6e4afa181f6bc3ad0ba09')
+b2sums=('25a4267f3ff39afe7185a5ea7d3bc9dafc5d870e8368a863372ba555695869e6196f0a1d98496c8e4600e7493ee65cb9ffb958e8d663e98832843b1d631c8a86')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
