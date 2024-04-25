@@ -4,11 +4,11 @@ _pkgname=systemfit
 _pkgver=1.1-30
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Estimating Systems of Simultaneous Equations"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-car
   r-lmtest
@@ -21,11 +21,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('ce0cf8a69c9c3c0f916c2d32770803c1')
-sha256sums=('5994fbb81f1678325862414f58328cdc2c46d47efa1f23218e9416a4da431ce2')
+b2sums=('93fbb7a9f5f774c39498267b1bd9effff9b1006c4bb9fd728a34db0769016b9681f8bb9c511aecee9867843bbeea0c00c6cbc4245c6db2b7633039e0b6ed9988')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
