@@ -16,6 +16,6 @@ source=("https://github.com/VVhitehead/signal-message-scheduler/releases/downloa
 sha256sums=('641dcda717050e53e03497d4d600cf0956983f704068cf6b64fedbad2ba10581')
 
 package() {
-    install -Dm755 smsch -t "$pkgdir/usr/bin"
+    install -Dm755 signal-message-scheduler -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
