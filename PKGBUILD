@@ -6,11 +6,11 @@ _pkgname=bindrcpp
 _pkgver=0.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="An 'Rcpp' Interface to Active Bindings"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-bindr
   r-rcpp
@@ -26,11 +26,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('14d52a9f59269bc1a674bb1e93abdfda')
-sha256sums=('662dae785aee715855415f4e743281ccbf0832e426084dc2f0ca9c9c908ec9fa')
+b2sums=('ec303434a8a69b760660b49a720ce41db45853b124ae32dfeef77592a45baf31afc8994f711673f182038dc0cf3e83b54ca99b9e8e567d214786888ef0542544')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

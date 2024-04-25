@@ -1,7 +1,7 @@
 pkgbase = r-bindrcpp
 	pkgdesc = An 'Rcpp' Interface to Active Bindings
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=bindrcpp
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,6 @@ pkgbase = r-bindrcpp
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/bindrcpp_0.2.3.tar.gz
 	md5sums = 14d52a9f59269bc1a674bb1e93abdfda
-	sha256sums = 662dae785aee715855415f4e743281ccbf0832e426084dc2f0ca9c9c908ec9fa
+	b2sums = ec303434a8a69b760660b49a720ce41db45853b124ae32dfeef77592a45baf31afc8994f711673f182038dc0cf3e83b54ca99b9e8e567d214786888ef0542544
 
 pkgname = r-bindrcpp
