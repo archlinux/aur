@@ -2,13 +2,13 @@
 
 pkgname=zombies-trailer-park
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage Your Economy and Train Fighting Units to Defend Your Trailer Park"
 arch=('x86_64')
 url="https://www.kongregate.com/games/ninjakiwi/zombie-trailer-park"
 license=('custom')
 depends=('flashplayer-standalone')
-source=('https://aya1.top/https://github.com/Brx86/yun/releases/download/2/zombies-trailer-park.tar.gz')
+source=('https://github.com/Brx86/yun/releases/download/2/zombies-trailer-park.tar.gz')
 md5sums=('4a7377c81d8d76b3542410329e87b417')
 noextract=()
 
