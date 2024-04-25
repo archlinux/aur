@@ -4,11 +4,11 @@ _pkgname=shinymanager
 _pkgver=1.0.410
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Authentication Management for 'Shiny' Applications"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-billboarder
   r-dbi
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d5c4711312e295b09dcdd35cdac7ba88')
-sha256sums=('b6cd31149aaffd81d181a0c2f19eee8963b32912b3df1149e56448fe9a38865a')
+b2sums=('162ed86cdfc35e336387539da6891dc656835ab311ede9d1178e72b13f94f71d510b934fd8215901c42e91f32a7e2ef66566f07e819932633be01893f44442cc')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
