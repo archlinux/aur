@@ -102,6 +102,7 @@ source=(
 	"$pkgbase::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
 	"more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
 	"https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v6.x/cjktty-6.7.patch"
+	"config"
 )
 
 if [ -n "$_use_llvm_lto" ]; then
@@ -141,6 +142,9 @@ prepare() {
 		patch -Np1 -i "$srcdir/$pkgbase/${i}"
 	done
 
+	### 复制配置
+	cp ../config ./.config
+
 	### 添加cjktty补丁
 	local src
 	for src in "${source[@]}"; do
@@ -152,19 +156,9 @@ prepare() {
 		patch -Np1 <"../$src"
 	done
 
-	### 开启KEXEC
-	scripts/config -e CONFIG_KEXEC \
-		-e CONFIG_KEXEC_FILE \
-		-e CONFIG_KEXEC_SIG \
-		-e CONFIG_KEXEC_JUMP \
-		-e CONFIG_KEXEC_CORE \
-		-e CONFIG_CRASH_DUMP \
-		-e CONFIG_CRASH_CORE \
-		-e CONFIG_RELOCATABLE
-
 	### 设置配置
-	echo "Setting config..."
-	cp -Tf $srcdir/$pkgbase/config ./.config
+	#echo "Setting config..."
+	#cp -Tf $srcdir/$pkgbase/config ./.config
 
 	### 启用额外选项
 	echo "Enable extra options..."

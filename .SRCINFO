@@ -19,6 +19,7 @@ pkgbase = linux-clear-cjktty
 	source = linux-clear-cjktty::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.8.6-1426
 	source = more-uarches-20240221.2.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20240221.2.tar.gz
 	source = https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v6.x/cjktty-6.7.patch
+	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = c969dea4e8bb6be991bbf7c010ba0e0a5643a3a8d8fb0a2aaa053406f1e965f3
