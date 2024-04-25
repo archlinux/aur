@@ -7,11 +7,11 @@ _pkgname=reprex
 _pkgver=2.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Prepare Reproducible Example Code via the Clipboard"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(MIT)
+license=('MIT')
 depends=(
   pandoc
   r-callr
