@@ -1,7 +1,7 @@
 pkgbase = r-textshaping
 	pkgdesc = Bindings to the 'HarfBuzz' and 'Fribidi' Libraries for Text Shaping
 	pkgver = 0.3.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=textshaping
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,6 @@ pkgbase = r-textshaping
 	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/textshaping_0.3.7.tar.gz
 	md5sums = 75e150aec896dd1807e84538456d22e3
-	sha256sums = fa924dbe1fb4138b80d6c26ee42f4203843f1d34f77e2a5e42514e6fcc97ec42
+	b2sums = d6f9c061e9ffcc8e58e423cf4e1b8e07ca9873122d682fbddb03bb73b068770cc2aa750dc871948f25d0af0a28a6fcdf643c3974d1c5ca3c70b09eb28814c45b
 
 pkgname = r-textshaping
