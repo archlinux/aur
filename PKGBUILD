@@ -3,7 +3,7 @@
 
 pkgbase=linux-amd-color
 pkgver=6.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux with experimental AMD color management enabled'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
@@ -28,6 +28,7 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz
   config  # the main kernel config file
   oled_vrr.patch
+  missing_ogam_ram.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -37,10 +38,12 @@ validpgpkeys=(
 
 sha256sums=('291d1a1faf4e87b3b0ea9729080db887aafd1ff2fac1430ceca921e46bc22fae'
             '39d0c1e31b905fc7409a372b1371d440f3f95af61cdaed6dc791dcab4d2b611b'
-            '8bc4397bf114c5a2b17b36eb11f3ceda338fe7cbd2310c8e22ac02a79ebe730d')
+            '8bc4397bf114c5a2b17b36eb11f3ceda338fe7cbd2310c8e22ac02a79ebe730d'
+            '01789aad7a2514895d120499438b2e2584448e1cf104cc54ccff6e1c619cec28')
 b2sums=('e8626a99c6c5769a8126d5ee1c7962c3df3c7a8c689193ffa864c4a4b8e72daeeaf22c3e3bb6ba5490eca3ef64c32a4a12980360a196444a53abadd791cd1855'
         'ea1e6753e019bcb944c5eeba37837e3f460e3214dd9c0a3454258b3f9a2e53bf90575f3e7c1ea7648c1f0c4dcf6d9ef2bb7baa5434b04e55383ad6809114d373'
-        'cd6b48d1d4b228fbbe5d9e7dca077e5447e19e748d69d05d060d69238bc67362e212a66cfae3621b327b771dc37591fb07963e744bf72a25ef0e068effc1b464')
+        'cd6b48d1d4b228fbbe5d9e7dca077e5447e19e748d69d05d060d69238bc67362e212a66cfae3621b327b771dc37591fb07963e744bf72a25ef0e068effc1b464'
+        'aa0a5f2c28b1d084520736befc69c4ae0778b22681822e66c13db846fc4596f7ff25902214c65f5f36df8704ba147ee4e9989ebf2d86e88abae4034b81036b05')
 
 
 export KBUILD_BUILD_HOST=archlinux
