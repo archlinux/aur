@@ -1,10 +1,10 @@
 pkgbase = r-mitml
 	pkgdesc = Tools for Multiple Imputation in Multilevel Modeling
 	pkgver = 0.4.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=mitml
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r-haven
 	depends = r-jomo
 	depends = r-pan
@@ -19,6 +19,6 @@ pkgbase = r-mitml
 	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/mitml_0.4-5.tar.gz
 	md5sums = b241fc0514024cf248ab9dbd2914f880
-	sha256sums = 056aec823187cc3793640d8a5e74d74093bae74260a975ceb098a83a52e2eeeb
+	b2sums = e35f0eadec62ba0f6df4e7215c07a1141bf15f87ba8c71f821236b7590d496a38bce234dd308ff357f4e98117734f6834c0cd6450421fccf4742711e91907f02
 
 pkgname = r-mitml
