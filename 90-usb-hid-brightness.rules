@@ -1,0 +1,6 @@
+# LG UltraFine 24MD4KL
+SUBSYSTEM=="usb", ATTRS{idVendor}=="43e", ATTRS{idProduct}=="9a63", MODE="0666"
+# LG UltraFine 27MD5KL
+SUBSYSTEM=="usb", ATTRS{idVendor}=="43e", ATTRS{idProduct}=="9a70", MODE="0666"
+# LG UltraFine 27MD5KA
+SUBSYSTEM=="usb", ATTRS{idVendor}=="43e", ATTRS{idProduct}=="9a40", MODE="0666"
