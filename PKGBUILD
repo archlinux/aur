@@ -4,16 +4,16 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='emacs-mozc'
-pkgver=2.30.5432.102
+pkgver=2.30.5448.102
 pkgrel=1
 pkgdesc='Mozc module for Emacs'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
-depends=('emacs' 'mozc>=2.30.5432.102')
+depends=('emacs' 'mozc>=2.30.5448.102')
 makedepends=('bazel' 'git' 'python' 'qt6-base')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=548e7c3e5a0bedbf98daf634732062f7e8e47b4b")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=c50bd32a0931d558797d71cfc11091ee17c55ac1")
 sha256sums=('SKIP')
 
 prepare() {
