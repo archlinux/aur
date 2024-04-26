@@ -1,7 +1,7 @@
 pkgbase = ykchorus
 	pkgdesc = A stereo dual-chorus audio effect LV2, LADSPA and VST2 plugin and JACK application
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpotlightKid/ykchorus
 	arch = x86_64
 	arch = aarch64

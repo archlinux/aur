@@ -4,7 +4,7 @@
 pkgname=ykchorus
 _plugin_uri="https://chrisarndt.de/plugins/$pkgname"
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A stereo dual-chorus audio effect LV2, LADSPA and VST2 plugin and JACK application'
 arch=(x86_64 aarch64)
 url="https://github.com/SpotlightKid/$pkgname"
@@ -35,5 +35,5 @@ check() {
 
 package() {
   cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" PREFIX=/usr install
 }
