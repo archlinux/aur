@@ -1,10 +1,10 @@
 pkgbase = r-genomicdatacommons
 	pkgdesc = NIH / NCI Genomic Data Commons Access
 	pkgver = 1.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/GenomicDataCommons
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-testthat
 	depends = r-dplyr
 	depends = r-genomicranges
@@ -35,6 +35,6 @@ pkgbase = r-genomicdatacommons
 	optdepends = r-variantannotation
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicDataCommons_1.26.0.tar.gz
 	md5sums = 6c945795f62ce3e0b470b07b892d3357
-	sha256sums = bc54fdafd609f40a2b2cd598e332b2611d377b4c3d1aa20c345bc1f9199bd1c6
+	b2sums = 3caa7aac6f52277f6976a95ce09c9c25167bf95ccd9b2ac8378179d3de2d137c698386b8abbc3334079ec7b782b29196c587afffaebd8755e1346958fd926713
 
 pkgname = r-genomicdatacommons
