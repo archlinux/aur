@@ -4,11 +4,11 @@ _pkgname=EpiMix.data
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Data for the EpiMix package"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-experimenthub
 )
@@ -18,11 +18,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('52c386f6828945121acfca44eabb7827')
-sha256sums=('a591facc097ee811e82d574f3b37ed7bafca8c9c14c9fc75b76499bda4440c97')
+b2sums=('b95f12b8cd438bd92207a5727dd4d0ea2af6d990ecfe6f834726b257554cdbbdf9eafe6f26e35a8abe8fcafca426ef36fbe291a515167a1c38f8d554d9cb18a9')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
