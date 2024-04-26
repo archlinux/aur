@@ -2,7 +2,7 @@
 
 _pkgname=labwc
 pkgname=labwc-wlroots-018-git
-pkgver=0.7.1.r138.gca0299d2
+pkgver=0.7.1.r140.g32929e8a
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox (git version)'
 url="https://github.com/labwc/labwc"
@@ -15,21 +15,15 @@ conflicts=(labwc)
 provides=(labwc)
 source=("git+https://github.com/labwc/${_pkgname}.git"
         'https://github.com/labwc/labwc/pull/1641.patch'
-        'labwc-atomic-modesetting-tearing.patch'
-        'labwc-fix-xwayland-unmanaged-restack.patch'
-        'override_redirect.patch')
+        'labwc-atomic-modesetting-tearing.patch')
 md5sums=('SKIP'
          '8714a0bae3721836a15cd1597bedc72c'
-         '63792a6012b41b164e3a9194d522f9ac'
-         'f4a7cd21681f8c49505f28aed8d5e878'
-         'd5a2b2205636263fdd12c36d4cd19089')
+         '63792a6012b41b164e3a9194d522f9ac')
 
 prepare() {
   cd "$_pkgname"
   patch -Np1 -i "${srcdir}/1641.patch"
   patch -Np1 -i "${srcdir}/labwc-atomic-modesetting-tearing.patch"
-  patch -Np1 -i "${srcdir}/labwc-fix-xwayland-unmanaged-restack.patch"
-  patch -Np1 -i "${srcdir}/override_redirect.patch"
 }
 
 pkgver() {
