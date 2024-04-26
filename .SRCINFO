@@ -1,10 +1,10 @@
 pkgbase = r-metaphor
 	pkgdesc = Metabolic Pathway Analysis of RNA
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MetaPhOR
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r-clusterprofiler
 	depends = r-ggplot2
 	depends = r-ggrepel
@@ -19,6 +19,6 @@ pkgbase = r-metaphor
 	optdepends = r-rmarkdown
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetaPhOR_1.4.0.tar.gz
 	md5sums = 311e286126427130d127b23a77b3b6f4
-	sha256sums = e5c5b633e28ee4089d7e193e23d5e015eabd5d9b6ac4b08c307f95a19984fcdb
+	b2sums = 29fc0b52f142a96f98ee2c053ecf5b096a5e08452dc6665384ab563a22d7435a1a073ab44bb3a10385224e142edcba903c97d76f6037fe855db6018dbee62674
 
 pkgname = r-metaphor

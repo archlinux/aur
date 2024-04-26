@@ -4,11 +4,11 @@ _pkgname=MetaPhOR
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Metabolic Pathway Analysis of RNA"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-clusterprofiler
   r-ggplot2
@@ -27,11 +27,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('311e286126427130d127b23a77b3b6f4')
-sha256sums=('e5c5b633e28ee4089d7e193e23d5e015eabd5d9b6ac4b08c307f95a19984fcdb')
+b2sums=('29fc0b52f142a96f98ee2c053ecf5b096a5e08452dc6665384ab563a22d7435a1a073ab44bb3a10385224e142edcba903c97d76f6037fe855db6018dbee62674')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
