@@ -4,11 +4,11 @@ _pkgname=epistasisGA
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="An R package to identify multi-snp effects in nuclear family studies using the GADGETS method"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   blas
   lapack
@@ -39,11 +39,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('79635d9683f002813e51fa3c17e49b39')
-sha256sums=('214867cd3357037f6c094be7ef2dda4c7fb5653a84fd86b2c8354b06882ad836')
+b2sums=('20040b701a4086f11d2da4d64617faae02301fab8e6cd981bfef8958eded6df64b8ab2b873557721ceb2473222ff337ff1dd21ed0036de5a4432c3b425aed641')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
