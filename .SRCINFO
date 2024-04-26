@@ -1,10 +1,10 @@
 pkgbase = r-genomautomorphism
 	pkgdesc = Compute the automorphisms between DNA's Abelian group representations
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/GenomAutomorphism
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-testthat
 	depends = r-biocgenerics
 	depends = r-biocparallel
@@ -25,6 +25,6 @@ pkgbase = r-genomautomorphism
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomAutomorphism_1.4.0.tar.gz
 	md5sums = 36ebcd90b454dc7450e875730537811b
-	sha256sums = 98f116ad3fb31d5d7216407585a0b0db7eebd28d01d79f2f5eefd24f2b67f142
+	b2sums = 33be5f5772966e34b9a0d4a637e31cb6f5fc0c21688b82be58caaa6edcd7fc7ccc80ba1a7b30edaf79cd06b3be36342283fd1908e129261595cb0d1d7a461468
 
 pkgname = r-genomautomorphism
