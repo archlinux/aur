@@ -1,6 +1,6 @@
 pkgbase = nodejs-cmake-js
 	pkgdesc = CMake.js - a Node.js native addon build tool
-	pkgver = 6.3.0
+	pkgver = 7.3.0
 	pkgrel = 1
 	url = https://github.com/cmake-js/cmake-js
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = nodejs-cmake-js
 	makedepends = npm
 	depends = nodejs
 	depends = cmake
-	noextract = nodejs-cmake-js-6.3.0.tgz
+	noextract = nodejs-cmake-js-7.3.0.tgz
 	options = !strip
-	source = https://registry.npmjs.org/cmake-js/-/cmake-js-6.3.0.tgz
-	sha256sums = ea64f2b29092f73c54334b920b5c4603e946a652529ff4a72ab82d00b2c47899
+	source = https://registry.npmjs.org/cmake-js/-/cmake-js-7.3.0.tgz
+	b2sums = 4a9e9f552498277445c1cb2c0cbd7341c72b36f3fb1cc2d8b83459d1d805dc4026b5ca98de04346db35fb846558a2eab14d246b2c71f0bb8baa00aff9acd3d80
 
 pkgname = nodejs-cmake-js

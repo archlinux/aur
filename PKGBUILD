@@ -1,8 +1,8 @@
-# Maintainer: Yufan You <ouuansteve at gmail>
+# Maintainer: munsternet <munsternet at ik dot me>
 
 _npmname=cmake-js
 pkgname=nodejs-cmake-js
-pkgver=6.3.0
+pkgver=7.3.0
 pkgrel=1
 pkgdesc="CMake.js - a Node.js native addon build tool"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs' 'cmake')
 makedepends=('npm')
 options=(!strip)
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('ea64f2b29092f73c54334b920b5c4603e946a652529ff4a72ab82d00b2c47899')
+b2sums=('4a9e9f552498277445c1cb2c0cbd7341c72b36f3fb1cc2d8b83459d1d805dc4026b5ca98de04346db35fb846558a2eab14d246b2c71f0bb8baa00aff9acd3d80')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
