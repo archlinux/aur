@@ -3,7 +3,7 @@
 _extractedName="google-cloud-sdk"
 _pkgname="google-cloud-cli"
 pkgname="${_pkgname}-lite"
-pkgver=472.0.0
+pkgver=473.0.0
 pkgrel=1
 pkgdesc="A distribution of the gcloud CLI that strips these unnessary dependencies to reduce the size by > 75%"
 url="https://github.com/tonymet/gcloud-lite"
@@ -23,7 +23,7 @@ source=(
 conflicts=('google-cloud-sdk' 'google-cloud-cli')
 provides=('google-cloud-sdk' 'google-cloud-cli')
 replaces=('google-cloud-sdk')
-sha256sums=('d47d9d94d718a96189f6cd82cc6840df8d7d34d483d77b1e173af8d4b2ae8a51'
+sha256sums=('c90115205d1fe44d89c2219dca9ecdaee8dc6a74f48e2938368c2be3ad45c9e1'
             'e03ffb8a534b175dc497621a0396bcc29884279daa519e2cb90bd98c61d6530a'
             'c19dbe916e6fd18d9b17b3309ee60c5d389035c5520822d2c14c045d8b853924')
 
