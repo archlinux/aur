@@ -1,4 +1,4 @@
-*.pkg.tar.zst
-pkg
-src
+src/
+pkg/
 dev-sidecar/
+dev-sidecar-git-*.pkg.tar*
