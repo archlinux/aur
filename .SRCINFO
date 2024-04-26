@@ -1,7 +1,7 @@
 pkgbase = whisper.cpp
 	pkgdesc = Port of OpenAI's Whisper model in C/C++
 	pkgver = 1.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/whisper.cpp
 	arch = armv7h
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = whisper.cpp
 	makedepends = cuda
 	makedepends = git
 	makedepends = openvino
+	makedepends = rocm-hip-sdk
 	depends = glibc
 	depends = gcc-libs
 	source = whisper.cpp-1.5.5.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.5.5.tar.gz
@@ -38,6 +39,14 @@ pkgname = whisper.cpp-clblas
 	depends = glibc
 	depends = gcc-libs
 	depends = clblast
+	provides = whisper.cpp=1.5.5
+	conflicts = whisper.cpp
+
+pkgname = whisper.cpp-hipblas
+	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with AMD ROCm optimizations)
+	depends = glibc
+	depends = gcc-libs
+	depends = rocm-hip-runtime
 	provides = whisper.cpp=1.5.5
 	conflicts = whisper.cpp
 

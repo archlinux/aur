@@ -5,10 +5,11 @@ pkgname=(
   "${pkgbase}"
   "${pkgbase}-cublas"
   "${pkgbase}-clblas"
+  "${pkgbase}-hipblas"
   "${pkgbase}-openvino"
 )
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -21,6 +22,7 @@ makedepends=(
   'cuda'
   'git'
   'openvino'
+  'rocm-hip-sdk'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
@@ -65,9 +67,14 @@ build() {
     -DWHISPER_CUDA=ON
   )
 
+  local _cmake_hipblas_args=(
+    "${_cmake_args[@]}"
+    -DWHISPER_HIPBLAS=ON
+  )
+
   local _cmake_openvino_args=(
     "${_cmake_args[@]}"
-    -DWHISPER_OPENVINO=on
+    -DWHISPER_OPENVINO=ON
   )
 
   echo "Build ${pkgbase} with OPENBlas"
@@ -84,6 +91,11 @@ build() {
   cd "${srcdir}/${pkgbase}-cublas"
   export PATH+=":/opt/cuda/bin"
   cmake "${_cmake_cublas_args[@]}"
+  cmake --build build
+
+  echo "Build ${pkgbase} with HIPBlas (AMD ROCm)"
+  cd "${srcdir}/${pkgbase}-hipblas"
+  cmake "${_cmake_hipblas_args[@]}"
   cmake --build build
 
   echo "Build ${pkgbase} with OpenVINO run-time"
@@ -121,6 +133,17 @@ package_whisper.cpp-cublas() {
   conflicts=("${pkgbase}")
 
   cd "${pkgbase}-cublas"
+  DESTDIR="${pkgdir}" cmake --install build
+  _package
+}
+
+package_whisper.cpp-hipblas() {
+  pkgdesc="$pkgdesc (with AMD ROCm optimizations)"
+  depends+=('rocm-hip-runtime')
+  provides=("${pkgbase}=${pkgver}")
+  conflicts=("${pkgbase}")
+
+  cd "${pkgbase}-hipblas"
   DESTDIR="${pkgdir}" cmake --install build
   _package
 }
