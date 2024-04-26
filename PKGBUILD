@@ -4,11 +4,11 @@ _pkgname=seqArchR
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Identify Different Architectures of Sequence Elements"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   python-packaging
   python-scikit-learn
@@ -40,11 +40,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b991ca99e52e357f8ef95a3a75a1decc')
-sha256sums=('0eaabb037d55fbea2ca2919eac7f85019b1eb852c76338428a61d89f3481dff6')
+b2sums=('070a7f2d571958f75847beb84f63bdb935738e85a511d359ab977407478f897a140cb936c011f3663b568d8f3cfa5797bb756c19d0c49d8fb5ace3b4e70ff7d3')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
