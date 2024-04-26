@@ -21,10 +21,9 @@ sha256sums=('53673497e6f2a6cf44c8152b682bd32e07702a9fc469f280f5f2a286c1e8e770')
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	mkdir -p build
 
-	# configure with AUR - add -DDISABLE_AUR=true to disable AUR support
-	meson --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc . build
+	# disable AUR as it is currently broken: https://git.cromer.cl/cromer/pamac-classic/issues/12
+	meson setup --reconfigure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc -DDISABLE_AUR=true . build
 
 	# build
 	ninja -C build
