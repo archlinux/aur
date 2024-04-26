@@ -1,7 +1,7 @@
 pkgbase = luola
 	pkgdesc = A cavern-flying game for 1-4 players
 	pkgver = 1.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://web.archive.org/web/20081206054041/http://www.luolamies.org/software/luola/
 	arch = i686
 	arch = x86_64
@@ -18,4 +18,3 @@ pkgbase = luola
 	md5sums = 4777681fa97ada351ebaf954ba8451ef
 
 pkgname = luola
-

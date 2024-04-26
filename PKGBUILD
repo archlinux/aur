@@ -4,7 +4,7 @@
 
 pkgname=luola
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A cavern-flying game for 1-4 players"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -18,6 +18,11 @@ md5sums=('029f48e8fb8d104e9634cf20c4493460'
          '7660b90d67c06726c1849c3ff0e24aea'
          '4777681fa97ada351ebaf954ba8451ef')
 
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+	sed -i 's/^struct Pilot/typedef struct Pilot/' src/pilot.h
+}
+
 package() {
  cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr --enable-sdl-gfx -enable-sound LIBS="-lm"
@@ -27,4 +32,3 @@ package() {
   install -Dm644 {*.png,*.lev} "$pkgdir/usr/share/luola/levels"
   install -Dm644 "$pkgname-$pkgver/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-
