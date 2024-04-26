@@ -4,11 +4,11 @@ _pkgname=ggmanh
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Visualization Tool for GWAS Result"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-gdsfmt
   r-ggplot2
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('dbbd8130e9ef70cb69c7e305af0c37d7')
-sha256sums=('10842e9355ca1984a5204eeb6d2972bb922fb9462964a1b720647c73738958c8')
+b2sums=('d8df5796d54a089abf29d24a237d064abcdc37dd27e6ae4a13e796c83b3bb51ff9a799859dc1f9c1523e79838fed41b64ada339723b0a2637821016564a8bb4d')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
