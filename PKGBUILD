@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=splayer-bin
 _pkgname=SPlayer
-pkgver=2.0.6
+pkgver=2.0.7
 _electronversion=28
 pkgrel=1
 pkgdesc="A minimalist music player.一个简约的在线音乐播放器，支持网易云音乐账号登录，逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f5b7e5d97f2705c44bfb514dee76d4b8edcbbe4ed7e74e60bddc1c6771ab0237'
+sha256sums=('f41730c4e2e3e46c634dfa9e9fc0f4e1ebeec54f655b6a7587c1eecdd6368bae'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
