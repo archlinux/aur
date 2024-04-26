@@ -1,7 +1,7 @@
 pkgbase = ferretdb
 	pkgdesc = FerretDB is a proxy that converts MongoDB queries to SQL and uses PostgreSQL as the database engine.
 	pkgver = 1.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ferretdb.com/
 	arch = x86_64
 	arch = armv7h
