@@ -819,3 +819,16 @@ New Features:
 Fixes:
 - A problem causing some long task labels to overflow has been fixed.
 - Morgen now provides better guidance in case of difficulties fetching tasks from third-party sources.
+
+
+=== Morgen 3.4.1
+New Features:
+- Google, Office 365, Outlook, and Fastmail calendars are updated in near real-time when an event is created or updated. This refresh mechanism is automatically enabled for any account that is connected to the Morgen Cloud.
+- A new Due tomorrow list can be enabled in the task sidebar preferences. This option, a complement the Due today and Due soon lists, is ideal for those who like to wrap each day by planning their work for the following day.
+
+Fixes:
+- Previously, personal Outlook accounts such as @outlook.com and @hotmail.com were limited to 10 calendars. This limitation has been lifted. Please reconnect the account if you don't see all your calendars.
+- The "Open in…" button on external tasks was unreliable on Windows and Linux. Now it will always redirect to the browser instead of trying to open the local app, which might not be available. You can still force the opening of the app, by pressing Shift while clicking on the button.
+- We fixed a problem that prevented some links from being opened on browsers.
+- A flickering that occurred when opening event details has been removed.
+- A problem that could cause the calendar synchronization to hang indefinitely has been rectified.
