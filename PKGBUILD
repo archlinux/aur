@@ -4,11 +4,11 @@ _pkgname=AnVILWorkflow
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Run workflows implemented in Terra/AnVIL workspace"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-anvil
   r-httr
@@ -21,11 +21,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('af890e3cea3c42346ec887603ba12e40')
-sha256sums=('b170a2d4b3389a7f5726135596ace4382cf4886cb0c735c20603c4386fbddb97')
+b2sums=('241b785fa692618be8f1d8f612395be2d80af8d81360d395c317bdf6b7824d16dc11a96b01aeda76c8eece5b0243ba5e15a829f2db95582400f103c300e77ab9')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {

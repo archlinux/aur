@@ -1,10 +1,10 @@
 pkgbase = r-anvilworkflow
 	pkgdesc = Run workflows implemented in Terra/AnVIL workspace
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/AnVILWorkflow
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r-anvil
 	depends = r-httr
 	depends = r-jsonlite
@@ -13,6 +13,6 @@ pkgbase = r-anvilworkflow
 	optdepends = r-tibble
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnVILWorkflow_1.2.0.tar.gz
 	md5sums = af890e3cea3c42346ec887603ba12e40
-	sha256sums = b170a2d4b3389a7f5726135596ace4382cf4886cb0c735c20603c4386fbddb97
+	b2sums = 241b785fa692618be8f1d8f612395be2d80af8d81360d395c317bdf6b7824d16dc11a96b01aeda76c8eece5b0243ba5e15a829f2db95582400f103c300e77ab9
 
 pkgname = r-anvilworkflow
