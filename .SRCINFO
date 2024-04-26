@@ -10,6 +10,7 @@ pkgbase = python-pyroomacoustics
 	depends = python-scipy
 	depends = cython
 	depends = pybind11
+	depends = eigen
 	optdepends = libsamplerate: for resampling signals
 	optdepends = python-matplotlib: to create graphs and plots
 	optdepends = python-sounddevice: to play sound samples

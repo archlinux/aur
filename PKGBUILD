@@ -8,7 +8,7 @@ pkgdesc='Package for audio signal processing for indoor applications and beamfor
 arch=('x86_64')
 url="https://github.com/LCAV/pyroomacoustics"
 license=('MIT')
-depends=('python-numpy' 'python-scipy' 'cython' 'pybind11')
+depends=('python-numpy' 'python-scipy' 'cython' 'pybind11' 'eigen')
 makedepends=('python-setuptools')
 optdepends=('libsamplerate: for resampling signals'
     'python-matplotlib: to create graphs and plots'
