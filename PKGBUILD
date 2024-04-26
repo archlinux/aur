@@ -1,7 +1,7 @@
 #Maintainer: VPeti1 (Vasko Peter) 
 
 pkgname=lvc
-pkgver=1
+pkgver=2
 pkgrel=1
 arch=('x86_64')
 
