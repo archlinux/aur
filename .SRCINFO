@@ -1,0 +1,16 @@
+pkgbase = wiredpanda
+	pkgdesc = Software developed in order to help students learn about logic circuits.
+	pkgver = 4.1.12
+	pkgrel = 1
+	url = https://gibis-unifesp.github.io/wiRedPanda/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = git
+	depends = qt5-base
+	depends = qt5-multimedia
+	backup = etc/pacman.conf
+	source = https://github.com/GIBIS-UNIFESP/wiredpanda/archive/refs/tags/v4.1.12.tar.gz
+	sha256sums = SKIP
+
+pkgname = wiredpanda
