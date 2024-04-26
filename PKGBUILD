@@ -4,11 +4,11 @@ _pkgname=enrichViewNet
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="From functional enrichment results to biological networks"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-enrichplot
   r-gprofiler2
@@ -28,11 +28,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('5b2eb51ee4f57abd3b77da182e7e5d1a')
-sha256sums=('9b7bdd6591da9e94251ed4599287814b53ccae5eeace8c5fd689e9818160e510')
+b2sums=('a6412415bfbc3790ef5626e55f594b23a26da23cad38d889df068e0e5f8aeca9ae1b00f7b980b97afd0c1e410621bedb675ccfc860d38838271e180fa628eec6')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
