@@ -1,10 +1,10 @@
 pkgbase = r-cbnplot
 	pkgdesc = plot bayesian network inferred from gene expression data based on enrichment analysis results
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/CBNplot
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r-biocfilecache
 	depends = r-bnlearn
 	depends = r-clusterprofiler
