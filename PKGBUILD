@@ -5,12 +5,12 @@ pkgrel=1
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial Tubi desktop application"
 arch=('x86_64')
-url="https://gitlab.com/primevideo/application"
+url="https://gitlab.com/linuxbombay/tubidesktop"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-source=("https://gitlab.com/tubidesktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('9a9616602952ea98976fa10783870695d85c2ecb04ebcb3790ddad991b7df210')
 
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
