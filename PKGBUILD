@@ -9,7 +9,7 @@ pkgname=${_pkgname}
 _pkgreponame='ConvertAll'
 _tag='v1.0.1'
 pkgver="${_tag/v/}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert between units.'
 url='https://github.com/doug-101/ConvertAll'
 arch=('x86_64')
@@ -21,14 +21,16 @@ depends=(
 makedepends=('flutter-engine' 'git' 'yq')
 source=(
 	"git+${url}.git#tag=${_tag}"
-	"flutter::git+https://github.com/flutter/flutter.git"
-	"flutter-engine::git+https://github.com/flutter/engine.git")
+	'flutter::git+https://github.com/flutter/flutter.git'
+	'flutter-engine::git+https://github.com/flutter/engine.git'
+	'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git')
 sha256sums=('22cd74809e42e20b4fd9c3cacced9024a80ad1235553e9b18b81b5f44ef1f6c3'
+            'SKIP'
             'SKIP'
             'SKIP')
 
 _srcdir="${_pkgreponame}"
-_engine_version=3.19.4
+_engine_version=3.19.6
 
 prepare() {
 	cd "${_srcdir}"
