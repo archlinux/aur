@@ -6,11 +6,11 @@ _pkgname=AnnotationDbi
 _pkgver=1.64.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Manipulation of SQLite-based annotations in Bioconductor"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biobase
   r-biocgenerics
@@ -37,11 +37,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('965300db0b7a8b527ed3eb00fdd6d10f')
-sha256sums=('03bff46268ad797466f445c51ab72929224514512561c43662037ca10618b9ad')
+b2sums=('757d5ce94d6f18df4e7a4334fc3cee2b35328b51334d8bbc9c78a5ac68d3accb0621ed6178d4469a15384df32682eb53d5caca0be99dde5c5dbeab950688f06a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
