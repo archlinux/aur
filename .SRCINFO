@@ -1,7 +1,7 @@
 pkgbase = wechat-uos-bwrap
 	pkgdesc = WeChat Qt w/ bwrap sandbox
 	pkgver = 1.0.0.241
-	pkgrel = 11
+	pkgrel = 1
 	url = https://weixin.qq.com/
 	arch = x86_64
 	arch = aarch64
