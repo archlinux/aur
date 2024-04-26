@@ -1,16 +1,17 @@
 pkgbase = nvidia-dracut-hook
 	pkgdesc = NVIDIA initramfs rebuild hook for dracut based on dracut-hook AUR package
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	url = https://wiki.archlinux.org/title/NVIDIA#pacman_hook
 	arch = any
 	license = WTFPL
 	depends = dracut
 	depends = dracut-hook
-	depends = nvidia-dkms
+	optdepends = nvidia-dkms
+	optdepends = nvidia-open-dkms
 	conflicts = dracut-uefi-hook
 	conflicts = dracut-ukify
 	source = nvidia-dracut.hook
-	sha256sums = 8b271a7d0c9213877368cc42a821234dd1d0640c11c834f1e83816ba3be105cd
+	sha256sums = 7792dbed0f33f1266d089342074028c73501fca6d1ebb972efefd9ef9b39bee1
 
 pkgname = nvidia-dracut-hook

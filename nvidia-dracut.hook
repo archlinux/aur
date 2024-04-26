@@ -3,9 +3,8 @@ Operation = Install
 Operation = Upgrade
 Operation = Remove
 Type = Package
-Target = nvidia
-Target = nvidia-lts
 Target = nvidia-dkms
+Target = nvidia-open-dkms
 
 [Action]
 Description = NVIDIA module rebuild dracut...
