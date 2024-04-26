@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 pkgname=ferretdb
 pkgver=1.21.0
-pkgrel=2
+pkgrel=3
 pkgdesc="FerretDB is a proxy that converts MongoDB queries to SQL and uses PostgreSQL as the database engine."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://www.ferretdb.com/"
@@ -18,7 +18,10 @@ sha256sums=('46c47b227d69826f9ee72ecc07fc0d0fe7bc8f877c7216a310176a8562529e2a'
             '8bcca7a750e30b46ec3da089515563d214f6b79ee910ff5567e30857e96cb163'
             'deee0ed48bbf015aa230f9cf87764217ddd039dfec19172518db3db902cdda22'
             '7e008a8c1df6bd8cc63168d55d8d0e742e97109d5f7dcddde0ea2bc2b11ddb6a')
-validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
+validpgpkeys=(
+	'968479A1AFF927E37D1A566BB5690EEEBB952194' # GitHub signing key
+	'4A015C3F33A17284E0C86FB95D251E1E0E83558A' # Alexey Palazhchenko
+)
 
 # Ignore git filters from user's home directory config
 export GIT_CONFIG_GLOBAL=/dev/null
