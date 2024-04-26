@@ -16,8 +16,7 @@ license=("GPL2")
 arch=("x86_64")
 provides=("lime3ds")
 conflicts=()
-replaces=("citra-bin"
-          "citra-qt-bin")
+replaces=()
 depends=("ffmpeg"
          "sdl2")
 source=("https://github.com/Lime3DS/Lime3DS/releases/download/$pkgver/lime3ds-$pkgver-linux-appimage.tar.gz"
