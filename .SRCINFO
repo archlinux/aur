@@ -1,6 +1,6 @@
 pkgbase = neovim-autosave-git
 	pkgdesc = Neovim plugin that auto-saves your work
-	pkgver = r61.140c477
+	pkgver = r61.140c478
 	pkgrel = 1
 	url = https://github.com/pocco81/autosave.nvim
 	arch = any
