@@ -1,0 +1,24 @@
+pkgbase = clone-tracker
+	pkgdesc = コピペコードに悩まされてきた開発環境へスマートなコード管理を実現
+	pkgver = 1.18.2
+	pkgrel = 1
+	url = https://clonetracker.com
+	arch = x86_64
+	license = custom
+	depends = webkit2gtk
+	depends = libsoup
+	depends = gdk-pixbuf2
+	depends = bash
+	depends = glibc
+	depends = pango
+	depends = gtk3
+	depends = zlib
+	depends = perl
+	depends = gcc-libs
+	depends = glib2
+	depends = cairo
+	depends = hicolor-icon-theme
+	source = https://clonetracker.com/dl/clone-tracker_1.18.2_amd64.AppImage
+	sha256sums = 5f948add37b534a6794aa97317c3061d65f4cd0505c3ac65675be0ffc499a50f
+
+pkgname = clone-tracker
