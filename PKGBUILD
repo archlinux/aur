@@ -4,11 +4,11 @@ _pkgname=CNVMetrics
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Copy Number Variant Metrics"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biocparallel
   r-genomicranges
@@ -30,11 +30,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('ebb4f847744aaddcc125d870b1a67154')
-sha256sums=('95db84f879b5726ae2389ee54bafc8966fa9aeb9bf3c65cd4ffbdb665823c49a')
+b2sums=('e6a350c3fd5685ea76a3856bc0e2c199aec668c716d3ea5bb483050d198e894d85b1b7fe8e93ea79b65934403eec9b27dcf53087511d91b11638e136d660f844')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
