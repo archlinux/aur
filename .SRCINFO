@@ -1,7 +1,7 @@
 pkgbase = r-fairness
 	pkgdesc = Algorithmic Fairness Metrics
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=fairness
 	arch = any
 	license = MIT
