@@ -3,7 +3,7 @@
 
 pkgname=zola
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An opinionated static site generator"
 arch=('x86_64')
 url="https://github.com/getzola/zola"
@@ -34,7 +34,7 @@ package() {
   local _target="target/release/$pkgname"
   install -Dm0755 -t "$pkgdir/usr/bin/" $_target
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
-  $_target completion bash | install -Dm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgname.bash"
+  $_target completion bash | install -Dm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgname"
   $_target completion fish | install -Dm0644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
   $_target completion zsh  | install -Dm0644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }

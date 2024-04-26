@@ -1,7 +1,7 @@
 pkgbase = zola
 	pkgdesc = An opinionated static site generator
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/getzola/zola
 	arch = x86_64
 	license = MIT
