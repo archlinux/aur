@@ -1,7 +1,7 @@
 pkgbase = audiobookshelf
 	pkgdesc = Self-hosted audiobook server for managing and playing audiobooks
 	pkgver = v2.9.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/advplyr/audiobookshelf
 	arch = any
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = audiobookshelf
 	optdepends = tone-bin
 	provides = audiobookshelf
 	conflicts = audiobookshelf
+	options = !debug
 	options = !strip
 	backup = etc/conf.d/audiobookshelf
 	source = git+https://github.com/advplyr/audiobookshelf#tag=v2.9.0
