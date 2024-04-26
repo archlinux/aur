@@ -2,12 +2,12 @@
 
 pkgname=easyrpg-player-git
 _pkgname=${pkgname%-*}
-pkgver=0.7.0.r460.g9ee72af7
+pkgver=0.8.r306.gb313163f5
 pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (development version)"
 arch=('i686' 'x86_64')
 url="https://easyrpg.org"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 conflicts=("$_pkgname")
 provides=("$_pkgname=${pkgver%.r*}")
 makedepends=('git' 'cmake' 'ninja' 'asciidoctor')
