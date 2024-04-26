@@ -1,4 +1,4 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Pedro Simoes <pedrofchsimoes at gmail dot com>
 
 pkgname=neovim-autosave-git
 pkgver=r61.140c477
@@ -25,6 +25,6 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	find doc lua plugin -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	find lua plugin -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
