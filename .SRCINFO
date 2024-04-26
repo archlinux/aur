@@ -1,10 +1,10 @@
 pkgbase = r-dimred
 	pkgdesc = A Framework for Dimensionality Reduction
 	pkgver = 0.2.6
-	pkgrel = 3
+	pkgrel = 5
 	url = https://cran.r-project.org/package=dimRed
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = python-tensorflow
 	checkdepends = r-coranking
 	checkdepends = r-diffusionmap
@@ -52,6 +52,6 @@ pkgbase = r-dimred
 	optdepends = r-vegan
 	source = https://cran.r-project.org/src/contrib/dimRed_0.2.6.tar.gz
 	md5sums = 1cef3b06c7f0eea422fedbbf04a28e63
-	sha256sums = 9a7eb14781f01a12e26e7b26a91c8edaca7d824b9c1ffe74c81837098d9bf417
+	b2sums = e68bf03cae0c60703b7952a3354ea29fbd28a6594903c2fc0188f9aefe619b142dcde29a7eaa44c003dbf701fd0f302a49f13392781e73a3ca50d78379f48a81
 
 pkgname = r-dimred
