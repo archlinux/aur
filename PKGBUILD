@@ -4,11 +4,11 @@ _pkgname=MSA2dist
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="MSA2dist calculates pairwise distances between all sequences of a DNAStringSet or a AAStringSet using a custom score matrix and conducts codon based analysis"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-ape
   r-biostrings
@@ -41,11 +41,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8a0d1c303af72c93a1810488010c2e6f')
-sha256sums=('3a2cb8cfd1af85866df1ff9b8d8f33a0b691600353e5201853a9b3956e362df8')
+b2sums=('158153791f951596afa798d2892d6c0f14c15e1afd230129cd4593f6a6ba17ba492ec06e84fe12fec56f3d85c649bad3b0a7cd45d4f37d5853420e37fbced8ac')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
