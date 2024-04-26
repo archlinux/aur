@@ -1,7 +1,7 @@
 pkgbase = gamescope-nvidia
 	pkgdesc = SteamOS session compositing window manager (NVIDIA patch)
-	pkgver = 3.14.3
-	pkgrel = 2
+	pkgver = 3.14.6
+	pkgrel = 1
 	url = https://github.com/sharkautarch/gamescope/tree/nvidia-fix
 	install = gamescope.install
 	arch = x86_64
@@ -32,13 +32,13 @@ pkgbase = gamescope-nvidia
 	depends = xorg-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = gamescope::git+https://github.com/ValveSoftware/gamescope.git#tag=3.14.3
+	source = gamescope::git+https://github.com/ValveSoftware/gamescope.git#tag=3.14.6
 	source = reshade::git+https://github.com/Joshua-Ashton/reshade.git#commit=9fdbea6892f9959fdc18095d035976c574b268b7
 	source = vkroots::git+https://github.com/Joshua-Ashton/vkroots.git#commit=5c217cd43ca1ceecaa6acfc93a81cdc615929155
 	source = wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=a5c9826e6d7d8b504b07d1c02425e6f62b020791
 	source = stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9
 	source = reverts-bd722f7.patch
-	sha1sums = 842bc625941dcc054d45ede5967338de35470286
+	sha1sums = 49bb8eb3ad455416aa04fd9d3af214c85de26850
 	sha1sums = 5860b457b6bb00d1fdfd6dd068516604e87a6466
 	sha1sums = a6a226a972eaef5bc2b009b75995e75b29a50d5b
 	sha1sums = 0e6ccd1ec72dc3471594568097c922bec551fc3c

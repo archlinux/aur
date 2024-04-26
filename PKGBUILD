@@ -6,8 +6,8 @@
 
 pkgname=gamescope-nvidia
 _pkgname=gamescope
-pkgver=3.14.3
-pkgrel=2
+pkgver=3.14.6
+pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
 url=https://github.com/sharkautarch/gamescope/tree/nvidia-fix
@@ -48,7 +48,7 @@ source=(
   "wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=a5c9826e6d7d8b504b07d1c02425e6f62b020791"
   "stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9"
   "reverts-bd722f7.patch")
-sha1sums=('842bc625941dcc054d45ede5967338de35470286'
+sha1sums=('49bb8eb3ad455416aa04fd9d3af214c85de26850'
           '5860b457b6bb00d1fdfd6dd068516604e87a6466'
           'a6a226a972eaef5bc2b009b75995e75b29a50d5b'
           '0e6ccd1ec72dc3471594568097c922bec551fc3c'
