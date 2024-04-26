@@ -3,7 +3,7 @@
 _pkgname=ucspi-tcp
 pkgname=ucspi-tcp-re
 pkgver=0.88
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy-to-use command-line tools for building TCP client-server applications."
 arch=('x86_64' 'aarch64')
 provides=('tcpserver' 'tcpclient')
@@ -20,7 +20,7 @@ prepare() {
 
   # Changes the types of two conflicting function definitions and adds compiler
   # flags to the Makefile.
-  patch --strip=1 --input="$srcdir/$_pkgname.patch"
+  patch --strip=1 --input="$srcdir/$pkgname.patch"
 
   # The package, being written in the year 2000, thus being arcane ancient C,
   # uses some insane method for automatically generating a source file that
