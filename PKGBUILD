@@ -5,11 +5,11 @@ _pkgname=multiMiR
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Integration of multiple microRNA-target databases with their disease and drug associations"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-annotationdbi
   r-biocgenerics
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('7102f312557b010d184bac5dea6e5009')
-sha256sums=('2574a7991c9552c84c8cd9c39ba4f5508d6e21870a0126da1ff855e96c82b157')
+b2sums=('bce18f4053c674509bb81ca7330a8b7d3695539d41337c7a80ac738a02f259278cf3f651066d432b606027a040cb2c99a7247c7d379fdaf69cbba0b00963577f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
