@@ -2,18 +2,20 @@
 
 pkgname=valkey
 pkgver=7.2.5
-pkgrel=2
+_pkgnamever="${pkgname}-${pkgver}"
+pkgrel=3
 pkgdesc='A new project to resume development on the formerly open-source Redis project'
 arch=('x86_64')
 url='https://valkey.io/'
 license=('BSD-3-Clause')
 depends=('jemalloc' 'systemd-libs' 'openssl' 'glibc')
 makedepends=('systemd')
+conflicts=("${pkgname}-git")
 backup=(
   'etc/valkey/valkey.conf'
   'etc/valkey/sentinel.conf'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}-io/${pkgname}/archive/${pkgver}.tar.gz"
+source=("${_pkgnamever}.tar.gz::https://github.com/${pkgname}-io/${pkgname}/archive/${pkgver}.tar.gz"
   valkey.service
   valkey-sentinel.service
   valkey.sysusers
@@ -30,7 +32,7 @@ b2sums=(
 )
 
 prepare() {
-  cd $pkgname-$pkgver || exit 1
+  cd "${_pkgnamever}" || exit 1
   patch -Np1 <../valkey.dir-jemalloc.patch
 }
 
@@ -38,18 +40,18 @@ build() {
   make BUILD_TLS=yes \
     USE_SYSTEMD=yes \
     USE_REDIS_SYMLINKS=no \
-    -C $pkgname-$pkgver
+    -C "${_pkgnamever}"
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make PREFIX="$pkgdir"/usr \
+  cd "${_pkgnamever}" || exit 1
+  make PREFIX="${pkgdir}"/usr \
     USE_REDIS_SYMLINKS=no \
     install
 
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/valkey/LICENSE
-  install -Dm644 -t "$pkgdir"/etc/valkey valkey.conf sentinel.conf
-  install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ ../valkey.service ../valkey-sentinel.service
-  install -Dm644 "$srcdir"/valkey.sysusers "$pkgdir"/usr/lib/sysusers.d/valkey.conf
-  install -Dm644 "$srcdir"/valkey.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/valkey.conf
+  install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/valkey/LICENSE
+  install -Dm644 -t "${pkgdir}"/etc/valkey valkey.conf sentinel.conf
+  install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system/ ../valkey.service ../valkey-sentinel.service
+  install -Dm644 "${srcdir}"/valkey.sysusers "${pkgdir}"/usr/lib/sysusers.d/valkey.conf
+  install -Dm644 "${srcdir}"/valkey.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/valkey.conf
 }
