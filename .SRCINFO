@@ -16,7 +16,6 @@ pkgbase = duckstation-git
 	makedepends = qt6-wayland
 	makedepends = libdrm
 	makedepends = libpulse
-	makedepends = libwebp
 	makedepends = alsa-lib
 	makedepends = sndio
 	makedepends = ninja

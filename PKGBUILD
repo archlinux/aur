@@ -38,7 +38,6 @@ makedepends=(
     qt6-wayland
     libdrm
     libpulse
-    libwebp
     alsa-lib
     sndio
     ninja
@@ -102,6 +101,10 @@ build() {
         -DSHADERC_SKIP_TESTS=ON \
         -DSHADERC_SKIP_EXAMPLES=ON \
         -DSHADERC_SKIP_COPYRIGHT_CHECK=ON \
+        -DENABLE_GLSLANG_BINARIES=OFF \
+        -DENABLE_SPVREMAPPER=OFF \
+        -DSPIRV_TOOLS_LIBRARY_TYPE=STATIC \
+        -DSPIRV_SKIP_EXECUTABLES=ON \
         -G Ninja
     cmake --build build --parallel
     cmake --install build
