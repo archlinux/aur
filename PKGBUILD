@@ -5,11 +5,11 @@ _pkgname=compcodeR
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="RNAseq data simulation, differential expression analysis and performance comparison of differential expression methods"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-ape
   r-catools
@@ -57,11 +57,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b1ec77496e614cf3399843b8c34e6ab2')
-sha256sums=('43ed456bf52146b00d9a4b83a84f86d15630b669048d0019bae230e3e9293e04')
+b2sums=('62b09c9217a9a840e223fa9639d9c1f9853fb38e3dab39af9bbba53f94c85d20522a7df7fde9d32f3b6346872fdad5a1826359fc33ee9ad2e4f7c9ea17c25200')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
