@@ -1,7 +1,7 @@
 pkgbase = alhp-keyring
 	pkgdesc = ALHP PGP keyring
 	pkgver = 20240426
-	pkgrel = 1
+	pkgrel = 2
 	url = https://somegit.dev/ALHP/alhp-keyring
 	install = alhp-keyring.install
 	arch = any

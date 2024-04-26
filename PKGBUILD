@@ -2,7 +2,7 @@
 
 pkgname=alhp-keyring
 pkgver=20240426
-pkgrel=1
+pkgrel=2
 pkgdesc='ALHP PGP keyring'
 arch=(any)
 url='https://somegit.dev/ALHP/alhp-keyring'
@@ -14,7 +14,7 @@ b2sums=('b33b814a4e03f1684e77bbd6b5f556c9568ee069a6f63416bbc10bb84be19db1b2391d2
 validpgpkeys=('2E3B2B05A332A7DB9019797848998B4039BED1CA')  # Giovanni Harting <g.harting@mailstash.org>
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 
