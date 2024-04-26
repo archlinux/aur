@@ -1,14 +1,14 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=angie-owasp-crs
-pkgver=4.0.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='The OWASP CRS is a set of generic attack detection rules for use with ModSecurity or compatible web application firewalls.'
 arch=("any")
 url='https://github.com/coreruleset/coreruleset/'
 license=('Apache License 2.0')
 source=("https://github.com/coreruleset/coreruleset/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('c25bfd6de772815977783e78d7afd388d60bbba151762a38c7050fd5ecde6a48baa0a850028a24d42855ae4a788404ad1ee0f7a4ad2d94d53a46e261a00f7224')
+sha512sums=('041556b2071385c10a4b4a29ad4f926ee86f819f8b9c95f849e76b3d2724d5fc29c21a69f9eba6fd62e7f5709a109a95feca67a19d8c8d1f0410ee2987ac7a6b')
 backup=("etc/nginx/crs-setup.conf")
 install="angie-owasp-crs.install"
 package() {
