@@ -1,10 +1,10 @@
 pkgbase = r-ssc
 	pkgdesc = Semi-Supervised Classification Methods
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ssc
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = r-caret
 	checkdepends = r-kernlab
 	checkdepends = r-testthat
@@ -19,6 +19,6 @@ pkgbase = r-ssc
 	optdepends = r-timedate
 	source = https://cran.r-project.org/src/contrib/ssc_2.1-0.tar.gz
 	md5sums = 122e647cfaf26507b92a546dab33e053
-	sha256sums = bc298b7b954fece3e1e6be85d95a9a0ad65626082801208a22cfc905d10d07d3
+	b2sums = 3cdd363988a8c0a741f4fdfc92594773572019eb77edd045b0074646ca6fe5246fb50f0285574f1ff73b672cdff313e9cf707f7dcd0e2c56590f305e45f6abd6
 
 pkgname = r-ssc
