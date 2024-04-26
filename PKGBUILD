@@ -1,7 +1,7 @@
 # Maintainer: jdev082 <jdev0894@gmail.com>
 
 pkgname=catalyst-browser-bin
-pkgver=3.5.4
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Catalyst Web Browser"
 arch=('x86_64')
