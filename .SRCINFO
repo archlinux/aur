@@ -1,7 +1,7 @@
 pkgbase = intel-npu-driver-bin
 	pkgdesc = Intel(R) NPU (Neural Processing Unit) Driver
 	pkgver = 1.2.0.20240404_8553879914
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/linux-npu-driver
 	arch = x86_64
 	license = MIT
