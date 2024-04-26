@@ -2,9 +2,9 @@
 # Contributor: steelt <steeltitanium1 at gmail dot com>
 
 pkgname=ringracers
-pkgver=2.0
-_dataver=2.0
-pkgrel=3
+pkgver=2.1
+_dataver=2.1
+pkgrel=1
 pkgdesc="Kart racing video game originally based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2"
 arch=('x86_64' 'aarch64')
 license=('GPL2')
