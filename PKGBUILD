@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ttkmusicplayer-bin
 _pkgname=TTKMusicPlayer
-pkgver=3.6.0.0
-pkgrel=2
+pkgver=3.7.0.0
+pkgrel=1
 pkgdesc="TTKMusicPlayer that imitation Kugou music, the music player uses of qmmp core library based on Qt for windows and linux.(支持网易云音乐、酷我音乐、酷狗音乐)"
 arch=('x86_64')
 url="https://github.com/Greedysky/TTKMusicPlayer"
@@ -21,24 +21,23 @@ depends=(
     'qt5-declarative'
 )
 makedepends=(
-    'gendesk'
     'p7zip'
 )
 options=('!strip')
 noextract=("${pkgname%-bin}-${pkgver}.7z")
 source=(
     "${pkgname%-bin}-${pkgver}.7z::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux-x64.7z"
+    "${pkgname%-bin}.desktop"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('00d2821f984e967488caef71e6bf44c830a76c6acb7f224c77a76b1641ecbf9e'
+sha256sums=('91e0b5ecaa9b87547ccd41042c76e4fbeff2b668ebc6855de0d76ed2a96bf9de'
+            'd806a04be77d11023e74c59d2d854d4320f41e1d6ed39e2443c764861f4386d6'
             '1637474c3eedf557db89fc2c0cf0e1ee70ee0df5e2fdabc8898fc121415aab47')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|" \
         -e "s|@runname@|${_pkgname}|g" \
         -e "s|@pkgver@|${pkgver}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="AudioVideo;Player;Audio;Qt" --name="${_pkgname}" --exec="${pkgname%-bin}"
-    sed "4i\Name[zh_CN]=天天酷音" -i "${srcdir}/${pkgname%-bin}.desktop"
     install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.7z" -o"${srcdir}/opt/${pkgname%-bin}"
     rm -rf "${srcdir}/opt/${pkgname%-bin}/Downloads"
@@ -46,6 +45,7 @@ build() {
     find "${srcdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} \;
     find "${srcdir}/opt/${pkgname%-bin}" -type f -name "TTK*" -exec chmod 755 {} \;
     chmod 755 "${srcdir}/opt/${pkgname%-bin}/${pkgver}/QtWebEngineProcess"
+    sed "s|${_pkgname}.desktop|${pkgname%-bin}.desktop|g" -i "${srcdir}/opt/${pkgname%-bin}/deploy/share/appdata/${pkgname%-bin}.appdata.xml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
