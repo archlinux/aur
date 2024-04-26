@@ -1,7 +1,7 @@
 # Maintainer: Pedro Simoes <pedrofchsimoes at gmail dot com>
 
 pkgname=neovim-autosave-git
-pkgver=r61.140c477
+pkgver=r61.140c478
 pkgrel=1
 pkgdesc="Neovim plugin that auto-saves your work"
 arch=('any')
