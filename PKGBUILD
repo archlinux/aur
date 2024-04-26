@@ -14,7 +14,7 @@ url="https://$_pkgname.org"
 license=('Apache')
 depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' "$_electronpackage")
 makedepends=('asar')
-options=(!strip)
+options=(!strip !debug)
 provides=(
     'ferdium'
 )
