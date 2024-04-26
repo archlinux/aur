@@ -2,25 +2,25 @@
 
 pkgname=mcpelauncher-appimage
 _pkgname=${pkgname/appimage/ui-qt}
-_pkgver=0.14.1-790
+_pkgver=0.14.2-792
 pkgver="${_pkgver/-/.}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Minecraft Bedrock Launcher for Linux"
 arch=("x86_64" "armv7h" "aarch64")
 url="https://github.com/minecraft-linux/appimage-builder"
 license=('GPL3' 'MIT')
-depends=(fuse2)
+depends=()
 optdepends=('zenity: custom skin picker')
 provides=(mcpelauncher-ui-qt)
 conflicts=(mcpelauncher-ui-qt)
 options=(!strip)
-source_x86_64=("mcpelauncher-x86_64-${pkgver}.AppImage::$url/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-x86_64-v${pkgver}.AppImage")
-source_armv7h=("mcpelauncher-armv7h-${pkgver}.AppImage::$url/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-armhf-v${pkgver}.AppImage")
-source_aarch64=("mcpelauncher-aarch64-${pkgver}.AppImage::$url/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-arm64-v${pkgver}.AppImage")
-sha512sums_x86_64=('94e78dcf29b093fd6feaf2eb67fb075cf60aa00c2e576c6646b0288a9701118d2f8703f1d265cc646c94ba0fa51a6b8f4b5a842889f71c6c0acd5be2349d044e')
-sha512sums_armv7h=('2da44e76e6c748de42b64527636f4a42547cdac216e2780988b032155d6d0e64bc754b75555e1c1dd6ee710e3b241c0336ba1d9c15044d25273a2588638efac9')
-sha512sums_aarch64=('a1c6580d625df21d7d16c381eb110d63108ad577c4f66d676ca7fddaa3cf496bede1a88e265642e3da9e12dab1e55f07030862f7f5786a858aaa983a445a6afd')
-_fileName="mcpelauncher-${CARCH}-${pkgver}.AppImage"
+source_x86_64=("mcpelauncher-x86_64-v${pkgver}.AppImage::$url/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-x86_64-v${pkgver}.AppImage")
+source_armv7h=("mcpelauncher-armv7h-v${pkgver}.AppImage::$url/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-armhf-v${pkgver}.AppImage")
+source_aarch64=("mcpelauncher-aarch64-v${pkgver}.AppImage::$url/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-arm64-v${pkgver}.AppImage")
+sha512sums_x86_64=('9ab8617e70a9c7324de67169c59ec16f670a24f47169e1c502a1e6472b3a2bedfff20d7387adade99fab349c92f51e412a7a3ce20c1b8b18038d14262502f273')
+sha512sums_armv7h=('b9a975f772cbaab000faa845e2fbf10a9f95b48c18ebd6681b89ba286dcc1fc8efe442e624189907d967bc67812483a59646a9f62b68382d9d56c564cb56d52f')
+sha512sums_aarch64=('93c3adfc35d66342384e51d6efc2f2419bdbf7768a8da407f2c7c4e2c5980a98b642e5678edb55540a6d9f5e7c1d2298a58e3f00332f4032cf475369b8454660')
+_fileName="mcpelauncher-${CARCH}-v${pkgver}.AppImage"
 _desktopFile="usr/share/applications/mcpelauncher-ui-qt.desktop"
 _scalableIcon="usr/share/icons/hicolor/scalable/apps/mcpelauncher-ui-qt.svg"
 
@@ -38,6 +38,6 @@ package() {
     # Install source
     install -dm755 "${pkgdir}/opt/${_pkgname}"
     install -dm755 "${pkgdir}/usr/bin"
-    cp -r --target-directory="${pkgdir}/opt/${_pkgname}" "${srcdir}/squashfs-root/."
+    cp -r "${srcdir}/squashfs-root/." "${pkgdir}/opt/${_pkgname}"
     ln -s "/opt/${_pkgname}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
