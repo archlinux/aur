@@ -2,6 +2,7 @@
 
 pkgname=flowee-pay
 pkgver=2024.02.0
+options=(!lto)
 pkgrel=1
 pkgdesc="Flowee Payment solution"
 arch=('x86_64' 'aarch64')
