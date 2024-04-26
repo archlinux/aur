@@ -1,0 +1,115 @@
+From 8bbacb702b6650777da35933b05c1e875af5452e Mon Sep 17 00:00:00 2001
+From: sudoBash418 <sudoBash418@gmail.com>
+Date: Fri, 26 Apr 2024 16:01:40 -0600
+Subject: [PATCH] Update libalpm vapi to version 14
+
+---
+ src/vapis/libalpm.vapi | 36 +++++++++++++++++++++++++++++-------
+ 1 file changed, 29 insertions(+), 7 deletions(-)
+
+diff --git a/src/vapis/libalpm.vapi b/src/vapis/libalpm.vapi
+index 5a6226a..fe29a27 100644
+--- a/src/vapis/libalpm.vapi
++++ b/src/vapis/libalpm.vapi
+@@ -388,6 +388,10 @@ namespace Alpm {
+ 	public class DB {
+ 		public static int unregister(owned DB db);
+ 
++		public unowned Handle handle {
++			[CCode (cname = "alpm_db_get_handle")] get;
++		}
++
+ 		public unowned string name {
+ 			[CCode (cname = "alpm_db_get_name")] get;
+ 		}
+@@ -426,6 +430,8 @@ namespace Alpm {
+ 		public int add_server(string url);
+ 		public int remove_server(string url);
+ 
++		// TODO: cache servers
++
+ 		public unowned Package? get_pkg(string name);
+ 		public unowned Group? get_group(string name);
+ 		public int search(Alpm.List<unowned string> needles, out Alpm.List<unowned Package> ret);
+@@ -440,6 +446,9 @@ namespace Alpm {
+ 	[Compact]
+ 	public class Package {
+ 		/* properties */
++		public unowned Handle handle {
++			[CCode (cname = "alpm_pkg_get_handle")] get;
++		}
+ 		public unowned string filename {
+ 			[CCode (cname = "alpm_pkg_get_filename")] get;
+ 		}
+@@ -542,6 +551,9 @@ namespace Alpm {
+ 		public int validation {
+ 			[CCode (cname = "alpm_pkg_get_validation")] get;
+ 		}
++		public unowned Alpm.List<unowned XData> xdata {
++			[CCode (cname = "alpm_pkg_get_xdata")] get;
++		}
+ 		// TODO: changelog functions
+ 
+ 		/** Package install reasons. */
+@@ -550,7 +562,9 @@ namespace Alpm {
+ 			/** Explicitly requested by the user. */
+ 			EXPLICIT = 0,
+ 			/** Installed as a dependency for another package. */
+-			DEPEND = 1
++			DEPEND = 1,
++			/** Failed parsing of local database */
++			UNKNOWN = 2
+ 		}
+ 
+ 		/** Location a package object was loaded from. */
+@@ -585,6 +599,12 @@ namespace Alpm {
+ 			REMOVE
+ 		}
+ 
++		[CCode (cname = "alpm_pkg_xdata_t")]
++		public class XData {
++			public string name;
++			public string value;
++		}
++
+ 		public int checkmd5sum();
+ 		public int has_scriptlet();
+ 
+@@ -645,10 +665,8 @@ namespace Alpm {
+ 	[CCode (cname = "alpm_conflict_t", free_function = "alpm_conflict_free")]
+ 	[Compact]
+ 	public class Conflict {
+-		public ulong package1_hash;
+-		public ulong package2_hash;
+-		public string package1;
+-		public string package2;
++		public unowned Package package1;
++		public unowned Package package2;
+ 		public unowned Depend reason;
+ 	}
+ 
+@@ -1209,8 +1227,10 @@ namespace Alpm {
+ 			public Type type;
+ 			/** Answer: whether or not to import key. */
+ 			public int import;
+-			/** The key to import. */
+-			public Signature.PGPKey key;
++			/** UID of the key to import */
++			public string uid;
++			/** Fingerprint of the key to import */
++			public string fingerprint;
+ 		}
+ 
+ 		/** This is an union passed to the callback, that allows the frontend to know
+@@ -1392,6 +1412,8 @@ namespace Alpm {
+ 		RECURSE = (1 << 5),
+ 		/** Modify database but do not commit changes to the filesystem. */
+ 		DBONLY = (1 << 6),
++		/** Do not run hooks during a transaction. */
++		NOHOOKS = (1 << 7),
+ 		/** Use ALPM_PKG_REASON_DEPEND when installing packages. */
+ 		ALLDEPS = (1 << 8),
+ 		/** Only download packages and do not actually install. */
+-- 
+2.44.0
+
