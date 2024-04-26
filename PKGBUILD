@@ -4,7 +4,7 @@ _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
 pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
 arch=('x86_64')
@@ -17,14 +17,16 @@ depends=(
 makedepends=('flutter-engine' 'git' 'yq')
 source=(
 	"git+${url}.git#tag=v${pkgver}"
-	"flutter::git+https://github.com/flutter/flutter.git"
-	"flutter-engine::git+https://github.com/flutter/engine.git")
+	'flutter::git+https://github.com/flutter/flutter.git'
+	'flutter-engine::git+https://github.com/flutter/engine.git'
+	'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git')
 sha256sums=('77326d109123d5dd1b388ef61fe713c446e1415ba92522b526df98269496ca98'
+            'SKIP'
             'SKIP'
             'SKIP')
 
 _srcdir="${_pkgreponame}"
-_engine_version=3.19.4
+_engine_version=3.19.6
 
 prepare() {
 	cd "${_srcdir}"
