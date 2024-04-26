@@ -1,6 +1,6 @@
 # Maintainer: kusanaginoturugi <kusanaginoturugi at gmail dot com>
 pkgname=skk-emoji-jisyo
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Emoji Dictionaries for the SKK Japanese input method"
 arch=("any")

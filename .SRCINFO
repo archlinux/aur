@@ -1,6 +1,6 @@
 pkgbase = skk-emoji-jisyo
 	pkgdesc = Emoji Dictionaries for the SKK Japanese input method
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/uasi/skk-emoji-jisyo
 	arch = any
