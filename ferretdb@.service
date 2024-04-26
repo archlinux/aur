@@ -1,0 +1,33 @@
+[Unit]
+Description=FerretDB Proxy for %I
+PartOf=ferretdb.target
+Documentation=https://www.ferretdb.com/
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/ferretdb
+EnvironmentFile=-/etc/conf.d/ferretdb
+EnvironmentFile=-/etc/conf.d/ferretdb.%i
+User=ferretdb
+StateDirectory=ferretdb/%i
+WorkingDirectory=/var/lib/ferretdb/%i
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+DevicePolicy=closed
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+MemoryDenyWriteExecute=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target
