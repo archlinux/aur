@@ -15,6 +15,7 @@ sha256sums=('SKIP')
 validpgpkeys=()
 
 build() {
+  mv "$pkgver" "$pkgname-$pkgver"
 	cd "$pkgname-$pkgver"
   mkdir build/ && cd build/
   qmake ../WPanda.pro
