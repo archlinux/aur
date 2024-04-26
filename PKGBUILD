@@ -1,6 +1,6 @@
 pkgname=aocl-utils
-pkgver=4.1
-pkgrel=2
+pkgver=4.2
+pkgrel=1
 pkgdesc="AOCL-Utils provides a uniform interface to all the AOCL libraries to access the CPU features for AMD CPUs."
 arch=('x86_64')
 url="https://github.com/amd/aocl-utils"
@@ -8,7 +8,7 @@ license=('BSD')
 depends=()
 makedepends=('cmake')
 source=("${pkgname}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a2f271f5eef07da366dae421af3c89286ebb6239047a31a46451758d4a06bc85')
+sha256sums=('1294cdf275de44d3a22fea6fc4cd5bf66260d0a19abb2e488b898aaf632486bd')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}

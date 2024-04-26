@@ -1,12 +1,12 @@
 pkgbase = aocl-utils
 	pkgdesc = AOCL-Utils provides a uniform interface to all the AOCL libraries to access the CPU features for AMD CPUs.
-	pkgver = 4.1
-	pkgrel = 2
+	pkgver = 4.2
+	pkgrel = 1
 	url = https://github.com/amd/aocl-utils
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	source = aocl-utils.tar.gz::https://github.com/amd/aocl-utils/archive/refs/tags/4.1.tar.gz
-	sha256sums = a2f271f5eef07da366dae421af3c89286ebb6239047a31a46451758d4a06bc85
+	source = aocl-utils.tar.gz::https://github.com/amd/aocl-utils/archive/refs/tags/4.2.tar.gz
+	sha256sums = 1294cdf275de44d3a22fea6fc4cd5bf66260d0a19abb2e488b898aaf632486bd
 
 pkgname = aocl-utils
