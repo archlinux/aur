@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=2.9.0
+pkgver=3.0.1
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -22,10 +22,10 @@ makedepends=(
     'curl'
 )
 source=(
-    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('ed67143b853fd5ac6247efae81bb7df7d0a3e3ac5d0e55ea61db1393fed21e16'
+sha256sums=('d670c0031539104f238b81d6c269aee5ab821aee89dfe6076358780416a43fba'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -37,11 +37,11 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -52,26 +52,26 @@ build() {
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
-    if [ `curl ifconfig.co/country` = "China" ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
-    sed "s|electron-builder --config|electron-builder build --dir --config|g" -i package.json
-    sed "s|\/\${version}||g" -i electron-builder.config.js
+    sed "s|\/\${version}||g;s|\/\/ ||g;s|AppImage|dir|g" -i electron-builder.config.js
     mv public/icons/icon-512x125.png public/icons/icon-512x512.png
-    pnpm install --no-lockfile
-    pnpm run release
+    npm add pnpm
+    npx pnpm install --no-lockfile
+    npx pnpm run release
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     for _icons in 16x16 32x32 64x64 128x128 256x256 512x512;do
-        install -Dm644 "${srcdir}/${pkgname}.git/public/icons/icon-${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/public/icons/icon-${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644  "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644  "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
