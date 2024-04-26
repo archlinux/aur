@@ -1,17 +1,26 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-store-git
-pkgver=r64.01eb413
+pkgver=r184.8f13d37
 pkgrel=1
 pkgdesc="WIP COSMIC app store"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-store"
 license=('GPL-3.0-or-later')
 groups=('cosmic')
-depends=('flatpak')
+depends=(
+  'archlinux-appstream-data'
+  'gcc-libs'
+  'hicolor-icon-theme'
+)
 makedepends=(
   'cargo'
+  'flatpak'
   'git'
   'just'
+)
+optdepends=(
+  'flatpak: Flatpak packages support'
+  'packagekit: package manager integration module'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
