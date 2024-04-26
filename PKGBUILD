@@ -5,11 +5,11 @@ _pkgname=rexposome
 _pkgver=1.24.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Exposome exploration and outcome data analysis"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biobase
   r-circlize
@@ -45,11 +45,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('5dec247e3db216fed87e97cbfbf254cc')
-sha256sums=('44a21ed78978bf201f9152611730bde7fe5529f628afc83a00451fa024837a99')
+b2sums=('8ec53f687333784359f72807fc544082544f84bb301cd97c10178e8fc70a4fb3bfe85594240d01f46aabe1a55dcc0d1bb7d9c5d2fbd07581dd22396aad2f8527')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
