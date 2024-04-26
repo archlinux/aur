@@ -5,11 +5,11 @@ _pkgname=DAPARdata
 _pkgver=1.32.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Data accompanying the DAPAR and Prostar packages"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   r-msnbase
 )
