@@ -4,11 +4,11 @@ _pkgname=cytoMEM
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Marker Enrichment Modeling (MEM)"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-flowcore
   r-gplots
@@ -20,11 +20,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('4a407b89f327c4c88301e81f982598f9')
-sha256sums=('bebc3ea4a8e378788446553b2a7d2e1572c1420d59b44596beb48a9ca5e4083b')
+b2sums=('1bf3991fd2fbc4f04ee0118bcc28df7da8809098c8fdbb93ecdce82596b6c6faf1f5f94f02e032998f5ccabd789daaf865c3348e321d3c98cc9a1eaee0ab1103')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
