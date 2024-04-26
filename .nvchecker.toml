@@ -1,0 +1,5 @@
+[python-fenics-dolfinx]
+source = "github"
+github = "FEniCS/dolfinx"
+use_max_tag = "true"
+prefix = "v"
