@@ -4,11 +4,11 @@ _pkgname=seqmagick
 _pkgver=0.1.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Sequence Manipulation Utilities"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(Artistic2.0)
+license=('Artistic-2.0')
 depends=(
   r-biostrings
   r-magrittr
