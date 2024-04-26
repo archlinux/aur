@@ -5,11 +5,11 @@ _pkgname=synapter
 _pkgver=2.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Label-free data analysis pipeline for optimal identification and quantitation"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-biobase
   r-biostrings
@@ -34,11 +34,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('a6c9ade32fbe35d5cb85adc0e9a5322c')
-sha256sums=('03cd1fb5c89df4c1bcb5f6937086fa07a76d04a89023854bf42344ab95379f31')
+b2sums=('01f2aea807a90f0b24efc047d7394e96fc875dc6daa79ddc5d98ab151b4b4141b0c41c7d157a09aeb91aa28f3c436157b6754101818e83d93e3df1b027d1d45e')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
