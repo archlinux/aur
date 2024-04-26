@@ -1,0 +1,22 @@
+diff --git a/S4Arrays/src/array_selection.c b/S4Arrays/src/array_selection.c
+index 466e8f7..e62bed1 100644
+--- a/S4Arrays/src/array_selection.c
++++ b/S4Arrays/src/array_selection.c
+@@ -349,7 +349,7 @@ SEXP C_Lindex2Mindex(SEXP Lindex, SEXP dim, SEXP use_names)
+ 	ret = L2M(INTEGER(dim), dim_ncol, dim_nrow, Lindex, INTEGER(ans));
+ 	if (ret < 0) {
+ 		UNPROTECT(1);
+-		error(errmsg_buf());
++		error("%s", errmsg_buf());
+ 	}
+ 
+ 	if (LOGICAL(use_names)[0])
+@@ -413,7 +413,7 @@ SEXP C_Mindex2Lindex(SEXP Mindex, SEXP dim, SEXP use_names, SEXP as_integer)
+ 		  INTEGER(Mindex), Mindex_nrow, ans);
+ 	if (ret < 0) {
+ 		UNPROTECT(1);
+-		error(errmsg_buf());
++		error("%s", errmsg_buf());
+ 	}
+ 
+ 	if (LOGICAL(use_names)[0])
