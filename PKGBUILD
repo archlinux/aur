@@ -4,11 +4,11 @@ _pkgname=omada
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Machine learning tools for automated transcriptome clustering analysis"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-clvalid
   r-dicer
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d214fdb20c51cbce86bf1d34c59cb84b')
-sha256sums=('dd15848708994f18842116b7ffaa47d0be82f7419f3775081183938aa6ce665a')
+b2sums=('bc0b50c6b961a68365fd33a3dd260c580c32a01d5bab0f5b21a2f1b1c68f21223d0d21778f17559370b292ed5573dc6d263c23b38a3eedee874f57b2c5250430')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
