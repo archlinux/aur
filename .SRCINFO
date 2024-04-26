@@ -1,11 +1,11 @@
 pkgbase = ringracers-data
 	pkgdesc = Data files for Dr. Robotnik's Ring Racers
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://www.kartkrew.org
 	arch = any
 	license = custom
-	source = https://github.com/KartKrewDev/RingRacers/releases/download/v2.0/Dr.Robotnik.s-Ring-Racers-v2.0-Assets.zip
-	sha256sums = a1cff06cf197fc1e94e6dc1c47b0e240e532dee7c65480fa8a923d1fc46fa5ba
+	source = https://github.com/KartKrewDev/RingRacers/releases/download/v2.1/Dr.Robotnik.s-Ring-Racers-v2.1-Assets.zip
+	sha256sums = 8a2f3af3d996b6233e1aa2413d8f2a53213fd5f9e667665093370099436fc937
 
 pkgname = ringracers-data
