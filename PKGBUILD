@@ -2,41 +2,28 @@
 # Contributor: Yangtse Su <yangtsesu@gmail.com>
 
 pkgbase=alibaba-puhuiti
-pkgname=({otf,ttf}-alibaba-puhuiti alibaba-puhuiti-fontconfig)
-pkgver=2.0
-pkgrel=5
+pkgname=({eot,otf,ttf,woff,woff2}-alibaba-puhuiti alibaba-puhuiti-fontconfig)
+pkgver=3.0
+pkgrel=1
 pkgdesc="Alibaba PuHuiTi fonts"
 arch=(any)
 license=(custom)
-url=https://ics.alibaba.com/font/alibaba-sans
-source=("alibaba-puhuiti-$pkgver.zip::https://ics-static.oss-cn-hangzhou.aliyuncs.com/static/ucan/alibaba_font${pkgver}.zip"
-         75-alibaba.conf)
-sha512sums=('b4b9514375dd1a7717c675e87caaa87a8a9ebc549ba1275822cb0a7e3a8d0f62d3a793777467fffe1c98738a11f317c4cad2678703a74301dda0dd31892d3f47'
-            'f05f3014ae38f4fb59d3bb06f52e05b8e122e5ba124bd166474231877346a7aeb107860a4b8304493197d43101b03a1bff6c1d79c7dc495377bb63a94cbb0be6')
-
-prepare () {
-	local winzipfile='阿里巴巴普惠体2(1).0字体包/PuHuiTi2.0 for Win 压缩.zip'
-	local maczipfile='阿里巴巴普惠体2(1).0字体包/PuHuiTi2.0 for Mac 压缩.zip'
-
-	mkdir ttf otf pdf
-	bsdtar -xf "$winzipfile" -C ttf --include '*.ttf' --strip-components=3
-	bsdtar -xf "$winzipfile" -C otf --include '*.otf' --strip-components=3
-	bsdtar -xf "$maczipfile" -C pdf --include '*.pdf' --strip-components=1
-	mv 'pdf/阿里巴巴普惠体2.0版法律声明.pdf' pdf/license.pdf
-}
+_zipname=AlibabaPuHuiTi-3
+url=https://www.alibabafonts.com
+source=("https://puhuiti.oss-cn-hangzhou.aliyuncs.com/$_zipname.zip"
+        75-alibaba.conf)
+sha512sums=('56172a008988f67e34f7282157f5e526b3f4f08915642573ae6d019ed31b22a571a6c759edcd068ab5d587a9ae74dfc0b0696a16ea4be1eb3a6e6266b60af99e'
+            '06b3334eea6a9af4b1c8ac3d78a9ecc5cfdccae81dfeeaddc1b3c7f26baa450828952b8460b2f3bd3a03c8c03e4e818c80f97aa9355abc113d0924e82f833366')
 
 _package_common () {
-	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -Dm644 pdf/license.pdf "${pkgdir}/usr/share/licenses/${pkgname}"
-
-	install -dm755 "${pkgdir}/usr/share/fonts/alibaba/${pkgname}"
-	install -Dm644 "$@" "${pkgdir}/usr/share/fonts/alibaba/${pkgname}"
+	install -dm755 "$pkgdir/usr/share/fonts/alibaba/$pkgname"
+	install -Dm644 "$_zipname"/*/*.$1 "$pkgdir/usr/share/fonts/alibaba/$pkgname"
 }
 
 package_otf-alibaba-puhuiti () {
 	pkgdesc="$pkgdesc - OTF format"
 	depends=(alibaba-puhuiti-fontconfig)
-	_package_common otf/*.otf
+	_package_common otf
 }
 
 package_ttf-alibaba-puhuiti () {
@@ -44,13 +31,30 @@ package_ttf-alibaba-puhuiti () {
 	provides=(alibaba-puhuiti alibaba-sans)
 	replaces=(alibaba-puhuiti alibaba-sans)
 	depends=(alibaba-puhuiti-fontconfig)
-	_package_common ttf/*.ttf
+	_package_common ttf
+}
+
+package_woff-alibaba-puhuiti () {
+	pkgdesc="$pkgdesc - WOFF format"
+	_package_common woff
+}
+
+package_eot-alibaba-puhuiti () {
+	pkgdesc="$pkgdesc - EOT format"
+	_package_common eot
+}
+
+package_woff2-alibaba-puhuiti () {
+	pkgdesc="$pkgdesc - WOFF2 format"
+	_package_common woff2
 }
 
 package_alibaba-puhuiti-fontconfig () {
 	pkgdesc="$pkgdesc - Fontconfig configuration"
 	conflicts=(alibaba-puhuiti alibaba-sans)
 	install -dm755 "${pkgdir}/usr/share/fontconfig/conf.default"
-	ln -nsf ../conf.avail/75-alibaba.conf \
+	install -Dm644 ${srcdir}/75-alibaba.conf \
+		"${pkgdir}/usr/share/fontconfig/conf.avail/75-alibaba.conf"
+	ln -nsf /usr/share/fontconfig/conf.avail/75-alibaba.conf \
 		"${pkgdir}/usr/share/fontconfig/conf.default/75-alibaba.conf"
 }

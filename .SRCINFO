@@ -1,14 +1,17 @@
 pkgbase = alibaba-puhuiti
 	pkgdesc = Alibaba PuHuiTi fonts
-	pkgver = 2.0
-	pkgrel = 5
-	url = https://ics.alibaba.com/font/alibaba-sans
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://www.alibabafonts.com
 	arch = any
 	license = custom
-	source = alibaba-puhuiti-2.0.zip::https://ics-static.oss-cn-hangzhou.aliyuncs.com/static/ucan/alibaba_font2.0.zip
+	source = https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaPuHuiTi-3.zip
 	source = 75-alibaba.conf
-	sha512sums = b4b9514375dd1a7717c675e87caaa87a8a9ebc549ba1275822cb0a7e3a8d0f62d3a793777467fffe1c98738a11f317c4cad2678703a74301dda0dd31892d3f47
-	sha512sums = f05f3014ae38f4fb59d3bb06f52e05b8e122e5ba124bd166474231877346a7aeb107860a4b8304493197d43101b03a1bff6c1d79c7dc495377bb63a94cbb0be6
+	sha512sums = 56172a008988f67e34f7282157f5e526b3f4f08915642573ae6d019ed31b22a571a6c759edcd068ab5d587a9ae74dfc0b0696a16ea4be1eb3a6e6266b60af99e
+	sha512sums = 06b3334eea6a9af4b1c8ac3d78a9ecc5cfdccae81dfeeaddc1b3c7f26baa450828952b8460b2f3bd3a03c8c03e4e818c80f97aa9355abc113d0924e82f833366
+
+pkgname = eot-alibaba-puhuiti
+	pkgdesc = Alibaba PuHuiTi fonts - EOT format
 
 pkgname = otf-alibaba-puhuiti
 	pkgdesc = Alibaba PuHuiTi fonts - OTF format
@@ -21,6 +24,12 @@ pkgname = ttf-alibaba-puhuiti
 	provides = alibaba-sans
 	replaces = alibaba-puhuiti
 	replaces = alibaba-sans
+
+pkgname = woff-alibaba-puhuiti
+	pkgdesc = Alibaba PuHuiTi fonts - WOFF format
+
+pkgname = woff2-alibaba-puhuiti
+	pkgdesc = Alibaba PuHuiTi fonts - WOFF2 format
 
 pkgname = alibaba-puhuiti-fontconfig
 	pkgdesc = Alibaba PuHuiTi fonts - Fontconfig configuration
