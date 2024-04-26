@@ -4,12 +4,13 @@
 pkgname=ykchorus
 _plugin_uri="https://chrisarndt.de/plugins/$pkgname"
 pkgver=0.2.4
-pkgrel=2
-pkgdesc='A stereo dual-chorus audio effect LV2, LADSPA and VST2 plugin and JACK application'
+pkgrel=3
+pkgdesc='A stereo dual-chorus audio effect CLAP/LADSPA/LV2/VST2/VST3 plugin and JACK application'
 arch=(x86_64 aarch64)
 url="https://github.com/SpotlightKid/$pkgname"
 license=(GPL-2.0-only)
-depends=(gcc-libs libglvnd)
+depends=(gcc-libs glibc libglvnd libx11 libxcursor libxext libxrandr)
+makedepends=(dbus)
 checkdepends=(kxstudio-lv2-extensions lv2lint)
 optdepends=(
   'jack: for stand-alone JACK client program'
@@ -25,7 +26,7 @@ sha256sums=('1dfd5981c52e5567eea15b43961f6bd3a88a96c0e8eabd9f56d823d24edb3970')
 
 build() {
   cd $pkgname-$pkgver
-  make
+  make SKIP_NATIVE_AUDIO_FALLBACK=true
 }
 
 check() {
@@ -34,6 +35,7 @@ check() {
 }
 
 package() {
+  depends+=(libdbus-1.so)
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 }
