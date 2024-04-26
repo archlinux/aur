@@ -17,6 +17,7 @@ pkgbase = flowee-pay
 	depends = qt6-shadertools
 	depends = qt6-scxml
 	provides = flowee-pay
+	options = !lto
 	source = https://codeberg.org/Flowee/pay/archive/2024.02.0.tar.gz
 	source = https://flowee.org/products/pay/blockheaders-810000
 	sha256sums = 826983888cddf301d13c871eeab37bb56e77e30d60a56096820cc3cad05a1671
