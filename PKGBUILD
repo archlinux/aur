@@ -4,11 +4,11 @@ _pkgname=alabaster.string
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Save and Load Biostrings to/from File"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-alabaster.base
   r-biostrings
@@ -24,11 +24,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b7add7aa52b8835471b04038842da095')
-sha256sums=('b53e974b288b2a924bfa636ff1287cbe2a38405b4a9da11ff22bb85f4da9f7be')
+b2sums=('8a42ad598f7fda76b65e72e379f07281350fe845b26d4f7650a2efe26f230180a13036e7acfe41627fa229f2693e5682e81dca25a7d0da147db36e76ebb440a8')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
