@@ -3,7 +3,7 @@
 # Contributor: tongpu
 
 pkgname=moneydance
-pkgver=2024.1.5117
+pkgver=2024.1.5118
 pkgrel=1
 pkgdesc="A personal finance manager for Mac, Windows and Linux"
 arch=('i686' 'x86_64' 'aarch64')
@@ -41,5 +41,5 @@ package() {
 }
 sha256sums=('eff9da311388e046e33f2c3669b0229b92bc650eb5f76589233afaa41dc39109'
             '242dc66a95c4842099e41092bd87ccaf97c314bed1f9865f5c6a72f135f7de21')
-sha256sums_x86_64=('b728a12d0c8ed815be3ea8b6b3b8fa7372378b561660635b8bacb08bfbea37f9')
-sha256sums_aarch64=('b728a12d0c8ed815be3ea8b6b3b8fa7372378b561660635b8bacb08bfbea37f9')
+sha256sums_x86_64=('46e3c1e6567383ec71c6843cdd980997761701721afa84b3003064d0a3e96451')
+sha256sums_aarch64=('46e3c1e6567383ec71c6843cdd980997761701721afa84b3003064d0a3e96451')
