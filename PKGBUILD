@@ -3,7 +3,7 @@
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
 pkgname=kdeconnect
-pkgver=24.02.2
+pkgver=24.04.80
 pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 url='https://kdeconnect.kde.org/'
@@ -55,8 +55,8 @@ optdepends=('python-nautilus: Nautilus integration'
             'sshfs: remote filesystem browser')
 groups=(kde-applications
         kde-network)
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig})
-sha256sums=('e804910d2b1ed4f5f6ce36915c79d11c55be6cee0f265d9234d96a2c27000dad'
+source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig})
+sha256sums=('5730649a4a1b82504a7594540dcdd0e17e16fd660b94dc86f707c95fa4394165'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -65,7 +65,6 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
 build() {
   cmake -B build -S $pkgname-kde-$pkgver \
     -DBUILD_TESTING=OFF \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBLUETOOTH_ENABLED=OFF # https://bugs.kde.org/show_bug.cgi?id=481870
   cmake --build build
 }
