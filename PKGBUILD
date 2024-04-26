@@ -5,11 +5,11 @@ _pkgname=TreeTools
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Create, Modify and Analyse Phylogenetic Trees"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
   r-ape
   r-bit64
@@ -43,7 +43,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('4511cbf60e3178ea966bff71b092fb3a')
-sha256sums=('b2a0c4a6ae49c70e4b743276591a66d477cf6b2789bb51ded23df891754317be')
+b2sums=('b46105e4e6667f575915b5ed5336d6fabb8696502f7186cf26479dbfc266d92727375d3d9511d42456365de539d6e1360e358042bedfb9231ced171c3da209cf')
 
 prepare() {
   # skip failing tests
@@ -54,8 +54,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
