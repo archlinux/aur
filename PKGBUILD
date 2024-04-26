@@ -4,11 +4,11 @@ _pkgname=PanomiR
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Detection of miRNAs that regulate interacting groups of pathways"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-clusterprofiler
   r-dplyr
@@ -35,11 +35,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('a8f96cdc267551107e69e8cb260a05c0')
-sha256sums=('683caee92d63498c49b5edcc84ec95490cd5f42a6b9d846b1113bb174cc57575')
+b2sums=('3d51974f50a8785a4f1abd5fad731fcae3e048aac6da149d2176187ca930bcc4e300de3bc1fcd05b870502ad795328d35857c27ef4e119ee3aa3a36b77676c07')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
