@@ -15,7 +15,7 @@ source=("Linux_x64_Executable.zip::$(curl -s https://api.github.com/repos/bitsco
 sha256sums=('SKIP')
 arch=('x86_64')
 pkgver=8.0.2
-pkgrel=2
+pkgrel=3
 # changelog="CHANGELOG.md"
 
 package() {
@@ -28,14 +28,14 @@ package() {
   install -dm755 "$pkgdir/opt/Bitscoper_Cyber_ToolBox/data/"
   cp -r "$srcdir/Linux_x64_Executable/data/"* "$pkgdir/opt/Bitscoper_Cyber_ToolBox/data/"
 
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s "/opt/Bitscoper_Cyber_ToolBox/Bitscoper_Cyber_ToolBox" "$pkgdir/usr/bin/Bitscoper_Cyber_ToolBox"
+
   for size in 48 72 96 128 192 512; do
     wget -O "$srcdir/maskable_icon_x${size}.png" "https://raw.githubusercontent.com/bitscoper/Bitscoper_Cyber_ToolBox/main/assets/icon/maskable_icon_x${size}.png"
     install -Dm644 "$srcdir/maskable_icon_x${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/Bitscoper_Cyber_ToolBox.png"
   done
 
-  wget -O "$srcdir/Bitscoper_Cyber_ToolBox.desktop" "https://raw.githubusercontent.com/bitscoper/Bitscoper_Cyber_ToolBox/main/AUR/Bitscoper_Cyber_ToolBox.desktop"
+  wget -O "$srcdir/Bitscoper_Cyber_ToolBox.desktop" "https://raw.githubusercontent.com/bitscoper/Bitscoper_Cyber_ToolBox/main/Linux_Extras/Bitscoper_Cyber_ToolBox.desktop"
   install -Dm644 "$srcdir/Bitscoper_Cyber_ToolBox.desktop" "$pkgdir/usr/share/applications/Bitscoper_Cyber_ToolBox.desktop"
-
-  install -dm755 "$pkgdir/usr/bin"
-  ln -s "/opt/Bitscoper_Cyber_ToolBox/Bitscoper_Cyber_ToolBox" "$pkgdir/usr/bin/Bitscoper_Cyber_ToolBox"
 }
