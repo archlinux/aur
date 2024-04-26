@@ -4,12 +4,12 @@
 _pkgname=adabag
 _pkgver=5.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="Applies Multiclass AdaBoost.M1, SAMME and Bagging"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-caret
   r-consrank
@@ -23,11 +23,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('675cf557792d970a2115e0f7a44f4954')
-sha256sums=('ec58756fda2e64753d21e28d9e27ed34f28020045b199a58dcea06a3e2c3d60e')
+b2sums=('adbf7343284dc1fec87f54898ff720be13409ee4830c394f9036870016ed36f9d0be0ea8ba546a004ca17fc49fbfd25d485ac504746dbef32284d7ebc4bad7d7')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
