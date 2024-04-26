@@ -4,11 +4,11 @@ _pkgname=alabaster.base
 _pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Save Bioconductor Objects To File"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-alabaster.schemas
   r-jsonlite
@@ -33,11 +33,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('2d6215dfe9b8412438f9b05b54be2331')
-sha256sums=('a300d1c7476257b52b5d9b6a8b5d47a4e0b03c178a3de965223ba182e061ffee')
+b2sums=('38f3f2b88d1b4433fc0d0fa87f11cbb4d2e60da7cf579eb627e1935442021be0980f8ae10d29bd41658a2cc64f10e61374d15565b0eb1aa8d08fef0b4293e9f2')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
