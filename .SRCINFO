@@ -16,6 +16,7 @@ pkgbase = flowee
 	optdepends = miniupnpc
 	provides = flowee-hub
 	provides = flowee-libs
+	options = !lto
 	backup = etc/flowee/flowee.conf
 	backup = etc/flowee/rest-service.conf
 	source = https://codeberg.org/Flowee/thehub/archive/2024.02.0.tar.gz

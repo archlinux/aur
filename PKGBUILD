@@ -2,6 +2,7 @@
 
 pkgname=flowee
 pkgver=2024.02.0
+options=(!lto)
 pkgrel=1
 pkgdesc="Flowee provides the shortest path to Bitcoin Cash"
 arch=('x86_64' 'aarch64')
