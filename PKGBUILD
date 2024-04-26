@@ -14,7 +14,7 @@ license=('Apache')
 depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy' "$_electronpackage")
 apptag='v6.7.3-nightly.15'
 makedepends=('nvm' 'git' 'python' 'libxcrypt-compat' 'asar')
-options=(!strip)
+options=(!strip !debug)
 provides=(
     'ferdium'
 )
