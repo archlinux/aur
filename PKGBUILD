@@ -1,13 +1,13 @@
 # Maintainer: sapient_cogbag <sapient_cogbag at protonmail dot com>
 pkgname=rustcities-git
-pkgver=v1.0.0.r1.f5605aa
-pkgrel=2
+pkgver=v1.0.2.r0.0192f9a
+pkgrel=1
 pkgdesc="Neocities API client written in rust"
 arch=('x86_64' 'i686')
 url="https://gitlab.com/sapient_cogbag/rustcities"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('git' 'cargo')
-depends=('openssl' 'gcc-libs')
+depends=('openssl' 'gcc-libs' 'glibc')
 provides=("rustcities")
 conflicts=("rustcities")
 source=('rustcities-git::git+https://gitlab.com/sapient_cogbag/rustcities.git#branch=main')
@@ -25,7 +25,11 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/rustcities-git"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+
+    export RUSTUP_TOOLCHAIN=stable
+    # Taken from https://wiki.archlinux.org/title/Rust_package_guidelines
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
 }
 
 build() {
@@ -38,6 +42,7 @@ build() {
 
 check() {
 	cd "$srcdir/rustcities-git"
+
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
