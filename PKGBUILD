@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=liblcf-git
-pkgver=0.7.0.r11.g0ed38af4
+pkgver=0.8.r37.g54dff22
 pkgrel=1
 pkgdesc="Library to handle RPG Maker 2000/2003 and EasyRPG projects (development version)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://easyrpg.org"
 license=('MIT')
 conflicts=('liblcf')
 provides=("liblcf=${pkgver%.r*}" 'lcf2xml' 'lcfstrings')
-depends=('gcc-libs' 'expat' 'icu')
+depends=('gcc-libs' 'expat' 'icu' 'libinih')
 makedepends=('git' 'cmake' 'ninja')
 source=(liblcf::"git+https://github.com/EasyRPG/liblcf.git")
 md5sums=('SKIP')
@@ -33,7 +33,7 @@ check() {
   cmake --build aurbuild --target check
 }
 
-package () {
+package() {
   DESTDIR="$pkgdir" cmake --install aurbuild
   # license
   install -Dm644 liblcf/COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
