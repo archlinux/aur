@@ -1,10 +1,10 @@
 pkgbase = r-ctdata
 	pkgdesc = Data companion to CTexploreR
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/CTdata
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-testthat
 	depends = r-experimenthub
 	optdepends = r-biocstyle
@@ -16,6 +16,6 @@ pkgbase = r-ctdata
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/CTdata_1.2.0.tar.gz
 	md5sums = d130308cf078329f4cc6a1cc8055475d
-	sha256sums = 86ffadabf93b0537448d214c61db5e10ca6f24b258016685b42debb40ab2c5bd
+	b2sums = 57cea77784a1ca3ee529cb98a8fc045419f702354effef93cb676e41cce82e6e25ffe757da06ff3e37fdd08d86e08d5d5a2be61cd68d56bd1e09228aed2bd2bb
 
 pkgname = r-ctdata

@@ -4,11 +4,11 @@ _pkgname=CTdata
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Data companion to CTexploreR"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-experimenthub
 )
@@ -26,11 +26,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d130308cf078329f4cc6a1cc8055475d')
-sha256sums=('86ffadabf93b0537448d214c61db5e10ca6f24b258016685b42debb40ab2c5bd')
+b2sums=('57cea77784a1ca3ee529cb98a8fc045419f702354effef93cb676e41cce82e6e25ffe757da06ff3e37fdd08d86e08d5d5a2be61cd68d56bd1e09228aed2bd2bb')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
