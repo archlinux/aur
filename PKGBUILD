@@ -4,11 +4,11 @@ _pkgname=org.Ce.eg.db
 _pkgver=3.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Genome wide annotation for Worm"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-annotationdbi
 )
@@ -19,11 +19,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('441a5efb4649a1201b5552b14c1f1cef')
-sha256sums=('b8b06a6ebac8ea36f643d6dfb3f6a486a7d4a20561a1bb74eb424de3d7ca4bbb')
+b2sums=('b34a4c98b3af98986c2448900c4c1f80c92d1b1350313f12bc7c2bb039393f9391c7c090bc814c9191c37ddc9007298e2244b68a126475f6677bc4d584e10087')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
