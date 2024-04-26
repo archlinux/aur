@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=apotris
 pkgname=$_pkgname-git
-pkgver=3.4.6.r788.g73c0cd8
+pkgver=3.4.6.r816.gdf78baf
 pkgrel=1
 pkgdesc="A block stacking puzzle game for the Game Boy Advance (Linux port)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -34,8 +34,8 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'6a5b652537461135895820391beb20bb2e64e312f08ddbd9ea8d313047118693556df26e89019e81b26c6650388597eebbc8ae4cf824739aadb41121d728ed80'
-	'9da61fbb68d966d4ec46becf53da1cb6c55b0a6f105f6cc8145c11b2a081bdcbdc522bff6b213fa2a7ab21aea12db11d77dae0468521ad3d1ee2117863d42b23'
-	'ec4ed45e01dc83a518b84cbfdba9d271c5f366981fce2e6e624b7e112b9645340132d0ab72b50f1876c2ff712e36a1efd45205f1bdb1de211af1301a4c4163a4'
+	'1f420289881132aac8bda86c512d5c8af7c359561bc88bae6c0e3ba24bce71642d5f62e37163b38bb9ca28e2f4bab7cda4b5de1d952bb5029f2bdeb5fc90147a'
+	'd8aff212300b4150f4b5c383c9258e1c0976680fb9fff412eb1f9747e041e83ddda41ae428b95d327cb4879450d45dd09acff6f96a1d453f103968182f72f659'
 	'497d9ed7ed0c5d3bce10d23a14e5a6d4b39125045290048f8a4b813fd81767f9a459636c5e84fd17b3b0802fee6fd0afa0bddb0dbda7c04484a39a2bc176a0ba'
 )
 

@@ -1,5 +1,5 @@
 diff --git a/meson.build b/meson.build
-index bb977b3..d5145c1 100644
+index 94c2295..b9fca40 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -98,8 +98,6 @@ endif
@@ -19,7 +19,7 @@ index bb977b3..d5145c1 100644
 +        openmpt = dependency('libopenmpt', static : true, default_options : ['default_library=static'], fallback : ['openmpt', 'openmpt_dep'])
          tilengine = dependency('Tilengine', static : true, default_options : ['default_library=static'], fallback : ['Tilengine', 'tilengine_dep'])
          if host_machine.system() == 'darwin'
-             sdl2_dep = subproject('sdl2', default_options : ['default_library=static', 'test=false']).get_variable('sdl2_dep')
+             sdl2_dep = subproject('sdl2', default_options : ['use_audio_jack=disabled', 'default_library=static', 'test=false']).get_variable('sdl2_dep')
          else
              sdl2_dep = dependency('sdl2', static : true, default_options : ['default_library=static'], fallback : ['sdl2', 'sdl2_dep'])
          endif

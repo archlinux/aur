@@ -1,8 +1,8 @@
 diff --git a/meson.build b/meson.build
-index bb977b3..82eaf7c 100644
+index 94c2295..87ae1ef 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -294,6 +294,7 @@ if host_machine.system() != 'gba'
+@@ -296,6 +296,7 @@ if host_machine.system() != 'gba'
              dependencies : dependencies,
              link_args : link_args,
              win_subsystem : 'windows',
@@ -10,11 +10,12 @@ index bb977b3..82eaf7c 100644
              install : true
          )
          if host_machine.system() == 'darwin'
-@@ -302,7 +303,7 @@ if host_machine.system() != 'gba'
-             install_data('dist' / 'Info.plist', install_dir : 'Contents')
+@@ -305,8 +306,7 @@ if host_machine.system() != 'gba'
              install_subdir(audio_dir, install_dir : 'Contents/Resources')
+             install_subdir('license', install_dir : 'Contents/Resources')
          else
 -            install_subdir(audio_dir, install_dir : '.')
+-            install_subdir('license', install_dir : '.')
 +            install_subdir(audio_dir, install_dir : 'share/apotris')
          endif
      endif
