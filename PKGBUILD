@@ -6,11 +6,11 @@ _pkgname=annotate
 _pkgver=1.80.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Annotation for microarrays"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-annotationdbi
   r-biobase
@@ -41,11 +41,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('04d25cadc03401556364f8ca9c3b2a61')
-sha256sums=('4dab9615498f6c58d1e6ecc1ecd0052187e46bdf971b18d73149b6bddea2ad82')
+b2sums=('9d827fd87c50bbd3812c8d370d77e0db7214a3b7c370adaab8dc7f87d1b8bfba9fe784986cb7788bfaf4815a2e1cea441e5c257f2028f0eb06cedecbffe84072')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

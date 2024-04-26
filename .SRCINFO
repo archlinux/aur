@@ -1,10 +1,10 @@
 pkgbase = r-annotate
 	pkgdesc = Annotation for microarrays
 	pkgver = 1.80.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/annotate
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-org.hs.eg.db
 	checkdepends = r-runit
 	depends = r-annotationdbi
@@ -29,6 +29,6 @@ pkgbase = r-annotate
 	optdepends = r-tkwidgets
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/annotate_1.80.0.tar.gz
 	md5sums = 04d25cadc03401556364f8ca9c3b2a61
-	sha256sums = 4dab9615498f6c58d1e6ecc1ecd0052187e46bdf971b18d73149b6bddea2ad82
+	b2sums = 9d827fd87c50bbd3812c8d370d77e0db7214a3b7c370adaab8dc7f87d1b8bfba9fe784986cb7788bfaf4815a2e1cea441e5c257f2028f0eb06cedecbffe84072
 
 pkgname = r-annotate
