@@ -1,17 +1,17 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=gameoftrees
-pkgver=0.97
-pkgrel=2
+pkgver=0.98.2
+pkgrel=1
 pkgdesc='A version control system which prioritizes ease of use and simplicity over flexibility'
 arch=(x86_64)
 url="https://gameoftrees.org"
 license=(ISC)
 conflicts=(gameoftrees-git got got-git got-bin)
-depends=(ncurses util-linux-libs libbsd libevent zlib)
+depends=(ncurses util-linux-libs libbsd libevent zlib libretls)
 makedepends=(pkgconf git)
 source=("$pkgname::git+ssh://anonymous@got.gameoftrees.org/got-portable.git#tag=$pkgver")
-b2sums=(SKIP)
+b2sums=('964eeff66bf9d4a82fa01cedb66e0bfc1bc85a082eae2af6f4fc0a808df574534a9b3c9e0aa75a8f1e57f8d9a35e0c4d428bef9f98bd72a3b3fe73f6fe8aa524')
 
 build () {
 	cd "$pkgname"
@@ -38,7 +38,8 @@ check () {
 }
 
 package () {
-	make -C "$pkgname" DESTDIR="$pkgdir" install
+	cd "$pkgname"
+	make DESTDIR="$pkgdir" install
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" \
 		README README.portable TODO
 }
