@@ -4,11 +4,11 @@ _pkgname=wdm
 _pkgver=0.2.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Weighted Dependence Measures"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-rcpp
 )
@@ -25,11 +25,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('53467d0a74a2b78738d526fe078996d9')
-sha256sums=('e2d19c04ea2fb9394cc2b61899c7fd21ae7c6d5825bfdcb74822c7243cd335d3')
+b2sums=('83d8565295214a35f559fad927b18355c9281a764a0e547d445a52dc4276ec87b939374bee368836e275aa10bc956be582ebee55187cc5aa7a3fe796828d2ea0')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
