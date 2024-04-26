@@ -1,16 +1,20 @@
 pkgbase = python-zopfli-git
 	pkgdesc = Python bindings for the Zopfli compressor
-	pkgver = 0.0.7.r2.gfdaf482
+	pkgver = 0.0.8.r0.gfdaf482
 	pkgrel = 1
 	url = https://github.com/anthrotype/py-zopfli
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
 	depends = python
 	source = python-zopfli-git::git+https://github.com/anthrotype/py-zopfli
-	source = zopfli::git+https://github.com/google/zopfli
+	source = git+https://github.com/google/zopfli.git
 	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = python-zopfli-git
-
