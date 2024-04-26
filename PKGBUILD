@@ -10,6 +10,7 @@ url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL-3.0-or-later AND MPL-2.0 AND CC-BY-SA-4.0')
 depends=(
   'accountsservice'
+  'archlinux-appstream-data'
   'cage'
   'fontconfig'
   'geoclue'
@@ -41,9 +42,10 @@ makedepends=(
   'nasm'
 )
 optdepends=(
-  'flatpak: Flatpak support for Cosmic Store'
+  'flatpak: Flatpak packages support for COSMIC Store'
   'otf-fira-mono: Recommended Mono font'
   'otf-fira-sans: Recommended Sans font'
+  'packagekit: package manager integration module for COSMIC Store'
 )
 
 _submodules=(
