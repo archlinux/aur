@@ -1,7 +1,7 @@
 pkgbase = r-billboarder
 	pkgdesc = Create Interactive Chart with the JavaScript 'Billboard' Library
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=billboarder
 	arch = any
 	license = MIT
@@ -21,6 +21,6 @@ pkgbase = r-billboarder
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/billboarder_0.4.1.tar.gz
 	md5sums = 46c766c3238792e3bc6b3e59bd9c7bf6
-	sha256sums = 766201c8a09b56d7c35ff69862ae2315fe8bf209d26aae5fb20957cb690cd22f
+	b2sums = 27ceebcb71a4286a60fdbb527baa838000b859827443d3fe8643dee9b4cb365f1dec30b19d0950a88bd64784d829876a2c9c4991c08f7944021c5fc2b4f21744
 
 pkgname = r-billboarder
