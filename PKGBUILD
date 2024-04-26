@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=(wechat-uos-bwrap wechat-uos-qt)
-pkgver=1.0.0.238
+pkgver=1.0.0.241
 pkgrel=11
 epoch=
 pkgdesc="WeChat Qt w/ bwrap sandbox"
@@ -74,15 +74,15 @@ source=(
 )
 
 source_x86_64=(
-	wechat-x86-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.238_amd64.deb"
+	wechat-x86-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_amd64.deb"
 )
 
 source_aarch64=(
-	wechat-arm-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.238_arm64.deb"
+	wechat-arm-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
 source_loong64=(
-	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.238_arm64.deb"
+	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
 md5sums=('108019a3a365c57532e8f19d9af2a84e'
@@ -91,9 +91,9 @@ md5sums=('108019a3a365c57532e8f19d9af2a84e'
          'dfc069e6c8d9dbaa90fe388cab4002c9'
          '6b159c6e9d21a98925489bc37a9aea43'
          '38e98220da64adc1d8f9dc17d04b3a39')
-md5sums_x86_64=('aa52e39afd9c16eee7f924093ce4c5b6')
-md5sums_aarch64=('280d9b202390954c011dbd12e28f892d')
-md5sums_loong64=('280d9b202390954c011dbd12e28f892d')
+md5sums_x86_64=('2c2c8ec69b6b798b7ccaf873e27d977a')
+md5sums_aarch64=('c4d443515fe76ec35e792d43e9521887')
+md5sums_loong64=('c4d443515fe76ec35e792d43e9521887')
 
 function package_wechat-uos-qt() {
 	conflicts+=(wechat-universal-bwrap wechat-beta-bwrap)
