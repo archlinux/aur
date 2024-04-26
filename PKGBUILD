@@ -5,11 +5,11 @@ _pkgname=depmap
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Cancer Dependency Map Data Package"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-annotationhub
   r-dplyr
@@ -29,11 +29,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('7f00d05c7f899e622293767baa04e120')
-sha256sums=('b26374b608b6abf6e439224e92a233d546ea698d64e773a197934a91557163ed')
+b2sums=('d0e1352603a3660cb5dc4d1806eb59d2a0df0db3a7b7ae7d4ac1c5bbd3f8946b10d97f4c0589b9cd827455dd2f64d62851568097894c906d8de427bd2c902439')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
