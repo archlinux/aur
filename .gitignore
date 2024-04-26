@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!fan-control.desktop
+!fan-control.policy
+!fan-control-pkexec.sh
