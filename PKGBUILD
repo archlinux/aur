@@ -5,7 +5,7 @@
 
 pkgname=nheko
 pkgver=0.11.3
-pkgrel=10
+pkgrel=11
 pkgdesc="Desktop client for the Matrix protocol"
 arch=('x86_64')
 url="https://nheko.im/nheko-reborn/nheko"
@@ -14,13 +14,14 @@ depends=(qt5-svg qt5-quickcontrols2 qt5-graphicaleffects qt5-multimedia qtkeycha
         qt5-imageformats coeurl mtxclient lmdb cmark libolm hicolor-icon-theme \
         gst-plugins-bad-libs 'org.freedesktop.secrets')
 optdepends=('qt-jdenticon: Auto-generated profile pictures (identicons)'
+            'kimageformats: Extends the formats nheko supports for image attachments'
             'gst-plugins-base-libs: VoIP/Video calls' 
             'gst-plugins-good: VoIP/Video calls'
             'gst-plugins-bad: VoIP/Video calls'
             'libnice: VoIP/Video calls'
             'gst-libav: Video messages'
             'gst-plugin-qmlgl: Video calls and Screen sharing')
-makedepends=(cmake ninja boost qt5-tools fontconfig nlohmann-json asciidoc lmdbxx spdlog)
+makedepends=(cmake ninja qt5-tools fontconfig nlohmann-json asciidoc lmdbxx spdlog)
 source=("$pkgname-$pkgver.tar.gz::https://nheko.im/nheko-reborn/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
         "$pkgname-$pkgver-fix-for-fmt-10.patch"
         "$pkgname-$pkgver-fix-for-fmt-10.1.patch::https://nheko.im/nheko-reborn/nheko/-/commit/871e403f6799df48cfbbe08eba56d473a0c34216.patch")
