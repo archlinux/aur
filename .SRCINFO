@@ -20,6 +20,7 @@ pkgname = fftw-amd
 	depends = gcc-libs
 	depends = glibc
 	depends = openmpi
+	provides = fftw
 	provides = libfftw3q_threads.so
 	provides = libfftw3q_omp.so
 	provides = libfftw3q.so

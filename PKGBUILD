@@ -77,6 +77,7 @@ package() {
     openmpi
   )
   provides=(
+    fftw
     libfftw3q_threads.so
     libfftw3q_omp.so
     libfftw3q.so
