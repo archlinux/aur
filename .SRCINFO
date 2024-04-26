@@ -1,0 +1,15 @@
+pkgbase = python-klp-git
+	pkgdesc = klp is a lightweight, command-line interface (CLI) tool for analyzing and understanding structured logs in various formats.
+	pkgver = 20240426.5a55949
+	pkgrel = 1
+	url = https://github.com/dloss/klp
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	provides = python-klp
+	conflicts = python-klp
+	source = git+https://github.com/dloss/klp.git
+	sha256sums = SKIP
+
+pkgname = python-klp-git
