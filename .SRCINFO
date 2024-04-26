@@ -1,0 +1,14 @@
+pkgbase = rofi-browser
+	pkgdesc = A simple profile launcher for Mozilla Firefox-based browsers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/obvionaoe/rofi-browser/
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = rofi
+	conflicts = rofi-browser-bin
+	source = rofi-browser-1.0.0.tar.gz::https://github.com/obvionaoe/rofi-browser//archive/refs/tags/1.0.0.tar.gz
+	sha256sums = f705f00f33188f7c290b4eba5e6903177fae09a749dc77c6684b242b1dad6cc7
+
+pkgname = rofi-browser
