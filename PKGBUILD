@@ -2,7 +2,7 @@
 
 
 pkgname=gtk-radio
-pkgver=264.3
+pkgver=512.0
 pkgrel=1
 pkgdesc="Easily find live radio programs based on geographical location of radio broadcasters on the Internet"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('libchamplain' 'geoclue' 'gst-plugins-base' 'gst-plugins-bad' 'geocode-
 makedepends=('intltool' 'itstool' 'python')
 conflicts=('gnome-radio')
 replaces=('gnome-radio')
-source=(http://www.gtkradio.org/src/gtk-radio-264.3.tar.xz)
-sha256sums=('7fb2b2a5be259958eef28a3312b0b11bf27418c46ac3cd7002de0d89d717357a')
+source=(http://www.gtkradio.org/src/gtk-radio-512.0.tar.xz)
+sha256sums=('630b80c9b251ce4bb673f8470ca3f8bdcf44d64df20cbc4730c80c4cb7700a3e')
 
 
 prepare() {
