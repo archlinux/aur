@@ -1,0 +1,14 @@
+pkgbase = base16384
+	pkgdesc = Encode binary files to printable utf16be.
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/fumiama/base16384
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	source = base16384-2.3.1.tar.gz::https://github.com/fumiama/base16384/archive/refs/tags/v2.3.1.tar.gz
+	sha256sums = 71ee39510c8c687254315ccc1aa5de601a5e2a2554b6db843f3874c12415a77a
+
+pkgname = base16384
