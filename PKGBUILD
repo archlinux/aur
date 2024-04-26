@@ -4,11 +4,11 @@ _pkgname=tidyseurat
 _pkgver=0.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Brings Seurat to the Tidyverse"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-cli
   r-dplyr

@@ -1,10 +1,10 @@
 pkgbase = r-tidyseurat
 	pkgdesc = Brings Seurat to the Tidyverse
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=tidyseurat
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	depends = r-cli
 	depends = r-dplyr
