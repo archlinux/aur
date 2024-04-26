@@ -5,8 +5,8 @@
 _pkgname=qqmusic
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.1.3
-pkgrel=4
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="A music player from Tencent"
 arch=('x86_64')
 url="https://y.qq.com"
@@ -15,7 +15,7 @@ depends=()
 options=(!strip)
 _appimage="qqmusic-${pkgver}.AppImage"
 source=("https://dldir1.qq.com/music/clntupate/linux/AppImage/${_appimage}")
-sha256sums=("0f57a38e83cb5b7bc81aead0a3ab229fb52ed443069c0540b31d62894995f014")
+sha256sums=('370c5b9666b115beb22e5d8c375045424c101fe83eb88e6eb2cd8ab214c371aa')
 #        https://dldir1.qq.com/music/clntupate/linux/AppImage/qqmusic-1.1.1.AppImage
 prepare() {
     chmod +x "${_appimage}"
