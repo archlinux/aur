@@ -5,9 +5,9 @@
 _pkgname=pytorch
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
-pkgver=2.2.2
-_pkgver=2.2.2
-pkgrel=3
+pkgver=2.3.0
+_pkgver=2.3.0
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'openmpi' 'pybind11' 'python' 
          'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
          'python-networkx' 'python-filelock')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
-             'nccl' 'cudnn' 'git' 'rocm-hip-sdk' 'roctracer' 'miopen' 'magma-cuda' 'magma-hip'
+             'nccl' 'cudnn' 'git' 'rocm-hip-sdk' 'hipblaslt' 'roctracer' 'miopen' 'magma-cuda' 'magma-hip'
              'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn')
 source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
@@ -53,6 +53,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         "${pkgname}-nccl::git+https://github.com/NVIDIA/nccl"
         "${pkgname}-onnx-tensorrt::git+https://github.com/onnx/onnx-tensorrt"
         "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
+        "${pkgname}-opentelemetry-cpp::git+https://github.com/open-telemetry/opentelemetry-cpp.git"
         "${pkgname}-pocketfft::git+https://github.com/mreineck/pocketfft"
         "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
         "${pkgname}-psimd::git+https://github.com/Maratyszcza/psimd.git"
@@ -62,12 +63,11 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         "${pkgname}-tbb::git+https://github.com/01org/tbb"
         "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
         "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
-        "python-pytorch-2_2_0-fix-cccl-build.patch::https://github.com/pytorch/pytorch/commit/2a440348958b3f0a2b09458bd76fe5959b371c0c.patch"
-        python-pytorch-fix-cuda-12_4.patch
         fix_include_system.patch
         use-system-libuv.patch
         fix-building-for-torchvision.patch
         87773.patch
+        https://github.com/pytorch/pytorch/pull/123377.patch
         disable-werror1.patch
         disable-werror2.patch
         disable-werror4.patch
@@ -77,10 +77,9 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         pytorch-rocm-jit.patch
         pytorch-missing-iostream.patch
         python-pytorch-ffmpeg6.patch
-        python-pytorch-rocm-6.patch
-        python-pytorch-goo-rocm-6.patch
+        python-pytorch-aotriton-include.patch
         pytorch-remove-caffe2-binaries.patch)
-b2sums=('SKIP'
+b2sums=('84fbe79dac719adaf7e3da68bdf7f137e4a2f949c762ca62856eb2c9d8168f8305b477c8124dac176fff6466aa7ed1d4994d5411058b063c0aff3b1a36058851'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -121,12 +120,12 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'ae31599abcfde4d7dcf20d5430cbdab46d1c74b342c088883d6c949fad1987cbd16520d8f1d887b669c0990aae4baf4f0c350eeadbf237abf3a8e8a122722f3e'
-        'caf22a33fab6ca909cc9325ed6c32fdf36189dbdc77bb921d7db88fb5228f33ca2d90b1368b5ef88624277be422eaeb395768f9f2ddca19f39a238ed3c40efbd'
+        'SKIP'
         '77f85808e480bd37dfb5f072d565466ae30a8f827f49ef97591fc2fc03bea54944eb1adeaa4a1e3466518a5640f575eda88d15b4c4d549a6f41f0bf4f2cfb086'
         'af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147'
         'fdea0b815d7750a4233c1d4668593020da017aea43cf4cb63b4c00d0852c7d34f0333e618fcf98b8df2185313a2089b8c2e9fe8ec3cfb0bf693598f9c61461a8'
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
+        '3b3e024cc90eac1f074308d77b596744694858c5c7b6f6e5b0bfe8b5c936ff9e3b6133f98a310e2c1eb28b5ba805de1daec2824e48ebd7ec00315a6316a6b82a'
         '844d0b7b39777492a6d456fa845d5399f673b4bb37b62473393449c9ad0c29dca3c33276dc3980f2e766680100335c0acfb69d51781b79575f4da112d9c4018c'
         '985e331b2025e1ca5a4fba5188af0900f1f38bd0fd32c9173deb8bed7358af01e387d4654c7e0389e5f98b6f7cbed053226934d180b8b3b1270bdbbb36fc89b2'
         'eea86bbed0a37e1661035913536456f90e0cd1e687c7e4103011f0688bc8347b6fc2ff82019909c41e7c89ddbc3b80dde641e88abf406f4faebc71b0bb693d25'
@@ -136,8 +135,7 @@ b2sums=('SKIP'
         'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
         '77458fa568692020ae4e437b1ebae6ebbf59f040b3414ba03e32cc829f1befb9f39dde6e0c0525e30d42dd08d482d2f213dd8294a9877476c7d0d6aabb0f08d3'
         'c17c2d2c085795861cb46974e8e251a0eb576c35a1dd2d75bcb880119bcc800c49bf6bc25c8f671c984b48787b5b919ef946352e299dc13d3ff763ae1bcc33a4'
-        '6cf1cf6a636cf42b0fad6c4475f941e95a7a18cbd17fbab63576619fc3849213ff4fb0190b25e63d3438d7dbd259b3afb80e12a59d6b025edb02d576bff7b864'
-        'da7184d166270b59efb83105d19c0de6c9fe8c386e66807ac93e65761410ac5a91a2305f92022262a32cf5cf31bbcc08bb3f7975dd6063dda2408195aa3fe475'
+        'f22d47070baf40ed05b1a7777102da4b0d78fd9a75618623c6061614d319f8c955c74ee5fd55e23210b84c9ef35aa2838844119f877baf646a3bafff362a698b'
         '21e9922ed1c0b555316a655067a789ef81a93b173e35446ecd2d06d976d49ad6b4a0aaa7339fd647758e821c15bec7ffda3d6e4804c8e858a888f0171cd2a9cb')
 options=('!lto' '!debug')
 
@@ -183,6 +181,7 @@ prepare() {
   git config submodule."third_party/nlohmann".url "${srcdir}/${pkgname}"-json
   git config submodule."third_party/onnx".url "${srcdir}/${pkgname}"-onnx
   git config submodule."third_party/onnx-tensorrt".url "${srcdir}/${pkgname}"-onnx-tensorrt
+  git config submodule."third_party/opentelemetry-cpp".url "${srcdir}/${pkgname}"-opentelemetry-cpp
   git config submodule."third_party/pocketfft".url "${srcdir}/${pkgname}"-pocketfft
   git config submodule."third_party/protobuf".url "${srcdir}/${pkgname}"-protobuf
   git config submodule."third_party/pybind11".url "${srcdir}/${pkgname}"-pybind11
@@ -231,15 +230,12 @@ prepare() {
   # build against ffmpeg 6
   patch -Np1 -i "${srcdir}/python-pytorch-ffmpeg6.patch"
 
-  patch -Np1 -i "${srcdir}/python-pytorch-rocm-6.patch"
-  patch -Np1 -d third_party/gloo -i "${srcdir}/python-pytorch-goo-rocm-6.patch"
-
   patch -Np1 -i "${srcdir}/pytorch-remove-caffe2-binaries.patch"
 
-  # https://github.com/pytorch/pytorch/issues/122169
-  patch -Np1 -i "${srcdir}/python-pytorch-2_2_0-fix-cccl-build.patch"
+  # cuda 12.4
+  patch -Np1 -i "${srcdir}/123377.patch"
 
-  patch -Np1 -i "${srcdir}/python-pytorch-fix-cuda-12_4.patch"
+  patch -Np1 -i "${srcdir}/python-pytorch-aotriton-include.patch"
 
   cd "${srcdir}"
 
@@ -444,7 +440,7 @@ package_python-pytorch-opt-cuda() {
 
 package_python-pytorch-rocm() {
   pkgdesc="${_pkgdesc} (with ROCm)"
-  depends+=(rocm-hip-sdk roctracer miopen magma-hip onednn)
+  depends+=(rocm-hip-sdk hipblaslt roctracer miopen magma-hip onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver})
 
@@ -454,7 +450,7 @@ package_python-pytorch-rocm() {
 
 package_python-pytorch-opt-rocm() {
   pkgdesc="${_pkgdesc} (with ROCm and AVX2 CPU optimizations)"
-  depends+=(rocm-hip-sdk roctracer miopen magma-hip onednn)
+  depends+=(rocm-hip-sdk hipblaslt roctracer miopen magma-hip onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-rocm=${pkgver})
 
