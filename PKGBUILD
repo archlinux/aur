@@ -2,7 +2,7 @@
 
 pkgname=imibrowser
 pkgver=14.5.4751
-pkgrel=2
+pkgrel=3
 pkgdesc="iReasoning Freeware MIB browser tool for SNMP API"
 url="https://www.ireasoning.com/mibbrowser.shtml"
 arch=(x86_64)
@@ -13,9 +13,12 @@ license=(
 depends=(jre-openjdk)
 makedepends=(imagemagick)
 source=("$pkgname-$pkgver.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
-	"iMIBrowser.desktop")
+	'iMIBrowser.desktop'
+	'SLA'
+)
 sha256sums=('dd441e6ebdb4aa929b027fb1a52f65d545865d90db1fd38d575c5c63902cb5e2'
-	'ecfc557a66cb3e11f50c0034019fff55960d4b9551ba0639754ed14647cb6446')
+            'ecfc557a66cb3e11f50c0034019fff55960d4b9551ba0639754ed14647cb6446'
+            '66b7bbe1b39c910a7adde47e3d1d250d357b16b1e926e3bec8f0ef021900453a')
 
 prepare() {
 	# Information about license agreement for free Personal Edition version
@@ -63,6 +66,9 @@ package() {
 		"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 	install -Dm644 "$srcdir"/ireasoning/mibbrowser/THIRDPARTYLICENSEREADME.txt \
 		"$pkgdir"/usr/share/licenses/$pkgname/THIRDPARTY_LICENSE
+	install -Dm644 "$srcdir"/SLA "$pkgdir"/usr/share/licenses/$pkgname/SLA
+	# Sign the accepted software license agreement
+	echo ">> ACCEPTED <<" >>"$pkgdir"/usr/share/licenses/$pkgname/SLA
 
 	# Install icons
 	for d in 16 24 32 48 128 256; do
