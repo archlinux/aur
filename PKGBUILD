@@ -4,11 +4,11 @@ _pkgname=CoSIA
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="An Investigation Across Different Species and Tissues"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-annotationdbi
   r-annotationtools
@@ -42,11 +42,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('217ff53ed0aac2ca3c2d91ce5237c111')
-sha256sums=('11cdc5e047708b2c2a37cea00fcce76a61c73d158ef8241d81931b3210a2a791')
+b2sums=('3fcc3231673e0ee775689b136d0eb13b4589f16a0fdb12af2efc4ab9841daf864171ecbe3734dc08565d253e888a5f1c7d216d0b3ec845c333ef69acf952f183')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {

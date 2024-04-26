@@ -1,7 +1,7 @@
 pkgbase = r-cosia
 	pkgdesc = An Investigation Across Different Species and Tissues
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/CoSIA
 	arch = any
 	license = MIT
@@ -34,6 +34,6 @@ pkgbase = r-cosia
 	optdepends = r-tidyverse
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/CoSIA_1.2.0.tar.gz
 	md5sums = 217ff53ed0aac2ca3c2d91ce5237c111
-	sha256sums = 11cdc5e047708b2c2a37cea00fcce76a61c73d158ef8241d81931b3210a2a791
+	b2sums = 3fcc3231673e0ee775689b136d0eb13b4589f16a0fdb12af2efc4ab9841daf864171ecbe3734dc08565d253e888a5f1c7d216d0b3ec845c333ef69acf952f183
 
 pkgname = r-cosia
