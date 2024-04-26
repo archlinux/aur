@@ -3,18 +3,18 @@
 
 _pkgname='ferdium'
 pkgname="ferdium"
-_electron='electron29'
-_electronpackage='electron29'
-pkgver=6.7.2
+_electron='electron30'
+_electronpackage='electron30'
+pkgver=6.7.3
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
 depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy' "$_electronpackage")
-apptag='v6.7.2'
+apptag='v6.7.3'
 makedepends=('nvm' 'git' 'python' 'libxcrypt-compat' 'asar')
-options=(!strip)
+options=(!strip !debug)
 provides=(
     'ferdium'
 )
