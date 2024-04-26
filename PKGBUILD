@@ -199,6 +199,8 @@ build() {
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
     'enable_nacl=false'
+    'use_qt6=true'
+    'moc_qt6_path="/usr/lib/qt6"'
     "google_api_key=\"$_google_api_key\""
     # from ArchARM to build with distcc, uncomment if you build with distcc
     #'is_cfi=false'
