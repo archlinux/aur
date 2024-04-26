@@ -1,13 +1,13 @@
 pkgbase = qovery-cli
 	pkgdesc = Qovery Command Line Interface
-	pkgver = 0.90.1
+	pkgver = 0.90.2
 	pkgrel = 1
 	url = https://github.com/Qovery/qovery-cli
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = go
-	source = https://github.com/Qovery/qovery-cli/archive/v0.90.1.tar.gz
-	md5sums = 96784e789e83a3ffc13fda0f9ed01cfd
+	source = https://github.com/Qovery/qovery-cli/archive/v0.90.2.tar.gz
+	md5sums = a5fccbc7b67b9bda83ed3d57bae813b7
 
 pkgname = qovery-cli
