@@ -4,11 +4,11 @@ _pkgname=clevRvis
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Visualization Techniques for Clonal Evolution"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(LGPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-3.0-only')
 depends=(
   r-colorspace
   r-colourpicker
@@ -41,11 +41,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('96fde7a442a2cdb69754ebf1e68ccc65')
-sha256sums=('b40c4fe95a6b56bd73ccdaa87e5075600158db4399a3374665b1e220183cf55c')
+b2sums=('a17af95ed6c85a913e8cdaaffa70eefa59803d1c0e1f9ea41946ade51375ce887beaef475ae6be54b4ae8e1037896d3af4cf9baf90f40bf3df30388a2ce4a357')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
