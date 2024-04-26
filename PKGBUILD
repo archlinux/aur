@@ -2,14 +2,14 @@
 
 _pkgname=lxqt-archiver
 pkgname=$_pkgname-git
-pkgver=0.0.96.r23.gf1f2d16
-pkgrel=2
+pkgver=1.0.0.r0.gb903c29
+pkgrel=1
 pkgdesc=" A simple & lightweight desktop-agnostic Qt file archiver"
 arch=("i686" "x86_64")
 url="https://lxqt.org"
 license=("GPL2")
-depends=('libfm-qt-git' 'qt5-x11extras' 'glib2' 'json-glib')
-makedepends=('git' 'cmake' 'qt5-tools' 'lxqt-build-tools-git')
+depends=('libfm-qt-git' 'glib2' 'json-glib')
+makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
