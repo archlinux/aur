@@ -1,29 +1,32 @@
-# Maintainer: tuxzz <dorazzsoft@gmail.com>
-
+# Submitter: tuxzz <dorazzsoft@gmail.com>
+# Maintainer: EntropicEffect <william.grunow93@gmail.com>
 pkgname=fftw-amd
-pkgver=3.3.8.amd3.1.0
+pkgver=3.3.10amd4.2
 pkgrel=0
 pkgdesc="A library for computing the discrete Fourier transform (DFT) - AMD Ryzen/EPYC Optimized Version"
 arch=('x86_64')
 license=('GPL2')
 url="https://github.com/amd/amd-fftw/"
-depends=('bash' 'gcc-libs' 'glibc' 'openmpi')
-makedepends=('gcc-fortran')
-provides=('libfftw3q_threads.so' 'libfftw3q_omp.so' 'libfftw3q.so'
-'libfftw3l_threads.so' 'libfftw3l_omp.so' 'libfftw3l_mpi.so' 'libfftw3l.so'
-'libfftw3f_threads.so' 'libfftw3f_omp.so' 'libfftw3f_mpi.so' 'libfftw3f.so'
-'libfftw3_threads.so' 'libfftw3_omp.so' 'libfftw3_mpi.so' 'libfftw3.so' 'fftw=3.3.8-3')
 conflicts=('fftw')
+makedepends=(
+  bash
+  cmake
+  gcc-fortran
+  gcc-libs
+  glibc
+  openmpi
+)
+
 source=(
-  "https://github.com/amd/amd-fftw/archive/3.1.tar.gz"
+  "https://github.com/amd/amd-fftw/archive/refs/tags/4.2.tar.gz"
 )
 sha512sums=(
-  '65f99619cec968a3a247a21e70fb8d583726095b06d93122ecd1d13e139e9443653cd2217d03f81e5f00ad701a36318bc05508614e74f7ef46668a1766142a60'
+  "e6d77c31369f7e6e87ff7d32b274903168a0ac0228976c73f29ac9dbdd124f2ed1b54d5eac3c8e278f11bb51a7c30bda8c8395951f7784a87eb33ebf12c0e115"
 )
 
 prepare() {
   rm -r "${pkgname}-${pkgver}" || true
-  mv -v amd-fftw-3.1 "${pkgname}-${pkgver}"
+  mv -v amd-fftw-4.2 "${pkgname}-${pkgver}"
   cp -av "${pkgname}-${pkgver}" "${pkgname}-${pkgver}-double"
   cp -av "${pkgname}-${pkgver}" "${pkgname}-${pkgver}-double"
   cp -av "${pkgname}-${pkgver}" "${pkgname}-${pkgver}-long-double"
@@ -34,24 +37,24 @@ build() {
   export F77='gfortran'
   export CFLAGS=" -march=native -pipe -fno-plt -ftree-vectorize -Ofast -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math -flto"
   export FFLAGS=" -march=native -pipe -fno-plt -ftree-vectorize -Ofast -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math -flto"
-  _default_configure="./configure --prefix=/usr --enable-shared --enable-threads --enable-mpi --enable-openmp"
+  _default_configure="./configure --prefix=/usr --enable-shared --enable-threads --enable-mpi --enable-openmp --enable-dynamic-dispatcher"
 
   # configure single precision
   (
     cd "${pkgname}-${pkgver}"
-    ${_default_configure} --enable-sse2 --enable-avx --enable-avx2 --enable-single --enable-amd-opt
+    ${_default_configure} --enable-sse2 --enable-avx --enable-avx2 --enable-single --enable-amd-opt --enable-amd-mpifft
   )
 
   # configure double precision
   (
     cd "${pkgname}-${pkgver}-double"
-    ${_default_configure} --enable-sse2 --enable-avx --enable-avx2 --enable-amd-opt
+    ${_default_configure} --enable-sse2 --enable-avx --enable-avx2 --enable-amd-opt --enable-amd-mpifft
   )
 
   # configure long-double precission
   (
     cd "${pkgname}-${pkgver}-long-double"
-    ${_default_configure} --enable-long-double
+    ${_default_configure} --enable-long-double --enable-amd-mpifft
   )
 
   # configure quad precision
@@ -67,6 +70,30 @@ build() {
 }
 
 package() {
+    depends=(
+    bash
+    gcc-libs
+    glibc
+    openmpi
+  )
+  provides=(
+    libfftw3q_threads.so
+    libfftw3q_omp.so
+    libfftw3q.so
+    libfftw3l_threads.so
+    libfftw3l_omp.so
+    libfftw3l.so
+    libfftw3f_threads.so
+    libfftw3f_omp.so
+    libfftw3f.so
+    libfftw3_threads.so
+    libfftw3_omp.so
+    libfftw3.so
+    libfftw3l_mpi.so
+    libfftw3f_mpi.so
+    libfftw3_mpi.so
+  )
+
   make DESTDIR="${pkgdir}" install -C "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install -C "${pkgname}-${pkgver}-double"
   make DESTDIR="${pkgdir}" install -C "${pkgname}-${pkgver}-long-double"
