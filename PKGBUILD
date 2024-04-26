@@ -4,11 +4,11 @@ _pkgname=LinTInd
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Lineage tracing by indels"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-ape
   r-biocgenerics
@@ -35,11 +35,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('3dd8f8601ee8df3a0a53a02dc0c4d272')
-sha256sums=('aaa51af68083825fd6dfc1e43442883a51eb80685b068bf41da166d403a2672e')
+b2sums=('97f130b23e117677ffda7c12e814f8ff33989f7309d2d67c4f84c2b3e1e690e77550076bbb86035ed338d94671bce72e92f4728c8f45c66f84e6ed57bed1b68e')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
