@@ -3,7 +3,7 @@
 pkgname=latex-tuda-ci
 _pkgname=tuda_latex_templates
 pkgver=3.37
-pkgrel=1
+pkgrel=2
 pkgdesc='TUDa-CI for LaTeX from Technische Universität Darmstadt'
 arch=('any')
 url='https://github.com/tudace/tuda_latex_templates'
@@ -27,19 +27,14 @@ replaces=('latex-tuddesign' 'latex-tuddesign-thesis' 'latex-tuddesign-fonts')
 source=("https://github.com/tudace/${_pkgname}/archive/v${pkgver}/${pkgver}-${_pkgname}.tar.gz")
 b2sums=('b74dbfc1082296dffc1af5d161777f889281ceda1859fe2341c1aaea5bbdb5183cb635f6408995c2e9c9596d33a9d8d9844fa20fa38b7c87c0df5d09886619aa')
 
-prepare() {
-  chmod +x ${_pkgname}-${pkgver}/prepare_tuda.sh
-}
-
 build() {
   cd ${_pkgname}-${pkgver}
-  export TEXINPUTS=".:${srcdir}/${_pkgname}-${pkgver}/tex:${TEXINPUTS}"
-  ./prepare_tuda.sh
+  # currently broken
+  # l3build doc
 }
 
 package() {
   cd ${_pkgname}-${pkgver}
+  l3build install --texmfhome ${pkgdir}/usr/share/texmf
   install -Dm644 LICENSE_info "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-  install -dm755 "${pkgdir}"/usr/share/
-  cp -r texmf "${pkgdir}"/usr/share/
 }
