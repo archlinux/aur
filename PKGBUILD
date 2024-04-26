@@ -5,11 +5,11 @@ _pkgname=MPO.db
 _pkgver=0.99.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of annotation maps describing the Mouse Phenotype Ontology"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-annotationdbi
   r-annotationhub
@@ -26,11 +26,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('1f1b83d5d03d69a82ca2b9e7179b537f')
-sha256sums=('74b3e8f0a3b5b896b5d0c944e3334c750a4404b800fa70da9a2aa1f066643974')
+b2sums=('e578c7121c2515a13f8a78a2890830b6761dcb0c67f7e811baf60928b45ca6ea3dbede33a8d7f0ec422cda64d3317032e552ff3bd1d3aed99a696b512a77945d')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
