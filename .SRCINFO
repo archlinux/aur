@@ -1,10 +1,10 @@
 pkgbase = r-breakaway
 	pkgdesc = Species Richness Estimation and Modeling
 	pkgver = 4.8.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=breakaway
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	checkdepends = r-testthat
 	depends = r-ggplot2
 	depends = r-lme4
@@ -20,6 +20,6 @@ pkgbase = r-breakaway
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/breakaway_4.8.4.tar.gz
 	md5sums = 94225c9f1d159e31704079beda962469
-	sha256sums = 75d83169f1c3945b3e63a714b0e193512baae0e1ff2e93fec22aa6d302b9bd22
+	b2sums = 07046b4c7c49d0115f1ee237a7748ba78e92a3820efd2bddc792a35aee2d2194f11c35a638e8c74a61622f7a6b3fcbffb6f7c202c9e627658c57b865de4f1d60
 
 pkgname = r-breakaway
