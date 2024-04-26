@@ -4,11 +4,11 @@ _pkgname=scifer
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Single-Cell Immunoglobulin Filtering of Sanger Sequences"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(MIT)
+license=('MIT')
 depends=(
   r-biostrings
   r-data.table

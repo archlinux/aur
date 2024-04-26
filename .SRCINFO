@@ -1,7 +1,7 @@
 pkgbase = r-scifer
 	pkgdesc = Single-Cell Immunoglobulin Filtering of Sanger Sequences
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bioconductor.org/packages/scifer
 	arch = any
 	license = MIT
