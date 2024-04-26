@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=screen-area-share-bin
 _pkgname=ScreenAreaShare
-pkgver=1.3.3
+pkgver=1.4.0
 _electronversion=28
 pkgrel=1
 pkgdesc="Share selected area of the screen in applications that do not support this, e.g. Teams."
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5539c7cff5f46c59b56f62180adfde77da364aa230a7c9e36caaafb969f53e9b'
+sha256sums=('802be91baafe9daa35ce61bcfe6bcc4267cc926e15c2ed21cf3997a4be55517a'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
