@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=p3x-redis-ui-bin
 _appname=P3X-Redis-UI
-pkgver=2024.4.240
+pkgver=2024.4.242
 _electronversion=30
 pkgrel=1
 pkgdesc="A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app"
@@ -27,9 +27,9 @@ source=(
 )
 sha256sums=('1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('370108f22002ad1fb99952b7992de594764170376567f4749718f60877a3d52f')
-sha256sums_armv7h=('ae270461ee7d9d6870cec8a1b85132f4f003d6d8db20724eca241977497efd68')
-sha256sums_x86_64=('cfbc300014b0f6b9679e6b5986451ab714ce1e504b2973e55aeee5060b42bc1c')
+sha256sums_aarch64=('ee1475aa181841725b94f4dc825170cd3c01b9569a3e2fa9ce38e287f3ea071e')
+sha256sums_armv7h=('77963370cc46a307a7b35b39e2f8586cf63244fdf3f8372850ab67b99e3fc3a0')
+sha256sums_x86_64=('d704e3440b7830ff7e313522b334cf46ac679adb18a913200a3b79f05daf0879')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
