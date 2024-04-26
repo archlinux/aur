@@ -1,3 +1,4 @@
 /valkey*.tar.zst
 /valkey*.tar.gz
 /valkey*.log
+/PKGBUILD*.log
