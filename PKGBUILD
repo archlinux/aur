@@ -4,7 +4,7 @@
 # Contributor: nkoizu <nkoizu@gmail.com>
 
 pkgname=gauche
-pkgver=0.9.14
+pkgver=0.9.15
 pkgrel=1
 url='https://practical-scheme.net/gauche/'
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(gauche)
 license=(BSD)
 _info_page_date='29 Oct 2023 10:10' # For reproducible builds
 source=("https://github.com/shirok/Gauche/releases/download/release${pkgver//./_}/Gauche-${pkgver}.tgz")
-b2sums=('cb747a16037167a95a543e324b53a48e3cb4dd372e9f6cc00603b7072b902c839248fbf3e9926360a2732fcf4bc0caa16a4ea1ad757e84d5d597ef4bdfa2592f')
+b2sums=('1b4cbc764ea3af78bc736ce9a8ff083318366fbf3197ebc5060222b8df93ed426ca4b3b90402cd604e110bcfa8fb46c0d4c5f35be39899cc89dc82a671372bf9')
 
 build() {
   cd Gauche-$pkgver
