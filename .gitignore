@@ -1,16 +1,5 @@
-redict/
-
-# ---> ArchLinuxPackages
-*.tar
-*.tar.*
-*.jar
-*.exe
-*.msi
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
-
-pkg/
-src/
+/valkey/
+/valkey*.tar.zst
+/valkey*.tar.gz
+/valkey*.log
+/PKGBUILD*.log
