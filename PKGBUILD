@@ -3,8 +3,8 @@
 # based on aur/balena-etcher: Matthew McGinn <mamcgi@gmail.com>
 pkgname=etcher-git
 _pkgname=balenaEtcher
-pkgver=1.19.10.r0.gb1323524
-_electronversion=27
+pkgver=1.19.14.r0.gc756b10a
+_electronversion=30
 _nodeversion=20
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
@@ -12,7 +12,12 @@ arch=('any')
 url='https://etcher.io/'
 _ghurl="https://github.com/balena-io/etcher"
 license=("Apache-2.0")
-conflicts=("${pkgname%-git}")
+conflicts=(
+    "${pkgname%-git}"
+    "balena-etcher"
+    "balena-etcher-electron"
+    "${pkgname%-git}-ng"
+)
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
