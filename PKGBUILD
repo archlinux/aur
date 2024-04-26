@@ -5,11 +5,11 @@ _pkgname=mfa
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Bayesian hierarchical mixture of factor analyzers for modelling genomic bifurcations"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-biobase
   r-coda
@@ -33,11 +33,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('37fa2e82d83636458e9a20cc72069dcd')
-sha256sums=('4e98fbf604696392ae4fe31a4755415eb906a721c2e2ceab68c0e22f0cd51841')
+b2sums=('2af37a3bbc965fea7d31af26d93dfa4a2e801487661316fcd812a0ee905776ea34e62c3f78ce163ff591e5739adb0123c6f45302f24233545eea12f136de7b8c')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
