@@ -7,7 +7,7 @@
 # Contributor: hexchain <i@hexchain.org>
 
 pkgname=telegram-desktop-kdefix-userfonts-altscroll
-pkgver=4.16.6
+pkgver=4.16.8
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -28,7 +28,7 @@ optdepends=('webkit2gtk: embedded browser features'
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         "kde-theme-injection-fix.patch"
         "mediaview-altscroll.patch") # https://github.com/telegramdesktop/tdesktop/pull/27245
-sha512sums=('5b580d36c8b8a90981c3541d4c148df37bb7ebdec0970bfbfe4c1a9a1175e3cf41c2a14d854d7d917482aa9086ee712844ec40780741df22ad6d42fcf3c48f1f'
+sha512sums=('7d9d8ab4c62cf9e4f44ff879953f3d543427f7fd80682f6d08b58fb3dec481b0082086c3958e38b809b886359a76b1f5450142dbcfb58c867014d78f5fa19f60'
             '7b3dd58276cbe2145887e3c127519a461be83485d9874c08d98d21e97bfb194a4355d0766746157b20d15027db8c265600b5d279cc07456153b2a2736832bae6'
             '38ff8627090ac9766a8d409fa26cbd4381640e08abcb677f4524a5305d011aa0f6ce81d69313a01f0db5c1a3794805bff2a059095258f5e8d9bd1133550cca2e')
 
