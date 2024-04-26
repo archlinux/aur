@@ -4,11 +4,11 @@ _pkgname=crisprScoreData
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Pre-trained models for the crisprScore package"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-annotationhub
   r-experimenthub
@@ -21,11 +21,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('1f4d86404f045ec36cf7d1b1c64373fe')
-sha256sums=('d1c2eaf4fb4361738ea092da8b7e144ab9f327379aa2ec7c42e3a38aaed33c67')
+b2sums=('c88bf94f3d3442f04729ffaed0ee084a2b6f7a9501c9f2b43cd9ac0b2a0aa9142da8438da387a54293817b017eaeab96f1af00b90a92ca9e4922817ab5c98c81')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
