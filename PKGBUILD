@@ -4,11 +4,11 @@ _pkgname=ompBAM
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="C++ Library for OpenMP-based multi-threaded sequential profiling of Binary Alignment Map (BAM) files"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-rcpp
   r-zlibbioc
@@ -30,11 +30,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('9e9d31ddcad0b4bb4acb30ad970a0cd5')
-sha256sums=('999a53255a63c874ff040cf9d168c19749e710f556c331ea635fcbc6efe0bbfc')
+b2sums=('830df567c67e8e45b72384ff9441b519753741ad36df4106016d82aa3772f936ed8d89c4d8a6909797029707d7a9d4b0a97e9bc8850a8e9695a41b7a90db6f88')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
