@@ -2,7 +2,7 @@
 
 pkgname=python-pyroomacoustics
 _pyname=pyroomacoustics
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='Package for audio signal processing for indoor applications and beamforming algorithms'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('libsamplerate: for resampling signals'
     'python-sounddevice: to play sound samples')
 provides=('python-pyroomacoustics')
 source=(${_pyname}-${pkgver}.tar.gz::"https://github.com/LCAV/pyroomacoustics/archive/v${pkgver}.tar.gz")
-sha256sums=('403cf2cbd7ed48d189703b0ee92ad0ef35ce5911406d56a25491069c6eedf0d9')
+sha256sums=('c996d41eeb88c6b233a86e3e25db02984b2eda82b2528710dc7b8949b21bc2ec')
 
 build() {
 	cd "$srcdir/$_pyname-$pkgver"
