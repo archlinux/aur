@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TrackAudio
+Comment=A next generation Audio-For-VATSIM ATC Client for macOS, Linux and Windows
+GenericName=TrackAudio
+Exec=trackaudio %U
+Icon=trackaudio
+Type=Application
+StartupNotify=true
+Categories=Game;
+
