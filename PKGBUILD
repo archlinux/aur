@@ -4,12 +4,12 @@ pkgver=1.0.2
 pkgrel=1
 pkgdesc="Unnofficial Tailscale desktop application"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/tailscaledesktop/application"
+url="https://gitlab.com/linuxbombay/application"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("https://gitlab.com/tailscaledesktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
+sha256sums=('3d3e7bff4bc3979ae997102ded1626786742b464f47593087cb53ef4ffeb53ad')
 
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
