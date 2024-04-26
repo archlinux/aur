@@ -2,7 +2,7 @@
 # Contributor: Juliette Cordor 
 
 pkgname=("podman-desktop")
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=(
     "docker: docker plugin"
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('98cb19720f1759a8e1b9bba7fd88c74361d5053ff78d84d00a6019243a863de3')
+sha256sums=('e2a7dd27c77c8e872ea538e2a5e165156476b6925ce0df811ca1e244b220b046')
 
 build(){
     cd "${srcdir}/podman-desktop-$pkgver"
