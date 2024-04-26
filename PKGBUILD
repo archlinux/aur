@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://renderman.pixar.com/"
 license=('custom')
 depends=('renderman-pro-server=26.1.2324948'
-         'maya>=2022' 'maya<2025'
+         'maya>=2022' 'maya<2024'
          'libffi6')
 install="${pkgname}.install"
 

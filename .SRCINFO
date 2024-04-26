@@ -8,7 +8,7 @@ pkgbase = renderman-for-maya
 	license = custom
 	depends = renderman-pro-server=26.1.2324948
 	depends = maya>=2022
-	depends = maya<2025
+	depends = maya<2024
 	depends = libffi6
 	source = manual://RenderManForMaya-26.1_2324948-linuxRHEL7_gcc93icx232.x86_64.rpm
 	source = RenderMan_for_Maya_26.1.module
