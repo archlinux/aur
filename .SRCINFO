@@ -1,0 +1,21 @@
+pkgbase = deeplx-git
+	pkgdesc = DeepL Free API (No TOKEN required)
+	pkgver = 0.9.4.r6.g93a3204
+	pkgrel = 1
+	url = https://github.com/OwO-Network/DeepLX
+	install = deeplx-git.install
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = deeplx
+	conflicts = deeplx
+	source = deeplx-git::git+https://github.com/OwO-Network/DeepLX.git
+	source = deeplx-git.install
+	sha256sums = SKIP
+	sha256sums = 3962c9e75073e0dac0088a55d3574cc8cb104031837876422281081a32d332d3
+
+pkgname = deeplx-git
