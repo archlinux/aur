@@ -1,7 +1,7 @@
 pkgbase = python-deepl
 	pkgdesc = Python library for the DeepL API
-	pkgver = 1.17.0
-	pkgrel = 3
+	pkgver = 1.18.0
+	pkgrel = 1
 	url = https://github.com/deeplcom/deepl-python
 	arch = any
 	license = MIT
@@ -12,9 +12,9 @@ pkgbase = python-deepl
 	makedepends = python-poetry-core
 	depends = python-requests
 	optdepends = python-keyring: for support storing API Key
-	source = git+https://github.com/deeplcom/deepl-python.git?signed#tag=v1.17.0
+	source = git+https://github.com/deeplcom/deepl-python.git?signed#tag=v1.18.0
 	validpgpkeys = D84A62C6CA4D3E3D6656083438FCACAAFD2C06B8
 	validpgpkeys = DBDC63E97C526204335805941FA7A782EC90634E
-	sha256sums = 9c2ef9632d861dd76807a8a485555669c1cf7230cc917122fc6f9b66057703e6
+	sha256sums = 0415f099b8b55705c83ab44f99b82c253fd50110ff452fd0253ef59e3b4b4078
 
 pkgname = python-deepl
