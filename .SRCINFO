@@ -1,7 +1,7 @@
 pkgbase = r-crisprbase
 	pkgdesc = Base functions and classes for CRISPR gRNA design
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/crisprBase
 	arch = any
 	license = MIT
@@ -18,6 +18,6 @@ pkgbase = r-crisprbase
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/crisprBase_1.6.0.tar.gz
 	md5sums = 20cc1254ee7d33a966bb795f09f8be44
-	sha256sums = 8037cf0286dce17086fe7ea488ae085850a363d12a084622fa76c98da9ced9c8
+	b2sums = 61d2bd26b66656e1f035c94d1b8399126f7e1a99e00b469d9156a90270a5e085aab3e21f13ddbc98a074358dc1112db78ab43fdf2bc13e56e7f423b1ff8fae0f
 
 pkgname = r-crisprbase

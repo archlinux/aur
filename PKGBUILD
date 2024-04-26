@@ -4,11 +4,11 @@ _pkgname=crisprBase
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Base functions and classes for CRISPR gRNA design"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biocgenerics
   r-biostrings
@@ -28,11 +28,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('20cc1254ee7d33a966bb795f09f8be44')
-sha256sums=('8037cf0286dce17086fe7ea488ae085850a363d12a084622fa76c98da9ced9c8')
+b2sums=('61d2bd26b66656e1f035c94d1b8399126f7e1a99e00b469d9156a90270a5e085aab3e21f13ddbc98a074358dc1112db78ab43fdf2bc13e56e7f423b1ff8fae0f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
