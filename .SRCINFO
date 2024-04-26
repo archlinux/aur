@@ -11,6 +11,8 @@ pkgbase = wolfram-js-frontend-bin
 	depends = bash
 	depends = libuv
 	depends = java-runtime
+	provides = wolfram-js-frontend
+	conflicts = wolfram-js-frontend
 	source = https://github.com/JerryI/wolfram-js-frontend/releases/download/2.3.2/wljs-notebook_2.3.2_amd64.deb
 	sha256sums = 4cfe5d3f85fbb4d1d900736bedca7117f5a3d7abca32e363c6c9b21b1493006a
 
