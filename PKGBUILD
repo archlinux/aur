@@ -1,35 +1,21 @@
-# Maintainer: <aggraef at gmail.com>
-
-# This is a binary package created directly from the latest upstream Debian
-# package at http://l2ork.music.vt.edu/main/?page_id=56. If you want
-# a package built specifically for Arch systems then use the pd-l2ork or
-# pd-l2ork-git package instead, also available in the AUR.
+# Maintainer: Sungjoon Moon <sumoon at seoulsaram dot com>
+# Contributor: <aggraef at gmail.com>
 
 pkgname=pd-l2ork-bin
-pkgver=20160614
+pkgver=20240401
+_pkgrev=8bddcbf5e
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData (upstream Debian package)"
 arch=('x86_64')
 url="http://l2ork.music.vt.edu/main/?page_id=56"
-license=('BSD')
-depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
-  'flite1' 'fluidsynth' 'freeglut' 'ftgl' 'glew' 'gmerlin'
-  'gsl' 'gsm' 'hicolor-icon-theme' 'imagemagick' 'jack' 'ladspa' 'lame'
-  'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
-  'libxxf86vm' 'libtiff' 'libiec61883' 'libunicap' 'libraw1394'
-  'libsndobj-git' 'libv4l' 'libvorbis' 'lua51' 'portaudio'
-  'smpeg' 'speex' 'stk' 'tk' 'tkpng' 'vlc' 'xapian-tcl-bindings' 'zlib')
+license=('GPL')
+depends=('bluez-libs' 'fftw' 'flite' 'fluidsynth' 'fribidi' 'ftgl' 'glu' 'lua53' 'lame' 'libogg' 'libpng')
 provides=('pd-l2ork')
 conflicts=('pd-l2ork')
-source=(http://l2ork.music.vt.edu/data/pd/pd-l2ork-x86_64-$pkgver.deb)
-md5sums=('99198f9857fb49963c43e20e738518b7')
-
-prepare() {
-    cd "$srcdir"
-    tar -xf data.tar.xz
-}
+source=(http://l2ork.music.vt.edu/data/pd-l2ork/Pd-L2Ork-full-$pkgver-rev.$_pkgrev-x86_64.deb)
+sha256sums=('b7ee5ab418ea499bfe44f39102d9a6d7fafa8f13ba3719608e1c78891580f11c')
 
 package() {
     cd "$srcdir"
-    cp -a etc usr "$pkgdir"
+    bsdtar -xf "$srcdir/data.tar.zst" -C "$pkgdir"
 }
