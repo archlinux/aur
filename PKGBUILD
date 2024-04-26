@@ -4,11 +4,11 @@ _pkgname=cubble
 _pkgver=0.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="A Vector Spatio-Temporal Data Structure for Data Analysis"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-cli
   r-dplyr
@@ -55,8 +55,8 @@ source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "enable-tests.patch")
 md5sums=('507beb3acc1807759c2f7cd7a1ab776b'
          'e2b8a5680c7d062c94e3e483d68cd8e8')
-sha256sums=('bb7c4834b155e1351dc5810eb058237d659ab025f85bb5f8ce02a212fdf94d4a'
-            '528beb5ae73cf616562440024e0b84250a2e02e01d50084ea5ff345cbe3076cb')
+b2sums=('36484c35e063e59426a2cce4cca06c77c19f4c158473938421f93370d5f7c27f61cd1f60e118e6a5408d2d6e0be78e8ae85dd5b4b198e41e58c2e2837c9c3093'
+        'c26254ed7877e0693784ee5a43f391548c105f56c7f3d765bb78476e7e07e0c128173b2bfc3256ab453049e6dec280745565d9619a1df5440dea371fca9ea199')
 
 prepare() {
   # enable tests
@@ -64,8 +64,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
