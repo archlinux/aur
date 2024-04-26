@@ -1,0 +1,4 @@
+post_install() {
+	echo "To enable the plugin with gdb :`source /usr/share/OpenImageDebuffer/oid.py` in gdb or in your `~/.gdbinit` "
+	echo "To enable the plugin with lldb :`command script import /path/to/OpenImageDebugger/oid.py` in lldb or in your `~/.lldbinit`"
+}
