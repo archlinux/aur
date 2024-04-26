@@ -4,11 +4,11 @@ _pkgname=oncoscanR
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Secondary analyses of CNV data (HRD and more)"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-genomicranges
   r-iranges
@@ -28,11 +28,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('48aee6850c94c299417e75cf74418b01')
-sha256sums=('c82a686c987f01ad76ae6bbbb46d9a6ff9d85ac180429b1bad8cb74673a99fa7')
+b2sums=('932d88ee70435cee7c50e6a8885844cffa862f8ab66b66572809ead8a5ef7e15fea29ede38b5e82b6876d1cb087f04ff094f05301710869b6f0eaccbcdc05f8d')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
