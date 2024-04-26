@@ -4,11 +4,11 @@ _pkgname=scBubbletree
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Quantitative visual exploration of scRNA-seq data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-ape
   r-future
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d64f38622d8aec6ebb23e81231710134')
-sha256sums=('52ec5264b10e4b8df9e56a31f654adc102e99c66455fb9bbce4c3ab51ae79533')
+b2sums=('39791c5548c50b07fad86fd217d699bf03c69fb4721c99fd16cbf9e28247c4652c2a2da30e247897676820a3ab532c1b027a8fb02b86ff146583152b9610ec19')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
