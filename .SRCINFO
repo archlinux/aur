@@ -1,6 +1,6 @@
 pkgbase = srain
 	pkgdesc = Modern IRC client written in GTK.
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	epoch = 1
 	url = https://srain.silverrainz.me
@@ -19,7 +19,7 @@ pkgbase = srain
 	depends = libsoup
 	depends = libsecret
 	depends = libayatana-appindicator
-	source = https://github.com/SrainApp/srain/archive/1.6.0.tar.gz
-	sha256sums = d7be6bf0def5c5bc4416056fc3e380da8b6383e600e529191b3a9f185c0a511b
+	source = https://github.com/SrainApp/srain/archive/1.7.0.tar.gz
+	sha256sums = a79bc0d3c257db1c1037b75c330a36c40660580f99327710419a0dacb1b5b18d
 
 pkgname = srain
