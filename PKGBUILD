@@ -4,11 +4,11 @@ _pkgname=crisprScore
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="On-Target and Off-Target Scoring Algorithms for CRISPR gRNAs"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-basilisk
   r-basilisk.utils
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('c83f7928b03ce0308175835556dfcb54')
-sha256sums=('dea74cc8cc0cbe2ac8d0280230b114e426356694b5845764a1adc8e49f6c3828')
+b2sums=('0eb12aa7ce80ae7a520851fdecf46179e1020516acb3fca29dca4ad7515fab91227a76f760f113301877bf040396c085d744be3bc45f4ebbe7e02876837cb8fe')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
