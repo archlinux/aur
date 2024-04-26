@@ -1,0 +1,23 @@
+pkgbase = npdfr
+    pkgdesc = A command-line PDF reader prioritizing fast searches
+    pkgver = 0.1.0
+    pkgrel = 1
+    url = https://github.com/amini-allight/npdfr/
+    arch = x86_64
+    arch = arm
+    arch = armv7h
+    arch = armv6h
+    arch = aarch64
+    license = GPL3
+    makedepends = git
+    makedepends = cmake
+    makedepends = make
+    makedepends = python-pip
+    makedepends = python-virtualenv
+    depends = jsoncpp
+    depends = ncurses
+    depends = python>=3.8
+    source = git+https://github.com/amini-allight/npdfr.git#tag=0.1.0
+    sha256sums = SKIP
+
+pkgname = npdfr
