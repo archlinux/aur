@@ -5,14 +5,14 @@
 
 pkgbase=mafft
 pkgname=('mafft' 'mafft-extensions' 'mafft-mpi')
-pkgver=7.525
+pkgver=7.526
 pkgrel=1
 arch=('x86_64')
 url='https://mafft.cbrc.jp/alignment/software'
 license=('BSD')
 makedepends=('make' 'openmpi')
 source=("${pkgbase}-${pkgver}.tgz::https://gitlab.com/sysimm/mafft/-/archive/v${pkgver}/mafft-v${pkgver}.tar.gz")
-sha1sums=('35f48838439357aa959d483526a1452d6ea387ba')
+sha1sums=('98d36d806bc215bb1f32143b4090e90d6a073062')
 
 build() {
   make -C "${pkgbase}-v${pkgver}/core" PREFIX=/usr LIBDIR=/usr/lib/mafft
