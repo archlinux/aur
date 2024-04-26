@@ -6,7 +6,7 @@
 
 pkgname=lcms
 pkgver=1.19
-pkgrel=8
+pkgrel=9
 pkgdesc='Lightweight color management library (legacy version 1)'
 arch=('x86_64' 'i686')
 url='https://www.littlecms.com'
@@ -37,6 +37,11 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make check
 }
 
 package() {

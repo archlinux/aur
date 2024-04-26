@@ -1,7 +1,7 @@
 pkgbase = lcms
-	pkgdesc = Lightweight color management library/engine (legacy version 1)
+	pkgdesc = Lightweight color management library (legacy version 1)
 	pkgver = 1.19
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.littlecms.com
 	arch = x86_64
 	arch = i686
