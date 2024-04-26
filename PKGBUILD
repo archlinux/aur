@@ -21,7 +21,7 @@ b2sums=('SKIP' # Intel does not provide checksums for binary packages
 
 prepare() {
   cd "$srcdir"
-  mkdir intel-driver-compiler-npu intel-fw-npu intel-level-zero-npu
+  mkdir -p intel-driver-compiler-npu intel-fw-npu intel-level-zero-npu
   bsdtar -xf intel-driver-compiler-npu.deb -C intel-driver-compiler-npu
   bsdtar -xf intel-fw-npu.deb -C intel-fw-npu
   bsdtar -xf intel-level-zero-npu.deb -C intel-level-zero-npu
