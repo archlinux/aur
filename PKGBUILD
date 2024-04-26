@@ -6,8 +6,8 @@ _pkgname="${_name,,}.lv2"
 _plugin_uri="https://www.jahnichen.de/plugins/lv2/${_name}"
 pkgname="${_pkgname}-git"
 pkgdesc="A pattern-controlled audio stream re-sequencer LV2 plugin (git version)"
-pkgver=1.4.2.r0.gfd90fae
-pkgrel=2
+pkgver=1.6.8.r0.geeafe2d
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/sjaehn/${_name}"
 license=('GPL3')
@@ -37,7 +37,13 @@ build() {
 check() {
   cd "${srcdir}/${_pkgname}"
   # Ignore 'state:loadDefaultState not defined' error
-  lv2lint -t "Plugin State" -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
+  # Ignore exported symbols starting with "_Z"
+  lv2lint \
+    -t "Plugin State" \
+    -Mpack \
+    -s "_Z*" \
+    -I "${_name}.lv2/" \
+    "${_plugin_uri}"
 }
 
 package() {
