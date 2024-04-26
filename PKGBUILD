@@ -1,56 +1,48 @@
-# Maintainer: Tobias Kieslich <neri@archlinux.org>
+# Maintainer: 
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Brian Bidulock < bidulock AT openss7 DOT org >
+# Contributor: Tobias Kieslich <neri@archlinux.org>
 # Contributor: Ben <contrasutra@myrealbox.com>
 
-pkgbase=lcms
-pkgname=(lcms python2-lcms)
+pkgname=lcms
 pkgver=1.19
-pkgrel=7
-pkgdesc='Lightweight color management development library/engine'
+pkgrel=8
+pkgdesc='Lightweight color management library (legacy version 1)'
 arch=('x86_64' 'i686')
-license=('custom')
-depends=('libtiff')
-makedepends=('python2')
-url='http://www.littlecms.com'
-source=("https://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
+url='https://www.littlecms.com'
+license=('MIT')
+depends=(
+  'glibc'
+  'libjpeg'
+  'libtiff'
+)
+source=("https://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'cve-2013-4276.patch')
-sha256sums=('80ae32cb9f568af4dc7ee4d3c05a4c31fc513fc3e31730fed0ce7378237273a9'
-            'cd10cc5ce791ae782b1257e6181a71cbdb685b705779c9ef2ceffc7fb2021bd0')
+b2sums=('b8850f47652270082e11729119c35dfb90e112a40a80c531298b9585d89b3fba6e3ff1e0abd284ec2c6654a64fd44870f79d0a437917b8414e94d38afb66be93'
+        '35d54f9e23612cd9117a7db4adb2fa111036257582fc46ab0d6e687561783bcbbf415ae0ebc1c83ebe07e3ba42340ba56a2d42deb123473f79d7832775a07469')
 
 prepare() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   patch -Np1 -i ../cve-2013-4276.patch
-}
 
-build() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  echo "Adding LDFLAGS vaues to CLFLAGS to respect LTO, relro, as-needed etc. configs."
+  export CFLAGS+=" ${LDFLAGS}"
 
   ./configure \
     --prefix=/usr \
-    --with-python
+    --without-python
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make
-  make -C python
 }
 
-package_lcms() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
   install -D -m0644 COPYING \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  rm -rf "${pkgdir}/usr/lib/python2.7/"
-}
-
-package_python2-lcms() {
-  pkgdesc='LittleCMS Python bindings'
-  depends=('lcms')
-
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-
-  make DESTDIR="${pkgdir}" install
-  install -D -m0644 COPYING \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  rm -rf "${pkgdir}/usr/"{bin,include,lib/{pkgconfig,liblcms.*},share/man}
 }
