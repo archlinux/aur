@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.zip::https://www.ireasoning.com/download/mibfree/mibbr
 )
 sha256sums=('dd441e6ebdb4aa929b027fb1a52f65d545865d90db1fd38d575c5c63902cb5e2'
             'ecfc557a66cb3e11f50c0034019fff55960d4b9551ba0639754ed14647cb6446'
-            '66b7bbe1b39c910a7adde47e3d1d250d357b16b1e926e3bec8f0ef021900453a')
+            '13bc58030db2e471743fd920b327cb1711915220605f577c0db2588b1e2a15cf')
 
 prepare() {
 	# Information about license agreement for free Personal Edition version
