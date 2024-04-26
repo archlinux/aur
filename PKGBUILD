@@ -2,7 +2,7 @@
 
 pkgname=xfb
 pkgver=1.23
-pkgrel=8
+pkgrel=9
 pkgdesc="Open-source Radio Automation"
 arch=('x86_64')
 url="https://github.com/netpack/XFB"
@@ -16,7 +16,7 @@ makedepends=('qt5-tools')
 
 source=("https://github.com/netpack/XFB/releases/download/v1.23/xfb-1.23.tar.gz")
 
-sha512sums=("36df54213a21be2fc30f31457cbe2f2da77ca59dd21737c633779f3a4905bd1eccb867ce59d2724061e95c8295e4f16b684fa64ee9fa6acc6f7222c9cd20ff5e")
+sha512sums=("7e8610151860e66c9d5599f0a458d5832aabeab203c4ac286c67c4c3cc7916a9d1bb5069edaff3c892064983d5a97c3eb11de3a48e451b727b0307aef22a64d8")
 
 
 build() {
