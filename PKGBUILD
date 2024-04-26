@@ -4,11 +4,11 @@ _pkgname=MsDataHub
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Mass Spectrometry Data on ExperimentHub"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-experimenthub
 )
@@ -29,11 +29,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('f355465b6b3994491364cbe994e4488d')
-sha256sums=('991de642121db86be31c55c72ad17ac24999afd66a1ec568636e8ff0d78cd30d')
+b2sums=('0bff7682b1e70d68b61385b56db8c14bc3e2dfada45e2e14f7ebf22f1ff2b1dcb721b40dfacf3f5816411bcea30dc5d80f073f33c15fa4402b6b299b547121f2')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
