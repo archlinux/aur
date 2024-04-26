@@ -1,10 +1,10 @@
 pkgbase = r-tidyheatmap
 	pkgdesc = A Tidy Implementation of Heatmap
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=tidyHeatmap
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-spelling
 	checkdepends = r-testthat
 	checkdepends = r-vdiffr
@@ -34,6 +34,6 @@ pkgbase = r-tidyheatmap
 	optdepends = r-vdiffr
 	source = https://cran.r-project.org/src/contrib/tidyHeatmap_1.8.1.tar.gz
 	md5sums = 043abb0854964eceb2fccc711ae64a35
-	sha256sums = 9544d397b4a2c2666d703bbb6c7d49847ed20f447d1be1edc7c0e83a2ebaf7a5
+	b2sums = 1a289e0b1729273e5d30cc684b0d64e3e240c26856009ce456c3a5770572151ac3ad52170e7fb3111afd3916182704a406311fc560ed1e667116c4e62946f99f
 
 pkgname = r-tidyheatmap

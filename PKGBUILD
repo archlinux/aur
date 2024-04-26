@@ -4,11 +4,11 @@ _pkgname=tidyHeatmap
 _pkgver=1.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="A Tidy Implementation of Heatmap"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-circlize
   r-complexheatmap
@@ -44,7 +44,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('043abb0854964eceb2fccc711ae64a35')
-sha256sums=('9544d397b4a2c2666d703bbb6c7d49847ed20f447d1be1edc7c0e83a2ebaf7a5')
+b2sums=('1a289e0b1729273e5d30cc684b0d64e3e240c26856009ce456c3a5770572151ac3ad52170e7fb3111afd3916182704a406311fc560ed1e667116c4e62946f99f')
 
 prepare() {
   # skip failing snapshot tests
@@ -59,8 +59,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
