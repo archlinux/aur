@@ -5,11 +5,11 @@ _pkgname=DOSE
 _pkgver=3.28.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Disease Ontology Semantic and Enrichment analysis"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-annotationdbi
   r-biocparallel
@@ -37,11 +37,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('db9c95935ce192a915b1246380f625d5')
-sha256sums=('ee22b726664304643116a88c40eb8b2032e2a4faa92c2b2523986ddf19a2644e')
+b2sums=('1dcc674de7008fd15a6bc013063710855597f1de22975cb8db5f589d16d4b9dda2cd4f006d6808336cd664068acf22479f5e0d5b4335d922dc5026faa9351728')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
