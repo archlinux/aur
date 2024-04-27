@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-displays')
 pkgver=0.3.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Output management utility for sway and Hyprland Wayland compositors"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-displays"
