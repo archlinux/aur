@@ -1,6 +1,6 @@
 pkgbase = ortfodb-bin
 	pkgdesc = A readable, easy and enjoyable way to manage portfolio databases using directories and text files.
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://ortfo.org
 	license = MIT
@@ -12,13 +12,13 @@ pkgbase = ortfodb-bin
 	conflicts = ortfodb
 	provides = ortfodb
 	arch = aarch64
-	source_aarch64 = https://github.com/ortfo/db/releases/download/v1.6.0/ortfodb_Linux_arm64.tar.gz
-	sha256sums_aarch64 = f7478cb7d1974121f00f722a9c337a819c2676506f80a20e52a081c3dc06030b
+	source_aarch64 = https://github.com/ortfo/db/releases/download/v1.6.1/ortfodb_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 224064740c461d9bf7458cf6de2e2a3949cb4c6923489a62010d2da63b31d987
 	arch = i686
-	source_i686 = https://github.com/ortfo/db/releases/download/v1.6.0/ortfodb_Linux_i386.tar.gz
-	sha256sums_i686 = e41d0ffcc41f01820009fc056ab755d055b94de94af6fc452221e20c9ef5512f
+	source_i686 = https://github.com/ortfo/db/releases/download/v1.6.1/ortfodb_Linux_i386.tar.gz
+	sha256sums_i686 = 9742749a82b1e32b561879e4c7540986578d406fb3d879dfde2af1da4a94e766
 	arch = x86_64
-	source_x86_64 = https://github.com/ortfo/db/releases/download/v1.6.0/ortfodb_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = e7f8d3bf5667f85b0d93f5f1167a2966fe0990f612e6d166f98dbdf1e5af651b
+	source_x86_64 = https://github.com/ortfo/db/releases/download/v1.6.1/ortfodb_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 30481bdb7fa1dd6c81e576ee91cd0be5e3efc220d8ac881287940d9323b77151
 	
 pkgname = ortfodb-bin
