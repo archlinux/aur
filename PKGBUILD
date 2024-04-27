@@ -1,27 +1,43 @@
-# Maintainer: ceri <ceri@dev.null>
+# Maintainer: Sergey A. <murlakatamenka@disroot.org>
+
+# ex-maintainer: ceri <ceri@dev.null>
+
 pkgname=apkeep
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
-pkgdesc='Tool for downloading android APK files from various sources'
+pkgdesc='CLI tool from EFF for downloading APK files from various sources'
 url='https://github.com/EFForg/apkeep'
-source=("$pkgver.tar.gz::https://github.com/EFForg/apkeep/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'aarch64')
-license=('custom:MIT')
+license=('MIT')
 depends=('openssl' 'gcc-libs')
-makedepends=('rust>=1.56.1')
-sha256sums=('439815cc2eb75df1235bb1106135548af2465e47486df6d1742cd47c0bd687dc')
+makedepends=('cargo')
+sha256sums=('5ce2f478c607f08a2766e1b3b7762e6579ea3922acf6c0a24582c0374567e505')
 
-build () {
-  cd "$srcdir/$pkgname-$pkgver"
+prepare() {
+  cd "$pkgname-$pkgver"
 
-  cargo build --release --target-dir target
+  export RUSTUP_TOOLCHAIN=stable
+
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  cargo build --release --frozen
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 755 target/release/apkeep -t "$pkgdir/usr/bin"
 
-  install -Dm755 target/release/apkeep "${pkgdir}/usr/bin/apkeep"
+  install -Dm 644 README.md USAGE-fdroid.md USAGE-google-play.md \
+    -t "$pkgdir/usr/share/doc/$pkgname"
+
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
- 
