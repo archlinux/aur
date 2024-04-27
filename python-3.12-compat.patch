@@ -1,0 +1,61 @@
+From 27bce226db999ecac40f88f096acd68ff3e894b8 Mon Sep 17 00:00:00 2001
+From: Claudia <claui@users.noreply.github.com>
+Date: Sun, 28 Apr 2024 00:30:09 +0200
+Subject: [PATCH] Make code compatible with Python 3.12
+
+- Replace `imp.load_module` with `importlib.import_module`
+
+- In `ConfigParser`, replace `readfp` with `read_file`
+---
+ cliapp/pluginmgr.py | 11 ++++++-----
+ cliapp/settings.py  |  2 +-
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/cliapp/pluginmgr.py b/cliapp/pluginmgr.py
+index 6884c0c..45861d5 100644
+--- a/cliapp/pluginmgr.py
++++ b/cliapp/pluginmgr.py
+@@ -26,9 +26,10 @@ other modules as well, such as unit tests, in the same locations.)
+ '''
+ 
+ 
+-import imp
++import importlib
+ import inspect
+ import os
++import sys
+ 
+ 
+ from cliapp import Plugin
+@@ -126,11 +127,11 @@ class PluginManager(object):
+     def load_plugin_file(self, pathname):
+         '''Return plugin classes in a plugin file.'''
+ 
++        parent_dir = os.path.dirname(pathname)
+         name, _ = os.path.splitext(os.path.basename(pathname))
+-        f = open(pathname, 'r')
+-        module = imp.load_module(name, f, pathname,
+-                                 ('.py', 'r', imp.PY_SOURCE))
+-        f.close()
++        if parent_dir not in sys.path:
++            sys.path.append(parent_dir)
++        module = importlib.import_module(name)
+ 
+         plugins = []
+         for dummy, member in inspect.getmembers(module, inspect.isclass):
+diff --git a/cliapp/settings.py b/cliapp/settings.py
+index 50cf51e..f596ede 100644
+--- a/cliapp/settings.py
++++ b/cliapp/settings.py
+@@ -835,7 +835,7 @@ class Settings(object):
+     def _read_ini(self, pathname, f):
+         cp = ConfigParser()
+         cp.add_section('config')
+-        cp.readfp(f)
++        cp.read_file(f)
+         for name in cp.options('config'):
+             value = cp.get('config', name)
+             s = self.set_from_raw_string(pathname, name, value)
+-- 
+2.44.0
+

@@ -5,7 +5,7 @@
 pkgname=python-cliapp-fiw
 _gitpkgname="${pkgname%-fiw}"
 pkgver=1.20180812.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Python framework for Unix-like command line programs'
 arch=('any')
 url='https://blog.liw.fi/posts/cliapp/'
@@ -25,15 +25,18 @@ options=('!debug' '!strip')
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::http://git.liw.fi/cliapp/snapshot/cliapp-${pkgver}.tar.gz"
+  'python-3.12-compat.patch'
 )
 
 sha512sums=(
   '61b6f36abb3eefb1c52752e8eb1048c1629c86aa269fcac9c5ee4d875031a040c9c3824131f953dc9bfe568e9e99202750c2e8c11791afe3fce1c1872ce2510d'
+  '606851b6a8c21627aa253facd087e416d07513f424ef01a0519702b55b050784aa4cb3cbd55e1cca4231af255001b18b6b3e8850b688e9b3f32f6835b7de0316'
 )
 
 prepare() {
   cd "cliapp-${pkgver}"
   echo 'global-exclude *_tests.py' > MANIFEST.in
+  patch -p1 < ../python-3.12-compat.patch
 }
 
 build() {
