@@ -1,6 +1,6 @@
 pkgbase = sofia-woodwinds-bin
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://librewave.com/product/sofia-woodwinds/
 	arch = x86_64
 	license = EULA
@@ -37,6 +37,7 @@ pkgbase = sofia-woodwinds-bin
 
 pkgname = sofia-woodwinds-standalone-bin
 	pkgdesc = Sofia Woodwinds (Standalone)
+	groups = pro-audio
 
 pkgname = sofia-woodwinds-vst-bin
 	pkgdesc = Sofia Woodwinds (VST)

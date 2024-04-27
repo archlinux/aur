@@ -1,7 +1,7 @@
 pkgbase=sofia-woodwinds-bin
 pkgname=("sofia-woodwinds-standalone-bin" "sofia-woodwinds-vst-bin")
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 license=('EULA')
 url="https://librewave.com/product/sofia-woodwinds/"
@@ -17,6 +17,7 @@ prepare() {
 
 package_sofia-woodwinds-standalone-bin() {
 	pkgdesc="Sofia Woodwinds (Standalone)"
+	groups=('pro-audio')
 	install -Dm755 "${srcdir}/Sofia Woodwinds" "${pkgdir}/usr/bin/Sofia Woodwinds"
 	install -Dm755 "${srcdir}/Sofia Woodwinds.desktop" "${pkgdir}/usr/share/applications/Sofia Woodwinds.desktop"
 }
