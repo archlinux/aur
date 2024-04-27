@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Caprine
-Comment=Unofficial Facebook Messenger app
-GenericName=IM Client
-Exec=electron --app=/usr/lib/caprine
-Icon=/usr/lib/caprine/media/Icon.svg
+Exec=caprine %U
+Terminal=false
 Type=Application
-StartupNotify=true
-Categories=GNOME;GTK;InstantMessaging;Network;
+Icon=caprine
+StartupWMClass=Caprine
+Comment=Caprine is an unofficial and privacy focused Facebook Messenger app with many useful features
+Categories=Network;Chat;

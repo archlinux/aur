@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-electron --app=/usr/lib/caprine
+exec @ELECTRON@ /usr/lib/caprine/app.asar "$@"

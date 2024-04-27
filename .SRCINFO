@@ -5,15 +5,15 @@ pkgbase = caprine
 	url = https://github.com/sindresorhus/caprine
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = npm
-	depends = electron27
-	options = !emptydirs
-	source = git+https://github.com/sindresorhus/caprine.git#tag=v2.60.1
+	depends = bash
+	depends = electron29
+	depends = hicolor-icon-theme
+	source = caprine-2.60.1.tar.gz::https://github.com/sindresorhus/caprine/archive/refs/tags/v2.60.1.tar.gz
 	source = caprine.desktop
-	source = caprine.js
-	sha256sums = bd996b5c16123fa4bec9f1326aed71c17777576cd2b592af038c5d2ce760a851
-	sha256sums = ddb693c06b0d4adf41c799fd4d97c2d9c106669034f69f7af53a63cc45911a97
-	sha256sums = effb2c3d24b57433bc5d404b3fa40ac7f403f4b60252d983f2ec6de2098cba32
+	source = caprine.sh
+	sha256sums = 655dcb523cb8e7426490c97ed34e4942a643c4f98110a366dd45af4d08c9fa7b
+	sha256sums = da58c9872ddcecf52a269c19aaf70cbc7fb8cd8475046e514477c79ff87eea25
+	sha256sums = 70679c9959bae776d667ae1dbd4ffca9298d8784ad4a5959f3b35d2493f2c131
 
 pkgname = caprine
