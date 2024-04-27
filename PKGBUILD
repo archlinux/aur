@@ -4,11 +4,11 @@ _pkgname=single
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Accurate consensus sequence from nanopore reads of a gene library"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biocgenerics
   r-biostrings
@@ -28,11 +28,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('61242086622646ed92a4304d33bc1457')
-sha256sums=('fabdd3503ab53c35e34b96b569b21bf1382cfe90cbe726b8163670476d23051b')
+b2sums=('50b11349ff3890069c228797f5834fae012375a44c4d5249de80159418361a43e8e4e51b3f685ddfd033c4ae91d4e39de668e58d10c85f78932d6258930a4925')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
