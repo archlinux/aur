@@ -1,11 +1,11 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=upscayl-rpm-bin
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Free and Open Source AI Image Upscaler (binary release, system Electron)"
 url="https://github.com/upscayl/upscayl"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 arch=('x86_64')
 depends=('at-spi2-core' 'electron' 'gtk3' 'libnotify' 'libsecret' 'libxss'
          'libxtst' 'nss' 'util-linux-libs' 'xdg-utils')
@@ -13,7 +13,7 @@ optdepends=('libappindicator-gtk3')
 provides=("upscayl" "upscayl-bin")
 conflicts=("upscayl")
 source=("$url/releases/download/v$pkgver/upscayl-$pkgver-linux.rpm")
-sha256sums=('d38eb363cd7d49d9d7217ded5d56beb9b467e98f8eb3c13c139c642fe9a428bd')
+sha256sums=('ef66e3473a64b9c902ce31bb800e29bda9069c050dbb4eda6eacb6a0f0058224')
 
 prepare() {
 # Create an exec file
@@ -26,7 +26,7 @@ exec electron /usr/lib/upscayl/app.asar \$@" > upscayl
 }
 
 package() {
-# Create a folder
+# Create a directory
   mkdir -p "$pkgdir/usr/lib/upscayl"
 # Install
   install -Dm644 upscayl.desktop -t "$pkgdir/usr/share/applications"
