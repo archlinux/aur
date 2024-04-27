@@ -1,7 +1,7 @@
 pkgbase = python-universal_pathlib
 	pkgdesc = pathlib api extended to use fsspec backends
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fsspec/universal_pathlib
 	arch = any
 	license = MIT

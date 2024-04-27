@@ -3,7 +3,7 @@
 pkgname=python-universal_pathlib
 _pkgname=${pkgname#python-}
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='pathlib api extended to use fsspec backends'
 arch=(any)
 license=(MIT)
