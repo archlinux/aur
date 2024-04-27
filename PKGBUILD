@@ -4,11 +4,11 @@ _pkgname=EDIRquery
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Query the EDIR Database For Specific Gene"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-genomicranges
   r-interactionset
@@ -26,11 +26,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('ff19937af17cf0a7a874b986192d6b1c')
-sha256sums=('a7621845519e6496d83f3914aa6a3f388e7ccf9078ed8dfb4a2b152532ab5be1')
+b2sums=('287aa14cb3be96b3f1f68b16295ce97c40bdaae456091dff4fc38c78391af8f32ebf0e87f09d33182f7f7d1913de968eb680bd53c63d19412fa85a8ea711f8f3')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
