@@ -1,7 +1,7 @@
 pkgbase = python-pyhanko
 	pkgdesc = Tools for stamping and signing PDF files
 	pkgver = 0.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MatthiasValvekens/pyHanko
 	arch = any
 	license = MIT
@@ -17,7 +17,6 @@ pkgbase = python-pyhanko
 	checkdepends = python-uharfbuzz
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pytest-runner
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
