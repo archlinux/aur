@@ -4,11 +4,11 @@ _pkgname=RgnTX
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Colocalization analysis of transcriptome elements in the presence of isoform heterogeneity and ambiguity"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-genomeinfodb
   r-genomicfeatures
@@ -30,11 +30,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('4ce438a2822a6541467c9781a3c48b26')
-sha256sums=('2dc47372b3ad28a48fcdd38c206a153f1bbe95d282008d9c7c183de79a900176')
+b2sums=('bdfb1e556b164dfa16c00800a8348685221cc88b9f31122d83696869026e3b176f497289d8260a1324b59e252401bcb2cfcb3043ba17bea83a343d90ad7a0151')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
