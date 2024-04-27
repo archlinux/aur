@@ -4,11 +4,11 @@ _pkgname=Statial
 _pkgver=1.4.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="A package to identify changes in cell state relative to spatial associations"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biocparallel
   r-concaveman
@@ -45,11 +45,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('e7151f23bb952401803e4d239390c210')
-sha256sums=('b89442b4b517f18f08c3fc7052c16d17473a4b0c771bc3faba7787f6989d32c3')
+b2sums=('3676b8cfa9ce94502550a7f32d4f404f2a42a8bcb9356920911b87544c18fcdf404188371a9f3ec61fdc34dad0972a403af83173fd3aa5d248d7f7f9498a4df2')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
