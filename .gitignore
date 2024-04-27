@@ -1,0 +1,4 @@
+pkg/
+src/
+python-doc2dash-*.pkg.tar.*
+doc2dash-*.tar.gz

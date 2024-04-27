@@ -1,8 +1,8 @@
 pkgbase = python-doc2dash
-	pkgdesc = Create docsets for Dash.app-compatible API browser.
-	pkgver = 3.0.0
+	pkgdesc = Create docsets for Dash.app/Zeal-compatible API browsers
+	pkgver = 3.1.0
 	pkgrel = 1
-	url = https://doc2dash.readthedocs.io/en/stable/
+	url = https://doc2dash.hynek.me/
 	arch = any
 	license = MIT
 	makedepends = python-hatch-vcs
@@ -16,8 +16,7 @@ pkgbase = python-doc2dash
 	depends = python-beautifulsoup4
 	depends = python-click
 	depends = python-rich
-	provides = python-doc2dash
-	source = https://files.pythonhosted.org/packages/source/d/doc2dash/doc2dash-3.0.0.tar.gz
-	sha256sums = 5456ee60cce489dd03f6e236b2d997f949d17de3a0fce5e6be3c262493efa1ee
+	source = https://files.pythonhosted.org/packages/source/d/doc2dash/doc2dash-3.1.0.tar.gz
+	sha256sums = 37f61c8d8f6a955d2466b9c073eb2bff44cc54352bf817afb48a3ac8aef6d594
 
 pkgname = python-doc2dash
