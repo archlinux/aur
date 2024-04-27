@@ -1,19 +1,28 @@
-# Maintainer: Pellegrino Prevete(tallero) <pellegrinoprevete@gmail.com>
+# Maintainer: Xuanrui Qi <me@xuanruiqi.com>
+# Contributor: Pellegrino Prevete(tallero) <pellegrinoprevete@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-_oldpkgname="gnome-tweak-tool"
 _pkgname="gnome-tweaks"
 pkgname="${_pkgname}-git"
-pkgver=42.beta.r74.g8ef4ef3
+pkgver=46.0.r14.g5c0aea3
 pkgrel=1
 pkgdesc="Graphical interface for advanced GNOME 3 settings (Tweak Tool)"
 url="https://wiki.gnome.org/Apps/Tweaks"
 arch=(any)
-license=(GPL)
+license=(GPL-3.0-or-later)
 depends=(
-  gnome-settings-daemon
-  libhandy
+  dconf
+  glib2
+  gnome-desktop-4
+  gsettings-desktop-schemas
+  gtk4
+  hicolor-icon-theme
+  libadwaita
+  libgudev
+  libnotify
+  pango
+  python
   python-gobject
 )
 makedepends=(
@@ -22,15 +31,12 @@ makedepends=(
 )
 groups=(
   gnome-extra
-  gnome-extra-git)
+  gnome-extra-git
+)
 provides=(
-  "${_oldpkgname}=${pkgver}"
-  "${_oldpkgname}-git=${pkgver}"
   "${_pkgname}=${pkgver}"
 )
-conflicts=("${_pkgname}"
-           "${_oldpkgname}")
-replaces=("${_oldpkgname}")
+conflicts=("${_pkgname}")
 source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha256sums=('SKIP')
 

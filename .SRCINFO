@@ -1,23 +1,28 @@
 pkgbase = gnome-tweaks-git
 	pkgdesc = Graphical interface for advanced GNOME 3 settings (Tweak Tool)
-	pkgver = 42.beta.r74.g8ef4ef3
+	pkgver = 46.0.r14.g5c0aea3
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Tweaks
 	arch = any
 	groups = gnome-extra
 	groups = gnome-extra-git
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = meson
-	depends = gnome-settings-daemon
-	depends = libhandy
+	depends = dconf
+	depends = glib2
+	depends = gnome-desktop-4
+	depends = gsettings-desktop-schemas
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = libgudev
+	depends = libnotify
+	depends = pango
+	depends = python
 	depends = python-gobject
-	provides = gnome-tweak-tool=42.beta.r74.g8ef4ef3
-	provides = gnome-tweak-tool-git=42.beta.r74.g8ef4ef3
-	provides = gnome-tweaks=42.beta.r74.g8ef4ef3
+	provides = gnome-tweaks=46.0.r14.g5c0aea3
 	conflicts = gnome-tweaks
-	conflicts = gnome-tweak-tool
-	replaces = gnome-tweak-tool
 	source = git+https://gitlab.gnome.org/GNOME/gnome-tweaks.git
 	sha256sums = SKIP
 
