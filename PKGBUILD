@@ -3,13 +3,13 @@
 pkgname=valkey
 pkgver=7.2.5
 _pkgnamever="${pkgname}-${pkgver}"
-pkgrel=3
+pkgrel=4
 pkgdesc='A new project to resume development on the formerly open-source Redis project'
 arch=('x86_64')
 url='https://valkey.io/'
 license=('BSD-3-Clause')
 depends=('jemalloc' 'systemd-libs' 'openssl' 'glibc')
-makedepends=('systemd')
+makedepends=('systemd' 'tcl' 'procps-ng')
 conflicts=("${pkgname}-git")
 backup=(
   'etc/valkey/valkey.conf'
@@ -38,6 +38,14 @@ prepare() {
 
 build() {
   make BUILD_TLS=yes \
+    USE_SYSTEMD=yes \
+    USE_REDIS_SYMLINKS=no \
+    -C "${_pkgnamever}"
+}
+
+check() {
+  make test \
+    BUILD_TLS=yes \
     USE_SYSTEMD=yes \
     USE_REDIS_SYMLINKS=no \
     -C "${_pkgnamever}"

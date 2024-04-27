@@ -1,11 +1,13 @@
 pkgbase = valkey
 	pkgdesc = A new project to resume development on the formerly open-source Redis project
 	pkgver = 7.2.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://valkey.io/
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = systemd
+	makedepends = tcl
+	makedepends = procps-ng
 	depends = jemalloc
 	depends = systemd-libs
 	depends = openssl
