@@ -3,7 +3,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 _base=tcolorpy
 pkgname=python-${_base}
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Python library to apply true color for terminal text"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('4be98b0819c6eca0af55170e473e26b90d0c62b81c00fb1fe66b197f1fd6e7aec38cdd2b24dcc1b059af0ed1a54cfdc0900fad2e9145bf49b578d90edc65e74c')
+sha512sums=('c96cfbba2c42a17618aa68f252f6e18a5a842eeeced0d2ccdf6aee903d5552375575652bb4d6417e4e0f566b92750afccf9c3fc1866b67b95ab91d4129c02a0a')
 
 build() {
   cd ${_base}-${pkgver}
