@@ -1,10 +1,10 @@
 # Maintainer: mnussbaum <michaelnussbaum08@gmail.com>
 
-pkgname=ruby-rbs
-_gemname=${pkgname#ruby-}
-pkgver=3.1.0
+pkgname=ruby-lsp
+_gemname=${pkgname}
+pkgver=0.14.4
 pkgrel=1
-pkgdesc="Describe the structure of Ruby programs"
+pkgdesc="An opinionated language server for Ruby"
 arch=("any")
 depends=(
   ruby
@@ -15,7 +15,7 @@ noextract=($_gemname-$pkgver.gem)
 license=("MIT")
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('4ef8f22f3452aad28ca2ff61ede65a2a98b604e0365058293e749de91a74d07d')
+sha256sums=('aea8678acb5db89a8d86c852c21b99fb5e42e3539b1f55dcc40757c273e40dec')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
