@@ -95,9 +95,9 @@ package_ente-web() {
 
     cd "$srcdir/${_pkgbase}-v$pkgver/web/apps/photos/out"
 
-    mkdir -p "$pkgdir/usr/share/webapps"
+    mkdir -p "$pkgdir/usr/share/webapps/ente"
     # Install the web component
-    cp -r * "$pkgdir/usr/share/webapps"  # This should be changed to a more robust installation method
+    cp -r * "$pkgdir/usr/share/webapps/ente"  # This should be changed to a more robust installation method
 
     # Install nginx configuration
 #  install -Dm644 nginx/ente.conf "$pkgdir/etc/nginx/sites-available/ente.conf"
