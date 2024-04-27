@@ -4,10 +4,10 @@ _pkgname=chromswitch
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=1.22.0
-pkgrel=1
+pkgrel=3
 pkgdesc='An R package to detect chromatin state switches from epigenomic data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.17/${_pkgname}"
 license=('MIT')
 depends=(
   r
@@ -35,7 +35,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('0736f76aed1d4d1200f14701c62d0bc965a9a51b6bc03b86927742801252fc00')
 
 build() {
