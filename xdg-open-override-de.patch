@@ -1,0 +1,16 @@
+diff --git a/scripts/xdg-utils-common.in b/scripts/xdg-utils-common.in
+index f0a1aac..6b7110b 100644
+--- a/scripts/xdg-utils-common.in
++++ b/scripts/xdg-utils-common.in
+@@ -280,6 +280,11 @@ detectDE()
+     # see https://bugs.freedesktop.org/show_bug.cgi?id=34164
+     unset GREP_OPTIONS
+ 
++    if [ -n "$XDG_OPEN_OVERRIDE_DE" ]; then
++      DE="$XDG_OPEN_OVERRIDE_DE"
++      return
++    fi
++
+     if [ -n "${XDG_CURRENT_DESKTOP}" ]; then
+       case "${XDG_CURRENT_DESKTOP}" in
+          # only recently added to menu-spec, pre-spec X- still in use

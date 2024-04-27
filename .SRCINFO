@@ -1,0 +1,25 @@
+pkgbase = xdg-utils-override-de
+	pkgdesc = Patched version of xdg-utils to override desktop environment for xdg-open.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/xdg-utils/
+	arch = any
+	license = MIT
+	makedepends = docbook-xsl
+	makedepends = lynx
+	makedepends = xmlto
+	makedepends = git
+	depends = sh
+	depends = file
+	depends = xorg-xset
+	depends = xorg-xprop
+	optdepends = kde-cli-tools: for KDE Plasma5 support in xdg-open
+	optdepends = exo: for Xfce support in xdg-open
+	optdepends = pcmanfm: for LXDE support in xdg-open
+	optdepends = perl-file-mimeinfo: for generic support in xdg-open
+	optdepends = perl-net-dbus: Perl extension to dbus used in xdg-screensaver
+	optdepends = perl-x11-protocol: Perl X11 protocol used in xdg-screensaver
+	source = git+https://gitlab.freedesktop.org/xdg/xdg-utils.git#commit=356c380ad6fecc9ce6bea1f6a77986ba67402c80
+	sha256sums = SKIP
+
+pkgname = xdg-utils-override-de
