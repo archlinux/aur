@@ -3,7 +3,7 @@
 
 pkgname=cmake-lint
 pkgver=1.4.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Check for coding style issues in CMake files"
 arch=(any)
 url="https://github.com/cmake-lint/cmake-lint"
@@ -12,7 +12,6 @@ depends=(python)
 makedepends=(
   python-build
   python-installer
-  python-pytest-runner
   python-setuptools
   python-wheel
 )
@@ -37,7 +36,7 @@ prepare() {
 build() {
   cd "$_archive"
 
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
