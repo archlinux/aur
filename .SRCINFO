@@ -1,11 +1,10 @@
 pkgbase = python-noseofyeti
 	pkgdesc = A custom pyton codec that provides an RSpec style dsl for python
-	pkgver = 2.4.6
-	pkgrel = 2
+	pkgver = 2.4.8
+	pkgrel = 1
 	url = https://github.com/delfick/nose-of-yeti
 	arch = any
 	license = MIT
-	checkdepends = python-asynctest
 	checkdepends = python-pytest
 	checkdepends = python-alt-pytest-asyncio
 	checkdepends = python-pytest-helpers-namespace
@@ -14,7 +13,7 @@ pkgbase = python-noseofyeti
 	makedepends = python-installer
 	makedepends = python-hatchling
 	depends = python
-	source = git+https://github.com/delfick/nose-of-yeti.git#commit=08bc8320f60cd45d1d04be3a88e74cc9b8bdad9f
+	source = git+https://github.com/delfick/nose-of-yeti.git#commit=5bd8abafa5e8db32e7fff37105d2ac25d30605bf
 	sha512sums = SKIP
 
 pkgname = python-noseofyeti
