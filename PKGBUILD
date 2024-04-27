@@ -4,11 +4,11 @@ _pkgname=qmtools
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Quantitative Metabolomics Data Processing Tools"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-ggplot2
   r-heatmaply
@@ -48,11 +48,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('941d7cbf1dc8c2622fe97bda18a2bf49')
-sha256sums=('05e034d0f53c71d3e6681d5b712ff1722847b98b62fffd65168a21aa7929245c')
+b2sums=('663a9a5ca01e6eded88d0f923f2837f9da81cd812fe2383c48f0a624060d55fb0db3cd92ac877642c6145f95d4688d5c82ed542ce79cab05b2239f818c3af6e3')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

@@ -1,10 +1,10 @@
 pkgbase = r-qmtools
 	pkgdesc = Quantitative Metabolomics Data Processing Tools
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/qmtools
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-impute
 	checkdepends = r-imputelcmd
 	checkdepends = r-missforest
@@ -38,6 +38,6 @@ pkgbase = r-qmtools
 	optdepends = r-vsn
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/qmtools_1.6.0.tar.gz
 	md5sums = 941d7cbf1dc8c2622fe97bda18a2bf49
-	sha256sums = 05e034d0f53c71d3e6681d5b712ff1722847b98b62fffd65168a21aa7929245c
+	b2sums = 663a9a5ca01e6eded88d0f923f2837f9da81cd812fe2383c48f0a624060d55fb0db3cd92ac877642c6145f95d4688d5c82ed542ce79cab05b2239f818c3af6e3
 
 pkgname = r-qmtools
