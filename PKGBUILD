@@ -4,11 +4,11 @@ _pkgname=GeoTcgaData
 _pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Processing Various Types of Data on GEO and TCGA"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-cqn
   r-data.table
@@ -49,11 +49,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('653a353d37b0bcfbd892dfe12d420100')
-sha256sums=('077c28251e23d51c4471b9259dd1246bb26dbaccb3249a67e31356311c8a8bd6')
+b2sums=('a399654762bf9d8360b0399aad14dd19bb7e8cbfcef49be3e6312b37a1976b178d74251c899b641423864c1a26e002d340412d03518919342587c39e1b1216a6')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
