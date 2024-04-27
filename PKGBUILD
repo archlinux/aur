@@ -1,9 +1,9 @@
 # Maintainer: omansh-krishn <omanshkrishn@duck.com>
 # Contributor: westpain <homicide@disroot.org>
 pkgname=materialgram-bin
-pkgver=v4.16.7.1
+pkgver=v4.16.10.2
 pkgrel=1
-pkgdesc="What if Telegram and Google had kids - Binaries Version"
+pkgdesc="Telegram Desktop based messenger with Material Design and additional features - Binary Version"
 arch=(x86_64)
 url="https://github.com/kukuruzka165/materialgram"
 license=(GPL3)
@@ -16,7 +16,7 @@ conflicts=('materialgram')
 
 source=( https://github.com/kukuruzka165/materialgram/releases/download/${pkgver}/materialgram-${pkgver}.tar.gz )
 
-sha256sums=('eaafc46fd3ffad6c9442eb3403dd8252d9d7bb2ede184b3854e8bb12d921386a')
+sha256sums=('3bc7caf2570879312a3e6e312467cd48e123d50e481c2c5eaaf8e2d1f86bfd70')
 
 package() {
 
