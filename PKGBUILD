@@ -7,7 +7,7 @@
 _productVariant=Germany
 # leave this unset to get a package name based on the application name
 pkgname=
-pkgrel=1
+pkgrel=2
 
 ## Begin shared code ##
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
@@ -85,7 +85,7 @@ pkgver=${_prams[3]}
 
 url="http://www.cewe.de/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat' 'libtiff5')
+depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
 makedepends=('unzip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=($source 'updater.pl')
@@ -152,7 +152,8 @@ package() {
 		Categories=Graphics;Photography;
 		MimeType=application/x-hps-mcf
 	EOF
-	chmod 755 $pkgdir/usr/bin/$pkgname $pkgdir/usr/share/applications/$pkgname.desktop
+	# make executables executable and resources available to all users
+	chmod 755 $pkgdir/usr/bin/$pkgname $pkgdir/usr/share/applications/$pkgname.desktop $(find $_installDir -type d)
 
 	# adjust product name in mimetype comment
 	sed -i "s/$_productUrname/$_productRename/" $pkgdir/usr/share/mime/packages/*
