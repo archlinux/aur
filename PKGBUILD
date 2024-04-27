@@ -2,7 +2,7 @@
 
 pkgname=ufomerge
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A CLI utility and Python library to merge UFO source fonts'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"

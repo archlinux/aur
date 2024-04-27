@@ -1,7 +1,7 @@
 pkgbase = ufomerge
 	pkgdesc = A CLI utility and Python library to merge UFO source fonts
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/ufomerge
 	arch = any
 	license = Apache-2.0
