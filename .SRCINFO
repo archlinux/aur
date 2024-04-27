@@ -1,10 +1,10 @@
 pkgbase = r-psmatch
 	pkgdesc = Handling and Managing Peptide Spectrum Matches
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/PSMatch
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-msdata
 	checkdepends = r-mzid
 	checkdepends = r-mzr
@@ -30,6 +30,6 @@ pkgbase = r-psmatch
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/PSMatch_1.6.0.tar.gz
 	md5sums = 4c63ca3d541af4e5925bcc2bde7d67ea
-	sha256sums = d2776c4c3fa21073b8f444d8f581fcfadc1ef3832ea74bf948478500e2fa2350
+	b2sums = aa12dc6a82a75ed6a6b701ea87d56f9cc78da8caa496c0f01038ee2a4e91c630fd3bc54d300ca6650c9a931dc3285ddca5074fa39f96607eb807e3f949bfece2
 
 pkgname = r-psmatch
