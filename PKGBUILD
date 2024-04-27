@@ -4,14 +4,14 @@ pkgver=1.0.3
 pkgrel=1
 pkgdesc="Unnofficial ParamountPlus desktop application"
 arch=('x86_64')
-url="https://gitlab.com/ParamountPlus-desktop/application"
+url="https://gitlab.com/linuxbombay/paramountplus"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("ParamountPlus-bin")
 replace=("ParamountPlus-bin")
-source=("https://gitlab.com/paramountplus/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('fd660355c858c74ca4d9def6be8edda5af20612ee32741659a8e3165eec4b8b0')
 
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
