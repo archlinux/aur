@@ -29,7 +29,7 @@ makedepends=(
     'python-poetry-core'
 )
 source=(
-    "https://files.pythonhosted.org/packages/c0/5a/88e836459c6c633a596d3771f17237faad2f01d9bf5ca61c6698ccadce89/$_pkgname-$pkgver.tar.gz"
+    "https://files.pythonhosted.org/packages/source/t/$_pkgname/$_pkgname-$pkgver.tar.gz"
     "tidal-dl-ng"
     "tidal-dl-ng-gui"
 )
