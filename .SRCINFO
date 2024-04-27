@@ -1,6 +1,6 @@
 pkgbase = sofia-woodwinds-bin
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://librewave.com/product/sofia-woodwinds/
 	arch = x86_64
 	license = EULA
@@ -32,6 +32,8 @@ pkgbase = sofia-woodwinds-bin
 	depends = pcre2
 	depends = zlib
 	depends = zstd
+	source = Sofia Woodwinds.desktop
+	sha256sums = 3cddd06a2e1d9f90254f0d2ffe73a009ba1dd3d871114cf418234c51a26bcdd4
 
 pkgname = sofia-woodwinds-standalone-bin
 	pkgdesc = Sofia Woodwinds (Standalone)
