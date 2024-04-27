@@ -1,14 +1,21 @@
 # Maintainer: xiota / aur.chaotic.cx
 
+## useful links
+# https://pypi.org/project/climage
+
+: ${_build_git:=false}
+
+unset _pkgtype
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
 _module="climage"
 _pkgname="python-$_module"
-pkgname="$_pkgname"
+pkgname="$_pkgname${_pkgtype:-}"
 pkgdesc="Convert images to beautiful ANSI escape codes"
 pkgver=0.2.0
-pkgrel=1
-# https://pypi.org/project/climage
+pkgrel=2
 url='https://github.com/pnappa/CLImage'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 arch=('any')
 
 depends=(
@@ -25,11 +32,10 @@ makedepends=(
   'python-wheel'
 )
 
-if [ x"$pkgname" == x"$_pkgname" ] ; then
+if [ "${_build_git::1}" != "t" ]; then
   _pkgsrc="$_module-${pkgver%%.r*}"
   _pkgext="tar.gz"
 
-  # normal package
   source=(
     "$_pkgsrc.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_pkgsrc.$_pkgext"
   )
@@ -41,7 +47,6 @@ if [ x"$pkgname" == x"$_pkgname" ] ; then
     echo "${pkgver%%.r*}"
   }
 else
-  # git package
   makedepends+=('git')
 
   provides=("$_pkgname")
@@ -53,7 +58,8 @@ else
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 \
+      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
   }
 fi
 
@@ -64,5 +70,5 @@ build() {
 
 package() {
   cd "$_pkgsrc"
-  python -m installer --destdir="${pkgdir:?}" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

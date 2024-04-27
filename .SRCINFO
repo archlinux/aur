@@ -1,10 +1,10 @@
 pkgbase = python-climage
 	pkgdesc = Convert images to beautiful ANSI escape codes
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pnappa/CLImage
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
