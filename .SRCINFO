@@ -1,7 +1,7 @@
 pkgbase = pyprland-git
 	pkgdesc = Easy scratchpads, menus, smart monitor placement and more hyprland tweaks (GIT version)
-	pkgver = r255.bfedf14
-	pkgrel = 2
+	pkgver = r1.0
+	pkgrel = 1
 	url = https://github.com/fdev31/pyprland
 	arch = any
 	license = MIT
