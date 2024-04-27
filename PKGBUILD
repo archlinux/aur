@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 # Contributor: Darvin Delgado <dnmodder@gmail.com>
 # Contributor: Mesmer <mesmer@fisica.if.uff.br>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
@@ -6,39 +6,40 @@
 
 _pkgname="decaf-emu"
 pkgname="$_pkgname-git"
-pkgver=r5217.dd0b1be3
+pkgver=r5222.e6c528a
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Wii U emulator"
-arch=('x86_64')
 url="https://github.com/decaf-emu/decaf-emu"
-license=('GPL3')
+license=('GPL-3.0-or-later')
+arch=('x86_64')
+
 depends=(
   'c-ares'
-  'curl'
   'ffmpeg'
   'libuv'
-  'openssl'
-  'qt5-base'
-  'qt5-svg'
-  'sdl2'
+  'qt6-base'
+  'qt6-svg'
   'vulkan-icd-loader'
-  'zlib'
+
+  ## implicit
+  #curl
+  #libxcb
+  #openssl
+  #sdl2
+  #zlib
 )
 makedepends=(
-  'c-ares'
+  'clang'
   'cmake'
   'git'
-  'glslang'
+  'mold'
+  'ninja'
   'python'
-  'qt5-x11extras'
-  'vulkan-validation-layers'
 )
 
-optdepends=(
-  'qt5-wayland: for Wayland support'
-)
+_pkgsrc="$_pkgname"
 source=(
-  "$_pkgname"::"git+$url"
+  "$_pkgsrc"::"git+$url.git"
 
   # decaf-emu submodules
   "addrlib"::"git+https://github.com/decaf-emu/addrlib"
@@ -94,17 +95,14 @@ sha256sums=(
   'SKIP'
 )
 
-
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf 'r%s.%s' \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
   # decaf-emu submodules
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   _submodules=(
     'libraries/addrlib'
     'libraries/catch'
@@ -124,7 +122,7 @@ prepare() {
     'libraries/tomlplusplus'
     'libraries/vcpkg'
   )
-  for submodule in ${_submodules[@]} ; do
+  for submodule in ${_submodules[@]}; do
     mkdir -p "$submodule"
     git submodule init ${submodule}
     git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
@@ -140,7 +138,7 @@ prepare() {
     'external/toml-spec-tests'
     'external/toml-test'
   )
-  for submodule in ${_submodules[@]} ; do
+  for submodule in ${_submodules[@]}; do
     mkdir -p "$submodule"
     git submodule init ${submodule}
     git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
@@ -153,34 +151,30 @@ prepare() {
   git submodule update --init --recursive
 
   # Force Qt5
-  sed -Ei -e 's@find_package\(Qt6 COMPONENTS@find_package(Qt5 5.15 COMPONENTS@' CMakeLists.txt
-
-  # Apply patches
-  for p in "$srcdir"/*.patch ; do
-    if [ -f "$p" ] ; then
-      echo "Applying patch: ${p##*/}"
-      patch -Np1 -F100 -i "$p"
-    fi
-  done
+  #sed -Ei -e 's@find_package\(Qt6 COMPONENTS@find_package(Qt5 5.15 COMPONENTS@' CMakeLists.txt
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  export CC CXX CFLAGS CXXFLAGS LDFLAGS
+  CC=clang
+  CXX=clang++
+  LDFLAGS+=" -fuse-ld=mold"
 
-  mkdir -p build && cd build
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DDECAF_BUILD_TESTS=OFF \
-    -DQT_DEFAULT_MAJOR_VERSION=5 \
-    -DDECAF_FFMPEG=ON \
-    -DDECAF_VULKAN=ON \
-    -DDECAF_QT=ON
-  make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DDECAF_JIT_PROFILING=ON
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_pkgname/build"
-
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
