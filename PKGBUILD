@@ -9,8 +9,8 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 _base=petsc
 pkgname=${_base}-complex
-pkgver=3.20.5
-pkgrel=2
+pkgver=3.21.1
+pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -41,8 +41,8 @@ optdepends=('hypre: support for the hypre sparse system solver'
 install=${_base}.install
 source=(https://web.cels.anl.gov/projects/${_base}/download/release-snapshots/${_base}-lite-${pkgver}.tar.gz
   test_optdepends.sh)
-sha512sums=('1e0ebdacbcc9db22dbe3803cbc13f5e0138d0412c328ff49cab024c839527c73b28983717104daf0858d482a8804b931c5c2bf20363c6b801d2be7d27219692f'
-  '1a790c36b1bb6b6604b4fe35f3c7fba2d8f972e7fd3c6ac1273716bee490f4dded18990b9f4aedecbe609aa6ec3d2469d44c013e18ed5cf9a43f5703f2b59db8')
+sha512sums=('ae65afd9cff1eb33a4c7688b53d83427edf1b6866eca4879ea0fd1e7f03167906664f4b250901f37406e88e1ba43f1f7a38651c27dd367fc42e5e80a66ae8469'
+            '1a790c36b1bb6b6604b4fe35f3c7fba2d8f972e7fd3c6ac1273716bee490f4dded18990b9f4aedecbe609aa6ec3d2469d44c013e18ed5cf9a43f5703f2b59db8')
 
 _install_dir=/opt/${_base}/${_config}
 _petsc_arch=arch-${_config}
