@@ -1,4 +1,4 @@
-pkgbase = rhapsody-sampler
+pkgbase = rhapsody-bin
 	pkgver = 2.3.3
 	pkgrel = 2
 	url = https://librewave.com/rhapsody/
@@ -29,6 +29,9 @@ pkgbase = rhapsody-sampler
 	depends = pcre2
 	depends = zlib
 	depends = zstd
+	provides = rhapsody-bin
+	conflicts = rhapsody-bin
+	replaces = rhapsody-bin
 	source = Rhapsody Sampler.desktop
 	sha256sums = 6b68320ae7932b5bb707ead91f46fc8a44d42dcd7811305c2da3c05e4e37785d
 
