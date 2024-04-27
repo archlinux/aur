@@ -1,11 +1,11 @@
-# Maintainer: Bas Magré <Opvolger@gmail.com>
+# Maintainer: sawntoe <sawntoe@gmail.com>
 
 pkgname='openarena-git'
-pkgver=0.8.8.r2428.f507a7a8
+pkgver=0.8.8.r2441.74046d7a
 _relver='088'
 _openarenaver='0.8.8'
-pkgrel=2
-makedepends=('git' 'make' 'grep')
+pkgrel=1
+makedepends=('git' 'make' 'grep' 'zip')
 conflicts=('openarena')
 provides=('openarena')
 pkgdesc="A violent, sexy, multiplayer first person shooter based on the ioquake3 engine (binary package)"
@@ -15,14 +15,18 @@ license=('GPL')
 depends=('sdl' 'libvorbis' 'curl' 'libxmp')
 optdepends=('openal: to silence SDL fallback warning')
 source=('git+https://github.com/OpenArena/engine.git'
-        "http://download.tuxfamily.org/openarena/rel/${_relver}/openarena-${_openarenaver}.zip"
+        'git+https://github.com/OpenArena/gamecode.git'
+        'git+https://github.com/sawntoe/openarena-svn.git'
+        'build_deterministic_assets.sh'
         'openarena-runner.sh'
         'openarena.png'
         'openarena-server.png'
         'openarena.desktop'
         'openarena-server.desktop')
 sha512sums=('SKIP'
-            '9fa4dabe8a3428dc3cbec97f3b4d20c04569c14cdd00b60e6391c6dd61e310f246ff5ec97e7549821b3d6f5f94b140eb5411a2ddd83dafcad66937b7f78ea8dd'
+            'SKIP'
+            'SKIP'
+            '39028fa5225328aef4e72f0e5b970374fa9983120e5fa1668c68da8282abf5af93be6283085f980e3f3ac8f868a3ca758fd9b69b36227047de28bbce868500e9'
             '3ea0d57070ba9e6652d704639823d4bcf9f1aa031836634d9418774392b69178ecc460284ed3e42668d968e3608d28545490f0f8763e6dc72015849d619a753b'
             'ef68f8eb6251c3424464702ff894a6b88b473a3f4c1512af613125f5e5a7124f268490a9f6042095ff5bb807817e1f302c80d21987a2ed178e680f993d70b6f1'
             '9e8c860fe8e9a6fefa9839907df6e74f11564daaa2bf12b4c261dec34d65917e7110a41aa7777f16d3842c8371b9e960468d75c439d8b815454feeb8c01ed6e6'
@@ -41,15 +45,6 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/openarena-${_openarenaver}"
-  # no Windows
-  rm *.dll *.exe
-  # no Mac
-  rm -rf __MACOSX *.app
-  # we will compile new files!
-  rm *.{i386,x86_64}
-
-  # now build openarena
   cd "${srcdir}/engine"
   # add aarch64 if not in source
   if [ $(uname -m) == 'aarch64' ]; then
@@ -60,21 +55,42 @@ build() {
       sed -i 's/arm/aarch64/g' code/qcommon/q_platform.h
     fi
   fi
-  #build!
   make
-}
+  cd "${srcdir}/gamecode"
+  if [ $(uname -m) == 'aarch64' ]; then
+    if grep -qF "aarch64" code/qcommon/q_platform.h; then
+      echo "Code has aarch64!"
+    else
+      echo "Give code aarch64!"
+      sed -i 's/arm/aarch64/g' code/qcommon/q_platform.h
+    fi
+  fi
+  unset CARCH CHOST CFLAGS CXXFLAGS LDFLAGS LTOFLAGS RUSTFLAGS DEBUG_CFLAGS DEBUG_CXXFLAGS DEBUG_RUSTFLAGS
+  sed -i '/#define OS_STRING "linux"/a #define ARCH_STRING '"$(uname -m)" code/qcommon/q_platform.h
+  make 
+  cd "${srcdir}/openarena-svn"
+  chmod +x "${srcdir}/build_deterministic_assets.sh"
+  "${srcdir}/build_deterministic_assets.sh"
+  
+  }
 
 package() {
   # create dirs
-  install -dm755 "${pkgdir}/usr/bin" "${pkgdir}/usr/lib" "$pkgdir"/usr/share/pixmaps/ "$pkgdir"/usr/share/applications/
+  install -dm755 "${pkgdir}/usr/bin" "${pkgdir}/usr/lib" "$pkgdir"/usr/share/pixmaps/ "$pkgdir"/usr/share/applications/ "$pkgdir"/usr/lib/openarena "$pkgdir"/usr/lib/openarena/uncut
   
   # copy zipfile to openarena
-  mv "${srcdir}/openarena-${_openarenaver}" "${pkgdir}/usr/lib/openarena"
+  mv "${srcdir}/engine/build/release-linux-$(uname -m)"/* "${pkgdir}/usr/lib/openarena"
+  mv "${srcdir}/gamecode/build/release-linux-$(uname -m)"/oax "${pkgdir}/usr/lib/openarena"
+  mv "${srcdir}/openarena-svn/build/pak"* "${pkgdir}/usr/lib/openarena/baseoa"
+  mv "${srcdir}/openarena-svn/build/mp-pak0.pk3" "${pkgdir}/usr/lib/openarena/missionpack"
+  mv "${srcdir}/openarena-svn/build/oax-pak0.pk3" "${pkgdir}/usr/lib/openarena/oax"
+  mv "${srcdir}/openarena-svn/build/uncut.pk3" "${pkgdir}/usr/lib/openarena/uncut"
+
   find "${pkgdir}/usr/lib/openarena" -type f -exec chmod 644 {} \;
   find "${pkgdir}/usr/lib/openarena" -type d -exec chmod 755 {} \;
 
   # copy compiled files
-  install -Dm 755 "${srcdir}"/engine/build/release-linux-$(uname -m)/o*.$(uname -m) "${pkgdir}/usr/lib/openarena"
+  # install -Dm 755 "${pkgdir}"/o*.$(uname -m) "${pkgdir}/usr/lib/openarena"
 
   # create application-shortcuts
   install -Dm 644 "$srcdir"/openarena{,-server}.png "$pkgdir"/usr/share/pixmaps/
