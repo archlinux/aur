@@ -2,7 +2,7 @@
 
 pkgname='liteloader-qqnt-lite-tools-bin'
 _pkgname='LiteLoaderQQNT-lite_tools'
-pkgver='2.23.6'
+pkgver='2.27.1'
 pkgrel=2
 pkgdesc='LiteLoaderQQNT插件，轻量工具箱，轻量、优雅、高效'
 arch=('any')
@@ -13,11 +13,11 @@ provides=('liteloader-qqnt-lite-tools')
 conflicts=('liteloader-qqnt-lite-tools')
 
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/lite_tools_v4.zip")
-sha256sums=('4749ac30527e88ae2d7bd4f392bb7a1c9e05e4bd0746d3f978a9be79d174f182')
-b2sums=('a31ed0c55f74b6b72d134727ea58f4de007bd0e40265c55aaec133d6a3e33444de10d841dbb84314ac5c18efcc4b2878da8eca71f43e623776509b4ca7aa0e1f')
+sha256sums=('98f0975eb83f3b38ec7b7ae53195e47eec4efcf8e819bbe9f2667b06f068c4a2')
+b2sums=('82556ffba21b20a604bd9eb3c2f9abc55505766232f051d728dcb4268bed42be9f0cd390230b365f802f1961f936efb872aa1ea4eef266572204b1231bd0c5fa')
 
 package() {
     mkdir -p "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}"
-    chmod 0777 "${pkgdir}/opt/LiteLoader" "${pkgdir}/opt/LiteLoader/plugins"
+    chmod 0755 "${pkgdir}/opt/LiteLoader" "${pkgdir}/opt/LiteLoader/plugins"
     cp -rf "${srcdir}"/* "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}"
 }
