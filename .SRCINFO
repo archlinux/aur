@@ -1,0 +1,21 @@
+pkgbase = ruby-language_server-protocol
+	pkgdesc = A Language Server Protocol SDK
+	pkgver = 3.17.0.3
+	pkgrel = 1
+	url = http://solargraph.org/
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby>=2.5.0
+	depends = ruby-activesupport
+	depends = ruby-bundler>=2.0.0
+	depends = ruby-m
+	depends = ruby-minitest>=5.0
+	depends = ruby-minitest-power_assert
+	depends = ruby-rake>=12.3.3
+	noextract = language_server-protocol-3.17.0.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/language_server-protocol-3.17.0.3.gem
+	sha256sums = 3d5c58c02f44a20d972957a9febe386d7e7468ab3900ce6bd2b563dd910c6b3f
+
+pkgname = ruby-language_server-protocol
