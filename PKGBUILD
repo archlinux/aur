@@ -1,11 +1,12 @@
 # Maintainer: Lenny McLennington <lennymclennington@protonmail.com>
+# Contributor: Kaydax <contact+aur@kaydax.xyz>
 # Contributor: Miko <mikoxyzzz@gmail.com>
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
 
 _pkgname=multimc
 pkgname=${_pkgname}-git
-pkgver=0.6.14.r21.g3dd6cea8
-pkgrel=2
+pkgver=0.6.16.r162.gd4247bf3
+pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances. Includes old name/icons and ability to sign in with a Microsoft account."
 arch=('i686' 'x86_64')
 url="https://github.com/MultiMC/Launcher"
@@ -37,7 +38,7 @@ sha512sums=('SKIP'
             'cb003424404d83e3ee6e8c0c4d6be1562325185efac3f249f63542c05eda71144fd865e065c5bd00b981288df0ced12bb4ac6311ddd0cf9cc6dd7d611f94b107'
             'a7c4654dd5ee260c25e0eab2dba0d929f09bc38b9af1505408a55058e73eaf35986b4a0e6de7e1893ebf860c472df984011340b3989f996a9d170cbc37dfd691'
             'fed9f3a12441c48b163ae76b2b0e5be2f609e72430f0ae071856d62ff0e0572f429dc116714cbfbf1964191ec3439060fdb07a51a9e86b75be4fea24a2f28ef2'
-            '1dc559a4b463bb9b0648d221df48a8ab562db186ea44fe0a3dba1af9c51306983faa27839abe7aea0478fb4d165fcf4af0db411fe063a18dcb9ca03c06196397'
+            'a200f869b66010e5e9838c863459d25c42b5bb43ea035968363cd67cfd5d26c93c02b9c80de9f96dae4693f4719c81a07c593f31ea873f67ff60456c29983a9e'
             '82f66f6aac1f7c09d2e242768b77af692216cfa99925585a7871fa71bec8197a246b66a3af7d9eab8856655ce80e4ced26a0fc331579a18badd8f86005b5bf53')
 
 pkgver() {
