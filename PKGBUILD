@@ -3,7 +3,7 @@
 
 pkgname=theforceengine-git
 _pkgname=TheForceEngine
-pkgver=1.09.540.r190.g7644c38
+pkgver=1.09.540.r328.g9ecb4a6
 pkgrel=1
 epoch=1
 pkgdesc="Modern \"Jedi Engine\" replacement supporting Dark Forces, Outlaws and the mods"
@@ -19,6 +19,7 @@ source=("TheForceEngine::git+https://github.com/luciusDXL/TheForceEngine.git"
         "theforceengine.install")
 sha256sums=('SKIP'
             'SKIP')
+options=(!debug)
             
 pkgver() {
   cd $_pkgname

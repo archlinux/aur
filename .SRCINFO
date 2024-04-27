@@ -1,6 +1,6 @@
 pkgbase = theforceengine-git
 	pkgdesc = Modern "Jedi Engine" replacement supporting Dark Forces, Outlaws and the mods
-	pkgver = 1.09.540.r190.g7644c38
+	pkgver = 1.09.540.r328.g9ecb4a6
 	pkgrel = 1
 	epoch = 1
 	url = https://theforceengine.github.io/
@@ -19,6 +19,7 @@ pkgbase = theforceengine-git
 	depends = hicolor-icon-theme
 	depends = sdl2_image
 	conflicts = theforceengine
+	options = !debug
 	source = TheForceEngine::git+https://github.com/luciusDXL/TheForceEngine.git
 	source = theforceengine.install
 	sha256sums = SKIP
