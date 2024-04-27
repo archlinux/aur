@@ -1,11 +1,10 @@
 pkgbase = r-parsnip
 	pkgdesc = A Common API to Modeling and Analysis Functions
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=parsnip
 	arch = any
 	license = MIT
-	checkdepends = python-tensorflow
 	checkdepends = r-bench
 	checkdepends = r-c50
 	checkdepends = r-dials
@@ -18,7 +17,6 @@ pkgbase = r-parsnip
 	checkdepends = r-modeldata
 	checkdepends = r-partykit
 	checkdepends = r-ranger
-	checkdepends = r-tensorflow
 	checkdepends = r-testthat
 	checkdepends = r-xgboost
 	depends = r-cli
