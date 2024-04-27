@@ -6,7 +6,7 @@
 pkgbase=tuned
 pkgname=("${pkgbase}" "${pkgbase}-ppd")
 pkgver=2.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url="https://github.com/redhat-performance/${pkgbase}"
