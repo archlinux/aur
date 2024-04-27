@@ -1,8 +1,8 @@
 [Unit]
 Description=Iceshrimp.NET daemon
 
-Requires=postgresql.service redis.service
-After=postgresql.service redis.service
+Requires=postgresql.service
+After=postgresql.service
 
 [Service]
 Type=simple
