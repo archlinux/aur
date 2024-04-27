@@ -2,16 +2,16 @@
 
 pkgname=ufolint
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='UFO source file linter'
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
 license=(MIT)
-_py_deps=(commandlines
-          fonttools
-          fs) # optdepends of fonttols required for [ufo])
+_pydeps=(commandlines
+         fonttools
+         fs) # for fonttools[ufo]
 depends=(python
-         "${_py_deps[@]/#/python-}")
+         "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$pkgname-$pkgver"

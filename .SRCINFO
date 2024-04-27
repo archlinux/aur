@@ -1,7 +1,7 @@
 pkgbase = ufolint
 	pkgdesc = UFO source file linter
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/source-foundry/ufolint
 	arch = any
 	license = MIT
