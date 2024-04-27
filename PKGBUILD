@@ -2,11 +2,11 @@
 
 pkgname=fontdiffenator
 pkgver=0.9.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Font regression tester for Google Fonts'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
-license=(Apache)
+license=(Apache-2.0)
 _py_deps=(fonttools
           pillow
           cairo

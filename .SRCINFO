@@ -1,10 +1,10 @@
 pkgbase = fontdiffenator
 	pkgdesc = Font regression tester for Google Fonts
 	pkgver = 0.9.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/googlefonts/fontdiffenator
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
