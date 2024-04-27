@@ -4,11 +4,11 @@ _pkgname=nullrangesData
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="ExperimentHub datasets for the nullranges package"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-experimenthub
   r-genomicranges
@@ -20,11 +20,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('c8b4cf63d70a2577251c03c093c014b1')
-sha256sums=('be0351222a6dfd2323080550e88af5552fc0e0f3d6d7123919764cf10f68a935')
+b2sums=('17c3004393ca6181bc3e10639ee160071c78272b889aa62d44fdce8a09e9e1b89d3b86bed8941ce594bdbe9a6ed155ed18548ab01696b48031fc5ba1ab16fea7')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
