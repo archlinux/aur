@@ -2,6 +2,7 @@ pkgbase = supermario64
 	pkgdesc = Super Mario 64 powered by the sm64ex engine.
 	pkgver = 1.0.1
 	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/supermario64
 	arch = pentium4
 	arch = i386
 	arch = i686
@@ -13,7 +14,7 @@ pkgbase = supermario64
 	depends = wget
 	depends = unzip
 	depends = yad
-	source = https://gitlab.com/supermario64pkg/supermario64/-/archive/1.0.1-1/supermario64-1.0.1-1.tar.bz2
-	sha256sums = SKIP
+	source = https://gitlab.com/linuxbombay/supermario64/-/archive/1.0.1-1/supermario64-1.0.1-1.tar.bz2
+	sha256sums = c1ff7e50421d425fe2c161e8a7ffe472a3a4d4b09a018dc1f940aed74229523c
 
 pkgname = supermario64

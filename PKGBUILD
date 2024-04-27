@@ -4,12 +4,13 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Super Mario 64 powered by the sm64ex engine."
 arch=('x86_64' 'aarch64')
+url="https://gitlab.com/linuxbombay/supermario64"
 arch=('pentium4' 'i386' 'i686' 'x86_64' 'aarch64')
 license=('GPL')
 depends=('sm64ex-bin' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
-source=("https://gitlab.com/supermario64pkg/supermario64/-/archive/$pkgver-$pkgrel/supermario64-$pkgver-$pkgrel.tar.bz2")
-sha256sums=("SKIP")
+source=("$url/-/archive/$pkgver-$pkgrel/supermario64-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('c1ff7e50421d425fe2c161e8a7ffe472a3a4d4b09a018dc1f940aed74229523c')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
