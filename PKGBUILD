@@ -2,12 +2,12 @@
 
 _pkgname="baca-ereader"
 pkgname="$_pkgname-git"
-pkgver=0.1.16.r1.gd32fb2f
-pkgrel=3
+pkgver=0.1.17.r0.g13ee794
+pkgrel=1
 pkgdesc="TUI Ebook Reader"
-arch=('any')
 url="https://github.com/wustho/baca"
-license=("GPL3")
+license=("GPL-3.0-only")
+arch=('any')
 
 provides=("$_pkgname")
 conflicts=(
@@ -24,7 +24,7 @@ depends=(
 
   # AUR
   'python-climage'
-    # 'python-kdtree'
+  # 'python-kdtree'
   'python-markdownify'
   'python-textual'
 )
@@ -37,8 +37,10 @@ makedepends=(
   'python-poetry-core'
   'python-wheel'
 )
+
+_pkgsrc="$_pkgname"
 source=(
-  "$_pkgname"::"git+$url"
+  "$_pkgsrc"::"git+$url.git"
   "baca_fit.png"::"https://user-images.githubusercontent.com/43810055/227891952-45df1c36-5113-4793-84b6-249725d3ba19.png"
   "pretty_yes_no_cap.png"::"https://user-images.githubusercontent.com/43810055/228417623-ac78fb84-0ee0-4930-a843-752ef693822d.png"
 )
@@ -56,7 +58,7 @@ prepare() {
     "baca_fit"
     "pretty_yes_no_cap"
   )
-  for i in ${_images[@]} ; do
+  for i in ${_images[@]}; do
     sed -Ei -e "s@\\!\\[$image\\]\\([^\\)]+\\)@![$image]($image.png)@" "README.md"
   done
 
@@ -66,32 +68,24 @@ prepare() {
   # textual > 0.16.0 mouse scrolling glitch
   # https://github.com/wustho/baca/issues/10
   local _textual_version=$(python -c 'from importlib.metadata import version; print(version("textual"))')
-  if [[ $(vercmp "$_textual_version" 0.16.0) -gt 0 ]] ; then
+  if [[ $(vercmp "$_textual_version" 0.16.0) -gt 0 ]]; then
     sed -E -e 's@^(\s*self)\.screen\.(scroll_(up|down))@\1.\2@g' \
       -i "src/baca/components/contents.py"
-  fi
-
-  # AttributeError: module 'climage.climage' has no attribute '_color_types'
-  # https://github.com/wustho/baca/issues/13
-  local _climage_version=$(python -c 'from importlib.metadata import version; print(version("climage"))')
-  if [[ $(vercmp "$_climage_version" 0.2.0) -ge 0 ]] ; then
-    sed -E -e 's@climage\._color_types@climage.color_types@g' \
-      -i  "src/baca/components/contents.py"
   fi
 }
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   python -m build --no-isolation --wheel
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # documents
