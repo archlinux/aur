@@ -1,7 +1,7 @@
 pkgbase = diffenator2
 	pkgdesc = Compare two font families, descendent of fontdiffenator
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/diffenator2
 	arch = any
 	makedepends = python-build
