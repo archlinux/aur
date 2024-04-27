@@ -1,7 +1,7 @@
 pkgbase = r-adverscarial
 	pkgdesc = generate and analyze the vulnerability of scRNA-seq classifiers to adversarial attacks
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bioconductor.org/packages/adverSCarial
 	arch = any
 	license = MIT

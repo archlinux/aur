@@ -4,11 +4,11 @@ _pkgname=adverSCarial
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="generate and analyze the vulnerability of scRNA-seq classifiers to adversarial attacks"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(MIT)
+license=('MIT')
 depends=(
   r-delayedarray
   r-gtools
