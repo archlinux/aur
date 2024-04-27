@@ -1,10 +1,10 @@
 pkgbase = r-granie
 	pkgdesc = Reconstruction cell type specific gene regulatory networks including enhancers using chromatin accessibility and RNA-seq data
 	pkgver = 1.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bioconductor.org/packages/GRaNIE
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r-annotationhub
 	depends = r-biomart
 	depends = r-biostrings

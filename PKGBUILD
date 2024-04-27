@@ -4,11 +4,11 @@ _pkgname=GRaNIE
 _pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Reconstruction cell type specific gene regulatory networks including enhancers using chromatin accessibility and RNA-seq data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(Artistic2.0)
+license=('Artistic-2.0')
 depends=(
   r-annotationhub
   r-biomart
