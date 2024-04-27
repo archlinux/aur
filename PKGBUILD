@@ -2,7 +2,7 @@
 
 pkgname=butt-appimage
 _pkgname=butt
-pkgver=0.1.41
+pkgver=1.41.1
 pkgrel=1
 pkgdesc="Easy to use, multi OS streaming tool (AppImage release)."
 arch=('x86_64')
@@ -14,8 +14,8 @@ source=(
   "https://danielnoethen.de/butt/release/${pkgver}/${_appimage_filename}"
   "https://danielnoethen.de/butt/release/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('cff7279e7ff4beef63c13e52a6271af20797a83774cd045960ed250d4571788b'
-            'c13ca98ea7763e9983480f2f49c30b9002f8e3113f58071c9bbe3b3d2f429550')
+sha256sums=('4d80adfd04b7939d338f86914faf71648b266fc6954c2f9581f07d741e42391f'
+            'cbf5c87059b54d655de522fe903089736d42b4cc22a4c420444e203eb6b9fbdf')
 options=(!strip)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
