@@ -1,10 +1,10 @@
 pkgbase = r-gopro
 	pkgdesc = Find the most characteristic gene ontology terms for groups of human genes
 	pkgver = 1.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/GOpro
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	makedepends = r-bh
 	depends = r-annotationdbi
@@ -24,6 +24,6 @@ pkgbase = r-gopro
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOpro_1.28.0.tar.gz
 	md5sums = c92dbcab08a7cdac3ee8ee6c28c6dc78
-	sha256sums = 33ab41e3f553b231298cb287a27503a487a7e31d2ed47e910372961ec9b10fea
+	b2sums = 7e14f3cb480a076aae3a32cfcc4e0e8372e66a8c4cbafcc756aafcdc318fbc8bb22e309e8f26eb77d3eb1e2f8f79b7f556d741808b529301205724520868f6f6
 
 pkgname = r-gopro
