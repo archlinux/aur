@@ -1,6 +1,6 @@
 pkgbase = python-powerline-git
 	pkgdesc = The ultimate statusline/prompt utility
-	pkgver = 2.8.3+2+g833f30e8
+	pkgver = 2.8.3+6+ga34abe32
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/powerline/powerline
@@ -9,6 +9,8 @@ pkgbase = python-powerline-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	depends = python>=3.2

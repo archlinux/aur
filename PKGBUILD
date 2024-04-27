@@ -5,7 +5,7 @@
 
 pkgname=python-powerline-git
 pkgdesc='The ultimate statusline/prompt utility'
-pkgver=2.8.3+2+g833f30e8
+pkgver=2.8.3+6+ga34abe32
 pkgrel=1
 epoch=1
 url='https://github.com/powerline/powerline'
@@ -13,7 +13,7 @@ license=('MIT')
 arch=('i686' 'x86_64')
 depends=('python>=3.2')
 conflicts=('powerline2' 'powerline' 'python2-powerline-git' 'otf-powerline-symbols-git')
-makedepends=('git' 'python-setuptools' 'python-sphinx')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-sphinx')
 optdepends=('python-psutil: improved system information'
 			'python-pygit2: improved git support'
 			'python-hglib: improved mercurial support'
@@ -33,7 +33,7 @@ pkgver() {
 
 build() {
 	cd powerline
-	python setup.py build
+	python -m build --no-isolation --wheel
 
 	cd docs
 	make man
@@ -41,7 +41,7 @@ build() {
 
 package_python-powerline-git() {
 	cd powerline
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer dist/*.whl --destdir="$pkgdir"
 
 	# Fonts
 	install -dm755 "$pkgdir/etc/fonts/conf.d"
