@@ -2,7 +2,7 @@
 
 pkgname=ygt
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical hint editor for TrueType fonts'
 arch=(any)
 url="https://github.com/psb1558/$pkgname"
@@ -23,7 +23,7 @@ depends=(python
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$pkgname-$pkgver"
-source=("$_archive.tgz::$url/archive/v$pkgver.tar.gz")
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('112a915bc3381f60e6594a072c549ed4e3e275d607d76ac2b51cca835b530a60')
 
 build() {
