@@ -1,0 +1,19 @@
+pkgbase = python-pyasynchat
+	pkgdesc = Make asynchat available for Python 3.12 onwards
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/simonrob/pyasynchat/
+	arch = any
+	license = PSF-2.0
+	checkdepends = python-tests
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyasyncore
+	source = git+https://github.com/simonrob/pyasynchat.git#tag=v1.0.4
+	sha256sums = 81ae47adb19fe3436fffecaa409fcd6f9656ab9d9efdea8ad3458d8393e828b9
+
+pkgname = python-pyasynchat
