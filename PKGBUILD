@@ -4,7 +4,7 @@
 pkgname='python-ssort-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.12.3.r0.g8f7e380
+pkgver=0.13.0.r0.g2025243
 pkgrel=1
 pkgdesc='Tool for automatically sorting python statements within a module (built from latest commit)'
 arch=('any')
