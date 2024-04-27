@@ -1,0 +1,1631 @@
+From 2def4041853e1b5c12fc7e895b015cc480ff1b8a Mon Sep 17 00:00:00 2001
+From: Andy <andy@freilandkiwis.de>
+Date: Fri, 29 Jul 2022 16:04:44 +0200
+Subject: [PATCH] ditching nose since its not going to be compatible to python
+ 3.10 any more -> switched to pytest
+
+---
+ .envrc                                 |   2 +-
+ Makefile                               |   6 +-
+ poetry.lock                            | 314 ++++++++++++-
+ pyproject.toml                         |   8 +-
+ pypugjs/testsuite/cases/basic.pug      |   2 +-
+ pypugjs/testsuite/test_cases.py        | 201 ++++-----
+ pypugjs/testsuite/test_inline_lexer.py | 588 ++++++++++++-------------
+ pypugjs/testsuite/test_runtime.py      |  21 +-
+ setup.py                               |   8 +-
+ 9 files changed, 728 insertions(+), 422 deletions(-)
+
+diff --git a/.envrc b/.envrc
+index 2381e7a..0d3f77f 100644
+--- a/.envrc
++++ b/.envrc
+@@ -1,3 +1,3 @@
+-layout pyenv 3.9.9
++layout pyenv 3.10.5
+ FILE=.direnv/$(basename $VIRTUAL_ENV)/
+ [ ! -f  ] || ln -s $FILE .venv
+diff --git a/Makefile b/Makefile
+index 844bc62..28b3fe9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,20 +27,18 @@ init2: ## create virtualenv for python2
+ 	pipenv install --two
+ 
+ lint: ## check style with flake8
+-#	@echo "\nlooking for lints .."
+-#	@echo "===================="
+ 	@flake8 pypugjs
+ 
+ test: ## run testsuite
+ 	@SCRIPT_DIR=$$( cd "$$( dirname "$$0" )" && pwd ); \
+ 	export PYTHONPATH=$$PYTHONPATH:$$SCRIPT_DIR; \
+-	nosetests -w pypugjs/testsuite/ # --nocapture  # for debugging
++	pytest pypugjs/testsuite/
+ 	@make lint
+ 
+ coverage:  ## test and generate coverage data
+ 	@SCRIPT_DIR=$$( cd "$$( dirname "$$0" )" && pwd ); \
+ 	export PYTHONPATH=$$PYTHONPATH:$$SCRIPT_DIR; \
+-	nosetests -w pypugjs/testsuite/ --with-coverage
++	pytest pypugjs/testsuite/ --cov pypugjs
+ 	@make lint
+ 
+ view-coverage: coverage ## open coverage report in the browser
+diff --git a/poetry.lock b/poetry.lock
+index dd055b7..8cfc9d7 100644
+--- a/poetry.lock
++++ b/poetry.lock
+@@ -1,3 +1,61 @@
++[[package]]
++name = "asgiref"
++version = "3.5.2"
++description = "ASGI specs, helper code, and adapters"
++category = "dev"
++optional = false
++python-versions = ">=3.7"
++
++[package.extras]
++tests = ["pytest", "pytest-asyncio", "mypy (>=0.800)"]
++
++[[package]]
++name = "asttokens"
++version = "2.0.5"
++description = "Annotate AST trees with source code positions"
++category = "dev"
++optional = false
++python-versions = "*"
++
++[package.dependencies]
++six = "*"
++
++[package.extras]
++test = ["astroid", "pytest"]
++
++[[package]]
++name = "atomicwrites"
++version = "1.4.1"
++description = "Atomic file writes."
++category = "main"
++optional = false
++python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
++
++[[package]]
++name = "attrs"
++version = "22.1.0"
++description = "Classes Without Boilerplate"
++category = "main"
++optional = false
++python-versions = ">=3.5"
++
++[package.extras]
++dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "mypy (>=0.900,!=0.940)", "pytest-mypy-plugins", "zope-interface", "furo", "sphinx", "sphinx-notfound-page", "pre-commit", "cloudpickle"]
++docs = ["furo", "sphinx", "zope-interface", "sphinx-notfound-page"]
++tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "mypy (>=0.900,!=0.940)", "pytest-mypy-plugins", "zope-interface", "cloudpickle"]
++tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "mypy (>=0.900,!=0.940)", "pytest-mypy-plugins", "cloudpickle"]
++
++[[package]]
++name = "backports-zoneinfo"
++version = "0.2.1"
++description = "Backport of the standard library zoneinfo module"
++category = "dev"
++optional = false
++python-versions = ">=3.6"
++
++[package.extras]
++tzdata = ["tzdata"]
++
+ [[package]]
+ name = "charset-normalizer"
+ version = "2.1.0"
+@@ -36,9 +94,38 @@ category = "main"
+ optional = false
+ python-versions = ">=3.7"
+ 
++[package.dependencies]
++tomli = {version = "*", optional = true, markers = "python_full_version <= \"3.11.0a6\" and extra == \"toml\""}
++
+ [package.extras]
+ toml = ["tomli"]
+ 
++[[package]]
++name = "django"
++version = "4.0.6"
++description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
++category = "dev"
++optional = false
++python-versions = ">=3.8"
++
++[package.dependencies]
++asgiref = ">=3.4.1,<4"
++"backports.zoneinfo" = {version = "*", markers = "python_version < \"3.9\""}
++sqlparse = ">=0.2.2"
++tzdata = {version = "*", markers = "sys_platform == \"win32\""}
++
++[package.extras]
++argon2 = ["argon2-cffi (>=19.1.0)"]
++bcrypt = ["bcrypt"]
++
++[[package]]
++name = "executing"
++version = "0.9.1"
++description = "Get the currently executing AST node of a frame, and other information"
++category = "dev"
++optional = false
++python-versions = "*"
++
+ [[package]]
+ name = "flake8"
+ version = "4.0.1"
+@@ -71,6 +158,20 @@ Werkzeug = ">=2.0"
+ async = ["asgiref (>=3.2)"]
+ dotenv = ["python-dotenv"]
+ 
++[[package]]
++name = "icecream"
++version = "2.1.3"
++description = "Never use print() to debug again; inspect variables, expressions, and program execution with a single, simple function call."
++category = "dev"
++optional = false
++python-versions = "*"
++
++[package.dependencies]
++asttokens = ">=2.0.1"
++colorama = ">=0.3.9"
++executing = ">=0.3.1"
++pygments = ">=2.2.0"
++
+ [[package]]
+ name = "importlib-metadata"
+ version = "4.12.0"
+@@ -87,6 +188,14 @@ docs = ["sphinx", "jaraco.packaging (>=9)", "rst.linker (>=1.9)"]
+ perf = ["ipython"]
+ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.3)", "packaging", "pyfakefs", "flufl-flake8", "pytest-perf (>=0.9.2)", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "importlib-resources (>=1.3)"]
+ 
++[[package]]
++name = "iniconfig"
++version = "1.1.1"
++description = "iniconfig: brain-dead simple config-ini parsing"
++category = "main"
++optional = false
++python-versions = "*"
++
+ [[package]]
+ name = "itsdangerous"
+ version = "2.1.2"
+@@ -142,12 +251,35 @@ optional = false
+ python-versions = "*"
+ 
+ [[package]]
+-name = "nose"
+-version = "1.3.7"
+-description = "nose extends unittest to make testing easier"
++name = "packaging"
++version = "21.3"
++description = "Core utilities for Python packages"
+ category = "main"
+ optional = false
+-python-versions = "*"
++python-versions = ">=3.6"
++
++[package.dependencies]
++pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
++
++[[package]]
++name = "pluggy"
++version = "1.0.0"
++description = "plugin and hook calling mechanisms for python"
++category = "main"
++optional = false
++python-versions = ">=3.6"
++
++[package.extras]
++dev = ["pre-commit", "tox"]
++testing = ["pytest", "pytest-benchmark"]
++
++[[package]]
++name = "py"
++version = "1.11.0"
++description = "library with cross-python path, ini-parsing, io, code, log facilities"
++category = "main"
++optional = false
++python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+ 
+ [[package]]
+ name = "pycodestyle"
+@@ -165,6 +297,75 @@ category = "main"
+ optional = false
+ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+ 
++[[package]]
++name = "pygments"
++version = "2.12.0"
++description = "Pygments is a syntax highlighting package written in Python."
++category = "dev"
++optional = false
++python-versions = ">=3.6"
++
++[[package]]
++name = "pyparsing"
++version = "3.0.9"
++description = "pyparsing module - Classes and methods to define and execute parsing grammars"
++category = "main"
++optional = false
++python-versions = ">=3.6.8"
++
++[package.extras]
++diagrams = ["railroad-diagrams", "jinja2"]
++
++[[package]]
++name = "pytest"
++version = "7.1.2"
++description = "pytest: simple powerful testing with Python"
++category = "main"
++optional = false
++python-versions = ">=3.7"
++
++[package.dependencies]
++atomicwrites = {version = ">=1.0", markers = "sys_platform == \"win32\""}
++attrs = ">=19.2.0"
++colorama = {version = "*", markers = "sys_platform == \"win32\""}
++iniconfig = "*"
++packaging = "*"
++pluggy = ">=0.12,<2.0"
++py = ">=1.8.2"
++tomli = ">=1.0.0"
++
++[package.extras]
++testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
++
++[[package]]
++name = "pytest-asyncio"
++version = "0.19.0"
++description = "Pytest support for asyncio"
++category = "main"
++optional = false
++python-versions = ">=3.7"
++
++[package.dependencies]
++pytest = ">=6.1.0"
++
++[package.extras]
++testing = ["coverage (>=6.2)", "hypothesis (>=5.7.1)", "flaky (>=3.5.0)", "mypy (>=0.931)", "pytest-trio (>=0.7.0)"]
++
++[[package]]
++name = "pytest-cov"
++version = "3.0.0"
++description = "Pytest plugin for measuring coverage."
++category = "main"
++optional = false
++python-versions = ">=3.6"
++
++[package.dependencies]
++coverage = {version = ">=5.2.1", extras = ["toml"]}
++pytest = ">=4.6"
++
++[package.extras]
++testing = ["virtualenv", "pytest-xdist", "six", "process-tests", "hunter", "fields"]
++
+ [[package]]
+ name = "six"
+ version = "1.16.0"
+@@ -173,6 +374,22 @@ category = "main"
+ optional = false
+ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+ 
++[[package]]
++name = "sqlparse"
++version = "0.4.2"
++description = "A non-validating SQL parser."
++category = "dev"
++optional = false
++python-versions = ">=3.5"
++
++[[package]]
++name = "tomli"
++version = "2.0.1"
++description = "A lil' TOML parser"
++category = "main"
++optional = false
++python-versions = ">=3.7"
++
+ [[package]]
+ name = "tornado"
+ version = "6.2"
+@@ -181,6 +398,14 @@ category = "main"
+ optional = false
+ python-versions = ">= 3.7"
+ 
++[[package]]
++name = "tzdata"
++version = "2022.1"
++description = "Provider of IANA time zone data"
++category = "dev"
++optional = false
++python-versions = ">=2"
++
+ [[package]]
+ name = "werkzeug"
+ version = "2.2.1"
+@@ -210,9 +435,25 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
+ [metadata]
+ lock-version = "1.1"
+ python-versions = "^3.8"
+-content-hash = "fc4757375e5c05a1cb3998005d49a12518fc85fed10791596ca6a96b0e2759e5"
++content-hash = "f468d207c1685d28921988137e6dec1210efe760951a6ba7063f00cd6022f00c"
+ 
+ [metadata.files]
++asgiref = [
++    {file = "asgiref-3.5.2-py3-none-any.whl", hash = "sha256:1d2880b792ae8757289136f1db2b7b99100ce959b2aa57fd69dab783d05afac4"},
++    {file = "asgiref-3.5.2.tar.gz", hash = "sha256:4a29362a6acebe09bf1d6640db38c1dc3d9217c68e6f9f6204d72667fc19a424"},
++]
++asttokens = [
++    {file = "asttokens-2.0.5-py2.py3-none-any.whl", hash = "sha256:0844691e88552595a6f4a4281a9f7f79b8dd45ca4ccea82e5e05b4bbdb76705c"},
++    {file = "asttokens-2.0.5.tar.gz", hash = "sha256:9a54c114f02c7a9480d56550932546a3f1fe71d8a02f1bc7ccd0ee3ee35cf4d5"},
++]
++atomicwrites = [
++    {file = "atomicwrites-1.4.1.tar.gz", hash = "sha256:81b2c9071a49367a7f770170e5eec8cb66567cfbbc8c73d20ce5ca4a8d71cf11"},
++]
++attrs = [
++    {file = "attrs-22.1.0-py2.py3-none-any.whl", hash = "sha256:86efa402f67bf2df34f51a335487cf46b1ec130d02b8d39fd248abfd30da551c"},
++    {file = "attrs-22.1.0.tar.gz", hash = "sha256:29adc2665447e5191d0e7c568fde78b21f9672d344281d0c6e1ab085429b22b6"},
++]
++backports-zoneinfo = []
+ charset-normalizer = [
+     {file = "charset-normalizer-2.1.0.tar.gz", hash = "sha256:575e708016ff3a5e3681541cb9d79312c416835686d054a23accb873b254f413"},
+     {file = "charset_normalizer-2.1.0-py3-none-any.whl", hash = "sha256:5189b6f22b01957427f35b6a08d9a0bc45b46d3788ef5a92e978433c7a35f8a5"},
+@@ -268,6 +509,14 @@ coverage = [
+     {file = "coverage-6.4.2-pp36.pp37.pp38-none-any.whl", hash = "sha256:e2618cb2cf5a7cc8d698306e42ebcacd02fb7ef8cfc18485c59394152c70be97"},
+     {file = "coverage-6.4.2.tar.gz", hash = "sha256:6c3ccfe89c36f3e5b9837b9ee507472310164f352c9fe332120b764c9d60adbe"},
+ ]
++django = [
++    {file = "Django-4.0.6-py3-none-any.whl", hash = "sha256:ca54ebedfcbc60d191391efbf02ba68fb52165b8bf6ccd6fe71f098cac1fe59e"},
++    {file = "Django-4.0.6.tar.gz", hash = "sha256:a67a793ff6827fd373555537dca0da293a63a316fe34cb7f367f898ccca3c3ae"},
++]
++executing = [
++    {file = "executing-0.9.1-py2.py3-none-any.whl", hash = "sha256:4ce4d6082d99361c0231fc31ac1a0f56979363cc6819de0b1410784f99e49105"},
++    {file = "executing-0.9.1.tar.gz", hash = "sha256:ea278e2cf90cbbacd24f1080dd1f0ac25b71b2e21f50ab439b7ba45dd3195587"},
++]
+ flake8 = [
+     {file = "flake8-4.0.1-py2.py3-none-any.whl", hash = "sha256:479b1304f72536a55948cb40a32dce8bb0ffe3501e26eaf292c7e60eb5e0428d"},
+     {file = "flake8-4.0.1.tar.gz", hash = "sha256:806e034dda44114815e23c16ef92f95c91e4c71100ff52813adf7132a6ad870d"},
+@@ -276,10 +525,18 @@ flask = [
+     {file = "Flask-2.1.3-py3-none-any.whl", hash = "sha256:9013281a7402ad527f8fd56375164f3aa021ecfaff89bfe3825346c24f87e04c"},
+     {file = "Flask-2.1.3.tar.gz", hash = "sha256:15972e5017df0575c3d6c090ba168b6db90259e620ac8d7ea813a396bad5b6cb"},
+ ]
++icecream = [
++    {file = "icecream-2.1.3-py2.py3-none-any.whl", hash = "sha256:757aec31ad4488b949bc4f499d18e6e5973c40cc4d4fc607229e78cfaec94c34"},
++    {file = "icecream-2.1.3.tar.gz", hash = "sha256:0aa4a7c3374ec36153a1d08f81e3080e83d8ac1eefd97d2f4fe9544e8f9b49de"},
++]
+ importlib-metadata = [
+     {file = "importlib_metadata-4.12.0-py3-none-any.whl", hash = "sha256:7401a975809ea1fdc658c3aa4f78cc2195a0e019c5cbc4c06122884e9ae80c23"},
+     {file = "importlib_metadata-4.12.0.tar.gz", hash = "sha256:637245b8bab2b6502fcbc752cc4b7a6f6243bb02b31c5c26156ad103d3d45670"},
+ ]
++iniconfig = [
++    {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
++    {file = "iniconfig-1.1.1.tar.gz", hash = "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"},
++]
+ itsdangerous = [
+     {file = "itsdangerous-2.1.2-py3-none-any.whl", hash = "sha256:2c2349112351b88699d8d4b6b075022c0808887cb7ad10069318a8b0bc88db44"},
+     {file = "itsdangerous-2.1.2.tar.gz", hash = "sha256:5dbbc68b317e5e42f327f9021763545dc3fc3bfe22e6deb96aaf1fc38874156a"},
+@@ -338,10 +595,17 @@ mccabe = [
+     {file = "mccabe-0.6.1-py2.py3-none-any.whl", hash = "sha256:ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42"},
+     {file = "mccabe-0.6.1.tar.gz", hash = "sha256:dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f"},
+ ]
+-nose = [
+-    {file = "nose-1.3.7-py2-none-any.whl", hash = "sha256:dadcddc0aefbf99eea214e0f1232b94f2fa9bd98fa8353711dacb112bfcbbb2a"},
+-    {file = "nose-1.3.7-py3-none-any.whl", hash = "sha256:9ff7c6cc443f8c51994b34a667bbcf45afd6d945be7477b52e97516fd17c53ac"},
+-    {file = "nose-1.3.7.tar.gz", hash = "sha256:f1bffef9cbc82628f6e7d7b40d7e255aefaa1adb6a1b1d26c69a8b79e6208a98"},
++packaging = [
++    {file = "packaging-21.3-py3-none-any.whl", hash = "sha256:ef103e05f519cdc783ae24ea4e2e0f508a9c99b2d4969652eed6a2e1ea5bd522"},
++    {file = "packaging-21.3.tar.gz", hash = "sha256:dd47c42927d89ab911e606518907cc2d3a1f38bbd026385970643f9c5b8ecfeb"},
++]
++pluggy = [
++    {file = "pluggy-1.0.0-py2.py3-none-any.whl", hash = "sha256:74134bbf457f031a36d68416e1509f34bd5ccc019f0bcc952c7b909d06b37bd3"},
++    {file = "pluggy-1.0.0.tar.gz", hash = "sha256:4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159"},
++]
++py = [
++    {file = "py-1.11.0-py2.py3-none-any.whl", hash = "sha256:607c53218732647dff4acdfcd50cb62615cedf612e72d1724fb1a0cc6405b378"},
++    {file = "py-1.11.0.tar.gz", hash = "sha256:51c75c4126074b472f746a24399ad32f6053d1b34b68d2fa41e558e6f4a98719"},
+ ]
+ pycodestyle = [
+     {file = "pycodestyle-2.8.0-py2.py3-none-any.whl", hash = "sha256:720f8b39dde8b293825e7ff02c475f3077124006db4f440dcbc9a20b76548a20"},
+@@ -351,10 +615,38 @@ pyflakes = [
+     {file = "pyflakes-2.4.0-py2.py3-none-any.whl", hash = "sha256:3bb3a3f256f4b7968c9c788781e4ff07dce46bdf12339dcda61053375426ee2e"},
+     {file = "pyflakes-2.4.0.tar.gz", hash = "sha256:05a85c2872edf37a4ed30b0cce2f6093e1d0581f8c19d7393122da7e25b2b24c"},
+ ]
++pygments = [
++    {file = "Pygments-2.12.0-py3-none-any.whl", hash = "sha256:dc9c10fb40944260f6ed4c688ece0cd2048414940f1cea51b8b226318411c519"},
++    {file = "Pygments-2.12.0.tar.gz", hash = "sha256:5eb116118f9612ff1ee89ac96437bb6b49e8f04d8a13b514ba26f620208e26eb"},
++]
++pyparsing = [
++    {file = "pyparsing-3.0.9-py3-none-any.whl", hash = "sha256:5026bae9a10eeaefb61dab2f09052b9f4307d44aee4eda64b309723d8d206bbc"},
++    {file = "pyparsing-3.0.9.tar.gz", hash = "sha256:2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb"},
++]
++pytest = [
++    {file = "pytest-7.1.2-py3-none-any.whl", hash = "sha256:13d0e3ccfc2b6e26be000cb6568c832ba67ba32e719443bfe725814d3c42433c"},
++    {file = "pytest-7.1.2.tar.gz", hash = "sha256:a06a0425453864a270bc45e71f783330a7428defb4230fb5e6a731fde06ecd45"},
++]
++pytest-asyncio = [
++    {file = "pytest-asyncio-0.19.0.tar.gz", hash = "sha256:ac4ebf3b6207259750bc32f4c1d8fcd7e79739edbc67ad0c58dd150b1d072fed"},
++    {file = "pytest_asyncio-0.19.0-py3-none-any.whl", hash = "sha256:7a97e37cfe1ed296e2e84941384bdd37c376453912d397ed39293e0916f521fa"},
++]
++pytest-cov = [
++    {file = "pytest-cov-3.0.0.tar.gz", hash = "sha256:e7f0f5b1617d2210a2cabc266dfe2f4c75a8d32fb89eafb7ad9d06f6d076d470"},
++    {file = "pytest_cov-3.0.0-py3-none-any.whl", hash = "sha256:578d5d15ac4a25e5f961c938b85a05b09fdaae9deef3bb6de9a6e766622ca7a6"},
++]
+ six = [
+     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
+     {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
+ ]
++sqlparse = [
++    {file = "sqlparse-0.4.2-py3-none-any.whl", hash = "sha256:48719e356bb8b42991bdbb1e8b83223757b93789c00910a616a071910ca4a64d"},
++    {file = "sqlparse-0.4.2.tar.gz", hash = "sha256:0c00730c74263a94e5a9919ade150dfc3b19c574389985446148402998287dae"},
++]
++tomli = [
++    {file = "tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
++    {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
++]
+ tornado = [
+     {file = "tornado-6.2-cp37-abi3-macosx_10_9_universal2.whl", hash = "sha256:20f638fd8cc85f3cbae3c732326e96addff0a15e22d80f049e00121651e82e72"},
+     {file = "tornado-6.2-cp37-abi3-macosx_10_9_x86_64.whl", hash = "sha256:87dcafae3e884462f90c90ecc200defe5e580a7fbbb4365eda7c7c1eb809ebc9"},
+@@ -368,6 +660,10 @@ tornado = [
+     {file = "tornado-6.2-cp37-abi3-win_amd64.whl", hash = "sha256:e5f923aa6a47e133d1cf87d60700889d7eae68988704e20c75fb2d65677a8e4b"},
+     {file = "tornado-6.2.tar.gz", hash = "sha256:9b630419bde84ec666bfd7ea0a4cb2a8a651c2d5cccdbdd1972a0c859dfc3c13"},
+ ]
++tzdata = [
++    {file = "tzdata-2022.1-py2.py3-none-any.whl", hash = "sha256:238e70234214138ed7b4e8a0fab0e5e13872edab3be586ab8198c407620e2ab9"},
++    {file = "tzdata-2022.1.tar.gz", hash = "sha256:8b536a8ec63dc0751342b3984193a3118f8fca2afe25752bb9b7fffd398552d3"},
++]
+ werkzeug = [
+     {file = "Werkzeug-2.2.1-py3-none-any.whl", hash = "sha256:7e1db6a5ba6b9a8be061e47e900456355b8714c0f238b0313f53afce1a55a79a"},
+     {file = "Werkzeug-2.2.1.tar.gz", hash = "sha256:4d7013ef96fd197d1cdeb03e066c6c5a491ccb44758a5b2b91137319383e5a5a"},
+diff --git a/pyproject.toml b/pyproject.toml
+index 98c7e99..c817b2a 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -12,13 +12,19 @@ Mako = "^1.1.3"
+ tornado = "^6.0.4"
+ six = "^1.15.0"
+ coverage = "^6.3.2"
+-nose = "^1.3.7"
+ Flask = "^2.1.1"
+ charset-normalizer = "^2.1.0"
+ flake8 = "^4.0.1"
++pytest = "^7.1.2"
++pytest-asyncio = "^0.19.0"
++pytest-cov = "^3.0.0"
+ 
+ [tool.poetry.dev-dependencies]
+ 
++[tool.poetry.group.dev.dependencies]
++icecream = "^2.1.3"
++Django = "^4.0.6"
++
+ [build-system]
+ requires = ["poetry-core>=1.0.0"]
+ build-backend = "poetry.core.masonry.api"
+diff --git a/pypugjs/testsuite/cases/basic.pug b/pypugjs/testsuite/cases/basic.pug
+index 77066d1..7b1f79b 100644
+--- a/pypugjs/testsuite/cases/basic.pug
++++ b/pypugjs/testsuite/cases/basic.pug
+@@ -1,3 +1,3 @@
+ html
+   body
+-    h1 Title
+\ No newline at end of file
++    h1 Title
+diff --git a/pypugjs/testsuite/test_cases.py b/pypugjs/testsuite/test_cases.py
+index 0c1c80d..3f58587 100644
+--- a/pypugjs/testsuite/test_cases.py
++++ b/pypugjs/testsuite/test_cases.py
+@@ -1,27 +1,26 @@
+ from __future__ import print_function
+ 
+-import six
+-from django.template import Engine
+-from nose import with_setup
++import re
++from pathlib import Path
+ 
+ import pypugjs
+ import pypugjs.ext.html
++import pytest
++import six
++from django.template import Engine
+ from pypugjs.exceptions import CurrentlyNotSupported
+ 
+ processors = {}
+ jinja_env = None
+ 
+ 
+-def teardown_func():
+-    pass
+-
+-
+ try:
+     from jinja2 import Environment, FileSystemLoader
+     from pypugjs.ext.jinja import PyPugJSExtension
+ 
+     jinja_env = Environment(
+-        extensions=[PyPugJSExtension], loader=FileSystemLoader('cases/')
++        extensions=[PyPugJSExtension],
++        loader=FileSystemLoader(str(Path(__file__).parent / "cases")),
+     )
+ 
+     def jinja_process(src, filename):
+@@ -29,7 +28,7 @@ try:
+         template = jinja_env.get_template(filename)
+         return template.render()
+ 
+-    processors['Jinja2'] = jinja_process
++    processors["Jinja2"] = jinja_process
+ except ImportError:
+     pass
+ 
+@@ -40,7 +39,7 @@ try:
+ 
+     jinja_env = Environment(
+         extensions=[PyPugJSExtension],
+-        loader=FileSystemLoader('cases/'),
++        loader=FileSystemLoader(str(Path(__file__).parent / "cases")),
+         variable_start_string="{%#.-.**",
+         variable_end_string="**.-.#%}",
+     )
+@@ -50,7 +49,7 @@ try:
+         template = jinja_env.get_template(filename)
+         return template.render()
+ 
+-    processors['Jinja2-variable_start_string'] = jinja_process_variable_start_string
++    processors["Jinja2-variable_start_string"] = jinja_process_variable_start_string
+ except ImportError:
+     pass
+ 
+@@ -60,17 +59,17 @@ try:
+ 
+     patch_tornado()
+ 
+-    loader = tornado.template.Loader('cases/')
++    loader = tornado.template.Loader(str(Path(__file__).parent / "cases"))
+ 
+     def tornado_process(src, filename):
+         global loader, tornado
+-        template = tornado.template.Template(src, name='_.pug', loader=loader)
++        template = tornado.template.Template(src, name="_.pug", loader=loader)
+         generated = template.generate(missing=None)
+         if isinstance(generated, six.binary_type):
+             generated = generated.decode("utf-8")
+         return generated
+ 
+-    processors['Tornado'] = tornado_process
++    processors["Tornado"] = tornado_process
+ except ImportError:
+     pass
+ 
+@@ -82,23 +81,23 @@ try:
+ 
+     if django.VERSION >= (1, 8, 0):
+         config = {
+-            'TEMPLATES': [
++            "TEMPLATES": [
+                 {
+-                    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+-                    'DIRS': ["cases/"],
+-                    'OPTIONS': {
+-                        'context_processors': [
+-                            'django.template.context_processors.debug',
+-                            'django.template.context_processors.request',
+-                            'django.contrib.auth.context_processors.auth',
+-                            'django.contrib.messages.context_processors.messages',
++                    "BACKEND": "django.template.backends.django.DjangoTemplates",
++                    "DIRS": [str(Path(__file__).parent / "cases")],
++                    "OPTIONS": {
++                        "context_processors": [
++                            "django.template.context_processors.debug",
++                            "django.template.context_processors.request",
++                            "django.contrib.auth.context_processors.auth",
++                            "django.contrib.messages.context_processors.messages",
+                         ],
+-                        'loaders': [
++                        "loaders": [
+                             (
+-                                'pypugjs.ext.django.Loader',
++                                "pypugjs.ext.django.Loader",
+                                 (
+-                                    'django.template.loaders.filesystem.Loader',
+-                                    'django.template.loaders.app_directories.Loader',
++                                    "django.template.loaders.filesystem.Loader",
++                                    "django.template.loaders.app_directories.Loader",
+                                 ),
+                             )
+                         ],
+@@ -107,18 +106,18 @@ try:
+             ]
+         }
+         if django.VERSION >= (1, 9, 0):
+-            config['TEMPLATES'][0]['OPTIONS']['builtins'] = [
+-                'pypugjs.ext.django.templatetags'
++            config["TEMPLATES"][0]["OPTIONS"]["builtins"] = [
++                "pypugjs.ext.django.templatetags"
+             ]
+     else:
+         config = {
+-            'TEMPLATE_DIRS': ("cases/",),
+-            'TEMPLATE_LOADERS': (
++            "TEMPLATE_DIRS": ("cases/",),
++            "TEMPLATE_LOADERS": (
+                 (
+-                    'pypugjs.ext.django.Loader',
++                    "pypugjs.ext.django.Loader",
+                     (
+-                        'django.template.loaders.filesystem.Loader',
+-                        'django.template.loaders.app_directories.Loader',
++                        "django.template.loaders.filesystem.Loader",
++                        "django.template.loaders.app_directories.Loader",
+                     ),
+                 ),
+             ),
+@@ -134,24 +133,25 @@ try:
+     def django_process(src, filename):
+         # actually use the django loader to get the sources
+         loader = Loader(
+-            Engine.get_default(), config['TEMPLATES'][0]['OPTIONS']['loaders']
++            Engine.get_default(), config["TEMPLATES"][0]["OPTIONS"]["loaders"]
+         )
+ 
+         t = loader.get_template(filename)
+         ctx = django.template.Context()
+         return t.render(ctx)
+ 
+-    processors['Django'] = django_process
++    processors["Django"] = django_process
+ except ImportError:
+     raise
+ 
+ try:
+-    import pypugjs.ext.mako
+     import mako.template
++    import pypugjs.ext.mako
+     from mako.lookup import TemplateLookup
+ 
+     dirlookup = TemplateLookup(
+-        directories=['cases/'], preprocessor=pypugjs.ext.mako.preprocessor
++        directories=[str(Path(__file__).parent / "cases")],
++        preprocessor=pypugjs.ext.mako.preprocessor,
+     )
+ 
+     def mako_process(src, filename):
+@@ -159,25 +159,23 @@ try:
+             src,
+             lookup=dirlookup,
+             preprocessor=pypugjs.ext.mako.preprocessor,
+-            default_filters=['decode.utf8'],
++            default_filters=["decode.utf8"],
+         )
+         return t.render()
+ 
+-    processors['Mako'] = mako_process
++    processors["Mako"] = mako_process
+ 
+ except ImportError:
+     pass
+ 
+ 
+-def setup_func():
+-    global jinja_env, processors
+-
+-
+ def html_process(src, filename):
+-    return pypugjs.ext.html.process_pugjs(src, basedir='cases')
++    return pypugjs.ext.html.process_pugjs(
++        src, basedir=str(Path(__file__).parent / "cases")
++    )
+ 
+ 
+-processors['Html'] = html_process
++processors["Html"] = html_process
+ 
+ 
+ def run_case(case, process):
+@@ -185,21 +183,25 @@ def run_case(case, process):
+ 
+     global processors
+     processor = processors[process]
+-    with codecs.open('cases/%s.pug' % case, encoding='utf-8') as pugjs_file:
++    with codecs.open(
++        str(Path(__file__).parent / "cases/%s.pug") % case, encoding="utf-8"
++    ) as pugjs_file:
+         pugjs_src = pugjs_file.read()
+         if isinstance(pugjs_src, six.binary_type):
+-            pugjs_src = pugjs_src.decode('utf-8')
++            pugjs_src = pugjs_src.decode("utf-8")
+         pugjs_file.close()
+ 
+-    with codecs.open('cases/%s.html' % case, encoding='utf-8') as html_file:
+-        html_src = html_file.read().strip('\n')
++    with codecs.open(
++        str(Path(__file__).parent / "cases/%s.html") % case, encoding="utf-8"
++    ) as html_file:
++        html_src = html_file.read().strip("\n")
+         if isinstance(html_src, six.binary_type):
+-            html_src = html_src.decode('utf-8')
++            html_src = html_src.decode("utf-8")
+         html_file.close()
+     try:
+-        processed_pugjs = processor(pugjs_src, '%s.pug' % case).strip('\n')
+-        print('PROCESSED (' + str(len(processed_pugjs)) + ' chars)\n' + processed_pugjs)
+-        print('\nEXPECTED (' + str(len(html_src)) + ' chars)\n' + html_src)
++        processed_pugjs = processor(pugjs_src, "%s.pug" % case).strip("\n")
++        print("PROCESSED (" + str(len(processed_pugjs)) + " chars)\n" + processed_pugjs)
++        print("\nEXPECTED (" + str(len(html_src)) + " chars)\n" + html_src)
+         assert processed_pugjs == html_src
+ 
+     except CurrentlyNotSupported:
+@@ -209,58 +211,61 @@ def run_case(case, process):
+ exclusions = {
+     # its a pity - the html compiler has the better results for mixins (indentation) but
+     # has to be excluded to not "break" the other tests with their false results (bad expected indentation)
+-    'Html': {
+-        'mixins',
+-        'mixin.blocks',
+-        'layout',
+-        'unicode',
+-        'attrs.object',
+-        'include_mixin',
+-        'included_top_level',
+-        'included_nested_level',
++    "Html": {
++        "mixins",
++        "mixin.blocks",
++        "layout",
++        "unicode",
++        "attrs.object",
++        "include_mixin",
++        "included_top_level",
++        "included_nested_level",
+     },
+-    'Mako': {
+-        'layout',
+-        'include_mixin',
+-        'included_top_level',
+-        'included_nested_level',
+-        'include-nested-include',
++    "Mako": {
++        "layout",
++        "include_mixin",
++        "included_top_level",
++        "included_nested_level",
++        "include-nested-include",
+     },
+-    'Tornado': {
+-        'layout', 'include_mixin',
+-        'include-nested-include',
+-        'included_top_level',
+-        'included_nested_level',
++    "Tornado": {
++        "layout",
++        "include_mixin",
++        "include-nested-include",
++        "included_top_level",
++        "included_nested_level",
+     },
+-    'Jinja2': {
+-        'layout',
+-        'included_top_level',
+-        'included_nested_level',
++    "Jinja2": {
++        "layout",
++        "included_top_level",
++        "included_nested_level",
+     },
+-    'Jinja2-variable_start_string': {
+-        'layout',
+-        'included_top_level',
+-        'included_nested_level',
++    "Jinja2-variable_start_string": {
++        "layout",
++        "included_top_level",
++        "included_nested_level",
+     },
+-    'Django': {
+-        'layout',
+-        'included_top_level',
+-        'included_nested_level',
++    "Django": {
++        "layout",
++        "included_top_level",
++        "included_nested_level",
+     },
+ }
+ 
+ 
+-@with_setup(setup_func, teardown_func)
+-def test_case_generator():
+-    global processors
++def build_parameters():
++
++    test_cases = []
++
++    for processor in processors.keys():
++        for path in (Path(__file__).parent / "cases").glob("*.pug"):
++            case = re.sub(r"\.pug", "", path.name)
++            if case not in exclusions[processor]:
++                test_cases.append((case, processor))
++
++    return test_cases
+ 
+-    import os
+ 
+-    for dirname, dirnames, filenames in os.walk('cases/'):
+-        # raise Exception(filenames)
+-        filenames = filter(lambda x: x.endswith('.pug'), filenames)
+-        filenames = list(map(lambda x: x.replace('.pug', ''), filenames))
+-        for processor in processors.keys():
+-            for filename in filenames:
+-                if filename not in exclusions[processor]:
+-                    yield run_case, filename, processor
++@pytest.mark.parametrize("case, processor", build_parameters())
++def test_engines(case, processor):
++    run_case(case, processor)
+diff --git a/pypugjs/testsuite/test_inline_lexer.py b/pypugjs/testsuite/test_inline_lexer.py
+index 81deba8..0622527 100644
+--- a/pypugjs/testsuite/test_inline_lexer.py
++++ b/pypugjs/testsuite/test_inline_lexer.py
+@@ -1,358 +1,359 @@
++import pytest
+ from pypugjs.lexer import Lexer
+ from pypugjs.utils import odict
+ 
+ expected_results = {
+-    "p Here is some #[strong: em text] and look at #[a(href='http://google.com') this link!]": [
+-        {'buffer': None, 'line': 1, 'type': 'tag', 'inline_level': 0, 'val': u'p'},
+-        {
+-            'buffer': None,
+-            'line': 1,
+-            'type': 'string',
+-            'inline_level': 0,
+-            'val': u'Here is some ',
+-        },
+-        {'buffer': None, 'type': 'tag', 'line': 1, 'inline_level': 1, 'val': u'strong'},
+-        {'buffer': None, 'type': ':', 'line': 1, 'inline_level': 1, 'val': None},
+-        {'buffer': None, 'type': 'tag', 'line': 1, 'inline_level': 1, 'val': u'em'},
+-        {'buffer': None, 'type': 'text', 'line': 1, 'inline_level': 1, 'val': u' text'},
+-        {
+-            'buffer': None,
+-            'line': 1,
+-            'type': 'string',
+-            'inline_level': 0,
+-            'val': u' and look at ',
+-        },
+-        {'buffer': None, 'inline_level': 1, 'line': 1, 'type': 'tag', 'val': u'a'},
+-        {
+-            'inline_level': 1,
+-            'val': None,
+-            'buffer': None,
+-            'static_attrs': set([u'href']),
+-            'attrs': odict([(u'href', u"'http://google.com'")]),
+-            'line': 1,
+-            'type': 'attrs',
+-        },
+-        {
+-            'buffer': None,
+-            'inline_level': 1,
+-            'line': 1,
+-            'type': 'text',
+-            'val': u' this link!',
+-        },
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++    "p Here is some #[strong: em text] and look at #[a(href='https://google.com') this link!]": [
++        {"buffer": None, "line": 1, "type": "tag", "inline_level": 0, "val": "p"},
++        {
++            "buffer": None,
++            "line": 1,
++            "type": "string",
++            "inline_level": 0,
++            "val": "Here is some ",
++        },
++        {"buffer": None, "type": "tag", "line": 1, "inline_level": 1, "val": "strong"},
++        {"buffer": None, "type": ":", "line": 1, "inline_level": 1, "val": None},
++        {"buffer": None, "type": "tag", "line": 1, "inline_level": 1, "val": "em"},
++        {"buffer": None, "type": "text", "line": 1, "inline_level": 1, "val": " text"},
++        {
++            "buffer": None,
++            "line": 1,
++            "type": "string",
++            "inline_level": 0,
++            "val": " and look at ",
++        },
++        {"buffer": None, "inline_level": 1, "line": 1, "type": "tag", "val": "a"},
++        {
++            "inline_level": 1,
++            "val": None,
++            "buffer": None,
++            "static_attrs": set(["href"]),
++            "attrs": odict([("href", "'https://google.com'")]),
++            "line": 1,
++            "type": "attrs",
++        },
++        {
++            "buffer": None,
++            "inline_level": 1,
++            "line": 1,
++            "type": "text",
++            "val": " this link!",
++        },
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+     ],
+     "p Other inline #[strong= 'test']": [
+-        {'buffer': None, 'line': 1, 'type': 'tag', 'inline_level': 0, 'val': u'p'},
++        {"buffer": None, "line": 1, "type": "tag", "inline_level": 0, "val": "p"},
+         {
+-            'buffer': None,
+-            'line': 1,
+-            'type': 'string',
+-            'inline_level': 0,
+-            'val': u'Other inline ',
++            "buffer": None,
++            "line": 1,
++            "type": "string",
++            "inline_level": 0,
++            "val": "Other inline ",
+         },
+-        {'buffer': None, 'type': 'tag', 'line': 1, 'inline_level': 1, 'val': u'strong'},
++        {"buffer": None, "type": "tag", "line": 1, "inline_level": 1, "val": "strong"},
+         {
+-            'inline_level': 1,
+-            'val': u" 'test'",
+-            'buffer': True,
+-            'escape': True,
+-            'line': 1,
+-            'type': 'code',
++            "inline_level": 1,
++            "val": " 'test'",
++            "buffer": True,
++            "escape": True,
++            "line": 1,
++            "type": "code",
+         },
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+     ],
+     "p Test #[|text line]": [
+-        {'buffer': None, 'line': 1, 'type': 'tag', 'inline_level': 0, 'val': u'p'},
++        {"buffer": None, "line": 1, "type": "tag", "inline_level": 0, "val": "p"},
+         {
+-            'buffer': None,
+-            'line': 1,
+-            'type': 'string',
+-            'inline_level': 0,
+-            'val': u'Test ',
++            "buffer": None,
++            "line": 1,
++            "type": "string",
++            "inline_level": 0,
++            "val": "Test ",
+         },
+         {
+-            'buffer': None,
+-            'type': 'string',
+-            'line': 1,
+-            'inline_level': 1,
+-            'val': u'text line',
++            "buffer": None,
++            "type": "string",
++            "line": 1,
++            "inline_level": 1,
++            "val": "text line",
+         },
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+     ],
+     "p Test buffered #[= map(str, zip('iln', 'nie')) + 'code']": [
+-        {'buffer': None, 'line': 1, 'type': 'tag', 'inline_level': 0, 'val': u'p'},
++        {"buffer": None, "line": 1, "type": "tag", "inline_level": 0, "val": "p"},
+         {
+-            'buffer': None,
+-            'line': 1,
+-            'type': 'string',
+-            'inline_level': 0,
+-            'val': u'Test buffered ',
++            "buffer": None,
++            "line": 1,
++            "type": "string",
++            "inline_level": 0,
++            "val": "Test buffered ",
+         },
+         {
+-            'inline_level': 1,
+-            'val': u" map(str, zip('iln', 'nie')) + 'code'",
+-            'buffer': True,
+-            'escape': True,
+-            'line': 1,
+-            'type': 'code',
++            "inline_level": 1,
++            "val": " map(str, zip('iln', 'nie')) + 'code'",
++            "buffer": True,
++            "escape": True,
++            "line": 1,
++            "type": "code",
+         },
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+     ],
+     "p #[- abcf = [[123, [[],[]], []],'abc']] #[= abcf]": [
+-        {'buffer': None, 'line': 1, 'type': 'tag', 'inline_level': 0, 'val': u'p'},
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
+-        {
+-            'inline_level': 1,
+-            'val': u" abcf = [[123, [[],[]], []],'abc']",
+-            'buffer': False,
+-            'escape': False,
+-            'line': 1,
+-            'type': 'code',
+-        },
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u' '},
+-        {
+-            'inline_level': 1,
+-            'val': u' abcf',
+-            'buffer': True,
+-            'escape': True,
+-            'line': 1,
+-            'type': 'code',
+-        },
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++        {"buffer": None, "line": 1, "type": "tag", "inline_level": 0, "val": "p"},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
++        {
++            "inline_level": 1,
++            "val": " abcf = [[123, [[],[]], []],'abc']",
++            "buffer": False,
++            "escape": False,
++            "line": 1,
++            "type": "code",
++        },
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": " "},
++        {
++            "inline_level": 1,
++            "val": " abcf",
++            "buffer": True,
++            "escape": True,
++            "line": 1,
++            "type": "code",
++        },
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+     ],
+     "#[#[#[a a#[b #[i a] b]] d]e]": [
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
+-        {'buffer': None, 'type': 'string', 'line': 1, 'inline_level': 1, 'val': u''},
+-        {'buffer': None, 'type': 'string', 'line': 1, 'inline_level': 2, 'val': u''},
+-        {'buffer': None, 'type': 'tag', 'line': 1, 'inline_level': 3, 'val': u'a'},
+-        {'buffer': None, 'type': 'string', 'line': 1, 'inline_level': 3, 'val': u'a'},
+-        {'buffer': None, 'type': 'tag', 'line': 1, 'inline_level': 4, 'val': u'b'},
+-        {'buffer': None, 'type': 'string', 'line': 1, 'inline_level': 4, 'val': u''},
+-        {'buffer': None, 'type': 'tag', 'line': 1, 'inline_level': 5, 'val': u'i'},
+-        {'buffer': None, 'type': 'text', 'line': 1, 'inline_level': 5, 'val': u' a'},
+-        {'buffer': None, 'type': 'string', 'line': 1, 'inline_level': 4, 'val': u' b'},
+-        {'buffer': None, 'type': 'string', 'line': 1, 'inline_level': 3, 'val': u''},
+-        {'buffer': None, 'type': 'string', 'line': 1, 'inline_level': 2, 'val': u' d'},
+-        {'buffer': None, 'type': 'string', 'line': 1, 'inline_level': 1, 'val': u'e'},
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
++        {"buffer": None, "type": "string", "line": 1, "inline_level": 1, "val": ""},
++        {"buffer": None, "type": "string", "line": 1, "inline_level": 2, "val": ""},
++        {"buffer": None, "type": "tag", "line": 1, "inline_level": 3, "val": "a"},
++        {"buffer": None, "type": "string", "line": 1, "inline_level": 3, "val": "a"},
++        {"buffer": None, "type": "tag", "line": 1, "inline_level": 4, "val": "b"},
++        {"buffer": None, "type": "string", "line": 1, "inline_level": 4, "val": ""},
++        {"buffer": None, "type": "tag", "line": 1, "inline_level": 5, "val": "i"},
++        {"buffer": None, "type": "text", "line": 1, "inline_level": 5, "val": " a"},
++        {"buffer": None, "type": "string", "line": 1, "inline_level": 4, "val": " b"},
++        {"buffer": None, "type": "string", "line": 1, "inline_level": 3, "val": ""},
++        {"buffer": None, "type": "string", "line": 1, "inline_level": 2, "val": " d"},
++        {"buffer": None, "type": "string", "line": 1, "inline_level": 1, "val": "e"},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+     ],
+-    "p We can also #[strong combine #[em multiple #[img(src='http://jade-lang.com/style/logo.png')]]]": [
+-        {'buffer': None, 'line': 1, 'type': 'tag', 'inline_level': 0, 'val': u'p'},
+-        {
+-            'buffer': None,
+-            'line': 1,
+-            'type': 'string',
+-            'inline_level': 0,
+-            'val': u'We can also ',
+-        },
+-        {'buffer': None, 'type': 'tag', 'line': 1, 'inline_level': 1, 'val': u'strong'},
+-        {
+-            'buffer': None,
+-            'type': 'string',
+-            'line': 1,
+-            'inline_level': 1,
+-            'val': u'combine ',
+-        },
+-        {'buffer': None, 'type': 'tag', 'line': 1, 'inline_level': 2, 'val': u'em'},
+-        {
+-            'buffer': None,
+-            'type': 'string',
+-            'line': 1,
+-            'inline_level': 2,
+-            'val': u'multiple ',
+-        },
+-        {'buffer': None, 'type': 'tag', 'line': 1, 'inline_level': 3, 'val': u'img'},
+-        {
+-            'inline_level': 3,
+-            'val': None,
+-            'buffer': None,
+-            'static_attrs': set([u'src']),
+-            'attrs': odict([(u'src', u"'http://jade-lang.com/style/logo.png'")]),
+-            'line': 1,
+-            'type': 'attrs',
+-        },
+-        {'buffer': None, 'type': 'string', 'line': 1, 'inline_level': 2, 'val': u''},
+-        {'buffer': None, 'type': 'string', 'line': 1, 'inline_level': 1, 'val': u''},
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++    "p We can also #[strong combine #[em multiple #[img(src='https://jade-lang.com/style/logo.png')]]]": [
++        {"buffer": None, "line": 1, "type": "tag", "inline_level": 0, "val": "p"},
++        {
++            "buffer": None,
++            "line": 1,
++            "type": "string",
++            "inline_level": 0,
++            "val": "We can also ",
++        },
++        {"buffer": None, "type": "tag", "line": 1, "inline_level": 1, "val": "strong"},
++        {
++            "buffer": None,
++            "type": "string",
++            "line": 1,
++            "inline_level": 1,
++            "val": "combine ",
++        },
++        {"buffer": None, "type": "tag", "line": 1, "inline_level": 2, "val": "em"},
++        {
++            "buffer": None,
++            "type": "string",
++            "line": 1,
++            "inline_level": 2,
++            "val": "multiple ",
++        },
++        {"buffer": None, "type": "tag", "line": 1, "inline_level": 3, "val": "img"},
++        {
++            "inline_level": 3,
++            "val": None,
++            "buffer": None,
++            "static_attrs": {"src"},
++            "attrs": odict([("src", "'https://jade-lang.com/style/logo.png'")]),
++            "line": 1,
++            "type": "attrs",
++        },
++        {"buffer": None, "type": "string", "line": 1, "inline_level": 2, "val": ""},
++        {"buffer": None, "type": "string", "line": 1, "inline_level": 1, "val": ""},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+     ],
+     "#[strong start] line with #[i]\#[j] inline": [
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
+-        {'buffer': None, 'type': 'tag', 'line': 1, 'inline_level': 1, 'val': u'strong'},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
++        {"buffer": None, "type": "tag", "line": 1, "inline_level": 1, "val": "strong"},
+         {
+-            'buffer': None,
+-            'type': 'text',
+-            'line': 1,
+-            'inline_level': 1,
+-            'val': u' start',
++            "buffer": None,
++            "type": "text",
++            "line": 1,
++            "inline_level": 1,
++            "val": " start",
+         },
+         {
+-            'buffer': None,
+-            'line': 1,
+-            'type': 'string',
+-            'inline_level': 0,
+-            'val': u' line with ',
++            "buffer": None,
++            "line": 1,
++            "type": "string",
++            "inline_level": 0,
++            "val": " line with ",
+         },
+-        {'buffer': None, 'type': 'tag', 'line': 1, 'inline_level': 1, 'val': u'i'},
++        {"buffer": None, "type": "tag", "line": 1, "inline_level": 1, "val": "i"},
+         {
+-            'buffer': None,
+-            'line': 1,
+-            'type': 'string',
+-            'inline_level': 0,
+-            'val': u'#[j] inline',
++            "buffer": None,
++            "line": 1,
++            "type": "string",
++            "inline_level": 0,
++            "val": "#[j] inline",
+         },
+     ],
+     "p Another #[strong.lil#okf(acs=[1,2]) test [[with brackets]] [in#[='side']]]": [
+-        {'buffer': None, 'line': 1, 'type': 'tag', 'inline_level': 0, 'val': u'p'},
+-        {
+-            'buffer': None,
+-            'line': 1,
+-            'type': 'string',
+-            'inline_level': 0,
+-            'val': u'Another ',
+-        },
+-        {'buffer': None, 'type': 'tag', 'line': 1, 'inline_level': 1, 'val': u'strong'},
+-        {'buffer': None, 'type': 'class', 'line': 1, 'inline_level': 1, 'val': u'lil'},
+-        {'buffer': None, 'type': 'id', 'line': 1, 'inline_level': 1, 'val': u'okf'},
+-        {
+-            'val': None,
+-            'buffer': None,
+-            'static_attrs': set([]),
+-            'attrs': odict([(u'acs', u'[1,2]')]),
+-            'line': 1,
+-            'type': 'attrs',
+-            'inline_level': 1,
+-        },
+-        {
+-            'buffer': None,
+-            'type': 'string',
+-            'line': 1,
+-            'inline_level': 1,
+-            'val': u'test [[with brackets]] [in',
+-        },
+-        {
+-            'inline_level': 2,
+-            'val': u"'side'",
+-            'buffer': True,
+-            'escape': True,
+-            'line': 1,
+-            'type': 'code',
+-        },
+-        {'buffer': None, 'type': 'string', 'line': 1, 'inline_level': 1, 'val': u']'},
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++        {"buffer": None, "line": 1, "type": "tag", "inline_level": 0, "val": "p"},
++        {
++            "buffer": None,
++            "line": 1,
++            "type": "string",
++            "inline_level": 0,
++            "val": "Another ",
++        },
++        {"buffer": None, "type": "tag", "line": 1, "inline_level": 1, "val": "strong"},
++        {"buffer": None, "type": "class", "line": 1, "inline_level": 1, "val": "lil"},
++        {"buffer": None, "type": "id", "line": 1, "inline_level": 1, "val": "okf"},
++        {
++            "val": None,
++            "buffer": None,
++            "static_attrs": set([]),
++            "attrs": odict([("acs", "[1,2]")]),
++            "line": 1,
++            "type": "attrs",
++            "inline_level": 1,
++        },
++        {
++            "buffer": None,
++            "type": "string",
++            "line": 1,
++            "inline_level": 1,
++            "val": "test [[with brackets]] [in",
++        },
++        {
++            "inline_level": 2,
++            "val": "'side'",
++            "buffer": True,
++            "escape": True,
++            "line": 1,
++            "type": "code",
++        },
++        {"buffer": None, "type": "string", "line": 1, "inline_level": 1, "val": "]"},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+     ],
+     """mixin lala(a, b)
+   span lala(#{a}, #{b})
+ p Test inline mixin #[+lala(123, 'lala inside inline')] end""": [
+         {
+-            'args': u'a, b',
+-            'buffer': None,
+-            'line': 1,
+-            'type': 'mixin',
+-            'inline_level': 0,
+-            'val': u'lala',
++            "args": "a, b",
++            "buffer": None,
++            "line": 1,
++            "type": "mixin",
++            "inline_level": 0,
++            "val": "lala",
+         },
+-        {'buffer': None, 'line': 2, 'type': 'indent', 'inline_level': 0, 'val': 2},
+-        {'buffer': None, 'line': 2, 'type': 'tag', 'inline_level': 0, 'val': u'span'},
++        {"buffer": None, "line": 2, "type": "indent", "inline_level": 0, "val": 2},
++        {"buffer": None, "line": 2, "type": "tag", "inline_level": 0, "val": "span"},
+         {
+-            'buffer': None,
+-            'line': 2,
+-            'type': 'text',
+-            'inline_level': 0,
+-            'val': u' lala(#{a}, #{b})',
++            "buffer": None,
++            "line": 2,
++            "type": "text",
++            "inline_level": 0,
++            "val": " lala(#{a}, #{b})",
+         },
+-        {'buffer': None, 'line': 3, 'type': 'outdent', 'inline_level': 0, 'val': None},
+-        {'buffer': None, 'line': 3, 'type': 'tag', 'inline_level': 0, 'val': u'p'},
++        {"buffer": None, "line": 3, "type": "outdent", "inline_level": 0, "val": None},
++        {"buffer": None, "line": 3, "type": "tag", "inline_level": 0, "val": "p"},
+         {
+-            'buffer': None,
+-            'line': 3,
+-            'type': 'string',
+-            'inline_level': 0,
+-            'val': u'Test inline mixin ',
++            "buffer": None,
++            "line": 3,
++            "type": "string",
++            "inline_level": 0,
++            "val": "Test inline mixin ",
+         },
+         {
+-            'inline_level': 1,
+-            'val': u'lala',
+-            'buffer': None,
+-            'args': u"123, 'lala inside inline'",
+-            'line': 1,
+-            'type': 'call',
++            "inline_level": 1,
++            "val": "lala",
++            "buffer": None,
++            "args": "123, 'lala inside inline'",
++            "line": 1,
++            "type": "call",
+         },
+         {
+-            'buffer': None,
+-            'line': 3,
+-            'type': 'string',
+-            'inline_level': 0,
+-            'val': u' end',
++            "buffer": None,
++            "line": 3,
++            "type": "string",
++            "inline_level": 0,
++            "val": " end",
+         },
+     ],
+     "p only class #[.strong: em inline]": [
+-        {'buffer': None, 'line': 1, 'type': 'tag', 'inline_level': 0, 'val': u'p'},
++        {"buffer": None, "line": 1, "type": "tag", "inline_level": 0, "val": "p"},
+         {
+-            'buffer': None,
+-            'line': 1,
+-            'type': 'string',
+-            'inline_level': 0,
+-            'val': u'only class ',
++            "buffer": None,
++            "line": 1,
++            "type": "string",
++            "inline_level": 0,
++            "val": "only class ",
+         },
+         {
+-            'buffer': None,
+-            'inline_level': 1,
+-            'line': 1,
+-            'type': 'class',
+-            'val': u'strong',
++            "buffer": None,
++            "inline_level": 1,
++            "line": 1,
++            "type": "class",
++            "val": "strong",
+         },
+-        {'buffer': None, 'inline_level': 1, 'line': 1, 'type': ':', 'val': None},
+-        {'buffer': None, 'inline_level': 1, 'line': 1, 'type': 'tag', 'val': u'em'},
++        {"buffer": None, "inline_level": 1, "line": 1, "type": ":", "val": None},
++        {"buffer": None, "inline_level": 1, "line": 1, "type": "tag", "val": "em"},
+         {
+-            'buffer': None,
+-            'inline_level': 1,
+-            'line': 1,
+-            'type': 'text',
+-            'val': u' inline',
++            "buffer": None,
++            "inline_level": 1,
++            "line": 1,
++            "type": "text",
++            "val": " inline",
+         },
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+     ],
+     "#[asdf.lol(fff)#[asdf]]": [
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
+-        {'buffer': None, 'inline_level': 1, 'line': 1, 'type': 'tag', 'val': u'asdf'},
+-        {'buffer': None, 'inline_level': 1, 'line': 1, 'type': 'class', 'val': u'lol'},
+-        {
+-            'inline_level': 1,
+-            'val': None,
+-            'buffer': None,
+-            'static_attrs': set([u'fff']),
+-            'attrs': odict([(u'fff', True)]),
+-            'line': 1,
+-            'type': 'attrs',
+-        },
+-        {'buffer': None, 'inline_level': 1, 'line': 1, 'type': 'string', 'val': u''},
+-        {'buffer': None, 'inline_level': 2, 'line': 1, 'type': 'tag', 'val': u'asdf'},
+-        {'buffer': None, 'inline_level': 1, 'line': 1, 'type': 'string', 'val': u''},
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
++        {"buffer": None, "inline_level": 1, "line": 1, "type": "tag", "val": "asdf"},
++        {"buffer": None, "inline_level": 1, "line": 1, "type": "class", "val": "lol"},
++        {
++            "inline_level": 1,
++            "val": None,
++            "buffer": None,
++            "static_attrs": set(["fff"]),
++            "attrs": odict([("fff", True)]),
++            "line": 1,
++            "type": "attrs",
++        },
++        {"buffer": None, "inline_level": 1, "line": 1, "type": "string", "val": ""},
++        {"buffer": None, "inline_level": 2, "line": 1, "type": "tag", "val": "asdf"},
++        {"buffer": None, "inline_level": 1, "line": 1, "type": "string", "val": ""},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+     ],
+     "#[= '[[[[[[[[[[']": [
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+         {
+-            'buffer': True,
+-            'line': 1,
+-            'type': 'code',
+-            'val': u" '[[[[[[[[[['",
+-            'escape': True,
+-            'inline_level': 1,
++            "buffer": True,
++            "line": 1,
++            "type": "code",
++            "val": " '[[[[[[[[[['",
++            "escape": True,
++            "inline_level": 1,
+         },
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+     ],
+     "#[= ']]]]]]]]]]']": [
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+         {
+-            'buffer': True,
+-            'line': 1,
+-            'type': 'code',
+-            'val': u" ']]]]]]]]]]'",
+-            'escape': True,
+-            'inline_level': 1,
++            "buffer": True,
++            "line": 1,
++            "type": "code",
++            "val": " ']]]]]]]]]]'",
++            "escape": True,
++            "inline_level": 1,
+         },
+-        {'buffer': None, 'line': 1, 'type': 'string', 'inline_level': 0, 'val': u''},
++        {"buffer": None, "line": 1, "type": "string", "inline_level": 0, "val": ""},
+     ],
+ }
+ 
+@@ -362,18 +363,13 @@ def generate_expected(pugjs):
+     res = []
+     while True:
+         tok = lx.advance()
+-        if tok.type == 'eos':
++        if tok.type == "eos":
+             break
+         res.append(tok.__dict__)
+     return res
+ 
+ 
+-def process(pugjs):
+-    assert expected_results[pugjs] == generate_expected(pugjs)
+-
+-
+-def test_lexer():
+-    import six
+-
+-    for k, v in six.iteritems(expected_results):
+-        yield process, k
++@pytest.mark.parametrize("key", expected_results.keys())
++def test_lexer(key):
++    result = generate_expected(key)
++    assert expected_results[key] == result, key
+diff --git a/pypugjs/testsuite/test_runtime.py b/pypugjs/testsuite/test_runtime.py
+index 85c445c..1cd932d 100644
+--- a/pypugjs/testsuite/test_runtime.py
++++ b/pypugjs/testsuite/test_runtime.py
+@@ -1,5 +1,5 @@
+-import unittest
+ import tempfile
++import unittest
+ 
+ from pypugjs import runtime
+ 
+@@ -18,12 +18,12 @@ class TestIteration(unittest.TestCase):
+         assert list(runtime.iteration(test_list, 2)) == test_list
+ 
+     def test_it_extends_with_index_if_items_are_iterable(self):
+-        test_list = [('a',), ('b',)]
+-        assert list(runtime.iteration(test_list, 2)) == [('a', 0), ('b', 1)]
++        test_list = [("a",), ("b",)]
++        assert list(runtime.iteration(test_list, 2)) == [("a", 0), ("b", 1)]
+ 
+     def test_it_adds_index_if_items_are_strings(self):
+-        test_list = ['a', 'b']
+-        assert list(runtime.iteration(test_list, 2)) == [('a', 0), ('b', 1)]
++        test_list = ["a", "b"]
++        assert list(runtime.iteration(test_list, 2)) == [("a", 0), ("b", 1)]
+ 
+     def test_it_adds_index_if_items_are_non_iterable(self):
+         test_list = [1, 2]
+@@ -43,19 +43,18 @@ class TestOpen(unittest.TestCase):
+     def test_encoding_taken_directly(self):
+         """If an encoding is given, we don't try to make a guess."""
+         with tempfile.NamedTemporaryFile() as file:
+-            file.write('✔️¿¿«Not valid Latin-1»??'.encode('utf-8'))
++            file.write("✔️¿¿«Not valid Latin-1»??".encode("utf-8"))
+             file.seek(0)
+ 
+-            with runtime.open(file.name, encoding='latin1') as handle:
++            with runtime.open(file.name, encoding="latin1") as handle:
+                 self.assertEqual(
+-                    handle.read(),
+-                    'â\x9c\x94ï¸\x8fÂ¿Â¿Â«Not valid Latin-1Â»??'
++                    handle.read(), "â\x9c\x94ï¸\x8fÂ¿Â¿Â«Not valid Latin-1Â»??"
+                 )
+ 
+     def test_guess_is_made_without_encoding(self):
+         with tempfile.NamedTemporaryFile() as file:
+-            file.write('我没有埋怨，磋砣的只是一些时间。'.encode('utf-32'))
++            file.write("我没有埋怨，磋砣的只是一些时间。".encode("utf-32"))
+             file.seek(0)
+ 
+             with runtime.open(file.name) as handle:
+-                self.assertEqual(handle.encoding, 'utf_32')
++                self.assertEqual(handle.encoding, "utf_32")
+diff --git a/setup.py b/setup.py
+index 1995859..5bb743a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -40,13 +40,15 @@ setup(
+     entry_points={'console_scripts': ['pypugjs = pypugjs.convert:convert_file']},
+     install_requires=['six', 'charset_normalizer'],
+     tests_require=[
+-        'nose',
++        'pytest',
++        'pytest-cov',
+         'django',
+         'jinja2',
+         'tornado',
+         'pyramid >= 1.5',
+         'pyramid-mako',
+         'mako',
++        'icecream',
+     ],
+     # include_package_data=True,
+     # zip_safe=False,
+@@ -63,6 +65,10 @@ setup(
+         'Programming Language :: Python :: 3.4',
+         'Programming Language :: Python :: 3.5',
+         'Programming Language :: Python :: 3.6',
++        'Programming Language :: Python :: 3.7',
++        'Programming Language :: Python :: 3.8',
++        'Programming Language :: Python :: 3.9',
++        'Programming Language :: Python :: 3.10',
+         'Framework :: Django',
+         'Framework :: Django :: 1.11',
+         'Framework :: Django :: 2.0',
+-- 
+2.44.0
+
