@@ -1,7 +1,7 @@
 pkgbase = r-stjoincount
 	pkgdesc = Join count statistic for quantifying spatial correlation between clusters
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bioconductor.org/packages/stJoincount
 	arch = any
 	license = MIT

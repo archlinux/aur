@@ -4,11 +4,11 @@ _pkgname=stJoincount
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Join count statistic for quantifying spatial correlation between clusters"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(MIT)
+license=('MIT')
 depends=(
   r-dplyr
   r-ggplot2
