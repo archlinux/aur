@@ -33,7 +33,6 @@ depends=(discount
          kwidgetsaddons
          kwindowsystem
          kxmlgui
-         libjpeg-turbo
          libkexiv2
          libspectre
          libtiff
