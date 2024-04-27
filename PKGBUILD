@@ -27,7 +27,7 @@ set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
 pkgname+="-git"
-pkgver=1.2.4.r8956.g4fc5d3f
+pkgver=1.2.4.r9083.ge9d9a65
 pkgrel=1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
@@ -68,7 +68,7 @@ if [ "${_opt_FLUTTER}" -eq 0 ]; then
   source+=("https://raw.github.com/c-smile/sciter-sdk/master/bin.lnx/x64/libsciter-gtk.so")
 else
   if [ "${_opt_SYS_FLUTTER}" -eq 0 ]; then
-    _FLUVER='3.19.5'
+    _FLUVER='3.19.6'
     source+=(
       "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_FLUVER}-stable.tar.xz"
       #"flutter_rust_bridge-${_FRBVER}.tar.gz::https://pub.dev/packages/flutter_rust_bridge/versions/${_FRBVER}.tar.gz" # bad packaging
@@ -90,7 +90,7 @@ md5sums=('SKIP'
          '82e5e527336b41281a582204db1f3457'
          '357dc26a802c34387512a42697846d16'
          '10cf85debdd07be719a35ca3bfb8ea64'
-         '36faacc6645c87f1cdb9829a75e3458b'
+         '74dc171bf2cfc1ada56b6e284adabca8'
          'a63659fb966758db9fe95e5aae89757a')
 sha256sums=('SKIP'
             '149e0cee002e59e0bb84543cf3cb099f108c08390392605e944daeb6594cbc29'
@@ -98,7 +98,7 @@ sha256sums=('SKIP'
             '965e51c91ad9851e2337aebcc0f517440c637c506f3a03948062e3d5ea129a83'
             'a78b05c0d8427a90eb5b4eb08af25309770c8379592bb0b8a863373128e6143f'
             'f1acc15d0fd0cb431f4bf6eac32d5e932e40ea1186fe78e074254d6d003957bb'
-            '6590607e7f2fb23bcc7e0a2d6aac292f9208cbf12a40862c281058c758604fb3'
+            'db6742a20626d0d2a089eb41ad61b9b2138b996679911e9c8268c1f896191f97'
             'b3a05ffca1f57afa48bd006d732969146dafa164c71390070623ba569977f9d3')
 _vcs=("${_vcs[@]%%::*}")
 _vcs=("${_vcs[@]##*/}")
