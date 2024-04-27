@@ -3,7 +3,7 @@
 
 pkgname=jupyterlab-lsp
 pkgver=5.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Coding assistance for JupyterLab with Language Server Protocol."
 arch=(any)
 url="https://github.com/jupyter-lsp/jupyterlab-lsp"
