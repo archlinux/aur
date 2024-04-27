@@ -3,11 +3,11 @@
 pkgname=python-pairwisedist
 _module=${pkgname#python-}
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Calculate the pairwise-distance matrix for an array of n samples by p features'
 arch=(any)
 url="https://github.com/GuyTeichman/pairwisedist"
-license=(Apache)
+license=('Apache-2.0')
 depends=(
          'python' 
          'python-numpy' 
