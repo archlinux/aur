@@ -2,7 +2,7 @@
 
 pkgname=dehinter
 pkgver=4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A tool for the removal of TrueType instruction sets (hints) in fonts'
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
@@ -12,7 +12,7 @@ depends=(python
 makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive="$pkgname-$pkgver"
-source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('c7fd270fdd6d1b67326c1af61a3497eb86974567aff7e96ebee836d81fa56769')
 
 build() {

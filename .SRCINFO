@@ -1,7 +1,7 @@
 pkgbase = dehinter
 	pkgdesc = A tool for the removal of TrueType instruction sets (hints) in fonts
 	pkgver = 4.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/source-foundry/dehinter
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = dehinter
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-fonttools
-	source = dehinter-4.0.0.tar.gz::https://github.com/source-foundry/dehinter/archive/v4.0.0.tar.gz
+	source = https://github.com/source-foundry/dehinter/archive/v4.0.0/dehinter-4.0.0.tar.gz
 	sha256sums = c7fd270fdd6d1b67326c1af61a3497eb86974567aff7e96ebee836d81fa56769
 
 pkgname = dehinter
