@@ -2,11 +2,11 @@
 
 pkgname=latex-flatten
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Make the file structure of your LaTeX project boring and flat'
 arch=(any)
 url="https://gitlab.com/nobodyinperson/$pkgname"
-license=(GPL3)
+license=(GPL-3.0-only)
 _pydeps=(rich)
 depends=(python
          "${_pydeps[@]/#/python-}")
