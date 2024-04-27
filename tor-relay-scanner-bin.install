@@ -1,8 +1,8 @@
 post_install() {
-	echo -e "\nEnable update-tor-bridges.service to update tor bridges on boot"
-	echo -e "Append %include /etc/tor/bridges to the end of /etc/tor/torrc file to make Tor daemon use them\n"
+	echo -e "\nEnable tor-relay-scanner.service to update Tor relays on boot"
+	echo -e "Append %include /etc/tor/relays to the end of /etc/tor/torrc file to make Tor daemon use them\n"
 }
 
 post_remove() {
-	rm -f /etc/tor/bridges
+	rm -f /etc/tor/relays
 }
