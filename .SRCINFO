@@ -1,7 +1,7 @@
 pkgbase = certomancer
 	pkgdesc = Quickly construct, mock & deploy PKI test configurations
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MatthiasValvekens/certomancer
 	arch = any
 	license = MIT
@@ -14,7 +14,6 @@ pkgbase = certomancer
 	checkdepends = python-requests
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pytest-runner
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python

@@ -2,7 +2,7 @@
 
 pkgname=certomancer
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly construct, mock & deploy PKI test configurations"
 url="https://github.com/MatthiasValvekens/certomancer"
 license=(MIT)
@@ -23,7 +23,6 @@ depends=(
 makedepends=(
   python-build
   python-installer
-  python-pytest-runner
   python-setuptools
   python-wheel
 )
