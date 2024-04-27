@@ -1,7 +1,7 @@
 pkgbase = python-aiohappyeyeballs
 	pkgdesc = Python library that provides happy eyeballs algorithm for asyncio.
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aio-libs/aiohappyeyeballs
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=python-aiohappyeyeballs
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library that provides happy eyeballs algorithm for asyncio."
 arch=('any')
 url="https://github.com/aio-libs/aiohappyeyeballs"
