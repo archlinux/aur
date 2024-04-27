@@ -1,10 +1,10 @@
 pkgbase = r-regionereloaded
 	pkgdesc = Multiple Association for Genomic Region Sets
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bioconductor.org/packages/regioneReloaded
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-testthat
 	depends = r-ggplot2
 	depends = r-ggrepel
