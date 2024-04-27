@@ -3,7 +3,7 @@
 
 pkgname=gallery-dl
 pkgver=1.26.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites'
 arch=(any)
 url=https://github.com/mikf/gallery-dl
@@ -26,7 +26,10 @@ sha512sums=('f2e11d10b56ee9c76605bd759661620e57d22090e9309589bc54d583410316dc661
 
 prepare() {
     # Clean out old wheels etc.
-    git -C "${pkgname%-git}" clean -dfx
+    git -C "${pkgname}" clean -dfx
+
+    git -C "${pkgname%-git}" cherry-pick -n 5227bb6b1d62ecef5b281592b0d001e7f9c101e3 # [text] catch general Exceptions
+
 }
 
 build() {
