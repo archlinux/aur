@@ -1,19 +1,23 @@
-# Maintainer: librewish <librewish@garudalinux.org>
-# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
+pkgname="firedragon-extension-plasma-integration"
+pkgver=1.9
+pkgrel=1
+pkgdesc="KDE plasma browser integration extension for FireDragon"
+arch=("any")
+url="https://community.kde.org/Plasma/Browser_Integration"
+license=("GPL-3.0-or-later")
+makedepends=("web-ext" "jq")
+source=("https://invent.kde.org/plasma/plasma-browser-integration/-/archive/browser/$pkgver/plasma-browser-integration-browser-$pkgver.tar.gz")
+sha256sums=('da4eda213b4cfc5cecbaadbf18870b07cb0c8da7482e2f604e5d52458309286d')
 
-pkgname=firedragon-extension-plasma-integration
-pkgver=1.8.1
-pkgrel=3
-pkgdesc='Plasma browser integration addon for FireDragon'
-arch=('any')
-url='https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/'
-license=('GPLV3')
-depends=('firedragon' 'plasma-browser-integration')
-groups=('firedragon-addons')
-source=("extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3859385/plasma_integration-${pkgver}-fx.xpi")
-md5sums=('70d453da327555c502642411910e317c')
-install=$pkgname.install
-
+build() {
+  cd "$srcdir/plasma-browser-integration-browser-$pkgver/extension"
+  web-ext build -a dist
+}
 package() {
-  install -Dm644 extension.xpi "${pkgdir}/usr/lib/firedragon/browser/extensions/plasma-browser-integration@kde.org.xpi"
+  depends=("plasma-browser-integration" "firedragon")
+  cd "$srcdir/plasma-browser-integration-browser-$pkgver/extension"
+  local id=$(jq -r .applications.gecko.id manifest.json)
+  echo "Firefox extension id is $id"
+  install -Dm644 dist/plasma_integration-$pkgver.zip \
+    "$pkgdir/usr/lib/firedragon/browser/extensions/$id.xpi"
 }

@@ -1,0 +1,6 @@
+pkg/
+src/
+native-messaging-hosts
+*.xpi
+*.tar.zst
+*.tar.gz
