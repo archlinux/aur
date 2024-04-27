@@ -2,9 +2,9 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=python-pyhanko-certvalidator
-_name=certvalidator
+_pkgname=certvalidator
 pkgver=0.26.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Validates X.509 certificates and paths"
 url="https://github.com/MatthiasValvekens/certvalidator"
 license=(MIT)
@@ -21,7 +21,7 @@ depends=(
 makedepends=(
   python-build
   python-installer
-  python-pytest-runner
+  python-setuptools
   python-wheel
 )
 checkdepends=(
@@ -29,16 +29,15 @@ checkdepends=(
   python-pytest
   python-pytest-asyncio
 )
-
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('7861efb4259126327d9590703fe4f4316647d3725c32bd49ea67f0810abded1c')
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
 
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
