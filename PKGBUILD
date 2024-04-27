@@ -4,11 +4,11 @@ _pkgname=plyinteractions
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Extending tidy verbs to genomic interactions"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biocgenerics
   r-dplyr
@@ -43,11 +43,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('e072613b18768f43d832eaa32354bbc9')
-sha256sums=('26c741611517bc92e1a09cacf650b64b5beef28ee3e4eabf9d21efe995ad21b8')
+b2sums=('e926a8959c1801f3b303e7cf19d4226f43fbc4ac5667fe46d0dc20a0fe2a2d555103cda51723c5b98284c4b713cbf721ee5620c970a85b54290a26c46ef12bd4')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
