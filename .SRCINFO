@@ -1,6 +1,6 @@
 pkgbase = liteloader-qqnt-mspring-theme-bin
 	pkgdesc = LiteLoaderQQNT主题，优雅、粉粉、细致
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/MUKAPP/LiteLoaderQQNT-MSpring-Theme
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = liteloader-qqnt-mspring-theme-bin
 	depends = liteloader-qqnt
 	provides = liteloader-qqnt-mspring-theme
 	conflicts = liteloader-qqnt-mspring-theme
-	source = liteloader-qqnt-mspring-theme-bin-1.3.0.zip::https://github.com/MUKAPP/LiteLoaderQQNT-MSpring-Theme/releases/download/v1.3.0/LiteLoaderQQNT-MSpring-Theme.zip
-	sha256sums = b40185506e3240aa84736c340415236c8406c08ea5129541750b4b90128f6f47
-	b2sums = 9ada3f50fe284624f107492d74513968cc88d9f478a2c8d97a257f0aa1d9d58f5a027566c4d2541531c95855c3588f597743940f6e9817bab55bf7b96b21a749
+	source = liteloader-qqnt-mspring-theme-bin-1.3.1.zip::https://github.com/MUKAPP/LiteLoaderQQNT-MSpring-Theme/releases/download/v1.3.1/LiteLoaderQQNT-MSpring-Theme.zip
+	sha256sums = 7fc888cb0900b92ebbc254749c1aeff304971304298422517ff1b14786ea6886
+	b2sums = 3f50ed56defa24cfeb9c84353a76a735a58978f6a38dd6477813b10954d40df26920c757139b6039923d55bdd7b33e4108f2ec577bc84b2a389ccbde258529c6
 
 pkgname = liteloader-qqnt-mspring-theme-bin
