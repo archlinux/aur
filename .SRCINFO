@@ -1,11 +1,14 @@
 pkgbase = python-sklearn-onnx
 	pkgdesc = Convert scikit-learn models and pipelines to ONNX
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/onnx/sklearn-onnx
 	arch = any
-	license = Apache
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-onnx
