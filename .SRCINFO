@@ -1,0 +1,21 @@
+pkgbase = python-eseries
+	pkgdesc = Find value in the E-series (E6, E12, E24, etc) used for electronic components values
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/rob-smallshire/eseries
+	arch = any
+	license = MIT
+	checkdepends = python-hypothesis
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-docopt
+	depends = python-docopt-subcommands
+	depends = python-future
+	source = python-eseries-1.2.1.tar.gz::https://github.com/rob-smallshire/eseries/archive/bfdeecf404e0e8226fb2a8fce97cc5f426420199.tar.gz
+	sha256sums = 6976467aa909c476625789745b252bb7510270d3cf7ac48824e8128ec555a007
+
+pkgname = python-eseries
