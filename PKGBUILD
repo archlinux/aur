@@ -2,7 +2,7 @@
 
 pkgname=funiculi
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Control your Denon AVR amplifier from the command line'
 arch=('any')
 url='https://github.com/claui/funiculi'
@@ -10,6 +10,7 @@ license=('Apache-2.0')
 depends=(
   'nmap'
   'pulseaudio-dlna'
+  'python'
   'python-colorama'
   'python-fire'
 )
@@ -21,7 +22,7 @@ makedepends=(
   'python-sphinx'
   'python-wheel'
 )
-options=('!strip')
+options=('!debug' '!strip')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/claui/funiculi/archive/v${pkgver}.tar.gz"
