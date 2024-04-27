@@ -2,7 +2,7 @@
 
 pkgbase=frotz-git
 pkgname=(frotz-dumb-git frotz-ncurses-git frotz-sdl-git)
-pkgver=2.54.r130.g07a7d5f
+pkgver=2.54.r139.g4143703
 pkgrel=1
 pkgdesc='Z-machine interpreter for interactive fiction games'
 makedepends=('git' 'libao' 'libmodplug' 'libsamplerate' 'libsndfile' 'libvorbis' 'ncurses'
@@ -12,7 +12,8 @@ arch=(x86_64)
 url='https://gitlab.com/DavidGriffith/frotz'
 license=(GPL)
 source=('git+https://gitlab.com/DavidGriffith/frotz.git')
-md5sums=(SKIP)
+sha256sums=(SKIP)
+options=(!debug)
 
 pkgver() {
 	cd frotz
