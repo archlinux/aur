@@ -35,6 +35,7 @@ makedepends=(
   'glm=1.0.0'
   'glslang'
   'meson'
+  'cmake'
   'ninja'
   'spirv-headers'
   'vulkan-headers'

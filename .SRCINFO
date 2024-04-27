@@ -10,6 +10,7 @@ pkgbase = gamescope-nvidia
 	makedepends = glm=1.0.0
 	makedepends = glslang
 	makedepends = meson
+	makedepends = cmake
 	makedepends = ninja
 	makedepends = spirv-headers
 	makedepends = vulkan-headers
