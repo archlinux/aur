@@ -1,13 +1,10 @@
 pkgbase=rhapsody-bin
 pkgname=("rhapsody-sampler-standalone-bin" "rhapsody-sampler-vst3-bin")
 pkgver=2.3.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('EULA')
 url="https://librewave.com/rhapsody/"
-conflicts=("rhapsody-bin")
-replaces=("rhapsody-bin")
-provides=("rhapsody-bin")
 source=('Rhapsody Sampler.desktop')
 depends=('alsa-lib' 'bzip2' 'brotli' 'curl' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'keyutils' 'krb5' 'libcurl-gnutls' 'libnghttp2' 'libnghttp3' 'libidn2' 'libpng' 'libpsl' 'libssh2' 'libunistring' 'nettle' 'openssl' 'pcre2' 'zlib' 'zstd')
 makedepends=('xdg-user-dirs' 'unzip')
