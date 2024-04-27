@@ -3,7 +3,7 @@
 pkgname=hqplayer5
 pkgver=5.7.0
 _debpkgver=5.7.0-18
-pkgrel=1
+pkgrel=2
 pkgdesc="The high-end upsampling multichannel software HD-audio player"
 arch=('x86_64' 'x86_64_v3')
 url="http://www.signalyst.com/consumer.html"
