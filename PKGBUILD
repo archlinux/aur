@@ -5,11 +5,11 @@ _pkgname=lefser
 _pkgver=1.12.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="R implementation of the LEfSE method for microbiome biomarker discovery"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-coin
   r-ggplot2
@@ -29,11 +29,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('c3b2deaf4b58de1bb930164df11a388f')
-sha256sums=('157dbfc094dc414ae49baa7b55a3ff48d857a6bb0f189c45509c73726de4dc2b')
+b2sums=('2dba16640a6e47d68966e0ad01d6dce44c5f909b0a51262258d271bfeec0b2a303d0702e63847e077a2a1e22efb1520594011260cb182e266150417003aef91a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
