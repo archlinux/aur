@@ -1,10 +1,10 @@
 pkgbase = python-pygalmesh
 	pkgdesc = A Python interface to CGAL's meshing tools
 	pkgver = 0.10.6
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/meshpro/pygalmesh
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = python-pytest
 	checkdepends = python-pytest-codeblocks
 	checkdepends = python-pytest-cov

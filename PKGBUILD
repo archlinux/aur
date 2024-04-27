@@ -1,13 +1,13 @@
-# Maintainer: Jakub Klinkovský <lahwaacz@archlinux.org>
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
 
 _pkgname=pygalmesh
 pkgname=python-pygalmesh
 pkgdesc="A Python interface to CGAL's meshing tools"
 pkgver=0.10.6
-pkgrel=5
-arch=('x86_64')
+pkgrel=6
+arch=(x86_64)
 url="https://github.com/meshpro/pygalmesh"
-license=('GPL3')
+license=(GPL-3.0-or-later)
 depends=('python' 'python-numpy' 'python-meshio')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'pybind11' 'cgal' 'eigen')
 checkdepends=('python-pytest' 'python-pytest-codeblocks' 'python-pytest-cov')
