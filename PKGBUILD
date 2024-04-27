@@ -4,11 +4,11 @@ _pkgname=easylift
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="An R package to perform genomic liftover"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biocfilecache
   r-genomeinfodb
@@ -28,11 +28,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('86d8c0188c35ab56732fd5cc55475e8c')
-sha256sums=('364089242d0087631ba2fc1226a3fbce8af84f876c7c6176051e0e876e47abf5')
+b2sums=('d91e688d8c0a57b04f9bda2dd03d1fe34336783033405a8545c4dd9bc77f7061beb6bc9127d2cef1ac696eb6441f303242033b3398afea8d43728f2e5553f160')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
