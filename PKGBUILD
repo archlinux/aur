@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cast_control
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Control Chromecasts from Linux and D-Bus"
 arch=('any')
@@ -9,14 +9,18 @@ url="https://github.com/alexdelorenzo/cast_control"
 license=('AGPL-3.0-or-later')
 depends=(
   'python-aiopath'
+  'python-app_paths'
   'python-appdirs'
   'python-click'
   'python-daemons'
   'python-gobject'
+  'python-iteration-utilities'
   'python-mpris_server'
   'python-pychromecast'
   'python-pydbus'
+  'python-rich'
   'python-typing_extensions'
+  'python-validators'
 )
 makedepends=(
   'python-build'
