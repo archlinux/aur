@@ -4,11 +4,11 @@ _pkgname=iSEEindex
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="iSEE extension for a landing page to a custom collection of data sets"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biocfilecache
   r-dt
@@ -38,11 +38,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('98a9141431a3206fd242b5b0b4056c41')
-sha256sums=('2ddc239f24412bd695a254396c007da20143db112374f988cb0e0860bbb5e3e2')
+b2sums=('38e6812c36ed4ce10342fd9e5c16288a20d909a61ced8410cb0fcb8f262444603608aa675c619cd24a5abd37accaaef37a48bb5f5f9f9bf80de8a9472c00e69e')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
