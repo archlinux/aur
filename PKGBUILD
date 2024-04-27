@@ -2,11 +2,11 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v6.8.7
+gitver=v6.8.8
 patchver=20240221.2
 patchname=more-uarches-for-kernel-6.8-rc4+.patch
-pkgver=6.8.v.7
-pkgrel=2
+pkgver=6.8.v.8
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '75c8d065beffd0f9c7ec752f0caed3671677daec5bf8f03ac58f9b1c25a36f73'
+            '5fc0390575e78f5169df1ed2317ebacc85d406ed0e9f42347d08730148952a35'
             #grayskypatch
             'd69232afd0dd6982ae941cf2d1f577f4be2011e3bb847d1db37952acf416b5d3'
            )
