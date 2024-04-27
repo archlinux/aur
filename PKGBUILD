@@ -4,11 +4,11 @@ _pkgname=GloScope
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Population-level Representation on scRNA-Seq data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biocparallel
   r-fnn
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('00ab18ecdd0a5768690b841f2f2448e5')
-sha256sums=('029f7f57db10e1f0fa33ce37227a6ed2f21b1a0cd6cf02fa8e868128e60552fe')
+b2sums=('9bfaa3b2b4c8b1876f35a21fffd5362ba56aec8264c20694119114db9e2399d7481ef69c56d8ede4af45747114acb34aa00ae39a1e31cd30896fc4a0656d1343')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
