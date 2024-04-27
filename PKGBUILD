@@ -3,7 +3,7 @@
 _name=dask-jobqueue
 pkgname=python-$_name
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Deploy Dask on job schedulers like PBS, SLURM, and SGE"
 url="https://github.com/dask/dask-jobqueue"
 depends=(
