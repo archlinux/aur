@@ -8,8 +8,8 @@
 
 pkgname=linux-api-headers-git
 pkgdesc='Kernel headers sanitized for use in userspace'
-pkgver=6.7.r0.g0dd3ee3
-_commit=0dd3ee31125508cd67f7e7172247f05b7fd1753a
+pkgver=6.9rc5.r0.ged30a4a
+_commit=ed30a4a51bb196781c8058073ea720133a65596f
 pkgrel=1
 pkgdesc='Kernel headers sanitized for use in userspace (git version)'
 arch=(any)
@@ -33,19 +33,19 @@ pkgver(){
 build(){
   cd "${srcdir}"/linux
 
-  make -j$(nproc) clean
-  make -j$(nproc) mrproper
+  make clean
+  make mrproper
 }
 
 package(){
   cd "${srcdir}"/linux
 
-  make -j$(nproc) INSTALL_HDR_PATH="${pkgdir}"/usr headers_install
+  make INSTALL_HDR_PATH="${pkgdir}"/usr headers_install
 
   # use headers from libdrm
   rm -r "${pkgdir}"/usr/include/drm
 }
 
-sha256sums=(SKIP)
+sha256sums=('d41506badb7a566e2762ed0cb60057ac67b1c9b01a0bdf223c117d4a443302c8')
 
 # vim:set ts=8 sts=2 sw=2 et:

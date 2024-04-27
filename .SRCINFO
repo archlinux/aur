@@ -1,6 +1,6 @@
 pkgbase = linux-api-headers-git
 	pkgdesc = Kernel headers sanitized for use in userspace (git version)
-	pkgver = 6.7.r0.g0dd3ee3
+	pkgver = 6.9rc5.r0.ged30a4a
 	pkgrel = 1
 	url = https://www.gnu.org/software/libc
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = linux-api-headers-git
 	provides = linux-api-headers=$pkgver
 	provides = linux-api-headers
 	conflicts = linux-api-headers
-	source = git+https://github.com/torvalds/linux.git#commit=0dd3ee31125508cd67f7e7172247f05b7fd1753a
-	sha256sums = SKIP
+	source = git+https://github.com/torvalds/linux.git#commit=ed30a4a51bb196781c8058073ea720133a65596f
+	sha256sums = d41506badb7a566e2762ed0cb60057ac67b1c9b01a0bdf223c117d4a443302c8
 
 pkgname = linux-api-headers-git
