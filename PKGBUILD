@@ -2,7 +2,7 @@
 
 pkgname=font-line
 pkgver=3.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenType vertical metrics reporting and font line spacing adjustment tool'
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
@@ -14,7 +14,7 @@ depends=(python
 makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive="$pkgname-$pkgver"
-source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('033baa102ab9c61a653f213997610e0de308d5bc75e989923927a0519687cbb1')
 
 build() {
