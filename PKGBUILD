@@ -4,7 +4,7 @@
 # https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
 
 pkgname=openvino-git
-pkgver=2023.3.0.r875.g17bf1f6d841
+pkgver=2024.1.0.r209.g4655dd6ce3f
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
@@ -13,6 +13,7 @@ license=('Apache-2.0')
 depends=('pugixml' 'onetbb')
 optdepends=('intel-compute-runtime: for Intel GPU plugin'
             'ocl-icd: for Intel GPU plugin'
+            'level-zero-loader: for Intel NPU plugin'
             'snappy: for tensorflow frontend'
             'protobuf: for tensorflow, paddle and onnx frontends'
             'python: for Python API'
@@ -47,6 +48,10 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/google/snappy.git'
         'git+https://github.com/ARM-software/ComputeLibrary.git'
         'git+https://github.com/openvinotoolkit/mlas.git'
+        'git+https://github.com/oneapi-src/level-zero.git'
+        'git+https://github.com/intel/level-zero-npu-extensions.git'
+        'git+https://github.com/openvinotoolkit/telemetry.git'
+        'git+https://github.com/libxsmm/libxsmm.git'
         'openvino.conf'
         'setupvars.sh'
         '010-openvino-disable-werror.patch'
@@ -73,10 +78,14 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '335a55533ab26bd1f63683921baf33b8e8e3f2732a94554916d202ee500f90af'
             'e5024ad3382f285fe63dc58faca379f11a669bbe9f5d90682c59ad588aab434c'
-            'edb5f6a15e3bf8e46f8ee0dc8aa81e78e3d75d1776478664c7179bb8a79f735f'
-            '17417f7193e94c7df32242c71d650d8beda2dadea8b05db131a7731a56e9c84a')
+            '0bbf46bef304dea08b318d1ffd564735b19e1afb6c0f41c98d216824cc630132'
+            '2329bb09c80ce44ae622da9d318d246b237e3a4d259d12f6b8920a249ec994bb')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -106,6 +115,10 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/snappy.url "${srcdir}/snappy"
     git -C openvino config --local submodule.ARMComputeLibrary.url "${srcdir}/ComputeLibrary"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/mlas.url "${srcdir}/mlas"
+    git -C openvino config --local submodule.src/plugins/intel_npu/thirdparty/level-zero.url "${srcdir}/level-zero"
+    git -C openvino config --local submodule.src/plugins/intel_npu/thirdparty/level-zero-ext.url "${srcdir}/level-zero-npu-extensions"
+    git -C openvino config --local submodule.thirdparty/telemetry.url "${srcdir}/telemetry"
+    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/libxsmm.url "${srcdir}/libxsmm"
     git -C openvino -c protocol.file.allow='always' submodule update
     
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-disable-werror.patch"
