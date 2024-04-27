@@ -1,0 +1,23 @@
+pkgbase = ruby-sorbet-runtime
+	pkgdesc = Sorbet's runtime type checking component
+	pkgver = 0.5.11358
+	pkgrel = 1
+	url = http://solargraph.org/
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby>=2.7.0
+	depends = ruby-concurrent-ruby>1.1.5
+	depends = ruby-minitest>5.11
+	depends = ruby-pry
+	depends = ruby-pry-byebug
+	depends = ruby-rake
+	depends = ruby-rubocop
+	depends = ruby-rubocop-performance
+	depends = ruby-subprocess>1.5.3
+	noextract = sorbet-runtime-0.5.11358.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/sorbet-runtime-0.5.11358.gem
+	sha256sums = 41e46030d77145dfafb7097caa070270779314177d02615d59afe3bd5c10e2bc
+
+pkgname = ruby-sorbet-runtime
