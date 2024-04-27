@@ -1,21 +1,23 @@
 pkgbase = ente
 	pkgdesc = End to End Encrypted alternative to Google Photos
 	pkgver = 0.8.81
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ente-io/ente
 	arch = x86_64
-	license = MIT
+	license = AGPLv3
 	makedepends = go
 	makedepends = git
 	makedepends = nodejs
 	makedepends = yarn
 	depends = libsodium
 	source = ente-photos-0.8.81.tar.gz::https://github.com/ente-io/ente/archive/refs/tags/photos-v0.8.81.tar.gz
-	source = https://github.com/abhinavkgrd/ffmpeg.wasm/archive/refs/tags/v0.10.1.tar.gz
-	source = ente-web.service
+	source = ente-museum.service
+	source = git+https://github.com/ente-io/PhotoSwipe.git
+	source = git+https://github.com/abhinavkgrd/ffmpeg.wasm.git
 	sha256sums = 2473e38bb3d9eda7122bf6a12e6de63205cea877c18f6ebe1b961e4b5575e7ce
-	sha256sums = 910ab8a037ff2f7bd8f48764b6e172d95c8b50c579a0d384ac6121e71f4e0970
-	sha256sums = 059e6b5e8df0bd52ce38f99e9d9e7a42918a69d1a74308a03c54175a7b354f20
+	sha256sums = 5083f40330984dd663c8676d4fecd3fdd1770b8a3ee24ac682bd3b53c7a8b30b
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ente-server
 	pkgdesc = End to End Encrypted alternative to Google Photos - Server component
@@ -24,6 +26,4 @@ pkgname = ente-server
 
 pkgname = ente-web
 	pkgdesc = End to End Encrypted alternative to Google Photos - Web component
-	depends = libsodium
-	depends = yarn
 	optdepends = nginx

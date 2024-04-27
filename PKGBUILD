@@ -4,47 +4,68 @@ pkgbase=ente
 _pkgbase=ente-photos
 pkgname=(ente-server ente-web) 
 pkgver=0.8.81
-pkgrel=1
+pkgrel=2
 pkgdesc="End to End Encrypted alternative to Google Photos" 
 arch=('x86_64')
 url="https://github.com/ente-io/ente"
-license=('MIT')
+license=('AGPLv3')
 depends=('libsodium')
 makedepends=('go' 'git' 'nodejs' 'yarn')
 source=("${_pkgbase}-$pkgver.tar.gz::$url/archive/refs/tags/photos-v${pkgver}.tar.gz"
-        "https://github.com/abhinavkgrd/ffmpeg.wasm/archive/refs/tags/v0.10.1.tar.gz"
-        "ente-web.service")
+        "ente-museum.service"
+        "git+https://github.com/ente-io/PhotoSwipe.git"
+        "git+https://github.com/abhinavkgrd/ffmpeg.wasm.git")
 sha256sums=('2473e38bb3d9eda7122bf6a12e6de63205cea877c18f6ebe1b961e4b5575e7ce'
-            '910ab8a037ff2f7bd8f48764b6e172d95c8b50c579a0d384ac6121e71f4e0970'
-            '059e6b5e8df0bd52ce38f99e9d9e7a42918a69d1a74308a03c54175a7b354f20')
+            '5083f40330984dd663c8676d4fecd3fdd1770b8a3ee24ac682bd3b53c7a8b30b'
+            'SKIP'
+            'SKIP')
 
 prepare() {
     # they use git submodules both repos haven't been updated in over 3 years
     # I could only use a stable release on ffmpeg-wasm
-    rm -rf "$srcdir/$pkgbase-v$pkgver/web/apps/photos/thirdparty/ffmpeg-wasm"
-    cp -a ${srcdir}/ffmpeg.wasm-0.10.1 "$srcdir/$pkgbase-v$pkgver/web/apps/photos/thirdparty/ffmpeg-wasm"
+#    rm -rf "$srcdir/$pkgbase-v$pkgver/web/apps/photos/thirdparty/ffmpeg-wasm"
+#    cp -a ${srcdir}/ffmpeg.wasm-0.10.1 "$srcdir/$pkgbase-v$pkgver/web/apps/photos/thirdparty/ffmpeg-wasm"
 #    git clone https://github.com/ente-io/PhotoSwipe.git "$srcdir/$pkgbase-v$pkgver/web/apps/photos/thirdparty/photoswipe" || echo Already pulled
 #    git clone https://github.com/abhinavkgrd/ffmpeg.wasm.git "$srcdir/$pkgbase-v$pkgver/web/apps/photos/thirdparty/ffmpeg-wasm" || echo I should solve this correctly some time in the future
 #    cd "$srcdir/$pkgbase-v$pkgver/web/apps/photos/thirdparty/photoswipe"
 #    git checkout single-thread
+     cd "${srcdir}/${_pkgbase}-v${pkgver}"
+#     git init
+#     git submodule init
+#     git config submodule.web/apps/photos/thirdparty/ffmpeg-wasm.url "${srcdir}/ffmpeg.wasm"
+#     git config submodule.web/apps/photos/thirdparty/photoswipe.url "${srcdir}/PhotoSwipe"
+#     git -c protocol.file.allow=always submodule update
+     rm -rf web/apps/photos/thirdparty/ffmpeg-wasm
+     rm -rf web/apps/photos/thirdparty/photoswipe
+     git clone "${srcdir}/ffmpeg.wasm" web/apps/photos/thirdparty/ffmpeg-wasm
+     git clone "${srcdir}/PhotoSwipe" web/apps/photos/thirdparty/photoswipe
+     # Ugly patch
+     sed 's/^\(\s\+mt:\)/\/\/\1/' -i "${srcdir}/ente-photos-v0.8.81/web/apps/photos/src/services/wasm/ffmpeg.ts"
+#     cd "${srcdir}/${_pkgbase}-v${pkgver}/web/apps/photos/thirdparty/ffmpeg-wasm"
+     
 }
+
 build() {
-    cd "$srcdir/$pkgbase-v$pkgver/server"
+    cd "$srcdir/${_pkgbase}-v${pkgver}/server"
+    echo "Build musem"
 #    export CGO_ENABLED=0
     export GOOS=linux
     go mod tidy
     go build -o museum cmd/museum/main.go
 # web
-    cd "$srcdir/$pkgbase-v$pkgver/web"
+    echo "Build web"
+    cd "$srcdir/${_pkgbase}-v$pkgver/web"
     yarn install
     yarn next telemetry disable
+    NEXT_PUBLIC_ENTE_ENDPOINT=http://localhost:8080 yarn build
+    NEXT_PUBLIC_ENTE_ENDPOINT=http://localhost:8080 yarn build:photos
 }
 
 package_ente-server() {
     pkgdesc="End to End Encrypted alternative to Google Photos - Server component"
     optdepends=('postgresql'  'minio')
 
-    cd "$srcdir/$pkgbase-v$pkgver/server"
+    cd "$srcdir/${_pkgbase}-v$pkgver/server"
 
     mkdir -p "$pkgdir/etc/ente/configurations/" "$pkgdir/etc/ente/migrations/" "$pkgdir/etc/ente/mail-templates/"
     # Install the binary
@@ -60,7 +81,7 @@ package_ente-server() {
     install -Dm644 mail-templates/* "$pkgdir/etc/ente/mail-templates/"
 
     # Install LICENSE file
-#    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
+#    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgbase}/LICENSE"
 
     # Create systemd service
     install -Dm644 "${srcdir}/ente-web.service" "$pkgdir/etc/systemd/system/ente-web.service"
@@ -68,14 +89,13 @@ package_ente-server() {
 
 package_ente-web() {
     pkgdesc="End to End Encrypted alternative to Google Photos - Web component"
-    depends+=('yarn') 
     optdepends=('nginx')
 
-    cd "$srcdir/$pkgbase-v$pkgver/web"
+    cd "$srcdir/${_pkgbase}-v$pkgver/web/apps/photos/out"
 
-    mkdir -p "$pkgdir/var/www/ente/"
+    mkdir -p "$pkgdir/usr/share/webapps"
     # Install the web component
-    cp -r * "$pkgdir/var/www/ente/"  # This should be changed to a more robust installation method
+    cp -r * "$pkgdir/usr/share/webapps"  # This should be changed to a more robust installation method
 
     # Install nginx configuration
 #  install -Dm644 nginx/ente.conf "$pkgdir/etc/nginx/sites-available/ente.conf"
