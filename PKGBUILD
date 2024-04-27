@@ -4,16 +4,14 @@ pkgver=1.0.4
 pkgrel=1
 pkgdesc="Unnofficial CrunchyRoll desktop application"
 arch=('x86_64')
-url="https://gitlab.com/crunchyroll/application"
+url="https://gitlab.com/linuxbombay/crunchyroll"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("crunchyroll-bin")
 replace=("crunchyroll-bin")
-#source=("https://gitlab.com/crunchyroll/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-#Backup temp repo
-source=("https://github.com/crunchyroll-pkg/crunchyroll/archive/refs/tags/$pkgver-$pkgrel.tar.gz")
-sha256sums=('SKIP')
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('fd9377797f7e2b1189cfe489216fec5553df032a5da87ff1f578f397f9034c75')
 
 
 package() {
