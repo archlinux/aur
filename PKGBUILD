@@ -27,7 +27,7 @@ build() {
 package() {
   cd "nose-${pkgver}"
 
-  python2 setup.py install --prefix='/usr' --root="${pkgdir}"
+  python2 setup.py install --root="${pkgdir}"
 
   mv "${pkgdir}/usr/bin/nosetests" "${pkgdir}/usr/bin/nosetests2"
   rm -rf "${pkgdir}/usr/share"
