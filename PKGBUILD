@@ -3,7 +3,7 @@
 pkgname=python-beziers
 _pyname=${pkgname#python-}.py
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Routines for extracting information from font glyphs'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
