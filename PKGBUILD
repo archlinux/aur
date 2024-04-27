@@ -3,7 +3,7 @@
 _pkgbasename=django-ipware
 pkgname=python-django-ipware
 pkgver=5.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A Django application to retrieve clients IP address'
 arch=(any)
 url="https://github.com/un33k/django-ipware"
