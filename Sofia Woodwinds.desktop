@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Sofia Woodwinds
+Comment=LibreWave Woodwind Ensemle Library (Standalone)
+Exec="/usr/bin/Sofia Woodwinds"
+Categories=AudioVideo;Audio;X-Jack;Midi;X-MIDI;
+Terminal=false
+Type=Application
+Keywords=Audio;Synth;Wavetable;Midi;Jack
