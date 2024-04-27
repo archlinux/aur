@@ -4,11 +4,11 @@ _pkgname=hoodscanR
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Spatial cellular neighbourhood scanning in R"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-circlize
   r-complexheatmap
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('c5ac598990d1f80bfa526c576abc8d84')
-sha256sums=('cde7b3938f36850be64055e44aa6a0ca4cbfde55e517c00ff325bdefb659dfbf')
+b2sums=('8f8625305636b916b66aeaec9560fd97245f61922a83d4f7e5b29e365fd89d8e02133dd55fc4a368dbb963e1556dd90a59cbb388a8b16e07c8b43f130eb381d6')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
