@@ -4,28 +4,26 @@
 # Contributer: Ekin Dursun <ekindursun@gmail.com>
 # Contributer: Oliver Mangold omangold at gmail dot com
 
-_pkgname='xdis'
-pkgname="python-${_pkgname}"
-pkgver=6.0.5
-pkgrel=2
+pkgname=python-xdis
+_name=${pkgname#python-}
+pkgver=6.1.0
+pkgrel=1
 pkgdesc='Python cross-version bytecode library and disassembler'
 arch=('any')
 url='https://github.com/rocky/python-xdis'
-_url_pypi='https://pypi.org/project/xdis'
 license=('GPL2')
 depends=('python-click'
         'python-six')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('c591e10f9c362caf889048d8af8167233d31705119d4a967a2b939754ad9b6c1')
+makedepends=(python-build python-installer python-wheel)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('355fd36db210e9117167e0821e2bcc12ac3da8bcc15d52e1542ad422ad2629cc')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  cd $_name-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
