@@ -4,11 +4,11 @@ _pkgname=SiPSiC
 _pkgver=1.2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculate Pathway Scores for Each Cell in scRNA-Seq Data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-singlecellexperiment
 )
