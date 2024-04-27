@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('azote')
 pkgver=1.12.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallpaper & color manager for wlroots-based compositors and some X11 WMs"
 arch=('any')
 url="https://github.com/nwg-piotr/azote"
