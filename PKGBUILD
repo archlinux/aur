@@ -2,11 +2,11 @@
 
 pkgname=sfdnormalize
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='SFD normalizer, discards GUI information from SFD files'
 arch=(any)
 url="https://github.com/alerque/$pkgname"
-license=(CCO)
+license=(CC0-1.0)
 depends=(python
          python-sfdutf7)
 makedepends=(python-{build,installer,wheel}
