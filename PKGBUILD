@@ -4,11 +4,11 @@ _pkgname=flowGate
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive Cytometry Gating in R"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biocmanager
   r-dplyr
@@ -33,11 +33,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d5b19dee6139d26306d14563f445a64f')
-sha256sums=('3519876952d4b09dfd4231d7d0114b055cb15758a48ad4744c1d34adbd433c52')
+b2sums=('cca41a6fb3371165e6f5f73098dcd58aab54bf62dc241c5c54fd257fcbbececcf3e33cfddee0770f1874e8785348a25ea668cd712bd1a07bf5be7dcf97825f38')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
