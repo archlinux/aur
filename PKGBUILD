@@ -2,7 +2,7 @@
 
 _pkgname=oversteer
 pkgname=${_pkgname}-git
-pkgver=0.8.1.r9.gdd87ec3
+pkgver=0.8.1.r10.g1e2dac2
 pkgrel=1
 pkgdesc='Graphical application to configure Logitech Wheels'
 arch=(any)
