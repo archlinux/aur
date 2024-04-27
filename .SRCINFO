@@ -1,6 +1,6 @@
 pkgbase = woof-doom-git
 	pkgdesc = Doom port remaining faithful to Lee Killough’s MBF on DOS
-	pkgver = 14.3.0.r22.4aab690d
+	pkgver = 14.3.0.r66.b48c3769
 	pkgrel = 1
 	url = https://github.com/fabiangreffrath/woof
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = woof-doom-git
 	optdepends = fluidsynth
 	optdepends = libxmp
 	conflicts = woof-doom
+	options = !debug
 	source = woof::git+https://github.com/fabiangreffrath/woof.git
 	sha512sums = SKIP
 

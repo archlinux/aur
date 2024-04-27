@@ -3,7 +3,7 @@
 
 pkgname=woof-doom-git
 _pkgname=woof
-pkgver=14.3.0.r22.4aab690d
+pkgver=14.3.0.r66.b48c3769
 pkgrel=1
 pkgdesc="Doom port remaining faithful to Lee Killough’s MBF on DOS"
 arch=("x86_64")
@@ -15,6 +15,7 @@ optdepends=('fluidsynth' 'libxmp')
 conflicts=('woof-doom')
 source=(woof::git+"${url}".git)
 sha512sums=('SKIP')
+options=(!debug)
 
 pkgver() {
 	cd "$srcdir/${_pkgname%-git}"
