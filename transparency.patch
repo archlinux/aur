@@ -1,4 +1,4 @@
-From 8180f4fe12837287dfeb8ca1618e1b40940566f1 Mon Sep 17 00:00:00 2001
+From 1bb388b6264354d96801353b16ff361414213259 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/4] Restore transparency
@@ -25,7 +25,7 @@ Some changes by Peter Weber <peter.weber@mailbox.org>
  6 files changed, 107 insertions(+), 1 deletion(-)
 
 diff --git a/src/org.gnome.Terminal.gschema.xml b/src/org.gnome.Terminal.gschema.xml
-index eb2dd009..97bc6943 100644
+index 0639fe3e..3b3dc433 100644
 --- a/src/org.gnome.Terminal.gschema.xml
 +++ b/src/org.gnome.Terminal.gschema.xml
 @@ -355,6 +355,16 @@
@@ -237,7 +237,7 @@ index 36eb7ce7..a41d2de2 100644
 2.44.0
 
 
-From 6a7853a538ea67fdd0e527240d201c7c17b9a615 Mon Sep 17 00:00:00 2001
+From 9edff6926b2759e07c47224a351d2dbacbedb09c Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/4] window: Make the drawing robust across all themes
@@ -299,7 +299,7 @@ index a41d2de2..11d93419 100644
 2.44.0
 
 
-From 42c2ed1350a1e1c1c53e031f4546af1237ff0b10 Mon Sep 17 00:00:00 2001
+From b8e3e36d39937a6824d569f117120fde674d3fca Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/4] screen, window: Extra padding around transparent
@@ -434,7 +434,7 @@ index 11d93419..61857bfe 100644
 2.44.0
 
 
-From aedf7c02a50633d67323b6d5cb51d3c6f6aa9175 Mon Sep 17 00:00:00 2001
+From e510b036d3d6dea7d7d1f8350615262af7b7f04c Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 4/4] Restore translations for setting a title and transparency
