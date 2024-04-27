@@ -1,7 +1,5 @@
-_kompute_hash=d1e3b0953cf66acc94b2e29693e221427b2c1f3f
-_llama_cpp_hash=2a086f71f5b570a0f047f88d88cf5704aae7ec7c
 pkgname=gpt4all-chat
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
 pkgdesc="open-source LLM chatbots that you can run anywhere"
 arch=("x86_64")
@@ -12,51 +10,72 @@ depends=(
     "qt6-svg" "qt6-wayland" "qt6-webengine" "fmt")
 makedepends=("cmake" "shaderc" "vulkan-tools" "vulkan-headers")
 source=(
-    "https://github.com/nomic-ai/gpt4all/archive/refs/tags/v$pkgver.tar.gz"
+    "$pkgname-$pkgver::https://github.com/nomic-ai/gpt4all/archive/refs/tags/v$pkgver.tar.gz"
     "001-change-binary-name.diff"
-    "002-allow-override-CMAKE_INSTALL_PREFIX.diff"
-    "kompute-$_kompute_hash.tar.gz::https://github.com/nomic-ai/kompute/archive/$_kompute_hash.tar.gz"
-    "llama.cpp-$_llama_cpp_hash.tar.gz::https://github.com/nomic-ai/llama.cpp/archive/$_llama_cpp_hash.tar.gz"
 )
-sha256sums=('4c7b072d93a4ba7692e65e3551ab5cb9593b29865869fd4aae26e3eecf0d24ff'
-            'd9198b1ee584becf5b06622038619511dd5b0f78a71441d034dbf7324dd1439b'
-            '4ed3904195fc4a281a016ec611d43630c44fc1aee06916f7a7fb8bc0a19905b5'
+declare -rAg _modules_name_map=(
+    [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/e3c4f65d786d26f1daa7aebfb1b67cd6c31ea082.tar.gz
+    [gpt4all-backend/llama.cpp-mainline/kompute]=https://github.com/nomic-ai/kompute/archive/d1e3b0953cf66acc94b2e29693e221427b2c1f3f.tar.gz
+)
+declare _uri _name _commit _source_str
+for _uri in "${_modules_name_map[@]}"
+do
+    _name=$(echo "$_uri" | cut -d / -f 5)
+    _commit=${_uri##*/}
+    if [[ "$_commit" == *-* ]]
+    then
+        _source_str="$_commit::$_uri"
+    else
+        _source_str="$_name-$_commit::$_uri"
+    fi
+    if [[ "${source[*]/$_source_str/}" == "${source[*]}" ]]
+    then
+        source+=("$_source_str")
+    fi
+done
+sha256sums=('4566acac4676265450702b10d105515140f835576a57a4c17844add6711177ea'
+            'c9f1242ff0dfd7367387d5e7d228b808cdb7f6a0a368ba37e326afb21c603a44'
             'b47b1d8154a99304a406d564dfaad6dc91332b8bccc4ef15f1b2d2cce332b84b'
-            '3a0be674de0d056c229f7e5bafd00b1856ed06709d85f6368a8d1abade1d6f03')
+            '1e274829d8697463024010e04a9792e2657f9c646a865cb63493ebc5e256650a')
 
 prepare() {
     cd "$srcdir/gpt4all-$pkgver"
-    modules=(
+    declare -ra _modules=(
         gpt4all-backend/llama.cpp-mainline
         gpt4all-backend/llama.cpp-mainline/kompute
     )
-    for module in "${modules[@]}"
+    declare _module _uri _name _commit _fname
+    for _module in "${_modules[@]}"
     do
-        case $module in
-            gpt4all-backend/llama.cpp-mainline/kompute)
-                target=kompute-$_kompute_hash
-                ;;
-            gpt4all-backend/llama.cpp-mainline)
-                target=llama.cpp-$_llama_cpp_hash
-                ;;
-        esac
-        echo "Copying $module from $target..."
-        cp -a "$srcdir/$target/"* "$module"
+        _uri=${_modules_name_map[$_module]}
+        _name=$(echo "$_uri" | cut -d / -f 5)
+        _commit=${_uri##*/}
+        if [[ "$_commit" == *-* ]]
+        then
+            _fname="${_commit%%.*}"
+        else
+            _fname=$_name-${_commit%%.*}
+        fi
+        echo "Copying $_module from $_fname"
+        if [[ -d "$_module" ]]
+        then
+            cp -r "$srcdir/$_fname/"* "$_module"
+        else
+            cp -r "$srcdir/$_fname" "$_module"
+        fi
     done
     patch -Np1 -i ../001-change-binary-name.diff
-    patch -Np1 -i ../002-allow-override-CMAKE_INSTALL_PREFIX.diff
 }
 build() {
     cmake -B build-chat -S "$srcdir/gpt4all-$pkgver/gpt4all-chat" \
         -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DKOMPUTE_OPT_BUILD_SHADERS=ON \
         -DKOMPUTE_OPT_DISABLE_VULKAN_VERSION_CHECK=ON \
         -DKOMPUTE_OPT_USE_BUILT_IN_FMT=OFF \
         -DKOMPUTE_OPT_USE_BUILT_IN_VULKAN_HEADER=OFF \
-        -DKOMPUTE_OPT_USE_BUILT_IN_SPDLOG=OFF \
-        -DLLAMA_LTO=ON \
-        -Wno-dev 
+        -DKOMPUTE_OPT_USE_BUILT_IN_SPDLOG=OFF
     cmake --build build-chat
 }
 package_gpt4all-chat() {
