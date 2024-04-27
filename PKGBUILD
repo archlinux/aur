@@ -4,11 +4,11 @@ _pkgname=scDesign3
 _pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A unified framework of realistic in silico data generation and statistical model inference for single-cell and spatial omics"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(MIT)
+license=('MIT')
 depends=(
   r-biocparallel
   r-dplyr

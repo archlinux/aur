@@ -1,7 +1,7 @@
 pkgbase = r-scdesign3
 	pkgdesc = A unified framework of realistic in silico data generation and statistical model inference for single-cell and spatial omics
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/scDesign3
 	arch = any
 	license = MIT
