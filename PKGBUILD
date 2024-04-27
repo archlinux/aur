@@ -6,14 +6,14 @@ pkgver=1.0.5
 pkgrel=1
 pkgdesc="Unnofficial Stan desktop application"
 arch=('x86_64')
-url="https://gitlab.com/Stan-desktop/application"
+url="https://gitlab.com/linuxbombay/stan-desktop"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("Stan-bin")
 replace=("Stan-bin")
-source=("https://gitlab.com/Stan-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('aa8469ffb7242a0857d2b85c9fa8c409f328f3e8cb3d370162b5b2937fea414c')
 
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgrlname" ;done
