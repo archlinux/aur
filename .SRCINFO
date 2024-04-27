@@ -1,0 +1,19 @@
+pkgbase = ekpar2
+	pkgdesc = A tool to create par2 recovery sets for one or more source files, verify and repair these source files.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://ekpar2.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = hicolor-icon-theme
+	depends = kio5
+	depends = kwidgetsaddons5
+	depends = kxmlgui5
+	depends = qt5-base
+	source = http://downloads.sourceforge.net/ekpar2/ekpar2-0.7.1.tar.gz
+	sha512sums = 0fcddcd126dcf2249b6a78fd82595f7d5fe463f6b6319d34ab197903d626d6e9056384baf5767cb5a947da9edd3b837ed7e26d295a36247832abf8a76359d72f
+
+pkgname = ekpar2
