@@ -1,7 +1,7 @@
 pkgbase = python-lime
 	pkgdesc = Lime: Explaining the predictions of any machine learning classifier
 	pkgver = 0.2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/marcotcr/lime
 	arch = any
 	license = BSD 2-Clause
