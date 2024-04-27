@@ -4,11 +4,11 @@ _pkgname=pRolocdata
 _pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Data accompanying the pRoloc package"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-biobase
   r-msnbase
@@ -24,11 +24,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8aafd04221b21588077788ec79272e1a')
-sha256sums=('f1c405105a5ea16a4343112d710842065722c6a773db904d6bbea789ced15e7e')
+b2sums=('853a0acb9eab2a6bf4b0224fb9a42eb64b41a003739e5b0668ab3f12e3531dced338c7a2d17ee8375908cbdd4194b855e795e70b54520b4193f2f15509a81c6b')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
