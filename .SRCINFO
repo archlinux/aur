@@ -1,0 +1,27 @@
+pkgbase = gpd-fan-driver-dkms-git
+	pkgdesc = Fan hwmon speed report and speed control driver for GPD Win Mini, GPD Win Max2 and GPD Win 4 laptops. Latest git checkout.
+	pkgver = r7.20240425.4523cfc
+	pkgrel = 1
+	url = https://github.com/Cryolitia/gpd-fan-driver
+	install = gpd-fan-driver.install
+	arch = any
+	groups = gpd
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = dkms
+	provides = gpd-fan-driver
+	provides = gpd-fan-driver-git=r7.20240425.4523cfc
+	provides = gpd-fan-driver-dkms
+	provides = GPD-FAN-DRIVER
+	conflicts = gpd-fan-driver
+	conflicts = gpd-fan-driver-dkms
+	source = gpd-fan-driver::git+https://github.com/Cryolitia/gpd-fan-driver.git
+	source = dkms.conf.in
+	source = modules-load-gpd-fan.conf
+	source = gpd-fan-driver.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 8ef4568020cf63635b03fbdf098aeb5e9599adc17e9917500e8ba8f3ff75ca39
+	sha256sums = 52b499321ed838fa91a788e7fbf118a9cbeb9367e131aa924a6fa03afd20c922
+
+pkgname = gpd-fan-driver-dkms-git

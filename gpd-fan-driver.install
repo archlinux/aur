@@ -1,0 +1,6 @@
+post_install() {
+  printf '\n'
+  printf '%s\n' "  * To load the 'gpd-fan' module, run 'modprobe gpd-fan'."
+  printf '%s\n' "  * To enable autoload of 'gpd-fan' at boot, copy '/usr/share/doc/gpd-fan-driver/modules-load-gpd-fan.conf' into '/etc/modulues-load.d/'."
+  printf '\n'
+}

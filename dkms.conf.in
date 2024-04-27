@@ -1,0 +1,9 @@
+PACKAGE_NAME="gpd-fan-driver"
+PACKAGE_VERSION=%%VERSION%%
+AUTOINSTALL="yes"
+
+BUILT_MODULE_NAME[0]="gpd-fan"
+BUILT_MODULE_LOCATION[0]="./"
+DEST_MODULE_LOCATION[0]="/extra"
+MAKE[0]="make KERNEL_SRC=$kernel_source_dir"
+CLEAN="make clean"
