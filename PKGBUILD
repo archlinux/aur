@@ -3,7 +3,7 @@
 pkgname=nvidia-gpu-exporter-bin
 _pkgname=nvidia-gpu-exporter
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nvidia GPU exporter for prometheus using nvidia-smi binary"
 arch=(x86_64)
 url="https://github.com/utkuozdemir/nvidia_gpu_exporter"
@@ -16,7 +16,7 @@ source=(
 b2sums=(
     "ff6cdc6dd7e00262d6faa17e246cfe963a8e0ddc0dbc76f744a52acf97305186852ffa94f5a5d04b85f10463107b7988007e7267b1c0417f22addb2af161c68f"
     "fb56cec66cfcbb783715f29f287034fb7c9d92afacce5944f1a36eda94a803defc725fb865b7a548db26ca049ae2f471e2cebea06a11ff4a95d0d74e3b953c99"
-    "5fe6c6f9bbdcb16c6b3495ad900a5387ab311963507a424c3c468d084e37940c4dec8451660caa5c77cf0aec31005b4bc7764d6a42aaccc0ea88edb18dae1ac6"
+    "f8ba515c24042470afe57a8fc47f3573036bfb8af6be00f916adc6a1acb1e954016deb65c4816ec8f694db0f2505a0ba9c74707bb6ff610ae79e73413037d697"
 )
 
 

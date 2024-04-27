@@ -24,7 +24,7 @@ ProtectKernelModules=true
 ProtectKernelTunables=yes
 ProtectHostname=yes
 ProtectKernelLogs=yes
-ProtectProc=yes
+ProtectProc=invisible
 
 [Install]
 WantedBy=multi-user.target
