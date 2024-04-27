@@ -4,11 +4,11 @@ _pkgname=VDJdive
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Analysis Tools for 10X V(D)J Data"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biocparallel
   r-cowplot
@@ -35,11 +35,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('938051376344953e02e510f65d156939')
-sha256sums=('6ebac64d0ec90c9042d47637f18e24749bfb75c0fd3564b0d3ff1c096e7ca6e9')
+b2sums=('6fe08829c262f98518ce09040df89100a3169293c4515ce4883b3360c4e9a46f2fc85db102b177008cf697bfdd8e1dcd5a1ba53d4105540d569c4340c83aa7e8')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
