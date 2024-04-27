@@ -1,10 +1,10 @@
 pkgbase = r-heron
 	pkgdesc = Hierarchical Epitope pROtein biNding
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/HERON
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = r-testthat
 	depends = r-data.table
 	depends = r-genomicranges
@@ -21,6 +21,6 @@ pkgbase = r-heron
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/HERON_1.0.0.tar.gz
 	md5sums = 9c146a8d99bada338098732e1de5a5e2
-	sha256sums = b1a365540c32dac743dc87e5428e26692fd7174ec8a76f014d19e727ab60e34b
+	b2sums = 318a9d20e866bba31c9dcb0d32711583ee99df3a2034cc77f97e76a8387eebaa6a7ed9dd70f33f45d03c176fbabe86f39a058e41a1fdf15adc81d2911df95bfe
 
 pkgname = r-heron

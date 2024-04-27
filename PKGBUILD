@@ -4,11 +4,11 @@ _pkgname=HERON
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Hierarchical Epitope pROtein biNding"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
   r-data.table
   r-genomicranges
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('9c146a8d99bada338098732e1de5a5e2')
-sha256sums=('b1a365540c32dac743dc87e5428e26692fd7174ec8a76f014d19e727ab60e34b')
+b2sums=('318a9d20e866bba31c9dcb0d32711583ee99df3a2034cc77f97e76a8387eebaa6a7ed9dd70f33f45d03c176fbabe86f39a058e41a1fdf15adc81d2911df95bfe')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
