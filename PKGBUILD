@@ -4,11 +4,11 @@ _pkgname=scRNAseqApp
 _pkgver=1.2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="A single-cell RNAseq Shiny app-package"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-bibtex
   r-bslib
@@ -60,11 +60,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('a9b64e980a9e0acef5ab93a44a35e124')
-sha256sums=('4946c8bc3f9cfb78550ced2e8cd24056b2490b1956ef6ab143b491cb6203e8a0')
+b2sums=('b4f7531bb146fb8ba3d53e55713e51003e67833fca25fc8807fb7a26d1e82ad3d3d535663869b046d1cfa6300365c50653965c095352afe3a0da380b11550cad')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
