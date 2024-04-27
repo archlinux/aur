@@ -4,7 +4,7 @@
 pkgname=python-beartype
 _pkgname=${pkgname#python-}
 pkgver=0.18.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python"
 arch=(any)
 url="https://github.com/beartype/beartype"
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(
   python
   python-numpy
-  python-typing-extensions
+  python-typing_extensions
 )
 makedepends=(
   python-build
