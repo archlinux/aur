@@ -6,3 +6,4 @@ src/
 *.pkg.tar.zst
 *.pdf
 *.part
+*.tar
