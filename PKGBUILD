@@ -38,7 +38,6 @@ depends=(dbus
          openssl
          pulseaudio-qt
          qqc2-desktop-style
-         qt6-5compat
          qt6-base
 #        qt6-connectivity
          qt6-declarative
