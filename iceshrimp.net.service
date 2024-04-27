@@ -12,8 +12,6 @@ User=iceshrimp
 Group=iceshrimp
 
 Environment="ICESHRIMP_CONFIG=/etc/iceshrimp.net/configuration.ini"
-Environment="ICESHRIMP_MEDIA_DIR=/var/lib/iceshrimp.net/files"
-Environment="ICESHRIMP_CUSTOM_DIR=/usr/share/iceshrimp.net/custom"
 
 WorkingDirectory=/usr/share/iceshrimp.net
 SyslogIdentifier=iceshrimp.net
