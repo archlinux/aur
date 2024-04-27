@@ -1,0 +1,5 @@
+[python-gmsh_interop]
+source = "github"
+github = "inducer/gmsh_interop"
+use_latest_release = "true"
+prefix = "v"
