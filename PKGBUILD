@@ -4,11 +4,11 @@ _pkgname=HiCExperiment
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Bioconductor class for interacting with Hi-C files in R"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biocgenerics
   r-biocio
@@ -39,11 +39,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('98efc0440886cc84faef975a12f290a0')
-sha256sums=('b19a1abe213aa4721ca77e9a7752e90d5095fe5a2b12c1d6d0e935e2bc71f18a')
+b2sums=('95208adf3b22694141fa6ff6dc7e49d6ba492c75601da86685b31c6691e92e7ffd5ed3bd4ef06ea01ac68c64a55d26e799dcfef1420a11a01efbc7bea480781e')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
