@@ -4,11 +4,11 @@ _pkgname=gDRimport
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Package for handling the import of dose-response data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-assertthat
   r-bumpymatrix
@@ -45,11 +45,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0390ee6a16f21624044bc509ebdbabd1')
-sha256sums=('469a7e74c8478d9f5d7a79ca0365f3554d9a784d09b4e6ca73e3a9c10cb29ed3')
+b2sums=('79549696098d2611bbcc2fb13f31dd711a5153d9cb7270f60055ae16196e5ed101bd6006253c7f706ef65756212cfbe34a61b806e5b8b8f2b270f459d7843aad')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
