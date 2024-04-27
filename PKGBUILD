@@ -5,11 +5,11 @@
 
 pkgname=typecatcher
 pkgver=0.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Download Google webfonts for off-line use'
 arch=(any)
 url="https://github.com/andrewsomething/$pkgname"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(gtk3
          python
          python-gobject
@@ -19,7 +19,7 @@ makedepends=(python-{build,installer,wheel}
              python-distutils-extra
              python-setuptools)
 _archive="$pkgname-$pkgver"
-source=("$_archive.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("$url/archive/$pkgver/$_archive.tar.gz")
 sha256sums=('8b7b78bac166c64f12de1314e5aea2791cb5628ca27447eb29efc408c50c36e7')
 
 prepare() {
