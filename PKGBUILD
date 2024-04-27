@@ -11,11 +11,11 @@ depends=('gtk3')
 # optdepends=('')
 options=(!debug)
 # install="${pkgname%}.install"
-source=("Linux_x64_Executable.zip::$(curl -s https://api.github.com/repos/bitscoper/Bitscoper_Cyber_ToolBox/releases/latest | jq -r '.assets[] | select(.name | contains("Linux_x64_Executable.zip")) | .browser_download_url' || echo 'Not found!')")
+source=("Linux_x64_Executable.zip::$(curl -s https://api.github.com/repos/bitscoper/Bitscoper_Cyber_ToolBox/releases/latest | jq -r '.assets[] | select(.name | contains("Linux_x64_Executable.zip")) | .browser_download_url')")
 sha256sums=('SKIP')
 arch=('x86_64')
 pkgver=8.0.2
-pkgrel=3
+pkgrel=4
 # changelog="CHANGELOG.md"
 
 package() {
@@ -36,6 +36,6 @@ package() {
     install -Dm644 "$srcdir/maskable_icon_x${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/Bitscoper_Cyber_ToolBox.png"
   done
 
-  wget -O "$srcdir/Bitscoper_Cyber_ToolBox.desktop" "https://raw.githubusercontent.com/bitscoper/Bitscoper_Cyber_ToolBox/main/Linux_Extras/Bitscoper_Cyber_ToolBox.desktop"
+  wget -O "$srcdir/Bitscoper_Cyber_ToolBox.desktop" "https://raw.githubusercontent.com/bitscoper/Bitscoper_Cyber_ToolBox/main/Linux_Extras/Bitscoper_Cyber_ToolBox.AppDir/Bitscoper_Cyber_ToolBox.desktop"
   install -Dm644 "$srcdir/Bitscoper_Cyber_ToolBox.desktop" "$pkgdir/usr/share/applications/Bitscoper_Cyber_ToolBox.desktop"
 }
