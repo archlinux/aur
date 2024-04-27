@@ -5,11 +5,11 @@ _pkgname=BiocSingular
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Singular Value Decomposition for Bioconductor Packages"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-beachmat
   r-biocgenerics
@@ -33,7 +33,7 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('9b4158e143f2cbefc140228c13090b35')
-sha256sums=('634824a2e15c13c9fefbb17605a3861bdced6fc182c8880ae862f2248600377c')
+b2sums=('404fe99602584282a55497cd03acccc01e291a1c174d50ec5107322cc0bb5b7321c398ce69829d4c133d315b4b215453053a829609463e3d340b5f06f858872a')
 
 prepare() {
   # skip test that makes a coredump
@@ -42,8 +42,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
