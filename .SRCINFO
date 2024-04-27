@@ -1,6 +1,6 @@
 pkgbase = git-fuzzy-git
 	pkgdesc = interactive git with the help of fzf
-	pkgver = 0.r69
+	pkgver = 0.r90
 	pkgrel = 1
 	url = https://github.com/bigH/git-fuzzy
 	arch = any

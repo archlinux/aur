@@ -2,7 +2,7 @@
 
 _pkgname=git-fuzzy
 pkgname=$_pkgname-git
-pkgver=0.r69
+pkgver=0.r90
 pkgrel=1
 pkgdesc="interactive git with the help of fzf"
 license=('MIT')
