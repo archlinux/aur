@@ -13,10 +13,10 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.1.0_devel.187587.fe36cf6cad9
-pkgrel=2
+pkgver=24.2.0_devel.188553.6ab4b2d7a06
+pkgrel=1
 arch=('x86_64')
-makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
+makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
                             wayland-protocols glslang-minimal-git llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
                             rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs clang-opencl-headers-minimal-git
                             python-ply libunwind libxdamage vulkan-icd-loader xcb-util-keysyms)
@@ -77,7 +77,7 @@ build() {
        -D gbm=enabled \
        -D gles1=disabled \
        -D gles2=enabled \
-       -D glvnd=true \
+       -D glvnd=enabled \
        -D glx=dri \
        -D libunwind=enabled \
        -D llvm=enabled \
