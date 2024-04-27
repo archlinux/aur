@@ -4,11 +4,11 @@ _pkgname=FuseSOM
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="A Correlation Based Multiview Self Organizing Maps Clustering For IMC Datasets"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-analogue
   r-coop
@@ -37,11 +37,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8f53b251d77ea648cb8e56bb5eb72b18')
-sha256sums=('34faa781054e961cb06eab6f477680dcc07933003370ffd98e1558975f462bd7')
+b2sums=('42c90029ee93fbd4af481992d8e3a6a794e66cd58c3581962f51bc07d60141618e63630ccbd196045919fe02718a42be566e5e75f75f13b6c1d06a454b38eeac')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
