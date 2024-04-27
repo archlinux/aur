@@ -1,15 +1,15 @@
-# Maintainer: Jakub Klinkovský <j.l.k@gmx.com>
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
 
 _pkgname=python-wikeddiff
 pkgname=python-wikeddiff-git
 pkgdesc="Visual inline-style difference engine with block move support"
 pkgver=1.2.4.r10.g035db40
-pkgrel=1
-arch=('any')
+pkgrel=3
+arch=(any)
 url="https://github.com/lahwaacz/python-wikeddiff"
-license=('GPLv3')
-depends=('python')
-makedepends=('git')
+license=(GPL-3.0-or-later)
+depends=(python)
+makedepends=(git python-setuptools)
 source=('git+https://github.com/lahwaacz/python-wikeddiff')
 md5sums=('SKIP')
 
