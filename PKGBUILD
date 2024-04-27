@@ -2,33 +2,37 @@
 # Contributor: Till Faelligen <tfaelligen at gmail dot com>
 pkgname='conduwuit-git'
 _pkgname='conduwuit'
-pkgver=0.7.0.2615.g7809f0a6
+epoch=1
+pkgver=0.3.0.3120.g341bafb9
 pkgrel=1
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/girlbossceo/conduwuit'
-pkgdesc='a fork of the matrix homeserver'
+pkgdesc='A very cool, featureful fork of the Conduit matrix server'
 license=('Apache')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo' 'git' 'clang')
 provides=('conduwuit')
 source=(
   "$_pkgname::git+https://github.com/girlbossceo/conduwuit.git"
+  "$_pkgname.service"
 )
 backup=(
-  'etc/matrix-conduit/conduit.toml'
+  'etc/conduwuit/conduwuit.toml'
 )
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('SKIP'
+            '94a643d2731bbd4279c14baa83a9e417cbe7b6ec9522a035f12fe3718274069c')
+options=(!lto) # lto breaks linking with vendored dependencies (ring, zstd, rocksdb) due to unresolved symbols
 
 prepare() {
   cd "$_pkgname"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 pkgver() {
-	cd $_pkgname/
-	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  cd $_pkgname/
+  echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 check() {
@@ -46,9 +50,12 @@ build(){
 }
 
 package() {
-  cd $_pkgname
-  install -D -m755 target/release/conduit "$pkgdir/usr/bin/matrix-conduit"
-  install -D -m0644 conduwuit-example.toml "$pkgdir/etc/matrix-conduit/conduit.toml"
-  install -D -m0644 conduwuit-example.toml "$pkgdir/usr/share/doc/conduwuit/matrix-conduwuit.toml"
-  install -D -m0644 debian/matrix-conduit.service "$pkgdir/usr/lib/systemd/system/matrix-conduit.service"
+  install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/conduwuit.service"
+
+  cd "$_pkgname"
+  install -D -m755 target/release/conduit "$pkgdir/usr/bin/conduwuit"
+  install -D -m0644 conduwuit-example.toml "$pkgdir/etc/conduwuit/conduwuit.toml"
+  install -D -m0644 conduwuit-example.toml "$pkgdir/usr/share/doc/conduwuit/conduwuit-example.toml"
 }
+
+# vim: set et ts=2:

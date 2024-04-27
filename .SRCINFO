@@ -1,7 +1,8 @@
 pkgbase = conduwuit-git
-	pkgdesc = a fork of the matrix homeserver
-	pkgver = 0.7.0.2615.g7809f0a6
+	pkgdesc = A very cool, featureful fork of the Conduit matrix server
+	pkgver = 0.3.0.3120.g341bafb9
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/girlbossceo/conduwuit
 	arch = x86_64
 	arch = armv6h
@@ -14,8 +15,11 @@ pkgbase = conduwuit-git
 	makedepends = clang
 	depends = gcc-libs
 	provides = conduwuit
-	backup = etc/matrix-conduit/conduit.toml
+	options = !lto
+	backup = etc/conduwuit/conduwuit.toml
 	source = conduwuit::git+https://github.com/girlbossceo/conduwuit.git
+	source = conduwuit.service
 	sha256sums = SKIP
+	sha256sums = 94a643d2731bbd4279c14baa83a9e417cbe7b6ec9522a035f12fe3718274069c
 
 pkgname = conduwuit-git
