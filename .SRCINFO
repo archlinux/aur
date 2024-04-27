@@ -1,10 +1,10 @@
 pkgbase = r-spatiallibd
 	pkgdesc = an R/Bioconductor package to visualize spatially-resolved transcriptomics data
 	pkgver = 1.14.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/spatialLIBD
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-testthat
 	depends = r-annotationhub
 	depends = r-benchmarkme

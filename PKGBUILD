@@ -4,11 +4,11 @@ _pkgname=spatialLIBD
 _pkgver=1.14.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="an R/Bioconductor package to visualize spatially-resolved transcriptomics data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(Artistic2.0)
+license=('Artistic-2.0')
 depends=(
   r-annotationhub
   r-benchmarkme
