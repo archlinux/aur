@@ -1,28 +1,37 @@
-# Maintainer: Malstrond <malstrond@gmail.com>
-# Contributor: Jean-Baptiste Le Coz <jb.lecoz@gmail.com>
-# Contributor: Jose Riha <jose1711@gmail.com>
-# Contributor: Bazon <bazonbloch@arcor.de>
+# Maintainer: DaveD <david at codevertex dot de>
+# Contributor: Malstrond <malstrond at gmail dot com>
+# Contributor: Jean-Baptiste Le Coz <jb.lecoz at gmail dot com>
+# Contributor: Jose Riha <jose1711 at gmail dot com>
+# Contributor: Bazon <bazonbloch at arcor dot de>
 
 pkgname=activinspire
-pkgver=2.23.69368
+pkgver=3.3.15
 pkgrel=1
-pkgdesc="Presentation Software for use with Promethean Hardware products."
+pkgdesc="Presentation Software for use with Promethean Hardware products (manual user intervention required)"
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
 license=('unknown')
 depends=(libxmu gst-plugins-base libjpeg-turbo libxrender libgl fontconfig openssl-1.0 nss libxcomposite libxcursor libxtst dbus icu60)
 optdepends=('activdriver: Driver for Promethean hardware'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
-source=("http://activsoftware.co.uk/linux/repos/ubuntu/pool/bionic/a/ac/activinspire_1804-${pkgver}-1-amd64.deb"
+source=("activinspire_${pkgver}.2004-1.amd64_amd64.deb"
         "inspire.sh"
 	"activityplayer.sh"
         "com.ubuntu.user-interface.gschema.xml")
-md5sums=('afab73188221822ba0dbcd98ca4bb79a'
+md5sums=('2ffab88a96ce74e202e319946b97899b'
          'd3096ede6c2cd388469f4e12a8286ee8'
          '14f618ed07ed2d267b2578818d253200'
          'e0f2c4078eadd00de8f28159b273e576')
 
 package() {
+
+ # Manual instructions for the user
+ echo "Manual download of the binary files required!"
+ echo "1. Follow the instructions on the manufacturer's website to add their privately signed repository (only possible through Ubuntu 20.04?)"
+ echo "2. Download the package (Ubuntu: 'sudo apt download activinspire')"
+ echo "3. Copy the .deb file to your Arch Linux distribution (into the local build directory of this AUR package)."
+ echo "4. Build and install this AUR package."
+
  # Extract software from debian archive. Exclude /etc/xdg (not needed) and /var/Promethean (created with the correct permissions below).
  bsdtar -C "$pkgdir" --exclude=./var --exclude=./etc -xf data.tar.xz
 
