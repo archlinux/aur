@@ -1,7 +1,7 @@
 pkgbase = python-kdtree
 	pkgdesc = Construct, modify and search k-d trees
 	pkgver = 0.16
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/stefankoegl/kdtree
 	arch = any
 	license = ISC
