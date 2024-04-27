@@ -3,7 +3,7 @@
 pkgname=sfd2ufo
 _pkgname=sfdLib.py
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An SFD to UFO converter providing sdflib'
 arch=(any)
 url="https://github.com/MFEK/$_pkgname"

@@ -1,7 +1,7 @@
 pkgbase = sfd2ufo
 	pkgdesc = An SFD to UFO converter providing sdflib
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MFEK/sfdLib.py
 	arch = any
 	license = BSD-3-Clause
