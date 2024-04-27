@@ -5,11 +5,11 @@ _pkgname=combi
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Compositional omics model based visual integration"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-alabama
   r-bb
@@ -35,11 +35,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('6fe16559db40b31126eb543abf6819fa')
-sha256sums=('7a81c89d88bc1a12b8fb778353ebf2ef367c4fef26480e2b99c2440d9b7215e2')
+b2sums=('41031e9770c4cc7418c6bd8d475c478711294509d4dd3ca3702f2a5800925b23c22f5ae3978311ddcdf39c9155b896d1d1596d5be762c8791d53bcb8f6dc4286')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
