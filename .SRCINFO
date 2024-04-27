@@ -1,0 +1,18 @@
+pkgbase = python-pyasyncore
+	pkgdesc = Make asyncore available for Python 3.12 onwards
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/simonrob/pyasyncore/
+	arch = any
+	license = PSF-2.0
+	checkdepends = python-tests
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = git+https://github.com/simonrob/pyasyncore.git#tag=v1.0.4
+	sha256sums = 7a4151e7e8b1fd39558729d290bd40bc68171a0f2fdab9a18d17b905b50cebeb
+
+pkgname = python-pyasyncore
