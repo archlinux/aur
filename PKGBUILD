@@ -1,8 +1,7 @@
 # Maintainer: Justin ! <just1602@riseup.net>
 
 pkgname='mtail'
-_pkgver=3.0.0-rc62
-pkgver="${_pkgver//-/_}"
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='extract whitebox monitoring data from application logs for collection in a timeseries database'
 arch=('x86_64')
@@ -10,7 +9,7 @@ url='https://github.com/google/mtail'
 license=('Apache')
 makedepends=('git' 'go')
 conflicts=("${pkgname}")
-source=("git+https://github.com/google/mtail#tag=v${_pkgver}")
+source=("git+https://github.com/google/mtail#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
