@@ -1,13 +1,19 @@
 pkgbase = python-nbt
 	pkgdesc = Named Binary Tag Reader/Writer
 	pkgver = 1.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/twoolie/NBT
 	arch = any
 	license = MIT
+	checkdepends = python-pillow
 	makedepends = python-setuptools
 	depends = python
+	noextract = Sample_World.tar.gz
 	source = python-nbt-1.5.1.tar.gz::https://github.com/twoolie/NBT/archive/version-1.5.1.tar.gz
+	source = https://github.com/twoolie/NBT/files/13199373/Sample_World.tar.gz
+	source = 0001-Fix-support-for-Minecraft-version-1.12.2-data-versio.patch
 	sha256sums = 8b260dc68ed91819e990ca677ee05417e259145fb7531428a1f7b948d71367dc
+	sha256sums = 8966c9333b69307420512c4ae57639863980b1123d621155830f75167f79a8e8
+	sha256sums = 4f16d8e0cdc6e29af972b52200c439e67626c4454d853f69a3001c58cec84b45
 
 pkgname = python-nbt
