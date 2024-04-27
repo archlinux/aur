@@ -4,10 +4,10 @@ _pkgname=dasper
 _pkgver=1.9.0
 pkgname=r-${_pkgname,,}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Detecting abberant splicing events from RNA-sequencing data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.17/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
@@ -50,7 +50,7 @@ optdepends=(
   r-testthat
   r-tibble
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('9681cb5540f6a9fb3ed1e580152a5f165257174dc6a33b29b2c52b06086db424')
 
 build() {
