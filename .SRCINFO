@@ -1,7 +1,7 @@
 pkgbase = ftcli
 	pkgdesc = Foundry Tools command line font editor
 	pkgver = 1.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ftCLI/FoundryTools-CLI
 	arch = any
 	license = MIT
