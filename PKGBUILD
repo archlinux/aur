@@ -21,7 +21,7 @@ source=(
     'session.conf'
     'xmonad.desktop'
 )
-sha256sums=('92edd7e121f96d36aa83819ab66b8f69c1d28df8ceb86e5ad56ffa1a2b0690a9'
+sha256sums=('ead1c94c4ed1ef2da76fed2793a57ac7a94e4743f8829f747eb2f8e5d4c1d13b'
             '34ef0f4664ebba1e9877be67df23506b74968327689bdca02dccd0ecf1b670f2'
             'fdfe8bf784bd7f5806a693034f28702296c8a7cefab7f3e01af1a91c8d03bca2'
             '323c0f8b0c04d5580067816d2a23bf34c0818462181a7a08f29c4aba097ca111'

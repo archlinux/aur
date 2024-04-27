@@ -4,4 +4,9 @@ if [ -z "$XDG_CURRENT_DESKTOP" ]; then
   export XDG_CURRENT_DESKTOP="GNOME-Flashback:GNOME"
 fi
 
-exec gnome-session --session=gnome-flashback-xmonad --disable-acceleration-check "$@"
+session=gnome-flashback-xmonad
+for x in "$HOME"/.config/"$session".pre.d/*; do
+    [ -x "$x" ] && "$x"
+done
+
+exec gnome-session --session="$session" --disable-acceleration-check "$@"
