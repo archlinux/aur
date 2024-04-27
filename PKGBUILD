@@ -2,14 +2,14 @@
 
 pkgname=u2o
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='USFM to OSIS bible format converter'
 arch=(any)
 url=https://github.com/adyeths/u2o
 license=(Unlicense)
 depends=(python)
 _archive="$pkgname-$pkgver"
-source=("$_archive.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+source=("$url/archive/refs/tags/$pkgver/$_archive.tar.gz")
 sha256sums=('dcda63dd61e053dcdccf948f0d88c987302e3ee2d40ae74db2c60f93b0ab0e36')
 
 package() {
