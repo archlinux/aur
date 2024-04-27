@@ -3,7 +3,7 @@
 pkgname=python-babelfont
 _pyname=${pkgname#python-}
 pkgver=3.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Interrogate and manipulate UFO, TTF and OTF fonts with a common interface'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
