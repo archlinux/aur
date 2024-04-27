@@ -2,12 +2,12 @@
 
 pkgname=shrinko8
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Shrink (minify) Pico-8 carts, as well as other tools (e.g. linting, format conversion)'
 arch=('any')
 url='https://github.com/thisismypassport/shrinko8'
 license=('MIT')
-depends=('python-pillow' 'python-qualify')
+depends=('python' 'python-pillow' 'python-qualify')
 makedepends=(
   'python-build'
   'python-installer'
@@ -15,7 +15,7 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-options=('!strip')
+options=('!debug' '!strip')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/thisismypassport/shrinko8/archive/v${pkgver}.tar.gz"
