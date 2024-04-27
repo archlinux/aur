@@ -1,10 +1,10 @@
 pkgbase = ssrmint-git
 	pkgdesc = Ad-hoc pygments style and lexer for LaTeX pretty-printing of SSReflect
-	pkgver = r19.658e636
-	pkgrel = 6
+	pkgver = r23.d85fa7e
+	pkgrel = 1
 	url = https://github.com/affeldt-aist/ssrmint
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer

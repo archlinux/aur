@@ -1,11 +1,11 @@
 # Maintainer: Xuanrui Qi <me@xuanruiqi.com>
 pkgname=ssrmint-git
-pkgver=r19.658e636
-pkgrel=6
+pkgver=r23.d85fa7e
+pkgrel=1
 pkgdesc="Ad-hoc pygments style and lexer for LaTeX pretty-printing of SSReflect"
 arch=('any')
 url="https://github.com/affeldt-aist/ssrmint"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('python' 'python-pygments')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 optdepends=()
