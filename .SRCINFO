@@ -1,13 +1,14 @@
 pkgbase = python-jaconv
 	pkgdesc = Pure-Python Japanese character interconverter for Hiragana, Katakana, Hankaku and Zenkaku
 	pkgver = 0.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ikegami-yukino/jaconv
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/j/jaconv/jaconv-0.3.4.tar.gz
-	sha256sums = 9e7c55f3f0b0e2dbad62f6c9fa0c30fc6fffdbb78297955509d90856b3a31d6d
+	source = git+https://github.com/ikegami-yukino/jaconv.git#tag=v0.3.4
+	b2sums = 4b0ef882cdffe9eee2d64474ac475863949c3390e9832b34be9c3c40cb8acf5a734a0d2f14e480e0cd51a91d92b6de4802095dabcdc98f78088762412e68be17
 
 pkgname = python-jaconv
