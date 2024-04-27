@@ -2,14 +2,14 @@
 # Contributor: Benawi Adha <benawiadha@gmail.com>
 # Contributor: Spencer Muise <smuise@spencermuise.ca>
 
-_pkgname=epy-ereader
+_pkgname="epy-ereader"
 pkgname="$_pkgname-git"
-pkgver=r290.6b0e9fe
+pkgver=2023.6.11.r0.g6b0e9fe
 pkgrel=1
 pkgdesc="CLI Ebook Reader"
-arch=('any')
 url='https://github.com/wustho/epy'
-license=("GPL3")
+license=('GPL-3.0-only')
+arch=('any')
 
 depends=(
   'python'
@@ -31,8 +31,9 @@ conflicts=(
   'epy'
 )
 
+_pkgsrc="$_pkgname"
 source=(
-  "$_pkgname"::"git+$url"
+  "$_pkgsrc"::"git+$url"
 
   "Downloads.png"::"https://static.pepy.tech/personalized-badge/epy-reader?period=month&units=none&left_color=grey&right_color=brightgreen&left_text=downloads/month"
   "screenshot.png"::"https://raw.githubusercontent.com/wustho/epy/master/screenshot.png"
@@ -47,23 +48,22 @@ sha256sums=(
 )
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
 
   _images=(
     "Downloads"
     "screenshot"
     "image"
   )
-  for i in ${_images[@]} ; do
+  for i in ${_images[@]}; do
     sed -Ei -e "s@\\!\\[$image\\]\\([^\\)]+\\)@![$image]($image.png)@" "README.md"
   done
 }
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -73,7 +73,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 

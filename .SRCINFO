@@ -1,10 +1,10 @@
 pkgbase = epy-ereader-git
 	pkgdesc = CLI Ebook Reader
-	pkgver = r290.6b0e9fe
+	pkgver = 2023.6.11.r0.g6b0e9fe
 	pkgrel = 1
 	url = https://github.com/wustho/epy
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
