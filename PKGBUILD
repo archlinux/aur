@@ -2,16 +2,18 @@
 # Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 # Contributor: oldNo.7 <oldNo.7@archlinux.org>
 
+## useful links
+# https://pypi.python.org/pypi/thefuzz
+
 _module="thefuzz"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
 pkgver=0.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fuzzy string matching in Python'
-arch=(any)
-# https://pypi.python.org/pypi/thefuzz
 url="https://github.com/seatgeek/thefuzz"
 license=('MIT')
+arch=('any')
 
 depends=(
   'python'
@@ -30,32 +32,12 @@ checkdepends=(
   'python-pytest'
 )
 
-if [ x"$pkgname" == x"$_pkgname" ] ; then
-  # normal package
-  _pkgsrc="$_module"
-  source+=("$_pkgsrc"::"git+$url.git#tag=${pkgver%%.r*}")
-  sha256sums+=('SKIP')
+provides=("python-fuzzywuzzy=0.18.0")
+conflicts=("python-fuzzywuzzy")
 
-  pkgver() {
-    echo "${pkgver%%.r*}"
-  }
-else
-  # git package
-  provides+=("$_pkgname")
-  conflicts+=("$_pkgname")
-
-  _pkgsrc="$_module"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-fi
-
-provides+=('python-fuzzywuzzy')
-conflicts+=('python-fuzzywuzzy')
+_pkgsrc="$_module"
+source+=("$_pkgsrc"::"git+$url.git#tag=${pkgver%%.r*}")
+sha256sums+=('SKIP')
 
 build() {
   cd "$_pkgsrc"
@@ -69,13 +51,13 @@ check() {
 
 package() {
   cd "$_pkgsrc"
-  python -m installer --destdir="${pkgdir:?}" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   local _sitepackages="$(python -c 'import site; print(site.getsitepackages()[0])')"
 
   # provide fuzzywuzzy for backward compatibility
-  ln -vsf "$_pkgsrc" "${pkgdir:?}${_sitepackages:?}/fuzzywuzzy"
+  ln -vsf "$_pkgsrc" "${pkgdir}${_sitepackages}/fuzzywuzzy"
 
   # license
-  install -Dm644 "LICENSE.txt" "${pkgdir:?}/usr/share/licenses/${pkgname:?}/LICENSE"
+  install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
