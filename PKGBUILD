@@ -1,9 +1,10 @@
 # Maintainer: Riderius <riderius.help@gmail.com>
 # Previous maintainer: Kevin Kuehler <keur@xcf.berkeley.edu>
+# Contributor: Thomas Gläßle <t_glaessle@gmx.de>
 
 pkgname='git-quick-stats'
-pkgver='2.5.4'
-pkgrel=2
+pkgver='2.5.5'
+pkgrel=1
 pkgdesc='Simple and efficient way to access various statistics in git repository'
 arch=('any')
 url="https://github.com/arzzen/$pkgname"
