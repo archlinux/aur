@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc='Python framework for Unix-like command line programs'
 arch=('any')
 url='https://blog.liw.fi/posts/cliapp/'
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 depends=('python' 'python-yaml')
 makedepends=(
   'python-build'
