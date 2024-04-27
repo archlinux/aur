@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc='A CLI utility and Python library to merge UFO source fonts'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
-license=(Apache)
-_py_deps=(fonttools
-          ufolib2)
+license=(Apache-2.0)
+_pydeps=(fonttools
+         ufolib2)
 depends=(python
-         "${_py_deps[@]/#/python-}")
+         "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive="$pkgname-$pkgver"
