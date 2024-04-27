@@ -1,0 +1,19 @@
+pkgbase = ruby-parlour
+	pkgdesc = A type information generator, merger and parser for Sorbet and Ruby 3/Steep
+	pkgver = 8.1.0
+	pkgrel = 1
+	url = http://solargraph.org/
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-commander>=4.5
+	depends = ruby-parser
+	depends = ruby-rainbow>=3.0
+	depends = ruby-sorbet-runtime>=0.5
+	noextract = parlour-8.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/parlour-8.1.0.gem
+	sha256sums = 7081c8d9e8ff0c77289877560690015415399fc216e05c7e48736b15184ef459
+
+pkgname = ruby-parlour
