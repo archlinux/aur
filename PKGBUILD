@@ -5,11 +5,11 @@ pkgname=(
   "${pkgbase}"
   "${pkgbase}-cublas"
   "${pkgbase}-clblas"
-  "${pkgbase}-hipblas"
+  # "${pkgbase}-hipblas"
   "${pkgbase}-openvino"
 )
 pkgver=1.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -22,7 +22,7 @@ makedepends=(
   'cuda'
   'git'
   'openvino'
-  'rocm-hip-sdk'
+  # 'rocm-hip-sdk'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
@@ -93,10 +93,10 @@ build() {
   cmake "${_cmake_cublas_args[@]}"
   cmake --build build
 
-  echo "Build ${pkgbase} with HIPBlas (AMD ROCm)"
-  cd "${srcdir}/${pkgbase}-hipblas"
-  cmake "${_cmake_hipblas_args[@]}"
-  cmake --build build
+  # echo "Build ${pkgbase} with HIPBlas (AMD ROCm)"
+  # cd "${srcdir}/${pkgbase}-hipblas"
+  # cmake "${_cmake_hipblas_args[@]}"
+  # cmake --build build
 
   echo "Build ${pkgbase} with OpenVINO run-time"
   cd "${srcdir}/${pkgbase}-openvino"
