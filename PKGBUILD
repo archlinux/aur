@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
 pkgver=0.5.34
-pkgrel=1
+pkgrel=2
 pkgdesc="nwg-shell meta-package"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-shell"
