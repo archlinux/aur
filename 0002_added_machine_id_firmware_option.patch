@@ -1,13 +1,183 @@
-Subject: [PATCH] added systemd.machine_id=firmware option
----
+Index: src/shared/machine-id-setup.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/shared/machine-id-setup.c b/src/shared/machine-id-setup.c
+--- a/src/shared/machine-id-setup.c	(revision 8f4dab049074d31c31af2bb9eb76f9f4f08e3711)
++++ b/src/shared/machine-id-setup.c	(date 1714255351696)
+@@ -28,7 +28,8 @@
+ #include "umask-util.h"
+ #include "virt.h"
+ 
+-static int acquire_machine_id_from_credential(sd_id128_t *ret) {
++static int acquire_machine_id_from_credential(sd_id128_t *ret_machine_id, bool *ret_machine_id_from_firmware) {
++
+         _cleanup_free_ char *buf = NULL;
+         int r;
+ 
+@@ -38,7 +39,12 @@
+         if (r == 0) /* not found */
+                 return -ENXIO;
+ 
+-        r = sd_id128_from_string(buf, ret);
++        if (streq(buf, "firmware")) {
++                *ret_machine_id_from_firmware = true;
++                return 0;
++        }
++
++        r = sd_id128_from_string(buf, ret_machine_id);
+         if (r < 0)
+                 return log_warning_errno(r, "Failed to parse system.machine_id credential, ignoring: %m");
+ 
+@@ -46,7 +52,7 @@
+         return 0;
+ }
+ 
+-static int generate_machine_id(const char *root, sd_id128_t *ret) {
++static int generate_machine_id(const char *root, sd_id128_t *ret, bool machine_id_from_firmware) {
+         _cleanup_close_ int fd = -EBADF;
+         int r;
+ 
+@@ -61,7 +67,7 @@
+ 
+         if (isempty(root) && running_in_chroot() <= 0) {
+                 /* Let's use a system credential for the machine ID if we can */
+-                r = acquire_machine_id_from_credential(ret);
++                r = acquire_machine_id_from_credential(ret, &machine_id_from_firmware);
+                 if (r >= 0)
+                         return r;
+ 
+@@ -78,14 +84,14 @@
+                                 return 0;
+                         }
+ 
+-                } else if (IN_SET(detect_vm(), VIRTUALIZATION_KVM, VIRTUALIZATION_AMAZON, VIRTUALIZATION_QEMU, VIRTUALIZATION_XEN)) {
++                } else if (IN_SET(detect_vm(), VIRTUALIZATION_KVM, VIRTUALIZATION_AMAZON, VIRTUALIZATION_QEMU, VIRTUALIZATION_XEN) || machine_id_from_firmware) {
+ 
+                         /* If we are not running in a container, see if we are running in a VM that provides
+                          * a system UUID via the SMBIOS/DMI interfaces.  Such environments include QEMU/KVM
+                          * with the -uuid on the qemu command line or the Amazon EC2 Nitro hypervisor. */
+ 
+                         if (id128_get_product(ret) >= 0) {
+-                                log_info("Initializing machine ID from VM UUID.");
++                                log_info("Initializing machine ID from SMBIOS/DMI UUID.");
+                                 return 0;
+                         }
+                 }
+@@ -100,12 +106,16 @@
+         return 0;
+ }
+ 
+-int machine_id_setup(const char *root, bool force_transient, sd_id128_t machine_id, sd_id128_t *ret) {
++int machine_id_setup(const char *root, sd_id128_t machine_id, MachineIdSetupFlags flags, sd_id128_t *ret) {
+         const char *etc_machine_id, *run_machine_id;
+         _cleanup_close_ int fd = -EBADF;
+         bool writable;
++        bool machine_id_from_firmware = false;
+         int r;
+ 
++        if (flags & MACHINE_ID_SETUP_FORCE_FIRMWARE)
++                machine_id_from_firmware = true;
++
+         etc_machine_id = prefix_roota(root, "/etc/machine-id");
+ 
+         WITH_UMASK(0000) {
+@@ -138,14 +148,14 @@
+         }
+ 
+         /* A we got a valid machine ID argument, that's what counts */
+-        if (sd_id128_is_null(machine_id)) {
++        if (sd_id128_is_null(machine_id) || machine_id_from_firmware) {
+ 
+                 /* Try to read any existing machine ID */
+                 if (id128_read_fd(fd, ID128_FORMAT_PLAIN, ret) >= 0)
+                         return 0;
+ 
+                 /* Hmm, so, the id currently stored is not useful, then let's generate one */
+-                r = generate_machine_id(root, &machine_id);
++                r = generate_machine_id(root, &machine_id, machine_id_from_firmware);
+                 if (r < 0)
+                         return r;
+         }
+@@ -161,7 +171,7 @@
+                  * disk and overmount it with a transient file.
+                  *
+                  * Otherwise write the machine-id directly to disk. */
+-                if (force_transient) {
++                if (flags & MACHINE_ID_SETUP_FORCE_TRANSIENT) {
+                         r = loop_write(fd, "uninitialized\n", SIZE_MAX);
+                         if (r < 0)
+                                 return log_error_errno(r, "Failed to write uninitialized %s: %m", etc_machine_id);
+@@ -199,7 +209,7 @@
+                 return r;
+         }
+ 
+-        log_full(force_transient ? LOG_DEBUG : LOG_INFO, "Installed transient %s file.", etc_machine_id);
++        log_full(flags & MACHINE_ID_SETUP_FORCE_TRANSIENT ? LOG_DEBUG : LOG_INFO, "Installed transient %s file.", etc_machine_id);
+ 
+         /* Mark the mount read-only */
+         r = mount_follow_verbose(LOG_WARNING, NULL, etc_machine_id, NULL, MS_BIND|MS_RDONLY|MS_REMOUNT, NULL);
+Index: src/core/main.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/core/main.c b/src/core/main.c
+--- a/src/core/main.c	(revision 8f4dab049074d31c31af2bb9eb76f9f4f08e3711)
++++ b/src/core/main.c	(date 1714255351649)
+@@ -144,6 +144,7 @@
+ static Set* arg_syscall_archs;
+ static FILE* arg_serialization;
+ static sd_id128_t arg_machine_id;
++static bool arg_machine_id_from_firmware = false;
+ static EmergencyAction arg_cad_burst_action;
+ static CPUSet arg_cpu_affinity;
+ static NUMAPolicy arg_numa_policy;
+@@ -352,10 +353,15 @@
+                 if (proc_cmdline_value_missing(key, value))
+                         return 0;
+ 
+-                r = id128_from_string_nonzero(value, &arg_machine_id);
+-                if (r < 0)
+-                        log_warning_errno(r, "MachineID '%s' is not valid, ignoring: %m", value);
+-
++                if (streq(value, "firmware"))
++                        arg_machine_id_from_firmware = true;
++                else {
++                        r = id128_from_string_nonzero(value, &arg_machine_id);
++                        if (r < 0)
++                                log_warning_errno(r, "MachineID '%s' is not valid, ignoring: %m", value);
++                        else
++                                arg_machine_id_from_firmware = false;
++                }
+         } else if (proc_cmdline_key_streq(key, "systemd.default_timeout_start_sec")) {
+ 
+                 if (proc_cmdline_value_missing(key, value))
+@@ -2234,8 +2240,13 @@
+ 
+                         (void) os_release_status();
+                         (void) hostname_setup(true);
+-                        /* Force transient machine-id on first boot. */
+-                        machine_id_setup(/* root= */ NULL, /* force_transient= */ first_boot, arg_machine_id, /* ret_machine_id */ NULL);
++
++                        /* Set up the machine ID flags */
++                        MachineIdSetupFlags machine_id_setup_flags = 0;
++                        machine_id_setup_flags = (first_boot ? MACHINE_ID_SETUP_FORCE_TRANSIENT : 0) |
++                                        (arg_machine_id_from_firmware ? MACHINE_ID_SETUP_FORCE_FIRMWARE : 0);
++
++                        machine_id_setup(/* root= */ NULL, arg_machine_id, machine_id_setup_flags, /* ret_machine_id */ NULL);
+                         (void) loopback_setup();
+                         bump_unix_max_dgram_qlen();
+                         bump_file_max_and_nr_open();
 Index: man/machine-id.xml
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/man/machine-id.xml b/man/machine-id.xml
---- a/man/machine-id.xml	(revision 99a1ef8c9cdcb0fc15265533dae2bbd8f2d7a3a5)
-+++ b/man/machine-id.xml	(revision 3ca51e69a32b4582cdbba583b3119b7555a4bd85)
+--- a/man/machine-id.xml	(revision 8f4dab049074d31c31af2bb9eb76f9f4f08e3711)
++++ b/man/machine-id.xml	(date 1714255351569)
 @@ -102,7 +102,8 @@
      value of the kernel command line option <varname>container_uuid</varname>, the KVM DMI
      <filename>product_uuid</filename> or the devicetree <filename>vm,uuid</filename>
@@ -15,99 +185,43 @@ diff --git a/man/machine-id.xml b/man/machine-id.xml
 -    generated UUID.</para>
 +    generated UUID. <varname>systemd.machine_id=firmware</varname> can be set to generate the machine id
 +    from the firmware.</para>
-
+ 
      <para>After the machine ID is established,
      <citerefentry><refentrytitle>systemd</refentrytitle><manvolnum>1</manvolnum></citerefentry>
-Index: src/core/main.c
+Index: src/machine-id-setup/machine-id-setup-main.c
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
-diff --git a/src/core/main.c b/src/core/main.c
---- a/src/core/main.c	(revision 99a1ef8c9cdcb0fc15265533dae2bbd8f2d7a3a5)
-+++ b/src/core/main.c	(revision 3ca51e69a32b4582cdbba583b3119b7555a4bd85)
-@@ -354,10 +354,13 @@
-                 if (proc_cmdline_value_missing(key, value))
-                         return 0;
-
--                r = id128_from_string_nonzero(value, &arg_machine_id);
--                if (r < 0)
--                        log_warning_errno(r, "MachineID '%s' is not valid, ignoring: %m", value);
--
-+                if (streq(value, "firmware")) {
-+                        arg_machine_id = SD_ID128_FIRMWARE;
-+                } else {
-+                        r = id128_from_string_nonzero(value, &arg_machine_id);
-+                        if (r < 0)
-+                                log_warning_errno(r, "MachineID '%s' is not valid, ignoring: %m", value);
-+                }
-         } else if (proc_cmdline_key_streq(key, "systemd.default_timeout_start_sec")) {
-
-                 if (proc_cmdline_value_missing(key, value))
-Index: src/shared/machine-id-setup.c
+diff --git a/src/machine-id-setup/machine-id-setup-main.c b/src/machine-id-setup/machine-id-setup-main.c
+--- a/src/machine-id-setup/machine-id-setup-main.c	(revision 8f4dab049074d31c31af2bb9eb76f9f4f08e3711)
++++ b/src/machine-id-setup/machine-id-setup-main.c	(date 1714255351673)
+@@ -188,7 +188,7 @@
+         } else {
+                 sd_id128_t id;
+ 
+-                r = machine_id_setup(arg_root, false, SD_ID128_NULL, &id);
++                r = machine_id_setup(arg_root, SD_ID128_NULL, 0, &id);
+                 if (r < 0)
+                         return r;
+ 
+Index: src/shared/machine-id-setup.h
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
-diff --git a/src/shared/machine-id-setup.c b/src/shared/machine-id-setup.c
---- a/src/shared/machine-id-setup.c	(revision 99a1ef8c9cdcb0fc15265533dae2bbd8f2d7a3a5)
-+++ b/src/shared/machine-id-setup.c	(revision 3ca51e69a32b4582cdbba583b3119b7555a4bd85)
-@@ -5,6 +5,7 @@
- #include <sys/mount.h>
- #include <unistd.h>
-
-+#include "proc-cmdline.h"
- #include "sd-id128.h"
-
-
-@@ -80,14 +81,14 @@
-                                 return 0;
-                         }
-
--                } else if (IN_SET(detect_vm(), VIRTUALIZATION_KVM, VIRTUALIZATION_AMAZON, VIRTUALIZATION_QEMU, VIRTUALIZATION_XEN)) {
-+                } else if (IN_SET(detect_vm(), VIRTUALIZATION_KVM, VIRTUALIZATION_AMAZON, VIRTUALIZATION_QEMU, VIRTUALIZATION_XEN) || sd_id128_is_firmware(*ret)) {
-
-                         /* If we are not running in a container, see if we are running in a VM that provides
-                          * a system UUID via the SMBIOS/DMI interfaces.  Such environments include QEMU/KVM
-                          * with the -uuid on the qemu command line or the Amazon EC2 Nitro hypervisor. */
-
-                         if (id128_get_product(ret) >= 0) {
--                                log_info("Initializing machine ID from VM UUID.");
-+                                log_info("Initializing machine ID from SMBIOS/DMI UUID.");
-                                 return 0;
-                         }
-                 }
-@@ -140,7 +141,7 @@
-         }
-
-         /* A we got a valid machine ID argument, that's what counts */
--        if (sd_id128_is_null(machine_id)) {
-+        if (sd_id128_is_null(machine_id) || sd_id128_is_firmware(machine_id)) {
-
-                 /* Try to read any existing machine ID */
-                 if (id128_read_fd(fd, ID128_FORMAT_PLAIN, &machine_id) >= 0)
-Index: src/systemd/sd-id128.h
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/src/systemd/sd-id128.h b/src/systemd/sd-id128.h
---- a/src/systemd/sd-id128.h	(revision 99a1ef8c9cdcb0fc15265533dae2bbd8f2d7a3a5)
-+++ b/src/systemd/sd-id128.h	(revision 3ca51e69a32b4582cdbba583b3119b7555a4bd85)
-@@ -126,11 +126,16 @@
-         return a.qwords[0] == 0 && a.qwords[1] == 0;
- }
-
-+_sd_pure_ static __inline__ int sd_id128_is_firmware(sd_id128_t a) {
-+        return a.qwords[0] == 0 && a.qwords[1] == 1;
-+}
+diff --git a/src/shared/machine-id-setup.h b/src/shared/machine-id-setup.h
+--- a/src/shared/machine-id-setup.h	(revision 8f4dab049074d31c31af2bb9eb76f9f4f08e3711)
++++ b/src/shared/machine-id-setup.h	(date 1714255351713)
+@@ -3,5 +3,10 @@
+ 
+ #include <stdbool.h>
+ 
++typedef enum MachineIdSetupFlags {
++        MACHINE_ID_SETUP_FORCE_TRANSIENT = 1 << 0,
++        MACHINE_ID_SETUP_FORCE_FIRMWARE  = 1 << 1,
++} MachineIdSetupFlags;
 +
- _sd_pure_ static __inline__ int sd_id128_is_allf(sd_id128_t a) {
-         return a.qwords[0] == UINT64_C(0xFFFFFFFFFFFFFFFF) && a.qwords[1] == UINT64_C(0xFFFFFFFFFFFFFFFF);
- }
-
- #define SD_ID128_NULL ((const sd_id128_t) { .qwords = { 0, 0 }})
-+#define SD_ID128_FIRMWARE ((const sd_id128_t) { .qwords = { 0, 1 }})
- #define SD_ID128_ALLF ((const sd_id128_t) { .qwords = { UINT64_C(0xFFFFFFFFFFFFFFFF), UINT64_C(0xFFFFFFFFFFFFFFFF) }})
-
- _sd_pure_ static __inline__ int sd_id128_in_setv(sd_id128_t a, va_list ap) {
+ int machine_id_commit(const char *root);
+-int machine_id_setup(const char *root, bool force_transient, sd_id128_t requested, sd_id128_t *ret);
++int machine_id_setup(const char *root, sd_id128_t machine_id, MachineIdSetupFlags flags, sd_id128_t *ret);
