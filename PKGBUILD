@@ -4,11 +4,11 @@ _pkgname=MultiRNAflow
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="An R package for analysing RNA-seq raw counts with several biological conditions and different time points"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biobase
   r-complexheatmap
@@ -45,11 +45,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('cefc109896f4cb34b4ee6a09ae966f42')
-sha256sums=('5e7e81f1e25b61abd3f2cdee0e39527ccd0b92a2029b3d88a148d905478378ed')
+b2sums=('f177caeb4ada5c30e51d852e816b2bfaad64149e2b6cba1a287f0b799a000998684bb54f6bb77cb49050a507a5cee5c5b9456ae3084362519ff8e67045321e41')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
