@@ -3,7 +3,7 @@
 pkgname=python-youseedee
 _pyname=${pkgname#python-}
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface to the Unicode Character Database'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
@@ -14,6 +14,7 @@ depends=(python
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_pyname-$pkgver"
+# source=("$url/archive/v$pkgver/$_archive.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
 sha256sums=('850908f2476ba292e23bce8b5c3cba79099adc5120e3c80b95d53b6c583d7732')
 

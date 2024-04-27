@@ -1,7 +1,7 @@
 pkgbase = python-youseedee
 	pkgdesc = Interface to the Unicode Character Database
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simoncozens/youseedee
 	arch = any
 	license = MIT
