@@ -2,13 +2,13 @@
 
 pkgname=pypipe-git
 _gitpkgname=pypipe
-pkgver=r42.b621c13
+pkgver=r83.29f6595
 pkgrel=1
 pkgdesc='Python command-line tool for pipeline processing'
 arch=('any')
 url='https://github.com/bugen/pypipe'
-license=('Apache')
-depends=('python')
+license=('Apache-2.0')
+depends=('bash' 'python')
 makedepends=(
   'git'
   'python-build'
@@ -19,7 +19,7 @@ makedepends=(
 checkdepends=('python-pytest')
 provides=('pypipe')
 conflicts=('pypipe')
-options=('!strip')
+options=('!debug' '!strip')
 
 source=(
   "${_gitpkgname}::git+https://github.com/bugen/pypipe.git"
