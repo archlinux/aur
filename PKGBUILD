@@ -3,7 +3,7 @@
 # Contributor: Sematre <sematre at gmx dot de>
 
 pkgname=yt-dlp-drop-in
-pkgver=2023.12.30
+pkgver=2024.04.09
 pkgrel=1
 pkgdesc='Provide both youtube-dl command and python imports using yt-dlp'
 arch=('any')
