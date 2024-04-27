@@ -1,10 +1,10 @@
 pkgbase = r-rhdf5client
 	pkgdesc = Access HDF5 content from HDF Scalable Data Service
 	pkgver = 1.24.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/rhdf5client
 	arch = x86_64
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r-data.table
 	depends = r-delayedarray
 	depends = r-httr
