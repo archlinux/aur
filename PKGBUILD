@@ -1,23 +1,23 @@
 
 pkgname='python2-psutil'
-pkgver=5.9.4
+pkgver=5.9.8
 pkgrel=1
 pkgdesc='A cross-platform process and system utilities module for Python2'
 arch=('x86_64')
 url='https://github.com/giampaolo/psutil'
 license=('custom: BSD')
 makedepends=('python2' 'python2-setuptools')
-source=("https://github.com/giampaolo/psutil/archive/release-$pkgver.tar.gz")
-sha512sums=('ea131f301e1464bde52493910631d3cb3c8ac6a8456c19218c24433d94c11eada1cb553496838ba42eff0d6ea2ed8be68115261439fdf6ea4a642fa3fc18dc1c')
+source=("https://files.pythonhosted.org/packages/90/c7/6dc0a455d111f68ee43f27793971cf03fe29b6ef972042549db29eec39a2/psutil-$pkgver.tar.gz")
+sha512sums=('6ddeed937119a930bb7b9556ff329f054e9429b8457c9a15d99cb105271297117abba587a974d02760bb8b6b244734973a676bdff6b533a53ce587858e48f337')
 
 build() {
-  cd psutil-release-$pkgver
+  cd "psutil-$pkgver"
 
   python2 setup.py build
 }
 
 package() {
-  cd psutil-release-$pkgver
+  cd "psutil-$pkgver"
 
   python2 setup.py install --root="$pkgdir" --optimize=1
   install -D -m 644 LICENSE "$pkgdir/"usr/share/licenses/$pkgname/LICENSE

@@ -1,13 +1,13 @@
 pkgbase = python2-psutil
 	pkgdesc = A cross-platform process and system utilities module for Python2
-	pkgver = 5.9.4
+	pkgver = 5.9.8
 	pkgrel = 1
 	url = https://github.com/giampaolo/psutil
 	arch = x86_64
 	license = custom: BSD
 	makedepends = python2
 	makedepends = python2-setuptools
-	source = https://github.com/giampaolo/psutil/archive/release-5.9.4.tar.gz
-	sha512sums = ea131f301e1464bde52493910631d3cb3c8ac6a8456c19218c24433d94c11eada1cb553496838ba42eff0d6ea2ed8be68115261439fdf6ea4a642fa3fc18dc1c
+	source = https://files.pythonhosted.org/packages/90/c7/6dc0a455d111f68ee43f27793971cf03fe29b6ef972042549db29eec39a2/psutil-5.9.8.tar.gz
+	sha512sums = 6ddeed937119a930bb7b9556ff329f054e9429b8457c9a15d99cb105271297117abba587a974d02760bb8b6b244734973a676bdff6b533a53ce587858e48f337
 
 pkgname = python2-psutil
