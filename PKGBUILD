@@ -2,16 +2,28 @@
 pkgbase=python-astroscrappy-git
 _gitname=astroscrappy
 pkgname=("python-${_gitname}-git" "python-${_gitname}-doc-git")
-pkgver=1.1.0.r6.g2dfdc15
+pkgver=1.1.0.r44.gfd6cff5
 pkgrel=1
 pkgdesc="Speedy Cosmic Ray Annihilation Package in Python"
 arch=('i686' 'x86_64')
 url="https://astroscrappy.readthedocs.io"
-license=('MIT')
-makedepends=('git' 'python-setuptools-scm' 'cython' 'python-extension-helpers' 'python-astropy' 'python-sphinx-astropy')
-checkdepends=('python-pytest-doctestplus' 'python-scipy')
-source=("git+https://github.com/astropy/astroscrappy")
-md5sums=('SKIP')
+license=('BSD-3-Clause')
+makedepends=('git'
+             'python-setuptools-scm>=6.2'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             'cython'
+             'python-extension-helpers>=1'
+             'python-numpy'
+             'python-sphinx-astropy')
+checkdepends=('python-pytest-doctestplus'
+              'python-astropy'
+              'python-scipy')
+source=("git+https://github.com/astropy/astroscrappy"
+        'setup.cfg')
+md5sums=('SKIP'
+         '60e14b6062e639028bf12059193ae884')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
@@ -22,27 +34,32 @@ pkgver() {
     )
 }
 
+get_pyver() {
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
+
 prepare() {
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+    cd ${srcdir}/${_gitname}
+
+    ln -rs ${srcdir}/setup.cfg .
 }
 
 build() {
     cd ${srcdir}/${_gitname}
-    python setup.py build
+    python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
-    cd ${srcdir}/${_gitname}/docs
-    PYTHONPATH="../build/lib.linux-${CARCH}-${_pyver}" make html
+    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_gitname}
 
-    PYTHONPATH="build/lib.linux-${CARCH}-${_pyver}" pytest "build/lib.linux-${CARCH}-${_pyver}" || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-astroscrappy-git() {
-    depends=('python>=3.7' 'python-astropy' 'cython>=0.21')
+    depends=('python>=3.9' 'python-astropy')
     optdepends=('python-astroscrappy-doc: Documentation for Astro-SCRAPPY')
     provides=("${pkgname%-git}")
     conflicts=("${pkgname%-git}")
@@ -50,11 +67,12 @@ package_python-astroscrappy-git() {
 
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" licenses/*
     install -Dm644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 package_python-astroscrappy-doc-git() {
     pkgdesc="Documentation for Astro-SCRAPPY"
+    arch=('any')
     provides=("${pkgname%-git}")
     conflicts=("${pkgname%-git}")
     cd ${srcdir}/${_gitname}/docs/_build
