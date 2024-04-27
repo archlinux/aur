@@ -1,7 +1,7 @@
 pkgbase = r-netactivity
 	pkgdesc = Compute gene set scores from a deep learning framework
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/NetActivity
 	arch = any
 	license = MIT
@@ -22,6 +22,6 @@ pkgbase = r-netactivity
 	optdepends = r-tidyverse
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/NetActivity_1.4.0.tar.gz
 	md5sums = 3493b441d888adf6d3a089936bbeafd6
-	sha256sums = 93e4b6bfe258f29d9d6123dfc0f0aaf332e537211025a4d6c975ee624032324a
+	b2sums = cdb5973bb6d24d9f50a0330892c08383d57641be6c5fcf341c4291b28e337ad046a5111c73c179ba53bf159217f2600abf5c5f6559b5126e5984416d4ee51bbf
 
 pkgname = r-netactivity

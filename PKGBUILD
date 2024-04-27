@@ -4,11 +4,11 @@ _pkgname=NetActivity
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Compute gene set scores from a deep learning framework"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-airway
   r-delayedarray
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('3493b441d888adf6d3a089936bbeafd6')
-sha256sums=('93e4b6bfe258f29d9d6123dfc0f0aaf332e537211025a4d6c975ee624032324a')
+b2sums=('cdb5973bb6d24d9f50a0330892c08383d57641be6c5fcf341c4291b28e337ad046a5111c73c179ba53bf159217f2600abf5c5f6559b5126e5984416d4ee51bbf')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
