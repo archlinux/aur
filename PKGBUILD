@@ -1,4 +1,5 @@
-# Maintainer: Ming Yue <mingfengpigeon@gmail.com>
+# Maintainer: Sniventals <Creeperxie@outlook.com>
+# Maintainer: Creeperxie <mingyue@ixcm.onmicrosoft.com>
 
 pkgname='liteloader-qqnt-markdown-bin'
 _pkgname='LiteLoaderQQNT-Markdown'
