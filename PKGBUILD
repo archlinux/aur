@@ -4,11 +4,11 @@ _pkgname=gDR
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Umbrella package for R packages in the gDR suite"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-gdrcore
   r-gdrimport
@@ -35,11 +35,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('abefb906e5c9ec014a443b0367844ac9')
-sha256sums=('a9d1ebab30108c72a544a933c49264aad4435ae79e01f478ee6dd8d07c93e57d')
+b2sums=('8935d38e130675b1193a22b4630614640749e1b188209b96070c000e124b5da15b2eb94d0f113573d39046d266cf28443d08d1996939da3007cf6676db5da45a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
