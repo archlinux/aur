@@ -1,7 +1,7 @@
 pkgbase = pg_cron
 	pkgdesc = Run periodic jobs in PostgreSQL
 	pkgver = 1.6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/citusdata/pg_cron/
 	arch = x86_64
 	arch = armv5h
@@ -12,8 +12,6 @@ pkgbase = pg_cron
 	makedepends = postgresql
 	makedepends = clang
 	makedepends = llvm
-	makedepends = clang15
-	makedepends = llvm15
 	depends = postgresql-libs
 	source = pg_cron-1.6.2.tar.gz::https://github.com/citusdata/pg_cron/archive/v1.6.2.tar.gz
 	sha512sums = 4202f0a35c07d090be817284ff518d97e31ea9860c0e0b0ac9657539b1e5695a03246faa9c2bb793abdf2b971ec0792732fcf43b06bb94537272a613e6bd91ba
