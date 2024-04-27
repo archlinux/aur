@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cast_control
-pkgver=0.11.8.post0
-pkgrel=3
+pkgver=0.14.0
+pkgrel=1
 epoch=1
 pkgdesc="Control Chromecasts from Linux and D-Bus"
 arch=('any')
@@ -14,8 +14,7 @@ depends=(
   'python-daemons'
   'python-gobject'
   'python-mpris_server'
-  'python-pychromecast>=9.2.0'
-  'python-pychromecast<9.3.0' 
+  'python-pychromecast'
   'python-pydbus'
   'python-typing_extensions'
 )
@@ -30,8 +29,8 @@ optdepends=(
   'gnome-shell-extension-mpris-indicator-button: MPRIS indicator for GNOME'
 )
 conflicts=('chromecast_mpris')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('2f57b84dff0deed53863a345b1f3a56e14e9ad27217d958998d015e3d0d2ac1b')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('01b88c1d9305d812222f5598597519bd52ab0568246b876fa2799833fb69abbd')
 
 build() {
   cd "$pkgname-$pkgver"
