@@ -15,10 +15,7 @@ pkgdesc='A discovery-based unittest extension (deprecated)'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
 license=('LGPL2.1')
-depends=(
-  'python2'
-  'python2-setuptools'
-)
+makedepends=('python2' 'python2-setuptools')
 _tarname="${_name}-${pkgver}"
 source=("https://files.pythonhosted.org/packages/58/a5/0dc93c3ec33f4e281849523a5a913fa1eea9a3068acfa754d44d88107a44/nose-${pkgver}.tar.gz")
 b2sums=('4bb479b2786f813f9e9a5fd401e30023a473a053ae013d7887be15af415422c09fb399af6058ae99ed65c5fa4da84eb274eb805e895ca74db159d952905f5be4')
