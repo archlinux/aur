@@ -14,7 +14,7 @@ unset _pkgtype
 # basic info
 _pkgname="duckstation"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.1.6461
+pkgver=0.1.6658
 pkgrel=1
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
@@ -51,7 +51,7 @@ makedepends=(
 )
 
 if [ "${_build_git::1}" != "t" ]; then
-  _commit=359678a1678137f584760991dd4d45574fdbae12
+  _commit=4e0c417add264226b3db065c1466791f0591a1b5
 
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git#commit=$_commit")
@@ -79,6 +79,13 @@ else
     printf "%s.r%s.g%s" "${_pkgver:?}" "${_revision:?}" "${_commit:?}"
   }
 fi
+
+prepare() {
+  # remove shaderc semantic debug
+  sed -e '/vk_khr_shader_non_semantic_info/d' \
+    -e '/SetEmitNonSemanticDebugInfo/d' \
+    -i "$_pkgsrc/src/util/vulkan_pipeline.cpp"
+}
 
 build() {
   export CC CXX CFLAGS CXXFLAGS LDFLAGS LTOFLAGS
@@ -130,5 +137,5 @@ END
   install -dm755 "$pkgdir/usr/share/pixmaps/"
   ln "$pkgdir/opt/$_pkgname/resources/images/duck.png" "$pkgdir/usr/share/pixmaps/duckstation-qt.png"
 
-  chmod -R u=rwX,go=rX "$pkgdir/"
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
