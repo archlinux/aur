@@ -4,11 +4,11 @@ _pkgname=Moonlight2R
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Identify oncogenes and tumor suppressor genes from omics data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-annotationhub
   r-biobase
@@ -55,11 +55,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('45af1bc580f9231cb2a83eae7517d3b8')
-sha256sums=('e306a3aa11700652a2f1ada4cec3eed4112ec43d3392da550538b8c4bf6ee909')
+b2sums=('13fe521f228ce42b6693125e36e246bd09281441dc90224f891cb4e87866b94fb8ef40b6ea0ab2569bf6fa66efb16dfd55df517a3d2abde41abbdda881f4eb48')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
