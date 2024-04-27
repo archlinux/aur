@@ -4,11 +4,11 @@ _pkgname=vsclust
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Feature-based variance-sensitive quantitative clustering"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-limma
   r-matrixstats
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0c492a6d65d0b230211a0f95706b51a4')
-sha256sums=('3438992407e27098a9304721bbb07d30fb85d3c238bdda0d96a5cca9d0e9748d')
+b2sums=('5f8f8849b5eb42cca0c73767cf8eae95f22473855054021ab78ecfdf2dc1725de17f06a477b742fccb40b72ab4f5af5a7f8ad083cdb28e4abee95da6b0bd737c')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
