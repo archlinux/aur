@@ -1,7 +1,7 @@
 pkgbase = r-hicool
 	pkgdesc = Processing Hi-C raw data within R
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/HiCool
 	arch = any
 	license = MIT
