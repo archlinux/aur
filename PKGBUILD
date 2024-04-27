@@ -12,7 +12,8 @@ license=('MIT')
 depends=('python' 'python-setuptools' 'python-pytoml' 'python-dbussy-git')
 makedepends=('git')
 optdepends=('cmus: C* Music Player (native mpris support)'
-            'mpdris2-py3-git: mpris plugin for mpd'
+            'mpdris2: mpris plugin for mpd'
+            'mpd-mpris: mpris plugin for mpd'
             'mpv-mpris: mpris plugin for mpv'
             'vlc: VLC Media Player (native mpris support)')
 provides=("${_pkgbase}")
