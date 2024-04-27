@@ -1,0 +1,12 @@
+[Unit]
+Description=Ente webserver
+After=network.target
+
+[Service]
+User=root
+WorkingDir=/var/www/ente/
+ExecStart=/usr/bin/yarn run dev
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
