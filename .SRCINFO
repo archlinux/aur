@@ -1,7 +1,7 @@
 pkgbase = r-gemma.r
 	pkgdesc = A wrapper for Gemma's Restful API to access curated gene expression data and differential expression analyses
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/gemma.R
 	arch = any
 	license = Apache
@@ -41,6 +41,6 @@ pkgbase = r-gemma.r
 	optdepends = r-viridis
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/gemma.R_2.0.0.tar.gz
 	md5sums = 404ce4fa50032ebf727cfdccece32ba2
-	sha256sums = 0524f520b5b6f63438b35157be3eb35b981d4c431e54081070d3cdfd57d095cd
+	b2sums = 7d86b13eba6c5563679b45ffec4b119259ffed9e983ed4caaf5286001a4364886a07c06431a620ff458029a54e1a3a0e797f4fc09356b4d0d02e93df06b03fad
 
 pkgname = r-gemma.r
