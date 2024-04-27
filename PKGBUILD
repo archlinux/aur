@@ -1,26 +1,22 @@
 #Maintainer: VPeti1 (Vasko Peter) 
 
 pkgname=cwplus
-pkgver=1
+pkgver=2
 pkgrel=1
 arch=('x86_64')
 
 license=('GPL2')
 pkgdesc="The GUI version of OpenCW/CW-I"
 
-depends=('gcc' 'python3')
+depends=('gcc' 'git' 'python3')
 
 source=("https://github.com/VPeti1/CWAcces/raw/main/cwplus.tar.gz")
 
-sha256sums=('39abd6efeede6791f5664913e1eaedcfa5a91a6d94c508b5b581c098d11f41b6')
+sha256sums=('95602551c1c089520b60d26578bdb136ca721d52a4caa6d8395a3c71e4e371d2')
 
 build() {
-    sudo rm -rf /usr/cw/
-    sudo rm -rf /bin/cwplus
-    sudo mkdir /usr/cw
     cd "$srcdir"
-    sudo cp *.py /usr/cw
-    g++ -o cwplus run.cpp
+    g++ -o cwplus installer.cpp
 }
 
 package() {
