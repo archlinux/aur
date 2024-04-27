@@ -4,11 +4,11 @@ _pkgname=phantasusLite
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Loading and annotation RNA-Seq counts matrices"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biobase
   r-data.table
@@ -30,11 +30,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('5fe0e101ac53a89dd49e077d5fb4c07d')
-sha256sums=('8a2f8cd5194d5e3c3626d2e80fb27a0f98cada91ec8c59d2466b744b0105055f')
+b2sums=('c28a7ab9128ccff247761208e759b9c462e08cbb2e50d3057fe1e0e2aa2a801260dfc4ddb31be6fc9f1ea295b91f423ead3365064d6296aeaad2c5c16666394c')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
