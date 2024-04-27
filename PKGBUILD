@@ -1,9 +1,7 @@
 # Maintainer: sawntoe <sawntoe@gmail.com>
 
-pkgname='openarena-git'
+pkgname='openarena-complete-git'
 pkgver=0.8.8.r2441.74046d7a
-_relver='088'
-_openarenaver='0.8.8'
 pkgrel=1
 makedepends=('git' 'make' 'grep' 'zip')
 conflicts=('openarena')
