@@ -5,16 +5,17 @@ pkgname=logcat-color3
 pkgver=0.10.0
 # curl https://api.github.com/repos/yan12125/logcat-color3/git/ref/tags/v$pkgver | jq -r .object.sha
 _tag=ee5c73183b4ab58e0103bddbe1119632ce43e500
-pkgrel=1
+pkgrel=2
 pkgdesc='A colorful and highly configurable alternative to the standard "adb logcat" command from the Android SDK'
 arch=(any)
 url='https://github.com/yan12125/logcat-color3'
-license=(Apache)
-depends=(python python-colorama)
+# https://github.com/yan12125/logcat-color3/blob/v0.10.0/setup.cfg#L11
+license=('Apache-2.0')
+depends=(python python-colorama python-pyasyncore python-pyasynchat)
 makedepends=(git python-build python-installer python-setuptools python-setuptools-scm python-wheel)
 conflicts=(logcat-color)
 source=("git+https://github.com/yan12125/logcat-color3?signed#tag=$_tag")
-sha256sums=('SKIP')
+sha256sums=('b86493ccd1c6e763e6dbc8cfed12baca3fd0ca4b48ccd6ec0755e418fddce7e6')
 validpgpkeys=(
   'E62545315B012B69C8C94A1D56EC201BFC794362'
 )
