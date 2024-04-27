@@ -4,11 +4,11 @@ _pkgname=magpie
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="MeRIP-Seq data Analysis for Genomic Power Investigation and Evaluation"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-annotationdbi
   r-aod
@@ -42,11 +42,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('019cf9b038353b96851fe65fa55f3d08')
-sha256sums=('71b1fe8436fa3bd8037f002969f304b9588400cabcefafa3b851344ee914c662')
+b2sums=('99593ec846914886a4f61866c24eef7b02741a9cfa05839fa12ab9ee92439e21a226f3963d2fc0d5ec4f8aef527208188c467af5d694a121f1aaeb83029639b1')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
