@@ -5,11 +5,11 @@ _pkgname=PeacoQC
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Peak-based selection of high quality cytometry data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
   r-circlize
   r-complexheatmap
@@ -26,11 +26,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('fa296e0522b97273b692874b5ec23b97')
-sha256sums=('1c9b1792e532b816d4859bc4769b3e5fdaae3632ed837d7bb9c25f4f53b40884')
+b2sums=('dd18e3e1c267e1d0c75c967c5c01f5a0d8b8e0cdf8b8588aae83a79c62f34bfd39ce715a78380292edfb0d67c9eb734e813948580683a1806c7c52ef96b6f204')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
