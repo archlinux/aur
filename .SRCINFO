@@ -1,6 +1,6 @@
 pkgbase = sofia-woodwinds-bin
 	pkgver = 1.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://librewave.com/product/sofia-woodwinds/
 	arch = x86_64
 	license = EULA
