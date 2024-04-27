@@ -3,11 +3,11 @@
 pkgname=python-usfm2osis
 _pypiname="${pkgname#python-}"
 pkgver=0.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Tools for converting Bibles from USFM to OSIS XML'
 arch=(any)
 url="https://github.com/chrislit/$_pypiname"
-license=(GPLv3)
+license=(GPL-3.0-only)
 depends=(python)
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
