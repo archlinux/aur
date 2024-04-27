@@ -3,7 +3,7 @@
 _pkgbasename=connexion
 pkgname=python-connexion
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Connexion is a modern Python web framework that makes spec-first and api-first development easy"
 arch=(any)
 url="https://github.com/spec-first/connexion"
