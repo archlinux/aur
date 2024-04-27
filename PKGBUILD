@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=atopile
-pkgver=0.2.19
+pkgver=0.2.44
 pkgrel=1
 pkgdesc="A tool to build electronic circuit boards with code"
 arch=(any)
@@ -11,18 +11,23 @@ depends=(
   python
   python-antlr4
   python-attrs
+  python-case-converter
+  python-cattrs
   python-click
+  python-deepdiff
+  python-eseries
+  python-flask
+  python-flask-cors
   python-gitpython
   python-jinja
   python-natsort
-  python-omegaconf
   python-pint
   python-requests
   python-rich
   python-ruamel-yaml
   python-semver
   python-toolz
-  python-yaml
+  python-waitress
 )
 makedepends=(
   python-build
@@ -31,8 +36,8 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('350dfffb4a85d8fea3ccf14efdb2fbcb5bd70e30b32d1f98f85960a8f45155bc')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('1733657bf78d0fdff0cf25d97040433bf1c281d1d3c9605a9465b6d044aecda9')
 
 _archive="$pkgname-$pkgver"
 
@@ -51,8 +56,7 @@ check() {
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  pytest --override-ini="addopts=" \
-    --deselect tests/test_assertions.py::test_follow_the_dots
+  pytest --override-ini="addopts="
 }
 
 package() {
