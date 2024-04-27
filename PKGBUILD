@@ -1,7 +1,7 @@
 # Maintainer: mrdjango <shahbazi.mostafa@outlook.com>
 
 _pkgname=hiddify-next
-pkgname=${_pkgname}-bin
+pkgname=hiddify-next-aur-x64
 pkgver=1.1.1
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free"
