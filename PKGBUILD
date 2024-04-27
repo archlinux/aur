@@ -4,11 +4,11 @@ _pkgname=iSEEpathways
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="iSEE extension for panels related to pathway analysis"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-ggplot2
   r-isee
@@ -40,11 +40,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('52b84dcbd5e5ab0a6bbdc27120d7e86a')
-sha256sums=('ee415ded9e44d0ef1eb82419063d80f71d722d1c069fcb010c17f57bc63b712b')
+b2sums=('071a66ceef497d2e82e39fe0c1a20b16324137d1563b80111f5b368168d308943e31fd9909192eb08cf76593ec6708c949c2a3c23ec5f1502aea212a49ae2547')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
