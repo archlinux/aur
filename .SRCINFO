@@ -1,10 +1,10 @@
 pkgbase = r-epimix
 	pkgdesc = an integrative tool for the population-level analysis of DNA methylation
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bioconductor.org/packages/EpiMix
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-biocgenerics
 	checkdepends = r-runit
 	checkdepends = r-sesamedata

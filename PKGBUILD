@@ -4,11 +4,11 @@ _pkgname=EpiMix
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="an integrative tool for the population-level analysis of DNA methylation"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-annotationdbi
   r-annotationhub
