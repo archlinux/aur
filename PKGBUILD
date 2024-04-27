@@ -4,11 +4,11 @@ _pkgname=Motif2Site
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Detect binding sites from motifs and ChIP-seq experiments, and compare binding sites across conditions"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-biocgenerics
   r-biostrings
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('e8228f1deb42f2d4b3867a90a6eba14c')
-sha256sums=('04c6adcdc516e572a34c2842cb61b3929b1e9b97458cbd39260d047f874bc568')
+b2sums=('e097ee487105a591cd2ca279e104c7235b6abfec99c3ea15631701e9d41d07bc1a3fe96a69c493f561f242e33eb284f13daaccd7c3e8dcf4ec8b452d1bc888f5')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
