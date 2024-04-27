@@ -1,10 +1,10 @@
 pkgbase = r-spotclean
 	pkgdesc = SpotClean adjusts for spot swapping in spatial transcriptomics data
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/SpotClean
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-r.utils
 	checkdepends = r-testthat
 	depends = r-dplyr
@@ -28,6 +28,6 @@ pkgbase = r-spotclean
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpotClean_1.4.1.tar.gz
 	md5sums = b6e7be89394d959837993f3fd385ad55
-	sha256sums = 64b09ee1226b18db386581e2a73b7557780711583f2d83f03b4ea7f51734ca1a
+	b2sums = e023942be4dd01960ce75326997e9eb2f160981fd1aba08778c34881a0352ce2e711a86e03f534bafcdce0357ccd1fb35414d04570cbf6443fc7a450cf99c4db
 
 pkgname = r-spotclean
