@@ -1,21 +1,21 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=filezilla-server
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="A simple FTP, FTPS or SFTP server"
 arch=(x86_64)
 url="https://filezilla-project.org/download.php?type=server"
 license=(GPL3)
-depends=(libfilezilla pugixml)
-makedepends=(wxwidgets-gtk3)
+depends=(libfilezilla)
+makedepends=(wxwidgets-gtk3 pugixml)
 optdepends=(wxwidgets-gtk3)
 source=("https://download.filezilla-project.org/server/FileZilla_Server_${pkgver}_src.tar.xz")
-sha256sums=('b6f8c01bc94daf3789539ac63ee08c7743a1256852dc6146b40f9ab7af219f2e')
+sha256sums=('301f2871fe07ffda7b05a9c3f0c3ca9ebac498362d18094abeaf83380f18889f')
 
 build() {
   cd "filezilla-server-${pkgver}"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-pugixml=system
   #make
 }
 
