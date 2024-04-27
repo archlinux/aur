@@ -3,7 +3,7 @@
 pkgname=python-apg-py
 _pyname=${pkgname#python-}
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='an ABNF parser generator creating recursive-descent parsers from a superset of ABNF'
 arch=(any)
 url="https://github.com/ldthomas/$_pyname"
