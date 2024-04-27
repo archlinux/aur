@@ -1,8 +1,8 @@
-# Maintainer: Martin Rys <rys.pw/contact>
+# Maintainer: Martin Rys <rys.rs/contact>
 
 pkgname=sc-controller
 pkgver=0.4.8.13
-pkgrel=1
+pkgrel=2
 pkgdesc='User-mode driver and GTK3 based GUI for Steam Controller'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Ryochan7/sc-controller'
