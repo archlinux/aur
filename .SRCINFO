@@ -1,10 +1,10 @@
 pkgbase = r-xcore
 	pkgdesc = xcore expression regulators inference
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/xcore
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	checkdepends = r-ridge
 	checkdepends = r-testthat
 	depends = r-delayedarray
