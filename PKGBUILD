@@ -4,11 +4,11 @@ _pkgname=INSPEcT
 _pkgver=1.32.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Modeling RNA synthesis, processing and degradation with RNA-seq data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   r-biobase
   r-biocgenerics

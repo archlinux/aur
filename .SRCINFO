@@ -1,10 +1,10 @@
 pkgbase = r-inspect
 	pkgdesc = Modeling RNA synthesis, processing and degradation with RNA-seq data
 	pkgver = 1.32.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/INSPEcT
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	depends = r-biobase
 	depends = r-biocgenerics
 	depends = r-biocparallel
