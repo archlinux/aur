@@ -2,7 +2,7 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -38,7 +38,7 @@ optdepends=(
   'python-cohere: support for Cohere models'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('aa60dc9e18cd008d83a677846be15dd6ea451eaaea1fe8c47c06c0a0afbed16b')
+sha256sums=('67b97a25df935a3d2dfe3402eaa79fe9cdb8d3bf971ef9a8251ad6da9ae506a2')
 
 _archive="$_pkgname-$pkgver"
 
