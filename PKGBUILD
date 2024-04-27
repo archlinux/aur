@@ -1,103 +1,83 @@
-# Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.9.1.r25.gb0c1925
-pkgrel=1
+pkgver=2.10.2.r14.g74c89cc0
+pkgrel=2
 pkgdesc="Like neofetch, but much faster because written in c"
-arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64" "riscv64")
-url="https://github.com/LinusDierheimer/fastfetch"
-license=("MIT")
-
-depends=(
-  "glibc"
-)
+arch=(x86_64 i686 pentium4 armv7h aarch64 riscv64)
+url="https://github.com/fastfetch-cli/fastfetch"
+license=(MIT)
+depends=(glibc gcc-libs yyjson)
 makedepends=(
-  "git"
-  "cmake"
-  "chafa"
-  "dbus"
-  "dconf"
-  "glib2"
-  "imagemagick"
-  "libnm"
-  "libpulse"
-  "libx11"
-  "libxcb"
-  "libxrandr"
-  "mesa"
-  "ocl-icd"
-  "opencl-headers"
-  "pciutils"
-  "vulkan-headers"
-  "vulkan-icd-loader"
-  "wayland"
-  "xfconf"
-  "zlib"
+  chafa
+  cmake
+  dbus
+  dconf
+  ddcutil
+  directx-headers
+  git
+  imagemagick
+  libnm
+  libpulse
+  libxcb
+  libxrandr
+  mesa
+  ocl-icd
+  opencl-headers
+  vulkan-headers
+  vulkan-icd-loader
+  wayland
+  xfconf
+  zlib
 )
 optdepends=(
-  "chafa: Image output as ascii art"
-  "dbus: Bluetooth, Media & Player modules"
-  "dconf: Output for values that are only stored in DConf"
-  "glib2: Output for values that are only stored in GSettings"
-  "imagemagick: Image output using sixel or kitty graphics protocol"
-  "libdrm: Improved AMD GPU output"
-  "libnm: Better wifi support"
-  "libpulse: Sound module"
-  "libx11: Improved X11 support (resolution)"
-  "libxcb: Improved X11 support (resolution + multi monitor)" 
-  "libxrandr: Improved X11 support (resolution + multi monitor)"
-  "mesa: OpenGL module"
-  "nix: self contained nix package count"
-  "ocl-icd: OpenCL module"
-  "pciutils: GPU module"
-  "vulkan-icd-loader: Vulkan module & GPU module fallback"
-  "wayland: Improved Wayland support (resolution + multi monitor)"
-  "xfconf: XFWM theme + xfce-terminal font"
-  "zlib: Faster image output when using kitty graphics protocol"
+  'chafa: Image output as ascii art'
+  'dbus: Bluetooth, Player & Media detection'
+  'dconf: Needed for values that are only stored in DConf + Fallback for GSettings'
+  'ddcutil: Brightness detection of external displays'
+  'directx-headers: GPU detection in WSL'
+  'glib2: Output for values that are only stored in GSettings'
+  'imagemagick: Image output using sixel or kitty graphics protocol'
+  'libnm: Wifi detection'
+  'libpulse: Sound detection'
+  'mesa: Needed by the OpenGL module for gl context creation.'
+  'libxrandr: Multi monitor support'
+  'ocl-icd: OpenCL module'
+  'hwdata: GPU output'
+  'vulkan-icd-loader: Vulkan module & fallback for GPU output'
+  'xfconf: Needed for XFWM theme and XFCE Terminal font'
+  'zlib: Faster image output when using kitty graphics protocol'
+  'libdrm: Displays detection'
 )
-
-_provides_and_conflicts=(
-  "fastfetch"
-)
-provides=("${_provides_and_conflicts[@]}")
-conflicts=("${_provides_and_conflicts[@]}")
-
-_src_dir="${pkgname}"
-source=("${_src_dir}::git+https://github.com/LinusDierheimer/fastfetch.git#branch=dev")
+provides=(fastfetch)
+conflicts=(fastfetch)
+source=("git+https://github.com/fastfetch-cli/fastfetch.git#branch=dev")
 sha256sums=("SKIP")
 
-backup=("etc/fastfetch/config.conf")
-
-_build_dir="build"
-
 pkgver() {
-  cd "${_src_dir}"
+  cd fastfetch
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake \
-    -B "${_build_dir}" \
-    -S "${_src_dir}" \
-    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
+  cmake -B build -S "fastfetch" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_TESTS='ON' \
+    -DBUILD_TESTS=ON \
     -DENABLE_SQLITE3=OFF \
     -DENABLE_RPM=OFF \
     -DENABLE_IMAGEMAGICK6=OFF \
-    -DENABLE_LIBCJSON=OFF \
-    -Wno-dev
+    -DENABLE_SYSTEM_YYJSON=ON \
 
-  cmake \
-    --build "${_build_dir}"
+  cmake --build build
 }
 
 check() {
-  ctest --test-dir "${_build_dir}" --output-on-failure
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  DESTDIR="${pkgdir}" \
-  cmake \
-    --install "${_build_dir}"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -D fastfetch/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
