@@ -40,6 +40,6 @@ pkgbase = slippi-online
 	sha256sums = SKIP
 
 pkgname = slippi-online
-	pkgdesc = Super Smash Bros. Melee rollback netcode - git version
+	pkgdesc = Super Smash Bros. Melee rollback netcode
 	provides = slippi-online
 	conflicts = slippi-online
