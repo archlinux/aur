@@ -3,7 +3,7 @@
 _pkgname=python-storage
 pkgname=python-google-cloud-storage
 pkgver=2.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Cloud Storage API client library'
 arch=(any)
 url=https://github.com/googleapis/python-storage
@@ -55,8 +55,8 @@ package() {
     --destdir="${pkgdir}" \
     dist/*.whl
 
-  install -Dm644 SECURITY.md -t "${pkgdir}"/usr/share/doc/${pkgname}/
-  install -Dm644 docs/build/google-cloud-storage.1 -t "${pkgdir}"/usr/share/man/man1/
+  install -Dm644 SECURITY.md -t "${pkgdir}"/usr/share/doc/${pkgname}
+  install -Dm644 docs/build/google-cloud-storage.1 -t "${pkgdir}"/usr/share/man/man1
 }
 
 # vim: ts=2 sw=2 et:
