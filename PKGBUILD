@@ -7,7 +7,7 @@
 pkgname=miniconda3
 pkgver=24.3.0.0
 _pkgver=${pkgver%.*}-${pkgver##*.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Mini version of Anaconda Python distribution"
 arch=(x86_64 aarch64)
 url="https://conda.io/en/latest/miniconda"
@@ -25,7 +25,7 @@ package() {
   LD_PRELOAD="/usr/lib/libfakeroot/libfakeroot.so"
 
   # Packaging miniconda3 for installation to /opt/miniconda3
-  bash "${srcdir}/Miniconda3-py311_${_pkgver}-Linux-${CARCH}.sh" -b -p ${prefix} -f
+  bash "${srcdir}/Miniconda3-py312_${_pkgver}-Linux-${CARCH}.sh" -b -p ${prefix} -f
   [ "$BREAK_EARLY" = 1 ] && exit 1
   cd "${prefix}"
 
