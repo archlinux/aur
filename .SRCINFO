@@ -1,7 +1,7 @@
 pkgbase = python-litestar
 	pkgdesc = Production-ready, Light, Flexible and Extensible ASGI API framework
 	pkgver = 2.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/litestar-org/litestar
 	arch = any
 	license = MIT
@@ -48,7 +48,6 @@ pkgbase = python-litestar
 	depends = python-attrs
 	depends = python-click
 	depends = python-dotenv
-	depends = python-exceptiongroup
 	depends = python-httpx
 	depends = python-jsbeautifier
 	depends = python-msgspec

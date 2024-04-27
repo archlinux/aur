@@ -3,7 +3,7 @@
 pkgname=python-litestar
 _pkgname=${pkgname#python-}
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
 url="https://github.com/litestar-org/litestar"
@@ -16,7 +16,6 @@ depends=(
   python-attrs
   python-click
   python-dotenv
-  python-exceptiongroup
   python-httpx
   python-jsbeautifier
   python-msgspec
