@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-clipman')
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="nwg-shell clipboard manager, a GTK3-based GUI for cliphist"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-clipman"
