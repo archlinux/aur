@@ -2,11 +2,11 @@
 
 pkgname=fontbakery
 pkgver=0.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line tool for checking the quality of font projects'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
-license=(Apache)
+license=(Apache-2.0)
 _py_deps=(axisregistry
           beautifulsoup4
           beziers
@@ -14,7 +14,7 @@ _py_deps=(axisregistry
           collidoscope
           defcon
           fonttools
-          fs # optdepends of fonttols required for [ufo]
+          fs # for fonttols[ufo]
           gflanguages
           glyphsets
           lxml
@@ -26,7 +26,7 @@ _py_deps=(axisregistry
           stringbrewer
           toml
           ufo2ft
-          unicodedata2 # optdepends of fonttools required for [unicode]
+          unicodedata2 # for fonttools[unicode]
           vharfbuzz)
 depends=(dehinter
          font-v
