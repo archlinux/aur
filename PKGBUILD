@@ -4,11 +4,11 @@ _pkgname=microSTASIS
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Microbiota STability ASsessment via Iterative cluStering"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biocparallel
   r-ggplot2
@@ -33,11 +33,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('7b9b67613eb5e6b69918dffc9d4060d8')
-sha256sums=('9ca497654f2e36d340ea7efad8792b625c30dde10400ae83284464d9ba00a266')
+b2sums=('902538dc5642c0a02dcbed55e38623f3d34fb42906dc54dc9818370fd18169cf2c27fe57aa9f0a1021da49d37fc108d66a93bb685ace52e1ab4eae1d5de52c98')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
