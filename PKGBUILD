@@ -1,39 +1,39 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Maintainer: rumpelsepp <stefan at rumpelsepp dot org>
 
 pkgname=python-msgspec
 _pkgname=${pkgname#python-}
 pkgver=0.18.6
 _commit=9ed5e0d4f6e47e6f520835605bb647f234e7f6f3
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and friendly JSON/MessagePack library, with optional schema validation"
 arch=(x86_64)
 url="https://github.com/jcrist/msgspec"
-license=("BSD-3-Clause")
+license=(BSD-3-Clause)
 depends=(
-  "glibc"
-  "python"
-  "python-attrs"
-  "python-typing-extensions"
+  glibc
+  python
+  python-attrs
+  python-typing_extensions
 )
 makedepends=(
-  "git"
-  "python-build"
-  "python-installer"
-  "python-setuptools"
-  "python-wheel"
+  git
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
 )
 checkdepends=(
-  "python-msgpack"
-  "python-pytest"
+  python-msgpack
+  python-pytest
 )
 optdepends=(
-  "python-tomli-w: for TOML support"
-  "python-tomli: for TOML support"
-  "python-yaml: for YAML support"
+  'python-tomli-w: for TOML support'
+  'python-tomli: for TOML support'
+  'python-yaml: for YAML support'
 )
 source=("git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+sha256sums=('89d22370c834872112030e7cc84f2aaad1525ad72db43f6d2dbdb316f1a1d3cb')
 
 pkgver() {
   cd "$_pkgname"
