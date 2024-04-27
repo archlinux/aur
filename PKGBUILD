@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator-git
-pkgver=r47.r0.g5427d47
+pkgver=r47.r2.gd52f118
 pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('x16-rom-git: ROMs for the emulator')
 provides=('x16-emulator')
 conflicts=('x16-emulator' 'x16-emulator-bin')
 replaces=()
-options=()
+options=(!debug)
 source=("git+https://github.com/X16Community/x16-emulator.git"
 	"modify-base-path.patch")
 sha256sums=('SKIP'

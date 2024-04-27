@@ -1,6 +1,6 @@
 pkgbase = x16-emulator-git
 	pkgdesc = An emulator for The 8-Bit Guy's Commander X16
-	pkgver = r47.r0.g5427d47
+	pkgver = r47.r2.gd52f118
 	pkgrel = 1
 	url = http://commanderx16.com/
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = x16-emulator-git
 	provides = x16-emulator
 	conflicts = x16-emulator
 	conflicts = x16-emulator-bin
+	options = !debug
 	source = git+https://github.com/X16Community/x16-emulator.git
 	source = modify-base-path.patch
 	sha256sums = SKIP
