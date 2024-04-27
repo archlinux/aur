@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Rhapsody
+Comment=Librewave Multisample Sampler/Rompler (Standalone)
+Exec=/usr/bin/Rhapsody
+Icon=/usr/share/icons/hicolor/458x458/apps/rhapsody-sampler.png
+Categories=AudioVideo;Audio;X-Jack;Midi;X-MIDI;
+Terminal=false
+Type=Application
+Keywords=Audio;Sampler;Rompler;Midi;Jack
