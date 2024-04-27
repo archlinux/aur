@@ -1,11 +1,12 @@
 # Contributor: Rowisi < nomail <at> private <dot> com >
 # Contributor: So1ar <so1ar114514@gmail.com>
-# Manitor: Bot-wxt1221 <3264117476@qq.com>
+# Contributor: Bot-wxt1221 <3264117476@qq.com>
+# Manitor: TTsdzb <ttsdzb at outlook dot com>
 
 pkgname=hmcl-bin
 _ver=3.5.7.246
 pkgver=${_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -19,7 +20,7 @@ source=("hmcl.desktop"
         "LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/javafx/LICENSE"
         "${pkgname}-${pkgver}-${pkgrel}.jar::https://github.com/HMCL-dev/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar")
 sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
-            'fbea374c820af533b59efa9bbb3918e7d915582e001ab43b00eb1c54e1bb434c'
+            '00df651be1c7b5a59f7374f85f4539e2e4adfc28bdb99b5382c2fbceed32d54d'
             '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '46eb9e7dc92c052a70ba1c738a09e551009b45aba62a9fbfbd4ef0697708b981')
