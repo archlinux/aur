@@ -5,11 +5,11 @@ _pkgname=quantiseqr
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Quantification of the Tumor Immune contexture from RNA-seq data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biobase
   r-ggplot2
@@ -38,11 +38,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('34cd21d2e59e1f8f58001fdcc49eaf44')
-sha256sums=('9e50016461c1fda327e55aa2f9849bc0f0b25554c8935aaa997cd137b5d75e05')
+b2sums=('f3a1f20f64ce475cbfa3a0a5d9f1fd9a058e189b06318a5a80acf3ed9bcf4b05b67f2bbf4f16af84e1af190d915f23ef0db2a6e564c33cc28cc05f3ca1485be1')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
