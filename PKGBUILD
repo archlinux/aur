@@ -5,11 +5,11 @@ _pkgname=DEGreport
 _pkgver=1.38.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Report of DEG analysis"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biobase
   r-biocgenerics
@@ -51,11 +51,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('c244b736c180d78d142dd00938f7d40f')
-sha256sums=('bf88efb88eb0f49ae2d34e65b7b560443fc838108b9a240f1f47b5c014200d68')
+b2sums=('8d4599d52db4b20b152b89f44869d5786c2904ddd6ab92715ec83988db20f7acf3f9cd20b2b3ffff9d9f816c03f208e0e285e5d165d28f6d94032c2eb29d93ce')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
