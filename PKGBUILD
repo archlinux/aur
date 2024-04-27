@@ -4,11 +4,11 @@ _pkgname=scider
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Spatial cell-type inter-correlation by density in R"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-ggplot2
   r-igraph
@@ -37,11 +37,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d20e0e846be7368da2613650b3834957')
-sha256sums=('0b54660caa2f18fa624319f51f8971d29e067b56546f4bfd50cfb4dd5f8187e6')
+b2sums=('efd45ae9457c5d150f8db08928d589eed114ee88d5b78a14ed8de223e0d0da9f77b909f144b0f1cd7a7cb5fc093a3496df490d456aa630be4d6ad3a1670ab3fe')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
