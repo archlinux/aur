@@ -1,7 +1,7 @@
 pkgbase = srt-xtransmit
 	pkgdesc = Secure Reliable Transport (SRT) transmission utility used for internal testing and performance evaluation.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/maxsharabayko/srt-xtransmit
 	arch = x86_64
 	license = MPL2
@@ -11,7 +11,7 @@ pkgbase = srt-xtransmit
 	depends = srt
 	depends = gcc-libs
 	depends = openssl
-	source = git+https://github.com/maxsharabayko/srt-xtransmit#commit=27186a694e075ed267c3ac463f55b956c0e7b17c
+	source = git+https://github.com/maxsharabayko/srt-xtransmit#commit=7e8858d88d5da22fa1a57727ca578a1bec376335
 	b2sums = SKIP
 
 pkgname = srt-xtransmit

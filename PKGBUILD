@@ -1,8 +1,8 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=srt-xtransmit
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Secure Reliable Transport (SRT) transmission utility used for internal testing and performance evaluation."
 url="https://github.com/maxsharabayko/srt-xtransmit"
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(
 	git
 	ninja
 )
-_commit=27186a694e075ed267c3ac463f55b956c0e7b17c  # tags/v0.1.0
+_commit=7e8858d88d5da22fa1a57727ca578a1bec376335 # tags/v0.1.0
 source=("git+https://github.com/maxsharabayko/srt-xtransmit#commit=$_commit")
 b2sums=('SKIP')
 
