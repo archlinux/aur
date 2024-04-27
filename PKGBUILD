@@ -5,11 +5,11 @@ _pkgname=CoGAPS
 _pkgver=3.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Coordinated Gene Activity in Pattern Sets"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(BSD)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('BSD-3-Clause')
 depends=(
   r-biocparallel
   r-biomart
@@ -43,8 +43,8 @@ source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_
         "fix-openmp.patch")
 md5sums=('d4c9ec9b2be6c77fbb47c632b62c84b4'
          '7bbd2f800d95d2a4a9c81526b637e772')
-sha256sums=('256548f4a70afa26e70fe1903532bd585a361fdc956da858a1f659ce15a7517f'
-            '778bcf1ce83ddee6b253886debe3245a48fcb2f67d09384a2697283b7108756a')
+b2sums=('7836a9b7c52afb7fc009e7f49af2f4f59908c39bc20e77c3a1de72419d9f7a13c7d750f43c57429ca020d139ff0b0c96a5be61eb65c5a8f38f2546ce5c8db883'
+        '1c794cab3dab46e4e50461c0d533f3a524940210dee7b27662421082a9f198e0faa7286a1d441299857cb064940a88f24767d88c1988216c22c330c97605737e')
 
 prepare() {
   # fix OpenMP
@@ -55,8 +55,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
