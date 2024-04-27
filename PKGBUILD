@@ -1,3 +1,6 @@
+# Maintainer: Sniventals <Creeperxie@outlook.com>
+# Maintainer: Creeperxie <mingyue@ixcm.onmicrosoft.com>
+
 pkgname='liteloader-qqnt-telegram-theme-bin'
 _pkgname='LiteLoaderQQNT-Telegram-Theme'
 pkgver='4.2.6'
