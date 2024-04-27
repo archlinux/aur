@@ -4,11 +4,11 @@ _pkgname=spaSim
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Spatial point data simulator for tissue images"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-dplyr
   r-ggplot2
@@ -32,11 +32,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d69e70975aaaa9bffc5e52f95885e59c')
-sha256sums=('73fd96426fae25af657f6585746132fcf83798b59c8fd9ff620d9b852ace4638')
+b2sums=('41088779a896961d27a27bb975a83bd0ecb924fa51fed560bdc401644045d98bcf0796399a46fcb6eede337db92d3fc12f8fd8e474e7f7c9adcd648a2f829b4d')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

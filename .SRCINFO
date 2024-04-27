@@ -1,10 +1,10 @@
 pkgbase = r-spasim
 	pkgdesc = Spatial point data simulator for tissue images
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/spaSim
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-testthat
 	depends = r-dplyr
 	depends = r-ggplot2
@@ -22,6 +22,6 @@ pkgbase = r-spasim
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/spaSim_1.4.0.tar.gz
 	md5sums = d69e70975aaaa9bffc5e52f95885e59c
-	sha256sums = 73fd96426fae25af657f6585746132fcf83798b59c8fd9ff620d9b852ace4638
+	b2sums = 41088779a896961d27a27bb975a83bd0ecb924fa51fed560bdc401644045d98bcf0796399a46fcb6eede337db92d3fc12f8fd8e474e7f7c9adcd648a2f829b4d
 
 pkgname = r-spasim
