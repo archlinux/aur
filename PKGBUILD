@@ -1,5 +1,5 @@
 pkgname=carla-bridges-win64
-pkgver=6949.948991d7b
+pkgver=6950.a580473fb
 pkgrel=1
 pkgdesc="Carla Win64 Bridge"
 arch=('i686' 'x86_64')
