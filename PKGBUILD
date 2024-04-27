@@ -12,11 +12,11 @@ license=('Apache')
 provides=('updatecli')
 conflicts=('updatecli')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v0.76.0-rc.3/updatecli_Linux_arm64.tar.gz")
-sha256sums_aarch64=('f0989e73d7732f8e234b892e4c414867d390caf9608306bbb204e99614d37feb')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v0.76.0-rc.4/updatecli_Linux_arm64.tar.gz")
+sha256sums_aarch64=('bdf8722870255490729f025cef451e60d59461aa28493b4075f6fe85d0411f35')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v0.76.0-rc.3/updatecli_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('2be03a5187fc236f420c871a8bacea5a385ef130b2adce6c749182c688ac496e')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v0.76.0-rc.4/updatecli_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('fd6cddc82219110ad302146ed51ae5c49d08bfe4b52dafd4eab1cd829c1a1137')
 
 package() {
   # bin
