@@ -4,11 +4,11 @@ _pkgname=screenCounter
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Counting Reads in High-Throughput Sequencing Screens"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biocparallel
   r-rcpp
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('35bb89fb63853645e76facfc72e77522')
-sha256sums=('a9995014d30f1a8856794a65b2f34a0db6a662e29f11947058359cecce0c68fa')
+b2sums=('562a5d8f0119245de131c976269ef783a19970d6e6d5bc524caf354f55d04493cecd8e4518cb123319a6b17ca88fa065a4a7161b4889ba01e1f88deff0e7e6b1')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
