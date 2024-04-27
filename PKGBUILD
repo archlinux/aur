@@ -3,7 +3,7 @@
 
 pkgname=jupyter-lsp
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server."
 arch=(any)
 url="https://github.com/jupyter-lsp/jupyterlab-lsp"
