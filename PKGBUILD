@@ -2,8 +2,8 @@
 # Contributor: user20159 <https://aur.archlinux.org/account/user20159>
 pkgname=matrix-sliding-sync
 _basename=sliding-sync
-pkgver=0.99.15
-pkgrel=2
+pkgver=0.99.16
+pkgrel=1
 pkgdesc="Sliding sync proxy for matrix protocol, required for modern clients like Element X."
 arch=('x86_64')
 url="https://github.com/matrix-org/sliding-sync"
@@ -13,7 +13,7 @@ makedepends=('go>=1.19')
 source=("${_basename}-${pkgver}.tar.gz::https://github.com/matrix-org/${_basename}/archive/v${pkgver}.tar.gz"
         "matrix-sliding-sync.service"
         "matrix-sliding-sync.conf")
-sha256sums=('33daae057119e45573fb54d15d85dadf30e30151f744aa2caa84da745049b85d'
+sha256sums=('e9605066aa061a043c6ab315e6ac0e6336906dc6a98c98e860236b713512b45b'
             'ba2f85f9f66dc701ab48797906f7eb21c9a82d7ab956ad0383db6cb80b5e73ad'
             'f8b74879166b1fc857fcc66155bd7bfe74da717160b8e72971f90506669d822d')
 backup=("etc/matrix-sliding-sync.conf")

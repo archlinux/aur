@@ -1,17 +1,17 @@
 pkgbase = matrix-sliding-sync
 	pkgdesc = Sliding sync proxy for matrix protocol, required for modern clients like Element X.
-	pkgver = 0.99.15
-	pkgrel = 2
+	pkgver = 0.99.16
+	pkgrel = 1
 	url = https://github.com/matrix-org/sliding-sync
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go>=1.19
 	depends = glibc
 	backup = etc/matrix-sliding-sync.conf
-	source = sliding-sync-0.99.15.tar.gz::https://github.com/matrix-org/sliding-sync/archive/v0.99.15.tar.gz
+	source = sliding-sync-0.99.16.tar.gz::https://github.com/matrix-org/sliding-sync/archive/v0.99.16.tar.gz
 	source = matrix-sliding-sync.service
 	source = matrix-sliding-sync.conf
-	sha256sums = 33daae057119e45573fb54d15d85dadf30e30151f744aa2caa84da745049b85d
+	sha256sums = e9605066aa061a043c6ab315e6ac0e6336906dc6a98c98e860236b713512b45b
 	sha256sums = ba2f85f9f66dc701ab48797906f7eb21c9a82d7ab956ad0383db6cb80b5e73ad
 	sha256sums = f8b74879166b1fc857fcc66155bd7bfe74da717160b8e72971f90506669d822d
 
