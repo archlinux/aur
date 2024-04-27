@@ -1,7 +1,7 @@
 pkgbase = acer-wmi-battery-dkms-git
 	pkgdesc = For Acer laptops -- kernel module to set Battery Charge Limit to 80%.
 	pkgver = r13.da45c71
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Diman119/acer-wmi-battery
 	install = acer-wmi-battery.install
 	arch = any
