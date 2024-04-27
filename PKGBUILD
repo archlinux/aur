@@ -1,9 +1,9 @@
 # Maintainer: omansh-krishn <omanshkrishn@duck.com>
 # Contributor: westpain <homicide@disroot.org>
 pkgname=materialgram-git
-pkgver=4.15.6.1.r176.g97745fa3e
+pkgver=4.16.10.2.r1.g0c959663c
 pkgrel=1
-pkgdesc='Unofficial desktop version of Telegram messaging app with Material Design'
+pkgdesc='Telegram Desktop based messenger with Material Design and additional features'
 arch=('x86_64' 'aarch64')
 url="https://github.com/kukuruzka165/materialgram"
 license=('GPL3')
@@ -49,8 +49,3 @@ package() {
     cd "$srcdir/tdesktop"
     DESTDIR=$pkgdir ninja -C build install
 }
-
-
-
-
-

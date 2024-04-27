@@ -1,6 +1,6 @@
 pkgbase = materialgram-git
-	pkgdesc = Unofficial desktop version of Telegram messaging app with Material Design
-	pkgver = 4.15.6.1.r176.g97745fa3e
+	pkgdesc = Telegram Desktop based messenger with Material Design and additional features
+	pkgver = 4.16.10.2.r1.g0c959663c
 	pkgrel = 1
 	url = https://github.com/kukuruzka165/materialgram
 	arch = x86_64
