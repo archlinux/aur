@@ -2,11 +2,11 @@
 
 pkgname=python-turkish-morphology
 pkgver=1.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc='A two-level morphological analyzer for Turkish'
 arch=(any)
 url="https://github.com/google-research/${pkgname#python-}"
-license=(Apache)
+license=(Apache-2.0)
 depends=(absl-py
          python
          python-protobuf)
@@ -18,7 +18,7 @@ sha256sums=('665fb87b7088650a561003aac793905565b816fd81cfed7fd01418ba0f05fad2')
 
 build() {
 	cd "$_archive"
-	python -m build
+	python -m build -wn
 }
 
 package() {
