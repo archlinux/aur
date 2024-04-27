@@ -2,11 +2,11 @@
 
 pkgname=annextimelog
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI to track time spent on projects, backed by Git Annex'
 arch=(any)
 url="https://gitlab.com/nobodyinperson/$pkgname"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 _pydeps=(rich)
 depends=(python
          "${_pydeps[@]/#/python-}"
