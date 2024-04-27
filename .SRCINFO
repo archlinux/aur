@@ -1,10 +1,10 @@
 pkgbase = r-rolde
 	pkgdesc = Robust longitudinal Differential Expression
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bioconductor.org/packages/RolDE
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r-doparallel
 	depends = r-dorng
 	depends = r-foreach

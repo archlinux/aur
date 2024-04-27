@@ -4,11 +4,11 @@ _pkgname=RolDE
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Robust longitudinal Differential Expression"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-doparallel
   r-dorng
