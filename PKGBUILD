@@ -3,18 +3,21 @@
 pkgname=python-museval
 _gitpkgname=sigsep-mus-eval
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Source separation evaluation tools for Python'
 arch=('any')
 url='https://github.com/sigsep/sigsep-mus-eval'
 license=('MIT')
 depends=(
   'ffmpeg'
+  'python'
   'python-jsonschema'
   'python-musdb'
+  'python-numpy'
   'python-pandas'
   'python-scipy'
   'python-simplejson'
+  'python-soundfile'
 )
 checkdepends=('python-pytest')
 makedepends=(
