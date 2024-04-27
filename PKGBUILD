@@ -2,7 +2,7 @@
 
 pkgname=iceshrimp.net-git
 pkgver=v2024.1.alpha+b9fa870
-pkgrel=3
+pkgrel=4
 pkgdesc="The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
@@ -31,7 +31,7 @@ source=(
 )
 
 sha512sums=('SKIP'
-            '1018877f658306997224e446ac353e8b3862c5cc6fb2834298fc7ea48a5e7bc0ba116ed98328c6ce45353f3c75ae36a4f447e205676f37525b240437bfd1de24'
+            'babc4f6f37f32446c9ef24ce39dc1f935a412032dc1d8ac1f3fed4237ba883b4bc6688469962459ea09ee3a8858a8981efb8c20e339e609c2dd69deb9524bdf5'
             '9adf1781842ae7ff2779ca561f06ab2b6fb93e206698084283986627aba69b0fd4482ccbed3daebb2517e5966c326604e1cc57618589f331a966fee2db63815d'
             '0665aa7af2b2aa4405289ce9119439ddcc6b9e6c81dc8e3b9ed5d8ecdc4a39d49c950d41d3098ce99fe294ce51a2dee55ec7248c1756783b0e9aad0bde4654fa'
             '0a0467df278f3bd739114725b373f5ec6c7296f609f0a9bcb4f8142b44856fc63e32f76390adf757005035dc691a4c54a662cc8a287572b61e215c29e3d3cbf2'
