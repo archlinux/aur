@@ -1,4 +1,14 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
+# Source and package folders
+src/
+pkg/
+
+# Archive files
+*.zip
+*.tar.gz
+*.tar.xz
+
+# Snap packages
+*.snap
+
+# Package files
+*.zst

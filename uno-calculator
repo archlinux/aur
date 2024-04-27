@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# move into the directory and run the application
+cd /opt/uno-calculator && ./Calculator.Skia.Gtk "$@"

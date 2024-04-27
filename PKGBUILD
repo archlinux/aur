@@ -1,57 +1,58 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: bemxio <bemxiov at protonmail dot com>
 
-_name='Uno Calculator'
-_pkgname='uno-calculator'
-pkgname="${_pkgname}-bin"
+pkgname=uno-calculator-bin
+
+_pkgdesc="Windows Calculator ported to Linux by Uno Platform"
+pkgdesc="${_pkgdesc} (extracted from Snap package)"
+
+pkgver=1.2.9_uno.339
 pkgrel=1
-pkgdesc='Uno port of Windows Calculator'
-arch=('x86_64')
-url='https://snapcraft.io/uno-calculator'
-_url_source='https://api.snapcraft.io/api/v1/snaps/download'
-license=('APACHE')
-depends=('hicolor-icon-theme')
-makedepends=('gendesk' 'imagemagick' 'squashfs-tools' 'jq' 'curl')
-options=('staticlibs')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-noextract=("${_pkgname}-${pkgver}-x86_64.snap")
 
+arch=(x86_64)
 
-# get snap info from snapcraft.io
-_snap_stable_pkgs_info="$(curl -sL -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/uno-calculator | jq '.["channel-map"] | .[] | select(.channel.risk == "stable") | select(.channel.architecture == "amd64")')"
-pkgver=$(jq -r ".version" <<< "${_snap_stable_pkgs_info}" |  sed "s|-uno||g")
-_source_url="$(jq -r '.download.url' <<< "${_snap_stable_pkgs_info}")"
-#_source_sha384="$(jq -r '.download | .["sha3-384"]' <<< "${_snap_stable_pkgs_info}")"
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.snap::${_source_url}")
-sha384sums_x86_64=("SKIP")
-unset _source_url _source_sha384
+url="https://platform.uno/uno-calculator/"
+license=("Apache-2.0")
 
+depends=()
+makedepends=(curl jq squashfs-tools gendesk)
+
+provides=(uno-calculator)
+conflicts=(uno-calculator uno-calculator-git)
+
+_snap_info=$(curl -sL https://search.apps.ubuntu.com/api/v1/package/uno-calculator)
+
+source=("uno-calculator.snap::$(echo ${_snap_info} | jq -r .download_url)" "uno-calculator")
+sha512sums=("$(echo ${_snap_info} | jq -r .download_sha512)" "6e364ba1505dc5211a49d36534f498eadadd75f8ecbd8e6ade8aed9e06fd9afdbe54c2e4b3a632fe109b46546c084b5aef44e4e938ad281a2a261f190c92ac48")
+
+pkgver() {
+    # get the version from the Snapcraft API
+    echo ${_snap_info} | jq -r .version | sed "s/-/_/"
+}
 
 prepare() {
-  echo -e "#!/bin/sh\ncd /opt/${_pkgname} && exec ./Calculator.Skia.Gtk \"\$@\"" > "${_pkgname}"
-  gendesk -f -n \
-    --pkgname="${_pkgname}" \
-    --pkgdesc="${pkgdesc}" \
-    --name="${_name}" \
-    --comment="${pkgdesc}" \
-    --exec="${_pkgname}" \
-    --icon="${_pkgname}" \
-    --categories='Utility'
+    # extract the Snap package
+    unsquashfs -force -info uno-calculator.snap
+
+    # generate a .desktop file
+	gendesk -f -n \
+		--pkgname "Uno Calculator" \
+		--pkgdesc "${_pkgdesc}" \
+		--exec uno-calculator \
+		--icon uno-calculator.png \
+		--categories "Utility;Calculator"
 }
 
 package() {
-  mkdir -pv "${pkgdir}/opt/${_pkgname}"
-  unsquashfs -force -linfo -dest "${pkgdir}/opt/${_pkgname}" "${_pkgname}-${pkgver}-x86_64.snap"
+    # move to the extracted directory
+    cd squashfs-root
 
-  install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dvm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    # copy the files to the package directory
+    find . -type f -exec install -D {} "${pkgdir}/opt/uno-calculator/{}" \;
 
-  for i in 16 22 24 32 48 64 96 128; do
-    convert "${pkgdir}/opt/${_pkgname}/meta/gui/icon.png" -resize "${i}x${i}" "${srcdir}/icon${i}.png"
-    install -Dvm644 "${srcdir}/icon${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png"
-  done
+    # copy the icon and the generated .desktop file
+    install -Dm644 meta/gui/icon.png "${pkgdir}/usr/share/pixmaps/uno-calculator.png"
+	install -Dm644 "../Uno Calculator.desktop" "${pkgdir}/usr/share/applications/uno-calculator.desktop"
 
-  rm -rf "${pkgdir}/opt/${_pkgname}/"{'data-dir','gnome-platform','meta','snap'}
+    # copy the executable script
+    install -Dm755 ../uno-calculator "${pkgdir}/usr/bin/uno-calculator"
 }
-
-# vim: ts=2 sw=2 et:
