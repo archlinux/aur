@@ -3,13 +3,14 @@
 pkgname=python-qualify
 _gitpkgname=qualify
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 # shellcheck disable=SC2016  # Not meant to be expanded
 pkgdesc='Import top-level modules from a directory not on `sys.path`'
 arch=('any')
 url='https://github.com/claui/qualify'
 license=('Apache-2.0')
 depends=(
+  'python'
   'python-colorama'
   'python-wrapt'
 )
@@ -22,7 +23,7 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=('python-pytest')
-options=('!strip')
+options=('!debug' '!strip')
 source=("${_gitpkgname}-${pkgver}.tar.gz::https://github.com/claui/qualify/archive/v${pkgver}.tar.gz")
 sha512sums=('ed7acebcda0c0e144b16b653dc99fdc259353081a52b5fb5846fbc2fb1f1eb9e506e267dd207c6059fc52b442d5b488cb4eea8d7a8118fe61eb5875da20db197')
 
