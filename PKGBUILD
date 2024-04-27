@@ -2,7 +2,7 @@
 
 pkgname=tblock
 pkgver=2.7.3
-pkgrel=1
+pkgrel=2
 provides=("$pkgname")
 pkgdesc="An anti-capitalist ad-blocker that uses the hosts file"
 url="https://tblock.me"
@@ -34,7 +34,7 @@ source=(
         "${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tblock/tblock/archive/${pkgver}.tar.gz"
 )
 sha512sums=(
-	"cafe799a58eaf94674827eddd6cdadea7942c054ed2d26fb2ea9417a3e90c38c85b1253e60ae65a04aa2c273f6c85d27c55257dc1322a7d958baffe194c29103"
+	"ed2bb661e426a767e2cd00b8ac7fb88bf7e1d5ac31bd9759b00bdff036decfaa275f94b757ebb9358f70a0070a34aa7b1801b450f99b05f05ac9428dc8f05b0b"
 )
 backup=("etc/tblock.conf")
 
