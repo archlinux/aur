@@ -5,11 +5,11 @@ _pkgname=methylscaper
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Visualization of Methylation Data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-biocparallel
   r-biostrings
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0fae72e2aac98ec4a55d8aa4343039ba')
-sha256sums=('9c36f81e61918bdf02a6cf7c807d5e50d76d93793805010eb6ad83393a7f71aa')
+b2sums=('a0e2d398a8a537dd26314c6c60cbfe5cc6211c22223a866f3bbb56304793547f1211c7f77487ef478e0df69ddeb60cafbf747ed150d8798dc1aea2ea3c284f68')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
