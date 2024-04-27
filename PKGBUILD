@@ -4,7 +4,7 @@ _pkgname=SparseArray
 _pkgver=1.2.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Efficient in-memory representation of multidimensional sparse arrays"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -28,9 +28,17 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('42ba66c3146b623250558daa44adf389')
-b2sums=('a5e595e58e880d079a3ab5ec58537695cce2ae7cf8823f7ca1bb8a337be653d4d44bfaf546db1ab9185defb844abd761d003d5ce17616bcb0184d1a40b53211d')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "fix-build.patch")
+md5sums=('42ba66c3146b623250558daa44adf389'
+         'c0da77a49b31fa4289551eb7546a3aa7')
+b2sums=('a5e595e58e880d079a3ab5ec58537695cce2ae7cf8823f7ca1bb8a337be653d4d44bfaf546db1ab9185defb844abd761d003d5ce17616bcb0184d1a40b53211d'
+        '33c748deb9824010dba09c84d996f149a51be6d4c1a3a6eb9fa50fe39e4f08bab250714f752d1dbf8c17bf40e444f694c6243ab06024f8cb9515d4853e8ef5e0')
+
+prepare() {
+  # fix format string errors
+  patch -Np1 -i fix-build.patch
+}
 
 build() {
   mkdir build

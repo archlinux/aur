@@ -1,0 +1,18 @@
+diff --git a/SparseArray/src/leaf_vector_utils.c b/SparseArray/src/leaf_vector_utils.c
+index 5e6fd39..eb9d2bf 100644
+--- a/SparseArray/src/leaf_vector_utils.c
++++ b/SparseArray/src/leaf_vector_utils.c
+@@ -30,11 +30,11 @@ SEXP _new_leaf_vector(SEXP lv_offs, SEXP lv_vals)
+ 	msg = "SparseArray internal error in _new_leaf_vector():\n"
+ 	      "    invalid 'lv_offs' and/or 'lv_vals' arguments";
+ 	if (!IS_INTEGER(lv_offs))
+-		error(msg);
++		error("%s", msg);
+ 	lv_offs_len = XLENGTH(lv_offs);
+ 	if (lv_offs_len != XLENGTH(lv_vals) ||
+ 	    lv_offs_len < 1 || lv_offs_len > INT_MAX)
+-		error(msg);
++		error("%s", msg);
+ 
+ 	ans = PROTECT(NEW_LIST(2));
+ 	SET_VECTOR_ELT(ans, 0, lv_offs);
