@@ -4,11 +4,11 @@ _pkgname=TEKRABber
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="An R package estimates the correlations of orthologs and transposable elements between two species"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(LGPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-3.0-or-later')
 depends=(
   r-apeglm
   r-biomart
@@ -34,11 +34,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('145026d8a5e02ec94f8a2a1f5405851e')
-sha256sums=('7495840995103b2303fb7d0f12440aa43e5d6d2e6e72e8fb9983c9f3da891950')
+b2sums=('9430f5120445d15b91b553d263d106ddfe2ced847678fca35d3853e113901df50fda6d6431ccf1fae1ba0dd3ce982f272a324af7ece0a95b2723bd852158a759')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
