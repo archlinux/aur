@@ -4,11 +4,11 @@ _pkgname=nipalsMCIA
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Multiple Co-Inertia Analysis via the NIPALS Method"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-complexheatmap
   r-dplyr
@@ -40,11 +40,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0558d05ea61523c6fcaed9d8ed9b0ded')
-sha256sums=('83696b0eb3a198168152a8cb7a85b894480adde9d288ad1ae4c007da7fca6bcb')
+b2sums=('1b4f12364525b2732899e332a90c97b3ba68320a996442e94cf67c983c97e5ad98c2ce65f6e85b2bcc5410118a1f279514199dfd35b4432651094f5beafe8e91')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
