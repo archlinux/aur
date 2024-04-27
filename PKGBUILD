@@ -2,7 +2,7 @@
 
 pkgname=tblock-gui
 pkgver=1.3.4
-pkgrel=1
+pkgrel=3
 provides=("$pkgname")
 pkgdesc="Official graphical user interface for the TBlock content blocker"
 url="https://tblock.me"
