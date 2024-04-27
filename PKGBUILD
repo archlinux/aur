@@ -4,11 +4,11 @@ _pkgname=ASURAT
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Functional annotation-driven unsupervised clustering for single-cell data"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-circlize
   r-complexheatmap
@@ -37,11 +37,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('a1cb615f6ddab8cb8b9ccb1a73ba39de')
-sha256sums=('679770fe6e667a30ffb4a3dfe1426b780cb7c4059771017337d6683f1f3fb453')
+b2sums=('3621bfbabf70134b2ce0e0e4cee825dd342dcb13a4c017c07ae5aea683c997dfce91f5a0f622215ed1011d930e156b46f451cec1e737648e0f8faa5adcd884f8')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
