@@ -4,11 +4,11 @@
 pkgname=vmdebootstrap-pureos
 _gitpkgname="${pkgname%-pureos}"
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Bootstrap Debian into a (virtual machine) disk image. Custom version, required to build PureOS.'
 arch=('any')
 url='http://git.liw.fi/vmdebootstrap/'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'debootstrap-pureos'
   'distro-info'
@@ -28,7 +28,7 @@ makedepends=(
 )
 provides=('vmdebootstrap')
 conflicts=('vmdebootstrap')
-options=('!strip')
+options=('!debug' '!strip')
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::http://git.liw.fi/cgi-bin/cgit/cgit.cgi/vmdebootstrap/snapshot/vmdebootstrap-${pkgver}.tar.gz"
