@@ -3,7 +3,7 @@
 _name=PyMCTranslate
 _pkgname=python-${_name,,}
 pkgname=$_pkgname-git
-pkgver=1.2.22.r2.g44dac458
+pkgver=1.2.22.r10.g3edad53b
 pkgrel=2
 pkgdesc='A library of block mappings that can be used to convert from any Minecraft format into any other Minecraft format - git version'
 arch=('any')
