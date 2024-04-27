@@ -3,7 +3,7 @@
 
 _pkgname=novelwriter
 pkgname="$_pkgname-git"
-pkgver=2.3.1.r281.g7910801
+pkgver=2.4.r69.g6d6d0c2
 pkgrel=1
 pkgdesc="A markdown-like document editor for writing novels"
 url="https://github.com/vkbo/novelWriter"
@@ -17,6 +17,7 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-setuptools'
   'python-wheel'
 )
 
