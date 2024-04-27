@@ -1,0 +1,19 @@
+pkgbase = ruby-subprocess
+	pkgdesc = Control and communicate with spawned processes
+	pkgver = 1.5.6
+	pkgrel = 1
+	url = http://solargraph.org/
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby>=2.7.0
+	depends = ruby-minitest>=5.0
+	depends = ruby-pry
+	depends = ruby-rake
+	depends = ruby-sord
+	noextract = subprocess-1.5.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/subprocess-1.5.6.gem
+	sha256sums = 420bc80395fd7695852b1f3d13188c5bbc63061d0a512dc8c3e5acd41d54896c
+
+pkgname = ruby-subprocess
