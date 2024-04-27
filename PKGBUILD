@@ -6,7 +6,7 @@
 # Contributor: doze_worm <shuimao@gmail.com> the original port.
 
 pkgname=sendmail
-pkgver=8.17.2
+pkgver=8.18.1
 pkgrel=1
 pkgdesc="A general purpose internetwork email routing MTA"
 url="http://www.sendmail.org"
@@ -21,7 +21,7 @@ backup=('etc/conf.d/sendmail'
         'etc/sasl2/Sendmail.conf')
 source=("https://ftp.sendmail.org/${pkgname}.${pkgver}.tar.gz"
         'site.config.m4'
-        'sendmail-8.17.1-sasl2-in-etc.patch'
+        'sendmail-8.17.2-sasl2-in-etc.patch'
         'sendmail.conf'
         'sasl2.conf'
         'sendmail.sysusers'
@@ -29,9 +29,9 @@ source=("https://ftp.sendmail.org/${pkgname}.${pkgver}.tar.gz"
         'sendmail.service'
         'sm-client.service')
 depends=('db' 'cyrus-sasl')
-sha256sums=('90f5ae74c35a84808861933ba094201b901b70c6b2903684dcf39bdae8a5a1a2'
+sha256sums=('cbf1f309c38e4806f7cf3ead24260f17d1fe8fb63256d13edb3cdd1a098f0770'
             'c71683c251630352c7328dc4e842a6622734310795616333667d1c4d5de38106'
-            '5817c00908ddd1512e4edc48e42646a728f0940271781272372cb11b7be9d039'
+            '5a92a8a07d6ecb437e41e136960f0b25a91195476c7a550c0098937e8644dfc3'
             '39730f2be66bb1f1e6bc7fff61911db632ecf4b891d348df525abe2020274580'
             '9b4d2d141191f6c9a18538f7acf65243cceb26359f88b64c92c1c4e8407398f0'
             '95531a87d42e30742ca71f7d7197403eb9d703a407a50c9fda1f909ed21e1010'
@@ -42,7 +42,7 @@ sha256sums=('90f5ae74c35a84808861933ba094201b901b70c6b2903684dcf39bdae8a5a1a2'
 prepare() {
     # patches picked from Fedora
     cd "${srcdir}/${pkgname}-${pkgver}"
-    patch -p1 < "${srcdir}"/sendmail-8.17.1-sasl2-in-etc.patch
+    patch -p1 < "${srcdir}"/sendmail-8.17.2-sasl2-in-etc.patch
     sed -i -e 's/CFGRP=bin/CFGRP=root/g' cf/cf/Makefile
     install -m644 -t devtools/Site "${srcdir}"/site.config.m4
 }
