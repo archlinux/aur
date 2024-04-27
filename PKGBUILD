@@ -3,7 +3,7 @@
 _pkgbasename=datatable
 pkgname=python-${_pkgbasename}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python package for manipulating 2-dimensional tabular data structures"
 arch=('x86_64')
 url="https://github.com/h2oai/${_pkgbasename}/"

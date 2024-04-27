@@ -1,7 +1,7 @@
 pkgbase = python-datatable
 	pkgdesc = A Python package for manipulating 2-dimensional tabular data structures
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/h2oai/datatable/
 	arch = x86_64
 	license = MPL-2.0
