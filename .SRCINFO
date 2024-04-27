@@ -1,7 +1,7 @@
 pkgbase = r-mastr
 	pkgdesc = Markers Automated Screening Tool in R
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/mastR
 	arch = any
 	license = MIT

@@ -4,11 +4,11 @@ _pkgname=mastR
 _pkgver=1.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Markers Automated Screening Tool in R"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(MIT)
+license=('MIT')
 depends=(
   r-annotationdbi
   r-biobase
