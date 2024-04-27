@@ -4,7 +4,7 @@
 pkgname='python-calcpy-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.1.r216.g9d78f3f
+pkgver=0.1.r242.gd57a728
 pkgrel=1
 pkgdesc='Terminal calculator and advanced math solver using Python, IPython and SymPy (built from latest commit)'
 arch=('any')
