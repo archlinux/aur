@@ -2,24 +2,24 @@
 
 pkgname=gphotos-sync
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Google Photos and Albums backup tool'
 arch=(any)
 url="https://github.com/gilesknap/$pkgname"
 license=(MIT)
-_py_deps=(attrs
-          appdirs
-          exif
-          google-auth-oauthlib
-          psutil
-          psutil
-          pyyaml
-          requests-oauthlib
-          types-pyyaml
-          types-requests)
+_pydeps=(attrs
+         appdirs
+         exif
+         google-auth-oauthlib
+         psutil
+         psutil
+         pyyaml
+         requests-oauthlib
+         types-pyyaml
+         types-requests)
 depends=(python
-         "${_py_deps[@]/#/python-}")
+         "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive="$pkgname-$pkgver"
