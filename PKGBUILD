@@ -3,7 +3,7 @@
 _pyname=google-cloud-core
 pkgname=python-google-cloud-core
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Cloud API client core library'
 url=https://github.com/googleapis/python-cloud-core
 arch=(any)
