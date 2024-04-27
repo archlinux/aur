@@ -1,10 +1,10 @@
 pkgbase = python-axisregistry
 	pkgdesc = easy access to the GF Axis Registry
 	pkgver = 0.4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/axisregistry
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-fonttools
 	checkdepends = python-pytest
 	makedepends = python-build
