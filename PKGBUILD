@@ -1,12 +1,12 @@
-# Maintainer: Jakub Klinkovský <j.l.k@gmx.com>
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
 
 pkgname=python-hostlist
 pkgdesc="Python module for handling LLNL hostlists"
 pkgver=1.23.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://www.nsc.liu.se/~kent/python-hostlist/"
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("https://www.nsc.liu.se/~kent/$pkgname/$pkgname-$pkgver.tar.gz")
