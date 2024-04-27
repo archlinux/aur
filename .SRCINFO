@@ -1,7 +1,7 @@
 pkgbase = r-phipdata
 	pkgdesc = Container for PhIP-Seq Experiments
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/PhIPData
 	arch = any
 	license = MIT
@@ -25,6 +25,6 @@ pkgbase = r-phipdata
 	optdepends = r-withr
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/PhIPData_1.10.0.tar.gz
 	md5sums = fdb81e6f685727bbbe4584f42ca33797
-	sha256sums = 8fc30e49ba8dcf8f474ac6f68019da846c971f0be9a1a31692ef6a65f6c2a892
+	b2sums = d3ebc60887acb769c0d8f1cc597d166e6dbc840f51838133acc049a0e6b2649e1b8e5989af2f9e9b947e130c907ff76c0c8477d0487fd78b3d4e812d3dd6ecc7
 
 pkgname = r-phipdata
