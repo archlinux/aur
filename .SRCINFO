@@ -1,10 +1,10 @@
 pkgbase = jupyterlab-pytutor
 	pkgdesc = Python Tutor extension for JupyterLab
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jupyterlab-contrib/jupyterlab-pytutor
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
