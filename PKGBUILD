@@ -2,11 +2,11 @@
 
 pkgname=slice
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc='GUI app to generate custom static fonts from variable fonts'
 arch=(any)
 url="https://github.com/source-foundry/${pkgname^}"
-license=(GPL3)
+license=(GPL-3.0-only)
 _pydeps=(brotli
          fonttools
          pyqt5
