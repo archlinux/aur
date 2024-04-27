@@ -5,11 +5,11 @@ _pkgname=DelayedRandomArray
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Delayed Arrays of Random Values"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-delayedarray
   r-dqrng
@@ -29,7 +29,7 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('2f583ab177fd333cf626827fc28a6faf')
-sha256sums=('df2c9d8d3acec7813e052755104e1d6c7e38f27f3d0728737f1f224f28314453')
+b2sums=('abae88cede9bd12606adfa6e58a0bb74fcace618552b9a8b108d5fc0c1c79b2825b6b5cb278dd14aacf8abd6381ef02f5410838ab2ad452311eaf17d4a144ba0')
 
 prepare() {
   # fix test
@@ -38,8 +38,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
