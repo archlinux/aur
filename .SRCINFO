@@ -1,16 +1,13 @@
 pkgbase = python2-nose
 	pkgdesc = A discovery-based unittest extension (deprecated)
 	pkgver = 1.3.7
-	pkgrel = 13
+	pkgrel = 14
 	url = https://pypi.org/project/nose/1.3.7/
 	arch = any
 	license = LGPL2.1
 	depends = python2
 	depends = python2-setuptools
-	source = https://pypi.io/packages/source/n/nose/nose-1.3.7.tar.gz
-	source = https://pypi.io/packages/source/n/nose/nose-1.3.7.tar.gz.asc
-	validpgpkeys = 58B277C0D208F7AC460C07C84548B3A8C0D70C12
+	source = https://files.pythonhosted.org/packages/58/a5/0dc93c3ec33f4e281849523a5a913fa1eea9a3068acfa754d44d88107a44/nose-1.3.7.tar.gz
 	b2sums = 4bb479b2786f813f9e9a5fd401e30023a473a053ae013d7887be15af415422c09fb399af6058ae99ed65c5fa4da84eb274eb805e895ca74db159d952905f5be4
-	b2sums = SKIP
 
 pkgname = python2-nose
