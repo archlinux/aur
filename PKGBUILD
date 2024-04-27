@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-readme-browser')
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="nwg-shell WebKitGTK-based README file browser"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-readme-browser"
