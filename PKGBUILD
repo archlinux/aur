@@ -2,7 +2,7 @@
 
 pkgname=font-v
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Font version string reporting and modification library + executable tool'
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
@@ -13,7 +13,7 @@ depends=(python
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$pkgname-$pkgver"
-source=("$_archive.tgz::$url/archive/v$pkgver.tar.gz")
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('c8f36e1413a94cd58f64e519681be12e019d78dd9a5baa2318a9499fd7b0f63e')
 
 build() {
