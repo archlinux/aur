@@ -14,7 +14,7 @@ license=('unknown')
 depends=(libxmu gst-plugins-base libjpeg-turbo libxrender libgl fontconfig openssl-1.0 nss libxcomposite libxcursor libxtst dbus icu60)
 optdepends=('activdriver: Driver for Promethean hardware'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
-source=("activinspire_${pkgver}.2004-1.amd64_amd64.deb"
+source=("local://activinspire_${pkgver}.2004-1.amd64_amd64.deb"
         "inspire.sh"
 	"activityplayer.sh"
         "com.ubuntu.user-interface.gschema.xml")
