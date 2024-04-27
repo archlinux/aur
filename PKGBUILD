@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flexclust
-_pkgver=1.4-1
+_pkgver=1.4-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=1
 pkgdesc="Flexible Cluster Algorithms"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-skmeans
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('26881cc4609085245e8e3f401a27083f')
-b2sums=('bfde267137b7b7ece944efb3ec1f52def87344b6fc67ab4e3271c4d94e7d178f27ed2b2b7b97e138b55bff10d560f08531ce9976066d9fcf83667409e284e83f')
+md5sums=('8ec9f4ba63ae35b8fff0e13ae7f4233a')
+b2sums=('329dd5924749170f048f12824153ef8c830f1730c1fc3476dc97c666ec8cbd1b5d497c7b4c40ec071394f7775a2cadb5f6a6188d5d32d28c1311d8d7d7332c76')
 
 build() {
   mkdir build
