@@ -6,7 +6,7 @@
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
@@ -45,12 +45,14 @@ package_aocl-aocc() {
 	mv ${prefix}/${pkgver}/* ${prefix}
 	rm -r ${prefix}/${pkgver}
 
-	# add missing libFLAME dependency on BLIS
+	# add missing libFLAME dependency on BLIS and AOCL-Utils
 	patchelf --add-needed ${aocl_prefix}/aocc/lib_ILP64/libblis-mt.so ${prefix}/aocc/lib_ILP64/libflame.so
+	patchelf --add-needed ${aocl_prefix}/aocc/lib_ILP64/libaoclutils.so ${prefix}/aocc/lib_ILP64/libflame.so
 	patchelf --add-needed ${aocl_prefix}/aocc/lib_LP64/libblis-mt.so ${prefix}/aocc/lib_LP64/libflame.so
+	patchelf --add-needed ${aocl_prefix}/aocc/lib_LP64/libaoclutils.so ${prefix}/aocc/lib_LP64/libflame.so
 
 	# fix amd-libs.cfg, pkgconfig, and cmake files containing ${pkgdir}
-	sed -e "s:/.*/opt:/opt:g" -si ${prefix}/aocc/amd-libs.cfg ${prefix}/aocc/lib_*P64/pkgconfig/*  ${prefix}/aocc/lib_*P64/cmake/*/*.cmake
+	sed -e "s:/.*/opt:/opt:g" -s -i ${prefix}/aocc/amd-libs.cfg ${prefix}/aocc/lib_*P64/pkgconfig/*  ${prefix}/aocc/lib_*P64/cmake/*/*.cmake
 
 	# env-modules (optional)
 	cp ${srcdir}/modulefile ${prefix}/aocc
@@ -76,12 +78,14 @@ package_aocl-gcc() {
 	mv ${prefix}/${pkgver}/* ${prefix}
 	rm -r ${prefix}/${pkgver}
 
-	# add missing libFLAME dependency on BLIS
+	# add missing libFLAME dependency on BLIS and AOCL-Utils
 	patchelf --add-needed ${aocl_prefix}/gcc/lib_ILP64/libblis-mt.so ${prefix}/gcc/lib_ILP64/libflame.so
+	patchelf --add-needed ${aocl_prefix}/gcc/lib_ILP64/libaoclutils.so ${prefix}/gcc/lib_ILP64/libflame.so
 	patchelf --add-needed ${aocl_prefix}/gcc/lib_LP64/libblis-mt.so ${prefix}/gcc/lib_LP64/libflame.so
+	patchelf --add-needed ${aocl_prefix}/gcc/lib_LP64/libaoclutils.so ${prefix}/gcc/lib_LP64/libflame.so
 
 	# fix amd-libs.cfg, pkconfig, and cmake files containing ${pkgdir} and ${pkgver}
-	sed -e "s:/.*/opt:/opt:g" -e "s:/${pkgver}::g" -si ${prefix}/gcc/amd-libs.cfg ${prefix}/gcc/lib_*P64/pkgconfig/* ${prefix}/gcc/lib_*P64/cmake/*/*.cmake
+	sed -e "s:/.*/opt:/opt:g" -e "s:/${pkgver}::g" -s -i ${prefix}/gcc/amd-libs.cfg ${prefix}/gcc/lib_*P64/pkgconfig/* ${prefix}/gcc/lib_*P64/cmake/*/*.cmake
 
 	# env-modules (optional)
 	cp ${srcdir}/modulefile ${prefix}/gcc
