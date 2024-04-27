@@ -3,7 +3,7 @@
 _pyname=google-cloud-bigquery
 pkgname=python-google-cloud-bigquery
 pkgver=3.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Google BigQuery API client library'
 arch=(any)
 url=https://github.com/googleapis/python-bigquery
@@ -55,9 +55,9 @@ package() {
   python -m installer \
     --destdir="${pkgdir}" \
     dist/*.whl
-  install -Dm644 README.rst -t "${pkgdir}"/usr/share/doc/${pkgname}/
-  # install -Dm644 docs/_build/google-cloud-bigquery.1 -t "${pkgdir}"/usr/share/man/man1/
-  install -d "${pkgdir}"/usr/share/licenses/${pkgname}/
+  install -Dm644 README.rst -t "${pkgdir}"/usr/share/doc/${pkgname}
+  # install -Dm644 docs/_build/google-cloud-bigquery.1 -t "${pkgdir}"/usr/share/man/man1
+  install -d "${pkgdir}"/usr/share/licenses/${pkgname}
   ln -s \
     ${_site}/google_cloud_bigquery-${pkgver}.dist-info/LICENSE \
     "${pkgdir}"/usr/share/licenses/${pkgname}/
