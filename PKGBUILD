@@ -3,7 +3,7 @@
 # Mostly based on https://github.com/Gekkio/gnome-session-xmonad/
 
 pkgname=gnome-flashback-xmonad-nopanel
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="XMonad support for Gnome Flashback"
 arch=('any')
