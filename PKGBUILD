@@ -2,26 +2,21 @@
 
 pkgname=flexpkg
 pkgver=8
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 
 pkgdesc="A new to install programs"
 license=('GPL3')
 
-depends=('gcc' 'python3')
+depends=('gcc' 'git' 'python3')
 
 source=("https://github.com/VPeti1/CWAcces/raw/main/flexpkg.tar.gz")
 
-sha256sums=('53b46e0ae028893a63019af4e06b19b79bb9cfd2497c842eb105ab3543a1ef09')
+sha256sums=('55fb4a7f45f0da603becf2987b418745ca598908c1859a98c4d6910642677e8f')
 
 build() {
-    sudo rm -rf /usr/flex/
-    sudo rm -rf /bin/flex
-    sudo rm -rf /usr/bin/flex
-    sudo mkdir /usr/flex
     cd "$srcdir"
-    sudo cp *.py /usr/flex
-    g++ -o flexpkg run.cpp
+    g++ -o flexpkg installer.cpp
 }
 
 package() {
