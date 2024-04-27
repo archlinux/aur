@@ -4,11 +4,11 @@ _pkgname=CBEA
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Competitive Balances for Taxonomic Enrichment Analysis in R"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biocparallel
   r-biocset
@@ -48,11 +48,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('20761b06df9cf37c59172508ff8cd01d')
-sha256sums=('2bed418b6ab50f544301fee54b840522cdd47354951923b3f38d3428c55de670')
+b2sums=('9a109f86b9d4025f449ce761f72182a1a90c8364169fb1d135025a6979692f280955869848d1a3efc629f32ef5a413403426f5a1b5e90a0a4f6f9151ac2b40ec')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
