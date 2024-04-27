@@ -10,7 +10,7 @@ _commit="da45c71"
 # Main info
 pkgname="$_name-dkms-git"
 pkgver="r${_revision}.${_commit}"
-pkgrel=2
+pkgrel=3
 pkgdesc="For Acer laptops -- kernel module to set Battery Charge Limit to 80%."
 arch=('any')
 url="https://github.com/${_user}/${_name}"
