@@ -3,11 +3,11 @@
 _pkgname=ITK
 pkgname=(itk python-itk)
 pkgver=5.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc='An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis'
 arch=('x86_64')
 url='https://www.itk.org'
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   dcmtk
   double-conversion
