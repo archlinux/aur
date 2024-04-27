@@ -1,0 +1,15 @@
+pkgbase = ruby-prism
+	pkgdesc = Prism Ruby parser
+	pkgver = 0.27.0
+	pkgrel = 1
+	url = http://solargraph.org/
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby>=2.7.0
+	noextract = prism-0.27.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/prism-0.27.0.gem
+	sha256sums = f68d0b4f1cc6df903ec6043cd03e54715f12c19aa8399db039a8683f3bf91b77
+
+pkgname = ruby-prism
