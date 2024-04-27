@@ -2,12 +2,12 @@
 
 pkgname=pypipe
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python command-line tool for pipeline processing'
 arch=('any')
 url='https://github.com/bugen/pypipe'
-license=('Apache')
-depends=('python')
+license=('Apache-2.0')
+depends=('bash' 'python')
 makedepends=(
   'python-build'
   'python-hatchling'
@@ -15,7 +15,7 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=('python-pytest')
-options=('!strip')
+options=('!debug' '!strip')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/bugen/pypipe/archive/v${pkgver}.tar.gz"
