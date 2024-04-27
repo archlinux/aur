@@ -15,7 +15,7 @@ pkgver=2.4.0
 #
 _commit=0b26dec9f03685117a3a78dc1c4ba1ac7d2d6980
 
-pkgrel=2
+pkgrel=3
 pkgdesc='Deezer music source separation library and tool using pretrained models'
 url='https://github.com/deezer/spleeter'
 arch=('any')
@@ -28,6 +28,7 @@ depends=(
     'python-httpx'
     'python-museval'
     'python-norbert'
+    'python-setuptools' # for distutils-precedence
     'python-tensorflow'
     'python-typer'
 )
@@ -65,7 +66,8 @@ prepare() {
     patch -p1 < "${srcdir}/fix-stray-license.patch"
 
     # Fix `test_separate_to_file` and `test_filename_format`.
-    # Not filed upstream because this fix requires Python 3.11.
+    # Not filed upstream because this fix requires Python 3.11
+    # or newer.
     patch -p1 < "${srcdir}/str-enum-python311.patch"
 
     # Skip failing evaluation tests, needs more analysis
