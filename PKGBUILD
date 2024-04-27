@@ -18,7 +18,7 @@ source=("local://activinspire_${pkgver}.2004-1.amd64_amd64.deb"
         "inspire.sh"
 	"activityplayer.sh"
         "com.ubuntu.user-interface.gschema.xml")
-md5sums=('2ffab88a96ce74e202e319946b97899b'
+md5sums=('1ffab88a96ce74e202e319946b97899b'
          'd3096ede6c2cd388469f4e12a8286ee8'
          '14f618ed07ed2d267b2578818d253200'
          'e0f2c4078eadd00de8f28159b273e576')
