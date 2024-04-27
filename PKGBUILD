@@ -2,7 +2,7 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-git
-pkgver=23.0.99.901.r3.g546812382
+pkgver=24.0.99.901.r102.g08113b892
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -12,23 +12,25 @@ pkgdesc="Run X clients under Wayland (git version)"
 depends=('nettle' 'libegl' 'libepoxy' 'systemd-libs' 'libxfont2'
          'pixman' 'xorg-server-common' 'libxcvt')
 makedepends=('meson' 'git'
-             'xorgproto-git' 'xtrans'
-             'pixman' 'libxkbfile' 'libxfont2' 'dbus'
+             'xorgproto'
+             'xtrans'
+             'libxkbfile' 'dbus'
              'xorg-font-util'
-             'wayland' 'wayland-protocols'
-             'libdrm' 'libepoxy'
+             'wayland'
+             'wayland-protocols'
+             'libdrm'
              'systemd'
-             'egl-wayland'
 )
 source=("xserver::git+https://gitlab.freedesktop.org/xorg/xserver.git")
 sha256sums=('SKIP')
+
 provides=('xorg-xwayland' 'xorg-server-xwayland' 'xorg-server-xwayland-git')
 conflicts=('xorg-xwayland' 'xorg-server-xwayland' 'xorg-server-xwayland-git')
 replaces=('xorg-server-xwayland-git')
 
 pkgver() {
   cd xserver
-  local branch=origin/xwayland-23.1
+  local branch=origin/xwayland-24.1
   local head=$(git rev-parse --short HEAD)
   local tag=$(git describe --abbrev=0 "$branch")
   local revisions=$(git rev-list "${tag}..HEAD" --count)
@@ -39,9 +41,9 @@ build() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
-#  export CFLAGS=${CFLAGS/-fno-plt}
-#  export CXXFLAGS=${CXXFLAGS/-fno-plt}
-#  export LDFLAGS=${LDFLAGS/,-z,now}
+  #  export CFLAGS=${CFLAGS/-fno-plt}
+  #  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  #  export LDFLAGS=${LDFLAGS/,-z,now}
 
   arch-meson xserver build \
     -D ipv6=true \
@@ -51,7 +53,6 @@ build() {
     -D xorg=false \
     -D xephyr=false \
     -D xwayland=true \
-    -D xwayland_eglstream=true \
     -D xwin=false \
     -D xquartz=false \
     -D glamor=true \
@@ -61,8 +62,6 @@ build() {
     -D xkb_dir=/usr/share/X11/xkb \
     -D xkb_output_dir=/var/lib/xkb
 
-  # Print config
-  meson configure build
   ninja -C build
 }
 
