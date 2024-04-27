@@ -2,11 +2,11 @@
 
 pkgname=ufo2otf
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Take UFO font sources and generate OTF’s and webfonts'
 arch=(any)
 url="https://github.com/fonts/$pkgname"
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(python
          fontforge
          afdko)
