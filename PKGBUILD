@@ -3,7 +3,7 @@
 pkgname=python2-cryptography
 # Do NOT update. 3.4.0 dropped support for Python 2
 pkgver=3.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A package designed to expose cryptographic recipes and primitives to Python developers (Legacy Python 2 version)"
 arch=('x86_64')
 license=('Apache')
@@ -20,10 +20,13 @@ sha512sums=('55f6ee13342b3209b1fcb310f4c4d33d22856ee785cb2347e6ad36c34e9b42f6e0d
 build() {
   cd cryptography-$pkgver
 
+  # Allow building under non-default prefixes. Should normally resolve to "/usr".
+  _usr="$(dirname $(dirname $(command -v python2)))"
+
   # Explicitly build against OpenSSL 1.1. Otherwise we end up building against the OpenSSL 3 headers
   # even though this version of cryptography doesn't support OpenSSL 3, yet.
-  CFLAGS+=" -I/usr/include/openssl-1.1"
-  LDFLAGS+=" -L/usr/lib/openssl-1.1"
+  CFLAGS+=" -I${_usr}/include/openssl-1.1"
+  LDFLAGS+=" -L${_usr}/lib/openssl-1.1"
   python2 setup.py build
 }
 
