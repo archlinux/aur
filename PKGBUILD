@@ -3,11 +3,11 @@
 pkgname=python-grid-strategy
 _module=${pkgname#python-}
 pkgver=0.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Organize matplotlib plots using different grid strategies'
 arch=('any')
 url="https://github.com/matplotlib/grid-strategy"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
         'python'
         'python-numpy'
