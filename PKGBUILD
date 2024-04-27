@@ -1,7 +1,7 @@
 # Contributor: Rowisi < nomail <at> private <dot> com >
 # Contributor: So1ar <so1ar114514@gmail.com>
 # Contributor: Bot-wxt1221 <3264117476@qq.com>
-# Manitor: TTsdzb <ttsdzb at outlook dot com>
+# Maintainer: TTsdzb <ttsdzb at outlook dot com>
 
 pkgname=hmcl-bin
 _ver=3.5.7.246
