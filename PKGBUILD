@@ -5,11 +5,11 @@ _pkgname=CHETAH
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and accurate scRNA-seq cell type identification"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(AGPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('AGPL-3.0-only')
 depends=(
   r-biodist
   r-corrplot
@@ -36,11 +36,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('a6b920a4a3f3f931acb3cd950c7a74c3')
-sha256sums=('46970b6775d218fdd2e1248f24ae8f24e9f18703c768461c123c4a7dc27ce678')
+b2sums=('72385e4f673daaab0ae4e1306d0fb9a23d853baba2cff2c1113cc6f6509e0ccfa90cb2ee41587b8d6c76547a168d9add0fedf53ee88908f6ae92c0446e0d848b')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

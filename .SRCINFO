@@ -1,10 +1,10 @@
 pkgbase = r-chetah
 	pkgdesc = Fast and accurate scRNA-seq cell type identification
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/CHETAH
 	arch = any
-	license = AGPL3
+	license = AGPL-3.0-only
 	checkdepends = r-testthat
 	checkdepends = r-vdiffr
 	depends = r-biodist
@@ -25,6 +25,6 @@ pkgbase = r-chetah
 	optdepends = r-vdiffr
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/CHETAH_1.18.0.tar.gz
 	md5sums = a6b920a4a3f3f931acb3cd950c7a74c3
-	sha256sums = 46970b6775d218fdd2e1248f24ae8f24e9f18703c768461c123c4a7dc27ce678
+	b2sums = 72385e4f673daaab0ae4e1306d0fb9a23d853baba2cff2c1113cc6f6509e0ccfa90cb2ee41587b8d6c76547a168d9add0fedf53ee88908f6ae92c0446e0d848b
 
 pkgname = r-chetah
