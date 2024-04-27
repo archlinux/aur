@@ -3,11 +3,11 @@
 _name=bandcamp_api
 pkgname=python-bandcamp-api
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple way to get info from Bandcamp"
 arch=(any)
 url="https://github.com/RustyRin/bandcamp-api"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   python-beautifulsoup4
   python-demjson3

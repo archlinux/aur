@@ -1,10 +1,10 @@
 pkgbase = python-bandcamp-api
 	pkgdesc = A simple way to get info from Bandcamp
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RustyRin/bandcamp-api
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = python-beautifulsoup4
 	depends = python-demjson3
 	depends = python-html5lib
