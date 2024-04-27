@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
 url='https://pypi.org/project/tidal-dl-ng/'
-license=(MIT)
+license=(AGPL-3.0-only)
 depends=(
     'python>=3.10'
     'python-requests'
