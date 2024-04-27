@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 
 pkgname=usermin
-pkgver=2.005
+pkgver=2.010
 pkgrel=1
 pkgdesc="A web-based user account administration interface"
 arch=(any)
@@ -99,7 +99,7 @@ package() {
 }
 
 
-sha256sums=('cf2090967e3d678712a8d9ee0f5a816b614b3df6ff7b706adb4991738af83db4'
+sha256sums=('aaa796708905f01f27f94eb0feed00c0db4205dcce0eaf127c73965ed41a34c2'
             '366e0315307c89bb0ec10d76c22352de93b92ca556f7f7bb6e34eb1b17d26a9c'
             '69c033325893aa594f975163eb723abe0907c316ac3b8999e153d07cf7f63488'
             '5753ffe14ae37a511519ec937743c051352a3c2bd7363dd141b67d08e64637cf'
