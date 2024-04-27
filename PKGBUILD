@@ -5,11 +5,11 @@ _pkgname=ANCOMBC
 _pkgver=2.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Microbiome differential abudance and correlation analyses with bias correction"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-cvxr
   r-desctools
@@ -47,11 +47,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('42059f62faa03e818d0cd15b7bcf0094')
-sha256sums=('874699e6662d2624d174fe877e0e81024ecc5aa636d5b23ed9b5c09e5698c3d4')
+b2sums=('9e3630a76d00131683e368fa7f550cd9262d56698900dd45428d971b8b59b222fa482356de7319c6f1796d6009c357a4384dae9c44acd5b929a96e8ef9700ecf')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
