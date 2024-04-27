@@ -1,0 +1,19 @@
+pkgbase = relive-bin
+	pkgdesc = An Open-Source Engine Replacement for Oddworld: Abe's Oddysee and Oddworld: Abe's Exoddus.
+	pkgver = 1.0.4687
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/relive
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = sdl2
+	source_i686 = https://gitlab.com/linuxbombay/relive/1.0.4687/-/raw/main/relive-linux-i686.tar.xz
+	sha256sums_i686 = b538f9b71ef1660c08a333bbb1062397019fad4b273f905651c401265e7ad86d
+	source_x86_64 = https://gitlab.com/linuxbombay/relive/1.0.4687/-/raw/main/relive-linux-x64.tar.xz
+	sha256sums_x86_64 = 9da63d6d27458fcd11202076fa1a34283c6f571806b55c5e7e08565f13490455
+	source_aarch64 = https://gitlab.com/linuxbombay/relive/1.0.4687/-/raw/main/relive-linux-arm64.tar.xz
+	sha256sums_aarch64 = 9ab9007e75e91c4032dc02fe4fd127e4858836fa464459df4c93b03028d1e768
+
+pkgname = relive-bin
