@@ -4,10 +4,10 @@
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-pkgver=2.2.r0.g4a3ec61
+pkgver=2.2.r5.g9a7e88d
 pkgrel=1
 epoch=5
-pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (development snapshot)'
+pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (built from latest commit)'
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
