@@ -1,8 +1,8 @@
 pkgbase = r-alpine
 	pkgdesc = alpine
 	pkgver = 1.26.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/alpine
+	pkgrel = 3
+	url = https://bioconductor.org/packages/3.17/alpine
 	arch = any
 	license = GPL
 	depends = r
@@ -27,7 +27,7 @@ pkgbase = r-alpine
 	optdepends = r-rcolorbrewer
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/alpine_1.26.0.tar.gz
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/alpine_1.26.0.tar.gz
 	sha256sums = 6be1cbe591d858f1e70bf3bb64718c3b7f12bdd4561e28da71fdd66069aaa4d5
 
 pkgname = r-alpine
