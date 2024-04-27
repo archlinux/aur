@@ -3,7 +3,7 @@
 
 pkgname=transmission-gtk-git
 _pkgname=transmission
-pkgver=4.0.3.r536.g7f029acf6
+pkgver=4.0.3.r600.g821a6816e
 pkgrel=1
 epoch=2
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI)(Git version from github repository)"
@@ -37,6 +37,7 @@ provides=(transmission-gtk)
 conflicts=(transmission-gtk transmission-svn-gtk)
 source=("git+https://github.com/transmission/transmission.git")
 sha256sums=('SKIP')
+options=(!debug)
 
 pkgver() {
   cd "$_pkgname"
