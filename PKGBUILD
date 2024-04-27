@@ -3,14 +3,14 @@
 _pkgname=rtracklayer
 _pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
-pkgrel=1
-pkgdesc='R interface to genome annotation files and the UCSC genome browser'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="R interface to genome annotation files and the UCSC genome browser"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0 AND LicenseRef-rtracklayer')
 depends=(
-  r
+  openssl
   r-biocgenerics
   r-biocio
   r-biostrings
@@ -25,6 +25,7 @@ depends=(
   r-xml
   r-xvector
   r-zlibbioc
+  zlib
 )
 optdepends=(
   r-bsgenome
@@ -39,15 +40,27 @@ optdepends=(
   r-runit
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c28217936c81248f2576af8327356324ccf7101b04f3358d049f0a839dd8b0cb')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "$_pkgname-fix-format.patch::https://github.com/lawremi/rtracklayer/commit/86407bbef2d02455053b7b7c96afe9c5ce6949e7.patch")
+md5sums=('a16a9ca02e49808b38823899860abdb6'
+         '21d1f10d3fc8764eda00651f1318e119')
+b2sums=('720a430ebeefa578905ab1e2ab20f6e17c7d58c2e4cff98313ba78dbbb81132c7f05632894ca57e8f65f553bedd8253d45f7a571a8cf2d6c8f96da7cba6ba917'
+        '93a6ea0626d428a2ef43ec110c526057b1fcc80925e150f4d0d10846c534eb508c11b265e5fa6cd60a16a91665a58ac204cceefb8ae9c41bf2f03f6b02b2544b')
+
+prepare() {
+  # fix format string errors
+  patch -Np1 -d "$_pkgname" < "$_pkgname-fix-format.patch"
+}
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
