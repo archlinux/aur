@@ -3,7 +3,7 @@
 _orgname=cometbft
 _pkgname=cometbft
 pkgname=${_pkgname}-bin
-pkgver=0.34.33
+pkgver=0.38.7
 pkgrel=1
 pkgdesc="CometBFT: A distributed, Byzantine fault-tolerant, deterministic state machine replication engine, and fork of Tendermint Core."
 arch=('x86_64' 'aarch64' 'armv6h')
@@ -14,9 +14,9 @@ conflicts=(${_pkgname})
 source_x86_64=("https://github.com/${_orgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/${_orgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 source_armv6h=("https://github.com/${_orgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.tar.gz")
-sha256sums_x86_64=('6bd9fd85db159faa59a9eea0b97eaf88b4ff9e8ed1889ebc1c81364ae0c4db85')
-sha256sums_aarch64=('b939b6f9b394b0ae7d49c8cbf68694ed981591592a630aa4e2f614c9824383bd')
-sha256sums_armv6h=('55fa58aaa951cb7b4cfc69553b8a1d38eb0fef82b64eb919f5a1b54bdb377ec5')
+sha256sums_x86_64=('fe614038b79c67e41c6d06e51eb78045cbfcc5a81a757e1ff5d00ae7dca1f5ac')
+sha256sums_aarch64=('c4cae8b4148c371b76880ad4fd3eb5e1975fe5dc7bf1a7b1c3de2a385b1e571c')
+sha256sums_armv6h=('35fbfdfb9527ebdaae68a3ff7ba3fdd11105eed5deeb7c93fd42fab62794bc37')
 
 package() {
     install -Dt "$pkgdir/usr/local/bin" "$_pkgname"
