@@ -3,7 +3,7 @@
 _pkgname=python-bigquery-storage
 pkgname=python-google-cloud-bigquery-storage
 pkgver=2.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='BigQuery Storage API client library'
 arch=(any)
 url=https://github.com/googleapis/python-bigquery-storage
@@ -61,8 +61,8 @@ package() {
     --destdir="${pkgdir}" \
     dist/*.whl
 
-  install -Dm644 README.rst -t "${pkgdir}"/usr/share/doc/${pkgname}/
-  install -Dm644 docs/_build/google-cloud-bigquery-storage.1 -t "${pkgdir}"/usr/share/man/man1/
+  install -Dm644 README.rst -t "${pkgdir}"/usr/share/doc/${pkgname}
+  install -Dm644 docs/_build/google-cloud-bigquery-storage.1 -t "${pkgdir}"/usr/share/man/man1
   install -d "${pkgdir}"/usr/share/licenses/${pkgname}
   ln -s \
     ${_site}/google_cloud_bigquery_storage-${pkgver}.dist-info/LICENSE \
