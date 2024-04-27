@@ -4,11 +4,11 @@ _pkgname=factR
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Functional Annotation of Custom Transcriptomes"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Apache)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Apache-2.0')
 depends=(
   r-biocgenerics
   r-biocparallel
@@ -57,11 +57,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('55b088d84e382a7068b40062151e4bec')
-sha256sums=('bb37f5dfd3ff46d37ff4ae979b5cb6753d953372522fac7e740f3869313e99e4')
+b2sums=('e43f33fa31399ff1a79303020f3c057c9164dc35c76e9d400702d606011c8e8d73a19c4f15d3ed90638304d58ea0458fe1cece807953ea1d4a49789af2ea77a5')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

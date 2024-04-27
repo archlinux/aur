@@ -1,10 +1,10 @@
 pkgbase = r-factr
 	pkgdesc = Functional Annotation of Custom Transcriptomes
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/factR
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = r-annotationhub
 	checkdepends = r-bsgenome.mmusculus.ucsc.mm10
 	checkdepends = r-testthat
@@ -47,6 +47,6 @@ pkgbase = r-factr
 	optdepends = r-zeallot
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/factR_1.4.0.tar.gz
 	md5sums = 55b088d84e382a7068b40062151e4bec
-	sha256sums = bb37f5dfd3ff46d37ff4ae979b5cb6753d953372522fac7e740f3869313e99e4
+	b2sums = e43f33fa31399ff1a79303020f3c057c9164dc35c76e9d400702d606011c8e8d73a19c4f15d3ed90638304d58ea0458fe1cece807953ea1d4a49789af2ea77a5
 
 pkgname = r-factr
