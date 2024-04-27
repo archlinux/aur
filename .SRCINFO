@@ -1,0 +1,22 @@
+pkgbase = android-aarch64-libopenmpt
+	pkgdesc = A library to render tracker music to a PCM audio stream (Android aarch64)
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://lib.openmpt.org/libopenmpt/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = autoconf-archive
+	depends = android-aarch64-flac
+	depends = android-aarch64-libogg
+	depends = android-aarch64-libsndfile
+	depends = android-aarch64-libvorbis
+	depends = android-aarch64-mpg123
+	depends = android-aarch64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.7.6+release.autotools.tar.gz
+	md5sums = ee6a65259bb64f7f60711e3f91a81a98
+
+pkgname = android-aarch64-libopenmpt
