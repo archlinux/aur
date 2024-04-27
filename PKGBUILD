@@ -4,11 +4,11 @@ _pkgname=HiContacts
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Analysing cool files in R with HiContacts"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biocgenerics
   r-biocio
@@ -54,11 +54,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('f7f7341e5b4cbfcd13b04fadd9c472c7')
-sha256sums=('7efd2cc7f77c82fe4e2b662fc54f093d68ee045c4d89c0f2400a4409bcf5ab29')
+b2sums=('607119810196bdb7083dd1eb674089b1246c3865c8ba8fb1278bc7fabe7117f66271d9af9130b380f7b7bf496619cfe2f90463253a42f4d36026082434b565e5')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
