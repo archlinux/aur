@@ -4,11 +4,11 @@ _pkgname=escheR
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Unified multi-dimensional visualizations with Gestalt principles"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-ggplot2
   r-rlang
@@ -30,11 +30,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('ed2586d2e42f89db85790889863421b8')
-sha256sums=('d997b24d8123ce01826c65f7aa09dacd50869d5d3597679dbffc1416da9c6141')
+b2sums=('2181b8c329cca2fcc14c7a4812b05c488f39f4980893b9303e722828c01dfc62ab151c24d8e0fff150d5fbb4df8a83fb3ad740322f8abdd82ab0fb55a6855fa0')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {

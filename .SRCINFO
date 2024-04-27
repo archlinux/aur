@@ -1,7 +1,7 @@
 pkgbase = r-escher
 	pkgdesc = Unified multi-dimensional visualizations with Gestalt principles
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/escheR
 	arch = any
 	license = MIT
@@ -22,6 +22,6 @@ pkgbase = r-escher
 	optdepends = r-stexampledata
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/escheR_1.2.0.tar.gz
 	md5sums = ed2586d2e42f89db85790889863421b8
-	sha256sums = d997b24d8123ce01826c65f7aa09dacd50869d5d3597679dbffc1416da9c6141
+	b2sums = 2181b8c329cca2fcc14c7a4812b05c488f39f4980893b9303e722828c01dfc62ab151c24d8e0fff150d5fbb4df8a83fb3ad740322f8abdd82ab0fb55a6855fa0
 
 pkgname = r-escher
