@@ -1,27 +1,32 @@
-# Maintainer: DaveD <david at codevertex dot de>
-# Contributor: Malstrond <malstrond at gmail dot com>
-# Contributor: Jean-Baptiste Le Coz <jb.lecoz at gmail dot com>
-# Contributor: Jose Riha <jose1711 at gmail dot com>
-# Contributor: Bazon <bazonbloch at arcor dot de>
+# Maintainer: DaveD <david@codevertex.de>
+# Contributor: jbreizh
+# Contributor: Malstrond <malstrond@gmail.com>
+# Contributor: Jean-Baptiste Le Coz <jb.lecoz@gmail.com>
+# Contributor: Jose Riha <jose1711@gmail.com>
+# Contributor: Bazon <bazonbloch@arcor.de>
 
 pkgname=activinspire
 pkgver=3.3.15
 pkgrel=1
-pkgdesc="Presentation Software for use with Promethean Hardware products (manual user intervention required)"
+pkgdesc="Presentation Software for use with Promethean Hardware products (manual user interaction required)."
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
 license=('unknown')
-depends=(libxmu gst-plugins-base libjpeg-turbo libxrender libgl fontconfig openssl-1.0 nss libxcomposite libxcursor libxtst dbus icu60)
+depends=(libxmu gst-plugins-base libjpeg-turbo libxrender libxkbcommon libxrandr libgl libxdamage snappy libgl fontconfig openssl-1.1 nss libxcomposite libxcursor libxtst dbus)
 optdepends=('activdriver: Driver for Promethean hardware'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
 source=("local://activinspire_${pkgver}.2004-1.amd64_amd64.deb"
         "inspire.sh"
-	"activityplayer.sh"
-        "com.ubuntu.user-interface.gschema.xml")
+        "activityplayer.sh"
+        "libre2.so.5"
+        "libwebp.so.6"
+        )
 md5sums=('1ffab88a96ce74e202e319946b97899b'
-         'd3096ede6c2cd388469f4e12a8286ee8'
-         '14f618ed07ed2d267b2578818d253200'
-         'e0f2c4078eadd00de8f28159b273e576')
+         'c9d1532b5dce33522a77b59a62478ddd'
+         '4f8d3e07429c214cf6cc3f067fec76b7'
+         'fb8c55ea7f19bdcc81b51c911bbf565b'
+         '13048084f7d2dc10dcb9378c9732da62'
+         )
 
 package() {
 
@@ -33,24 +38,20 @@ package() {
  echo "4. Build and install this AUR package."
 
  # Extract software from debian archive. Exclude /etc/xdg (not needed) and /var/Promethean (created with the correct permissions below).
- bsdtar -C "$pkgdir" --exclude=./var --exclude=./etc -xf data.tar.xz
+ bsdtar -C "$pkgdir" --exclude=./var --exclude=./etc/xdg --exclude=./usr/share/gnome-shell -xf data.tar.xz
 
  # Use /opt instead of /usr/local/bin for binaries to match Arch packaging standards for large self-contained packages.
  install -dm0755 "$pkgdir"/opt
  mv "$pkgdir"/usr/local/bin/activsoftware "$pkgdir"/opt/
  rm -r "$pkgdir"/usr/local
+ 
  # Because we just changed the paths, now we need to fix the absolute paths that Promethean uses in their files.
  sed -i "s%/usr/local/bin%/usr/bin%" "$pkgdir"/usr/share/applications/activsoftware.desktop
  sed -i "s%/usr/local/bin%/usr/bin%" "$pkgdir"/usr/share/applications/activplayer.desktop
-
- #  Install com.ubuntu.user-interface schema need to launch ActivInspire.
- mkdir "$pkgdir"/usr/share/glib-2.0
- mkdir "$pkgdir"/usr/share/glib-2.0/schemas
- install -Dm755 com.ubuntu.user-interface.gschema.xml "$pkgdir"/usr/share/glib-2.0/schemas
-
+ 
  # ActivInspire ships with functionality to disable compositing. This should really be handled by the users WM configuration, so we remove that.
  rm "$pkgdir"/usr/share/applications/activsoftware-nc.desktop
-
+ 
  # The upstream launch scripts only work with Ubuntu, so we replace them with our own.
  install -dm0755 "$pkgdir"/usr/bin
  install -Dm755 inspire.sh "$pkgdir"/usr/bin/inspire
@@ -60,11 +61,7 @@ package() {
  # Since it is started by the user, this directory needs to be world-writable, even if that's a bad idea.
  install -dm0777 "$pkgdir"/var/Promethean
 
- # Warn the user about behavior.
- echo " "
- echo "Promethean software has a bug that often causes it to hang when attempting to close it using the GUI."
- echo "It will also not start if an instance of it is already running."
- echo "To work around this all remaining ActivInspire instances are killed when you launch it."
- echo "This means you will lose your work when attempting to open a second instance while still working in the first one."
- echo " "
+ # Install libre2.so.5 and libwebp.so.6 from ubuntu focal deb package
+  install -Dm755 libre2.so.5 "$pkgdir"/opt/activsoftware
+  install -Dm755 libwebp.so.6 "$pkgdir"/opt/activsoftware
 }
