@@ -1,6 +1,6 @@
 pkgname=gpt4all-chat
 pkgver=2.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="open-source LLM chatbots that you can run anywhere"
 arch=("x86_64")
 url="https://github.com/nomic-ai/gpt4all"
@@ -10,7 +10,7 @@ depends=(
     "qt6-svg" "qt6-wayland" "qt6-webengine" "fmt")
 makedepends=("cmake" "shaderc" "vulkan-tools" "vulkan-headers")
 source=(
-    "$pkgname-$pkgver::https://github.com/nomic-ai/gpt4all/archive/refs/tags/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/nomic-ai/gpt4all/archive/refs/tags/v$pkgver.tar.gz"
     "001-change-binary-name.diff"
 )
 declare -rAg _modules_name_map=(
