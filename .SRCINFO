@@ -1,7 +1,7 @@
 pkgbase = python-pacparser
 	pkgdesc = Python 3.x pacparser module
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/manugarg/pacparser
 	arch = i686
 	arch = x86_64

@@ -4,7 +4,7 @@
 
 pkgname=python-pacparser
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python 3.x pacparser module'
 arch=(i686 x86_64 aarch64)
 license=(LGPL-3.0-only)
