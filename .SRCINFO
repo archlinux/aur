@@ -1,0 +1,31 @@
+pkgbase = tidal-dl-ng
+	pkgdesc = A tool for downloading music and albums from TIDAL
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = https://pypi.org/project/tidal-dl-ng/
+	arch = any
+	license = MIT
+	makedepends = python-poetry-core
+	depends = python>=3.10
+	depends = python-requests
+	depends = python-mutagen
+	depends = python-pycryptodome
+	depends = python-tidalapi
+	depends = python-dataclasses-json
+	depends = python-pathvalidate
+	depends = python-m3u8
+	depends = python-coloredlogs
+	depends = python-rich
+	depends = python-toml
+	depends = python-typer
+	depends = python-ffmpeg-python
+	optdepends = python-pyside6: For GUI support
+	optdepends = python-pyqtdarktheme: For dark theme in GUI
+	source = https://files.pythonhosted.org/packages/c0/5a/88e836459c6c633a596d3771f17237faad2f01d9bf5ca61c6698ccadce89/tidal_dl_ng-0.13.2.tar.gz
+	source = tidal-dl-ng
+	source = tidal-dl-ng-gui
+	sha256sums = 08c6bd354b994071f8e8398234319316c65e59a8620933e8cfa67e56d7c5995f
+	sha256sums = 1d2f9b06b7bba762f9a8770b163e001e5044a38b9d5befa8ea44fa3c98bcf172
+	sha256sums = ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c
+
+pkgname = tidal-dl-ng

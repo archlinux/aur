@@ -1,0 +1,3 @@
+#!/usr/bin/env python3
+import tidal_dl_ng.gui
+tidal_dl_ng.gui.gui_activate()

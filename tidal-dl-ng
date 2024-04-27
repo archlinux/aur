@@ -1,0 +1,4 @@
+#!/usr/bin/env python3
+import tidal_dl_ng.cli
+tidal_dl_ng.cli.app()
+

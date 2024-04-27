@@ -1,0 +1,59 @@
+# Maintainer: Darius Niminenn <root@dnim.dev>
+
+pkgname=tidal-dl-ng
+_pkgname=${pkgname//-/_}
+pkgver=0.13.2
+pkgrel=1
+pkgdesc='A tool for downloading music and albums from TIDAL'
+arch=(any)
+url='https://pypi.org/project/tidal-dl-ng/'
+license=(MIT)
+depends=(
+    'python>=3.10'
+    'python-requests'
+    'python-mutagen'
+    'python-pycryptodome'
+    'python-tidalapi'
+    'python-dataclasses-json'
+    'python-pathvalidate'
+    'python-m3u8'
+    'python-coloredlogs'
+    'python-rich'
+    'python-toml'
+    'python-typer'
+    'python-ffmpeg-python'
+)
+makedepends=(
+    'python-poetry-core'
+)
+optdepends=(
+    'python-pyside6: For GUI support'
+    'python-pyqtdarktheme: For dark theme in GUI'
+)
+source=(
+    "https://files.pythonhosted.org/packages/c0/5a/88e836459c6c633a596d3771f17237faad2f01d9bf5ca61c6698ccadce89/$_pkgname-$pkgver.tar.gz"
+    "tidal-dl-ng"
+    "tidal-dl-ng-gui"
+)
+sha256sums=('08c6bd354b994071f8e8398234319316c65e59a8620933e8cfa67e56d7c5995f'
+            '1d2f9b06b7bba762f9a8770b163e001e5044a38b9d5befa8ea44fa3c98bcf172'
+            'ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c')
+
+prepare() {
+    cd "$_pkgname-$pkgver"
+    rm -rf dist
+}
+
+build() {
+    cd "$_pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
+package() {
+    cd "$_pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # Install scripts
+    install -Dm755 "${srcdir}/tidal-dl-ng" "${pkgdir}/usr/bin/tidal-dl-ng"
+    install -Dm755 "${srcdir}/tidal-dl-ng-gui" "${pkgdir}/usr/bin/tidal-dl-ng-gui"
+}
