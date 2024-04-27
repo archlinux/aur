@@ -1,0 +1,21 @@
+pkgbase = shm-format
+	pkgdesc = Read values with specified data type from shared memory.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SHMModbus/shm_format
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	makedepends = cxxopts
+	makedepends = cxxshm
+	makedepends = cxxsemaphore
+	makedepends = nlohmann-json
+	depends = cxxshm
+	depends = cxxsemaphore
+	depends = nlohmann-json
+	source = git+https://github.com/SHMModbus/shm_format.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = shm-format
