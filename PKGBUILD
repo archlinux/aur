@@ -1,7 +1,7 @@
 # Maintainer: munsternet <munsternet at ik dot me>
 _pkgname=trackaudio
 pkgname=trackaudio-git
-pkgver=1.0.2.beta.1.r5.g7d26fb4
+pkgver=1.0.2.beta.1.r7.g59968b8
 pkgrel=1
 pkgdesc="Next-generation cross-platform Audio-For-VATSIM ATC Client"
 arch=(x86_64 aarch64)
@@ -10,10 +10,13 @@ license=('GPL-3.0-or-later')
 conflicts=("${_pkgname}-bin")
 depends=()
 makedepends=(
-    git
     gcc
+    git
+    ninja
+    nodejs-cmake-js
     npm
-    nodejs-cmake-js)
+    unzip
+    zip)
 source=(
 	"$_pkgname::git+https://github.com/pierr3/TrackAudio.git#branch=main"
 	'trackaudio.desktop'
