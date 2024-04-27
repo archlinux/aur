@@ -2,8 +2,8 @@
 
 pkgname=plasma6-runners-jetbrains-runner-git
 _pkgname=plasma6-runners-jetbrains-runner
-pkgver=r179.9f3e9d3
-pkgrel=5
+pkgver=r183.74516b8
+pkgrel=1
 pkgdesc="Launch your recent JetBrains projects from KRunner"
 license=('LGPL3')
 _project_name="JetBrainsRunner"
@@ -14,7 +14,7 @@ arch=('x86_64')
 depends=('krunner' 'libnotify' 'kcmutils' 'kio')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=("$_pkgname")
-conflicts=("$_pkgname" plasma5-runners-jetbrains-runner-git)  # in plasma5 version only the icon path is conflicting
+conflicts=("$_pkgname")
 _branch=master
 source=("git+$url#branch=$_branch"
         "git+$_url/$_submodule_name#branch=$_branch")

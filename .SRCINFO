@@ -1,7 +1,7 @@
 pkgbase = plasma6-runners-jetbrains-runner-git
 	pkgdesc = Launch your recent JetBrains projects from KRunner
-	pkgver = r179.9f3e9d3
-	pkgrel = 5
+	pkgver = r183.74516b8
+	pkgrel = 1
 	url = https://github.com/alex1701c/JetBrainsRunner
 	arch = x86_64
 	license = LGPL3
@@ -14,7 +14,6 @@ pkgbase = plasma6-runners-jetbrains-runner-git
 	depends = kio
 	provides = plasma6-runners-jetbrains-runner
 	conflicts = plasma6-runners-jetbrains-runner
-	conflicts = plasma5-runners-jetbrains-runner-git
 	source = git+https://github.com/alex1701c/JetBrainsRunner#branch=master
 	source = git+https://github.com/alex1701c/jetbrains-api#branch=master
 	sha256sums = SKIP
