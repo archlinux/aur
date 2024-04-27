@@ -43,7 +43,7 @@ prepare() {
         git submodule update --init --recursive
         
         # libressl-3.8
-        #git apply ${srcdir}/neverbleed-fix-when-lacking-engines.patch
+        git apply ${srcdir}/neverbleed-fix-when-lacking-engines.patch
 
 	# set CMake minimal version to 3.9 to set CMP0039 to new
 	sed -i 's/VERSION 2.8.12/VERSION 3.9/g' CMakeLists.txt
