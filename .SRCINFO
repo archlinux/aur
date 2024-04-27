@@ -1,5 +1,5 @@
 pkgbase = python-geemlib
-	pkgdesc = TUI / CLI interface for conversing with GPT models (from OpenAI)
+	pkgdesc = Geem's all-purpose python library.
 	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://pypi.org/project/geemlib/
