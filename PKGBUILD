@@ -1,5 +1,5 @@
 pkgname=carla-bridges-linux32
-pkgver=6949.948991d7b
+pkgver=6950.a580473fb
 pkgrel=1
 pkgdesc="Carla Linux VST 32-Bit Bridge"
 arch=(x86_64)
