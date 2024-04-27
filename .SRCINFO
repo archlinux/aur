@@ -1,13 +1,13 @@
 pkgbase = swift-format
 	pkgdesc = Formatting technology for Swift source code
-	pkgver = 510.0.0
+	pkgver = 510.1.0
 	pkgrel = 1
 	url = https://github.com/apple/swift-format
 	arch = any
 	license = APACHE
 	makedepends = git
 	depends = swift-language
-	source = swift-format-510.0.0.tar.gz::https://github.com/apple/swift-format/archive/510.0.0.tar.gz
-	sha256sums = 9bb6b35262b09268a2920b3152b5d2c53a33ef469024692f3d359f3cb97628d8
+	source = swift-format-510.1.0.tar.gz::https://github.com/apple/swift-format/archive/510.1.0.tar.gz
+	sha256sums = 2174db6f721e66ddc95263239e4dd6112f81833bbf9cd4051cf9d3dca0f7b7fe
 
 pkgname = swift-format
