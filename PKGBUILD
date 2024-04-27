@@ -16,7 +16,7 @@ b2sums=('80dc553a5304732a508ea03225e255a0a04a807360f40cddc0bf5e42ba59e95f12a5bbe
 
 package() {
 	mkdir -p "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}"
-	chmod 0755 "${pkgdir}/opt/LiteLoader" "${pkgdir}/opt/LiteLoader/plugins"
+	chmod 0777 "${pkgdir}/opt/LiteLoader" "${pkgdir}/opt/LiteLoader/plugins"
 	cp -r "${srcdir}"/* "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
