@@ -3,7 +3,7 @@
 _pyname=blackrenderer
 pkgname=python-$_pyname
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='a Python-based renderer for OpenType COLR fonts, with multiple backends'
 arch=(any)
 url=https://github.com/BlackFoundryCom/black-renderer
@@ -33,11 +33,11 @@ build() {
 
 check() {
 	cd "$_archive"
-	# cairo based backend fails with floating point math problems
-	# cli based tests fail because no entrypoint binary at this point
-	PYTHONPATH="$PWD/Lib" pytest \
-		--deselect Tests/test_glyph_render.py \
-		--deselect Tests/test_mainprog.py
+	local deselected=(
+		Tests/test_glyph_render.py # cairo based backend fails with floating point math problems
+		Tests/test_mainprog.py # cli based tests fail because no entrypoint binary at this point
+	)
+	PYTHONPATH="$PWD/Lib" pytest ${deselected[@]/#/--deselect }
 }
 
 package() {
