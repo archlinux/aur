@@ -1,8 +1,8 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland-git
-pkgver=r1.0
-pkgrel=1
+pkgver=r958.f480253
+pkgrel=3
 pkgdesc="Easy scratchpads, menus, smart monitor placement and more hyprland tweaks (GIT version)"
 arch=(any)
 url="https://github.com/fdev31/pyprland"
