@@ -2,11 +2,11 @@
 
 pkgname=trufont
 pkgver=0.6.6
-pkgrel=3
+pkgrel=4
 pkgdesc='A streamlined and hackable font editor'
 arch=(any)
 url='https://trufont.github.io'
-license=(GPL3 LGPL3)
+license=(GPL-3.0-only LGPL-3.0-only)
 _pydeps=(appdirs
          booleanoperations
          brotli
