@@ -4,11 +4,11 @@ _pkgname=IntOMICS
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrative analysis of multi-omics data to infer regulatory networks"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-bestnormalize
   r-bnlearn
@@ -38,11 +38,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('61628ea37535123f71455b77b194b08c')
-sha256sums=('f0e70d50c624b6092c81456dd2da3e2b37a6666f59a644e2d7e9aa8f2e8a16e2')
+b2sums=('f77be18c5c62c54afeaa69c7d5b9fa909d60eaa241a3fc133a0d4300cfa2811ea9cdc740dbeabf3525ae602f44c3e4a4f4ef85f63732e315e5503e24a7b2c944')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
