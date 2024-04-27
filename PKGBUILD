@@ -4,11 +4,11 @@ _pkgname=consICA
 _pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="consensus Independent Component Analysis"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biocparallel
   r-fastica
@@ -34,11 +34,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b64f871ca062dc65d6a883b000c761d8')
-sha256sums=('a060585fce661c118a243d23b36fd0530dd9b6b74ecca7cc4235c09d380f2276')
+b2sums=('6c06df7a4b254a1546391f0185f99790fa860056a6373ed44a6ff17b7e929cbf978ae05153ae0e7bdcf476525586a93093ac3c7e1187f7f86de35420b9336218')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
