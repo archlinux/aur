@@ -1,10 +1,10 @@
 pkgbase = r-zenith
 	pkgdesc = Gene set analysis following differential expression using linear (mixed) modeling with dream
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/zenith
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-biocgenerics
 	checkdepends = r-runit
 	checkdepends = r-tweedeseqcountdata
@@ -30,6 +30,6 @@ pkgbase = r-zenith
 	optdepends = r-tweedeseqcountdata
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/zenith_1.4.2.tar.gz
 	md5sums = 60c9729fb2407d62a1ea15b1aa5ee0eb
-	sha256sums = e4125d970e64108ee099b916fa4013b9f732ba4198d9ad838c50a27b93d9c373
+	b2sums = 93539baaded7a4fc4f5f5ecf873e6d8ff81d3cf138ad6b89a47562396b6b4d7ec9fd01a693aabfa9edef31dca875e9f5a7a0e400452631be26c86a84e4fd8782
 
 pkgname = r-zenith
