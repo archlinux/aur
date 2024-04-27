@@ -4,11 +4,11 @@ _pkgname=storr
 _pkgver=1.2.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Simple Key Value Stores"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-digest
   r-r6
@@ -34,11 +34,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0bec8b9e53ad575bd9a20b68a798f853')
-sha256sums=('4224c3991d9c043a45ce530d0698d7f2cdca231b26fe31b45e0db865026e5f63')
+b2sums=('ea904e834ecf5a4d075b81262ccbea74103f780d03f79ef8e8b8755ad65edf9e51bf4107d1be45a03256d95540d4c8df72a30dcdd268c2bbb2675852ca971757')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
