@@ -4,9 +4,9 @@
 # Contributor: boscowitch <boscowitch@boscowitch.de>
 
 _pkgname=coreutils
-_commit=2961dc3ec81dfaa3d00091edfcf8a7559ca67bfb
+_commit=42cadf5b7915523e77ae43b5cc9fa74e0def72c6
 pkgname=advcpmv
-pkgver=9.4
+pkgver=9.5
 pkgrel=1
 pkgdesc="'cp' and 'mv' utilities with progress bar patches"
 arch=('x86_64')
@@ -17,9 +17,9 @@ provides=('acp' 'amv' 'advcp' 'advmv' 'cpg' 'mvg')
 source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         "${pkgname}-${pkgver}-${pkgrel}.patch::https://raw.githubusercontent.com/jarun/advcpmv/${_commit}/advcpmv-0.9-${pkgver}.patch")
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
-sha256sums=('ea613a4cf44612326e917201bbbcdfbd301de21ffc3b59b6e5c07e040b275e52'
+sha256sums=('cd328edeac92f6a665de9f323c93b712af1858bc2e0d88f3f7100469470a1b8a'
             'SKIP'
-            'b05ab0a352dc4eb839c4adb2befe2de8f6f1bc69bf2a5eec1a4f4f2d369e12b3')
+            '2d17dbe2179994050a89797f842fc7828a9e18cc42b7caee058654adbcd21fe6')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"

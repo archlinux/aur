@@ -1,6 +1,6 @@
 pkgbase = advcpmv
 	pkgdesc = 'cp' and 'mv' utilities with progress bar patches
-	pkgver = 9.4
+	pkgver = 9.5
 	pkgrel = 1
 	url = https://github.com/jarun/advcpmv
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = advcpmv
 	provides = advmv
 	provides = cpg
 	provides = mvg
-	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.4.tar.xz
-	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.4.tar.xz.sig
-	source = advcpmv-9.4-1.patch::https://raw.githubusercontent.com/jarun/advcpmv/2961dc3ec81dfaa3d00091edfcf8a7559ca67bfb/advcpmv-0.9-9.4.patch
+	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.5.tar.xz
+	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.5.tar.xz.sig
+	source = advcpmv-9.5-1.patch::https://raw.githubusercontent.com/jarun/advcpmv/42cadf5b7915523e77ae43b5cc9fa74e0def72c6/advcpmv-0.9-9.5.patch
 	validpgpkeys = 6C37DC12121A5006BC1DB804DF6FD971306037D9
-	sha256sums = ea613a4cf44612326e917201bbbcdfbd301de21ffc3b59b6e5c07e040b275e52
+	sha256sums = cd328edeac92f6a665de9f323c93b712af1858bc2e0d88f3f7100469470a1b8a
 	sha256sums = SKIP
-	sha256sums = b05ab0a352dc4eb839c4adb2befe2de8f6f1bc69bf2a5eec1a4f4f2d369e12b3
+	sha256sums = 2d17dbe2179994050a89797f842fc7828a9e18cc42b7caee058654adbcd21fe6
 
 pkgname = advcpmv
