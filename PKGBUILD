@@ -5,11 +5,11 @@ _pkgname=tenXplore
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="ontological exploration of scRNA-seq of 1.3 million mouse neurons from 10x genomics"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-annotationdbi
   r-matrixstats
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('13e1778f8b644661a521bb832af6e7d6')
-sha256sums=('95b76b3e0c0e54d261395aa9f50c78a807273504811b0ccfa778f69a77ef68ea')
+b2sums=('e8a277b300e0bcf658d881259cdb0f787a5e18fd94b7f040f5778a517e49224217cea5213e2f9759bd71ec3545db14c17fba3973d9348ed494ad5d2058ccde62')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
