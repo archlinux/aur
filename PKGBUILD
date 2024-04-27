@@ -4,7 +4,7 @@
 pkgname=python-missingno
 _name=${pkgname#python-}
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Missing data visualization module for Python"
 arch=(any)
 url="https://github.com/ResidentMario/missingno"
