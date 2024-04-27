@@ -3,7 +3,7 @@
 _pkgbase=python-dbussy
 pkgname="${_pkgbase}-git"
 pkgver=1.3.r25.g83462e5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python binding for D-Bus using asyncio"
 arch=(any)
 url="https://gitlab.com/ldo/dbussy"
