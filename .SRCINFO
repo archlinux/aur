@@ -1,6 +1,6 @@
 pkgbase = python-image-registration
 	pkgdesc = A python module for registering astronomical images with extended emission
-	pkgver = 0.2.6
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/keflavich/image_registration
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-image-registration
 	depends = python-astropy
 	depends = python-matplotlib
 	depends = python-scipy
-	source = https://files.pythonhosted.org/packages/source/i/image-registration/image_registration-0.2.6.tar.gz
-	sha512sums = a95caba9e4f715fc538594f83a8ea5a6253f66d2c92bceecf4ac75708d20eb1cc03b92f2471fb60a0389ca8d54e1e6fe0aa2754801aa22f50318152620e2da9c
+	source = https://files.pythonhosted.org/packages/source/i/image-registration/image_registration-0.2.9.tar.gz
+	sha512sums = 7b95cc144d78aecf24866de330f7d0ef0ec17ef66219fbec11ba8e4c1c2d6bf370aaa4752d393e6ee88a1486e16a05e14a6f66b0d23887d6734408d694743944
 
 pkgname = python-image-registration

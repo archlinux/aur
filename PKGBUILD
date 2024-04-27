@@ -1,7 +1,7 @@
 # Maintainer: Médéric Boquien <mboquien@free.fr>
 
 pkgname=python-image-registration
-pkgver=0.2.6
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="A python module for registering astronomical images with extended emission"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/keflavich/image_registration"
 license=("MIT")
 depends=('python' 'python-astropy' 'python-matplotlib' 'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/i/image-registration/image_registration-${pkgver}.tar.gz")
-sha512sums=('a95caba9e4f715fc538594f83a8ea5a6253f66d2c92bceecf4ac75708d20eb1cc03b92f2471fb60a0389ca8d54e1e6fe0aa2754801aa22f50318152620e2da9c')
+sha512sums=('7b95cc144d78aecf24866de330f7d0ef0ec17ef66219fbec11ba8e4c1c2d6bf370aaa4752d393e6ee88a1486e16a05e14a6f66b0d23887d6734408d694743944')
 
 build() {
   cd ${srcdir}/image_registration-${pkgver}
