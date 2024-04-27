@@ -84,7 +84,9 @@ package_ente-server() {
 #    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgbase}/LICENSE"
 
     # Create systemd service
-    install -Dm644 "${srcdir}/ente-web.service" "$pkgdir/etc/systemd/system/ente-web.service"
+    install -Dm644 "${srcdir}/ente-museum.service" "$pkgdir/etc/systemd/system/ente-museum.service"
+    install -vDm644 "${srcdir}/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+    install -vDm644 "${srcdir}/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
 
 package_ente-web() {

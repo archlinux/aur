@@ -1,11 +1,14 @@
 [Unit]
-Description=Ente webserver
+Description=Ente musem
 After=network.target
+After=postgresql.service
 
 [Service]
-User=root
-WorkingDir=/var/www/ente/
-ExecStart=/usr/bin/yarn run dev
+User=ente
+Group=ente
+WorkingDirrectory=/etc/ente
+Environment=USER=ente ENTE_DB_USER=postgres
+ExecStart=/usr/bin/museum
 Restart=always
 
 [Install]
