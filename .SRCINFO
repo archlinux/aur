@@ -1,7 +1,7 @@
 pkgbase = python-modin
 	pkgdesc = Speed up your Pandas workflows by changing a single line of code
 	pkgver = 0.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/modin-project/modin
 	arch = any
 	license = Apache-2.0
@@ -21,6 +21,6 @@ pkgbase = python-modin
 	depends = python-pytz
 	depends = python-rpyc
 	source = modin-0.29.0.tar.gz::https://github.com/modin-project/modin/archive/0.29.0.tar.gz
-	sha512sums = 9c6273a13b4d3458a15c084befa2a2868c7e24cce00bace549194dbcc7d00fe63b91084a333342a4d80702020d25792a468f18a66bd3175111ad50df995c1c79
+	sha512sums = 7a04c6fbfa548fbaaab5bb159ada9bad7331926c57359d7156c80a387287d6843c9c6d21b08f75077ec3e4db9b8f48d0edcb2005b6c0b91f14ec33bfd3881120
 
 pkgname = python-modin
