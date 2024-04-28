@@ -1,11 +1,12 @@
 pkgbase = carburetor
 	pkgdesc = Graphical settings app for tractor in GTK
 	pkgver = 4.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://framagit.org/tractor/carburetor
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-build
+	makedepends = python-setuptools
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python

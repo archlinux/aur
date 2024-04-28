@@ -2,11 +2,11 @@
 
 pkgname=carburetor
 pkgver=4.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical settings app for tractor in GTK'
 arch=(any)
 url='https://framagit.org/tractor/carburetor'
-license=(GPL3)
+license=('GPL-3.0-or-later')
 
 depends=(
   python
@@ -17,6 +17,7 @@ depends=(
 )
 makedepends=(
   python-build
+  python-setuptools
   python-installer
   python-wheel
 )
