@@ -1,6 +1,6 @@
 pkgbase = dokytree-git
 	pkgdesc = A versatil documentation system based on yaml files in directory tree with pugjs templates
-	pkgver = 0.0.1.r2.2c5d57e
+	pkgver = 0.0.4.r1.acac219
 	pkgrel = 1
 	url = https://github.com/matmoul/dokytree
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = dokytree-git
 	optdepends = code: To edit doc
 	optdepends = chromium: To view and print as pdf doc
 	optdepends = wget: To export doc as static pages
-	source = git+https://github.com/matmoul/dokytree.git#commit=2c5d57e8aba8f9fd44e56876fa38da9d556491ee
+	source = git+https://github.com/matmoul/dokytree.git#commit=acac2199c3041f5e8ccc6bd0a1d1bf2162415444
 	sha256sums = SKIP
 
 pkgname = dokytree-git

@@ -2,10 +2,10 @@
 
 _githubuser=matmoul
 _githubrepo=dokytree
-_gitcommit=2c5d57e8aba8f9fd44e56876fa38da9d556491ee
+_gitcommit=acac2199c3041f5e8ccc6bd0a1d1bf2162415444
 
 pkgname=dokytree-git
-pkgver=0.0.1.r2.2c5d57e
+pkgver=0.0.4.r1.acac219
 pkgrel=1
 pkgdesc='A versatil documentation system based on yaml files in directory tree with pugjs templates '
 arch=('any')
