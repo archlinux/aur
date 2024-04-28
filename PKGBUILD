@@ -2,7 +2,7 @@
 
 _pkgname=maui-shell
 pkgname=$_pkgname-git
-pkgver=0.6.6.r10.gabe5e68
+pkgver=0.6.6.r11.g8272456
 pkgrel=1
 pkgdesc='Maui Shell is a convergent shell for desktops, tablets, and phones.'
 url='https://github.com/Nitrux/maui-shell'
@@ -39,7 +39,7 @@ depends=(bluedevil
          kwayland
          maui-core-git
          mauikit-calendar-git
-         mauikit-filebrowsing
+         mauikit-filebrowsing-git
          mauikit-git
          mauiman-git
          phonon-qt6
@@ -71,7 +71,6 @@ pkgver() {
 
 build() {
   cmake -B build -S $_pkgname \
-    -DBUILD_WITH_QT6=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
