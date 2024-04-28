@@ -1,18 +1,22 @@
 # Maintainer: wuhx <aur@xun.im>
 
 pkgname=nerdctl-full-bin
-pkgver=2.0.0_beta.3
+
+pkgver=2.0.0_beta.4
+gitver=2.0.0-beta.4 
+#gitver不带v
 pkgrel=1
 pkgdesc="nerdctl full pkg, bundle with containerd/CNI plugin/RootlessKit"
 arch=('x86_64' 'aarch64')
 url="https://github.com/containerd/nerdctl"
 license=('Apache')
-source_aarch64=("nerdctl-full-${CARCH}-${pkgver}.tar.gz::https://github.com/containerd/nerdctl/releases/download/v${pkgver}/nerdctl-full-${pkgver}-linux-arm64.tar.gz")
-source_x86_64=("nerdctl-full-${CARCH}-${pkgver}.tar.gz::https://github.com/containerd/nerdctl/releases/download/v${pkgver}/nerdctl-full-${pkgver}-linux-amd64.tar.gz")
+#https://github.com/containerd/nerdctl/releases/download/v2.0.0-beta.4/nerdctl-full-2.0.0-beta.4-linux-amd64.tar.gz
+source_aarch64=("nerdctl-full-${CARCH}-${pkgver}.tar.gz::https://github.com/containerd/nerdctl/releases/download/v${gitver}/nerdctl-full-${gitver}-linux-arm64.tar.gz")
+source_x86_64=("nerdctl-full-${CARCH}-${pkgver}.tar.gz::https://github.com/containerd/nerdctl/releases/download/v${gitver}/nerdctl-full-${gitver}-linux-amd64.tar.gz")
 
 package() {
   mkdir -p "$pkgdir/usr/local"
   tar Cxzvvf "$pkgdir/usr/local" nerdctl-full-${CARCH}-${pkgver}.tar.gz
 }
-sha256sums_x86_64=('242a705bfbcff266737b087d17cf34decc2c43290447e68af57f17a5a3bd8c51')
-sha256sums_aarch64=('b0add7b737f83944e6c959d19a84d194433a64b7ae908e61d1c4e3f3701d99e3')
+sha256sums_x86_64=('a55c725540b8d60cf72b0ff7dfbeba6a26a89075815a66facb4b081a7ecd2c0a')
+sha256sums_aarch64=('c6df33fdad367bf4977dfe42ff2480e931462439544b286be9286d9dca8cdcb0')
