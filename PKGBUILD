@@ -1,7 +1,7 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: TurtleRuss <tttturtleruss@gmail.com>
 
 pkgname=twitch-dl-git
-pkgver=2.1.1.r0.g7f6e792
+pkgver=2.3.0.r5.gde95384
 pkgrel=1
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=(any)
@@ -26,12 +26,12 @@ build() {
   make 
 }
 
-check(){
-  cd "${pkgname%-git}"
-  python setup.py pytest || :
-}
-
 package() {
-  cd "${pkgname%-git}"
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "${pkgname%-git}/dist"
+  whl=$(ls | grep *.whl)
+  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/temp"
+  pip install -U $whl --break-system-packages -t "$pkgdir/temp"
+  cp "$pkgdir/temp/bin/twitch-dl" "$pkgdir/usr/bin" 
+  rm -rf "$pkgdir/temp"
 }
