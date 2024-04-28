@@ -3,17 +3,17 @@
 
 pkgname=shiny-server-git
 _pkgname=${pkgname%-git}
-pkgver=1.5.21.1012.r0.gbe6a189
+pkgver=1.5.22.1017.r0.g6df085e
 pkgrel=1
 epoch=1
 pkgdesc="Host Shiny applications over the web"
 arch=('x86_64')
 url="https://rstudio.com/shiny/server"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('r')
-makedepends=('git' 'cmake' 'wget' 'python')
+depends=('r' 'python')
+makedepends=('git' 'cmake' 'wget' 'python-setuptools')
 optdepends=(
     'r-shiny: build interactive web apps with R' # AUR
     'r-rmarkdown: convert R markdown docs to various formats' # AUR
