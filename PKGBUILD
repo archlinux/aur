@@ -3,8 +3,8 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hidpi-xprop-git
-pkgver=0.18.0.20240206.190609
-pkgrel=2
+pkgver=0.18.0.20240426.171736
+pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library (git version, with patches)'
 url=https://gitlab.freedesktop.org/wlroots/wlroots
@@ -27,7 +27,8 @@ depends=(
     'libwayland-client.so'
     'libwayland-server.so'
     'libxkbcommon.so'
-    xorg-xwayland)
+    xorg-xwayland
+    lcms2)
 optdepends=('xorg-xwayland-hidpi-xprop: HiDPI support, see https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/733')
 makedepends=(
 	git
