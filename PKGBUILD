@@ -4,11 +4,11 @@ _pkgname=ZygosityPredictor
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Package for prediction of zygosity for variants/genes in NGS data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-delayedarray
   r-dplyr
@@ -30,11 +30,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('c201664f307a2cf422119e2fa87759cf')
-sha256sums=('cc26ab6a56051056f82a4cc972d7de845c8e78e874ee40969e992de4d2cf7c03')
+b2sums=('807ef9bfc2eb3c8c219201dfe232955c988aa504d607925e7c25659ac8cb161bfca32db7e4700bd6c3460921207c120b3757e81d6d29493a43701785d656b293')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
