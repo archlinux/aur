@@ -4,7 +4,7 @@
 
 pkgname=astrodmx-capture
 pkgver=2.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="AstroDMx Capture Astronomical Imaging"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.astrodmx-capture.org.uk/"
@@ -43,7 +43,7 @@ depends=('glibc>=2.27'
 # The Author, Nicola, is now copying new releases into both the `current` and `old` folders so that we
 # can maintain a constant path the file. Hopefully this will allow us to continue installing older versions
 # without breakage after a new version is released. Thanks Nicola!
-source_x86_64=("https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/linux-x86-64/astrodmx-capture_${pkgver}_x86-64-manual.tar.gz")
+source_x86_64=("https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/linux-x86_64/astrodmx-capture_${pkgver}_x86-64-manual.tar.gz")
 sha256sums_x86_64=("3e978ab57c15f1b88d922587936b0e2bb97c1f4989a9d2dcf0ed20ca53ac0627")
 source_aarch64=("https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/linux-arm/astrodmx-glibc-2.28_${pkgver}_manual-aarch64.tar.gz")
 sha256sums_aarch64=("f5e46584bfd907543ea562a0c1b059e133dab1d89e5775f3cd9992cc4f1a761e")
