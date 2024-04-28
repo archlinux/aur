@@ -13,7 +13,7 @@ groups=(
 )
 pkgver=r12.20240428.7df6655
 _gpdfanspeedver="$("${startdir}"/gpdfanspeed --version)"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fan hwmon speed report and speed control driver for GPD Win Mini, GPD Win Max2 and GPD Win 4 laptops. Latest git checkout. Includes a command line control utility."
 url="https://${_githost}/${_gituser}/${_gitname}"
 arch=('any')
@@ -51,7 +51,7 @@ sha256sums=(
   'SKIP'
   'f3f6f913c82b58f9e4811a04449a17ce88af57a0a4ba7fad05cfdbe3689b7863'  # dkms.conf.in
   '8ef4568020cf63635b03fbdf098aeb5e9599adc17e9917500e8ba8f3ff75ca39'  # modules-load-gpd-fan.conf
-  '175b32b5db8d4265dac4e10296bc6457c1a06543bee1c391b5946697d9bc0bf6'  # gpdfanspeed
+  '8a15dfffc0b87e8107138e263cbce1ee75bae1cc287831f78c8c889b47dd98fd'  # gpdfanspeed
   '52b499321ed838fa91a788e7fbf118a9cbeb9367e131aa924a6fa03afd20c922'  # $install
 )
 
