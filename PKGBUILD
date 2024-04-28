@@ -3,11 +3,11 @@
 pkgname=python-sfdutf7
 _pkgname=${pkgname#python-}
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='SFDUTF7 encoder/decoder library '
 arch=(any)
 url="https://github.com/ctrlcctrlv/$_pkgname.py"
-license=(Apache)
+license=(Apache-2.0)
 depends=(python)
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
