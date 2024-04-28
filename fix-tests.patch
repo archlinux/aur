@@ -1,0 +1,12 @@
+diff --git a/ggthemes/tests/testthat/_snaps/shapes.md b/ggthemes/tests/testthat/_snaps/shapes.md
+index add5e91..1eb42df 100644
+--- a/ggthemes/tests/testthat/_snaps/shapes.md
++++ b/ggthemes/tests/testthat/_snaps/shapes.md
+@@ -21,5 +21,7 @@
+       Warning:
+       `scale_shape_circlefill()` was deprecated in ggthemes 5.0.0.
+       Warning:
++      The `scale_name` argument of `discrete_scale()` is deprecated as of ggplot2 3.5.0.
++      Warning:
+       `circlefill_shape_pal()` was deprecated in ggthemes 5.0.0.
+ 

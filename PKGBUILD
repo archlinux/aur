@@ -6,7 +6,7 @@ _pkgname=ggthemes
 _pkgver=5.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Extra Themes, Scales and Geoms for 'ggplot2'"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -43,9 +43,17 @@ optdepends=(
   r-vdiffr
   r-withr
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9491e966073dd9aac9c0356717a31662')
-b2sums=('39b71e02bcec780e1600fb1cd8ff44eb3cc032545b043217d0e85c186567c68b999e455b903ba649ab3464b447bdeed3ba599d6bb10dd07df682c353261f0ff7')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "fix-tests.patch")
+md5sums=('9491e966073dd9aac9c0356717a31662'
+         '4a0d494a7e9b94929ed69ae6256ec9c5')
+b2sums=('39b71e02bcec780e1600fb1cd8ff44eb3cc032545b043217d0e85c186567c68b999e455b903ba649ab3464b447bdeed3ba599d6bb10dd07df682c353261f0ff7'
+        '0bb55a8e23bb306f5e5158864d4a6a62c35092fc14e65124c48e472e7e59d15c48fad23ba775c38e1fe422274776362bf886cc9c334e39738b019134783ee5b2')
+
+prepare() {
+  # fix test snapshots
+  patch -Np1 -i fix-tests.patch
+}
 
 build() {
   mkdir build
