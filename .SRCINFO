@@ -1,10 +1,10 @@
 pkgbase = r-restfulsedata
 	pkgdesc = Example metadata for the "restfulSE" R package
 	pkgver = 1.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/restfulSEData
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r-delayedarray
 	depends = r-experimenthub
 	depends = r-hdf5array
@@ -15,6 +15,6 @@ pkgbase = r-restfulsedata
 	optdepends = r-rmarkdown
 	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/restfulSEData_1.24.0.tar.gz
 	md5sums = c69fe04b8675edd0faa593fb5ffc72c8
-	sha256sums = 302d8f15602430563a75fa25e57a7b1b0b761f8e129792e43856efbd2a29b1f9
+	b2sums = 8db2a24d58b5cca82bc22021ab81ee2d29f12af7251c49c4589d68d996ef753e9feb31d257ef9630be132153aacb009cffdd8f149a62758968fef91864d5dc81
 
 pkgname = r-restfulsedata
