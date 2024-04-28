@@ -9,6 +9,6 @@ pkgbase = python-proton-vpn-api-core
 	makedepends = git
 	makedepends = python-setuptools
 	source = git+https://github.com/ProtonVPN/python-proton-vpn-api-core.git#tag=v0.22.3
-	sha256sums = SKIP
+	sha256sums = ff56e76e3c95fce31934f26a16245e1e4e6e6044ee58e0daef9a15b22de5231f
 
 pkgname = python-proton-vpn-api-core

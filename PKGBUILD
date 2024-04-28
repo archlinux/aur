@@ -10,7 +10,7 @@ license=("GPL3")
 groups=("ProtonVPN")
 makedepends=("git" "python-setuptools")
 source=("git+https://github.com/ProtonVPN/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('ff56e76e3c95fce31934f26a16245e1e4e6e6044ee58e0daef9a15b22de5231f')
 
 build() {
 	cd "$pkgname"
