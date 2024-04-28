@@ -3,7 +3,7 @@
 _name=Mesa-Viz-Tornado
 pkgname=python-${_name,,}
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tornado-based visualization framework for Mesa"
 arch=('any')
 url="https://github.com/projectmesa/mesa-viz-tornado"

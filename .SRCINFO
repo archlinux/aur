@@ -1,7 +1,7 @@
 pkgbase = python-mesa-viz-tornado
 	pkgdesc = Tornado-based visualization framework for Mesa
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projectmesa/mesa-viz-tornado
 	arch = any
 	license = Apache
