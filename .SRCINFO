@@ -1,6 +1,6 @@
 pkgbase = mirrord
 	pkgdesc = Connect your local process and your cloud environment, and run local code in cloud conditions
-	pkgver = 3.98.1
+	pkgver = 3.99.0
 	pkgrel = 1
 	url = https://github.com/metalbear-co/mirrord
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mirrord
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = mirrord-3.98.1.tar.gz::https://github.com/metalbear-co/mirrord/archive/3.98.1.tar.gz
-	sha256sums = 96323585b68bd23e6c1518557c107cf570dbbee86fab9b21e0963833f5769877
+	source = mirrord-3.99.0.tar.gz::https://github.com/metalbear-co/mirrord/archive/3.99.0.tar.gz
+	sha256sums = 3af235fe6c9ee6795db10fcf3c64acb9f8978c639cae8af290281eaf224f7bf3
 
 pkgname = mirrord
