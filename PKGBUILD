@@ -24,7 +24,7 @@ source=("${_pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('8729a5102f97a6800bd2105d9a78a1af4e31ed4c3fb22f20a90c10754cc29ee7')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}5-${pkgver}"
+    cd "${_pkgname}5-${pkgver}"
     sed \
         -e 's/setuptools.extern.packaging.version.parse/packaging.version.parse/' \
         -e 's/import setuptools/import packaging/' \
@@ -32,13 +32,13 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}5-${pkgver}"
+    cd "${_pkgname}5-${pkgver}"
     SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver \
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "${srcdir}/${_pkgname}5-${pkgver}"
+    cd "${_pkgname}5-${pkgver}"
     find tests -type f -exec sed \
       -e 's@scikit-hep.org/uproot/examples@scikit-hep.org/uproot3/examples@g' \
       -e 's@scikit-hep.org:443/uproot/examples@scikit-hep.org:443/uproot3/examples@g' \
@@ -60,7 +60,7 @@ check() {
 
 package_python-uproot() {
     optdepends+=('python-uproot-docs: docs')
-    cd "${srcdir}/${_pkgname}5-${pkgver}"
+    cd "${_pkgname}5-${pkgver}"
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 
@@ -68,7 +68,7 @@ package_python-uproot() {
 }
 
 package_python-uproot-docs() {
-    cd "${srcdir}/${_pkgname}5-${pkgver}"
+    cd "${_pkgname}5-${pkgver}"
 
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D README.md "${pkgdir}/usr/share/${pkgbase}/README.md"
