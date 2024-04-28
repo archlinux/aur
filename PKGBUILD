@@ -3,9 +3,9 @@
 _appname=min
 pkgname="${_appname}-browser-bin"
 _pkgname=Min
-pkgver=1.31.2
+pkgver=1.32.0
 _electronversion=29
-pkgrel=4
+pkgrel=1
 pkgdesc="A fast, minimal browser that protects your privacy"
 arch=(
     'aarch64'
@@ -28,9 +28,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('9e419f1ee4c8a93e41785b72d3e37b06758950eacbeed69478690d7e9bd306ba')
-sha256sums_armv7h=('50baf8e029fe02200c22ef7f5c1f46c80de901ae311516a3ef79b29f7cad9612')
-sha256sums_x86_64=('9c3f42552656cef9a3a54ac7b50535abb2aed562fc4089f00dd6ee60582bb4c6')
+sha256sums_aarch64=('8217f816f84a1cd1eca14ab9f2b6be6237c471765945417872719d4012f99e51')
+sha256sums_armv7h=('256706c3e507a779c3f1a8daaa86aa816638a1b2670342b0ffc8c70a6280f88b')
+sha256sums_x86_64=('d6dfb0f65a2bfd802c1b1f3be641db7bd1b9c1c5a6297ef3eaf27c787e9783da')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
