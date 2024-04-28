@@ -1,0 +1,19 @@
+pkgbase = android-armv7a-eabi-libavc1394
+	pkgdesc = Library to control A/V devices using the 1394 TA AV/C commands (Android armv7a-eabi)
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://sourceforge.net/projects/libavc1394/
+	arch = any
+	license = GPL-2.0-or-later AND LGPL-2.1-or-later
+	makedepends = android-configure
+	depends = android-armv7a-eabi-libraw1394
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/libavc1394/libavc1394-0.5.4.tar.gz
+	source = 0001-Unversioned-libs.patch
+	md5sums = caf0db059d8b8d35d6f08e6c0e1c7dfe
+	md5sums = a58b96562f366a9614de69403decfc65
+
+pkgname = android-armv7a-eabi-libavc1394
