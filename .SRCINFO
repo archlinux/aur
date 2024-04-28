@@ -1,0 +1,13 @@
+pkgbase = formatjson5
+	pkgdesc = Format a JSON5 document with comments
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/google/json5format
+	arch = x86_64
+	arch = arm64
+	license = BSD
+	makedepends = cargo
+	source = json5format-0.2.6.tar.gz::https://static.crates.io/crates/json5format/json5format-0.2.6.crate
+	sha256sums = b2894a72f82fa9f20e628bf4329cd0fb8e9fd5e87cc35944665a42b25bae9902
+
+pkgname = formatjson5
