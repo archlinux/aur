@@ -1,13 +1,13 @@
 pkgbase = python-uproot
 	pkgdesc = Minimalist CERN ROOT I/O in pure Python and Numpy
 	pkgver = 5.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-hep/uproot5
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pkgconfig
 	checkdepends = python-pandas
-	checkdepends = python-pytest-runner
+	checkdepends = python-pytest
 	checkdepends = python-requests
 	checkdepends = python-dask
 	checkdepends = python-pytest-timeout
@@ -29,6 +29,7 @@ pkgbase = python-uproot
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-hatchling
 	makedepends = python-hatch-vcs
+	depends = python
 	depends = python-awkward>=1.7.0
 	depends = python-cachetools
 	depends = python-lz4
