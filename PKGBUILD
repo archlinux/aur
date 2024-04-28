@@ -5,11 +5,11 @@ _project=ots-python
 _pyname=opentype-sanitizer
 pkgname=python-$_pyname
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python wheels for the OpenType Sanitizer'
 arch=(any)
 url="https://github.com/googlefonts/$_project"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(ots
          python)
 checkdepends=(python-pytest
