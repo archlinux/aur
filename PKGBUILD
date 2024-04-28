@@ -3,7 +3,7 @@
 _name=xtb
 pkgname=python-${_name,,}
 pkgver=22.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Python API for the extended tight-binding program xtb'
 arch=('any')
 url="https://github.com/grimme-lab/xtb-python"

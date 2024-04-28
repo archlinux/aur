@@ -1,7 +1,7 @@
 pkgbase = python-xtb
 	pkgdesc = Python API for the extended tight-binding program xtb
 	pkgver = 22.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/grimme-lab/xtb-python
 	arch = any
 	license = LGPL3
