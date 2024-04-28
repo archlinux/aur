@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver="latest"
 epoch=0
 pkgver=0.11+r83.20240307.g1e4083c
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface to the DeutscheBahn coach order API.'
 url='https://finalrewind.org/projects/Travel-Status-DE-DBWagenreihung/'
 license=('PerlArtistic')
@@ -18,6 +18,7 @@ depends=(
   'perl-travel-status-de-iris'
 )
 makedepends=(
+  'curl>8.7.1' # Because of https://bugs.gentoo.org/930633 / https://github.com/curl/curl/issues/13474
   'git'
   'perl-module-build'
   'perl-file-slurp'
