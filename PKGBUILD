@@ -4,11 +4,11 @@ _pkgname=simpleSeg
 _pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A package to perform simple cell segmentation"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biocparallel
   r-cytomapper
@@ -29,11 +29,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('bd0a780ed7dfde71db7ecdf2cee30b0c')
-sha256sums=('8c1c1a13b62eee2b6f68717e9319dfdf1e92753c441745995ce29db29f3939f4')
+b2sums=('de6403171491a4bc381526567e4ef3a9857f7ee823dd28cdc41cb5bff45f653fa8d372790a976f21c360f3a4e85d0e3c37dd9f8c17917b28ee586def36e52973')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
