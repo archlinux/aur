@@ -3,8 +3,9 @@
 
 pkgname='python-metno-locationforecast'
 _pkgname="${pkgname#python-}"
+epoch=1
 pkgver=1.1.0
-pkgrel=4
+pkgrel=1
 pkgdesc='Python interface for the MET Norway Locationforecast/2.0 weather service'
 arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -16,6 +17,9 @@ source=(
 depends=(
   'python'
   'python-requests'
+)
+optdepends=(
+  'python-niquests: a moderne drop-in replacement for python-requests'
 )
 makedepends=(
   'python-build'
@@ -32,26 +36,30 @@ b2sums=(
 )
 
 prepare() {
-  cd "$_pkgname-$pkgver" || exit 1
+  cd "$_pkgname-$pkgver"
 
   patch -Np1 -i "$srcdir/setup-py.diff"
+
+  # https://github.com/Rory-Sullivan/metno-locationforecast/issues/6
+  _try_niquests='try:\n    import niquests as requests\nexcept ImportError:\n    import requests'
+  sed -i "s/import requests/$_try_niquests/g" "${_pkgname/-/_}/forecast.py"
 }
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver" || exit 1
+  cd "$srcdir/$_pkgname-$pkgver"
 
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver" || exit 1
+  cd "$srcdir/$_pkgname-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  for mdfile in CHANGELOG.md README.md; do
-    install -Dm0644 "$mdfile" "$pkgdir/usr/share/doc/$pkgname/$mdfile"
+  for _doc in CHANGELOG.md README.md; do
+    install -vDm0644 "$_doc" "$pkgdir/usr/share/doc/$pkgname/$_doc"
   done
 }
 
