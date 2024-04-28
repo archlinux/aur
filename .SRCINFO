@@ -1,17 +1,17 @@
 pkgbase = netron-bin
 	pkgdesc = Visualizer for neural network, deep learning and machine learning models
-	pkgver = 7.6.1
+	pkgver = 7.6.2
 	pkgrel = 1
 	url = https://netron.app/
 	arch = x86_64
 	license = MIT
-	depends = electron29
-	provides = netron=7.6.1
+	depends = electron30
+	provides = netron=7.6.2
 	conflicts = netron
-	source = netron-7.6.1.AppImage::https://github.com/lutzroeder/netron/releases/download/v7.6.1/Netron-7.6.1.AppImage
-	source = LICENSE-7.6.1::https://raw.githubusercontent.com/lutzroeder/netron/v7.6.1/LICENSE
+	source = netron-7.6.2.AppImage::https://github.com/lutzroeder/netron/releases/download/v7.6.2/Netron-7.6.2.AppImage
+	source = LICENSE-7.6.2::https://raw.githubusercontent.com/lutzroeder/netron/v7.6.2/LICENSE
 	source = netron.sh
-	sha256sums = 2928ef9405f2e6cbe77c3f53e9568d13933c1cf537046010f48e9f3fcc6489fb
+	sha256sums = 021aed370474504dd15c40afb3504db365583f9ed2a924f0e04a2b6c659e1ebc
 	sha256sums = 535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
