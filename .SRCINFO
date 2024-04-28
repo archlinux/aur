@@ -1,7 +1,7 @@
 pkgbase = python-click-man
 	pkgdesc = Automate generation of man pages for python click applications
 	pkgver = 0.4.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pypi.python.org/pypi/click-man
 	arch = any
 	license = MIT
