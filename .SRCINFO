@@ -1,0 +1,18 @@
+pkgbase = android-aarch64-libiec61883
+	pkgdesc = A higher level API for streaming DV, MPEG-2 and audio over Linux IEEE 1394 (Android aarch64)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://www.kernel.org/pub/linux/libs/ieee1394/
+	arch = any
+	license = LGPL
+	depends = android-aarch64-libraw1394
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.kernel.org/pub/linux/libs/ieee1394/libiec61883-1.2.0.tar.xz
+	source = 0001-Unversioned-libs.patch
+	md5sums = ed91bc1727fac8e019402fc3724a283d
+	md5sums = db43c43533cf5efeb9b0289e438cb741
+
+pkgname = android-aarch64-libiec61883
