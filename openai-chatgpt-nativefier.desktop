@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=ChatGPT
 Comment=OpenAI ChatGPT desktop app (electron)
-Exec=chatgpt-nativefier
+Exec=openai-chatgpt-nativefier
 Icon=chatgpt
 Encoding=UTF-8
 StartupWMClass=chatgpt-nativefier-9028de
