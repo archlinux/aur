@@ -3,11 +3,11 @@
 
 pkgname=python-pymilter
 pkgver=1.0.5
-pkgrel=4
+pkgrel=6
 pkgdesc="Python bindings for libmilter API"
 arch=('x86_64')
 url="https://github.com/sdgathman/${pkgname##*-}"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('python')
 makedepends=('libmilter'
              'python-build'
