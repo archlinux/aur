@@ -1,21 +1,35 @@
 pkgname=json-stroller-git
-pkgver=v1.2
+pkgver=1.2.r0.g787cbc5
 pkgrel=1
-pkgdesc="A ncurse tool for viewing json files and displaying differences between json formatted data"
-arch=('i686' 'x86_64')
-license=('GPL3')
-depends=()
-source=("$pkgname::git://github.com/isundil/jsonStroller.git")
+pkgdesc="view json files and display differences between json formatted data"
+arch=('x86_64')
+url="https://github.com/isundil/jsonStroller"
+license=('GPL-3.0-or-later')
+depends=('ncurses')
+makedepends=('cmake' 'git')
+source=("$pkgname::git+${url}.git")
 md5sums=('SKIP')
 
-build() {
+pkgver() {
     cd $pkgname
-    cmake -DCMAKE_BUILD_TYPE=Release
-    make all doc test
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g;'
+}
+
+prepare() {
+    cd $pkgname
+    # fix cmake warnings
+    sed -i -e '2iproject(jsonstroller)' -e 's/2.8/3.5/' CMakeLists.txt
+}
+
+build() {
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -B build -S $pkgname
+    cmake --build build
+}
+
+check() {
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
 }
-
