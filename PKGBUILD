@@ -3,15 +3,15 @@
 pkgname=python-fontfeatures
 _pyname=fontFeatures
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for manipulating OpenType font features'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
 license=(MIT)
 _pydeps=(beziers
-          fs
-          fonttools
-          lxml)
+         fs
+         fonttools
+         lxml)
 depends=(python
          "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}

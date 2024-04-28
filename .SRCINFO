@@ -1,7 +1,7 @@
 pkgbase = python-fontfeatures
 	pkgdesc = Library for manipulating OpenType font features
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simoncozens/fontFeatures
 	arch = any
 	license = MIT
