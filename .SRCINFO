@@ -1,13 +1,13 @@
 pkgbase = pjproject
 	pkgdesc = Open source SIP stack and media stack
 	pkgver = 2.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pjsip.org/
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	arch = i686
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = alsa-lib
 	makedepends = ffmpeg
 	makedepends = libsamplerate

@@ -7,11 +7,11 @@
 pkgbase=pjproject
 pkgname=("$pkgbase" "python-$pkgbase")
 pkgver=2.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source SIP stack and media stack'
 arch=(x86_64 aarch64 armv7h i686)
 url='https://www.pjsip.org/'
-license=(GPL)
+license=(GPL-2.0-only)
 _pkgdepends=(alsa-lib
              ffmpeg
              libsamplerate
