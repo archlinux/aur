@@ -1,6 +1,6 @@
 pkgbase = krunner-vscodeprojects
 	pkgdesc = Open VSCode Project Manager projects from Krunner
-	pkgver = 1.2.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/alex1701c/krunner-vscodeprojects.git
 	install = krunner-vscodeprojects.install
@@ -8,11 +8,11 @@ pkgbase = krunner-vscodeprojects
 	license = LGPL3
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	depends = krunner5
-	depends = kservice5
+	depends = krunner
+	depends = kservice
 	provides = krunner-vscodeprojects
 	conflicts = krunner-vscodeprojects
-	source = https://github.com/alex1701c/krunner-vscodeprojects/archive/1.2.0.tar.gz
-	md5sums = e81610c334b09c08980d154968219661
+	source = https://github.com/alex1701c/krunner-vscodeprojects/archive/2.0.0.tar.gz
+	md5sums = 3dcb0b63b51fdf228b98cd31ea86f59f
 
 pkgname = krunner-vscodeprojects

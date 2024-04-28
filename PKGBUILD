@@ -3,17 +3,17 @@
 
 _pkgname=krunner-vscodeprojects
 pkgname=$_pkgname
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Open VSCode Project Manager projects from Krunner"
 arch=('any')
 url="https://github.com/alex1701c/$_pkgname.git"
 source=("https://github.com/alex1701c/$_pkgname/archive/${pkgver}.tar.gz")
-md5sums=('e81610c334b09c08980d154968219661')
+md5sums=('3dcb0b63b51fdf228b98cd31ea86f59f')
 groups=()
 depends=(
-  krunner5
-  kservice5
+  krunner
+  kservice
 )
 makedepends=(
   cmake
@@ -31,7 +31,7 @@ build() {
   mkdir -p build
   cd build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DKDE_INSTALL_QTPLUGINDIR=`kf5-config --qt-plugins` -DCMAKE_BUILD_TYPE=Release  ..
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_USE_QT_SYS_PATHS=ON -DBUILD_WITH_QT6=ON
   make -j$(nproc)
 }
 
