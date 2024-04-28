@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=vot-cli
-pkgver=1.2.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="The voice-over translation of the video is now available not only in YandexBrowser."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs>=17')
 makedepends=('npm')
 source=(${pkgname}-${pkgver}.tgz::$url/archive/${pkgver}.tar.gz)
-b2sums=('e51f9b1e42caad9ce3ccb0cd599bdccbfe45fd99fa24410a2023d3fcf1b0800d90eec02da92736e77ddbdb6978f3a6cbba100f6b2cfb93368e57dc1d04bad986')
+b2sums=('bea5268e38c393264bf9f1889221c114fa70673d824d6be122c715cc876ff2b7a9a72e7bc3afaeaaae19a5e05920c97bcb4da3922350f2f69f74f788e25c9eed')
 
 package() {
 	cd $pkgname-${pkgver}
