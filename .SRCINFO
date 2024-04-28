@@ -1,10 +1,10 @@
 pkgbase = python-flatten-dict
 	pkgdesc = A flexible utility for flattening and unflattening dict-like objects in Python
 	pkgver = 0.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/anlini/flatten-dict
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

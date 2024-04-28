@@ -3,10 +3,10 @@
 pkgname=python-flatten-dict
 _pyname=${pkgname#python-}
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A flexible utility for flattening and unflattening dict-like objects in Python'
 arch=(any)
-license=(Apache)
+license=(Apache-2.0)
 url="https://github.com/anlini/${_pyname}"
 depends=(python)
 makedepends=(python-{build,installer,wheel}
