@@ -57,7 +57,6 @@ depends=(breeze
          libxkbcommon-x11
          mesa
          pipewire-session-manager
-         python
          libplasma
          qt6-5compat
          qt6-base
