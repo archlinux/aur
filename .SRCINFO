@@ -16,6 +16,7 @@ pkgbase = python-mopidy-tidal
 	depends = python-pykka
 	depends = python-tidalapi
 	depends = python-requests
+	depends = python-ratelimit
 	source = python-mopidy-tidal-0.3.6.tar.gz::https://files.pythonhosted.org/packages/source/m/mopidy_tidal/mopidy_tidal-0.3.6.tar.gz
 	sha256sums = 97c6c7e3b2c4c1ccea61ec44da803844e461a1759098b72f375b62fb00a1d6ed
 
