@@ -2,7 +2,7 @@
 # Contributor: Tong Chunli<t.cunly at 163 dot com>
 pkgname=python-colcon-ros
 _name=${pkgname:7}
-pkgver=0.3.23
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="An extension for colcon-core to support ROS packages."
 arch=(any)
@@ -10,9 +10,23 @@ url="https://pypi.org/project/colcon-ros/"
 license=('Apache')
 depends=('python-colcon-core' 'python-colcon-library-path' 'python-colcon-cmake' 'python-colcon-pkg-config' 'python-colcon-recursive-crawl' 'python-colcon-python-setup-py' 'python-pyparsing' 'python-catkin_pkg')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('9d78cd075a2d4c64f1c266d5144cb159c61aa161d1f70eafda1541c34fa4465e')
+source=(
+    https://github.com/colcon/colcon-ros/archive/refs/tags/${pkgver}.tar.gz
+    https://github.com/myint/scspell/archive/refs/tags/v2.2.tar.gz)
+sha256sums=(
+    '17a4bb3191853e3b1287b2a541e532c321c83f75253c8e46c60f414c7abcdf02'
+    '04c6a795a9e0ef4571678eb9fc503bcf39106a975691336af778f31a01027082')
 
+build() {
+    cd ${srcdir}/${_name}-${pkgver}
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd ${srcdir}/${_name}-${pkgver}/test
+    export PYTHONPATH="${srcdir}/scspell-2.2:${srcdir}/${_name}-${pkgver}"
+    ls test*.py | xargs -I {} pytest {}
+}
 
 package() {
     cd ${srcdir}/${_name}-${pkgver}
