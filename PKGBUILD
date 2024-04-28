@@ -2,7 +2,7 @@
 
 pkgname=google-gemini-nativefier
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Gemini desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://gemini.google.com"
