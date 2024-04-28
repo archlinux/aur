@@ -2,11 +2,11 @@
 
 pkgname=tractor
 pkgver=4.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Setup an onion routing proxy'
 arch=(any)
 url='https://framagit.org/tractor/tractor/'
-license=(GPL3)
+license=('GPL-3.0-or-later')
 
 depends=(
   python
@@ -15,9 +15,11 @@ depends=(
   python-pysocks
   python-stem
   tor
+  dconf
 )
 makedepends=(
   python-build
+  python-setuptools
   python-installer
   python-wheel
 )
