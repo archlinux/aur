@@ -4,11 +4,11 @@ _pkgname=SpliceWiz
 _pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy, optimized, and accurate alternative splicing analysis in R"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(MIT)
+license=('MIT')
 depends=(
   r-annotationhub
   r-biocfilecache

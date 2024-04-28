@@ -1,7 +1,7 @@
 pkgbase = r-splicewiz
 	pkgdesc = Easy, optimized, and accurate alternative splicing analysis in R
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/SpliceWiz
 	arch = x86_64
 	license = MIT
