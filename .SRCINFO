@@ -1,0 +1,23 @@
+pkgbase = android-x86-libva
+	pkgdesc = Video Acceleration (VA) API for Linux (Android x86)
+	pkgver = 2.21.0
+	pkgrel = 1
+	url = https://01.org/linuxmedia/vaapi
+	arch = any
+	license = MIT
+	makedepends = android-meson
+	depends = android-x86-libdrm
+	depends = android-x86-libx11
+	depends = android-x86-libxext
+	depends = android-x86-libxfixes
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	backup = opt/android-libs/x86/etc/libva.conf
+	source = https://github.com/intel/libva/archive/refs/tags/2.21.0.tar.gz
+	source = 0001-Disable-versioned-API.patch
+	md5sums = 2038f5b79612c1767ecd9bc281cd4189
+	md5sums = 0efc367f03606ce6867354efbfcdfdaa
+
+pkgname = android-x86-libva
