@@ -1,6 +1,6 @@
 pkgbase = bookord-git
 	pkgdesc = An e-book reader
-	pkgver = 0.2.2.r2.g0898a2d
+	pkgver = 0.2.4.r1.g05dedf7
 	pkgrel = 1
 	url = https://github.com/LiprikON2/Bookord
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = bookord-git
 	makedepends = nvm
 	makedepends = gendesk
 	depends = electron29
-	provides = bookord=0.2.2
+	provides = bookord=0.2.4
 	conflicts = bookord
 	source = bookord.git::git+https://github.com/LiprikON2/Bookord.git
 	source = bookord.sh

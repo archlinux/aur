@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bookord-git
 _pkgname=Bookord
-pkgver=0.2.2.r2.g0898a2d
+pkgver=0.2.4.r1.g05dedf7
 _electronversion=29
 _nodeversion=20
 pkgrel=1
