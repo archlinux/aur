@@ -1,0 +1,14 @@
+[Unit]
+Description=Falcosidekick
+Documentation=https://github.com/falcosecurity/falcosidekick
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/bin/falcosidekick -c /etc/falcosidekick/config.yaml
+
+[Install]
+WantedBy=multi-user.target

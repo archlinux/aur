@@ -4,17 +4,24 @@
 
 pkgname=falcosidekick
 pkgver=2.28.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Connect Falco to your ecosystem"
+backup=('etc/falcosidekick/config.yaml')
 arch=('x86_64')
 url="https://github.com/falcosecurity/falcosidekick"
 license=('MIT')
 makedepends=('go' 'git' 'make')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('bb9c3fc484514526c40174423a0ca26f38c3a26cd3c0b76b442598693cfc00ff')
+source_x86_64=(
+    "git+$url#tag=${pkgver}"
+    "config.yaml"
+    "falcosidekick.service"
+    )
+sha256sums_x86_64=('dffb36077454fffdf7a2db1e234f3fd8baaee336b79d513cdde1f4aba6c73fdb'
+                   'd88456b95bd443c40ee6db866cb0784efb706c865caa4d8dc4f2ea982f9711b4'
+                   'ff1b7c4485115b17d90751ddc8d548718dfe7a575bcfd75268493656196746d5')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -24,13 +31,15 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   export TEST_FLAGS="-v"
   make test
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 falcosidekick "${pkgdir}/usr/bin/falcosidekick"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${srcdir}/${pkgname}/falcosidekick" "${pkgdir}/usr/bin/falcosidekick"
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${pkgname}/config_example.yaml" "${pkgdir}/usr/share/${pkgname}/config_example.yaml"
+  install -Dm640 "${srcdir}/config.yaml" "${pkgdir}/etc/falcosidekick/config.yaml"
+  install -Dm644 "${srcdir}/falcosidekick.service" "${pkgdir}/usr/lib/systemd/system/falcosidekick.service"
 }
