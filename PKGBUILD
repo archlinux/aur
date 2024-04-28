@@ -4,11 +4,11 @@ _pkgname=alabaster.mae
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Load and Save MultiAssayExperiments"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-alabaster.base
   r-alabaster.se
@@ -29,11 +29,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('43abcdda61fc9d69dbc24dbd1c91664d')
-sha256sums=('319236c02b188c5e5e9b4b3828bac63f474932c25f4b1c91fbf03f738078e8a9')
+b2sums=('4727bd43d10d27dee41ef574cf21276c1ef6cb77942bd28feecadee7ea0638e80bd2a4e3ba7b89cb325bdd223b521b504ea71a890c24fb516d52eb8abf1b1bc3')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
