@@ -9,6 +9,7 @@ pkgbase = bluealsa
 	arch = armv7h
 	license = MIT
 	makedepends = python-docutils
+	makedepends = python-packaging
 	depends = alsa-lib
 	depends = bluez-libs
 	depends = glib2
