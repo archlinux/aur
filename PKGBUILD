@@ -1,18 +1,18 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yaggo
-pkgver=1.5.10
+pkgver=1.5.11
 pkgrel=1
 pkgdesc="Yet Another GenGetOpt"
 arch=("any")
 url='https://github.com/gmarcais/yaggo'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(ruby)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gmarcais/yaggo/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=('56e8f187cf0169ec6ba3e129af0e74e34d6828c672fa7dc12e634ee96a3960c83695bc2f64767fb77c09c3afd046b52f0033801fd624182584c2c3e46b282395')
+sha512sums=('c2f85adf1968e290e89e997391ca9324621e2ae9185481cb1d28bf2d4a7dd1455a8e1fc154f9f8fe3c7d1694d0bc2487ac0827d28c7ea6cd636a942af09ce5e3')
 
-package(){
+package() {
     cd $srcdir/${pkgname}-${pkgver}
     make install prefix=${pkgdir}/usr
 }
