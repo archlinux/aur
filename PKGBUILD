@@ -3,7 +3,7 @@ _pkgbase=rebuild-initramfs-dracut-arch-legacy
 pkgbase=rebuild-initramfs-dracut-legacy
 pkgname=(rebuild-initramfs-dracut-legacy rebuild-initramfs-dracut-legacy-hook)
 pkgver=1.7.4
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch-legacy"
 license=('MIT')
@@ -24,7 +24,7 @@ package_rebuild-initramfs-dracut-legacy() {
 
 package_rebuild-initramfs-dracut-legacy-hook() {
   pkgdesc="Install/remove hooks for dracut, based on rebuild-initramfs (legacy shell script version)"
-  depends=("rebuild-initramfs-dracut")
+  depends=("rebuild-initramfs-dracut-legacy")
   backup=("etc/rebuild-initramfs.conf")
 
   cd "${srcdir}/${_pkgbase}-${pkgver}"
