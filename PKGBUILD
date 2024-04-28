@@ -3,7 +3,7 @@
 _name=chembl-webresource-client
 pkgname=python-${_name,,}
 pkgver=0.10.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Python client fot accessing ChEMBL webservices.'
 arch=('any')
 url="https://www.ebi.ac.uk/chembl/api/data/docs"

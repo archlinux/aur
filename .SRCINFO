@@ -1,7 +1,7 @@
 pkgbase = python-chembl-webresource-client
 	pkgdesc = Python client fot accessing ChEMBL webservices.
 	pkgver = 0.10.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ebi.ac.uk/chembl/api/data/docs
 	arch = any
 	license = Apache
