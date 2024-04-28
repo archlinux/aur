@@ -1,4 +1,4 @@
-pkg/
-src/
-pigpio-*.tar.gz
-pigpio-*.pkg.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
