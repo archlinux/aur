@@ -4,11 +4,11 @@ _pkgname=standR
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Spatial transcriptome analyses of Nanostring's DSP data in R"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biobase
   r-biocgenerics
@@ -49,11 +49,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('94e29a2001fbb9d0bfa1488ae7039aa7')
-sha256sums=('1344313e0fb97c99f62e941771437459132b532dd4834eaf7b1cf9f6e6eab2d6')
+b2sums=('0f74f667be28b33358bd40333b78e52f64f804e937d06843a52918760381db1c4ba86180f03289fcab4166229472c5abb655aefe9a260eb761d5f2e88a4dc0ee')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
