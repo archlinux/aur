@@ -14,7 +14,7 @@
 : ${_sccache:=}
 
 pkgname=niri-git
-pkgver=0.1.4.r0.7ff2de1
+pkgver=0.1.5.r15.g8d99e3c
 pkgrel=2
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64)
@@ -35,7 +35,7 @@ optdepends=('fuzzel: application launcher similar to rofi drun mode'
             'polkit-gnome: when apps need to ask for root permissions')
 provides=(${pkgname%-git}=${pkgver})
 conflicts=(${pkgname%-git}-bin ${pkgname%-git})
-options=(!debug !lto)
+options=(!debug !lto !strip)
 source=(${pkgname%-git}::git+$url.git)
 b2sums=('SKIP')
 
