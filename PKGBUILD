@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=monolith-code-bin
-pkgver=2.2.7
+pkgver=2.2.8
 _electronversion=26
-pkgrel=3
-pkgdesc="minimalistic but powerful code editor"
+pkgrel=1
+pkgdesc="Minimalistic but powerful code editor"
 arch=("x86_64")
 url="https://haeri.github.io/monolith-code"
 _ghurl="https://github.com/Haeri/monolith-code"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Haeri/monolith-code/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('19a67b273d64ba779c83826089cc4d40915da90ad96f95a123bba36ca4645789'
+sha256sums=('10bcafceb5641bf881475051e5ef6124cb724550c47ddba4344754ca33c5d270'
             '08712c74fe995972923ce4a30fa74bad068779afdf9d3b877c525e86c617adcc'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
