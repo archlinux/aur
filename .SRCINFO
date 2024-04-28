@@ -1,17 +1,17 @@
 pkgbase = stapxs-qq-lite-bin
 	pkgdesc = 一个兼容 oicq-http 的非官方网页版 QQ 客户端, 使用 Vue 重制的全新版本.
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://stapxs.github.io/Stapxs-QQ-Lite-2.0/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = fuse2
 	depends = electron27
-	provides = stapxs-qq-lite=2.7.1
+	provides = stapxs-qq-lite=2.7.2
 	conflicts = stapxs-qq-lite
-	source = stapxs-qq-lite-2.7.1.AppImage::https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/releases/download/v2.7.1/Stapxs.QQ.Lite-2.7.1.AppImage
+	source = stapxs-qq-lite-2.7.2.AppImage::https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/releases/download/v2.7.2/Stapxs.QQ.Lite-2.7.2.AppImage
 	source = stapxs-qq-lite.sh
-	sha256sums = cdc17b24f5586eee8f37410793c8d8f49935ba38e7e43208d0c759ac54ce6894
+	sha256sums = b1ab5d6e492d95248922d20b585a554ee4357322a4ddc35e4c530514ca9a151b
 	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
 
 pkgname = stapxs-qq-lite-bin
