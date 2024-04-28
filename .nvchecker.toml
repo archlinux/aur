@@ -1,0 +1,4 @@
+[arrpc]
+source = "git"
+git = "https://github.com/OpenAsar/arrpc.git"
+include_regex = '(\d(?:\d|\.)+)'
