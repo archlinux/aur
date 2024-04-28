@@ -1,11 +1,10 @@
 pkgbase = python-ttach
 	pkgdesc = Image Test Time Augmentation with PyTorch
 	pkgver = 0.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/qubvel/ttach
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = numactl
 	makedepends = python-build
 	makedepends = python-installer
