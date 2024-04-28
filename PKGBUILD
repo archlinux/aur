@@ -1,30 +1,43 @@
 # Maintainer: Xuanrui Qi <xuanrui@xuanruiwork>
 pkgbase=rebuild-initramfs-dracut
 pkgname=(rebuild-initramfs-dracut rebuild-initramfs-dracut-hook)
-pkgver=1.7.4
+pkgver=2.0.1
 pkgrel=1
 arch=('any')
 url="https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch"
 license=('MIT')
+makedepends=("ruby-ronn-ng")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xuanruiqi/${pkgname}-arch/archive/${pkgver}.tar.gz")
-sha256sums=('9e86d57fb81a14b456200c9ea3c6fa60ce3fb4db5d596c8df802dc3ff038cc6d')
+sha256sums=('a02eff5dc33dffc90c0c717bdff7b600e3ee1cc823c5c35f272f57ba6561fa4c')
+
+build() {
+  cd "${srcdir}/${pkgbase}-arch-${pkgver}"
+  python -m build --wheel --no-isolation
+  ronn man.md
+}
 
 package_rebuild-initramfs-dracut() {
   pkgdesc="A helper script to rebuild initramfs images using dracut"
-  depends=("dracut")
+  depends=("dracut"
+           "pyalpm"
+           "python-termcolor"
+           "python-yaml")
   optdepends=("sbsigntools: to sign kernel image")
+  conflicts=("rebuild-initramfs-dracut-legacy")
+  backup=("etc/rebuild-initramfs.yaml")
 
   cd "${srcdir}/${pkgbase}-arch-${pkgver}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm755 rebuild-initramfs "${pkgdir}/usr/bin/rebuild-initramfs"
-  install -Dm644 rebuild-initramfs.1 "${pkgdir}/usr/share/man/man1/rebuild-initramfs.1"
+  install -Dm644 rebuild-initramfs.yaml "${pkgdir}/etc/rebuild-initramfs.yaml"
+  install -Dm644 man.1 "${pkgdir}/usr/share/man/man1/rebuild-initramfs.1"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_rebuild-initramfs-dracut-hook() {
   pkgdesc="Install/remove hooks for dracut, based on rebuild-initramfs"
   depends=("rebuild-initramfs-dracut")
-  backup=("etc/rebuild-initramfs.conf")
+  conflicts=("rebuild-initramfs-dracut-legacy-hook")
 
   cd "${srcdir}/${pkgbase}-arch-${pkgver}"
 
@@ -32,7 +45,7 @@ package_rebuild-initramfs-dracut-hook() {
   install -Dm755 hooks/scripts/rebuild-initramfs-remove "${pkgdir}/usr/share/libalpm/scripts/rebuild-initramfs-remove"
   install -Dm644 hooks/90-rebuild-initramfs-install.hook "${pkgdir}/usr/share/libalpm/hooks/90-rebuild-initramfs-install.hook"
   install -Dm644 hooks/60-rebuild-initramfs-remove.hook "${pkgdir}/usr/share/libalpm/hooks/60-rebuild-initramfs-remove.hook"
-  install -Dm644 hooks/conf/rebuild-initramfs.conf "${pkgdir}/etc/rebuild-initramfs.conf"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
