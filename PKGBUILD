@@ -6,12 +6,12 @@
 pkgname=amdgpu-fan
 pkgdesc="Python daemon for controlling the fans on AMDGPU cards"
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 arch=(any)
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(python python-numpy python-yaml)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-url="https://github.com/zzkW35/amdgpu-fan"
+url=https://github.com/zzkW35/amdgpu-fan
 source=(${url}/archive/${pkgver}.tar.gz)
 sha256sums=('f2c1546aede4559d99f870531b317d0c2726013ae9dbf2ec4298f1e92c9684a4')
 
@@ -32,5 +32,5 @@ package() {
 
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 
-	install -Dt "${pkgdir}"/usr/lib/systemd/system -m 0644 amdgpu-fan.service
+	install -Dt "${pkgdir}"/usr/lib/systemd/system -m0644 amdgpu-fan.service
 }
