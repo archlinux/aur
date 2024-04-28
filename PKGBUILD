@@ -1,12 +1,12 @@
 # Maintainer: Javier Herrera <javierherrera at posteo dot net>
 pkgname=orphan-checker
 pkgver=1.0.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="Checks if any AUR installed packaged is orphan"
 arch=("any")
 url="https://gitlab.com/Daklon/orphan-checker"
-license=('GPL-v3')
+license=('AGPL-3.0-or-later')
 groups=()
 depends=(pacman)
 makedepends=("rust" "cargo")
