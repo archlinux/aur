@@ -3,14 +3,13 @@
 _pkgname=oligo
 _pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.66.0
-pkgrel=1
-pkgdesc='Preprocessing tools for oligonucleotide arrays'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Preprocessing tools for oligonucleotide arrays"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
-  r
   r-affxparser
   r-affyio
   r-biobase
@@ -22,6 +21,7 @@ depends=(
   r-preprocesscore
   r-rsqlite
   r-zlibbioc
+  zlib
 )
 optdepends=(
   r-acme
@@ -29,8 +29,6 @@ optdepends=(
   r-biocstyle
   r-biomart
   r-bsgenome.hsapiens.ucsc.hg18
-  r-domc
-  r-dompi
   r-genefilter
   r-hapmap100kxba
   r-knitr
@@ -46,15 +44,24 @@ optdepends=(
   r-rcurl
   r-runit
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e6d2b6395e2d73094095fcac6b6271fd48a3c291dc4e5e86e8d45b4f352e165f')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "fix-build.patch")
+md5sums=('3ba99dedbe0ebca2fcaa81a400777469'
+         '82f9972880c35fd6c901916f80255888')
+b2sums=('65e522d805442d339333922db574c3fdc03aa3fe270a0a967fddce05b8ce1e24cee19f99ef16a8c69c4e3b2bcad7f1ab33a187ceb71640b035a31ae3043fcd56'
+        '0eb8dbb61003fdc21475a6e4970bc88fe2de91529fa001c275fb8cf566865f7868a847909f0b46f6d42c1108478710269bf8b7b18aaafe436420306a43ac7c40')
+
+prepare() {
+  # fix format string errors
+  patch -Np1 -i fix-build.patch
+}
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
