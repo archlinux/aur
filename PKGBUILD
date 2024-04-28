@@ -2,7 +2,7 @@
 
 pkgname=graphite-web
 pkgver=1.1.10
-pkgrel=3
+pkgrel=4
 pkgdesc="a Django-based web application that renders graphs and dashboards"
 url="https://github.com/graphite-project/graphite-web/"
 license=('Apache')
@@ -13,13 +13,18 @@ makedepends=('python-setuptools' 'python-pip')
 optdepends=('python-flask-cache: For caching'
             'python-raven: For sentry support')
 arch=('any')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/graphite-project/${pkgname}/archive/${pkgver}.tar.gz"
-        "graphite-web.service")
+source=("git+https://github.com/graphite-project/${pkgname}/"
+        "graphite-web.service"
+	"0001-convert-to-importlib.patch")
 sha256sums=('SKIP'
-            '5e2d2a0b026e07d1f50baeef4526ba7f44bb300a3e89d2c1fd18300d5a952694')
+            'aab399da65ecc32f105d0af955d1dafb5eaa4e86ebc28e96ce7af7d300f12f9f'
+            'f2d8cac1135cfa5f10cf2b813b34971929470dd26eaea59b2b029ddfe99ce43c')
 
 build() {
-        cd "$srcdir/$pkgname-$pkgver"
+        cd "$srcdir/$pkgname"
+	#git patch to importlib
+	msg2 "applying importlib fix"
+	git apply ../*.patch
 
 	#Dirty fixing obselete references
 	find . -type f -exec sed -i 's/post-install/post_install/g' {} +
@@ -66,7 +71,7 @@ build() {
 }
 
 package() {
-        cd "$srcdir/$pkgname-$pkgver"
+        cd "$srcdir/$pkgname"
 
 	pip install --no-deps --root="$pkgdir" dist/*.whl
 
@@ -74,7 +79,7 @@ package() {
 	mkdir -p $pkgdir/opt/graphite/
 	mv $pkgdir/usr/* $pkgdir/opt/graphite/
 	mkdir -p $pkgdir/opt/graphite/webapp/graphite/
-	mv $pkgdir/opt/graphite/lib/python3.11/site-packages/graphite/* $pkgdir/opt/graphite/webapp/graphite/
+	mv $pkgdir/opt/graphite/lib/python3.12/site-packages/opt/graphite/webapp/graphite/* $pkgdir/opt/graphite/webapp/graphite/
 
         mkdir -p "$pkgdir/var/lib/graphite"
         install -Dm0644 "$srcdir/graphite-web.service" "$pkgdir/usr/lib/systemd/system/graphite-web.service"

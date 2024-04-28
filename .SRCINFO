@@ -1,7 +1,7 @@
 pkgbase = graphite-web
 	pkgdesc = a Django-based web application that renders graphs and dashboards
 	pkgver = 1.1.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/graphite-project/graphite-web/
 	arch = any
 	license = Apache
@@ -19,9 +19,11 @@ pkgbase = graphite-web
 	depends = python3-django-tagging
 	optdepends = python-flask-cache: For caching
 	optdepends = python-raven: For sentry support
-	source = graphite-web-1.1.10.tar.gz::https://github.com/graphite-project/graphite-web/archive/1.1.10.tar.gz
+	source = git+https://github.com/graphite-project/graphite-web/
 	source = graphite-web.service
+	source = 0001-convert-to-importlib.patch
 	sha256sums = SKIP
-	sha256sums = 5e2d2a0b026e07d1f50baeef4526ba7f44bb300a3e89d2c1fd18300d5a952694
+	sha256sums = aab399da65ecc32f105d0af955d1dafb5eaa4e86ebc28e96ce7af7d300f12f9f
+	sha256sums = f2d8cac1135cfa5f10cf2b813b34971929470dd26eaea59b2b029ddfe99ce43c
 
 pkgname = graphite-web
