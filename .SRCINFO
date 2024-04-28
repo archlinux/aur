@@ -1,5 +1,5 @@
 pkgbase = google-gemini-nativefier
-	pkgdesc = Google Gemini desktop app built with nativefier (electron)
+	pkgdesc = Google Gemini desktop app (electron)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://gemini.google.com
