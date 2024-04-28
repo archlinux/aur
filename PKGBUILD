@@ -7,7 +7,7 @@ pkgdesc='A powerful tool designed to give you complete control over your Plex me
 url='https://kometa.wiki'
 arch=('any')
 license=('MIT')
-conflicts=('plex-meta-manager')
+replaces=('plex-meta-manager')
 depends=(
   'python-arrapi'
   'python-gitpython'
