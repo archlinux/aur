@@ -5,11 +5,11 @@ _pkgname=interactiveDisplay
 _pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Package for enabling powerful shiny web displays of Bioconductor objects"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-annotationdbi
   r-biocgenerics
@@ -43,8 +43,8 @@ source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_
         "fix-install.patch")
 md5sums=('4adec73e763df3dc2e697e41bff3ead8'
          'f3e9aa31acfa87ff679676bd8e433bf8')
-sha256sums=('2a3e31639245081cd69f4c0c6396231a39b5477eda8362e956f221c266610171'
-            'b97b524b191dca4ee18526716d5c5c9c0798558718835c7758a23eb5c547caac')
+b2sums=('f31e8b6fb6d9d9220975e1531111a29a6515d8283ecba1b8362da55946a7863ffaadd8f0bf3cc1993fcdc315f9eeb052f4b3f044a6f75125a7f4026d5aacd5c2'
+        'c0347a4e255e6123aa5a418b9432f001afee872b963a4b4b4cc9b38c3015718bd7944118e87dcc5b9f8f9ce9c85bcb3b49c0fef17d2293e2460a7eda2a98844b')
 
 prepare() {
   # prevent unintended installing of BiocManager
@@ -52,8 +52,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
