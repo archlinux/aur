@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pear-rec-git
-pkgver=1.3.15.r0.g4100bd2
+pkgver=1.3.16.r0.g7ecc03b
 _electronversion=29
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
@@ -58,7 +58,7 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|release/\${version}|release|g;s|AppImage|dir|g" -i packages/desktop/electron-builder.json5
+    sed "s|release/\${version}|release|g;s|'AppImage', 'deb', 'rpm'|'dir'|g" -i packages/desktop/electron-builder.json5
     pnpm install
     pnpm run build:desktop
 }
