@@ -4,11 +4,11 @@ _pkgname=netZooR
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Unified methods for the inference and analysis of gene regulatory networks"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-annotationdbi
   r-assertthat
@@ -53,11 +53,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('2f4adb3763df2df201212073e34bab10')
-sha256sums=('7079477eb6f06b23cbd52441254ce3441f3b7e39e3923af01e9152d7f20e78ba')
+b2sums=('1997a8481d0d1733e76009e5d8cb3d51f8d9a7e711000a7b6a82ab4064802c22846d18731d8944f9848a7e284354bba58da90bbec60b4e92fbdddbcd619b325f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
