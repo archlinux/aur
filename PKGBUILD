@@ -1,7 +1,8 @@
-# Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
+# Maintainer: Bet4 <0xbet4@gmail.com>
+# Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 # Contributor: Thomas Hobson <thomas@hexf.me>
 pkgname=python3-yamale
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='A schema and validator for YAML'
 arch=('any')
@@ -12,7 +13,7 @@ makedepends=('python-setuptools')
 provides=('yamale' 'python-yamale')
 license=('MIT')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7d79ede7059ff3c4dce7eca105b3ba19988b41ecdcc0a72ee88d140ec05e71e5')
+sha256sums=('000affa9083b9c5ae71002185d822c8bd62a6d2928d0e82c63df5a65fbdea87d')
 
 build() {
   cd Yamale-"$pkgver"
