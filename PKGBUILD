@@ -5,11 +5,11 @@ _pkgname=phemd
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Phenotypic EMD for comparison of single-cell samples"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-biobase
   r-biocgenerics
@@ -40,11 +40,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8cefd4ddfea1dd2deb007acb6cebfb7a')
-sha256sums=('03c5354299deefdf02142f4fc7d8464aac1489a62b719f1caf026b1b8db8929c')
+b2sums=('9ab2b14464677188c80526b440aa959aedcc66868aa5deab425d4c33282647ccc9c002ff92dcfe2edba67083f7f9dcfaefad71cd0ea4e4d653dbfb6413e3d24a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
