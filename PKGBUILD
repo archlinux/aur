@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinyalert
-_pkgver=3.0.0
+_pkgver=3.1.0
 pkgname=r-${_pkgname,,}
-pkgver=3.0.0
-pkgrel=4
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Easily Create Pretty Popup Messages (Modals) in 'Shiny'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-shinydisconnect
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d4ea859610cda4adb7b48d8c7301112d598da9c442709b4ba9cf620bf5469abf')
+sha256sums=('ee882788d0cf3d969c83cdfb39b19d12c6cab005bb850ec596164194a1d137be')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
