@@ -1,0 +1,22 @@
+pkgbase = openai-chatgpt-nativefier
+	pkgdesc = OpnenAI ChatGPT desktop app (electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://chat.openai.com/
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = openai-chatgpt-nativefier.png
+	source = openai-chatgpt-nativefier.desktop
+	sha256sums = 9c55eca10f08761429d2b7b977c7aafc3c09789a9d1ec945d814d7de9d2b0203
+	sha256sums = a815f1a4bdd865b924b98c0c6d7f68e2b2439f8b8e98a42b714f7743dc10c126
+
+pkgname = openai-chatgpt-nativefier
