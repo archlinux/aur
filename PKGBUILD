@@ -12,7 +12,7 @@ url="https://github.com/WhiteMinds/LiveAutoRecord"
 license=('LGPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'nodejs'
 )
 makedepends=(
