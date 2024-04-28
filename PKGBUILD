@@ -8,7 +8,7 @@
 _pkgname=qtscrcpy
 pkgname="$_pkgname"
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache-2.0')
@@ -98,7 +98,7 @@ export QTSCRCPY_CONFIG_PATH="/etc/qtscrcpy"
 exec /$_install_path/qtscrcpy/QtScrcpy "\$@"
 END
 
-  install -Dm644 /dev/stdin -t "$pkgdir/usr/share/applications/" << END
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
 Name=QtScrcpy
