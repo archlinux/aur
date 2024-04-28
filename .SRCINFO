@@ -1,18 +1,23 @@
 pkgbase = i3-workspace-groups
-	pkgdesc = Manage i3wm workspaces in groups you control
-	pkgver = 0.4.6
+	pkgdesc = Tools for managing i3wm workspaces in groups.
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/infokiller/i3-workspace-groups
 	install = i3-workspace-groups.install
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = i3-wm
 	depends = python-i3ipc
-	source = git+https://github.com/infokiller/i3-workspace-groups#tag=0.4.6
+	depends = python-toml
+	optdepends = rofi: provide for a few utility scripts
+	source = git+https://github.com/infokiller/i3-workspace-groups#tag=0.4.7
 	sha256sums = SKIP
 
 pkgname = i3-workspace-groups
-
