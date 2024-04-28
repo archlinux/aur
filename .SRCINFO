@@ -1,0 +1,22 @@
+pkgbase = microsoft-teams-nativefier
+	pkgdesc = Microsoft Teams desktop app (electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://teams.microsoft.com
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = microsoft-teams-nativefier.png
+	source = microsoft-teams-nativefier.desktop
+	sha256sums = cfdf1ca7f6cc9a15e6d815fa31463c3e2a40b0bf3e25de3377a8bf6b8ef4e926
+	sha256sums = c4133e947cc27bc3bae05ec388415d5928e0bd6894cf20ced043f6c1e7f0676f
+
+pkgname = microsoft-teams-nativefier
