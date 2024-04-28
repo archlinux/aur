@@ -1,13 +1,16 @@
 pkgbase = python-colcon-notification
 	pkgdesc = An extension for colcon-core to provide status notifications.
-	pkgver = 0.2.15
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://pypi.org/project/colcon-notification
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = flake8
 	depends = python-colcon-core
-	source = https://files.pythonhosted.org/packages/source/c/colcon-notification/colcon-notification-0.2.15.tar.gz
-	sha256sums = 0a188a4debaa103f1fc620babb6f82a90032f01c559090ac51a5ff4cad326550
+	source = https://github.com/colcon/colcon-notification/archive/refs/tags/0.3.0.tar.gz
+	source = https://github.com/myint/scspell/archive/refs/tags/v2.2.tar.gz
+	sha256sums = f82c6e3bcd558a9fbf4bf0b1cd0dab6a1f50c056b7b4db85c56878797d0489c2
+	sha256sums = 04c6a795a9e0ef4571678eb9fc503bcf39106a975691336af778f31a01027082
 
 pkgname = python-colcon-notification
