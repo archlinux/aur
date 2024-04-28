@@ -2,7 +2,7 @@
 
 pkgname=python-commandlines
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A command line argument to object parsing library for CLI application development'
 arch=(any)
 url="https://github.com/chrissimpkins/${pkgname#python-}"

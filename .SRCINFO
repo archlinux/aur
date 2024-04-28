@@ -1,7 +1,7 @@
 pkgbase = python-commandlines
 	pkgdesc = A command line argument to object parsing library for CLI application development
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/chrissimpkins/commandlines
 	arch = any
 	license = MIT
