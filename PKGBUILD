@@ -3,7 +3,7 @@
 _pkgname=mimic
 _pkgbase=$_pkgname-bpf
 pkgname=($_pkgbase-git $_pkgbase-dkms-git)
-pkgver=0.3.0.r0.4827a8e
+pkgver=0.3.0.r76.6eb613f
 pkgrel=1
 pkgdesc="eBPF UDP -> TCP obfuscator"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -23,6 +23,7 @@ prepare() {
   sed install/mimic@.service.in \
 		-e 's|@@MIMIC_EXEC@@|/usr/bin/mimic|' \
 		-e 's|@@MIMIC_CONFIG_PATH@@|/etc/mimic|' \
+    -e 's|@@MIMIC_RUNTIME_DIR@@|mimic|' \
 		> install/mimic@.service
 }
 
@@ -38,6 +39,7 @@ package_mimic-bpf-git() {
 
   install -Dm755 "$srcdir/$_pkgname/out/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "$srcdir/$_pkgname/install/eth0.conf.example" "$pkgdir/etc/mimic/eth0.conf.example"
+  install -Dm644 "$srcdir/$_pkgname/install/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
   install -Dm644 "$srcdir/$_pkgname/install/$_pkgname@.service" "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
 }
 
@@ -48,5 +50,5 @@ package_mimic-bpf-dkms-git() {
   conflicts=($_pkgbase-modules=$pkgver $_pkgbase-dkms)
 
   install -d "$pkgdir/usr/src/$_pkgname-$pkgver"
-  cp -r "$srcdir/$_pkgname/src/kmod/"* "$pkgdir/usr/src/$_pkgname-$pkgver/"
+  cp -r "$srcdir/$_pkgname/kmod/"* "$pkgdir/usr/src/$_pkgname-$pkgver/"
 }
