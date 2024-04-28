@@ -1,10 +1,10 @@
 pkgbase = r-resolve
 	pkgdesc = An R package for the efficient analysis of mutational signatures from cancer genomes
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bioconductor.org/packages/RESOLVE
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = r-testthat
 	depends = r-biostrings
 	depends = r-bsgenome

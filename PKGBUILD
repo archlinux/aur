@@ -4,11 +4,11 @@ _pkgname=RESOLVE
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="An R package for the efficient analysis of mutational signatures from cancer genomes"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(Apache)
+license=('Apache-2.0')
 depends=(
   r-biostrings
   r-bsgenome
