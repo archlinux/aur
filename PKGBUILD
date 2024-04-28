@@ -3,8 +3,8 @@
 pkgname=ironbar-git
 pkgver=v0.15.0.r0.bba0e86
 pkgrel=1
-makedepends=('rust' 'cargo' 'git')
-depends=('gtk3' 'gtk-layer-shell')
+makedepends=('rust' 'cargo' 'git' 'openssl' 'libpulse' 'luajit')
+depends=('gtk3' 'gtk-layer-shell' 'lua51-lgi')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Customisable wlroots/sway bar written in rust"
 license=('MIT')

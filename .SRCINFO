@@ -10,8 +10,12 @@ pkgbase = ironbar-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	makedepends = openssl
+	makedepends = libpulse
+	makedepends = luajit
 	depends = gtk3
 	depends = gtk-layer-shell
+	depends = lua51-lgi
 	source = git+https://github.com/JakeStanger/ironbar
 	md5sums = SKIP
 
