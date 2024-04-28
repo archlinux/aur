@@ -438,6 +438,7 @@ sha256sums=('c969dea4e8bb6be991bbf7c010ba0e0a5643a3a8d8fb0a2aaa053406f1e965f3'
 	'6ef359c3497d90b0a687d1dc2050d0c662f6a72224c8bf6122847002e145ce11'
 	'SKIP'
 	'1d3ac3e581cbc5108f882fcdc75d74f7f069654c71bad65febe5ba15a7a3a14f'
+	'SKIP'
 	'SKIP')
 
 validpgpkeys=(

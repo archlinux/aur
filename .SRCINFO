@@ -28,6 +28,7 @@ pkgbase = linux-clear-cjktty
 	sha256sums = SKIP
 	sha256sums = 1d3ac3e581cbc5108f882fcdc75d74f7f069654c71bad65febe5ba15a7a3a14f
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = linux-clear-cjktty
 	pkgdesc = Clear Linux内核,带有cjktty并开启kexec
