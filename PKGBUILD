@@ -1,50 +1,60 @@
-# Maintainer: Kris Nóva <kris@nivenly.com>
+# Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
+# https://github.com/brokenpip3/my-pkgbuilds
+# Contributor: Kris Nóva <kris@nivenly.com> R.I.P.
 
 pkgbase=falco
-pkgname=(falco falco-dkms)
-pkgver=0.31.0
+pkgname=falco
+provides=(falco)
+conflicts=(falco-bin)
+backup=('etc/falco/falco_rules.yaml'  'etc/falco/falco.yaml')
+pkgver=0.37.1
 pkgrel=1
-pkgdesc="Cloud native runtime security. Build from source (unstable)."
+pkgdesc="Cloud native runtime security. Modern ebpf and config files"
 arch=(x86_64)
-url="https://falco.org/"
 license=(Apache)
-makedepends=(cmake git c-ares jq grpc yaml-cpp)
-checkdepends=()
-optdepends=()
-backup=()
-options=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/falcosecurity/falco/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9d90a86752a700dad2d1ea888b2cd33cdc808621faa2b6300bb0463d404744fb')
-
-# Kris Nóva PGP Key
-#validpgpkeys=('F5F9B56417B7F2CAC1DEC2E372BB115B4DDD8252')
+makedepends=(cmake git c-ares jq grpc yaml-cpp clang linux-headers llvm bpf automake gcc)
+url="https://github.com/falcosecurity/falco"
+_rules_tag="falco-rules-3.0.1"
+source_x86_64=(
+    "falco-${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+    "git+https://github.com/falcosecurity/rules#tag=${_rules_tag}"
+    "falco-modern-bpf.service"
+)
+sha256sums_x86_64=('f602bd025ff2997ecce1bd1f479592ab666276912d72212ab8d1fffd38ab8c94'
+                   'SKIP'
+                   '0709add709184db8a275a5c7c6b6b4123b6dc418e72f7c9d4ab6dcc1d5ab2644')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  [[ -d build ]] || mkdir build
+    cd "${srcdir}/falco-${pkgver}"
+    [[ -d build ]] || mkdir build
+    [[ -d skeleton ]] || mkdir skeleton
+    cd skeleton
+    cmake .. -DUSE_BUNDLED_DEPS=false \
+        -DBUILD_FALCO_MODERN_BPF=ON \
+        -DCREATE_TEST_TARGETS=Off \
+        -DFALCO_VERSION=${pkgver}
+    make ProbeSkeleton
 }
 
 build() {
-  cd "${pkgname}-${pkgver}/build"
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr
-
-  make
+    cd "${srcdir}/falco-${pkgver}/build"
+    cmake .. \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUSE_BUNDLED_DEPS=false \
+        -DBUILD_FALCO_MODERN_BPF=ON \
+        -DMODERN_BPF_SKEL_DIR=${srcdir}/falco-${pkgver}/skeleton/skel_dir \
+        -DBUILD_DRIVER=Off \
+        -DBUILD_BPF=Off \
+        -DFALCO_VERSION=${pkgver}
+    make falco -j6
 }
 
-package_falco() {
-    install -d "${pkgdir}/etc/falco"
-    cp -rv falco-${pkgver}-${arch}/etc/falco/* "${pkgdir}/etc/falco"
-
-    install -d "${pkgdir}/usr/share/falco"
-    cp -rv falco-${pkgver}/usr/share/falco/* "${pkgdir}"/usr/share/falco
-
-  make DESTDIR="${pkgdir}" install
-}
-
-package_falco-dkms() {
-  depends=(dkms linux-headers)
-    install -d "${pkgdir}/usr/src/falco-${pkgver}"
-    cp -rv falco-${pkgver}-${arch}/usr/src/falco-${_commit}/* "${pkgdir}/usr/src/falco-${pkgver}"
+package() {
+    install -Dm755 "${srcdir}/falco-${pkgver}/build/userspace/falco/falco" "${pkgdir}/usr/bin/falco"
+    install -Dm644 "${srcdir}/falco-${pkgver}/falco.yaml" "${pkgdir}/etc/falco/falco.yaml"
+    install -Dm644 "${srcdir}/rules/rules/falco_rules.yaml" "${pkgdir}/etc/falco/falco_rules.yaml"
+    install -d "${pkgdir}/etc/falco/rules.d"
+    sed -i 's#probe: ${HOME}/.falco/falco-bpf.o#probe: /usr/share/falco/falco-bpf.o#' "${pkgdir}/etc/falco/falco.yaml"
+    install -Dm644 "falco-modern-bpf.service" "${pkgdir}/usr/lib/systemd/system/falco-modern-bpf.service"
 }

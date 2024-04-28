@@ -1,0 +1,9 @@
+post_install() {
+    printf "#\nTo ensure Falco runs properly, enable/start the falco-modern-bpf.service\n"
+    printf "This will utilize the built-in modern eBPF probe.\n"
+    printf "If you prefer another driver, you need to install either:\n"
+    printf "* falco-probe-ebpf (eBPF probe)\n"
+    printf "* falco-module-dkms (DKMS module)\n"
+    printf "Alternatively, you can build the probe yourself.\n\n"
+    printf "For custom Falco rules, place them in /etc/falco/rules.d\n#\n"
+}
