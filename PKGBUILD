@@ -1,7 +1,7 @@
-# Maintainer: gmes78 <gmes.078 at gmail dot com>
+# Maintainer: Joaquim Monteiro <joaquim dot monteiro at protonmail dot com>
 
 pkgname=python-qasync-git
-pkgver=v0.26.1.r0.gee9b0a3
+pkgver=0.27.1.r2.ga6eb8e5
 pkgrel=1
 pkgdesc="Python library for using asyncio in Qt-based applications (Git version)"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/CabbageDevelopment/qasync"
 license=("BSD")
 
 depends=("python")
-makedepends=("git" "python-build" "python-installer")
+makedepends=("git" "python-build" "python-installer" "python-poetry")
 optdepends=("python-pyqt5: PyQt5 support"
             "python-pyqt6: PyQt6 support"
             "pyside2: PySide2 support"
@@ -22,16 +22,17 @@ sha512sums=("SKIP")
 
 pkgver() {
     cd qasync
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
 build() {
     cd qasync
+    [[ -d dist/ ]] && rm -f dist/*.whl
     python -m build --wheel --no-isolation
 }
 
 package() {
     cd qasync
-    python -m installer --destdir="$pkgdir/" dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
