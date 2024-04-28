@@ -2,8 +2,8 @@
 _appname=etcher
 pkgname="${_appname}-ng-bin"
 _pkgname=Etcher-ng
-pkgver=1.19.6
-_electronversion=22
+pkgver=1.19.17
+_electronversion=28
 pkgrel=1
 pkgdesc="Flash OS images to SD cards & USB drives, safely and easily - Custom, debloated"
 arch=('x86_64')
@@ -21,13 +21,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('70d85de455f49dc3c78511c03d5812548ba58d7d8659afc14c59f467f5ee1bbe'
+sha256sums=('5e766d4dfe0db3ef9335f37ad7950dacc205417036fda389de9fe21acd05d6b4'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     rm -rf "${srcdir}/"{opt,usr}
     bsdtar -xf "${srcdir}/data."*
