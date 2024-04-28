@@ -5,11 +5,11 @@ _pkgname=contiBAIT
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Improves Early Build Genome Assemblies using Strand-Seq Data"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(BSD)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('BSD-2-Clause')
 depends=(
   r-bh
   r-biocgenerics
@@ -39,11 +39,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8297fd66bbfcd997be0f23cf31fcd644')
-sha256sums=('13c01ca0868c4465b3cbc26de283031a70772fad7d8cf244a417bc5541775eab')
+b2sums=('dfc4c8db3f7fb9af6c0d137f125c25c1650925724c540a4c387f40c9e47545e515aa189815bb2b9de7342432acc8148391d3e85c4cb5a61c1718561b232e6082')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
