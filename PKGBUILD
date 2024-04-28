@@ -11,16 +11,27 @@ pkgdesc="Ambient Noise Player. Relax or concentrate with a noise"
 arch=('any')
 url="https://costales.github.io/projects/anoise"
 license=('GPL-3.0-or-later')
-depends=('gst-python' 'webkit2gtk' 'anoise-media')
-makedepends=('python-build' 'python-distutils-extra' 'python-installer'
-             'python-setuptools' 'python-wheel')
-optdepends=('anoise-community-extension1: Sounds and icons from the users'
-            'anoise-community-extension2: Sounds and icons from the users'
-            'anoise-community-extension3: Sounds and icons from the users'
-            'anoise-community-extension4: Sounds and icons from the users'
-            'anoise-community-extension5: Sounds and icons from the users'
-            'anoise-gui: GUI for anoise'
-            'libappindicator-gtk3: tray icon')
+depends=(
+  'anoise-media'
+  'gst-python'
+  'webkit2gtk'
+)
+makedepends=(
+  'python-build'
+  'python-distutils-extra'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+optdepends=(
+  'anoise-community-extension1: Sounds and icons from the users'
+  'anoise-community-extension2: Sounds and icons from the users'
+  'anoise-community-extension3: Sounds and icons from the users'
+  'anoise-community-extension4: Sounds and icons from the users'
+  'anoise-community-extension5: Sounds and icons from the users'
+  'anoise-gui: GUI for anoise'
+  'libappindicator-gtk3: tray icon'
+)
 source=("https://launchpad.net/~costales/+archive/ubuntu/$pkgname/+sourcefiles/$pkgname/$pkgver/${pkgname}_${pkgver}.tar.gz"
         'setup.patch')
 sha256sums=('cd6e2e1e8691b950c503b4319f7f9ecf6e66c745e5194724be0c3e026e9dd3ac'
@@ -31,20 +42,20 @@ prepare() {
   # remove space from SRCDEST folder
   mv -f "$pkgname " "$pkgname"
 
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   patch --forward --strip=1 --input="$srcdir/setup.patch"
 
   # correct desktop file
-  sed -i 's/anoise.desktop.in/Ambient Noise/g' "$pkgname.desktop.in"
+  sed -i "s/$pkgname.desktop.in/Ambient Noise/g" "$pkgname.desktop.in"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # This file is included in anoise-gui
