@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Gemini
+Comment=Google Gemini desktop app (electron)
+Exec=gemini-nativefier
+Icon=gemini
+Encoding=UTF-8
+StartupWMClass=gemini-nativefier-a3b338
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;Application;
