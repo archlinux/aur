@@ -4,11 +4,11 @@ _pkgname=epimutacions
 _pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Robust outlier identification for DNA methylation data"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-annotationdbi
   r-annotationhub
@@ -59,11 +59,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('73fdaf9db5e5d035601282d6e5d832fd')
-sha256sums=('ea5dafb2dd4141bb1ba7ab35a8c2e209932dc47d77afe6eb6ccc0032a12378be')
+b2sums=('d7b1b313551d70a8793f556a0532f74f16b85f504101304cd6481c34a395807bab9e7d793f43f54b8159f370ac4be7b8db2456a19c6aa4b05b7c60fe7b90fcaa')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
