@@ -1,0 +1,17 @@
+pkgbase = android-aarch64-gsm
+	pkgdesc = Shared libraries for GSM 06.10 lossy speech compression (Android aarch64)
+	pkgver = 1.0.22
+	pkgrel = 1
+	url = https://www.quut.com/gsm/
+	arch = any
+	license = custom
+	makedepends = android-environment
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.quut.com/gsm/gsm-1.0.22.tar.gz
+	md5sums = fcca74c770a341d78ea4604418c1264b
+
+pkgname = android-aarch64-gsm
