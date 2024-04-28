@@ -1,6 +1,6 @@
 pkgbase = etcher-git
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily
-	pkgver = 1.19.14.r0.gc756b10a
+	pkgver = 1.19.16.r0.g6a648e92
 	pkgrel = 1
 	url = https://etcher.io/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = etcher-git
 	makedepends = base-devel
 	makedepends = gcc
 	depends = electron30
-	provides = etcher=1.19.14
+	provides = etcher=1.19.16
 	conflicts = etcher
 	conflicts = balena-etcher
 	conflicts = balena-etcher-electron

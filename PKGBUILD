@@ -3,7 +3,7 @@
 # based on aur/balena-etcher: Matthew McGinn <mamcgi@gmail.com>
 pkgname=etcher-git
 _pkgname=balenaEtcher
-pkgver=1.19.14.r0.gc756b10a
+pkgver=1.19.16.r0.g6a648e92
 _electronversion=30
 _nodeversion=20
 pkgrel=1
