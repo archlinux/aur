@@ -3,7 +3,7 @@
 pkgname=factorio-yafc-ce-git
 pkgdesc="Yet Another Factorio Calculator (Community Edition): Powerful calculator/analyser that works with mods"
 pkgver=0.6.4.16.g3519230
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url=https://github.com/have-fun-was-taken/yafc-ce
 license=(GPL)
@@ -16,7 +16,7 @@ options=()
 source=($pkgname::git+https://github.com/have-fun-was-taken/yafc-ce.git
     factorio-yafc-ce.desktop factorio-yafc-ce icon.png)
 sha256sums=('SKIP'
-            'fd5d3035e37cc26ebe6ae41fa8b77fe7d1839bc0eda4f5a2ec5622a013a100cc'
+            'c6d364d63a902899367a46a91f353c57e19819c91173a6d9c685c2248f65131b'
             'c99b975dbca89bf970dec3b0af5e87a6dc38ec4c71e2f191c09cd3141e6c3176'
             '2aef2817ffcb8ff2448fd6942d7d7dd3dfa0a7a077427a3fca80c67b0ba20168')
 
