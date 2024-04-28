@@ -1,21 +1,21 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=cherrytree-git
-pkgver=1.0.2.r39.gb88cf6eb
+pkgver=1.1.2.r5.g4db6074c
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
 url="https://github.com/giuspen/${pkgname%%-git}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('fmt'
          'gspell'
-		 'gtksourceviewmm'
-		 'libxml++2.6'
-		 'uchardet'
-		 'vte3')
+         'gtksourceviewmm'
+         'libxml++2.6'
+         'uchardet'
+         'vte3')
 makedepends=('cmake'
-			 'git'
-			 'python'
+             'git'
+             'python'
              'spdlog')
 checkdepends=('gtest')
 provides=("${pkgname%%-git}")
@@ -30,11 +30,11 @@ pkgver() {
 
 build() {
   cmake \
-	-B "${pkgname%%-git}/build" \
-	-S "${pkgname%%-git}" \
-	-DAUTO_RUN_TESTING:BOOL='OFF' \
-	-DUSE_SHARED_GTEST_GMOCK:BOOL='ON' \
-	-Wno-dev
+    -B "${pkgname%%-git}/build" \
+    -S "${pkgname%%-git}" \
+    -DAUTO_RUN_TESTING:BOOL='OFF' \
+    -DUSE_SHARED_GTEST_GMOCK:BOOL='ON' \
+    -Wno-dev
   make -C "${pkgname%%-git}/build"
 }
 

@@ -1,10 +1,10 @@
 pkgbase = cherrytree-git
 	pkgdesc = Hierarchical note-taking application, git version
-	pkgver = 1.0.2.r39.gb88cf6eb
+	pkgver = 1.1.2.r5.g4db6074c
 	pkgrel = 1
 	url = https://github.com/giuspen/cherrytree
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = gtest
 	makedepends = cmake
 	makedepends = git
