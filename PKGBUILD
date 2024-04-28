@@ -2,7 +2,7 @@
 #             adapted from package python2-scikit-rf
 pkgname="python-scikit-rf"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scikit-rf (aka skrf) is a python package for RF/Microwave engineering"
 arch=(any)
 url="https://github.com/scikit-rf/scikit-rf"
@@ -30,12 +30,12 @@ source=("${pkgname}-${pkgver}::https://github.com/scikit-rf/scikit-rf/archive/re
 
 
 build() {
-	cd "${srcdir}/scikit-rf-v.${pkgver}"
+	cd "${srcdir}/scikit-rf-${pkgver}"
 	export PYTHONHASHSEED=0
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${srcdir}/scikit-rf-v.${pkgver}"
+	cd "${srcdir}/scikit-rf-${pkgver}"
 	find dist -name '*.whl' -exec python -m installer --compile-bytecode 1 --destdir="${pkgdir}" {} \;
 }
