@@ -8,6 +8,7 @@ pkgbase = zenmap-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = gtk3
 	depends = nmap
