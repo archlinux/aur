@@ -1,7 +1,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=steam-devices-git
-pkgver=v1.0.0.61.r38.d87ef55
+pkgver=v1.0.0.61.r44.1344348
 pkgrel=1
 pkgdesc="List of devices Steam and SteamVR will want read/write permissions on. Useful when using the Flatpak version of Steam."
 arch=('any')
