@@ -1,6 +1,6 @@
 _pkgname=slimevr-gui
 pkgname=${_pkgname}-git
-pkgver=v0.11.0.r3.6ac32035
+pkgver=v0.12.0.r1.8c0c3d10
 pkgrel=1
 pkgdesc="web GUI for SlimeVR Full Body Tracking System"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/SlimeVR/SlimeVR-Server"
 license=('MIT' 'Apache-2.0')
 groups=()
 depends=("python")
-makedepends=("nodejs" "npm")
+makedepends=("nodejs" "pnpm")
 checkdepends=()
 optdepends=()
 provides=("slimevr-gui")
@@ -36,12 +36,9 @@ prepare() {
 }
 
 build() {
-  cd SlimeVR-Server
-  npm install --include=dev
-
-  cd gui
-  npm install --include=dev
-  npm run build
+  cd SlimeVR-Server/gui
+  pnpm install
+  pnpm run build
 }
 
 package() {

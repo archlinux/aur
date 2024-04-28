@@ -1,13 +1,13 @@
 pkgbase = slimevr-gui-git
 	pkgdesc = web GUI for SlimeVR Full Body Tracking System
-	pkgver = v0.11.0.r3.6ac32035
+	pkgver = v0.12.0.r1.8c0c3d10
 	pkgrel = 1
 	url = https://github.com/SlimeVR/SlimeVR-Server
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
 	makedepends = nodejs
-	makedepends = npm
+	makedepends = pnpm
 	depends = python
 	provides = slimevr-gui
 	conflicts = slimevr-gui
