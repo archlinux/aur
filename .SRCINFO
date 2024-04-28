@@ -1,0 +1,20 @@
+pkgbase = android-x86-64-libvpl
+	pkgdesc = Intel Video Processing Library (Android x86-64)
+	pkgver = 2.10.2
+	pkgrel = 1
+	url = https://intel.github.io/libvpl/
+	arch = any
+	license = MIT
+	makedepends = android-cmake
+	makedepends = android-x86-64-libpciaccess
+	depends = android-x86-64-libdrm
+	depends = android-x86-64-libva
+	depends = android-x86-64-libx11
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/intel/libvpl/archive/v2.10.2/libvpl-2.10.2.tar.gz
+	sha256sums = ad956ea7ecf14614325f59dfb44cc5ba08e2fcac373342d61c7db152ac651253
+
+pkgname = android-x86-64-libvpl
