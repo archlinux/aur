@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver=2.01+r144.20230904.gff68e30
-pkgrel=1
+pkgrel=2
 pkgdesc='Travel::Status::DE::URA is an inofficial interface to URA-based departure monitors (as used by ASEAG)'
 url='http://finalrewind.org/projects/Travel-Status-DE-URA/'
 license=('GPL' 'PerlArtistic')
@@ -21,6 +21,7 @@ depends=(
   'perl-text-csv'
 )
 makedepends=(
+  'curl>8.7.1' # Because of https://bugs.gentoo.org/930633 / https://github.com/curl/curl/issues/13474
   'git'
   'perl-file-slurp'
   'perl-test-pod'
