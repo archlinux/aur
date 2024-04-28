@@ -1,14 +1,13 @@
 # Maintainer: Joan Figueras <ffigue at gmail dot com>
-# Contributor: Torge Matthies <openglfreak at googlemail dot com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Torge Matthies <openglfreak at googlemail dot com>1# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: SoftExpert <softexpert at gmail dot com>
 
 _arch=x64v3
 _pkgbase=linux-xanmod
 _major=6.8
-_minor=7
+_minor=8
 _branch=6.x
-_xanmodrel=2
+_xanmodrel=1
 _xanmodrev=
 pkgrel=3
 
@@ -59,8 +58,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('165cc3df90f18566610916be6fd3707ad12dbac30ad32fef8892b93b7daca55b'
-            'b5111c7108ad37709a1d857b9c9158fa03c734e7fdffb565467d5c3d1cbcf27c')
+sha256sums=('ba1ad0413983ae8f4e87b4058a3d53832a0987a55b3eb0016e74ece1b3e4a013'
+            '569d94c1925b651ad2c568d03664281f67f96b4c27376f5471bc0c9a5f656666')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
