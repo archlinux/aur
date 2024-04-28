@@ -4,11 +4,11 @@ _pkgname=TENxIO
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Import methods for 10X Genomics files"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biocbaseutils
   r-biocgenerics
@@ -44,11 +44,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('98a845f55877d89b82b9a153fe54a41f')
-sha256sums=('beece47e217747bf8279d3665963df727e2b685c6912414dbd1f639b0ceb2185')
+b2sums=('2d80d62023d6673306c8d5308e19fea33668bd7943116aae322030b1e9f4f19b3c523a1b27dab702a7549687cc8c8100d3b2decda8b5ce65c4164d886271fa41')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
