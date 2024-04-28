@@ -4,7 +4,7 @@
 pkgname='python-whenever-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.4.0.r1.g645050a
+pkgver=0.5.1.r20.g6c2a928
 pkgrel=1
 pkgdesc='Foolproof datetimes for maintainable Python code (built from latest commit)'
 arch=('any')
