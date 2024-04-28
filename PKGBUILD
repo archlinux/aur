@@ -4,7 +4,7 @@
 _pkgname=tuner
 pkgname=$_pkgname-git
 pkgver=1.5.1.r61.63fb6d9
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU/Linux app to discover and play internet radio stations. Geared towards RadioBrowser"
 arch=('i686' 'x86_64')
 url="https://codeberg.org/$_pkgname/$_pkgname"
@@ -31,4 +31,6 @@ build() {
 package() {
     cd "${_pkgname}/"
     DESTDIR="${pkgdir}" ninja -C _build install
+    cd "${pkgdir}"/usr/bin/
+    ln -s com.github.louis77.tuner tuner
 }
