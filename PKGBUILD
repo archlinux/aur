@@ -3,7 +3,7 @@
 
 pkgname=python-xeddsa
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A python implementation of the XEdDSA signature scheme"
 url='https://github.com/Syndace/python-xeddsa'
 license=('MIT')
@@ -29,6 +29,12 @@ depends=(
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
+
+prepare() {
+	cd ${pkgname}-${pkgver}
+	# Remove stale wheels
+	rm -rf dist/
+}
 
 build() {
 	cd ${pkgname}-${pkgver}
