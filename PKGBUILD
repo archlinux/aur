@@ -14,7 +14,7 @@ makedepends=(intltool meson gtk-doc)
 source=("http://entangle-photo.org/download/sources/${pkgname}-${pkgver}.tar.xz"
         "https://gitlab.com/entangle/entangle/-/commit/54795d275a93e94331a614c8712740fcedbdd4f0.patch")
 sha256sums=('9285ebab273ebe788d39a7c1bf19717cc6312cfcaa0bc55d65cf5a8d4f42a545'
-            '6cb850db85e7efe4dbb74e00ed4c3beabe0d0559e33cde26c131bb980d9f6491')
+            'b816b7fdbe121044a8cafcf9648e770a91a4df38b0758781276db22c8d29cd50')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
