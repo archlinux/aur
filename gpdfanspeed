@@ -22,9 +22,12 @@ set -e
 shopt -s extglob
 
 PROGRAMMENAME="gpdfanspeed"
-VERSION=20240428.04
+VERSION=20240428.05
 
 FANMONDIR="$(ls -1d "/sys/devices/platform/gpd_fan/hwmon"/hwmon[0-9] | head -n1)"
+DEBUGFSDIR="/sys/kernel/debug/gpdfan"
+
+## In the hwmon interface ($FANMONDIR/):
 _namefile="name"
 _rpmfile="fan1_input"
 _pwmsettingfile="pwm1"
@@ -32,9 +35,17 @@ _controlmodefile="pwm1_enable"
 _pwmmodefile="pwm1_mode"
 _updateintervalfile="update_interval"
 
+## In debugfs ($DEBUGFSDIR/):
+_debugpwmsettingfile="pwm_reg"
+_debugcontrolmodefile="manual_control_reg"
+
 
 msg() {
   printf '%s\n' "$@"
+}
+
+msgnonl() {
+  printf '%s' "$@"
 }
 
 errmsg() {
@@ -96,6 +107,12 @@ case "${_action}" in
     _setting="$(<"${FANMONDIR}/${_pwmsettingfile}")"
     _pwmmode="$(<"${FANMONDIR}/${_pwmmodefile}")"
     _updateinterval="$(<"${FANMONDIR}/${_updateintervalfile}")"
+    if [ -r "${DEBUGFSDIR}/${_debugpwmsettingfile}" ]; then
+      _pwm_reg="$(<"${DEBUGFSDIR}/${_debugpwmsettingfile}")"
+    fi
+    if [ -r "${DEBUGFSDIR}/${_debugcontrolmodefile}" ]; then
+      _manual_control_reg="$(<"${DEBUGFSDIR}/${_debugcontrolmodefile}")"
+    fi
     case "${_controlmode}" in
       "0")
         _controlmodename="full speed"
@@ -121,12 +138,21 @@ case "${_action}" in
         _pwmmodename="unknown (${_pwmmode})"
       ;;
     esac
-    msg "${_name}:"
-    msg "  Speed:                  ${_rpm} rpm"
-    msg "  Control mode:           ${_controlmodename}"
-    msg "  Speed setting (0..255): ${_setting}"
-    msg "  PWM Mode:               ${_pwmmodename}"
-    msg "  Info update interval:   ${_updateinterval} ms"
+    msg     "${_name}:"
+    msgnonl "  Speed:                  ${_rpm} rpm"
+    if [ -n "${_pwm_reg}" ]; then
+      msgnonl " (HW register: ${_pwm_reg})"
+    fi
+    msg ""
+    msgnonl "  Control mode:           ${_controlmodename}"
+    if [ -n "${_manual_control_reg}" ]; then
+      msgnonl " (HW register: ${_manual_control_reg})"
+    fi
+    msg ""
+    msg     "  Speed setting (0..255): ${_setting}"
+
+    msg     "  PWM Mode:               ${_pwmmodename}"
+    msg     "  Info update interval:   ${_updateinterval} ms"
   ;;
   'set')
   case "${_setting}" in
