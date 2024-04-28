@@ -2,12 +2,12 @@
 
 pkgname=python-kasa
 pkgver=0.6.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library to control TPLink's smart home devices (plugs, wall switches, power strips, and bulbs)."
 arch=('any')
 url="https://github.com/python-kasa/python-kasa"
 license=('GPL')
-depends=('python-asyncclick' 'python-async-timeout' 'python-pydantic')
+depends=('python-asyncclick' 'python-async-timeout' 'python-pydantic' 'python-yarl' 'python-aiohttp')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
 checkdepends=()
 source=("https://github.com/python-kasa/python-kasa/archive/$pkgver/$pkgname-$pkgver.tar.gz")
