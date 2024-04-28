@@ -1,12 +1,13 @@
 pkgbase = drush-launcher
 	pkgdesc = A small wrapper around Drush for your global $PATH.
 	pkgver = 0.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drush-ops/drush-launcher
 	arch = any
 	license = GPL
-	makedepends = git
 	makedepends = composer
+	makedepends = git
+	makedepends = php-box
 	depends = php
 	conflicts = drush
 	conflicts = drush-git
