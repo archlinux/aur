@@ -5,8 +5,8 @@ pkgname=(
   minijinja-cli
   python-minijinja
 )
-pkgver=2.0.0
-_commit=f0fce3fe08f38916a23ea41b5649b825236c038c
+pkgver=2.0.1
+_commit=c89b5da9e5d6e52ce7447ec1591af5404ce1b70c
 pkgrel=1
 pkgdesc="A powerful but minimal dependency template engine for Rust compatible with Jinja/Jinja2"
 url="https://github.com/mitsuhiko/minijinja"
@@ -23,7 +23,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("git+$url.git#commit=$_commit")
-sha256sums=('6d1c47981006cc1e4988849a6828644979574d6de390b00b48496fc74cef4c7e')
+sha256sums=('1b92ab0f86f262380b3edf551b425f4982a1ede237662b5eec44d5ca2102339a')
 
 _archive="$pkgbase"
 
