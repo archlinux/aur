@@ -21,7 +21,7 @@ build() {
 }
 
 check() {
-    cd ${srcdir}/${_name}-${pkgver}
+    cd ${srcdir}/${_name}-${pkgver}/test
     export PYTHONPATH="${srcdir}/scspell-2.2"
     ls test*.py | xargs -I {} pytest {}
 }
