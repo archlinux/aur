@@ -9,8 +9,8 @@
 
 pkgbase=curl-git
 pkgname=('curl-git' 'libcurl-compat-git' 'libcurl-gnutls-git')
-pkgver=8.4.0.r38.gd31a8424e8
-pkgrel=2
+pkgver=8.7.1.r201.gc8e0cd1de8
+pkgrel=1
 pkgdesc="A command line tool and library for transferring data with URLs"
 arch=('i686' 'x86_64')
 url="https://curl.se/"
@@ -90,7 +90,7 @@ check() {
 
 package_curl-git() {
   depends+=('openssl')
-  provides=("curl=$pkgver")
+  provides=("curl=$pkgver" 'libcurl.so')
   conflicts=('curl')
 
   cd "curl"

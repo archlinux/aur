@@ -1,7 +1,7 @@
 pkgbase = curl-git
 	pkgdesc = A command line tool and library for transferring data with URLs
-	pkgver = 8.4.0.r38.gd31a8424e8
-	pkgrel = 2
+	pkgver = 8.7.1.r201.gc8e0cd1de8
+	pkgrel = 1
 	url = https://curl.se/
 	arch = i686
 	arch = x86_64
@@ -48,13 +48,14 @@ pkgname = curl-git
 	depends = zlib
 	depends = zstd
 	depends = openssl
-	provides = curl=8.4.0.r38.gd31a8424e8
+	provides = curl=8.7.1.r201.gc8e0cd1de8
+	provides = libcurl.so
 	conflicts = curl
 
 pkgname = libcurl-compat-git
 	pkgdesc = A command line tool and library for transferring data with URLs (no versioned symbols)
 	depends = curl
-	provides = libcurl-compat=8.4.0.r38.gd31a8424e8
+	provides = libcurl-compat=8.7.1.r201.gc8e0cd1de8
 	provides = libcurl-compat.so
 	conflicts = libcurl-compat
 
@@ -62,6 +63,6 @@ pkgname = libcurl-gnutls-git
 	pkgdesc = A command line tool and library for transferring data with URLs (no versioned symbols, linked against gnutls)
 	depends = curl
 	depends = gnutls
-	provides = libcurl-gnutls=8.4.0.r38.gd31a8424e8
+	provides = libcurl-gnutls=8.7.1.r201.gc8e0cd1de8
 	provides = libcurl-gnutls.so
 	conflicts = libcurl-gnutls
