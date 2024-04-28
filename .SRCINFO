@@ -1,0 +1,22 @@
+pkgbase = anthropic-claude-nativefier
+	pkgdesc = Anthropic Claude desktop app (electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://claude.ai/
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = anthropic-claude-nativefier.png
+	source = anthropic-claude-nativefier.desktop
+	sha256sums = 8da55751e40d70b8f0bd663879f0b187be57724f42fe822f55b14ee6a5470eec
+	sha256sums = 73094c4e22b3c50046a070da7f28ef4b603671935b9256b6497595f5362aedf8
+
+pkgname = anthropic-claude-nativefier
