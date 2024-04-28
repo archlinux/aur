@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Copilot
+Comment=Microsoft Copilot desktop app (electron)
+Exec=microsoft-copilot-nativefier
+Icon=teams
+Encoding=UTF-8
+StartupWMClass=microsoftcopilot-nativefier-c6fe3a
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;Application;
