@@ -1,12 +1,14 @@
 pkgbase = ryzen-ppd
 	pkgdesc = Power management daemon for AMD Ryzen Mobile processors
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xsmile/ryzen-ppd
 	install = ryzen-ppd.install
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-dbus-next
 	depends = python-gobject
 	depends = ryzenadj
