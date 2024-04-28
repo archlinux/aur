@@ -3,10 +3,10 @@
 pkgname=python-scmrepo
 _pyname=${pkgname#python-}
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='SCM wrapper and fsspec filesystem for Git for use in DVC'
 arch=(any)
-license=(Apache)
+license=(Apache-2.0)
 url="https://github.com/iterative/${_pyname}"
 _pydeps=(asyncssh
          dulwich

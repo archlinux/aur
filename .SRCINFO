@@ -1,10 +1,10 @@
 pkgbase = python-scmrepo
 	pkgdesc = SCM wrapper and fsspec filesystem for Git for use in DVC
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iterative/scmrepo
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-cryptography
 	checkdepends = python-typing_extensions
 	checkdepends = python-pytest
