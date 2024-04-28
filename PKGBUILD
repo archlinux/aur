@@ -1,7 +1,7 @@
 # Maintainer: Trey Blancher $(base64 -d <<< dHJleUBibGFuY2hlci5uZXQK)
 pkgname=newrelic-infra-bin
 _pkg=${pkgname//-bin/}
-pkgver=1.52.0
+pkgver=1.52.1
 pkgrel=1
 pkgdesc="New Relic - All-in-On Observability - infrastructure agent"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -31,9 +31,10 @@ package() {
     install -m u=rw,go=r ${srcdir}/${_pkg}/var/db/${_pkg}/LICENSE.txt ${pkgdir}/var/db/${_pkg}/
 }
 sha256sums=('60f2a31b2d461f029c786a18f1feb393c1a5e43beac520b1c7d5e12b45590ae0')
-sha256sums_aarch64=('78cf29b2df7468cf3782141cd12c15e39144f4c87d440156ce2168017a223e7b'
+sha256sums=('60f2a31b2d461f029c786a18f1feb393c1a5e43beac520b1c7d5e12b45590ae0')
+sha256sums_aarch64=('6d7cf766641d721ad3f3dc106687048182da64219bb2cb553262f274c24359de'
                     'SKIP')
-sha256sums_armv7h=('396fa7fd8732843c9b545799db905d6050cb19ed9dff4ae04a54194fa4da8c84'
+sha256sums_armv7h=('27dafd888adcd6bd36f9f7ef34500b6f8ef16a2f4874b478380f59cf6b2cd308'
                    'SKIP')
-sha256sums_x86_64=('68e64efd76f812f079022ae1bcef32196725cfc4dff4a4bae18f7d79a9b62145'
+sha256sums_x86_64=('5082bdd61e4f7b3c3f56b0755ca075a871f54072ef4efd5b171e0da75e521cc1'
                    'SKIP')
