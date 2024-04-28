@@ -4,11 +4,11 @@ _pkgname=lineagespot
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Detection of SARS-CoV-2 lineages in wastewater samples using next-generation sequencing"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-data.table
   r-httr
@@ -29,11 +29,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('7a06bfea8fdf81ea88ebe7f4478607f6')
-sha256sums=('2606c8052dc41b4d9fe8c1b6c6ae075c8b06d2f2b395c822f73abca4e0217c7b')
+b2sums=('98a4e8a42bbb8706e0bc54bba2f16e4366db13b396cc54bddd69e622ae89880d2c1a28a3bead9b302dbd1c87ba236e64706deeaa96db26ba42f0d88b0f0ada45')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
