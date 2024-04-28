@@ -2,11 +2,11 @@
 
 pkgname=python-soxr
 pkgver=0.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc='High quality, one-dimensional sample-rate conversion library for Python'
 arch=('x86_64')
 url='https://github.com/dofuuz/python-soxr'
-license=('LicenseRef-custom')
+license=('LGPL-2.1-or-later')
 depends=(
   'glibc'
   'libsoxr'
