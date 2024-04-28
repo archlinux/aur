@@ -2,8 +2,8 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=dehelper
-pkgver=12.7.1
-_date=2022-10-31
+pkgver=13.5.2
+_date=2024-04-19
 _lang=de
 _flang=German
 pkgrel=1
@@ -12,13 +12,13 @@ arch=('x86_64')
 url="https://www.eudic.net/v4/${_lang}/app/${pkgname}"
 license=('unknown')
 depends=(
-         'hicolor-icon-theme'
-         'qt5-speech'
-         'qt5-webkit'
-         )
+  'hicolor-icon-theme'
+  'qt5-speech'
+  'qt5-webkit'
+)
 provides=("eudic-${_lang}")
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
-sha512sums=('a6b9c4a0eb26df971827550bc85ec44f53bd0478b590aae48e2bc600581c1ebc7cff79cdd3b86af91ad2942eff204c7347d554376ddbbf53629e07a73147ebba')
+sha512sums=('071bf1f74f08792fbf598fadb6c87c803e7989f3408c5dbcfbfa8d8189ff459e954786677fc310b2fa31f623e780a3df54dee72e2a31f2649ad4a1e447e95c18')
 
 # sometime use curl to download source deb, throws 404 not found.
 # user other UA instead of origion one fixed it.
@@ -41,15 +41,15 @@ package() {
   # link executable
   install -dm755 ${pkgdir}/usr/bin/
   ln -s /usr/share/${_dirname}/${pkgname} \
-        ${pkgdir}/usr/bin/${pkgname}
+    ${pkgdir}/usr/bin/${pkgname}
 
   # desktop entry
   sed -i "s|/usr/share/${_dirname}/AppRun|${pkgname}|g" \
-         ${pkgdir}/usr/share/applications/eusoft-${pkgname}.desktop
+    ${pkgdir}/usr/share/applications/eusoft-${pkgname}.desktop
 
   # qt plugin path
   sed -i '4c Prefix = /usr/lib/qt/' \
-         ${pkgdir}/usr/share/${_dirname}/qt.conf
+    ${pkgdir}/usr/share/${_dirname}/qt.conf
 
   # remove unused files.
   rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins,lib*}
