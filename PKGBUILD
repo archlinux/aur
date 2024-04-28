@@ -2,15 +2,16 @@
 # Contributor: Alex Dewar <alex.dewar@gmx.co.uk>
 pkgname=pwclient
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The command-line client for the patchwork patch tracking tool'
 arch=('any')
 url="https://github.com/getpatchwork/$pkgname"
 license=('GPL-2.0-or-later')
-depends=('python-importlib-metadata')
+depends=('python' 'python-importlib-metadata')
 makedepends=(
     'python-build'
     'python-installer'
+    'python-pbr'
     'python-setuptools'
     'python-wheel'
 )
