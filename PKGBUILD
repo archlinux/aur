@@ -85,6 +85,7 @@ package() {
   mv "${srcdir}/openarena-svn/build/uncut.pk3" "${pkgdir}/usr/lib/openarena/uncut"
 
   find "${pkgdir}/usr/lib/openarena" -type f -exec chmod 644 {} \;
+  chmod "${pkgdir}/usr/lib/openarena/"o*.$(uname -m) 755
   find "${pkgdir}/usr/lib/openarena" -type d -exec chmod 755 {} \;
 
   # copy compiled files
