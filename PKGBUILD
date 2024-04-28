@@ -7,11 +7,11 @@ pkgrel=2
 pkgdesc='Comprehensive library of proprietary color swatches for Scribus'
 arch=('any')
 url='https://github.com/jpederson/colornerd'
-license=('unknown')
+license=('LicenseRef-unknown')
 depends=('scribus')
 makedepends=('jq' 'python' 'python-xmltodict')
 conflicts=('scribus-colornerd-git')
-options=('!strip')
+options=('!debug' '!strip')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/jpederson/colornerd/archive/refs/tags/${pkgver}.tar.gz"
