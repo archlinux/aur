@@ -4,11 +4,11 @@ _pkgname=seqArchRplus
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Downstream analyses of promoter sequence architectures and HTML report generation"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biocparallel
   r-biostrings
@@ -47,11 +47,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('9f20e2eed3e5b5a498564ea201b251d9')
-sha256sums=('afc12881d75029dab06b8cfb7a89b014d397f5dba3aa9cc89ae26b75ce330e48')
+b2sums=('1823f62e7c6203b0e048a47df9e49b93f393943f20a719b74e5802e368c1fdf87a157ee2d9899c7dfab92c30232ca5eccc55b68777ebc58c61b8982b83ceb799')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
