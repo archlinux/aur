@@ -1,34 +1,44 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-# Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Contributor: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-shell-extension-tiling-assistant
-_pkgname=Tiling-Assistant
-pkgver=44
+_uuid=tiling-assistant@leleat-on-github
+pkgver=47
 pkgrel=1
-pkgdesc="A GNOME Shell extension to expand GNOME's native 2 column design."
+pkgdesc="A GNOME Shell extension which adds a Windows-like snap assist to the GNOME desktop"
 arch=('any')
 url="https://github.com/Leleat/Tiling-Assistant"
 license=('GPL2')
 depends=('gnome-shell')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-noextract=("*tiling-assistant@leleat-on-github*")
-b2sums=('bc32ae188341f82bcbdbf921c7f84ae3aa9ed9a5cc045d9c8169a28ed1144f1210dcad58b8bf5e784c3b019545250f043de78bd564e4fb72c50ed60fb2857d9b')
-_uuid=tiling-assistant@leleat-on-github
+makedepends=('git')
+install='tiling-assistant.install'
+source=("git+https://github.com/Leleat/Tiling-Assistant.git#tag=v$pkgver")
+sha256sums=('3679cb0765072f8a246d0946caf5e283f0f8ea2e3121a944c30ec4611ae73fda')
+
+pkgver() {
+  cd Tiling-Assistant
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 build() {
-  cd "${srcdir}/Tiling-Assistant-${pkgver}"
-
+  cd Tiling-Assistant
   gnome-extensions pack "${_uuid}" \
-    --force \
-    --podir="../translations" \
-    --extra-source="src" \
-    --extra-source="media"
+    --podir=../translations/ \
+    --extra-source=media/ \
+    --extra-source=src/ \
+    --force
 }
 
 package() {
-  cd "${srcdir}/Tiling-Assistant-${pkgver}"
+  cd Tiling-Assistant
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+  bsdtar xvf "${_uuid}.shell-extension.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions"
-  unzip ${_uuid}.shell-extension.zip \
-    -d "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
+
+  install -Dm644 "${_uuid}/schemas/org.gnome.shell.extensions.tiling-assistant.gschema.xml" -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }

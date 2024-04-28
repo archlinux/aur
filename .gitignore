@@ -1,2 +1,8 @@
-/*.log
-/*.tar.gz
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!tiling-assistant.install

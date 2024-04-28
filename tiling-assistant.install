@@ -1,0 +1,20 @@
+post_install() {
+  echo ""
+  echo -------------------------------------------------------------------
+  echo Disable the extension before removal to restore default edge tiling
+  echo -------------------------------------------------------------------
+  echo
+}
+
+post_remove() {
+  echo ""
+  echo ---------------------------------------------------------
+  echo Logout / login to finish the uninstallation process
+  echo ""
+  echo If you didn\'t disable the extension before removal, run
+  echo "'gsettings set org.gnome.mutter edge-tiling true ; \\"
+  echo gsettings set org.gnome.shell.overrides edge-tiling true\'
+  echo to re-enable GNOME\'s native edge tiling
+  echo ---------------------------------------------------------
+  echo
+}
