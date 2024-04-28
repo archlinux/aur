@@ -1,0 +1,23 @@
+--- parse_args.gpr	2022-04-04 06:32:34.000000000 +1000
++++ parse_args.gpr-new	2024-04-18 16:15:52.722102183 +1000
+@@ -1,8 +1,7 @@
+-with "config/parse_args_config.gpr";
+ project Parse_Args is
+ 
+    for Library_Name use "parse_args";
+-   for Library_Version use Project'Library_Name & ".so." & Parse_Args_Config.Crate_Version;
++   for Library_Version use Project'Library_Name & ".so";
+ 
+    for Source_Dirs use ("src");
+    for Object_Dir use "obj";
+@@ -20,8 +19,8 @@
+    Style_Checks : Enabled_Kind := External ("PARSE_ARGS_STYLE_CHECKS", "disabled");
+    Contracts_Checks : Enabled_Kind := External ("PARSE_ARGS_CONTRACTS", "disabled");
+ 
+-   type Build_Kind is ("debug", "optimize");
+-   Build_Mode : Build_Kind := External ("PARSE_ARGS_BUILD_MODE", "optimize");
++   type Build_Kind_Type is ("debug", "optimize");
++   Build_Mode : Build_Kind_Type := External ("PARSE_ARGS_BUILD_MODE", "optimize");
+ 
+    Compile_Checks_Switches := ();
+    case Compile_Checks is

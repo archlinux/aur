@@ -1,0 +1,15 @@
+pkgbase = parse_args
+	pkgdesc = An Ada 2012 package that provides simple command-line argument parsing.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/jhumphry/parse_args
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = gcc-ada
+	source = https://github.com/jhumphry/parse_args/archive/refs/heads/master.zip
+	source = parse_args.gpr.patch
+	sha256sums = 7177d01d2ad43534b7d78d1b3c7def69bfd625d17637a84fdefe06d52e54545c
+	sha256sums = c9fb6cbcf1547b9c5af59e04e1f6a63a36292ec2340a9028cd04d1d3419669af
+
+pkgname = parse_args
