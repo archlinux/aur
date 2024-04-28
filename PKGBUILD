@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=4.2.9.r0.gabe5a1de
+pkgver=4.3.0.r0.g705eb80b
 _electronversion=18
 _nodeversion=16
 pkgrel=1
