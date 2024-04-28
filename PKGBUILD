@@ -4,11 +4,11 @@ _pkgname=alabaster.sce
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Load and Save SingleCellExperiment from File"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-alabaster.base
   r-alabaster.se
@@ -25,11 +25,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('e508f30fb84947c7246b093b63a5aea3')
-sha256sums=('7f335edf1edac01869d5d2790390af327b409acc7c5644750376cfe48e8f64be')
+b2sums=('99bdf7f941ab70aed886ca2a848503d805ba4b18b84bb4bace62d90afc21676e9af39b8060144b072f4994d1a55866c66c440d2fc161c683f0931ac91dcebb65')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
