@@ -1,6 +1,6 @@
 pkgbase = mypy-git
 	pkgdesc = Optional static typing for Python 2 and 3 (PEP484)
-	pkgver = 1.9.0.r40.ga00fcba
+	pkgver = 1.10.0.r11.gba6febc
 	pkgrel = 1
 	url = https://github.com/JukkaL/mypy
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mypy-git
 	depends = python-mypy_extensions
 	depends = python-typing_extensions
 	depends = python-tomli
-	provides = mypy=1.9.0
+	provides = mypy=1.10.0
 	conflicts = mypy
 	source = mypy::git+https://github.com/JukkaL/mypy.git
 	sha256sums = SKIP

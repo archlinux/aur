@@ -8,7 +8,7 @@
 
 _pkgname="mypy"
 pkgname="$_pkgname-git"
-pkgver=1.9.0.r40.ga00fcba
+pkgver=1.10.0.r11.gba6febc
 pkgrel=1
 pkgdesc="Optional static typing for Python 2 and 3 (PEP484)"
 url="https://github.com/JukkaL/mypy"
@@ -36,14 +36,18 @@ source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
+  local local _version _version_prefix _revision _hash
+
   cd "$_pkgsrc"
+  _version=$(git tag | sed -E 's/^[^0-9]+//' | sort -rV | head -1)
 
-  local _version=$(git tag | sed -E 's/^[^0-9]+//' | sort -rV | head -1)
+  if git rev-list --count v${_version} > /dev/null 2>&1; then
+    _version_prefix=v
+  fi
 
-  [ git rev-list v${_version} > /dev/null 2>&1 ] && local _version_prefix=v
-  local _revision=$(git rev-list --count --cherry-pick "${_version_prefix:-}${_version}"...HEAD)
+  _revision=$(git rev-list --count --cherry-pick "${_version_prefix:-}${_version}"...HEAD)
 
-  local _hash=$(git rev-parse --short=7 HEAD)
+  _hash=$(git rev-parse --short=7 HEAD)
 
   printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
