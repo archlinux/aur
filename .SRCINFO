@@ -1,7 +1,7 @@
 pkgbase = r-alabaster.matrix
 	pkgdesc = Load and Save Artifacts from File
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/alabaster.matrix
 	arch = any
 	license = MIT
@@ -20,6 +20,6 @@ pkgbase = r-alabaster.matrix
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.matrix_1.2.0.tar.gz
 	md5sums = 099a01bbb4a95bdaf0f91ffd2b89653d
-	sha256sums = a5efd5c13416ef9eca8bc57d0161052ff259c75f962d14c7279e18ed37f90f3e
+	b2sums = 485f2eee79873b8e5f688eac4da9c849ff5b0d2ffb1fa44fb35340453d0220a31f6df524912655bea05f2eb1ddfe4139d92f03c2996f472b07ba9cff9bc4ae48
 
 pkgname = r-alabaster.matrix

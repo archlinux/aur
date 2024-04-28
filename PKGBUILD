@@ -4,11 +4,11 @@ _pkgname=alabaster.matrix
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Load and Save Artifacts from File"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-alabaster.base
   r-biocgenerics
@@ -30,11 +30,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('099a01bbb4a95bdaf0f91ffd2b89653d')
-sha256sums=('a5efd5c13416ef9eca8bc57d0161052ff259c75f962d14c7279e18ed37f90f3e')
+b2sums=('485f2eee79873b8e5f688eac4da9c849ff5b0d2ffb1fa44fb35340453d0220a31f6df524912655bea05f2eb1ddfe4139d92f03c2996f472b07ba9cff9bc4ae48')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
