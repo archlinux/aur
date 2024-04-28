@@ -1,0 +1,22 @@
+pkgbase = android-x86-libdrm
+	pkgdesc = Userspace interface to kernel DRM services
+	pkgver = 2.4.120
+	pkgrel = 1
+	url = https://dri.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-meson
+	depends = android-x86-libpciaccess
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://dri.freedesktop.org/libdrm/libdrm-2.4.120.tar.xz
+	source = https://dri.freedesktop.org/libdrm/libdrm-2.4.120.tar.xz.sig
+	source = 0001-Disable-open_memstream.patch
+	validpgpkeys = 34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48
+	md5sums = f8521de37ccbd15987b843a83fabd567
+	md5sums = SKIP
+	md5sums = b01f3f9e59e04924adcc3385e634c8dc
+
+pkgname = android-x86-libdrm
