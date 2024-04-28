@@ -1,7 +1,7 @@
 pkgbase = python-proton-keyring-linux-secretservice
 	pkgdesc = The proton-keyring-linux-secretservice component.
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonVPN/python-proton-keyring-linux-secretservice
 	arch = any
 	groups = ProtonVPN
@@ -9,6 +9,6 @@ pkgbase = python-proton-keyring-linux-secretservice
 	makedepends = python-setuptools
 	depends = python-proton-keyring-linux
 	source = git+https://github.com/ProtonVPN/python-proton-keyring-linux-secretservice.git#tag=v0.0.2
-	sha256sums = SKIP
+	sha256sums = 3bbfc8df92caf0cde16c84454e40bb8cf4db211906f7f3ba0a3e6900abe099a3
 
 pkgname = python-proton-keyring-linux-secretservice
