@@ -3,11 +3,11 @@
 
 pkgname=plom
 pkgver=0.7.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Paperless open marking'
 arch=(any)
 url="https://gitlab.com/$pkgname/$pkgname"
-license=(AGPL3)
+license=(AGPL-3.0-only)
 _pydeps=(aiohttp
          appdirs
          canvasapi
