@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=toolong
-pkgver=1.4.0
-_commit=906dafb654bf106de49f2b9fc02e20bd6574beb4
+pkgver=1.5.0
+_commit=5aa22ee878026f46d4d265905c4e1df4d37842ae
 pkgrel=1
 pkgdesc="A terminal application to view, tail, merge, and search log files (plus JSONL)"
 arch=(any)
@@ -23,7 +23,7 @@ makedepends=(
   python-wheel
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('135e9043e0da24880c4f3975d44f9f5c47e8f4427514c58c46d455fef0a15409')
+sha256sums=('2a7f6984b9e49bd9ee769a9a4b671801c5cc83608061abdbc46b108b5c8bff0f')
 
 _archive="$pkgname-$_commit"
 

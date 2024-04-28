@@ -1,6 +1,6 @@
 pkgbase = toolong
 	pkgdesc = A terminal application to view, tail, merge, and search log files (plus JSONL)
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Textualize/toolong
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = toolong
 	depends = python-rich
 	depends = python-textual
 	depends = python-typing_extensions
-	source = toolong-1.4.0.tar.gz::https://github.com/Textualize/toolong/archive/906dafb654bf106de49f2b9fc02e20bd6574beb4.tar.gz
-	sha256sums = 135e9043e0da24880c4f3975d44f9f5c47e8f4427514c58c46d455fef0a15409
+	source = toolong-1.5.0.tar.gz::https://github.com/Textualize/toolong/archive/5aa22ee878026f46d4d265905c4e1df4d37842ae.tar.gz
+	sha256sums = 2a7f6984b9e49bd9ee769a9a4b671801c5cc83608061abdbc46b108b5c8bff0f
 
 pkgname = toolong
