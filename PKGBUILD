@@ -4,11 +4,11 @@ _pkgname=cardelino
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Clone Identification from Single Cell Data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-combinat
   r-genomeinfodb
@@ -36,11 +36,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('363c06547419f29e1cdfe473651e1861')
-sha256sums=('f6ed2a646b833f4a63b0641731ce2c1dbc4718d76d7418c0878acb00561b8d78')
+b2sums=('9cfce3cc4484e8fc1d5085a02f16a38d2a715f4ff36dca665bbb71f5d463af2bdc7041d4903f43df321abd82d8fb473345c88acb72be3a1a3371a610dd4f4c5e')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

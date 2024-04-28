@@ -1,10 +1,10 @@
 pkgbase = r-cardelino
 	pkgdesc = Clone Identification from Single Cell Data
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/cardelino
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	depends = r-combinat
 	depends = r-genomeinfodb
@@ -26,6 +26,6 @@ pkgbase = r-cardelino
 	optdepends = r-vgam
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/cardelino_1.4.0.tar.gz
 	md5sums = 363c06547419f29e1cdfe473651e1861
-	sha256sums = f6ed2a646b833f4a63b0641731ce2c1dbc4718d76d7418c0878acb00561b8d78
+	b2sums = 9cfce3cc4484e8fc1d5085a02f16a38d2a715f4ff36dca665bbb71f5d463af2bdc7041d4903f43df321abd82d8fb473345c88acb72be3a1a3371a610dd4f4c5e
 
 pkgname = r-cardelino
