@@ -1,0 +1,35 @@
+From 500e553d0459b0e4904e20520f9e01f8fba1d524 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Sun, 28 Apr 2024 23:30:51 +0200
+Subject: [PATCH] Use raw string to fix Python 3.12 syntax warning
+
+When running under Python v3.12, the `re.match` invocation in
+`simpletransform.py` causes a syntax warning, because the regexp string
+contains an escape sequence that Python tries to interpret as part of
+the string literal:
+
+```bash
+python -c 'import re; print(re.match("(translate|scale|rotate|skewX|skewY|matrix)\s*\(([^)]*)\)\s*,?", "translate(3.1416)"))'
+<string>:1: SyntaxWarning: invalid escape sequence '\s'
+<re.Match object; span=(0, 17), match='translate(3.1416)'>
+```
+
+The `\s` is really meant to be taken literally and to be passed to the
+regexp engine as is. Use a raw string to achieve that.
+---
+ ink_extensions/simpletransform.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ink_extensions/simpletransform.py b/ink_extensions/simpletransform.py
+index 9cb7651..e615fc1 100755
+--- a/ink_extensions/simpletransform.py
++++ b/ink_extensions/simpletransform.py
+@@ -27,7 +27,7 @@ def parseTransform(transf,mat=[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]):
+     if transf=="" or transf==None:
+         return(mat)
+     stransf = transf.strip()
+-    result=re.match("(translate|scale|rotate|skewX|skewY|matrix)\s*\(([^)]*)\)\s*,?",stransf)
++    result=re.match(r"(translate|scale|rotate|skewX|skewY|matrix)\s*\(([^)]*)\)\s*,?",stransf)
+ #-- translate --
+     if result.group(1)=="translate":
+         args=result.group(2).replace(',',' ').split()
