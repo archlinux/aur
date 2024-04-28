@@ -5,7 +5,7 @@
 pkgname='python-sphinx-markdown-tables'
 _pkgname="${pkgname##python-}"
 pkgver=0.0.17
-pkgrel=5
+pkgrel=6
 arch=('any')
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 pkgdesc='Sphinx extension for rendering tables written in markdown'
@@ -23,19 +23,19 @@ makedepends=(
 )
 
 prepare() {
-  cd "$srcdir/$_pkgname-$pkgver" || exit 1
+  cd "$srcdir/$_pkgname-$pkgver"
 
   sed -i '/data_files/d' setup.py
 }
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver" || exit 1
+  cd "$srcdir/$_pkgname-$pkgver"
 
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver" || exit 1
+  cd "$srcdir/$_pkgname-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
