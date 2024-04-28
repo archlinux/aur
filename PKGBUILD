@@ -3,7 +3,7 @@
 _name=dscribe
 pkgname=python-${_name,,}
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Creating feature transformations in applications of ML to materials science'
 
 arch=('any')

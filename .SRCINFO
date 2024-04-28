@@ -1,7 +1,7 @@
 pkgbase = python-dscribe
 	pkgdesc = Creating feature transformations in applications of ML to materials science
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://singroup.github.io/dscribe/
 	arch = any
 	license = Apache-2.0
