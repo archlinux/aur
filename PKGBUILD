@@ -2,7 +2,7 @@
 # Contributor: BlackEagle <ike DOT devolder AT gmail DOT com>
 
 pkgname=kodi-addon-game-libretro-gambatte
-pkgver=0.5.0.46
+pkgver=0.5.0.52
 _codename=Nexus
 pkgrel=1
 pkgdesc="Libretro wrapper for Kodi's Game API"
@@ -13,7 +13,7 @@ groups=('kodi-addons' 'kodi-addons-game')
 makedepends=('cmake' 'kodi-dev' 'kodi-addon-game-libretro' 'libretro-gambatte')
 options=(!lto debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro.gambatte/archive/$pkgver-$_codename.tar.gz")
-sha512sums=('dab6800986bcab824c623ee2fb47f03d8728e7ae9f5a24c32b190d1b385fa194ad187ab25d4242e83459ee99fe1b9ef43a90b44244bd6663cada9dbe9a5980f3')
+sha512sums=('9c28f3011894a74f78c151dd3aab6623f0d9f5d196de026f6e49774a627eab613e277cf2c5c0917090ee314c86759c906009688a4392a0ae867ee95c007567e6')
 
 build() {
     cd "game.libretro.gambatte-$pkgver-$_codename"
