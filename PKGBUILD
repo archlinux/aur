@@ -1,7 +1,7 @@
 # Maintainer: Lesnikov Vladimir <v.a.lesnikov@vk.com>
 pkgname='pft'
-pkgver='0.4.1'
-pkgrel=2
+pkgver='0.5.0'
+pkgrel=1
 pkgdesc='TCP file sender/receiver'
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/faceleft/pft'
@@ -13,6 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
 sha256sums=('SKIP')
 
+
 build() {
 	cd "$pkgname-$pkgver"
     go build
@@ -21,5 +22,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
     mkdir -p $pkgdir/usr/bin
-    cp pft $pkgdir/usr/bin 
+    cp pft $pkgdir/usr/bin
 }
