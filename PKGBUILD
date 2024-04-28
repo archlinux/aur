@@ -8,12 +8,13 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libiec61883
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A higher level API for streaming DV, MPEG-2 and audio over Linux IEEE 1394 (Android ${_android_arch})"
 url='https://www.kernel.org/pub/linux/libs/ieee1394/'
 license=('LGPL')
 depends=("android-${_android_arch}-libraw1394")
+makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.kernel.org/pub/linux/libs/ieee1394/libiec61883-${pkgver}.tar.xz"
         '0001-Unversioned-libs.patch')
@@ -60,6 +61,7 @@ package() {
     make DESTDIR="${pkgdir}" install
     rm -rf "$pkgdir/${ANDROID_PREFIX_BIN}"
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
+    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
 }
