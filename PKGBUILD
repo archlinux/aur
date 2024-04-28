@@ -4,11 +4,11 @@ _pyname=sre-yield
 __pyname=${_pyname/-/_} # project is transitioning, tagged release is earlier scheme
 pkgname=python-$_pyname
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Generate regular all expression matches'
 arch=(any)
 url="https://github.com/$_pyname/$_pyname"
-license=(Apache)
+license=(Apache-2.0)
 depends=(python)
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
