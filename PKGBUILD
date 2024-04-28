@@ -3,11 +3,11 @@
 _pyname=glyphsets
 pkgname=python-${_pyname,,}
 pkgver=0.6.20
-pkgrel=1
+pkgrel=2
 pkgdesc='an API with data about glyph sets for many different scripts and languages'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
-license=(Apache)
+license=(Apache-2.0)
 _pydeps=(defcon
          fonttools
          fs # for fonttools[ufo]
