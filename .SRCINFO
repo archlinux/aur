@@ -1,0 +1,19 @@
+pkgbase = circada
+	pkgdesc = Console IRC client
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/freanux/circada
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	makedepends = automake
+	makedepends = libtool
+	makedepends = git
+	depends = gnutls
+	depends = ncurses
+	depends = lua
+	source = git+https://github.com/freanux/circada.git#commit=3c19081fc3710acce19deb6fb90fb8d3b5e9062a
+	sha256sums = SKIP
+
+pkgname = circada
