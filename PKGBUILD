@@ -3,7 +3,7 @@
 
 pkgname=twitch-dl
 pkgver=2.3.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=('any')
 url="https://github.com/ihabunek/twitch-dl"
@@ -37,11 +37,16 @@ build() {
   cd "$pkgname-$pkgver"
   export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
   python -m build --wheel --no-isolation
+
+  # Make later commands use the built module
+  export PYTHONPATH="$PWD/build/lib"
+
   make man docs
 }
 
 check() {
   cd "$pkgname-$pkgver"
+  export PYTHONPATH="$PWD/build/lib"
   make test
 }
 

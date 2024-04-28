@@ -1,7 +1,7 @@
 pkgbase = twitch-dl
 	pkgdesc = Twitch video downloader that use multiple concurrent connections
 	pkgver = 2.3.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/ihabunek/twitch-dl
 	arch = any
 	license = GPL3
