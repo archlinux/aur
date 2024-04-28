@@ -3,7 +3,7 @@ pkgname=tiny-rdm
 _pkgname="Tiny RDM"
 pkgver=1.1.12
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
 arch=('any')
 url="https://redis.tinycraft.cc/"
@@ -21,6 +21,7 @@ makedepends=(
     'go>=1.21'
     'gcc'
     'base-devel'
+    'wails'
 )
 options=(
     '!strip'
@@ -37,7 +38,7 @@ _ensure_local_nvm() {
 }
 build() {
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -59,7 +60,6 @@ build() {
     else
         echo "Your network is OK."
     fi
-    go install github.com/wailsapp/wails/v2/cmd/wails@latest
     npm install --prefix ./frontend
     wails build -platform linux -ldflags "-X main.version=v${pkgver}" -o "${pkgname}"
     sed -e "s|{{.Info.ProductName}}|${_pkgname}|g" \
@@ -68,8 +68,8 @@ build() {
         -i "build/linux/${pkgname}_0.0.0_amd64/usr/share/applications/${pkgname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}.git/build/bin/${pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${pkgname}.git/build/linux/${pkgname}_0.0.0_amd64/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}.git/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/build/bin/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/linux/${pkgname}_0.0.0_amd64/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
