@@ -4,11 +4,11 @@
 _pyname=panflute
 pkgname=python-$_pyname
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Pythonic alternative to John MacFarlane’s pandocfilters'
 arch=(any)
 url="https://github.com/sergiocorreia/$_pyname"
-license=(BSD)
+license=(BSD-3-Clause)
 _pydeps=(click
          yaml)
 depends=(pandoc
