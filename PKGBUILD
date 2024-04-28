@@ -5,7 +5,7 @@
 _pkgname='audio-offset-finder'
 pkgname="${_pkgname}-git"
 pkgver=0.5.3.r151.20231205.2e948a3
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple tool for finding the offset of an audio file within another file."
 arch=('any')
 _githost='github.com'
@@ -32,6 +32,7 @@ makedepends=(
   # 'python-setuptools'
 )
 checkdepends=(
+  'python-librosa'
   'python-nose'
   'python-pytest'
   'python-soxr'
