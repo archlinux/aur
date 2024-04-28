@@ -4,11 +4,11 @@ _pkgname=OGRE
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Calculate, visualize and analyse overlap between genomic regions"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-annotationhub
   r-assertthat
@@ -37,11 +37,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('cff18fd2eda3eb1e67e9f7739fb9e773')
-sha256sums=('7124b0ba410224f0602ed7775daabc97b80a91ebb2bdbcd67b4a2ac78fc0f6d4')
+b2sums=('4eee16cbece3d8cadcdcdcd6607b80dd3b5a5b8dcde56568552eb829a6c16dc00f0f925821bb4df1e21452ea1c62862ff677a6ef6bf9b8d093449dea97d38e54')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
