@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Blockyfish Client
+Comment=A custom desktop client for deeeep.io v4 with some improvements. Made by pi.
+GenericName=Game
+Exec=blockyfish-client %U
+Icon=blockyfish-client
+Type=Application
+StartupNotify=false
+StartupWMClass=blockyfish-client
+Categories=Game;
