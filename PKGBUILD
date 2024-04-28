@@ -4,11 +4,11 @@ _pkgname=MuData
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Serialization for MultiAssayExperiment Objects"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-delayedarray
   r-multiassayexperiment
@@ -35,11 +35,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('10ef702e87a5f0517e59c1ccb96b08dc')
-sha256sums=('5d43b15ec405c0bc3cc1a328773fd76fda63f51555ec57ca10bafaec79dc2e3a')
+b2sums=('93b8e3fcac9652bec6bb9bb364b27bf657db3a6a719213b089297ad1e605ed7c4d05d9e39472ae0925adb698094da7a8ea5cdeaccafbac889e01ab8ebcf2d57a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
