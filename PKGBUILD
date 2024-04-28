@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aihub
 _pkgname=AIHub
-pkgver=1.7.0
+pkgver=1.8.0
 _electronversion=30
 pkgrel=1
 pkgdesc="A collection of large model capabilities of the client.一款集合多家大模型能力的客户端."
@@ -22,7 +22,7 @@ source=(
     "${pkgname}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('da54f5811304101c841eea26330029976c490a22cacbfc5d85b2e700f5ac37ee'
+sha256sums=('7d5e3ab763812faa4cb1ba85f89b813815d98c86a3bf8bfa0cdd08c432fbd05b'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
