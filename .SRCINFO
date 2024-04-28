@@ -1,7 +1,7 @@
 pkgbase = r-pairedgsea
 	pkgdesc = Paired DGE and DGS analysis for gene set enrichment analysis
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/pairedGSEA
 	arch = any
 	license = MIT
@@ -33,6 +33,6 @@ pkgbase = r-pairedgsea
 	optdepends = r-writexl
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/pairedGSEA_1.2.0.tar.gz
 	md5sums = 591cbbc31b4eab5064ef39c4b8133fa5
-	sha256sums = bead1ecc8d1cc2f4e370ec6062bc0a873a5b2cce3818937c5c6a1bb7e02b97d1
+	b2sums = a4b8ecaaa95a5f3c55ec1a6db289aca8a93c3617bbd82d82cff105c92cc0769e504ed23cced279098ab5ac349acad59a614e83f6d1c98618b3a11ca7597ac861
 
 pkgname = r-pairedgsea
