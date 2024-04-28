@@ -4,7 +4,7 @@
 
 pkgname=guilded
 pkgver=1.0.9251387
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat for Gaming Communities"
 arch=('x86_64')
 url="https://www.guilded.gg/"

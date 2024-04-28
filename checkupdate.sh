@@ -14,7 +14,7 @@ hash=$(sha256sum Guilded-Linux.deb | awk '{ print $1 }')
 ar x Guilded-Linux.deb
 tar xzf control.tar.gz
 
-version=$(awk '/^Version:/ { print $2 }' control | cut -d '-' -f1)
+version=$(awk '/^Version:/ { print $2 }' control | cut -d '-' -f1 | sed s/~release//)
 
 echo "--------------------"
 echo "sha256sum: $hash"
