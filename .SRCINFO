@@ -1,7 +1,7 @@
 pkgbase = python-deepl
 	pkgdesc = Python library for the DeepL API
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deeplcom/deepl-python
 	arch = any
 	license = MIT
