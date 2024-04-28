@@ -1,7 +1,7 @@
 pkgbase = r-lemur
 	pkgdesc = Latent Embedding Multivariate Regression
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/lemur
 	arch = x86_64
 	license = MIT
@@ -35,6 +35,6 @@ pkgbase = r-lemur
 	optdepends = r-uwot
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/lemur_1.0.5.tar.gz
 	md5sums = d6ad01367e439d6e55960148c94f3a37
-	sha256sums = 404872c1445449b5bc268054627e456a1d074f3c05f3cacf78da2572ead1e980
+	b2sums = f2ac26199ade185a761ddd76b22cd843755d10dd177627244d34138557968537b77363d39e70e2d4f0e3affd25e93c490ae014f7b4f702fb537532de05ba93f3
 
 pkgname = r-lemur

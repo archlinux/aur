@@ -4,11 +4,11 @@ _pkgname=lemur
 _pkgver=1.0.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Latent Embedding Multivariate Regression"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   blas
   r-biocgenerics
@@ -47,11 +47,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d6ad01367e439d6e55960148c94f3a37')
-sha256sums=('404872c1445449b5bc268054627e456a1d074f3c05f3cacf78da2572ead1e980')
+b2sums=('f2ac26199ade185a761ddd76b22cd843755d10dd177627244d34138557968537b77363d39e70e2d4f0e3affd25e93c490ae014f7b4f702fb537532de05ba93f3')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
