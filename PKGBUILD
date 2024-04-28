@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver=2.00+r210.20231203.g548aaa4
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface to the efa.vrr.de departure monitor'
 url='http://finalrewind.org/projects/Travel-Status-DE-VRR/'
 license=('PerlArtistic')
@@ -19,6 +19,7 @@ depends=(
   'perl-xml-libxml'
 )
 makedepends=(
+  'curl>8.7.1' # Because of https://bugs.gentoo.org/930633 / https://github.com/curl/curl/issues/13474
   'git'
   'perl-module-build'
   'perl-file-slurp'

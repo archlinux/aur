@@ -1,11 +1,12 @@
 pkgbase = perl-travel-status-de-vrr-git
 	pkgdesc = Interface to the efa.vrr.de departure monitor
 	pkgver = 2.00+r210.20231203.g548aaa4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://finalrewind.org/projects/Travel-Status-DE-VRR/
 	arch = any
 	license = PerlArtistic
+	makedepends = curl>8.7.1
 	makedepends = git
 	makedepends = perl-module-build
 	makedepends = perl-file-slurp
