@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver="latest"
 epoch=1
 pkgver=5.05+r391.20240224.gcca75a4
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface to the DeutscheBahn online departure monitor'
 url='http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/'
 license=('PerlArtistic')
@@ -22,6 +22,7 @@ depends=(
   'perl-xml-libxml'
 )
 makedepends=(
+  'curl>8.7.1' # Because of https://bugs.gentoo.org/930633 / https://github.com/curl/curl/issues/13474
   'git'
   'perl-module-build'
   'perl-file-slurp'
