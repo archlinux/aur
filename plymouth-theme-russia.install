@@ -1,0 +1,41 @@
+# Set theme name
+
+name="russia"
+
+post_install() {
+    echo
+    echo "Установить тему $name для Plymouth"
+    echo
+
+    # Смена названия темы в plymouthd.conf
+    sed -i -e "s,.*Theme=.*,Theme=$name," /etc/plymouth/plymouthd.conf
+
+    plymouth-set-default-theme -R $name
+
+    echo
+    echo "Сделано"
+    echo
+}
+
+post_upgrade() {
+    grep "Theme=$name" /etc/plymouth/plymouthd.conf
+
+    if [ $? -eq 0 ] ; then
+        plymouth-set-default-theme -R $name
+    fi
+}
+
+pre_remove() {
+    grep "Theme=$name" /etc/plymouth/plymouthd.conf
+
+    if [ $? -eq 0 ] ; then
+        cat << _EOF 
+  
+==> WARNING: You have removed your current plymouth-theme.
+==> Set a different theme with:
+==> sudo plymouth-set-default-theme -R <theme-name>
+==> or remove Plymouth properly!
+
+_EOF
+  fi
+}
