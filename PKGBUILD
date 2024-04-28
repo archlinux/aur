@@ -4,11 +4,11 @@ _pkgname=HarmonizR
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Handles missing values and makes more data available"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-doparallel
   r-foreach
@@ -29,11 +29,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('6e81c009fe8678273d8091378ae2f8e3')
-sha256sums=('9226855ffafdcbdedb160b454e31faa2d368646d90b6c8975ae19ac973c44fbf')
+b2sums=('98165c2c75933c150ae2554a3d401f2a1da7ff56340b180cfdce4dd9d62f0d2109cdfa31c034970e7d6f21478a0a7557a4b4e4af16781d60802b25ca33ee8c20')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
