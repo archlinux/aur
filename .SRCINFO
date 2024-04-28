@@ -1,12 +1,12 @@
 pkgbase = ting-de
 	pkgdesc = Daily German Listening software from eusoft
-	pkgver = 9.6.0_105
+	pkgver = 9.7.4
 	pkgrel = 1
 	url = https://www.eudic.net/v4/de/app/ting
 	arch = x86_64
 	license = unknown
 	depends = electron11
-	source = ting-de-9.6.0_105.deb::https://static.frdic.com/pkg/ting_de/ting_de.deb
-	sha512sums = bb3dcbeee0c72ec1eb385d8b33261fe2d6e82d92b59b68661cd0c67c7ae3e2af848f4b06cdf635593411d514a488a3ee7c0b770509b9ab2fdf41329008673f2c
+	source = ting-de-9.7.4.deb::https://static.frdic.com/pkg/ting_de/ting_de.deb
+	sha512sums = 23f9297a0def2a98b4581daab348be767abff4d4835f5aa889165e1e65f422360cdaec1bdc326695762f98a67cc0a9c03d3c190fffbf1c3668f82ee0b7810fb4
 
 pkgname = ting-de

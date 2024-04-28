@@ -2,7 +2,7 @@
 
 _lang=de
 pkgname=ting-${_lang}
-pkgver=9.6.0_105
+pkgver=9.7.4
 pkgrel=1
 _llang=German
 pkgdesc="Daily ${_llang} Listening software from eusoft"
@@ -12,7 +12,7 @@ license=('unknown')
 _electron=electron11
 depends=("${_electron}")
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_${_lang}/ting_${_lang}.deb")
-sha512sums=('bb3dcbeee0c72ec1eb385d8b33261fe2d6e82d92b59b68661cd0c67c7ae3e2af848f4b06cdf635593411d514a488a3ee7c0b770509b9ab2fdf41329008673f2c')
+sha512sums=('23f9297a0def2a98b4581daab348be767abff4d4835f5aa889165e1e65f422360cdaec1bdc326695762f98a67cc0a9c03d3c190fffbf1c3668f82ee0b7810fb4')
 
 # sometime use curl to download source deb, throws 404 not found.
 # user other UA instead of origion one fixed it.
@@ -22,7 +22,7 @@ DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o
 prepare() {
     cd $srcdir
     mkdir -p build
-    tar -xvf data.tar.xz  -C build/
+    tar -xvf data.tar.xz -C build/
     cd build
     dir_name=$(ls opt/)
     mv opt/${dir_name}/resources/app.asar ${pkgname}.asar
@@ -33,14 +33,14 @@ package() {
 
     mv usr/ ${pkgdir}/usr
     mkdir -p ${pkgdir}/usr/share/eusoft/${pkgname}
-    mv  ${pkgname}.asar ${pkgdir}/usr/share/eusoft/${pkgname}/${pkgname}.asar
+    mv ${pkgname}.asar ${pkgdir}/usr/share/eusoft/${pkgname}/${pkgname}.asar
     sed -i "s|^Exec.*|Exec=${pkgname} %U|" ${pkgdir}/usr/share/applications/ting_${_lang}.desktop
 
     # link executable
     mkdir -p ${pkgdir}/usr/bin/
     echo """#!/usr/bin/bash
-${_electron} /usr/share/eusoft/${pkgname}/${pkgname}.asar --disable-gpu-sandbox "\$@"
-"""> ${pkgdir}/usr/bin/${pkgname}
+exec ${_electron} /usr/share/eusoft/${pkgname}/${pkgname}.asar --disable-gpu-sandbox "\$@"
+""" >${pkgdir}/usr/bin/${pkgname}
     chmod a+x ${pkgdir}/usr/bin/${pkgname}
 
 }
