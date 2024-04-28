@@ -30,7 +30,7 @@ build() {
     --single-instance \
     --electron-version 30.0.1 \
     --honest \
-    --internal-urls "(.*?(contacts|accounts|consent|one|myactivity)\.google\.com.*?)" \
+    --internal-urls "(.*?(contacts|accounts|consent|one|support|myactivity)\.google\.com.*?)" \
     --strict-internal-urls \
     "${url}"
 
