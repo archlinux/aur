@@ -1,7 +1,7 @@
 pkgbase = atoms
 	pkgdesc = Easily manage Linux Chroot(s) and Containers
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AtomsDevs/Atoms
 	arch = any
 	license = GPL-3.0-or-later
@@ -26,11 +26,11 @@ pkgbase = atoms
 	depends = python-uproot
 	depends = python-urllib3
 	depends = vte4
-	source = git+https://github.com/AtomsDevs/Atoms.git#commit=1fea993d2bc28623479ee46f95e2138ef889b536
+	source = git+https://github.com/AtomsDevs/Atoms.git#tag=1.1.2
 	source = git+https://github.com/AtomsDevs/atoms-cli.git
 	source = git+https://github.com/AtomsDevs/atoms-core.git
 	source = git+https://github.com/AtomsDevs/servicectl.git
-	sha256sums = SKIP
+	sha256sums = 7316b33f4f354d95670cccce544fa03992fceb751890deb8cc83e641b7783ac0
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

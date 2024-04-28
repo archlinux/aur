@@ -1,33 +1,50 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=('atoms' 'atoms-cli' 'atoms-core' 'servicectl-atoms')
+pkgname=(
+  'atoms'
+  'atoms-cli'
+  'atoms-core'
+  'servicectl-atoms'
+)
 pkgbase=atoms
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily manage Linux Chroot(s) and Containers"
 arch=('any')
 url="https://github.com/AtomsDevs/Atoms"
 license=('GPL-3.0-or-later')
-depends=('adobe-source-code-pro-fonts' 'libadwaita' 'podman' 'proot-termux'
-         'python-certifi' 'python-chardet' 'python-gobject' 'python-idna'
-         'python-orjson' 'python-requests' 'python-tabulate' 'python-uproot'
-         'python-urllib3' 'vte4')
-makedepends=('git' 'meson' 'python-build' 'python-installer' 'python-setuptools'
-             'python-wheel')
+depends=(
+  'adobe-source-code-pro-fonts'
+  'libadwaita'
+  'podman'
+  'proot-termux'
+  'python-certifi'
+  'python-chardet'
+  'python-gobject'
+  'python-idna'
+  'python-orjson'
+  'python-requests'
+  'python-tabulate'
+  'python-uproot'
+  'python-urllib3'
+  'vte4'
+)
+makedepends=(
+  'git'
+  'meson'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 checkdepends=('appstream-glib')
-_commit=1fea993d2bc28623479ee46f95e2138ef889b536  # tags/1.1.2^0
-source=("git+https://github.com/AtomsDevs/Atoms.git#commit=${_commit}"
+source=("git+https://github.com/AtomsDevs/Atoms.git#tag=$pkgver"
         'git+https://github.com/AtomsDevs/atoms-cli.git'
         'git+https://github.com/AtomsDevs/atoms-core.git'
         'git+https://github.com/AtomsDevs/servicectl.git')
-sha256sums=('SKIP'
+sha256sums=('7316b33f4f354d95670cccce544fa03992fceb751890deb8cc83e641b7783ac0'
             'SKIP'
             'SKIP'
             'SKIP')
-
-pkgver() {
-  cd "$srcdir/Atoms"
-  git describe --tags | sed 's/-/+/g'
-}
 
 prepare() {
   cd "$srcdir/Atoms"
@@ -42,11 +59,13 @@ build() {
   arch-meson Atoms build
   meson compile -C build
 
-  cd "$srcdir/Atoms/$pkgbase-cli"
+  pushd "Atoms/$pkgbase-cli"
   python -m build --wheel --no-isolation
+  popd
 
-  cd "$srcdir/Atoms/$pkgbase-core"
+  pushd "Atoms/$pkgbase-core"
   python -m build --wheel --no-isolation
+  popd
 }
 
 check() {
@@ -54,10 +73,23 @@ check() {
 }
 
 package_atoms() {
-  depends=('atoms-cli' 'libadwaita' 'podman' 'proot-termux' 'python-certifi'
-           'python-chardet' 'python-gobject' 'python-idna' 'python-uproot'
-           'python-urllib3' 'servicectl-atoms' 'vte4')
-  optdepends=('distrobox: List and handle Distrobox containers as atoms')
+  depends=(
+    'atoms-cli'
+    'libadwaita'
+    'podman'
+    'proot-termux'
+    'python-certifi'
+    'python-chardet'
+    'python-gobject'
+    'python-idna'
+    'python-uproot'
+    'python-urllib3'
+    'servicectl-atoms'
+    'vte4'
+  )
+  optdepends=(
+    'distrobox: List and handle Distrobox containers as atoms'
+  )
 
   meson install -C build --destdir "$pkgdir"
 }
@@ -65,7 +97,10 @@ package_atoms() {
 package_atoms-cli() {
   pkgdesc="Allows you to create and manage your atoms via the command line."
   url="https://github.com/AtomsDevs/atoms-cli"
-  depends=('atoms-core' 'python-tabulate')
+  depends=(
+    'atoms-core'
+    'python-tabulate'
+  )
 
   cd "$srcdir/Atoms/$pkgbase-cli"
   python -m installer --destdir="$pkgdir" dist/*.whl
@@ -74,9 +109,12 @@ package_atoms-cli() {
 package_atoms-core() {
   pkgdesc="Allows you to create and manage your own chroots and podman containers."
   url="https://github.com/AtomsDevs/atoms-core"
-  depends=('python-orjson' 'python-requests')
+  depends=(
+    'python-orjson'
+    'python-requests'
+  )
 
-  cd "$srcdir/Atoms/$pkgbase-core"
+  cd "Atoms/$pkgbase-core"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
@@ -84,17 +122,19 @@ package_servicectl-atoms() {
   pkgdesc="Control services (daemons) for systemd in chroot environment (POSIX compliant fork)"
   url="https://github.com/AtomsDevs/servicectl"
   license=('MIT')
-  depends=('systemd')
+  depends=(
+    'systemd'
+  )
   provides=('servicectl')
   conflicts=('servicectl')
 
-  cd "$srcdir/Atoms/servicectl"
+  cd Atoms/servicectl
   install -d "$pkgdir/usr/lib/servicectl/enabled"
   install -m755 servicectl -t "$pkgdir/usr/lib/servicectl/"
   install -m755 serviced -t "$pkgdir/usr/lib/servicectl/"
   install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   install -d "$pkgdir/usr/bin"
-  ln -s "/usr/lib/servicectl/servicectl" "${pkgdir}/usr/bin/"
-  ln -s "/usr/lib/servicectl/serviced" "${pkgdir}/usr/bin/"
+  ln -s "/usr/lib/servicectl/servicectl" "$pkgdir/usr/bin/"
+  ln -s "/usr/lib/servicectl/serviced" "$pkgdir/usr/bin/"
 }
