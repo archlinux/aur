@@ -4,11 +4,11 @@ _pkgname=SGCP
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="A semi-supervised pipeline for gene clustering using self-training approach in gene co-expression networks"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-annotate
   r-caret
