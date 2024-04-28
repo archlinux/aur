@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dockit-bin
 _pkgname=DocKit
-pkgver=0.2.7
+pkgver=0.2.8
 _electronversion=28
 pkgrel=1
 pkgdesc="GUI clients for elasticsearch, opensearch and etc"
@@ -23,8 +23,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('fc683abca1fb4d55006697ff04e62d60b8f7ac695e472689fc383570e1226152')
-sha256sums_x86_64=('974e753720084b79394131989eb0da5fd412f1273bb6331136550e714ef459bc')
+sha256sums_aarch64=('d189b9f34e2b20931283864d4f72fccc55a7eae0fb465dc613d483d37f8b770c')
+sha256sums_x86_64=('5ac12cbcf625655c16f797bf6084a246407bda8d8ae018437639bb90e20bcf9e')
 build() { 
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
