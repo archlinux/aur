@@ -1,7 +1,7 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=aurutilsutils-git
 pkgver=r23.96dae82
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities extending aurutils"
 arch=("any")
 url="https://github.com/VorpalBlade/aurutilsutils"
