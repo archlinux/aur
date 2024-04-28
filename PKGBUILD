@@ -3,13 +3,13 @@
 _pkgname=csv-diff
 pkgname=python-${_pkgname}
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Tool for viewing the difference between two CSV, TSV or JSON files.'
 arch=('any')
 url=''https://pypi.org/project/csv-diff/
 license=('Apache')
 depends=('python' 'python-dictdiffer' 'python-click')
-makedepends=('python-setuptools' 'python-pip')
+makedepends=('python-setuptools' 'python-pip' 'python-pytest-runner')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/simonw/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         "setup-exclude-tests.patch")
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py build
+    python -m build -wn
 }
 
 check() {
@@ -33,7 +33,7 @@ check() {
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --optimize=1 --prefix=/usr --root="$pkgdir" --skip-build
+    python -m installer -d "${pkgdir}" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
