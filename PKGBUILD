@@ -4,11 +4,11 @@ _pkgname=orthosData
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Data for the orthos package"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-annotationhub
   r-biocfilecache
@@ -26,11 +26,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('7970587455fa5197daf1f6b640b7f688')
-sha256sums=('631be84ad27eea65697c93a491fa96afcde226e05876cb9d644940d5dd9e3b59')
+b2sums=('310e2e672d3c91682df9e6284550107e1581e9096eda4687eda6679209e7675cc5e6c8fa95164d2fa527fb783b6120e34723157346767d1795fbf3a8409e6266')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
