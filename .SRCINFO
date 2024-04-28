@@ -1,7 +1,7 @@
 pkgbase = python-whenever-git
 	pkgdesc = Foolproof datetimes for maintainable Python code (built from latest commit)
 	pkgver = 0.5.1.r20.g6c2a928
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ariebovenberg/whenever
 	arch = any
 	license = MIT
