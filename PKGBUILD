@@ -53,6 +53,7 @@ depends=(adacurses
          libgpr
          libvss
          markdown
+         parse_args
          polyorb
          sdlada
 #         spark2014

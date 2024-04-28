@@ -50,6 +50,7 @@ pkgbase = all-ada
 	depends = libgpr
 	depends = libvss
 	depends = markdown
+	depends = parse_args
 	depends = polyorb
 	depends = sdlada
 	depends = templates_parser
