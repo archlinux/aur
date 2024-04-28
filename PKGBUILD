@@ -1,8 +1,8 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=microsoft-teams-nativefier
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=3
 pkgdesc="Microsoft Teams desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://teams.microsoft.com"
@@ -52,4 +52,4 @@ package() {
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
 sha256sums=('cfdf1ca7f6cc9a15e6d815fa31463c3e2a40b0bf3e25de3377a8bf6b8ef4e926'
-            'c4133e947cc27bc3bae05ec388415d5928e0bd6894cf20ced043f6c1e7f0676f')
+            '4a43356529cdd6293a9f04e31fecdf0604e36f5c80650fa7df5b0984de7ad455')
