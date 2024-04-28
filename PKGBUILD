@@ -3,7 +3,7 @@
 _gitname="nmap"
 _pkgname="zenmap"
 pkgname="$_pkgname-git"
-pkgver=7.94.r89.g8d0a4d9b
+pkgver=7.94.r145.gbf2acde2
 pkgrel=1
 pkgdesc="Graphical Nmap frontend and results viewer"
 url='https://github.com/nmap/nmap'
@@ -18,7 +18,9 @@ depends=(
 )
 makedepends=(
   'git'
-  'python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-wheel'
 )
 optdepends=(
   'gksu: start zenmap as root'
@@ -28,12 +30,8 @@ provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_gitname"
-source=("$_pkgsrc"::"git+$url")
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
-
-prepare() {
-  sed '204,205d' -i "$_pkgsrc/zenmap/setup.py"
-}
 
 pkgver() {
   cd "$_pkgsrc"
@@ -60,15 +58,19 @@ pkgver() {
   echo "$_version.r$_revision.g$_hash"
 }
 
+build() {
+  cd "$_pkgsrc/zenmap"
+  python -m build --no-isolation --wheel
+}
+
 package() {
   cd "$_pkgsrc"
   install -Dm644 "docs/zenmap.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm755 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   cd zenmap
-  python3 setup.py install --prefix "/usr" --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" "$(ls -1 dist/*.whl | sort -rV | head -1)"
 
-  rm "$pkgdir/usr/bin/uninstall_zenmap"
   ln -s zenmap "$pkgdir/usr/bin/nmapfe"
   ln -s zenmap "$pkgdir/usr/bin/xnmap"
 }
