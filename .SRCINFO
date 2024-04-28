@@ -1,10 +1,10 @@
 pkgbase = python-orderedset
 	pkgdesc = An ordered set implementation in cython
 	pkgver = 2.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/simonpercivall/orderedset
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = cython
 	makedepends = python-build
 	makedepends = python-installer

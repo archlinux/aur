@@ -4,11 +4,11 @@
 _pyname=orderedset
 pkgname=python-$_pyname
 pkgver=2.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='An ordered set implementation in cython'
 arch=(x86_64)
 url=https://github.com/simonpercivall/$_pyname
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(python)
 makedepends=(cython
              python-{build,installer,wheel}
