@@ -1,11 +1,10 @@
 pkgbase = r-ebimage
 	pkgdesc = Image processing and analysis toolbox for R
 	pkgver = 4.44.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/EBImage
 	arch = x86_64
-	license = LGPL
-	depends = r
+	license = LGPL-2.0-or-later
 	depends = r-abind
 	depends = r-biocgenerics
 	depends = r-fftwtools
@@ -22,6 +21,10 @@ pkgbase = r-ebimage
 	optdepends = r-rmarkdown
 	optdepends = r-shiny
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/EBImage_4.44.0.tar.gz
-	sha256sums = 1ebeda2a0a718a8655613e672b6cbaa5592d0cf0dad0b1fa2094964d2c2bb149
+	source = EBImage-fix-format.patch::https://github.com/aoles/EBImage/commit/a182d2ee0add16fa21f3896bb478224fccf67807.patch
+	md5sums = 22e920a81ab633cdbf753daf3e128d64
+	md5sums = af3c5dd9fe55109871ad2756f1217489
+	b2sums = 40425f7295016c20dd24499826446ec514d05d9be3cb29efed2eba4a8eaa06cc2d05f47e2af519e457970dda0f4727e9590b5e38185c186025ff64ecd9adaf15
+	b2sums = 78ff1a485a38457b3e2d5eef8bf89414bb4b0e3971623f34a40077ecfa2c9d621e039843cb4c61ece29c5d38a3126c3d85abff55e275b4fc1a7ef775e4de6c16
 
 pkgname = r-ebimage
