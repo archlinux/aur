@@ -4,11 +4,11 @@
 pkgname=python-isbntools
 _pyname="${pkgname#python-}"
 pkgver=4.3.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract, clean, transform, hyphenate and metadata for ISBNs"
 arch=(any)
 url="https://pypi.python.org/pypi/$_pyname"
-license=(LGPL3)
+license=(LGPL-3.0-only)
 depends=(python
          python-isbnlib)
 makedepends=(python-{build,installer,wheel}
