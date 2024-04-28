@@ -5,8 +5,8 @@ pkgname='python-urllib3-future-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
-pkgver=2.7.904.r2.g95ff9a09
-pkgrel=2
+pkgver=2.7.905.r0.gfdfc7024
+pkgrel=1
 pkgdesc='Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (built from latest commit)'
 arch=('any')
 url="https://github.com/jawah/urllib3.future"
@@ -22,10 +22,9 @@ depends=(
   'python'
   'python-brotli'
   'python-brotlicffi'
-  #'python-cryptography'
   'python-h11'
-  'python-h2'
   'python-idna'
+  'python-jh2>=5'
   'python-python-socks'
   'python-qh3>=1.0.0'
   'python-typing_extensions'
