@@ -3,22 +3,22 @@
 # Original authors: Sven-Hendrik Haase <sh@lutzhaase.com>, Markus Martin <markus@archwyrm.net>
 
 pkgname=yaml-cpp-git
-pkgver=r937.f732014
+pkgver=0.8.0.r30.g76dc671
 pkgrel=1
 pkgdesc="YAML parser and emitter in C++, written around the YAML 1.2 spec"
 url="https://github.com/jbeder/yaml-cpp"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc')
 conflicts=('yaml-cpp')
-provides=('yaml-cpp')
+provides=('libyaml-cpp.so')
 makedepends=('boost' 'cmake' 'git')
 source=(${pkgname}::git+https://github.com/jbeder/yaml-cpp.git)
 md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
