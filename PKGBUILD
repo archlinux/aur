@@ -29,7 +29,25 @@ depends=(
     'python-museval'
     'python-norbert'
     'python-setuptools' # for distutils-precedence
-    'python-tensorflow'
+
+    # In April 2024, the `tensorflow` package on Arch Linux was updated
+    # to v2.16, which no longer supports the Estimator API.
+    # This means that the spleeter package no longer works.
+    # Additionally, the upstream project seems to have pivoted to focus
+    # their development efforts on Spleeter Pro [1], leaving Spleeter’s
+    # community edition essentially unmaintained.
+    #
+    # Given upstream project’s track record of ignoring community
+    # contributions including critical bug fixes, I feel that
+    # contributing a fix to migrate away from Estimator would be
+    # a waste of everyone’s time.
+    #
+    # Instead, I recommend everyone to migrate away from Spleeter
+    # altogether and to look for alternatives instead.
+    #
+    # [1]: https://github.com/deezer/spleeter/commit/13c771b8e1c2f0c3ea3001821dd70bcf445797d0
+    'python-tensorflow<2.16'
+
     'python-typer'
 )
 checkdepends=('python-py' 'python-pytest' 'python-pytest-forked')
