@@ -1,10 +1,11 @@
 pkgbase = sip4
 	pkgver = 4.19.25
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.riverbankcomputing.com/software/sip/intro
 	arch = x86_64
 	license = custom:"sip"
 	makedepends = python
+	makedepends = python-setuptools
 	source = https://www.riverbankcomputing.com/static/Downloads/sip/4.19.25/sip-4.19.25.tar.gz
 	source = python3-11.patch
 	sha256sums = b39d93e937647807bac23579edbff25fe46d16213f708370072574ab1f1b4211
