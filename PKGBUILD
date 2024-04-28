@@ -1,6 +1,6 @@
 # Maintainer: Martin Rys <rys.rs/contact>
 pkgname=aax-bruteforce
-pkgver=1.0
+pkgver=1.0.1
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc='Bruteforce decrypt key for AAX files.'
@@ -14,17 +14,9 @@ replaces=()
 backup=()
 options=()
 install=
-source=(
-	"${pkgname}-${pkgver}.tar.gz::https://github.com/MaxMatti/${pkgname}/archive/refs/tags/${_pkgver}.tar.gz"
-	"${pkgname}-${pkgver}-1.patch::https://github.com/MaxMatti/aax-bruteforce/pull/1.patch")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MaxMatti/${pkgname}/archive/refs/tags/${_pkgver}.tar.gz")
 noextract=()
-sha256sums=('38cf551c060549932129ecf2878b9565273cea71c9145a6b9e19fe8488a3f47e'
-            '23dc1f9e499105d5de93cdbace5f43f2fc060f10ea716a6e581eee2bc28e62a0')
-
-prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	patch -p1 < "${srcdir}/${pkgname}-${pkgver}-1.patch" || true # README.md rejects
-}
+sha256sums=('bb346d436e3737f9cbf6a2e145b9b6e7d7ac2f367c9e18ca1b4fc362d3e50513')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
