@@ -5,7 +5,7 @@
 pkgname=gauche-c-wrapper
 _pkgname=${pkgname#gauche-}
 pkgver=0.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Gauche foreign function interface for C and Objective-C libraries.'
 url='http://www.koguro.net/prog/c-wrapper/'
 arch=('x86_64')
@@ -59,6 +59,8 @@ prepare() {
 }
 
 build() {
+    export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+    export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
     cd "${_pkgname}-${pkgver}"
     ./configure --prefix=/usr
     make

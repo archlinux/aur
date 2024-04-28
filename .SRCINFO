@@ -1,7 +1,7 @@
 pkgbase = gauche-c-wrapper
 	pkgdesc = Gauche foreign function interface for C and Objective-C libraries.
 	pkgver = 0.6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.koguro.net/prog/c-wrapper/
 	arch = x86_64
 	license = MIT
