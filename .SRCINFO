@@ -1,17 +1,23 @@
 pkgbase = python-supergenpass-git
 	pkgdesc = SuperGenPass Python module and GTK interface
-	pkgver = 20130209.gfc9e077
-	pkgrel = 3
+	pkgver = r13.fc9e077
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/vianney/python-supergenpass
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	optdepends = gtk3: for GTK interface
 	optdepends = python-gobject: for GTK interface
 	optdepends = python-cairo: for GTK interface
-	source = git://github.com/vianney/python-supergenpass.git
-	md5sums = SKIP
+	source = git+https://github.com/vianney/python-supergenpass.git
+	source = 0001-Force-gtk-version-before-import.patch
+	sha256sums = SKIP
+	sha256sums = 8bea90e25aa5116cb0e385272daca3ae7be6c745c72e1dc54aa5481f5d9b8304
 
 pkgname = python-supergenpass-git
-

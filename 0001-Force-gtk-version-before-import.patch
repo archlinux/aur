@@ -1,0 +1,27 @@
+From d16fc1c7f2e084e6e39608a1a5299cc5191db78a Mon Sep 17 00:00:00 2001
+From: a821 <a821@null>
+Date: Wed, 13 Mar 2024 10:20:14 +0100
+Subject: [PATCH] Force gtk version before import
+
+---
+ supergenpass/gtkui.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/supergenpass/gtkui.py b/supergenpass/gtkui.py
+index 5f816ed..7933e7f 100644
+--- a/supergenpass/gtkui.py
++++ b/supergenpass/gtkui.py
+@@ -17,6 +17,10 @@
+ import math
+ import os.path
+ import hashlib
++
++import gi
++gi.require_version('Gtk', '3.0')
++
+ from gi.repository import Gtk, Gdk, GLib
+ from . import *
+ 
+-- 
+2.44.0
+

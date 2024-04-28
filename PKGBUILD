@@ -1,30 +1,40 @@
-# Maintainer: Vianney le Clément <vleclement AT gmail · com>
-_pkgname=python-supergenpass
-pkgname=$_pkgname-git
-pkgver=20130209.gfc9e077
-pkgrel=3
+# Contributor: Vianney le Clément <vleclement AT gmail · com>
+
+pkgname=python-supergenpass-git
+pkgver=r13.fc9e077
+pkgrel=1
+epoch=1
 pkgdesc="SuperGenPass Python module and GTK interface"
 arch=(any)
 url="https://github.com/vianney/python-supergenpass"
 license=('GPL3')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('gtk3: for GTK interface'
             'python-gobject: for GTK interface'
             'python-cairo: for GTK interface')
-source=("git://github.com/vianney/$_pkgname.git")
-md5sums=('SKIP')
+source=("git+${url}.git"
+        "0001-Force-gtk-version-before-import.patch")
+sha256sums=('SKIP'
+            '8bea90e25aa5116cb0e385272daca3ae7be6c745c72e1dc54aa5481f5d9b8304')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  _date=$(git show -s --format='%ci' | cut -d' ' -f1 | sed 's/-//g')
-  _hash=$(git show -s --format='%h')
-  echo "$_date.g$_hash"
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  patch -d "${pkgname%-git}" -p1 < 0001-Force-gtk-version-before-import.patch
+}
+
+build() {
+  cd "${pkgname%-git}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${pkgname%-git}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 }
 
