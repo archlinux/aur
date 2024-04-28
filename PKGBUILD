@@ -3,7 +3,7 @@
 pkgname=zapzap
 _pkgname=com.rtosta.zapzap
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='WhatsApp desktop application written in Pyqt6 + PyQt6-WebEngine'
 arch=(x86_64)
 url="https://github.com/$pkgname-linux/$pkgname" 
