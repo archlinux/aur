@@ -5,11 +5,11 @@ _pkgname=SOMNiBUS
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Smooth modeling of bisulfite sequencing"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-annotatr
   r-biocmanager
@@ -41,11 +41,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0865c015122f915127302bf751a10812')
-sha256sums=('4f464b57f1b26664210e3b43072969ec4eb77f6f1c7b0b15149692994318ba89')
+b2sums=('dbeadc92aeff12db9f62fb0a9d9159c654f659026b98e7e5be699d696de80eb7a726509040421012ea42d0a28ca9928e6320e2a1128f77281cd2b075a5e53a5c')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
