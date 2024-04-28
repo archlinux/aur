@@ -1,7 +1,7 @@
 pkgbase = python-niquests-git
 	pkgdesc = Simple, yet elegant, Python HTTP library: a drop-in replacement for python-requests (built from latest commit)
 	pkgver = 3.6.1.r3.g66f5ceab
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jawah/niquests
 	arch = any
 	license = Apache-2.0
