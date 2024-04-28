@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 pkgname=ferretdb
 pkgver=1.21.0
-pkgrel=3
+pkgrel=4
 pkgdesc="FerretDB is a proxy that converts MongoDB queries to SQL and uses PostgreSQL as the database engine."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://www.ferretdb.com/"
@@ -29,8 +29,7 @@ export GIT_CONFIG_GLOBAL=/dev/null
 prepare() {
 	cd "$srcdir/$pkgname"
 	echo 'archlinux' > build/version/package.txt
-	env -C tools go generate -x
-	./bin/task gen
+	echo "v$pkgver" > build/version/version.txt
 }
 
 build() {
