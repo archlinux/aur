@@ -3,7 +3,7 @@
 pkgname=python-biliass
 _pypiname=biliass
 pkgver=1.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc='将 B 站 XML/protobuf 弹幕转换为 ASS 弹幕'
 arch=('any')
 url='https://github.com/yutto-dev/biliass'
