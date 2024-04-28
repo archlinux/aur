@@ -4,11 +4,11 @@ _pkgname=TOP
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="TOP Constructs Transferable Model Across Gene Expression Platforms"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-assertthat
   r-caret
@@ -50,11 +50,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('af6712369d58630bdcc2b05d7dc06b52')
-sha256sums=('f0733004b9f9dedff886394a5767da9a78c07f6f88abc6e1f7ac2a87b5ecdb36')
+b2sums=('1504b65c16e25b50d4bacea22c59b13be1099978e85fcce63044dbdf45395db0584625d28d1854475953e87312d56f185c9222e9f706793710b6ed135ced4e01')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {

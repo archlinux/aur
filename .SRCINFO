@@ -1,10 +1,10 @@
 pkgbase = r-top
 	pkgdesc = TOP Constructs Transferable Model Across Gene Expression Platforms
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/TOP
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r-assertthat
 	depends = r-caret
 	depends = r-classifyr
@@ -42,6 +42,6 @@ pkgbase = r-top
 	optdepends = r-tidyverse
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/TOP_1.2.0.tar.gz
 	md5sums = af6712369d58630bdcc2b05d7dc06b52
-	sha256sums = f0733004b9f9dedff886394a5767da9a78c07f6f88abc6e1f7ac2a87b5ecdb36
+	b2sums = 1504b65c16e25b50d4bacea22c59b13be1099978e85fcce63044dbdf45395db0584625d28d1854475953e87312d56f185c9222e9f706793710b6ed135ced4e01
 
 pkgname = r-top
