@@ -1,7 +1,7 @@
 pkgbase = sdlada
 	pkgdesc = An Ada binding to SDL
-	pkgver = 2.5.6
-	pkgrel = 2
+	pkgver = 2.5.20
+	pkgrel = 1
 	url = https://github.com/Lucretia/sdlada/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sdlada
 	depends = gcc-ada
 	depends = sdl2_ttf
 	depends = sdl2_image
-	source = https://github.com/Lucretia/sdlada/archive/v2.5.6.tar.gz
-	sha256sums = 15431f8475d1957f8a60e790c46051e95189b1fd99798724d2f659d6827ba8eb
+	source = https://github.com/ada-game-framework/sdlada/archive/refs/tags/v2.5.20.tar.gz
+	sha256sums = 7cdf93318bc12df6e02a06e20e52c5efea31a86708e04317c27275ff7118e805
 
 pkgname = sdlada

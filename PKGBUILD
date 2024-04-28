@@ -1,8 +1,8 @@
 # Maintainer: Rod Kay <rodakay5 at gnmail.com>
 
 pkgname=sdlada
-pkgver=2.5.6
-pkgrel=2
+pkgver=2.5.20
+pkgrel=1
 pkgdesc="An Ada binding to SDL"
 
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('zlib')
 
 depends=("gcc-ada" "sdl2_ttf" "sdl2_image")
 
-source=(https://github.com/Lucretia/sdlada/archive/v$pkgver.tar.gz)
-sha256sums=('15431f8475d1957f8a60e790c46051e95189b1fd99798724d2f659d6827ba8eb')
+source=(https://github.com/ada-game-framework/sdlada/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('7cdf93318bc12df6e02a06e20e52c5efea31a86708e04317c27275ff7118e805')
 
 
 build()
