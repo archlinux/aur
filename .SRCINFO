@@ -5,7 +5,7 @@ pkgbase = gnome-shell-extension-tiling-assistant
 	url = https://github.com/Leleat/Tiling-Assistant
 	install = tiling-assistant.install
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = gnome-shell
 	source = git+https://github.com/Leleat/Tiling-Assistant.git#tag=v47
