@@ -1,10 +1,10 @@
 pkgbase = r-dalex
 	pkgdesc = moDel Agnostic Language for Exploration and eXplanation
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=DALEX
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	checkdepends = r-caret
 	checkdepends = r-gower
 	checkdepends = r-kernlab
