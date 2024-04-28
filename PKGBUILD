@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://codeberg.org/kachelaqa/$pkgname"
 license=('GPL2')
 depends=('pacman>=4.1' 'pacman<6.2' 'python>=3.2' 'python<3.13' 'python-pyqt5')
+makedepends=('python-setuptools')
 install="$pkgname.install"
 source=("https://codeberg.org/kachelaqa/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('122c2dcecf5492723bb64b5f13233d50')
