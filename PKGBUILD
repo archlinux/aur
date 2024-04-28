@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=6.0.110
+pkgver=6.0.120
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     avoid-change-default-texthtml-mime-type.patch
     start-hidden-in-tray.patch
     quit.patch)
-sha256sums=('dfd1e8dc023cc3e9666744ba9e5a2aa67b98a86bfc22a4f4f840b1af5c22241b'
+sha256sums=('55540dce907df225c4b0a67fadb1a92939e7e6781a45db58ca3ef0b289d3e1fa'
             'c16cf96707c6c047e5f2ec336ce3c639ecf2fc207ff9db365b17363d13380d2c'
             'b464dbfc0d426730259ce2abc660960ecc6a73bbef838b8fbbd15deb2f5dce53'
             'ec87bbcc5a615c61c78bf117889d5b697a2174150722b1318205ad1c903286f2'
