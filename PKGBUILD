@@ -3,11 +3,11 @@
 pkgname=python-pyffmpeg
 _pyname=${pkgname#python-}
 pkgver=2.4.2.19
-pkgrel=1
+pkgrel=2
 pkgdesc='FFmpeg wrapper for Python'
 arch=(any)
 url="https://github.com/deuteronomy-works/$_pyname"
-license=(Apache)
+license=(Apache-2.0)
 depends=(ffmpeg
          python)
 makedepends=(python-{build,installer,wheel}
