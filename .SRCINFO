@@ -1,10 +1,11 @@
 pkgbase = android-x86-64-libiec61883
 	pkgdesc = A higher level API for streaming DV, MPEG-2 and audio over Linux IEEE 1394 (Android x86-64)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/pub/linux/libs/ieee1394/
 	arch = any
 	license = LGPL
+	makedepends = android-configure
 	depends = android-x86-64-libraw1394
 	options = !strip
 	options = !buildflags
