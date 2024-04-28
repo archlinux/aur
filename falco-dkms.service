@@ -1,0 +1,25 @@
+[Unit]
+Description=Falco: Cloud Native Runtime Security with kmod
+Documentation=https://falco.org/docs/
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/falco -o engine.kind=kmod
+ExecReload=kill -1 $MAINPID
+UMask=0077
+TimeoutSec=30
+RestartSec=15s
+Restart=on-failure
+PrivateTmp=true
+NoNewPrivileges=yes
+ProtectHome=read-only
+ProtectSystem=full
+ProtectKernelTunables=true
+ReadWriteDirectories=/sys/module/falco
+RestrictRealtime=true
+RestrictAddressFamilies=~AF_PACKET
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target

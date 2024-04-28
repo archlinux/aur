@@ -1,0 +1,4 @@
+post_install() {
+    printf "#\nTo start using falco start/enable falco-dkms.service\n"
+    printf "For custom falco rules put them in /etc/falco/rules.d\n#\n"
+}
