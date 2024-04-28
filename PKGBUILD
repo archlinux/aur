@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=google-gemini-nativefier
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Google Gemini desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -18,8 +18,6 @@ source=(
 build() {
   cd "${srcdir}"
 
-  # If you have problems, remove options: --internal-urls and --strict-internal-urls
-
   nativefier \
     --name "Gemini" \
     --icon "${pkgname}.png" \
@@ -30,8 +28,6 @@ build() {
     --single-instance \
     --electron-version 30.0.1 \
     --honest \
-    --internal-urls "(.*?(gemini|accounts|consent|one|support|myactivity|myaacount)\.google\.com.*?)" \
-    --strict-internal-urls \
     "${url}"
 
     # --tray \
