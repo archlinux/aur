@@ -1,10 +1,10 @@
 pkgbase = r-tadar
 	pkgdesc = Transcriptome Analysis of Differential Allelic Representation
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/tadar
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	depends = r-biocgenerics
 	depends = r-genomeinfodb
@@ -26,6 +26,6 @@ pkgbase = r-tadar
 	optdepends = r-tidyverse
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/tadar_1.0.0.tar.gz
 	md5sums = 88c91583a351bef3f3d8ca38b51c0c04
-	sha256sums = e5ca296ed8db6cae9aa93322f2b3f77fac41c0caa56ec90efe540011077f69ec
+	b2sums = 049c9b1320143a39f433f3ff662d371c1103558f781ee85b0d31466443e755489b0d705f562615fa9f6c65d02293b89436bca31e9877d9e713256d6c3542a20b
 
 pkgname = r-tadar
