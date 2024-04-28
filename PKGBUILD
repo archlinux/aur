@@ -98,6 +98,17 @@ build() {
     fi
   fi
 
+  # By default Blender 2.79b uses the gold linker which doesn't support
+  # the `pack-relative-relocs` option used by Arch as default in
+  # `/etc/makepkg.conf`. Below are the default `LDFLAGS` from
+  # current `/etc/makepkg.conf` without the `pack-relative-relocs`
+  # option.
+  # See: https://gitlab.archlinux.org/heftig/rfcs/-/commit/36bb0b8d5a6dd8b582ea1b992f32bed0a3fa8f28
+  #
+  # Another option would be to disable the `gold` linker by setting
+  # `WITH_LINKER_GOLD=NO`, then the `BFD` linker will be used instead.
+  export LDFLAGS="-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now"
+
   ((DISABLE_NINJA)) && generator="Unix Makefiles" || generator="Ninja"
   cmake -G "$generator" -S "$srcdir/blender-2.79b" -B "$srcdir/build" \
         -C "${srcdir}/blender-2.79b/build_files/cmake/config/blender_release.cmake" \
@@ -119,7 +130,7 @@ build() {
         -DWITH_GAMEENGINE=ON \
         -DWITH_PLAYER=ON \
         -DWITH_PYTHON_MODULE=OFF \
-        -DWITH_CYCLES_OSL=NO
+        -DWITH_CYCLES_OSL=NO \
         "${_CMAKE_FLAGS[@]}"
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
 # shellcheck disable=SC2086 # allow MAKEFLAGS to split when multiple flags provided.
