@@ -1,6 +1,6 @@
 pkgbase = python-pip-audit-git
 	pkgdesc = A tool for scanning Python environments for known vulnerabilities
-	pkgver = r590.3f52615
+	pkgver = r596.e56d124
 	pkgrel = 1
 	url = https://github.com/pypa/pip-audit
 	arch = any
