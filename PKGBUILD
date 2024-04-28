@@ -2,10 +2,10 @@
 
 _githubuser=matmoul
 _githubrepo=dokytree
-_pkgtagname=v0.0.1
+_pkgtagname=v0.0.4
 
 pkgname=dokytree
-pkgver=0.0.1
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='A versatil documentation system based on yaml files in directory tree with pugjs templates '
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 	'wget: To export doc as static pages'
 )
 source=("${_githubrepo}::https://github.com/${_githubuser}/${_githubrepo}/archive/refs/tags/${_pkgtagname}.tar.gz")
-sha256sums=('56e34c4c4ca6966ab32bed6e8d0d41bff76b93290af28b5e3436c0c06a84e38c')
+sha256sums=('876b8cc47f2369a2b3e6f49ba65b0a65e5864631c4a89f24f7e6fd7968df7458')
 
 prepare() {
 	ls
