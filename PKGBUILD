@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=microsoft-teams-nativefier
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=3
 pkgdesc="Microsoft Teams desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -27,10 +27,10 @@ build() {
     --verbose \
     --single-instance \
     --electron-version 30.0.1 \
-    --honest \
     --tray \
     "${url}"
 
+    # --honest \
 }
 
 package() {
