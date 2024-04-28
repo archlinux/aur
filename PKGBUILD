@@ -4,11 +4,11 @@ _pkgname=katdetectr
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Detection, Characterization and Visualization of Kataegis in Sequencing Data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biobase
   r-biocparallel
@@ -45,11 +45,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('7ae9895a26f752a9e8502913ef8ce410')
-sha256sums=('3f5d04a60a2d8ff0d9db9ebcbc52347dc046ac25f2327eed5c98421bd7c12a44')
+b2sums=('98a52aedb883f15e1ee8697f32cb691de17e1c6d2bfc225177b9b402f5a0c88e27d4c96123dea516443bb9ea0c0196d1269e2a8eddd0354076e52e9e19cccd3e')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
