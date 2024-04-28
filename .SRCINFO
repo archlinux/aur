@@ -1,7 +1,7 @@
 pkgbase = python-fontdoctools
 	pkgdesc = tools that help in documenting and reviewing the design or the engineering of fonts
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/LindenbergSW/fontdoctools
 	arch = any
 	license = MIT
