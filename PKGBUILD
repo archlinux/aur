@@ -21,6 +21,7 @@ makedepends=(
     'go'
     'gcc'
     'base-devel'
+    'wails'
 )
 options=(
     '!strip'
@@ -63,7 +64,6 @@ build() {
     else
         echo "Your network is OK."
     fi
-    go install github.com/wailsapp/wails/v2/cmd/wails@latest
     npm install --prefix ./frontend
     wails build -platform linux -o "${pkgname%-git}"
     sed -e "s|{{.Info.ProductName}}|${_pkgname}|g" \
