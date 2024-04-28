@@ -1,10 +1,10 @@
 pkgbase = orphan-checker
 	pkgdesc = Checks if any AUR installed packaged is orphan
 	pkgver = 1.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitlab.com/Daklon/orphan-checker
 	arch = any
-	license = GPL-v3
+	license = AGPL-3.0-or-later
 	makedepends = rust
 	makedepends = cargo
 	depends = pacman
