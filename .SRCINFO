@@ -1,10 +1,10 @@
 pkgbase = python-pcpp
 	pkgdesc = A C99 preprocessor with partial preprocessing capabilities writen in Python
 	pkgver = 1.30
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ned14/pcpp
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
