@@ -37,6 +37,12 @@ case $1 in
     bg)
         nameservers=("nameserver 185.55.226.26" "nameserver 185.55.225.25")
         ;;
+    rd)
+        nameservers=("nameserver 10.202.10.10" "nameserver 10.202.10.11")
+        ;;
+    el)
+        nameservers=("nameserver 78.157.42.101" "nameserver 78.157.42.100")
+        ;;
     *)
         echo "Invalid option: $1"
         echo "Usage: $0 {g|sh|ag|cf|403|bg}"
