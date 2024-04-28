@@ -4,11 +4,11 @@ _pkgname=protGear
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Protein Micro Array Data Management and Interactive Visualization"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biobase
   r-data.table
@@ -57,11 +57,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('db63dca71894a3ebbf3b8b78512bccb4')
-sha256sums=('bb5b47b1b5d12faba813f71e962a7e9fe80ae6807aa7dca8cceacbbec5681565')
+b2sums=('7c57b08159579d4cd3b9808dc8d3a32de4c8a32e113c2c0800f59f9a07eb912970a56c64c07fa1d720baead00f0f464eac5ccc7baa4d541a6a7e34c0da9d92b9')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
