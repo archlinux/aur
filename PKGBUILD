@@ -4,11 +4,11 @@ _pkgname=alabaster.se
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Load and Save SummarizedExperiments from File"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-alabaster.base
   r-alabaster.matrix
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('25133d88cc71ec6029229772a1eee0e8')
-sha256sums=('9d37f71146259c376c7d080c99e18cf7c9daf3d6cea26007189385459a6f3b93')
+b2sums=('686b519495c87252dc3e7fd86bd0cc165063336d523a279320d9a6912ada8cd1fe2705dce7f17f4e4b7619ed2bb96adf5afa157d9d2e411c430eeb4ced9d9b2e')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

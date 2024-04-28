@@ -1,7 +1,7 @@
 pkgbase = r-alabaster.se
 	pkgdesc = Load and Save SummarizedExperiments from File
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/alabaster.se
 	arch = any
 	license = MIT
@@ -21,6 +21,6 @@ pkgbase = r-alabaster.se
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.se_1.2.0.tar.gz
 	md5sums = 25133d88cc71ec6029229772a1eee0e8
-	sha256sums = 9d37f71146259c376c7d080c99e18cf7c9daf3d6cea26007189385459a6f3b93
+	b2sums = 686b519495c87252dc3e7fd86bd0cc165063336d523a279320d9a6912ada8cd1fe2705dce7f17f4e4b7619ed2bb96adf5afa157d9d2e411c430eeb4ced9d9b2e
 
 pkgname = r-alabaster.se
