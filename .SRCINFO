@@ -1,7 +1,7 @@
 pkgbase = python-datalad-next
 	pkgdesc = extension for new and improved functionality and user experience in datalad
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datalad/datalad-next
 	arch = any
 	license = MIT

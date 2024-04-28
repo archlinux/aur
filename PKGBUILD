@@ -3,7 +3,7 @@
 _pkgname=datalad-next
 pkgname=python-$_pkgname
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='extension for new and improved functionality and user experience in datalad'
 arch=(any)
 url="https://github.com/datalad/$_pkgname"
