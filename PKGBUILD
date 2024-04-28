@@ -3,17 +3,17 @@
 pkgname=python-glyphtools
 _pyname=${pkgname#python-}
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Routines for extracting information from font glyphs'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
 license=(MIT)
-_py_deps=(babelfont
-          beziers
-          babelfont
-          glyphslib)
+_pydeps=(babelfont
+         beziers
+         babelfont
+         glyphslib)
 depends=(python
-         "${_py_deps[@]/#/python-}")
+         "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_pyname-$pkgver"

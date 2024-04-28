@@ -1,7 +1,7 @@
 pkgbase = python-glyphtools
 	pkgdesc = Routines for extracting information from font glyphs
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/simoncozens/glyphtools
 	arch = any
 	license = MIT
