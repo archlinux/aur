@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=autorecord-manager
 _pkgname="LAR 直播自动录制"
-pkgver=4.7.0
+_appname=LiveAutoRecord
+pkgver=4.7.1
 _electronversion=20
 _nodeversion=16
 pkgrel=1
@@ -27,10 +28,10 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('e9d2c2c5bd518008a86a7074712a10302cf9abc196a8468ed0974a5400881b2e'
+sha256sums=('90ca9b5cf083cfbf59b590a1d3585f7583547804cc85bf7bf6c5741adaf6e244'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -46,7 +47,7 @@ build() {
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/${_appname}-${pkgver}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -66,18 +67,18 @@ build() {
     sed "s|electron-builder\",|electron-builder -l --dir\",|g;s|\/\${version}||g" -i packages/electron/package.json
     # .yarnrc.yml existed
     yarn install #--cache-folder "${srcdir}/.yarn_cache"
-    cd "${srcdir}/${pkgname}.git/packages/shared"
+    cd "${srcdir}/${_appname}-${pkgver}/packages/shared"
     yarn run build
-    cd "${srcdir}/${pkgname}.git/packages/manager"
+    cd "${srcdir}/${_appname}-${pkgver}/packages/manager"
     yarn run build
-    cd "${srcdir}/${pkgname}.git/packages/electron"
+    cd "${srcdir}/${_appname}-${pkgver}/packages/electron"
     yarn run app:build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/packages/electron/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/packages/electron/build/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/packages/electron/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${_appname}-${pkgver}/packages/electron/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${_appname}-${pkgver}/packages/electron/build/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${_appname}-${pkgver}/packages/electron/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_appname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
