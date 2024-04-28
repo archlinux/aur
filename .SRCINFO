@@ -6,9 +6,13 @@ pkgbase = python-colcon-test-result
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = flake8
 	depends = python-colcon-core
-	source = https://files.pythonhosted.org/packages/source/c/colcon-test-result/colcon-test-result-0.3.8.tar.gz
-	sha256sums = aa5225716a5bdd9f1df721e7a04f1e02150def8c86dd070793cb62e747c36ed3
+	source = https://github.com/colcon/colcon-test-result/archive/refs/tags/0.3.8.tar.gz
+	source = upstream.path::https://github.com/colcon/colcon-test-result/compare/0.3.8...master.patch
+	source = https://github.com/myint/scspell/archive/refs/tags/v2.2.tar.gz
+	sha256sums = b10643fd8de667e320843558aafbf7dd4f756b6addbbe7e03e08f5de6e375d06
+	sha256sums = 35986bb5ddcf824b113792504c273cceb25bc4c385e80d63fd810349775b531c
+	sha256sums = 04c6a795a9e0ef4571678eb9fc503bcf39106a975691336af778f31a01027082
 
 pkgname = python-colcon-test-result
-
