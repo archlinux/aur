@@ -21,6 +21,7 @@ depends=(
     'python-pyqt6-webengine'
     'python-qscintilla-qt6'
     'python-semver'
+    'python-watchdog'
     'python-tomlkit'
     'qt6-serialport'
     'qt6-svg'

@@ -16,6 +16,7 @@ pkgbase = eric
 	depends = python-qscintilla-qt6
 	depends = python-semver
 	depends = python-tomlkit
+	depends = python-watchdog
 	depends = qt6-serialport
 	depends = qt6-svg
 	depends = qt6-tools
