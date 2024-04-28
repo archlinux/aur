@@ -2,12 +2,12 @@
 
 pkgname=python-spf-engine
 pkgver=3.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="SPF (Sender Policy Framework) back-end for Postfix and Sendmail"
 arch=('any')
 url="https://launchpad.net/${pkgname#*-}"
-license=('Apache'
-         'GPL2')
+license=('Apache-2.0'
+         'GPL-2.0-only')
 depends=('python-authres'
          'python-pymilter>=1.0.5'
          'python-pyspf>=2.0.9')
