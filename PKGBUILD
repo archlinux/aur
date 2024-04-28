@@ -4,11 +4,11 @@ _pkgname=beachmat.hdf5
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="beachmat bindings for HDF5-backed matrices"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-beachmat
   r-delayedarray
@@ -31,11 +31,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b2ca9b6358fb05895101e6a911ca0e39')
-sha256sums=('055de00d362f1a45c7991dd2917a73a37a9b378f2760e30a61a2cc200f0b1dc6')
+b2sums=('43e354d80d8ff674ec07e942ac12c3b6123f2902be9a0b78630b43490a4a0279bdbf023ecd9faf3691250ce1f9e6125f560a41f6fe4881f99eaf47920d1dd4fd')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
