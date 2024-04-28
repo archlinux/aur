@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=go-hass-agent-bin
 _pkgname="Go Hass Agent"
-pkgver=7.3.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="A Home Assistant， native app integration for desktop/laptop devices."
 arch=("x86_64")
