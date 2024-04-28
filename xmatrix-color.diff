@@ -166,13 +166,13 @@
 +   
 +   <select id="color">
 +     <option id="color_green" _label="Green"/>
-+     <option id="color_blue" _label="Blue"  arg-set="-color-shift blue"/>
-+     <option id="color_aqua" _label="Aqua"  arg-set="-color-shift aqua"/>
-+     <option id="color_red" _label="Red"  arg-set="-color-shift red"/>
-+     <option id="color_red" _label="Purple"  arg-set="-color-shift purple"/>
-+     <option id="color_yellow" _label="Yellow"  arg-set="-color-shift yellow"/>
-+     <option id="color_white" _label="White"  arg-set="-color-shift white"/>
-+     <option id="color_grey" _label="Grey"  arg-set="-color-shift grey"/>
++     <option id="color_blue" _label="Blue"  arg-set="--color-shift blue"/>
++     <option id="color_aqua" _label="Aqua"  arg-set="--color-shift aqua"/>
++     <option id="color_red" _label="Red"  arg-set="--color-shift red"/>
++     <option id="color_red" _label="Purple"  arg-set="--color-shift purple"/>
++     <option id="color_yellow" _label="Yellow"  arg-set="--color-shift yellow"/>
++     <option id="color_white" _label="White"  arg-set="--color-shift white"/>
++     <option id="color_grey" _label="Grey"  arg-set="--color-shift grey"/>
 +  </select>
    </hgroup>
  

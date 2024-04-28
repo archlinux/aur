@@ -1,14 +1,14 @@
 # $Id$
 
 pkgname=xscreensaver-xmatrix-color
-pkgver=6.06
-jwzspecialver=6.06 # Because the 6.05.1 zip unpacks to 6.05
+pkgver=6.08
+jwzspecialver=6.08 # Because the 6.05.1 zip unpacks to 6.05
 pkgrel=1
 pkgdesc="Screen saver and locker for the X Window System, modified xmatrix with variable color."
 arch=('i686' 'x86_64')
 url="http://www.jwz.org/xscreensaver/"
 license=('BSD')
-depends=('libglade' 'libxmu' 'glu' 'xorg-appres' 'perl-libwww' 'gdk-pixbuf-xlib')
+depends=('gtk3' 'libxmu' 'glu' 'xorg-appres' 'perl-libwww' 'gdk-pixbuf-xlib')
 makedepends=('bc' 'intltool' 'libxpm')
 optdepends=('gdm: for login manager support')
 conflicts=('xscreensaver')
@@ -18,9 +18,9 @@ source=(http://www.jwz.org/xscreensaver/${pkgname%%-*}-${pkgver}.tar.gz
 	xscreensaver-add-electricsheep.diff
 	xmatrix-color.diff
 	LICENSE)
-sha1sums=('fa7e1da709972c640a913d42039ba8609ed6218e'
+sha1sums=('a7e75a2ae1110354ffaa639f4c38ec0506cabf2b'
           'e8dc57b6471fb3867ee099304ac6bf628351cb98'
-          '4d1d5bbec588273ee94484feea84d5003cf52d7d'
+          '827e04ab5947fb438706df7ba7dedaabaa17c341'
           'bf8995d86609cdab678ca277ae685407f82691db')
 
 prepare() {
