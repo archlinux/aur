@@ -1,7 +1,7 @@
 pkgbase = python-ink-extensions-git
 	pkgdesc = Python dependencies for running Inkscape extensions outside of Inkscape
 	pkgver = r39.487529e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evil-mad/ink_extensions
 	arch = any
 	license = GPL-2.0-only
@@ -11,6 +11,7 @@ pkgbase = python-ink-extensions-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python
 	depends = python-lxml
 	provides = python-ink-extensions
 	conflicts = python-ink-extensions
