@@ -3,3 +3,4 @@ pkg/
 *.tgz
 *.pkg.*
 *.pkg.*.sig
+*.md
