@@ -1,6 +1,6 @@
 pkgbase = zyplayer-git
 	pkgdesc = 跨平台桌面端视频资源播放器,免费高颜值
-	pkgver = 3.3.3.r0.g76543a0
+	pkgver = 3.3.4.r0.g130d7d2
 	pkgrel = 1
 	url = https://github.com/Hiram-Wong/ZyPlayer
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = zyplayer-git
 	makedepends = npm
 	makedepends = yarn
 	makedepends = nodejs
-	depends = electron29
+	depends = electron19
 	provides = zyplayer
 	conflicts = zyplayer
 	conflicts = zy-player
