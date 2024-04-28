@@ -4,10 +4,10 @@ _pkgname=ODER
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Optimising the Definition of Expressed Regions'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.17/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
@@ -45,7 +45,7 @@ optdepends=(
   r-testthat
   r-xfun
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('3c10abac4b8cf945a27916126f1ad0c034e53f65cd78ec118a2652f8da86839d')
 
 build() {
