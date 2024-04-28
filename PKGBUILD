@@ -4,11 +4,11 @@ _pkgname=SARC
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Statistical Analysis of Regions with CNVs"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-data.table
   r-desctools
@@ -45,11 +45,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b3ccd1bbc820bc93c4b13ec4e3ec9705')
-sha256sums=('5f032cedb91ca13f975da592479c83ff79c87c3ba5dd4472c1c7df0b9cec7a10')
+b2sums=('9f74d98ecb0b16c8b830ca8c4cb5b29520ee4fb96e70dadbfd4a8cd6114cded08393ce5b34d6475119d71161787fc7c3678802570f5d7797f4caa6bdfc3122b6')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
