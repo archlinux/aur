@@ -1,3 +1,5 @@
+# shellcheck disable=SC2034,SC2154,SC2164
+
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
@@ -11,7 +13,7 @@ pkgver=4.19.25
 pkgrel=7
 arch=(x86_64)
 url='https://www.riverbankcomputing.com/software/sip/intro'
-license=('custom:"sip"')
+license=('LicenseRef-sip')
 makedepends=(
     python
     python-setuptools
