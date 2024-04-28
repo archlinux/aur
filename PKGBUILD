@@ -4,11 +4,11 @@ _pkgname=chihaya
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Save Delayed Operations to a HDF5 File"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-delayedarray
   r-hdf5array
@@ -36,11 +36,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('fc8e24fa8ec373d01c938fbfe12c3b9a')
-sha256sums=('f193f2c53109a931b6a44f8931e6ba6dc463ae180c452d1b6d137d32e13de255')
+b2sums=('fef1766391d07684bb7968c2123ad3646bffde3cf85d3e9b1464fa92bc83d4261f2b4326a2ec27bb64a3b45529002f96f1e28fc4dadc44272d619da36f0ad92e')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
