@@ -2,7 +2,7 @@
 # Contributor: Kruemmelbande
 pkgname=slimevr-beta-bin
 pkgver=0.12.0
-pkgrel=4
+pkgrel=5
 pkgdesc="SlimeVR FBT software beta version"
 arch=( 'x86_64')
 url="https://github.com/SlimeVR/SlimeVR-Server/"
@@ -20,5 +20,5 @@ package(){
 
 	# Extract package data
 	tar -xz -f data.tar.gz -C "${pkgdir}"
-
+	rm "${startdir}/SlimeVR-amd64.deb"
 }
