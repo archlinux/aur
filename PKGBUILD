@@ -3,12 +3,13 @@
 pkgname=aliyunpan-go-bin
 _pkgname=aliyunpan-go
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='阿里云盘命令行客户端，支持webdav文件服务，支持JavaScript插件，支持同步备份功能。(Precompiled version)'
 arch=('x86_64' 'aarch64' 'loong64')
 url='https://github.com/tickstep/aliyunpan'
 license=('Apache-2.0')
 depends=('bash')
+provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/aliyunpan-v${pkgver}-linux-amd64.zip")
