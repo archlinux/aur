@@ -5,7 +5,7 @@ _pkgname='tizonia'
 _githubname="${_pkgname}-openmax-il"
 pkgname="${_pkgname}-all-git"
 pkgver=0.22.0+28.r3903.20210110.a1e8f8bd
-pkgrel=7
+pkgrel=8
 pkgdesc="Command-line cloud music player and downloader for Linux with support for YouTube, SoundCloud, Plex servers, Chromecast devices and generic streams and websites."
 arch=(
   'x86_64'
@@ -169,7 +169,7 @@ build() {
   # * [2023-07-31] Google Music service is dead, but `python-gmusicapi` is still needed by `/usr/lib/python3.11/site-packages/tizgmusicproxy.py`, see https://aur.archlinux.org/packages/tizonia-all-git#comment-927188 and follow up.
   # * [2023-08-01] Building tests fails with `clients/youtube/libtizyoutube/tests/check_tizyoutube.c:121:12: error: too few arguments to function ‘tiz_youtube_init’`, see https://github.com/tizonia/tizonia-openmax-il/issues/799.
   export SAMUFLAGS="-j1"                                 # Eats a lot of ram, so restrict to one build job at a time.
-  export PKG_CONFIG_PATH=/usr/lib/taglib1/lib/pkgconfig  # Also search for taglib1 pkgconfig file.
+  export PKG_CONFIG_PATH=/usr/lib/taglib1/pkgconfig      # Also search for taglib1 pkgconfig file.
   meson setup --prefix=/usr --buildtype=plain \
     -Dplayer=true \
     -Dlibspotify=false \
