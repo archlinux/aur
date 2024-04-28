@@ -8,11 +8,11 @@
 pkgbase=pagure
 pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-mariadb" "$pkgbase-postgresql" "$pkgbase-sqlite")
 pkgver=5.13.3
-pkgrel=0.3
+pkgrel=0.4
 pkgdesc='A git-centered forge based on python using pygit2'
 arch=(any)
 url="https://pagure.io/$pkgbase"
-license=("GPL2")
+license=(GPL-2.0-only)
 _pydeps=(alembic
          arrow
          bcrypt
