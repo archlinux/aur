@@ -4,12 +4,11 @@ pkgname=python-pyqt-qwt
 _pkgname=PyQt-Qwt
 _commit=d98d49904765c03c11c400b9d7fc4e52a2418cdd
 pkgver=1.02.02.20210915
-pkgrel=3
+pkgrel=4
 pkgdesc="Python PyQt wrapper for Qwt 6"
 arch=('x86_64')
 url="https://github.com/GauiStori/${_pkgname}"
-license=('LGPL'
-         'custom:qwt')
+license=('LGPL-2.1-only WITH Qwt-exception-1.0')
 depends=('python'
          'python-pyqt5'
          'qwt>=6.1.4')
