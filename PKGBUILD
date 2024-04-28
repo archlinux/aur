@@ -3,7 +3,7 @@
 _pkgname="flutter"
 pkgname="$_pkgname-bin"
 pkgver=3.19.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross platform widget toolkit for Dart (monolithic)"
 arch=("x86_64")
 url="https://github.com/flutter/flutter"
@@ -100,7 +100,7 @@ _gen_scripts() {
 
 source /usr/bin/flutter_init
 
-if ! grep '/usr/bin' <<< "$(which dart)" > /dev/null; then
+if ! grep -q '/usr/bin' <<< "$(which dart)"; then
   exec dart "$@"
 fi
 END
@@ -110,7 +110,7 @@ END
 
 source /usr/bin/flutter_init
 
-if ! grep '/usr/bin' <<< "$(which flutter)" > /dev/null; then
+if ! grep -q '/usr/bin' <<< "$(which flutter)"; then
   exec flutter "$@"
 fi
 END
@@ -146,19 +146,19 @@ _unionfs() {
   fi
 }
 
-if whoami | grep -E 'builduser|main-builder' > /dev/null 2>&1; then
+if whoami | grep -q -E 'builduser|main-builder'; then
   export FLUTTER_ROOT="$APP_DIR"
-elif grep flutter <<< $(groups); then
+elif grep -q flutter <<< $(groups); then
   export FLUTTER_ROOT="$APP_DIR"
 elif _unionfs; then
   if [ -e "$MOUNT_DIR/bin" ]; then
-    if ! grep "$MOUNT_DIR" <<< "$PATH" > /dev/null 2>&1; then
+    if ! grep -q "$MOUNT_DIR" <<< "$PATH"; then
       export FLUTTER_ROOT="$MOUNT_DIR"
     fi
   fi
 fi
 
-if ! grep "$FLUTTER_ROOT" <<< "$PATH" > /dev/null 2>&1; then
+if ! grep -q "$FLUTTER_ROOT" <<< "$PATH"; then
   export PATH="$FLUTTER_ROOT/bin:$PATH"
 fi
 END
