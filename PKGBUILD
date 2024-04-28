@@ -88,7 +88,7 @@ build()
         BUILD=Production         \
         PRJ_BUILD=Release        \
         LIBRARY_TYPE=relocatable \
-        GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython3.11 -gargs"
+        GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython3.12 -gargs"
  
    # Gnatdoc appears broken when trying to build docs. Disabling docs til fixed.
    #  
