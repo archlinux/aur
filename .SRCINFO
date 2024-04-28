@@ -1,7 +1,7 @@
 pkgbase = anthropic-claude-nativefier
 	pkgdesc = Anthropic Claude desktop app (electron)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://claude.ai/
 	arch = armv7l
 	arch = i686
