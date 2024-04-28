@@ -4,11 +4,11 @@ _pkgname=comapr
 _pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Crossover analysis and genetic map construction"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biocparallel
   r-circlize
@@ -42,11 +42,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('64dbcfb7f563dc874dc327988ebf8c07')
-sha256sums=('ac101714233d406338b6ac5022d3547b6ba65939806bad7bae4744948952718e')
+b2sums=('5f9280d88b690b0a3e7519c61cdd0feefb31a43d7e506fa619dc5307fd3ed9e5d35856b484c3e0b327899657687bd47f75a46b6c7471ea2f5e169e82d9a868e3')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
