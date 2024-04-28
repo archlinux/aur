@@ -1,20 +1,13 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-# Note upstream test suite is known to be broken (non-deterministic), even the
-# upstream CI has an error code hack as seen here in check() to not flunk on
-# tests that fail due to differing output across library versions. Given this,
-# disabling the test by default for this build seems reasonable until they have
-# a deterministic check function.
-BUILDENV+=('!check')
-
 _pipname=pancritic
 pkgname=python-$_pipname
 pkgver=0.3.2
-pkgrel=4
+pkgrel=5
 pkgdesc='CriticMarkdup parser with optional pandoc backend'
 arch=(any)
 url="https://github.com/ickc/$_pipname"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(python)
 makedepends=(pandoc
              python-{build,installer,wheel}
@@ -39,9 +32,14 @@ build() {
 	python -m build -wn
 }
 
+# Note upstream test suite is known to be broken (non-deterministic), even the
+# upstream CI has an error code hack as seen here in check() to not flunk on
+# tests that fail due to differing output across library versions. Given this,
+# disabling the test by default for this build seems reasonable until they have
+# a deterministic check function.
 check() {
 	cd "$_archive"
-	make test ERRORCODE=0
+	# make test ERRORCODE=0
 }
 
 package() {

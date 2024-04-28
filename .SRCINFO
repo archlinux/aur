@@ -1,10 +1,10 @@
 pkgbase = python-pancritic
 	pkgdesc = CriticMarkdup parser with optional pandoc backend
 	pkgver = 0.3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ickc/pancritic
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = python-coverage
 	checkdepends = python-markdown
 	checkdepends = python-markdown2
