@@ -1,0 +1,4 @@
+[twitch-dl]
+source = "git"
+git = "https://github.com/ihabunek/twitch-dl.git"
+include_regex = '(\d(?:\d|\.)+)'
