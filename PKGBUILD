@@ -3,7 +3,7 @@
 
 pkgname=tuner
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Minimalist radio station player. Geared towards RadioBrowser"
 arch=('x86_64' 'i686')
 url="https://github.com/louis77/$pkgname"
@@ -21,4 +21,6 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" meson install -C 'build'
+  cd "${pkgdir}"/usr/bin/
+  ln -s com.github.louis77.tuner tuner
 }

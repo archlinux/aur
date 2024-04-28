@@ -1,7 +1,7 @@
 pkgbase = tuner
 	pkgdesc = Minimalist radio station player. Geared towards RadioBrowser
 	pkgver = 1.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/louis77/tuner
 	arch = x86_64
 	arch = i686
