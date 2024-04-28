@@ -3,10 +3,10 @@
 
 pkgname=markdown2ctags
 pkgver=0.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Generate ctags-compatible tags files for Markdown documents'
 arch=(any)
-license=(BSD3)
+license=(BSD-3-Clause)
 url="https://github.com/jszakmeister/$pkgname"
 depends=(python)
 makedepends=(python-{build,installer,wheel}
