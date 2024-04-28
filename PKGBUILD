@@ -5,11 +5,11 @@ _pkgname=RNAmodR
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Detection of post-transcriptional modifications in high throughput sequencing data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biocgenerics
   r-biocparallel
@@ -47,8 +47,8 @@ source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_
         "fix-tests.patch")
 md5sums=('ece4ec8fc16a95ec2ee8d9506283c57e'
          'f0971c84a5f969df3e1b055328db3ce3')
-sha256sums=('f72ea20cafaf7371c428f67408701abfa223d30570242c3abbb4b7611e13b355'
-            '7a73648f069ad74cc900f7c10feb447eae5e3cb5467a9e51e27ab720f9ea9e63')
+b2sums=('cd1f6441084dbc9d7edaf6b416d5e94187a5fc4fbbf496ce16fc6b2d56203eee19e06fba50662d1f47a2adc77f1d98920c6d7eddff1cab2509bfb23e58cd90ed'
+        '92e9b74fbee5aa507b6bd1572973a0fc8878826105baa7f9e852216c2ad472fd84a1ca6b8d1255ba854b3ffc4f3068cdd3448cb03154ad162b931e103beb6d22')
 
 prepare() {
   # fix tests
@@ -56,8 +56,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
