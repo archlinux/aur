@@ -1,18 +1,19 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
-# Maintainer: Archttila <linux.alucard@gmail.com>
+# Maintainer: Hajos Attila <linux.alucard@gmail.com>
 
 pkgname=mpd-sacd
 pkgver=0.23.13
 pkgrel=1
 pkgdesc='MPD with patches for SACD and DVDA ISO playback. (DVDA ISO playback temporary disabled)'
 url='https://sourceforge.net/p/sacddecoder/mpd/MPD.git/ci/master/tree/'
-license=('GPL')
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-depends=('libao' 'ffmpeg4.4' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl' 'faad2'
-	'sqlite' 'jack' 'libmms' 'wavpack' 'avahi' 'libid3tag' 'yajl' 'libmpdclient'
-	'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'libcdio-paranoia'
-	'libgme' 'zziplib' 'fluidsynth' 'libmikmod' 'wildmidi' 'twolame' 'liburing' 'openal')
-makedepends=('boost' 'meson' 'cmake' 'python-sphinx_rtd_theme' 'clang' 'ninja')
+license=('GPL-2.0-or-later')
+depends=(
+    'alsa-lib' 'audiofile' 'expat' 'faad2' 'ffmpeg4.4' 'flac' 'fluidsynth' 'gcc-libs' 'hicolor-icon-theme' 'icu' 'jack' 'lame'
+    'libao' 'libcdio' 'libcdio-paranoia' 'libgme' 'libid3tag' 'libmad' 'libmikmod' 'libmms' 'libmodplug' 'libmpcdec' 'libmpdclient'
+    'libnfs' 'libogg' 'libopenmpt' 'libpipewire' 'libpulse' 'libshout' 'libsndfile' 'libsamplerate' 'libsoxr' 'libupnp'
+    'liburing' 'libvorbis' 'mpg123' 'openal' 'opus' 'pcre2' 'systemd-libs' 'twolame' 'wavpack' 'wildmidi' 'yajl' 'zlib' 'zziplib')
+makedepends=('boost' 'meson' 'cmake' 'git' 'python-sphinx_rtd_theme' 'clang' 'ninja')
 conflicts=('mpd')
 provides=("mpd=${pkgver}")
 source=('mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git#commit=45f0d8fbce0f52b9aca1f9cce96dcf9c9e1413da'
@@ -26,13 +27,13 @@ sha1sums=('SKIP'
 backup=('etc/mpd.conf')
 
 prepare() {
-	cd "${srcdir}/mpd"
+	cd "${srcdir}/mpd/build"
 	rm -rf build
 	install -d build
 }
 
 build() {
-	cd "${srcdir}/mpd/build"
+	cd "$srcdir/mpd/build"
 	export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 	_opts=('-Ddocumentation=enabled'
 		'-Dchromaprint=disabled' # appears not to be used for anything
