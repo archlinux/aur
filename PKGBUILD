@@ -1,8 +1,8 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=google-gemini-nativefier
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=3
 pkgdesc="Google Gemini desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://gemini.google.com"
@@ -52,4 +52,4 @@ package() {
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
 sha256sums=('237b11a0d250c1560f9edbaf9d21fdc3b335ddf194aaf7544f5b49495a161635'
-            'b9f5e2bbc53542f37a33be2c728462c59f87ecf4f2a19a901f26a7dc2310d586')
+            'c4e77df9ca215cb2e9f4fc93ecabed6cf36752a25eb59fa71228edf4695d3d02')
