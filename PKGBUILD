@@ -4,20 +4,22 @@
 
 _pkgname=clickable
 pkgname=clickable-git
-pkgver=7.1.0.r1.gf7d2bb9
+pkgver=8.1.0.r0.gc6b5992
 pkgrel=1
 pkgdesc='Compile, build, and deploy Ubuntu Touch click packages all from the command line'
 arch=('any')
 url='https://gitlab.com/clickable/clickable'
 license=('GPL3')
 depends=(
-    'python-cookiecutter'
-    'python-requests'
-    'python-yaml'
-    'python-jsonschema'
-    'python-argcomplete'
-    'docker'
     'android-tools'
+    'docker'
+    'python'
+    'python-argcomplete'
+    'python-cookiecutter'
+    'python-jsonschema'
+    'python-requests'
+    'python-setuptools'
+    'python-yaml'
 )
 optdepends=('xorg-xhost: for running on the desktop')
 makedepends=('git')
