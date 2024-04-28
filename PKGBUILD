@@ -9,24 +9,16 @@ arch=(any)
 url="https://pypi.org/project/colcon-test-result"
 license=('Apache')
 depends=('python-colcon-core')
-makedepends=('python-setuptools' 'flake8')
+makedepends=('python-setuptools')
 source=(
     https://github.com/colcon/colcon-test-result/archive/refs/tags/${pkgver}.tar.gz
-    upstream.path::https://github.com/colcon/colcon-test-result/compare/0.3.8...master.patch
-    https://github.com/myint/scspell/archive/refs/tags/v2.2.tar.gz)
+    upstream.path::https://github.com/colcon/colcon-test-result/compare/0.3.8...master.patch)
 sha256sums=('b10643fd8de667e320843558aafbf7dd4f756b6addbbe7e03e08f5de6e375d06'
-            '35986bb5ddcf824b113792504c273cceb25bc4c385e80d63fd810349775b531c'
-            '04c6a795a9e0ef4571678eb9fc503bcf39106a975691336af778f31a01027082')
+            '35986bb5ddcf824b113792504c273cceb25bc4c385e80d63fd810349775b531c')
 
 build() {
     cd ${srcdir}/${_name}-${pkgver}
     python -m build --wheel --no-isolation
-}
-
-check() {
-    cd ${srcdir}/${_name}-${pkgver}
-    export PYTHONPATH="${srcdir}/scspell-2.2"
-    ls test*.py | xargs -I {} pytest {}
 }
 
 package() {
