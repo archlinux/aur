@@ -4,11 +4,11 @@ _pkgname=BOBaFIT
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Refitting diploid region profiles using a clustering procedure"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
   r-dplyr
   r-genomicranges
@@ -33,11 +33,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('48b9cc5c35adf6469bd1dc2ca566bed1')
-sha256sums=('111aff16b4d9615fca6db51253ebb997ec54c98e5edec2ab5a8bbe309c033ac1')
+b2sums=('0fdaf166aa9a8b6caf6e4a824924fa0b01ed3a4ded0f7b9e9cc5d8d97b34fb696ed858e700986b0beb115cc608aa426f4c8ceccbf0ee09ab7b5aaac77152baa8')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
