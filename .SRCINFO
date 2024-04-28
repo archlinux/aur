@@ -1,14 +1,15 @@
 pkgbase = python-proton-vpn-killswitch
 	pkgdesc = The proton-vpn-killswitch component defines the VPN kill switch interface.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonVPN/python-proton-vpn-killswitch
 	arch = any
 	groups = ProtonVPN
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python-proton-core
 	source = git+https://github.com/ProtonVPN/python-proton-vpn-killswitch.git#tag=v0.4.0
-	sha256sums = SKIP
+	sha256sums = 63dfaa0022000e54b7f05255bc47e6af3152de643173404b95f54f7ec323e04a
 
 pkgname = python-proton-vpn-killswitch
