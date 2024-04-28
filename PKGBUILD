@@ -1,21 +1,22 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Tool that provides an alternative to ls when browsing a Linux sysfs'
 pkgname=sysls
-pkgver=1
+pkgver=2
 pkgrel=1
 url=https://git.sr.ht/~martijnbraam/sysls
-depends=(python-setuptools)
+depends=(glibc python)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 arch=(any)
-license=(GPL3)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-b2sums=('13380201a8527037d6b2779e1fdd594fd0fe84cb1bfbd66e40b452e0ee01537af0d5634c1033b37450d2d4427ed06a306751ce41dc3d0120a94ef87b44936e04')
+license=(GPL-3.0-or-later)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('99f363ea18441c9f49e70601e9d6aa7a92162ac63472982c335c8aa57b30b4e10f072f6bc83b667f6cd63befd3becf423f755e792d88099dfae80a0aa6cb51e6')
 
 build () {
-	cd "${pkgname}-${pkgver}"
-	python setup.py build
+	cd "$pkgname-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package () {
-	cd "${pkgname}-${pkgver}"
-	python setup.py install --root="${pkgdir}" --optimize=1
+	cd "$pkgname-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
