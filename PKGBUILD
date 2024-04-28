@@ -12,73 +12,81 @@
 # https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
 
 pkgname=ffmpeg-cuda
-pkgver=6.1
-pkgrel=2
+pkgver=7.0.0
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
 arch=(x86_64)
 url=https://ffmpeg.org/
-license=('custom')
+license=('GPL-3.0-only')
 depends=(
   alsa-lib
   aom
   bzip2
+  cairo
+  dav1d
   cuda
   fontconfig
+  freetype2
   fribidi
+  glib2
+  glibc
   gmp
   gnutls
   gsm
+  harfbuzz
   jack
   lame
-  libass.so
+  libass
   libavc1394
-  libbluray.so
-  libbs2b.so
-  libdav1d.so
+  libbluray
+  libbs2b
   libdrm
-  libfreetype.so
   libgl
   libiec61883
-  libmfx
+  libjxl
+  libvpl
   libmodplug
+  libopenmpt
+  libplacebo
   libpulse
-  librav1e.so
   libraw1394
-  librsvg-2.so
+  librsvg
   libsoxr
   libssh
   libtheora
-  libva.so
-  libva-drm.so
-  libva-x11.so
+  libva
   libvdpau
-  libvidstab.so
-  libvorbisenc.so
-  libvorbis.so
-  libvpx.so
-  libvulkan.so
+  libvorbis
+  libvpx
   libwebp
   libx11
-  libx264.so
-  libx265.so
   libxcb
   libxext
   libxml2
   libxv
-  libxvidcore.so
-  libzimg.so
   ocl-icd
+  onevpl
   opencore-amr
   openjpeg2
   opus
+  rav1e
+  rubberband
   sdl2
+  snappy
   speex
   srt
   svt-av1
   v4l-utils
+  vapoursynth
+  vid.stab
   vmaf
+  vulkan-icd-loader
+  x264
+  x265
+  xvidcore
   xz
+  zimg
   zlib
 )
 makedepends=(
@@ -86,6 +94,7 @@ makedepends=(
   avisynthplus
   clang
   ffnvcodec-headers
+  frei0r-plugins
   git
   ladspa
   mesa
@@ -95,9 +104,11 @@ makedepends=(
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
+  'frei0r-plugins: Frei0r video effects support'
   'intel-media-sdk: Intel QuickSync support'
   'ladspa: LADSPA filters'
   'nvidia-utils: Nvidia NVDEC/NVENC support'
+  'onevpl-intel-gpu: Intel QuickSync support'
 )
 provides=(
   libavcodec.so
@@ -112,7 +123,7 @@ provides=(
 )
 conflicts=('ffmpeg')
 source=(
-  "git+https://git.ffmpeg.org/ffmpeg.git#commit=d4ff0020b40b524a490cf62eccbd3a318f4c0e58"
+  "git+https://git.ffmpeg.org/ffmpeg.git#tag=n7.0"
   "add-av_stream_get_first_dts-for-chromium.patch"
 )
 sha256sums=("SKIP" "57e26caced5a1382cb639235f9555fc50e45e7bf8333f7c9ae3d49b3241d3f77")
@@ -159,6 +170,7 @@ build() {
     --enable-amf \
     --enable-avisynth \
     --enable-nonfree \
+    --enable-cuda-llvm \
     --enable-cuda-nvcc \
     --enable-libnpp \
     --enable-lto \
@@ -176,18 +188,23 @@ build() {
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
+    --enable-libharfbuzz \
     --enable-libiec61883 \
     --enable-libjack \
-    --enable-libmfx \
+    --enable-libjxl \
+    --enable-libvpl \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
     --enable-libopencore_amrwb \
     --enable-libopenjpeg \
     --enable-libopus \
+    --enable-libplacebo \
     --enable-libpulse \
     --enable-librav1e \
     --enable-librsvg \
+    --enable-librubberband \
+    --enable-libsnappy \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libsrt \
@@ -198,6 +215,7 @@ build() {
     --enable-libvidstab \
     --enable-libvmaf \
     --enable-libvorbis \
+    --enable-libvpl \
     --enable-libvpx \
     --enable-libwebp \
     --enable-libx264 \
@@ -211,6 +229,7 @@ build() {
     --enable-opencl \
     --enable-opengl \
     --enable-shared \
+    --enable-vapoursynth \
     --enable-version3 \
     --enable-vulkan
   make
