@@ -4,10 +4,10 @@ _pkgname=MethCP
 _pkgver=1.13.0
 pkgname=r-${_pkgname,,}
 pkgver=1.13.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Differential methylation anlsysis for bisulfite sequencing data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.17/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
