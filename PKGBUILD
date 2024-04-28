@@ -5,7 +5,7 @@ pkgname='python-jh2'
 _pkgname="${pkgname}"
 _srcname="${_pkgname/python-/}"
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP/2 State-Machine based protocol implementation'
 arch=('aarch64' 'x86_64')
 #url='https://github.com/jawah/jh2'  # 404
@@ -14,7 +14,7 @@ license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
 depends=(
   'gcc-libs'
   'glibc'
-  'python'
+  'python>=3.7'
 )
 makedepends=(
   'python-build'
