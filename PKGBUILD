@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver=2.24+r409.20231203.g3a90f52
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial efa.vrr.de command line client and Perl module'
 url='http://finalrewind.org/projects/Travel-Routing-DE-VRR/'
 license=('custom:WTFPL')
@@ -20,6 +20,7 @@ depends=(
   'perl-xml-libxml'
 )
 makedepends=(
+  'curl>8.7.1' # Because of https://bugs.gentoo.org/930633 / https://github.com/curl/curl/issues/13474
   'git'
   'perl-module-build'
   'perl-file-slurp'
