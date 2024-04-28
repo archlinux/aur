@@ -22,7 +22,7 @@ set -e
 shopt -s extglob
 
 PROGRAMMENAME="gpdfanspeed"
-VERSION=20240428.03
+VERSION=20240428.04
 
 FANMONDIR="$(ls -1d "/sys/devices/platform/gpd_fan/hwmon"/hwmon[0-9] | head -n1)"
 _namefile="name"
@@ -65,7 +65,7 @@ printusage() {
   msg "  $0 <-h|--help|help>"
   msg "    Prints this help message."
   msg ""
-  msg "  $0 <-v|--version|version>"
+  msg "  $0 <-V|--version|version>"
   msg "    Prints out the programme's version."
 }
 
@@ -76,7 +76,7 @@ case "$1" in
     printusage
     exit 0
   ;;
-  "-v"|"--version"|"version")
+  "-V"|"--version"|"version")
     msg "${VERSION}"
     exit 0
   ;;
