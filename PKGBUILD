@@ -2,7 +2,7 @@
 # Contributor: Noah Vogt <noah@noahvogt.com>
 
 pkgname=localsend-git
-pkgver=v1.14.0.r29.g4f040e6
+pkgver=v1.14.0.r30.g3d6bf26
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop '
 url=https://github.com/localsend/localsend
@@ -12,7 +12,7 @@ options=(!debug)
 depends=(zenity xdg-user-dirs libayatana-appindicator)
 conflicts=('localsend')
 provides=('localsend')
-makedepends=('cmake' 'ninja' 'flutter' 'git' 'fvm')
+makedepends=('cmake' 'ninja' 'git' 'fvm')
 source=("git+https://github.com/localsend/localsend" "${pkgname%-*}.desktop")
 sha256sums=('SKIP' 'SKIP')
 
@@ -33,8 +33,11 @@ build() {
 	fi
 
 	cd "app"
+
+	# Install the required flutter version without a prompt
+	fvm install
+
 	fvm flutter pub get
-	# flutter pub run build_runner build
 	fvm flutter build linux
 }
 
