@@ -3,7 +3,7 @@
 
 pkgname=twitch-dl
 pkgver=2.3.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=('any')
 url="https://github.com/ihabunek/twitch-dl"
@@ -42,6 +42,17 @@ build() {
   export PYTHONPATH="$PWD/build/lib"
 
   make man docs
+
+  # Make ad hoc `twitch-dl` script
+  echo '#!'$(which python) > twitch-dl
+  cat build/lib/twitchdl/__main__.py >> twitch-dl
+  chmod +x twitch-dl
+
+  # Generate completion files
+  _shells=(bash fish zsh)
+  for _shell in "${_shells[@]}"; do
+    _TWITCH_DL_COMPLETE="${_shell}_source" ./twitch-dl > "$pkgname.${_shell}"
+  done
 }
 
 check() {
@@ -56,4 +67,7 @@ package() {
   install -Dm644 twitch-dl.1.man "$pkgdir"/usr/share/man/man1/twitch-dl.1
   install -Dm644 -t "$pkgdir"/usr/share/doc/"$pkgname" {CHANGELOG,TODO,README}.md
   mv book "$pkgdir"/usr/share/doc/"$pkgname"/
+  install -Dm644 -t "$pkgdir"/usr/share/fish/vendor_completions.d "$pkgname".fish
+  install -Dm644 -T "$pkgname".bash "$pkgdir"/usr/share/bash-completion/completions/"$pkgname"
+  install -Dm644 -T "$pkgname".zsh "$pkgdir"/usr/share/zsh/site-functions/_"$pkgname"
 }
