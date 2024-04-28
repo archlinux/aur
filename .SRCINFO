@@ -1,0 +1,10 @@
+pkgbase = gke-kubeconfiger-bin
+	pkgdesc = Setup kubeconfig for GKE clusters
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gke-kubeconfiger
+
+pkgname = gke-kubeconfiger-bin
