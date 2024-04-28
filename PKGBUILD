@@ -2,22 +2,22 @@
 
 pkgname=python-proton-vpn-api-core
 pkgver=0.22.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The proton-vpn-core-api acts as a facade to the other Proton VPN components, exposing a uniform API to the available Proton VPN services."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-api-core"
 license=("GPL3")
 groups=("ProtonVPN")
-makedepends=("python-setuptools")
+makedepends=("git" "python-setuptools")
 source=("git+https://github.com/ProtonVPN/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname"
-    python setup.py build
+	cd "$pkgname"
+	python setup.py build
 }
 
 package() {
-    cd "$pkgname"    
-    python setup.py install --root="$pkgdir" --optimize=1
+	cd "$pkgname"
+	python setup.py install --root="$pkgdir" --optimize=1
 }
