@@ -48,5 +48,5 @@ package() {
 
     tar -x --no-same-owner -C "${pkgdir}/${_install_dir}" \
         -f "${srcdir}/${_appname}/build/${_appname}-${pkgver}.tar.gz"
-    rm -rf "${pkgdir}/${_install_dir}/groupfolders/build"
+    rm -rf "${pkgdir}/${_install_dir}/${_appname}/build"
 }
