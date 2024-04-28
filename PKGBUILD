@@ -5,10 +5,10 @@ BUILDENV+=(!check)
 pkgname=python-dvc-render
 _pkgname=${pkgname#python-}
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for rendering DVC plots'
 arch=(any)
-license=(Apache)
+license=(Apache-2.0)
 url="https://github.com/iterative/$_pkgname"
 _pydeps=(funcy
          tabulate)
