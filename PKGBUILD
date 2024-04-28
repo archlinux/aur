@@ -5,18 +5,23 @@
 _name=tslearn
 pkgname=python-${_name,,}
 pkgver=0.6.3
-pkgrel=1
+pkgrel=3
 pkgdesc='A machine learning toolkit dedicated to time-series data'
 arch=('any')
 url="https://github.com/tslearn-team/tslearn"
 license=('BSD-2-Clause')
 depends=('python' 'python-numpy' 'python-scipy' 'python-scikit-learn' 'python-numba' 'python-joblib' 'python-tensorflow')
 makedepends=('python-installer' 'python-wheel')
-_whl="${_name//-/_}-$pkgver-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('18c3b1984b4be2af0e7579c0b914633f2220bba2b6610c11861c4563272e9169')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('c855c0b784b42dc4c50f4eaf524ec7ed658037e86fc14af38ca3b66c75dd6adb')
+makedepends=(python-build python-installer python-wheel)
 
-noextract=("$_whl")
+build() {
+    cd $_name-$pkgver
+    python -m build --wheel --no-isolation
+}
+
 package() {
-    python -m installer --destdir="$pkgdir" "$_whl"
+    cd $_name-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
