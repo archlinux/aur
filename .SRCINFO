@@ -1,7 +1,7 @@
 pkgbase = qpageview-git
 	pkgdesc = A page based document viewer widget for Qt5/PyQt5.
 	pkgver = 0.6.2.r8.gc308c2d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frescobaldi/qpageview
 	arch = any
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = qpageview-git
 	depends = qt5-base
 	optdepends = python-poppler-qt5: Display PDF documents
 	optdepends = python-pycups: Printing to a local CUPS server
-	provides = qpageview=0.6.2.r8.gc308c2d-1
+	provides = qpageview=0.6.2.r8.gc308c2d-2
 	provides = python-qpageview
 	conflicts = qpageview
 	conflicts = ly

@@ -2,7 +2,7 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgname=qpageview-git
 pkgver=0.6.2.r8.gc308c2d
-pkgrel=1
+pkgrel=2
 pkgdesc="A page based document viewer widget for Qt5/PyQt5."
 arch=('any')
 url="https://github.com/frescobaldi/qpageview"
