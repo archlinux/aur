@@ -4,11 +4,11 @@ _pkgname=cytoviewer
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive multi-channel image viewer for R"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-archive
   r-colourpicker
@@ -37,11 +37,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('dc34f69f53490911e6f621d76db69f4c')
-sha256sums=('a82429120643e00d49ca9897b1eb3ecf477ae0c7cb0244d1a2fa828a8774676e')
+b2sums=('10ac690f8e7ced921f545efdd5a989e6bec0f56022b0debd68a710e7d0468a243be299ecc6dfd28cd24e89a77fa659162c299eb20ce7c091d6779167c9a93ea1')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

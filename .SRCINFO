@@ -1,10 +1,10 @@
 pkgbase = r-cytoviewer
 	pkgdesc = An interactive multi-channel image viewer for R
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/cytoviewer
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	depends = r-archive
 	depends = r-colourpicker
@@ -27,6 +27,6 @@ pkgbase = r-cytoviewer
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/cytoviewer_1.2.0.tar.gz
 	md5sums = dc34f69f53490911e6f621d76db69f4c
-	sha256sums = a82429120643e00d49ca9897b1eb3ecf477ae0c7cb0244d1a2fa828a8774676e
+	b2sums = 10ac690f8e7ced921f545efdd5a989e6bec0f56022b0debd68a710e7d0468a243be299ecc6dfd28cd24e89a77fa659162c299eb20ce7c091d6779167c9a93ea1
 
 pkgname = r-cytoviewer
