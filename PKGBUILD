@@ -1,17 +1,18 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=password-for-gnome-vala
-pkgver=1.4.0
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Calculator and random generator password for GNOME"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/elescoute/password-for-gnome-vala"
 license=('GPL3')
 depends=('libadwaita' 'libsoup3')
-makedepends=('meson' 'vala')
+makedepends=('meson' 'vala' 'webkitgtk-6.0')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('e809f25e5aba27ac3fc5df8c01432d5c20ceef6f4e200b8f4f6cba165667b6cd0c542ca180e2d068b62d5e7128ad2ab22aee7f57b0ef47bb408a218c523f9a8b')
+b2sums=('fe29dbd79ff4ac544212ea293f9194a97302f684dc3610e3e23d4d21f9ddaadf140a2acc2d9c67ab8289b7623ccdce9a1de1587be5853fa611364d4378c3945c')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
