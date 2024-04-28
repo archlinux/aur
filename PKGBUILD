@@ -3,7 +3,7 @@
 _pipname=pandoc-include
 pkgname=python-$_pipname
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Panflute filter to allow file includes'
 arch=(any)
 url="https://github.com/DCsunset/$_pipname"

@@ -1,7 +1,7 @@
 pkgbase = python-pandoc-include
 	pkgdesc = Panflute filter to allow file includes
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DCsunset/pandoc-include
 	arch = any
 	license = MIT
