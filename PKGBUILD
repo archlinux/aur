@@ -4,11 +4,11 @@ _pkgname=iNETgrate
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Integrates DNA methylation data with gene expression in a single gene network"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biocstyle
   r-caret
@@ -37,11 +37,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('fb3e503060d4294162e8690a6bb41059')
-sha256sums=('f786fddd3c6b47a9626578326a84154fd6f6735fd7db789c04644f7522704ffd')
+b2sums=('e662c423f300456f491ee92e7141c9782447b99c768885e983065f9d640d1905f88a84a04285916410669ca3959217761476bbd7f3a8e9e2871ac43d9d26ef59')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
