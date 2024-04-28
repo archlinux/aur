@@ -1,0 +1,22 @@
+pkgbase = swaybg
+	pkgdesc = Wallpaper tool for Wayland compositors
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/swaywm/swaybg
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = cairo
+	depends = gdk-pixbuf2
+	source = swaybg-1.2.1.tar.gz::https://github.com/swaywm/swaybg/releases/download/v1.2.1/swaybg-1.2.1.tar.gz
+	source = swaybg-1.2.1.tar.gz.sig::https://github.com/swaywm/swaybg/releases/download/v1.2.1/swaybg-1.2.1.tar.gz.sig
+	validpgpkeys = 9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A
+	validpgpkeys = 34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48
+	b2sums = 0183f11c2d8a967054572676a1c87c7d533c8f4a7bd204049d53e350966dfc825d2d779d0d8165cec9b8e019b9c1bc7a0b7702270b02aa0f02bfbc8400ec6b53
+	b2sums = SKIP
+
+pkgname = swaybg
