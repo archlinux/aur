@@ -5,11 +5,11 @@ _pkgname=ENmix
 _pkgver=1.38.01
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Quality control and analysis tools for Illumina DNA methylation BeadChip"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-annotationhub
   r-biobase
@@ -47,11 +47,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('3ac8861e8c3ad067b1baa266958227cd')
-sha256sums=('03b0aaba5716e78f7a8da53c555b1a1dbf74cf17a6182b180169dc9662a609f2')
+b2sums=('3adbbfc7e1d95ea2ea1c77a1cd39ac8c580fd64f208c4715b4e9b69e4c6de386314eb61eb03bbd7600541c591daf83daa33069f3e403b46178f029065a87af1a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
