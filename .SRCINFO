@@ -1,10 +1,11 @@
 pkgbase = python-bsdiff4
 	pkgdesc = Binary diff and patch using the BSDIFF4-format
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ilanschnell/bsdiff4
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
+	license = BSD-Protection
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

@@ -3,11 +3,12 @@
 
 pkgname=python-bsdiff4
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary diff and patch using the BSDIFF4-format"
 arch=('x86_64')
 url="https://github.com/ilanschnell/${pkgname##*-}"
-license=('BSD')
+license=('BSD-3-Clause'
+         'BSD-Protection')
 depends=('python')
 makedepends=('python-build'
              'python-installer'
@@ -24,6 +25,13 @@ build() {
 package() {
   cd "${pkgname##*-}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  head -n 28 LICENSE > "LICENSE-${pkgname}"
+  head -n +29 LICENSE > LICENSE-cx_bsdiff
+  rm LICENSE  
+  install -vDm0644 "LICENSE-${pkgname}" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-${pkgname}"
+  install -vDm0644 "LICENSE-cx_bsdiff" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-cx_bsdiff"
 }
 
