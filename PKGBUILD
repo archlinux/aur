@@ -4,11 +4,11 @@ _pkgname=coMethDMR
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Accurate identification of co-methylated and differentially methylated regions in epigenome-wide association studies"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-annotationhub
   r-biocparallel
@@ -34,11 +34,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0a6229d90868a4a60eb0f72c4499d1fc')
-sha256sums=('a5d26df311e9e10344634d51e8382c5cc2a6cc11a645087fed6ffb880287bade')
+b2sums=('b43b978f0621e85d47af43f9c06ff3f94e5f20a71f7866adc8852e30d8adf275926df630485a3f4a21c0f538cab8c9fd8186f3431e063e12ac503fb4510bbc63')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
