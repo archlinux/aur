@@ -1,39 +1,34 @@
 pkgname=dictpopup
-pkgver=r112.0a9a89a
+pkgver=0.1.1
 pkgrel=1
-epoch=
+epoch=1
 pkgdesc="A Japanese popup dictionary working on mouse selection with Anki integration"
 arch=('any')
-url="https://github.com/btrkeks/dictpopup"
-license=('BSD 3-Clause')
+license=('BSD')
 groups=()
 depends=('gtk3' 'libx11' 'lmdb')
 makedepends=('git')
 checkdepends=()
 optdepends=()
-provides=()
+provides=(dictpopup)
 conflicts=()
 replaces=()
 backup=()
 options=()
 install="$pkgname.install"
 changelog=
-source=("${pkgname}::git+https://github.com/btrkeks/dictpopup.git#branch=master")
+url="https://github.com/btrkeks/dictpopup"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('SKIP')
+sha256sums=('43a7052f71fcd881b085a959d0d0e6002c896077f6cfd5675e9c24413461f82d')
 validpgpkeys=()
 
-pkgver() {
-	cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}"/"${pkgname}-${pkgver}"
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}"/"${pkgname}-${pkgver}"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 }
