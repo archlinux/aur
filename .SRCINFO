@@ -1,7 +1,7 @@
 pkgbase = python-sparse
 	pkgdesc = Sparse multidimensional arrays on top of numpy and scipy
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sparse.pydata.org
 	arch = any
 	license = BSD-3-clause
