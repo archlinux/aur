@@ -3,14 +3,14 @@
 _py_name=exif
 pkgname=python-$_py_name
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Read and modify image EXIF metadata'
 arch=(any)
 url="https://gitlab.com/TNThieding/$_py_name"
 license=(MIT)
-_py_deps=(plum)
+_pydeps=(plum)
 depends=(python
-         "${_py_deps[@]/#/python-}")
+         "${_pydeps[@]/#/python-}")
 _archive="$_py_name-$pkgver"
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
