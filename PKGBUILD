@@ -3,7 +3,7 @@
 
 pkgname=twitch-dl
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=('any')
 url="https://github.com/ihabunek/twitch-dl"
@@ -16,6 +16,7 @@ makedepends=(
   python-build
   python-installer
   python-wheel)
+checkdepends=('python-pytest')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 b2sums=('4ef237c48a57e555bf381b598bdaaa2ac1be9366f3b07b4fa71537b21b65a283af95cbdc4598d34e6443da5ccc690c6c9c77f9f5c87621c90ad905ec51600458')
 
@@ -28,6 +29,11 @@ build() {
   cd "$pkgname-$pkgver"
   export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  make test
 }
 
 package() {

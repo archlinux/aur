@@ -1,10 +1,11 @@
 pkgbase = twitch-dl
 	pkgdesc = Twitch video downloader that use multiple concurrent connections
 	pkgver = 2.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ihabunek/twitch-dl
 	arch = any
 	license = GPL3
+	checkdepends = python-pytest
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-build
