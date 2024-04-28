@@ -8,8 +8,10 @@ pkgbase = latexrun-git
 	makedepends = git
 	depends = python
 	source = git+https://github.com/aclements/latexrun.git
-	source = biber-nocite-star.patch
+	source = 0001-biber-nocite-star.patch
+	source = 0002-fix-regex-syntaxwarnings.patch
 	sha256sums = SKIP
 	sha256sums = f906f761af941acc2a474a155787698a3d29d25f86234ec3d5bffdee8a82085a
+	sha256sums = 1e3a90b6d5ff86e8d98ecc717f0dc9dc8fb478b8ec2bc38da95d07732d8ff2fd
 
 pkgname = latexrun-git

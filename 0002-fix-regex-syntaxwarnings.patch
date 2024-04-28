@@ -1,0 +1,29 @@
+--- a/latexrun	2024-04-28 22:53:49.681175858 +0200
++++ b/latexrun	2024-04-28 22:54:37.347784677 +0200
+@@ -1211,7 +1211,7 @@
+                 return self.__runaway()
+             if lookingatre(r'(Overfull|Underfull|Loose|Tight) \\[hv]box \('):
+                 return self.__bad_box()
+-            if lookingatre('(Package |Class |LaTeX |pdfTeX )?(\w+ )?warning: ', re.I):
++            if lookingatre(r'(Package |Class |LaTeX |pdfTeX )?(\w+ )?warning: ', re.I):
+                 return self.__generic_warning()
+             if lookingatre('No file .*\\.tex\\.$', re.M):
+                 # This happens with \includes of missing files.  For
+@@ -1350,7 +1350,7 @@
+         stack = []
+         while self.__avail:
+             m1 = self.__lookingatre(r'<([a-z ]+|\*|read [^ >]*)> |\\.*(->|...)')
+-            m2 = self.__lookingatre('l\.[0-9]+ ')
++            m2 = self.__lookingatre(r'l\.[0-9]+ ')
+             if m1:
+                 found_context = True
+                 pre = self.__consume_line().rstrip('\n')
+@@ -1846,7 +1846,7 @@
+             return ('warning', None, None, m.group(1))
+ 
+         if match('^.*> ERROR - (.*)$'):
+-            m2 = re.match("BibTeX subsystem: (.*?), line (\d+), (.*)$", m.group(1))
++            m2 = re.match(r"BibTeX subsystem: (.*?), line (\d+), (.*)$", m.group(1))
+             if m2:
+                 return ('error', m2.group(1), m2.group(2), m2.group(3))
+             return ('error', None, None, m.group(1))
