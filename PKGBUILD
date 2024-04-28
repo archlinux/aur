@@ -4,11 +4,11 @@ _pkgname=SpatialFeatureExperiment
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Integrating SpatialExperiment with Simple Features in sf"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biocgenerics
   r-biocneighbors
@@ -44,7 +44,7 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('56d4ad5144861bea16c2f677e096ac75')
-sha256sums=('a67f7c39bd846a69fbd661a6b3f72648cd4e6ac553e75d925fec6256d5cc47fb')
+b2sums=('6b54649d999b5d4fc20252bb97a9d95fe702ccaa38aa98cd876e10e90efe0c0d1aa1ac1c2666b8baa30787b5d5eebb8c4b62c81d5a287327a2f11db6aaefb6e5')
 
 prepare() {
   # skip failing tests
@@ -57,8 +57,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

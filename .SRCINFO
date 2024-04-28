@@ -1,10 +1,10 @@
 pkgbase = r-spatialfeatureexperiment
 	pkgdesc = Integrating SpatialExperiment with Simple Features in sf
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/SpatialFeatureExperiment
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-dropletutils
 	checkdepends = r-sfarrow
 	checkdepends = r-sfedata
@@ -34,6 +34,6 @@ pkgbase = r-spatialfeatureexperiment
 	optdepends = r-vroom
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpatialFeatureExperiment_1.4.0.tar.gz
 	md5sums = 56d4ad5144861bea16c2f677e096ac75
-	sha256sums = a67f7c39bd846a69fbd661a6b3f72648cd4e6ac553e75d925fec6256d5cc47fb
+	b2sums = 6b54649d999b5d4fc20252bb97a9d95fe702ccaa38aa98cd876e10e90efe0c0d1aa1ac1c2666b8baa30787b5d5eebb8c4b62c81d5a287327a2f11db6aaefb6e5
 
 pkgname = r-spatialfeatureexperiment
