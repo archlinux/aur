@@ -3,7 +3,7 @@
 pkgname=python-gobbet
 _pyname=${pkgname#python-}
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Random news articles in any language '
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"

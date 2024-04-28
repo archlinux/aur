@@ -1,7 +1,7 @@
 pkgbase = python-gobbet
 	pkgdesc = Random news articles in any language
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/simoncozens/gobbet
 	arch = any
 	license = MIT
