@@ -10,8 +10,8 @@ pkgname=(
   "${_pkgbase}-license${_vcssuffix}"
   "${_pkgbase}-doc${_vcssuffix}"
 )
-pkgver=2.2.1+1.r788.20240319.36097fb
-pkgrel=2
+pkgver=2.6.2+25.r917.20240426.12ab271
+pkgrel=1
 pkgdesc='Handheld Daemon. A tool for managing the quirks of handheld devices. Latest git checkout.'
 arch=(
   'x86_64'
@@ -62,7 +62,7 @@ build() {
 
 package_hhd-git() {
   depends=(
-    "${_pkgbase}-license${_vcssuffix}=${pkgver}"
+    "${_pkgbase}-license${_vcssuffix}"
     'libusb'
     'python'
     'python-evdev'
@@ -93,7 +93,7 @@ package_hhd-systemd-git() {
   arch=('any')
   depends=(
     "${_pkgbase}"
-    "${_pkgbase}-license${_vcssuffix}=${pkgver}"
+    "${_pkgbase}-license${_vcssuffix}"
     "python-setuptools"
   )
   optdepends=(
@@ -120,7 +120,7 @@ package_hhd-doc-git() {
   pkgdesc="Documentation for '${_pkgbase}'."
   arch=('any')
   depends=(
-    "${_pkgbase}-license${_vcssuffix}=${pkgver}"
+    "${_pkgbase}-license${_vcssuffix}"
   )
   optdepends=(
     "${_pkgbase}: The software this Documentation is for."
@@ -147,8 +147,8 @@ package_hhd-license-git() {
   arch=('any')
   depends=()
   optdepends=(
-    "${pkgbase}=${pkgver}: The software this license file is for."
-    "${_pkgbase}-systemd${_vcssuffix}=${pkgver}: The code this license file is for."
+    "${pkgbase}: The software this license file is for."
+    "${_pkgbase}-systemd${_vcssuffix}: The code this license file is for."
   )
   provides=()
   conflicts=()
