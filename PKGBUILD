@@ -2,7 +2,7 @@
 
 _lang=en
 pkgname=ting-${_lang}
-pkgver=9.6.0_105
+pkgver=9.7.4
 pkgrel=1
 _llang=English
 pkgdesc="Daily ${_llang} Listening software from eusoft"
@@ -12,12 +12,12 @@ license=('unknown')
 _electron=electron11
 depends=("${_electron}")
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_${_lang}/ting_${_lang}.deb")
-sha512sums=('5a4b34103a603925ad434b70a093e1c50512820d37db9e53ad29985f174d3a0f988e8aeaa8dbfd104ba26d69ae7311a625ad8f63a1ad2b4544699a06452f831e')
+sha512sums=('233940fe7c2f73f260c5d6a61478fea9b16d93f5cfd9518e0db7b25655c11bf30c0fc8d5567bb0c57d3c07770c20aa678f3538c169e318ab31d9e2e008fbc528')
 
 prepare() {
     cd $srcdir
     mkdir -p build
-    tar -xvf data.tar.xz  -C build/
+    tar -xvf data.tar.xz -C build/
     cd build
     dir_name=$(ls opt/)
     mv opt/${dir_name}/resources/app.asar ${pkgname}.asar
@@ -28,14 +28,14 @@ package() {
 
     mv usr/ ${pkgdir}/usr
     mkdir -p ${pkgdir}/usr/share/eusoft/${pkgname}
-    mv  ${pkgname}.asar ${pkgdir}/usr/share/eusoft/${pkgname}/${pkgname}.asar
+    mv ${pkgname}.asar ${pkgdir}/usr/share/eusoft/${pkgname}/${pkgname}.asar
     sed -i "s|^Exec.*|Exec=${pkgname} %U|" ${pkgdir}/usr/share/applications/ting_${_lang}.desktop
 
     # link executable
     mkdir -p ${pkgdir}/usr/bin/
     echo """#!/usr/bin/bash
-${_electron} /usr/share/eusoft/${pkgname}/${pkgname}.asar --disable-gpu-sandbox "\$@"
-"""> ${pkgdir}/usr/bin/${pkgname}
+exec ${_electron} /usr/share/eusoft/${pkgname}/${pkgname}.asar --disable-gpu-sandbox "\$@"
+""" >${pkgdir}/usr/bin/${pkgname}
     chmod a+x ${pkgdir}/usr/bin/${pkgname}
 
 }
