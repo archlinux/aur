@@ -1,0 +1,20 @@
+pkgbase = obs-pipewire-audio-capture-multiple-git
+	pkgdesc = PipeWire audio capturing for OBS Studio (multiple-apps-per-source branch)
+	pkgver = 1.1.3.r5.gc35fb3c
+	pkgrel = 1
+	url = https://github.com/dimtpap/obs-pipewire-audio-capture/tree/multiple-apps-per-source
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = obs-studio
+	depends = wireplumber
+	optdepends = pipewire-pulse: record PulseAudio applications
+	optdepends = pipewire-jack: record JACK applications
+	optdepends = pipewire-alsa: record ALSA applications
+	provides = obs-pipewire-audio-capture
+	conflicts = obs-pipewire-audio-capture
+	source = git+https://github.com/dimtpap/obs-pipewire-audio-capture.git#branch=multiple-apps-per-source
+	md5sums = SKIP
+
+pkgname = obs-pipewire-audio-capture-multiple-git
