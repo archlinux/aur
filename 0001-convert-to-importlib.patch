@@ -1,0 +1,63 @@
+From 1c29cf918d5712890b41d39bfa6dd345d6cb8e05 Mon Sep 17 00:00:00 2001
+From: egnappahz <egnappah@gmail.com>
+Date: Sun, 28 Apr 2024 22:55:30 +0200
+Subject: [PATCH] convert to importlib
+
+Signed-off-by: egnappahz <egnappah@gmail.com>
+---
+ webapp/graphite/util.py | 32 +++++++++++++++++++-------------
+ 1 file changed, 19 insertions(+), 13 deletions(-)
+
+diff --git a/webapp/graphite/util.py b/webapp/graphite/util.py
+index 1b588902..975d6bdf 100644
+--- a/webapp/graphite/util.py
++++ b/webapp/graphite/util.py
+@@ -12,7 +12,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License."""
+ 
+-import imp
++import importlib.util
++import importlib.machinery
+ import io
+ import json as _json
+ import socket
+@@ -144,18 +145,23 @@ def is_unsafe_str(s):
+ 
+ 
+ def load_module(module_path, member=None):
+-  module_name = splitext(basename(module_path))[0]
+-  try:  # 'U' is default from Python 3.0 and deprecated since 3.9
+-    module_file = open(module_path, 'U')
+-  except ValueError:
+-    module_file = open(module_path, 'rt')
+-  description = ('.py', 'U', imp.PY_SOURCE)
+-  module = imp.load_module(module_name, module_file, module_path, description)
+-  if member:
+-    return getattr(module, member)
+-  else:
+-    return module
+-
++    module_name = splitext(basename(module_path))[0]
++    # Open the module file
++    with open(module_path, 'r') as module_file:
++        # Find the appropriate loader
++        loader = importlib.machinery.FileFinder(module_path)
++        # Load the spec
++        spec = loader.find_spec(module_name)
++        if spec is None:
++            raise ImportError(f"Could not find module: {module_name}")
++        # Create the module from the spec
++        module = importlib.util.module_from_spec(spec)
++        # Execute the module
++        spec.loader.exec_module(module)
++        if member:
++            return getattr(module, member)
++        else:
++            return module
+ 
+ def timestamp(dt):
+   "Convert a datetime object into epoch time"
+-- 
+2.44.0
+
