@@ -4,11 +4,11 @@
 _pyname=pygtrie
 pkgname=python-$_pyname
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python library implementing a trie data structure'
 arch=(any)
 url="https://github.com/google/$_pyname"
-license=(Apache)
+license=(Apache-2.0)
 depends=(python)
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
