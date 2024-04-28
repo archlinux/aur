@@ -1,8 +1,8 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=openai-chatgpt-nativefier
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=3
 pkgdesc="OpnenAI ChatGPT desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://chat.openai.com/"
@@ -52,4 +52,4 @@ package() {
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
 sha256sums=('9c55eca10f08761429d2b7b977c7aafc3c09789a9d1ec945d814d7de9d2b0203'
-            'a815f1a4bdd865b924b98c0c6d7f68e2b2439f8b8e98a42b714f7743dc10c126')
+            '12b4e19e51a05c4c9c1fc2a17ac44c5fac87ef2f3f5bcde351891da63614e2c3')
