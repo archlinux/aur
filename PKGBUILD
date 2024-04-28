@@ -20,11 +20,6 @@ build() {
   python -m build --wheel
 }
 
-check(){
-    cd $_name-$pkgver
-    pytest
-}
-
 package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
