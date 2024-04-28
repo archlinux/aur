@@ -5,10 +5,10 @@ _pkgname=NxtIRFcore
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Core Engine for NxtIRF: a User-Friendly Intron Retention and Alternative Splicing Analysis using the IRFinder Engine'
 arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.17/${_pkgname}"
 license=('MIT')
 depends=(
   r
@@ -55,7 +55,7 @@ optdepends=(
   r-shiny
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('c29e7033c51442003740b06d419179261134eae0a541337dbd156565762166f4')
 
 build() {
