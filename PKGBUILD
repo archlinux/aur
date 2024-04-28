@@ -53,6 +53,7 @@ build() {
       sed -i 's/arm/aarch64/g' code/qcommon/q_platform.h
     fi
   fi
+  unset CARCH CHOST CFLAGS CXXFLAGS LDFLAGS LTOFLAGS RUSTFLAGS DEBUG_CFLAGS DEBUG_CXXFLAGS DEBUG_RUSTFLAGS
   make
   cd "${srcdir}/gamecode"
   if [ $(uname -m) == 'aarch64' ]; then
@@ -63,7 +64,6 @@ build() {
       sed -i 's/arm/aarch64/g' code/qcommon/q_platform.h
     fi
   fi
-  unset CARCH CHOST CFLAGS CXXFLAGS LDFLAGS LTOFLAGS RUSTFLAGS DEBUG_CFLAGS DEBUG_CXXFLAGS DEBUG_RUSTFLAGS
   sed -i '/#define OS_STRING "linux"/a #define ARCH_STRING '"$(uname -m)" code/qcommon/q_platform.h
   make 
   cd "${srcdir}/openarena-svn"
@@ -85,7 +85,7 @@ package() {
   mv "${srcdir}/openarena-svn/build/uncut.pk3" "${pkgdir}/usr/lib/openarena/uncut"
 
   find "${pkgdir}/usr/lib/openarena" -type f -exec chmod 644 {} \;
-  chmod "${pkgdir}/usr/lib/openarena/"o*.$(uname -m) 755
+  chmod 755 "${pkgdir}/usr/lib/openarena/"o*.$(uname -m)
   find "${pkgdir}/usr/lib/openarena" -type d -exec chmod 755 {} \;
 
   # copy compiled files
