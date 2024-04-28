@@ -1,7 +1,7 @@
 pkgbase = python-nolds
 	pkgdesc = a package to calculate features from Rr Interval for HRV analyses
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aura-healthcare/hrv-analysis
 	arch = any
 	license = MIT
