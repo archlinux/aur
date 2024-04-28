@@ -1,19 +1,19 @@
 # Maintainer : MorsMortium <morsmortium@disroot.org>
 
 pkgname=0x0uploader
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='Uploader for the 0x0 file sharing service.'
 arch=('any')
 url="https://codeberg.org/MorsMortium/${pkgname}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 conflicts=('0x0uploader')
-depends=('bash' 'curl')
+depends=('bash' 'curl' 'hicolor-icon-theme')
 optdepends=('xclip: X clipboard'
     'wl-clipboard: Wayland clipboard'
     'libnotify: Notifications')
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/MorsMortium/$pkgname/archive/$pkgver.tar.gz")
-sha1sums=('a06c5a99d5527d6caae1c92ed2098acbf51b378f')
+sha1sums=('f191a97dac772bcc693b9a45805437fbd976f836')
 
 package() {
   cd "${srcdir}/${pkgname}"
