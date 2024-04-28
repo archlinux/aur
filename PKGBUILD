@@ -2,7 +2,7 @@
 
 pkgname=python-standardstreams
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Standard output, standard error, and standard input stream library'
 arch=(any)
 url="https://github.com/chrissimpkins/${pkgname#python-}"
@@ -11,7 +11,7 @@ depends=(python)
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="${pkgname#python-}-$pkgver"
-source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('93d418bf48c3cad0bd158f5be0814fd17af60f74780e43f2e53976d2fb03425c')
 
 build() {
