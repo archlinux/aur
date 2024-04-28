@@ -3,7 +3,7 @@
 pkgname=python-packageurl
 _gitpkgname=packageurl-python
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A purl aka. Package URL parser and builder'
 arch=('any')
 url='https://github.com/package-url/packageurl-python'
@@ -21,7 +21,7 @@ optdepends=(
   'python-sqlalchemy: for included contrib scripts'
 )
 conflicts=('python-packageurl-git')
-options=('!strip')
+options=('!debug' '!strip')
 source=("${_gitpkgname}-${pkgver}.tar.gz::https://github.com/package-url/packageurl-python/archive/v${pkgver}.tar.gz")
 sha512sums=('69a713e20841280759dae040f7c32a294c62c51e9ee6faba5bcda56ce3d14d8fa3bcb30256be1e93cedaab19248194c0580b81bfc741b6ff2de35dde11b6ab61')
 
