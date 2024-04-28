@@ -7,11 +7,11 @@ _pkgname=tidyverse
 _pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Easily Install and Load the 'Tidyverse'"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-broom
   r-cli
@@ -59,11 +59,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('f5705d42feb6697e214d8b007fda2f55')
-sha256sums=('3d3c2d135056333247d309d1c2cc98cc0d87e2c781f4c6fbceab28d28c0728e5')
+b2sums=('ec21d74b7776d4664a4353ba09457d0b9b85093f68b018dcc1cc82fc8cd5c5f2e29754611eb6a3a48cc2cc60cc9417b1f900fbf364608dcb7c169be74606b75f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

@@ -1,7 +1,7 @@
 pkgbase = r-tidyverse
 	pkgdesc = Easily Install and Load the 'Tidyverse'
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=tidyverse
 	arch = any
 	license = MIT
@@ -46,6 +46,6 @@ pkgbase = r-tidyverse
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/tidyverse_2.0.0.tar.gz
 	md5sums = f5705d42feb6697e214d8b007fda2f55
-	sha256sums = 3d3c2d135056333247d309d1c2cc98cc0d87e2c781f4c6fbceab28d28c0728e5
+	b2sums = ec21d74b7776d4664a4353ba09457d0b9b85093f68b018dcc1cc82fc8cd5c5f2e29754611eb6a3a48cc2cc60cc9417b1f900fbf364608dcb7c169be74606b75f
 
 pkgname = r-tidyverse
