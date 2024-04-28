@@ -41,7 +41,6 @@ optdepends=('python-dbus: for gajim-remote and zeroconf support'
             'kded5: store passwords encrypted in KSecretService'
             'python-crypto: support for E2E encryption'
             'python-docutils: for RST generator support'
-            'gupnp-igd: for UPnP-IGD support'
             'geoclue2: for sharing your location')
 provides=('gajim')
 conflicts=('gajim' 'gajim-hg' 'gajim-svn' 'gajim-git')

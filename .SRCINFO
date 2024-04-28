@@ -39,7 +39,6 @@ pkgbase = gajim-1.3
 	optdepends = kded5: store passwords encrypted in KSecretService
 	optdepends = python-crypto: support for E2E encryption
 	optdepends = python-docutils: for RST generator support
-	optdepends = gupnp-igd: for UPnP-IGD support
 	optdepends = geoclue2: for sharing your location
 	provides = gajim
 	conflicts = gajim
