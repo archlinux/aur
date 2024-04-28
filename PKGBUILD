@@ -3,7 +3,7 @@
 pkgname=aws-lambda-powertools-python
 newpkgname=powertools-lambda-python
 pkgver=2.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A developer toolkit to implement Serverless best practices and increase developer velocity'
 arch=(any)
 url="https://github.com/aws-powertools/$newpkgname"
