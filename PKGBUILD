@@ -2,25 +2,25 @@
 
 pkgname=nanoemoji
 pkgver=0.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A wee tool to build color fonts'
 arch=(any)
 url="https://github.com/googlefonts/$_pkgname"
-license=(Apache)
-_py_deps=(cffsubr # optdepends of ufo2ft required for [cffsubr]
-          fonttools
-          fs # optdepends of fonttols required for [ufo]
-          lxml
-          pillow
-          regex
-          toml
-          ufo2ft
-          ufolib2)
+license=(Apache-2.0)
+_pydeps=(cffsubr # optdepends of ufo2ft required for [cffsubr]
+         fonttools
+         fs # optdepends of fonttols required for [ufo]
+         lxml
+         pillow
+         regex
+         toml
+         ufo2ft
+         ufolib2)
 depends=(absl-py
          ninja
          picosvg
          python
-         "${_py_deps[@]/#/python-}")
+         "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 optdepends=('resvg: Support CBDT and sbix color fonts')
@@ -43,10 +43,12 @@ build() {
 check() {
 	cd "$_archive"
 	# Skip tests that assume shell access to installed executable
-	PYTHONPATH=build/lib pytest \
-		--deselect tests/extract_svgs_test.py \
-		--deselect tests/maximum_color_test.py \
-		--deselect tests/nanoemoji_test.py
+	local deselected=(
+		tests/extract_svgs_test.py
+		tests/maximum_color_test.py
+		tests/nanoemoji_test.py
+	)
+	PYTHONPATH=build/lib pytest ${deselected[@]/#/--deselect }
 }
 
 package() {
