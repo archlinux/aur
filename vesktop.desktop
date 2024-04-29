@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Vesktop
+GenericName=Internet Messenger
+Comment=Vesktop is a free/libre cross platform desktop app aiming to give you a snappier Discord experience with Vencord pre-installed
+Type=Application
+Exec=/usr/bin/vesktop
+Icon=vesktop
+Categories=Network;InstantMessaging;
+StartupWMClass=Vesktop;
+Keywords=discord;vencord;vesktop
