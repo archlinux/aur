@@ -1,4 +1,4 @@
-# Maintainer: Jguer <pkgbuilds at jguer.space>
+# Maintainer: Colin Teng <tfcolin@88.com>
 pkgname=ftbt
 pkgver=1.0.2
 pkgrel=1
