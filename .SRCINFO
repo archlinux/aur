@@ -1,0 +1,19 @@
+pkgbase = arandr-screenlayout-launch-cli-git
+	pkgdesc = Terminal programme to apply a setting from a saved screenlayout from ARandR.
+	pkgver = 20240429.01.r4.g9b661e4
+	pkgrel = 3
+	url = https://codeberg.org/dreieck/arandr-screenlayout-launch-cli
+	arch = any
+	license = GPL-3.0-or-later
+	license = LicenseRef-Custom
+	makedepends = git
+	depends = bash
+	optdepends = arandr: To generate the screenlayouts this software applies.
+	provides = arandr-screenlayout-launch-cli=20240429.01.r4.g9b661e4
+	provides = screenlayout=20240429.01.r4.g9b661e4
+	conflicts = arandr-screenlayout-launch-cli
+	conflicts = screenlayout
+	source = arandr-screenlayout-launch-cli::git+https://codeberg.org/dreieck/arandr-screenlayout-launch-cli.git
+	sha256sums = SKIP
+
+pkgname = arandr-screenlayout-launch-cli-git
