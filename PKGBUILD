@@ -5,7 +5,7 @@
 
 pkgname=brickv
 pkgver=2.4.26
-pkgrel=1
+pkgrel=2
 pkgdesc="testing/flashing tool for tinkerforge brick(let)s"
 url="http://www.tinkerforge.com/"
 license=("GPL2")
