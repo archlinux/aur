@@ -1,7 +1,7 @@
 # Maintainer: Kevin Lewis <aur AT kevin DOT oakaged DOT io>
 pkgname=flashpap
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free tool for extracting xPAP sleep data from FlashAir WiFi-enabled SD cards."
 arch=('any')
 url="http://www.cognitial.com/flashpap/index.htm"
