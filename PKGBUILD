@@ -5,7 +5,7 @@
 _pkgname=open-pha
 
 pkgname="${_pkgname}"
-pkgver=2.2.1
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="A comprehensive PHA, HAZOP and LOPA software solution from Kenexis"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip' '!debug')
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://d22j4f41zcdpc.cloudfront.net/Open+PHA-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('aa1d1e631b170fa4f436ae5c493880bf8fbf203635a3e7bd8ed07b09bd2d0072')
+sha256sums_x86_64=('63a6295a6f1da381c2f44dd7ff9b982303c0b7291bb3f12d027d89c8aa89a231')
 
 
 prepare() {
