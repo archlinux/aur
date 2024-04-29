@@ -1,0 +1,20 @@
+pkgbase = tcping-go
+	pkgdesc = A cross-platform ping program for TCP ports inspired by the Linux's ping utility.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/pouriyajamshidi/tcping
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = tcping-go
+	conflicts = tcping-go-bin
+	conflicts = tcping-go-git
+	conflicts = tcping
+	source = tcping-go-2.5.0.tar.gz::https://github.com/pouriyajamshidi/tcping/archive/refs/tags/v2.5.0.tar.gz
+	source = https://raw.githubusercontent.com/pouriyajamshidi/tcping/master/LICENSE
+	sha256sums = ac328e1b6954254e5f0a9da70cbe495dc6615f59197e067f5adb7df11886df83
+	sha256sums = be75abca323a78c4d69e7bbcbd0c806478f591efec89ba48729486fc34e2d30a
+
+pkgname = tcping-go
