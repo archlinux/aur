@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='beekeeper-studio'
 pkgname="$_pkgname-ultimate"
-pkgver='4.2.9'
+pkgver='4.3.0'
 pkgrel='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more - Ultimate edition'
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source=(
 )
 sha512sums=('e6b9a9ac3c62cc2b040c4ece48ab27a29e1ba8fbf2c3d45f299aeb7c2b0a967acb8e84171f5d71f63ebedba52a8f376beab40e8889bda668341aa1d9da50bd47'
             'be5c22a33b22a82c0a308ecfe66443915828a4f7f82f696dc429dcd4c8ea7e9f2a1087123c0fe3dc0599f9d7defe505fb88c18a52eb0b31f2d81f2e798090ef7')
-sha512sums_x86_64=('5a8ed20ea5c276bdb2482773c78143031187482fefd8c820b1030d56a6f65e86404221b281c4921535d39e348e7be78f1c57a28feb1040b3c80278588936924f')
-sha512sums_aarch64=('d3e567025cdb0967b37c1bdbb0255c09e161ca697c358d50e6d995286b05aee7e09727b6a25dc88f61ac7de5819d8f4857b7ae9ee3bf133a814205fa45dc66b5')
+sha512sums_x86_64=('043e5c80f42bf9e08be0180c928c7ca24465c7553dc452d2e11190e9606b5a5d5f930fc6d8bf2d86bc457303d17abba02bbdd27a24ec5babf50d07f45a63c01e')
+sha512sums_aarch64=('aade89e6ea9e872e769d3148a5d27f44a3bd9c9feb6714718fdb6e07cfcbb1e3c966d59053371ac6db0ee8c7c49638c48ccce4d3084ba85e54ca96ee40845359')
 
 _sourcedirectory="$pkgname-$pkgver"
 
