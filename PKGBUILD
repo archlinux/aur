@@ -1,7 +1,7 @@
 _basepgkname=llamafile
 pkgname="${_basepgkname}-bin"
 pkgver=0.8.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Distribute and run LLMs with a single file."
 arch=('x86_64')
 url="https://github.com/Mozilla-Ocho/llamafile"
@@ -13,9 +13,18 @@ optdepends=(
   'rocminfo: Used for verifying existance of rocm'
 	'cuda: Nvidia GPU-Offloading Support'
 	)
-source=("${pkgname}::https://github.com/Mozilla-Ocho/llamafile/releases/download/${pkgver}/llamafile-${pkgver}.zip")
-sha256sums=('4d36ab5f2fd7bc488c437732fba9943df1e0bb1370b76fa7a3161e817bbdbce8')
-provides=(  'llamafile'
+source=(    "${pkgname}::https://github.com/Mozilla-Ocho/llamafile/releases/download/${pkgver}/llamafile-${pkgver}.zip"
+            'llamafile.sh'
+       )
+
+sha256sums=(
+            '4d36ab5f2fd7bc488c437732fba9943df1e0bb1370b76fa7a3161e817bbdbce8'
+            'ac0866bd4bbd3d7d4c56fc735adedca5cc0a262d1ab0ef9291fd07db084acdfc'
+           )
+
+provides=(  
+            'llamafile.sh'
+            'llamafile'
             'llamafile-tokenize'
             'llamafile-convert'
             'llava-quantize'
@@ -30,6 +39,11 @@ options=(!strip)
 
 
 package() {
+
+  # Install shell script helper
+  install -Dm755 "llamafile.sh" "${pkgdir}/usr/bin/llamafile.sh"
+
+
   cd "${srcdir}"
 
   # Install binaries

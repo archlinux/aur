@@ -1,7 +1,7 @@
 pkgbase = llamafile-bin
 	pkgdesc = Distribute and run LLMs with a single file.
 	pkgver = 0.8.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Mozilla-Ocho/llamafile
 	arch = x86_64
 	license = Apache-2.0
@@ -10,6 +10,7 @@ pkgbase = llamafile-bin
 	optdepends = hipblas: Used for static compiling with rocm
 	optdepends = rocminfo: Used for verifying existance of rocm
 	optdepends = cuda: Nvidia GPU-Offloading Support
+	provides = llamafile.sh
 	provides = llamafile
 	provides = llamafile-tokenize
 	provides = llamafile-convert
@@ -20,6 +21,8 @@ pkgbase = llamafile-bin
 	conflicts = llamafile-git
 	options = !strip
 	source = llamafile-bin::https://github.com/Mozilla-Ocho/llamafile/releases/download/0.8.1/llamafile-0.8.1.zip
+	source = llamafile.sh
 	sha256sums = 4d36ab5f2fd7bc488c437732fba9943df1e0bb1370b76fa7a3161e817bbdbce8
+	sha256sums = ac0866bd4bbd3d7d4c56fc735adedca5cc0a262d1ab0ef9291fd07db084acdfc
 
 pkgname = llamafile-bin
