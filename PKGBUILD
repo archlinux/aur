@@ -1,13 +1,14 @@
 # Maintainer: Sparrow He <sparrowhe@gmail.com>
-# Contributor: la .uetcis. <uetcis at fal dot moe>
+# Maintainer: la .uetcis. <uetcis at fal dot moe>
 
 pkgname=euroscope-bin
 pkgver=3.2.9
-pkgrel=3
+pkgrel=4
 pkgdesc="A radar scope for VATSIM"
 arch=("x86_64")
 url="https://euroscope.hu/"
 license=('custom')
+makedepends=('catdoc')
 depends=('wine' 'winetricks')
 optdepends=('trackaudio-bin: Audio For VATSIM support')
 install=$pkgname.install
@@ -35,6 +36,8 @@ build() {
 package() {
     echo "Packaging EuroScope ..."
     install -m755 -d "$pkgdir/usr/share/$pkgname"
+    catdoc "$srcdir/tmp/env/drive_c/users/sparrow/AppData/Roaming/EuroScope/EuroScope - EULA.doc" | sed 's/Page[[:space:]]*PAGE[[:space:]]*1//g' \
+         > "$pkgdir/usr/share/$pkgname/LICENSE"
     cp -r "$srcdir/tmp/env/drive_c/Program Files (x86)/EuroScope" "$pkgdir/usr/share/$pkgname/"
     find "$pkgdir/usr/share/$pkgname/" -type d -exec chmod 755 "{}" \;
     find "$pkgdir/usr/share/$pkgname/" -type f -exec chmod 644 "{}" \;
