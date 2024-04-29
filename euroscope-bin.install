@@ -1,0 +1,20 @@
+post_install() {
+  update-desktop-database -q /usr/share/applications
+
+  echo "If you need to display CJK symbols, please use winetricks to install to ~/.local/share/wineprefixes/euroscope"
+  echo "Then start EuroScope with LC_ALL=zh_CN.UTF-8"
+  echo "Details on this can be found in the wine's documentation"
+  echo ""
+  echo "In general, dependencies will be automatically installed upon the first launch."
+  echo "However, in certain cases, automatic installation may fail without any notification."
+  echo "In such cases, you should run the following command to install the necessary dependencies:"
+  echo "WINEPREFIX=~/.local/share/wineprefixes/euroscope WINEARCH=win32 winetricks --unattended iertutil msls31 msxml6 urlmon vcrun2019 wininet"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+}

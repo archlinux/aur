@@ -7,18 +7,18 @@ export WINEARCH="win32"
 
 install_deps() {
    notify-send --app-name=EuroScope --icon=euroscope "Installing Dependencies" "It may take a few minutes."
-   winetricks --unattended iertutil msls31 msxml6 urlmon vcrun2019 wininet || notify-send --app-name=EuroScope --icon=euroscope "Error" "Install failed."; exit 1
+   winetricks --unattended iertutil msls31 msxml6 urlmon vcrun2019 wininet
    touch "$WINEPREFIX/.installed"
 }
 
 if [ ! -d $WINEPREFIX ] ; then
    mkdir -p $WINEPREFIX
-   wineboot -u
+   wine wineboot -u
    install_deps
 fi
 
 if [ ! -f "$WINEPREFIX/.installed" ] ; then
-   wineboot -u
+   wine wineboot -u
    install_deps
 fi
 

@@ -3,20 +3,20 @@
 
 pkgname=euroscope-bin
 pkgver=3.2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A radar scope for VATSIM"
 arch=("x86_64")
 url="https://euroscope.hu/"
 license=('custom')
 depends=('wine' 'winetricks')
-
+install=$pkgname.install
 source=("https://euroscope.hu/install/EuroScopeSetup.${pkgver}.msi"
         "euroscope-bin"
         "euroscope.desktop"
         "euroscope.png"
 )
 sha512sums=("b40dc7fd50f29a2c699ca9cbb985fcd4c2d227ce88d233c9404b942bcdc961ddd0656f08c1064ec05c572a9268e4fd1222769a36241b565f1f3d2539829da362"
-            "bac12cd3318682a3af7660d39b1fe8a27d5d6c45969a7995a59bf3b66880909568ad237b8b1c6dcb96e67653dbf870e7767d08ac8ad716283fcc0e289bea39ba"
+            "b6f82e603ab690a22fcff9d9f8808b7517e9fd4ac4d9f2e81105dad1081bee8d5645773e65d7c27c01d0c9a753fc3fc97148624fdc5e70c55c78198d45c68a2b"
             "ffa95249cf74e0401c165576a1a0efade2d4837df692fb8ed0c787563ef062afe8a4038f0704b8485c2ca1e8fa1835787c427f1f0faa4264c3481a61d8d6e544"
             "b7609ff79b2b6f5367979aefd567d9c7e34006adff59bb55004ba0c10da8929235bc2c043369bb7e8382900f21299357857435e3dfcf593e42d7eebe5e4a4e87"
 )
