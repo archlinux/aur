@@ -2,13 +2,15 @@
 
 pkgbase=groestlcoin
 pkgname=('groestlcoin-daemon' 'groestlcoin-cli' 'groestlcoin-qt' 'groestlcoin-tx' 'groestlcoin-wallet' 'groestlcoin-util')
-pkgver=26.0
+pkgver=27.0
 pkgrel=1
 arch=('x86_64')
 url="https://www.groestlcoin.org/groestlcoin-core-wallet/"
 makedepends=(
   boost
   db5.3
+  gcc-libs
+  glibc
   gmp
   libevent
   libminiupnpc.so
@@ -26,15 +28,15 @@ source=("$pkgbase-$pkgver.tar.gz::https://github.com/Groestlcoin/groestlcoin/rel
         "groestlcoin.tmpfiles"
         "groestlcoin-qt.desktop"
         "groestlcoin-qt.appdata.xml")
-sha256sums=('45ff0c7e58e3e6cd9be4db00f8ba02566249538487f5711e64d4f0187414fb46'
-            'ebf227f6714f490e6a40c96e80c8c8cae1b7b5e49c69733f4d014456f46238d9'
+sha256sums=('cf8de03ef104e67aa7c0c1f69fd78e19ea6fa3e8187d890d7916c1c72a3be530'
+            '40c9e0ee5460e363823e3f156643874d39b26f4f54bf259181918005fc61b9b2'
             'SKIP'
             '766f1732b72ee105aa4380ab9433bc6e7d957896e0f3d84eaf08202dc7c0fc85'
             '3cc8b772cd5bde500d74ec45c870168834b93b3b69197a8b1aa809d8b9a69d4f'
             '4dc7fe4ae360b2bbd2ffbebab8849417c31145adff2ecdcfbb3bb03835cd1cf7'
             '87f9a2bc6c3a91f7fd9668d84e35e69bdaed221c7d4655d39b54561845424e21')
-b2sums=('2dc43490e85e83fdb5c4582afb257b9ae863f58add69be4e21d0273c2e420017a59ff5e70fcac27556c12348567641529f9698a4661d8f1474537f596407a30a'
-        '46a75f32997540587b3b5971721b01ba9a770d502ff022468293a5b63c2ca5f2e8b5e2d92165a9453d80eab70f44870bd9eb6f1a1e3f12ea1f8f681fcf9e4213'
+b2sums=('46b0ef60a017d037e9d0094540e118fb7ca29d308544dfa735bacdf27113061e5e3e83d2be3eb9ad2a6545c5e743ffc8a173cdb0c7ed11e874662dbff4bddf88'
+        '919f2fc3952df8c5c1408d2ce9233d5f47dff76790bd81ffca750eaef40096e61ecc01e996bb4de27938ed557e8926eb9f1b0e6bec5ee84b129fa42a8163a7a0'
         'SKIP'
         'f6bfe677aea28c40794f3c37e48d908215543736c558ef9f3f7ada6cf1d9016200821903c6c676f4841092170cfa64ee8f03f697aea19ea82b78877f9167526b'
         'ebf2151e205daeb14ab5260f204040dcb2bf9969d3e6be8c166abdb74f86ef92a05174cc97f2360c8044c81e8bdfd68a74bf1f114dce8b75e421b4184165a54f'
@@ -61,6 +63,8 @@ package_groestlcoin-qt() {
   pkgdesc="Groestlcoin is a peer-to-peer network based digital currency - Qt"
   depends=(
     db5.3
+    gcc-libs
+    glibc
     gmp
     hicolor-icon-theme
     libevent
@@ -96,6 +100,8 @@ package_groestlcoin-daemon() {
   pkgdesc="Groestlcoin is a peer-to-peer network based digital currency - daemon"
   depends=(
     db5.3
+    gcc-libs
+    glibc
     gmp
     libevent
     libminiupnpc.so
@@ -144,6 +150,8 @@ package_groestlcoin-tx() {
   pkgdesc="Groestlcoin is a peer-to-peer network based digital currency - Transaction tool"
   depends=(
     db5.3
+    gcc-libs
+    glibc
     libsqlite3.so
   )
 
@@ -163,6 +171,8 @@ package_groestlcoin-wallet() {
   pkgdesc="Groestlcoin is a peer-to-peer network based digital currency - Wallet tool"
   depends=(
     db5.3
+    gcc-libs
+    glibc
     libsqlite3.so
   )
 
@@ -180,6 +190,8 @@ package_groestlcoin-util() {
   pkgdesc="Groestlcoin is a peer-to-peer network based digital currency - Util tool"
   depends=(
     db5.3
+    gcc-libs
+    glibc
     libsqlite3.so
   )
 
