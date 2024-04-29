@@ -13,7 +13,7 @@ depends=(
   'python-dateutil'
   'python-dacite'
 )
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 conflicts=('python-soundcloud')
 provides=('python-soundcloud')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
