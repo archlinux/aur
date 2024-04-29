@@ -4,30 +4,30 @@
 pkgname=ringracers
 pkgver=2.1
 _dataver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Kart racing video game originally based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2"
 arch=('x86_64' 'aarch64')
 license=('GPL2')
 url='https://www.kartkrew.org'
 depends=("ringracers-data>=$_dataver" 'curl' 'zlib' 'libpng' 'libvorbis' 'libvpx' 'libyuv' 'sdl2')
-makedepends=('git' 'cmake' 'ninja' 'mold')
+makedepends=('cmake' 'ninja' 'mold')
 
-source=("$pkgname"::"git+https://github.com/KartKrewDev/RingRacers.git#tag=v$pkgver"
+source=("$pkgname"::"https://github.com/KartKrewDev/RingRacers/archive/refs/tags/v$pkgver.tar.gz"
   "org.kartkrew.RingRacers.desktop"
   "0001-Check-if-mno-ms-bitfields-is-avail-before-using.patch")
-sha256sums=('2c93465969ebf38984609eee7ff38dd0ba947f985403ddf153013392db92b17e'
+sha256sums=('6980c398ca6ddb1e94cf60234483767390b396d693923437c98df8bd7d13b266'
             '812a12ad6a7e5ef7bea3ef3b24bc4e686e9b8df16221c478f202c96ee6ce413d'
             'e5360e7b35df6eed4d7f721c1cdce39cb7a6da7836a9e159cc459493a580b73c')
 
 prepare() {
-    patch --directory=$pkgname --forward --strip=1 --input=../0001-Check-if-mno-ms-bitfields-is-avail-before-using.patch
+    patch --directory=RingRacers-$pkgver --forward --strip=1 --input=../0001-Check-if-mno-ms-bitfields-is-avail-before-using.patch
 }
 
 build() {
   # Unset U_GLIBCXX_ASSERTIONS as a workaround until crashes related to it are fixed
   CXXFLAGS="$CXXFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
 
-  cmake -G Ninja -Wno-dev -B build -S "$pkgname" \
+  cmake -G Ninja -Wno-dev -B build -S "RingRacers-$pkgver" \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_LINKER_TYPE='MOLD' \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -40,6 +40,6 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
   mkdir -p "$pkgdir"/usr/bin/
   mv "$pkgdir"/usr/ringracers "$pkgdir"/usr/bin/
-  install -Dm644 "$pkgname"/srb2.png "$pkgdir"/usr/share/pixmaps/org.kartkrew.RingRacers.png
+  install -Dm644 "RingRacers-$pkgver"/srb2.png "$pkgdir"/usr/share/pixmaps/org.kartkrew.RingRacers.png
   install -Dm644 org.kartkrew.RingRacers.desktop "$pkgdir"/usr/share/applications/org.kartkrew.RingRacers.desktop
 }

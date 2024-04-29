@@ -1,6 +1,6 @@
 pkg/
 src/
-ringracers/
+ringracers
 *.zip
 *.tar.zst
 *.tar.gz
