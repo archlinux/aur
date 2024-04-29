@@ -2,8 +2,8 @@
 
 pkgname=python-libdecsync
 pkgver=2.2.1
-pkgrel=3
-pkgdesc="python3 wrapper around libdecsync"
+pkgrel=4
+pkgdesc="python wrapper around libdecsync"
 arch=('any')
 url="https://github.com/39aldo39/libdecsync-bindings-python3"
 license=('GPL')
