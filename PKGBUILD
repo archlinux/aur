@@ -2,7 +2,7 @@
 
 pkgname=git-dumper-git
 _pkgname=git-dumper
-pkgver=r56.32d47a2
+pkgver=r70.2d6fa4f
 pkgrel=1
 pkgdesc="A tool to dump a git repository from a website"
 arch=('any')
