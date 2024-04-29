@@ -2,7 +2,7 @@
 
 pkgname=python-radicale-decsync
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Radicale storage plugin to add synchronization using DecSync "
 arch=('any')
 url="https://github.com/39aldo39/Radicale-DecSync"
