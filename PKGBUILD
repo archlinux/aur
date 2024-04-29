@@ -10,13 +10,16 @@ arch=('any')
 url='https://github.com/mingrammer/diagrams'
 license=(MIT)
 
-makedepends=('python-poetry')
+makedepends=('python-poetry' 'git')
 depends=("python-graphviz")
 
 pkgver() {
   cd "${srcdir}/diagrams"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
+
+conflicts=('python-diagrams')
+provides=("python-diagrams=${pkgver%.r*}")
 
 source=("git+https://github.com/mingrammer/diagrams.git")
 sha256sums=("SKIP")

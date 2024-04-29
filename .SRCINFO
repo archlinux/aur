@@ -6,7 +6,10 @@ pkgbase = python-diagrams-git
 	arch = any
 	license = MIT
 	makedepends = python-poetry
+	makedepends = git
 	depends = python-graphviz
+	provides = python-diagrams=v0.23.4
+	conflicts = python-diagrams
 	source = git+https://github.com/mingrammer/diagrams.git
 	sha256sums = SKIP
 
