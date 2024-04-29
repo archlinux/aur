@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 
 unset QT_STYLE_OVERRIDE
-/opt/ultimaker-cura/AppRun "$@"
+
+if [[ "$XDG_SESSION_TYPE" = 'wayland' ]]; then
+    __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json MESA_LOADER_DRIVER_OVERRIDE=zink /opt/ultimaker-cura/AppRun "$@"
+else
+    /opt/ultimaker-cura/AppRun "$@"
+fi
