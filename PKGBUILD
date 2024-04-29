@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/pierr3/TrackAudio"
 license=('GPL-3.0-or-later')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}-git")
 depends=()
 source=("https://github.com/pierr3/TrackAudio/releases/download/${pkgver//_/-}/${_pkgname}_${pkgver//_/.}_amd64.deb")
 noextract=("${_pkgname}_${pkgver}_amd64.deb")

@@ -6,6 +6,7 @@ pkgbase = trackaudio-bin
 	arch = x86_64
 	license = GPL-3.0-or-later
 	provides = trackaudio
+	conflicts = trackaudio-git
 	noextract = trackaudio_1.0.2_beta.2_amd64.deb
 	source = https://github.com/pierr3/TrackAudio/releases/download/1.0.2-beta.2/trackaudio_1.0.2.beta.2_amd64.deb
 	b2sums = 2da7d1980a3f699e8b1f117506aebd1461a2710b2f9ff141f3c600efac249227c7e9fe4bc19cbd367168c6f279d50ebf6f21569fa8956a443b13055f78ed37b1
