@@ -5,7 +5,7 @@
 pkgname=openlp-git
 _pkgbase=openlp
 pkgver=r17869.ed7561bde
-pkgrel=2
+pkgrel=3
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
@@ -13,7 +13,7 @@ license=('GPL3')
 provides=('openlp')
 conflicts=('openlp')
 makedepends=('qt5-tools' 'git' 'python-pip')
-depends=('python>=3.10' 'python<3.12' 'python-pyqt5' 'phonon-qt5'
+depends=('python>=3.10' 'python<3.13' 'python-pyqt5' 'phonon-qt5'
          'python-pyqt5-webengine' 'python-flask' 'python-flask-cors'
          'python-pymediainfo' 'python-qrcode' 'python-platformdirs'
          'python-chardet' 'python-lxml' 'python-six'

@@ -1,7 +1,7 @@
 pkgbase = openlp-git
 	pkgdesc = Church presentation software.
 	pkgver = r17869.ed7561bde
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openlp.org/
 	install = openlp.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = openlp-git
 	makedepends = git
 	makedepends = python-pip
 	depends = python>=3.10
-	depends = python<3.12
+	depends = python<3.13
 	depends = python-pyqt5
 	depends = phonon-qt5
 	depends = python-pyqt5-webengine
