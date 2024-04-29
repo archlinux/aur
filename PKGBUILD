@@ -2,10 +2,10 @@
 # Created: 12/12/2016
 pkgname=autopanovideopro
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Stitch and create 360° videos automatically with Autopano Video Pro (trial version)."
 arch=('x86_64')
-url='http://www.kolor.com/autopano-video/'
+url='https://web.archive.org/web/20180822070241/http://kolor.com/autopano-video/'
 license=('custom: "commercial"')
 optdepends=('autopanogiga: Edit control points manually'
             'gopro-vr-player: 360 video player')
@@ -13,7 +13,7 @@ install="$pkgname.install"
 _archiveversion=400
 _archivename=AutopanoVideoPro_Linux64_${pkgver}.tar.xz
 
-source=("$_archivename::http://download.kolor.com/avp/stable/linux64tarxz/${pkgver}.${_archiveversion}"
+source=("https://web.archive.org/web/20181026081121if_/https://cdn-download.kolor.com/avp/2.6.2.400_2017-05-23/AutopanoVideoPro_Linux64_262_2017-05-23.tar.xz"
         "$pkgname"
         "$pkgname.desktop")
 
