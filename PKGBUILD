@@ -1,7 +1,7 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland
-pkgver=2.2.14
+pkgver=2.2.15
 pkgrel=1
 pkgdesc="Customize your Hyprland with scratchpads, menus, easy monitor layout and other extensions"
 arch=(any)
@@ -21,17 +21,19 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git checkout ${pkgver}
-	printf "%s" "$(git describe --tags)"
+    cd "$srcdir/${pkgname%-git}"
+    git checkout ${pkgver}
+    printf "%s" "$(git describe --tags)"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "$srcdir/${pkgname%-git}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm0644 "scripts/completions/pypr.bash" "$pkgdir/usr/share/bash-completion/completions/pypr"
+    install -Dm0644 "scripts/completions/pypr.zsh" "$pkgdir/usr/share/zsh/site-functions/_pypr"
 }
