@@ -61,6 +61,15 @@ depends=(
     'vmaf'
     'xz'
     'zlib'
+    'libbs2b'
+    'libjxl'
+    'libvpl'
+    'libopenmpt'
+    'librsvg'
+    'svt-av1'
+    'zimg'
+    'vulkan-icd-loader'
+    'ocl-icd'
 )
 makedepends=('git' 'avisynthplus' 'ladspa' 'nasm' 'srt' 'ladspa' 'amf-headers' 'opencl-headers' 'vulkan-headers')
 optdepends=('intel-media-sdk: for Intel Quick Sync Video')
