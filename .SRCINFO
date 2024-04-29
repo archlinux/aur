@@ -1,0 +1,23 @@
+pkgbase = python-pytermgui-git
+	pkgdesc = Easy building of TUIs in Python
+	pkgver = v7.7.1.r3.ge6ef8b3
+	pkgrel = 1
+	url = https://github.com/bczsalba/pytermgui
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-hatch-fancy-pypi-readme
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python>=3.7
+	depends = python-wcwidth
+	depends = python-typing_extensions
+	depends = python-yaml
+	optdepends = python-pytest: for running tests
+	provides = python-pytermgui
+	source = python-pytermgui-git::git+https://github.com/bczsalba/pytermgui.git
+	sha256sums = SKIP
+
+pkgname = python-pytermgui-git
