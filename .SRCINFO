@@ -1,10 +1,10 @@
 pkgbase = python-fontmake
 	pkgdesc = Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)
 	pkgver = 3.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/fontmake
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-compreffor
 	checkdepends = python-defcon
 	checkdepends = python-mutatormath

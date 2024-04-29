@@ -4,11 +4,11 @@
 pkgname=python-fontmake
 _pyname=${pkgname#python-}
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
-license=(Apache)
+license=(Apache-2.0)
 _pydeps=(attrs
          fontmath
          fonttools
