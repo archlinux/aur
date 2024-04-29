@@ -1,0 +1,22 @@
+pkgbase = android-armv7a-eabi-sord
+	pkgdesc = A lightweight C library for storing RDF data in memory (Android armv7a-eabi)
+	pkgver = 0.16.16
+	pkgrel = 1
+	url = https://drobilla.net/software/sord.html
+	arch = any
+	license = ISC
+	makedepends = android-meson
+	makedepends = android-armv7a-eabi-pcre2
+	makedepends = android-armv7a-eabi-serd
+	makedepends = android-armv7a-eabi-zix
+	depends = android-armv7a-eabi-pcre2
+	depends = android-armv7a-eabi-serd
+	depends = android-armv7a-eabi-zix
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.drobilla.net/sord-0.16.16.tar.xz
+	md5sums = 003384f397d832180b0cc1bdf339368d
+
+pkgname = android-armv7a-eabi-sord
