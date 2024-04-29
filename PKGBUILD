@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='certbot-dns-vultr'
 pkgver='0.2.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Authenticator plugin for Certbot to configure Vultr to respond to ACME dns-01 challenges to obtain HTTPS certificates'
 arch=('any')
@@ -20,7 +20,7 @@ build() {
 	python setup.py build
 }
 
-# Tests currently don't pass
+# The test_add_txt_record_try_twice_to_find_domain test currently doesn't pass
 # check() {
 # 	cd "$srcdir/$_sourcedirectory/"
 # 	python -m unittest discover --verbose
