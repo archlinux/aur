@@ -81,6 +81,7 @@ _main_package() {
     nasm
     nodejs
     python
+    python-setuptools
     rust
     unzip
     wasi-compiler-rt
