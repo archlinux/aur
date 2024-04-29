@@ -1,7 +1,7 @@
 pkgbase = arandr-screenlayout-launch-cli-git
 	pkgdesc = Terminal programme to apply a setting from a saved screenlayout from ARandR.
 	pkgver = 20240429.01.r5.g3ae1bde
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dreieck/arandr-screenlayout-launch-cli
 	arch = any
 	license = GPL-3.0-or-later

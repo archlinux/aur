@@ -4,7 +4,7 @@ _executablename=screenlayout
 _pkgname=arandr-screenlayout-launch-cli
 pkgname="${_pkgname}-git"
 pkgver=20240429.01.r5.g3ae1bde
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal programme to apply a setting from a saved screenlayout from ARandR."
 url="https://codeberg.org/dreieck/arandr-screenlayout-launch-cli"
 license=(
@@ -68,6 +68,7 @@ package() {
   install -Dvm644 'logo.png' "${pkgdir}/usr/share/pixmaps/${_executablename}.png"
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" README.md git.log
+  ln -svr "${pkgdir}/usr/share/pixmaps/${_executablename}.png" "${pkgdir}/usr/share/doc/${_pkgname}/logo.png"
   ln -svr "${pkgdir}/usr/share/doc/${_pkgname}" "${pkgdir}/usr/share/doc/${_executablename}"
 
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE LICENSE-logo TERMS-craiyon.com.txt
