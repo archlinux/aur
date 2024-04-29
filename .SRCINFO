@@ -1,26 +1,18 @@
 pkgbase = python-cairo-git
-	pkgdesc = Python bindings for the cairo graphics library. Git version.
-	pkgver = 1.25.0.r21.ge44fe88
-	pkgrel = 2
-	url = http://www.cairographics.org/
-	arch = arm
-	arch = armv7h
-	arch = aarch64
-	arch = powerpc
-	arch = i686
+	pkgdesc = Python bindings for the cairo graphics library
+	pkgver = 1.26.0.r1.gda92fff
+	pkgrel = 1
+	url = https://github.com/pygobject/pycairo
 	arch = x86_64
-	license = LGPL3
+	license = LGPL-2.1-only
+	checkdepends = python-pytest
 	makedepends = git
-	makedepends = pkg-config
-	makedepends = python-setuptools
+	makedepends = meson
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	depends = cairo
 	depends = python
-	depends = cairo>=1.12
-	provides = python-cairo=1.20.0
-	provides = pycairo=1.20.0
-	conflicts = python-cairo
-	conflicts = pycairo
-	options = !libtool
-	source = python-cairo::git+https://github.com/pygobject/pycairo
+	source = python-cairo::git+https://github.com/pygobject/pycairo.git
 	sha256sums = SKIP
 
 pkgname = python-cairo-git
