@@ -1,0 +1,21 @@
+pkgbase = cosmopolitan-bin
+	pkgdesc = Build-once run-anywhere c library.
+	pkgver = 3.3.3
+	pkgrel = 1
+	url = https://github.com/jart/cosmopolitan
+	arch = x86_64
+	license = ISC
+	provides = ape
+	provides = cosmo-c++filt
+	provides = cosmo-cc
+	provides = cosmo-ar
+	provides = llamafile-imatrix
+	provides = llamafile-quantize
+	provides = llamafile-perplexity
+	provides = zipalign
+	conflicts = llamafile-git
+	options = !strip
+	source = cosmopolitan-bin::https://github.com/jart/cosmopolitan/releases/download/3.3.3/cosmocc-3.3.3.zip
+	sha256sums = e4d0fa63cd79cc3bfff6c2d015f1776db081409907625aea8ad40cefc1996d08
+
+pkgname = cosmopolitan-bin
