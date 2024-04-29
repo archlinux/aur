@@ -1,0 +1,24 @@
+# Maintainer: Kevin MacMartin <prurigro at gmail dot com>
+
+_pkgname=zombie-imp
+pkgname=python-${_pkgname}
+pkgver=0.0.2
+pkgrel=1
+pkgdesc='A copy of the imp module that was removed in Python 3.12'
+arch=('any')
+url='https://github.com/encukou/zombie-imp'
+license=('GPL3')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("https://github.com/encukou/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('SKIP')
+
+build() {
+  cd $_pkgname-${pkgver}
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd $_pkgname-${pkgver}
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
