@@ -1,0 +1,23 @@
+--- versioneer.py	2023-02-26 20:03:27.000000000 +0100
++++ versioneer.py	2024-04-29 21:57:53.667603621 +0200
+@@ -339,9 +339,18 @@
+     # configparser.NoOptionError (if it lacks "VCS="). See the docstring at
+     # the top of versioneer.py for instructions on writing your setup.cfg .
+     setup_cfg = os.path.join(root, "setup.cfg")
+-    parser = configparser.SafeConfigParser()
++
++    if hasattr(configparser, 'SafeConfigParser') and callable(getattr(configparser, 'SafeConfigParser')):
++        parser = configparser.SafeConfigParser()
++    else:
++        parser = configparser.ConfigParser()
++
+     with open(setup_cfg, "r") as f:
+-        parser.readfp(f)
++        if hasattr(parser, 'readfp') and callable(getattr(parser, 'readfp')):
++            parser.readfp(f)
++        else:
++            parser.read_file(f)
++
+     VCS = parser.get("versioneer", "VCS")  # mandatory
+ 
+     def get(parser, name):

@@ -26,6 +26,8 @@ pkgbase = pcbdraw
 	options = !strip
 	options = !emptydirs
 	source = pcbdraw-1.1.2.tar.gz::https://github.com/yaqwsx/PcbDraw/archive/refs/tags/v1.1.2.tar.gz
+	source = versioneer.patch
 	sha512sums = 067678386bf0d0b4adcaa62513822add9daa7ee3e33504c4284de94f9b87a9df8fc399eb401c084da616be27f70d09e22d5b7640de9a53a7fabf15b92d1ca34a
+	sha512sums = 327d2cebda5b448cdf4bd5d641cb36ba1f2f31b63c3eaf61861fc2fd51e5e5fb2c5871e30b393d15350d163fce6c0616eb56c58e3dbf7f72083b3c744c0cb975
 
 pkgname = pcbdraw
