@@ -1,7 +1,7 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=puddletag-git
-pkgver=2.3.0.r1.g6fe83ef
+pkgver=2.3.0.r19.g180463d
 pkgrel=1
 pkgdesc="An audio tag editor for GNU/Linux, git version"
 url="https://github.com/${pkgname%%-*}/${pkgname%%-*}"
@@ -26,22 +26,12 @@ optdepends=('chromaprint: AcoustID support'
 provides=("${pkgname%%-*}")
 conflicts=("${pkgname%%-*}")
 replaces=("${pkgname%%-*}-qt5-git")
-source=("${pkgname}::git+${url}"
-        "pyparsing-pep-8.patch::${url}/pull/880.patch")
-sha512sums=('SKIP'
-            '2dfa1e6dac1262a8f9386c55df35e8b96c3cbe306f126a25df8adfc05a030dd313cf7083c01edd7ccfd7ffca7e7f896c3646c2966c949cc210d6a84a907710ea')
+source=("${pkgname}::git+${url}")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname}"
-
-  # Apply pyparsing PEP-8 usage patch
-  # Source: https://github.com/puddletag/puddletag/pull/880
-  patch -Np1 -i ../pyparsing-pep-8.patch
 }
 
 build() {
