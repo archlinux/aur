@@ -1,6 +1,6 @@
 pkgbase = strumpract-bin
 	pkgdesc = Various tools for musicians.
-	pkgver = 3.6.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/fredvs/strumpract
 	arch = aarch64
@@ -13,13 +13,13 @@ pkgbase = strumpract-bin
 	depends = libvorbis
 	depends = libogg
 	depends = libx11
-	provides = strumpract=3.6.0
+	provides = strumpract=3.8.0
 	conflicts = strumpract
-	source_aarch64 = strumpract-3.6.0-aarch64.zip::https://github.com/fredvs/strumpract/releases/download/3.6.0/StrumPract_3_6_0_linux_rpi-aarch64.zip
-	sha256sums_aarch64 = 337e7db15298fb30eb5ffbe61d0f3ea9f10a7f0bef33e26e41f981acd12e1ef0
-	source_i686 = strumpract-3.6.0-i686.zip::https://github.com/fredvs/strumpract/releases/download/3.6.0/StrumPract_3_6_0_linux_i386.zip
-	sha256sums_i686 = 34235446c24720569d73d9ecb761b45807505707e8708557cf277e26c408a06d
-	source_x86_64 = strumpract-3.6.0-x86_64.zip::https://github.com/fredvs/strumpract/releases/download/3.6.0/StrumPract_3_6_0_linux_amd64.zip
-	sha256sums_x86_64 = c8d3906777cfbf72862d63a897aeaf280dc01d60f891e1324fb9fab5a9b950cf
+	source_aarch64 = strumpract-3.8.0-aarch64.zip::https://github.com/fredvs/strumpract/releases/download/3.8.0/StrumPract_3_8_0_linux_rpi-aarch64.zip
+	sha256sums_aarch64 = a0628787e91d202367c4783dc1fa7cf4f311e40c0b0d5172378167f8f050e41d
+	source_i686 = strumpract-3.8.0-i686.zip::https://github.com/fredvs/strumpract/releases/download/3.8.0/StrumPract_3_8_0_linux_i386.zip
+	sha256sums_i686 = fb2f9da1de81af313298301ef6c540097584ecc11ecfe2cc76a818f4af54dc0e
+	source_x86_64 = strumpract-3.8.0-x86_64.zip::https://github.com/fredvs/strumpract/releases/download/3.8.0/StrumPract_3_8_0_linux_amd64.zip
+	sha256sums_x86_64 = 478d4e52985cd97a3c39e0b2da0584208394faa7ef44c951356e42270fb05db0
 
 pkgname = strumpract-bin
