@@ -1,7 +1,7 @@
 pkgbase = log4net
 	pkgdesc = A tool to help the programmer output log statements to a variety of output targets
 	pkgver = 2.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://logging.apache.org/log4net/
 	arch = any
 	license = Apache
@@ -15,4 +15,3 @@ pkgbase = log4net
 	sha256sums = 6ce4f40252e0716fb098149e99d1763d7290cc55cc2ccd1420456b1a3b33bb2d
 
 pkgname = log4net
-
