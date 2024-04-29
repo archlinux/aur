@@ -2,17 +2,17 @@
 # Contributor: Lorenzo Cappelletti <lorenzo.cappelletti gmail.com>
 
 pkgname=python-pydash
-pkgver=7.0.7
+pkgver=8.0.1
 pkgrel=1
 pkgdesc='The kitchen sink of Python utility libraries for doing "stuff" in a functional way. Based on the Lo-Dash Javascript library.'
 arch=('any')
 url='https://github.com/dgilland/pydash'
 license=('MIT')
 checkdepends=(python-pytest python-pytest-cov)
-depends=(python python-typing-extensions)
+depends=(python python-typing_extensions)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ef09b336d2e48fa338326fd1a4a1977fa9ca85105b46b6285ce57c351a738f66')
+sha256sums=('d6062f75b6f6eecfcd5b571137babc69c4c19cb5a432c77948fe2cae188985bf')
 
 build() {
   cd "pydash-${pkgver}"
