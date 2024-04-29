@@ -1,13 +1,13 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=webfakes
-_cranver=1.3.0
+_cranver=1.3.1
 pkgname=r-${_cranname,,}
 pkgdesc="Fake Web Apps for HTTP Testing"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 
 arch=("i686" "x86_64")
 depends=(
@@ -49,7 +49,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("a356ea5e963643b4b1fa63a950a09736af6f5c6337b8c2b9672ea33439fe9f32e940e7c71427560060682dbd316a6c1dda814ed5f79938d96b3ba01825e7104b")
+b2sums=("0664d742b38849bb8703c2ffe994d4c9cd4d45d012636e3d4f3c8825a241ba1895ce06f81ba024dcc0cf9f2a6525113f2d457767e437874d0b14e66835df2b86")
 
 build() {
     mkdir -p "${srcdir}/build/"
