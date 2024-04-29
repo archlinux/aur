@@ -1,7 +1,7 @@
 # Maintainer: Tobias Borgert <tobias (dot) borgert (at) gmail (dot) com>
 
 pkgname=ecal
-pkgver=5.12.4
+pkgver=5.13.0
 pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
@@ -10,13 +10,12 @@ license=('Apache')
 depends=('curl' 'protobuf' 'python' 'python-protobuf' 'qt5-base' 'qwt' 'hdf5' 'yaml-cpp')
 makedepends=('cmake' 'doxygen' 'git' 'graphviz' 'patchelf' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz" "termcolor-gcc13.patch")
-sha256sums=('7a535a3f57c3890c6f45281609ac4d1521eb98b30ca169d76b6013265cf29d25'
-            'df919e327f89688914e620a508facee6288528af815df1d581606375ece1a5b9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz")
+sha256sums=('42444743f97a4e42b182e2ec0483459a3306a13c46a4af0b7bc113463850f924')
 backup=('etc/ecal/ecal.ini' 'etc/ecal/ecaltime.ini')
 
 prepare() {
-    patch --forward --strip=1 --input="termcolor-gcc13.patch"
+    :
 }
 
 build() {
