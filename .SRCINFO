@@ -1,0 +1,23 @@
+pkgbase = hiddify-aur-x64
+	pkgdesc = Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/hiddify/hiddify-next
+	arch = x86_64
+	license = CC-BY-NC-SA-4.0
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = libayatana-appindicator
+	depends = libdbusmenu-glib
+	depends = libayatana-indicator
+	depends = ayatana-ido
+	optdepends = gnome-shell-extension-appindicator: for system tray icon if you are using Gnome
+	provides = hiddify
+	conflicts = hiddify-next
+	conflicts = hiddify-next-git
+	source = hiddify-next-1.1.1.deb::https://github.com/hiddify/hiddify-next/releases/download/v1.1.1/Hiddify-Debian-x64.deb
+	sha256sums = 546afb3eded8199714b585cffb1bc075b917f21d78d99b78d26c0d6be79ea7bf
+
+pkgname = hiddify-aur-x64
