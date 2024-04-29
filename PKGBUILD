@@ -9,15 +9,26 @@ license=('ISC')
 source=("${pkgname}::https://github.com/jart/cosmopolitan/releases/download/${pkgver}/cosmocc-${pkgver}.zip")
 sha256sums=('e4d0fa63cd79cc3bfff6c2d015f1776db081409907625aea8ad40cefc1996d08')
 provides=(  'ape'
-            'cosmo-c++filt'
-            'cosmo-cc'
-            'cosmo-ar'
-            'llamafile-imatrix'
-            'llamafile-quantize'
-            'llamafile-perplexity'
-            'zipalign'
+            'cosmoreadelf'
+            'cosmoar'
+            'cosmocpp'
+            'cosmoc++filt'
+            'cosmoaddr2line'
+            'cosmoelfedit'
+            'cosmog++'
+            'cosmocc'
+            'cosmostrip'
+            'cosmonm'
+            'cosmosize'
+            'cosmoc++'
+            'cosmoobjcopy'
+            'cosmoas'
+            'cosmold'
+            'cosmoobjdump'
+            'cosmoranlib'
+            'cosmogcc'
         )
-conflicts=('llamafile-git')
+conflicts=('cosmopolitan-git')
 options=(!strip)
 
 
