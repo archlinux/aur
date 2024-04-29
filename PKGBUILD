@@ -13,7 +13,7 @@
 ## basic info
 _pkgname="midori"
 pkgname="$_pkgname-git"
-pkgver=11.3.1.r38.g621c242
+pkgver=11.3.2.r24.ga9c39ee
 pkgrel=1
 pkgdesc="Web browser based on Floorp"
 url="https://github.com/goastian/midori-desktop"
@@ -55,6 +55,7 @@ makedepends=(
   nasm
   nodejs
   python
+  python-setuptools
   rust
   unzip
   wasi-compiler-rt
@@ -72,8 +73,8 @@ optdepends=(
   'xdg-desktop-portal: Screensharing with Wayland'
 )
 
-if [[ "${_build_pgo::1}" == "t" ]] ; then
-  if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+if [[ "${_build_pgo::1}" == "t" ]]; then
+  if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
     makedepends+=(
       xorg-server-xvfb
     )
@@ -140,7 +141,7 @@ prepare() {
   cp "floorp/apis"/api-*-key ./
 
   # configure
-  cat >../mozconfig <<END
+  cat > ../mozconfig << END
 ac_add_options --enable-application=browser
 ac_add_options --disable-artifact-builds
 
@@ -249,17 +250,17 @@ build() {
   ulimit -n 4096
 
   # Do 3-tier PGO
-  if [[ "${_build_pgo::1}" == "t" ]] ; then
+  if [[ "${_build_pgo::1}" == "t" ]]; then
     # find previous profile file...
     local _old_profdata _old_jarlog _pkgver_old tmp_old tmp_new
     _pkgver_prof=$(
       cd "${SRCDEST:-$startdir}"
-      for i in *.profdata ; do [ -f "$i" ] && echo "$i" ; done \
+      for i in *.profdata; do [ -f "$i" ] && echo "$i"; done \
         | sort -rV | head -1 | sed -E 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
     )
 
     # new profile for new major version
-    if [ "${_pkgver_prof%%.*}" != "${pkgver%%.*}" ] ; then
+    if [ "${_pkgver_prof%%.*}" != "${pkgver%%.*}" ]; then
       _build_pgo_reuse=false
       _pkgver_prof="$pkgver"
     fi
@@ -268,7 +269,7 @@ build() {
     _tmp_old=$(echo "${_pkgver_prof}" | cut -d'-' -f2 | cut -d'.' -f2)
     _tmp_new=$(echo "${pkgver}" | cut -d'-' -f2 | cut -d'.' -f2)
 
-    if [ "${_tmp_new:-0}" -gt "${_tmp_old:-0}" ] ; then
+    if [ "${_tmp_new:-0}" -gt "${_tmp_old:-0}" ]; then
       _build_pgo_reuse=false
       _pkgver_prof="$pkgver"
     fi
@@ -277,22 +278,22 @@ build() {
     local _old_jarlog="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-jarlog"
 
     # Restore old profile
-    if [[ "${_build_pgo_reuse::1}" == "t" ]] ; then
-      if [[ -s "$_old_profdata" ]] ; then
+    if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
+      if [[ -s "$_old_profdata" ]]; then
         echo "Restoring old profile data."
         cp --reflink=auto -f "$_old_profdata" merged.profdata
       fi
 
-      if [[ -s "$_old_jarlog" ]] ; then
+      if [[ -s "$_old_jarlog" ]]; then
         echo "Restoring old jar log."
         cp --reflink=auto -f "$_old_jarlog" jarlog
       fi
     fi
 
     # Make new profile
-    if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]] ; then
+    if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]]; then
       echo "Building instrumented browser..."
-      cat >.mozconfig ../mozconfig - <<END
+      cat > .mozconfig ../mozconfig - << END
 ac_add_options --enable-profile-generate=cross
 export MOZ_ENABLE_FULL_SYMBOLS=1
 END
@@ -301,7 +302,7 @@ END
       echo "Profiling instrumented browser..."
       ./mach package
 
-      if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+      if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
         local _headless_run=(
           xvfb-run
           -s "-screen 0 1920x1080x24 -nolisten local"
@@ -321,11 +322,11 @@ END
     fi
 
     echo "Building optimized browser..."
-    cat >.mozconfig ../mozconfig
+    cat > .mozconfig ../mozconfig
 
-    if [[ -s merged.profdata ]] ; then
+    if [[ -s merged.profdata ]]; then
       stat -c "Profile data found (%s bytes)" merged.profdata
-      cat >>.mozconfig - <<END
+      cat >> .mozconfig - << END
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 END
@@ -336,9 +337,9 @@ END
       echo "Profile data not found."
     fi
 
-    if [[ -s jarlog ]] ; then
+    if [[ -s jarlog ]]; then
       stat -c "Jar log found (%s bytes)" jarlog
-      cat >>.mozconfig - <<END
+      cat >> .mozconfig - << END
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
 
@@ -351,7 +352,7 @@ END
     ./mach build
   else
     echo "Building browser..."
-    cat >.mozconfig ../mozconfig
+    cat > .mozconfig ../mozconfig
 
     ./mach build
   fi
@@ -362,7 +363,7 @@ package() {
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "$vendorjs" <<END
+  install -Dvm644 /dev/stdin "$vendorjs" << END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -389,7 +390,7 @@ pref("services.settings.main.search-telemetry-v2.last_check", $(date +%s));
 END
 
   local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" <<END
+  install -Dvm644 /dev/stdin "$distini" << END
 [Global]
 id=archlinux
 version=${pkgver}
@@ -403,7 +404,7 @@ END
 
   # search provider
   local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini"
-  install -Dvm644 /dev/stdin "$sprovider" <<END
+  install -Dvm644 /dev/stdin "$sprovider" << END
 [Shell Search Provider]
 DesktopId=$_pkgname.desktop
 BusName=org.mozilla.${_pkgname//-/}.SearchProvider
