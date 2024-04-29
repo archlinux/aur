@@ -1,6 +1,6 @@
 pkgbase = lazap-bin
 	pkgdesc = Lightweight cross-platform client, unifying games into a single, modern library 🎮 (binary release)
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/Lazap-Development/Lazap
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lazap-bin
 	depends = webkit2gtk
 	provides = lazap
 	conflicts = lazap
-	source = https://github.com/Lazap-Development/Lazap/releases/download/v0.8.0/lazap_0.8.0_amd64.deb
-	sha256sums = b00c7733e88198b37bfa50a353ced7c4f6966a21cb328c3e0df6f140ed33f443
+	source = https://github.com/Lazap-Development/Lazap/releases/download/v0.8.1/lazap_0.8.1_amd64.deb
+	sha256sums = d6331919c80aa42cf4950ac7800e045c95a2b817732f45d59da0b0614c42ee01
 
 pkgname = lazap-bin
