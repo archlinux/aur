@@ -1,4 +1,5 @@
-# Maintainer: Kevin Lewis <aur AT kevin DOT oakaged DOT io>
+# Maintainer: Markus Hartung <mail@hartmark.se>
+# Contributor: Kevin Lewis <aur AT kevin DOT oakaged DOT io>
 pkgname=flashpap
 pkgver=1.3.1
 pkgrel=2
