@@ -1,36 +1,50 @@
-# Maintainer: Alex Daum <alexander.daum@mailbox.org>
-# Co-maintainer: Yao Yunshan <qimuzi@aliyun.com>
-pkgname=eclipse-cpp-bin
-pkgver=2023.09
-_releasemonth="2023-09"
-pkgrel=1
+# Maintainer: Mattia Moffa <mattia [at] moffa [dot] xyz>
+
+_pkgname=eclipse-cpp
+pkgname=${_pkgname}-bin
+epoch=2
+pkgver=4.31
+pkgrel=2
+_release=2024-03/R
 pkgdesc="Highly extensible IDE (C/C++ version)"
-arch=('x86_64')
-url="https://www.eclipse.org"
+arch=('x86_64' 'aarch64')
+url="https://www.eclipse.org/"
 license=('EPL')
-depends=()
-# may add depends later
-makedepends=('tar')
-provides=('eclipse-cpp')
-conflicts=('eclipse-cpp')
-#file="https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_releasemonth/R/${pkgname%-bin}-$_releasemonth-R-linux-gtk-$CARCH.tar.gz&r=1"
-file="https://mirrors.bfsu.edu.cn/eclipse/technology/epp/downloads/release/${_releasemonth}/R/${pkgname%-bin}-${_releasemonth}-R-linux-gtk-${arch}.tar.gz"
-source=(
-	"${file}"
-	"eclipse-cpp.desktop"
-	"eclipse-cpp.png"
-)
-sha512sums=('62bb58ce22873a5af2205c520bd28a3971fdcb0e7a27aeaeb2e7b717dfd2e7ce613f52885f459dddaf1274d19100f5561b6277cbea38c4c90142688ef8f990e5'
-            '2156b0f409fe99673c731d084d8c617b0c8bf4dfd26a2d78f8d0f75c95c28cabde0dc8704ed6d2bb86bdda897949ee13ba0ee8c2e4ac8cadecd938934a24eca4'
-            '7933c44f9e4d47aa89706e839fd5f1339e58454125cc8533ea4d7d391f677805ebcb937857ccea305f8829a2e8c6b38dc0447491ad0fbd26e55fcad6c782128f')
+depends=('java-runtime>=17' webkit2gtk unzip)
+makedepends=()
+provides=(eclipse=$pkgver-$pkgrel)
+conflicts=(eclipse)
+options=(!strip)
+
+_srcfilename_x86_64="$_pkgname-${_release//\//-}-linux-gtk-x86_64.tar.gz"
+_srcfilename_aarch64="$_pkgname-${_release//\//-}-linux-gtk-aarch64.tar.gz"
+
+source_x86_64=("$_srcfilename_x86_64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_x86_64&r=1")
+source_aarch64=("$_srcfilename_aarch64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_aarch64&r=1")
+
+sha512sums_x86_64=('ebbde32b16fbd49716c3d5fef40fe6e510115f1698cf35f9fde23f11ba2be11a524d6e5179b15a1cf30af135b8f27a3efac301111b6160e6cdac9977a42082fd')
+sha512sums_aarch64=('40a5b0f31de779579ccf39653fffd158fdf710b3a06340a81d018e9fbc1257ebd23f70a600838868e18b931a81b7bc8abe0974b0cb37a9eb08b9e6a143bc42f2')
+
+source=("eclipse.desktop")
+sha512sums=('96a532509459056c470e18bc5fde639cd9725b831ff69864a444ed8282dd87aefe71b23be92280f22a480f2321794c4e3f7b8026925fb03625f0bb954a06e139')
+
+#backup=('usr/lib/eclipse/eclipse.ini')
 
 package() {
-	tar -zxvf ${pkgname%-bin}-${_releasemonth}-R-linux-gtk-${arch}.tar.gz
-	mkdir -p ${pkgdir}/opt
-	cp -r ${srcdir}/eclipse ${pkgdir}/opt/eclipse-cpp
-	mkdir -p ${pkgdir}/usr/bin
-	ln -s /opt/eclipse-cpp/eclipse ${pkgdir}/usr/bin/eclipse-cpp
-	install -Dm644 eclipse-cpp.desktop $pkgdir/usr/share/applications/eclipse-cpp.desktop
-	# install -Dm644 eclipse-cpp.png "$pkgdir/usr/share/pixmaps/eclipse-cpp.png"
-	# default comment icon because many icon theme has this icon
+    install -d "${pkgdir}/usr/lib"
+    cp -r "eclipse" "${pkgdir}/usr/lib/eclipse"
+    install -d "${pkgdir}/usr/bin"
+    #ln -s "/usr/lib/eclipse/eclipse" "${pkgdir}/usr/bin/eclipse"
+    cat > "${pkgdir}/usr/bin/eclipse" <<EOF
+#!/bin/sh
+env WEBKIT_DISABLE_DMABUF_RENDERER=1 /usr/lib/eclipse/eclipse
+EOF
+    chmod 755 "${pkgdir}/usr/bin/eclipse"
+
+    install -Dm644 "eclipse.desktop" "${pkgdir}/usr/share/applications/eclipse.desktop"
+
+    for i in 16 22 24 32 48 64 128 256 512 1024 ; do
+        install -Dm644 eclipse/plugins/org.eclipse.platform_${pkgver}*/eclipse$i.png \
+            "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/eclipse.png"
+    done
 }

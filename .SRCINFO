@@ -1,18 +1,22 @@
-pkgbase = eclipse-cpp-bin
+pkgbase = eclipse-cpp
 	pkgdesc = Highly extensible IDE (C/C++ version)
-	pkgver = 2023.09
-	pkgrel = 1
-	url = https://www.eclipse.org
+	pkgver = 4.31
+	pkgrel = 2
+	epoch = 2
+	url = https://www.eclipse.org/
 	arch = x86_64
+	arch = aarch64
 	license = EPL
-	makedepends = tar
-	provides = eclipse-cpp
-	conflicts = eclipse-cpp
-	source = https://mirrors.bfsu.edu.cn/eclipse/technology/epp/downloads/release/2023-09/R/eclipse-cpp-2023-09-R-linux-gtk-x86_64.tar.gz
-	source = eclipse-cpp.desktop
-	source = eclipse-cpp.png
-	sha512sums = 62bb58ce22873a5af2205c520bd28a3971fdcb0e7a27aeaeb2e7b717dfd2e7ce613f52885f459dddaf1274d19100f5561b6277cbea38c4c90142688ef8f990e5
-	sha512sums = 2156b0f409fe99673c731d084d8c617b0c8bf4dfd26a2d78f8d0f75c95c28cabde0dc8704ed6d2bb86bdda897949ee13ba0ee8c2e4ac8cadecd938934a24eca4
-	sha512sums = 7933c44f9e4d47aa89706e839fd5f1339e58454125cc8533ea4d7d391f677805ebcb937857ccea305f8829a2e8c6b38dc0447491ad0fbd26e55fcad6c782128f
+	depends = java-runtime>=17
+	depends = webkit2gtk
+	depends = unzip
+	provides = eclipse=4.31-2
+	conflicts = eclipse
+	source = eclipse.desktop
+	sha512sums = 96a532509459056c470e18bc5fde639cd9725b831ff69864a444ed8282dd87aefe71b23be92280f22a480f2321794c4e3f7b8026925fb03625f0bb954a06e139
+	source_x86_64 = eclipse-cpp-2024-03-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-03/R/eclipse-cpp-2024-03-R-linux-gtk-x86_64.tar.gz&r=1
+	sha512sums_x86_64 = ebbde32b16fbd49716c3d5fef40fe6e510115f1698cf35f9fde23f11ba2be11a524d6e5179b15a1cf30af135b8f27a3efac301111b6160e6cdac9977a42082fd
+	source_aarch64 = eclipse-cpp-2024-03-R-linux-gtk-aarch64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-03/R/eclipse-cpp-2024-03-R-linux-gtk-aarch64.tar.gz&r=1
+	sha512sums_aarch64 = 40a5b0f31de779579ccf39653fffd158fdf710b3a06340a81d018e9fbc1257ebd23f70a600838868e18b931a81b7bc8abe0974b0cb37a9eb08b9e6a143bc42f2
 
-pkgname = eclipse-cpp-bin
+pkgname = eclipse-cpp
