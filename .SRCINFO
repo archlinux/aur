@@ -1,0 +1,13 @@
+pkgbase = mbg
+	pkgdesc = a game whose rules is a hybrid of 'monoply' and 'sanguo'
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://gitee.com/tfcolin/mbg
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go>=1.20
+	depends = gtk3
+	source = mbg-1.4.0.tar.gz::https://github.com/tfcolin/mbg/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 3473d99f2b4eda187d88271f89cf0067f1c0fda18bb9f31419faf13a2a3c71c8
+
+pkgname = mbg
