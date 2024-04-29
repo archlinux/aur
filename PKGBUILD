@@ -6,12 +6,13 @@
 # Contributor: YidaozhanYa <yidaozhan_ya@outlook.com>
 # Contributor: whitels <2959471117@qq.com>
 # Contributor: wxt1221 <3264117476@qq.com>
+# 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
 _pkgname="io.github.msojocs.${pkgname%-bin}"
 pkgver=1.13.2_1
 _electronversion=21
 epoch=5
-pkgrel=2
+pkgrel=3
 pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client'
 arch=(
     'aarch64'
@@ -19,6 +20,8 @@ arch=(
 )
 url='https://github.com/msojocs/bilibili-linux'
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=(
     'ffmpeg'
     "electron${_electronversion}"
@@ -31,7 +34,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 sha256sums_aarch64=('beef17931cbc34f451116557c84ce25bafdc6269954e477a3678b2e65335f60e')
 sha256sums_x86_64=('caa81036c4c3e224f9e0b25811b57a764ece0fb2a866f5fad57111610e0cb120')
 build() {
@@ -51,7 +54,5 @@ package() {
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/opt/apps/${_pkgname}/entries/icons/hicolor/scalable/apps/${_pkgname}.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
-    install -Dm644 "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    #有点离谱哈，不知道为啥
-    #感谢 Peternal 对 SVG图标 的授权
+    install -Dm644 "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"   
 }
