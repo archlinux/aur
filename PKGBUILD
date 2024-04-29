@@ -2,7 +2,7 @@
 
 pkgname=python-pillow-jpegxl-plugin
 _pkgname=pillow-jpegxl-plugin
-pkgver=1.2.4
+pkgver=1.2.0
 pkgrel=0
 pkgdesc="A Python Pillow plugin that adds jxl support"
 arch=("any")
@@ -13,13 +13,13 @@ depends=("python" "python-pillow")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools" "python-pytest-runner" "python-maturin" "rust" "maturin")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz"
         "git+https://github.com/Isotr0py/jpegxl-rs.git")
-sha256sums=('ab34c9a1611d1ed5db1c4206554972465d440431b56a7e978e284c920bfa9596'
+sha256sums=('ff64f5ab48ad45fa5eea5acd5e72cb9079c2837a1e7c3a187e44f287c093acc3'
             'SKIP')
 
 prepare() {
      cd "$srcdir/jpegxl-rs"
      git checkout plugin
-    cd "${srcdir}/$_pkgname-$pkgver"
+     cd "${srcdir}/$_pkgname-$pkgver"
 #    git submodule init
 #    git config submodule.*.url "$srcdir/jpegxl-rs"
 #    git -c protocol.file.allow=always submodule update
@@ -37,11 +37,11 @@ build() {
 #    sed -i 's/=static//g' build.rs
 #    sed -i 's/-static//g' build.rs
 #    python -m build --wheel --no-isolation
-    maturin build --release --features vendored
-#    maturin build --release --features dynamic
+#    maturin build --release --features vendored
+     maturin build --release --features dynamic
 }
 
 package() {
     cd "$_pkgname-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" target/wheels/*.whl
 }
