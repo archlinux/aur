@@ -18,10 +18,9 @@ build() {
 }
 
 package() {
-    echo $(pwd)
-    install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
     cd "$pkgname"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
