@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=notesnook
 pkgname="${_pkgname}-electron-bin"
-pkgver=2.6.17
-_electronversion=25
+pkgver=3.0.0
+_electronversion=29
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.Use system-wide Electron"
 arch=(
@@ -15,7 +15,8 @@ license=('GPL-3.0-or-later')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
+    'nodejs'
 )
 makedepends=(
     'fuse2'
@@ -25,14 +26,14 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/do
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('a0b25b10b08273f0a960e26fab0dd56f0032387e7480161588da047b7ffd6604')
-sha256sums_x86_64=('cbe569bad7295c2be2ba508d8d0bad914d970b9262f482955c377af7ec57cbf2')
+sha256sums=('61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+sha256sums_aarch64=('7a5c232bb924738cb13e7597ef6b93f84ff5019ff69be391601f41af67fc2866')
+sha256sums_x86_64=('3a1fda9f7ac6c3cdc69e2dd292206cc13e3b03c970918c3cd91ed5ea44fd2988')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
