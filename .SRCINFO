@@ -1,0 +1,20 @@
+pkgbase = android-x86-64-vamp-plugin-sdk
+	pkgdesc = The Vamp audio analysis plug-in system (Android x86-64)
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://www.vamp-plugins.org/
+	arch = any
+	license = BSD
+	makedepends = android-x86-64-libsndfile
+	depends = android-ndk
+	optdepends = android-x86-64-libsndfile: for vamp-simple-host
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/vamp-plugins/vamp-plugin-sdk/archive/refs/tags/vamp-plugin-sdk-v2.10.tar.gz
+	source = 0001-Unversioned-libs.patch
+	md5sums = 1e3277ade07411623e70bf977edfc954
+	md5sums = 2245055b46d0113c5f6ddeb5cdf746b1
+
+pkgname = android-x86-64-vamp-plugin-sdk
