@@ -2,7 +2,7 @@
 _pkgname=swayfx
 pkgname="$_pkgname"
 pkgver=0.4
-pkgrel=5
+pkgrel=0
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
@@ -19,12 +19,13 @@ depends=(
 	"libjson-c.so"
 	"libudev.so"
 	"libwayland-server.so"
-	"libwlroots.so=11"
+	"libwlroots.so"
 	"libxcb"
 	"libxkbcommon.so"
 	"pango"
 	"pcre2"
 	"ttf-font"
+	"libscenefx.so"
 )
 optdepends=(
 	"alacritty: Terminal emulator used by the default config"
