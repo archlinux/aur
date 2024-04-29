@@ -4,11 +4,11 @@ _pkgname=MetaboAnnotation
 _pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Utilities for Annotation of Metabolomics Data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-annotationhub
   r-biocgenerics
@@ -42,11 +42,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('fee181fc1795a1e2bde1d1e551f1a45e')
-sha256sums=('7ba37b6a82c6725fc79de69ab7f37ab6af7e17b4dee4973c9ed5fc073eaa54bd')
+b2sums=('795945384861f3a99f2a2598799d77411cd144b9f9b883a63cf984ec1541e068b626183502fd8c4a50afec2ef78ff9a2cfa1d889eb0a0858d69948918e7f467a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
