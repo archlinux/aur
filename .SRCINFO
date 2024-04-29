@@ -1,4 +1,4 @@
-pkgbase = eclipse-cpp
+pkgbase = eclipse-cpp-bin
 	pkgdesc = Highly extensible IDE (C/C++ version)
 	pkgver = 4.31
 	pkgrel = 2
@@ -12,6 +12,7 @@ pkgbase = eclipse-cpp
 	depends = unzip
 	provides = eclipse=4.31-2
 	conflicts = eclipse
+	options = !strip
 	source = eclipse.desktop
 	sha512sums = 96a532509459056c470e18bc5fde639cd9725b831ff69864a444ed8282dd87aefe71b23be92280f22a480f2321794c4e3f7b8026925fb03625f0bb954a06e139
 	source_x86_64 = eclipse-cpp-2024-03-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-03/R/eclipse-cpp-2024-03-R-linux-gtk-x86_64.tar.gz&r=1
@@ -19,4 +20,4 @@ pkgbase = eclipse-cpp
 	source_aarch64 = eclipse-cpp-2024-03-R-linux-gtk-aarch64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-03/R/eclipse-cpp-2024-03-R-linux-gtk-aarch64.tar.gz&r=1
 	sha512sums_aarch64 = 40a5b0f31de779579ccf39653fffd158fdf710b3a06340a81d018e9fbc1257ebd23f70a600838868e18b931a81b7bc8abe0974b0cb37a9eb08b9e6a143bc42f2
 
-pkgname = eclipse-cpp
+pkgname = eclipse-cpp-bin
