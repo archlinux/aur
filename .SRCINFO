@@ -1,0 +1,22 @@
+pkgbase = android-x86-sord
+	pkgdesc = A lightweight C library for storing RDF data in memory (Android x86)
+	pkgver = 0.16.16
+	pkgrel = 1
+	url = https://drobilla.net/software/sord.html
+	arch = any
+	license = ISC
+	makedepends = android-meson
+	makedepends = android-x86-pcre2
+	makedepends = android-x86-serd
+	makedepends = android-x86-zix
+	depends = android-x86-pcre2
+	depends = android-x86-serd
+	depends = android-x86-zix
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.drobilla.net/sord-0.16.16.tar.xz
+	md5sums = 003384f397d832180b0cc1bdf339368d
+
+pkgname = android-x86-sord
