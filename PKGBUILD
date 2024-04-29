@@ -36,7 +36,7 @@ build() {
 package() {
     echo "Packaging EuroScope ..."
     install -m755 -d "$pkgdir/usr/share/$pkgname"
-    catdoc "$srcdir/tmp/env/drive_c/users/sparrow/AppData/Roaming/EuroScope/EuroScope - EULA.doc" | sed 's/Page[[:space:]]*PAGE[[:space:]]*1//g' \
+    catdoc "$srcdir/tmp/env/drive_c/users/$USER/AppData/Roaming/EuroScope/EuroScope - EULA.doc" | sed 's/Page[[:space:]]*PAGE[[:space:]]*1//g' \
          > "$pkgdir/usr/share/$pkgname/LICENSE"
     cp -r "$srcdir/tmp/env/drive_c/Program Files (x86)/EuroScope" "$pkgdir/usr/share/$pkgname/"
     find "$pkgdir/usr/share/$pkgname/" -type d -exec chmod 755 "{}" \;
