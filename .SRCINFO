@@ -9,10 +9,8 @@ pkgbase = python-pyotrs-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-poetry
-	makedepends = fakeroot
-	makedepends = debugedit
 	makedepends = git
-	depends = python
+	depends = python>=3.7
 	depends = python-requests
 	depends = python-deprecation
 	provides = python-pyotrs
