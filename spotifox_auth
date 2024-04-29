@@ -1,0 +1,6 @@
+lastfm_key : <your LastFM API Key>
+lastfm_secret : <your LastFM API secret>
+spotify_clientid : <your Spotify ClientID>
+
+# This is only a template. Replace with your own key
+# and secret, and copy to $HOME/.config/spotifox directory.
