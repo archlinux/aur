@@ -18,8 +18,8 @@ index 453a21f..384f5ef 100644
  Requires-Dist: colorama (>=0.4,<0.5)
  Requires-Dist: importlib-metadata (>=3.10.0,<4.0.0); python_version < "3.8"
 -Requires-Dist: keyring (>=21.1,<24.0.0)
-+Requires-Dist: keyring (>=21.1,<25.0.0)
- Requires-Dist: lxml (>=4.3,<5.0)
++Requires-Dist: keyring (>=21.1)
+ Requires-Dist: lxml (>=4.3)
  Requires-Dist: prompt-toolkit (>=3.0.3,<4.0.0)
  Requires-Dist: pyxdg (>=0.26,<0.28)
 @@ -201,4 +201,3 @@ $ result/bin/openconnect-sso --help
@@ -36,9 +36,9 @@ index 040605f..42f6f0e 100644
  importlib-metadata = { version = "^3.10.0", python = "<3.8" }
  lxml = "^4.3"
 -keyring = ">=21.1, <24.0.0"
-+keyring = ">=21.1, <25.0.0"
++keyring = ">=21.1"
  prompt-toolkit = "^3.0.3"
- pyxdg = ">=0.26, <0.28"
+ pyxdg = ">=0.26, <0.29"
  requests = "^2.22"
 diff --git a/setup.py b/setup.py
 index 4c08404..2b85c98 100644
@@ -49,10 +49,10 @@ index 4c08404..2b85c98 100644
   'attrs>=18.2',
   'colorama>=0.4,<0.5',
 - 'keyring>=21.1,<24.0.0',
-+ 'keyring>=21.1,<25.0.0',
-  'lxml>=4.3,<5.0',
++ 'keyring>=21.1',
+  'lxml>=4.3',
   'prompt-toolkit>=3.0.3,<4.0.0',
-  'pyxdg>=0.26,<0.28',
+  'pyxdg>=0.26,<0.29',
 -- 
 2.41.0
 

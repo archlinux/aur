@@ -15,7 +15,8 @@ index 57d1852..62493da 100644
 +++ b/PKG-INFO
 @@ -28,7 +28,7 @@ Requires-Dist: importlib-metadata (>=3.10.0,<4.0.0); python_version < "3.8"
  Requires-Dist: keyring (>=21.1,<24.0.0)
- Requires-Dist: lxml (>=4.3,<5.0)
+-Requires-Dist: lxml (>=4.3,<5.0)
++Requires-Dist: lxml (>=4.3)
  Requires-Dist: prompt-toolkit (>=3.0.3,<4.0.0)
 -Requires-Dist: pyxdg (>=0.26,<0.28)
 +Requires-Dist: pyxdg (>=0.26,<0.29)
@@ -28,7 +29,7 @@ index 040605f..2d0f19f 100644
 +++ b/pyproject.toml
 @@ -27,7 +27,7 @@ importlib-metadata = { version = "^3.10.0", python = "<3.8" }
  lxml = "^4.3"
- keyring = ">=21.1, <24.0.0"
+ keyring = ">=21.1, <25.0.0"
  prompt-toolkit = "^3.0.3"
 -pyxdg = ">=0.26, <0.28"
 +pyxdg = ">=0.26, <0.29"
@@ -39,9 +40,10 @@ diff --git a/setup.py b/setup.py
 index 4c08404..42493a7 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -14,7 +14,7 @@ install_requires = \
+@@ -14,7 +14,7 @@ 'colorama>=0.4,<0.5'
   'keyring>=21.1,<24.0.0',
-  'lxml>=4.3,<5.0',
+- 'lxml>=4.3,<5.0',
++ 'lxml>=4.3',
   'prompt-toolkit>=3.0.3,<4.0.0',
 - 'pyxdg>=0.26,<0.28',
 + 'pyxdg>=0.26,<0.29',
