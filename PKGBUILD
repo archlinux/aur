@@ -2,7 +2,7 @@
 
 pkgname=git-delete-merged-branches
 pkgver=7.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line tool to delete merged Git branches."
 arch=('any')
 url="https://pypi.org/project/git-delete-merged-branches/"
