@@ -2,7 +2,7 @@
 pkgname='blender-launcher-git'
 _pkgname='blenderlauncher'
 _pkgname1='Blender-Launcher-V2'
-pkgver=v2.1.24.r6.g522706a
+pkgver=v2.2.0.rc.1.r2.g99d4c14
 pkgtarget='_Linux_x64'
 pkgrel=1
 pkgdesc='Blender Launcher is a standalone software client that provides management for stable, daily and experimental builds of Blender 3D. It is a free open source project available for 64-bit Windows and Linux (GLIBC 2.31 and higher) operating systems.'
@@ -30,6 +30,7 @@ build() {
 	pdm venv activate
 	pdm install
 	python build_style.py
+	mv scripts/build_linux.sh ./
 	sh build_linux.sh
 }
 
