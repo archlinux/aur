@@ -1,7 +1,7 @@
 pkgbase = absolutely-proprietary
 	pkgdesc = Proprietary package detector for arch-based distros that uses Parabola's package blacklist
 	pkgver = 20220518
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vmavromatis/absolutely-proprietary
 	arch = any
 	license = GPL-3.0-only
