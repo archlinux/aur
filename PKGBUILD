@@ -1,13 +1,14 @@
 # Maintainer: Max Harmathy <max.harmathy@web.de>
 pkgname=python-stashy
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Python API client for the Atlassian Stash REST API"
 arch=('any')
 url="https://github.com/cosmin/stashy"
 license=('APACHE2')
 makedepends=(
   python-mock
+  python-setuptools
 )
 depends=(
   python-requests
