@@ -1,0 +1,18 @@
+pkgbase = cosmoscli-git
+	pkgdesc = Easier way to use the CosmosOS C# toolkit! (C# Open Source Managed Operating Systems)
+	pkgver = v1.3.1
+	pkgrel = 1
+	url = https://github.com/PratyushKing/cosmosCLI
+	arch = x86_64
+	license = GPL v3.0
+	makedepends = git
+	makedepends = make
+	makedepends = dotnet-sdk-6.0
+	depends = xorriso
+	depends = yasm
+	depends = dotnet-sdk-6.0
+	depends = nuget
+	source = cosmosCLI::git://github.com/PratyushKing/cosmosCLI
+	md5sums = SKIP
+
+pkgname = cosmoscli-git
