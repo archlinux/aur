@@ -2,14 +2,14 @@
 _pkgname=vineflower
 pkgname=vineflower-git
 _version="1.11.0"
-pkgver=1.11.0.r1648.564c483b
+pkgver=1.11.0.r1670.e54ccfd4
 pkgrel=1
 pkgdesc="Modern Java & JVM language decompiler focused on output quality & readability"
 arch=('any')
 url="https://vineflower.org"
 license=('Apache-2.0')
-depends=('java-runtime>=11' 'sh')
-makedepends=('java-environment>=11' 'git')
+depends=('java-runtime>=17' 'sh')
+makedepends=('java-environment>=17' 'git')
 provides=("${_pkgname}=${_version}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/Vineflower/vineflower#branch=develop/${_version}")
