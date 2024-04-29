@@ -10,7 +10,7 @@ pkgname='iwinfo'
 pkgdesc='Provide wifi information about capabilities and network(s)'
 _gitname='iwinfo'
 
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 url="https://github.com/gene-git/iwinfo"
 
@@ -53,7 +53,10 @@ build() {
 
 package() {
     cd "${_gitname}"
+    git fetch --all
+    git checkout origin/master -- Docs/Changelog.rst
     cp Docs/Changelog.rst ${startdir}
+
     ./scripts/do-install ${pkgdir}
 }
 # vim:set ts=4 sts=4 sw=4 et:
