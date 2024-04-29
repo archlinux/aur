@@ -1,17 +1,18 @@
-# Maintainer: tinywrkb <tinywrkb@gmail.com>
+# Maintainer: Cyannide <cyannide@nullhost.net>
+# Contributor: tinywrkb <tinywrkb@gmail.com>
 # Contributor: Felix Laurie von Massenbach <felix@erbridge.co.uk>
 pkgname=python-powerline-gitstatus
 gitname=powerline-gitstatus
-pkgver=1.3.1
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A Powerline segment for showing the status of a Git working copy"
 arch=('any')
-url="https://github.com/jaspernbrouwer/powerline-gitstatus"
+url="https://github.com/Cyannide/powerline-gitstatus"
 license=('MIT')
 depends=('python' 'git')
 makedepends=('python-setuptools')
 install=${pkgname}.install
-source=("${pkgname}::git+https://github.com/jaspernbrouwer/${gitname}.git#tag=v${pkgver}"
+source=("${pkgname}::git+https://github.com/Cyannide/${gitname}.git#tag=v${pkgver}"
 	colorschemes_default.json
 	themes_shell_default.json)
 sha256sums=('SKIP'
