@@ -1,7 +1,7 @@
 pkgbase = cosmic-icons-git
 	pkgdesc = System76 Cosmic icon theme
-	pkgver = r11.1e328da
-	pkgrel = 2
+	pkgver = r14.ee87327
+	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-icons
 	arch = any
 	license = CC-BY-SA-4.0 AND GPL-3.0-or-later
@@ -10,6 +10,7 @@ pkgbase = cosmic-icons-git
 	depends = pop-icon-theme-git
 	provides = cosmic-icons
 	conflicts = cosmic-icons
+	options = !strip
 	source = git+https://github.com/pop-os/cosmic-icons.git
 	sha256sums = SKIP
 
