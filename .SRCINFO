@@ -1,7 +1,7 @@
 pkgbase = python-libdecsync
 	pkgdesc = python wrapper around libdecsync
 	pkgver = 2.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/39aldo39/libdecsync-bindings-python3
 	arch = any
 	license = GPL
