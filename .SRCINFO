@@ -1,6 +1,6 @@
 pkgbase = ttf-google
 	pkgdesc = Some of the best fonts from google
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://fonts.google.com/
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = ttf-google
 	md5sums = SKIP
 
 pkgname = ttf-google
-
