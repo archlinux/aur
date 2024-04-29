@@ -10,7 +10,7 @@ arch=(any)
 url="https://honk.sigxcpu.org/piki/projects/git-buildpackage/"
 license=('GPL-2.0-or-later')
 depends=('git'
-         'man-db'
+         'man'
          'python'
          'python-dateutil'
          'rpm-tools')
