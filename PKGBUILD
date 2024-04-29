@@ -2,7 +2,7 @@
 
 pkgname=python-digiham-git
 pkgver=0.6.2.r8.g65fe48d
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the digiham library."
 arch=('x86_64' 'aarch64')
 url="https://github.com/jketterl/pydigiham"
