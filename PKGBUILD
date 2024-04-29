@@ -9,18 +9,13 @@ arch=('i686' 'x86_64')
 url="https://github.com/ZappaBoy/domo"
 source=("git+https://github.com/ZappaBoy/domo")
 sha256sums=('SKIP')
-
 license=('GPL')
 depends=(
   "python"
   'python-setuptools'
-  "python-certifi"
-  "python-charset-normalizer"
-  "python-colorama"
-  "python-idna"
-  "python-pycryptodome"
+  'python-cryptography'
   "python-requests"
-  "python-urllib3")
+  "python-tinytuya")
 makedepends=('git' 'python-installer' 'python-build' 'python-wheel')
 provides=("domo")
 

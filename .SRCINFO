@@ -18,6 +18,7 @@ pkgbase = domo-git
 	depends = python-idna
 	depends = python-pycryptodome
 	depends = python-requests
+	depends = python-tinytuya
 	depends = python-urllib3
 	provides = domo
 	source = git+https://github.com/ZappaBoy/domo
