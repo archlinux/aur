@@ -1,8 +1,8 @@
 pkgbase = chromium-bypass-paywalls-clean-git
 	pkgdesc = Chromium extension to bypass paywalls
 	pkgver = 20240429160549
-	pkgrel = 1
-	url = hhttps://github.com/bpc-clone/bpc_updates
+	pkgrel = 2
+	url = https://github.com/bpc-clone/bpc_updates
 	arch = any
 	license = MIT
 	makedepends = curl

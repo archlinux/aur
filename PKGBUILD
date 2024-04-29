@@ -4,11 +4,11 @@
 _pkgname=bypass-paywalls-chrome-clean
 pkgname=chromium-bypass-paywalls-clean-git
 pkgver=20240429160549
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium extension to bypass paywalls"
 arch=('any')
 makedepends=(curl)
-url="hhttps://github.com/bpc-clone/bpc_updates"
+url="https://github.com/bpc-clone/bpc_updates"
 license=(MIT)
 _source="https://github.com/bpc-clone/bpc_updates/releases/download/latest/${_pkgname}-master.zip"
 source=("${_pkgname}-${pkgver}.zip::${_source}")
