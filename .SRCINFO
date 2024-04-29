@@ -1,10 +1,10 @@
 pkgbase = python-dicttoxml
 	pkgdesc = Converts a Python dictionary or other native data type into a valid XML string
 	pkgver = 1.7.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quandyfactory/dicttoxml
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

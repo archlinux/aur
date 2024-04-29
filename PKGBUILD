@@ -1,14 +1,13 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-
 _base=dicttoxml
 pkgname=python-${_base}
 pkgdesc="Converts a Python dictionary or other native data type into a valid XML string"
 pkgver=1.7.16
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/quandyfactory/${_base}"
-license=(GPL)
+license=(GPL-2.0-or-later)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)

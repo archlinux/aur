@@ -1,0 +1,4 @@
+[python-dicttoxml]
+source = "github"
+github = "quandyfactory/dicttoxml"
+
