@@ -5,11 +5,11 @@ _pkgname=arandr-indicator
 pkgname="${_pkgname}-git"
 epoch=2
 pkgver=2.0.0+12.r27.20230916.74fdcfb
-pkgrel=3
+pkgrel=4
 pkgdesc="Quick and simple tray icon menu for changing the monitor layout."
 arch=('any')
 url="https://github.com/denilsonsa/arandr-indicator" # Original project.
-license=('custom: BSD')
+license=('BSD-2-Clause')
 depends=(
   'libappindicator-gtk3'
   'libayatana-appindicator'
