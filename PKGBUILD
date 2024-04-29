@@ -3,9 +3,9 @@
 # Contributer: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook-git
-pkgver=3.0.13.beta.r0.gc54759e76
-_electronversion=25
-_nodeversion=16
+pkgver=3.0.0.r1.gfe91ef79a
+_electronversion=29
+_nodeversion=20
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=(
@@ -18,7 +18,8 @@ license=('GPL-3.0-or-later')
 provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
+    'nodejs'
 )
 makedepends=(
     'nvm'
@@ -36,7 +37,7 @@ source=(
 )
 sha256sums=('SKIP'
             'efc8a6cea79ed0203dcbadf17632b5341952a49704f99e3ea0ddc573b06748f4'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/.android//g'
@@ -51,7 +52,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     export npm_config_build_from_source=true
