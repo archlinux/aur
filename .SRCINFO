@@ -1,0 +1,25 @@
+pkgbase = android-aarch64-lv2
+	pkgdesc = Plugin standard for audio systems (Android aarch64)
+	pkgver = 1.18.10
+	pkgrel = 1
+	url = https://lv2plug.in/
+	arch = any
+	license = ISC
+	makedepends = android-meson
+	makedepends = android-aarch64-libsamplerate
+	makedepends = android-aarch64-libsndfile
+	makedepends = android-aarch64-serd
+	makedepends = android-aarch64-sord
+	depends = android-ndk
+	optdepends = android-aarch64-sord: for lv2_validate
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://lv2plug.in/spec/lv2-1.18.10.tar.xz
+	source = https://lv2plug.in/spec/lv2-1.18.10.tar.xz.sig
+	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
+	md5sums = 9c1f3143ea2eea341e8d6e1bad9e5e0e
+	md5sums = SKIP
+
+pkgname = android-aarch64-lv2
