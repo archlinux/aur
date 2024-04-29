@@ -8,4 +8,4 @@ if [[ -f $XDG_CONFIG_HOME/vesktop-flags.conf ]]; then
 fi
 
 # Launch
-exec electron /usr/lib/vesktop/app.asar $VESKTOP_USER_FLAGS "$@"
+exec /usr/lib/electron29/electron /usr/lib/vesktop/app.asar $VESKTOP_USER_FLAGS "$@"
