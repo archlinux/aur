@@ -1,0 +1,20 @@
+pkgbase = electron-devdocs-git
+	pkgdesc = An electron-vue project for devdocs
+	pkgver = 5.2.0.r14.g2b3114f
+	pkgrel = 1
+	url = https://github.com/gengjiawen/electron-devdocs
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	depends = electron20
+	provides = electron-devdocs=5.2.0
+	conflicts = electron-devdocs
+	source = electron-devdocs.git::git+https://github.com/gengjiawen/electron-devdocs.git
+	source = electron-devdocs.sh
+	sha256sums = SKIP
+	sha256sums = 61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3
+
+pkgname = electron-devdocs-git
