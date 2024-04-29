@@ -1,7 +1,7 @@
 # Maintainer: FlekGeKei <FlekGeKei@outlook.com>
 
 pkgname=elyprismlauncher
-pkgver=8.2
+pkgver=8.3
 pkgrel=1
 pkgdesc="This fork of Prism Launcher replaces legacy Mojang accounts with Ely.by accounts. This is not endorsed by Prism Launcher or Ely.by."
 arch=('i686' 'x86_64' 'aarch64')
@@ -21,7 +21,7 @@ if [[ ${pkgrel} > 1 ]]; then
 else
   source=("https://github.com/Octol1ttle/ElyPrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz")
 fi
-sha256sums=('0ef8d62791845635299d51f57075d40c3d6339d9c61b1e5a92752670b873e5b8')
+sha256sums=('6760da939ffc55e43014230c99d599cd9f37f3646b66b01ed59ca0d0e84843c3')
 
 build() {
   if [[ ${pkgrel} > 1 ]]; then
