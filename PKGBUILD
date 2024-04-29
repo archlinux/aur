@@ -4,13 +4,13 @@
 # Contributor: Det <nimetonmaili g-mail>
 
 pkgname=jre17
-pkgver=17.0.9
+pkgver=17.0.11
 _majver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='Oracle Java 17 Runtime Environment'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
-license=('custom')
+license=('LicenseRef-custom')
 depends=('java-runtime-common' 'ca-certificates-utils' 'freetype2' 'libxtst'
          'libxrender' 'libnet')
 optdepends=('alsa-lib: for basic sound support')
@@ -32,7 +32,7 @@ backup=("etc/java${_majver}-${pkgname}/management/jmxremote.access"
         "etc/java${_majver}-${pkgname}/sound.properties")
 install="${pkgname}.install"
 source=("jdk-${pkgver}.tar.gz"::"https://download.oracle.com/java/${_majver}/latest/jdk-${_majver}_linux-x64_bin.tar.gz")
-sha256sums=('ad45ac97b3bc65497376f98ee276f84f4ab55ef2f62ab7f82ac0013e5b17744a')
+sha256sums=('62f12f52306217ec80bdc6ad0bdc627824b584d4d96c56976215f0167d92a322')
 
 package() {
     cd "jdk-${pkgver}"
