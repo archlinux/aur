@@ -2,7 +2,7 @@
 pkgname=kwin-scripts-mudeer
 _name=Mudeer
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen Splitting Shortcuts ideal for Ultrawide and Super-Ultrawide Monitors"
 arch=('any')
 url="https://github.com/darkstego/Mudeer"
@@ -15,10 +15,9 @@ source=(
 b2sums=('ec98ef12c216436ae3cf8f8c248d637810801a01dc11a694deba77bb76f9d84b088ba82d50909b0242147830c10486eecd2f035dd4a4a99e80f1619157fb8a75'
         '94f61a6706e0d57355577b7d07df4c46e5df3e0b66e291a93f6d36bb79c30e4e408c3ec81cec177cc7a4c772bd5b6cf05095ada0a00ec1d40c00bba1c7a53c30')
 
-# Uncomment to use with Plasma 6 from [kde-unstable]
-#prepare(){
-#    patch --directory="$_name-$pkgver" --forward --strip=1 --input="${srcdir}/fix-plasma6.patch"
-#}
+prepare(){
+    patch --directory="$_name-$pkgver" --forward --strip=1 --input="${srcdir}/fix-plasma6.patch"
+}
 
 package() {
     cd ${_name}-${pkgver}
