@@ -1,7 +1,7 @@
 pkgbase = pcbdraw
 	pkgdesc = Convert your KiCAD board into a nicely looking 2D drawing suitable for pinout diagrams
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yaqwsx/PcbDraw
 	arch = any
 	license = MIT

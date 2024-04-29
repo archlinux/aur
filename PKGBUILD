@@ -4,7 +4,7 @@
 _pkgname=PcbDraw
 pkgname=pcbdraw
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert your KiCAD board into a nicely looking 2D drawing suitable for pinout diagrams"
 arch=('any')
 url="https://github.com/yaqwsx/$_pkgname"
