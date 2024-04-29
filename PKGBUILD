@@ -2,26 +2,18 @@
 
 pkgname=python-untangle
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Converts XML to a Python object"
 arch=('any')
 url="https://github.com/stchris/untangle"
 license=('MIT')
-depends=('python-defusedxml')
+depends=('python' 'python-defusedxml')
+makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('696643dd2879c1af55c592e07bf0de48d330157d2def66993abaa0169661dadc')
 
-
-# template start; name=tarball; version=1;
-_dirname="${pkgname}-${pkgver}"
-_basename="${pkgname}"
-# template end;
-# template start; name=python; version=1;
-depends+=('python')
-makedepends+=('python-setuptools')
-# strip the python- prefix from names if present
-_dirname="${_dirname#python-}"
-_basename="${_basename#python-}"
+_basename="${pkgname#python-}"
+_dirname="${_basename}-${pkgver}"
 
 build() {
   cd "${srcdir}/${_dirname}"
@@ -34,4 +26,3 @@ package() {
 	# not necessary for every package, but for those who it is, it'd generate conflict with others otherwise
   rm -rf "${pkgdir}/$(python -c 'import site; print(site.getsitepackages()[0])')/tests/"
 }
-# template end;
