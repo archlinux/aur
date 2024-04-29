@@ -2,16 +2,16 @@
 
 pkgname=picosvg
 pkgver=0.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to simplify SVG files, intended for use as part of a font build'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
-license=(Apache)
-_py_deps=(lxml
-          skia-pathops)
+license=(Apache-2.0)
+_pydeps=(lxml
+         skia-pathops)
 depends=(absl-py
          python
-         "${_py_deps[@]/#/python-}")
+         "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 checkdepends=(python-pytest)
@@ -26,7 +26,8 @@ build() {
 
 check() {
 	cd "$_archive"
-	PYTHONPATH=src pytest tests
+	export PYTHONPATH=src
+	pytest tests
 }
 
 package() {
