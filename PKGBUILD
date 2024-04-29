@@ -2,7 +2,7 @@
 
 pkgname=python-csdr-eti-git
 pkgver=r12.676663b
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for csdr-eti"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jketterl/pycsdr-eti"
