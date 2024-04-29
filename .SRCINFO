@@ -1,21 +1,32 @@
 pkgbase = tijolo-git
 	pkgdesc = Lightweight, keyboard-oriented IDE for the masses
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = crystal>=1.0.0
-	makedepends = shards>=0.13.0
-	depends = gc
+	makedepends = shards
+	makedepends = crystal
+	makedepends = gobject-introspection-runtime
+	depends = graphene
+	depends = vulkan-icd-loader
+	depends = hicolor-icon-theme
+	depends = libadwaita
 	depends = libevent
-	depends = pcre
-	depends = gtksourceview4
-	depends = ttf-jetbrains-mono-nerd
-	depends = libgit2
-	depends = editorconfig-core-c
-	depends = ttf-font-awesome>=5.15
+	depends = pcre2
+	depends = gc
+	depends = vte4
+	depends = gtksourceview5
+	depends = gdk-pixbuf2
+	depends = gcc-libs
+	depends = glibc
+	depends = glib2
+	depends = pango
+	depends = dconf
+	depends = gtk4
+	depends = harfbuzz
+	depends = cairo
 	conflicts = tijolo
 	source = tijolo-git::git+https://github.com/hugopl/tijolo.git
 	sha256sums = SKIP

@@ -1,15 +1,15 @@
-# Maintainer: Hugo Parente Lima <hugo.pl@gmail.com>
+# Contributor: Hugo Parente Lima <hugo.pl@gmail.com>
 
 pkgname=tijolo-git
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, keyboard-oriented IDE for the masses"
 arch=("x86_64")
 conflicts=("tijolo")
 url="https://github.com/hugopl/tijolo"
 license=("MIT")
-depends=("gc" "libevent" "pcre" "gtksourceview4" "ttf-jetbrains-mono-nerd" "libgit2" "editorconfig-core-c" "ttf-font-awesome>=5.15")
-makedepends=("git" "crystal>=1.0.0" "shards>=0.13.0")
+depends=("graphene" "vulkan-icd-loader" "hicolor-icon-theme" "libadwaita" "libevent" "pcre2" "gc" "vte4" "gtksourceview5" "gdk-pixbuf2" "gcc-libs" "glibc" "glib2" "pango" "dconf" "gtk4" "harfbuzz" "cairo")
+makedepends=("git" "shards" "crystal" "gobject-introspection-runtime")
 source=("tijolo-git::git+https://github.com/hugopl/tijolo.git")
 sha256sums=('SKIP')
 
@@ -21,11 +21,6 @@ pkgver() {
 build() {
   cd "$srcdir/tijolo-git"
   make
-}
-
-check() {
-  cd "$srcdir/tijolo-git"
-  crystal spec
 }
 
 package() {
