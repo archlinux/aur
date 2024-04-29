@@ -1,0 +1,13 @@
+pkgbase = puffin
+	pkgdesc = TUI for hledger to manage personal finances
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/siddhantac/puffin
+	arch = x86_64
+	makedepends = go
+	depends = glibc
+	depends = hledger
+	source = https://github.com/siddhantac/puffin/archive/v1.3.0/puffin-1.3.0.tar.gz
+	sha256sums = 41592087eeadfc5655f7231ec5d4d18d1d41bbb5daec03eda50f347375fe3daa
+
+pkgname = puffin
