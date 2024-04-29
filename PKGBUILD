@@ -4,11 +4,11 @@ _pkgname=CompoundDb
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Creating and Using (Chemical) Compound Annotation Databases"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-annotationfilter
   r-biobase
@@ -41,11 +41,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('7863bdbb64d2068c22225ece8ed5844c')
-sha256sums=('a3bc52352f715319129225eefbb2581ba1426a7ec8c057582a276a983b0f70b9')
+b2sums=('abb67b2d0e1845d269332ff5f713e7dcd70225979c730aed5058190a0f5ddb14de2266fdcad07920be385055d942d308e904c2477c838c923c9e30b15a1d4a8e')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
