@@ -1,18 +1,20 @@
-# Maintainer: Jguer <pkgbuilds at jguer.space>
+# Maintainer: Colin Teng <tfcolin@88.com>
 pkgname=mbg
 pkgver=1.4.0
 pkgrel=1
-pkgdesc="a game whose rules is a hybrid of 'monoply' and 'sanguo'"
+pkgdesc="a game whose rules are combination of 'monoply' and 'sanguo'"
 arch=('x86_64')
 url="https://gitee.com/tfcolin/mbg"
 license=('GPL-3.0-or-later')
 depends=('gtk3')
-makedepends=('go>=1.20')
+makedepends=('go>=1.20' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tfcolin/mbg/archive/refs/tags/v${pkgver}.tar.gz")
 
 prepare() {
   cd "$pkgname-$pkgver"
   mkdir -p build/
+  export GONOPROXY="gitee.com"
+  #export GOPROXY="https://goproxy.cn,direct"
 }
 
 build() {
