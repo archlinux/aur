@@ -4,7 +4,7 @@ pkgdesc="Easy building of TUIs in Python"
 source=("python-pytermgui-git::git+https://github.com/bczsalba/pytermgui.git")
 url="https://github.com/bczsalba/pytermgui"
 provides=(python-pytermgui)
-depends=("python>=3.7" python-wcwidth python-typing_extensions python-yaml)
+depends=("python>=3.7" ipython python-wcwidth python-typing_extensions python-yaml)
 makedepends=(python-hatchling python-hatch-fancy-pypi-readme python-build python-installer python-wheel git)
 optdepends=("python-pytest: for running tests")
 arch=(any)

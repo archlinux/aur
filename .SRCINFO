@@ -12,6 +12,7 @@ pkgbase = python-pytermgui-git
 	makedepends = python-wheel
 	makedepends = git
 	depends = python>=3.7
+	depends = ipython
 	depends = python-wcwidth
 	depends = python-typing_extensions
 	depends = python-yaml
