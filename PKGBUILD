@@ -1,7 +1,7 @@
 _basepgkname=cosmopolitan
 pkgname="${_basepgkname}-bin"
 pkgver=3.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Build-once run-anywhere c library."
 arch=('x86_64')
 url="https://github.com/jart/cosmopolitan"
@@ -43,8 +43,12 @@ options=(!strip)
 
 
 package() {
-  cd "${srcdir}"
 
+  # Install binfmt files 
+  install -Dm544 "ape.conf" "${pkgdir}/etc/binfmt.d/ape.conf"
+  install -Dm544 "ape-jart.conf" "${pkgdir}/etc/binfmt.d/ape-jart.conf"
+
+  cd "${srcdir}"
   # Install binaries
   install -Dm755 "bin/ape-x86_64.elf" "${pkgdir}/usr/bin/ape"
   install -Dm755 "bin/x86_64-linux-cosmo-readelf" "${pkgdir}/usr/bin/cosmoreadelf"
@@ -65,9 +69,4 @@ package() {
   install -Dm755 "bin/x86_64-linux-cosmo-objdump" "${pkgdir}/usr/bin/cosmoobjdump"
   install -Dm755 "bin/x86_64-linux-cosmo-ranlib" "${pkgdir}/usr/bin/cosmoranlib"
   install -Dm755 "bin/x86_64-linux-cosmo-gcc" "${pkgdir}/usr/bin/cosmogcc"
-}
-
-postinstall() {
-  sudo sh -c "echo ':APE:M::MZqFpD::/usr/bin/ape:' >/proc/sys/fs/binfmt_misc/register"
-  sudo sh -c "echo ':APE-jart:M::jartsr::/usr/bin/ape:' >/proc/sys/fs/binfmt_misc/register"
 }
