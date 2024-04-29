@@ -1,12 +1,12 @@
 pkgbase = python-grandalf
 	pkgdesc = graph and drawing algorithms framework
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bdcht/grandalf
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-pytest-runner
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
