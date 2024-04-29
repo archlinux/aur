@@ -2,7 +2,7 @@
 
 pkgname=opensnitch-ebpf-module-git
 _pkgname=opensnitch
-pkgver=1.6.0rc5.r84.e1afd24
+pkgver=1.6.3.r107.7442bec9
 pkgrel=2
 pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/evilsocket/opensnitch.git'
         '0001-Build-with-Archlinux.patch')
 sha256sums=('SKIP'
-            '446c029de1cbd39308575e346511d80ee160d2dea575d64fddc7835fc3040460')
+            '4fd4fa9ce3d79f5b70933ca3c5f903679ba17a3e03dcbbca188c882087658c66')
 options=('!strip') # we're stripping with llvm-strip
 
 pkgver() {

@@ -10,14 +10,12 @@ index d987814..5f7bc10 100644
  	-I$(KERNEL_HEADERS)/arch/$(ARCH)/include/generated/ \
  	-I$(KERNEL_HEADERS)/include \
  	-include $(KERNEL_DIR)/include/linux/kconfig.h \
-@@ -45,7 +46,9 @@ CLANG_FLAGS = -I. \
- 	$(EXTRA_FLAGS) \
+@@ -48,7 +49,8 @@ CLANG_FLAGS = -I. \
  	-Wno-gnu-variable-sized-type-not-at-end \
- 	-Wno-address-of-packed-member -Wno-tautological-compare \
+ 	-Wno-address-of-packed-member \
+ 	-Wno-tautological-compare \
 -	-Wno-unknown-warning-option  \
 +	-Wno-unknown-warning-option \
 +	-fcf-protection \
-+	-fno-stack-protector \
+ 	-fno-stack-protector \
  	-g -O2 -emit-llvm
- 
- all: $(BIN)
