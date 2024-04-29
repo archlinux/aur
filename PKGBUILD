@@ -1,8 +1,8 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=hsh
-pkgver=0.0.2.76.gd82ba32
-_gitcommit=d82ba323ad46288f136038c53c843acaa9997e99
+pkgver=0.0.2.89.g72a18d2
+_gitcommit=72a18d2221c214d6e7f36c78628f1bcc04affc92
 pkgrel=1
 pkgdesc="better shell"
 arch=('x86_64')
