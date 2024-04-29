@@ -13,7 +13,7 @@ groups=(
 )
 pkgver=r13.20240428.fd0e3d0
 _gpdfanspeedver="$("${startdir}"/gpdfanspeed --version)"
-pkgrel=2
+pkgrel=3
 pkgdesc="Fan hwmon speed report and speed control driver for GPD Win Mini, GPD Win Max2 and GPD Win 4 laptops. Latest git checkout. Includes a command line control utility."
 url="https://${_githost}/${_gituser}/${_gitname}"
 arch=('any')
@@ -49,7 +49,7 @@ source=(
 sha256sums=(
   'SKIP'
   'f3f6f913c82b58f9e4811a04449a17ce88af57a0a4ba7fad05cfdbe3689b7863'  # dkms.conf.in
-  '979528b69503e94302001b2a563dd51f9d8b3719bd4e9ab309ecee2500d2780b'  # gpdfanspeed
+  'f1f49a4aa40d098c476b24c52b3ca7a15ea86d571751b1d0ebfb8333efe9dfa6'  # gpdfanspeed
   '52b499321ed838fa91a788e7fbf118a9cbeb9367e131aa924a6fa03afd20c922'  # $install
 )
 
@@ -92,6 +92,6 @@ package() {
   install -Dvm644 -t "${pkgdir}/usr/src/${_gitname}-${pkgver}"  'gpd-fan.c' 'Makefile' "${srcdir}/dkms.conf"
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_gitname}"      'README.md' "${srcdir}"/git.log
-  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"           'LICENSE'
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  'LICENSE'
   ln -svr "/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${_gitname}/LICENSE"
 }
