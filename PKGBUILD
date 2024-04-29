@@ -1,21 +1,21 @@
-# Maintainer: FoolEcho <foolecho at gmail dot com>
-# Contributor: Emeric <emeric.grange@gmail.com>
+# Maintainer: Emeric <emeric.grange@gmail.com>
+# MaintContributorainer: FoolEcho <foolecho at gmail dot com>
 # Contributor: dracorp
 # Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
 # Created: 18/03/2011
 pkgname=autopanogiga
 pkgver=4.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Create beautiful panoramas by stitching multiple photos automatically with Autopano Giga (trial version).'
 arch=('x86_64')
-url='http://kolor.com/autopano/'
+url='https://web.archive.org/web/20180822070241/http://kolor.com/autopano/'
 license=('custom: "commercial"')
 install="$pkgname.install"
 changelog=ChangeLog
 _archiveversion=400
 _archivename=AutopanoGiga_Linux64_${pkgver}.tar.xz
 
-source=("$_archivename::http://download.kolor.com/apg/stable/linux64tarxz/${pkgver}.${_archiveversion}"
+source=("https://web.archive.org/web/20230306215932if_/https://cdn-download.kolor.com/apg/4.4.2.400_2018-09-10/AutopanoGiga_Linux64_442_2018-09-10.tar.xz"
         "$pkgname"
         "$pkgname.png"
         "$pkgname.desktop")
@@ -34,3 +34,4 @@ package() {
   install -Dm755 $srcdir/$pkgname $pkgdir/usr/bin/$pkgname
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
+

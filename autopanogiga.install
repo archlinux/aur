@@ -1,9 +1,17 @@
 post_install() {
   update-desktop-database -q
+
+  echo "AutoPano Giga can now be used free of charge with the following account:"
+  echo "- User : freecopy@kolor.com"
+  echo "- Code : KAPG7-K3A9X-IZJHX-FIIT7-C5IM8-MQF2N"
 }
 
 post_upgrade() {
   update-desktop-database -q
+
+  echo "AutoPano Giga can now be used free of charge with the following account:"
+  echo "- User : freecopy@kolor.com"
+  echo "- Code : KAPG7-K3A9X-IZJHX-FIIT7-C5IM8-MQF2N"
 }
 
 post_remove() {
