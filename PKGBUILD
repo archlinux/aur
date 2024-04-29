@@ -4,7 +4,7 @@
 pkgname=ringracers
 pkgver=2.1
 _dataver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kart racing video game originally based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2"
 arch=('x86_64' 'aarch64')
 license=('GPL2')
@@ -13,9 +13,15 @@ depends=("ringracers-data>=$_dataver" 'curl' 'zlib' 'libpng' 'libvorbis' 'libvpx
 makedepends=('git' 'cmake' 'ninja' 'mold')
 
 source=("$pkgname"::"git+https://github.com/KartKrewDev/RingRacers.git#tag=v$pkgver"
-  "org.kartkrew.RingRacers.desktop")
-sha256sums=('SKIP'
-            '812a12ad6a7e5ef7bea3ef3b24bc4e686e9b8df16221c478f202c96ee6ce413d')
+  "org.kartkrew.RingRacers.desktop"
+  "0001-Check-if-mno-ms-bitfields-is-avail-before-using.patch")
+sha256sums=('2c93465969ebf38984609eee7ff38dd0ba947f985403ddf153013392db92b17e'
+            '812a12ad6a7e5ef7bea3ef3b24bc4e686e9b8df16221c478f202c96ee6ce413d'
+            'e5360e7b35df6eed4d7f721c1cdce39cb7a6da7836a9e159cc459493a580b73c')
+
+prepare() {
+    patch --directory=$pkgname --forward --strip=1 --input=../0001-Check-if-mno-ms-bitfields-is-avail-before-using.patch
+}
 
 build() {
   # Unset U_GLIBCXX_ASSERTIONS as a workaround until crashes related to it are fixed
