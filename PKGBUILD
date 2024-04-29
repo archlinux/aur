@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=thorium-reader-git
 _pkgname="Thorium Reader"
-pkgver=2.3.0.r128.gad41fc04a
-_electronversion=29
+pkgver=2.4.1.r17.g7e60288f2
+_electronversion=30
 _nodeversion=20
 pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
@@ -10,23 +10,24 @@ arch=('any')
 url="https://github.com/edrlab/thorium-reader"
 license=('BSD-3-Clause')
 conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'gendesk'
     'git'
     'nvm'
     'npm'
+    'python>=3.8.10'
+    'python-setuptools'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 pkgver() {
     cd "${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -41,10 +42,10 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --categories="Office" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -55,16 +56,15 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
-    sed "s|--linux --x64 --publish never|-l --dir|g" -i package.json
-    npm ci
-    npm run prepackage:linux
-    npm run package:linux
+    npm install --no-audit --no-fund --prefer-offline
+    npm run package:build
+    npx electron-builder -l --dir -p never -c.electronDist='/usr/lib/electron' -c.electronVersion="${SYSTEM_ELECTRON_VERSION}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}" 
