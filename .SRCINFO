@@ -1,7 +1,7 @@
 pkgbase = python-rapidtables
 	pkgdesc = Super fast list of dicts to pre-formatted tables conversion library
 	pkgver = 0.1.11
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/alttch/rapidtables
 	arch = any
 	license = MIT
