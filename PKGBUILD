@@ -1,33 +1,89 @@
-# Maintainer: Xiaozhu1337 <nihaoaheheda@gmail.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=1.4.0
+pkgver=3.0.11
+_electronversion=28
+_nodeversion=18
 pkgrel=1
-pkgdesc="A local-first personal knowledge management system."
+pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
 arch=('x86_64')
 url="https://b3log.org/siyuan"
-license=('unknown')
-_pkgname="$pkgname-${pkgver}-linux.AppImage"
-provides=("siyuan")
-conflicts=("siyuan")
-options=("!strip")
-source=("https://download.fastgit.org/siyuan-note/siyuan/releases/download/v$pkgver/$pkgname-$pkgver-linux.AppImage")
-noextract=(${_pkgname})
-md5sums=('a6b040737e3f2e054c56a97a51112556')
-_installdir=/opt/appimages
-_installname=siyuan
-
-prepare() {
-    cd ${srcdir}
-    chmod a+x ${_pkgname}
-    ${srcdir}/${_pkgname} --appimage-extract
-    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/${_installname}.AppImage+" "squashfs-root/siyuan.desktop"
-    sed -i "s/[[:space:]]%U$//" "squashfs-root/siyuan.desktop"
-    find "squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
+_ghurl="https://github.com/siyuan-note/siyuan"
+license=('AGPL-3.0-only')
+conflicts=(
+    "${pkgname}"
+    "${pkgname}-note"
+)
+provides=("${pkgname}")
+depends=(
+    "electron${_electronversion}"
+)
+makedepends=(
+    'gendesk'
+    'git'
+    'nvm'
+    'npm'
+    'go>=1.21'
+    'base-devel'
+)
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/siyuan-note/siyuan/archive/refs/tags/v3.0.11.tar.gz"
+    "${pkgname}.sh"
+)
+sha256sums=('7bc8062444e33a37a058ec8f14f161404ba07cdcff419f8d83fd2048e033926a'
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
-
+build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@runname@|app|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
+        -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
+    gendesk -q -f -n --categories="Office" --name="${pkgname}" --exec="${pkgname} %U"
+    sed "2i Name[zh_CN]=思源笔记" -i "${srcdir}/${pkgname}.desktop"
+    cd "${srcdir}/${pkgname}-${pkgver}/app"
+    export npm_config_build_from_source=true
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    pnpm config set store-dir "${srcdir}/.pnpm_store"
+    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
+    pnpm config set link-workspace-packages true
+    export CGO_ENABLED=1
+    export GO111MODULE=on
+    export GOOS=linux
+    export GOCACHE="${srcdir}/go-build"
+    export GOMODCACHE="${srcdir}/go/pkg/mod"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+        export GOPROXY=https://goproxy.cn
+    else
+        echo "Your network is OK."
+    fi
+    sed "/tar.gz/d;s|AppImage|dir|g" -i electron-builder-linux.yml
+    npm add pnpm
+    npx pnpm install --no-frozen-lockfile
+    npx pnpm run build
+    cd "${srcdir}/${pkgname}-${pkgver}/kernel"
+    go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
+    cd "${srcdir}/${pkgname}-${pkgver}/app"
+    npx pnpm run dist-linux
+}
 package() {
-    install -dm755 "${pkgdir}/usr/share/icons"
-    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/${_installname}.AppImage"
-    install -Dm644 "squashfs-root/siyuan.desktop" "${pkgdir}/usr/share/applications/${_installname}.desktop"
-    cp -R "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/app/build/linux-"*/resources/pandoc.zip -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/app/build/linux-"*/resources/{app,appearance,guide,kernel,stage} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/app/appearance/boot/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
