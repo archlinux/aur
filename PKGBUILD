@@ -3,8 +3,8 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=scx-scheds
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.1.9
+pkgrel=1
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx')
 options=(!lto)
 source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('8ab850137c4c21a2c39ca9bca3927822e51b0e28ec59a613a43b266f1559a63c2e6aa48d4a8de7de78e5ac57cd92ecc0b3fdff3eee9af90c9f4b2590ebc64f86')
+sha512sums=('dabee9d4fc5ef4b5bbd8b1e7d681d918d3006499f000d33a1a419b2595415ec1beb454be0d97b22a84ebf56bd1ace444162eec6cfc14c972fb38fceaf6477337')
 
 prepare() {
  cd scx-${pkgver}
