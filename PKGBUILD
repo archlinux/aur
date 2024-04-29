@@ -5,11 +5,11 @@
 
 pkgname=dvc
 pkgver=3.50.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source version control system for data science projects'
 arch=(any)
-license=(Apache)
-url="https://github.com/iterative/${pkgname}"
+license=(Apache-2.0)
+url="https://github.com/iterative/$pkgname"
 _pydeps=(aiohttp-retry
          appdirs
          benedict
