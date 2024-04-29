@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-generic-nightly
-pkgver=20240428_nextpnr_0.7_28_gedcafcf0
+pkgver=20240429_nextpnr_0.7_28_gedcafcf0
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - generic"
