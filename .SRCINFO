@@ -1,0 +1,20 @@
+pkgbase = android-aarch64-zix
+	pkgdesc = A lightweight C99 portability and data structure library (Android aarch64)
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://gitlab.com/drobilla/zix
+	arch = any
+	license = 0BSD OR ISC
+	makedepends = android-meson
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.drobilla.net/zix-0.4.2.tar.xz
+	source = https://download.drobilla.net/zix-0.4.2.tar.xz.sig
+	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
+	md5sums = 87999e25b0440789d1a8325b00a02ed4
+	md5sums = SKIP
+
+pkgname = android-aarch64-zix
