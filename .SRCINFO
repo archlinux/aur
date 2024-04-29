@@ -8,6 +8,7 @@ pkgbase = euroscope-bin
 	license = custom
 	depends = wine
 	depends = winetricks
+	optdepends = trackaudio-bin: Audio For VATSIM support
 	source = https://euroscope.hu/install/EuroScopeSetup.3.2.9.msi
 	source = euroscope-bin
 	source = euroscope.desktop

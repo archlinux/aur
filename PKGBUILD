@@ -9,6 +9,7 @@ arch=("x86_64")
 url="https://euroscope.hu/"
 license=('custom')
 depends=('wine' 'winetricks')
+optdepends=('trackaudio-bin: Audio For VATSIM support')
 install=$pkgname.install
 source=("https://euroscope.hu/install/EuroScopeSetup.${pkgver}.msi"
         "euroscope-bin"
