@@ -1,13 +1,22 @@
 _basepgkname=cosmopolitan
 pkgname="${_basepgkname}-bin"
 pkgver=3.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Build-once run-anywhere c library."
 arch=('x86_64')
 url="https://github.com/jart/cosmopolitan"
 license=('ISC')
-source=("${pkgname}::https://github.com/jart/cosmopolitan/releases/download/${pkgver}/cosmocc-${pkgver}.zip")
-sha256sums=('e4d0fa63cd79cc3bfff6c2d015f1776db081409907625aea8ad40cefc1996d08')
+source=(    
+            "${pkgname}::https://github.com/jart/cosmopolitan/releases/download/${pkgver}/cosmocc-${pkgver}.zip"
+            "ape.conf"
+            "ape-jart.conf"
+        )
+
+sha256sums=(
+            'e4d0fa63cd79cc3bfff6c2d015f1776db081409907625aea8ad40cefc1996d08'
+            '0a5d918ef46aaf764293fb18794eac021cb93637fe6abed7c9d3f06b7b2f4cad'
+            '9351247b53d34dc584170c435512954b8eb1a69c7b3ff0bee43ce21264b8d467'
+          )
 provides=(  'ape'
             'cosmoreadelf'
             'cosmoar'
