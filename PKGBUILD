@@ -1,4 +1,4 @@
-# Maintainer: Thomas Schneider <thomas.schneider@ruhr-uni-bochum.de>
+# Maintainer: Thomas Schneider <thomas.aur@brainfuck.space>
 
 _pkgname=synapse-s3-storage-provider
 pkgname=python3-${_pkgname}
