@@ -8,10 +8,12 @@ pkgdesc="Simple tool to manage IoT devices"
 arch=('i686' 'x86_64')
 url="https://github.com/ZappaBoy/domo"
 source=("git+https://github.com/ZappaBoy/domo")
-md5sums=('SKIP')
+sha256sums=('SKIP')
+
 license=('GPL')
 depends=(
   "python"
+  'python-setuptools'
   "python-certifi"
   "python-charset-normalizer"
   "python-colorama"
@@ -19,13 +21,9 @@ depends=(
   "python-pycryptodome"
   "python-requests"
   "python-urllib3")
-makedepends=("git" "python-pip")
+makedepends=('git' 'python-installer' 'python-build' 'python-wheel')
 provides=("domo")
 
-prepare() {
-  cd "$srcdir/domo"
-  python -m pip install -r requirements.txt
-}
 
 instructions() {
   /bin/cat << EOF
@@ -33,11 +31,16 @@ Remember to create the config.json in your DOMO_ROOT
 EOF
 }
 
+build() {
+    cd "$srcdir/domo/"
+  python3 -m build --wheel --no-isolation
+}
+
 package() {
   cd "$srcdir/domo/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
-  install -Dm755 domo.py $HOME/.local/bin/domo
+  python -m installer --destdir="$pkgdir/domo/" dist/*.whl
   instructions
 }
 
