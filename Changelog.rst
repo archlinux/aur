@@ -1,6 +1,24 @@
 Changelog
 =========
 
+**[6.7.5] ----- 2024-04-29** ::
+
+	    one of those days ... another typo!
+	    update Docs/Changelog.rst Docs/wg_tool.pdf
+
+
+**[6.7.4] ----- 2024-04-29** ::
+
+	    typo
+
+
+**[6.7.3] ----- 2024-04-29** ::
+
+	    update Docs/Changelog.rst Docs/wg_tool.pdf
+	    Improve pulling latest Changelog so pacman -Qc shows it
+	    update Docs/Changelog.rst Docs/wg_tool.pdf
+
+
 **[6.7.2] ----- 2024-04-29** ::
 
 	    PKGBUILD change to get latest Changelog
