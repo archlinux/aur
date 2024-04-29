@@ -1,8 +1,8 @@
 # Maintainer: Richard Cesar <richard.cesar@netkeepers.cz>
 
 pkgname=flexibee-client-bin
-pkgver=2022.1.0
-pkgbasever=2022.1
+pkgver=2024.2.10
+pkgbasever=2024.2
 pkgrel=1
 pkgdesc="Accounting economic system for person and business usage. Client-only package."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'jre8-openjdk')
 install=flexibee.install
 source=("https://download.flexibee.eu/download/$pkgbasever/$pkgver/flexibee-client_${pkgver}_all.deb")
 
-sha256sums=('bdd666dbee0927d90e32b2dfa906a969282a84077bd532349098c4791dded6d6')
+sha256sums=('3cb1b3e19165e108e82b297480768a60c661c291e0ee286a04b4d2f8c8a0d8cb')
 
 prepare() {
     cd ${srcdir}
