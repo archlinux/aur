@@ -1,7 +1,7 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell
 _pkgname=ags
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('gnome-bluetooth-3.0: required for bluetooth service'
 conflicts=('aylurs-gtk-shell-git')
 backup=('etc/pam.d/ags')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Aylur/ags/releases/download/v${pkgver}/ags-v${pkgver}.tar.gz")
-sha256sums=('c36f4ebc48caaf0cea4399dd870bcad939995a9d4805f79fdd431236f9de7d2e')
+sha256sums=('ea0a706bef99578b30d40a2d0474b7a251364bfcf3a18cdc9b1adbc04af54773')
 
 build() {
   cd $srcdir/$_pkgname
