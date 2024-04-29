@@ -153,6 +153,7 @@ package_libvirt() {
   chmod 600 "$pkgdir"/etc/libvirt/nwfilter/*.xml \
     "$pkgdir/etc/libvirt/qemu/networks/default.xml"
   chmod 700 "$pkgdir"/etc/libvirt/secrets
+  chmod 711 "$pkgdir"/var/lib/libvirt/swtpm
 
   rm -rf \
     "$pkgdir/run" \
