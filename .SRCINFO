@@ -4,17 +4,20 @@ pkgbase = yandex-music
 	pkgrel = 1
 	url = https://github.com/cucumber-sp/yandex-music-linux
 	arch = any
-	license = custom
+	license = Unlicense
 	makedepends = p7zip
 	makedepends = nodejs
 	makedepends = asar
 	makedepends = jq
 	makedepends = python
+	makedepends = git
 	depends = electron29
 	depends = libpulse
 	depends = xdg-utils
+	depends = bash
+	depends = hicolor-icon-theme
 	source = https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.1.2.exe
-	source = git+https://github.com/cucumber-sp/yandex-music-linux
+	source = git+https://github.com/cucumber-sp/yandex-music-linux#tag=v5.1.2
 	sha256sums = 55cff215176cee24ed9a6758a853f61663b59688a0382f361a610f74f6bc7877
 	sha256sums = SKIP
 
