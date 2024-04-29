@@ -3,13 +3,14 @@
 _pkgname=maa-assistant-arknights
 _pkgdirname=maa
 pkgname="${_pkgname}"-bin
-_pkgver=v5.2.1
+_pkgver=v5.2.2
 pkgver="$(echo ${_pkgver//-/} | sed -e 's/^v//')"
 pkgrel=1
 pkgdesc="A one-click tool for the daily tasks of Arknights, supporting all clients."
 arch=('x86_64' 'aarch64')
 url="https://github.com/MaaAssistantArknights/MaaAssistantArknights"
 license=('AGPL')
+options=(!strip)
 provides=('maa')
 depends=(
   'glibc'
@@ -29,8 +30,8 @@ sha256sums=('92e21c4a6b3b254329ae43c600c74654752cd818a948492e15c5cdd9507818d0'
             'a0e767edc532186de42d3f8235fd76c96d2991ee73ad495baa34638e8379dac5'
             'f404ffe0af05122c8b3097fe89c30bbd9cd94d6228036dd902f26a79ed373592'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
-sha256sums_x86_64=('ca90d9b9e97677b7f91352a86364c970bd06d22ac54d8e78ddac336c1fd4d282')
-sha256sums_aarch64=('76f08213e5ff5f98d080f6b0c654243c6a2db7211b385cbfdb6ce8a301778f24')
+sha256sums_x86_64=('6ed552b1bda1ec572e2ffb7ea8ad2cd3fc8891b4699c1b3a488542abfcc4a681')
+sha256sums_aarch64=('d45b317081a37b2e47d3cc38ef0395591e7e4899797e1e8e630bb0d78d6d8c06')
 
 source_x86_64=("${url}/releases/download/${_pkgver}/MAA-${_pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/${_pkgver}/MAA-${_pkgver}-linux-aarch64.tar.gz")
