@@ -73,7 +73,4 @@ package() {
 
 	cd "${_pkgname}-${pkgver}"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
-		install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
-	done
 }
