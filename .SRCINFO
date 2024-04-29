@@ -1,6 +1,6 @@
 pkgbase = silo-grammarly
 	pkgdesc = Standalone silo app for Grammarly
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/intersimone999/silos-apps
 	arch = i686
@@ -12,4 +12,3 @@ pkgbase = silo-grammarly
 	sha256sums = SKIP
 
 pkgname = silo-grammarly
-
