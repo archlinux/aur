@@ -1,6 +1,6 @@
 pkgbase = linux-amd
 	pkgver = 6.8.v.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -17,9 +17,11 @@ pkgbase = linux-amd
 	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.8.8
 	source = config.x86_64
 	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20240221.2/more-uarches-for-kernel-6.8-rc4+.patch
+	source = fast_cppc.patch
 	sha256sums = SKIP
 	sha256sums = 5330fce19698bef9deb603bb20addc1abf137ad9f4dbdad57587228e3f69e713
 	sha256sums = d69232afd0dd6982ae941cf2d1f577f4be2011e3bb847d1db37952acf416b5d3
+	sha256sums = f8a69166a3ee91b797198b4e82b6e397a8f7749feed8aed7f3b323b020798a66
 
 pkgname = linux-amd
 	pkgdesc = Linux kernel aimed at the ZNVER4/MZEN4 AMD Ryzen CPU based hardware
