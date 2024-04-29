@@ -1,0 +1,5 @@
+[labelle]
+source = "github"
+github = "labelle-org/labelle"
+prefix = "v"
+use_latest_release = true
