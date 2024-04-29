@@ -4,21 +4,19 @@
 
 pkgname=goatattack
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast-paced multiplayer pixel art shooter game.'
 arch=('i686' 'x86_64')
 url='http://www.goatattack.net/'
 license=('GPL')
 depends=('sdl2' 'libpng' 'sdl2_mixer' 'freetype2')
-makedepends=('gendesk' 'git')
+makedepends=('git')
 _commit='9c4a94bf62cce720180c9ed60ee6aa1d4c10a376'
 source=("git+https://github.com/$pkgname/$pkgname.git#commit=${_commit}")
 sha256sums=('5456f581461df78d28bbdc11cab94ad28e1bbe28cb357bfc911b3bf01433de3b')
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	# generate .desktop-file
-	gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name 'Goat Attack' --exec "$pkgname" --categories 'Game;ActionGame'
 
 	autoupdate -f
 	autoreconf -if
@@ -26,7 +24,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	./configure --prefix=/usr --enable-map-editor
+	./configure --prefix=/usr --enable-map-editor --enable-non-free-pak --enable-master-server
 	make
 }
 
@@ -37,8 +35,5 @@ check() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	# install .desktop-file
-	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-
 	make DESTDIR="$pkgdir/" install
 }
