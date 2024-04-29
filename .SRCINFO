@@ -1,7 +1,7 @@
 pkgbase = plastex
 	pkgdesc = Python-based LaTeX document processing framework.
 	pkgver = 3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/plastex/plastex
 	arch = any
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = plastex
 	depends = python-jinja
 	depends = python-unidecode
 	depends = python-pillow
-	depends = python-typing-extensions
+	depends = python-typing_extensions
 	depends = texlive-core
 	source = plastex-3.0.tar.gz::https://github.com/plastex/plastex/archive/3.0.tar.gz
 	b2sums = 13b266e3dae8b3a30ce5a75bbf34c2e4b0caac9c6b0646d6f1ea35399c85f2aed4943509ca5d02980ddc57dc59df32e5f3fc4ae2a67549be63789f52be096f11
