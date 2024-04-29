@@ -1,12 +1,14 @@
 pkgbase = python-django-ipware
 	pkgdesc = A Django application to retrieve clients IP address
 	pkgver = 5.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/un33k/django-ipware
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-django
 	conflicts = python-ipware
