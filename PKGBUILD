@@ -2,7 +2,7 @@
 # Contributor: algebro <algebro at tuta dot io>
 _base=eth-typing
 pkgname=python-${_base}
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="Common type annotations for ethereum python packages"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('4eee12ac189c717b7985fc24127ca1dd954f45ecd589abc5d6cedd1831de119518c7c4f99724c2babaed1086f981c745a5c2e71799b0aba43d79b7b365f8a2bf')
+sha512sums=('eb2386215c43835e10643199d33c502c925c7ee5707293145dc23711ae83a07a98e8d2bf388637e000e386d52c7bdf092575726f7562f63996368f2b38ef5ffe')
 
 build() {
   cd ${_base}-${pkgver}
