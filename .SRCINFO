@@ -1,6 +1,6 @@
 pkgbase = keks-meet-server
 	pkgdesc = Server for keks-meet, a simple and secure conferencing application for the web.
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://codeberg.org/metamuffin/keks-meet
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = keks-meet-server
 	makedepends = rustup
 	makedepends = esbuild
 	backup = etc/keks-meet-server.toml
-	source = https://codeberg.org/metamuffin/keks-meet/archive/v1.0.3.tar.gz
+	source = https://codeberg.org/metamuffin/keks-meet/archive/v1.1.0.tar.gz
 	source = keks-meet-server.service
 	source = sysusers.conf
-	sha256sums = 374859ce3bab4473d6aa2d82d7bc9143591bf748988f6d6b1d9d6998d7231b56
+	sha256sums = 40cd5203f227d2019bc2179ca018a25a264570dd6c31ba023dacc92847d632db
 	sha256sums = SKIP
 	sha256sums = SKIP
 
