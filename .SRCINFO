@@ -1,11 +1,12 @@
 pkgbase = ftbt
-	pkgdesc = A ftbt game engine, with Chinese documents.
+	pkgdesc = A TBT game engine, with Chinese documents.
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://gitee.com/tfcolin/ftbt
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = go>=1.20
+	makedepends = git
 	depends = ncurses
 	source = ftbt-1.0.2.tar.gz::https://github.com/tfcolin/ftbt/archive/refs/tags/v1.0.2.tar.gz
 	sha256sums = 193de69699b579c47acc621e8447a400aded997fe1c17c1c6017d2f381fc67d1

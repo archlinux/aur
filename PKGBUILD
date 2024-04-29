@@ -2,17 +2,18 @@
 pkgname=ftbt
 pkgver=1.0.2
 pkgrel=1
-pkgdesc="A ftbt game engine, with Chinese documents."
+pkgdesc="A TBT game engine, with Chinese documents."
 arch=('x86_64')
 url="https://gitee.com/tfcolin/ftbt"
 license=('MPL-2.0')
 depends=('ncurses')
-makedepends=('go>=1.20')
+makedepends=('go>=1.20' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tfcolin/ftbt/archive/refs/tags/v${pkgver}.tar.gz")
 
 prepare() {
   cd "$pkgname-$pkgver"
   mkdir -p build/
+  export GONOPROXY="gitee.com"
 }
 
 build() {
