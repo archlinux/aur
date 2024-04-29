@@ -3,7 +3,7 @@
 
 pkgname=euroscope-bin
 pkgver=3.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A radar scope for VATSIM"
 arch=("x86_64")
 url="https://euroscope.hu/"
@@ -16,7 +16,7 @@ source=("https://euroscope.hu/install/EuroScopeSetup.${pkgver}.msi"
         "euroscope.png"
 )
 sha512sums=("b40dc7fd50f29a2c699ca9cbb985fcd4c2d227ce88d233c9404b942bcdc961ddd0656f08c1064ec05c572a9268e4fd1222769a36241b565f1f3d2539829da362"
-            "3f05cd47e3534ed093beaa5423bd92f3b09fdbee57786acc3f0307b7394bc2f2d843451186e9beaea41403b4628d44a29a32410d4b3848cd70e5fe3ac1f865e6"
+            "bac12cd3318682a3af7660d39b1fe8a27d5d6c45969a7995a59bf3b66880909568ad237b8b1c6dcb96e67653dbf870e7767d08ac8ad716283fcc0e289bea39ba"
             "ffa95249cf74e0401c165576a1a0efade2d4837df692fb8ed0c787563ef062afe8a4038f0704b8485c2ca1e8fa1835787c427f1f0faa4264c3481a61d8d6e544"
             "b7609ff79b2b6f5367979aefd567d9c7e34006adff59bb55004ba0c10da8929235bc2c043369bb7e8382900f21299357857435e3dfcf593e42d7eebe5e4a4e87"
 )
@@ -29,13 +29,12 @@ build() {
     export XDG_DATA_HOME="$srcdir"/tmp/local
     msiexec /i "$srcdir/EuroScopeSetup.${pkgver}.msi" /quiet
     install -m755 -d "$srcdir/EuroScope"
-    cp -r "$srcdir/tmp/env/drive_c/Program Files (x86)/EuroScope" "$srcdir"
 }
 
 package() {
     echo "Packaging EuroScope ..."
     install -m755 -d "$pkgdir/usr/share/$pkgname"
-    cp -r "$srcdir/EuroScope" "$pkgdir/usr/share/$pkgname/"
+    cp -r "$srcdir/tmp/env/drive_c/Program Files (x86)/EuroScope" "$pkgdir/usr/share/$pkgname/"
     find "$pkgdir/usr/share/$pkgname/" -type d -exec chmod 755 "{}" \;
     find "$pkgdir/usr/share/$pkgname/" -type f -exec chmod 644 "{}" \;
     install -d -m755 $pkgdir/usr/bin

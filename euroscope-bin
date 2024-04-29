@@ -3,11 +3,11 @@ unset WINEPREFIX
 
 progName="euroscope"
 export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
-
+export WINEARCH="win32"
 
 install_deps() {
-   notify-send --app-name=EuroScope --icon=euroscope "Installing libraries, it may take a few minutes."
-   winetricks --unattended iertutil msls31 msxml6 urlmon vcrun2019 wininet
+   notify-send --app-name=EuroScope --icon=euroscope "Installing Dependencies" "It may take a few minutes."
+   winetricks --unattended iertutil msls31 msxml6 urlmon vcrun2019 wininet || notify-send --app-name=EuroScope --icon=euroscope "Error" "Install failed."; exit 1
    touch "$WINEPREFIX/.installed"
 }
 
