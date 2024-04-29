@@ -1,0 +1,22 @@
+pkgbase = python-pyotrs-git
+	pkgdesc = Interacting with OTRS from Python
+	pkgver = 0.4.1.r187.g2034a3d
+	pkgrel = 1
+	url = https://gitlab.com/rhab/PyOTRS
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	makedepends = fakeroot
+	makedepends = debugedit
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-deprecation
+	provides = python-pyotrs
+	source = python-pyotrs-git::git+https://gitlab.com/rhab/PyOTRS.git
+	sha256sums = SKIP
+
+pkgname = python-pyotrs-git
