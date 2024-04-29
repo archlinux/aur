@@ -1,12 +1,12 @@
 pkgbase = chromium-bypass-paywalls-clean-git
 	pkgdesc = Chromium extension to bypass paywalls
-	pkgver = 2.4.9.0.r5.g5e32942
+	pkgver = 20240429160549
 	pkgrel = 1
-	url = https://gitlab.com/magnolia1234/bypass-paywalls-chrome-clean
+	url = hhttps://github.com/bpc-clone/bpc_updates
 	arch = any
 	license = MIT
-	makedepends = git
-	source = git+https://gitlab.com/magnolia1234/bypass-paywalls-chrome-clean.git
-	sha512sums = SKIP
+	makedepends = curl
+	source = bypass-paywalls-chrome-clean-20240429160549.zip::https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass-paywalls-chrome-clean-master.zip
+	sha256sums = SKIP
 
 pkgname = chromium-bypass-paywalls-clean-git

@@ -1,24 +1,26 @@
 # Maintainer: Ajay <dev@ajay.app>
+# Maintainer: David Cooper <david@dtcooper.com>
 
-_gitname=bypass-paywalls-chrome-clean
+_pkgname=bypass-paywalls-chrome-clean
 pkgname=chromium-bypass-paywalls-clean-git
-pkgver=2.4.9.0.r5.g5e32942
+pkgver=20240429160549
 pkgrel=1
 pkgdesc="Chromium extension to bypass paywalls"
 arch=('any')
-url="https://gitlab.com/magnolia1234/${_gitname}"
+makedepends=(curl)
+url="hhttps://github.com/bpc-clone/bpc_updates"
 license=(MIT)
-makedepends=(git)
-source=("git+${url}.git")
-sha512sums=('SKIP')
+_source="https://github.com/bpc-clone/bpc_updates/releases/download/latest/${_pkgname}-master.zip"
+source=("${_pkgname}-${pkgver}.zip::${_source}")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_gitname}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    date -u --date="$(curl -LsvX HEAD "${_source}" 2>&1 | grep -i '^< Last-Modified:' | cut -f 3- -d ' ')" '+%Y%m%d%H%M%S'
 }
+
 package() {
-    mkdir -p "${pkgdir}/usr/share/chromium/${_gitname}"
+    mkdir -p "${pkgdir}/usr/share/chromium/${_pkgname}"
     shopt -u dotglob
-    cp -dr --no-preserve=ownership "${srcdir}/${_gitname}"/* "${pkgdir}/usr/share/chromium/${_gitname}/"
-    install -D "${_gitname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp -dr --no-preserve=ownership "${srcdir}/${_pkgname}-master"/* "${pkgdir}/usr/share/chromium/${_pkgname}/"
+    install -D "${_pkgname}-master/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
