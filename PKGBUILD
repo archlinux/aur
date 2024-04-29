@@ -2,7 +2,7 @@
 
 pkgname=python-matplotlib-sixel-git
 pkgver=r15.a6c632d
-pkgrel=1
+pkgrel=2
 pkgdesc="a sixel graphics backend for matplotlib "
 arch=('any')
 url="https://github.com/jonathf/matplotlib-sixel"
