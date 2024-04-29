@@ -1,7 +1,7 @@
 pkgbase = python-neotermcolor
 	pkgdesc = Modern ANSII Color formatting for output in terminal
 	pkgver = 2.0.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alttch/neotermcolor
 	arch = any
 	license = MIT
