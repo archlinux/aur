@@ -3,7 +3,7 @@
 
 pkgname=euroscope-bin
 pkgver=3.2.9
-pkgrel=4
+pkgrel=5
 pkgdesc="A radar scope for VATSIM"
 arch=("x86_64")
 url="https://euroscope.hu/"
