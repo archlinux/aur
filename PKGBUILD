@@ -2,7 +2,7 @@
 pkgname=bilibili
 pkgver=1.13.2_1
 _electronversion=21
-pkgrel=1
+pkgrel=2
 pkgdesc="基于哔哩哔哩官方客户端移植的Linux版本 支持漫游"
 arch=(
     'aarch64'
@@ -15,41 +15,40 @@ conflicts=(
     "${pkgname}"
 )
 depends=(
-    "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
+    "electron${_electronversion}"
+    "ffmpeg"
 )
 makedepends=(
     'wget'
     'perl-image-exiftool'
-    'git'
     'asar'
     'unzip'
     'p7zip'
     'curl'
 )
 source=(
-    "${pkgname}.git::git+${url}.git#tag=v${pkgver//_/-}"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('2b0c8f04c0fa3d2d7a0cd88b57fbf4b32a6c615bb943198ea0e2c505330d7f5b'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('9764c9a3bba3de88ca594e48ea44277b2214c0dee6c40d0e4241d91620d308b7'
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/${pkgname}-linux-${pkgver//_/-}"
     sh "tools/setup-${pkgname}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/app/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/app/extensions" "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/res/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-linux-${pkgver//_/-}/app/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}-linux-${pkgver//_/-}/app/extensions" "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-linux-${pkgver//_/-}/res/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/${pkgname}.git/res/icons/${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}-linux-${pkgver//_/-}/res/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    install -Dm644  "${srcdir}/${pkgname}.git/license" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644  "${srcdir}/${pkgname}-linux-${pkgver//_/-}/license" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
