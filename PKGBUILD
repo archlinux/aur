@@ -6,7 +6,7 @@ pkgver=1.1.0.r0.g7fdd30f
 _electronversion=29
 _nodeversion=18
 pkgrel=1
-pkgdesc="Outdated Snake Game Using Electron"
+pkgdesc="🐶 The fastest way to get a WebSocket server up and running"
 arch=('any')
 url="https://github.com/KAIKAKU-AI/perrito-ws"
 license=("GPL-3.0-only")
@@ -61,7 +61,7 @@ build() {
     else
         echo "Your network is OK."
     fi
-    icotool -x puhlic/"${_appname}.ico" -o public/"${_appname}.png"
+    icotool -x public/"${_appname}.ico" -o public/"${_appname}.png"
     sed "s|${_appname}.ico|${_appname}.png|g" -i src/main.ts
     npm install
     npm run package

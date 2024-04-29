@@ -1,5 +1,5 @@
 pkgbase = perrito-ws-git
-	pkgdesc = Outdated Snake Game Using Electron
+	pkgdesc = 🐶 The fastest way to get a WebSocket server up and running
 	pkgver = 1.1.0.r0.g7fdd30f
 	pkgrel = 1
 	url = https://github.com/KAIKAKU-AI/perrito-ws
