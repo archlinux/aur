@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=EuroScope
+GenericName=Radar scope for VATSIM
+Comment=A radar scope for VATSIM
+Encoding=UTF-8
+Version=3.2.9
+Type=Application
+Terminal=false
+Icon=euroscope
+Exec=/usr/bin/euroscope-bin
+Categories=Game;
+StartupWMClass=EuroScope.exe

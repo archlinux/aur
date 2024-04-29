@@ -1,0 +1,4 @@
+*.msi
+*.zst
+pkg
+src
