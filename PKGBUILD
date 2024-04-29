@@ -2,12 +2,12 @@
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=0
+_microarchitecture=98
 
 ## Major kernel version
 _major=6.8
 ## Minor kernel version
-_minor=7
+_minor=8
 
 ## PKGBUILD ##
 
@@ -34,7 +34,7 @@ validpgpkeys=(
   '83BC8889351B5DEBBB68416EB8AC08600F108CDF'  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('291d1a1faf4e87b3b0ea9729080db887aafd1ff2fac1430ceca921e46bc22fae'
+sha256sums=('1c4cdcb9d560fad1fb95db2cb8afbedc922f9ead848371fe40363b13f9f631ba'
             'SKIP'
             'SKIP'
             'SKIP'
