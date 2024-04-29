@@ -1,7 +1,7 @@
 # Maintainer: Thomas Holden <thomas@tholden.no>
 pkgname=zenbook-sound-fix-ux3405ma
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SSDT Patch to fix missing speakers sound in Linux on Asus Zenbook 14 UX3405MA (2024) and latest BIOS"
 arch=("x86_64")
 url="https://github.com/smallcms/asus_zenbook_ux3405ma"

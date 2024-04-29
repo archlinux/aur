@@ -4,10 +4,6 @@ post_install() {
     grub-mkconfig -o /boot/grub/grub.cfg
 }
 
-post_upgrade() {
-    post_install
-}
-
 post_remove() {
     echo "Regenerating GRUB configuration after removal..."
 
