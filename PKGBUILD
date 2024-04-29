@@ -1,19 +1,19 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=ttyplot
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='A realtime plotting utility for terminal with data input from stdin'
 arch=(x86_64)
 url=https://github.com/tenox7/ttyplot
-license=(Apache)
+license=(Apache-2.0)
 depends=(ncurses glibc)
 makedepends=(make gcc pkg-config)
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tenox7/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a6d0cfb2ec37ea6b4aaf978a8190ca0f42eacd4841f62da4ea2d93ecefc4dd28')
-b2sums=('f78c5b7ef53e0bd1921138db965edcb9aff95d359263f1343ad2f33b075ff49ef0147354a7467de8cc5cc3a1f2508f9cf81fcbc6195c600d1fd07d0760de9b42')
+sha256sums=('99222721e2d89e1064546f29e678830ccaba9b75f276a4b6845cc091169787a0')
+b2sums=('c7a818a69774fc7c5f6b498e5bf2f9c3ec644dc23d54daf59adaf13962f614c23918ca1d84614e27c60e75d1b98b3eb3c548dc14b59b539acceb3327dafabe0c')
 
 build() {
 	make -C "${pkgname}-${pkgver}" PREFIX=/usr MANPREFIX=/usr/share/man
