@@ -1,7 +1,7 @@
 pkgbase = python-imgsize
 	pkgdesc = Pure Python image size library
 	pkgver = 2.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/ojii/imgsize
 	arch = any
 	license = BSD-3-Clause
