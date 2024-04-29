@@ -1,6 +1,6 @@
 pkgbase = trackaudio-git
 	pkgdesc = Next-generation cross-platform Audio-For-VATSIM ATC Client
-	pkgver = 1.0.2.beta.1.r7.g59968b8
+	pkgver = 1.0.2.beta.2.r11.gb90f58e
 	pkgrel = 1
 	url = https://github.com/pierr3/TrackAudio
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = trackaudio-git
 	makedepends = npm
 	makedepends = unzip
 	makedepends = zip
+	provides = trackaudio
 	conflicts = trackaudio-bin
 	source = trackaudio::git+https://github.com/pierr3/TrackAudio.git#branch=main
 	source = trackaudio.desktop
