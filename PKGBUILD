@@ -1,54 +1,63 @@
-# Maintainer: Sándor Nagy <sanya868 at gmail dot com>
-# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
-# Contributor: mosra <mosra@centrum.cz>
+# Maintainer:
+# Contributor: Sándor Nagy <sanya868 at gmail dot com>
 
+## options
+: ${_branch:=kf6}
+
+# basic info
 _pkgname="libkomparediff2"
 pkgname="$_pkgname-git"
-pkgver=23.08.3.r15.g9897e39
+pkgver=24.02.2.r89.gcc7b704
 pkgrel=1
 pkgdesc="Library to compare files and strings"
 url='https://invent.kde.org/sdk/libkomparediff2'
-license=('GPL' 'LGPL' 'FDL')
-arch=('i686' 'x86_64')
+license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
+arch=('x86_64')
 
 depends=(
-  'kio5'
+  'kio'
+  'kxmlgui'
+
+  ## implicit
+  #'kconfig'
+  #'kconfigwidgets'
+  #'kcoreaddons'
+  #'ki18n'
+  #'qt6-base'
 )
 makedepends=(
-  'extra-cmake-modules'
-  'kdoctools5'
-  'git'
   'cmake'
+  'extra-cmake-modules'
+  'git'
+  'kdoctools'
+  'ninja'
 )
 
 conflicts=("$_pkgname=${pkgver%%.r*}")
 provides=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git")
+source=("$_pkgsrc"::"git+$url.git#branch=${_branch:-master}")
 sha1sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
 
-  local _tag=$(git tag | grep -Ev '\.[0-9][0-9]$' | sort -V | tail -1)
-  local _revision=$(git rev-list --count $_tag..HEAD)
-  local _hash=$(git rev-parse --short HEAD)
+  local _tag=$(git tag | grep -Ev '\.[0-9][0-9]$' | sort -rV | head -1)
+  local _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  local _hash=$(git rev-parse --short=7 HEAD)
 
-  printf '%s.r%s.g%s' \
-    "${_tag#v}" \
-    "$_revision" \
-    "$_hash"
+  printf '%s.r%s.g%s' "${_tag#v}" "$_revision" "$_hash"
 }
 
 build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -G Ninja
     -DCMAKE_BUILD_TYPE=Release
-    -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_INSTALL_LIBDIR='lib'
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+    -DBUILD_WITH_QT6=ON
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
@@ -58,5 +67,5 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
