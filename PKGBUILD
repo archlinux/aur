@@ -3,7 +3,7 @@
 
 _pkgname=notes
 pkgname=bash-notes
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Simple delightful note taking, with more unix and less lock-in."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('bash')
 conflicts=('notes')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('87f19055029428d8cb19df884089f06c7a1a93145fec8298f925e1e349b1f805')
+sha256sums=('0421361d95dd451668101022fac65a18f26814b0d585687a38e162fd3ebba6c2')
 
 package() {
   cd "${_pkgname}-${pkgver}"
