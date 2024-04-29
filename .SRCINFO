@@ -1,17 +1,14 @@
 pkgbase = env-secrets-bin
 	pkgdesc = A CLI tool to set env variables with secrets in shell from the secret-service
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/nikarh/env-secrets
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = curl
-	makedepends = grep
-	makedepends = awk
 	provides = env-secrets
 	conflicts = env-secrets
-	source = env-secrets-x86_64-unknown-linux-gnu-v0.0.4.tar.gz::https://github.com/nikarh/env-secrets/releases/download/v0.0.4/env-secrets-x86_64-unknown-linux-gnu-v0.0.4.tar.gz
-	sha256sums = 32c3acf20fd4eeff17bce19729db3ccf152590c5e6d7a99b4ac5fc164e050349
+	source = env-secrets-x86_64-unknown-linux-gnu-v0.0.5.tar.gz::https://github.com/nikarh/env-secrets/releases/download/v0.0.5/env-secrets-x86_64-unknown-linux-gnu-v0.0.5.tar.gz
+	sha256sums = 6a26299d2b0404e01233f7256877790ae03d3708a20e77ac71270df3ec752b8c
 
 pkgname = env-secrets-bin

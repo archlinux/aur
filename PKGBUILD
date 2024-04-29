@@ -1,6 +1,6 @@
 # Maintainer: Nikolay Arhipov <n at arhipov dot net>
 pkgname=env-secrets-bin
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="A CLI tool to set env variables with secrets in shell from the secret-service"
 arch=('x86_64' 'aarch64')
@@ -8,17 +8,12 @@ url="https://github.com/nikarh/env-secrets"
 license=('MIT')
 provides=('env-secrets')
 conflicts=('env-secrets')
-makedepends=('curl' 'grep' 'awk')
 
 source=(
 	"env-secrets-${arch}-unknown-linux-gnu-v${pkgver}.tar.gz::https://github.com/nikarh/env-secrets/releases/download/v${pkgver}/env-secrets-${arch}-unknown-linux-gnu-v${pkgver}.tar.gz"
 )
 
-sha256sums=('32c3acf20fd4eeff17bce19729db3ccf152590c5e6d7a99b4ac5fc164e050349')
-
-pkgver() {
-    curl --silent "https://api.github.com/repos/nikarh/env-secrets/releases/latest" | grep tag_name | head -n 1 | awk -F'"' '{print $4}' | awk -F'v' '{print $2}'
-}
+sha256sums=('6a26299d2b0404e01233f7256877790ae03d3708a20e77ac71270df3ec752b8c')
 
 package() {
 	install -Dm755 "${srcdir}/env-secrets" "${pkgdir}/usr/bin/env-secrets"
