@@ -2,8 +2,8 @@
 
 pkgname=python-tulir-telethon
 pkgver=1.34.0a2
-pkgrel=1
-pkgdesc="is a fork of Telethon library with custom patches from Tulir."
+pkgrel=2
+pkgdesc="fork of Telethon library with custom patches from Tulir"
 arch=('any')
 url="https://github.com/tulir/Telethon"
 license=('MIT')
