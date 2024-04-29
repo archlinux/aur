@@ -2,7 +2,7 @@
 # Contributor: Jaan Toots <jaan@jaantoots.org>
 pkgname=goobook
 pkgver=3.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Access your Google contacts from the command line"
 arch=('any')
 url="https://gitlab.com/goobook/goobook"
@@ -22,7 +22,7 @@ sha256sums=('a2182068ec1fbb0d37869e224c99ea70971f78525596a7af7a3e4803e0614c91')
 
 build() {
     cd "$pkgname-$pkgver"
-    rst2man.py --strict goobook.1.rst goobook.1
+    rst2man --strict goobook.1.rst goobook.1
     python -m build --wheel --no-isolation
 }
 
