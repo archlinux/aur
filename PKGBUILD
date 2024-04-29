@@ -1,15 +1,15 @@
 # Maintainer: Aleksandr Beliaev <trap000d@gmail.com>
 
 pkgname=rstudio-desktop
-_vermajor=2023
-_verminor=12
-_verpatch=1
-_versuffix=402
-_gitcommit=4da5832
+_vermajor=2024
+_verminor=04
+_verpatch=0
+_versuffix=735
+_gitcommit=a00d0e7
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}-${_versuffix}
-_nodever=18.18.2
+_nodever=18.19.1
 _pandocver="current"
 _quarto="FALSE"
 
@@ -25,15 +25,15 @@ optdepends=('git: for git support'
             'openssh-askpass: for a git ssh access'
             'quarto: for Quarto projects support')
 
-source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/${_vermajor}.${_verminor}.${_verpatch}+${_versuffix}.tar.gz"
+source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v${_vermajor}.${_verminor}.${_verpatch}+${_versuffix}.tar.gz"
         "https://github.com/quarto-dev/quarto/archive/refs/heads/release/rstudio-cherry-blossom.zip"
         "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
         "qt.conf"
         "pandoc_version.patch")
 
-sha256sums=('196d31094d580a74737fbf689d2d0b302da5fec13694aa1d63f8875d3e45e4dd'
+sha256sums=('15dfab3e794b24dbc80093b83bda87a77b7ab197faa8b09fcbad84fc68985960'
             'df3a040f0cf4ce1892519082dd6822a8ca433e9e4f02d9394ab2931733f7e5a6'
-            'a44c3e7f8bf91e852c928e5d8bd67ca316b35e27eec1d8acbe3b9dbe03688dab'
+            '724802c45237477dbe5777923743e6c77906830cae03a82b5653ebd75b301dda'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
             '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
 
