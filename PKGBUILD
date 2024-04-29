@@ -1,7 +1,7 @@
 _basepgkname=cosmopolitan
 pkgname="${_basepgkname}-bin"
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Build-once run-anywhere c library."
 arch=('x86_64')
 url="https://github.com/jart/cosmopolitan"
