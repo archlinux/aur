@@ -5,12 +5,12 @@
 _pkgname=mailnag
 pkgname=$_pkgname-git
 pkgver=20210411.r797.7ef9105
-pkgrel=1
+pkgrel=2
 pkgdesc='An extensible mail notification daemon'
 arch=('any')
 url='https://github.com/pulb/mailnag'
 license=('GPL')
-depends=('python-gobject' 'python-httplib2' 'python-xdg' 'python-dbus' 'libnotify' 'gst-plugins-base' 'gtk3' 'gdk-pixbuf2')
+depends=('python-gobject' 'python-httplib2' 'python-xdg' 'python-dbus' 'python-zombie-imp' 'libnotify' 'gst-plugins-base' 'gtk3' 'gdk-pixbuf2')
 makedepends=('gettext' 'git')
 
 optdepends=(
@@ -20,14 +20,19 @@ optdepends=(
   'networkmanager: network connectivity detection'
 )
 
-source=("git+$url")
-sha512sums=('SKIP')
+source=("git+$url" 'deprecated-ssl.diff')
+sha512sums=('SKIP' 'fe0aa6f637dff551639a4d5ec4fc00fc934d67d32cd821b15e5c20e9c15924e9252b0e5ac2efa07909a2cec999241b5abfed4c9965a841ff1be9f830b420c738')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 
 pkgver() {
   cd $_pkgname
   printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd $_pkgname
+  patch -p1 < ../deprecated-ssl.diff
 }
 
 package() {
