@@ -3,7 +3,7 @@
 
 pkgname=python-csdr-luarvique
 pkgver=0.18.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the csdr library."
 arch=('x86_64' 'aarch64')
 url="https://github.com/luarvique/pycsdr"
