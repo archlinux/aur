@@ -3,7 +3,7 @@ pkgname=vesktop_electron
 _pkgname=Vesktop
 pkgdesc="Vesktop gives you the performance of web Discord and the comfort of Discord Desktop, using the system provided Electron"
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vencord/Vesktop"
 license=('GPL3')
@@ -22,7 +22,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'vesktop.sh')
 sha256sums=('28f2fdc9a5d017446ad59f119dad0e2e649692d46c6ce8330891e7f0c725a33f'
             'f279b1e469fb965cdf6dba9b4f428b0a7f28f414d84a47c6481b726adeb99c2b'
-            'f497f7897a3ee262c0ad69709d1241ae829454acc582d27f21e8cd70119ca687')
+            '4a558e2fd7fdce8cb39e1891fa4e5ef1dba1b2a6733522e1782c513f72a3806b')
 prepare() {
   # Use system's electron
   sed -i '/linux/s/^/        "electronDist": "\/usr\/lib\/electron29",\n/' "$srcdir/$_pkgname-$pkgver/package.json"
