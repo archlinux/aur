@@ -1,12 +1,14 @@
 pkgbase = python-connexion
 	pkgdesc = Connexion is a modern Python web framework that makes spec-first and api-first development easy
 	pkgver = 3.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/spec-first/connexion
 	arch = any
-	license = Apache2
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-a2wsgi
 	depends = python-asgiref

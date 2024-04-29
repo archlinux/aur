@@ -1,13 +1,13 @@
 # Maintainer: Radu Potop <radu@wooptoo.com>
 
-_pkgbasename=connexion
+upstream_name=connexion
 pkgname=python-connexion
 pkgver=3.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Connexion is a modern Python web framework that makes spec-first and api-first development easy"
 arch=(any)
-url="https://github.com/spec-first/connexion"
-license=("Apache2")
+url="https://github.com/spec-first/$upstream_name"
+license=("Apache-2.0")
 depends=(
     "python"
     "python-a2wsgi"
@@ -22,16 +22,16 @@ depends=(
     "python-starlette"
     "python-werkzeug"
 )
-makedepends=("python-build" "python-installer")
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 
 build() {
-    cd "$_pkgbasename-$pkgver"
+    cd "$upstream_name-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_pkgbasename-$pkgver"
+    cd "$upstream_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
