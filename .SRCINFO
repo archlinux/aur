@@ -1,11 +1,11 @@
 pkgbase = python-sherpa
 	pkgdesc = Modeling and fitting package for scientific data analysis
 	pkgver = 4.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cxc.cfa.harvard.edu/contrib/sherpa
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	checkdepends = python-pytest
 	checkdepends = python-astropy
 	checkdepends = python-matplotlib

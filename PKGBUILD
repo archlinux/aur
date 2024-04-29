@@ -3,11 +3,11 @@ pkgbase=python-sherpa
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=4.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modeling and fitting package for scientific data analysis"
 arch=('i686' 'x86_64')
 url="http://cxc.cfa.harvard.edu/contrib/sherpa"
-license=('GPL')
+license=('GPL-3.0-or-later')
 makedepends=('python-setuptools'
              'python-wheel'
              'python-build'
@@ -39,6 +39,10 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     patch -Np1 -i "${srcdir}/sherpa_local_fftw.patch"
+    sed -i -e '/^import\ setuptools/c from setuptools import setup' -e '/distutils/d' setup.py
+    sed -i -e '/setuptools.command/s/^#\ //' -e '/distutils/d' helpers/__init__.py
+    sed -i -e "/^sherpa_inc/s/]/, numpy.get_include()]/" \
+           -e '/^from/a import numpy' helpers/extensions/__init__.py
     sed -i -e "/oldest-supported-numpy/d" -e "/setuptools/s/, < 60//" pyproject.toml
 #   sed -e '/'\'nbsphinx\''/a \    '\'IPython\.sphinxext\.ipython_console_highlighting\','' \
 #       -i docs/conf.py
