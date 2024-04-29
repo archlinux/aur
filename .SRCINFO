@@ -1,6 +1,6 @@
 pkgbase = dbxfs
 	pkgdesc = User-space file system for Dropbox
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://thelig.ht/code/dbxfs
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = dbxfs
 	depends = python-privy
 	depends = python-sentry_sdk
 	depends = python-userspacefs
-	source = https://files.pythonhosted.org/packages/source/d/dbxfs/dbxfs-2.0.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/dbxfs/dbxfs-2.0.1.tar.gz
 	source = update-check.patch
-	sha256sums = b24299903040d621818cbbb0f4aaa81386c0cf2eb6c7d069c417508a7903a2c4
+	sha256sums = 222c6055ca6aeb220e1d65179b998d6ea54f27cae1a3369632e27f93ad1a80d6
 	sha256sums = b00af1f372b4f420d4e2cb8bf446e5e654db74aeee32636e008cab537968c755
 
 pkgname = dbxfs
