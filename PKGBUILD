@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.0.6.r0.g057659ca3
-_electronversion=28
+pkgver=3.0.11.r1.g398fdf164
+_electronversion=30
 _nodeversion=18
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
@@ -25,7 +25,6 @@ makedepends=(
     'nvm'
     'npm'
     'go>=1.21'
-    'pnpm'
     'base-devel'
 )
 source=(
@@ -33,10 +32,10 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -78,12 +77,13 @@ build() {
         echo "Your network is OK."
     fi
     sed "/tar.gz/d;s|AppImage|dir|g" -i electron-builder-linux.yml
-    pnpm install --no-frozen-lockfile
-    pnpm run build
+    npm add pnpm
+    npx pnpm install --no-frozen-lockfile
+    npx pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
     go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "${srcdir}/${pkgname//-/.}/app"
-    pnpm run dist-linux
+    npx pnpm run dist-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
