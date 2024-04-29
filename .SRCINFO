@@ -1,12 +1,14 @@
 pkgbase = llamafile-bin
 	pkgdesc = Distribute and run LLMs with a single file.
 	pkgver = 0.8.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Mozilla-Ocho/llamafile
 	arch = x86_64
 	license = Apache-2.0
-	depends = wine
+	depends = cosmopolitan-bin
 	optdepends = hip-runtime-amd: AMD GPU-Offloading Support
+	optdepends = hipblas: Used for static compiling with rocm
+	optdepends = rocminfo: Used for verifying existance of rocm
 	optdepends = cuda: Nvidia GPU-Offloading Support
 	provides = llamafile
 	provides = llamafile-tokenize

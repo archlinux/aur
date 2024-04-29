@@ -1,14 +1,16 @@
 _basepgkname=llamafile
 pkgname="${_basepgkname}-bin"
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Distribute and run LLMs with a single file."
 arch=('x86_64')
 url="https://github.com/Mozilla-Ocho/llamafile"
 license=('Apache-2.0')
-depends=('wine')
+depends=('cosmopolitan-bin')
 optdepends=(
 	'hip-runtime-amd: AMD GPU-Offloading Support'
+  'hipblas: Used for static compiling with rocm'
+  'rocminfo: Used for verifying existance of rocm'
 	'cuda: Nvidia GPU-Offloading Support'
 	)
 source=("${pkgname}::https://github.com/Mozilla-Ocho/llamafile/releases/download/${pkgver}/llamafile-${pkgver}.zip")
