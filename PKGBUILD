@@ -25,14 +25,13 @@ source=("$pkgname-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 noextract=()
 sha256sums=('SKIP'
             'a08dfc1246edcb721505d717dff36abdaa4aee0f1a74c02d4eece69f563cb5e8'
-	    'b63df2685509bbdd82a97c0b73e4891d013a6a91c19fc029ed79ce9fc35b4710')
+	    '04c5c54b8dbf4f43d58024aacbfb05e769b5745a6bd090c1d2dbea6ce9f80b5d')
 validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-${pkgver}"
 	patch -p1 -i "$srcdir/$pkgname.patch"
 	patch -p1 -i "$srcdir/$pkgname-makefile.patch"
-	mkdir -p "$pkgdir/usr/local/bin"
 }
 
 build() {

@@ -11,6 +11,6 @@ pkgbase = hustmirror-cli
 	source = hustmirror-cli-makefile.patch
 	sha256sums = SKIP
 	sha256sums = a08dfc1246edcb721505d717dff36abdaa4aee0f1a74c02d4eece69f563cb5e8
-	sha256sums = b63df2685509bbdd82a97c0b73e4891d013a6a91c19fc029ed79ce9fc35b4710
+	sha256sums = 04c5c54b8dbf4f43d58024aacbfb05e769b5745a6bd090c1d2dbea6ce9f80b5d
 
 pkgname = hustmirror-cli
