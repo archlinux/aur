@@ -1,39 +1,38 @@
 # Maintainer: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
-pkgname=wesnoth-rcx-git
-pkgver=0.3.0
+pkgname=wespal
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="small desktop application for previewing and recoloring Wesnoth graphics"
+pkgdesc="application for previewing and recoloring Wesnoth graphics (previously wesnoth-rcx)"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="https://shadowm.ai0867.net/projects/wesnoth-rcx"
+url="https://irydacea.me/projects/wespal"
 license=('LGPL')
-depends=('qt5-base')
+depends=('qt6-base')
+replaces=('wesnoth-rcx-git')
+conflicts=('wesnoth-rcx-git')
 makedepends=('git')
-source=("git+https://github.com/shikadiqueen/morningstar.git")
+source=("git+https://github.com/irydacea/wespal.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 pkgver() {
-  cd morningstar
-
-  git describe | sed s/-/+/g
+  cd wespal
+  git describe | sed -e s/-/+/g -e s/^v//
 }
 
 prepare() {
-  cd morningstar
+  cd wespal
+  mkdir -p build
+  cd build
 
-  sed -i "s;/usr/local;$pkgdir/usr;" morningstar.pro
-  qmake -config release QMAKE_CXXFLAGS_RELEASE+="${CXXFLAGS} ${CPPFLAGS}" \
-                        QMAKE_LFLAGS_RELEASE+="${LDFLAGS}"
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
-  cd morningstar
-
+  cd wespal/build
   make
 }
 
 package() {
-  cd morningstar
-
-  make install
+  cd wespal/build
+  make install DESTDIR="$pkgdir"
 }

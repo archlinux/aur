@@ -1,8 +1,8 @@
-pkgbase = wesnoth-rcx-git
-	pkgdesc = small desktop application for previewing and recoloring Wesnoth graphics
-	pkgver = 0.3.0
+pkgbase = wespal
+	pkgdesc = application for previewing and recoloring Wesnoth graphics (previously wesnoth-rcx)
+	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://shadowm.ai0867.net/projects/wesnoth-rcx
+	url = https://irydacea.me/projects/wespal
 	arch = i486
 	arch = i686
 	arch = pentium4
@@ -12,9 +12,10 @@ pkgbase = wesnoth-rcx-git
 	arch = aarch64
 	license = LGPL
 	makedepends = git
-	depends = qt5-base
-	source = git+https://github.com/shikadiqueen/morningstar.git
+	depends = qt6-base
+	conflicts = wesnoth-rcx-git
+	replaces = wesnoth-rcx-git
+	source = git+https://github.com/irydacea/wespal.git#tag=v0.5.0
 	md5sums = SKIP
 
-pkgname = wesnoth-rcx-git
-
+pkgname = wespal
