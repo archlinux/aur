@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Tool to administer wireguard VPN (server and user configs)'
 _gitname='wg_tool'
 
-pkgver=6.7.0
+pkgver=6.7.2
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
@@ -47,6 +47,8 @@ build() {
 
 package() {
     cd "${_gitname}"
+    # pull latest Changelog 
+    git pull origin master
     cp Docs/Changelog.rst ${startdir}
     ./scripts/do-install ${pkgdir}
 }

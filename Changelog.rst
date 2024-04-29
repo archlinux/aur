@@ -1,6 +1,25 @@
 Changelog
 =========
 
+**[6.7.2] ----- 2024-04-29** ::
+
+	    PKGBUILD change to get latest Changelog
+	    update Docs/Changelog.rst Docs/wg_tool.pdf
+
+
+**[6.7.1] ----- 2024-04-29** ::
+
+	    Update version.py as our package tooling was updated
+	    update Docs/Changelog.rst Docs/wg_tool.pdf
+
+
+**[6.7.0] ----- 2024-04-23** ::
+
+	    Adjust for upcoming python changes.
+	    Some argparse options have been deprecated in 3.12 and will be removed in 3.14
+	    update Docs/Changelog.rst Docs/wg_tool.pdf
+
+
 **[6.6.1] ----- 2024-04-17** ::
 
 	    Package update: "pacman -Qc wg_tool" now shows the Changelog
