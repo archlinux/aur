@@ -2,12 +2,12 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=plastex-git
 pkgver=3.0.r12.g298a55b6
-pkgrel=2
+pkgrel=3
 pkgdesc="Python-based LaTeX document processing framework"
 arch=('any')
 url="https://github.com/plastex/plastex/"
 license=('custom')
-depends=('python' 'python-jinja' 'python-unidecode' 'python-pillow' 'python-typing-extensions' 'texlive-core')
+depends=('python' 'python-jinja' 'python-unidecode' 'python-pillow' 'python-typing_extensions' 'texlive-core')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=('plastex')
 conflicts=('plastex')
