@@ -1,7 +1,7 @@
 _basepgkname=llamafile
 pkgname="${_basepgkname}-bin"
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Distribute and run LLMs with a single file."
 arch=('x86_64')
 url="https://github.com/Mozilla-Ocho/llamafile"
@@ -31,20 +31,20 @@ package() {
   cd "${srcdir}"
 
   # Install binaries
-  install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-tokenize" "${pkgdir}/usr/bin/${pkgname}-tokenize"
-  install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-convert" "${pkgdir}/usr/bin/${pkgname}-convert"
+  install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile" "${pkgdir}/usr/bin/${_basepgkname}"
+  install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-tokenize" "${pkgdir}/usr/bin/${_basepgkname}-tokenize"
+  install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-convert" "${pkgdir}/usr/bin/${_basepgkname}-convert"
   install -Dm755 "${_basepgkname}-${pkgver}/bin/llava-quantize" "${pkgdir}/usr/bin/llava-quantize"
-  install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-imatrix" "${pkgdir}/usr/bin/${pkgname}-imatrix"
-  install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-quantize" "${pkgdir}/usr/bin/${pkgname}-quantize"
-  install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-perplexity" "${pkgdir}/usr/bin/${pkgname}-perplexity"
+  install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-imatrix" "${pkgdir}/usr/bin/${_basepgkname}-imatrix"
+  install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-quantize" "${pkgdir}/usr/bin/${_basepgkname}-quantize"
+  install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-perplexity" "${pkgdir}/usr/bin/${_basepgkname}-perplexity"
   install -Dm755 "${_basepgkname}-${pkgver}/bin/zipalign" "${pkgdir}/usr/bin/zipalign"
 
   # Install man pages
-  install -Dm644 "${_basepgkname}-${pkgver}/share/man/man1/llamafile.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+  install -Dm644 "${_basepgkname}-${pkgver}/share/man/man1/llamafile.1" "${pkgdir}/usr/share/man/man1/${_basepgkname}.1"
   install -Dm644 "${_basepgkname}-${pkgver}/share/man/man1/llava-quantize.1" "${pkgdir}/usr/share/man/man1/llava-quantize.1"
-  install -Dm644 "${_basepgkname}-${pkgver}/share/man/man1/llamafile-imatrix.1" "${pkgdir}/usr/share/man/man1/${pkgname}-imatrix.1"
-  install -Dm644 "${_basepgkname}-${pkgver}/share/man/man1/llamafile-quantize.1" "${pkgdir}/usr/share/man/man1/${pkgname}-quantize.1"
-  install -Dm644 "${_basepgkname}-${pkgver}/share/man/man1/llamafile-perplexity.1" "${pkgdir}/usr/share/man/man1/${pkgname}-perplexity.1"
+  install -Dm644 "${_basepgkname}-${pkgver}/share/man/man1/llamafile-imatrix.1" "${pkgdir}/usr/share/man/man1/${_basepgkname}-imatrix.1"
+  install -Dm644 "${_basepgkname}-${pkgver}/share/man/man1/llamafile-quantize.1" "${pkgdir}/usr/share/man/man1/${_basepgkname}-quantize.1"
+  install -Dm644 "${_basepgkname}-${pkgver}/share/man/man1/llamafile-perplexity.1" "${pkgdir}/usr/share/man/man1/${_basepgkname}-perplexity.1"
   install -Dm644 "${_basepgkname}-${pkgver}/share/man/man1/zipalign.1" "${pkgdir}/usr/share/man/man1/zipalign.1"
 }
