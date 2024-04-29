@@ -2,14 +2,13 @@
 # Contributor: Scarlett Veldt <scarlett AT enby DOT site>
 pkgname=arrpc
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Discord RPC server for atypical setups"
 arch=('x86_64' 'x86_64_v3')
 url="https://arrpc.openasar.dev/"
 license=('MIT')
 depends=("glibc" "gcc-libs")
 makedepends=("npm")
-conflicts=('arrpc-git')
 # for some reason stripping the binary breaks it
 options=(!strip)
 install=arrpc.install
