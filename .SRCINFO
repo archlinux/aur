@@ -1,7 +1,7 @@
 pkgbase = python-superqt
 	pkgdesc = Missing widgets and components for Qt-python.
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pyapp-kit/superqt
 	arch = any
 	license = BSD
@@ -13,7 +13,7 @@ pkgbase = python-superqt
 	depends = python-packaging
 	depends = python-pygments
 	depends = python-qtpy
-	depends = python-typing-extensions
+	depends = python-typing_extensions
 	depends = qt5-python-bindings
 	source = https://files.pythonhosted.org/packages/source/s/superqt/superqt-0.6.1.tar.gz
 	sha256sums = f1a9e0499c4bbcef34b6f895eb57cd41301b3799242cd030029238124184dade

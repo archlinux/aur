@@ -4,7 +4,7 @@ _name='superqt'
 _author='pyapp-kit'
 pkgname="python-${_name}"
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Missing widgets and components for Qt-python.'
 arch=('any')
 url="https://github.com/${_author}/${_name}"
@@ -20,7 +20,7 @@ depends=(
   'python-packaging'
   'python-pygments'
   'python-qtpy'
-  'python-typing-extensions'
+  'python-typing_extensions'
   'qt5-python-bindings'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
