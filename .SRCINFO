@@ -1,6 +1,6 @@
 pkgbase = spotify-player-full
 	pkgdesc = A command driven spotify player with all options enabled
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/aome510/spotify-player
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = spotify-player-full
 	depends = libsixel
 	conflicts = spotify-player
 	conflicts = spotify-player-full-git
-	source = spotify-player-full-0.18.0.tar.gz::https://github.com/aome510/spotify-player/archive/v0.18.0.tar.gz
-	sha512sums = eddeecc04e8b6822411f796d5d31b92b6698dfbe28d7c1cd8a3eae599c0deefd7ce28adfff70599220f7584c51033ad5d5f435e3bb041a9827ea7d9ef504218c
+	source = spotify-player-full-0.18.1.tar.gz::https://github.com/aome510/spotify-player/archive/v0.18.1.tar.gz
+	sha512sums = 9c7ef072f47ab45acc05bf67025e51446db746b81287adbe3dcbde9185c6ba740f2d5f794c1b1e1e378dd0121dcf28bd56084ff692b7b1e7081a4dda6ef32072
 
 pkgname = spotify-player-full

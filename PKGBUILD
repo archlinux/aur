@@ -2,7 +2,7 @@
 
 pkgname=spotify-player-full
 _pkgname=spotify-player
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="A command driven spotify player with all options enabled"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'openssl' 'dbus' 'libsixel')
 conflicts=("${_pkgname}" "${pkgname}-git")
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aome510/spotify-player/archive/v${pkgver}.tar.gz")
-sha512sums=('eddeecc04e8b6822411f796d5d31b92b6698dfbe28d7c1cd8a3eae599c0deefd7ce28adfff70599220f7584c51033ad5d5f435e3bb041a9827ea7d9ef504218c')
+sha512sums=('9c7ef072f47ab45acc05bf67025e51446db746b81287adbe3dcbde9185c6ba740f2d5f794c1b1e1e378dd0121dcf28bd56084ff692b7b1e7081a4dda6ef32072')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
