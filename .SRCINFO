@@ -1,13 +1,13 @@
 pkgbase = slidegame
 	pkgdesc = An classical puzzle game: Slide blocks to restore a picture.
-	pkgver = 1.1.6
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://gitee.com/tfcolin/slide
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = gtk3
 	depends = ncurses
-	source = https://github.com/tfcolin/slide/archive/refs/tags/v1.1.6.tar.gz
-	sha256sums = 3f4dd801418a17f886e7f1d0c60f3ed0b918561541bec3bcf8c7d69285db47b6
+	source = https://github.com/tfcolin/slide/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 091cf17f0d3cb523f4950e7d8c684a1e2160438083d1d64ff3a4d3e54e3fed17
 
 pkgname = slidegame

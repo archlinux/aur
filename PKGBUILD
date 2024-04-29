@@ -1,6 +1,6 @@
 # Maintainer: Colin Teng <tfcolin@88.com>
 pkgname=slidegame
-pkgver=1.1.6
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An classical puzzle game: Slide blocks to restore a picture."
 arch=('x86_64')
@@ -16,7 +16,9 @@ build() {
 
 package() {
 	cd "slide-$pkgver"
-	PREFIX="$pkgdir/usr/" make install_all
+    export PREFIX="$pkgdir/usr/"
+	make install
+    make install_test
     install -Dm644 doc/slide.pdf -t "$pkgdir"/usr/share/doc/slidegame/
 }
-sha256sums=('3f4dd801418a17f886e7f1d0c60f3ed0b918561541bec3bcf8c7d69285db47b6')
+sha256sums=('091cf17f0d3cb523f4950e7d8c684a1e2160438083d1d64ff3a4d3e54e3fed17')
