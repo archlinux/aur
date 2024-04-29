@@ -4,8 +4,8 @@
 
 pkgbase=upp
 pkgname=(upp theide umk)
-yearver=2022.3
-pkgver=16660
+yearver=2023.2
+pkgver=17045
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
@@ -74,4 +74,4 @@ package_upp() {
   find "$pkgdir/usr/" -type f -print0 | xargs -0 chmod 644
   find "$pkgdir/usr/" -type d -print0 | xargs -0 chmod 755
 }
-sha256sums=('e118bce3427ca595557a35f67ec9ca52f913407607c76be7da705f8ba1dadd9b')
+sha256sums=('6fb91d6714d7159463778ef9437f14f0a580c420f5556772e4e16aea33e51d17')
