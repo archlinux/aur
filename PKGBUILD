@@ -3,7 +3,7 @@
 _pkgname=vim-helm
 pkgname="$_pkgname"-git
 pkgver=master
-pkgrel=1
+pkgrel=2
 pkgdesc="Helm syntax for vim"
 arch=('any')
 url="https://github.com/towolf/$_pkgname"
@@ -13,7 +13,7 @@ makedepends=('git')
 groups=('vim-plugins')
 source=("$pkgname::git+$url#branch=master?signed")
 sha512sums=('SKIP')
-validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23')
+validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 pkgver() {
 	cd "$pkgname"

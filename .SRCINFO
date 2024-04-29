@@ -9,7 +9,7 @@ pkgbase = vim-helm-git
 	makedepends = git
 	depends = vim
 	source = vim-helm-git::git+https://github.com/towolf/vim-helm#branch=master?signed
-	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
 	sha512sums = SKIP
 
 pkgname = vim-helm-git
