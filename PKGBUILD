@@ -3,16 +3,17 @@
 # Contributor (.desktop-file and icon): Nascher <kevin at nascher dot org>
 
 pkgname=goatattack
-pkgver=0.4.5
-pkgrel=4
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='A fast-paced multiplayer pixel art shooter game.'
 arch=('i686' 'x86_64')
 url='http://www.goatattack.net/'
 license=('GPL')
 depends=('sdl2' 'libpng' 'sdl2_mixer' 'freetype2')
 makedepends=('gendesk' 'git')
-source=("git+https://github.com/$pkgname/$pkgname.git#commit=7a84df362cf20551540eb0ddfb675951104a5720")
-md5sums=('SKIP')
+_commit='9c4a94bf62cce720180c9ed60ee6aa1d4c10a376'
+source=("git+https://github.com/$pkgname/$pkgname.git#commit=${_commit}")
+sha256sums=('5456f581461df78d28bbdc11cab94ad28e1bbe28cb357bfc911b3bf01433de3b')
 
 prepare() {
 	cd "$srcdir/$pkgname"
