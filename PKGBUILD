@@ -9,7 +9,7 @@
 
 pkgname=polysh
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool to aggregate several remote shells into one."
 arch=("any")
 url="https://pypi.org/project/${pkgname}/"
