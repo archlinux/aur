@@ -2,7 +2,7 @@
 # Maintainer: Takumi <dGFrdW9oQHR1dGEuaW8K | base64 -d>
 pkgname=newflasher-git
 _pkgname=newflasher
-pkgver=r196.3ee92ee
+pkgver=r198.a4c1fdd
 pkgrel=1
 pkgdesc='This experimental software allows you to flash firmwares acquired through XperiFirm to Sony phones including and newer than the XZ Premium.'
 arch=('x86_64')
