@@ -10,7 +10,7 @@
 _name=compiz
 pkgname=compiz-easy-patch
 pkgver=0.9.14.2
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -23,6 +23,7 @@ depends=(
   'libwnck3'
   'python-gobject'
   'python-cairo'
+  'python-setuptools'
   'protobuf'
   'metacity'
   'glu'
@@ -142,7 +143,10 @@ build() {
     -DCOMPIZ_WERROR=Off \
     -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,expo,grid,regex,animation,ccp"
 
-    make
+    #A race condition consistently causes build to fail when using a faster processor with a slower drive
+    #Limiting max simultaneous make jobs to 4 or less seems to work around the issue
+    mjobs=4; [[ "$(nproc)" -lt 4 ]] && mjobs="$(nproc)"
+    make -j$mjobs
 }
 
 package() {
