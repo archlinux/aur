@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='4.2.9'
+pkgver='4.3.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
@@ -17,7 +17,7 @@ source=(
 	'electron-builder-config.diff'
 	'fix-argv.diff'
 )
-sha512sums=('7dde59cfdaf079e8e0629ae80a005a028b3d2a5a9d68cd8b6a5078a0f6addcd3e3d4ea9f767a527219fec3f5c90e104ff11534c5d7483b4aaf2b5b5f5810bcf2'
+sha512sums=('3e1594aee2ace4b3b2ffbe9c428c1d35978d40c366d8c0452fa24b972be0d5df68dea1f882aa06b31e8ab6aa4c5bbcf7b385f666abf630f9b1e8a57c26496093'
             'e6b9a9ac3c62cc2b040c4ece48ab27a29e1ba8fbf2c3d45f299aeb7c2b0a967acb8e84171f5d71f63ebedba52a8f376beab40e8889bda668341aa1d9da50bd47'
             '942fb32dd31bc2b45422d6caf17a920706eae4997873aad3cc1e0f721219cd2193490f8be0e108418eef24b546513595283d8cec2e75ee2192e66f49fbc5e161'
             'ef966f4cc3358d76f3d5215881ffba6385d954ec1709e5b5708fff1c7544f84c45d4e7e31f63fe385d4bd87084deafa227e5fa6430019940bc5acc6d88e1e2c0')
@@ -57,7 +57,10 @@ check() {
 	# Run unit tests
 	yarn run test:unit --ci
 
-	# Not running tests, as they are currently not repeatable and the sqlserver test suite does not work
+	# Run non-DB integration tests
+	yarn run test:ci --ci
+
+	# Not running DB intergration tests, as they are currently not repeatable and the sqlserver test suite does not work
 	# yarn run test:integration --runInBand --ci --testPathIgnorePatterns=sqlserver.spec.js
 }
 
@@ -72,7 +75,7 @@ package() {
 
 	# Extract pacman archive and copy files
 	mkdir -p "$srcdir/$pkgname-$pkgver-pacman/"
-	tar -xf "$pkgname-$(printf "$pkgver" | sed 's/\.0$//').pacman" --directory "$srcdir/$pkgname-$pkgver-pacman/"
+	tar -xf "$pkgname-$pkgver.pacman" --directory "$srcdir/$pkgname-$pkgver-pacman/"
 	cd "$srcdir/$pkgname-$pkgver-pacman/"
 
 	install -dm755 "$pkgdir/usr/share/"
