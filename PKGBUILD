@@ -2,7 +2,7 @@
 
 pkgname=python-metpy
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 _basename="MetPy"
 _dirname="${_basename}-${pkgver}"
 pkgdesc="collection of tools in Python for reading, visualizing and performing calculations with weather data."
