@@ -1,6 +1,6 @@
 pkgbase = kb-git
 	pkgdesc = A command line minimalist knowledge base manager
-	pkgver = 0.1.7.r6.gfa365a3
+	pkgver = 0.1.7.r8.g862a1ab
 	pkgrel = 1
 	url = https://github.com/gnebbia/kb
 	arch = any
@@ -16,8 +16,6 @@ pkgbase = kb-git
 	conflicts = kb
 	replaces = python-kb-git
 	source = git+https://github.com/gnebbia/kb
-	source = python-colored.patch
-	md5sums = SKIP
-	md5sums = 0a91d77f21a9997139d91c53d59e59f1
+	sha256sums = SKIP
 
 pkgname = kb-git
