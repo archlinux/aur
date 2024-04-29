@@ -2,7 +2,7 @@
 
 pkgname=borgctl
 pkgver=0.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="borgctl - borgbackup without bash scripts"
 arch=('any')
 url="https://github.com/kmille/borgctl"
