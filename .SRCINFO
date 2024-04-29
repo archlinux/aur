@@ -12,7 +12,7 @@ pkgbase = xclicker
 	makedepends = libxtst
 	makedepends = pkgconf
 	depends = gtk3
-	source = https://github.com/robiot/xclicker/archive/refs/tags/v1.5.0.tar.gz
+	source = https://github.com/robiot/xclicker/archive/refs/tags/v1.5.1.tar.gz
 	sha512sums = SKIP
 
 pkgname = xclicker
