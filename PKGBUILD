@@ -1,38 +1,44 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=novel-cli
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.7.6
+pkgrel=1
 pkgdesc='tool for downloading novels from the web, manipulating text, and generating EPUBs'
 arch=(x86_64)
 url='https://github.com/novel-rs/cli'
-license=(Apache MIT)
-depends=(gcc-libs)
-makedepends=("rust>=1.70.0"
-             clang
+license=(Apache-2.0 MIT)
+depends=(gcc-libs
+         glibc
+         opencc)
+makedepends=(clang
              cmake
+             rust
              sqlite)
+checkdepends=(mdbook
+              pandoc)
+options=(!lto)
 _archive="cli-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('01dca1b084488b455d8355bbfeea783d68b8a795d7166c82f0eef70daaa5e7e7')
+sha256sums=('db4a0cb8911732c37fde9982c5f6d4e862ebb6a8ea28da3514c6bb7cebb20c6a')
 
 prepare() {
 	cd "$_archive"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+_srcenv() {
+	cd "$_archive"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 }
 
 build() {
-	cd "$_archive"
-	CFLAGS+=" -ffat-lto-objects"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
+	_srcenv
 	cargo build --frozen --release --all-features
 }
 
 check() {
-	cd "$_archive"
-	CFLAGS+=" -ffat-lto-objects"
-	export RUSTUP_TOOLCHAIN=stable
+	_srcenv
 	cargo test --frozen --all-features
 }
 
