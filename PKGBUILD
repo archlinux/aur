@@ -1,8 +1,8 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
 pkgver=0.15.1
-pkgrel=1
-pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
+pkgrel=2
+pkgdesc="Matrix-Telegram hybrid puppeting/relaybot bridge"
 url="https://github.com/tulir/mautrix-telegram"
 # python-tulir-telethon needs exact version matching
 # as long as I maintain both I can just keep the updates in sync myself
