@@ -1,28 +1,29 @@
-# Maintainer: m8D2 <omui (at) proton mail (dot) com>
+# Maintainer: TurtleRuss <tttturtleruss@gmail.com>
+# Contributor: m8D2 <omui (at) proton mail (dot) com>
 # Contributor: novenary <streetwalkermc@gmail.com>
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=python-soco
-pkgver=0.28.1
+pkgver=0.30.3
 pkgrel=1
 pkgdesc="A Python library that allows you to control Sonos speakers programmatically"
 arch=('any')
 url="https://github.com/SoCo/SoCo"
 license=('MIT')
-depends=('python' 'python-requests' 'python-xmltodict' 'python-ifaddr')
-makedepends=('python-setuptools')
+depends=('python' 'python-requests' 'python-xmltodict' 'python-ifaddr' 'python-twisted' 'python-aiohttp' 'python-appdirs' 'python-lxml')
+makedepends=('python-build' 'python-installer')
 source=("SoCo-$pkgver.tar.gz::https://github.com/SoCo/SoCo/archive/v$pkgver.tar.gz")
-sha256sums=('012d60b19aeeef87cb2f016c3c08979ef509ac37795f8327b80fcf2078b21f39')
+sha256sums=('SKIP')
 
 build() {
   cd SoCo-$pkgver
-  python setup.py build
+  python3 -m build
 }
 
 
 package() {
   cd SoCo-$pkgver
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE.rst
 }
 
