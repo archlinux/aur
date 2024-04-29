@@ -1,6 +1,6 @@
 pkgbase = waylyrics-git
 	pkgdesc = the furry way to show desktop lyrics (git version)
-	pkgver = 0.2.21_r19.g27a7d00a
+	pkgver = 0.3.5_r21.ga7f8b8ac
 	pkgrel = 1
 	url = https://github.com/waylyrics/waylyrics
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = waylyrics-git
 	depends = gettext
 	depends = mimalloc
 	optdepends = breeze-icons: better tray-icon icons
+	optdepends = xdg-desktop-portal: file dialog to import LRC
 	provides = waylyrics
 	conflicts = waylyrics
 	options = !lto
