@@ -38,7 +38,7 @@ source=("git+https://github.com/buildbot/buildbot.git?signed#tag=v$pkgver"
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
         "disable-flaky-tests.diff")
-sha256sums=('18d4d5e5f9cdb5ad3f6ee5b0eea52ec83a7943c0827a1fe735a7b0b159923f9f'
+sha256sums=('b1895b9cd6c73b3fe132460626dbbcf6cfd3d7d14fa11cb10ea21eae0cef964b'
             '6ef2beaff974d48245a6a4f70219b89eb1ef6d484e27ee33b2ac6ab181ab3697'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
             '175cb41a707a278b0a7c0864304a00459d6e2dee16cd5ddbc28a6dc90abfd3fc')
