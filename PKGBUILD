@@ -3,7 +3,7 @@
 
 pkgname=euroscope-bin
 pkgver=3.2.9
-pkgrel=6
+pkgrel=7
 pkgdesc="A radar scope for VATSIM"
 arch=("x86_64")
 url="https://euroscope.hu/"
@@ -38,6 +38,8 @@ package() {
     install -m755 -d "$pkgdir/usr/share/$pkgname"
     catdoc "$srcdir/tmp/env/drive_c/users/$USER/AppData/Roaming/EuroScope/EuroScope - EULA.doc" | sed 's/Page[[:space:]]*PAGE[[:space:]]*1//g' \
          > "$pkgdir/usr/share/$pkgname/LICENSE"
+    install -dm0644 "$HOME/.local/share/wineprefixes/euroscope/drive_c/Windows/Fonts/"
+    cp "$srcdir/tmp/env/drive_c/windows/Fonts/EuroScope.ttf" "$HOME/.local/share/wineprefixes/euroscope/drive_c/windows/Fonts/"
     cp -r "$srcdir/tmp/env/drive_c/Program Files (x86)/EuroScope" "$pkgdir/usr/share/$pkgname/"
     find "$pkgdir/usr/share/$pkgname/" -type d -exec chmod 755 "{}" \;
     find "$pkgdir/usr/share/$pkgname/" -type f -exec chmod 644 "{}" \;

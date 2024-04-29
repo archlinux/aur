@@ -1,7 +1,7 @@
 pkgbase = euroscope-bin
 	pkgdesc = A radar scope for VATSIM
 	pkgver = 3.2.9
-	pkgrel = 6
+	pkgrel = 7
 	url = https://euroscope.hu/
 	install = euroscope-bin.install
 	arch = x86_64
