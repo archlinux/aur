@@ -1,6 +1,6 @@
 # Maintainer: IotaBread <iotabread at gmail dot com>
 pkgname=vineflower
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Modern Java & JVM language decompiler focused on output quality & readability"
 arch=('any')
@@ -11,7 +11,7 @@ replaces=('quiltflower')
 source=("https://repo1.maven.org/maven2/org/vineflower/vineflower/$pkgver/$pkgname-$pkgver.jar"
         "https://repo1.maven.org/maven2/org/vineflower/vineflower/$pkgver/$pkgname-$pkgver.jar.asc")
 noextract=("$pkgname-$pkgver.jar")
-sha256sums=('0305cae857070c9dc5b8ace8819bc5693b7efc880092498ff6893bc19ae6ba57'
+sha256sums=('b9b208e50793b64657a6b6292067526613f549de7405f9243624b02f4276e409'
             'SKIP')
 validpgpkeys=('0EBCB16A237726FFB2892E7AA5B7381AF8CBB702')
 
