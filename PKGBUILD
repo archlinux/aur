@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-ppsspp
 pkgname=$_pkgname-git
-pkgver=1.16.6.r999.g1a1b79606b
+pkgver=1.17.1.r357.g443bdef239
 pkgrel=1
 pkgdesc="Sony PlayStation Portable core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -24,6 +24,7 @@ makedepends=(
 	'libpng'
 	'libzip'
 	'miniupnpc'
+	'openxr'
 	'python'
 	'rapidjson'
 	'zlib'
