@@ -3,10 +3,10 @@
 pkgname=python-dvc-objects
 _pkgname=${pkgname#python-}
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='DVC objects'
 arch=(any)
-license=(Apache)
+license=(Apache-2.0)
 url="https://github.com/iterative/$_pkgname"
 _pydeps=(diskcache
          flatten-dict
@@ -14,8 +14,7 @@ _pydeps=(diskcache
          funcy
          nanotime
          shortuuid
-         tqdm
-         typing-extensions)
+         tqdm)
 depends=(python
         "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
