@@ -16,7 +16,7 @@
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.12.1
+pkgver=11.12.2
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -60,6 +60,7 @@ _main_package() {
     nasm
     nodejs
     python
+    python-setuptools
     rust
     unzip
     wasi-compiler-rt
@@ -112,7 +113,7 @@ _main_package() {
   )
 
   sha256sums=(
-    'ab04b5d14fdc722dd41ed7a46b08a65ac9cb6fd1a59cb9c109a4f82e7488023d'
+    '6fdd272a75fb04df23706c8b693c46c0400ef072bb3b9a4c1f6dcefb11652e5d'
     'SKIP'
     'SKIP'
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
