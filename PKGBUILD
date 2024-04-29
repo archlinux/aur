@@ -4,7 +4,7 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
-pkgver=2024.1
+pkgver=2024.2
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
@@ -13,25 +13,19 @@ license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'gtk3' 'iputils' 'libnftnl' 'libnotify' 'nss')
 makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'npm' 'protobuf')
 install="$pkgname.install"
-_tag=b261238598f0237aaf420354445797a12a45d907  # tags/2024.1^0
 _commit=d5772339cee9c1a0d7671968746f02499b78e245
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}"  # signed by Oskar Nyberg (raksooo), public key not uploaded yet
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"  # signed by Oskar Nyberg (raksooo), public key not uploaded yet
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
         'no-rpm.diff'
         "$pkgname.sh")
-sha256sums=('SKIP'
-            'SKIP'
+sha256sums=('b50af32532ecb05502bbd6eab4514417bd6889bbaefccc11d0f5cefbf7685d8e'
+            '255d3b3de761215b02086184006d65bd5c6972f9e9f7364c177693d67429547f'
             'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
               '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
               )
-
-pkgver() {
-  cd mullvadvpn-app
-  git describe --tags | sed 's/-/./g'
-}
 
 prepare() {
   cd mullvadvpn-app
