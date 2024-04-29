@@ -1,7 +1,7 @@
 _basepgkname=llamafile
 pkgname="${_basepgkname}-bin"
 pkgver=0.8.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Distribute and run LLMs with a single file."
 arch=('x86_64')
 url="https://github.com/Mozilla-Ocho/llamafile"
@@ -22,7 +22,7 @@ provides=(  'llamafile'
             'llamafile-imatrix'
             'llamafile-quantize'
             'llamafile-perplexity'
-            'zipalign'
+            # 'zipalign'
         )
 conflicts=('llamafile-git')
 options=(!strip)
@@ -40,7 +40,7 @@ package() {
   install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-imatrix" "${pkgdir}/usr/bin/${_basepgkname}-imatrix"
   install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-quantize" "${pkgdir}/usr/bin/${_basepgkname}-quantize"
   install -Dm755 "${_basepgkname}-${pkgver}/bin/llamafile-perplexity" "${pkgdir}/usr/bin/${_basepgkname}-perplexity"
-  install -Dm755 "${_basepgkname}-${pkgver}/bin/zipalign" "${pkgdir}/usr/bin/zipalign"
+  # install -Dm755 "${_basepgkname}-${pkgver}/bin/zipalign" "${pkgdir}/usr/bin/zipalign"
 
   # Install man pages
   install -Dm644 "${_basepgkname}-${pkgver}/share/man/man1/llamafile.1" "${pkgdir}/usr/share/man/man1/${_basepgkname}.1"
