@@ -2,7 +2,7 @@
 
 pkgname=python-pillow-jpegxl-plugin
 _pkgname=pillow-jpegxl-plugin
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A Python Pillow plugin that adds jxl support"
 arch=("any")
@@ -13,7 +13,7 @@ depends=("python" "python-pillow")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools" "python-pytest-runner" "python-maturin" "rust" "maturin")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz"
         "git+https://github.com/Isotr0py/jpegxl-rs.git")
-sha256sums=('97534c875310c6c96eaa2c0bcdd0bbf247b717684bd1f67beb4ff0b90ccf4ffd'
+sha256sums=('f54af30594f4d97d7ca82fcb700eaa4bc2ef5c61f59f97aa99ce25c258f82e2b'
             'SKIP')
 
 prepare() {
