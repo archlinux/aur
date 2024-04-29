@@ -5,12 +5,16 @@ _pkgname=arandr-indicator
 pkgname="${_pkgname}-git"
 epoch=2
 pkgver=2.0.0+12.r27.20230916.74fdcfb
-pkgrel=2
+pkgrel=3
 pkgdesc="Quick and simple tray icon menu for changing the monitor layout."
 arch=('any')
 url="https://github.com/denilsonsa/arandr-indicator" # Original project.
 license=('custom: BSD')
 depends=(
+  'libappindicator-gtk3'
+  'libayatana-appindicator'
+  'glib2'
+  'gtk3'
   'pygtk'
   'python>=3'
   'python-gobject' # This one seems to contain libappindicator python module, which is required.

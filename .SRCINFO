@@ -1,12 +1,16 @@
 pkgbase = arandr-indicator-git
 	pkgdesc = Quick and simple tray icon menu for changing the monitor layout.
 	pkgver = 2.0.0+12.r27.20230916.74fdcfb
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://github.com/denilsonsa/arandr-indicator
 	arch = any
 	license = custom: BSD
 	makedepends = git
+	depends = libappindicator-gtk3
+	depends = libayatana-appindicator
+	depends = glib2
+	depends = gtk3
 	depends = pygtk
 	depends = python>=3
 	depends = python-gobject
