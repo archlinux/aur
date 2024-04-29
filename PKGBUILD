@@ -6,7 +6,7 @@
 pkgname=vmd-src
 _pkgname=vmd
 pkgver=1.9.4a57
-pkgrel=3
+pkgrel=4
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=(custom)
@@ -25,7 +25,7 @@ conflicts=($_pkgname $_pkgname-bin)
 source=(local://$_pkgname-${pkgver}.src.tar.gz
         configure.patch)
 sha256sums=('de278d0c5d969336d89068e0806fb50aaa0cb0f546ba985d840b279357860679'
-            '93ef1e106141e7386113dcc64185174413e30934fba597ce2ebe44660c2d7665')
+            'a74a8bbee40667742907b59aa24bdb37607761389a9c332c2d449ef07a2f0937')
 
 prepare() {
   sed -i 's/ltcl8.5/ltcl/g' plugins/Make-arch
@@ -65,8 +65,32 @@ build() {
   cd "$srcdir/plugins"
   make -j1 $MACHINE
   make distrib
+
   cd ../$_pkgname-$pkgver
-  ./configure $MACHINE $ACC $RAY OPENGL EGLPBUFFER FLTKOPENGL FLTK TK IMD OPENCL MPI XINERAMA XINPUT LIBPNG ZLIB NETCDF COLVARS TCL PYTHON NUMPY PTHREADS GCC
+  ./configure  \
+    $MACHINE   \
+    $ACC       \
+    $RAY       \
+    OPENGL     \
+    EGLPBUFFER \
+    FLTKOPENGL \
+    FLTK       \
+    TK         \
+    IMD        \
+    OPENCL     \
+    MPI        \
+    XINERAMA   \
+    XINPUT     \
+    LIBPNG     \
+    ZLIB       \
+    NETCDF     \
+    COLVARS    \
+    TCL        \
+    PYTHON     \
+    NUMPY      \
+    PTHREADS   \
+    GCC
+
   cd src
   make veryclean
   make

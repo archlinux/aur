@@ -86,8 +86,8 @@
 -# $mpi_libs        = "-lmpi";
 +$mpi_dir         = "/usr";
 +$mpi_include     = "-I/usr/include";
-+$mpi_library     = "-L$mpi_dir/lib/openmpi";
-+$mpi_libs        = "-lmpi_cxx -lmpi";
++$mpi_library     = "-L$mpi_dir/lib";
++$mpi_libs        = "-lmpi";
  ## OSU MVAPICH
  # $mpi_dir         = "/usr/mpi/gcc/mvapich-1.0.0";
  # $mpi_include     = "-I$mpi_dir/include";
@@ -123,16 +123,16 @@
 -  $stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "$vmd_library_dir/numpy/lib_$config_arch/include";
 -  $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/site-packages/numpy/core/include";
 -  $python_libs        = "-lpython2.5 -lpthread";
-+  $stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "/usr/include/python3.11";
-+  $stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "/usr/lib/python3.11/config-3.11-x86_64-linux-gnu";
++  $stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "/usr/include/python3.12";
++  $stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "/usr/lib/python3.12/config-3.12-x86_64-linux-gnu";
 +#   $stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "$vmd_library_dir/python/lib_$config_arch/include/python2.5";
 +#   $stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/config";
 +
-+  $stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "/usr/lib/python3.11/site-packages/numpy/core/include/numpy";
-+  $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "/usr/lib/python3.11/site-packages/numpy/core/include";
++  $stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "/usr/lib/python3.12/site-packages/numpy/core/include/numpy";
++  $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "/usr/lib/python3.12/site-packages/numpy/core/include";
 +#   $stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "$vmd_library_dir/numpy/lib_$config_arch/include";
 +#   $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/site-packages/numpy/core/include";
-+  $python_libs        = "-lpython3.11 -lpthread";
++  $python_libs        = "-lpython3.12 -lpthread";
  }
  
  $python_defines     = "-DVMDPYTHON";
