@@ -6,7 +6,7 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -63,7 +63,7 @@ package() {
 
 }
 
-sha256sums=('da8d0317271335c91780ed397fd61b8d4bafff0e4e8b41f6bf88441e87c78bc8'
+sha256sums=('05c6b0bd4dd093fe57a6760e284ef285a28e978f247d54cee5cd174d1ec9c5dd'
             '878e66de3e15f3f070c63002990315dc6e54e1e864c85eead81c386453aeb24a'
             '241e0f71d51cef7a53dd9024f725527164f002d0b9370385c3bc3e1d69a8f8ce'
             'd0286a035fc4facc5a380f2523ab5a01106c903a3039fcf09cb9958c63137f5d'
