@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="trello"
 _appdesc="Standalone silo app for Trello"
-_gittag="0.3"
+_gittag="0.4"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
