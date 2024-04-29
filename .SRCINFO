@@ -1,7 +1,7 @@
 pkgbase = python-pillow-jpegxl-plugin
 	pkgdesc = A Python Pillow plugin that adds jxl support
 	pkgver = 1.2.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/Isotr0py/pillow-jpegxl-plugin
 	arch = any
 	license = MIT

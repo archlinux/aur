@@ -3,7 +3,7 @@
 pkgname=python-pillow-jpegxl-plugin
 _pkgname=pillow-jpegxl-plugin
 pkgver=1.2.2
-pkgrel=0
+pkgrel=1
 pkgdesc="A Python Pillow plugin that adds jxl support"
 arch=("any")
 url="https://github.com/Isotr0py/$_pkgname"
