@@ -21,11 +21,21 @@ build() {
 	# (uncomment next line)
 	#sed -i 's,^\(#define ENABLE_WRAP\),//\1,' config.h
 
+	# Some build environments insist on having those preset, which breaks
+	# the build; if you really want some of them, comment the 'unset' lines
+	# below, but note you are on your own wrt errors.
+	unset BINDIR CC CFLAGS CPPFLAGS DOCDIR HEADERS INSTALL LDFLAGS LIBS
+	unset MANPAGE MANPREFIX OBJS PROG SRC 
+
 	make FALLBACKVER="${pkgver}-$pkgrel" DESTDIR="$pkgdir" PREFIX="/usr" all
 }
 
 package() {
 	cd "${pkgname}-v$pkgver"
+
+	unset BINDIR CC CFLAGS CPPFLAGS DOCDIR HEADERS INSTALL LDFLAGS LIBS
+	unset MANPAGE MANPREFIX OBJS PROG SRC 
+
 	make FALLBACKVER="${pkgver}-$pkgrel" DESTDIR="$pkgdir" PREFIX="/usr" \
 		install
 }
