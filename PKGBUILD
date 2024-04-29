@@ -1,6 +1,6 @@
 # Maintainer: Richard Cesar <richard.cesar@netkeepers.cz>
 
-pkgname=flexibee-client-bin
+pkgname=flexibee-client
 pkgver=2024.2.10
 pkgbasever=2024.2
 pkgrel=1

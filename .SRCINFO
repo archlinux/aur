@@ -1,4 +1,4 @@
-pkgbase = flexibee-client-bin
+pkgbase = flexibee-client
 	pkgdesc = Accounting economic system for person and business usage. Client-only package.
 	pkgver = 2024.2.10
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = flexibee-client-bin
 	source = https://download.flexibee.eu/download/2024.2/2024.2.10/flexibee-client_2024.2.10_all.deb
 	sha256sums = 3cb1b3e19165e108e82b297480768a60c661c291e0ee286a04b4d2f8c8a0d8cb
 
-pkgname = flexibee-client-bin
+pkgname = flexibee-client
