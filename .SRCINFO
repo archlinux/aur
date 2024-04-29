@@ -7,6 +7,7 @@ pkgbase = python-exchangelib
 	license = BSD
 	checkdepends = python-dateutil
 	checkdepends = python-psutil
+	checkdepends = python-pytest
 	checkdepends = python-requests-mock
 	checkdepends = python-yaml
 	makedepends = python-build
