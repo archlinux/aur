@@ -1,6 +1,6 @@
 _name=qmmp
 pkgname=${_name}-1
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="Qt based audio-player (1.x branch)"
 arch=('x86_64')
@@ -40,13 +40,12 @@ optdepends=(
 
 _snapshot="${_name}-${pkgver}"
 source=("${url}/files/${_name}/${pkgver%.*}/${_snapshot}.tar.bz2")
-sha256sums=('2363877a876cd26520e84b0711ae1fa4d2ca8c7115a073946832989a86c68f52')
+sha256sums=('e3a911cfbad170ab2c248b37ca7d23deaad86cacd4d563949b10aaf6235a3bea')
 
 build() {
     cmake -B "build" -S "${_snapshot}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DUSE_HAL:BOOL=FALSE
+        -DCMAKE_INSTALL_LIBDIR=lib
 
     cmake --build "build"
 }
