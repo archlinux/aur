@@ -22,6 +22,7 @@ pkgbase = openlp-git
 	depends = python-chardet
 	depends = python-lxml
 	depends = python-six
+	depends = python-sqlalchemy
 	depends = python-beautifulsoup4
 	depends = python-pyenchant
 	depends = python-dbus
