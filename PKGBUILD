@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
 source=("b2-linux"::"${url}/releases/download/v${pkgver}/b2-linux")
-b2sums=('89709b25b98ceef78653ead5e076b456949762aef444008a5b7a2aebb625fa71b122c88ac9ec9f237a53e5d0bd5ac9bec569beee36a4bd9b0810a4257c15fe9d')
+b2sums=('59f67f00091e7a084c5ee89ab44e21a0e2df1799f65defceea96838c3b6123f7527b8cfdbbc551b05772177b2466d13b33e4be33b4afac118bcb0aa64fd21b00')
 
 prepare() {
   chmod +x b2-linux
