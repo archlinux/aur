@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Tools from Debian to integrate the package build system with Git"
 arch=(any)
 url="https://honk.sigxcpu.org/piki/projects/git-buildpackage/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('git'
          'man-db'
          'python'
