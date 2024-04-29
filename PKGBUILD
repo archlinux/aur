@@ -3,7 +3,7 @@
 pkgname='python-soundcloud-v2'
 _name=${pkgname#python-}
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for the v2 SoundCloud API"
 url="https://github.com/7x11x13/soundcloud.py"
 arch=('any')
