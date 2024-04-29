@@ -1,14 +1,14 @@
 pkgbase = python-sphinxcontrib-tikz
 	pkgdesc = TikZ extension for Sphinx.
-	pkgver = 0.4.16
+	pkgver = 0.4.19
 	pkgrel = 1
 	url = https://bitbucket.org/philexander/tikz
 	arch = any
 	license = BSD
 	makedepends = python
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-tikz/sphinxcontrib-tikz-0.4.16.tar.gz
-	sha256sums = f1ff45371e96328a5caa2854ccd950a0f0466285b6624162e96d626852c3e2a5
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-tikz/sphinxcontrib-tikz-0.4.19.tar.gz
+	sha256sums = 81e9fe6c7e0dbc46f19f1af91d2b62b01d41ab22884b89f55681f200ae265d49
 
 pkgname = python-sphinxcontrib-tikz
 	depends = python
