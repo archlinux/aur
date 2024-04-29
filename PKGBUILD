@@ -8,18 +8,18 @@ pkgrel=3
 pkgdesc='Font analysis tool for determining character/glyph support'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
-license=(GPL3)
-_py_deps=(fonttools
-          lxml
-          pyicu
-          requests
-          tabulate)
+license=(GPL-3.0-only)
+_pydeps=(fonttools
+         lxml
+         pyicu
+         requests
+         tabulate)
 depends=(python
-         "${_py_deps[@]/#/python-}")
+         "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_pyname-$pkgver"
-source=("$_archive.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("$url/archive/$pkgver/$_archive.tar.gz")
 sha256sums=('92215da45fed003032e5849e3d0917aaae9024e255affe9d28c67aed0223f11e')
 
 prepare() {

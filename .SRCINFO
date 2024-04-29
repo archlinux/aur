@@ -4,7 +4,7 @@ pkgbase = python-fontaine
 	pkgrel = 3
 	url = https://github.com/googlefonts/pyfontaine
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -15,7 +15,7 @@ pkgbase = python-fontaine
 	depends = python-pyicu
 	depends = python-requests
 	depends = python-tabulate
-	source = pyfontaine-1.4.0.tar.gz::https://github.com/googlefonts/pyfontaine/archive/1.4.0.tar.gz
+	source = https://github.com/googlefonts/pyfontaine/archive/1.4.0/pyfontaine-1.4.0.tar.gz
 	sha256sums = 92215da45fed003032e5849e3d0917aaae9024e255affe9d28c67aed0223f11e
 
 pkgname = python-fontaine
