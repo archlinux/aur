@@ -1,7 +1,7 @@
 # Maintainer: TurtleRuss <tttturtleruss@gmail.com>
 
 pkgname=twitch-dl-git
-pkgver=2.3.0.r5.gde95384
+pkgver=2.3.0.r6.g47d62bc
 pkgrel=1
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=(any)
@@ -27,11 +27,6 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}/dist"
-  whl=$(ls | grep *.whl)
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/temp"
-  pip install -U $whl --break-system-packages -t "$pkgdir/temp"
-  cp "$pkgdir/temp/bin/twitch-dl" "$pkgdir/usr/bin" 
-  rm -rf "$pkgdir/temp"
+  cd "${pkgname%-git}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
