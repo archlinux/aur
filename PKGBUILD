@@ -12,7 +12,7 @@
 
 pkgname=nextdns-unprivileged
 origname=nextdns
-pkgver=1.43.2
+pkgver=1.43.3
 pkgrel=1
 pkgdesc='The NextDNS DoH client running as unprivileged user.'
 arch=('x86_64')
@@ -47,7 +47,7 @@ package() {
     install -vDm 644 "$srcdir/${origname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${origname}.conf"
 }
 
-sha256sums=('9036ec82a6b3a694ba44544815abe38771d7ce3e492d03085696cf17e6ddf160'
+sha256sums=('574b377d6f4af140e3dcfba78fcf68d52ddb32390c020d1fe9bc5ade0af85f97'
             '44b78be27eb618e2d93b4b480c9aef38d413bde3f8bfa6af20d651f0bf8c8b62'
             '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
             'df831b86096e2f06fd4b9f603a4141daef986d709fcdebb97f39493535aab7f6')
