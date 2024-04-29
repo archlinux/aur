@@ -7,10 +7,10 @@ pkgbase = flashpap
 	license = unknown
 	makedepends = unzip
 	depends = jre8-openjdk
-	depends = java-openjfx
+	depends = java8-openjfx
 	provides = flashpap
 	noextract = FlashPAP.zip
-	source = http://www.cognitial.com/assets/flashpap/FlashPAP.zip
+	source = FlashPAP.zip::https://www.cognitial.com/download/flashpap/
 	source = flashpap.desktop
 	source = flashpap
 	sha256sums = 20909247a1e91785a062fef3064643672eb4b3e107a5e012b1bf353c1674448e
@@ -18,4 +18,3 @@ pkgbase = flashpap
 	sha256sums = c089e9779d6a9267f9df22e76c3532f0b87a0cee91f74cddb9712fa57ebe3ec5
 
 pkgname = flashpap
-

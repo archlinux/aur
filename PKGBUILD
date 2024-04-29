@@ -8,13 +8,13 @@ url="http://www.cognitial.com/flashpap/index.htm"
 license=('unknown')
 depends=(
   'jre8-openjdk'
-  'java-openjfx'
+  'java8-openjfx'
 )
 makedepends=('unzip')
 provides=("$pkgname")
 
 source=(
-  'http://www.cognitial.com/assets/flashpap/FlashPAP.zip'
+  'FlashPAP.zip::https://www.cognitial.com/download/flashpap/'
   'flashpap.desktop'
   'flashpap'
 )
