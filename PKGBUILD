@@ -2,7 +2,7 @@
 
 pkgname=python-pillow-jpegxl-plugin
 _pkgname=pillow-jpegxl-plugin
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A Python Pillow plugin that adds jxl support"
 arch=("any")
@@ -10,10 +10,10 @@ url="https://github.com/Isotr0py/$_pkgname"
 license=("MIT")
 depends=("python" "python-pillow")
 #TODO: check which dependencies are really required
-makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools" "python-pytest-runner" "python-maturin" "rust" "maturin")
+makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools" "python-pytest-runner" "python-maturin" "rust" "maturin" "patchelf")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz"
         "git+https://github.com/Isotr0py/jpegxl-rs.git")
-sha256sums=('f54af30594f4d97d7ca82fcb700eaa4bc2ef5c61f59f97aa99ce25c258f82e2b'
+sha256sums=('ab34c9a1611d1ed5db1c4206554972465d440431b56a7e978e284c920bfa9596'
             'SKIP')
 
 prepare() {
@@ -33,9 +33,6 @@ prepare() {
 
 build() {
     cd "$_pkgname-$pkgver"
-    # Ugly hack to get it linking
-#    sed -i 's/=static//g' build.rs
-#    sed -i 's/-static//g' build.rs
 #    python -m build --wheel --no-isolation
 #    maturin build --release --features vendored
      maturin build --release --features dynamic
