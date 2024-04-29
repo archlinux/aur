@@ -27,6 +27,9 @@ build() {
 package() {
   cd "${_name}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Install MIT license file:
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
