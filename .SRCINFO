@@ -1,7 +1,7 @@
 pkgbase = euroscope-bin
 	pkgdesc = A radar scope for VATSIM
 	pkgver = 3.2.9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://euroscope.hu/
 	install = euroscope-bin.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = euroscope-bin
 	makedepends = catdoc
 	depends = wine
 	depends = winetricks
-	optdepends = trackaudio-bin: Audio For VATSIM support
+	optdepends = trackaudio: Audio For VATSIM support
 	source = https://euroscope.hu/install/EuroScopeSetup.3.2.9.msi
 	source = euroscope-bin
 	source = euroscope.desktop
