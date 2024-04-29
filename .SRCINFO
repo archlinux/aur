@@ -1,0 +1,17 @@
+pkgbase = llamafile
+	pkgdesc = Distribute and run LLMs with a single file.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/Mozilla-Ocho/llamafile
+	arch = x86_64
+	license = Apache-2.0
+	depends = wine
+	optdepends = hip-runtime-amd: AMD GPU-Offloading Support
+	optdepends = cuda: Nvidia GPU-Offloading Support
+	provides = llamafile
+	conflicts = llamafile-git
+	options = !strip
+	source = llamafile::https://github.com/Mozilla-Ocho/llamafile/releases/download/0.8.1/llamafile-0.8.1
+	sha256sums = 02be1bb313324e5f5d198acec61a68059f1694d4d13189ef52e9a3b427087ccb
+
+pkgname = llamafile
