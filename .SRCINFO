@@ -1,10 +1,12 @@
 pkgbase = rebuild-initramfs-dracut
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch
 	arch = any
 	license = MIT
 	makedepends = ruby-ronn-ng
+	makedepends = python-installer
+	makedepends = python-build
 	source = rebuild-initramfs-dracut-2.0.1.tar.gz::https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch/archive/2.0.1.tar.gz
 	sha256sums = a02eff5dc33dffc90c0c717bdff7b600e3ee1cc823c5c35f272f57ba6561fa4c
 
