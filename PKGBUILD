@@ -12,6 +12,7 @@ depends=(
   'python'
   'python-dateutil'
   'python-dacite'
+  'python-requests'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 conflicts=('python-soundcloud')
