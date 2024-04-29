@@ -15,9 +15,9 @@ pkgbase = hiddify-aur-x64
 	depends = ayatana-ido
 	optdepends = gnome-shell-extension-appindicator: for system tray icon if you are using Gnome
 	provides = hiddify
-	conflicts = hiddify-next
-	conflicts = hiddify-next-git
-	source = hiddify-next-1.1.1.deb::https://github.com/hiddify/hiddify-next/releases/download/v1.1.1/Hiddify-Debian-x64.deb
+	conflicts = hiddify
+	conflicts = hiddify-git
+	source = hiddify-1.1.1.deb::https://github.com/hiddify/hiddify-next/releases/download/v1.1.1/Hiddify-Debian-x64.deb
 	sha256sums = 546afb3eded8199714b585cffb1bc075b917f21d78d99b78d26c0d6be79ea7bf
 
 pkgname = hiddify-aur-x64
