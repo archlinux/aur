@@ -1,5 +1,6 @@
 # Maintainer:TurtleRuss <tttturtleruss@gmail.com> 
-pkgname=hustmirror-cli
+
+pkgname=hustmirror-cli-git
 pkgver=1.1.3.r1.g7def2f1
 pkgrel=1
 epoch=
