@@ -5,7 +5,7 @@
 pkgbase=upp-nightly
 pkgname=(upp-nightly theide-nightly umk-nightly)
 yearver=2020.1
-pkgver=16673
+pkgver=17225
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
@@ -75,4 +75,4 @@ package_upp-nightly() {
   find "$pkgdir/usr/" -type d -print0 | xargs -0 chmod 755
 }
 
-md5sums=('0617e6b635675e07d2bfd8a79087affe')
+md5sums=('351b6af446b9b8ddde5208b6e9c410ae')
