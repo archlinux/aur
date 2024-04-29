@@ -1,7 +1,7 @@
 pkgbase = swig
 	pkgdesc = Generate scripting interfaces to C/C++ code
 	pkgver = 4.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.swig.org/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -22,6 +22,8 @@ pkgbase = swig
 	depends = pcre2
 	depends = zlib
 	source = swig-4.2.1.tar.gz::https://github.com/swig/swig/archive/refs/tags/v4.2.1.tar.gz
+	source = https://github.com/swig/swig/commit/3d515751.patch
 	sha512sums = 5d653333f73356d4d5ba8b615882e49f33f188bc68d8204352116bc4aca7946ec01ce2e02524c5ce805b98c2219ed05e664120485bf18095c5c0785436487074
+	sha512sums = 5f205fbcb330f436579471865b8386dec58fb67569f97c9159bce0bcc1ee12924b4d8782f8808fafe5bf43ee6b9d961fb981eb4af0ef60b5cb6baee011745f7d
 
 pkgname = swig

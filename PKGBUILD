@@ -4,7 +4,7 @@
 
 pkgname=swig
 pkgver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('x86_64')
 url="http://www.swig.org/"
@@ -16,8 +16,10 @@ license=(
 )
 depends=('gcc-libs' 'glibc' 'pcre2' 'zlib')
 checkdepends=('ruby' 'python' 'java-environment' 'tcl' 'php' 'lua' 'r' 'go' 'boost')
-source=($pkgname-$pkgver.tar.gz::https://github.com/swig/swig/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('5d653333f73356d4d5ba8b615882e49f33f188bc68d8204352116bc4aca7946ec01ce2e02524c5ce805b98c2219ed05e664120485bf18095c5c0785436487074')
+source=($pkgname-$pkgver.tar.gz::https://github.com/swig/swig/archive/refs/tags/v$pkgver.tar.gz
+        https://github.com/swig/swig/commit/3d515751.patch)
+sha512sums=('5d653333f73356d4d5ba8b615882e49f33f188bc68d8204352116bc4aca7946ec01ce2e02524c5ce805b98c2219ed05e664120485bf18095c5c0785436487074'
+            '5f205fbcb330f436579471865b8386dec58fb67569f97c9159bce0bcc1ee12924b4d8782f8808fafe5bf43ee6b9d961fb981eb4af0ef60b5cb6baee011745f7d')
 
 prepare() {
   sed -n '5,32p' $pkgname-$pkgver/LICENSE-UNIVERSITIES > LicenseRef-BSD-Utah-California.txt
@@ -29,6 +31,9 @@ prepare() {
 
   # https://github.com/swig/swig/issues/2859
   sed '/li_std_list/d' -i $pkgname-$pkgver/Examples/test-suite/java/Makefile.in
+
+  # Fix build of generated code with Werror=format-security
+  patch -d $pkgname-$pkgver -p1 < 3d515751.patch
 
   cd $pkgname-$pkgver
   ./autogen.sh
