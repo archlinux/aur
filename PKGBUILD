@@ -31,8 +31,8 @@ function build(){
 }
 
 function package(){
-	mkdir -p "${pkgdir}/usr/share/thirdroom"
-	cp -r "${srcdir}/thirdroom/dist/*" "${pkgdir}/usr/share/thirdroom"
+	mkdir -p "${pkgdir}/usr/share"
+	cp -r "${srcdir}/thirdroom/dist" "${pkgdir}/usr/share/thirdroom"
 	chmod -R 755 "${pkgdir}/usr/share/thirdroom"
 }
 
