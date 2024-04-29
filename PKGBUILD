@@ -2,18 +2,18 @@
 # Maintainer: Alex Branham <branham@utexas.edu>
 
 _cranname=debugme
-_cranver=1.1.0
+_cranver=1.2.0
 pkgname=r-${_cranname,,}
 pkgdesc="Specify debug messages as special string constants, and control
 debugging of packages via environment variables."
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=3
+pkgrel=1
 
 arch=("any")
 depends=(
-    "r"
+    "r>=3.6"
     "r-crayon"
 )
 optdepends=(
@@ -39,11 +39,11 @@ optdepends=(
 
 # checkdepends=(
 #     "${optdepends[@]}"
-#     "r-testthat"
+#     "r-testthat>=3.0.0"
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("5c52733e28d0728629183f2c66a53bcd5309fbb67750e4ee3cfefa58a92f02fd97bda2ca1c2c0ad8abc69be10b16c9d07b8c36818f92325ce9f1ee52ed8ae0c9")
+b2sums=("2322eb2726f06af4d89cdc05a11cb5a2b011e484d16a4f2b9941549769bf6bb30b2cee8272263ec72bc1a62a411ea70a7a449101d94184c9b9df89acd73da762")
 
 build() {
     mkdir -p "${srcdir}/build/"
