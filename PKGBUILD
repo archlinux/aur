@@ -5,7 +5,7 @@
 # Contributor: Brendan MacDonell <macdonellba at gmail dot com>
 
 pkgname=s3ql
-pkgver=5.1.1
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="A full-featured file system for online data storage."
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
 	'python-apsw'
 	'python-trio'
 	'python-pyfuse3'
+	'cython'
 )
 optdepends=(
 	'python-systemd: for enabling systemd support'
@@ -28,7 +29,7 @@ makedepends=('python-setuptools' 'python-pip' 'python-wheel')
 install=s3ql.install
 changelog=ChangeLog.rst
 source=("https://github.com/s3ql/s3ql/releases/download/s3ql-${pkgver}/s3ql-${pkgver}.tar.gz")
-sha256sums=('4bbab3e459412e4f9c56340a5c004f46e0c65edb11a19646c64475babee8e2e3')
+sha256sums=('150e5f67071af334c98afd123bd95f101d4ba293cf353ae71b34c8e7f90a6155')
 
 prepare() {
 	cd "$srcdir/s3ql-${pkgver}"
@@ -36,7 +37,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/s3ql-${pkgver}"
-	python setup.py build_ext --inplace
+	python setup.py build_cython build_ext --inplace
 }
 
 package() {
