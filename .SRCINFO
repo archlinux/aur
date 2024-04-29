@@ -1,7 +1,7 @@
 pkgbase = cachyos-ananicy-rules-git
 	pkgdesc = CachyOS - ananicy-rules
-	pkgver = 20230613.r200.geed6f55
-	pkgrel = 2
+	pkgver = 20230613.r319.gf139cf4
+	pkgrel = 1
 	url = https://github.com/CachyOS/ananicy-rules
 	arch = any
 	groups = cachyos
@@ -15,6 +15,7 @@ pkgbase = cachyos-ananicy-rules-git
 	conflicts = ananicy-git
 	replaces = ananicy-rules-git
 	replaces = cachyos-ananicy-rules
+	backup = etc/ananicy.d/ananicy.conf
 	source = git+https://github.com/CachyOS/ananicy-rules
 	sha256sums = SKIP
 

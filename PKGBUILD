@@ -2,7 +2,7 @@
 
 pkgname=cachyos-ananicy-rules-git
 _gitname=ananicy-rules
-pkgver=20231011.r269.g3dafc3e
+pkgver=20230613.r319.gf139cf4
 pkgrel=1
 groups=('cachyos')
 arch=('any')
@@ -16,6 +16,7 @@ sha256sums=('SKIP')
 replaces=('ananicy-rules-git' 'cachyos-ananicy-rules')
 provides=('ananicy-rules-git' 'cachyos-ananicy-rules')
 conflicts=('ananicy-rules-git' 'cachyos-ananicy-rules' 'ananicy-git')
+backup=(etc/ananicy.d/ananicy.conf)
 
 pkgver() {
   cd $_gitname
