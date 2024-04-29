@@ -1,0 +1,22 @@
+pkgbase = casparcg-client
+	pkgdesc = A client software used to control the CasparCG Server software
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://www.casparcg.com/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = boost
+	makedepends = time
+	depends = boost-libs
+	depends = qt6-base
+	depends = qt6-websockets
+	depends = vlc
+	conflicts = casparcg-client-bin
+	conflicts = casparcg-client-git
+	source = git+https://github.com/CasparCG/Client.git
+	source = git+https://github.com/RossBencina/oscpack.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = casparcg-client
