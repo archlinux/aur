@@ -1,7 +1,7 @@
 pkgbase = python-kodistubs
 	pkgdesc = Stub modules that re-create Kodi Python API
 	pkgver = 20.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-kodistubs
 	arch = any
 	license = GPL3

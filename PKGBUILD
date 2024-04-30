@@ -3,7 +3,7 @@
 pkgname=python-kodistubs
 _name=Kodistubs
 pkgver=20.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Stub modules that re-create Kodi Python API"
 arch=('any')
 url="https://pypi.org/project/${pkgname}"
