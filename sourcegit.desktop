@@ -3,5 +3,6 @@ Name=SourceGit
 Comment=Free & OpenSource Git Client
 Exec=sourcegit
 Icon=sourcegit
-Type=Application
 Terminal=false
+Type=Application
+Categories=Development

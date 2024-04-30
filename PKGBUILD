@@ -2,7 +2,7 @@
 
 pkgname=sourcegit
 pkgver=8.10
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
 url='https://github.com/sourcegit-scm/sourcegit'
@@ -13,7 +13,7 @@ makedepends=('dotnet-sdk-8.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz"
         'sourcegit.desktop')
 sha256sums=('bc136bad259a6fef14dbd9b2cda48e6666873cc7ecbf63ae5a73a9fbb6415761'
-            'fa8e4f954679a6d71b8f0af28a0091ccd9511204dcc554488f3cd7fbeb3713c2')
+            '3488ee13a4ca1bae85c35f866d046304d8716a64c46cadb2576cb8b4ae44b058')
 
 
 
