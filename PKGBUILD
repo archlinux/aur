@@ -1,5 +1,5 @@
 pkgname=dictpopup
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=3
 epoch=1
 pkgdesc="A Japanese popup dictionary working on mouse selection with Anki integration"
@@ -20,7 +20,7 @@ changelog=
 url="https://github.com/btrkeks/dictpopup"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('43a7052f71fcd881b085a959d0d0e6002c896077f6cfd5675e9c24413461f82d')
+sha256sums=('7491405e247b2e7cae93aaec5a18c5fd8cec7db4ea01118ff0971b6dd810602d')
 validpgpkeys=()
 
 build() {
