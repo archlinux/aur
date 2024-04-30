@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.2.1.385"
-pkgrel="2"
+pkgver="10.3.0.386"
+pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('acf1306e841b4890c7522d978c2d9cdb381256d42417711e3463732c53adc1f8')
+sha256sums=('cfcc959a9512016fd626cb12793da02f4fcd2ce6978c8ce42cc751d802b46ed1')
 
 prepare()
 {
@@ -41,8 +41,17 @@ package()
 
  mkdir -p "$pkgdir${_installdir}/$pkgname"
 
+ install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Identity_Client_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Identity.Client.dll"
+ install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_IdentityModel_Abstractions_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.IdentityModel.Abstractions.dll"
+ install -Dm644 "$srcdir/FID_MSAL_DLL_System_Buffers_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Buffers.dll"
+ install -Dm644 "$srcdir/FID_MSAL_DLL_System_Diagnostics_DiagnosticSource_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Diagnostics.DiagnosticSource.dll"
+ install -Dm644 "$srcdir/FID_MSAL_DLL_System_Memory_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Memory.dll"
+ install -Dm644 "$srcdir/FID_MSAL_DLL_System_Numerics_Vectors_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Numerics.Vectors.dll"
+ install -Dm644 "$srcdir/FID_MSAL_DLL_System_Runtime_CompilerServices_Unsafe_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Runtime.CompilerServices.Unsafe.dll"
+ install -Dm644 "$srcdir/FID_PDFX_AUTH64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFX.Auth.x64.dll"
  install -Dm644 "$srcdir/FID_ViewerDLL64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEditCore.x64.dll"
  install -Dm755 "$srcdir/FID_EditorEXE" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEdit.exe"
+ install -Dm644 "$srcdir/FID_EditorConfig" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEdit.exe.config"
  install -Dm644 "$srcdir/FID_LiteDrvHelpLicense" "$pkgdir/usr/share/licenses/$pkgname/PDFXLicense.pdf"
  install -Dm644 "$srcdir/FID_PPWorkerX64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFX.ProcessPool.Worker.x64.exe"
  install -Dm644 "$srcdir/FID_AzureRMS64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/AzureRMS.pvp"
@@ -99,7 +108,9 @@ package()
  install -Dm644 "$srcdir/FID_RMS_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.lt-LT.xcl"
  install -Dm644 "$srcdir/FID_RMS_nl_NL" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.nl-NL.xcl"
  install -Dm644 "$srcdir/FID_RMS_pl_PL" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.pl-PL.xcl"
+ install -Dm644 "$srcdir/FID_RMS_pt_BR" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.pt-BR.xcl"
  install -Dm644 "$srcdir/FID_RMS_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.ru-RU.xcl"
+ install -Dm644 "$srcdir/FID_RMS_sk_SK" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.sk-SK.xcl"
  install -Dm644 "$srcdir/FID_RMS_tr_TR" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.tr-TR.xcl"
  install -Dm644 "$srcdir/FID_RMS_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_RMS_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.zh-CN.xcl"
@@ -160,6 +171,7 @@ package()
  install -Dm644 "$srcdir/FID_BOX_pt_BR" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.pt-BR.xcl"
  install -Dm644 "$srcdir/FID_BOX_pt_PT" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.pt-PT.xcl"
  install -Dm644 "$srcdir/FID_BOX_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.ru-RU.xcl"
+ install -Dm644 "$srcdir/FID_BOX_sk_SK" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.sk-SK.xcl"
  install -Dm644 "$srcdir/FID_BOX_sl_SI" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.sl-SI.xcl"
  install -Dm644 "$srcdir/FID_BOX_tr_TR" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.tr-TR.xcl"
  install -Dm644 "$srcdir/FID_BOX_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.uk-UA.xcl"
@@ -212,6 +224,7 @@ package()
  install -Dm644 "$srcdir/FID_CSV_pt_BR" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.pt-BR.xcl"
  install -Dm644 "$srcdir/FID_CSV_pt_PT" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.pt-PT.xcl"
  install -Dm644 "$srcdir/FID_CSV_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.ru-RU.xcl"
+ install -Dm644 "$srcdir/FID_CSV_sk_SK" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.sk-SK.xcl"
  install -Dm644 "$srcdir/FID_CSV_sl_SI" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.sl-SI.xcl"
  install -Dm644 "$srcdir/FID_CSV_tr_TR" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.tr-TR.xcl"
  install -Dm644 "$srcdir/FID_CSV_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.uk-UA.xcl"
@@ -305,6 +318,7 @@ package()
  install -Dm644 "$srcdir/FID_GD_pt_BR" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.pt-BR.xcl"
  install -Dm644 "$srcdir/FID_GD_pt_PT" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.pt-PT.xcl"
  install -Dm644 "$srcdir/FID_GD_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.ru-RU.xcl"
+ install -Dm644 "$srcdir/FID_GD_sk_SK" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.sk-SK.xcl"
  install -Dm644 "$srcdir/FID_GD_sl_SI" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.sl-SI.xcl"
  install -Dm644 "$srcdir/FID_GD_sr_Latn_RS" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.sr-Latn-RS.xcl"
  install -Dm644 "$srcdir/FID_GD_sv_SE" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.sv-SE.xcl"
@@ -327,6 +341,7 @@ package()
  install -Dm644 "$srcdir/FID_IF_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_IF_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.lt-LT.xcl"
  install -Dm644 "$srcdir/FID_IF_pl_PL" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.pl-PL.xcl"
+ install -Dm644 "$srcdir/FID_IF_pt_BR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.pt-BR.xcl"
  install -Dm644 "$srcdir/FID_IF_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ru-RU.xcl"
  install -Dm644 "$srcdir/FID_IF_tr_TR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.tr-TR.xcl"
  install -Dm644 "$srcdir/FID_IF_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.uk-UA.xcl"
@@ -420,6 +435,7 @@ package()
  install -Dm644 "$srcdir/FID_OD_pt_BR" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.pt-BR.xcl"
  install -Dm644 "$srcdir/FID_OD_pt_PT" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.pt-PT.xcl"
  install -Dm644 "$srcdir/FID_OD_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.ru-RU.xcl"
+ install -Dm644 "$srcdir/FID_OD_sk_SK" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.sk-SK.xcl"
  install -Dm644 "$srcdir/FID_OD_sl_SI" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.sl-SI.xcl"
  install -Dm644 "$srcdir/FID_OD_tr_TR" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.tr-TR.xcl"
  install -Dm644 "$srcdir/FID_OD_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.uk-UA.xcl"
@@ -727,7 +743,7 @@ package()
           --pkgname="${pkgname}" \
           --pkgdesc="${pkgdesc}" \
           --name="PDF-XChange" \
-          --categories="Utility" \
+          --categories="Office" \
           --startupnotify=true \
           --comment="$pkgdesc" \
           --mimetypes="application/pdf" \
@@ -737,7 +753,7 @@ package()
 
  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
- ln -sf /tmp/pdf-xchange "$pkgdir${_installdir}/$pkgname/${_tesseract}" 
+ ln -sf "/tmp/$pkgname" "$pkgdir${_installdir}/$pkgname/${_tesseract}" 
  mkdir -p "$pkgdir/usr/bin"
 
  echo '#!/bin/bash' > "$pkgdir/usr/bin/$pkgname"
@@ -779,14 +795,14 @@ if ! grep -q '"Decorated"="N"' "$prefix/user.reg"; then
    echo '"Decorated"="N"' >> "$prefix/user.reg"
 fi
 
-mkdir "/tmp/pdf-xchange" "$prefix/Tesseract" &>/dev/null
-cp "$prefix"/Tesseract/* "/tmp/pdf-xchange" &>/dev/null
+mkdir "/tmp/$pkgname" "$prefix/Tesseract" &>/dev/null
+cp "$prefix"/Tesseract/* "/tmp/$pkgname" &>/dev/null
 
 EOF
 
  echo 'WINEPREFIX="$prefix" /usr/bin/wine "'"$_installdir"'/$program/PDFXEdit.exe" "$document"' >> "$pkgdir/usr/bin/$pkgname"
  chmod 0755 "$pkgdir/usr/bin/$pkgname"
 
- echo 'cp /tmp/pdf-xchange/* "$prefix/Tesseract"' >> "$pkgdir/usr/bin/$pkgname"
+ echo cp '/tmp/"$pkgname"/*' '"$prefix/Tesseract"' >> "$pkgdir/usr/bin/$pkgname"
 
 }
