@@ -3,12 +3,12 @@
 pkgname=python-pqdm
 _name=pqdm
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Comfortable parallel TQDM using concurrent.futures"
 arch=('any')
 url='https://github.com/niedakh/pqdm'
 license=('MIT')
-depends=('python' 'python-bounded-pool-executor' 'python-tqdm' 'python-typing-extensions')
+depends=('python' 'python-bounded-pool-executor' 'python-tqdm' 'python-typing_extensions')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 	"https://raw.githubusercontent.com/niedakh/pqdm/master/LICENSE")
