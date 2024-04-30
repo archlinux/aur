@@ -7,14 +7,14 @@ pkgname=chromium-bypass-paywalls-clean
 pkgver=20240430162844
 pkgrel=1
 pkgdesc="Chromium extension to bypass paywalls"
+url="https://github.com/bpc-clone/bpc_updates"
 arch=('any')
 install=$pkgname.install
 license=(MIT)
 makedepends=(curl)
+source=("${_pkgname}-${pkgver}.zip::${_source}")
 # Skip, since a newer version may exist upstream. We trust Github, right? :P
 sha256sums=('SKIP')
-source=("${_pkgname}-${pkgver}.zip::${_source}")
-url="https://github.com/bpc-clone/bpc_updates"
 
 pkgver() {
     date -u --date="$(curl -LsvX HEAD "${_source}" 2>&1 | grep -i '^< Last-Modified:' | cut -f 3- -d ' ')" '+%Y%m%d%H%M%S'
