@@ -15,7 +15,7 @@ source=("Linux_x64_Executable.zip::$(curl -s https://api.github.com/repos/bitsco
 sha256sums=('SKIP')
 arch=('x86_64')
 pkgver=8.0.2
-pkgrel=4
+pkgrel=5
 # changelog="CHANGELOG.md"
 
 package() {
