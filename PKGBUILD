@@ -15,7 +15,7 @@ sha256sums=('b7ec8eab6c29a3821e3f1239cf6baa84ef634ea2188ffa93d7a276c89338961e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  meson --prefix=/usr --buildtype=plain . build
+  meson setup --prefix=/usr --buildtype=plain . build
   meson compile -C build
 }
 
