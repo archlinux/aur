@@ -2,7 +2,7 @@
 
 pkgname=kometa
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A powerful tool designed to give you complete control over your Plex media libraries.'
 url='https://kometa.wiki'
 arch=('any')
@@ -37,7 +37,7 @@ source=(
 )
         
 sha256sums=('9440520329148296a895ed1416d1551d1024df8d4b93713a9f0196c4b89d58c3'
-            '8cc84f12f9c63bf58ead771c866dab25c0e151debea8c4973ff5b08773cc391c'
+            'efe67c68d064d217c78840ea8c426d4d5ee543362bf34b1d22446c56f19faf15'
             'aff68f18a53e34c9778da238a2143e30dacb72d9009a219f3e5eb45cf1735e20'
             '1d81571ea9be45f2d53aa21c920b93b6fdb1c9b17c6f9490ca94b1676ae27e13')
 

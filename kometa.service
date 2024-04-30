@@ -11,7 +11,7 @@ Type=simple
 User=kometa
 Group=kometa
 SyslogIdentifier=kometa
-ExecStart=/usr/bin/python /usr/lib/plexmetamanager/kometa.py --config /var/lib/plexmetamanager/config.yaml
+ExecStart=/usr/bin/python /usr/lib/kometa/kometa.py --config /var/lib/kometa/config.yaml
 
 [Install]
 WantedBy=multi-user.target
