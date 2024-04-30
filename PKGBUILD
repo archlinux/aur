@@ -4,11 +4,11 @@ _pkgname=canvasXpress
 _pkgver=1.46.9-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Visualization Package for CanvasXpress in R"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-htmltools
   r-htmlwidgets
@@ -21,6 +21,7 @@ checkdepends=(
   r-ggplot2
   r-readr
   r-shiny
+  r-stringr
   r-testthat
 )
 optdepends=(
@@ -43,11 +44,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('f25e77795fcb5dc87488793b343c60e0')
-sha256sums=('a6e382b05f6d4f7c29c3a1bfc1a49b30c69f404f7c2ff5652122b5dfef63667d')
+b2sums=('ea4dedf9e4347aa6040407e2895e34f842050ce46416a5e8967d1fef459e6b5a55a10d4695fd3ebcb000980ec5503956602baa75d064e7c01de3d3f1a642a50c')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

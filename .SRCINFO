@@ -1,15 +1,16 @@
 pkgbase = r-canvasxpress
 	pkgdesc = Visualization Package for CanvasXpress in R
 	pkgver = 1.46.9.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=canvasXpress
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-canvasxpress.data
 	checkdepends = r-dplyr
 	checkdepends = r-ggplot2
 	checkdepends = r-readr
 	checkdepends = r-shiny
+	checkdepends = r-stringr
 	checkdepends = r-testthat
 	depends = r-htmltools
 	depends = r-htmlwidgets
@@ -33,6 +34,6 @@ pkgbase = r-canvasxpress
 	optdepends = r-tidyr
 	source = https://cran.r-project.org/src/contrib/canvasXpress_1.46.9-1.tar.gz
 	md5sums = f25e77795fcb5dc87488793b343c60e0
-	sha256sums = a6e382b05f6d4f7c29c3a1bfc1a49b30c69f404f7c2ff5652122b5dfef63667d
+	b2sums = ea4dedf9e4347aa6040407e2895e34f842050ce46416a5e8967d1fef459e6b5a55a10d4695fd3ebcb000980ec5503956602baa75d064e7c01de3d3f1a642a50c
 
 pkgname = r-canvasxpress
