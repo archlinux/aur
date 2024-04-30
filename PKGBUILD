@@ -1,35 +1,60 @@
-# Maintainer: Jorge Pizarro-Callejas (aka jorgicio) <jpizarrocallejas@gmail.com>
+# Contributor: Jorge Pizarro-Callejas (aka jorgicio) <jpizarrocallejas@gmail.com>
 
 pkgname=libvmaf-compat
-_pkgname=vmaf
+_distname=vmaf
 pkgver=2.3.1
-pkgrel=1
-pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (v2 compatibility)'
+pkgrel=2
+pkgdesc='Perceptual video quality assessment library (legacy v2.x API)'
 arch=('x86_64')
 url='https://github.com/Netflix/vmaf/'
-license=('BSD')
-depends=('gcc-libs')
-makedepends=('meson' 'nasm' 'vim' 'doxygen')
-provides=('vmaf=2.3.1' 'libvmaf=2.3.1')
-conflicts=('vmaf=2.3.1' 'libvmaf=2.3.1')
-options=('!lto')
-source=("https://github.com/Netflix/vmaf/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+license=('BSD-2-Clause-Patent')
+depends=(
+  'gcc-libs'
+  'glibc'
+)
+makedepends=(
+  'meson'
+  'nasm'
+  'ninja'
+)
+conflicts=(
+  'vmaf>=2'
+  'vmaf<3'
+)
+source=("https://github.com/Netflix/vmaf/archive/v${pkgver}/${_distname}-${pkgver}.tar.gz")
 sha256sums=('8d60b1ddab043ada25ff11ced821da6e0c37fd7730dd81c24f1fc12be7293ef2')
 
-build() {
-    arch-meson "${_pkgname}-${pkgver}/libvmaf/build" "${_pkgname}-${pkgver}/libvmaf"
-    ninja -v -C "${_pkgname}-${pkgver}/libvmaf/build"
+prepare() {
+  echo "Configuring to disable building the vmaf executable (from 'tools' dir)..."
+  sed -e "/subdir('tools')/d" \
+      -i "${_distname}-${pkgver}/libvmaf/meson.build"
+  echo "Done."
+
+  echo "Configuring to disable model test because we won't build the models..."
+  sed -e "/test('test_model',/d" \
+      -e "/test('test_predict',/d" \
+      -i "${_distname}-${pkgver}/libvmaf/test/meson.build"
+  echo "Done."
+
+  arch-meson \
+    --auto-features disabled \
+    -Denable_docs=false \
+    -Denable_avx512=false \
+    -Dbuilt_in_models=false \
+    "${_distname}-${pkgver}/libvmaf/build" "${_distname}-${pkgver}/libvmaf"
 }
 
-#check() {
-#    ninja -v -C "${_pkgname}-${pkgver}/libvmaf/build" test
-#}
+build() {
+  ninja -v -C "${_distname}-${pkgver}/libvmaf/build"
+}
+
+check() {
+  ninja -v -C "${_distname}-${pkgver}/libvmaf/build" test
+}
 
 package() {
-    DESTDIR="$pkgdir" ninja -v -C "${_pkgname}-${pkgver}/libvmaf/build" install
-    rm -rf "$pkgdir"/usr/{include,bin}
-    rm -rf "$pkgdir"/usr/lib/{libvmaf.so,pkgconfig,libvmaf.a}
-    #install -D -m755 "${pkgname}-${pkgver}/libvmaf/build/tools/vmafossexec" -t "${pkgdir}/usr/bin"
-    #install -D -m644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    #cp -dr --no-preserve='ownership' "${pkgname}-${pkgver}/model" "${pkgdir}/usr/share"
+  DESTDIR="$pkgdir" ninja -v -C "${_distname}-${pkgver}/libvmaf/build" install
+  rm -rf "$pkgdir"/usr/{include,bin}
+  rm -rf "$pkgdir"/usr/lib/{libvmaf.so,pkgconfig,libvmaf.a}
+  install -D -m644 "${_distname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
