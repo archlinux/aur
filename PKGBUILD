@@ -1,35 +1,36 @@
-# Maintainer: Nicolas FORMICHELLA <stigpro@outlook.fr>
-pkgname=n-link
+# Contributor: Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+pkgname="n-link"
 pkgver=0.1.6
-pkgrel=2
-epoch=
-pkgdesc="Free, cross-platform, CX-II compatible computer linking program for the TI-Nspire."
-arch=("x86_64")
+pkgrel=3
+pkgdesc="Free, cross-platform, CX-II compatible computer linking program for the TI-Nspire"
 url="https://lights0123.com/n-link/"
 license=('GPL3')
-groups=()
-depends=("nodejs-lts-fermium" "webkit2gtk" "squashfs-tools")
-makedepends=()
-checkdepends=()
-optdepends=()
+arch=("x86_64" "armv7h" "aarch64")
+depends=("webkit2gtk" "squashfs-tools")
+makedepends=("yarn" "cargo")
 provides=("n-link")
-conflicts=("n-link-git")
-replaces=()
-backup=()
-options=()
-install="${pkgname}.install"
-changelog=
-source=("https://github.com/lights0123/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb"
-        "69-${pkgname}.rules")
-noextract=("${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('85afe0a52ee8f1bd0c7d61f3cbac5d24db89963d11e942c330a968125f8051e2'
-            '08274e4c02e4321f352412af6d539a33151c6136cace924b29150520ccd79e7d')
-validpgpkeys=()
+conflicts=("n-link-git" "n-link.bin")
+source=("n-link-$pkgver.tar.gz::https://github.com/lights0123/n-link/archive/refs/tags/v$pkgver.tar.gz"
+        "69-n-link.rules")
+b2sums=('0ea8b945e10f79fa7f48f83fde5828ca283b122ba5decd24fd6a48dbf95058507fdf0a3255d66d33ae039710406f5ffe8bb0221de7639dcf2fb6c7343cfdbf19'
+        '889b25dc837fdbf5891243b2a6c6b190eef53333d9e01276ff28cab926a6ed49d8a93e41cb4fb76456a716203bac7ffe230abb4333eba3435353bd809387b0bb')
+install="n-link.install"
 
-package() {
-	ar p "${pkgname}_${pkgver}_amd64.deb" data.tar.gz | bsdtar -C "${pkgdir}" -xf -
-        find "${pkgdir}" -type d -exec chmod 755 {} \;
-        find "${pkgdir}/usr/bin/" -type f -executable -exec chmod 755 {} \;
-        mkdir -p "${pkgdir}/etc/udev/rules.d/"
-        install -Dm644 "69-${pkgname}.rules" "${pkgdir}/etc/udev/rules.d/69-${pkgname}.rules"
+build(){
+ cd "n-link-$pkgver/desktop"
+ export RUSTUP_TOOLCHAIN=stable
+ export CARGO_TARGET_DIR=target
+ # install dependencies, including tauri
+ yarn
+ # build front-end and back-end
+ # CURRENLY BROKEN
+ yarn tauri:build
+}
+
+package(){
+ # COPY FILES
+ find "$pkgdir" -type d -exec chmod 755 {} \;
+ find "$pkgdir/usr/bin/" -type f -executable -exec chmod 755 {} \;
+ install -D -m 644 "69-${pkgname}.rules" "${pkgdir}/etc/udev/rules.d/69-${pkgname}.rules"
 }
