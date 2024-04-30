@@ -32,7 +32,7 @@ source=("${pkgname//-/.}::git+${_ghurl}.git")
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
