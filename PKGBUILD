@@ -1,42 +1,55 @@
-# Maintainer: aksr <aksr at t-com dot me>
-pkgname=sudoku-git
-pkgver=v1.0.r2.g2489c02
-pkgrel=4
-epoch=
-pkgdesc="Fancy, feature-complete, cross-platform Sudoku app written in C++/Qt."
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: aksr <aksr at t-com dot me>
+
+_distname=sudoku
+_repoowner=wimleers
+pkgname="${_distname}-git"
+pkgver=1.0.r2.g2489c02
+pkgrel=1
+pkgdesc="Sudoku app written in C++/Qt."
 arch=('i686' 'x86_64')
-url="https://github.com/wimleers/sudoku"
-license=('custom:UNLICENSE')
-groups=()
-depends=('qt4')
-makedepends=('git')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=('sudoku')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-source=("$pkgname::git://github.com/wimleers/sudoku.git")
-noextract=()
-md5sums=('SKIP')
+url="https://github.com/${_repoowner}/${_distname}"
+license=('Unlicense')
+depends=(
+  'gcc-libs'
+  'glibc'
+  'qt4'
+)
+makedepends=(
+  'gendesk'
+  'git'
+)
+provides=("${_distname}=${pkgver%.r*}")
+conflicts=("${_distname}")
+_clonedirname="${_distname}-${_repoowner}"
+source=("${_clonedirname}::git+${url}.git")
+b2sums=('SKIP')
+
+prepare() {
+  gendesk -n -f \
+          --pkgname "${_distname}" \
+          --pkgdesc "${pkgdesc}" \
+          --name "Sudoku (Qt4)" \
+          --icon "${_distname}-qt" \
+          --genericname "Sudoku Game" \
+          --exec "/usr/bin/${_distname} %u" \
+          --categories "Game;Sudoku"
+}
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "${_clonedirname}"
   git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
-  cd "$srcdir/$pkgname/src"
+  cd "${_clonedirname}/src"
   qmake-qt4 Sudoku_release.pro
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -Dm755 src/Sudoku $pkgdir/usr/bin/Sudoku
-  install -Dm644 UNLICENSE $pkgdir/usr/share/licenses/$pkgname/UNLICENSE
+  cd "${_clonedirname}"
+  install -Dm755 src/Sudoku "${pkgdir}/usr/bin/${_distname}"
+  install -Dm644 "../${_distname}.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -Dm644 src/resources/images/icon.png "${pkgdir}/usr/share/icons/${_distname}-qt.png"
 }
-

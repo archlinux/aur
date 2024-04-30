@@ -1,16 +1,19 @@
 pkgbase = sudoku-git
-	pkgdesc = Fancy, feature-complete, cross-platform Sudoku app written in C++/Qt.
-	pkgver = v1.0.r2.g2489c02
-	pkgrel = 3
+	pkgdesc = Sudoku app written in C++/Qt.
+	pkgver = 1.0.r2.g2489c02
+	pkgrel = 1
 	url = https://github.com/wimleers/sudoku
 	arch = i686
 	arch = x86_64
-	license = custom:UNLICENSE
+	license = Unlicense
+	makedepends = gendesk
 	makedepends = git
+	depends = gcc-libs
+	depends = glibc
 	depends = qt4
+	provides = sudoku=1.0
 	conflicts = sudoku
-	source = sudoku-git::git://github.com/wimleers/sudoku.git
-	md5sums = SKIP
+	source = sudoku-wimleers::git+https://github.com/wimleers/sudoku.git
+	b2sums = SKIP
 
 pkgname = sudoku-git
-
