@@ -4,7 +4,7 @@
 # -*- sh -*-
 
 pkgname='littlefs-fuse'
-pkgver=2.7.7
+pkgver=2.7.8
 pkgrel=1
 pkgdesc='A FUSE wrapper that puts the littlefs in user-space'
 url='https://github.com/littlefs-project/littlefs-fuse'
@@ -41,16 +41,16 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm0755 lfs        "$pkgdir/usr/bin/lfs"
-  install -Dm0644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-  install -Dm0644 README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0755 lfs        "$pkgdir/usr/bin/lfs"
+  install -vDm0644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  install -vDm0644 README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 sha256sums=(
-  '3034e35115274bf0b7aa0352783430f11732719dd878a719e587ab9136ed416a'
+  '46db1a467c67e2696da9070087c96e5bc9b7236ee0c0f0417add3a0a8f82db41'
 )
 b2sums=(
-  '8b38f35f29334388dc2cf018e11cd64fb6ce1742fab2787e886fa86e34b0510f549b41885c167b09790b65c30de14ac5c581e588d67bf66f1804f4cc51a0b081'
+  '7e4d675a7d62a495bc3bc43ba72ffdfc5ba757a65ea94d765277acff02619e2728901385911e8c266ac2f170f4625c993ecbfee53e1032113628e3d11b790688'
 )
 
 # eof
