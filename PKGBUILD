@@ -16,11 +16,6 @@ source=("git+https://github.com/sonnyp/Commit.git#tag=v$pkgver"
 sha256sums=('805b79e8866523c22d29905cb00521734d72ff57c8131f483c58698e19c884ab'
             'SKIP')
 
-pkgver() {
-  cd Commit
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
-
 prepare() {
   cd Commit
   git submodule init
