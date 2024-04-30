@@ -1,6 +1,6 @@
 _pkgname=slimevr-server
 pkgname=${_pkgname}-git
-pkgver=v0.12.0.r1.8c0c3d10
+pkgver=v0.12.1.r0.2d55672f
 pkgrel=1
 pkgdesc="Server for SlimeVR Full Body Tracking System"
 arch=('x86_64')
