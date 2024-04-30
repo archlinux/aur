@@ -3,12 +3,12 @@ pkgbase=python-gammapy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A Python package for gamma-ray astronomy"
 arch=('i686' 'x86_64')
 url="https://gammapy.org"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('cython'
              'python-setuptools-scm'
              'python-wheel'
@@ -16,28 +16,21 @@ makedepends=('cython'
              'python-installer'
              'python-extension-helpers'
              'python-numpy')
-#'python-sphinx-astropy' 'python-sphinx_rtd_theme' 'python-nbsphinx' 'python-sphinx-click' 'python-click' 'python-yaml' 'python-regions' 'python-naima')
-#checkdepends=('python-pydantic'
-#              'python-click'
-#              'python-yaml'
-#              'python-scipy'
-#              'python-regions')
 checkdepends=('python-pytest-astropy-header'
-#             'python-pytest-remotedata'
+              'python-pytest-remotedata'
               'python-scipy'
               'python-regions'
               'python-click'
               'python-matplotlib'
-#             'python-pydantic'
-              'python-iminuit')
-#             'python-healpy'
-#             'python-reproject'
-#             'python-iminuit'
-#             'python-sherpa'
-#             'jupyter-nbformat'
-#             'python-sphinx'
+              'python-pydantic'
+              'python-iminuit'
+              'python-healpy'
+              'python-tqdm'
+              'python-naima'
+              'python-ipywidgets'
+              'python-sherpa')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('59386ea8a1677a023d9d6a4a306dc35b')
+md5sums=('f1f2e877c873682c4b5f0c6a32cfe84c')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -62,13 +55,14 @@ check() {
 
     ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname}*egg-info \
         build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname}-${pkgver}-py$(get_pyver .).egg-info
-    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest \
+        "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count --remote-data
 #   PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest -vv --color=yes
 #   pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" #|| warning "Tests failed" # -vv --color=yes
 }
 
 package_python-gammapy() {
-    depends=('python>=3.8' 'python-scipy>1.10' 'python-yaml>=5.3' 'python-astropy>=5.0' 'python-regions>=0.5.0' 'python-click>=7.0' 'python-pydantic>=1.4' 'python-iminuit>=2.8.0' 'python-matplotlib>=3.4')
+    depends=('python>=3.9' 'python-scipy>1.10' 'python-yaml>=5.3' 'python-astropy>=5.0' 'python-regions>=0.5.0' 'python-click>=7.0' 'python-pydantic>=2.5.0' 'python-iminuit>=2.8.0' 'python-matplotlib>=3.4')
     optdepends=('python-pandas: For working with tables'
                 'python-emcee: For fitting by MCMC sampling'
                 'python-corner: For MCMC corner plots'

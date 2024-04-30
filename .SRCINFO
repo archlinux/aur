@@ -1,17 +1,24 @@
 pkgbase = python-gammapy
 	pkgdesc = A Python package for gamma-ray astronomy
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://gammapy.org
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pytest-astropy-header
+	checkdepends = python-pytest-remotedata
 	checkdepends = python-scipy
 	checkdepends = python-regions
 	checkdepends = python-click
 	checkdepends = python-matplotlib
+	checkdepends = python-pydantic
 	checkdepends = python-iminuit
+	checkdepends = python-healpy
+	checkdepends = python-tqdm
+	checkdepends = python-naima
+	checkdepends = python-ipywidgets
+	checkdepends = python-sherpa
 	makedepends = cython
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
@@ -19,17 +26,17 @@ pkgbase = python-gammapy
 	makedepends = python-installer
 	makedepends = python-extension-helpers
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-1.1.tar.gz
-	md5sums = 59386ea8a1677a023d9d6a4a306dc35b
+	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-1.2.tar.gz
+	md5sums = f1f2e877c873682c4b5f0c6a32cfe84c
 
 pkgname = python-gammapy
-	depends = python>=3.8
+	depends = python>=3.9
 	depends = python-scipy>1.10
 	depends = python-yaml>=5.3
 	depends = python-astropy>=5.0
 	depends = python-regions>=0.5.0
 	depends = python-click>=7.0
-	depends = python-pydantic>=1.4
+	depends = python-pydantic>=2.5.0
 	depends = python-iminuit>=2.8.0
 	depends = python-matplotlib>=3.4
 	optdepends = python-pandas: For working with tables
