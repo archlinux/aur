@@ -2,7 +2,7 @@
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
 
 pkgname='gke-kubeconfiger-bin'
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Setup kubeconfigs for all accessible GKE clusters.'
 url='https://github.com/zebradil/gke-kubeconfiger'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('gke-kubeconfiger')
 conflicts=('gke-kubeconfiger')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Zebradil/gke-kubeconfiger/releases/download/0.0.3/gke-kubeconfiger_linux_arm64.tar.gz")
-sha256sums_aarch64=('29d78a332caceb613e3b6def0c5ea98d66974cdad221c5ee323fc71c50361206')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Zebradil/gke-kubeconfiger/releases/download/0.0.4/gke-kubeconfiger_linux_arm64.tar.gz")
+sha256sums_aarch64=('15f4cf4b6863323013a340fb3d1f9e01183bd50103fb88f39d7c2ef1025066da')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Zebradil/gke-kubeconfiger/releases/download/0.0.3/gke-kubeconfiger_linux_amd64.tar.gz")
-sha256sums_x86_64=('9b83c9c6dbeacadb645ceaf82c3cd4800e8ce2b16b30e60fae35afaa48bb9af7')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Zebradil/gke-kubeconfiger/releases/download/0.0.4/gke-kubeconfiger_linux_amd64.tar.gz")
+sha256sums_x86_64=('27710788ff9369261f9cf3ac580fc92afeecc3b8fd83756e06c715c913d59678')
 
 package() {
   BIN=gke-kubeconfiger
