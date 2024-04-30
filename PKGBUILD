@@ -6,15 +6,15 @@
 
 pkgname=libplist-git
 epoch=1
-pkgver=2.3.0.r19.gd45396a
+pkgver=2.4.0.r7.g5461eda
 pkgrel=1
 pkgdesc="A library to handle Apple Property List format whereas it's binary or XML"
 url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
-license=('GPL2' 'LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('gcc-libs' 'glibc')
-makedepends=('python' 'cython' 'git')
-optdepends=('python: for the Python bindings')
+makedepends=('python' 'cython' 'git' 'python-setuptools')
+optdepends=('python: Python bindings')
 provides=(libplist-2.0.so libplist++-2.0.so "libplist=$pkgver")
 conflicts=('libplist')
 source=("git+https://github.com/libimobiledevice/libplist")
@@ -33,6 +33,7 @@ prepare() {
 build() {
 	cd libplist
 	./configure --prefix=/usr
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
 }
 
