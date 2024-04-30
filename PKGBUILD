@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=commit
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Commit message editor."
 arch=('any')
 url="https://apps.gnome.org/Commit"
@@ -11,10 +11,9 @@ makedepends=('blueprint-compiler' 'git' 'meson')
 checkdepends=('appstream-glib')
 optdepends=('git: git support'
             'mercurial: mercurial support')
-_commit=c7db2f4140053755689c35862964f9568c5e284b  # tags/v4.1^0
-source=("git+https://github.com/sonnyp/Commit.git#commit=$_commit"
+source=("git+https://github.com/sonnyp/Commit.git#tag=v$pkgver"
         'git+https://github.com/sonnyp/troll.git')
-sha256sums=('SKIP'
+sha256sums=('805b79e8866523c22d29905cb00521734d72ff57c8131f483c58698e19c884ab'
             'SKIP')
 
 pkgver() {

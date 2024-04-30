@@ -1,7 +1,7 @@
 pkgbase = commit
 	pkgdesc = Commit message editor.
 	pkgver = 4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.gnome.org/Commit
 	arch = any
 	license = GPL-3.0-or-later
@@ -15,9 +15,9 @@ pkgbase = commit
 	depends = gtksourceview5
 	optdepends = git: git support
 	optdepends = mercurial: mercurial support
-	source = git+https://github.com/sonnyp/Commit.git#commit=c7db2f4140053755689c35862964f9568c5e284b
+	source = git+https://github.com/sonnyp/Commit.git#tag=v4.1
 	source = git+https://github.com/sonnyp/troll.git
-	sha256sums = SKIP
+	sha256sums = 805b79e8866523c22d29905cb00521734d72ff57c8131f483c58698e19c884ab
 	sha256sums = SKIP
 
 pkgname = commit
