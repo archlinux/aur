@@ -1,12 +1,12 @@
 pkgname=dictpopup
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A Japanese popup dictionary working on mouse selection with Anki integration"
 arch=('any')
 license=('BSD')
 groups=()
-depends=('gtk3' 'libx11' 'lmdb' 'mecab')
+depends=('gtk3' 'libx11' 'lmdb' 'mecab' 'curl' 'libzip' 'libnotify')
 makedepends=('git')
 checkdepends=()
 optdepends=()
