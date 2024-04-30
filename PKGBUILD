@@ -1,8 +1,8 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=freetype-gl
-pkgver=20240122
-_commit=9543576aab0ee5d1f0c89d8280e9420ca3fc4a6e
+pkgver=20240429
+_commit=cfddb99fc48cb944b21b832d7d9043d28ff1a4b6
 pkgrel=1
 pkgdesc='OpenGL text using one vertex buffer, one texture and FreeType'
 arch=('x86_64')
@@ -11,11 +11,11 @@ license=('BSD')
 depends=(freetype2 glew)
 makedepends=(cmake git)
 source=("git+$url#commit=$_commit")
-b2sums=('cc999266664caba698cbf53595785486878b63a9fa9881ccd3dcad460551711c5a12d6de90b30d5cf8400c85ae7bcfd54a64c70f267af0fc93d6ad601c2d55ae')
+b2sums=('2ca96b1aa50f661a1d9b92f18aee87c1af3ef7ca5363e1c2d329c66aa46b8573644fe5fda680215870e945cb82d4d61ae9c7b2b08ac0d7b5827c30c59e3f3b60')
 
 pkgver() {
     cd $pkgname
-    git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d' $_commit
+    git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d'
 }
 
 prepare() {
@@ -29,7 +29,7 @@ build() {
     # freetype-gl.so.0 in /lib, and thus tests can't be built, because they require the demos
     # they can be built if this package has already been installed
     cmake -B build \
-        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_SKIP_RPATH=YES \
         -Dfreetype-gl_BUILD_APIDOC=False \
