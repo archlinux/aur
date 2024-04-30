@@ -2,7 +2,7 @@
 
 _pkgname=mauikit-calendar
 pkgname=$_pkgname-git
-pkgver=3.1.0.r2.g6034755
+pkgver=4.0.0.r71.g55ad5e3
 pkgrel=1
 pkgdesc='MauiKit Calendar components'
 url='https://invent.kde.org/maui/mauikit-calendar'
@@ -27,6 +27,13 @@ conflicts=($_pkgname)
 source=(git+$url.git)
 sha256sums=('SKIP')
 
+prepare() {
+  cd $_pkgname
+  git tag -d $(git tag -l) > /dev/null
+  git tag -a v4.0.0 70db19db -m v4.0.0
+  git checkout -b AUR
+}
+
 pkgver() {
   cd $_pkgname
   ( set -o pipefail
@@ -37,9 +44,9 @@ pkgver() {
 
 build() {
   cmake -B build -S $_pkgname \
-    -DBUILD_WITH_QT6=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_WITH_QT6=ON -Wno-dev \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
   cmake --build build
 }
