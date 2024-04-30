@@ -1,0 +1,17 @@
+pkgbase = android-x86-64-srt
+	pkgdesc = Secure Reliable Transport library (Android x86-64)
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://www.srtalliance.org/
+	arch = any
+	license = MPL2
+	makedepends = android-cmake
+	depends = android-x86-64-openssl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/Haivision/srt/archive/refs/tags/v1.5.3.tar.gz
+	md5sums = df8213a3669dd846ddaad0fa1e9f417b
+
+pkgname = android-x86-64-srt
