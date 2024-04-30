@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia
 _pkgname=gamescope
-pkgver=3.14.6
+pkgver=3.14.11
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -45,13 +45,13 @@ conflicts=("$_pkgname")
 source=(
   "gamescope::git+https://github.com/ValveSoftware/gamescope.git#tag=$pkgver"
   "reshade::git+https://github.com/Joshua-Ashton/reshade.git#commit=9fdbea6892f9959fdc18095d035976c574b268b7"
-  "vkroots::git+https://github.com/Joshua-Ashton/vkroots.git#commit=5c217cd43ca1ceecaa6acfc93a81cdc615929155"
+  "vkroots::git+https://github.com/Joshua-Ashton/vkroots.git#commit=5106d8a0df95de66cc58dc1ea37e69c99afc9540"
   "wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=a5c9826e6d7d8b504b07d1c02425e6f62b020791"
   "stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9"
   "reverts-bd722f7.patch")
-sha1sums=('49bb8eb3ad455416aa04fd9d3af214c85de26850'
+sha1sums=('8f77c9e52efa85f2793941ae1858e4ef97bd0d89'
           '5860b457b6bb00d1fdfd6dd068516604e87a6466'
-          'a6a226a972eaef5bc2b009b75995e75b29a50d5b'
+          'fc042f50602b41be8a7c6be0a85c14cc70da761b'
           '0e6ccd1ec72dc3471594568097c922bec551fc3c'
           'e89ef3e6ee66abf807ce78bb269809eb0a0ff63a'
           '6573136d575068266dcb67459545ab06db58758a')
