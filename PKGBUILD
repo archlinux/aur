@@ -4,7 +4,7 @@
 
 pkgname="odoo"
 pkgver=17.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Web-based Open Source Business Apps"
 url="https://www.odoo.com/"
 arch=("any")
@@ -13,7 +13,7 @@ conflicts=("openerp")
 replaces=("openerp")
 depends=("postgresql"
         "wkhtmltopdf"
-        "python"
+        "python<3.12"
         "python-babel"
         "python-chardet"
         "python-cryptography"
