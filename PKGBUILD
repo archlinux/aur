@@ -15,8 +15,8 @@ source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.deb::https://github.com/V0
 source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.deb::https://github.com/V0IDPlusPlus/Tencent-Docs-Debian-Package-Archive/releases/download/v${pkgver}-${pkgrel}/LinuxTencentDocsArm64.deb")
 
 sha256sums=("7dd7432ece74ddd5d5fd6de07e6b521a4b84206a8fa099b754f2a994641404d7")
-sha256sums_x86_64=("cfb3a585b225231dfba5267f86bba3c2807195d0e141d53261aea246376f9c20")
-sha256sums_aarch64=("a295ecc590ae7da7ad567dae0a80bcec6286f36ce31d51fcba5c0c6cb32a9077")
+sha256sums_x86_64=("e7a287fd03f8487420e3d60964bfeac318f44755ef5c8a9a5a51980fed8c1d4b")
+sha256sums_aarch64=("a74edc6d3d653ce8ed4357615af480cef94cb0fc17237e6efb9b7adcc7d2012b")
 
 package() {
     tar xpf data.tar.xz -C ${pkgdir}
