@@ -13,7 +13,8 @@ install=$pkgname.install
 license=(MIT)
 makedepends=(curl)
 source=("${_pkgname}-${pkgver}.zip::${_source}")
-# Skip, since a newer version may exist upstream. We trust Github, right? :P
+# Skip, since a newer version may exist upstream which overwrites the previous version.
+# We trust Github, right? :P
 sha256sums=('SKIP')
 
 pkgver() {
