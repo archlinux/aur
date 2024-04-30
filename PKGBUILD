@@ -5,7 +5,7 @@
 _pkgname=aliyunpan
 pkgname="${_pkgname}-odomu-git"
 _zhsname="阿里云盘小白羊"
-pkgver=3.24.40913.r0.g526515f
+pkgver=3.24.43014.r0.gefa04c6
 _electronversion=21
 _nodeversion=20
 pkgrel=1
@@ -21,7 +21,7 @@ conflicts=(
     "xbydriver"
 )
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'npm'
@@ -34,7 +34,7 @@ source=(
     "${pkgname%-git}.git::git+${url}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -60,7 +60,7 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
