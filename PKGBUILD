@@ -1,37 +1,45 @@
-# system requirements: GNU make, C++11
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SharedObject
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
-pkgrel=1
-pkgdesc='Sharing R objects across multiple R processes without memory duplication'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Sharing R objects across multiple R processes without memory duplication"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
-  r-bh
   r-biocgenerics
   r-rcpp
+)
+makedepends=(
+  r-bh
 )
 optdepends=(
   r-biocstyle
   r-knitr
-  r-parallel
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('77fd00f492f1dd9fbb6821c9f01172aa271c7f7440c4a787627810794098fc21')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "$_pkgname-fix-build.patch::https://github.com/Jiefei-Wang/SharedObject/pull/17.patch")
+md5sums=('7c47265b6a5f61385088d6146c7e4879'
+         '2d31d0afa3d7a9d170184218df260995')
+b2sums=('4a9cb7adaf164905a490536b38243983e05c6cfc87855eb3d160bfc8991729f412ef01a9258a430539ebe874d626c5f3752bb86827ce970a05f366e453d98d48'
+        'caf4cf7035f69013402ff6cd3058bf504fb097e9c9c50e64b117e949f68ef62933dce4c560085e82337fec01eed00125fbdebf16debc4c72c6f2308044ebad6f')
+
+prepare() {
+  # fix build
+  patch -Np1 -d "$_pkgname" < "$_pkgname-fix-build.patch"
+}
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
