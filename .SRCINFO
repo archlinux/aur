@@ -1,6 +1,6 @@
 pkgbase = python-trimesh
 	pkgdesc = Import, export, process, analyze and view triangular meshes
-	pkgver = 4.3.1
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://trimsh.org
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = python-trimesh
 	optdepends = python-ruff: static code analyzer
 	optdepends = python-pytest: test runner
 	optdepends = python-pyinstrument: sampling based profiler
-	source = trimesh-4.3.1.tar.gz::https://github.com/mikedh/trimesh/archive/4.3.1.tar.gz
-	sha512sums = 01d7bcca7c1d36488f236a45481ed0cda2b63cd4a1308b0067ba95392b2517df143e3afb93c8632ad117e2dfea12e3eec80c057f8367a465a8f26b554d29614c
+	source = trimesh-4.3.2.tar.gz::https://github.com/mikedh/trimesh/archive/4.3.2.tar.gz
+	sha512sums = 2bf40f2290875547dabf40101004581e7287cf2a954d4c1bd0df1adbf044e72bd30d8fbbadb8db44e8bfc33049cc68a075b347eeb538f8fef5225a724a4ddc3b
 
 pkgname = python-trimesh
