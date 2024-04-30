@@ -1,9 +1,10 @@
-# Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
+# Contributor: Filipe Bertelli <filipebertelli@tutanota.com>
+# Maintainer: fossdd <fossdd@pwned.life>
 
 _pkgbase=serve
 pkgname=nodejs-$_pkgbase
 pkgdesc='Quick HTTP server'
-pkgver=14.2.1
+pkgver=14.2.3
 pkgrel=1
 arch=('any')
 url='https://github.com/zeit/serve'
@@ -21,4 +22,4 @@ package() {
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 }
 
-sha512sums=('e3c7abe5fcc787b1824a12e73723c144f123b3623a401a33786af4da069a7113a2c92ffc011003963e7de63dfd8995c0a816c91c7fe2bc92723d1598f6c41664')
+sha512sums=('56a505302ecadcb0c67869c933d879e83dd718a6fa28680ec3471536d036eb26171c2729c5fdf1c024d4690a169554bb8bc25d8771a3424381db7aac5f28e8c9')
