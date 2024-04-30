@@ -1,21 +1,17 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 pkgname=markdownlint-cli
-pkgver=0.39.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="MarkdownLint Command Line Interface"
 arch=(any)
 url="https://github.com/igorshubovych/markdownlint-cli"
 license=(MIT)
 depends=(nodejs)
-makedepends=(
-  npm
-  jq
-)
-
+makedepends=(npm)
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('3ac4533a0f5ea881fb0580818c0decb0b5c15627fa99aa005617866f6599e511')
+sha256sums=('2919296cbdbce0de23dea9177d7da930db3b818026dbaa9f3f0d263c6675930a')
 
 package() {
   npm install -g \
