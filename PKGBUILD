@@ -1,6 +1,6 @@
 # Maintainer: TabulateJarl8 <tabulatejarl8 at gmail.com>
 pkgname=python-vapor-steam
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="TUI program to check the ProtonDB compatibility of all the games of a Steam user"
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('python-pytest' 'python-pytest-asyncio')
 _name=${pkgname#python-}
 _name=${_name//-/_}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('3cef4143fadfe2a4e3ace5283254381633d101624237be45b17a2d5d8445f3681831c5dd37acf04131c0fdde4da739c0c6a5d3b5c4bafddb1dd4625fc284820d')
+sha512sums=('a73956a15e987cfa90e8e2e225dc4ece5ef5b673ffba651012d9d48eb823de17dde4af852a496caf333b64641273aa88451720444602bd140ae455a0c40e0161')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
