@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aihub-git
 _pkgname=AIHub
-pkgver=1.8.1.r3.gb8054e4
+pkgver=1.8.2.r0.gbc2b6de
 _electronversion=30
 pkgrel=1
 pkgdesc="A collection of large model capabilities of the client.一款集合多家大模型能力的客户端"
@@ -42,7 +42,7 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
