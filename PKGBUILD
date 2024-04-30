@@ -3,7 +3,7 @@
 
 _name=osmapi
 pkgname=python-osmapi
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Python wrapper for the OSM API'
 arch=(any)
@@ -12,7 +12,7 @@ license=(GPL)
 depends=(python)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f2a65d5ae9d4b582393f858e6d9b75f83183689a0678f85251d72bd6cb36c144')
+sha256sums=('7b51804f8d0da953376cdfb6f9cfcb79b501312e535b31c654d213d9b46f0270')
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
