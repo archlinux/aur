@@ -1,0 +1,20 @@
+pkgbase = plasma-icinga-git
+	pkgdesc = A KDE Plasma dataengine and an applet to view the collected data coming from an icinga server.
+	pkgver = 6.0.3
+	pkgrel = 1
+	url = https://invent.kde.org/kinta/plasma-icinga
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = plasma-workspace
+	depends = kitemmodels
+	depends = kdeclarative
+	depends = qt6-charts
+	provides = plasma-icinga
+	conflicts = plasma-icinga
+	source = plasma-icinga::git+https://invent.kde.org/kinta/plasma-icinga.git
+	sha256sums = SKIP
+
+pkgname = plasma-icinga-git
