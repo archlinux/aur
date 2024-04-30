@@ -1,12 +1,12 @@
 pkgbase = python-flask-paginate
 	pkgdesc = A simple paginate extension for flask
-	pkgver = 2023.10.8
+	pkgver = 2024.4.12
 	pkgrel = 1
 	url = https://github.com/lixxu/flask-paginate
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/f/flask-paginate/flask-paginate-2023.10.8.tar.gz
-	b2sums = 89b03f7f65a3f0ec2497400daaad9c9176cfbea1bcd7b3726f9e33d9a4f333d5a080e119834c38aa48c62a664dd3d9323b12a02df706d74912250b3ca567db5e
+	source = https://files.pythonhosted.org/packages/source/f/flask-paginate/flask-paginate-2024.4.12.tar.gz
+	b2sums = 3a952b2bf3a93473e2c841f9083e968b4b07018fac7bac8baa909889e1d4c29727b5fae77f1a49a67fae14a30713271e0dac932f2aa966d22db8fe57bdc917bb
 
 pkgname = python-flask-paginate
