@@ -1,43 +1,61 @@
-# Maintainer: AtticFinder65536 <atticfinder -AT- rocklabs -DOT- xyz>
+# Maintainer: Attila Fidan <localhost@localhost>
 # Contributor: JianQing Liu <me at pegasis dot site>
-
-# stable release
 
 pkgname="discord-chat-exporter-cli"
 _apkgname="DiscordChatExporter"
-pkgver=2.42.8
+pkgver=2.43
 pkgrel=1
+_dotnet_ver=8.0
 
-pkgdesc="Exports Discord chat logs to a file"
+pkgdesc="Exports Discord chat logs to a file (Command-line interface only)"
 url="https://github.com/Tyrrrz/$_apkgname"
 license=(MIT)
-arch=(any)
+arch=(x86_64)
+
+depends=(
+  "dotnet-runtime-$_dotnet_ver"
+  gcc-libs
+  glibc
+  sh
+)
+makedepends=(
+  aspnet-runtime
+  "dotnet-sdk-$_dotnet_ver"
+)
 
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   "$pkgname"
 )
-b2sums=(
-  a310520df0785aae70ed95ffc97df3539d6a0d48e0f5abab3e606461ed375043b0248f86b6025a94c4f244edadbca34252a0fb340b17bb736c495167a33e385a
-  7540fb95f81c1041c87778c590a9438ffb64bf417c3d4d3f1363da5a25898c98f9dcd1209b9237bd595374a33326b7f23043bd6156cc7e14f0bff230ee0f6de6
-)
+b2sums=('8efbf68a20cc0115872a944f95482ca3bcc84532944ff8d24d9e5fc28be575ea6e5a657d1dc5021fa84225f5610a189803666a4299043eb7c7e1214a0f0912ce'
+        '7540fb95f81c1041c87778c590a9438ffb64bf417c3d4d3f1363da5a25898c98f9dcd1209b9237bd595374a33326b7f23043bd6156cc7e14f0bff230ee0f6de6')
 
-options=('!strip')
+prepare() {
+  cd "$_apkgname-$pkgver"
 
-depends=('dotnet-runtime-8.0')
-makedepends=('dotnet-sdk-8.0')
+  export DOTNET_NOLOGO=true
+  export DOTNET_CLI_TELEMETRY_OPTOUT=true
+  dotnet restore --locked-mode "$_apkgname.Cli"
+}
 
 build() {
+  mkdir -p "$srcdir/bin"
   cd "$_apkgname-$pkgver"
-  dotnet publish "$_apkgname.Cli" --configuration "Release"
+
+  export DOTNET_NOLOGO=true
+  export DOTNET_CLI_TELEMETRY_OPTOUT=true
+  dotnet publish \
+    --no-restore \
+    --self-contained false \
+    --configuration Release \
+    --output "$srcdir/bin" \
+    "$_apkgname.Cli"
 }
 
 package() {
+  install -Dm644 "$_apkgname-$pkgver/License.txt" "$pkgdir/usr/share/licenses/$pkgname/License.txt"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-  cd "$_apkgname-$pkgver"
-  install -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname/License.txt"
-
-  cd "$_apkgname.Cli/bin/Release/net8.0/publish"
+  cd bin
   find . -type f -exec install -Dm644 "{}" "$pkgdir/usr/lib/$pkgname/{}" \;
 }

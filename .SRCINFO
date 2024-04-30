@@ -1,16 +1,19 @@
 pkgbase = discord-chat-exporter-cli
-	pkgdesc = Exports Discord chat logs to a file
-	pkgver = 2.42.8
+	pkgdesc = Exports Discord chat logs to a file (Command-line interface only)
+	pkgver = 2.43
 	pkgrel = 1
 	url = https://github.com/Tyrrrz/DiscordChatExporter
-	arch = any
+	arch = x86_64
 	license = MIT
+	makedepends = aspnet-runtime
 	makedepends = dotnet-sdk-8.0
 	depends = dotnet-runtime-8.0
-	options = !strip
-	source = discord-chat-exporter-cli-2.42.8.tar.gz::https://github.com/Tyrrrz/DiscordChatExporter/archive/refs/tags/2.42.8.tar.gz
+	depends = gcc-libs
+	depends = glibc
+	depends = sh
+	source = discord-chat-exporter-cli-2.43.tar.gz::https://github.com/Tyrrrz/DiscordChatExporter/archive/refs/tags/2.43.tar.gz
 	source = discord-chat-exporter-cli
-	b2sums = a310520df0785aae70ed95ffc97df3539d6a0d48e0f5abab3e606461ed375043b0248f86b6025a94c4f244edadbca34252a0fb340b17bb736c495167a33e385a
+	b2sums = 8efbf68a20cc0115872a944f95482ca3bcc84532944ff8d24d9e5fc28be575ea6e5a657d1dc5021fa84225f5610a189803666a4299043eb7c7e1214a0f0912ce
 	b2sums = 7540fb95f81c1041c87778c590a9438ffb64bf417c3d4d3f1363da5a25898c98f9dcd1209b9237bd595374a33326b7f23043bd6156cc7e14f0bff230ee0f6de6
 
 pkgname = discord-chat-exporter-cli
