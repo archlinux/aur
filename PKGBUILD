@@ -1,6 +1,7 @@
-# Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
+# Maintainer:
+# Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 # Contributor: Bader <Bad3r@pm.me>
-# Acknowledgment: @pychuang (logseq-desktop-git) 
+# Contributor: @pychuang (logseq-desktop-git)
 
 # avoid cluttering user home, while allowing data to be cached
 export HOME="$SRCDEST/node-home"
@@ -11,34 +12,76 @@ export XDG_DATA_HOME="$HoME/.local/share"
 # basic info
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
-pkgver=0.10.8
+pkgver=0.10.9
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
-arch=("x86_64")
+arch=('x86_64')
 
+depends=(
+  dbus
+  expat
+  glib2
+  nspr
+  nss
+)
 makedepends=(
-    "clojure"
-    "gendesk"
-    "git"
-    "nodejs"
-    "npm"
-    "yarn"
+  clojure
+  git
+  nodejs
+  npm
+  python-setuptools
+  yarn
 )
 
 install="$pkgname.install"
 
 _pkgsrc="logseq-${pkgver}"
+_pkgext="tar.gz"
 source=(
-    "$_pkgname-${pkgver}.zip"::"$url/archive/refs/tags/${pkgver}.zip"
+  "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/${pkgver}.$_pkgext"
 )
 sha256sums=(
-    'dc073808efd22939d9ab51544f24f252f970daf208c7acf270fde0302db5921c'
+  '9fe98bbeb4355c1ad3ea5b3776f02455ee86b8157f74dd53bb9b3367df31403a'
 )
 
 prepare() {
-    cat <<'EOF' > "$_pkgname.sh"
+  cd "$_pkgsrc"
+
+  # download required js modules
+  yarn install
+
+  # create and sync files to folder `static`
+  yarn gulp:build
+
+  # go to folder `static` and download required js modules in static
+  cd "static"
+  yarn install
+
+  # go back to the top-level folder and download clojure dependencies
+  cd "${srcdir}/$_pkgsrc"
+  clojure -P -M:cljs
+}
+
+build() {
+  cd "$_pkgsrc"
+
+  # build
+  yarn cljs:release
+
+  # packaging javescript files to an executable
+  cd "static"
+  yarn electron-forge package
+}
+
+package() {
+  # copy files
+  install -dm755 "$pkgdir/opt/$_pkgname"
+  cp --reflink=auto -a -r -u "$_pkgsrc/static/out/Logseq-linux-x64"/* "$pkgdir/opt/$_pkgname"
+
+  # executable
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/logseq" << 'EOF'
 #!/usr/bin/env sh
 set -e
 
@@ -57,67 +100,21 @@ else
 fi
 EOF
 
-    local _gendesk_options=(
-        -q -f -n
-        --pkgname="$_pkgname"
-        --pkgdesc="$pkgdesc"
-        --name="Logseq"
-        --exec="logseq %u"
-        --icon="logseq"
-        --terminal=false
-        --categories="Office"
-        --mimetypes="x-scheme-handler/logseq"
-        --startupnotify=true
-        --custom="StartupWMClass=Logseq"
-    )
-    gendesk "${_gendesk_options[@]}"
+  # copy xdg desktop files
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=Logseq
+Comment=Privacy-first, open-source platform for knowledge sharing and management
+Exec=logseq %u
+Icon=logseq
+Terminal=false
+StartupNotify=true
+Categories=Office;
+MimeType=x-scheme-handler/logseq;
+StartupWMClass=Logseq
+END
 
-    cd "$_pkgsrc"
-
-    # download required js modules
-    yarn install
-
-    # create and sync files to folder `static`
-    yarn gulp:build
-
-    # go to folder `static` and download required js modules in static
-    cd "static"
-    yarn install
-
-    # go back to the top-level folder and download clojure dependencies
-    cd "${srcdir}/$_pkgsrc"
-    clojure -P -M:cljs
-}
-
-build() {
-    cd "$_pkgsrc"
-
-    # build
-    yarn cljs:release
-
-    # packaging javescript files to an executable
-    cd "static"
-    yarn electron-forge package
-}
-
-package() {
-    # create destination folder and copy files
-    install -dm755 "$pkgdir/opt/$_pkgname"
-    cp --reflink=auto -a -r -u --verbose "$_pkgsrc/static/out/Logseq-linux-x64"/* "$pkgdir/opt/$_pkgname"
-
-    # User flag aware launcher
-    install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/logseq"
-
-    # create license folder and make soft links to actual license
-    install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
-    ln -s "/opt/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-    ln -s "/opt/$_pkgname/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/"
-
-    # install readme and additional license file (the top-level AGPL3)
-    install -Dm644 "$_pkgsrc/README.md" -t "$pkgdir/usr/share/doc/$pkgname/"
-    install -Dm644 "$_pkgsrc/LICENSE.md" -t "$pkgdir/usr/share/licenses/$pkgname/"
-
-    # copy xdg desktop files
-    install -dm755 "$pkgdir/usr/share/applications"
-    install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
+  # permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
