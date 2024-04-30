@@ -1,7 +1,7 @@
 pkgbase = llamafile-bin
 	pkgdesc = Distribute and run LLMs with a single file.
 	pkgver = 0.8.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Mozilla-Ocho/llamafile
 	arch = x86_64
 	license = Apache-2.0
@@ -18,6 +18,7 @@ pkgbase = llamafile-bin
 	provides = llamafile-imatrix
 	provides = llamafile-quantize
 	provides = llamafile-perplexity
+	provides = zipalign
 	conflicts = llamafile-git
 	options = !strip
 	source = llamafile-bin::https://github.com/Mozilla-Ocho/llamafile/releases/download/0.8.1/llamafile-0.8.1.zip
