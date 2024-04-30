@@ -3,7 +3,7 @@
 pkgname=python-tableone
 _name=${pkgname#python-}
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create \"Table 1\" for research papers in Python"
 arch=('any')
 url="https://pypi.org/project/${_name}"
