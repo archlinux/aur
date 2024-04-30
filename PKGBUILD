@@ -4,7 +4,7 @@
 pkgname=piper-zhfix
 _pkgname=piper
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK application to configure gaming mice (zhfix fork)'
 arch=('any')
 url='https://github.com/detiam/piper-zhfix'

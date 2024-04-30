@@ -1,7 +1,7 @@
 pkgbase = piper-zhfix
 	pkgdesc = GTK application to configure gaming mice (zhfix fork)
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/detiam/piper-zhfix
 	arch = any
 	license = GPL
