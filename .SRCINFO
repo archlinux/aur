@@ -1,7 +1,7 @@
 pkgbase = tclx
 	pkgdesc = Provides OS primitives, file scanning, data records etc. for Tcl
 	pkgver = 8.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flightaware/tclx
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tclx
 	depends = tcl=8.6.14
 	depends = tk
 	depends = libtirpc
-	source = https://github.com/flightaware/tclx/archive/refs/tags/v8.6.3.tar.gz
+	source = tclx-v8.6.3.tar.gz::https://github.com/flightaware/tclx/archive/refs/tags/v8.6.3.tar.gz
 	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.14-src.tar.gz
 	source = interperrorline.patch
 	md5sums = 797dfa26789356e0d2010ea869889fe0
