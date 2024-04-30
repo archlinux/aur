@@ -1,16 +1,59 @@
-# Maintainer: Safwan Ljd <eljadisafwan@gmail.com>
-
+# Maintainer: Marcelo Hernandez <marcelohdez.inq at gmail dot com>
+# PKGBUILD heavily inspired by swww's: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=swww
 pkgname=dim-screen
-pkgver=1.0
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="A screen dimmer bash script designed to work with xss-lock"
-arch=("any")
-url="https://github.com/SafwanLjd/dim-screen"
-license=("GPL3")
-depends=("xorg-xbacklight")
-source=("https://github.com/SafwanLjd/dim-screen/releases/download/$pkgver/$pkgname.tar.gz")
-sha1sums=("652a7466db1f58b0338d1e9226eb4e535d1bb8d9")
+pkgdesc="Native Wayland screen dimming tool"
+url="https://github.com/marcelohdez/dim"
+arch=(x86_64 aarch64)
+license=('GPL-3.0-only')
+depends=(
+	'gcc-libs'
+	'glibc'
+	'libxkbcommon'
+)
+makedepends=(
+	'cargo'
+)
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+sha256sums=('a9d0ff0487fe6fed3a40524af3914a57abd3aef69b2d9234d65557c1a7d8da37')
+
+_archive="$pkgname-$pkgver"
+_binname="dim"
+
+prepare() {
+	cd "$_archive"
+
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+	cd "$_archive"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
+}
+
+check() {
+	cd "$_archive"
+
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features
+}
 
 package() {
-  install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	cd "$_archive"
+
+	# install binary
+	BINDIR='target/release'
+	install -Dm755 "$BINDIR/$_binname" "$pkgdir/usr/bin/$_binname"
+
+	# install completion files
+	OUTDIR="$(ls -t "$BINDIR/build/" | grep "$pkgname" | head -1)"
+	COMPDIR="$BINDIR/build/$OUTDIR/out"
+
+	install -Dm644 "$COMPDIR/$_binname.bash" "$pkgdir/usr/share/bash-completion/completions/$_binname"
+	install -Dm644 "$COMPDIR/_$_binname" "$pkgdir/usr/share/zsh/site-functions/_$_binname"
 }
