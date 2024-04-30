@@ -1,19 +1,21 @@
-# Maintainer: Tun Win Naing <twnaing(at)outlook(dot)com>
-# Maintainer: Jonathan Liu <net147@gmail.com>
+# Maintainer: qwjyh <urataw421 at gmail dot com>
+# Contributor: Tun Win Naing <twnaing(at)outlook(dot)com>
+# Contributor: Jonathan Liu <net147@gmail.com>
+
 pkgname=softethervpn
-pkgver=v4.38_9760
-pkgrel=2
+pkgver=v4.42_9798
+pkgrel=1
 pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://www.softether.org/"
 license=('Apache')
 depends=('bash' 'openssl' 'zlib')
-source=("https://www.softether-download.com/files/softether/${pkgver//_/-}-rtm-2021.08.17-tree/Source_Code/softether-src-${pkgver//_/-}-rtm.tar.gz"
+source=("https://www.softether-download.com/files/softether/${pkgver//_/-}-rtm-2023.06.30-tree/Source_Code/softether-src-${pkgver//_/-}-rtm.tar.gz"
         'aarch64.patch'
         'softethervpn-bridge.service'
         'softethervpn-client.service'
         'softethervpn-server.service')
-md5sums=('8df486ba22fdb14212c453c7211587a8' 
+md5sums=('bd70e9ae9a19c3f227c26d731503cc7f'
          '8b92f69f9d8d852a3739d0e48bad0454'
          '1d54c0065ae8947bd8455b9e2050c1af'
          'a1134fea991e6e00dc4910b1be16dc73'
