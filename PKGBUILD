@@ -2,7 +2,7 @@
 
 pkgname="lenovo-legion-electric-ray-git"
 _pkgname="electric-ray"
-pkgver=r31.88898be
+pkgver=r32.c10ac91
 pkgrel=1
 pkgdesc="Lenovo Legion 'Rapid charge' & 'Conservation'."
 arch=("x86_64")
