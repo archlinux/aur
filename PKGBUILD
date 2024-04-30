@@ -3,7 +3,7 @@
 pkgname=python-objprint
 _pkgname=objprint
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A library that can print Python objects in human readable format.'
 arch=('x86_64')
 url="https://github.com/gaogaotiantian/objprint"
@@ -15,7 +15,6 @@ makedepends=(
   'python-installer'
 )
 checkdepends=(
-  python-pytest
   python-setuptools
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/gaogaotiantian/${_pkgname}/archive/${pkgver}.tar.gz")
@@ -30,7 +29,7 @@ build() {
 check() {
   cd "$srcdir/$_pkgname-$pkgver" || exit
 
-  pytest -vv
+  python -m unittest
 }
 
 package() {

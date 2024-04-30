@@ -1,11 +1,10 @@
 pkgbase = python-objprint
 	pkgdesc = A library that can print Python objects in human readable format.
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gaogaotiantian/objprint
 	arch = x86_64
 	license = Apache-2.0
-	checkdepends = python-pytest
 	checkdepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-build
