@@ -19,10 +19,12 @@ prepare() {
   ./"${pkgname%-bin}-$pkgver.AppImage" --appimage-extract
 
   # Correct path for .desktop file
-  sed -i 's|Exec=AppRun|Exec=clipto|g' "squashfs-root/${pkgname%-bin}.desktop"
+  desktop-file-edit --set-key=Exec --set-value="${pkgname%-bin}" \
+    "squashfs-root/${pkgname%-bin}.desktop"
 
   # Remove X-AppImage-Version
-  sed -i '/AppImage/d' "squashfs-root/${pkgname%-bin}.desktop"
+  desktop-file-edit --remove-category=X-AppImage-Version \
+    "squashfs-root/${pkgname%-bin}.desktop"
 
   # Remove invalid symlink
   rm squashfs-root/clipto.png
