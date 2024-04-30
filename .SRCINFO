@@ -1,0 +1,19 @@
+pkgbase = jkbd
+	pkgdesc = Joystick to Keyboard service. Converts joysticks into a keyboard device.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/hhd-dev/jkbd
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-evdev
+	depends = python-rich
+	source = git+https://github.com/hhd-dev/jkbd.git#tag=v0.0.1
+	sha512sums = ffc76304b8da25b8e998b096a29aa03d11f924e22251251868db810f68d5d6b93897148da32bb394cfa6929e83172ea1e01fc04e589ded15bfe40fc427c0a735
+
+pkgname = jkbd
