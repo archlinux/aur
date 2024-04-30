@@ -1,7 +1,7 @@
 # Maintainer: sommerfeld <sommerfeld@sommerfeld.dev>
 
 pkgname=sentrum
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Daemon that monitors watch-only bitcoin wallets"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d202844757054d2880afb230372a940743bbab9cb616552de4fd27b3e281f4c8')
+sha256sums=('f47399dceff58d891a9b914649afae37b7709464b10fb15766125eac478ec68d')
 backup=("etc/$pkgname/$pkgname.toml")
 options=('!lto')
 
