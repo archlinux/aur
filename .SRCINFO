@@ -1,0 +1,19 @@
+pkgbase = microsoft-openjdk-21-bin
+	pkgdesc = Microsoft build of OpenJDK
+	pkgver = 21.0.3
+	pkgrel = 1
+	url = https://www.microsoft.com/openjdk
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-runtime-headless=21
+	provides = java-runtime=21
+	provides = java-environment=21
+	source = https://aka.ms/download-jdk/microsoft-jdk-21.0.3-linux-x64.tar.gz
+	source = https://aka.ms/download-jdk/microsoft-jdk-21.0.3-linux-x64.tar.gz.sig
+	validpgpkeys = B602433384B8991302924D8235531D315B21C189
+	sha256sums = b535a58db80aeb5cc0d5e85ae6cb3f621d7f269ca1b36832f1aed3842cede4f4
+	sha256sums = SKIP
+
+pkgname = microsoft-openjdk-21-bin
