@@ -2,27 +2,24 @@
 # Maintainer: SeriousM4x <maxi at quoss dot org>
 
 pkgname='upsnap-bin'
-pkgver=4.2.8
+pkgver=4.2.9
 pkgrel=1
 pkgdesc='A simple wake on lan web app written with SvelteKit, Go and PocketBase.'
 url='https://github.com/seriousm4x/UpSnap'
-arch=('aarch64' 'armv6h' 'armv7h' 'x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 license=('MIT')
 provides=('UpSnap')
 conflicts=('UpSnap')
 optdepends=('nmap: to scan for network devices')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.2.8/UpSnap_4.2.8_linux_arm64.zip")
-sha256sums_aarch64=('ec3a3d704af616dd1601af546578ada05272f23f7a12c8c3ca74405251c2e6b9')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.2.9/UpSnap_4.2.9_linux_arm64.zip")
+sha256sums_aarch64=('4d15304c3aa8f0c63a9ac892f363b49e46e93ee7a01cd3ca420c9eac5d14e4c8')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.2.8/UpSnap_4.2.8_linux_armv6.zip")
-sha256sums_armv6h=('540f25ef17f91a64079727ec9ad39caa272447c7544ff12821e6ca8b76023b2b')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.2.9/UpSnap_4.2.9_linux_armv7.zip")
+sha256sums_armv7h=('73aa5b61a85a451896ee00b25c2951453cecb956286245627227925abe75b075')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.2.8/UpSnap_4.2.8_linux_armv7.zip")
-sha256sums_armv7h=('e52458a9cc9b02b32ab898f6a0fef8a1e7f56cb986a79c9817e987e1aa6f96af')
-
-source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.2.8/UpSnap_4.2.8_linux_amd64.zip")
-sha256sums_x86_64=('9f6e0f224c3d8d04d931787d244731a5380b83ad31efc1bd0c481ed938cad0c2')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.2.9/UpSnap_4.2.9_linux_amd64.zip")
+sha256sums_x86_64=('7c8b4bf23fe2ae9709c9c4f7a70d497341d1c8cb21f0cf290eb36c2e0502df43')
 
 package() {
   install -Dm755 "./upsnap" "${pkgdir}/usr/bin/upsnap"
