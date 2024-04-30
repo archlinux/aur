@@ -1,6 +1,6 @@
 # Maintainer: Totor <totor.linuxdev@gmail.com>
 pkgname='zz'
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="AUR Helper Helper"
 arch=('x86_64')
