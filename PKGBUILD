@@ -22,6 +22,7 @@ build() {
 package() {
     cd "$upstream_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 -t "$pkgdir/usr/share/man/man1/"  man/dr14_tmeter.1
 }
 
 sha256sums=('73cc55af09879ecc92f911efa25988edfc9de7520efca438e192efd69c5a6372')
