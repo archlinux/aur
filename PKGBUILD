@@ -4,11 +4,11 @@ _pkgname=GNOSIS
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Genomics explorer using statistical and survival analysis in R"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-car
   r-cbioportaldata
@@ -43,11 +43,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('e3cbf07a76da1ae0aa6e669bad2cb778')
-sha256sums=('ae75596cfc64be63f8c782b447c35bd8d1977c646374c861a4e32d65ff8c6037')
+b2sums=('ed6d96c126542747ff9043200f89210af405e0dd397313e1d35be0d592be5fe0c1220403f78858367556dc783404282cc73cdfb6f25baad7c28b6898c3d0ceea')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
