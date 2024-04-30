@@ -2,11 +2,11 @@
 
 _pkgname=oversteer
 pkgname=${_pkgname}-git
-pkgver=0.8.1.r10.g1e2dac2
+pkgver=0.8.2.r0.g4c7062e
 pkgrel=1
 pkgdesc='Graphical application to configure Logitech Wheels'
 arch=(any)
-url=https://github.com/berarma/oversteer
+url=https://github.com/berarma/${_pkgname}
 license=(GPL3)
 depends=(
   appstream-glib
@@ -18,8 +18,8 @@ depends=(
   python-gobject
   python-matplotlib
   python-pyudev
-  python-scipy
   python-pyxdg
+  python-scipy
 )
 makedepends=(
   git
@@ -27,12 +27,17 @@ makedepends=(
 )
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=(git+https://github.com/berarma/${_pkgname}.git)
-sha256sums=(SKIP)
+source=(${_pkgname}::git+${url}.git#branch=v0.8.x)
+b2sums=(SKIP)
 
 pkgver() {
   cd ${_pkgname}
-  git describe --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd ${_pkgname}
+  sed -i "s|version: '0.8.1',|version: '0.8.2',|g" meson.build
 }
 
 build() {
