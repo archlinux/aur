@@ -1,10 +1,10 @@
 pkgbase = firefox-extension-plasma-integration
 	pkgdesc = KDE plasma browser integration extension for firefox
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Plasma/Browser_Integration
 	arch = any
-	license = GPL-3.0-or-later
+	license = CC0-1.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT
 	makedepends = web-ext
 	makedepends = jq
 	source = https://invent.kde.org/plasma/plasma-browser-integration/-/archive/browser/1.9/plasma-browser-integration-browser-1.9.tar.gz
