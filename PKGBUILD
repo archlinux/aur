@@ -3,7 +3,7 @@
 pkgname=python-objprint
 _pkgname=objprint
 pkgver=0.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A library that can print Python objects in human readable format.'
 arch=('x86_64')
 url="https://github.com/gaogaotiantian/objprint"
@@ -29,7 +29,7 @@ build() {
 check() {
   cd "$srcdir/$_pkgname-$pkgver" || exit
 
-  python -m unittest
+  PYTHONPATH="$PWD/src:$PYTHONPATH" python -m unittest
 }
 
 package() {
