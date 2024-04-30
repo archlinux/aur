@@ -1,11 +1,12 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Haoyang Liu <tttturtleruss@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Torsten Wagner <tottiwagner@yahoo.de>
 
 pkgname=openscad-git
 _pkg="${pkgname%-git}"
-pkgver=2019.05.r2660.gab30ab63b
-pkgrel=2
+pkgver=r11045.9718493
+pkgrel=1
 pkgdesc="The programmers solid 3D CAD modeller"
 arch=('x86_64')
 license=('GPL2')
@@ -14,21 +15,32 @@ provides=("$_pkg")
 conflicts=("$_pkg")
 depends=(
 	'boost-libs'
-	'cgal'
+    'cgal'
 	'libzip'
 	'opencsg'
 	'qscintilla-qt5'
 	'qt5-base'
+    'qt5-svg'
 	'qt5-gamepad'
 	'qt5-multimedia'
-	'qt5-svg'
-	'tbb')
+    'double-conversion'
+    'freetype2'
+    'glib2'
+    'harfbuzz'
+    'fontconfig'
+    'opencsg'
+    'gmp'
+    'mpfr'
+	'tbb'
+)
 makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'python')
 source=("$_pkg::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-	git -C "$_pkg" describe --long --tags | sed 's/^openscad-//;s/-/.r/;s/-/./'
+	# git -C "$_pkg" describe --long --tags | sed 's/^openscad-//;s/-/.r/;s/-/./'
+    cd "$_pkg"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -49,6 +61,12 @@ build() {
 	cmake --build build
 	cd "$_pkg/resources/icons/"
 	convert openscad.png -resize 128x128\> openscad-128.png
+}
+
+check() {
+    cd "$_pkg/scripts"
+    echo $PWD
+    ./check-dependencies.sh
 }
 
 package() {
