@@ -1,8 +1,9 @@
-# Maintainer: Jonas Witschel <diabonas@archlinux.org>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: Jonas Witschel <diabonas@archlinux.org>
+
 pkgname=weechat-matrix
 pkgver=0.3.0
-_tag=ebf792a233a50d639b13e5f7c9a1c1fe988e7476 # git rev-parse "$pkgver"
-pkgrel=11
+pkgrel=12
 pkgdesc='WeeChat Matrix protocol script written in Python'
 arch=('any')
 url='https://github.com/poljar/weechat-matrix'
@@ -16,11 +17,9 @@ optdepends=('python-aiohttp: matrix_sso_helper support'
             'python-requests: matrix_decrypt and matrix_upload support'
             'xdg-utils: default plumber for matrix_decrypt')
 install='weechat-matrix.install'
-source=(
-  "git+$url.git?signed#tag=$_tag"
-  0001-Switch-to-correct-build-system-definition.patch
-  0002-Fix-compatibility-with-matrix-nio-0.21.patch
-)
+source=("git+$url.git?signed#tag=$pkgver"
+        0001-Switch-to-correct-build-system-definition.patch
+        0002-Fix-compatibility-with-matrix-nio-0.21.patch)
 sha512sums=('SKIP'
             '65be133214b4497fead85e718d3dc57502063f4411c759d878e7132b2cb49befe5515714edda188169710c246537d893611aa8ef6faeaeab23762302e6e783b6'
             '026781b26839373e749b6e4e035a669ac73a996dfbbd392ff710a436b4133c987e5142a898b481b7e33b473eba225826fe9c55e93717afc0153c98c1ef08ad5e')
@@ -28,7 +27,7 @@ validpgpkeys=('689A3B5BC6560AB4C99A2A0581314DA807EF4E22') # Damir Jelić (poljar
 
 pkgver() {
 	cd "$pkgname"
-	git describe | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+	printf "%s" "$(git describe | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
