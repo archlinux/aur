@@ -33,8 +33,8 @@ package() {
     install -Dm644 "${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 
     cd "${_pkgname}"
-    install -Dm644 LICENSE               "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    install -Dm644 README.md             "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+    install -Dm644 LICENSE                "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 README.md              "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 
     rm -rf .dockerignore docker runtime windows.* gg.sh LICENSE README.md
     find . \( -iname ".git*" -o -iname "README.md" \) | sort | while read line; do rm -rf "$line"; done
