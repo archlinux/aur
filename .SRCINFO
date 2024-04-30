@@ -9,7 +9,7 @@ pkgbase = akuse-git
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = git
-	depends = electron25-bin
+	depends = electron25
 	provides = akuse=0.7.2
 	conflicts = akuse
 	source = akuse.git::git+https://github.com/akuse-app/Akuse.git
