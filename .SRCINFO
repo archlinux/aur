@@ -1,0 +1,27 @@
+pkgbase = iyuuplus-git
+	pkgdesc = IYUU Auto Reseed Plus
+	pkgver = 20240430.091840
+	pkgrel = 1
+	url = https://github.com/ledccn/iyuuplus-dev
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = composer
+	depends = mariadb
+	depends = php-fpm
+	depends = php-gd
+	depends = php-sodium
+	provides = iyuuplus
+	conflicts = iyuuplus
+	options = !strip
+	options = !debug
+	source = iyuuplus::git+https://github.com/ledccn/iyuuplus-dev.git
+	source = iyuuplus.service
+	source = iyuuplus.sysusers
+	source = iyuuplus.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 583af3140d9ac207b8d0151063f0e8ee4f45ad0ba86be5b4fc9ec0428364e988
+	sha256sums = e64af1d0d088fa30e864897a43597026ee95f5e2590e79ac4055786795c60622
+	sha256sums = 4c0928194248ce56deab7a1eeec78d4a3827d7e8fbceba142b46d4f9c8eed387
+
+pkgname = iyuuplus-git
