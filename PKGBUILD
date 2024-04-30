@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Tool to administer wireguard VPN (server and user configs)'
 _gitname='wg_tool'
 
-pkgver=6.7.6
+pkgver=6.7.7
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
