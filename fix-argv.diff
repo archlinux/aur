@@ -1,8 +1,8 @@
 diff --git a/apps/studio/src/common/platform_info.ts b/apps/studio/src/common/platform_info.ts
-index 4f7471d6..ca2ff97f 100644
+index 9665932f..e37dd4e4 100644
 --- a/apps/studio/src/common/platform_info.ts
 +++ b/apps/studio/src/common/platform_info.ts
-@@ -50,7 +50,15 @@ if (p.env.PORTABLE_EXECUTABLE_DIR) {
+@@ -51,7 +51,15 @@ if (p.env.PORTABLE_EXECUTABLE_DIR) {
  
  const sessionType = p.env.XDG_SESSION_TYPE
  
