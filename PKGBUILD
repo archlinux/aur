@@ -1,7 +1,7 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=qemu-debootstrap
-pkgver=5.2
+pkgver=9.0
 pkgrel=1
 pkgdesc='QEMU debootstrap wrapper'
 arch=('any')
@@ -12,7 +12,7 @@ source=(
 'https://salsa.debian.org/qemu-team/qemu/-/raw/master/debian/qemu-debootstrap'
 'https://salsa.debian.org/qemu-team/qemu/-/raw/master/debian/qemu-debootstrap.1'
 )
-sha1sums=('2eef819f34f609f59e0c754ca698369e6ad82fda'
+sha1sums=('ce037cdaec9bef0daefa9a9b91b3d59cda57dbef'
           '8f4b540c52db9f2753dd1ef62507497f5f844027')
 
 package() {
