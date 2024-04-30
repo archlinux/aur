@@ -1,11 +1,11 @@
 # Maintainer: Alex Palaistras <alex+archlinux@deuill.org>
 _pkgname=bandcamp_tagplayer
 pkgname=python-bandcamp-tagplayer-git
-pkgver=r113.4bcb4fd
+pkgver=r114.39c969c
 pkgrel=1
 arch=("any")
 pkgdesc="Autoloads an MPD playlist with a Bandcamp genre or user library"
-url="https://github.com/deuill/bandcamp_tagplayer"
+url="https://github.com/greggparrish/bandcamp_tagplayer"
 license=("Unlicense")
 depends=(
     'python'
@@ -37,7 +37,7 @@ makedepends=(
     'python-wheel'
     'python-setuptools'
 )
-source=("$_pkgname::git+https://github.com/deuill/bandcamp_tagplayer")
+source=("$_pkgname::git+https://github.com/greggparrish/bandcamp_tagplayer")
 sha256sums=('SKIP')
 
 pkgver() {
