@@ -1,15 +1,25 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Dmitry Kharitonov <darksab0r@gmail.com>
 # Contributor: Dave Blair <mail@dave-blair.de>
-pkgname=('autokey-common' 'autokey-gtk' 'autokey-qt')
+pkgname=(
+  'autokey-common'
+  'autokey-gtk'
+  'autokey-qt'
+)
 pkgbase=autokey
 pkgver=0.96.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A desktop automation utility for Linux and X11"
 arch=('any')
 url="https://github.com/autokey/autokey"
 license=('GPL-3.0-or-later')
-makedepends=('python-build' 'python-installer' 'python-pyqt5' 'python-setuptools' 'python-wheel')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-pyqt5'
+  'python-setuptools'
+  'python-wheel'
+)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/autokey/autokey/archive/v$pkgver.tar.gz")
 sha256sums=('40341fc4cd9703a34264e9191b5938fc7ed5a6f357992d91e492975d89933acd')
 
@@ -27,8 +37,16 @@ build() {
 
 package_autokey-common() {
   pkgdesc+=" - common data"
-  depends=('python-pyinotify' 'python-xlib' 'python-dbus' 'wmctrl'
-           'gtk-update-icon-cache' 'xautomation' 'imagemagick' 'xorg-xwd')
+  depends=(
+    'dbus-python'
+    'imagemagick'
+    'python-packaging'
+    'python-pyinotify'
+    'python-xlib'
+    'wmctrl'
+    'xautomation'
+    'xorg-xwd'
+  )
   provides=("$pkgbase")
   conflicts=("$pkgbase")
 
@@ -41,13 +59,26 @@ package_autokey-common() {
   rm -f "${pkgdir}${site_packages}/$pkgbase/"{gtkapp.py,qtapp.py}
   rm -f "$pkgdir/usr/share/man/man1/$pkgbase"{-gtk*,-qt*}
   rm -rf "${pkgdir}${site_packages}/$pkgbase/"{gtkui,qtui}
+  rm -f "${pkgdir}${site_packages}/$pkgbase/"scripting/*{_qt,_gtk}.py
+  rm -f "${pkgdir}${site_packages}/$pkgbase/"__pycache__/{gtk,qt}app.*
   rm -rf "$pkgdir/usr/share/applications"
+
+  # Manually compile Python bytecode for only installed files
+  rm -rf "${pkgdir}${site_packages}/$pkgbase"/{__pycache__,*/__pycache__}
+  python -m compileall -d /usr/share "${pkgdir}${site_packages}/$pkgbase"
+  python -O -m compileall -d /usr/share "${pkgdir}${site_packages}/$pkgbase"
 }
 
 package_autokey-gtk() {
   pkgdesc+=" - GTK frontend"
-  depends=('autokey-common' 'python-gobject' 'gtksourceview3' 'libappindicator-gtk3'
-           'libnotify' 'zenity')
+  depends=(
+    'autokey-common'
+    'gtksourceview3'
+    'libayatana-appindicator'
+    'libnotify'
+    'python-gobject'
+    'zenity'
+  )
   optdepends=('python-atspi')
 
   cd "$pkgbase-$pkgver"
@@ -57,20 +88,28 @@ package_autokey-gtk() {
 
   rm -f "$pkgdir/usr/bin/$pkgbase"{-qt,-run,-shell}
   rm -f "${pkgdir}${site_packages}/$pkgbase/"{UI_common_functions,argument_parser,common,dbus_service,interface,logger,macro,monitor,service,__init__,qtapp}.py
-  rm -f "${pkgdir}${site_packages}/$pkgbase/"{iomediator,model}/*.py
+  rm -rf "${pkgdir}${site_packages}/$pkgbase/"{configmanager,iomediator,model,qtui}
   rm -f "$pkgdir/usr/share/applications/$pkgbase-qt.desktop"
   rm -f "$pkgdir/usr/share/man/man1/$pkgbase"{-qt*,-run*}
-  rm -f "${pkgdir}${site_packages}/$pkgbase/scripting/"*_qt.py
-  rm -rf "${pkgdir}${site_packages}/$pkgbase/"{configmanager,qtui,scripting}
-  rm -rf "${pkgdir}${site_packages}/$pkgbase/__pycache__"
-  rm -rf "${pkgdir}${site_packages}/$pkgbase/"{iomediator,model}/__pycache__
+  rm -f "${pkgdir}${site_packages}/$pkgbase/scripting/"{*_qt,common,engine,highlevel,__init__,keyboard,mouse,system,window}.py
   rm -rf "${pkgdir}${site_packages}/$pkgbase-$pkgver.dist-info"
   rm -rf "$pkgdir/usr/share/icons"
+
+  # Manually compile Python bytecode for only installed files
+  rm -rf "${pkgdir}${site_packages}/$pkgbase"/{__pycache__,*/__pycache__}
+  python -m compileall -d /usr/share "${pkgdir}${site_packages}/$pkgbase"
+  python -O -m compileall -d /usr/share "${pkgdir}${site_packages}/$pkgbase"
 }
 
 package_autokey-qt() {
   pkgdesc+=" - Qt frontend"
-  depends=('autokey-common' 'python-pyqt5' 'python-qscintilla-qt5' 'qt5-svg' 'kdialog')
+  depends=(
+    'autokey-common'
+    'kdialog'
+    'python-pyqt5'
+    'python-qscintilla-qt5'
+    'qt5-svg'
+  )
   optdepends=('qt-at-spi')
 
   cd "$pkgbase-$pkgver"
@@ -80,13 +119,15 @@ package_autokey-qt() {
 
   rm -f "$pkgdir/usr/bin/$pkgbase"{-gtk,-run,-shell}
   rm -f "${pkgdir}${site_packages}/$pkgbase/"{UI_common_functions,argument_parser,common,dbus_service,interface,logger,macro,monitor,service,__init__,gtkapp}.py
-  rm -f "${pkgdir}${site_packages}/$pkgbase/"{iomediator,model}/*.py
+  rm -rf "${pkgdir}${site_packages}/$pkgbase/"{configmanager,gtkui,iomediator,model}
   rm -f "$pkgdir/usr/share/applications/$pkgbase-gtk.desktop"
   rm -f "$pkgdir/usr/share/man/man1/$pkgbase"{-gtk*,-run*}
-  rm -f "${pkgdir}${site_packages}/$pkgbase/scripting/"*_gtk.py
-  rm -rf "${pkgdir}${site_packages}/$pkgbase/"{configmanager,gtkui,scripting}
-  rm -rf "${pkgdir}${site_packages}/$pkgbase/__pycache__"
-  rm -rf "${pkgdir}${site_packages}/$pkgbase/"{iomediator,model}/__pycache__
+  rm -f "${pkgdir}${site_packages}/$pkgbase/scripting/"{*_gtk,common,engine,highlevel,__init__,keyboard,mouse,system,window}.py
   rm -rf "${pkgdir}${site_packages}/$pkgbase-$pkgver.dist-info"
   rm -rf "$pkgdir/usr/share/icons"
+
+  # Manually compile Python bytecode for only installed files
+  rm -rf "${pkgdir}${site_packages}/$pkgbase"/{__pycache__,*/__pycache__}
+  python -m compileall -d /usr/share "${pkgdir}${site_packages}/$pkgbase"
+  python -O -m compileall -d /usr/share "${pkgdir}${site_packages}/$pkgbase"
 }
