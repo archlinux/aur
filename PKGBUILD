@@ -2,7 +2,7 @@
 
 pkgname=drawbot-skia
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python package implementing a subset of the DrawBot API using Skia as a backend'
 arch=(any)
 url="https://github.com/justvanrossum/$pkgname"
@@ -36,8 +36,11 @@ build() {
 check() {
 	cd "$_archive"
 	export PYTHONPATH="$PWD/build/lib"
-	pytest tests \
-		-k 'not test_saveImage_mp4_codec and not test_runner_app'
+	local deselected=(
+		test_saveImage_mp4_codec
+		test_runner_app
+	)
+	pytest tests ${deselected[@]/#/--deselect }
 }
 
 package() {

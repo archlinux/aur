@@ -1,7 +1,7 @@
 pkgbase = drawbot-skia
 	pkgdesc = A Python package implementing a subset of the DrawBot API using Skia as a backend
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/justvanrossum/drawbot-skia
 	arch = any
 	license = MIT
