@@ -1,10 +1,10 @@
 # Maintainer: lafleur <lafleur at boum dot org>
 pkgname=conduit-bin
 _pkgname=${pkgname/-bin/}
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="stable, pre-compiled versions of the Conduit server (Matrix protocol)"
-arch=('x86_64' 'aarch64' 'armv7h')
+pkgdesc="stable, binary, static versions of the Conduit server (Matrix protocol)"
+arch=('x86_64' 'aarch64')
 url="https://conduit.rs"
 license=('Apache-2.0')
 provides=("${_pkgname}")
@@ -17,9 +17,8 @@ source=(
   'tmpfiles.conf'
   'sysusers.conf'
 )
-source_x86_64=("${_pkgname}::https://gitlab.com/famedly/conduit/-/jobs/artifacts/master/raw/build-output/linux_amd64/${_pkgname}?job=docker:master")
-source_aarch64=("${_pkgname}::https://gitlab.com/famedly/conduit/-/jobs/artifacts/master/raw/build-output/linux_arm64/${_pkgname}?job=docker:master")
-source_armv7h=("${_pkgname}::https://gitlab.com/famedly/conduit/-/jobs/artifacts/master/raw/build-output/linux_arm_v7/${_pkgname}?job=docker:master")
+source_x86_64=("${_pkgname}::https://gitlab.com/api/v4/projects/famedly%2Fconduit/jobs/artifacts/master/raw/x86_64-unknown-linux-musl?job=artifacts")
+source_aarch64=("${_pkgname}::https://gitlab.com/api/v4/projects/famedly%2Fconduit/jobs/artifacts/master/raw/aarch64-unknown-linux-musl?job=artifacts")
 
 package() {
   install -vDm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
@@ -29,10 +28,9 @@ package() {
   install -vDm644 tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 }
 
-sha256sums=('31214654367ca03c0e2b6cd615b6f8febfae249a6771f956b2a0996a11b6b98f'
+sha256sums=('27f0b70dd359ce09372484fd2f511877e198c134a620e801025095510b8a46a9'
             '1c5f53cc49bae88b80281ab6edcf08e18430e5db668eaa186b8be4928f850594'
             '4316952810a2295b81d7faf3e28c371dd63629671c4b7e3c39bfbae5ab9e2db6'
             '0f454a2a5af857fe978e2276798fb357b4578c6ee705664a794426c8b7576a4c')
 sha256sums_x86_64=('eb085e2a43e9225da1fafe01956b361a48b48a1dce9370c3e09bbc120ff6998d')
-sha256sums_aarch64=('ef089841b2ff23285fa458459a3add2a608c0ec0702434b1a8973d2cac1b978f')
-sha256sums_armv7h=('595534a8eb19496f7ac39130e62a29645fc04b001faad72032144ab97467d394')
+sha256sums_aarch64=('371a6572c370f82810e41666fe71bdacfd7b611b245310d6465392e9da7c3130')
