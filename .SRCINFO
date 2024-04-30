@@ -1,0 +1,21 @@
+pkgbase = python-ssqueezepy
+	pkgdesc = Synchrosqueezing, wavelet transforms, and time-frequency analysis in Python
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = https://github.com/OverLordGoldDragon/ssqueezepy
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-numba
+	optdepends = python-cupy: for GPU computation
+	optdepends = python-pytorch: for GPU computation
+	optdepends = python-pyfftw: for maximized FFT speed on CPU
+	source = https://github.com/OverLordGoldDragon/ssqueezepy/archive/0.6.5.tar.gz
+	sha512sums = 3fff67b0174477ee45866eaa8dc67eabf94adb419744290c2fb57a25ec8eeb976d88f34d012ba3159d360cb9f88fb00deccfd27ac6f619c6e9d562bfda326ada
+
+pkgname = python-ssqueezepy
