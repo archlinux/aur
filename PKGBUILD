@@ -3,7 +3,7 @@
 _pkgname="podofo"
 pkgname="$_pkgname-0.9"
 pkgver=0.9.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ library to work with the PDF file format (legacy version)"
 url="https://github.com/podofo/podofo"
 license=('LGPL-2.0-or-later')
@@ -12,13 +12,19 @@ arch=('x86_64')
 depends=(
   'fontconfig'
   'libidn'
-  'libjpeg-turbo'
+  'libjpeg.so' # libjpeg
   'libtiff'
   'libunistring'
   'openssl'
+
+  ## implicit
+  #freetype2
+  #libpng
+  #zlib
 )
 makedepends=(
   'cmake'
+  'ninja'
 )
 
 _pkgsrc="$_pkgname-$pkgver"
@@ -45,18 +51,18 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
-
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=lib/podofo-0.9
     -DCMAKE_INSTALL_INCLUDEDIR=include/podofo-0.9
     -DFREETYPE_INCLUDE_DIR=/usr/include/freetype2
+    -DPODOFO_BUILD_LIB_ONLY=1
     -DPODOFO_BUILD_SHARED=1
     -DPODOFO_HAVE_JPEG_LIB=1
     -DPODOFO_HAVE_PNG_LIB=1
     -DPODOFO_HAVE_TIFF_LIB=1
-    -DPODOFO_BUILD_LIB_ONLY=1
-
+    -DPODOFO_VERSION=${pkgver}
     -Wno-dev
   )
 
@@ -65,6 +71,6 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
   ln -rs "$pkgdir"/usr/lib/podofo-0.9/libpodofo.so.0.9.8 "$pkgdir"/usr/lib
 }

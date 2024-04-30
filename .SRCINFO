@@ -1,14 +1,15 @@
 pkgbase = podofo-0.9
 	pkgdesc = A C++ library to work with the PDF file format (legacy version)
 	pkgver = 0.9.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/podofo/podofo
 	arch = x86_64
 	license = LGPL-2.0-or-later
 	makedepends = cmake
+	makedepends = ninja
 	depends = fontconfig
 	depends = libidn
-	depends = libjpeg-turbo
+	depends = libjpeg.so
 	depends = libtiff
 	depends = libunistring
 	depends = openssl
