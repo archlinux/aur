@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=124.0a1+20240128.1+h09a1abcfcfb7
+pkgver=127.0a1+20240430.1+h650dda918743
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -73,11 +73,11 @@ validpgpkeys=(
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
 sha256sums=('SKIP'
-            '022e9329fdb4af6267ad32a1398a9ae94a90cbb1e80dcf63e8b19e95490e7a35'
+            '781896224710e0b6eb262cbfb27a48d2b2c2ff95e4f307792eddc379c98c559d'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f')
 b2sums=('SKIP'
-        'e79bb7cf9f6aa1e816809f430a72e4d823756f363f635ebccb9a301d716979f3dd95506895798f54371b65b59065ca4c8e66d1dcac449a633da2a28f4bb966b9'
+        'fd23653ae8c758ef0351a8b5ff98dfa438cd8a83e9bc56d8103161a940276ee828f4856fec56e29f3c158caf75a4968bc80e5891633cb9435f92fe73faf77456'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         'f76eb72c326f347991133c004b252ed2e037e72a7a436012fb1495668d2b9194d836765b58b01ba0bd9f5c4b888ee5ee715bdb458823a2a7822f1b299f4d1948')
 
@@ -145,7 +145,7 @@ ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
-export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+export MOZ_APP_REMOTINGNAME=$pkgname
 
 # Keys
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
@@ -286,8 +286,8 @@ END
   install -Dvm644 /dev/stdin "$sprovider" <<END
 [Shell Search Provider]
 DesktopId=$pkgname.desktop
-BusName=org.mozilla.${pkgname//-/}.SearchProvider
-ObjectPath=/org/mozilla/${pkgname//-/}/SearchProvider
+BusName=org.mozilla.${pkgname//-/_}.SearchProvider
+ObjectPath=/org/mozilla/${pkgname//-/_}/SearchProvider
 Version=2
 END
 

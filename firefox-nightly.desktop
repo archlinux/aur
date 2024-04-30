@@ -119,7 +119,7 @@ MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xm
 StartupNotify=true
 Categories=Network;WebBrowser;
 Actions=new-window;new-private-window;profile-manager-window;
-StartupWMClass=firefoxnightly
+StartupWMClass=firefox-nightly
 
 
 [Desktop Action new-window]
