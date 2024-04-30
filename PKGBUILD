@@ -2,7 +2,7 @@
 pkgname=python-wrapt-timeout-decorator
 _name=wrapt_timeout_decorator
 pkgver=1.5.1
-pkgrel=4
+pkgrel=1
 pkgdesc="Powerful Timeout Decorator that can be used safely on classes, methods, class methods"
 url="https://github.com/bitranox/wrapt_timeout_decorator"
 depends=(
