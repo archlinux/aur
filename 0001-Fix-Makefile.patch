@@ -1,0 +1,38 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -41,6 +41,7 @@
+ 		plugins/$*.o						\
+ 		-shared							\
+ 		$(CFLAGS)						\
++		-lm								\
+ 		-fvisibility=hidden					\
+ 		-fvisibility-inlines-hidden				\
+ 		-s							\
+@@ -52,6 +53,7 @@
+ 		plugins/$*.o						\
+ 		-shared							\
+ 		$(CXXFLAGS)						\
++		-lm								\
+ 		-fvisibility=hidden					\
+ 		-fvisibility-inlines-hidden				\
+ 		-s							\
+@@ -77,10 +79,8 @@
+ install:	targets
+ 	-mkdir -p $(INSTALL_PLUGINS_DIR)
+ 	-mkdir -p $(INSTALL_INCLUDE_DIR)
+-	-mkdir -p $(INSTALL_BINARY_DIR)
+ 	cp ../plugins/* $(INSTALL_PLUGINS_DIR)
+ 	cp ladspa.h $(INSTALL_INCLUDE_DIR)
+-	cp ../bin/* $(INSTALL_BINARY_DIR)
+ 
+ /tmp/test.wav:	targets ../snd/noise.wav
+ 	../bin/listplugins
+@@ -98,7 +98,7 @@
+ 				../plugins/delay.so delay_5s 1 0.1	\
+ 				../plugins/amp.so amp_mono 4		\
+ 
+-targets:	$(PLUGINS) $(PROGRAMS)
++targets:	$(PLUGINS)
+ 
+ ###############################################################################
+ #
