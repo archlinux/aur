@@ -1,7 +1,7 @@
 pkgbase = python311-pip
 	pkgdesc = A tool for installing and managing Python packages (for Python 3.11)
 	pkgver = 24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pip.pypa.io/
 	arch = any
 	license = MIT
