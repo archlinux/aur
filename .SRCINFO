@@ -1,18 +1,19 @@
 pkgbase = python-iptables
 	pkgdesc = Python bindings for iptables
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/ldx/python-iptables
 	arch = x86_64
 	arch = i686
-	arch = armv6h
+	arch = aarch64
+	arch = armv7h
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = gcc
 	depends = python
 	depends = iptables
 	options = !emptydirs
-	source = https://github.com/ldx/python-iptables/archive/v1.0.0.tar.gz
-	sha256sums = f0193c73a7300b7ffd7a2b3dab2692b6358168b9162ab03271e9adff720c9503
+	source = https://github.com/ldx/python-iptables/archive/v1.0.1.tar.gz
+	sha256sums = 0ab4d2b1e4c268717dd2e7cb0f527dee06f39cdcdd763f1803a6f2618fe410ee
 
 pkgname = python-iptables
-

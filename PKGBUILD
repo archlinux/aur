@@ -1,8 +1,8 @@
 # Maintainer: la Fleur <lafleur at boum dot org>
 # Contributor: Ivan Cai <caizixian@users.noreply.github.com>
 
-pkgname=python-iptables 
-pkgver=1.0.0
+pkgname=python-iptables
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Python bindings for iptables'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -17,7 +17,6 @@ replaces=()
 backup=()
 options=(!emptydirs)
 source=("https://github.com/ldx/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f0193c73a7300b7ffd7a2b3dab2692b6358168b9162ab03271e9adff720c9503')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -28,3 +27,5 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
+
+sha256sums=('0ab4d2b1e4c268717dd2e7cb0f527dee06f39cdcdd763f1803a6f2618fe410ee')
