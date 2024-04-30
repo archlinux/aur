@@ -6,14 +6,17 @@
 # Contributor: mutlu_inek <mutlu_inek@yahoo.de>
 
 pkgname=iscan-data
-pkgver=1.39.2.1
+_pkgver=1.39.2-1
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="EPSON Image Scan! data files"
 arch=('any')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('GPL2')
 depends=('libxslt')
-source=("http://support.epson.net/linux/src/scanner/iscan/${pkgname}_${pkgver%.*}-${pkgver/*.}.tar.gz")
+source=(#"http://support.epson.net/linux/src/scanner/iscan/${pkgname}_${pkgver%.*}-${pkgver/*.}.tar.gz"
+        "https://sourceforge.net/projects/fabiololix-os-archive/files/src/iscan-data_${_pkgver}.tar.gz")
+# tar.gz source no longer exist
 sha256sums=('6a62bc6e84257714785d99316a017b8444207e3dcf56d35d0ce13f292d855824')
 
 build() {
