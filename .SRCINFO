@@ -1,0 +1,24 @@
+pkgbase = usd-fileformat-plugins
+	pkgdesc = Adobe collection of USD fileformat plugins
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/adobe/USD-Fileformat-plugins
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = usd
+	depends = python
+	depends = glibc
+	depends = gcc-libs
+	depends = boost-libs
+	depends = onetbb
+	depends = jemalloc
+	depends = zlib
+	depends = openimageio
+	options = !lto
+	source = usd-fileformat-plugins::git+https://github.com/adobe/USD-Fileformat-plugins.git
+	source = https://damassets.autodesk.net/content/dam/autodesk/www/adn/fbx/2020-2-1/fbx202021_fbxsdk_linux.tar.gz
+	sha512sums = SKIP
+	sha512sums = f9a4b2ec7c114e4407ff318dade1ebd5cc18339a7a611bfa2bc4faf0a75b371b9947be80078b1f1f966890cd4ae3a2e091274fabd8cfff41c12bfc5b8ae6ed38
+
+pkgname = usd-fileformat-plugins
