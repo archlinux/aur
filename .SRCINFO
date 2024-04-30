@@ -1,7 +1,7 @@
 pkgbase = eject-applet
 	pkgdesc = Simple external disk manager that sits in the tray
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Akmadan23/eject-applet
 	arch = any
 	license = GPL3

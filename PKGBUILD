@@ -1,7 +1,7 @@
 # Maintainer: Azad Ahmadi <azadahmadi@mailo.com>
 pkgname=eject-applet
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple external disk manager that sits in the tray"
 arch=(any)
 url="https://github.com/Akmadan23/eject-applet"
