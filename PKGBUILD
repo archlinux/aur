@@ -2,7 +2,7 @@
 
 pkgname=arrayfire
 pkgver=3.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
