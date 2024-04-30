@@ -1,6 +1,6 @@
 _basepgkname=llamafile
 pkgname="${_basepgkname}-git"
-pkgver=0.8.1
+pkgver=0.8.1.r341.9cf7363
 pkgrel=1
 pkgdesc="Distribute and run LLMs with a single file."
 arch=('x86_64')
@@ -36,7 +36,10 @@ provides=(
 conflicts=('llamafile' 'llamafile-bin')
 options=(!strip)
 
-
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    printf "%s.r%s.%s" "$(git describe --tags | cut -d'-' -f1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
 
