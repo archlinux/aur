@@ -7,8 +7,18 @@ pkgdesc="Simple Screen Recorder written in Rust based on Green Recorder"
 arch=('x86_64')
 url="https://github.com/xlmnxp/blue-recorder"
 license=('GPL-3.0-or-later')
-depends=('ffmpeg' 'gtk4' 'libappindicator-gtk3' 'pulse-native-provider' 'xorg-xwininfo')
-makedepends=('cargo' 'clang' 'git')
+depends=(
+  'ffmpeg'
+  'gtk4'
+  'libappindicator-gtk3'
+  'pulse-native-provider'
+  'xorg-xwininfo'
+)
+makedepends=(
+  'cargo'
+  'clang'
+  'git'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!lto')
@@ -16,12 +26,12 @@ source=('git+https://github.com/xlmnxp/blue-recorder.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
@@ -30,7 +40,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
 #  CFLAGS+=" -ffat-lto-objects"  ## gettext-sys crate fails
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
@@ -39,7 +49,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/opt/${pkgname%-git}/"
   install -Dm644 interfaces/main.ui -t "$pkgdir/opt/${pkgname%-git}/interfaces/"
   install -Dm644 "data/${pkgname%-git}.desktop" -t \
