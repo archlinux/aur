@@ -11,21 +11,21 @@ license=('BSD-3-Clause')
 depends=('python-boost-histogram' 'python-histoprint' 'python-typing_extensions')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'python-hatchling' 'python-hatch-vcs')
 checkdepends=('python-pytest' 'python-pytest-benchmark' 'python-pytest-mpl' 'python-iminuit' 'python-mplhep' 'python-scipy')
-source=("${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}")
+source=("${pkgname}::git+${url}#tag=v${pkgver}")
 sha256sums=('55011f93f9c5959141685c3f1ee2888a28fc484b41626562b34149350ba43824')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   PYTHONPATH="${PWD}/src" pytest
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   export PYTHONHASHSEED=0
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
