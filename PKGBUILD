@@ -6,7 +6,7 @@ _archivename="${_pkgname}-master"
 _source="https://github.com/bpc-clone/bpc_updates/releases/download/latest/${_archivename}.zip"
 pkgname=chromium-bypass-paywalls-clean
 pkgver=3.6.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium extension to bypass paywalls"
 url="https://github.com/bpc-clone/bpc_updates"
 arch=('any')
@@ -26,5 +26,5 @@ package() {
     mkdir -p "${pkgdir}/usr/share/chromium/${_pkgname}"
     shopt -u dotglob
     cp -dr --no-preserve=ownership "${srcdir}/${_archivename}"/* "${pkgdir}/usr/share/chromium/${_pkgname}/"
-    install -D "${_pkgname}-master/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D "${_archivename}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
