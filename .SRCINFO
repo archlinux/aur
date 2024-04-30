@@ -17,6 +17,7 @@ pkgbase = amulet-map-editor-git
 	depends = python-minecraft-model-reader
 	depends = python-amulet-core
 	depends = python-lz4
+	depends = python-amulet-leveldb
 	provides = amulet-map-editor
 	provides = amulet-map-editor-git
 	conflicts = amulet-map-editor

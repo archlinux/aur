@@ -11,7 +11,7 @@ pkgver=0.10.26.r4.g9a3d9c5a
 pkgrel=1
 makedepends=(python-build python-installer python-wheel)
 
-depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core python-lz4)
+depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core python-lz4 python-amulet-leveldb)
 
 provides=(amulet-map-editor amulet-map-editor-git)
 conflicts=(amulet-map-editor amulet-map-editor-git)
