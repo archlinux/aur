@@ -1,6 +1,6 @@
 pkgbase = ucsf-chimera
 	pkgdesc = Extensible molecular modeling system
-	pkgver = 1.16
+	pkgver = 1.17.3
 	pkgrel = 1
 	url = https://rbvi.ucsf.edu/chimera/
 	install = ucsf-chimera.install
