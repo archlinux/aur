@@ -10,7 +10,7 @@ pkgname='iwinfo'
 pkgdesc='Provide wifi information about capabilities and network(s)'
 _gitname='iwinfo'
 
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 url="https://github.com/gene-git/iwinfo"
 
@@ -28,9 +28,6 @@ _mkpkg_depends=('python>minor' 'libcap-ng>minor')
 
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
-
-touch "Changelog.rst"
-changelog="Changelog.rst"
 
 build() {
     cd "${_gitname}"
@@ -53,10 +50,6 @@ build() {
 
 package() {
     cd "${_gitname}"
-    git fetch --all
-    git checkout origin/master -- Docs/Changelog.rst
-    cp Docs/Changelog.rst ${startdir}
-
     ./scripts/do-install ${pkgdir}
 }
 # vim:set ts=4 sts=4 sw=4 et:
