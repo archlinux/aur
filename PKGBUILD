@@ -12,7 +12,7 @@ makedepends=("ruby-ronn-ng"
              "python-setuptools"
              "python-wheel")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xuanruiqi/${pkgname}-arch/archive/${pkgver}.tar.gz")
-sha256sums=('17c37de52fe60b26b607853cc55f1022f96642f69fce47ad44a8c0280d4e4735')
+sha256sums=('d377dad9c810a76dff4afe1028fe848c146b71eb37562c7188f2e6543d0e1468')
 
 build() {
   cd "${srcdir}/${pkgbase}-arch-${pkgver}"

@@ -10,7 +10,7 @@ pkgbase = rebuild-initramfs-dracut
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	source = rebuild-initramfs-dracut-2.1.1.tar.gz::https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch/archive/2.1.1.tar.gz
-	sha256sums = 17c37de52fe60b26b607853cc55f1022f96642f69fce47ad44a8c0280d4e4735
+	sha256sums = d377dad9c810a76dff4afe1028fe848c146b71eb37562c7188f2e6543d0e1468
 
 pkgname = rebuild-initramfs-dracut
 	pkgdesc = A helper script to rebuild initramfs images using dracut
