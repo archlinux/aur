@@ -1,6 +1,6 @@
 pkgbase = lenovo-legion-electric-ray-git
 	pkgdesc = Lenovo Legion 'Rapid charge' & 'Conservation'.
-	pkgver = r31.88898be
+	pkgver = r32.c10ac91
 	pkgrel = 1
 	url = https://github.com/CuriousGecko/electric-ray
 	arch = x86_64
