@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=osc-sdk-python
-pkgver=0.27.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc='Outscale Python 3 SDK'
 
@@ -15,7 +15,9 @@ depends=(python-ruamel-yaml python-requests)
 
 _project=osc_sdk_python
 source=("https://files.pythonhosted.org/packages/source/${_project::1}/$_project/$_project-$pkgver.tar.gz")
-sha256sums=("bce91af8d334ce5550442114b6950bbf528d9f4a3de50c844a4a430d5780f3aa")
+sha256sums=("e606ded25dbe076f8ec2a452b177d185b3a542d7bfefc45997151b4e3a9bf961")
+
+provides=("osc-sdk-python=${pkgver}")
 
 build() {
     cd $_project-$pkgver
