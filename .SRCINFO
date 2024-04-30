@@ -1,6 +1,6 @@
 pkgbase = zz
 	pkgdesc = AUR Helper Helper
-	pkgver = 19452024
+	pkgver = 34422024
 	pkgrel = 1
 	url = https://github.com/eeec-cal/zz
 	arch = x86_64
