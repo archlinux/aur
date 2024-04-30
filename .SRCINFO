@@ -1,0 +1,13 @@
+pkgbase = vim-nushell
+	pkgdesc = Nushell syntax highlighting and indentation for Vim
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/elkasztano/nushell-syntax-vim
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = https://github.com/elkasztano/nushell-syntax-vim/archive/refs/tags/v0.2.0.tar.gz
+	sha512sums = e5d2a7122451f995c07f4742ef7769017a13fa281f95d2482da897fd959a9cf1be2344a8ec3a7e27f893540083ea464915b1eb4fe3494ad87c21d3c5943ef143
+
+pkgname = vim-nushell
