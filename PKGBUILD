@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Evan Chen <evan@evanchen.cc>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Laurie Clark-Michalek <bluepeppers@archlinux.us>
 # Contributor: graysky <graysky AT archlinux DOR us>
