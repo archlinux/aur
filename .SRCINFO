@@ -1,6 +1,6 @@
 pkgbase = sagemath-git
 	pkgdesc = Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab
-	pkgver = 10.4.beta3.r0.g15fcf52fbd6
+	pkgver = 10.4.beta4.r0.gc4363fc97eb
 	pkgrel = 1
 	url = http://www.sagemath.org
 	arch = x86_64
@@ -134,6 +134,6 @@ pkgbase = sagemath-git
 	sha256sums = SKIP
 	sha256sums = 5cd2f88965d7ebab9dfab6f5c2040d363a4a5ae41230219cc7070b907381da5a
 	sha256sums = 56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2
-	sha256sums = 8db35fcdddf14b2a99294d305a4b077c102d1236cb0d13ec99ccd027b26edc25
+	sha256sums = 65c3fdcd5441f651c1fe916f345a8d992ca32efe09474b7ec8eaf61dd874549d
 
 pkgname = sagemath-git
