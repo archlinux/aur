@@ -1,5 +1,5 @@
 pkgbase = rebuild-initramfs-dracut
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = rebuild-initramfs-dracut
 	makedepends = python-build
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = rebuild-initramfs-dracut-2.1.0.tar.gz::https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch/archive/2.1.0.tar.gz
+	source = rebuild-initramfs-dracut-2.1.1.tar.gz::https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch/archive/2.1.1.tar.gz
 	sha256sums = 17c37de52fe60b26b607853cc55f1022f96642f69fce47ad44a8c0280d4e4735
 
 pkgname = rebuild-initramfs-dracut

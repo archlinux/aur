@@ -1,7 +1,7 @@
 # Maintainer: Xuanrui Qi <xuanrui@xuanruiwork>
 pkgbase=rebuild-initramfs-dracut
 pkgname=(rebuild-initramfs-dracut rebuild-initramfs-dracut-hook)
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 arch=('any')
 url="https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch"
