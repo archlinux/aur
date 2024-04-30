@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ferrum-bin
 _pkgname=Ferrum
-pkgver=0.17.2
+pkgver=0.17.3
 _electronversion=22
-pkgrel=3
+pkgrel=1
 pkgdesc="Music library app for Mac, Linux and Windows"
 arch=('x86_64')
 url="https://github.com/probablykasper/ferrum"
@@ -17,8 +17,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('39822b21e5f8571b1fca614a8483b9d2c7cf985cc8b6f4c7a7a9a290de530292'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('59579c2c2b63f596dfe1c0be973771cb8f0b6b0f1c7efd765ee22a7fbb00c60c'
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
