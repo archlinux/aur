@@ -1,36 +1,33 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=iyuuplus
-pkgver=20240425.184422
+pkgver=8.1.3
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
 url="https://github.com/ledccn/iyuuplus-dev"
 license=("MIT")
-depends=("composer" "mariadb" "php-fpm" "php-gd" "php-sodium" "php-sqlite")
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+depends=("composer" "mariadb" "php-fpm" "php-gd" "php-sodium")
 makedepends=("git")
-source=("${pkgname}::git+${url}"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('SKIP'
-            'c7cb5e1ce12fdcb72f70f4c1dafce6650668256653f578bd7d825c6e7f7ace81'
+sha256sums=('9c0c86d429c648c95f688a7c542e7f4234fcd8a6fa8048219bfda84e550450dd'
+            '583af3140d9ac207b8d0151063f0e8ee4f45ad0ba86be5b4fc9ec0428364e988'
             'e64af1d0d088fa30e864897a43597026ee95f5e2590e79ac4055786795c60622'
             '4c0928194248ce56deab7a1eeec78d4a3827d7e8fbceba142b46d4f9c8eed387')
 options=(!strip !debug)
-
-pkgver() {
-    cd "${pkgname}"
-    echo "$(git log -1 --format="%cd" --date='format:%Y%m%d.%H%M%S')"
-}
 
 package() {
     install -Dm644 "${pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-    cd "${pkgname}"
+    cd "${pkgname}-dev-${pkgver}"
     install -Dm644 LICENSE               "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md             "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
