@@ -1,34 +1,46 @@
-# Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
-# Credit: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer:
+# Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
-pkgname=retroarch-autoconfig-udev-git
-_gitname=retroarch-joypad-autoconfig
-pkgver=r1111.be1442f
+_pkgname="retroarch-autoconfig-udev"
+pkgname="$_pkgname-git"
+pkgver=1.18.1.r9.gdfb61f1
 pkgrel=1
-pkgdesc='udev joypad autoconfig for RetroArch (git-latest)'
+pkgdesc='udev joypad autoconfig for RetroArch'
+url="https://github.com/libretro/retroarch-joypad-autoconfig"
+license=('MIT')
 arch=('any')
-url='http://www.libretro.com/'
-license=('GPL')
-groups=('libretro')
-depends=('retroarch')
+
 makedepends=('git')
-provides=('retroarch-autoconfig-udev')
-conflicts=('retroarch-autoconfig-udev')
-source=('git+https://github.com/libretro/retroarch-joypad-autoconfig.git')
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="retroarch-joypad-autoconfig"
+source=("$_pkgsrc"::"git+https://github.com/libretro/retroarch-joypad-autoconfig.git")
 sha256sums=('SKIP')
 
 pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
-  cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
+build() {
+  cd "$_pkgsrc/udev"
+  for i in *[^A-Za-z0-9_\(\)-\.\ ]*; do
+    mv "$i" "$(sed -E 's@[^A-Za-z0-9_\(\)-\.\ ]@@g' <<< "$i")"
+  done
 }
 
 package() {
+  depends+=('retroarch')
 
-  cd $_gitname
+  cd "$_pkgsrc"
 
-  install -dm 755 "${pkgdir}"/usr/share/libretro/autoconfig
-  cp -dr --no-preserve='ownership' udev "${pkgdir}"/usr/share/libretro/autoconfig/
+  install -dm755 "$pkgdir/usr/share/libretro/autoconfig"
+  cp --reflink=auto -ar --no-preserve='ownership' udev "$pkgdir/usr/share/libretro/autoconfig/"
 
+  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
