@@ -6,6 +6,13 @@ pkgdesc="Bitrix24 linux desktop"
 arch=("x86_64")
 url="https://www.bitrix24.com/applications.php"
 source=("https://dl.bitrix24.com/b24/bitrix24_desktop.rpm")
+depends=(
+   'gtk3'
+   'libnotify'
+   'nss'
+   'libxss'
+   'alsa-lib'
+   )
 
 sha256sums=("5db562408b4817f78da67c14faadbd970cc16ca131b58037732a8a893fb8ea9d")
 
