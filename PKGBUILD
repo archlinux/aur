@@ -1,7 +1,7 @@
 # Maintainer: Xuanrui Qi <xuanrui@xuanruiwork>
 pkgbase=rebuild-initramfs-dracut
 pkgname=(rebuild-initramfs-dracut rebuild-initramfs-dracut-hook)
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 arch=('any')
 url="https://github.com/xuanruiqi/rebuild-initramfs-dracut-arch"
@@ -12,7 +12,7 @@ makedepends=("ruby-ronn-ng"
              "python-setuptools"
              "python-wheel")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xuanruiqi/${pkgname}-arch/archive/${pkgver}.tar.gz")
-sha256sums=('cd586c66ff11f01c55b9e6765c096534c2429a67766b37fb22f8ea10d5116283')
+sha256sums=('17c37de52fe60b26b607853cc55f1022f96642f69fce47ad44a8c0280d4e4735')
 
 build() {
   cd "${srcdir}/${pkgbase}-arch-${pkgver}"
