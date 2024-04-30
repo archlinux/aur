@@ -10,31 +10,32 @@
 _name=compiz
 pkgname=compiz-easy-patch
 pkgver=0.9.14.2
-pkgrel=4
+pkgrel=5
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
 license=('GPL' 'LGPL' 'MIT')
 depends=(
   'boost-libs'
-  'xorg-server'
   'fuse2'
   'glibmm'
+  'glu'
+  'libnotify'
   'libwnck3'
+  'libxslt'
+  'metacity'
+  'protobuf'
   'python-gobject'
   'python-cairo'
-  'python-setuptools'
-  'protobuf'
-  'metacity'
-  'glu'
-  'libxslt'
+  'xorg-server'
   'zenity'
 )
 makedepends=(
   'boost'
   'cmake'
-  'intltool'
   'cython'
+  'intltool'
+  'python-setuptools'
 )
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
