@@ -1,0 +1,38 @@
+pkgbase = python-pytorch-rocm-bin
+	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (binary release)
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://pytorch.org
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = google-glog
+	depends = gflags
+	depends = opencv
+	depends = openmp
+	depends = openmpi
+	depends = pybind11
+	depends = python
+	depends = python-yaml
+	depends = libuv
+	depends = python-numpy
+	depends = python-sympy
+	depends = protobuf
+	depends = ffmpeg
+	depends = python-future
+	depends = qt6-base
+	depends = eigen
+	depends = intel-oneapi-mkl
+	depends = python-typing_extensions
+	depends = numactl
+	depends = python-jinja
+	depends = python-networkx
+	depends = python-filelock
+	provides = python-pytorch=2.3.0
+	provides = python-pytorch-rocm=2.3.0
+	conflicts = python-pytorch
+	source = https://download.pytorch.org/whl/rocm6.0/torch-2.3.0%2Brocm6.0-cp312-cp312-linux_x86_64.whl
+	sha256sums = 992c1ffb65c773a5848e4bbe22235c0386a7915690615ad68a45609228c13269
+
+pkgname = python-pytorch-rocm-bin
