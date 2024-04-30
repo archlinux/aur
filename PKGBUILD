@@ -19,7 +19,7 @@ depends=(
 	"libjson-c.so"
 	"libudev.so"
 	"libwayland-server.so"
-	"libwlroots.so"
+	"libwlroots.so=12"
 	"libxcb"
 	"libxkbcommon.so"
 	"pango"
