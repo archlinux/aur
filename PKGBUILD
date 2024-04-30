@@ -3,7 +3,7 @@
 # Contributor: Jack Mitchell <jack@embed.me.uk>
 
 pkgname=buildkite-agent-bin
-pkgver=3.70.0
+pkgver=3.71.0
 pkgrel=1
 pkgdesc='The Buildkite Agent'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -28,9 +28,9 @@ sha256sums=('474a87811a15194e01097af13e0ce21b8a2ab0354e15bacead54e272087bc2c2'
             '08a25426ef7a0bd40555e1e8833c782b366df4e1dcd6c7386281c7bb23171f15'
             '60503a6e93dfdb533cd54c82bf9aa3087c907ce8c574b657ca4c4b102badcf71'
             '15f1019081d8255ac6ac121445ae4b39ef5e3f1446a319855c1f7524372366b0')
-sha256sums_x86_64=('546f8da6ec29148559604262b4184c7c5217e01e23989bc814c3259f080e7be5')
-sha256sums_armv7h=('76f4680657e5a8080384af3de507ebd5a98b3a8f3d1104d29cf0cdc5155836d5')
-sha256sums_aarch64=('308eecb1bfc0b729be140e44fe4c9c2c6b59aa364c7dfebade14447c937d6e04')
+sha256sums_x86_64=('67431519beb7f4d20946df88b2eeacef91f73dc576b07d0f801797ef88638172')
+sha256sums_armv7h=('9bb1969f220fcf460af919011a56afa2ffa5e39e0467b783b99ad4263681b9e9')
+sha256sums_aarch64=('93eb86183f9aa2f8862b28b4ef6a46d656e39515db71cbd504776a06194194ef')
 
 package() {
   install -dm 755 "$pkgdir/etc/buildkite-agent/hooks"
