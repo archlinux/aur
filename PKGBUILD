@@ -5,8 +5,8 @@
 # Contributor: Fabio Zanini <iosonofabio@gmail.com>
 
 pkgname=modeller
-pkgver=10.4
-pkgrel=2
+pkgver=10.5
+pkgrel=1
 pkgdesc="3D Structure Homology Modeller"
 arch=('i686' 'x86_64')
 url="http://salilab.org/modeller/"
@@ -17,7 +17,7 @@ optdepends=('python: python support'
 backup=("etc/$pkgname/config.py")
 source=("http://www.salilab.org/modeller/$pkgver/$pkgname-$pkgver.tar.gz"{,.sign}
         "LICENSE")
-sha256sums=('ed08fcbbee1db095a2c243028b567569398e03dabfe2ad459dca1a5298bb8ac9'
+sha256sums=('acbee4481d79e669dd0251d5e075902dbe0a7dfeb13f8777c8d602cae64a28ad'
             'SKIP'
             '7d1fb18e362298bc606d6d99852479dc107ad336e1bcd33362fdeef18cf207fe')
 validpgpkeys=('9F7FF1477E5A2463732EC9781CC7D059745E6093')
@@ -76,12 +76,12 @@ package() {
     echo "/usr/lib/$pkgname/lib/$_EXECUTABLE_TYPE" > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
 
     # install python modules
-    for _pyver in 2.7 3.11; do
+    for _pyver in 2.7 3.12; do
       install -dm755 "$pkgdir/usr/lib/python$_pyver/site-packages"
       ln -s "$_MODINSTALL/modlib/modeller" "$pkgdir/usr/lib/python$_pyver/site-packages/modeller"
     done
     ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python2.5/_modeller.so" "$pkgdir/usr/lib/python2.7/site-packages/_modeller.so"
-    ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python3.3/_modeller.so" "$pkgdir/usr/lib/python3.11/site-packages/_modeller.so"
+    ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python3.3/_modeller.so" "$pkgdir/usr/lib/python3.12/site-packages/_modeller.so"
 
     # add profile.d file
     install -dm755 "$pkgdir/etc/profile.d"
