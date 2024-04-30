@@ -1,7 +1,7 @@
 pkgbase = hotspot
 	pkgdesc = The Linux perf GUI for performance analysis
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KDAB/hotspot
 	arch = x86_64
 	license = GPL-2.0-only
@@ -13,7 +13,6 @@ pkgbase = hotspot
 	depends = kconfigwidgets
 	depends = kcoreaddons
 	depends = kddockwidgets-qt6
-	depends = kgraphviewer
 	depends = ki18n
 	depends = kio
 	depends = kitemmodels
@@ -22,10 +21,12 @@ pkgbase = hotspot
 	depends = libelf
 	depends = perf
 	depends = qt6-base>=6.4
-	depends = rustc-demangle>=0.1.18-2
 	depends = solid
 	depends = syntax-highlighting
 	depends = threadweaver
+	optdepends = binutils: Support for annotating individual instructions
+	optdepends = kgraphviewer: Call graph in the caller/callee tab
+	optdepends = rustc-demangle>=0.1.18-2: Demangling of Rust symbols
 	source = https://github.com/KDAB/hotspot/releases/download/v1.5.0/hotspot-v1.5.0.tar.gz
 	b2sums = 930f256fbe94068145d9366c1c7d0a1a75fca955d70d1acd9d698a888c7249404a832e579883f1bf18268578a664e10fdbb870ef328b51d55e8d1b59cb830da4
 
