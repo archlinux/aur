@@ -7,7 +7,7 @@
 
 pkgname=s3ql
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured file system for online data storage."
 arch=('x86_64')
 url="https://github.com/s3ql/s3ql"
@@ -18,7 +18,6 @@ depends=(
 	'python-apsw'
 	'python-trio'
 	'python-pyfuse3'
-	'cython'
 )
 optdepends=(
 	'python-systemd: for enabling systemd support'
@@ -26,7 +25,7 @@ optdepends=(
 	'python-google-auth: for ADC authentication with Google Storage'
 	'python-google-auth-oauthlib: for browser-based authentication with Google Storage'
 )
-makedepends=('python-setuptools' 'python-pip' 'python-wheel')
+makedepends=('python-setuptools' 'python-pip' 'python-wheel' 'cython')
 install=s3ql.install
 changelog=ChangeLog.rst
 source=("https://github.com/s3ql/s3ql/releases/download/s3ql-${pkgver}/s3ql-${pkgver}.tar.gz")

@@ -1,7 +1,7 @@
 pkgbase = s3ql
 	pkgdesc = A full-featured file system for online data storage.
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/s3ql/s3ql
 	install = s3ql.install
 	changelog = ChangeLog.rst
