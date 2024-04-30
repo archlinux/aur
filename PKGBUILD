@@ -1,16 +1,16 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=table
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.7
+pkgrel=1
 pkgdesc="Command line utility to format and display CSV"
 arch=('x86_64')
 url="https://strahinja.srht.site/table"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/table/archive/v$pkgver.tar.gz")
-md5sums=('884b5dc9b418b0477a6183f334b50337')
+md5sums=('97e544f9e2ff778a63bf6e0ef09d39ad')
 
 build() {
-	cd $pkgname-v$pkgver
+	cd "${pkgname}-v$pkgver"
 	
 	# Some build environments insist on having those preset, which breaks
 	# the build; if you really want some of them, comment the 'unset' lines
@@ -18,14 +18,15 @@ build() {
 	unset BINDIR CC CFLAGS CPPFLAGS DOCDIR HEADERS INSTALL LDFLAGS LIBS
 	unset MANPAGE MANPREFIX OBJS PROG SRC 
 
-	FALLBACKVER=$pkgver-$pkgrel PREFIX="$pkgdir/usr" make -e all
+	make FALLBACKVER="${pkgver}-$pkgrel" DESTDIR="$pkgdir" PREFIX="/usr" all
 }
 
 package() {
-	cd $pkgname-v$pkgver
+	cd "${pkgname}-v$pkgver"
 
 	unset BINDIR CC CFLAGS CPPFLAGS DOCDIR HEADERS INSTALL LDFLAGS LIBS
 	unset MANPAGE MANPREFIX OBJS PROG SRC 
 
-	FALLBACKVER=$pkgver-$pkgrel PREFIX="$pkgdir/usr" make -e install
+	make FALLBACKVER="${pkgver}-$pkgrel" DESTDIR="$pkgdir" PREFIX="/usr" \
+		install
 }
