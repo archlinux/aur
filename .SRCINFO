@@ -1,7 +1,7 @@
 pkgbase = vim-nushell
 	pkgdesc = Nushell syntax highlighting and indentation for Vim
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elkasztano/nushell-syntax-vim
 	arch = any
 	groups = vim-plugins

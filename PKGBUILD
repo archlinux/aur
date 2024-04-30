@@ -2,7 +2,7 @@
 pkgname=vim-nushell
 _pkgname=nushell-syntax-vim
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nushell syntax highlighting and indentation for Vim"
 arch=('any')
 url="https://github.com/elkasztano/nushell-syntax-vim"
@@ -14,7 +14,7 @@ sha512sums=(e5d2a7122451f995c07f4742ef7769017a13fa281f95d2482da897fd959a9cf1be23
 
 package() {
   cd "$srcdir/${_pkgname}-${pkgver}"
-  for d in ftdetect  ftplugin  indent; do
+  for d in ftdetect  ftplugin  indent syntax; do
   	install -Dm644 "$d"/nu.vim "$pkgdir/usr/share/vim/vimfiles/$d/nu.vim"
   done
   	install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
