@@ -1,4 +1,286 @@
 
+# v0.12.1 — The haunted mice update
+
+Please report all bugs in our [Discord server](https://slimevr.dev/discord) for now in the appropriate development channels (`#server`, `#gui`, `#autobone`, etc.). If you need tech support or are not sure if you did find a bug, please use the `#support-forum`.
+
+## Use the installer to install or update!
+Use the installer to install or update SlimeVR if you're on Windows. You can find it here:
+* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
+* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
+
+### Flatpak distribution for Linux
+Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.slimevr.SlimeVR) and update it through there. You can install it by running: ``flatpak install flathub dev.slimevr.SlimeVR``
+
+## What's Changed
+* UDPPacket23RotationAndAcceleration: Switch x and y around to adjust for different axes by @9il in https://github.com/SlimeVR/SlimeVR-Server/pull/1007
+* Add more compact bundle protocol by @9il in https://github.com/SlimeVR/SlimeVR-Server/pull/999
+* Change usb enumeration to only specific Vid/Pid by @sctanf in https://github.com/SlimeVR/SlimeVR-Server/pull/1012
+* Fix the HID decoding, replace Q14 with Q15, optimize by @9il in https://github.com/SlimeVR/SlimeVR-Server/pull/1000
+* don't toggle trackers if tracking is paused by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/1013
+* GUI - Fix condition for promise detection in a11y by @ZycaR in https://github.com/SlimeVR/SlimeVR-Server/pull/1016
+* fix macOS bundling action by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1015
+
+## New Contributors
+* @ZycaR made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/1016
+
+**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.12.0...v0.12.1
+
+__________
+
+# v0.12.0 — The spring cleaning update
+
+<img src="https://github.com/SlimeVR/SlimeVR-Server/assets/3698237/7b85bbe6-078d-4986-a0d1-fe49ce781da3" alt="gentle bingus" width="326" align="right" id="bingus-gentle">
+
+Please report all bugs in our [Discord server](https://slimevr.dev/discord) for now in the appropriate development channels (`#server`, `#gui`, `#autobone`, etc.). If you need tech support or are not sure if you did find a bug, please use the `#support-forum`.
+
+## Use the installer to install or update!
+Use the installer to install or update SlimeVR if you're on Windows. You can find it here:
+* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
+* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
+
+### Flatpak distribution for Linux
+Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.slimevr.SlimeVR) and update it through there. You can install it by running: ``flatpak install flathub dev.slimevr.SlimeVR``
+
+## What's Changed
+* Complete TODO of replacing quatToXyzAngles with toEulerAngles by @VocalFan in https://github.com/SlimeVR/SlimeVR-Server/pull/915
+* Prevent smoothing rollback by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/921
+* Update CODEOWNERS for SolarXR by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/928
+* Update FirmwareConstants.kt by @unlogisch04 in https://github.com/SlimeVR/SlimeVR-Server/pull/927
+* Add initial HID trackers support by @sctanf and @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/913
+* don't send packets of bones we don't have by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/932
+* Add linux files for CODEOWNERS by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/936
+* Remove Futura from CODEOWNERS by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/935
+* Update appstream metadata info by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/892
+* Add tray support by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/897
+* show drift compensation in tracker preview by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/937
+* Change mounting position/rotation/direction to mounting orientation by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/939
+* allow to set the socket dir via SLIMEVR_SOCKET_DIR by @Links2004 in https://github.com/SlimeVR/SlimeVR-Server/pull/909
+* Add pause tracking toggle to user action packet by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/922
+* move biAlign into Quaternion.kt by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/940
+* Fixing small bugs by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/924
+* Migrate to pnpm by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/893
+* Add Serial Console Wifi Scan by @unlogisch04 in https://github.com/SlimeVR/SlimeVR-Server/pull/930
+* Remove changing acceleration space in hid tracker by @sctanf in https://github.com/SlimeVR/SlimeVR-Server/pull/945
+* Sleep if no HID device present by @sctanf in https://github.com/SlimeVR/SlimeVR-Server/pull/956
+* Add an error boundary for WebGL by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/942
+* Fix state bug on tray exit by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/944
+* fastSeek is not available on most browsers, use currentTime by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/954
+* Fix NaN rotation on reset with a zero quaternion by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/950
+* Fix macOS bundling giving an error by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/943
+* Update Kotlin and gradle plugins by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/957
+* Allow multiple servers in the same network by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/900
+* Connect one tracker at a time text adjustment by @ZRock35 in https://github.com/SlimeVR/SlimeVR-Server/pull/965
+* Make mounting reset follow headset rotation by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/953
+* Improve autobone GUI steps by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/960
+* Tpose down fix by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/967
+* Use tauri store for GUI config by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/923
+* Automatic SteamVR tracker switching by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/947
+* Make ktmath object-less by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/959
+* fix known devices not saving by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/969
+* fix onboarding tracker connect description key by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/968
+* Add network protocol version by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/972
+* Update SolarXR to main branch by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/973
+* Add Yaw Reset Smoothing by @nekomona in https://github.com/SlimeVR/SlimeVR-Server/pull/964
+* Update to latest GUI dependencies by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/905
+* Add toggle to save and load mounting reset by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/963
+* fix tauri issues by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/977
+* fix windows bundling not working by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/976
+* Fix hands warning button styling by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/978
+* Remove default keybind behavior in browser window by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/979
+* Revert packages that are broken by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/980
+* Make only search bar keybinds be prevented by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/981
+* Add support for left/right steamvr toggles by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/982
+* dont prefix `v` on versions by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/988
+* assign knee when hasFoot for SteamVR by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/986
+* fix permission issue on export proportions by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/987
+* fix GUI visual bugs in autobone by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/985
+* Support Datagrams up to 1472 bytes by @9il in https://github.com/SlimeVR/SlimeVR-Server/pull/998
+* Fix missing space in BVH by @abb128 in https://github.com/SlimeVR/SlimeVR-Server/pull/996
+* Check if saved window size is at least the minimum allowed by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/993
+* Add compact IMU frame (rot+acc) by @9il in https://github.com/SlimeVR/SlimeVR-Server/pull/1001
+* update hid4java to 0.8 by @ImUrX and @sctanf in https://github.com/SlimeVR/SlimeVR-Server/pull/992
+* Update Github action versions to non-deprecated ones by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1005
+* New Pontoon translations by @SlimeVR-bot in https://github.com/SlimeVR/SlimeVR-Server/pull/914 [^1]
+
+## Translation changes
+* :netherlands: Updated Dutch translation (@DeBendeBurcht @Vyolex)
+* :bubble_tea: Updated Traditional Chinese translation (@medicalwei)
+* :thailand: Updated Thai translation (@MausyMaz)
+* :ru: Updated Russian translation (@Pixel-Clay @daizenz @SummerArtz @Hornil)
+* :poland: Updated Polish translation (@l0ud @ReDoXpl @MenacingExiler @plfrmr)
+* :earth_americas: Updated Latinamerican Spanish translation (@MaxEvil47 @ImUrX)
+* :czech_republic: Updated Czech translation (@pesky12 @ImUrX)
+* :fr: Updated French translation (@Louka3000)
+* :jp: Updated Japanese translation (@yenmax @Coinbattery)
+* :brazil: Updated Brazilian Portuguese translation (@Mamagen @Gaabbu)
+* :finland: Updated Finnish translation (@valzzu)
+* :kr: Updated Korean translation (@Kamilake @infopcgood)
+* :it: Updated Italian translation (@Kamilake @Etch9)
+* :es: Updated Spain Spanish translation (@Louie365 @ImUrX @LunaStarlet @DznDani @ivanbogaeb)
+* :vietnam: Updated Vietnamese translation (@MenacingExiler)
+* :united_arab_emirates: Updated Arabic translation (@FennT @Modranklob)
+* :de: Updated German translation (@unlogisch04 @zahnatom @Piranja81 @TheDevMinerTV)
+
+## New Contributors
+* @DeBendeBurcht made their first contribution in #914
+* @Pixel-Clay made their first contribution in #914
+* @daizenz made their first contribution in #914
+* @pesky12 made their first contribution in #914
+* @Coinbattery made their first contribution in #914
+* @Louie365 made their first contribution in #914
+* @LunaStarlet made their first contribution in #914
+* @DznDani made their first contribution in #914
+* @ivanbogaeb made their first contribution in #914
+* @Modranklob made their first contribution in #914
+* @zahnatom made their first contribution in #914
+* @VocalFan made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/915
+* @sctanf made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/913
+* @Links2004 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/909
+* @ZRock35 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/965
+* @nekomona made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/964
+* @9il made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/998
+* @abb128 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/996
+
+**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.11.0...v0.12.0
+
+-------------------------------------
+1. Artwork made by @ButterscotchV [↩](#bingus-gentle)
+
+
+__________
+
+# v0.12.0-rc.4
+
+This is a release candidate. Back up your vrconfig.yml at `%AppData%\dev.slimevr.SlimeVR` before running.
+Please report all bugs in our [Discord server](https://slimevr.dev/discord), in the appropriate forum post in `#beta-testing-forum`!
+
+## Installation
+* Download the new release below and extract it.
+* Replace `slimevr.jar` and `slimevr.exe` in the install folder (`C:\Program Files (x86)\SlimeVR Server`)
+* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
+
+## What's Changed
+* Support Datagrams up to 1472 bytes by @9il in https://github.com/SlimeVR/SlimeVR-Server/pull/998
+* Fix missing space in BVH by @abb128 in https://github.com/SlimeVR/SlimeVR-Server/pull/996
+* Check if saved window size is at least the minimum allowed by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/993
+* Add compact IMU frame (rot+acc) by @9il in https://github.com/SlimeVR/SlimeVR-Server/pull/1001
+* update hid4java to 0.8 by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/992
+
+## New Contributors
+* @9il made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/998
+* @abb128 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/996
+
+**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.12.0-rc.3...v0.12.0-rc.4
+
+__________
+
+# v0.12.0-rc.3
+
+This is a release candidate. Back up your vrconfig.yml at `%AppData%\dev.slimevr.SlimeVR` before running.
+Please report all bugs in our [Discord server](https://slimevr.dev/discord), in the appropriate forum post in `#beta-testing-forum`!
+
+## Installation
+* Download the new release below and extract it.
+* Replace `slimevr.jar` and `slimevr.exe` in the install folder (`C:\Program Files (x86)\SlimeVR Server`)
+* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
+
+## What's Changed
+* dont prefix `v` on versions by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/988
+* assign knee when hasFoot for SteamVR by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/986
+* fix permission issue on export proportions by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/987
+* fix GUI visual bugs in autobone by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/985
+
+**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.12.0-rc.2...v0.12.0-rc.3
+
+__________
+
+# v0.12.0-rc.2
+
+This is a release candidate. Back up your vrconfig.yml at `%AppData%\dev.slimevr.SlimeVR` before running.
+Please report all bugs in our [Discord server](https://slimevr.dev/discord), in the appropriate forum post in `#beta-testing-forum`!
+
+## Installation
+* Download the new release below and extract it.
+* Replace `slimevr.jar` and `slimevr.exe` in the install folder (`C:\Program Files (x86)\SlimeVR Server`)
+* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
+
+## What's Changed
+* fix tauri issues by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/977
+* fix windows bundling not working by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/976
+* Fix hands warning button styling by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/978
+* Remove default keybind behavior in browser window by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/979
+* Revert packages that are broken by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/980
+* Make only search bar keybinds be prevented by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/981
+* Add support for left/right steamvr toggles by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/982
+
+**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.12.0-rc.1...v0.12.0-rc.2
+
+__________
+
+# v0.12.0-rc.1
+
+This is a release candidate. Back up your vrconfig.yml at `%AppData%\dev.slimevr.SlimeVR` before running.
+Please report all bugs in our [Discord server](https://slimevr.dev/discord), in the appropriate forum post in `#beta-testing-forum`!
+
+## Installation
+* Download the new release below and extract it.
+* Replace `slimevr.jar` and `slimevr.exe` in the install folder (`C:\Program Files (x86)\SlimeVR Server`)
+* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
+
+## What's Changed
+* Complete TODO of replacing quatToXyzAngles with toEulerAngles by @VocalFan in https://github.com/SlimeVR/SlimeVR-Server/pull/915
+* Prevent smoothing rollback by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/921
+* Update CODEOWNERS for SolarXR by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/928
+* Update FirmwareConstants.kt by @unlogisch04 in https://github.com/SlimeVR/SlimeVR-Server/pull/927
+* Add initial HID trackers support by @sctanf in https://github.com/SlimeVR/SlimeVR-Server/pull/913
+* don't send packets of bones we don't have by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/932
+* Add linux files for CODEOWNERS by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/936
+* Remove Futura from CODEOWNERS by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/935
+* Update appstream metadata info by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/892
+* Add tray support by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/897
+* show drift compensation in tracker preview by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/937
+* Change mounting position/rotation/direction to mounting orientation by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/939
+* allow to set the socket dir via SLIMEVR_SOCKET_DIR by @Links2004 in https://github.com/SlimeVR/SlimeVR-Server/pull/909
+* Add pause tracking toggle to user action packet by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/922
+* move biAlign into Quaternion.kt by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/940
+* Fixing small bugs by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/924
+* Migrate to pnpm by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/893
+* Add Serial Console Wifi Scan by @unlogisch04 in https://github.com/SlimeVR/SlimeVR-Server/pull/930
+* Remove changing acceleration space in hid tracker by @sctanf in https://github.com/SlimeVR/SlimeVR-Server/pull/945
+* Sleep if no HID device present by @sctanf in https://github.com/SlimeVR/SlimeVR-Server/pull/956
+* Add an error boundary for WebGL by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/942
+* Fix state bug on tray exit by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/944
+* fastSeek is not available on most browsers, use currentTime by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/954
+* Fix NaN rotation on reset with a zero quaternion by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/950
+* Fix macOS bundling giving an error by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/943
+* Update Kotlin and gradle plugins by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/957
+* Allow multiple servers in the same network by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/900
+* Connect one tracker at a time text adjustment by @ZRock35 in https://github.com/SlimeVR/SlimeVR-Server/pull/965
+* Make mounting reset follow headset rotation by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/953
+* Improve autobone GUI steps by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/960
+* Tpose down fix by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/967
+* Use tauri store for GUI config by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/923
+* Automatic SteamVR tracker switching by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/947
+* Make ktmath object-less by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/959
+* fix known devices not saving by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/969
+* fix onboarding tracker connect description key by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/968
+* Add network protocol version by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/972
+* Update SolarXR to main branch by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/973
+* Add Yaw Reset Smoothing by @nekomona in https://github.com/SlimeVR/SlimeVR-Server/pull/964
+* Update to latest GUI dependencies by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/905
+* Add toggle to save and load mounting reset by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/963
+
+## New Contributors
+* @VocalFan made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/915
+* @sctanf made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/913
+* @Links2004 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/909
+* @ZRock35 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/965
+* @nekomona made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/964
+
+**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.11.0...v0.12.0-rc.1
+
+__________
+
 # v0.11.0
 
 Please report all bugs in our [Discord server](https://slimevr.dev/discord) for now in the appropriate development channels (`#server`, `#gui`, `#autobone`, etc.). If you need tech support or are not sure if you did find a bug, please use the `#support-forum`.
@@ -970,365 +1252,5 @@ Flatpak is not being updated because our framework is using a old version of `we
 * @Piranja81 made their first contribution in #659
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.7.1...v0.8.0-rc.1
-
-__________
-
-# v0.7.1
-
-Please report all bugs in [Discord](https://slimevr.dev/discord) for now in the ``#support-forum`` forum! Please send all GUI problems to ``#gui`` channel! Help and support for VRChat's OSCTrackers is in ``#vrchat-osctrackers`` channel.
-
-## Use the installer to install or update!
-Use an installer to install or update SlimeVR if you're on Windows. You can find it here:
-* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
-* To run, open SlimeVR folder and launch slimevr.exe, or use shortcut from start menu or desktop
-
-### Flatpak distribution for Linux
-Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.slimevr.SlimeVR) and update it through there. You can install it by running: ``flatpak install flathub dev.slimevr.SlimeVR``
-
-## Changelog since v0.7.0
-* Change AutoBone's decay function to be more standard by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/630
-* Make config migration more robust by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/670
-
-
-**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.7.0...v0.7.1
-
-__________
-
-# v0.7.0
-
-Please report all bugs in [Discord](https://slimevr.dev/discord) for now in the ``#support-forum`` forum! Please send all GUI problems to ``#gui`` channel! Help and support for VRChat's OSCTrackers is in ``#vrchat-osctrackers`` channel.
-
-## Use the installer to install or update!
-Use an installer to install or update SlimeVR if you're on Windows. You can find it here:
-* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
-* To run, open SlimeVR folder and launch slimevr.exe, or use shortcut from start menu or desktop
-
-### Flatpak distribution for Linux
-Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.slimevr.SlimeVR) and update it through there. You can install it by running: ``flatpak install flathub dev.slimevr.SlimeVR``
-
-## Changelog since v0.6.3
-* New Pontoon translations by @SlimeVR-bot in https://github.com/SlimeVR/SlimeVR-Server/pull/597
-* server: Fix frame drops in SteamVR/Windows by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/607
-* VMC Support by @Louka3000, @ButterscotchV and @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/606
-* Use CSS selectors instead of an if in react for MainLayout buttons by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/605
-* server: Log resets from all sources by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/604
-* Convert AutoBone to Kotlin and extend PoseFrame data functionality by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/581
-* Add prettier to check formatting during CI linting by @TheDevMinerTV in https://github.com/SlimeVR/SlimeVR-Server/pull/557
-* Fix vrconfig crashing on load by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/613
-* [GUI] Improve window resizing behavior by @TheButlah in https://github.com/SlimeVR/SlimeVR-Server/pull/616
-* Convert AutoBone config to Kotlin and fix config loading by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/614
-* Toesnap and Footplant by @Stermere in https://github.com/SlimeVR/SlimeVR-Server/pull/609
-* [ImgBot] Optimize images by @imgbot in https://github.com/SlimeVR/SlimeVR-Server/pull/618
-* Rename resets by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/611
-* Add a ratio mode for manual offsets by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/615
-* feat: feedback sound when reset triggered by @marcozzxx810 in https://github.com/SlimeVR/SlimeVR-Server/pull/576
-* New Pontoon translations by @SlimeVR-bot in https://github.com/SlimeVR/SlimeVR-Server/pull/608
-* server: Implement non-blocking IO for VR bridges by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/629
-* gui: Volume slider for feedback sound by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/638
-* Fixes for sound feedback PR by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/637
-* Fix skeleton config loading by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/635
-* Disable leg tweaks on proportions by @Stermere in https://github.com/SlimeVR/SlimeVR-Server/pull/627
-* Separate MacOS artifact and label Windows artifact by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/640
-* Update AutoBone steps on the GUI to match the docs by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/636
-* Increase maximum smoothing by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/643
-* WiFi provisioning and serial fixes by @Eirenliel, @ImUrX and @TheDevMinerTV in https://github.com/SlimeVR/SlimeVR-Server/pull/590
-* Mounting reset improvements by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/641
-* Improve setup wizard by @ImUrX, @Spazznyan, @ButterscotchV and @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/639
-* Revert VRServer tick interval by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/644
-* Disable skeleton visualizer by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/646
-* Start including media framework on appimage by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/650
-* Simplify code and fix Android crash by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/645
-* Fix default tracker mounting state to be front correctly by @Eirenliel in https://github.com/SlimeVR/SlimeVR-Server/pull/651
-* Add more style to the GUI with icons by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/652
-* Fix TPS display for devices with >1 tracker by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/657
-* Replace butt icon by hip by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/658
-* New Pontoon translations by @SlimeVR-bot in https://github.com/SlimeVR/SlimeVR-Server/pull/633
-* Fix AutoBone wording (not an AI ;3) by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/661
-* Fix lower arm icon being hidden to the right by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/660
-* [ImgBot] Optimize images by @imgbot in https://github.com/SlimeVR/SlimeVR-Server/pull/662
-* Repair icons for linux by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/664
-* Theme support by @ImUrX and @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/663
-* feat: VRServer gracefully shutdown by @marcozzxx810 and @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/632
-
-### Translation changes
-* Updated :netherlands: Dutch translation (@Vyolex @namakeingo)
-* Updated :it: Italian translation (@namakeingo @Etch9)
-* Updated :earth_americas: Latinamerican Spanish translation (@ImUrX @ArcTheArc)
-* Updated :fr: French translation (@Louka3000 @The1Pigeon)
-* Updated :brazil: Brazilian Portuguese translation (@Gaabbu)
-* Updated :united_arab_emirates: Arabian translation (@FennT)
-* Updated :pleading_face: Engwish translation (@ButterscotchV @namakeingo @SummerArtz)
-* Updated :cn: Simplified Chinese translation (@Disappear9 @medicalwei)
-* Updated :de: German translation (@unlogisch04 @TheDevMinerTV)
-* Updated :kr: Korean translation (@Kamilake @LaeDev)
-* Updated :ru: Russian translation (@Hornil @SummerArtz)
-* Updated :bubble_tea: Traditional Chinese translation (@yenmax @medicalwei)
-* Updated :greece: Greek translation (@ody007gr)
-* Updated :poland: Polish translation (@ReDoXpl)
-* Updated :estonia: Estonian translation (@muumif)
-* Updated :jp: Japanese translation (@beq2169)
-
-## New Contributors
-* @Etch9 made their first contribution in #608 
-* @ody007gr made their first contribution in #597 
-* @LaeDev made their first contribution in #608 
-* @ArcTheArc made their first contribution in #633 
-
-**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.6.3...v0.7.0
-
-__________
-
-# v0.6.3
-
-Please report all bugs in [Discord](https://slimevr.dev/discord) for now in the ``#support-forum`` forum! Please send all GUI problems to ``#gui`` channel! Help and support for VRChat's OSCTrackers is in ``#vrchat-osctrackers`` channel.
-
-## Use the installer to install or update!
-Use an installer to install or update SlimeVR if you're on Windows. You can find it here:
-* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
-* To run, open SlimeVR folder and launch slimevr.exe, or use shortcut from start menu or desktop
-
-### Flatpak distribution for Linux
-Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.slimevr.SlimeVR) and update it through there. You can install it by running: ``flatpak install flathub dev.slimevr.SlimeVR``
-
-## Changelog since v0.6.2 (unsorted)
-* hide overlay when no initial response fronm it by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/600
-* Fix hip interpolation by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/603
-* Make offset go the right direction by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/602
-* fix row height by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/601
-* Start using localStorage for config by @ImUrX and @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/598
-* Upload artifacts to draft when new tag by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/599
-
-
-**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.6.2...v0.6.3
-
-__________
-
-# v0.6.2
-
-Please report all bugs in [Discord](https://slimevr.dev/discord) for now in the ``#support-forum`` forum! Please send all GUI problems to ``#gui`` channel! Help and support for VRChat's OSCTrackers is in ``#vrchat-osctrackers`` channel.
-
-## Use the installer to install or update!
-Use an installer to install or update SlimeVR if you're on Windows. You can find it here:
-* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
-* To run, open SlimeVR folder and launch slimevr.exe, or use shortcut from start menu or desktop
-
-### Flatpak distribution for Linux
-Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.slimevr.SlimeVR) and update it through there. You can install it by running: ``flatpak install flathub dev.slimevr.SlimeVR``
-
-## Changelog since v0.6.1
-* New Pontoon translations by @SlimeVR-bot in https://github.com/SlimeVR/SlimeVR-Server/pull/586
-* Add more tracker info by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/596
-* Load default values and toggles by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/595
-* Add linux feeder socket by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/592
-* Use hands everywhere instead of controller by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/588
-* Catch Tauri stuff so web version doesn't suffer by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/587
-
-### Translation changes
-* Updated :netherlands: Dutch translation (@Vyolex)
-* Updated :it: Italian translation (@namakeingo)
-* Updated :earth_americas: Latinamerican Spanish translation (@MaxEvil47)
-* Updated :fr: French translation (@Louka3000)
-* Updated :brazil: Brazilian Portuguese translation (@Gaabbu @vinchensyo)
-* Updated :united_arab_emirates: Arabian translation (@FennT)
-* Updated :pleading_face: Engwish translation (@ButterscotchV)
-* Updated :cn: Simplified Chinese translation (@Disappear9)
-* Updated :de: German translation (@unlogisch04)
-* Updated :kr: Korean translation (@Kamilake)
-* Updated :ru: Russian translation (@Hornil)
-* Updated :bubble_tea: Traditional Chinese translation (@yenmax)
-
-
-**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.6.1...v0.6.2
-
-__________
-
-# v0.6.1
-
-Please report all bugs in [Discord](https://slimevr.dev/discord) for now in the ``#support-forum`` forum! Please send all GUI problems to ``#gui`` channel! Help and support for VRChat's OSCTrackers is in ``#vrchat-osctrackers`` channel.
-
-## Use the installer to install or update!
-Use an installer to install or update SlimeVR if you're on Windows. You can find it here:
-* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
-* To run, open SlimeVR folder and launch slimevr.exe, or use shortcut from start menu or desktop
-
-### Flatpak distribution for Linux
-Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.slimevr.SlimeVR) and update it through there. You can install it by running: ``flatpak install flathub dev.slimevr.SlimeVR``
-
-## Changelog since v0.6.0:
-
-### Unsorted
-* Add User Action packet. Allows for reset buttons on trackers and not just tap detection to reset. by @carl-anders in https://github.com/SlimeVR/SlimeVR-Server/pull/457
-* Finished relicense by @TheButlah in https://github.com/SlimeVR/SlimeVR-Server/pull/428
-* Offsets refactor + add chest offset by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/443
-* Improve config reliability by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/476
-* gui: Fix UI wrapping in settings by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/467
-* Support arbitrary sensor id's for devices by @carl-anders in https://github.com/SlimeVR/SlimeVR-Server/pull/464
-* gui: Fix websocket send crash on reconnect by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/463
-* server: Send accel and ref-adjusted rotations by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/449
-* Do actions on creation of tag/branch by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/454 
-* Use `cache-apt-pkgs-action` for apt instead by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/474
-* Fix drift compensation affecting reset and fast resets by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/471
-* Add .editorconfig by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/469
-* Bring back elbow offset by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/470
-* gui: More info in tracker table and IMU visualizer by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/450
-* Add `BVHSettings` and allow writing end nodes by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/483
-* send messages to steamvr-driver on linux by @FredrikHson in https://github.com/SlimeVR/SlimeVR-Server/pull/489
-* Improve reset code and make it so VRTrackers can reset by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/480
-* gui: Fix battery indicator always full by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/492
-* Let code owners merge PRs by @Eirenliel in https://github.com/SlimeVR/SlimeVR-Server/pull/479
-* Better JVM detection by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/494
-* Fix osctracker id going out of bound by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/512
-* Mirror tracker assignment by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/518
-* Maintain compatibility with Java 19 by @Kamilake in https://github.com/SlimeVR/SlimeVR-Server/pull/508
-* Skeleton Separation Refactor by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/442
-* Better tracker velocity display by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/530
-* fix inputs unfocus by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/531
-* Use new drawings by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/532
-* Lots of misc gui fixes by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/516
-* fix server not building by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/538
-* Make battery percentage persist after tracker disconnect by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/536
-* Configure user for rebase script by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/535
-* Add a "clear drift compensation" button by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/505
-* Fix switching between HMD and controller arm tracking by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/504
-* Add query options for targeting an address by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/526
-* Llelievr/fix stepper number by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/546
-* add nix support for dev by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/548
-* Save last body proportions page used by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/551
-* Fix input/checkbox default values by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/550
-* Add a way to override current locale by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/543
-* refactor: remove full log and daily log by @marcozzxx810 in https://github.com/SlimeVR/SlimeVR-Server/pull/555
-* fix: websocket fail to bind to address due to time_wait by @marcozzxx810 in https://github.com/SlimeVR/SlimeVR-Server/pull/554
-* docs: include java version by @marcozzxx810 in https://github.com/SlimeVR/SlimeVR-Server/pull/556
-* Twemoji emojis by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/549
-* add lock files in CODEOWNERS by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/562
-* Make offsets increments 5 instead of 10 by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/564
-* Make IMU trackers start at # 1 by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/565
-* Support VRTrackers for protocol rotations by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/566
-* Add error for faulty Webview installation by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/559
-* ESLint action for GUI by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/553
-* Added package io.github.axisangles.ktmath by @AxisAngles in https://github.com/SlimeVR/SlimeVR-Server/pull/517
-* Remove the mounting reset button on the homepage by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/534
-* Add server infos request. And show local ip address inside gui settings by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/552
-* feat: log file size limiter by @marcozzxx810 in https://github.com/SlimeVR/SlimeVR-Server/pull/560
-* Fix solarxr module by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/570
-* Update README by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/572
-* Add macOS builds by @ImUrX #573 
-* Add warnings to the tracker selection page by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/547
-* Fix lang select being too long by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/571
-* Moving wifi provisioning and new device detection to the server by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/542
-* gui: Fix text wrapping in TrackerTable by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/567
-* gui: Fix undefined in temperature column by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/568
-* gui: Display raw rotation if no ref/ident-adjusted by @0forks in https://github.com/SlimeVR/SlimeVR-Server/pull/569
-* Fix trackers overflow in dev mode by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/575
-<!-- Uriel tried to sort this part -->
-* Linux: SteamVR support (@funnbot @ImUrX @FredrikHson) #273 #404 #461 #489 #528 SlimeVR/SlimeVR-OpenVR-Driver#27 SlimeVR/SlimeVR-OpenVR-Driver#35
-* Linux: Flatpak support (@ImUrX) #506 #529
-
-### Translation changes
-We are now using [Pontoon](https://i18n.slimevr.dev) for translations!
-* Use Pontoon for translations (@ImUrX) #521 #519 #533 
-* **Added :united_arab_emirates: Arabian translation (@FennT)**
-* **Added :czech_republic: Czech translation (@Jeeko336)** 
-* **Added :de: German translation (@TheDevMinerTV @unlogisch04 @Philip6294)** #354 #493 #495
-* **Added :finland: Finland translation (@siofrawell)** 
-* **Added :netherlands: Dutch translation (@Vyolex)** #465 #486 #490
-* **Added :norway: Norwegian Bokmål translation (@Darkowsness)**
-* **Added :ru: Russian translation (@SummerArtz @Eirenliel @Hornil)** #500
-* **Added :bubble_tea: Traditional Chinese translation (@medicalwei @yenmax)** 
-* Updated :earth_americas: Latinamerican Spanish translation (@MaxEvil47 @Fowels @DaryeDev @ImUrX) #473
-* Updated :estonia: Estonian translation (@muumif)
-* Updated :fr: French translation (@Louka3000 @BubbleSolaris) #491
-* Updated :it: Italian translation (@namakeingo @albanobattistella) #522
-* Updated :jp: Japanese translation (@tamakiti3010 @beq2169 @kaisuko) #496
-* Updated :kr: Korean translation (@Kamilake) #507
-* Updated :poland: Polish translation (@ReDoXpl) 
-* Updated :brazil: Brazilian Portuguese translation (@Gaabbu @vinchensyo)
-* Updated :vietnam: Vietnamese translation (@JINODK @MenacingExiler) #488 
-* Updated :cn: Simplified Chinese translations (@Disappear9 @medicalwei) #459 #487 #498 
-* Updated :pleading_face: OwO engwish (@Louka3000 @namakeingo) #499 #516 
-* Rename "wifi" to "Wi-Fi" and "SSID" to "Wi-Fi" name by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/468
-* Fix translations errors (@Louka3000 @ImUrX) #482 #513
-
-## New Contributors
-* @Vyolex made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/465
-* @FredrikHson made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/461
-* @Philip6294 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/354
-* @JINODK made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/488
-* @albanobattistella made their first contribution in #522
-* @SlimeVR-bot made their first contribution in #524 
-* @medicalwei made their first contribution in #524 
-* @MenacingExiler made their first contribution in #524 
-* @BubbleSolaris made their first contribution in #539 
-* @FennT made their first contribution in #539
-* @DaryeDev made their first contribution in #539 
-* @kaisuko made their first contribution in #539 
-* @beq2169 made their first contribution in #539 
-* @Darkowsness made their first contribution in #539 
-* @YourEternalRewardl made their first contribution in #545 
-* @iplusdvr made their first contribution in #545 
-* @ReDoXpl made their first contribution in #545 
-* @Jeeko336 made their first contribution in #545 
-* @FennT made their first contribution in #545 
-* @marcozzxx810 made their first contribution in #555
-* @siofrawell made their first contribution in #561
-* @vinchensyo made their first contribution in #561 
-* @SummerArtz made their first contribution in #500 
-* @Hornil made their first contribution in #561 
-* @AxisAngles made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/517
-
-**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.6.0...v0.6.1
-
-__________
-
-# v0.6.0
-
-Please report all bugs in [Discord](https://slimevr.dev/discord) for now in the #support-forum forum! Please send all new GUI problems to #gui channel! Help and support for VRChat's OSCTrackers is in #vrchat-osctrackers channel.
-
-## Use the installer to install or update!
-It is recommended that you use an installer to install or update SlimeVR if you're on Windows. You can find it here:
-* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
-* To run, open SlimeVR folder and launch slimevr.exe, or use shortcut from start menu or desktop
-
-## Changelog since v0.5.1:
-* **Added yaw drift compensation feature** that tries to compensate for drift after multiple resets. Useful for low-end IMUs, but almost no improvements to good IMUs or official slimes (@Louka3000, #436)
-* **Tap detection and functionality improved and expanded with different taps and functions supported** (@Stermere, #375, #432)
-* **Added support for Kotlin in the codebase** (@ImUrX, #401, #437)
-* Added "Vive tracker emulation" "feature" (available in Development mode, (do not report bugs)) (@Stermere, #418)
-* Improved support and CI for MacOS and Linux (@ImUrX, #412, #413)
-* Improve CI by automatically generating version information from github branch and commit (@ImUrX, #351, #441)
-* Window title changed to "SlimeVR" instead of "Slimevr UI" (@Louka3000, #441)
-* Fix "I'm having trouble connecting" page not opening in the setup wizard (@macluxHD, #359)
-* Basic workaround for using multiple sets on one network via config (@ButterscotchV, #383)
-* Minor fixes and cleanup (@ImUrX, @Louka3000, @TheButlah)
-
-### Translation changes
-* **Use Fluent syntax for translations** that allow more complex translation conditions for better support of different langauges (@ImUrX, #414, #416, #419, #423, #447)
-* Fix language selection menu not fitting on screen sometimes (@ImUrX, #406, #408)
-* Added Twimoj font for language flags (@carl-anders, #377)
-* **Added 🌎 Latin American Spanish translation** (@MaxEvil47, @Fowels, @ImUrX, #415, #425)
-* **Added 🇮🇹 Italian translation** (@namakeingo, #382, #409)
-* **Added 🇯🇵 Japanese translation** (@tamakiti3010, #374, #426)
-* **Added 🇪🇪 Estonian translation** (@muumif, #452)
-* Improved 🇫🇷 French translation (@Louka3000, HeySora #402) 
-* Improved 🇻🇳 Vietnamese translation (@MenacingExiler, @TheDevMinerTV , #448, #407)
-* Improved 🇧🇷 Brazilian Portuguese translation (@Gaabbu, #376, #429)
-* Improved 🇰🇷 Korean translation (@Kamilake, #391)
-* Improved 🇨🇳 Chinese translation (@Disappear9, @Naexen, #403, #410)
-* Improved 🇵🇱 Polish translation (@Yexoo, #387)
-* Minor changes to keys and tl system (@ImUrX, @Louka3000, #417, #419, #444, #451)
-
-Huge thanks to translation contributors! If you wish to contribute fixes or new languages, feel free to create a PR. Currently we coordinate translations via our Discord server, you can check the general translation forum thread here: https://discord.com/channels/817184208525983775/1050413434249949235 or threads near it for specific languages.
-
-## New Contributors
-* @macluxHD made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/359
-* @tamakiti3010 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/374
-* @namakeingo made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/382
-* @Disappear9 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/403
-* @Naexen made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/410
-* @MaxEvil47 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/415
-* @Fowels made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/415
-* @muumif made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/452
-
-**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.5.1...v0.6.0
 
 __________

@@ -4,7 +4,7 @@ set -e
 curl -L -s -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" \
   "https://api.github.com/repos/SlimeVR/SlimeVR-Server/releases" > releases.json
 
-VERSION=$(jq -c -r '.[0].name' < releases.json)
+VERSION=$(jq -c -r '.[0].tag_name' < releases.json)
 
 CURRENT_VERSION=$(grep "_tag=" PKGBUILD)
 CURRENT_VERSION=${CURRENT_VERSION#*=}
