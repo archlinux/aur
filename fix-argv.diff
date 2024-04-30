@@ -1,5 +1,5 @@
 diff --git a/packages/compass-preferences-model/src/global-config.ts b/packages/compass-preferences-model/src/global-config.ts
-index 30d287c2f..a8477996d 100644
+index 94362d8a6..611a9b05f 100644
 --- a/packages/compass-preferences-model/src/global-config.ts
 +++ b/packages/compass-preferences-model/src/global-config.ts
 @@ -195,8 +195,6 @@ export interface ParsedGlobalPreferencesResult {
