@@ -4,11 +4,11 @@ _pkgname=shinymeta
 _pkgver=0.2.0.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Export Domain Logic from Shiny using Meta-Programming"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-callr
   r-fastmap
@@ -22,6 +22,7 @@ depends=(
 checkdepends=(
   r-knitr
   r-rmarkdown
+  r-stringr
   r-testthat
 )
 optdepends=(
@@ -40,11 +41,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('5452325a791296ba7fb6725d937f9fb0')
-sha256sums=('095dffe6d8763edf42eabf91f606aad12f3a08271fcd9d7257c2812775793fd2')
+b2sums=('47de2bc551ac73dae79ce8c297f1741216049f502f88ea3e1f1e170e8352f79bc36805947f7de533e09cc6bee4850ef7484b867193bdca02f7a781fdf98f8441')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
