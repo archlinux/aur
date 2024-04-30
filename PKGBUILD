@@ -1,7 +1,7 @@
 _basepgkname=llamafile
 pkgname="${_basepgkname}-git"
 pkgver=0.8.1.r341.9cf7363
-pkgrel=1
+pkgrel=2
 pkgdesc="Distribute and run LLMs with a single file."
 arch=('x86_64')
 url="https://github.com/Mozilla-Ocho/llamafile"
@@ -48,9 +48,9 @@ package() {
 
 
   cd "${srcdir}/${pkgname}"
-  export CFLAGS=""
-  export LTOFLAGS=""  
-  export CXXFLAGS=""
-  export LDFLAGS=""
+  # export CFLAGS=""
+  # export LTOFLAGS=""  
+  # export CXXFLAGS=""
+  # export LDFLAGS=""
   sudo make install MODE=755 PREFIX="${pkgdir}/usr"
 }
