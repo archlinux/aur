@@ -2,7 +2,7 @@
 
 _pkgname=mauikit-terminal
 pkgname=$_pkgname-git
-pkgver=3.1.0.r12.g3c39ded
+pkgver=4.0.0.r68.gbdac2d3
 pkgrel=1
 pkgdesc='Terminal support components for Maui applications'
 url='https://invent.kde.org/maui/mauikit-terminal'
@@ -21,6 +21,13 @@ conflicts=($_pkgname)
 source=(git+$url.git)
 sha256sums=('SKIP')
 
+prepare() {
+  cd $_pkgname
+  git tag -d $(git tag -l) > /dev/null
+  git tag -a v4.0.0 8c1a7f10 -m v4.0.0
+  git checkout -b AUR
+}
+
 pkgver() {
   cd $_pkgname
   ( set -o pipefail
@@ -31,9 +38,9 @@ pkgver() {
 
 build() {
   cmake -B build -S $_pkgname \
-    -DBUILD_WITH_QT6=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_WITH_QT6=ON -Wno-dev \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
   cmake --build build
 }
