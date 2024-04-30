@@ -1,6 +1,8 @@
 pkg/
 src/
-wiliwili/
 
 *.log
 *.pkg.tar.zst
+*.pkg.tar.zst.sig
+
+wiliwili/
