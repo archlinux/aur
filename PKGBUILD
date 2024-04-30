@@ -1,10 +1,10 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 
 pkgname=('python-torchvision-rocm-bin')
-pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (binary release)"
+pkgdesc="Datasets, transforms, and models specific to computer vision (binary release)"
 pkgver=0.18.0
-pkgrel=1
-url="https://pytorch.org"
+pkgrel=2
+url="https://pytorch.org/vision"
 license=('BSD')
 arch=('x86_64')
 depends=(

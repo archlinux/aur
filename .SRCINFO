@@ -1,8 +1,8 @@
 pkgbase = python-torchvision-rocm-bin
-	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (binary release)
+	pkgdesc = Datasets, transforms, and models specific to computer vision (binary release)
 	pkgver = 0.18.0
-	pkgrel = 1
-	url = https://pytorch.org
+	pkgrel = 2
+	url = https://pytorch.org/vision
 	arch = x86_64
 	license = BSD
 	makedepends = python-setuptools
