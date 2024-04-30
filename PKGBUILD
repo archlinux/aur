@@ -6,15 +6,15 @@
 
 pkgname=libimobiledevice-git
 epoch=1
-pkgver=1.3.0.r219.g3969bc9
+pkgver=1.3.0.r224.g77c727b
 pkgrel=1
 pkgdesc="Library that talks the protocols to support iPhone and iPod Touch devices on Linux"
 url="http://www.libimobiledevice.org/"
 arch=(x86_64)
-license=(GPL2 LGPL2.1)
+license=('LGPL-2.1-or-later')
 depends=('glibc' 'libplist-git' 'libusbmuxd-git' 'libimobiledevice-glue-git' 'openssl')
-makedepends=('git' 'cython' 'python')
-optdepends=('python: for the Python bindings')
+makedepends=('git' 'cython' 'python' 'python-setuptools')
+optdepends=('python: Python bindings')
 provides=(libimobiledevice-1.0.so "libimobiledevice=$pkgver")
 conflicts=(libimobiledevice)
 source=("git+https://github.com/libimobiledevice/libimobiledevice")
@@ -33,6 +33,7 @@ prepare() {
 build() {
 	cd libimobiledevice
 	./configure --prefix=/usr
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
 }
 
