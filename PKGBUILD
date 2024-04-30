@@ -1,7 +1,7 @@
 # Maintainer: Haoxiang Fei <tonyfettes AT tonyfettes DOT com>
 
 pkgname=moonbit-bin
-pkgver=0.1.0.20240429
+pkgver=0.1.0.20240430
 pkgrel=1
 pkgdesc="Intelligent developer platform for Cloud and Edge using WASM"
 arch=('x86_64')
@@ -20,13 +20,13 @@ source=("${_origin}/ubuntu_x86/moon"
         "${_origin}/ubuntu_x86/mooninfo"
         "https://github.com/tonyfettes/moonbit-archlinux/releases/download/v${pkgver}/core.zip"
         "moon.sh")
-sha256sums=('82a2a2f2c86d05fb9e0a309c5a5687af3258e2bbca5e4bfa7c84401cb51a3596'
-            '7e609e8a94df923e30f6c13d7c06c58e29a33fc4b051a0d5d9512f9df1fdc1e1'
+sha256sums=('3652798d2a9107c6c2053bda2554f80c694fc0066673dfe3a31d7281f64e6ec8'
+            '4f99e0e0a1acb58ef3cc0a9022387b2b0cc86e201a8aaaa60cc4434d7e7163a9'
             'f851b7c40ee020c5313e1e7230817ab3e84d57700e90e484b3da3776d438b618'
-            '5949712cde430bce69b10b580dc8fcf7b3a22dfc92e69ea8611da4164283d59e'
-            '37521c30399bcda48604e6b4edbb41d56300882ed01519432c64eef9e415d30c'
-            'e802c0700c562ce6a541b087a0952baa8d768e061ba10b8d75ea898d1357553f'
-            '9faecc7d0988da7616269ae6a82a162b78d3dd59b5093ba849ce426b04f355ac'
+            'b3253676dde5e43c572203702c303de935d586d0e150c7c1cd97435f12577d30'
+            'cbc48773b6373099d98d3abd9a975acca1425d928c153d9e6a9258751b711bfc'
+            '9d62dd9af9330178ccc8f5d0bbb0cb0ba9bf995e158ba5e29ba0f30649a97f2e'
+            'd791dbf53ae527636753864f900d5595f093fd587211f9eac56bbec48b60279d'
             '58b177a4b0dda035620b8f5f44f1f26a251203924d1df927a8a00e0a78f9c13c')
 
 pkgver() {
