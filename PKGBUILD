@@ -1,12 +1,12 @@
 # Maintainer: Bruce Zhang <bruceutut@aur>
 pkgname=dolphin-quick-view
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple program to have a quick preview of the files in a folder (similar to Apple's Quick Look)"
 arch=('any')
 url="https://github.com/Nyre221/dolphin-quick-view"
 license=('GPL')
-depends=(python-pyqt5 python-poppler-qt5 dolphin dbus qt5-tools)
+depends=(pyside6 xclip wl-clipboard)
 optdepends=(
 	'libreoffice: for odt,csv,doc,docx support'
 )
