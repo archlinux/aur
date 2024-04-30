@@ -1,7 +1,7 @@
-# Maintainer: Johann Woelper <woelper@gmail.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=oculante-bin
 pkgver=0.8.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalistic image viewer with analysis and editing tools"
 arch=(
     'aarch64'
