@@ -1,27 +1,35 @@
-# Maintainer: Aleksander Heintz <alxandr@alxandr.me>
+# Maintainer: Paolo De Donato <dedonato 95 at hotmail dot it>
+# Contributor: Aleksander Heintz <alxandr@alxandr.me>
 
 pkgname=eww-wayland
-_pkgname=eww
-pkgver=0.4.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A standalone widget system for wayland made in Rust."
 url='https://github.com/elkowar/eww'
 arch=(x86_64)
 license=(MIT)
-makedepends=(rustup git)
-depends=(gtk3 gtk-layer-shell)
+makedepends=(cargo)
+depends=(glibc gcc-libs gtk3 libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell)
 conflicts=(eww-git eww)
 provides=(eww)
-source=("git+${url}#tag=v${pkgver}")
-md5sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/elkowar/eww/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('cef361946946c566b79f8ddc6208d1a3f16b4ff9961439a3f86935e1cfa174a1')
+
+prepare() {
+    cd "$srcdir/eww-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-  cd "${_pkgname}"
-  cargo build --release --package eww --no-default-features --features wayland
+    cd "$srcdir/eww-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --no-default-features --features=wayland
 }
 
 package() {
-  cd "${_pkgname}"
-  install -Dm755 target/release/eww "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    cd "$srcdir/eww-$pkgver"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -T -Dm0755 "target/release/eww" "$pkgdir/usr/bin/eww"
 }
