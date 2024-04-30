@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang <bruceutut@aur>
 pkgname=dolphin-quick-view
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Simple program to have a quick preview of the files in a folder (similar to Apple's Quick Look)"
 arch=('any')
