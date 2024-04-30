@@ -1,6 +1,6 @@
 pkgbase = papermc
 	pkgdesc = Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance
-	pkgver = 1.20.4+b364
+	pkgver = 1.20.6+b26
 	pkgrel = 2
 	url = https://papermc.io/
 	install = papermc.install
@@ -15,12 +15,12 @@ pkgbase = papermc
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
 	conflicts = papermc-git
-	noextract = papermc.1.20.4+b364.jar
+	noextract = papermc.1.20.6+b26.jar
 	backup = etc/conf.d/papermc
-	source = papermc.1.20.4+b364.jar::https://papermc.io/api/v2/projects/paper/versions/1.20.4/builds/364/downloads/paper-1.20.4-364.jar
-	source = LICENSE_1.20.4+b364.md::https://raw.githubusercontent.com/PaperMC/Paper/b4e3b3d/LICENSE.md
+	source = papermc.1.20.6+b26.jar::https://papermc.io/api/v2/projects/paper/versions/1.20.6/builds/26/downloads/paper-1.20.6-26.jar
+	source = LICENSE_1.20.6+b26.md::https://raw.githubusercontent.com/PaperMC/Paper/b4e3b3d/LICENSE.md
 	source = minecraft-server-1.0.4.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.4.tar.gz
-	sha512sums = 31dda44db5e818c17c210e11e0c8ae40b275fa17bb44c15c531d8e10eaa6d88a7319ebcacdcb6918d866afb7be75028b6959e1da64cd0720674d68d52567433e
+	sha512sums = 8aaa4ecdbfbd4a43b0f671c1bc1499dcdb5b0cd64a166b255141351185ba1289a508539eede9a9775559cf18b04104212de1aeba5cb7e8c0000d353eb726a663
 	sha512sums = d6e02d05f0cc3d3da6e131927292e77949ee00cfe3cdfbf50d8cfe21420260bdcdfd1f24451ddbc3b26344d8db02286b4bc172ec26baaef2615929aa80a3f2fb
 	sha512sums = dd4d68ca061c97a1e3cb5c0bb68439f7d8d45b15092344f3c4dbd4f7f39fef433d566670ad440970061007d93055183b570c7bf98f09c111ecdf8ab0f208f556
 
