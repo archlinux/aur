@@ -1,6 +1,6 @@
 pkgbase = python-overturemaps
 	pkgdesc = Python tools for interacting with Overture Maps (overturemaps.org) data.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://pypi.org/project/overturemaps/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-overturemaps
 	depends = python-click
 	depends = python-pyarrow
 	depends = python-shapely
-	source = https://files.pythonhosted.org/packages/source/o/overturemaps/overturemaps-0.3.0.tar.gz
-	sha256sums = 12ea55d9c6f906b18163c109b6522403dcd8b2c7269fa3137d34dbf4bb91ca29
+	source = https://files.pythonhosted.org/packages/source/o/overturemaps/overturemaps-0.4.0.tar.gz
+	sha256sums = ce20b13e9d8e4415fc5d93fef4ff77b9534bcec692b35dfb916a0b9fa6ed4bfd
 
 pkgname = python-overturemaps
