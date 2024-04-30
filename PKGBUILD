@@ -38,7 +38,7 @@ prepare() {
   sed -i -E '/^# Build ri-explain plugin/,$d' scripts/build-statics.sh
 
   _ensure_local_nvm
-  nvm install 18.15.0
+  nvm install 20.12.2
 }
 
 build() {
