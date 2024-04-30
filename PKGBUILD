@@ -10,8 +10,8 @@ depends=(pyside6 xclip wl-clipboard)
 optdepends=(
 	'libreoffice: for odt,csv,doc,docx support'
 )
-source=("https://github.com/Nyre221/dolphin-quick-view/releases/download/v$pkgver/quick_view_package.tar.gz")
-sha256sums=('9d1a7580768b04216727b4f99aeaf9f624187f4eba3e4c533f7f09df91746924')
+source=("https://github.com/Nyre221/dolphin-quick-view/releases/download/v$pkgver(Qt6)/quick_view_package.tar.gz")
+sha256sums=('485ed1270f37b903ad3139fb602e48c00c4d2799f46652f08b95b5d2129a5efd')
 
 build() {
 	cd "$srcdir/quick_view_package"
