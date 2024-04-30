@@ -1,0 +1,12 @@
+pkgbase = python-prusalinkpy
+	pkgdesc = PrusaLinkPy is a library to use the Prusa Link API.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/guillaume-rico/PrusaLinkPy
+	arch = x86_64
+	license = MIT
+	provides = python-prusalinkpy
+	source = python-prusalinkpy::git+https://github.com/guillaume-rico/PrusaLinkPy.git#commit=4f97578
+	sha512sums = SKIP
+
+pkgname = python-prusalinkpy
