@@ -1,7 +1,7 @@
 pkgbase = python-proton-core
 	pkgdesc = The proton-core component contains core logic used by the other Proton components.
 	pkgver = 0.1.16
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ProtonVPN/python-proton-core
 	arch = any
 	groups = ProtonVPN
@@ -9,6 +9,6 @@ pkgbase = python-proton-core
 	makedepends = git
 	makedepends = python-setuptools
 	source = git+https://github.com/ProtonVPN/python-proton-core.git#tag=v0.1.16
-	sha256sums = 266d69691dafb6d2d6010c959850372467dc56410960757881e864362e064240
+	sha256sums = SKIP
 
 pkgname = python-proton-core
