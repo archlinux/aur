@@ -1,6 +1,6 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -47,10 +47,10 @@ build: $(CLI)
+@@ -43,10 +43,10 @@ build: $(CLI)
  
  
  $(XD): $(WEBUI_CORE)
@@ -13,7 +13,7 @@
  
  $(CLI): $(XD)
  	$(RM) $(CLI)
-@@ -85,7 +85,7 @@ $(WEBUI_CORE): $(WEBUI_LOGO)
+@@ -81,7 +81,7 @@ $(WEBUI_CORE): $(WEBUI_LOGO)
  webui: $(WEBUI_CORE)
  
  no-webui:
