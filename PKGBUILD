@@ -2,7 +2,7 @@
 _target='compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.42.6-beta.2'
+_pkgver='1.42.6-beta.4'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version'
@@ -26,9 +26,9 @@ source=(
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
-sha512sums=('bf635cc5580488f9c37e91cb04c348d3d47015acf94fc936f825c89a053fd98927be87f6d54e04c06cbf3f646cc30625b199c4a1de2cbe3f11147844dab29ccc'
-            '6338626b9c957c79cd761f19a3d17d856ff88ce96d38c5507269b8dbaf3f20bef00012d035e5e1bde6493db495e2cfce172bcd021a5a8ae1c37dcb5f7a46a875'
-            '375142120fd97a3fd9e24d19c864ee3b24e50a5e6b0b224b7ce74742dc5bde185056a9b6f1add63d5ce66e3f0a9309e03873096540e5697547d60a2bc9e769ae'
+sha512sums=('7c340ca80022f7c4557e77ceea02213e431f7f0b0af05b012c1a64a9b63a3771d2888d3afa581f3fe96e70f42a4c1938d86fdf2ddc02328000bfa2ef30c34e97'
+            '8672c4c3d5ee5638166c4dfcf998c43dabab8e109aced465028c3da8e06e9b67d43ad6d52bb2ae0d44e732a015c9bec5008e5bbd01e38be8c231bfdce9619061'
+            'd9122abe1d31f4781138eefaf103998740b2bf16fb4cf4f94f42f048fd562f53d5ab2f4e806d14f5d6b3563ac7e37d3db64935e90a29c5fb0b2c65db5e6fafaf'
             'f09a6026e8b963f4821454fa8c2da8c750c765f26010fbf54dfbecfd7451dda5466464bb15fada1252545366c94bf448dc0529c8bd8114f6f3834ae00176d3f1')
 
 _sourcedirectory="compass-$_pkgver"
