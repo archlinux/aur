@@ -1,8 +1,8 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp.net-git
-pkgver=v2024.1.alpha+b9fa870
-pkgrel=4
+pkgver=v2024.1.alpha+d56eda8
+pkgrel=1
 pkgdesc="The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
@@ -64,7 +64,7 @@ build() {
 
 package() {
   # Add runtime-only dependencies
-  depends+=(postgresql)
+  depends+=(postgresql libvips)
 
   install -dm 755 "${pkgdir}/usr/share/iceshrimp.net"
   install -dm 755 "${pkgdir}/etc/iceshrimp.net"

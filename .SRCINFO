@@ -1,7 +1,7 @@
 pkgbase = iceshrimp.net-git
 	pkgdesc = The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database
-	pkgver = v2024.1.alpha+b9fa870
-	pkgrel = 4
+	pkgver = v2024.1.alpha+d56eda8
+	pkgrel = 1
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
 	install = iceshrimp.net.install
 	arch = x86_64
@@ -33,3 +33,4 @@ pkgname = iceshrimp.net-git
 	depends = aspnet-runtime>=8.0
 	depends = aspnet-runtime<9.0
 	depends = postgresql
+	depends = libvips
