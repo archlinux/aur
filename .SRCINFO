@@ -1,7 +1,7 @@
 pkgbase = wiliwili
 	pkgdesc = 专为手柄控制设计的第三方跨平台B站客户端
-	pkgver = 1.3.0
-	pkgrel = 4
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/xfangfang/wiliwili
 	arch = x86_64
 	arch = aarch64
@@ -25,7 +25,7 @@ pkgbase = wiliwili
 	depends = pystring
 	depends = tinyxml2
 	depends = zlib
-	source = wiliwili::git+https://github.com/xfangfang/wiliwili.git#tag=v1.3.0
-	b2sums = SKIP
+	source = wiliwili::git+https://github.com/xfangfang/wiliwili.git#tag=v1.4.0
+	b2sums = 59dbdbd732a122695608be7c2fd6ab2e153ecb395419ffd7e8bab79330589f922ba78fc57772eafa548d4cefa6f2757b6910d3f3dff072e1dfccc98d33121050
 
 pkgname = wiliwili
