@@ -4,8 +4,8 @@
 # Contributor: sukanka <su975853527 at gmail dot com>
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
-pkgver=3.0.11
-_electronversion=28
+pkgver=3.0.12
+_electronversion=30
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.Use system-wide electron."
 arch=('x86_64')
@@ -27,8 +27,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9afc155fc4618d17a764dc1bb403592ba63d1c9b7bb192f37ece50fa0b9b8942'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('82b184611529957e2b148de7d40463de4bc70a66026f7a4059060a7e018aeb41'
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
