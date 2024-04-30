@@ -6,8 +6,8 @@ pkgbase = compiz-easy-patch
 	install = compiz-easy-patch.install
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = LGPL
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
 	license = MIT
 	makedepends = boost
 	makedepends = cmake
@@ -23,20 +23,20 @@ pkgbase = compiz-easy-patch
 	depends = libxslt
 	depends = metacity
 	depends = protobuf
-	depends = python-gobject
 	depends = python-cairo
+	depends = python-gobject
 	depends = xorg-server
 	depends = zenity
 	optdepends = xorg-xprop: grab various window properties for use in window matching rules
 	optdepends = xfce-theme-greybird: A grey and blue Xfce theme
-	provides = ccsm=0.9.14.2
-	provides = compiz-bcop=0.9.14.2
-	provides = compiz-core=0.9.14.2
-	provides = compiz-plugins-extra=0.9.14.2
-	provides = compiz-plugins-main=0.9.14.2
-	provides = compizconfig-python=0.9.14.2
-	provides = libcompizconfig=0.9.14.2
-	provides = compiz=0.9.14.2
+	provides = ccsm=0.9.14
+	provides = compiz-bcop=0.9.14
+	provides = compiz-core=0.9.14
+	provides = compiz-plugins-extra=0.9.14
+	provides = compiz-plugins-main=0.9.14
+	provides = compizconfig-python=0.9.14
+	provides = libcompizconfig=0.9.14
+	provides = compiz=0.9.14
 	conflicts = ccsm
 	conflicts = compiz-bcop
 	conflicts = compiz-core
@@ -50,7 +50,7 @@ pkgbase = compiz-easy-patch
 	conflicts = compiz
 	conflicts = compiz-manjaro
 	replaces = compiz-manjaro
-	source = https://launchpad.net/compiz/0.9.14/0.9.14.2/+download/compiz-0.9.14.2.tar.xz
+	source = compiz-0.9.14.2.tar.xz::https://launchpad.net/compiz/0.9.14/0.9.14.2/+download/compiz-0.9.14.2.tar.xz
 	source = focus-prevention-disable.patch
 	source = gtk-extents.patch
 	source = reverse-unity-config.patch
