@@ -1,0 +1,16 @@
+pkgbase = python-pydub-git
+	pkgdesc = Manipulate audio with a simple and easy high level interface
+	pkgver = 0.25.1.r9.g996cec4
+	pkgrel = 1
+	url = https://github.com/jiaaro/pydub
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = ffmpeg
+	optdepends = python-pyaudio: for playback
+	optdepends = python-simpleaudio: for playback
+	source = git+https://github.com/jiaaro/pydub.git
+	sha512sums = SKIP
+
+pkgname = python-pydub-git
