@@ -4,11 +4,11 @@ _pkgname=DGEobj.utils
 _pkgver=1.0.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Differential Gene Expression (DGE) Analysis Utility Toolkit"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-assertthat
   r-dgeobj
@@ -49,11 +49,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8acaeb2945ce80bd2f83f88ef365c88f')
-sha256sums=('734c961fcb346643707e693825b4d6d5f1ee4fea4c9bb952d5d1ab2dccf7eb06')
+b2sums=('6e4b053a97206f595bc13933603b3976d5fccaf1c87211d29ac3ebbb34a58cc6a8d5cdc422d593779d8233c78c98cc33dee5a71db53c946bf33abcc0a54e993a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
