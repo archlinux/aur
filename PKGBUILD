@@ -15,7 +15,7 @@ source=("Linux_x64_Executable.zip::$(curl -s https://api.github.com/repos/bitsco
 sha256sums=('SKIP')
 arch=('x86_64')
 pkgver=8.0.3
-pkgrel=2
+pkgrel=3
 
 package() {
   install -dm755 "$pkgdir/opt/Bitscoper_Cyber_ToolBox/"
