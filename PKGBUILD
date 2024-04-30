@@ -4,7 +4,7 @@
 pkgname=python-nptyping
 _name="${pkgname#python-}"
 pkgver=2.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Type hints for Numpy'
 url="https://github.com/ramonhagenaars/nptyping"
 arch=(x86_64)
@@ -12,7 +12,6 @@ license=(MIT)
 depends=(
   python
   python-numpy
-  python-typing_extensions
 )
 makedepends=(
   python-build
