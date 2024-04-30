@@ -1,3 +1,5 @@
+# Maintainer: Evan Chen <evan@evanchen.cc>
+
 pkgname=python-grilops
 _name=${pkgname#python-}
 pkgver=0.10.3
