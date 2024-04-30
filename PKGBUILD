@@ -12,7 +12,6 @@ source=("zz::git+https://github.com/eeec-cal/zz")
 sha256sums=('SKIP')
 
 
-
 prepare() {
 	cd zz
 	chmod +x zz
