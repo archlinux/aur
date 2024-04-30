@@ -16,7 +16,7 @@ depends=('hicolor-icon-theme' 'zlib')
 # Use curl to get the filename and extract the version
 # pkgver=$(curl -s -o /dev/null -D - -r 0-0 https://download.cursor.sh/linux/appImage/x64 | grep -o -E 'filename=.*$' | sed -e 's/.*cursor-\(.*\)\(.*\)\.AppImage.*/\1\.\2/')
 
-source=("${_pkgname}-${pkgver}.AppImage::https://download.cursor.sh/linux/appImage/x64")
+source=("${_pkgname}-${pkgver}.AppImage::https://downloader.cursor.sh/linux/appImage/x64")
 sha256sums=('2f0aae4c6036745b4e8dfeb5851eaaac1eb7b821c19146c1d4f4d2436be4ffc5')
 _install_path="/opt/appimages"
 
