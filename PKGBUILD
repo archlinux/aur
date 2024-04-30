@@ -1,6 +1,6 @@
 # Maintainer: Totor <totor.linuxdev@gmail.com>
 pkgname='zz'
-pkgver=1.0
+pkgver=$(date | awk -F: '{print $2""$3}' | awk '{print $1$4}')
 pkgrel=1
 pkgdesc="AUR Helper Helper"
 arch=('x86_64')
