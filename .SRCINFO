@@ -1,7 +1,7 @@
 pkgbase = vcvrack-questionablemodules-bin
 	pkgdesc = Questionable Modules for VCVRack
 	pkgver = 2.1.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isivisi/questionablemodules
 	arch = x86_64
 	license = GPL
