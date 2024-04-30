@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=4.3.0.r0.g705eb80b
+pkgver=4.3.1.r0.gb8c8eb5e
 _electronversion=18
 _nodeversion=16
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://www.beekeeperstudio.io/"
 _ghurl="https://github.com/beekeeper-studio/beekeeper-studio"
 license=('GPL-3.0-only')
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'npm'
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
