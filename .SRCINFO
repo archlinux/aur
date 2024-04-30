@@ -1,7 +1,7 @@
 pkgbase = modsecurity-crs
 	pkgdesc = OWASP ModSecurity Core Rule Set
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://coreruleset.org
 	install = modsecurity-crs.install
 	arch = any

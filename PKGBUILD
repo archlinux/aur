@@ -2,7 +2,7 @@
 
 pkgname="modsecurity-crs"
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OWASP ModSecurity Core Rule Set"
 url="https://coreruleset.org"
 license=("Apache-2.0")
