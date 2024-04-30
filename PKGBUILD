@@ -202,6 +202,25 @@ build() {
   )
 
   cmake "${_cmake_options[@]}"
+
+  # A race condition consistently causes build to fail with the following conditions:
+  # * processor has more than 4 threads
+  # * compile folder is located on a spindle hdd
+  # * MAKEFLAGS is configured to run more than 4 jobs at the same time
+  # Limiting max simultaneous make jobs to 4 or less seems to work around the issue
+  mjobs=4; [[ "$(nproc)" -lt 4 ]] && mjobs="$(nproc)"
+  if [[ "$MAKEFLAGS" = "" ]]; then
+    MAKEFLAGS="-j$mjobs"
+  else
+    curmjobs="$(echo "$MAKEFLAGS"|grep -oE '\-j[0-9]+'|cut -d'j' -f2)"
+    if [[ "$curmjobs" = "" ]]; then
+      MAKEFLAGS+=" -j$mjobs"
+    else
+      [[ "$curmjobs" -gt "$mjobs" ]] && MAKEFLAGS="${MAKEFLAGS//-j$curmjobs/-j$mjobs}"
+    fi
+  fi
+  export MAKEFLAGS
+
   cmake --build build
 }
 
