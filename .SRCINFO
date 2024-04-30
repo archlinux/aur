@@ -13,8 +13,8 @@ pkgbase = python-uhi
 	makedepends = python-installer
 	makedepends = python-hatch-vcs
 	makedepends = python-hatchling
+	depends = python
 	depends = python-numpy
-	depends = python-typing_extensions
 	depends = root
 	source = python-uhi-0.4.0::git+https://github.com/scikit-hep/uhi#tag=v0.4.0
 	sha256sums = 570ff7385e8a30f0744ce440a6d3b1d0232ffaa1643d4346913a93043c5ffe7a

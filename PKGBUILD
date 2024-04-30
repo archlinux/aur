@@ -8,7 +8,7 @@ pkgdesc="Contains the code for the PlottableHistogram Protocol, to be used in ty
 arch=('any')
 url='https://github.com/scikit-hep/uhi'
 license=('MIT')
-depends=('python-numpy' 'python-typing_extensions' 'root')
+depends=('python' 'python-numpy' 'root')
 makedepends=('git' 'python-build' 'python-installer' 'python-hatch-vcs' 'python-hatchling')
 checkdepends=('python-pytest' 'python-boost-histogram' 'python-importlib-metadata')
 source=("${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}")
