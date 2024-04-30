@@ -1,13 +1,13 @@
 pkgbase = simcity-2000-gog
 	pkgdesc = Now you can design any city you can imagine and SimCity 2000 will bring it, and its resident Sims, to life.
 	pkgver = 1.0se
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gog.com/game/simcity_2000_special_edition
 	install = simcity-2000-gog.install
 	arch = any
 	groups = games
 	license = custom:eula
-	makedepends = innoextract-git
+	makedepends = innoextract
 	makedepends = icoutils
 	depends = dosbox
 	optdepends = unionfs-fuse: mounting game folder to home for savegames and settings
@@ -31,4 +31,3 @@ pkgbase = simcity-2000-gog
 	sha256sums = 29dbb68855c778d664f603bca889f7b156acaeed7a39f50bf35a60f13d6d0e12
 
 pkgname = simcity-2000-gog
-

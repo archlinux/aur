@@ -2,13 +2,13 @@
 
 pkgname=simcity-2000-gog
 pkgver=1.0se
-pkgrel=2
+pkgrel=3
 pkgdesc="Now you can design any city you can imagine and SimCity 2000 will bring it, and its resident Sims, to life."
 url="https://www.gog.com/game/simcity_2000_special_edition"
 license=('custom:eula')
 groups=('games')
 arch=('any')
-makedepends=('innoextract-git' 'icoutils')
+makedepends=('innoextract' 'icoutils')
 depends=('dosbox')
 optdepends=('unionfs-fuse: mounting game folder to home for savegames and settings')
 install=$pkgname.install
