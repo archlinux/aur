@@ -1,7 +1,7 @@
 pkgbase = bitscoper-cyber-toolbox-bin
 	pkgdesc = A Flutter application consisting of TCP Port Scanner, Route Tracer, File Hash Calculator, String Encoder, Series URI Crawler, DNS Record Retriever, and WHOIS Retriever.
 	pkgver = 8.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = bitscoper-cyber-toolbox-bin
 	depends = gtk3
 	provides = bitscoper-cyber-toolbox-bin
 	options = !debug
-	source = Linux_x64_Executable.zip::https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/releases/download/v8.0.3%2B11/Linux_x64_Executable.zip
+	source = https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/releases/latest/download/Linux_x64_Executable.zip
 	sha256sums = SKIP
 
 pkgname = bitscoper-cyber-toolbox-bin

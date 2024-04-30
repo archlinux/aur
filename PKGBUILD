@@ -11,11 +11,11 @@ depends=('gtk3')
 # optdepends=('')
 options=(!debug)
 # install="${pkgname%}.install"
-source=("Linux_x64_Executable.zip::$(curl -s https://api.github.com/repos/bitscoper/Bitscoper_Cyber_ToolBox/releases/latest | jq -r '.assets[] | select(.name | contains("Linux_x64_Executable.zip")) | .browser_download_url')")
+source=('https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/releases/latest/download/Linux_x64_Executable.zip')
 sha256sums=('SKIP')
 arch=('x86_64')
 pkgver=8.0.3
-pkgrel=3
+pkgrel=4
 
 package() {
   install -dm755 "$pkgdir/opt/Bitscoper_Cyber_ToolBox/"
