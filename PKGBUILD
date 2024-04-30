@@ -1,31 +1,29 @@
-# Maintainer: xginn8 <mamcgi@gmail.com>
+# Maintainer: gilcu3
+# Contributor: xginn8 <mamcgi@gmail.com>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Dan Beste <Dan.Ray.Beste@gmail.com>
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 _pkgname='python-black'
 pkgname="${_pkgname}-git"
-pkgver=21.8b0.r2.g77d11bb
+pkgver=24.4.2.r3.g0c033f3e
 pkgrel=1
 pkgdesc='Uncompromising Python code formatter'
 arch=('any')
 url='https://github.com/psf/black'
 license=('MIT')
-depends=('python'
-        'python-appdirs'
-        'python-click'
-        'python-mypy_extensions'
-        'python-pathspec'
-        'python-regex'
-        'python-setuptools'
-        'python-toml'
-        'python-typed-ast'
-        'python-typing_extensions')
-makedepends=('git' 'python-setuptools')
-optdepends=('python-aiohttp: for the blackd HTTP server'
-            'python-aiohttp-cors: for the blackd HTTP server'
+depends=('python' 'python-click' 'python-mypy_extensions' 'python-packaging'
+         'python-pathspec' 'python-platformdirs')
+makedepends=('python-build' 'python-hatch-fancy-pypi-readme' 'python-hatch-vcs'
+             'python-hatchling' 'python-installer')
+checkdepends=('ipython' 'python-aiohttp' 'python-parameterized' 'python-pytest'
+              'python-typed-ast' 'python-tokenize-rt')
+optdepends=('ipython: for Jupyter notebook support'
+            'python-tokenize-rt: for Jupyter notebook support'
+            'python-aiohttp: for the blackd HTTP server'
             'python-colorama: for colored diffs')
-provides=("${_pkgname}")
+provides=('python-black')
+conflicts=('python-black')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -35,14 +33,22 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
   cd "${_pkgname}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s "$site_packages"/black-$pkgver.dist-info/licenses/LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  # Vim plugin
+  install -Dm644 -t "$pkgdir/usr/share/vim/vimfiles/plugin" plugin/black.vim
+  install -Dm644 -t "$pkgdir/usr/share/vim/vimfiles/autoload" autoload/black.vim
 }
 
 # vim: ts=2 sw=2 et:
