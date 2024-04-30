@@ -1,7 +1,7 @@
 pkgbase = python-hist
 	pkgdesc = Python bindings for Boost's Histogram library.
 	pkgver = 2.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-hep/hist
 	arch = any
 	license = BSD-3-Clause
