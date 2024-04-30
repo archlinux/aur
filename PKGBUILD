@@ -60,7 +60,6 @@ package_autokey-common() {
   rm -f "$pkgdir/usr/share/man/man1/$pkgbase"{-gtk*,-qt*}
   rm -rf "${pkgdir}${site_packages}/$pkgbase/"{gtkui,qtui}
   rm -f "${pkgdir}${site_packages}/$pkgbase/"scripting/*{_qt,_gtk}.py
-  rm -f "${pkgdir}${site_packages}/$pkgbase/"__pycache__/{gtk,qt}app.*
   rm -rf "$pkgdir/usr/share/applications"
 
   # Manually compile Python bytecode for only installed files
