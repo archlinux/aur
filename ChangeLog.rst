@@ -1,3 +1,28 @@
+S3QL 5.2.0 (2024-04-19)
+=======================
+
+* S3QL now needs Python 3.8+. Python 3.7 is end of life as of 2023-06-27.
+
+* S3QL does not depend on packaging anymore. It was an undocumented dependency
+  for a simple version compare of the Swift backend. This compare is not
+  necessary anymore.
+
+* There is a new s3c4 backend, suitable for storage providers offering an
+  S3 compatible API with v4 signatures.
+
+S3QL 5.1.3 (2023-12-08)
+=======================
+
+* fsck.s3ql no longer attempts to verify unclean metadata backups, which
+  in the past led to spurious warnings and crashes.
+
+* Fixed a crash in the b2 backend.
+
+S3QL 5.1.2 (2023-09-26)
+=======================
+
+* Various small bugfixes, b2 backend should be working again.
+
 S3QL 5.1.1 (2023-08-06)
 =======================
 

@@ -1,4 +1,5 @@
-# Maintainer: Aloxaf <aloxafx at gmail dot com>
+# Maintainer: Aleksei <aur at devass dot club>
+# Contributor: Aloxaf <aloxafx at gmail dot com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kazuki Sawada <kazuki@6715.jp>
 # Contributor: Lalit Maganti <laitmaganti@gmail.com>
