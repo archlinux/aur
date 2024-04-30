@@ -2,8 +2,8 @@
 
 pkgname=zapzap
 _pkgname=com.rtosta.zapzap
-pkgver=5.3
-pkgrel=2
+pkgver=5.3.1
+pkgrel=1
 pkgdesc='WhatsApp desktop application written in Pyqt6 + PyQt6-WebEngine'
 arch=(x86_64)
 url="https://github.com/$pkgname-linux/$pkgname" 
@@ -12,7 +12,7 @@ depends=('python-pyqt6' 'python-pyqt6-webengine' 'dbus-python' 'qt6-wayland' 'py
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools>=40.8.0' 'python-wheel' 'desktop-file-utils')
 optdepends=('hunspell: spell check')
 source=(git+$url#tag=$pkgver)
-b2sums=('a5ba89dbe3fa27aa432f22595fe85422578cca9dfd92c03ae112d4af0b2eac353b5d9dbc2a2747a7c423bbf2d0e38b72e3abe04f4b7880235c024bf83724d4dd')
+b2sums=('5549042fbc6ec591ac69903bedc2a35cd26ffb22d90f7024ce1ea6cf9c4aeecce31a3793aed5b8288da84df6352b157483c6fc30d27c0618a8e3e652494bdef4')
 
 build() {
   cd $pkgname
