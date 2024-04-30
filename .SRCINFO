@@ -1,0 +1,19 @@
+pkgbase = microsoft-openjdk-11-bin
+	pkgdesc = Microsoft build of OpenJDK
+	pkgver = 11.0.23
+	pkgrel = 1
+	url = https://www.microsoft.com/openjdk
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-runtime-headless=11
+	provides = java-runtime=11
+	provides = java-environment=11
+	source = https://aka.ms/download-jdk/microsoft-jdk-11.0.23-linux-x64.tar.gz
+	source = https://aka.ms/download-jdk/microsoft-jdk-11.0.23-linux-x64.tar.gz.sig
+	validpgpkeys = B602433384B8991302924D8235531D315B21C189
+	sha256sums = be22268ac403112dc3fa785e5d8ae92e16a657e1d95f0bf21a2705e5420038b7
+	sha256sums = SKIP
+
+pkgname = microsoft-openjdk-11-bin
