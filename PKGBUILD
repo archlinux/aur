@@ -1,85 +1,72 @@
-# Maintainer: CodeXYZ <jesusbalbastro@gmail.com>
-# Maintainer: Mateusz Gozdek <mgozdekof@gmail.com>
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
+# Contributor: CodeXYZ <jesusbalbastro@gmail.com>
+# Contributor: Mateusz Gozdek <mgozdekof@gmail.com>
 # Contributor: Rein Fernhout <me@levitati.ng>
-# Past Contributor: James An <james@jamesan.ca>
+# Contributor: James An <james@jamesan.ca>
 
 pkgbase=droidcam
-pkgname=('droidcam' 'v4l2loopback-dc-dkms')
-pkgver=2.1.2
+pkgname=(droidcam v4l2loopback-dc-dkms)
+pkgver=2.1.3
 pkgrel=1
 epoch=1
-pkgdesc='A tool for using your android device as a wireless/usb webcam'
+pkgdesc="A tool to turn your phone/tablet into a wireless/usb webcam"
 arch=('x86_64')
-url="https://github.com/dev47apps/${pkgbase}"
-license=('GPL')
-makedepends=('libappindicator-gtk3' 'gtk3' 'ffmpeg' 'libusbmuxd')
-
-source=("${pkgbase}.desktop"
+url="https://github.com/dev47apps/droidcam"
+license=('GPL-2.0-or-later')
+makedepends=('alsa-lib' 'ffmpeg' 'libappindicator-gtk3' 'libjpeg-turbo' 'libusbmuxd' 'gtk3' 'speex')
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "dkms.conf"
-        "${pkgbase}.conf"
-        "${pkgbase}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
-)
-
-sha256sums=('90dd73cf146fae0de0c11b46e97412d2aaca50ec879e1be2d793261e853dd0d3'
-            '1e91f58ae83d433d32b483b14f1bb39cc245d2ace711b12c894de27dd2ea3413'
-            '1d4b3ff98b4af9de77a24d1b6fad6e004deadf1f157eb800aa878ba1e7693dac'
-            'c669ccac95a91b5a673eef6dfceb785658f337e69c2fe0f7b1d34c82ad00e04b')
+        "${pkgbase}.conf")
+sha256sums=('0eb46c1ef19bce817b78740600d5451d14f7b279ebfd4605993d81f96aad08db'
+            '20de9d14877732f2f75c21bdd4c335c71dcaeccab4ce348c6c0a210f622ceed2'
+            '1d4b3ff98b4af9de77a24d1b6fad6e004deadf1f157eb800aa878ba1e7693dac')
 
 prepare() {
   # Generate the module loading configuration files
   echo "options v4l2loopback_dc width=640 height=480" >| "${pkgbase}.modprobe.conf"
+
+  sed -i "s/@PKGVER@/${pkgver}/" dkms.conf
+
+  cd "${pkgbase}-${pkgver}"
+  sed -i 's|/opt/droidcam-icon.png|/usr/share/pixmaps/droidcam.png|' src/droidcam.c
+  sed -i -e 's|/usr/local/bin/||' -e 's|/opt/droidcam-icon.png|droidcam|' droidcam.desktop
+
 }
 
 build() {
-  cd ${pkgbase}-${pkgver}
+  cd "${pkgbase}-${pkgver}"
 
   # All JPEG* parameters are needed to use shared version of libturbojpeg instead of
   # static one.
   #
   # Also libusbmuxd requires an override while linking.
-  make JPEG_DIR="/usr/lib" JPEG_INCLUDE="/usr/include" JPEG_LIB="-lturbojpeg" USBMUXD=-lusbmuxd-2.0
+  make JPEG_DIR='/usr/lib' JPEG_INCLUDE='/usr/include' USBMUXD='-lusbmuxd-2.0'
 }
 
 package_droidcam() {
-  depends=('alsa-lib' 'libjpeg-turbo' 'ffmpeg' 'v4l2loopback-dc-dkms' 'libusbmuxd')
-  optdepends=('gtk3: use GUI version in addition to CLI interface' 'libappindicator-gtk3: use GUI version in addition to CLI interface')
+  depends=('alsa-lib' 'ffmpeg' 'glib2' 'glibc' 'gtk3' 'libappindicator-gtk3' 'libjpeg-turbo' 'libusbmuxd' 'libx11' 'pango' 'speex' 'V4L2LOOPBACK-MODULE')
 
-  pushd ${pkgbase}-${pkgver}
-
+  cd "${pkgbase}-${pkgver}"
   # Install droidcam program files
-  install -Dm755 "${pkgbase}" "$pkgdir/usr/bin/${pkgbase}"
-  install -Dm755 "${pkgbase}-cli" "$pkgdir/usr/bin/${pkgbase}-cli"
-  install -Dm644 icon2.png "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
-  install -Dm644 icon2.png "${pkgdir}/opt/droidcam-icon.png"
-  install -Dm644 "${srcdir}/${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
-  install -Dm644 "${srcdir}/${pkgbase}.conf" "${pkgdir}/etc/modules-load.d/${pkgbase}.conf"
-  install -Dm644 README.md "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+  install -Dm755 "${pkgname}" "${pkgname}-cli" -t "${pkgdir}/usr/bin"
+  install -Dm644 icon2.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "${srcdir}/${pkgname}.conf" -t "${pkgdir}/etc/modules-load.d"
 }
 
 package_v4l2loopback-dc-dkms() {
+  pkgdesc='v4l2-loopback kernel module - DroidCam version'
+  arch=('any')
   depends=('dkms')
+  provides=('V4L2LOOPBACK-MODULE')
   backup=("etc/modprobe.d/${pkgbase}.conf")
 
-  _pkgname=v4l2loopback-dc
-  local install_dir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
-
-  # Copy dkms.conf
-  install -Dm644 dkms.conf "${install_dir}/dkms.conf"
-
-  # Set name and version
-  sed -e "s/@_PKGNAME@/${_pkgname}/" -e "s/@PKGVER@/${pkgver}/" -i "${install_dir}/dkms.conf"
+  _pkgname="${pkgname%-*}"
 
   # Install module loading configuration
   install -Dm644 "${pkgbase}.modprobe.conf" "${pkgdir}/etc/modprobe.d/${pkgbase}.conf"
 
   # Install module source
-  cd ${pkgbase}-${pkgver}/v4l2loopback
-
-  for d in $(find . -type d); do
-    install -dm755 "${install_dir}/${d}"
-  done
-
-  for f in $(find . -type f ! -name '.gitignore'); do
-    install -m644 "${f}" "${install_dir}/${f}"
-  done
+  cd "${pkgbase}-${pkgver}/v4l2loopback"
+  install -Dm644 Makefile test.c v4l2loopback-dc.c "${srcdir}/dkms.conf" -t "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 }
