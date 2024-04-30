@@ -1,0 +1,16 @@
+pkgbase = joal-desktop-appimage
+	pkgdesc = A desktop application for JOAL. Plug and play, no additional download or configuration needed.
+	pkgver = 2.0.17
+	pkgrel = 1
+	url = https://github.com/anthonyraymond/joal-desktop
+	arch = x86_64
+	license = MIT
+	makedepends = fuse2
+	options = !strip
+	options = !debug
+	source = https://github.com/anthonyraymond/joal-desktop/releases/download/v2.0.17/JoalDesktop-2.0.17-linux-x86_64.AppImage
+	source = https://github.com/anthonyraymond/joal-desktop/raw/v2.0.17/LICENSE
+	sha512sums = 96a1d4cdf5b1cb9adba0241acddf6f75e26e4089c45993a671babea7223ac0ff5ee6057cd10d6b174d08fd444fe7ff358f3a82f294da80224c5fb030d9024981
+	sha512sums = SKIP
+
+pkgname = joal-desktop-appimage
