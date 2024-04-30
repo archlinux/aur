@@ -11,7 +11,6 @@ license=("MIT")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=("composer" "mariadb" "php-fpm" "php-gd" "php-sodium")
-makedepends=("git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers"
