@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=python-diagrams-git
-pkgver=v0.23.4.r3.gf517463e
+pkgver=0.23.4.r4.g4c2d8a37
 pkgrel=1
 pkgdesc='Diagram as Code'
 
