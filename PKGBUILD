@@ -8,7 +8,7 @@ pkgdesc="Python bindings for Boost's Histogram library."
 arch=('any')
 url='https://github.com/scikit-hep/hist'
 license=('BSD-3-Clause')
-depends=('python-boost-histogram' 'python-histoprint' 'python-typing_extensions')
+depends=('python' 'python-boost-histogram' 'python-histoprint')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'python-hatchling' 'python-hatch-vcs')
 checkdepends=('python-pytest' 'python-pytest-benchmark' 'python-pytest-mpl' 'python-iminuit' 'python-mplhep' 'python-scipy')
 source=("${pkgname}::git+${url}#tag=v${pkgver}")

@@ -18,9 +18,9 @@ pkgbase = python-hist
 	makedepends = python-setuptools-scm
 	makedepends = python-hatchling
 	makedepends = python-hatch-vcs
+	depends = python
 	depends = python-boost-histogram
 	depends = python-histoprint
-	depends = python-typing_extensions
 	source = python-hist::git+https://github.com/scikit-hep/hist#tag=v2.7.2
 	sha256sums = 55011f93f9c5959141685c3f1ee2888a28fc484b41626562b34149350ba43824
 
