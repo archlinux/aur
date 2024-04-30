@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cast_control
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Control Chromecasts from Linux and D-Bus"
 arch=('any')
@@ -19,7 +19,6 @@ depends=(
   'python-pychromecast'
   'python-pydbus'
   'python-rich'
-  'python-typing_extensions'
   'python-validators'
 )
 makedepends=(
@@ -30,7 +29,6 @@ makedepends=(
 )
 optdepends=(
   'playerctl: Get the D-Bus name for your device'
-  'gnome-shell-extension-mpris-indicator-button: MPRIS indicator for GNOME'
 )
 conflicts=('chromecast_mpris')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
