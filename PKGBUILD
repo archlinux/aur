@@ -2,7 +2,7 @@
 # Contributor: Nicolas Stalder <n+archlinux@stalder.io>
 
 pkgname=nextdns-bin
-pkgver=1.43.1
+pkgver=1.43.3
 pkgrel=1
 pkgdesc="NextDNS CLI client (DoH Proxy)"
 url="https://github.com/nextdns/nextdns"
@@ -18,15 +18,15 @@ source_i686=(https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nex
 source_aarch64=(https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_arm64.tar.gz)
 source_armv7h=(https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_armv7.tar.gz)
 sha256sums=('00b0c930275df825475b0d86062f7488131f1b2b5e16e5ec6f9983e53138505b')
-sha256sums_x86_64=('d8cf8f9a1821cfe5af9d6754a880e36703ed5cb223e82fbef9061ad2220a1c7f')
-sha256sums_i686=('34c8fe8d55896029bb93dfbf07e476ac4c5c3662c0733cf92836c324bf9cae10')
-sha256sums_aarch64=('f1204f7f498cd32b5fe09433fa855d903c76b36736a04168bad48b065c76612d')
-sha256sums_armv7h=('4fc52199b50745830776e5592bbff2a7b24eb713c512abddc59b75f4db19f8ed')
+sha256sums_x86_64=('aa9d10d3b212a5eeb7c36305faeb8f6d15c5231e9070660129854e5c12d95be6')
+sha256sums_i686=('ef670a3aaac61164fa32e574da990b4b09333062d713117d3bbfed0e75950254')
+sha256sums_aarch64=('d6685ec3f830744de057072364605f334561511968839f4a0f30d9bb07671b14')
+sha256sums_armv7h=('53395af8359f51d0bf14cc977be7e84b40ce9c26c1d5866080e08466565e94a0')
 b2sums=('cf97472882f3db8e4debbe9aaefd8fddb2c78b1221045b556b486e5adb2448c28ce8c9e49bf54e85858a25760bf6d981c55117975b94039ac48cd24e87e12ec6')
-b2sums_x86_64=('d4b41db4ab5378f1275ac5bb2e53f755ea064e1da367dd5840fe5b04e1aaf6cafffcfbb39ad2c14760b4a9184ab947d9cd448872102477a8255fbc509faa7976')
-b2sums_i686=('99b9fa6b80edb4f2044de644b4f007a6a95a20eadc148349eec3d81f393d9211d6916906d80791ff64dc0dfd6d39acecd5d3e685af6a1a8bcdafdcf8942d3218')
-b2sums_aarch64=('6cbc6844f8beeacaa91a7412fe3fd2c0e27122967488239328e5856aa88c837da47a0282f115ac75f261d1c675f16cfcaacac84bc40929611d9d7e79832948f3')
-b2sums_armv7h=('923ce163f7ab8669248fd07ef66fe52afd2f6385c26e8cb0682f284cc2d194e20d2bcd326227785e71c16db8957af33fc3e7d9a96f1a61a3d67c8a8b7473651d')
+b2sums_x86_64=('6937fd662e28dac95127709507deabb23eb3fd08cb37438e4ccdfe087cb066263e9ee58a32896f67318ac2787fa48fc0220db186bb1e4bd0ec8f0af62d664910')
+b2sums_i686=('d9b076666905a0ebaa63ae22e45d3c66901dcd0b4bd4e919e86b1e4d7de68bd74eed8fbcfc411dbb6045a57da255781dd53b991252cabc8cf20e674478f5aaa3')
+b2sums_aarch64=('ed610fd1c24f0974df5f40ba54842e34fd2bead4b37c73f42ed2326dc2eb1b0e9ee5c003fc7adb7b3a3d5bd193036915729ab62ac0fc530b8f35e90b686cf52b')
+b2sums_armv7h=('adccd69295f063a581c14ca024818ecd7c70025ba8e7894f4f8b3367da1b5359885f565b42274c85fe62e273fede3e6e25694a9b0b95ca1eb3257888e9822e1e')
 
 build() {
   cd $srcdir
