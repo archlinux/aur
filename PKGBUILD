@@ -1,4 +1,5 @@
-# Maintainer: Ziqi Yang <mr.ziqiyang@gmail.com>
+# Maintainer: gaogaoqwq <gaogaoqwq at gmail dot com>
+# Contributors: Ziqi Yang <mr.ziqiyang@gmail.com>
 pkgname='ttf-zpix'
 pkgver=3.1.9
 pkgrel=1
