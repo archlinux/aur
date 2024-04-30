@@ -2,7 +2,7 @@
 
 _pkgname=mauiman
 pkgname=$_pkgname-git
-pkgver=3.1.0.r2.g2233bfa
+pkgver=4.0.0.r19.gacfd816
 pkgrel=1
 pkgdesc='Maui Manager Library. Server and public library API.'
 url='https://invent.kde.org/maui/mauiman'
@@ -15,6 +15,13 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(git+$url.git)
 sha256sums=('SKIP')
+
+prepare() {
+  cd $_pkgname
+  git tag -d $(git tag -l) > /dev/null
+  git tag -a v4.0.0 c17eeabc -m v4.0.0
+  git checkout -b AUR
+}
 
 pkgver() {
   cd $_pkgname
