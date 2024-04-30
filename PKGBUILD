@@ -2,7 +2,7 @@
 
 _pkgname=mauikit-documents
 pkgname=$_pkgname-git
-pkgver=1.1.0.r1.gad9185a
+pkgver=4.0.0.r32.gee207a0
 pkgrel=1
 pkgdesc='MauiKit Documents components'
 url='https://invent.kde.org/maui/mauikit-documents'
@@ -17,17 +17,24 @@ depends=(karchive
          kio
          ki18n
          mauikit-git
-         poppler-qt5
-         qt5-base
-         qt5-declarative
-         qt5-quickcontrols2
+         poppler-qt6
+         qt6-base
+         qt6-declarative
+         qt6-quickcontrols2
          zlib)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(git+$url.git)
+source=(git+$url.git#branch=qt6)
 sha256sums=('SKIP')
+
+prepare() {
+  cd $_pkgname
+  git tag -d $(git tag -l) > /dev/null
+  git tag -a v4.0.0 00d8ad64 -m v4.0.0
+  git checkout -b aur
+}
 
 pkgver() {
   cd $_pkgname
@@ -41,6 +48,7 @@ build() {
   cmake -B build -S $_pkgname \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_WITH_QT6=ON -Wno-dev \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
   cmake --build build
 }
