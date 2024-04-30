@@ -9,5 +9,3 @@ post_upgrade() {
 pre_remove() {
   sed -ri '\|^/usr/bin/ion$|d' etc/shells
 }
-
-# vim:set ts=2 sw=2 et:
