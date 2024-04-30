@@ -10,6 +10,8 @@ pkgbase = python-pydub-git
 	depends = ffmpeg
 	optdepends = python-pyaudio: for playback
 	optdepends = python-simpleaudio: for playback
+	provides = python-pydub
+	conflicts = python-pydub
 	source = git+https://github.com/jiaaro/pydub.git
 	sha512sums = SKIP
 
