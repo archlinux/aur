@@ -71,6 +71,7 @@ pkgbase = hyprland-legacyrenderer
 	optdepends = cmake: to build and install plugins using hyprpm
 	optdepends = cpio: to build and install plugins using hyprpm
 	optdepends = meson: to build and install plugins using hyprpm
+	provides = hyprland
 	conflicts = hyprland
 	conflicts = hyprland-git
 	source = Hyprland-0.39.1.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v0.39.1/source-v0.39.1.tar.gz

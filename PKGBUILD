@@ -64,6 +64,7 @@ optdepends=('cmake: to build and install plugins using hyprpm'
             'cpio: to build and install plugins using hyprpm'
             'meson: to build and install plugins using hyprpm')
 conflicts=("$_pkgname" "$_pkgname-git")
+provides=("$_pkgname")
 _archive="${_pkgname^}-$pkgver"
 source=("$_archive.tar.gz::$url/releases/download/v$pkgver/source-v$pkgver.tar.gz")
 sha256sums=('48d1c58fd8db365635a56d76e05e6ea2d99fa20c020a061ee88a20407cfde787')
