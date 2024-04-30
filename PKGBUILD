@@ -2,7 +2,7 @@
 
 pkgname=corplink-rs
 _pkgbase=corplink-rs
-pkgver=4.2
+pkgver=4.3
 pkgrel=1
 pkgdesc='Corplink client written in Rust'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=(
   "wireguard-go"::"git+https://github.com/PinkD/wireguard-go"
 )
 sha256sums=(
-  '2dc0e123e12949ba78913c3c1cdb8c2f8435ae26e4a56aa6de2185aa05653b1a'
+  '5708b20e2f7109dd345e1e5cab866ffa4f329002b202713312d229ee70d32a23'
   'SKIP'
 )
 backup=(etc/corplink/config.json)
