@@ -71,7 +71,9 @@ prepare() {
 
   # Don't treat warnings as errors. Arch often ships newer Python libraries than ones
   # in upstream CI and introduces extra deprecation warnings
-  sed -r -i "s#warnings\\.filterwarnings\\('error'\\)##" master/buildbot/test/__init__.py
+  # Also, don't hide known warnings, which are useful for checking compatibility with
+  # Python dependencies
+  sed -r -i "s#['\"](error|ignore)['\"]#'default'#" master/buildbot/test/__init__.py
 
   # See https://github.com/buildbot/buildbot/issues/6776 for an earlier report about those flaky tests
   patch -Np1 -i ../disable-flaky-tests.diff
@@ -131,10 +133,10 @@ check() {
   export PATH="$PATH:$srcdir/tmp_install"
 
   cd "$srcdir"/buildbot/master
-  TZ=UTC trial --rterrors buildbot
+  TZ=UTC python -W default /usr/bin/trial --rterrors buildbot
 
   cd "$srcdir"/buildbot/worker
-  PYTHONPATH=. trial buildbot_worker
+  PYTHONPATH=. python -W default /usr/bin/trial buildbot_worker
 
   export CHROME_BIN=/usr/bin/chromium
 
