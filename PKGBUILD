@@ -1,20 +1,21 @@
 # Maintainer: Pavle Portic <archlinux@theedgeofrage.com>
 
 pkgname=zeitgeist-dependencies
-name=zeitgeist
-pkgver=0.4.4
+_name=zeitgeist
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="The language-agnostic dependency checker"
 arch=("x86_64")
 url="https://github.com/kubernetes-sigs/zeitgeist"
 license=("Apache")
 makedepends=("go")
-source=("$name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("80df742a733b620bb1c2245ff7ab486f6adfd7804dd5fd91bea1cd1611e2dadb")
+source=("$_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=("ff592c26abe68bc8ad379e6560f938b793d0c5187132826180e545babf8781b0")
 options=(!lto)
 
 build() {
-    cd "$name-$pkgver"
+    echo $_name
+    cd "$_name-$pkgver"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -24,6 +25,6 @@ build() {
 }
 
 package() {
-    cd "$name-$pkgver"
-    install -Dm755 "$name" "$pkgdir"/usr/bin/"$name"
+    cd "$_name-$pkgver"
+    install -Dm755 "$_name" "$pkgdir"/usr/bin/"$_name"
 }
