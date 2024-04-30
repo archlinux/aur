@@ -1,7 +1,7 @@
 pkgbase = cosmopolitan-bin
 	pkgdesc = Build-once run-anywhere c library.
 	pkgver = 3.3.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jart/cosmopolitan
 	arch = x86_64
 	license = ISC
@@ -25,6 +25,8 @@ pkgbase = cosmopolitan-bin
 	provides = cosmoranlib
 	provides = cosmogcc
 	conflicts = cosmopolitan-git
+	conflicts = wine
+	conflicts = wine-staging
 	options = !strip
 	source = cosmopolitan-bin::https://github.com/jart/cosmopolitan/releases/download/3.3.3/cosmocc-3.3.3.zip
 	source = ape.conf

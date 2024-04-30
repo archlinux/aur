@@ -1,7 +1,7 @@
 _basepgkname=cosmopolitan
 pkgname="${_basepgkname}-bin"
 pkgver=3.3.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Build-once run-anywhere c library."
 arch=('x86_64')
 url="https://github.com/jart/cosmopolitan"
@@ -37,7 +37,7 @@ provides=(  'ape'
             'cosmoranlib'
             'cosmogcc'
         )
-conflicts=('cosmopolitan-git')
+conflicts=('cosmopolitan-git' 'wine' 'wine-staging')
 options=(!strip)
 
 
