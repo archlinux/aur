@@ -1,0 +1,12 @@
+# For the "reverse-proxy with auto TLS certificate", add entries as follows.
+# Don't forget to set `DESEC_TOKEN`, e.g., in /var/lib/caddy/envfile
+#
+# {
+#        acme_dns desec {
+#                token { env.DESEC_TOKEN }
+#        }
+# } 
+#
+# example.com {
+# 	reverse_proxy localhost:8080
+# }
