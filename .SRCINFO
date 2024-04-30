@@ -1,6 +1,6 @@
 pkgbase = pythonqt
 	pkgdesc = A dynamic Python binding for Qt applications
-	pkgver = 3.5.1
+	pkgver = 3.5.2
 	pkgrel = 1
 	url = https://github.com/MeVisLab/pythonqt
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = pythonqt
 	conflicts = pythonqt-for-screencloud
 	conflicts = qt5-python27-git
 	replaces = pythonqt-qt5
-	source = pythonqt-3.5.1.tar.gz::https://github.com/MeVisLab/pythonqt/archive/refs/tags/v3.5.1.tar.gz
-	sha512sums = 6cb6686d7490bea3227cda0b5357c99b8c283aaf23e600f1a4874c5fd64dc4366379722abbc6ed2acee02f44d7e0f25d8f7782e79275803931af0b00156e615f
+	source = pythonqt-3.5.2.tar.gz::https://github.com/MeVisLab/pythonqt/archive/refs/tags/v3.5.2.tar.gz
+	sha512sums = dd71ea3816df976a69baac56ee3d428536385fa22a72e84d543120cbb1bb093d764fc142ac35f9f53744cf69c7fd9c5d3cbaf18c81777e829c9877f402e79a93
 
 pkgname = pythonqt
