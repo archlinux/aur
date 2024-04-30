@@ -1,11 +1,11 @@
 pkgbase = wget2-git
 	pkgdesc = Updated version of popular Wget tool
-	pkgver = v2.0.0.r62.g849b54ee
+	pkgver = v2.1.0.r81.gbb3199fd
 	pkgrel = 1
 	url = http://www.gnu.org/software/wget/wget.html
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = libmicrohttpd
 	makedepends = git
 	makedepends = rsync
@@ -25,7 +25,7 @@ pkgbase = wget2-git
 	provides = wget2
 	conflicts = wget2
 	source = git+https://gitlab.com/gnuwget/wget2.git
-	source = git://git.savannah.gnu.org/gnulib.git
+	source = git+https://git.savannah.gnu.org/git/gnulib.git/
 	md5sums = SKIP
 	md5sums = SKIP
 
