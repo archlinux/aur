@@ -14,8 +14,8 @@ options=(!debug)
 source=("Linux_x64_Executable.zip::$(curl -s https://api.github.com/repos/bitscoper/Bitscoper_Cyber_ToolBox/releases/latest | jq -r '.assets[] | select(.name | contains("Linux_x64_Executable.zip")) | .browser_download_url')")
 sha256sums=('SKIP')
 arch=('x86_64')
-pkgver=8.0.2
-pkgrel=5
+pkgver=8.0.3
+pkgrel=1
 # changelog="CHANGELOG.md"
 
 package() {
