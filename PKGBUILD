@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=newreleases-bin
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc='NewReleases.io CLI'
 url='https://newreleases.io'
@@ -20,10 +20,10 @@ source_aarch64=("newreleases-aarch64-$pkgver::${_base}arm64")
 source_armv6h=("newreleases-armv6h-$pkgver::${_base}armv6")
 
 sha256sums=('05c2be2edf06d243f734ff74f2d2bda6a2f9ec06cb68f95171ae9820a90fa4e0')
-sha256sums_i686=('d04d4da148f5add846085b2ac9252b98dc350fd2dcb1ee4589341af64be466e6')
-sha256sums_x86_64=('64e33a34c985aca9c26836b7f826bbc669ef1e7d08b05e408ae7de2d91418831')
-sha256sums_armv6h=('b751c1f92fd8f70a6809fcc05069f3f513c509bcd5248edf37627e4441346ce1')
-sha256sums_aarch64=('d818f5974812eed1a8e8ec4b1915de8154b1a1ca3be7490cb0f426a407b5623d')
+sha256sums_i686=('e852d8490bf59ad7f9ca973e1e001a97230154eac3aa928cbdda1613d425aabf')
+sha256sums_x86_64=('f991736625c15993c0c0895414a92efc391c15ccd3b0f7a79f0198a85b8943bb')
+sha256sums_armv6h=('1239877c16a6b11cd2a6d30ddeedb434b4dfd26d5c003bddaf9ff40c8fe42476')
+sha256sums_aarch64=('6352214fc29b3a37192402181db1a4a8e6935c9ac4b13c1e4c31ab5f779cf92e')
 
 prepare() {
   chmod 755 newreleases-$CARCH-$pkgver
