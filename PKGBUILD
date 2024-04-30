@@ -1,10 +1,11 @@
-# Maintainer:Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: gilcu3
+# Contributor:Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Rorschach <r0rschach@lavabit.com
 # Contributor: Nathan Owe <ndowens04+AUR @ gmail.com>
 
 pkgbase=afick
 pkgname=('afick' 'afick-gui')
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="A security tool similar to tripwire"
 arch=('any')
@@ -13,7 +14,7 @@ license=('GPL')
 makedepends=('perl-tk')
 backup=('etc/afick.conf')
 source=(http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz)
-sha256sums=('08d0623063fc0bbfd4b29d5b298604a8c5f283ef7a03776aeb590f6030c0ffa1')
+sha256sums=('7ab7044870698d05addea9a68bde9390e41b5520218251c3897458fe280f6f4a')
 
 build() {
   cd "${srcdir}"/$pkgbase-$pkgver
