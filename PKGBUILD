@@ -2,14 +2,12 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt')
-pkgver=10.0.0.6
-_commit=28733f0fdccde2967fed395b06ca491af3a561a9
+pkgver=10.0.1.6
 _cudaver=12.4
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
-_python_build=b6
 _onnx_graphsurgeon_ver=0.5.1
-_polygraphy_ver=0.49.9
+_polygraphy_ver=0.49.10
 _tensorflow_quantization_ver=0.2.0
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
@@ -18,8 +16,8 @@ url='https://developer.nvidia.com/tensorrt/'
 license=('LicenseRef-NVIDIA-TensorRT-SLA' 'Apache-2.0')
 makedepends=('git' 'cmake' 'cuda' 'cudnn' 'python' 'python-build' 'python-installer' 'python-onnx'
              'python-setuptools' 'python-wheel')
-source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/${pkgver%.*}/tensorrt-${pkgver}.linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
-        "git+https://github.com/NVIDIA/TensorRT.git#commit=${_commit}"
+source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/${pkgver%.*}/tars/TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
+        "git+https://github.com/NVIDIA/TensorRT.git#tag=v${pkgver%.*}"
         'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf.git'
         'cub-nvlabs'::'git+https://github.com/NVlabs/cub.git'
         'git+https://github.com/onnx/onnx-tensorrt.git'
@@ -31,8 +29,8 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '020-tensorrt-fix-python.patch'
         'TensorRT-SLA.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('0e35729954681411a79ccf31df089523caa11838095fbd025ddc7cd6f73f02de'
-            'f04165db2cb23084fe39a0f520da58c651098330bf62688df9a27b5c1ae77134'
+sha256sums=('a5cd2863793d69187ce4c73b2fffc1f470ff28cfd91e3640017e53b8916453d5'
+            '94f0ea80b9772248c16a18ce0edeeae860dd047fcf3a1a8e434e2f2b57f30f33'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -41,7 +39,7 @@ sha256sums=('0e35729954681411a79ccf31df089523caa11838095fbd025ddc7cd6f73f02de'
             'SKIP'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            '4ef20e02ad3093f214838ce2bcc5d032541fb3829e6ad764fd72c4129d86fdd2'
+            '55a5c6ccd054b8b5abb761bc64523daf31eed2982f20cef47812f7926143e7d3'
             '5f68360b4ac4758d207e30fec89c5e829d45bb4c27cae99e3fa6d2b170789370')
 
 prepare() {
@@ -131,7 +129,7 @@ package_tensorrt() {
 
 package_python-tensorrt() {
     pkgdesc+=' (python bindings and tools)'
-    license=('LicenseRef-Custom' 'Apache')
+    license=('LicenseRef-Custom' 'Apache-2.0')
     depends=('python' 'python-numpy' 'tensorrt')
     optdepends=('python-onnx: for onnx_graphsurgeon python module'
                 'python-onnxruntime: for onnx_graphsurgeon and polygraphy python modules'
@@ -144,7 +142,7 @@ package_python-tensorrt() {
     
     local _pyver
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    python -m installer --destdir="$pkgdir" "TensorRT-${pkgver}/python/tensorrt-${pkgver%.*}${_python_build}-cp${_pyver/./}-none-linux_${CARCH}.whl"
+    python -m installer --destdir="$pkgdir" "TensorRT-${pkgver}/python/tensorrt-${pkgver%.*}-cp${_pyver/./}-none-linux_${CARCH}.whl"
     
     local _dir
     for _dir in TensorRT/tools/{onnx-graphsurgeon,Polygraphy,tensorflow-quantization}/dist
@@ -158,5 +156,5 @@ package_python-tensorrt() {
     install -D -m644 "${srcdir}/TensorRT/NOTICE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 "${srcdir}/TensorRT-SLA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-NVIDIA-TENSORRT-SLA"
     install -D -m644 "${srcdir}/TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
-    ln -s "${_sitepkgs}/tensorrt-${pkgver%.*}${_python_build}.dist-info/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-python-tensorrt"
+    ln -s "${_sitepkgs}/tensorrt-${pkgver%.*}.dist-info/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-python-tensorrt"
 }
