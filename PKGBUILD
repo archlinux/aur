@@ -41,7 +41,6 @@ package() {
   sed -i 's|Icon=.*|Icon=lzc-client-desktop|' ${pkgdir}/usr/share/applications/lzc-client-desktop.desktop
 
   # fix permission
-  sed -i '/chmod/d' ${pkgdir}/opt/lzc-client-desktop/runcore.sh
   chmod +x ${pkgdir}/opt/lzc-client-desktop/core/lzc-core
 
   # remove rclone
