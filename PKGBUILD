@@ -2,8 +2,8 @@
 _appname=netflix
 pkgname="discord-${_appname}"
 _pkgname=Discord-Netflix
-pkgver=1.1.14
-_electronversion=30
+pkgver=1.1.16
+_electronversion=30.0.1+wvcus
 _nodeversion=18
 pkgrel=1
 pkgdesc="An updated and improved version from the original Discord-Netflix from Nirewen."
@@ -23,14 +23,13 @@ makedepends=(
     'gendesk'
     'nvm'
     'npm'
-    'git'
     'base-devel'
     'gcc'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('f959f3e454a2972ec633968c9818d7ed0a0c6e152a90676d1ee14ec9ee09bd8d')
+sha256sums=('4f5c835c8ce3496b8bd189cca8e8d9d0e162adf74099eb7c31529def583416d2')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
