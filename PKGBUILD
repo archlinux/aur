@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC1090,SC2207
 pkgname=pince-git
-pkgver=r1477.0e0ae0b
+pkgver=r1498.3da0f80
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
