@@ -28,6 +28,7 @@ python-ply
 qt6-svg
 qt6-tools
 qt6-base
+qt6-5compat
 shared-mime-info
 vtk
 verdict
