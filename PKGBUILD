@@ -3,10 +3,10 @@
 
 pkgname='arcconf'
 _pkgname='Arcconf'
-_pkgrel='26273'
-pkgver="4.16.00.${_pkgrel}"
-_rpmver="4.16-${_pkgrel}"
-pkgrel='2'
+_pkgrel='26540'
+pkgver="4.17.00.${_pkgrel}"
+_rpmver="4.17-${_pkgrel}"
+pkgrel='1'
 pkgdesc='Microsemi Adaptec command line interface utility'
 arch=('x86_64' 'aarch64')
 makedepends=('libarchive')
@@ -14,23 +14,33 @@ url='https://storage.microsemi.com/en-us/support'
 license=('custom')
 source=("https://download.adaptec.com/raid/storage_manager/${pkgname}_B${_pkgrel}.zip"
 	"https://download.adaptec.com/raid/storage_manager/${pkgname}_v3_07_23980.zip")
-sha256sums=('0680ee9b4f9371fb1901f842af0814ba71a694ef39a4e8bac3f325994c400425'
+sha256sums=('d980bce53b21c14f3d5e799c7a97638cdc13558c6944e76b23bc0fdc55dcf219'
             '27beeaff6e51f2aa8292ff3f31c3774011468ccba1483755e056f2a82db012d1')
+noextract=("${source[@]##*/}")
 
-_archstr=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "linux_x64/rpm" || echo -n "linuxarm_x64/rpm")
+_current_str="${pkgname}_${_pkgrel}"
+_legacy_str="${pkgname}_legacy"
+_archstr="$([[ "${CARCH}" == 'x86_64' ]] && \
+  echo -n "${_current_str}_src/linux_x64/cmdline/linux_x64/rpm" || \
+  echo -n "${_current_str}_src/linuxarm_x64/rpm")"
 # The legacy is version of software for HBA1000 Adaptec controlles and older (the 'aacraid' linux driver)
 # The 'current' version support HBA1100 Microsemi controllers and higher (the 'smartpqi' linux driver)
-_archstr_legacy=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${_archstr}" || echo -n "linux_x64/arm/rpm")
+_archstr_legacy="$([[ "${CARCH}" == 'x86_64' ]] && \
+  echo -n "${_legacy_str}_src/linux_x64/rpm" || \
+  echo -n "${_legacy_str}_src/linux_x64/arm/rpm")"
 
 prepare() {
-  mkdir "${pkgname}_${_pkgrel}" "${pkgname}_legacy"
-  bsdtar xf "linux/${_archstr}/${_pkgname}-${_rpmver}.${CARCH}.rpm" -C "${pkgname}_${_pkgrel}"
-  bsdtar xf "${_archstr_legacy}/${_pkgname}-3.07-23980.${CARCH}.rpm" -C "${pkgname}_legacy"
+  mkdir "${_current_str}_src" "${_legacy_str}_src" "${_current_str}" "${_legacy_str}"
+  bsdtar xf "${pkgname}_B${_pkgrel}.zip" -C "${_current_str}_src"
+  bsdtar xf "${pkgname}_v3_07_23980.zip" -C "${_legacy_str}_src"
+
+  bsdtar xf "${_archstr}/${_pkgname}-${_rpmver}.${CARCH}.rpm" -C "${_current_str}"
+  bsdtar xf "${_archstr_legacy}/${_pkgname}-3.07-23980.${CARCH}.rpm" -C "${_legacy_str}"
 }
 
 package() {
-  install -Dm0755 "${pkgname}_${_pkgrel}/usr/${_pkgname}/${pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm0644 "${pkgname}_${_pkgrel}/usr/${_pkgname}/License.txt" \
+  install -Dm0755 "${_current_str}/usr/${_pkgname}/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm0644 "${_current_str}/usr/${_pkgname}/License.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-  install -Dm0755 "${pkgname}_legacy/usr/${_pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}-legacy"
+  install -Dm0755 "${_legacy_str}/usr/${_pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}-legacy"
 }
