@@ -1,6 +1,6 @@
 # Maintainer: Colin Teng <tfcolin@88.com>
 pkgname=mbg
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="a game whose rules are combination of 'monoply' and 'sanguo'"
 arch=('x86_64')
@@ -33,6 +33,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 build/mbg_gtk -t "$pkgdir"/usr/bin/
   install -Dm644 doc/manual.pdf -t "$pkgdir"/usr/share/doc/mbg/
+  install -Dm644 mbg_gtk/sanguo.map -t "$pkgdir"/usr/share/mbg/rules/
 }
 
-sha256sums=('3473d99f2b4eda187d88271f89cf0067f1c0fda18bb9f31419faf13a2a3c71c8')
+sha256sums=('be0abd4292fd6e1c31f263d03a003b1f578b3fea8b9a0cafc7cefb003f8df858')
