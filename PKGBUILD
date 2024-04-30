@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 pkgname=stapxs-qq-lite-bin
 _pkgname=Stapxs.QQ.Lite
-pkgver=2.7.2
+pkgver=2.7.3
 _electronversion=27
 pkgrel=1
 epoch=
@@ -22,8 +22,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b1ab5d6e492d95248922d20b585a554ee4357322a4ddc35e4c530514ca9a151b'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('3d9ab300887ef5d8faa10e4ce5c5fb4677557e45634976b9a305fcf180a336ce'
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
