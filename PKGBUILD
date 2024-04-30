@@ -7,11 +7,11 @@ url="https://www.amuletmc.com/"
 license=(custom)
 
 arch=(any)
-pkgver=0.10.27
-pkgrel=3
+pkgver=0.10.28
+pkgrel=1
 makedepends=(python-build python-installer python-wheel python-cython-lint python-versioneer git)
 
-depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core python-lz4)
+depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core python-lz4 python-amulet-leveldb)
 
 source=(
 	amulet.desktop
