@@ -1,20 +1,20 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=criticality_score-bin
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Gives criticality score for an open source project"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/ossf/criticality_score"
-license=('Apache')
+license=('Apache-2.0')
 provides=("criticality_score=$pkgver")
 conflicts=('criticality_score')
 source_i686=("https://github.com/ossf/criticality_score/releases/download/v${pkgver}/criticality_score_${pkgver}_linux_386.tar.gz")
 source_x86_64=("https://github.com/ossf/criticality_score/releases/download/v${pkgver}/criticality_score_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/ossf/criticality_score/releases/download/v${pkgver}/criticality_score_${pkgver}_linux_arm64.tar.gz")
-sha256sums_i686=('3d3428fbe76b7a4cb15def5f5e5936c0ebc59e695d0e055caa03ded69222d33b')
-sha256sums_x86_64=('ce64f89cfc353777afd3b86e9c4d00175b275370c87df49de381123f3c783956')
-sha256sums_aarch64=('f0cd21e4c5f8d5940e4e24ecd8ae42b02e945e05aeebcce9e0f4312a265d4fcf')
+sha256sums_i686=('96290a27bc76efa8bd029d75e752993157a1e0793ab118222df689702422fe2e')
+sha256sums_x86_64=('38014c3271ca2f7d7efc769415ca03a7cf3bc034e48a33b8b447c8269f42eeaa')
+sha256sums_aarch64=('29666fe301e54dd0e85a366237f8d030942411e81d988750c427ebe87cd8eff0')
 
 
 package() {
