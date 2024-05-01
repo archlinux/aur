@@ -12,7 +12,6 @@ depends=(
   'libgee'
   'libportal-gtk4'
   'libsoup3'
-  'xdg-desktop-portal'
 )
 makedepends=(
   'blueprint-compiler'

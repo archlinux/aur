@@ -14,7 +14,6 @@ pkgbase = damask-wallpaper
 	depends = libgee
 	depends = libportal-gtk4
 	depends = libsoup3
-	depends = xdg-desktop-portal
 	source = https://gitlab.gnome.org/subpop/damask/-/archive/v0.2.2/damask-v0.2.2.tar.gz
 	sha256sums = 1e1939af48c89665a7d28f146e0105a4bc8262bc0a152c1f697d4c87609ea255
 
