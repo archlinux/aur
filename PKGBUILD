@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kando-bin
-pkgver=0.8.0_rc
+pkgver=0.8.0
 _electronversion=28
 pkgrel=1
 pkgdesc="A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions. "
@@ -23,11 +23,11 @@ optdepends=(
     'pulseaudio'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver%_rc}_amd64.deb"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/kando-menu/kando/v${pkgver//_/-}/LICENSE.md"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/kando-menu/kando/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9ebe66aa31533223637aebdb4848a00bc66f03251e524e8249bdfbf8c27711ec'
+sha256sums=('8ccfdd97c9bdb240e8243424b3e2dc054523a447c92003fbb5b81fe36074d5dd'
             'fd6cb731b549de5452efacb0833cda7a328eb5263537d29ca18de9d7938f7bab'
             '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 build() {
