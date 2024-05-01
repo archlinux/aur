@@ -1,0 +1,11 @@
+pkgbase = python-promnesia
+	pkgdesc = Enhancement of your browsing history
+	pkgver = 1.2.20230515
+	pkgrel = 1
+	url = https://github.com/karlicoss/promnesia
+	arch = any
+	license = UNKNOWN
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-promnesia
