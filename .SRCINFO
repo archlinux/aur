@@ -1,11 +1,12 @@
 pkgbase = python-multiprocess
 	pkgdesc = better multiprocessing and multithreading in python
 	pkgver = 0.70.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uqfoundation/multiprocess
 	arch = any
-	license = custom:BSD-3-clause
+	license = BSD-3-Clause
 	checkdepends = python-pytest
+	checkdepends = python-tests
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
