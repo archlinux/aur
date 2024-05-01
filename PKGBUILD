@@ -2,7 +2,7 @@
 # Contributor: agomonos <eugenio89 at gmail dot com>
 
 pkgname=booktab
-pkgver=4.22
+pkgver=4.24
 pkgrel=1
 pkgdesc="MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva."
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=("pcre" "openssl-1.1" "libxss" "qt5-multimedia" "qt5-svg" "qt5-webengine
 _debname=BooktabSetup.deb
 
 source=(https://booktab.it/setup-z/$pkgver/${_debname})
-md5sums=('09aca3dc109b8256dfaed2189e2ba3cf')
+md5sums=('e544cf5f6236f20c3326fabfe8556a9f')
 
 noextract=(${_debname})
 
