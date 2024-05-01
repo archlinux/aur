@@ -16,6 +16,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/autc04/executor.git')
 sha256sums=('SKIP')
+options=(!lto) 
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -32,12 +33,12 @@ build() {
 	mkdir "$srcdir/${pkgname%-git}"/build 
 	cd "$srcdir/${pkgname%-git}"/build
 	cmake ..
-	cmake --build .
+	cmake --build . -j 1
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -Dm755 $srcdir/build/{${pkgname%-git},${pkgname%-git}{-sdl,-sdl2,-wayland,-x}} -t \
+	install -Dm755 build/{${pkgname%-git},${pkgname%-git}{-sdl,-sdl2,-wayland,-x}} -t \
 		"$pkgdir/usr/bin"
 	install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }

@@ -23,6 +23,7 @@ pkgbase = executor-git
 	optdepends = waylandpp: for Wayland frontend
 	provides = executor
 	conflicts = executor
+	options = !lto
 	source = git+https://github.com/autc04/executor.git
 	sha256sums = SKIP
 
