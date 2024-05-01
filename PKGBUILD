@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fgga
-_pkgver=1.10.2
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.2
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Hierarchical ensemble method based on factor graph'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d7356dea18ec53ffac06f2e2231a814ec054f786b21cb1a4ab2410a1d71b6db1')
+sha256sums=('d9214af5aea7e198bf899bc1f92bbfdc32f2ee70f0a5439c36a6fd2671707ba1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
