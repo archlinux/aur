@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-gsnap
+	pkgdesc = Move windows into specific regions similar to FancyZones
+	pkgver = 19
+	pkgrel = 1
+	url = https://github.com/GnomeSnapExtensions/gSnap
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = npm
+	depends = gnome-shell
+	source = gnome-shell-extension-gsnap-19.tar.gz::https://github.com/GnomeSnapExtensions/gSnap/archive/refs/tags/releases/19.tar.gz
+	source = gnome-46.patch
+	b2sums = a080e8e62fcea33c2cc5c50e2e7e9742f5b7b55c98df3ee8dcdbb139d2dd24db73a911ec17734c81b8a69c7d5ff0b57d51b4c2bbabd08b2d772aa39ddfe6129d
+	b2sums = 4ce02be52f85bd069255261ae454e10d58246d6c17b50fb773e4553ed8c7c959b2888fc5a8f06c3044f78a9ce89cd7d20ce2b68bdf54c37797aae6edc0452248
+
+pkgname = gnome-shell-extension-gsnap
