@@ -1,35 +1,33 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Maintainer: Anton Kudelin <kudelin at protonmail dot com>
 # Contrubutor: farwayer <farwayer@gmail.com>
 
 pkgname=ruby-dotenv
 _pkgname=${pkgname#ruby-}
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Loads environment variables from .env"
 arch=(any)
 url="https://github.com/bkeepers/dotenv"
 license=(MIT)
 depends=(ruby)
-makedepends=(rubygems)
+makedepends=(
+  git
+  rubygems
+)
 checkdepends=(ruby-rspec)
 options=(!emptydirs)
 install=ruby-dotenv.install
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1d78e3b621dd060e516a2413cfbfd5778a4c039b57c6634667f03fc41de47b8c')
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('054f6429d4a1b5c54a5d730bcd97ca4af6782bcc413df101e972aae8162d41c1')
 
-_archive="$_pkgname-$pkgver"
+_archive="$_pkgname"
 
 prepare() {
   cd "$_archive"
 
   # update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "$_pkgname.gemspec"
-
-  # we don't build from a git checkout
-  sed --in-place --regexp-extended \
-    's|git ls-files README.md LICENSE lib bin|find README.md LICENSE lib bin -type f -not -path "*/\.git/*"|' \
-    "$_pkgname.gemspec"
 
   # Add missing require to tests
   echo "require 'pathname'" >> spec/spec_helper.rb
