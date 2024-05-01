@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=granulator
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Rapid benchmarking of methods for *in silico* deconvolution of bulk RNA-seq data'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('01226099d1d2a13013135583a03f3b12ec2f5b5eeacd541e70c3ab8e75c9686b')
+sha256sums=('01fd96232cae0f7ec5285581cf5b76ca45a031d6b3a16f0f32a684613beca71c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
