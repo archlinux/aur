@@ -1,6 +1,6 @@
 pkgbase = r-biggr
 	pkgdesc = Constraint based modeling in R using metabolic reconstruction databases
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiGGR
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-biggr
 	depends = r-limsolve
 	depends = r-rsbml
 	depends = r-stringr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiGGR_1.38.0.tar.gz
-	sha256sums = ce09551ffa1c97b25c4ce282809dc2e276b3ae0029887b1c40f64d97e0ecbadd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiGGR_1.40.0.tar.gz
+	sha256sums = 3f3c3e846a4e0d3e63c9f35645ea80cb1fd8e7afa0abc96530fde5514e9245c9
 
 pkgname = r-biggr
