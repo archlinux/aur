@@ -1,11 +1,13 @@
-# Maintainer: Oscar Garcia Amor <ogarcia@connectical.com>
+# Maintainer: Michael Clayfield <asdf me asdf michaelclafield asdf com asdf>
+# Contributor: Oscar Garcia Amor <ogarcia@connectical.com>
 
-pkgbase=vault-bin
-pkgname=('vault-bin' 'vault-cli-bin')
-pkgver=1.9.0
+pkgname=('vault-bin')
+pkgdesc='A tool for managing secrets. Official Hashicorp binaries.'
+pkgver=1.16.2
 pkgrel=1
 url='https://vaultproject.io/'
-license=('MPL')
+license=('BSL')
+provides=('vault')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 source=('vault.tmpfiles'
         'vault.sysusers'
@@ -16,20 +18,28 @@ source_i686=("https://releases.hashicorp.com/vault/${pkgver}/vault_${pkgver}_lin
 source_x86_64=("https://releases.hashicorp.com/vault/${pkgver}/vault_${pkgver}_linux_amd64.zip")
 source_armv7h=("https://releases.hashicorp.com/vault/${pkgver}/vault_${pkgver}_linux_arm.zip")
 source_aarch64=("https://releases.hashicorp.com/vault/${pkgver}/vault_${pkgver}_linux_arm64.zip")
+sha256sums=('3e9307683e7288abdcdd378b13da7b744f9084c28283407872bb0b9b8e59755c'
+            '9920d0e69aa4093e372410b8418b3386177c168cc0c10e1b37a01a9a1b615411'
+            '37c71ce2096a5e6a900853f7fceff6468c9566917463724b57ff714b7873f9bb'
+            '5568fb49aed3ca41f4829d21030afdfed5d071babc055d16b63a77851339e0a0'
+            '4d53d3b0c3cdafe021b67bfe5915aa80800e22ff2d6a700774d09603bd8e1905')
+sha256sums_i686=('8032ae3f8222214cf720879fca1fa6af3286360731e1f1fcdb70236648816171')
+sha256sums_x86_64=('688ce462b70cb674f84fddb731f75bb710db5ad9e4e5a17659e90e1283a8b4b7')
+sha256sums_armv7h=('34cc795446bcdd5a6e4bbb7fd15cac0fda5a473b5456ec2053b485038d920442')
+sha256sums_aarch64=('d5bd42227d295b1dcc4a5889c37e6a8ca945ece4795819718eaf54db87aa6d4f')
 sha512sums=('aa56041c53434195dbf544ce9bf18d7bfb530bf65c9b692163621185b0a46035273a4eeda6454ceb93201117f23662e44ac9c88eda3cf12153cdce40df0fde09'
             '92616ccf83fa5ca9f8b0d022cf8ceb1f3549e12b66bf21d9f77f3eb26bd75ec1dc36c155948ec987c642067b85fbfc30a9217d6c503d952a402aa5ef63e50928'
-            'a97d10208fd99b29cf532c9b5882fe1bbb3faee1d1d706f95a9c379fef461c65a9f16c8530438920024e69871ebd8c7329e6b65025ad65092950bfb74ce393b3'
-            '8f8769f2c285f77b10c1f96e43acb233c70509ca657a8113f9d1f13a73ba55de6acdc6984597a4e1da19d6a7748e05f3523461a3b4bce10b9541aa5340400dd6'
-            'dd6de68678d972517c135992217f625a3bc728a6495e1f6052df9926cf9cbc212dfa2a612be5a25d7ce5eeeef41e2b12f0d82af6176a6e0ca043b43c622c6347')
-sha256sums_i686=('66ab165b2699edbed18d1f7df66bc77be7faf30dfec79c703c1f845ec79868a9')
-sha256sums_x86_64=('6ad8b09ca70d5c2822c871b7bd20ecdefb68e9da4c4b9aa6062000a9bff19f7a')
-sha256sums_armv7h=('00d43381599c67b825cbaeb881288b8ff7daecbccd7a6f8dd2d19374174b0880')
-sha256sums_aarch64=('632ee67575dd101975bbf281f79fdb59a0dd7a3f5248838c42c93728211e479b')
+            'f4f045f95502fc8b01cb34f71aed4c484ffa78a410f8d76e6607d42fd85ffb9c92092df226c8b61e25a2f13744eb9bed6d4871e1686d80160922432f361e22e4'
+            'df8e8f450a4cdf2b597b45ae8416dce82fbea372e022745e15b8913f4e293d3aaec9a6dad6a86dbe1a5a183f4df7a5e4fbb0dddd48379e6e3b9d5215262f6bc2'
+            '9daa65d207fcedd4d87eb06bbb5af3d8959b5341f54321e3e1209544ccc57f38c5082dfdb6613298c77d31c55e5a04f2f2003412258c013f8a677a0049505d3b')
+sha512sums_i686=('9433f65da72dc1bd85f3dbefe22716fbad0446293ee5dded27327fd92338913ad8edd0cc00329b6f57bd8c7b983b57c94cdd604c03edc86a8273de57b58a893e')
+sha512sums_x86_64=('785e2c213dfad34af0a4a98a9d22a21e3336df98f2a7a462787eeff9c07d0c5e9eb087b165bdf31660b01758324275b8c0b76c0f57df8fcdf405066fcc177458')
+sha512sums_armv7h=('0f22d778a41b097c872ade745adb96ba8ac90d71cb683d1a450d16f52b3d9065036ab524cd9c6307e2bfc77e44af8b3778414b4ac2bfa523203a2a6f4f0ca27d')
+sha512sums_aarch64=('645614368bf00f6e3fa25b5c2d750352162b4a62c30a76ad13a32f3a05bf2b18b60ed1442d1b35f59502f48be35f48d1e03a1b2b5181544b2c61910856cacb5c')
 
-package_vault-bin () {
+package () {
   pkgdesc='A tool for managing secrets'
-  conflicts=('vault' 'vault-git' 'vault-cli-bin')
-  install='vault.install'
+  conflicts=('vault')
   backup=('etc/vault.hcl')
 
   install -Dm755 vault "${pkgdir}/usr/bin/vault"
@@ -41,12 +51,4 @@ package_vault-bin () {
     "${pkgdir}/usr/lib/sysusers.d/vault.conf"
   install -Dm644 "${srcdir}/vault.tmpfiles" \
     "${pkgdir}/usr/lib/tmpfiles.d/vault.conf"
-}
-
-package_vault-cli-bin () {
-  pkgdesc='A tool for managing secrets (CLI Only)'
-  conflicts=('vault' 'vault-git' 'vault-bin')
-
-  install -Dm755 vault "${pkgdir}/usr/bin/vault"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -6,6 +6,7 @@ ConditionFileNotEmpty=/etc/vault.hcl
 
 [Service]
 User=vault
+Group=vault
 ExecStart=/usr/bin/vault server -config=/etc/vault.hcl
 
 [Install]
