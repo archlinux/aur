@@ -1,75 +1,30 @@
-# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer: HLFH <gaspard@dhautefeuille.eu>
+# Contributor: AlphaJack <alphajack at tuta dot io>
 # Contributor: Petit Pierre <petit.pierre@outlook.com>
 # Contributor: Bidossessi Sodonon
 
-pkgname="odoo"
+pkgname="odoo-17"
+_pkgname="odoo"
 pkgver=17.0
-pkgrel=8
-pkgdesc="Web-based Open Source Business Apps"
-url="https://www.odoo.com/"
+pkgrel=2
+pkgdesc="Odoo. Open Source Apps To Grow Your Business."
+url="https://odoo.com/"
 arch=("any")
-license=("GPL3")
-conflicts=("openerp")
-replaces=("openerp")
+license=("LGPL-3.0-or-later")
+conflicts=("openerp" "odoo")
+replaces=("openerp", "odoo")
 depends=("postgresql"
         "wkhtmltopdf"
-        "python"
-        "python-babel"
-        "python-chardet"
-        "python-cryptography"
-        "python-dateutil"
-        "python-decorator"
-        "python-docutils"
-        "python-ebaysdk"
-        "python-freezegun"
-        "python-geoip2" # 17
-        "python-gevent"
-        "python-greenlet"
-        "python-html2text"
-        "python-idna"
-        "python-jinja"
-        "python-libsass"
-        "python-lxml"
-        "python-mako"
-        "python-markupsafe"
-        "python-mock"
-        "python-num2words"
-        "python-ofxparse"
-        "python-passlib"
-        "python-pillow"
-        "python-polib"
-        "python-psutil"
-        "python-psycopg2"
-        "python-pydot"
-        "python-pyopenssl"
-        "python-pypdf2"
-        "python-pyserial"
-        "python-pytz"
-        "python-pyusb"
-        "python-qrcode"
-        "python-reportlab3" # thanks Weby, HLFH
-        "python-requests"
-        "python-rjsmin" # 17
-        "python-stdnum"
-        "python-urllib3"
-        "python-vobject"
-        "python-werkzeug2" # thanks HLFH
-        "python-xlrd-1" # thanks HLFH
-        "python-xlsxwriter"
-        "python-xlwt"
-        "python-zeep"
-        )
-optdepends=("python-ldap: LDAP connector" # 16
-           )
-makedepends=("python-build" "python-installer" "python-wheel")
-source=("https://nightly.odoo.com/$pkgver/nightly/src/${pkgname}_$pkgver.latest.tar.gz"
+        "python311"
+	"python311-pip")
+source=("https://nightly.odoo.com/$pkgver/nightly/src/${_pkgname}_$pkgver.latest.tar.gz"
         "odoo.conf"
         "odoo.logrotate"
         "odoo.service"
         "odoo.sysusers"
         "odoo.tmpfiles")
-b2sums=('SKIP'
-        'f9b3f553e72864565b8323460fbda64745e07838c30ad6cfe57c28100f3b53805d23162262b37984227a18b48283f1e4d4c090b71034331ddcd8588480bd7d06'
+b2sums=('623b9a1074bfa10082c70cd28a22d378d04955859b9b76cae69b50f77717036d9e722fec1e69e04c0b1ab4c747e656a1e8a888167a84e42bdb87e2a752079f17'
+        '11dbbcb749d62eaf90a8d92a354769527244ed03ac22b7092cce5eeb05f4f3d00aa7cd4bdcc02bf4ad652b26d78d58b0581ca9e8e5f7eda0ad11c1c94ed20ef8'
         '1ef682d87ba12dd8a185ba36701b737f8feb0c1e6eb4b23302a0dc5930ef63c990af65bc45a36313f879a29a23cbdb602e7fc34ba9cee2e46d9a3d8407d5751a'
         'a14636791b4f0ae76da8a69e95a6926287f5cfa215499be9a6880b6b63fa2081ecdd32ea0dc10fe4d7fe2d14968ac4ed08701c972bc2170e9f4dc36efa406c02'
         '311757f40c9de2845482ebf22e36469cc1058396bba9edaa2265a2bd085e2bcdd22115b098af3aaa037f7dac3a81212ae8b249df0b268f6bf2d798ee01698aae'
@@ -78,21 +33,43 @@ backup=("etc/odoo/odoo.conf")
 install="odoo.install"
 options=("!strip")
 
-build(){
- cd "$pkgname-$pkgver.post"*
- python -m build --wheel --no-isolation
+build() {
+    cd "$_pkgname-$pkgver.post"*
+    pip3.11 install build installer wheel
+
+    # provide out-of-the-box compatibility with the merge of libldap and libldap_r that happened with OpenLDAP's 2.5 release
+    sed -i 's/python-ldap==3.4.0/python-ldap==3.4.2/' requirements.txt
+
+    pip3.11 install -r requirements.txt
+
+    # Build the package
+     python3.11 -m build --wheel --no-isolation
 }
 
-package(){
- cd "$pkgname-$pkgver.post"*
- python -m installer --destdir="$pkgdir" dist/*.whl
- # configuration file
- install -d -m 750 "$pkgdir/etc/odoo"
- install -D -m 640 "$srcdir/odoo.conf" "$pkgdir/etc/odoo/odoo.conf"
- # logrotate file
- install -D -m 644 "$srcdir/odoo.logrotate" "$pkgdir/etc/logrotate.d/odoo"
- # systemd files
- install -D -m 644 "$srcdir/odoo.service" "$pkgdir/usr/lib/systemd/system/odoo.service"
- install -D -m 644 "$srcdir/odoo.sysusers" "$pkgdir/usr/lib/sysusers.d/odoo.conf"
- install -D -m 644 "$srcdir/odoo.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/odoo.conf"
+package() {
+    cd "$_pkgname-$pkgver.post"*
+
+    # provide out-of-the-box compatibility with the merge of libldap and libldap_r that happened with OpenLDAP's 2.5 release
+    sed -i 's/python-ldap==3.4.0/python-ldap==3.4.2/' requirements.txt
+
+    # Install dependencies
+    pip3.11 install -r requirements.txt --target=$pkgdir/usr/lib/python3.11/site-packages
+    
+    # Install Odoo DPD France dependency 
+    pip3.11 install xmltodict --target=$pkgdir/usr/lib/python3.11/site-packages
+
+    # Install package
+    python3.11 -m installer --destdir="$pkgdir" dist/*.whl
+
+    # Configuration file
+    install -d -m 750 "$pkgdir/etc/odoo"
+    install -D -m 640 "$srcdir/odoo.conf" "$pkgdir/etc/odoo/odoo.conf"
+
+    # Logrotate file
+    install -D -m 644 "$srcdir/odoo.logrotate" "$pkgdir/etc/logrotate.d/odoo"
+
+    # Systemd files
+    install -D -m 644 "$srcdir/odoo.service" "$pkgdir/usr/lib/systemd/system/odoo.service"
+    install -D -m 644 "$srcdir/odoo.sysusers" "$pkgdir/usr/lib/sysusers.d/odoo.conf"
+    install -D -m 644 "$srcdir/odoo.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/odoo.conf"
 }

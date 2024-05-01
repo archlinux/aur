@@ -4,3 +4,4 @@
 *.aria2
 src/
 pkg/
+*tar.zst
