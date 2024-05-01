@@ -9,7 +9,7 @@ pkgname=(
 )
 _pkgname=visualboyadvance-m
 pkgver=2.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=(x86_64)
 url='https://visualboyadvance-m.org'
