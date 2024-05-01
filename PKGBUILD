@@ -5,7 +5,7 @@
 _pkgname="hyprland"
 pkgname="${_pkgname}-displaylink-git"
 pkgver="0.38.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (DisplayLink patch)"
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -105,6 +105,7 @@ package() {
 
   # resolve conflicts with system wlr
   rm -f "$pkgdir/usr/lib/libwlroots.so"
+  rm -f "$pkgdir/usr/lib/libwlroots.so.13"
   rm -rf "$pkgdir/usr/lib/pkgconfig"
   rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
 
