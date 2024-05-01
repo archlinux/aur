@@ -1,6 +1,6 @@
 pkgbase = hyprwayland-scanner
 	pkgdesc = A Hyprland implementation of wayland-scanner, in and for C++
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/hyprwm/hyprwayland-scanner
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = hyprwayland-scanner
 	makedepends = gcc
 	depends = pugixml
 	provides = hyprwayland-scaner
-	source = hyprwayland-scanner-0.3.2.tar.gz::https://github.com/hyprwm/hyprwayland-scanner/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = e875dcd7615a28484298945fa9e441a62725e1abcb825740bb42fc4e170ef964
+	source = hyprwayland-scanner-0.3.3.tar.gz::https://github.com/hyprwm/hyprwayland-scanner/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = d5dbcd11ae93ee208279c7ad9593e67f69512f6a5130707ec01fb71ac26c7502
 
 pkgname = hyprwayland-scanner
