@@ -8,8 +8,11 @@ pkgbase = eww-x11
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	depends = gtk3
-	depends = libdbusmenu-glib
+	depends = gtk3>=3.22
+	depends = pango
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
 	depends = libdbusmenu-gtk3
 	provides = eww
 	conflicts = eww

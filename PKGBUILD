@@ -8,7 +8,7 @@ url='https://github.com/elkowar/eww'
 arch=(x86_64)
 license=(MIT)
 makedepends=(cargo)
-depends=(glibc gcc-libs gtk3 libdbusmenu-glib libdbusmenu-gtk3)
+depends=(glibc gcc-libs 'gtk3>=3.22' pango cairo gdk-pixbuf2 glib2 libdbusmenu-gtk3)
 conflicts=(eww)
 provides=(eww)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/elkowar/eww/archive/refs/tags/v$pkgver.tar.gz")
