@@ -2,7 +2,7 @@
 # Contributor: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-git
-pkgver=18.0.1.r0.g4f18816b2
+pkgver=18.1.r278.g3fc6ee434
 pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
@@ -45,6 +45,8 @@ pkgver() {
 build() {
     mkdir -p build
     cd build
+    # https://bbs.archlinux.org/viewtopic.php?id=293078
+    CXXFLAGS+=' -ffat-lto-objects'
     cmake ../ddnet                  \
         -DCMAKE_BUILD_TYPE=Release  \
         -DCMAKE_INSTALL_PREFIX=/usr \
