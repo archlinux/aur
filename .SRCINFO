@@ -1,6 +1,6 @@
 pkgbase = gamescope-session-git
 	pkgdesc = Common gamescope session files
-	pkgver = r206.c11dfac
+	pkgver = r231.127f432
 	pkgrel = 1
 	url = https://github.com/ChimeraOS/gamescope-session
 	install = gamescope-session.install
@@ -8,6 +8,7 @@ pkgbase = gamescope-session-git
 	license = MIT
 	makedepends = git
 	depends = gamescope
+	optdepends = mangohud: for performance overlay
 	source = gamescope-session::git+https://github.com/ChimeraOS/gamescope-session.git
 	md5sums = SKIP
 
