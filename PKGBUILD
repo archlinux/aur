@@ -2,11 +2,11 @@
 pkgname=python-kintree
 _name=${pkgname#python-}
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast part creation in KiCad and InvenTree"
 url="https://github.com/sparkmicro/Ki-nTree"
 depends=(
-    'python311'
+    'python'
     'python-digikey-api'
     'python-flet'
     'python-thefuzz'
@@ -18,7 +18,7 @@ depends=(
     'python-validators'
     'python-wrapt-timeout-decorator'
 )
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python311-build python-installer python-wheel)
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
@@ -30,12 +30,12 @@ sha256sums=('b68d7b013e0cddd5bf0f69a475b1cf11bd7d789588dfe203e0af7d1f57f90536'
 
 build() {
     cd "$srcdir/$_name-$pkgver"
-    python3.11 -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_name-$pkgver"
-    python3.11 -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
     chmod 777 -R $pkgdir
 
     # Desktop file
