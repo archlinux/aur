@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Gehrhardt <gehwolf at freenet dot de>
 
 pkgname=safu
-pkgver=0.52.4
+pkgver=0.53.0
 pkgrel=1
 pkgdesc="C to library to reduce boiler plate code when use standard c-libs"
 arch=('x86_64')
@@ -29,4 +29,4 @@ package() {
   make -C build DESTDIR="$pkgdir/" install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('92eaa819e544b9e0cf769d2edb3cfa7d')
+md5sums=('ccfc1aad00fafc0114b6e6bd5ccb5282')
