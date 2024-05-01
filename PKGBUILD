@@ -38,6 +38,7 @@ depends=(
   tomlplusplus
   wayland
   wayland-protocols
+  wlroots-displaylink-git
   xcb-proto
   xcb-util
   xcb-util-errors
