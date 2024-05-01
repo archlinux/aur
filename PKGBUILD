@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=fb303
-pkgver=2024.04.22.00
+pkgver=2024.04.29.00
 pkgrel=1
 pkgdesc="A core set of thrift functions that provide a common mechanism for querying stats and other information from a service"
 arch=(x86_64)
@@ -28,7 +28,7 @@ provides=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ccf829c44ad7c34ff6dbd71b2bfbc56c38e899f4ebfc4ef192a7868f6c2ebf28')
+sha256sums=('b2227ea547a280b3bfe859433bb52dd6fad1315a0fe48b6e6573e6eb8c96898e')
 
 _archive="$pkgname-$pkgver"
 
