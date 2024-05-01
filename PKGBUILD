@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=124.0.6367.91
+pkgver=124.0.6367.118
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -31,13 +31,15 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
+        fix-a-missing-build-dependency.patch
         drop-flag-unsupported-by-clang17.patch
         compiler-rt-adjust-paths.patch
         qt-6.7.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('376cdcdb46b23eca7f3e6cdb933f27e73968ffb537258d70be503850bbbf1787'
+sha256sums=('8aa5a14aad1234b48b568da9ef23d6e0b1b72d7f4ca5c4039462e54e6ad45d96'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'c2bc4e65ed2a4e23528dd10d5c15bf99f880b7bbb789cc720d451b78098a7e12'
+            '75e1482d1b27c34ebe9d4bf27104fedcc219cdd95ce71fc41e77a486befd3f93'
             '3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'e30623f36c54f4af3a8aa7d9400f7d2bed6ef560f15d665d2aa8fd777cb2565f'
@@ -119,6 +121,7 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
+  patch -Np1 -i ../fix-a-missing-build-dependency.patch
 
   # Drop compiler flag that needs newer clang
   patch -Np1 -i ../drop-flag-unsupported-by-clang17.patch
