@@ -5,4 +5,6 @@ cd /usr/share/$name
 port=($(comm -23 <(seq 49152 65535 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n 2))
 node ./app.js -p ${port[0]}:${port[1]} "$@" &
 export all_proxy=http://127.0.0.1:${port[0]}
+export http_proxy=http://127.0.0.1:${port[0]}
+export https_proxy=http://127.0.0.1:${port[0]}
 netease-cloud-music
