@@ -2,9 +2,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=eds
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='eds: Low-level reader for Alevin EDS format'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-tximportdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ca0320971186f9086c5dae9401eef84a8b856ad4b49f11493974172db6beb175')
+sha256sums=('84e361db16de6a258e1eae1f97fbc3e5a58c3c0c7119cca2d8a17c78fa2bcd00')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
