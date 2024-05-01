@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='kubedb-bin'
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Painlessly work with Kubernetes databases'
 url='https://github.com/clevyr/kubedb'
@@ -11,14 +11,14 @@ license=('GPL-3.0')
 provides=('kubedb')
 conflicts=('kubedb')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/clevyr/kubedb/releases/download/v1.12.0/kubedb_1.12.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('af5fe27ba19f350bb7782369c4940eb754d920609235c2eb69c7548a43fc38af')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/clevyr/kubedb/releases/download/v1.13.0/kubedb_1.13.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('b19f5a3f26a53c7553bbd6dac8b72e958f0ec64308a0ed3e935b387d78f9919a')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/clevyr/kubedb/releases/download/v1.12.0/kubedb_1.12.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('c446c0bf7a67dcc1098a057f76a4c23b5f24f9d9cdecb83df2268e95ef75a147')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/clevyr/kubedb/releases/download/v1.13.0/kubedb_1.13.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('0f92f2477dd17cb7f6fa912c2dc525cd764e94310d591ba95251fa7135c3c099')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/clevyr/kubedb/releases/download/v1.12.0/kubedb_1.12.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('a06ac92a6ae922286a7a25715b18595e6b3437998c5d7517d9e95f5ec72ff6e0')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/clevyr/kubedb/releases/download/v1.13.0/kubedb_1.13.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('e8b382b5d0741247956dfc65010a5f374384713156dbab90d9130a0dfeb9493d')
 
 package() {
   # bin
