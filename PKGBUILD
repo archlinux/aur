@@ -8,12 +8,12 @@ license=('GPL3')
 options=('!strip' '!debug')
 pkgdesc="Media Preservation Frontend for Aaru and Redumper in C# (CLI Version)"
 provides=('mpf-check')
-pkgver=3.1.5
+pkgver=3.1.7
 pkgrel=2
-source=('https://github.com/SabreTools/MPF/releases/download/3.1.5/MPF.Check_3.1.5_net8.0_linux-x64_release.zip'
+source=('https://github.com/SabreTools/MPF/releases/download/3.1.7/MPF.Check_3.1.7_net8.0_linux-x64_release.zip'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE')
-sha256sums=('8593ab111ed7a6debf034d9fda6a5441cb6ce1fe925e9eaf0b9a7ffc27e824ab'
+sha256sums=('68c6bcc6790b97e4b5e91e02a446309e9bbdc1ebedb61db8ae35c69711c5e34c'
 'SKIP'
 'SKIP')
 
@@ -21,8 +21,8 @@ package() {
 
 	# install mpf-check distribution
 	install -Dm 755 ${srcdir}/${_prgname} ${pkgdir}/usr/bin/${_prgname}
-	install -Dm 644 ${srcdir}/MPF.Check.dll.config \
-		${pkgdir}/usr/lib/${_prgname}/MPF.Check.dll.config
+	install -Dm 644 ${srcdir}/${_prgname}.dll.config \
+		${pkgdir}/usr/lib/${_prgname}/${_prgname}.dll.config
 	install -Dm 644 ${srcdir}/CascLib.dll \
 		${pkgdir}/usr/lib/${_prgname}/CascLib.dll
 	install -Dm 644 ${srcdir}/libAaru.Checksums.Native.so \
