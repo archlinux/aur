@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=paircompviz
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Multiple comparison test visualization'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('64f51d7bd764d77341ecd641c9edc2844299789baaeee7cb75044d12e31e29f2')
+sha256sums=('0090fb78dbe47fe525e18963a7c88e3402f4f4922e00b2b78471e8a315b3f68f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
