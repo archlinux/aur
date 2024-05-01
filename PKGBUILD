@@ -3,21 +3,20 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 # Contributor: mosra <mosra@centrum.cz>
 
-_basever=2.0.0.master
+_basever=2.0.0.main
 pkgname=mypaint-git
-pkgver=2.0.0.master.r6054.90b36dbc
+pkgver=2.0.0.main.r6208.8187b1e2
 pkgrel=1
 pkgdesc="Simple drawing & painting program that works well with graphics tablets (git)."
 arch=('i686' 'x86_64')
 url="http://mypaint.org/"
-license=('GPL2')
-depends=('desktop-file-utils' 'gtk3' 'json-c' 'lcms2' 'librsvg' 'python-cairo' 'python-gobject' 'python-numpy' 'mypaint-brushes-git')
+license=('GPL-2.0-only')
+depends=('gtk3' 'json-c' 'lcms2' 'librsvg' 'python-cairo' 'python-gobject' 'python-numpy' 'mypaint-brushes-git')
 makedepends=('git' 'swig' 'pygobject-devel' 'python' 'python-setuptools')
 provides=("mypaint=${_basever}")
 conflicts=('mypaint')
-install=mypaint-git.install
 source=('git+https://github.com/mypaint/mypaint.git'
-        'mypaint-git.install')
+        'radius_lock.patch')
 
 pkgver() {
     cd "${srcdir}/mypaint"
@@ -26,6 +25,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/mypaint"
+    patch --forward --strip=1 --input="${srcdir}/radius_lock.patch"
     export CFLAGS='-Ofast -ftree-vectorize -fopt-info-vec-optimized -march=native -mtune=native -funsafe-math-optimizations -funsafe-loop-optimizations'
 }
 
@@ -46,4 +46,4 @@ package() {
 }
 
 sha256sums=('SKIP'
-            '34dec9df2e005de9fae6c6352f49835a1d41e515c6131ed1df8c9e27ee3c9d1d')
+            '922cd92ba2a96691d45694c78c4ca26a104f011d2477b8a4581c1e45d45c4f58')

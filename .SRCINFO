@@ -1,9 +1,8 @@
 pkgbase = mypaint-git
 	pkgdesc = Simple drawing & painting program that works well with graphics tablets (git).
-	pkgver = 2.0.0.master.r6054.90b36dbc
+	pkgver = 2.0.0.main.r6208.8187b1e2
 	pkgrel = 1
 	url = http://mypaint.org/
-	install = mypaint-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -12,7 +11,6 @@ pkgbase = mypaint-git
 	makedepends = pygobject-devel
 	makedepends = python
 	makedepends = python-setuptools
-	depends = desktop-file-utils
 	depends = gtk3
 	depends = json-c
 	depends = lcms2
@@ -21,11 +19,11 @@ pkgbase = mypaint-git
 	depends = python-gobject
 	depends = python-numpy
 	depends = mypaint-brushes-git
-	provides = mypaint=2.0.0.master
+	provides = mypaint=2.0.0.main
 	conflicts = mypaint
 	source = git+https://github.com/mypaint/mypaint.git
-	source = mypaint-git.install
+	source = radius_lock.patch
 	sha256sums = SKIP
-	sha256sums = 34dec9df2e005de9fae6c6352f49835a1d41e515c6131ed1df8c9e27ee3c9d1d
+	sha256sums = 922cd92ba2a96691d45694c78c4ca26a104f011d2477b8a4581c1e45d45c4f58
 
 pkgname = mypaint-git
