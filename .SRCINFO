@@ -15,7 +15,8 @@ pkgbase = diffsitter
 	makedepends = cargo
 	depends = tree-sitter
 	options = !lto
-	source = diffsitter::git+https://github.com/afnanenayet/diffsitter#commit=e57327978064db97caf4485c981183f4e0b12d05
-	sha512sums = SKIP
+	source = git+https://github.com/afnanenayet/diffsitter.git?signed#tag=v0.8.3
+	validpgpkeys = 1C519E4FEF5757BFB30C636494EEFE1FD178056B
+	sha512sums = bb8a927a7e50ea1c2729667f3bbf22f54060df6a7febed1d4e839ff910ba78ac0dad49ef0c1921075e7ca25b1258688f9c2632c1b1143b7f3f31f1e7df487fd4
 
 pkgname = diffsitter

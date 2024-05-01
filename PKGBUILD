@@ -3,7 +3,6 @@
 
 pkgname=diffsitter
 pkgver=0.8.3
-_commit=e57327978064db97caf4485c981183f4e0b12d05
 pkgrel=1
 pkgdesc="Tree-sitter based AST diff tool"
 arch=(x86_64 i686 arm aarch64)
@@ -13,9 +12,9 @@ depends=(tree-sitter)
 makedepends=(git cargo)
 checkdepends=(tree-sitter-cpp tree-sitter-python tree-sitter-rust)
 options=('!lto')
-source=("${pkgname}::git+${url}#commit=${_commit}") # ?signed
-sha512sums=('SKIP')
-#validpgpkeys=('1C519E4FEF5757BFB30C636494EEFE1FD178056B') # Afnan Enayet <afnan@afnan.io>
+source=(git+${url}.git?signed#tag=v${pkgver})
+sha512sums=('bb8a927a7e50ea1c2729667f3bbf22f54060df6a7febed1d4e839ff910ba78ac0dad49ef0c1921075e7ca25b1258688f9c2632c1b1143b7f3f31f1e7df487fd4')
+validpgpkeys=('1C519E4FEF5757BFB30C636494EEFE1FD178056B') # Afnan Enayet <afnan@afnan.io>
 
 prepare() {
   cd ${pkgname}
