@@ -1,17 +1,17 @@
 pkgbase = battery_status_rs
 	pkgdesc = A utility to watch the battery level.
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	arch = any
 	makedepends = cargo
 	makedepends = git
 	depends = systemd
-	source = git+https://git.unfug.hs-furtwangen.de/weva/battery_status_rs/#tag=3.0.0
+	source = git+https://git.unfug.hs-furtwangen.de/weva/battery_status_rs/#tag=3.1.0
 	source = battery_status_rs_notification.service
 	source = battery_status_rs_sleep.service
-	sha256sums = 4a858b6467fe4aba898c9a3f0b944cf0b3da51043903cb637971712dba9f3846
+	sha256sums = a8a9a10f8d2bdf61e2035862d7defd647a53ba0a323b9b5aede904e4883b0e95
 	sha256sums = 92ecbb16524c4ec6423d87979f655838b502fc0c5206127f34553c5ff837f3f8
-	sha256sums = cfd70a35335c7e9ca9d2a0314665e8f40ece15933503ce4ea1396df26583edfb
+	sha256sums = e104c41b6c84c60ebca61545cc06a9e53c169f00d4eab50c2dd4df3d2f22500b
 
 pkgname = battery_status_rs_notification
 

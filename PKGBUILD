@@ -2,8 +2,8 @@
 pkgbase="battery_status_rs"
 pkgname=("battery_status_rs_notification"
          "battery_status_rs_sleep")
-pkgver="3.0.0"
-pkgrel="2"
+pkgver="3.1.0"
+pkgrel="1"
 pkgdesc="A utility to watch the battery level."
 arch=('any')
 depends=('systemd')
@@ -14,9 +14,9 @@ source=("git+https://git.unfug.hs-furtwangen.de/weva/battery_status_rs/#tag=$pkg
         "battery_status_rs_notification.service"
         "battery_status_rs_sleep.service")
 
-sha256sums=('4a858b6467fe4aba898c9a3f0b944cf0b3da51043903cb637971712dba9f3846'
+sha256sums=('a8a9a10f8d2bdf61e2035862d7defd647a53ba0a323b9b5aede904e4883b0e95'
             '92ecbb16524c4ec6423d87979f655838b502fc0c5206127f34553c5ff837f3f8'
-            'cfd70a35335c7e9ca9d2a0314665e8f40ece15933503ce4ea1396df26583edfb')
+            'e104c41b6c84c60ebca61545cc06a9e53c169f00d4eab50c2dd4df3d2f22500b')
 
 prepare() {
         cd battery_status_rs
