@@ -8,7 +8,7 @@ pkgname=(
 )
 pkgbase=autokey
 pkgver=0.96.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A desktop automation utility for Linux and X11"
 arch=('any')
 url="https://github.com/autokey/autokey"
@@ -64,8 +64,8 @@ package_autokey-common() {
 
   # Manually compile Python bytecode for only installed files
   rm -rf "${pkgdir}${site_packages}/$pkgbase"/{__pycache__,*/__pycache__}
-  python -m compileall -d "${pkgdir}${site_packages}/$pkgbase"
-  python -O -m compileall -d "${pkgdir}${site_packages}/$pkgbase"
+  python -m compileall -d / "${pkgdir}${site_packages}/$pkgbase"
+  python -O -m compileall -d / "${pkgdir}${site_packages}/$pkgbase"
 }
 
 package_autokey-gtk() {
@@ -96,8 +96,8 @@ package_autokey-gtk() {
 
   # Manually compile Python bytecode for only installed files
   rm -rf "${pkgdir}${site_packages}/$pkgbase"/{__pycache__,*/__pycache__}
-  python -m compileall -d "${pkgdir}${site_packages}/$pkgbase"
-  python -O -m compileall -d "${pkgdir}${site_packages}/$pkgbase"
+  python -m compileall -d / "${pkgdir}${site_packages}/$pkgbase"
+  python -O -m compileall -d / "${pkgdir}${site_packages}/$pkgbase"
 }
 
 package_autokey-qt() {
@@ -127,6 +127,6 @@ package_autokey-qt() {
 
   # Manually compile Python bytecode for only installed files
   rm -rf "${pkgdir}${site_packages}/$pkgbase"/{__pycache__,*/__pycache__}
-  python -m compileall -d "${pkgdir}${site_packages}/$pkgbase"
-  python -O -m compileall -d "${pkgdir}${site_packages}/$pkgbase"
+  python -m compileall -d / "${pkgdir}${site_packages}/$pkgbase"
+  python -O -m compileall -d / "${pkgdir}${site_packages}/$pkgbase"
 }
