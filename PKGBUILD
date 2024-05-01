@@ -41,7 +41,7 @@ checkdepends=(
   'appstream-glib'
 #  'fluidsynth'
 #  'pciutils'
-#  'python-nose-cover3'
+#  'python-nose'
 #  'vulkan-tools'
 #  'xorg-server-xvfb'
 #  'xterm'
@@ -92,13 +92,7 @@ check() {
   meson test -C build --print-errorlogs
 
 #  cd "${pkgname%-git}"
-#  xvfb-run nosetests \
-#    --cover-erase \
-#    --with-xunit \
-#    --xunit-file=nosetests.xml \
-#    --with-coverage \
-#    --cover-package=lutris \
-#    --cover-xml-file=coverage.xml
+#  xvfb-run nosetests
 }
 
 package() {
