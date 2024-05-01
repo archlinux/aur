@@ -1,6 +1,6 @@
 pkgbase = r-epidish
 	pkgdesc = Epigenetic Dissection of Intra-Sample-Heterogeneity
-	pkgver = 2.18.0
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EpiDISH
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-epidish
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EpiDISH_2.18.0.tar.gz
-	sha256sums = 461ff4669ef8b6f837930c99b20eea3df310dfb6be3cf1e1eb33b467fca81e9c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EpiDISH_2.20.0.tar.gz
+	sha256sums = 383b14c664baa75b3ce14d6192bc61c4f0a161eb58ad546376cd6d6563a9139f
 
 pkgname = r-epidish
