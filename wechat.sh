@@ -247,9 +247,14 @@ function execAppUnsafe() {
 	killall wechat
 	bwrap \
 		--dev-bind / / \
-		--ro-bind /usr/share/wechat-uos-qt/license/var/ /var/ \
-		--ro-bind /usr/share/wechat-uos-qt/license/etc/os-release "${osRel}" \
-		--ro-bind /usr/share/wechat-uos-qt/license/etc/lsb-release /etc/lsb-release \
+		--bind /opt/wechat-uos-qt/files/libuosdevicea.so \
+			/usr/lib/license/libuosdevicea.so \
+		--ro-bind /usr/share/wechat-uos-qt/license/var/ \
+			/var/ \
+		--ro-bind /usr/share/wechat-uos-qt/license/etc/os-release \
+			"${osRel}" \
+		--ro-bind /usr/share/wechat-uos-qt/license/etc/lsb-release \
+			/etc/lsb-release \
 		--setenv QT_QPA_PLATFORM xcb \
 		--setenv LD_LIBRARY_PATH /opt/wechat-uos-qt/files:/usr/lib/wechat-uos-qt/so:/usr/lib/wechat-uos-qt/so \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
