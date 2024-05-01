@@ -1,6 +1,6 @@
 pkgbase = r-ttgsea
 	pkgdesc = Tokenizing Text of Gene Set Enrichment Analysis
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ttgsea
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-ttgsea
 	optdepends = r-reticulate
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ttgsea_1.10.0.tar.gz
-	sha256sums = 3cee0ee4e930eb2fce6557723fbb2ac30a40589b80aa3174004d2a372108d303
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ttgsea_1.12.0.tar.gz
+	sha256sums = fa1bd25f4f4c7a06c589cfe051ad064cbf0ecd3adfeaec83317ddfbf588e09c8
 
 pkgname = r-ttgsea
