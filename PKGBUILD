@@ -6,13 +6,14 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libxfixes
 pkgver=6.0.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="X11 miscellaneous 'fixes' extension library (Android ${_android_arch})"
 url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=("android-${_android_arch}-libx11")
-makedepends=("android-${_android_arch}-xorg-util-macros"
+makedepends=('android-configure'
+             "android-${_android_arch}-xorg-util-macros"
              "android-${_android_arch}-xorgproto")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/releases/individual/lib/libXfixes-${pkgver}.tar.xz"{,.sig})
