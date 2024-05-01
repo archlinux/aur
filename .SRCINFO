@@ -1,7 +1,7 @@
 pkgbase = dmenu
 	pkgdesc = Generic menu for X
 	pkgver = 5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tools.suckless.org/dmenu/
 	arch = x86_64
 	license = MIT
