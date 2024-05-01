@@ -5,13 +5,13 @@
 # Contributor: tze <tze@datalove.me>
 
 pkgname=jcryptool
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="e-learning application for applying and analysing cryptographic algorithms"
 arch=('x86_64')
 url="https://www.cryptool.org/en/jct"
 license=('EPL')
-depends=('jre11-openjdk' 'libxext' 'libxrender' 'fontconfig')
+depends=('jre17-openjdk' 'libxext' 'libxrender' 'fontconfig')
 _iconsrc='https://github.com/jcryptool/doc/raw/bfc66c1e952809edada1936dc5122f45400170de/Graphics/Icons/png/JCT_Icon_png_'
 source=("https://github.com/jcryptool/core/releases/download/${pkgver}/${pkgname}-${pkgver}-Linux-64bit.tar.gz"
         'jcryptool.desktop'
@@ -22,7 +22,7 @@ source=("https://github.com/jcryptool/core/releases/download/${pkgver}/${pkgname
         "jcryptool-128.png::${_iconsrc}128x128.png"
         "jcryptool-256.png::${_iconsrc}256x256.png"
         "jcryptool-512.png::${_iconsrc}512x512.png")
-sha512sums=('8727d86117c49b2ae942c61d596216ac405fcb3cd8d170a73cb8505e70d91d0122ffbc8dcd7999e698ec2494e1d17ebdb2c791f497e88aa19b9f097428cd2c8d'
+sha512sums=('aab6a01251298c8200e1186eb26428ac56653cfbcbca53da935bd6e5f29731d85c75a9fd5c424a7e4062687a679e76e96ebb6527afc1001a2cbe12055196bc4e'
             '4b08c526016f27fa78bdcbe0f499236757c9e14e0548da8736d99b0d6f3e85fa7f84ac27b7f4922b2064802e92ec0e508848fb327a519b55f49bc5a0a9bda5e8'
             '02c728049ff612f4c77575aa557850d826fbf40b09e885a9de6e80429020b742f7193d7e0e572dff21a6bf091006f7d8fa7c377ea68b96ac01a60384b1dd1aff'
             '3df55b87975dc5ed5b475fc2cf9c55d21b29d1ec6ef34b8773b7e9c72ff39225c0ab6c34464b04ea57dd5b4d856d63686d78e0741c3f3a1300e276192c72a4c4'
@@ -36,7 +36,7 @@ prepare() {
     cd "${srcdir}/jcryptool"
     #remove bundle jre and use system jre instead
     rm -R features/org.jcryptool.thirdparty.jre.linux64.*
-    sed -i '/^features\/org\.jcryptool\.thirdparty\.jre\.linux64\./c\\/usr\/lib\/jvm\/java-11-openjdk\/bin\/java' ./JCrypTool.ini
+    sed -i '/^features\/org\.jcryptool\.thirdparty\.jre\.linux64\./c\\/usr\/lib\/jvm\/java-17-openjdk\/bin\/java' ./JCrypTool.ini
 }
 
 package() {
