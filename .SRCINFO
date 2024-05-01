@@ -1,6 +1,6 @@
 pkgbase = r-decontam
 	pkgdesc = Identify Contaminants in Marker-gene and Metagenomics Sequencing Data
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/decontam
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-decontam
 	optdepends = r-knitr
 	optdepends = r-phyloseq
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/decontam_1.22.0.tar.gz
-	sha256sums = 736b270861e029e47b7b9958fe38bda6c6b833ebe8e98b54e2e766ddb1699f54
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/decontam_1.24.0.tar.gz
+	sha256sums = 67bdfd2d95036f0d70c03a0c406fe9c5f38083a8ff79eb4c73cf48dabf4c4df6
 
 pkgname = r-decontam
