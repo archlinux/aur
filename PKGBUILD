@@ -33,7 +33,7 @@ build() {
 	mkdir "$srcdir/${pkgname%-git}"/build 
 	cd "$srcdir/${pkgname%-git}"/build
 	cmake ..
-	cmake --build . -j 1
+	cmake --build . -j 1 -Wno-dev
 }
 
 package() {
