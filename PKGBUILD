@@ -2,23 +2,27 @@
 # Contributor: Nigel Kukard <nkukard@lbsd.net>
 # Contributor: Serge Victor <arch@random.re>
 
-_pipname=Flask-DebugToolbar
+_name=flask-debugtoolbar
 pkgname=python-flask-debugtoolbar
-pkgver=0.14.1
+pkgver=0.15.1
 pkgrel=0
 pkgdesc="A toolbar overlay for debugging Flask applications"
 arch=('any')
 url="https://flask-debugtoolbar.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools')
-# python-packaging will be dropped as a dependency in the next release
-depends=('python-blinker' 'python-flask' 'python-werkzeug' 'python-itsdangerous' 'python-packaging')
-source=("https://pypi.python.org/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz")
-sha256sums=('ccd6a72119ea4f7c486823591b2b2f4a14dc7fb38d6bd495272e0ebdc08724cd')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=('python-blinker' 'python-flask' 'python-werkzeug' 'python-itsdangerous')
+source=("$_name-$pkgver.tar.gz::https://github.com/pallets-eco/flask-debugtoolbar/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('d9afb67f344b15ad4e7f61bac5843168bf4c0484709403e292c638a6e303675a')
+
+build() {
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "$_pipname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
