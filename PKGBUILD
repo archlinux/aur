@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GEOmetadb
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
-pkgrel=3
+pkgver=1.66.0
+pkgrel=1
 pkgdesc='A compilation of metadata from NCBI GEO'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-wordcloud
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f82b93dcf1d2e2a59e33cb681840c0117e83215e24bad0b102fbcc290276e687')
+sha256sums=('1c783ce52b477de6fc034ec3e8248e0c6f027c647739c607d363fbc9196e4e79')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
