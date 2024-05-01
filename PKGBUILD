@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sheikah-witnet-wallet-bin
 _pkgname=Sheikah-Witnet-wallet
-pkgver=1.12.0
+pkgver=1.12.1
 _electronversion=29
 pkgrel=1
 pkgdesc="A Witnet compatible desktop wallet and smart contracts development environment"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1ae6e1cb106a40a67617968a7ec0ab030d0bf833c2b25a6b6d545e02c3512ff6'
+sha256sums=('c177b8ce869d07c3b473196c8cdc8ca16fb2ce96c2ab8b677d52eda49023e0f1'
             '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
