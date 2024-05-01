@@ -1,8 +1,8 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 
 pkgname=icoextract
-pkgver=0.1.4
-pkgrel=4
+pkgver=0.1.5
+pkgrel=1
 pkgdesc='Icon extractor for Windows PE files (.exe/.dll) with optional thumbnailer functionality'
 arch=('any')
 url='https://github.com/jlu5/icoextract'
@@ -13,13 +13,7 @@ optdepends=('python-pillow: required for the optional thumbnailer')
 provides=('exe-thumbnailer')
 conflicts=('exe-thumbnailer')
 source=("https://github.com/jlu5/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9d84a6191c02326bdf6f7689184540aba5b683b9c626ed832ff20c426f2d6746')
-
-prepare() {
-    cd ${pkgname}-${pkgver}
-
-    sed -i -e 's|MimeType=application/x-ms-dos-executable;application/x-dosexec;application/x-msdownload|MimeType=application/x-ms-dos-executable;application/x-dosexec;application/x-msdownload;application/vnd.microsoft.portable-executable|' exe-thumbnailer.thumbnailer
-}
+sha256sums=('9eddf003b2188a1c81805836fd7bd9b157c6ed16d0db1b51121f2bb8bee1963a')
 
 build() {
     cd ${pkgname}-${pkgver}
