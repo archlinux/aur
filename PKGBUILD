@@ -4,7 +4,7 @@
 # Contributor: Chizuru-Kagurazaka <chizuru-mtf@outlook.com>
 # Contributor: bilibili_xiaok <the_xiaok@qq.com>
 pkgname=xmcl-launcher
-pkgver=0.44.3
+pkgver=0.44.0
 pkgrel=1
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("https://github.com/Voxelum/x-minecraft-launcher/releases/download/v$pkg
     xmcl.desktop
     xmcl.png
     xmcl-launcher)
-md5sums=('1c59646fd3c4649dae707e16bc523294'
+md5sums=('b3483620b4822e92d7b02e784a857b7c'
          'ef302df83d9a2e867dc94e509ba1e0b2'
          '8facdbaf84f32aaefff5d6fcdad0b8a8'
          '0ca353b6f4df117ce040b717f15eada2')
