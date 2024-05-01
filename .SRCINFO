@@ -1,6 +1,6 @@
 pkgbase = r-rwikipathways
 	pkgdesc = rWikiPathways - R client library for the WikiPathways API
-	pkgver = 1.22.1
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rWikiPathways
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-rwikipathways
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rWikiPathways_1.22.1.tar.gz
-	sha256sums = 97df3b0b2fdcbedf237a4d1f87707694d473055b62f46a784a7e4ea7709393b4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rWikiPathways_1.24.0.tar.gz
+	sha256sums = ac92ec4fd00c89fb2e0134e9ab05c5bfa238862ce6ee2106d11d15088e96cdd4
 
 pkgname = r-rwikipathways
