@@ -1,6 +1,6 @@
 pkgbase = r-fmcsr
 	pkgdesc = Mismatch Tolerant Maximum Common Substructure Searching
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/fmcsR
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-fmcsr
 	optdepends = r-knitr
 	optdepends = r-knitrbootstrap
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/fmcsR_1.44.0.tar.gz
-	sha256sums = cd42c4ab473a52595dc8b32a57b83c06f3d0a5029f0615c921f4a918624d349e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fmcsR_1.46.0.tar.gz
+	sha256sums = 8f14aa1c03d70664c28a9dd7925724f1250a468999a88bd25c7b724906cb1a20
 
 pkgname = r-fmcsr
