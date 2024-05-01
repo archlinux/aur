@@ -24,6 +24,7 @@ pkgbase = executor-git
 	provides = executor
 	conflicts = executor
 	options = !lto
+	options = !debug
 	source = git+https://github.com/autc04/executor.git
 	sha256sums = SKIP
 

@@ -16,7 +16,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/autc04/executor.git')
 sha256sums=('SKIP')
-options=(!lto) 
+options=(!lto !debug)
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -32,7 +32,7 @@ prepare() {
 build() {
 	mkdir "$srcdir/${pkgname%-git}"/build 
 	cd "$srcdir/${pkgname%-git}"/build
-	cmake .. -Wno-dev
+	cmake ..
 	cmake --build . -j 1
 }
 
