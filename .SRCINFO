@@ -8,6 +8,7 @@ pkgbase = libdng-git
         license = MIT
         makedepends = meson
         makedepends = libtiff
+        makedepends = scdoc
         provides = libdng
         conflicts = libdng
         replaces = libdng
