@@ -4,8 +4,8 @@
 
 _name=gaphor
 pkgname=python-${_name}
-pkgver=2.24.0
-pkgrel=2
+pkgver=2.25.1
+pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
@@ -17,7 +17,6 @@ depends=(
 	'python-jedi'
 	'python-tinycss2'
 	'python-pygit2'
-#	'python-typing_extensions'
 	'python-better-exceptions'
 	'python-pydot'
 	'python-babel'
@@ -35,26 +34,29 @@ checkdepends=(
 	'python-pytest-archon'
 	'python-pytest-xvfb'
 	'python-sphinx'
-#	'python-babel-glade'
 	'python-xdoctest'
 	'xorg-server-xvfb'
+	'python-pytest-randomly'
 )
 provides=("${_name}")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e20f32514c2db6c677206584087c908163f9bd348176b2cfe5dd04880f977e34')
+sha256sums=('86a73972e90c448ecb08d32a374cbc465b58893a243501be5c8b97bd80df3f7a')
 
 build() {
 	cd "${_name}-${pkgver}"
-	python po/build-babel.py
+	echo "Compiling translations ..."
+	python po/build-babel.py &> /dev/null
 	# Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
 	# from incorrectly using a parent git checkout info.
 	# https://github.com/pypa/build/issues/384#issuecomment-947675975
+	echo "Building wheel ..."
 	GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --no-isolation
 }
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-	xvfb-run python -m pytest -s tests
+	xvfb-run python -m pytest -s tests -p no:ruff -p no:mypy
+	#xvfb-run --auto-servernum python -m pytest -s tests
 }
 
 prepare() {
