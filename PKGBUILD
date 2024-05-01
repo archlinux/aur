@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: qwjyh <urataw421 at gmail dot com>
 # Contributor: clanger <virtualdemise at gmail dot com>
 # Contributor: Aaron Coach <aur at ezpz dot cz>
 
