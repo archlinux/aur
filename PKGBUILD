@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Gehrhardt <gehwolf at freenet dot de>
 
 pkgname=elos
-pkgver=0.56.5
+pkgver=0.57.3
 pkgrel=1
 pkgdesc="An event logging system"
 arch=('x86_64')
@@ -67,5 +67,26 @@ package() {
   # don't acquire /dev/log to not conflict with other syslog daemons
   _editConfig '.root.elos.Scanner.SyslogScanner.SyslogPath = "/run/elos/dev-log"'
 
+  # install smoke tests
+  _ELOS_TEST_DIR="/usr/lib/elos/tests"
+  install -d "$pkgdir/${_ELOS_TEST_DIR}"
+  install -Dm755 'test/smoketest/smoketest.sh' "$pkgdir/${_ELOS_TEST_DIR}/"
+  install -Dm644 'test/smoketest/smoketest_log.sh' "$pkgdir/${_ELOS_TEST_DIR}/"
+
+  # configure tests
+  echo "
+export SMOKETEST_DIR=\"${_ELOS_TEST_DIR}\"
+export SMOKETEST_RESULT_DIR=\"/tmp/elos_tests\"
+export SMOKETEST_TMP_DIR=\"/tmp/elos\"
+
+export SMOKETEST_ENABLE_COMPILE_TEST=\"true\"
+export ENABLED_TESTS=\"publish_poll, find_event\"
+
+export ELOS_SYSLOG_PATH=\"/run/elos/dev-log\"
+export ELOS_CONFIG_PATH=\"/etc/elos/elosd.json\"
+  " > "$pkgdir/${_ELOS_TEST_DIR}/smoketest_env.sh"
+
+  # fix elosd port in smoke test as the port is partially hard coded
+  sed -i 's,54323,54321,g' "$pkgdir/${_ELOS_TEST_DIR}/smoketest.sh"
 }
-md5sums=('0ad4c40c75ce58f44e154259dbe5e1af')
+md5sums=('676ba0a5def9d4c261888caab54ddd8f')
