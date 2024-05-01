@@ -1,10 +1,11 @@
 pkgbase = android-x86-libxfixes
 	pkgdesc = X11 miscellaneous 'fixes' extension library (Android x86)
 	pkgver = 6.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom
+	makedepends = android-configure
 	makedepends = android-x86-xorg-util-macros
 	makedepends = android-x86-xorgproto
 	depends = android-x86-libx11
