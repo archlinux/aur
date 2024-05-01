@@ -1,0 +1,4 @@
+[python-huey]
+source = "github"
+github = "coleifer/huey"
+use_max_tag = true

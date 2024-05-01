@@ -1,0 +1,19 @@
+pkgbase = python-huey
+	pkgdesc = huey, a little task queue
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/coleifer/huey
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-redis
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-redis
+	source = https://github.com/coleifer/huey/archive/2.5.0/huey-2.5.0.tar.gz
+	sha256sums = ca5a59fe33f386cfc3aa08e20dc91bb0a1a8e8ae65253add26d123aa360dab4a
+
+pkgname = python-huey
