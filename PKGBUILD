@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=siggenes
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
+pkgver=1.78.0
 pkgrel=1
 pkgdesc="Multiple Testing using SAM and Efron's Empirical Bayes Approaches"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-kernsmooth
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6c8aa834ad0c8db397969993358279c0d3fb81792951058f0331c088c4e3fd4b')
+sha256sums=('d53e262aed40e60c4de944583367f84065ca4ea284135e7a0af9378170839648')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
