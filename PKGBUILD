@@ -3,14 +3,14 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 # Contributor: mosra <mosra@centrum.cz>
 
-_basever=2.0.0.master
+_basever=2.0.0.main
 pkgname=mypaint-brushes-git
-pkgver=2.0.0.master.r195.08da4a4
+pkgver=2.0.0.main.r195.08da4a4
 pkgrel=1
 pkgdesc="Brushes used by MyPaint and other software using libmypaint"
 arch=('any')
 url="https://github.com/mypaint/mypaint-brushes"
-license=('custom:CC0')
+license=('CC-PDDC')
 depends=('libmypaint-git')
 makedepends=('git')
 provides=("mypaint-brushes=${_basever}")
