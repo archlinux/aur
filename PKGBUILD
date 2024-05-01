@@ -31,7 +31,7 @@ prepare() {
 build() {
 	mkdir "$srcdir/${pkgname%-git}"/build 
 	cd "$srcdir/${pkgname%-git}"/build
-	cmake .. -DTWENTYFOUR=YES -Wno-dev
+	cmake ..
 	cmake --build .
 }
 
