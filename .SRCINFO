@@ -1,22 +1,18 @@
 pkgbase = xubuntu-artwork
 	pkgdesc = Xubuntu themes and artwork
-	pkgver = 24.04
+	pkgver = 24.04.1
 	pkgrel = 1
 	url = https://launchpad.net/xubuntu-artwork
 	arch = any
-	license = gpl2
-	license = gpl3
-	license = custom:cc-by-sa-3.0
-	makedepends = zip
+	license = GPL-2.0
+	makedepends = tar
 	optdepends = plymouth: For the plymouth theme to work
 	optdepends = lightdm-gtk-greeter: For LightDM GTK Greeter theme to work
 	optdepends = shimmer-wallpapers: Wallpapers not included in the main package, or git version
 	optdepends = xfce-theme-bluebird: Official theming, git or stable version
 	optdepends = xfce-theme-greybird: Official theming, git or stable version
 	optdepends = elementary-xfce-icons: For matching icon theme, or the git version
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/xubuntu-artwork_24.04.tar.xz
-	source = CC-BY-SA-3.0.txt
-	sha256sums = 5492793da8218f9f6c7a41231da8d325d5ce662a2a8c7d50de6c5d3c8ed6b72d
-	sha256sums = 129f20089a0c2fe1ac3607fc1761ef177effbf354aeed1fd9def9bcaf4d024ee
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/xubuntu-artwork_24.04.1.tar.xz
+	sha256sums = b85f8ef24cada42dffc1ce590a7d24ace01e4835a70054f02860a97bc1d9fa45
 
 pkgname = xubuntu-artwork

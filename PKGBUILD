@@ -3,24 +3,21 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=24.04
+pkgver=24.04.1
 pkgrel=1
-_uver=focal
 pkgdesc="Xubuntu themes and artwork"
 arch=("any")
 url="https://launchpad.net/xubuntu-artwork"
-license=("gpl2" "gpl3" "custom:cc-by-sa-3.0")
-makedepends=("zip")
+license=("GPL-2.0")
+makedepends=("tar")
 optdepends=("plymouth: For the plymouth theme to work"
             "lightdm-gtk-greeter: For LightDM GTK Greeter theme to work"
             "shimmer-wallpapers: Wallpapers not included in the main package, or git version"
             "xfce-theme-bluebird: Official theming, git or stable version"
             "xfce-theme-greybird: Official theming, git or stable version"
             "elementary-xfce-icons: For matching icon theme, or the git version")
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz"
-        "CC-BY-SA-3.0.txt")
-sha256sums=('5492793da8218f9f6c7a41231da8d325d5ce662a2a8c7d50de6c5d3c8ed6b72d'
-            '129f20089a0c2fe1ac3607fc1761ef177effbf354aeed1fd9def9bcaf4d024ee')
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz")
+sha256sums=('b85f8ef24cada42dffc1ce590a7d24ace01e4835a70054f02860a97bc1d9fa45')
 
 package() {
   cd "${srcdir}/${pkgname}"
@@ -39,6 +36,4 @@ package() {
 
   msg2 "Remove redundant and empty files."
   rm -frv "${pkgdir}"/usr/share/xfce4/backdrops
-
-  install -D -m644 "${srcdir}/CC-BY-SA-3.0.txt" "${pkgdir}/usr/share/licenses/${pkgbase}/CC-BY-SA-3.0.txt"
 }
