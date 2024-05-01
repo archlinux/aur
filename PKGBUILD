@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OrderedList
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc='Similarities of Ordered Gene Lists'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-twilight
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ea42c6eb35123196f913938f10e2ccdbf56caaafa4738a536391af0dee3ae25e')
+sha256sums=('dad4173e930baadaf2eae6487e6da46c2c7d9042e9525d522e777c2e9b26c03c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
