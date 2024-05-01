@@ -14,7 +14,7 @@ depends=(
     'python-kiutils'
     'python-mouser'
     'python-multiprocess'
-    'python-pyaml'
+    'python-yaml'
     'python-validators'
     'python-wrapt-timeout-decorator'
 )
