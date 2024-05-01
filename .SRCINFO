@@ -1,15 +1,13 @@
 pkgbase = scotch
 	pkgdesc = Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps).
 	pkgver = 7.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.inria.fr/scotch/scotch
 	arch = i686
 	arch = x86_64
 	license = custom:CeCILL-C
 	makedepends = gcc-fortran
 	makedepends = cmake
-	makedepends = flex
-	makedepends = bison
 	depends = zlib
 	depends = openmpi
 	depends = bzip2
