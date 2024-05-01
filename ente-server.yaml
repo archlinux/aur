@@ -1,0 +1,170 @@
+# Ente-server configuration file
+# This configuration has been modified to work in a standalone non-Docker setup.
+#
+# Note that the original ente.io local.yaml server configuration,
+# which contains all available options can be found at:
+#     /usr/lib/ente-server/local.yaml
+# or in the online ente.io GIT repo at:
+#     https://github.com/ente-io/ente/blob/main/server/configurations/local.yaml
+#
+# When a config item is not used, it must not be deleted, but set to an empty value, for example:
+#     unused-setting: ""
+
+# credential config file:
+credentials-file: ""
+
+# this dir is used for TLS data, by default this is done by nginx, and thus can be left empty
+credentials-dir: ""
+
+# std-out of the ente-server is send to the systemd journal, when started via the systemd service
+# if started without the systemd-service, please specify a log file location instead:
+log-file: ""
+
+# HTTP connection parameters
+http:
+    # If true, bind to 443 and use TLS.
+    # By default, this is false, and ente-server will bind to 8080 without TLS.
+    # TLS is handled by nginx
+    use-tls: false
+
+# Database connection parameters
+db:
+    host: /run/postgresql
+    port: 5432
+    name: ente-server
+    user: ente
+    password: "<YOUR-STRONG-ENTE-DATABASE-USER-PASSWORD>"
+    sslmode: disable
+    # See https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-PROTECTION
+
+# Map of data centers, emulated by minio by default
+# Each data center also specifies which bucket in that provider should be used.
+s3:
+    hot_storage:
+        primary: b2-eu-cen
+        secondary: ""
+    b2-eu-cen:
+        key: minio
+        secret: "<YOUR-STRONG-MINIO-ROOT-PASSWORD>"
+        endpoint: <your_public_domain.tld>:3200
+        region: eu-central-2
+        bucket: ente-server
+
+    # If true, enable some workarounds to allow us to use a local minio instance
+    # for object storage.
+    #
+    # 1. Disable SSL.
+    #
+    # 2. Use "path" style S3 URLs (see `use_path_style_urls` below).
+    #
+    # 3. Directly download the file during replication instead of going via the
+    #    Cloudflare worker.
+    #
+    # 4. Do not specify storage classes when uploading objects (since minio does
+    #    not support them, specifically it doesn't support GLACIER).
+    #
+    are_local_buckets: true
+
+    # Uncomment this to use "path" style S3 URLs.
+    #
+    # By default the bucket name is part of the (sub)domain, e.g.
+    # http://b2-eu-cen.localhost:3200/. If this is true, then we use "path"
+    # style S3 URLs where the bucket is part of the URL path, e.g.
+    # http://localhost:3200/b2-eu-cen.
+    #
+    # This is useful in scenarios when sub-domain based addressing cannot be
+    # resolved, e.g. when running a local instance, or when using MinIO as a
+    # production store.
+    use_path_style_urls: true
+
+# Key used for encrypting customer emails before storing them in DB
+# Current values are examples, its recommended replacing them with new unique values
+# Run `ente-server-gen-random-keys` to generate new values
+key:
+    encryption: yvmG/RnzKrbCb9L3mgsmoxXr9H7i2Z4qlbT0mL3ln4w=
+    hash: KXYiG07wC7GIgvCSdg+WmyWdXDAn6XKYJtp/wkEU7x573+byBRAYtpTP0wwvi8i/4l37uicX1dVTUzwH3sLZyw==
+
+# JWT secrets
+# Current value is an example, its recommended replacing it with a new unique value
+# Run `ente-server-gen-random-keys` to generate new values
+jwt:
+    secret: i2DecQmfGreG6q1vBj5tCokhlN41gcfS2cjOs9Po-u8=
+
+# SMTP configuration (optional)
+#
+# Configure credentials here for sending mails from museum (e.g. OTP emails).
+#
+# The smtp credentials will be used if the host is specified. Otherwise it will
+# try to use the transmail credentials. Ideally, one of smtp or transmail should
+# be configured for a production instance.
+smtp:
+    host: ""
+    port: ""
+    username: ""
+    password: ""
+
+# Various low-level configuration options
+internal:
+    # If false (the default), then museum will notify the external world of
+    # various events. E.g, email users about their storage being full, send
+    # alerts to Discord, etc.
+    #
+    # It can be set to true when running a "read only" instance like a backup
+    # restoration test, where we want to be able to access data but otherwise
+    # minimize external side effects.
+    silent: false
+    # If provided, this external healthcheck url is periodically pinged.
+    health-check-url:
+    # Hardcoded verification codes, useful for logging in when developing.
+    #
+    # Uncomment this and set these to your email ID or domain so that you don't
+    # need to peek into the server logs for obtaining the OTP when trying to log
+    # into an instance you're developing on.
+    # hardcoded-ott:
+    #     emails:
+    #         - "example@example.org,123456"
+    #     # When running in a local environment, hardcode the verification code to
+    #     # 123456 for email addresses ending with @example.org
+    #     local-domain-suffix: "@example.org"
+    #     local-domain-value: 123456
+    # List of user IDs that can use the admin API endpoints.
+    admins: []
+
+# Replication config
+#
+# If enabled, replicate each file to 2 other data centers after it gets
+# successfully uploaded to the primary hot storage.
+replication:
+    enabled: false
+    # The Cloudflare worker to use to download files from the primary hot
+    # bucket. Must be specified if replication is enabled.
+    worker-url:
+    # Number of go routines to spawn for replication
+    # This is not related to the worker-url above.
+    # Optional, default value is indicated here.
+    worker-count: 6
+    # Where to store temporary objects during replication v3
+    # Optional, default value is indicated here.
+    tmp-storage: tmp/replication
+
+# Configuration for various background / cron jobs.
+jobs:
+    cron:
+        # Instances run various cleanup, sending emails and other cron jobs. Use
+        # this flag to disable all these cron jobs.
+        skip: false
+    remove-unreported-objects:
+        # Number of go routines to spawn for object cleanup
+        # Optional, default value is indicated here.
+        worker-count: 1
+    clear-orphan-objects:
+        # By default, this job is disabled.
+        enabled: false
+        # If provided, only objects that begin with this prefix are pruned.
+        prefix: ""
+
+# Passkey support (WIP)
+webauthn:
+    rpid: "example.com"
+    rporigins:
+        - "https://example.com:3005"

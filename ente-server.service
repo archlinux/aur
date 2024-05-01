@@ -1,0 +1,61 @@
+[Unit]
+Description=Ente-server: self hosted server for Ente (mobile) clients"
+After=postgresql.service minio.service
+Requires=postgresql.service minio.service
+
+[Service]
+ExecStart=/usr/bin/ente-server
+Type=exec
+KillMode=control-group
+SyslogLevel=err
+PIDFile=/run/ente-server/ente-server.pid
+Environment=GIN_MODE=release
+ReadWritePaths=/run/ente-server
+NoExecPaths=/
+ExecPaths=/usr/sbin /usr/lib64 /usr/bin/ente-server
+WorkingDirectory=/usr/lib/ente-server
+RuntimeDirectory=ente-server
+RuntimeDirectoryMode=0750
+UMask=0077
+SystemCallFilter=@system-service
+AmbientCapabilities=
+CapabilityBoundingSet=
+NoNewPrivileges=true
+DynamicUser=false
+User=ente
+Group=ente
+RemoveIPC=true
+PrivateTmp=true
+PrivateDevices=true
+PrivateNetwork=false
+PrivateIPC=true
+PrivateUsers=false
+ProtectHome=true
+ProtectSystem=strict
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+ProtectProc=noaccess
+ProcSubset=all
+RestrictFileSystems=ext4 tmpfs
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+StandardInput=null
+StandardOutput=journal
+StandardError=journal
+LockPersonality=true
+MemoryDenyWriteExecute=true
+KeyringMode=private
+SystemCallArchitectures=native
+IPAddressDeny=any
+IPAddressAllow=127.0.0.1
+IPAddressAllow=::1
+
+[Install]
+WantedBy=multi-user.target
