@@ -1,6 +1,6 @@
 pkgbase = r-crimage
 	pkgdesc = CRImage a package to classify cells and calculate tumour cellularity
-	pkgver = 1.50.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CRImage
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-crimage
 	depends = r-ebimage
 	depends = r-foreach
 	depends = r-sgeostat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CRImage_1.50.0.tar.gz
-	sha256sums = 2c76f9b6442da822ce054f6fb86f032644974e7d420aa4512c5e1b6a163d747b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CRImage_1.52.0.tar.gz
+	sha256sums = af2d61d64b0bcca67019a95bb77489ca9125be0897be4e7aaa421761dbfbde5a
 
 pkgname = r-crimage
