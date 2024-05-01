@@ -10,7 +10,7 @@ url="https://github.com/ledccn/iyuuplus-dev"
 license=("MIT")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=("composer" "mariadb" "php-fpm" "php-gd" "php-sodium")
+depends=("composer" "mariadb" "php-gd" "php-sodium")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers"

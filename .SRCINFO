@@ -8,7 +8,6 @@ pkgbase = iyuuplus
 	license = MIT
 	depends = composer
 	depends = mariadb
-	depends = php-fpm
 	depends = php-gd
 	depends = php-sodium
 	provides = iyuuplus
