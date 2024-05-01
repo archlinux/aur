@@ -1,6 +1,6 @@
 pkgbase = r-gladiatox
 	pkgdesc = R Package for Processing High Content Screening data
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GladiaTOX
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-gladiatox
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GladiaTOX_1.18.0.tar.gz
-	sha256sums = 564c1662530f9d677157ee093bf81768e01f18550a49e7448fa9c44b64100b06
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GladiaTOX_1.20.0.tar.gz
+	sha256sums = 344a61d1532d1ada25a6151a34757075ec781372eee6c01fa01a180e60d42f4f
 
 pkgname = r-gladiatox
