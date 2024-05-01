@@ -1,6 +1,6 @@
 pkgbase = diffsitter
 	pkgdesc = Tree-sitter based AST diff tool
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/afnanenayet/diffsitter
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = diffsitter
 	makedepends = cargo
 	depends = tree-sitter
 	options = !lto
-	source = diffsitter::git+https://github.com/afnanenayet/diffsitter#commit=5d6c8fa
+	source = diffsitter::git+https://github.com/afnanenayet/diffsitter#commit=e57327978064db97caf4485c981183f4e0b12d05
 	sha512sums = SKIP
 
 pkgname = diffsitter

@@ -1,0 +1,5 @@
+[diffsitter]
+source = "github"
+github = "afnanenayet/diffsitter"
+use_latest_release = true
+prefix = "v"

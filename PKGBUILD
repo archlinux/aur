@@ -2,11 +2,11 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=diffsitter
-pkgver=0.8.2
-_commit=5d6c8fa
+pkgver=0.8.3
+_commit=e57327978064db97caf4485c981183f4e0b12d05
 pkgrel=1
 pkgdesc="Tree-sitter based AST diff tool"
-arch=('x86_64' 'i686' 'arm' 'aarch64')
+arch=(x86_64 i686 arm aarch64)
 url="https://github.com/afnanenayet/${pkgname}"
 license=(MIT)
 depends=(tree-sitter)
