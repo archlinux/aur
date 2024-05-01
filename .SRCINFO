@@ -1,6 +1,6 @@
 pkgbase = r-arrayquality
 	pkgdesc = Assessing array quality on spotted arrays
-	pkgver = 1.80.0
+	pkgver = 1.82.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/arrayQuality
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-arrayquality
 	optdepends = r-heebodata
 	optdepends = r-mclust
 	optdepends = r-meebodata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/arrayQuality_1.80.0.tar.gz
-	sha256sums = 3fb865babf7e0c400638556ddd475a05d0a7c6960a2f445073270656dc37a4ae
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/arrayQuality_1.82.0.tar.gz
+	sha256sums = 9709e65b938f2a54dbfc24abb0510074e14d59f1d4e054d54d71f6c685ffac72
 
 pkgname = r-arrayquality
