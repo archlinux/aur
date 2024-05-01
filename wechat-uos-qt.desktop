@@ -13,7 +13,7 @@ Keywords=wechat;weixin;we;w;
 Keywords[zh_CN]=微;微信;wechat;weixin;we;w;
 X-GNOME-SingleWindow=true
 SingleMainWindow=true
-Actions=nosandbox;opendir;gamescope;
+Actions=nosandbox;opendir;gamescope;sd-user;
 StartupWMClass=wechat
 
 [Desktop Action nosandbox]
@@ -33,3 +33,8 @@ Name=Run within Gamescope
 Name[zh_CN]=使用 Gamescope 运行
 Exec=/usr/bin/wechat-uos-qt --actions gamescope
 #Icon=application-exit
+
+[Desktop Action sd-user]
+Name=Run under systemd
+Name[zh_CN]=使用 systemd 运行
+Exec=/usr/bin/wechat-uos-qt --actions sd-run

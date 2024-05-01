@@ -116,7 +116,47 @@ function execApp() {
 	touch "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info
 	cameraDect
 	importEnv
-	env -u WAYLAND_DISPLAY bwrap \
+	systemd-run --user ${sdOption} \
+	-p IPAddressDeny=localhost \
+	-p IPAddressDeny=link-local \
+	-p IPAddressDeny=multicast \
+	-p SystemCallFilter=~@clock \
+	-p SystemCallFilter=~@cpu-emulation \
+	-p SystemCallFilter=~@debug \
+	-p SystemCallFilter=~@module \
+	-p SystemCallFilter=~@obsolete \
+	-p SystemCallFilter=~@raw-io \
+	-p SystemCallFilter=~@reboot \
+	-p SystemCallFilter=~@swap \
+	-p ProcSubset=pid \
+	-p RestrictAddressFamilies=AF_UNIX \
+	-p RestrictAddressFamilies=AF_INET \
+	-p RestrictAddressFamilies=AF_INET6 \
+	-p NoNewPrivileges=yes \
+	-p RestrictNamespaces=~net \
+	-p RestrictNamespaces=~pid \
+	-p RestrictNamespaces=~uts \
+	-p RestrictNamespaces=~ipc \
+	-p ProtectControlGroups=yes \
+	-p KeyringMode=private \
+	-p ProtectClock=yes \
+	-p CapabilityBoundingSet= \
+	-p ProtectKernelModules=yes \
+	-p SystemCallArchitectures=native \
+	-p RestrictNamespaces=no \
+	-p RestrictSUIDSGID=yes \
+	-p LockPersonality=yes \
+	-p RestrictRealtime=yes \
+	-p ProtectSystem=strict \
+	-p ProtectProc=invisible \
+	-p ProtectHome=no \
+	-p PrivateUsers=yes \
+	-p UMask=077 \
+	-p RestrictAddressFamilies=~AF_NETLINK \
+	-p RestrictAddressFamilies=~AF_PACKET \
+	-p PrivateTmp=yes \
+	bwrap \
+		--unsetenv WAYLAND_DISPLAY \
 		--cap-drop ALL \
 		--dev /dev \
 		--dev-bind /dev/dri /dev/dri \
@@ -125,7 +165,7 @@ function execApp() {
 		--ro-bind /sys/devices /sys/devices \
 		--proc /proc \
 		--dir /sandbox \
-		--tmpfs /tmp \
+		--bind /tmp /tmp \
 		--bind /usr /usr \
 		--bind /opt/wechat-uos-qt/files/libuosdevicea.so \
 			/usr/lib/license/libuosdevicea.so \
@@ -259,6 +299,11 @@ function launch() {
 	else
 		launchTarget="/opt/wechat-uos-qt/files/wechat"
 	fi
+	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "disconnect-tty" ]]; then
+		sdOption="-P"
+	else
+		sdOption="-t"
+	fi
 	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "gamescope" ]]; then
 		export QT_SCREEN_SCALE_FACTOR=2
 		launchTarget="gamescope -F fsr --sharpness 0 -S integer -- /opt/wechat-uos-qt/files/wechat"
@@ -271,6 +316,15 @@ function launch() {
 		dbusProxy &
 		sleep 0.1
 		execApp
+	fi
+}
+
+function bwCmd() {
+	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "sd-run" ]]; then
+		echo "[Info] Using systemd"
+		bwCmd="systemd-run -p KeyringMode=private -p ProtectClock=yes -p ProtectControlGroups=yes -p CapabilityBoundingSet= -p ProtectKernelModules=yes -p PrivateMounts=yes -p SystemCallArchitectures=native -p MemoryDenyWriteExecute=yes -p RestrictNamespaces=yes -p RestrictSUIDSGID=yes -p ProtectHostname=yes -p LockPersonality=yes -p ProtectKernelTunables=yes -p RestrictRealtime=yes -p ProtectSystem=strict -p ProtectProc=invisible -p ProtectHome=no -p PrivateUsers=yes -p UMask=077 bwrap"
+	else
+		bwCmd="bwrap"
 	fi
 }
 
