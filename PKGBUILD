@@ -1,21 +1,26 @@
 # Maintainer: Eragon <eragon at eragon dot re>
 
-_pipname=flask-crontab
+_name=flask-crontab
 pkgname=python-flask-crontab
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Flask scheduled tasks without extra daemons"
 arch=('any')
 url="https://github.com/frostming/flask-crontab"
 license=('MIT')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 depends=('python-flask')
-source=("https://pypi.python.org/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz")
-sha256sums=('ec38074d7b5237df31b406576e9ccc79c924d8363dcba4e857830c4ec63a1185')
+source=("$_name-$pkgver.tar.gz::https://github.com/frostming/flask-crontab/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('177b32f222b08b446382aab76b91d2ed4273313b6703bff00f553e5aad96c420')
+
+build() {
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "$_pipname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

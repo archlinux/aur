@@ -1,13 +1,16 @@
 pkgbase = python-flask-crontab
 	pkgdesc = Simple Flask scheduled tasks without extra daemons
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frostming/flask-crontab
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-flask
-	source = https://pypi.python.org/packages/source/f/flask-crontab/flask-crontab-0.1.2.tar.gz
-	sha256sums = 0c26aa013a9813b8886857bf0ec24d28ab494114a264baf06c951cadc4dd0dae
+	source = flask-crontab-0.1.2.tar.gz::https://github.com/frostming/flask-crontab/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 177b32f222b08b446382aab76b91d2ed4273313b6703bff00f553e5aad96c420
 
 pkgname = python-flask-crontab
