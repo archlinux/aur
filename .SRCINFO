@@ -1,6 +1,6 @@
 pkgbase = iyuuplus-git
 	pkgdesc = IYUU Auto Reseed Plus
-	pkgver = 20240430.091840
+	pkgver = 20240501.114620
 	pkgrel = 1
 	url = https://github.com/ledccn/iyuuplus-dev
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = iyuuplus-git
 	makedepends = git
 	depends = composer
 	depends = mariadb
-	depends = php-fpm
 	depends = php-gd
 	depends = php-sodium
 	provides = iyuuplus
