@@ -1,7 +1,7 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp.net-git
-pkgver=v2024.1.alpha+d56eda8
+pkgver=v2024.1.alpha+54d3c4e
 pkgrel=1
 pkgdesc="The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database"
 arch=(x86_64 aarch64)
@@ -55,16 +55,27 @@ rid() {
 build() {
   cd "${srcdir}/iceshrimp.net/Iceshrimp.Backend"
 
-  if [[ -n $DISABLE_AOT ]] || ! dotnet workload list | grep -q '^wasm-tools\s'; then
-    dotnet publish -c Release -r $(rid)
+  if [[ -n $DISABLE_VIPS ]]; then
+    VIPS=false
   else
-    dotnet publish -c Release -r $(rid) -p:EnableAOT=true
+    VIPS=true
+  fi
+
+  if [[ -n $DISABLE_AOT ]] || ! dotnet workload list | grep -q '^wasm-tools\s'; then
+    dotnet publish -c Release -r $(rid) -p:EnableLibVips=$VIPS
+  else
+    dotnet publish -c Release -r $(rid) -p:EnableAOT=true -p:EnableLibVips=$VIPS
   fi
 }
 
 package() {
   # Add runtime-only dependencies
-  depends+=(postgresql libvips)
+  depends+=(postgresql)
+
+  if [[ -n $DISABLE_VIPS ]]; then
+    # Add runtime-only dependencies for libvips image processing
+    depends+=(libvips openjpeg2)
+  fi
 
   install -dm 755 "${pkgdir}/usr/share/iceshrimp.net"
   install -dm 755 "${pkgdir}/etc/iceshrimp.net"
