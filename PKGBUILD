@@ -3,7 +3,7 @@ pkgname=refi-app-bin
 _pkgname="Refi App"
 pkgver=0.0.19
 _electronversion=19
-pkgrel=8
+pkgrel=9
 pkgdesc="A tool to make interacting with Firestore less painful"
 arch=('x86_64')
 url="https://refiapp.io/"
@@ -12,8 +12,13 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'nodejs'
+)
+options=(
+    '!strip'
+    '!emptydirs'
+    #'!staticlibs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
@@ -22,7 +27,7 @@ source=(
 )
 sha256sums=('01918b95b8109d2c02b0a2b517a5f59f8f795b02a02557cfd420f80fbd345dc4'
             'b2eb77a849db152dcb5ed71c597000a5dc3638559aefae0b5aa3454e8d7abe71'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
