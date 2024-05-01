@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iBMQ
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='integrated Bayesian Modeling of eQTL data'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
   openmpi
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('38a2847aece0a7ed4c7308d37b642e95b68c2635e44b7d0de9c0a285529c86c1')
+sha256sums=('b5ddba8fb837e5418c5d558d8b8864793dbc61b3bc0d5cbb199da028dc772886')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
