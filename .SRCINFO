@@ -1,6 +1,6 @@
 pkgbase = python3-yamale
 	pkgdesc = A schema and validator for YAML
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/23andMe/Yamale
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python3-yamale
 	optdepends = python-ruamel-yaml
 	provides = yamale
 	provides = python-yamale
-	source = https://github.com/23andMe/Yamale/archive/5.2.0/python3-yamale-5.2.0.tar.gz
-	sha256sums = 000affa9083b9c5ae71002185d822c8bd62a6d2928d0e82c63df5a65fbdea87d
+	source = https://github.com/23andMe/Yamale/archive/5.2.1/python3-yamale-5.2.1.tar.gz
+	sha256sums = e64794c966103026b65863c87f8b7cdd7345140deb424811b45aab7608114e99
 
 pkgname = python3-yamale
