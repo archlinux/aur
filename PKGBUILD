@@ -2,7 +2,7 @@
 pkgname=eagle-animation-bin
 _pkgname="Eagle Animation"
 _appname="@brick-a-brack${pkgname%-bin}"
-pkgver=2.6.1
+pkgver=2.6.2
 _electronversion=30
 pkgrel=1
 pkgdesc="An awesome, free and open-source animation software."
@@ -20,8 +20,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('88c3a6f5dd308ace1f0e216092f19ca9ad259cd130a978337e1f77db9d566a40'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('a16960c812d9e863d3f6413eb0c8e50c810d991a73dac58fdec02433c9b90edf'
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
