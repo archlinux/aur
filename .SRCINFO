@@ -1,13 +1,13 @@
 pkgbase = distro-info-data
 	pkgdesc = information about the distributions' releases (data files)
-	pkgver = 0.61
+	pkgver = 0.62
 	pkgrel = 1
 	url = http://packages.debian.org/sid/distro-info-data
 	arch = any
 	license = MIT
 	checkdepends = python
 	options = !emptydirs
-	source = http://ftp.debian.org/debian/pool/main/d/distro-info-data/distro-info-data_0.61.tar.xz
-	sha256sums = 3c104f8294e1d239dd76ad16a606d8b7f36624bcdb727d7452cd3e326f0e998b
+	source = http://ftp.debian.org/debian/pool/main/d/distro-info-data/distro-info-data_0.62.tar.xz
+	sha256sums = d2f2b7073c4e02e11dc16ec430a17187cdf8a7599afde324e9ecae6c7563a32e
 
 pkgname = distro-info-data
