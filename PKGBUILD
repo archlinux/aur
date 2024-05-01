@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Marcel Campello <marcel@prafrentex.com.br>
 
 pkgname=opentofu
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Lets you declaratively manage your cloud infrastructure"
 arch=(x86_64)
@@ -11,11 +11,11 @@ license=(MPL-2.0)
 depends=(glibc)
 makedepends=(go)
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "tofu.fish"
 )
 sha256sums=(
-  '3bf0fc807004ba26305331ecf1334ff2160f8c131ee53c107292d60069400da6'
+  '04f43bc496adc3dfe5ca39121355ed5c12b5b1f3b2cceedf1aae3382bceecefc'
   '312fe00a97ed3098fa141a54dfc0694c13766957acedec19f10347b80f813ce8'
 )
 
@@ -33,10 +33,12 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
+  # shellcheck disable=2153
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  go build -v -buildvcs=false ./cmd/...
+  local ldflags="-linkmode=external -X github.com/opentofu/opentofu/version.dev=no"
+  go build -v -buildvcs=false -ldflags="$ldflags" ./cmd/...
 }
 
 check() {
