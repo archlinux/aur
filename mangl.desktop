@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Icon=documentation
-Name=mangl
-Terminal=false
-Hidden=false
-Categories=Utility
-Exec=/usr/bin/mangl
