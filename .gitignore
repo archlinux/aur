@@ -6,3 +6,6 @@
 *.tar.xz
 *.pkg.tar.zst
 *.tar.gz
+*.part
+*.part.st
+LICENSE
