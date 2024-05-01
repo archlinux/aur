@@ -1,0 +1,5 @@
+[python-django-braces]
+source = "github"
+github = "brack3t/django-braces"
+prefix = "v"
+use_max_tag = true
