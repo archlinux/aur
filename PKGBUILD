@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Director
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='A dynamic visualization tool of multi-level data'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-htmltools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('39627e6a4ea438536e0433b3f36eca8d830a1b44b0cdd2b85a524fd90bd06260')
+sha256sums=('0d5e72e5759167dee1e159d28448202c757282dcc4267835398ca8306bc3a6d2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
