@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowCHIC
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Analyze flow cytometric data using histogram information'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   r-vegan
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e558421e260c2464482852ecada34e2c9972cf7afcf7f9be1f9e48069a0ccb69')
+sha256sums=('9e5c469f12830e907fc97f018523ac0e6b4d5fedaf492a23ae6b8f12f5132a7e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
