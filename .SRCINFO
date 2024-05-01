@@ -1,4 +1,4 @@
-pkgbase = wlroots-git
+pkgbase = wlroots-displaylink-git
 	pkgdesc = Modular Wayland compositor library (git development version)
 	pkgver = 0.18.0.r7000.7e5bf4ae
 	pkgrel = 1
@@ -31,10 +31,10 @@ pkgbase = wlroots-git
 	depends = libdisplay-info
 	optdepends = xorg-xwayland: enable X11 support
 	provides = libwlroots.so
-	provides = wlroots=0.18.0
-	conflicts = wlroots
+	provides = wlroots-displaylink=0.18.0
+	conflicts = wlroots-displaylink
 	options = !debug
-	source = wlroots-git::git+https://gitlab.freedesktop.org/kennylevinsen/wlroots.git#branch=displaylink-hack
+	source = wlroots-displaylink-git::git+https://gitlab.freedesktop.org/kennylevinsen/wlroots.git#branch=displaylink-hack
 	b2sums = SKIP
 
-pkgname = wlroots-git
+pkgname = wlroots-displaylink-git

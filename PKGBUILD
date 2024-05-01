@@ -3,7 +3,7 @@
 # Contributor: GreyXor <greyxor@protonmail.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 
-pkgname=wlroots-git
+pkgname=wlroots-displaylink-git
 pkgver=0.18.0.r7000.7e5bf4ae
 pkgrel=1
 pkgdesc='Modular Wayland compositor library (git development version)'
