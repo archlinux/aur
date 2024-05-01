@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dks
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='The double Kolmogorov-Smirnov package for evaluating multiple testing procedures.'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-cubature
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4d07b926a96f30329cb9fbd324425f678e651d725dadcff36782812fd7d95c77')
+sha256sums=('93ceaf19e0f23545abb0f22c02c1a1fd08e3ba85761bed9d3910be327b5bfdc8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
