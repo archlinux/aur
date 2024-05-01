@@ -1,6 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=orchis-theme-git
-pkgver=2023.10.20.r0.gc30d107b
+pkgname=(
+  'orchis-theme-git'
+  'orchis-dracula-theme-git'
+  'orchis-nord-theme-git'
+)
+pkgbase=orchis-theme-git
+pkgver=2024.05.01.r1.g95371c99
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
@@ -11,20 +16,20 @@ optdepends=('gnome-themes-extra: GTK2 theme support'
             'gtk-engine-murrine: GTK2 theme support'
             'kvantum-theme-orchis: Matching Kvantum theme'
             'tela-circle-icon-theme: Recommended icon theme')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkbase%-git}")
+conflicts=("${pkgbase%-git}")
 options=('!strip')
-install="${pkgname%-git}.install"
-source=("${pkgname%-git}::git+https://github.com/vinceliuice/Orchis-theme.git")
+install="${pkgbase%-git}.install"
+source=('git+https://github.com/vinceliuice/Orchis-theme.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd Orchis-theme
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
-  cd "$srcdir/${pkgname%-git}"
+package_orchis-theme-git() {
+  cd Orchis-theme
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -t all --tweaks primary -d "$pkgdir/usr/share/themes/"
 
@@ -35,4 +40,24 @@ package() {
   # Firefox theme
   install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
   cp -r src/firefox "$pkgdir/usr/share/doc/${pkgname%-git}/"
+}
+
+package_orchis-dracula-theme-git() {
+  pkgdesc+=" (dracula variant)"
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}" 'orchis-nord-theme')
+
+  cd Orchis-theme
+  install -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks primary dracula -d "$pkgdir/usr/share/themes/"
+}
+
+package_orchis-nord-theme-git() {
+  pkgdesc+=" (nord variant)"
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}" 'orchis-dracula-theme')
+
+  cd Orchis-theme
+  install -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks primary nord -d "$pkgdir/usr/share/themes/"
 }
