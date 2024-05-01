@@ -10,12 +10,14 @@ pkgrel=1
 pkgdesc="Simple drawing & painting program that works well with graphics tablets (git)."
 arch=('i686' 'x86_64')
 url="http://mypaint.org/"
+install="mypaint-git.install"
 license=('GPL-2.0-only')
-depends=('gtk3' 'json-c' 'lcms2' 'librsvg' 'python-cairo' 'python-gobject' 'python-numpy' 'mypaint-brushes-git')
+depends=('desktop-file-utils' 'gtk3' 'json-c' 'lcms2' 'librsvg' 'python-cairo' 'python-gobject' 'python-numpy' 'mypaint-brushes-git')
 makedepends=('git' 'swig' 'pygobject-devel' 'python' 'python-setuptools')
 provides=("mypaint=${_basever}")
 conflicts=('mypaint')
 source=('git+https://github.com/mypaint/mypaint.git'
+        'mypaint-git.install'
         'radius_lock.patch')
 
 pkgver() {
@@ -46,4 +48,5 @@ package() {
 }
 
 sha256sums=('SKIP'
+            'e7b2787bf6e4b7529c85757b0ceb438264bbbd462793ba561c50ebf77852e41d'
             '922cd92ba2a96691d45694c78c4ca26a104f011d2477b8a4581c1e45d45c4f58')
