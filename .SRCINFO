@@ -1,6 +1,6 @@
 pkgbase = pocket-sync-bin
 	pkgdesc = A GUI to do stuff with the Analogue Pocket
-	pkgver = 4.8.0
+	pkgver = 4.8.1
 	pkgrel = 1
 	url = https://github.com/neil-morrison44/pocket-sync
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pocket-sync-bin
 	provides = pocket-sync
 	conflicts = pocket-sync
 	options = !strip
-	source = https://github.com/neil-morrison44/pocket-sync/releases/download/v4.8.0/pocket-sync_4.8.0_amd64.AppImage
-	sha512sums = 8befc24b7fbd60001cc0a7fe522992ae78edce53a31d1d815dae1b7813fa1de5f46d39cd38207df6127fbf734a66cb2293c3d6d4b2147fcc693327900336167e
+	source = https://github.com/neil-morrison44/pocket-sync/releases/download/v4.8.1/pocket-sync_4.8.1_amd64.AppImage
+	sha512sums = d0dce80205002f9d79c49e29832b0a1aba6d91ba01236ae72f2d2c687b6903cc743033a53e72d581174cb00f5f56564ab85c4385bf19c7e189a95500568e4ba6
 
 pkgname = pocket-sync-bin
