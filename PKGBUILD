@@ -11,6 +11,7 @@ depends=(
   'curl'
   'par2cmdline'
   'python'
+  'python-apprise'
   'python-babelfish'
   'python-cffi'
   'python-chardet'

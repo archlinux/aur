@@ -9,6 +9,7 @@ pkgbase = sabnzbd
 	depends = curl
 	depends = par2cmdline
 	depends = python
+	depends = python-apprise
 	depends = python-babelfish
 	depends = python-cffi
 	depends = python-chardet
