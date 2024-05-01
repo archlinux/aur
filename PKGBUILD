@@ -5,7 +5,7 @@
 
 pkgname=notesnook-bin
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote (binary release)"
-pkgver=2.6.17
+pkgver=3.0.1
 pkgrel=1
 url="https://github.com/streetwriters/notesnook"
 license=('GPL-3.0-or-later')
@@ -17,8 +17,9 @@ conflicts=("notesnook")
 _appimage="notesnook_linux_$CARCH-$pkgver.AppImage"
 source_x86_64=("$_appimage::$url/releases/download/v$pkgver/notesnook_linux_x86_64.AppImage")
 source_aarch64=("$_appimage::$url/releases/download/v$pkgver/notesnook_linux_arm64.AppImage")
-sha256sums_x86_64=('cbe569bad7295c2be2ba508d8d0bad914d970b9262f482955c377af7ec57cbf2')
+sha256sums_x86_64=('4393ef88b5bd9829aa6527bbace14d60a103450126745f38029706ef6b1a9c11')
 sha256sums_aarch64=('SKIP')
+
 
 _fix_permissions() (
   target=$1
@@ -39,7 +40,7 @@ _fix_permissions() (
 
   echo "Unrecognizable filesystem entry: $target" >&2
   return 1
-)
+) # Source: upscayl-appimage
 
 prepare() {
 # Extract the AppImage
@@ -50,12 +51,6 @@ prepare() {
   sed -i -E "s|Exec=AppRun|Exec=notesnook|g" notesnook.desktop
   sed -i "/X-AppImage-Version=$pkgver/d; /actions=undefined/d" notesnook.desktop
   sed -i 's/--no-sandbox //g' notesnook.desktop
-# Delete a folder based on the architecture
-  if [ "$CARCH" == "x86_64" ]; then
-    rm -dr resources/app/build/prebuilds/linux-arm64
-  elif [ "$CARCH" == "aarch64" ]; then
-    rm -dr resources/app/build/prebuilds/linux-x64
-fi
 }
 
 package() {
