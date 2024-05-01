@@ -1,10 +1,10 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 # Contributor: Richard Petri <git@rpls.de>
 # Contributor: Graham Edgecombe <gpe@grahamedgecombe.com>
-_ARCHS=('generic' 'ice40' 'ecp5' 'nexus' 'gowin')
+_ARCHS=('generic' 'ice40' 'ecp5' 'nexus' 'gowin' 'himbaechel')
 
 pkgname=nextpnr-git
-pkgver=0.6.r100.g8e84006e
+pkgver=0.7.r29.gf0859503
 pkgrel=1
 pkgdesc='Portable FPGA place and route tool'
 arch=('i686' 'x86_64')
@@ -36,6 +36,10 @@ for _arch in ${_ARCHS[@]}; do
     gowin)
       makedepends+=('prjapicula')
       _CONFIG+=('-DGOWIN_BBA_EXECUTABLE=/usr/bin/gowin_bba')
+      ;;
+    himbaechel)
+      makedepends+=('prjapicula')
+      _CONFIG+=('-DHIMBAECHEL_GOWIN_DEVICES=all')
       ;;
     generic)
       ;;
