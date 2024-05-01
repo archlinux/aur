@@ -4,7 +4,7 @@
 
 pkgname='speedtest-go'
 pkgver='1.6.12'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='CLI and Go API to Test Internet Speed using speedtest.net'
 arch=('x86_64')
 url="https://github.com/showwin/${pkgname}"
@@ -24,6 +24,12 @@ build ()
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
   go build
+}
+
+check ()
+{
+  cd "${pkgname}-${pkgver}" || exit
+  go test "./${pkgname%-go}"
 }
 
 package ()
