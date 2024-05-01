@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Maintainer: Rob Shinn <rob.shinn@gmail.com> 
 
-pkgname=autodafe
+pkgname=autodafe-git
 pkgver=0.5.r16.gc03993c
 pkgrel=1
 pkgdesc='Tools for converting an autotools recipe to a plain Makefile.'

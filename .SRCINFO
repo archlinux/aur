@@ -13,4 +13,4 @@ pkgbase = autodafe-git
 	source = autodafe::git+https://gitlab.com/esr/autodafe
 	sha256sums = SKIP
 
-pkgname = autodafe
+pkgname = autodafe-git
