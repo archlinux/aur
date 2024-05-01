@@ -2,7 +2,7 @@
 
 _pkgname=mauiman
 pkgname=$_pkgname-git
-pkgver=4.0.0.r19.gacfd816
+pkgver=4.0.0.alpha.20240502
 pkgrel=1
 pkgdesc='Maui Manager Library. Server and public library API.'
 url='https://invent.kde.org/maui/mauiman'
@@ -16,19 +16,17 @@ conflicts=($_pkgname)
 source=(git+$url.git)
 sha256sums=('SKIP')
 
-prepare() {
-  cd $_pkgname
-  git tag -d $(git tag -l) > /dev/null
-  git tag -a v4.0.0 c17eeabc -m v4.0.0
-  git checkout -b AUR
-}
-
 pkgver() {
   cd $_pkgname
+  if git tag | grep v4
+  then
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
+  else
+    echo "4.0.0.alpha.`date "+%Y%m%d"`"
+  fi
 }
 
 build() {
