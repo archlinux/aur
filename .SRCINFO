@@ -1,6 +1,6 @@
 pkgbase = r-pcxn
 	pkgdesc = Exploring, analyzing and visualizing functions utilizing the pcxnData package
-	pkgver = 2.24.0
+	pkgver = 2.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pcxn
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-pcxn
 	optdepends = r-annotate
 	optdepends = r-igraph
 	optdepends = r-org.hs.eg.db
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pcxn_2.24.0.tar.gz
-	sha256sums = 27d69bfec32c44871df38b45e3d251a102aa40c9dbc04c640d2cbf33d7d01bd5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pcxn_2.26.0.tar.gz
+	sha256sums = 13d74825e5b981916ce6ea3c4c6f7c2c87c16df6ade2cd201b5a9fbf7583ea8d
 
 pkgname = r-pcxn
