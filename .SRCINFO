@@ -1,0 +1,18 @@
+pkgbase = xwayland-satellite
+	pkgdesc = Xwayland outside your Wayland
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Supreeeme/xwayland-satellite
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = clang
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = libxcb
+	depends = xcb-util-cursor
+	options = !debug
+	source = https://github.com/Supreeeme/xwayland-satellite/archive/v0.1/xwayland-satellite-0.1.tar.gz
+	b2sums = 7e448032a7ac49efb84e274cdd3d8be99c6f1e411b2011a940abc031446fb0991cfd18ff64c8dd652482b5401610c4b7082ddd1f0a8688945ef869831a3622d4
+
+pkgname = xwayland-satellite
