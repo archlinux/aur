@@ -1,0 +1,18 @@
+pkgbase = libmegapixels-git
+        pkgdesc = Interface library between libtiff and the world to make sure the output is valid DNG
+        pkgver = r65.3669b8a
+        pkgrel = 1
+        url = https://gitlab.com/megapixels-org/libmegapixels
+        arch = x86_64
+        arch = aarch64
+        license = GPL3
+        makedepends = meson
+        makedepends = libconfig
+        depends = libdng
+        provides = libmegapixels
+        conflicts = libmegapixels
+        replaces = libmegapixels
+        source = libmegapixels-git::git+https://gitlab.com/megapixels-org/libmegapixels.git#branch=master
+        md5sums = SKIP
+
+pkgname = libmegapixels-git
