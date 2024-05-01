@@ -64,12 +64,7 @@ prepare() {
   # Use system monospace & sans font instead of hard dependency on Fira Mono / Fira Sans
   patch -Np1 -i "$srcdir/0001-Use-system-font.patch"
 
-  ## WIP
-
-  # Why are we pretending we don't need reveal.js?
-  # It's only for HTML 5 Slideshow and would be an optional dependency
-  # The nodejs-reveal.js AUR package does not cover this dependency as 
-  # upstream is looking for it in "prefix/share/apostrophe/libs/reveal.js, fully unzipped"
+  ## TODO Find a way to package reveal.js
   patch "$srcdir/apostrophe/meson.build" < "$srcdir/2-rm-reveal-check.patch"
 }
 
