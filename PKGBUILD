@@ -2,34 +2,69 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=plom
-pkgver=0.7.11
-pkgrel=3
+pkgver=0.15.2
+pkgrel=1
 pkgdesc='Paperless open marking'
 arch=(any)
 url="https://gitlab.com/$pkgname/$pkgname"
 license=(AGPL-3.0-only)
 _pydeps=(aiohttp
-         appdirs
+         arrow
+         beautifulsoup4
          canvasapi
+         cryptography
+         debugpy
+         django
+         django-braces
+         django-filter
+         django-htmx
+         django-huey
+         django-humanize
+         django-mathfilters
+         django-polymorphic
+         django-reset-migrations
+         djangorestframework
+         django-session-timeout
+         exif
+         file-magic
+         fonttools
          imutils
-         lapsolver
+         matplotlib
+         model-bakery
          numpy
-         opencv
+         # opencv-python-headless
+         packaging
          pandas
          passlib
          peewee
          pillow
+         platformdirs
+         psycopg2 # psycopg2-binary
          pymupdf
-         pypng
-         pyqrcode
-         pyqt5
+         pymysql
+         pyqt6
+         # pyqt6-qt6
+         pyqt6-sip
+         pytest-qt
+         random-username
          requests
          requests-toolbelt
          scikit-learn
-         toml
+         scipy
+         seaborn
+         segno
+         stdiomask
+         tabulate
+         tomli
+         tomlkit
          tqdm
-         weasyprint)
+         urllib3
+         weasyprint
+         whitenoise
+         zipfly
+         zxing-cpp)
 depends=(opencv
+         gunicorn
          python
          "${_pydeps[@]/#/python-}"
          pyzbar)
@@ -38,7 +73,7 @@ makedepends=(python-{build,installer,wheel}
 checkdepends=(python-pytest)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('3bcf2032ddd7a90e9a031cabbf5df2096e02599324f83edff46916a156971607')
+sha256sums=('f93761fc7ddcdb5cd206d5f87f1c1140d2ed767d07d90799134d860f993bc350')
 
 build() {
 	cd "$_archive"
