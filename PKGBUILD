@@ -3,7 +3,7 @@
 
 _pkgsrcname=a.el
 _pkgmaintainer=plexus
-pkgver=0.1.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Clojure Parser for Emacs Lisp"
 pkgname=emacs-a
@@ -12,7 +12,7 @@ url="https://github.com/${_pkgmaintainer}/a.el"
 license=('GPL3')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2998451375103630ceac2e3b8adc4522855aa890874b632e586632434dbd66a1')
+sha256sums=('743c7171070332a56d382b2f7ee938db72d993a56762f0198084d09236341978')
 
 build() {
   cd ${_pkgsrcname}-${pkgver}
