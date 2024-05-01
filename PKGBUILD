@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Streamer
-_pkgver=1.48.0
+_pkgver=1.49.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.49.0
 pkgrel=1
 pkgdesc='Enabling stream processing of large files'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ab764572ff2c71f9a15554a3b575599e5adb4978dff15d0ea53d20e356ea3262')
+sha256sums=('c56f21c593daf484acabbfd80c2662a8c2650a32fee5243f37e2fae5b4f760a8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
