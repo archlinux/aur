@@ -8,7 +8,7 @@ pkgdesc='Transform nginx XML responses using XSLT stylesheets'
 arch=('x86_64')
 url='https://nginx.org/en/docs/http/ngx_http_xslt_module.html'
 license=('custom:BSD-2-Clause')
-depends=('nginx=$pkgver' 'libxml2' 'libxslt')
+depends=('nginx=1.26.0' 'libxml2' 'libxslt')
 makedepends=("nginx-src=$pkgver")
 
 prepare() {
