@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RTCGA
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='The Cancer Genome Atlas Data Integration'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e1653920e1b931e46e7d76dd897e1f9c272958a094743ebae741feade3e4edd3')
+sha256sums=('605af8ff126143ad5448f9a67232abe787b55d410ab5b668bb5f5a455a3c26a9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
