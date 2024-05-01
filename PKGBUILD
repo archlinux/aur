@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rsemmed
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='An interface to the Semantic MEDLINE database'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6121ae85efa4d5b258c7a7c139fd0523b3ba7843b646c169d30bf05341b79684')
+sha256sums=('bdcbae5474e837f192490088f3223ed886aab1e2683884e61028cb1b7938a78a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
