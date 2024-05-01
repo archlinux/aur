@@ -3,7 +3,7 @@
 # Maintainer: Benjamin Cheng <ben@bcheng.me>
 pkgname=sealcrypto
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Microsoft library for fully homomorphic encryption'
 arch=('x86_64')
 url="https://www.microsoft.com/en-us/research/group/cryptography-research/"
@@ -18,8 +18,10 @@ build() {
   cd ${srcdir}
   tar xf ${pkgver}.tar.gz
   cmake -B build -S SEAL-${pkgver} \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_C_FLAGS="-ffat-lto-objects" \
+    -DCMAKE_CXX_FLAGS="-ffat-lto-objects" # We need LTO fat objects: https://archlinux.org/todo/lto-fat-objects/
   cmake --build build
 }
 
