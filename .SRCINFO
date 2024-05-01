@@ -3,7 +3,7 @@ pkgbase = dictpopup
 	pkgver = 0.1.2
 	pkgrel = 3
 	epoch = 1
-	url = https://github.com/btrkeks/dictpopup
+	url = https://github.com/Ajatt-Tools/dictpopup
 	install = dictpopup.install
 	arch = any
 	license = BSD
@@ -16,7 +16,7 @@ pkgbase = dictpopup
 	depends = libzip
 	depends = libnotify
 	provides = dictpopup
-	source = dictpopup-0.1.2.tar.gz::https://github.com/btrkeks/dictpopup/archive/v0.1.2.tar.gz
+	source = dictpopup-0.1.2.tar.gz::https://github.com/Ajatt-Tools/dictpopup/archive/v0.1.2.tar.gz
 	sha256sums = 7491405e247b2e7cae93aaec5a18c5fd8cec7db4ea01118ff0971b6dd810602d
 
 pkgname = dictpopup
