@@ -1,7 +1,7 @@
 # Maintainer: Stephen Erisman <aur at serisman dot com>
 
 pkgname='xmrig-mo-bin'
-pkgver='6.21.2mo1'
+pkgver='6.21.3mo1'
 pkgrel='1'
 pkgdesc='High performance RandomX, KawPow, CryptoNight, and AstroBWT CPU/GPU miner, with MoneroOcean auto alg switching. Pre-compiled.'
 arch=('x86_64')
@@ -10,10 +10,10 @@ depends=('libuv' 'openssl-1.1' 'hwloc')
 license=('GPL')
 provides=('xmrig-mo')
 conflicts=('xmrig-mo')
-source=("${url}/releases/download/v6.21.2-mo1/xmrig-v6.21.2-mo1-lin64.tar.gz"
+source=("${url}/releases/download/v6.21.3-mo1/xmrig-v6.21.3-mo1-lin64.tar.gz"
         "${pkgname/-bin/}.service"
         "${pkgname/-bin/}.sysusers")
-sha256sums=('5ca33f0d27fa0466d49ae0e1caf48065077f65ff4d3d1103675cedf51d2e62a4'
+sha256sums=('9ccc5eda40eae66ea5e6b9bb2838deaa0c4f4f85681e74067299132166c855dd'
             'd900cb4231b6d548c746cb329560b6df8544e18335307cdcdf5045a86c54df7c'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6')
 
