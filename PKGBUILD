@@ -8,10 +8,10 @@ url='http://www.sabnzbd.org'
 arch=('any')
 license=('GPL')
 depends=(
+  'apprise'
   'curl'
   'par2cmdline'
   'python'
-  'python-apprise'
   'python-babelfish'
   'python-cffi'
   'python-chardet'
