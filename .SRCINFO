@@ -1,19 +1,19 @@
 pkgbase = vale-bin
 	pkgdesc = A customizable, syntax-aware linter for prose
-	pkgver = 3.4.1
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://vale.sh/
 	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = vale=3.4.1
+	provides = vale=3.4.2
 	conflicts = vale
-	source_aarch64 = vale-3.4.1-aarch64.tar.gz::https://github.com/errata-ai/vale/releases/download/v3.4.1/vale_3.4.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = d8c1db6d0cf047a8e1a17539afc703924f4d65d47f4258955ed3a0efc7df93d5
-	source_i686 = vale-3.4.1-i686.tar.gz::https://github.com/errata-ai/vale/releases/download/v3.4.1/vale_3.4.1_Linux_386.tar.gz
-	sha256sums_i686 = b5f625d29eed54c33d47991f507df7554f220099d8e9f7d3232fbfc97db82c21
-	source_x86_64 = vale-3.4.1-x86_64.tar.gz::https://github.com/errata-ai/vale/releases/download/v3.4.1/vale_3.4.1_Linux_64-bit.tar.gz
-	sha256sums_x86_64 = 6acab380f840c5e08feeae51314a89617413d065327edced9c41c400d2965e40
+	source_aarch64 = vale-3.4.2-aarch64.tar.gz::https://github.com/errata-ai/vale/releases/download/v3.4.2/vale_3.4.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9e233fca7f34ff7e5a4cb46a71101053b2ebc16d27cefb21d8dcb14922da4cce
+	source_i686 = vale-3.4.2-i686.tar.gz::https://github.com/errata-ai/vale/releases/download/v3.4.2/vale_3.4.2_Linux_386.tar.gz
+	sha256sums_i686 = b4a9941b6a697a0bfa8c9561d8dfe180dab3a6a9fddac9ab40e1dfd1d98da7a2
+	source_x86_64 = vale-3.4.2-x86_64.tar.gz::https://github.com/errata-ai/vale/releases/download/v3.4.2/vale_3.4.2_Linux_64-bit.tar.gz
+	sha256sums_x86_64 = f5b12b495cf6582c49703eca8021b480bb77b6f6999e18a1d311254ef58a2ff8
 
 pkgname = vale-bin
