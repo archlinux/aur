@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=edencommon
-pkgver=2024.04.22.00
+pkgver=2024.04.29.00
 pkgrel=1
 pkgdesc="Shared library for Watchman and Eden projects"
 arch=(x86_64)
@@ -19,9 +19,7 @@ depends=(
 makedepends=(
   boost
   cmake
-  fbthrift
   gtest
-  mvfst
 )
 provides=(
   libedencommon_os.so
@@ -33,12 +31,10 @@ options=(!lto)
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "build-shared-libraries.patch"
-  "fmt-v10.2-compatibility.patch"
 )
 sha256sums=(
-  '6b558e3f78fb6e211e26c6e7a07b2b5a9073322b39c60afc3def21309b360053'
-  '49178a7eac4639a82ae17ca54833f4147170c6ae1b573d382771d92d88891c66'
-  '019ae5911f839b4ff15c8508ce2824956ac5b2f0bb94182766f76863a81dbb35'
+  '4aa2299b0dc2de5841826c7b903521dffa4c528f689e4db91110fded71f93fc9'
+  'ffe1476d4edccb5ab8de82a9c2dd97e85dec8bea216ea3e1adb48b6c2946111a'
 )
 
 _archive="$pkgname-$pkgver"
@@ -47,7 +43,6 @@ prepare() {
   cd "$_archive"
 
   patch --forward --strip=1 --input="$srcdir/build-shared-libraries.patch"
-  patch --forward --strip=1 --input="$srcdir/fmt-v10.2-compatibility.patch"
 
   # Use system CMake config instead of bundled module, incompatible with glog
   # v0.7.0+

@@ -1,19 +1,6 @@
-From b2bcfce68d0a5a856e56fe8a4b08017aec060270 Mon Sep 17 00:00:00 2001
-From: Carl Smedstad <carl.smedstad@protonmail.com>
-Date: Thu, 4 Apr 2024 18:25:04 +0200
-Subject: [PATCH] Build shared libraries instead of static archives
-
----
- eden/common/os/CMakeLists.txt          | 2 +-
- eden/common/telemetry/CMakeLists.txt   | 1 +
- eden/common/testharness/CMakeLists.txt | 2 +-
- eden/common/utils/CMakeLists.txt       | 2 +-
- 4 files changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/eden/common/os/CMakeLists.txt b/eden/common/os/CMakeLists.txt
-index 4875a64..01b80d8 100644
---- a/eden/common/os/CMakeLists.txt
-+++ b/eden/common/os/CMakeLists.txt
+diff --unified --recursive --text --new-file edencommon-2024.04.29.00.orig/eden/common/os/CMakeLists.txt edencommon-2024.04.29.00/eden/common/os/CMakeLists.txt
+--- edencommon-2024.04.29.00.orig/eden/common/os/CMakeLists.txt	2024-05-01 19:24:26.050226332 +0200
++++ edencommon-2024.04.29.00/eden/common/os/CMakeLists.txt	2024-05-01 19:24:59.130403502 +0200
 @@ -6,7 +6,7 @@
  file(GLOB os_headers CONFIGURE_DEPENDS *.h)
  file(GLOB os_sources CONFIGURE_DEPENDS *.cpp)
@@ -23,11 +10,10 @@ index 4875a64..01b80d8 100644
    ${os_headers}
    ${os_sources}
  )
-diff --git a/eden/common/telemetry/CMakeLists.txt b/eden/common/telemetry/CMakeLists.txt
-index 4bd2e7b..e8dae83 100644
---- a/eden/common/telemetry/CMakeLists.txt
-+++ b/eden/common/telemetry/CMakeLists.txt
-@@ -8,6 +8,7 @@ file(GLOB telemetry_sources CONFIGURE_DEPENDS *.cpp)
+diff --unified --recursive --text --new-file edencommon-2024.04.29.00.orig/eden/common/telemetry/CMakeLists.txt edencommon-2024.04.29.00/eden/common/telemetry/CMakeLists.txt
+--- edencommon-2024.04.29.00.orig/eden/common/telemetry/CMakeLists.txt	2024-05-01 19:24:26.050226332 +0200
++++ edencommon-2024.04.29.00/eden/common/telemetry/CMakeLists.txt	2024-05-01 19:24:59.130403502 +0200
+@@ -8,6 +8,7 @@
  
  add_library(
    edencommon_telemetry
@@ -35,11 +21,10 @@ index 4bd2e7b..e8dae83 100644
    ${telemetry_headers}
    ${telemetry_sources})
  
-diff --git a/eden/common/testharness/CMakeLists.txt b/eden/common/testharness/CMakeLists.txt
-index 626fc56..b0a4f7f 100644
---- a/eden/common/testharness/CMakeLists.txt
-+++ b/eden/common/testharness/CMakeLists.txt
-@@ -8,7 +8,7 @@ file(GLOB testharness_sources CONFIGURE_DEPENDS *.cpp)
+diff --unified --recursive --text --new-file edencommon-2024.04.29.00.orig/eden/common/testharness/CMakeLists.txt edencommon-2024.04.29.00/eden/common/testharness/CMakeLists.txt
+--- edencommon-2024.04.29.00.orig/eden/common/testharness/CMakeLists.txt	2024-05-01 19:24:26.050226332 +0200
++++ edencommon-2024.04.29.00/eden/common/testharness/CMakeLists.txt	2024-05-01 19:24:59.130403502 +0200
+@@ -8,7 +8,7 @@
  
  add_library(
    edencommon_testharness
@@ -48,19 +33,15 @@ index 626fc56..b0a4f7f 100644
    ${testharness_headers}
    ${testharness_sources}
  )
-diff --git a/eden/common/utils/CMakeLists.txt b/eden/common/utils/CMakeLists.txt
-index 0388e50..deb5307 100644
---- a/eden/common/utils/CMakeLists.txt
-+++ b/eden/common/utils/CMakeLists.txt
-@@ -24,7 +24,7 @@ if (WIN32)
-   )
- endif()
+diff --unified --recursive --text --new-file edencommon-2024.04.29.00.orig/eden/common/utils/CMakeLists.txt edencommon-2024.04.29.00/eden/common/utils/CMakeLists.txt
+--- edencommon-2024.04.29.00.orig/eden/common/utils/CMakeLists.txt	2024-05-01 19:24:26.053559683 +0200
++++ edencommon-2024.04.29.00/eden/common/utils/CMakeLists.txt	2024-05-01 19:26:59.984382637 +0200
+@@ -26,7 +26,7 @@
  
--add_library(edencommon_utils ${utils_headers} ${utils_sources})
-+add_library(edencommon_utils SHARED ${utils_headers} ${utils_sources})
+ add_library(
+   edencommon_utils
+-  STATIC
++  SHARED
+     ${utils_headers}
+     ${utils_sources})
  
- target_link_libraries(edencommon_utils
-     Folly::folly
--- 
-2.44.0
-
