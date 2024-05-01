@@ -1,6 +1,6 @@
 pkgbase = r-target
 	pkgdesc = Predict Combined Function of Transcription Factors
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/target
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-target
 	optdepends = r-shinybs
 	optdepends = r-shinytest
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/target_1.16.0.tar.gz
-	sha256sums = ee135894447e1fd4a1198e1f5dfceb8bd5bafc4f1af4ef9a8df77adc1b3f0a4b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/target_1.18.0.tar.gz
+	sha256sums = d9fd92489bedf0021c0dbc5fd1526913baa61bcc8557dbb714d098c991ec38b3
 
 pkgname = r-target
