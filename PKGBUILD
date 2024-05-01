@@ -4,7 +4,7 @@
 _name=DXconvert
 pkgname=${_name,,}
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A file conversion and manipulation toolkit for Yamaha FM synth patches'
 arch=(any)
 url='http://dxconvert.martintarenskeen.nl/'
