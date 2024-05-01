@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gaga
-_pkgver=2.48.0
+_pkgver=2.50.0
 pkgname=r-${_pkgname,,}
-pkgver=2.48.0
+pkgver=2.50.0
 pkgrel=1
 pkgdesc='GaGa hierarchical model for high-throughput data analysis'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-parallel
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2cf887e3a142f4d7e5c2fb697d69378af06f3b79a17d34d00fa1fc54dcfa10bb')
+sha256sums=('ce2e187f0a8b9d0830822ed3b6d2256c188a4ee2f4e9185fe884386fc09b0c83')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
