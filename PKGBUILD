@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RImmPort
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='RImmPort: Enabling Ready-for-analysis Immunology Research Data'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('509080e001fe767be0d76d7d211a6309b1854622da12324adf2c07f5432fbd73')
+sha256sums=('7a4031309a5b6f72c188a5d40e005df0a50d935db8a823d594fc78e0764c744f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
