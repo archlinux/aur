@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=sakura-frp
-pkgver=0.45.0_sakura_7
+pkgver=0.51.0_sakura_4.2
 pkgrel=1
 pkgdesc="Sakura Frp Client"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -22,15 +22,15 @@ source_armv7h=(${pkgname}-${pkgver}-armv7::"${_url}/${pkgver//_/-}/frpc_linux_ar
 # disbale strip
 # => strip: error: the input file './usr/bin/sakura-frpc' has no sections
 options=('!strip')
-md5sums=('SKIP'
+md5sums=('95b469a409dc3d7687843078aa0fd7fe'
          '217dc59018558a2ae6fcb98da968b022'
          '2a0bc53302d2ab06b2bcee826d10c727'
          '136ace6ea106819f10ee785b56825e4e'
          '69b510ef3fda703cd749473ffd506bfc')
-md5sums_x86_64=('d6564c43344752ac18c5f294a5d26960')
-md5sums_i686=('9dca11c6c8f44a19b1e60ecc370089ae')
-md5sums_aarch64=('63b76400163a8fee242674309256a944')
-md5sums_armv7h=('7f236c8c784fb7ebc77e3edcc07f3885')
+md5sums_x86_64=('c825fcc59827d2bfa9f9edbf024a076a')
+md5sums_i686=('5a437908400ccf1b323a4e77d170bcef')
+md5sums_aarch64=('db6ef78f432b3f3da78c529edc47633d')
+md5sums_armv7h=('63af9665e1bc871f846907d5986b163a')
 
 package() {
   install -Dm755 ${pkgname}-${pkgver}-${CARCH} ${pkgdir}/usr/bin/${pkgname}c
