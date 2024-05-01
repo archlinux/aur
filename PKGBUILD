@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ComplexHeatmap
-_pkgver=2.18.0
+_pkgver=2.20.0
 pkgname=r-${_pkgname,,}
-pkgver=2.18.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='Make Complex Heatmaps'
 arch=('any')
@@ -47,7 +47,7 @@ optdepends=(
   r-tiff
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8eb9912d9897c3914fadeb002bab1dff16a059db4d99b2fd754eb512d904f77f')
+sha256sums=('1bed53e570d491a6d5d7b6565d37c816f074d820f9bdd8c5876d6f0b0aeaffde')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
