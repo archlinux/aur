@@ -1,4 +1,6 @@
-*.pkg.tar.zst
-*.tar.gz
-pkg
-src
+*
+!.SRCINFO
+!PKGBUILD
+!pixelfed-queue.service
+!pixelfed-scheduler.service
+!pixelfed-scheduler.timer
