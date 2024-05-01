@@ -1,6 +1,6 @@
 pkgbase = r-maftools
 	pkgdesc = Summarize, Analyze and Visualize MAF Files
-	pkgver = 2.18.0
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/maftools
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = r-maftools
 	optdepends = r-raggedexperiment
 	optdepends = r-rmarkdown
 	optdepends = r-s4vectors
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/maftools_2.18.0.tar.gz
-	sha256sums = ea8d5c1d97a0d1b7d5ab172ee93b89c234918874b98ae3b2ff8d8ed02da6bc08
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/maftools_2.20.0.tar.gz
+	sha256sums = 625cba16a32fe54cf1565c25904bd9f940ce9307a13296a01dff391e28725a30
 
 pkgname = r-maftools
