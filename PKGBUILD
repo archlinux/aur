@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChAMPdata
-_pkgver=2.34.0
+_pkgver=2.35.0
 pkgname=r-${_pkgname,,}
-pkgver=2.34.0
+pkgver=2.35.0
 pkgrel=1
 pkgdesc='Data Packages for ChAMP package'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-genomicranges
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('df392019cfdd99dd4949e89d855477ec603970519541d67273e814b8c4d3bb9c')
+sha256sums=('8807e04c35e302c9753c47919e341e9fb7ea0f1466e6358b2cfa97e5eba05afc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
