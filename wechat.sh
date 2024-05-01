@@ -89,6 +89,12 @@ function importEnv() {
 	else
 		touch "${XDG_DATA_HOME}"/WeChat_Data/wechat.env
 	fi
+	if [[ $(cat "${XDG_DATA_HOME}"/WeChat_Data/wechat.env) ]]; then
+		return 0
+	else
+		echo "# Envs" >>"${XDG_DATA_HOME}"/WeChat_Data/wechat.env
+		echo "isWeChatEnvPresent=1" >>"${XDG_DATA_HOME}"/WeChat_Data/wechat.env
+	fi
 }
 
 function cameraDect() {
@@ -121,6 +127,8 @@ function execApp() {
 		--dir /sandbox \
 		--tmpfs /tmp \
 		--bind /usr /usr \
+		--bind /opt/wechat-uos-qt/files/libuosdevicea.so \
+			/usr/lib/license/libuosdevicea.so \
 		--ro-bind /etc /etc \
 		--symlink usr/lib /lib \
 		--symlink usr/lib64 /lib64 \
@@ -163,7 +171,6 @@ function execApp() {
 		--setenv QT_QPA_PLATFORM xcb \
 		--setenv LD_LIBRARY_PATH \
 			/opt/wechat-uos-qt/files:/usr/lib/wechat-uos-qt/so \
-		--setenv LD_PRELOAD /opt/wechat-uos-qt/files/libuosdevicea.so \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
 		--setenv PATH /sandbox:"${PATH}" \
 		--setenv XDG_DOCUMENTS_DIR "${XDG_DOCUMENTS_DIR}" \
@@ -205,7 +212,6 @@ function execAppUnsafe() {
 		--ro-bind /usr/share/wechat-uos-qt/license/etc/lsb-release /etc/lsb-release \
 		--setenv QT_QPA_PLATFORM xcb \
 		--setenv LD_LIBRARY_PATH /opt/wechat-uos-qt/files:/usr/lib/wechat-uos-qt/so:/usr/lib/wechat-uos-qt/so \
-		--setenv LD_PRELOAD /opt/wechat-uos-qt/files/libuosdevicea.so \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
 		--setenv PATH /sandbox:"${PATH}" \
 		--setenv QT_PLUGIN_PATH "/usr/lib/qt/plugins /opt/wechat-uos-qt/files/wechat" \

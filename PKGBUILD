@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=(wechat-uos-bwrap wechat-uos-qt)
 pkgver=1.0.0.241
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="WeChat Qt w/ bwrap sandbox"
 arch=('x86_64' 'aarch64' 'loong64')
@@ -55,13 +55,14 @@ depends=(
 	"lsb-release"
 )
 
+optdepends=("gamescope")
+
 makedepends=(
 	"libarchive"
 )
 
 checkdepends=()
-provides=("wechat-uos" "wechat" "wechat-universal" "wechat-universal-bwrap" "wechat-beta-bwrap")
-conflicts=("wechat-universal-bwrap" "wechat-beta-bwrap")
+conflicts=()
 replaces=("wechat-universal-bwrap" "wechat-beta-bwrap")
 
 source=(
@@ -85,7 +86,7 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
-md5sums=('69628714247dee95501672612ac0e47c'
+md5sums=('2e422600e33c025f74bcea4131e11462'
          '82a5663ce32a0504f1f7575d51f2c7cb'
          '600e74549ce2258c045d5c2f7689ea63'
          'dfc069e6c8d9dbaa90fe388cab4002c9'
@@ -96,8 +97,9 @@ md5sums_aarch64=('c4d443515fe76ec35e792d43e9521887')
 md5sums_loong64=('c4d443515fe76ec35e792d43e9521887')
 
 function package_wechat-uos-qt() {
-	conflicts+=(wechat-universal-bwrap wechat-beta-bwrap)
+	conflicts=(wechat-universal-bwrap wechat-beta-bwrap)
 	replaces+=(wechat-universal-bwrap wechat-beta-bwrap wechat-uos-bwrap)
+	provides=("wechat-uos" "wechat" "wechat-universal" "wechat-universal-bwrap" "wechat-beta-bwrap")
 	tar -xf data.tar.xz ./opt/apps/com.tencent.wechat
 	mkdir -p "${pkgdir}"/opt
 	cp opt/apps/com.tencent.wechat "${pkgdir}"/opt/wechat-uos-qt -r
@@ -108,12 +110,14 @@ function package_wechat-uos-qt() {
 	install -Dm644 wechat-uos-qt.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-uos-qt.svg"
 	mkdir -p "${pkgdir}/usr/share/wechat-uos-qt/license"
 	#install -Dm755 "${pkgdir}/opt/wechat-uos-qt/files/libuosdevicea.so" "${pkgdir}/usr/lib/license/libuosdevicea.so"
+	install -d "${pkgdir}/usr/lib/license"
+	touch "${pkgdir}/usr/lib/license/libuosdevicea.so"
+	chmod 0755 "${pkgdir}/usr/lib/license" -R
 	cp "${srcdir}/license"/* -r "${pkgdir}/usr/share/wechat-uos-qt/license"
 	chmod 0755 -R "${pkgdir}/usr/share/wechat-uos-qt/license"
 }
 
 function package_wechat-uos-bwrap() {
-	conflicts+=(wechat-universal-bwrap wechat-beta-bwrap)
-	replaces+=(wechat-universal-bwrap wechat-beta-bwrap)
+	conflicts=()
 	requires+=(wechat-uos-qt)
 }
