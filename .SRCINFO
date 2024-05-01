@@ -1,0 +1,17 @@
+pkgbase = android-x86-64-fmt
+	pkgdesc = Open-source formatting library for C++ (Android x86-64)
+	pkgver = 10.2.1
+	pkgrel = 1
+	url = https://fmt.dev
+	arch = any
+	license = MIT
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/fmtlib/fmt/archive/refs/tags/10.2.1.tar.gz
+	md5sums = dc09168c94f90ea890257995f2c497a5
+
+pkgname = android-x86-64-fmt
