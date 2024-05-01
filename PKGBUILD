@@ -1,6 +1,6 @@
 # Maintainer: Dwayne Bent <dbb@dbb.io>
 pkgname=systemd-cron
-pkgver=2.3.4
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='systemd units to run cron scripts'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 install=${pkgname}.install
 sha256sums=(
-	'540757650e921522645ede58848e08d0367b6936bd81f9640f96bbf0dc79d5d0'
+	'2bb7d1b7b294767a66f2e330a65452dbc764ac66ad376295f1f7ccc56385b463'
 	'9260221879cca05d4c82cd12deb88759c8d9148e106f4b9891700849cef5c41b'
 )
 
