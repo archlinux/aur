@@ -1,6 +1,6 @@
 pkgbase = watt-toolkit-git
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
-	pkgver = 3.0.0.rc7.r2.gadf3e0ca9
+	pkgver = 3.0.0.rc8.r0.g542b528b9
 	pkgrel = 1
 	url = https://steampp.net/
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = watt-toolkit-git
 	provides = watt-toolkit
 	conflicts = steam++
 	conflicts = watt-toolkit
-	options = !strip
+	options = staticlibs
 	source = git+https://github.com/BeyondDimension/SteamTools
 	source = git+https://github.com/BeyondDimension/Credentials-Public
 	source = watt-toolkit.desktop

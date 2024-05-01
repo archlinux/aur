@@ -5,7 +5,7 @@ _dotnet_version=8.0
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc7.r2.gadf3e0ca9
+pkgver=3.0.0.rc8.r0.g542b528b9
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
@@ -20,7 +20,7 @@ makedepends=('git' 'dotnet-install') # We need to install some workloads so dotn
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++' 'watt-toolkit')
 conflicts=('steam++' 'watt-toolkit')
-options=('!strip')
+options=('staticlibs')
 source=(
     'git+https://github.com/BeyondDimension/SteamTools'
     'git+https://github.com/BeyondDimension/Credentials-Public'
