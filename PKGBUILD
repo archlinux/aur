@@ -5,7 +5,7 @@
 pkgname=matcha-gtk-theme
 _pkgver=2024-05-01
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A flat design theme for GTK 3, GTK 2 and GNOME Shell"
 arch=('any')
 url="https://vinceliuice.github.io/theme-matcha.html"
