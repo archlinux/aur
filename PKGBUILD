@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -30,6 +30,7 @@ options=('!lto')
 prepare() {
     cd "theseus-${pkgver}"
 
+    export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
@@ -44,6 +45,7 @@ build() {
 
     cd ..
 
+    export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
     cargo build --frozen --release --all-features
 }
@@ -51,6 +53,7 @@ build() {
 check() {
     cd "theseus-${pkgver}"
 
+    export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
