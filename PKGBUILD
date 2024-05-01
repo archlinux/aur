@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MACSQuantifyR
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Fast treatment of MACSQuantify FACS data'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a1e9a9c20333d22f719a0d7bf6da85a8a07282ece3b87f295fc9756ac0943d79')
+sha256sums=('c12582ec4f2c6c09066b4ef0e5303aebafd2ad133f9ff54f62534956ee6b8638')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
