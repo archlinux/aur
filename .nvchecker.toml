@@ -1,0 +1,4 @@
+[python-django-htmx]
+source = "github"
+github = "adamchainz/django-htmx"
+use_max_tag = true
