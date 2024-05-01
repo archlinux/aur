@@ -1,0 +1,19 @@
+pkgbase = hyfetch-extra-legal-git
+	pkgdesc = Neofetch with LGBTQ pride flags. (extra flags, sans paedophelic)
+	pkgver = 20240501
+	pkgrel = 1
+	url = https://github.com/naviabbot/hyfetch-extra
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-typing_extensions
+	provides = hyfetch
+	conflicts = hyfetch
+	conflicts = hyfetch-git
+	conflicts = hyfetch-extra-git
+	source = hyfetch-extra-legal-git::git+https://github.com/naviabbot/hyfetch-extra
+	md5sums = SKIP
+
+pkgname = hyfetch-extra-legal-git
