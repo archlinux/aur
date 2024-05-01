@@ -1,7 +1,7 @@
-# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
+# Maintainer: Tjw123hh <tjw123hh@outlook.com>
 
 pkgname=bleachbit-root
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Run bleachbit as root for cleaning system files"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('bleachbit'
          'polkit')
 conflicts=('bleachbit-cli') # Requires desktop functions for bleachbit
 source=('org.bleachbit.BleachBit-Root.desktop')
-sha256sums=('bc8efe3ff4ea74ff526eb14d6155b87bc108a0edc7b487ee7275cd395212d172')
+sha256sums=('86f8438dde194afbddcf403e4ca10cb553178f1230a840e26851230297057715')
 
 package() {
-  install -Dm644 org.bleachbit.BleachBit-Root.desktop -t "$pkgdir"/usr/share/applications/
+  install -Dm644 org.bleachbit.BleachBit-Root.desktop -t "${pkgdir}/usr/share/applications/"
 }
