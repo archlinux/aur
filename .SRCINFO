@@ -1,6 +1,6 @@
 pkgbase = r-ssrch
 	pkgdesc = a simple search engine
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ssrch
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-ssrch
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ssrch_1.18.0.tar.gz
-	sha256sums = 69d652102ffb68ee3641a3589b6844c7337f086cdeec4578d133590aa7ba4368
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ssrch_1.20.0.tar.gz
+	sha256sums = cdd089d4072eea283ec44e013450b893885dbd9e5700269fb259d2c18241ec9a
 
 pkgname = r-ssrch
