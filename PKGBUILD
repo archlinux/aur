@@ -2,7 +2,7 @@
 # Contributor: Mr.Smith1974
 pkgname=cosmonium-bin
 _pkgname=Cosmonium
-pkgver=0.3.0.dev837
+pkgver=0.3.0.dev876
 pkgrel=1
 pkgdesc="3D astronomy and space exploration program."
 arch=("x86_64")
@@ -15,6 +15,8 @@ depends=(
 	'nspr'
 	'gtk2'
 	'nss'
+	'libxss'
+	'libglvnd'
 )
 makedepends=(
 	'gendesk'
@@ -26,7 +28,7 @@ source=(
 	"${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}_manylinux2014_${CARCH}.tar.gz"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('f93dd4c6f7535b419b340968d06d232cd1bbba7094f5b5a93897d1c14e65ce6f'
+sha256sums=('e0b6ed545a381171d97492ee113aebcc375bef44303915d2c3026e740cfcf4d6'
             '6a94dd1542c9f172f61db12717e70d89895d1b81665a4201bbf3456823d38b06')
 build() {
 	sed -e "s|@appname@|${pkgname%-bin}|g" \

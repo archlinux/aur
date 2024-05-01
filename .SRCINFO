@@ -1,6 +1,6 @@
 pkgbase = cosmonium-bin
 	pkgdesc = 3D astronomy and space exploration program.
-	pkgver = 0.3.0.dev837
+	pkgver = 0.3.0.dev876
 	pkgrel = 1
 	url = https://github.com/cosmonium/cosmonium
 	arch = x86_64
@@ -10,12 +10,14 @@ pkgbase = cosmonium-bin
 	depends = nspr
 	depends = gtk2
 	depends = nss
-	provides = cosmonium=0.3.0.dev837
+	depends = libxss
+	depends = libglvnd
+	provides = cosmonium=0.3.0.dev876
 	conflicts = cosmonium
 	options = !strip
-	source = cosmonium-0.3.0.dev837.tar.gz::https://github.com/cosmonium/cosmonium/releases/download/v0.3.0.dev837/cosmonium-0.3.0.dev837_manylinux2014_x86_64.tar.gz
+	source = cosmonium-0.3.0.dev876.tar.gz::https://github.com/cosmonium/cosmonium/releases/download/v0.3.0.dev876/cosmonium-0.3.0.dev876_manylinux2014_x86_64.tar.gz
 	source = cosmonium.sh
-	sha256sums = f93dd4c6f7535b419b340968d06d232cd1bbba7094f5b5a93897d1c14e65ce6f
+	sha256sums = e0b6ed545a381171d97492ee113aebcc375bef44303915d2c3026e740cfcf4d6
 	sha256sums = 6a94dd1542c9f172f61db12717e70d89895d1b81665a4201bbf3456823d38b06
 
 pkgname = cosmonium-bin
