@@ -3,7 +3,7 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
 pkgver=4.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
@@ -14,7 +14,7 @@ depends=(
   'python-importlib-metadata'
   'python-numpy'
   'python-polib'
-  'python-pyqt5'
+  'python-pyqt6'
   'python-qtpy'
 )
 makedepends=(

@@ -1,7 +1,7 @@
 pkgbase = git-cola
 	pkgdesc = The highly caffeinated Git GUI
 	pkgver = 4.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git-cola.github.io
 	arch = any
 	license = GPL-2.0-or-later
@@ -21,7 +21,7 @@ pkgbase = git-cola
 	depends = python-importlib-metadata
 	depends = python-numpy
 	depends = python-polib
-	depends = python-pyqt5
+	depends = python-pyqt6
 	depends = python-qtpy
 	optdepends = python-pygments: syntax highlighting
 	optdepends = python-pyinotify: file system change monitoring
