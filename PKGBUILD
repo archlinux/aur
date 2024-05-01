@@ -3,9 +3,9 @@
 
 pkgbase=postgresql-12
 pkgname=('postgresql-libs-12' 'postgresql-docs-12' 'postgresql-12')
-pkgver=12.17
+pkgver=12.18
 _majorver=${pkgver%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -15,27 +15,24 @@ makedepends=('krb5' 'libxml2' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
-        postgresql-fix-libxml2-2.12.patch
         postgresql.pam
         postgresql.logrotate
         postgresql.service
         postgresql-check-db-dir
         postgresql.sysusers
         postgresql.tmpfiles)
-sha256sums=('93e8e1b23981d5f03c6c5763f77b28184c1ce4db7194fa466e2edb65d9c1c5f6'
+sha256sums=('4f9919725d941ce9868e07fe1ed1d3a86748599b483386547583928b74c3918a'
             'd8173b336551d022f00792c0e2f1a52c6938a0003ce86b4f3cfd3aa84128612e'
             'bd8e0f6ecb7c1b9b5d34eaa1d456cac20160e8350a9a151e31557a0ec7a51deb'
-            '79ab94d82027699135d4cbbf4f5e65747d575569e8ce1b8ed07dc1e002321a6e'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
             '25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57'
             'bb24b8ce8c69935b7527ed54e10a8823068e31c8aa5b8ffea81ce6993264e8db'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
-b2sums=('dda4b06d8d36d3257e1eea251ccbdf38f1ce63ca811045b7b8d156d2b54614304b83b30ad3b1ead4e7ad74fa9f42acc8934f648902e17a4f7c89a117dc8e3c03'
+b2sums=('cadb1d168185d0f73752af2a58f34bde79db51716ffbc4e974efa759ac5ebd3b340a17acc965a1fd30899321c5aef597b93f947277a35c1159bc9ff7ac4b4254'
         '7204c1ed073b7f60cd4ddf1ce0802c25ce8fa3b5a7dd0a92869775e5a25262ed5d8e0534aee8568ac93b049d6d215fd49d2a92dc487058e92273685eb5e5ba05'
         '748515d1fcb0176dac4d74435e8fbe655989e31cc65cb2871bf05822dd5cc52b2e4014b8915f039c6f09b0230236add830ce981c7dc1b2269bdaad6620e88e8b'
-        'a7f69aba1a33bb8977ae59d91fb86d32e20e8e8dac6d5be76ee3af9ace0ca2ee45efb73dbf992159f64376ec9aeee181c90cb71e2827231ab108971619ed1a53'
         '3eab84d332d96678fe6e435ee243c8f1a82b838f601d61d3604d11e918aed7a62202edca5e476c4b9031ed284570e6fcd6c659cfdbd9624aa0019d3233755f81'
         '2209b7550acad7955102ec6922754b4046b2a2ad2a7e1cfb2cc4053c0705abac7aa7d7968eab617f50894797d06345f51c9a669926bd2a77dcf688206a2027e0'
         'a4255df47b7ac1418d20aa73aa0f6e70c7952a10d706e5523043c48b2c3b6d8e39838049dfcc826913cd0f2c06502561d1abe8b19cce7071db66139ae93a37bf'
@@ -47,7 +44,6 @@ prepare() {
   cd postgresql-${pkgver}
   patch -p1 < ../postgresql-run-socket.patch
   patch -p1 < ../postgresql-perl-rpath.patch
-  patch -p1 < ../postgresql-fix-libxml2-2.12.patch
 }
 
 build() {
