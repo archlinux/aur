@@ -1,15 +1,16 @@
+# Maintainer: Masaki Waga <masakiwaga@gmail.com>
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 # Maintainer: Benjamin Cheng <ben@bcheng.me>
 pkgname=sealcrypto
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.1.1
+pkgrel=1
 pkgdesc='Microsoft library for fully homomorphic encryption'
 arch=('x86_64')
-url="https://sealcrypto.org/"
+url="https://www.microsoft.com/en-us/research/group/cryptography-research/"
 license=('MIT')
 makedepends=('cmake')
 source=("https://github.com/Microsoft/SEAL/archive/${pkgver}.tar.gz")
-sha256sums=('616653498ba8f3e0cd23abef1d451c6e161a63bd88922f43de4b3595348b5c7e')
+sha256sums=('af9bf0f0daccda2a8b7f344f13a5692e0ee6a45fea88478b2b90c35648bf2672')
 
 provides=('sealcrypto')
 
