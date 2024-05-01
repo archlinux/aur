@@ -1,6 +1,6 @@
 pkgbase = r-banocc
 	pkgdesc = Bayesian ANalysis Of Compositional Covariance
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/banocc
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-banocc
 	optdepends = r-methods
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/banocc_1.26.0.tar.gz
-	sha256sums = f7c1d389eb39421a23df556e097bee3d6a800fc2a3bc6288e9428fbee68fd578
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/banocc_1.28.0.tar.gz
+	sha256sums = 420f21d3571004987741129e5f9b7cdb58aae86cf92419b0f335e75113d7de89
 
 pkgname = r-banocc
