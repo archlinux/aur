@@ -1,0 +1,18 @@
+pkgbase = fstrm-git
+	pkgdesc = Frame Streams implementation in C
+	pkgver = 0.6.1.r0.g1d6e11d
+	pkgrel = 1
+	url = https://github.com/farsightsec/fstrm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = libevent
+	provides = fstrm=0.6.1.r0.g1d6e11d
+	conflicts = fstrm
+	options = staticlibs
+	source = git+https://github.com/farsightsec/fstrm.git
+	sha256sums = SKIP
+
+pkgname = fstrm-git
