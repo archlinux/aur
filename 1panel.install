@@ -40,8 +40,10 @@ post_remove() {
 pre_upgrade() {
     export no_need_start="false"
     echo -e "==================== 准备更新 1Panel ===================="
+    echo -e " 正在备份1pctl文件"
+    cp /usr/bin/1pctl /usr/bin/1pctl.bak
     if systemctl is-active --quiet 1panel; then
-        echo -e "正在临时停止 1Panel 服务..."
+        echo -e "检测到systemd服务正在运行，正在临时停止 1Panel 服务..."
         systemctl stop 1panel
         export _restart_1panel_service=true
     fi
@@ -50,10 +52,17 @@ pre_upgrade() {
 
 post_upgrade() {
     if [ -n "${_restart_1panel_service+x}" ]; then
-        echo -e "重启服务..."
+        echo -e "正在重启服务重启服务..."
         systemctl start 1panel
         unset _restart_1panel_service
         systemctl daemon-reload
     fi
+    # 提取1pctl的ORIGINAL_VERSION变量的值
+    _1panel_version=$(grep -oP '(?<=ORIGINAL_VERSION=).*' /usr/bin/1pctl)
+    echo -e "正在恢复1pctl备份"
+    mv /usr/bin/1pctl.bak /usr/bin/1pctl
+    # 更新1pctl的ORIGINAL_VERSION变量的值
+    sed -i -e "s#ORIGINAL_VERSION=.*#ORIGINAL_VERSION=${_1panel_version}#g" /usr/bin/1pctl
+    chmod 755 /usr/bin/1pctl
     echo -e "==================== 1Panel 更新完成 ===================="
 }
