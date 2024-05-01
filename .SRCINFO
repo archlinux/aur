@@ -1,13 +1,13 @@
 pkgbase = r-gewist
 	pkgdesc = Gene Environment Wide Interaction Search Threshold
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GEWIST
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-car
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEWIST_1.46.0.tar.gz
-	sha256sums = 40a98c37d32b740aee4bd0997672245457f0907f3e04d308a3d36f92ffe84b09
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEWIST_1.48.0.tar.gz
+	sha256sums = 649734507cdf06b37b1a0164898a317d607fafe94b61b29d6a95218f4f5fd960
 
 pkgname = r-gewist
