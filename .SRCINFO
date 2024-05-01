@@ -1,6 +1,6 @@
 pkgbase = r-bioqc
 	pkgdesc = Detect tissue heterogeneity in expression profiles with gene sets
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BioQC
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = r-bioqc
 	optdepends = r-reshape2
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioQC_1.30.0.tar.gz
-	sha256sums = 8a4e7c5e2e5e245274a87c920909536d1652aec0cc9a35a81730152140787596
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioQC_1.32.0.tar.gz
+	sha256sums = 730f12f773b744d0db1cf1b94e3f7fe04d6f11f1c45dbabf492527ca8bc3d993
 
 pkgname = r-bioqc
