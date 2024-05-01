@@ -2,7 +2,7 @@
 
 pkgname=azure-dev-cli
 _pkgname=azure-dev
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Developer CLI that reduces the time it takes for you to get started on Azure"
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/azure-dev-cli_$pkgver.tar.gz")
-sha256sums=('a6301afccdf0f3b3b41fdeea5b843e8d77e01ef8a4a962ee2e64ba27f95c9be0')
+sha256sums=('f60515473c463d51868801166719536a56c88d78a863805848cf96ff0e482aff')
 
 _archive="$_pkgname-azure-dev-cli_$pkgver"
 
