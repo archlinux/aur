@@ -1,4 +1,5 @@
-# Maintainer: Mateusz Galazyn <carbolymer@gmail.com>
+# Maintainer: Darius Niminenn <root@dnim.dev>
+# Contributor: Mateusz Galazyn <carbolymer@gmail.com>
 
 pkgname='tdarr'
 pkgver=2.17.01
