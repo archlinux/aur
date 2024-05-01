@@ -22,7 +22,7 @@
 # That is the only reason why this package ends on "-git".
 
 pkgname=sickchill-git
-pkgver=2024.2.18.r0
+pkgver=2024.3.1.r0
 pkgrel=1
 pkgdesc='Automatic video library manager for TV shows'
 arch=(any)
@@ -55,7 +55,7 @@ build() {
   PIP_CONFIG_FILE=/dev/null build/bin/pip install \
       --ignore-installed --isolated --cache-dir=cache --prefix=. --root=build \
       --default-timeout=60 --disable-pip-version-check --no-warn-script-location --progress-bar=off \
-      sickchill
+      setuptools sickchill
 
   sed -i '1s|.*|#!/opt/sickchill/app/bin/python|' build/bin/SickChill
 }
