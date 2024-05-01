@@ -1,6 +1,6 @@
 pkgbase = r-trio
 	pkgdesc = Testing of SNPs and SNP Interactions in Case-Parent Trio Studies
-	pkgver = 3.40.0
+	pkgver = 3.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/trio
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-trio
 	optdepends = r-mcbiopi
 	optdepends = r-splines
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/trio_3.40.0.tar.gz
-	sha256sums = 1bb69d82f53432e83f108eaaee530bcc6a73191d0e31fed22eb13d2dcf740342
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/trio_3.42.0.tar.gz
+	sha256sums = 2439752e6546af50f9a011a906aa42795fe8b96a9db20a3fe80caa2cbfb7d798
 
 pkgname = r-trio
