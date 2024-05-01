@@ -4,7 +4,7 @@
 
 pkgname=openlp
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
