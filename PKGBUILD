@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cellmigRation
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Track Cells, Analyze Cell Trajectories and Compute Migration Statistics'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('95ed98dbe3a561397a434f6304d3fc40d1ec270f4e449ddc10d7c9152ce3ea50')
+sha256sums=('5eaad0b07b5e46ca81deb300e12f89ab5fed562a4d53db5b01151a2702a2152a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

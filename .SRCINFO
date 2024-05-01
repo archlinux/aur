@@ -1,6 +1,6 @@
 pkgbase = r-cellmigration
 	pkgdesc = Track Cells, Analyze Cell Trajectories and Compute Migration Statistics
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cellmigRation
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-cellmigration
 	optdepends = r-rgl
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellmigRation_1.10.0.tar.gz
-	sha256sums = 95ed98dbe3a561397a434f6304d3fc40d1ec270f4e449ddc10d7c9152ce3ea50
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellmigRation_1.12.0.tar.gz
+	sha256sums = 5eaad0b07b5e46ca81deb300e12f89ab5fed562a4d53db5b01151a2702a2152a
 
 pkgname = r-cellmigration
