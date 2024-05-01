@@ -1,6 +1,6 @@
 pkgbase = evtest-qt-git
 	pkgdesc = Linux Joystick Tester for Qt
-	pkgver = r130.fb087f4
+	pkgver = r133.6fb1b84
 	pkgrel = 1
 	url = https://github.com/Grumbel/evtest-qt
 	arch = i686
@@ -14,8 +14,6 @@ pkgbase = evtest-qt-git
 	provides = evtest-qt
 	conflicts = evtest-qt
 	source = git+https://github.com/Grumbel/evtest-qt.git
-	source = fix-compilation-with-newer-gcc.patch
 	md5sums = SKIP
-	md5sums = 31d7b01d019237b02ae61dc6b6e8afba
 
 pkgname = evtest-qt-git
