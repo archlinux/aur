@@ -1,6 +1,6 @@
 pkgbase = nvidia-open-tinygrad-git
 	pkgdesc = NVIDIA open GPU kernel modules (tinygrad git version)
-	pkgver = 550.76.r0.gea4c27fad
+	pkgver = 550.54.15.r0.g12933b2d3
 	pkgrel = 1
 	url = https://github.com/tinygrad/open-gpu-kernel-modules
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = nvidia-open-tinygrad-git
 	options = !buildflags
 	options = !lto
 	options = !strip
-	source = git+https://github.com/NVIDIA/open-gpu-kernel-modules.git#tag=550.76
+	source = git+https://github.com/NVIDIA/open-gpu-kernel-modules.git#tag=550.54.15
 	source = 100-nvidia-open-tinygrad.patch
 	source = 110-nvidia-open-change-dkms-conf.patch
 	source = 120-nvidia-open-linux-rt-gift.patch
 	source = 130-nvidia-open-reproducible-build.patch
 	source = 140-nvidia-open-gcc-sls.patch
-	sha256sums = dda312c60906cc2466a601cea0e31abee9852ac298989957f4d3b5e0375b9bf4
-	sha256sums = a4a599629c96b7b2f7cdd496fec8f406ea4a4ea5ab30663cae09856618801a63
+	sha256sums = 4a4ded42430f03a9264b10a7d22da5f2a0f40897380734458daa1eadd2b30646
+	sha256sums = 57591c653b0fcc78d75b7041fc197f00eaabd0c3707f50bf08e80ec807a8d38b
 	sha256sums = 009724e2e07b7be589ba455f225a9742d88a3a29383f2f220cb830ef4c8b7aea
 	sha256sums = b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45
 	sha256sums = 15421d72aabc569c69762c77c7a37ad7be617f08e3c833318cecdeb5500e8ef4
@@ -28,8 +28,8 @@ pkgname = nvidia-open-tinygrad-dkms-git
 	pkgdesc = NVIDIA open GPU kernel modules (tinygrad git version)
 	depends = dkms
 	depends = libglvnd
-	depends = nvidia-utils>=550
-	provides = nvidia-open=550.76.r0.gea4c27fad
+	depends = nvidia-utils>=550.54
+	provides = nvidia-open=550.54.15.r0.g12933b2d3
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE

@@ -1,12 +1,12 @@
 diff --git a/README.md b/README.md
-index 5b154a84..d1d386f2 100644
+index 77ad719f..d1d386f2 100644
 --- a/README.md
 +++ b/README.md
-@@ -1,930 +1,125 @@
+@@ -1,915 +1,125 @@
 -# NVIDIA Linux Open GPU Kernel Module Source
 -
 -This is the source release of the NVIDIA Linux open GPU kernel modules,
--version 550.76.
+-version 550.54.15.
 -
 -
 -## How to Build
@@ -22,7 +22,7 @@ index 5b154a84..d1d386f2 100644
 -
 -Note that the kernel modules built here must be used with GSP
 -firmware and user-space NVIDIA GPU driver components from a corresponding
--550.76 driver release.  This can be achieved by installing
+-550.54.15 driver release.  This can be achieved by installing
 -the NVIDIA GPU driver from the .run file using the `--no-kernel-modules`
 -option.  E.g.,
 -
@@ -193,7 +193,7 @@ index 5b154a84..d1d386f2 100644
 -For details on feature support and limitations, see the NVIDIA GPU driver
 -end user README here:
 -
--https://us.download.nvidia.com/XFree86/Linux-x86_64/550.76/README/kernel_open.html
+-https://us.download.nvidia.com/XFree86/Linux-x86_64/550.54.15/README/kernel_open.html
 -
 -For vGPU support, please refer to the README.vgpu packaged in the vGPU Host
 -Package for more details.
@@ -656,7 +656,6 @@ index 5b154a84..d1d386f2 100644
 -| NVIDIA T1000 8GB                                | 1FF0 17AA 1612 |
 -| NVIDIA T400 4GB                                 | 1FF2 1028 1613 |
 -| NVIDIA T400 4GB                                 | 1FF2 103C 1613 |
--| NVIDIA T400E                                    | 1FF2 103C 18FF |
 -| NVIDIA T400 4GB                                 | 1FF2 103C 8A80 |
 -| NVIDIA T400 4GB                                 | 1FF2 10DE 1613 |
 -| NVIDIA T400E                                    | 1FF2 10DE 18FF |
@@ -835,14 +834,6 @@ index 5b154a84..d1d386f2 100644
 -| NVIDIA GeForce RTX 3050 4GB Laptop GPU          | 25AB           |
 -| NVIDIA GeForce RTX 3050 6GB Laptop GPU          | 25AC           |
 -| NVIDIA GeForce RTX 2050                         | 25AD           |
--| NVIDIA RTX A1000                                | 25B0 1028 1878 |
--| NVIDIA RTX A1000                                | 25B0 103C 1878 |
--| NVIDIA RTX A1000                                | 25B0 10DE 1878 |
--| NVIDIA RTX A1000                                | 25B0 17AA 1878 |
--| NVIDIA RTX A400                                 | 25B2 1028 1879 |
--| NVIDIA RTX A400                                 | 25B2 103C 1879 |
--| NVIDIA RTX A400                                 | 25B2 10DE 1879 |
--| NVIDIA RTX A400                                 | 25B2 17AA 1879 |
 -| NVIDIA A16                                      | 25B6 10DE 14A9 |
 -| NVIDIA A2                                       | 25B6 10DE 157E |
 -| NVIDIA RTX A2000 Laptop GPU                     | 25B8           |
@@ -881,7 +872,6 @@ index 5b154a84..d1d386f2 100644
 -| NVIDIA GeForce RTX 4080 SUPER                   | 2702           |
 -| NVIDIA GeForce RTX 4080                         | 2704           |
 -| NVIDIA GeForce RTX 4070 Ti SUPER                | 2705           |
--| NVIDIA GeForce RTX 4070                         | 2709           |
 -| NVIDIA GeForce RTX 4090 Laptop GPU              | 2717           |
 -| NVIDIA RTX 5000 Ada Generation Laptop GPU       | 2730           |
 -| NVIDIA GeForce RTX 4090 Laptop GPU              | 2757           |
@@ -889,7 +879,6 @@ index 5b154a84..d1d386f2 100644
 -| NVIDIA GeForce RTX 4070 Ti                      | 2782           |
 -| NVIDIA GeForce RTX 4070 SUPER                   | 2783           |
 -| NVIDIA GeForce RTX 4070                         | 2786           |
--| NVIDIA GeForce RTX 4060 Ti                      | 2788           |
 -| NVIDIA GeForce RTX 4080 Laptop GPU              | 27A0           |
 -| NVIDIA RTX 4000 SFF Ada Generation              | 27B0 1028 16FA |
 -| NVIDIA RTX 4000 SFF Ada Generation              | 27B0 103C 16FA |
@@ -912,7 +901,6 @@ index 5b154a84..d1d386f2 100644
 -| NVIDIA RTX 3500 Ada Generation Embedded GPU     | 27FB           |
 -| NVIDIA GeForce RTX 4060 Ti                      | 2803           |
 -| NVIDIA GeForce RTX 4060 Ti                      | 2805           |
--| NVIDIA GeForce RTX 4060                         | 2808           |
 -| NVIDIA GeForce RTX 4070 Laptop GPU              | 2820           |
 -| NVIDIA RTX 3000 Ada Generation Laptop GPU       | 2838           |
 -| NVIDIA GeForce RTX 4070 Laptop GPU              | 2860           |
@@ -921,11 +909,8 @@ index 5b154a84..d1d386f2 100644
 -| NVIDIA GeForce RTX 4050 Laptop GPU              | 28A1           |
 -| NVIDIA RTX 2000 Ada Generation                  | 28B0 1028 1870 |
 -| NVIDIA RTX 2000 Ada Generation                  | 28B0 103C 1870 |
--| NVIDIA RTX 2000E Ada Generation                 | 28B0 103C 1871 |
 -| NVIDIA RTX 2000 Ada Generation                  | 28B0 10DE 1870 |
--| NVIDIA RTX 2000E Ada Generation                 | 28B0 10DE 1871 |
 -| NVIDIA RTX 2000 Ada Generation                  | 28B0 17AA 1870 |
--| NVIDIA RTX 2000E Ada Generation                 | 28B0 17AA 1871 |
 -| NVIDIA RTX 2000 Ada Generation Laptop GPU       | 28B8           |
 -| NVIDIA RTX 1000 Ada Generation Laptop GPU       | 28B9           |
 -| NVIDIA RTX 500 Ada Generation Laptop GPU        | 28BA           |
@@ -1139,7 +1124,7 @@ index 39cc8812..efd4cda8 100644
          (data32 <= NV_REG_STR_RM_FORCE_P2P_TYPE_MAX))
      {
 diff --git a/src/nvidia/src/kernel/gpu/bus/arch/hopper/kern_bus_gh100.c b/src/nvidia/src/kernel/gpu/bus/arch/hopper/kern_bus_gh100.c
-index dcac5b9e..6423745f 100644
+index 17bc6efc..b62a0919 100644
 --- a/src/nvidia/src/kernel/gpu/bus/arch/hopper/kern_bus_gh100.c
 +++ b/src/nvidia/src/kernel/gpu/bus/arch/hopper/kern_bus_gh100.c
 @@ -333,7 +333,7 @@ kbusVerifyBar2_GH100
@@ -1306,10 +1291,10 @@ index d9a04068..8af18d72 100644
  
      return NV_ERR_NOT_SUPPORTED;
 diff --git a/src/nvidia/src/kernel/gpu/bus/p2p_api.c b/src/nvidia/src/kernel/gpu/bus/p2p_api.c
-index 3d6e1bed..59327bba 100644
+index c98befb0..0dafbf1c 100644
 --- a/src/nvidia/src/kernel/gpu/bus/p2p_api.c
 +++ b/src/nvidia/src/kernel/gpu/bus/p2p_api.c
-@@ -575,20 +575,20 @@ p2papiConstruct_IMPL
+@@ -567,20 +567,20 @@ p2papiConstruct_IMPL
          //
          // TODO: This function need to have a cleanup path when this function
          //       fails after kbusCreateP2PMaping(), busBindLocalGfidForP2P()
@@ -1333,7 +1318,7 @@ index 3d6e1bed..59327bba 100644
                                                             pRemoteKernelBus, &egmPeer1, &egmPeer2,
                                                             pP2PApi->attributes |
                                                             DRF_DEF(_P2PAPI, _ATTRIBUTES, _REMOTE_EGM, _YES)));
-@@ -598,14 +598,14 @@ p2papiConstruct_IMPL
+@@ -590,14 +590,14 @@ p2papiConstruct_IMPL
              (pCallContext->secInfo.privLevel >= RS_PRIV_LEVEL_KERNEL))
          {
              NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
@@ -1351,7 +1336,7 @@ index 3d6e1bed..59327bba 100644
                                        &pNv503bAllocParams->p2lBar1P2PDmaInfo.dma_address,
                                        &pNv503bAllocParams->p2lBar1P2PDmaInfo.dma_size));
          }
-@@ -740,7 +740,7 @@ p2papiDestruct_IMPL
+@@ -732,7 +732,7 @@ p2papiDestruct_IMPL
      {
          // remove any resources associated with this mapping
          NV_CHECK_OK_OR_GOTO(status, LEVEL_ERROR,
@@ -1360,9 +1345,9 @@ index 3d6e1bed..59327bba 100644
                                                       pRemoteGpu, pRemoteKernelBus,
                                                       pP2PApi->peerId1, pP2PApi->peerId2,
                                                       pP2PApi->attributes), end);
-@@ -749,7 +749,7 @@ p2papiDestruct_IMPL
-             memmgrIsLocalEgmEnabled(GPU_GET_MEMORY_MANAGER(pRemoteGpu)) &&
-             !GPU_IS_NVSWITCH_DETECTED(pLocalGpu))
+@@ -740,7 +740,7 @@ p2papiDestruct_IMPL
+             memmgrIsLocalEgmEnabled(GPU_GET_MEMORY_MANAGER(pLocalGpu)) &&
+             memmgrIsLocalEgmEnabled(GPU_GET_MEMORY_MANAGER(pRemoteGpu)))
          {
 -            status = kbusRemoveP2PMapping_HAL(pLocalGpu, pLocalKernelBus,
 +            status = kbusRemoveP2PMapping_GH100(pLocalGpu, pLocalKernelBus,
@@ -1370,7 +1355,7 @@ index 3d6e1bed..59327bba 100644
                                                pP2PApi->egmPeerId1, pP2PApi->egmPeerId2,
                                                pP2PApi->attributes |
 diff --git a/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c b/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c
-index a7d5c134..245ca7c5 100644
+index 432e77e7..aee4195b 100644
 --- a/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c
 +++ b/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c
 @@ -3058,7 +3058,8 @@ nvGpuOpsBuildExternalAllocPtes
@@ -1409,8 +1394,8 @@ index a7d5c134..245ca7c5 100644
      {
          FlaMemory* pFlaMemory = dynamicCast(pMemory, FlaMemory);
          nvFieldSet32(&pPteFmt->fldPeerIndex, peerId, pte.v8);
-@@ -3303,7 +3312,7 @@ nvGpuOpsBuildExternalAllocPtes
-                 }
+@@ -3296,7 +3305,7 @@ nvGpuOpsBuildExternalAllocPtes
+                 fabricBaseAddress = knvlinkGetUniqueFabricBaseAddress(pMemDesc->pGpu, pKernelNvlink);
              }
          }
 -    }
@@ -1418,7 +1403,7 @@ index a7d5c134..245ca7c5 100644
  
      //
      // Both memdescGetPhysAddr() and kgmmuEncodePhysAddr() have pretty high overhead.
-@@ -3458,6 +3467,7 @@ NV_STATUS nvGpuOpsGetExternalAllocPtes(struct gpuAddressSpace *vaSpace,
+@@ -3451,6 +3460,7 @@ NV_STATUS nvGpuOpsGetExternalAllocPtes(struct gpuAddressSpace *vaSpace,
      Memory *pMemory = NULL;
      PMEMORY_DESCRIPTOR pMemDesc = NULL;
      OBJGPU *pMappingGpu = NULL;
@@ -1426,7 +1411,7 @@ index a7d5c134..245ca7c5 100644
      NvU32 peerId = 0;
      NvBool isSliSupported = NV_FALSE;
      NvBool isPeerSupported = NV_FALSE;
-@@ -3603,6 +3613,8 @@ NV_STATUS nvGpuOpsGetExternalAllocPtes(struct gpuAddressSpace *vaSpace,
+@@ -3596,6 +3606,8 @@ NV_STATUS nvGpuOpsGetExternalAllocPtes(struct gpuAddressSpace *vaSpace,
                                                         &peerId);
              if (status != NV_OK)
                  goto freeGpaMemdesc;
@@ -1435,7 +1420,7 @@ index a7d5c134..245ca7c5 100644
          }
  
          //
-@@ -3680,7 +3692,7 @@ NV_STATUS nvGpuOpsGetExternalAllocPtes(struct gpuAddressSpace *vaSpace,
+@@ -3673,7 +3685,7 @@ NV_STATUS nvGpuOpsGetExternalAllocPtes(struct gpuAddressSpace *vaSpace,
  
      status = nvGpuOpsBuildExternalAllocPtes(pVAS, pMappingGpu, pAdjustedMemDesc, pMemory, offset, size,
                                              isIndirectPeerSupported, isPeerSupported, peerId,
@@ -1444,7 +1429,7 @@ index a7d5c134..245ca7c5 100644
  
  freeGpaMemdesc:
      if (pAdjustedMemDesc != pMemDesc)
-@@ -9329,7 +9341,7 @@ NV_STATUS nvGpuOpsGetChannelResourcePtes(struct gpuAddressSpace *vaSpace,
+@@ -9322,7 +9334,7 @@ NV_STATUS nvGpuOpsGetChannelResourcePtes(struct gpuAddressSpace *vaSpace,
  
      status = nvGpuOpsBuildExternalAllocPtes(pVAS, pMappingGpu, pMemDesc, NULL,
                                              offset, size, NV_FALSE, NV_FALSE,
