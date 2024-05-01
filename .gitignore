@@ -4,3 +4,4 @@
 *.asar
 *.tar.xz
 *.pkg.tar.zst
+*.tar.gz
