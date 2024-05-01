@@ -1,6 +1,6 @@
 pkgbase = r-hilbertcurve
 	pkgdesc = Making 2D Hilbert Curve
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HilbertCurve
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-hilbertcurve
 	optdepends = r-rcurl
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HilbertCurve_1.32.0.tar.gz
-	sha256sums = c8a23721389fc2d1bd308316740aba1ae546733a3a47c3ecb9f61305c92ea710
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HilbertCurve_1.34.0.tar.gz
+	sha256sums = 4b4103c3c45fe345c194f387bd096cf201ec2a8811788b79177b12a414146a4e
 
 pkgname = r-hilbertcurve
