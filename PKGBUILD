@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone-bin
 _pkgname=Bluestone
-pkgver=0.21.2
+pkgver=0.21.3
 _electronversion=29
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
@@ -21,9 +21,9 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('9ea7640407e1bbb5828f372a5adb073b81cb08697a27abd289f5295f6eb86724')
-sha256sums_x86_64=('53d029fa2c9cc91ce772364458c0eec1c2546ed23d4f58942970f9b958079a6a')
+sha256sums=('61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+sha256sums_aarch64=('bbe535f4aa1688e17cdcf118d64a207315dc99718008ff585992080d89296a91')
+sha256sums_x86_64=('e3ec4183bc947ac7dcd747acd4afc3dd2aad3c50480922162c01a7be4afe47de')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
