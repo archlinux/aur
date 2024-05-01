@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hierinf
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Hierarchical Inference'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2edfb84d30e828e9eda025aab1808863f1c52bd30eb770f007e1c3e765440baa')
+sha256sums=('9c54f7f04e2c0d9249eeb0678345dc80a6873530976dcb5db7e90b5f268fb7f4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
