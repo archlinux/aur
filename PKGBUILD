@@ -4,12 +4,12 @@
 _pypiname=doxytag2zealdb
 pkgname=("python-$_pypiname")
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="create sqlite db for docset from a Doxygen tag file"
 arch=(any)
 url="http://pypi.python.org/pypi/$_pypiname"
 license=('GPLv3')
-depends=('python2' 'python-docopt' 'python-beautifulsoup4')
+depends=('python' 'python-docopt' 'python-beautifulsoup4' 'python-lxml')
 makedepends=('git' 'python-setuptools')
 source=("git+https://gitlab.com/vedvyas/doxytag2zealdb.git#tag=v${pkgver}"
         "0001-fix-newlines-in-setup.patch")
