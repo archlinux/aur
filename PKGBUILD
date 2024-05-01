@@ -1,19 +1,20 @@
 # Maintainer: bilabila <bilabila@qq.com>
 _pkgname=netease-cloud-music-unblock-enhanced
 pkgname=$_pkgname-git
-pkgver=r667.dbb73aa
-pkgrel=2
+pkgver=r1263.d731b75
+pkgrel=1
 pkgdesc='Revive unavailable songs for Netease Cloud Music (Refactored & Enhanced version)'
 arch=(x86_64)
 url=https://github.com/UnblockNeteaseMusic/server
 provides=($_pkgname)
 conflicts=($_pkgname)
 license=(LGPL3)
-depends=(nss nodejs netease-cloud-music)
+depends=(p11-kit nodejs netease-cloud-music)
+optdepends=('yt-dlp: youtube provider')
 source=(git+https://github.com/UnblockNeteaseMusic/server
   netease-cloud-music-unblock-enhanced)
-sha512sums=(SKIP
-  ce4d0bf8a0e4ef86c15b16d98be5281a88afcdb93b2657a21f45d69e6c51316dbf1b297df97da4bc07cd221646b772136b4292cbb2b71e8426399adafeff36b1)
+sha512sums=(SKIP SKIP)
+install=unblock.install
 pkgver() {
   cd server
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
