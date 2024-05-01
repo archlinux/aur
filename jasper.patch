@@ -1,0 +1,37 @@
+diff -Nru DevIL/DevIL/src-IL/src/il_jp2.cpp DevILb/DevIL/src-IL/src/il_jp2.cpp
+--- DevIL/DevIL/src-IL/src/il_jp2.cpp	2017-01-02 01:03:56.000000000 +0100
++++ DevILb/DevIL/src-IL/src/il_jp2.cpp	2022-05-13 09:10:05.934188618 +0200
+@@ -313,14 +313,32 @@
+ }
+ 
+ 
+-
++// Hack to compile against different versions of Jasper which expect
++// slightly different function types for their callbacks.  The defined()
++// checks are just looking for sybols that happen to have arrived around
++// the same time as the API change, so no reason they won't break in the
++// future :-(  Hopefully by the time it does nobody will care about pre-2.0.20
++// versions of jasper
++//
++// see: https://github.com/OSGeo/gdal/commit/9ef8e16e27c5fc4c491debe50bf2b7f3e94ed334
++//      https://github.com/DentonW/DevIL/issues/90
++#if defined(PRIjas_seqent)
++static ssize_t iJp2_file_read(jas_stream_obj_t *obj, char *buf, size_t cnt)
++#else
+ static int iJp2_file_read(jas_stream_obj_t *obj, char *buf, int cnt)
++#endif
+ {
+ 	obj;
+ 	return iread(buf, 1, cnt);
+ }
+ 
++#if defined(JAS_INCLUDE_JP2_CODEC)
++static ssize_t iJp2_file_write(jas_stream_obj_t *obj, const char *buf, size_t cnt)
++#elif defined(PRIjas_seqent)
++static int iJp2_file_write(jas_stream_obj_t *obj, char *buf, unsigned cnt)
++#else
+ static int iJp2_file_write(jas_stream_obj_t *obj, char *buf, int cnt)
++#endif
+ {
+ 	obj;
+ 	return iwrite(buf, 1, cnt);
