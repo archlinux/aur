@@ -25,8 +25,8 @@ index 5f9c04279..b85ec82c7 100644
 +++ b/readconf.c
 @@ -168,7 +168,7 @@ typedef enum {
  	oLocalCommand, oPermitLocalCommand, oRemoteCommand,
- 	oTcpRcvBufPoll, oTcpRcvBuf, oHPNDisabled, oHPNBufferSize,
- 	oNoneEnabled, oNoneMacEnabled, oNoneSwitch, oHPNBufferLimit,
+ 	oTcpRcvBufPoll, oHPNDisabled,
+ 	oNoneEnabled, oNoneMacEnabled, oNoneSwitch,
 -	oMetrics, oMetricsPath, oMetricsInterval, oFallback, oFallbackPort,
 +	oMetrics, oMetricsPath, oMetricsInterval,
  	oVisualHostKey,
@@ -68,14 +68,14 @@ index 5f9c04279..b85ec82c7 100644
  	 * line or not. If it does then enable it otherwise fail.
  	 *  NONE should never be a default configuration.
 @@ -2511,8 +2501,6 @@ initialize_options(Options * options)
+ 	options->metrics_path = NULL;
+ 	options->metrics_interval = -1;
  	options->hpn_disabled = -1;
- 	options->hpn_buffer_size = -1;
- 	options->hpn_buffer_limit = -1;
 -	options->fallback = -1;
 -	options->fallback_port = -1;
  	options->tcp_rcv_buf_poll = -1;
- 	options->tcp_rcv_buf = -1;
  	options->session_type = -1;
+ 	options->stdin_null = -1;
 @@ -2725,10 +2713,6 @@ fill_default_options(Options * options)
  		options->metrics_interval = 5;
  	if (options->control_master == -1)
