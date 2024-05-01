@@ -1,9 +1,9 @@
 # Maintainer: Albert Westra <odyssyewestra@gmail.com>
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
-_basever=2.0.0.master
+_basever=2.0.0.main
 pkgname=libmypaint-git
-pkgver=2.0.0.master.r1042.826069d
+pkgver=2.0.0.main.r1091.032797a
 pkgrel=1
 pkgdesc="A library for making brushstrokes which is used by MyPaint and other projects."
 arch=('i686' 'x86_64')
