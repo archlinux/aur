@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-xmldiff-git
-pkgver=2.5.r2.g27dc2be
-pkgrel=1
+pkgver=2.6.3.r9.g7434865
+pkgrel=3
 pkgdesc='A library and command line utility for diffing xml'
 url='https://github.com/Shoobx/xmldiff'
 license=('MIT')
@@ -12,8 +12,8 @@ depends=(python
          python-six)
 makedepends=(git
              python-setuptools)
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" xmldiff)
+conflicts=("${pkgname%-git}" xmldiff)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
