@@ -1,6 +1,6 @@
 pkgbase = r-graphat
 	pkgdesc = Graph Theoretic Association Tests
-	pkgver = 1.74.0
+	pkgver = 1.76.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GraphAT
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-graphat
 	depends = r
 	depends = r-graph
 	depends = r-mcmcpack
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GraphAT_1.74.0.tar.gz
-	sha256sums = 0e5d6488d4b833cf51f1554989f69dc3ae8eee55efd3b8b232895926b8f9b2e4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GraphAT_1.76.0.tar.gz
+	sha256sums = 6dec5a7751bee9db34d434570fac1d4e97b67710fdadf59058ee348c407bba57
 
 pkgname = r-graphat
