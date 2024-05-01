@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=survcomp
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Performance Assessment and Comparison for Survival Analysis'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('364e6d7e35b0d2ac2a91e4afb7cd0cf977c29ce08616df6676437684f60e48a1')
+sha256sums=('ec79816eed2bd76fc73f0bde33c18b5617d1238313ced0efb02c720650a10d24')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
