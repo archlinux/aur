@@ -11,9 +11,9 @@ arch=('x86_64')
 provide=("xmcl")
 url="https://xmcl.app/"
 license=('MIT')
-depends=('electron27')
-electronDist=/usr/lib/electron27
-electronVersion=$(tail /usr/lib/electron27/version)
+depends=('electron29')
+#electronDist=/usr/lib/electron29
+#electronVersion=$(tail /usr/lib/electron29/version)
 makedepends=('pnpm')
 conflicts=('xmcl-launcher-bin')
 optdepends=('jre8-openjdk: 启动低版本游戏的最低要求'
@@ -26,11 +26,12 @@ source=("git+https://github.com/Voxelum/x-minecraft-launcher.git#tag=v$pkgver"
     xmcl.desktop
     xmcl.png
     xmcl-launcher)
-md5sums=('SKIP'
-         'SKIP'
-         'ef302df83d9a2e867dc94e509ba1e0b2'
-         '8facdbaf84f32aaefff5d6fcdad0b8a8'
-         '0ca353b6f4df117ce040b717f15eada2')
+sha256sums=('b7356494b24dc0119a65d79dab2551dffd3e4539e71327afbffab3429ee1a8a6'
+            'SKIP'
+            '72e17fb1c83deda594cf7c6bf61b45ee31880b86e2d526e9a4b16d2d8b3fc7fa'
+            'c0712f9a3be2bfd2aabc3f11965dc46fc2d5e2652f5431fc6e7fb618d1b45de5'
+            '4c56e72cc6784c4c2d870c307d74e7afa6c13b001bb52f9b255cd82ab709adcb'
+            '9eb2b057c2a3961a0d284262c4954a4988399dda5cdc2a85340eba9dc1decec2')
 #install="$pkgname.install"
 prepare() {
     cd "$srcdir/x-minecraft-launcher"
