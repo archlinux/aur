@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiFET
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Bias-free Footprint Enrichment Test'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('993862728a1d0640d6baabc92167c817c66c7561df96bead2604a74131c5df14')
+sha256sums=('dd6a811893180c852317431ff62aff8883fb023c5e3a9aa8f27f77ae6a201291')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
