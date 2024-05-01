@@ -10,7 +10,7 @@ _deps_gui=('libgtk-4.so' 'libadwaita-1.so')
 
 pkgbase=openscq30
 pkgname=("$pkgbase"-{cli,gui}) 
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Cross platform application for controlling settings of Soundcore headphones"
 arch=(x86_64 aarch64 armv7l)
@@ -20,9 +20,9 @@ groups=("$pkgbase")
 makedepends=('cargo')
 depends=("${_deps_common[@]}" "${_deps_gui[@]}")
 source=("$_pname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('e89f3d54f7c27f6db4305ee127fc916c')
-sha512sums=('3aee765bb6a8db8651c2dea7af7ec53163630cbb17393af0e4acd048681e39ef122e020180519ea9a1d1924d06ceff16bcb74eafec164d5c9ec353b0531cf7dc')
-b2sums=('020c5f8b2b796c2f33bec788c5dcf76a2a9074fa19032459e84920b5d832ea4792f19cb0b21d203c30b9b9443c7389da95bb33f9e125fc651b4ebfb17e19aa61')
+md5sums=('f38a59d617d4f85df363372bc8b4c6c9')
+sha512sums=('1a7dcf6febdfe58fb944071e6dd233cf01285d27605bd71195f00cf03350f1d8961893cbb48225a13358ca7df5f8bf00adeca00cd2db8bb7a99cf1721140de55')
+b2sums=('b290751df2a6a313a3f2d7f99f9404d9e7c42fbcff73251d27e9ae89b2b2ae5958371e5cff98cac0b5c1f701ac8ae646e104103cf3f1efc7837adc661a03deed')
 
 prepare() {
 	cd "$srcdir/$_pname-$pkgver"
@@ -74,8 +74,8 @@ package_openscq30-gui() {
 	## Install locales
 	# shellcheck disable=SC2013
 	for _l in '' $(cat 'gui/po/LINGUAS'); do
-		_ext="${_l:+'po'}"
-		_ext="${_ext:-'pot'}"
+		_ext="${_l:+po}"
+		_ext="${_ext:-pot}"
 		install -dm0755 "$pkgdir/usr/share/locale/${_l:-en}/LC_MESSAGES"
 		msgfmt --output-file "$pkgdir/usr/share/locale/${_l:-en}/LC_MESSAGES/$_pkgid.mo" "gui/po/$_l${_l:+/}$_pkgid.$_ext"
 		chmod 0644 "$pkgdir/usr/share/locale/${_l:-en}/LC_MESSAGES/$_pkgid.mo"
