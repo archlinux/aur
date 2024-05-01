@@ -1,5 +1,5 @@
 [Unit]
-Description=Matrix-WhatsApp puppeting bridge
+Description=Matrix-meta (Facebook, Instagram) puppeting bridge
 After=network-online.target
 Requires=network-online.target
 
