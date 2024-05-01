@@ -1,0 +1,22 @@
+pkgbase = android-aarch64-mpfr
+	pkgdesc = Multiple-precision floating-point library (Android aarch64)
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = https://www.mpfr.org/
+	arch = any
+	license = GPL-3.0-or-later
+	license = LGPL-3.0-or-later
+	makedepends = android-configure
+	depends = android-aarch64-gmp
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.1.tar.xz
+	source = https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.1.tar.xz.sig
+	validpgpkeys = 07F3DBBECC1A39605078094D980C197698C3739D
+	validpgpkeys = A534BE3F83E241D918280AEB5831D11A0D4DB02A
+	md5sums = 523c50c6318dde6f9dc523bc0244690a
+	md5sums = SKIP
+
+pkgname = android-aarch64-mpfr
