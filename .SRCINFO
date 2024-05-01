@@ -1,7 +1,7 @@
 pkgbase = eww-x11
 	pkgdesc = A standalone widget system for X11 made in Rust.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elkowar/eww
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = eww-x11
 	depends = libdbusmenu-glib
 	depends = libdbusmenu-gtk3
 	provides = eww
-	conflicts = eww-git
 	conflicts = eww
 	source = eww-x11-0.6.0.tar.gz::https://github.com/elkowar/eww/archive/refs/tags/v0.6.0.tar.gz
 	sha256sums = cef361946946c566b79f8ddc6208d1a3f16b4ff9961439a3f86935e1cfa174a1
