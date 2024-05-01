@@ -1,35 +1,33 @@
-# Maintainer: Jaryl Chng <mrciku@gmail.com>
-pkgname=libewf-git
-pkgver=20161109.11a3f476
-pkgrel=1
-pkgdesc='Library to access the Expert Witness Compression Format (EWF)'
-arch=('any')
-url='https://github.com/libyal/libewf'
-license=('LGPL')
-provides=('libewf-git')
-conflicts=('libewf')
-groups=()
-depends=()
-makedepends=('git' 'autoconf' 'automake' 'libtool' 'gettext' 'pkg-config' 'bison' 'flex')
-optdepends=()
-options=()
-source=('git+https://github.com/libyal/libewf.git')
-sha1sums=('SKIP')
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Jaryl Chng <mrciku@gmail.com>
 
-_gitname="libewf"
+pkgname=libewf-git
+pkgver=20231119.r3.gf5aa2e2
+pkgrel=1
+pkgdesc="Library to access the Expert Witness Compression Format (EWF)"
+arch=(x86_64)
+url="https://github.com/libyal/libewf"
+license=(LGPL)
+depends=(bzip2 fuse2 openssl zlib glibc)
+makedepends=(git)
+provides=(libewf)
+conflicts=(libewf)
+source=("git+https://github.com/libyal/libewf.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+  cd "libewf"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "libewf"
+  ./synclibs.sh
+  ./autogen.sh
 }
 
 build() {
-  cd "$_gitname"
-
-  ./synclibs.sh
-  sed -i '/ewftools/d' Makefile.am
-  sed -i '/ewftools/d' configure.ac
-  ./autogen.sh
+  cd "libewf"
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc
@@ -38,6 +36,6 @@ build() {
 }
 
 package() {
-  cd "$_gitname"
+  cd "libewf"
   make DESTDIR="$pkgdir/" install
 }
