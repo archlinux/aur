@@ -1,0 +1,19 @@
+pkgbase = python-stemu
+	pkgdesc = s(t) emulation of smooth functions by stacking
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/handley-lab/stemu
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-pandas
+	provides = stemu
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/s/stemu/stemu-0.0.1.tar.gz
+	sha256sums = 1fb91b258b54d330e0d55e92c00408270ea2ae56509c0de6a86d93d5a2575db3
+
+pkgname = python-stemu
