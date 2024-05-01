@@ -1,0 +1,22 @@
+From eaaf84c07804acddafe4a7f8016a06c900e9db61 Mon Sep 17 00:00:00 2001
+From: Giovanni Tirloni <gtirloni@tight-ship.net>
+Date: Mon, 8 Apr 2024 12:26:39 -0300
+Subject: [PATCH] Add support for GNOME 46
+
+---
+ src/metadata.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/metadata.json b/src/metadata.json
+index 32de04c..1f2b98c 100644
+--- a/src/metadata.json
++++ b/src/metadata.json
+@@ -3,7 +3,7 @@
+   "name": "gSnap",
+   "description": "Organize windows in customizable snap zones like FancyZones on Windows.",
+   "version": 17,
+-  "shell-version": ["45"],
++  "shell-version": ["45", "46"],
+   "url": "https://github.com/GnomeSnapExtensions/gSnap",
+   "settings-schema": "org.gnome.shell.extensions.gsnap",
+   "gettext-domain": "gsnap@micahosborne"
