@@ -1,10 +1,10 @@
 # Maintainer: Gergely Meszaros <maetveis@gmail.com>
-# Contribute at https://github.com/Maetveis/aur-packages
+# Contribute at https://gitlab.com/Maetveis/aur-packages
 
 _name='activitywatch'
 pkgname="$_name-git"
-pkgver=0.12.3b13.r0.g18b01d9
-pkgrel=3
+pkgver=0.12.3b16.r3.g5b75e58
+pkgrel=1
 pkgdesc='Log what you do on your computer. Simple, extensible, no third parties.'
 arch=('x86_64')
 url="https://github.com/ActivityWatch/$_name"
@@ -27,7 +27,7 @@ depends=(
   'python-tabulate'
   'python-timeslot' # AUR
   'python-tomlkit'
-  'python-typing-extensions'
+  'python-typing_extensions'
   'python-werkzeug'
   'python-xlib'
   'python'
