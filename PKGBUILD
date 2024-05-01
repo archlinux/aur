@@ -2,7 +2,7 @@
 _pkgname=netease-cloud-music-unblock-enhanced
 pkgname=$_pkgname-git
 pkgver=r1263.d731b75
-pkgrel=1
+pkgrel=4
 pkgdesc='Revive unavailable songs for Netease Cloud Music (Refactored & Enhanced version)'
 arch=(x86_64)
 url=https://github.com/UnblockNeteaseMusic/server

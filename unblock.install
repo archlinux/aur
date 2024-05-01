@@ -2,4 +2,7 @@ post_upgrade() {
   echo "==> install certificates"
   trust anchor --store /usr/share/netease-cloud-music-unblock-enhanced/ca.crt
 }
+post_install() {
+  post_upgrade
+}
 
