@@ -1,6 +1,6 @@
 pkgbase = novel-cli
 	pkgdesc = tool for downloading novels from the web, manipulating text, and generating EPUBs
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://github.com/novel-rs/cli
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = novel-cli
 	depends = glibc
 	depends = opencc
 	options = !lto
-	source = https://github.com/novel-rs/cli/archive/0.7.6/cli-0.7.6.tar.gz
-	sha256sums = db4a0cb8911732c37fde9982c5f6d4e862ebb6a8ea28da3514c6bb7cebb20c6a
+	source = https://github.com/novel-rs/cli/archive/0.7.7/cli-0.7.7.tar.gz
+	sha256sums = c8b192f3f330f219717034f95cef701e2841c81ea82b20c713149021262a5a62
 
 pkgname = novel-cli

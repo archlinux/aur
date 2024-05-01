@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=novel-cli
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc='tool for downloading novels from the web, manipulating text, and generating EPUBs'
 arch=(x86_64)
@@ -19,7 +19,7 @@ checkdepends=(mdbook
 options=(!lto)
 _archive="cli-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('db4a0cb8911732c37fde9982c5f6d4e862ebb6a8ea28da3514c6bb7cebb20c6a')
+sha256sums=('c8b192f3f330f219717034f95cef701e2841c81ea82b20c713149021262a5a62')
 
 prepare() {
 	cd "$_archive"
