@@ -14,6 +14,9 @@ makedepends=('make' 'asciidoctor')
 depends=('python3')
 source=("autodafe-git::git+https://gitlab.com/esr/autodafe")
 sha256sums=('SKIP')
+docs=('NEWS' 'README' 'TODO' 'de-autoconfiscation' 'configure')
+htmldocs=('NEWS.html' 'README.html' 'TODO.html' 'de-autoconfiscation.html' 'deconfig.html' 'configure.html' 'makemake.html')
+
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -25,6 +28,9 @@ build() {
   make all
   make configure.1
   make deconfig.1
+  for i in ${docs[@]}; do
+    asciidoctor $i.adoc
+  done
 }
 
 package() {  
@@ -34,5 +40,8 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}"/configure.1 "${pkgdir}"/usr/share/man/man1/configure.1
   install -Dm755 "${srcdir}/${pkgname}"/deconfig "${pkgdir}"/usr/bin/deconfig
   install -Dm644 "${srcdir}/${pkgname}"/deconfig.1 "${pkgdir}"/usr/share/man/man1/deconfig.1
+  for i in ${htmldocs[@]}; do
+    install -Dm644 "${srcdir}/${pkgname}"/$i "${pkgdir}"/usr/share/doc/${pkgname}/$i 
+  done
 }
 
