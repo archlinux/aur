@@ -1,6 +1,7 @@
 /pkg
 /src
-
+/minecraft-launcher-core-node
+/x-minecraft-launcher
 *.asar
 *.tar.xz
 *.pkg.tar.zst
