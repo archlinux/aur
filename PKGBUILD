@@ -3,12 +3,12 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.10.10.r2.ga97f5141
+pkgver=2.11.8.r0.gfd5df122
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('AGPL')
 depends=('ffmpeg' 'libappindicator-gtk3' 'libvips')
-makedepends=('git' 'node-gyp' 'nodejs-lts-hydrogen')
+makedepends=('git' 'node-gyp' 'nodejs-lts-hydrogen' 'python-setuptools')
 optdepends=('mongodb: Provides storage'
             'redis: Provides storage')
 arch=('aarch64' 'x86_64' 'i686')
@@ -89,7 +89,6 @@ package_icalingua++-electron-git(){
         "*")
             _arch="-${CARCH}-";;
     esac
-    mkdir -p "${pkgdir}/usr/share/icalingua"
     mkdir -p "${pkgdir}/usr/bin"
     cd "${srcdir}/Icalingua/icalingua/build/linux${_arch}unpacked"
     install -Dm644 "resources/app.asar" "${pkgdir}/usr/lib/icalingua/icalingua.asar"
