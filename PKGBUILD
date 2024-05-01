@@ -2,7 +2,7 @@
 
 pkgname=polly
 pkgver=17.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="High-level loop and data-locality optimizer and optimization infrastructure for LLVM"
 arch=('x86_64')
 url="https://polly.llvm.org/"
