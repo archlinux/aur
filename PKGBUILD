@@ -31,7 +31,7 @@ sha256sums=('b7356494b24dc0119a65d79dab2551dffd3e4539e71327afbffab3429ee1a8a6'
             '72e17fb1c83deda594cf7c6bf61b45ee31880b86e2d526e9a4b16d2d8b3fc7fa'
             'c0712f9a3be2bfd2aabc3f11965dc46fc2d5e2652f5431fc6e7fb618d1b45de5'
             '4c56e72cc6784c4c2d870c307d74e7afa6c13b001bb52f9b255cd82ab709adcb'
-            '9eb2b057c2a3961a0d284262c4954a4988399dda5cdc2a85340eba9dc1decec2')
+            'b6d56ce25d2ce5163253e0ff7c159849d3ecbfad4a9d3d809dcdd2522b3c7007')
 #install="$pkgname.install"
 prepare() {
     cd "$srcdir/x-minecraft-launcher"
