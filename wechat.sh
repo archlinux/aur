@@ -156,6 +156,8 @@ function execApp() {
 			"${XDG_RUNTIME_DIR}/.flatpak-info" \
 		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \
 			/.flatpak-info \
+		--ro-bind-try /run/systemd/resolve/stub-resolv.conf \
+			/run/systemd/resolve/stub-resolv.conf \
 		--dir "${XDG_DOCUMENTS_DIR}" \
 		${bwCamPar} \
 		--setenv QT_QPA_PLATFORM xcb \
@@ -244,10 +246,14 @@ function launch() {
 	inputMethod
 	moeDect
 	#lnDir
-	if [[ $@ =~ "debug-shell" ]] && [[ $@ =~ "--actions" ]]; then
+	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "debug-shell" ]]; then
 		launchTarget="bash"
 	else
 		launchTarget="/opt/wechat-uos-qt/files/wechat"
+	fi
+	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "gamescope" ]]; then
+		export QT_SCREEN_SCALE_FACTOR=2
+		launchTarget="gamescope -m 1 --mangoapp -- /opt/wechat-uos-qt/files/wechat"
 	fi
 	if [[ ${trashAppUnsafe} = 1 ]]; then
 		echo "Launching WeChat UOS (unsafe)..."
