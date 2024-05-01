@@ -1,7 +1,7 @@
 # Maintainer: Adiee5 <adiee5@adiee5.ct8.pl>
 pkgname=prog8
 pkgver=10.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A high-level programming language designed for 6502 based devices"
 arch=("any")
 url="https://github.com/irmen/prog8"
@@ -19,10 +19,12 @@ source=("prog8c-$pkgver.jar::https://github.com/irmen/prog8/releases/download/v$
 	"https://raw.githubusercontent.com/irmen/prog8/master/LICENSE"
 	"https://raw.githubusercontent.com/irmen/prog8/master/syntax-files/nano/prog8.nanorc"
 	"https://raw.githubusercontent.com/irmen/prog8/master/syntax-files/Vim/prog8.vim"
-	"https://raw.githubusercontent.com/irmen/prog8/master/syntax-files/Vim/prog8_builtins.vim")
+	"https://raw.githubusercontent.com/irmen/prog8/master/syntax-files/Vim/prog8_builtins.vim"
+	"prog8c_var_init")
 noextract=("prog8c.jar")
 sha256sums=("9ddc158f806349334061ab8c0ccc7d472656b15382bf412341428f375b09fe6a"
 	    "c5b390a611ce778d8e22b6a2f626d273d424889c1ee7ce5454c66bce35aa888c"
+	    "SKIP"
 	    "SKIP"
 	    "SKIP"
 	    "SKIP"
@@ -38,5 +40,5 @@ package() {
 	install -Dm644 prog8_detect.vim "$pkgdir/usr/share/vim/vimfiles/ftdetect/prog8.vim"
 	install -Dm644 prog8.vim "$pkgdir/usr/share/vim/vimfiles/syntax/prog8.vim"
 	install -Dm644 prog8_builtins.vim "$pkgdir/usr/share/vim/vimfiles/syntax/prog8_builtins.vim"
-	
+	install -Dm644 prog8c_var_init "$pkgdir/etc/profile.d/prog8.sh"
 }

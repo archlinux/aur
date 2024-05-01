@@ -1,0 +1,2 @@
+# Initialize a $PROG8C variaable, that can be used by programs to interract with the compiler jar file
+export PROG8C=/usr/share/java/prog8/prog8c.jar
