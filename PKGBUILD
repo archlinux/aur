@@ -3,8 +3,8 @@
 
 _gemname="sup"
 pkgname="${_gemname}"
-pkgver=1.1
-pkgrel=1
+pkgver=1.2
+pkgrel=2
 pkgdesc='Console-based email client for people with a lot of email. Great mutt alternative.'
 arch=('any')
 url='http://sup-heliotrope.github.io/'
@@ -30,7 +30,7 @@ optdepends=(
 conflicts=('sup-git')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-b2sums=('a43e54efbc1a92d04f7ba924ad5cc442542201d4c450c5d2b36e20b9d4efc3c77a38a38dcc3470a739914d15f0f747f4068b81f6e3be0347286c8762ddd6b24d')
+b2sums=('2ec78cfd84973671759479a9197355903e881ef5f1324c9946b785711eeff1fce3a2dbea993dedf90d0b37dad95fa07051d627e587515e9c54193206eabcb14e')
 
 package() {
   cd "$srcdir"
