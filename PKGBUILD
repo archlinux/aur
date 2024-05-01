@@ -1,9 +1,21 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-# To install a specific SickChill release:
-# - comment out pkgver()
-# - set the release number in variable pkgver: pkgver=<release>
-# - set the release number at the end of the "pip install" line: change sickchill to sickchill==<release>
+# This package installs the latest SickChill release
+
+# To install another SickChill release:
+# - Comment out pkgver()
+# - Set the release in variable pkgver: pkgver=<release>
+# - Set the same release number at the end of the "pip install" line,
+#   by changing "sickchill" to "sickchill==$pkgver"
+#
+# To install the latest commit:
+# - Comment out pkgver()
+# - Set some descriptive label in variable pkgver: pkgver=latest
+# - Change "sickchill" to "git+https://github.com/SickChill/sickchill.git"
+#   to install the latest from the default branch
+# - Or change "sickchill" to "git+https://github.com/SickChill/sickchill.git@develop"
+#   to install the latest from the 'develop' branch
+# )
 
 # This "PIP install" package is similar to a VCS package:
 # it has a pkgver() function and a reinstall updates the package.
