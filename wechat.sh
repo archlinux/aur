@@ -253,7 +253,7 @@ function launch() {
 	fi
 	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "gamescope" ]]; then
 		export QT_SCREEN_SCALE_FACTOR=2
-		launchTarget="gamescope -m 1 --mangoapp -- /opt/wechat-uos-qt/files/wechat"
+		launchTarget="gamescope -m 1 -S integer -- /opt/wechat-uos-qt/files/wechat"
 	fi
 	if [[ ${trashAppUnsafe} = 1 ]]; then
 		echo "Launching WeChat UOS (unsafe)..."
