@@ -1,4 +1,5 @@
-# Maintainer: BryanLiang <liangrui.ch@gmail.com>
+# Maintainer: Harryhaha <harry_haha@foxmail.com>
+# Contributor: BryanLiang <liangrui.ch@gmail.com>
 
 pkgname=go-musicfox-bin
 _pkgname=go-musicfox
