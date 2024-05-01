@@ -48,7 +48,6 @@ depends=(
   xorg-xinput
   xorg-xwayland
 )
-depends+=(libdisplay-info.so)
 makedepends=(
   cmake
   gdb

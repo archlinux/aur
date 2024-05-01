@@ -49,7 +49,6 @@ pkgbase = hyprland-displaylink-git
 	depends = xcb-util-wm
 	depends = xorg-xinput
 	depends = xorg-xwayland
-	depends = libdisplay-info.so
 	provides = hyprland
 	conflicts = hyprland
 	options = !makeflags
