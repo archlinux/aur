@@ -2,8 +2,8 @@
 pkgbase="battery_status_rs"
 pkgname=("battery_status_rs_notification"
          "battery_status_rs_sleep")
-pkgver="3.0.0"
-pkgrel="2"
+pkgver="3.1.0"
+pkgrel="1"
 pkgdesc="A utility to watch the battery level."
 arch=('any')
 depends=('systemd')
