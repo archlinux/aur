@@ -1,54 +1,71 @@
-# Contributor: David Runge <dave@sleepmap.de>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Arnaud Taffanel <dev@taffanel.org>
 # Contributor: Victor Häggqvist <aur a snilius d com>
 
 pkgname=solaar-git
-pkgver=1.1.12.r2.g74e126e0
+pkgver=1.1.12.r3.g704a8769
 pkgrel=1
-pkgdesc="Device manager for Logitech's Unifying receiver peripherals"
+pkgdesc="Linux device manager for a wide range of Logitech devices"
 url="https://pwr-solaar.github.io/Solaar/"
-license=('GPL2')
-arch=('any')
+_url="https://github.com/pwr-Solaar/Solaar"
+license=(GPL-2.0-or-later)
+arch=(any)
+depends=(
+  glib2
+  gobject-introspection-runtime
+  gtk3
+  hicolor-icon-theme
+  libnotify
+  python
+  python-dbus
+  python-evdev
+  python-gobject
+  python-psutil
+  python-pyudev
+  python-xlib
+  python-yaml
+)
+makedepends=(
+  git
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+optdepends=('libayatana-appindicator: Display tray icon')
+
 provides=("solaar" "python-hid-parser")
 conflicts=("solaar" "python-hid-parser")
 replaces=("python-hid-parser")
-depends=(
-  'gtk3'
-  'libnotify'
-  'python-dbus'
-  'python-gobject'
-  'python-pyudev'
-  'python-yaml'
-  'python-xlib'
-  'python-psutil'
-  'python-evdev'
+
+source=(
+  "${pkgname}::git+https://github.com/pwr-Solaar/Solaar.git"
 )
-optdepends=('libappindicator-gtk3: tray icon support')
-makedepends=('git' 'python-setuptools' 'python-build' 'python-installer')
-source=("${pkgname}::git+https://github.com/pwr-Solaar/Solaar.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd $pkgname
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd $pkgname
+  tools/po-compile.sh
+}
+
 build() {
-  cd "${pkgname}"
+  cd $pkgname
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${pkgname}"
-
-  tools/po-compile.sh
+  cd $pkgname
   python -m installer --destdir="$pkgdir" dist/*.whl
-  
+
   # udev
-  install -vDm 644 rules.d/42-logitech-unify-permissions.rules \
-    "${pkgdir}/usr/lib/udev/rules.d/42-logitech-unify-permissions.rules"
+  rm -rf "$pkgdir/etc"
+  install -vDm 644 rules.d/42-logitech-unify-permissions.rules -t "$pkgdir/usr/lib/udev/rules.d/"
   # docs
-  install -vDm 644 {CHANGELOG.md,README.md} \
-    -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -vDm 644 {CHANGELOG,README}.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 # vim:set ts=2 sw=2 et:
