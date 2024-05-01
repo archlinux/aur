@@ -1,4 +1,4 @@
-pkgbase = autodafe
+pkgbase = autodafe-git
 	pkgdesc = Tools for converting an autotools recipe to a plain Makefile.
 	pkgver = 0.5.r16.gc03993c
 	pkgrel = 1
