@@ -2,7 +2,7 @@
 
 pkgname=shm-format
 pkgrel=1
-pkgver=1.0.0
+pkgver=2.0.0
 pkgdesc="Read values with specified data type from shared memory."
 url="https://github.com/SHMModbus/shm_format"
 license=('GPL-3.0-only')
