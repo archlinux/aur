@@ -4,7 +4,7 @@
 
 pkgname=jack-matchmaker
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to auto-connect JACK ports matching given patterns'
 arch=(any)
 url='https://github.com/SpotlightKid/jack-matchmaker'
