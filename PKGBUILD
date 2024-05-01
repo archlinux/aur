@@ -2,7 +2,7 @@
 pkgname=python-kintree
 _name=${pkgname#python-}
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast part creation in KiCad and InvenTree"
 url="https://github.com/sparkmicro/Ki-nTree"
 depends=(
@@ -30,12 +30,12 @@ sha256sums=('b68d7b013e0cddd5bf0f69a475b1cf11bd7d789588dfe203e0af7d1f57f90536'
 
 build() {
     cd "$srcdir/$_name-$pkgver"
-    python -m build --wheel --no-isolation
+    python3.11 -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python3.11 -m installer --destdir="$pkgdir" dist/*.whl
     chmod 777 -R $pkgdir
 
     # Desktop file
