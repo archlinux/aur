@@ -1,0 +1,20 @@
+pkgbase = stmviewer
+	pkgdesc = Real-time STM32 variable & trace viewer.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/klonyyy/STMViewer
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	depends = libusb
+	depends = glfw
+	depends = glib2
+	depends = gtk3
+	depends = glibc
+	depends = libgl
+	depends = gcc-libs
+	depends = gdb>=12.1
+	source = stmviewer-0.4.0::git+https://github.com/klonyyy/STMViewer.git#tag=v0.4.0
+	sha256sums = SKIP
+
+pkgname = stmviewer

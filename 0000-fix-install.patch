@@ -1,0 +1,69 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 78fa3a1..0a51448 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,6 +18,8 @@ endif()
+ 
+ project(STMViewer)
+ 
++include(GNUInstallDirs)
++
+ set(STMVIEWER_VERSION 0.4.0)
+ 
+ set(CMAKE_BUILD_TYPE Release)
+@@ -67,7 +69,7 @@ if(UNIX)
+     find_package(glfw3 REQUIRED)
+     set(STLINK_LINUX ${CMAKE_CURRENT_SOURCE_DIR}/third_party/stlink/lib/linux/libstlink.a)
+     set(INSTALL_PATH /usr/local/STMViewer)
+-    set(DESKTOP_FILE_PATH /usr/share/applications)
++    set(DESKTOP_FILE_PATH ${CMAKE_INSTALL_DATADIR}/applications)
+ endif()
+ 
+ if(WIN32)
+@@ -195,9 +197,9 @@ add_custom_command(TARGET ${EXECUTABLE} POST_BUILD
+     ${CMAKE_CURRENT_SOURCE_DIR}/imgui.ini
+     ${CMAKE_BINARY_DIR}/imgui.ini)
+ 
+-install(TARGETS ${EXECUTABLE} RUNTIME DESTINATION ${INSTALL_PATH} COMPONENT applications)
+-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/imgui.ini DESTINATION ${INSTALL_PATH})
+-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/third_party/stlink/chips DESTINATION ${INSTALL_PATH})
++install(TARGETS ${EXECUTABLE} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT applications)
++install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/imgui.ini DESTINATION ${CMAKE_INSTALL_DATADIR}/STMViewer)
++install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/third_party/stlink/chips DESTINATION ${CMAKE_INSTALL_DATADIR}/STMViewer)
+ 
+ if(WIN32)
+     if(PRODUCTION)
+@@ -215,8 +217,9 @@ if(WIN32)
+ endif()
+ 
+ if(UNIX)
+-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/launch/icon.png DESTINATION ${INSTALL_PATH})
+-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/launch/STMViewer.desktop
++    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/launch/icon.png DESTINATION ${CMAKE_INSTALL_DATADIR}/STMViewer)
++    configure_file(launch/STMViewer.desktop STMViewer.desktop )
++    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/STMViewer.desktop
+         PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+         DESTINATION ${DESKTOP_FILE_PATH})
+     set(CPACK_GENERATOR "DEB;RPM")
+@@ -235,4 +238,4 @@ set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
+ set(CPACK_NSIS_MODIFY_PATH ON)
+ set(CPACK_ALL_INSTALL_TYPES Full Developer)
+ set(CPACK_COMPONENT_APPLICATIONS_INSTALL_TYPES Full)
+-include(CPack)
+\ No newline at end of file
++include(CPack)
+diff --git a/launch/STMViewer.desktop b/launch/STMViewer.desktop
+index 8ce042b..6abab34 100644
+--- a/launch/STMViewer.desktop
++++ b/launch/STMViewer.desktop
+@@ -3,7 +3,7 @@ Version=1.0
+ Encoding=UTF-8
+ Type=Application
+ Name=STMViewer
+-Path=/usr/local/STMViewer
+-Icon=/usr/local/STMViewer/icon.png
+-Exec=/usr/local/STMViewer/STMViewer
++Path=@CMAKE_INSTALL_FULL_DATADIR@/STMViewer
++Icon=@CMAKE_INSTALL_FULL_DATADIR@/STMViewer/icon.png
++Exec=@CMAKE_INSTALL_FULL_BINDIR@/STMViewer
+ Categories=Development;
