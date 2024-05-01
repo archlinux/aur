@@ -4,7 +4,8 @@
 # Contributor: Vitaliy Berdinskikh <skipper13@root.ua>
 
 pkgname=libxmlrpc
-pkgver=1.59.02 # latest "super stable" release from https://t.ly/6IEne
+# latest release from https://sourceforge.net/projects/xmlrpc-c/files/Xmlrpc-c%20Super%20Stable/
+pkgver=1.59.03
 pkgrel=1
 epoch=1
 pkgdesc='XML-RPC for C and C++'
@@ -18,7 +19,7 @@ provides=(xmlrpc-c)
 replaces=(xmlrpc-c)
 options=(!emptydirs)
 source=("https://downloads.sourceforge.net/project/xmlrpc-c/Xmlrpc-c%20Super%20Stable/$pkgver/xmlrpc-c-$pkgver.tgz")
-b2sums=('08b0756792c9b89607a601136cdbc0720ed180b0c793ee69bb9f93445f95a3dbad490a78d4fce3109f11878950f7f017f308cee0932c2e6bc40ba05d155eeab6')
+b2sums=('7a8d2ea19fe698538747d8b5735eb3247dec0c0ef87204cdec3a2aa051581e2d23b1a7b41673ff422c69474c5a4f24243945d5474c30beafc59235bc60c2cad5')
 
 build() {
   cd xmlrpc-c-$pkgver
