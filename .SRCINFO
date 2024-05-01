@@ -1,0 +1,24 @@
+pkgbase = plasma6-runners-symbols-git
+	pkgdesc = A little krunner plugin (Plasma 6) to retrieve unicode symbols, or any other string, based on a corresponding keyword
+	pkgver = r138.0a086d2
+	pkgrel = 1
+	url = https://github.com/Kishore96in/krunner-symbols
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	makedepends = jq
+	depends = krunner
+	depends = qt6-base
+	depends = ki18n
+	depends = qt6-5compat
+	depends = qt6-declarative
+	depends = ktextwidgets
+	depends = libplasma
+	provides = plasma6-runners-symbols
+	conflicts = plasma6-runners-symbols
+	source = git+https://github.com/Kishore96in/krunner-symbols#branch=port_kf6
+	sha256sums = SKIP
+
+pkgname = plasma6-runners-symbols-git
