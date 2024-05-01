@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowMerge
-_pkgver=2.50.0
+_pkgver=2.52.0
 pkgname=r-${_pkgname,,}
-pkgver=2.50.0
+pkgver=2.52.0
 pkgrel=1
 pkgdesc='Cluster Merging for Flow Cytometry Data'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cbd7a2e4ffdac86fb0fe36fa1f9b5adb277fd882a8fb3ea793031546f1dd6701')
+sha256sums=('ddbb80ed0ac59917d6be9e987ad397880500be087cd9017ab2206a39642dc7fc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
