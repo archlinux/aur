@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!wiki-js.service
+!wiki-js.sysusers.d
+!wiki-js.tmpfiles.d
+!config.sample.yml.patch
