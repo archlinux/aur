@@ -1,10 +1,10 @@
 # shellcheck shell=bash disable=SC2034 disable=SC2154
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
-pkgname=aw87xxx-acf-firmware
+pkgname=aw87559-firmware
 pkgver=8.0.1.10
 pkgrel=1
-pkgdesc='Firmware for Awinic aw87xx audio devices (extracted from Ayaneo Windows drivers)'
+pkgdesc='Firmware for Awinic aw87559 audio device (extracted from Ayaneo Windows drivers)'
 arch=('x86_64')
 license=('unknown')
 _archive_name="AYANEO_AIR_1S"
@@ -18,5 +18,8 @@ sha256sums=(
 package() {
 	install -Dm644 \
 		"$srcdir/$_archive_name/05_Audio/AW87XXX_Driver_X64_Windows_V$pkgver/Driver/Signed/awinic_smartk_acf.bin" \
+		"$pkgdir/usr/lib/firmware/aw87559/windows-bin/awinic_smartk_acf.bin"
+	ln -sfT \
+		'/usr/lib/firmware/aw87559/windows-bin/awinic_smartk_acf.bin' \
 		"$pkgdir/usr/lib/firmware/aw87xxx_acf.bin"
 }

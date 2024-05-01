@@ -1,5 +1,5 @@
-pkgbase = aw87xxx-acf-firmware
-	pkgdesc = Firmware for Awinic aw87xx audio devices (extracted from Ayaneo Windows drivers)
+pkgbase = aw87559-firmware
+	pkgdesc = Firmware for Awinic aw87559 audio device (extracted from Ayaneo Windows drivers)
 	pkgver = 8.0.1.10
 	pkgrel = 1
 	arch = x86_64
@@ -7,4 +7,4 @@ pkgbase = aw87xxx-acf-firmware
 	source = AYANEO_AIR_1S.rar::https://drive.usercontent.google.com/download?id=1b-GBkKwBTkE_LvY9XR4PEatS4F3IeeZU&confirm=xxx
 	sha256sums = 0ffd4472878044fb4d68ea62613a79c3384f42d2cba58241ebfbf1d0072de011
 
-pkgname = aw87xxx-acf-firmware
+pkgname = aw87559-firmware
