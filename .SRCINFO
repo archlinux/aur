@@ -1,0 +1,17 @@
+pkgbase = android-x86-zimg
+	pkgdesc = Scaling, colorspace conversion, and dithering library (Android x86)
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = https://github.com/sekrit-twc/zimg
+	arch = any
+	license = custom:WTFPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/sekrit-twc/zimg/archive/refs/tags/release-3.0.5.tar.gz
+	md5sums = af2c08cc0e695f4c0c225feed14e9f20
+
+pkgname = android-x86-zimg
