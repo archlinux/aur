@@ -1,7 +1,7 @@
 pkgbase = r-genie3
 	pkgdesc = GEne Network Inference with Ensemble of trees
-	pkgver = 1.24.0
-	pkgrel = 3
+	pkgver = 1.26.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/GENIE3
 	arch = x86_64
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = r-genie3
 	optdepends = r-rmarkdown
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GENIE3_1.24.0.tar.gz
-	sha256sums = 13188afc7c87e60c6b2b10617ea28f9bd47f452a62890c1fa6ea6106316a512f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GENIE3_1.26.0.tar.gz
+	sha256sums = 8f05b94ed052fe11b177919276095c88a4e8071b868d2344d10a2b2d48f75c46
 
 pkgname = r-genie3
