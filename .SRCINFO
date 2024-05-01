@@ -1,6 +1,6 @@
 pkgbase = nrf-command-line-tools-bin
 	pkgdesc = The nRF Command Line Tools is used for development, programming and debugging of Nordic Semiconductor's nRF51, nRF52, nRF53 and nRF91 Series devices.
-	pkgver = 10.24.1
+	pkgver = 10.24.2
 	pkgrel = 0
 	url = https://www.nordicsemi.com/Products/Development-tools/nrf-command-line-tools/download
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = nrf-command-line-tools-bin
 	optdepends = nrf-udev: udev rules for nRF (Nordic Semiconductor) development kits
 	optdepends = pc-nrfconnect-programmer: Programmer app for nRF Connect for Desktop
 	options = !strip
-	source_x86_64 = nrf-command-line-tools-10.24.1_linux-amd64.tar.gz::https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-24-1/nrf-command-line-tools-10.24.1_linux-amd64.tar.gz
-	sha256sums_x86_64 = 764592e87da331021777e89fefe5f799894c01eb27aaca59f2368b0d3ee90a19
-	source_aarch64 = nrf-command-line-tools-10.24.1_linux-arm64.tar.gz::https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-24-1/nrf-command-line-tools-10.24.1_linux-arm64.tar.gz
-	sha256sums_aarch64 = 5d663cb4fae85c341bd3165cb3681e507293866cb9a0bc10b9897ed2fd634f6c
+	source_x86_64 = nrf-command-line-tools-10.24.2_linux-amd64.tar.gz::https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-24-2/nrf-command-line-tools-10.24.2_linux-amd64.tar.gz
+	sha256sums_x86_64 = 9d65b0d80fccb567668fa41585c9261947b1740f52eba8d3a368cf6f8fd7b793
+	source_aarch64 = nrf-command-line-tools-10.24.2_linux-arm64.tar.gz::https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-24-2/nrf-command-line-tools-10.24.2_linux-arm64.tar.gz
+	sha256sums_aarch64 = 568d1b7bac35fbcaa0320ef50dfc4fa94d672441636284ab532a05d74bc603d4
 
 pkgname = nrf-command-line-tools
 	depends = jlink-software-and-documentation
