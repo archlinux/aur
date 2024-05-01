@@ -163,6 +163,7 @@ function execApp() {
 		--setenv QT_QPA_PLATFORM xcb \
 		--setenv LD_LIBRARY_PATH \
 			/opt/wechat-uos-qt/files:/usr/lib/wechat-uos-qt/so \
+		--setenv LD_PRELOAD /opt/wechat-uos-qt/files/libuosdevicea.so \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
 		--setenv PATH /sandbox:"${PATH}" \
 		--setenv XDG_DOCUMENTS_DIR "${XDG_DOCUMENTS_DIR}" \
@@ -203,7 +204,8 @@ function execAppUnsafe() {
 		--ro-bind /usr/share/wechat-uos-qt/license/etc/os-release "${osRel}" \
 		--ro-bind /usr/share/wechat-uos-qt/license/etc/lsb-release /etc/lsb-release \
 		--setenv QT_QPA_PLATFORM xcb \
-		--setenv LD_LIBRARY_PATH /opt/wechat-uos-qt/files:/usr/lib/wechat-uos-qt/so \
+		--setenv LD_LIBRARY_PATH /opt/wechat-uos-qt/files:/usr/lib/wechat-uos-qt/so:/usr/lib/wechat-uos-qt/so \
+		--setenv LD_PRELOAD /opt/wechat-uos-qt/files/libuosdevicea.so \
 		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
 		--setenv PATH /sandbox:"${PATH}" \
 		--setenv QT_PLUGIN_PATH "/usr/lib/qt/plugins /opt/wechat-uos-qt/files/wechat" \

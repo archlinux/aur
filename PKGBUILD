@@ -60,14 +60,14 @@ makedepends=(
 )
 
 checkdepends=()
-provides=("wechat-uos")
-conflicts=()
-replaces=()
+provides=("wechat-uos" "wechat" "wechat-universal" "wechat-universal-bwrap" "wechat-beta-bwrap")
+conflicts=("wechat-universal-bwrap" "wechat-beta-bwrap")
+replaces=("wechat-universal-bwrap" "wechat-beta-bwrap")
 
 source=(
 	wechat.sh
-	wechat-uos-beta.desktop
-	wechat-uos-beta.svg
+	wechat-uos-qt.desktop
+	wechat-uos-qt.svg
 	open.sh
 	license.tar.gz
 	user-dirs.dirs
@@ -101,13 +101,13 @@ function package_wechat-uos-qt() {
 	tar -xf data.tar.xz ./opt/apps/com.tencent.wechat
 	mkdir -p "${pkgdir}"/opt
 	cp opt/apps/com.tencent.wechat "${pkgdir}"/opt/wechat-uos-qt -r
-	install -Dm644 wechat-uos-beta.desktop "${pkgdir}/usr/share/applications/wechat-uos-qt.desktop"
+	install -Dm644 wechat-uos-qt.desktop "${pkgdir}/usr/share/applications/wechat-uos-qt.desktop"
 	install -Dm755 wechat.sh "${pkgdir}/usr/bin/wechat-uos-qt"
 	install -Dm644 user-dirs.dirs "${pkgdir}/usr/lib/wechat-uos-qt/user-dirs.dirs"
 	install -Dm755 open.sh "${pkgdir}/usr/lib/wechat-uos-qt/open"
-	install -Dm644 wechat-uos-beta.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-uos-qt.svg"
+	install -Dm644 wechat-uos-qt.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-uos-qt.svg"
 	mkdir -p "${pkgdir}/usr/share/wechat-uos-qt/license"
-	install -Dm755 "${pkgdir}/opt/wechat-uos-qt/files/libuosdevicea.so" "${pkgdir}/usr/lib/license/libuosdevicea.so"
+	#install -Dm755 "${pkgdir}/opt/wechat-uos-qt/files/libuosdevicea.so" "${pkgdir}/usr/lib/license/libuosdevicea.so"
 	cp "${srcdir}/license"/* -r "${pkgdir}/usr/share/wechat-uos-qt/license"
 	chmod 0755 -R "${pkgdir}/usr/share/wechat-uos-qt/license"
 }
