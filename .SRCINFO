@@ -1,6 +1,6 @@
 pkgbase = arch-update
 	pkgdesc = An update notifier/applier that assists you with important pre/post update tasks.
-	pkgver = 1.14.4
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/Antiz96/arch-update
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = arch-update
 	optdepends = vim: Default merge program for pacdiff
 	optdepends = sudo: Privilege elevation
 	optdepends = doas: Privilege elavation
-	source = arch-update-1.14.4.tar.gz::https://github.com/Antiz96/arch-update/archive/v1.14.4.tar.gz
-	sha256sums = f685d5f1ecfc1c2eed973cfbbc5fcbbf54a81921eaf847b7cc934875eb0db862
+	source = arch-update-1.15.0.tar.gz::https://github.com/Antiz96/arch-update/archive/v1.15.0.tar.gz
+	sha256sums = 808289acebab9f715d8c2069e4752b504b01573908f99da2ef6b088dc693bdd5
 
 pkgname = arch-update
