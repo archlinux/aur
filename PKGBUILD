@@ -12,7 +12,7 @@ license=('BSD2')
 url="http://www.catb.org/~esr/autodafe"
 makedepends=('make' 'asciidoctor')
 depends=('python3')
-source=("autodafe::git+https://gitlab.com/esr/autodafe")
+source=("autodafe-git::git+https://gitlab.com/esr/autodafe")
 sha256sums=('SKIP')
 
 pkgver() {
