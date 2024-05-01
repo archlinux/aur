@@ -1,15 +1,16 @@
 pkgbase = sophus
 	pkgdesc = C++ implementation of Lie Groups using Eigen
 	pkgver = 1.22.10
-	pkgrel = 1
-	url = https://github.com/strasdat/Sophus
+	pkgrel = 2
+	url = https://strasdat.github.io/Sophus/latest
 	arch = x86_64
 	arch = i686
 	license = MIT
+	checkdepends = ceres-solver
 	makedepends = cmake
 	depends = eigen
 	depends = fmt
-	source = sophus-1.22.10.tar.gz::https://github.com/strasdat/Sophus/archive/refs/tags/1.22.10.tar.gz
+	source = Sophus-1.22.10.tar.gz::https://github.com/strasdat/Sophus/archive/1.22.10.tar.gz
 	sha256sums = eb1da440e6250c5efc7637a0611a5b8888875ce6ac22bf7ff6b6769bbc958082
 
 pkgname = sophus
