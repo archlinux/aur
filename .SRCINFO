@@ -1,6 +1,6 @@
 pkgbase = lib32-libproxy
 	pkgdesc = Automatic proxy configuration management library (32-bit)
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://libproxy.github.io/libproxy/
 	arch = x86_64
@@ -10,10 +10,12 @@ pkgbase = lib32-libproxy
 	makedepends = meson
 	depends = lib32-curl
 	depends = lib32-duktape
+	depends = lib32-gcc-libs
 	depends = lib32-glib2
+	depends = lib32-glibc
 	depends = libproxy
-	source = git+https://github.com/libproxy/libproxy#tag=0.5.5
-	b2sums = 8d5cb6295541ef386e328a77ac9dd827c85da4d57ba50c910996c690d1fd9d97ef0d4df37183fdfa3e9bd7bcac7c5e54afc1cd83c157c0b7d01cc4cc298535b8
+	source = git+https://github.com/libproxy/libproxy#tag=0.5.6
+	b2sums = 8831331926000acc0750e6a4c0b8fbba6fe49d0a3c453900831a228da09638373ea909c880a76b54b19a815f39788d230e5998ff3926ccb3b158b9c9f445ed3f
 
 pkgname = lib32-libproxy
 	provides = libproxy.so
