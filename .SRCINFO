@@ -1,6 +1,6 @@
 pkgbase = r-mixomics
 	pkgdesc = Omics Data Integration Project
-	pkgver = 6.26.0
+	pkgver = 6.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mixOmics
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-mixomics
 	optdepends = r-rgl
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mixOmics_6.26.0.tar.gz
-	sha256sums = ec1ad9959f3c290fb3b4c37c1b9719f10bac0d5d59ef6b99a56b86607442d145
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mixOmics_6.28.0.tar.gz
+	sha256sums = 72f37405011a34e5a001c0feeb397488f334154a20ada9f08bde72f2a178ed0e
 
 pkgname = r-mixomics
