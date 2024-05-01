@@ -17,10 +17,12 @@ electronVersion=$(tail /usr/lib/electron27/version)
 makedepends=('pnpm')
 conflicts=('xmcl-launcher-bin')
 optdepends=('jre8-openjdk: 启动低版本游戏的最低要求'
-'jre11-openjdk: 推荐使用此版本Java启动1.12(17w13a)-1.17(21w18a)'
-'jre17-openjdk: 推荐使用此Java版本启动1.17(21w19a)及以上的版本')
+'jre11-openjdk: 推荐使用此Java版本启动1.12-1.17'
+'jre17-openjdk: 推荐使用此Java版本启动1.17及以上的版本'
+'jre22-openjdk: 推荐使用此Java版本启动1.20.5及以上版本')
 source=("git+https://github.com/Voxelum/x-minecraft-launcher.git#tag=v$pkgver"
         "git+https://github.com/Voxelum/minecraft-launcher-core-node"
+        "LICENSE::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher/master/LICENSE"
     xmcl.desktop
     xmcl.png
     xmcl-launcher)
@@ -52,4 +54,5 @@ package() {
     install -Dm644 "$srcdir/xmcl.png" "$pkgdir/usr/share/icons/hicolor/192x192/apps/xmcl.png"
     install -Dm644 "./xmcl-electron-app/build/output/linux-unpacked/resources/app.asar" "${pkgdir}"/usr/share/xmcl/xmcl.asar
     install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../LICENSE
 }
