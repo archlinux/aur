@@ -1,9 +1,9 @@
-# Maintainer  : SysAdm <sysadm [dot] archlinux [at] proton [dot] me>
-# Contributor : Stephen Argent <steve [at] tuxcon [dot] com>
+# Maintainer  : SysAdm <sysadm.archlinux@proton.me>
+# Contributor : Stephen Argent <steve@tuxcon.com>
 
 pkgname=maltego
 
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 
 pkgdesc='An open source intelligence and forensics application'
@@ -15,9 +15,11 @@ depends=('java-environment=17')
 
 install="$pkgname.install"
 source=("https://downloads.maltego.com/maltego-v4/linux/Maltego.v$pkgver.linux.zip"
-        "LICENSE.pdf::https://www.maltego.com/pdf/legal/2022-09_Maltego%20Technologies_TermsandConditions.pdf")
-sha256sums=('5eb8f4a516897ef3ac42116f83c7740aa4f3723e055532e0524dffb5eeceb0f8'
-            'b06d49dae3ded95e2c01b4ec26210492add658ee02c32d4950985276e5f5fffa')
+        "LICENSE.pdf"
+	"maltego.png")
+sha256sums=('88819103966e5a08ce82c30dc6506a3d1f6dbea14108fb4aefe5f420376b9150'
+            'b06d49dae3ded95e2c01b4ec26210492add658ee02c32d4950985276e5f5fffa'
+            'bb59ca792e86a544117d33a78024d30035650a39aa1f02e7c5aee6a57e239be5')
 
 options=('!emptydirs')
 
@@ -32,13 +34,14 @@ package() {
   ln -s "/opt/$pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   install -Dm 644 LICENSE.pdf -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm 644 "${pkgname}_${pkgver}/bin/maltego.ico" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
+  install -Dm 644 maltego.png -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
 
   desktop_file="$pkgdir/usr/share/applications/maltego.desktop"
   echo "[Desktop Entry]" > "$desktop_file"
   echo "Name=Maltego" >> "$desktop_file"
   echo "GenericName=Open Source Intelligence and Forensics" >> "$desktop_file"
   echo "Exec=/usr/bin/$pkgname" >> "$desktop_file"
+  echo "Icon=maltego" >> "$desktop_file"
   echo "Type=Application" >> "$desktop_file"
   echo "Categories=Network;Security;Forensics;" >> "$desktop_file"
 }
