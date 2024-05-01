@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SPIA
-_pkgver=2.54.0
+_pkgver=2.55.0
 pkgname=r-${_pkgname,,}
-pkgver=2.54.0
+pkgver=2.55.0
 pkgrel=1
 pkgdesc='Signaling Pathway Impact Analysis (SPIA) using combined evidence of pathway over-representation and unusual signaling perturbations'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a5ea2bedf20f9f538f1705d65265b24df6d9709c98ab14a0e964577df7a33724')
+sha256sums=('2f9b0a7f4d2d8e79591bb2189feaf1d73b797dfe844eb5c18ce688f3ad6273a2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

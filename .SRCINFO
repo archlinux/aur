@@ -1,6 +1,6 @@
 pkgbase = r-spia
 	pkgdesc = Signaling Pathway Impact Analysis (SPIA) using combined evidence of pathway over-representation and unusual signaling perturbations
-	pkgver = 2.54.0
+	pkgver = 2.55.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SPIA
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-spia
 	optdepends = r-graph
 	optdepends = r-hgu133plus2.db
 	optdepends = r-rgraphviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPIA_2.54.0.tar.gz
-	sha256sums = a5ea2bedf20f9f538f1705d65265b24df6d9709c98ab14a0e964577df7a33724
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPIA_2.55.0.tar.gz
+	sha256sums = 2f9b0a7f4d2d8e79591bb2189feaf1d73b797dfe844eb5c18ce688f3ad6273a2
 
 pkgname = r-spia
