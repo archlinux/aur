@@ -4,8 +4,8 @@
 pkgbase='python-dataclasses-json'
 pkgname=('python-dataclasses-json')
 _module='dataclasses-json'
-pkgver='0.6.4'
-pkgrel=2
+pkgver='0.6.5'
+pkgrel=1
 pkgdesc='Easily serialize Python Data Classes to and from JSON'
 url='https://github.com/lidatong/dataclasses-json'
 depends=(
@@ -27,7 +27,7 @@ checkdepends=(
 license=('MIT')
 arch=('any')
 source=("https://github.com/lidatong/dataclasses-json/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8936dcaa4792f3ae29789a9481010526b830f99b871619a8fc3f4dba83ea944d')
+sha256sums=('2daac2e60393b501b4c4347f088622fb8a56d0c2180cfa3d2e26bd51eae06ae8')
 export POETRY_DYNAMIC_VERSIONING_BYPASS="$pkgver"
 
 build() {
