@@ -8,7 +8,7 @@
 # Contributor: ThatOneCalculator <kainoa@t1c.dev>
 
 _pkgname="hyprland"
-pkgname="${_pkgname}-legacyrenderer"
+pkgname="${_pkgname}-legacyrenderer-git"
 pkgver=0.39.1.r119.4ed6b69b
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks.(upstream hyprland legacy-renderer)"
