@@ -1,0 +1,13 @@
+pkgbase = simpleboot-bin
+	pkgdesc = Dependency-free, all-in-one OS loader and bootable disk image creator.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/bztsrc/simpleboot
+	arch = x86_64
+	license = MIT
+	provides = simpleboot
+	conflicts = simpleboot
+	source = https://gitlab.com/bztsrc/simpleboot/-/raw/main/distrib/simpleboot_1.0.0-amd64.deb
+	b2sums = 491b908a06e4180586aca08ec859289063ea41259edfbf90b5b3a78b5d6c61055134c3668c3561475564dc42fceabfbff24bae9cd33e541cf88c5239fac34ae6
+
+pkgname = simpleboot-bin
