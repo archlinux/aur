@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=less-player-git
 _appname="Less Player"
-pkgver=0.1.21.r0.gcca66d8
+pkgver=0.1.22.r0.g65e0d01
 _electronversion=22
 pkgrel=1
 pkgdesc="Less is More~ All for One, One for All ! Less Player, 基于Electron + Vue3开发、插件化的播放器"
@@ -19,13 +19,14 @@ makedepends=(
     'yarn'
     'nvm'
     'git'
+    'curl'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -44,12 +45,12 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
