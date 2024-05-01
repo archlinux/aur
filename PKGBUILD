@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SRAdb
-_pkgver=1.64.0
+_pkgver=1.65.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.65.0
 pkgrel=1
 pkgdesc='A compilation of metadata from NCBI SRA and tools'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e5ad5ee17d99e2afbd51e6741e35c925d748d596f482c9ada8c1c84bde547edf')
+sha256sums=('da31f279e0d24b27e8c1e0787a9f3960693eab610f4ad4e157f343b5a47308dc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
