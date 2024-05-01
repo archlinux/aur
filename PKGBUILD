@@ -1,6 +1,7 @@
 # Maintainer: François Guerraz <kubrick@fgv6.net>
+
 pkgname=payetools-rti
-pkgver=23.0.23065.113
+pkgver=24.1.24086.542
 pkgrel=1
 pkgdesc="UK HMRC Basic PAYE Tools for Linux"
 arch=('x86_64')
@@ -14,33 +15,31 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=(!strip)
+options=(!strip !debug)
 changelog=
 source=(
 	"https://www.gov.uk/government/uploads/uploaded/hmrc/$pkgname-$pkgver-linux.zip" 
 	)
 noextract=( "$pkgname-$pkgver-linux.zip" )
 sha256sums=(
-        "6b1fbb9ef19c13ee1b2e80112667225473714685e88aa0372a0684a103f37505"
+        "40e5ba2e8aa0d34d4072a597fd3387eb0bc8dae018e2a37216f43309511ef155"
 )
 
 prepare() {
-  unzip "$pkgname-$pkgver-linux.zip"
+  rm -fr ${srcdir}/opt || true
+  unzip -o "$pkgname-$pkgver-linux.zip"
 }
 
 build() {
-  true
+  export HOME=${srcdir}/tmp
+  ./$pkgname-$pkgver-linux --prefix ${srcdir}/opt/HMRC/basic-paye-tools --check_for_updates 0 --mode unattended --debuglevel 4
+  sed -i "s#${srcdir}##g" ${srcdir}/tmp/.local/share/applications/*.desktop
 }
 
 package() {
-  export HOME=${pkgdir}/tmp
-  mv $pkgname-$pkgver-linux ${pkgdir}
-  cd ${pkgdir}
-  ./$pkgname-$pkgver-linux --prefix ${pkgdir}/opt/HMRC/basic-paye-tools --check_for_updates 0 --mode unattended --debuglevel 4
-  rm $pkgname-$pkgver-linux
-  install -D -t ${pkgdir}/usr/share/licenses/payetools-rti/ ${pkgdir}/opt/HMRC/basic-paye-tools/license.txt
-  sed -i "s#${pkgdir}##g" ${pkgdir}/tmp/.local/share/applications/*.desktop
-  install -D -t ${pkgdir}/usr/share/applications/ ${pkgdir}/tmp/.local/share/applications/*.desktop
-  rm -fr ${pkgdir}/tmp
-  mv opt/HMRC/basic-paye-tools/rti.cfg opt/HMRC/basic-paye-tools/rti.cfg.template
+  install -d ${pkgdir}/opt/HMRC/
+  cp -fr ${srcdir}/opt/HMRC/basic-paye-tools ${pkgdir}/opt/HMRC/
+  install -D -t ${pkgdir}/usr/share/licenses/payetools-rti/ ${srcdir}/opt/HMRC/basic-paye-tools/license.txt
+  install -D -t ${pkgdir}/usr/share/applications/ ${srcdir}/tmp/.local/share/applications/*.desktop
+  mv ${pkgdir}/opt/HMRC/basic-paye-tools/rti.cfg ${pkgdir}/opt/HMRC/basic-paye-tools/rti.cfg.template
 }
