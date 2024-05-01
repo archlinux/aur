@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MiPP
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc='Misclassification Penalized Posterior Classification'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-e1071
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8241ed264ea0462b550342e76a74d688b6a18b39e8e45d82a85f561046f761ff')
+sha256sums=('37c967c316859ad6806e78c70ae8de385d3bf48e8dce1890196a2d7ce624938b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
