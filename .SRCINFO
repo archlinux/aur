@@ -19,7 +19,7 @@ pkgbase = rmg
 	depends = freetype2
 	depends = qt6-base
 	depends = qt6-svg
-	depends = xdg-user-dirs
+	depends = vulkan-icd-loader
 	source = git+https://github.com/Rosalie241/rmg.git#tag=v0.5.9
 	sha256sums = SKIP
 

@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Rosalie241/$pkgname"
 license=('GPL3')
 
-depends=("hidapi" "libsamplerate" "speexdsp" "minizip" "sdl2" "zlib" "freetype2" "qt6-base" "qt6-svg" "xdg-user-dirs")
+depends=("hidapi" "libsamplerate" "speexdsp" "minizip" "sdl2" "zlib" "freetype2" "qt6-base" "qt6-svg" "vulkan-icd-loader")
 makedepends=("git" "nasm" "cmake" "ninja")
 
 source=("git+https://github.com/Rosalie241/$pkgname.git#tag=v$pkgver")
