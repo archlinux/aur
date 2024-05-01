@@ -2,12 +2,13 @@
 
 pkgname=socranop
 pkgver=0.4.92a5
-pkgrel=2
+pkgrel=3
 pkgdesc="Soundcraft Notepad mixer tools for Linux"
 arch=('any')
 url="https://github.com/socratools/socranop"
 license=('MIT')
 depends=('python>=3.6' python-pydbus python-pyusb python-setuptools python-gobject gobject-introspection-runtime gtk3 libgudev)
+replaces=(soundcraft-utils)
 makedepends=(python-build python-installer python-wheel)
 checkdepends=(python-pytest)
 install=socranop.install
