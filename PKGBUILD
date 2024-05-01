@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AWFisher
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="An R package for fast computing for adaptively weighted fisher's method"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-tightclust
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3a21d029ffeea5f64eb720af4c29a5bf867095178d357ca6215c7c4040c48581')
+sha256sums=('a07a6c93afdf610bf7409faf49b1edba74f27a4135993a9e8819e37fc6d0b87c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
