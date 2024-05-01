@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ramr
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Detection of Rare Aberrantly Methylated Regions in Array and NGS Data'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c4a3f4ca2f02bda18390a1294569618b84be3feef3d4a67260919ff3cb9362c8')
+sha256sums=('0031faea01355fe87f5b86969c3015ce95fd690f4b7dc6287934e2949befd924')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
