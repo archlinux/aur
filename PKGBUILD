@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qvalue
-_pkgver=2.34.0
+_pkgver=2.36.0
 pkgname=r-${_pkgname,,}
-pkgver=2.34.0
+pkgver=2.36.0
 pkgrel=1
 pkgdesc='Q-value estimation for false discovery rate control'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d16fd855856b479bd8a0812bbfc2e2d918929c28fe83411a41ca059d2d9c6583')
+sha256sums=('4a3cf7ec1f241779f893e15858c44ea4b74f4a5669c602c26ac8e5a0d7cef3c1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
