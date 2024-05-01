@@ -8,11 +8,11 @@ pkgrel=1
 pkgdesc="An encrypted file system that mounts with FUSE on Linux. It can be used to create encrypted directories."
 url="https://github.com/radumarias/rencfs"
 license=("Apache-2.0")
-arch=("$CARCH")
+arch=("x86_64")
 provides=("rencfs")
 conflicts=("rencfs")
 depends=("fuse3")
-source=("https://github.com/radumarias/rencfs/releases/download/v$pkgver/rencfs-$pkgver-$CARCH.tar.gz")
+source=("https://github.com/radumarias/rencfs/releases/download/v$pkgver/rencfs-$pkgver-x86_64.tar.gz")
 sha256sums=("01d4ff7092cc03ccaab4e52d6a48e9a18304f16f74c964b224aae68eaea1f458")
 
 package() {
