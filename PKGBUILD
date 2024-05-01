@@ -16,7 +16,7 @@ depends=('python' 'python-exceptiongroup')
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('89cc894fbc3b5def6ba5c3a60877e226cc368613efdee560356bcfb13267678a')
+sha256sums=('2885cd28156d3d83f69257d974db57f60f5171e3f6c50edf8e4421ba42f2b4f1')
 
 build() {
 	cd "${_name}-${pkgver}"

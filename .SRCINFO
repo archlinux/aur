@@ -12,6 +12,6 @@ pkgbase = python-generic
 	depends = python
 	depends = python-exceptiongroup
 	source = python-generic-1.1.2.tar.gz::https://github.com/gaphor/generic/archive/refs/tags/1.1.2.tar.gz
-	sha256sums = 89cc894fbc3b5def6ba5c3a60877e226cc368613efdee560356bcfb13267678a
+	sha256sums = 2885cd28156d3d83f69257d974db57f60f5171e3f6c50edf8e4421ba42f2b4f1
 
 pkgname = python-generic
