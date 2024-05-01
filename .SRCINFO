@@ -10,7 +10,7 @@ pkgbase = openlp
 	makedepends = python-pip
 	makedepends = python-setuptools
 	depends = python>=3.10
-	depends = python<3.12
+	depends = python<3.13
 	depends = python-pyqt5
 	depends = phonon-qt5
 	depends = python-chardet
