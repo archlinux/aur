@@ -3,7 +3,7 @@
 pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git)
 pkgver=1.5.181.r0.gd362f4a
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
 arch=('x86_64' 'aarch64')
@@ -81,9 +81,8 @@ package_mfgtools-git() {
     zstd)
 
     cd "${srcdir}/${pkgbase}/build"
-     DESTDIR="$pkgdir/" ninja -C "${srcdir}/${pkgbase}/build" install
+    DESTDIR="$pkgdir/" ninja -C "${srcdir}/${pkgbase}/build" install
     install -Dm0644 "${srcdir}/uuu-complete.bash" "${pkgdir}/etc/bash_completion.d/uuu-complete.bash"
-    install -Dm0644 "${srcdir}/${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -dm0755  "${pkgdir}/etc/udev/rules.d/"
     ./uuu/uuu -udev > "${pkgdir}/etc/udev/rules.d/70-uuu.rules"
 }
