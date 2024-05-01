@@ -25,7 +25,12 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname// /.}.v${pkgver}.linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname// /.}.v${pkgver}.linux-x86_64.AppImage")
 sha256sums=('61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
-sha256sums_aarch64=('b12d4179983 | grep '^Chrome/[0-9.]* Electron/[0-9]'g" \
+sha256sums_aarch64=('b12d417998399b9e53713612c9ad4defcda4afd38d1b7b9d63eda0c36084e6ad')
+sha256sums_x86_64=('2182c5fc038bb95f5d851ab0c465b91ec080387b3688633695f8a85474125766')
+build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
