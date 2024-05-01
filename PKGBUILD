@@ -2,7 +2,7 @@
 
 pkgname=changedetection.io
 pkgver=0.45.21
-pkgrel=2
+pkgrel=3
 pkgdesc='change monitoring of web pages'
 arch=(any)
 url='https://github.com/dgtlmoon/changedetection.io'
@@ -45,7 +45,13 @@ depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/maste
          python-pillow
          python-pytest-flask
          python-loguru
-         python-pysocks)
+         python-pysocks
+         # below for pyppeteer-ng
+         python-aenum
+         python-appdirs
+         python-typing_inspect
+         python-tqdm
+         python-websockets)
 source=(https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/$pkgver.tar.gz
         sysusers
         tmpfiles
@@ -57,10 +63,11 @@ sha512sums=('7a39c1233d79553ca116eab289a2331401d06061967dffe1e92bda4f45b43821a39
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -Ei 's/[~=]=.*//' requirements.txt
+  sed -i 's/[~=]=.*//' requirements.txt
   python setup.py install --root="$pkgdir" --optimize=1
   # command per https://wiki.archlinux.org/title/Python_package_guidelines (now removed from page?)
   PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps pyppeteer-ng==2.0.0rc5 validators
+  sed -Ei '/Requires-Dist: (aenum|typing_extensions|typing_inspect|websockets)/s/\(.*//' "$pkgdir"/usr/lib/changedetection.io/pyppeteer_ng-2.0.0rc5.dist-info/METADATA
   python -O -m compileall -s ${pkgdir} "${pkgdir}/usr/lib/changedetection.io"
   install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/changedetection.io.conf"
   install -Dm644 "${srcdir}/tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/changedetection.io.conf"
