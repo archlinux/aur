@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="caja-rename"
-pkgver="24.4.1"
+pkgver="24.5.1"
 pkgrel=1
 pkgdesc="Batch renaming extension for Caja"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ license=("GPL3")
 makedepends=("cmake" "cmake-extras" "intltool")
 depends=("caja" "gtk3" "hicolor-icon-theme" "glib2" "glibc")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("9b36250ee61f6b0a90a257716edd95e7")
+md5sums=("5347581e600a97507a8791e70ccf3c74")
 
 build()
 {
