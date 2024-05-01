@@ -1,0 +1,14 @@
+--- a/lib/Text/PDF/File.pm	2016-08-16 08:01:48.000000000 -0700
++++ b/lib/Text/PDF/File.pm	2017-02-22 18:04:49.000000000 -0800
+@@ -1063,9 +1063,9 @@
+     $fh = $self->{' INFILE'};
+     $fh->seek($xpos, 0);
+     $fh->read($buf, 22);
+-    if ($buf !~ m/^xref$cr/oi)
++    if ($buf !~ m/^$ws_char*xref$cr/oi)
+     { die "Malformed xref in PDF file $self->{' fname'}"; }
+-    $buf =~ s/^xref$cr//oi;
++    $buf =~ s///oi;
+ 
+     $xlist = {};
+     while ($buf =~ m/^([0-9]+)$ws_char+([0-9]+)$cr(.*?)$/so)

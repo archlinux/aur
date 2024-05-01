@@ -1,0 +1,15 @@
+--- a/lib/Text/PDF/File.pm	2016-08-16 17:01:48.000000000 +0200
++++ b/lib/Text/PDF/File.pm	2017-02-27 00:54:42.000000000 +0200
+@@ -1080,10 +1080,10 @@
+         { $xlist->{$xmin++} = [$1, $2, $3]; }
+     }
+
+-    if ($buf !~ /^trailer$cr/oi)
++    if ($buf !~ /^trailer$ws_char*/oi)
+     { die "Malformed trailer in PDF file $self->{' fname'} at " . ($fh->tell - length($buf)); }
+
+-    $buf =~ s/^trailer$cr//oi;
++    $buf =~ s/^trailer$ws_char*//oi;
+
+     ($tdict, $buf) = $self->readval($buf);
+     $tdict->{' loc'} = $xpos;

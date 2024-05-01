@@ -1,0 +1,21 @@
+--- a/lib/Text/PDF/Dict.pm	2016-08-24 23:18:16.000000000 +0200
++++ b/lib/Text/PDF/Dict.pm	2017-12-08 11:32:45.483949200 +0100
+@@ -168,7 +168,7 @@
+         $fh->print($str);
+         if (@filts > 0)
+         {
+-            $len = $fh->tell - $loc + 1;
++            $len = $fh->tell - $loc + ($str =~ m/$cr$/o ? 0 : 1);
+             if ($self->{'Length'}{'val'} != $len)
+             {
+                 $self->{'Length'}{'val'} = $len;
+@@ -202,7 +202,7 @@
+             $fh->print($str);
+         }
+         
+-        $len = $fh->tell - $loc + 1;
++        $len = $fh->tell - $loc + ($str =~ m/$cr$/o ? 0 : 1);
+         if ($self->{'Length'}{'val'} != $len)
+         {
+             $self->{'Length'}{'val'} = $len;
+
