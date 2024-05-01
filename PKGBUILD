@@ -1,18 +1,25 @@
 # Maintainer:  Liam Timms <timms5000@gmail.com>
+# Co-Maintainer: Adam Schadler <ajschadler12 g-mail>
 # Contributor: Chris <christopher.r.mullins g-mail>
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 # Contributor: martin <martin pipegrep.co.uk>
 pkgname=afni
-pkgver=23.2.06  
+pkgver=24.1.06
 pkgrel=1
 pkgdesc="An open-source environment for processing and displaying functional MRI data"
 arch=("x86_64")
 url="http://afni.nimh.nih.gov"
 license=(custom)
 depends=("r" "tcsh" "python" "gcc-libs" "gsl" "libxpm" "glu" "openmotif" "libjpeg-turbo" "libxmu" "libxft" "freeglut" "xorg-server-xvfb")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/afni/afni/archive/AFNI_$pkgver.tar.gz" "Makefile.patch")
-md5sums=('42f240865a975b3f6b528ae40045337e'
-         '2cc1916ecd1e775f52d189f1dd5b0ed9')
+optdepends=('r-afex' 'r-phia' 'r-snow' 'r-lmertest' 'r-paran' 'r-psych' 'r-brms' 'r-corrplot' 'r-metafor')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/afni/afni/archive/AFNI_$pkgver.tar.gz"
+        "Makefile.patch"
+        "afni.csh"
+        "afni.sh")
+sha256sums=('84046db43c3e7e8cb75cfc108fff238aaf85cbb4c54d1c7ad51a11cbd7e003a4'
+            '70f525c0637581b332ae15f4076ac6626599296c99e33c133b0dd929a00b7f72'
+            'b43c09b3ccc20c5c56ce837d7cd6baee3b880f9eeffaab51bfd086bdc5248c8b'
+            '0322cef3fa43a0a63f6614d26a76b2f54bde70c12c7867952984c6db1935b87c')
 
 prepare() {
   cd "$srcdir"/afni-AFNI_$pkgver/src
@@ -33,4 +40,7 @@ package(){
   find "$pkgdir"/opt/afni -name \*.h -delete
   mkdir -p "$pkgdir"/usr/share/licenses/afni
   cp "$srcdir"/afni-AFNI_$pkgver/doc/README/README.copyright "$pkgdir"/usr/share/licenses/afni/LICENSE
+  mkdir -p "${pkgdir}/etc/profile.d"
+  cp "${srcdir}/afni.sh" "${pkgdir}/etc/profile.d"
+  cp "${srcdir}/afni.csh" "${pkgdir}/etc/profile.d"
 }

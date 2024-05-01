@@ -3,3 +3,5 @@
 !.SRCINFO
 !.gitignore
 !Makefile.Patch
+!afni.csh
+!afni.sh
