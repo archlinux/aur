@@ -2,7 +2,7 @@
 pkgname=go-regal-git
 _pkgname="regal"
 pkgver=v0.21.3.r1.a106547
-pkgrel=1
+pkgrel=2
 pkgdesc="Regal is a linter and language server for Rego"
 arch=("x86_64")
 url="https://github.com/StyraInc/regal"
@@ -20,15 +20,19 @@ pkgver() {
 	cd "$srcdir/${_pkgname}"
 	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
-
 build() {
 	cd "$srcdir/${_pkgname}"
-	go build .
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build .
 }
 
 check() {
 	cd "$srcdir/${_pkgname}"
-  go test ./...
+	go test ./...
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = go-regal-git
 	pkgdesc = Regal is a linter and language server for Rego
 	pkgver = v0.21.3.r1.a106547
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/StyraInc/regal
 	arch = x86_64
 	license = Apache2.0
