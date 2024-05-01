@@ -3,7 +3,7 @@
 pkgname=python-wekan
 _reponame=python-wekan
 pkgver=0.1.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Client for interacting with the WeKan® REST-API"
 url="https://pypi.org/project/${_reponame}/"
 arch=(any)
@@ -19,7 +19,7 @@ sha256sums=('ea3d37c3b9b73b9da5cf6795ab86ba13dfbae32ce2cd7b5616c8dfb941f01e7c'
             'a395161daa65b277266883339aaaba6e1b6b9ec2ee7b7a6d42014d3846a9cd58'
             'd102dc1d450399d2ceb3ab2fe3fd457ee372c7a1e06a0f4fc6d8bc577b88e6a7'
             '482ba5a04817862b58a814566b4e41c69dc55aa28c3c96300fd6c8db04789611'
-            'e7ef6824808672f095c772b91223e48a079ff3c81d84c8131d36eba194b51e23')
+            '4c33c7893b0ccf824beb095c6861bc10660eb4425a6ee14ce645d4bcf1726c67')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
