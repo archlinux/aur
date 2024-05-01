@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RankProd
-_pkgver=3.28.0
+_pkgver=3.30.0
 pkgname=r-${_pkgname,,}
-pkgver=3.28.0
+pkgver=3.30.0
 pkgrel=1
 pkgdesc='Rank Product method for identifying differentially expressed genes with application in meta-analysis'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-rmpfr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a4c6439655b559cdd4e89534e65e347c95c7ba0ddac1f34ba301af4ab84a388d')
+sha256sums=('10176a783558144a7adac309f803cad3e0f34a0f671dca4422840efbc7402c79')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
