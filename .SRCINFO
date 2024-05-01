@@ -1,6 +1,6 @@
 pkgbase = python-qcustomplot-pyqt
 	pkgdesc = Python bindings to QCustomPlot - Qt C++ widget for plotting and data visualization
-	pkgver = 2.1.1.1
+	pkgver = 2.1.1.2
 	pkgrel = 1
 	url = https://github.com/salsergey/QCustomPlot-PyQt
 	arch = i686
@@ -12,8 +12,9 @@ pkgbase = python-qcustomplot-pyqt
 	makedepends = python-pyqt5
 	makedepends = python-pyqt6
 	makedepends = qcustomplot>=2.1.0
-	source = https://github.com/salsergey/QCustomPlot-PyQt/releases/download/v2.1.1.1/python-qcustomplot-pyqt-2.1.1.1.tar.xz
-	sha512sums = 68f4bfb7f098dcfa0b7aa038e83277909c5d06d0ea30f44ed32104027b5c5a36c6d31d1061ddb83c694a84f82031783471bf921cfe62edb985817b3d9f84070a
+	makedepends = qcustomplot-qt6>=2.1.0
+	source = https://github.com/salsergey/QCustomPlot-PyQt/releases/download/v2.1.1.2/python-qcustomplot-pyqt-2.1.1.2.tar.xz
+	sha512sums = 805737a8908deead38c178442e5ac6310d247706d64b95f5a5180256506591c1dc2eb7f97162fb42673e6a65f00f6d190031442ffb5d776922aefcbeb77469e9
 
 pkgname = python-qcustomplot-pyqt5
 	depends = python-pyqt5
@@ -21,3 +22,4 @@ pkgname = python-qcustomplot-pyqt5
 
 pkgname = python-qcustomplot-pyqt6
 	depends = python-pyqt6
+	depends = qcustomplot-qt6>=2.1.0
