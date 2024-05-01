@@ -13,17 +13,18 @@ _pydeps=(fonttools
          ufolib2
          unicodedata2) # for fonttools[unicode]
 depends=(python
-         "${_pydeps[@]/#/python-}")
+    xmldiff
+    "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
-             python-defcon
-             python-setuptools-scm
-             git)
+    python-defcon
+    python-setuptools-scm
+    git)
 _pycheckdeps=(lxml # for fonttools[lxml]
-              pytest
-              ufo2ft
-              ufonormalizer
-              xmldiff)
-checkdepends=("${_pycheckdeps[@]/#/python-}")
+    pytest
+    ufo2ft
+    ufonormalizer)
+checkdepends=("${_pycheckdeps[@]/#/python-}"
+    xmldiff)
 optdepends=(python-defcon
             python-ufonormalizer)
 provides=("${pkgname%-git}")
@@ -34,6 +35,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
