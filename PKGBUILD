@@ -3,7 +3,7 @@
 
 pkgname=euroscope-bin
 pkgver=3.2.9
-pkgrel=7
+pkgrel=8
 pkgdesc="A radar scope for VATSIM"
 arch=("x86_64")
 url="https://euroscope.hu/"
@@ -17,11 +17,10 @@ source=("https://euroscope.hu/install/EuroScopeSetup.${pkgver}.msi"
         "euroscope.desktop"
         "euroscope.png"
 )
-sha512sums=("b40dc7fd50f29a2c699ca9cbb985fcd4c2d227ce88d233c9404b942bcdc961ddd0656f08c1064ec05c572a9268e4fd1222769a36241b565f1f3d2539829da362"
-            "b6f82e603ab690a22fcff9d9f8808b7517e9fd4ac4d9f2e81105dad1081bee8d5645773e65d7c27c01d0c9a753fc3fc97148624fdc5e70c55c78198d45c68a2b"
-            "ffa95249cf74e0401c165576a1a0efade2d4837df692fb8ed0c787563ef062afe8a4038f0704b8485c2ca1e8fa1835787c427f1f0faa4264c3481a61d8d6e544"
-            "b7609ff79b2b6f5367979aefd567d9c7e34006adff59bb55004ba0c10da8929235bc2c043369bb7e8382900f21299357857435e3dfcf593e42d7eebe5e4a4e87"
-)
+sha512sums=('b40dc7fd50f29a2c699ca9cbb985fcd4c2d227ce88d233c9404b942bcdc961ddd0656f08c1064ec05c572a9268e4fd1222769a36241b565f1f3d2539829da362'
+            'c217c48ddfaad941ed847a703e714c94a935d3ee3e1f2953cfc2f91f8fb06674c1c573265b8f1affbd4797f1d79c4d6cce7dde2a5dad929649ccd3993736b43c'
+            'ffa95249cf74e0401c165576a1a0efade2d4837df692fb8ed0c787563ef062afe8a4038f0704b8485c2ca1e8fa1835787c427f1f0faa4264c3481a61d8d6e544'
+            'b7609ff79b2b6f5367979aefd567d9c7e34006adff59bb55004ba0c10da8929235bc2c043369bb7e8382900f21299357857435e3dfcf593e42d7eebe5e4a4e87')
 
 build() {
     unset WINEPREFIX
@@ -38,8 +37,7 @@ package() {
     install -m755 -d "$pkgdir/usr/share/$pkgname"
     catdoc "$srcdir/tmp/env/drive_c/users/$USER/AppData/Roaming/EuroScope/EuroScope - EULA.doc" | sed 's/Page[[:space:]]*PAGE[[:space:]]*1//g' \
          > "$pkgdir/usr/share/$pkgname/LICENSE"
-    install -dm0644 "$HOME/.local/share/wineprefixes/euroscope/drive_c/Windows/Fonts/"
-    cp "$srcdir/tmp/env/drive_c/windows/Fonts/EuroScope.ttf" "$HOME/.local/share/wineprefixes/euroscope/drive_c/windows/Fonts/"
+    cp "$srcdir/tmp/env/drive_c/windows/Fonts/EuroScope.ttf" "$pkgdir/usr/share/$pkgname/"
     cp -r "$srcdir/tmp/env/drive_c/Program Files (x86)/EuroScope" "$pkgdir/usr/share/$pkgname/"
     find "$pkgdir/usr/share/$pkgname/" -type d -exec chmod 755 "{}" \;
     find "$pkgdir/usr/share/$pkgname/" -type f -exec chmod 644 "{}" \;

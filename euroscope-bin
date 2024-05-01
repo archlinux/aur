@@ -6,24 +6,25 @@ export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
 export WINEARCH="win32"
 
 install_deps() {
-   notify-send --app-name=EuroScope --icon=euroscope "Installing Dependencies" "It may take a few minutes."
-   winetricks --unattended iertutil msls31 msxml6 urlmon vcrun2019 wininet
-   touch "$WINEPREFIX/.installed"
+  notify-send --app-name=EuroScope --icon=euroscope "Installing Dependencies" "It may take a few minutes."
+  winetricks --unattended iertutil msls31 msxml6 urlmon vcrun2019 wininet
+  cp "/usr/share/$progName/EuroScope.ttf" "$WINEPREFIX/drive_c/windows/Fonts/"
+  touch "$WINEPREFIX/.installed"
 }
 
 if [ ! -d $WINEPREFIX ] ; then
-   mkdir -p $WINEPREFIX
-   wine wineboot -u
-   install_deps
+  mkdir -p $WINEPREFIX
+  wine wineboot -u
+  install_deps
 fi
 
 if [ ! -f "$WINEPREFIX/.installed" ] ; then
-   wine wineboot -u
-   install_deps
+  wine wineboot -u
+  install_deps
 fi
 
 if [ ! -d "$HOME/.config/euroscope" ] ; then
-   mkdir -p "$HOME/.config/euroscope"
+  mkdir -p "$HOME/.config/euroscope"
 fi
 
 cd "$HOME/.config/euroscope" && WINEDEBUG=-all wine "/usr/share/euroscope-bin/EuroScope/EuroScope.exe" "$@"
