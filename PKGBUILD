@@ -2,13 +2,14 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 _distname=sudoku
-_repoowner=wimleers
+_dist_owner=wimleers
 pkgname="${_distname}-git"
 pkgver=1.0.r2.g2489c02
-pkgrel=1
+pkgrel=2
 pkgdesc="Sudoku app written in C++/Qt."
 arch=('i686' 'x86_64')
-url="https://github.com/${_repoowner}/${_distname}"
+url="https://wimleers.com/project/work/${_distname}"
+_repourl="https://github.com/${_dist_owner}/${_distname}"
 license=('Unlicense')
 depends=(
   'gcc-libs'
@@ -21,8 +22,8 @@ makedepends=(
 )
 provides=("${_distname}=${pkgver%.r*}")
 conflicts=("${_distname}")
-_clonedirname="${_distname}-${_repoowner}"
-source=("${_clonedirname}::git+${url}.git")
+_clonedirname="${_distname}-${_dist_owner}"
+source=("${_clonedirname}::git+${_repourl}.git")
 b2sums=('SKIP')
 
 prepare() {
