@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DirichletMultinomial
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Dirichlet-Multinomial Mixture Model Machine Learning for Microbiome Data'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9ea732aa74c1fd59d4a1641eb9c3c83863bb8ceac80d419e6a98b8ccd46071e7')
+sha256sums=('0b7f0d48ac584d1f50ab89ab928b7ef40cc577c6d317514d9653136737414d36')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
