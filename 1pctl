@@ -27,9 +27,7 @@ EOF
         echo "请避免使用ROOT用户执行此命令"
         exit 1
     fi
-    if [ ! -d "/var/lib/1p/1panel" ]; then
-        echo -e "1Panel尚未初始化，正在准备初始化工作..."
-    else
+    if [ "$(ls -A /var/lib/1p/1panel)" ]; then
         echo -e "1Panel已经初始化"
         read -p "您是否需要备份原有的数据后再初始化 [Y/n] " backup
         if [[ $backup != "N" ]] && [[ $backup != "n" ]]; then
@@ -42,6 +40,8 @@ EOF
             echo -e "请手动备份数据后再次初始化。"
             exit 1
         fi
+    else
+        echo -e "1Panel尚未初始化，正在准备初始化工作..."
     fi
     if pacman -Ql 1panel &> /dev/null; then
         echo -e "1Panel已经安装，安装途径为ArchLinux软件包。"
