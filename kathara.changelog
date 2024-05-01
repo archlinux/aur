@@ -1,6 +1,6 @@
-Wed, 27 Mar 2024 16:36:25 +0000 Tommaso Caiazzi <tommasocaiazzi@gmail.com>
+Wed, 01 May 2024 13:07:42 +0000 Kathara Team <******@kathara.org>
 
-* Release v3.7.4
-    * (Docker) Fix "rp_filter" on "eth0" that was causing startup errors on some distributions
-    * (Megalos) Fix watch methods while starting/stopping devices that were causing "lstart"/"lclean" to hang indefinitely
+* Release v3.7.5
+    * (Docker) Fix "rp_filter" issue on all platforms and Docker versions
+    * (Docker) Fix Docker API objects reloading
     * Minor fixes
