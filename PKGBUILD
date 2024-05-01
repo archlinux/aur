@@ -7,8 +7,8 @@ pkgrel=1
 pkgdesc="Access the KeepassXC Browser API from python"
 arch=(any)
 url="https://github.com/hrehfeld/python-keepassxc-browser"
-license=('AGPL3')
 depends=("python-libnacl" "python")
+license=('AGPL-3.0')
 makedepends=("python" "python-pip")
 build() {
   pip install --upgrade --no-deps --target="keepassxc-browser" keepassxc-browser==${pkgver}
