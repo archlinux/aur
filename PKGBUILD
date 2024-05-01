@@ -2,7 +2,7 @@
 pkgname=python-kintree
 _name=${pkgname#python-}
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Fast part creation in KiCad and InvenTree"
 url="https://github.com/sparkmicro/Ki-nTree"
 depends=(
@@ -18,7 +18,7 @@ depends=(
     'python-validators'
     'python-wrapt-timeout-decorator'
 )
-makedepends=(python311-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel)
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
