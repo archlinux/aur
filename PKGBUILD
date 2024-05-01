@@ -4,12 +4,12 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=6.1.r112534.ge5f774268a
+pkgver=7.1.r115041.ge757726e89
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   alsa-lib
   aom
@@ -95,14 +95,17 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
-        '060-ffmpeg-fix-segfault-with-avisynthplus.patch')
+        '050-ffmpeg-fix-segfault-with-avisynthplus.patch'
+        '060-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch')
 sha256sums=('SKIP'
-            '9b94b90a33dc8ac9693d72c825e9c444df914428fce7cca61117146ee8f8c07b'
-            '0e277c0d5e33612ca7a11025958133b17bfbe23168b0aee5bd07f674f6fd7440')
+            'b54b47f4f3837ddc41227bd2202ea3c62e2ddb06c6cfbd7a9adc304d641d79ba'
+            '0e277c0d5e33612ca7a11025958133b17bfbe23168b0aee5bd07f674f6fd7440'
+            'f2f73793a45c9dffb033f23c1b10a612abe6528cbd06c04b06e8189d1ef208be')
 
 prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/050-ffmpeg-fix-segfault-with-avisynthplus.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/060-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch"
 }
 
 pkgver() {
