@@ -5,9 +5,9 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libvdpau
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc="Nvidia VDPAU library"
+pkgdesc="Nvidia VDPAU library (Android ${_android_arch})"
 url='https://www.freedesktop.org/wiki/Software/VDPAU/'
 license=('custom')
 depends=("android-${_android_arch}-libxext")
