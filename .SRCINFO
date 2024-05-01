@@ -1,6 +1,6 @@
 pkgbase = r-fgnet
 	pkgdesc = Functional Gene Networks derived from biological enrichment analyses
-	pkgver = 3.36.0
+	pkgver = 3.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/FGNet
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-fgnet
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-topgo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/FGNet_3.36.0.tar.gz
-	sha256sums = 17ce061d62aa29e345854d2431aa4e72b63c2fd827c03b1ef29286fc6b2212e9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FGNet_3.38.0.tar.gz
+	sha256sums = 0df1af4f2cfb7f964c9ef37396d94f994bc4c04c47e51d19ee1b480c6b600d89
 
 pkgname = r-fgnet
