@@ -1,0 +1,19 @@
+pkgbase = feishin-git
+	pkgdesc = Rewrite of Sonixd
+	pkgver = v0.6.1.r56.g9cd8807
+	pkgrel = 1
+	url = https://github.com/jeffvli/feishin
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = yarn
+	depends = mpv
+	provides = feishin
+	conflicts = feishin
+	conflicts = feishin-bin
+	source = feishin-git::git+https://github.com/jeffvli/feishin
+	source = feishin.desktop
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = feishin-git
