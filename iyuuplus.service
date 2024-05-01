@@ -1,7 +1,7 @@
 [Unit]
 Description = IYUU Auto Reseed Plus Daemon.
-Wants = network-online.target php-fpm.service mariadb.service
-After = network-online.target php-fpm.service mariadb.service
+Wants = network-online.target mariadb.service
+After = network-online.target mariadb.service
 
 [Service]
 User = iyuuplus
