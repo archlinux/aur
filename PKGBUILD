@@ -9,7 +9,7 @@ _use_meson=0
 
 _pkgname=audacious-plugins
 pkgname="$_pkgname-git"
-pkgver=4.3.1.r64.g55a28d1dd
+pkgver=4.3.1.r70.g79000fce5
 pkgrel=1
 epoch=1
 pkgdesc="Plugins for Audacious (git version)"
