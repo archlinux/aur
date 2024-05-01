@@ -1,6 +1,6 @@
 pkgbase = r-lmdme
 	pkgdesc = Linear Model decomposition for Designed Multivariate Experiments
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/lmdme
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-lmdme
 	depends = r-pls
 	depends = r-stemhypoxia
 	optdepends = r-parallel
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/lmdme_1.44.0.tar.gz
-	sha256sums = 5a8098b15b0a89be76d812ac27b344b28dafd0a3de2bd0ead9c2ce24fca511cc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/lmdme_1.46.0.tar.gz
+	sha256sums = 0f053bac608d0d03f23dbc5d1203f86fd12bc88698be0a1fee57a619c9a237a7
 
 pkgname = r-lmdme
