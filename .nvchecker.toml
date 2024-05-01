@@ -1,0 +1,5 @@
+[python-django-huey]
+source = "github"
+github = "gaiacoop/django-huey"
+prefix = "v"
+use_max_tag = true

@@ -1,0 +1,19 @@
+pkgbase = python-django-huey
+	pkgdesc = An extension for django and huey that supports multi queue management
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/gaiacoop/django-huey
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-huey
+	depends = python-django
+	source = https://github.com/gaiacoop/django-huey/archive/v1.2.0/django-huey-1.2.0.tar.gz
+	sha256sums = 98c794258da239f33c3bb4f40557467399ce20b0190d12f059f9f94a05cf58d4
+
+pkgname = python-django-huey
