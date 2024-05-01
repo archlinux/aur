@@ -1,13 +1,12 @@
 pkgbase = emacs-parseclj
 	pkgdesc = Associative data structure functions for elisp
-	pkgver = 0.2.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/clojure-emacs/parseclj
 	arch = any
 	license = GPL3
 	depends = emacs
-	source = emacs-parseclj-0.2.0.tar.gz::https://github.com/clojure-emacs/parseclj/archive/v0.2.0.tar.gz
-	sha256sums = a594e9851c3746990aa89d418152fe5a26e66738e622441947feee709ad07ecb
+	source = emacs-parseclj-1.1.1.tar.gz::https://github.com/clojure-emacs/parseclj/archive/v1.1.1.tar.gz
+	sha256sums = eb619595e051547748b4a239055836d4ba8791ca489ccf27646aa53200a8b0e2
 
 pkgname = emacs-parseclj
-
