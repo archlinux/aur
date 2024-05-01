@@ -1,6 +1,6 @@
 pkgbase = r-immunotation
 	pkgdesc = Tools for working with diverse immune genes
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/immunotation
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-immunotation
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/immunotation_1.10.0.tar.gz
-	sha256sums = c968a420a466334de246c869a861d1961891031884e91eccf5adc918a27e6582
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/immunotation_1.12.0.tar.gz
+	sha256sums = d8a859eb7e802d913f1b12dda33c04511258c2c65807d7c1aa6eb13551753e3d
 
 pkgname = r-immunotation
