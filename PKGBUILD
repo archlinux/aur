@@ -4,7 +4,7 @@
 
 pkgname=helix-ext
 _pkgname=helix
-pkgver=23.10.2
+pkgver=24.03.1
 pkgrel=1
 pkgdesc="The Helix editor, with various rejected patches applied."
 arch=('x86_64')
@@ -36,9 +36,9 @@ optdepends=(
   'yaml-language-server: for YAML language support'
   'zls: for Zig language support'
 )
-install="$_pkgname.install"
+# install="$_pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/omentic/helix-ext/archive/$pkgver.tar.gz")
-sha256sums=('26a8476dadfce2bd7427c1e0ad91c915c922a27c463b6049ece0edfcff8f2d1b')
+sha256sums=('0a25869728a5ce1beeb648390f765483fd2fd843915fe58723d0dd190906bd20')
 options=('!lto')
 
 prepare() {
@@ -51,6 +51,9 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export RUSTFLAGS="--cfg tokio_unstable"
   cargo build --frozen --release
 }
 
