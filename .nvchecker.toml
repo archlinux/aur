@@ -1,0 +1,5 @@
+[python-pympress]
+source = "github"
+github = "Cimbali/pympress"
+use_latest_release = "true"
+prefix = "v"

@@ -1,16 +1,16 @@
 # Maintainer: Jose Riha < jose 1711 gmail com >
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Thom Wiggers <thom@thomwiggers.nl>
-
 _base=pympress
 pkgname=python-${_base}
 pkgdesc="Simple and powerful dual-screen PDF reader designed for presentations"
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Cimbali/${_base}"
-license=(GPL)
-depends=(poppler-glib gtk3 python-cairo gdk-pixbuf2 python-gobject gobject-introspection python-watchdog perl-x11-protocol perl-net-dbus)
+license=(GPL-2.0-or-later)
+depends=(poppler-glib gtk3 python-cairo gdk-pixbuf2 python-gobject
+  gobject-introspection python-watchdog perl-x11-protocol perl-net-dbus)
 makedepends=(python-build python-installer python-setuptools python-wheel python-babel)
 optdepends=('vlc: for playing videos'
   'python-vlc: for playing videos'
