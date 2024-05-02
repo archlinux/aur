@@ -1,19 +1,20 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libvpl-git
-pkgver=2.10.1.r0.g79ef61b
+pkgver=2.11.0.r0.g11a9bbd
 pkgrel=1
 pkgdesc='Intel Video Processing Library (git version)'
 arch=('x86_64')
 url='https://intel.github.io/libvpl/'
 license=('MIT')
-depends=('libdrm' 'libva' 'libx11' 'wayland')
-optdepends=('intel-media-sdk: runtime for legacy Intel GPUs'
-            'onevpl-intel-gpu: runtime for Tiger Lake and newer GPUs')
-makedepends=('git' 'cmake' 'libpciaccess' 'wayland-protocols')
+depends=('gcc-libs')
+optdepends=('intel-media-sdk: runtime implementation for legacy Intel GPUs'
+            'vpl-gpu-rt: runtime implementation for Tiger Lake and newer GPUs')
+makedepends=('git' 'cmake')
 provides=('libvpl' 'onevpl' 'libvpl.so')
 conflicts=('libvpl' 'onevpl')
 replaces=('onevpl-git')
+options=('!emptydirs')
 source=('git+https://github.com/intel/libvpl.git')
 sha256sums=('SKIP')
 
@@ -31,7 +32,6 @@ build() {
         -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
         -DBUILD_EXAMPLES:BOOL='OFF' \
         -DBUILD_TESTS:BOOL='ON' \
-        -DINSTALL_EXAMPLE_CODE:BOOL='OFF' \
         -DVPL_INSTALL_LICENSEDIR:PATH="share/licenses/${pkgname}" \
         -Wno-dev
     cmake --build build
@@ -43,13 +43,6 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    
-    local _file
-    while read -r -d '' _file
-    do
-        if ! grep -q '^vpl-' <<< "$_file"
-        then
-            mv "${pkgdir}/usr/bin"/{,vpl-}"$_file"
-        fi
-    done < <(find "${pkgdir}/usr/bin" -mindepth 1 -maxdepth 1 -type f -print0 | sed -z 's|.*/||')
+    rm -r "${pkgdir}/usr/share/vpl/examples"
+    rm "${pkgdir}/"{etc/vpl/vars.sh,usr/include/vpl/preview/{,legacy/}README.txt}
 }
