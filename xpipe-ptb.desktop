@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=XPipe PTB
-Comment=Your entire server infrastructure at your fingertips
+Comment=XPipe PTB (Public Test Build)
 TryExec=/opt/xpipe-ptb/app/bin/xpiped
 Exec=/opt/xpipe-ptb/cli/bin/xpipe open %U
 Path=/opt/xpipe-ptb/app
