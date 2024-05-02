@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=safe
-_pkgver=3.42.0
+_pkgver=3.44.0
 pkgname=r-${_pkgname,,}
-pkgver=3.42.0
+pkgver=3.44.0
 pkgrel=1
 pkgdesc='Significance Analysis of Function and Expression'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-survival
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('58506ffefd54b8711081e7ef3ebf13132384b618a16daa3a58f8c15a93e81af4')
+sha256sums=('39e715e2132b95ed5c085c381f89aeea76fc36c007ec0773f930da8b714eb4cf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
