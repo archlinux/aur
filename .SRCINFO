@@ -1,7 +1,7 @@
 pkgbase = r-panviz
 	pkgdesc = Integrating Multi-Omic Network Data With Summay-Level GWAS Data
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/PanViz
 	arch = any
 	license = Artistic-2.0
@@ -24,8 +24,8 @@ pkgbase = r-panviz
 	optdepends = r-networkd3
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PanViz_1.4.0.tar.gz
-	md5sums = 5d5ced4ee7d68f57367aed30633f29e0
-	b2sums = 4ba8baaeebaef37d8846e76d4c91652d96b992976e43d80f5785f5e3f12968152c8768ec2746280e6770640f0d36539c4198b32c75724be40cf3416b3cc2e3fb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PanViz_1.6.0.tar.gz
+	md5sums = 50cc9b4020ab64a905e78fa0e5144756
+	b2sums = 77421e2f51df0161cc5d2eb6e7916c7b7fe11e0c72cdcf3f5af86da4f1b07fc75b7ed985ac920f2a49c9af6ac3de7bc64f638b35e8a8027229dc85dfd3542a42
 
 pkgname = r-panviz

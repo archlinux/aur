@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=PanViz
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Integrating Multi-Omic Network Data With Summay-Level GWAS Data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5d5ced4ee7d68f57367aed30633f29e0')
-b2sums=('4ba8baaeebaef37d8846e76d4c91652d96b992976e43d80f5785f5e3f12968152c8768ec2746280e6770640f0d36539c4198b32c75724be40cf3416b3cc2e3fb')
+md5sums=('50cc9b4020ab64a905e78fa0e5144756')
+b2sums=('77421e2f51df0161cc5d2eb6e7916c7b7fe11e0c72cdcf3f5af86da4f1b07fc75b7ed985ac920f2a49c9af6ac3de7bc64f638b35e8a8027229dc85dfd3542a42')
 
 build() {
   mkdir build
