@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PROPS
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='PRObabilistic Pathway Score (PROPS)'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e3a480e8867843c33c84a8d21ffe84ae6d27ebbaf12db4278326d4edf57082cd')
+sha256sums=('c70c41b47eead5f266339647c6f1bf52991608fb13f723843ff0c45405dfbf83')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
