@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=oligoClasses
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Classes for high-throughput arrays supported by oligo and crlmm'
 arch=('any')
@@ -47,7 +47,7 @@ optdepends=(
   r-vanillaice
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a705c7960e624afbd2a2d64e9437ca10006c1ba101e7243dce7b5f27fd96bbbd')
+sha256sums=('962c4f90080dd104bdaeb91178baa1552f761d3261130695bfd2667e2b732c96')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
