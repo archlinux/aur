@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=crisprBase
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Base functions and classes for CRISPR gRNA design"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('20cc1254ee7d33a966bb795f09f8be44')
-b2sums=('61d2bd26b66656e1f035c94d1b8399126f7e1a99e00b469d9156a90270a5e085aab3e21f13ddbc98a074358dc1112db78ab43fdf2bc13e56e7f423b1ff8fae0f')
+md5sums=('d8d720a7da0959c198fb8d0b72953592')
+b2sums=('be4f153d56188a5edbd7b46d5a863b1d927096271cb8f889e968b2f35afeb8a49a986a0d66f10f27ecb8bb40cc292805b73f6fd0b6d6b852ddc55fb83ff5adb5')
 
 build() {
   mkdir build
