@@ -1,6 +1,6 @@
 pkgbase = r-midashla
 	pkgdesc = R package for immunogenomics data handling and association analysis
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/midasHLA
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-midashla
 	optdepends = r-survival
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/midasHLA_1.10.0.tar.gz
-	sha256sums = 47e04642f640caa363d83809e675df26239efa43cc17e5cca6cfabfe990e2709
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/midasHLA_1.12.0.tar.gz
+	sha256sums = feb38afb555f7c705271ec025cd8bdb656c5415e928a53fd5b48bb8ad0beff34
 
 pkgname = r-midashla
