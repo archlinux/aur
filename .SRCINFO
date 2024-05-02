@@ -1,0 +1,15 @@
+pkgbase = inotify-info
+	pkgdesc = Linux inotify info reporting app
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/mikesart/inotify-info
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	conflicts = inotify-info-git
+	source = https://github.com/mikesart/inotify-info/archive/v0.0.1.tar.gz
+	sha256sums = 48313463e1cdc903db97e321e8705ed8b5de11df13c9f4adac98334b1c4b2433
+
+pkgname = inotify-info
