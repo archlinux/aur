@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=netboost
-_pkgver=2.10.0
+_pkgver=2.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=1
 pkgdesc="Network Analysis Supported by Boosting"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,9 +31,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('d21f645a3fe85c35ff9b9127bce1fbca'
+md5sums=('f40b8428e03822ad876243217bca4b67'
          '8ec6c48c11194032999b97b498934753')
-b2sums=('1f07022a5284a87d4c000d0120904f32914fc8efd162bfd093ec7a686d3c950907f039e682fb4e8378a750f19e6ad73e10cee0fec8667a9819d3641adc2c4852'
+b2sums=('c4fdffb5238210fb70c679b3544a539bc0e413f6cd22fd5702b81d0521d0f4edb2d2bc11e95b3b28e7f606a3d3a093ce9316af066792a1112fb8d0f320bfd7a8'
         'e607da2818fcc96d110e579ddbf7ac221aea127fbc730a1d6ac5946d608915fe3ef4af39e7b678a08c165c55d629b44df0147ecf6b758f1ff7a4715421374eab')
 
 prepare() {
