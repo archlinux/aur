@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TargetScore
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Infer microRNA targets using microRNA-overexpression data and sequence information"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-targetscoredata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('92d3b6ca138c6c3081262a758ec63766')
-b2sums=('3bae11fa98b202d587b080dc5a00f8a67fac9ea550e2f762cc427b30d045409a88da2e1d23fb771ecd3405e21b84ada91ed8d5d94691c64a5a977f76fc076897')
+md5sums=('6995aaae896369d4d34b9e2701463d83')
+b2sums=('68f70482f723afea9ca70ebf0fceb04eb6b79f67069d554c2ec81bea89a02d2d9fff84f4aaddc6947a93d19ef9829faeaa1768d0b033460fb8fbfb12b8ee5588')
 
 build() {
   mkdir build
