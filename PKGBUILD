@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TreeAndLeaf
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Displaying binary trees with focus on dendrogram leaves'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-stringr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('61dda9ec394afa8d83e99895d73201b9dcd1f9ce2437f8ca05b651f96c5e368c')
+sha256sums=('622c33fdea5477a007c4c62fffeea21f8d7c0b5a28a289ab4e49ef71b8d9a13a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
