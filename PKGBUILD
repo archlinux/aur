@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=consICA
-_pkgver=2.0.0
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="consensus Independent Component Analysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b64f871ca062dc65d6a883b000c761d8')
-b2sums=('6c06df7a4b254a1546391f0185f99790fa860056a6373ed44a6ff17b7e929cbf978ae05153ae0e7bdcf476525586a93093ac3c7e1187f7f86de35420b9336218')
+md5sums=('65d0a87670378e05b846abe196f7d232')
+b2sums=('055c5c0979810ace9d014c539096366a3b98abba5573abaf67c719f654a5cba0732d14a72fdd30abb08ba6ea1632f35356ed874dca3637dd8c590bd333db8f49')
 
 build() {
   mkdir build
