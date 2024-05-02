@@ -1,10 +1,10 @@
 pkgbase = python-wolkenbruch
 	pkgdesc = Remind you to pack your rain gear when it’s forecast to rain
 	pkgver = 0.6.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/christophfink/wolkenbruch/
 	arch = any
-	license = BSD
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
 	depends = python
 	depends = python-geocoder
