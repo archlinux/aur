@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CNVMetrics
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Copy Number Variant Metrics"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ebb4f847744aaddcc125d870b1a67154')
-b2sums=('e6a350c3fd5685ea76a3856bc0e2c199aec668c716d3ea5bb483050d198e894d85b1b7fe8e93ea79b65934403eec9b27dcf53087511d91b11638e136d660f844')
+md5sums=('daecc5c14654f227e031a0e01dd1c396')
+b2sums=('54fa22d683fa24b93152e56fd946cab372b89f133c3d9f6930fb0c1f4bd0d3bac74e2c5ece6cb9e0e124227684abb16eb28eaa9dc5739887d245a5b3d0c87838')
 
 build() {
   mkdir build

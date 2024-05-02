@@ -1,7 +1,7 @@
 pkgbase = r-cnvmetrics
 	pkgdesc = Copy Number Variant Metrics
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/CNVMetrics
 	arch = any
 	license = Artistic-2.0
@@ -18,8 +18,8 @@ pkgbase = r-cnvmetrics
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNVMetrics_1.6.0.tar.gz
-	md5sums = ebb4f847744aaddcc125d870b1a67154
-	b2sums = e6a350c3fd5685ea76a3856bc0e2c199aec668c716d3ea5bb483050d198e894d85b1b7fe8e93ea79b65934403eec9b27dcf53087511d91b11638e136d660f844
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNVMetrics_1.8.0.tar.gz
+	md5sums = daecc5c14654f227e031a0e01dd1c396
+	b2sums = 54fa22d683fa24b93152e56fd946cab372b89f133c3d9f6930fb0c1f4bd0d3bac74e2c5ece6cb9e0e124227684abb16eb28eaa9dc5739887d245a5b3d0c87838
 
 pkgname = r-cnvmetrics
