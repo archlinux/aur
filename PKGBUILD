@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=runibic
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='runibic: row-based biclustering algorithm for analysis of gene expression data in R'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0db39adb3aebc4a0f26ac8fa38ac04addcadb56ad7b68ab4023ed6374d957766')
+sha256sums=('c4fc94b49d7893cde64b0e18fce1804a10a40afdff0c6a4ab802dde79a584560')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
