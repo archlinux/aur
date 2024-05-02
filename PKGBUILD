@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rhdf5
-_pkgver=2.46.1
+_pkgver=2.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="R Interface to HDF5"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -14,7 +14,6 @@ depends=(
   openssl
   r-rhdf5filters
   r-rhdf5lib
-  r-s4vectors
   zlib
 )
 optdepends=(
@@ -29,17 +28,9 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "fix-build.patch")
-md5sums=('947e662fe5f427ed0cc839e8049b431e'
-         'e7763c1284318e623c69572315650118')
-b2sums=('6915bc95d312b394a315b55935c37e6cb4be5f6207eb46ff61c1b2933409d612cccf4920d2cc650e563959c0acfcf3b1421bdd17a72cce18034c7b0f971d0253'
-        'f776cc9e80195b4e4dbfe85e0bf3da4c5dc1967219120072949e847ec725283e74293a71cd51a6d6b57dd54b5f2aae80c4150ba30cb74efdd83fb2b135ae5698')
-
-prepare() {
-  # fix format string errors
-  patch -Np1 -i fix-build.patch
-}
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('c5ed00dbade32b03ccd37f110970ad3e')
+b2sums=('cb1857d4d9b54d409cece482b7a39e25885565ab212b6692cf8155873a87d8dc587a545e634adbe3e1f12534ab354abb790ed76bb310d825abe62fd2a9395332')
 
 build() {
   mkdir build
