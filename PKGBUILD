@@ -8,7 +8,7 @@
 set -u
 pkgname='libreswan'
 #pkgname+='-git'
-pkgver='4.15'
+pkgver='5.0'
 pkgrel='1'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
 arch=('i686' 'x86_64')
@@ -30,9 +30,9 @@ source=(
   "https://download.libreswan.org/${pkgname}-${pkgver%%.r*}.tar.gz"
   'tmpfiles.conf'
 )
-md5sums=('ded0c06c31790be39e8881174b40ce04'
+md5sums=('185392cd6037bcc2eb9fde75423e550d'
          '77399a739ee99f8bc54837684d7c39d5')
-sha256sums=('fe60d7db398c8ee225055db365ec968a24aebcbc5c35061131fcffdad1be04af'
+sha256sums=('10bc0adc90b9e981a30dfefba7daff200841ecb9910f9d671f137ffc1414286a'
             '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
@@ -58,10 +58,10 @@ fi
 
 # https://git.centos.org/rpms/libreswan/blob/c8s/f/SPECS/libreswan.spec
 _bargs=(
-  FINALLIBEXECDIR='/usr/lib/ipsec'
+  LIBEXECDIR='/usr/lib/ipsec'
   #INC_MANDIR='/usr/share/man'
-  FINALMANDIR='/usr/share/man'
-  FINALSBINDIR='/usr/bin'
+  MANDIR='/usr/share/man'
+  SBINDIR='/usr/bin'
   #INC_USRLOCAL='/usr' # required by 3.32 for /usr/share/doc
   PREFIX='/usr'
   USE_DNSSEC=false
