@@ -1,0 +1,17 @@
+pkgbase = caustic-grammar
+	pkgdesc = Caustic's canonical grammar (Python package)
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://codeberg.org/Caustic/CausticGrammar
+	arch = any
+	groups = caustic
+	license = Apache-2.0
+	makedepends = python-installer
+	depends = python
+	depends = caustic-cst
+	depends = caustic-parser
+	noextract = caustic.grammar-2.0.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/c/caustic.grammar/caustic.grammar-2.0.1-py3-none-any.whl
+	sha256sums = de9e06dc685043af3f112e19639fc674337bf8cd0676649b0c1904c162eb6edc
+
+pkgname = caustic-grammar
