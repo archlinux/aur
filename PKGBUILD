@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ASGSCA
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Association Studies for multiple SNPs and multiple traits using Generalized Structured Equation Models"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c0e60b4fa228444ab7863044881fa8bb')
-b2sums=('38f7540ef0e6208515ca92b3f5a24eccdc952adb22116e37f2b7c80a82c24924d23283439d7fd30ada3f2a2950e5b785d6727b89a8f290d0c08f318b6268f7fb')
+md5sums=('fc8c88bc8d56da65ef69be5186a432a6')
+b2sums=('a246c507a0054ab7d6c0fedbea7ecd3d69cfd8e9e6ef6fbeb27a7a6e78fd311d41178616cd2aad4888fff4b2ab6d670c8f9e8435a1aace010cd37fe252af9d21')
 
 build() {
   mkdir build
