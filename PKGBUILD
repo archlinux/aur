@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OLINgui
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
+pkgver=1.78.0
 pkgrel=1
 pkgdesc='Graphical user interface for OLIN'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-widgettools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e7985a59139df623f1dcaa338eaa6f94f407ba31d98fd4eb31361ca2dc6b3b1e')
+sha256sums=('bf240fb322d9ca12d18889bf53056cd2c3ebbf212ab7115a1410d0921ef09739')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
