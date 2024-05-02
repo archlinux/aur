@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ccdata
-_pkgver=1.28.0
+_pkgver=1.29.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Data for Combination Connectivity Mapping (ccmap) Package"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('60cbd595e53467fd61e1edc4f8ea47e7')
-b2sums=('6f9abdf4262d9174de356072882e186e9378622f54247396a75e4a4c074c083e5a668213d2710af49181bb3eff8f5e167120e358da64bd2e29bc5697c7df4ea3')
+md5sums=('3d2f66811dde6d1dd896f79354b8623f')
+b2sums=('6406a9cfe02cdb621fbacffd2d7a0eb66c9bbdad4c27aa078157ab8234c7fd2ac8afe57affcbb1ead81f42f1a0e4621d4f0a6fdcccca75044627756ced7a97c7')
 
 build() {
   mkdir build
