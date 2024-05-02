@@ -1,6 +1,6 @@
 pkgbase = r-translatome
 	pkgdesc = Comparison between multiple levels of gene expression
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tRanslatome
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-translatome
 	depends = r-plotrix
 	depends = r-rankprod
 	depends = r-topgo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tRanslatome_1.40.0.tar.gz
-	sha256sums = 60a6ec88eb787450bf5aafe22ec6d58308eabc9d979aabcd954c5ca75e55cd21
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tRanslatome_1.42.0.tar.gz
+	sha256sums = 8f0548b9a3b7c75295eff88c0f9fbbd3637fc820d74879a3df8c9eca8e3ad976
 
 pkgname = r-translatome
