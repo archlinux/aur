@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ReadqPCR
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Read qPCR data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-qpcr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b92a0fe88b39abffbc0c46c36a76a8de')
-b2sums=('e429f64951a00d4da1c95b83a4f2d1c2d1f5b4d279d34be776ed640b751bf766913eace515f4a0b44c6efd5739cf2d936c88437a46961b29a53175e9824d7bbe')
+md5sums=('7b1a85defeadf5e19004b9846186a766')
+b2sums=('265a094e4a36b20d82d2a930af09c47f928e4b1f57df85a57e42b32e088fda5a6a403e02f4d9de39cf29178ad595862b3efc0225381efeabb3593b4b158a9795')
 
 build() {
   mkdir build
