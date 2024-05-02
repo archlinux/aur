@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cellHTS2
-_pkgver=2.66.0
+_pkgver=2.68.0
 pkgname=r-${_pkgname,,}
-pkgver=2.66.0
+pkgver=2.68.0
 pkgrel=1
 pkgdesc='Analysis of cell-based screens - revised version of cellHTS'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-ggplot2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('72ab8845ac7b9283065389c2ef7da4b91e70a1333a2937bd924cba632e9889b3')
+sha256sums=('5f5f8c4bb78a1670db838e6008432ceecab1774a87bc5b7c6824b34690ee1a47')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
