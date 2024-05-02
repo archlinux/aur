@@ -5,15 +5,21 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Sphinx Extension that redirects non-existent pages to working pages"
 arch=('any')
 url="https://sphinxext-rediraffe.readthedocs.io"
-license=('BSD')
+license=('MIT')
 makedepends=('python-setuptools')
 checkdepends=('python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('48a2ad7999cbc5271c1b37ba0c31a894')
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i "s/main/${pkgver}/" setup.py
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
