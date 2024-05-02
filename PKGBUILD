@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NuPoP
-_pkgver=2.10.0
+_pkgver=2.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="An R package for nucleosome positioning prediction"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('65372d828848fa588584e42324762643')
-b2sums=('62e72a0067788c712c38bd8a70f19541739a6113871c90b8a953f3e7a44b2248ba2b0ae0f7ef01aad9dfc38581f1ca86fae8de37964fc1daf1fe535eb03e10f6')
+md5sums=('47524c5843f04ebb4d52d86470446949')
+b2sums=('032b97405d123ba288768978e60fb86e6f288c8d6b071b02238b43f14c609d4e4288d63cd120e91d6516c6cc4ad88c7fa53deb9493b6bb3efbf1e6cd53fb9cf1')
 
 build() {
   mkdir build
