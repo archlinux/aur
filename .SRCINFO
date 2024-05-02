@@ -1,7 +1,7 @@
 pkgbase = ares-emu
 	pkgdesc = Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation.
-	pkgver = 137
-	pkgrel = 2
+	pkgver = 138
+	pkgrel = 1
 	url = https://ares-emu.net/
 	install = ares.install
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = ares-emu
 	depends = vulkan-icd-loader
 	provides = ares-emu
 	conflicts = ares-emu
-	source = https://github.com/ares-emulator/ares/archive/refs/tags/v137.tar.gz
-	sha512sums = 7fd2091c197f3fafac99d1f28e8fdb26d02f3f8a0e58e01f9db5fd911f424862eb87617168cd63ad01d113aa582b1e9ce09a38341f6bb6e17dfe019da438da4b
+	source = https://github.com/ares-emulator/ares/archive/refs/tags/v138.tar.gz
+	sha512sums = 59f8f7992b9d7ed61e14b736c501f844e15806cee832bc386382e4a41c87a76835348b373b703fbe4dd84d883c7e140e5c54cf39a3acf23bc766cf94af04aa54
 
 pkgname = ares-emu
