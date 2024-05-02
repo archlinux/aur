@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowVS
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Variance stabilization in flow cytometry (and microarrays)'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1ab7defff0cbebf8f71dee48ae95426546f31277ed929022ab36b9283bbf54a6')
+sha256sums=('e50c8febc78ba848d545133971f53a63874101cf2423f320c9a2304c8787f9cc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
