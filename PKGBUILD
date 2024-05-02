@@ -5,12 +5,12 @@
 pkgname=ghcup-hs-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.1.22.0.r11.g63e714d
-pkgrel=1
+pkgrel=2
 pkgdesc='GHC toolchain installer'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url="https://www.haskell.org/ghcup/"
 license=('LGPL-3.0-only')
-makedepends=(git stack)
+makedepends=(git stack yq)
 optdepends=('curl'
             'wget'
             "ncurses5-compat-libs: using older ghc's linking against libtinfo.so.5")
@@ -25,9 +25,22 @@ pkgver() {
     git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "$pkgname"
+
+    # enable tests
+    yq -i --yaml-output \
+        '.build."test-arguments"."no-run-tests" = false' stack.yaml
+}
+
 build() {
     cd "${pkgname}"
     stack build
+}
+
+check() {
+    cd "${pkgname}"
+    stack test
 }
 
 package() {
