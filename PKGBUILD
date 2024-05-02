@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=lemur
-_pkgver=1.0.5
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Latent Embedding Multivariate Regression"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -46,8 +46,8 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d6ad01367e439d6e55960148c94f3a37')
-b2sums=('f2ac26199ade185a761ddd76b22cd843755d10dd177627244d34138557968537b77363d39e70e2d4f0e3affd25e93c490ae014f7b4f702fb537532de05ba93f3')
+md5sums=('898438036f7c1f21e787090e036e7acf')
+b2sums=('c80ae42c0442373ed004e9fa92f794ba605e9b05480abba89f76d6cd5c34af68ef16a712cb38c0489f781b74e31797e853bf0eec0a38eaf1f52d704a7da13344')
 
 build() {
   mkdir build
