@@ -1,6 +1,6 @@
 pkgbase = r-singler
 	pkgdesc = Reference-Based Single-Cell RNA-Seq Annotation
-	pkgver = 2.4.1
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SingleR
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = r-singler
 	optdepends = r-singlecellexperiment
 	optdepends = r-testthat
 	optdepends = r-viridis
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SingleR_2.4.1.tar.gz
-	sha256sums = 4d8fb557544732511d3ae2e25959fb3f53c6756b2da5db6f2cce69155b219b7e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SingleR_2.6.0.tar.gz
+	sha256sums = 26605843ba9e6d5c916008349e99c6a0437813827047fa217147ba1fa25e6350
 
 pkgname = r-singler
