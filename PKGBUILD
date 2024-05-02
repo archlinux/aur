@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rfaRm
-_pkgver=1.14.2
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.2
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='An R interface to the Rfam database'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-treeio
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6b953d538843e8e4b4d0cc8b324b844096be065265277c279b51876ae2f1395e')
+sha256sums=('0299a06a387552ff9c35402e19934a27d920312bcde18ed86263fcc917bb13b1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
