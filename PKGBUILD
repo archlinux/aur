@@ -3,7 +3,7 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=otr
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Decode and cut video files from Online TV Recorder (OTR)"
 arch=(
   aarch64
@@ -21,6 +21,7 @@ depends=(
 )
 makedepends=(  
   cargo
+  clang
   ffms2
   git
 )
