@@ -1,14 +1,14 @@
 pkgbase = r-garfield
 	pkgdesc = GWAS Analysis of Regulatory or Functional Information Enrichment with LD correction
-	pkgver = 1.30.0
-	pkgrel = 2
+	pkgver = 1.32.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/garfield
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = r
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/garfield_1.30.0.tar.gz
-	md5sums = bf1974925a6c10b95ada01ff6d46bf15
-	b2sums = df24e1ee2360e81ee2ac1b7f4a8a32e9dfa14610575d4dbc85831859960ceaa796c0c7b9cceed05ea933411aadd31ac8ef8af77f4809a9970ee9ed39bf40c467
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/garfield_1.32.0.tar.gz
+	md5sums = c45a2a9ce618721c6757e328479877e4
+	b2sums = 1e9051be1177c8482b9da981e7f09be9666526279b326a163917d14a2176ceec67c376013c54e17e7cbb88abb449456085cd1156fca3cef81ff79e558781eea5
 
 pkgname = r-garfield
