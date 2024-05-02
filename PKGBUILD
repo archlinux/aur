@@ -2,19 +2,16 @@
 
 pkgname=python-domdf-python-tools
 pkgver=3.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Helpful functions for Python'
 arch=('any')
 url='https://domdf-python-tools.readthedocs.io'
 license=('MIT')
-# double check if the importlib packages are actually required
 depends=(
   'python'
   'python-natsort'
   'python-typing_extensions'
   'python-pandas'
-  'python-importlib-metadata'
-  'python-importlib_resources'
 )
 makedepends=(
   'git'
