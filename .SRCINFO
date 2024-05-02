@@ -1,6 +1,6 @@
 pkgbase = r-beadarray
 	pkgdesc = Quality assessment and low-level analysis for Illumina BeadArray data
-	pkgver = 2.52.0
+	pkgver = 2.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/beadarray
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = r-beadarray
 	optdepends = r-nozzle.r1
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/beadarray_2.52.0.tar.gz
-	sha256sums = 59eab3e4d2fc4595b4ee4c4898bb2f031a45bc6e3fcb0550179bd644ca519363
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/beadarray_2.54.0.tar.gz
+	sha256sums = 98b2f9f725d6af78809275b0977e96813b8791cef31bb8c819b3a0245535aa79
 
 pkgname = r-beadarray
