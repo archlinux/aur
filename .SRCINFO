@@ -1,0 +1,14 @@
+pkgbase = wolfclu
+	pkgdesc = This is the wolfSSL Command Line Utility (wolfCLU).
+	pkgver = 0.1.5
+	pkgrel = 0
+	url = https://github.com/wolfSSL/wolfCLU
+	arch = x86_64
+	license = GPL2
+	makedepends = autoconf
+	depends = wolfssl
+	provides = wolfclu
+	source = https://github.com/wolfSSL/wolfCLU/archive/refs/tags/v0.1.5-stable.tar.gz
+	sha512sums = c431439c3f70219a3abe362b991c225ac0a457bcd393ec9bb2e9313147aa96d8093bd32bcd4f7204f157c753077d0b309665c7f03ca96c5c8af529c71424233d
+
+pkgname = wolfclu
