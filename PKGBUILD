@@ -2,7 +2,7 @@
 # Maintainer: Rob Shinn <rob.shinn@gmail.com> 
 
 pkgname=autodafe-git
-pkgver=0.5.r16.gc03993c
+pkgver=0.5.r21.ge8290ae
 pkgrel=1
 pkgdesc='Tools for converting an autotools recipe to a plain Makefile.'
 provides=('autodafe')
@@ -14,8 +14,8 @@ makedepends=('make' 'asciidoctor')
 depends=('python3')
 source=("autodafe-git::git+https://gitlab.com/esr/autodafe")
 sha256sums=('SKIP')
-docs=('NEWS' 'README' 'TODO' 'de-autoconfiscation' 'configure')
-htmldocs=('NEWS.html' 'README.html' 'TODO.html' 'de-autoconfiscation.html' 'deconfig.html' 'configure.html' 'makemake.html')
+docs=('NEWS' 'README' 'TODO' 'de-autoconfiscation' 'hacking' 'configure')
+htmldocs=('NEWS.html' 'README.html' 'TODO.html' 'de-autoconfiscation.html' 'deconfig.html' 'hacking.html' 'configure.html' 'makemake.html')
 
 
 pkgver() {

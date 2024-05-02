@@ -1,6 +1,6 @@
 pkgbase = autodafe-git
 	pkgdesc = Tools for converting an autotools recipe to a plain Makefile.
-	pkgver = 0.5.r16.gc03993c
+	pkgver = 0.5.r21.ge8290ae
 	pkgrel = 1
 	url = http://www.catb.org/~esr/autodafe
 	arch = any
