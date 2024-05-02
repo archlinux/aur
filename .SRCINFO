@@ -1,6 +1,6 @@
 pkgbase = r-omadb
 	pkgdesc = R wrapper for the OMA REST API
-	pkgver = 2.18.0
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OmaDB
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-omadb
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OmaDB_2.18.0.tar.gz
-	sha256sums = e7b14fdbd507a7c189fd9a84aa027533fbf10d92bbee2275ef76604b5245fed9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OmaDB_2.20.0.tar.gz
+	sha256sums = eb8427bc0d4abe6f89f144ca3b695734299862390a4fe64d1deb0185bdc27024
 
 pkgname = r-omadb
