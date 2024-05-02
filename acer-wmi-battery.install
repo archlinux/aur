@@ -1,0 +1,16 @@
+post_install() {
+    echo
+    echo "Please perform a reboot AFTER THIS CURRENT installation."
+    echo "Then enter the following command in the terminal to enable Acer's \"Battery Charge Limit\":"
+    echo
+    echo "echo 1 | sudo tee /sys/bus/wmi/drivers/acer-wmi-battery/health_mode"
+    echo
+    echo "Once done, you should be good to go!"
+    echo
+    echo "In case something's wrong, please CHECK the following:"
+    echo "- Ensure \"Battery Charge Limit\" is an option on your laptop in \"Acer Care Center\" on Windows 10/11"
+    echo "- Check & report the problem on https://github.com/frederik-h/acer-wmi-battery/issues"
+    echo
+    echo "Loading. Please wait in 5 seconds..."
+    sleep 5
+}

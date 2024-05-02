@@ -1,0 +1,9 @@
+#Ignore everything
+*
+
+# Exclude these
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.conf
