@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=similaRpeak
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Metrics to estimate a level of similarity between two ChIP-Seq profiles"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -23,8 +23,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3d91ba41941b12c9f93e77872e444c4d')
-b2sums=('d748dfef78a3a31c7e3d1f55b3baf96156548f60aeffb6ac5f1bd12ce6da6332cb63c7cea83618d2241046cb496f786833d9864d1d75ab3636fdd6b1539dd45c')
+md5sums=('2186454c92931fd6ec881ccbe0c6482e')
+b2sums=('3279bde03879f1394e9ae1d078565f14769b4e2d2beeb63024f702b9f2d2ace5dbf1edceaaa44adfdde3ccfc70fb2b80a9539eff633c80cb86ca88b11d807f7f')
 
 build() {
   mkdir build
