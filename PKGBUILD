@@ -31,10 +31,9 @@ pkgver() {
 _bumpVer() {
     yq -i --yaml-output --arg pkg "$1" --arg ver "$2" \
         "$(cat <<'EOF'
-        (."extra-deps".[]
-        | strings
-        | select(match("^\($pkg)-[0-9.]+")))
-        |= $pkg + "-" + $ver
+        ."extra-deps"
+        |= del(.[] | select(match("^\($pkg)-[0-9.]+")))
+         + [ "\($pkg)-\($ver)" ]
 EOF
 )" stack.yaml
 }
