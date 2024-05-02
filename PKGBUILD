@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AMOUNTAIN
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Active modules for multilayer weighted gene co-expression networks: a continuous optimization approach"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -23,8 +23,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('acf007b4bceaa196843cbcf221b762ba')
-b2sums=('bde62b1f56ccbca5aa920778fc92dbf8fdc650844db91bf5cfb0480b1dcb72049758c318fa3f906d07d15a537bb541ad35f48290e23da41bf6052103eb0ff246')
+md5sums=('ad2c17a6cb53b5a093ac92f3870d1cba')
+b2sums=('ee48c9fa0c012a4dd2fd1488c9c95b515eee43628e1e900985a26525de34df5ed63473c02db2524f681fd67e709ecff11216b3f38c4724be291407528e3034ae')
 
 build() {
   mkdir build
