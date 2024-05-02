@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=omada
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Machine learning tools for automated transcriptome clustering analysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d214fdb20c51cbce86bf1d34c59cb84b')
-b2sums=('bc0b50c6b961a68365fd33a3dd260c580c32a01d5bab0f5b21a2f1b1c68f21223d0d21778f17559370b292ed5573dc6d263c23b38a3eedee874f57b2c5250430')
+md5sums=('6f2b574eef1d352e074a064d77b6bf45')
+b2sums=('37b754cf1ba17f21df3432e85f7dfa114c621b89b8e599194cf7f2c49a399c8c4e50713958eba571eba45e7ee1e53e0f2cbaa7dc155d9aeef89a79321150a50c')
 
 build() {
   mkdir build
