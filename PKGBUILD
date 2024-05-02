@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KBoost
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Inference of gene regulatory networks from gene expression data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('853c93af3367a8af56b60aea8495f44b')
-b2sums=('90e22d4770056298a98d2554cdf6cfaf5918d971e6ddbb96ea1b0e7cf21666c2e5a0cc4fd50a4d3708bc6489fe7dba9268a0df25bebd0772dab6d076ccdef0a5')
+md5sums=('75f7a1edbfa0f833b54210340a666ed8')
+b2sums=('debf0a375ed8c110cfb74e37d9ab78ed74bf6503353d69bba5cfa450f51293e9947b154682ca6720a0670390d101752f5d68a2f2d88ed160e51c3e7638a963fd')
 
 build() {
   mkdir build
