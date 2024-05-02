@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BiocHail
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="basilisk and hail"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4707c299d0bb3b41001065a753d89f33')
-b2sums=('25a4267f3ff39afe7185a5ea7d3bc9dafc5d870e8368a863372ba555695869e6196f0a1d98496c8e4600e7493ee65cb9ffb958e8d663e98832843b1d631c8a86')
+md5sums=('94e7a91285e0640da2c813ff3f96f1af')
+b2sums=('8dec20307934f1c6d7a2c70d0e9f0f08c6f4484adc20b33532c79b64db94a6a9bc11fa283eab919d8ad6b2592228d06c1aed2c1a92ee75110e4bd98ea0ef2794')
 
 build() {
   mkdir build
