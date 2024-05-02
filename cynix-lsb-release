@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Install lsb-release package
-sudo pacman -S lsb-release
-
 # Define content for the custom lsb-release file
 LSB_CONTENT="DISTRIB_ID=Cynix
 DISTRIB_RELEASE=1.0
