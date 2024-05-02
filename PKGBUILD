@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=diffuStats
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Diffusion scores on biological networks"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7c47ae0431034f3de807ad1fa3684530')
-b2sums=('1e184621fd58891acbeb07c41cbb2ced11394db6aaa1d4133b57faf10bb84ab639fb1b99da8de4d01b58c7285feff1847a0a4c40250b86103c8851ed120ce754')
+md5sums=('7acb79b4e235d46ccdd561c0d17f54b6')
+b2sums=('fbfa3b4fa0722fb30e7edafac3c241fb0e446de2115f79acb9c89f09f83cc1e0852cd145bcb923a7322d97180c07fce30af56294f92bd86254874310bb038384')
 
 build() {
   mkdir build
