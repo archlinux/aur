@@ -1,6 +1,6 @@
 pkgbase = mauikit-terminal-git
 	pkgdesc = Terminal support components for Maui applications
-	pkgver = 4.0.0.r68.gbdac2d3
+	pkgver = 4.0.0.alpha.20240502
 	pkgrel = 1
 	url = https://invent.kde.org/maui/mauikit-terminal
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = mauikit-terminal-git
 	depends = kconfig
 	depends = kcoreaddons
 	depends = ki18n
+	depends = kpty
 	depends = mauikit-git
 	depends = qt6-base
 	depends = qt6-declarative
