@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tigre
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='Transcription factor Inference through Gaussian process Reconstruction of Expression'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
   r-puma
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5d212c693c1c061976ab79dada6b1c3f373e4c63a9cc0b5fb049f88fe775c6f2')
+sha256sums=('9d3f4abdbf2239125f9366cca8e1a7b93919e4a45621b951d6ed937ad48baebd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
