@@ -1,13 +1,16 @@
-diff --git a/flowCore/src/Makevars b/flowCore/src/Makevars
-index ec6344b..f04c475 100644
---- a/flowCore/src/Makevars
-+++ b/flowCore/src/Makevars
-@@ -1,4 +1,4 @@
--CXX_STD = CXX11
-+CXX_STD = CXX17
-     
- PKG_LIBS = `${R_HOME}/bin/Rscript -e "cytolib:::cytolib_LdFlags()"`  
+diff --git a/flowCore/src/fcsTextParse.cpp b/flowCore/src/fcsTextParse.cpp
+index 524f9ad..8cd6b7a 100644
+--- a/flowCore/src/fcsTextParse.cpp
++++ b/flowCore/src/fcsTextParse.cpp
+@@ -128,7 +128,7 @@ typedef std::vector<myPair> myPairs;
+ 			 std::string serror = "uneven number of tokens: ";
+ 		     serror.append(boost::lexical_cast<std::string>(j));
+ 		     serror.append("\n");
+-  			  Rprintf(serror.data());
++  			  Rprintf("%s", serror.data());
+ 			    Rprintf("The last keyword is dropped.\n");
  
+ 		 }
 diff --git a/flowCore/tests/testthat.R b/flowCore/tests/testthat.R
 index c979b0d..6d81483 100644
 --- a/flowCore/tests/testthat.R
