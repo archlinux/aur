@@ -11,9 +11,9 @@ depends=(freetype2 fontconfig)
 makedepends=()
 provides=(figma-agent-linux)
 conflicts=(figma-agent-linux)
-source=("https://github.com/neetly/figma-agent-linux/raw/$pkgver/LICENSE"
-        "https://github.com/neetly/figma-agent-linux/raw/$pkgver/figma-agent.service"
-	"https://github.com/neetly/figma-agent-linux/raw/$pkgver/figma-agent.socket")
+source=("https://raw.githubusercontent.com/neetly/figma-agent-linux/$pkgver/LICENSE"
+        "https://raw.githubusercontent.com/neetly/figma-agent-linux/$pkgver/figma-agent.service"
+	"https://raw.githubusercontent.com/neetly/figma-agent-linux/$pkgver/figma-agent.socket")
 source_x86_64=("https://github.com/neetly/figma-agent-linux/releases/download/$pkgver/figma-agent-x86_64-unknown-linux-gnu")
 source_aarch64=("https://github.com/neetly/figma-agent-linux/releases/download/$pkgver/figma-agent-aarch64-unknown-linux-gnu")
 sha256sums=('a70a5ae5187682046f073f7c6a0387970f1422f211bfab1571c498f91dd72636'
