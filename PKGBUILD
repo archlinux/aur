@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeomxTools
-_pkgver=3.6.2
+_pkgver=3.8.0
 pkgname=r-${_pkgname,,}
-pkgver=3.6.2
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='NanoString GeoMx Tools'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d256eb7048fc5b24ba097459561d86882d846a8d359499c6d6fc70129bea9106')
+sha256sums=('0cc8dbb33b6b7e5e45745ab6e140cc9fc5d2d3e4022a510e74ad468814006924')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
