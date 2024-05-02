@@ -3,7 +3,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 _base=pingparsing
 pkgname=python-${_base}
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="CLI and library parser and transmitter for ping"
 arch=(any)
@@ -14,10 +14,9 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-pytz)
 provides=("${_base}")
 replaces=("${_base}")
-source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz
-  https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz.asc)
-sha512sums=('98236ad5c5206a78b1b92f14c41c9bfeb85405dc6bbdfa7e935ca8e6da669d2aa1bf7a229edffbf5cdfd64abd76ad8b7deb2363febd296e0ddf39bb40acb139f'
-  'SKIP')
+source=(${url}/releases/download/v${pkgver}/${_base}-${pkgver}.tar.gz{,.sigstore})
+sha512sums=('abdef6f7d3fef3b793b9ec8c1a4276e4bd7dbb9caf5baf3b5e548105ad55559fe8a303ef28a541d0a9602f8a15560a70438babdd8bb43be228f28c4f94353531'
+  'de05ff4a95d50af04913e8d8f589e163444ea820a3a2dc4100989e4d09db82f09f54885376cda318fd265815810c54bf1434114e2a12fc1acc6fcc4b39d8614f')
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
