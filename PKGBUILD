@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ISoLDE
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Integrative Statistics of alleLe Dependent Expression"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('448414b250ff7c903395638de3688411')
-b2sums=('bcb63ed3ab162c5d194a2f4470cb9fc455a295dafdeaacfdae0ff24fda7c6278c9684873ecada6249d44ee45afe7d87a295e7de351b00c84029043bc14c9cf59')
+md5sums=('71a61bc791d84938d4e7f5b5f705feaa')
+b2sums=('4c727481dccf7f90510bf18357943670617c82fdc91581acb9deb9e7279a74efbfe9aecfa0daa63f16c8b3446f43f3b46bcf49827d017eb2943f5fd3dcfd7157')
 
 build() {
   mkdir build
