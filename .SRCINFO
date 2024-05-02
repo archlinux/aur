@@ -1,7 +1,7 @@
 pkgbase = r-mcseadata
 	pkgdesc = Data package for mCSEA package
-	pkgver = 1.22.0
-	pkgrel = 2
+	pkgver = 1.23.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/mCSEAdata
 	arch = any
 	license = GPL-2.0-only
@@ -9,8 +9,8 @@ pkgbase = r-mcseadata
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/mCSEAdata_1.22.0.tar.gz
-	md5sums = 11f8150e223a0e8d8fa5b9b8dedaa374
-	b2sums = 12642d6ef8b02ade9c7864210e6a902ace8f5d243b0a98108daa9c28c1d0066ef6c108f380cf8be19a024b3246cdbb30d7e74577312f7f31a50c1002db2d0923
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/mCSEAdata_1.23.0.tar.gz
+	md5sums = b25f7027a3088207687d67256f79939e
+	b2sums = d3b36711f373d2f20acc16099fa8a2c2c7af0918e234a3583672f8cef2b1e329a37b4494963ba9a2686c7ac1a631e13c13b3da927f21e771aa8640625430a187
 
 pkgname = r-mcseadata
