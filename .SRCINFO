@@ -1,6 +1,6 @@
 pkgbase = r-biocset
 	pkgdesc = Representing Different Biological Sets
-	pkgver = 1.16.1
+	pkgver = 1.17.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocSet
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-biocset
 	optdepends = r-org.hs.eg.db
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocSet_1.16.1.tar.gz
-	sha256sums = 0d1ba2b9632f7bf7b2cc9249843316ed3c3cbcef9af6c57a3cf2bb0cc132b1e2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocSet_1.17.1.tar.gz
+	sha256sums = 8d8c38257e1ae82a45948c985de20b2e55d2c634fd9957ae3bcb29c8cef9ebbb
 
 pkgname = r-biocset
