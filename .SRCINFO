@@ -1,6 +1,6 @@
 pkgbase = r-phenopath
 	pkgdesc = Genomic trajectories with heterogeneous genetic and environmental backgrounds
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/phenopath
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-phenopath
 	optdepends = r-rmarkdown
 	optdepends = r-singlecellexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/phenopath_1.26.0.tar.gz
-	sha256sums = 24e1e4f03ebaf8b946671babd47f872d11f1c8df277780cb957dc7afb5bd9c84
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/phenopath_1.28.0.tar.gz
+	sha256sums = 294532ac785fa6babdc03fc03fe6b65cb6bd0cecbdae6b4f1120cce1ba367b1c
 
 pkgname = r-phenopath
