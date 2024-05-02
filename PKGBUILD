@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fgsea
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Fast Gene Set Enrichment Analysis"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -42,8 +42,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('53b8ab8a13390a0920bc13eeba3aa1b8')
-b2sums=('a1c4a1c702f629084de6c8dd60f3094fc1fc1ff15df2c3d5319e9bd303cc247e7a5bc321123c9bff5364002035cb5cf19ae8b161e5869c76a0026fc97e90fe8a')
+md5sums=('ee0533776cc2027d55f81c5dca569464')
+b2sums=('dbad9d4ce98cb10e61cc1036fb6f581c22957a91f43252e1cc98e2c3f827ca80cf447a8945694326804cb0abe0877f4a020ccd818f4f3d4e7435e01c3737e9a7')
 
 build() {
   mkdir build
