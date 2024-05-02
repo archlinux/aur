@@ -1,0 +1,21 @@
+pkgbase = shipper
+	pkgdesc = Automated shipping of open-source project releases
+	pkgver = 1.21
+	pkgrel = 1
+	url = http://www.catb.org/~esr/shipper
+	arch = any
+	license = BSD2
+	makedepends = gzip
+	makedepends = xmlto
+	makedepends = make
+	depends = python3
+	depends = openssh
+	optdepends = irker: post to IRC
+	optdepends = lftp: upload files via ftp or scp
+	optdepends = python-twython: post to Twitter
+	provides = shipper
+	conflicts = shipper
+	source = https://gitlab.com/esr/shipper/-/archive/1.21/shipper-1.21.tar.gz
+	sha256sums = 72770114cc925f95eb1c3b024d163e2489957bd456f4077b45ab387394059640
+
+pkgname = shipper
