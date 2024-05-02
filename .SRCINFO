@@ -1,6 +1,6 @@
 pkgbase = r-methimpute
 	pkgdesc = Imputation-guided re-construction of complete methylomes from WGBS data
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/methimpute
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-methimpute
 	depends = r-reshape2
 	optdepends = r-biocstyle
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/methimpute_1.24.0.tar.gz
-	sha256sums = 16efff43478e8d2a09d80c4e6475eeb654f4936eb06fa28578face1de7eabb69
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methimpute_1.26.0.tar.gz
+	sha256sums = cdcbe105652536ed3c29a606c24c2810b79fee5ab76f2dc5dcd6e7ed9a5636cd
 
 pkgname = r-methimpute
