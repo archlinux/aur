@@ -1,0 +1,15 @@
+pkgbase = easylpac-git
+	pkgdesc = lpac GUI Frontend
+	pkgver = r122.b61b1e8
+	pkgrel = 1
+	url = https://github.com/creamlike1024/EasyLPAC
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = lpac
+	provides = easylpac
+	conflicts = easylpac
+	source = git+https://github.com/creamlike1024/EasyLPAC.git
+	sha256sums = SKIP
+
+pkgname = easylpac-git
