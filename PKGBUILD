@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pwOmics
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
-pkgrel=3
+pkgver=1.36.0
+pkgrel=1
 pkgdesc='Pathway-based data integration of omics data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -31,7 +31,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('34081a6552a1b860fd62bd84fcd7e37dff6f8c0469c25ea8adc01b4bc146096b')
+sha256sums=('6fa38837a23f787e66987ca0508c36a59c914a56d1b04194c0faff53374a8101')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
