@@ -19,12 +19,17 @@ sha256sums=(
 
 build() {
   cd $srcdir/EasyLPAC-$pkgver
+  sed -i "s/const Version = \"development\"/const Version = \"$VERSION\"/" main.go
+  sed -i "s/const EUICCDataVersion = \"unknown\"/const EUICCDataVersion = \"$DATE\"/" main.go
   go generate
-  go build -ldflags="-s -w"
+  go run fyne.io/fyne/v2/cmd/fyne@latest package --icon assets/icon128.png --release
+  
 }
 
 package() {
-  # Install the executables
-  install -d "$pkgdir"/usr/bin/
-  install -m 755 $srcdir/EasyLPAC-$pkgver/EasyLPAC "$pkgdir"/usr/bin/
+  cd $srcdir/EasyLPAC-$pkgver
+  tar xf EasyLPAC.tar.xz
+  install -Dm644 usr/local/share/applications/EasyLPAC.desktop $pkgdir/usr/share/applications/EasyLPAC.desktop
+  install -Dm755 usr/local/bin/EasyLPAC $pkgdir/usr/bin/EasyLPAC
+  install -Dm644 usr/local/share/pixmaps/EasyLPAC.png $pkgdir/usr/share/pixmaps/EasyLPAC.png
 }
