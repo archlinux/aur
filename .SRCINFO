@@ -1,13 +1,14 @@
 pkgbase = chawan-git
 	pkgdesc = Web browser for your terminal
-	pkgver = r1893.485fff9
+	pkgver = r1938.3cc7f9d
 	pkgrel = 1
 	url = https://git.sr.ht/~bptato/chawan
 	arch = x86_64
 	license = Unlicense
 	makedepends = git
 	makedepends = nim
-	makedepends = pandoc-cli
+	makedepends = pandoc
+	depends = bash
 	depends = gcc-libs
 	depends = glibc
 	depends = libseccomp
