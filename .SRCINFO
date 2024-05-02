@@ -1,6 +1,6 @@
 pkgbase = r-spatialdecon
 	pkgdesc = Deconvolution of mixed cells from spatial and/or bulk gene expression data
-	pkgver = 1.12.3
+	pkgver = 1.13.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SpatialDecon
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-spatialdecon
 	optdepends = r-qpdf
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpatialDecon_1.12.3.tar.gz
-	sha256sums = 760bd0a4dc5d7ac43bbbb0984bb5fd41a42d44982519fbe54c5d047c4b72ca57
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpatialDecon_1.13.2.tar.gz
+	sha256sums = 735b0a12a37e3295f8e5ea298392d79a33e5ee72b03bbc27e4ea200913e13ed1
 
 pkgname = r-spatialdecon
