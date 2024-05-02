@@ -1,6 +1,6 @@
 pkgbase = r-anaquin
 	pkgdesc = Statistical analysis of sequins
-	pkgver = 2.26.0
+	pkgver = 2.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Anaquin
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-anaquin
 	depends = r-rocr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Anaquin_2.26.0.tar.gz
-	sha256sums = 8d0a505c9877752d13ce81b7712a78f89c7aa9ca5ae25dc72047079a62705db8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Anaquin_2.28.0.tar.gz
+	sha256sums = eb49f039d1d7f565e0085820fc91e3868a898458a52bf89c137519efe6e7db41
 
 pkgname = r-anaquin
