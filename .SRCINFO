@@ -1,0 +1,25 @@
+pkgbase = android-x86-64-eigen
+	pkgdesc = Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra (Android x86-64)
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://eigen.tuxfamily.org
+	arch = any
+	license = MPL-2.0
+	license = Apache-2.0
+	license = BSD-3-Clause
+	license = Minpack
+	license = LGPL-2.1-only OR LGPL-2.1-or-later
+	makedepends = android-cmake
+	makedepends = android-x86-64-fftw
+	makedepends = android-x86-64-boost
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz
+	source = eigen-vectorized-reduction-half.patch
+	sha256sums = 8586084f71f9bde545ee7fa6d00288b264a2b7ac3607b974e54d13e7162c1c72
+	sha256sums = SKIP
+
+pkgname = android-x86-64-eigen
