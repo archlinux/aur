@@ -1,6 +1,6 @@
 pkgbase = r-mogsa
 	pkgdesc = Multiple omics data integrative clustering and gene set analysis
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mogsa
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-mogsa
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-org.hs.eg.db
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mogsa_1.36.0.tar.gz
-	sha256sums = bc79f32256eeb1ddc74569a7eba23820c49119a23444d321f49968983033d82f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mogsa_1.38.0.tar.gz
+	sha256sums = a793f42459efedd87ea8227f1efe8bc787d1793ad95933d9e5188858e4491906
 
 pkgname = r-mogsa
