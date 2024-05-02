@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tkWidgets
-_pkgver=1.80.0
+_pkgver=1.82.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="R based tk widgets"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-hgu95av2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('044f7f3666426cbac3929eb9af1ce9d8')
-b2sums=('9f3f09de8a3a297c8348386cbc98d080e709d62844912f0b54afd2201ff03e552de45cdad82563750a7fb796ef0431897220eaa17127a4a4b1363c7288a270e9')
+md5sums=('d4d2da0f771fa3c2f941fd0f318c33f1')
+b2sums=('306a0dbc78616a64b08c3e7d6d67459e22f7149172bd98323334f5f24f3e67674aea3e9d2cb8b4200719f29ba8dd0050657d8c0a77513508a22352c561e98bf7')
 
 build() {
   mkdir build
