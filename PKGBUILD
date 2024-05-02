@@ -19,7 +19,7 @@ depends=(
 	'python-requests-pkcs12'
 	'python-restfly'
 	'python-semver'
-	'python-typing-extensions'
+	'python-typing_extensions'
 	'python-urllib3')
 makedepends=(
 	'python-build'
