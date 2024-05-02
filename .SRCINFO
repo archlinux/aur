@@ -1,7 +1,7 @@
 pkgbase = gcad3d-bin
 	pkgdesc = Parametric 3D CAD with viewer, import, export, NC
 	pkgver = 2.60.04
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.gcad3d.org
 	arch = x86_64
 	license = GPL-3.0-or-later
