@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=NetActivity
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Compute gene set scores from a deep learning framework"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3493b441d888adf6d3a089936bbeafd6')
-b2sums=('cdb5973bb6d24d9f50a0330892c08383d57641be6c5fcf341c4291b28e337ad046a5111c73c179ba53bf159217f2600abf5c5f6559b5126e5984416d4ee51bbf')
+md5sums=('a245484dc995773bffbe02cb729fca59')
+b2sums=('5b1091aa359b34a1985f5c8f16cfdf1455b3b46d4675d4931afe54b27edc7dd7073fd5ee3a82d1776cdef43efb67b78598bbd0ce31951dfffaa8118815fc79b2')
 
 build() {
   mkdir build
