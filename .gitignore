@@ -3,4 +3,4 @@
 *.zst
 src/
 pkg/
-labelle-*/
+labelle-*.tar.gz
