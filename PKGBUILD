@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=TDbasedUFE
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Tensor Decomposition Based Unsupervised Feature Extraction"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5557e1128d1d6ffab09670bf90b8947c')
-b2sums=('d9ae98424783312fae3a3a0478537586868afb71efca70f36377e955f9cffa8caf032273ffc8225396bcf0f1d8003e5faa6ff2c10bbf83908f1dae2195082cf3')
+md5sums=('7e49fdb3172f1902dd3a8643919ad810')
+b2sums=('7f55f7f7c35fa67baedf6ab3485a759046e3e89a6cb94d2827d57accfacd9c981b53b96ac978cb702f4a623e0c84572e741c7feb2e8cc0808703225cd18ed2d8')
 
 build() {
   mkdir build
