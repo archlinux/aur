@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=IFAA
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Robust Inference for Absolute Abundance in Microbiome Analysis"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-desctools
   r-doparallel
@@ -35,12 +35,12 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('393ac86513ddc9adf474c654b5127394')
-sha256sums=('5d387bb1af086bd724a6765140e618d70d1d9ed82ad73a1a4d93dd4f42430724')
+md5sums=('4028d5eb956b2c5694824d41e07739c6')
+b2sums=('527f51d9e6b01ebfd658ff52b122d70d72210f6d19aee75cfee3abc16c3bf5a791bccd279c69176a1e1970fa246bc019611f2ac64c0ebf7efcb3f05ce948d3f5')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
