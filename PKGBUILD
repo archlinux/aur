@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=screenCounter
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Counting Reads in High-Throughput Sequencing Screens"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('35bb89fb63853645e76facfc72e77522')
-b2sums=('562a5d8f0119245de131c976269ef783a19970d6e6d5bc524caf354f55d04493cecd8e4518cb123319a6b17ca88fa065a4a7161b4889ba01e1f88deff0e7e6b1')
+md5sums=('d41c087a96de1282f0ef7ebba97eba21')
+b2sums=('6cbb46731b53438e724ac2b4df75e03a2be4744b70b97538327d70e734bb31adc077a029fd3f34a18359093fa311e8c9d224c437ecf725a7a5b5b94203edbd3d')
 
 build() {
   mkdir build
