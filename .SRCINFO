@@ -1,16 +1,16 @@
 pkgbase = r-org.mm.eg.db
 	pkgdesc = Genome wide annotation for Mouse
-	pkgver = 3.18.0
+	pkgver = 3.19.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/org.Mm.eg.db
 	arch = any
-	license = Artistic2.0
-	depends = r
+	license = Artistic-2.0
 	depends = r-annotationdbi
 	optdepends = r-annotate
 	optdepends = r-dbi
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Mm.eg.db_3.18.0.tar.gz
-	sha256sums = 41ab6c87f6a8c2a13718f7b1d1bdfde37dcaf61bc34915cc3a8e2348a96b6544
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Mm.eg.db_3.19.1.tar.gz
+	md5sums = 422505463a76022aa9f422ef9f730f1e
+	b2sums = b44885b03ed598b399a6fc7609e54fe67a115348a174d0ddd0ec54d11f4771df255ac4552f61f959463f40683585089c93e724105337d63be3c0b5212792461a
 
 pkgname = r-org.mm.eg.db
