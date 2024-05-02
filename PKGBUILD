@@ -3,7 +3,7 @@
 
 pkgname=irker-git
 pkgver=2.24.r0.g26866bf
-pkgrel=1
+pkgrel=2
 pkgdesc='Automated shipping of open-source project releases'
 provides=('irker')
 conflicts=('irker')
@@ -15,6 +15,7 @@ depends=('python3')
 source=("${pkgname}::git+https://gitlab.com/esr/irker")
 sha256sums=('SKIP')
 docs=('NEWS' 'README' 'irkerd.html' 'irkerhook.html' 'irk.html' 'hacking.html' 'security.html' 'install.html')
+examples=('irk' 'irkerhook.py')
 
 
 pkgver() {
@@ -34,6 +35,9 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}"/irkerd.service "${pkgdir}"/usr/lib/systemd/system/irkerd.service
   for doc in ${docs[@]}; do 
     install -Dm644 "${srcdir}/${pkgname}"/$doc "${pkgdir}"/usr/share/doc/irker/$doc
+  done
+  for example in ${examples[@]}; do 
+    install -Dm755 "${srcdir}/${pkgname}/$example" "${pkgdir}/usr/share/doc/irker/examples/$example"
   done
 }
 
