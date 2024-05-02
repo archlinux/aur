@@ -1,9 +1,10 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer KiWi42 <pullthisplug-aur@yahoo.com>
+# Old Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Alexander Bruegmann <mail[at]abruegmann[dot]eu>
 
 pkgname=python-pytenable
 _pkg=pyTenable
-pkgver=1.4.12
+pkgver=1.4.22
 pkgrel=1
 pkgdesc="Python library to interface into Tenable's products and applications"
 arch=('any')
@@ -34,7 +35,7 @@ checkdepends=(
 	'python-responses')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('f094294d06f959a98f027df6cb50c3c52cda3a38871f9b6069821fad755da6fe')
+sha256sums=('a3c0c312c3c3ed76e90ee249c186f85f2ce77d84c3936046791314c174783962')
 
 prepare() {
 	cd "$_pkg-$pkgver"

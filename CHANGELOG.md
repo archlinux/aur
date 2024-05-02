@@ -4,6 +4,89 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.22]
+
+### Added
+- Support for New ACR APIs (#654)
+- Added Implicit WAS exclude for Tenable Security Center (#763)
+- Support for `currentPassword` field in SC Users API.
+
+[1.4.21]: https://github.com/tenable/pyTenable/compare/1.4.21...1.4.22
+
+## [1.4.21]
+
+### Added
+- Support for new Compliance Export Enhancement fields in Vulnerability Management.
+- Support for `currentPassword` field in SC Users API.
+
+[1.4.21]: https://github.com/tenable/pyTenable/compare/1.4.20...1.4.21
+
+## [1.4.20]
+
+### Fixed
+- Bug that causes pyTenable to error out when `srcInterface` or `dstInterface` values in `events` object in OT is non-null.
+
+[1.4.20]: https://github.com/tenable/pyTenable/compare/1.4.19...1.4.20
+
+
+## [1.4.19]
+
+### Added
+- Support for `inactivity_timeout` during a Security Center scan creation.
+- Loosened up validations on the preference object in Security Center policies API.
+
+[1.4.19]: https://github.com/tenable/pyTenable/compare/1.4.18...1.4.19
+
+## [1.4.18]
+
+### Added
+- Support for `file_type` property in `upload` method in Vulnerability Management Credentials API.
+
+[1.4.18]: https://github.com/tenable/pyTenable/compare/1.4.17...1.4.18
+
+## [1.4.17]
+
+### Fixed
+- Vulnerability `CVE-2023-38325` by upgrading the test dependency `requests-pkcs12`.
+
+### Added
+- Support for `include_open_ports` property in Vulnerability Management asset export request.
+
+[1.4.17]: https://github.com/tenable/pyTenable/compare/1.4.16...1.4.17
+
+## [1.4.16]
+
+ ### Fixed
+- Pagination bug in the Tenable OT Security Exports - Plugin Query.
+
+[1.4.16]: https://github.com/tenable/pyTenable/compare/1.4.15...1.4.16
+
+## [1.4.15]
+
+### Added
+- New Tenable OT Security Exports package #742
+
+[1.4.15]: https://github.com/tenable/pyTenable/compare/1.4.14...1.4.15
+
+## [1.4.14]
+
+### Added
+- Support for `source` and `severity_modification_type` filters to Vulnerability Management vulnerability export.
+- Support for filtering out hidden assets from Operational technology asset `list` method by default.
+- Product Rebranding in the SDK documentation.
+
+### Deprecated
+- Support for V3 Vulnerability Management API methods.
+
+[1.4.14]: https://github.com/tenable/pyTenable/compare/1.4.13...1.4.14
+
+## [1.4.13]
+
+### Added
+- Support for exporting Web App Scan Results.
+
+[1.4.13]: https://github.com/tenable/pyTenable/compare/1.4.12...1.4.13
+
 ## [1.4.12]
 
 ### Added
@@ -20,7 +103,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Support for Scan UUID (`last_scan_id`) filter for assets exports.
 
-[1.4.11]: https://github.com/tenable/pyTenable/compare/1.4.10...1.4.11 
+[1.4.11]: https://github.com/tenable/pyTenable/compare/1.4.10...1.4.11
 
 ## [1.4.10]
 
@@ -37,7 +120,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Python 3.6 references from all documentation.
 - `search_host_audit()` method from `io/v3/explore/findings`.
 
-[1.4.10]: https://github.com/tenable/pyTenable/compare/1.4.9...1.4.10 
+[1.4.10]: https://github.com/tenable/pyTenable/compare/1.4.9...1.4.10
 
 ## [1.4.9]
 ### Added
@@ -58,7 +141,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support for Python Version 3.6.
 
 
- [1.4.9]: https://github.com/tenable/pyTenable/compare/1.4.8...1.4.9 
+ [1.4.9]: https://github.com/tenable/pyTenable/compare/1.4.8...1.4.9
 
 ## [1.4.8]
 ### Added
@@ -66,7 +149,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support for Role Based Access Control endpoints.
 - Support for specifying Agent UUIDs instead of numeric IDs for bulk group addition.
 
-[1.4.8]: https://github.com/tenable/pyTenable/compare/1.4.7...1.4.8 
+[1.4.8]: https://github.com/tenable/pyTenable/compare/1.4.7...1.4.8
 
 ## [1.4.7]
 ### Added
