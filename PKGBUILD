@@ -1,5 +1,5 @@
 pkgname=snotify
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
 epoch=1
 pkgdesc="Play sounds when reciving a notification."
