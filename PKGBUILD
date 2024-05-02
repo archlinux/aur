@@ -2,9 +2,9 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=VegaMC
-_pkgver=3.40.0
+_pkgver=3.42.0
 pkgname=r-${_pkgname,,}
-pkgver=3.40.0
+pkgver=3.42.0
 pkgrel=1
 pkgdesc='VegaMC: A Package Implementing a Variational Piecewise Smooth Model for Identification of Driver Chromosomal Imbalances in Cancer'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix_globals.patch")
-sha256sums=('08605ff9b1a6e0f87a28226fc8c67f044aaea867bbe255943c4e6f25a7f83be9'
+sha256sums=('513afd502486787b5dba239aeefc749c7eca2b232f98814e92e6a1b33ad35c4b'
             'a45787150bdf297482a8623da5ab7257adb2828108d797a688abd73e87490233')
 
 #prepare() {
