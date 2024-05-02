@@ -1,24 +1,21 @@
 pkgname=archiso-systemd-boot
-pkgver=2024.04.01
+pkgver=2024.05.01
 pkgrel=1
 pkgdesc='archiso as systemd-boot loader entry'
 arch=('x86_64')
 url='https://archlinux.org/download/'
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('systemd')
-install="${pkgname}.install"
+options=('!debug')
+backup=("boot/loader/entries/arch-rescue.conf")
 source=("https://geo.mirror.pkgbuild.com/iso/${pkgver}/archlinux-${pkgver}-${arch}.iso"
-        "${pkgname}.install"
         "arch-rescue.conf")
 noextract=("archlinux-${pkgver}-${arch}.iso")
-b2sums=('30ccdbcbd00c222842332935358d6be7f64d19c21bb992b20a0ef6fb1d7b80c73508952593fd907c04dc3f3fb4552520047daa5681cd94d00860e557c4be72e2'
-        'b407870bef382a49019b06ea4598cc4e53d4ff40da045f2a012fa2f858aa34001f7ecef067f48a008a471649e6dd1dfe2e42f1dc2696a44d1175812324e09bec'
-        'ad6aa24e2bb0850d60c7f3888fa31bd834e74c87388a89b4141ff3b80d1edb7bc4d57483d8cd122a16515018fdcc8505462b00ea1ae82048653dfc7ada8dbe63')
+b2sums=('b7b241e0a56166f430b372109309d73698f2c64f7cd249398feee0fe4e0241ec9a3f77d4b8f33bd2d51fd75caeeececcec14bfb1bbb6da3ad1f043641982130a'
+        'c361db0edd5befa0a74a54dc64be95a6946702c3c0d7c6579e7ac3ca6f01af24c9cb37e1e9d339ecf3a2696b8f8e00f9dc984638bc5cb6fba31cf1c4e66af0e9')
 
 prepare() {
   cd ${srcdir}
-  bsdtar xf archlinux-${pkgver}-${arch}.iso arch/boot/amd-ucode.img
-  bsdtar xf archlinux-${pkgver}-${arch}.iso arch/boot/intel-ucode.img
   bsdtar xf archlinux-${pkgver}-${arch}.iso arch/boot/${arch}/initramfs-linux.img
   bsdtar xf archlinux-${pkgver}-${arch}.iso arch/boot/${arch}/vmlinuz-linux
   bsdtar xf archlinux-${pkgver}-${arch}.iso arch/${arch}/airootfs.sfs
@@ -26,11 +23,9 @@ prepare() {
 
 package() {
   install -d "${pkgdir}"/boot/archiso/${arch}
-  install "${srcdir}"/arch/boot/amd-ucode.img "${pkgdir}"/boot/archiso/amd-ucode.img
-  install "${srcdir}"/arch/boot/intel-ucode.img "${pkgdir}"/boot/archiso/intel-ucode.img
   install "${srcdir}"/arch/boot/${arch}/initramfs-linux.img "${pkgdir}"/boot/archiso/initramfs-linux.img
   install "${srcdir}"/arch/boot/${arch}/vmlinuz-linux "${pkgdir}"/boot/archiso/vmlinuz-linux
   install "${srcdir}"/arch/${arch}/airootfs.sfs "${pkgdir}"/boot/archiso/${arch}/airootfs.sfs
-  install -d -m 755 "${pkgdir}"/usr/share/doc/${pkgname}
-  install arch-rescue.conf "${pkgdir}"/usr/share/doc/${pkgname}/arch-rescue.conf
+  install -d -m 755 "${pkgdir}"/boot/loader/entries
+  install arch-rescue.conf "${pkgdir}"/boot/loader/entries/arch-rescue.conf
 }
