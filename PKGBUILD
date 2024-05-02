@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=annotationTools
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Annotate microarrays and perform cross-species gene expression analyses using flat file databases"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3b0a795d7898c0b6112ed596f9d2de27')
-b2sums=('08671d131dc53e08886c29482c8a11a9f7a1470dbb111b9ee31c2a5619531a931c865696a4bce01a1171fd27f7e74fc0c1e6022e0fde8ec41b1cd63be16a8d20')
+md5sums=('be285a6910e43e06c34d4abe65ba121d')
+b2sums=('b50339aa8eb18a75d1c0f0e80665b0b71ed115fbd4c34eaa013cc5bd68a30ce326d81a004ecbf8229f6110ee8a8d6a6d1e4fa0847ebf958b4ad9fd0bb372a184')
 
 build() {
   mkdir build
