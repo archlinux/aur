@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=EDIRquery
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Query the EDIR Database For Specific Gene"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ff19937af17cf0a7a874b986192d6b1c')
-b2sums=('287aa14cb3be96b3f1f68b16295ce97c40bdaae456091dff4fc38c78391af8f32ebf0e87f09d33182f7f7d1913de968eb680bd53c63d19412fa85a8ea711f8f3')
+md5sums=('e6ad43e30e4c7b865ab578a7616a9915')
+b2sums=('547f92ac6cf97d1b522cecb8a180594dd580f6f36f249d99659c3b1b79155da2ed727af64dd9c8ecc839a79d6a07ab47e351d600cc20599c55901cbeca7fb283')
 
 build() {
   mkdir build
