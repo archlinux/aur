@@ -1,12 +1,12 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.matrix
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Load and Save Artifacts from File"
-arch=(any)
+arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
@@ -14,23 +14,29 @@ depends=(
   r-biocgenerics
   r-delayedarray
   r-hdf5array
+  r-rcpp
   r-rhdf5
+  r-s4arrays
   r-s4vectors
   r-sparsearray
 )
 checkdepends=(
+  r-biocsingular
   r-chihaya
+  r-residualmatrix
   r-testthat
 )
 optdepends=(
+  r-biocsingular
   r-biocstyle
   r-chihaya
   r-knitr
+  r-residualmatrix
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('099a01bbb4a95bdaf0f91ffd2b89653d')
-b2sums=('485f2eee79873b8e5f688eac4da9c849ff5b0d2ffb1fa44fb35340453d0220a31f6df524912655bea05f2eb1ddfe4139d92f03c2996f472b07ba9cff9bc4ae48')
+md5sums=('fd95999ee2c60fde94e30e126bcee340')
+b2sums=('c93de49d0774ff4716c01bbe02862b4935fb60f0161afe0ff1cc4979c921809115c7623ebaef0a19ab1b481138083859acaf08c372984736f37e5c377d7dc1e9')
 
 build() {
   mkdir build
