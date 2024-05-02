@@ -33,7 +33,7 @@ build() {
     # export PKG_ENV="prod"
     export RUSTFLAGS="-C target-cpu=native"
 	cd websurfx
-	cargo build -r --features "cec-cache-results, experimental-io-uring"
+	cargo build -r --features "cec-cache-results, experimental-io-uring, use-non-static-synonyms-search"
 }
 
 package() {
