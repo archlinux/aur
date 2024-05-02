@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HEM
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Heterogeneous error model for identification of differentially expressed genes under multiple conditions"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3ad1825d95504eaf9e2bcad8438816f5')
-b2sums=('bb03d64cdaf822363d3db74fea45b1bbf47d163453935b2b110564246d05b98bd1901385f9cf0f52db63941d4b8ddb591ff88f97d4d5ea80aaa118eb9e31149d')
+md5sums=('4612f5ee2ba8e38a97a05c56b899679b')
+b2sums=('241641aa174bb6081e43ce7412e6ae101641547b5dfa64447fa6b7a28f94c15c080070744407c732d98071b71f63470e5e662e343faea719f5a84a4c23f0371e')
 
 build() {
   mkdir build
