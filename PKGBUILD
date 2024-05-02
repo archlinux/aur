@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MEIGOR
-_pkgver=1.36.2
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e2b58a616640a53c4a874ce8db88ad7c')
-b2sums=('7349ebd71c16d8f1f3000d8245eace7f7f27470799ef377a3b4ff89d4bcca9d0d8cac1a062777de3d6c869bcc4d4ba48f3670aec3bfac355d557b51f3286a679')
+md5sums=('12d3ae4baf1869a9f067fa4090233de4')
+b2sums=('51f8f91e390a8bd4f2e9ee0789a7f64c9aaeacc3b235c1fd350a7fa35734f4e717caa7d3f9578e3b5a5a4f8ec59ba6613f956c18c65d1ac80ccd97f5fbcdff1f')
 
 build() {
   mkdir build
