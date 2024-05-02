@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=7.1.r115041.ge757726e89
+pkgver=7.1.r115045.g86e418ffd7
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -47,6 +47,7 @@ depends=(
   libvidstab.so
   libvorbisenc.so
   libvorbis.so
+  libvpl.so
   libvpx.so
   libwebp
   libx11
@@ -59,7 +60,6 @@ depends=(
   libxvidcore.so
   libzimg.so
   ocl-icd
-  onevpl
   opencore-amr
   openjpeg2
   opus
@@ -88,7 +88,7 @@ makedepends=(
 optdepends=('avisynthplus: for AviSynthPlus support'
             'ladspa: for LADSPA filters'
             'nvidia-utils: for Nvidia NVDEC/NVENC support'
-            'onevpl-intel-gpu: for Intel Quick Sync Video')
+            'vpl-runtime: for Intel Quick Sync Video')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
