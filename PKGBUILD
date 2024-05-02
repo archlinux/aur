@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CoreGx
-_pkgver=2.6.1
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
-pkgver=2.6.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Classes and Functions to Serve as the Basis for Other 'Gx' Packages"
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3b075b9d94c36d78d9348637ceb786556e64b05e8903c9997e1dbd8d12ee289a')
+sha256sums=('5a49332210299d07b2d0117c120e9ccc4f7e42609ecb9c4c5008e0882fb3de15')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
