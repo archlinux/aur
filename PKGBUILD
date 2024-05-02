@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=INPower
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="An R package for computing the number of susceptibility SNPs"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3b769c08ded506c713da036c30fe4da9')
-b2sums=('9d2f07d4fe57273911b593837dda40b73cdf4564c9058e3793c6c1c9ffee548b4e60cc31b858ad1e6930b3ac3e2a8cff47ce71975a017c6e820123bb43257f85')
+md5sums=('d3e85d871d3caac3463bc8caeceda0f9')
+b2sums=('9992de1a671b0b351291157bba808dabeecf2193997d55e9e7bdb46deb9afad8de5f8c201fc716b0890121c96256894e59968837564f7200dbb7dbfaf7adb200')
 
 build() {
   mkdir build
