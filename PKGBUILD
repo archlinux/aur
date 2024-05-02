@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqTools
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Analysis of nucleotide, sequence and quality content on fastq files"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('be9be6eb0ee1ff4ab001720970d68da8')
-b2sums=('d813ac5feb6ac445a2462b4ac4aeb2c36837cb7101a210c64922561051b222c2c3126f11c1121f3a36e56a64fe903229a42495a72547ab7376ff1499ba2be96f')
+md5sums=('efc46fe13fa6e36062e053a23245052b')
+b2sums=('c88ac4dd281341db6a27a33f1c9d18feafc7160f32c7aa908ddb0bc72e884373ea2dc8667f2b193368b436476e26dd629038d41785164a7e6dc1670839e93daf')
 
 build() {
   mkdir build
