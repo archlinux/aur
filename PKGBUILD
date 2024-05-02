@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ddCt
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="The ddCt Algorithm for the Analysis of Quantitative Real-Time PCR (qRT-PCR)"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('560588380b356d55a4e11811ae9100e6')
-b2sums=('0ab2bc2ffb444edc8edb9d00c0757f5f37b9abf8fb5f495e555d28e1629c7dfc1584702c0cc02c387e61ddfb9ca07d3d061b1b2e3ca0e574e6a9fc0ad9e3e5fd')
+md5sums=('31e82a9d515c53d746d23e4644d77fac')
+b2sums=('37f77d0c4efa6598f089b245f06943c712fda442817b3a351ae27a6d0def1d45e9d4074541be855c39a4cd56f423d1d982c072c02d6b04923ea8c1a1efa06d92')
 
 build() {
   mkdir build
