@@ -1,7 +1,7 @@
 pkgbase = scu-bin
 	pkgdesc = System fetch utility is aimed at informativeness
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/omnitix/scu
 	arch = x86_64
 	license = GPL-3.0-or-later
