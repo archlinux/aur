@@ -1,0 +1,5 @@
+[python-tree-sitter-languages-bin]
+source = "github"
+github = "grantjenks/py-tree-sitter-languages"
+use_max_tag = "true"
+prefix = "v"
