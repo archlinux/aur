@@ -5,7 +5,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=openrc
-pkgver=0.53
+pkgver=0.54
 pkgrel=1
 pkgdesc='Dependency based init system that works with sysvinit and systemd or on its own.'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ backup=(etc/openrc/inittab
         etc/openrc/conf.d/{killprocs,localmount,modules,netmount,network,staticroute})
 source=("$url/archive/$pkgver.tar.gz"
         'openrc.logrotate')
-b2sums=('df6452607d1d16de8a3addb5fc13ec7f9a7f2de9b2aa6eef61787e49e9a16659a1475432e13b58d5fe372aeff7051b487c094920379ffc2f8295357370d5f997'
+b2sums=('cdc420a3fa1733664eab0c556cb71712ecd1da17895aef6c77f229b3a9f9258b049c5f67d817a808253adb37afd0e65a276c7d89c77a64e3a1fd619f0a68e0ab'
         'f283de20b5a07e3c5d21a28b9de72f0a71fd2cc1b70a5567db80373c7144aec0e6ac217eef77acbbb05eff2134c22ee6746b7f248abc4587042c456ed0a32a31')
 
 prepare() {
@@ -49,7 +49,6 @@ build() {
         -Dpkgconfig=true             \
         -Dselinux=disabled           \
         -Dsysconfdir=/etc/openrc     \
-        -Dtermcap=ncurses            \
         -Dzsh-completions=true       \
         build
     meson compile -C build
