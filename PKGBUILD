@@ -2,7 +2,7 @@
 
 pkgname=fb303
 pkgver=2024.04.29.00
-pkgrel=1
+pkgrel=2
 pkgdesc="A core set of thrift functions that provide a common mechanism for querying stats and other information from a service"
 arch=(x86_64)
 url="https://github.com/facebook/fb303"
@@ -20,7 +20,6 @@ depends=(
 makedepends=(
   boost
   cmake
-  mvfst
 )
 provides=(
   libfb303.so
