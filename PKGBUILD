@@ -2,7 +2,7 @@
 
 pkgname=moneymanagerex
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -18,11 +18,16 @@ sha512sums=('SKIP')
 
 prepare() {
   cd "${srcdir}"/moneymanagerex
+  
+  # Disable "detached HEAD" warning
+  git config advice.detachedHead false
 
   git checkout tags/v${pkgver}
   git submodule update --init --recursive
   
   # Fix https://github.com/moneymanagerex/moneymanagerex/issues/6693
+  git config user.email "you@example.com"
+  git config user.name "Your Name"
   git cherry-pick df127e7e995f4746b101a79e92927b2460907ab4
 }
 
