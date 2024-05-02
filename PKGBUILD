@@ -2,12 +2,12 @@
 
 pkgname=chromexup
 pkgver=0.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc='External extension updater for Chromium based browsers'
 arch=(any)
 url=https://github.com/xsmile/chromexup
 license=(MIT)
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 depends=(python-requests)
 install="$pkgname.install"
 source=("$url/archive/$pkgver.tar.gz")
