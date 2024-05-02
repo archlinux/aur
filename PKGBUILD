@@ -1,5 +1,5 @@
-# Maintainer KiWi42 <pullthisplug-aur@yahoo.com>
-# Old Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer KiWi42 <pullthisplug dash aur at yahoo dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Alexander Bruegmann <mail[at]abruegmann[dot]eu>
 
 pkgname=python-pytenable
