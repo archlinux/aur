@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=copa
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Functions to perform cancer outlier profile analysis"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-colonca
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bd372714a4dd7e70b90d9232fcba322d')
-b2sums=('4f9b67ad7242ac163f628a6458765e293f45625de81ba0a26b97f2963684cf317b8ea43742efbd0dc711a3b470b3099b2757c46b51ac44707e531172b58a940e')
+md5sums=('fb39db43120b4f25ce43c970daf9447d')
+b2sums=('04dd4a5a85c016e03d15a70731cadb5730f03305f9b0b0c2dbcc58f511378eb428130aab293dccb8dfe224813b1b7702766d295a5f72c0cc010b608a7dab100d')
 
 build() {
   mkdir build
