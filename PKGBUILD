@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ISLET
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Individual-Specific ceLl typE referencing Tool"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -30,8 +30,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5cf5ae7df60062c1822ca64c3989a4e0')
-b2sums=('a996f64896dc329ffa266d9d71a86d74c0506173fc217025ad62e1ab458a796e714fee4183e228cd5fb12b728ee1ceff4d6ad80b609751c6a59952526d07cd67')
+md5sums=('3f20f6f9e207ab5f955a3f3f52eff688')
+b2sums=('941da50f4c7e91371501dd32c0812b8e22db6905adfedbe40985aa644c0f2b0c5990ec4117031a6d8df724e2ed0ecee390fda9c3b4920ac1dc5a12b09d67cd06')
 
 build() {
   mkdir build
