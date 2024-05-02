@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ppcseq
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=1
 pkgdesc="Probabilistic Outlier Identification for RNA Sequencing Generalized Linear Models"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -44,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5a95706ac4269643dd1eb6efd4bccb67')
-b2sums=('dbf5c6406bb76ea7ab53f583f6518a93157f4ae61bc49feef88a02e668219ed28281516b664aeb5440cf2f9a3f20a72a5c3c9b7331991f414870bcdc7c914d54')
+md5sums=('a7035475c1010a58c51d389e5f96699c')
+b2sums=('78ebbb160ed4c5e02e5d5c40213df6c841e75d02e63b4c276a0e496ba8daf240df72e342416d44891701ba785f37ddc6aff6ceca0d6e3c5324b137a0daecf1db')
 
 build() {
   mkdir build
