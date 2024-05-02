@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggtreeDendro
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Drawing 'dendrogram' using 'ggtree'"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -29,8 +29,8 @@ optdepends=(
   r-yulab.utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e5839d466e08665eb2475a99fb74e833')
-b2sums=('efc1dbc33976571770de4b4536df82de4d9304ae41665dfdfbcd3a9fc2f685bcfdead26a977acbacd1fea658ace5fcc50572304d4db8da63b8110e6ca52eec1b')
+md5sums=('33f0ddf977d01a10dad0bd489d74615b')
+b2sums=('9a4d11faef8d764859d818b23a1ebd14408ac1a93eacd78716da840a3cf09dcb3cfea92d82e143d909bfbd3ecedac9d344bc23d189f78f9d070c5dc8661b02fe')
 
 build() {
   mkdir build
