@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hopach
-_pkgver=2.62.0
+_pkgver=2.64.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Hierarchical Ordered Partitioning and Collapsing Hybrid (HOPACH)"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   r-biocgenerics
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0310e9a4e3a34dfe2bb4edf0dbb38b16')
-b2sums=('6fbc093c3aacccba172217c176cf657080dd11dc74bc228ae0783baf0d755f16dfd9f73de9ff99728447ec12cbf5112a3065f640a9c40c775c7a64159b8250b4')
+md5sums=('dc4b941d5b7f8800ee7f956640bcba7b')
+b2sums=('322e7d4d72cbe89d0c09bc7c4c599bd1732db178526423a5a0740494dfdf25f7f998b43fc02d100be0aea4429fc32f169dcb5071e3de1b0ba2eeea73c0e471bb')
 
 build() {
   mkdir build
