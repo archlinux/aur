@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=oncoscanR
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Secondary analyses of CNV data (HRD and more)"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('48aee6850c94c299417e75cf74418b01')
-b2sums=('932d88ee70435cee7c50e6a8885844cffa862f8ab66b66572809ead8a5ef7e15fea29ede38b5e82b6876d1cb087f04ff094f05301710869b6f0eaccbcdc05f8d')
+md5sums=('c0cb4d4e3401baaaaafb15dce0fc2dfc')
+b2sums=('0ad00bab6a55b37704784c61d7b3d0678e1f6a7fbed6fb2a4c66ea0cfd67637c902de74acc94b62add81361a18f689764a94f2a2f067c3cbcaa0429ef18109f3')
 
 build() {
   mkdir build
