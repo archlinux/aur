@@ -25,9 +25,6 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-  # TODO: remove once PR#332 (podman v5.0 compatibility fix) is released (nomad-driver-podman v0.5.3?)
-  git fetch origin pull/332/head:PR-332
-  git merge PR-332
 
   # create directory for build output
   mkdir -p build
@@ -50,7 +47,6 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode=external -compressdwarf=false -extldflags ${LDFLAGS}" \
     -ldflags "-compressdwarf=false \
     -linkmode external \
     -extldflags \"${LDFLAGS}\"" \
