@@ -1,6 +1,6 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=org-cli-tangle
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="tangle source code blocks in emacs orgmode files from the command line"
 arch=(any)
@@ -12,8 +12,8 @@ depends=(emacs)
 makedepends=(asciidoc gawk git m4)
 checkdepends=(cram)
 # git rev-parse in upstream repo:
-# git rev-parse 0.1.6
-_tag=391c6db97d888a5b695822f39577fb972765300f
+# git rev-parse 0.1.8
+_tag=ba61e6846982af579739cf7169aacc38d68b0981
 source=(git+https://git.sr.ht/~minshall/org-cli-tangle#tag=${_tag}?signed)
 validpgpkeys=(
     BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F # Greg Minshall <minshall@acm.org>
