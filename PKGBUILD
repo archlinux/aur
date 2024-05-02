@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HybridMTest
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Hybrid Multiple Testing"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   r-fdrtool
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a2b1764b0e458f82e6055a3ebdf90933')
-b2sums=('5cf6f18ee78817270556858f36d2048a99ae9848a0b0a94d17220aca293de089b6c88a78bbcabc428c6c629ed671079fb2e7261579a5dca38e100715ce601aca')
+md5sums=('518710a23b707088dfbd2f92822c35ff')
+b2sums=('a733b16019c7ae0bfebef39c2027435c8a6adc1f6da4faf8768c37afe347c56d33a4188f78951bbe700415b3043d8bf9dd8715d5320e452d8c09f805c4748912')
 
 build() {
   mkdir build
