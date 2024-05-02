@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=flowWorkspaceData
-_pkgver=3.14.0
+_pkgver=3.15.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A data package containing two flowJo, one diva xml workspace and the associated fcs files as well as three GatingSets for testing the flowWorkspace, openCyto and CytoML packages"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('96655cef2a21f1b9d303ec775597a2dc')
-b2sums=('0f4138489ec8575a2567409af5ab7a4e154c3b1ca4bebd2684c9f754623c4fffe123bfad3ee7365de4c1e7d697eb7819cff4752aad218a24a339a7476182172e')
+md5sums=('e047d7ad68005fab4fe3224a5344e58a')
+b2sums=('14e1353695a9c24b2e8650f5a762508b1997bb3f0b7166977648360949775b9554e76706ca24f95927811d5a2913f13514a48c4950d401a7edad224acaeec2a5')
 
 build() {
   mkdir build
