@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=STdeconvolve
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Reference-free Cell-Type Deconvolution of Multi-Cellular Spatially Resolved Transcriptomics Data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2908e0d59713b2c3ef6c7bc549d0d123')
-b2sums=('31482b2e1bd35dbb54de4b4f1a47b18669b9a430f94851f0c469632145e1012e4beb302d5c5aa009eb34ed6c78613aa0b5bb7b893916812ec57a90f4aa731798')
+md5sums=('e2fdd06f6b49bb938994b6b2711d46ed')
+b2sums=('ae1cec96f32f031fbb7cfe645602152555d1b3f795519c188c9478292ace916b00e9b2036ca169077e29dbe269bd57c9b7fd662bd1bce83d314ed73e7ef3be0a')
 
 build() {
   mkdir build
