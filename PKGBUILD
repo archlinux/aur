@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scPCA
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Sparse Contrastive Principal Component Analysis'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c27df5020915ff86c23b0faa81782b65c5eaff1285b66e17405004e469d37c1b')
+sha256sums=('15992ac170cc0a068e29f9d2b1d5d1979ed5b5e830f97731963cf144c3e68e02')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
