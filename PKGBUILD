@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bioDist
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Different distance measures"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-locfit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a0c907dc82834b4771074cd8164cf773')
-b2sums=('03d317db1886268164f1ee1ab60dc5de3120d3d497f4225f7197165bd2aa3805da7f0d4ee9261d04b2daea650c86399fd264ebfe0471e0af81bac43fa3dab4bd')
+md5sums=('eeb9dd18ea8a222dddbfe9a95721ecd7')
+b2sums=('51f9c302d13ff8d70e21ed427c18b3392df781161aff123b9b9dd0c20127c530da98a1779e72d8043b27e3508b2c6db314185e7e1df593f8be6aa32bbef4dc03')
 
 build() {
   mkdir build
