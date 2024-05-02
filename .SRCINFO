@@ -1,7 +1,7 @@
 pkgbase = r-biocor
 	pkgdesc = Functional similarities
-	pkgver = 1.26.0
-	pkgrel = 3
+	pkgver = 1.28.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/BioCor
 	arch = any
 	license = MIT
@@ -23,7 +23,7 @@ pkgbase = r-biocor
 	optdepends = r-targetscan.hs.eg.db
 	optdepends = r-testthat
 	optdepends = r-wgcna
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioCor_1.26.0.tar.gz
-	sha256sums = 341a2a3a57eca622b5e166f209623adaccfd6179b08d5ba303a96858006d201c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioCor_1.28.0.tar.gz
+	sha256sums = 0764ba62548d1e90e2d971f76f968d602286d45ae4a46428d97a6c965c28f14a
 
 pkgname = r-biocor
