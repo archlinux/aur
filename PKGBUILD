@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=widgetTools
-_pkgver=1.80.0
+_pkgver=1.82.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Creates an interactive tcltk widget"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bb5358a7e064436aa744ffb098a9c0ec')
-b2sums=('f603577b6fb5bba84cea663e24b85f89ca34ccaa38ad2fc2cdf1d067b707b29c81b3a6e5f1dba1cc511a0d8a54045c1409377fc012e2e0fd0f32275f7544d499')
+md5sums=('e6312f4d4c8129711d5cc252f27451d4')
+b2sums=('2f4b6225fa9af4648f0be8aaf317ceef6d66e107dfb142f0e08f936db04ce6c0632f8cf6d2c6b17096212c31da10e1cc62b6524aa873f3ed5ff0cdf46137ccd4')
 
 build() {
   mkdir build
