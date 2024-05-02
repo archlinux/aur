@@ -1,0 +1,16 @@
+pkgbase = powerdialog
+	pkgdesc = GUI gtk3 dialogue of shutdown, logout, sleep, reboot PC
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/govnorice/powerdialog
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = pacman>6.1
+	depends = gtk3
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	options = !lto
+	source = https://github.com/govnorice/powerdialog/releases/download/0.2.2/powerdialog
+	sha256sums = SKIP
+
+pkgname = powerdialog
