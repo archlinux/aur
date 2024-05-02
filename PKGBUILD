@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=missRows
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Handling Missing Individuals in Multi-Omics Data Integration'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fe4a4c0cf8d8b07c8dd0d8f5ac85e44dd0a0b701a6ed36e25992ed6ea2fbae8f')
+sha256sums=('a5f2625eb83fe73983fcac18a84778e41ca53eeb10af4d6ac7b47cd89db5a15c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
