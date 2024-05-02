@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=matchBox
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Utilities to compute, compare, and plot the agreement between ordered vectors of features (ie. distinct genomic experiments). The package includes Correspondence-At-the-TOP (CAT) analysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b6e4b10ee38f433d1bce146a089a44ec')
-b2sums=('3d3ea47607e5966961c870ec60a51cd1cedfd401a2ad81f07b5a869363d86e3fc7d358b17a574ea8222fece45d0b8cdcf63486a0979a7ab2f00fb78941019c13')
+md5sums=('557f7ba5bc80414ad51218c2962acf21')
+b2sums=('3997b891b805049b8678a7e859716004053e278e4dbdb46fce1e338bd6ec4f16ca30f6fa0a5c73fc3a862af267f14d61fc0ae630f97473d69d9766e98e9bdd16')
 
 build() {
   mkdir build
