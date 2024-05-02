@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gep2pep
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Creation and Analysis of Pathway Expression Profiles (PEPs)'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-writexls
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('405094998efa1bc4a73c9ac60466138717ac7a725dd0fb738bcbce6ea4443a55')
+sha256sums=('072db5192887ea494c46c0e99bf3ded209eb03333443d30033bdfa42cf1c15c5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
