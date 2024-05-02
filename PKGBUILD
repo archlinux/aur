@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=biodbNci
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=1
 pkgdesc="a library for connecting to the National Cancer Institute (USA) CACTUS Database"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6dcd43d5c282054f4edfef08a2f597cd')
-b2sums=('04800016e1acf8ae14fa5786ac68050cd20dc5e64c5eb1addd29a312ecbe236b93ec5cd1b1c5b651f48382010eaf575ecf271a678835d6fcc7c364451019cad0')
+md5sums=('c1e7a71a07706082add092247ca45ed6')
+b2sums=('0c9cb33bbd4e71fd67392b0596d8b054d3b1b8726b474bcf1570ebea8d9990e9adb68cfae5660cab5ceefacbcb47c9fb5e4816d894d038d2f4ddd74e3b68fba7')
 
 build() {
   mkdir build
