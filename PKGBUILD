@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=splinepy
 pkgname=python-${_base}
-pkgver=0.0.51
+pkgver=0.0.52
 pkgrel=1
 pkgdesc="Python N-Dimensional Bezier, RationalBezier, BSpline and NURBS library with C++ Backend"
 url="https://tataratat.github.io/${_base}"
