@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=breakpointR
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Find breakpoints in Strand-seq data'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6aa4d31d02829c0fbd3045da63ff9c17f210bdb3456f3303102b0ab67c8d0fca')
+sha256sums=('e8506afa756e981a44d90758154da61816ba9f355b03c0b6779b32aa33d6ab46')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
