@@ -2,18 +2,18 @@
 # Contributor: SteveXMH <stevexmh@qq.com>
 
 pkgname=sharpcraftlauncher
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1.0
 pkgdesc="A very light, fast, simple, rust-made Minecraft launcher"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Steve-xmh/scl"
 license=('LGPL3')
 options=('!strip')
-conflicts=('sharp-craft-launcher-bin')
+conflicts=('scl-bin')
 depends=('openssl-1.1')
 optdepends=('jre-openjdk: for Minecraft needed')
-source_x86_64=("logo.png" "sharpcraftlauncher.desktop" "${pkgname}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/SharpCraftLauncher-20231107-${pkgver}-linux-${arch}.tar.gz")
-source_aarch64=("logo.png" "sharpcraftlauncher.desktop" "${pkgname}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/SharpCraftLauncher-20231107-${pkgver}-linux-${arch}.tar.gz")
+source_x86_64=("logo.png" "sharpcraftlauncher.desktop" "${pkgname}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/SharpCraftLauncher-20240216-${pkgver}-linux-${arch}.tar.gz")
+source_aarch64=("logo.png" "sharpcraftlauncher.desktop" "${pkgname}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/SharpCraftLauncher-20240216-${pkgver}-linux-${arch}.tar.gz")
 sha256sums_x86_64=('SKIP' 'SKIP' 'SKIP')
 sha256sums_aarch=('SKIP' 'SKIP' 'SKIP')
 
