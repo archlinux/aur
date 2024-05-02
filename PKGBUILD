@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tximportData
-_pkgver=1.30.0
+_pkgver=1.31.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="provides the output of running various transcript abundance quantifiers on a set of 6 RNA-seq samples from the GEUVADIS project"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-markdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4494d764fc087333e5c04ee7977c85c8')
-b2sums=('1f50c37b627e97531eb4e703fd63d334f1b3fe80e63743710ac803b3290c48e984d06f6b58fd143ce86caf9522771625639d17b5bc51b73304e7fd37ef059ff3')
+md5sums=('9e60f00e8b8c35606fc8d38d64c87206')
+b2sums=('94a4ff045c21cd8bc54e9192a52fd61459d7c836c88d016397462919cd69705291abb5e77ab81edcd04dbd2a815e7a3b68ae8a7cf0cf6c731d86b875a67641d6')
 
 build() {
   mkdir build
