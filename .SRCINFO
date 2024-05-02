@@ -1,6 +1,6 @@
 pkgbase = r-buscorrect
 	pkgdesc = Batch Effects Correction with Unknown Subtypes
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BUScorrect
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-buscorrect
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BUScorrect_1.20.0.tar.gz
-	sha256sums = ee61d25c6558b9886fe58ee38c2c898abc19bfbccb54e5b71ba7b224455f7050
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BUScorrect_1.22.0.tar.gz
+	sha256sums = b1d2c3f69788ca2f2641757a68bf13ea72ccb90cf8aadbcf0fb3cfa1133438b3
 
 pkgname = r-buscorrect

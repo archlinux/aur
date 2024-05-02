@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BUScorrect
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Batch Effects Correction with Unknown Subtypes'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ee61d25c6558b9886fe58ee38c2c898abc19bfbccb54e5b71ba7b224455f7050')
+sha256sums=('b1d2c3f69788ca2f2641757a68bf13ea72ccb90cf8aadbcf0fb3cfa1133438b3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
