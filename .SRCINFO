@@ -1,12 +1,14 @@
 pkgbase = osmo-python-tests
 	pkgdesc = Osmocom tools for testing VTY/CTRL interfaces
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitea.osmocom.org/cellular-infrastructure/osmo-python-tests
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-python-tests.git#tag=0.3.0
 	sha256sums = SKIP
