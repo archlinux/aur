@@ -1,30 +1,26 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # Contributor: Marvin Gülker <quintus at quintilianus point eu>
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
+# Contributor: Uffe Jakobsen <uffe at uffe dot org>
 # -*- mode: sh -*-
 
 pkgname='mlmmj'
-pkgver=1.3.0
-pkgrel=10
+pkgver=1.4.5
+_pkgver=1_4_5
+pkgrel=1
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('bash' 'glibc' 'smtp-server')
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='http://mlmmj.org/'
-license=('MIT')
+license=('MIT')  # SPDX-License-Identifier: MIT
+# Development has moved to Codeberg
+_codeberg='https://codeberg.org/mlmmj/mlmmj/releases/download'
 source=(
-  "http://mlmmj.org/releases/$pkgname-$pkgver.tar.gz"
-  "$pkgname-$pkgver.diff"
-  "$pkgname-$pkgver-bash.diff"
+  "$_codeberg/RELEASE_$_pkgver/mlmmj-$pkgver.tar.xz"
   'sysuser.conf'
   'tmpfile.conf'
 )
-
-prepare() {
-  cd "$pkgname-$pkgver" || exit 1
-
-  patch -Np1 -i "$srcdir/$pkgname-$pkgver.diff"
-  patch -Np1 -i "$srcdir/$pkgname-$pkgver-bash.diff"
-}
+options=('lto')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -33,14 +29,15 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
   esac
 
-  ./configure --prefix=/usr
+  # Tests require “atf-c”. Anyone?
+  ./configure --prefix=/usr --disable-tests
   make
 }
 
@@ -50,32 +47,25 @@ package() {
   make DESTDIR="$pkgdir" install
 
   for fname in AUTHORS COPYING LICENSE; do
-    install -Dm0644 "$fname" "$pkgdir/usr/share/licenses/$pkgname/$fname"
+    install -vDm0644 "$fname" "$pkgdir/usr/share/licenses/$pkgname/$fname"
   done
 
-  for fname in ChangeLog FAQ README README.* TODO TUNABLES UPGRADE; do
-    install -Dm0644 "$fname" "$pkgdir/usr/share/doc/$pkgname/$fname"
-  done
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+    ChangeLog FAQ README README.* TODO TUNABLES UPGRADE
 
   cd "$srcdir"
 
-  install -Dm0644 sysuser.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dm0644 tmpfile.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+  install -vDm0644 sysuser.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -vDm0644 tmpfile.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 
 sha256sums=(
-  '7609d0dd804f0c084c2e483eb58c60012b698bc76464537852a1ee1ff9c6f0e9'
-  '18dd3c663c0c5cc4a713b70b7eb03c2a2b9d6af316e1e080febda1ef61be399c'
-  '3a853e7288cb7a077374e3a79890ec47dbbab208611600ee3d2726e5f17889be'
-  '4bbc24fc73ecb2d8f509c47eacff290921bb70a24b2a87b19704336cb4c466f1'
-  '1836f8ddb013f3762e79b2bbd9e81f850d976c984fa2e24bcc8f39072eeb0d37'
+  '957a018d9e6d169fd54b7109bab747309cf72fe0072b54d11d174675da526126'
+  'SKIP' 'SKIP'
 )
 b2sums=(
-  '6b56ead8fb5840964835b139be7566a14df53266a7d83323176f73430c76702f0dc50f5b255e5881887ad8618abe3ace6cd710128821654709b6135b53adbfe4'
-  'c0beb31414df706e3ce2fc62f8d23f893c8ce199adc2a81a48d3e3df6ddcbd131588d0ad12a4cfcd1d0e3db799ed95101a40d9b88d7ee758413310e2dfe205ab'
-  '8dd8291af4a6b04565df816f0fb193e749824fc05c4226f748b272346d9077ae5bc9904ecc245e5161e267e9d57cb9202db6b8d8a29c9724f563677798534fcd'
-  '946ee7047c127ce3a7a5d784b97002f2373231acad4c1c7cfd65b1fbc4e49761deaf19d74ad8764943736897f03afb814bd92d81e58767f5af3cb87a4a7fa826'
-  '6fc6d4bde198896dc706652cd0e32fde43ac47b40c4d3cd2d130aa5e0b3b7cdb1d97c0124d43f9240c143f3f6641fc626a62f2350b8b43c8cfdfb8fcca33391d'
+  '9390cfd343449160f6c9e244e75af539b73a4ba468e9c3ddf4bc21423e79c6d4d2905b8be829ad0232be00e63f47881d34cf571c9d480b95228df732c32bb7fe'
+  'SKIP' 'SKIP'
 )
 
 # eof
