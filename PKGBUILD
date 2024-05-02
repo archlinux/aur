@@ -79,7 +79,6 @@ check() {
 build() {
     cd "$pkgname"
 
-    stack setup
     stack build \
         --install-ghc \
         --ghc-options='-fdiagnostics-color=always' \
