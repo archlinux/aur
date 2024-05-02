@@ -40,7 +40,11 @@ EOF
 
 prepare() {
     cd "$pkgname"
-    stack config set resolver lts-22.13 # ghc-9.6.4
+    stack config set resolver lts-22.19 # ghc-9.6.4
+    echo 'compiler: ghc-9.6.5' >> stack.yaml
+
+    _bumpVer Cabal 3.10.3.0 # 3.12.0.0
+    _bumpVer Cabal-syntax 3.10.3.0 # 3.12.0.0
     _bumpVer texmath 0.12.8.8
     _bumpVer typst 0.5.0.3
     _bumpVer typst-symbols 0.1.6
