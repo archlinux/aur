@@ -37,5 +37,5 @@ check() {
 package() {
     cd "$_pkgname"
     stack install --local-bin-path "${pkgdir}/usr/bin"
-    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
