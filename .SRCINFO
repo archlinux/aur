@@ -1,0 +1,17 @@
+pkgbase = irker-git
+	pkgdesc = Automated shipping of open-source project releases
+	pkgver = 2.24.r0.g26866bf
+	pkgrel = 2
+	url = http://www.catb.org/~esr/irker
+	arch = any
+	license = BSD2
+	makedepends = gzip
+	makedepends = asciidoc
+	makedepends = make
+	depends = python3
+	provides = irker
+	conflicts = irker
+	source = irker-git::git+https://gitlab.com/esr/irker
+	sha256sums = SKIP
+
+pkgname = irker-git
