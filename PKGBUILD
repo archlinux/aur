@@ -3,7 +3,7 @@ _pkgname=ssh-tpm-agent
 _repo_name="${_pkgname}.git"
 pkgname="${_pkgname}-git"
 # renovate: pkgName=https://github.com/Foxboron/ssh-tpm-agent depName=ssh-tpm-agent-git
-pkgver=0.3.1.r1.5924ae1
+pkgver=0.3.1.r9.f1be81b
 pkgrel=1
 pkgdesc='ssh-agent compatible agent using TPM backed keys'
 arch=('x86_64')
