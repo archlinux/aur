@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=json-schema-for-humans
-pkgver=0.47
-pkgrel=2
+pkgver=0.48
+pkgrel=1
 pkgdesc="Quickly generate HTML documentation from a JSON schema"
 arch=(any)
 url="https://github.com/coveooss/json-schema-for-humans"
@@ -30,9 +30,8 @@ checkdepends=(
   python-beautifulsoup4
   python-pytest
 )
-
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('15508f174fc10c6febc5f762f4631aea869040aef5f8d3538a7f087d4b487e08')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('94e8f4182964a2fa59f996dc4ca66e696c4f17a8838d2f4908f5e459368703ce')
 
 _archive="$pkgname-$pkgver"
 
