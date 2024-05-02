@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FIs
-_pkgver=1.30.0
+_pkgver=1.31.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Human Functional Interactions (FIs) for splineTimeR package"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ef807b75136742a1dcb5ea70993d5c38')
-b2sums=('c9a0b32cc5d7a9119a36a943e1fd66bf50f801b0c870ebf11f334cce331ab1e45bd392976a04d3c888bd98f96888c940fc3c980cf833d1c864373ebdb74216fc')
+md5sums=('d79243a9ea44e9e275127b884025e874')
+b2sums=('4f8e552b252b879fee22838569bd29f6119133dbb14cad370354ba45ba491fb722f72e9b1524a92ba9bcf6c6ae2bb5a37d9409090cca88e1b232d570df43ef48')
 
 build() {
   mkdir build
