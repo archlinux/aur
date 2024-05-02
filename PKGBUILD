@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NCIgraph
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Pathways from the NCI Pathways Database"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ed568ded26dce9e64d5f38606e65c13d')
-b2sums=('9dbd131ba314a900ce7bb8c10155ad5fc25e0dc0c0c622ab03b06e62e83f25f2f947b96f319a215046fe7b458396dbe2f9f06fab842be44bc2542f1e1484c2f3')
+md5sums=('021d036814a43d0ea32bb44f12f330a7')
+b2sums=('93452b77c5e96ef8e199098686d46258c08db6bbe9749e19ef0e4271b1f8915ed4590c9a1008a186ce9f039e74586f66b500997a127ae19e59c45e0639097ba6')
 
 build() {
   mkdir build
