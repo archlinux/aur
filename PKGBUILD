@@ -1,5 +1,5 @@
 pkgname=cynix-lsb-release
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Custom Cynix Linux distribution information"
 arch=('any')
