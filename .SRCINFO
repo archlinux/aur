@@ -1,0 +1,24 @@
+pkgbase = python-bump-my-version
+	pkgdesc = A small command line tool to simplify releasing software by updating all version strings
+	pkgver = 0.21.0
+	pkgrel = 0
+	url = https://github.com/callowayproject/bump-my-version
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-pydantic
+	depends = python-pydantic-settings
+	depends = python-questionary
+	depends = python-rich
+	depends = python-rich-click
+	depends = python-tomlkit
+	depends = python-wcmatch
+	source = https://github.com/callowayproject/bump-my-version/releases/download/0.21.0/bump_my_version-0.21.0.tar.gz
+	sha256sums = c3f1a31e32345679b517cbba99a0875457ee45d7ba6189fcd2a74d3ddae41515
+
+pkgname = python-bump-my-version
