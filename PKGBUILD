@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rcellminerData
-_pkgver=2.24.0
+_pkgver=2.25.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Molecular Profiles and Drug Response for the NCI-60 Cell Lines"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2f45852d4eeb438b6a1feb156200b2bc')
-b2sums=('9bb7bd00b38e89509f9ab1f6e43d5b1d3882a53f54625a53f6026af5e1265eea866ef36e9210a9c99f4256ca3b00fe2646ffcd199e8e1e687afc4a3c67dcfa72')
+md5sums=('c079f8e64733f8b15cd1fc25caa595ff')
+b2sums=('4121ae2ea8c45b3ac76dfeaeb627b5ea194f90d5c9e8c74d2cc0928377788a0704fe0cd9b18509ca364cb4b54aa75f7249549f7377edc281647973043b089351')
 
 build() {
   mkdir build
