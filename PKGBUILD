@@ -3,7 +3,7 @@
 
 pkgname=autodafe
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Tools for converting an autotools recipe to a plain Makefile.'
 arch=('any')
 license=('BSD2')
@@ -12,8 +12,8 @@ makedepends=('make' 'asciidoctor')
 depends=('python3')
 source=("https://gitlab.com/esr/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('7b8b7aa7a9c3aa7738ee2cdbdda3d1b40c1abc355e3e0d0f9cc13dae162fc856')
-docs=('NEWS' 'README' 'TODO' 'de-autoconfiscation' 'configure')
-htmldocs=('NEWS.html' 'README.html' 'TODO.html' 'de-autoconfiscation.html' 'deconfig.html' 'configure.html' 'makemake.html')
+docs=('NEWS' 'README' 'TODO' 'de-autoconfiscation' 'hacking' 'configure')
+htmldocs=('NEWS.html' 'README.html' 'TODO.html' 'de-autoconfiscation.html' 'deconfig.html' 'hacking.html' 'configure.html' 'makemake.html')
 
 build() { 
   cd "${srcdir}/${pkgname}-${pkgver}"
