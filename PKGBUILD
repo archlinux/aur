@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pathwayPCA
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Integrative Pathway Analysis with Modern PCA Methodology and Gene Selection"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -25,8 +25,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('100ae90b68c015f8e344da1d3a2a4863')
-b2sums=('115c3037d1f00173f249ffcdbe152f36119bae1789f0d6257ceb352a0dd8643785594537a2d07df149350f38d8e8c870de5117e5320e7e888b94fd843cbacf29')
+md5sums=('7d77a4fc8784d1b9d744f2a472014e85')
+b2sums=('a75e66460d6cf20f9052aeeed909e29c93bb6c8359fbc63597ece56b7732e9aabb0ffe789b821ebd84e1cb565780479a8985f55fb331aa1939e5f86d4d4b6193')
 
 build() {
   mkdir build
