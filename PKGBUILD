@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=QTLExperiment
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="S4 classes for QTL summary statistics and metadata"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fe7642e0952c4c68e5417906dfb66fb3')
-b2sums=('d41243c1ebf772c212151b979f4b82c96f3dfe0b653ea98c6ffda6d5b265478c0ba84f3f63ff788294cec8b778c00aea7d0b06bd55454ee3afd70e614fb6a9e6')
+md5sums=('9292407de9f3a8342b6a5e1fe526ca07')
+b2sums=('a88420030339fad8e700329664c387d5cb34e082ecdc9474fc5373847c4a1b1fa0b1dd69465d775512dfe9fe67fa213e8040e80c3bdbb984b38a2e584bc3168c')
 
 build() {
   mkdir build
