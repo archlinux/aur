@@ -1,6 +1,6 @@
 pkgbase = mauikit-texteditor-git
 	pkgdesc = MauiKit Text Editor components
-	pkgver = 4.0.0.alpha.20240502
+	pkgver = 3.1.0.r25.g31a63d1
 	pkgrel = 1
 	url = https://invent.kde.org/maui/mauikit-texteditor
 	arch = x86_64

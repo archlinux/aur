@@ -3,7 +3,7 @@
 
 _pkgname=mauikit-texteditor
 pkgname=$_pkgname-git
-pkgver=4.0.0.alpha.20240502
+pkgver=3.1.0.r25.g31a63d1
 pkgrel=1
 pkgdesc="MauiKit Text Editor components"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -19,15 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  if git tag | grep v4
-  then
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-  else
-    echo "4.0.0.alpha.`date "+%Y%m%d"`"
-  fi
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
