@@ -1,6 +1,6 @@
 pkgbase = r-weitrix
 	pkgdesc = Tools for matrices with precision weights, test and explore weighted or sparse data
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/weitrix
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = r-weitrix
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/weitrix_1.14.0.tar.gz
-	sha256sums = bbafa161c07fa8696d7f3d24182dc4f64309381cf63a3d019b39bd85be6dc366
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/weitrix_1.16.0.tar.gz
+	sha256sums = e4dfa0c0fef95596176161dc22d5266e813fbba5a4b7384364ab532c26495706
 
 pkgname = r-weitrix
