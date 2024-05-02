@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=polyester
-_pkgver=1.38.0
+_pkgver=1.39.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.39.0
 pkgrel=1
 pkgdesc='Simulate RNA-seq reads'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-markdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8496e16691e36100cbd95b0de061edf50b2699b8d47d479972024209646fccc7')
+sha256sums=('7d3c5cb370103df7a0d6470200f41cc3ba9ed19a11fbab7d26583ebf2ac4803b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
