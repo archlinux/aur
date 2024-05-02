@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=DCATS
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Differential Composition Analysis Transformed by a Similarity matrix"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -29,8 +29,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8a6002426027bd88d05a2b8759d5a12e')
-b2sums=('3a1cea1c042368da4a1c4309cf4f87e77a98abad96bffe57daa4dc8f6082ac281dfd600867b6a2f5f8657d351ea89f396ce390a145b3053dafa57d259557bba8')
+md5sums=('b01e67df9162954ccf38d2c623baa74b')
+b2sums=('c4b8544ac11a02b7733008b1714fb56aae648251bb88ed81396a7471096a1fdd8a9fb13154e632397851a588c0f7a3afd56bb2e5b83d89e5182fa25658e78ea3')
 
 build() {
   mkdir build
