@@ -1,5 +1,5 @@
 pkgname=polytope-cli-bin
-pkgver=0.1.27
+pkgver=0.1.28
 pkgrel=1
 pkgdesc="Polytope is a programmable software development platform. This package installs CLI for managing polytope-managed services"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('Unknown')
 depends=()
 options=('!strip' '!debug')
 source=("pt-$pkgver-linux-amd64.gz::https://polytope.com/releases/polytope-cli-$pkgver-linux-amd64.gz")
-sha256sums=('3df71ea60b5ffd28bae516b6c6eb25c5ee682d4a1119fa53171b55d5bc94f5cf')
+sha256sums=('716bf2e7e97af4c7a8c9b31f517f3e72ef678fa912fe51e36582f5cf43338aca')
 
 package() {
     cd "$srcdir"
