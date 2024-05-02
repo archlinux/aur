@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=sSNAPPY
-_pkgver=1.6.2
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -48,8 +48,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0ca61b239c7ba1761b973b5dbb83cb69')
-b2sums=('03029c13d3333d1d58e969be4ef3f1a5e07218849af09cdc36c95d265bf24b2e3d986822d012c8c3276ca828d19a5030bfdfb28c8d740cce98a9845e6579437b')
+md5sums=('21fc7c8f3f9568dd674a0258e832e73a')
+b2sums=('e59956773f9de786890c1450839b6a020bf2f6304bf675c3285fc03621742d8092bda5f53a658e7c5cede81a77ef9228fc0377945ea01e29692be40e1902e197')
 
 build() {
   mkdir build
