@@ -5,12 +5,12 @@
 # Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
-_date=2024-02-08
-_rustc=1.76.0
+_date=2024-03-21
+_rustc=1.77.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.77.1
+pkgver=1.78.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -38,13 +38,13 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_rustc}-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('2ddc6f5e01df1bd6c7ff94d9931574181795a231b199ca6948d433fa5e795873'
+sha256sums=('8065824f0255faa3901db8206e6f9423f6f8c07cec28bc6f2797c6c948310ece'
             'SKIP'
-            'e41150b52d923a3bbe166c4ecc5719f56576274b0d034d764768aee279ae2063'
+            'e5fec840744c3ff63611f6801de80f5ec8e099fa8225bf46d064810a9545e9b5'
             'SKIP'
-            '9fadfcf71bc6a0ddfd026b9624163faf1c5689dd4a1f7cc1f857167ade4aa6eb'
+            '89397dddb99733bad987e9fdc9d985a150af2e39c81766099e584d93991f5752'
             'SKIP'
-            '30ec0ad9fca443ec12c544f9ce448dacdde411a45b9042961938b650e918ccfb'
+            '0af971f126e0307d4e4d974f0e9c33fd1c2923274b14a0861823b5a019e8faf5'
             'SKIP'
             '14e684d6db06462a247c6af89dbfa55fc024a1c9c24448fa45abb7818f9433b6')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
@@ -78,10 +78,9 @@ package() {
   mv "${srcdir}/rust_install/"* "${pkgdir}"
 
   # license
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"{rust,cargo}
-  mv "${pkgdir}"/${_prefix}/share/doc/rust/LICENSE-*.old "${pkgdir}/usr/share/licenses/${pkgname}/cargo/"
-  rename '.old' '' "${pkgdir}/usr/share/licenses/${pkgname}/cargo/"*
-  mv "${pkgdir}"/${_prefix}/share/doc/rust/{LICENSE-*,COPYRIGHT} "${pkgdir}/usr/share/licenses/${pkgname}/rust/"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"{rustc,cargo}
+  mv "${pkgdir}"/${_prefix}/share/doc/cargo/LICENSE-* "${pkgdir}/usr/share/licenses/${pkgname}/cargo/"
+  mv "${pkgdir}"/${_prefix}/share/doc/rustc/{LICENSE-*,COPYRIGHT} "${pkgdir}/usr/share/licenses/${pkgname}/rustc/"
 
   # remove unused files
   rm -r "${pkgdir}/etc"
