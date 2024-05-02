@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BasicSTARRseq
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Basic peak calling on STARR-seq data'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aa9b5c471652827ce80d830c4b605633e851f7c31a15520705768989c35e86b7')
+sha256sums=('5b326292b39ab603414d67595b71544ad4bb782a4fa112f0236cc81b10c3c9f0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
