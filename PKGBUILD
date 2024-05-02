@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=breakpointRdata
-_pkgver=1.20.0
+_pkgver=1.21.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Strand-seq data for demonstration purposes"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e3f74132513d150cb5d5cc62bfd49586')
-b2sums=('d7f0d7a89b134d6977f657992ec8b54f8e737083e77085c5f82cf493f463c9c5b2754fb6c502ca435a4f338a188db3edaa307a228fbc8cc09be2024453238529')
+md5sums=('40a54aff0a6c5b54d0afe8498f0f5f8a')
+b2sums=('8cbba6aafe8ef0e6dc1bd46b3e4a7623e9118fa14ecb00587858f6b96833cc30d0a42d7201302decc8efe347095fa2db3044c2a55b356914e8721444f995662c')
 
 build() {
   mkdir build
