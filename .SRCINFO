@@ -1,0 +1,15 @@
+pkgbase = python-pygments-onehalf
+	pkgdesc = One Half color scheme for Pygments
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/tomwatson1024/pygments-onehalf
+	arch = any
+	license = MIT
+	checkdepends = python-nose
+	checkdepends = python-pygments
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/pygments-onehalf/pygments-onehalf-1.0.0.tar.gz
+	md5sums = 33d55df2d6552e2a679f4b530354a195
+
+pkgname = python-pygments-onehalf
+	depends = python-pygments>=1.4
