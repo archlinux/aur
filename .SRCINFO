@@ -1,8 +1,8 @@
 pkgbase = hotspotshield-bin
-	pkgdesc = Hotspot Shield VPN client
+	pkgdesc = Hotspot Shield VPN client for Linux. Public build
 	pkgver = 1.0.7
-	pkgrel = 1
-	url = https://www.hotspotshield.com
+	pkgrel = 2
+	url = https://hotspotshield.com
 	arch = x86_64
 	license = custom
 	depends = dbus
