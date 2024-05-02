@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rbowtie
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="R bowtie wrapper"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('409fc50371b1eaf9be2af500aff05249')
-b2sums=('9cb33afde91eeedfd33db8f234821faa7f1dd0f3022f1b94c77845c94ece1ba3d68b02c660ef35f2e98facf788e3b24d656dd4eba5e5c15ccad388bd5dee83a8')
+md5sums=('cb1691e970b9ef899bac366baa3e9bb5')
+b2sums=('5abc324d1b774274bd553674021c8e400e3dd15bdcb08e3f92f2a85f97aa570eaf6ae852bb0b31527be4d1d99e67e2c0145098e7b79202e7dde132543cab8936')
 
 build() {
   mkdir build
