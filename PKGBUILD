@@ -16,7 +16,7 @@ _pkgver='5.90';  _dl='8/0100007658/40';_suffix1='m17n';_suffix2='03'
 
 pkgver="${_pkgver}.1.${_suffix2}"
 
-pkgrel=1
+pkgrel=2
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -37,7 +37,7 @@ optdepends=('libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS 
 
 
 conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
-options=('!emptydirs' '!strip' '!libtool')
+options=('emptydirs' '!strip' '!libtool' '!debug')
 
 source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz")
 md5sums=('072004c6f1a296070b1baeb4416fbd9c')
@@ -129,8 +129,8 @@ _setvars() {
     # _libsarch is architecture dependent
     
     local -A _libsarchfolder
-    _libsarchfolder['x86_64']='libs64/intel'
-    _libsarchfolder['aarch64']='libs64/arm'
+    _libsarchfolder['x86_64']="libs64/intel"
+    _libsarchfolder['aarch64']="libs64/arm'"
 
     _vars=(
         _builddir="${srcdir}/${_srcdir}"
@@ -138,13 +138,13 @@ _setvars() {
         driver_dir="${_driver_dir}"
         utility_dir="cnrdrvcups-utility-${_pkgver}"
         RPM_BUILD_DIR="${srcdir}/${_srcdir}"
-        _prefix='/usr'
+        _prefix="/usr"
         _machine_type="MACHINETYPE="$CARCH
         _cflags="CFLAGS=""$CFLAGS"
-        _libdir='/usr/lib'
-        _bindir='/usr/bin'
-        locallibs='/usr/lib/'
-        _includedir='/usr/include'
+        _libdir="/usr/lib"
+        _bindir="/usr/bin"
+        locallibs="/usr/lib/"
+        _includedir="/usr/include"
         b_lib_dir="${srcdir}/${_srcdir}/lib"
         b_include_dir="${srcdir}/${_srcdir}/include"
         _libsarch="${_libsarchfolder[$CARCH]}"
@@ -166,10 +166,14 @@ package() {
     cd "${_srcdir}"
 
     local _vars; _setvars
+    
     env "${_vars[@]}" \
     RPM_BUILD_ROOT="${pkgdir}" \
     sh 'make.install.Arch'
-
+    
+    # package creates several empy directories, but those in /etc are needed. remove others.
+    rmdir "$pkgdir"/usr/include
+    
     # licensing information is spread over multiple files and folders and has changed between versions
     # while they could be done in a loop iterating through dirs/files,
     # I feel that would obscure what happens and make troubleshooting harder
