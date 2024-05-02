@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Mergeomics
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Integrative network analysis of omics data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1b8f5bc8cf54fa99df988a83c71737d3')
-b2sums=('c974eb17c5c95a05229c730a3385a8f0fe1f95ed98c35f829ed401b96e45ced20ecc9d7ec808c60f9a6b1d9589cdd22bece2a1b8e73511cd0acf282bed47d8a1')
+md5sums=('3681b23bd25c5d31b959b6944576e321')
+b2sums=('6141d0752668aca8e6b0246e63d40b36fd754d4b6ab7153b37cd2a34adb1f8ceb68fef54a3863b527a5750b57a8fdef8054c2cfb45ea5fd229792a5973fd14d2')
 
 build() {
   mkdir build
