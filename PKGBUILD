@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=magrene
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Motif Analysis In Gene Regulatory Networks"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7d02392d3081830451c4fae90ed50177')
-b2sums=('d207aa0c2c8e4b9381ab32297860a5255462950657d3efbda66dd634f6ff3d34b2550e718393efb72007cbb0448257f0d7b74f01d5d9ddfb2e8f9b50b933de1c')
+md5sums=('50b5df5a398b2b149204d937d58d9a26')
+b2sums=('ed894a9e7b3da700943f00736971f9e45298119b19d50616d8dec27e0216cbf590480cf45d728f7435c8231971d320c90bd98d87b61a41877f8468d44e6adca9')
 
 build() {
   mkdir build
