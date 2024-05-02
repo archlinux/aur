@@ -4,7 +4,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-displaylink-git"
-pkgver=v0.38.1
+pkgver=0.38.1
 pkgrel=4
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (DisplayLink patch)"
 arch=(any)
@@ -59,7 +59,7 @@ makedepends=(
   xorgproto
 )
 source=(
-  "${pkgname}::git+https://github.com/hyprwm/Hyprland.git#tag=${pkgver}"
+  "${pkgname}::git+https://github.com/hyprwm/Hyprland.git#tag=v${pkgver}"
   "displaylink.patch"
   )
 provides=("${pkgname%-displaylink-git}")
