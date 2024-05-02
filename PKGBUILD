@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=pfamAnalyzeR
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Identification of domain isotypes in pfam data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('20159a7f365760efda4827ae6fff80d3')
-b2sums=('bd3f930f4597c1402c326de4e3a8c87301ecee0e012b62a499365f08c1f75ac3b070da7d4e59b7876c2aec6822fa829a7b14eb11ffef81da480db922be1a3334')
+md5sums=('5f1aee0c574bd92d88235f416e14c253')
+b2sums=('12a3d33b21e6b381dcede16449d129b152b53529f5d0aacc9c5321c326911ff0a0c54357aaebec47af586f3d4f123c84413a429044cdda5c0952daabd82332d2')
 
 build() {
   mkdir build

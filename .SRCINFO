@@ -1,7 +1,7 @@
 pkgbase = r-pfamanalyzer
 	pkgdesc = Identification of domain isotypes in pfam data
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/pfamAnalyzeR
 	arch = any
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = r-pfamanalyzer
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pfamAnalyzeR_1.2.0.tar.gz
-	md5sums = 20159a7f365760efda4827ae6fff80d3
-	b2sums = bd3f930f4597c1402c326de4e3a8c87301ecee0e012b62a499365f08c1f75ac3b070da7d4e59b7876c2aec6822fa829a7b14eb11ffef81da480db922be1a3334
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pfamAnalyzeR_1.4.0.tar.gz
+	md5sums = 5f1aee0c574bd92d88235f416e14c253
+	b2sums = 12a3d33b21e6b381dcede16449d129b152b53529f5d0aacc9c5321c326911ff0a0c54357aaebec47af586f3d4f123c84413a429044cdda5c0952daabd82332d2
 
 pkgname = r-pfamanalyzer
