@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqLogo
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Sequence logos for DNA sequence alignments"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0771c35a7929a3e71aa5eebaf4a624ef')
-b2sums=('eb3617cff1acd7ef1ab7df0eb7b8eb515455cc732b50353fd15ccb8fdc66181588cd0de7914c7c092f5e608be0dc58f9bdd56e45960f5416ce17e7d7c973116b')
+md5sums=('2632a70bbc1d1b088fbe5748d5377778')
+b2sums=('0e2a25b64b5c82b09e1d8eb43bec98603e1afab2e737a86577082e6a533c61e25d3ecca75b1aa4d8988173e30c02f6962d941be7385d058de3fad5ed42515fdf')
 
 build() {
   mkdir build
