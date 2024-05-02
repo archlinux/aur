@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GOpro
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Find the most characteristic gene ontology terms for groups of human genes"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c92dbcab08a7cdac3ee8ee6c28c6dc78')
-b2sums=('7e14f3cb480a076aae3a32cfcc4e0e8372e66a8c4cbafcc756aafcdc318fbc8bb22e309e8f26eb77d3eb1e2f8f79b7f556d741808b529301205724520868f6f6')
+md5sums=('66d0fd9baf669ad4eb6e944e09901111')
+b2sums=('a7e8244fe6ce542e7b556a3de429e108b709ffe0cf26f8cd4d467566ae12ada78c612b9233615f8aa1fc1d8da0b627e06564ebcea13a74364e3d4af4c1c3cb75')
 
 build() {
   mkdir build
