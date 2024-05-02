@@ -1,0 +1,12 @@
+--- a/samples/metrics_monitor/CMakeLists.txt
++++ b/samples/metrics_monitor/CMakeLists.txt
+@@ -11,8 +11,7 @@ if( PKG_LIBDRM_FOUND AND ("${PKG_LIBDRM_VERSION}" VERSION_GREATER 2.4.91))
+ 
+     set(DEPENDENCIES libdrm )
+ 
+-    make_library( cttmetrics none shared )
+-    make_library( cttmetrics_static none static )
++    make_library( cttmetrics none static )
+ 
+     install( TARGETS cttmetrics LIBRARY DESTINATION ${MFX_SAMPLES_INSTALL_BIN_DIR} )
+ 
