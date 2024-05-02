@@ -17,6 +17,8 @@ sha256sums=('f079089d7cc11c4d846ae3d2b89d052bf74454431f478e45e87a34cce21860f5')
 
 build() {
   cd $srcdir/EasyLPAC-$pkgver
+  VERSION=$(grep 'Version' FyneApp.toml | sed 's/Version = "\(.*\)"/\1/' | xargs)
+  DATE=$(TZ=Asia/Shanghai date +"%Y-%m-%d")
   sed -i "s/const Version = \"development\"/const Version = \"$VERSION\"/" main.go
   sed -i "s/const EUICCDataVersion = \"unknown\"/const EUICCDataVersion = \"$DATE\"/" main.go
   go generate
