@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=mslp
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Predict synthetic lethal partners of tumour mutations"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -33,8 +33,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8d78607401143e315c9ad75923a0c9c5')
-b2sums=('a27df126d2d97d59f6744435cfe6abe5f72f73f10f653171ba10e8eeeb9ca807d26aec9fd405904ad3313e95616a485f2c8ef5805951544163a8c436aa6d7ab0')
+md5sums=('77a5b63f5921f90e6e6d7daa777bb0df')
+b2sums=('0ab77c4b4bd2959091e662e5fef8e2e8ea97fbf79c995cd2c378f8c81f23c3af113907d471671f8e572766c0e8b0efd7e5ca4c1056af384dbc73b76f6ce4907a')
 
 build() {
   mkdir build
