@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=compcodeR
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="RNAseq data simulation, differential expression analysis and performance comparison of differential expression methods"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -56,8 +56,8 @@ optdepends=(
   r-tidytree
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b1ec77496e614cf3399843b8c34e6ab2')
-b2sums=('62b09c9217a9a840e223fa9639d9c1f9853fb38e3dab39af9bbba53f94c85d20522a7df7fde9d32f3b6346872fdad5a1826359fc33ee9ad2e4f7c9ea17c25200')
+md5sums=('6309c3d48d1b9d5f710490abc9169a1f')
+b2sums=('776140cc097c4be70892117532eb7bbb11806d17c89cd802e5e3c2f50235ab6900faf811885068cfc9701e2eec28a8a850d3de05341954cf5ab3786399003990')
 
 build() {
   mkdir build
