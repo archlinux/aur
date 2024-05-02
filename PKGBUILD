@@ -13,9 +13,7 @@ conflicts=("easylpac")
 source=(
   easylpac-$pkgver.tar.gz::https://github.com/creamlike1024/EasyLPAC/archive/refs/tags/$pkgver.tar.gz
 )
-sha256sums=(
-  "SKIP"
-)
+sha256sums=('f079089d7cc11c4d846ae3d2b89d052bf74454431f478e45e87a34cce21860f5')
 
 build() {
   cd $srcdir/EasyLPAC-$pkgver
