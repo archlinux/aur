@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GloScope
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Population-level Representation on scRNA-Seq data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -30,8 +30,8 @@ optdepends=(
   r-zellkonverter
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('00ab18ecdd0a5768690b841f2f2448e5')
-b2sums=('9bfaa3b2b4c8b1876f35a21fffd5362ba56aec8264c20694119114db9e2399d7481ef69c56d8ede4af45747114acb34aa00ae39a1e31cd30896fc4a0656d1343')
+md5sums=('fa0a9f03406b2d71558c5c0fab37a7f5')
+b2sums=('1c4e676847eac42231b66b5aa2e8cc12a2ac750cfcc517158617d9188845e8ba994d72be260da02523c761419f54dcb6331e85639fdae2ee02a265a6822b4586')
 
 build() {
   mkdir build
