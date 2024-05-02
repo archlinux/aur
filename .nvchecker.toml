@@ -1,0 +1,5 @@
+[systemctl-tui]
+source = "github"
+github = "rgwood/systemctl-tui"
+prefix = "v"
+use_max_tag = true
