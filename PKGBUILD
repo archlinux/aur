@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rrvgo
-_pkgver=1.14.2
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.2
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Reduce + Visualize GO'
 arch=('any')
@@ -57,7 +57,7 @@ optdepends=(
   r-utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('100359f083bfa8cf32037f9c944068b8b5fa65d6fcdbf2b9cefa5bc092bdff54')
+sha256sums=('7718e5b91a1a1e602fc94b8d9468db58d4307ac27d06e5216ceb475d7a67698c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
