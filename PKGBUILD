@@ -1,7 +1,7 @@
 pkgname=mingw-w64-libcuba
 pkgver=4.2.2
 pkgrel=1
-pkgdesc='A library for mutidimensional numerical integration (mingw-w64)'
+pkgdesc='A library for multidimensional numerical integration (mingw-w64)'
 arch=('any')
 url="https://feynarts.de/cuba/"
 license=('LGPL')

@@ -1,5 +1,5 @@
 pkgbase = mingw-w64-libcuba
-	pkgdesc = A library for mutidimensional numerical integration (mingw-w64)
+	pkgdesc = A library for multidimensional numerical integration (mingw-w64)
 	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://feynarts.de/cuba/
