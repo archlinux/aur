@@ -1,0 +1,14 @@
+pkgbase = python-tcm
+	pkgdesc = Topic Context Model (TCM).
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/jnphilipp/tcm
+	arch = any
+	license = GPLv3+
+	makedepends = python-setuptools
+	depends = python-scipy
+	depends = python-scikit-learn
+	source = tcm-0.1.2.tar.gz::https://github.com/jnphilipp/tcm/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = d4ecf5450ba1f0964ef6b97b03434bf41335a37abbf1aa900072cff7ecd47874
+
+pkgname = python-tcm
