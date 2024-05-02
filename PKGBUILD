@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=TENxIO
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Import methods for 10X Genomics files"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -43,8 +43,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('98a845f55877d89b82b9a153fe54a41f')
-b2sums=('2d80d62023d6673306c8d5308e19fea33668bd7943116aae322030b1e9f4f19b3c523a1b27dab702a7549687cc8c8100d3b2decda8b5ce65c4164d886271fa41')
+md5sums=('c057806cbd49aa1ef13d84a3650e2d1d')
+b2sums=('aeb6ffc5bf986440aa0b9b5456b0c44fd4d80ba5a02d27816cdc5ab2a5afdead9e6934d31a972d4fb8a8afb112bd6db9c49f2d55495dd3391b61d43563a43318')
 
 build() {
   mkdir build
