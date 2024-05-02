@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CFAssay
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Statistical analysis for the Colony Formation Assay"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('122c969248ffd92330d93a266db6cb3c')
-b2sums=('53dae0fb1b19bb5e90cc870ed8226c2a97449d73e186e2f79bd45272d615d45d50f77dc26dcc15c9cd7e58f75d2d5c2d410c7af91a5dc75dc2ca6ffbd39aa02c')
+md5sums=('3ac657b11869bc24931964ca248360be')
+b2sums=('288ccd12f97e2eacd6897c4545fd62f69edc796ca31517c6a69546f166ec2c83e883a0211e4e19277fa7714dbaa20d1c8a5d1a9efb4bd59ac05031be3f622f82')
 
 build() {
   mkdir build
