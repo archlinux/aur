@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affxparser
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Affymetrix File Parsing SDK"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,18 +19,13 @@ optdepends=(
   r-r.utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "fix-build.patch"
         "fix-makevars.patch")
-md5sums=('2b6b9373d749a0ccbf930f834df90b92'
-         '6c83c3b0540e4355227d8048f86489c8'
+md5sums=('37156429dc8ffa3612fe74ac4f6a4a41'
          '3003f5b61fc426c2f977e4cd277e9f44')
-b2sums=('5ac91a8b6df17fd403722d8f798c17f88107335c0ea23dbea14e316e823dd0897e5c5aa5c0739f8cbb028f0b65eb12905d0696b2f2c9a42555cd277d1494ebc2'
-        '08e825439a575284b50e7ef7ca878a6eca35498037f9f44b3a23126c0772409eb2fad274019ef0dde87eb3e3d9059db0c052690848a9f175a744c1479da19c5f'
+b2sums=('5113ff5858ced83959a2563148d8da3758ef330ee70027db43ae6309cf5698047d82147cd83fd81f3039e8037d8860099f978a046560146c2429861cf2f74068'
         '263668f9ca395d380a7a2a2ed048cc33fd63418546fde998271504ab04fa2a8589d31a07de3f9470919455631fa77cb68bfdfa553164508bcf9c293a87d233e2')
 
 prepare() {
-  # fix format string errors
-  patch -Np1 -i fix-build.patch
   # fix optimization level and race condition
   patch -Np1 -i fix-makevars.patch
 }
