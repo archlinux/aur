@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=vsclust
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Feature-based variance-sensitive quantitative clustering"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0c492a6d65d0b230211a0f95706b51a4')
-b2sums=('5f8f8849b5eb42cca0c73767cf8eae95f22473855054021ab78ecfdf2dc1725de17f06a477b742fccb40b72ab4f5af5a7f8ad083cdb28e4abee95da6b0bd737c')
+md5sums=('82171a61a9b29573ebe5c4987120fd11')
+b2sums=('bbedd1841c8272acf0603f516fed20543177af241e72ffdb944a64c57f7a53949c567ea7792d9aabd4ae39f58024ab8860f9e2b4e5eac36a95f5752615f03aef')
 
 build() {
   mkdir build
