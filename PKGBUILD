@@ -4,8 +4,8 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-displaylink-git"
-pkgver="0.38.1"
-pkgrel=3
+pkgver=v0.38.1
+pkgrel=4
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (DisplayLink patch)"
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -59,23 +59,25 @@ makedepends=(
   xorgproto
 )
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v${pkgver}/source-v${pkgver}.tar.gz"
+  "${pkgname}::git+https://github.com/hyprwm/Hyprland.git#tag=${pkgver}"
   "displaylink.patch"
   )
-conflicts=("${_pkgname}")
-provides=(hyprland)
-sha256sums=('1a86365cc006fca4bc96c6c41347d0bde048b6463c516e09b9c54cff58fb73ab'
+provides=("${pkgname%-displaylink-git}")
+conflicts=("${pkgname%-displaylink-git}")
+sha256sums=('180182843ed6385c63aba2472a7fd46be240d85a0f41d417d3375b299f7dd296'
             '8547270650479714b91dccb98aa8e4bf5095eff6acd6855a60a1929ccccc1eba')
 options=(!makeflags !buildflags !strip)
 
 prepare() {
-    cd "$srcdir/hyprland-source"
-    patch --directory="$srcdir/hyprland-source/subprojects/wlroots/" --forward --strip=1 \
+    cd "$srcdir/$pkgname"
+    git submodule update --init --recursive
+
+    patch --directory="$srcdir/${pkgname}/subprojects/wlroots/" --forward --strip=1 \
         --input="$srcdir/displaylink.patch"
 }
 
 build() {
-    cd "$srcdir/hyprland-source"
+    cd "$srcdir/${pkgname}"
 
     meson setup build \
         --prefix     /usr \
@@ -93,7 +95,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/hyprland-source"
+  cd "$srcdir/${pkgname}"
 
   meson install -C build \
     --destdir "$pkgdir" \
