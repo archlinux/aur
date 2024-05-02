@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=epistasisGA
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="An R package to identify multi-snp effects in nuclear family studies using the GADGETS method"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -38,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('79635d9683f002813e51fa3c17e49b39')
-b2sums=('20040b701a4086f11d2da4d64617faae02301fab8e6cd981bfef8958eded6df64b8ab2b873557721ceb2473222ff337ff1dd21ed0036de5a4432c3b425aed641')
+md5sums=('c5d3006f0c36ed266bbd740651f435dc')
+b2sums=('19c820b23ba592069040d55bcd75230a13996935fd949bd39b593ff699fb5a34bad8ca8d6aad86b23a5eb14b1b44e81cbac8567727a886e4c1d1aba8a655d466')
 
 build() {
   mkdir build

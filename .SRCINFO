@@ -1,7 +1,7 @@
 pkgbase = r-epistasisga
 	pkgdesc = An R package to identify multi-snp effects in nuclear family studies using the GADGETS method
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/epistasisGA
 	arch = x86_64
 	license = GPL-3.0-only
@@ -25,8 +25,8 @@ pkgbase = r-epistasisga
 	optdepends = r-magrittr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/epistasisGA_1.4.0.tar.gz
-	md5sums = 79635d9683f002813e51fa3c17e49b39
-	b2sums = 20040b701a4086f11d2da4d64617faae02301fab8e6cd981bfef8958eded6df64b8ab2b873557721ceb2473222ff337ff1dd21ed0036de5a4432c3b425aed641
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/epistasisGA_1.6.0.tar.gz
+	md5sums = c5d3006f0c36ed266bbd740651f435dc
+	b2sums = 19c820b23ba592069040d55bcd75230a13996935fd949bd39b593ff699fb5a34bad8ca8d6aad86b23a5eb14b1b44e81cbac8567727a886e4c1d1aba8a655d466
 
 pkgname = r-epistasisga
