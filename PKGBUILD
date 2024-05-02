@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OVESEG
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='OVESEG-test to detect tissue/cell-specific markers'
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('406e7d01bf6e2e3aec87ba755e3abc8032b0d86b5eb518f598b9fc6d35e8ea82')
+sha256sums=('ddd728f2f962a043835fe4cf18f1fb4387c67dbb0a9f7a59fec3a755226a422e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
