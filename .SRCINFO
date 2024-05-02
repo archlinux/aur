@@ -1,13 +1,14 @@
 pkgbase = freecalypso-sim-tools-hg
 	pkgdesc = FreeCalypso SIM card tools
 	pkgver = r103.3477438b5706
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.freecalypso.org/hg/fc-sim-tools
 	arch = x86_64
 	arch = i686
 	groups = freecalypso
 	license = custom
 	makedepends = mercurial
+	depends = pcsclite
 	source = hg+https://www.freecalypso.org/hg/fc-sim-tools
 	md5sums = SKIP
 
