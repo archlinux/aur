@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rgraphviz
-_pkgver=2.46.0
+_pkgver=2.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Provides plotting capabilities for R graph objects"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b93e5d1c383b1e5cd06e4dec89a43ce8')
-b2sums=('dd8af61cef947ab217449352180b1fa222ca7a7b68bf22475d116207ea3837d7435fceab04d75eacbf75e35ac21d43db342c1e12b46c4604e6a95a8fb6194f1d')
+md5sums=('3215a98dc2b000da5e619bc78f72476e')
+b2sums=('29ff47f0d561118f2a4b3a46773d0c0af244e9fc95d4b1241438ec533133f66534ff7c6e2db3db7d579ea0987ecabc2b6e8c2a58e4862ad1dacbf743693ebbd3')
 
 build() {
   mkdir build
