@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Clomial
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Infers clonal composition of a tumor"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   r-permute
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('71e609b1bef40cdadcd812f99a5956e8')
-b2sums=('9f1313784d7f056c8bb605f08c52094bae6ecec3429fb117b5d937bc94ae02c8fde65ddd42cb76ad280d0917aba8f3ecd61ed426cb7a8118d5e22d7f84e89130')
+md5sums=('321325e3abcdb7491e46ad8d1ba0c79b')
+b2sums=('774252abec71345712593b55681f5051bae38e072a976e25ad5127a50a78ce60c628619de3d54b923bf37e95e4d6d46f74e600196836bedc74a10a429f490afe')
 
 build() {
   mkdir build
