@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=VDJdive
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Analysis Tools for 10X V(D)J Data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('938051376344953e02e510f65d156939')
-b2sums=('6fe08829c262f98518ce09040df89100a3169293c4515ce4883b3360c4e9a46f2fc85db102b177008cf697bfdd8e1dcd5a1ba53d4105540d569c4340c83aa7e8')
+md5sums=('1207027ee0cda0d82755db2892a9a327')
+b2sums=('d97b8b2660bbff766d256e449057c1460daf1047f19b0e83c52077db6495b2983906bb6ff16c7780a4006c1708615a1e0795053294bb046f86b0d92cbb718903')
 
 build() {
   mkdir build
