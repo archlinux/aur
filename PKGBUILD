@@ -1,6 +1,6 @@
 # Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 pkgname=p4lang-p4c
-pkgver=1.2.4.10
+pkgver=1.2.4.11
 _googletest_ver=1.14.0
 _libbpf_ver=1.2.2
 _p4runtime_commit=1e771c4e05c4e7e250df00212b3ca02ee3202d71
@@ -33,7 +33,7 @@ source=(
     "libbpf-$_libbpf_ver.tar.gz::https://github.com/libbpf/libbpf/archive/refs/tags/v$_libbpf_ver.tar.gz"
     "git+https://github.com/p4lang/p4runtime.git#commit=$_p4runtime_commit"
 )
-sha256sums=('8cf5cb52fb36aa5ebd156fd818d3ac4cfdda69a76f6871196b4f69c1dae65414'
+sha256sums=('363e76eda3e7e7b4c9d4f66f59484002183097ac7c3bd1456f8865d285672512'
             '8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7'
             '32b0c41eabfbbe8e0c8aea784d7495387ff9171b5a338480a8fbaceb9da8d5e5'
             'SKIP')
