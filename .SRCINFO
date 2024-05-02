@@ -1,6 +1,6 @@
 pkgbase = plumed
 	pkgdesc = An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines.
-	pkgver = 2.8.2
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = http://www.plumed.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = plumed
 	depends = netcdf
 	optdepends = vmd-molfile-plugins: Add capability to read vmd compatible trajectories
 	provides = plumed
-	source = https://github.com/plumed/plumed2/releases/download/v2.8.2/plumed-2.8.2.tgz
-	sha256sums = 93a2779ce0abfcf6c29ed7db95a062912603e05bc46c56f5785f7eaf6a1bea23
+	source = https://github.com/plumed/plumed2/releases/download/v2.9.0/plumed-2.9.0.tgz
+	sha256sums = 534db9ccb9446844f3e99ecdff091ad79c014ce9c4afe212c1536e19f85ab0d1
 
 pkgname = plumed

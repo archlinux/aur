@@ -2,7 +2,7 @@
 # Maintainer: Hector Martinez-Seara Monne <hseara ##[at]## gmail?com>
 
 pkgname=plumed
-pkgver=2.8.2
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines."
 url="http://www.plumed.org/"
@@ -14,7 +14,7 @@ makedepends=('vim')
 provides=('plumed')
 #install=$pkgname.install
 source=( https://github.com/plumed/plumed2/releases/download/v${pkgver}/plumed-${pkgver}.tgz)
-sha256sums=('93a2779ce0abfcf6c29ed7db95a062912603e05bc46c56f5785f7eaf6a1bea23')
+sha256sums=('534db9ccb9446844f3e99ecdff091ad79c014ce9c4afe212c1536e19f85ab0d1')
 #options=(!buildflags)
 
 #Using gcc9 as compiler due to linking problems with cuda
