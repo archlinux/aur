@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-adaptive-git
 	pkgdesc = InputStream client for adaptive streams for Kodi 21+
-	pkgver = 21.4.4.Omega.r2.ga82e3eb8
+	pkgver = 21.4.6.Omega.r0.g0e0820d5
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.adaptive
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = kodi-addon-inputstream-adaptive-git
 	arch = armv6h
 	license = GPL2
 	makedepends = kodi-dev
+	makedepends = rapidjson
 	makedepends = cmake
 	makedepends = git
 	depends = pugixml
