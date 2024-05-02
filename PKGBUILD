@@ -13,6 +13,7 @@ pkgrel=1
 arch=('any')
 depends=('python')
 makedepends=('python-installer')
+optdepends=('python-parglare: generate SourceInfos from parglare contexts')
 
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/${pkgname//-/.}/${pkgname//-/.}-$pkgver-py3-none-any.whl")
 noextract=("${pkgname//-/.}-$pkgver-py3-none-any.whl")
