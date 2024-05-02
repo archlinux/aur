@@ -1,6 +1,6 @@
 pkgbase = r-dewseq
 	pkgdesc = Differential Expressed Windows Based on Negative Binomial Distribution
-	pkgver = 1.16.2
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DEWSeq
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-dewseq
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEWSeq_1.16.2.tar.gz
-	sha256sums = c1b358c4b1ff2a05de1c8d6d9b236a03b435fdb1ff0774cc13c726534d301f62
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEWSeq_1.18.0.tar.gz
+	sha256sums = 2096644d0516f8ac26aeb1b38cdd84b581ecd87d1a88e4ef47e5f0c07a0e970c
 
 pkgname = r-dewseq
