@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SNAGEE
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Signal-to-Noise applied to Gene Expression Experiments"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-hgu95av2.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('faadcab23b170f71a29ac7fd67b2a5d8')
-b2sums=('1a60fe37191a406e55fa0b26899881b9b6534fd9b2ded8366b21118bdb1d9f173ecb158c5a5601784bf3836fa5d81114655ac08fd48d84fbd9a325242daef7a6')
+md5sums=('6812f37820952717cfea4c86252e1434')
+b2sums=('a42fd0e822b1cc99b29e8a112088fc0f3a9da180a151b4199a76fd059fc53ae4f29d6c935a55344848dae51fecf127739ccfd6cdcd995d2a0433a013d1c5772f')
 
 build() {
   mkdir build
