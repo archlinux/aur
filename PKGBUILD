@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MVCClass
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Model-View-Controller (MVC) Classes"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2ef3331b86ae7981a2ab3323386caf61')
-b2sums=('b341797e797861dbc1e03fe3cb2d393a6b676c2e765c9b7e2c353b2512846a28e4d81d86717b1e2e18b85e5ab75bd46b5337ccd89d19edb91ad31a69f3e5c0ce')
+md5sums=('49d8a3d3e02d38d4f507dfc93db629b1')
+b2sums=('e5549c5ab1141e3b688a5b649447d0ffadcf35fdb6c0f37c40a2fa2dd667deb4270306e00015486cd5dc3b10ded4c7d6fdf0fda23401e0af82f04581379c4d63')
 
 build() {
   mkdir build
