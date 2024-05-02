@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MassSpecWavelet
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Peak Detection for Mass Spectrometry data using wavelet-based algorithms"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-waveslim
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('387636ea7c674fe339c56a8af3458f8a')
-b2sums=('c5497b87c948615a929ce729ecaa5ddd72ddac6bf71b4a33ca0334b5eba615efafe92d49049df798e82a1dc2a03efc8d181db20a4d1995a4ca5293a8763b31f9')
+md5sums=('46008c91f4ee0d269c7a16078693f47a')
+b2sums=('44c116e176d21f2ccb7fc722e7b1efa70587d00e85b420bc39605b2e974d4a83e20db78412a815191d80b701588823d4944719e4f682cf8d36d233a4bc9f8080')
 
 build() {
   mkdir build
