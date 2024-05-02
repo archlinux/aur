@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChemmineR
-_pkgver=3.54.0
+_pkgver=3.56.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Cheminformatics Toolkit for R"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -51,19 +51,14 @@ optdepends=(
   r-scatterplot3d
   r-snow
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "fix-build.patch")
-md5sums=('8dd1886811bdc4ac23c24fad60a9b238'
-         'baf06ba1ce78e6c96fc054079c2c3a24')
-b2sums=('ff0535357fe4fbb4578e5ab8b7d5211b7ec98afc6e95df83e857ff91bfa6ca22ea3161d4b8f680537f8334c2f05ef041f913f25fb0272073e3a0f4a1c0f08e27'
-        '81d3ce9b04dda305ac369c0a02cf2dc60e3ddb0f277af4a1d61aa9cc15878835e57f2d0a39aef0c2228fd7003337c424681d86318dfb8e9ae1bc9f3fc2e17337')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('5da39362488d8e62255105201e0b88c3')
+b2sums=('14453dec60262143ab064bc5215ce51a13d842117bf9919d4e95e78cb76faa67a62c30e201e8199ee65260e8b1e4e74c847beecb3b0bf31ddf35c9907cb86f0c')
 
 build() {
   # generate R bindings
   cd "$_pkgname"
   ./runSwig.sh
-  # fix format string errors in the generated source
-  patch -Np1 -i ../fix-build.patch
   cd ..
 
   mkdir build
