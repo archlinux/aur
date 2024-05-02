@@ -5,14 +5,17 @@
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 
 pkgname=watchman
-pkgver=2024.04.22.00
+pkgver=2024.04.29.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
 arch=(x86_64)
 license=(MIT)
 depends=(
+  boost-libs
   edencommon
+  fb303
+  fbthrift
   fmt
   folly
   gcc-libs
@@ -26,6 +29,8 @@ depends=(
 makedepends=(
   boost
   cmake
+  cpptoml
+  fizz
   gtest
   python-setuptools
   rust
@@ -40,7 +45,7 @@ source=(
   "watchman.socket"
 )
 sha256sums=(
-  'e9861178f959d7913648e9b5d45cf3072f96f91d16064bba527c4893df807cce'
+  'ee0660e6c5f795a2c5a1e541d460244517a296d2274f50c741d3f3196c64468e'
   'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
   '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
   'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
@@ -73,7 +78,7 @@ build() {
     -DBUILD_SHARED_LIBS=ON \
     -DWATCHMAN_STATE_DIR=/var/run/watchman \
     -DUSE_SYS_PYTHON=ON \
-    -DENABLE_EDEN_SUPPORT=OFF \
+    -DENABLE_EDEN_SUPPORT=ON \
     -DWATCHMAN_VERSION_OVERRIDE="$pkgver"
   cmake --build build
 }
