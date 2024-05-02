@@ -1,17 +1,17 @@
 pkgbase = octave-ncarray
 	pkgdesc = Access a single or a collection of NetCDF files as a multi-dimensional array
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/ncarray/
 	install = octave-ncarray.install
 	arch = any
 	groups = octave-forge
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = octave>=3.4.0
 	depends = octave-netcdf>=1.0.2
 	depends = octave-statistics>=1.0.6
-	noextract = ncarray-1.0.5.tar.gz
-	source = https://downloads.sourceforge.net/octave/ncarray-1.0.5.tar.gz
-	sha256sums = 1e14162d403feb0a988ba4cfdcf0be376ce08b85288c3c5b1bda6043315a43c7
+	noextract = ncarray-1.0.6.tar.gz
+	source = https://downloads.sourceforge.net/octave/ncarray-1.0.6.tar.gz
+	sha256sums = 5ba2f612c9bb01dce7b53edc8a62b295b78a61c6562a11e29bde8de5d33faa81
 
 pkgname = octave-ncarray
