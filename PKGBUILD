@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ReUseData
-_pkgver=1.2.2
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c0041ec5d810d0d043c7375e04e78c06')
-b2sums=('994e05474d8b9b21045c24b1900055009135f5b5cf8e0d362b15175f719c3cdba80633092cdc9ef8fc26f101cd9f2ef1577560263f7a31727494e43cb330f6d3')
+md5sums=('afbc33042c2e357b32c82e378f578ba1')
+b2sums=('af291ee3598a98152e851e8faaba2abb693072b06215a1f9290d29e34921460c467d8398f4fb19acc2149aeed4b08c09848113db049f406d62d599bb3d296081')
 
 build() {
   mkdir build
