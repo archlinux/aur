@@ -1,19 +1,20 @@
-# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
+# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Contributor: Qontinuum <qontinuum.dev@protonmail.ch>
 # Contributor: Caio Novais <caionov08 at gmail dot com>
 
 pkgname=pfetch
-pkgver=0.6.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A pretty system information tool written in POSIX sh."
 arch=('any')
-url="https://github.com/dylanaraps/$pkgname"
+url="https://github.com/Un1q32/$pkgname"
 license=('MIT')
 provides=("$pkgname")
 conflicts=('pfetch-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('300f6f44f9306df4f438227a6f35bd54f50e477b950a45d63656f7c460cfc30a8b44ebdb3d5fdcf1e808e3b8e8e69e14088ff73a5da4485abf694893f2cc53f3')
+sha256sums=('d32b376db4bcb33d067aa41f51335f7001e3d7fea1a7837662971167727c22e5')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/pfetch" "$pkgdir/usr/bin/pfetch"
-  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
