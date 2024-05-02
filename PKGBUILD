@@ -7,16 +7,16 @@
 pkgname='mlmmj'
 pkgver=1.4.5
 _pkgver=1_4_5
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('bash' 'glibc' 'smtp-server')
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
-url='http://mlmmj.org/'
+#url='http://mlmmj.org/'
+url='https://codeberg.org/mlmmj/mlmmj'
 license=('MIT')  # SPDX-License-Identifier: MIT
 # Development has moved to Codeberg
-_codeberg='https://codeberg.org/mlmmj/mlmmj/releases/download'
 source=(
-  "$_codeberg/RELEASE_$_pkgver/mlmmj-$pkgver.tar.xz"
+  "$url/releases/download/RELEASE_$_pkgver/mlmmj-$pkgver.tar.xz"
   'sysuser.conf'
   'tmpfile.conf'
 )
@@ -61,11 +61,11 @@ package() {
 
 sha256sums=(
   '957a018d9e6d169fd54b7109bab747309cf72fe0072b54d11d174675da526126'
-  'SKIP' 'SKIP'
+  'SKIP' 'SKIP'  # Skip to my lou
 )
 b2sums=(
   '9390cfd343449160f6c9e244e75af539b73a4ba468e9c3ddf4bc21423e79c6d4d2905b8be829ad0232be00e63f47881d34cf571c9d480b95228df732c32bb7fe'
-  'SKIP' 'SKIP'
+  'SKIP' 'SKIP'  # Skip to my lou
 )
 
 # eof
