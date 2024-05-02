@@ -1,7 +1,7 @@
 pkgbase = r-degreport
 	pkgdesc = Report of DEG analysis
-	pkgver = 1.38.5
-	pkgrel = 2
+	pkgver = 1.40.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/DEGreport
 	arch = any
 	license = MIT
@@ -40,8 +40,8 @@ pkgbase = r-degreport
 	optdepends = r-rmarkdown
 	optdepends = r-statmod
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEGreport_1.38.5.tar.gz
-	md5sums = c244b736c180d78d142dd00938f7d40f
-	b2sums = 8d4599d52db4b20b152b89f44869d5786c2904ddd6ab92715ec83988db20f7acf3f9cd20b2b3ffff9d9f816c03f208e0e285e5d165d28f6d94032c2eb29d93ce
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEGreport_1.40.0.tar.gz
+	md5sums = 8e0448b69555460698f0a16b612c5e5b
+	b2sums = 77baadc2d8afcdbf835049eca6380d4d8252896c290fd5c1b9a73b1f7cf49e76dbd603ee83cd4b3619d0b05980cf35dd0abcea5b452cebc441b70a6607e883aa
 
 pkgname = r-degreport

@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DEGreport
-_pkgver=1.38.5
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Report of DEG analysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -50,8 +50,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c244b736c180d78d142dd00938f7d40f')
-b2sums=('8d4599d52db4b20b152b89f44869d5786c2904ddd6ab92715ec83988db20f7acf3f9cd20b2b3ffff9d9f816c03f208e0e285e5d165d28f6d94032c2eb29d93ce')
+md5sums=('8e0448b69555460698f0a16b612c5e5b')
+b2sums=('77baadc2d8afcdbf835049eca6380d4d8252896c290fd5c1b9a73b1f7cf49e76dbd603ee83cd4b3619d0b05980cf35dd0abcea5b452cebc441b70a6607e883aa')
 
 build() {
   mkdir build
