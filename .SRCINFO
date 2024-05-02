@@ -1,7 +1,7 @@
 pkgbase = r-limma
 	pkgdesc = Linear Models for Microarray Data
-	pkgver = 3.58.1
-	pkgrel = 2
+	pkgver = 3.60.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/limma
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -19,8 +19,8 @@ pkgbase = r-limma
 	optdepends = r-locfit
 	optdepends = r-org.hs.eg.db
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/limma_3.58.1.tar.gz
-	md5sums = f52a816d0d34b01f721654f90a1fb5f5
-	b2sums = f55d2870232062b26677515a620b0b0543e0140b1b3cd07fecee5664ab6035ae29aa92992957e58018b0b3ac9e5e97363970610df93970dac8973707e5ad9ab1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/limma_3.60.0.tar.gz
+	md5sums = f632d87270e60309c792644d136a5200
+	b2sums = 7aac9010d45363394494ccfe391c5d5b4296d795c46e861f85238b2aeeb54b40aa7f9e2842ca20106cedcdc385475ddee8252d581ca73cf6cde936f067b68610
 
 pkgname = r-limma
