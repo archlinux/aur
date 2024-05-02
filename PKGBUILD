@@ -3,7 +3,7 @@
 _pkgname=rust
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.77.1
+pkgver=1.78.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)"
 arch=('x86_64')
@@ -24,15 +24,15 @@ source=("https://static.rust-lang.org/dist/cargo-${pkgver}-x86_64-unknown-linux-
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('87713287303cbb44d89d839ade3de7fe679fcadfe4688a9c6829c276a7946e79'
+sha256sums=('f8aacf7a101eb10dc000b8bf26de90a9d0ce678d02ccf70430ed20dd31ecec6b'
             'SKIP'
-            'c9caaf8c214f6683281fa55e76a4d345004aa2933daca469952b3bead8cc5ca9'
+            '3994971e5923716d54e4b574ce238f04c4e20cda03990670f7cc3f87d36e5499'
             'SKIP'
-            '317e604909360d1bb92f7558aaa5ce449312630d8226767ae9df99bf5bef4fd1'
+            '95aece42a336f237c5bac5c5d9aca051b7f0bd3e6a64fb3c5828e6d0d3af2e8c'
             'SKIP'
-            '32fbe93062046bec67ad1ecc8a3d0ba5155ab94ea41d9f50c477805be7b8fcf9'
+            '83644cc9e33452464c2895e67ccdc66eda1a0f182383a36d72df436150e0fb16'
             'SKIP'
-            '976214e2625395097d116ff1f0c629fac99bfdd5e41f3b57f2a8cdb07a3492dc'
+            'b209af08b65a16a7e0835c48c1a5d2fa935b0c4e6dff717938207f1a9b1e69c5'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
@@ -94,7 +94,7 @@ package() {
   strip --strip-all "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/bin/gcc-ld/"*
   strip --strip-all "${pkgdir}/opt/${_pkgname}/libexec/"*
   strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/librustc"*.so
-  strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/libLLVM"*.so
+  strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/libLLVM.so"*
   strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/lib/"*.so
   i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll
   x86_64-w64-mingw32-strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-pc-windows-gnu/lib/"*.dll
