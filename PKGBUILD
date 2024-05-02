@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HSMMSingleCell
-_pkgver=1.22.0
+_pkgver=1.23.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Single-cell RNA-Seq for differentiating human skeletal muscle myoblasts (HSMM)"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dae440cd20110d25cd699a9a792ac4b8')
-b2sums=('9327b13dba9b151d52f047de62011492a938f901a890aa0465ed9deed04b5137c5c9cb646bc3d2d0e8b48e14373727f956247a84ae19356fa634dec198704437')
+md5sums=('63f606a4e13e1707214a9a48fa30f451')
+b2sums=('1a5795d2351b63eff1156711314974a8ff9cc69205b935554c0b7b846c87f75259adb743b60e770c7726df5bfb3aea7522b206eda356374581293d0000b25b47')
 
 build() {
   mkdir build
