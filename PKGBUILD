@@ -7,23 +7,23 @@
 pkgname=python-xdis
 _name=${pkgname#python-}
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python cross-version bytecode library and disassembler'
 arch=('any')
 url='https://github.com/rocky/python-xdis'
 license=('GPL2')
 depends=('python-click'
         'python-six')
-makedepends=(python-build python-installer python-wheel)
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('355fd36db210e9117167e0821e2bcc12ac3da8bcc15d52e1542ad422ad2629cc')
 
 build() {
   cd $_name-$pkgver
-  python -m build --wheel --no-isolation
+  python setup.py build
 }
 
 package() {
   cd $_name-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
