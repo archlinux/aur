@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=TSAR
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Thermal Shift Analysis in R"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7cc8589151c5b03e247590bbd7dc04dd')
-b2sums=('d9205a69412876f57d55f9f9d30d6133eb296b132b104bcdf2622e9c57018c063c5ba09b3d545444021a19c8650bffc86464595e888dd148a7f8bfa3c6b92e8d')
+md5sums=('8e206686dbb35ea9263932955484f4db')
+b2sums=('7f1b307e939a38e86ee4b6c091fea42b996c84fea16769aa04a067695c62b9ba2ccd99d7952f454364e7f0e9679cf5f098a5efdba9fcce470fc752bc49f25fab')
 
 build() {
   mkdir build
