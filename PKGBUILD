@@ -2,9 +2,9 @@
 
 _name=PyMCTranslate
 pkgname=python-${_name,,}
-pkgver=1.2.22
-_commit=c50c2671d0fa63e0c3fedaac39e36f30ceaa51a2
-pkgrel=3
+pkgver=1.2.23
+_commit=3edad53bd2743adf92f9fee5453b7fbe7020ad88
+pkgrel=1
 pkgdesc='A library of block mappings that can be used to convert from any Minecraft format into any other Minecraft format'
 arch=('any')
 url="https://github.com/gentlegiantJGC/$_name"
