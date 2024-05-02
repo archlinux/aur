@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.schemas
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Schemas for the Alabaster Framework"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('308883d85ab416d45eaa55428463d308')
-b2sums=('7217359f4cd406850f14ad148abc9437594ee7b65416315ceb5d3807a70c4081ef3b7b40beb5e5f651a5eebda70f0b7c86b91ef30764284a295fa366aa85ae74')
+md5sums=('162d503b68822225c809c52a910dd368')
+b2sums=('9e21b1a8c169f9b483afec196ff08e038243bb523ef49adf45b5c089592ead2408a8c1e2cffc3571e2a28c4fec957aa2c5119559bc787bc2686e094577909ff8')
 
 build() {
   mkdir build
