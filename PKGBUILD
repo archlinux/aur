@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=xcore
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="xcore expression regulators inference"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -45,8 +45,8 @@ optdepends=(
   r-xcoredata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4dd79b63bd7ff46aaa1b84dade889db2')
-b2sums=('8f1f8748945f4dad1d01067d2ad2e33b42e57b5388ea4f15d3f4553ba74485666afbd2f357a1eef0e1fbba35641682655691a7a52f8dc019416366e742645334')
+md5sums=('3a569ce1cb4bc17f0d628a5c5c0565da')
+b2sums=('95e2bac594a303c9c7ced8b6fc4290e0d16a351f7e9b81da94ffbe14ba8ee95eea0b88ef941b55694847efc8f69c94f441df6b5d5a6a74347c209e5229249877')
 
 build() {
   mkdir build
