@@ -13,7 +13,7 @@ BUILDENV+=(!check)
 
 pkgname=zed-editor
 pkgver=0.133.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
@@ -59,7 +59,7 @@ prepare() {
 		--exec 'Zed' \
 		--pkgname "$pkgname" \
 		--pkgdesc "$pkgdesc" \
-		--categories 'Office'
+		--categories 'Development'
 }
 
 _srcenv() {
