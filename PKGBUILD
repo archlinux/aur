@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DNAshapeR
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='High-throughput prediction of DNA shape features'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d3d60db2d307ff6f5345f0ec3f7c46c41f17959056e51235ae1e0e6505fe8e4a')
+sha256sums=('2ff5aab678c4596c4304074878200ee92ad7dd1a31ad994140d5d356e01abf68')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
