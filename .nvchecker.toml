@@ -1,0 +1,5 @@
+[whosonfirst-sqlite-features-index]
+source = "github"
+github = "whosonfirst/go-whosonfirst-sqlite-features-index"
+prefix = "v"
+use_latest_release = true

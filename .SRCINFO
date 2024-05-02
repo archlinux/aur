@@ -1,0 +1,16 @@
+pkgbase = whosonfirst-sqlite-features-index
+	pkgdesc = Go package for indexing Who’s On First features in SQLite databases
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/whosonfirst/go-whosonfirst-sqlite-features-index
+	arch = x86_64
+	license = BSD-3-Clause
+	checkdepends = sqlite
+	makedepends = go
+	depends = glibc
+	depends = icu
+	options = !debug
+	source = go-whosonfirst-sqlite-features-index-2.2.0.tar.gz::https://github.com/whosonfirst/go-whosonfirst-sqlite-features-index/archive/v2.2.0.tar.gz
+	sha512sums = 7f23fdfdff1b56f02f3c75e45c883875450d5c65289431b53ff980ef080f4a8703abfae2cd8e5c75b71c5879c32f7000e2262d9a5355de4773eef88dd3c1944d
+
+pkgname = whosonfirst-sqlite-features-index
