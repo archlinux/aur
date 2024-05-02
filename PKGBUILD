@@ -11,7 +11,7 @@ license=('MPL2')
 depends=('glibc')
 makedepends=('go')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5f0db39ae602a7696337181e5f015b18e34ed8e361321f8a921c157fabc55cff')
+sha256sums=('cd9da78b6922053f51dcb318b8f258c80d3a08f708a96a0baa66bf86bb907013')
 build() {
     cd "${srcdir}"/"${_pkgname}-${pkgver}"/
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
