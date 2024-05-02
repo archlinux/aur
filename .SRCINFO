@@ -1,7 +1,7 @@
 pkgbase = r-rvisdiff
 	pkgdesc = Interactive Graphs for Differential Expression
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/Rvisdiff
 	arch = any
 	license = GPL-2.0-only OR GPL-3.0-only
@@ -15,8 +15,8 @@ pkgbase = r-rvisdiff
 	optdepends = r-matrixtests
 	optdepends = r-rmarkdown
 	optdepends = r-summarizedexperiment
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rvisdiff_1.0.0.tar.gz
-	md5sums = 3e3b8ccc9cb71388e2e7c17d60995cbe
-	b2sums = 424a74f6ab1a95248d48f32625eb57eb61d7d4185579a6a919f870ba01dfd2f942f91b3a6ed2589b76af6c2c0444af6a18f1da363824ad005e2a8b81999e0bff
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rvisdiff_1.2.0.tar.gz
+	md5sums = 00a5acc3c51f00f5ce82f5d70dd3c21b
+	b2sums = 89701b9a38e3f2f6b11741ed78d573c2bfc143265bbb3e42b0a094db8960a87eaa03a80450c7a75ebfc1e9b986c8e9e44a4ee2b9f4efddc8951f1fe41d2a6029
 
 pkgname = r-rvisdiff
