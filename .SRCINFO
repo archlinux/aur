@@ -1,13 +1,13 @@
 pkgbase = r-randpack
 	pkgdesc = Randomization routines for Clinical Trials
-	pkgver = 1.48.0
-	pkgrel = 2
+	pkgver = 1.50.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/randPack
 	arch = any
 	license = Artistic-2.0
 	depends = r-biobase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/randPack_1.48.0.tar.gz
-	md5sums = 71791ade28f58d981a510c8b660ae1e7
-	b2sums = f7ad40bdd70925b5cfa11c5befa3362232eaa79424401b4803b049d02df9f48ab20a6d95d0116c47d1cab39009b3f7427fdd7681933e6ca0755a484c13c954aa
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/randPack_1.50.0.tar.gz
+	md5sums = 964f6d1ae81b6ccf027b057a8db64a3c
+	b2sums = edae4be1770c3ee499963ff3e176c287c1696af2534e5b602174d9cd125b9b0b991f0c8dcee3cfad6b6342025a6b5a1e8524c2060390fd7322416808ee56af48
 
 pkgname = r-randpack
