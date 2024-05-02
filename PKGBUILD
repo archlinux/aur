@@ -27,18 +27,30 @@ noextract=()
 validpgpkeys=()
 
 build() {
-    cd "wakapi-$pkgver"
-    go build -o wakapi -v
+  cd "wakapi-$pkgver"
+  go build -o wakapi -v
 }
 
 check() {
-    cd "wakapi-$pkgver"
-    go test -v
+  cd "wakapi-$pkgver"
+  go test -v
 }
 
 package() {
-    cd "wakapi-$pkgver"
-    install -Dm755 "wakapi" "$pkgdir/usr/bin/wakapi"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/wakapi/LICENSE"
-    install -Dm644 "config.default.yml" "$pkgdir/etc/wakapi/config.yml"
+  cd "wakapi-$pkgver"
+  install -Dm755 "wakapi" "$pkgdir/usr/bin/wakapi"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/wakapi/LICENSE"
+  install -Dm644 "config.default.yml" "$pkgdir/etc/wakapi/config.yml"
+  mkdir -p "${pkgdir}/usr/lib/systemd/system"
+  cat >"${pkgdir}/usr/lib/systemd/system/wakapi.service" <<EOF
+[Unit]
+Description=wakapi server
+After=network.target
+
+[Service]
+ExecStart=wakapi -config /etc/wakapi/config.yml
+
+[Install]
+WantedBy=multi-user.target
+EOF
 }
