@@ -1,0 +1,7 @@
+diff --unified --recursive --text a/pyproject.toml b/pyproject.toml
+--- a/pyproject.toml	2022-05-16 12:40:01.000000000 +0200
++++ b/pyproject.toml	2024-05-02 11:18:44.242675717 +0200
+@@ -1,2 +1,2 @@
+ [build-system]
+-requires = ["setuptools", "wheel", "Cython", "cykhash==2.0.0", "pyrobuf"]
++requires = ["setuptools", "wheel", "Cython", "cykhash>=2.0.0", "pyrobuf"]
