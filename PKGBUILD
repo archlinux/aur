@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scGPS
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A complete analysis of single cell subpopulations, from identifying subpopulations to analysing their relationship (scGPS = single cell Global Predictions of Subpopulation)"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -53,9 +53,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('5d11fe3a4af0d56d3028d97c6090ccfb'
+md5sums=('e295d304077a4e07b2796daa1da49ab1'
          '10f827551e2b78263235e157e5b6a4b2')
-b2sums=('3c265f5702b0701dfc63efef0a5b10f35b326bdc736c03cef0bef699c561fc1956e86cd466dcbb90eaa754d8f8b461f08dc97f429e329d526d568ef8342e4e57'
+b2sums=('5800aeef8d0abea93a4280aa8b8775edc0771164307b35a5eaf9f98d08dbb09800815f0fe7ec1843c3cd16dc2ab46f579c1b47e8126fc685e8bd10ccd43df724'
         'e2f840b1d0e9a8897ac8233ce695ea40e658797e01ad46f50bb5e7528efcf3797ec402b22c92d0b8a16c96bd7f4146664b81f9e7998525057426b61d05693e89')
 
 prepare() {
