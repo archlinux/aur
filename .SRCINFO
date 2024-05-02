@@ -1,13 +1,13 @@
 pkgbase = r-occugene
 	pkgdesc = Functions for Multinomial Occupancy Distribution
-	pkgver = 1.62.0
-	pkgrel = 2
+	pkgver = 1.64.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/occugene
 	arch = any
 	license = GPL-2.0-or-later
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/occugene_1.62.0.tar.gz
-	md5sums = 264da1422714d735ac474b414e57a2a9
-	b2sums = d4c6e74a1272b0cb571985d9e4394fae243eda4218dec02a9887ab2b3da881da4ce3bb76a4ca637083966814d530833ce1aca61febc686473ba03acc9e02fabd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/occugene_1.64.0.tar.gz
+	md5sums = 5e4ba204a075389ef0e6427b48ff537c
+	b2sums = 3b74f6c8fd2c0bde93fbe1621ccd9a025f2f7f9e3d131a167871a2c65ace66f05ad5ea8165d205659a1fbde2f464f66cb55adb0a49275b1ebfead69fc584f865
 
 pkgname = r-occugene
