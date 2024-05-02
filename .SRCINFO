@@ -1,6 +1,6 @@
 pkgbase = rencfs-bin
 	pkgdesc = An encrypted file system that mounts with FUSE on Linux. It can be used to create encrypted directories.
-	pkgver = 0.2.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/radumarias/rencfs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rencfs-bin
 	depends = fuse3
 	provides = rencfs
 	conflicts = rencfs
-	source = https://github.com/radumarias/rencfs/releases/download/v0.2.0/rencfs-0.2.0-x86_64.tar.gz
-	sha256sums = 01d4ff7092cc03ccaab4e52d6a48e9a18304f16f74c964b224aae68eaea1f458
+	source = https://github.com/radumarias/rencfs/releases/download/v0.3.2/rencfs-0.3.2-x86_64.tar.gz
+	sha256sums = 071ebf0ab0790d46e2582a67704fa3164da700b331c9ff5f6383d9ca862269ee
 
 pkgname = rencfs-bin
