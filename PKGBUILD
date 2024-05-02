@@ -1,16 +1,16 @@
 # Maintainer: Luís Guimarães <obvionaoe@protonmail.com>
 
 pkgname=rofi-browser
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A simple profile launcher for Mozilla Firefox-based browsers"
 arch=('x86_64')
 url="https://github.com/obvionaoe/rofi-browser/"
 license=('MIT')
-depends=(rofi)
+depends=(rofi glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=(f705f00f33188f7c290b4eba5e6903177fae09a749dc77c6684b242b1dad6cc7)
+sha256sums=(c295801cad1c72f352dece96600c02fc65483e53cd9a2c7fadef508a842382f1)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
