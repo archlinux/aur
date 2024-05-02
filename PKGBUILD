@@ -17,6 +17,6 @@ package() {
 }
 
 # Add metadata
-source=("cynix_lsb_release")
+source=("cynix-lsb-release")
 sha256sums=('SKIP')
 
