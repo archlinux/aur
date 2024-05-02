@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nuCpos
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="An R package for prediction of nucleosome positions"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b029b2678c784645c2198f00093bd923')
-b2sums=('d1ef54b3702c6f6c902f2d8407d27e94d4e83d26e5ac3f87d7ad2e7421dfc02408e73322f0ae3848a650035f0b549ceafe32e32b602f78a043a05125935f8e70')
+md5sums=('fb6584943aabd0be366fae1720d094a4')
+b2sums=('5d74f0c07c362e115185890a912dee7e138ecc31fbb85629652d343bccbdacc57ee5d2c825c860584d1a7e1386157e7cec83f4daaccc4f9b81e1f3e089a11094')
 
 build() {
   mkdir build
