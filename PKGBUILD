@@ -12,7 +12,7 @@
 _fragment="${FRAGMENT:-#branch=master}"
 
 pkgname=upbge-git
-pkgver=141072.9aa0853d14c
+pkgver=142060.aa50f945acc
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
@@ -46,7 +46,6 @@ source=("upbge::git+https://github.com/UPBGE/upbge${_fragment}"
         'blender/translations::git+https://github.com/blender/blender-translations'
         'blender/dev_tools::git+https://github.com/blender/blender-dev-tools'
         'blender/assets::svn+https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets'
-        upbge.desktop
         # Patches...
         '0001-use-github.com-for-make-update-git.patch'
         '0004-fix-opencollada-pcre.patch' #fix broken search for opencollada pcre
@@ -57,7 +56,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'b5c9bf4fa265389db4b3f23e96d74cc86c51d908b8943eb80967614d8af1ea1a'
             '0bb8ac4cba0ac00999790087c51e601d185b78a96081f08a7c7afb8c0f4b0d7c'
             '6beedc541e33288a282f57cd2bd09860f333154027b6175e9f61cce49b8db5df')
 
@@ -235,9 +233,9 @@ package() {
   fi
 
   install -D -m755 "$srcdir"/build/bin/blenderplayer "$pkgdir"/usr/bin/blenderplayer
-  install -D -m644 "$srcdir"/upbge.desktop "$pkgdir"/usr/share/applications/upbge.desktop
-  install -D -m644 "$srcdir"/upbge/release/freedesktop/icons/scalable/apps/upbge.svg \
-    "$pkgdir"/usr/share/icons/hicolor/scalable/apps/upbge.svg
+  install -D -m644 "$srcdir"/upbge/release/freedesktop/org.upbge.UPBGE.desktop "$pkgdir"/usr/share/applications/org.upbge.UPBGE.desktop
+  install -D -m644 "$srcdir"/upbge/release/freedesktop/icons/scalable/apps/org.upbge.UPBGE.svg \
+    "$pkgdir"/usr/share/icons/hicolor/scalable/apps/org.upbge.UPBGE.svg
 }
 
 # vim: syntax=bash:et:ts=2:sw=2
