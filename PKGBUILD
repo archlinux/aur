@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenomicDataCommons
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="NIH / NCI Genomic Data Commons Access"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -45,8 +45,8 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6c945795f62ce3e0b470b07b892d3357')
-b2sums=('3caa7aac6f52277f6976a95ce09c9c25167bf95ccd9b2ac8378179d3de2d137c698386b8abbc3334079ec7b782b29196c587afffaebd8755e1346958fd926713')
+md5sums=('523f0f639d2fa5c1ac5f42f0aba2569f')
+b2sums=('becc560193ef4f6045b76920d172eca0943691c3f50d01ae8a07359672d808a36c5056aacaa684b2ce80d926e76e8c2401cecf0caf055e11ee61c0b87427e232')
 
 build() {
   mkdir build
