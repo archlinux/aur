@@ -1,9 +1,9 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=single-file
 _pkgname=single-file-cli
-pkgver=2.0.34
+pkgver=2.0.35
 pkgrel=1
 pkgdesc="CLI tool for saving a faithful copy of a complete web page in a single HTML file"
 arch=(any)
@@ -17,7 +17,7 @@ optdepends=(
 )
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$_pkgname-$pkgver.tgz")
-sha256sums=('347d834bf0c80306981094c6c62ddf5a5bd55132d452d402b8afc4ddc1af878d')
+sha256sums=('4803c4d0d1e6a7146ddd17bd85b058dbb51e38863910684af7969f7e4baaff1a')
 
 package() {
   npm install -g \
