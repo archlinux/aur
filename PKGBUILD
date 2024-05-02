@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ssviz
-_pkgver=1.36.0
+_pkgver=1.37.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.37.0
 pkgrel=1
 pkgdesc='A small RNA-seq visualizer and analysis toolkit'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4bcd7117b5bd33b92945e2fbbc66ee62ce66c264745ff5216bc391e4aa79ad0b')
+sha256sums=('05adb44841fff1caa48fbea356dca768822fa4cf30456970d57bf02b056f77f6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
