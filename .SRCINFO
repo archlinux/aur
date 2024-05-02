@@ -1,13 +1,13 @@
 pkgbase = r-sizepower
 	pkgdesc = Sample Size and Power Calculation in Micorarray Studies
-	pkgver = 1.72.0
-	pkgrel = 2
+	pkgver = 1.74.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/sizepower
 	arch = any
 	license = LGPL-2.0-or-later
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sizepower_1.72.0.tar.gz
-	md5sums = 4edf7f08a26ccaa8ae0d08e17b6ef0cd
-	b2sums = f42f2bd0b8311001df0719cb12aada6a8f64ee11ea267258553825cc92fcc4f74053a3bc5a7ed4c2302cdafc39a45653fae2081de950fe45452a9005203898b3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sizepower_1.74.0.tar.gz
+	md5sums = 5838d76b09ca1e7a1529dbbc0a534466
+	b2sums = 21bfa4886406b87e1560e4233c7a480b73f6e112d887c88356ced3974a618e7f969008d5cbecc65cc5dd8208d441c51caa7e4d4370d0832bf21dd33aa9033653
 
 pkgname = r-sizepower
