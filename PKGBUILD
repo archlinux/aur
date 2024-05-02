@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CTdata
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Data companion to CTexploreR"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d130308cf078329f4cc6a1cc8055475d')
-b2sums=('57cea77784a1ca3ee529cb98a8fc045419f702354effef93cb676e41cce82e6e25ffe757da06ff3e37fdd08d86e08d5d5a2be61cd68d56bd1e09228aed2bd2bb')
+md5sums=('ac4dd73e6978ab4fbc3ef3c4d8be170c')
+b2sums=('8ee144f205bc3b29baac06fac337db269b316f777ccadb231dbe8c66fd6c3ead114711e6cd9299a55991c5ca9d05b84b4606bf1475e4e1c570928439a05a64db')
 
 build() {
   mkdir build
