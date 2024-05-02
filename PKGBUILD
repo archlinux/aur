@@ -1,7 +1,7 @@
 # Maintainer: Mel <mel@nie.rs>
 pkgname=quakeinjector-bin
 _xtname=QuakeInjector
-pkgver=alpha05
+pkgver=alpha06
 pkgrel=1
 pkgdesc="Download, install and play quake singleplayer maps from the quaddicted.com archive, binary distribution"
 url="https://github.com/hrehfeld/QuakeInjector"
@@ -14,7 +14,7 @@ conflicts=(quakeinjector-git)
 replaces=(quakeinjector)
 source=("https://github.com/hrehfeld/QuakeInjector/releases/download/$pkgver/$_xtname-$pkgver.zip"
         'quakeinjector.desktop')
-sha256sums=('9cbc1ed86aab077c91eff024d81cf0341abee6e0f40ea4a9eb7ff7c6f79711ee'
+sha256sums=('916397711316cbdf84c48c7bc2c29489417c0788943e8520620bf0c506434e59'
             '24dccb15d1fe176009f1f637172e434553fdef8726e7f42c66307725bccf94bc')
 
 package() {
