@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MPRAnalyze
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Statistical Analysis of MPRA data'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('493cf3a0e2c2e81f638cdfb4775a2f4bdf29a9f782d86c3590b76371efa5631b')
+sha256sums=('a484e329230dd91822fdb4f50cfc242fe89a5e665cc2b139120f78328f835cbf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
