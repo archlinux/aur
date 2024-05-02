@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MantelCorr
-_pkgver=1.72.0
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Compute Mantel Cluster Correlations"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7ef5ee0a329a4cf218c340e9289fea32')
-b2sums=('3b7455388ae2f355e5334e7a236325310d4088e7ae8f8cee64d30037abc78f190f002fd2341807722e03cf85b52e717ed585d94c9aedc28354f08f54623481f2')
+md5sums=('eec254f3111e01f3d1b005a00169d41e')
+b2sums=('63b12078dd5c7b147a1288da64d2cfa16f7c8b8db1ceedbf2e40d6186442c795606235cfef3a38e57f06efe3a94e29bc103b0c76f966078d960bd1bac772e48b')
 
 build() {
   mkdir build
