@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=fastreeR
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e2b7164aeaa305f819536d9b85e4de12')
-b2sums=('773d006ed3f7ead8f6a95c179c28cc776c64a2ce07b7eb1fa8083deac2a480e3c9eb21e4942582b35bb41520401ff8a463ae64fe820aaa9aa680139a80ce27f1')
+md5sums=('46541a2b13f7dd609db30ca3c85dd07f')
+b2sums=('e04fde80c2307c9cc5f4bae6b715341c742ab1b1fec69db02e599d539239fb3b2beef48b6920e20089b04979b714e90ef88e253b1ae0503b5df81ae606320420')
 
 build() {
   mkdir build
