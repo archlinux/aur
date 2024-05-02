@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tomoseqr
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="R Package for Analyzing Tomo-seq Data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b881e4b272396cc4696d840658ec0ef5')
-b2sums=('440a910d3c73adcdbaff923feb8ad006444895bc693022ee22b0164da8cceadf1cee658d41e7e01e9b0d669767334f8eaf096d5a2019fbb3fff838e72feb1e6f')
+md5sums=('e152b36216bf08f9c5947b678c474243')
+b2sums=('e8a10675ef3de08058e393d40b95a93114cf87b699c6e9070d800f2460aebe2bc3502eae0424a8c50fdbb240dbf4accb2a4c6dfd89dec88fab7097d8c69f837a')
 
 build() {
   mkdir build
