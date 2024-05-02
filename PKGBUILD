@@ -13,8 +13,8 @@ license=('custom')
 depends=('icaclient' 'libxv' 'libpulse' 'pulseaudio' 'libsndfile')
 makedepends=('binutils' 'tar' 'xz' 'awk')
 install="${pkgname}.install"
-source_i686=("HDX_RealTime_Media_Engine_${pkgver}_for_Linux.zip::https:$(curl -L -silent "${_url}/${pkgname}-${_short_pkgver}.html#ctx-dl-eula" | awk -F'"' '/href=.*rel=.*Linux.zip/ { print $10 }')")
-source_x86_64=("HDX_RealTime_Media_Engine_${pkgver}_for_Linux_x64.zip::https:$(curl -L -silent "${_url}/${pkgname}-${_short_pkgver}.html#ctx-dl-eula" | awk -F'"' '/href=.*rel=.*Linux_x64.zip/ { print $10 }')")
+source_i686=("HDX_RealTime_Media_Engine_${pkgver}_for_Linux.zip::https:$(curl -L -silent "${_url}/${pkgname}-${_short_pkgver}.html#ctx-dl-eula" | awk -F'"' '/href=.*rel=.*Linux.zip/ { print $14 }')")
+source_x86_64=("HDX_RealTime_Media_Engine_${pkgver}_for_Linux_x64.zip::https:$(curl -L -silent "${_url}/${pkgname}-${_short_pkgver}.html#ctx-dl-eula" | awk -F'"' '/href=.*rel=.*Linux_x64.zip/ { print $14 }')")
 sha256sums_i686=('2d894d7c4b826d997b1de624b97080ce57bae97c74027a709463136a1f237b98')
 sha256sums_x86_64=('b858ea0131e05b0a7bb84bd9c16d4b2724751cc87c3aa82677ee633adf5feb21')
 
