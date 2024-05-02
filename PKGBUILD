@@ -3,7 +3,6 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Custom Cynix Linux distribution information"
 arch=('any')
-url="https://example.com"
 license=('MIT')
 depends=('lsb-release')
 
@@ -18,6 +17,6 @@ package() {
 }
 
 # Add metadata
-source=("install_custom_lsb_release")
+source=("cynix_lsb_release")
 sha256sums=('SKIP')
 
