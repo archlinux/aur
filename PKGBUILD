@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RITANdata
-_pkgver=1.26.0
+_pkgver=1.27.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="This package contains reference annotation and network data sets"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('12987879ef374ad399dd440a058b9a47')
-b2sums=('bfd981e697b3c803e5b2fbd08a7eb86b46fb0d680a78e3a03285f592f0b4bb319dd5c4f62f0ea4f6a7d125bed9c9bf70468738303f6c5f299c733e7508d84ffc')
+md5sums=('2534dc3b2742a1a9eff92be8b9b0c95f')
+b2sums=('4f4c4094dd25ced78038fd0cc649828917f45e8e00888d5fa142c9243d13a35b3c67dbc7fead664f448718dcb69ffb04e22ba31bc3aba6a1164a7ccc66d5c322')
 
 build() {
   mkdir build
