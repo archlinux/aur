@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowDensity
-_pkgver=1.36.1
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Sequential Flow Cytometry Data Gating"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('30c661d010484bff6c2eb427a7056aa1')
-b2sums=('c5bd78f4ee9220d44e39e2465f4fcbd0a73e8a8cac97150b5553e4dc92d24b7b68b78b8a2fb94f76949b61b214e882bf29216c1a1465e0eeb4c8ef790d06dc09')
+md5sums=('18f96a93534fbf4dc39b7c8106576d40')
+b2sums=('e3b1144dbfee3b1fed112c3e3aeff4d1c7b3dd336d6254d8454099cbba5e3d513cea01d2097c70427d30550db32d29cd37ed21cb547717ead51fc74bbcc79e92')
 
 build() {
   mkdir build
