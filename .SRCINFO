@@ -1,6 +1,6 @@
 pkgbase = r-globalancova
 	pkgdesc = Global test for groups of variables via model comparisons
-	pkgver = 4.20.0
+	pkgver = 4.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GlobalAncova
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-globalancova
 	optdepends = r-hu6800.db
 	optdepends = r-rgraphviz
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GlobalAncova_4.20.0.tar.gz
-	sha256sums = d031048e770b87e999e67039e47d817a70bb438748d71691316e6bf909503548
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GlobalAncova_4.22.0.tar.gz
+	sha256sums = 10af604e16b124e4be81f568fc4885face40bbdb4a11d42198801c4f6051e17c
 
 pkgname = r-globalancova
