@@ -1,7 +1,7 @@
 pkgbase = r-rhdf5filters
 	pkgdesc = HDF5 Compression Filters
-	pkgver = 1.14.1
-	pkgrel = 2
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/rhdf5filters
 	arch = x86_64
 	license = BSD-2-Clause
@@ -15,8 +15,8 @@ pkgbase = r-rhdf5filters
 	optdepends = r-rhdf5
 	optdepends = r-rmarkdown
 	optdepends = r-tinytest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rhdf5filters_1.14.1.tar.gz
-	md5sums = 3ecb2d30759fee6bde37bbb1f90fbf79
-	b2sums = e42b0b8549529a31f32b282d0ff990cd20b6d214407f02600f4435ba333b48d8b6623131c57601590d744d1e5c9475bc08d51d5c48dc3b30a219a754002afb7d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rhdf5filters_1.16.0.tar.gz
+	md5sums = f25d527e22d59ceb95f3a9f6181bd691
+	b2sums = 1fa842fde436abc25a471ec01506693022c9551f9276773f07e5eb1c298e44fba44c525fa14fdd48e9efe72751e5ab8c3def362d2b15581a0e30baf42aa12800
 
 pkgname = r-rhdf5filters

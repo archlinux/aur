@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rhdf5filters
-_pkgver=1.14.1
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="HDF5 Compression Filters"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -26,8 +26,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3ecb2d30759fee6bde37bbb1f90fbf79')
-b2sums=('e42b0b8549529a31f32b282d0ff990cd20b6d214407f02600f4435ba333b48d8b6623131c57601590d744d1e5c9475bc08d51d5c48dc3b30a219a754002afb7d')
+md5sums=('f25d527e22d59ceb95f3a9f6181bd691')
+b2sums=('1fa842fde436abc25a471ec01506693022c9551f9276773f07e5eb1c298e44fba44c525fa14fdd48e9efe72751e5ab8c3def362d2b15581a0e30baf42aa12800')
 
 build() {
   mkdir build
