@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rsubread
-_pkgver=2.16.1
+_pkgver=2.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Mapping, quantification and variant analysis of sequencing data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   zlib
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ec5687eb02901ff3b62915cf37aa48b4')
-b2sums=('7a223636cbde89ce2161ee0e1a5fbccafaab7e5cb7b1e674fa039fdcbacae25d4918584d159dbbaa1abad60dd58fe01b9bb6239cf30de50babf69e229bb93e7f')
+md5sums=('e89748afba3c2245eeeacf0b3bf6c5e2')
+b2sums=('a483b35cb299cfc6b8aee011a8608fcf86a393bce3424033e6651495d31283350562ca62730f6dcc9161695ee489382430ff563e17935c5bba451b6e5ee8649c')
 
 build() {
   mkdir build
