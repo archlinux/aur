@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RedisParam
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Provide a 'redis' back-end for BiocParallel"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cf24018f96bc9de6286d2806dfd7bfaa')
-b2sums=('3fa4469d68eb1d93366339d9e626bc27cd359c94c7bb48cd6badbb9563ddc43cb64a327cd039ca6b6f4e6f5d4cb9270d7b0f59d52398ecfb2ad1b83447851785')
+md5sums=('983e17af8d289f9bbfbc755b6213d72a')
+b2sums=('24ac2105f75ea3ce0fcdc4c235942b3158d8a65ded7edb843ab14e348de766ebb17b0966bb1bfd62307c3e1926b891e18ee1cacf967c441cc7cd59a21256fc95')
 
 build() {
   mkdir build
