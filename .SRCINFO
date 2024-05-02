@@ -1,6 +1,6 @@
 pkgbase = org-cli-tangle
 	pkgdesc = tangle source code blocks in emacs orgmode files from the command line
-	pkgver = 1.4.2
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://sr.ht/~minshall/org-cli-tangle/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = org-cli-tangle
 	makedepends = git
 	makedepends = m4
 	depends = emacs
-	source = git+https://git.sr.ht/~minshall/org-cli-tangle#tag=0b659e7eab5340a5ea093a15a7686a3d30f093cf?signed
+	source = git+https://git.sr.ht/~minshall/org-cli-tangle#tag=967f6cf75adc6cd851213c8864ee5a87183ae178?signed
 	validpgpkeys = BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F
 	sha256sums = SKIP
 
