@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocSingular
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Singular Value Decomposition for Bioconductor Packages"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9b4158e143f2cbefc140228c13090b35')
-b2sums=('404fe99602584282a55497cd03acccc01e291a1c174d50ec5107322cc0bb5b7321c398ce69829d4c133d315b4b215453053a829609463e3d340b5f06f858872a')
+md5sums=('d5a29e6d4dad421ec381313627270a0e')
+b2sums=('53c788e4003bbb2fdf9880d430033f1bfe5dafe0e117e0e48e6ad5443c4fcd62716330b79563f3318c9ca39b10a62e7394f46cf597225d38c4b23a5e3399194a')
 
 prepare() {
   # skip test that makes a coredump
