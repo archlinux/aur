@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Maaslin2
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="\"Multivariable Association Discovery in Population-scale Meta-omics Studies\""
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -44,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0f92778b2d59935191e2ac58621da8f5')
-b2sums=('12044401aa69766bed5624aa042dbd47ae0dbc5e7e10973367eb154f03079919be6be0dae23eec40daa1f0c24e1ba348db1f073f0c97b0c6bbd5fbc079370def')
+md5sums=('65689f289ef30a89d727f676e645719a')
+b2sums=('604e3069848b1a2354087b136103493095cb4a38e48ae517914054e7356b359f8ba6c5a53459e0491ff71cf13475a95db9f86080ab82ed1c5c81d03c1810c0fc')
 
 build() {
   mkdir build
