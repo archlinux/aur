@@ -1,6 +1,6 @@
 pkgbase = cabal-fmt-static-git
 	pkgdesc = Format .cabal files
-	pkgver = 0.1.11.r0.gce46d2a
+	pkgver = 0.1.12.r0.g86d59df
 	pkgrel = 1
 	url = https://github.com/phadej/cabal-fmt
 	arch = i686

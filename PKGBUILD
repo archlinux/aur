@@ -27,21 +27,24 @@ pkgver() {
     | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cabal update
+}
+
 build() {
   cd "$pkgname"
-  cabal v2-configure \
-    -O --jobs --prefix=/usr --docdir=/usr/share/doc/$pkgname --enable-tests
-  cabal v2-build
+  cabal configure --prefix=/usr --docdir=/usr/share/doc/$pkgname --enable-tests
+  cabal build
 }
 
 check() {
   cd "$pkgname"
-  cabal v2-test
+  cabal test
 }
 
 package() {
   cd "$pkgname"
   mkdir -p "${pkgdir}/usr/bin"
-  cabal v2-install --install-method=copy --installdir "${pkgdir}/usr/bin"
+  cabal install --install-method=copy --installdir "${pkgdir}/usr/bin"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
