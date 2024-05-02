@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PeacoQC
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Peak-based selection of high quality cytometry data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -25,8 +25,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fa296e0522b97273b692874b5ec23b97')
-b2sums=('dd18e3e1c267e1d0c75c967c5c01f5a0d8b8e0cdf8b8588aae83a79c62f34bfd39ce715a78380292edfb0d67c9eb734e813948580683a1806c7c52ef96b6f204')
+md5sums=('6a1a43bc3f0a718550edbd585a46339f')
+b2sums=('1a566cbcf80da7afa4512814cc7320f3b31ba2ede445e2e0817e9185c0a000a675977e34d16fcebab1a675ffd399c401e9b270dad793d8230a1cb5252a52a54f')
 
 build() {
   mkdir build
