@@ -4,13 +4,13 @@ _tag=3.0.0-rc.8
 pkgname=watt-toolkit-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=${_tag//-/.}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url=https://steampp.net/
 license=('GPL-3.0-only')
 provides=('steam++' 'watt-toolkit')
 conflicts=('steam++' 'watt-toolkit')
-options=('staticlibs')
+options=('staticlibs' '!strip')
 source=(
     'watt-toolkit.desktop'
     'set-cap.hook'
@@ -50,8 +50,12 @@ package(){
     cp -r "${srcdir}/assemblies" "${pkgdir}/usr/lib/watt-toolkit"
     cp -r "${srcdir}/native" "${pkgdir}/usr/lib/watt-toolkit"
     cp -r "${srcdir}/modules" "${pkgdir}/usr/lib/watt-toolkit/modules"
+    # Fix permission
     find "${pkgdir}/usr/lib/watt-toolkit" -type f -exec chmod 644 {} \;
     find "${pkgdir}/usr/lib/watt-toolkit/modules" -type f -name 'Steam++.*' -exec chmod 755 {} \;
+    # Strip binary
+    find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.dll' -exec strip $STRIP_STATIC {} \;
+    find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.so' -exec strip $STRIP_SHARED {} \;
     install -Dm644 "${srcdir}/Icons/Watt-Toolkit.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/watt-toolkit.png"
     install -Dm755 "${srcdir}/script/environment_check.sh" "${pkgdir}/usr/lib/watt-toolkit/script/environment_check.sh"
     install -Dm755 "${srcdir}/watt-toolkit" "${pkgdir}/usr/bin/watt-toolkit"
