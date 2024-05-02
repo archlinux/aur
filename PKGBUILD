@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BiocFHIR
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Illustration of FHIR ingestion and transformation using R"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('788951417cde10ad9434dd443db47f80')
-b2sums=('53c87974284f1d63d889f9f5eacb00706f3ba7ae92238b82a3b50f8cbd5e8da1b0d5c91d0550178c5dc09e83b7e608f8a43c3050d26d5262c4140cb33cdd4795')
+md5sums=('0b27e2966794988b365a92fc705100bf')
+b2sums=('dca628d107471745521a826cc164aa9f6b6ed65adbed9cb9cd06da986244a43a916471b17155ced544db3fd5b3ab49d6b98c9d003dbdbbe57381802a2ca69815')
 
 build() {
   mkdir build
