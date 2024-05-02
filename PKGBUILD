@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HERON
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Hierarchical Epitope pROtein biNding"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9c146a8d99bada338098732e1de5a5e2')
-b2sums=('318a9d20e866bba31c9dcb0d32711583ee99df3a2034cc77f97e76a8387eebaa6a7ed9dd70f33f45d03c176fbabe86f39a058e41a1fdf15adc81d2911df95bfe')
+md5sums=('aab5b01c721e4d57a65492d05861b183')
+b2sums=('9611e5510ae629e6c17cd55e5463f53e37e92112f620d0e80be26526c1c7210c8de408aabf55487fb8c555407f406e53ab43e63ab7f28eacb4f2dc6156240f40')
 
 build() {
   mkdir build
