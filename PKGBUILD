@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LungCancerACvsSCCGEO
-_pkgver=1.38.0
+_pkgver=1.39.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A lung cancer dataset that can be used with maPredictDSC package for developing outcome prediction models from Affymetrix CEL files"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f353aa0cc36dc25e67cdf1ba0738985e')
-b2sums=('6e015b9ea7f48bfda06f3534afccf0cc7334bb272b61ebe47b9ffe2894200acfb2dfbf92f8f61b82efbf9f1d5da0ea718ca715b38a84e1fac193dd98225efc00')
+md5sums=('6dcc039821e1867221ab9861acfe8d81')
+b2sums=('bf5017c5e81cd188d5ea6d2034f894e0dbba210558ac47c1678a4559e64ffe120e5b44bd7ea7d293ea526b6e714579c68ff7d1f6a67bed5b5345337628d860bd')
 
 build() {
   mkdir build
