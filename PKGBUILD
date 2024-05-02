@@ -6,7 +6,7 @@ _dotnet_version=8.0
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=3.0.0.rc8.r0.g542b528b9
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
 license=('GPL-3.0-only')
@@ -20,7 +20,7 @@ makedepends=('git' 'dotnet-install') # We need to install some workloads so dotn
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++' 'watt-toolkit')
 conflicts=('steam++' 'watt-toolkit')
-options=('staticlibs')
+options=('staticlibs' '!strip')
 source=(
     'git+https://github.com/BeyondDimension/SteamTools'
     'git+https://github.com/BeyondDimension/Credentials-Public'
@@ -121,10 +121,10 @@ build(){
     done
 
     dotnet workload restore src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj
-    msg2 "Building BD.WTTS.Client.Avalonia.App..."
+    echo "Building BD.WTTS.Client.Avalonia.App..."
     dotnet publish src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
         -c Release --output "${srcdir}/SteamTools/linux-out" --framework "net${_dotnet_version}"
-    msg2 "Building plugins..."
+    echo "Building plugins..."
     for _id in "${!_plugins[@]}"
     do
         echo "Building ${_id}..."
@@ -163,7 +163,7 @@ package(){
     cd "${srcdir}/SteamTools"
     mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
     cp -av "${srcdir}/SteamTools/linux-out" "${pkgdir}/usr/lib/watt-toolkit"
-    msg2 "Removing useless runtimes..."
+    echo "Removing useless runtimes..."
     case ${CARCH} in
         x86_64)
             _platform=linux-x64
@@ -179,7 +179,7 @@ package(){
             ;;
     esac
     find "${pkgdir}/usr/lib/watt-toolkit/runtimes" -mindepth 1 -maxdepth 1 ! -name "${_platform}" -exec rm -rf {} \;
-    msg2 "Installing plugins..."
+    echo "Installing plugins..."
     for _id in "${!_plugins[@]}"
     do
         echo "Installing ${_id}..."
@@ -196,7 +196,7 @@ package(){
                 ;;
         esac
     done
-    msg2 "Installing misc files..."
+    echo "Installing misc files..."
     for width in 16 24 32 48 64 96 128 256 512
     do
         echo "Processing ${width}x${width} icon..."
@@ -209,4 +209,7 @@ package(){
     install -Dm644 "${srcdir}/set-cap.hook" "${pkgdir}/usr/share/libalpm/hooks/watt-toolkit-set-cap.hook"
     install -Dm755 "./build/linux/environment_check.sh" "${pkgdir}/usr/lib/watt-toolkit/script/environment_check.sh"
     ln -sf /usr/lib/watt-toolkit/Steam++ "${pkgdir}/usr/bin/watt-toolkit"
+    echo "Stripping binaries..."
+    find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.dll' -exec strip $STRIP_STATIC {} \;
+    find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.so' -exec strip $STRIP_SHARED {} \;
 }
