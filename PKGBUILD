@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=litecli
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="A command-line client for SQLite databases that has auto-completion "\
 "and syntax highlighting."
@@ -17,18 +17,19 @@ depends=(
   'python-configobj'
   'python-cli_helpers'
 )
-makedepends=('python-distribute')
-source=(
-  $pkgname-$pkgver.zip::https://github.com/dbcli/litecli/archive/v$pkgver.zip
-)
+makedepends=(python-build python-installer python-wheel)
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 provides=('litecli')
 conflicts=('litecli-git')
-md5sums=('749a0ab4ba215ce0c06c15fe3cc5172b')
+md5sums=('bc9de3126aebcdbaca287ce2241cbff7')
+
+build() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  sed -i "s/cli_helpers\[styles\] >= 1.0.1/cli_helpers >= 1.1.0/g" \
-    setup.py
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -D "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
