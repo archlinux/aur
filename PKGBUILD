@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=DifferentialRegulation
-_pkgver=2.0.3
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4000b013914ea14b52fb9c4be18f809d')
-b2sums=('c6457ad5fa2e1bba7bf97a8ce5e9f6284484373ddc4e723d5e4b18dc42457c780ca3de8c7e8469d28d6b1502b6d4cee197a4714a5c0268615ed18c6894e2cafa')
+md5sums=('ac53d42fae107b8bd09af43f56e08028')
+b2sums=('f1e80db7f157a5d1d24caa019c236162e790bb1f897df6bea2d473e4b2fa09e95e9b91e83962550a489fbc70be8ee9052fd28085b6f2f88ef7c67236e1a43a7d')
 
 build() {
   mkdir build
