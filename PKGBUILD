@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MsDataHub
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Mass Spectrometry Data on ExperimentHub"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f355465b6b3994491364cbe994e4488d')
-b2sums=('0bff7682b1e70d68b61385b56db8c14bc3e2dfada45e2e14f7ebf22f1ff2b1dcb721b40dfacf3f5816411bcea30dc5d80f073f33c15fa4402b6b299b547121f2')
+md5sums=('70c6eebcdeeb6474db9802057d0129ac')
+b2sums=('ddbf3ec03458f5bda1d8f1f069c920bc453d5f0250803d1e3d70a1b398c2f9ca727e412fc44f7a162999d5080d0cd0ab955291f14bda8d40ec1fae6843ebda54')
 
 build() {
   mkdir build
