@@ -1,6 +1,6 @@
 pkgbase = r-diffcoexp
 	pkgdesc = Differential Co-expression Analysis
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/diffcoexp
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-diffcoexp
 	depends = r-wgcna
 	optdepends = r-geoquery
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/diffcoexp_1.22.0.tar.gz
-	sha256sums = 83bc24bc3489d7bd542806fdb8ab331734db9603335a235809032c505037ee41
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/diffcoexp_1.24.0.tar.gz
+	sha256sums = 6ec035348de5588e4d4d5841cca5fdd912b89722f459073a580a9f39b65156b1
 
 pkgname = r-diffcoexp
