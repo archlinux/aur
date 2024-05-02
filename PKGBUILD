@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=IsoBayes
-_pkgver=1.0.1
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Single Isoform protein inference Method via Bayesian Analyses"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d9e1de9f5a1f8279117fde4cc997725d')
-b2sums=('3e4fe0d17b24c74709e2d86a9c0559e521d3a78a178e5f21348f1bb918addb5743c0601f5723b677b924f70d3751d2bad4ed096a79bc2514bb6a8d9ae67e24cb')
+md5sums=('ec1e8cf8cdbc12a707fd99e18ec511b9')
+b2sums=('7903239768e707e12429d2c8e9d7db7ddb7deef7e90b3d208d977054e5710035bda7e9aa7cd0914f705244c5f6f148bee7eeb50aeb8e886a51af6c97573f24c6')
 
 build() {
   mkdir build
