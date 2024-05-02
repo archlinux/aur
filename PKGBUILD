@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DFP
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Gene Selection"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5eb14fe67a6dd0599cd24c3473eec349')
-b2sums=('4f1fe36c47a3df3ae473996400d8650e0f3715b715ebb85ddaecf43ff6db63193021715313fe32f0c99320ddac33410e342f6e89e6e9bfa889d1dcbc424d2f29')
+md5sums=('45fa291fbcd2259023b197460098c456')
+b2sums=('5e63f11f30ebf0faf90b880feab41223c55a1db6e770fd2a1ea3360d8d36136f276f6b4e49fdca87678397668547de150d77d352d1031cf0ec85b309c5364359')
 
 build() {
   mkdir build
