@@ -5,7 +5,7 @@ _extensionname_lowercase="${_extensionname,,}"
 _pkgname_base="mediawiki-extension-${_extensionname_lowercase}"
 
 pkgname=${_pkgname_base}-git
-pkgver=0.4.3.r10.g25490fa
+pkgver=0.4.3.r13.gdba1a16
 pkgrel=1
 pkgdesc='EditCountNeue MediaWiki extension allows wikis to display the number of edits of a user, via a special page or a parser function.'
 arch=('any')
