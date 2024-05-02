@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gcspikelite
-_pkgver=1.40.0
+_pkgver=1.41.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Spike-in data for GC/MS data and methods within flagme"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('91b995753732f0d5508fdc2d7dcb998f')
-b2sums=('9297fe60247da65e209c2d0febfd43aa8e10bde541c0464e79c3144c51ea4891b516f53015db79beb55a94961e8a978928e9086d9b8c54a26e5ec5bb11e45fac')
+md5sums=('ea7925d2ea8f8371a7a169fa4edeb30a')
+b2sums=('9929315d33544707fea66a1b3b8451d12ca4b905204f684a035c4112dd50399d81c3020b4083e7bc29f5745114911adc6a24e87832dbf638e6291a16e73def44')
 
 build() {
   mkdir build
