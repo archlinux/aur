@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=combi
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Compositional omics model based visual integration"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6fe16559db40b31126eb543abf6819fa')
-b2sums=('41031e9770c4cc7418c6bd8d475c478711294509d4dd3ca3702f2a5800925b23c22f5ae3978311ddcdf39c9155b896d1d1596d5be762c8791d53bcb8f6dc4286')
+md5sums=('f1c083729463ef3f2eaeffc3324aa1c5')
+b2sums=('042c423a1c4252b6dcdcccf388c0cbd9c0b432be6961a094e8ca4b9fa6e1fa4431049c823ff53a9d9e08e37d0a9139c5daee7a6e3008e9b5de48169ed038a08d')
 
 build() {
   mkdir build
