@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scDDboost
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A compositional model to assess expression changes from single-cell rna-seq data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ac0cac5975ebe4025ea07ad00e132847')
-b2sums=('2d318116d9c6ec3d231687e53c44da14b04d2f9200f9bac31b250dadb26f001bc84ba54ac3c67c428abe61bb4c54b8e7c1a403f13136f251b28b23757faca989')
+md5sums=('8d7022903043c4e93fdc1c026be7bba8')
+b2sums=('b2056b8ecaf5e4caa0015660c0a38d8ae19b9eb12c049816accf5932eb01a1449e26a273c8986f446582d99928ebb87845aa5630a062f167c27d53782288468f')
 
 build() {
   mkdir build
