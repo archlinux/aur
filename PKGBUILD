@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GOfuncR
-_pkgver=1.22.2
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.2
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Gene ontology enrichment using FUNC'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4ae9c332d1423395c0e0de279b866993528ed4bd482c5b6005a31054f0408400')
+sha256sums=('dbb09cf958dec0fe496a7d5fadf5ae134d7a25ca7affb4878a01495fd9bd76bc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
