@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spkTools
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Methods for Spike-in Arrays"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9cc7d56d0cf0eec1e65d47d262525ba1')
-b2sums=('c04d82dc067bfdda40355cd123d7122bc1d375a06c6bdaea1a451ef52fe05a3e169db6f2afdffeb6542d1ec51ab3603b496b6f5457d5777958debf670613625e')
+md5sums=('6c4f737050d383f6ecdb21ce8ebd9274')
+b2sums=('c83a12f18712d1f620b8b5fe8fe30dd12285f92da89595d3706b92e0bc108964d09192ec7340e532fe9a945954c6ec6fbae3a55751d27573f12c80571a4e67f1')
 
 build() {
   mkdir build
