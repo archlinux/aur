@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=seq.hotSPOT
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Targeted sequencing panel design based on mutation hotspots"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('37e04dc7e1bb05af58c50cb7701388c7')
-b2sums=('085b5706f92bd5fac7d5c40e4639198ea4a6b6bcde999b67618412736803b4ece570648142a20251a8bbac3ca4b42661be81b9e5de6f20d01ea0b8425fd7f2e7')
+md5sums=('afe353f38d5ed43da4c53adb6c100a9a')
+b2sums=('2fcdd8f60a775c3d998021c96d0a378703f8f83b237de9acd08391fb8e79dc0f86469c0c9c8d2e8cc8878ab1b9b3cc1a202412b447e0c3641f131598c252506e')
 
 build() {
   mkdir build
