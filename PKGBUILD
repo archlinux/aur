@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biodbHmdb
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="a library for connecting to the HMDB Database"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b34c06c2ce8865b7eebedb869a1ab505')
-b2sums=('5f0fa6b83049d8dbd334d94b52bbf05a87727a55e02bb075fc3440c5ec7d9e885f6e7403ea12087b0f89a877e251268aa72aee25e16c8f174f51009822cfa160')
+md5sums=('db8755a0b264bf073a316a12facba680')
+b2sums=('ea81a5718cb998cdcfb8a3b0b8df940f0c3fde759c428ab988bc1a0c73d91944401d0b8fe28ac1da04ffb87b34e1b130e0ad549ea0c6c68a805aed83b128602c')
 
 build() {
   mkdir build
