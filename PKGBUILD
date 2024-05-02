@@ -2,10 +2,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=CGEN
-_pkgver=3.38.0
+_pkgver=3.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="An R package for analysis of case-control studies in genetic epidemiology"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,8 +17,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e62dd5874cfcaab65414fff648106633')
-b2sums=('9c6dc107a01b39ae81ad848a3d27e2cc5ffff691b4c27ab8a2c0007fb726d149333fc28d84377f8ce5e66c20782790fccd37ec6ed38210d1ef27b9beb5faa93b')
+md5sums=('f0ed4643fa82fa35dc7e2787c5b09482')
+b2sums=('1925c627638b14ac56b065a75970a574bf28a1e1a0ab214fe4f443de3476b65cb2ab2177dd5e1a4b69284b20584e9fc88e8b24f823528a1b01514bff989f9acd')
 
 build() {
   mkdir build
