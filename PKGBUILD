@@ -1,18 +1,18 @@
-# system requirements: Java Runtime Environment (>= 8)
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RedeR
-_pkgver=2.6.1
+_pkgver=3.0.0
 pkgname=r-${_pkgname,,}
-pkgver=2.6.1
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Interactive visualization and manipulation of nested networks'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Interactive visualization and manipulation of nested networks"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
+  'java-runtime>=11'
   r-igraph
+  r-scales
 )
 optdepends=(
   r-biocstyle
@@ -22,14 +22,15 @@ optdepends=(
   r-treeandleaf
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e76f580867e8bedd189d4a06cca48c61f023615863e4f59c6227d2a01f27a8df')
+md5sums=('4365fb737adef3b8285000902c10448f')
+b2sums=('e259770cfbb68fb432df8ac9ff54208f3fba65aeea62c25ee3b840ea6726d4f62f3f0225c1e72389ffb5f468a7b8d5c754976e1be99fea1a363ed44fd951997a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
