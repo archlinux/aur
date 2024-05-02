@@ -5,7 +5,7 @@ pkgname='python-metno-locationforecast'
 _pkgname="${pkgname#python-}"
 epoch=1
 pkgver=1.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Python interface for the MET Norway Locationforecast/2.0 weather service'
 arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -17,9 +17,6 @@ source=(
 depends=(
   'python'
   'python-requests'
-)
-optdepends=(
-  'python-niquests: a moderne drop-in replacement for python-requests'
 )
 makedepends=(
   'python-build'
@@ -39,10 +36,6 @@ prepare() {
   cd "$_pkgname-$pkgver"
 
   patch -Np1 -i "$srcdir/setup-py.diff"
-
-  # https://github.com/Rory-Sullivan/metno-locationforecast/issues/6
-  _try_niquests='try:\n    import niquests as requests\nexcept ImportError:\n    import requests'
-  sed -i "s/import requests/$_try_niquests/g" "${_pkgname/-/_}/forecast.py"
 }
 
 build() {
