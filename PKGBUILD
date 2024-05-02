@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=regionalpcs
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Summarizing Regional Methylation with Regional Principal Components Analysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('37f0fc1370efacc719f72b419455096a')
-b2sums=('79f12abf5c18e86528288c9a57acc0c8baf23543344b9dff8f96ddab271a416a01b9b830369e8ec1cedbdf53c2910c952c45daf632b3572bd3ad8ecdb3681f3a')
+md5sums=('b908a64d856ff84a37e3ee9fdceb17e2')
+b2sums=('6fca5d255a9d6a204e55b695032ccc9b51924ff33c402818033d42f5861ac4553fba2a2a8e203401190c8e93818d10ae0b3b9c653b1e0a616b1a15bb18f8b1ff')
 
 build() {
   mkdir build
