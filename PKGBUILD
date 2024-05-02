@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=vpl-gpu-rt-git
-pkgver=24.2.1.r14.g45faa458
+pkgver=24.2.2.r4.g4a124799
 pkgrel=1
 pkgdesc='Intel VPL runtime implementation for Intel GPUs (Tiger Lake and newer) (git version)'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/intel/vpl-gpu-rt/'
 license=('MIT')
 depends=('intel-media-driver' 'libdrm' 'libva')
 makedepends=('git' 'cmake')
-provides=('vpl-gpu-rt' 'onevpl-intel-gpu')
+provides=('vpl-gpu-rt' 'onevpl-intel-gpu' 'vpl-runtime')
 conflicts=('vpl-gpu-rt' 'onevpl-intel-gpu')
 replaces=('onevpl-intel-gpu-git')
 source=('git+https://github.com/intel/vpl-gpu-rt.git'
