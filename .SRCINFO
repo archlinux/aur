@@ -1,0 +1,19 @@
+pkgbase = caustic-parser
+	pkgdesc = Caustic's Parser--CLI (cap) and Python package
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://codeberg.org/Caustic/CausticParser
+	arch = any
+	groups = caustic
+	license = Apache-2.0
+	makedepends = python-installer
+	depends = python
+	depends = python-parglare
+	depends = caustic-cst
+	optdepends = caustic-grammar: default/builtin grammar
+	optdepends = python-click: required for the cap CLI command
+	noextract = caustic.parser-3.0.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/c/caustic.parser/caustic.parser-3.0.0-py3-none-any.whl
+	sha256sums = 8c4faac75dc0d1b0bef23e360bcd148720e1d86b11448d94f1f3aa71703ade48
+
+pkgname = caustic-parser
