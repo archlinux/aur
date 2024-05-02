@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=acde
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Artificial Components Detection of Differentially Expressed Genes"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9a324caddfceb2aa977e0fc9e7e41615')
-b2sums=('5fa2b2e978b00fda0049c678d016592d75b648be78ea650bcb802b87e2aaaf8b92cc916b2899d5be226dd07ce90c7f6c86df94fcccd2ce2f3c85641179e56c55')
+md5sums=('a87e054be4b50004d53e1179cd4adf73')
+b2sums=('0b28ab945ec3adc4a1eda6c0d066daf42a82dcb3223af4584d2ecb39127a0d1f3bffb4cb4dfb728b3f4888372797a76d016ba5d1f47ed25ab10ef492a11eb422')
 
 build() {
   mkdir build
