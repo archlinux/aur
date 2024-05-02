@@ -1,7 +1,7 @@
 pkgbase = r-a4preproc
 	pkgdesc = Automated Affymetrix Array Analysis Preprocessing Package
-	pkgver = 1.50.0
-	pkgrel = 2
+	pkgver = 1.52.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/a4Preproc
 	arch = any
 	license = GPL-3.0-only
@@ -11,8 +11,8 @@ pkgbase = r-a4preproc
 	optdepends = r-hgu95av2.db
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/a4Preproc_1.50.0.tar.gz
-	md5sums = 5d9eea3d9957fc99156115052398f0cb
-	b2sums = 9252654f37ea643d2a552861eaf72fb8201f879562ff798a2e504abe3ce14a88195be90729a0cfea70a1f49b87d054ed5bba6ac9d673e0438b05c335502940cd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/a4Preproc_1.52.0.tar.gz
+	md5sums = c923d40afe98b9d70b07d1c181ef5a55
+	b2sums = 84011302d4c5cdbe29dd969795e316201a7f5a33c83caee2c6628078e2a55119b856384cf6f443220bccb4e61e39fd0925f2bd02efa36cc16e18c385f4a31884
 
 pkgname = r-a4preproc
