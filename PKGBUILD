@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SamSPECTRAL
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Identifies cell population in flow cytometry data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2724bc54054c093fac88a672a6b173d6')
-b2sums=('527fa7185b84b646ce1652967f5a1ce3b47c9dafabad9877aebd3b6addf07f84082a863f28d6122145440c629c4f36560cd3ae7103aec19863b4c8f39a316e53')
+md5sums=('0b6001c74d4939cbe9410955f5c8fc44')
+b2sums=('baf318f139cbfa95742f57d3725c5ff5e70617a3ffb984b70e3d1ec4ce07851b0fd544c2078538330dc2fb4a2cae11fd9cdef4130cc3ccb439095c0069350bd4')
 
 build() {
   mkdir build
