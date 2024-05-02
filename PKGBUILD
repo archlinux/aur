@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=biodbNcbi
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="a library for connecting to NCBI Databases"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5d2c3e8eade431a86e13d54be468832e')
-b2sums=('180507034121b1d2508967f24b37215d8e6031c53b786a55d9c8c23ca26fe061a7bd8d3ee6b8b679cae3a28f0e2f9ebbb0066300c26395e001bce2c4d642dfdc')
+md5sums=('83f5f6c17da2dd16afca62673ad19868')
+b2sums=('b738f0ea3d3b03d415bc8fe7fa2493f68793bd11f35946ab20185d4e0181a1d75c31f0827465f1d8c791b1eecca3d5f622b844d10cc7a4d3de8a28b045f3c69d')
 
 build() {
   mkdir build
