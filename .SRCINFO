@@ -1,5 +1,5 @@
 pkgbase = libcuba
-	pkgdesc = A library for mutidimensional numerical integration
+	pkgdesc = A library for multidimensional numerical integration
 	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://feynarts.de/cuba/

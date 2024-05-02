@@ -1,7 +1,7 @@
 pkgname=libcuba
 pkgver=4.2.2
 pkgrel=1
-pkgdesc='A library for mutidimensional numerical integration'
+pkgdesc='A library for multidimensional numerical integration'
 arch=('x86_64')
 url="https://feynarts.de/cuba/"
 license=('LGPL')
