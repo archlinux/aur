@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ASURAT
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Functional annotation-driven unsupervised clustering for single-cell data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a1cb615f6ddab8cb8b9ccb1a73ba39de')
-b2sums=('3621bfbabf70134b2ce0e0e4cee825dd342dcb13a4c017c07ae5aea683c997dfce91f5a0f622215ed1011d930e156b46f451cec1e737648e0f8faa5adcd884f8')
+md5sums=('4ea2abf6ca17139ec3a1d1a289ac4449')
+b2sums=('6213cfeea959b72c584ba58b80fb2f69d4cf74ed085161f8d7b1c7644098693b69f982c082dd7023256475dc628cf13ce929da94923febb0f4ea20014afa020e')
 
 build() {
   mkdir build
