@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=plasmut
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Stratifying mutations observed in cell-free DNA and white blood cells as germline, hematopoietic, or somatic"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -28,8 +28,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8681d905157c0cbb8b46e48cbe4ecde9')
-b2sums=('f13dd4f636f19a34b2ea5e8c8388b04d77720b6b2b8b1cd67e073e2ddcaf70d0ebebd12e2a3915e45fe237566462bc740e39833f5369f45f99702d9e8558f343')
+md5sums=('179aaa5defb862f1ddd0dd7c2c401634')
+b2sums=('701903ce097cac4063d24b9ecb6800ed4539a466347807a108f3734b088c66d7324d37bb36a46641e0f452bc58fbe9a960901c9d42291033c0af04919ee61a7b')
 
 build() {
   mkdir build
