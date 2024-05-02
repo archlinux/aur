@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Category
-_pkgver=2.68.0
+_pkgver=2.70.0
 pkgname=r-${_pkgname,,}
-pkgver=2.68.0
+pkgver=2.70.0
 pkgrel=1
 pkgdesc='Category Analysis'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c0414bde443705cbf11b221c7df38a6252bc9ad5000a56a99759bfe027ee1ea7')
+sha256sums=('9cb2c5ff698299d8d16eaf7c4150966f79650e652836227ba71b2f9d11345f5d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
