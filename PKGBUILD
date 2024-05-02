@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LBE
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Estimation of the false discovery rate"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-qvalue
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('36559f365f1dbd53056e6b43bc1e06e9')
-b2sums=('8c10241e146be6fc61c48ba4ac7e6a7b4691c5499a89d920c9b64e7c5a1729a2d3ed5d265a853402b247427fe2ad4e0d8f789bc70fd504695d1673da7006439a')
+md5sums=('da14ad5f9a5ee7d6bb107e7528cd8e46')
+b2sums=('87ccaf010052db1cf14da68316393e5badf0baa77bb801f49a87128a4d193786cab2028c193dd0008ef1dc6d21747706e9691a37d5ccc027ed07e9958b3dd6f8')
 
 build() {
   mkdir build
