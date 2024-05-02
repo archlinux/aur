@@ -1,0 +1,18 @@
+pkgbase = android-x86-libdc1394
+	pkgdesc = Library to control IEEE 1394 based cameras (Android x86)
+	pkgver = 2.2.7
+	pkgrel = 1
+	url = https://damien.douxchamps.net/ieee1394/libdc1394/
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = android-configure
+	depends = android-x86-libraw1394
+	depends = android-x86-libusb
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/libdc1394/libdc1394-2.2.7.tar.gz
+	sha256sums = 537ceb78dd3cef271a183f4a176191d1cecf85f025520e6bd3758b0e19e6609f
+
+pkgname = android-x86-libdc1394
