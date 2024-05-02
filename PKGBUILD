@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DOSE
-_pkgver=3.28.2
+_pkgver=3.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Disease Ontology Semantic and Enrichment analysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('db9c95935ce192a915b1246380f625d5')
-b2sums=('1dcc674de7008fd15a6bc013063710855597f1de22975cb8db5f589d16d4b9dda2cd4f006d6808336cd664068acf22479f5e0d5b4335d922dc5026faa9351728')
+md5sums=('51d8cbd8eefec8ad8328b2f035f8eca5')
+b2sums=('4bba7325f197ff2597394d6edf405124e654c90586393ece40eabede6ee1cffe9cdebd3ce9245ea86b33a5fddc52043750c9ba920f9387d90f1fa4e57578bf9b')
 
 build() {
   mkdir build
