@@ -1,15 +1,15 @@
 pkgbase = r-clusterstab
 	pkgdesc = Compute cluster stability scores for microarray data
-	pkgver = 1.74.0
-	pkgrel = 2
+	pkgver = 1.76.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/clusterStab
 	arch = any
 	license = Artistic-2.0
 	depends = r-biobase
 	optdepends = r-fibroeset
 	optdepends = r-genefilter
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/clusterStab_1.74.0.tar.gz
-	md5sums = 87f3941fd121e6a60acdefd9a682ba9a
-	b2sums = 0c827e129446b74a48dfc24bb21d4d278fb9ff31ace1a6194adce8b55ea643a0ad2695302d0d045c1fcffa5f07b71b8e8508ced99c2504b73c3dde07306b410a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/clusterStab_1.76.0.tar.gz
+	md5sums = 3ff23e703f8ddac256c67de44947d217
+	b2sums = 59408b971dde8dd1353b4581080ecc5bc4e9184d820c392e4f38aa8d36797c8caaa44a13a69d6237773e58a4f0e578169b19850ef0bd1a4b28d5fde157ba2dec
 
 pkgname = r-clusterstab
