@@ -5,7 +5,6 @@ pkgbase = netexec
 	url = https://github.com/Pennyw0rth/NetExec
 	arch = any
 	license = BSD-2-Clause
-	depends = impacket
 	depends = python
 	replaces = crackmapexec
 	source = https://github.com/Pennyw0rth/NetExec/releases/download/v1.1.0/nxc
