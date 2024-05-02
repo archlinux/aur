@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-decklink
 pkgver=6.1.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('x86_64')
@@ -46,6 +46,7 @@ depends=(
   libvidstab.so
   libvorbisenc.so
   libvorbis.so
+  libvpl.so
   libvpx.so
   libwebp
   libx11
@@ -58,7 +59,6 @@ depends=(
   libxvidcore.so
   libzimg.so
   ocl-icd
-  onevpl
   opencore-amr
   openjpeg2
   opus
@@ -87,7 +87,7 @@ makedepends=(
 optdepends=('avisynthplus: for AviSynthPlus support'
             'ladspa: for LADSPA filters'
             'nvidia-utils: for Nvidia NVDEC/NVENC support'
-            'onevpl-intel-gpu: for Intel Quick Sync Video')
+            'vpl-runtime: for Intel Quick Sync Video')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
