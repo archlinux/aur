@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=compSPOT
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Tool for identifying and comparing significantly mutated genomic hotspots"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7aa69c9c3ec0c008ad0fdfb4dbbcac57')
-b2sums=('aa3273ac91f1f39b9d817d8c7a7436e4a177315626712906cf008ea9027e3a5719d3c11232d4e02281c9cb50296239a4f52eb124099c680c6e4aec31be31f09f')
+md5sums=('fd934e7668992328ea7758317b397eb6')
+b2sums=('0698b51f55c9b42a61abdeb95bdd76fd83b2b719aaeec905d9d6711e869aa614e5f096a412f4ab4f5b85b5821f9e1d2966040b085ec5ee68a63d1fa1ff5d9488')
 
 build() {
   mkdir build
