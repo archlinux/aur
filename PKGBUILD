@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('azote')
-pkgver=1.12.6
-pkgrel=2
+pkgver=1.12.7
+pkgrel=1
 pkgdesc="Wallpaper & color manager for wlroots-based compositors and some X11 WMs"
 arch=('any')
 url="https://github.com/nwg-piotr/azote"
@@ -22,7 +22,7 @@ optdepends=('imagemagick: for screen color picker'
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/$pkgname/archive/v$pkgver.tar.gz")
 
-md5sums=('87b7f8aaaa54074a4c117fa91aad2f41')
+md5sums=('ac564a7a10af6375dcbd1ec064f1e5cf')
 
 package() {
   install -D -m 755 "$pkgname"-"$pkgver"/dist/azote "$pkgdir"/usr/bin/azote
