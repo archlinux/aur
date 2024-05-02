@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SCBN
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A statistical normalization method and differential expression analysis for RNA-seq data between different species"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c58ee707d9418bd3374773e2675efad7')
-b2sums=('df517b6e671c9ae5387e543d31c32a988c35a6ac279b78f0a9d910f0d46b0ec94e5a817ce70aa167a034df6065c0285440898b3080d963d4f0112e5eb7b77d70')
+md5sums=('03c274fbc25d15c0964c231f15c1c5fe')
+b2sums=('11967c63313ea726c411293f3af1a4c07a3c8e9f7827f896b06dd1ad93c88517d4a7ae547bf750182ef0b52e2e21e7fc72032c104bbb08d6e232c70903d22fa7')
 
 build() {
   mkdir build
