@@ -1,0 +1,21 @@
+pkgbase = shipper-git
+	pkgdesc = Automated shipping of open-source project releases
+	pkgver = 1.19.r18.g96f3e42
+	pkgrel = 1
+	url = http://www.catb.org/~esr/shipper
+	arch = any
+	license = BSD2
+	makedepends = gzip
+	makedepends = xmlto
+	makedepends = make
+	depends = python3
+	depends = openssh
+	optdepends = irker: post to IRC
+	optdepends = lftp: upload files via ftp or scp
+	optdepends = python-twython: post to Twitter
+	provides = shipper
+	conflicts = shipper
+	source = shipper-git::git+https://gitlab.com/esr/shipper
+	sha256sums = SKIP
+
+pkgname = shipper-git
