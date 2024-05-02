@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=beachmat.hdf5
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="beachmat bindings for HDF5-backed matrices"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b2ca9b6358fb05895101e6a911ca0e39')
-b2sums=('43e354d80d8ff674ec07e942ac12c3b6123f2902be9a0b78630b43490a4a0279bdbf023ecd9faf3691250ce1f9e6125f560a41f6fe4881f99eaf47920d1dd4fd')
+md5sums=('54b709d85197696ae959603ea5d730ea')
+b2sums=('7d4715ea544ed0db6e74dcdd35e6393d5e0c150017038c08a6cae779c81af7c1023c70accbe599c309a5e376b3bad96a67b1df575ea221b445ed37bd471bd745')
 
 build() {
   mkdir build
