@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=single
-_pkgver=1.6.0
+_pkgver=1.7.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Accurate consensus sequence from nanopore reads of a gene library"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -27,8 +27,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('61242086622646ed92a4304d33bc1457')
-b2sums=('50b11349ff3890069c228797f5834fae012375a44c4d5249de80159418361a43e8e4e51b3f685ddfd033c4ae91d4e39de668e58d10c85f78932d6258930a4925')
+md5sums=('5a2ca2c6dea29eb383d01abb90f3a5c8')
+b2sums=('3cf85a7370c9781431d89e08c06b126ed47447bb711a01078cbd76a4b7b6d2d55ebe4b17b1218d972209e8c1255efa8a61b09f7ba85fb5ee6a60eabfcebd73e5')
 
 build() {
   mkdir build
