@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSstatsLiP
-_pkgver=1.8.2
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='LiP Significance Analysis in shotgun mass spectrometry-based proteomic experiments'
 arch=('x86_64')
@@ -39,7 +39,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4254ed1e1d6cee80bdc19e6b24028d4548b733690449eed54abf8abb26b62274')
+sha256sums=('40a60aef2d736da2936f1a4b624a962ed69490e6e38a2587df8b6cf5eff2eece')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
