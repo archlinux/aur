@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pcxnData
-_pkgver=2.24.0
+_pkgver=2.25.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Correlation coefficients and p values between pre-defined pathway/gene sets"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-pcxn
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7814b1a6f5dbd08e71df1e92ea4328f6')
-b2sums=('72416295922d60f8932329bb0aa7c2cdbafcf4e55b7483f53245bae94cd7a3859d3932dad9fd4509169779707e52dd34a8ac44261f81704bfe29e82937aa0b0a')
+md5sums=('1428be1acb277a680379b64d1ec8fb7e')
+b2sums=('40acf4b8c78abd42ae56a212efd3ed84cc51663ef5a2b4c1c6339a57befbb62879717628933cceaa66fd6f565abc012f52684b27ce98fbc7f3e81bb169c9255a')
 
 build() {
   mkdir build
