@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KOdata
-_pkgver=1.28.0
+_pkgver=1.29.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="LINCS Knock-Out Data Package"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('40e099053eae889ad66256a94427ac54')
-b2sums=('ecd7c3597cd1e81dfbc1782b9ab4d6f5e898491c5d3de180bf2312c6e3ccd204dd3582a75abd261e13693a90fafaae8ab083a7618d15dc3d0d643886c52effd8')
+md5sums=('adca5195427be6d35b5db0a2f281322e')
+b2sums=('5bc190db619fca9ea4da71168311d0332788b854aa6c0a1a08e905f95ff26dcf51006109f67d621f35df282eae8a201c200e1372c4a227ef4229b5f4d2eff9fa')
 
 build() {
   mkdir build
