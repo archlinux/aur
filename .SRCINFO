@@ -1,0 +1,15 @@
+pkgbase = caustic-cst
+	pkgdesc = Caustic's Abstract Syntax Tree (Python package)
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://codeberg.org/Caustic/CausticAST
+	arch = any
+	groups = caustic
+	license = Apache-2.0
+	makedepends = python-installer
+	depends = python
+	noextract = caustic.cst-2.1.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/c/caustic.cst/caustic.cst-2.1.1-py3-none-any.whl
+	sha256sums = e3a465eb2f107aa131d68837688a6a0284c4aaaa90331e172b0df1b51619e8c3
+
+pkgname = caustic-cst
