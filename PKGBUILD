@@ -4,12 +4,11 @@
 pkgname='python-jh2'
 _pkgname="${pkgname}"
 _srcname="${_pkgname/python-/}"
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.0.3
+pkgrel=1
 pkgdesc='HTTP/2 State-Machine based protocol implementation'
 arch=('aarch64' 'x86_64')
-#url='https://github.com/jawah/jh2'  # 404
-url='https://pypi.org/project/jh2/'
+url='https://pypi.org/project/h2/'
 license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
 depends=(
   'gcc-libs'
@@ -27,7 +26,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_srcname::1}/$_srcname/$_srcname-$pkgver.tar.gz"
 )
 sha256sums=(
-  '6a67602b69293377c639c8f0a7637c9b3bfb8d203d110d487af02d1942f92fad'
+  'c13d97a3f82a02e6a2a89606f1ffe1771670266dc7746140e00e66c4dad12b14'
 )
 options=('lto')
 
