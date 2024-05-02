@@ -1,6 +1,6 @@
 # Maintainer: Snehit Sah <snehitsah@protonmail.com>
 pkgname=crabfetch
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A simple fetch utility, written in Rust"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/flyingcakes85/crabfetch"
 license=('GPL')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/flyingcakes85/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("35b7888c84f817276972e603f16cae4bfbbb5fb80d312936b67905b6151d084633d2064828255915803746aa875d5a2b717be5b0e17e798b3700bf126fad83f1")
+sha512sums=('a57ed1ee92e812d8bf24c331d8381437395cc9af35056e8bb62f54d2c33c4df4f02ad1d214565d0f3b04203216024308e1e2d4f449058f60f81abe9b2da8a351')
 
 prepare() {
         cd "$pkgname-$pkgver"
