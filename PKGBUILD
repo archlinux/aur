@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rSWeeP
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Functions to creation of low dimensional comparative matrices of Amino Acid Sequence occurrences"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('42d80dcf3d267562e175115cdfd4c731')
-b2sums=('2cbc05201b6142dafedc0997ef06e04d1fb2a6fd0b138ff372a0d31c6c35a71c7e0bd48d34b515a9d4054468e45dc210c2827760e7e11d9c9492ab00ee62832b')
+md5sums=('dfe965b29c7e198551077a112a2c5d82')
+b2sums=('0ff589e6114fca75c3dbe197c237d9f86e66cd73807206f5ebea23662a5e9ae2c594a888ac157e04f2b66cbac1304c3beece81c44b1dc543634e3edcb97af1bc')
 
 build() {
   mkdir build
