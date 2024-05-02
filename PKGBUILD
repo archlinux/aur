@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ccrepe
-_pkgver=1.38.1
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('151d956c2fbdaaf64fccbea7f4905a2d')
-b2sums=('21fca62d04c74957d32475fa0a66a80a3622e82ac5769de875c18a4c6ebdad879de3d12e6a28b7d2f111e173621364a34bf15570a71ffbf1abaa4081f372c16f')
+md5sums=('42bea79b9211bc70929af3bd5cb75fe5')
+b2sums=('801b0f28b05296db895dac3d2dd9440ec3787ad1ceed5cce1e7bb0165c49846052ee4e73b9dc1e84e3ed5fab124e955e3e9d5c320eb2adbc76ae205395bd5579')
 
 build() {
   mkdir build
