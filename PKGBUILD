@@ -2,7 +2,7 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -38,7 +38,7 @@ optdepends=(
   'python-cohere: support for Cohere models'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('bef1985d25dc0b3138e8c54a29e6ca0caff6b88b7fd272aa56453ed5f6dd79d2')
+sha256sums=('ccbbcc62a15db2e38c2e446417bc844d58e702e45e76be3410e19c908bdb4945')
 
 _archive="$_pkgname-$pkgver"
 
@@ -62,7 +62,7 @@ check() {
   pytest \
     --deselect tests/dsl/test_partial.py \
     --deselect tests/llm/test_anthropic/evals/test_simple.py \
-    --deselect tests/test_new_client.py \
+    --deselect tests/llm/test_new_client.py \
     --ignore tests/llm/test_openai
 }
 
