@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ReactomeGraph4R
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Interface for the Reactome Graph Database'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-wesanderson
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('74ebf29242486e445ae171feda4380268b40a9f8db1cbc66e2c0742aced6543e')
+sha256sums=('48e781dbaf0bd24ec6367f83ab827b1a65edf0989adefb406bbaf1723dceb39f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
