@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=agilp
-_pkgver=3.34.0
+_pkgver=3.36.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Agilent expression array processing package"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('21b54a703747520483657dd63288f403')
-b2sums=('699f1ce075285c0f334eb6d1d7ed52509e6d72ff4841d92a8d1be13857f2e351924e729f4a2d77fbded47669f1a3d7848616ec516a0e7ee0a0b898023fadb64c')
+md5sums=('dacbb8ba794a46ebb78d2a5066e6661d')
+b2sums=('c8533d9383d8c77e82d4a87ceaa9fe6d8ffc10faab9de54ad9f28d72d5a7f1c6efca9b4529a773f13705e7e63f32f3e73d3e545246f427b3fbf69728e58d5d0e')
 
 build() {
   mkdir build
