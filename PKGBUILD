@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=retrofit
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Reference-free deconvolution of cell mixtures in spatial transcriptomics"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2b804a752a293f14495e94adb39df466')
-b2sums=('1ee8008e567c755d0f173ae646ddd3cbae27ee1cb71b76c98ba59bb34908b383e1a51b4379e37c16e6fde107af4def387bcca7c1e75939e8aa95d3b8f3619a9f')
+md5sums=('c95b4ffd79d78ee34a28185190260da2')
+b2sums=('0d1c5c97684854bc38ed452fc13dd1aeffaa2694f7745b10b0ce0121ab6b683b3cddedc3c66500bae75376013291c864f682d5bf669ad69c3f7f8dd948bd2f7b')
 
 build() {
   mkdir build
