@@ -1,0 +1,23 @@
+pkgname=cynix-lsb-release
+pkgver=1.0
+pkgrel=1
+pkgdesc="Custom Cynix Linux distribution information"
+arch=('any')
+url="https://example.com"
+license=('MIT')
+depends=('lsb-release')
+
+package() {
+    # Copy script to package directory
+    install -Dm755 install_custom_lsb_release.sh "${pkgdir}/usr/bin/install_custom_lsb_release"
+
+    # Create custom lsb-release file
+    echo "DISTRIB_ID=Cynix" > "${pkgdir}/etc/lsb-release"
+    echo "DISTRIB_RELEASE=1.0" >> "${pkgdir}/etc/lsb-release"
+    echo "DISTRIB_DESCRIPTION=\"Cynix Linux\"" >> "${pkgdir}/etc/lsb-release"
+}
+
+# Add metadata
+source=("install_custom_lsb_release")
+sha256sums=('SKIP')
+

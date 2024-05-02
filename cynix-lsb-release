@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Install lsb-release package
+sudo pacman -S lsb-release
+
+# Define content for the custom lsb-release file
+LSB_CONTENT="DISTRIB_ID=Cynix
+DISTRIB_RELEASE=1.0
+DISTRIB_DESCRIPTION=\"Cynix Linux\""
+
+# Write content to lsb-release file
+echo "$LSB_CONTENT" | sudo tee /etc/lsb-release >/dev/null
+

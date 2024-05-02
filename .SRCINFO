@@ -1,0 +1,12 @@
+pkgbase = cynix-lsb-release
+	pkgdesc = Custom Cynix Linux distribution information
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://example.com
+	arch = any
+	license = MIT
+	depends = lsb-release
+	source = install_custom_lsb_release
+	sha256sums = SKIP
+
+pkgname = cynix-lsb-release
