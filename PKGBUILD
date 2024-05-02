@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PROcess
-_pkgver=1.78.0
+_pkgver=1.80.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Ciphergen SELDI-TOF Processing"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r-icens
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9a9b6e6d31c1c45fb08e1f7cf00f0170')
-b2sums=('2f9dd260a13bbfb77f883685d2092de6d6b7ee424e5394300d6af81f0f686ad8ec6d505304c473ac7e1b6f7d003c66dfb1ef120f49f24ac0f4408f65ec870d85')
+md5sums=('503353d272d55184fae548f5564b43d1')
+b2sums=('d198d0ff5a6c23221f43e9a2d5994562d096385efd01dc1bfb6baff587ae1e04e5a60ca851b18004f2f47800857d11b83ac68b2fe6bf8fb2715863114fd68f75')
 
 build() {
   mkdir build
