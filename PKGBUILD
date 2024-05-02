@@ -6,7 +6,7 @@
 pkgname=qt6-base-headless
 _qtver=6.7.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -47,6 +47,8 @@ prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
   patch -d $_pkgfn -p1 < fix-wrong-cpp-if.patch # https://bugreports.qt.io/browse/QTBUG-123937
+  cd $_pkgfn
+  git cherry-pick -n 7c4e1357e49baebdd2d20710fccb5604cbb36c0d # CVE-2024-33861
 }
 
 build() {
