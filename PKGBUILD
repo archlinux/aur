@@ -2,20 +2,19 @@
 
 pkgname=sdl2trs
 _pkgname=sdltrs
-pkgver=1.2.28
-_commit=9ac732ce60304ca99f1eec703030d05e2a43618f
+pkgver=1.2.29
+_commit=bef81f3dc811545392ccf1e283cdb84ac545da4b
 pkgrel=1
 arch=('x86_64')
 pkgdesc="TRS-80 Model I/III/4/4P emulator (with hardware rendering)"
 url="https://gitlab.com/jengun/sdltrs"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('hicolor-icon-theme' 'sdl2')
 makedepends=('cmake')
 source=("$url/-/archive/$_commit/$_pkgname-$_commit.tar.gz")
 sha512sums=('SKIP')
 
 build() {
-  [[ -d build ]] && rm -r build
   cmake $_pkgname-$_commit \
         -Bbuild \
         -DCMAKE_BUILD_TYPE=Release \
