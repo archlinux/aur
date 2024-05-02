@@ -1,16 +1,16 @@
 pkgbase = python-libnmap
 	pkgdesc = Python NMAP library enabling you to start async nmap tasks, parse and compare/diff scan results. Python 3 version from PyPi
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/savon-noir/python-libnmap
 	arch = any
-	license = CCPL
+	license = Apache-2.0
+	makedepends = python-setuptools
 	depends = python
 	optdepends = python-sqlalchemy
 	optdepends = python-pymongo
 	optdepends = python-boto
-	source = https://files.pythonhosted.org/packages/source/p/python-libnmap/python-libnmap-0.7.2.tar.gz
-	sha256sums = 73309abebc49881adc312b85d7169bb567ac259948d2b1ce7b962e21bc5f98ea
+	source = https://files.pythonhosted.org/packages/source/p/python-libnmap/python-libnmap-0.7.3.tar.gz
+	sha256sums = d03629256c2ee9ab37390c28d4c4c2ae9637cd0861dd8ab9e0f32779545936c0
 
 pkgname = python-libnmap
-
