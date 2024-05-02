@@ -21,6 +21,8 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
+    stack config set resolver lts-22.19 # ghc-9.6.4
+    echo 'compiler: ghc-9.6.5' >> stack.yaml
 }
 
 build() {
