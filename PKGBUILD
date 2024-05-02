@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=chopsticks
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="The 'snp.matrix' and 'X.snp.matrix' Classes"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-hexbin
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b63b111068a6d42f7812010d1dc31047')
-b2sums=('cb710bc38ba57bc9ecb7e9e81ff0dbcf8e1fe1fca33f22546a3a04c3771bdde027984a8dc443cc146ef8ac7e2ebe362e76cf4db896b18ab6a44f0c656adf611a')
+md5sums=('aed0c8fe67ee97b7a68fa22f8ab3b7d9')
+b2sums=('4b20e85fd3f09162c75de07098a1da3eeeea9997beeed868c9406a460d5d3619c3546cedc4181034b02d1e03a9f4618a213352a3a3128092a9dcfc37e8d5ef7b')
 
 build() {
   mkdir build
