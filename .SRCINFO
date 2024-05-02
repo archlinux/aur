@@ -1,6 +1,6 @@
 pkgbase = mauikit-texteditor-git
 	pkgdesc = MauiKit Text Editor components
-	pkgver = v1.2.2.r1.gd4cb7f2
+	pkgver = 4.0.0.alpha.20240502
 	pkgrel = 1
 	url = https://invent.kde.org/maui/mauikit-texteditor
 	arch = x86_64
@@ -9,12 +9,14 @@ pkgbase = mauikit-texteditor-git
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
+	groups = maui
+	license = BSD-2-Clause
+	license = custom:CC0
+	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules
 	depends = mauikit-git
 	depends = ki18n
-	depends = kconfig
 	depends = kcoreaddons
 	depends = syntax-highlighting
 	provides = mauikit-texteditor
@@ -23,4 +25,3 @@ pkgbase = mauikit-texteditor-git
 	sha256sums = SKIP
 
 pkgname = mauikit-texteditor-git
-
