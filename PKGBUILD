@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EmpiricalBrownsMethod
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Uses Brown's method to combine p-values from dependent tests"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cde2165928019f9c13982d640a1303c5')
-b2sums=('0aee514c5fad85792f9de62e9338c4a7df042d02b47ae95fa4a5a00d5b35935dc47891ec4fb47f0e86eaaef634aca7ed77bca4d1e5db85a83da61950ab782980')
+md5sums=('f8933b206657e79e308f488b010e2c35')
+b2sums=('0c9f2c11343eb89ba81465990a43194cb91a6904ce4b475eecae6b108b0e078cff8b3600d48eabaf7cce7eec2f2b93f7d8c4ebbb10da96c0092ee0ecb0adc9ab')
 
 build() {
   mkdir build
