@@ -1,6 +1,6 @@
 pkgbase = r-orthogene
 	pkgdesc = Interspecies gene mapping
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/orthogene
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-orthogene
 	optdepends = r-rworkflows
 	optdepends = r-testthat
 	optdepends = r-treetools
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/orthogene_1.8.0.tar.gz
-	sha256sums = 2872b0c24173b02dca976253f58310fe26bd5f3ad4bae2e02be19914405b824f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/orthogene_1.10.0.tar.gz
+	sha256sums = 8a18bbf6f3e76e84f3826bc815ddc4de676689ba566b25403e3cfef8654f2e8b
 
 pkgname = r-orthogene
