@@ -1,7 +1,7 @@
 pkgbase = r-mudata
 	pkgdesc = Serialization for MultiAssayExperiment Objects
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/MuData
 	arch = any
 	license = GPL-3.0-only
@@ -23,8 +23,8 @@ pkgbase = r-mudata
 	optdepends = r-scater
 	optdepends = r-singlecellmultimodal
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MuData_1.6.0.tar.gz
-	md5sums = 10ef702e87a5f0517e59c1ccb96b08dc
-	b2sums = 93b8e3fcac9652bec6bb9bb364b27bf657db3a6a719213b089297ad1e605ed7c4d05d9e39472ae0925adb698094da7a8ea5cdeaccafbac889e01ab8ebcf2d57a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MuData_1.8.0.tar.gz
+	md5sums = a9ef1fa818736db9f5456923f7816309
+	b2sums = 94b7b0de523cea7fe2420e27c2f4787a1a3e531a3f183d12d081cf43c8fe09da2ee3c602abfc97268541f408b9c90b469a8da9c1d54ab54000bfaaf55f54a978
 
 pkgname = r-mudata

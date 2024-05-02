@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MuData
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Serialization for MultiAssayExperiment Objects"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('10ef702e87a5f0517e59c1ccb96b08dc')
-b2sums=('93b8e3fcac9652bec6bb9bb364b27bf657db3a6a719213b089297ad1e605ed7c4d05d9e39472ae0925adb698094da7a8ea5cdeaccafbac889e01ab8ebcf2d57a')
+md5sums=('a9ef1fa818736db9f5456923f7816309')
+b2sums=('94b7b0de523cea7fe2420e27c2f4787a1a3e531a3f183d12d081cf43c8fe09da2ee3c602abfc97268541f408b9c90b469a8da9c1d54ab54000bfaaf55f54a978')
 
 build() {
   mkdir build
