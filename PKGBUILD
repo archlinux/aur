@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Icens
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="NPMLE for Censored and Truncated Data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('07481f23c5b4fdfe9ff465e5a57e33c2')
-b2sums=('aeaaabc4470b3715356784f5597b082a3c220631733f283a3dde70151559739c8cd7e19278aa644dd9bb58f6002be5b1b8df285d0b4ff6dc30afb9f708562b28')
+md5sums=('ba4363a7840211d10614391f79d8260e')
+b2sums=('aaac6ced07a32f7795cd5f3d8a7f31ca9bf56287ab0d59f9ec74bce76f34442859af754f5474cdb233bf9020ebf48f84570e79bd4a2beccf5049528fca8077d4')
 
 build() {
   mkdir build
