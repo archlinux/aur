@@ -4,7 +4,7 @@ Description=octez-smart-rollup-node
 [Service]
 Type=simple
 User=octez-node
-ExecStart=/usr/bin/octez-smart-rollupnode run --data-dir /var/lib/octez-node/%i
+ExecStart=/usr/bin/octez-smart-rollup-node --endpoint $ENDPOINT run --data-dir /var/lib/octez-node/%i
 
 [Install]
 WantedBy=multi-user.target
