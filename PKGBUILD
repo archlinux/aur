@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=simona
-_pkgver=1.0.10
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -48,8 +48,8 @@ optdepends=(
   r-uniprotkeywords
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3c9d33cfa91dc8e3e071da9fb3bff761')
-b2sums=('00f3ed8cce6c401558d4e08365ac82111a00fd7e8f973b438868d58e602efe90b13d528170da13c323d16a4d6eab32ad4445938027834a068ba29c9228656b14')
+md5sums=('2f4a9eed9ebde10c3aa703095b529994')
+b2sums=('b1d3db9ea0fa0cfbf9e79f9c616087d3cc2dcf184a99999d189a2854f46b43cea11f2fa064c36cda83b48fe1582f2b2f31cfb13905b086ce300b671271a8be1c')
 
 build() {
   mkdir build

@@ -1,6 +1,6 @@
 pkgbase = r-simona
 	pkgdesc = Semantic Similarity in Bio-Ontologies
-	pkgver = 1.0.10
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/simona
 	arch = x86_64
@@ -37,8 +37,8 @@ pkgbase = r-simona
 	optdepends = r-simplifyenrichment
 	optdepends = r-testthat
 	optdepends = r-uniprotkeywords
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/simona_1.0.10.tar.gz
-	md5sums = 3c9d33cfa91dc8e3e071da9fb3bff761
-	b2sums = 00f3ed8cce6c401558d4e08365ac82111a00fd7e8f973b438868d58e602efe90b13d528170da13c323d16a4d6eab32ad4445938027834a068ba29c9228656b14
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/simona_1.2.0.tar.gz
+	md5sums = 2f4a9eed9ebde10c3aa703095b529994
+	b2sums = b1d3db9ea0fa0cfbf9e79f9c616087d3cc2dcf184a99999d189a2854f46b43cea11f2fa064c36cda83b48fe1582f2b2f31cfb13905b086ce300b671271a8be1c
 
 pkgname = r-simona
