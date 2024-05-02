@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AneuFinder
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Analysis of Copy Number Variation in Single-Cell-Sequencing Data'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('34604a3d07d9c641280706ba3c2dad4b7e6e57bd50bf8e2916e105162430fb74')
+sha256sums=('8e455ff85459391c22bbba2f5561ab34c75bff6f2989ff781100664f3578f535')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
