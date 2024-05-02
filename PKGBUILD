@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=simpIntLists
-_pkgver=1.38.0
+_pkgver=1.39.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="The package contains BioGRID interactions for various organisms in a simple format"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9dbe0a1f390843a49bb11d05ac5f2e28')
-b2sums=('0e64b0926393b712ce129356a0fd136f14425faf45ab1eea657c4e13c9d7c9d7288522a77d9752007c2b24e9f94f9d393fc1182823a22b6f91a779da57f66271')
+md5sums=('1ef6d72bbcc2c8c6e95e0f01cbdcf5e8')
+b2sums=('d750b1db394a75774d1bbab8a93e19f4337d617ca1057b79e7119cd67ca6a6e1e15d276128059bb32f1cc4b60e9daca245fcb98f8b0565f03167795aee3f000d')
 
 build() {
   mkdir build
