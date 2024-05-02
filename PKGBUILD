@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=logicFS
-_pkgver=2.22.0
+_pkgver=2.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Identification of SNP Interactions"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-siggenes
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('af46ee02e89efc5057af01be3f530a4f')
-b2sums=('0aecc6c7f84c73afd66e9165980f9de9ca2c59a5380b32375f3e6e7dc991041c54be69ae2dec7891c54abc18bc53b15c34dfe97cdcdf1f8daf7445bb2fde781a')
+md5sums=('e7f8deac6ee614ef82472cb42466ac98')
+b2sums=('e482bedb7b4c3f9281b79a78fb7e6f3bc6d0fe77472ffd5be0cbc4f98c5c2c78c00650ed818d0c4497794e3071e28e15f0098df2064dbdc76187d7b5ee7ae735')
 
 build() {
   mkdir build
