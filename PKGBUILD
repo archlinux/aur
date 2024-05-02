@@ -6,15 +6,16 @@ pkgdesc="A Python library for network analysis"
 url="http://udst.github.io/pandana/"
 
 pkgver=0.6.1
-pkgrel=6
+pkgrel=7
 
 arch=("any")
-license=("AGPL")
+license=("AGPL-3.0-only")
 
 makedepends=(
     "cython"
     "python-build"
     "python-installer"
+    "python-setuptools"
     "python-wheel"
 )
 depends=(
