@@ -215,6 +215,9 @@ function execApp() {
 		--setenv PATH /sandbox:"${PATH}" \
 		--setenv XDG_DOCUMENTS_DIR "${XDG_DOCUMENTS_DIR}" \
 		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
+		--setenv QT_IM_MODULE "${QT_IM_MODULE}" \
+		--setenv GTK_IM_MODULE "${GTK_IM_MODULE}" \
+		--setenv IBUS_USE_PORTAL 1 \
 		bash -c "export $(grep -v '^#' "${XDG_DATA_HOME}"/WeChat_Data/wechat.env | xargs) && ${launchTarget}"
 }
 
