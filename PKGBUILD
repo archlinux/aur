@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DelayedRandomArray
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Delayed Arrays of Random Values"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2f583ab177fd333cf626827fc28a6faf')
-b2sums=('abae88cede9bd12606adfa6e58a0bb74fcace618552b9a8b108d5fc0c1c79b2825b6b5cb278dd14aacf8abd6381ef02f5410838ab2ad452311eaf17d4a144ba0')
+md5sums=('8a190e38a3031fac8f604271d44354f7')
+b2sums=('c9fecaa84293a3c78ad6ebad42c72216613df13f15b48f71e37c064a4cfbaa60d78acaa22c770e22d6d400d13e019172ef19952fe837b3aa75284512d573640b')
 
 prepare() {
   # fix test
