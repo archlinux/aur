@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DTA
-_pkgver=2.48.0
+_pkgver=2.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Dynamic Transcriptome Analysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   r-scatterplot3d
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('58705aacdbf08c61d4713273dbd9bc6f')
-b2sums=('67990ece33a8298b869231c92477c730f629988c7ebaf6d3f690bcc6e6fb1900d6c123dc36637a04490549b6e403b5b63405dcc433424209521c4b0592f1cd0a')
+md5sums=('4f1d124015e4ebcc7a9ada8b7c981292')
+b2sums=('8d472723d48c5214c0a9c5bd3d0f63cd53a7c65d053751b34944aa918ae5332c483da18fd50dbec1d17985c11f10804b86fb7fa3bd7461d00e30235b9b66b45f')
 
 build() {
   mkdir build
