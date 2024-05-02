@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=genoCN
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="genotyping and copy number study tools"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ebc7fc5cb3b5c2bcd98718a7bcd95d6a')
-b2sums=('f1ba4cf2c955c7ae94a4bca074110f396a08e2dc1e42fe534266d76848a5c2528ab434b0147c3f0406d5fb708dca1df0603c67709153b9854643bd26806df7c2')
+md5sums=('725246cab4e8d0edf5dd6c0266ecde22')
+b2sums=('7e20661834f42fdfaf8de793d6bdb1c01910e8507ea6ef2bceda2ff5924cab790fa234d7344d255d3ea9da14ba25b4e00c253c883305a563995fa3b51d6cf1f9')
 
 build() {
   mkdir build
