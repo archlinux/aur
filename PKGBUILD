@@ -1,11 +1,11 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SparseArray
-_pkgver=1.2.4
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
-pkgdesc="Efficient in-memory representation of multidimensional sparse arrays"
+pkgrel=1
+pkgdesc="High-performance sparse data representation and manipulation in R"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
@@ -28,17 +28,9 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "fix-build.patch")
-md5sums=('42ba66c3146b623250558daa44adf389'
-         'c0da77a49b31fa4289551eb7546a3aa7')
-b2sums=('a5e595e58e880d079a3ab5ec58537695cce2ae7cf8823f7ca1bb8a337be653d4d44bfaf546db1ab9185defb844abd761d003d5ce17616bcb0184d1a40b53211d'
-        '33c748deb9824010dba09c84d996f149a51be6d4c1a3a6eb9fa50fe39e4f08bab250714f752d1dbf8c17bf40e444f694c6243ab06024f8cb9515d4853e8ef5e0')
-
-prepare() {
-  # fix format string errors
-  patch -Np1 -i fix-build.patch
-}
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('d467bbf79a75846493aab1af39b3a28f')
+b2sums=('eb427b464a3760381f1ba7b29153652f788912b6434aa175a1e041f61c4e0169e146258d94d35c9f666c8256a6709da549e490269395c4f88ecc7226531d344e')
 
 build() {
   mkdir build
