@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=chihaya
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Save Delayed Operations to a HDF5 File"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fc8e24fa8ec373d01c938fbfe12c3b9a')
-b2sums=('fef1766391d07684bb7968c2123ad3646bffde3cf85d3e9b1464fa92bc83d4261f2b4326a2ec27bb64a3b45529002f96f1e28fc4dadc44272d619da36f0ad92e')
+md5sums=('dcbb0f86dbec8e9a1df405fd798bc7f6')
+b2sums=('4750bc874fe598b071a17d778aa9f722279079b86e437a4b2826aea91781a2ad1687de016bb61fe774c3f429b4b8c502e6fdc9bdd383c33aac672d4a7e101870')
 
 build() {
   mkdir build
