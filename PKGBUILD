@@ -4,8 +4,8 @@
 
 pkgname=ghcup-hs-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.1.22.0.r11.g63e714d
-pkgrel=2
+pkgver=0.1.22.0.r45.g4513c39
+pkgrel=1
 pkgdesc='GHC toolchain installer'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url="https://www.haskell.org/ghcup/"
@@ -16,7 +16,7 @@ optdepends=('curl'
             "ncurses5-compat-libs: using older ghc's linking against libtinfo.so.5")
 provides=("$_pkgname" "$_pkgname"-bin)
 conflicts=("$_pkgname" "$_pkgname"-bin)
-source=($pkgname::git+https://github.com/haskell/ghcup-hs)
+source=($pkgname::git+https://github.com/haskell/ghcup-hs#branch=ghc-9.6)
 sha256sums=('SKIP')
 install="$_pkgname.install"
 
@@ -25,8 +25,18 @@ pkgver() {
     git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+_allowNewerDeps() {
+    yq -i --yaml-output --args "$@" -- \
+        '."allow-newer-deps" += $ARGS.positional' \
+        stack.yaml
+}
+
 prepare() {
     cd "$pkgname"
+    stack config set resolver lts-22.19 # ghc-9.6.4
+    echo 'compiler: ghc-9.6.5' >> stack.yaml
+
+    _allowNewerDeps cabal-install-parsers ghcup semigroupoids unix-bytestring
 
     # enable tests
     yq -i --yaml-output \
