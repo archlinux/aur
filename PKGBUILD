@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=NetActivityData
-_pkgver=1.4.0
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Data required for getting the gene set scores with NetActivity package"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a3805046d14d13afc30a0f082952f200')
-b2sums=('e468aca50eb9c2389e0d254ac1f418b1cd636c8f5be467fa832530fa8e9c2e9a6e00b71d16b67a88357af588dcbb6622157f0d089e1fe8aa5ae04a6ee40ed936')
+md5sums=('2cc3932e823e59831fca6159847b1076')
+b2sums=('27b0c250c0915a0ff2ae81edef1c5214a8ef77221a06da609e1e2f41ad83a57cea40a16bd4110713f9146593442afcada1f142ca2936cd8e0dbe1ba4f3efcdd0')
 
 build() {
   mkdir build
