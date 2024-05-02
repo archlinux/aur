@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DelayedMatrixStats
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Functions that Apply to Rows and Columns of 'DelayedMatrix' Objects"
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-delayedarray
   r-iranges
   r-matrixgenerics
@@ -28,15 +27,18 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('617d4814936adc4ad97d0824f0d3581bc94b347e44c1a9d4044c5143bacb25a3')
+md5sums=('797c50a7d131f9d62e2e5696c4b7c115')
+b2sums=('168dd7f9fc52c5a8f4ebc06f99facc6afc32d1c7904237af9a4ee773f0c1c1938029839c66f347c878ab39d6f20cb03fbb821f1c598202c76abd7e7b046e8918')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
