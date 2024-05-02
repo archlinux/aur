@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dir.expiry
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Managing Expiration for Cache Directories"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ddefb728416ca4283805e19a898e9245')
-b2sums=('2422cfedd7808d6300f9e5039777ecf79e6210dfaeb11c4f147db005b5510a663fd1fcf2b71d1a86cf5066e19fc78d9ff3584c47f3d08d77b005ecb64ba1e3d0')
+md5sums=('2d8ad1bf4ac3af8121ba7d7648088ad3')
+b2sums=('b911de0fe46b53d0d0cfa8a59fc1dfa81f7cac847d4a03a60fc6a17b325904299f8c4a2df2c3937a8f92dd5cf7ec8e91f2fa0cc1b34d22ece885cb3ca2165146')
 
 build() {
   mkdir build
