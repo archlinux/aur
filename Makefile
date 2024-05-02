@@ -18,4 +18,3 @@ gen: .SRCINFO
 update-sha:
 	@./update-sha.sh
 	$(MAKE) gen
-
