@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=flowGate
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Interactive Cytometry Gating in R"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -32,8 +32,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d5b19dee6139d26306d14563f445a64f')
-b2sums=('cca41a6fb3371165e6f5f73098dcd58aab54bf62dc241c5c54fd257fcbbececcf3e33cfddee0770f1874e8785348a25ea668cd712bd1a07bf5be7dcf97825f38')
+md5sums=('842592ee43cba8c01196c7d5489152c3')
+b2sums=('9da4eeb0251777c3d523c7d2bb9b2ce45db86a7c6269dc6e8569b58eb32f1ac37d3685cca889b53996668196d29ac24656445706d1ce9c69c76b82b833f272c9')
 
 build() {
   mkdir build
