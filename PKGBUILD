@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=qmtools
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Quantitative Metabolomics Data Processing Tools"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -47,8 +47,8 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('941d7cbf1dc8c2622fe97bda18a2bf49')
-b2sums=('663a9a5ca01e6eded88d0f923f2837f9da81cd812fe2383c48f0a624060d55fb0db3cd92ac877642c6145f95d4688d5c82ed542ce79cab05b2239f818c3af6e3')
+md5sums=('8f2150752b2c68e94fa6b7e19e36d980')
+b2sums=('de5c7a9afd276c7307e41791dc6ea3aaf303013269adefaaaaa0d389583c3de585f2781e482a4058ac769eb0f148d570dcd6b88ec7499c507030b8dd4d4d978e')
 
 build() {
   mkdir build
