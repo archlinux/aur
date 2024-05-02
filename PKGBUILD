@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=daMA
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Efficient design and analysis of factorial two-colour microarray data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ec7e80e81b9d6eb5a76ce06c761bb7da')
-b2sums=('53865c072c351452cb9439d2b3d995445a703d28c7d340453fe1e5199cff078cc7a322db5d9c1512fa0b58b07c27cd113d4e33fc01d4b676adf562e3186b8770')
+md5sums=('b51de5a9b2d4d4424f6b0d6bd7e2b50f')
+b2sums=('cf47f9d9786e929989785fd1549fea44b63d64415bf9b44bac9376ac45fb44e988ec8b310fc3cc45d429ac84a35b506f3bd02f97f8fb6783a5a126e50acd6ec1')
 
 build() {
   mkdir build
