@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RBGL
-_pkgver=1.78.0
+_pkgver=1.80.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="An interface to the BOOST graph library"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -24,8 +24,8 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a18b5ad5c49f058b6f65a2bd0a4274d1')
-b2sums=('10e0630c3027ed81ca7045b03b1c85cf5755e077524907ef471477774270a37706d5db8d15c0023311a81f7e5b24eec4b345ba38424abfa33ec9562d89de72e7')
+md5sums=('4435d73b22433772930414d001b733da')
+b2sums=('b99272866517ed028b28797a897d53b7d68dba00a62c61d88aab565c88af74b368556240c68114a9319b64fed19e7dd0f6fd1a1d6d4766b16565b303155ce5db')
 
 build() {
   mkdir build
