@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=impute
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Imputation for microarray data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,8 +16,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8e974dcc31c3507ebcc8984b2d7943f9')
-b2sums=('8fc3aab7ae4ab318748a9dea9030c7987d73266cddd1a7d39d06de871be6589fa268dbfa1fe19f4a61da58e059ce4711ae31c413237e3d4dbc9552dbad1c4ea6')
+md5sums=('7a0fe5014e2239f81ebc64c36b8942fb')
+b2sums=('6d7eb2e3f345c113c683285d57bb6c0a654f06bcdc2a6e8e0032456c7dc3a5ba036fc0bb7a39d11ed37e91e18d7720425a3950d6c721a87809822af43d1cfb2b')
 
 build() {
   mkdir build
