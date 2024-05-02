@@ -1,6 +1,6 @@
 pkgbase = r-adsplit
 	pkgdesc = Annotation-Driven Clustering
-	pkgver = 1.72.0
+	pkgver = 1.74.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/adSplit
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-adsplit
 	optdepends = r-golubesets
 	optdepends = r-hu6800.db
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/adSplit_1.72.0.tar.gz
-	sha256sums = ca83eee5eae74fa6efbf5c89466637b8f98bb71ee121808a65089d4ca29c602b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/adSplit_1.74.0.tar.gz
+	sha256sums = 7039867d5833309a699110cec5011ffe773d4243fd5db420de76cebec19a398f
 
 pkgname = r-adsplit
