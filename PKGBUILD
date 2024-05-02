@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pqsfinder
-_pkgver=2.18.0
+_pkgver=2.20.0
 pkgname=r-${_pkgname,,}
-pkgver=2.18.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='Identification of potential quadruplex forming sequences'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cb30161be92db68615306dcef78c2c872765a5ccc21c5947443ecdddcccda42e')
+sha256sums=('a653b6d2f7e897fa61ac5b4680bdede34e36704d5b24ba20d2c7efc08e9d5a6c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
