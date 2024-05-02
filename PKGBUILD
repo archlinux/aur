@@ -1,5 +1,5 @@
 pkgname=cynix-lsb-release
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Custom Cynix Linux distribution information"
 arch=('any')
@@ -8,7 +8,7 @@ depends=('lsb-release')
 
 package() {
     # Copy script to package directory
-    install -Dm755 install_custom_lsb_release.sh "${pkgdir}/usr/bin/install_custom_lsb_release"
+    install -Dm755 cynix-lsb-release "${pkgdir}/usr/bin/install_custom_lsb_release"
 
     # Create custom lsb-release file
     echo "DISTRIB_ID=Cynix" > "${pkgdir}/etc/lsb-release"

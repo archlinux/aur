@@ -1,6 +1,6 @@
 pkgbase = cynix-lsb-release
 	pkgdesc = Custom Cynix Linux distribution information
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	arch = any
 	license = MIT
