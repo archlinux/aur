@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggmanh
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Visualization Tool for GWAS Result"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dbbd8130e9ef70cb69c7e305af0c37d7')
-b2sums=('d8df5796d54a089abf29d24a237d064abcdc37dd27e6ae4a13e796c83b3bb51ff9a799859dc1f9c1523e79838fed41b64ada339723b0a2637821016564a8bb4d')
+md5sums=('dac12850e0b997a1412f64cbcc38b04e')
+b2sums=('8da79bfae9cbb7c4f8eff8b842398b77b97394428daf425e4556c8b6a5718066c529c6dea655b6a225edb91dd7f9f125f40ba172909117e788a6085db3976738')
 
 build() {
   mkdir build
