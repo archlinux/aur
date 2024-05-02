@@ -1,0 +1,5 @@
+[python-pyfftw]
+source = "github"
+github = "pyFFTW/pyFFTW"
+use_latest_release = "true"
+prefix = "v"
