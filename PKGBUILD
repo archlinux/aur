@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=splineTimeR
-_pkgver=1.30.0
+_pkgver=1.31.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.31.0
 pkgrel=1
 pkgdesc='Time-course differential gene expression data analysis using spline regression models followed by gene association network reconstruction'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0f390dc5a1f0c42c6ded619effebd775ae57160b7f5410242d9d6222a35914b3')
+sha256sums=('6009dee2b66d13fe43127f82b3e92619f1ded3e3daf8d69c159f0269041026da')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
