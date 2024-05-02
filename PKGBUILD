@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NeuCA
-_pkgver=1.8.1
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5761042e8cc461392b07e8eee6fc32c3')
-b2sums=('25b4b60007635305a53e1584b5e91a5e0386d8b7c1146752963c1f51ba17d61ec5edd18b969bb42f517584264d47b58d5fd2127b667a56ec859e08329c819479')
+md5sums=('7693089490a5d1e3dc59f7f1295808e2')
+b2sums=('823f237351eed7cdba3597c9f2e30bd7b9a11b59ff3752d9431538b1be169eda1a4cf91a61e2951d4ed0447ecb69bb15ce9cac9f65e690886b180ad86c7b466d')
 
 build() {
   mkdir build
