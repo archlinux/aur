@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ScreenR
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Package to Perform High Throughput Biological Screening"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bb8bd3276b17f7e0d63de9c19e64473d')
-b2sums=('35f3014d6045eaaf454a334b1575cfd3edde555f06b3fc7867f55aa642c26e7215420411ee4a4c5f368abbb171002d2396d9dabe2b38ec30b0502ad96d375236')
+md5sums=('947b588b575df025e5df6961811804ff')
+b2sums=('d8bf63fe91e30be32f78d87f68ff92bb91b142aa667a7a790310ee467fcc3e2e23c894f43cafb62bbda8b5c98690ca67e603ce8d25091d47727bcc04e8b69d9a')
 
 build() {
   mkdir build
