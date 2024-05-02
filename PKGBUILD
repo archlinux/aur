@@ -1,30 +1,31 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
-# {former}Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
-# {former}Maintainer: youngunix <zagazaw2004 () gmail ()>
-# {former}Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Contributor: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Contributor: youngunix <zagazaw2004 () gmail ()>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: eht16 <enrico.troeger@uvena.de>
 # Contributor: Addict7 <nicolasfloquet@gmail.com>
 # Contributor: ksj <podhorsky.ksj@gmail.com>
+# Contributor: yochananmarqos <mark -dot- wagie -at- proton -dot- me>
 
-_gitname=geany-plugins
-pkgname=$_gitname-git
-pkgver=1.36.0.r19.g0bfe89d1
-pkgrel=2
-pkgdesc='Various plugins for Geany'
-arch=('x86_64' 'i686')
+_pkgname=geany-plugins
+pkgname=$_pkgname-git
+pkgver=2.0.0.r50.ge00f819d
+pkgrel=1
+pkgdesc='Various plugins for Geany (git version)'
+arch=(x86_64)
 url='https://plugins.geany.org/'
-license=('GPL')
-depends=('geany' 'ctpl' 'gpgme' 'gtkspell3' 'libgit2' 'lua51' 'webkit2gtk' 'vte3')
-makedepends=('git' 'intltool' 'python')
-provides=("$_gitname")
-conflicts=("$_gitname-svn" "$_gitname" 'geany-plugin-markdown')
-source=("git+https://github.com/geany/geany-plugins.git")
-md5sums=('SKIP')
-
+license=(GPL-2.0-or-later GPL-3.0-or-later)
+depends=(cairo ctpl discount enchant geany gdk-pixbuf2 glib2 glibc gpgme gtk3
+         gtkspell3 libgit2 libxml2 libsoup lua51 libxml2 webkit2gtk-4.1 pango
+         vte3)
+makedepends=(git intltool python)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("$_pkgname::git+https://github.com/geany/geany-plugins.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-
+  cd $_pkgname
   (
     set -o pipefail
     git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
@@ -32,20 +33,25 @@ pkgver() {
   )
 }
 
-build() {
-  cd "$srcdir/$_gitname"
+prepare() {
+  cd $_pkgname
+  autoreconf -fi
+}
 
-  ./autogen.sh \
-    --prefix=/usr \
-    --libexecdir=/usr/lib \
-    --disable-geanypy
+build() {
+  cd $_pkgname
+  export CFLAGS="-Wno-deprecated-declarations"
+  ./configure --prefix=/usr --libexecdir=/usr/lib
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-
+  depends+=(libcairo.so libenchant-2.so libgdk-3.so libgdk_pixbuf-2.0.so
+            libgio-2.0.so libgit2.so libglib-2.0.so libgmodule-2.0.so
+            libgobject-2.0.so libgpgme.so libgtk-3.so libpango-1.0.so
+            libsoup-2.4.so libvte-2.91.so libwebkit2gtk-4.1.so libxml2.so)
+  cd $_pkgname
   make DESTDIR="$pkgdir" install
 }
 
