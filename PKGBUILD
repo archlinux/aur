@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Trendy
-_pkgver=1.24.1
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.1
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Breakpoint analysis of time-course expression data'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bcf089a63145713823423f8daf360aa1b93ee3980bf3225823a30290b3b7f48e')
+sha256sums=('20a59ce87080e9b9991c12e9204d31cd80bc6179f7cf214ba903aafe1366509c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
