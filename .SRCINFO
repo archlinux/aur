@@ -1,13 +1,14 @@
 pkgbase = hotspotshield-test-bin
 	pkgdesc = Hotspot Shield VPN client for Linux. Internal build
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hotspotshield.com
 	arch = x86_64
 	license = custom
 	depends = dbus
 	depends = libnl
 	depends = networkmanager
+	depends = systemd-libs
 	source = https://repo.hotspotshield.com/wirequard/hotspotshield-1.1.2.x86_64.rpm
 	sha256sums = 5f80402651da2087849a9d8046c66d4e711d466d426fd5d58d6558977439b9af
 
