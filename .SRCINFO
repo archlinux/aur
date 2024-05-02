@@ -1,7 +1,7 @@
 pkgbase = r-mosbi
 	pkgdesc = Molecular Signature identification using Biclustering
-	pkgver = 1.8.0
-	pkgrel = 3
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/mosbi
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -24,8 +24,8 @@ pkgbase = r-mosbi
 	optdepends = r-rmarkdown
 	optdepends = r-runibic
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mosbi_1.8.0.tar.gz
-	md5sums = f34159f8140d9fe59ea7fe2546e9cdce
-	b2sums = 6881235fa8aeef69283b0cda58bbad325e1afc4fd5648dad025affdb8fbc164a3d603df79d3f162fa87872f6d05df6645d7e2e42f31163b82895831e2e8c1e03
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mosbi_1.10.0.tar.gz
+	md5sums = e081b5b11f8be56cf80e304755e38fa0
+	b2sums = 054befd6c8787bbc68bcd26623476a0466e2a6b7a352e1622acc60dd988da2b4d78bfe4d1edbfbd33112be9847ea7c8681b83bc8a992bea44d7e627135c75abd
 
 pkgname = r-mosbi

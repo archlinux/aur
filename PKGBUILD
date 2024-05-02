@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mosbi
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Molecular Signature identification using Biclustering"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f34159f8140d9fe59ea7fe2546e9cdce')
-b2sums=('6881235fa8aeef69283b0cda58bbad325e1afc4fd5648dad025affdb8fbc164a3d603df79d3f162fa87872f6d05df6645d7e2e42f31163b82895831e2e8c1e03')
+md5sums=('e081b5b11f8be56cf80e304755e38fa0')
+b2sums=('054befd6c8787bbc68bcd26623476a0466e2a6b7a352e1622acc60dd988da2b4d78bfe4d1edbfbd33112be9847ea7c8681b83bc8a992bea44d7e627135c75abd')
 
 build() {
   mkdir build
