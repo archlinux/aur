@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RLMM
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A Genotype Calling Algorithm for Affymetrix SNP Arrays"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7c43c967fab2a5e90059b26e46de345b')
-b2sums=('640292d7c9630803c409884c7aa2250bbe662f160c850c287f5195af82244632af58d29793045651be29812ea271f2ff137b5b11a183a2f2113f1de63e8ef02d')
+md5sums=('71d1f3a4ac2afea8676d9e39f75b16c3')
+b2sums=('04bdbf17860330412c9a6acabe24744a2044ff24a8f2e35afd617a4042ffaabc196c9699810cd01091668d5ae2c866270480fc3ec1dab90dd4e137dc416333ca')
 
 build() {
   mkdir build
