@@ -28,7 +28,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$_gitname"
-    meson build --prefix=/usr
+    meson setup build --prefix=/usr
     ninja -C build
 }
 
