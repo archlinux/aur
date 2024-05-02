@@ -1,6 +1,6 @@
 pkgbase = r-tbx20bamsubset
 	pkgdesc = Subset of BAM files from the "TBX20" experiment
-	pkgver = 1.38.0
+	pkgver = 1.39.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TBX20BamSubset
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-tbx20bamsubset
 	depends = r
 	depends = r-rsamtools
 	depends = r-xtable
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/TBX20BamSubset_1.38.0.tar.gz
-	sha256sums = 0e20e818a5efa710dda2063c81e7d5fa07168ababe706d1ec60c2008a3a009b8
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/TBX20BamSubset_1.39.0.tar.gz
+	sha256sums = 5da0f9f2c16ff651b6ce292ed401a9198284de3afca481d149ef2a46a4b821fe
 
 pkgname = r-tbx20bamsubset
