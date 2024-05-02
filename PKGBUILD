@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=TREG
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Tools for finding Total RNA Expression Genes in single nucleus RNA-seq data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -34,8 +34,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d76ba3f3707e1810e6491d04013d6e7b')
-b2sums=('9f96770c568375aa2c9c207db73caaacaf69b10a4dfc2fd40b782b021b02e26333411b6491d1d95963bea5b10e9cf2c14bbf3987f1563bebfd5f78ea68c4e953')
+md5sums=('6ab2e5ab222d993ba7425f008a1e7bf2')
+b2sums=('780eb8da9c7eb38d3ca2f2e243e4cebe81b8a6dd1d7f6a31e19388438296fc1849373f68eeb3e9418159720959fd202ea02b12ccb494ca29a03fa98dac77fa82')
 
 build() {
   mkdir build
