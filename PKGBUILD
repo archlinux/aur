@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=twilight
-_pkgver=1.78.0
+_pkgver=1.80.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Estimation of local false discovery rate"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fa6b01126ace9423edfc04757f6392b1')
-b2sums=('35d46c87242b3fe9e1bdbf089a2bee99801368001d5c5aa52a5ddf2f9e83ea2308ed7e78c2320e9ff02c018289e8dfce472d9368a1b2af4506c372d918a1f196')
+md5sums=('e48d7894de8501092a0f6fe853af7613')
+b2sums=('42d035d57dfdc97781e863c5bbacf2db4e430334e6947fb520187d4696fd1d0369e1fede3eaacb4ee4be42fc5d691ca7e00b0a09ce71a42ccb2ef66c2e20ad8f')
 
 build() {
   mkdir build
