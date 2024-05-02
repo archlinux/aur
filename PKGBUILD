@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=plgem
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Detect differential expression in microarray and proteomics datasets with the Power Law Global Error Model (PLGEM)"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('caa3e3fe048da49643b34bde9fcb834a')
-b2sums=('cfd79cc6fae15028b1743edb89fc761a01c83b04ab4d65647f08b34090c152ed241c90b19b2a38a4e4214cea12b355e39ae0f6605b3ecef0d3fe8d38d221f3d9')
+md5sums=('609dc3803a2b2d5cba4dfd941ce91a59')
+b2sums=('dfbe5e791b3101c788cf9d51277898187ddcd815d03fa5d29692731e0174e4f5002a41d7e669761a63b51ccd886f0951770c7dcd86aa23281b2f158076edd5a7')
 
 build() {
   mkdir build
