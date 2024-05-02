@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=swfdr
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Estimation of the science-wise false discovery rate and the false discovery rate conditional on covariates"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f873820993a9785dbca1c825b291abfb')
-b2sums=('f8db5f2a674c2281a976b747c3b55842bfb0d79f85d751f680c0438efbc254bc556e8a214a2e0af866d59d1978a50f171ff384c3832221d94ff856e72433430c')
+md5sums=('29d7cd565b5a558e9a6af0da0fa84e18')
+b2sums=('5afa9b7eda0c02dbc5bb20f6b2d69682b770e72fbe767a8c21eb29bdf9f0872e6ef174c929d3f866fe8f7fd3daf673bdc33d45f1fe0c67ec3e068a4972be850d')
 
 build() {
   mkdir build
