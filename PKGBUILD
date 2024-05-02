@@ -72,6 +72,7 @@ source=(
 	open.sh
 	license.tar.gz
 	user-dirs.dirs
+	wechat.env
 )
 
 source_x86_64=(
@@ -86,12 +87,13 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
-md5sums=('3d73bc63fbbc9e6dabeb613faa6911f3'
+md5sums=('9b65c2ff50c4490e127e04b671b9e07f'
          '82a5663ce32a0504f1f7575d51f2c7cb'
          '600e74549ce2258c045d5c2f7689ea63'
          'dfc069e6c8d9dbaa90fe388cab4002c9'
          '6b159c6e9d21a98925489bc37a9aea43'
-         '38e98220da64adc1d8f9dc17d04b3a39')
+         '38e98220da64adc1d8f9dc17d04b3a39'
+         'dcdf6a599cc7bab27ab85c880401f717')
 md5sums_x86_64=('2c2c8ec69b6b798b7ccaf873e27d977a')
 md5sums_aarch64=('c4d443515fe76ec35e792d43e9521887')
 md5sums_loong64=('c4d443515fe76ec35e792d43e9521887')
@@ -107,11 +109,10 @@ function package_wechat-uos-qt() {
 	install -Dm755 wechat.sh "${pkgdir}/usr/bin/wechat-uos-qt"
 	install -Dm644 user-dirs.dirs "${pkgdir}/usr/lib/wechat-uos-qt/user-dirs.dirs"
 	install -Dm755 open.sh "${pkgdir}/usr/lib/wechat-uos-qt/open"
+	install -Dm644 wechat.env "${pkgdir}/usr/lib/wechat-uos-qt/envs"
 	install -Dm644 wechat-uos-qt.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-uos-qt.svg"
 	mkdir -p "${pkgdir}/usr/share/wechat-uos-qt/license"
-	#install -Dm755 "${pkgdir}/opt/wechat-uos-qt/files/libuosdevicea.so" "${pkgdir}/usr/lib/license/libuosdevicea.so"
 	install -d "${pkgdir}/usr/lib/license"
-	touch "${pkgdir}/usr/lib/license/libuosdevicea.so"
 	chmod 0755 "${pkgdir}/usr/lib/license" -R
 	cp "${srcdir}/license"/* -r "${pkgdir}/usr/share/wechat-uos-qt/license"
 	chmod 0755 -R "${pkgdir}/usr/share/wechat-uos-qt/license"

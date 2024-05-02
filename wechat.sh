@@ -78,9 +78,6 @@ function lnDir() {
 		ln -srf "${XDG_DATA_HOME}"/WeChat_Data/xwechat_files \
 			"${HOME}"/xwechat_files
 	fi
-	#cd "${XDG_DOCUMENTS_DIR}"
-	#ln -sfr "${XDG_DATA_HOME}"/WeChat_Data/Documents/xwechat_files \
-	#	"${XDG_DOCUMENTS_DIR}"/xwechat_files
 }
 
 function importEnv() {
@@ -117,6 +114,18 @@ function execApp() {
 	cameraDect
 	importEnv
 	systemd-run --user ${sdOption} \
+	-p CPUWeight=50 \
+	-p IOWeight=50 \
+	-p IPAccounting=yes \
+	-p UnsetEnvironment=XDG_CURRENT_DESKTOP \
+	-p PrivateIPC=yes \
+	-p DeviceAllow=/dev/dri/* \
+	-p DeviceAllow=/dev/video* \
+	-p DevicePolicy=closed \
+	-p EnvironmentFile=/usr/lib/wechat-uos-qt/envs \
+	-p EnvironmentFile="${XDG_DATA_HOME}"/WeChat_Data/wechat.env \
+	-p Environment=GTK_IM_MODULE="${GTK_IM_MODULE}" \
+	-p Environment=QT_IM_MODULE="${QT_IM_MODULE}" \
 	-p IPAddressDeny=localhost \
 	-p IPAddressDeny=link-local \
 	-p IPAddressDeny=multicast \
@@ -167,8 +176,8 @@ function execApp() {
 		--dir /sandbox \
 		--bind /tmp /tmp \
 		--bind /usr /usr \
-		--bind /opt/wechat-uos-qt/files/libuosdevicea.so \
-			/usr/lib/license/libuosdevicea.so \
+		--ro-bind /opt/wechat-uos-qt/files \
+			/usr/lib/license \
 		--ro-bind /etc /etc \
 		--symlink usr/lib /lib \
 		--symlink usr/lib64 /lib64 \
@@ -208,17 +217,9 @@ function execApp() {
 			/run/systemd/resolve/stub-resolv.conf \
 		--dir "${XDG_DOCUMENTS_DIR}" \
 		${bwCamPar} \
-		--setenv QT_QPA_PLATFORM xcb \
-		--setenv LD_LIBRARY_PATH \
-			/opt/wechat-uos-qt/files:/usr/lib/wechat-uos-qt/so \
-		--setenv QT_AUTO_SCREEN_SCALE_FACTOR 1 \
-		--setenv PATH /sandbox:"${PATH}" \
 		--setenv XDG_DOCUMENTS_DIR "${XDG_DOCUMENTS_DIR}" \
 		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
-		--setenv QT_IM_MODULE "${QT_IM_MODULE}" \
-		--setenv GTK_IM_MODULE "${GTK_IM_MODULE}" \
-		--setenv IBUS_USE_PORTAL 1 \
-		bash -c "export $(grep -v '^#' "${XDG_DATA_HOME}"/WeChat_Data/wechat.env | xargs) && ${launchTarget}"
+		"${launchTarget}"
 }
 
 function dbusProxy() {
@@ -250,8 +251,8 @@ function execAppUnsafe() {
 	killall wechat
 	bwrap \
 		--dev-bind / / \
-		--bind /opt/wechat-uos-qt/files/libuosdevicea.so \
-			/usr/lib/license/libuosdevicea.so \
+		--bind /opt/wechat-uos-qt/files \
+			/usr/lib/license \
 		--ro-bind /usr/share/wechat-uos-qt/license/var/ \
 			/var/ \
 		--ro-bind /usr/share/wechat-uos-qt/license/etc/os-release \
