@@ -1,0 +1,12 @@
+pkgbase = clirun
+	pkgdesc = cli based code runner whenever the file is modified
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/utkarshkrsingh/clirun
+	arch = x86_64
+	license = BSD2
+	makedepends = git
+	source = clirun::git+https://github.com/utkarshkrsingh/clirun.git
+	sha256sums = SKIP
+
+pkgname = clirun
