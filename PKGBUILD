@@ -1,4 +1,4 @@
-pkgname=snotify-git
+pkgname=snotify
 pkgver=0.0.2
 pkgrel=1
 epoch=1
