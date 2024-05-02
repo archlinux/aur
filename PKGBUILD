@@ -37,4 +37,16 @@ package() {
   install -Dm755 "wakapi" "${pkgdir}/usr/bin/wakapi"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/wakapi/LICENSE"
   install -Dm644 "config.yml" "${pkgdir}/etc/wakapi/config.yml"
+  mkdir -p "${pkgdir}/usr/lib/systemd/system"
+  cat >"${pkgdir}/usr/lib/systemd/system/wakapi.service" <<EOF
+[Unit]
+Description=wakapi server
+After=network.target
+
+[Service]
+ExecStart=wakapi -config /etc/wakapi/config.yml
+
+[Install]
+WantedBy=multi-user.target
+EOF
 }
