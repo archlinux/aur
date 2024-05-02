@@ -1,7 +1,7 @@
 pkgbase = r-graphite
 	pkgdesc = GRAPH Interaction from pathway Topological Environment
-	pkgver = 1.48.0
-	pkgrel = 3
+	pkgver = 1.50.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/graphite
 	arch = any
 	license = AGPL
@@ -29,7 +29,7 @@ pkgbase = r-graphite
 	optdepends = r-spia
 	optdepends = r-testthat
 	optdepends = r-topologygsa
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/graphite_1.48.0.tar.gz
-	sha256sums = 5678e693530ed9e5727e45b938ff830db24efc1bbac59f8deefa0bd0250812c1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/graphite_1.50.0.tar.gz
+	sha256sums = fab5eb46d8d48d149a2ad4ca42d2970dd074d4560fff71629a2113f9e07bd5f7
 
 pkgname = r-graphite
