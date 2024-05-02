@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SharedObject
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Sharing R objects across multiple R processes without memory duplication"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -24,9 +24,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "$_pkgname-fix-build.patch::https://github.com/Jiefei-Wang/SharedObject/pull/17.patch")
-md5sums=('7c47265b6a5f61385088d6146c7e4879'
+md5sums=('87df87d1ae41a153d960c0c7b9428d9b'
          '2d31d0afa3d7a9d170184218df260995')
-b2sums=('4a9cb7adaf164905a490536b38243983e05c6cfc87855eb3d160bfc8991729f412ef01a9258a430539ebe874d626c5f3752bb86827ce970a05f366e453d98d48'
+b2sums=('3d0f326acbb787ae2399d9a4e3acc649a0b72fa03b3921dcb24a3a79c928b880a9c96a0030931be06c7ad11d4827d3ffc03c0a971eeaac0d4f142a464ea47aad'
         'caf4cf7035f69013402ff6cd3058bf504fb097e9c9c50e64b117e949f68ef62933dce4c560085e82337fec01eed00125fbdebf16debc4c72c6f2308044ebad6f')
 
 prepare() {
