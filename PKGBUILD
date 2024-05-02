@@ -2,7 +2,7 @@
 
 pkgname=duo-desktop
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Duo Desktop gives Duo customers more control over which computers can access corporate applications based on the trust (with Trusted Endpoints) and security posture of the device (with Device Health)."
 arch=('x86_64')
 license=('custom')
@@ -11,7 +11,7 @@ depends=('ca-certificates' 'openssl' 'zlib')
 replaces=('duo-device-health')
 options=(!strip)
 source=("https://desktop.pkg.duosecurity.com/${pkgname}-latest.${arch}.rpm")
-sha512sums=('d37a88b76c07b98f0b9e5b1ffd1ad07e0d1c6a6e924c13ce6b1b14970f67ad299ea6766b17951136c3edb33edae1788597881ccdb4cd6295f66bfb9da22bb5b0')
+sha512sums=('2a7aa6a7e84b30b3a30d073f6975af87febb761c7f9868a3e88bf4bc04ce7fe58db8f36aa4a5b543e7bbf2bff2f9e49b65a67515eb985bbe2323b67384ee5661')
 install=duo.install
 
 package() {
