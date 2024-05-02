@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=biodbExpasy
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="a library for connecting to Expasy ENZYME database"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b4c2596f2efc76e3ba7cba00fb3a6177')
-b2sums=('c289e80fcffd0de564c896434c0f75a8d2ed4ae1153101dee3cf89abba6a640fc2e660da307769a2f7cf9a6190858ff2019acda6b9a08d13c2e944ceb796bfe3')
+md5sums=('92f75401c71d864d1dc6e3311fe08ec1')
+b2sums=('6df31d697fe94759bd59a52c2f0f7d8298d534d80b1b869bf9af2f69c3cbfc8584030fd9cd9fe5c5ef356313a1ff78c450b9c9fe2716d02b07dc19379a3f0d81')
 
 build() {
   mkdir build
