@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=QDNAseq
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Quantitative DNA Sequencing for Chromosomal Aberrations'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-r.cache
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7a5681d90baeeb8dc5878163b5692b8851cdd1bb564fa67dd80e0e8ef1b358d8')
+sha256sums=('8ea0d0cdd52027e82bde7f54f80475ae54d45062dd746d383eca17421f36d3d7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

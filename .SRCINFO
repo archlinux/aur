@@ -1,6 +1,6 @@
 pkgbase = r-qdnaseq
 	pkgdesc = Quantitative DNA Sequencing for Chromosomal Aberrations
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/QDNAseq
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-qdnaseq
 	optdepends = r-qdnaseq.hg19
 	optdepends = r-qdnaseq.mm10
 	optdepends = r-r.cache
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/QDNAseq_1.38.0.tar.gz
-	sha256sums = 7a5681d90baeeb8dc5878163b5692b8851cdd1bb564fa67dd80e0e8ef1b358d8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/QDNAseq_1.40.0.tar.gz
+	sha256sums = 8ea0d0cdd52027e82bde7f54f80475ae54d45062dd746d383eca17421f36d3d7
 
 pkgname = r-qdnaseq
