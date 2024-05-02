@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sigsquared
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Gene signature generation for functionally validated signaling pathways"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f7dfbb4c066df8fe146b2b73f8180195')
-b2sums=('7535ede28ded57e6cb6857df9ab6919c2e6d7099f0f17217ca42755e5768f6c30efdbdb16c1fd7a887ba273ee6960a1192c4a27bcf4769a2daaa5fc335e25d5e')
+md5sums=('ff5d423d1734ced1e2b7c5fbf6ae6445')
+b2sums=('1b9d10baa40506ead64930580edecc46d13a49cb875875d4047c49a4361997226f659d37d9893d2d9c140f88d42a7b5d95d6ae7a3caa7a225d5f8012b3558480')
 
 build() {
   mkdir build
