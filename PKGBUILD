@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multtest
-_pkgver=2.58.0
+_pkgver=2.60.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Resampling-based multiple hypothesis testing"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7d81a8460781f4a86f01a9df5fcf50d7')
-b2sums=('c2f2834ead992b781ea49e10941d505885815379847d4c06bd02c263d247ea9b4993d258e118e8f4690e4015913a218aff94efc13a347a0d47f0c4de889d1c53')
+md5sums=('c84ca66c69c21ec6449a36205b1af93b')
+b2sums=('3ae6e0f1c5cc7dd8935c2a574d2108203c1b8845128ae206e602cdf451881fdda08fd997c5b3e823eac05671017d8995c39df40a67e5de9d3f124ae43c636d1d')
 
 build() {
   mkdir build
