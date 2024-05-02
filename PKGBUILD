@@ -1,7 +1,7 @@
 # Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 
 pkgname=temporal-cli
-pkgver='0.11.0'
+pkgver='0.12.0'
 pkgrel=1
 pkgdesc='CLI for running Temporal Server and interacting with various parts of Temporal'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('8a6fdb05523d224d383d56f950a789de3632d48421fea4cb80125afaddd59aba327d026105370ac457d3e136a08e596c9ee683dde35f0d4c4f01c3e77dc51098')
+b2sums=('d6dc6a66d03afb116b22cb47eb3574214517ecde1b201ddcf2cce0636145cf9d922f28187a77494c5b55cdb38b7b70c0a433b14adeae07f6ce66f5fa57399dea')
 
 build() {
   cd "cli-$pkgver"
@@ -22,14 +22,12 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   go build \
-    -ldflags="-linkmode=external -X github.com/temporalio/cli/headers.Version=${pkgver}" \
+    -ldflags="-linkmode=external -X github.com/temporalio/cli/temporalcli.Version=${pkgver}" \
     -o dist/ \
     ./cmd/...
 
   ./dist/temporal completion bash > temporal.bash
   ./dist/temporal completion zsh > temporal.zsh
-
-  ./dist/docgen
 }
 
 package() {
@@ -38,9 +36,6 @@ package() {
   install -Dm755 ./dist/temporal -t "${pkgdir}/usr/bin"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  cp -r ./docs/* "${pkgdir}/usr/share/doc/${pkgname}"
 
   install -Dm644 temporal.bash "${pkgdir}/usr/share/bash-completion/completions/temporal"
   install -Dm644 temporal.zsh "${pkgdir}/usr/share/zsh/site-functions/_temporal"
