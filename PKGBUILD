@@ -20,20 +20,20 @@ pkgver() {
     git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-check() {
-    cd "$pkgname"
-
-    stack test
-}
 
 build() {
     cd "$pkgname"
 
-    stack setup
     stack build \
         --install-ghc \
         --ghc-options='-fdiagnostics-color=always' \
         --fast
+}
+
+check() {
+    cd "$pkgname"
+
+    stack test
 }
 
 package() {
