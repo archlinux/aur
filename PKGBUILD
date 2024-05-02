@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MOFAdata
-_pkgver=1.18.0
+_pkgver=1.19.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Data package for Multi-Omics Factor Analysis (MOFA)"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('23e46e209a43d7e62cfd6accc6a6fb44')
-b2sums=('7b01d42edde7994f7993d9306d3ced89212fd1c2b94d1f9833823dce9e5650a3f1d10de3e94464ae8d4518df455de587e6cac267a63c1be5c679e43668873454')
+md5sums=('6bd93186d8b9bcd858ac397ce322b206')
+b2sums=('f71b6c61089fcdc6df578b2a471b9352f1d0726a8143ea60de6151a15b0f4f8c0b709ff20c4136b9075fc6de08d9c96de5a5903828d3a14c70c0819ef917ac7f')
 
 build() {
   mkdir build
