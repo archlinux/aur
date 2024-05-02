@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=globalSeq
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Global Test for Counts"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1b427214cf1345b8d75ba69dc02adb77')
-b2sums=('aa04d988e6f966e02ab983eb008bf26df43741297f2d01159aabf9dd2b28fde158d6c41c71f7904fb85573e65a02db7b87930f40ef104fa533cf623991f5feb9')
+md5sums=('e224351b3766635f16cb83113ee142e1')
+b2sums=('f0981ae91f61b421e227d4177082621ef91817c4ded06e12ae782c865d73538671999f2419fa2442f6bfa8c6d6ce4b5ebbd6eee5a4d85b250f7975b7fda963e4')
 
 build() {
   mkdir build
