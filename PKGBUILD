@@ -2,10 +2,10 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=S4Arrays
-_pkgver=1.2.1
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Foundation of array-like containers in Bioconductor"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -26,17 +26,9 @@ optdepends=(
   r-sparsearray
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "fix-build.patch")
-md5sums=('56e78d721cbf2dc16d12123dca444272'
-         '44df65991cadb2efced214812a02af87')
-b2sums=('f3b77980a9e9886d64f4cf05e10736f7aefdeb8e98e9ce7abcb9e593f49e952dba7cc2ca2ca24d1420352d2ffb3cd58659b07d678fc7775b035f9f385de559c0'
-        'd01ab0d39dabeb695599a7c002a56e8a741a1565cb7e61809a7755ed3f3887a33ecce8ff7451869e0e4792496277f6c5fa2f8db64f37afb01c5c86223442f10f')
-
-prepare() {
-  # fix format string errors
-  patch -Np1 -i fix-build.patch
-}
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('d6ec633fc466961bd028733d8b5e7031')
+b2sums=('fb90962b6f734e01a9b48a99d7e14beddc8e4fd592fb3076b670ad8eea6e1d15d6d5b7e48d46dbef0150e8df6bdc3a83c4f46c5120a2470fe158c031cf42a89b')
 
 build() {
   mkdir build
