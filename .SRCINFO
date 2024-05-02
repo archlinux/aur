@@ -1,6 +1,6 @@
 pkgbase = r-metcirc
 	pkgdesc = Navigating mass spectral similarity in high-resolution MS/MS metabolomics data
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MetCirc
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-metcirc
 	optdepends = r-grdevices
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetCirc_1.32.0.tar.gz
-	sha256sums = 25a326fc6592609ef4e64a991faa966f4092a798f1300994d15ad670cd1b9bc6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetCirc_1.34.0.tar.gz
+	sha256sums = 6e4bff38503974f8746e6a8842867e2fe66d7c31357708a7eeaebff13a8575f2
 
 pkgname = r-metcirc
