@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PWMEnrich
-_pkgver=4.38.0
+_pkgver=4.40.0
 pkgname=r-${_pkgname,,}
-pkgver=4.38.0
+pkgver=4.40.0
 pkgrel=1
 pkgdesc='PWM enrichment analysis'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0ef65699faf01b31361fc88efa4e8aba72cbd7471f0d11a987703bbd35de10e8')
+sha256sums=('a28e13ccf8613d59f94ce48553d1bc39902ee9ac854dc5e4e23b708050d5f53b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
