@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=FeatSeekR
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="an R package for unsupervised feature selection"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9792a703c1ec0b4a58c759274c2cb571')
-b2sums=('1883191f3db5e645966bfa1fda931076b8265d7f3609b2167b1f6c30e9e103f8153f54a6f7a9cca334cf49bb0c70e46a7e09ea87cd1402accd39224337863928')
+md5sums=('82b91044da7aced20831d15c44fbf07f')
+b2sums=('188a0620c0c43f071f390fa03b5f89bd9b31dceed43b805ae1fc0eef5bfd197130a5565a94bc4ab6429067ca63160480d86de67b174e37a149b993aa876eaae3')
 
 build() {
   mkdir build
