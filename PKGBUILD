@@ -1,7 +1,7 @@
 # Maintainer: dimtpap <dimtpap@protonmail.com>
 pkgname=coppwr-bin
 _pkgname=coppwr
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Low level PipeWire control GUI'
 arch=('x86_64')
@@ -13,8 +13,8 @@ provides=('coppwr')
 conflicts=('coppwr')
 source=("$_pkgname::https://github.com/dimtpap/coppwr/releases/download/$pkgver/coppwr"
         "$_pkgname-$pkgver.tar.gz::https://github.com/dimtpap/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("88c96d212077d893b1a4b88fd3bcba952cc9b5d2355261831dd4b717709445bc"
-            "ea09e566eb883505018c8a9dd1e9e3787b74581e4cf1d2dcb3faf3e3ea2612a5")
+sha256sums=("a6eee2bb28d799fc08ac038dd72e86424f0e5bd8a503306fb8d9a706996853fe"
+            "b6ed84f3313a0a0a76d0303605d1ed55aa4ea94adb713f810680c7bde0637a8e")
 
 package() {
 	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
