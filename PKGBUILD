@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=multiWGCNA
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="An R package for deeping mining gene co-expression networks in multi-trait expression data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-cowplot
   r-data.table
@@ -42,8 +42,8 @@ optdepends=(
   r-vegan
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b8f70e9496cf73238aa3ba3c08cb81fa')
-b2sums=('bb4aae0c4c80edd3127f949ce4f974cbcb34bed48dc78143a735180256d77f8fb44a2b1ecb610b819c456757b59edc422e2397008344c18142d2bbbd3fc5ed03')
+md5sums=('49bb403a208f87354b1aef9273ff7d9d')
+b2sums=('c4b37bf83e3f603fb4b1b2be6bee91f28638f27ec81ab44645dc4f962226d982dbe4e9b0df247d6cb350cd208382a87a2168d747496df17fb90c5af246248b95')
 
 build() {
   mkdir build
