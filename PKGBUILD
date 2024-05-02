@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MassArray
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Analytical Tools for MassArray Data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('028fea456ce2e5b3820ad6dc0d1989c1')
-b2sums=('8db9948e51b012017d3b3cf0b958eb4e57da4748597bc5c361587c08991d1856089fbf76c62e01327928c003bde4c504d8b538165e4ee14b27ade8c25be4e310')
+md5sums=('fa7b72d7530619e1b358d3d3fa32c82b')
+b2sums=('6d285bb62a9add4587c577a22c34f4be15e21b860a0db2ca5d3b0a1d6d2db27065373a1f8d611a09dd8695c9141b1343a408c8451b720d1d6b50381a6f6ab33f')
 
 build() {
   mkdir build
