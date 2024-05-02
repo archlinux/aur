@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SUITOR
-_pkgver=1.4.0
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Selecting the number of mutational signatures through cross-validation"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -28,8 +28,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5f4a5ea607ef7551025cf8b425d20bc7')
-b2sums=('8250bcc328ee54c887bfdaccee09c63c082593809ae3ebbed5dbdbc9543957b4ad1accaaaf2a0cf696b85242ec0353ed6ee78c7511225f99f9a48d6a4166c2da')
+md5sums=('978dae67ed4348eb89cd491637da46b3')
+b2sums=('0e1cbb0671666085a0405ee309c4ee42afee17c83e58ace8543cb7f6d08fe05ae2234dfb576908a9cd20f9846ce8a187bda0e8e9839aff522909f8eb4095e258')
 
 build() {
   mkdir build
