@@ -1,7 +1,7 @@
 pkgbase = r-snageedata
 	pkgdesc = SNAGEE data
-	pkgver = 1.38.0
-	pkgrel = 2
+	pkgver = 1.39.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/SNAGEEdata
 	arch = any
 	license = Artistic-2.0
@@ -9,8 +9,8 @@ pkgbase = r-snageedata
 	optdepends = r-all
 	optdepends = r-hgu95av2.db
 	optdepends = r-snagee
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/SNAGEEdata_1.38.0.tar.gz
-	md5sums = bfd0a2689cb9ac612cb2f8995c3a03d5
-	b2sums = 1b018761b8c831bfdae16420591fb78f6c2966f9b3f61007c612a6d79852814bb96ab3ec75a79056b3eafdab56534b15f739a44921ac498379e2f73767990b10
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/SNAGEEdata_1.39.0.tar.gz
+	md5sums = 57d18197cff046d0a080bc28ce477bec
+	b2sums = 2259e137bc4977b6cae0d60f5fd22c3394c0e5f2ffc3a326e7b9fd2602014eed71f1f33e29fd3b399c8002e54dba07409dc98605a005f01d36a1318a73ef25d2
 
 pkgname = r-snageedata
