@@ -2,7 +2,7 @@
 
 pkgname=cromite-bin
 pkgver=124.0.6367.91
-pkgrel=1
+pkgrel=2
 _cromite_commit='16f4295a45228d50667be3dc7463efde9f3002f6'
 _launcher_ver=8
 pkgdesc='Cromite a Bromite fork with ad blocking and privacy enhancements (binary release)'
@@ -26,14 +26,14 @@ provides=('cromite')
 conflicts=('cromite')
 options=(!strip)
 source=(cromite.desktop
-        cromite.png
+        cromite.svg
         LICENSE
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz)
 
 source_x86_64=(https://github.com/uazo/cromite/releases/download/v${pkgver}-${_cromite_commit}/chrome-lin64.tar.gz)
 
 sha256sums=('3ddf5b02a7eb51047770c608e23a51d7f70baf7920146c61dfc8c9c653d4e89a'
-            '95ea4e28bc95c30200d832c075a04d79191110573f8bbebf881b81c4cef6c211'
+            'd4a1391331e7a3757f11e65ada488cb8729b612ba2a073b95dafee2f8f76dfa5'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a')
 sha256sums_x86_64=('01d253e2cd3380a4116eb6adebb127dcf12ba670599a9192f77f7996736fe3c2')
@@ -87,6 +87,6 @@ package() {
 	cd ..
 
 	install -Dm644 cromite.desktop "$pkgdir/usr/share/applications/cromite.desktop"
-	install -Dm644 cromite.png "$pkgdir/usr/share/icons/hicolor/192x192/apps/cromite.png"
+	install -Dm644 cromite.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/cromite.svg"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/cromite/LICENSE"
 }
