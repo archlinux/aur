@@ -1,0 +1,19 @@
+pkgbase = r-pwalign
+	pkgdesc = Perform pairwise sequence alignments
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pwalign
+	arch = x86_64
+	license = Artistic-2.0
+	checkdepends = r-runit
+	makedepends = r-xvector
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pwalign_1.0.0.tar.gz
+	md5sums = 6c55f043ee827d70a7992b8fa85c43f2
+	b2sums = 96cd3c929dac7de03e5cc56ee4301aa587db94dc6aeaef4d30aaf406f53363b22be1548cd5daa918d67d3299a5cb3730803e47086f9f2a59a20c32c492ccc1e0
+
+pkgname = r-pwalign
