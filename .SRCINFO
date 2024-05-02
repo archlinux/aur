@@ -1,6 +1,6 @@
 pkgbase = r-mbased
 	pkgdesc = Package containing functions for ASE analysis using Meta-analysis Based Allele-Specific Expression Detection
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MBASED
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-mbased
 	depends = r-runit
 	depends = r-summarizedexperiment
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MBASED_1.36.0.tar.gz
-	sha256sums = 1df50969cabc1825ebf43538b4db0b472bdb21f0f6d5b163fe7ef1f0d0bdb23d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MBASED_1.38.0.tar.gz
+	sha256sums = 50a46efed4110b02b8ed8102abfe89a4ca3bc814e801e3900ee01d44931701be
 
 pkgname = r-mbased
