@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RCy3
-_pkgver=2.22.1
+_pkgver=2.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Functions to Access and Control Cytoscape"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d4f51eaf382ede111f69aefd2660e383')
-b2sums=('09706353707f393a17aa7ddcbfa6b6928c5f0d45f44655a65619708c7a40b299216b30d30d88389d9a15ae720718b60a5493fd596c60868130917d84efab6c99')
+md5sums=('df17ff1400cb31df13573a0abfcf7986')
+b2sums=('084753ef00fdfef14b5413b8a4e73833c5fa35cb3cad9b1d5aa65d064231d839ed5e9e0d8ed028700e2b082d862cc41fad62ff03489fa8475150314fadd00098')
 
 build() {
   mkdir build
