@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RolDE
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Robust longitudinal Differential Expression"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -26,8 +26,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('12c19e976fa6e9be2e9fa9a433690355')
-b2sums=('3a4094ed65938fb92a3fa6c6dd5503845007147f316f78b9a5ec3f91e8d7df921ab6bcf022e3758ddd8cdc9fe38a3ac410367bbefd4c3808f59b9c825317bfe1')
+md5sums=('6bd31a548e7ce7e430f3d88170a92c6d')
+b2sums=('8a3f6d82b6a19602861a8015885cb7111c9de2116c3d001a330d596d489cb753da789fd78c1c9639e47bbe323d6fb9f5d4dd04c0c847d8265742a06417470fad')
 
 build() {
   mkdir build
