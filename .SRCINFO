@@ -1,7 +1,7 @@
 pkgbase = python-pytorch-rocm-bin
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (binary release)
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD
