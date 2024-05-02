@@ -1,6 +1,6 @@
 pkgbase = r-interactionset
 	pkgdesc = Base Classes for Storing Genomic Interaction Data
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/InteractionSet
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-interactionset
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/InteractionSet_1.30.0.tar.gz
-	sha256sums = 1a372f3d5e9908caf13ceaf67ca7cc9e80b3ecec23c965acbf649c0539ebef56
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/InteractionSet_1.32.0.tar.gz
+	sha256sums = 1a06acb7baab7846de9fa437c0f9634453ba2a86495eefab9eb0e6673eac7346
 
 pkgname = r-interactionset
