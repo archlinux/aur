@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tweeDEseqCountData
-_pkgver=1.40.0
+_pkgver=1.41.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="RNA-seq count data employed in the vignette of the tweeDEseq package"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,9 +19,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "$_pkgname-LICENSE::https://github.com/isglobal-brge/tweeDEseqCountData/raw/main/LICENSE")
-md5sums=('d63e819cedf93ffbe115ed518bc9feaf'
+md5sums=('8ccdada78ca51e12debfc4ab44c6f4cd'
          'ea74422d64281c76f02c6a40dd626880')
-b2sums=('5793a94e404c6923ab48bd3cb32f6900e303388f560905e20f4c995f5ae6bcd845dca66b4e94051ac2399b9676bc8dffec63a6aeb5077b721095d093c48ac157'
+b2sums=('4d0c76924f05d715ea4f223b71be1196800647f32eb4a8ce0d3c452ad236c14e08eeb489796c04caa8b70adf76edd57c58992d62f2d1ab3634b04a899b911695'
         '9e1176209d038ad2e2cfa330886927090dc6d20f1fc60bc7c3a1fd04dfb4d1ae0a03ede61627f4e28789b4023e967e40df934568f4083689b6612315a6073c22')
 
 build() {
