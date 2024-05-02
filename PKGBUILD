@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=BiocBaseUtils
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="General utility functions for developing Bioconductor packages"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('23ed1406ff70165a763ca2040c46353e')
-b2sums=('c48bc9b7fc906b3f7ed5850623abf66ea7ea18858ff30bc0f35c43f027856d6722f7d6c249b249a7b6e07f29b8bd9166c31dd4a5a67f62e18a5fd9c7189d04b3')
+md5sums=('4122b1daf137814e176b7e4a2b46516f')
+b2sums=('500f987f42d1bc818c7e7607b1d4fb0f30d67d63d478fca45b7118a118834661a03859f4e5344d96476cccc63749e0047cf4b6f17ca3f42af4298b42a5fbeb6b')
 
 build() {
   mkdir build
