@@ -1,7 +1,7 @@
 pkgbase = rez
 	pkgdesc = An integrated package configuration, build and deployment system for software
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AcademySoftwareFoundation/rez
 	arch = any
 	license = Apache
@@ -9,6 +9,7 @@ pkgbase = rez
 	makedepends = python-pip
 	makedepends = python-setuptools
 	depends = python>=3
+	depends = python<3.12
 	depends = python-yaml
 	optdepends = bash-completion: command-line autocomplete with bash
 	optdepends = cmake: alternative build system

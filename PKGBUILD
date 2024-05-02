@@ -2,12 +2,12 @@
 
 pkgname=rez
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An integrated package configuration, build and deployment system for software'
 arch=('any')
 url='https://github.com/AcademySoftwareFoundation/rez'
 license=('Apache')
-depends=('python>=3' 'python-yaml')
+depends=('python>=3' 'python<3.12' 'python-yaml')
 makedepends=('python>=3.7' 'python-pip' 'python-setuptools')
 optdepends=('bash-completion: command-line autocomplete with bash'
             'cmake: alternative build system')
@@ -23,8 +23,9 @@ prepare() {
 }
 
 package() {
-    # Make sure that we are using Python 3
-    pyver=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    # Not sure if anyone else uses this package, so I don't have an automated solution.
+    # Please just set the Python version below.
+    pyver=3.11
 
     # Install
     python$pyver rez-$pkgver/install.py -v "$pkgdir/opt/$pkgname"
