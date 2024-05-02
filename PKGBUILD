@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=concordexR
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Calculate the concordex coefficient"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -37,8 +37,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5ffab81582264ccb300c9f937c698adf')
-b2sums=('792cf49e7337daaf8625e72f6f10b54913c8a5bfdba576901852065c4f3ee38fc72868ef3b11aeb2e69ff1111ed1c4d8ccdd2b522bb72c96c401a1b2656bd4a3')
+md5sums=('957ceda27725ac78f8ea7a1168023d96')
+b2sums=('5b3f2bc4f4138ce2cfa252f20d4030f32836e2eadcfdd822c4c2ac03176ef7f8014c270a25226a63319314e83667e91ea5c223ce76bfae5072fb25b5648ad94f')
 
 build() {
   mkdir build

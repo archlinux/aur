@@ -1,7 +1,7 @@
 pkgbase = r-concordexr
 	pkgdesc = Calculate the concordex coefficient
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/concordexR
 	arch = any
 	license = Artistic-2.0
@@ -26,8 +26,8 @@ pkgbase = r-concordexr
 	optdepends = r-tenxpbmcdata
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/concordexR_1.2.0.tar.gz
-	md5sums = 5ffab81582264ccb300c9f937c698adf
-	b2sums = 792cf49e7337daaf8625e72f6f10b54913c8a5bfdba576901852065c4f3ee38fc72868ef3b11aeb2e69ff1111ed1c4d8ccdd2b522bb72c96c401a1b2656bd4a3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/concordexR_1.4.0.tar.gz
+	md5sums = 957ceda27725ac78f8ea7a1168023d96
+	b2sums = 5b3f2bc4f4138ce2cfa252f20d4030f32836e2eadcfdd822c4c2ac03176ef7f8014c270a25226a63319314e83667e91ea5c223ce76bfae5072fb25b5648ad94f
 
 pkgname = r-concordexr
