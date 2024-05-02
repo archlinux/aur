@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ompBAM
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="C++ Library for OpenMP-based multi-threaded sequential profiling of Binary Alignment Map (BAM) files"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -29,8 +29,8 @@ optdepends=(
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9e9d31ddcad0b4bb4acb30ad970a0cd5')
-b2sums=('830df567c67e8e45b72384ff9441b519753741ad36df4106016d82aa3772f936ed8d89c4d8a6909797029707d7a9d4b0a97e9bc8850a8e9695a41b7a90db6f88')
+md5sums=('867d3c1d9d846bfea4545c18509ed756')
+b2sums=('8d860185474677c4d57bba1684794b76253fac095df9fe98a9190e4c663ec4681b2d9bdfee9ab083584d527db9eb20d7ab60ce6f3408c3517733e0962867ddf0')
 
 build() {
   mkdir build
