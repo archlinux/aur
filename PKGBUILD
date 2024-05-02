@@ -11,7 +11,7 @@ _pkgname="PWAsForFirefox"
 pkgname="firefox-pwa"
 pkgdesc="A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox (native component)"
 pkgver="2.12.0"
-pkgrel=1
+pkgrel=2
 url="https://pwasforfirefox.filips.si/"
 arch=("x86_64" "i686")
 license=("MPL2")
@@ -33,6 +33,9 @@ prepare() {
 
     # We don't use libexec on Arch
     sed -i "s@/usr/libexec/firefoxpwa-connector@/usr/lib/firefoxpwa/firefoxpwa-connector@g" manifests/linux.json
+
+    # Disable zstd feature (which currently makes the build fails on Arch)
+    sed -i "s/\"zstd\",//g" Cargo.toml
 }
 
 build() {
