@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ctc
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Cluster and Tree Conversion"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r-amap
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ea94b8b636b26d4f827ecd4569804d1e')
-b2sums=('ec76aaf109f7b5dd1c4e6926254380f3aeed5da78dc50369b2ab338091270efe2ddfb254f11c0f78c0aec6e69b531e5a59fdd8953dc314eb7c056036f156bc77')
+md5sums=('4d3230611b4961cdd498b9b0a882d97a')
+b2sums=('088a97f2244586d21f1bbbf1b764ef5c333dd5d152a96c9c12f19f12ac1716d0d117b66a38678c2f499d54984033f34ba43cf7add367beefb8ba16da567eeaf0')
 
 build() {
   mkdir build
