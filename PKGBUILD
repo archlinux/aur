@@ -6,7 +6,7 @@ pkgdesc="Python bindings to the Syncthing REST interface"
 url="https://github.com/blakev/python-syncthing"
 
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("MIT")
