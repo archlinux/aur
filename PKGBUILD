@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BHC
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Bayesian Hierarchical Clustering"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('855087c8854bd3014111477e1c3cdcb9')
-b2sums=('8618c469025c895d42d5e6cd12099b8e25ec6b77b0e56371987d88bdece28d36248435d2ff7e748e08862fa74c4d30b8d41dd6a66fc335f6faf91b434ef76ae4')
+md5sums=('5bad4023c10e01c7214084a10893cfd7')
+b2sums=('178e9229f8f17d3a0437b5a1a6540aefd18ab950137bb469ab7adfdc19bc39ad8c17d5bffd38564ce663c7874fea954f6898bb8ddf259a762e26e57e6ab94677')
 
 build() {
   mkdir build
