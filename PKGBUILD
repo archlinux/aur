@@ -7,7 +7,7 @@ _appname='jmusicbot'
 pkgname="$_appname"
 _pkgverUpstream="0.4.0"
 pkgver="${_pkgverUpstream//-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Discord music bot with a clean interface"
 arch=('any')
 url='https://github.com/jagrosh/MusicBot'
@@ -17,11 +17,13 @@ makedepends=('java-environment>=11' 'maven' 'libxslt')
 source=("JMusicBot-${_pkgverUpstream}.tar.gz::https://github.com/jagrosh/MusicBot/archive/refs/tags/${_pkgverUpstream}.tar.gz"
         "fix-pom.xslt"
         "jmusicbot@.service"
-        "jmusicbot.service")
+        "jmusicbot.service"
+        "1552.patch")
 sha384sums=('d5fc747230eab289da6a8a44c1a86c38291073ad6bb43c84609bb6d7abcce98cab0f7b636747248e4e53b883e0884ff7'
             'b14dcf390d40f51d40b2aee4e8c44722837ad7a9850ecfd48174c74e8ed50709b6a64a817c301a2186e6386c26de0440'
             '0e2f5b34b17ab99c425712b8e164493538c0d8df45b9d997649dbf6332bbdef7d6ce33e195ed331cf02d132ee2fa7e88'
-            'b57c88e240c167debd323399b4144a1f0a566205ccfe54075f06481fe6cfb105f92bc94536575b84bbc1607c102b5e75')
+            'b57c88e240c167debd323399b4144a1f0a566205ccfe54075f06481fe6cfb105f92bc94536575b84bbc1607c102b5e75'
+            'bda596a9b8e56015ba5a774e73e48b36506cdc02751e1554f26c2481fa971dff11fb1091a4396b2f9483a8b41dba33b0')
 
 # Build parameters
 # Uncomment and edit to build with a specific Java Development Kit
@@ -33,6 +35,9 @@ build() {
     local buildDir="${srcdir}/MusicBot-${_pkgverUpstream}"
 
     cd "$buildDir" || return 1
+
+    echo "Applying patch containing pull request: https://github.com/jagrosh/MusicBot/pull/1552" >&2
+    patch --silent --strip=1 < "${srcdir}/1552.patch"
 
     # Project version in pom.xml is set to "Snapshot"
     # Set it to the upstream version
