@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.base
-_pkgver=1.2.1
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Save Bioconductor Objects To File"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2d6215dfe9b8412438f9b05b54be2331')
-b2sums=('38f3f2b88d1b4433fc0d0fa87f11cbb4d2e60da7cf579eb627e1935442021be0980f8ae10d29bd41658a2cc64f10e61374d15565b0eb1aa8d08fef0b4293e9f2')
+md5sums=('46138cdc2cd234fdad16f8750d9ef7e3')
+b2sums=('39210a909f93d05a1c6a3c875ce45c3bc707288d3dc49e97f745ec548676729aa128118d4f940786d5555b6f1fb8cea257350fa4bb5da05c110f4451d028ce1b')
 
 build() {
   mkdir build
