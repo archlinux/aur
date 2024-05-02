@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=minet
-_pkgver=3.60.0
+_pkgver=3.62.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Mutual Information NETworks"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r-infotheo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8aaab67519352be115568a301e98ef99')
-b2sums=('277832c19626c8ab025bbc64474a837e4a234d837e2c09fe64f9cf307e30198b6782d64bd983287940e287642d452138a99447c0921c59be16564eef3fa73ecb')
+md5sums=('14157fad48dba8ffef803809737ccc25')
+b2sums=('dc89338d188cd1f2bc2ba0ab04f251cc82e0316ec9b8b428f4f8302e1ceb16ada135caec2c828641b8860b83f18d7284f2768b8f0f03264b6913591b41f53f4f')
 
 build() {
   mkdir build
