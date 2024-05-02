@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=schex
-_pkgver=1.16.1
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.1
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Hexbin plots for single cell omics data'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('635951df732186ae83134cf55cab7be75a7d9c8d2e353b5b9cc023d38006caad')
+sha256sums=('066b3fbcf4f74a3640e31afb2ac56c70c89f7b789c69321efe08c8ddf5d463f1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
