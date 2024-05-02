@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ASAFE
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Ancestry Specific Allele Frequency Estimation"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e054d986c3b6f2574c26498eaf6e4f7c')
-b2sums=('b8bbd1a6df7ca58bf3e56ab0a8e0aaf4f9490cb498efa90b3bee5d4d4f3922fc40445f980f63613380e79550208dc15d784454237409abf4a7afeb1fb90f6662')
+md5sums=('8d2f95c5accaf3c385b85d8d5be5b980')
+b2sums=('01b804a6f9bf2019a601422767ebef6232abcdd6653329cf75ddb01729c0a5ef464e0499c2ef93e177e2b38d44ae07d0e607063111e7b72bae5afa6e42df1a1d')
 
 build() {
   mkdir build
