@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 _name=autoeq
 pkgname="python-${_name}"
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Automatic headphone equalizer config generator"
 arch=(any)
@@ -36,5 +36,5 @@ package() {
   install -Dm755 "../$_name.sh" "$pkgdir/usr/bin/$_name"
 }
 
-sha256sums=('7860a1f92d9fdda6677b9b6e9bfca21deca7f0bab37f85bb7c6f4e1462f73b99'
-  '0a4b2abe2ce8c631008eef038660e4c73e68739002cb3d458529c578891faa81')
+sha256sums=('d4022a151749e6fe118ea919a0284f1d6cd0a9c1147c97c9122b2718ddd50e79'
+            '0a4b2abe2ce8c631008eef038660e4c73e68739002cb3d458529c578891faa81')
