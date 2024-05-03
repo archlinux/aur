@@ -1,6 +1,6 @@
 pkgbase = r-purecn
 	pkgdesc = Copy number calling and SNV classification using targeted short read sequencing
-	pkgver = 2.8.1
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PureCN
 	arch = any
@@ -41,7 +41,7 @@ pkgbase = r-purecn
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PureCN_2.8.1.tar.gz
-	sha256sums = f2ac2ee30b8da345f3170f964ef79c61b19ca85948fc6bdcb374d32e64702142
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PureCN_2.10.0.tar.gz
+	sha256sums = 6e599102c314a3fbf2085c97f4e74f600d9bd58de6195bd5fa146f0b12dddcef
 
 pkgname = r-purecn
