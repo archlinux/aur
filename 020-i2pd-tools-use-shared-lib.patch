@@ -3,12 +3,12 @@
 @@ -8,11 +8,11 @@ LIBI2PD_CLIENT_PATH = $(I2PD_PATH)/libi2pd_client
  
  CXX ?= g++
- CXXFLAGS = -Wall -std=c++17 -O2
+ CXXFLAGS += -Wall -std=c++17 -O2
 -INCFLAGS = -I$(LIBI2PD_PATH) -I$(LIBI2PD_CLIENT_PATH)
 +INCFLAGS = -I/usr/include/i2pd
  DEFINES = -DOPENSSL_SUPPRESS_DEPRECATED
  
- LDFLAGS = 
+ LDFLAGS += 
 -LDLIBS = $(I2PD_PATH)/$(I2PD_LIB) -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz 
 +LDLIBS = -li2pd -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz 
  
