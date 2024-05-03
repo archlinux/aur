@@ -15,11 +15,14 @@ sha256sums=('SKIP')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
+	gcc jura.c -o jura -std=c99
+	rm jura.c
+	rm Makefile
 }
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	make install
+	install -Dm775 ./jura "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 ./CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
