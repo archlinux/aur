@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GenomicInteractionNodes
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A R/Bioconductor package to detect the interaction nodes from HiC/HiChIP/HiCAR data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bacb75bdd25ea06d5102c1ef2648c588')
-b2sums=('63583dc0ed81c61483713e94c8ce648feda1d9d184999da8d1c64d56dd901099513f9fa807a97af12f48701994ec3cdf6e58dfd160cba29728fab7df5ea215da')
+md5sums=('db86e22bb6f88384d71ed1942d3269bb')
+b2sums=('f921da5336a25bd90d4ae8f18a34044d8cb20ca5e8229e51c4411f392be3e1a744944706d7cbb07931a31a63e0d3be4c383caf0232fbb064e3838d44c93a8cb7')
 
 build() {
   mkdir build

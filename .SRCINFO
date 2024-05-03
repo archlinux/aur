@@ -1,7 +1,7 @@
 pkgbase = r-genomicinteractionnodes
 	pkgdesc = A R/Bioconductor package to detect the interaction nodes from HiC/HiChIP/HiCAR data
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/GenomicInteractionNodes
 	arch = any
 	license = Apache-2.0
@@ -25,8 +25,8 @@ pkgbase = r-genomicinteractionnodes
 	optdepends = r-runit
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicInteractionNodes_1.6.0.tar.gz
-	md5sums = bacb75bdd25ea06d5102c1ef2648c588
-	b2sums = 63583dc0ed81c61483713e94c8ce648feda1d9d184999da8d1c64d56dd901099513f9fa807a97af12f48701994ec3cdf6e58dfd160cba29728fab7df5ea215da
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicInteractionNodes_1.8.0.tar.gz
+	md5sums = db86e22bb6f88384d71ed1942d3269bb
+	b2sums = f921da5336a25bd90d4ae8f18a34044d8cb20ca5e8229e51c4411f392be3e1a744944706d7cbb07931a31a63e0d3be4c383caf0232fbb064e3838d44c93a8cb7
 
 pkgname = r-genomicinteractionnodes
