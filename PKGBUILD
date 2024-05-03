@@ -16,7 +16,7 @@
 
 pkgname=discord-canary-electron-bin
 _pkgname=discord-canary
-pkgver=0.0.358
+pkgver=0.0.380
 pkgrel=2
 pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=('discord-canary')
 url='https://canary.discordapp.com'
 license=('custom')
 options=(!strip)
-depends=('electron' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups' 'unzip')
+depends=('electron29' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups' 'unzip')
 makedepends=('asar')
 optdepends=('libpulse: Pulseaudio support'
             'xdg-utils: Open files'
@@ -34,14 +34,22 @@ optdepends=('libpulse: Pulseaudio support'
             'noto-fonts-cjk: Font for special characters such as /shrug face.')
 source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'LICENSE.html::https://discordapp.com/terms'
-        'OSS-LICENSES.html::https://discordapp.com/licenses')
+        'OSS-LICENSES.html::https://discordapp.com/licenses'
+        'installed.json'
+        )
 # Skip SHA256 of licenses, it fails always for some reason.
-sha256sums=('cd88a280623a48133049c81d502e38bf836ff2e6d90360b3aaabdae8d4831509'
+sha256sums=('ef1e81c5c6d7002d8abacbeca6fe4909e2178f1da47030eccf3a239a70ec536c'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '5afdfdcb67493946553cad1255e1084add21392171d8ffb79c0ce76865e71f0a'
+            )
+
 
 # The tar extracts to a folder called DiscordCanary.
 _tarname=DiscordCanary
+
+#installed.json needs to be copied to this folder or the updater breaks
+_discordmodules='$HOME'/.config/discordcanary/$pkgver/modules/
 
 prepare() {
   # Extract the downloaded tar.
@@ -70,14 +78,18 @@ package() {
   
   # Copy relevant data
   cp -r "$_tarname"/resources/*  "$pkgdir"/usr/lib/$_pkgname/
+
+  #Install the file needed to bootstrap the updater
+  install -Dm 644 installed.json "$pkgdir"/usr/lib/$_pkgname/
   
   # Create starter script for discord
   echo "#!/bin/sh" > "$srcdir"/$_pkgname
-  echo "exec electron /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
+  echo "if ! [ -f $_discordmodules/installed.json ]; then mkdir -p $_discordmodules && cp /usr/lib/$_pkgname/installed.json $_discordmodules; fi" >> "$srcdir/$_pkgname"
+  echo "exec electron29 /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
   
   install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
   install -Dm 755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
-  
+
   cp $_tarname/discord.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
   cp $_tarname/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
   
@@ -85,4 +97,3 @@ package() {
   install -Dm 644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
   install -Dm 644 OSS-LICENSES.html "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.html
 }
-
