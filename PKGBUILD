@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CDI
-_pkgver=1.0.2
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('64ebd520b0ba4613c3bddf06bb82dbc0')
-b2sums=('05d254046c79717e813bf0c755add98e54613c342f054a6561e41c92215424204994206e69080e61d734b26d92a095bc163e8a77f82278e0a37bbfbac42a0d54')
+md5sums=('61d85e8436c451a024557f91f59b63cc')
+b2sums=('70c20499bbc3f250367244a22a6c0e95b20a5afe3fa11ebe89ac14ef384531259851154dd635b6455ce3d573fdbc8b2a4c1c2c7c3ede628079900798038e364b')
 
 build() {
   mkdir build

@@ -1,6 +1,6 @@
 pkgbase = r-cdi
 	pkgdesc = Clustering Deviation Index (CDI)
-	pkgver = 1.0.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CDI
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = r-cdi
 	optdepends = r-magick
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CDI_1.0.2.tar.gz
-	md5sums = 64ebd520b0ba4613c3bddf06bb82dbc0
-	b2sums = 05d254046c79717e813bf0c755add98e54613c342f054a6561e41c92215424204994206e69080e61d734b26d92a095bc163e8a77f82278e0a37bbfbac42a0d54
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CDI_1.2.0.tar.gz
+	md5sums = 61d85e8436c451a024557f91f59b63cc
+	b2sums = 70c20499bbc3f250367244a22a6c0e95b20a5afe3fa11ebe89ac14ef384531259851154dd635b6455ce3d573fdbc8b2a4c1c2c7c3ede628079900798038e364b
 
 pkgname = r-cdi
