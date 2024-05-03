@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=netZooR
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Unified methods for the inference and analysis of gene regulatory networks"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -52,8 +52,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2f4adb3763df2df201212073e34bab10')
-b2sums=('1997a8481d0d1733e76009e5d8cb3d51f8d9a7e711000a7b6a82ab4064802c22846d18731d8944f9848a7e284354bba58da90bbec60b4e92fbdddbcd619b325f')
+md5sums=('904aea3017f4cb3bedf5e66c31c3745c')
+b2sums=('244b18a98511ef6b01ae94e869f8eb7c0f13fdddd9d4cb391f73f8ef0ead75cbf262106b6ab8f9418d50bd00d69ac5e8f06c7e2aeb7f9a62bc28ddffbdc230eb')
 
 build() {
   mkdir build
