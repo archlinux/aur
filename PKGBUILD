@@ -1,9 +1,9 @@
 # Maintainer: badcast <lmecomposer@gmail.com>
 # Contributor: Artem Izmaylov <support@aimp.ru>
-_pkver=(5.30 2541)
+_pkver=(5.30 2549)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
-pkgrel=2
+pkgrel=1
 url="https://www.aimp.ru/"
 pkgdesc="AIMP (on Wine) is powerful free audio player."
 arch=('x86_64')
@@ -16,8 +16,8 @@ source=("${url}/files/linux/aimp_${_pkver[0]}-${_pkver[1]}_amd64.deb"
         "AIMP.exe.desktop"
         "${pkgname}ac.desktop"
         "${pkgname}ate.desktop")
-sha256sums=('0aeaddb35bea5869c81e00c7d715a4139fa53053b39125f228d8c457cadd147b'
-            'b41610f455db4f7600488d49d8df697e85cd554ec3be35d382fa089526f6f051'
+sha256sums=('b19b015c3efa4f76ca1dc7fc45e2fc51273fd1626fecad17bc6e0b4e4f341fa6'
+            '4c9a93d452cbdc68edaa7599432a501fc3a07aa3a97caf7f7440918283105c25'
             '5ddae7098e215717b7243839686c9c07b6213a9f97fd3c28de5071a48e6942b6'
             '735954b1a61249e2e1ab2ca052330e39ee846e27a89eefb0193cac7ed8f4bebc'
             '0e50842c16e53192f92d6d1b2b1fae64639283047a00f659c2f95274e54a5169'

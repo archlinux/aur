@@ -10,7 +10,7 @@
 #default args
 _args="$1"
 
-for a in '/DEBUG' '/PLAY' '/PAUSE' '/NEXT' '/PREV' '/STOP'
+for a in '/DEBUG' '/PLAY' '/PAUSE' '/NEXT' '/PREV' '/STOP' '/EXIT'
 do
    if [[ "$_args" != "$a" ]] && [[ -e $_args ]]; then
       #arguments is file(s)
