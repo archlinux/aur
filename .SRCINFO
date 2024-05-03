@@ -1,7 +1,7 @@
 pkgbase = cargo-bisect-rustc-git
 	pkgdesc = Bisects rustc, either nightlies or CI artifacts
-	pkgver = 0.6.8.r594.9411af3
-	pkgrel = 1
+	pkgver = 0.6.8.r606.0859f47
+	pkgrel = 2
 	url = https://github.com/rust-lang/cargo-bisect-rustc
 	arch = x86_64
 	arch = aarch64

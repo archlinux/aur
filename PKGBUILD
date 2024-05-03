@@ -1,8 +1,8 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=cargo-bisect-rustc-git
-pkgver=0.6.8.r594.9411af3
-pkgrel=1
+pkgver=0.6.8.r606.0859f47
+pkgrel=2
 pkgdesc='Bisects rustc, either nightlies or CI artifacts'
 arch=('x86_64' 'aarch64')
 url="https://github.com/rust-lang/cargo-bisect-rustc"
