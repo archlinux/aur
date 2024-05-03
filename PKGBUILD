@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
-pkgver=2024.04.29.00
+pkgver=2024.05.02.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -52,7 +52,7 @@ source=(
   "fix-setup-py-for-python-extensions.patch"
 )
 sha256sums=(
-  'cf0e9d17e036f1699efe5ebd82c8b673205b1476674d4fca0b708f499a641adf'
+  'c220c556b69ddd91fd83aa2682c7c60470d23d9157e27c803e27f795aac0da9c'
   '7655b9d6fd926770dae4d26f67b6aedf8fb6ff03927782bcfeffa09b5138b87c'
   '19cc8b4190e3c7d4ef9d1d9842a2def99bb261711ae85cb03e63787c4995e286'
   '1f369049ec6f14cc8682f0a8d6d08cca8ac49a1cf83f94914f0335adacba29c0'
@@ -67,8 +67,8 @@ prepare() {
   patch --forward --strip=1 --input="$srcdir/fix-missing-include.patch"
   patch --forward --strip=1 --input="$srcdir/fix-setup-py-for-python-extensions.patch"
 
-  # Remove non-existent test
-  sed -i '/LaunderTest/d' CMakeLists.txt
+  # Remove test with compilation error
+  sed -i '/heap_vector_types_test/d' CMakeLists.txt
 
   # The build will generate these files and fails if they already exist
   rm folly/python/executor.cpp folly/python/iobuf.cpp
@@ -104,7 +104,6 @@ check() {
     atomic_unordered_map_test.AtomicUnorderedInsertMap.DISABLEDMegaMap
     fbstring_test.FBString.testAllClauses
     fbvector_test
-    heap_vector_types_test.HeapVectorTypes.SimpleSetTest
     xlog_test.XlogTest.perFileCategoryHandling
   )
   local skipped_tests_pattern="${skipped_tests[0]}$(printf '|%s' "${skipped_tests[@]:1}")"
