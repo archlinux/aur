@@ -3,7 +3,7 @@
 
 pkgname=python-censys
 _name=censys-python
-pkgver=2.2.9
+pkgver=2.2.12
 pkgrel=1
 pkgdesc="An easy-to-use and lightweight API wrapper for Censys APIs."
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-poetry-core')
 source=("https://github.com/censys/censys-python/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('79337be9700e302fc358896424fa5bfeebd48eb70703cad352c575ba1a9fab05')
+sha256sums=('d77e735e78dc453d6153be50414b8fe245e046afb2913a88adee199820737e01')
 
 build() {
     cd "${_name}-${pkgver}"
