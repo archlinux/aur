@@ -6,12 +6,12 @@ pkgver=6.1.50
 _build=161033
 _rev=96547
 _rdeskver=1.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE, version 6.1)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
 license=('GPL2')
-makedepends=('python')
+makedepends=('python' 'python-setuptools')
 source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_amd64.run"
         "https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBoxSDK-${pkgver}-${_build}.zip"
         "https://download.virtualbox.org/virtualbox/${pkgver}/Oracle_VM_VirtualBox_Extension_Pack-${pkgver}.vbox-extpack"
