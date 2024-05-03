@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=COSMIC.67
-_pkgver=1.39.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.39.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='COSMIC.67'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('450d2a894e96437bdd1913fa264b09318269d43d3238fede9cd353c743d823e7')
+sha256sums=('f79f78b20b0e663d279b3ed6c8ab2cde274fe369b0ba3f1fe779aabe71483c2d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
