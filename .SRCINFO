@@ -1,7 +1,7 @@
 pkgbase = xorg-xwayland-osu
 	pkgdesc = run X clients under wayland (patched specifically to run osu! under Wine correctly)
 	pkgver = 23.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
@@ -29,6 +29,7 @@ pkgbase = xorg-xwayland-osu
 	depends = wayland
 	depends = libdrm
 	depends = libtirpc
+	depends = libei
 	depends = libxshmfence
 	depends = glibc
 	provides = xorg-server-xwayland
