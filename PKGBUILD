@@ -7,7 +7,7 @@ license=('Apache-2.0')
 
 groups=('caustic')
 
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-installer')
 
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/${pkgname//-/.}/${pkgname//-/.}-$pkgver-py3-none-any.whl")
 noextract=("${pkgname//-/.}-$pkgver-py3-none-any.whl")
-sha256sums=('de9e06dc685043af3f112e19639fc674337bf8cd0676649b0c1904c162eb6edc')
+sha256sums=('d6e5c650357250f6cc95cdc64ee22b5b0d0483d3598d537dab62ac2e3714af35')
 
 
 package() {

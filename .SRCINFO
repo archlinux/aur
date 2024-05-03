@@ -1,6 +1,6 @@
 pkgbase = caustic-grammar
 	pkgdesc = Caustic's canonical grammar (Python package)
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://codeberg.org/Caustic/CausticGrammar
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = caustic-grammar
 	depends = python
 	depends = caustic-cst
 	depends = caustic-parser
-	noextract = caustic.grammar-2.0.1-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/c/caustic.grammar/caustic.grammar-2.0.1-py3-none-any.whl
-	sha256sums = de9e06dc685043af3f112e19639fc674337bf8cd0676649b0c1904c162eb6edc
+	noextract = caustic.grammar-2.0.2-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/c/caustic.grammar/caustic.grammar-2.0.2-py3-none-any.whl
+	sha256sums = d6e5c650357250f6cc95cdc64ee22b5b0d0483d3598d537dab62ac2e3714af35
 
 pkgname = caustic-grammar
