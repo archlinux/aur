@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ANCOMBC
-_pkgver=2.4.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Microbiome differential abudance and correlation analyses with bias correction"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -46,8 +46,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('42059f62faa03e818d0cd15b7bcf0094')
-b2sums=('9e3630a76d00131683e368fa7f550cd9262d56698900dd45428d971b8b59b222fa482356de7319c6f1796d6009c357a4384dae9c44acd5b929a96e8ef9700ecf')
+md5sums=('9ea99b22eb426a256081e63a7d6049f1')
+b2sums=('ef90fb7af92ea9f5890ba2e7b0507f99cef1f41ecc97864c8ad875b055525c7b4507bed1005c2e6ddec08103dc1c0f1d368c5c0e219138069f34136de0a9693d')
 
 build() {
   mkdir build
