@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=zenith
-_pkgver=1.4.2
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Gene set analysis following differential expression using linear (mixed) modeling with dream"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -39,8 +39,8 @@ optdepends=(
   r-tweedeseqcountdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('60c9729fb2407d62a1ea15b1aa5ee0eb')
-b2sums=('93539baaded7a4fc4f5f5ecf873e6d8ff81d3cf138ad6b89a47562396b6b4d7ec9fd01a693aabfa9edef31dca875e9f5a7a0e400452631be26c86a84e4fd8782')
+md5sums=('d34baf4f9ee3435a3ddef3e1040023a4')
+b2sums=('0b9c7e5811da1635f1c514ad297eefdaf570ec53473318b550afbce64e8fef93439aac53c9b3643b4499cbd8aeca7b7cca09a915aed49f7a613ccdd8352b7aec')
 
 build() {
   mkdir build
