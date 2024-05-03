@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GeoTcgaData
-_pkgver=2.2.0
+_pkgver=2.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Processing Various Types of Data on GEO and TCGA"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -48,8 +48,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('653a353d37b0bcfbd892dfe12d420100')
-b2sums=('a399654762bf9d8360b0399aad14dd19bb7e8cbfcef49be3e6312b37a1976b178d74251c899b641423864c1a26e002d340412d03518919342587c39e1b1216a6')
+md5sums=('2f1e44cea05303ee8bca09536c601158')
+b2sums=('eb69c7feabbb98744fb85c90570c0ebe968f00d66439ae488dce66b749b5f8c1b3cd0fe8ca62985616aee97569fd526055363322f259d9bbac5de01fa83535dc')
 
 build() {
   mkdir build
