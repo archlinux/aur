@@ -1,26 +1,28 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ontoProc
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='processing of ontologies of anatomy, cell lines, and so on'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="processing of ontologies of anatomy, cell lines, and so on"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-annotationhub
   r-biobase
   r-biocfilecache
   r-dplyr
   r-dt
   r-graph
+  r-httr
   r-igraph
   r-magrittr
   r-ontologyindex
   r-ontologyplot
+  r-r.utils
+  r-reticulate
   r-rgraphviz
   r-s4vectors
   r-shiny
@@ -38,14 +40,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('38d15039df3acb8c3391592547143fa4f85b94005c9bfdaf98466e27a4bcbf95')
+md5sums=('3b97b2891024222d839bce78e279df49')
+b2sums=('d64ba95b9d973b11d3222eac4a8665ea7522f79139dfe4abfc06940c868dfb9bb3668991e5444361f862e7b42427c9c82d9e2bdcfd515887492213e5c3c887d6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
