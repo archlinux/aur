@@ -2,14 +2,13 @@
 
 _name=plpygis
 pkgname=python-$_name
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="PL/Python for PostGIS"
 arch=('any')
 url="https://github.com/bosth/plpygis/"
 license=('GPL-3.0-only')
 depends=('python')
-checkdepends=('python-pytest' 'python-shapely' 'python-pyshp')
 optdepends=('python-shapely: interoperability with Shapely geometries')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://github.com/bosth/$_name/archive/v$pkgver/$_name-$pkgver.tar.gz")
