@@ -3,9 +3,9 @@
 # Generator  : CPANPLUS::Dist::Arch 1.09
 pkgname=perl-crypt-rijndael
 pkgver=1.16
-pkgrel=2
+pkgrel=3
 pkgdesc="AES/Rijndael Encryption Module"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
