@@ -2,13 +2,13 @@
 
 pkgname=dungeon-keeper-gold-gog
 pkgver=10.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Construct and manage a dungeon, recruiting and catering for minions to run it and defend it from enemy invaders."
 url="https://www.gog.com/game/dungeon_keeper"
 license=('custom:eula')
 groups=('games')
 arch=('any')
-makedepends=('innoextract-git' 'icoutils')
+makedepends=('innoextract' 'icoutils')
 depends=('dosbox')
 optdepends=('unionfs-fuse: mounting game folder to home for savegames and settings')
 install=$pkgname.install
