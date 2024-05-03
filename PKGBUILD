@@ -2,7 +2,7 @@
 # Contributor: Juliette Cordor 
 
 pkgname=("podman-desktop")
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=(
     "docker: docker plugin"
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fd124cd334249ce4abe5d6f25f325dbea2a067dff81f1fc2b290df4c82d0c761')
+sha256sums=('f111c82f5603b20bca98841b73fbad226ba470d7d99aa2c0ed03c1460d22cc94')
 
 build(){
     cd "${srcdir}/podman-desktop-$pkgver"
@@ -32,9 +32,9 @@ build(){
 package_podman-desktop(){
     depends+=(
         # Electron depends
-        "c-ares" "gtk3" "libevent" "nss" "wayland" "fontconfig" "woff2" "aom" "brotli"
-        "libjpeg" "icu" "dav1d" "flac" "snappy" "libxml2" "ffmpeg" "libwebp" "minizip"
-        "opus" "harfbuzz" "re2" "libavif" "jsoncpp" "libxslt" "libpng" "freetype2"
+        "c-ares" "gcc-libs" "glibc" "gtk3" "libevent" "libffi" "libpulse" "nss" "zlib" 
+        "fontconfig" "brotli" "libjpeg" "icu" "dav1d" "flac" "libdrm" "libxml2" "minizip"
+        "opus" "harfbuzz" "libxslt" "libpng" "freetype2"
     )
     optdepends+=(
         # Electron optdepends
