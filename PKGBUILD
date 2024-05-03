@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNEr
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='CNE Detection and Visualization'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="CNE Detection and Visualization"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only AND LicenseRef-CNEr')
 depends=(
-  r
   r-annotate
   r-biocgenerics
   r-biostrings
@@ -23,6 +22,7 @@ depends=(
   r-iranges
   r-keggrest
   r-powerlaw
+  r-pwalign
   r-r.utils
   r-readr
   r-reshape2
@@ -44,14 +44,18 @@ optdepends=(
   r-txdb.drerio.ucsc.danrer10.refgene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('55688f2f8b5035761727c2871122df878d30460264f6a9a7d0467c3f6809ff4e')
+md5sums=('be665143e17bc80ce2e839d4d05bed4b')
+b2sums=('db9d2154eb34269854c55dca1fa8eccb6aab828203b2c657f743f4f35d03619c9b1fb955345c13b88f4b5092ffb09561703da117ac2ea3a5f00e9616b05a1771')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
