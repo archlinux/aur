@@ -14,7 +14,7 @@ depends=('lxsession' 'openvpn' 'python' 'qt6-base' 'qt6-quickcontrols2' 'qt6-svg
 makedepends=('cmake' 'go')
 source=("$url/-/archive/$pkgver/bitmask-vpn-$pkgver.tar.bz2"
         "$pkgname.png"
-        "riseup-vpn.desktop")
+        "$pkgname.desktop")
 sha256sums=('a635679ee2755368a343b2415f3da75e7cf93f587f4e42e8959d29b4ebaebfee'
             '76955f7b4ab01aa9a6fa8213fc062765158dda8783075459b79c147febe45bb4'
             'e21a0d99dcea6b849f80960fccc488e6294e3e794b0033fdc163291ecc8595ff')
@@ -46,7 +46,7 @@ check() {
 }
 
 package() {
-  install -Dm644 riseup-vpn.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 $pkgname.png -t "$pkgdir/usr/share/icons/hicolor/128x128/apps"
   cd bitmask-vpn-$pkgver
   install -Dm644 gui/resources/riseup-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
