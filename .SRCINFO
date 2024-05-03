@@ -1,6 +1,6 @@
 pkgbase = r-dexseq
 	pkgdesc = Inference of differential exon usage in RNA-Seq
-	pkgver = 1.48.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DEXSeq
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-dexseq
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEXSeq_1.48.0.tar.gz
-	sha256sums = 1c392234ef453a180d523f0d4969fc5dea518422e5c7940a9e16b816d553a9e0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEXSeq_1.50.0.tar.gz
+	sha256sums = 441452a07b41dbeb931018303ae7e3840be29045a262b3a547831cb71f74c38f
 
 pkgname = r-dexseq
