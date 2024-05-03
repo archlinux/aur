@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multicrispr
-_pkgver=1.12.9
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1eb85739f11d9bac705ffb44aa5cc541')
-b2sums=('0d0d6327bdfc5b9dff2a886240a436b506cf6231d1d8602d3fc38ca8cd4ad523b33d99eac82eff829062abe7d2ae4b38ee61369f49f65f8fbb0d1acff0d36551')
+md5sums=('98705b103b3f520548a73e85463800fd')
+b2sums=('e6da001a8dfd02b7f04b324f0b24e2d85f6567afb5e4e21d3bd47b38f06022dbc5aaded26626e9f8a74316f0b8b13cec4d46185856e29ef5375c9eaaba52c86c')
 
 build() {
   mkdir build
