@@ -9,6 +9,7 @@ pkgbase = hustmirror-cli-git
 	makedepends = python3
 	makedepends = git
 	depends = bash
+	conflicts = hustmirror-cli
 	source = git+https://github.com/hust-open-atom-club/hustmirror-cli.git
 	source = hustmirror-cli-git.patch
 	source = hustmirror-cli-git-makefile.patch
