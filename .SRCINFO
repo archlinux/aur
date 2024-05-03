@@ -1,18 +1,20 @@
 pkgbase = conduwuit
 	pkgdesc = a very cool, featureful fork of conduit
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/girlbossceo/conduwuit
 	arch = any
 	license = Apache-2.0
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	makedepends = clang
 	depends = gcc-libs
 	depends = glibc
 	depends = liburing
 	provides = conduwuit
 	options = !lto
+	backup = etc/conduwuit.toml
 	source = git+https://github.com/girlbossceo/conduwuit#tag=v0.3.1
 	md5sums = SKIP
 

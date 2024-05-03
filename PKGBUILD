@@ -6,8 +6,8 @@ url="https://github.com/girlbossceo/conduwuit"
 license=("Apache-2.0")
 arch=("any")
 pkgver=0.3.1
-pkgrel=1
-makedepends=("rust" "cargo" "git")
+pkgrel=2
+makedepends=("rust" "cargo" "git" "clang")
 depends=("gcc-libs" "glibc" "liburing")
 source=("git+https://github.com/girlbossceo/conduwuit#tag=v${pkgver}")
 md5sums=("SKIP")
@@ -18,20 +18,21 @@ backup=("etc/conduwuit.toml")
 function prepare() {
 	cd "${srcdir}/conduwuit"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	export CONDUWUIT_VERSION_EXTRA=$(git rev-parse --short HEAD)
 }
 
 function build() {
 	cd "${srcdir}/conduwuit"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --release --frozen --all-features --locked
+	cargo build --release --frozen --locked
 }
 
 function check() {
 	cd "${srcdir}/conduwuit"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --release --frozen --all-features --locked
+	cargo test --release --frozen --locked --all-features
 }
 
 function package() {
