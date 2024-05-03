@@ -2,12 +2,11 @@
 Description=ElKowars wacky widgets
 Documentation=https://elkowar.github.io/eww/
 PartOf=graphical-session.target
-After=graphical-session.target
-Requisite=graphical-session.target
 
 [Service]
 Type=exec
 ExecStart=/usr/bin/eww daemon --no-daemonize
+Restart=on-failure
 
 [Install]
 WantedBy=graphical-session.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=ElKowars wacky widgets - window opener
+Documentation=https://elkowar.github.io/eww/
+Requires=eww.service
+After=eww.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/eww open --no-daemonize "%i"
+ExecStop=/usr/bin/eww close --no-daemonize "%i"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical-session.target

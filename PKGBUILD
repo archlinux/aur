@@ -2,7 +2,7 @@
 
 pkgname=eww-x11
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A standalone widget system for X11 made in Rust."
 url='https://github.com/elkowar/eww'
 arch=(x86_64)
@@ -12,9 +12,11 @@ depends=(glibc gcc-libs 'gtk3>=3.22' pango cairo gdk-pixbuf2 glib2 libdbusmenu-g
 conflicts=(eww)
 provides=(eww)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/elkowar/eww/archive/refs/tags/v$pkgver.tar.gz"
-    'eww.service')
+    'eww.service'
+    'eww-open@.service')
 sha256sums=('cef361946946c566b79f8ddc6208d1a3f16b4ff9961439a3f86935e1cfa174a1'
-    'b3af9a18b9f015b130fd1ac7ac92c67a9966adadc8387b80c88f5093f58e4033')
+    'e60256602b5b6cbe2a53992fe1a92af0969512509a088682d9a927e218959338'
+    'fc53cef0e47789e4878a74db3c099e932b9c0b6db90d262f0dd39b683ff40f01')
 
 prepare() {
     cd "$srcdir/eww-$pkgver"
@@ -34,4 +36,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -T -Dm0755 "target/release/eww" "$pkgdir/usr/bin/eww"
     install -T -Dm0644 "$srcdir/eww.service" "$pkgdir/usr/lib/systemd/user/eww.service"
+    install -T -Dm0644 "$srcdir/eww-open@.service" "$pkgdir/usr/lib/systemd/user/eww-open@.service"
 }
