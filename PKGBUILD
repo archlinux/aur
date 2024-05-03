@@ -11,6 +11,7 @@ makedepends=(git)
 depends=(
 qt5-base
 )
+optdepends=(flrig)
 source=(
 	$pkgname::"git+$url.git"
 )
