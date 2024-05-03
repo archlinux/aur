@@ -13,6 +13,7 @@ source=("git+https://github.com/girlbossceo/conduwuit#tag=v${pkgver}")
 md5sums=("SKIP")
 provides=("conduwuit")
 options=(!lto)
+backup=("etc/conduwuit.toml")
 
 function prepare() {
 	cd "${srcdir}/conduwuit"
@@ -36,5 +37,65 @@ function check() {
 function package() {
 	install -Dm755 "${srcdir}/conduwuit/target/release/conduit" "${pkgdir}/usr/bin/conduwuit"
 	install -Dm644 "${srcdir}/conduwuit/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/conduwuit/conduwuit-example.toml" "${pkgdir}/etc/conduwuit.toml"
+	install -d "${pkgdir}/usr/lib/systemd/system/"
+	echo '''[Unit]
+Description=conduwuit Matrix homeserver
+After=network.target
+
+[Service]
+DynamicUser=yes
+Type=notify
+
+AmbientCapabilities=
+CapabilityBoundingSet=
+
+DevicePolicy=closed
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+ProcSubset=pid
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+ProtectSystem=strict
+PrivateDevices=yes
+PrivateMounts=yes
+PrivateTmp=yes
+PrivateUsers=yes
+PrivateIPC=yes
+RemoveIPC=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service @resources
+SystemCallFilter=~@clock @debug @module @mount @reboot @swap @cpu-emulation @obsolete @timer @chown @setuid @privileged @keyring @ipc
+SystemCallErrorNumber=EPERM
+StateDirectory=matrix-conduit
+
+RuntimeDirectory=conduwuit
+RuntimeDirectoryMode=0750
+
+Environment="CONDUIT_CONFIG=/etc/conduwuit/conduwuit.toml"
+
+ExecStart=/usr/bin/conduwuit
+Restart=on-failure
+RestartSec=5
+
+TimeoutStopSec=4m
+TimeoutStartSec=4m
+
+StartLimitInterval=1m
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target''' >"${pkgdir}/usr/lib/systemd/system/conduwuit.service"
 }
 
