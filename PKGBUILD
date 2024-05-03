@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocSet
-_pkgver=1.17.1
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.17.1
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Representing Different Biological Sets'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8d8c38257e1ae82a45948c985de20b2e55d2c634fd9957ae3bcb29c8cef9ebbb')
+sha256sums=('8a73bb57f67eb7c353f405b34c5287169ab63ddb84ea77661bd13e7c667031e4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
