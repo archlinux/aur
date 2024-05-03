@@ -2,8 +2,8 @@
 
 _pkgorg=gitlab.com/mipimipi
 pkgname=otr
-pkgver=0.10.0
-pkgrel=4
+pkgver=0.10.1
+pkgrel=1
 pkgdesc="Decode and cut video files from Online TV Recorder (OTR)"
 arch=(
   aarch64
@@ -12,7 +12,7 @@ arch=(
 url="https://$_pkgorg/$pkgname"
 license=(GPL3)
 source=("https://${_pkgorg}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('037da45b4df6df1a4ff813dafec10cedc65ac7b60f3932355f2f38d1c79531d0')
+sha256sums=('19341a3d4b1c79f154f96008af00c19a84f61499e949854e35785beb6a086024')
 validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fsfe.org>
 conflicts=(otr-git)
 depends=(
