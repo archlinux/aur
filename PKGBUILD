@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SARC
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Statistical Analysis of Regions with CNVs"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -44,8 +44,8 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b3ccd1bbc820bc93c4b13ec4e3ec9705')
-b2sums=('9f74d98ecb0b16c8b830ca8c4cb5b29520ee4fb96e70dadbfd4a8cd6114cded08393ce5b34d6475119d71161787fc7c3678802570f5d7797f4caa6bdfc3122b6')
+md5sums=('c9049814349b5f868bd9415d032e70b1')
+b2sums=('4a53269c55e8015f353025591cfc1d096916898778376bdd1b6d125004c9bb40428d93bbd7ff14e5f9f45a3bd9f7e4499e4939a4f5ba38f0e3caad31b3a863e7')
 
 build() {
   mkdir build
