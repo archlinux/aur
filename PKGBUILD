@@ -1,36 +1,35 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=trackViewer
-_pkgver=1.38.2
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.2
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='A R/Bioconductor package with web interface for drawing elegant interactive tracks or lollipop plot to facilitate integrated analysis of multi-omics data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="A R/Bioconductor package with web interface for drawing elegant interactive tracks or lollipop plot to facilitate integrated analysis of multi-omics data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-annotationdbi
   r-biocgenerics
   r-genomeinfodb
   r-genomicalignments
   r-genomicfeatures
   r-genomicranges
-  r-graph
   r-grimport
   r-gviz
   r-htmlwidgets
+  r-igraph
   r-interactionset
   r-iranges
   r-plotrix
-  r-rgraphviz
   r-rhdf5
   r-rsamtools
   r-rtracklayer
   r-s4vectors
   r-scales
   r-strawr
+  r-txdbmaker
 )
 optdepends=(
   r-biocstyle
@@ -46,14 +45,15 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4603c218d99f42083e32fa7ff8ae1cc24fc6f5954e5d6bcde4c4bee9cdb9fdfd')
+md5sums=('345c5b2adf6e31e2aee1335391d07d48')
+b2sums=('82d18d278509969ff57344980481c577f00bbaea59d88fb56cf558d581d6978af1659be2cd74e670a2cd06fc56258c040d36fb1e6069c1bee7a3a817ed0415fa')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
