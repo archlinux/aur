@@ -3,13 +3,13 @@
 pkgname=quakeinjector
 _name=quakeinjector
 _gitname=QuakeInjector
-pkgver=alpha05
+pkgver=alpha06
 pkgrel=1
 pkgdesc="Download, install and play quake singleplayer maps from the quaddicted.com archive"
 url="http://www.haukerehfeld.de/projects/quakeinjector/"
 arch=(any)
 license=(GPL)
-depends=(java-environment hicolor-icon-theme)
+depends=(java-environment=17 hicolor-icon-theme)
 makedepends=(git gradle)
 conflicts=(quakeinjector)
 source=("git+https://github.com/hrehfeld/$_gitname.git#tag=$pkgver"
@@ -17,7 +17,7 @@ source=("git+https://github.com/hrehfeld/$_gitname.git#tag=$pkgver"
         'quakeinjector')
 sha256sums=(SKIP
          'f9bb3bd6b304caa7768250f2490564ea8b67dc0c6257ce5a293c868bef35f903'
-         '516be20258f7729c31d176988077bcaac7ee7e5d09cbc0fe6e268d7987c84ee9')
+         '122302fb8e344ab1a150695f64c33440676d32d4efac2bfca639997d5abe4766')
 
 build() {
     cd "$srcdir/$_gitname"
