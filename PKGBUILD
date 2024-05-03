@@ -5,66 +5,66 @@
 : ${_pkgtype:=-electron}
 
 pkgname="imfile$_pkgtype"
-pkgver=1.0.7
-pkgrel=3
+pkgver=1.0.8
+pkgrel=1
 pkgdesc="A full-featured download manager"
-arch=("arm" "x86_64"  "i686")
+arch=("arm" "x86_64" "i686")
 license=("MIT")
 depends=("electron>=21")
 makedepends=("nodejs")
 url="https://github.com/imfile-io/imfile-desktop/"
 
 source=(
-  imfile
-  imfile.desktop
-  "https://github.com/imfile-io/imfile-desktop/archive/refs/tags/v${pkgver}.zip"
+	imfile
+	imfile.desktop
+	"https://github.com/imfile-io/imfile-desktop/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
 sha256sums=(
-  "6a530e20c40bb8bf0b413758e64629a0be0468ef8c203282ea6a1a80409493be"
-  "eca6961cf9d367c2733af7e8176aeaa81c5b20c12be132ec5baa3f030c7d034b"
-  "fc6ea021e3cd28806086c60c31ef6f9da444e598df49e8dc9f28e7947be45029"
+	"6a530e20c40bb8bf0b413758e64629a0be0468ef8c203282ea6a1a80409493be"
+	"eca6961cf9d367c2733af7e8176aeaa81c5b20c12be132ec5baa3f030c7d034b"
+	"9b7f46d06b79596df99b9f37893d16ca043d3b34adb543593471521a05eced93"
 )
 
 build() {
 
-  cd ${srcdir}/imfile-desktop-${pkgver}
+	cd ${srcdir}/imfile-desktop-${pkgver}
 
-  # build
-  if [ -x "$(command -v bun)" ]; then
-    bun install
-    bun run build:dir
-  elif [ -x "$(command -v pnpm)" ]; then
-    pnpm install
-    pnpm run build:dir
-  elif [ -x "$(command -v yarn)" ]; then
-    yarn install
-    yarn run build:dir
-  elif [ -x "$(command -v npm)" ]; then
-    npm install
-    npm run build:dir
-  else
-    echo "\033[0;31mPlease install at least one of 'bun', 'pnpm', 'yarn' or 'npm' to build."
-    exit
-  fi
+	# build
+	if [ -x "$(command -v bun)" ]; then
+		bun install
+		bun run build:dir
+	elif [ -x "$(command -v pnpm)" ]; then
+		pnpm install
+		pnpm run build:dir
+	elif [ -x "$(command -v yarn)" ]; then
+		yarn install
+		yarn run build:dir
+	elif [ -x "$(command -v npm)" ]; then
+		npm install
+		npm run build:dir
+	else
+		echo "\033[0;31mPlease install at least one of 'bun', 'pnpm', 'yarn' or 'npm' to build."
+		exit
+	fi
 
 }
 
 package() {
 
-  cd ${srcdir}/imfile-desktop-${pkgver}/release/linux-unpacked/resources
+	cd ${srcdir}/imfile-desktop-${pkgver}/release/linux-unpacked/resources
 
-  install -Dm 644 app.asar ${pkgdir}/opt/${pkgname}/app.asar
-  install -Dm 755 engine/aria2c ${pkgdir}/opt/${pkgname}/engine/aria2c
-  install -Dm 644 engine/aria2.conf ${pkgdir}/opt/${pkgname}/engine/aria2.conf
+	install -Dm 644 app.asar ${pkgdir}/opt/${pkgname}/app.asar
+	install -Dm 755 engine/aria2c ${pkgdir}/opt/${pkgname}/engine/aria2c
+	install -Dm 644 engine/aria2.conf ${pkgdir}/opt/${pkgname}/engine/aria2.conf
 
-  # binary wrapper
-  install -Dm 775 ${srcdir}/imfile ${pkgdir}/usr/bin/imfile
+	# binary wrapper
+	install -Dm 775 ${srcdir}/imfile ${pkgdir}/usr/bin/imfile
 
-  # desktop enrty
-  install -Dm 644 ${srcdir}/imfile.desktop ${pkgdir}/usr/share/applications/imfile.desktop
+	# desktop enrty
+	install -Dm 644 ${srcdir}/imfile.desktop ${pkgdir}/usr/share/applications/imfile.desktop
 
-  # icons
-  install -Dm 644 ${srcdir}/imfile-desktop-${pkgver}/build/256x256.png ${pkgdir}/usr/share/icons/imfile.png
+	# icons
+	install -Dm 644 ${srcdir}/imfile-desktop-${pkgver}/build/256x256.png ${pkgdir}/usr/share/icons/imfile.png
 
 }
