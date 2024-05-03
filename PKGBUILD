@@ -89,7 +89,7 @@ optdepends=(
   "libfdk-aac: FDK AAC codec support"
   "libvpl: QSV encoder support"
   "intel-media-sdk: QSV encoder support(<= Rocket Lake & >= Broadwell)"
-  "onevpl-intel-gpu: QSV encoder support (>= Alder Lake)"
+  "vpl-gpu-rt: QSV encoder support (>= Alder Lake)"
   "intel-media-driver: VAAPI encoder support (>= Broadwell)"
   "libva-intel-driver: VAAPI encoder support (<= Haswell)"
   "libva-mesa-driver: VAAPI encoder support"
