@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TEQC
-_pkgver=4.25.0
+_pkgver=4.26.0
 pkgname=r-${_pkgname,,}
-pkgver=4.25.0
+pkgver=4.26.0
 pkgrel=1
 pkgdesc='Quality control for target capture experiments'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   r-rsamtools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5d87960a3339b2cfeb8b599085ca6af0a8619e0ff9c0c0c3929485614a14412c')
+sha256sums=('afab93c11572fb71acba0fa933069f95264264ff555e067aa1254f6833256cb3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
