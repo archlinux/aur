@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SCOPE
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='A normalization and copy number estimation method for single-cell DNA sequencing'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-wgsmapp
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5b3030157d9c2f1467b03a257dab55ae5c6b13b31166fc7297e96f268c33d9ea')
+sha256sums=('805f61ea44d48fe2a69bbc924fd9b36b74eae25fae4d3c65ce69ab9c4a53f3f4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
