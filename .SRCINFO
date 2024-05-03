@@ -1,6 +1,6 @@
 pkgbase = r-splicingfactory
 	pkgdesc = Splicing Diversity Analysis for Transcriptome Data
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SplicingFactory
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-splicingfactory
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SplicingFactory_1.10.0.tar.gz
-	sha256sums = 914bc2ad73f279a36828ed836420faedc8fe4e2cbe2034b5a9d7df048f67626e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SplicingFactory_1.12.0.tar.gz
+	sha256sums = 6725da1c24507258f7bc725de9d5397425761283817462d43936aab8fb9a93c7
 
 pkgname = r-splicingfactory
