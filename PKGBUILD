@@ -1,23 +1,23 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRtestData
-_pkgver=1.0.0
+_pkgver=1.1.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="R data package with testing dose reponse data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
   r-checkmate
+  r-data.table
 )
 checkdepends=(
   r-testthat
 )
 optdepends=(
   r-biocstyle
-  r-data.table
   r-gdrstyle
   r-knitr
   r-qs
@@ -25,10 +25,11 @@ optdepends=(
   r-rmarkdown
   r-summarizedexperiment
   r-testthat
+  r-yaml
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8de3dea2673f0e7dc9412e36da2c4f9d')
-b2sums=('78ef0775a5acf57a420f4d08c37eb7e54a9acded2361455d309ae9d3be3aaebc65a82a09d60a3577d5b80c93989818c594acfe5be60f60d0bfe0d1d0cdaca885')
+md5sums=('ebfe454b09f6a1dbf48ba4bd605cbea5')
+b2sums=('bed3131bb6f5d62967562579152c434628d54ebc2b634e2a09a8813fd3d57d368d80e62dbd20faa3d35baa86326a12dcbf42e871b77f17fbe9c77533a7619527')
 
 build() {
   mkdir build
