@@ -1,6 +1,6 @@
 pkgbase = ovito
 	pkgdesc = Open Visualization Tool
-	pkgver = 3.10.5
+	pkgver = 3.10.6
 	pkgrel = 1
 	url = https://www.ovito.org
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = ovito
 	depends = ffmpeg
 	depends = qt6-base
 	conflicts = ovito-git
-	source = https://gitlab.com/stuko/ovito/-/archive/v3.10.5/ovito-v3.10.5.tar.bz2
+	source = https://gitlab.com/stuko/ovito/-/archive/v3.10.6/ovito-v3.10.6.tar.bz2
 	source = https://www.ovito.org/wp-content/uploads/logo_rgb-768x737.png
 	source = ovito.desktop
-	sha512sums = 2f2c0977bcd3239b88308b98aa63cc915355d84e7045c2b96c50797832efbba486e027cfc4d7ed6a82bebb28347d577dc1660cd9070a206a08f9eeab155b9c01
+	sha512sums = 174c445ce207bc3c2caff1657ac6c767fcd4e1f9b5399df4878132d4df68dd42d34901d0d3f1a03088ee90c16c84700770cddf109e7758b802f48fad81a6e98b
 	sha512sums = 1afe91e9634a6574ba58535cb9b636b63daa02d9157f50d9c5c959c9da151e9635ca73d0616fd8ccac2e7742f2289a6eba05e62b206baee4f738c53526ec4bb8
 	sha512sums = fdf21d1821855b1ea93c598ef062669c29c15975a288f72240c183b8f10e8b6d38f96b15fdf02949d66bd94f76df0daed87e9c4d2201db61d4c2750be574e8cd
 
