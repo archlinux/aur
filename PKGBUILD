@@ -8,28 +8,26 @@
 # Contributor: Berseker <berseker86 at gmail dot com>
 
 _pkgname=exo
-pkgname=${_pkgname}-git
-pkgver=4.19.0+11+g66004671
+pkgname="${_pkgname}-git"
+pkgver=4.19.0.r12.gb49e9eb9
 pkgrel=1
 pkgdesc="Extensions to Xfce originally developed by os-cillation."
 arch=('i686' 'x86_64')
 license=('LGPL-2.1-only')
 url="https://gitlab.xfce.org/xfce/exo/"
 groups=('xfce4-git')
-#provides=("exo=${pkgver}")
-provides=("${_pkgname}=${pkgver%%+*}")
-depends=('libxfce4ui')
+provides=("${_pkgname}=${pkgver%%.r*}")
+depends=('libxfce4ui' 'libxfce4util')
 makedepends=('git' 'xfce4-dev-tools')
-conflicts=('exo')
+conflicts=("$_pkgname")
 source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}.git")
 options=('!libtool')
 md5sums=('SKIP')
-epoch=1
+epoch=2
 
 pkgver(){
   cd "${_pkgname}"
-  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^exo-//;s/-/+/g"
-#  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed "s/^${_pkgname}-//g;s/\([^-]*-g\)/r\1/;s/-/./g"
 
 }
 
