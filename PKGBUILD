@@ -5,7 +5,7 @@
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-pipenv-git
-pkgver=2023.9.1.r4.g76edf74f
+pkgver=2023.12.1.r37.g3ac18c34
 pkgrel=1
 pkgdesc="Python Development Workflow for Humans."
 url="https://pipenv.pypa.io"
@@ -36,6 +36,10 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  git -C "${srcdir}/${pkgname}" clean -dfx
+}
+
 build() {
   cd "$srcdir/$pkgname"
   python -m build --wheel --no-isolation
@@ -58,13 +62,10 @@ build() {
 #   PYPI_SERVER_PID="$!"
 #   trap "kill ${PYPI_SERVER_PID}" EXIT
 #
-#   ENV=$(mktemp -d)
-#   python -m venv --system-site-packages --without-pip $ENV
-#   $ENV/bin/python -m installer ../dist/*.whl
 #   export PIPENV_CACHE_DIR=$(mktemp -d)
-#   $ENV/bin/python -m pytest -k 'not needs_internet and not system'
-#   rm -r "${ENV}" "${PIPENV_CACHE_DIR}"
-# }
+#   trap "rm -r ${PIPENV_CACHE_DIR}" EXIT
+#   pytest -k 'not needs_internet and not system'
+#}
 
 package() {
   cd "$srcdir/$pkgname"
