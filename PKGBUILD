@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=protGear
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Protein Micro Array Data Management and Interactive Visualization"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -56,8 +56,8 @@ optdepends=(
   r-shinywidgets
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('db63dca71894a3ebbf3b8b78512bccb4')
-b2sums=('7c57b08159579d4cd3b9808dc8d3a32de4c8a32e113c2c0800f59f9a07eb912970a56c64c07fa1d720baead00f0f464eac5ccc7baa4d541a6a7e34c0da9d92b9')
+md5sums=('dbb65358a0d3538a059deee4dabad77d')
+b2sums=('a13755d691b9e342f8cc51a107ea150c149eb581fde24f760907dc8825fce870a11f00b7193221fec7f3cfd2ffc9eea628a9404e10fafc97429063d130ff74fd')
 
 build() {
   mkdir build
