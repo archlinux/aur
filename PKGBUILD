@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatzie
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Identification of enriched motif pairs from chromatin interaction data'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm9.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a885695eb6d9fd7be41b8adffb204a8a54e60ecd5224c26d6bf68ba36a663edb')
+sha256sums=('0b9fa510ddd71ddddf88219ed3a6a6eb1255a075caa792276561b283e31e31ca')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
