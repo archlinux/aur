@@ -7,11 +7,8 @@ pkgbase = zz
 	license = MIT
 	makedepends = git
 	depends = awk
-	depends = sk
 	depends = fzf
-	source = eeec::git+https://github.com/eeec-cal/zz
-	depends = fzf
-	source = zz::git+https://github.com/eeec-cal/zz
+	source = zz-1.3.tar.gz::https://github.com/eeec-cal/zz/archive/refs/tags/1.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = zz

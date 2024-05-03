@@ -15,21 +15,21 @@ sha256sums=('SKIP')
 
 depends=('awk' 'fzf')
 makedepends=('git')
-source=("zz::git+https://github.com/eeec-cal/zz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/eeec-cal/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 
 prepare() {
-	cd zz
+	cd $pkgname-$pkgver
 	chmod +x zz
 }
 
 build() {
-	cd zz
+	cd $pkgname-$pkgver
 
 }
 
 package() {
-	cd zz
-	sudo mv zz /usr/bin/
+	cd $pkgname-$pkgver
+	sudo mv $pkgname /usr/bin/
 }
