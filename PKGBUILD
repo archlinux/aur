@@ -3,7 +3,7 @@
 pkgname='conduwuit-git'
 _pkgname='conduwuit'
 epoch=1
-pkgver=0.3.0.3120.g341bafb9
+pkgver=0.3.1.3213.g42e35671
 pkgrel=1
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/girlbossceo/conduwuit'
@@ -46,6 +46,7 @@ build(){
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export CONDUWUIT_VERSION_EXTRA=$(git rev-parse --short HEAD)
   cargo build --frozen --release
 }
 

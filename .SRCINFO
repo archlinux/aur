@@ -1,6 +1,6 @@
 pkgbase = conduwuit-git
 	pkgdesc = A very cool, featureful fork of the Conduit matrix server
-	pkgver = 0.3.0.3120.g341bafb9
+	pkgver = 0.3.1.3213.g42e35671
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/girlbossceo/conduwuit
