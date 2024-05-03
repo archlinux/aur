@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scFeatures
-_pkgver=1.3.2
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -45,8 +45,8 @@ optdepends=(
   r-survminer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('58b6496d5f812ef271a1cd47932b903c')
-b2sums=('abf3e4360cdd4f6d61fe71b5bb8830fbc0fa09d763cb1333c8976a855edea7ba2577b4e4ed1c67c5542d396526498f5db8d6d9a55b46504d4dfacb8092b33928')
+md5sums=('e755e535da381f93a8530f45a951369d')
+b2sums=('9a014ead0910adc1c85fdfda060777aa0fa44973300aa375a6b5687b527fdb0d4aedcde504458fe993ac57c3f7646e9df05346489c86c2c55f88c5b148399bc5')
 
 build() {
   mkdir build
