@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TADCompare
-_pkgver=1.12.1
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='TADCompare: Identification and characterization of differential TADs'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6af959693595b9ec8a0208cc5fe7020b1d4756a3e7ae2ebde18950558d02a958')
+sha256sums=('cc6007103ca41a7b67c82685f071a1624261b3281917891c4989c0c116ef00cd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
