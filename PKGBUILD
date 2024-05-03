@@ -46,6 +46,7 @@ build() {
   sed -i '/husky install/d' package.json # Stop husky from hijacking git hooks
   bundle config deployment 'true'
   bundle config without 'development test'
+  bundle config with 'pam_authentication'
   bundle install -j$(getconf _NPROCESSORS_ONLN)
   yarn install --pure-lockfile
 }
