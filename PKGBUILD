@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MoleculeExperiment
-_pkgver=1.2.2
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Prioritising a molecule-level storage of Spatial Transcriptomics Data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d8fef705349bc9464ae152cd47bb9a58')
-b2sums=('7b8e468410220c10682b43f0c8990a7e3504cbe8302e8ee92f45b5b1b8192c928c90a7e09e468ab87b9bb2c341a1a69e029f02aebc2e4d4dd553be5139218b35')
+md5sums=('10384bcaa373eaaad343f189b151dee9')
+b2sums=('afb24a5ae0141d35ee6b6b2cfc63648e6a12da84139b959880a65938d01f964c7ed38d3dc5c776d7d10b93a173d385e15dfcef2d76c3f362c3bb3cbe5b1b2fd3')
 
 build() {
   mkdir build
