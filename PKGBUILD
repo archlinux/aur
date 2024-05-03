@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=wateRmelon
-_pkgver=2.8.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
-pkgver=2.8.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='Illumina 450 and EPIC methylation array normalization and metrics'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-rpmm
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('34a5441688298f8b710b607a89fd52f9a5b50d89fda7a744f196a5683f0e42e5')
+sha256sums=('3bfcab486704bca8253fd39015016ed2aab9484a9c5a2607969a52fa54daf4a7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
