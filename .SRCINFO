@@ -1,6 +1,6 @@
 pkgbase = r-msmstests
 	pkgdesc = LC-MS/MS Differential Expression Tests
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/msmsTests
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-msmstests
 	depends = r-msmseda
 	depends = r-msnbase
 	depends = r-qvalue
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/msmsTests_1.40.0.tar.gz
-	sha256sums = c9bc06dce29caa101c42d9bf45d1162e10b75852bdc02babb2d9c154b7272e36
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/msmsTests_1.42.0.tar.gz
+	sha256sums = 1862191b1ec03a024f0105ad48282b14908ea41063e39ce17c6e919fb4e64d39
 
 pkgname = r-msmstests
