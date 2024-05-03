@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RegionalST
-_pkgver=1.0.1
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d9589bef7f1408c77dee510baa14b4ad')
-b2sums=('82d2fe4733e6bbfc397e0f52e30b13dafd96c5305ac67b8461ceb9edb86c3671d7924b05b441665a1b86c864ae8def6d0687773984f60731a0049132e3257749')
+md5sums=('09f2ca1e03d5642dc250df00c8f3baff')
+b2sums=('efd5284f3855ba18b58794570b44211c0a5b214bc2c5ddae3b43f065cb3ccafad162f7389ff0f6b6b9a059d0dd1b8f16f104212b4c7e7ca02dab37b3e8301d52')
 
 build() {
   mkdir build
