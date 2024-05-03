@@ -1,6 +1,6 @@
 pkgbase = r-organism.dplyr
 	pkgdesc = dplyr-based Access to Bioconductor Annotation Resources
-	pkgver = 1.30.1
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Organism.dplyr
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-organism.dplyr
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm10.ensgene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Organism.dplyr_1.30.1.tar.gz
-	sha256sums = 85e0093b2775950560ec3c0d27b2aea1a1fbd2f6a5423c88b5bfe5fe7074a5e8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Organism.dplyr_1.32.0.tar.gz
+	sha256sums = bd3b28fea7289f4a582328eb8912a66c7397cc440c15540bce9e77b5b0bfe50f
 
 pkgname = r-organism.dplyr
