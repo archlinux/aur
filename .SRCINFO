@@ -1,7 +1,7 @@
 pkgbase = r-gnosis
 	pkgdesc = Genomics explorer using statistical and survival analysis in R
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/GNOSIS
 	arch = any
 	license = MIT
@@ -33,8 +33,8 @@ pkgbase = r-gnosis
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GNOSIS_1.0.0.tar.gz
-	md5sums = e3cbf07a76da1ae0aa6e669bad2cb778
-	b2sums = ed6d96c126542747ff9043200f89210af405e0dd397313e1d35be0d592be5fe0c1220403f78858367556dc783404282cc73cdfb6f25baad7c28b6898c3d0ceea
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GNOSIS_1.2.0.tar.gz
+	md5sums = 36df6ab9836ea74234d54fba619a0e63
+	b2sums = 559e13ad1c9fec582e86ceeb6f67711309f7afc58ae1de35005c3cc3380046c7d4b659ec2d036967992f8cf4464fef0d12b512e21d61233e4c175ccc0c932bb9
 
 pkgname = r-gnosis

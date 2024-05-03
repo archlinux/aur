@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GNOSIS
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Genomics explorer using statistical and survival analysis in R"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -42,8 +42,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e3cbf07a76da1ae0aa6e669bad2cb778')
-b2sums=('ed6d96c126542747ff9043200f89210af405e0dd397313e1d35be0d592be5fe0c1220403f78858367556dc783404282cc73cdfb6f25baad7c28b6898c3d0ceea')
+md5sums=('36df6ab9836ea74234d54fba619a0e63')
+b2sums=('559e13ad1c9fec582e86ceeb6f67711309f7afc58ae1de35005c3cc3380046c7d4b659ec2d036967992f8cf4464fef0d12b512e21d61233e4c175ccc0c932bb9')
 
 build() {
   mkdir build
