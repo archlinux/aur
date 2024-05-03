@@ -15,4 +15,6 @@ options=("!strip")
 
 package() {
   install -Dm 775 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
+
+  ln -s "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/snyk-linux"
 }
