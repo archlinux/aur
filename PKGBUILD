@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=epimutacions
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Robust outlier identification for DNA methylation data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -58,8 +58,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('73fdaf9db5e5d035601282d6e5d832fd')
-b2sums=('d7b1b313551d70a8793f556a0532f74f16b85f504101304cd6481c34a395807bab9e7d793f43f54b8159f370ac4be7b8db2456a19c6aa4b05b7c60fe7b90fcaa')
+md5sums=('694c3b410dc04c920577d6b16d905fe1')
+b2sums=('aa049bfa3553767e84651b2e307ebd73711db57e961d214c5728ce1d53ca0ed21c9838242add7c952b2b62ae4190ce0bacda059a652f3e93dcf0832a8183bf3b')
 
 build() {
   mkdir build
