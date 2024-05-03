@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSVA
-_pkgver=1.50.5
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.5
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Gene Set Variation Analysis for microarray and RNA-seq data'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Gene Set Variation Analysis for Microarray and RNA-Seq Data"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-biobase
   r-biocparallel
   r-biocsingular
@@ -22,6 +21,7 @@ depends=(
   r-s4vectors
   r-singlecellexperiment
   r-sparsematrixstats
+  r-spatialexperiment
   r-summarizedexperiment
 )
 optdepends=(
@@ -47,14 +47,15 @@ optdepends=(
   r-shinyjs
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5481badc5dabac2cfe6519ee2a098a03782bc78243ecd5a4a6b65e27cd192f58')
+md5sums=('238966f363aa6f24ec642838bcbfc6ff')
+b2sums=('c07e166d156fc05615018a01ddf934905c725b9ce6254944e7222462cd66fd34a543ad958f0df5fd534d47451e0a82159f727d4d9e64e9b95a1f43548901aa68')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
