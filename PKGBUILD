@@ -2,11 +2,11 @@
 pkgname=python-kiutils
 _name=${pkgname#python-}
 pkgver=1.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and SCM-friendly KiCad file parser based on Python dataclasses"
 url="https://github.com/mvnmgrx/kiutils"
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")

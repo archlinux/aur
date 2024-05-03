@@ -1,13 +1,14 @@
 pkgbase = python-kiutils
 	pkgdesc = Simple and SCM-friendly KiCad file parser based on Python dataclasses
 	pkgver = 1.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mvnmgrx/kiutils
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/k/kiutils/kiutils-1.4.8.tar.gz
 	sha256sums = 18c5803283e579cfe8772955e7702548d7139e0fc630daa579ed6b2b767db846
