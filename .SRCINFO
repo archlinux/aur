@@ -1,6 +1,6 @@
 pkgbase = r-sva
 	pkgdesc = Surrogate Variable Analysis
-	pkgver = 3.51.0
+	pkgver = 3.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sva
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-sva
 	optdepends = r-pamr
 	optdepends = r-testthat
 	optdepends = r-zebrafishrnaseq
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sva_3.51.0.tar.gz
-	sha256sums = 753736da409fb2bfc17bb1861d63b1bee18d5d90ca3dc61ce00bfbe9850fa394
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sva_3.52.0.tar.gz
+	sha256sums = 7f3ca65871666e4d1a41e997b0ae2932bb2037bb03092a3b33a615574942381e
 
 pkgname = r-sva
