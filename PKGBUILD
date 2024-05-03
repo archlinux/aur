@@ -1,4 +1,5 @@
-# Maintainer: JunYoung Gwak <aur@jgwak.com>
+# Maintainer: Zhirui Dai <daizhirui at hotmail dot com>
+# Contributor: JunYoung Gwak <aur@jgwak.com>
 # Contributor: Dylon Edwards <deltaecho at archlinux dot us>
 
 pkgbase=open3d
