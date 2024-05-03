@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rifi
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="'rifi' analyses data from rifampicin time series created by microarray or RNAseq"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5d070b26ca40e04e4e3f9851853caa48')
-b2sums=('37f255dba78ae93a8ef3ed40f3ae19baaccc8277b4bd2088c3d29f5a722fd5ad3d323f484aebfcd1172d020cc71feed030d59dd276ff832b37b3c0f5dccddae9')
+md5sums=('ca63902fc1f80205f1c717d77688fec7')
+b2sums=('1d5e843ab7adb9f5b188727d9e4d6dfc722452a2455d9dc2c89d941544cfce0b1d246f0433c5eb1cd80790c2deb8a00843bd430334c21ffc6caeffe607fc7ee9')
 
 build() {
   mkdir build
