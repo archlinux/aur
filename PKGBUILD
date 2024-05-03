@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle
 _app_id="de.philippun1.$pkgname"
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
 )
 conflicts=('turtlegit')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('627880abe88f138066e91ade27e09101596506d621abef82e023d4199f662d54')
+sha256sums=('3c90de1e8e8711472c4474cf6169f24c8ff403221715197b360e2bed65e19160')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -49,6 +49,7 @@ package() {
    cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
+  install -Dm755 "${pkgname%-git}_cli" -t "$pkgdir/usr/bin/"
   install -Dm644 "data/icons/hicolor/scalable/apps/${_app_id}.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 "data/icons/hicolor/symbolic/apps/${_app_id}-symbolic.svg" -t \
