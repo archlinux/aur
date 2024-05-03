@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('npm')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-${pkgver//_/-}.tgz")
 noextract=($_npmname-${pkgver//_/-}.tgz)
-sha256sums=('c76f39732ed3594d07d03a51c3724f10a40c6343f385ddb48caa2ba7ef0a66cd')
+sha256sums=('5d9ddde6054c9b2c4a55907886fb97c1504b9370679ae00e59f5321c265b967c')
 
 package() {
   mkdir -p "$pkgdir"/usr/lib/node_modules/$_npmname/node_modules
