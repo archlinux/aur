@@ -1,6 +1,6 @@
 pkgbase = r-bsseq
 	pkgdesc = Analyze, manage and store bisulfite sequencing data
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bsseq
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = r-bsseq
 	optdepends = r-rmarkdown
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bsseq_1.38.0.tar.gz
-	sha256sums = e0bdc6810757910674d493238d78f5079d048c718deb94df594ab82a4afed729
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bsseq_1.40.0.tar.gz
+	sha256sums = dd6b5d3d886f3af35804dd9d3af421c13568e64a73447b85c7e653427d4eeaac
 
 pkgname = r-bsseq
