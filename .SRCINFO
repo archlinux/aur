@@ -1,13 +1,13 @@
 pkgbase = r-starank
 	pkgdesc = Stability Ranking
-	pkgver = 1.45.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/staRank
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-cellhts2
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/staRank_1.45.0.tar.gz
-	sha256sums = aa3faeed85982f2f3a7e5e71982197e079abcfa6b6e0ea38ca4dfd087083de5f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/staRank_1.46.0.tar.gz
+	sha256sums = c38edc884887587f9a0cabfa480a75feaf03f634e2c9a7628327c091a226e28f
 
 pkgname = r-starank
