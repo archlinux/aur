@@ -2,25 +2,27 @@
 pkgbase=python-astroscrappy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Speedy Cosmic Ray Annihilation Package in Python"
 arch=('i686' 'x86_64')
 url="https://astroscrappy.readthedocs.io"
-license=('BSD')
-makedepends=('python-setuptools-scm'
+license=('BSD-3-Clause')
+makedepends=('python-setuptools-scm>=6.2'
              'cython'
              'python-wheel'
              'python-build'
              'python-installer'
-             'python-extension-helpers'
+             'python-extension-helpers>=1'
              'python-numpy'
-             'python-sphinx-astropy'
-             'python-astropy')
+             'python-sphinx-astropy')
 checkdepends=('python-pytest-doctestplus'
-              'python-scipy') # astropy already in makedepends
-source=("https://files.pythonhosted.org/packages/source/a/astroscrappy/astroscrappy-${pkgver}.tar.gz")
-md5sums=('43e189d666fab2ecf476f2a569f37760')
+              'python-astropy'
+              'python-scipy')
+source=("https://files.pythonhosted.org/packages/source/a/astroscrappy/astroscrappy-${pkgver}.tar.gz"
+        'setup.cfg')
+md5sums=('1242aa6f352cb23a9a94cc494ab02447'
+         '60e14b6062e639028bf12059193ae884')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -29,12 +31,12 @@ get_pyver() {
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    sed -i "/oldest-supported-numpy/d" pyproject.toml
+    cat ${srcdir}/setup.cfg >> setup.cfg
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
@@ -43,7 +45,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-astroscrappy() {
