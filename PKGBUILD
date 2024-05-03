@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=slingshot
-_pkgver=2.10.0
+_pkgver=2.12.0
 pkgname=r-${_pkgname,,}
-pkgver=2.10.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Tools for ordering single-cell sequencing'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2d30c816b11d7f32ed87afcdf3a30cb9e130a1abac28d8c792d556c2ae047260')
+sha256sums=('cc2622ffd37dcb60e54b807730e0bec12e0a7a87380904229c24d92515f5ad14')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
