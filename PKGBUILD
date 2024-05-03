@@ -3,7 +3,7 @@
 pkgname='python-arc-alkali-rydberg-calculator'
 _name='ARC-Alkali-Rydberg-Calculator'
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Perform calculations of single- and two-atom properties for alkali metal and divalent atoms."
 url="https://github.com/nikolasibalic/ARC-Alkali-Rydberg-Calculator"
 depends=('python-scipy' 'python-oldest-supported-numpy' 'python-matplotlib' 'python-sympy' 'python-lmfit')
