@@ -1,7 +1,7 @@
 pkgbase = cruft
 	pkgdesc = Maintain all the necessary boilerplate for packaging and building projects separate from the code you intentionally write. Fully compatible with existing Cookiecutter templates
 	pkgver = 2.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cruft.github.io/cruft/
 	arch = any
 	license = MIT

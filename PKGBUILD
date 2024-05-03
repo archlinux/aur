@@ -2,7 +2,7 @@
 
 pkgname=cruft
 pkgver=2.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Maintain all the necessary boilerplate for packaging and building projects separate from the code you intentionally write. Fully compatible with existing Cookiecutter templates'
 arch=('any')
 url='https://cruft.github.io/cruft/'
