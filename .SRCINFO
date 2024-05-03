@@ -1,6 +1,6 @@
 pkgbase = r-psygenet2r
 	pkgdesc = psygenet2r - An R package for querying PsyGeNET and to perform comorbidity studies in psychiatric disorders
-	pkgver = 1.34.1
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/psygenet2r
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-psygenet2r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/psygenet2r_1.34.1.tar.gz
-	sha256sums = 85aed0f1e77da2fc7ba3ef62a07e22605dbc7dce90398a36a009b96d8efc1223
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/psygenet2r_1.36.0.tar.gz
+	sha256sums = bb9bbec986e547a1b12fb9c87a0cc081d4496c0cbca934edc5c5ce494b8b12ce
 
 pkgname = r-psygenet2r
