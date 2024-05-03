@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSnbase
-_pkgver=2.28.1
+_pkgver=2.30.1
 pkgname=r-${_pkgname,,}
-pkgver=2.28.1
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Base Functions and Classes for Mass Spectrometry and Proteomics'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="Base Functions and Classes for Mass Spectrometry and Proteomics"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-affy
   r-biobase
   r-biocgenerics
@@ -26,11 +25,11 @@ depends=(
   r-pcamethods
   r-plyr
   r-protgenerics
+  r-psmatch
   r-rcpp
   r-s4vectors
   r-scales
   r-vsn
-  r-xml
 )
 optdepends=(
   r-annotationhub
@@ -55,17 +54,19 @@ optdepends=(
   r-shiny
   r-summarizedexperiment
   r-testthat
+  r-xml
   r-zoo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('54df0a5aa0aa1c52f0d008faee610edf359c9039aa2d842526d4235b6aad4298')
+md5sums=('6f84eff4794ce43c0937ee519c151c2d')
+b2sums=('71d8c4f0cfebcfc8443762d9346a9762307e5e626db60b79c68c993163aea78c4d4ab00b7868a38452e4ae46ef0814801d2f31c0118ca8a2b251fb2d3bc62e13')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
