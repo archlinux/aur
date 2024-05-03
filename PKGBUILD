@@ -1,7 +1,7 @@
 # Maintainer: Luke Labrie-Cleary <luke dot cleary at copenhagenatomics dot com>
 pkgname=moab-git
 pkgver=5.5.0.r7.g236d1249a
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mesh-Oriented datABase MOAB is a component for representing and evaluating mesh data"
 arch=('x86_64')
 url="https://bitbucket.org/fathomteam/moab"
@@ -11,13 +11,13 @@ depends=(
 	python-numpy
 	blas
 	lapack
+	cython
 )
 makedepends=(
 	git
 	eigen
 	netcdf
 	hdf5
-	cython
 	python-setuptools
 	"glibc>=2.34"
 	cmake
