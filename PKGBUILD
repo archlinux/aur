@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=INSPEcT
-_pkgver=1.32.1
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Modeling RNA synthesis, processing and degradation with RNA-seq data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -37,8 +37,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d6ed794228c1ef9d64e7ae97278d7ccf')
-b2sums=('29c60d50f1ce663d7b7019bd8d58c6867b1339a1865a9af773e84087b21ffde4bcdfbee2880bbb10f22b801e9aa60a788e4e2a2c4757f2774edc55f7954c7974')
+md5sums=('8434b90d26b3015b5ffc56f47d60dc75')
+b2sums=('497e39d14a12b97ec7a94b7d781d42c0840c42a09c1e9e06d6eab68bb1304d5382d5116f89bdbfcc01ac8af9b35d08130ae2177a80b2e71a4bafbdf4119ef3ad')
 
 build() {
   mkdir build
