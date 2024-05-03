@@ -1,6 +1,6 @@
 pkgbase = r-scpipe
 	pkgdesc = pipeline for single cell RNA-seq data analysis
-	pkgver = 2.2.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scPipe
 	arch = x86_64
@@ -68,7 +68,7 @@ pkgbase = r-scpipe
 	optdepends = r-testthat
 	optdepends = r-umap
 	optdepends = r-xml2
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scPipe_2.2.0.tar.gz
-	sha256sums = 2f88996579995372e8f93beb51fe0ea23970eceaf3f947b9cc3b915052b4ae67
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scPipe_2.4.0.tar.gz
+	sha256sums = 09202204de64c8581ad5062ad7593aa1effa76727a91e8107a2abad93b36e858
 
 pkgname = r-scpipe
