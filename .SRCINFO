@@ -1,6 +1,6 @@
 pkgbase = r-dorothea
 	pkgdesc = Collection Of Human And Mouse TF Regulons
-	pkgver = 1.14.1
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/dorothea
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-dorothea
 	optdepends = r-tidyr
 	optdepends = r-utils
 	optdepends = r-viper
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/dorothea_1.14.1.tar.gz
-	sha256sums = 6579eca35c7ea6b4a9627fc1f57bf8b61d793ece02976fbb4ac69fe229b6552e
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/dorothea_1.16.0.tar.gz
+	sha256sums = 6f31b595838047c767475988874afddbc65a5e6e2fa7f15423d8b8a372304923
 
 pkgname = r-dorothea
