@@ -9,8 +9,8 @@
 
 _target=arm-linux-gnueabihf
 pkgname=${_target}-glibc
-pkgver=2.38
-pkgrel=4
+pkgver=2.39
+pkgrel=1
 pkgdesc="GNU C Library"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
@@ -26,7 +26,7 @@ source=(https://ftp.gnu.org/gnu/glibc/glibc-${pkgver}.tar.xz{,.sig}
         xldd)
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
-sha256sums=('fb82998998b2b29965467bc1b69d152e9c307d2cf301c9eafb4555b770ef3fd2'
+sha256sums=('f77bd47cf8170c57365ae7bf86696c118adb3b120d3259c64c502d3dc1e2d926'
             'SKIP'
             '1ecf90005ff5a65374c7266acb164fa265aff92328593bdca2352acf5dab240d'
             'cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0'
