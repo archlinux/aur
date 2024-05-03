@@ -2,13 +2,13 @@
 
 pkgname=battle-isle-gog
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A turn-based tactics game which tells the story about the wars on the fictional planet, Chromos."
 url="https://www.gog.com/game/battle_isle_platinum"
 license=('custom:eula')
 groups=('games')
 arch=('any')
-makedepends=('innoextract-git' 'icoutils')
+makedepends=('innoextract' 'icoutils')
 depends=('dosbox')
 optdepends=('unionfs-fuse: mounting game folder to home for savegames and settings')
 install=$pkgname.install
