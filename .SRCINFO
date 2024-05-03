@@ -1,0 +1,16 @@
+pkgbase = python-gersemi
+	pkgdesc = A formatter to make your CMake code the real treasure
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/BlankSpruce/gersemi
+	arch = any
+	license = mpl-2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-appdirs
+	depends = python-lark-parser
+	depends = python-yaml
+	source = https://github.com/BlankSpruce/gersemi/archive/refs/tags/0.12.1.tar.gz
+	sha256sums = a4c92c1eed5f94b81ed96d15a52417bfeb73ffb6b79b5a73dd1b4b7a104c6f1d
+
+pkgname = python-gersemi
