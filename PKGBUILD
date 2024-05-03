@@ -1,7 +1,7 @@
 # Maintainer: Debendra Oli <debendraoli@pm.me>
 
 pkgname=kurtosis-cli-bin
-pkgver=0.89.2
+pkgver=0.89.3
 pkgrel=1
 pkgdesc="Kurtosis is a platform for packaging and launching environments of containerized services with a focus on approachability for the average developer."
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('docker')
 url="https://github.com/kurtosis-tech/kurtosis"
 license=('Business Source License 1.1')
 source=("$pkgname-${pkgver//_/-}.tar.gz::${url}-cli-release-artifacts/releases/download/$pkgver/kurtosis-cli_${pkgver}_linux_amd64.tar.gz" "kurtosis.service" "kurtosis-cli-bin.install")
-sha256sums=('f53d2a1ad1b922678c9ede77d9d689870cf88a8b96faacc5c9deee9d325d8a9c'
+sha256sums=('9a7c31a1be62b3f4966c969ba2caf08b5336c4ee057783ca2e7b7461e23648d1'
             'c6cb71131db441b91fbd550c61fbbdd1ae3e121803f5460083a1e71c70db3cd9'
             'ce59007498a06daddae5e6f8b2e193ac77d344fdaf3521219eaa22cab6b8d17f')
 
