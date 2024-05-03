@@ -1,6 +1,6 @@
 pkgbase = r-eventpointer
 	pkgdesc = An effective identification of alternative splicing events using junction arrays and RNA-Seq data
-	pkgver = 3.10.0
+	pkgver = 3.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EventPointer
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = r-eventpointer
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EventPointer_3.10.0.tar.gz
-	sha256sums = e49e6dc9ae689350b776fc122a90700bd4531b659c3d7d3d1cc36b4ad76a6297
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EventPointer_3.12.0.tar.gz
+	sha256sums = 11dcf8dc8c9d3ad63ecba27843a53174a767254ae55b67416d720ece6fd223b4
 
 pkgname = r-eventpointer
