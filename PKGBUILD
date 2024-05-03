@@ -2,7 +2,7 @@
 
 pkgname=vja
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple CLI for Vikunja'
 arch=('any')
 url='https://gitlab.com/ce72/vja'

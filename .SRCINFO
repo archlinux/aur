@@ -1,7 +1,7 @@
 pkgbase = vja
 	pkgdesc = A simple CLI for Vikunja
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/ce72/vja
 	arch = any
 	license = GPL-3.0-or-later
