@@ -1,6 +1,6 @@
 pkgbase = iotas
 	pkgdesc = Simple note taking
-	pkgver = 0.2.13
+	pkgver = 0.2.14
 	pkgrel = 1
 	url = https://gitlab.gnome.org/cheywood/iotas
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = iotas
 	depends = libadwaita
 	depends = python
 	depends = gtksourceview5
-	source = https://gitlab.gnome.org/cheywood/iotas/-/archive/0.2.13/iotas-0.2.13.tar.gz
-	b2sums = 46f6c15e847d79e17ef1c3f3f28e795921469879589e540f70f5d0f65bf2ad062a3c7de7887ef3bb05b60949d946d48b7b85fd9065ace3443d09db0a26559cf1
+	source = https://gitlab.gnome.org/cheywood/iotas/-/archive/0.2.14/iotas-0.2.14.tar.gz
+	b2sums = 687dc6d8ab2f23fdca4a6fe5f3dc3a5fd97fc09209f884d9a91391b74a194c2e48961cb825431224c460e9024622e4bc6d8866f4b1afcf3fc0929d94a39f3654
 
 pkgname = iotas
 	depends = libadwaita
