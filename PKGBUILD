@@ -4,7 +4,7 @@
 
 _name=wsgi_intercept
 pkgname=python-wsgi-intercept
-pkgver=1.11.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Intercept socket connection to wsgi applications for testing"
 arch=(any)
@@ -33,14 +33,13 @@ optdepends=(
   'python-urllib3: for intercepting requests of python-urllib3'
 )
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('8fd0ff0eadc5a19831f089d34bbf879b58c79e27c340128298a4385578bbfd5e86a14f0168a418f5c8e40062b14993a577b07be02d29e954486b7e2a04597ee8')
-b2sums=('3008837e8125c212920b0a5a6e6c0a65f279cf60a251bd853006b1e12774da80cbf737f1db5243a30cc9d510fedeb5e4127a81d3cb5210392cd5c561109a252b')
+sha512sums=('cd887615c50be4d9dad7202f7d085ecf6dc2d469ab1e0d37ba49f380947efdc18b9b1b647d9657c58e822e67687324fbafd81efc8992579ebbfff40c944f558f')
+b2sums=('db2b9b3d6079537c442f5d954e87d6c8571d9874483d23ee9d3b8a6f15d1148c0e5f45e020fb3489810894444ed6e9903fa731ae74461c08e0f0ae306ff84a83')
 
 build() {
   cd $_name-$pkgver
   python -m build --wheel --no-isolation
-  cd docs
-  make man
+  sphinx-build docs build/sphinx -b man
 }
 
 check() {
@@ -50,12 +49,10 @@ check() {
 
 package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-
   cd $_name-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 README -t "$pkgdir/usr/share/$pkgname/"
-  install -vDm 644 docs/_build/man/${_name}.1 -t "$pkgdir/usr/share/man/man1/"
-
+  install -vDm 644 build/sphinx/$_name.1 -t "$pkgdir/usr/share/man/man1/"
   rm -frv "$pkgdir/$site_packages/$_name/tests/"
 }
