@@ -3,10 +3,10 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=annotate
-_pkgver=1.80.0
+_pkgver=1.82.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Annotation for microarrays"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -25,12 +25,14 @@ checkdepends=(
   r-runit
 )
 optdepends=(
+  r-biocstyle
   r-biostrings
   r-genefilter
   r-go.db
   r-hgu95av2.db
   r-humanchrloc
   r-iranges
+  r-knitr
   r-org.hs.eg.db
   r-org.mm.eg.db
   r-rae230a.db
@@ -40,8 +42,8 @@ optdepends=(
   r-tkwidgets
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('04d25cadc03401556364f8ca9c3b2a61')
-b2sums=('9d827fd87c50bbd3812c8d370d77e0db7214a3b7c370adaab8dc7f87d1b8bfba9fe784986cb7788bfaf4815a2e1cea441e5c257f2028f0eb06cedecbffe84072')
+md5sums=('3360e99f514042ac90eae8ff68e77e47')
+b2sums=('34dfc32b111da2f801f2e1867d9c62488be3fa6da7e0c2e1a7df05e617b9f113ee333061f291cb601906e1a75b6d3b5a8cc947fc9d43d4423a751e813f38a1a7')
 
 build() {
   mkdir build
