@@ -1,6 +1,6 @@
 pkgbase = youtube-dl-gui-git
 	pkgdesc = Cross platform front-end GUI of the popular youtube-dl written in wxPython
-	pkgver = 1.8.4.r22.g23ccbc4
+	pkgver = 1.8.5.r57.g574ed2e
 	pkgrel = 1
 	url = https://github.com/oleksis/youtube-dl-gui
 	arch = any
@@ -14,7 +14,6 @@ pkgbase = youtube-dl-gui-git
 	optdepends = ffmpeg: convert video files to audio-only files
 	optdepends = youtube-dl: alternative to the program downloaded by youtube-dl-gui
 	provides = youtube-dl-gui
-	conflicts = youtube-dl-gui
 	source = youtube-dl-gui-git::git+https://github.com/oleksis/youtube-dl-gui.git
 	sha256sums = SKIP
 
