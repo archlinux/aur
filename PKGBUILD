@@ -5,15 +5,14 @@ pkgname='python-wassima-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
-pkgver=1.1.0.r0.gcfb12bf
-pkgrel=3
+pkgver=1.1.1.r0.ga7c9e9f
+pkgrel=2
 pkgdesc='Access your OS root certificates with the atmost ease (built from latest commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/wassima'
 license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=(
   'git'
-  'maturin'
   'python-build'
   'python-hatchling'
   'python-installer'
@@ -23,7 +22,7 @@ makedepends=(
 depends=(
   'gcc-libs'
   'glibc'
-  'python'
+  'python>=3.7'
   'python-certifi'
 )
 source=("git+$url.git")
@@ -49,8 +48,10 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+    LICENSE
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+    {CHANGELOG,README,SECURITY}.md
 }
 
 # eof
