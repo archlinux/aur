@@ -1,6 +1,6 @@
 pkgbase = r-rqc
 	pkgdesc = Quality Control Tool for High-Throughput Sequencing Data
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Rqc
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = r-rqc
 	depends = r-shortread
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rqc_1.36.0.tar.gz
-	sha256sums = 2c1234550fe8d3bf5fb6dd6a656cc07bcb54d3cef5ce5fb7e0cca705f6733043
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rqc_1.38.0.tar.gz
+	sha256sums = 14f4b49306fb62b08b415a90994782ee527dfbef543da435e651ddcd9e2fed6b
 
 pkgname = r-rqc
