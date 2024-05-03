@@ -17,6 +17,7 @@ md5sums=('SKIP')
 
 build() {
     cd "${gitname}/"
+    git checkout tags/ver-"$pkgver"
     meson . _build --prefix=/usr
     ninja -C _build
 }
