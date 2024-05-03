@@ -1,6 +1,6 @@
 pkgbase = r-findit2
 	pkgdesc = find influential TF and Target based on multi-omics data
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/FindIT2
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-findit2
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
 	optdepends = r-txdb.athaliana.biomart.plantsmart28
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/FindIT2_1.8.0.tar.gz
-	sha256sums = 871fe52af12ab1accc1e24c676285a59828b198887d0f263f85af91039450cfe
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FindIT2_1.10.0.tar.gz
+	sha256sums = c259f2a45cbc37d81ffe9ac2bbc87346ef302d316f305debdf969e6069af6e0d
 
 pkgname = r-findit2
