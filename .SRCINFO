@@ -1,6 +1,6 @@
 pkgbase = r-spatialde
 	pkgdesc = R wrapper for SpatialDE
-	pkgver = 1.8.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/spatialDE
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-spatialde
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/spatialDE_1.8.1.tar.gz
-	sha256sums = 0404fb4c953aeaea27adc0ac8802982be51b0fbc5172491297402d8e2ed8f2ac
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/spatialDE_1.10.0.tar.gz
+	sha256sums = 2f84fa21d5a78251afc2fc788275f60c532dd0b7b566b2eb3aecc9ba89fed70a
 
 pkgname = r-spatialde
