@@ -1,6 +1,6 @@
 pkgbase = r-dmcfb
 	pkgdesc = Differentially Methylated Cytosines via a Bayesian Functional Approach
-	pkgver = 1.16.1
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DMCFB
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-dmcfb
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DMCFB_1.16.1.tar.gz
-	sha256sums = 7ca7178b0df7455c2f78818fd7e48d4477e74e4b3be201e971cb2a3096850048
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DMCFB_1.18.0.tar.gz
+	sha256sums = 8a10461247bf3ecdb7588ab398cc3550b9c95f09de2c7c17d1151e2f273eee42
 
 pkgname = r-dmcfb
