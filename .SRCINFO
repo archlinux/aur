@@ -19,7 +19,7 @@ pkgbase = ampache
 	source = https://github.com/ampache/ampache/releases/download/6.4.0/ampache-6.4.0_all_squashed_php8.2.zip
 	source = nginx-example.conf
 	source = ampache.install
-	sha256sums = 30b9d80ebeb25bd9ab6192e2d3e898fbdd75105f6f05715e47fc9e11579ccb5d
+	sha256sums = 27ba0cc33b0a19ca8c3011598d28dc6f35ace54b342104d9e3aeb0fc6556092c
 	sha256sums = d579f125fc85b6862dc2bd950b6aa3a4ffdad219323b8ee2c93282c8f223c3eb
 	sha256sums = bd9bad5e2825dbc203a7f8e478ba44657de559ce6fe4bd6d079089bbe47734db
 
