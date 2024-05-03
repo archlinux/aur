@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SPIAT
-_pkgver=1.4.2
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -53,8 +53,8 @@ optdepends=(
   r-umap
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cdd75c21f47e1cfe43a806043338ff1c')
-b2sums=('e36dd728940ca18cac123a6d9c906ca2ff8d9ec45bc7c07265c3d930db629e05eff24fd860aca0de73c9a23b658f107274ea187dcc08b3c9d79cddb7697323db')
+md5sums=('b5dce4a743b0692b847a8795b249c549')
+b2sums=('548dc503f1c6648699e1b0ea60876dd60f1cd128a878330c0d08a5f263fb2fe4a397d0c480d4c0a4dff3cb1b39288fd014d6dc7724a27cdf427647f398448488')
 
 build() {
   mkdir build
