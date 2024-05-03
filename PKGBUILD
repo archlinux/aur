@@ -2,7 +2,7 @@
 pkgname=matrix-commander-git
 _name="${pkgname%-git}"
 pkgver=r368.078da5f
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple CLI-based Matrix client (from git master)"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
