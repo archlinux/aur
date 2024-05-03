@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cosmiq
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='cosmiq - COmbining Single Masses Into Quantities'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e91d9d53931954baaa3dcb31e21bf7e37d570facfbb0cdb0d878d9e023ff2cd7')
+sha256sums=('1f75bc48def94844ec5750b3eefa564bcaaf12e7fa14b32bd276b8f4b8f46a67')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
