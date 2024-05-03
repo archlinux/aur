@@ -1,0 +1,17 @@
+pkgbase = python-pygost
+	pkgver = 5.13
+	pkgrel = 1
+	url = http://www.pygost.cypherpunks.ru
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = python-pygost-5.13.tar.zst::http://www.pygost.cypherpunks.ru/pygost-5.13.tar.zst
+	source = python-pygost-5.13.tar.zst.asc::http://www.pygost.cypherpunks.ru/pygost-5.13.tar.zst.asc
+	validpgpkeys = E6FD1269CD0C009E
+	sha256sums = 43c6ca60703352acfc074d6847b0c0652e92ba16f568dac039e645dcf291b360
+	sha256sums = SKIP
+
+pkgname = python-pygost
