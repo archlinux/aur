@@ -1,0 +1,13 @@
+pkgbase = cloudlogcatqt-git
+	pkgdesc = Qt app (Linux, Windows, Mac) for providing CAT support for Cloudlog
+	pkgver = r45.c067920
+	pkgrel = 1
+	url = https://github.com/myzinsky/CloudLogCatQt
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	source = cloudlogcatqt-git::git+https://github.com/myzinsky/CloudLogCatQt.git
+	sha256sums = SKIP
+
+pkgname = cloudlogcatqt-git
