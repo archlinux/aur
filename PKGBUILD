@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BSgenome
-_pkgver=1.70.2
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
-pkgver=1.70.2
+pkgver=1.72.0
 pkgrel=1
 pkgdesc='Software infrastructure for efficient representation of full genomes and their SNPs'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   r-xtrasnplocs.hsapiens.dbsnp144.grch38
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2d1879cc4aaab1ebdeeb36228143800dcbdee17cc13aba1f21524747cfc3190b')
+sha256sums=('98541684ea234a3c102338b4a4d055817d92a088b9e67ea88b6a339fa79a4bde')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
