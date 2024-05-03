@@ -2,7 +2,7 @@
 pkgname=python-spacy-fi_core_news_lg
 pkgver=3.7.0
 pkgrel=1
-pkgdesc='Danish pretrained model for spaCy (large)'
+pkgdesc='Finnish pretrained model for spaCy (large)'
 arch=(any)
 url='https://spacy.io/models/fi#section-fi_core_news_lg'
 license=(CCPL)
