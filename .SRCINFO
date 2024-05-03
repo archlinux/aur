@@ -1,13 +1,13 @@
 pkgbase = fantasy-general-gog
 	pkgdesc = A turn-based strategy game set in a high fantasy world.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gog.com/game/fantasy_general
 	install = fantasy-general-gog.install
 	arch = any
 	groups = games
 	license = custom:eula
-	makedepends = innoextract-git
+	makedepends = innoextract
 	makedepends = icoutils
 	depends = dosbox
 	optdepends = unionfs-fuse: mounting game folder to home for savegames and settings
@@ -29,4 +29,3 @@ pkgbase = fantasy-general-gog
 	sha256sums = ed21a4119450a6648369826e1da44712e92bd629c77726e021dfd7f19515f146
 
 pkgname = fantasy-general-gog
-

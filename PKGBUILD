@@ -2,13 +2,13 @@
 
 pkgname=fantasy-general-gog
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A turn-based strategy game set in a high fantasy world."
 url="https://www.gog.com/game/fantasy_general"
 license=('custom:eula')
 groups=('games')
 arch=('any')
-makedepends=('innoextract-git' 'icoutils')
+makedepends=('innoextract' 'icoutils')
 depends=('dosbox')
 optdepends=('unionfs-fuse: mounting game folder to home for savegames and settings')
 install=$pkgname.install
