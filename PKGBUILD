@@ -5,7 +5,7 @@ pkgname='python-jh2-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=5.0.3.r0.g66b5a7d
-pkgrel=3
+pkgrel=4
 pkgdesc='HTTP/2 State-Machine based protocol implementation (built from latest commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/h2'
@@ -57,6 +57,12 @@ package() {
   cd "$_srcname"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+    {CHANGELOG,README}.rst
+
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+    LICENSE
 }
 
 # eof
