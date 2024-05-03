@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=preciseTAD
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='preciseTAD: A machine learning framework for precise TAD boundary prediction'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7aa060c26c715e0b5f4767c6f92dbb3fab7c50c9ae036dd1c1113e9e4a0fc7ed')
+sha256sums=('6e8c136abde3e4745c4e4f42d9753a348880a05a4fea0d8404506c8bf001b83f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
