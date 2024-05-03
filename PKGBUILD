@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scifer
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Single-Cell Immunoglobulin Filtering of Sanger Sequences"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('82fb184bec0c09d5f7067baf81f8fee1')
-b2sums=('f1639e305ad06eba8c97912b0b600b98f64f0e6bf0d74078f67432a53f061635ace877bb854733d5773231b19ee73a6b7521172d7291ae5a16de86e0c9d727ae')
+md5sums=('92ff7394e0644ff2533e941cd2bf52bd')
+b2sums=('05b987ad730db1846feaceb81ceecabe447550b9245c7195439f8c86cd4d88f7ee3d83c971c5c3fa75de41a6446df5513808ed19f4070c1ed16c7f4b75c426b9')
 
 build() {
   mkdir build
