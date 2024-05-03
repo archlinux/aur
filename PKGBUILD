@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HiCool
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Processing Hi-C raw data within R"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('04aa2ef16336d5c43fc0a02291ba7887')
-b2sums=('d56c592e447c857715e4a78bb1adde4b5ff7103f5b4f8d60ea2ca6fb98c0d8010ccd24ccf56c7cf698c025eb006c0b64030a2ba7f33ab10009caf700f8f7fb43')
+md5sums=('7c441fb3e72a20d37fd685dacd43830c')
+b2sums=('9aefe562fab88aa683c7b4908ebf0be838720a95ca0fc43d57f531ab91eaa4f17dd848ba18858ff964badd6c5dc00b6929ae767bb380e05757af8b8762456751')
 
 build() {
   mkdir build

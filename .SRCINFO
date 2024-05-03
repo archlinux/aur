@@ -1,7 +1,7 @@
 pkgbase = r-hicool
 	pkgdesc = Processing Hi-C raw data within R
-	pkgver = 1.2.0
-	pkgrel = 3
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/HiCool
 	arch = any
 	license = MIT
@@ -27,8 +27,8 @@ pkgbase = r-hicool
 	optdepends = r-hicontactsdata
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCool_1.2.0.tar.gz
-	md5sums = 04aa2ef16336d5c43fc0a02291ba7887
-	b2sums = d56c592e447c857715e4a78bb1adde4b5ff7103f5b4f8d60ea2ca6fb98c0d8010ccd24ccf56c7cf698c025eb006c0b64030a2ba7f33ab10009caf700f8f7fb43
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCool_1.4.0.tar.gz
+	md5sums = 7c441fb3e72a20d37fd685dacd43830c
+	b2sums = 9aefe562fab88aa683c7b4908ebf0be838720a95ca0fc43d57f531ab91eaa4f17dd848ba18858ff964badd6c5dc00b6929ae767bb380e05757af8b8762456751
 
 pkgname = r-hicool
