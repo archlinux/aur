@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=interactiveDisplay
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Package for enabling powerful shiny web displays of Bioconductor objects"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -41,9 +41,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-install.patch")
-md5sums=('4adec73e763df3dc2e697e41bff3ead8'
+md5sums=('a58ec02cc262479f0fde58e20f8e9506'
          'f3e9aa31acfa87ff679676bd8e433bf8')
-b2sums=('f31e8b6fb6d9d9220975e1531111a29a6515d8283ecba1b8362da55946a7863ffaadd8f0bf3cc1993fcdc315f9eeb052f4b3f044a6f75125a7f4026d5aacd5c2'
+b2sums=('fc5a0b2215780ab9fa95add14035a6c55f4df046034ea09842f60ae17e88563bf357fb4dd9c046cf8059154067c238560818f8deb1f88363eb7450382993dc4e'
         'c0347a4e255e6123aa5a418b9432f001afee872b963a4b4b4cc9b38c3015718bd7944118e87dcc5b9f8f9ce9c85bcb3b49c0fef17d2293e2460a7eda2a98844b')
 
 prepare() {
