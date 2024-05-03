@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CBEA
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Competitive Balances for Taxonomic Enrichment Analysis in R"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -47,8 +47,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('20761b06df9cf37c59172508ff8cd01d')
-b2sums=('9a109f86b9d4025f449ce761f72182a1a90c8364169fb1d135025a6979692f280955869848d1a3efc629f32ef5a413403426f5a1b5e90a0a4f6f9151ac2b40ec')
+md5sums=('cb3328be7ed8c0a54c318bf4b90381e6')
+b2sums=('6b2cb1e6b824e94ff1e9bae0ce814761ef7887610c583119c6b3641939325a55ac56487a15af8bf04a8a95ab4be1bc505ef3e033eba3636013df1e3eff58b4d2')
 
 build() {
   mkdir build
