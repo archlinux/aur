@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=hoodscanR
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Spatial cellular neighbourhood scanning in R"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c5ac598990d1f80bfa526c576abc8d84')
-b2sums=('8f8625305636b916b66aeaec9560fd97245f61922a83d4f7e5b29e365fd89d8e02133dd55fc4a368dbb963e1556dd90a59cbb388a8b16e07c8b43f130eb381d6')
+md5sums=('b0b8a128b68416ead2eafb0ddddcde72')
+b2sums=('a6db1fc8e26fcc75f1cef8d0ab6ac05666c69f0530e43f6d1f374e814bdd75c0dd9a599147dc3287f67de92555233eb39327c98a7af00d3f046130e7a9e870ac')
 
 build() {
   mkdir build
