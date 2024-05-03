@@ -1,7 +1,7 @@
 pkgbase = ggnfs-svn
 	pkgdesc = GGNFS is an open source implementation of General Number Field Sieve algorithm for factoring integers.
 	pkgver = 441
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/ggnfs/
 	arch = x86_64
 	license = GPL2
@@ -12,10 +12,12 @@ pkgbase = ggnfs-svn
 	source = makefile-lasieve4_64.patch
 	source = lasieve4_64-athlon64-i7.patch
 	source = printf.patch
+	source = scripts.patch
 	sha256sums = SKIP
 	sha256sums = a0265a78f87eb9e2c4add9d125d803af1892659c59103a794ecfc4ba9a8b87a6
 	sha256sums = 39018ea8dd0c65183038bdfb44eb58c87a5794f93982edb3866a5aab659939d7
 	sha256sums = 22f3fea0f7a17641f95ee372f9a723fb366d6a8337a59cbcdd70128c2d35f2bb
+	sha256sums = 11e4c4074292bb6dfb230809a961cb3c812ac30aa1e09fb842363e362d66bf3e
 
 pkgname = ggnfs-lasieve4e-x86_64-svn
 	pkgdesc = lasieve4e is a lattice siever for GGNFS by Jens Franke and T. Kleinjung.
