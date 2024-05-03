@@ -1,6 +1,6 @@
 pkgbase = r-meal
 	pkgdesc = Perform methylation analysis
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MEAL
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-meal
 	optdepends = r-minfidata
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEAL_1.32.0.tar.gz
-	sha256sums = 57408de21e8deb3ed72b6ef0d5b27d5a1748c1f541929c581151c3f3141f8b6f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEAL_1.34.0.tar.gz
+	sha256sums = c87681f7bb9fa4d40c7af6ba7200ce3c602660aa16c56c2bb3f63d434a6a58da
 
 pkgname = r-meal
