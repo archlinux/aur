@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cicero
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Precict cis-co-accessibility from single-cell chromatin accessibility data'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c59b4a1cb65a373646d2ffc3574f390f87afc36ac5de540bbe856472781876a7')
+sha256sums=('19d93468774586afc00d8592b58fbebeaa26808246a9088f5925523c61f1b474')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
