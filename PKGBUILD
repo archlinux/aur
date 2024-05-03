@@ -84,6 +84,7 @@ build() {
   # fix build breakage introduced with gcc-12.1.0-1
   export CFLAGS+=" -Wno-error"
   export CXXFLAGS+=" -Wno-error"
+  export LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}"
 
   _args=(
     -DCMAKE_BUILD_TYPE=Release
