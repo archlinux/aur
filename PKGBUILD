@@ -1,17 +1,17 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ORFik
-_pkgver=1.22.2
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.2
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Open Reading Frames in Genomics'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+pkgdesc="Open Reading Frames in Genomics"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-annotationdbi
+  r-biocfilecache
   r-biocgenerics
   r-biocparallel
   r-biomart
@@ -40,6 +40,7 @@ depends=(
   r-rtracklayer
   r-s4vectors
   r-summarizedexperiment
+  r-txdbmaker
   r-withr
   r-xml
   r-xml2
@@ -52,15 +53,18 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fe00c50c039695f803e23cfbf65f67154d77523391627bbd22c6ab953063af73')
+md5sums=('b0f07c686b2a4f5688ef8e4bc86ba8d4')
+b2sums=('b4cf62fe20bc03be19a4b1536fefc8c93bdbedae13bbad32c8857b782dea51e51d4ad845aa27ac2457ac58a3da813f440d956787bb1325ceeba4e5a0e7a19eb0')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
