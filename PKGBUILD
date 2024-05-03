@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RESOLVE
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="An R package for the efficient analysis of mutational signatures from cancer genomes"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3dd3a656ed19f5faa759f4b37c459f53')
-b2sums=('35b9d2fd9cdf9b66ad9566ccee9b45cc64ec3d1d9ec30a870adddc15ccb935cf53f64f192a66b1fc0219e814f662ae3577e7757850fead2c07eed1c0f00395c9')
+md5sums=('202f10a19b1ca124f5c29d64e69ae269')
+b2sums=('b7f1e1ba107ccdb1c8b43c5540cab2ca6c25b27828e00b99169f985fb4f78fb198b43cc94433276bb0ba8f35075f1736611d4d7cf150e97739eaf98684f64897')
 
 build() {
   mkdir build
