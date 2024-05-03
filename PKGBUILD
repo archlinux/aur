@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=org.Dm.eg.db
-_pkgver=3.18.0
+_pkgver=3.19.1
 pkgname=r-${_pkgname,,}
-pkgver=3.18.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Genome wide annotation for Fly'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="Genome wide annotation for Fly"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-annotationdbi
 )
 optdepends=(
@@ -19,14 +18,15 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('46693c745ac637135baa35a229abe7124d099c9b250902829684dac1ade719d8')
+md5sums=('1d9c8b18c0ed255e759f83ef28aa6d84')
+b2sums=('31d4c6b06db09a9f19284e587a7c29522715453ea72f3c5a61ca0a35917aecf38dddeaf8369d6673963fc9591f0db40ecaa0308728388767d386e8d93b343627')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
