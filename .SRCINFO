@@ -1,6 +1,6 @@
 pkgbase = r-dreamlet
 	pkgdesc = Scalable differential expression analysis of single cell transcriptomics datasets with complex study designs
-	pkgver = 1.0.3
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/dreamlet
 	arch = x86_64
@@ -52,8 +52,8 @@ pkgbase = r-dreamlet
 	optdepends = r-runit
 	optdepends = r-scater
 	optdepends = r-scuttle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dreamlet_1.0.3.tar.gz
-	md5sums = 3a4a1fc72e6beb904ce6834be0fd4af1
-	b2sums = c5d76b32b48de6890ffcbdde7908b97432abb026efceeb3188c4b3ede173f5ff58b8efccfcdcf91d26f686545d2ff69e938ede643fb3d7d7fafed5ec3f5115db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dreamlet_1.2.0.tar.gz
+	md5sums = 83d18b989204e6bed101a1fe3fef8d18
+	b2sums = 3e0fdb7ff01e89d28e859eb6be2b134350c3b04b52be654a4e150d2c7cedf20e12f7dddb64cbd10940e39cb4c5d672c801cba6277ac672e3c122860aa58f2601
 
 pkgname = r-dreamlet
