@@ -10,7 +10,7 @@ license=('GPL')
 depends=('bash' 'mesa' 'opengl-driver' 'vulkan-icd-loader')
 source=("zinkrun")
 install=zinkrun.install
-sha256sums=('4a50138cbdf4f2b0ae08726e0b4fb40571078ce202e194d26ba10cdebb62b307')
+sha256sums=('a8a47ed06e68e5071cd3009d3ee7e2b01e04680659d3bbd01f14dbf57589ae7c')
 
 package() {
     install -Dm755 $srcdir/zinkrun $pkgdir/usr/bin/zinkrun
