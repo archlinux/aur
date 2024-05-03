@@ -16,6 +16,7 @@ depends=(
     libc++
     curl
     embree
+    assimp
     eigen
     flann
     fmt
@@ -106,6 +107,7 @@ function package_open3d() {
         libc++
         curl
         embree
+        assimp
         eigen
         flann
         fmt
@@ -141,6 +143,7 @@ function package_python-open3d() {
         libc++
         curl
         embree
+        assimp
         eigen
         flann
         fmt
@@ -186,6 +189,7 @@ function package_python-py3d() {
         libc++
         curl
         embree
+        assimp
         eigen
         flann
         fmt
