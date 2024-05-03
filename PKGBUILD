@@ -5,7 +5,7 @@
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
 pkgver=0.18.0
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
@@ -58,12 +58,17 @@ sha256sums=(
 function prepare() {
     cd "${srcdir}/${pkgbase}"
     patch -Np1 -i "${srcdir}/fmt-v10.patch"
+    #find ../ -name "CMakeLists.txt" -exec sed -i 's/-Werror//g' {} \;
+    grep --files-with-matches -r "_FORTIFY_SOURCE" | xargs -I {} sed -i 's/_FORTIFY_SOURCE=[0-9]/""/g' {}
     mkdir -p build
 }
 
 function build() {
     cd "${srcdir}/${pkgbase}/build"
-    # find ../ -name "CMakeLists.txt" -exec sed -i 's/-Werror//g' {} \;
+    if [[ -f CMakeCache.txt ]]; then
+        rm CMakeCache.txt
+    fi
+    
     # export CFLAGS=""
     # export CXXFLAGS=""
     cmake .. \
