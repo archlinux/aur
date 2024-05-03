@@ -1,6 +1,6 @@
 pkgbase = r-methylseekr
 	pkgdesc = Segmentation of Bis-seq data
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MethylSeekR
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-methylseekr
 	depends = r-mhsmm
 	depends = r-rtracklayer
 	optdepends = r-bsgenome.hsapiens.ucsc.hg18
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MethylSeekR_1.42.0.tar.gz
-	sha256sums = eeb5fe4f96fecae75a0197044c8ee1ea493efd0ab68dfa15236971753e56517f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MethylSeekR_1.44.0.tar.gz
+	sha256sums = a5fdcbc6a41e787839a54c5a293b6031a2876b244f42d2c9b946905f1aa86381
 
 pkgname = r-methylseekr
