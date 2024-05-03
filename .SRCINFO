@@ -1,6 +1,6 @@
 pkgbase = vte3-notification
 	pkgdesc = Virtual Terminal Emulator widget
-	pkgver = 0.76.0
+	pkgver = 0.76.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal/VTE
 	arch = x86_64
@@ -29,16 +29,16 @@ pkgbase = vte3-notification
 	depends = systemd-libs
 	options = !emptydirs
 	options = !lto
-	source = git+https://gitlab.gnome.org/GNOME/vte#tag=0.76.0
-	source = vte291-cntnr-precmd-preexec-scroll.patch-ae73dd4d48b9c0913142056154e1ebd1cc3bfbd8::https://src.fedoraproject.org/rpms/vte291/raw/ae73dd4d48b9c0913142056154e1ebd1cc3bfbd8/f/vte291-cntnr-precmd-preexec-scroll.patch
+	source = git+https://gitlab.gnome.org/GNOME/vte#tag=0.76.1
+	source = vte291-cntnr-precmd-preexec-scroll.patch-d52a62db6d53b0900184688991391c99edb077ec::https://src.fedoraproject.org/rpms/vte291/raw/d52a62db6d53b0900184688991391c99edb077ec/f/vte291-cntnr-precmd-preexec-scroll.patch
 	sha256sums = SKIP
-	sha256sums = 069b97337be80aee2ba80958988d88bd8aadec98fd085393bf0f2fba45502c62
+	sha256sums = 54e35ff79a8aa7aabd09f26c4e51fe8ec3605eb22ccf233793b4731fe6f2cca8
 
 pkgname = vte-notification-common
 	pkgdesc = Common files used by vte and vte3/vte4
 	depends = glibc
 	depends = sh
-	provides = vte-common=0.76.0
+	provides = vte-common=0.76.1
 	conflicts = vte-common
 
 pkgname = vte3-notification
@@ -59,7 +59,7 @@ pkgname = vte3-notification
 	depends = at-spi2-core
 	depends = gtk3
 	depends = vte-notification-common
-	provides = vte3=0.76.0
+	provides = vte3=0.76.1
 	provides = libvte-2.91.so
 	conflicts = vte3
 
@@ -80,12 +80,12 @@ pkgname = vte4-notification
 	depends = systemd-libs
 	depends = gtk4
 	depends = vte-notification-common
-	provides = vte4=0.76.0
+	provides = vte4=0.76.1
 	provides = libvte-2.91-gtk4.so
 	conflicts = vte4
 
 pkgname = vte-notification-docs
 	pkgdesc = Virtual Terminal Emulator widget documentation
 	depends = 
-	provides = vte-docs=0.76.0
+	provides = vte-docs=0.76.1
 	conflicts = vte-docs
