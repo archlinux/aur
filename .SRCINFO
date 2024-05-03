@@ -1,6 +1,6 @@
 pkgbase = glibc-eac
 	pkgver = 2.39
-	pkgrel = 2
+	pkgrel = 4
 	url = https://www.gnu.org/software/libc
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -49,6 +49,7 @@ pkgname = glibc-eac
 
 pkgname = lib32-glibc-eac
 	pkgdesc = GNU C Library (32-bit) with DT_HASH patch for games using EAC
+	install = lib32-glibc.install
 	depends = glibc-eac=2.39
 	provides = lib32-glibc=2.39
 	conflicts = lib32-glibc

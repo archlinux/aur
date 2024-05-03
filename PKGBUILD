@@ -11,7 +11,7 @@ pkgbase=glibc-eac
 pkgname=(glibc-eac lib32-glibc-eac glibc-eac-locales)
 pkgver=2.39
 _commit=31da30f23cddd36db29d5b6a1c7619361b271fb4
-pkgrel=2
+pkgrel=4
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
 license=(GPL-2.0-or-later LGPL-2.1-or-later)
@@ -75,7 +75,7 @@ build() {
     # Credits @allanmcrae
     # https://github.com/allanmcrae/toolchain/blob/f18604d70c5933c31b51a320978711e4e6791cf1/glibc/PKGBUILD
     # remove fortify for building libraries
-    # CFLAGS=${CFLAGS/-Wp,-D_FORTIFY_SOURCE=2/}
+    CFLAGS=${CFLAGS/-Wp,-D_FORTIFY_SOURCE=3/}
 
     "${srcdir}"/glibc/configure \
         --libdir=/usr/lib \
@@ -93,6 +93,10 @@ build() {
     cd lib32-glibc-build
     export CC="gcc -m32 -mstackrealign"
     export CXX="g++ -m32 -mstackrealign"
+
+    # remove frame pointer flags due to crashes of nvidia driver on steam starts
+    # See https://gitlab.archlinux.org/archlinux/packaging/packages/glibc/-/issues/10
+    CFLAGS=${CFLAGS/-fno-omit-frame-pointer -mno-omit-leaf-frame-pointer/}
 
     echo "slibdir=/usr/lib32" >> configparms
     echo "rtlddir=/usr/lib32" >> configparms
@@ -165,7 +169,7 @@ package_glibc-eac() {
 
   cd glibc
 
-  install -dm755 "${pkgdir}"/usr/lib/{locale,systemd/system,tmpfiles.d}
+  install -dm755 "${pkgdir}"/usr/lib/locale
 
   install -m644 posix/gai.conf "${pkgdir}"/etc/gai.conf
 
@@ -200,6 +204,7 @@ package_lib32-glibc-eac() {
   provides=("lib32-glibc=$pkgver")
   conflicts=("lib32-glibc")
   options+=('!emptydirs')
+  install=lib32-glibc.install
 
   cd lib32-glibc-build
 
