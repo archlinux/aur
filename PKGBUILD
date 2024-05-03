@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=comapr
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Crossover analysis and genetic map construction"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -41,8 +41,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('64dbcfb7f563dc874dc327988ebf8c07')
-b2sums=('5f9280d88b690b0a3e7519c61cdd0feefb31a43d7e506fa619dc5307fd3ed9e5d35856b484c3e0b327899657687bd47f75a46b6c7471ea2f5e169e82d9a868e3')
+md5sums=('fa56eb6f0a88212ec2e85f61bd419d7d')
+b2sums=('3aaa7e4fa027c186550c3f73f104479cfde04f3562999672f9d07e0e1bfe9b5e26e4ac86a5326beea7776d50a332a0a3d2ec6d47684a81deb14913a06384c74d')
 
 build() {
   mkdir build
