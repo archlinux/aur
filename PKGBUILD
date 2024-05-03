@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mCSEA
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Methylated CpGs Set Enrichment Analysis'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6ca20c7e87e8314259ac0326069de7f2c3e37aa4e69c813910e4c28ff6699bc5')
+sha256sums=('dc73678d4bff6dfaf9c14fe3237f5437b92d0b50e07efb639eb5ed098a08bd86')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
