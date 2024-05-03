@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HTSeqGenie
-_pkgver=4.32.0
+_pkgver=4.34.0
 pkgname=r-${_pkgname,,}
-pkgver=4.32.0
+pkgver=4.34.0
 pkgrel=1
 pkgdesc='A NGS analysis pipeline.'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fcd9f026d335814cf12c91fba016cab331fa48a0dea504e7efcee4538d9153d8')
+sha256sums=('b04574f8a34167a659612b2dd9321643d5143839b38647776f327d192324e0da')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
