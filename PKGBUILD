@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MAIT
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Statistical Analysis of Metabolomic Data'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-rgl
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cfc0d04449641e29cd782659b47f23ae4148e37f6a4a5cc64aadb65f41e192ce')
+sha256sums=('9a7b5560b2dda6f65da9781b7eb02b838e35c7d78dde664d5319a13dacb1632c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
