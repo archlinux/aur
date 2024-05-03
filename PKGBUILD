@@ -3,7 +3,7 @@
 _pkgbase=mautrix-facebook
 pkgname="${_pkgbase}-git"
 pkgver=r964.2ab4342
-pkgrel=1
+pkgrel=2
 pkgdesc="A double puppeting Facebook bridge with multi-user support for Hangouts"
 arch=(any)
 conflicts=(mautrix-facebook)
