@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clusterExperiment
-_pkgver=2.22.0
+_pkgver=2.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Compare Clusterings for Single-Cell Sequencing"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,7 +16,6 @@ depends=(
   r-delayedarray
   r-edger
   r-hdf5array
-  r-howmany
   r-kernlab
   r-limma
   r-locfdr
@@ -45,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0a4bac02f2b310d941afe62b329e7eee')
-b2sums=('4233a8d3b54a40ac80eb77480f2f07003e6624182a308925cbc27127b1f875679d8045e05008f5dba5fcc01ab5e729673cf3fa9ada9330ab43361fcc04932aec')
+md5sums=('8f4b47c858e29c983f416a178be37a48')
+b2sums=('dd43b3dfb70a26a8bd7f1a11eec6af989393cd76e38d51b67709438fc1400996cc1506d492894b1ffe7d728c6447cbf2f786ba56593fc2793d29e3763fca8a1a')
 
 build() {
   mkdir build
