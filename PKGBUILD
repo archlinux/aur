@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scviR
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="experimental inferface from R to scvi-tools"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('71d6c427fcc042ac8b011a31935641df')
-b2sums=('bf9703f6ed6cd2cc2da25bccfc06e986548eac8a0070a045ebba5428c274a20e3fdee47cddbf26da6d457b54d124ca817a2e07be250784919c9f73857e155aad')
+md5sums=('ea4ed9b3657debac2af8c9f995f96e65')
+b2sums=('9329f3fd26bd22516949be95f5252fa0a6f941b814e24b23e2396f21ffe81d871503ff783b5bf33d4b5a159078c36159d6bfcc76702708d71a7af0373650a027')
 
 build() {
   mkdir build
