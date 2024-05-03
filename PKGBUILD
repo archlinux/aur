@@ -2,7 +2,7 @@
 
 _npmname=generator-jhipster
 pkgname=nodejs-generator-jhipster
-pkgver=7.9.3
+pkgver=8.4.0
 pkgrel=1
 pkgdesc="Spring Boot + Angular/React in one handy generator"
 arch=('any')
