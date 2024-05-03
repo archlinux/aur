@@ -5,7 +5,7 @@
 
 pkgname=electron-fiddle
 _pkgname=fiddle
-pkgver=0.36.2
+pkgver=0.36.3
 pkgrel=1
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64' 'aarch64' 'armhf')
@@ -17,7 +17,7 @@ makedepends=('git' 'npm' 'yarn')
 provides=("$pkgname" "$pkgname")
 conflicts=("$pkgname-bin" "$pkgname-git")
 source=("$_pkgname-$pkgver.src.tar.gz::https://github.com/electron/fiddle/archive/v$pkgver.tar.gz")
-sha256sums=('5553013aa1e76dc5a3e96d16250acf148bf09aea7be176847dc9cac31cc0fe40')
+sha256sums=('25bcb9a6ef779b78964484415d985a177b0660f15db94940321d1a031eeaef70')
 
 prepare() {
   local cache="$srcdir/npm-cache"
