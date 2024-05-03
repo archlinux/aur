@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ORFhunteR
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Predict open reading frames in nucleotide sequences'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b9197527ef231df4c04938a9a7b0e6aa447cdb727f780425fcf6bd82ee4fe661')
+sha256sums=('77148a86349d6aa2138c977b8529ca2c8a43cd40a9b9bed7a4ab3b8a83441a2a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
