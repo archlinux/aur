@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=VariantFiltering
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Filtering of coding and non-coding genetic variants'
 arch=('x86_64')
@@ -49,7 +49,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('597f0bef39c64106029475bfdfe9748fa794d6b1c1fb49c8c6a8e2df10ea9f05')
+sha256sums=('edc107568740413ef2d23aaf216ac8575335111ea953f5c8804887e3dfa77d92')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
