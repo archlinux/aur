@@ -2,32 +2,33 @@
 pkgbase=python-ccdproc
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Affiliated package for the AstroPy package for basic data reductions of CCD images"
 arch=('any')
 url="http://ccdproc.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-astropy'
+             'python-matplotlib'
              'python-astropy'
              'python-scipy'
 #            'python-scikit-image'
 #            'python-astroscrappy'
 #            'python-reproject'
              'graphviz')
-checkdepends=('python-pytest-doctestplus'
-#             'python-pytest-astropy-header'
+checkdepends=('python-pytest-astropy-header'
+              'python-pytest-doctestplus'
               'python-astroscrappy'
               'python-scikit-image'
               'python-reproject'
               'python-memory-profiler') # psutil required by memory-profiler
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix-underline-length.patch')
-md5sums=('eb5af074fbae4f29813eceedcfb76aec'
+md5sums=('9d8a0468c1308102401a0fec19587fcb'
          '714badd0bef757818fda5babe233d235')
 
 prepare() {
