@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mistyR
-_pkgver=1.11.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Multiview Intercellular SpaTial modeling framework'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-xgboost
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0a107bdf7d4f6c39dc3b8bb9c65b5742a64a107f9f75111a077411d3d125ba1e')
+sha256sums=('b7bde0687bc248e3f4e80bbcb168e05ae9c70260093fe013da37912384901170')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
