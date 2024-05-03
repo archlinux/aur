@@ -4,7 +4,7 @@
 # Contributor: Dan Fuhry <dan@fuhry.com>
 
 pkgname=envoyproxy
-pkgver=1.29.2
+pkgver=1.30.1
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ makedepends=(
     'cmake'
     'clang'
     'git'
+    'libc++'
     'lld'
     'go'
     'java-environment-openjdk'
@@ -26,11 +27,11 @@ makedepends=(
 source=(
     "https://github.com/$pkgname/envoy/archive/v$pkgver.tar.gz"
     0001-arch-dynamically-link-libpsl.patch
-    0002-patch-cel-cpp-to-not-break-build.patch
+    0002-pkgconfig-builtin-glib-int-conversion.patch
 )
-sha512sums=('40db5d45e8620680a0aece41de7bf8d09ac81d0bf339a77a3d70baca61823c4aa4e8e951a2c57f417ebe4fecda8acf17edda593292170b7c5f39e5b753f4579a'
-            '82a695c4c5ebd3f154acd424e00c5b9be27d809ed895870650b1ea0d1a757104753c242b67718bb68eef128d507668af2a5c7b101a64c346f27a9d0d5ad33cb9'
-            '6306c91abe482533dbc11aa4c39b0fc0ca145893c6692d56d5ecc77a8bf195e9495151c417ffa5d0702b85c0ad8a96133e1ec8fb01d04b1cdf5db9d71f51216f')
+sha512sums=('a1fec2eecf8da64f2cd11ad8fca825d436fe88b10b61d170d87d07dae56699da5aed7f8246aa43f6fd8f7c9644426f4a3b71578f4bb77bf6dd60229d03eb11c0'
+            '2b83157f8e8976e12c5e09c13aafe0da1ce478c448b07a070890a95d77fa9b396314d5886babf81e5c6fbf77338a49b45e2484a01f4ed0bb8868b45e425e7062'
+            'd90b9cbebc2a5d0d6a47e3f7cb88561d7233e5d7fb1d6a0cbe52a75b403f12f5083cc7c6ef94e8846a75b53fbcc350e7309477a495701c6a3e4fd1c3b49f7a7f')
 
 prepare() {
   cd "envoy-$pkgver"
@@ -62,24 +63,7 @@ build() {
 
   $BAZELISK build \
     --workspace_status_command bazel/get_workspace_status \
-    --config=clang --verbose_failures -c opt \
-    --features=-default_compile_flags \
-    --copt=-g \
-    --copt=-fstack-protector \
-    --copt=-fcolor-diagnostics \
-    --copt=-D_FORTIFY_SOURCE=1 \
-    --copt=-O2 \
-    --copt=-DNDEBUG \
-    --copt=-ffunction-sections \
-    --copt=-fdata-sections \
-    --cxxopt=-std=c++17 \
-    --host_cxxopt=-std=c++17 \
-    --cxxopt='-includecstdint' \
-    --host_cxxopt='-includecstdint' \
-    --cxxopt='-includestring' \
-    --host_cxxopt='-includestring' \
-    --cxxopt='-includestring_view' \
-    --host_cxxopt='-includestring_view' \
+    --config=libc++ --verbose_failures -c opt \
     //source/exe:envoy-static
 }
 
