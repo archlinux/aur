@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=spaSim
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Spatial point data simulator for tissue images"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d69e70975aaaa9bffc5e52f95885e59c')
-b2sums=('41088779a896961d27a27bb975a83bd0ecb924fa51fed560bdc401644045d98bcf0796399a46fcb6eede337db92d3fc12f8fd8e474e7f7c9adcd648a2f829b4d')
+md5sums=('ceec90576a23f42e2f8a77222b7f1eac')
+b2sums=('845e80f50921b0fd0763e32f122211c40320df713e7757c586a5420d5e7552ce038dd9fb459c45157c417320533ce1a5f3a655d5e9aecadbb76a1d4944473d28')
 
 build() {
   mkdir build
