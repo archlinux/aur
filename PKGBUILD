@@ -8,13 +8,15 @@ arch=(x86_64 aarch64)
 url="https://github.com/ligurio/unreliablefs"
 license=(MIT)
 depends=(fuse)
-makedepends=(git)
+makedepends=(git cmake)
+provides=(fuse-unreliablefs)
+conflicts=(fuse-unreliablefs)
 source=("${_p}::git+$url")
-sha256sums=(SKIP)
+b2sums=(SKIP)
 
 pkgver() {
 	cd $_p
-	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -25,5 +27,6 @@ build() {
 
 package() {
 	cd $_p
-	make -C build DESTDIR="${pkgdir}" install
+	make -C build DESTDIR="$pkgdir" install
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
