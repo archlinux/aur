@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=magpie
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="MeRIP-Seq data Analysis for Genomic Power Investigation and Evaluation"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -41,8 +41,8 @@ optdepends=(
   r-tbx20bamsubset
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('019cf9b038353b96851fe65fa55f3d08')
-b2sums=('99593ec846914886a4f61866c24eef7b02741a9cfa05839fa12ab9ee92439e21a226f3963d2fc0d5ec4f8aef527208188c467af5d694a121f1aaeb83029639b1')
+md5sums=('df68a1e182e8a767e804d5775e385499')
+b2sums=('83904271ed3fda8d7c3faaa79828a3e84702699291ef95bb5d121fa51a1500d813c40df18483d4fc82496ba78ab40911f62071240b56cdb31a122b94b285953d')
 
 build() {
   mkdir build
