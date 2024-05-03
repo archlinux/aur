@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EGSEA
-_pkgver=1.30.1
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.1
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Ensemble of Gene Set Enrichment Analyses'
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4bcdcd55c151e995bbfbcc4ec9bdd1cbcbe4c8111edeeb8fa468e4e57a2872f3')
+sha256sums=('11ef582d396c2630c92bec4e4a2408f2075bdf52e17066c60abe4609a811eaba')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

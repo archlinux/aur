@@ -1,6 +1,6 @@
 pkgbase = r-egsea
 	pkgdesc = Ensemble of Gene Set Enrichment Analyses
-	pkgver = 1.30.1
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EGSEA
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-egsea
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EGSEA_1.30.1.tar.gz
-	sha256sums = 4bcdcd55c151e995bbfbcc4ec9bdd1cbcbe4c8111edeeb8fa468e4e57a2872f3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EGSEA_1.32.0.tar.gz
+	sha256sums = 11ef582d396c2630c92bec4e4a2408f2075bdf52e17066c60abe4609a811eaba
 
 pkgname = r-egsea
