@@ -4,7 +4,7 @@
 # Contributor: Akuma (https://0xacab.org/leap/bitmask-vpn/-/issues/94#note_173017)
 
 pkgname=riseup-vpn
-pkgver=0.24.3
+pkgver=0.24.5
 pkgrel=1
 pkgdesc="Easy, fast, and secure VPN service from riseup.net"
 url="https://0xacab.org/leap/bitmask-vpn"
@@ -14,22 +14,24 @@ depends=('lxsession' 'openvpn' 'python' 'qt6-base' 'qt6-quickcontrols2' 'qt6-svg
 makedepends=('cmake' 'go')
 source=("$url/-/archive/$pkgver/bitmask-vpn-$pkgver.tar.bz2"
         "$pkgname.png"
-        "riseup-vpn_launcher.desktop")
-sha256sums=('c2968501f8dda918b6904d29ef80b0621712dfa18475e6184db84070a9ed0463'
+        "riseup-vpn.desktop")
+sha256sums=('a635679ee2755368a343b2415f3da75e7cf93f587f4e42e8959d29b4ebaebfee'
             '76955f7b4ab01aa9a6fa8213fc062765158dda8783075459b79c147febe45bb4'
             'e21a0d99dcea6b849f80960fccc488e6294e3e794b0033fdc163291ecc8595ff')
 
 prepare() {
   cd bitmask-vpn-$pkgver
-  sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/pickle/helpers.go
-  sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/vpn/launcher_linux.go
-  sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/pickle/helpers/bitmask-root
+  export GOCACHE="$srcdir/GOCACHE"
   sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' helpers/se.leap.bitmask.policy
+  sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/launcher/launcher_linux.go
+  sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/pickle/helpers.go
+  sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/pickle/helpers/bitmask-root
   PROVIDER=riseup make vendor
 }
 
 build() {
   cd bitmask-vpn-$pkgver
+  export GOCACHE="$srcdir/GOCACHE"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -44,11 +46,11 @@ check() {
 }
 
 package() {
-  install -Dm644 riseup-vpn_launcher.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 riseup-vpn.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 $pkgname.png -t "$pkgdir/usr/share/icons/hicolor/128x128/apps"
   cd bitmask-vpn-$pkgver
   install -Dm644 gui/resources/riseup-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm644 helpers/se.leap.bitmask.policy -t "$pkgdir/usr/share/polkit-1/actions"
-  install -Dm755 helpers/bitmask-root "-t $pkgdir/usr/bin"
+  install -Dm755 helpers/bitmask-root -t "$pkgdir/usr/bin"
   install -Dm755 build/qt/release/$pkgname -t "$pkgdir/usr/bin"
 }
