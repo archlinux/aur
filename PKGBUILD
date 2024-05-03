@@ -6,17 +6,17 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=26.2.4
+pkgver=26.2.5
 pkgrel=1
 _docver=26.1
 # https://github.com/erlang/otp/tags
-_commit=e26c5206dc98ec1b8f978fceaa61fd1354266ccb # OTP-26.2.4
+_commit=412bff5196fc0ab88a61fe37ca30e5226fc7872d # OTP-26.2.5
 arch=(x86_64)
 pkgdesc='General-purpose concurrent functional programming language (headless version)'
 url='https://erlang.org/'
 license=(Apache)
 depends=(ncurses openssl)
-makedepends=(fop git java-environment libxslt lksctp-tools unixodbc)
+makedepends=(fop git java-environment libxslt lksctp-tools)
 conflicts=(erlang)
 optdepends=('java-environment: for Java support'
             'lksctp-tools: for SCTP support')
@@ -42,6 +42,7 @@ prepare() {
 
 build() {
   cd otp
+
   export CFLAGS+=' -ffat-lto-objects'
   ./otp_build autoconf
   ./configure \
@@ -50,6 +51,7 @@ build() {
     --enable-ssl=dynamic-ssl-lib \
     --prefix=/usr \
     --without-odbc
+
   DOC_TARGETS=chunks make all
   DOC_TARGETS=chunks make docs
 }
