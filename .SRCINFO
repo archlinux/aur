@@ -1,6 +1,6 @@
 pkgbase = r-cocoa
 	pkgdesc = Coordinate Covariation Analysis
-	pkgver = 2.16.0
+	pkgver = 2.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/COCOA
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-cocoa
 	optdepends = r-parallel
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/COCOA_2.16.0.tar.gz
-	sha256sums = 50626fc1ee81807188a4fcee8e8432062c7ccce946537aa2dcb84e8485f0a248
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/COCOA_2.18.0.tar.gz
+	sha256sums = c3fad12d6290bc5f9cadc4d706e7551aa72c9f8a910312e6f2fa8aab5f8e9029
 
 pkgname = r-cocoa
