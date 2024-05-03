@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BEAT
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='BEAT - BS-Seq Epimutation Analysis Toolkit'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-shortread
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ba27bdfeb7bab351b7590e1473a026bee73d93e4e6daf89aef6d5f91e8a5accf')
+sha256sums=('6927d79ef1c2f9a9b1040e10706f3b5469623c965afe06b47f21aa201cb7c368')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
