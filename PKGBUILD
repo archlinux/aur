@@ -1,7 +1,7 @@
 # Maintainer: Trey Blancher $(base64 -d <<< dHJleUBibGFuY2hlci5uZXQK)
 pkgname="newrelic-cli-bin"
 _pkg="${pkgname/-bin/}"
-pkgver=0.82.1
+pkgver=0.84.2
 pkgrel=1
 pkgdesc="New Relic:  All-in-One Observability Service - command line tool"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -26,9 +26,9 @@ package() {
     # fail if it isn't here
     install -Dm u=rwx,go=rx -t "${pkgdir}/usr/local/bin/" "${srcdir}/${_exec}" 
 }
-sha256sums_aarch64=('e166933656363a690e4ad68974ef19d90fcd65cc80ed830c6a494fee7d2a13f7'
+sha256sums_aarch64=('b0e730b3399f1a169db9bd9580125ec3d27256deed5ba3163325ae0c9db1f253'
                     'SKIP')
-sha256sums_armv7h=('933a30999178f7fb6f0cef055fa5182cc3d89679a34226f9ba4784d4f80d4e27'
+sha256sums_armv7h=('a4fe7fc2830447f79516b2b49700c60d8755184ddeefaec84af3d61461cc8ef1'
                    'SKIP')
-sha256sums_x86_64=('5acff8fd40f02b2a5102e5ea681f63a2b94a433d3cfb70ce0e1c498a5955944b'
+sha256sums_x86_64=('0e32b1ec304a10a97f0b597effff1896ade6723186e15b14b9027cf5b110a677'
                    'SKIP')
