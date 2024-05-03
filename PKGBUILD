@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BASiCStan
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Stan implementation of BASiCS"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b7179ffcf510240c0c3cc6e8e31b60d7')
-b2sums=('ab39b06eeaa109d283980d5e3d15d36f66ad8c55b52ac0adc6d7dd3557e083ece4b638a4d256909b27b8a74c31f9c38c2baea543b29f0fbb5b239b326e8975a6')
+md5sums=('5525d5dc42ee9564bcde9f4b1e594cdb')
+b2sums=('6284991bd0ae29f630e7963288f1398dfbbba416cd7adea00c2605b83c7965cc4857965d773af2bd69e9596c34fd662913b25f2c95ba9afb9f406c3126f93d49')
 
 build() {
   mkdir build
