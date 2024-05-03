@@ -1,6 +1,6 @@
 #Maintainer: Nooberieno <nooberieno.dev@gmail.com>
 pkgname='jura'
-pkgver=4.0
+pkgver=4.1
 pkgrel=4
 epoch=4
 pkgdesc="A lightweight terminal text editor"
@@ -15,13 +15,12 @@ sha256sums=('SKIP')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	make
+	make install
 }
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm775 ./jura "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname"
-	install -Dm644 ./CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 ./CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
