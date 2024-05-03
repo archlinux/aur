@@ -35,5 +35,5 @@ build(){
 
 package() {
   cd $srcdir/$pkgname/build
-  install -Dm755 CloudLogCatQt $pkgdir/usr/bin
+  install -Dm755 CloudLogCatQt $pkgdir/usr/bin/CloudLogCatQt
 }
