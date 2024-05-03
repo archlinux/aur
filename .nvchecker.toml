@@ -1,0 +1,4 @@
+[python-phiflow]
+source = "github"
+github = "tum-pbs/PhiFlow"
+use_latest_release = "true"
