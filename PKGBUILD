@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Statial
-_pkgver=1.4.5
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A package to identify changes in cell state relative to spatial associations"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -44,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e7151f23bb952401803e4d239390c210')
-b2sums=('3676b8cfa9ce94502550a7f32d4f404f2a42a8bcb9356920911b87544c18fcdf404188371a9f3ec61fdc34dad0972a403af83173fd3aa5d248d7f7f9498a4df2')
+md5sums=('2c77e967b17130dd31b95ecf030b4fa8')
+b2sums=('0d02fb255a51254884b5a8ae42ab4307aa4c65534abb6aeadfda99ae3a7362187b04e316fd29a4b647142152cd0ec661906841f1274e24673bca25bd07a22be3')
 
 build() {
   mkdir build

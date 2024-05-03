@@ -1,7 +1,7 @@
 pkgbase = r-statial
 	pkgdesc = A package to identify changes in cell state relative to spatial associations
-	pkgver = 1.4.5
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/Statial
 	arch = any
 	license = GPL-3.0-only
@@ -33,8 +33,8 @@ pkgbase = r-statial
 	optdepends = r-lisaclust
 	optdepends = r-spicyr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Statial_1.4.5.tar.gz
-	md5sums = e7151f23bb952401803e4d239390c210
-	b2sums = 3676b8cfa9ce94502550a7f32d4f404f2a42a8bcb9356920911b87544c18fcdf404188371a9f3ec61fdc34dad0972a403af83173fd3aa5d248d7f7f9498a4df2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Statial_1.6.0.tar.gz
+	md5sums = 2c77e967b17130dd31b95ecf030b4fa8
+	b2sums = 0d02fb255a51254884b5a8ae42ab4307aa4c65534abb6aeadfda99ae3a7362187b04e316fd29a4b647142152cd0ec661906841f1274e24673bca25bd07a22be3
 
 pkgname = r-statial
