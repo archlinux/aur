@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=microSTASIS
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Microbiota STability ASsessment via Iterative cluStering"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7b9b67613eb5e6b69918dffc9d4060d8')
-b2sums=('902538dc5642c0a02dcbed55e38623f3d34fb42906dc54dc9818370fd18169cf2c27fe57aa9f0a1021da49d37fc108d66a93bb685ace52e1ab4eae1d5de52c98')
+md5sums=('d2777d8d67b5bfed27c1792b14766689')
+b2sums=('523d80c065d016da5f926c7a70b544fd14f59ce4736f6be61dbe723ca30173aea2be84a3967512dfa6a8779e5b422d0f7745b5a1582ae2fbae70f4ff9cb11a5b')
 
 build() {
   mkdir build
