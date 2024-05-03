@@ -1,4 +1,5 @@
-# Maintainer: Igor <f2404@yandex.ru>
+# Maintainer: Darkfish Tech <arch at darkfish dot com dot au>
+# Contributor: Igor <f2404@yandex.ru>
 # Contributor: GordonGR <ntheo1979@gmail.com>
 # Contributor: Pablo Lezaeta <prflr arro'a gmail puntocom> (I tryed)
 # Contributor: jyantis <yantis@yantis.net>
@@ -12,7 +13,7 @@ pkgver=4.19.0+11+g66004671
 pkgrel=1
 pkgdesc="Extensions to Xfce originally developed by os-cillation."
 arch=('i686' 'x86_64')
-license=('GPL2' 'LGPL')
+license=('LGPL-2.1-only')
 url="https://gitlab.xfce.org/xfce/exo/"
 groups=('xfce4-git')
 #provides=("exo=${pkgver}")
