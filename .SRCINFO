@@ -1,6 +1,6 @@
 pkgbase = r-ping
 	pkgdesc = Probabilistic inference for Nucleosome Positioning with MNase-based or Sonicated Short-read Data
-	pkgver = 2.46.0
+	pkgver = 2.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PING
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-ping
 	optdepends = r-parallel
 	optdepends = r-rtracklayer
 	optdepends = r-shortread
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PING_2.46.0.tar.gz
-	sha256sums = 83cba3a927998ace0fbd016d7a4a9bdc12d745bc2c8be3f983774c46af64bbc4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PING_2.48.0.tar.gz
+	sha256sums = 2396f3176fac3afc7e6bfa1694644086dd734cd5dc3ce0ce4f3a5553ad5309e4
 
 pkgname = r-ping
