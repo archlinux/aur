@@ -2,13 +2,13 @@
 
 pkgname=historyline-1914-1918-gog
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A turn-based tactics game which takes the player through various battles of the First World War."
 url="https://www.gog.com/game/battle_isle_platinum"
 license=('custom:eula')
 groups=('games')
 arch=('any')
-makedepends=('innoextract-git' 'icoutils')
+makedepends=('innoextract' 'icoutils')
 depends=('dosbox')
 optdepends=('unionfs-fuse: mounting game folder to home for savegames and settings')
 install=$pkgname.install
