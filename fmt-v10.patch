@@ -1,0 +1,169 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index b68b0bdbd..9b0d48b1e 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -35,6 +35,7 @@
+ -   Fix log error message for `probability` argument validation in `PointCloud::SegmentPlane` (PR #6622)
+ -   Fix macOS arm64 builds, add CI runner for macOS arm64 (PR #6695)
+ -   Fix KDTreeFlann possibly using a dangling pointer instead of internal storage and simplified its members (PR #6734)
++-   Fix build with fmt v10.2.0 (#6783)
+ 
+ ## 0.13
+ 
+diff --git a/cpp/open3d/core/DLPack.h b/cpp/open3d/core/DLPack.h
+index 9a0c3e57a..bf935b1ab 100644
+--- a/cpp/open3d/core/DLPack.h
++++ b/cpp/open3d/core/DLPack.h
+@@ -188,4 +188,49 @@ typedef struct DLManagedTensor {
+ #ifdef __cplusplus
+ }  // DLPACK_EXTERN_C
+ #endif
++
++#include <fmt/core.h>
++#include <fmt/format.h>
++
++namespace fmt {
++
++template <>
++struct formatter<DLDeviceType> : formatter<string_view> {
++    auto format(const DLDeviceType& c, format_context& ctx) const {
++        string_view text;
++        switch (c) {
++            case kDLCPU:
++                text = "kDLCPU";
++                break;
++            case kDLGPU:
++                text = "kDLGPU";
++                break;
++            case kDLCPUPinned:
++                text = "kDLCPUPinned";
++                break;
++            case kDLOpenCL:
++                text = "kDLOpenCL";
++                break;
++            case kDLVulkan:
++                text = "kDLVulkan";
++                break;
++            case kDLMetal:
++                text = "kDLMetal";
++                break;
++            case kDLVPI:
++                text = "kDLVPI";
++                break;
++            case kDLROCM:
++                text = "kDLROCM";
++                break;
++            case kDLExtDev:
++                text = "kDLExtDev";
++                break;
++        }
++        return formatter<string_view>::format(text, ctx);
++    }
++};
++
++}  // namespace fmt
++
+ #endif  // DLPACK_DLPACK_H_
+diff --git a/cpp/open3d/t/geometry/RaycastingScene.cpp b/cpp/open3d/t/geometry/RaycastingScene.cpp
+index 14f9962c2..0251c7922 100644
+--- a/cpp/open3d/t/geometry/RaycastingScene.cpp
++++ b/cpp/open3d/t/geometry/RaycastingScene.cpp
+@@ -1173,4 +1173,38 @@ uint32_t RaycastingScene::INVALID_ID() { return RTC_INVALID_GEOMETRY_ID; }
+ 
+ }  // namespace geometry
+ }  // namespace t
+-}  // namespace open3d
+\ No newline at end of file
++}  // namespace open3d
++
++namespace fmt {
++template <>
++struct formatter<RTCError> : formatter<string_view> {
++    template <typename FormatContext>
++    auto format(const RTCError& c, FormatContext& ctx) {
++        string_view name;
++        switch (c) {
++            case RTC_ERROR_NONE:
++                name = "RTC_ERROR_NONE";
++                break;
++            case RTC_ERROR_UNKNOWN:
++                name = "RTC_ERROR_UNKNOWN";
++                break;
++            case RTC_ERROR_INVALID_ARGUMENT:
++                name = "RTC_ERROR_INVALID_ARGUMENT";
++                break;
++            case RTC_ERROR_INVALID_OPERATION:
++                name = "RTC_ERROR_INVALID_OPERATION";
++                break;
++            case RTC_ERROR_OUT_OF_MEMORY:
++                name = "RTC_ERROR_OUT_OF_MEMORY";
++                break;
++            case RTC_ERROR_UNSUPPORTED_CPU:
++                name = "RTC_ERROR_UNSUPPORTED_CPU";
++                break;
++            case RTC_ERROR_CANCELLED:
++                name = "RTC_ERROR_CANCELLED";
++                break;
++        }
++        return formatter<string_view>::format(name, ctx);
++    }
++};
++}  // namespace fmt
+diff --git a/cpp/open3d/visualization/webrtc_server/PeerConnectionManager.h b/cpp/open3d/visualization/webrtc_server/PeerConnectionManager.h
+index ceb0fc9df..b28e77e37 100644
+--- a/cpp/open3d/visualization/webrtc_server/PeerConnectionManager.h
++++ b/cpp/open3d/visualization/webrtc_server/PeerConnectionManager.h
+@@ -456,3 +456,41 @@ protected:
+ }  // namespace webrtc_server
+ }  // namespace visualization
+ }  // namespace open3d
++
++namespace fmt {
++
++template <>
++struct formatter<webrtc::PeerConnectionInterface::SignalingState>
++    : formatter<string_view> {
++    auto format(const webrtc::PeerConnectionInterface::SignalingState& state,
++                format_context& ctx) const {
++        using namespace webrtc;
++        const char* text = nullptr;
++        switch (state) {
++            case PeerConnectionInterface::SignalingState::kStable:
++                text = "kStable";
++                break;
++            case PeerConnectionInterface::SignalingState::kHaveLocalOffer:
++                text = "kHaveLocalOffer";
++                break;
++            case PeerConnectionInterface::SignalingState::kHaveLocalPrAnswer:
++                text = "kHaveLocalPrAnswer";
++                break;
++            case PeerConnectionInterface::SignalingState::kHaveRemoteOffer:
++                text = "kHaveRemoteOffer";
++                break;
++            case webrtc::PeerConnectionInterface::SignalingState::
++                    kHaveRemotePrAnswer:
++                text = "kHaveRemotePrAnswer";
++                break;
++            case webrtc::PeerConnectionInterface::SignalingState::kClosed:
++                text = "kClosed";
++                break;
++            default:
++                text = "unknown";
++        }
++        return formatter<string_view>::format(text, ctx);
++    }
++};
++
++}  // namespace fmt
+diff --git a/examples/cpp/OnlineSLAMUtil.h b/examples/cpp/OnlineSLAMUtil.h
+index 585f18a8f..d1ea43e44 100644
+--- a/examples/cpp/OnlineSLAMUtil.h
++++ b/examples/cpp/OnlineSLAMUtil.h
+@@ -8,6 +8,7 @@
+ #include <atomic>
+ #include <sstream>
+ #include <thread>
++#include <fmt/std.h>
+ 
+ #include "open3d/Open3D.h"
+ 
