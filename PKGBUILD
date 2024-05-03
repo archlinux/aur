@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OrganismDbi
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Software to enable the smooth interfacing of different database packages'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="Software to enable the smooth interfacing of different database packages"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-annotationdbi
   r-biobase
   r-biocgenerics
@@ -22,6 +21,7 @@ depends=(
   r-iranges
   r-rbgl
   r-s4vectors
+  r-txdbmaker
 )
 optdepends=(
   r-annotationhub
@@ -38,14 +38,15 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f2d4fb455d0666583a36c699c317a4309bdc9fb83fa56e91809a574c83f0e53c')
+md5sums=('a81aa484401a0794b889eb66ba462cdc')
+b2sums=('6b5a48844b244700a81531091902eaac87ec5504eb90852b84e407ec213442ef97e6e3eff5786e27ab994cb245a87e30f51d402af15755158375896af95fdf10')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
