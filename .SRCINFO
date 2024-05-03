@@ -1,6 +1,6 @@
 pkgbase = r-amaretto
 	pkgdesc = Regulatory Network Inference and Driver Gene Evaluation using Integrative Multi-Omics Analysis and Penalized Regression
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AMARETTO
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-amaretto
 	optdepends = r-knitr
 	optdepends = r-mass
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AMARETTO_1.18.0.tar.gz
-	sha256sums = 3a9d4f819cd2157e480d46aa397edef2bd513c24f355a8196ca58ba9b4880cc0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AMARETTO_1.20.0.tar.gz
+	sha256sums = cef68799c986721c81ec6473b4bfe8a1018dc51c868e1b0779532a1c3a007c58
 
 pkgname = r-amaretto
