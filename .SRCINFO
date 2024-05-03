@@ -1,0 +1,18 @@
+pkgbase = python-cfile-git
+	pkgdesc = C code generator for Python
+	pkgver = 0.4.0.r1.g7ed5d25
+	pkgrel = 1
+	url = https://github.com/cogu/cfile
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.10
+	provides = python-cfile
+	conflicts = python-cfile
+	source = python-cfile::git+https://github.com/cogu/cfile.git
+	sha256sums = SKIP
+
+pkgname = python-cfile-git
