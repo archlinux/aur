@@ -1,6 +1,6 @@
 pkgbase = r-arraymvout
 	pkgdesc = multivariate outlier detection for expression array QA
-	pkgver = 1.60.0
+	pkgver = 1.62.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/arrayMvout
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-arraymvout
 	optdepends = r-lumibarnes
 	optdepends = r-maqcsubset
 	optdepends = r-mvoutdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/arrayMvout_1.60.0.tar.gz
-	sha256sums = 1ffebe64d66f20ebb221ab344f546f2c5338d1e94def83a32a56bde841d7737c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/arrayMvout_1.62.0.tar.gz
+	sha256sums = bc170bc1275e9c92c072b334db4adbe32c99a4034bb186b96e50792b4ed26387
 
 pkgname = r-arraymvout
