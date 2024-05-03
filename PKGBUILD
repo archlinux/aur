@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=cytoviewer
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="An interactive multi-channel image viewer for R"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dc34f69f53490911e6f621d76db69f4c')
-b2sums=('10ac690f8e7ced921f545efdd5a989e6bec0f56022b0debd68a710e7d0468a243be299ecc6dfd28cd24e89a77fa659162c299eb20ce7c091d6779167c9a93ea1')
+md5sums=('42825c1771a8b9eff76a456771b728dc')
+b2sums=('30a4224045f91f19449d22843c894787a635e4a0757bcaccd5cde4df8a7a57cf49a67796fad72c788efcfce428692798d9132476d82108fc4c73702cbe1b4c3d')
 
 build() {
   mkdir build
