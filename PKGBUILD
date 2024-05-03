@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=vulcan
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='VirtUaL ChIP-Seq data Analysis using Networks'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-vulcandata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bfd2125e94f0e99590c572ab503d409c536180fd1ffc662bb1f9f66e2a4b4c7f')
+sha256sums=('ca7549d97864beb922be564d9becd081193fc64e44474367f0dcf0bc329135ba')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
