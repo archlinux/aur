@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=iNETgrate
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Integrates DNA methylation data with gene expression in a single gene network"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-tcgabiolinks
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fb3e503060d4294162e8690a6bb41059')
-b2sums=('e662c423f300456f491ee92e7141c9782447b99c768885e983065f9d640d1905f88a84a04285916410669ca3959217761476bbd7f3a8e9e2871ac43d9d26ef59')
+md5sums=('c82ba03d6eb152e07b4280a01bc6dfd0')
+b2sums=('9516fda1a4c6367261d6477d74e936b21bdad87f994606e1ef95a5e3eb5db8a645bb85bed1ef6c6392d5e2a559abb49ed6e83b83bb869ca9f1a7d05687bfb9f0')
 
 build() {
   mkdir build
