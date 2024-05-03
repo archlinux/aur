@@ -1,6 +1,6 @@
 #Submiter: Hector Mtz-Seara (hseara#at#gmail#com)
 pkgname=python-mmtf
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="The macromolecular transmission format (MMTF) is a binary encoding of biological structures."
 url="http://mmtf.rcsb.org/"
@@ -10,7 +10,7 @@ depends=('python-numpy' 'python-nose' 'ipython' 'python-msgpack')
 
 
 source=(https://github.com/rcsb/mmtf-python/archive/v$pkgver.tar.gz)
-sha256sums=('289b1b46331d2011f5629bf3f0a7dbbf87ad24af301417edeb8c309cc86768d2')
+sha256sums=('777bcfe4c2dfc4810b78ff312d09d17dc0ed1bcc138cb7403e63e0a57285c6c9')
 
 build() {
   cd $srcdir/mmtf-python-$pkgver/
