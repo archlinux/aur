@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BOBaFIT
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Refitting diploid region profiles using a clustering procedure"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('48b9cc5c35adf6469bd1dc2ca566bed1')
-b2sums=('0fdaf166aa9a8b6caf6e4a824924fa0b01ed3a4ded0f7b9e9cc5d8d97b34fb696ed858e700986b0beb115cc608aa426f4c8ceccbf0ee09ab7b5aaac77152baa8')
+md5sums=('5ad8c50ff4223fc94a016cf29a0fa8f8')
+b2sums=('43e82ac84e01f84e40174658cddfdf488c0710cbbc2041e3d575e07f1914f1cec929bd444f890130535d7ed17e8c6824c227f60e82b7d5c6fd99a5fc706cfc01')
 
 build() {
   mkdir build
