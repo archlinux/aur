@@ -125,7 +125,7 @@ package_kodi-ext-git() {
     'libplist' 'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'mariadb-libs'
     'mesa' 'python-pillow' 'python-pycryptodomex' 'python-simplejson'
     'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
-    'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
+    'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput' 'pcre'
     # external
     'ffmpeg' 'flatbuffers'
     'libdvdcss' 'libdvdnav' 'libdvdread' 'libudfread' 'fstrcmp'
