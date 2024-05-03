@@ -1,0 +1,16 @@
+pkgbase = python311-openexr
+	pkgdesc = Python bindings for ILM's OpenEXR image file format
+	pkgver = 1.3.9
+	pkgrel = 2
+	url = https://github.com/sanguinariojoe/pip-openexr
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = openexr
+	depends = python311
+	source = https://files.pythonhosted.org/packages/source/O/OpenEXR/OpenEXR-1.3.9.tar.gz
+	source = fix1.patch
+	sha512sums = cbca74d5ee42e0c03157c583c3b63b65b71e2699e0dc3b478ecbb21e47ac488f2328fa1b1fbb95eff2427afa6b67536b048d161997b081dac5b8d135c15f8f6e
+	sha512sums = 207129f64bdc6216efde14a6a9f939ac2886ef7351789ab6f02846cefd5e36355ad7333a207a8be45ad718a7a885657ce86c9b05182899fd7384d4bdce199560
+
+pkgname = python311-openexr
