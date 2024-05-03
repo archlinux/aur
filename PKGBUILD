@@ -1,24 +1,34 @@
-# Maintainer: Morten Linderud <foxboron@archlinux.org>
-# Contributor: Maikel Wever <maikelwever@gmail.com>
+# Maintainer: Groctel <aur@taxorubio.com>
+# shellcheck disable=SC2034,SC2154,SC2164
+
+_name=shutilwhich
 
 pkgname=python-shutilwhich
 pkgver=1.1.0
 pkgrel=9
-pkgdesc="Backport of shutil.which"
+pkgdesc="A copy & paste backport of Python 3.3's shutil.which function."
+
+arch=("any")
+license=("PSF")
 url="https://github.com/mbr/shutilwhich"
-arch=('any')
-license=('PSF')
-depends=('python')
-makedepends=('python' 'python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mbr/shutilwhich/archive/${pkgver}.tar.gz")
+
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
 sha256sums=('4292a973312c58ca1935ea75d7bd378b17668ef6aacfc812d00019e0726dea44')
 
-build(){
-  cd "$srcdir/shutilwhich-$pkgver"
-  python setup.py build
+depends=("python")
+makedepends=(
+  "python-build"
+  "python-installer"
+  "python-setuptools"
+  "python-wheel"
+)
+
+build () {
+  cd "$srcdir/$_name-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
-package() {
-  cd "shutilwhich-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+package () {
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
