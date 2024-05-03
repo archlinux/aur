@@ -1,6 +1,6 @@
 pkgbase = r-mitoclone2
 	pkgdesc = Clonal Population Identification in Single-Cell RNA-Seq Data using Mitochondrial and Somatic Mutations
-	pkgver = 1.8.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mitoClone2
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-mitoclone2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mitoClone2_1.8.1.tar.gz
-	sha256sums = 26a3d2bc8dc6d3800476cd7ce6915f2a375b8eec82f58911ece4a604be75f3a3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mitoClone2_1.10.0.tar.gz
+	sha256sums = 4dd87d2e54778bc445fbd31688fdecda21fe575622d71a26f76e599555f6abee
 
 pkgname = r-mitoclone2
