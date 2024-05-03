@@ -1,26 +1,26 @@
-# Maintainer: Lili1228 <aur at lili dot lgbt>
-pkgname=86box-roms-git
-pkgver=4.1.1.r0.g6ce44a9
+# Maintainer: fuel <melodygoad18 at gmail dot com>
+# Contributor: Lili1228 <aur at lili dot lgbt>
+pkgname=pcbox-roms-git
+pkgver=r684.gd34078ba9
 pkgrel=1
-pkgdesc='ROMs for the 86Box emulator'
+pkgdesc='ROMs for the PCBox emulator'
 arch=('any')
-url='https://github.com/86Box/roms'
+url='https://github.com/PCBox/roms'
 license=('custom')
 makedepends=('git')
 options=('!strip')
 provides=('86box-roms')
 conflicts=('86box-roms')
-source=("${pkgname}::git+https://github.com/86Box/roms.git")
+source=("${pkgname}::git+https://github.com/PCBox/roms.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  echo ${pkgver}
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    install -d "$pkgdir/usr/share/86Box/roms"
-    cp -R [a-z]* "$pkgdir/usr/share/86Box/roms"
+    install -d "$pkgdir/usr/share/PCBox/roms"
+    cp -R [a-z]* "$pkgdir/usr/share/PCBox/roms"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
