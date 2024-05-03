@@ -1,13 +1,13 @@
 pkgbase = jagged-alliance-gog
 	pkgdesc = A turn-based tactics game that takes place on the fictional South Atlantic island of Metavira.
 	pkgver = 1.13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gog.com/game/jagged_alliance
 	install = jagged-alliance-gog.install
 	arch = any
 	groups = games
 	license = custom:eula
-	makedepends = innoextract-git
+	makedepends = innoextract
 	makedepends = icoutils
 	depends = dosbox
 	optdepends = unionfs-fuse: mounting game folder to home for savegames and settings
@@ -27,4 +27,3 @@ pkgbase = jagged-alliance-gog
 	sha256sums = 68233aebc7a7ba578fda0ab0744ecfa9a3d5964c27e81c1d080a9f522cf78a89
 
 pkgname = jagged-alliance-gog
-
