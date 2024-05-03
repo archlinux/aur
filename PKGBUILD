@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tidybulk
-_pkgver=1.14.3
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.3
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Brings transcriptomics to the tidyverse'
 arch=('any')
@@ -80,7 +80,7 @@ optdepends=(
   r-widyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d29378f88a36325ec2510dd8b44c6255736d377e8fade277cf3c82d3b7e9ec36')
+sha256sums=('dd45c712f17fdef3bb86f4ad5111e6fbd414f89850f2290c6db35d869de844c6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
