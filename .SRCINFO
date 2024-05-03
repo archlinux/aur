@@ -1,6 +1,6 @@
 pkgbase = r-icnv
 	pkgdesc = Integrated Copy Number Variation detection
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iCNV
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-icnv
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-wes.1kg.wugsc
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iCNV_1.22.0.tar.gz
-	sha256sums = 098e5db84bc200cd6518f02f7bdd7521a6d8fad8fe58c9f7130f730f6cbda085
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iCNV_1.24.0.tar.gz
+	sha256sums = c2e09619264733ee6f5d5968043348edecd6ab04bc499fec41153539ffa57822
 
 pkgname = r-icnv
