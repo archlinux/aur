@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=girafe
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.54.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='Genome Intervals and Read Alignments for Functional Exploration'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('446659992e64ae2ee3d263fb3c25d91a421c6cfffa7f6df009f26787b7e94a27')
+sha256sums=('11278b1715129048cee298f4e244947858ca379e78811a5f6429f88f5d2faa9e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
