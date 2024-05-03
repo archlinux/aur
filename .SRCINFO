@@ -16,9 +16,10 @@ pkgbase = python-fluiddyn
 	depends = python-h5netcdf
 	depends = python-psutil
 	depends = python-distro
-	depends = python-qtpy
 	depends = python-simpleeval
 	optdepends = python-pyfftw: Calculate FFT
+	optdepends = python-pulp: LP problem support
+	optdepends = python-mpi4py: MPI support
 	source = https://foss.heptapod.net/fluiddyn/fluiddyn/-/archive/0.6.4/fluiddyn-0.6.4.tar.gz
 	sha512sums = 1317162795e3577d63d3a739d43936af54382f906aa06bf2f8992265eed43b5e6cfaf0635a675fbe8520faed1ede617ea11632c53084a739ff61785f8c07ae29
 
