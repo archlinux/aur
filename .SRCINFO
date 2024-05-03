@@ -1,13 +1,13 @@
 pkgbase = jagged-alliance-deadly-games-gog
 	pkgdesc = A turn-based tactics game developed as a sequel of Jagged Alliance and features new missions and a multiplayer mode.
 	pkgver = 1.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gog.com/game/jagged_alliance_deadly_games
 	install = jagged-alliance-deadly-games-gog.install
 	arch = any
 	groups = games
 	license = custom:eula
-	makedepends = innoextract-git
+	makedepends = innoextract
 	makedepends = icoutils
 	depends = dosbox
 	optdepends = unionfs-fuse: mounting game folder to home for savegames and settings
@@ -33,4 +33,3 @@ pkgbase = jagged-alliance-deadly-games-gog
 	sha256sums = 5bd5ad321e40676448871190cfe55294279c3bf0703e71e97a28c138ebe44937
 
 pkgname = jagged-alliance-deadly-games-gog
-

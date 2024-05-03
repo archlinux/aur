@@ -2,13 +2,13 @@
 
 pkgname=jagged-alliance-deadly-games-gog
 pkgver=1.13
-pkgrel=2
+pkgrel=3
 pkgdesc="A turn-based tactics game developed as a sequel of Jagged Alliance and features new missions and a multiplayer mode."
 url="https://www.gog.com/game/jagged_alliance_deadly_games"
 license=('custom:eula')
 groups=('games')
 arch=('any')
-makedepends=('innoextract-git' 'icoutils')
+makedepends=('innoextract' 'icoutils')
 depends=('dosbox')
 optdepends=('unionfs-fuse: mounting game folder to home for savegames and settings')
 install=$pkgname.install
