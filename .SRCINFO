@@ -10,6 +10,8 @@ pkgbase = zz
 	depends = sk
 	depends = fzf
 	source = eeec::git+https://github.com/eeec-cal/zz
+	depends = fzf
+	source = zz::git+https://github.com/eeec-cal/zz
 	sha256sums = SKIP
 
 pkgname = zz

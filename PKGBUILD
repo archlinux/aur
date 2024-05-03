@@ -1,4 +1,4 @@
-# Maintainer: Totor <bertlover6969@gmail.com>
+# Maintainer: Totor <totor.linuxdev@gmail.com>
 pkgname='zz'
 pkgver=1.3
 pkgrel=1
@@ -11,6 +11,12 @@ makedepends=('git')
 source=("eeec::git+https://github.com/eeec-cal/zz")
 sha256sums=('SKIP')
 
+
+
+depends=('awk' 'fzf')
+makedepends=('git')
+source=("zz::git+https://github.com/eeec-cal/zz")
+sha256sums=('SKIP')
 
 
 prepare() {
