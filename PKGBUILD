@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HarmonizR
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Handles missing values and makes more data available"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6e81c009fe8678273d8091378ae2f8e3')
-b2sums=('98165c2c75933c150ae2554a3d401f2a1da7ff56340b180cfdce4dd9d62f0d2109cdfa31c034970e7d6f21478a0a7557a4b4e4af16781d60802b25ca33ee8c20')
+md5sums=('73fb93fd95452bca631f14d4e6744299')
+b2sums=('130c69d9be775e48f4794dc8d043d5e863450c018ac754bbf5287697e534350ced5acf6cf56a563037087ead1eea4731b999fbeb28de7c31b3e93c45cf515155')
 
 build() {
   mkdir build
