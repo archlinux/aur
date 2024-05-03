@@ -2,13 +2,13 @@
 
 pkgname=constructor-gog
 pkgver=1.0_cs
-pkgrel=2
+pkgrel=3
 pkgdesc="Control a construction company, and aim to drive the other players out of business."
 url="https://www.gog.com/game/constructor"
 license=('custom:eula')
 groups=('eula')
 arch=('any')
-makedepends=('innoextract-git' 'icoutils')
+makedepends=('innoextract' 'icoutils')
 depends=('dosbox')
 optdepends=('unionfs-fuse: mounting game folder to home for savegames and settings')
 install=$pkgname.install

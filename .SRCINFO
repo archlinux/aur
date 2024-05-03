@@ -1,13 +1,13 @@
 pkgbase = constructor-gog
 	pkgdesc = Control a construction company, and aim to drive the other players out of business.
 	pkgver = 1.0_cs
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gog.com/game/constructor
 	install = constructor-gog.install
 	arch = any
 	groups = eula
 	license = custom:eula
-	makedepends = innoextract-git
+	makedepends = innoextract
 	makedepends = icoutils
 	depends = dosbox
 	optdepends = unionfs-fuse: mounting game folder to home for savegames and settings
@@ -33,4 +33,3 @@ pkgbase = constructor-gog
 	sha256sums = ee6715c4ba84e97ee3d04a4ad00ec1b67439ee8eb4ca2f1fd1000cb47b3f1c92
 
 pkgname = constructor-gog
-
