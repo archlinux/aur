@@ -1,6 +1,6 @@
 pkgbase = r-consensusde
 	pkgdesc = RNA-seq analysis using multiple algorithms
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/consensusDE
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-consensusde
 	depends = r-txdb.dmelanogaster.ucsc.dm3.ensgene
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/consensusDE_1.20.0.tar.gz
-	sha256sums = e4652fb90e8c81e03f02c0b03fc90904c306a365cfa8af641f1265a87f8cc503
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/consensusDE_1.22.0.tar.gz
+	sha256sums = 1f7d8b46d2486b1200d78de607daddaff50cd065a730b83cad33d8a9ac623914
 
 pkgname = r-consensusde
