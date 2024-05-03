@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=DESpace
-_pkgver=1.2.1
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('98a7395caa0d843520f62f06386483b9')
-b2sums=('7ed828ea39b99237160ba30dbce0e9125b48aa41802d0e8ebada24ca395e97662dc84af6802b99ec18dfb991a9e28b4e0cdb9ae15bf2643a5419a0890fd2df31')
+md5sums=('c9b686bd20d756891e8898d54039b1f4')
+b2sums=('c02785321a5c5af0ed66bdd52981b170ece0fc54e0556892c62b4adb05424715c1d993a4d19683bfeee9312c9f851e023f12976a81533c098d4acdb0b23c47dd')
 
 build() {
   mkdir build
