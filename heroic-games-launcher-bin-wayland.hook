@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = heroic-games-launcher-bin
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = heroic-games-launcher-bin-wayland-hook
+
+
+[Action]
+Description = Defaulting to Wayland support for heroic-games-launcher-bin
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/heroic-games-launcher-bin-wayland

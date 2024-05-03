@@ -1,0 +1,6 @@
+post_install() {
+	echo "Defaulting to Wayland in the current heroic-games-launcher-bin install"
+	rm /usr/bin/heroic
+	echo -e "#! /bin/bash\n\n/opt/Heroic/heroic --ozone-platform-hint=auto" > /usr/bin/heroic
+	chmod +x /usr/bin/heroic
+}
