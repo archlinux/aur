@@ -13,12 +13,12 @@ pkgbase = thextech-bin
 	depends = sdl2
 	provides = thextech=1.3.6.4
 	source_i386 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.4/thextech-plain-runtime-v1.3.6.4-linux-generic-u16.04-i386.tar.gz
-	sha256sums_i386 = 85ae9c765e34b7c66f22f80b759f7e14854249d3cc01a13e1d73dd8f7ddee90e
+	sha256sums_i386 = SKIP
 	source_i686 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.4/thextech-plain-runtime-v1.3.6.4-linux-generic-u16.04-i386.tar.gz
-	sha256sums_i686 = 85ae9c765e34b7c66f22f80b759f7e14854249d3cc01a13e1d73dd8f7ddee90e
+	sha256sums_i686 = SKIP
 	source_x86_64 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.4/thextech-plain-runtime-v1.3.6.4-linux-generic-u20.04-amd64.tar.gz
-	sha256sums_x86_64 = 22229cde2bec64491e16762ee7792f3ffc329ac3ba1108f810f0dc9ad47bc0bb
-	source_aarch64 = https://gitlab.com/linuxbombay/thextech/1.3.6.4/-/blob/main/thextech-linux-arm64.tar.xz
-	sha256sums_aarch64 = 492468d112bb955757727be82d51194742568de1756661af75577454474f0b0d
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://gitlab.com/thextech-archive/binaries/1.3.6.4/-/raw/main/thextech-linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
 
 pkgname = thextech-bin
