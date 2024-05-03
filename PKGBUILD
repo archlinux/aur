@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=distinct
-_pkgver=1.14.5
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.5
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='distinct: a method for differential analyses via hierarchical permutation tests'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('024351f81a26bef315770d5a45066932212a580b74cdc72547d90060f01e7892')
+sha256sums=('6a5e76c2b375f6ceafeaf2d41d86c4f25c322a52e78db960e14b4f4728b5b7a7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
