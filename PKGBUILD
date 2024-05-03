@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scanMiR
-_pkgver=1.8.2
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,6 +18,7 @@ depends=(
   r-genomicranges
   r-ggplot2
   r-iranges
+  r-pwalign
   r-s4vectors
   r-seqlogo
   r-stringi
@@ -29,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7d358cc7346de7793cded5df405fa6a8')
-b2sums=('751a0c13561ad5841122d0546a0600f4b09bc020fee5b37274fba3529620f562292ccee63ee391a307ff91020fc365aebabd25d7290c3a3bd6086ccd0bc0e8eb')
+md5sums=('1539e336dcb43018479f7661a71ee7fc')
+b2sums=('7abcdb6ade1aa89edb49464500d408282ce57558e1c0c54eaf9f1b77e27078ba4044dbdae28dffda0c5513bdc4bed0ab290ab07bc7d58972afe5db76e93546fc')
 
 build() {
   mkdir build
