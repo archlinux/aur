@@ -1,11 +1,11 @@
-# Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
+# Maintainer: gilcu3
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 # Past maintainer: Joris Steyn <jorissteyn@gmail.com>
+# brent s. <bts[at]square-r00t[dot]net>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=iozone
-pkgver=3.490
+pkgver=3.506
 _pkgver=${pkgver/./_}
 pkgrel=2
 pkgdesc="A filesystem benchmark tool"
@@ -15,10 +15,8 @@ license=('custom')
 depends=('sh')
 optdepends=('gnuplot: for generating graph reports')
 install=$pkgname.install
-source=("http://www.${pkgname}.org/src/current/${pkgname}${_pkgver}.tar"
-	"${pkgname}${_pkgver}.tar.sig")
-sha512sums=('15959cdb0a1f94cbe0063c72666683a5c2d8221dba04c7548ca96ac0ac5edf6118ccd54f1d4fd55151dbad79fc886bdd440a409b7906b4f6c0465c1f770fbcc6'
-	    'SKIP')
+source=("https://www.${pkgname}.org/src/current/${pkgname}${_pkgver}.tar")
+sha512sums=('908919aef957ee587e23ab1d29c0e7cdb985caa1ec80ddee0d3fcdad8aa78978de0f8fc83161b37223237119c50e0626a8366ce6b29debefbfee00240e97105e')
 
 build() {
 	cd "${srcdir}/${pkgname}${_pkgver}/src/current"
