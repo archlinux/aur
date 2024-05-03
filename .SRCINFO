@@ -1,6 +1,6 @@
 pkgbase = r-cnviz
 	pkgdesc = Copy Number Visualization
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CNViz
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-cnviz
 	depends = r-shiny
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNViz_1.10.0.tar.gz
-	sha256sums = 9ab6730e19ed9dc39488e4fb8f1446e4168413efd45bde77e1794b2aebddaa73
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNViz_1.12.0.tar.gz
+	sha256sums = 1b2eb31e6d7288d72f0ecd525c25a7c37b8baa293ea46fce3e2ba5443345f2e8
 
 pkgname = r-cnviz
