@@ -1,6 +1,6 @@
 pkgbase = r-scarray.sat
 	pkgdesc = Large-scale single-cell RNA-seq data analysis using GDS files and Seurat
-	pkgver = 1.2.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SCArray.sat
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = r-scarray.sat
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCArray.sat_1.2.1.tar.gz
-	md5sums = dfa447cd634a432486a982a719e27451
-	b2sums = c5578e0249789ce5b09ccaf8209b12109f18c68dd37230e2c25259bcbf59eba958d99d56076b0b3d8ac12dcd48e871c0ad16cf7d9ba9933259ee89214823df54
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCArray.sat_1.4.0.tar.gz
+	md5sums = d4b0240454c68414b40c35b70d51f85d
+	b2sums = e1382f5e4ecbd1b82ad507cd1cf23f2526d4292665da0e3fecf56e9af7ecccbeb76298adda584124ceca158b633c0044633d60a9d34580a156eb9b206bd58f66
 
 pkgname = r-scarray.sat
