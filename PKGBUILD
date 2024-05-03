@@ -1,13 +1,13 @@
 _name=setuptools-git-versioning
 pkgname=python-${_name}
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Use Git repo data for building a version number according to PEP 440.'
 url='https://github.com/dolfinus/setuptools-git-versioning'
 arch=('any')
 license=('MIT')
 depends=('python' 'python-setuptools' 'python-toml')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://pypi.io/packages/source/s/$_name/$_name-$pkgver.tar.gz")
