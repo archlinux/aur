@@ -1,7 +1,6 @@
 _model='large-v3'
 _model_sha1sum='ad82bf6a9043ceed055076d0fd39f5f186ff8062'
 _pkgbase='whisper.cpp-model'
-replaces=('whisper.cpp-model-large' 'whisper.cpp-model-large-v2')
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 pkgname="${_pkgbase}-${_model}"
 pkgver=1
