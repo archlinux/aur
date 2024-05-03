@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BioNERO
-_pkgver=1.10.3
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -46,8 +46,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('207ef35f0131c41c1596683af729ed04')
-b2sums=('1be08477cdc92ce458455a2fea47bfab5ae1a0b1f72633c7f4080d576dd66f9c1caec1f136513357dfc6e7f3715aae2a2fa9489a4c5e7ed28b83ecb73b59ec5f')
+md5sums=('3f6c538dcff7b95de07d4fd93ca29871')
+b2sums=('947f7a140f30c8dc9905a501973656e4011e0e3a6a75904dfbe65332b36ed99b972f853f4a1ff0bb243bd73712b84daece18de1b1de725be3391e0f7b8015f6f')
 
 build() {
   mkdir build
