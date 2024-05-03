@@ -2,7 +2,7 @@
 pkgname=catnip-git
 _pkgname=catnip
 pkgver=r161.cb0b8fd
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalistic and fast system fetch written in Nim."
 arch=(x86_64)
 url="https://github.com/iinsertNameHere/catnip"
@@ -22,10 +22,11 @@ pkgver() {
 
 build() {
 	cd "${_pkgname%}"
-	nim install
+	nim release
 }
 
 package() {
 	cd "${_pkgname%}"
-  	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 bin/catnip "$pkgdir/usr/local/bin/${_pkgname}"
   }
