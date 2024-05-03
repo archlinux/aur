@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive --text --color ggnfs-code/src/combparts.c ggnfs-code.new/src/combparts.c
+--- ggnfs-code/src/combparts.c	2024-05-03 13:48:34.952247291 +0200
++++ ggnfs-code.new/src/combparts.c	2024-05-03 13:49:25.815171131 +0200
+@@ -68,7 +68,7 @@
+ 
+   ll_getsortOnFieldSize(fieldsBySize, P);
+   if (str != NULL) {
+-    printf(str);
++    printf("%s", str);
+     for (i=0; i<8; i++) /* Overkill - 4 or 6 would do. */
+       numBySize[i]=0;
+     i=0;
