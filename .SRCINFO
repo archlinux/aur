@@ -1,6 +1,6 @@
 pkgbase = r-strandcheckr
 	pkgdesc = Calculate strandness information of a bam file
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/strandCheckR
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-strandcheckr
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/strandCheckR_1.20.0.tar.gz
-	sha256sums = a25ff1e8063de98ae2417bf7ee62074d95feb4989ad2381e882b604bb9679c6f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/strandCheckR_1.22.0.tar.gz
+	sha256sums = 4d441d72ba6c4ce8e5aa8b07aa9738743bbe2c4991323c955d1795e00f6a2917
 
 pkgname = r-strandcheckr
