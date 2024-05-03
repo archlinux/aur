@@ -1,6 +1,6 @@
 pkgbase = r-sampleclassifier
 	pkgdesc = Sample Classifier
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sampleClassifier
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-sampleclassifier
 	optdepends = r-hgu133a.db
 	optdepends = r-hgu133plus2.db
 	optdepends = r-sampleclassifierdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sampleClassifier_1.26.0.tar.gz
-	sha256sums = e737bb5c078477ca0f38ba75b756c3c4f6db5ce39825687f7c6e4b074a46e061
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sampleClassifier_1.28.0.tar.gz
+	sha256sums = 1fd86b09706222af7b39ace41ef49956f38f075e8a96f3d151031fde4b6c8889
 
 pkgname = r-sampleclassifier
