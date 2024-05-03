@@ -1,11 +1,11 @@
 pkgbase = python-jh2
 	pkgdesc = HTTP/2 State-Machine based protocol implementation
 	pkgver = 5.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/h2/
 	arch = aarch64
 	arch = x86_64
-	license = Apache-2.0
+	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-maturin

@@ -5,11 +5,11 @@ pkgname='python-jh2'
 _pkgname="${pkgname}"
 _srcname="${_pkgname/python-/}"
 pkgver=5.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP/2 State-Machine based protocol implementation'
 arch=('aarch64' 'x86_64')
 url='https://pypi.org/project/h2/'
-license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
+license=('MIT')  # SPDX-License-Identifier: MIT
 depends=(
   'gcc-libs'
   'glibc'
@@ -51,6 +51,12 @@ package() {
   cd "$_srcname-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+    {CHANGELOG,README}.rst
+
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+    LICENSE
 }
 
 # eof
