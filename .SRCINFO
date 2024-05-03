@@ -1,0 +1,24 @@
+pkgbase = python-jh2-git
+	pkgdesc = HTTP/2 State-Machine based protocol implementation (built from latest git commit)
+	pkgver = 5.0.3.r0.g66b5a7d
+	pkgrel = 1
+	url = https://github.com/jawah/h2
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = gcc-libs
+	depends = glibc
+	depends = python>=3.7
+	provides = python-jh2
+	conflicts = python-jh2
+	options = lto
+	source = jh2::git+https://github.com/jawah/h2.git
+	sha256sums = SKIP
+
+pkgname = python-jh2-git
