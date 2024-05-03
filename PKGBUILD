@@ -3,12 +3,12 @@
 
 pkgname=stabilitymatrix
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-Platform Package Manager for Stable Diffusion'
 arch=('any')
 url='https://github.com/LykosAI/StabilityMatrix'
 license=('AGPL3')
-depends=('libxcrypt-compat')
+depends=('dotnet-runtime' 'libxcrypt-compat')
 makedepends=('dotnet-sdk')
 options=('!strip')
 source=(
