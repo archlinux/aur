@@ -8,8 +8,7 @@ pkgname=('systemd-chromiumos'
          'systemd-chromiumos-resolvconf'
          'systemd-chromiumos-sysvcompat'
          'systemd-chromiumos-ukify')
-_tag='4003dd6754e3446691402d3cc389fbfd4faccc90' # git rev-parse v${_tag_name}
-_tag_name=255.4
+_tag=255.5
 # Upstream versioning is incompatible with pacman's version comparisons so we
 # replace tildes with the empty string to make sure pacman's version comparing
 # does the right thing for rc versions:
@@ -17,8 +16,8 @@ _tag_name=255.4
 # 1
 # ➜ vercmp 255rc1 255
 # -1
-pkgver="${_tag_name/~/}"
-pkgrel=1
+pkgver="${_tag/~/}"
+pkgrel=4
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 url='https://www.github.com/systemd/systemd'
@@ -35,8 +34,8 @@ validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <
               'A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E'  # Luca Boccassi <luca.boccassi@gmail.com>
               '9A774DB5DB996C154EBBFBFDA0099A18E29326E1'  # Yu Watanabe <watanabe.yu+github@gmail.com>
               '5C251B5FC54EB2F80F407AAAC54CA336CFEB557E') # Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>
-source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
-        "git+https://github.com/systemd/systemd#tag=v${_tag_name%.*}?signed"
+source=("git+https://github.com/systemd/systemd-stable#tag=v${_tag}?signed"
+        "git+https://github.com/systemd/systemd#tag=v${_tag%.*}?signed"
         '0001-Use-Arch-Linux-device-access-groups.patch'
         '0002-Disable-mount_nofollow-for-ChromiumOS-kernels.patch'
         # bootloader files
@@ -57,8 +56,8 @@ source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
         '30-systemd-tmpfiles.hook'
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
-sha512sums=('SKIP'
-            'SKIP'
+sha512sums=('ab0d47a29d60cb88f0934a9204c71cd78e2f5f568b9da532fdd4f8da55a352fce51cbcbaf17dc1a6f5b3c43ed7579876c724abcc2af5d8c4d3979f2ede60982f'
+            'd430427987309483c99062adb02741d25239ba5fbb97053ef817c0c5a0a935328af9c8b651de2b119b0e851dcf6623f01343859735ff81d7013ab0133e67c7ea'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
             '14279a57ec414dc68c25d9e0fd688c94cd078143bf144ac9081ffaa1e369527f3f04369fc27a88c03ae15cc879ac9678c38ca4c7ebfc1d7cbb40a2c2941266d1'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
@@ -77,7 +76,31 @@ sha512sums=('SKIP'
             'a50d202a9c2e91a4450b45c227b295e1840cc99a5e545715d69c8af789ea3dd95a03a30f050d52855cabdc9183d4688c1b534eaa755ebe93616f9d192a855ee3'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
+_meson_version="${pkgver}-${pkgrel}"
+_meson_mode='release'
+_meson_compile=()
+_meson_install=()
+
+if ((_systemd_UPSTREAM)); then
+  _meson_version="${pkgver}"
+  _meson_mode='developer'
+  pkgname+=('systemd-tests')
+  makedepends+=('libarchive')
+  optdepends_upstream=('libarchive: convert DDIs to tarballs')
+  if ((_systemd_QUIET)); then
+    _meson_install=('--quiet')
+  else
+    _meson_compile=('--verbose')
+  fi
+fi
+
 _backports=(
+  # resolved: always progress DS queries #32552
+  'd840783db5208219c78d73b9b46ef5daae9fea0a'
+  # resolved: probe for dnssec support in allow-downgrade mode
+  '5237ffdf2b63a5afea77c3470d9981a2c29643cc'
+  # resolved: validate authentic insecure delegation to CNAME
+  '414a9b8e5e1e772261b0ffaedc853f5c0aba5719'
 )
 
 _reverts=(
@@ -122,17 +145,18 @@ build() {
   )
 
   local _meson_options=(
-    -Dversion-tag="${_tag_name}-${pkgrel}-arch"
+    -Dversion-tag="${_meson_version}-arch"
     # We use the version without tildes as the shared library tag because
     # pacman looks at the shared library version.
-    -Dshared-lib-tag="${pkgver}-${pkgrel}"
-    -Dmode=release
+    -Dshared-lib-tag="${_meson_version/~/}"
+    -Dmode="${_meson_mode}"
 
     -Dapparmor=false
     -Dbootloader=true
     -Dxenctrl=false
     -Dbpf-framework=true
     -Dima=false
+    -Dinstall-tests=true
     -Dlibidn2=true
     -Dlz4=true
     -Dman=true
@@ -164,9 +188,9 @@ build() {
     -Dsbat-distro-url="https://aur.archlinux.org/packages/${pkgname}/"
   )
 
-  arch-meson "$_pkgbase-stable" build "${_meson_options[@]}"
+  arch-meson "$_pkgbase-stable" build "${_meson_options[@]}" $MESON_EXTRA_CONFIGURE_OPTIONS
 
-  meson compile -C build
+  meson compile -C build "${_meson_compile[@]}"
 }
 
 check() {
@@ -180,9 +204,10 @@ package_systemd-chromiumos() {
     'GPL-2.0-or-later' # udev
     'MIT-0' # documentation and config files
   )
-  depends=('acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
+  depends=("systemd-chromiumos-libs=${pkgver}"
+           'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
            'dbus-units' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
-           'libgcrypt' 'libxcrypt' 'libcrypt.so' 'systemd-libs' 'libidn2' 'lz4' 'pam'
+           'libgcrypt' 'libxcrypt' 'libcrypt.so' 'libidn2' 'lz4' 'pam'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
            'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so'
            'openssl' 'libcrypto.so' 'libssl.so')
@@ -203,6 +228,7 @@ package_systemd-chromiumos() {
               'libfido2: unlocking LUKS2 volumes with FIDO2 token'
               'libp11-kit: support PKCS#11'
               'tpm2-tss: unlocking LUKS2 volumes with TPM2')
+  optdepends+=("${_optdepends_upstream[@]}")
   backup=(etc/pam.d/systemd-user
           etc/systemd/coredump.conf
           etc/systemd/homed.conf
@@ -222,7 +248,7 @@ package_systemd-chromiumos() {
           etc/udev/udev.conf)
   install=systemd.install
 
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir "$pkgdir" "${_meson_install[@]}"
 
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
@@ -252,6 +278,10 @@ package_systemd-chromiumos() {
 
   # files shipped with systemd-resolvconf
   rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
+
+  # tests shipped with systemd-tests (for upstream)
+  install -d -m0755 systemd-tests/
+  mv "$pkgdir"/usr/lib/systemd/tests systemd-tests/
 
   # avoid a potential conflict with [core]/filesystem
   rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
@@ -298,8 +328,8 @@ package_systemd-chromiumos-libs() {
 
 package_systemd-chromiumos-resolvconf() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved) - chromiumos patches'
-  depends=('systemd-chromiumos')
-  provides=('openresolv' 'resolvconf' "systemd-resolvconf=$pkgver")
+  depends=("systemd-chromiumos=${pkgver}")
+  provides=('openresolv' 'resolvconf' "systemd-resolvconf=${pkgver}")
   conflicts=('resolvconf' 'systemd-resolvconf')
 
   install -d -m0755 "$pkgdir"/usr/bin
@@ -311,7 +341,7 @@ package_systemd-chromiumos-resolvconf() {
 
 package_systemd-chromiumos-sysvcompat() {
   pkgdesc='sysvinit compat for systemd - chromiumos patches'
-  provides=("systemd-sysvcompat=$pkgver")
+  provides=("systemd-sysvcompat=${pkgver}")
   conflicts=('sysvinit' 'systemd-sysvcompat')
   depends=('systemd-chromiumos')
 
@@ -325,11 +355,19 @@ package_systemd-chromiumos-sysvcompat() {
   done
 }
 
+package_systemd-chromiumos-tests() {
+  pkgdesc='systemd tests'
+  depends=("systemd-chromiumos=${pkgver}")
+
+  install -d -m0755 "$pkgdir"/usr/lib/systemd
+  mv systemd-tests/tests "$pkgdir"/usr/lib/systemd/tests
+}
+
 package_systemd-chromiumos-ukify() {
   pkgdesc='Combine kernel and initrd into a signed Unified Kernel Image - chromiumos patches'
-  provides=('ukify' "systemd-ukify=$pkgver")
+  provides=('ukify' "systemd-ukify=${pkgver}")
   conflicts=('systemd-ukify')
-  depends=('binutils' 'python-cryptography' 'python-pefile' 'systemd-chromiumos')
+  depends=("systemd-chromiumos=${pkgver}" 'binutils' 'python-cryptography' 'python-pefile')
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
