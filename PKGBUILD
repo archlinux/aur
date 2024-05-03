@@ -3,14 +3,15 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=8.0.5.r138.g8b3cfdb84
+pkgver=8.0.5.r181.g725670d99
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
 _depends_soh=("sdl2" "sdl2_net" "glew" "zenity" "libzip")
 _depends_soh_otr_exporter=("libpng")
-depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
-makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu" "boost")
+_depends_lus=("spdlog" "tinyxml2")  # libzip could be placed here, but ZAPD.out didn't made to use it
+depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}" "${_depends_lus[@]}")
+makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu" "boost" "nlohmann-json")
 source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "git+https://github.com/Kenix3/libultraship.git"
         "git+https://github.com/HarbourMasters/OTRExporter.git"
@@ -74,8 +75,13 @@ build() {
 
   CFLAGS="${CFLAGS/-Werror=format-security/}" \
   CXXFLAGS="${CXXFLAGS/-Werror=format-security/}" \
-    cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-        -DNON_PORTABLE=On -DCMAKE_INSTALL_PREFIX=$SHIP_PREFIX .
+  cmake . \
+    -Bbuild \
+    -GNinja \
+    -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
+    -DNON_PORTABLE=On \
+    -DCMAKE_INSTALL_PREFIX=$SHIP_PREFIX \
+    -DBUILD_REMOTE_CONTROL=1
 
   cmake --build build --target ZAPD --config $BUILD_TYPE $NINJAFLAGS
 
@@ -92,7 +98,7 @@ package_soh-git() {
   pkgdesc="An unofficial port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch (git)"
   provides=("soh")
   conflicts=("soh")
-  depends=("${_depends_soh[@]}")
+  depends=("${_depends_soh[@]}" "${_depends_lus[@]}")
   license=("unknown")
   install=soh.install
   optdepends=("soh-otr: OTR asset file in order to run"
@@ -118,7 +124,7 @@ package_soh-otr-exporter-git() {
   provides=("soh-otr-exporter")
   conflicts=("soh-otr-exporter")
   license=("MIT")
-  depends=("${_depends_soh_otr_exporter[@]}")
+  depends=("${_depends_soh_otr_exporter[@]}" "${_depends_lus[@]}")
 
   cd "${srcdir}/${_reponame}"
 
