@@ -1,9 +1,9 @@
 # Maintainer: Noah Schlenker noschl@proton.me
-_tag=3de8a0b76594c2210682eef1539c46cec28ccdac
+_tag=0324c0c9bcc43758d65e6ca18ed5ccaf9555e32b
 _sourceName="yap"
 
 pkgname="youtube-audio-puller-git"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="YAP: Download Audio from Invidious by link or automatic search, from Apple music by playlist link"
 arch=("any")
