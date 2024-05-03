@@ -1,6 +1,6 @@
 pkgbase = python-evaluate
 	pkgdesc = HuggigFace library for easily evaluating machine learning models and datasets
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/huggingface/evaluate/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = python-evaluate
 	depends = python-tqdm>=4.62.1
 	depends = python-xxhash
 	optdepends = python-transformers
-	source = evaluate-0.4.1.tar.gz::https://github.com/huggingface/evaluate/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 9920471c26f2a84a9d3a1ad7c267f1f93bb24722b4f7b8ed7bb801ee314d944e
+	source = evaluate-0.4.2.tar.gz::https://github.com/huggingface/evaluate/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = 97c367c89b207a6dce29ffb529e05360be0dc9db8890ed7912cb88dac7d4b8af
 
 pkgname = python-evaluate
