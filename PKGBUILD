@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SplicingGraphs
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Create, manipulate, visualize splicing graphs, and assign RNA-seq reads to them'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('645c7406148182200352240d554df82b1fdf24a4a69a092a26b8357589695ed9')
+sha256sums=('af9006364fac9f7bbcb836058361947bccf28e845022e251c0813b77e21092cc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
