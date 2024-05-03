@@ -1,8 +1,8 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=perl-www-mechanize-chrome
 pkgver=0.73
-pkgrel=1
-pkgdesc='WWW::Mechanize::Chrome'
+pkgrel=2
+pkgdesc='WWW::Mechanize::Chrome - automate the Chrome browser'
 _dist=WWW-Mechanize-Chrome
 arch=('any')
 url="https://metacpan.org/release/$_dist"
