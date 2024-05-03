@@ -1,4 +1,5 @@
-# Maintainer:TurtleRuss <tttturtleruss@gmail.com> 
+# Maintainer: Haoyang Liu <tttturtleruss@gmail.com> 
+
 pkgname=hustmirror-cli
 pkgver=1.1.3
 pkgrel=1
@@ -13,7 +14,7 @@ makedepends=('make' 'python3')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=(hustmirror-cli-git)
 replaces=()
 backup=()
 options=()
