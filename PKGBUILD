@@ -3,18 +3,17 @@
 upstream_name=hawkmoth
 aur_name=python-sphinx-hawkmoth
 pkgname=$aur_name-git
-pkgver=0.12.0.0r.g9a77f67
+pkgver=0.18.0.6r.g9f67cae
 pkgrel=1
 pkgdesc='Sphinx autodoc C extension'
 arch=('i686' 'x86_64')
 url='https://github.com/jnikula/hawkmoth'
 license=('BSD2')
 depends=('python-sphinx' 'clang')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatch')
 provides=($aur_name)
 conflicts=($aur_name)
 source=('git+https://github.com/jnikula/hawkmoth')
-# source=('git+https://gitlab.com/bms-contrib/hawkmoth#branch=anonym')
 md5sums=('SKIP')
 
 pkgver() {
