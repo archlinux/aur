@@ -1,0 +1,5 @@
+[saber]
+source = "github"
+github = "saber-notes/saber"
+use_max_tag = true
+prefix = "v"
