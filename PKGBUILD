@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=cytofQC
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Labels normalized cells for CyTOF data and assigns probabilities for each label"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7a4e866c0e57f639b41828c211aff31f')
-b2sums=('8a36f75c1d035b1c98a8f358ad7ba0ec0811f02b12d54e67bc0ff3af92afe1aaf2e5dff06776d0bc7fb4794d3a2fa5cb383582124474fd81c07987b32cc0dd21')
+md5sums=('5ce5a248d0f24b4a1fc223dba8ae1898')
+b2sums=('4b4e148ecc9d012299e7d99876dd40d515847fe63a986ec4433325686c62e31250dfe6467ed30aeb805528e849b0133cbf04a92b259bc55da48bf920ddbb0ca3')
 
 build() {
   mkdir build
