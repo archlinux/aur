@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=TOP
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="TOP Constructs Transferable Model Across Gene Expression Platforms"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -49,8 +49,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('af6712369d58630bdcc2b05d7dc06b52')
-b2sums=('1504b65c16e25b50d4bacea22c59b13be1099978e85fcce63044dbdf45395db0584625d28d1854475953e87312d56f185c9222e9f706793710b6ed135ced4e01')
+md5sums=('3f82d34d4cc5baa5f0db6c423a1c7f2b')
+b2sums=('4520f1eaf9b50009f0552e6142e73c8e35c86fb9717b4b0afff9c64aa537a93bbd5030c662379fe22f4112d1d9b7161a7f41227803b333f46c23531bf846635d')
 
 build() {
   mkdir build
