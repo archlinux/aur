@@ -1,6 +1,6 @@
 pkgbase = r-pipeframe
 	pkgdesc = Pipeline framework for bioinformatics in R
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pipeFrame
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-pipeframe
 	optdepends = r-knitr
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pipeFrame_1.18.0.tar.gz
-	sha256sums = c972d8613581a03de083d3e894c260b5047fb7579aa6417d023ee40fc1927def
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pipeFrame_1.20.0.tar.gz
+	sha256sums = 144dc4aa2e0091959a2e5668673f79e5b3871dc64df3bf87ab5253df8028918b
 
 pkgname = r-pipeframe
