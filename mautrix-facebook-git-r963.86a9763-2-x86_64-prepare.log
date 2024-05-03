@@ -1,0 +1,5 @@
+HEAD is now at 2ab4342 Mark as deprecated
+Apply patch to follow fileplacement guidelines per `man heir`
+patching file setup.py
+Hunk #1 succeeded at 73 with fuzz 2 (offset 3 lines).
+Applying patch to permit use of newest mautrix version

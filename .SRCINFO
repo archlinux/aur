@@ -1,6 +1,6 @@
 pkgbase = mautrix-facebook-git
 	pkgdesc = A double puppeting Facebook bridge with multi-user support for Hangouts
-	pkgver = r963.86a9763
+	pkgver = r964.2ab4342
 	pkgrel = 1
 	url = https://github.com/mautrix/facebook
 	arch = any
