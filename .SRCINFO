@@ -1,6 +1,6 @@
 pkgbase = r-enhancerhomologsearch
 	pkgdesc = Identification of putative mammalian orthologs to given enhancer
-	pkgver = 1.8.3
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/enhancerHomologSearch
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = r-enhancerhomologsearch
 	optdepends = r-tfbstools
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/enhancerHomologSearch_1.8.3.tar.gz
-	sha256sums = 827c545a6bb9a0102b2e23332ead594af7aad6edb34251b7daaaed0c10c588d3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/enhancerHomologSearch_1.10.0.tar.gz
+	sha256sums = 2323edf68b8fbeee00a87f4cc37568da4fc71773929209f4c8e0bfb9bf201502
 
 pkgname = r-enhancerhomologsearch
