@@ -1,7 +1,7 @@
 pkgbase = python-urllib3-future-git
 	pkgdesc = Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (built from latest commit)
 	pkgver = 2.7.906.r0.g37e0c967
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jawah/urllib3.future
 	arch = any
 	license = MIT
@@ -10,14 +10,14 @@ pkgbase = python-urllib3-future-git
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python
+	depends = python>=3.7
 	depends = python-brotli
 	depends = python-brotlicffi
 	depends = python-h11
 	depends = python-idna
-	depends = python-jh2>=5
+	depends = python-jh2
 	depends = python-python-socks
-	depends = python-qh3>=1.0.0
+	depends = python-qh3
 	depends = python-typing_extensions
 	depends = python-urllib3
 	depends = python-zstandard

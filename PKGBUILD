@@ -6,7 +6,7 @@ _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
 pkgver=2.7.906.r0.g37e0c967
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (built from latest commit)'
 arch=('any')
 url="https://github.com/jawah/urllib3.future"
@@ -19,14 +19,14 @@ makedepends=(
   'python-wheel'
 )
 depends=(
-  'python'
+  'python>=3.7'
   'python-brotli'
   'python-brotlicffi'
   'python-h11'
   'python-idna'
-  'python-jh2>=5'
+  'python-jh2'
   'python-python-socks'
-  'python-qh3>=1.0.0'
+  'python-qh3'
   'python-typing_extensions'
   'python-urllib3'
   'python-zstandard'
@@ -39,7 +39,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_srcdir"
 
-  git describe --long --tags \
+  git describe --tags --long \
   |  sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
