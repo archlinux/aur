@@ -11,7 +11,7 @@ pkgver=2.0.2
 pkgrel=1
 
 arch=('any')
-depends=('python' 'caustic-cst' 'caustic-parser')
+depends=('python' 'python-parglare' 'caustic-cst' 'caustic-parser')
 makedepends=('python-installer')
 
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/${pkgname//-/.}/${pkgname//-/.}-$pkgver-py3-none-any.whl")
