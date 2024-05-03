@@ -1,6 +1,6 @@
 pkgbase = r-vtpnet
 	pkgdesc = variant-transcription factor-phenotype networks
-	pkgver = 0.42.0
+	pkgver = 0.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/vtpnet
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-vtpnet
 	optdepends = r-motifdb
 	optdepends = r-rgraphviz
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/vtpnet_0.42.0.tar.gz
-	sha256sums = 4f2520efa3c0bb0cc9272d63d3a20d72b8bbe50cf1dcc34d588ab1353edea014
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/vtpnet_0.44.0.tar.gz
+	sha256sums = d735d7579a84267661a0512776281b186273c588e11cb5be4b386f7ba0f424ba
 
 pkgname = r-vtpnet
