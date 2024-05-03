@@ -1,14 +1,13 @@
 pkgbase = perl-future-http
 	pkgdesc = Future::HTTP - provide the most appropriate HTTP client with a Future API
 	pkgver = 0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Future-HTTP
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	makedepends = perl-test-http-localserver
 	depends = perl
-	depends = perl-filter-signatures
 	depends = perl-moo
 	depends = perl-future
 	depends = perl-http-message
