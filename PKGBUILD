@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.ranges
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Load and Save Ranges-related Artifacts from File"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -15,6 +15,7 @@ depends=(
   r-genomeinfodb
   r-genomicranges
   r-iranges
+  r-rhdf5
   r-s4vectors
 )
 checkdepends=(
@@ -27,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('af5d849080999b0167cc39fc182721e9')
-b2sums=('3a71d6e69bad8e04080a6b3cc27efac3db9fe66a1a621ae20ad9120cd12309e91c1523ec985d3d520d00c776dcd3a1234c6be82e57c19bd17b3cb5bd4ee35708')
+md5sums=('ce11fd06ec03472d900e0dc10833f131')
+b2sums=('e825965e031a7f01039f888cc4da9226becc62cf820865c0992026e2a0c66795cb58d35249f60b92526fa1d60dcdd67fb1624aa923b6fbb8d76b576cd19efea2')
 
 build() {
   mkdir build
