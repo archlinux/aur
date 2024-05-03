@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Repitools
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='Epigenomic tools'
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
   r-shortread
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c0af0fc2131a0e27448ec71ef75ba6716c94e3d74dca501dacd09c9adf2d725e')
+sha256sums=('2fbd368ccfaeac7b5e8665ec3f780c6d1eafff0b2bb1f1bd42b2dc79228ff1fa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
