@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=factR
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Functional Annotation of Custom Transcriptomes"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -56,8 +56,8 @@ optdepends=(
   r-zeallot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('55b088d84e382a7068b40062151e4bec')
-b2sums=('e43f33fa31399ff1a79303020f3c057c9164dc35c76e9d400702d606011c8e8d73a19c4f15d3ed90638304d58ea0458fe1cece807953ea1d4a49789af2ea77a5')
+md5sums=('71444320c46af980fffd92815ed30e84')
+b2sums=('a3ac343c955a2b8b5a5fbc367c655baeb10af39083fce20ebba202136f7ed5467609aaf7d22f183004924346e98db517a5a6559f4e9af039897d3fb2b9646aa0')
 
 build() {
   mkdir build
