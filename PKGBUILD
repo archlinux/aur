@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MineICA
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Analysis of an ICA decomposition obtained on genomics data'
 arch=('any')
@@ -53,7 +53,7 @@ optdepends=(
   r-mclust
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('657058c780494768d860988cd6c24e875f55bd9f1718282c61d133d24e85eab3')
+sha256sums=('2079237b2d33fef229df07c05403a65e2713245d1222dd6aa7990ee1b275f8e3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
