@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CRISPRseek
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Design of target-specific guide RNAs in CRISPR-Cas9, genome-editing systems'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7b8d8646f35dc00d7c8f18d84b8f030c4a9a116fd352590a6af7294135968c36')
+sha256sums=('ece8da3a98492759bb261318c3a1c6335706ae0549e35548cef4be40d7e5b8ee')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
