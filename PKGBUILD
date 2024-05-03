@@ -9,7 +9,7 @@ pkgdesc="YAP: Download Audio from Invidious by link or automatic search, from Ap
 arch=("any")
 url="https://github.com/noahpy/yap"
 license=("GPL-3.0-only")
-depends=('curl' 'ffmpeg' 'tageditor' 'sh')
+depends=('curl' 'ffmpeg' 'tageditor-cli' 'sh')
 makedepends=(git)
 optdepends=()
 source=("git+${url}.git#tag=${_tag}?signed")
