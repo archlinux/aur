@@ -1,14 +1,14 @@
 pkgbase = zz
 	pkgdesc = AUR Helper Helper
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/eeec-cal/zz
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = awk
-	depends = fzf
-	source = zz-1.3.tar.gz::https://github.com/eeec-cal/zz/archive/refs/tags/1.3.tar.gz
+	depends = skim
+	source = zz-1.4.tar.gz::https://github.com/eeec-cal/zz/archive/refs/tags/1.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = zz
