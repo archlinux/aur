@@ -1,0 +1,18 @@
+pkgbase = r-listviewer
+	pkgdesc = 'htmlwidget' for Interactive Views of R Lists
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=listviewer
+	arch = any
+	license = MIT
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-shiny
+	optdepends = r-jsonlite
+	optdepends = r-miniui
+	optdepends = r-rstudioapi
+	source = https://cran.r-project.org/src/contrib/listviewer_4.0.0.tar.gz
+	md5sums = 07909f16effa110f98f803f137c61302
+	b2sums = 6d00b4e0abcfc026eb76ee28fc47d05ad83b65d3362fa4d6dc81443a5ac8f2a561d6d95d0185b71965a4c867ffd9cbed79334ac6d54c034c0889363e91e0d273
+
+pkgname = r-listviewer
