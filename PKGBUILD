@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ensemblVEP
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('378569d68f5d4973a7b16eb7cc2b9327')
-b2sums=('567065cc42b2013cb4d6bdcc8fa27b32f94f42d9df58497019e0b081802249e08d6c21cabdc8b1d10d2df51edfd2661ab1272e2ea84eb255b33ce5060befc79a')
+md5sums=('8abab1bf8db5de37d2ce9cec4ece66b6')
+b2sums=('4f09a2d313ef15516b0b8556ddc5a508b9ce338006eacf88fa9f0653634f026d867c2a08571c7d56f999438c8a5f91a809bc7624c8e5c679a730b0d245024bf0')
 
 build() {
   mkdir build
