@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=stJoincount
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Join count statistic for quantifying spatial correlation between clusters"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('85dd3f81a773ede72a70185cb4132d2b')
-b2sums=('429f3939ede74dd54b5b8561463678303ee8a2cab2b1b28de83a1f21e01da909e2bd0b7a09776a369959fcbe9ba90f108eff1e0f35dc8c90638adb626f7efdf7')
+md5sums=('7fec8bfa6c6e4c7531504f5ec466158c')
+b2sums=('dc59858ad14eea22c48edf599e792706983b7199f515e9cd0f3d2ab3bce3dea051569ab64a8d72e5c4e71d35f93fa278df1fdfd4ad642dbd64d0ca9559ca03de')
 
 build() {
   mkdir build
