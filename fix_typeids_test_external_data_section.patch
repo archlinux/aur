@@ -1,0 +1,10 @@
+--- test/tools/llvm-shlib/typeids.test	2024-05-02 18:56:57.073814446 +0200
++++ test/tools/llvm-shlib/typeids_fix.test	2024-05-02 18:56:09.198898879 +0200
+@@ -10,5 +10,5 @@
+ # RUN: llvm-nm -C %llvmdylib | FileCheck %s
+ # RUN: llvm-nm -C %llvmdylib | FileCheck %s --check-prefix=SAFETY-CHECK
+ 
+-# CHECK-NOT: {{[^uvV]}} llvm::Any::TypeId
+-# SAFETY-CHECK: {{[uvV]}} llvm::Any::TypeId
++# CHECK-NOT: {{[^uvVD]}} llvm::Any::TypeId
++# SAFETY-CHECK: {{[uvVD]}} llvm::Any::TypeId
