@@ -1,7 +1,7 @@
 # Maintainer: 'Radiolin' <anton.osi2011@gmail.com>
 gitname=cassette
 pkgname=cassette-dev
-pkgver=0.2.0.20240503
+pkgver=0.2.0.20240504
 pkgrel=1
 pkgdesc="GTK4/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux."
 arch=('x86_64' 'aarch64')
@@ -18,13 +18,13 @@ options=('strip')
 
 build() {
     cd "${gitname}/"
-    meson . _build --prefix=/usr
-    meson configure -Dprofile=development _build
-    ninja -C _build
+    meson . builddir --prefix=/usr
+    meson configure -Dprofile=development builddir
+    ninja -C builddir
 }
 
 package() {
     cd "${gitname}/"
-    DESTDIR="${pkgdir}" ninja -C _build install
+    DESTDIR="${pkgdir}" ninja -C builddir install
 }
 
