@@ -1,9 +1,10 @@
 pkgbase = qbittorrent-clientblocker-git
 	pkgdesc = A peer manager for qBittorrent
-	pkgver = 2.9b3.r2.gcca9e55
+	pkgver = 3.2
 	pkgrel = 1
 	url = https://github.com/Simple-Tracker/qBittorrent-ClientBlocker
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = go>=1.20.13

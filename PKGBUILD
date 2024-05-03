@@ -1,9 +1,9 @@
 # Maintainer: Nikko <nikko@faint.day>
 pkgname=qbittorrent-clientblocker-git
-pkgver=2.9b3.r2.gcca9e55
+pkgver=3.2
 pkgrel=1
 pkgdesc="A peer manager for qBittorrent"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Simple-Tracker/qBittorrent-ClientBlocker"
 license=('MIT')
 depends=('glibc')
