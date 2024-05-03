@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MetaboAnnotation
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Utilities for Annotation of Metabolomics Data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -41,8 +41,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fee181fc1795a1e2bde1d1e551f1a45e')
-b2sums=('795945384861f3a99f2a2598799d77411cd144b9f9b883a63cf984ec1541e068b626183502fd8c4a50afec2ef78ff9a2cfa1d889eb0a0858d69948918e7f467a')
+md5sums=('ed47c97fe9e6257f5b3a3ac301f14109')
+b2sums=('3db944dd5db55073c65458952fb98a7f195f20f486e61e4867d784232691bff5569ed9475996b9bef80f9645ee06992df2132796805d487e16123ff194f77108')
 
 build() {
   mkdir build
