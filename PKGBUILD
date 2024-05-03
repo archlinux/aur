@@ -3,7 +3,7 @@
 # Contributor: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.48.3
+pkgver=1.49.1
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -11,7 +11,7 @@ pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
 depends=('nodejs-lts-hydrogen' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
-             'yarn' 'npm' 'make' 'gcc' 'pkgconf' 'python' 'node-gyp')
+             'yarn' 'npm' 'make' 'gcc' 'pkgconf' 'python-setuptools' 'node-gyp')
 optdepends=('git: git support' 'libsecret: keytar support')
 options=(!strip !debug)
 
@@ -28,7 +28,7 @@ source=(
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
             '201f033b3e445dca08066f5d636b961d45d2ffadd589908f3cc76bf2c2bd601a'
-            '9584d011fd03d1656a041ae58f7f46c94d7a091de6777326fb8f53d728cb8b8d'
+            '3ece3931bdf6bac8099f30d3e7a4ac7b6311c33addc325d6032a2ad87e36507c'
             'f43cc8aaf4738166acdf4e54817ad7e9c031c4dacf23eb8496f9edae33b3f1d0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
             'd9712e3b79a98d7b1d5fd64d709daa806be6944c3f0cebf22879cd0e3c08ce06'

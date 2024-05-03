@@ -2,7 +2,7 @@
   "EditorConfig.EditorConfig": "=",
   "dbaeumer.vscode-eslint": "=",
   "eclipse-theia.builtin-extension-pack": "",
-  "ms-vscode.js-debug": "=1.83.1",
+  "ms-vscode.js-debug": "=1.88.0",
   "ms-vscode.js-debug-companion": "=1.1.2",
   "ms-vscode.references-view": "",
   "vscode.bat": "=",
