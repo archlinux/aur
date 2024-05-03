@@ -1,20 +1,24 @@
 pkgbase = matrix-commander-git
 	pkgdesc = Simple CLI-based Matrix client (from git master)
-	pkgver = r324.dbf2829
+	pkgver = r368.078da5f
 	pkgrel = 1
 	url = https://github.com/8go/matrix-commander
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>3.7
+	depends = bash
+	depends = python
 	depends = python-aiohttp
-	depends = python-aiofiles>=0.6.0
+	depends = python-async-timeout
+	depends = python-aiofiles
 	depends = python-emoji
 	depends = python-markdown
-	depends = python-matrix-nio>=0.14.1
+	depends = python-matrix-nio
 	depends = python-pillow
+	depends = python-setuptools
 	depends = python-magic
 	depends = python-pyxdg
 	depends = python-atomicwrites

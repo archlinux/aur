@@ -1,38 +1,35 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander-git
 _name="${pkgname%-git}"
-pkgver=r324.dbf2829
-pkgrel=2
+pkgver=r368.078da5f
+pkgrel=1
 pkgdesc="Simple CLI-based Matrix client (from git master)"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
-license=('GPL')
+license=('GPL-3.0-or-later')
 makedepends=(
+  "git"
   "python-build"
   "python-installer"
   "python-wheel"
 )
 depends=(
-  # adapted from requirements.txt:
-  "python>3.7"
+  "bash"
+  "python"
   "python-aiohttp"
-  "python-aiofiles>=0.6.0"
-  # "python-argparse" part of python since 3.2
-  # "python-asyncio" part of python since 3.3
-  # "python-datetime" part of standard python
+  "python-async-timeout"
+  "python-aiofiles"
   "python-emoji"
   "python-markdown"
-  "python-matrix-nio>=0.14.1"
+  "python-matrix-nio" # AUR
   "python-pillow"
+  "python-setuptools"
   "python-magic"
   "python-pyxdg"
-  # "python-uuid" part of standard python
-
-  # other dependencies:
-  "python-atomicwrites"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
-  "python-cachetools"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
-  "python-olm"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
-  "python-peewee"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
+  "python-atomicwrites"
+  "python-cachetools"
+  "python-olm"
+  "python-peewee"
 )
 optdepends=(
   "python-notify2: needed for notifications on desktop systems"
