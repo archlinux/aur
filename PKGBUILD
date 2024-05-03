@@ -2,17 +2,17 @@
 
 _appname=oidc_login
 pkgname=nextcloud-app-${_appname/_/-}
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='App for authenticating Nextcloud users using SAML'
 arch=(x86_64)
 url="https://github.com/pulsejet/${pkgname//-app}"
-license=(AGPL3)
+license=(AGPL-3.0-only)
 makedepends=(nextcloud
              rsync
              yq)
 source=("$_appname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_appname.tar.gz")
-sha256sums=('d4861c6e8915ad3b470688d9c06fd1ef0ed9ae632e88d36325cdf28457d83de8')
+sha256sums=('a2476047a70dc8a43035f0f2dd9bbde24eb15e68f5db6176fee6f0ee72cd11a6')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
