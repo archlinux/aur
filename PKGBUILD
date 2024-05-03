@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Pigengene
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Infers biological signatures from gene expression data'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-org.mm.eg.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7375a0be2eb648a6442ecbc6f29795c6fbce303402c0dd2e6c8f79d2b1c1096a')
+sha256sums=('ecaa7b5200cc39eb0d5b5913ee3c90c01d9763803d5d8960d47dbfd1d9b14f22')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
