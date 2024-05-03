@@ -1,5 +1,5 @@
 pkgname=libelectron
-pkgver=1.0.21
+pkgver=1.0.22
 pkgrel=1
 arch=("x86_64" "aarch64")
 url="https://gitlab.com/linuxbombay/libelectron/libelectron"

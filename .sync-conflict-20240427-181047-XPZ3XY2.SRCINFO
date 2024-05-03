@@ -1,0 +1,16 @@
+pkgbase = libelectron
+	pkgdesc = A collection of npm dependencies for electron packages.
+	pkgver = 1.0.21
+	pkgrel = 1
+	url = https://gitlab.com/libelectron/libelectron
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = npm
+	depends = git
+	depends = icu
+	source = https://github.com/libelectron/libelectron/archive/refs/tags/1.0.21-1.tar.gz
+	sha256sums = SKIP
+
+pkgname = libelectron
