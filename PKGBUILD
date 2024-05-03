@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=geneXtendeR
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Optimized Functional Annotation Of ChIP-seq Data'
 arch=('x86_64')
@@ -44,7 +44,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c818968234a6d010b1ce7b1ba385267c535c6d133cc809b2982e29956875362e')
+sha256sums=('a707b4e025966eb25691475c333f1195a177c449d050e7378f1d380b15ed351b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

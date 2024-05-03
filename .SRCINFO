@@ -1,6 +1,6 @@
 pkgbase = r-genextender
 	pkgdesc = Optimized Functional Annotation Of ChIP-seq Data
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/geneXtendeR
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = r-genextender
 	optdepends = r-rmarkdown
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/geneXtendeR_1.28.0.tar.gz
-	sha256sums = c818968234a6d010b1ce7b1ba385267c535c6d133cc809b2982e29956875362e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/geneXtendeR_1.30.0.tar.gz
+	sha256sums = a707b4e025966eb25691475c333f1195a177c449d050e7378f1d380b15ed351b
 
 pkgname = r-genextender
