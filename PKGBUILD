@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=goSorensen
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Statistical inference based on the Sorensen-Dice dissimilarity and the Gene Ontology (GO)"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8fa5cc982341291dd857ab340abe4c73')
-b2sums=('233116882af6f71d6dc0b37c213617d0e0196b22281859c4b8ff8d19f84b9838cefb88b5ecca7bb820a97cf4cece465c71d2ed0fc035afc92f46115a2d3b51ea')
+md5sums=('03a006142bb604e84817524b9b1e5206')
+b2sums=('3cb4bc47d4ebf1c8c7ce9155d188f5332c3b0306498bda28f27fbc081965479be3b8626069df94c216a11f2769a7246385b93e397ffbb464f83fcde67224fb96')
 
 build() {
   mkdir build
