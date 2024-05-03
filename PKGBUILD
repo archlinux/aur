@@ -8,7 +8,7 @@ depends=('npm' 'git' 'icu')
 pkgdesc="A collection of npm dependencies for electron packages."
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver-$pkgrel/libelectron-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('a01953052b63a97155999fbfa05fc50a038d49150b1c5ec8e73625e0c64f2d9f')
+sha256sums=('a78b041b355c65c1e7a1713d91a74ba25ad601e3620fff6193b716e4651919e9')
 
 package() {
     for dir in $pkgname-$pkgver-$pkgrel ; do mv "${dir}" "$pkgname" ;done
