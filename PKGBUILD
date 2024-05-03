@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tadar
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Transcriptome Analysis of Differential Allelic Representation"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('88c91583a351bef3f3d8ca38b51c0c04')
-b2sums=('049c9b1320143a39f433f3ff662d371c1103558f781ee85b0d31466443e755489b0d705f562615fa9f6c65d02293b89436bca31e9877d9e713256d6c3542a20b')
+md5sums=('10f5349af7e634695d7f22e6f90d371d')
+b2sums=('4d164c3c396c71bf721adfee6baf02a14c79e70491505dbac4bd2f3d7c2a33e84fdf2463e2f56865cc3a24086aa6e78c35b4502e9f5e8f9803c792ec7a69ed92')
 
 build() {
   mkdir build
