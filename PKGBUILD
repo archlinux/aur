@@ -2,7 +2,7 @@
 
 pkgname=beyondallreason-appimage
 pkgver=1.2988.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest release of BYAR-Chobby, the launcher for Beyond All Reason - An open source RTS game built on top of the Spring RTS Engine"
 arch=('x86_64')
 url="https://www.beyondallreason.info"
@@ -29,8 +29,11 @@ package() {
     ./${_filename} --appimage-extract "usr/share/icons/hicolor/0x0/apps/beyond-all-reason.png" > /dev/null 2>&1
     ./${_filename} --appimage-extract beyond-all-reason.desktop > /dev/null 2>&1
 
-    #Change name in .desktop file
+    # Change name in .desktop file
     sed -i -E "s|Name=Beyond-All-Reason|Name=Beyond All Reason|" "squashfs-root/${_squashfs_desktop_file}"
+
+    # Add "BAR" as a keyword, allowing to search for "BAR" in the launcher
+    echo "Keywords=BAR;" >> "squashfs-root/${_squashfs_desktop_file}"
 
     # install icons
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
