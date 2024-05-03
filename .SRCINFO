@@ -1,7 +1,7 @@
 pkgbase = perl-www-mechanize-chrome
-	pkgdesc = WWW::Mechanize::Chrome
+	pkgdesc = WWW::Mechanize::Chrome - automate the Chrome browser
 	pkgver = 0.73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/WWW-Mechanize-Chrome
 	arch = any
 	license = GPL
