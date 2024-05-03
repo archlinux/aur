@@ -1,6 +1,6 @@
 pkgbase = r-nadfinder
 	pkgdesc = Call wide peaks for sequencing data
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NADfinder
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-nadfinder
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NADfinder_1.26.0.tar.gz
-	sha256sums = b8f71e6e168bc500b9d8af3a49b0183edb6f04904b8dd6e5036b70ce0c3ee2c5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NADfinder_1.28.0.tar.gz
+	sha256sums = f08b8b383d5ac249170355ca1f50b8baf34b3f1e2b1247f4302221779c3c78a1
 
 pkgname = r-nadfinder
