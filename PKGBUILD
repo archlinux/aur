@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=PanomiR
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Detection of miRNAs that regulate interacting groups of pathways"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a8f96cdc267551107e69e8cb260a05c0')
-b2sums=('3d51974f50a8785a4f1abd5fad731fcae3e048aac6da149d2176187ca930bcc4e300de3bc1fcd05b870502ad795328d35857c27ef4e119ee3aa3a36b77676c07')
+md5sums=('0add6cf72450177b163ceced1eaa5fae')
+b2sums=('a847608628ae2664a22cd88ca1f4c4d09a7f81889c4d9bff0fae35ab4ce05476deb0ec6dd6a0917d4277525f26cb841150e8fcf30dc81dd010e9d46ff6e5e275')
 
 build() {
   mkdir build
