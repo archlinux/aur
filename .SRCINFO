@@ -1,0 +1,26 @@
+pkgbase = python-qh3-git
+	pkgdesc = Lightweight QUIC and HTTP/3 implementation in Python (built from latest commit)
+	pkgver = 1.0.4.r0.g4492d16
+	pkgrel = 1
+	url = https://github.com/jawah/qh3
+	arch = aarch64
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = gcc-libs
+	depends = glibc
+	depends = python>3.7
+	provides = python-qh3
+	conflicts = python-qh3
+	options = lto
+	source = qh3::git+https://github.com/jawah/qh3.git
+	sha256sums = SKIP
+
+pkgname = python-qh3-git
