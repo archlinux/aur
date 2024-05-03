@@ -3,25 +3,33 @@
 
 pkgname=perl-set-object
 pkgver=1.42
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of Objects (smalltalkish: IdentitySet)"
 arch=('i686' 'x86_64')
-url="http://search.cpan.org/~rurban/Set-Object-${pkgver}/"
+url="https://metacpan.org/pod/Set::Object"
 license=('GPL' 'PerlArtistic')
-depends=('perl')
-options=('!emptydirs')
+depends=('perl' 'glibc')
+options=('!emptydirs' 'purge')
 source=(http://www.cpan.org/authors/id/R/RU/RURBAN/Set-Object-$pkgver.tar.gz) 
 md5sums=('31875a6d0e0abaf08fbba47f0936bfaf')
 
 build() {
-  cd  $srcdir/Set-Object-$pkgver
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  cd $srcdir/Set-Object-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL
   make
+}
+
+check() {
+  cd $srcdir/Set-Object-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
 }
 
 package() {
   cd  $srcdir/Set-Object-$pkgver
-  make install DESTDIR=$pkgdir
-  find $pkgdir -name '.packlist' -delete
-  find $pkgdir -name '*.pod' -delete
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
