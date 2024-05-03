@@ -1,19 +1,20 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=decoupleR
-_pkgver=2.8.0
+_pkgver=2.9.7
 pkgname=r-${_pkgname,,}
-pkgver=2.8.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='decoupleR: Inferring biological activities from omics data using a collection of methods'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Ensemble of computational methods to infer biological activities from omics data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
+  r-biocparallel
   r-broom
   r-dplyr
   r-magrittr
+  r-parallelly
   r-purrr
   r-rlang
   r-stringr
@@ -32,6 +33,7 @@ optdepends=(
   r-glmnet
   r-gsva
   r-knitr
+  r-magick
   r-omnipathr
   r-patchwork
   r-pheatmap
@@ -40,7 +42,6 @@ optdepends=(
   r-refmanager
   r-rmarkdown
   r-roxygen2
-  r-rpart
   r-sessioninfo
   r-seurat
   r-summarizedexperiment
@@ -48,14 +49,15 @@ optdepends=(
   r-viper
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('09b6d3398eec6e5aa6eacd41c8d025488e6acc771e04e43040cb8ea1feccd4ee')
+md5sums=('952a2cef0e24d37af44d2cd09eb9597d')
+b2sums=('3fbd3789d992bb542df74e78217e58ca5c1ae71c44e5e5fd79615ccb481e7b8c68ab5e39e187d5c1e6dd20f63cd5880bd656cf1128d88e78d4877d32cbb50d3e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
