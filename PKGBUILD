@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.13.1.r12.gffae92e
-pkgrel=1
+pkgver=0.13.1.r20.g969c4a5
+pkgrel=2
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/${pkgname%-git}"
@@ -26,7 +26,7 @@ depends=(bc
          jq
          kindlegen
          libertinus-font
-         libgit2 libgit2.so
+         libgit2
          lua
          luarocks
          m4
@@ -102,6 +102,8 @@ _srcenv() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export LIBGIT2_SYS_USE_PKG_CONFIG=1
+	CFLAGS+=' -ffat-lto-objects'
 }
 
 build() {
@@ -117,6 +119,7 @@ check() {
 }
 
 package () {
+	depends+=(libgit2.so)
 	cd "$pkgname"
 	make DESTDIR="$pkgdir" install
 	node-prune "$pkgdir/usr/share/casile/node_modules"
