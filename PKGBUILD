@@ -9,7 +9,7 @@
 pkgbase=ggnfs-svn
 pkgname=('ggnfs-lasieve4e-x86_64-svn' 'ggnfs-svn')
 pkgver=441
-pkgrel=2
+pkgrel=3
 pkgdesc="GGNFS is an open source implementation of General Number Field Sieve algorithm for factoring integers."
 arch=('x86_64')
 url="http://sourceforge.net/projects/ggnfs/"
@@ -18,11 +18,14 @@ makedepends=('subversion' 'libgmp-static' 'texlive-core')
 source=("ggnfs-code::svn://svn.code.sf.net/p/ggnfs/code/trunk"
 	"makefile-lasieve4_64.patch"
 	"lasieve4_64-athlon64-i7.patch"
-    "printf.patch")
+    "printf.patch"
+    "scripts.patch"
+)
 sha256sums=('SKIP'
             'a0265a78f87eb9e2c4add9d125d803af1892659c59103a794ecfc4ba9a8b87a6'
             '39018ea8dd0c65183038bdfb44eb58c87a5794f93982edb3866a5aab659939d7'
-            '22f3fea0f7a17641f95ee372f9a723fb366d6a8337a59cbcdd70128c2d35f2bb')
+            '22f3fea0f7a17641f95ee372f9a723fb366d6a8337a59cbcdd70128c2d35f2bb'
+            '11e4c4074292bb6dfb230809a961cb3c812ac30aa1e09fb842363e362d66bf3e')
 
 _svnmod=ggnfs-code
 _ggnfstarget="nocona" # Works on Intel i7. YMMW
@@ -39,6 +42,7 @@ prepare() {
   patch --forward -Np1 -i "$srcdir/makefile-lasieve4_64.patch"
   patch --forward -Np1 -i "$srcdir/lasieve4_64-athlon64-i7.patch"
   patch --forward -Np1 -i "$srcdir/printf.patch"
+  patch --forward -Np1 -i "$srcdir/scripts.patch"
   # Provide our build flags, but let GGNFS-provided build flags override ours.
   # Still gives ExecStack/RELRO/PIE warnings about the lasieve executables,
   # although the flags are provided now, except for the assembly parts.
@@ -81,6 +85,7 @@ package_ggnfs-lasieve4e-x86_64-svn() {
 }
 
 package_ggnfs-svn() {
+  _pkgname="ggnfs"
   provides=('ggnfs')
   conflicts=('ggnfs')
   depends=('ggnfs-lasieve4e')
@@ -90,14 +95,14 @@ package_ggnfs-svn() {
               'perl: For factoring scripts')
 
   cd "${srcdir}/${_svnmod}"
-  install -d -m755 "${pkgdir}/usr/bin"
-  install -D -m755 -t "${pkgdir}/usr/bin" bin/[^dg]*
+  install -D -m755 -t "${pkgdir}/usr/share/${_pkgname}" bin/[^dg]*
   install -d -m755 "${pkgdir}/usr/share/doc"
-  cp -RT doc "${pkgdir}/usr/share/doc/${pkgname}"
-  install -d -m755 "${pkgdir}/usr/share/${pkgname}"
-  cp -R bin/def-* contrib tests "${pkgdir}/usr/share/${pkgname}"
-  ln -sfT "../doc/${pkgname}" "${pkgdir}/usr/share/${pkgname}/doc"
-  install -D -m644 -t "${pkgdir}/usr/share/licenses/$pkgname" LICENSE
+  cp -RT doc "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -d -m755 "${pkgdir}/usr/share/${_pkgname}"
+  cp -R bin/def-* contrib tests "${pkgdir}/usr/share/${_pkgname}"
+  install -D -m755 -t "${pkgdir}/usr/bin/" tests/fact*.pl
+  ln -sfT "../doc/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/doc"
+  install -D -m644 -t "${pkgdir}/usr/share/licenses/$_pkgname" LICENSE
 }
 
 # vim:set ts=2 sw=2 et:

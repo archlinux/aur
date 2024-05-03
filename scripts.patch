@@ -1,0 +1,78 @@
+diff '--color=auto' --unified --recursive --text --color ggnfs-code/tests/factLat.pl ggnfs-code.new/tests/factLat.pl
+--- ggnfs-code/tests/factLat.pl	2024-05-03 15:39:37.412338827 +0200
++++ ggnfs-code.new/tests/factLat.pl	2024-05-03 16:28:20.949009606 +0200
+@@ -1,6 +1,6 @@
+ #!/usr/bin/perl
+ # The path where the binaries are:
+-$GGNFS_BIN_PATH="../../bin";
++$GGNFS_BIN_PATH="/usr/share/ggnfs";
+ # And some other popular choices:
+ #$GGNFS_BIN_PATH="../../src";
+ #$GGNFS_BIN_PATH="../ggnfs.vc/bin";
+@@ -101,9 +101,9 @@
+   $EXEC_SUFFIX="";
+ }
+ 
+-$LATSIEVER_L1=$GGNFS_BIN_PATH."/gnfs-lasieve4I12e".$EXEC_SUFFIX;
+-$LATSIEVER_L2=$GGNFS_BIN_PATH."/gnfs-lasieve4I13e".$EXEC_SUFFIX;
+-$LATSIEVER_L3=$GGNFS_BIN_PATH."/gnfs-lasieve4I14e".$EXEC_SUFFIX;
++$LATSIEVER_L1="gnfs-lasieve4I12e".$EXEC_SUFFIX;
++$LATSIEVER_L2="gnfs-lasieve4I13e".$EXEC_SUFFIX;
++$LATSIEVER_L3="gnfs-lasieve4I14e".$EXEC_SUFFIX;
+ $LATSIEVER=$LATSIEVER_L1; # Just a default.
+ 
+ ####################################################################
+@@ -879,7 +879,6 @@
+     $missing .= 'matprune ' unless (-x $MATPRUNE);
+     $missing .= 'matsolve ' unless (-x $MATSOLVE);
+     $missing .= 'sqrt ' unless (-x $SQRT);
+-    $missing .= '(lattice siever) ' unless (-x $LATSIEVER);
+   }
+   if ($missing) {
+     print "-> Could not find GGNFS programs: $missing.\n";
+diff '--color=auto' --unified --recursive --text --color ggnfs-code/tests/factMsieve.pl ggnfs-code.new/tests/factMsieve.pl
+--- ggnfs-code/tests/factMsieve.pl	2024-05-03 15:39:37.412338827 +0200
++++ ggnfs-code.new/tests/factMsieve.pl	2024-05-03 16:29:42.711667808 +0200
+@@ -1,6 +1,6 @@
+ #!/usr/bin/perl
+ # The path where the binaries are:
+-$GGNFS_BIN_PATH="../../ggnfs/bin";
++$GGNFS_BIN_PATH="/usr/share/ggnfs";
+ # And some other popular choices:
+ #$GGNFS_BIN_PATH="../../src";
+ #$GGNFS_BIN_PATH="../ggnfs.vc/bin";
+@@ -131,18 +131,18 @@
+   }
+ }
+ 
+-$LATSIEVER_L1=$GGNFS_BIN_PATH."/gnfs-lasieve4I11e".$EXEC_SUFFIX;
+-$LATSIEVER_L2=$GGNFS_BIN_PATH."/gnfs-lasieve4I12e".$EXEC_SUFFIX;
+-$LATSIEVER_L3=$GGNFS_BIN_PATH."/gnfs-lasieve4I13e".$EXEC_SUFFIX;
+-$LATSIEVER_L4=$GGNFS_BIN_PATH."/gnfs-lasieve4I14e".$EXEC_SUFFIX;
+-$LATSIEVER_L5=$GGNFS_BIN_PATH."/gnfs-lasieve4I15e".$EXEC_SUFFIX;
+-$LATSIEVER_L6=$GGNFS_BIN_PATH."/gnfs-lasieve4I16e".$EXEC_SUFFIX;
++$LATSIEVER_L1="gnfs-lasieve4I11e".$EXEC_SUFFIX;
++$LATSIEVER_L2="gnfs-lasieve4I12e".$EXEC_SUFFIX;
++$LATSIEVER_L3="gnfs-lasieve4I13e".$EXEC_SUFFIX;
++$LATSIEVER_L4="gnfs-lasieve4I14e".$EXEC_SUFFIX;
++$LATSIEVER_L5="gnfs-lasieve4I15e".$EXEC_SUFFIX;
++$LATSIEVER_L6="gnfs-lasieve4I16e".$EXEC_SUFFIX;
+ $LATSIEVER=$LATSIEVER_L1; # Just a default.
+ 
+ ####################################################################
+ $MAKEFB=$GGNFS_BIN_PATH."/makefb".$EXEC_SUFFIX;
+ $PROCRELS=$GGNFS_BIN_PATH."/procrels".$EXEC_SUFFIX;
+-$MSIEVE=$GGNFS_BIN_PATH."/msieve".$EXEC_SUFFIX;
++$MSIEVE="msieve".$EXEC_SUFFIX;
+ $POLYSELECT=$GGNFS_BIN_PATH."/polyselect".$EXEC_SUFFIX;
+ $POL51M0=$GGNFS_BIN_PATH."/pol51m0b".$EXEC_SUFFIX;
+ $POL51OPT=$GGNFS_BIN_PATH."/pol51opt".$EXEC_SUFFIX;
+@@ -944,8 +944,6 @@
+ sub checkParams {
+ ######################################################
+   if ($CHECK_BINARIES) {
+-    $missing .= 'msieve ' unless (-x $MSIEVE);
+-    $missing .= '(lattice siever) ' unless (-x $LATSIEVER);
+     unlink '.lprels';
+     unlink '.rels';
+     open(OF, ">.rels");
