@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RgnTX
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Colocalization analysis of transcriptome elements in the presence of isoform heterogeneity and ambiguity"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4ce438a2822a6541467c9781a3c48b26')
-b2sums=('bdfb1e556b164dfa16c00800a8348685221cc88b9f31122d83696869026e3b176f497289d8260a1324b59e252401bcb2cfcb3043ba17bea83a343d90ad7a0151')
+md5sums=('cb590ec8545dd2797c50bbd08e416503')
+b2sums=('acbfba92fe76ef69bf7a0823082c7407eb7213063563bc4e258aa54e3dd49118e6fdc1d02028aec96ff780fbcf3ae60cf83b77105d0ad151cd03bef1631c78a7')
 
 build() {
   mkdir build
