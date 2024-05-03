@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChIPXpressData
-_pkgver=1.41.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.41.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='ChIPXpress Pre-built Databases'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-bigmemory
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3b5ae7f94e984010a4dbddb12916668d95c2fdf4ee53ac4f49fd4b82c117e9f0')
+sha256sums=('0013716a23ebe789c720bcd0de3e5c05e53f95ac79f42173234fb7a9468cd149')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
