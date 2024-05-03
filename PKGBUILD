@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=decontX
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Decontamination of single cell genomics data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -49,8 +49,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1e2f4af9204397b8104543dd954bb390')
-b2sums=('f6083f5678fbaeb0676893f1a70d33946392b67d88902cb59202d083f5dd137d43e09f7dec92f8df3353c968283e018791a7c4075e2cf7f12c497425824fc152')
+md5sums=('3d4a6f83a54c9f4cad51d594335a63ae')
+b2sums=('b990dd26e924d7979e2215bb1982165534e1e060b2aa550043cf481de40452bb064953cfab5ee2d2ae1db4e3d16687def13b34ef60e94faf83243734b41bb1a2')
 
 build() {
   mkdir build
