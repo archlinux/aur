@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=coMethDMR
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Accurate identification of co-methylated and differentially methylated regions in epigenome-wide association studies"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0a6229d90868a4a60eb0f72c4499d1fc')
-b2sums=('b43b978f0621e85d47af43f9c06ff3f94e5f20a71f7866adc8852e30d8adf275926df630485a3f4a21c0f538cab8c9fd8186f3431e063e12ac503fb4510bbc63')
+md5sums=('006625b528326e4c948f1a4daac9621f')
+b2sums=('9a5945272f388d6c39207e49ee44ec3d64bd9cc46e42518048a894f06f17b2b6701b7ef6caedb9732d5b91d2b5e0d78bad3a72fda6c7abb6793fa17b64fbce37')
 
 build() {
   mkdir build
