@@ -2,7 +2,7 @@
 # Maintainer: Toby Padilla <toby@charm.sh>
 
 pkgname='mods-bin'
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='AI on the command line'
 url='https://charm.sh/'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('mods')
 conflicts=('mods')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.2.2/mods_1.2.2_Linux_arm64.tar.gz")
-sha256sums_aarch64=('bd9004bfe9c5000915868631b9467d328d75357034510343c97255f751259388')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.3.0/mods_1.3.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('76a35c84ba78e7d059788e91eadb84a42cda9ce3e13bbce0fa3c0982ef134b0f')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.2.2/mods_1.2.2_Linux_arm.tar.gz")
-sha256sums_armv7h=('a1ebca85e75ff405db053abd0e0b8a196434513829b41e7d5b902e698f24ce38')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.3.0/mods_1.3.0_Linux_arm.tar.gz")
+sha256sums_armv7h=('4c504439d11aea6aca047a5b52f337176192b0d12d435a1782a481cca9e07969')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.2.2/mods_1.2.2_Linux_i386.tar.gz")
-sha256sums_i686=('9ce875a46673a67679ab579fbfc3d0d60b004d76e993094cd912cdf7e4b83744')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.3.0/mods_1.3.0_Linux_i386.tar.gz")
+sha256sums_i686=('3f0fed86eab4a3dcf235d186ef008ee6b553029ff0f1a63978a598b4f0b9dbf2')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.2.2/mods_1.2.2_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('5963d3c0d968da318fa9f2fdbe7b14a5dc7a47ad9e3c2f63e229dfc4cf5d47d4')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.3.0/mods_1.3.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('9ecba5b21caf1f082b76122aede62a798991e4a66aec51324392cd99366cadb4')
 
 package() {
   cd "${srcdir}/mods_${pkgver}_Linux_${CARCH}"
@@ -37,4 +37,7 @@ package() {
   install -Dm644 "./completions/mods.bash" "${pkgdir}/usr/share/bash-completion/completions/mods"
   install -Dm644 "./completions/mods.zsh" "${pkgdir}/usr/share/zsh/site-functions/_mods"
   install -Dm644 "./completions/mods.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/mods.fish"
+  # readme
+  mkdir -pv "${pkgdir}/usr/share/doc/mods/"
+  install -Dm644 README* "${pkgdir}/usr/share/doc/mods/"
 }
