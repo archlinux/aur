@@ -1,6 +1,6 @@
 pkgbase = r-biscuiteer
 	pkgdesc = Convenience Functions for Biscuit
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biscuiteer
 	arch = any
@@ -45,7 +45,7 @@ pkgbase = r-biscuiteer
 	optdepends = r-roxygen2
 	optdepends = r-scmeth
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biscuiteer_1.16.0.tar.gz
-	sha256sums = f177fd484cee8ed17889d637759e343626e1cb41b8f3bd98f9f4168949b820e1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biscuiteer_1.18.0.tar.gz
+	sha256sums = ded43343123d45189c0d3a32868cd35c92ec5f2417d4b75db36947ff58d67195
 
 pkgname = r-biscuiteer
