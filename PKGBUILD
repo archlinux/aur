@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=terraTCGAdata
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="OpenAccess TCGA Data on Terra as MultiAssayExperiment"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -32,8 +32,8 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b5803a78627bbe874b8cd8ae0a147979')
-b2sums=('c4e6df5fa24c3eed58e4c2b2579f124815799b0733eb82e46841fae6da7f8580a8fe838c94b3edfdbc852fa20a2a2bdcee45b14280ca2efc0672451064fbcf8f')
+md5sums=('632cb9eca5d80133fe84378065a1875a')
+b2sums=('1908cafa3970c9b8b77c4cad4a57a2fa50c2ddcaf23dc626681c5d09315a7c1b568647deb54545ff2e05fccb1844a7b30caa6078e8d172e4a92210796553114a')
 
 build() {
   mkdir build
