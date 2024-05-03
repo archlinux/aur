@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=iSEEpathways
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="iSEE extension for panels related to pathway analysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -39,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('52b84dcbd5e5ab0a6bbdc27120d7e86a')
-b2sums=('071a66ceef497d2e82e39fe0c1a20b16324137d1563b80111f5b368168d308943e31fd9909192eb08cf76593ec6708c949c2a3c23ec5f1502aea212a49ae2547')
+md5sums=('7860667a97211f49ac4225f708fbe067')
+b2sums=('48c1c984d1765ef33b8a60c023a858efbe39ad74a2acfc6df940c27ee5821f348ac7c78f50e660b355d119e2016e09fad25b7a883fa1a678e5f6d11dd5fcae4c')
 
 build() {
   mkdir build
