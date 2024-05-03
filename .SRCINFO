@@ -1,14 +1,14 @@
 pkgbase = python-rsinstrument
 	pkgdesc = Convenient way of communicating with R&S instruments in python
-	pkgver = 1.55.0.99
+	pkgver = 1.70.0.102
 	pkgrel = 2
-	url = https://github.com/Rhode-Schwarz/RsInstrument
+	url = https://github.com/Rohde-Schwarz/RsInstrument
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-pyvisa
 	depends = rs-visa
-	source = https://github.com/Rohde-Schwarz/RsInstrument/archive/1d62deb1c662ce40290e427d4bebf835a7a78e6a.zip
-	sha256sums = 7437185a85665cfe6e97a751da8f366097bfabed5b0117e5b0a21accd0ed15b7
+	source = https://github.com/Rohde-Schwarz/RsInstrument/archive/02cf5efc187596fff4120859e6c6e77caad5a666.zip
+	sha256sums = ef4cbecbd4d845e6daed01fda1a3c36b50d1b9c244dae34a6efad675313f9fa7
 
 pkgname = python-rsinstrument
