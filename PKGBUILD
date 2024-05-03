@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MetaPhOR
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Metabolic Pathway Analysis of RNA"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -26,8 +26,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('311e286126427130d127b23a77b3b6f4')
-b2sums=('29fc0b52f142a96f98ee2c053ecf5b096a5e08452dc6665384ab563a22d7435a1a073ab44bb3a10385224e142edcba903c97d76f6037fe855db6018dbee62674')
+md5sums=('27c4047c59ed65781e48ee3385b798c4')
+b2sums=('a516cf2f1eb1839322527b781546943e8f64875f5ca2b460f9127e2bcb23d6227a7a39ef85aded6be27687e80de666fff2fa97855ed85e265b032bde20ef38ee')
 
 build() {
   mkdir build
