@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TSCAN
-_pkgver=1.40.1
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.1
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Tools for Single-Cell Analysis'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9ab3418fbc3b0eb4e285d027595b90c2532863588a31a66108525a5f30c4ee35')
+sha256sums=('1230272d8178a1d6f75b95280017a5d0147c21baf000a3692a1eea2a7db000e9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
