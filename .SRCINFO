@@ -1,4 +1,4 @@
-pkgbase = pcbox-qt5-git
+pkgbase = pcbox-git
 	pkgdesc = An emulator for classic IBM PC clones (Built with qt5)
 	pkgver = r14123.g339f7411a
 	pkgrel = 1
@@ -12,14 +12,13 @@ pkgbase = pcbox-qt5-git
 	makedepends = cmake>=3.21
 	makedepends = extra-cmake-modules
 	makedepends = ninja
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	makedepends = vde2
-	makedepends = vulkan-headers
 	depends = fluidsynth
 	depends = hicolor-icon-theme
 	depends = libslirp
 	depends = openal
-	depends = qt5-base
+	depends = qt6-base
 	depends = rtmidi
 	depends = sdl2
 	depends = freetype2
@@ -44,8 +43,9 @@ pkgbase = pcbox-qt5-git
 	conflicts = 86box
 	conflicts = 86box-git
 	conflicts = 86box-qt5-git
+	conflicts = pcbox-qt5-git
 	options = !buildflags
-	source = pcbox-qt5-git::git+https://github.com/PCBox/PCBox.git
+	source = pcbox-git::git+https://github.com/PCBox/PCBox.git
 	sha512sums = SKIP
 
-pkgname = pcbox-qt5-git
+pkgname = pcbox-git

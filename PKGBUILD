@@ -1,16 +1,16 @@
 # Maintainer: fuel <melodygoad18 at gmail dot com>
 # Contributor: Legacy Installer <contact dot legacyinstaller at gmail dot com>
 # Contributor: oscareczek <oscareczek at gmail dot com>
-pkgname=pcbox-qt5-git
+pkgname=pcbox-git
 pkgver=r14123.g339f7411a
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones (Built with qt5)'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://pcbox-emu.xyz/'
 license=('GPL2')
-depends=('fluidsynth' 'hicolor-icon-theme' 'libslirp' 'openal' 'qt5-base' 'rtmidi' 'sdl2' # explicit
+depends=('fluidsynth' 'hicolor-icon-theme' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2' # explicit
 'freetype2' 'gcc-libs' 'glib2' 'glibc' 'libevdev' 'libglvnd' 'libpng' 'libx11' 'libxcb' 'libxext' 'libxi' 'libxkbcommon-x11' 'libxkbcommon' 'wayland' 'zlib') # implicit
-makedepends=('git' 'cmake>=3.21' 'extra-cmake-modules' 'ninja' 'qt5-tools' 'vde2' 'vulkan-headers')
+makedepends=('git' 'cmake>=3.21' 'extra-cmake-modules' 'ninja' 'qt6-tools' 'vde2')
 optdepends=(
     'pcbox-roms-git: ROM files'
     'discord-game-sdk: Discord Rich Presence'
@@ -21,6 +21,7 @@ conflicts=(
     '86box'
     '86box-git'
     '86box-qt5-git'
+    'pcbox-qt5-git'
 )
 options=('!buildflags')
 source=("${pkgname}::git+https://github.com/PCBox/PCBox.git")
@@ -37,7 +38,7 @@ build() {
         arm7h)    _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
         aarch64)  _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-aarch64.cmake ;;
     esac
-    LDFLAGS='-z now' cmake -S"${pkgname}" -Bbuild --preset regular --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=off -DNEW_DYNAREC="$_NDR"
+    LDFLAGS='-z now' cmake -S"${pkgname}" -Bbuild --preset regular --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DNEW_DYNAREC="$_NDR"
     cmake --build build
 }
 
