@@ -1,6 +1,6 @@
 pkgbase = zinkrun
 	pkgdesc = Wrapper for Zink, to use it to run OpenGL games in the top of Vulkan
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/zinkrun
 	install = zinkrun.install

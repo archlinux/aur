@@ -1,7 +1,7 @@
 # Maintainer: Jorge Pizarro-Callejas, a.k.a Jorgicio <jpizarrocallejas@gmail.com>
 
 pkgname=zinkrun
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Wrapper for Zink, to use it to run OpenGL games in the top of Vulkan"
 arch=('any')
