@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSVAdata
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Data employed in the vignette of the GSVA package'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-hgu95a.db
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b8f8236dfd07310a85b038fa98cf26e3bb43831eb9dc5ebc8e595b5dd7d533a9')
+sha256sums=('5e62cfa29769ae00018414bc063a5e84ce0199144651aaf2e21095f8a37c3d34')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
