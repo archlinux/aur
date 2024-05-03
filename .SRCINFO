@@ -1,7 +1,7 @@
 pkgbase = session-desktop-bin
 	pkgdesc = Private messaging from your desktop
 	pkgver = 1.12.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getsession.org
 	arch = x86_64
 	license = GPL3
