@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRimport
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Package for handling the import of dose-response data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -44,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0390ee6a16f21624044bc509ebdbabd1')
-b2sums=('79549696098d2611bbcc2fb13f31dd711a5153d9cb7270f60055ae16196e5ed101bd6006253c7f706ef65756212cfbe34a61b806e5b8b8f2b270f459d7843aad')
+md5sums=('92d70f4730716895a911a22b8d1999be')
+b2sums=('e0158fa33ffce2c66ee2ea720743cb17986c1a70cda67bcd06118e3b8c285d72cc4a0e494cfa017807e79942f47ff8e4596eddf8406fd33ac07a28456b0a609d')
 
 build() {
   mkdir build
