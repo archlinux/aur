@@ -2,36 +2,50 @@
 
 # Custom variables
 _name="acer-wmi-battery"
-_user="Diman119"
-_ver=1.0
-_revision=13
-_commit="da45c71"
+_user="frederik-h"
+_ver=0.1.0  # Based on current version of released package
 
 # Main info
-pkgname="$_name-dkms-git"
-pkgver="r${_revision}.${_commit}"
-pkgrel=3
+pkgname="${_name}-dkms-git"
+pkgver="r11.4e605fb"
+pkgrel=1
 pkgdesc="For Acer laptops -- kernel module to set Battery Charge Limit to 80%."
 arch=('any')
 url="https://github.com/${_user}/${_name}"
 license=('GPL-2.0')
-groups=('acer')
+groups=('acer-wmi')
 depends=("dkms")
 makedepends=("git")
-conflicts=("${_name}" "${_name}-dkms")
+provides=("${_name}-dkms")
+conflicts=("${_name}-dkms")
 install="${_name}.install"
-source=("git+https://github.com/${_user}/${_name}.git")
-sha256sums=("SKIP")
+source=(
+  "${_name}::git+https://github.com/${_user}/${_name}.git"
+  "${_name}.conf"
+  "dkms.conf"
+  )
+sha256sums=(
+  "SKIP"
+  "35988ccdeee6343d66b9ec99a47ee9fe9577932fc48158083df241ca3b5b3096"
+  "d62ec611940ae5bf1b67ee47634811b901bf6f569eba516dd6e43cd6680d7a90"
+  )
 
+pkgver() {
+  cd "${_name}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 package() {
-    # Create directories
-    install -dm755 ${pkgdir}/usr/src/"${_name}-${_ver}"
-    install -dm755 ${pkgdir}/etc/modules-load.d
+  # Copy dkms.conf
+  install -Dm644 dkms.conf -t "${pkgdir}"/usr/src/"${_name}-${_ver}/"
 
-    # Copy everything to the new directory
-    cp -r ${srcdir}/${_name}/* ${pkgdir}/usr/src/"${_name}-${_ver}"
+  # Set version
+  sed -e "s/@PKGVER@/${_ver}/" \
+      -i "${pkgdir}"/usr/src/"${_name}-${_ver}"/dkms.conf
 
-    # Copy module config to "modules-load.d"
-    cp "${srcdir}/${_name}/acer-wmi-battery.conf" "${pkgdir}/etc/modules-load.d"
+  # Copy sources (including Makefile)
+  cp -r "${srcdir}/${_name}"/*  "${pkgdir}"/usr/src/"${_name}-${_ver}"
+
+  # Copy "acer-wmi-battery.conf" to "modules-load.d" directory
+  install -Dm644 acer-wmi-battery.conf -t "${pkgdir}"/usr/lib/modules-load.d/
 }
