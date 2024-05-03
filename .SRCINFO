@@ -1,7 +1,7 @@
 pkgbase = r-raids
 	pkgdesc = Accurate Inference of Genetic Ancestry from Cancer Sequences
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/RAIDS
 	arch = any
 	license = Apache
@@ -28,8 +28,8 @@ pkgbase = r-raids
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RAIDS_1.0.0.tar.gz
-	md5sums = 768d047b002bb44e1178d69233878818
-	b2sums = 9ccb1fa9a3ec7ce7b4e5811e500e5f5f6378b7604aa92e239a13475788ea229621529a251c01de774de2fdc4b7810f1ca33270e5fd417c1841b1cd0fe4d44547
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RAIDS_1.2.0.tar.gz
+	md5sums = 68f024133092f72a434dd386f68b669c
+	b2sums = d8cf20407390fe537fd7419f8cc4f457ba67dde76c61c07ca603bd8f8b5c8722100e55666dca7925f73aa074124bfa3cf36b874944b251f57cb631b594681ad1
 
 pkgname = r-raids

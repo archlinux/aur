@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RAIDS
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Accurate Inference of Genetic Ancestry from Cancer Sequences"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -39,8 +39,8 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('768d047b002bb44e1178d69233878818')
-b2sums=('9ccb1fa9a3ec7ce7b4e5811e500e5f5f6378b7604aa92e239a13475788ea229621529a251c01de774de2fdc4b7810f1ca33270e5fd417c1841b1cd0fe4d44547')
+md5sums=('68f024133092f72a434dd386f68b669c')
+b2sums=('d8cf20407390fe537fd7419f8cc4f457ba67dde76c61c07ca603bd8f8b5c8722100e55666dca7925f73aa074124bfa3cf36b874944b251f57cb631b594681ad1')
 
 build() {
   mkdir build
