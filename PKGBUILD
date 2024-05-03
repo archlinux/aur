@@ -6,7 +6,7 @@ _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
 pkgver=3.6.2.r1.g11487134
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, yet elegant, Python HTTP library: a drop-in replacement for python-requests (built from latest commit)'
 arch=('any')
 url='https://github.com/jawah/niquests'
@@ -19,7 +19,7 @@ makedepends=(
   'python-wheel'
 )
 depends=(
-  'python'
+  'python>=3.7'
   'python-certifi'
   'python-charset-normalizer'
   'python-h11'
@@ -28,7 +28,7 @@ depends=(
   'python-kiss-headers'
   'python-orjson'
   'python-typing_extensions'
-  'python-qh3>=1.0.0'
+  'python-qh3'
   'python-urllib3'
   'python-urllib3-future'
   'python-wassima'
@@ -41,8 +41,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_srcdir"
 
-  git describe --long --tags \
-  |  sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long \
+  | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
