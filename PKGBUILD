@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=qsvaR
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Generate Quality Surrogate Variable Analysis for Degradation Correction"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e9531cc164f93967a5d5d0469d47f7c7')
-b2sums=('f8a5d4c27cebee2a429e2e2d566e348ea216c035957e78f965384545a587f1ba166b4142678d02d956e70a47f2ddb08b6b5adf4669eb8d31b4432150df8d2ea0')
+md5sums=('dfcabbab85cfd51c933babbe84c9be1d')
+b2sums=('e58c16a50de82c3b4338fa99613098b021e8c7601121919039fdd545943133de5e0b5ac12db73485dae977611488c59908f88d3c704e5a7b9bb2080bcf17b6fb')
 
 build() {
   mkdir build
