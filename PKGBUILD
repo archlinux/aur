@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=easylift
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="An R package to perform genomic liftover"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('86d8c0188c35ab56732fd5cc55475e8c')
-b2sums=('d91e688d8c0a57b04f9bda2dd03d1fe34336783033405a8545c4dd9bc77f7061beb6bc9127d2cef1ac696eb6441f303242033b3398afea8d43728f2e5553f160')
+md5sums=('d2f0ec9c26dbbf78dc5f6d862d188df7')
+b2sums=('1d5be52934a42cab8e102350c34e138d7ab6b7d9eb9116e0cbe0efdbc1d82c21d6b3a64ce6d0c2ddbf8ceec589d0694e2fcc96f101da38567f48d9c04b306380')
 
 build() {
   mkdir build
