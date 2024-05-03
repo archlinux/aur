@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Motif2Site
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Detect binding sites from motifs and ChIP-seq experiments, and compare binding sites across conditions"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e8228f1deb42f2d4b3867a90a6eba14c')
-b2sums=('e097ee487105a591cd2ca279e104c7235b6abfec99c3ea15631701e9d41d07bc1a3fe96a69c493f561f242e33eb284f13daaccd7c3e8dcf4ec8b452d1bc888f5')
+md5sums=('da11799c0e277a85f8f5f04c5cb91ff4')
+b2sums=('55d79fe8a1f2601b37ab2e399e083eb59eab3d9a8926316e6058c031e0b779bbc999dc69e321484a7837fbcb2a56c8e4c10f467a5321b77b1e29bec613d9f3bd')
 
 build() {
   mkdir build
