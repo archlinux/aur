@@ -3,7 +3,7 @@
 _name=toggl-cli
 pkgname="python-togglcli"
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool and set of Python wrapper classes for interacting with toggl's API"
 arch=('any')
 url="https://github.com/auhau/toggl-cli"
@@ -21,7 +21,10 @@ depends=(
     python-notify-py
 )
 makedepends=(python-build python-installer python-wheel twine)
-checkdepends=()
+checkdepends=(
+    python-inquirer
+    python-notify-py
+)
 optdepends=()
 provides=()
 conflicts=()
@@ -34,13 +37,15 @@ sha512sums=('32c28e5f396bb0d084f0ee43f7ca78ac54494b795b23ee41a2d1e7c4c2bf57d7940
 #sha512sums=("$(curl --location --show-error --silent "${source[0]}" | sha512sum | tr -d '\n -')")
 
 build() {
-    cd "$_name-$pkgver"
+    cd "${_name}-${pkgver}"
 
-    export PBR_VERSION=1.2.3
+    # Source: https://docs.openstack.org/pbr/latest/user/packagers.html
+    # export PBR_VERSION=1.2.3
+
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "${srcdir}/${_name}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
