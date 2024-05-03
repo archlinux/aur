@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iSEE
-_pkgver=2.14.0
+_pkgver=2.16.0
 pkgname=r-${_pkgname,,}
-pkgver=2.14.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Interactive SummarizedExperiment Explorer'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+pkgdesc="Interactive SummarizedExperiment Explorer"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-biocgenerics
   r-circlize
   r-colourpicker
@@ -19,6 +18,7 @@ depends=(
   r-ggplot2
   r-ggrepel
   r-igraph
+  r-listviewer
   r-rintrojs
   r-s4vectors
   r-shiny
@@ -47,15 +47,18 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('44b2ecfea6f47e414b372c04e68be5384e873336c7caffb6b07a206905d71e4e')
+md5sums=('098ec0eeda7e13bb6a60d1a28b0153f5')
+b2sums=('7853caf5370e4acdc1ceaca168e17cb9b8ce12b10ea4d92ed2fa1b66037252419eba4537877daa1124f02bbe596716c89a2d92a922abf7ad6c46256c9cdcb81e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
