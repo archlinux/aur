@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tximeta
-_pkgver=1.20.3
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.3
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Transcript Quantification Import with Automatic Metadata'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Transcript Quantification Import with Automatic Metadata"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-annotationdbi
   r-annotationhub
   r-biocfilecache
@@ -24,6 +23,7 @@ depends=(
   r-s4vectors
   r-summarizedexperiment
   r-tibble
+  r-txdbmaker
   r-tximport
 )
 optdepends=(
@@ -39,14 +39,15 @@ optdepends=(
   r-tximportdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c70f28a180880efe33aaae84b4ddfe234ace34b0a3fc87cc15865d0df72c9d42')
+md5sums=('88246100f7d47be4b835a1fac4e02b4a')
+b2sums=('1dae1c210d31e0ec9c2a7bf3455990329adad9a9fd81de147f9b66ddd5f8e9e44a150de672497afe3e78026b5894ecef4fb25f4651efc7be64fafd7824d16851')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
