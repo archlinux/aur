@@ -1,9 +1,10 @@
 # Maintainer: Groctel <aur@taxorubio.com>
 # Maintainer: Naveen M K <naveen521kk@gmail.com>
+# shellcheck disable=SC2034,SC2154,SC2164
 
 pkgbase=manimce
 pkgname=manim
-pkgver=0.18.0.post0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 
@@ -12,7 +13,7 @@ license=("MIT" "custom")
 url="https://github.com/ManimCommunity/manim"
 
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('91d28837725edfc573588e73a4183957e07351ecb9a70b0ec1e205673b072dc5e91287977372a76f359e55d934393f3655ceeda136cd230a255b06b3bc78d317')
+sha512sums=('e227086c128603301a9ca78b9057a5a81489330ad204057982ef2cb38c6774b9e8d09d6cbb79457d80eb6f8ac761a6f27765df2e0d7d73461d29a17eb65296b9')
 
 conflicts=("python-manimlib")
 
@@ -34,6 +35,7 @@ depends=(
     "python-scipy"
     "python-setuptools"
     "python-tqdm"
+    "python-typing_extensions"
     "python-watchdog"
     "python-networkx"
     # Aur dependencies
@@ -51,14 +53,17 @@ depends=(
     "python-srt"
     "python-svgelements"
 )
+
 makedepends=(
     "python-build"
     "python-installer"
     "python-setuptools"
     "python-wheel"
 )
+
 optdepends=(
-    "jupyterlab: Jupyter something"
+    "python-dearpygui: Graphical frontend"
+    "jupyterlab: Jupyter integration"
     "python-grpcio-tools: WebGL renderer"
     "texlive-core: LaTeX support"
 )
