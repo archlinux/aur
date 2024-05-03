@@ -1,7 +1,7 @@
 pkgbase = r-standr
 	pkgdesc = Spatial transcriptome analyses of Nanostring's DSP data in R
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/standR
 	arch = any
 	license = MIT
@@ -37,8 +37,8 @@ pkgbase = r-standr
 	optdepends = r-scater
 	optdepends = r-testthat
 	optdepends = r-uwot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/standR_1.6.0.tar.gz
-	md5sums = 94e29a2001fbb9d0bfa1488ae7039aa7
-	b2sums = 0f74f667be28b33358bd40333b78e52f64f804e937d06843a52918760381db1c4ba86180f03289fcab4166229472c5abb655aefe9a260eb761d5f2e88a4dc0ee
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/standR_1.8.0.tar.gz
+	md5sums = d7ab5f450cb205800a4b7fc2eae225e9
+	b2sums = 0f256e4bd1269d5286a4b0eba92fe4ca949f3b6380d97940587ff3dd40ae97f1fa81caa9b6db02b01a600bdee9bfe42403197251523c587ad8390758c3189394
 
 pkgname = r-standr
