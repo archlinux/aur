@@ -2,7 +2,7 @@
 pkgname='python-ibmcloudant'
 _name='ibmcloudant'
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Library for Cloudant and CouchDB Access. Successor of python-cloudant"
 url="https://github.com/IBM/cloudant-python-sdk"
 depends=('python-ibm-cloud-sdk-core' 'python-requests' 'python-dateutil' 'python-pyjwt' 'python' 'python-build')
