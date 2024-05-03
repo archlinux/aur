@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=cardelino
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Clone Identification from Single Cell Data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-vgam
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('363c06547419f29e1cdfe473651e1861')
-b2sums=('9cfce3cc4484e8fc1d5085a02f16a38d2a715f4ff36dca665bbb71f5d463af2bdc7041d4903f43df321abd82d8fb473345c88acb72be3a1a3371a610dd4f4c5e')
+md5sums=('b78c296bb88b1ec63c5e8be26418e60a')
+b2sums=('7493e95a08a054a60f055d8553ae97a41513f9c6052c3f2b06170abcc1b3ddf084e24cccb1a940121335b32411c7d2157e65933542bf9e3050184a3aa7103265')
 
 build() {
   mkdir build
