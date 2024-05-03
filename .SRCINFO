@@ -1,6 +1,6 @@
 pkgbase = r-qsmooth
 	pkgdesc = Smooth quantile normalization
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/qsmooth
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-qsmooth
 	optdepends = r-quantro
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/qsmooth_1.18.0.tar.gz
-	sha256sums = e1bc687f8648f435e26e8b343241a19c17acb150c145fb5e179bcfc2414d8faf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qsmooth_1.20.0.tar.gz
+	sha256sums = 9286bff5c1d521ddcde081b69652714752b2457a98729be3a593e1fcaaec8799
 
 pkgname = r-qsmooth
