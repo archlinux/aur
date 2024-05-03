@@ -1,7 +1,7 @@
 pkgbase = rudolfs
 	pkgdesc = A high-performance, caching Git LFS server with an AWS S3 and local storage back-end.
-	pkgver = 0.3.6
-	pkgrel = 2
+	pkgver = 0.3.7
+	pkgrel = 1
 	url = https://github.com/jasonwhite/rudolfs
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = rudolfs
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = rudolfs-0.3.6.tar.gz::https://github.com/jasonwhite/rudolfs/archive/0.3.6.tar.gz
-	sha256sums = d61c64b9c7ef388208cc8782361d18b3a33b353ccaea7ca46d57b29433e2bd63
+	source = git+https://github.com/jasonwhite/rudolfs.git#commit=e64a2142464b6cbdc0f14b5ca19a23470699e9c3
+	sha256sums = 0796c86e4a048478f12e131c0b736cf7acb3cf029808539390a22f45c135e28b
 
 pkgname = rudolfs
