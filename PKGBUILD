@@ -2,22 +2,27 @@
 
 pkgbase=openjph
 pkgname=('openjph' 'openjph-doc')
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15'
 arch=('x86_64')
 url='https://github.com/aous72/OpenJPH/'
 license=('BSD-2-Clause')
 makedepends=('cmake' 'doxygen' 'libtiff')
+checkdepends=('expat')
 source=("https://github.com/aous72/OpenJPH/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e73fd0b12d95c0b61884579f61c26da7461335146e7e9c84f4a2dd5c9325bb4f')
+sha256sums=('65c044d58619b846612205947f0e379edf037964841a0878d88ebc235819302f')
 
 build() {
     cmake -B build -S "OpenJPH-${pkgver}" \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DOJPH_ENABLE_INTEL_AVX512:BOOL='OFF' \
+        -DOJPH_DISABLE_SSSE3:BOOL='ON' \
+        -DOJPH_DISABLE_SSE4:BOOL='ON' \
+        -DOJPH_DISABLE_AVX:BOOL='ON' \
+        -DOJPH_DISABLE_AVX2:BOOL='ON' \
+        -DOJPH_DISABLE_AVX512:BOOL='ON' \
         -DOJPH_BUILD_TESTS:BOOL='ON' \
         -Wno-dev
     cmake --build build
