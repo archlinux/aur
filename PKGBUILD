@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sscu
-_pkgver=2.33.0
+_pkgver=2.34.0
 pkgname=r-${_pkgname,,}
-pkgver=2.33.0
+pkgver=2.34.0
 pkgrel=1
 pkgdesc='Strength of Selected Codon Usage'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8687e40defdf4067f13225e8fc58336eca6be66f0b02f3468b3a73db4ff0fc22')
+sha256sums=('33d25fb0ba7e3e1aca4714d8628300e1112a93c09432c63e4db2782bb261a97a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
