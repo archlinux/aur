@@ -1,6 +1,6 @@
 pkgbase = python-fluiddyn
 	pkgdesc = Framework for studying fluid dynamics
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://foss.heptapod.net/fluiddyn/fluiddyn
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-fluiddyn
 	depends = python-qtpy
 	depends = python-simpleeval
 	optdepends = python-pyfftw: Calculate FFT
-	source = https://foss.heptapod.net/fluiddyn/fluiddyn/-/archive/0.6.3/fluiddyn-0.6.3.tar.gz
-	sha512sums = f77cd186329573216e304de10e42d0fc4a8fed2c73fe9a3fc8c8a71238ef1d1d523ef1f6ef9ee22ac9800eb10b2bab8110bca6abef9ad7b85a714c0a9f19e480
+	source = https://foss.heptapod.net/fluiddyn/fluiddyn/-/archive/0.6.4/fluiddyn-0.6.4.tar.gz
+	sha512sums = 1317162795e3577d63d3a739d43936af54382f906aa06bf2f8992265eed43b5e6cfaf0635a675fbe8520faed1ede617ea11632c53084a739ff61785f8c07ae29
 
 pkgname = python-fluiddyn
