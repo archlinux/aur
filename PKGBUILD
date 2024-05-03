@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=seqArchRplus
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Downstream analyses of promoter sequence architectures and HTML report generation"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -46,8 +46,8 @@ optdepends=(
   r-xfun
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9f20e2eed3e5b5a498564ea201b251d9')
-b2sums=('1823f62e7c6203b0e048a47df9e49b93f393943f20a719b74e5802e368c1fdf87a157ee2d9899c7dfab92c30232ca5eccc55b68777ebc58c61b8982b83ceb799')
+md5sums=('384b6ab7e09a3c997ec64c77ba988618')
+b2sums=('5ba4309064764a334d35bc04bb01d5cd05376e06e80f0507bc921833b1fa5511865605f13ed2c4f6508a057dc8b7cf7810fc0fc149ac1a28593d854b94c70487')
 
 build() {
   mkdir build
