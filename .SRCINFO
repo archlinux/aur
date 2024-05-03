@@ -1,6 +1,6 @@
 pkgbase = r-spaniel
 	pkgdesc = Spatial Transcriptomics Analysis
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Spaniel
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-spaniel
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Spaniel_1.16.0.tar.gz
-	sha256sums = ea37cf8e9dec7efb03e8aaa1796da32b3e44fa7e9aff0549f01bf8a7a9fe0d32
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Spaniel_1.18.0.tar.gz
+	sha256sums = 5239cc6e4bb20930b4fbeb3c1be04141a8d3f10e168e7867c53aeded63a2310e
 
 pkgname = r-spaniel
