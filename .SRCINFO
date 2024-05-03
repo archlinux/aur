@@ -1,6 +1,6 @@
 pkgbase = r-qpgraph
 	pkgdesc = Estimation of genetic and molecular regulatory networks from high-throughput genomics data
-	pkgver = 2.36.0
+	pkgver = 2.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/qpgraph
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = r-qpgraph
 	optdepends = r-rlecuyer
 	optdepends = r-runit
 	optdepends = r-snow
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/qpgraph_2.36.0.tar.gz
-	sha256sums = a4c980839915fa614303a856ea510ffeec0c160d978c0fc78b06deb7740d730f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qpgraph_2.38.0.tar.gz
+	sha256sums = 6774bddb7281f46212c2e04e3d4b0a842a2b5c8b2d33f8740ca15548ad521010
 
 pkgname = r-qpgraph
