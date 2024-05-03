@@ -1,6 +1,6 @@
 pkgbase = r-miaviz
 	pkgdesc = Microbiome Analysis Plotting and Visualization
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/miaViz
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = r-miaviz
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-vegan
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/miaViz_1.10.0.tar.gz
-	sha256sums = 574f8ca9a3035231188d8944beebe6dfd1a79fffb0827938038f8e914d87d1c4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/miaViz_1.12.0.tar.gz
+	sha256sums = 03f87758a4a8328e575fd4d7b284fc4d3cc5494f4dae459c8edb3c9de0c6fbb6
 
 pkgname = r-miaviz
