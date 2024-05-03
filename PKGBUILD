@@ -5,22 +5,23 @@
 
 pkgname=riseup-vpn
 pkgver=0.24.5
-pkgrel=1
+_commit=27d22a05a2a85098e71494fee99b8575cae29e59
+pkgrel=2
 pkgdesc="Easy, fast, and secure VPN service from riseup.net"
 url="https://0xacab.org/leap/bitmask-vpn"
 license=('GPL-3.0-only')
 arch=('x86_64')
 depends=('lxsession' 'openvpn' 'python' 'qt6-base' 'qt6-quickcontrols2' 'qt6-svg' 'qt6-tools')
-makedepends=('cmake' 'go')
-source=("$url/-/archive/$pkgver/bitmask-vpn-$pkgver.tar.bz2"
+makedepends=('cmake' 'go' 'git')
+source=("git+$url.git#commit=$_commit"
         "$pkgname.png"
         "$pkgname.desktop")
-sha256sums=('a635679ee2755368a343b2415f3da75e7cf93f587f4e42e8959d29b4ebaebfee'
+sha256sums=('SKIP'
             '76955f7b4ab01aa9a6fa8213fc062765158dda8783075459b79c147febe45bb4'
             'e21a0d99dcea6b849f80960fccc488e6294e3e794b0033fdc163291ecc8595ff')
 
 prepare() {
-  cd bitmask-vpn-$pkgver
+  cd bitmask-vpn
   export GOCACHE="$srcdir/GOCACHE"
   sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' helpers/se.leap.bitmask.policy
   sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/launcher/launcher_linux.go
@@ -30,7 +31,7 @@ prepare() {
 }
 
 build() {
-  cd bitmask-vpn-$pkgver
+  cd bitmask-vpn
   export GOCACHE="$srcdir/GOCACHE"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -41,14 +42,15 @@ build() {
 }
 
 check() {
-  cd bitmask-vpn-$pkgver
+  cd bitmask-vpn
+  export GOCACHE="$srcdir/GOCACHE"
   make test
 }
 
 package() {
   install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 $pkgname.png -t "$pkgdir/usr/share/icons/hicolor/128x128/apps"
-  cd bitmask-vpn-$pkgver
+  cd bitmask-vpn
   install -Dm644 gui/resources/riseup-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm644 helpers/se.leap.bitmask.policy -t "$pkgdir/usr/share/polkit-1/actions"
   install -Dm755 helpers/bitmask-root -t "$pkgdir/usr/bin"
