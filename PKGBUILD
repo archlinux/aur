@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SpotClean
-_pkgver=1.4.1
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="SpotClean adjusts for spot swapping in spatial transcriptomics data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -37,8 +37,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b6e7be89394d959837993f3fd385ad55')
-b2sums=('e023942be4dd01960ce75326997e9eb2f160981fd1aba08778c34881a0352ce2e711a86e03f534bafcdce0357ccd1fb35414d04570cbf6443fc7a450cf99c4db')
+md5sums=('27fd979967227ab3f4dd50a3527990cf')
+b2sums=('3f40d29eacba221831360de47f5ecb2947f85a849ed0e1b1fe865045b1b7353d152f71fdbb5e775e342d65438232860e54361786fec51a13bec1d339ae0e3783')
 
 build() {
   mkdir build
