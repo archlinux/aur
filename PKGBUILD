@@ -1,17 +1,17 @@
-# system requirements: GNU make
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=QuasR
-_pkgver=1.42.1
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.1
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Quantify and Annotate Short Reads in R'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Quantify and Annotate Short Reads in R"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
+  bzip2
+  curl
   r-annotationdbi
   r-biobase
   r-biocgenerics
@@ -24,11 +24,16 @@ depends=(
   r-genomicranges
   r-iranges
   r-rbowtie
-  r-rhtslib
   r-rsamtools
   r-rtracklayer
   r-s4vectors
   r-shortread
+  r-txdbmaker
+  xz
+  zlib
+)
+makedepends=(
+  r-rhtslib
 )
 optdepends=(
   r-biocstyle
@@ -41,14 +46,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d66ef1bbf95ae60bb5b7cf87dea6dae6adcc92229ef69984b1589073b7bc2519')
+md5sums=('9a98ddfa2e479bfe68cc9c8ec38fedd7')
+b2sums=('c3c01e1b4dd242c737d5c1b8d9da74547d1ced56a82b1d7741848caee395a56897b8903955ff508787b5b2155161867026f9518c10d514051476adc00f0325c4')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
