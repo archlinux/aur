@@ -11,7 +11,7 @@ license=('MIT')
 provides=('gamescope-session-git')
 conflicts=('gamescope-session-git')
 groups=()
-# depends=('gamescope' 'read-edid')
+depends=('gamescope' 'read-edid')
 makedepends=('git')
 install=gamescope-session.install
 source=("${_gitdir}::git+https://github.com/3003n/${_gitdir}.git#branch=dev")
