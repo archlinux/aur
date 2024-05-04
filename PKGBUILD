@@ -2,7 +2,7 @@
 pkgname=pkgbuilder
 _pyname=pkgbuilder
 pkgver=4.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A Python AUR helper/library.'
 arch=('any')
 url='https://github.com/Kwpolska/pkgbuilder'
