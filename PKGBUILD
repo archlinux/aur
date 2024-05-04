@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Zanatta <alessandro.zanatta.lav@gmail.com>
 
 pkgname=solidity-language-server
-pkgver=0.7.2
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A language server for the Solidity programming language."
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 makedepends=(npm)
 source=("https://registry.npmjs.org/@nomicfoundation/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("${pkgname}-$pkgver.tgz")
-sha256sums=('7ef5f3801e11923fb3e9aa54ef6ea277af1123af5142289615bc27d1cd0a4fe9')
+sha256sums=('cb13e12c53c585b886eeb2234535ab27a4635218126c4cc7ceffa3897278d1a3')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
