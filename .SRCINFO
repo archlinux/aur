@@ -1,0 +1,18 @@
+pkgbase = engage-git
+	pkgdesc = A task runner with DAG-based parallelism
+	pkgver = 0.2.0.r14.gdd6f4d9
+	pkgrel = 1
+	url = https://or.computer.surgery/charles/engage
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = engage=0.2.0.r14.gdd6f4d9
+	conflicts = engage
+	source = engage::git+https://or.computer.surgery/charles/engage.git
+	sha256sums = SKIP
+
+pkgname = engage-git
