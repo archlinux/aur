@@ -1,16 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=letterpress
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="Uses jp2a to turn your pictures into images made up of ASCII Characters."
 arch=('any')
 url="https://apps.gnome.org/Letterpress"
 license=('GPL-3.0-or-later')
 depends=('jp2a' 'libadwaita' 'python-gobject' 'python-pillow')
 makedepends=('blueprint-compiler' 'meson')
-checkdepends=('appstream-glib')
 source=("https://gitlab.gnome.org/World/Letterpress/-/archive/$pkgver/Letterpress-$pkgver.tar.gz")
-sha256sums=('34c457f30af4eeb58785d125eb596859abc64a519625829d69008d10581b1951')
+sha256sums=('6682bfd13f15ae12ccd556531974a0a4f701775d5e55e50e1a97b71b9dcab375')
 
 build() {
   arch-meson "Letterpress-$pkgver" build
