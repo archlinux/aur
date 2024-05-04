@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-cpp
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-cpp"
@@ -26,9 +26,9 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver/src/"
-	cc $CFLAGS -std=c99 -c parser.c
-	cc $CPPFLAGS -std=c99 -c scanner.c
-	c++ $LDFLAGS -shared parser.o scanner.o -o "$srcdir/cpp-parser.so"
+	cc $CFLAGS -I. -std=c11 -fPIC  -c parser.c
+	cc $CPPFLAGS -I. -std=c11 -fPIC  -c scanner.c
+	cc $LDFLAGS -shared -Wl,-soname,libtree-sitter-cpp.so.0 parser.o scanner.o -o "$srcdir/cpp-parser.so"
 }
 
 package() {
