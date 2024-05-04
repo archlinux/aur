@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OmnipathR
-_pkgver=3.10.1
+_pkgver=3.11.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="OmniPath web service client and more"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -47,7 +47,6 @@ optdepends=(
   r-biocstyle
   r-biomart
   r-bookdown
-  r-dnet
   r-ggplot2
   r-ggraph
   r-gprofiler2
@@ -62,8 +61,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c51296b40e8d580f14dc3ff6839495f6')
-b2sums=('cd9c59b16075a498a448dee58c997c2b110cd8db4aaef0211a8c83c12000c5de5a9eb81b9132ca601a4eb7d2845881603a987b70c5906920d1c7859caf949abe')
+md5sums=('4ea1ea4056248615d3cf047520da09d9')
+b2sums=('993000e16d9238df065855dc5256f12ddf8e9fb22b39b728a09bc5272d71c6a71198bf1ecf8d581d102babb8c22689e11290f1a71229d572fd7b410a996472fc')
 
 build() {
   mkdir build
