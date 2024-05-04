@@ -1,15 +1,14 @@
 pkgbase = tt-rss-no-video-preload-git
 	pkgdesc = TT-RSS plugin to stop preloading HTML5 videos, good for slow connections
-	pkgver = 1.0.0
+	pkgver = r3.2d4eff2
 	pkgrel = 1
-	url = https://dev.tt-rss.org/tt-rss/ttrss-no-video-preload
+	url = https://dev.tt-rss.org/tt-rss/plugins/ttrss-no-video-preload
 	arch = any
-	license = GPL3
-	makedepends = git
+	license = GPL-3.0-only
 	depends = tt-rss
 	provides = tt-rss-no-video-preload
 	conflicts = tt-rss-no-video-preload
-	source = git+https://dev.tt-rss.org/tt-rss/ttrss-no-video-preload.git
+	source = git+https://dev.tt-rss.org/tt-rss/plugins/ttrss-no-video-preload.git
 	md5sums = SKIP
 
 pkgname = tt-rss-no-video-preload-git
