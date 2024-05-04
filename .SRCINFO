@@ -1,7 +1,7 @@
 pkgbase = r-ataccogaps
 	pkgdesc = Analysis Tools for scATACseq Data with CoGAPS
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/ATACCoGAPS
 	arch = any
 	license = Artistic-2.0
@@ -29,8 +29,8 @@ pkgbase = r-ataccogaps
 	depends = r-tidyverse
 	optdepends = r-knitr
 	optdepends = r-viridis
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ATACCoGAPS_1.4.0.tar.gz
-	md5sums = f8cf8dd559b05caf23934090510297de
-	b2sums = fba771859ac663cd14c4980a7de606db5c3562e0c473e98a404f5d7b32f58ac08fcbac35fe80a25d705275251403ef0f2d69b380bd817307d1eafbd9fdb3c3fd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ATACCoGAPS_1.6.0.tar.gz
+	md5sums = 17f4e21080e0488fab86b4fc5b2e6b15
+	b2sums = 3bffcdf48133209b2245a070f297b2c43f725e881f5d01ff972087507b1fd4f5ce7c14327f5591c71770837c1f9241c62167af7614008bcf766cbe6fe3634b8c
 
 pkgname = r-ataccogaps
