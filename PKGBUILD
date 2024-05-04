@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HiContacts
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Analysing cool files in R with HiContacts"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -53,8 +53,8 @@ optdepends=(
   r-wgcna
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f7f7341e5b4cbfcd13b04fadd9c472c7')
-b2sums=('607119810196bdb7083dd1eb674089b1246c3865c8ba8fb1278bc7fabe7117f66271d9af9130b380f7b7bf496619cfe2f90463253a42f4d36026082434b565e5')
+md5sums=('39b7778b83f9e301475ddf52dc7deff3')
+b2sums=('533197e6dd6f3e2eb1f3bc61e5811cf5fd46228a40bf243757a262d2d7e63fb8fcb60983d2075de9e41b800b950e94a872b95313ceae7fbd02a6a06c20850a0c')
 
 build() {
   mkdir build

@@ -1,7 +1,7 @@
 pkgbase = r-hicontacts
 	pkgdesc = Analysing cool files in R with HiContacts
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/HiContacts
 	arch = any
 	license = MIT
@@ -42,8 +42,8 @@ pkgbase = r-hicontacts
 	optdepends = r-terra
 	optdepends = r-testthat
 	optdepends = r-wgcna
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiContacts_1.4.0.tar.gz
-	md5sums = f7f7341e5b4cbfcd13b04fadd9c472c7
-	b2sums = 607119810196bdb7083dd1eb674089b1246c3865c8ba8fb1278bc7fabe7117f66271d9af9130b380f7b7bf496619cfe2f90463253a42f4d36026082434b565e5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiContacts_1.6.0.tar.gz
+	md5sums = 39b7778b83f9e301475ddf52dc7deff3
+	b2sums = 533197e6dd6f3e2eb1f3bc61e5811cf5fd46228a40bf243757a262d2d7e63fb8fcb60983d2075de9e41b800b950e94a872b95313ceae7fbd02a6a06c20850a0c
 
 pkgname = r-hicontacts
