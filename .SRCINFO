@@ -1,0 +1,18 @@
+pkgbase = oh
+	pkgdesc = A archlinux setup and manager
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/otechdo/oh
+	arch = x86_64
+	makedepends = cargo
+	depends = w3m
+	depends = wget
+	depends = rustup
+	depends = git
+	depends = archiso
+	provides = oh
+	provides = os
+	source = oh-0.0.1.tar.gz::https://static.crates.io/crates/arch/oh-0.0.1.crate
+	sha512sums = 5355c0d3757b5e61a3b1465c6ddb5574474ab3f5c6df80cc966d934aacd1f32176eb6329c311924f8924e8bfcdd4414b27748840bda487144af4547e5702b59c
+
+pkgname = oh
