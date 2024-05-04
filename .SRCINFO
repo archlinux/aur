@@ -1,0 +1,18 @@
+pkgbase = android-aarch64-opencl-clhpp
+	pkgdesc = OpenCL C++ header files (Android aarch64)
+	pkgver = 2023.04.17
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/OpenCL-CLHPP
+	arch = any
+	license = custom
+	makedepends = android-cmake
+	makedepends = android-aarch64-opencl-headers
+	depends = android-aarch64-opencl-headers
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v2023.04.17.tar.gz
+	sha256sums = 179243843c620ef6f78b52937aaaa0a742c6ff415f9aaefe3c20225ee283b357
+
+pkgname = android-aarch64-opencl-clhpp
