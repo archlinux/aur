@@ -25,10 +25,9 @@ sha256sums=('062e59a50e30a7cdd618328d9582b58d805dfe50990a9f93df2dddc8c6e4b4ae'
 noextract=('flash_player_patched_ppapi_linux.x86_64.tar.gz')
 
 prepare() {
-	cd $_appname-$_pkgver
 	# Extract FlashPlugin (PPAPI)
-	mkdir -p ../flash_plugin
-	bsdtar -xf ../flash_player_patched_ppapi_linux.x86_64.tar.gz -C ../flash_plugin
+	mkdir -p flash_plugin
+	bsdtar -xf flash_player_patched_ppapi_linux.x86_64.tar.gz -C flash_plugin
 }
 
 build() {
@@ -42,32 +41,36 @@ build() {
 package() {
 	install -d "$pkgdir"/opt/$pkgname "$pkgdir"/usr/bin
 	# Install app
-	cp -av --no-preserve=ownership "$srcdir"/$_appname-$_pkgver/$_appname-linux-x64/* "$pkgdir"/opt/$pkgname
+	cp -a --no-preserve=ownership "$srcdir"/$_appname-$_pkgver/$_appname-linux-x64/* "$pkgdir"/opt/$pkgname
 	# Install FlashPlugin
-	install -vDm755 "$srcdir"/flash_plugin/libpepflashplayer.so \
+	install -Dm755 "$srcdir"/flash_plugin/libpepflashplayer.so \
 		"$pkgdir"/opt/$pkgname/resources/app/flashver/libpepflashplayer.so
 	# Install /usr/bin executable
 	ln -s /opt/$pkgname/$_appname "$pkgdir"/usr/bin/$_appname
 	# Install desktop entry file
-	install -vDm644 "$srcdir"/$_appname.desktop "$pkgdir"/usr/share/applications/$_appname.desktop
+	install -Dm644 "$srcdir"/$_appname.desktop "$pkgdir"/usr/share/applications/$_appname.desktop
 	# Install icons
 	for d in 16 24 32 48 256; do
 		install -d "$pkgdir"/usr/share/icons/hicolor/${d}x${d}/apps
 	done
 
 	for i in 16 24 32 48 256; do
-		if 	[ $i = '16' ];	then layer=0;
-		elif 	[ $i = '24' ];	then layer=1;
-		elif 	[ $i = '32' ];	then layer=2;
-		elif 	[ $i = '48' ];	then layer=3;
-		elif 	[ $i = '256' ];	then layer=4; fi
+		if [ $i = '16' ]; then
+			layer=0
+		elif [ $i = '24' ]; then
+			layer=1
+		elif [ $i = '32' ]; then
+			layer=2
+		elif [ $i = '48' ]; then
+			layer=3
+		elif [ $i = '256' ]; then layer=4; fi
 
-	convert "$srcdir"/$_appname-$_pkgver/icon.ico[${layer}] -define icon:auto-resize=${i} \
-		"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/${_appname}.png
+		convert "$srcdir"/$_appname-$_pkgver/icon.ico[${layer}] -define icon:auto-resize=${i} \
+			"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/${_appname}.png
 	done
 	# Remove macOS FlashPlugin
-	rm -rf "$pkgdir"/opt/$pkgname/resources/app/flashver/PepperFlashPlayer.plugin
+	rm -r "$pkgdir"/opt/$pkgname/resources/app/flashver/PepperFlashPlayer.plugin
 	# Remove empty folders and dotfiles
-	find "$pkgdir"/opt/flashbrowser/resources/app -name '.git*' | xargs rm -rf
+	find "$pkgdir"/opt/flashbrowser/resources/app -name '.git*' | xargs rm -r
 	find "$pkgdir"/opt/flashbrowser/resources/app -empty -delete
 }
