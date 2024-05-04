@@ -1,0 +1,16 @@
+pkgbase = colorconvert
+	pkgdesc = Hyprland сolor сonverter with color picker. Format like: 0x+opacity+hex. Example: 0x9C0DFF00
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/govnorice/HyprlandColorConverter
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = pacman>6.1
+	depends = gtk3
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	options = !lto
+	source = https://github.com/govnorice/HyprlandColorConverter/releases/download/0.0.1/colorconvert
+	sha256sums = SKIP
+
+pkgname = colorconvert
