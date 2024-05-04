@@ -1,7 +1,7 @@
 pkgbase = r-sfedata
 	pkgdesc = Example SpatialFeatureExperiment datasets
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/SFEData
 	arch = any
 	license = Artistic-2.0
@@ -11,10 +11,11 @@ pkgbase = r-sfedata
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
+	optdepends = r-seuratobject
 	optdepends = r-spatialfeatureexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/SFEData_1.4.0.tar.gz
-	md5sums = 7f3376870c972cba309b26d52d24fcbb
-	b2sums = f9e1d30a79e021b5119dc402a3c36ecccaa087e79885ef6a380ecb357849a1b5fca2ac64aeee7a91247bb0b81c2800b5aa0c22164ae2e07f5ef33bcc2cd3a1d1
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/SFEData_1.6.0.tar.gz
+	md5sums = db807c17ae3c8291c3bad1da4e34db44
+	b2sums = 542e4601b4bb388cf4c5b28e9798c4b1e701a1f9c350f79e5d87f3b6d14091a36a47296f1735e5ebee15ad442c00f139c8927d59fb0308862a2ccd733a2beb50
 
 pkgname = r-sfedata
