@@ -1,11 +1,11 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SpliceWiz
-_pkgver=1.4.1
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
-pkgdesc="Easy, optimized, and accurate alternative splicing analysis in R"
+pkgrel=1
+pkgdesc="interactive analysis and visualization of alternative splicing in R"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
@@ -63,6 +63,7 @@ checkdepends=(
   r-testthat
 )
 optdepends=(
+  r-annotationdbi
   r-crayon
   r-dbi
   r-deseq2
@@ -72,16 +73,15 @@ optdepends=(
   r-go.db
   r-knitr
   r-limma
-  r-openssl
   r-rmarkdown
   r-rsubread
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "link-zlib.patch")
-md5sums=('9812519f59c037be4490da221b96877b'
+md5sums=('2040c299f3714617473d6e1d86b79e30'
          '6d95a56e1b05ba50e118ddbbee00f1cf')
-b2sums=('562914ef49585a525a2607873cc9c36da383a0b0de9d8a88b36771ab7dd9ac260567e1695f71bbb9b8ee93a5677aa66f3baed8f0e594e2372081a725a66088c6'
+b2sums=('ab9fce493d2bd7585c72c4f8eef428f880286c1a8ce541a039effc1f32c905413432badc54777d75c6a81ec37e38a21dda2245fe8e618470a2af7f87e5b5338f'
         'c81190033eaba3e11043f9eb9ab2e0275b37a40ba6d5ad821a37560c74f3dc65a0fe3e0e9c4825fcc23e6bd9a7084ff0ba144daa6ef7b564517e4af2b4471362')
 
 prepare() {
