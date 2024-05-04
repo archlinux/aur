@@ -1,0 +1,14 @@
+pkgbase = cobalt-cli-git
+	pkgdesc = Unofficial cobalt command line client made in go.
+	pkgver = r18.6bd4964
+	pkgrel = 1
+	url = https://github.com/lostdusty/cobalt
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = cobalt
+	source = git+https://github.com/lostdusty/cobalt
+	md5sums = SKIP
+
+pkgname = cobalt-cli-git
