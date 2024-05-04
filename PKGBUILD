@@ -2,8 +2,7 @@
 
 pkgname=python-outlines
 _pkgname=${pkgname#python-}
-pkgver=0.0.40
-_commit=4d6ec1f852f246684bf8f77f0897ed19692bfee7
+pkgver=0.0.41
 pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
@@ -48,8 +47,8 @@ optdepends=(
   'uvicorn: deploy as LLM service'
   'python-llama-cpp: llama.cpp backend'
 )
-source=("git+$url.git#commit=$_commit")
-sha256sums=('7af126b9dc55b6bd8f8646cb80927382eeaa5910fa2b06f0499a8a758bcfbe07')
+source=("git+$url.git#tag=$pkgver")
+sha256sums=('53d82a340edfaf0a066bfe74158dea1fab60a8124168ee4ba3e25ad22b73bee0')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194') # GitHub <noreply@github.com>
 
 _archive="$_pkgname"
@@ -81,7 +80,8 @@ check() {
     --deselect tests/models/test_openai.py::test_openai_call \
     --ignore tests/generate/test_integration_llamacpp.py \
     --ignore tests/generate/test_integration_vllm.py \
-    --ignore tests/models/test_llama_cpp.py
+    --ignore tests/models/test_llama_cpp.py \
+    --pythonwarnings ignore::FutureWarning
 }
 
 package() {
