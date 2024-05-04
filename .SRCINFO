@@ -1,6 +1,6 @@
 pkgbase = python-streamlit
 	pkgdesc = The fastest way to build data apps in Python
-	pkgver = 1.33.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://streamlit.io
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = python-streamlit
 	depends = python-validators
 	depends = python-watchdog
 	depends = semver
-	source = streamlit-1.33.0.tar.gz::https://files.pythonhosted.org/packages/source/s/streamlit/streamlit-1.33.0.tar.gz
-	sha512sums = 539f81db1aee3d895e68cfe6845117376a3dabeaf51d9c0c82e5e614f473c06dfecd4919117ad93f3e444d09adfbb290960542bb8bc25e03e5305ed9db6bd878
+	source = streamlit-1.34.0.tar.gz::https://files.pythonhosted.org/packages/source/s/streamlit/streamlit-1.34.0.tar.gz
+	sha512sums = 7b52d3c189b64da713ddc66b5663709bf2c1687771dfbfd01feffe1c737db8809be9a605444e495ad164bf25af8db55381d42a8042805b75f6e30d41229eb0c0
 
 pkgname = python-streamlit
