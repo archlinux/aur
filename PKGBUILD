@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=org.Ce.eg.db
-_pkgver=3.18.0
+_pkgver=3.19.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Genome wide annotation for Worm"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('441a5efb4649a1201b5552b14c1f1cef')
-b2sums=('b34a4c98b3af98986c2448900c4c1f80c92d1b1350313f12bc7c2bb039393f9391c7c090bc814c9191c37ddc9007298e2244b68a126475f6677bc4d584e10087')
+md5sums=('ddc102d88169e0bbae26a215fa9e5eda')
+b2sums=('a3bb74be1ca1c15ce6cb34a7283479ff6cebc76e31a8a5b40f855a7135b34275412c87fcd35d3d635d13dc047bc2543bbae0d7765dd777fd48d3d30b323757f2')
 
 build() {
   mkdir build
