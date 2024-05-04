@@ -4,12 +4,13 @@ pkgbase = python-langdetect
 	pkgrel = 4
 	url = https://github.com/Mimino666/langdetect
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-pytest
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/l/langdetect/langdetect-1.0.9.tar.gz
-	sha512sums = 7558d674c47b080c79e43a00a25d2c7f77188cf60bea2cecb3bebb803d75e1aa42b43c74bd26ea1b541f4cb927421908882cbec01a91f0913984217e71ccc8db
-	b2sums = ea8a9c3f16a2987c080742473bff4f2c1503f53fb3c2b40b0b1d6212bb6133ea22dce7864ffcfb8968c3a46b157d45cb3e2cf6f84bdbed0266cc716a853b032c
+	source = python-langdetect::git+https://github.com/Mimino666/langdetect#commit=a1598f1afcbfe9a758cfd06bd688fbc5780177b2
+	sha512sums = SKIP
 
 pkgname = python-langdetect

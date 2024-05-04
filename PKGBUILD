@@ -1,38 +1,40 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
-_name=langdetect
 pkgname=python-langdetect
 pkgver=1.0.9
 pkgrel=4
 pkgdesc="Language detection library ported from Google's language-detection"
 arch=('any')
 url="https://github.com/Mimino666/langdetect"
-license=('Apache')
-depends=('python-six')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest')
-source=("https://files.pythonhosted.org/packages/source/l/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('7558d674c47b080c79e43a00a25d2c7f77188cf60bea2cecb3bebb803d75e1aa42b43c74bd26ea1b541f4cb927421908882cbec01a91f0913984217e71ccc8db')
-b2sums=('ea8a9c3f16a2987c080742473bff4f2c1503f53fb3c2b40b0b1d6212bb6133ea22dce7864ffcfb8968c3a46b157d45cb3e2cf6f84bdbed0266cc716a853b032c')
+license=('Apache-2.0')
+depends=(
+  'python-six'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
+checkdepends=(
+  'python-pytest'
+)
+source=("${pkgname}::git+${url}#commit=a1598f1afcbfe9a758cfd06bd688fbc5780177b2")
+# Upstream is a mess, switching between github releases, tags and just commits
+sha512sums=('SKIP')
 
-prepare() {
-  mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
+check() {
+  cd "${srcdir}/${pkgname}"
+  pytest
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  python setup.py build
-}
-
-check() {
-  cd "${pkgname}-${pkgver}"
-  pytest -v
+  cd "${srcdir}/${pkgname}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  python setup.py install --skip-build \
-    --optimize=1 \
-    --root="${pkgdir}"
+  cd "${srcdir}/${pkgname}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+
   install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
