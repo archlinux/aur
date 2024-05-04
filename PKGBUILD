@@ -7,8 +7,7 @@ pkgdesc="Proprietary package detector for arch-based distros that uses Parabola'
 arch=('any')
 url="https://github.com/vmavromatis/$pkgname"
 license=('GPL-3.0-only')
-depends=('python')
-makedepends=('python-setuptools')
+depends=('python' 'python-importlib-metadata' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
 sha512sums=('d6b10dd6b89171e568b07a86617b0b731aa8cbd20f61968f4fd1e4bf42e73665d4746034a6181a210b1644070abfe80d91b1378ad0dab0413ffe58516b3332b2')
 
