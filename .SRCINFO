@@ -9,6 +9,7 @@ pkgbase = orbterm
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	makedepends = git
 	makedepends = cargo
 	makedepends = cmake
 	depends = sdl2

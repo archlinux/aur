@@ -8,7 +8,7 @@ arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://gitlab.redox-os.org/redox-os/$pkgname"
 license=('MIT')
 depends=('sdl2')
-makedepends=('cargo' 'cmake')
+makedepends=('git' 'cargo' 'cmake')
 source=(
 	"$pkgname-$pkgver::git+$url#commit=$_commit?signed"
 	"$pkgname-$pkgver-Cargo.lock::$url/-/raw/505cac5d5c071eb8d10ec5e4843ec0a83ad18c9b/Cargo.lock"
