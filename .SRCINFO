@@ -1,6 +1,6 @@
 pkgbase = python-pdf2image
 	pkgdesc = Python wrapper around the pdftoppm and pdftocairo command line tools to convert PDF to a PIL Image list
-	pkgver = 1.16.3
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/Belval/pdf2image
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-pdf2image
 	depends = python
 	depends = python-pillow
 	depends = poppler
-	source = python-pdf2image-1.16.3.tar.gz::https://github.com/Belval/pdf2image/archive/v.1.16.3.tar.gz
-	sha512sums = 8c724307fcb7b7d1e577ac5ed76a54393a283eb3e7378762506862123af25f0ed9fda7f0309140456aab493bd75405c54195579d1d2bbaec4502861f2731e506
+	source = python-pdf2image-1.17.0.tar.gz::https://github.com/Belval/pdf2image/archive/v1.17.0.tar.gz
+	sha512sums = a74579901e597559782c3357ea686cc92f358a4362ac309cf23843ad15b4f5d00b7d483098e8046c0edb83ae95cbf3155e02f84a8101da4034fe4bb201191a1d
 
 pkgname = python-pdf2image
