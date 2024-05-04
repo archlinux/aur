@@ -14,6 +14,7 @@ pkgbase = ocaml-lwt
 	depends = ocaml-ocplib-endian
 	depends = ocaml-ppxlib>=0.16.0
 	depends = ocaml-react>=1.0.0
+	depends = zstd
 	options = !strip
 	source = ocaml-lwt-5.7.0.tar.gz::https://github.com/ocsigen/lwt/archive/5.7.0.tar.gz
 	sha512sums = 42e629920783428673b99c9d7a639237c9e6b35079b5d907bc67e7ea506acf9edadc48cec580bdcfd2410ed9412bf5e6bcc8b09de2fa7d35ce1490973d05ddd1

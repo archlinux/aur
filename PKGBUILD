@@ -11,7 +11,7 @@ pkgdesc='A library for cooperative threads in OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
 license=('MIT')
-depends=('libev' 'dune>=1.8.0' 'ocaml>=4.08.0' 'ocaml-ocplib-endian' 'ocaml-ppxlib>=0.16.0' 'ocaml-react>=1.0.0')
+depends=('libev' 'dune>=1.8.0' 'ocaml>=4.08.0' 'ocaml-ocplib-endian' 'ocaml-ppxlib>=0.16.0' 'ocaml-react>=1.0.0' 'zstd')
 makedepends=('cppo>=1.1.0')
 checkdepends=('ocaml-ppx_let')
 options=('!strip')
