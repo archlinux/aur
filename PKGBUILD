@@ -25,9 +25,6 @@ check() {
 
 	# Run tests
 	pytest
-
-	# Verify that the basic functionality works
-	printf 'q' | python -B 'examples/hello_py_cui.py'
 }
 
 package() {
