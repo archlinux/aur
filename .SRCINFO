@@ -1,13 +1,13 @@
 pkgbase = r-simpintlists
 	pkgdesc = The package contains BioGRID interactions for various organisms in a simple format
-	pkgver = 1.39.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/simpIntLists
 	arch = any
 	license = GPL-2.0-or-later
 	depends = r
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/simpIntLists_1.39.0.tar.gz
-	md5sums = 1ef6d72bbcc2c8c6e95e0f01cbdcf5e8
-	b2sums = d750b1db394a75774d1bbab8a93e19f4337d617ca1057b79e7119cd67ca6a6e1e15d276128059bb32f1cc4b60e9daca245fcb98f8b0565f03167795aee3f000d
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/simpIntLists_1.40.0.tar.gz
+	md5sums = 0f9a3cf5fd4bd46f5d10d64fd8c3656c
+	b2sums = 8acc3aa3655c1d1924249775f35777a07efc8e824ba2ccb8848543d1bff2311c671aed0d73c047091d7d04c72b72c682ad3188bb97615d61625d267d6e9fefdf
 
 pkgname = r-simpintlists
