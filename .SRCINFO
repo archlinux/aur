@@ -6,6 +6,7 @@ pkgbase = ocaml-gen
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = git
 	makedepends = dune>=1.1.0
 	depends = ocaml>=4.03.0
 	depends = ocaml-seq

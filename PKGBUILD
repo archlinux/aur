@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/c-cube/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.03.0' 'ocaml-seq')
-makedepends=('dune>=1.1.0')
+makedepends=('git' 'dune>=1.1.0')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")
 sha512sums=('438dab1de8fade55742aab94f542b84a35a207b5a1aedf82275723aad08206d3273f9788bedd7b949a3f5336292b60c4e62f6d1f43dc8df72930828fe9714caf')
