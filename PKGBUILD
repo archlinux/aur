@@ -8,7 +8,6 @@ url="https://github.com/slowsage/mdbook-pagetoc"
 arch=('x86_64')
 license=('MPL-2.0')
 makedepends=(
-  'rust'
   'cargo'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
