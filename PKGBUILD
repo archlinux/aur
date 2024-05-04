@@ -2,23 +2,21 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CoGAPS
-_pkgver=3.22.0
+_pkgver=3.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Coordinated Gene Activity in Pattern Sets"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('BSD-3-Clause')
 depends=(
   r-biocparallel
-  r-biomart
   r-dplyr
   r-fgsea
   r-forcats
   r-ggplot2
   r-gplots
-  r-msigdbr
   r-rcolorbrewer
   r-rcpp
   r-rhdf5
@@ -33,6 +31,7 @@ checkdepends=(
   r-testthat
 )
 optdepends=(
+  r-biocfilecache
   r-biocstyle
   r-knitr
   r-rmarkdown
@@ -41,9 +40,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-openmp.patch")
-md5sums=('d4c9ec9b2be6c77fbb47c632b62c84b4'
+md5sums=('d2b91f1944fb0a2bea5485bfe8dbf236'
          '7bbd2f800d95d2a4a9c81526b637e772')
-b2sums=('7836a9b7c52afb7fc009e7f49af2f4f59908c39bc20e77c3a1de72419d9f7a13c7d750f43c57429ca020d139ff0b0c96a5be61eb65c5a8f38f2546ce5c8db883'
+b2sums=('439351b2e47495c8e16606a320b7a170366a5ba364cafecd6c22a17970a01faef0b82573b737c412c8bbaeae0382c252a3d11d3e87038dc9bab03df0f35f8d28'
         '1c794cab3dab46e4e50461c0d533f3a524940210dee7b27662421082a9f198e0faa7286a1d441299857cb064940a88f24767d88c1988216c22c330c97605737e')
 
 prepare() {
