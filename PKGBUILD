@@ -3,11 +3,11 @@
 pkgname=with-git
 _gitname=with
 pkgver=r64.28eb40b
-pkgrel=2
+pkgrel=1
 pkgdesc="Command prefixing for continuous workflow using a single tool"
 arch=('any')
 url="https://github.com/mchav/with"
-license=('Apache-3.0')
+license=('Apache-2.0')
 makedepends=('git')
 source=("git+${url}")
 sha256sums=('SKIP')

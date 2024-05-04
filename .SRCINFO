@@ -1,10 +1,10 @@
 pkgbase = with-git
 	pkgdesc = Command prefixing for continuous workflow using a single tool
 	pkgver = r64.28eb40b
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/mchav/with
 	arch = any
-	license = Apache-3.0
+	license = Apache-2.0
 	makedepends = git
 	source = git+https://github.com/mchav/with
 	sha256sums = SKIP
