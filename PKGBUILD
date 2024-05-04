@@ -1,31 +1,32 @@
-# Maintainer: amo <https://aur.archlinux.org/account/amo>
+# Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
-_pkgname=imap_tools
 pkgname=python-imap-tools
 pkgver=1.6.0
 pkgrel=2
 pkgdesc="Work with email and mailbox by IMAP"
 arch=('any')
 url="https://github.com/ikvk/imap_tools"
-license=('Apache')
-depends=()
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.src.tar.gz::https://github.com/ikvk/imap_tools/archive/v$pkgver.tar.gz")
-sha256sums=('8439abe9446a328e2308d74b7f3bd30a1688d8e915250f9404a9b0993938d472')
+license=('Apache-2.0')
+depends=(
+  'python'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
+source=("${pkgname}::git+${url}#tag=v${pkgver}")
+sha256sums=('SKIP')
+
+#check() {}
+# WOuld require some setup
 
 build() {
-  cd "$_pkgname-$pkgver" || exit
-  python setup.py build
+  cd "${srcdir}/${pkgname}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_pkgname-$pkgver" || exit
-
-  export PYTHONHASHSEED=0
-  python setup.py install --skip-build \
-      --optimize=1 \
-      --prefix=/usr \
-      --root="$pkgdir"
-
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  cd "${srcdir}/${pkgname}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
