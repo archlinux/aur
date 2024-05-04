@@ -1,7 +1,7 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=ash-listening-set
-pkgver=9.5
+pkgver=9.6
 pkgrel=1
 pkgdesc="A dataset of filters for headphone correction and binaural synthesis of spatial audio systems on headphones"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Creative Commons')
 replaces=('ash-ir-dataset-git')
 depends=()
 source=("https://github.com/ShanonPearce/ASH-Listening-Set/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('70d51cf0c8757acf1ace0495100b030a678d7f9a625972ff4eb4aa3363491337')
+sha256sums=('e89afde73f47101b4db5ce0443c658bfc5eeb7dd7fe69aca278354168dafda9f')
 
 package() {
   cd "$srcdir"/ASH-Listening-Set-$pkgver
