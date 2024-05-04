@@ -1,23 +1,37 @@
-# Maintainer: amo <https://aur.archlinux.org/account/amo>
+# Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
-_pkgname=gotenberg-client
 pkgname=python-gotenberg-client
+_pkgname=gotenberg-client
 pkgver=0.5.0
 pkgrel=2
 pkgdesc="A Python client for interfacing with the Gotenberg API"
 arch=('any')
 url="https://github.com/stumpylog/gotenberg-client"
-license=('MPL2')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-source=("$pkgname-$pkgver.src.tar.gz::https://github.com/stumpylog/gotenberg-client/archive/$pkgver.tar.gz")
-sha256sums=('a93b5f17e5aa7a6c7d8ad72b0a4b16d17c2eb11bc7ce67ce390c0e65d535e14b')
+license=('MPL-2.0')
+depends=(
+  'python'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-httpx'
+)
+source=("${pkgname}::git+${url}#tag=${pkgver}")
+sha256sums=('SKIP')
+
+#check() {}
+# Testing requires complex setup
 
 build() {
-  cd "$_pkgname-$pkgver" || exit
+  cd "${srcdir}/${pkgname}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_pkgname-$pkgver" || exit
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "${srcdir}/${pkgname}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
