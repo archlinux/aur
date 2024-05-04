@@ -1,48 +1,70 @@
-diff --git a/etc/Makefile.am b/etc/Makefile.am
-index 37601067..0e8dec9d 100644
---- a/etc/Makefile.am
-+++ b/etc/Makefile.am
-@@ -12,7 +12,8 @@ CLEANFILES = $(systemdsystemunit_DATA)
- edit = sed \
- 	-e 's|@sysconfdir[@]|$(sysconfdir)|g' \
- 	-e 's|@sbindir_exp[@]|$(sbindir_exp)|g' \
--	-e 's|@ipcdir[@]|$(ipcdir)|g'
-+	-e 's|@ipcdir[@]|$(ipcdir)|g' \
-+	-e "s|@pcscd@|`echo pcscd | sed '$(transform)'`|g"
- 
- $(systemdsystemunit_DATA): Makefile
- 	rm -f $@ $@.tmp
-@@ -26,4 +27,11 @@ $(systemdsystemunit_DATA): Makefile
- pcscd.service: $(srcdir)/pcscd.service.in
- pcscd.socket: $(srcdir)/pcscd.socket.in
- 
-+install-data-hook:
-+	cd $(DESTDIR)$(systemdsystemunitdir); \
-+	if test pcscd != `echo pcscd | sed '$(transform)'`; then \
-+	  mv pcscd.service `echo pcscd | sed '$(transform)'`.service; \
-+	  mv pcscd.socket `echo pcscd | sed '$(transform)'`.socket; \
-+	fi;
-+
- endif
 diff --git a/etc/pcscd.service.in b/etc/pcscd.service.in
-index 65ad6a69..34e8572a 100644
+index 65ad6a69..89aa1072 100644
 --- a/etc/pcscd.service.in
 +++ b/etc/pcscd.service.in
 @@ -1,12 +1,12 @@
  [Unit]
  Description=PC/SC Smart Card Daemon
 -Requires=pcscd.socket
-+Requires=@pcscd@.socket
++Requires=pcscd@program_suffix@.socket
  Documentation=man:pcscd(8)
  
  [Service]
 -ExecStart=@sbindir_exp@/pcscd --foreground --auto-exit $PCSCD_ARGS
 -ExecReload=@sbindir_exp@/pcscd --hotplug
 -EnvironmentFile=-@sysconfdir@/default/pcscd
-+ExecStart=@sbindir_exp@/@pcscd@ --foreground --auto-exit $PCSCD_ARGS
-+ExecReload=@sbindir_exp@/@pcscd@ --hotplug
-+EnvironmentFile=-@sysconfdir@/default/@pcscd@
++ExecStart=@sbindir_exp@/pcscd@program_suffix@ --foreground --auto-exit $PCSCD_ARGS
++ExecReload=@sbindir_exp@/pcscd@program_suffix@ --hotplug
++EnvironmentFile=-@sysconfdir@/default/pcscd@program_suffix@
  
  [Install]
 -Also=pcscd.socket
-+Also=@pcscd@.socket
++Also=pcscd@program_suffix@.socket
+diff --git a/meson.build b/meson.build
+index 83ef6c3c..0c6e39e1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -29,6 +29,7 @@ confgen_data = configuration_data({
+   'sbindir_exp' : sbindir,
+   'PCSCLITE_CONFIG_DIR' : get_option('serialconfdir'),
+   'usbdropdir' : get_option('usbdropdir'),
++  'program_suffix' : get_option('program_suffix'),
+   })
+ 
+ # tests for functions
+@@ -139,7 +140,7 @@ features += 'serialconfdir=' + get_option('serialconfdir')
+ # generate PCSCLITE_FEATURES
+ conf_data.set('PCSCLITE_FEATURES', '"' + ' '.join(features) + '"')
+ 
+-executable('pcscd',
++executable('pcscd@0@'.format(get_option('program_suffix')),
+   sources : pcscd_src,
+   include_directories : incdir,
+   dependencies : pcscd_dep,
+@@ -243,11 +244,11 @@ if get_option('libsystemd')
+   systemd = dependency('systemd')
+   unit = get_option('systemdunit')
+   systemdsystemunitdir = systemd.get_variable(pkgconfig : 'systemd' + unit + 'unitdir')
+-configure_file(output : 'pcscd.socket',
++configure_file(output : 'pcscd@0@.socket'.format(get_option('program_suffix')),
+   input : 'etc/pcscd.socket.in',
+   install_dir : systemdsystemunitdir,
+   configuration : confgen_data)
+-configure_file(output : 'pcscd.service',
++configure_file(output : 'pcscd@0@.service'.format(get_option('program_suffix')),
+   input : 'etc/pcscd.service.in',
+   install_dir : systemdsystemunitdir,
+   configuration : confgen_data)
+diff --git a/meson.options b/meson.options
+index 85afb3b6..7edaf4c7 100644
+--- a/meson.options
++++ b/meson.options
+@@ -54,3 +54,8 @@ option('filter_names',
+   type : 'boolean',
+   value : 'true',
+   description : 'reader filtering using PCSCLITE_FILTER_IGNORE_READER_NAMES and PCSCLITE_FILTER_EXTEND_READER_NAMES')
++
++option('program_suffix',
++  type : 'string',
++  value : '',
++  description : 'suffix for programs')
