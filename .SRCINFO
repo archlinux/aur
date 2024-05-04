@@ -4,10 +4,13 @@ pkgbase = python-blkinfo
 	pkgrel = 2
 	url = https://github.com/grinrag/blkinfo
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = util-linux
-	source = python-blkinfo::git+https://github.com/genalt/blkinfo#tag=0.2.0
+	source = python-blkinfo::git+https://github.com/grinrag/blkinfo#tag=0.2.0
 	sha256sums = SKIP
 
 pkgname = python-blkinfo
