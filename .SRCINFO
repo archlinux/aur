@@ -1,6 +1,6 @@
 pkgbase = messlidger
 	pkgdesc = A feature-rich Facebook Messenger to XMPP puppeteering gateway, based on slidge and mautrix-facebook.
-	pkgver = 0.0.0.dev0+20240217.gitbd44a23568
+	pkgver = 0.0.0.dev0+20240217.gitbd44a23568.py3.12
 	pkgrel = 1
 	url = https://git.sr.ht/~nicoco/messlidger
 	arch = any
