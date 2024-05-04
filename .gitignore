@@ -1,0 +1,5 @@
+.vscode
+pkg
+alacritty-theme-switcher
+src
+*.tar.zst

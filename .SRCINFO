@@ -1,0 +1,16 @@
+pkgbase = alacritty-theme-switcher
+	pkgdesc = Easily switch between color themes for Alacritty
+	pkgver = 0.1.4
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/spacebird-dev/alacritty-theme-switcher
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	optdepends = alacritty: theme usage
+	source = git+https://github.com/spacebird-dev/alacritty-theme-switcher.git#tag=v0.1.4
+	sha256sums = SKIP
+
+pkgname = alacritty-theme-switcher
