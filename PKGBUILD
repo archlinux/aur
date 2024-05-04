@@ -1,7 +1,7 @@
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
 pkgname=python-ipware
-pkgver=2.0.3
+pkgver=3.0.0
 pkgrel=2
 pkgdesc="Returns the best matched IP address from a given HTTP(s) header in Python"
 arch=('any')
