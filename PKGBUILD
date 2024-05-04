@@ -4,7 +4,7 @@
 _name=django-auditlog
 pkgname=python-django-auditlog
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Django app that keeps a log of changes made to an object."
 arch=('any')
 url="https://github.com/jazzband/django-auditlog"
@@ -15,16 +15,10 @@ sha256sums=('9de49f80a4911135d136017123cd73461f869b4947eec14d5e76db4b88182f3f')
 
 build() {
   cd "$_name-$pkgver" || exit
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_name-$pkgver" || exit
-
-  export PYTHONHASHSEED=0
-  python setup.py install --skip-build \
-      --optimize=1 \
-      --prefix=/usr \
-      --skip-build \
-      --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
