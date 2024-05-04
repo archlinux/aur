@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/c-cube/$_projectname"
 license=('BSD-2-Clause')
 depends=('ocaml>=4.08.0')
-makedepends=('dune>=2.0.0')
+makedepends=('git' 'dune>=2.0.0')
 checkdepends=('ocaml-mdx>=1.3.0' 'ocaml-ounit' 'ocaml-qcheck')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")
