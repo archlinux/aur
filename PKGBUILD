@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.mae
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Load and Save MultiAssayExperiments"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -12,7 +12,9 @@ license=('MIT')
 depends=(
   r-alabaster.base
   r-alabaster.se
+  r-jsonlite
   r-multiassayexperiment
+  r-rhdf5
   r-s4vectors
 )
 checkdepends=(
@@ -28,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('43abcdda61fc9d69dbc24dbd1c91664d')
-b2sums=('4727bd43d10d27dee41ef574cf21276c1ef6cb77942bd28feecadee7ea0638e80bd2a4e3ba7b89cb325bdd223b521b504ea71a890c24fb516d52eb8abf1b1bc3')
+md5sums=('daf15c9689df39fba28272408665d92d')
+b2sums=('42b37833209716c44e7cc80af5a42f298a97ba64de6a5c4b6cf2b897d0b99eb5811c144a7de24b1f66edef876a44d99c2b1aa1466c70cb078fce723e72c555ad')
 
 build() {
   mkdir build
