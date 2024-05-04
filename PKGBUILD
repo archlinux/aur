@@ -2,7 +2,7 @@
 pkgname=turtle
 _app_id="de.philippun1.$pkgname"
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
@@ -65,4 +65,6 @@ package() {
     "$pkgdir/usr/share/nemo-python/extensions/"
   install -Dm644 "plugins/${pkgname}_caja.py" -t \
     "$pkgdir/usr/share/caja-python/extensions/"
+  install -Dm644 data/completions/turtle_cli -t \
+    "$pkgdir/usr/share/bash-completion/completions/"
 }
