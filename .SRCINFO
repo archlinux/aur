@@ -1,0 +1,16 @@
+pkgbase = repackmanga
+	pkgdesc = Repackaging archives into a manga conversion structure via KCC (a.k.a. Kindle Comic Converter)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/govnorice/repackmanga
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = pacman>6.1
+	depends = gtk3
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	options = !lto
+	source = https://github.com/govnorice/repackmanga/releases/download/0.1/repackmanga
+	sha256sums = SKIP
+
+pkgname = repackmanga
