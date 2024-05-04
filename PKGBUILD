@@ -1,33 +1,44 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Summix
-_pkgver=2.8.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
-pkgver=2.8.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Summix: A method to estimate and adjust for population structure in genetic summary data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+pkgdesc="Summix2: A suite of methods to estimate, adjust, and leverage substructure in genetic summary data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r
+  r-bedassle
+  r-dplyr
+  r-magrittr
   r-nloptr
+  r-randomcolor
+  r-scales
+  r-tibble
+  r-tidyselect
+  r-visnetwork
 )
 optdepends=(
   r-knitr
   r-markdown
   r-rmarkdown
+  r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('776e29e4eaf7fa3d24180bb656f9543a6fabd83095adfa109279425af8827125')
+md5sums=('b5c285639f96284509d0de75ef33f7f1')
+b2sums=('e9b28af468ef135b7b234a576d0100b760002fab1d4af703aac8afc5e9efc36933d566f146352f28f3080ff57216b471407cac504550d330daad07c2bb9cd13c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
