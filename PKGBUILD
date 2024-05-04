@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cgi-session-serialize-yaml'
-pkgver='4.26'
-pkgrel='2'
+pkgver='4.26_001'
+pkgrel='3'
 pkgdesc="Perl/CPAN Module CGI::Session::Serialize::yaml: Add YAML and YAML::Syck support to CGI::Session's serializers"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -14,10 +14,10 @@ depends=('perl-cgi-session>=4.3')
 makedepends=('perl-module-build>=0.36')
 checkdepends=('perl-test-pod')
 url='https://metacpan.org/release/CGI-Session-Serialize-yaml'
-source=('http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/CGI-Session-Serialize-yaml-4.26.tgz')
-md5sums=('29f35caaf1de910c0a99bdc9b2f05264')
-sha512sums=('b48850a0566e6c22e2deecbc02ba4d6b4997b7ba657ca8f72ffe958ddc787d5b28a406044edf7785fd3da2bbe5ff94320edd69c175d7009b2049523f49522abb')
-_distdir="CGI-Session-Serialize-yaml-4.26"
+source=("https://cpan.metacpan.org/authors/id/T/TI/TINITA/CGI-Session-Serialize-yaml-$pkgver.tar.gz")
+md5sums=('7e012d6781d1c15569c295aedd71657b')
+sha512sums=('d6615819f35fc9b6dde872060872ed69c5ea0964efd64f80718ad5c5f1b029faa8da3719ae938dcc26f1e28dcf7da3bb8c150a9f89567b728d67ef933519e824')
+_distdir="CGI-Session-Serialize-yaml-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
