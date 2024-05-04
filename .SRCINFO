@@ -1,0 +1,21 @@
+pkgbase = poptracker-git
+	pkgdesc = universal, scriptable randomizer tracking solution that is open source, runs everywhere and supports auto-tracking.
+	pkgver = 0.26.0.r4.gaafe839
+	pkgrel = 1
+	url = https://github.com/black-sliver/poptracker
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = git
+	makedepends = sdl2
+	makedepends = sdl2_image
+	makedepends = sdl2_ttf
+	makedepends = openssl
+	depends = zenity
+	depends = which
+	provides = poptracker=0.26.0.r4.gaafe839
+	conflicts = poptracker
+	source = git+https://github.com/black-sliver/poptracker.git
+	sha256sums = SKIP
+
+pkgname = poptracker-git
