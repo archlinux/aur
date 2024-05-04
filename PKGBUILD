@@ -3,7 +3,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=lib32-mpg123
-pkgver=1.32.5
+pkgver=1.32.6
 pkgrel=1
 pkgdesc='Console based real time MPEG Audio Player for Layer 1, 2 and 3 (32-bit)'
 url='https://mpg123.de/'
@@ -18,7 +18,7 @@ optdepends=(
 )
 provides=(lib{mpg,out,syn}123.so)
 source=(https://downloads.sourceforge.net/sourceforge/mpg123/mpg123-${pkgver}.tar.bz2{,.sig})
-sha512sums=('3fbc2fcf5e17bec75e98b34ea9c6135ee5895730f127a9cdeef88060f1d49ce8b89ff6c82bb6645f575914f59e27337d4e8774d4beee6fe7c89e587ddf969502'
+sha512sums=('a8f2833cd5b7568b96467917146d16dec7dbde527ba51b5f97b9f8093bbccab232803263f13a790b60ef36c9630d4277adaea41dac7dfd14052bf0be6620736b'
             'SKIP')
 validpgpkeys=('D021FF8ECF4BE09719D61A27231C4CBC60D5CAFE')
 
