@@ -1,7 +1,7 @@
 pkgbase = python-svgelements
 	pkgdesc = Svg Elements Parsing
 	pkgver = 1.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meerk40t/svgelements
 	arch = any
 	license = MIT
