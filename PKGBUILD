@@ -2,16 +2,16 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=wlr-layout-ui
 pkgver=1.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI to configure your screens"
 arch=(any)
 url="https://github.com/fdev31/wlr-layout-ui"
 license=('MIT')
 groups=()
-depends=('python' 'python-pyglet' 'python-build' 'python-installer' 'python-poetry' 'python-tomli-w' 'python-tomli')
+depends=('python' 'python-pyglet' 'python-tomli-w' 'python-tomli')
 optdepends=('wlr-randr: To apply the configuration on other wlroots systems'
     'hyprland: To apply the configuration on Hyprland (recommended)',
-    'xrandr: To apply the configuration on X11')
+    'xorg-xrandr: To apply the configuration on X11')
 makedepends=('git' 'python-build' 'python-installer' 'python-poetry')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
