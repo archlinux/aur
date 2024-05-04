@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNAmodR
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Detection of post-transcriptional modifications in high throughput sequencing data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,6 +31,7 @@ depends=(
   r-rsamtools
   r-rtracklayer
   r-s4vectors
+  r-txdbmaker
 )
 checkdepends=(
   r-rnamodr.data
@@ -43,17 +44,9 @@ optdepends=(
   r-rnamodr.data
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "fix-tests.patch")
-md5sums=('ece4ec8fc16a95ec2ee8d9506283c57e'
-         'f0971c84a5f969df3e1b055328db3ce3')
-b2sums=('cd1f6441084dbc9d7edaf6b416d5e94187a5fc4fbbf496ce16fc6b2d56203eee19e06fba50662d1f47a2adc77f1d98920c6d7eddff1cab2509bfb23e58cd90ed'
-        '92e9b74fbee5aa507b6bd1572973a0fc8878826105baa7f9e852216c2ad472fd84a1ca6b8d1255ba854b3ffc4f3068cdd3448cb03154ad162b931e103beb6d22')
-
-prepare() {
-  # fix tests
-  patch -Np1 -i fix-tests.patch
-}
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('b7fedb35353258c8ab2c8915f0367283')
+b2sums=('8fbf460349f3c6cd9c7e46e75c4564065654897742fbee3530c967ef356961064bb2aa468adbc4c2b86df515cab1ad298a679564ea35ddfaec10ddac22c35a00')
 
 build() {
   mkdir build
