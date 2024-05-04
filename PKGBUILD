@@ -28,7 +28,7 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE='/usr/bin/python2.7' \
+  cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_SUFFIX=32 -DENABLE_GUI="no"
   make -C build
 }
