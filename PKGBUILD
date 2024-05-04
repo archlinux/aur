@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=crisprScoreData
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Pre-trained models for the crisprScore package"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1f4d86404f045ec36cf7d1b1c64373fe')
-b2sums=('c88bf94f3d3442f04729ffaed0ee084a2b6f7a9501c9f2b43cd9ac0b2a0aa9142da8438da387a54293817b017eaeab96f1af00b90a92ca9e4922817ab5c98c81')
+md5sums=('5ae4856e689a5edd3d4c9449bca1985f')
+b2sums=('ad6fb0c30905c5ba44b4b931af9a8e8b55e69d61d27061a55c74e276b036f288a8a8361e18ced4d56451c6b8c44d29f64475fcd688fb7aed8e6a6e49ed513a2c')
 
 build() {
   mkdir build
