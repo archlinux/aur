@@ -2,9 +2,9 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=5.48.4
-_pkgver=4.174.0
-pkgrel=2
+pkgver=5.49.1
+_pkgver=4.175.0
+pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://github.com/${pkgname%%-*}/${pkgname}"
@@ -22,28 +22,29 @@ replaces=("${pkgname}-dev")
 install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}-${_pkgver}-openapi.yaml::https://www.${pkgname%%-*}.com/docs/api/openapi.yaml")
-sha512sums=('2ef7bb0c9b24c6914b33899aec71084667212923b2d6d606fefdd6eac0d3cafbdf17216e41f310bb7253eb408383cbce801cf0a3ff08e3020e5b7748944dd85a'
-            '08048795697586184e8a1e4997090335f171ae38e99d07ec75f5db5b5b7e7a91096965ea31b618d3619188a847d16768ed73d72e9505594d67854f580119a115')
+sha512sums=('45042c22435d0a699fa69ef9339f5175c61ed517538cd4c451d9515042aad15498a8eb84b64ba5f5c64af00a67f758b921363946007db3818f326e3db4b58588'
+            '927fe4beb769142b176604dc0679aab588c1571dbc24d5827d21fcd13247f50058727269352e0cb878584b474a2f549e90f1c7eddb1b81f459d477a7b8b43a1e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  # Manually set version number - thanks @the-k
-  sed -i "s/\(version=\)version/\1\"${pkgver}\"/" setup.py
+  sed -i "s/\(__version__ = \)\".*\"/\1\"${pkgver}\"/" linodecli/version.py
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
   python \
-    -m linodecli bake "../${pkgname}-${_pkgver}-openapi.yaml" \
-    --skip-config 
+    -m linodecli bake ../${pkgname}-${_pkgver}-openapi.yaml \
+    --skip-config
   cp data-3 linodecli/
-  python -m build --wheel --no-isolation
+  python -m linodecli completion bash > "${pkgname}.sh"
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -vDm0644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.sh" \
     "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -vDm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
