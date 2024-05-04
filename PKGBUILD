@@ -8,7 +8,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='5.0.r21148.g5090a028e6'
+pkgver='5.0.r21506.g57c890d4fc'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -20,10 +20,10 @@ depends=(
 	'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'pugixml' 'sfml' 'speexdsp' 'xz' 'zstd'
 	'cubeb' 'zlib-ng'
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
-	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so'
-	'libudev.so' 'libusb-1.0.so' 'libxxhash.so'
+	'libminiupnpc.so' 'libsfml-network.so' 'libsfml-system.so' 'libspng.so'
+	'libswscale.so' 'libudev.so' 'libusb-1.0.so' 'libxxhash.so'
 )
-makedepends=('cmake' 'git' 'miniupnpc' 'ninja' 'python' 'qt6-base' 'qt6-svg')
+makedepends=('cmake' 'git' 'ninja' 'python' 'qt6-base' 'qt6-svg')
 checkdepends=('gtest')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!lto')
@@ -108,12 +108,12 @@ check() {
 	ninja unittests
 
 	# Verify that the basic functionality works
-	"$srcdir/$_sourcedirectory/build/Binaries/$_mainpkgname" --version | tee '/dev/stderr' | grep -q "^$_checkversion$"
+	"$srcdir/$_sourcedirectory/build/Binaries/$_noguipkgname" --version | tee '/dev/stderr' | grep -q "^$_checkversion$"
 }
 
 package_dolphin-emu-git() {
 	pkgdesc="$pkgdesc$_pkgdescappend"
-	depends+=('hicolor-icon-theme' 'libminiupnpc.so' 'qt6-base' 'qt6-svg')
+	depends+=('hicolor-icon-theme' 'qt6-base' 'qt6-svg')
 	provides=("$_mainpkgname")
 	conflicts=("$_mainpkgname")
 
@@ -128,7 +128,7 @@ package_dolphin-emu-git() {
 
 package_dolphin-emu-nogui-git() {
 	pkgdesc="$pkgdesc - no GUI$_pkgdescappend"
-	depends=("$_mainpkgname")
+	depends+=("$_mainpkgname")
 	optdepends=()
 	provides=("$_noguipkgname" "$_mainpkgname-cli")
 	conflicts=("$_noguipkgname" "$_mainpkgname-cli")
