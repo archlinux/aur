@@ -14,6 +14,7 @@ pkgbase = ocaml-lambda-term
 	depends = ocaml-mew_vi>=0.5.0
 	depends = ocaml-react
 	depends = ocaml-zed>=3.2.0
+	depends = libev
 	options = !strip
 	source = ocaml-lambda-term-3.3.2.tar.gz::https://github.com/ocaml-community/lambda-term/archive/3.3.2.tar.gz
 	sha512sums = 78648768644058337e22c79cf1fbb1a36472b24f11b1dc0461fc38419be6ec01b02d8d0ac45fed0bc99f91ba4c0f19d3bda113e834e064bee973b734527b9766
