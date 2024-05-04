@@ -1,7 +1,7 @@
 pkgbase = python-langdetect
 	pkgdesc = Language detection library ported from Google's language-detection
 	pkgver = 1.0.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Mimino666/langdetect
 	arch = any
 	license = Apache-2.0
