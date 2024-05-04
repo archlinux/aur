@@ -1,31 +1,43 @@
 # Maintainer: Dreemurrs Embedded Labs
+
 pkgname=archarm-mobile-fde-installer-git
-pkgver=1.0.0
+_pkgname=${pkgname%-git}
+pkgver=r1.d2969d8
 pkgrel=1
 pkgdesc='Script to setup Full-Ddisk-Encryption on Arch Linux ARM for PinePhone and PineTab'
 arch=('any')
 url='https://github.com/dreemurrs-embedded/archarm-mobile-fde-installer'
 license=('custom:none')
-depends=('git' 'openssl')
-optdepends=('gnupg: config import/export support')
+depends=(
+  'git'
+  'openssl'
+)
+optdepends=(
+  'gnupg: config import/export support'
+)
 source=("git+https://github.com/dreemurrs-embedded/archarm-mobile-fde-installer.git")
 sha256sums=('SKIP')
 provides=("archarm-mobile-fde-installer=${pkgver}")
 depends=(
-  'parted'
   'cryptsetup'
-  'sudo'
-  'wget'
-  'tar'
-  'squashfs-tools'
+  'curl'
   'e2fsprogs'
   'f2fs-tools'
+  'parted'
+  'squashfs-tools'
+  'sudo'
+  'tar'
   'util-linux'
+  'wget'
   'zstd'
-  'curl'
 )
 
+pkgver() {
+  cd "${srcdir}/"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
-  cd "archarm-mobile-fde-installer/"
+  cd "${srcdir}/${_pkgname}"
   install -m 755 -D installer.sh "${pkgdir}/usr/bin/archarm-mobile-fde-installer"
 }
