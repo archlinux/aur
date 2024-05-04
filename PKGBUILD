@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bioCancer
-_pkgver=1.30.8
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -46,8 +46,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9c83cfa0284129dd3a4d2c773efd393b')
-b2sums=('271fc37032c356fa6f91b154a0c88739fb1097e88fa79da71375fc2775fda1f7d58fe6f3dbcf18b408831af47e428a3e1aa073c9bcc483e58f58842ff89fe0e7')
+md5sums=('2b99f3a77d12327a1ff0656d2e029067')
+b2sums=('f5695b57e6537ca0003880f00a4be08a805667568c99fd053ca204fc27e787108a85aa8cd84be25887c531a6e701647ac67cf3c3bc4f2e0b7b2d2055a770e8f0')
 
 build() {
   mkdir build
