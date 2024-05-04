@@ -1,11 +1,12 @@
 pkgbase = cv4pve-pepper-git
 	pkgdesc = SPICE remote-viewer for Proxmox VE VDI client
-	pkgver = 1.6.1.r2.g90ef3ef
+	pkgver = 1.7.0.r1.gdd38f20
 	pkgrel = 1
 	url = https://github.com/Corsinvest/cv4pve-pepper
 	arch = x86_64
 	license = GPL3
 	makedepends = dotnet-sdk
+	makedepends = git
 	options = !strip
 	source = git+https://github.com/Corsinvest/cv4pve-pepper.git
 	sha256sums = SKIP

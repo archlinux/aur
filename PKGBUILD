@@ -2,20 +2,20 @@
 
 pkgname="cv4pve-pepper-git"
 _pkgname="cv4pve-pepper"
-pkgver=1.6.1.r2.g90ef3ef
+pkgver=1.7.0.r1.gdd38f20
 pkgrel=1
 pkgdesc="SPICE remote-viewer for Proxmox VE VDI client"
 arch=('x86_64')
 url='https://github.com/Corsinvest/cv4pve-pepper'
 source=(git+"${url}".git)
 license=('GPL3')
-makedepends=('dotnet-sdk')
+makedepends=('dotnet-sdk' 'git')
 options=('!strip')
 sha256sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
-  	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
