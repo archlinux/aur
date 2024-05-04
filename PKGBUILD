@@ -18,11 +18,6 @@ sha256sums=('558ffcbfc83bd16d0abff2788c7447f7eaf82d3a8f45dd890632b2999fb3ee98'
             'c95c69f1d0db27180236ff063d9563da8750ecce81883adfb217b73ac3bb974e'
             'e7e9dd6e065118ae5d9624c7c81328086719fab198d30a92b08979c29757a3b2')
 
-pkgver() {
-  cd ElectronMail
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
-
 prepare() {
   cd ElectronMail
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
