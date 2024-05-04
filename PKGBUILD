@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDNAinRNAseqData
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="RNA-seq data with different levels of gDNA contamination"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('52e275ca255493684657a091667f987f')
-b2sums=('7f9621296a861a7ce11fcba888144ec158e7ec940f69d87a82a98aeac48f37b2cb5da1381a1d3718b9a5790410930a7722038716b9a81ab8462431e0b0f695ae')
+md5sums=('5f7bd99cdabbc38e7e172f553040eb68')
+b2sums=('49924f944b71d5f7b4ebbe1f2e98491a3feb0b3c3508e89fef70c30c7e8f92793d88531b7d6608f5b37aade56a913a5536fff9807fdfae388e779d7798fd27f0')
 
 build() {
   mkdir build
