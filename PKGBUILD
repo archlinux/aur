@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RCAS
-_pkgver=1.28.3
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,6 +37,7 @@ depends=(
   r-rtracklayer
   r-s4vectors
   r-seqlogo
+  r-txdbmaker
 )
 optdepends=(
   r-biocmanager
@@ -44,8 +45,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ed2c97bacd70c083df386e7df14d0c11')
-b2sums=('c6c3f45c9d79bc3d71c67c2349fa1a7b85bb23d3322bd1036c7d60f41e3b00c5f03cd696d2d3076452aed0c0dc419c8d9df0a5593b03f9482160f7f53e6d0beb')
+md5sums=('c8c7d967f8176593fc445ba48baee3a0')
+b2sums=('87d137d33e3fc03f0ceccc201f9d544e8be948a8c7cf13274b2241ff8934a5a83a1f714f80449ff20b1f1dd0452e801ff3e4c9de4ce8f4c6f3ff413699d347e2')
 
 build() {
   mkdir build
