@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.base
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('46138cdc2cd234fdad16f8750d9ef7e3')
-b2sums=('39210a909f93d05a1c6a3c875ce45c3bc707288d3dc49e97f745ec548676729aa128118d4f940786d5555b6f1fb8cea257350fa4bb5da05c110f4451d028ce1b')
+md5sums=('bc843b62d6600016efc1dc4584a9d99e')
+b2sums=('0f9f07e1f14ad6436bb6438d96ba5f64b3dfaee49ec6a494ede2c2afda95cdcdeaa78605c45f68e6a814e39183b4df1285592f9c428512b86a1c0a3133741f87')
 
 build() {
   mkdir build
