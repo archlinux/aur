@@ -7,6 +7,7 @@ pkgbase = ocaml-mew
 	arch = aarch64
 	license = MIT
 	checkdepends = ocaml-ppx_expect
+	makedepends = git
 	makedepends = dune>=1.1.0
 	depends = ocaml>=4.02.3
 	depends = ocaml-result

@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/kandu/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.02.3' 'ocaml-result' 'ocaml-trie')
-makedepends=('dune>=1.1.0')
+makedepends=('git' 'dune>=1.1.0')
 checkdepends=('ocaml-ppx_expect')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")
