@@ -3,7 +3,7 @@
 _pkgname=ipware
 pkgname=python-ipware
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Returns the best matched IP address from a given HTTP(s) header in Python"
 arch=('any')
 url="https://github.com/un33k/python-ipware"
