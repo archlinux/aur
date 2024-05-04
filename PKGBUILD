@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SPOTlight
-_pkgver=1.6.7
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,7 +25,6 @@ checkdepends=(
   r-jpeg
   r-png
   r-scatterpie
-  r-seuratobject
   r-spatialexperiment
   r-tenxvisiumdata
   r-testthat
@@ -46,8 +45,6 @@ optdepends=(
   r-scater
   r-scatterpie
   r-scran
-  r-seurat
-  r-seuratobject
   r-spatialexperiment
   r-summarizedexperiment
   r-tabulamurissenisdata
@@ -55,8 +52,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0362e0be411e3ed3ce5bf9b928439e10')
-b2sums=('1ea3f06da6af3f44a60c4542032540f72c65304cbce72b1f8132394338ff3d54901989e9bb6027a71a79be292bdcb5252d2dea3ea9a7fa9bddafc8d654828497')
+md5sums=('27478472e9aca4692dff302dcb4efe07')
+b2sums=('2776d700ebff3f3035d64a18797402ab5455c0b2c1e3640254c7ac3db6b337f454cbc38af093e831c1e7aa8e4e0fc7e2302348915a2c2263c5c919088e6fb07f')
 
 build() {
   mkdir build
