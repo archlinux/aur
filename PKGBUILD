@@ -4,14 +4,13 @@ pkgver=1.0.5
 pkgrel=1
 pkgdesc="Unnofficial Android messages desktop app"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/androidmessages/application"
+url="https://gitlab.com/linuxbombay/androidmessages"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("messages-bin")
-source=("https://gitlab.com/androidmessages/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
-
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('9b602aeaaf8e30aae3039477368fa20b44e0922c375473214f78b1251e54cc3c')
 
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
