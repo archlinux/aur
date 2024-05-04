@@ -29,8 +29,6 @@ package() {
 		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
 	done
 
-	install -Dm644 'COPYING' "$pkgdir/usr/share/doc/$pkgname/COPYING"
-
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
