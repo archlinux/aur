@@ -14,6 +14,7 @@ pkgbase = ocaml-ppx_log
 	depends = ocaml-ppx_sexp_message>=0.16.0
 	depends = ocaml-sexplib>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
+	depends = zstd
 	options = !strip
 	source = ocaml-ppx_log-0.16.0.tar.gz::https://github.com/janestreet/ppx_log/archive/v0.16.0.tar.gz
 	sha512sums = 6560720e4c329d8859850f06aa9c80f9446f361221ce57223ee2872944928079898bb644bf762d4907673368a18857390346a94d450ba4d2787abac77dea9e87
