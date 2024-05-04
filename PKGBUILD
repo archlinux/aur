@@ -1,8 +1,8 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 pkgname=binsec
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Open-source toolset to help improve software security at the binary level'
 arch=('x86_64')
 url='https://binsec.github.io'
@@ -17,7 +17,7 @@ optdepends=('bash: make_coredump.sh'
 	    'cvc4: CVC4 SMT solver'
 	    'yices: Yices 2 SMT Solver')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/binsec/binsec/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('cf48c913e14b18dca3155e5fb4751f48a046fe4a0b68227def9cd676fa89aee8c41749133b2a76b865a8cde3aa2a30df747d0a6547f9cbf22f95c7551b82dd7a')
+b2sums=('45f68c6b4ce67a5bdd76dfd00e8675db118668ef1b6e97ceca25d27ac4e17239b8046ae02268ea33e3eef8412925836b1413dcf603ede58b2076ec9a08167e86')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
