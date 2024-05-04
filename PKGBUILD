@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=iSEEhub
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="iSEE for the Bioconductor ExperimentHub"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-annotationhub
   r-biocmanager
@@ -38,12 +38,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6ebb32da66242f608b83522fca1d9a62')
-sha256sums=('fcdfb6869261ce9571414904286a4b46f4a0be6df3770c75d7a22dd9d84e0899')
+md5sums=('1cbbed99cbea544913346ac52afcd594')
+b2sums=('a0b4b990c6ab742aef986e3508363983c3376234048cf63c00bb757bb1340b293aa93920a15a04a6b97a16d41f428f1e36001e1e8b249fcd3ce69af98ed800b0')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

@@ -1,10 +1,10 @@
 pkgbase = r-iseehub
 	pkgdesc = iSEE for the Bioconductor ExperimentHub
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iSEEhub
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-nullrangesdata
 	checkdepends = r-testthat
 	depends = r-annotationhub
@@ -27,8 +27,8 @@ pkgbase = r-iseehub
 	optdepends = r-rmarkdown
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iSEEhub_1.4.0.tar.gz
-	md5sums = 6ebb32da66242f608b83522fca1d9a62
-	sha256sums = fcdfb6869261ce9571414904286a4b46f4a0be6df3770c75d7a22dd9d84e0899
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iSEEhub_1.6.0.tar.gz
+	md5sums = 1cbbed99cbea544913346ac52afcd594
+	b2sums = a0b4b990c6ab742aef986e3508363983c3376234048cf63c00bb757bb1340b293aa93920a15a04a6b97a16d41f428f1e36001e1e8b249fcd3ce69af98ed800b0
 
 pkgname = r-iseehub
