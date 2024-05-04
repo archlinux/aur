@@ -3,7 +3,7 @@
 pkgname=restic-rest-server
 _reponame=rest-server
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance HTTP server that implements restic's REST backend API"
 url='https://github.com/restic/rest-server'
 license=(BSD)
@@ -17,7 +17,6 @@ b2sums=('52400755fb4986659f529f416588f45ec64e1d546c6a8d07bc239bbf0dc779d4740e28c
 
 build() {
     cd ${_reponame}-$pkgver
-    export CGO_ENABLED=0
     go build -buildmode=pie -trimpath -ldflags="-linkmode=external -extldflags \"${LDFLAGS}\"" -mod=readonly -modcacherw -o restic-rest-server ./cmd/rest-server
 }
 
