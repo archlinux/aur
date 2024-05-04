@@ -1,7 +1,0 @@
-*
-!.gitignore
-!PKGBUILD
-!*.install
-!.SRCINFO
-!keys/
-!CHANGELOG.*
