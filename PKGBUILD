@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=arrowdl
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
 url="https://www.arrow-dl.com/ArrowDL"
@@ -61,7 +61,7 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   for i in 16 24 32 48 64 128 256 512 1024; do
     install -Dm644 "src/resources/logo/icon${i}.png" \
-      "$pkgdir/$usr/share/icons/hicolor/${i}x${i}/apps/ArrowDL.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/ArrowDL.png"
   done
 
   install -d "$pkgdir/usr/bin"
