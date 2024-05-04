@@ -14,6 +14,7 @@ pkgbase = ocaml-ppxlib
 	depends = ocaml-sexplib0>=0.15.0
 	depends = ocaml-stdlib-shims
 	depends = ocaml-yojson
+	depends = zstd
 	options = !strip
 	source = ocaml-ppxlib-0.32.1.tar.gz::https://github.com/ocaml-ppx/ppxlib/archive/0.32.1.tar.gz
 	sha512sums = 542b49667b3536ac20ddefe0673b833ec728cf0b02ef79da2c98a750bf5ea1293f688134b227638acbbcffd0e5f344ab4ed5b8db6291f1aef096d106fffd0ce9

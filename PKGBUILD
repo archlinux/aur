@@ -8,7 +8,7 @@ pkgdesc='Standard infrastructure for ppx rewriters'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.1' 'ocaml-base>=0.15.0' 'ocaml-compiler-libs-repackaged>=0.11.0' 'ocaml-ppx_derivers>=1.0.0' 'ocaml-sexplib0>=0.15.0' 'ocaml-stdlib-shims' 'ocaml-yojson')
+depends=('ocaml>=4.04.1' 'ocaml-base>=0.15.0' 'ocaml-compiler-libs-repackaged>=0.11.0' 'ocaml-ppx_derivers>=1.0.0' 'ocaml-sexplib0>=0.15.0' 'ocaml-stdlib-shims' 'ocaml-yojson' 'zstd')
 makedepends=('dune>=2.7.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
