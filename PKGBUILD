@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.7.r1.g48b9725
+pkgver=0.8.r0.g9f8a7a3
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
@@ -72,4 +72,6 @@ package() {
     "$pkgdir/usr/share/nemo-python/extensions/"
   install -Dm644 "plugins/${pkgname%-git}_caja.py" -t \
     "$pkgdir/usr/share/caja-python/extensions/"
+  install -Dm644 data/completions/turtle_cli -t \
+    "$pkgdir/usr/share/bash-completion/completions/"
 }
