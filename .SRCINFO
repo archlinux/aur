@@ -7,6 +7,7 @@ pkgbase = gnome-keyring-import-export-git
 	license = unknown
 	makedepends = git
 	depends = python
+	depends = python-lxml
 	depends = python-secretstorage
 	provides = gnome-keyring-import-export
 	conflicts = gnome-keyring-import-export
