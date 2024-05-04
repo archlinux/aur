@@ -2,7 +2,7 @@
 # Contributer: Amateurfunk Station der Hochschule Niederrhein (DF0FN) <df0fn@hs-niederrhein.de>
 
 pkgname=('svxlink')
-pkgver="19.09.2"
+pkgver="24.02"
 pkgrel=1
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://sourceforge.net/projects/svxlink/"
@@ -10,14 +10,13 @@ license=('GPL')
 source=("https://github.com/sm0svx/${pkgname}/archive/${pkgver}.tar.gz"
 	"svxlink.service"
 	"remotetrx.service")
-sha256sums=('47e9bf098cef19a8f0a3bf567e96d70447cb028e0fcfc3bbeb692ae5bae05a70'
+sha256sums=('27095fd0a06e3bf7bd597f0472d568d5a651a7f9deab30f1489a1291f05c5e9c'
             'adc29c81df1794b62bd47202af388397c886cc86a95fa05b3446b3a93a1b3a7c'
             '41adf7f9863f1ea3013b079e628455a22c29d1b369d174bd19905334c9c31543')
 depends=('alsa-utils' 'alsa-lib' 'libsigc++' 'gsm' 'libgcrypt' 'popt' 'tcl' 'speex' 'opus')
 makedepends=('cmake')
 pkgdesc="Echolink Software to provide Ham Radio Voip Operations"
-optdepends=('svxlink-sounds-en_us-heather-8k: provides speech sound files in medium quality'
-            'svxlink-sounds-en_us-heather-16k: provides speech sound files in high quality')
+optdepends=('svxlink-sounds-en_us-heather-8k: provides speech sound files in medium quality')
 backup=('etc/svxlink/svxlink.conf'
 	'etc/svxlink/TclVoiceMail.conf'
 	'etc/svxlink/remotetrx.conf'

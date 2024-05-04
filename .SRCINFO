@@ -1,6 +1,6 @@
 pkgbase = svxlink
 	pkgdesc = Echolink Software to provide Ham Radio Voip Operations
-	pkgver = 19.09.2
+	pkgver = 24.02
 	pkgrel = 1
 	url = http://sourceforge.net/projects/svxlink/
 	install = svxlink.install
@@ -21,7 +21,6 @@ pkgbase = svxlink
 	depends = speex
 	depends = opus
 	optdepends = svxlink-sounds-en_us-heather-8k: provides speech sound files in medium quality
-	optdepends = svxlink-sounds-en_us-heather-16k: provides speech sound files in high quality
 	backup = etc/svxlink/svxlink.conf
 	backup = etc/svxlink/TclVoiceMail.conf
 	backup = etc/svxlink/remotetrx.conf
@@ -33,12 +32,11 @@ pkgbase = svxlink
 	backup = etc/svxlink/svxlink.d/ModulePropagationMonitor.conf
 	backup = etc/svxlink/svxlink.d/ModuleSelCallEnc.conf
 	backup = etc/svxlink/svxlink.d/ModuleTclVoiceMail.conf
-	source = https://github.com/sm0svx/svxlink/archive/19.09.2.tar.gz
+	source = https://github.com/sm0svx/svxlink/archive/24.02.tar.gz
 	source = svxlink.service
 	source = remotetrx.service
-	sha256sums = 47e9bf098cef19a8f0a3bf567e96d70447cb028e0fcfc3bbeb692ae5bae05a70
+	sha256sums = 27095fd0a06e3bf7bd597f0472d568d5a651a7f9deab30f1489a1291f05c5e9c
 	sha256sums = adc29c81df1794b62bd47202af388397c886cc86a95fa05b3446b3a93a1b3a7c
 	sha256sums = 41adf7f9863f1ea3013b079e628455a22c29d1b369d174bd19905334c9c31543
 
 pkgname = svxlink
-
