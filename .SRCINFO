@@ -1,0 +1,18 @@
+pkgbase = android-armv7a-eabi-opencl-clhpp
+	pkgdesc = OpenCL C++ header files (Android armv7a-eabi)
+	pkgver = 2023.04.17
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/OpenCL-CLHPP
+	arch = any
+	license = custom
+	makedepends = android-cmake
+	makedepends = android-armv7a-eabi-opencl-headers
+	depends = android-armv7a-eabi-opencl-headers
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v2023.04.17.tar.gz
+	sha256sums = 179243843c620ef6f78b52937aaaa0a742c6ff415f9aaefe3c20225ee283b357
+
+pkgname = android-armv7a-eabi-opencl-clhpp
