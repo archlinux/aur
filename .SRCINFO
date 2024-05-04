@@ -1,6 +1,6 @@
 pkgbase = r-onassisjavalibs
 	pkgdesc = java libraries to run conceptmapper and semantic similarity
-	pkgver = 1.25.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OnassisJavaLibs
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-onassisjavalibs
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/OnassisJavaLibs_1.25.0.tar.gz
-	md5sums = 930022ccad6ef4cf181d2fe98e795917
-	b2sums = cffbf5939f130617594c1e8bbd94215ba6b98a5a5d57030fae7642cfd482fbccf76d411342e1aed8a8f8a139fce2acf171f18553a52f2c0b2f3e99c1eecb4fa3
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/OnassisJavaLibs_1.26.0.tar.gz
+	md5sums = 1a824de1361a0c80df89c15ad5ecf100
+	b2sums = 206ee01628308a26a0e106dbcceeea7070cdd2adf6e4d6c16dd37eaa4761f15a90fd08a24ef6e9d4adaea9bd9d386928bdc3e7190ec0042d2d836e5fabb9bbad
 
 pkgname = r-onassisjavalibs
