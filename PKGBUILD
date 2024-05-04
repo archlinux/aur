@@ -1,7 +1,7 @@
 # Maintainer: Marcus Klein <himself@kleini.org>
 
 pkgname=brickstore
-pkgver=2024.4.1
+pkgver=2024.5.1
 pkgrel=1
 pkgdesc="Tool to manage LEGO inventory offline for BrickLink."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('hicolor-icon-theme' 'qt6-imageformats' 'qt6-multimedia' 'qt6-quick3d' 'qt6-shadertools' 'libsecret' 'tbb')
 makedepends=('cmake' 'git' 'ninja' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rgriebl/brickstore/archive/v$pkgver.tar.gz")
-sha256sums=('f33228421cbbaff6f4745a2261da1077dc7ac957dc1a317dd07e19ebd82cddba')
+sha256sums=('4cee822ef9908463c3e4fa0c5a95221097c69022796fc6a867e3bc6da0c2db32')
 
 build() {
   cd "$pkgname-$pkgver"
