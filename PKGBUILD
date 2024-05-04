@@ -5,7 +5,7 @@ pkgname=(
   'orchis-nord-theme-git'
 )
 pkgbase=orchis-theme-git
-pkgver=2024.05.01.r1.g95371c99
+pkgver=2024.05.01.r3.g30ca8c58
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
@@ -16,8 +16,6 @@ optdepends=('gnome-themes-extra: GTK2 theme support'
             'gtk-engine-murrine: GTK2 theme support'
             'kvantum-theme-orchis: Matching Kvantum theme'
             'tela-circle-icon-theme: Recommended icon theme')
-provides=("${pkbase%-git}")
-conflicts=("${pkgbase%-git}")
 options=('!strip')
 install="${pkgbase%-git}.install"
 source=('git+https://github.com/vinceliuice/Orchis-theme.git')
@@ -29,6 +27,9 @@ pkgver() {
 }
 
 package_orchis-theme-git() {
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
   cd Orchis-theme
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -t all --tweaks primary -d "$pkgdir/usr/share/themes/"
@@ -45,7 +46,7 @@ package_orchis-theme-git() {
 package_orchis-dracula-theme-git() {
   pkgdesc+=" (dracula variant)"
   provides=("${pkgname%-git}")
-  conflicts=("${pkgname%-git}" 'orchis-nord-theme')
+  conflicts=("${pkgname%-git}")
 
   cd Orchis-theme
   install -d "$pkgdir/usr/share/themes"
@@ -55,7 +56,7 @@ package_orchis-dracula-theme-git() {
 package_orchis-nord-theme-git() {
   pkgdesc+=" (nord variant)"
   provides=("${pkgname%-git}")
-  conflicts=("${pkgname%-git}" 'orchis-dracula-theme')
+  conflicts=("${pkgname%-git}")
 
   cd Orchis-theme
   install -d "$pkgdir/usr/share/themes"

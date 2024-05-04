@@ -1,0 +1,31 @@
+pkgbase = orchis-theme-git
+	pkgdesc = A Material Design theme for GNOME/GTK based desktop environments.
+	pkgver = 2024.05.01.r3.g30ca8c58
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Orchis-theme
+	install = orchis-theme.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = sassc
+	optdepends = gnome-themes-extra: GTK2 theme support
+	optdepends = gtk-engine-murrine: GTK2 theme support
+	optdepends = kvantum-theme-orchis: Matching Kvantum theme
+	optdepends = tela-circle-icon-theme: Recommended icon theme
+	options = !strip
+	source = git+https://github.com/vinceliuice/Orchis-theme.git
+	sha256sums = SKIP
+
+pkgname = orchis-theme-git
+	provides = orchis-theme
+	conflicts = orchis-theme
+
+pkgname = orchis-dracula-theme-git
+	pkgdesc = A Material Design theme for GNOME/GTK based desktop environments. (dracula variant)
+	provides = orchis-dracula-theme
+	conflicts = orchis-dracula-theme
+
+pkgname = orchis-nord-theme-git
+	pkgdesc = A Material Design theme for GNOME/GTK based desktop environments. (nord variant)
+	provides = orchis-nord-theme
+	conflicts = orchis-nord-theme
