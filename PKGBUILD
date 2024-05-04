@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=org.Bt.eg.db
-_pkgver=3.18.0
+_pkgver=3.19.1
 pkgname=r-${_pkgname,,}
-pkgver=3.18.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Genome wide annotation for Bovine'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="Genome wide annotation for Bovine"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-annotationdbi
 )
 optdepends=(
@@ -19,14 +18,15 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cc2db0bad0782754897657a77c98e4bb6b739f697c6096bc3a03719d9dbcf939')
+md5sums=('206921b50cfb937e1882d5de282028fb')
+b2sums=('14e017ac9c07e98bd08269f137261e9d9b8ad85c843c55964e1d855098666e435b23eb3e380baf946c22c983253f5b2071ef1dcc10343433558fedc399d96124')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
