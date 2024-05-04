@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HiCExperiment
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Bioconductor class for interacting with Hi-C files in R"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -38,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('98efc0440886cc84faef975a12f290a0')
-b2sums=('95208adf3b22694141fa6ff6dc7e49d6ba492c75601da86685b31c6691e92e7ffd5ed3bd4ef06ea01ac68c64a55d26e799dcfef1420a11a01efbc7bea480781e')
+md5sums=('76c01f658236fe7e31800a0f58d59ef2')
+b2sums=('4ae5fd100963ec83dd28cf7cc3da1cbeada5d7be29aa18980534be685db579858081f6ad60c844b3f1d1eab8c70659d53686d5056383d66046402329206d632f')
 
 build() {
   mkdir build
