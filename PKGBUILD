@@ -3,7 +3,7 @@
 pkgname=jellyfin-media-player-git
 pkgver=r1749.95cb20f
 _webver=10.8.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -40,7 +40,6 @@ build() {
     -DCMAKE_BUILD_TYPE='Debug' \
     -DCMAKE_INSTALL_PREFIX='/usr/' \
     -DCMAKE_SKIP_RPATH=1 \
-    -DLINUX_X11POWER=ON \
     -DQTROOT=./qt \
     ..
   cmake build .
