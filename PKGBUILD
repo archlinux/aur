@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('GPL3')
 makedepends=(
   'python'
-  'nuitka'
+  'nuitka-git'
   'git'
 )
 depends=(
