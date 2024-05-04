@@ -1,8 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: xiliuya
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tree-sitter-cpp
-pkgver=0.20.3
-pkgrel=2
+pkgver=0.22.0
+pkgrel=0
 pkgdesc="C++ grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-cpp"
@@ -11,7 +12,7 @@ groups=('tree-sitter-grammars')
 depends=('gcc-libs')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1c2c32c8875229e264bf86afd04537e2470bb1d259865e2694bf05d8d107c65f')
+sha256sums=('f04d2f8cf2a5d22e5f819dbd49cdb6fc25b531debff464abfe0cab742c1148a5')
 
 prepare() {
 	cd "$pkgname-$pkgver"
