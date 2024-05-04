@@ -1,15 +1,15 @@
 pkgbase = r-epimix.data
 	pkgdesc = Data for the EpiMix package
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/EpiMix.data
 	arch = any
 	license = GPL-3.0-only
 	depends = r-experimenthub
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/EpiMix.data_1.4.0.tar.gz
-	md5sums = 52c386f6828945121acfca44eabb7827
-	b2sums = b95f12b8cd438bd92207a5727dd4d0ea2af6d990ecfe6f834726b257554cdbbdf9eafe6f26e35a8abe8fcafca426ef36fbe291a515167a1c38f8d554d9cb18a9
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/EpiMix.data_1.6.0.tar.gz
+	md5sums = fbfb2e24d2bcaa86bc619408afdd46b4
+	b2sums = e8c03a9f38860a2ad2e88e143ebbf757db712846c9fab517bd77f5ec3c3e310d4f53cb958ce8149809a904643b48b9dff09dc7f18e82ab8c14a77d2920ad742e
 
 pkgname = r-epimix.data
