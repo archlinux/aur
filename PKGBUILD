@@ -43,6 +43,7 @@ package() {
 	# Electron resources
 	install -Dm644 'resources/app.asar' "$pkgdir/usr/lib/$pkgname/app.asar"
 	cp -r --no-preserve=ownership --preserve=mode 'resources/public/' "$pkgdir/usr/lib/$pkgname/public/"
+	chmod 755 "$pkgdir/usr/lib/$pkgname/public/" "$pkgdir/usr/lib/$pkgname/public/icons/" "$pkgdir/usr/lib/$pkgname/public/icons/mac/" "$pkgdir/usr/lib/$pkgname/public/icons/png/" "$pkgdir/usr/lib/$pkgname/public/icons/win/"
 
 	# Binary
 	install -Dm755 "$srcdir/electron-launcher.sh" "$pkgdir/usr/bin/$pkgname"
@@ -53,8 +54,8 @@ package() {
 		install -Dm644 "usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$pkgname.png"
 	done
 
-	install -dm755 "$pkgdir/usr/share/mime/"
-	cp -r --no-preserve=ownership --preserve=mode 'usr/share/mime' "$pkgdir/usr/share/mime/"
+	cp -r --no-preserve=ownership --preserve=mode 'usr/share/mime/' "$pkgdir/usr/share/mime/"
+	chmod 755 "$pkgdir/usr/share/mime/"
 
 	install -dm755 "$pkgdir/usr/share/applications/"
 	install -Dm644 'beekeeper-studio.desktop' "$pkgdir/usr/share/applications/$pkgname.desktop"
