@@ -9,7 +9,7 @@ pkgbase = python-ipware
 	makedepends = python-installer
 	makedepends = python-setuptools
 	conflicts = python-django-ipware
-	source = python-ipware-2.0.3.src.tar.gz::https://github.com/un33k/python-ipware/archive/v2.0.3.tar.gz
-	sha256sums = 499b141f4de01d27b548e57a604a99408122fc5ecd1e96aa53a2ee20035ccc8d
+	source = python-ipware::git+https://github.com/un33k/python-ipware#tag=v2.0.3
+	sha256sums = SKIP
 
 pkgname = python-ipware
