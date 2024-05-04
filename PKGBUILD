@@ -3,7 +3,7 @@
 
 _name=kpeople
 pkgname=${_name}5
-pkgver=5.115.0
+pkgver=5.116.0
 pkgrel=1
 pkgdesc='A library that provides access to all contacts and the people who hold them'
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('b8c1812ced1b5d58e3728defa1c9eab4376e3fd5684ae9441f2564129a96712f'
+sha256sums=('747d141f216eb25e563473c3cdabb6ee9b38bcc31742d1fcfa1143be794f66f0'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
