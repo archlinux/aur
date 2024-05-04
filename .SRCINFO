@@ -1,0 +1,16 @@
+pkgbase = lib32-libid3tag
+	pkgdesc = library for id3 tagging, lib32.
+	pkgver = 0.16.3
+	pkgrel = 1
+	url = https://www.underbit.com/products/mad/
+	arch = x86_64
+	license = GPL
+	makedepends = gperf
+	makedepends = cmake
+	depends = lib32-zlib
+	depends = libid3tag
+	source = libid3tag-0.16.3::https://codeberg.org/tenacityteam/libid3tag/archive/0.16.3.tar.gz
+	md5sums = 77250d3e316e9fcb8eb3560565e59a07
+	sha256sums = 0561009778513a95d91dac33cee8418d6622f710450a7cb56a74636d53b588cb
+
+pkgname = lib32-libid3tag
