@@ -27,6 +27,11 @@ package() {
 	cd "$srcdir/$_sourcedirectory/"
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
 
+	for _folder in "$pkgdir/usr/share/doc/"*; do
+		echo $_folder
+		mv "$_folder" "$pkgdir/usr/share/doc/$(basename "$_folder")-repackaged"
+	done
+
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
