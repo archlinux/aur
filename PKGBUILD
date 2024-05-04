@@ -12,6 +12,7 @@ url="https://github.com/ExpressLRS/$_projectname"
 license=('GPL-3.0-only')
 _electronpkg='electron20'
 depends=("$_electronpkg" 'platformio-core-udev' 'python>=3.0.0')
+depends_armv7h=('lib32-gcc-libs' 'lib32-glibc')
 makedepends=('nodejs>=16.0.0' 'npm>=6.0.0' 'libxcrypt-compat' 'yarn>=1.21.3')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
