@@ -1,12 +1,13 @@
 pkgbase = advancecomp
 	pkgdesc = Recompression utilities for .zip .png .mng and .gz files using the 7-zip algorithm
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amadvance/advancecomp
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = gcc-libs
+	depends = glibc
 	depends = zlib
 	source = https://github.com/amadvance/advancecomp/releases/download/v2.6/advancecomp-2.6.tar.gz
 	sha512sums = 10cc2a72b0cf486868b52cdb78a8dc2c965bfa9f43f712fdf97af58e4b0eac62460a635fe58435e2efbc605ed281b8bf0dc560b08bbbe66ee5a8673ec40ea0a6
