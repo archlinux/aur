@@ -4,13 +4,12 @@ pkgver=1.0.5
 pkgrel=1
 pkgdesc="Unnofficial Google Keep desktop application"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/googlekeep-desktop/application"
+url="https://gitlab.com/linuxbombay/googlekeep-desktop"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'gtk4' 'libxss' 'git')
 makedepends=('unzip')
-conflicts=("googlekeep-bin")
-source=("https://gitlab.com/googlekeep-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('893c902064d1db60555c2767c68ad4d7a42c5a06ea874070381a85a64d6fa083')
 
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
