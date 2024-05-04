@@ -2,7 +2,7 @@
 pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
-pkgver=r464.3a13c49
+pkgver=r465.0bd6dce
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
