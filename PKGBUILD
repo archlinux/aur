@@ -2,7 +2,7 @@
 
 pkgname=perl-file-xdg
 _cpanname=File-XDG
-pkgver=0.08
+pkgver=1.02
 pkgrel=1
 pkgdesc="CPAN/File::XDG -- basic implementation of the XDG base directory spec"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('perl-file-homedir' 'perl-path-class')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/$_cpanname-$pkgver.tar.gz")
-md5sums=('cb8b104218878a86fa1a51b4cc635f2d')
+md5sums=('162aafd0414382491f11f9ef6e85aae7')
 
 build() {
   cd $_cpanname-$pkgver
