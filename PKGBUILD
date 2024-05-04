@@ -2,7 +2,7 @@
 
 pkgname=displaz-git
 pkgdesc='A hackable LIDAR viewer (Git version)'
-pkgver=0.4.0.r50.gb039a9d
+pkgver=0.4.0.r107.g91ecf30
 pkgrel=1
 url='http://c42f.github.io/displaz/'
 license=('BSD')
@@ -21,6 +21,11 @@ sha256sums=(
 pkgver() {
   cd displaz
   git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd displaz/src/render
+  sed -i '/#include <string>/a #include <vector>' FrameRate.h
 }
 
 build() {
