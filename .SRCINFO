@@ -1,6 +1,6 @@
 pkgbase = catnip-git
 	pkgdesc = A minimalistic and fast system fetch written in Nim.
-	pkgver = r161.cb0b8fd
+	pkgver = r208.b3f93a9
 	pkgrel = 2
 	url = https://github.com/iinsertNameHere/catnip
 	arch = x86_64
