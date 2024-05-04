@@ -1,7 +1,7 @@
 # Maintaner: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=wl-clip-persist
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Keep Wayland clipboard even after programs close'
 arch=('x86_64' 'aarch64' 'i686')
@@ -12,8 +12,8 @@ makedepends=('cargo')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   'wl-clip-persist.service')
-sha256sums=('b5bd728e7e736fff7537557040afc3061af2d2fe355cfd836aa293989ba1f662'
-  '1687ab3e37573085ddd74e6cc2c58bd189e2ba62379f7846d07c5f38c21d0518')
+sha256sums=('83df75502cf5699e71cd022730ae7c87d0cceaea396be83120643e9aa2b96d97'
+            '1687ab3e37573085ddd74e6cc2c58bd189e2ba62379f7846d07c5f38c21d0518')
 
 prepare() {
   cd "$pkgname-$pkgver"
