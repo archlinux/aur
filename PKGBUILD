@@ -7,7 +7,7 @@ pkgdesc='Parallelism in Lwt using domainslib'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
 license=('MIT')
-depends=('dune>=1.8.0' 'ocaml>=5.0.0' 'ocaml-domainslib>=0.5.0' 'ocaml-lwt>=5.6.0')
+depends=('dune>=1.8.0' 'ocaml>=5.0.0' 'ocaml-domainslib>=0.5.0' 'ocaml-lwt>=5.6.0' 'libev')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('db01ca6d6acffe7eb51961d5a200e6fee25c099b422fd49d5e89ff90c3fbe3e80a044eabbf9a77a89feeaf1cbb56708457efe0cc827eb49643e571e82e3d1cdf')
