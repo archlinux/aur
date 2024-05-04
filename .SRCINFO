@@ -13,6 +13,7 @@ pkgbase = srb2-bin
 	depends = libgme
 	depends = srb2-data
 	depends = libopenmpt
+	depends = miniupnpc
 	source_i686 = git+https://gitlab.com/linuxbombay/srb2-bin/sonic-robo-blast-2
 	source_i686 = https://gitlab.com/linuxbombay/srb2-bin/binaries/2.2.13/-/raw/main/srb2-linux-i686.tar.xz
 	sha256sums_i686 = SKIP
