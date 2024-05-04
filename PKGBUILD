@@ -7,7 +7,7 @@ pkgdesc='A ppx rewriter that transforms a recursive module expression into a `st
 arch=('x86_64' 'aarch64')
 url="https://github.com/flow/$pkgname"
 license=('MIT')
-depends=('ocaml' 'ocaml-ppxlib>=0.18.0')
+depends=('ocaml' 'ocaml-ppxlib>=0.18.0' 'zstd')
 makedepends=('dune')
 checkdepends=('ocaml-ppx_deriving')
 options=('!strip')
