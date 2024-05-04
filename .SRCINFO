@@ -13,6 +13,7 @@ pkgbase = ocaml-containers
 	checkdepends = ocaml-qcheck>=0.18.0
 	checkdepends = ocaml-uutf
 	checkdepends = ocaml-yojson
+	makedepends = git
 	depends = ocaml>=4.08.0
 	depends = dune>=2.9.0
 	depends = ocaml-either
