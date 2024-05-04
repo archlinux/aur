@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRutils
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A package with helper functions for processing drug response data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,7 +17,6 @@ depends=(
   r-drc
   r-jsonlite
   r-jsonvalidate
-  r-magrittr
   r-multiassayexperiment
   r-s4vectors
   r-stringr
@@ -46,8 +45,8 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fdf71802bbd5967b163447eda2fe37ef')
-b2sums=('82bcfc3290cd4484615cf8378f8059d1900cbd1cd68687b9dfe6ef5e7fd525673435487ee6a643fcff7fe5c16c5ce94aa29abe08a47503ca5279fd3466d546cc')
+md5sums=('6fd781aed5ab1373abdd3824f7fd56be')
+b2sums=('0344bab38c3cec803dbf934dd16dcfa8e75d567067e5d48a965cfb4e09574549d46adee6975c75249dbe673664bf9ddacfb85a1be2837af99ae27f2c3f277150')
 
 build() {
   mkdir build
