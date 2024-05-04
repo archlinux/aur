@@ -1,4 +1,4 @@
-# Maintainer: atomicfs
+# Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
 pkgname=linux-beep-music2
 _gitname=beep-melodies
