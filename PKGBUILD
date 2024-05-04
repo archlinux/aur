@@ -1,9 +1,9 @@
 pkgname=gpt4all-chat
-pkgver=2.7.4
-pkgrel=2
-pkgdesc="open-source LLM chatbots that you can run anywhere"
+pkgver=2.7.5
+pkgrel=1
+pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
-url="https://github.com/nomic-ai/gpt4all"
+url="https://gpt4all.io"
 license=("MIT")
 depends=(
     "python" "qt6-base" "qt6-httpserver" "qt6-5compat" "qt6-quickcontrols2" "qt6-shadertools"
@@ -14,7 +14,7 @@ source=(
     "001-change-binary-name.diff"
 )
 declare -rAg _modules_name_map=(
-    [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/e3c4f65d786d26f1daa7aebfb1b67cd6c31ea082.tar.gz
+    [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/a3f03b7e793ee611c4918235d4532ee535a9530d.tar.gz
     [gpt4all-backend/llama.cpp-mainline/kompute]=https://github.com/nomic-ai/kompute/archive/d1e3b0953cf66acc94b2e29693e221427b2c1f3f.tar.gz
 )
 declare _uri _name _commit _source_str
@@ -33,10 +33,10 @@ do
         source+=("$_source_str")
     fi
 done
-sha256sums=('4566acac4676265450702b10d105515140f835576a57a4c17844add6711177ea'
+sha256sums=('6849bfa2956019a3f24e350984fe9114b0c6e71932665640f770549d20721243'
             'c9f1242ff0dfd7367387d5e7d228b808cdb7f6a0a368ba37e326afb21c603a44'
             'b47b1d8154a99304a406d564dfaad6dc91332b8bccc4ef15f1b2d2cce332b84b'
-            '1e274829d8697463024010e04a9792e2657f9c646a865cb63493ebc5e256650a')
+            '2fef47fc74c8ccc32b33b8c83f9833b6a4c02e09da8d688abb6ee35167652ea9')
 
 prepare() {
     cd "$srcdir/gpt4all-$pkgver"
