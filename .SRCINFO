@@ -1,6 +1,6 @@
 pkgbase = qepgs-player-git
 	pkgdesc = An application to watch videos recorded by EPGStation.
-	pkgver = 2.1.2
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://gitlab.com/oioi555/QEPGS-Player
 	arch = i686

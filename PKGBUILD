@@ -1,5 +1,5 @@
 pkgname=qepgs-player-git
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='An application to watch videos recorded by EPGStation.'
 arch=('i686' 'x86_64')
