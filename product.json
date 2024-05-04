@@ -50,8 +50,8 @@
 		},
 		{
 			"name": "ms-vscode.js-debug",
-			"version": "1.88.0",
-			"sha256": "3a048d87c0fac116fce9190ff6042ec7691e66fc17211a058faf0db91bb6605e",
+			"version": "1.89.0",
+			"sha256": "2abd9c01f711c0d60d40b722b5bed0930701be173931f3c6251906f692858221",
 			"repo": "https://github.com/microsoft/vscode-js-debug",
 			"metadata": {
 				"id": "25629058-ddac-4e17-abba-74678e126c5d",
@@ -66,8 +66,8 @@
 		},
 		{
 			"name": "ms-vscode.vscode-js-profile-table",
-			"version": "1.0.8",
-			"sha256": "ca30069e21fbf576b49638ff8ff7c316b028c2faca924c23526737c65b8762bf",
+			"version": "1.0.9",
+			"sha256": "3b62ee4276a2bbea3fe230f94b1d5edd915b05966090ea56f882e1e0ab53e1a6",
 			"repo": "https://github.com/microsoft/vscode-js-profile-visualizer",
 			"metadata": {
 				"id": "7e52b41b-71ad-457b-ab7e-0620f1fc4feb",
@@ -176,7 +176,8 @@
 					"pathGlob": "{**/*.java}",
 					"important": true,
 					"whenNotInstalled": [
-						"ASF.apache-netbeans-java"
+						"ASF.apache-netbeans-java",
+						"Oracle.oracle-java"
 					]
 				},
 				{
@@ -185,7 +186,8 @@
 					],
 					"important": true,
 					"whenNotInstalled": [
-						"ASF.apache-netbeans-java"
+						"ASF.apache-netbeans-java",
+						"Oracle.oracle-java"
 					]
 				}
 			]
@@ -390,13 +392,6 @@
 				}
 			]
 		},
-		"ms-vscode.vscode-typescript-tslint-plugin": {
-			"onFileOpen": [
-				{
-					"pathGlob": "{**/tslint.json}"
-				}
-			]
-		},
 		"bmewburn.vscode-intelephense-client": {
 			"onFileOpen": [
 				{
@@ -440,13 +435,6 @@
 			]
 		},
 		"donjayamanne.githistory": {
-			"onFileOpen": [
-				{
-					"pathGlob": "{**/.gitignore,**/.git}"
-				}
-			]
-		},
-		"felipecaputo.git-project-manager": {
 			"onFileOpen": [
 				{
 					"pathGlob": "{**/.gitignore,**/.git}"
@@ -572,13 +560,6 @@
 				}
 			]
 		},
-		"GoogleCloudTools.cloudcode": {
-			"onFileOpen": [
-				{
-					"pathGlob": "{**/skaffold.yaml}"
-				}
-			]
-		},
 		"Oracle.oracledevtools": {
 			"onFileOpen": [
 				{
@@ -593,7 +574,7 @@
 				}
 			]
 		},
-		"Pivotal.vscode-boot-dev-pack": {
+		"vmware.vscode-boot-dev-pack": {
 			"onFileOpen": [
 				{
 					"pathGlob": "{**/application.properties}"
@@ -702,10 +683,11 @@
 					"important": true,
 					"isExtensionPack": true,
 					"whenNotInstalled": [
-						"ASF.apache-netbeans-java"
+						"ASF.apache-netbeans-java",
+						"Oracle.oracle-java"
 					]
 				},
-				"Pivotal.vscode-boot-dev-pack": {
+				"vmware.vscode-boot-dev-pack": {
 					"name": "Spring Boot Extension Pack",
 					"isExtensionPack": true
 				}
@@ -720,7 +702,8 @@
 					"important": true,
 					"isExtensionPack": true,
 					"whenNotInstalled": [
-						"ASF.apache-netbeans-java"
+						"ASF.apache-netbeans-java",
+						"Oracle.oracle-java"
 					]
 				}
 			}
@@ -986,9 +969,6 @@
 				},
 				"ms-kubernetes-tools.vscode-kubernetes-tools": {
 					"name": "Kubernetes"
-				},
-				"GoogleCloudTools.cloudcode": {
-					"name": "Cloud Code"
 				}
 			}
 		},
@@ -1001,9 +981,6 @@
 				},
 				"ms-kubernetes-tools.vscode-kubernetes-tools": {
 					"name": "Kubernetes"
-				},
-				"GoogleCloudTools.cloudcode": {
-					"name": "Cloud Code"
 				},
 				"ms-vscode-remote.remote-containers": {
 					"name": "Dev Containers"
@@ -1124,7 +1101,8 @@
 					"important": true,
 					"isExtensionPack": true,
 					"whenNotInstalled": [
-						"ASF.apache-netbeans-java"
+						"ASF.apache-netbeans-java",
+						"Oracle.oracle-java"
 					]
 				}
 			}
@@ -1137,7 +1115,8 @@
 					"important": true,
 					"isExtensionPack": true,
 					"whenNotInstalled": [
-						"ASF.apache-netbeans-java"
+						"ASF.apache-netbeans-java",
+						"Oracle.oracle-java"
 					]
 				}
 			}
@@ -1240,9 +1219,6 @@
 				},
 				"ms-kubernetes-tools.vscode-kubernetes-tools": {
 					"name": "Kubernetes"
-				},
-				"GoogleCloudTools.cloudcode": {
-					"name": "Cloud Code"
 				}
 			}
 		},
@@ -1254,9 +1230,6 @@
 				},
 				"ms-kubernetes-tools.vscode-kubernetes-tools": {
 					"name": "Kubernetes"
-				},
-				"GoogleCloudTools.cloudcode": {
-					"name": "Cloud Code"
 				},
 				"ms-vscode-remote.remote-containers": {
 					"name": "Dev Containers"
@@ -1814,12 +1787,12 @@
 			"contribEditorContentMenu",
 			"quickPickSortByLabel",
 			"portsAttributes",
-			"handleIssueUri",
 			"testObserver",
 			"quickPickItemTooltip",
 			"terminalDataWriteEvent",
 			"terminalExecuteCommandEvent",
-			"contribIssueReporter"
+			"contribIssueReporter",
+			"terminalShellIntegration"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -1909,23 +1882,25 @@
 		],
 		"GitHub.vscode-pull-request-github": [
 			"activeComment",
+			"codiconDecoration",
+			"codeActionRanges",
 			"commentingRangeHint",
+			"commentReactor",
 			"commentThreadApplicability",
+			"contribAccessibilityHelpContent",
+			"contribCommentEditorActionsMenu",
+			"contribCommentPeekContext",
 			"contribCommentThreadAdditionalMenu",
 			"contribCommentsViewThreadMenus",
-			"tokenInformation",
-			"codeActionRanges",
-			"commentReactor",
+			"contribEditorContentMenu",
 			"contribShareMenu",
-			"fileComments",
-			"contribCommentPeekContext",
-			"codiconDecoration",
 			"diffCommand",
-			"contribCommentEditorActionsMenu",
-			"treeViewMarkdownMessage",
-			"tabInputTextMerge",
+			"fileComments",
+			"quickDiffProvider",
 			"shareProvider",
-			"quickDiffProvider"
+			"tabInputTextMerge",
+			"tokenInformation",
+			"treeViewMarkdownMessage"
 		],
 		"GitHub.copilot": [
 			"inlineCompletionsAdditions"
@@ -1934,7 +1909,6 @@
 			"inlineCompletionsAdditions"
 		],
 		"GitHub.copilot-chat": [
-			"handleIssueUri",
 			"interactive",
 			"terminalDataWriteEvent",
 			"terminalExecuteCommandEvent",
@@ -1980,7 +1954,8 @@
 		],
 		"ms-python.debugpy": [
 			"portsAttributes",
-			"contribIssueReporter"
+			"contribIssueReporter",
+			"debugVisualization"
 		],
 		"ms-toolsai.jupyter-renderers": [
 			"contribNotebookStaticPreloads"
@@ -2396,6 +2371,7 @@
 		"welcomeViewTitle": "GitHub Copilot",
 		"welcomeViewContent": "You have access to GitHub Copilot, an AI-powered coding assistant, as a part of the Microsoft organization.\n Getting started with Copilot is easy - simply install the Copilot extension. [Learn more](https://code.visualstudio.com/docs/copilot/overview)\n[Install GitHub Copilot](command:workbench.extensions.installExtension?%5B%22github.copilot%22%5D)"
 	},
+	"chatParticipantRegistry": "https://az764295.vo.msecnd.net/extensions/chat.json",
 	"commit": "@COMMIT@",
 	"date": "@DATE@"
 }

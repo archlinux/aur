@@ -26,38 +26,6 @@ diff -Naur a/src/vs/editor/browser/widget/diffEditor/style.css b/src/vs/editor/b
  
  .monaco-scrollable-element.modified-in-monaco-diff-editor.vs		.scrollbar { background: rgba(0,0,0,0); }
  .monaco-scrollable-element.modified-in-monaco-diff-editor.vs-dark	.scrollbar { background: rgba(0,0,0,0); }
-diff -Naur a/src/vs/platform/windows/electron-main/windowImpl.ts b/src/vs/platform/windows/electron-main/windowImpl.ts
---- a/src/vs/platform/windows/electron-main/windowImpl.ts	2023-11-01 02:39:20.000000000 +0100
-+++ b/src/vs/platform/windows/electron-main/windowImpl.ts	2023-11-01 22:22:40.436150423 +0100
-@@ -237,7 +237,7 @@
- 			const windowSettings = this.configurationService.getValue<IWindowSettings | undefined>('window');
- 
- 			const options = instantiationService.invokeFunction(defaultBrowserWindowOptions, this.windowState, {
--				show: !isFullscreenOrMaximized, // reduce flicker by showing later
-+				show: false,
- 				webPreferences: {
- 					preload: FileAccess.asFileUri('vs/base/parts/sandbox/electron-sandbox/preload.js').fsPath,
- 					additionalArguments: [`--vscode-window-config=${this.configObjectUrl.resource.toString()}`],
-@@ -380,9 +380,6 @@
- 					this.logConditionally('WindowMode.Maximized');
- 				}
- 
--				// to reduce flicker from the default window size
--				// to maximize or fullscreen, we only show after
--				this._win.show();
- 				mark('code/didMaximizeCodeWindow');
- 			}
- 
-@@ -451,6 +448,9 @@
- 
- 		this.readyState = ReadyState.READY;
- 
-+		// We are ready! Show the window!
-+		this._win.show();
-+
- 		// inform all waiting promises that we are ready now
- 		while (this.whenReadyCallbacks.length) {
- 			this.whenReadyCallbacks.pop()!(this);
 diff -Naur a/src/vs/platform/windows/electron-main/windows.ts b/src/vs/platform/windows/electron-main/windows.ts
 --- a/src/vs/platform/windows/electron-main/windows.ts	2023-11-01 02:39:20.000000000 +0100
 +++ b/src/vs/platform/windows/electron-main/windows.ts	2023-11-01 22:22:42.749482542 +0100
