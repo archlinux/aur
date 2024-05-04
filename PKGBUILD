@@ -2,7 +2,8 @@
 
 pkgname=messlidger
 _name=$pkgname
-pkgver='0.0.0.dev0+20240217.gitbd44a23568'
+_pkgver='0.0.0.dev0+20240217.gitbd44a23568'
+pkgver=0.0.0.dev0+20240217.gitbd44a23568.py3.12
 pkgrel=1
 pkgdesc='A feature-rich Facebook Messenger to XMPP puppeteering gateway, based on slidge and mautrix-facebook.'
 arch=('any')
@@ -11,7 +12,7 @@ license=('AGPL3')
 depends=('python' 'python-slidge')
 makedepends=('python-wheel' 'python-installer')
 backup=('etc/slidge/messlidger.conf')
-source=("https://slidge.im/repo/$_name/${_name//-/_}-$pkgver.tar.gz"
+source=("https://slidge.im/repo/$_name/${_name//-/_}-$_pkgver.tar.gz"
         'messlidger.tmpfile.d'
         'messlidger.sysuser.conf'
         'messlidger.service'
@@ -22,8 +23,13 @@ sha256sums=('d1181e98355c22a50b84a5f98de40a3842322059fe79c5626d3447dd353abe74'
             '4d7d6e6fe6a37680cdb68bdf481c9b803c7c93bebf84bd5ed6056af8625a8b40'
             '0e595a80a4301ef94509540477148e7d7a1ce5b9cce80a1f1c1399cd098c277e')
 
+pkgver() {
+  python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+  printf %s\\n "$_pkgver.py$python_version"
+}
+
 build() {
-  cd "$srcdir/${_name//-/_}-$pkgver"
+  cd "$srcdir/${_name//-/_}-$_pkgver"
   python -m build --wheel --no-isolation
 }
 
@@ -35,6 +41,6 @@ package() {
   install -m 755 -d "$pkgdir/etc/slidge/"
   install -m 640 -t "$pkgdir/etc/slidge/" messlidger.conf
 
-  cd -- "${_name//-/_}-$pkgver"
+  cd -- "${_name//-/_}-$_pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
