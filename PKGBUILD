@@ -2,7 +2,7 @@
 
 pkgname=vectorscan
 pkgver=5.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Portable fork of hyperscan regular expression matching library'
 arch=(x86_64)
 url=https://github.com/VectorCamp/vectorscan
