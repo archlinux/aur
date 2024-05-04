@@ -2,7 +2,7 @@
 
 pkgname='linvam'
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
 url='https://github.com/stele95/LinVAM'
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('GPL3')
 makedepends=(
   'python'
-  'nuitka'
+  'nuitka-git'
   'git'
 )
 depends=(
