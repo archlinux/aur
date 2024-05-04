@@ -1,0 +1,41 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -159,10 +159,10 @@
+ 
+ AC_MSG_CHECKING(for CLOCK_MONOTONIC)
+ 
+-AC_TRY_RUN([
++AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
+   #include <time.h>
+   #include <errno.h>
+-main()
++int main()
+   {
+   struct timespec tp;
+   if(clock_gettime(CLOCK_MONOTONIC, &tp))
+@@ -170,20 +170,11 @@
+   else
+     return 0;
+   }
+-  ],
+-  [
+-    # program could be run
+-    AC_MSG_RESULT(yes)
+-    HAVE_CLOCK_MONOTONIC="true"
+-
+-  ],
+-    # program could not be run
+-    AC_MSG_RESULT(no)
+-)
+-
+-if test "x$HAVE_CLOCK_MONOTONIC" = "xtrue"; then
+-  AC_DEFINE([HAVE_CLOCK_MONOTONIC])
+-fi
++    ]])],
++[AC_DEFINE([HAVE_CLOCK_MONOTONIC], [1], [Have clock monotonic])
++  AC_MSG_RESULT([yes])
++],
++[AC_MSG_RESULT([no])])
+ 
+ fi
+ 
