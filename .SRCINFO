@@ -1,7 +1,7 @@
 pkgbase = restic-rest-server
 	pkgdesc = High-performance HTTP server that implements restic's REST backend API
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/restic/rest-server
 	arch = x86_64
 	license = BSD
