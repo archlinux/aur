@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mCSEAdata
-_pkgver=1.23.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b25f7027a3088207687d67256f79939e')
-b2sums=('d3b36711f373d2f20acc16099fa8a2c2c7af0918e234a3583672f8cef2b1e329a37b4494963ba9a2686c7ac1a631e13c13b3da927f21e771aa8640625430a187')
+md5sums=('203cc084938e17f3b60549faec5e9b39')
+b2sums=('e6f60db491e415f9d2edcf4959a1789a056e1325003d34bc3a95c4a1fb384388c4f3c8d0d5ded8796e6eb89c94a5396886cc022b9dfbf93297e0247b1f627275')
 
 build() {
   mkdir build
