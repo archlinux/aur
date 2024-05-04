@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRcore
-_pkgver=1.0.1
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,8 +41,8 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c6f8d5e650506c1da3a8372f16f690da')
-b2sums=('c3fcf3165910dbe3e1819afb10a12bd267a59b026e4cd009016d6c8c64c80885835c6fb10a65e10d16704e814e8aa73e53dfc84dc95c00269e570613abe4f81f')
+md5sums=('cfb3aace029a6e907e3c52dc06fa2e4d')
+b2sums=('499744f71ad0c9dde78eecf401fdae6e3329658769b2309c574138172ec390085b73579fc07f0c7f104113d6cf0555363761771f86cd4058ae6fc9f8253562e7')
 
 build() {
   mkdir build
