@@ -9,6 +9,7 @@ pkgbase = sk-chos-addon
 	depends = expect
 	depends = efibootmgr
 	depends = zram-generator
+	depends = just
 	provides = sk-chos-addon
 	conflicts = sk-chos-addon-git
 	replaces = sk-chos-addon-git

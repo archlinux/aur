@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/honjow/sk-holoiso-config.git"
 license=('MIT')
 makedepends=('git')
-depends=('expect' 'efibootmgr' 'zram-generator')
+depends=('expect' 'efibootmgr' 'zram-generator' 'just')
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon-git)
 replaces=(sk-chos-addon-git)
@@ -65,4 +65,16 @@ package() {
     # /etc/default/*
     install -dm755 "${pkgdir}/etc/default"
     install -m644 -t "${pkgdir}/etc/default" "${source_dir}/etc/default"/*
+
+    # etc profile.d
+    install -dm755 "${pkgdir}/etc/profile.d"
+    install -m644 -t "${pkgdir}/etc/profile.d" "${source_dir}/etc/profile.d"/*
+
+    # /usr/share/sk-chos/just/*
+    install -dm755 "${pkgdir}/usr/share/sk-chos/just"
+    install -m644 -t "${pkgdir}/usr/share/sk-chos/just" "${source_dir}/share/sk-chos/just"/*.*
+
+    # /usr/share/sk-chos/*
+    install -dm755 "${pkgdir}/usr/share/sk-chos"
+    install -m644 -t "${pkgdir}/usr/share/sk-chos" "${source_dir}/share/sk-chos"/justfile
 }
