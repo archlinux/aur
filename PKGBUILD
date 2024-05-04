@@ -20,6 +20,12 @@ makedepends=(
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
 sha256sums=('SKIP')
 
+#check() {
+#  cd "${srcdir}/${pkgname}"
+#  python runtests.py
+#}
+# TO run this test one needs a running PostgreSQL database
+
 build() {
   cd "${srcdir}/${pkgname}"
   python -m build --wheel --no-isolation
