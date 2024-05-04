@@ -4,7 +4,7 @@
 # Contributor: b4283 <unknown@unknowndomain.com>
 
 pkgname=spike-git
-pkgver=1
+pkgver=r3205.7438d1e6
 pkgrel=1
 pkgdesc="Spike, a RISC-V ISA Simulator"
 arch=(x86_64)
@@ -13,8 +13,8 @@ license=('BSD')
 groups=()
 depends=(dtc)
 makedepends=('git')
-replaces=(fesvr)
-conflicts=(fesvr)
+replaces=(spike)
+conflicts=(spike)
 source=('git+https://github.com/riscv/riscv-isa-sim')
 md5sums=('SKIP')
 noextract=()
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd "$srcdir/riscv-isa-sim"
   ./configure --prefix=/usr
-  make
+  make CXXFLAGS+="-ffat-lto-objects"
 }
 
 package() {
