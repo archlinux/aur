@@ -1,0 +1,5 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!rename-binary-to-bat-cli.patch

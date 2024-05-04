@@ -1,0 +1,103 @@
+diff --git a/bat.1 b/bat.1
+index ae6c08f..95c3381 100644
+--- a/bat.1
++++ b/bat.1
+@@ -1,9 +1,9 @@
+-.TH BAT 1 "04 March 2024" "1.1" "General Commands Manual"
++.TH BAT-CLI 1 "04 March 2024" "1.1" "General Commands Manual"
+ .SH NAME
+-bat \-\- battery management utility for Linux laptops
++bat-cli \-\- battery management utility for Linux laptops
+ .SH SYNOPSIS
+ .B 
+-bat
++bat-cli
+ [\-d | \-\-debug] [\-h | \-\-help] [\-v | \-\-version]
+     <command> [<arg>]
+ .SH DESCRIPTION
+@@ -44,7 +44,7 @@ Print the current battery charging threshold.
+ .RS
+ .nf
+ .PP
+-$ bat threshold
++$ bat-cli threshold
+ .fi
+ .RE
+ .PP
+@@ -52,7 +52,7 @@ Set a charging threshold that will stop charging at 80%. This requires superuser
+ .RS
+ .nf
+ .PP
+-$ sudo bat threshold 80
++$ sudo bat-cli threshold 80
+ .fi
+ .RE
+ .PP
+@@ -60,7 +60,7 @@ Persist the current charging threshold setting between restarts. This also requi
+ .RS
+ .nf
+ .PP
+-$ sudo bat persist
++$ sudo bat-cli persist
+ .fi
+ .RE
+ .SH SUPPORT
+diff --git a/help.txt b/help.txt
+index 4c51def..c341438 100644
+--- a/help.txt
++++ b/help.txt
+@@ -1,7 +1,7 @@
+-bat - battery management utility for Linux laptops
++bat-cli - battery management utility for Linux laptops
+ 
+ Usage:
+-  bat [OPTIONS] COMMAND [arg]
++  bat-cli [OPTIONS] COMMAND [arg]
+ 
+ Options:
+   -d, --debug     Display debug information. Please use this when filing an
+diff --git a/main_linux.go b/main_linux.go
+index b1e51b8..da50c54 100644
+--- a/main_linux.go
++++ b/main_linux.go
+@@ -180,7 +180,7 @@ func main() {
+ 		p := path.Join(bat, threshold)
+ 		tmpl := template.Must(template.New("unit").Parse(unit))
+ 		for _, event := range events {
+-			name := services + "bat-" + event + ".service"
++			name := services + "bat-cli-" + event + ".service"
+ 			f, err := os.Create(name)
+ 			if err != nil {
+ 				if errors.Is(err, syscall.EACCES) {
+@@ -246,11 +246,11 @@ func main() {
+ 				}
+ 				panic(err)
+ 			}
+-			fmt.Println("Charging threshold set.\nRun `sudo bat persist` to persist the setting between restarts.")
++			fmt.Println("Charging threshold set.\nRun `sudo bat-cli persist` to persist the setting between restarts.")
+ 		}
+ 	case "reset":
+ 		for _, event := range events {
+-			name := services + "bat-" + event + ".service"
++			name := services + "bat-cli-" + event + ".service"
+ 			buf := new(bytes.Buffer)
+ 			cmd := exec.Command("systemctl", "disable", name)
+ 			cmd.Stderr = buf
+@@ -275,7 +275,7 @@ func main() {
+ 		}
+ 		fmt.Println("Charging threshold persistence reset.")
+ 	default:
+-		fmt.Fprintf(os.Stderr, "There is no %s command. Run `bat --help` to see a list of available commands.\n", variable)
++		fmt.Fprintf(os.Stderr, "There is no %s command. Run `bat-cli --help` to see a list of available commands.\n", variable)
+ 		os.Exit(1)
+ 	}
+ }
+diff --git a/version.fmt b/version.fmt
+index 729c199..4e8cdb7 100644
+--- a/version.fmt
++++ b/version.fmt
+@@ -1,3 +1,3 @@
+-bat %s
++bat-cli %s
+ Copyright (c) 2021 Tshaka Lekholoane.
+ MIT Licence.
