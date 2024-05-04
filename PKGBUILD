@@ -1,4 +1,4 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=adjust
 pkgname=vapoursynth-plugin-${_plug}-git
@@ -12,11 +12,14 @@ depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git"
-        'COPYING::http://www.wtfpl.net/txt/copying')
-sha256sums=('SKIP'
-            '0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5'
-            )
+source=(
+  "${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git"
+  'COPYING' # http://www.wtfpl.net/txt/copying
+)
+sha256sums=(
+  'SKIP'
+  '0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5'
+)
 
 _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
