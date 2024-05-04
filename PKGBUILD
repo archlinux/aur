@@ -6,7 +6,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-hidpi-xprop"
-pkgver=0.38.0+r6+gfc0a7af7
+pkgver=0.39.1
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
@@ -29,6 +29,7 @@ depends=(
 	polkit
 	glslang
 	libdisplay-info
+	libliftoff
 	libinput
 	libxcb
 	libxkbcommon
@@ -38,6 +39,7 @@ depends=(
 	xcb-util-errors
 	xcb-util-renderutil
 	xcb-util-wm
+	xcb-util-image
 	seatd
 	xorg-xwayland-hidpi-xprop
 	tomlplusplus
@@ -53,8 +55,8 @@ makedepends=(
 	wayland-protocols
 	xorgproto
 )
-source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git#commit=fc0a7af7ba5c52f7a70309020f5cb27c19d068e6"
-        "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
+source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git#commit=fe7b748eb668136dd0558b7c8279bfcd7ab4d759"
+        "git+https://github.com/hyprwm/wlroots-hyprland.git"
         "git+https://github.com/hyprwm/hyprland-protocols.git"
         "git+https://github.com/canihavesomecoffee/udis86.git"
         "0001-Revert-compositor-send-WL_SURFACE_ERROR_INVALID_SIZE.patch"
@@ -78,15 +80,15 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	rm -rf subprojects/wlroots subprojects/hyprland-protocols
+	rm -rf subprojects/wlroots-hyprland subprojects/hyprland-protocols
 	git submodule init
-	git config submodule.wlroots.url "${srcdir}"/wlroots
+	git config submodule.subprojects/wlroots-hyprland.url "${srcdir}"/wlroots-hyprland
 	git config submodule.subprojects/hyprland-protocols.url "${srcdir}"/hyprland-protocols
 	git config submodule.subprojects/udis86.url "${srcdir}"/udis86
-	git -c protocol.file.allow=always submodule update subprojects/wlroots
+	git -c protocol.file.allow=always submodule update subprojects/wlroots-hyprland
 	git -c protocol.file.allow=always submodule update subprojects/hyprland-protocols
 	git -c protocol.file.allow=always submodule update subprojects/udis86
-	cd subprojects/wlroots
+	cd subprojects/wlroots-hyprland
 	patch -Np1 -i "${srcdir}"/0001-Revert-compositor-send-WL_SURFACE_ERROR_INVALID_SIZE.patch
 	patch -Np1 -i "${srcdir}"/0001-xwayland-support-HiDPI-scale.patch
 	patch -Np1 -i "${srcdir}"/0002-Fix-configure_notify-event.patch
@@ -102,7 +104,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	meson install -C subprojects/wlroots/build --destdir "${pkgdir}/tmpwlr"
+	meson install -C subprojects/wlroots-hyprland/build --destdir "${pkgdir}/tmpwlr"
 	install -Dm755 build/Hyprland -t "${pkgdir}/usr/bin"
 	pushd "${pkgdir}/usr/bin" && ln -sf Hyprland hyprland && popd
 	install -Dm755 build/hyprctl/hyprctl -t "${pkgdir}/usr/bin"
@@ -111,14 +113,18 @@ package() {
 	install -Dm644 example/hyprland.desktop -t "${pkgdir}/usr/share/wayland-sessions"
 	install -Dm644 example/hyprland.conf -t "${pkgdir}/usr/share/hyprland"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -Dm644 subprojects/wlroots/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-wlroots"
+	install -Dm644 subprojects/wlroots-hyprland/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-wlroots-hyprland"
 	install -Dm644 subprojects/udis86/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-udis86"
 	install -Dm644 docs/*.1 -t "${pkgdir}/usr/share/man/man1"
-	install -Dm755 ${pkgdir}/tmpwlr/usr/local/lib/libwlroots.so.* -t "${pkgdir}/usr/lib"
+	for cmd in hyprctl hyprpm; do
+		install -Dm644 "${cmd}/${cmd}.bash" "${pkgdir}/usr/share/bash-completion/completions/$cmd"
+		install -Dm644 "${cmd}/${cmd}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_$cmd"
+		install -Dm644 "$cmd/$cmd.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
+	done
 	install -d "${pkgdir}/usr/include/hyprland/protocols"
-	install -d "${pkgdir}/usr/include/hyprland/wlroots"
+	install -d "${pkgdir}/usr/include/hyprland/wlroots-hyprland"
 	cp -R src ${pkgdir}/usr/include/hyprland/
-	cp -R ${pkgdir}/tmpwlr/usr/local/include/* ${pkgdir}/usr/include/hyprland/wlroots/
+	cp -R ${pkgdir}/tmpwlr/usr/local/include/* ${pkgdir}/usr/include/hyprland/wlroots-hyprland/
 	find ${pkgdir}/usr/include/hyprland/ -type f ! -name '*.h*' -delete
 	rm -rf ${pkgdir}/tmpwlr
 	cp protocols/*-protocol.h ${pkgdir}/usr/include/hyprland/protocols
