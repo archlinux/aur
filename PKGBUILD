@@ -8,20 +8,20 @@
 _reponame=recaf
 _installname=recaf-4
 pkgname=${_reponame}-dev4-git
-pkgver=r3816.5945a284
+pkgver=r4140.2d58484c6
 pkgrel=1
 pkgdesc="A modern Java bytecode editor. dev4 (beta) branch."
 arch=("any")
 url="https://github.com/Col-E/Recaf/tree/dev4"
 license=("MIT")
-depends=("java-runtime" "java17-openjfx" "ttf-font")
-makedepends=("git" "java-environment" "jdk17-openjdk")
+depends=("java-runtime=22" "java-openjfx=22" "ttf-font")
+makedepends=("git" "java-environment=22" "java-environment-openjdk=22")
 provides=($_installname)
 source=("recaf::git+https://github.com/Col-E/Recaf#branch=dev4"
         "recaf-4"
         "recaf-4.desktop")
 sha256sums=("SKIP"
-        "34a64f21c7b5de1435e8e111f6d4bacfa1d0d735b7dab412ad669fe1376810db"
+        "da6de096e1651bf9122aafec3280a3eb739e8f301f7149319e9caca45fa4a1b7"
         "3d89d8b9c46ef27edaddcc0d612fed3ac0537ecee6aa049fc4fb2a2bbbbdfe54")
 
 pkgver() {
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_reponame"
-    JAVA_HOME="/usr/lib/jvm/java-17-openjdk" ./gradlew build
+    JAVA_HOME="/usr/lib/jvm/java-22-openjdk" ./gradlew build
 }
 
 package() {
