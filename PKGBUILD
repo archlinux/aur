@@ -2,7 +2,7 @@
 
 pkgname=archarm-mobile-fde-installer-git
 _pkgname=${pkgname%-git}
-pkgver=r1.d2969d8
+pkgver=r3.7ea234b
 pkgrel=1
 pkgdesc='Script to setup Full-Ddisk-Encryption on Arch Linux ARM for PinePhone and PineTab'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 optdepends=(
   'gnupg: config import/export support'
 )
-source=("git+https://github.com/dreemurrs-embedded/archarm-mobile-fde-installer.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 provides=("archarm-mobile-fde-installer=${pkgver}")
 depends=(
