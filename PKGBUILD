@@ -8,7 +8,7 @@ pkgdesc='Unicode-friendly OCaml lexer generator'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-gen' 'ocaml-ppxlib>=0.26.0')
+depends=('ocaml>=4.08.0' 'ocaml-gen' 'ocaml-ppxlib>=0.26.0' 'zstd')
 makedepends=('dune>=3.0.0')
 checkdepends=('ocaml-ppx_expect')
 options=('!strip')
