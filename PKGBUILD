@@ -2,7 +2,7 @@
 # Contributor: Marcin Kornat <rarvolt@gmail.com>
 pkgname=labelle
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Software to print with LabelManager PnP from Dymo"
 arch=('any')
 license=('Apache-2.0')
@@ -32,11 +32,11 @@ makedepends=(
     'python-wheel'
 )
 source=(
-        "${pkgname}-${pkgver}.tar.gz::https://github.com/labelle-org/labelle/archive/${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz::https://github.com/labelle-org/labelle/archive/v${pkgver}.tar.gz"
         "91-dymo-labelmanager-pnp.rules"
         "dymo-labelmanager-pnp.conf"
 )
-sha512sums=('a9c47a0caec8a5884364f7616ce0032e0c183bdffe3355ce998d8d07d0eda52562e6afa3d528a138538cb56b821c66b787a8d2fe399e79fce4d937a5a3256e9f'
+sha512sums=('69ea79dc8dc1b00724f5f7d344e1e6c4059c2237152e5ad34fc93232aad17872a4bfeedabc1c1fd78edd64ff072c67875457c5fd1a201bd3c3227803fff52569'
             '76c4d8b9b9abd6c9100b6d0032af0d3752fbb7827f2d3a8417b28d2b822b9f7956051163de015a26e0fa6c548851a0f73e74bea37d1c1583cc457a9dc6be6b68'
             'a73a5cd46e020d9d43d18cf52927085f055b9d3e77d5ed98f254e3fff07b053aff1125e931b2fd984f08dcb501d344544dc2de58adb66270455b4f482bc8f3f1')
 
