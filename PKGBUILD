@@ -2,14 +2,17 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=wlr-layout-ui-git
 pkgver=r79.7aecc75
-pkgrel=1
-pkgdesc="Provides a simple graphical front end for wlr-randr"
+pkgrel=2
+pkgdesc="GUI to configure your screens"
 arch=(any)
 url="https://github.com/fdev31/wlr-layout-ui"
 license=('MIT')
 groups=()
-depends=('python' 'python-pyglet' 'wlr-randr' 'python-build' 'python-installer' 'python-poetry' 'python-tomli-w' 'python-tomli')
-makedepends=('git' 'python-pip')
+depends=('python' 'python-pyglet' 'python-build' 'python-installer' 'python-poetry' 'python-tomli-w' 'python-tomli')
+optdepends=('wlr-randr: To apply the configuration on other wlroots systems'
+    'hyprland: To apply the configuration on Hyprland (recommended)',
+    'xrandr: To apply the configuration on X11')
+makedepends=('git' 'python-build' 'python-installer' 'python-poetry')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
