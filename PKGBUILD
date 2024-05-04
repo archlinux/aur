@@ -14,8 +14,8 @@ options=(!debug)
 source=('https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/releases/latest/download/Linux_x64_Executable.zip')
 sha256sums=('SKIP')
 arch=('x86_64')
-pkgver=8.0.3
-pkgrel=4
+pkgver=8.0.4
+pkgrel=1
 
 package() {
   install -dm755 "$pkgdir/opt/Bitscoper_Cyber_ToolBox/"
