@@ -4,13 +4,13 @@ pkgver=1.0.6
 pkgrel=1
 pkgdesc="Unnofficial Netflix desktop application"
 arch=('x86_64')
-url="https://gitlab.com/netflix-desktop/application"
+url="https://gitlab.com/linuxbombay/netflix-desktop"
 license=('GPL')
 conflicts=("Netflix-bin")
 replace=("Netflix-bin")
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
-source=("https://gitlab.com/netflix-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('c562fb2611b693abff15b003b7da5ca286d6afafe0f698ef68251e3353abb585')
 
 
 package() {
