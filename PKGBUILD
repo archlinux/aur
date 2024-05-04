@@ -2,8 +2,8 @@
 pkgname=twitchleecher-dx
 _pkgname=TwitchLeecher-Dx
 pkgdesc="A simple download tool for Twitch streams"
-pkgver=3.5.6
-_pkgver=3.5.6
+pkgver=3.5.7
+_pkgver=3.5.7
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/schneidermanuel/TwitchLeecher-Dx'
@@ -12,26 +12,26 @@ depends=("icu" "ffmpeg")
 makedepends=("dotnet-sdk")
 options=("staticlibs")
 source=("$url/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('53f0a1375ce3638bbab7906c1053cc9880eb2a4291f42fb96ed44ba90e4b7de8')
+sha256sums=('6828fad16783716e8d5dbddebcc9e234317467e7dbc53d7bc01c8e083c34b7d7')
 
 build() {
-  cd "$_pkgname-$_pkgver/TwitchLeecher/TwitchLeecher"
-  MSBUILDDISABLENODEREUSE=1 dotnet publish \
-    --configuration Release \
-    --self-contained true \
-    --runtime linux-x64 \
-    -p:PublishTrimmed=true \
-    --output ../../$pkgname \
-    ./TwitchLeecher.csproj
+	cd "$_pkgname-$_pkgver/TwitchLeecher/TwitchLeecher"
+	MSBUILDDISABLENODEREUSE=1 dotnet publish \
+		--configuration Release \
+		--self-contained true \
+		--runtime linux-x64 \
+		-p:PublishTrimmed=true \
+		--output ../../$pkgname \
+		./TwitchLeecher.csproj
 }
 
 package() {
-  cd "$_pkgname-$_pkgver"
+	cd "$_pkgname-$_pkgver"
 
-  install -d $pkgdir/usr/{bin,lib}
-  install -d $pkgdir/usr/share/{pixmaps,applications}
-  cp -r $pkgname "$pkgdir/usr/lib/"
-  ln -s "/usr/lib/$pkgname/TwitchLeecher" "$pkgdir/usr/bin/$pkgname"
-  cp TwitchLeecher/Resources/Images/TL_Icon.png "$pkgdir/usr/share/pixmaps/twitchleecher-dx.png"
-  cp twitchleecher-dx.desktop "$pkgdir/usr/share/applications/twitchleecher-dx.desktop"
+	install -d $pkgdir/usr/{bin,lib}
+	install -d $pkgdir/usr/share/{pixmaps,applications}
+	cp -r $pkgname "$pkgdir/usr/lib/"
+	ln -s "/usr/lib/$pkgname/TwitchLeecher" "$pkgdir/usr/bin/$pkgname"
+	cp TwitchLeecher/Resources/Images/TL_Icon.png "$pkgdir/usr/share/pixmaps/twitchleecher-dx.png"
+	cp twitchleecher-dx.desktop "$pkgdir/usr/share/applications/twitchleecher-dx.desktop"
 }
