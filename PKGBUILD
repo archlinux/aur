@@ -1,7 +1,7 @@
-# Maintainer: Ross Whitfield <whitfieldre@ornl.gov>
+# Contributor: Ross Whitfield <whitfieldre@ornl.gov>
 pkgname='python-periodictable'
 _pkgname='periodictable'
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Extensible periodic table of the elements"
 url="http://periodictable.readthedocs.org"
@@ -9,7 +9,7 @@ arch=("any")
 license=('public domain')
 makedepends=('python-setuptools')
 source=("https://github.com/pkienzle/periodictable/archive/v$pkgver.tar.gz")
-md5sums=('173c9857305a8b5557794be0a61d8d04')
+md5sums=('54c58bb8e591a6f9c80b43465fb283f0')
 
 package() {
     depends=('python-numpy' 'python-pyparsing')
