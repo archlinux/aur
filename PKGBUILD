@@ -2,21 +2,20 @@
 # Co-Maintainer: wcyat <wcyat at wcyat dot me>
 pkgname=electronmail
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 _electronversion=27
 pkgdesc="Unofficial ProtonMail Desktop App"
 arch=('x86_64')
 url="https://github.com/vladimiry/ElectronMail"
 license=('GPL-3.0-or-later')
 depends=("electron${_electronversion}" 'libsecret')
-makedepends=('git' 'libxcrypt-compat' 'npm' 'pnpm' 'yarn')
+makedepends=('git' 'libxcrypt-compat' 'npm' 'pnpm' 'python-setuptools' 'yarn')
 optdepends=('org.freedesktop.secrets: password storage backend')
-_commit=c5f76ecf5285cfd0c5b23c8e667fba68281e754a  # tags/v5.2.2^0
-source=("git+https://github.com/vladimiry/ElectronMail.git#commit=${_commit}"
+source=("git+https://github.com/vladimiry/ElectronMail.git#tag=v$pkgver"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('SKIP'
-            'fa9159a243673390d1f36108b01af2ab9819fdec192ad7ffd405bbf7ab49f10b'
+sha256sums=('558ffcbfc83bd16d0abff2788c7447f7eaf82d3a8f45dd890632b2999fb3ee98'
+            'c95c69f1d0db27180236ff063d9563da8750ecce81883adfb217b73ac3bb974e'
             'e7e9dd6e065118ae5d9624c7c81328086719fab198d30a92b08979c29757a3b2')
 
 pkgver() {

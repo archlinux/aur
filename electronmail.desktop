@@ -4,6 +4,6 @@ Exec=electronmail
 Terminal=false
 Type=Application
 Icon=electronmail
-StartupWMClass=electronmail
+StartupWMClass=electron-mail
 Comment=Unofficial ProtonMail Desktop App
 Categories=Office;
