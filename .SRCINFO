@@ -1,0 +1,13 @@
+pkgbase = pgvecto.rs-bin
+	pkgdesc = pgvector binaries
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/tensorchord/pgvecto.rs
+	arch = x86_64
+	license = Apache
+	depends = postgresql
+	conflicts = pgvector
+	source = https://github.com/tensorchord/pgvecto.rs/releases/download/v0.2.1/vectors-pg16_x86_64-unknown-linux-gnu_0.2.1.zip
+	sha256sums = SKIP
+
+pkgname = pgvecto.rs-bin
