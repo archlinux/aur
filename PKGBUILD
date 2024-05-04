@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.spatial
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Save and Load Spatial 'Omics Data to/from File"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -12,10 +12,9 @@ license=('MIT')
 depends=(
   r-alabaster.base
   r-alabaster.sce
-  r-jsonlite
+  r-rhdf5
   r-s4vectors
   r-spatialexperiment
-  r-summarizedexperiment
 )
 checkdepends=(
   r-dropletutils
@@ -33,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('906d73c492ba97e8eda563055c51bbfc')
-b2sums=('59430a8fd7bd435e3e6805181aa8afa812227316086ae3c51c6b8a288a2bc5088d14c5903632af1c003924f6b10b663beb93ede362654677aba4e5f583d4d7e1')
+md5sums=('01c601e84e24d5aaabaa621b927b09e2')
+b2sums=('ca0bb70d90908e5f5e0d1bdeb0fad190325eeb216c200fbc76c1d7efcc184e87d883456c2133b6232a1c1166f3b7f9f2509dadd9397ae17fe57daf00fc3d106e')
 
 build() {
   mkdir build
