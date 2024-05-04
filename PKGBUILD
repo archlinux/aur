@@ -6,7 +6,7 @@ pkgdesc='Backport new OCaml syntax to older compilers'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-ppx/$pkgname"
 license=('ISC')
-depends=('ocaml>=4.02.3')
+depends=('ocaml>=4.02.3' 'zstd')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
