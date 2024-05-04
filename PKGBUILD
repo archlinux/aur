@@ -17,7 +17,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname"
 pkgver=11.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 arch=('x86_64')
@@ -103,17 +103,16 @@ _main_package() {
     !strip
   )
 
-  _pkgsrc="Floorp-${pkgver%%.r*}"
-  _pkgext="tar.gz"
+  _pkgsrc="Floorp"
   source=(
-    "$_pkgname-${pkgver%%.r*}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v${pkgver%%.r*}.tar.gz"
+    "$_pkgsrc"::"git+https://github.com/Floorp-Projects/Floorp.git#tag=v$pkgver"
     "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
     "floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
     "$_pkgname.desktop"
   )
 
   sha256sums=(
-    '6fdd272a75fb04df23706c8b693c46c0400ef072bb3b9a4c1f6dcefb11652e5d'
+    'SKIP'
     'SKIP'
     'SKIP'
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
@@ -128,29 +127,33 @@ _main_package() {
 
 # common functions
 prepare() {
-  mkdir -p mozbuild
-  cd "$_pkgsrc"
-
-  # prepare floorp-core
-  (
-    rm -rf "floorp"
-    ln -sf "../floorp-projects.floorp-core" "floorp"
-
-    cd "$srcdir/floorp-projects.floorp-core"
-    local _submodules=(
-      'floorp-projects.unified-l10n-central'::'browser/locales/l10n-central'
-    )
-
-    if [[ "${_build_private::1}" == "t" ]]; then
-      _submodules+=('floorp-projects.private-components'::'Floorp-private-components')
-    fi
-
+  _submodule_update() {
     local _module
     for _module in "${_submodules[@]}"; do
       git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%%::*}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
       git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
+  }
+
+  mkdir -p mozbuild
+  cd "$_pkgsrc"
+
+  (
+    # prepare floorp-core
+    local _submodules=(
+      'floorp-projects.floorp-core'::'floorp'
+    )
+    _submodule_update
+
+    cd "floorp"
+    local _submodules=(
+      'floorp-projects.unified-l10n-central'::'browser/locales/l10n-central'
+    )
+    if [[ "${_build_private::1}" == "t" ]]; then
+      _submodules+=('floorp-projects.private-components'::'Floorp-private-components')
+    fi
+    _submodule_update
   )
 
   # clear forced startup pages
