@@ -1,7 +1,7 @@
 pkgbase = minuimus
 	pkgdesc = file optimiser: makes files smaller without compromising content
 	pkgver = 4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://birds-are-nice.me/software/minuimus.html
 	arch = x86_64
 	license = GPL
@@ -27,7 +27,9 @@ pkgbase = minuimus
 	depends = zlib
 	source = minuimus_4.1.zip::https://birds-are-nice.me/software/minuimus.zip
 	source = minuimus_leanify_keep_icc.patch
+	source = fix_missing_pdfsizeopt_which.patch
 	sha256sums = 9c1e2f1fd4a56d231e582f9fd6ba5f53dfc1165728638530e960bd1e562c1855
 	sha256sums = 8e4428e32dd1910726174573dd2fd7e25c328af0e5b4cc756b5dd8d4bc6445cf
+	sha256sums = 80d6140dafe63e71e2df4704cd931692a42bf368543f539c6264ee832534bc10
 
 pkgname = minuimus

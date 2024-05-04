@@ -1,0 +1,11 @@
+--- minuimus.pl	2024-05-04 18:49:05.602706672 +0200
++++ minuimus.pl	2024-05-04 18:56:22.410739430 +0200
+@@ -37,7 +37,7 @@
+     $pdfsizeoptpath='/usr/bin/pdfsizeopt/pdfsizeopt';
+   }
+   if(! -x $pdfsizeoptpath){
+-    $pdfsizeoptpath=`which pdfsizeopt`;
++    $pdfsizeoptpath=`which pdfsizeopt 2>/dev/null`;
+     $pdfsizeoptpath =~ s/\n//;
+   }
+ }

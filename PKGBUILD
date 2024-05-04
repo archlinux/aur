@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
 pkgname=minuimus
 pkgver="4.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="file optimiser: makes files smaller without compromising content"
 arch=(x86_64)
 url="https://birds-are-nice.me/software/minuimus.html"
@@ -36,9 +36,11 @@ optdeps=(
   'pdfsizeopt-git' # AUR
 )
 source=("${pkgname}_${pkgver}.zip::${url//.html/.zip}"
-        "minuimus_leanify_keep_icc.patch")
+        'minuimus_leanify_keep_icc.patch'
+        'fix_missing_pdfsizeopt_which.patch')
 sha256sums=('9c1e2f1fd4a56d231e582f9fd6ba5f53dfc1165728638530e960bd1e562c1855'
-            '8e4428e32dd1910726174573dd2fd7e25c328af0e5b4cc756b5dd8d4bc6445cf')
+            '8e4428e32dd1910726174573dd2fd7e25c328af0e5b4cc756b5dd8d4bc6445cf'
+            '80d6140dafe63e71e2df4704cd931692a42bf368543f539c6264ee832534bc10')
 
 prepare() {
   cd "$srcdir"
@@ -48,6 +50,9 @@ prepare() {
 
   echo "Fixing minuimus.pl for leanify spurious option --keep-icc"
   patch minuimus.pl minuimus_leanify_keep_icc.patch
+
+  echo "Fixing minuimus.pl for which pdfsizeopt annoyance"
+  patch minuimus.pl fix_missing_pdfsizeopt_which.patch
 }
 
 build() {
@@ -63,5 +68,6 @@ package() {
   cp minuimus_woff_helper "${pkgdir}/usr/bin/minuimus_woff_helper"
   cp cab_analyze "${pkgdir}/usr/bin/cab_analyze"
   cp minuimus.pl "${pkgdir}/usr/bin/minuimus.pl"
+  ln -s "/usr/bin/minuimus.pl" "${pkgdir}/usr/bin/minuimus"
   cp minuimus_swf_helper "${pkgdir}/usr/bin/minuimus_swf_helper"
 }
