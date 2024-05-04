@@ -4,7 +4,7 @@
 
 _name=kitemmodels
 pkgname=${_name}5
-pkgver=5.115.0
+pkgver=5.116.0
 pkgrel=1
 pkgdesc='Models for Qt Model/View system'
 arch=(x86_64)
@@ -17,7 +17,7 @@ conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('fffad18b40bb81cde41968459fcdf354bd3a68f1241bd625cba48ee44b68ef0c'
+sha256sums=('537cee9bbadf5471e5217e48605adbf941335de45f0041e7d5a31422e4b49ff1'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
