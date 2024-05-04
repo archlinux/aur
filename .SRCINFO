@@ -11,6 +11,7 @@ pkgbase = ocaml-ppx_bench
 	depends = ocaml>=4.14.0
 	depends = ocaml-ppx_inline_test>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
+	depends = zstd
 	options = !strip
 	source = ocaml-ppx_bench-0.16.0.tar.gz::https://github.com/janestreet/ppx_bench/archive/v0.16.0.tar.gz
 	sha512sums = 4644d7088647bffa24e380dcf52adfc4034fccddc0f3e75112c71542d6a4515904d465f15789705ac1861d267fab52af2791dc0a2ddedf83585c5f62c0f18aed
