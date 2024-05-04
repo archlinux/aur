@@ -88,7 +88,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
-  make -i htmldocs SPHINXOPTS='-k'
+  make -i htmldocs SPHINXOPTS='--keep-going'
 }
 
 _package() {
