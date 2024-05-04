@@ -1,6 +1,6 @@
 pkgbase = zettlr-git
 	pkgdesc = A Markdown Editor for the 21st century
-	pkgver = 3.0.3.r240.g4d93ef8
+	pkgver = 3.1.0.beta.3.r18.g60600cd
 	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = zettlr-git
 	makedepends = yarn
 	makedepends = jq
 	depends = crimson-font
-	depends = electron28
+	depends = electron30
 	depends = pandoc-cli
 	depends = ttf-inconsolata
 	depends = ttf-liberation
-	optdepends = texlive-bin: For Latex support
-	provides = zettlr=3.0.3.r240.g4d93ef8
+	optdepends = texlive-latex: For Latex support
+	provides = zettlr=3.1.0.beta.3.r18.g60600cd
 	conflicts = zettlr
 	source = zettlr-git::git+https://github.com/Zettlr/Zettlr.git
 	source = zettlr.sh
