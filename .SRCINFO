@@ -1,6 +1,6 @@
 pkgbase = achilles-git
 	pkgdesc = Achilles is a checkm8 utility for macOS and Linux that offers a selection of tools for vulnerable devices.
-	pkgver = r47.b027477
+	pkgver = r51.9cb87ab
 	pkgrel = 1
 	url = https://github.com/alfiecg24/Achilles
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = achilles-git
 	provides = achilles
 	source = git+https://github.com/alfiecg24/Achilles
 	source = 0001-chore-lowercase-achilles-bin.patch
+	source = 0002-fix-broken-import.patch
 	md5sums = SKIP
 	md5sums = 22dcce17c5eebed40712bdac9ed0b275
+	md5sums = e66f3b0f4f2d6659c97ede91d6ea9f4a
 
 pkgname = achilles-git
