@@ -46,5 +46,5 @@ package() {
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/COPYING.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 'COPYING.txt' "$pkgdir/usr/share/licenses/$pkgname/COPYING.txt"
 }
