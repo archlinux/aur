@@ -14,7 +14,7 @@ source=("https://github.com/UltimateHackingKeyboard/agent/releases/download/v${p
 sha256sums=('e55cd44aeabec9cf075d220b320db8c3f85bc1ab1fe23ab41f4c2d7bd330fa76'
             '4c4b3b0a8c6313355c0afdd9a8a9509fd00f6e53ec44d623fd35adce598fd400'
             'a82c8fdf2dcdfdd0a7cc92552451007fb6dd2abe8e7720126add3ee0b8156423')
-options=(!strip)
+options=(!strip !debug)
 install=${pkgname}.install
 _filename=./UHK.Agent-${pkgver}-linux-x86_64.AppImage
 

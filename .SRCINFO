@@ -11,6 +11,7 @@ pkgbase = uhk-agent-appimage
 	depends = dbus-glib
 	depends = gtk2
 	options = !strip
+	options = !debug
 	source = https://github.com/UltimateHackingKeyboard/agent/releases/download/v4.1.0/UHK.Agent-4.1.0-linux-x86_64.AppImage
 	source = uhk-agent.desktop.patch
 	source = uhk-agent.sh
