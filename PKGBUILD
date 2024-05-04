@@ -2,14 +2,14 @@
 pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
-pkgver=r461.83bbce2
+pkgver=r463.8a3359f
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
 url="https://github.com/honjow/sk-holoiso-config.git"
 license=('MIT')
 makedepends=('git')
-depends=('expect' 'efibootmgr' 'zram-generator')
+depends=('expect' 'efibootmgr' 'zram-generator' 'just')
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon)
 replaces=(sk-chos-addon)
@@ -68,4 +68,12 @@ package() {
     # /etc/default/*
     install -dm755 "${pkgdir}/etc/default"
     install -m644 -t "${pkgdir}/etc/default" "${source_dir}/etc/default"/*
+
+    # /usr/share/sk-chos/*
+    install -dm755 "${pkgdir}/usr/share/sk-chos"
+    install -m644 -t "${pkgdir}/usr/share/sk-chos" "${source_dir}/share/sk-chos"/*
+
+    # /usr/share/sk-chos/just/*
+    install -dm755 "${pkgdir}/usr/share/sk-chos/just"
+    install -m644 -t "${pkgdir}/usr/share/sk-chos/just" "${source_dir}/share/sk-chos/just"/*
 }
