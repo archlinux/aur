@@ -1,0 +1,17 @@
+pkgbase = android-armv7a-eabi-utf8cpp
+	pkgdesc = UTF-8 with C++ in a Portable Way (Android armv7a-eabi)
+	pkgver = 4.0.5
+	pkgrel = 1
+	url = https://github.com/nemtrif/utfcpp
+	arch = any
+	license = custom:BSL
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/nemtrif/utfcpp/archive/v4.0.5/utf8cpp-4.0.5.tar.gz
+	sha256sums = ffc668a310e77607d393f3c18b32715f223da1eac4c4d6e0579a11df8e6b59cf
+
+pkgname = android-armv7a-eabi-utf8cpp
