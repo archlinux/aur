@@ -15,6 +15,7 @@ pkgbase = ocaml-ppx_assert
 	depends = ocaml-ppx_here>=0.16.0
 	depends = ocaml-ppx_sexp_conv>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
+	depends = zstd
 	options = !strip
 	source = ocaml-ppx_assert-0.16.0.tar.gz::https://github.com/janestreet/ppx_assert/archive/v0.16.0.tar.gz
 	sha512sums = cceddea9172535ca72990fabe455b503a28a5b7519dc635ba1e6e3aff9d0c5f71a794f3ce05466165bab843b7385c23b0d879917d15589ad9b9592718dd46063
