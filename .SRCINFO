@@ -9,6 +9,7 @@ pkgbase = ocaml-oseq
 	checkdepends = ocaml-containers
 	checkdepends = ocaml-gen
 	checkdepends = ocaml-qcheck
+	makedepends = git
 	makedepends = dune>=1.0.0
 	depends = ocaml>=4.08.0
 	options = !strip
