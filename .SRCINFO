@@ -1,0 +1,16 @@
+pkgbase = abesoddysee-relive
+	pkgdesc = Oddworld: Abes Oddysee powered by the relive project and will require you to own the game.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/abesoddysee
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = relive-bin
+	depends = unzip
+	source = https://gitlab.com/linuxbombay/abesoddysee/-/archive/1.0.0/abesoddysee-1.0.0.tar.bz2
+	sha256sums = SKIP
+
+pkgname = abesoddysee-relive
