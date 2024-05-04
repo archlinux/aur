@@ -1,6 +1,6 @@
 pkgbase = thunderbird-globalmenu
 	pkgdesc = Standalone mail and news reader from mozilla.org (With appmenu patch from Ubuntu)
-	pkgver = 115.10.1
+	pkgver = 115.10.2
 	pkgrel = 1
 	url = https://www.thunderbird.net/
 	arch = x86_64
@@ -43,20 +43,20 @@ pkgbase = thunderbird-globalmenu
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = libotr: OTR support for active one-to-one chats
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = thunderbird=115.10.1
+	provides = thunderbird=115.10.2
 	conflicts = thunderbird
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = https://archive.mozilla.org/pub/thunderbird/releases/115.10.1/source/thunderbird-115.10.1.source.tar.xz
-	source = https://archive.mozilla.org/pub/thunderbird/releases/115.10.1/source/thunderbird-115.10.1.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/thunderbird/releases/115.10.2/source/thunderbird-115.10.2.source.tar.xz
+	source = https://archive.mozilla.org/pub/thunderbird/releases/115.10.2/source/thunderbird-115.10.2.source.tar.xz.asc
 	source = assert.patch
 	source = D187418.patch
 	source = D187749.patch
 	source = unity-menubar.patch
 	source = org.mozilla.thunderbird.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha1sums = 0f06f90e395a098a30cacc41968ce6ce5242f7af
+	sha1sums = 17ef4cfaa43e6fed0bc5c7cf9ae263722b1a89a8
 	sha1sums = SKIP
 	sha1sums = bb4bbaddc549edd3506b5e955840fcebffcafb71
 	sha1sums = b3ccca02959d94ef2a5db8f140ff96a2cd9724ef
