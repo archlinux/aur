@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=nullrangesData
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="ExperimentHub datasets for the nullranges package"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c8b4cf63d70a2577251c03c093c014b1')
-b2sums=('17c3004393ca6181bc3e10639ee160071c78272b889aa62d44fdce8a09e9e1b89d3b86bed8941ce594bdbe9a6ed155ed18548ab01696b48031fc5ba1ab16fea7')
+md5sums=('5f4ebf5f8328cc3c9379ed9f7f3bb900')
+b2sums=('72a1eafa3af303880407f4e4e76704893a41980d161eb49b7f03d5067484c91ce8c902c571db1310f4d361ba970c2b960db7d61d4107f0ad93f8162c2bd2f66b')
 
 build() {
   mkdir build
