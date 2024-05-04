@@ -1,0 +1,17 @@
+pkgbase = python-modernize
+	pkgdesc = Code modernizer for migration to python 3 built on fissix (fork of lib2to3)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/PyCQA/modernize
+	arch = any
+	license = LicenseRef-python-modernize
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-fissix
+	source = https://files.pythonhosted.org/packages/source/m/modernize/modernize-0.8.0.tar.gz
+	sha256sums = 1672b4bb19a060a53dd0518cc8f70fc83591c7246e532223459f85d338c60f55
+
+pkgname = python-modernize
