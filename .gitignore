@@ -3,3 +3,6 @@
 !PKGBUILD
 !*.install
 !.SRCINFO
+!keys/
+!CHANGELOG.*
+!.*patch

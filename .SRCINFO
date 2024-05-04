@@ -10,8 +10,6 @@ pkgbase = urxvt-font-size-git
 	depends = rxvt-unicode
 	depends = xorg-xrdb
 	depends = xorg-xlsfonts
-	provides = urxvt-font-size
-	conflicts = urxvt-font-size
 	source = git+https://github.com/majutsushi/urxvt-font-size.git
 	md5sums = SKIP
 
