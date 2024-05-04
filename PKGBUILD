@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SNAGEEdata
-_pkgver=1.39.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-snagee
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('57d18197cff046d0a080bc28ce477bec')
-b2sums=('2259e137bc4977b6cae0d60f5fd22c3394c0e5f2ffc3a326e7b9fd2602014eed71f1f33e29fd3b399c8002e54dba07409dc98605a005f01d36a1318a73ef25d2')
+md5sums=('ff8862fc9f40327e32b379d0f2eda13e')
+b2sums=('0a381c613707c878437acfdbc967fb0bed81baa752893fa9a644c86b4861c8a55356552b4d2f74e7c9358f4e4da1a96a8e887ce17fd8044a9d8378637afb586b')
 
 build() {
   mkdir build
