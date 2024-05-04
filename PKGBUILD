@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=orthosData
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Data for the orthos package"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7970587455fa5197daf1f6b640b7f688')
-b2sums=('310e2e672d3c91682df9e6284550107e1581e9096eda4687eda6679209e7675cc5e6c8fa95164d2fa527fb783b6120e34723157346767d1795fbf3a8409e6266')
+md5sums=('364f2cb98aa8e31cf1d4bf142b88680f')
+b2sums=('318b134f053256cc1ae6fccb0c76d7b4a664fecbdb89dac3ec02586b5ae6e01efc76fd076e96f47d0d5f5daaeaea58582bb2eb27f2ccada646c7016734543db3')
 
 build() {
   mkdir build
