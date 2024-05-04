@@ -15,7 +15,7 @@ provides=(quran-companion)
 conflicts=(quran-companion-git)
 source=("https://github.com/0xzer0x/quran-companion/releases/download/v${pkgver}/Quran_Companion-${pkgver}-x86_64.AppImage")
 md5sums=("38b1206ed0c1c3bdb8387297a01bf277")
-options=(!strip)
+options=(!strip !debug)
 
 prepare() {
 	chmod +x "${srcdir}/Quran_Companion-${pkgver}-x86_64.AppImage"

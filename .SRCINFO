@@ -9,6 +9,7 @@ pkgbase = quran-companion
 	provides = quran-companion
 	conflicts = quran-companion-git
 	options = !strip
+	options = !debug
 	source = https://github.com/0xzer0x/quran-companion/releases/download/v1.2.5/Quran_Companion-1.2.5-x86_64.AppImage
 	md5sums = 38b1206ed0c1c3bdb8387297a01bf277
 
