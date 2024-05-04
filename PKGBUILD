@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=orthos
-_pkgver=1.0.1
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="\`orthos\` is an R package for variance decomposition using conditional variational auto-encoders"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -42,8 +42,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c35d515c0e956e4207b00db662192707')
-b2sums=('d625afa4fa66ce61392616a49023a003acda32d399fa5cf76291f24f75ef059188d797a7319c6f77cd76072440a87de852fb7da113aab0ad8bb930a1d2ec2cab')
+md5sums=('bea22407249492b848226f5d73969cce')
+b2sums=('74e258f6f89aa05f8b0b9b4f99a0ef9c169b58474271d29b421ef266de51408bad6a55c4635649d3f1260983dc3ee7a07a055e5f88b20fc9ac6b540607a12604')
 
 build() {
   mkdir build
