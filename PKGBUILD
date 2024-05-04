@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.vcf
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Save and Load Variant Data to/from File"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e0873ba68051843f6a35b01fef673423')
-b2sums=('51f1780caff6dfb3166a16f16d5eb62f8b047f529d3cff943aa546e0beb706ca4d28f6cbd1d7a939e37d3742d2a8724cfb5246d04ec22e3b7eb2551a69f8c9d5')
+md5sums=('e05722d3d94bb9d834540553486ed9ce')
+b2sums=('b7c3c6716b91da81a4bf71b9755f0211ed71ce9d56beda931bcaa3b0e10fc351a14c98c9a06bf925971f7ba6e44e6614f18bf47b223a719e45a2130d9e317f5f')
 
 build() {
   mkdir build
