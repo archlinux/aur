@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.bumpy
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Save and Load BumpyMatrices to/from file"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -14,6 +14,7 @@ depends=(
   r-biocgenerics
   r-bumpymatrix
   r-iranges
+  r-rhdf5
   r-s4vectors
 )
 checkdepends=(
@@ -27,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0d5111cd74d5b72fc88eb66ac5b670c3')
-b2sums=('dda872760d1f2801dde771ca8927e5095ecf8fd7d577ca28faa9fbb094784098d21320b24c22b378d0823a0737563c8af87f0af504a7dcfcc07557b44a0312da')
+md5sums=('28da879434089d159694feb1a0afd5fe')
+b2sums=('fdb9b0a814e659b7d82ac202a48d730dfc7b22ec7f2a167be7b2f881611cf465291516cea94bd73fecb3d85ccdb24dcfedfc3c86880072351fe634ecaf1b3955')
 
 build() {
   mkdir build
