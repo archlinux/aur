@@ -1,15 +1,15 @@
 pkgbase = r-minfidata
 	pkgdesc = Example data for the Illumina Methylation 450k array
-	pkgver = 0.48.0
-	pkgrel = 2
+	pkgver = 0.50.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/minfiData
 	arch = any
 	license = Artistic-2.0
 	depends = r-illuminahumanmethylation450kanno.ilmn12.hg19
 	depends = r-illuminahumanmethylation450kmanifest
 	depends = r-minfi
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/minfiData_0.48.0.tar.gz
-	md5sums = 1ca7578aeab1a54db146c443870be6e7
-	b2sums = b6816c8015890dddb13608a5c451c7bc33f0a98de8a44ca6bdbd278d8372d3ea2bc0d82705f108d52644d214b60f316e4ce64ef17d090b815de34577f757a4cd
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/minfiData_0.50.0.tar.gz
+	md5sums = 1690dfe4d1ce4f49cae6078d0afe50aa
+	b2sums = caba0d05d3e4d879dd3dfb5d6288dc9c75326a3f13f720f2ff86a785b2475fa352513013633314c68c186fac9f48fde228905832bb779944d9bf613f13cb3ae0
 
 pkgname = r-minfidata
