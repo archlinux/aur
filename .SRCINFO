@@ -13,6 +13,7 @@ pkgbase = python-inputmodule
 	depends = inputmodule-udev
 	depends = python>=3.7.0
 	depends = python-getkey
+	depends = python-opencv
 	depends = python-pillow
 	depends = python-pyserial
 	depends = python-pysimplegui

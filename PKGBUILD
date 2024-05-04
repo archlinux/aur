@@ -7,7 +7,7 @@ pkgdesc='Python-based command line utility and library to control Framework Lapt
 arch=('any')
 url="https://github.com/FrameworkComputer/$_projectname"
 license=('MIT')
-depends=('inputmodule-udev' 'python>=3.7.0' 'python-getkey' 'python-pillow' 'python-pyserial' 'python-pysimplegui')
+depends=('inputmodule-udev' 'python>=3.7.0' 'python-getkey' 'python-opencv' 'python-pillow' 'python-pyserial' 'python-pysimplegui')
 makedepends=('python-build' 'python-hatchling' 'python-hatch-vcs' 'python-installer' 'python-wheel')
 provides=('ledmatrixctl' 'ledmatrixgui')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
