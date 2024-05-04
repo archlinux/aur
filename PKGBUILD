@@ -1,7 +1,7 @@
-# Maintainer: Mark Old <dlom234@gmail.com>
+# Maintainer: Alexey Manukhin <axxapy@gmail.com>
 
 pkgname=virtualhere-server-bin
-pkgver=2.7.2
+pkgver=4.6.4
 pkgrel=1
 pkgdesc="VirtualHere USB Server for Linux Desktop"
 arch=("i686" "x86_64")
@@ -10,17 +10,23 @@ license=("custom")
 optdepends=("avahi: systemd unit support")
 provides=("virtualhere")
 conflicts=("virtualhere")
+options=(!strip)
 source=("virtualhere.service")
 source_i686=("https://www.virtualhere.com/sites/default/files/usbserver/vhusbdi386")
 source_x86_64=("https://www.virtualhere.com/sites/default/files/usbserver/vhusbdx86_64")
 md5sums=('b317ad221de44c968d2368825e1682fe')
-md5sums_i686=('60109f2782f31494017b217e595f8bdc')
-md5sums_x86_64=('ccdcd1a9fb5ca8c5bbbe34e175172568')
+md5sums_i686=('SKIP')
+md5sums_x86_64=('SKIP')
 
 build() {
     mv vhusbd* vhusbd
     chmod +x vhusbd
     ./vhusbd -l > LICENSE
+}
+
+pkgver() {
+    chmod +x "${srcdir}/vhusbdx86_64"
+    "${srcdir}/vhusbdx86_64" --help 2>/dev/null | head -n 1| sed 's/.*\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\).*/\1/'
 }
 
 package() {
