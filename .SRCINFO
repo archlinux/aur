@@ -1,36 +1,36 @@
 pkgbase = lib32-libgit2
 	pkgdesc = A linkable library for Git
-	pkgver = 1.7.2
-	pkgrel = 1
+	pkgver = 1.8.0
+	pkgrel = 2
 	url = https://github.com/libgit2/libgit2
 	arch = x86_64
-	license = GPL2
+	license = LicenseRef-GPL-2.0-only-with-linking-exception
 	makedepends = cmake
-	makedepends = lib32-openssl
-	makedepends = lib32-pcre2
-	makedepends = lib32-http-parser
-	makedepends = lib32-zlib
-	makedepends = lib32-libssh2
 	makedepends = python
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = libgit2=1:1.7.2
+	depends = libgit2=1:1.8.0
+	depends = lib32-libssh2
+	depends = lib32-openssl
+	depends = lib32-pcre2
+	depends = lib32-http-parser
+	depends = lib32-zlib
 	provides = libgit2.so
-	source = https://github.com/libgit2/libgit2/archive/refs/tags/v1.7.2.tar.gz
-	sha256sums = de384e29d7efc9330c6cdb126ebf88342b5025d920dcb7c645defad85195ea7f
+	source = https://github.com/libgit2/libgit2/archive/refs/tags/v1.8.0.tar.gz
+	sha256sums = 9e1d6a880d59026b675456fbb1593c724c68d73c34c0d214d6eb848e9bbd8ae4
 
 pkgname = lib32-libgit2
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = libgit2=1:1.7.2
+	depends = libgit2=1:1.8.0
 	depends = lib32-libssh2
-	depends = libssh2.so
 	depends = lib32-openssl
+	depends = lib32-pcre2
+	depends = lib32-http-parser
+	depends = lib32-zlib
+	depends = libssh2.so
 	depends = libcrypto.so
 	depends = libssl.so
-	depends = lib32-pcre2
 	depends = libpcre2-8.so
-	depends = lib32-http-parser
 	depends = libhttp_parser.so
-	depends = lib32-zlib
 	depends = libz.so

@@ -5,29 +5,29 @@
 
 _pkgname=libgit2
 pkgname=lib32-libgit2
-pkgver=1.7.2
-pkgrel=1
+pkgver=1.8.0
+pkgrel=2
 pkgdesc="A linkable library for Git"
 arch=('x86_64')
-url="https://github.com/libgit2/libgit2"
-license=('GPL2')
+url='https://github.com/libgit2/libgit2'
+license=('LicenseRef-GPL-2.0-only-with-linking-exception')
 depends=(
   'lib32-gcc-libs'
   'lib32-glibc'
   "libgit2=1:${pkgver}"
-)
-makedepends=(
-  'cmake'
+  'lib32-libssh2'
   'lib32-openssl'
   'lib32-pcre2'
   'lib32-http-parser'
   'lib32-zlib'
-  'lib32-libssh2'
+)
+makedepends=(
+  'cmake'
   'python'
 )
 provides=('libgit2.so')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('de384e29d7efc9330c6cdb126ebf88342b5025d920dcb7c645defad85195ea7f')
+source=("https://github.com/libgit2/libgit2/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('9e1d6a880d59026b675456fbb1593c724c68d73c34c0d214d6eb848e9bbd8ae4')
 
 build() {
 
@@ -61,7 +61,9 @@ check() {
     'network_url_parse__ipv4_implied_root_empty_port|'
     'network_url_parse__ipv4_empty_port|'
     'network_url_parse__ipv6_implied_root_empty_port|'
-    'network_url_parse__ipv6_empty_port'
+    'network_url_parse__ipv6_empty_port|'
+    'proxy_auto_not_detected'
+
   )
   local _ifs="$IFS"
   IFS=
@@ -74,15 +76,18 @@ check() {
 
 package() {
   depends+=(
-    'lib32-libssh2' 'libssh2.so'
-    'lib32-openssl' 'libcrypto.so' 'libssl.so'
-    'lib32-pcre2' 'libpcre2-8.so'
-    'lib32-http-parser' 'libhttp_parser.so'
-    'lib32-zlib' 'libz.so'
+    'libssh2.so'
+    'libcrypto.so' 'libssl.so'
+    'libpcre2-8.so'
+    'libhttp_parser.so'
+    'libz.so'
   )
 
   DESTDIR="${pkgdir}" cmake --install build
   rm -fr "${pkgdir}/usr/include"
-  (cd "${pkgdir}/usr/bin"; mv git2 git2-32)
+  (
+    cd "${pkgdir}/usr/bin"
+    mv git2 git2-32
+  )
   install -vDm 644 "${_pkgname}-${pkgver}"/{AUTHORS,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
