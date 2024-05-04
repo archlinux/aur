@@ -11,6 +11,7 @@ pkgbase = go-musicfox-git
 	depends = flac
 	depends = alsa-lib
 	provides = musicfox
+	provides = go-musicfox
 	conflicts = go-musicfox-bin
 	conflicts = musicfox
 	conflicts = go-musicfox
