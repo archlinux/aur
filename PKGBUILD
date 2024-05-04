@@ -14,9 +14,23 @@ makedepends=(
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('09738830ce17ac450bce3007def5e79da58fc19b61c37cbc83a64a2aa4b02201')
 
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
+}
+
 build() {
   cd "${pkgname}-${pkgver}"
-  cargo build --release
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 package() {
