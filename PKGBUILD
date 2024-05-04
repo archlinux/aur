@@ -2,14 +2,16 @@
 
 pkgname=gamescope-session-sk-git
 _gitdir=gamescope-session
-pkgver=r223.0dbb596
+pkgver=r267.0e7d860
 pkgrel=1
 pkgdesc="Common gamescope session files"
 arch=('any')
 url="https://github.com/ChimeraOS/gamescope-session"
 license=('MIT')
+provides=('gamescope-session-git')
+conflicts=('gamescope-session-git')
 groups=()
-depends=('gamescope' 'read-edid')
+# depends=('gamescope' 'read-edid')
 makedepends=('git')
 install=gamescope-session.install
 source=("${_gitdir}::git+https://github.com/3003n/${_gitdir}.git#branch=dev")
