@@ -1,26 +1,26 @@
 pkgbase = easytranscript
-	pkgdesc = Easy to use transcription-software with a high feature volume
-	pkgver = 2.51.2
+	pkgdesc = Easy to use transcription-software with a variety of features
+	pkgver = 2.51.5
 	pkgrel = 1
-	url = http://e-werkzeug.eu/index.php/en/products/easytranscript
+	url = https://e-werkzeug.eu/index.php/en/products/easytranscript
 	arch = i686
 	arch = x86_64
-	license = Apache
-	license = CCPL
-	license = GPL3
-	license = LGPL2.1
+	license = Apache-2.0
+	license = CC-BY-SA-3.0-DE
+	license = GPL-3.0-or-later
+	license = LGPL-2.1-or-later
+	makedepends = java-environment=22
 	makedepends = unzip
 	depends = java-openjfx
 	depends = java-commons-logging
 	depends = java-commons-io
 	depends = vlc
-	noextract = easytranscript-2.51.2.zip
-	source = easytranscript-2.51.2.zip::https://www.e-werkzeug.eu/software/easytranscript/versions/2.51.2/easytranscript.zip
+	noextract = easytranscript-2.51.5.zip
+	source = easytranscript-2.51.5.zip::https://e-werkzeug.eu/software/easytranscript/versions/2.51.5/easytranscript.zip
 	source = easytranscript.desktop
 	source = easytranscript
-	sha512sums = 45f967f740972c6978f2f05844ae679e4430c36d67e70e0a366dec7c58147c23282a23a0806660f421729e15d68350f8b908b6f4e871ffa2e5990a3d3ec08da9
+	sha512sums = 6ecdb19b97bde91cb6802e7568dfbf150cac29184bf5c0a31acf7ff8227c92a0409c853071906ee960eaa0f807fab4aab8a58943244548d34a52d1eb24d7d28d
 	sha512sums = 210a9ef94a3d068e58392ff5d4aed85f4665d8fd614a6aa809ab7e7357b68b689788bf72da508650808e722f862f7c1b25c3f61babb15582b4ffc9593ae34a21
-	sha512sums = 0284a7505437bd68c484f307ee674716e6d955b8e2e8eba391f596bc4535e5a804d13274de968fd6c154f4e1728a4a54d665e6f204135bc5c8e386233b4f25bd
+	sha512sums = 7057572280077fa89fb7b95b2a012f6328af608ca1166b957d0516a1ac71387979432ae9a035540ba4382a8d4d4247437157beacbe2f34b81a906d0932ecd0a2
 
 pkgname = easytranscript
-
