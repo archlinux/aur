@@ -1,6 +1,6 @@
 pkgbase = r-tenxvisiumdata
 	pkgdesc = Visium spatial gene expression data by 10X Genomics
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TENxVisiumData
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = r-tenxvisiumdata
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/TENxVisiumData_1.10.0.tar.gz
-	md5sums = f578add429847efff027a61b1749b9b4
-	b2sums = 99d39e3c83242c776f94cfbcfa2ebff6d96e49827495bbec14aa3952425d3878444ebc5bcdef457ed45c30b021bc460da18742a66bf29121441a3ee9a4080027
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/TENxVisiumData_1.12.0.tar.gz
+	md5sums = 697e98d0decd845650ef3fd5c75b598e
+	b2sums = a32b2a1f2a0078f0c6a21393404fb56dac3a43f590c8b47dd15f2735832db0c4e5520001ffc5b1a8c098ae0ca4b97667dac05a7e05f341d786416c6137b2ae57
 
 pkgname = r-tenxvisiumdata
