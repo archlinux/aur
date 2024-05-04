@@ -1,6 +1,6 @@
 pkgbase = r-multiassayexperiment
 	pkgdesc = Software for the integration of multi-omics experiments in Bioconductor
-	pkgver = 1.30.0
+	pkgver = 1.30.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MultiAssayExperiment
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-multiassayexperiment
 	optdepends = r-survminer
 	optdepends = r-testthat
 	optdepends = r-upsetr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MultiAssayExperiment_1.30.0.tar.gz
-	sha256sums = 94b757dd22338429855fc3f71a0bb3b4e37d1b1f3166c9213a6b2deb5a8cfdde
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MultiAssayExperiment_1.30.1.tar.gz
+	sha256sums = 1c3621018740694cc98ce5477e9703a215f0d8b8d793caaeae1899c604634e1f
 
 pkgname = r-multiassayexperiment
