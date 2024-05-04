@@ -43,4 +43,8 @@ package() {
 	install -Dm644 <("$pkgdir"/usr/bin/maa complete bash) "$pkgdir/usr/share/bash-completion/completions/maa"
 	install -Dm644 <("$pkgdir"/usr/bin/maa complete zsh) "$pkgdir/usr/share/zsh/site-functions/_maa"
 	install -Dm644 "$srcdir/maa-cli-$pkgver"/maa-cli/completions/*.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+
+	mkdir -p "$pkgdir/usr/share/man/man1"
+	"$pkgdir/usr/bin/maa" mangen --path "$pkgdir/usr/share/man/man1"
+	gzip "$pkgdir"/usr/share/man/man1/*.1
 }
