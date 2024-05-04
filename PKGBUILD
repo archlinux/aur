@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts61
-pkgver=6.1.88
+pkgver=6.1.90
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -31,6 +31,7 @@ _srctag=v$pkgver
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0004-Sphinx-7.2.2-8.0-PosixPath.patch
   config  # the main kernel config file
 )
 validpgpkeys=(
@@ -38,17 +39,20 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-md5sums=('ea9e0d8e3415633800e7be55197db5b3'
+md5sums=('f3f8ff926e0b8b1c38cbbb633eb7b147'
          'SKIP'
          'cb32cb125ea45ac05782630dfc9fc951'
+         '806e76e95002ecbf49b03d6e655dc567'
          'c7f23b1bcb226f29451d47bb7ae8604b')
-sha256sums=('696902fd45c543168b638370464c44ffbfdf5f20003ae32b6145bbce3665f8d1'
+sha256sums=('83a3d72e764fceda2c1fc68a4ea6b91253a28da56a688a2b61776b0d19788e1d'
             'SKIP'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
+            '08ef05d8a4fc8117d131f219d753caa138a0fb7c8f00690ff6dc35ac6aacdb83'
             'ea7a177caf7170b9f3746732e3d32703357d19cbafd463069aa34a8d8386c1e9')
-b2sums=('0ac898718d521af80aaaf59e7c85d199006b155cfd48e3a102a8b11162eef88eeb388265970f211cf33655bab71303364b5b81f1a32e2b7892039843c14ee6bd'
+b2sums=('839f183a9b4bac9f12a17d23d888856160acf7fff289dee53be4676fb77c2a5fc21a3fdfe9160e221690f3ea51bde60b54b9109ed457428f2fbc5e139df4985f'
         'SKIP'
         '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
+        'a208eece0028ca98e64637b58d0d4c2e641a111d2f8f9f4a9c71531bb12f75edae14c9e7dbeb840d88be9fdc0b0022cf0a30e3f6a9c34d58e068e02a79940ea8'
         'c277e4a3bb39e126fc10d37fe98e34c93332c8f7db6d134fd6d2e7ce30ae4840596eff5fdf3ce85f923b944981bd3a2fea912c11dedaa25d04d460b6d112806a')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -84,7 +88,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
-  make htmldocs
+  make -i htmldocs SPHINXOPTS='-k'
 }
 
 _package() {
