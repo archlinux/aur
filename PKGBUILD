@@ -8,7 +8,6 @@ url="https://github.com/daviddrysdale/mdbook-footnote"
 arch=('x86_64')
 license=('Apache-2.0')
 makedepends=(
-  'rust'
   'cargo'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
