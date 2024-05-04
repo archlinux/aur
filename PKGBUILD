@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MSA2dist
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="MSA2dist calculates pairwise distances between all sequences of a DNAStringSet or a AAStringSet using a custom score matrix and conducts codon based analysis"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -17,6 +17,7 @@ depends=(
   r-foreach
   r-genomicranges
   r-iranges
+  r-pwalign
   r-rcpp
   r-rlang
   r-seqinr
@@ -40,8 +41,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8a0d1c303af72c93a1810488010c2e6f')
-b2sums=('158153791f951596afa798d2892d6c0f14c15e1afd230129cd4593f6a6ba17ba492ec06e84fe12fec56f3d85c649bad3b0a7cd45d4f37d5853420e37fbced8ac')
+md5sums=('f2246da253b2a0d5b3464c228774ad38')
+b2sums=('20df7449d220733b87dbe20c42984398fadda3a04b06fd5443aaaf3a1687383609ac03584195af8884070498560412470a1c8f667eeae2e866f20e80246526af')
 
 build() {
   mkdir build
