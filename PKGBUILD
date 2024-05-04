@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AneuFinderData
-_pkgver=1.31.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0466cfee5aac8efafc6cc96b60f7993f')
-b2sums=('db2db6c78e6937b712f11f0b3340d047148de805248c02028ad93324b0e67cfb4eb265f6e0fb563fc91f12e4318667aa846881480f92585a6c14ae5007885faa')
+md5sums=('b904f7ae18def06a2423a73f1559086d')
+b2sums=('252f7783fbd612f369c12f9ac6e5aa1d624d1097621524b78143852574995c27de958754b5115b1d559457761ab9eec95524a9a25becef86efc6f6752d980a57')
 
 build() {
   mkdir build
