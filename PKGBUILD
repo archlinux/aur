@@ -18,8 +18,8 @@ _CUDA_ARCH_LIST_CMAKE="52-real;53-real;60-real;61-real;62-real;70-real;72-real;7
 _pkgname=vision
 pkgbase='torchvision'
 pkgname=('torchvision' 'torchvision-cuda' 'python-torchvision' 'python-torchvision-cuda')
-pkgver=0.17.1
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
@@ -51,21 +51,17 @@ makedepends=(
   nvidia-utils
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
-        $pkgname-ffmpeg6.patch::https://patch-diff.githubusercontent.com/raw/pytorch/vision/pull/8096.patch
         "https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/cuviddec.h"
         "https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/nvcuvid.h"
         "torchvision-0_17_1-fix-build.patch"
 )
-b2sums=('db25faab565412f2892ca4cf8d13c459b8045aaab83009a686a93272f0b3e3e8c0da930f1d7b0682e0adc7a600195b035ca19f71fd15a26f77b349206e3ed324'
-        'd9320af6029932045b95043728853a80c99d27ff919dc43eb2cac185181cee8a5ccbb4657ec77d281ceed22f27b8cfed4e7a7d783eecd477569641fd75ce4e95'
+b2sums=('11b00b740589d109002136c2823edab8b06e832b93fc6b1a5ecbad29bb3a32516ac1a4e5fa48c5ae4cf8a579289c7581ba1658187fa0c56933cc820d73d43e96'
         '9ccff204a4e1e93340d8b12c2b1d17e01663c12957b4665c0043eccf76d507a7308745a5d9e4d89657840aaf8abf0aa8f51bd79d6e0d5dc57a376d54a754755a'
         '7db5d621f3099bc5455f1faeb7f4c3575a9cf70153ba56a6efc6d67d0ef2ac5438f6e117e621c5ef35c239eb3bce3fe17ce160e6b7765e8203d67a7299085429'
         '1c3b33f7ff310e2e91ba277e2d984641e10b60c2acde42e30d3454e254b44f1f91cb7374a8aa7e66e5a870c71166a799f9fe640fed3629dc3d7a0a8ea66f9f2f')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  patch -Np1 -i "${srcdir}"/$pkgname-ffmpeg6.patch
 
   # https://github.com/pytorch/vision/issues/8307
   patch -N -i "${srcdir}"/torchvision-0_17_1-fix-build.patch
