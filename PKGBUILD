@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FRASER
-_pkgver=1.14.1
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Find RAre Splicing Events in RNA-Seq Data'
 arch=('x86_64')
@@ -60,7 +60,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3cc9a84cbe1ddfcc0a7c09df54e01b364a435940d825814bf564b90135bf438f')
+sha256sums=('a8899f07f42ce5baa018d81908809cb45e4ae767a65fd9da191802e700ba6660')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
