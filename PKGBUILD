@@ -2,7 +2,7 @@
 pkgname=python-cpe
 _name="${pkgname#python-}"
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Common Platform Enumeration for Python"
 arch=(any)
 url="https://github.com/nilp0inter/cpe"

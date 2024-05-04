@@ -1,7 +1,7 @@
 pkgbase = python-cpe
 	pkgdesc = Common Platform Enumeration for Python
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nilp0inter/cpe
 	arch = any
 	license = LGPL
