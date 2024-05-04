@@ -1,13 +1,15 @@
 pkgbase = shantz-xwinwrap-bzr
 	pkgdesc = Utility to play Movies on your Desktop Or ElectricSheep
 	pkgver = 20090421
-	pkgrel = 5
+	pkgrel = 6
 	url = https://shantanugoel.com/2008/09/03/shantz-xwinwrap/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = bzr
 	makedepends = python-dulwich
+	makedepends = python-tzlocal
+	makedepends = python-launchpadlib
 	depends = libxext
 	depends = libxrender
 	provides = xwinwrap

@@ -5,7 +5,7 @@
 
 pkgname=shantz-xwinwrap-bzr
 pkgver=20090421
-pkgrel=5
+pkgrel=6
 pkgdesc="Utility to play Movies on your Desktop Or ElectricSheep"
 [ "$CARCH" = "i686"   ] && ARCH=x86
 [ "$CARCH" = "x86_64" ] && ARCH=x86_64
@@ -15,7 +15,7 @@ license=(MIT)
 depends=(libxext libxrender)
 provides=('xwinwrap')
 conflicts=('xwinwrap')
-makedepends=('bzr' 'python-dulwich')
+makedepends=('bzr' 'python-dulwich' 'python-tzlocal' 'python-launchpadlib')
 source=('LICENSE')
 sha512sums=('SKIP')
 
@@ -34,7 +34,7 @@ build() {
   fi
 }
 package() {
-	cd ${srcdir}
+  cd ${srcdir}
   if [ "$CARCH" == "i686" ]; then
     install -D -m0755 xwinwrap/i386/xwinwrap ${pkgdir}/usr/bin/xwinwrap
   else
