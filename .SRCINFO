@@ -4,13 +4,15 @@ pkgbase = python-tika-client
 	pkgrel = 1
 	url = https://github.com/stumpylog/tika-client
 	arch = any
-	license = MPL2
+	license = MPL-2.0
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
 	makedepends = python-editables
 	makedepends = python-pathspec
-	source = python-tika-client-0.5.0.src.tar.gz::https://github.com/stumpylog/tika-client/archive/0.5.0.tar.gz
-	sha256sums = e329b8433802058745bdda3ca40ec01dd703275cbbba9b28f252e4a094b1f440
+	depends = python
+	source = python-tika-client::git+https://github.com/stumpylog/tika-client#tag=0.5.0
+	sha256sums = SKIP
 
 pkgname = python-tika-client
