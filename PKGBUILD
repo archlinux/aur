@@ -3,26 +3,32 @@
 # Contributor: Matthew Murray <matt@mattmurr.xyz>
 pkgname=fprintd-clients-git
 pkgver=1.90.1.r2.g54e56d6
-pkgrel=5
+pkgrel=7
 pkgdesc='Fprintd without the daemon (debian/clients-only git branch)'
 arch=(x86_64)
-license=('GPL')
-depends=(glib2
-	       glibc
-			 	 libfprint
-				 polkit
-				 dbus
-				 dbus-glib
-				 libsystemd
-				 pam)
-makedepends=(git
-						 meson
-						 pam_wrapper
-						 python-cairo
-						 python-dbus
-						 python-dbusmock)
-conflicts=(fprintd
-	         fprintd-clients)
+license=('GPL-2.0-or-later')
+depends=(
+  dbus
+  dbus-glib
+  glib2
+  glibc
+  libfprint
+  libsystemd
+  pam
+  polkit
+)
+makedepends=(
+  git
+  meson
+  pam_wrapper
+  python-cairo
+  python-dbus
+  python-dbusmock
+)
+conflicts=(
+  fprintd
+	fprintd-clients
+)
 provides=(fprintd-clients)
 url="https://gitlab.freedesktop.org/uunicorn/fprintd"
 source=("${pkgname}::git+${url}.git#branch=debian/clients-only"
