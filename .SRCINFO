@@ -1,7 +1,7 @@
 pkgbase = python-gotenberg-client
 	pkgdesc = A Python client for interfacing with the Gotenberg API
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stumpylog/gotenberg-client
 	arch = any
 	license = MPL2

@@ -3,7 +3,7 @@
 _pkgname=gotenberg-client
 pkgname=python-gotenberg-client
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python client for interfacing with the Gotenberg API"
 arch=('any')
 url="https://github.com/stumpylog/gotenberg-client"
