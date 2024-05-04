@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=fotocx
-pkgver=24.21
+pkgver=24.30
 pkgrel=1
 pkgdesc='Image editing and collection management program'
 url=https://www.kornelix.net/fotocx/fotocx.html
@@ -19,7 +19,7 @@ optdepends=('darktable: organize and develop raw images'
             'vlc: for viewing video')
 replaces=(fotoxx)
 source=("https://www.kornelix.net/downloads/downloads/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('0acb68e32956a3f1b2a28025e42d35e5072403e6183ffa1de5cebc3e09a6f32c')
+sha256sums=('0ef1257c4698a1d8c4f8a0f091e3bc6e9390cc91ead88350cd024b283557d14d')
 
 build() {
   make -C $pkgname PREFIX=/usr
