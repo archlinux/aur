@@ -2,14 +2,14 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=R63.32.g1e2cc799
+pkgver=R66.54.g1be0e1a7
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('x86_64')
 url='http://www.vapoursynth.com'
 license=('LGPL2.1' 'custom:OFL' 'custom:WFTPL')
 depends=(
-  'libzimg.so'
+  'zimg-git'
   'python'
 )
 makedepends=(
@@ -17,14 +17,16 @@ makedepends=(
   'cython'
   'python-sphinx'
   'python-sphinx_rtd_theme'
-  'zimg-git'
 )
-provides=('vapoursynth')
+provides=(
+  'vapoursynth'
+  'libvapoursynth.so'
+)
 conflicts=('vapoursynth')
 source=(
   'git+https://github.com/vapoursynth/vapoursynth.git' #branch=doodle1'
   'vapoursynth.xml'
-  'wtfpl.txt::http://www.wtfpl.net/txt/COPYING'
+  'wtfpl.txt' # http://www.wtfpl.net/txt/COPYING
 )
 sha256sums=(
   'SKIP'
@@ -72,6 +74,8 @@ check() {
 }
 
 package() {
+  depends+=('libzimg.so')
+
   make -C build DESTDIR="${pkgdir}" install
 
   cd vapoursynth
