@@ -1,6 +1,6 @@
 pkgbase = android-studio-canary
 	pkgdesc = The Official Android IDE (Canary branch)
-	pkgver = 2024.1.1.5
+	pkgver = 2024.1.1.6
 	pkgrel = 1
 	url = http://tools.android.com/
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = android-studio-canary
 	optdepends = gtk2: GTK+ look and feel
 	optdepends = libgl: emulator support
 	options = !strip
-	source = https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2024.1.1.5/android-studio-2024.1.1.5-linux.tar.gz
+	source = https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2024.1.1.6/android-studio-2024.1.1.6-linux.tar.gz
 	source = android-studio-canary.desktop
-	sha256sums = 4a21b607a8b79bdd982b1f2e0c97aab5eba07c672aaf4d79f9c5f1f3bd1b90d1
+	sha256sums = 1b201956450187bb4cea6e21ce95189de8a368548dc1d4b2fe0dcfedf696f6fb
 	sha256sums = 12ff377490cff386ba7b3ab9c94adfc2ca99515fdfad4773813268217dcd56b7
 
 pkgname = android-studio-canary
