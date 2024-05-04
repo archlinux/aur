@@ -15,7 +15,7 @@ source=("git+$url.git")
 md5sums=("SKIP")
 
 package(){
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/russia-theme-plymouth"
   _themedir="${pkgdir}/usr/share/plymouth/themes/$_themename"
   
   for N in "${_themename}.plymouth" "${_themename}.script" *.png; do
