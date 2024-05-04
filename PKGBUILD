@@ -1,7 +1,7 @@
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
 pkgname=mdbook-graphviz
-pkgver=0.1.7
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A preprocessor for mdbook to renders graphs using Graphviz"
 url="https://github.com/dylanowen/mdbook-graphviz"
@@ -12,7 +12,7 @@ makedepends=(
   'cargo'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('eab1204556b55d2dd845fdf7d03525204c8bcdb69cf93e5649b491895d485198')
+sha256sums=('7a74d7a12bd2a0b7a119d0b14ca7e7d3840acb347debff9ec0ad4d4add026785')
 
 build() {
   cd "${pkgname}-${pkgver}"
