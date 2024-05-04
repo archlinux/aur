@@ -1,7 +1,7 @@
 # Maintainer: J. Corvera <jaida at jcorvera dot me>
 
 pkgname=hyfetch-extra-legal-git
-pkgver=v1.4.13
+pkgver=v1.4.14
 pkgrel=1
 pkgdesc="Neofetch with LGBTQ pride flags. (extra flags, sans paedophelic)"
 arch=('any')
