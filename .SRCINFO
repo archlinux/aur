@@ -13,6 +13,7 @@ pkgbase = ocaml-tyxml
 	depends = ocaml-re>=1.5.0
 	depends = ocaml-seq
 	depends = ocaml-uutf>=1.0.0
+	depends = zstd
 	options = !strip
 	source = ocaml-tyxml-4.6.0.tar.gz::https://github.com/ocsigen/tyxml/archive/4.6.0.tar.gz
 	sha512sums = 25e07c55e04a1f4b02eea511625c1fbb138c168ba19f3b3d929c540d8dc7f96d9c2ec09bb221f592bf09610a542d66f3f8b9b930b1b824f4195e5e0b91b31088

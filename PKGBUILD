@@ -7,7 +7,7 @@ pkgdesc='A library for building correct HTML and SVG documents for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
 license=('LGPL-2.1-only WITH OCaml-LGPL-linking-exception')
-depends=('ocaml>=4.04.0' 'ocaml-markup>=0.7.2' 'ocaml-ppxlib>=0.18.0' 'ocaml-re>=1.5.0' 'ocaml-seq' 'ocaml-uutf>=1.0.0')
+depends=('ocaml>=4.04.0' 'ocaml-markup>=0.7.2' 'ocaml-ppxlib>=0.18.0' 'ocaml-re>=1.5.0' 'ocaml-seq' 'ocaml-uutf>=1.0.0' 'zstd')
 makedepends=('dune>=2.7.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
