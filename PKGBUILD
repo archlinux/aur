@@ -3,21 +3,20 @@
 
 pkgname=python-pg8000
 # https://raw.githubusercontent.com/tlocke/pg8000/main/README.rst
-pkgver=1.30.4
-pkgrel=2
-# curl $(curl https://api.github.com/repos/tlocke/pg8000/git/ref/tags/$pkgver | jq -r .object.url) | jq -r .object.sha
-_commit=f6f416c52af023eb5f6fd38a842d39403a20830b
+pkgver=1.31.2
+pkgrel=1
+_commit=9945228f2cec51727f83058229f59fa7397b4d64
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
 url='https://github.com/tlocke/pg8000'
 # https://github.com/tlocke/pg8000/blob/1.30.4/pyproject.toml#L14
 license=('BSD-3-Clause')
-makedepends=(git python-setuptools python-build python-installer python-versioningit python-wheel)
+makedepends=(git python-build python-installer python-hatchling python-versioningit)
 checkdepends=(python-pytest python-pytest-mock python-pytest-benchmark
               python-pytz postgresql)
 depends=(python python-scramp python-dateutil)
 source=("git+https://github.com/tlocke/pg8000.git?signed#commit=$_commit")
-sha256sums=('SKIP')
+sha256sums=('bec9c96595f6f3330e5441782c9687bf0a0c0fcd56eecfa2baef08fa0c1d9cca')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
 )
@@ -70,7 +69,10 @@ EOF
   # test_readme: skipped as many tests need a postgresql instance listening on the default port
   # localhost:5432, which may cause conflicts until devtools supports a separate network namespace [1]
   # [1] https://gitlab.archlinux.org/archlinux/devtools/-/issues/72
-  PYTHONPATH="$PWD" LANG=C.UTF-8 pytest test -k 'not test_readme'
+
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  LANG=C.UTF-8 test-env/bin/python -m pytest test -k 'not test_readme'
   pg_ctl stop
 }
 
