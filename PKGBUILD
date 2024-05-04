@@ -9,7 +9,7 @@ pkgdesc='Type-driven code generation for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.05.0' 'ocaml-findlib' 'ocaml-ppx_derivers' 'ocaml-ppxlib>=0.20.0' 'ocaml-result')
+depends=('ocaml>=4.05.0' 'ocaml-findlib' 'ocaml-ppx_derivers' 'ocaml-ppxlib>=0.20.0' 'ocaml-result' 'zstd')
 makedepends=('cppo' 'dune>=1.6.3')
 checkdepends=('ocaml-ounit')
 options=('!strip')

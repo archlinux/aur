@@ -15,6 +15,7 @@ pkgbase = ocaml-ppx_deriving
 	depends = ocaml-ppx_derivers
 	depends = ocaml-ppxlib>=0.20.0
 	depends = ocaml-result
+	depends = zstd
 	options = !strip
 	source = ocaml-ppx_deriving-5.2.1.tar.gz::https://github.com/ocaml-ppx/ppx_deriving/archive/v5.2.1.tar.gz
 	source = ocaml-ppx_deriving-5.2.1-fix-ocaml-compat.diff::https://github.com/ocaml-ppx/ppx_deriving/commit/da4d0a0c55184b55c39fccb1d2379984770ddc04.diff
