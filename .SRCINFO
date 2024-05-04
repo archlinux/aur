@@ -1,6 +1,6 @@
 pkgbase = goldwarden
 	pkgdesc = A feature-packed Bitwarden compatible desktop integration
-	pkgver = 0.2.16
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/quexten/goldwarden
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = goldwarden
 	makedepends = gcc
 	makedepends = base-devel
 	depends = libfido2
-	source = https://github.com/quexten/goldwarden/archive/refs/tags/v0.2.16.tar.gz
-	sha256sums = a86e85e9cbd37181c412ca9e98e192551847da9ace456df09a0a3892164efa13
+	source = https://github.com/quexten/goldwarden/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = e809e774b6ae2ad94defceced1edaf2c05661911f2cc712865a9f5002c03ffe3
 
 pkgname = goldwarden

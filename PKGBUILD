@@ -1,5 +1,5 @@
 pkgname=goldwarden
-pkgver=0.2.16
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A feature-packed Bitwarden compatible desktop integration'
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('libfido2')
 makedepends=('go' 'gcc' 'base-devel')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a86e85e9cbd37181c412ca9e98e192551847da9ace456df09a0a3892164efa13')
+sha256sums=('e809e774b6ae2ad94defceced1edaf2c05661911f2cc712865a9f5002c03ffe3')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -24,6 +24,8 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
   export CGO_ENABLED=1
 
+  echo "$pkgver" > cmd/version.txt
+
   go mod tidy
   go build -o build/$pkgname .
 }
@@ -31,6 +33,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 "$srcdir/$pkgname-$pkgver/resources/com.quexten.goldwarden.policy" "$pkgdir/usr/share/polkit-1/actions/com.quexten.goldwarden.policy"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/cli/resources/com.quexten.goldwarden.policy" "$pkgdir/usr/share/polkit-1/actions/com.quexten.goldwarden.policy"
   chown root:root "$pkgdir/usr/share/polkit-1/actions/com.quexten.goldwarden.policy"
 }
