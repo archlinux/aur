@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/whitequark/$pkgname"
 license=('LGPL-2.1-only WITH OCaml-LGPL-linking-exception')
 depends=('ocaml>=4.03.0' 'ocaml-lwt')
-makedepends=('dune>=2.9.0')
+makedepends=('git' 'dune>=2.9.0')
 checkdepends=('ocaml-fileutils>=0.4.4' 'ocaml-ounit>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")

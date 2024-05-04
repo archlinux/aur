@@ -8,6 +8,7 @@ pkgbase = ocaml-inotify
 	license = LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 	checkdepends = ocaml-fileutils>=0.4.4
 	checkdepends = ocaml-ounit>=2.0.0
+	makedepends = git
 	makedepends = dune>=2.9.0
 	depends = ocaml>=4.03.0
 	depends = ocaml-lwt
