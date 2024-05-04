@@ -10,6 +10,7 @@ pkgbase = ocaml-ppx_pipebang
 	makedepends = dune>=2.0.0
 	depends = ocaml>=4.14.0
 	depends = ocaml-ppxlib>=0.28.0
+	depends = zstd
 	options = !strip
 	source = ocaml-ppx_pipebang-0.16.0.tar.gz::https://github.com/janestreet/ppx_pipebang/archive/v0.16.0.tar.gz
 	sha512sums = b333d189c2705b3c7175af5636bd63c38ed434b3828227c7db8d2cb0fe9bd4caa05975d5d28d8fb4d61656bd3d7a15e2db2b36a1672107c1557c5012c19cb445
