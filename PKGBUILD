@@ -2,10 +2,10 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=restfulSEData
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Example metadata for the \"restfulSE\" R package"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -23,8 +23,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c69fe04b8675edd0faa593fb5ffc72c8')
-b2sums=('8db2a24d58b5cca82bc22021ab81ee2d29f12af7251c49c4589d68d996ef753e9feb31d257ef9630be132153aacb009cffdd8f149a62758968fef91864d5dc81')
+md5sums=('e9e3718f9c24dab9326ca0f97852d070')
+b2sums=('8fc049b331442c545950c8dbafda56175aef46243a5264c3b58507677dfa6366dc4af7c336a5e6cef0690f2a84dfd37cf7427ac80598d34eef8990f9f2b4e07a')
 
 build() {
   mkdir build

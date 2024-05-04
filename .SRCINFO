@@ -1,7 +1,7 @@
 pkgbase = r-restfulsedata
 	pkgdesc = Example metadata for the "restfulSE" R package
-	pkgver = 1.24.0
-	pkgrel = 2
+	pkgver = 1.26.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/restfulSEData
 	arch = any
 	license = Artistic-2.0
@@ -13,8 +13,8 @@ pkgbase = r-restfulsedata
 	optdepends = r-knitr
 	optdepends = r-rhdf5client
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/restfulSEData_1.24.0.tar.gz
-	md5sums = c69fe04b8675edd0faa593fb5ffc72c8
-	b2sums = 8db2a24d58b5cca82bc22021ab81ee2d29f12af7251c49c4589d68d996ef753e9feb31d257ef9630be132153aacb009cffdd8f149a62758968fef91864d5dc81
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/restfulSEData_1.26.0.tar.gz
+	md5sums = e9e3718f9c24dab9326ca0f97852d070
+	b2sums = 8fc049b331442c545950c8dbafda56175aef46243a5264c3b58507677dfa6366dc4af7c336a5e6cef0690f2a84dfd37cf7427ac80598d34eef8990f9f2b4e07a
 
 pkgname = r-restfulsedata
