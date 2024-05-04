@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HiContactsData
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="HiContacts companion data package"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bcd518f48342168f7a814a442cf9564c')
-b2sums=('00f112190e63f5719c1c2ff41175581f70b2be9bf58e7102c2e56510c020f69a59f256339b8b20574af8f271bb2b82ddf37e7c4e317f379a06469ab5fc37f747')
+md5sums=('def1aa30f7d457cfde9138ad030bf517')
+b2sums=('4e161217e51ff9b20473b33313a3acc8d3f6c7ea07f09b7e0872fbbf6a8bd29344bef0911aff0d9ef201ec4bbd1e20f67d2d20559e923cabdc247c6c79767f51')
 
 build() {
   mkdir build
