@@ -16,7 +16,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build -o ${pkgname} -ldflags "-extldflags ${LDFLAGS} -s -w -X main.version=${pkgver}" main.go
+    go build -o ${pkgname} -ldflags "-extldflags \"${LDFLAGS}\" -s -w -X main.version=${pkgver}" main.go
 }
 
 package() {
