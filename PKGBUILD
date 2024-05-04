@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=chromstaRData
-_pkgver=1.29.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('58eeec385b4948a7f94958b879361f8f')
-b2sums=('b37aa538e298d0208b89bc39af63bd5d67509738d333d06f690b35afdd51175288979ce6e7b08c11e282f5d8218f72a5245f4fb7e7fd3b86a2e129023c78cc48')
+md5sums=('5680118a8394c29faa4ec6877151bd3a')
+b2sums=('947541d4a5286ee11f90f4ca95bc928fce370864c9fed2752675d32adfa335b4317698334f9c6cfba0700b79f1e30371e7b7f844b1e1c01d028d4573fe37fdd6')
 
 build() {
   mkdir build
