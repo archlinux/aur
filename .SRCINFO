@@ -1,6 +1,6 @@
 pkgbase = openvino-git
 	pkgdesc = A toolkit for developing artificial inteligence and deep learning applications (git version)
-	pkgver = 2024.1.0.r209.g4655dd6ce3f
+	pkgver = 2024.1.0.r264.gc6c94bdca19
 	pkgrel = 1
 	url = https://docs.openvinotoolkit.org/
 	arch = x86_64

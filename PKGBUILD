@@ -4,7 +4,7 @@
 # https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
 
 pkgname=openvino-git
-pkgver=2024.1.0.r209.g4655dd6ce3f
+pkgver=2024.1.0.r264.gc6c94bdca19
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
@@ -134,15 +134,14 @@ pkgver() {
 }
 
 build() {
-    export CFLAGS+=' -march=x86-64-v3'
-    export CXXFLAGS+=' -march=x86-64-v3'
-    
     # note: does not accept 'None' build type
     cmake -B build -S openvino \
         -G 'Unix Makefiles' \
         -DBUILD_TESTING:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX:PATH='/opt/intel/openvino' \
+        -DENABLE_SSE42:BOOL='OFF' \
+        -DENABLE_AVX2:BOOL='OFF' \
         -DENABLE_AVX512F:BOOL='OFF' \
         -DENABLE_PYTHON:BOOL='ON' \
         -DENABLE_CLANG_FORMAT:BOOL='OFF' \
