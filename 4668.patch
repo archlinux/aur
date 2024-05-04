@@ -1,0 +1,40 @@
+From 8fdf9dc4f0b62029018850bb11406b2e69d86905 Mon Sep 17 00:00:00 2001
+From: Kirill Primak <vyivel@eclair.cafe>
+Date: Sun, 5 May 2024 01:54:59 +0300
+Subject: [PATCH] scene: fix double scaling of opaque region for blend mode
+ optimization
+
+---
+ types/scene/wlr_scene.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/types/scene/wlr_scene.c b/types/scene/wlr_scene.c
+index 78c322d46..1d6d7ab9b 100644
+--- a/types/scene/wlr_scene.c
++++ b/types/scene/wlr_scene.c
+@@ -1181,16 +1181,19 @@ static void scene_entry_render(struct render_list_entry *entry, const struct ren
+ 		return;
+ 	}
+ 
++	int x = entry->x - data->logical.x;
++	int y = entry->y - data->logical.y;
++
+ 	struct wlr_box dst_box = {
+-		.x = entry->x - data->logical.x,
+-		.y = entry->y - data->logical.y,
++		.x = x,
++		.y = y,
+ 	};
+ 	scene_node_get_size(node, &dst_box.width, &dst_box.height);
+ 	scale_box(&dst_box, data->scale);
+ 
+ 	pixman_region32_t opaque;
+ 	pixman_region32_init(&opaque);
+-	scene_node_opaque_region(node, dst_box.x, dst_box.y, &opaque);
++	scene_node_opaque_region(node, x, y, &opaque);
+ 	scale_output_damage(&opaque, data->scale);
+ 	pixman_region32_subtract(&opaque, &render_region, &opaque);
+ 
+-- 
+GitLab
+
