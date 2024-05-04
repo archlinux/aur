@@ -22,6 +22,7 @@ pkgbase = flow
 	makedepends = ocaml-ppxlib>=0.28.0
 	makedepends = ocaml-visitors
 	makedepends = ocaml-wtf8
+	depends = libev
 	source = flow-0.235.1.tar.gz::https://github.com/facebook/flow/archive/v0.235.1.tar.gz
 	source = add-streams-dep.diff
 	sha512sums = 0b902d8e9f8ee174d23e181340468251498f4f4209186ce7e385c38f7d35b6d28e4ad9b21268cf635f25a0a420e0bf0b64f8859e939618e35a0d2b8c9c17b33b
