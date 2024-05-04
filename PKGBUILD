@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.se
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Load and Save SummarizedExperiments from File"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,6 +16,7 @@ depends=(
   r-biocgenerics
   r-genomicranges
   r-iranges
+  r-jsonlite
   r-s4vectors
   r-summarizedexperiment
 )
@@ -24,14 +25,13 @@ checkdepends=(
 )
 optdepends=(
   r-biocstyle
-  r-jsonlite
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('25133d88cc71ec6029229772a1eee0e8')
-b2sums=('686b519495c87252dc3e7fd86bd0cc165063336d523a279320d9a6912ada8cd1fe2705dce7f17f4e4b7619ed2bb96adf5afa157d9d2e411c430eeb4ced9d9b2e')
+md5sums=('6e6c0f731f6c78eedd5327293fc8ef58')
+b2sums=('ddd44d6fa2082ca315441a9c8511e66577a5406eacfd35ea471d5d27d1699d6ad6a4700cbe74084292a96af9185d7c9b363d87f69563a9392066e329a6c6b83f')
 
 build() {
   mkdir build
