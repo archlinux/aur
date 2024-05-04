@@ -1,6 +1,6 @@
 pkgbase = heroic-games-launcher-bin-wayland-hook
 	pkgdesc = Pacman hook to change heroic-games-launcher-bin to start with ozone-platform-hint=auto after install or upgrade.
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	install = heroic-games-launcher-bin-wayland-hook.install
 	arch = any
@@ -9,6 +9,6 @@ pkgbase = heroic-games-launcher-bin-wayland-hook
 	source = heroic-games-launcher-bin-wayland.hook
 	source = heroic-games-launcher-bin-wayland
 	sha1sums = 78bc217a87bb5de50d72b6344e5ac436c73a87e8
-	sha1sums = ade5124066a11b3444f4b09101fc9ad22edfeeb5
+	sha1sums = bca3ce913d8ad68578a7ee82a02e0058ec3f1880
 
 pkgname = heroic-games-launcher-bin-wayland-hook
