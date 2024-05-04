@@ -7,7 +7,7 @@ pkgdesc='Executable code blocks inside markdown files for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/realworldocaml/$_projectname"
 license=('ISC')
-depends=('ocaml>=4.08.0' 'camlp-streams' 'ocaml-astring' 'ocaml-cmdliner>=1.1.0' 'ocaml-csexp>=1.3.2' 'ocaml-findlib' 'ocaml-fmt>=0.8.7' 'ocaml-logs>=0.7.0' 'ocaml-re>=1.7.2' 'ocaml-result' 'ocaml-ocaml-version>=2.3.0')
+depends=('ocaml>=4.08.0' 'camlp-streams' 'ocaml-astring' 'ocaml-cmdliner>=1.1.0' 'ocaml-csexp>=1.3.2' 'ocaml-findlib' 'ocaml-fmt>=0.8.7' 'ocaml-logs>=0.7.0' 'ocaml-re>=1.7.2' 'ocaml-result' 'ocaml-ocaml-version>=2.3.0' 'zstd')
 makedepends=('dune>=3.5.0' 'cppo>=1.1.0')
 checkdepends=('ocaml-alcotest' 'ocaml-lwt')
 options=('!strip')

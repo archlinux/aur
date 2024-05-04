@@ -21,6 +21,7 @@ pkgbase = ocaml-mdx
 	depends = ocaml-re>=1.7.2
 	depends = ocaml-result
 	depends = ocaml-ocaml-version>=2.3.0
+	depends = zstd
 	options = !strip
 	source = ocaml-mdx-2.4.1.tar.gz::https://github.com/realworldocaml/mdx/archive/2.4.1.tar.gz
 	sha512sums = c4b645b656d7f0319972c752d711c0297befcd909c57e0988e779a1156655f17881d6d78a27878d6b630608e70c3c6644af6cc84b850bf12eac7b1641270da17
