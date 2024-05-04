@@ -1,20 +1,22 @@
 # Maintainer: Alexey Manukhin <axxapy@gmail.com>
 
+# Systemd service source:
+# https://github.com/virtualhere/script/blob/main/install_server
+
 pkgname=virtualhere-server-bin
 pkgver=4.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="VirtualHere USB Server for Linux Desktop"
+OPTIONS=(!strip)
 arch=("i686" "x86_64")
 url="https://www.virtualhere.com/usb_server_software"
 license=("custom")
-optdepends=("avahi: systemd unit support")
 provides=("virtualhere")
 conflicts=("virtualhere")
-options=(!strip)
 source=("virtualhere.service")
 source_i686=("https://www.virtualhere.com/sites/default/files/usbserver/vhusbdi386")
 source_x86_64=("https://www.virtualhere.com/sites/default/files/usbserver/vhusbdx86_64")
-md5sums=('b317ad221de44c968d2368825e1682fe')
+md5sums=('32add976088e8a5b2b306e236afd5071')
 md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
 
