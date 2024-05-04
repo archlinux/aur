@@ -4,7 +4,7 @@
 _pkgname=chatgpt-cli
 pkgname="${_pkgname}-git"
 pkgver=0.1.3+8.r41.20230204.1746661
-pkgrel=1
+pkgrel=3
 pkgdesc="A very minimal cli prompt for ChatGPT."
 arch=(
   'any'
@@ -16,6 +16,9 @@ depends=(
   'python-openai'
   'python-termcolor'
   'python-prompt_toolkit'
+  'python-aiohttp'
+  'python-tinydb'
+  'python-poetry'
 )
 makedepends=(
   'git'
