@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RustRover EAP
+Icon=rustrover-eap
+Exec="/opt/rustrover-eap/bin/rustrover.sh" %f
+Comment=JetBrains IDE for Rust Developers
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-rustrover
+StartupNotify=true
