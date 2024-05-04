@@ -8,11 +8,11 @@
 
 ## Mozc compile option
 _bldtype='Release'
-_mozc_commit=3e2d1c8
+_mozc_commit=b4519f6
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20240331
+_utdicdate=20240424
 _dict=(alt-cannadic
        edict2
        jawiki
@@ -24,7 +24,7 @@ _dict=(alt-cannadic
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.30.5432.102.20240331
+pkgver=2.30.5448.102.20240424
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
@@ -50,7 +50,7 @@ noextract=(jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz)
 for dict in "${_dict[@]}"; do
   source+=("mozcdic-ut-${dict}-${_utdicdate}.txt.tar.bz2"::"https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2")
 done
-sha512sums=('SKIP'
+sha512sums=('4bf6a60bb0b9f610b7bf76d8b118e53d242119c6b68eb01d90ed1f8b15f83056bfd55b85e378f65e9b5783ebba25aaed22aef91f66e3d91c76fa9da53942f091'
             'dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302'
             '606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc'
             'SKIP'
@@ -61,15 +61,15 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'e22702e043533b4862cf14ab8da54c049ec59fb3f8cae7ab0d68e3a0bc4359cee70c05792b406290a8c0a5caf1743ba51a31613fd0aa4ce7843711e8ca254428'
+            'dfb53846aa487ecfd647b9b1912da5dc04662f50453061e42b9efacab9bbc0174ad2952f35fd4d3b40a63e20ab05abb46c4a0bcf7672db4ca92be05d735e8a13'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
-            '082db1659d6ae19891f15c219040571dd30c8e91527b5f8ca8b7ff05d9ac6f0b25e514741a23103dd39a7d57070c6e007b4536a1a57f0802a78a9abf0ef58fc4'
-            '740cee5d06aa78506a43a996e6ce2a03f421f3503180fb7151278d2d130756505c0565b0d6c91552d1af3cca2e5f53b8830e1114b5089119fafe9e7104d80996'
+            '70404ec53876117c0138ce560464bf601e6345b2c91cc784c3c684ece89dc3abe7cd1e6113c5ca7458295b9da76b21e97c16e7fcc2896b5599d6f862cf087397'
+            'e5a1933a52f7de8a113afc9e9d320e953df5609ca40da7bdfb2685b03a27e206041f4d513e03c3f512799e4fbf30a7c2f5e0f681b570b280afd3b8c3d2ab813e'
             '3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3'
-            '71ec01cbaf64328ca15edc84e7e9c4428df579fb867aac69a1e1e8232efa8ad26b2d6ceae3cce670cbc54e1dcb8afec32b88a5554bfc6b6684b4ef6ae380f60c'
-            'ad37818cb5645dd90fd572962811c586775dd87b339e68e558e87dc1f61230504a6a7605219eb32f07164e1638eac9ac406d2c520f834d0fb4a1bc8ba3c97319'
-            '0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6'
-            'dbad77feb147f88a42ced0eae86da82de014519ec5d3c6c00a5fc3fc5473e9f848645046d8fa44ce056ba4defeee995142760e43e1895446e09b4a205b7e91fb')
+            '905b36060c05abeb589742a5aa26f1a02258c0b022eb5b2bfbcea1a6d94e7f5b05322747a8070eb8f5f1e4391540e93e76b671105e072186ab15061247e44e70'
+            'd0887d489841adfa4c61ab00550526c4f876f961f5ec956c714ff3a9e206c8356000b775c0fd2bce88d0eeb1e2b8c0fafe309e39d4f967b79ffe5e96d0e88ac6'
+            '6b373b27f37d222788093ad2502893a9b88ad801b8ba191ff7ae761884dc3f6a214ca2af991d5f8aa29793ca37b29ecb9036ede0d4fb034fdd2d035eb5b2c806'
+            '29f788210f86a565df906a08f0a231c3acd625f32b8f004543d3e9470e8e014e81d0fd552044944506f68fc16f8868df6f96dfca49dd5eb0e6d734c1b2927787')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
