@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-cpp
 pkgver=0.22.0
-pkgrel=0
+pkgrel=1
 pkgdesc="C++ grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-cpp"
@@ -11,14 +11,16 @@ license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('gcc-libs')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f04d2f8cf2a5d22e5f819dbd49cdb6fc25b531debff464abfe0cab742c1148a5')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+       "tree-sitter-c-0.21.0.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/refs/tags/v0.21.0.tar.gz")
+sha256sums=('f04d2f8cf2a5d22e5f819dbd49cdb6fc25b531debff464abfe0cab742c1148a5'
+           '6f0f5d1b71cf8ffd8a37fb638c6022fa1245bd630150b538547d52128ce0ea7e')
 
 prepare() {
+	mkdir -p "$pkgname-$pkgver"/node_modules
+        mv tree-sitter-c-0.21.0 tree-sitter-c
+        mv tree-sitter-c "$pkgname-$pkgver"/node_modules/
 	cd "$pkgname-$pkgver"
-	## TODO: add necessary files to tree-sitter-c and add as makedepends instead
-	## of using npm
-	npm install --cache "$srcdir/npm-cache" tree-sitter-c
 	tree-sitter generate
 }
 
