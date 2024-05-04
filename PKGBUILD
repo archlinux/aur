@@ -4,14 +4,12 @@ pkgver=1.1.1
 pkgrel=1
 pkgdesc="Unnofficial Youtube desktop application"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/youtube-desktop/application"
+url="https://gitlab.com/linuxbombay/youtube-desktop"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-#source=("https://gitlab.com/youtube-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-#Backup temp repo
-source=("https://github.com/Youtube-pkg/application/archive/refs/tags/$pkgver-$pkgrel.tar.gz")
-sha256sums=('SKIP')
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('3687ef300208d6dbf4961c73e8619347d82d770300f8de587c16d0bd939d8867')
 
 
 package() {
