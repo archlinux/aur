@@ -1,7 +1,7 @@
 pkgbase = weechat-matrix
 	pkgdesc = WeeChat Matrix protocol script written in Python
 	pkgver = 0.3.0
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/poljar/weechat-matrix
 	install = weechat-matrix.install
 	arch = any
@@ -27,13 +27,13 @@ pkgbase = weechat-matrix
 	optdepends = python-magic: matrix_upload support
 	optdepends = python-requests: matrix_decrypt and matrix_upload support
 	optdepends = xdg-utils: default plumber for matrix_decrypt
-	source = weechat-matrix-0.3.0.tar.gz::https://github.com/poljar/weechat-matrix/archive/refs/tags/0.3.0.tar.gz
+	source = weechat-matrix-0.3.0.tar.gz::https://api.github.com/repos/poljar/weechat-matrix/tarball/refs/tags/0.3.0
 	source = 0001-Switch-to-correct-build-system-definition.patch
 	source = 0002-Fix-compatibility-with-matrix-nio-0.21.patch
 	source = 0003-server-remove-set_npn_protocols.patch
-	b2sums = c77bb12c582ba0362531417a3f606a967e968b07e4306880b3904def93b71927da0361825e0b4ff951f2082820527295766357bea403959500da282047461960
+	b2sums = fd4252ed0601d6daf22177bb5e3a3958ddad34191d05ec24cae074c16112c27e3825654f4ab3045c2676de465e409cbd6b1f7dac1957c57149ee5a7ee4e8c82c
 	b2sums = e3a713a111505564d1ff7c34645b35a3f3aea2dde9bfac430beb4b28e60fc5557a40d4feafa28db3da7d66f55468570131b439256d8625dc98545dd15af7d7b9
 	b2sums = c44468b5ef4f1a399d5d8b1c5e33809eb0bf8e5fdea17fd1ff3432c39ed557c2f73a557cd91bd0f552b48bd2a8244883905b1746e6d03dfd66545ee7cbb5f2c4
-	b2sums = 85e20eb6a03815e52ec694f3fb2d1ebdb69df80d3546de4082271fd3969b2faffd7043a53d657d3d31830fcf796cf7519ae177a6f35103ed9cf03ca8ab92a362
+	b2sums = d88a9a84456eb702885e7cede88590a49f1e4563179f8b80b70f01c102969531cf80ce8bded2beb16010e276e3b8db0388339ea57a539049509a98d05e60699c
 
 pkgname = weechat-matrix
