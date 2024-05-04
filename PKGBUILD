@@ -57,4 +57,12 @@ package() {
     # user service
     install -dm755 "${pkgdir}/usr/lib/systemd/user"
     install -m644 -t "${pkgdir}/usr/lib/systemd/user" "${source_dir}/systemd/user"/*
+
+    # /usr/libexec/*
+    install -dm755 "${pkgdir}/usr/libexec"
+    install -m755 -t "${pkgdir}/usr/libexec" "${source_dir}/libexec"/*
+
+    # /etc/default/*
+    install -dm755 "${pkgdir}/etc/default"
+    install -m644 -t "${pkgdir}/etc/default" "${source_dir}/etc/default"/*
 }
