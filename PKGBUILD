@@ -2,7 +2,7 @@
 pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
-pkgver=r347.21e841a
+pkgver=r461.83bbce2
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -60,4 +60,12 @@ package() {
     # user service
     install -dm755 "${pkgdir}/usr/lib/systemd/user"
     install -m644 -t "${pkgdir}/usr/lib/systemd/user" "${source_dir}/systemd/user"/*
+
+    # /usr/libexec/*
+    install -dm755 "${pkgdir}/usr/libexec"
+    install -m755 -t "${pkgdir}/usr/libexec" "${source_dir}/libexec"/*
+
+    # /etc/default/*
+    install -dm755 "${pkgdir}/etc/default"
+    install -m644 -t "${pkgdir}/etc/default" "${source_dir}/etc/default"/*
 }
