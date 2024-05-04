@@ -8,9 +8,9 @@ pkgbase = glsl_analyzer-bin
 	license = GPL3
 	provides = glsl_analyzer
 	conflicts = glsl_analyzer
-	source_x86_64 = glsl_analyzer-1.4.5.zip::https://github.com/nolanderc/glsl_analyzer/releases/download/v1.4.5/x86_64-linux-musl.zip
+	source_x86_64 = glsl_analyzer-1.4.5-x86_64.zip::https://github.com/nolanderc/glsl_analyzer/releases/download/v1.4.5/x86_64-linux-musl.zip
 	sha256sums_x86_64 = e0eade1a0b5ff87199bf859604b037cf2dd203c067bad907279f12d4248089c0
-	source_aarch64 = glsl_analyzer-1.4.5.zip::https://github.com/nolanderc/glsl_analyzer/releases/download/v1.4.5/aarch64-linux-musl.zip
+	source_aarch64 = glsl_analyzer-1.4.5-aarch64.zip::https://github.com/nolanderc/glsl_analyzer/releases/download/v1.4.5/aarch64-linux-musl.zip
 	sha256sums_aarch64 = 33d7fbfafa4a1c6751aa6382b3f7dedd55a349b60d4ea2a1b08518b1edd57b51
 
 pkgname = glsl_analyzer-bin
