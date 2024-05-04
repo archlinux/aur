@@ -1,8 +1,9 @@
 # Maintainer: Juma7C9 <juri at dividebyzero dot it>
 # Contributor: TesX <tesfabpel at gmail dot com>
+# Contributor: rogueai <aur dot ax9kq at simplelogin dot com
 
 pkgname=cie-middleware-bin
-pkgver=1.4.3.5
+pkgver=1.4.3.7
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux - Upstream Release"
 arch=('x86_64')
@@ -14,12 +15,13 @@ conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 install="${pkgname%-bin}.install"
 
 _gh_dir="${pkgver}"
-_gh_file_base="CIE-Middleware-${pkgver}"
+_gh_ver=$(sed 's/\(.*\)\./\1-/' <<< "${pkgver}")
+_gh_file_base="CIE-Middleware-${_gh_ver}"
 
 source=("https://github.com/italia/${pkgname%-bin}-linux/releases/download/${_gh_dir}/${_gh_file_base}.x86-64.tar.gz"
         'LICENSE')
 
-sha256sums=('4574378eb7d936b9e24be7b225640cac2fee30ad8ca71df039df5e8d94f55c51'
+sha256sums=('b95c570002a1bb0d7341a223a2128302fc59fd71d770ad5e7fa53297984f4012'
             'bf2723ca68a1f406557a3174f9195dbdc6171cbf8f7ad83f56546ac592a9ea8e')
 
 package() {
