@@ -1,24 +1,33 @@
-## 4.0.0
+## 5.0.0
 
-- Made document search asynchronous to search field input, so UI remains
-  smooth even if search is slow
+- Added file globbing support in the form of `--glob` argument
 
-- Added status to search bar:
+- Added single line search mode arguments
 
-    - `OK` means Docfd is idling
-    - `...` means Docfd is searching
-    - `ERR` means Docfd failed to parse the search expression
+    - `--single-line-exts`
+    - `--single-line-add-exts`
+    - `--single-line-glob`
+    - `--single-line`
 
-- Added search cancellation. Triggered by editing or clearing search field.
+- Fixed crash on empty file
 
-- Added dynamic search distance adjustment based on notion of linked tokens
+   - This was due to assertion failure of `max_line_num` in
+     `Content_and_search_result_render.content_snippet`
 
-    - Two tokens are linked if there is no space between them,
-      e.g. `-` and `>` are linked in `->`, but not in `- >`
+- Changed search result printing via `Shift+P` and `p` within TUI to not exit
+  after printing, allowing printing of more results
 
-- Replaced `word` with `token` in the following options for consistency
+- Added blinking to key binding info grid to give better visual feedback,
+  especially for the new behavior of search result printing
 
-    - `--max-word-search-dist`
-    - `--index-chunk-word-count`
+- Changed to allow `--paths-from` to be specified multiple times
 
-- Replaced `word` with `token` in user-facing text
+- Fixed handling of `.htm` files
+
+    - `htm` is not a valid value for pandoc's `--format` argument
+    - Now it is rewritten to `html` before being passed to pandoc
+
+- Changed `--max-depth`:
+
+    - Changed default from 10 to 100
+    - Changed to accept 0

@@ -4,7 +4,7 @@
 pkgname='docfd-bin'
 _pkgname="${pkgname/-bin/}"
 _flavour='ubuntu-latest'
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='TUI multiline fuzzy document finder (pre-compiled)'
 arch=('x86_64')
@@ -22,20 +22,19 @@ source=(
 changelog="$pkgname.changelog"
 
 package() {
-  install -Dm0755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm0644 "LICENSE"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  for _doc in {CHANGELOG,README}.md; do
-    install -Dm0644 "$_doc" "$pkgdir/usr/share/docs/$pkgname/$_doc"
-  done
+  install -vDm0755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -vDm0644 -t "$pkgdir/usr/share/docs/$pkgname/" \
+    {CHANGELOG,README}.md
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+    LICENSE
 }
 
 sha256sums=(
-  '17f2a1c1551e44dce286d41f12dc576d5b8293cdc9d07a7db0bb304bcd179fec'
+  '393ad40ac58375d51f025d087e7c6bdcf9195b292741eee078cf4df69c69fee4'
   'SKIP' 'SKIP' 'SKIP'
 )
 b2sums=(
-  '2eddbd3002c6e0673d16c15647b056b01382d5343b8e207e6a4794bc5a10f5bf1fbb331663e3b155b0c1e23ff63ed34d100f97571b93db6c0bb8713e087fc599'
+  '6ae79a5a52ebd2d4e2c3c2466fdccffae8ca11dac50cdcb10f84cffd606e39c7453be8500d27c955ba013600973a1fd0e1e24c3fe08a7ffacd3314049782d88f'
   'SKIP' 'SKIP' 'SKIP'
 )
 
