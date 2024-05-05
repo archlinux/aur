@@ -1,7 +1,7 @@
 # Maintainer: username227 <gfrank227 at gmail dot com>
 # The pkgbuild is based on the original pkgbuild for citra.
 
-pkgbase=lime3ds
+pkgbase=('lime3ds')
 _pkgname=Lime3DS
 pkgname=lime3ds-git
 pkgver=r10309.6e7cc65
