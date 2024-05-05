@@ -1,7 +1,7 @@
 # Maintainer: JP Cimalando <jp-dev@inbox.ru>
 pkgname=deken-git
 _pkgname=deken
-pkgver=v0.2.6.r129.g33a15cb
+pkgver=v0.9.18
 pkgrel=1
 epoch=
 pkgdesc="Externals wrangler for Pure Data"
@@ -27,13 +27,8 @@ md5sums=('SKIP')
 noextract=()
 validpgpkeys=()
 
-pkgver() {
-  cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 package() {
   cd "$_pkgname"
-  install -D -m755 "developer/deken.hy" "$pkgdir/usr/bin/deken"
+  install -D -m755 "developer/deken" "$pkgdir/usr/bin/deken"
   install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
