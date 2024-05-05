@@ -2,11 +2,12 @@
 
 pkgname=solidity-language-server
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A language server for the Solidity programming language."
 arch=(any)
 url="https://github.com/NomicFoundation/hardhat-vscode"
-license=(MIT)
+license=("MIT")
+depends=(nodejs)
 makedepends=(npm)
 source=("https://registry.npmjs.org/@nomicfoundation/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("${pkgname}-$pkgver.tgz")

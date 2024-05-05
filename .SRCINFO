@@ -1,11 +1,12 @@
 pkgbase = solidity-language-server
 	pkgdesc = A language server for the Solidity programming language.
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NomicFoundation/hardhat-vscode
 	arch = any
 	license = MIT
 	makedepends = npm
+	depends = nodejs
 	noextract = solidity-language-server-0.8.2.tgz
 	source = https://registry.npmjs.org/@nomicfoundation/solidity-language-server/-/solidity-language-server-0.8.2.tgz
 	sha256sums = cb13e12c53c585b886eeb2234535ab27a4635218126c4cc7ceffa3897278d1a3
