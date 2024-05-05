@@ -1,7 +1,7 @@
 pkgbase = dmarc-report-converter
 	pkgdesc = Convert DMARC reports from XML to human-readable formats
-	pkgver = 0.7.2
-	pkgrel = 2
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://github.com/tierpod/dmarc-report-converter
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = dmarc-report-converter
 	makedepends = go
 	depends = glibc
 	backup = etc/dmarc-report-converter/config.yml
-	source = git+https://github.com/tierpod/dmarc-report-converter#tag=v0.7.2
+	source = dmarc-report-converter-0.8.0::git+https://github.com/tierpod/dmarc-report-converter#tag=e405a03c200733036bf7f7b859df82a379354448
 	source = config.yml
 	source = dmarc-report-converter.service
 	source = dmarc-report-converter.timer

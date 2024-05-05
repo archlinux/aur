@@ -1,15 +1,16 @@
 # Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 
 pkgname=dmarc-report-converter
-pkgver='0.7.2'
-pkgrel=2
+pkgver='0.8.0'
+pkgrel=1
 pkgdesc='Convert DMARC reports from XML to human-readable formats'
 arch=('x86_64')
 url='https://github.com/tierpod/dmarc-report-converter'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-source=("git+https://github.com/tierpod/dmarc-report-converter#tag=v${pkgver}"
+_tag=e405a03c200733036bf7f7b859df82a379354448 # git rev-parse "v$pkgver"
+source=("${pkgname}-${pkgver}::git+https://github.com/tierpod/dmarc-report-converter#tag=$_tag"
         'config.yml'
         'dmarc-report-converter.service'
         'dmarc-report-converter.timer'
@@ -22,13 +23,13 @@ b2sums=('SKIP'
 backup=('etc/dmarc-report-converter/config.yml')
 
 prepare() {
-  cd "dmarc-report-converter"
+  cd "${pkgname}-${pkgver}"
 
   patch -p1 -i ../change-default-path-of-config-file.patch
 }
 
 build() {
-  cd "dmarc-report-converter"
+  cd "${pkgname}-${pkgver}"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -46,7 +47,7 @@ build() {
 }
 
 check() {
-  cd "dmarc-report-converter"
+  cd "${pkgname}-${pkgver}"
 
   find ./cmd ./pkg -type f -name '*.go' | xargs gofmt -l -e
 
@@ -55,7 +56,7 @@ check() {
 }
 
 package() {
-  cd "dmarc-report-converter"
+  cd "${pkgname}-${pkgver}"
 
   install -Dm755 dist/dmarc-report-converter -t "${pkgdir}/usr/bin"
   install -Dm644 ../config.yml -t "${pkgdir}/etc/${pkgname}"
