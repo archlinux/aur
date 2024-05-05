@@ -1,7 +1,7 @@
 pkgbase = ugrep-indexer
 	pkgdesc = A monotonic indexer to speed up grepping by >10x (for ugrep)
-	pkgver = 0.9.6
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/Genivia/ugrep-indexer
 	arch = x86_64
 	license = BSD
@@ -13,7 +13,7 @@ pkgbase = ugrep-indexer
 	depends = zstd
 	depends = bzip2
 	depends = gcc-libs
-	source = https://github.com/Genivia/ugrep-indexer/archive/refs/tags/v0.9.6.tar.gz
-	sha256sums = f8084a9ea34321b4062b978c2e1f1d9e1ee6430e83728c3f4bc0cbe91216201a
+	source = https://github.com/Genivia/ugrep-indexer/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = e607bbb2c5c2e92284c19f36398926f4a6ba69ab7c24fc2906c099f06b0f001d
 
 pkgname = ugrep-indexer
