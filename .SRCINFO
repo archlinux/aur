@@ -1,6 +1,6 @@
 pkgbase = stavekontrolden
 	pkgdesc = Stavekontrolden Danish dictionaries; for use with nuspell/hunspell, hyphen, libmythes, LibreOffice, and OpenOffice
-	pkgver = 2.8.100
+	pkgver = 2.8.101
 	pkgrel = 1
 	url = https://stavekontrolden.dk/
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = stavekontrolden
 	conflicts = hunspell-da
 	conflicts = hyphen-da
 	conflicts = mythes-da
-	source = https://stavekontrolden.dk/dictionaries/da_DK/da_DK-2.8.100.oxt
-	b2sums = 52b179d86726782a35c65dff777af664d69769a3e5a0f811c30f74e31c83ced7a4a3a9488945dac6f4cbe7b1abec72e4ed543381cf042dcfb253a93b1beed966
+	source = https://stavekontrolden.dk/dictionaries/da_DK/da_DK-2.8.101.oxt
+	b2sums = 4c80422e508af2c1ccbb63aeea96c43966b75dfcd281b406adb015604f232528e7c5bb0c4add48aaa369b5d7b601efda5db66c4247a3031688654dfbffc1ce4f
 
 pkgname = stavekontrolden
