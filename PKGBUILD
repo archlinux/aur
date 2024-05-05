@@ -40,7 +40,7 @@ package() {
   install -D -m755 "${srcdir}/pyzule/deps/ldid_Linux_x86_64" "${pkgdir}/usr/local/bin/ldid" #Remove later if ldid on the AUR works
 
   unzip -o "${srcdir}/pyzule/zxcvbn_dir.zip" -d "${pkgdir}/home/${USER}/.config/pyzule"
-  cp "${srcdir}/version.json" "${pkgdir}/home/${USER}/.config/pyzule"
+  cp "${srcdir}/pyzule/version.json" "${pkgdir}/home/${USER}/.config/pyzule"
 
   install -D -m755 "${srcdir}/pyzule/pyzule.py" "${pkgdir}/home/${USER}/.config/pyzule"
 }
