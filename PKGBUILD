@@ -1,5 +1,6 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
+_pkgname=ddosify
 pkgname=anteon-git
 pkgver=r266.7658c83
 pkgrel=1
@@ -43,5 +44,5 @@ check() {
 
 package() {
   cd "${pkgname/-git/}"
-  install -Dm755 build/${pkgname/-git/} "$pkgdir"/usr/bin/${pkgname/-git/}
+  install -Dm755 build/${_pkgname} "$pkgdir"/usr/bin/${pkgname/-git/}
 }
