@@ -3,16 +3,18 @@
 ## options
 : ${_autoupdate:=true}
 
-: ${_system_electron:=false}
+: ${_system_electron:=true}
+: ${_electron_version:=}
 : ${_install_path:=opt}
 
+[ -n "${_electron_version}" ] && _system_electron=true
 : ${_pkgtype:=-latest-bin}
 
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=3.103.36
-pkgrel=2
+pkgver=3.104.7
+pkgrel=1
 pkgdesc="all your chats in one app"
 url="https://beeper.com/"
 license=('LicenseRef-beeper')
@@ -34,30 +36,6 @@ _main_package() {
 # common functions
 pkgver() {
   printf '%s' "${_pkgver:?}"
-}
-
-prepare() {
-  cat << 'EOF' > "$_pkgname.sh"
-#!/usr/bin/env sh
-set -e
-
-APPDIR=$(dirname `readlink -f "$0"`)
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-
-_ELECTRON=/usr/bin/electron
-_ASAR="${APPDIR}/resources/app.asar"
-_FLAGS_FILE="$XDG_CONFIG_HOME/beeper-flags.conf"
-
-if [ -r "$_FLAGS_FILE" ]; then
-  _USER_FLAGS="$(cat "$_FLAGS_FILE")"
-fi
-
-if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec ${_ELECTRON} ${_ASAR} $_USER_FLAGS "$@"
-else
-    exec ${_ELECTRON} ${_ASAR} --no-sandbox $_USER_FLAGS "$@"
-fi
-EOF
 }
 
 build() {
@@ -87,15 +65,28 @@ _package_beeper() {
 
 _package_asar() {
   # script
-  install -Dm755 "$srcdir/beeper.sh" -t "$pkgdir/$_install_path/beeper/"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << EOF
+#!/usr/bin/env sh
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-\$HOME/.config}"
 
-  # symlink
-  install -dm755 "$pkgdir/usr/bin"
-  ln -sf "/$_install_path/beeper/beeper.sh" "$pkgdir/usr/bin/beeper"
+_ELECTRON=/usr/bin/electron${_electron_version:-}
+_ASAR="/${_install_path}/$_pkgname/resources/app.asar"
+_FLAGS_FILE="\$XDG_CONFIG_HOME/$_pkgname-flags.conf"
+
+if [ -r "\$_FLAGS_FILE" ]; then
+  _USER_FLAGS="\$(cat "\$_FLAGS_FILE")"
+fi
+
+if [[ \$EUID -ne 0 ]] || [[ \$ELECTRON_RUN_AS_NODE ]]; then
+    exec \${_ELECTRON} \${_ASAR} \$_USER_FLAGS "\$@"
+else
+    exec \${_ELECTRON} \${_ASAR} --no-sandbox \$_USER_FLAGS "\$@"
+fi
+EOF
 
   # app.asar
-  install -dm755 "$pkgdir/$_install_path/beeper/resources"
-  mv "$srcdir/squashfs-root/resources"/* "$pkgdir/$_install_path/beeper/resources/"
+  install -dm755 "$pkgdir/$_install_path/$_pkgname"/resources
+  mv "$srcdir"/squashfs-root/resources/* "$pkgdir/$_install_path/$_pkgname"/resources/
 }
 
 package() {
@@ -116,7 +107,7 @@ package() {
   install -Dm644 "$srcdir/squashfs-root/LICENSES.chromium.html" -t "$pkgdir/usr/share/licenses/$pkgname"
 
   if [[ "${_system_electron::1}" == "t" ]]; then
-    depends+=('electron')
+    depends+=("electron${_electron_version:-}")
     _package_asar
   else
     _package_beeper
@@ -144,7 +135,7 @@ _update_version() {
 
   _pkgver_new=$(
     printf '%s' "$_filename" \
-      | sed -E 's@^beeper-([0-9]+\.[0-9]+\.[0-9]{2})(.*)?.AppImage$@\1@'
+      | sed -E 's@^beeper-([0-9]+\.[0-9]+\.[0-9]+)(.*)?.AppImage$@\1@'
   )
 
   # update _pkgver
