@@ -25,7 +25,7 @@ package() {
     install -dm755 "$pkgdir/usr/share/pixmaps"
     install -dm755 "$pkgdir/usr/share/applications"
     
-    install -Dm655 "$srcdir/sonic-robo-blast-2/srb2kart.png" "$pkgdir/usr/share/pixmaps"
-    install -Dm755 "$srcdir/sonic-robo-blast-2/srb2kart.desktop" "$pkgdir/usr/share/applications"
+    install -Dm655 "$srcdir/srb2-kart/srb2kart.png" "$pkgdir/usr/share/pixmaps"
+    install -Dm755 "$srcdir/srb2-kart/srb2kart.desktop" "$pkgdir/usr/share/applications"
     install -m775 "$srcdir/srb2kart" "$pkgdir/usr/bin"
 }
