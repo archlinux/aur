@@ -1,0 +1,17 @@
+pkgbase = r-nipals
+	pkgdesc = Principal Components Analysis using NIPALS or Weighted EMPCA, with Gram-Schmidt Orthogonalization
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://cran.r-project.org/package=nipals
+	arch = any
+	license = GPL-3.0-only
+	checkdepends = r-testthat
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/nipals_0.8.tar.gz
+	md5sums = 5fd148499e1c906423ee3eec530ff079
+	b2sums = bf9f3b7acbeecfe797264133fefdf271ebae6de8be65fe490efd0bd3ebe75e093a540dbf1587a5b2d2687b31e4148ca5c71c1bb3e94cd2c5463b23d8a841cc3c
+
+pkgname = r-nipals
