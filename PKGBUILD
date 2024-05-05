@@ -2,7 +2,7 @@
 
 pkgname=platypush-git
 pkgver=0.50.3.r899.g6a8c83f9
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -11,7 +11,6 @@ makedepends=('git')
 depends=(
     'python'
     'python-alembic'
-    'python-bcrypt'
     'python-croniter'
     'python-dateutil'
     'python-docutils'

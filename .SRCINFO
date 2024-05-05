@@ -1,14 +1,13 @@
 pkgbase = platypush-git
 	pkgdesc = Universal multi-platform command executor and automation manager
 	pkgver = 0.50.3.r899.g6a8c83f9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.platypush.tech/platypush/platypush
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python
 	depends = python-alembic
-	depends = python-bcrypt
 	depends = python-croniter
 	depends = python-dateutil
 	depends = python-docutils
