@@ -4,7 +4,7 @@ _pkgname='tingle'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=r394.20240401.1ca0b83
-pkgrel=1
+pkgrel=2
 pkgdesc="Patcher for Android system ROMs that allows to inject features without needing to recompile the OS or install Xposed."
 arch=(
   'i686'
@@ -31,7 +31,7 @@ conflicts=(
   "${_pkgname}"
 )
 provides=(
-  "${_pkgname}=${pkgver}"
+  "${_pkgname}"
 )
 install="${_pkgname}.install"
 source=(
