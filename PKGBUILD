@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full-git
 pkgname=('imagemagick-full-git' 'imagemagick-full-doc-git')
-pkgver=7.1.1.18.r2.gc9e40fece
+pkgver=7.1.1.32.r1.g2b42fc1ef
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -22,17 +22,18 @@ url='https://www.imagemagick.org/'
 license=('custom')
 makedepends=(
     # official repositories:
-        'git' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
+        'git'  'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
         'zstd' 'chrpath' 'xorgproto'
         'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
         'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'libraw'
         'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
-        'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'highway'
+        'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'gperftools'
+        'autotrace'
     # AUR:
-        'dmalloc' 'flif' 'libfpx' 'libumem-git' 'magickcache-git'
+        'dmalloc' 'flif' 'libfpx' 'libultrahdr-git' 'libumem-git' 'magickcache-git'
 )
-source=('git+https://github.com/ImageMagick/ImageMagick.git#branch=main'
+source=('git+https://github.com/ImageMagick/ImageMagick.git'
         'arch-fonts.diff')
 sha256sums=('SKIP'
             '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
@@ -49,6 +50,8 @@ pkgver() {
 build() {
     cd ImageMagick
     export CFLAGS+=' -I/usr/include/FLIF'
+    local _perldir
+    _perldir="$(perl -V:vendorarch | sed "s/^vendorarch='//;s/'\;$//")"
     
     ./configure \
         --prefix='/usr' \
@@ -67,16 +70,16 @@ build() {
         --with-quantum-depth="${_qdepth}" \
         --with-magick-plus-plus \
         --with-perl \
-        --with-perl-options='INSTALLDIRS=vendor' \
+        --with-perl-options="INSTALLDIRS=vendor INSTALLVENDORARCH=${_perldir} INSTALLVENDORMAN3DIR=/usr/share/man/man3" \
         --without-jemalloc \
         --without-mtmalloc \
-        --without-tcmalloc \
+        --with-tcmalloc \
         --with-umem \
         --with-bzlib \
         --with-x \
         --with-zlib \
         --with-zstd \
-        --without-autotrace \
+        --with-autotrace \
         --without-dps \
         --with-fftw \
         --with-flif \
@@ -102,6 +105,7 @@ build() {
         --with-raw \
         --with-rsvg \
         --with-tiff \
+        --with-uhdr \
         --with-webp \
         --with-wmf \
         --with-xml \
@@ -130,9 +134,10 @@ package_imagemagick-full-git() {
             'libxext' 'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'libraw'
             'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
-            'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl'
+            'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'gperftools'
+            'autotrace'
         # AUR:
-            'dmalloc' 'flif' 'libfpx' 'libumem-git' 'magickcache-git'
+            'dmalloc' 'flif' 'libfpx' 'libultrahdr-git' 'libumem-git' 'magickcache-git'
     )
     optdepends=('imagemagick-full-doc-git: manual and API docs')
     backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type-{apple,dejavu,ghostscript,urw-base35,windows,}}.xml)
@@ -143,12 +148,9 @@ package_imagemagick-full-git() {
     
     make -C ImageMagick DESTDIR="$pkgdir" install
     find "${pkgdir}/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
-    rm "$pkgdir"/usr/lib/*.la
+    rm "${pkgdir}/usr/lib"/*.la
     mv "${pkgdir}/usr/share/doc" .
     install -D -m644 ImageMagick/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    
-    # harden security policy: https://bugs.archlinux.org/task/62785
-    sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "${pkgdir}/etc/ImageMagick-${pkgver%%.*}/policy.xml"
 }
 
 package_imagemagick-full-doc-git() {
