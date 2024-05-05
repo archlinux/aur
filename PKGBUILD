@@ -15,7 +15,7 @@ source=('https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/releases/latest/do
 sha256sums=('SKIP')
 arch=('x86_64')
 pkgver=8.0.4
-pkgrel=2
+pkgrel=3
 
 package() {
   install -dm755 "$pkgdir/opt/Bitscoper_Cyber_ToolBox/"
