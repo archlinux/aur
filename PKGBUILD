@@ -2,7 +2,7 @@
 
 pkgname=cnmatrix
 pkgver=0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='C interface to a few matrix backends'
 arch=('x86_64')
 url='https://github.com/cntools/cnmatrix/'
@@ -14,18 +14,19 @@ sha256sums=('c9c43791b258feb25436288b1e219566903d72a158c81480a2185f21b0648426')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DENABLE_TESTS:BOOL='ON' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 check() {
-    make -C build test
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
