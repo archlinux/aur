@@ -1,0 +1,41 @@
+diff --git a/dist/linux/copy-libatomic.sh b/dist/linux/copy-libatomic.sh
+index 19f6cebfd..59574ef01 100755
+--- a/dist/linux/copy-libatomic.sh
++++ b/dist/linux/copy-libatomic.sh
+@@ -7,22 +7,24 @@ arch=$3
+ 
+ outDir="$1/$2/$3"
+ 
+-sudo dpkg --add-architecture i386
+-dpkg-query -s libatomic1
+-if [ ! $? = 0 ]; then
+-  sudo apt update
+-  sudo apt install -y libatomic1
+-fi
+-dpkg-query -s libatomic1:i386
+-if [ ! $? = 0 ]; then
+-  sudo apt update
+-  sudo apt install -y libatomic1:i386
++if command -v dpkg; then
++  sudo dpkg --add-architecture i386
++  dpkg-query -s libatomic1
++  if [ ! $? = 0 ]; then
++    sudo apt update
++    sudo apt install -y libatomic1
++  fi
++  dpkg-query -s libatomic1:i386
++  if [ ! $? = 0 ]; then
++    sudo apt update
++    sudo apt install -y libatomic1:i386
++  fi
+ fi
+ 
+ if [[ $arch == "linux64" ]]
+ then
+-  read source <<< `readlink -f /usr/lib/x86_64*/libatomic.so.*`
++  read source <<< `readlink -f /usr/lib64/libatomic.so.*`
+ else
+-  read source <<< `readlink -f /usr/lib/i386*/libatomic.so.*`
++  read source <<< `readlink -f /usr/lib32/libatomic.so.*`
+ fi
+ cp $source "$outDir/lib/libatomic.so.1"
