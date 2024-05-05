@@ -2,7 +2,7 @@
 pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
-pkgver=r467.9e233c3
+pkgver=r468.233c953
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -20,6 +20,12 @@ options=(!strip)
 pkgver() {
     cd "$srcdir/sk-holoiso-config"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    source_dir="${srcdir}/sk-holoiso-config/src/chimeraos-addon"
+    cd "${source_dir}/share/sk-chos/completions"
+    ./gen.sh
 }
 
 package() {
