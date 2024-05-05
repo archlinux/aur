@@ -1,5 +1,6 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
+_pkgname=ddosify
 pkgname=anteon
 pkgver=1.0.6
 pkgrel=1
@@ -33,5 +34,5 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$pkgname
 }
