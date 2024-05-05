@@ -2,7 +2,7 @@
 
 pkgname=archey4-git
 _pkgname=archey4
-pkgver=4.14.1.0.r8.gc522a92
+pkgver=4.14.3.0.r1.gd4a6b16
 pkgrel=1
 pkgdesc="A simple system information tool written in Python"
 arch=('any')
