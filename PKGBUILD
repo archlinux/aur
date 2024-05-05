@@ -2,7 +2,6 @@
 # The pkgbuild is based on the original pkgbuild for citra.
 
 pkgname=lime3ds-git
-_pkgname=Lime3DS
 pkgver=r10309.6e7cc65
 pkgrel=1
 arch=('x86_64')
@@ -12,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet')
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang')
 options=('lto' '!buildflags')
-source=("$_pkgname::git+https://github.com/Lime3DS/Lime3DS"
+source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
         "boost::git+https://github.com/blitzingeagle/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
         "catch2::git+https://github.com/catchorg/Catch2.git"
@@ -91,13 +90,13 @@ md5sums=('SKIP'
 
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/Lime3DS"
     #echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)" # Get canary version plus commit
 }
 
 prepare() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/Lime3DS"
     git submodule init
     for submodule in {boost,nihstro,catch2,soundtouch,dynarmic,xbyak,enet,inih,libressl,libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng,zstd,libyuv,cryptopp-cmake,cryptopp,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut,dds-ktx,fmt,sdl2};
     do
@@ -105,18 +104,18 @@ prepare() {
     done
     git -c protocol.file.allow=always submodule update
 
-    cd "$srcdir/$_pkgname/externals/cubeb"
+    cd "$srcdir/Lime3DS/externals/cubeb"
     git submodule init
     git config submodule.googletest.url "$srcdir/googletest"
     git config submodule."cmake/sanitizers-cmake".url "$srcdir/sanitizers-cmake"
     git -c protocol.file.allow=always submodule update
 
-    cd "$srcdir/$_pkgname/externals/sirit/"
+    cd "$srcdir/Lime3DS/externals/sirit/"
     git submodule init
     git config submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
     git -c protocol.file.allow=always submodule update
 
-    cd "$srcdir/$_pkgname/externals/libadrenotools/"
+    cd "$srcdir/Lime3DS/externals/libadrenotools/"
     git submodule init
     git config submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
     git -c protocol.file.allow=always submodule update 
