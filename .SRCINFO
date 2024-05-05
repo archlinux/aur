@@ -1,0 +1,18 @@
+pkgbase = fastcompmgr-git
+	pkgdesc = fastcompmgr is a fast compositor for X, a fork of an early version of Compton
+	pkgver = 0.2.r1.gbd5a171
+	pkgrel = 1
+	url = https://github.com/tycho-kirchner/fastcompmgr
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxrender
+	depends = libxext
+	provides = fastcompmgr
+	conflicts = fastcompmgr
+	source = git+https://github.com/tycho-kirchner/fastcompmgr.git
+	sha512sums = SKIP
+
+pkgname = fastcompmgr-git
