@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=sciplot
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 epoch=1
 pkgdesc='C++ scientific plotting library powered by gnuplot'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'catch2-v2')
 source=("git+https://github.com/sciplot/sciplot.git#tag=v${pkgver}"
         'git+https://github.com/allanleal/doxystrap.git'
         'git+https://github.com/sciplot/gnuplot-palettes.git')
-sha256sums=('SKIP'
+sha256sums=('04014bb72c8727f562fc331581bbd1cabf5236665fa8661497ef5a5cb08d083f'
             'SKIP'
             'SKIP')
 
@@ -30,6 +30,8 @@ build() {
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DSCIPLOT_BUILD_DOCS:BOOL='OFF' \
+        -DSCIPLOT_BUILD_EXAMPLES:BOOL='OFF' \
         -Wno-dev
     cmake --build build
 }

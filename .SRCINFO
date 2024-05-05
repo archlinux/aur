@@ -1,7 +1,7 @@
 pkgbase = sciplot
 	pkgdesc = C++ scientific plotting library powered by gnuplot
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/sciplot/sciplot/
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = sciplot
 	makedepends = cmake
 	makedepends = catch2-v2
 	depends = gnuplot
-	source = git+https://github.com/sciplot/sciplot.git#tag=v0.2.2
+	source = git+https://github.com/sciplot/sciplot.git#tag=v0.3.1
 	source = git+https://github.com/allanleal/doxystrap.git
 	source = git+https://github.com/sciplot/gnuplot-palettes.git
-	sha256sums = SKIP
+	sha256sums = 04014bb72c8727f562fc331581bbd1cabf5236665fa8661497ef5a5cb08d083f
 	sha256sums = SKIP
 	sha256sums = SKIP
 
