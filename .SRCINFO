@@ -1,11 +1,11 @@
 pkgbase = mumps-seq
 	pkgdesc = Sparse solver library using Gaussian elimination (sequential version)
-	pkgver = 5.6.2
+	pkgver = 5.7.1
 	pkgrel = 1
-	url = http://mumps-solver.org
+	url = https://mumps-solver.org
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = CECILL-C
 	makedepends = gcc-fortran
 	depends = gcc-libs
 	depends = lapack
@@ -13,10 +13,10 @@ pkgbase = mumps-seq
 	conflicts = mumps
 	conflicts = mumps-par
 	conflicts = mumps-seq-shared
-	source = http://mumps-solver.org/MUMPS_5.6.2.tar.gz
+	source = https://mumps-solver.org/MUMPS_5.7.1.tar.gz
 	source = Makefile.inc
 	source = makefile_version.patch
-	sha512sums = 5ee2659ed963ca525fc253986504250d0529257d79f18534032b970985528670cbadea023ff596829936c1b18ec6ef8925c3a6c0451eb1ad50caa88b20706adf
+	sha512sums = ce4e2d61af9324754fa27a581593434aaf218799924ed615e9915e588c09f921c71eec737fceb87618035d7def3ae84867073fd20a7091eb468fe5a6d57ca7ef
 	sha512sums = d7f076defe93704bf503612d0844f71698e2ca84b50ce551748c3b1bc972a2232c735a1ba02c038bf3468fe1eeac0411e66ed436339cb50978a3e2679c813364
 	sha512sums = 9e34c49cf7773597aa7073de593ca58af376835fc5ada67d8782eb20ee84d6242f3eeaadbdf727c567d40b87e5fdbac9abd27d7652adbb0012bb2781afff8de7
 

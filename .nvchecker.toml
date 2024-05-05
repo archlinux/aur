@@ -1,0 +1,4 @@
+[mumps-seq]
+source = "regex"
+regex = "Release ([0-9].[0-9].[0-9]+)"
+url = "https://mumps-solver.org/index.php?page=dwnld"
