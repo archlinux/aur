@@ -2,7 +2,7 @@
 
 pkgname=cnmatrix-git
 pkgver=0.0.r36.g5936c62
-pkgrel=1
+pkgrel=2
 pkgdesc='C interface to a few matrix backends (git version)'
 arch=('x86_64')
 url='https://github.com/cntools/cnmatrix/'
@@ -19,18 +19,19 @@ pkgver() {
 
 build() {
     cmake -B build -S cnmatrix \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DENABLE_TESTS:BOOL='ON' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 check() {
-    make -C build test
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 cnmatrix/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
