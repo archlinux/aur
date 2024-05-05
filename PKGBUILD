@@ -1,6 +1,6 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 pkgname=prayermate-id-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 epoch=
 pkgdesc="Command line based Muslim prayer reminder - Indonesia"
@@ -14,10 +14,10 @@ provides=("prayermate")
 conflicts=("prayermate-id")
 replaces=()
 source_x86_64=("${pkgname}-v${pkgver}-amd64.tar.gz::${url}/releases/download/v${pkgver}/prayermate-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('1b823dd0c66eeacbaf63ef6db6cf36ce86c537c0ad5f200b385c8a24db20f287')
+sha256sums_x86_64=('a7a74232dd47ed3a28b59d3244afa41d32a3ba93c37881bce1489d3ceaa74741')
 
 source_aarch64=("${pkgname}-v${pkgver}-arm64.tar.gz::${url}/releases/download/v${pkgver}/prayermate-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('e717116063fc17c1879f32a8376786401adce0fe9ddc4fd38e9c01036712e83f')
+sha256sums_aarch64=('9a11e1c4d0e3a84f7d23bf5bb7f49f70e0bbc098d3f63007ecff6bdb6c5f0cdf')
 
 build() {
 	./prayermate completion bash >prayermate.bash
