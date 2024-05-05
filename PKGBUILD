@@ -3,12 +3,13 @@
 pkgname=tt-rss-pause-bg-git
 _pkgname=ttrss-pause-bg
 pkgver=r3.504ae25
-pkgrel=1
+pkgrel=2
 pkgdesc="TT-RSS plugin to pause HTML5 videos when in background"
 arch=('any')
 url="https://dev.tt-rss.org/tt-rss/plugins/ttrss-pause-bg"
 license=('GPL-3.0-only')
 depends=('tt-rss')
+makedepends=('git')
 provides=('tt-rss-pause-bg')
 conflicts=('tt-rss-pause-bg')
 source=("git+${url}.git")
