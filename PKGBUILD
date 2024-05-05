@@ -1,14 +1,14 @@
 # Maintainer: Tobias Boesch <tobias.boesch at googlemail.com>
 
 pkgname=('fs2-knossos-dotnet')
-pkgver=v1.0.0
+pkgver=v1.1.0
 _extpkgname='Knossos.NET'
 pkgrel=1
 pkgdesc="A multi platform launcher for Freespace 2 Open using .NET 6.0 and AvaloniaUI"
 arch=('x86_64')
 url='https://github.com/KnossosNET/Knossos.NET'
-_commit='7733c836615df50876804224b079120cd97fa3b6'  # Upstream only signs commits, not tags. Using commit to be able to verify the source.
-                                                    # https://github.com/KnossosNET/Knossos.NET/commit/7733c836615df50876804224b079120cd97fa3b6
+_commit='7b201a0bdcc3c01a602ecd13ffd5f33fd1537008'  # Upstream only signs commits, not tags. Using commit to be able to verify the source.
+                                                    # https://github.com/KnossosNET/Knossos.NET/commit/7b201a0bdcc3c01a602ecd13ffd5f33fd1537008
 license=('GPL-3.0-only')
 makedepends=(
   'dotnet-sdk-6.0'
@@ -35,6 +35,7 @@ sha512sums=('SKIP'
             '088987d8d0b9ee329c3602f56521e9322feb1dd53d84eccc501dfea25cc00b70f10d9cfc00971848fb41251cd124df45522fd6384fe4ad83748642a05e8a7bfa')
 options=(
   !strip # Stripping file Knossos.NET seems to destroy it
+  !debug # Workaround, see https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/19#note_182721
 )
 
 build() {
