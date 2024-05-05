@@ -2,13 +2,16 @@
 
 pkgname=mdbook-graphviz
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A preprocessor for mdbook to renders graphs using Graphviz"
 url="https://github.com/dylanowen/mdbook-graphviz"
 arch=('x86_64')
 license=('MPL-2.0')
 makedepends=(
   'cargo'
+)
+depends=(
+  'mdbook'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('7a74d7a12bd2a0b7a119d0b14ca7e7d3840acb347debff9ec0ad4d4add026785')
