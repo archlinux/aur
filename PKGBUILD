@@ -3,12 +3,13 @@
 pkgname=tt-rss-data-migration-git
 _pkgname=ttrss-data-migration
 pkgver=r1.1798758
-pkgrel=1
+pkgrel=2
 pkgdesc="TT-RSS plugin to import and export all articles"
 arch=('any')
 url="https://dev.tt-rss.org/tt-rss/plugins/ttrss-data-migration"
 license=('GPL-3.0-only')
 depends=('tt-rss')
+makedepends=('git')
 provides=('tt-rss-data-migration')
 conflicts=('tt-rss-data-migration')
 source=("git+${url}.git")

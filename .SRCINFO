@@ -1,10 +1,11 @@
 pkgbase = tt-rss-data-migration-git
 	pkgdesc = TT-RSS plugin to import and export all articles
 	pkgver = r1.1798758
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dev.tt-rss.org/tt-rss/plugins/ttrss-data-migration
 	arch = any
 	license = GPL-3.0-only
+	makedepends = git
 	depends = tt-rss
 	provides = tt-rss-data-migration
 	conflicts = tt-rss-data-migration
