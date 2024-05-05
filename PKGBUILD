@@ -1,12 +1,12 @@
-# Maintainer: bbx0 <39773919+bbx0@users.noreply.github.com>
+# Maintainer: Philipp Micheel <bbx0+aur at bitdevs dot de>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
-# Contributor: Qoppa Software, LLC <info@qoppa.com>
+# Contributor: Qoppa Software, LLC <info at qoppa dot com>
 
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=pdfstudioviewer
-_pkgname=pdfstudioviewer2023
-pkgver=2023.0.4
+_pkgname=pdfstudioviewer2024
+pkgver=2024.0.0
 pkgrel=1
 pkgdesc='Review, annotate, and edit PDF Documents'
 arch=('x86_64' 'aarch64')
@@ -16,10 +16,10 @@ makedepends=('dpkg' 'desktop-file-utils' 'gendesk' 'libarchive')
 _deb="${pkgname}-${pkgver}_linux64.deb"
 noextract=("${_deb}")
 source=("${_deb}::https://download.qoppa.com/${pkgname}/PDFStudioViewer_linux64.deb")
-b2sums=('afcb07be0831a36e316e1d37a4a9889dfe6730fac1561a284466ce542dc1ab9ce7aca71e6e19dde62c37a5e0f2e1dbb0a5d0bc1a96d3374464c7e2d9e01dfdd6')
+b2sums=('46973e71bfdad70640d8056139bfbfa9c4ca11ebed3f1136b04d606e657e8affd68849f53f126a7a46d3c8aa0f3a6d51b5eda215447bbc33e472914433e56a8d')
 
 # Desktop File parameters; validate via `gendesk -n PKGBUILD`
-_name='PDF Studio Viewer 2023'
+_name='PDF Studio Viewer 2024'
 _genericname='PDF Viewer'
 _mimetypes='application/pdf'
 _categories='Application;Office'
@@ -40,15 +40,24 @@ prepare() {
 	bsdtar xf "opt/${_pkgname}/lib/pdfstudio.jar" resources/license.html
 
 	# Arch Linux customization
+	# shellcheck disable=SC1003,SC2016
 	{
-		# shellcheck disable=SC2016 # Probe the default JRE first and disable caching of tested JRE versions.
-		sed -i 's!# INSTALL4J_JAVA_HOME_OVERRIDE=!: "${INSTALL4J_JAVA_HOME_OVERRIDE:=/usr/lib/jvm/default-runtime}";: "${INSTALL4J_NO_DB:=true}";!' "opt/${_pkgname}/${_pkgname}"
+		# Probe the default JRE first and disable caching of tested JRE versions.
+		sed -i \
+			-e '/# INSTALL4J_JAVA_HOME_OVERRIDE=/a\' \
+			-e ': "${INSTALL4J_JAVA_HOME_OVERRIDE:=/usr/lib/jvm/default-runtime}"\' \
+			-e ': "${INSTALL4J_NO_DB:=true}"' \
+			"opt/${_pkgname}/${_pkgname}"
 
-		# shellcheck disable=SC2016 # Disable the maximum java version check.
-		sed -i 's!"$ver_major" -gt "[0-9]*"!"$ver_major" -gt "99"!' "opt/${_pkgname}/${_pkgname}"
+		# Disable the maximum java version check.
+		sed -i 's/"$ver_major" -gt "[0-9]*"/"$ver_major" -gt "99"/' "opt/${_pkgname}/${_pkgname}"
 
 		# Remove bundled JRE
 		rm -rf "opt/${_pkgname}/jre"
+
+		# Remove standalone updater
+		rm "opt/${_pkgname}/updater"
+		rm "opt/${_pkgname}/pdfstudiosu"
 	}
 
 	# Generate the ${pkgname}.desktop file
