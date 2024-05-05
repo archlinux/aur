@@ -1,8 +1,8 @@
 # Maintainer: dmsh <dmsh.public.contact@gmail.com>
 
 pkgname=cisco-secure-client
-pkgver=5.1.2.42
-pkgrel=1
+pkgver=5.1.3.62
+pkgrel=2
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 url='https://www.cisco.com/site/us/en/products/security/secure-client/index.html'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar.gz::http://web.archive.org/web/20240320172606/https://cios.dhitechnical.com/Cisco_Firewall_ASA_FTD/Cisco%20Secure%20Client%205.x/${pkgver}/cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar.gz"
 )
 
-sha256sums=('b483143d5080fcd36f90d45493b2ed81e4e8b6cc8f41b70ce8d2b7edb277ca24')
+sha256sums=('498fbf11b9b89ee6dcaaef6f86eec80312e92ccd350462eb11857137f3e1c64c')
 
 package() {
     mkdir -p "${pkgdir}/opt/cisco/anyconnect"
