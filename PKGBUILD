@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-network-displays
-pkgver=0.92.1
+pkgver=0.92.2
 pkgrel=1
 pkgdesc="Miracast implementation for GNOME"
 arch=('x86_64')
@@ -21,17 +21,13 @@ depends=(
   'xdg-desktop-portal'
 )
 makedepends=('meson')
-optdepends=('dnsmasq' 'gst-plugin-pipewire' 'gstreamer-vaapi')
+optdepends=(
+  'dnsmasq'
+  'gst-plugin-pipewire'
+  'gstreamer-vaapi'
+)
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7b7949880d61e384ce4ec1deceedf94903298a462a7275cb1e894c370dc52241')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-
-  # https://gitlab.gnome.org/GNOME/gnome-network-displays/-/issues/272
-  sed -i -e "s/args: \['validate'/args: \['--nonet', 'validate'/" \
-    data/meson.build
-}
+sha256sums=('747fab988dabd954e6b3e07fb0980cba085b7d75a1c2294f65d263068f9f365c')
 
 build() {
   arch-meson "$pkgname-$pkgver" build

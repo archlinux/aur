@@ -1,6 +1,6 @@
 pkgbase = gnome-network-displays
 	pkgdesc = Miracast implementation for GNOME
-	pkgver = 0.92.1
+	pkgver = 0.92.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-network-displays
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = gnome-network-displays
 	optdepends = dnsmasq
 	optdepends = gst-plugin-pipewire
 	optdepends = gstreamer-vaapi
-	source = https://gitlab.gnome.org/GNOME/gnome-network-displays/-/archive/0.92.1/gnome-network-displays-0.92.1.tar.gz
-	sha256sums = 7b7949880d61e384ce4ec1deceedf94903298a462a7275cb1e894c370dc52241
+	source = https://gitlab.gnome.org/GNOME/gnome-network-displays/-/archive/0.92.2/gnome-network-displays-0.92.2.tar.gz
+	sha256sums = 747fab988dabd954e6b3e07fb0980cba085b7d75a1c2294f65d263068f9f365c
 
 pkgname = gnome-network-displays
