@@ -2,12 +2,12 @@
 
 pkgname=gpx-animator
 pkgver=1.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Generate a top-down view map video from one or more GPX files"
 arch=('any')
 url="https://github.com/zdila/gpx-animator"
 license=('Apache')
-depends=('archlinux-java-rurn')
+depends=('archlinux-java-run')
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.jar"::"https://download.gpx-animator.app/${pkgname}-${pkgver}-all.jar"
         "gpx-animator.sh")
