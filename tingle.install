@@ -1,0 +1,13 @@
+_pkgname='tingle'
+
+post_install() {
+  printf '\n'
+  printf '%s\n' " >> USAGE NOTES FOR '${_pkgname}' ON ARCH LINUX:"
+  printf '\n'
+  cat "/usr/share/doc/${_pkgname}/tingle-usage-on-arch.md"
+  printf '\n'
+}
+
+post_upgrade() {
+  post_install "$@"
+}
