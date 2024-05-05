@@ -1,0 +1,10 @@
+[Unit]
+Description=Simple console mouse manager
+Conflicts=gpm.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/minivcmouse
+
+[Install]
+WantedBy=multi-user.target

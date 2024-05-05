@@ -1,0 +1,22 @@
+pkgbase = minivcmouse
+	pkgdesc = A simple linux console mouse daemon
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/textshell/minivcmouse
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = meson
+	depends = libinput
+	depends = libudev0
+	source = minivcmouse-1.0.tar.gz::https://github.com/textshell/minivcmouse/archive/b2c53eed578b6d7c2212b52a80f4810ffe9b4bcb.tar.gz
+	source = minivcmouse.service
+	sha256sums = e1359696f484320f9ba61834b4332ba2bb560b380853605f2d92c6cd4bfea8a3
+	sha256sums = 195dd84ac5dc0faca7609d83377da963ebe439b38144920f6fb30a919ec89c68
+
+pkgname = minivcmouse
