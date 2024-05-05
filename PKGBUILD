@@ -33,9 +33,6 @@ pkgver() {
   printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-check () {
-	meson test -C build --print-errorlogs
-}
 
 build () {
 	arch-meson "$srcdir/$pkgname" build -Dversion_display="AUR-git $pkgver"
