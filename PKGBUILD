@@ -13,12 +13,12 @@ source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/selfhoste
 sha256sums=('99081e2f8761d664e131eeeaafd98e30091d3ff5f1599ec566faef1b92824a47')
 
 prepare(){
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-selfhosted-$pkgver"
   mkdir -p build/
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-selfhosted-$pkgver"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -28,11 +28,11 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-selfhosted-$pkgver"
   go test ./...
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-selfhosted-$pkgver"
   install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$pkgname
 }
