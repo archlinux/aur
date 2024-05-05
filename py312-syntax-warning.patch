@@ -1,0 +1,22 @@
+diff --git a/archey3 b/archey3
+index 58caf54..9bca8ce 100755
+--- a/archey3
++++ b/archey3
+@@ -329,7 +329,7 @@ class sensorDisplay(display):
+ 
+         out = []
+         for line in tempinfo:
+-            info = [re.sub("\s\s+", "", line) for line in line.split('  ') if\
++            info = [re.sub(r"\s\s+", "", line) for line in line.split('  ') if\
+                     line]
+             value = info[1]
+             intvalue = int(value[:3])
+@@ -694,7 +694,7 @@ def render_class(state, cls, args):
+ #------------ Display object ---------
+ 
+ class Archey(object):
+-    DISPLAY_PARSING_REGEX = "(?P<func>\w+)\((|(?P<args>[\w, /]+))\)"
++    DISPLAY_PARSING_REGEX = r"(?P<func>\w+)\((|(?P<args>[\w, /]+))\)"
+ 
+     def __init__(self, config, options):
+         log_level = lookup_level(options.log_level)
