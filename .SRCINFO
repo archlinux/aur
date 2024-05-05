@@ -1,7 +1,7 @@
 pkgbase = sudoku-git
 	pkgdesc = Sudoku app written in C++/Qt.
 	pkgver = 1.0.r2.g2489c02
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wimleers.com/project/work/sudoku
 	arch = i686
 	arch = x86_64
