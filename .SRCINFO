@@ -1,12 +1,12 @@
 pkgbase = masterscp
 	pkgdesc = Super Check Partial Database Files for Ham Radio Contesting
-	pkgver = 20230903
+	pkgver = 20240502
 	pkgrel = 1
 	url = http://www.supercheckpartial.com/
 	arch = any
-	license = GPL
-	source = http://www.supercheckpartial.com//SCP_VER20230903.zip
-	md5sums = b217f183e3cf140cfa47f257a175f4cc
-	sha256sums = 394b152c6b087dcfec33601d3858628b8649363d84471c1bf16ff0211cdb6991
+	license = GPL-2.0-or-later
+	source = http://www.supercheckpartial.com//SCP_VER20240502.zip
+	md5sums = 3c0dd0d9e6fe6b55eb6725fe967d93ce
+	sha256sums = c51e390750fc1dcc4a8d06565aa0a881f6ad179cb91a2b489f03b8d39714f116
 
 pkgname = masterscp
