@@ -1,4 +1,4 @@
-pkgbase = Lime3DS-git
+pkgbase = lime3ds-git
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
 	pkgver = r10309.6e7cc65
 	pkgrel = 1
@@ -110,4 +110,4 @@ pkgbase = Lime3DS-git
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = Lime3DS-git
+pkgname = lime3ds-git
