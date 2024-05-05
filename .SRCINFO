@@ -1,0 +1,16 @@
+pkgbase = prayermate-id-bin
+	pkgdesc = Command line based Muslim prayer reminder - Indonesia
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/tfkhdyt/prayermate
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	provides = prayermate
+	conflicts = prayermate-id
+	source_x86_64 = prayermate-id-bin-v1.1.0.tar.gz::https://github.com/tfkhdyt/prayermate/releases/download/v1.1.0/prayermate-v1.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = d5e28da23986f8d7be87e3f1919975d2b9c114a37d0c7d23fc15f2584dd1e516
+	source_aarch64 = prayermate-id-bin-v1.1.0.tar.gz::https://github.com/tfkhdyt/prayermate/releases/download/v1.1.0/prayermate-v1.1.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 294e53e770af442bc5a67b59f7950f9a2945e1f20debfca9c3a9d9f3d24e1c55
+
+pkgname = prayermate-id-bin
