@@ -2,7 +2,7 @@
 
 _pkgname=BeeRef
 pkgname=${_pkgname,,}
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Reference Image Viewer"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'python-exif' 'python-pyqt6' 'python-rectangle-packer')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('4a4a5c3c824937be846e6eb5fd885f70c6f7f839794b6307ef075c708d3b568625b638a71b7ab257f04b0f4cce1ff43b94c55cb236170b4c79b67bf271157964')
+b2sums=('2279c9647bcd195494f24b62cc891727b120dd9613d6fb09037d75013357d56e97a1ba47b921b9327022085d2431fa9d9b1ff1c39a15b8f27dc6f45f8534649a')
 
 _xdg_desktop_name=org.${pkgname}.${_pkgname}
 

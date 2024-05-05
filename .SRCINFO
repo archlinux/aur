@@ -1,6 +1,6 @@
 pkgbase = beeref
 	pkgdesc = Reference Image Viewer
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://beeref.org/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = beeref
 	depends = python-exif
 	depends = python-pyqt6
 	depends = python-rectangle-packer
-	source = beeref-0.3.2.tar.gz::https://github.com/rbreu/beeref/archive/refs/tags/v0.3.2.tar.gz
-	b2sums = 4a4a5c3c824937be846e6eb5fd885f70c6f7f839794b6307ef075c708d3b568625b638a71b7ab257f04b0f4cce1ff43b94c55cb236170b4c79b67bf271157964
+	source = beeref-0.3.3.tar.gz::https://github.com/rbreu/beeref/archive/refs/tags/v0.3.3.tar.gz
+	b2sums = 2279c9647bcd195494f24b62cc891727b120dd9613d6fb09037d75013357d56e97a1ba47b921b9327022085d2431fa9d9b1ff1c39a15b8f27dc6f45f8534649a
 
 pkgname = beeref
