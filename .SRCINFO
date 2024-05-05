@@ -1,24 +1,25 @@
 pkgbase = mold-git
 	pkgdesc = A Modern Linker
-	pkgver = v2.1.0_109_g9e09e74d
+	pkgver = 2.31.0.r12.g5ec3d2dc
 	pkgrel = 1
 	url = https://github.com/rui314/mold
 	arch = x86_64
-	license = AGPL3
+	license = MIT
 	checkdepends = clang
 	checkdepends = libdwarf
 	makedepends = git
 	makedepends = python
 	makedepends = cmake
 	makedepends = mold
+	depends = glibc
 	depends = gcc-libs
 	depends = mimalloc
-	depends = openssl
 	depends = zlib
 	depends = tbb
-	provides = mold=v2.1.0_109_g9e09e74d
+	depends = zstd
+	provides = mold=2.31.0.r12.g5ec3d2dc
 	conflicts = mold
 	source = mold::git+https://github.com/rui314/mold
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = mold-git
