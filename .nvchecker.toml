@@ -1,0 +1,4 @@
+[findent]
+source = "regex"
+regex = "findent-([0-9].[0-9].[0-9]+).tar.gz"
+url = "https://www.ratrabbit.nl/ratrabbit/findent/downloads/index.html"
