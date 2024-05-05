@@ -1,0 +1,21 @@
+pkgbase = android-x86-libxft
+	pkgdesc = FreeType-based font drawing library for X (Android x86)
+	pkgver = 2.3.8
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	depends = android-x86-fontconfig
+	depends = android-x86-libxrender
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXft-2.3.8.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXft-2.3.8.tar.xz.sig
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	md5sums = cea0a3304e47a841c90fbeeeb55329ee
+	md5sums = SKIP
+
+pkgname = android-x86-libxft
