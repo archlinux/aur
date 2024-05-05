@@ -3,7 +3,7 @@ pkgname=ente-server-git
 _pkgname_alt=museum
 _pkg_git_src=https://github.com/ente-io/ente.git
 pkgver=r1.6041cd7
-pkgrel=1
+pkgrel=2
 pkgdesc="Self hosted server for Ente (mobile) clients"
 arch=(x86_64)
 url="https://github.com/ente-io"
@@ -80,7 +80,7 @@ build() {
       go build -o ../../build -v
       cd -
   done
-  #go clean -modcache
+  go clean -modcache
 }
 
 package() {

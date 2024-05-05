@@ -1,7 +1,7 @@
 pkgbase = ente-server-git
 	pkgdesc = Self hosted server for Ente (mobile) clients
 	pkgver = r1.6041cd7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ente-io
 	arch = x86_64
 	license = AGPL-3.0-only
