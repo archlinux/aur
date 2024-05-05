@@ -1,16 +1,17 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scDesign3
-_pkgver=1.0.1
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A unified framework of realistic in silico data generation and statistical model inference for single-cell and spatial omics"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
   r-biocparallel
+  r-coop
   r-dplyr
   r-gamlss
   r-gamlss.dist
@@ -22,6 +23,7 @@ depends=(
   r-pbmcapply
   r-rvinecopulib
   r-singlecellexperiment
+  r-sparsemvn
   r-summarizedexperiment
   r-tibble
   r-umap
@@ -41,8 +43,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f4f74c0f98ede2f2560f556dfb14074a')
-b2sums=('b24855dc14095eceac59c92033cbde0acaec4dc735d7413c1845e4371384afef5bddb1b60d41ec025a1f78034657b8f0d31906c9c34f1a0f0e530f2a372dc31c')
+md5sums=('8ee455ffed57d35cfbf4605d48e4d976')
+b2sums=('0db03c2643fd26e92b971d420027f4fd6825b56276f80d316f68b486c7bfb46da52e7ddc20f6d501647c1c0889526e28a901e8f374b50b3e733e9840c03d25d5')
 
 build() {
   mkdir build
