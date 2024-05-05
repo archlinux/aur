@@ -1,0 +1,21 @@
+pkgbase = deodexer-git
+	pkgdesc = A simple tool that uses vdexExtractor to deodex Android 8.0+ ROMs.
+	pkgver = 1.2.r9.20180513.89db6e6
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/chenxiaolong/deodexer
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python>=3
+	depends = sh
+	depends = vdex-extractor
+	depends = zipalign
+	provides = deodexer=1.2.r9.20180513.89db6e6
+	conflicts = deodexer
+	source = deodexer::git+https://github.com/chenxiaolong/deodexer.git
+	source = deodexer.sh
+	sha256sums = SKIP
+	sha256sums = d3bce1de57a0f58657e2e8c0ee959d06e816fe5ef68b1df00a66d665b586fb05
+
+pkgname = deodexer-git
