@@ -1,0 +1,11 @@
+[Unit]
+Description=Update nextcloud news feeds
+After=network.target network-online.target
+
+[Service]
+ExecStart=/usr/bin/nextcloud-news-updater --php /usr/bin/php --loglevel error --interval 900 --apilevel v15 --mode singlerun --threads 10 /srv/http/nextcloud
+User=http
+Group=http
+
+[Install]
+WantedBy=multi-user.target
