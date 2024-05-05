@@ -4,7 +4,7 @@
 pkgname='docfd-bin'
 _pkgname="${pkgname/-bin/}"
 _flavour='ubuntu-latest'
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='TUI multiline fuzzy document finder (pre-compiled)'
 arch=('x86_64')
@@ -30,11 +30,11 @@ package() {
 }
 
 sha256sums=(
-  '393ad40ac58375d51f025d087e7c6bdcf9195b292741eee078cf4df69c69fee4'
+  '52e6dd20ee7fbad8d56e636cfe24ef3beaef45911659725e4ffbdb16e6eaffff'
   'SKIP' 'SKIP' 'SKIP'
 )
 b2sums=(
-  '6ae79a5a52ebd2d4e2c3c2466fdccffae8ca11dac50cdcb10f84cffd606e39c7453be8500d27c955ba013600973a1fd0e1e24c3fe08a7ffacd3314049782d88f'
+  '6f717ec4c79d0e0e547120dd2200a3288d60ec6d1651139a49e582ba8dd8dafa393bfe25194f39dc2de1a4bd5a29c6e07592c1c5b3cec968792b6173beb60ea6'
   'SKIP' 'SKIP' 'SKIP'
 )
 

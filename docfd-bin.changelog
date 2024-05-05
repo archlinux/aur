@@ -1,33 +1,8 @@
-## 5.0.0
+## 5.1.0
 
-- Added file globbing support in the form of `--glob` argument
+- Fixed help message of `--max-token-search-dist`
 
-- Added single line search mode arguments
+- Adjusted path display in UI to hide current working directory segment when
+  applicable
 
-    - `--single-line-exts`
-    - `--single-line-add-exts`
-    - `--single-line-glob`
-    - `--single-line`
-
-- Fixed crash on empty file
-
-   - This was due to assertion failure of `max_line_num` in
-     `Content_and_search_result_render.content_snippet`
-
-- Changed search result printing via `Shift+P` and `p` within TUI to not exit
-  after printing, allowing printing of more results
-
-- Added blinking to key binding info grid to give better visual feedback,
-  especially for the new behavior of search result printing
-
-- Changed to allow `--paths-from` to be specified multiple times
-
-- Fixed handling of `.htm` files
-
-    - `htm` is not a valid value for pandoc's `--format` argument
-    - Now it is rewritten to `html` before being passed to pandoc
-
-- Changed `--max-depth`:
-
-    - Changed default from 10 to 100
-    - Changed to accept 0
+- Added missing blinking for `Tab` key presses
