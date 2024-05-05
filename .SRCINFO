@@ -1,10 +1,11 @@
 pkgbase = tt-rss-reddit-delay-git
 	pkgdesc = TT-RSS plugin to delay posts in Reddit feeds by a configurable time
 	pkgver = r5.a07159e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dev.tt-rss.org/tt-rss/plugins/ttrss-reddit-delay
 	arch = any
 	license = GPL-3.0-only
+	makedepends = git
 	depends = tt-rss
 	provides = tt-rss-reddit-delay
 	conflicts = tt-rss-reddit-delay
