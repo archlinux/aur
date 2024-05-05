@@ -1,0 +1,5 @@
+[air-bin]
+source = "github"
+github = "cosmtrek/air"
+use_latest_release = "true"
+prefix = "v"
