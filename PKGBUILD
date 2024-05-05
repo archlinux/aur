@@ -17,7 +17,7 @@ checkdepends=('perl-starlink-ast')
 # These are not package on AUR and I couldn't find them on CPAN either, only GH repos
 # https://github.com/Starlink/perl-GSD
 # https://github.com/Starlink/perl-NDF
-url='https://metacpan.org/release/Astro-FITS-Header'
+url='https://metacpan.org/dist/Astro-FITS-Header'
 source=("http://search.cpan.org/CPAN/authors/id/G/GS/GSB/Astro-FITS-Header-${pkgver}.tar.gz")
 md5sums=('a473158b9fb4328d328023b2876643d5')
 sha512sums=('ab02183101b507e5094005c0c633641d26071ca4e3adbc6e362a28ce0ff568745b21e2d5818033185f5c6732592d35843ba20b4d135b525338185c5a7e33d926')
