@@ -3,7 +3,7 @@
 
 pkgname=tomcat8
 pkgver=8.5.100
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source implementation of the Java Servlet 3.1 and JavaServer Pages 2.3 technologies'
 arch=(any)
 url=https://tomcat.apache.org/
