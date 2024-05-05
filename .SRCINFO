@@ -1,10 +1,10 @@
 pkgbase = ugrep-indexer
 	pkgdesc = A monotonic indexer to speed up grepping by >10x (for ugrep)
 	pkgver = 0.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Genivia/ugrep-indexer
 	arch = x86_64
-	license = BSD-3-Clause
+	license = BSD
 	depends = zlib
 	depends = lz4
 	depends = brotli
