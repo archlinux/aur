@@ -1,7 +1,7 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen-git
 pkgver=5.0.33.r3920.g732e604a0
-pkgrel=2
+pkgrel=3
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
@@ -27,7 +27,7 @@ noextract=()
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '74e8c0755a6e07cceb2895cef518660b'
+         '2548b70d012d3992526c8d5b1d9bac3d'
          '31d8f86f4b4420ef9c83c1af31a45424'
          '5e9a33a42fef7572b7e0fa504c586f32'
          'fae5d3e631e9ec8391655b31f586b74b')
