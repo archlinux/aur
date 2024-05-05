@@ -1,0 +1,6 @@
+[minio-client]
+source = "git"
+git = "https://github.com/minio/mc"
+prefix = "RELEASE."
+from_pattern = "-"
+to_pattern = "."
