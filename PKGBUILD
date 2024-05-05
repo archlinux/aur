@@ -23,12 +23,12 @@ pkgver() {
 }
 
 prepare(){
-  cd "${pkgname/-git/}"
+  cd "${pkgname/-git/}/ddosify_engine"
   mkdir -p build/
 }
 
 build() {
-  cd "${pkgname/-git/}"
+  cd "${pkgname/-git/}/ddosify_engine"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -38,11 +38,11 @@ build() {
 }
 
 check() {
-  cd "${pkgname/-git/}"
+  cd "${pkgname/-git/}/ddosify_engine"
   go test ./...
 }
 
 package() {
-  cd "${pkgname/-git/}"
+  cd "${pkgname/-git/}/ddosify_engine"
   install -Dm755 build/${_pkgname} "$pkgdir"/usr/bin/${pkgname/-git/}
 }
