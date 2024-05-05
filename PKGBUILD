@@ -25,7 +25,6 @@ prepare() {
 
 build() {
     cd "$_pkgname"
-    stack setup
     stack build
 }
 
