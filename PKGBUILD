@@ -5,8 +5,8 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.17.0.r15.g2dfb0d5
-_pandoc_type=version
+pkgver=0.3.17.1.r0.ge9a92b6
+_pandoc_type=stock
 _pandoc_ver=3.1.13
 _pandoc_commit=ab2b5e8bcd510542260c938d1c676bfc72bafe77
 pkgrel=1
@@ -42,12 +42,6 @@ prepare() {
     cd "$pkgname"
     stack config set resolver lts-22.19 # ghc-9.6.4
     echo 'compiler: ghc-9.6.5' >> stack.yaml
-
-    _bumpVer Cabal 3.10.3.0 # 3.12.0.0
-    _bumpVer Cabal-syntax 3.10.3.0 # 3.12.0.0
-    _bumpVer texmath 0.12.8.8
-    _bumpVer typst 0.5.0.3
-    _bumpVer typst-symbols 0.1.6
 
     # if pandoc updates break the golden tests, cf
     # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
