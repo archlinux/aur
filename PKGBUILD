@@ -2,14 +2,15 @@
 
 pkgname=temporal-cli
 pkgver='0.12.0'
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI for running Temporal Server and interacting with various parts of Temporal'
 arch=('x86_64')
 url='https://github.com/temporalio/cli'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-source=("${pkgname}-${pkgver}::git+https://github.com/temporalio/cli#tag=v${pkgver}")
+_tag=1a241066f5a441310452162f263b74dccc0b94fd # git rev-parse "v${pkgver}"
+source=("${pkgname}-${pkgver}::git+https://github.com/temporalio/cli#tag=$_tag")
 b2sums=('SKIP')
 
 build() {
