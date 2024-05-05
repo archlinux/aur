@@ -5,8 +5,8 @@ pkgdesc="a very cool, featureful fork of conduit"
 url="https://github.com/girlbossceo/conduwuit"
 license=("Apache-2.0")
 arch=("any")
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 makedepends=("rust" "cargo" "git" "clang")
 depends=("gcc-libs" "glibc" "liburing")
 source=("git+https://github.com/girlbossceo/conduwuit#tag=v${pkgver}")
