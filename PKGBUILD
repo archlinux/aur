@@ -3,7 +3,7 @@
 
 pkgname=kryoflux
 pkgdesc="USB Floppy Controller for Software Preservation"
-pkgver=3.0
+pkgver=3.5
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="http://www.kryoflux.com"
@@ -14,13 +14,13 @@ depends=('libusb')
 install=kryoflux.install
 makedepends=('gendesk' 'imagemagick')
 optdepends=('java-runtime: for the Kryoflux GUI')
-source=("https://www.kryoflux.com/download/kryoflux_${pkgver}0_linux.tgz"
+source=("https://www.kryoflux.com/download/kryoflux_${pkgver}0_linux.tar.gz"
         'https://kryoflux.com/kryoflux-ui.jar'
         '80-kryoflux.rules'
         'kryoflux.conf'
         'kryoflux.sh'
         'https://webstore.kryoflux.com/catalog/images/kf_logo_big.png')
-md5sums=('5683afb16b34bd33d9d88e6cf1b04861'
+md5sums=('aa1a74bc681e2092278506ef4a2126f9'
          '44a067aa8d40dd0c8c53d6ff3ad8109c'
          '43ec7eb49fbdab703cafe146145fe0de'
          'ede10c48b2b1edc5c346e8814f07bcdb'
@@ -34,7 +34,6 @@ prepare() {
 }
 
 package() {
-
   pkgroot=${pkgdir}/usr
   #pkgroot=${pkgdir}/usr/local
 
@@ -42,13 +41,13 @@ package() {
   install -D 80-kryoflux.rules ${pkgdir}/etc/udev/rules.d/80-kryoflux.rules
   install -D kryoflux.conf ${pkgdir}/etc/modprobe.d/kryoflux.conf
 
-  cd "$srcdir/kryoflux_${pkgver}0_linux"
+  cd "$srcdir/Linux_Release${pkgver}0"
   install -d ${pkgroot}/{bin,lib}
   if [ "$CARCH" = "x86_64" ]
   then
-    ar -xv dtc/${CARCH}/dtc_${pkgver}.0_amd64.deb data.tar.gz
+    ar -xv dtc/${CARCH}/kryoflux-dtc_${pkgver}.0_amd64.deb data.tar.gz
   else
-    ar -xv dtc/${CARCH}/dtc_${pkgver}.0_${CARCH}.deb data.tar.gz
+    ar -xv dtc/${CARCH}/kryoflux-dtc_${pkgver}.0_arm64.deb data.tar.gz
   fi
   tar -C ${pkgdir} -xvf data.tar.gz
   # rename dtc binary to kdtc to avoid clash with dtc package (suggested by @frankspace)
@@ -70,6 +69,10 @@ package() {
   # Desktop file
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgroot}/share/applications/${pkgname}.desktop"
   install -Dm644 "${srcdir}/${pkgname}.png" "${pkgroot}/share/pixmaps/${pkgname}.png"
+
+  # resolve conflict with filesystem package
+  mv ${pkgdir}/usr/lib64/libcapsimage.so ${pkgdir}/usr/lib/libcapsimage.so
+  rmdir ${pkgdir}/usr/lib64
 }
 
 # vim: ft=sh syn=sh et
