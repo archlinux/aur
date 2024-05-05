@@ -1,11 +1,11 @@
 post_install() {
-    echo -e "\n#############################################################################################\n"
+    echo -e "\n###############################################################################\n"
     echo -e " To load this script, execute the following command in WeeChat:\n"
     echo -e " /script load weechat-matrix.py"
     echo -e "\n To load it automatically during WeeChat startup, use:\n"
     echo -e " mkdir -p ~/.local/share/weechat/python/autoload"
     echo -e " ln -s /usr/share/weechat/python/weechat-matrix.py -t ~/.local/share/weechat/python/autoload"
-    echo -e "\n#############################################################################################\n"
+    echo -e "\n###############################################################################\n"
 }
 
 post_upgrade() {
