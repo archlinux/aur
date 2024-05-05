@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Xuanrui Qi <me@xuanruiqi.com>
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
