@@ -1,11 +1,11 @@
 pkgbase = helm-schema
 	pkgdesc = A tool for automatically generating jsonschema files for helm charts
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/dadav/helm-schema
 	arch = x86_64
 	license = MIT
-	source = https://github.com/dadav/helm-schema/releases/download/0.11.1/helm-schema_0.11.1_Linux_x86_64.tar.gz
-	sha256sums = 35fba5e1e9b31beb86e4ecc9cbe516dfa7fb9802e5ca55e8560ccc59a69dda3a
+	source = https://github.com/dadav/helm-schema/releases/download/0.11.2/helm-schema_0.11.2_Linux_x86_64.tar.gz
+	sha256sums = 967f8db73e44887816e7b075e2bd6bceb9c095a771a0f0a9e0060f91608c8cb5
 
 pkgname = helm-schema
