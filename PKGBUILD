@@ -2,20 +2,20 @@
 
 pkgname=bat-cli
 pkgver='1.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Battery management utility for Linux laptops.'
 arch=('x86_64')
 url='https://github.com/tshakalekholoane/bat'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-source=("git+https://github.com/tshakalekholoane/bat#tag=${pkgver}"
+source=("${pkgname}-${pkgver}::git+https://github.com/tshakalekholoane/bat#tag=${pkgver}"
         'rename-binary-to-bat-cli.patch')
 b2sums=('SKIP'
         '451a058d29b8b70311fc00659c45ad89081b70d51df3f64f75dc52ad63e0ad55b317c92b8e61e6ae01139d74c0dc0b9fad7ff7409024c476cc0af31f4099300c')
 
 prepare() {
-  cd bat
+  cd "${pkgname}-${pkgver}"
 
   patch -p1 -i ../rename-binary-to-bat-cli.patch
 
@@ -24,7 +24,7 @@ prepare() {
 }
 
 build() {
-  cd bat
+  cd "${pkgname}-${pkgver}"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -42,7 +42,7 @@ build() {
 }
 
 check() {
-  cd bat
+  cd "${pkgname}-${pkgver}"
 
   go test \
     -v \
@@ -54,7 +54,7 @@ check() {
 }
 
 package() {
-  cd bat
+  cd "${pkgname}-${pkgver}"
 
   install -Dm755 ./dist/bat "${pkgdir}/usr/bin/${pkgname}"
 
