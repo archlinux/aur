@@ -2,7 +2,7 @@
 
 pkgname=python-tika-client
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Python REST client for Apache Tika server"
 arch=('any')
 url="https://github.com/stumpylog/tika-client"
@@ -11,6 +11,7 @@ depends=(
   'python'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-hatchling'
