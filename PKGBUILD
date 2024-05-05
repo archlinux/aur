@@ -5,7 +5,7 @@
 
 pkgname=routeconverter
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints"
 arch=('i686' 'x86_64')
 url="http://www.routeconverter.de/en"
