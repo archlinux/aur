@@ -2,7 +2,7 @@
 
 pkgname=qrookie-vrp
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Download and install Quest games from ROOKIE Public Mirror'
 arch=('x86_64')
 url='https://github.com/glaumar/QRookie'
@@ -16,6 +16,7 @@ depends=(hicolor-icon-theme
     android-tools
     qcoro-qt6
     kirigami
+    qqc2-breeze-style
     )
 makedepends=(cmake extra-cmake-modules)
 provides=(qrookie)
