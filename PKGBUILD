@@ -31,12 +31,6 @@ function pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd pyzule
-
-  patch --forward --strip=1 --input="${srcdir}/0001-remove-update-mechanism.patch"
-}
-
 package() {
   mkdir -p "${pkgdir}/home/${USER}/.config/pyzule"
 
