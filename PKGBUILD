@@ -19,7 +19,7 @@ optdepends=('texlive-core: for pdf output')
 conflicts=('haskell-pandoc' 'pandoc' 'pandoc-bin')
 replaces=('haskell-pandoc' 'pandoc' 'pandoc-bin')
 provides=("pandoc=${pkgver%%*([a-z]).r*}")
-makedepends=('git' 'stack>=1.7.0')
+makedepends=('git' 'stack')
 source=("git+https://github.com/jgm/pandoc.git")
 sha512sums=('SKIP')
 

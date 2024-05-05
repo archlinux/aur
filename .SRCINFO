@@ -6,7 +6,7 @@ pkgbase = pandoc-static-git
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = stack>=1.7.0
+	makedepends = stack
 	depends = gmp
 	depends = zlib
 	optdepends = texlive-core: for pdf output
