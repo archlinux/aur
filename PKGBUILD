@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gemma.R
-_pkgver=2.0.0
+_pkgver=3.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A wrapper for Gemma's Restful API to access curated gene expression data and differential expression analyses"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -31,6 +31,7 @@ depends=(
 )
 checkdepends=(
   r-microbenchmark
+  r-shiny
   r-testthat
 )
 optdepends=(
@@ -39,19 +40,22 @@ optdepends=(
   r-dplyr
   r-ggplot2
   r-ggrepel
+  r-kableextra
   r-knitr
+  r-listviewer
   r-magick
   r-microbenchmark
   r-pheatmap
   r-poolr
   r-purrr
   r-rmarkdown
+  r-shiny
   r-testthat
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('404ce4fa50032ebf727cfdccece32ba2')
-b2sums=('7d86b13eba6c5563679b45ffec4b119259ffed9e983ed4caaf5286001a4364886a07c06431a620ff458029a54e1a3a0e797f4fc09356b4d0d02e93df06b03fad')
+md5sums=('edd54b61324ddebe9990423df02a0757')
+b2sums=('3fd58dec15f1044608c96802cb31c9ef9aa972b17a2b3c39a56a8ebaafc0adbf5c52246d69f3a1231281a542eec78cdda30d8f418c0342eec63281bdde3380d7')
 
 build() {
   mkdir build
