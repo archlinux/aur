@@ -1,6 +1,6 @@
 pkgbase = duckstation-git
 	pkgdesc = A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)
-	pkgver = 0.1.r6679.g17b9736
+	pkgver = 0.1.r6757.g7626a9b
 	pkgrel = 1
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = duckstation-git
 	makedepends = ninja
 	makedepends = jack
 	makedepends = python
+	makedepends = spirv-headers
 	depends = sh
 	depends = glibc
 	depends = gcc-libs
@@ -47,6 +48,8 @@ pkgbase = duckstation-git
 	depends = systemd-libs
 	depends = libudev.so
 	depends = hicolor-icon-theme
+	depends = glslang
+	depends = spirv-tools
 	optdepends = qt6-wayland: Wayland support
 	optdepends = libpulse: Pulseaudio support
 	optdepends = sndio: Small audio support
@@ -56,16 +59,10 @@ pkgbase = duckstation-git
 	conflicts = duckstation
 	source = git+https://github.com/stenzek/duckstation.git
 	source = git+https://github.com/google/shaderc.git#tag=v2024.0
-	source = git+https://github.com/KhronosGroup/glslang.git#commit=d73712b8f6c9047b09e99614e20d456d5ada2390
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=8b246ff75c6615ba4532fe4fde20f1be090c3764
-	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#commit=04896c462d9f3f504c99a4698605b6524af813c1
 	source = duckstation-qt.desktop
 	source = duckstation-qt.sh
 	sha256sums = SKIP
 	sha256sums = c1f935c1e0338e274cea4f106fc3b13e02f4150e504a255ddb18221bd80bb416
-	sha256sums = 8c97fbe90abb311903b29d1fec8799e6e8a618ed2b69de6833dfed9252c85dad
-	sha256sums = bbbdf1f65d11a5e6a1f03da5804e555af9c027e76f9dd22135a092f88b8a9b2b
-	sha256sums = 56bb21ba0a74b6a489398d5a6d429d7e38346ef67c21ee6df00395c990224701
 	sha256sums = ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b
 	sha256sums = 221a8fc0d1f0cebdf281acc26484e98ebbb59f876e12fdef3f03cf91380e31f5
 
