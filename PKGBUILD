@@ -1,8 +1,9 @@
-# Maintainer: dianlujitao <dianlujitao at gmail dot com>
+# Maintainer: Alexander Bocken <alexander@bocken.org>
+# Contributor: dianlujitao <dianlujitao at gmail dot com>
 
 pkgname=python-imgaug
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Image augmentation for machine learning experiments"
 url="https://github.com/aleju/imgaug"
 depends=('python' 'python-six' 'python-numpy' 'python-scipy' 'python-scikit-image')

@@ -1,7 +1,7 @@
 pkgbase = python-imgaug
 	pkgdesc = Image augmentation for machine learning experiments
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aleju/imgaug
 	arch = any
 	license = MIT
@@ -15,4 +15,3 @@ pkgbase = python-imgaug
 	sha256sums = fae8ed6e038b57fd7d8f55d813dee3f3784da36368bdf902879fd40ecf5ed7e2
 
 pkgname = python-imgaug
-
