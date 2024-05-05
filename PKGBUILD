@@ -1,7 +1,7 @@
 # Maintainer: bitcoinlizard <bitcoinlizard at fastmail dot com>
 
 pkgname=specterext-spectrum
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="This is a electrum-adapter. It exposes a Bitcoin-Core style API while using an electron API in the backend."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 depends=('python' 'python-requests' 'python-embit' 'python-flask' 'python-flask-sqlalchemy' 'python-psycopg2' 'python-pytest' 'python-pysocks')
 source=("https://github.com/cryptoadvance/spectrum/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('8219c6a7c0babb5bb5eaa9b61dad4f9ce701045f70c72f0c9316bcc04fe29265')
+sha256sums=('6f648fc97a394f73453e9e3055fccbb71660fe391f3f6ade92c7715cd717eaf4')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
