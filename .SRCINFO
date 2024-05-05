@@ -1,6 +1,6 @@
 pkgbase = steam-gamepadui-session-git
 	pkgdesc = Steam Big Picture session based on gamescope for vanilla Arch Linux
-	pkgver = 0.1
+	pkgver = r8.015e098
 	pkgrel = 1
 	url = https://github.com/chenx-dust/steam-gamepadui-session
 	arch = any

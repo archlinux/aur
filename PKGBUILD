@@ -3,7 +3,7 @@
 pkgname=steam-gamepadui-session-git
 _gitown=chenx-dust
 _gitdir=steam-gamepadui-session
-pkgver=0.1
+pkgver=r8.015e098
 pkgrel=1
 pkgdesc="Steam Big Picture session based on gamescope for vanilla Arch Linux"
 arch=('any')
