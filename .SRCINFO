@@ -1,7 +1,7 @@
 pkgbase = python-drf-writable-nested
 	pkgdesc = Writable nested model serializer for Django REST Framework
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/beda-software/drf-writable-nested
 	arch = any
 	license = BSD-2-Clause
@@ -12,6 +12,7 @@ pkgbase = python-drf-writable-nested
 	makedepends = python-wheel
 	depends = python
 	depends = python-django
+	depends = python-django-rest-framework
 	source = python-drf-writable-nested::git+https://github.com/beda-software/drf-writable-nested#tag=v0.7.0
 	sha256sums = SKIP
 
