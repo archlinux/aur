@@ -2,12 +2,13 @@
 
 pkgname=python-inotifyrecursive
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple recursive inotify watches for Python"
 arch=('any')
 url="https://github.com/letorbi/inotifyrecursive"
 license=('LGPL-3.0-only')
 depends=(
+  'git'
   'python'
   'python-inotify-simple'
 )
