@@ -3,6 +3,7 @@
 
 _pkgname=Lime3DS
 pkgname=lime3ds-git
+pkgbase=lime3ds
 pkgver=r10309.6e7cc65
 pkgrel=1
 arch=('x86_64')
