@@ -15,6 +15,7 @@ source=("${_pkgbase}-$pkgver.tar.gz::$url/archive/refs/tags/photos-v${pkgver}.ta
         "ente-museum.service"
         "sysusers.conf"
         "tmpfiles.conf"
+        "ente-web-nginx-example.conf"
         "git+https://github.com/ente-io/PhotoSwipe.git"
         "git+https://github.com/abhinavkgrd/ffmpeg.wasm.git")
 backup=('etc/ente/configurations/local.yaml')
@@ -22,6 +23,7 @@ sha256sums=('2473e38bb3d9eda7122bf6a12e6de63205cea877c18f6ebe1b961e4b5575e7ce'
             'd632886a9068ee4a2cdd6bccbd7cf87dc196660b45a0888d5b50f4565365af1c'
             '49f07f3e3519b242b12aaa7d8d10c5e1fa934a6ccdf8bfda0bd41c55654c37c2'
             'eb8f5dbec1e34ef68b733cb73d93cb854e81fea278727b5f914dab2d578371e0'
+            '84e916a1fef6ee1367572b09e8aba10a61222792faf13f758d31e66263dc8e51'
             'SKIP'
             'SKIP')
 
