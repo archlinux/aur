@@ -1,10 +1,11 @@
 pkgbase = tt-rss-no-autoplay-git
 	pkgdesc = TT-RSS plugin to stop autoplaying HTML5 videos
 	pkgver = r4.0850ed8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dev.tt-rss.org/tt-rss/plugins/ttrss-no-autoplay
 	arch = any
 	license = GPL-3.0-only
+	makedepends = git
 	depends = tt-rss
 	provides = tt-rss-no-autoplay
 	conflicts = tt-rss-no-autoplay
