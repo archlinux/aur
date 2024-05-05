@@ -2,7 +2,7 @@
 
 pkgname=python-langdetect
 pkgver=1.0.9
-pkgrel=5
+pkgrel=6
 pkgdesc="Language detection library ported from Google's language-detection"
 arch=('any')
 url="https://github.com/Mimino666/langdetect"
@@ -11,6 +11,7 @@ depends=(
   'python-six'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-wheel'
