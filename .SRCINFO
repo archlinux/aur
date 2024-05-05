@@ -1,7 +1,7 @@
 pkgbase = tingle-git
 	pkgdesc = Patcher for Android system ROMs that allows to inject features without needing to recompile the OS or install Xposed.
 	pkgver = r394.20240401.1ca0b83
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://github.com/ale5000-git/tingle
 	install = tingle.install
@@ -21,7 +21,7 @@ pkgbase = tingle-git
 	source = tingle-usage-on-arch.md
 	source = tingle.install
 	sha256sums = SKIP
-	sha256sums = 73fee6f0b4c42bda84b5359f0355c951f238e4685bb7233c79cd71902dafa4ed
+	sha256sums = 28cb940047dc5570971afbed0dbc1195d396d111d49fddfd1478d90c923328e2
 	sha256sums = 91434889a51673e6fa9801adf19d94d5e9021e45138db8b644049abe9bd6dab5
 
 pkgname = tingle-git
