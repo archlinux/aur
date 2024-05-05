@@ -3,12 +3,12 @@
 
 pkgname='perl-cgi-session-driver-memcached'
 pkgver='0.04'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Perl/CPAN Module CGI::Session::Driver::memcached: Persistent session data in CGI applications"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-cgi-session>=4', 'perl-cache-memcached')
+depends=('perl-cgi>=3.26' 'perl-cgi-session>=4' 'perl-cache-memcached')
 optdepends=(
   'perl-cache-memcached-fast: perl-cache-memcached alternative'
 )
