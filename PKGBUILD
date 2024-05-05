@@ -59,7 +59,8 @@ build() {
     yarn install
     yarn next telemetry disable
 #    NEXT_PUBLIC_ENTE_ENDPOINT=http://localhost:8080 yarn build
-    NEXT_PUBLIC_ENTE_ENDPOINT=http://localhost:8080 yarn build:photos
+#    NEXT_PUBLIC_ENTE_ENDPOINT=http://localhost:8080 yarn build:photos
+    NEXT_PUBLIC_ENTE_ENDPOINT=/api yarn build:photos
 }
 
 package_ente-server() {
@@ -85,7 +86,7 @@ package_ente-server() {
 #    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgbase}/LICENSE"
 
     # Create systemd service
-    install -Dm644 "${srcdir}/ente-museum.service" "$pkgdir/etc/systemd/system/ente-museum.service"
+    install -vDm644 "${srcdir}/ente-museum.service" "$pkgdir/etc/systemd/system/ente-museum.service"
     install -vDm644 "${srcdir}/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
     install -vDm644 "${srcdir}/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
@@ -96,10 +97,11 @@ package_ente-web() {
 
     cd "$srcdir/${_pkgbase}-v$pkgver/web/apps/photos/out"
 
-    mkdir -p "$pkgdir/usr/share/webapps/ente"
+    mkdir -p "$pkgdir/usr/share/webapps/ente" "${pkgdir}/usr/lib/ente/"
     # Install the web component
     cp -r * "$pkgdir/usr/share/webapps/ente"  # This should be changed to a more robust installation method
 
     # Install nginx configuration
 #  install -Dm644 nginx/ente.conf "$pkgdir/etc/nginx/sites-available/ente.conf"
+    install -vDm644 ${srcdir}/ente-web-nginx-example.conf "${pkgdir}/usr/lib/ente/"
 }
