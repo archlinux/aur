@@ -1,0 +1,21 @@
+pkgbase = android-armv7a-eabi-libxft
+	pkgdesc = FreeType-based font drawing library for X (Android armv7a-eabi)
+	pkgver = 2.3.8
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	depends = android-armv7a-eabi-fontconfig
+	depends = android-armv7a-eabi-libxrender
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXft-2.3.8.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXft-2.3.8.tar.xz.sig
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	md5sums = cea0a3304e47a841c90fbeeeb55329ee
+	md5sums = SKIP
+
+pkgname = android-armv7a-eabi-libxft
