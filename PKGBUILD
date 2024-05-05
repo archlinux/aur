@@ -2,12 +2,13 @@
 
 pkgname=python-django-compression-middleware
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Django middleware to compress responses using several algorithms"
 arch=('any')
 url="https://github.com/friedelwolff/django-compression-middleware"
 license=('MPL-2.0')
 depends=(
+  'git'
   'python'
   'python-brotli'
   'python-django'
