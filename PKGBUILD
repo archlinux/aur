@@ -3,7 +3,7 @@ pkgname=sk-chos-addon
 _basename=sk-chos-tool
 _reponame=sk-holoiso-config
 _pkgname=${pkgname}
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -18,6 +18,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-holoiso-config/ar
 sha256sums=('SKIP')
 options=(!strip)
 backup=('etc/sk-chos-tool/github_cdn.conf')
+
+prepare() {
+    source_dir="${srcdir}/${_reponame}-${pkgver}/src/chimeraos-addon"
+    cd "${source_dir}/share/sk-chos/completions"
+    ./gen.sh
+}
 
 package() {
     source_dir="${srcdir}/${_reponame}-${pkgver}/src/chimeraos-addon"
@@ -77,4 +83,13 @@ package() {
     # /usr/share/sk-chos/*
     install -dm755 "${pkgdir}/usr/share/sk-chos"
     install -m644 -t "${pkgdir}/usr/share/sk-chos" "${source_dir}/share/sk-chos"/justfile
+
+    # /usr/local/share/zsh/site-functions/*
+    install -dm755 "${pkgdir}/usr/share/zsh/site-functions"
+    install -m644 "${source_dir}/share/sk-chos/completions/_just.zsh" "${pkgdir}/usr/share/zsh/site-functions/_just"
+    install -m644 "${source_dir}/share/sk-chos/completions/_skjust.zsh" "${pkgdir}/usr/share/zsh/site-functions/_skjust"
+
+    # /etc/bash_completion.d
+    install -dm755 "${pkgdir}/etc/bash_completion.d"
+    install -m644 "${source_dir}/share/sk-chos/completions/_just.bash" "${pkgdir}/etc/bash_completion.d/just.bash"
 }
