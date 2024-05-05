@@ -1,7 +1,7 @@
 pkgbase = routeconverter
 	pkgdesc = A free tool to edit and convert routes, tracks and waypoints
 	pkgver = 3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.routeconverter.de/en
 	changelog = ChangeLog
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = routeconverter
 	source = routeconverter-cli
 	source = RouteConverterCmdLine-3.0.jar::http://static.routeconverter.com/download/previous-releases/3.0/RouteConverterCmdLine.jar
 	source = RouteConverterLinux-3.0.jar::http://static.routeconverter.com/download/RouteConverterLinux.jar
-	sha256sums = d35cd45946a2728a8e2d6b0fb7d53d1803df1016380eb052dad0f3f1b00a25a9
+	sha256sums = 0a4dca96f3f02c274714192765eaacfb1ceb53f628150fd0c73e00bf2ce7f6d5
 	sha256sums = 30ed02e7180c85c0448a257a4b7d40de554b084faadeb899dead72e4e2cdc741
 	sha256sums = 0237729d3fb3fdb7462fb1f9064175135f7406a9fb0ec2206986ab9f668b4078
 	sha256sums = 0dc7a28b9230169c08bb0a13038557a202cb113903832cabb4eedb3396318950

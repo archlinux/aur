@@ -5,7 +5,7 @@
 
 pkgname=routeconverter
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints"
 arch=('i686' 'x86_64')
 url="http://www.routeconverter.de/en"
@@ -20,11 +20,11 @@ source=(routeconverter
         RouteConverterCmdLine-${pkgver}.jar::http://static.routeconverter.com/download/previous-releases/${pkgver}/RouteConverterCmdLine.jar
         RouteConverterLinux-${pkgver}.jar::http://static.routeconverter.com/download/RouteConverterLinux.jar)
 
-sha256sums=('d35cd45946a2728a8e2d6b0fb7d53d1803df1016380eb052dad0f3f1b00a25a9'
-         '30ed02e7180c85c0448a257a4b7d40de554b084faadeb899dead72e4e2cdc741'
-         '0237729d3fb3fdb7462fb1f9064175135f7406a9fb0ec2206986ab9f668b4078'
-         '0dc7a28b9230169c08bb0a13038557a202cb113903832cabb4eedb3396318950'
-         '8fc9b319ae2cfe80aeae7c24787ddafc788eb08687ec7e5f58a730b9c271501f')
+sha256sums=('0a4dca96f3f02c274714192765eaacfb1ceb53f628150fd0c73e00bf2ce7f6d5'
+            '30ed02e7180c85c0448a257a4b7d40de554b084faadeb899dead72e4e2cdc741'
+            '0237729d3fb3fdb7462fb1f9064175135f7406a9fb0ec2206986ab9f668b4078'
+            '0dc7a28b9230169c08bb0a13038557a202cb113903832cabb4eedb3396318950'
+            '8fc9b319ae2cfe80aeae7c24787ddafc788eb08687ec7e5f58a730b9c271501f')
 
 noextract=(RouteConverterCmdLine-${pkgver}.jar
            RouteConverterLinux-${pkgver}.jar)
