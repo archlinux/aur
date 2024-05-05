@@ -165,7 +165,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.6
-_minor=29
+_minor=30
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -210,7 +210,7 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=6a58cf0ba7a3db11a5acf041cc503e8b7afb0b56")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=228ff3867f53d31dab403a3b6b3b555eaf8bdc04")
 fi
 
 # NVIDIA pre-build module support
@@ -745,8 +745,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('7f26f74c08082c86b1daf866e4d49c5d8276cc1906a89d0e367e457ec167cbd0'
+sha256sums=('b66a5b863b0f8669448b74ca83bd641a856f164b29956e539bbcb5fdeeab9cc6'
             'fdc2b032badafe9eb4b5e27925df057fe6d24dc0803bd37dd4be895f3606dbed'
             '3f3233256725683aa95c29ee423932a5bcc74c0653e09d502240601387c3edec'
-            '218a6861b15f99875001196ce09b1e87c5a058ba32711a12246fd0314807db68'
-            '67eaa89bcc639bba2985fc2f324c0a0136cbedf09beff4d68ad1ed915426b4d6')
+            '054d5faa8e1314ae0393bd4502f82319e32719a92cfd6fd5468aea999b077a18'
+            'e5bac2247f709a073ff5c901e9ec2043641d0cf61d8e64dcdfd35f489c72c13a')
