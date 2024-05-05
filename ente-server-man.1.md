@@ -25,7 +25,14 @@ Note: Since self hosted server space is often available in limited quantity, thi
 INSTALLATION
 ------------
 
-To get the Ente server running a working PostgreSQL database (to store Ente object meta data and user data) and MinIO bucket (to store encrypted object data) is required. Furthermore, a HTTPS proxy like Nginx is recommended to be used to access the Ente server. Lastly, the ente-cli tool can be used to easily upgrade ente-server account size limit and account expiry. This manual describes a setup using all the aforementioned components:
+To get the Ente server running a working PostgreSQL database (to store Ente object meta data and user data) and MinIO bucket (to store encrypted object data) is required. Furthermore, a HTTPS proxy like Nginx is recommended to be used to access the Ente server. Lastly, the ente-cli tool can be used to easily upgrade ente-server account size limit and account expiry. This manual describes a setup using all the aforementioned components, installing them on the same host.
+
+**Package installation**:
+
+- To install all required components on the same host, it is recommended installing them as dependent packages:
+    ```
+        pacman -S minio minio-client nginx postgresql --asdeps
+    ```
 
 **MinIO setup**:
 

@@ -1,13 +1,15 @@
 # Maintainer: Object42 <object42 at tutamail.com>
 pkgname=ente-server-git
 _pkgname_alt=museum
-pkgver=r26258.eb64cd8
+_pkg_git_src=https://github.com/ente-io/ente.git
+pkgver=r1.6041cd7
 pkgrel=1
 pkgdesc="Self hosted server for Ente (mobile) clients"
 arch=(x86_64)
 url="https://github.com/ente-io"
 license=('AGPL-3.0-only')
-depends=('go' 'libsodium' 'minio' 'minio-client' 'postgresql')
+depends=('go' 'libsodium')
+optdepends=('minio' 'minio-client' 'nginx' 'postgresql')
 makedepends=('git' 'go' 'go-md2man' 'sed')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -16,7 +18,7 @@ backup=(
 )
 options=('!debug')
 source=(
-    "ente-server-git::git+https://github.com/ente-io/ente.git"
+    "https://raw.githubusercontent.com/ente-io/ente/main/LICENSE"
     "${pkgname%-git}-man.1.md"
     "${pkgname%-git}-nginx.conf"
     "${pkgname%-git}-sysusers.conf"
@@ -28,8 +30,8 @@ source=(
     "usr.bin.${pkgname%-git}"
 )
 sha256sums=(
-    "SKIP"
-    "3af23aa9925e197d41aa77ae5d51ae956e7e78ae0ea213000d6e3458a776e3b2"
+    "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    "d4d6648ded8043d80d056cbafcaf87cacf9a5e79b22c02e0302506e6568c177c"
     "2d5221aaa83f32bbc8c75c2d7c70f9ff8021d451b544f230c99fe29b84fcba75"
     "72c23c4ba9d3468a1b089d182917123cb15b8bf8b52b3955b98a0357d29b5cbd"
     "6ba953245f2a285dbd82ce65635d19410eab1dcd92821c398bdf7ffba9451a9b"
@@ -41,11 +43,20 @@ sha256sums=(
 )
 
 pkgver() {
+  # obtain package version
   cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
+  # only checkout ente server directory
+  cd "${srcdir}"
+  git clone --no-checkout --depth=1 --filter=tree:0 "${_pkg_git_src}" "${pkgname}"
+  cd "${pkgname}"
+  git sparse-checkout set --no-cone server
+  git checkout
+
+  # prepare GO environment
   export GOPATH="${srcdir}/gopath"
   go clean -modcache
 }
@@ -86,7 +97,7 @@ package() {
   cd "${srcdir}/${pkgname}/server"
 
   # data files
-  install -Dvm644 '../LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
+  install -Dvm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
   find migrations -type f -exec install -Dvm644 "{}" -t "${pkgdir}/usr/lib/${pkgname%-git}/migrations/" \;
   find mail-templates -type f -exec install -Dvm644 "{}" -t "${pkgdir}/usr/lib/${pkgname%-git}/mail-templates/" \;
 
