@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-chos-tool
-_reponame=sk-holoiso-config
+_reponame=sk-chos-config
 pkgver=2.0.6
 _addonver=1.5.8
 pkgrel=1
