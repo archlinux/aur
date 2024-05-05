@@ -4,9 +4,9 @@
 # Contributor: shamrok <szamrok@gmail.com>
 
 pkgname=kraft
-pkgver=1.1
+pkgver=1.2
 _ver=v$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="Kraft helps you to handle documents like quotes and invoices in your small business."
 arch=('x86_64')
 url="http://www.volle-kraft-voraus.de/"
@@ -57,4 +57,4 @@ package() {
   make "DESTDIR=${pkgdir}" install
 }
 
-sha256sums=('c0732dc8b91167427b2ef9bcd69a5cf99d0db4eb81bb8ee888d2bfa592a2893b')
+sha256sums=('9907a998b9b4cd80e700d030e2b6c7eaea89ed044816e09cd0ad6edd25c3cbde')
