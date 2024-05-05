@@ -4,7 +4,7 @@ _pkgname='vdex-extractor'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=0.6.0+7.r311.20200513.78f283b
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool to decompile and extract Android Dex bytecode from Vdex files that are generated along with Oat files when optimizing bytecode from dex2oat ART runtime compiler."
 arch=(
   'aarch64'
@@ -40,7 +40,7 @@ source=(
 )
 sha256sums=(
   'SKIP'                                                              # Main git source
-  'fd3da7a6f68c7b2219ba9a6dc059e63a1821be2f187d0990ae5038c3905f7aec'  # deodex.sh
+  '116b999eb535c64551a974b8ed14af7efd9f7b7998122a742b52de31949887f2'  # deodex.sh
 )
 
 prepare() {
@@ -80,13 +80,15 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   # Install software.
-  install -Dvm755 -t "${pkgdir}/usr/bin"                      "bin/vdexExtractor"
+  install -dvm755 "${pkgdir}/usr/bin"
+  install -Dvm755 -t "${pkgdir}/usr/lib/${_pkgname}/bin"      "bin/vdexExtractor"
   install -Dvm755 -t "${pkgdir}/usr/lib/${_pkgname}/scripts"  "scripts"/{extract-apps-from-device.sh,update-vdex-location-checksums.sh}
-  install -Dvm644 -t "${pkgdir}/usr/lib/${_pkgname}/deodex"   "tools/deodex/constants.sh"
-  install -Dvm755 -t "${pkgdir}/usr/lib/${_pkgname}/deodex"   "tools/deodex/run.sh"
+  install -Dvm644 -t "${pkgdir}/usr/lib/${_pkgname}/tools/deodex"   "tools/deodex/constants.sh"
+  install -Dvm755 -t "${pkgdir}/usr/lib/${_pkgname}/tools/deodex"   "tools/deodex/run.sh"
+  ln -sv "/usr/lib/${_pkgname}/bin/vdexExtractor"                          "${pkgdir}/usr/bin/vdexExtractor"
   ln -sv "/usr/lib/${_pkgname}/scripts/extract-apps-from-device.sh"        "${pkgdir}/usr/bin/extract-apps-from-device"
   ln -sv "/usr/lib/${_pkgname}/scripts/update-vdex-location-checksums.sh"  "${pkgdir}/usr/bin/update-vdex-location-checksums"
-  install -Dvm755 "${srcdir}/deodex.sh"  "${pkgdir}/usr/bin/deodex"
+  install -Dvm755 "${srcdir}/deodex.sh"                                    "${pkgdir}/usr/bin/deodex"
 
   # Install documentation.
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${srcdir}/git.log" 'README.md'
