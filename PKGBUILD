@@ -2,7 +2,7 @@
 pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
-pkgver=r465.0bd6dce
+pkgver=r467.9e233c3
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -80,4 +80,13 @@ package() {
     # /usr/share/sk-chos/*
     install -dm755 "${pkgdir}/usr/share/sk-chos"
     install -m644 -t "${pkgdir}/usr/share/sk-chos" "${source_dir}/share/sk-chos"/justfile
+
+    # /usr/local/share/zsh/site-functions/*
+    install -dm755 "${pkgdir}/usr/share/zsh/site-functions"
+    install -m644 "${source_dir}/share/sk-chos/completions/_just.zsh" "${pkgdir}/usr/share/zsh/site-functions/_just"
+    install -m644 "${source_dir}/share/sk-chos/completions/_skjust.zsh" "${pkgdir}/usr/share/zsh/site-functions/_skjust"
+
+    # /etc/bash_completion.d
+    install -dm755 "${pkgdir}/etc/bash_completion.d"
+    install -m644 "${source_dir}/share/sk-chos/completions/_just.bash" "${pkgdir}/etc/bash_completion.d/just.bash"
 }
