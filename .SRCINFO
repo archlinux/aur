@@ -1,6 +1,6 @@
 pkgbase = slim-simulator
 	pkgdesc = A forwards-time population genetic simulator.
-	pkgver = 4.2.1.r0.ga5c09cdc
+	pkgver = 4.2.2.r0.g7dc12178
 	pkgrel = 1
 	url = https://messerlab.org/slim/
 	arch = x86_64
