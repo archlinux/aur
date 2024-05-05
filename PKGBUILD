@@ -1,12 +1,13 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=kona-git
 pkgver=20230601
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source implementation of the K language, an ASCII APL."
 url="https://github.com/kevinlawler/kona"
 arch=('i686' 'x86_64')
-license=('custom:ISC')
+license=('ISC')
 depends=('glibc')
 makedepends=('git')
 conflicts=('kona')
