@@ -1,0 +1,14 @@
+pkgbase = collada2gltf-bin
+	pkgdesc = A command-line tool to convert COLLADA (.dae) files to glTF
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/COLLADA2GLTF
+	arch = x86_64
+	license = custom
+	provides = collada2gltf
+	conflicts = collada2gltf
+	options = !strip
+	source = https://github.com/KhronosGroup/COLLADA2GLTF/releases/download/v2.1.5/COLLADA2GLTF-v2.1.5-linux.zip
+	b2sums = dacabce6213841b310771ed30a1b4a28200f406ae31c3a5a2c2147007ae5884d9cc8e5cad2cd2c8c4f74b2d3d41ca63f5b17b7796a009d2654c4b4b671b86def
+
+pkgname = collada2gltf-bin
