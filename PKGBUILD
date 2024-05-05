@@ -36,6 +36,9 @@ package() {
   install -Dm 644 beeref.desktop \
                   "${pkgdir}/usr/share/applications/${_xdg_desktop_name}.desktop"
 
+  install -Dm 644 ${_xdg_desktop_name}.appdata.xml \
+                  "${pkgdir}/usr/share/metainfo/${_xdg_desktop_name}.appdata.xml"
+
   install -Dm 644 "${pkgname}/assets/logo.svg" \
                   "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_xdg_desktop_name}.svg"
 
