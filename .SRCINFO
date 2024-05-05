@@ -16,6 +16,7 @@ pkgbase = pyzule-git
 	provides = pyzule
 	provides = otool
 	provides = install_name_tool
+	provides = ldid
 	conflicts = ldid
 	conflicts = ldid2
 	conflicts = ldid-git
