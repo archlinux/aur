@@ -3,22 +3,36 @@
 
 pkgname=(barrier barrier-headless)
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source KVM software based on Synergy"
 arch=(x86_64)
 url="https://github.com/debauchee/barrier"
-license=("custom:GPL2WithOpenSSLException")
+license=("LicenseRef-GPL-2.0-only-WITH-OpenSSL-Exception")
 changelog=CHANGELOG.rst
 depends=(curl avahi libx11 libxrandr libxext
         libxinerama xorgproto libxtst libxi
         libsm libice openssl)
 makedepends=(cmake git qt5-base hicolor-icon-theme)
-source=("git+https://github.com/debauchee/barrier.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("git+https://github.com/debauchee/barrier.git#tag=v${pkgver}"
+        "git+https://github.com/google/googletest.git"
+        "git+https://github.com/google/googlemock.git"
+        "git+https://github.com/gulrak/filesystem.git"
+        "1886.patch")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '4b2e2c3c2c6524dfd3f2f1003c62e218a459291f0e6fb87a3ce56ba48a4a11fe')
 
 prepare() {
     cd "barrier"
-    git submodule update --init --recursive
+
+    git submodule init
+    git config submodule.ext/gtest.url "$srcdir/googletest"
+    git config submodule.ext/gmock.url "$srcdir/googlemock"
+    git config submodule.ext/gulrak-filesystem.url "$srcdir/filesystem"
+    git -c protocol.file.allow=always submodule update
+
     # lib/platform: Fix encoding for text copied between linux and windows
     # https://github.com/debauchee/barrier/commit/dd3ea8adfef868e52098ea24d2ed08320a90e3b9
     git cherry-pick -n dd3ea8adfef868e52098ea24d2ed08320a90e3b9
@@ -26,6 +40,10 @@ prepare() {
     # Add missing cstddef includes for NULL
     # https://github.com/debauchee/barrier/commit/4b12265ae5d324b942698a3177e1d8b1749414d7
     git cherry-pick -n 4b12265ae5d324b942698a3177e1d8b1749414d7
+
+    # Add missing cstdint includes for GCC 13
+    # https://github.com/debauchee/barrier/pull/1886
+    patch -Np1 < "$srcdir/1886.patch"
 }
 
 build() {
