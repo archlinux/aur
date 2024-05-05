@@ -42,5 +42,5 @@ package() {
   unzip -o "${srcdir}/pyzule/zxcvbn_dir.zip" -d "${pkgdir}/home/${USER}/.config/pyzule"
   cp "${srcdir}/pyzule/version.json" "${pkgdir}/home/${USER}/.config/pyzule"
 
-  install -D -m755 "${srcdir}/pyzule/pyzule.py" "${pkgdir}/home/${USER}/.config/pyzule"
+  install -D -m755 "${srcdir}/pyzule/pyzule.py" "${pkgdir}/usr/local/bin/pyzule"
 }
