@@ -3,12 +3,13 @@
 
 pkgname=python-django-multiselectfield
 pkgver=0.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A Multiple Choice model field"
 arch=('any')
 url="https://github.com/goinnn/django-multiselectfield"
 license=('LGPL-3.0-only')
 depends=(
+  'git'
   'python'
   'python-django'
 )
