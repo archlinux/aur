@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.16.1
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -21,13 +21,13 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 # Although not in order, keeping them in the same order of the standard package
 # for my mental sanity.
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'abseil-cpp' 'libdispatch'
-         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'glibmm-2.68')
+         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'libxdamage' 'abseil-cpp' 'libdispatch'
+         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'kcoreaddons')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
-             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser')
+             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'python-packaging')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 provides=(telegram-desktop)
@@ -48,7 +48,7 @@ source=(
     # New approach: source tarball, same as the stable Arch package
     "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
 )
-sha512sums=('fb8da3e6ff6885b75e3e8f58fd080926cfbf28a7c47579197823e369d538534af6e7949b5d02905809db22b3e4595596fc32a3bcd7cef1b1cdcf327935316c8c')
+sha512sums=('45b7833f20f01d78c09163e205af7d68afffcfc88075ba6af35dc6cbbce1f0205c0150b137ca09e6bdaf271240e4d1336411ad427bc27a2b2ad42dc435ee0ec2')
 
 prepare() {
     # Magic submodule configuration, thanks to the Python script
@@ -81,7 +81,7 @@ build() {
     # Ensure that we won't have issues with tmpfs.
     # If you prefer to speed up things, comment the next 2 lines.
     export TMPDIR="$srcdir/build_tmp"
-    mkdir $TMPDIR
+    mkdir -p $TMPDIR
 
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
