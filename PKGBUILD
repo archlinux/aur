@@ -2,7 +2,7 @@
 
 pkgname='lunas'
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A syncing cli tool that can handle more than two directories locally and remotely"
 arch=('any')
 url="https://codeberg.org/cyber-luna/lunas"
