@@ -3,13 +3,17 @@
 pkgname=mdbook-rss-git
 _pkgname=mdbook-rss
 pkgver=8.dc948c6
-pkgrel=2
+pkgrel=3
 pkgdesc="A preprocessor for mdbook to generate an RSS feed from your chapters"
 url="https://gitlab.com/albalitz/mdbook-rss"
 arch=('x86_64')
 license=('MPL-2.0')
 makedepends=(
   'cargo'
+  'git'
+)
+depends=(
+  'mdbook'
 )
 source=(
   "git+${url}.git"
