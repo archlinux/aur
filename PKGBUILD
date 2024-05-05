@@ -4,7 +4,7 @@ pkgbase=ente
 _pkgbase=ente-photos
 pkgname=(ente-server ente-web) 
 pkgver=0.8.81
-pkgrel=2
+pkgrel=3
 pkgdesc="End to End Encrypted alternative to Google Photos" 
 arch=('x86_64')
 url="https://github.com/ente-io/ente"
@@ -58,8 +58,8 @@ build() {
     cd "$srcdir/${_pkgbase}-v$pkgver/web"
     yarn install
     yarn next telemetry disable
-#    NEXT_PUBLIC_ENTE_ENDPOINT=http://10.0.0.3:8080 yarn build
-    NEXT_PUBLIC_ENTE_ENDPOINT=http://10.0.0.3:8080 yarn build:photos
+#    NEXT_PUBLIC_ENTE_ENDPOINT=http://localhost:8080 yarn build
+    NEXT_PUBLIC_ENTE_ENDPOINT=http://localhost:8080 yarn build:photos
 }
 
 package_ente-server() {
