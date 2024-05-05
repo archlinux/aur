@@ -5,7 +5,7 @@ _distname=sudoku
 _dist_owner=wimleers
 pkgname="${_distname}-git"
 pkgver=1.0.r2.g2489c02
-pkgrel=2
+pkgrel=3
 pkgdesc="Sudoku app written in C++/Qt."
 arch=('i686' 'x86_64')
 url="https://wimleers.com/project/work/${_distname}"
@@ -27,6 +27,12 @@ source=("${_clonedirname}::git+${_repourl}.git")
 b2sums=('SKIP')
 
 prepare() {
+  echo "Pathching to increase max difficulty level to 6..."
+  cd "${_clonedirname}"
+  sed -e 's/static int NumLevels(void) { return 5; }/static int NumLevels(void) { return 6; }/' \
+      -i "${_clonedirname}/src/Sudoku.h"
+  echo "Done."
+
   gendesk -n -f \
           --pkgname "${_distname}" \
           --pkgdesc "${pkgdesc}" \
