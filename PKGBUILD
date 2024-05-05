@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=EpiMix
-_pkgver=1.4.0
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="an integrative tool for the population-level analysis of DNA methylation"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -51,6 +51,7 @@ optdepends=(
   r-biocgenerics
   r-biocstyle
   r-clusterprofiler
+  r-dt
   r-geoquery
   r-karyoploter
   r-knitr
@@ -64,8 +65,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d86305c56618b7f327d0068e09ad6558')
-b2sums=('e741fd7c2218a78e91b6fbe38fe347d83972214da5304e32b061af27772b848bf429e3426d48c91eb19ed17e061c0155e20f45edb4971ee96c0730c023cf3234')
+md5sums=('eabf88cbeaf4f32228191f3a389c880a')
+b2sums=('d1c3f93e97ecc9a568cf57d47961fc89c43eaf577801275efd50ee1082711647bc637b9e8fb522abc918d9e747052dcffbeab87b756af3430df451b89d9364b3')
 
 build() {
   mkdir build
