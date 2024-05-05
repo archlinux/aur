@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=sccomp
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Robust Outlier-aware Estimation of Composition and Heterogeneity for Single-cell Data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -48,13 +48,14 @@ optdepends=(
   r-knitr
   r-loo
   r-markdown
+  r-prettydoc
   r-testthat
   r-tidyseurat
   r-tidysinglecellexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8a24adb07d155b94645a5f684e1455f6')
-b2sums=('50496ee054c58cd1d4a4487240839b5413553fcce518d8797919d39916260f823cf79b1c68cc285243373cede1fdedadee0c89e04dedabcd43c7831cd276d1c5')
+md5sums=('38fa3fb4d650ac6866ba2586deaf34e6')
+b2sums=('0d1374553310470136e97f037c7ac9d4d28768be43409ce7f76e37eba5e7851f6248cf71375078334daf77fa9d7b8249be93d6ff34e08d8bc54430139212903d')
 
 build() {
   mkdir build
