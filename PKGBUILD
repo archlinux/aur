@@ -2,7 +2,7 @@
 pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
-pkgver=r472.bb44456
+pkgver=r473.151fc06
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -89,7 +89,7 @@ package() {
 
     # /usr/local/share/zsh/site-functions/*
     install -dm755 "${pkgdir}/usr/local/share/zsh/site-functions"
-    install -m644 -t "${pkgdir}/usr/local/share/zsh/site-functions" "${source_dir}/share/sk-chos/completions/"*
+    install -m644 -t "${pkgdir}/usr/local/share/zsh/site-functions" "${source_dir}/share/sk-chos/completions/"_*just
 
     # /etc/bash_completion.d
     install -dm755 "${pkgdir}/etc/bash_completion.d"
