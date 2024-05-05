@@ -10,12 +10,13 @@ pkgbase = ente
 	makedepends = nodejs
 	makedepends = yarn
 	depends = libsodium
+	backup = etc/ente/configurations/local.yaml
 	source = ente-photos-0.8.81.tar.gz::https://github.com/ente-io/ente/archive/refs/tags/photos-v0.8.81.tar.gz
 	source = ente-museum.service
 	source = git+https://github.com/ente-io/PhotoSwipe.git
 	source = git+https://github.com/abhinavkgrd/ffmpeg.wasm.git
 	sha256sums = 2473e38bb3d9eda7122bf6a12e6de63205cea877c18f6ebe1b961e4b5575e7ce
-	sha256sums = 5083f40330984dd663c8676d4fecd3fdd1770b8a3ee24ac682bd3b53c7a8b30b
+	sha256sums = d632886a9068ee4a2cdd6bccbd7cf87dc196660b45a0888d5b50f4565365af1c
 	sha256sums = SKIP
 	sha256sums = SKIP
 

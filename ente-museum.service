@@ -6,7 +6,7 @@ After=postgresql.service
 [Service]
 User=ente
 Group=ente
-WorkingDirrectory=/etc/ente
+WorkingDirectory=/etc/ente
 Environment=USER=ente ENTE_DB_USER=postgres
 ExecStart=/usr/bin/museum
 Restart=always

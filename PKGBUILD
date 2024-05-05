@@ -15,8 +15,9 @@ source=("${_pkgbase}-$pkgver.tar.gz::$url/archive/refs/tags/photos-v${pkgver}.ta
         "ente-museum.service"
         "git+https://github.com/ente-io/PhotoSwipe.git"
         "git+https://github.com/abhinavkgrd/ffmpeg.wasm.git")
+backup=('etc/ente/configurations/local.yaml')
 sha256sums=('2473e38bb3d9eda7122bf6a12e6de63205cea877c18f6ebe1b961e4b5575e7ce'
-            '5083f40330984dd663c8676d4fecd3fdd1770b8a3ee24ac682bd3b53c7a8b30b'
+            'd632886a9068ee4a2cdd6bccbd7cf87dc196660b45a0888d5b50f4565365af1c'
             'SKIP'
             'SKIP')
 
@@ -57,8 +58,8 @@ build() {
     cd "$srcdir/${_pkgbase}-v$pkgver/web"
     yarn install
     yarn next telemetry disable
-    NEXT_PUBLIC_ENTE_ENDPOINT=http://localhost:8080 yarn build
-    NEXT_PUBLIC_ENTE_ENDPOINT=http://localhost:8080 yarn build:photos
+#    NEXT_PUBLIC_ENTE_ENDPOINT=http://10.0.0.3:8080 yarn build
+    NEXT_PUBLIC_ENTE_ENDPOINT=http://10.0.0.3:8080 yarn build:photos
 }
 
 package_ente-server() {
