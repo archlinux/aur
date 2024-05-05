@@ -1,13 +1,16 @@
 pkgbase = python-django-auditlog
 	pkgdesc = A Django app that keeps a log of changes made to an object
 	pkgver = 3.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jazzband/django-auditlog
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
+	depends = git
 	depends = python
 	depends = python-django
 	depends = python-psycopg
