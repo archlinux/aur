@@ -1,24 +1,33 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=pdd
-pkgver=1.7
+pkgver=1.7.r12.gaedb2f7
 pkgrel=1
 pkgdesc="Tiny date, time diff calculator."
 arch=('any')
 url="https://github.com/jarun/pdd"
 license=('GPL')
 depends=('python-dateutil')
-source=("https://github.com/jarun/pdd/archive/v${pkgver}.tar.gz")
-sha256sums=('a81adcac025b08c7c933f028339c55a67d0da6c81845fe3d18fd4187010a63d4')
+makedepends=('git')
+_commit='aedb2f791dcd2266f51a5ca1a1d111b2b5869483'
+source=("git+https://github.com/jarun/pdd.git#commit=$_commit")
+sha256sums=('bda6622f6c28b0c9a060a8ce97922483ca09f3276652d517a576d0027455b7e6')
+
+pkgver() {
+	cd "${pkgname}"
+	( set -o pipefail
+		git describe --tags --abbrev=7 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	)
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make
+	cd "${pkgname}"
+	make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
+	cd "${pkgname}"
+	make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
-
-# vim:set ts=2 sw=2 et:
