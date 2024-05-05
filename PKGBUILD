@@ -2,7 +2,7 @@
 
 pkgname=mdbook-graphviz
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A preprocessor for mdbook to renders graphs using Graphviz"
 url="https://github.com/dylanowen/mdbook-graphviz"
 arch=('x86_64')
@@ -11,6 +11,7 @@ makedepends=(
   'cargo'
 )
 depends=(
+  'graphviz'
   'mdbook'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
@@ -22,12 +23,11 @@ prepare() {
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
-#check() {
-#  cd "${pkgname}-${pkgver}"
-#  export RUSTUP_TOOLCHAIN=stable
-#  cargo test --frozen --all-features
-#}
-# Keeps failing
+check() {
+  cd "${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
+}
 
 build() {
   cd "${pkgname}-${pkgver}"

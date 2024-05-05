@@ -1,11 +1,12 @@
 pkgbase = mdbook-graphviz
 	pkgdesc = A preprocessor for mdbook to renders graphs using Graphviz
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dylanowen/mdbook-graphviz
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cargo
+	depends = graphviz
 	depends = mdbook
 	source = https://github.com/dylanowen/mdbook-graphviz/archive/v0.2.0.tar.gz
 	sha256sums = 7a74d7a12bd2a0b7a119d0b14ca7e7d3840acb347debff9ec0ad4d4add026785
