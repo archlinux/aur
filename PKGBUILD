@@ -4,7 +4,7 @@
 # Contributor: shamrok <szamrok@gmail.com>
 
 pkgname=kraft
-pkgver=1.2
+pkgver=1.2.1
 _ver=v$pkgver
 pkgrel=1
 pkgdesc="Kraft helps you to handle documents like quotes and invoices in your small business."
@@ -52,9 +52,14 @@ build() {
   make
 }
 
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  make test
+}
+
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   make "DESTDIR=${pkgdir}" install
 }
 
-sha256sums=('9907a998b9b4cd80e700d030e2b6c7eaea89ed044816e09cd0ad6edd25c3cbde')
+sha256sums=('26f8e3ff7d12c86846b6db49ce171af31115f66119f9a7cce13de15f1397dd64')
