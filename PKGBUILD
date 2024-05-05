@@ -1,6 +1,6 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 pkgname=beseda
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Accessibility ebook speech reader'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake')
 provides=("beseda")
 
 source=("https://github.com/psemiletov/beseda/archive/${pkgver}.tar.gz")
-md5sums=('51c1f30f74b7556ad0d51fd82948ab03')
+md5sums=('2a11cbcfaa5d1174720bc89728b56fe6')
 
 build() {
 	cd "${srcdir}/beseda-${pkgver}"
