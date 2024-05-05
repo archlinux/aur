@@ -1,0 +1,18 @@
+pkgbase = dsda-launcher-git
+	pkgdesc = Launcher GUI for the dsda-doom source port
+	pkgver = v1.3.1.hotfix.r2.cdafb6d
+	pkgrel = 1
+	url = https://github.com/Pedro-Beirao/dsda-launcher
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = qt6-base
+	depends = qt6-base
+	depends = glibc
+	depends = gcc-libs
+	provides = dsda-launcher
+	conflicts = dsda-launcher
+	source = git+https://github.com/Pedro-Beirao/dsda-launcher
+	sha256sums = SKIP
+
+pkgname = dsda-launcher-git
