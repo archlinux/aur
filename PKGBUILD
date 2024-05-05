@@ -1,7 +1,8 @@
 # Maintainer: honjow
 pkgname=sk-chos-tool-git
 _pkgname=sk-chos-tool
-pkgver=r347.21e841a
+_reponame=sk-chos-config
+pkgver=r495.e687b37
 pkgrel=1
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
@@ -18,12 +19,12 @@ options=(!strip)
 install=sk-chos-tool.install
 
 pkgver() {
-    cd "$srcdir/sk-holoiso-config"
+    cd "$srcdir/$_reponame"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    source_dir="${srcdir}/sk-holoiso-config/src/chimeraos"
+    source_dir="${srcdir}/$_reponame/src/chimeraos"
     install -dm755 "${pkgdir}/usr/share/${_pkgname}"
 
     # icon
