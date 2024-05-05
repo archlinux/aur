@@ -2,7 +2,7 @@
 
 pkgname="pacautomation"
 pkgver="1.0.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Periodic background service for automated maintenance around pacman."
 arch=("any")
 url="https://gitlab.com/lagru/pacautomation"

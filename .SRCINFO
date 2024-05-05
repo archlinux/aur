@@ -1,7 +1,7 @@
 pkgbase = pacautomation
 	pkgdesc = Periodic background service for automated maintenance around pacman.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/lagru/pacautomation
 	install = pacautomation.install
 	changelog = CHANGELOG.md
