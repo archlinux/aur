@@ -1,7 +1,7 @@
 # Maintainer: Mike Javorski (javmorin) <mike.javorski gmail com>
 pkgname=python-aws-lambda-builders
 _name=${pkgname#python-}
-pkgver=1.48.0
+pkgver=1.49.0
 pkgrel=1
 pkgdesc='Python library to compile, build & package AWS Lambda functions for several runtimes & framework'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-six' 'python-wheel')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/aws/${_name}/archive/v$pkgver/${_name}-$pkgver.tar.gz")
-sha256sums=('1becfcf970004b29de2bdfae785950d18e6cfed816f8db10b418264421c1a6e4')
+sha256sums=('d5973584a6e0575f6f8fa9723d9d051c51547eec77217ca1f0d77224ef55f866')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
