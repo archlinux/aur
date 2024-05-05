@@ -1,6 +1,6 @@
 pkgbase = gamescope-sk
 	pkgdesc = SteamOS session compositing window manager
-	pkgver = 3.14.2.sk.6.r0.gcf4e6f1
+	pkgver = 3.14.2.sk.7.r0.gfe15211
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/gamescope
 	arch = x86_64
