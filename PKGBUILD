@@ -1,14 +1,14 @@
 pkgname=caligula-bin
 pkgdesc="A lightweight, user-friendly disk imaging TUI"
-pkgrel=2
-pkgver=0.4.3
+pkgrel=1
+pkgver=0.4.4
 url="https://github.com/ifd3f/caligula"
 license=("GPL-3.0")
 arch=("x86_64")
 provides=("caligula")
 conflicts=("caligula")
 source=("https://github.com/ifd3f/caligula/releases/download/v$pkgver/caligula-$CARCH-linux")
-sha256sums=("d3f6753312ac8283c9c0b4e1821a40500209f0b0fcb95f8dd23be0e44f9c95dc")
+sha256sums=("dc957ba1cf4a9844bf03b576054a160a673f325c14e6d87e19c9bde1d23205e6")
 
 package() {
     mv caligula-x86_64-linux caligula
