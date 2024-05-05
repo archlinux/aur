@@ -1,12 +1,12 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=deepxde
 pkgname=python-${_base}
-pkgdesc="A library for scientific machine learning"
-pkgver=1.11.0
+pkgdesc="Library for scientific machine learning"
+pkgver=1.11.1
 pkgrel=1
 arch=(any)
 url="https://github.com/lululxvi/${_base}"
-license=(LGPL2)
+license=(LGPL-2.1-or-later)
 depends=(python-scikit-optimize)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 optdepends=('python-tensorflow-probability: TensorFlow backend support'
@@ -14,7 +14,7 @@ optdepends=('python-tensorflow-probability: TensorFlow backend support'
   'python-flax: JAX backend support'
   'python-paddlepaddle: PaddlePaddle backend support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0821aef92ea155a3af45994835812fe71f173e0abf053d7a97cd600006ae29b11e1dd027e1f31ca5b584c0620760fa5897a74178520aed69a9ad7a1deb7e7892')
+sha512sums=('67e26d10ffd66b0acbc91a6203e76b479c2468e5a0ce4dd42911babd97a9590426a49bf3f852ee3b6baa701489d757570a0152f7032df5104d35f9e7e88cb752')
 
 build() {
   cd ${_base}-${pkgver}

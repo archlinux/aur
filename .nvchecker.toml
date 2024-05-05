@@ -1,0 +1,5 @@
+[python-deepxde]
+source = "github"
+github = "lululxvi/deepxde"
+use_latest_release = "true"
+prefix = "v"
