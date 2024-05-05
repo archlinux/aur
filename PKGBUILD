@@ -5,7 +5,7 @@ pkgname=steam-rom-manager-appimage
 pkgdesc="An app for managing ROMs in Steam."
 license=("GPL3")
 url="https://github.com/SteamGridDB/steam-rom-manager"
-pkgver="2.4.23"
+pkgver="2.4.27"
 pkgrel=1
 arch=("x86_64")
 options=(!strip)
@@ -15,7 +15,7 @@ conflicts=("steam-rom-manager" "steam-rom-manager-git")
 _pkgsrc="Steam-ROM-Manager-${pkgver}.AppImage"
 source=("${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
         "LICENSE::https://raw.githubusercontent.com/SteamGridDB/steam-rom-manager/v${pkgver}/LICENSE")
-sha512sums=("38e418f6f49559720e863859bd2fc2d1a693850efedf0d1480402411f2b69f32d61f7a5fd8052d2baea452aecd7fffacfa2e21283d2bb7c88e5db084ccc3a089"
+sha512sums=("43d4548de604e8b7ba34cdbc63c0b01921d30b481ee00ee775608d88af17b4a9e2c04d4cf16bc563157cf95357c40775844ba61434b7bb66d21b3eaf7f1ca557"
             "552aec8d120c9d931769f6a6b794716fce978d0055715de21746dc0f064f4a0f72b6be42d4828b98a56715b23fa427c1f66fd20aca0ef1751cc384c420db1605")
 
 
