@@ -1,0 +1,25 @@
+pkgbase = srb2kart-bin
+	pkgdesc = SRB2Kart is a kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2, based on a modified version of Doom Legacy.
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/srb2-kart
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = libpng
+	depends = libgme
+	depends = srb2-data
+	depends = libopenmpt
+	depends = miniupnpc
+	source_x86_64 = git+https://gitlab.com/linuxbombay/srb2-kart/srb2-kart
+	source_x86_64 = https://gitlab.com/linuxbombay/srb2-kart/binaries/1.6/-/raw/main/srb2kart-linux-x64.tar.xz
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 06b5f6dae674eba3d9acb450d649d35d8b9b0745051cd960b7a7147fb1414f1b
+	source_aarch64 = git+https://gitlab.com/linuxbombay/srb2-kart/srb2-kart
+	source_aarch64 = https://gitlab.com/linuxbombay/srb2-kart/binaries/1.6/-/raw/main/srb2kart-linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = 72f9c921c0553f209cbaf52037f9e83caaf773c92ff5f99597800863788084d5
+
+pkgname = srb2kart-bin
