@@ -1,0 +1,18 @@
+pkgbase = plasma-remotecontrollers-git
+	pkgdesc = Translate various input device events into keyboard and pointer events
+	pkgver = 5.27.80
+	pkgrel = 1
+	url = https://plasma-bigscreen.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	makedepends = plasma-wayland-protocols
+	makedepends = libcec
+	depends = plasma-workspace
+	optdepends = libcec: TV remotes support
+	provides = plasma-remotecontrollers
+	conflicts = plasma-remotecontrollers
+	source = git+https://invent.kde.org/plasma-bigscreen/plasma-remotecontrollers.git
+	sha256sums = SKIP
+
+pkgname = plasma-remotecontrollers-git
