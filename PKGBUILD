@@ -3,12 +3,13 @@
 
 pkgname=python-drf-writable-nested
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Writable nested model serializer for Django REST Framework"
 arch=('any')
 url="https://github.com/beda-software/drf-writable-nested"
 license=('BSD-2-Clause')
 depends=(
+  'git'
   'python'
   'python-django'
   'python-django-rest-framework'
