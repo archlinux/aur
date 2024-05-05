@@ -7,7 +7,7 @@ export WINEARCH='win32'
 
 if [ ! -d "${WINEPREFIX}" ]; then
 	echo 'Setting up the Wine prefix...'
-	winetricks -q 'dotnet40' 'cjkfonts'
+	winetricks -q 'dotnet45' 'cjkfonts'
 	echo 'Completed setting up the Wine prefix.'
 fi
 
