@@ -1,7 +1,7 @@
 pkgbase = vdex-extractor-git
 	pkgdesc = Command line tool to decompile and extract Android Dex bytecode from Vdex files that are generated along with Oat files when optimizing bytecode from dex2oat ART runtime compiler.
 	pkgver = 0.6.0+7.r311.20200513.78f283b
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://github.com/anestisb/vdexExtractor
 	arch = aarch64
@@ -17,7 +17,9 @@ pkgbase = vdex-extractor-git
 	depends = zlib
 	optdepends = bash: For optional scripts
 	provides = vdex-extractor=0.6.0+7.r311.20200513.78f283b
+	provides = deodex=0.6.0+7.r311.20200513.78f283b
 	conflicts = vdex-extractor
+	conflicts = deodex
 	source = vdex-extractor::git+https://github.com/anestisb/vdexExtractor.git
 	source = deodex.sh
 	sha256sums = SKIP

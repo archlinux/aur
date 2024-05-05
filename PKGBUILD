@@ -4,7 +4,7 @@ _pkgname='vdex-extractor'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=0.6.0+7.r311.20200513.78f283b
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line tool to decompile and extract Android Dex bytecode from Vdex files that are generated along with Oat files when optimizing bytecode from dex2oat ART runtime compiler."
 arch=(
   'aarch64'
@@ -28,11 +28,13 @@ optdepends=(
   'bash:  For optional scripts'
 )
 replaces=()
-conflicts=(
-  "${_pkgname}"
-)
 provides=(
   "${_pkgname}=${pkgver}"
+  "deodex=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
+  "deodex"
 )
 source=(
   "${_pkgname}::git+${url}.git"
