@@ -1,11 +1,21 @@
 pkgbase = lib32-libva1-compat
-	pkgdesc = ln -s /usr/lib32/libva.so /usr/lib32/libva.so.1 (fix VAAPI for Steam)
-	pkgver = 0.1.0
+	pkgdesc = Video Acceleration (VA) API for Linux (32-bit)
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://freedesktop.org/wiki/Software/vaapi
 	arch = x86_64
 	license = MIT
-	depends = lib32-libva
+	makedepends = mesa
+	makedepends = gcc-multilib
+	depends = lib32-libdrm
+	depends = lib32-libgl
+	depends = lib32-wayland
+	depends = lib32-libxext
+	depends = lib32-libxfixes
+	depends = libva
+	optdepends = lib32-libva-vdpau-driver: vdpau back-end for nvidia
+	optdepends = lib32-libva-intel-driver: back-end for intel cards
+	source = https://github.com/intel/libva/releases/download/1.8.3/libva-1.8.3.tar.bz2
+	sha512sums = 870cfaa5c4487f4cb4b01c11379484e3884aa5e9026c3836cc7681804a5e08a0b245b2aa788984a24a3094bd64068fbd0406e66cb4c5e30fc84e31095eb4a3e1
 
 pkgname = lib32-libva1-compat
-
