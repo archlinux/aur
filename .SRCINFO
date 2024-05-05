@@ -1,16 +1,18 @@
 pkgbase = perl-string-toidentifier-en
-	pkgdesc = Convert Strings to English Program Identifiers
+	pkgdesc = Perl/CPAN Module String::ToIdentifier::EN: Convert Strings to English Program Identifiers
 	pkgver = 0.12
 	pkgrel = 1
-	url = https://search.cpan.org/dist/String-ToIdentifier-EN
+	url = https://metacpan.org/release/String-ToIdentifier-EN
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	depends = perl>=5.8.1
 	depends = perl-lingua-en-inflect-phrase
-	depends = perl-namespace-clean
 	depends = perl-text-unidecode
+	depends = perl-namespace-clean
 	options = !emptydirs
 	source = https://search.cpan.org/CPAN/authors/id/R/RK/RKITOVER/String-ToIdentifier-EN-0.12.tar.gz
 	md5sums = 2088d00f01974911fa6f8ee169ef80de
+	sha512sums = 1fac41b16d284dacb81412d6f22171d795272f53d18bfe3b048af9bcc11b6844515fb27a389abfabcd18ffd3e6c5cf6905d5e2440a6cd38ef0ea8eda549a43c4
 
 pkgname = perl-string-toidentifier-en
