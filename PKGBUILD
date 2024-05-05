@@ -5,7 +5,7 @@ _provides="zipalign"
 _pkgname="${_depends}-${_provides}-provides"
 pkgname="${_pkgname}"
 pkgver=r34.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dummy/ meta package that satisfies '${_provides}' dependency by '${_depends}'."
 url="https://aur.archlinux.org/packages/${_depends}"
 arch=("any")
@@ -16,9 +16,7 @@ depends=(
 provides=(
   "${_provides}=${pkgver}"
 )
-conflicts=(
-  "${_provides}"
-)
+conflicts=()
 source=(
   'license-metapackage-pd.txt'
 )
