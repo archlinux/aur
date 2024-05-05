@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-network-displays-git
-pkgver=0.92.1.r2.g3453460
+pkgver=0.92.2.r0.g62a9203
 pkgrel=1
 pkgdesc="Miracast implementation for GNOME"
 arch=('x86_64')
@@ -21,7 +21,11 @@ depends=(
   'xdg-desktop-portal'
 )
 makedepends=('git' 'meson')
-optdepends=('dnsmasq' 'gst-plugin-pipewire' 'gstreamer-vaapi')
+optdepends=(
+  'dnsmasq'
+  'gst-plugin-pipewire'
+  'gstreamer-vaapi'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.gnome.org/GNOME/gnome-network-displays.git')
@@ -30,14 +34,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-
-  # https://gitlab.gnome.org/GNOME/gnome-network-displays/-/issues/272
-  sed -i -e "s/args: \['validate'/args: \['--nonet', 'validate'/" \
-    data/meson.build
 }
 
 build() {
