@@ -1,7 +1,7 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen-git
 pkgver=5.0.33.r3920.g732e604a0
-pkgrel=1
+pkgrel=2
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
@@ -60,8 +60,8 @@ build() {
 
     # Build and package with electron-builder
     export NODE_ENV='production'
-    electronDist=$(dirname $(realpath $(which electron)))
-    electronVer=$(electron --version | tail -c +2)
+    electronDist=$(dirname $(realpath $(which electron29)))
+    electronVer=$(electron29 --version | tail -c +2)
 
     yarn packer
 }
