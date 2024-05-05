@@ -1,6 +1,6 @@
 # Maintainer: Diablo (https://github.com/progzone122) (https://t.me/DiabloSat)
 pkgname=repackmanga
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Repackaging archives into a manga conversion structure via KCC (a.k.a. Kindle Comic Converter)"
 arch=('x86_64')
