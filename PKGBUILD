@@ -3,7 +3,7 @@
 pkgname=ghcid-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.8.9.r1.gb7dc5c4
-pkgrel=1
+pkgrel=2
 pkgdesc="GHCi based bare bones IDE"
 arch=('i686' 'x86_64')
 url="https://github.com/ndmitchell/${_pkgname}"
@@ -19,21 +19,25 @@ pkgver() {
   git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cabal update
+}
+
 build() {
   cd "${srcdir}/${_pkgname}"
-  cabal new-configure \
+  cabal configure \
     -O --jobs --prefix=/usr --docdir=/usr/share/doc/$pkgname --enable-tests
-  cabal new-build
+  cabal build
 }
 
 check() {
   cd "${srcdir}/${_pkgname}"
-  cabal new-test
+  cabal test
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
   mkdir -p "${pkgdir}/usr/bin"
-  cabal new-install --install-method=copy --installdir "${pkgdir}/usr/bin"
+  cabal install --install-method=copy --installdir "${pkgdir}/usr/bin"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
