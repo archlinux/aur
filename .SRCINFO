@@ -1,0 +1,26 @@
+pkgbase = pyzule-git
+	pkgdesc = An azule clone written in python3
+	pkgver = r279.3aa5608
+	pkgrel = 1
+	url = https://github.com/asdfzxcvbn/pyzule
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	depends = python3
+	depends = unzip
+	depends = python-lief
+	depends = python-pillow
+	depends = python-orjson
+	depends = curl
+	depends = ipsw-bin
+	provides = pyzule
+	provides = otool
+	provides = install_name_tool
+	conflicts = ldid
+	conflicts = ldid2
+	conflicts = ldid-git
+	noextract = zxcvbn_dir.zip
+	source = git+https://github.com/asdfzxcvbn/pyzule
+	md5sums = SKIP
+
+pkgname = pyzule-git
