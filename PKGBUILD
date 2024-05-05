@@ -1,4 +1,5 @@
 # Maintainer: JP Cimalando <jp-dev@inbox.ru>
+# Contributor: charlesneimog <charlesneimog@outlook.com>
 pkgname=deken-git
 _pkgname=deken
 pkgver=v0.9.18
