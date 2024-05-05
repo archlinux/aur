@@ -1,7 +1,7 @@
 pkgbase = bitscoper-cyber-toolbox-bin
-	pkgdesc = A Flutter application consisting of TCP Port Scanner, Route Tracer, File Hash Calculator, String Encoder, Series URI Crawler, DNS Record Retriever, and WHOIS Retriever.
+	pkgdesc = A Flutter application consisting of TCP Port Scanner, Route Tracer, Pinger, File Hash Calculator, String Encoder, Series URI Crawler, DNS Record Retriever, and WHOIS Retriever.
 	pkgver = 8.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/
 	arch = x86_64
 	license = GPL3

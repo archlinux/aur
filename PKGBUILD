@@ -1,7 +1,7 @@
 # Maintainer: bitscoper <bitscoper@gmail.com>
 
 pkgname=bitscoper-cyber-toolbox-bin
-pkgdesc="A Flutter application consisting of TCP Port Scanner, Route Tracer, File Hash Calculator, String Encoder, Series URI Crawler, DNS Record Retriever, and WHOIS Retriever."
+pkgdesc="A Flutter application consisting of TCP Port Scanner, Route Tracer, Pinger, File Hash Calculator, String Encoder, Series URI Crawler, DNS Record Retriever, and WHOIS Retriever."
 url="https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/"
 license=("GPL3")
 provides=("bitscoper-cyber-toolbox-bin")
@@ -15,7 +15,7 @@ source=('https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/releases/latest/do
 sha256sums=('SKIP')
 arch=('x86_64')
 pkgver=8.0.4
-pkgrel=1
+pkgrel=2
 
 package() {
   install -dm755 "$pkgdir/opt/Bitscoper_Cyber_ToolBox/"
