@@ -1,8 +1,8 @@
 pkgbase = sk-chos-addon-git
 	pkgdesc = Addon for sk-chimeros
-	pkgver = r479.84f0609
+	pkgver = r483.e3c48c1
 	pkgrel = 1
-	url = https://github.com/honjow/sk-holoiso-config.git
+	url = https://github.com/honjow/sk-chos-config.git
 	arch = any
 	license = MIT
 	makedepends = git
@@ -14,7 +14,7 @@ pkgbase = sk-chos-addon-git
 	conflicts = sk-chos-addon
 	replaces = sk-chos-addon
 	options = !strip
-	source = git+https://github.com/honjow/sk-holoiso-config.git
+	source = git+https://github.com/honjow/sk-chos-config.git
 	sha256sums = SKIP
 
 pkgname = sk-chos-addon-git

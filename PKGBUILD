@@ -2,11 +2,12 @@
 pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
-pkgver=r479.84f0609
+_reponame=sk-chos-config
+pkgver=r483.e3c48c1
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
-url="https://github.com/honjow/sk-holoiso-config.git"
+url="https://github.com/honjow/sk-chos-config.git"
 license=('MIT')
 makedepends=('git')
 depends=('expect' 'efibootmgr' 'zram-generator' 'just')
@@ -18,18 +19,18 @@ sha256sums=('SKIP')
 options=(!strip)
 
 pkgver() {
-    cd "$srcdir/sk-holoiso-config"
+    cd "$srcdir/$_reponame"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    source_dir="${srcdir}/sk-holoiso-config/src/chimeraos-addon"
+    source_dir="${srcdir}/${_reponame}/src/chimeraos-addon"
     cd "${source_dir}/share/sk-chos/completions"
     ./gen.sh
 }
 
 package() {
-    source_dir="${srcdir}/sk-holoiso-config/src/chimeraos-addon"
+    source_dir="${srcdir}/${_reponame}/src/chimeraos-addon"
 
     # bin
     install -dm755 "${pkgdir}/usr/bin/"
