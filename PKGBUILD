@@ -1,50 +1,57 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer:
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
-pkgname=gala-git
-pkgver=6.3.3.r10.b61a6059
+_pkgname="gala"
+pkgname="$_pkgname-git"
+pkgver=7.1.3.r92.g196d249
 pkgrel=1
 pkgdesc='The Pantheon Window Manager'
-arch=(x86_64)
-url=https://github.com/elementary/gala
-license=(GPL3)
-groups=(pantheon-unstable)
+url='https://github.com/elementary/gala'
+license=('GPL-3.0-or-later')
+arch=('x86_64')
+
 depends=(
-  bamf
+  cairo
+  gdk-pixbuf2
+  glib2
   gnome-desktop
-  libgraphene-1.0.so=0-64
-  lib{gee,gl,gexiv2}
-  libgranite.so
-  libmutter-11.so=0-64
+  graphene
+  gtk3
+  libcanberra
+  libgee
+  libgl
+  libgranite.so # granite
+  libhandy-1.so # libhandy
+  libxfixes
+  mutter
 )
 makedepends=(
-  git
-  gnome-common
-  intltool
-  meson
-  plank
   vala
+  git
+  meson
 )
+
 provides=(
-  gala
+  "gala=${pkgver%%.r*}"
   libgala.so
 )
 conflicts=(gala)
-source=(git+https://github.com/elementary/gala.git)
-sha256sums=(SKIP)
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+https://github.com/elementary/gala.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd gala
-
-  git describe --tags | sed 's/-/.r/; s/-g/./'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson gala build
-  ninja -C build
+  arch-meson "$_pkgsrc" build
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  meson install -C build --destdir="$pkgdir"
 }
-
-# vim: ts=2 sw=2 et:

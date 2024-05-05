@@ -1,29 +1,30 @@
 pkgbase = gala-git
 	pkgdesc = The Pantheon Window Manager
-	pkgver = 6.3.3.r10.b61a6059
+	pkgver = 7.1.3.r92.g196d249
 	pkgrel = 1
 	url = https://github.com/elementary/gala
 	arch = x86_64
-	groups = pantheon-unstable
-	license = GPL3
-	makedepends = git
-	makedepends = gnome-common
-	makedepends = intltool
-	makedepends = meson
-	makedepends = plank
+	license = GPL-3.0-or-later
 	makedepends = vala
-	depends = bamf
+	makedepends = git
+	makedepends = meson
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
 	depends = gnome-desktop
-	depends = libgraphene-1.0.so=0-64
+	depends = graphene
+	depends = gtk3
+	depends = libcanberra
 	depends = libgee
 	depends = libgl
-	depends = libgexiv2
 	depends = libgranite.so
-	depends = libmutter-11.so=0-64
-	provides = gala
+	depends = libhandy-1.so
+	depends = libxfixes
+	depends = mutter
+	provides = gala=7.1.3
 	provides = libgala.so
 	conflicts = gala
-	source = git+https://github.com/elementary/gala.git
+	source = gala::git+https://github.com/elementary/gala.git
 	sha256sums = SKIP
 
 pkgname = gala-git
