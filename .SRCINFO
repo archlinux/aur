@@ -1,18 +1,18 @@
 pkgbase = j4-dmenu-desktop-git
 	pkgdesc = A rewrite of i3-dmenu-desktop, which is much faster
-	pkgver = 2.18.r99.g7e3fd04
+	pkgver = 2.18.r231.g7da7e1d
 	pkgrel = 1
 	url = https://github.com/enkore/j4-dmenu-desktop
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
-	makedepends = cmake
+	makedepends = meson
 	optdepends = dmenu: the default backend
 	optdepends = bemenu: an alternative backend
 	provides = j4-dmenu-desktop
 	conflicts = j4-dmenu-desktop
-	source = git+https://github.com/enkore/j4-dmenu-desktop.git
-	md5sums = SKIP
+	source = j4-dmenu-desktop-git::git+https://github.com/enkore/j4-dmenu-desktop.git
+	b2sums = SKIP
 
 pkgname = j4-dmenu-desktop-git
