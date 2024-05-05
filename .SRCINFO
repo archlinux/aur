@@ -1,7 +1,7 @@
 pkgbase = libsurvive
 	pkgdesc = Tracking system for Lighthouse and Vive based devices
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/cntools/libsurvive/
 	arch = x86_64
 	license = MIT
@@ -9,20 +9,23 @@ pkgbase = libsurvive
 	makedepends = cmake
 	makedepends = eigen
 	depends = cblas
-	depends = cnmatrix-git
 	depends = lapacke
 	depends = libpcap
 	depends = libusb
-	depends = libx11
-	depends = sciplot
 	depends = zlib
 	optdepends = xr-hardware: for acessing additional devices
 	source = git+https://github.com/cntools/libsurvive.git#tag=v1.0
 	source = git+https://github.com/cntools/cnkalman.git
 	source = git+https://github.com/cntools/cnmatrix.git
 	source = git+https://github.com/jdavidberger/libsurvive-extras-data.git#commit=5cc2fc085d11ef98ad5936a745d4a42954b207ca
+	source = git+https://github.com/sciplot/sciplot.git#tag=v0.2.2
+	source = git+https://github.com/allanleal/doxystrap.git
+	source = git+https://github.com/sciplot/gnuplot-palettes.git
+	sha256sums = 0ecd62a21fb01a264e4c04ad3ec1ae61f5dc5edba8a9cac9aa9c858c2e09f995
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = d61277d7fe4c7e0d0a04cd48ce98a205b33a7ecbf19a032861c444b87075bba7
+	sha256sums = 76b70caa0ca7ffcef97338b6bab0ef3269566360f6fa9f0169450b889a07af26
 	sha256sums = SKIP
 	sha256sums = SKIP
 
