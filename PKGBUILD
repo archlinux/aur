@@ -7,6 +7,7 @@ arch=('x86_64') # should build any run on any architecture with C compiler, but 
 url="https://github.com/danielhrisca/asammdf"
 license=('LGPL-3.0-only')
 groups=()
+provides=('asammdf')
 depends=('python' 'python-pandas' 'python-numpy' 'python-numexpr' 'python-cchardet' 'python-chardet'  'python-lz4' 'python-importlib-metadata' 'canmatrix-git'  'hicolor-icon-theme')
 makedepends=('git' 'python-setuptools')
 optdepends=(

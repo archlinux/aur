@@ -32,6 +32,7 @@ pkgbase = asammdf-git
 	optdepends = python-cryptography: encryption
 	optdepends = python-keyring: encryption
 	optdepends = python-fsspec: filesystem
+	provides = asammdf
 	conflicts = asammdf
 	source = asammdf-git::git+https://github.com/danielhrisca/asammdf.git
 	source = asammdf.desktop
