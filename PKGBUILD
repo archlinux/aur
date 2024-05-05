@@ -7,7 +7,7 @@
 
 pkgname=virtualbox-kvm
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
-pkgver=20240325
+pkgver=20240502
 _pkgver=dev-${pkgver}
 _vboxver='7.0.14'
 pkgrel=1
@@ -54,7 +54,7 @@ source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vb
         '018-upate-xclient-script.patch'
         '019-libxml-2-12.patch')
 sha256sums=('45860d834804a24a163c1bb264a6b1cb802a5bc7ce7e01128072f8d6a4617ca9'
-            'f02aaab9e6dec3741aa246adc7613c3d0216edcf59b9ce081120d6eece0b0297'
+            '9e9d1d9c4f02414686dc7dabeb8a757bde000ea0e0a445c151742734b882e056'
             '76d98ea062fcad9e5e3fa981d046a6eb12a3e718a296544a68b66f4b65cb56db'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             'da4c49f6ca94e047e196cdbcba2c321199f4760056ea66e0fbc659353e128c9e'
