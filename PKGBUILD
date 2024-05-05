@@ -4,7 +4,7 @@
 
 pkgname='perl-starlink-ast'
 pkgver='3.03'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Interface to the Starlink AST library"
 arch=('i686' 'x86_64')
 license=('GPL-2.0-or-later')
@@ -45,6 +45,8 @@ package() {
   cd "$srcdir/$_distdir"
   /usr/bin/perl Build install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  # set the library to be root-writable so it can be stripped
+  chmod 755 "$pkgdir"/usr/lib/perl*/*/vendor_perl/auto/Starlink/AST/AST.so
 }
 
 # Local Variables:
