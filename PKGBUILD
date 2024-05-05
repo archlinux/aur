@@ -8,18 +8,12 @@ pkgname=(
   'python-megasync-git'
 #   'fuse-megasync-git' # disabled in upstream https://github.com/meganz/sdk/commit/eb3be4b7ca62019d418ed9e77b1c59a6c6c5f40e
 )
-pkgver=4.29.1b.12.g99da28916
+pkgver=6.2.0.38.gd93d7417c
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. (GIT Version)"
 arch=('x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
-source=(
-  'git+https://github.com/meganz/sdk.git'
-  'megasync.conf'
-  'megasyncd.service'
-  'esee'
-)
 makedepends=(
   'git'
   'chrpath'
@@ -43,6 +37,12 @@ makedepends=(
   'sqlite'
   'readline'
 )
+source=(
+  'git+https://github.com/meganz/sdk.git'
+  'megasync.conf'
+  'megasyncd.service'
+  'esee'
+)
 sha256sums=(
   'SKIP'
   'a3d30b3e198c3c117b2dd3144acaeb66117ee013744d2a0f39e9d4624b979a22'
@@ -56,17 +56,22 @@ pkgver() {
   echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
-_prepare() {
-  # use system ffmpeg
-  sed -e 's|ffmpeg-mega/||g' \
-      -e 's|/ffmpeg-mega||g' \
-      -i configure.ac
-}
-
 prepare() {
   (git clone "${srcdir}/sdk" build
    cd build
-   _prepare
+
+   # use system ffmpeg
+   sed -e 's|ffmpeg-mega/||g' \
+       -e 's|/ffmpeg-mega||g' \
+       -i configure.ac
+
+   # https://github.com/meganz/sdk/pull/2628
+   git cherry-pick 5d6f470bc65e9e5c1778bcb228be95d55ddc2b06 -m 1
+
+   sed 's|c++11|c++17|g' \
+     -i configure.ac \
+     -i bindings/qt/sdk.pri
+
    ./autogen.sh
 
    # fix autogen am__pep3147_tweak fails
