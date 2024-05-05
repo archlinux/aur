@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=0.50.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -10,7 +10,6 @@ url="https://git.platypush.tech/platypush/platypush"
 depends=(
     'python'
     'python-alembic'
-    'python-bcrypt'
     'python-croniter'
     'python-dateutil'
     'python-docutils'
