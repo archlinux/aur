@@ -3,12 +3,13 @@
 pkgname=python-django-rest-framework-guardian
 _pkgname=django-rest-framework-guardian
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="django-guardian support for Django REST Framework"
 arch=('any')
 url="https://github.com/johnthagen/django-rest-framework-guardian2"
 license=('BSD-3-Clause')
 depends=(
+  'git'
   'python'
   'python-django'
   'python-django-rest-framework'

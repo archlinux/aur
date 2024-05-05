@@ -1,13 +1,14 @@
 pkgbase = python-django-rest-framework-guardian
 	pkgdesc = django-guardian support for Django REST Framework
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johnthagen/django-rest-framework-guardian2
 	arch = any
 	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = git
 	depends = python
 	depends = python-django
 	depends = python-django-rest-framework
