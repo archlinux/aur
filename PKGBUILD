@@ -3,7 +3,7 @@
 _pkgname=sslh
 pkgname=$_pkgname-git
 pkgver=2.1.1.r16.gde7351f
-pkgrel=1
+pkgrel=2
 pkgdesc="SSL/SSH/OpenVPN/XMPP/tinc port multiplexer"
 arch=('i686' 'x86_64')
 url='http://www.rutschle.net/tech/sslh.shtml'
@@ -48,7 +48,7 @@ package() {
   install -Dm 755 sslh-select "$pkgdir/usr/bin/sslh-select"
   install -Dm 755 sslh-ev "$pkgdir/usr/bin/sslh-ev"
   # install manpage
-  install -Dm 644 sslh.8.gz -t "$pkgdir/usr/share/man/man8/sslh.8.gz"
+  install -Dm 644 sslh.8.gz "$pkgdir/usr/share/man/man8/sslh.8.gz"
   ln -s sslh.8.gz "$pkgdir/usr/share/man/man8/sslh-fork.8.gz"
   ln -s sslh.8.gz "$pkgdir/usr/share/man/man8/sslh-select.8.gz"
   ln -s sslh.8.gz "$pkgdir/usr/share/man/man8/sslh-ev.8.gz"

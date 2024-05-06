@@ -1,7 +1,7 @@
 pkgbase = sslh-git
 	pkgdesc = SSL/SSH/OpenVPN/XMPP/tinc port multiplexer
 	pkgver = 2.1.1.r16.gde7351f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rutschle.net/tech/sslh.shtml
 	install = sslh.install
 	arch = i686
