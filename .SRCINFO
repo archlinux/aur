@@ -1,7 +1,7 @@
 pkgbase = python-autoflake
 	pkgdesc = Removes unused imports and unused variables
 	pkgver = 2.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PyCQA/autoflake
 	arch = any
 	license = MIT
