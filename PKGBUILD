@@ -1,6 +1,6 @@
 # Maintainer: Fang Erjing <szdytom@qq.com>
 pkgname=kd-bin
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="A crystal clean command-line dictionary."
 arch=('x86_64' 'aarch64')
@@ -12,12 +12,13 @@ conflicts=('kd')
 
 source=('LICENSE' 'kd-server.service')
 sha256sums=('01fc1f8f20ef852628985a6fdb862fadd1c2f3b438cd3104c6a8e724bc16986a'
-'98c414c016faefb96f0f5e998328d60a5a248c71eb17b89b0d52784779f95940')
+'89eb98a14555b6a6fe1209ce428b39abe348ca36affea432572dc3ac81a75517')
 
 source_x86_64=("kd::https://github.com/Karmenzind/kd/releases/download/v${pkgver}/kd_linux_amd64")
-sha256sums_x86_64=('a1a225e9a161899b3815c23afa90482ea88dba1786fb6738153859f98a6f0e86')
+sha256sums_x86_64=('ced2f0663c3c563d1fc07d942234aec6239ec2560e5d41237662c1f485aa6114')
+
 source_aarch64=("kd::https://github.com/Karmenzind/kd/releases/download/v${pkgver}/kd_linux_arm64")
-sha256sums_aarch64=('62146fe4f275aaf94278509cbee6e54822637ebf7e4d36ea1b3f1d844126ced5')
+sha256sums_aarch64=('e6d9e5698ace199b38206b0f9734be093102bf3f552645af663299b03ceca489')
 
 package() {
 	cd "$srcdir/"
