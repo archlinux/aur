@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=strap
-_pkgver=1.6-0
+_pkgver=1.6-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Stratigraphic Tree Analysis for Palaeontology"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -15,8 +15,8 @@ depends=(
   r-pbapply
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f1d88fdaaff0570774ddc741b35a0f4e')
-b2sums=('cd6dacede41922d2c8de9812ffdb011a50ac3a6de70e8a0c2bdcf7013e0b58df11e84c646313826f22f3d11622e7d0200991282b6541e2ba4cdb2d4395c0bfc2')
+md5sums=('8f13af1c2c6bfc38f8a52e5fedae4de4')
+b2sums=('a0940060325f6e2132097d481a2c75e550cc53ee6b2d9eb85953bfbff145f16a24a56daa3250495a96b4a976cbff904a0dac604912ad9a9ffb6b9ccdd23d86a6')
 
 build() {
   mkdir build
