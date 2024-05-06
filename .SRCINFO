@@ -1,7 +1,7 @@
 pkgbase = python-pprintpp
 	pkgdesc = A drop-in replacement for pprint that's actually pretty
 	pkgver = 0.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://pypi.python.org/pypi/pprintpp
 	arch = any
 	license = BSD

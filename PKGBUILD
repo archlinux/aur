@@ -2,7 +2,7 @@
 
 pkgname=python-pprintpp
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A drop-in replacement for pprint that's actually pretty"
 arch=('any')
 url="http://pypi.python.org/pypi/pprintpp"
