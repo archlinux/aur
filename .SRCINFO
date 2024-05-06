@@ -1,7 +1,7 @@
 pkgbase = python-fastdtw
 	pkgdesc = Python implementation of FastDTW
 	pkgver = 0.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/slaypni/fastdtw
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-fastdtw
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = gcc-libs
 	depends = python-numpy
 	source = python-fastdtw-0.3.4.tar.gz::https://github.com/slaypni/fastdtw/archive/v0.3.4.tar.gz
 	b2sums = e3a1e630b615c1e074eb7cfa85d3b3173af3a8cde84a29a4454839a42a349212b638709c2af47aec48cdb3fb52c26282bbdf7c5b0f01de17bdd1c660f66c06b8
