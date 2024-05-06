@@ -2,16 +2,16 @@
 
 pkgname=temporal-cli
 pkgver='0.12.0'
-pkgrel=3
+pkgrel=4
 pkgdesc='CLI for running Temporal Server and interacting with various parts of Temporal'
 arch=('x86_64')
 url='https://github.com/temporalio/cli'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-_tag=1a241066f5a441310452162f263b74dccc0b94fd # git rev-parse "v${pkgver}"
-source=("${pkgname}-${pkgver}::git+https://github.com/temporalio/cli#tag=$_tag")
-b2sums=('SKIP')
+options=('!debug')
+source=("${pkgname}-${pkgver}::git+https://github.com/temporalio/cli.git#tag=v${pkgver}")
+b2sums=('7355941f5433ff300fd5b7daf8abde146604693760f721bdbc04c0ef65907571c48dd96a82af95104e0940cbeb2d7f01899265b3ff359412daa7e95c00085064')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -20,10 +20,13 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   go build \
-    -ldflags="-linkmode=external -X github.com/temporalio/cli/temporalcli.Version=${pkgver}" \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags="-linkmode=external -X github.com/temporalio/cli/temporalcli.Version=${pkgver} -buildid=" \
     -o dist/ \
     ./cmd/...
 
