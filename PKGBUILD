@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Moonlight2R
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Identify oncogenes and tumor suppressor genes from omics data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -12,6 +12,7 @@ license=('GPL-3.0-only')
 depends=(
   r-annotationhub
   r-biobase
+  r-biocgenerics
   r-circlize
   r-clusterprofiler
   r-complexheatmap
@@ -19,10 +20,13 @@ depends=(
   r-dose
   r-dplyr
   r-easypubmed
+  r-epimix
+  r-experimenthub
   r-foreach
   r-fuzzyjoin
   r-genomicranges
   r-geoquery
+  r-ggplot2
   r-gplots
   r-hiver
   r-magrittr
@@ -54,8 +58,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('45af1bc580f9231cb2a83eae7517d3b8')
-b2sums=('13fe521f228ce42b6693125e36e246bd09281441dc90224f891cb4e87866b94fb8ef40b6ea0ab2569bf6fa66efb16dfd55df517a3d2abde41abbdda881f4eb48')
+md5sums=('b0dd4a005ee752f5d6113ebca14602d6')
+b2sums=('753e299bdc12b8becc409554c89d42419ddac99fc37285610e89b89902209fdb3052d0c8b3f21f1058dfd281ab6a826ee82198188cc536ff877e905bb392020d')
 
 build() {
   mkdir build
