@@ -4,7 +4,7 @@
 # Contributor: Hurricane Pootis <hurricanepootis@protonmail.com>
 
 pkgname=geekbench
-pkgver=6.2.2
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="A cross-platform benchmark that measures processor and memory performance"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('zlib' 'gcc-libs')
 license=("custom")
 conflicts=("geekbench227")
 source=("http://cdn.geekbench.com/Geekbench-${pkgver}-Linux.tar.gz")
-sha512sums=('e72d564a977718ccbf97a434049d74fd9f145056e394affaa1ce06c4190a8e7508f8f1a1207e1c4de7f8945842d05d713e87873a287df5b20ead36abc89aab2f')
+sha512sums=('0c0d89adea5c25cd6b9cc804fdbb5f3e53178ca3cf7b9505ab9c194f84f7d38274c1bc57651a073c50490e731ae1bbd56d13e388144a2529e9a556cef181ab6a')
 options=('!strip')
 
 package() {
