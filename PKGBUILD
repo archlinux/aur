@@ -12,7 +12,7 @@ url='https://github.com/tardyp/sphinx-jinja'
 license=(MIT)
 depends=(python python-docutils python-jinja python-sphinx)
 makedepends=(git python-build python-installer python-poetry-core)
-checkdepends=(python-pytest)
+checkdepends=(python-pytest python-defusedxml)
 # tests are no longer included in PyPI source tarballs after upstream switched to poetry
 source=("git+https://github.com/tardyp/sphinx-jinja.git?signed#tag=$_tag"
         "sphinx-7.2.patch")
