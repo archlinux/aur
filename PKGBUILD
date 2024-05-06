@@ -1,7 +1,7 @@
 # Maintainer: Tuure Piitulainen <tuure.piitulainen@gmail.com>
 
 pkgname="vivify"
-pkgver="0.1.5"
+pkgver="0.1.6"
 pkgrel=1
 pkgdesc="Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("GPL3")
 depends=("jq" "gcc-libs" "sh")
 makedepends=("yarn")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jannis-baum/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=("cafbfdc95076b4514093c7eb86fb1203")
+md5sums=("83ad2330e7dfc1541bdc58299b7d4387")
 
 # Stripping 'unneeded symbols' causes vivify-server executable to break
 # (exits with error `Pkg: Error reading from file`)
