@@ -1,4 +1,5 @@
-# Maintainer: TurtleRuss <tttturtleruss@gmail.com>
+# Maintainer: Haoyang Liu <tttturtleruss@gmail.com>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=twitch-dl-git
 pkgver=2.3.0.r6.g47d62bc
@@ -6,9 +7,9 @@ pkgrel=1
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=(any)
 url="https://github.com/ihabunek/twitch-dl"
-license=('GPL3')
-depends=('python-httpx' 'python-m3u8' 'python-requests' 'python-pyaml' 'ffmpeg')
-makedepends=('git' 'python-setuptools' 'python-wheel')
+license=('GPL-3.0-only')
+depends=('python' 'python-httpx' 'python-click' 'python-m3u8')
+makedepends=('git' 'python-build' 'python-installer')
 optdepends=('twine: Collection of utilities for interacting with PyPI')
 checkdepends=('python-pytest')
 provides=('twitch-dl' 'twitch-dl-bin')
