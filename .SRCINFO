@@ -1,6 +1,6 @@
 pkgbase = waypaper-engine
 	pkgdesc = A pleasant gui frontend for swww with batteries included!
-	pkgver = 1.2.8
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/0bCdian/Waypaper-Engine
 	arch = x86_64
@@ -11,8 +11,10 @@ pkgbase = waypaper-engine
 	depends = nodejs
 	depends = socat
 	depends = hicolor-icon-theme
+	depends = fzf
+	depends = jq
 	provides = waypaper-engine
-	source = Waypaper-Engine-1.2.8.tar.gz::https://github.com/0bCdian/Waypaper-Engine/archive/refs/tags/v1.2.8.tar.gz
+	source = Waypaper-Engine-2.0.0.tar.gz::https://github.com/0bCdian/Waypaper-Engine/archive/refs/tags/v2.0.0.tar.gz
 	md5sums = SKIP
 
 pkgname = waypaper-engine
