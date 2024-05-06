@@ -1,7 +1,7 @@
 # Maintainer: Ling Wang <lingwang@wcysite.com>
 pkgname=ruyi-bin
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The package manager for RuyiSDK."
 arch=("x86_64" "arm64" "riscv64")
 url="https://github.com/ruyisdk/ruyi"
