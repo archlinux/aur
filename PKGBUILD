@@ -1,13 +1,13 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: d-air1 <youremail@domain.com>
 pkgname=bindtointerface
-pkgver=4b03914
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 arch=("x86_64")
 pkgdesc="With this program you can bind applications to a specific network interface / network adapter."
 url="https://github.com/JsBergbau/BindToInterface"
 license=('GPL')
-source=("https://raw.githubusercontent.com/JsBergbau/BindToInterface/4b039146016d8fbd3bc3e8e5df16eb10ba03c397/bindToInterface.c")
-sha256sums=('04a74f52923a0d92102802162451efb5bddf9251c9843ef49e3f4decbaf9e819')
+source=("https://raw.githubusercontent.com/JsBergbau/BindToInterface/d477326d85f64fdd1dc46382fe698e46f4843100/bindToInterface.c")
+sha256sums=('9060792b340e9a9036796cfd0818a33a672c686ade24a681a8ce458f2c6c39a4')
 
 build() {
 	gcc \
