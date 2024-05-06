@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=gameoftrees
-pkgver=0.98.2
+pkgver=0.99
 pkgrel=1
 pkgdesc='A version control system which prioritizes ease of use and simplicity over flexibility'
 arch=(x86_64)
@@ -10,36 +10,50 @@ license=(ISC)
 conflicts=(gameoftrees-git got got-git got-bin)
 depends=(ncurses util-linux-libs libbsd libevent zlib libretls)
 makedepends=(pkgconf git)
-source=("$pkgname::git+ssh://anonymous@got.gameoftrees.org/got-portable.git#tag=$pkgver")
-b2sums=('964eeff66bf9d4a82fa01cedb66e0bfc1bc85a082eae2af6f4fc0a808df574534a9b3c9e0aa75a8f1e57f8d9a35e0c4d428bef9f98bd72a3b3fe73f6fe8aa524')
+#checkdepends=(oksh perl)
+source=("$url/releases/portable/got-portable-$pkgver.tar.gz")
+b2sums=('6dcf07a4b80729e400a26aa9ae2a90ecc7eda25a9dc4bf8381f2eeaf81da01ec2b5a8e9538c5db5a022e833bcd10522f0fb744a18023420c4ccb83fe2fd660b8')
+
+prepare () {
+	rm -rf build
+	mkdir build
+
+	#
+	# Test suites expect /bin/sh to be OpenBSD ksh, which is available
+	# as the "oksh" package. Change the shebang in testing scripts.
+	#
+	return
+	cd "got-portable-$pkgver"
+	sed -i -e '1s/\/sh$/\/oksh/' \
+		regress/cmdline/*.sh \
+		regress/gotd/*.sh \
+		regress/tog/*.sh
+}
 
 build () {
-	cd "$pkgname"
-	autoreconf -f -i -v
-	./configure --prefix=/usr --sbindir=/usr/bin --libexecdir=/usr/lib/$pkgname \
+	cd build
+	"../got-portable-$pkgver/configure" \
+		--prefix=/usr --sbindir=/usr/bin --libexecdir=/usr/lib/$pkgname \
 		--enable-gotd --with-gotd-empty-path=/var/empty
 	make
 }
 
-check () {
+# TODO: Investigate why many tests still fail
+_check () {
 	#
 	# We need a different build that can be installed to a local prefix
 	# directory, because the test suite will pick binaries from $PATH.
 	#
-	# Also, /bin/sh is expected to be OpenBSD ksh, which is available
-	# as the "oksh" package, but we need to either make it be /bin/sh or
-	# change the shebangs in testing scripts.
-	#
-	msg2 'TODO: Investigate whether test can be made to run'
-	return 0
-
-	cd "$pkgname"
-	make tests
+	cd "got-portable-$pkgver"
+	local prefix="$(pwd)/_prefix"
+	./configure --prefix="$prefix"
+	make install
+	PATH="$prefix/bin:$PATH" make tests
 }
 
 package () {
-	cd "$pkgname"
-	make DESTDIR="$pkgdir" install
+	make -Cbuild DESTDIR="$pkgdir" install
+	cd "got-portable-$pkgver"
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" \
 		README README.portable TODO
 }
