@@ -1,6 +1,6 @@
 pkgbase = endless-sky-git
 	pkgdesc = A sandbox-style space exploration and combat game
-	pkgver = 0.10.4.r16.gdba02efe3
+	pkgver = 0.10.7.alpha.a5d616acc0
 	pkgrel = 1
 	url = https://endless-sky.github.io/
 	arch = i686

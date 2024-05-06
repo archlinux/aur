@@ -4,15 +4,17 @@
 
 pkgname='endless-sky-git'
 _gitname='endless-sky'
-pkgver=0.10.6.r116.ga5d616acc0
+pkgver=0.10.7.alpha.a5d616acc0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://endless-sky.github.io/"
 provides=('endless-sky')
 depends=('openal' 'hicolor-icon-theme' 'libjpeg-turbo' 'libmad' 'glew' 'libpng' 'sdl2')
 makedepends=('git' 'scons')
-optdepends=('endless-sky-high-dpi: high resolution graphics assets'
-            'endless-sky-editor: map editor')
+optdepends=(
+  'endless-sky-high-dpi: high resolution graphics assets'
+  'endless-sky-editor: map editor'
+)
 conflicts=('endless-sky')
 license=('GPL3' 'CCPL' 'custom:public domain')
 pkgdesc="A sandbox-style space exploration and combat game"
@@ -21,7 +23,15 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  # The next version is present in the .cpp and the credits.txt file
+  # `git describe` provide the last release.
+  _version=$(cat credits.txt | sed 2!d |
+    sed -r 's/^version (.*)$/\1/' |
+    sed -r 's/-/./')
+
+  # Hash is not included in the credits, might prevent continuous update
+  _hash=$(git rev-parse --short HEAD)
+  echo "${_version}.${_hash}"
 }
 
 build() {
