@@ -2,8 +2,8 @@
 # Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm-git
 _pkgname=Wave
-pkgver=0.7.2.r0.gf41ac1d5
-_electronversion=29
+pkgver=0.7.3.r15.g46b9c22f
+_electronversion=30
 _nodeversion=20
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
@@ -34,7 +34,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -62,7 +62,7 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
@@ -75,8 +75,10 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|-l -p never|--dir|g" -i scripthaus.md
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn add -D electron-rebuild
+    # .yarnrc.yml existed
+    npm install -g yarn
+    corepack enable yarn
+    yarn install #--cache-folder "${srcdir}/.yarn_cache"
     scripthaus run electron-rebuild
     scripthaus run build-backend
     scripthaus run build-package-linux
