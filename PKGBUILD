@@ -5,13 +5,13 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/crunchy-labs/crunchy-cli"
 license=('MIT')
 
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 
 depends=('ffmpeg' 'openssl')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crunchy-labs/crunchy-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e82be1d2564dec0e4543b51346120b971260071f7f65726a0ece4e700511f174')
+sha256sums=('3219493204e7e34fa14240007ea905ec397db75624ea6c0570a2fdfb6a6366ad')
 # lto causes linking errors when executed by this buildscript. besides, lto is already done by cargo itself (which doesn't cause linking errors)
 options=(!lto)
 
@@ -30,7 +30,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_HOME="$srcdir/cargo-home"
 
-  export CRUNCHY_CLI_GIT_HASH=89b9c5d
+  export CRUNCHY_CLI_GIT_HASH=ab63dcd
   cargo build --frozen --release
 }
 
