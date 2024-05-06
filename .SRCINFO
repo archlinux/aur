@@ -1,12 +1,12 @@
 pkgbase = otf-monaspace-bin
 	pkgdesc = An innovative superfamily of fonts for code
-	pkgver = v1.000
+	pkgver = v1.100
 	pkgrel = 1
 	url = https://monaspace.githubnext.com
 	arch = any
 	license = OFL
 	conflicts = otf-monaspace
-	source = https://github.com/githubnext/monaspace/releases/download/v1.000/monaspace-v1.000.zip
-	sha256sums = 3e08376fd0aeca1f851fde0c08e18ca2d797f6a4c7a449670bf4d1270303c8f6
+	source = https://github.com/githubnext/monaspace/releases/download/v1.100/monaspace-v1.100.zip
+	sha256sums = c8f7e1a497cc128181d399b259b51e6fe332f7d0fed1fbb49bb05076a7753a9f
 
 pkgname = otf-monaspace-bin
