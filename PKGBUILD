@@ -2,7 +2,7 @@ pkgname=ruby-gollum-lib
 _name=gollum-lib
 pkgver=6.0
 _commit=15aae49016860a7fa3c04bd6f48fee9fd43a518d
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, Git-powered wiki with a sweet API.'
 arch=(x86_64)
 url='http://github.com/gollum/gollum-lib'
@@ -14,6 +14,7 @@ ruby-loofah
 ruby-github-markup
 ruby-gemojione
 ruby-twitter-text
+ruby-gollum-rugged_adapter
 )
 makedepends=(
 git

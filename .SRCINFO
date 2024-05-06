@@ -19,6 +19,7 @@ pkgbase = ruby-gollum-lib
 	depends = ruby-github-markup
 	depends = ruby-gemojione
 	depends = ruby-twitter-text
+	depends = ruby-gollum-rugged_adapter
 	source = git+https://github.com/gollum/gollum-lib.git#commit=15aae49016860a7fa3c04bd6f48fee9fd43a518d
 	sha1sums = SKIP
 
