@@ -22,7 +22,7 @@ function _hr_getYaml() {
 function _hr_getNamespace() {
   local yaml="$1"
 
-  <<<"$yaml" | yq -er '.spec.targetNamespace // .metadata.namespace'
+  <<<"$yaml" | yq -er '.spec.targetNamespace // .metadata.namespace // ""'
 }
 
 function _hr_getReleaseName() {
@@ -95,7 +95,7 @@ function _hr_git() {
   ) > /dev/null
 
   helm dependency update "$clonePath/$gitPath" > /dev/null
-  helm "${commands[@]}" --namespace $namespace $releaseName "$clonePath/$gitPath" --values <(<<< "$values") ${@:9}
+  helm "${commands[@]}" ${namespace:+--namespace=$namespace} $releaseName "$clonePath/$gitPath" --values <(<<< "$values") ${@:9}
 }
 
 function helmrelease() {
@@ -188,12 +188,12 @@ function helmrelease() {
   releaseName=$(_hr_getReleaseName "$helmReleaseYaml")
   case "$subCommand" in
     uninstall)
-      KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace $releaseName
+      KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" ${namespace:+--namespace=$namespace} $releaseName "$@"
       ;;
     *)
       values=$(<<< "$helmReleaseYaml" | yq -y -er .spec.values)
       if [[ -d "$sourceParameter" ]]; then
-        KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace $releaseName "$sourceParameter" --values <(<<< "$values") ${@}
+        KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" ${namespace:+--namespace=$namespace} $releaseName "$sourceParameter" --values <(<<< "$values") ${@}
       elif <<< "$helmReleaseYaml" | yq -e '.apiVersion == "helm.fluxcd.io/v1"' > /dev/null; then
         if <<< "$helmReleaseYaml" | yq -e .spec.chart.git > /dev/null; then
           local gitPath
@@ -204,7 +204,7 @@ function helmrelease() {
           gitRef="$(<<< "$helmReleaseYaml" | yq -er '.spec.chart.ref // "master"')"
           KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" _hr_git "$clusterConnected" "$subCommand" "$gitUrl" "$gitRef" "$gitPath" "$namespace" "$releaseName" "$values" "$@"
         else
-          KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace --repo $(<<< "$helmReleaseYaml" | yq -er .spec.chart.repository) $releaseName $(<<< "$helmReleaseYaml" | yq -er .spec.chart.name) --version $(<<< "$helmReleaseYaml" | yq -er .spec.chart.version) --values <(<<< "$values") "$@"
+          KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" ${namespace:+--namespace=$namespace} --repo $(<<< "$helmReleaseYaml" | yq -er .spec.chart.repository) $releaseName $(<<< "$helmReleaseYaml" | yq -er .spec.chart.name) --version $(<<< "$helmReleaseYaml" | yq -er .spec.chart.version) --values <(<<< "$values") "$@"
         fi
       else
         local sourceNamespace
@@ -220,7 +220,7 @@ function helmrelease() {
           local sourcesYaml
           if sourcesYaml=$(_hr_getYaml "$yaml" "" "$sourceKind") || ! sourceResource=$(<<< "$sourcesYaml" | yq -erys "[.[] | select( (.metadata.namespace == \"$sourceNamespace\") and (.metadata.name == \"$sourceName\") )][0] // empty"); then
             if [[ "$clusterConnected" == true ]]; then
-              if ! sourceResource=$(kubectl --namespace=$sourceNamespace get $sourceKind $sourceName -o yaml); then
+              if ! sourceResource=$(kubectl ${sourceNamespace:+--namespace=$sourceNamespace} get $sourceKind $sourceName -o yaml); then
                 info "Source resource '$sourceNamespace/$sourceKind/$sourceName' not found in cluster nor in input"
               fi
             else
@@ -261,7 +261,7 @@ function helmrelease() {
                 err "'$helmRepositoryUrl' is not supported"
                 ;;
             esac
-            KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace --version "$chartVersion" --values <(<<< "$values") "$@"
+            KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" ${namespace:+--namespace=$namespace} --version "$chartVersion" --values <(<<< "$values") "$@"
             ;;
           *)
             err "'$sourceKind' is not implemented"
