@@ -1,7 +1,7 @@
 pkgbase = python-galois
 	pkgdesc = A performant NumPy extension for Galois fields and their applications
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mhostetter/galois
 	arch = any
 	license = MIT
