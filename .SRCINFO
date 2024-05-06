@@ -1,12 +1,13 @@
 pkgbase = dupeguru
 	pkgdesc = Find duplicate files with various contents, using perceptual diff for pictures
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dupeguru.voltaicideas.net/
 	arch = any
 	license = GPL3
 	makedepends = python-distro
 	makedepends = python-sphinx
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pip
 	depends = python-pyqt5
@@ -22,6 +23,8 @@ pkgbase = dupeguru
 	conflicts = dupeguru-pe
 	conflicts = dupeguru-me
 	source = https://github.com/arsenetar/dupeguru/archive/refs/tags/4.3.1.tar.gz
+	source = 0001-fix-Replace-use-of-imp-with-importlib.patch
 	md5sums = 996f2a9bab1541c188f823e9647f341c
+	md5sums = d6874bc038efd92420517407665c7f69
 
 pkgname = dupeguru

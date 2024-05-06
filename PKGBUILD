@@ -3,7 +3,7 @@
 # Contributor: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Find duplicate files with various contents, using perceptual diff for pictures"
 arch=('any')
 url="https://dupeguru.voltaicideas.net/"
@@ -11,15 +11,19 @@ license=('GPL3')
 depends=('python' 'python-pip' 'python-pyqt5' 'python-polib'
          'python-semantic-version' 'python-xxhash'
          'python-mutagen' 'python-send2trash' 'libxkbcommon-x11')
-makedepends=('python-distro' 'python-sphinx')
-source=( https://github.com/arsenetar/${pkgname}/archive/refs/tags/${pkgver}.tar.gz )
-md5sums=('996f2a9bab1541c188f823e9647f341c')
-provides=("dupeguru")
-conflicts=("dupeguru-git" "dupeguru-se" "dupeguru-pe" "dupeguru-me")
+makedepends=('python-distro' 'python-sphinx' 'python-setuptools')
+source=("https://github.com/arsenetar/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+	'0001-fix-Replace-use-of-imp-with-importlib.patch')
+md5sums=('996f2a9bab1541c188f823e9647f341c'
+	'd6874bc038efd92420517407665c7f69')
+provides=('dupeguru')
+conflicts=('dupeguru-git' 'dupeguru-se' 'dupeguru-pe' 'dupeguru-me')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   sed -i -E 's/polib.*/polib>=1.1.0/g' requirements.txt
+  sed -i -E '125s/.*/    packages = ["hscommon", "core", "qt"]/' package.py
+  patch -p1 < "${srcdir}"/0001-fix-Replace-use-of-imp-with-importlib.patch
 }
 
 build() {
