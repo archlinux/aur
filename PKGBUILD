@@ -1,5 +1,5 @@
 # Maintainer: Lenin Garizabalo <https://github.com/IGUNUBLUE/>
-pkgname=relaGit-bin
+pkgname=relagit-bin
 pkgver=0.14.12
 pkgrel=1
 pkgdesc="The elegant solution to graphical version control."
