@@ -1,4 +1,4 @@
-# Maintainer: Mateusz Kiersnowski <ragouel at outlook dot com>
+# Maintainer: Mateusz Kiersnowski
 
 pkgname=reqview
 pkgver=2.19.0
