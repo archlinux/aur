@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Games;
+Exec=/usr/bin/sm63redux
+GenericName=Platformer
+Icon=sm63redux
+Keywords=sm63redux;
+Name=Super Mario 63 Redux
+Terminal=false
+Type=Application
