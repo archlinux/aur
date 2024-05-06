@@ -5,7 +5,7 @@ pkgbase="python-sacred"
 pkgname=("python-sacred")
 _pkgname="sacred"
 
-pkgver=0.8.2
+pkgver=0.8.5
 pkgrel=0
 epoch=0
 
@@ -17,7 +17,7 @@ license=('MIT')
 makedepends=('python-distribute')
 checkdepends=('python-pymongo')
 source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=('4b530f1a96faf077270431d73245d2f5')
+md5sums=('57c7ea61c94d5d5a64c53d0ad3723f6c')
 
 build() {
   msg "Building Python 3"
