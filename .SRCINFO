@@ -1,0 +1,14 @@
+pkgbase = shlorem
+	pkgdesc = Lorem Ipsum generator for the command line (pure bash)
+	pkgver = 1.1.2.r1.g4a37420
+	pkgrel = 1
+	url = https://github.com/pforret/shlorem
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = shlorem
+	conflicts = shlorem
+	source = shlorem::git+https://github.com/pforret/shlorem.git
+	b2sums = SKIP
+
+pkgname = shlorem
