@@ -3,13 +3,13 @@
 # Maintainer: Vedran Miletic <vedran AT miletic DOT net>
 
 pkgname=gromacs
-pkgver=2023.2
+pkgver=2024.1
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('x86_64')
-depends=('lapack' 'zlib' 'hwloc')
+depends=('lapack' 'zlib' 'hwloc' 'gcc12')
 optdepends=('cuda: Nvidia GPU support'
             'vmd: Accesibility to other trajectory formats (ONLY WHEN COMPILING)'
             'perl: needed for demux.pl and xplor2gmx.pl'
@@ -19,7 +19,7 @@ makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(https://gitlab.com/gromacs/gromacs/-/archive/v${pkgver}/gromacs-v${pkgver}.tar.gz)
 
-sha256sums=('70a7b9e4cdafb21336213613f9d72228e338770a15548e24917251c32af599c9')
+sha256sums=('b215e25ab4b99ab0b037770a3108c0d4a7917311a8345524a4fd5423f91c7e46')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
@@ -29,8 +29,8 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
 # For CUDA (12+) support, compiling with GCC 12 is required.
 # If you not need CUDA support, uncomment the next two lines
 # and install cuda and gcc12 packages.
-#export CC=gcc-12
-#export CXX=g++-12
+export CC=gcc-12
+export CXX=g++-12
 
 build() {
   mkdir -p ${srcdir}/{single,double}
@@ -52,7 +52,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DGMX_BUILD_OWN_FFTW=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON \
-        #-GMX_GPU=CUDA
+        #-DGMX_GPU=CUDA
   # For GPU acceleration support, uncomment the previous line and pick one: OFF, CUDA, OpenCL, SYCL
   make
 }
