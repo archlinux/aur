@@ -9,7 +9,7 @@ _debian_pkgrel=+3
 
 pkgname=widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content.  System-wide installation with automated registering for chromium and firefox.'
-pkgver=${_debian_pkgver}
+pkgver=${_x86_64_pkgver}
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://www.widevine.com/'
@@ -18,8 +18,8 @@ depends=('gcc-libs' 'glib2' 'nspr' 'nss')
 depends_aarch64=('glibc-widevine')
 depends_armv7h=('glibc-widevine')
 makedepends_aarch64=('python')
-provides=('chromium-widevine' 'widevine-aarch64' 'widevine-armv7h')
-conflicts=('chromium-widevine' 'widevine-aarch64' 'widevine-armv7h')
+provides=('chromium-widevine')
+conflicts=('chromium-widevine')
 install="widevine.install"
 options=('!strip')
 
