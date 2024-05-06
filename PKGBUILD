@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hexhoot-bin
-pkgver=1.0.3
-_electronversion=24
-pkgrel=9
+pkgver=1.0.4
+_electronversion=30
+pkgrel=1
 pkgdesc="An Opensource Peer-to-peer communication platform with Zero-Knowledge-Proof based authentication."
 arch=(x86_64)
 url="http://blog.hexhoot.com/"
@@ -11,20 +11,25 @@ license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'nodejs'
+)
+options=(
+    '!strip'
+    '!emptydirs'
+    #'!staticlibs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('32718c19454f79216858ef3406f59a777e3f1724330d716498d5b4cb262eab9d'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('ab4d1020f414e4cb45c50c86cdd53010989c3292efdfe49ffceb9b16953a23e6'
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
