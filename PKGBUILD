@@ -1,10 +1,10 @@
-# Maintainer: Abdur-Rahman Mansoor <armansoor at posteo dot net>
+# Maintainer: Abdur-Rahman Mansoor <armansoor at missingno dot dev>
 
 _name='chompjs'
 _framework='python'
 pkgname="${_framework}-${_name}"
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Parsing JavaScript objects into Python data structures'
 arch=('any')
 url="https://github.com/Nykakin/${_name}"

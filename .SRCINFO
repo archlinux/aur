@@ -1,7 +1,7 @@
 pkgbase = python-chompjs
 	pkgdesc = Parsing JavaScript objects into Python data structures
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nykakin/chompjs
 	arch = any
 	license = MIT
