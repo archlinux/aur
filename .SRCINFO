@@ -1,14 +1,14 @@
 pkgbase = ente-server-git
 	pkgdesc = Self hosted server for Ente (mobile) clients
-	pkgver = r1.6041cd7
-	pkgrel = 2
+	pkgver = r25070.7be2c66
+	pkgrel = 3
 	url = https://github.com/ente-io
 	arch = x86_64
 	license = AGPL-3.0-only
+	makedepends = curl
 	makedepends = git
 	makedepends = go
 	makedepends = go-md2man
-	makedepends = sed
 	depends = go
 	depends = libsodium
 	optdepends = minio
