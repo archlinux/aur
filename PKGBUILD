@@ -5,11 +5,11 @@
 pkgname=python-pytddmon
 pkgver=1.0.8
 _commit=4b2875cfda88050537af58a4103ea8809c27ee1c
-pkgrel=10
+pkgrel=11
 pkgdesc='Continuous unit testing in Python'
 arch=('any')
-url='https://pytddmon.org'
-license=('Apache')
+url='https://github.com/objarni/pytddmon'
+license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
@@ -29,4 +29,6 @@ check() {
 package() {
   cd pytddmon-$_commit
   python setup.py install --root="$pkgdir" -O1
+
+  install -Dm 0644 License.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

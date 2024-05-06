@@ -1,10 +1,10 @@
 pkgbase = python-pytddmon
 	pkgdesc = Continuous unit testing in Python
 	pkgver = 1.0.8
-	pkgrel = 10
-	url = https://pytddmon.org
+	pkgrel = 11
+	url = https://github.com/objarni/pytddmon
 	arch = any
-	license = Apache
+	license = MIT
 	checkdepends = python-nose
 	makedepends = python-setuptools
 	depends = python
