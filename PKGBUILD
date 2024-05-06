@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=uyou-todo-bin
 _pkgname=uyoutodo
-pkgver=2.1.3
+pkgver=2.2.0
 _electronversion=26
 pkgrel=1
 pkgdesc="A todo list with electron"
@@ -21,9 +21,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tonylu110/uyou-todo-electron/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('061b058594c5d97dc2dbe8ddeb983fa19bb4a3f96894fab1f729fdc80a729bda'
+sha256sums=('ac746a7a5660253ef02cc41aa3de0352fe7df9c918fb646675838b897f84fc67'
             '39db5a38eec57377569ab296b6a804062b8e7a72908db228ae1d6d91bcbb61d3'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '24c1c5b90cba47cd3d7a3ff11a934fcdbb499f8c56423d22009ef33a775e2d21')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
