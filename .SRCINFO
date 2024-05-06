@@ -1,0 +1,21 @@
+pkgbase = drawio-nativefier
+	pkgdesc = draw.io desktop app (electron)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://app.diagrams.net/
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = drawio-nativefier.png
+	source = drawio-nativefier.desktop
+	sha256sums = a49c867dbed969852f2364c671cd444ef7d5fa74817b4093abb65831c9cb68f3
+	sha256sums = 8e55b50f6e9f076f4c64a832f1eabab9ad3799d28d5aac577a658aa06389c5a7
+
+pkgname = drawio-nativefier

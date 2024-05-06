@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=draw.io
+Comment=draw.io desktop app (electron)
+Exec=drawio-nativefier
+Icon=drawio-nativefier
+Encoding=UTF-8
+StartupWMClass=drawio-nativefier-1f3e0a
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Development;Application;
