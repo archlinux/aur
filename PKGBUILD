@@ -3,7 +3,7 @@
 
 pkgname=ytmdesktop-bin
 _pkgname=youtube-music-desktop-app
-pkgver=2.0.2
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="A Desktop App for YouTube Music"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('alsa-lib' 'gtk3' 'libnotify' 'libxtst' 'nss' 'xdg-utils')
 source=("https://github.com/ytmdesktop/ytmdesktop/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 options=(!strip)
-sha512sums=('e9b7ecf53ea764749659651c9dabcac9bba997bfa081b94c78a4d7fe76b7431e76368d9a78c8ef8308343305867fd615d46880714f6a6959d7324f0605f707eb')
+sha512sums=('75e329f2c758b218d31323c477a98eacac75aba85cf61960e344ff535d52a2769122c54db09ff2c82fb6c6461f23849ea5c3ba16cc8922a03fc1c323baa46441')
 
 package(){
   # Extract package data
