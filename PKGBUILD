@@ -6,7 +6,7 @@ url="https://github.com/wolever/pprintpp.git#branch=pprintpp2"
 provides=("python-pprintpp")
 conflicts=("python-pprintpp")
 pkgver=0.4.0.r25.g8731637
-pkgrel=1
+pkgrel=2
 arch=("any")
 license=("BSD")
 makedepends=("python-setuptools")
