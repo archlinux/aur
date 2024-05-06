@@ -1,7 +1,7 @@
 pkgbase = python-baidubce
 	pkgdesc = BCE SDK for python
 	pkgver = 0.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/bce-python-sdk
 	arch = any
 	license = Apache-2.0
