@@ -2,10 +2,10 @@
 
 pkgname=python-dom-toml
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Dom's tools for Tom's Obvious, Minimal Language"
 arch=('any')
-url='https://dom_toml.readthedocs.io/'
+url='https://dom-toml.readthedocs.io/en/latest/'
 license=('MIT')
 depends=(
   'python'
