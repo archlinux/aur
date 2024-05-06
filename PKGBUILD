@@ -5,20 +5,20 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-xcb-proto
-pkgver=1.16.0
-pkgrel=2
-pkgdesc="XML-XCB protocol descriptions (Android, ${_android_arch})"
+pkgver=1.17.0
+pkgrel=1
 arch=('any')
+pkgdesc="XML-XCB protocol descriptions (Android ${_android_arch})"
 url="https://xcb.freedesktop.org/"
 license=('custom')
 depends=('android-ndk')
 makedepends=('android-configure'
-             'python'
-             "android-${_android_arch}-libxml2")
+             "android-${_android_arch}-libxml2"
+             'python')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-$pkgver.tar.xz"{,.sig})
-sha512sums=('54906f379a7aa2cbbfbbe54764c02dbf522ca8f6c54e07d4faae471aac3aee25d0359be38c808c8da887de228aed745582a78b2f56714b023bca8f3513b24972'
-            'SKIP')
+source=("https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-${pkgver}.tar.xz"{,.sig})
+md5sums=('c415553d2ee1a8cea43c3234a079b53f'
+         'SKIP')
 validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # "Matt Turner <mattst88@gmail.com>"
 
 build() {
