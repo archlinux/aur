@@ -3,13 +3,13 @@
 pkgname=python-hs-dbus-signature
 _pkgname=hs-dbus-signature
 pkgver=0.7
-pkgrel=5
+pkgrel=6
 pkgdesc="dbus signature hypothesis strategy generator"
-url="https://github.com/stratis-storage/hs-dbus-signature"
-depends=('python-hypothesis' )
+url="https://pypi.org/project/hs-dbus-signature/"
+depends=('python-hypothesis')
 makedepends=('python' 'python-setuptools')
 checkdepends=('python-nose')
-license=('MPL2')
+license=('MPL-2.0')
 arch=('any')
 source=(https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
 sha256sums=('34d9d37125fe2bccd4fac8f5401775de1eda11737d56a96d24c3560ae86067a2')

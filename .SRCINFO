@@ -1,10 +1,10 @@
 pkgbase = python-hs-dbus-signature
 	pkgdesc = dbus signature hypothesis strategy generator
 	pkgver = 0.7
-	pkgrel = 5
-	url = https://github.com/stratis-storage/hs-dbus-signature
+	pkgrel = 6
+	url = https://pypi.org/project/hs-dbus-signature/
 	arch = any
-	license = MPL2
+	license = MPL-2.0
 	checkdepends = python-nose
 	makedepends = python
 	makedepends = python-setuptools
