@@ -1,0 +1,164 @@
+Fix remaining 14.0.1 version, which interferes with the build process.
+---
+diff --no-dereference -urpN a/gcc/BASE-VER b/gcc/BASE-VER
+--- a/gcc/BASE-VER	2024-05-03 13:19:49.413475377 +0200
++++ b/gcc/BASE-VER	2024-05-03 13:21:32.987258536 +0200
+@@ -1 +1 @@
+-14.0.1
++14.1.0
+diff --no-dereference -urpN a/gcc/doc/cpp.1 b/gcc/doc/cpp.1
+--- a/gcc/doc/cpp.1	2024-05-03 13:19:49.606478702 +0200
++++ b/gcc/doc/cpp.1	2024-05-03 13:20:24.070072334 +0200
+@@ -133,7 +133,7 @@
+ .\" ========================================================================
+ .\"
+ .IX Title "CPP 1"
+-.TH CPP 1 "2024-04-30" "gcc-14.0.1" "GNU"
++.TH CPP 1 "2024-04-30" "gcc-14.1.0" "GNU"
+ .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
+ .\" way too many mistakes in technical documents.
+ .if n .ad l
+diff --no-dereference -urpN a/gcc/doc/fsf-funding.7 b/gcc/doc/fsf-funding.7
+--- a/gcc/doc/fsf-funding.7	2024-05-03 13:19:49.602478634 +0200
++++ b/gcc/doc/fsf-funding.7	2024-05-03 13:23:30.776283226 +0200
+@@ -133,7 +133,7 @@
+ .\" ========================================================================
+ .\"
+ .IX Title "FSF-FUNDING 7"
+-.TH FSF-FUNDING 7 "2024-04-30" "gcc-14.0.1" "GNU"
++.TH FSF-FUNDING 7 "2024-04-30" "gcc-14.1.0" "GNU"
+ .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
+ .\" way too many mistakes in technical documents.
+ .if n .ad l
+diff --no-dereference -urpN a/gcc/doc/g++.1 b/gcc/doc/g++.1
+--- a/gcc/doc/g++.1	2024-05-03 13:19:49.601478616 +0200
++++ b/gcc/doc/g++.1	2024-05-03 13:20:50.698530802 +0200
+@@ -133,7 +133,7 @@
+ .\" ========================================================================
+ .\"
+ .IX Title "GCC 1"
+-.TH GCC 1 "2024-04-30" "gcc-14.0.1" "GNU"
++.TH GCC 1 "2024-04-30" "gcc-14.1.0" "GNU"
+ .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
+ .\" way too many mistakes in technical documents.
+ .if n .ad l
+diff --no-dereference -urpN a/gcc/doc/gcc.1 b/gcc/doc/gcc.1
+--- a/gcc/doc/gcc.1	2024-05-03 13:19:49.603478651 +0200
++++ b/gcc/doc/gcc.1	2024-05-03 13:21:48.667528261 +0200
+@@ -133,7 +133,7 @@
+ .\" ========================================================================
+ .\"
+ .IX Title "GCC 1"
+-.TH GCC 1 "2024-04-30" "gcc-14.0.1" "GNU"
++.TH GCC 1 "2024-04-30" "gcc-14.1.0" "GNU"
+ .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
+ .\" way too many mistakes in technical documents.
+ .if n .ad l
+diff --no-dereference -urpN a/gcc/doc/gcc.info b/gcc/doc/gcc.info
+--- a/gcc/doc/gcc.info	2024-05-03 13:19:49.606478702 +0200
++++ b/gcc/doc/gcc.info	2024-05-03 13:23:04.624833995 +0200
+@@ -63,7 +63,7 @@ Introduction
+ 
+ This manual documents how to use the GNU compilers, as well as their
+ features and incompatibilities, and how to report bugs.  It corresponds
+-to the compilers (GCC) version 14.0.1.  The internals of the GNU
++to the compilers (GCC) version 14.1.0.  The internals of the GNU
+ compilers, including how to port them to new targets and some
+ information about how to write front ends for new languages, are
+ documented in a separate manual.  *Note Introduction: (gccint)Top.
+diff --no-dereference -urpN a/gcc/doc/gccint.info b/gcc/doc/gccint.info
+--- a/gcc/doc/gccint.info	2024-05-03 13:19:49.609478754 +0200
++++ b/gcc/doc/gccint.info	2024-05-03 13:22:12.861944324 +0200
+@@ -55,7 +55,7 @@ Introduction
+ This manual documents the internals of the GNU compilers, including how
+ to port them to new targets and some information about how to write
+ front ends for new languages.  It corresponds to the compilers (GCC)
+-version 14.0.1.  The use of the GNU compilers is documented in a
++version 14.1.0.  The use of the GNU compilers is documented in a
+ separate manual.  *Note Introduction: (gcc)Top.
+ 
+  This manual is mainly a reference manual rather than a tutorial.  It
+diff --no-dereference -urpN a/gcc/doc/gcov-dump.1 b/gcc/doc/gcov-dump.1
+--- a/gcc/doc/gcov-dump.1	2024-05-03 13:19:49.606478702 +0200
++++ b/gcc/doc/gcov-dump.1	2024-05-03 13:21:03.734755186 +0200
+@@ -133,7 +133,7 @@
+ .\" ========================================================================
+ .\"
+ .IX Title "GCOV-DUMP 1"
+-.TH GCOV-DUMP 1 "2024-04-30" "gcc-14.0.1" "GNU"
++.TH GCOV-DUMP 1 "2024-04-30" "gcc-14.1.0" "GNU"
+ .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
+ .\" way too many mistakes in technical documents.
+ .if n .ad l
+diff --no-dereference -urpN a/gcc/doc/gcov-tool.1 b/gcc/doc/gcov-tool.1
+--- a/gcc/doc/gcov-tool.1	2024-05-03 13:19:49.606478702 +0200
++++ b/gcc/doc/gcov-tool.1	2024-05-03 13:21:19.079019242 +0200
+@@ -133,7 +133,7 @@
+ .\" ========================================================================
+ .\"
+ .IX Title "GCOV-TOOL 1"
+-.TH GCOV-TOOL 1 "2024-04-30" "gcc-14.0.1" "GNU"
++.TH GCOV-TOOL 1 "2024-04-30" "gcc-14.1.0" "GNU"
+ .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
+ .\" way too many mistakes in technical documents.
+ .if n .ad l
+diff --no-dereference -urpN a/gcc/doc/gcov.1 b/gcc/doc/gcov.1
+--- a/gcc/doc/gcov.1	2024-05-03 13:19:49.602478634 +0200
++++ b/gcc/doc/gcov.1	2024-05-03 13:20:38.870327175 +0200
+@@ -133,7 +133,7 @@
+ .\" ========================================================================
+ .\"
+ .IX Title "GCOV 1"
+-.TH GCOV 1 "2024-04-30" "gcc-14.0.1" "GNU"
++.TH GCOV 1 "2024-04-30" "gcc-14.1.0" "GNU"
+ .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
+ .\" way too many mistakes in technical documents.
+ .if n .ad l
+diff --no-dereference -urpN a/gcc/doc/gfdl.7 b/gcc/doc/gfdl.7
+--- a/gcc/doc/gfdl.7	2024-05-03 13:19:49.609478754 +0200
++++ b/gcc/doc/gfdl.7	2024-05-03 13:23:43.560502774 +0200
+@@ -133,7 +133,7 @@
+ .\" ========================================================================
+ .\"
+ .IX Title "GFDL 7"
+-.TH GFDL 7 "2024-04-30" "gcc-14.0.1" "GNU"
++.TH GFDL 7 "2024-04-30" "gcc-14.1.0" "GNU"
+ .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
+ .\" way too many mistakes in technical documents.
+ .if n .ad l
+diff --no-dereference -urpN a/gcc/doc/gfortran.1 b/gcc/doc/gfortran.1
+--- a/gcc/doc/gfortran.1	2024-05-03 13:19:49.606478702 +0200
++++ b/gcc/doc/gfortran.1	2024-05-03 13:22:46.279518761 +0200
+@@ -133,7 +133,7 @@
+ .\" ========================================================================
+ .\"
+ .IX Title "GFORTRAN 1"
+-.TH GFORTRAN 1 "2024-04-30" "gcc-14.0.1" "GNU"
++.TH GFORTRAN 1 "2024-04-30" "gcc-14.1.0" "GNU"
+ .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
+ .\" way too many mistakes in technical documents.
+ .if n .ad l
+diff --no-dereference -urpN a/gcc/doc/gpl.7 b/gcc/doc/gpl.7
+--- a/gcc/doc/gpl.7	2024-05-03 13:19:49.603478651 +0200
++++ b/gcc/doc/gpl.7	2024-05-03 13:23:18.009063931 +0200
+@@ -133,7 +133,7 @@
+ .\" ========================================================================
+ .\"
+ .IX Title "GPL 7"
+-.TH GPL 7 "2024-04-30" "gcc-14.0.1" "GNU"
++.TH GPL 7 "2024-04-30" "gcc-14.1.0" "GNU"
+ .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
+ .\" way too many mistakes in technical documents.
+ .if n .ad l
+diff --no-dereference -urpN a/gcc/doc/lto-dump.1 b/gcc/doc/lto-dump.1
+--- a/gcc/doc/lto-dump.1	2024-05-03 13:19:49.603478651 +0200
++++ b/gcc/doc/lto-dump.1	2024-05-03 13:22:33.304295754 +0200
+@@ -133,7 +133,7 @@
+ .\" ========================================================================
+ .\"
+ .IX Title "LTO-DUMP 1"
+-.TH LTO-DUMP 1 "2024-04-30" "gcc-14.0.1" "GNU"
++.TH LTO-DUMP 1 "2024-04-30" "gcc-14.1.0" "GNU"
+ .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
+ .\" way too many mistakes in technical documents.
+ .if n .ad l
