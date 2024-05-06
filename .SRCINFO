@@ -1,0 +1,15 @@
+pkgbase = ruby-idn-ruby
+	pkgdesc = LibIDN Ruby Bindings.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = http://github.com/deepfryed/idn-ruby
+	arch = i686
+	arch = x86_64
+	depends = ruby
+	depends = libidn
+	noextract = idn-ruby-0.1.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/idn-ruby-0.1.5.gem
+	sha256sums = 3076fa1aac170e92310d02822badf6b11e74e17915a045c8f9ad053bba24c037
+
+pkgname = ruby-idn-ruby
