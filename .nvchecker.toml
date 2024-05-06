@@ -1,0 +1,5 @@
+[python-trame-simput]
+source = "github"
+github = "Kitware/trame-simput"
+use_latest_release = "true"
+prefix = "v"
