@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=string-file-manager-bin
-pkgver=1.0.73
+pkgver=1.0.75
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="File manager for Linux - Built with Electron"
 arch=('x86_64')
 url="https://github.com/Michael-Vanderford/electron-file-manager"
@@ -11,15 +11,14 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
     'baobab'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgname%-bin}-v${pkgver//0./0}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('131f368b8cb8bf34c389af2900d20e8d1ea4f01ddadcb6d8fceec84cf8ff641c'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('57edbbeee809212430a1f1d41d777b2a9a9f1a29fe6658f756b3749cfe9bec28'
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
