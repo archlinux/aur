@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=chyle-bin
-pkgver=1.16.0
-pkgrel=4
+pkgver=1.17.0
+pkgrel=1
 pkgdesc="Changelog generator: use a git repository and various data sources and publish the result on external services"
 arch=('x86_64')
 url='https://github.com/antham/chyle'
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz"
 )
-sha256sums=('6c4f77112dd1fc4873a36ca07210c23e78dd2aea3c73f5727d90961893172efb')
+sha256sums=('93ec570e3714d29b74a1313cf163026564e684bddc5c245ea5f8d7540e36bce3')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
