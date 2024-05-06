@@ -7,7 +7,7 @@ url="https://github.com/octodns/octodns"
 provides=("python-octodns")
 conflicts=("python-octodns")
 pkgver=1.0.0rc1.r0.g7b2a1d4
-pkgrel=1
+pkgrel=2
 arch=("any")
 license=("MIT")
 makedepends=("python-setuptools")
@@ -23,7 +23,7 @@ depends=(
     "python-fqdn"
 )
 source=("${pkgname}::git+$url")
-b2sums=("SKIP")
+b2sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
