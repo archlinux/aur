@@ -13,7 +13,7 @@ pkgbase = ruyi-bin
 	depends = bzip2
 	depends = xz
 	depends = zstd
-	provides = ruyi
+	provides = ruyi=$pkgver
 	options = !strip
 	source_x86_64 = https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/0.9.0/ruyi.amd64
 	sha256sums_x86_64 = 2122a644c6b80e86d49ea2c5b7f84096825e9d8f51f08adecf02ed74c1a7c8d6
