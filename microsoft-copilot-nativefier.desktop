@@ -2,7 +2,7 @@
 Name=Copilot
 Comment=Microsoft Copilot desktop app (electron)
 Exec=microsoft-copilot-nativefier
-Icon=teams
+Icon=microsoft-copilot-nativefier
 Encoding=UTF-8
 StartupWMClass=microsoftcopilot-nativefier-c6fe3a
 Terminal=false

@@ -1,6 +1,6 @@
 pkgbase = microsoft-copilot-nativefier
 	pkgdesc = Microsoft Copilot desktop app (electron)
-	pkgver = 1.0.0
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://copilot.microsoft.com
 	arch = armv7l
@@ -16,7 +16,7 @@ pkgbase = microsoft-copilot-nativefier
 	optdepends = libindicator-gtk3
 	source = microsoft-copilot-nativefier.png
 	source = microsoft-copilot-nativefier.desktop
-	sha256sums = 0ca8a92593d66e9342f6ffa9680f05e04f3c9a95e07d3d9bb775091576f84d7b
-	sha256sums = 090a6585a459ea607341a524fb811ef5438045b60de5cdde02b078525898821c
+	sha256sums = 013fb8cc232b0a5a14df505f8f7d5ae8366da51bfb52bf4b54e77f6b30a4518c
+	sha256sums = b33b06b923ef7a9e2f3d64ebcba61f0c5e72c5986ec94c496bbf97ac516ea36a
 
 pkgname = microsoft-copilot-nativefier

@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=microsoft-copilot-nativefier
-pkgver=1.0.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Microsoft Copilot desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -17,7 +17,7 @@ source=(
 
 build() {
   cd "${srcdir}"
-  
+
   nativefier \
     --name "Microsoft Copilot" \
     --icon "${pkgname}.png" \
@@ -26,7 +26,7 @@ build() {
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
     --single-instance \
-    --electron-version 30.0.1 \
+    --electron-version 30.0.2 \
     "${url}"
 
     # --tray \
@@ -39,7 +39,7 @@ package() {
   _folder=$(ls "${srcdir}" | grep "[Mm]icrosoft[-]*[Cc]opilot-linux-")
   _binary=$(ls "${srcdir}/${_folder}" | grep "[Mm]icrosoft[-]*[Cc]opilot")
 
-  sed -i -e "/loglevel/d" "${srcdir}/${_folder}/resources/app/lib/preload.js"
+  #sed -i -e "/loglevel/d" "${srcdir}/${_folder}/resources/app/lib/preload.js"
   cp -rL "${srcdir}/${_folder}" "${pkgdir}/opt/${pkgname}"
   ln -s "/opt/${pkgname}/${_binary}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -52,5 +52,5 @@ package() {
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
 
-sha256sums=('0ca8a92593d66e9342f6ffa9680f05e04f3c9a95e07d3d9bb775091576f84d7b'
-            '090a6585a459ea607341a524fb811ef5438045b60de5cdde02b078525898821c')
+sha256sums=('013fb8cc232b0a5a14df505f8f7d5ae8366da51bfb52bf4b54e77f6b30a4518c'
+            'b33b06b923ef7a9e2f3d64ebcba61f0c5e72c5986ec94c496bbf97ac516ea36a')
