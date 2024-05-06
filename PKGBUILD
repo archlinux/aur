@@ -4,7 +4,7 @@
 
 pkgname=gotop
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal based graphical activity monitor inspired by gtop and vtop"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/xxxserxxx/gotop"
@@ -20,7 +20,7 @@ build() {
   go build \
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-X main.Version=v${pkgver} -extldflags ${LDFLAGS}" \
+    -ldflags "-X main.Version=v${pkgver} -extldflags '-s -w'" \
     -buildmode=pie \
     ./cmd/gotop
   go run ./cmd/gotop --create-manpage > gotop.8
