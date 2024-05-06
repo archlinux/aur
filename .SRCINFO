@@ -10,6 +10,7 @@ pkgbase = cpuid
 	makedepends = perl
 	depends = glibc
 	depends = perl
+	conflicts = msr-tools
 	source = http://www.etallen.com/cpuid/cpuid-20240409.src.tar.gz
 	sha256sums = 5812909464e9ed13f58da2b2b8d158129e833e6696edd47012b6b361c8ccbd5d
 

@@ -14,6 +14,7 @@ license=('GPL-2.0-only')
 arch=('i686' 'x86_64')
 makedepends=('perl')
 depends=('glibc' 'perl')
+conflicts=('msr-tools')   # extra/msr-tools seems to have /usr/bin/cpuid
 groups=('system')
 source=("http://www.etallen.com/$pkgname/${pkgname}-${pkgver}.src.tar.gz")
 sha256sums=('5812909464e9ed13f58da2b2b8d158129e833e6696edd47012b6b361c8ccbd5d')
