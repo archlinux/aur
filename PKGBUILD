@@ -9,13 +9,12 @@ pkgname=('asf-plugin-steamtokendumper'
          'asf-plugin-periodicgc'
          'asf-plugin-signinwithsteam'
          'asf')
-pkgver="6.0.1.24"
+pkgver="6.0.2.6"
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('git' 'dotnet-sdk>=8.0' 'aspnet-runtime>=8.0')
-dotnet_framework='net8.0'
 changelog=changelog
 install=install
 source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgver}?signed"
@@ -25,7 +24,7 @@ source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgve
         "NLog.config")
 validpgpkeys=('1268A81616AFDC20C55779ED6B138B4C64555AEA')
 sha256sums=('SKIP'
-            'aef764cd0cdad9356221a7c8cc0d99d153935ceb1a874dd5729acbb7cf47fd37'
+            '1728ccf7d02974b779ec794df400fec57b9a98869d319bea7f98d6c1ce4a9d3e'
             'ec82f54a9b362e2305a775eb1473522636ab724f18d846828410c39344801db4'
             'c300c5ce63c0237d7558b5b303159b8e2a8e5323f581cc8435dd2a6f1ead5332'
             '636f3a125071cabfcb0c3828c6f9b0ec613789ab846ff71448d1a6eb110aee3f')
@@ -46,7 +45,7 @@ build() {
     [[ "$CARCH" == "x86_64" ]] && architecture="x64"
     [[ "$CARCH" == "armv7h" ]] && architecture="arm"
     [[ "$CARCH" == "aarch64" ]] && architecture="arm64"
-    export DOTNET_FLAGS="--configuration Release --framework "${dotnet_framework}" -p:UseAppHost=false --nologo"
+    export DOTNET_FLAGS="--configuration Release -p:UseAppHost=false --nologo"
     export PUBLISH_FLAGS="--runtime linux-"${architecture}" --no-self-contained"
     dotnet publish "ArchiSteamFarm" -o "out/result" $DOTNET_FLAGS $PUBLISH_FLAGS
     dotnet publish "ArchiSteamFarm.OfficialPlugins.ItemsMatcher" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.ItemsMatcher" $DOTNET_FLAGS $PUBLISH_FLAGS

@@ -1,3 +1,16 @@
+2024-05-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.0.2.6-1:
+    Added GET /HealthCheck ASF API endpoint for those that would like to monitor uptime of their ASF instance with minimal overhead, the endpoint does not require authorization (@JustArchi).
+    Improved update procedure for ASF and plugins which should decrease amount of accidental corruptions (@JustArchi #3182 #3156).
+    Official Monitoring plugin, as announced in the previous release, is now available for general usage, with dedicated wiki page for more info, such as example grafana dashboard (@JustArchi @Abrynos).
+    Official plugins will now allow its updates only to matching ASF version (@JustArchi).
+    Removed --process-required command-line argument, it's default ASF behaviour now - ASF no longer shuts down when no bots are running.
+    Added new ShutdownIfPossible global config property for those that prefer previous behaviour in regards to --process-required before its removal (@JustArchi).
+    Fixed IWebInterface plugins with WebPath: / causing IPC failure to start (@JustArchi).
+    Misc docker enhancements, such as full provenance support (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2024-04-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.0.1.24-1:
     Fixed crash when running win-x64 ASF variant on the very old CPUs (@JustArchi #3180).
