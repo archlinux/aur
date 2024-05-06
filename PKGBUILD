@@ -4,11 +4,11 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio-git
-pkgver=0.9.3.1
+pkgver=0.9.3.5.r0.g4c299e2
 pkgrel=1
 pkgdesc="Internet radio player for the command line"
 arch=('any')
-url="http://www.coderholic.com/pyradio/"
+url="https://github.com/coderholic/pyradio"
 license=('MIT')
 depends=('python-dnspython' 'python-requests' 'python-psutil' 'python-netifaces' 'python-rich' 'python-dateutil')
 optdepends=('mplayer: as backend' 'mpv: as backend' 'vlc: as backend' 'mkvtoolnix-cli: fix mplayer recordings, add chapters to recordings')
@@ -21,8 +21,10 @@ sha256sums=('SKIP')
 prepare() {
   cd $pkgname
   _descr="$(git describe --long --tags)"
-  sed -i "s/git_description = ''/git_description = '$_descr'/" pyradio/config.py
-  sed -i 's/distro = None/distro = Arch Linux (AUR)/' pyradio/config
+  sed -i -e "s/git_description = ''/git_description = '$_descr'/" pyradio/config.py
+  sed -i -e 's/distro = None/distro = Arch Linux (AUR)/' \
+      -e 's/xdg_compliant = False/xdg_compliant = True/' \
+      pyradio/config
   git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
