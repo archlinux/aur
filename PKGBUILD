@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=southweather-bin
 _pkgname=SouthWeather
-pkgver=1.0.2
-_electronversion=27
-pkgrel=4
+pkgver=1.0.3
+_electronversion=30
+pkgrel=1
 pkgdesc="Open weather app for linux"
 arch=("x86_64")
 url="http://southweather.wlorigin.cf/"
@@ -19,14 +19,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/SpiritOTHawk-s-projects/SouthWeather/${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9ca4dfb7463140774ad7e816909da4a4699d1cd21c2933e3e4edf6bdd5988457'
+sha256sums=('24b9d0d5e9634c554f7babd93317511dcf60583fed4dfdbbf8ec0c83485cfd04'
             'd3c7942b781e1616c13d183bf30ccb1e52837b11d53a7f97ae4b65d85fcd3bac'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
