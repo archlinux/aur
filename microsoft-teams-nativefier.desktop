@@ -2,7 +2,7 @@
 Name=Teams
 Comment=Microsoft Teams desktop app (electron)
 Exec=microsoft-teams-nativefier
-Icon=teams
+Icon=microsoft-teams-nativefier
 Encoding=UTF-8
 StartupWMClass=microsoftteams-nativefier-6234c0
 Terminal=false

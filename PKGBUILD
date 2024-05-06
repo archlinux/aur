@@ -1,8 +1,8 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=microsoft-teams-nativefier
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Microsoft Teams desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://teams.microsoft.com"
@@ -17,7 +17,7 @@ source=(
 
 build() {
   cd "${srcdir}"
-  
+
   nativefier \
     --name "Microsoft Teams" \
     --icon "${pkgname}.png" \
@@ -26,7 +26,7 @@ build() {
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
     --single-instance \
-    --electron-version 30.0.1 \
+    --electron-version 30.0.2 \
     --tray \
     "${url}"
 
@@ -39,7 +39,7 @@ package() {
   _folder=$(ls "${srcdir}" | grep "[Mm]icrosoft[-]*[Tt]eams-linux-")
   _binary=$(ls "${srcdir}/${_folder}" | grep "[Mm]icrosoft[-]*[Tt]eams")
 
-  sed -i -e "/loglevel/d" "${srcdir}/${_folder}/resources/app/lib/preload.js"
+  #sed -i -e "/loglevel/d" "${srcdir}/${_folder}/resources/app/lib/preload.js"
   cp -rL "${srcdir}/${_folder}" "${pkgdir}/opt/${pkgname}"
   ln -s "/opt/${pkgname}/${_binary}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -52,4 +52,4 @@ package() {
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
 sha256sums=('cfdf1ca7f6cc9a15e6d815fa31463c3e2a40b0bf3e25de3377a8bf6b8ef4e926'
-            '4a43356529cdd6293a9f04e31fecdf0604e36f5c80650fa7df5b0984de7ad455')
+            'c60826df56c8d42b6db3573648a515daca3c5c98dba430b92e59009639fac491')
