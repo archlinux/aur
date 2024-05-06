@@ -2,35 +2,37 @@
 _pkgname=dwdweather2
 pkgname=python-${_pkgname}
 pkgver=0.14.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Client to access weather data from Deutscher Wetterdienst (DWD), the federal meteorological service in Germany"
-arch=('any')
-url="https://github.com/panodata/dwdweather2"
-license=('MIT')
+arch=(any)
+url=https://github.com/panodata/dwdweather2
+license=(MIT)
 depends=(
-    'python-beautifulsoup4'
-    'python-dateutil'
-    'python-htmllistparse'
-    'python-requests'
-    'python-requests-cache'
-    'python-tqdm'
+    python-beautifulsoup4
+    python-dateutil
+    python-htmllistparse
+    python-requests
+    python-requests-cache
+    python-tqdm
 )
 makedepends=(
-    'python-build'
-    'python-installer'
-    'python-setuptools'
-    'python-wheel'
+    python-build
+    python-installer
+    python-setuptools
+    python-wheel
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/panodata/${_pkgname}/archive/${pkgver}.tar.gz")
+source=($_pkgname-$pkgver.tar.gz::https://github.com/panodata/$_pkgname/archive/$pkgver.tar.gz)
 b2sums=('66624d2857a85ffd8ea2accc323ea77db837875a1a5fc9fcfbb080bb03687ca8d87454e901de967b575fc02293cc882ad2d26da99ca4cc21879c756409611945')
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd $_pkgname-$pkgver
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd $_pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    # Remove site-packages/tests
+    rm -r "$pkgdir"/usr/lib/python3.12/site-packages/tests
 }
