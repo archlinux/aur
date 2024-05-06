@@ -1,6 +1,6 @@
 pkgbase = i3bar-river
 	pkgdesc = A port of i3bar for river
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/MaxVerevkin/i3bar-river
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = i3bar-river
 	provides = i3bar-river
 	conflicts = i3bar-river
 	conflicts = i3bar-river-git
-	source = https://github.com/MaxVerevkin/i3bar-river/archive/refs/tags/v0.1.7.tar.gz
-	sha256sums = afb832eb0f696e127a41ce72f5a290c4aee9ed86488ee9af49afe87916ca35ce
+	source = https://github.com/MaxVerevkin/i3bar-river/archive/refs/tags/v0.1.8.tar.gz
+	b2sums = 2e81308da4f67c95f3a37192f69b1d12d0383df90d51cd506604b103e8a81d763f50ca70a0466b4cb1ab6d0369275c19b12d58a2fac4b5ba201e5c81cba48358
 
 pkgname = i3bar-river

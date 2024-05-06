@@ -1,6 +1,6 @@
 # Maintainer: Chinmay Dalal <dalal dot chinmay dot zero one zero one at gmail dot com>
 pkgname=i3bar-river
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A port of i3bar for river"
 url="https://github.com/MaxVerevkin/i3bar-river"
@@ -11,7 +11,7 @@ makedepends=(cargo)
 provides=("${pkgname}")
 conflicts=("${pkgname}" "${pkgname}-git")
 source=("https://github.com/MaxVerevkin/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('afb832eb0f696e127a41ce72f5a290c4aee9ed86488ee9af49afe87916ca35ce')
+b2sums=('2e81308da4f67c95f3a37192f69b1d12d0383df90d51cd506604b103e8a81d763f50ca70a0466b4cb1ab6d0369275c19b12d58a2fac4b5ba201e5c81cba48358')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
