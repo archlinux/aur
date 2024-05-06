@@ -43,6 +43,9 @@ prepare() {
 
   # update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "${_name}.gemspec"
+  
+  sed -i "s|s.add_dependency 'rouge', '~> 3.1'|s.add_dependency 'rouge'|" gemspec.rb
+  sed -i "s|s.add_dependency 'twitter-text', '1.14.7'|s.add_dependency 'twitter-text'|" gemspec.rb
 }
 
 build() {

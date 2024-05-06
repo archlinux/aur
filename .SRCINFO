@@ -1,7 +1,7 @@
 pkgbase = ruby-gollum-lib
 	pkgdesc = A simple, Git-powered wiki with a sweet API.
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/gollum/gollum-lib
 	arch = x86_64
 	license = MIT
