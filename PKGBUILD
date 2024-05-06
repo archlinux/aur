@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hyperamp-bin
 _pkgname=Hyperamp
-pkgver=1.1.7
+pkgver=1.1.8
 _electronversion=30
 pkgrel=1
 pkgdesc="Humble music player"
@@ -27,10 +27,10 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-armv7l.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
-sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('649f9c5174cbaa89128ec417c13847e96c55f2464f4e75ab2ae4929e92b5c4ba')
-sha256sums_armv7h=('677e07f12a8d64c02d0907b9eb6fbcd010051cfc200a7472672027a6d310febd')
-sha256sums_x86_64=('830ca472ecb82955e97b9b4e32c0c6e95fe1ae0ca1649cf26beb79d1041f6f3f')
+sha256sums=('24c1c5b90cba47cd3d7a3ff11a934fcdbb499f8c56423d22009ef33a775e2d21')
+sha256sums_aarch64=('dfb301e0196e153fac04f5d42d4a9a3393b834a3f32054ed8c34bb2d91b9cb2e')
+sha256sums_armv7h=('4c90c4ece460b87705eff3fb447dc028db44e117e5d9aa5c2d34f65aed9f2fcf')
+sha256sums_x86_64=('0d9c91a6e1373e5d565c6ce015b212a0b7cf558094337c9ebcdf46dc526b439a')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
