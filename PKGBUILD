@@ -6,7 +6,7 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=3.0.1
+pkgver=3.0.2
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -38,7 +38,7 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('fe026234ec5db0e5b50e4c0a8be82a1b56ebf5d035f5cf379069c237da3efa3b'
+sha256sums=('2710be86d5dddd03df2c14026a6db3214ec3f4220e3701156e7869fdc8f7acc3'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '2baa2d2b7a4fdab0b032122370cebdd52cae85bcc175ac57383fd93f9cdd28ff')
 _ensure_local_nvm() {
