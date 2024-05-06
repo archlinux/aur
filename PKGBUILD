@@ -5,7 +5,7 @@ _pkgname=Yank-Note
 pkgver=3.69.1
 _electronversion=22
 pkgrel=1
-pkgdesc='A Hackable Markdown Note Application for Programmers.'
+pkgdesc='A Hackable Markdown Note Application for Programmers'
 arch=(
     'aarch64'
     'x86_64'
