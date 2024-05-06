@@ -2,7 +2,7 @@
 Name=Claude
 Comment=Anthropic Claude desktop app (electron)
 Exec=anthropic-claude-nativefier
-Icon=claude-nativefier
+Icon=anthropic-claude-nativefier
 Encoding=UTF-8
 StartupWMClass=claude-nativefier-859bac
 Terminal=false

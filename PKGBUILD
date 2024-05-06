@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=anthropic-claude-nativefier
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Anthropic Claude desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -39,7 +39,7 @@ package() {
   _folder=$(ls "${srcdir}" | grep "[Cc]laude-linux-")
   _binary=$(ls "${srcdir}/${_folder}" | grep "[Cc]laude")
 
-  sed -i -e "/loglevel/d" "${srcdir}/${_folder}/resources/app/lib/preload.js"
+  #sed -i -e "/loglevel/d" "${srcdir}/${_folder}/resources/app/lib/preload.js"
   cp -rL "${srcdir}/${_folder}" "${pkgdir}/opt/${pkgname}"
   ln -s "/opt/${pkgname}/${_binary}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -52,4 +52,4 @@ package() {
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
 sha256sums=('8da55751e40d70b8f0bd663879f0b187be57724f42fe822f55b14ee6a5470eec'
-            '8edc56a354a0b98622f91cb92cd1b237bd73e7a1d1f9baaa8b4c064343f775c6')
+            '5532a3a04d6510eda645d178bbf2bb8cd63791857f64c01dc1dd308971df422d')
