@@ -1,13 +1,13 @@
 pkgbase = sslh-git
-	pkgdesc = Network port multiplexer. Allows sharing of HTTP, SSL, SSH, OpenVPN, tinc, XMPP, etc. on the same port
-	pkgver = 2.0.1.r23.g3117c15
-	pkgrel = 2
+	pkgdesc = SSL/SSH/OpenVPN/XMPP/tinc port multiplexer
+	pkgver = 2.1.1.r16.gde7351f
+	pkgrel = 1
 	url = http://www.rutschle.net/tech/sslh.shtml
 	install = sslh.install
 	arch = i686
 	arch = x86_64
-	license = GPLv2
-	makedepends = git
+	license = GPL-2.0-only
+	makedepends = systemd
 	depends = glibc
 	depends = libcap
 	depends = libconfig
@@ -17,7 +17,7 @@ pkgbase = sslh-git
 	depends = libev
 	provides = sslh
 	conflicts = sslh
-	backup = etc/sslh.cfg
+	backup = etc/sslh/default.cfg
 	source = sslh-git::git+https://github.com/yrutschle/sslh
 	sha256sums = SKIP
 
