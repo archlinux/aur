@@ -1,0 +1,19 @@
+pkgbase = python-avanza-api
+	pkgdesc = A Python library for the unofficial Avanza API
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = https://github.com/Qluxzz/avanza
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-build
+	depends = python-requests
+	depends = python-websockets
+	depends = python-pydantic
+	depends = python-pyotp
+	depends = licenses
+	source = python-avanza-api-11.0.0.tar.gz::https://github.com/Qluxzz/avanza/archive/refs/tags/v11.0.0.tar.gz
+	sha256sums = d38cd1680777d253269e02f3159c4f6adef2d75336fe069f80939b7541cf37e3
+
+pkgname = python-avanza-api
