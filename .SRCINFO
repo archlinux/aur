@@ -1,7 +1,7 @@
 pkgbase = asusctl
 	pkgdesc = A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops
-	pkgver = 5.0.10
-	pkgrel = 0.3
+	pkgver = 6.0.0
+	pkgrel = 0.1
 	url = https://asus-linux.org
 	arch = x86_64
 	license = MPL-2.0
@@ -11,42 +11,37 @@ pkgbase = asusctl
 	makedepends = git
 	makedepends = hicolor-icon-theme
 	makedepends = libayatana-appindicator
+	makedepends = libinput
 	makedepends = libusb
-	makedepends = power-profiles-daemon
 	makedepends = rust
+	makedepends = seatd
 	makedepends = systemd
-	makedepends = npm
-	makedepends = unzip
-	makedepends = yarn
-	source = git+https://gitlab.com/asus-linux/asusctl.git#tag=5.0.10
-	b2sums = 2be7cd61489d223e511e71c8d62b4f68903a6efed98848491d7824cceb87e4cd3c90db015c1159020ec493aa088472572549126ac36349c475098ded0842fe88
+	source = git+https://gitlab.com/asus-linux/asusctl.git#tag=6.0.0
+	b2sums = 73155085f1e1f6aceee098c5ce60ebf1d29303f55de7229387b81d7de9a8afdccaa6023b3093692a177bbef6dd899dcd3f7e9f896b50b61809d824e839d2e3ee
 
 pkgname = asusctl
 	pkgdesc = A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops
 	install = asusctl.install
+	depends = gcc-libs
+	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libusb
-	depends = power-profiles-daemon
 	depends = systemd
+	depends = systemd-libs
 	optdepends = acpi_call: fan control
 	optdepends = supergfxctl: hybrid GPU control
 	optdepends = asusctltray: tray profile switcher
 	optdepends = rog-control-center: app to control asusctl
-	optdepends = gnome-shell-extension-asusctl-gnome: GNOME-shell extensions
 
 pkgname = rog-control-center
 	pkgdesc = App to control asusctl
 	depends = asusctl
-	depends = fontconfig
-	depends = glib2
-	depends = gtk3
+	depends = gcc-libs
+	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libayatana-appindicator
-
-pkgname = gnome-shell-extension-asusctl-gnome
-	pkgdesc = A gnome extension exposing some of the base features of asusd in a helpful and easy to use way
-	install = gnome-shell-extension-asusctl-gnome.install
-	arch = any
-	depends = asusctl
-	depends = dconf
-	depends = gnome-shell
+	depends = libinput
+	depends = libxkbcommon
+	depends = mesa
+	depends = seatd
+	depends = systemd-libs

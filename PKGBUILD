@@ -5,33 +5,28 @@ pkgbase=asusctl
 pkgname=(
   asusctl
   rog-control-center
-  gnome-shell-extension-asusctl-gnome
 )
-pkgver=5.0.10
-pkgrel=0.3
+pkgver=6.0.0
+pkgrel=0.1
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
 url="https://asus-linux.org"
 license=('MPL-2.0')
 makedepends=(
-  "clang"
-  "cmake"
-  "fontconfig"
-  "git"
-  "hicolor-icon-theme"
-  "libayatana-appindicator"
-  "libusb"
-  "power-profiles-daemon"
-  "rust"
-  "systemd"
-
-  # gnome-shell-extension
-  "npm"
-  "unzip"
-  "yarn"
+  clang
+  cmake
+  fontconfig
+  git
+  hicolor-icon-theme
+  libayatana-appindicator
+  libinput
+  libusb
+  rust
+  seatd
+  systemd
 )
 source=("git+https://gitlab.com/asus-linux/asusctl.git#tag=$pkgver")
-b2sums=('2be7cd61489d223e511e71c8d62b4f68903a6efed98848491d7824cceb87e4cd3c90db015c1159020ec493aa088472572549126ac36349c475098ded0842fe88')
+b2sums=('73155085f1e1f6aceee098c5ce60ebf1d29303f55de7229387b81d7de9a8afdccaa6023b3093692a177bbef6dd899dcd3f7e9f896b50b61809d824e839d2e3ee')
 
 prepare() {
   cd "${pkgbase}"
@@ -57,15 +52,6 @@ build() {
   export CARGO_TARGET_DIR=target
 
   make build
-
-  # gnome-shell extension
-  cd "desktop-extensions/gnome-45"
-
-  npm install
-  npm run build
-  mkdir asusctl-gnome@asus-linux.org
-  unzip asusctl-gnome@asus-linux.org.zip \
-    -d "asusctl-gnome@asus-linux.org/"
 }
 
 _pick() {
@@ -81,10 +67,12 @@ _pick() {
 package_asusctl() {
   pkgdesc="${pkgdesc/tools/CLI tools}"
   depends=(
-    "hicolor-icon-theme"
-    "libusb"
-    "power-profiles-daemon"
-    "systemd"
+    gcc-libs
+    glibc
+    hicolor-icon-theme
+    libusb
+    systemd
+    systemd-libs
   )
   install=asusctl.install
   optdepends=(
@@ -92,7 +80,6 @@ package_asusctl() {
     'supergfxctl: hybrid GPU control'
     'asusctltray: tray profile switcher'
     'rog-control-center: app to control asusctl'
-    'gnome-shell-extension-asusctl-gnome: GNOME-shell extensions'
   )
 
   cd "${pkgbase}"
@@ -107,35 +94,17 @@ package_asusctl() {
 
 package_rog-control-center() {
   depends=(
-    "asusctl"
-    "fontconfig"
-    "glib2"
-    "gtk3"
-    "hicolor-icon-theme"
-    "libayatana-appindicator"
+    asusctl
+    gcc-libs
+    glibc
+    hicolor-icon-theme
+    libayatana-appindicator
+    libinput
+    libxkbcommon
+    mesa
+    seatd
+    systemd-libs
   )
   pkgdesc="App to control asusctl"
   mv rogcc/* "${pkgdir}"
-}
-
-package_gnome-shell-extension-asusctl-gnome() {
-  depends=(
-    "asusctl"
-    "dconf"
-    "gnome-shell"
-  )
-  install=gnome-shell-extension-asusctl-gnome.install
-  arch=('any')
-  pkgdesc="A gnome extension exposing some of the base features of asusd in a helpful and easy to use way"
-
-  cd "${pkgbase}/desktop-extensions/gnome-45"
-
-  install -dm755 "${pkgdir}/usr/share/glib-2.0/schemas"
-  mv "asusctl-gnome@asus-linux.org/schemas/org.gnome.shell.extensions.asusctl-gnome.gschema.xml" \
-    "${pkgdir}/usr/share/glib-2.0/schemas/"
-  rmdir "asusctl-gnome@asus-linux.org/schemas"
-
-  install -dm755 "${pkgdir}/usr/share/gnome-shell/extensions"
-  mv "asusctl-gnome@asus-linux.org" \
-    "${pkgdir}/usr/share/gnome-shell/extensions/"
 }
