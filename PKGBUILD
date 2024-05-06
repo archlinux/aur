@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MsQuality
-_pkgver=1.2.1
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,6 +17,7 @@ depends=(
   r-msexperiment
   r-plotly
   r-protgenerics
+  r-rlang
   r-rmzqc
   r-shiny
   r-shinydashboard
@@ -41,8 +42,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8eeb5c16239c807ddddd36ae1b5026fa')
-b2sums=('466d4169712b9b837e7215a684c67f8db02db612e3245806315c38f72a32fe817b1108034b660dff39d76768385b3ba726ca120d5c8eee8446e7f0e64fe0ea2a')
+md5sums=('02b69afab89b5a5555705937db09a190')
+b2sums=('a055218459c1144c26a99d967973dbab7f7f63ddd18daecc0e38428bffb7430a54bd00cb94fa73dcf23b520289bc3a266c07e7b98309d0bf9dbbfbd872764450')
 
 build() {
   mkdir build
