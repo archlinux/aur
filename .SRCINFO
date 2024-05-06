@@ -1,16 +1,16 @@
 pkgbase = bat-cli
-	pkgdesc = Battery management utility for Linux laptops.
+	pkgdesc = Battery management utility for Linux laptops
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tshakalekholoane/bat
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = bat-cli-1.1::git+https://github.com/tshakalekholoane/bat#tag=bd7a4d574d94a43e2303a09af1c626f004c5d955
+	source = bat-cli-1.1::git+https://github.com/tshakalekholoane/bat.git#tag=1.1
 	source = rename-binary-to-bat-cli.patch
-	b2sums = SKIP
+	b2sums = ebe66d991a83e6b9c4f0e0426088ce87a3ed8e155b5e3da7be4976c5ccb69898650aeac54ec70f02ea2d55e0dee69ef0ccc21c5c2617be6e529d8b11b4745926
 	b2sums = 451a058d29b8b70311fc00659c45ad89081b70d51df3f64f75dc52ad63e0ad55b317c92b8e61e6ae01139d74c0dc0b9fad7ff7409024c476cc0af31f4099300c
 
 pkgname = bat-cli

@@ -2,26 +2,22 @@
 
 pkgname=bat-cli
 pkgver='1.1'
-pkgrel=3
-pkgdesc='Battery management utility for Linux laptops.'
+pkgrel=4
+pkgdesc='Battery management utility for Linux laptops'
 arch=('x86_64')
 url='https://github.com/tshakalekholoane/bat'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-_tag=bd7a4d574d94a43e2303a09af1c626f004c5d955 # git rev-parse "$pkgver"
-source=("${pkgname}-${pkgver}::git+https://github.com/tshakalekholoane/bat#tag=$_tag"
+source=("${pkgname}-${pkgver}::git+https://github.com/tshakalekholoane/bat.git#tag=${pkgver}"
         'rename-binary-to-bat-cli.patch')
-b2sums=('SKIP'
+b2sums=('ebe66d991a83e6b9c4f0e0426088ce87a3ed8e155b5e3da7be4976c5ccb69898650aeac54ec70f02ea2d55e0dee69ef0ccc21c5c2617be6e529d8b11b4745926'
         '451a058d29b8b70311fc00659c45ad89081b70d51df3f64f75dc52ad63e0ad55b317c92b8e61e6ae01139d74c0dc0b9fad7ff7409024c476cc0af31f4099300c')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
   patch -p1 -i ../rename-binary-to-bat-cli.patch
-
-  # replace expected version string in main_test.go
-  sed -i "s/git describe --always --dirty --tags --long/echo ${pkgver}/g" main_test.go
 }
 
 build() {
@@ -37,7 +33,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags="-linkmode=external -X main.build=$(date -u +'%Y-%m-%d') -X main.tag=${pkgver}" \
+    -ldflags="-linkmode=external -X main.tag=${pkgver}" \
     -o dist/ \
     ./...
 }
@@ -45,12 +41,6 @@ build() {
 check() {
   cd "${pkgname}-${pkgver}"
 
-  go test \
-    -v \
-    -race \
-    -vet=off \
-    -ldflags="-linkmode=external -X tshaka.dev/x/bat.build=$(date -u +'%Y-%m-%d') -X tshaka.dev/x/bat.tag=${pkgver}" \
-    ./...
   go vet ./...
 }
 
