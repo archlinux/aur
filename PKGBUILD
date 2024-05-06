@@ -4,7 +4,7 @@ pkgbase=edlib
 pkgname=(edlib python-edlib)
 pkgver=1.2.7
 _commit=ce008ea6c2c3d8c40a7a85e668f8fb75127d454a  # tag: python-1.3.9
-pkgrel=4
+pkgrel=5
 pkgdesc='Lightweight, super fast C/C++ (& Python) library for sequence alignment using edit (Levenshtein) distance'
 arch=('any')
 url=https://github.com/Martinsos/edlib
@@ -22,7 +22,7 @@ makedepends=(
 	'python-cogapp'
 )
 source=("${pkgbase}-${pkgver}::git+${url}.git#commit=${_commit}")
-sha512sums=('SKIP')
+sha512sums=('e319f73b1e3047509ac9b827e7aafa86a8a8ff63b219a5c737382355546752a16b1914ff7f4061d61c7eb5a4b8b00ff4e9f1d67515b9e7df492db51941ce0616')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
