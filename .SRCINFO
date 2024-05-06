@@ -1,10 +1,10 @@
 pkgbase = python-constraint
 	pkgdesc = Module implementing support for handling CSPs (Constraint Solving Problems) over finite domain
 	pkgver = 1.4.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/python-constraint/python-constraint
 	arch = any
-	license = custom:BSD
+	license = BSD-2-Clause
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
