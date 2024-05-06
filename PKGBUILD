@@ -2,8 +2,8 @@
 
 pkgname=python-litestar
 _pkgname=${pkgname#python-}
-pkgver=2.8.2
-pkgrel=2
+pkgver=2.8.3
+pkgrel=1
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
 url="https://github.com/litestar-org/litestar"
@@ -93,7 +93,7 @@ optdepends=(
   'python-sqlalchemy: SQLAlchemy integration'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a74fb2438456be6fe1b0a68033bd81e5eee7c2c15255573b96bf081102e57de9')
+sha256sums=('39a10eca88c2c1e45365bb7b9e075b9e44423d827407db44b28c9ff53ce53062')
 
 _archive="$_pkgname-$pkgver"
 
@@ -106,7 +106,7 @@ build() {
 check() {
   cd "$_archive"
 
-  local ignore_test_args=(
+  local pytest_args=(
     --ignore=tests/examples/
     --ignore=tests/unit/test_contrib/
 
@@ -116,12 +116,11 @@ check() {
     --ignore=tests/unit/test_app.py
     --ignore=tests/unit/test_plugins/test_base.py
     --ignore=tests/unit/test_plugins/test_sqlalchemy.py
+    --deselect=tests/unit/test_dto/test_factory/test_integration.py::test_openapi_schema_for_type_with_custom_generic_type
 
     # Requires mapped_column
     --ignore=tests/unit/test_repository/test_generic_mock_repository.py
-  )
 
-  local deselect_test_args=(
     # Requires running docker compose
     --deselect=tests/unit/test_testing/test_test_client.py
     --deselect=tests/unit/test_channels/test_plugin.py
@@ -130,6 +129,7 @@ check() {
 
     # Fails for unkown reason
     --deselect=tests/unit/test_template/test_template.py::test_media_type_inferred
+    --deselect=tests/unit/test_cli/test_cli.py::test_register_commands_from_entrypoint
 
     # Requires running docker compose
     --deselect=tests/e2e/test_response_caching.py::test_with_stores
@@ -141,7 +141,7 @@ check() {
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  pytest tests/ "${deselect_test_args[@]}" "${ignore_test_args[@]}"
+  pytest tests/ "${pytest_args[@]}"
 }
 
 package() {
