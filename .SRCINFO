@@ -22,8 +22,6 @@ pkgbase = endless-sky-git
 	provides = endless-sky
 	conflicts = endless-sky
 	source = endless-sky::git+https://github.com/endless-sky/endless-sky.git
-	source = endless-sky.desktop
 	sha256sums = SKIP
-	sha256sums = 113c83c71efe30c90a96d3d94dd0f6df454645332f51bc9ffb9672017208a883
 
 pkgname = endless-sky-git
