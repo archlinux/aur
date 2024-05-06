@@ -1,21 +1,22 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=demuxSNP
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="scRNAseq demultiplexing using cell hashing and SNPs"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-3.0-only')
 depends=(
   r-biocgenerics
-  r-combinat
   r-demuxmix
+  r-dplyr
   r-ensembldb
   r-genomeinfodb
   r-iranges
+  r-kernelknn
   r-matrixgenerics
   r-singlecellexperiment
   r-summarizedexperiment
@@ -40,8 +41,8 @@ optdepends=(
   r-viridislite
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('66a0ed302acbc18c7a106d99bf645133')
-b2sums=('eb2a41ca87b50cd53d98fa5de81ee0c75d6d356c100d5f49e1108cf6aeea73ec7aaaa090f23b92dbd0494253368e8996236a62ffa38e6612f32e09d9a63a5f21')
+md5sums=('696b03cdca6d6ff4288288ca4e8a636d')
+b2sums=('2a6ae121f0592df9f936bf6bc48a4408f9d6dae89d4448edc0c7abb517e74c9d08ec6b467bfa1288ed2abdc7d07bb12262da9c7e6fea3e27bd2472dcb8cdce84')
 
 build() {
   mkdir build
