@@ -2,12 +2,13 @@
 
 pkgname=shlorem
 pkgver=1.1.2.r1.g4a37420
-pkgrel=1
+pkgrel=2
 pkgdesc="Lorem Ipsum generator for the command line (pure bash)"
 arch=(any)
 url="https://github.com/pforret/shlorem"
 license=('MIT')
 makedepends=('git')
+depends=('aspell-en')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}::git+${url}.git")
