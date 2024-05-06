@@ -111,14 +111,3 @@ package() {
   install --verbose -D --mode=0644 *.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
-
-#package() {
-#  local _gemdir="$(ruby -e 'puts Gem.default_dir')"
-#  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-#
-#  # Hack to disable therubyrhino for java platform
-#  sed -e '/therubyrhino/d' -i $pkgdir/$_gemdir/specifications/$_gemname-$pkgver.gemspec
-#
-#  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-#  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-#}
