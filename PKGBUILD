@@ -2,7 +2,7 @@
 
 pkgname='python-num2words'
 pkgver=0.5.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Python modules to convert numbers to words."
 arch=('any')
 url='https://github.com/savoirfairelinux/num2words'
@@ -23,5 +23,5 @@ check() {
 
 package() {
   cd "${srcdir}/num2words-${pkgver}"
-  python setup.py install --root=${pkgdir} 
+  python setup.py install --root=${pkgdir}
 }
