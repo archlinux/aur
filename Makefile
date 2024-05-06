@@ -36,4 +36,5 @@ clean:
 		sanitizers-cmake \
 		websocketpp \
 		magic_enum \
+		lua \
 		miniaudio
