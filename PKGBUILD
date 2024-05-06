@@ -3,7 +3,7 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (Git version)"
-pkgver=24.0.branchpoint.r4611.g702f40f
+pkgver=24.1.branchpoint.r409.gdb7bfe8
 pkgrel=1
 arch=('x86_64')
 depends=('libdrm' 'libxshmfence' 'libx11' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
@@ -45,6 +45,9 @@ prepare() {
 
   # Mark this NVK package with a signature (so I could track who's using it for bug report purposes)
   sed -i 's/"Mesa " PACKAGE_VERSION/"Mesa DodoNVK " PACKAGE_VERSION/' src/nouveau/vulkan/nvk_physical_device.c
+
+  # Add debugging information for Mako error
+  sed -i "s@if has_mako.returncode() != 0@if has_mako.returncode() != 0\n  message('Mako stdout: ', has_mako.stdout())\n  message('Mako stderr: ', has_mako.stderr())@" meson.build
 }
 
 pkgver() {
