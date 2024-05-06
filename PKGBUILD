@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=japreader-bin
-pkgver=1.9.3
+pkgver=1.9.5
 _electronversion=22
-pkgrel=7
+pkgrel=1
 pkgdesc="An Electron app that helps you read Japanese text."
 arch=('x86_64')
 url="https://github.com/marisukukise/japReader"
@@ -15,12 +15,17 @@ depends=(
     'libxfixes'
     'nodejs'
 )
+options=(
+    '!strip'
+    '!emptydirs'
+    #'!staticlibs'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f2e12d33c495bcfa79af141986357d77849752c66d4ae80ad377c15d64ae68b5'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('e406ce3287cc5d531205540ae119d513ef1dc5710e57a5de0bc15f0220550e79'
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
