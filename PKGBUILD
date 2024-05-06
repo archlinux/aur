@@ -1,6 +1,6 @@
 #Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 pkgname=moar-bin
-pkgver=1.23.11
+pkgver=1.23.12
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=('x86_64' 'i686' 'pentium4' 'armv6h' 'armv7h' 'aarch64')
@@ -14,13 +14,13 @@ source_armv6h=("$pkgname-$pkgver"::"$url/releases/download/v$pkgver/${pkgname%-b
 source_armv7h=("$pkgname-$pkgver"::"$url/releases/download/v$pkgver/${pkgname%-bin}-v$pkgver-linux-arm")
 source_aarch64=("$pkgname-$pkgver"::"$url/releases/download/v$pkgver/${pkgname%-bin}-v$pkgver-linux-arm")
 noextract=($pkgname-$pkgver.tar.gz)
-sha256sums=('c8ddfaa3790d10a0e6a8ce1cf2defc967646f02d90983c3e85c4b635b6fa5c34')
-sha256sums_x86_64=('df9a9f96d34417838d5242261c3f4fe5d2978b09be747494ff896c2a8c1450d2')
-sha256sums_i686=('8f9f94814d7566b237c29cc46527ab44780eb071418a2454d2a9b919e5826b3f')
-sha256sums_pentium4=('8f9f94814d7566b237c29cc46527ab44780eb071418a2454d2a9b919e5826b3f')
-sha256sums_armv6h=('72929723684d4acda3aa31d8e352a67229f2faca8755428879c7f08cdedd4a18')
-sha256sums_armv7h=('72929723684d4acda3aa31d8e352a67229f2faca8755428879c7f08cdedd4a18')
-sha256sums_aarch64=('72929723684d4acda3aa31d8e352a67229f2faca8755428879c7f08cdedd4a18')
+sha256sums=('9484990e7fb681cf20411828e6773d4caf77b617874d66c49a85cf3ec93f1bd3')
+sha256sums_x86_64=('fbcbda42da7b0882c7c20848634644ef651f80ea5bfb9b64d820007acb2d98d3')
+sha256sums_i686=('02afdb6679473d36b4e745cc9d758c323eef7b315643e75b871cadc9e6e47f7f')
+sha256sums_pentium4=('02afdb6679473d36b4e745cc9d758c323eef7b315643e75b871cadc9e6e47f7f')
+sha256sums_armv6h=('8fce7eea297c9842369a09cf78ec28b42c53b791ac1cf846c7d39668ee5545da')
+sha256sums_armv7h=('8fce7eea297c9842369a09cf78ec28b42c53b791ac1cf846c7d39668ee5545da')
+sha256sums_aarch64=('8fce7eea297c9842369a09cf78ec28b42c53b791ac1cf846c7d39668ee5545da')
 
 prepare() {
 	bsdtar -xvf $pkgname-$pkgver.tar.gz \
