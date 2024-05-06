@@ -5,7 +5,7 @@
 _pkgname=bitbox
 _upkgname=BitBox
 pkgname=bitbox-wallet-app-appimage
-pkgver=4.41.0
+pkgver=4.42.0
 pkgrel=1
 pkgdesc="BitBox cryptocurrency hardware wallet desktop app with Bitcoin, Segwit, Bech32 and native Litecoin support in an AppImage"
 arch=('x86_64')
@@ -14,13 +14,13 @@ license=('Apache')
 depends=('hicolor-icon-theme' 'zlib' 'bitbox-udev' 'fuse')
 makedepends=('p7zip')
 noextract=("$_pkgname-$pkgver.AppImage")
-options=('!strip')
+options=('!strip' '!debug')
 validpgpkeys=('DD09E41309750EBFAE0DEF63509249B068D215AE')
 
 source=("https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$pkgver/$_upkgname-$pkgver-$arch.AppImage"{,.asc}
 	"bitbox.svg"
 	"https://raw.githubusercontent.com/digitalbitbox/bitbox-wallet-app/master/LICENSE")
-sha256sums=('ede594f9619c11416f3472cb5fe7a5244e3595e099c22dc016df05b8f1d5cca2'
+sha256sums=('b3aaecfa80c94c2390619a16daf193dd3064588c2fb2feef7a56e0799abe7c38'
             'SKIP'
             'd6ca9430782d88b6bc80450ad8a2781c208aa5bda9f90e22a4659c9dc7975f25'
             '7b4d4d4c91c3ea7a50ebffe310bbb96e6be3a6ff39d24f47765c8d154939d9ab')
