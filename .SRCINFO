@@ -1,18 +1,18 @@
 pkgbase = tbls-bin
 	pkgdesc = CI-Friendly tool for documenting a database
-	pkgver = 1.74.1
+	pkgver = 1.74.2
 	pkgrel = 1
 	url = https://github.com/k1LoW/tbls
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	provides = tbls=1.74.1
+	provides = tbls=1.74.2
 	conflicts = tbls
-	source = LICENSE-1.74.1::https://raw.githubusercontent.com/k1LoW/tbls/v1.74.1/LICENSE
+	source = LICENSE-1.74.2::https://raw.githubusercontent.com/k1LoW/tbls/v1.74.2/LICENSE
 	sha256sums = 6eefa0bec6e7c3654bdc29cb8f8c4adbc1327d2e912b532aacc68f6e2fa9d63c
-	source_aarch64 = tbls-1.74.1-aarch64.deb::https://github.com/k1LoW/tbls/releases/download/v1.74.1/tbls_1.74.1-1_arm64.deb
-	sha256sums_aarch64 = 92143bbbdffebeed0cb8111f6f39a37a0fc048ffcc77b166f1c7487a782c3c34
-	source_x86_64 = tbls-1.74.1-x86_64.deb::https://github.com/k1LoW/tbls/releases/download/v1.74.1/tbls_1.74.1-1_amd64.deb
-	sha256sums_x86_64 = e6de7a3e5f85314e2b0b4c6cce29470ca6160af774e27ffd6ab01984caf6a777
+	source_aarch64 = tbls-1.74.2-aarch64.deb::https://github.com/k1LoW/tbls/releases/download/v1.74.2/tbls_1.74.2-1_arm64.deb
+	sha256sums_aarch64 = ccfd0d44a5bc4d7cb7f2136eac190bb57b7b2d9b7bb02ab60d24b077a64b2ff5
+	source_x86_64 = tbls-1.74.2-x86_64.deb::https://github.com/k1LoW/tbls/releases/download/v1.74.2/tbls_1.74.2-1_amd64.deb
+	sha256sums_x86_64 = adb41a48251b1b0ab9857e8ab8cf074f24a225ce2b2e2f95713874df8f911086
 
 pkgname = tbls-bin
