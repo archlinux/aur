@@ -3,10 +3,10 @@
 
 pkgname=iotas
 pkgver=0.2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple note taking"
 arch=('any')
-url="https://gitlab.gnome.org/cheywood/iotas"
+url="https://gitlab.gnome.org/World/iotas"
 license=('GPL3')
 depends=('libadwaita' 'python' 'gtksourceview5')
 makedepends=('meson' 'gobject-introspection')
@@ -38,6 +38,6 @@ package() {
 		'libvoikko'
 		'sqlite'
 		'org.freedesktop.secrets')
-	
+
 	meson install -C 'build' --destdir "$pkgdir"
 }
