@@ -1,20 +1,26 @@
 # Maintainer: Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-fribidi
-pkgver=1.0.13
+pkgver=1.0.14
 pkgrel=1
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)"
 arch=('any')
-license=('LGPL')
-url="http://fribidi.org"
+license=(LGPL-2.1-or-later)
+url="https://github.com/fribidi/fribidi"
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'git')
-_commit=b54871c339dabb7434718da3fed2fa63320997e5  # tags/v1.0.13^0
-source=("git+https://github.com/fribidi/fribidi#commit=$_commit"
-        "testrunnerwine.patch")
-b2sums=('SKIP'
+source=(
+  "git+$url?signed#tag=v$pkgver"
+#  "git+https://github.com/fribidi/c2man#commit=577ed4095383ef5284225d45709e6b5f0598a064"
+  "testrunnerwine.patch"
+)
+b2sums=('1bb9f57eae1652a7efb33bd39a2e93845f764efab5ac5b5de9d2dc2074aa514d40b26db4b5abd458013fb25d2b106f85c3ed2e71b378d2e9b16edf87908a403c'
+#        '4ce1f0e039bbac3d7015eff10b9738ac4b58dc59f736a8f7ba12857d67092444f500928447a08004ae3548ffb2c788a849ac76c89924db2d82653f547cc4cc6a')
         'b4a3a06cfbedf92959b2d5ceb7714957c7f42cd9b7bb02cebcf867c929cdc2922f836310e3464e10bbc89f6788ea9bbaf2f20914db78db7169801cffdffd98af')
+validpgpkeys=(
+  0AD041B27CA166DDA1FE3BAEA7B3409C0CA4ED14 # Dov Grobgeld <dov.grobgeld@gmail.com>
+)
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -57,4 +63,5 @@ package() {
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
   done
 }
+
 # vim:set sw=2 sts=-1 et:
