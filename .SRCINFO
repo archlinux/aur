@@ -1,7 +1,7 @@
 pkgbase = python-pyprojroot
 	pkgdesc = Find project root paths and return relative project files
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chendaniely/pyprojroot
 	arch = any
 	license = MIT
