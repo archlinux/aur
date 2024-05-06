@@ -11,7 +11,6 @@ pkgbase = ruby-sprockets-helpers
 	noextract = sprockets-helpers-1.4.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/sprockets-helpers-1.4.0.gem
-	sha1sums = b5a7396e1da26b5c3f9b1e04a6c1868d9b8657cb
+	sha256sums = b5a7396e1da26b5c3f9b1e04a6c1868d9b8657cb
 
 pkgname = ruby-sprockets-helpers
-

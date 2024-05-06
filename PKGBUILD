@@ -1,5 +1,3 @@
-# Maintainer: Anatoly Bashmakov <anatoly at posteo dot net>
-
 _gemname=sprockets-helpers
 pkgname=ruby-$_gemname
 pkgver=1.4.0
@@ -12,7 +10,7 @@ depends=(ruby ruby-sprockets)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('b5a7396e1da26b5c3f9b1e04a6c1868d9b8657cb')
+sha256sums=('b5a7396e1da26b5c3f9b1e04a6c1868d9b8657cb')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
