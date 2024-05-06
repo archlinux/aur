@@ -5,8 +5,8 @@
 
 _pkgname=upower
 pkgname="${_pkgname}-nocritical-nosystemd-git"
-pkgver=1.90.2+24.r1695.20240309.1e58e82
-pkgrel=1
+pkgver=1.90.4+6.r1704.20240424.544eba5
+pkgrel=2
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics (With a patch to disable low battery action). Built without systemd dependencies. Latest Git checkout."
 arch=(
   'i686'
@@ -65,8 +65,8 @@ source=(
   "0001-Add-a-critical-action-Ignore.patch"
 )
 sha256sums=(
-  "SKIP"
-  "bf82acf436db8ab06aa90ff2f8841cb977439937b955a92644da785dc612dde3"
+  "SKIP"                                                              # Upstream source
+  "04b87837be843ebd07a1d39ae95f77e883208fef0145fa3086690fdb61b81c10"  # 0001-Add-a-critical-action-Ignore.patch
 )
 options+=('emptydirs')
 
