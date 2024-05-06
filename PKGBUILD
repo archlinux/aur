@@ -8,7 +8,7 @@ pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from late
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
 license=('MIT')
-
+options=(!strip !debug)
 depends=(
     'fontconfig'
     'libxtst'
@@ -142,6 +142,8 @@ build() {
 
     # Disabling this patch, since it is for win32 and does not apply here
     rm -rf patches/cleanup-archive.patch
+    # Same for ppc64le-support.patch since that is not a supported architecture
+    rm -rf patches/ppc64le-support.patch
     . get_repo.sh
     . build.sh
 }
