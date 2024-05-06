@@ -77,7 +77,7 @@ build() {
     # .yarnrc.yml existed
     npm install -g yarn
     corepack enable yarn
-    yarn install #--cache-folder "${srcdir}/.yarn_cache"
+    npx yarn install #--cache-folder "${srcdir}/.yarn_cache"
     scripthaus run electron-rebuild
     scripthaus run build-backend
     scripthaus run build-package-linux
