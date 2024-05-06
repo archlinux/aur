@@ -2,8 +2,8 @@
 # Contributor: criptixo <therealcriptixo@gmail.com>
 pkgname=waveterm-bin
 _pkgname=Wave
-pkgver=0.7.2
-_electronversion=29
+pkgver=0.7.5
+_electronversion=30
 pkgrel=1
 pkgdesc='An open-source, cross-platform terminal for seamless workflows.Use system-wide electron.'
 arch=('x86_64')
@@ -17,8 +17,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x64-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0d51502325e67a1bfbfd511de9c9a33d1584e82e56f00cfbe7fda51bef25faba'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('46b7b3aa4e5e7f19b89977b18ff18a4a5e166a56c566fb0171ad6865f01172fe'
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
