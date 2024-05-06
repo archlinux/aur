@@ -1,32 +1,36 @@
 pkgbase = libtorch-cxx11abi
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI)
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD
-	noextract = libtorch-cuda.zip
-	noextract = libtorch-rocm.zip
-	noextract = libtorch-cpu.zip
+	depends = pybind11
+	noextract = libtorch-2.3.0-cuda.zip
+	noextract = libtorch-2.3.0-rocm.zip
+	noextract = libtorch-2.3.0-cpu.zip
 	options = !strip
 	options = !debug
 	options = libtool
 	options = staticlibs
-	source = libtorch-cuda.zip::https://download.pytorch.org/libtorch/cu121/libtorch-cxx11-abi-shared-with-deps-2.2.2%2Bcu121.zip
-	source = libtorch-rocm.zip::https://download.pytorch.org/libtorch/rocm5.7/libtorch-cxx11-abi-shared-with-deps-2.2.2%2Brocm5.7.zip
-	source = libtorch-cpu.zip::https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-2.2.2%2Bcpu.zip
+	source = libtorch-2.3.0-cuda.zip::https://download.pytorch.org/libtorch/cu121/libtorch-cxx11-abi-shared-with-deps-2.3.0%2Bcu121.zip
+	source = libtorch-2.3.0-rocm.zip::https://download.pytorch.org/libtorch/rocm5.7/libtorch-cxx11-abi-shared-with-deps-2.3.0%2Brocm5.7.zip
+	source = libtorch-2.3.0-cpu.zip::https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-2.3.0%2Bcpu.zip
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = libtorch-cxx11abi-cuda
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI) (with CUDA support)
+	depends = pybind11
 	provides = libtorch-cxx11abi-cuda
 
 pkgname = libtorch-cxx11abi-rocm
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI) (with ROCM support)
+	depends = pybind11
 	provides = libtorch-cxx11abi-rocm
 
 pkgname = libtorch-cxx11abi-cpu
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI) (CPU only)
+	depends = pybind11
 	provides = libtorch-cxx11abi-cpu
