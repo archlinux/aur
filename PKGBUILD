@@ -3,7 +3,7 @@ _name=gollum
 provides=(ruby-gollum)
 pkgver=6.0.0
 _commit=2666669e7cf7fd24374164ef881ce5c600c176c1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, Git-powered wiki with a local frontend and support for many kinds of markup and content.'
 arch=(x86_64)
 url='http://github.com/gollum/gollum'
@@ -13,9 +13,12 @@ ruby-rdoc
 ruby-gollum-lib
 ruby-kramdown
 ruby-kramdown-parser-gfm
+ruby-rackup
 ruby-sinatra
 ruby-sinatra-contrib
 ruby-mustache-sinatra
+ruby-useragent
+ruby-gemojione
 ruby-octicons
 ruby-sprockets
 ruby-sprockets-helpers
