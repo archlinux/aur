@@ -1,6 +1,6 @@
 pkgbase = ruby-octicons
 	pkgdesc = A package that distributes Octicons in a gem
-	pkgver = 12.1.0
+	pkgver = 19.9.0
 	pkgrel = 1
 	url = https://github.com/primer/octicons
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = ruby-octicons
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-nokogiri
-	noextract = octicons-12.1.0.gem
+	noextract = octicons-19.9.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/octicons-12.1.0.gem
-	sha1sums = 227adeb3c675d28b62cc532fc665e6df6fc4d5c6
+	source = https://rubygems.org/downloads/octicons-19.9.0.gem
+	sha256sums = 66f4513ce6d9aa0c7b91962b37762e4b83a28b756931f981e461b0651c54f8b1
 
 pkgname = ruby-octicons
-

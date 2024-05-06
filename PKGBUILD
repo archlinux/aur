@@ -1,8 +1,6 @@
-# Maintainer: Anatoly Bashmakov <anatoly at posteo dot net>
-
 _gemname=octicons
 pkgname=ruby-$_gemname
-pkgver=12.1.0
+pkgver=19.9.0
 pkgrel=1
 pkgdesc="A package that distributes Octicons in a gem"
 arch=(any)
@@ -12,7 +10,7 @@ depends=(ruby ruby-nokogiri)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('227adeb3c675d28b62cc532fc665e6df6fc4d5c6')
+sha256sums=('66f4513ce6d9aa0c7b91962b37762e4b83a28b756931f981e461b0651c54f8b1')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
