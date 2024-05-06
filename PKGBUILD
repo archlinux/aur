@@ -5,7 +5,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-gdk-pixbuf2-bootstrap
-pkgver=2.42.10
+pkgver=2.42.11
 pkgrel=1
 arch=('any')
 pkgdesc="An image loading library (Android ${_android_arch})"
@@ -22,27 +22,25 @@ provides=("android-${_android_arch}-gdk-pixbuf2")
 conflicts=("android-${_android_arch}-gdk-pixbuf2")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/${pkgver}/gdk-pixbuf-${pkgver}.tar.bz2")
-md5sums=('2861bcef6effa7bbd608a965479ce34b')
+md5sums=('ace6257f190b7ea3f54a626106884540')
 
 build() {
     cd "${srcdir}/gdk-pixbuf-${pkgver}"
     source android-env ${_android_arch}
 
-    mkdir -p build
-    cd build
-    android-${_android_arch}-meson \
-        -D builtin_loaders=all \
-        -D installed_tests=false \
-        -D man=false \
-        -D tests=false
-    ninja
+    android-${_android_arch}-meson build \
+        -Dbuiltin_loaders=all \
+        -Dinstalled_tests=false \
+        -Dman=false \
+        -Dtests=false
+    ninja -C build
 }
 
 package() {
-    cd "${srcdir}/gdk-pixbuf-${pkgver}/build"
+    cd "${srcdir}/gdk-pixbuf-${pkgver}"
     source android-env ${_android_arch}
 
-    DESTDIR="${pkgdir}" ninja install
+    DESTDIR="${pkgdir}" ninja install -C build
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
