@@ -67,13 +67,13 @@ GenericName[zh_CN]=文字处理
 GenericName[zh_TW]=文書處理器
 GenericName[zu]=Umshini Ohlela Amagama
 Comment=The TextMaker word processor lets you work on any type of document.
-Comment[de]=Die Textverarbeitung TextMaker ermöglicht es Ihnen, beliebige Arten von Dokumenten zu erstellen und zu bearbeiten. 
+Comment[de]=Die Textverarbeitung TextMaker ermöglicht es Ihnen, beliebige Arten von Dokumenten zu erstellen und zu bearbeiten.
 Comment[ru]=TextMaker позволяет работать со всеми видами текстовых документов.
 Terminal=false
 Categories=Application;Office;WordProcessor;
 MimeType=application/x-tmdx;application/x-tmvx;application/x-tmd;application/x-tmv;application/msword;application/vnd.ms-word;application/x-doc;text/rtf;application/rtf;application/vnd.oasis.opendocument.text;application/vnd.oasis.opendocument.text-template;application/vnd.stardivision.writer;application/vnd.sun.xml.writer;application/vnd.sun.xml.writer.template;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.ms-word.document.macroenabled.12;application/vnd.openxmlformats-officedocument.wordprocessingml.template;application/vnd.ms-word.template.macroenabled.12;application/x-pocket-word;application/x-dbf;application/msword-template;
 
- 
+
 Version=1.0
 Name=TextMaker 2024
 Icon=office2024-textmaker
