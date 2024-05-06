@@ -1,9 +1,10 @@
 # Contributor: George Rawlinson <george@rawlinson.net.nz>
 # Contributor: Leonard König <leonard.r.koenig at googlemail dot com>
+# Contributor: Adrien DUDOUIT-EXPOSITO <adrien@dudouit.me>
 
 pkgname='endless-sky-git'
 _gitname='endless-sky'
-pkgver=0.10.4.r16.gdba02efe3
+pkgver=0.10.6.r116.ga5d616acc0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://endless-sky.github.io/"
@@ -15,10 +16,8 @@ optdepends=('endless-sky-high-dpi: high resolution graphics assets'
 conflicts=('endless-sky')
 license=('GPL3' 'CCPL' 'custom:public domain')
 pkgdesc="A sandbox-style space exploration and combat game"
-source=("${_gitname}::git+https://github.com/endless-sky/endless-sky.git"
-	"endless-sky.desktop")
-sha256sums=('SKIP'
-            '113c83c71efe30c90a96d3d94dd0f6df454645332f51bc9ffb9672017208a883')
+source=("${_gitname}::git+https://github.com/endless-sky/endless-sky.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
@@ -41,7 +40,7 @@ package() {
   cp -rf data images sounds "${pkgdir}/usr/share/games/${_gitname}/"
 
   # .desktop
-  install -Dm644 -t "${pkgdir}/usr/share/applications" endless-sky.desktop
+  install -Dm644 -t "${pkgdir}/usr/share/applications" io.github.endless_sky.endless_sky.desktop
 
   # icons
   for res in 16 22 24 32 48 128 256 512; do
