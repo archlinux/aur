@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.18.3
+pkgver=1.18.4
 _electronversion=27
 _nodeversion=20
 pkgrel=1
@@ -20,13 +20,14 @@ makedepends=(
     'npm'
     'yarn'
     'nvm'
+    'curl'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('84572d9ea49d952eab2fe931be303686b1e2014e746430602ec21eb37fda941c'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('5b8b6b3544c26d4957622e2d4240699eb0e04c1c38e6d67457fec86cf61c23d7'
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -47,7 +48,7 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
