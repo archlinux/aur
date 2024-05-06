@@ -1,0 +1,19 @@
+pkgbase = ruby-sinatra-contrib-4
+	pkgdesc = Collection of useful Sinatra extensions.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://sinatrarb.com/contrib/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-multi_json
+	depends = ruby-mustermann
+	depends = ruby-rack-protection
+	depends = ruby-sinatra-4
+	depends = ruby-tilt
+	noextract = sinatra-contrib-4.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/sinatra-contrib-4.0.0.gem
+	sha256sums = b0a586a737fae486e4552cd24a540493d4047314d55e794e041c985ad0833365
+
+pkgname = ruby-sinatra-contrib-4
