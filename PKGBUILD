@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=websurfx-edge-git
-pkgver=v1.16.8.r1.g2e50fa4
+pkgver=v1.16.10.r0.g408858a
 pkgrel=1
 epoch=
 pkgdesc="An open-source alternative to Searx that provides clean, ad-free, and organic results with incredible speed while keeping privacy and security in mind."
@@ -30,7 +30,7 @@ pkgver() {
 }
 
 build() {
-    # export PKG_ENV="prod"
+    export PKG_ENV="prod"
     export RUSTFLAGS="-C target-cpu=native"
 	cd websurfx
 	cargo build -r --features "cec-cache-results, experimental-io-uring, use-non-static-synonyms-search"
