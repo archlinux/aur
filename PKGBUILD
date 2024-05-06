@@ -6,8 +6,8 @@
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
 _libffmpegver=0.87.0
-pkgver=42.0.3.0
-pkgrel=5
+pkgver=43.0.1.0
+pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -40,13 +40,12 @@ options=(
 source=(
     "${pkgname}-${pkgver}_amd64.deb::${_dlurl}/release/${pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
-    "LICENSE-${pkgver}.html::${url}/en/webhelp/index.htm"
 )
-sha256sums=('a83b5922db4fc6d1037ce5122b4b3198a78e1d3f9f65882088886d8825fb1989'
-            'e0d604a319b74c864ad48d632ad320a95f9b3b5b50f9d18431f18307f1208a2a'
-            '489c5c87b68886265b8ece54cbb58f1754062d90f1546d25aa8e26e759addf62')
+sha256sums=('68ac7156f0c33d0bc3503ad4c3de7c9cb349139e06d534d0aba81acd9eae4a70'
+            'e0d604a319b74c864ad48d632ad320a95f9b3b5b50f9d18431f18307f1208a2a')
 build() {
     bsdtar -xf "${srcdir}/data."*
+    bsdtar -xf "${srcdir}/control."*
     sed "s|/usr/bin/${_pkgname}|${_pkgname}|g;s|Icon=${_pkgname}|Icon=${pkgname}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname}.desktop"
     find "${srcdir}" -type d -exec chmod 755 {} \;
@@ -58,7 +57,7 @@ package() {
     ln -sf "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${srcdir}/libffmpeg.so" -t "${pkgdir}/opt/${pkgname}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
+    install -Dm644 "${srcdir}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
         install -Dm644 "${srcdir}/opt/${pkgname}/"product_logo_${_icons/x*}.png \
             "${pkgdir}/usr/share/icons/hicolopkgdirr/${_icons}/apps/${pkgname}.png"
