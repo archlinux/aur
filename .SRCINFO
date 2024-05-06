@@ -1,0 +1,16 @@
+pkgbase = ruby-rackup
+	pkgdesc = A general server command for Rack applications.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/rack/rackup
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rack
+	depends = ruby-webrick
+	noextract = rackup-2.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rackup-2.1.0.gem
+	sha256sums = 6ecb884a581990332e45ee17bdfdc14ccbee46c2f710ae1566019907869a6c4d
+
+pkgname = ruby-rackup
