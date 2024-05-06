@@ -1,0 +1,20 @@
+pkgbase = transceiver-exporter
+	pkgdesc = Prometheus exporter for Optical Transeiver OAM data
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/wobcom/transceiver-exporter
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = go
+	backup = etc/conf.d/prometheus-transceiver-exporter
+	source = https://github.com/wobcom/transceiver-exporter/archive/refs/tags/v1.5.0.tar.gz
+	source = prometheus-transceiver-exporter
+	source = prometheus-transceiver-exporter.service
+	source = prometheus-transceiver-exporter.sysusers
+	sha256sums = 088f2ff6c899115697788e75652419d7bf54b5561cbbeac993df6576694822fd
+	sha256sums = 9900f9ed20f8e3cd0f24fe585e1f403bb6c052a218bb9e81f6cbb53e52803942
+	sha256sums = e71cd38eb040bc5b7f73f105d9d8dd2bcf83d74cbe1e3d796fbcb25a972a905a
+	sha256sums = c8b4a9a31c29855ed033ffe981ae675ac6dd4399bb11f813d053bb0cd156b4d5
+
+pkgname = prometheus-transceiver-exporter
