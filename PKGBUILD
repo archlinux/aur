@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chatall-git
 _pkgname=ChatALL
-pkgver=1.78.103.r0.g0a9a37d
-_electronversion=28
-_nodeversion=18
+pkgver=1.78.104.r0.g9b73005
+_electronversion=30
+_nodeversion=20
 pkgrel=1
 pkgdesc="Concurrently chat with ChatGPT, Bing Chat, Bard, Alpaca, Vicuna, Claude, ChatGLM, MOSS, 讯飞星火, 文心一言 and more, discover the best answers"
 arch=('any')
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
