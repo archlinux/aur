@@ -5,7 +5,6 @@ pkgbase = minivcmouse
 	url = https://github.com/textshell/minivcmouse
 	arch = any
 	license = GPL2
-	makedepends = git
 	makedepends = meson
 	depends = libinput
 	depends = libudev0

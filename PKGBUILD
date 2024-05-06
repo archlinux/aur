@@ -8,7 +8,7 @@ arch=(any)
 url='https://github.com/textshell/minivcmouse'
 license=('GPL2')
 depends=(libinput libudev0)
-makedepends=(git meson)
+makedepends=(meson)
 optdepends=()
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz"
