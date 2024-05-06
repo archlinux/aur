@@ -1,17 +1,16 @@
 pkgbase = python-innerscope
 	pkgdesc = Expose the inner scope of functions
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eriknw/innerscope
 	arch = any
-	license = BSD
-	checkdepends = python-pytest
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-setuptools-git-versioning
 	makedepends = python-wheel
 	depends = python-toolz
-	source = https://pypi.org/packages/source/i/innerscope/innerscope-0.7.0.tar.gz
-	sha512sums = 34d7ba7ffa587399e917e830a6d81aedd79699395ac6c7bfeb1c8f4a4aa4701c06e8c76955a4a0c001f187e80bbc3de5eabb46bc3a4353888de77650ebe89a1a
+	source = innerscope-0.7.0.tar.gz::https://github.com/eriknw/innerscope/archive/0.7.0.tar.gz
+	sha512sums = e6466af419706c9901185c6d42d15a0cdf267a14f74a13bfc096a259ed6e2f871489f2da62fbc55135f1d67757e4a218f1298ff95e3180da86ea0399b6656fa4
 
 pkgname = python-innerscope
