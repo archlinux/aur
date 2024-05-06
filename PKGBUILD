@@ -2,19 +2,20 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 _cranname=BiocManager
-_cranver=1.30.22
+_cranver=1.30.23
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="A convenient tool to install and update Bioconductor packages."
 arch=("i686" "x86_64")
 url="https://CRAN.R-project.org/package=${_cranname}"
-license=("Artistic2.0")
+license=("Artistic-2.0")
 depends=(
     r
 )
 optdepends=(
     r-biocversion
+    r-biocstyle
     r-curl
     r-knitr
     r-remotes
@@ -42,7 +43,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("8b9244eab5977598a70f2578b2915b3db884ba84927b25a7689b9467cb52136f5c79381190ec6eb76562f0db518c037a2c6b28c69d12248608b7c35befd33a6e")
+b2sums=("d987735b7b1de302d72acc7e74dee5da4479630cea587d788aca7b25799d96f6cc928811f8d36cb47039646ed931cd9c88fc0a8051efbfc46785e53f408883f0")
 
 build() {
     mkdir -p "${srcdir}/build/"
