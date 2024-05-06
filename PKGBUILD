@@ -11,12 +11,12 @@ _image_url_aarch64=https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.7_240428_ar
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}_${_update_date//./_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="New Linux QQ based on Electron"
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
 license=('custom')
-options=(!strip)
+options=(!strip !debug)
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('qq' 'linuxqq')
 conflicts=('linuxqq' 'linuxqq-nt-bwrap')
