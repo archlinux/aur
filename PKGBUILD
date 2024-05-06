@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-git
-pkgver=rev.15366
+pkgver=rev.15433
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
@@ -40,6 +40,8 @@ build(){
 	cmake ../Vega-Strike-Engine-Source/engine/ \
 	-DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DINSTALL_GTEST=OFF \
+        -DUSE_GTEST=OFF   \
 	-DENABLE_PIE=ON 
 	make
 }
