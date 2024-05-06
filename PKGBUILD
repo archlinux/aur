@@ -3,7 +3,7 @@ pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
 _reponame=sk-chos-config
-pkgver=r501.4d90c5f
+pkgver=r505.1803774
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -18,6 +18,8 @@ depends=('expect'
     'gum'
     'fzf'
     'fpaste'
+    'cage'
+    'wlr-randr'
 )
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon)
@@ -107,4 +109,12 @@ package() {
     # /usr/lib/cjust
     install -dm755 "${pkgdir}/usr/lib/cjust"
     install -m755 -t "${pkgdir}/usr/lib/cjust" "${source_dir}/lib/cjust"/*.sh
+
+    # polkit actions
+    install -dm755 "${pkgdir}/usr/share/polkit-1/actions"
+    install -m644 -t "${pkgdir}/usr/share/polkit-1/actions" "${source_dir}/share/polkit-1/actions"/*
+
+    # polkit rules
+    install -dm755 "${pkgdir}/etc/polkit-1/rules.d"
+    install -m644 -t "${pkgdir}/etc/polkit-1/rules.d" "${source_dir}/etc/polkit-1/rules.d"/*
 }
