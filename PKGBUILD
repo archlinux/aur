@@ -1,10 +1,10 @@
-# Maintainer: TurtleRuss <tttturtleruss@gmail.com>
+# Maintainer: Haoyang Liu <tttturtleruss@gmail.com>
 # Contributor: m8D2 <omui (at) proton mail (dot) com>
 # Contributor: novenary <streetwalkermc@gmail.com>
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=python-soco
-pkgver=0.30.3
+pkgver=0.30.4
 pkgrel=1
 pkgdesc="A Python library that allows you to control Sonos speakers programmatically"
 arch=('any')
