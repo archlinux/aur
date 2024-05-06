@@ -5,7 +5,7 @@
 # Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.37.0.r723.g6179995dd7
+pkgver=0.38.0.r138.g6ec3e1549d
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs except Nvidia)'
 arch=('x86_64')
@@ -140,6 +140,8 @@ build() {
         -Dmacos-cocoa-cb='disabled' \
         -Dmacos-media-player='disabled' \
         -Dmacos-touchbar='disabled' \
+        -Dmacos-11-features='disabled' \
+        -Dmacos-12-features='disabled' \
         -Dswift-build='disabled' \
         -Dswift-flags='disabled' \
         \
@@ -152,7 +154,7 @@ build() {
 package() {
     meson install -C build --destdir "$pkgdir"
     install -D -m644 mpv/DOCS/{encoding.rst,tech-overview.txt} "${pkgdir}/usr/share/doc/mpv"
-    install -D -m644 mpv/TOOLS/lua/* -t "${pkgdir}/usr/share/mpv/scripts"
+    install -D -m644 mpv/TOOLS/{umpv,mpv_identify.sh,stats-conv.py,idet.sh,lua/*} -t "${pkgdir}/usr/share/mpv/scripts"
     
     # delete private entries only required for static linking
     sed -i -e '/Requires.private/d' -e '/Libs.private/d' "${pkgdir}/usr/lib/pkgconfig/mpv.pc"
