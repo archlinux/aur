@@ -7,12 +7,12 @@ _disname=qq
 
 pkgname="${_pkgname}"-appimage-latest
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="New Linux QQ based on Electron"
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
 license=('custom')
-options=(!strip)
+options=(!strip !debug)
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 makedepends=('nodejs' 'npm')
 provides=('qq' 'linuxqq')
