@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=boson-git
-pkgver=0.4.3.r0.ga3c14fe
-_electronversion=29
+pkgver=0.4.5.r0.g4bde74e
+_electronversion=30
 _nodeversion=20
 pkgrel=1
 pkgdesc="SDSS observer graphical interface.Use system-wide electron."
@@ -27,10 +27,10 @@ source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
