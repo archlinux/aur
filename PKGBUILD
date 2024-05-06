@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=google-gemini-nativefier
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Google Gemini desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -26,7 +26,7 @@ build() {
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
     --single-instance \
-    --electron-version 30.0.1 \
+    --electron-version 30.0.2 \
     --honest \
     "${url}"
 
@@ -39,7 +39,7 @@ package() {
   _folder=$(ls "${srcdir}" | grep "[Gg]emini-linux-")
   _binary=$(ls "${srcdir}/${_folder}" | grep "[Gg]emini")
 
-  sed -i -e "/loglevel/d" "${srcdir}/${_folder}/resources/app/lib/preload.js"
+  #sed -i -e "/loglevel/d" "${srcdir}/${_folder}/resources/app/lib/preload.js"
   cp -rL "${srcdir}/${_folder}" "${pkgdir}/opt/${pkgname}"
   ln -s "/opt/${pkgname}/${_binary}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -52,4 +52,4 @@ package() {
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
 sha256sums=('237b11a0d250c1560f9edbaf9d21fdc3b335ddf194aaf7544f5b49495a161635'
-            'c4e77df9ca215cb2e9f4fc93ecabed6cf36752a25eb59fa71228edf4695d3d02')
+            '95501333b25b69d0b3f3c3f890dace4f7ea5880cb69c8dc99e102a457d98360c')
