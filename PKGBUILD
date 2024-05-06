@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=icalingua++-bin
-pkgver=2.11.6
+pkgver=2.11.9
 _electronversion=22
 pkgrel=1
 pkgdesc="A branch of deleted Icalingua, with limited support"
@@ -29,10 +29,10 @@ source=(
 )
 sha256sums=('5743ef3d19be5e41e83c3a1171a807cd0505d7f5d5f9c5abdff8926dccadc6de'
             'b088d20934708c53e50492694efefbf9a9dcb62fefb8d1d4976f36f32f84af86'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('8dc9639f20d9a7737bafcb7bcccaca9462e7553ae92ffc23febd25c3d30f9e5a')
-sha256sums_armv7h=('8a06c628b420653a3960139641c15014c75eaf4492dbd6ce01662f89fadfe082')
-sha256sums_x86_64=('196a7dbe19c4e23bcaedbbac57e40144eacda2c29e4199fa2b281b3954af4f41')
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+sha256sums_aarch64=('44d655b4d66d89d302c533860f397ef275fe8f6251b4eba1a44de048bd3f9158')
+sha256sums_armv7h=('020b58b0714158c87e70c45253b1d7f12fa9455b53f2716000d33b88d284838b')
+sha256sums_x86_64=('b80e771e34086331e2ab025adc137cc8ef7cb3fccc020dcbea8043494de6e262')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
