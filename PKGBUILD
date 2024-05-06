@@ -10,7 +10,17 @@ arch=('any')
 url="https://github.com/honjow/sk-holoiso-config.git"
 license=('MIT')
 makedepends=('git')
-depends=('expect' 'efibootmgr' 'zram-generator' 'just' 'man-db')
+depends=('expect'
+    'efibootmgr'
+    'zram-generator'
+    'just'
+    'man-db'
+    'gum'
+    'fzf'
+    'fpaste'
+    'cage'
+    'wlr-randr'
+)
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon-git)
 replaces=(sk-chos-addon-git)
@@ -91,4 +101,16 @@ package() {
     # /etc/bash_completion.d
     install -dm755 "${pkgdir}/etc/bash_completion.d"
     install -m644 "${source_dir}/share/sk-chos/completions/_just.bash" "${pkgdir}/etc/bash_completion.d/just.bash"
+
+    # /usr/lib/cjust
+    install -dm755 "${pkgdir}/usr/lib/cjust"
+    install -m755 -t "${pkgdir}/usr/lib/cjust" "${source_dir}/lib/cjust"/*.sh
+
+    # polkit actions
+    install -dm755 "${pkgdir}/usr/share/polkit-1/actions"
+    install -m644 -t "${pkgdir}/usr/share/polkit-1/actions" "${source_dir}/share/polkit-1/actions"/*
+
+    # polkit rules
+    install -dm755 "${pkgdir}/usr/share/polkit-1/rules.d"
+    install -m644 -t "${pkgdir}/usr/share/polkit-1/rules.d" "${source_dir}/share/polkit-1/rules.d"/*
 }
