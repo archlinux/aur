@@ -1,0 +1,12 @@
+pkgbase = aces
+	pkgdesc = Encode in a character set of your choice
+	pkgver = 2.2.10
+	pkgrel = 1
+	url = https://github.com/quackduck/aces
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = aces-2.2.10.tar.gz::https://github.com/quackduck/aces/archive/refs/tags/v2.2.10.tar.gz
+	sha256sums = 29b10a580939f91e2cd352fbe2437c701f90eb7fb6f43c1f1a7e86477075626b
+
+pkgname = aces
