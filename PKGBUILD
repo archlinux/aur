@@ -1,16 +1,17 @@
 # Maintainer: jurplel <jurplel[at]interversehq[dotcom]>
 pkgname=qview
 pkgver=6.1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="qView is a Qt image viewer designed with minimalism and usability in mind."
 arch=('i686' 'x86_64')
 url="https://interversehq.com/qview/"
 license=('GPL3')
 groups=()
-depends=('qt5-base>=5.9' 'qt5-x11extras>=5.9' 'hicolor-icon-theme')
-optdepends=('qt5-imageformats: Extra image format support' 'kimageformats5: Support for even more extra formats' 'qt5-svg: SVG support' 'qt5-apng-plugin: APNG support')
-makedepends=('qt5-tools')
+depends=('qt6-base' 'hicolor-icon-theme')
+optdepends=('qt6-imageformats: Extra image format support' 'kimageformats: Support for even more extra formats' 'qt6-svg: SVG support')
+makedepends=('qt6-tools')
+checkdepends=()
 provides=()
 conflicts=()
 replaces=()
@@ -25,7 +26,7 @@ validpgpkeys=()
 
 build() {
 	cd qView
-	qmake PREFIX=/usr
+	qmake6 PREFIX=/usr
 	make
 }
 
