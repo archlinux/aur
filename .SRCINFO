@@ -1,7 +1,7 @@
 pkgbase = zfs-utils-staging-git
 	pkgdesc = Userspace utilities for the Zettabyte File System (release staging branch).
-	pkgver = 2.2.3.r12.gdeb7a84231
-	pkgrel = 2
+	pkgver = 2.2.4.r0.g2566592045
+	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = zfs-utils-staging-git
 	conflicts = zfs-utils
 	backup = etc/default/zfs
 	backup = etc/zfs/zed.d/zed.rc
-	source = zfs::git+https://github.com/openzfs/zfs.git#branch=zfs-2.2.4-staging
+	source = zfs::git+https://github.com/openzfs/zfs.git#branch=zfs-2.2.5-staging
 	source = zfs-node-permission.conf
 	source = zfs.initcpio.install
 	source = zfs.initcpio.hook
@@ -22,4 +22,4 @@ pkgbase = zfs-utils-staging-git
 	sha256sums = 15b5acea44225b4364ec6472a08d3d48666d241fe84c142e1171cd3b78a5584f
 
 pkgname = zfs-utils-staging-git
-	provides = zfs-utils=2.2.3
+	provides = zfs-utils=2.2.4
