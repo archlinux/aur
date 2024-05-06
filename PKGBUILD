@@ -1,10 +1,10 @@
-# Maintainer: Abdur-Rahman Mansoor <armansoor at posteo dot net>
+# Maintainer: Abdur-Rahman Mansoor <armansoor at missingno dot dev>
 
 _pkgname=httpx-socks
 pkgname=python-$_pkgname
 epoch=1
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP/SOCKS-proxy transports for httpx'
 arch=('any')
 url="https://github.com/romis2012/$_pkgname"
