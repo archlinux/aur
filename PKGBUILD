@@ -28,6 +28,7 @@ makedepends=(
     'base-devel'
     'zip'
     'nvm'
+    'curl'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
