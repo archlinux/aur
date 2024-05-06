@@ -1,7 +1,7 @@
 pkgbase = python-arraylias
 	pkgdesc = A Python library for automatic aliasing of multiple array libraries
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Qiskit-Extensions/arraylias
 	arch = any
 	license = Apache-2.0

@@ -2,7 +2,7 @@
 _pkgname=arraylias
 pkgname=python-${_pkgname}
 pkgver=0.1.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A Python library for automatic aliasing of multiple array libraries"
 arch=('any')
 url="https://github.com/Qiskit-Extensions/arraylias"
