@@ -5,7 +5,7 @@
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
 pkgver=0.18.0
-pkgrel=7
+pkgrel=8
 epoch=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
@@ -54,7 +54,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '235a82931cee490a26bcd4a133ea787a4c5cd2da3f1c331225bbeb1f334e75ed')
+    'ab2dbd819f4d4613505d384707ca9cb7913b9603739b6f6590a3a3d978cbe56a')
 
 function prepare() {
     cd "${srcdir}/${pkgbase}"

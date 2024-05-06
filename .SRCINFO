@@ -1,7 +1,7 @@
 pkgbase = open3d
 	pkgdesc = A Modern Library for 3D Data Processing
 	pkgver = 0.18.0
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 1
 	url = http://www.open3d.org
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = open3d
 	source = open3d::git+https://github.com/isl-org/Open3D.git#commit=5c982c7b5edc76f899860e2594a950c5c23ec88f
 	source = fmt-v10.patch
 	sha256sums = SKIP
-	sha256sums = 235a82931cee490a26bcd4a133ea787a4c5cd2da3f1c331225bbeb1f334e75ed
+	sha256sums = ab2dbd819f4d4613505d384707ca9cb7913b9603739b6f6590a3a3d978cbe56a
 
 pkgname = open3d
 	depends = libc++abi
