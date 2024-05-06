@@ -1,0 +1,15 @@
+pkgbase = aarch64-zlib
+	pkgdesc = A compression/decompression Library (aarch64)
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://www.zlib.net/
+	arch = any
+	license = custom:zlib
+	makedepends = aarch64-linux-gnu-gcc
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://zlib.net/zlib-1.3.1.tar.gz
+	sha256sums = 9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23
+
+pkgname = aarch64-zlib
