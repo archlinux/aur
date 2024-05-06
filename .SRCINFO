@@ -1,6 +1,6 @@
 pkgbase = ruby-gemojione
 	pkgdesc = A gem for EmojiOne
-	pkgver = 4.1.0
+	pkgver = 4.3.3
 	pkgrel = 1
 	url = http://github.com/jonathanwiesel/gemojione
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = ruby-gemojione
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-json
-	noextract = gemojione-4.1.0.gem
+	noextract = gemojione-4.3.3.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/gemojione-4.1.0.gem
+	source = https://rubygems.org/downloads/gemojione-4.3.3.gem
 	sha256sums = 9979bd6f1667f49654b4326b891b91d97cdf6a1513d66241d5be39e6b5fb4770
 
 pkgname = ruby-gemojione

@@ -1,6 +1,6 @@
 _gemname=gemojione
 pkgname=ruby-$_gemname
-pkgver=4.1.0
+pkgver=4.3.3
 pkgrel=1
 pkgdesc='A gem for EmojiOne'
 arch=(any)
@@ -10,7 +10,7 @@ depends=(ruby ruby-json)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('9979bd6f1667f49654b4326b891b91d97cdf6a1513d66241d5be39e6b5fb4770')
+sha256sums=('aa462341a968d3e1890e2a0c749a287fbfa74d4cff7269f8e0e2e47787288d3b')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
