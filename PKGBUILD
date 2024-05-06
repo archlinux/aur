@@ -1,11 +1,11 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GRaNIE
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
-pkgdesc="Reconstruction cell type specific gene regulatory networks including enhancers using chromatin accessibility and RNA-seq data"
+pkgrel=1
+pkgdesc="Reconstruction cell type specific gene regulatory networks including enhancers using single-cell or bulk chromatin accessibility and RNA-seq data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
@@ -66,6 +66,7 @@ optdepends=(
   r-edaseq
   r-ihw
   r-jaspar2022
+  r-jaspar2024
   r-knitr
   r-ldlinkr
   r-motifmatchr
@@ -91,8 +92,8 @@ optdepends=(
   r-wgcna
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d9db703063398ccd263ce6b54def9266')
-b2sums=('79192e9cb4153a1ebf23e76daa0c9629bcdf36545108587914bf02e624cdd00033ccc7ec998bcdef229a8a9ea7bab3bc7d9806329350f6712d684429016d08cb')
+md5sums=('eebd7994ef623c8636b4ea0d6ca91a55')
+b2sums=('d29cd13677278725a34d8b32daf75f2d65b47b7738bf453c1c643e43b352509d92cb4bf03219ad0519f83dfc0c5f4a8229dfe20cd028afa5ed1679728f683134')
 
 build() {
   mkdir build
