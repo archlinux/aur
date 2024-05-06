@@ -3,14 +3,22 @@ pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
 _reponame=sk-chos-config
-pkgver=r498.60a05fd
+pkgver=r501.4d90c5f
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
 url="https://github.com/honjow/sk-chos-config.git"
 license=('MIT')
 makedepends=('git')
-depends=('expect' 'efibootmgr' 'zram-generator' 'just' 'man-db' 'gum' 'fzf')
+depends=('expect'
+    'efibootmgr'
+    'zram-generator'
+    'just'
+    'man-db'
+    'gum'
+    'fzf'
+    'fpaste'
+)
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon)
 replaces=(sk-chos-addon)
