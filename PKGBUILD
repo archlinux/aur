@@ -3,7 +3,7 @@
 _pkgname=python-cohost
 pkgname=${_pkgname}-git
 pkgver=0.2.5.r2.ga4aacd1
-pkgrel=2
+pkgrel=3
 pkgdesc="A python library for Cohost.org!"
 arch=('any')
 url="https://github.com/valknight/Cohost.py"
