@@ -1,30 +1,30 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=marshmallow-polyfield
-pkgname=python-${_pkgname}
+pkgname=python-$_pkgname
 pkgver=5.11
-pkgrel=2
+pkgrel=3
 pkgdesc="An extension to marshmallow to allow for polymorphic fields"
-arch=('any')
-url="https://pypi.org/project/marshmallow-polyfield/"
-license=('Apache')
+arch=(any)
+url=https://github.com/Bachmann1234/marshmallow-polyfield
+license=(Apache-2.0)
 depends=(
-    'python-marshmallow'
+    python-marshmallow
 )
 makedepends=(
-    'python-build'
-    'python-installer'
-    'python-setuptools'
-    'python-wheel'
+    python-build
+    python-installer
+    python-setuptools
+    python-wheel
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('1d08f9c5c872e397c33f72c073d770155e627924f607772479f8715c58b38b1db02814618a318e733c0392bebb725a4e9efa509df605acdcb9a8df3cc96aacce')
+source=($pkgname-$pkgver.tar.gz::https://github.com/Bachmann1234/$_pkgname/archive/refs/tags/v$pkgver.tar.gz)
+b2sums=('507b3dcc20ffb0c0c7fe3b5001e3fb02671d87082305a4f4810ac0363074d10185a2692bd6436e482d1f523b77bd393823644eb0c0139d279dfa1cf322e71c00')
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd $_pkgname-$pkgver
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd $_pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
