@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ATACseqTFEA
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Transcription Factor Enrichment Analysis for ATAC-seq"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -22,6 +22,7 @@ depends=(
   r-motifmatchr
   r-pracma
   r-rsamtools
+  r-rtracklayer
   r-s4vectors
   r-summarizedexperiment
   r-tfbstools
@@ -35,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('30284cc31687d97f23d2a7c023e8561d')
-b2sums=('f7e8f1fc045b52cb60d88601564693c80b6768532ac41ecf1cd18d8987aa64797959a3ed0f51cb8a18af491f48b003bfa9eeeb2cef90edc4fe7bd126880a7af8')
+md5sums=('deea5b3f5e1d4cbb7e06b9b2ed394fc0')
+b2sums=('31cadbc89c35f2a8e2dbff9aee0a1d370239acd5aa3a79dc0d4e6d93a9cfcdac8286045c344d0dcec4a23a4d413a180be043147677a8a3aee4ba145d55aded75')
 
 build() {
   mkdir build
