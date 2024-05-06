@@ -1,5 +1,5 @@
 pkgbase = recode-converter-bin
-	pkgdesc = A simple, modern audio codec converter for video files
+	pkgdesc = A simple, modern audio codec converter for video files.
 	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/murgatt/recode-converter
