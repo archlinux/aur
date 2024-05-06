@@ -29,6 +29,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-holoiso-config/ar
 sha256sums=('SKIP')
 options=(!strip)
 backup=('etc/sk-chos-tool/github_cdn.conf')
+install=sk-chos-addon.install
 
 prepare() {
     source_dir="${srcdir}/${_reponame}-${pkgver}/src/chimeraos-addon"

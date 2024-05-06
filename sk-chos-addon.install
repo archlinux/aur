@@ -1,0 +1,81 @@
+rc_files=(
+    "/etc/bashrc"
+    "/etc/bash.bashrc"
+    "/etc/zshrc"
+    "/etc/zsh/zshrc"
+)
+
+start_line="# sk-chos user-motd"
+end_line="# sk-chos user-motd end"
+
+read -rd '' motd_command <<EOF
+$start_line
+if test -d "\$HOME"; then
+  if test ! -e "\$HOME"/.config/no-show-user-motd; then
+    if test -x "/usr/libexec/chos-motd"; then
+      /usr/libexec/chos-motd
+    elif test -s "/etc/user-motd"; then
+      cat /etc/user-motd
+    fi
+  fi
+fi
+$end_line
+EOF
+
+update_motd() {
+    echo "Updating motd..."
+    for rc_file in "${rc_files[@]}"; do
+        if [ -f "$rc_file" ]; then
+            if ! grep -q "# user-motd" "$rc_file"; then
+                echo "$motd_command" >>"$rc_file"
+            else
+                sed -i "/$start_line/,/$end_line/d" "$rc_file"
+                echo "$motd_command" >>"$rc_file"
+            fi
+        else
+            echo "$motd_command" >"$rc_file"
+        fi
+    done
+}
+
+remove_motd() {
+    echo "Removing motd..."
+    for rc_file in "${rc_files[@]}"; do
+        if [ -f "$rc_file" ]; then
+            sed -i "/$start_line/,/$end_line/d" "$rc_file"
+        fi
+    done
+}
+
+# 安装或升级后的操作
+post_upgrade_or_install() {
+    update_motd
+}
+
+# 安装前的操作
+pre_install() {
+    echo ""
+}
+
+# 升级前的操作
+pre_upgrade() {
+    echo ""
+}
+
+# 安装后的操作
+post_install() {
+    post_upgrade_or_install
+}
+
+# 升级后的操作
+post_upgrade() {
+    post_upgrade_or_install
+}
+
+pre_remove() {
+    echo ""
+}
+
+post_remove() {
+    remove_motd
+}
