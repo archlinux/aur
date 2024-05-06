@@ -2,8 +2,8 @@
 
 _pkgname=archisteamfarm
 pkgname="${_pkgname}-bin"
-pkgver=6.0.1.24
-pkgrel=2
+pkgver=6.0.2.6
+pkgrel=1
 pkgdesc='C# application that allows you to farm steam cards using multiple steam accounts simultaneously.'
 arch=('x86_64')
 url='https://github.com/JustArchiNET/ArchiSteamFarm'
@@ -16,9 +16,7 @@ options=('!strip' 'staticlibs')
 source=(
   "${_pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/ASF-linux-x64.zip"
 )
-sha512sums=(
-  '76832ee156a6fb895d64dd1ae7b1dace6413e1acf208c54ed3a7a0dde301a6a91b36aef89508220f27fe7a03bee07525ef08eaed00c44ccfda4608bd020632e4'
-)
+sha512sums=('b2bb9d400f8978c1151cf9c4f76da9bf9248a32a8a343f3f7f2c86821b52b471657f4c7fdb06575b649acf3caee2b1e5c33949acf9c3fec9f4631d130ca119b5')
 
 prepare() {
   unzip "${_pkgname}-${pkgver}.zip" -d "${_pkgname}-${pkgver}"
