@@ -1,0 +1,11 @@
+pkgbase = ath10k-fixer
+	pkgdesc = Daemon that monitors the ath10k_pci kernel module and reloads it if needed
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/c4rlo/ath10k-fixer
+	arch = any
+	license = MIT
+	source = https://github.com/c4rlo/ath10k-fixer/archive/0.1.0.tar.gz
+	sha256sums = 800e6c4a8fcedf5fe497cced797838be6128d9302127913afbaf7592c16d10e3
+
+pkgname = ath10k-fixer
