@@ -1,0 +1,21 @@
+pkgbase = strain-git
+	pkgdesc = A CPU stressing tool written in Rust
+	pkgver = 0.0.1.r1.g9b43a3f
+	pkgrel = 1
+	url = https://github.com/JacoMalan1/strain
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = gcc
+	depends = gcc-libs
+	depends = gmp
+	depends = lib32-gmp
+	depends = mpfr
+	depends = libmpc
+	provides = strain
+	conflicts = strain
+	source = strain-git::git+https://github.com/JacoMalan1/strain.git
+	sha256sums = SKIP
+
+pkgname = strain-git
