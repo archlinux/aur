@@ -4,32 +4,32 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-fribidi
-pkgver=1.0.13
+pkgver=1.0.14
 pkgrel=1
-pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (android)"
 arch=('any')
+pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (Android ${_android_arch})"
 url="http://fribidi.org"
 license=('LGPL')
 depends=('android-ndk')
-options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-meson')
+options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/fribidi/fribidi/archive/v${pkgver}.tar.gz")
-md5sums=('7aa67eb9a386be40629f35517dd52acf')
+md5sums=('847a2d33a962bbb6c92675b1b6463fdd')
 
 build() {
-    cd "${srcdir}"/fribidi-${pkgver}
+    cd "${srcdir}/fribidi-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-meson build \
-         -D docs=false
+        -Ddocs=false
     ninja -C build
 }
 
 package() {
-    cd "${srcdir}"/fribidi-${pkgver}
+    cd "${srcdir}/fribidi-${pkgver}"
     source android-env ${_android_arch}
 
     DESTDIR="${pkgdir}" meson install -C build
-    rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
