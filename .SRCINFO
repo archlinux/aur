@@ -1,6 +1,6 @@
 pkgbase = android-x86-abseil-cpp
 	pkgdesc = Collection of C++ library code designed to augment the C++ standard library (Android x86)
-	pkgver = 20240116.1
+	pkgver = 20240116.2
 	pkgrel = 1
 	url = https://abseil.io
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = android-x86-abseil-cpp
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/abseil/abseil-cpp/archive/20240116.1/abseil-cpp-20240116.1.tar.gz
-	sha256sums = 3c743204df78366ad2eaf236d6631d83f6bc928d1705dd0000b872e53b73dc6a
+	source = https://github.com/abseil/abseil-cpp/archive/20240116.2/abseil-cpp-20240116.2.tar.gz
+	md5sums = f2c807858166b0a8ce4f679b17111335
 
 pkgname = android-x86-abseil-cpp
