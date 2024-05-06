@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=OutSplice
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Comparison of Splicing Events between Tumor and Normal Samples"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -15,7 +15,6 @@ depends=(
   r-genomicranges
   r-iranges
   r-org.hs.eg.db
-  r-repitools
   r-s4vectors
   r-txdb.hsapiens.ucsc.hg19.knowngene
   r-txdb.hsapiens.ucsc.hg38.knowngene
@@ -30,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7a55735983a79681a2bbcd567c9f0c53')
-b2sums=('d6b48f4584bc0a137aefd560d17351bf2418ca304e42ac05d9f6df75cbfb7003e4e4c3c81567fb175c3533245d5d431214bb8e5e72c5986c2118f03135e6cf1e')
+md5sums=('9be50732d703c3dd77d71a1750619c78')
+b2sums=('dad81b8ff0e99e298e44690e8cc2c72ad87bf18af09178c60110259305419b70dcd29b97c7a3fb3285189b6941f97305ad276f47e28a683285a6b13b9b2e0e0c')
 
 build() {
   mkdir build
