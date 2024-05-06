@@ -1,6 +1,6 @@
 pkgbase = redisearch
 	pkgdesc = A query and indexing engine for Redis, providing secondary indexing, full-text search, vector similarity search and aggregations.
-	pkgver = 2.10.1
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://github.com/RediSearch/RediSearch
 	arch = any
