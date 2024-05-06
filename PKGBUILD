@@ -1,8 +1,8 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=proton-vpn-gtk-app
-pkgver=4.3.0
-pkgrel=5
+pkgver=4.3.1
+pkgrel=1
 pkgdesc="ProtonVPN GTK app, Maintained by Community"
 arch=("any")
 url="https://github.com/ProtonVPN/proton-vpn-gtk-app"
@@ -36,16 +36,9 @@ depends=("python-proton-core"
 		"gtk3")
 optdepends=("libappindicator-gtk3")
 makedepends=("git" "python-setuptools")
-source=("git+https://github.com/ProtonVPN/proton-vpn-gtk-app.git#tag=v${pkgver}"
-		"fix-startup-wm-class.patch")
-sha256sums=('SKIP'
-			'c483129a66171bd6b13a54193c8373173bb0bfbc556c4aa1fbae0c2ef0063f4e')
+source=("git+https://github.com/ProtonVPN/proton-vpn-gtk-app.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 conflicts=('protonvpn-gui' 'python-proton-client')
-
-prepare() {
-	cd "$pkgname"
-	cat ../fix-startup-wm-class.patch | patch -p1
-}
 
 build() {
 	cd "$pkgname"
