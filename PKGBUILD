@@ -1,4 +1,5 @@
 # Maintainer: d-air1 <youremail@domain.com>
+# Contributor: silentnoodle <youremail@domain.com>
 pkgname=bindtointerface
 pkgver=1.0
 pkgrel=1
