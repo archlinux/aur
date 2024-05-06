@@ -1,8 +1,8 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=anthropic-claude-nativefier
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Anthropic Claude desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://claude.ai/"
@@ -26,7 +26,7 @@ build() {
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
     --single-instance \
-    --electron-version 30.0.1 \
+    --electron-version 30.0.2 \
     --honest \
     "${url}"
 
@@ -52,4 +52,4 @@ package() {
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
 sha256sums=('8da55751e40d70b8f0bd663879f0b187be57724f42fe822f55b14ee6a5470eec'
-            '0e324b93f8efd3337882e5e18dcee9bf4d53253c10f07c660ab67e47003bc21f')
+            '8edc56a354a0b98622f91cb92cd1b237bd73e7a1d1f9baaa8b4c064343f775c6')
