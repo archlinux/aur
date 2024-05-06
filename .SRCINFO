@@ -6,7 +6,7 @@ pkgbase = uyou-todo-bin
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
-	depends = electron26-bin
+	depends = electron26
 	provides = uyou-todo=2.2.0
 	conflicts = uyou-todo
 	source = uyou-todo-2.2.0.AppImage::https://github.com/tonylu110/uyou-todo-electron/releases/download/2.2.0/uyou.ToDo-2.2.0.AppImage
