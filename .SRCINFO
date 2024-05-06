@@ -1,12 +1,12 @@
-pkgbase = python311-pip
-	pkgdesc = A tool for installing and managing Python packages (for Python 3.11)
+pkgbase = python310-pip
+	pkgdesc = A tool for installing and managing Python packages (for Python 3.10)
 	pkgver = 24.0
 	pkgrel = 2
 	url = https://pip.pypa.io/
 	arch = any
 	license = MIT
-	depends = python311
+	depends = python310
 	source = https://bootstrap.pypa.io/get-pip.py
 	b2sums = SKIP
 
-pkgname = python311-pip
+pkgname = python310-pip
