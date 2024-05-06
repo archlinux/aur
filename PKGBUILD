@@ -28,7 +28,7 @@ sha256sums=(
     "21ad62ebf8659bb49a27d1cb1ff29fb7073f206a0ebd4c44340a9afa2b7da218"
     "90469e9f88d60b0aa2a725c7e4053961d8180b11d726bec63a78e4e7ec137dbe"
 )
-options=(!strip)
+options=(!strip !debug)
 install=".install"
 DLAGENTS=("https::$PWD/dlagent $url %u %o")
 

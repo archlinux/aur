@@ -14,7 +14,7 @@ install: build
 	makepkg -i
 
 check: build
-	namcap *.tar.xz
+	namcap *.pkg.tar.*
 
 clean:
 	rm -rf build pkg src *.tar.* *.part

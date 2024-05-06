@@ -12,6 +12,7 @@ pkgbase = freefilesync-bin
 	provides = freefilesync
 	conflicts = freefilesync
 	options = !strip
+	options = !debug
 	source = dlagent
 	source = freefilesync-bin-13.5.tar.gz::https://freefilesync.org/download/FreeFileSync_13.5_Linux.tar.gz
 	sha256sums = 21ad62ebf8659bb49a27d1cb1ff29fb7073f206a0ebd4c44340a9afa2b7da218
