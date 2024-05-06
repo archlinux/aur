@@ -5,7 +5,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/crunchy-labs/crunchy-cli"
 license=('MIT')
 
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 
 depends=('ffmpeg')
@@ -24,8 +24,8 @@ source_aarch64=(
   "LICENSE::https://raw.githubusercontent.com/crunchy-labs/crunchy-cli/v${pkgver}/LICENSE"
 )
 noextract=("manpages.zip" "completions.zip")
-sha256sums_x86_64=('5572eed11b57cdf09c65f7cde1ed910e9168ebf9f1f146e95057fdf51115e774' '392393faa0616746a8bb3abca3bcf8ca3ad450f2a4e43edaf48b3af8a9dd3157' 'cebe334386bead81561b08ac3b5132e82f1910014aa1eb9c1887b1b91e5c9652' '4a5c6b7d6d7e0948869cfc1f92029dbb7503f80cd23878531f6285214e31ea24')
-sha256sums_aarch64=('827525496ba1e1d5bccd4f75dbb34863ff04f14a12eb96ec9d874ade03ec4368' '392393faa0616746a8bb3abca3bcf8ca3ad450f2a4e43edaf48b3af8a9dd3157' 'cebe334386bead81561b08ac3b5132e82f1910014aa1eb9c1887b1b91e5c9652' '4a5c6b7d6d7e0948869cfc1f92029dbb7503f80cd23878531f6285214e31ea24')
+sha256sums_x86_64=('2ca9cda63c458a9a435280527e7c739f359a90a0cec848ff8996a10014e1225b' '79a94b0be0eae89a35a15fa11fb4362e15c6967209d9b9bfb6ce6bca6b3ec1d1' '8770e7e08062d85c7e047d4d0118fe5fae07b7fe4932b3bf7154f4203108aecb' '4a5c6b7d6d7e0948869cfc1f92029dbb7503f80cd23878531f6285214e31ea24')
+sha256sums_aarch64=('7b79cc75eb3f1a6040beba21570bed779aab0c1d5572b8613acfeb12ca90ff1e' '79a94b0be0eae89a35a15fa11fb4362e15c6967209d9b9bfb6ce6bca6b3ec1d1' '8770e7e08062d85c7e047d4d0118fe5fae07b7fe4932b3bf7154f4203108aecb' '4a5c6b7d6d7e0948869cfc1f92029dbb7503f80cd23878531f6285214e31ea24')
 
 package() {
   cd "$srcdir"
