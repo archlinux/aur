@@ -3,7 +3,7 @@
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
-pkgver=r1242.f5e212f
+pkgver=r1283.4b3cab2
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
@@ -11,11 +11,19 @@ url="https://github.com/vgmtrans/vgmtrans"
 license=("BSD-3-Clause" "Zlib")
 depends=("hicolor-icon-theme" "minizip" "qt6-base" "qt6-svg")
 makedepends=("cmake" "git" "qt6-tools")
-source=("${_pkgname}::git+${url}")
-sha256sums=("SKIP")
+source=("${_pkgname}::git+${url}"
+        "git+https://github.com/gabime/spdlog.git")
+sha256sums=("SKIP"
+            "SKIP")
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
+
+	# Setup spdlog submodule
+	git submodule init
+	git config submodule.lib/spdlog.url "${srcdir}/spdlog"
+	git -c protocol.file.allow=always submodule update lib/spdlog
+
 	mkdir build || true
 }
 
