@@ -1,0 +1,23 @@
+pkgbase = networkmanager-openvpn
+	pkgdesc = NetworkManager VPN plugin for OpenVPN
+	pkgver = 1.10.4
+	pkgrel = 1
+	url = https://networkmanager.dev/docs/vpn/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = libnma
+	makedepends = libnma-gtk4
+	makedepends = python
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = libnm
+	depends = libsecret
+	depends = openvpn
+	optdepends = libnma-gtk4: GUI support (GTK 4)
+	optdepends = libnma: GUI support (GTK 3)
+	source = git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#tag=1.10.4
+	b2sums = 5498e9d65e2bdc2e2b473e80e1379b44aa8041bfef88d345c74e24760c28c32a164fe48f353039b5415aa94b2ecee4a44e72741510de8994a9eb2aff33cbd1c1
+
+pkgname = networkmanager-openvpn

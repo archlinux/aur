@@ -2,13 +2,16 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn
-pkgver=1.10.2
-pkgrel=3
+pkgver=1.10.4
+pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
-url="https://wiki.gnome.org/Projects/NetworkManager"
+url="https://networkmanager.dev/docs/vpn/"
 arch=(x86_64)
-license=(GPL)
+license=(GPL-2.0-or-later)
 depends=(
+  gcc-libs
+  glib2
+  glibc
   libnm
   libsecret
   openvpn
@@ -23,14 +26,11 @@ optdepends=(
   'libnma-gtk4: GUI support (GTK 4)'
   'libnma: GUI support (GTK 3)'
 )
-_commit=ae9575dd07cc2d2d51ec8d0297823e07017cb6e6  # tags/1.10.2^0
-source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd NetworkManager-openvpn
-  git describe --tags | sed 's/-dev/dev/;s/[^-]*-g/r&/;s/-/+/g'
-}
+source=(
+  # Can't locate the public key (ihuguet@redhat.com, 07F9AEC86144386D9576210B66A44781B4EBC2D0)
+  "git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#tag=$pkgver"
+)
+b2sums=('5498e9d65e2bdc2e2b473e80e1379b44aa8041bfef88d345c74e24760c28c32a164fe48f353039b5415aa94b2ecee4a44e72741510de8994a9eb2aff33cbd1c1')
 
 prepare() {
   cd NetworkManager-openvpn
