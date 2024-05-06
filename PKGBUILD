@@ -12,7 +12,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('xorg-server')
 makedepends=('nasm' 'xorg-server-devel' 'xrdp')
-checkdepends=('check')
+checkdepends=('check' 'xorg-xdpyinfo')
 options=('staticlibs')
 source=(
   "$url/archive/refs/tags/v$pkgver.tar.gz"
