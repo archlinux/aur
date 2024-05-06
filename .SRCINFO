@@ -1,0 +1,18 @@
+pkgbase = ruby-sinatra-4
+	pkgdesc = Classy web-development dressed in a DSL
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.sinatrarb.com/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rack
+	depends = ruby-tilt
+	depends = ruby-rack-protection
+	depends = ruby-mustermann
+	noextract = sinatra-4.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/sinatra-4.0.0.gem
+	b2sums = f43eda7572ba6e60902aca5680a171c06525e7acb7f928af90f3246eaf635ccca7a3a8b15cdef4ad0c25c184d586669713f0be0581789438c0b264d7c2a2410d
+
+pkgname = ruby-sinatra-4
