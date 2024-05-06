@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=benchdamic
-_pkgver=1.8.2
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,6 +14,7 @@ depends=(
   r-aldex2
   r-ancombc
   r-biocparallel
+  r-corncob
   r-cowplot
   r-dearseq
   r-deseq2
@@ -54,8 +55,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3e181e9df4a701c33b61a184a26f0a59')
-b2sums=('1588d6de023a6f80582bdffc8de610b0830ac1a0120e4ed3018b585082a55018b3f4b17df7cd02289033ea30f565dc085a6445fb8b6d78daf314f8c03488f309')
+md5sums=('c3428b91ddfe47669965693fb87d6928')
+b2sums=('9ff094e3fda2210d544bca6788a86be2d06882243b7a7421fc17b7250f8fd271ccfc7a764b591324dd82ba5bf554b1090108bf7cf85622f7055418c333e3114d')
 
 build() {
   mkdir build
