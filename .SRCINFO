@@ -1,0 +1,21 @@
+pkgbase = r-kernelknn
+	pkgdesc = Kernel k Nearest Neighbors
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=KernelKnn
+	arch = x86_64
+	license = MIT
+	checkdepends = r-testthat
+	makedepends = r-rcpparmadillo
+	depends = blas
+	depends = lapack
+	depends = r-rcpp
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/KernelKnn_1.1.5.tar.gz
+	md5sums = 1f67b9a401d36132a78e36f09bbe8be2
+	b2sums = 6d7db2dde893e6c3bacea87b6bb34748b5bd01d62064bc41215186bdc02a3f61646a7cebb0845d3d92a8006b47c55addd2a732507111b7fd3d877731a2323ff4
+
+pkgname = r-kernelknn
