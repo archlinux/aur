@@ -4,7 +4,7 @@ _pkgname=BlockstreamGreen
 _upkgname=green
 pkgname=blockstream-green-appimage
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Blockstream Green is a non-custodial Bitcoin wallet, compatible with Blockstream Jade hardware wallet"
 arch=('x86_64')
 url="https://blockstream.com/green/"
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'zlib' 'fuse' 'gtk3')
 makedepends=('p7zip')
 noextract=("$_pkgname-$pkgver.AppImage")
 install="${pkgname}.install"
-options=('!strip')
+options=('!strip' '!debug')
 
 source=("https://github.com/Blockstream/green_qt/releases/download/release_$pkgver/$_pkgname-$arch.AppImage")
 sha256sums=('1c3c1afac575ff44ad25916f3732ad9f6cbca990e5f9c99d5f5f73c855f15514')
