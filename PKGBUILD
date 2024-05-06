@@ -1,19 +1,20 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
-# 28-Mar-2024
+# 6-May-2024
 #
 
 pkgname=c-evo-dh
-pkgver=1.11
-pkgrel=2
+_tag=1.12
+pkgver=$_tag
+pkgrel=1
 pkgdesc="C-evo: Distant Horizon, Empire Building Game"
 arch=('x86_64' 'aarch64')
-url="https://sourceforge.net/projects/c-evo-eh/"
+url="https://git.code.sf.net/p/c-evo-eh/code"
 license=('GPL-2.0-or-later' 'CC-BY-3.0')
-makedepends=('fpc' 'lazarus-gtk2')
-depends=('gtk2' 'gdk-pixbuf2' 'glib2' 'pango' 'libx11' 'at-spi2-core' 'cairo')
+makedepends=('git' 'fpc' 'lazarus-gtk2')
+depends=('gtk2' 'gdk-pixbuf2' 'glib2' 'glibc' 'pango' 'libx11' 'at-spi2-core' 'cairo')
 optdepends=('sox: Needed for sounds if ffmpeg not installed')
-source=("$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz")
-sha256sums=('f63a4794c2c1ce93a78ca186fb5e326e6ee6e48d606066a109d32be72ee7c9ba')
+source=("$pkgname-$pkgver"::git+$url#tag=$_tag)
+sha256sums=('a93de3649e181feebcd3fa5abeda3743441e3788d1fd6e30b1bd6ebbc80a3077')
 
 # Arch does not use games or libexec folders
 prepare() {
@@ -50,7 +51,7 @@ build() {
   rm -f  "$pkgname-gtk2  $pkgname-gtk2.dbg"
 
   # currently cannot build with -pie as the RTL is not built with pie
-  sed -i '/-k-pie/d' Pascal/Release.cfg
+  sed -i 's/-k-pie/-k-z shstk/' Pascal/Release.cfg
 
   # Build AI module
   cp Pascal/Release.cfg      AI/StdAI/fpc.cfg
