@@ -1,7 +1,7 @@
 # Maintainer: Ary Kleinerman <kleinerman at gmail dot com>
 #
 pkgname=yubico-authenticator-bin
-pkgver=6.4.0
+pkgver=7.0.0
 pkgdesc="Yubico Authenticator 6 is a cross-platform application for managing your YubiKey's second factor credentials.\
 Yubico Authenticator 6 is a complete rewrite of the application using the Flutter framework."
 arch=('x86_64')
@@ -21,7 +21,7 @@ validpgpkeys=(
     '20EE325B86A81BCBD3E56798F04367096FBA95E8'
 )
 
-sha256sums=('a28fd33db6f9e3074e565caa7428869cd4b4b663ea009835c6a8cd71f15473a7'
+sha256sums=('ec6bdca21ffabb0565d0d63f3e5525953dbb98b7ac2263bacea3770a18555ee5'
             'SKIP')
 
 prepare() {
