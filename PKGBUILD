@@ -4,12 +4,12 @@
 # Contributor: Gregor Kaelin <kaelingre at gmail dot com>
 pkgname=xeus-cling
 pkgver=0.15.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A C++ jupyter kernel based on xeus and cling"
 arch=(x86_64)
 url="https://github.com/jupyter-xeus/${pkgname}"
 license=(BSD-3-Clause)
-depends=(xtl xproperty xeus nlohmann-json jupyterlab cling pugixml argparse xeus-zmq)
+depends=(xtl xproperty xeus3 nlohmann-json jupyterlab cling pugixml argparse xeus-zmq)
 makedepends=(cmake cppzmq)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
   "0001-Rename-kernels.patch"

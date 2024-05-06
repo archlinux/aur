@@ -1,7 +1,7 @@
 pkgbase = xeus-cling
 	pkgdesc = A C++ jupyter kernel based on xeus and cling
 	pkgver = 0.15.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jupyter-xeus/xeus-cling
 	arch = x86_64
 	license = BSD-3-Clause
@@ -9,7 +9,7 @@ pkgbase = xeus-cling
 	makedepends = cppzmq
 	depends = xtl
 	depends = xproperty
-	depends = xeus
+	depends = xeus3
 	depends = nlohmann-json
 	depends = jupyterlab
 	depends = cling
