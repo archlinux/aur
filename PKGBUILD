@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=katdetectr
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Detection, Characterization and Visualization of Kataegis in Sequencing Data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -29,6 +29,7 @@ depends=(
   r-rdpack
   r-rlang
   r-s4vectors
+  r-scales
   r-tibble
   r-tidyr
   r-variantannotation
@@ -40,12 +41,11 @@ optdepends=(
   r-biocstyle
   r-knitr
   r-rmarkdown
-  r-scales
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7ae9895a26f752a9e8502913ef8ce410')
-b2sums=('98a52aedb883f15e1ee8697f32cb691de17e1c6d2bfc225177b9b402f5a0c88e27d4c96123dea516443bb9ea0c0196d1269e2a8eddd0354076e52e9e19cccd3e')
+md5sums=('124d4211cd903a5c4e0a461a243c261a')
+b2sums=('3737772a3b68cd8f7ccb3c7ec29728b98f5f3048a66b44f7f7b80d372833a8ce02ba29fd81f5cc6f5d48a3405b5f5d6b8918c224a490a39ace9e467319ec2115')
 
 build() {
   mkdir build
