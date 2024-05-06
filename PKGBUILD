@@ -1,28 +1,31 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=dlx
 pkgname=python-dlx
+_commit=bc5529846486509da00ce25b73c8cd736b57c9fa
 pkgver=1.0.4
-pkgrel=6
+pkgrel=7
 pkgdesc="Implementation of Donald Knuth's Dancing Links algorithm"
-arch=('any')
-url="https://pypi.org/project/dlx/"
-license=('Apache')
-depends=('python')
+arch=(any)
+url=https://github.com/sraaphorst/dlx-python
+license=(Apache-2.0)
+depends=(python)
 makedepends=(
-    'python-build'
-    'python-installer'
-    'python-setuptools'
-    'python-wheel'
+    git
+    python-build
+    python-flit-scm
+    python-installer
+    python-setuptools
+    python-wheel
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('819c8bea96187dff42c6377200ec8be337a1201367cb33a9c2b3a9b152f1fcb90eb69bd255e3dc164611ac787904c5c5512325b1d0c4e309b0911f9777fd18b1')
+source=($_pkgname::git+https://github.com/sraaphorst/dlx-python#commit=$_commit)
+b2sums=('a52f94c9a706ab4c41326e649cc6a3790bf6466a4c99286456a44f1e20c60cfdfc8ed72563d8ac4e1c34d8b63eb16566c35d7889468d9796b7ed9d7f4afdd67c')
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd $_pkgname
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd $_pkgname
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
