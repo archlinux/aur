@@ -1,0 +1,5 @@
+[python-hvplot]
+source = "github"
+github = "holoviz/hvplot"
+use_max_tag = "true"
+prefix = "v"
