@@ -16,6 +16,7 @@ pkgbase = sk-chos-addon
 	depends = fpaste
 	depends = cage
 	depends = wlr-randr
+	depends = glow
 	provides = sk-chos-addon
 	conflicts = sk-chos-addon-git
 	replaces = sk-chos-addon-git

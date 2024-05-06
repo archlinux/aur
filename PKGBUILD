@@ -20,6 +20,7 @@ depends=('expect'
     'fpaste'
     'cage'
     'wlr-randr'
+    'glow'
 )
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon-git)
@@ -89,6 +90,10 @@ package() {
     # /usr/share/sk-chos/just/*
     install -dm755 "${pkgdir}/usr/share/sk-chos/just"
     install -m644 -t "${pkgdir}/usr/share/sk-chos/just" "${source_dir}/share/sk-chos/just"/*.*
+
+    # /usr/share/sk-chos/motd/*
+    install -dm755 "${pkgdir}/usr/share/sk-chos/motd"
+    install -m644 -t "${pkgdir}/usr/share/sk-chos/motd" "${source_dir}/share/sk-chos/motd"/*
 
     # /usr/share/sk-chos/*
     install -dm755 "${pkgdir}/usr/share/sk-chos"
