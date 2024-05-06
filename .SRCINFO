@@ -10,6 +10,7 @@ pkgbase = youtube-audio-puller-git
 	depends = ffmpeg
 	depends = tageditor-cli
 	depends = sh
+	depends = wget
 	source = git+https://github.com/noahpy/yap.git#tag=0324c0c9bcc43758d65e6ca18ed5ccaf9555e32b?signed
 	validpgpkeys = BCC20DB39D0DB4ADDAC8AA910C02F52CBFEC0FCD
 	md5sums = SKIP
