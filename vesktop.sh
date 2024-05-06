@@ -21,7 +21,7 @@ for line in "${MAPFILE[@]}"; do
     fi
 done
 cd "${_APPDIR}"
-if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
+if [[ "${EUID}" -ne 0 ]] || [[ "${ELECTRON_RUN_AS_NODE}" ]]; then
     exec electron@electronversion@ "${_RUNNAME}" "${_OPTIONS}" "${_USER_FLAGS}" "$@" || exit $?
 else
     exec electron@electronversion@ "${_RUNNAME}" "${_OPTIONS}" --no-sandbox "${_USER_FLAGS}" "$@" || exit $?
