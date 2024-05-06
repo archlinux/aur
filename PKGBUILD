@@ -9,7 +9,7 @@ arch=(any)
 url='http://www.sinatrarb.com/'
 # Changelog: https://github.com/sinatra/sinatra/blob/master/CHANGELOG.md
 license=(MIT)
-depends=(ruby ruby-rack ruby-tilt ruby-rack-protection ruby-mustermann)
+depends=(ruby ruby-rack ruby-tilt ruby-rack-protection ruby-mustermann ruby-rack-session)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

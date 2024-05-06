@@ -10,6 +10,7 @@ pkgbase = ruby-sinatra-4
 	depends = ruby-tilt
 	depends = ruby-rack-protection
 	depends = ruby-mustermann
+	depends = ruby-rack-session
 	noextract = sinatra-4.0.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/sinatra-4.0.0.gem
