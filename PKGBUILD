@@ -5,7 +5,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-aom
-pkgver=3.8.2
+pkgver=3.9.0
 pkgrel=1
 arch=('any')
 pkgdesc="Alliance for Open Media video codec (Android ${_android_arch})"
@@ -15,8 +15,8 @@ depends=('android-ndk')
 makedepends=('android-cmake'
              'yasm')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://storage.googleapis.com/aom-releases/libaom-$pkgver.tar.gz"{,.asc})
-md5sums=('4a1a94acf8d2798f7eb31134ba5be98a'
+source=("https://storage.googleapis.com/aom-releases/libaom-${pkgver}.tar.gz"{,.asc})
+md5sums=('895519bf46cda7a25da7e80f3a3b66b2'
          'SKIP')
 validpgpkeys=(
   'B002F08B74A148DAA01F7123A48E86DB0B830498' # AOMedia release signing key <av1-discuss@aomedia.org>
@@ -42,6 +42,6 @@ package() {
     source android-env ${_android_arch}
 
     make -C build DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
