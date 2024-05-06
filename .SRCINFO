@@ -1,0 +1,26 @@
+pkgbase = arc-gtk-theme
+	pkgdesc = A flat theme with transparent elements for GTK 2,3,4 and Gnome-Shell
+	pkgver = 20221218
+	pkgrel = 2
+	url = https://github.com/jnsh/arc-theme
+	arch = any
+	license = GPL3
+	makedepends = meson>=0.53.0
+	makedepends = sassc
+	makedepends = glib2
+	makedepends = gdk-pixbuf2
+	optdepends = arc-icon-theme: recommended icon theme
+	optdepends = gtk-engine-murrine: for gtk2 themes
+	optdepends = gnome-themes-standard: for gtk2 themes
+	source = arc-gtk-theme-20221218.tar.xz::https://github.com/jnsh/arc-theme/releases/download/20221218/arc-theme-20221218.tar.xz
+	source = arc-gtk-theme-20221218.tar.xz.sig::https://github.com/jnsh/arc-theme/releases/download/20221218/arc-theme-20221218.tar.xz.asc
+	validpgpkeys = 31743CDF250EF641E57503E5FAEDBC4FB5AA3B17
+	sha512sums = 5a84b717de022c673c6af260381542365550f629f43ae99c7ab8b22b4c09024403a1bc06279b40d3560e86d9810683c2e8337799a4cc67ef7aeb93223b5f56a1
+	sha512sums = SKIP
+
+pkgname = arc-gtk-theme
+	replaces = gtk-theme-arc
+
+pkgname = arc-solid-gtk-theme
+	pkgdesc = A flat theme for GTK 3, GTK 2 and Gnome-Shell (without transparency)
+	replaces = gtk-theme-arc-solid
