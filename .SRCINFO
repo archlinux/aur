@@ -1,6 +1,6 @@
 pkgbase = reor-bin
 	pkgdesc = AI note-taking app that runs models locally.
-	pkgver = 0.2.5
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://reorproject.org/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = reor-bin
 	makedepends = fuse2
 	depends = electron28
 	depends = nodejs
-	provides = reor=0.2.5
+	provides = reor=0.2.7
 	conflicts = reor
-	source = reor-0.2.5.AppImage::https://github.com/reorproject/reor/releases/download/v0.2.5/Reor_0.2.5.AppImage
+	source = reor-0.2.7.AppImage::https://github.com/reorproject/reor/releases/download/v0.2.7/Reor_0.2.7.AppImage
 	source = reor.sh
-	sha256sums = adc2daf7422c45aeaf5d6a627992bb07fcc9c640816d0b62f60625ef37f651d2
-	sha256sums = 61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3
+	sha256sums = f66731df6a58589ce7f1b5e0c61f82333cdb8b0661e56e7d2cefcdcb9a6d7843
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
 
 pkgname = reor-bin
