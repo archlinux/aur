@@ -2,7 +2,7 @@
 
 pkgname=drawio-nativefier
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="draw.io desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://app.diagrams.net/"
@@ -48,4 +48,4 @@ package() {
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
 sha256sums=('a49c867dbed969852f2364c671cd444ef7d5fa74817b4093abb65831c9cb68f3'
-            '8e55b50f6e9f076f4c64a832f1eabab9ad3799d28d5aac577a658aa06389c5a7')
+            'a5690119de0e28770988c404f801f76fc75f61caf94a8e461225623bec5575b7')
