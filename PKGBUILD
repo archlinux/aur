@@ -35,7 +35,7 @@ sha256sums=('SKIP'
             '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    git describe --long --tags --abbrev=7 | sed 's|\([^-]*-g\)|r\1|;s|-|.|g;s|v||g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
