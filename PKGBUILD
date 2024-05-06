@@ -6,7 +6,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-abseil-cpp
-pkgver=20240116.1
+pkgver=20240116.2
 pkgrel=1
 arch=('any')
 pkgdesc="Collection of C++ library code designed to augment the C++ standard library (Android ${_android_arch})"
@@ -15,8 +15,8 @@ license=('Apache-2.0')
 depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/abseil/abseil-cpp/archive/$pkgver/abseil-cpp-$pkgver.tar.gz")
-sha256sums=('3c743204df78366ad2eaf236d6631d83f6bc928d1705dd0000b872e53b73dc6a')
+source=("https://github.com/abseil/abseil-cpp/archive/${pkgver}/abseil-cpp-${pkgver}.tar.gz")
+md5sums=('f2c807858166b0a8ce4f679b17111335')
 
 build() {
     cd "${srcdir}/abseil-cpp-${pkgver}"
@@ -27,7 +27,7 @@ build() {
         -B build \
         -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG" \
         -DCMAKE_CXX_STANDARD=17 \
-        -DBUILD_TESTING=ON
+        -DBUILD_TESTING=OFF
     make -C build $MAKEFLAGS
 }
 
@@ -36,5 +36,5 @@ package() {
     source android-env ${_android_arch}
 
     make -C build DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
