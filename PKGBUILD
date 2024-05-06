@@ -5,26 +5,27 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-xorg-util-macros
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
-pkgdesc="X.Org Autotools macros"
 arch=('any')
+pkgdesc="X.Org Autotools macros (Android ${_android_arch})"
 license=('custom')
 url="https://xorg.freedesktop.org/"
-options=(!strip !buildflags staticlibs !emptydirs)
+depends=('android-ndk')
 makedepends=('android-configure')
+options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/releases/individual/util/util-macros-${pkgver}.tar.xz")
-sha512sums=('76caefb118bf1675d7b2b96e1bbb04eb9a320b02e120839e55a22ef98538ecf00d0e686a67186fc8fdc8492d277ffe3125ae8b7ac61ce4739edc0de3f468d2eb')
+md5sums=('35a4f264a9852be4ae66f07d4100356e')
 
 build() {
-    cd "util-macros-${pkgver}"
+    cd "${srcdir}/util-macros-${pkgver}"
 
     android-${_android_arch}-configure
     make $MAKEFLAGS
 }
 
 package() {
-    cd "util-macros-${pkgver}"
+    cd "${srcdir}/util-macros-${pkgver}"
 
     make DESTDIR="${pkgdir}" install
 }
