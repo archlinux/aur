@@ -1,0 +1,15 @@
+pkgbase = isabelle-linter
+	pkgdesc = A linter component for Isabelle
+	pkgver = 2023
+	pkgrel = 1.0
+	url = https://github.com/isabelle-prover/isabelle-linter/
+	install = isabelle-linter.install
+	arch = i686
+	arch = x86_64
+	groups = science
+	license = MIT
+	depends = isabelle=2023
+	source = https://github.com/isabelle-prover/isabelle-linter/archive/refs/tags/Isabelle2023-v1.0.0.tar.gz
+	sha256sums = 84bef37fdc4ac9c471b0b9abb4c4cbafdb6b709eb7a541793f97bfbefba53c35
+
+pkgname = isabelle-linter

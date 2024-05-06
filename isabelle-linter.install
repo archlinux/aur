@@ -1,0 +1,47 @@
+#!/bin/bash
+
+get_users() {
+    usrs=()
+    if [[ -z "${SUDO_USER}" ]];
+    then
+        IFS=' ' usrs=($(users))
+    else
+        usrs+=("$SUDO_USER")
+    fi
+    echo usrs
+}
+
+post_install() {
+    users=()
+    if [[ -z "${SUDO_USER}" ]];
+    then # If pamac is called without sudo, we do not know the calling user, so we might as well try to install it for every user
+        IFS=' ' read -r -a users <<< "$(users | sort -u | tr ' ' '\n' | sort -u | tr '\n' ' ')"
+    else # pacman, on the other had requires sudo. pamac can be called with sudo but it is not recommended. I have no idea about other AUR helpers.
+        users+=("$SUDO_USER") 
+    fi
+    for user in "${users[@]}"
+    do  
+        echo "Installing Isabelle linter for user: $user"
+	    su "$user" -c "isabelle components -u /opt/isabelle-linter/"
+    done
+}
+
+post_upgrade() {
+    pre_remove
+    post_install
+}
+
+pre_remove() {
+    users=()
+    if [[ -z "${SUDO_USER}" ]];
+    then
+        IFS=' ' read -r -a users <<< "$(users | sort -u | tr ' ' '\n' | sort -u | tr '\n' ' ')"
+    else
+        users+=("$SUDO_USER")
+    fi
+    for user in "${users[@]}"
+    do  
+        echo "Removing Isabelle linter for user: $user"
+	    su "$user" -c "isabelle components -x /opt/isabelle-linter/"
+    done
+}
