@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=nonnest2
-_pkgver=0.5-6
+_pkgver=0.5-7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Tests of Non-Nested Models"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -38,8 +38,8 @@ optdepends=(
   r-tidysem
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('404b9edab7bb21841bd359fdfc2c5c82')
-b2sums=('af58375640612ccb0fb847ed813f23697279310b2fcf31b7a94af6266fb9be8bb2804f56a3c7c505c892a4e54818d1316acd5546ec54849b68752406ba2c1da4')
+md5sums=('6840120e8536dc44ffdcfe779c71c7da')
+b2sums=('db3bc2b1888a111598394d641b1568a91523fd4553e6b73e9846b6fab7dbb53fa7c14b84672af90ef1092315cef04ae3f420686a23577b57c1ef6b928c53a47d')
 
 build() {
   mkdir build
