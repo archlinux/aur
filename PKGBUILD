@@ -1,8 +1,8 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=openai-chatgpt-nativefier
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="OpnenAI ChatGPT desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://chat.openai.com/"
@@ -26,7 +26,7 @@ build() {
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
     --single-instance \
-    --electron-version 30.0.1 \
+    --electron-version 30.0.2 \
     --honest \
     "${url}"
 
@@ -39,7 +39,7 @@ package() {
   _folder=$(ls "${srcdir}" | grep "[Cc]hatGPT-linux-")
   _binary=$(ls "${srcdir}/${_folder}" | grep "[Cc]hatGPT")
 
-  sed -i -e "/loglevel/d" "${srcdir}/${_folder}/resources/app/lib/preload.js"
+  #sed -i -e "/loglevel/d" "${srcdir}/${_folder}/resources/app/lib/preload.js"
   cp -rL "${srcdir}/${_folder}" "${pkgdir}/opt/${pkgname}"
   ln -s "/opt/${pkgname}/${_binary}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -52,4 +52,4 @@ package() {
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
 sha256sums=('9c55eca10f08761429d2b7b977c7aafc3c09789a9d1ec945d814d7de9d2b0203'
-            '12b4e19e51a05c4c9c1fc2a17ac44c5fac87ef2f3f5bcde351891da63614e2c3')
+            '6c806d5eef061f8f65c875295b2281cadb9aebe4e5f8c3aa7825fb534512e531')

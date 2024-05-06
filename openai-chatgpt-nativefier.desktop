@@ -2,7 +2,7 @@
 Name=ChatGPT
 Comment=OpenAI ChatGPT desktop app (electron)
 Exec=openai-chatgpt-nativefier
-Icon=chatgpt
+Icon=openai-chatgpt-nativefier
 Encoding=UTF-8
 StartupWMClass=chatgpt-nativefier-9028de
 Terminal=false
