@@ -3,7 +3,7 @@
 pkgname=python-pytest-flask
 _name=pytest-flask
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of pytest fixtures to test Flask applications."
 arch=(any)
 url='https://github.com/pytest-dev/pytest-flask'
