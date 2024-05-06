@@ -1,15 +1,15 @@
 pkgname=mingw-w64-mumps
-pkgver=5.6.2
+pkgver=5.7.1
 pkgrel=1
 pkgdesc='Sparse solver library using Gaussian elimination (mingw-w64)'
-url='http://mumps.enseeiht.fr'
-license=('custom')
+url='https://mumps-solver.org'
+license=('CECILL-C')
 depends=('mingw-w64-lapack')
 makedepends=('mingw-w64-gcc')
 arch=('any')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://graal.ens-lyon.fr/MUMPS/MUMPS_${pkgver}.tar.gz")
-sha256sums=('13a2c1aff2bd1aa92fe84b7b35d88f43434019963ca09ef7e8c90821a8f1d59a')
+source=("https://mumps-solver.org/MUMPS_${pkgver}.tar.gz")
+sha256sums=('43b3e7bcbf1d7c71e32b00b82c583931c2f6629a396799a0878518fa08dd4a64')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -34,8 +34,9 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}"/build-${_arch}
-    install -d "${pkgdir}"/usr/${_arch}/{include/MUMPS,lib}
-    install -m644 include/*.h "${pkgdir}"/usr/${_arch}/include/MUMPS
+    install -d "${pkgdir}"/usr/${_arch}/{include/mumps_seq,lib}
+    install -m644 include/*.h "${pkgdir}"/usr/${_arch}/include
     install -m644 lib/*.a "${pkgdir}"/usr/${_arch}/lib
+    install -m644 libseq/*.h  "${pkgdir}"/usr/${_arch}/include/mumps_seq
   done
 }

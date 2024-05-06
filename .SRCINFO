@@ -1,16 +1,16 @@
 pkgbase = mingw-w64-mumps
 	pkgdesc = Sparse solver library using Gaussian elimination (mingw-w64)
-	pkgver = 5.6.2
+	pkgver = 5.7.1
 	pkgrel = 1
-	url = http://mumps.enseeiht.fr
+	url = https://mumps-solver.org
 	arch = any
-	license = custom
+	license = CECILL-C
 	makedepends = mingw-w64-gcc
 	depends = mingw-w64-lapack
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = http://graal.ens-lyon.fr/MUMPS/MUMPS_5.6.2.tar.gz
-	sha256sums = 13a2c1aff2bd1aa92fe84b7b35d88f43434019963ca09ef7e8c90821a8f1d59a
+	source = https://mumps-solver.org/MUMPS_5.7.1.tar.gz
+	sha256sums = 43b3e7bcbf1d7c71e32b00b82c583931c2f6629a396799a0878518fa08dd4a64
 
 pkgname = mingw-w64-mumps
