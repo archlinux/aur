@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bookord-git
 _pkgname=Bookord
-pkgver=0.2.4.r1.g05dedf7
+pkgver=0.2.5.r8.ge8ebe4c
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '24c1c5b90cba47cd3d7a3ff11a934fcdbb499f8c56423d22009ef33a775e2d21')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -50,8 +50,8 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
-    HOME="${srcdir}/.elect--cache-folder "${srcdir}/.yarn_cache"ron-gyp"
+    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+    HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
