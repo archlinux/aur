@@ -2,7 +2,7 @@
 
 pkgname=automua
 pkgver=2023.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Email client configuration made easy"
 arch=('any')
 license=('GPL3')
