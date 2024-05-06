@@ -1,0 +1,5 @@
+[python-pyop2]
+source = "github"
+github = "OP2/PyOP2"
+use_latest_release = "true"
+prefix = "Firedrake_"

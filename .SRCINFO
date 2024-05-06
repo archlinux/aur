@@ -1,0 +1,20 @@
+pkgbase = python-pyop2
+	pkgdesc = Framework for performance-portable parallel computations on unstructured meshes
+	pkgver = 20240502.0
+	pkgrel = 1
+	url = https://github.com/OP2/PyOP2
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = cython
+	depends = petsc
+	depends = python-decorator
+	depends = python-mpi4py
+	depends = python-pytools
+	source = https://github.com/OP2/PyOP2/archive/Firedrake_20240502.0.tar.gz
+	sha512sums = 8ee32c9ff514562d39a318191511c675f41609c4f0a59879f168b9713fc711a3d7cc0a4a5fb2aa08053e6df054bcde3cb7f2cf39b542cc3fa427c856da90ec15
+
+pkgname = python-pyop2
