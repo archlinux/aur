@@ -5,7 +5,7 @@
 
 pkgname=sqlcl
 pkgver='24.1.0.087.0929'
-pkgrel=1
+pkgrel=2
 pkgdesc='SQL Developer command line interface for Oracle'
 arch=('any')
 url='https://www.oracle.com/database/sqldeveloper/technologies/sqlcl'
@@ -18,13 +18,13 @@ sha256sums=('0c7a775abc2ba35a1a044c353bb73244624a6e10f6cfce8c798d97ab6bf3a354'
             '34c5f2be48639dcd8ec9f38f950916a394ae399a0e583fbde4020acdccf951e0')
 
 package() {
-    install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
-    install -Dm644 "$pkgname/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm644 "$pkgname/THIRD-PARTY-LICENSES.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$pkgname/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$pkgname/THIRD-PARTY-LICENSES.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-    rm "$pkgname"/{LICENSE.txt,THIRD-PARTY-LICENSES.txt,NOTICES.txt} "$pkgname"/bin/sql.exe
+  rm "$pkgname"/{LICENSE.txt,THIRD-PARTY-LICENSES.txt,NOTICES.txt} "$pkgname"/bin/sql.exe
 
-    install -d "$pkgdir/opt/$pkgname/"
-    cp -a "$pkgname"/* "$pkgdir/opt/$pkgname/"
+  install -d "$pkgdir/opt/$pkgname/"
+  cp -a "$pkgname"/* "$pkgdir/opt/$pkgname/"
 }

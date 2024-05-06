@@ -1,7 +1,7 @@
 pkgbase = sqlcl
 	pkgdesc = SQL Developer command line interface for Oracle
 	pkgver = 24.1.0.087.0929
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.oracle.com/database/sqldeveloper/technologies/sqlcl
 	changelog = CHANGELOG.md
 	arch = any
