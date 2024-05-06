@@ -1,7 +1,7 @@
 pkgbase = python-nasdaq-data-link
 	pkgdesc = A Python library for Nasdaq Data Link's RESTful API
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nasdaq/data-link-python
 	arch = any
 	license = MIT
