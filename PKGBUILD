@@ -3,7 +3,7 @@
 
 pkgname=tokei-git
 epoch=1
-pkgver=13.0.0_alpha.1.r1010.ba11288
+pkgver=13.0.0_alpha.1.r1011.69d9f57
 pkgrel=1
 pkgdesc='A blazingly fast CLOC(Count Lines Of Code) program'
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,11 +17,9 @@ provides=("${pkgname%-git}")
 _git_folder="${pkgname%-git}"
 source=("${_git_folder}::git+$url.git"
 "slang.patch::https://github.com/XAMPPRocky/tokei/commit/0c8a61393e105e2cd80eab61a166fcc89cb4853a.patch"
-"headache.patch::https://patch-diff.githubusercontent.com/raw/XAMPPRocky/tokei/pull/971.patch"
 )
 sha256sums=('SKIP'
-            '9e3e103d7c46f7a83ec351da5edb6fff8c7931f0b3fdc8836fc7b41c3d88e633'
-            '9140341fa58c1a4208ed2aacbe0bee43784391ca3ea099f2f3ddcd925bea1a3d')
+            '9e3e103d7c46f7a83ec351da5edb6fff8c7931f0b3fdc8836fc7b41c3d88e633')
 
 pkgver() {
   cd "${_git_folder}"
@@ -33,7 +31,6 @@ pkgver() {
 prepare() {
   cd "${_git_folder}"
   patch -N -p 1 -i ../slang.patch
-  patch -R -p 1 -i ../headache.patch
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
