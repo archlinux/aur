@@ -1,27 +1,37 @@
-#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0 && updpkgsums && makepkg --printsrcinfo > .SRCINFO'
+#!/usr/bin/env -S sh -c 'nvchecker -c .nvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
 # shellcheck shell=bash disable=SC2034,SC2154
-# Update this package by:
-#
-# ```sh
-# sudo pacman -S nvchecker jq pacman-contrib
-# ./PKGBUILD
-# ```
+# ex: nowrap
+# Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _pkgname=latexify_py
 pkgname=python-${_pkgname//_/-}
-pkgver=0.4.3.post1
-pkgrel=1
-pkgdesc="A library to generate LaTeX expression from Python code."
+pkgdesc="Generates LaTeX math description from Python functions"
+_pkgver=0.4.3-post1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 arch=(any)
-url=https://github.com/google/latexify_py
-depends=(python-dill)
-makedepends=(python-installer)
+url=https://github.com/google/${_pkgname}
 license=(Apache-2.0)
-_py=py3
-source=("https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('36b493358a90d80b6abb89eb7560eeff89ca5ea29db2187f7327851cfc96192a')
+depends=(python-dill)
+makedepends=(python-build python-installer python-hatchling python-wheel)
+checkdepends=(python-pytest)
+source=(${_pkgname}-${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz)
+sha512sums=('0c534368827b9776132a6ff7e2bedd6ca70a097ff6abbb22b87399ae17b3b2f04c171e9fae8ecc00103e0f90e367b57c4e832ecbeffad44a9e82a09495ffbaaa')
+
+build() {
+	cd ${_pkgname}-${_pkgver}
+	python -m build --wheel --skip-dependency-check --no-isolation
+}
+
+check() {
+	cd ${_pkgname}-${_pkgver}
+	python -m venv --system-site-packages test-env
+	test-env/bin/python -m installer dist/*.whl
+	test-env/bin/python -m pytest src
+}
 
 package() {
-	cd "$srcdir" || return 1
-	python -m installer --destdir="$pkgdir" ./*.whl
+	cd ${_pkgname}-${_pkgver}
+	python -m installer --destdir="${pkgdir}" dist/*.whl
+	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-# ex: nowrap

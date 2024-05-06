@@ -1,0 +1,5 @@
+[python-latexify-py]
+source = "github"
+github = "google/latexify_py"
+use_latest_release = "true"
+prefix = "v"
