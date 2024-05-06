@@ -1,20 +1,16 @@
 pkgbase = python-geomet
 	pkgdesc = GeoMet - Convert GeoJSON to WKT/WKB, and vice versa.
-	pkgver = 0.3.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/geomet/geomet
 	arch = any
-	license = Apache
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-click
-	depends = python-six
-	optdepends = python-nose: tests
-	optdepends = python-coverage: tests
-	optdepends = flake8: tests
-	source = https://files.pythonhosted.org/packages/source/g/geomet/geomet-0.3.0.tar.gz
-	source = https://raw.githubusercontent.com/geomet/geomet/master/LICENSE
-	sha256sums = cb52411978ee01ff104ab48f108d7333b14423ae7a15a65fee25b7d29bda2e1b
-	sha256sums = cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14
+	source = https://files.pythonhosted.org/packages/source/g/geomet/geomet-1.1.0.tar.gz
+	sha256sums = 51e92231a0ef6aaa63ac20c443377ba78a303fd2ecd179dc3567de79f3c11605
 
 pkgname = python-geomet
-
