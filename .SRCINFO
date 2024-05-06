@@ -1,6 +1,6 @@
 pkgbase = vgmtrans-git
 	pkgdesc = Converter for sequenced videogame music
-	pkgver = r1242.f5e212f
+	pkgver = r1283.4b3cab2
 	pkgrel = 1
 	url = https://github.com/vgmtrans/vgmtrans
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = vgmtrans-git
 	depends = qt6-base
 	depends = qt6-svg
 	source = vgmtrans::git+https://github.com/vgmtrans/vgmtrans
+	source = git+https://github.com/gabime/spdlog.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = vgmtrans-git
