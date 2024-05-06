@@ -3,7 +3,7 @@ pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
 _reponame=sk-chos-config
-pkgver=r506.de9f20e
+pkgver=r507.ea9dcba
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -20,6 +20,7 @@ depends=('expect'
     'fpaste'
     'cage'
     'wlr-randr'
+    'glow'
 )
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon)
@@ -93,6 +94,10 @@ package() {
     # /usr/share/sk-chos/just/*
     install -dm755 "${pkgdir}/usr/share/sk-chos/just"
     install -m644 -t "${pkgdir}/usr/share/sk-chos/just" "${source_dir}/share/sk-chos/just"/*.*
+
+    # /usr/share/sk-chos/motd/*
+    install -dm755 "${pkgdir}/usr/share/sk-chos/motd"
+    install -m644 -t "${pkgdir}/usr/share/sk-chos/motd" "${source_dir}/share/sk-chos/motd"/*
 
     # /usr/share/sk-chos/*
     install -dm755 "${pkgdir}/usr/share/sk-chos"

@@ -1,6 +1,6 @@
 pkgbase = sk-chos-addon-git
 	pkgdesc = Addon for sk-chimeros
-	pkgver = r506.de9f20e
+	pkgver = r507.ea9dcba
 	pkgrel = 1
 	url = https://github.com/honjow/sk-chos-config.git
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = sk-chos-addon-git
 	depends = fpaste
 	depends = cage
 	depends = wlr-randr
+	depends = glow
 	provides = sk-chos-addon
 	conflicts = sk-chos-addon
 	replaces = sk-chos-addon
