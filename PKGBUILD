@@ -7,7 +7,7 @@ _gembuilder=("install"
 _ruby="/usr/bin/ruby"
 _gem="/usr/bin/gem"
 pkgname="ruby-twitter-text"
-pkgver="2.1.0"
+pkgver="3.1.0"
 pkgrel=1
 pkgdesc="Twitter text handling library"
 arch=("any")
@@ -27,7 +27,7 @@ optdepends=("ruby-multi-json: A common interface to multiple JSON libraries. (De
             "ruby-rspec: rspec-2.14.1 (Development dependency)"
             "ruby-simplecov: Code coverage for Ruby 1.9+ with a powerful configuration library and automatic ... (Development dependency)")
 source=("https://rubygems.org/gems/$_gemname-$pkgver.gem")
-sha256sums=("fec0db6f459002c1cbc6168dff53534e273029c60ae690451083b230d700e99d")
+sha256sums=('7fa4b3abf380ba26f3b4d310f41c6fecab0c0f137e7d51d6b201d02117b8d5b6')
 noextract=("$_gemname-$pkgver.gem")
 options=("!emptydirs")
 
