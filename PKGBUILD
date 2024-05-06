@@ -3,7 +3,7 @@ pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
 _reponame=sk-chos-config
-pkgver=r507.ea9dcba
+pkgver=r514.8d1064d
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -28,6 +28,8 @@ replaces=(sk-chos-addon)
 source=("git+$url")
 sha256sums=('SKIP')
 options=(!strip)
+backup=('etc/sk-chos-tool/github_cdn.conf')
+install=sk-chos-addon.install
 
 pkgver() {
     cd "$srcdir/$_reponame"
