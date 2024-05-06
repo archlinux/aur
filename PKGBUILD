@@ -5,7 +5,7 @@
 _name=rapidfuzz_capi
 pkgname=python-${_name/_/-}
 pkgver=1.0.5
-pkgrel=5
+pkgrel=6
 pkgdesc='C-API of RapidFuzz, which can be used to extend RapidFuzz from separate packages'
 arch=(any)
 url='https://github.com/maxbachmann/rapidfuzz_capi'
