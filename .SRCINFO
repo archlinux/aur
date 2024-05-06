@@ -1,32 +1,32 @@
 pkgbase = gollum
-	pkgdesc = A simple, Git-powered wiki.
-	pkgver = 5.2.3
+	pkgdesc = A simple, Git-powered wiki with a local frontend and support for many kinds of markup and content.
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = http://github.com/gollum/gollum
-	arch = any
+	arch = x86_64
 	license = MIT
-	makedepends = ruby-rdoc
-	depends = ruby
-	depends = ruby-gemojione
+	checkdepends = ruby-rack-test
+	checkdepends = ruby-shoulda
+	checkdepends = ruby-minitest-reporters
+	checkdepends = ruby-mocha
+	checkdepends = ruby-test-unit
+	makedepends = git
+	makedepends = rubygems
+	depends = ruby-rdoc
 	depends = ruby-gollum-lib
 	depends = ruby-kramdown
-	depends = ruby-kramdown-parser-gfm>=1.1
-	depends = ruby-kramdown-parser-gfm<1.2
-	depends = ruby-mustache-sinatra
-	depends = ruby-octicons>=12
-	depends = ruby-rss
-	depends = ruby-sass
+	depends = ruby-kramdown-parser-gfm
 	depends = ruby-sinatra
 	depends = ruby-sinatra-contrib
-	depends = ruby-sprockets<4
+	depends = ruby-mustache-sinatra
+	depends = ruby-octicons
+	depends = ruby-sprockets
 	depends = ruby-sprockets-helpers
-	depends = ruby-uglifier>=4.2
-	depends = ruby-useragent
-	depends = ruby-webrick>=1.7.0
-	noextract = gollum-5.2.3.gem
-	options = !emptydirs
-	source = https://rubygems.org/downloads/gollum-5.2.3.gem
-	sha1sums = 921b3055fad9d5041b9b481e5cca26f7e5b9f188
+	depends = ruby-rss
+	depends = ruby-webrick
+	depends = ruby-i18n
+	provides = ruby-gollum
+	source = git+https://github.com/gollum/gollum.git#commit=2666669e7cf7fd24374164ef881ce5c600c176c1
+	sha1sums = SKIP
 
 pkgname = gollum
-
