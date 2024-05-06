@@ -3,12 +3,12 @@
 pkgname=setpl-git
 _pkgname=setPL
 pkgver=r15.516baf2
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux script for setting the PL1/PL2 power limits on modern Intel processors"
 arch=('x86_64')
 url="https://github.com/horshack-dpreview/setPL"
 license=('GPL3')
-depends=('msr-tools')
+depends=(msr-tools turbostat)
 provides=(${pkgname%-git} devmem2)
 source=('git+https://github.com/horshack-dpreview/setPL'
 	'https://git.launchpad.net/ubuntu/+source/devmem2/plain/devmem2.c')

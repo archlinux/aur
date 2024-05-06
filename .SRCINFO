@@ -1,11 +1,12 @@
 pkgbase = setpl-git
 	pkgdesc = Linux script for setting the PL1/PL2 power limits on modern Intel processors
 	pkgver = r15.516baf2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/horshack-dpreview/setPL
 	arch = x86_64
 	license = GPL3
 	depends = msr-tools
+	depends = turbostat
 	provides = setpl
 	provides = devmem2
 	source = git+https://github.com/horshack-dpreview/setPL
