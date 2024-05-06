@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Revvy <nothingtohide@revvy.de>
 # Contributor: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: @RubenKelevra <cyrond@gmail.com>
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
@@ -11,15 +11,15 @@
 _pkgname=kubo
 _old_pkgname=go-ipfs
 pkgname="${_pkgname}-git"
-pkgver=0.26.0.r46.g1514785
+pkgver=0.28.0.r11.g2841ec0
 pkgrel=1
-pkgdesc="IPFS implementation in Go"
+pkgdesc="An IPFS implementation in Go"
 url="https://github.com/ipfs/kubo"
 arch=('x86_64')
 license=('MIT AND Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-provides=("${_pkgname}" 'ipfs' 'go-ipfs')
+provides=("${_pkgname}" 'ipfs' "${_old_pkgname}")
 conflicts=("${_pkgname}" "${_old_pkgname}" "${_old_pkgname}-git")
 replaces=("${_old_pkgname}-git")
 source=("git+${url}.git")
