@@ -2,16 +2,16 @@
 
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=14.1.0.snapshot20240503
-_pkgver=14.1.0-RC-20240503
-_majorver=${_pkgver//.*}
+pkgver=14.1.0.snapshot20240504
+_pkgver=14-20240504
+_majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
-_realver=${_pkgver//-*}
+_realver=${pkgver//.s*}
 _gmpver=6.3.0
 _mpcver=1.3.1
 _mpfrver=4.2.1
 pkgrel=1
-pkgdesc='The GNU Compiler Collection (snapshot RC candidate)'
+pkgdesc='The GNU Compiler Collection (snapshot)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
 url='https://gcc.gnu.org'
@@ -26,15 +26,14 @@ source=(https://ftp.gwdg.de/pub/misc/gcc/snapshots/${_pkgver}/gcc-${_pkgver}.tar
         https://www.mpfr.org/mpfr-${_mpfrver}/mpfr-${_mpfrver}.tar.xz{,.asc}
         c89
         c99
-        gcc-ada-repro.patch
-        fix-version-strings.patch)
+        gcc-ada-repro.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('02484a6782fb9d64040a139d7dbc525ba1c9a43b86fc7c4baa743d280fee204b'
+sha256sums=('34ac232bbf31e0cd5752fd344c2cf55719aaaad2ca0096593e01c97a3d5e274e'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -43,8 +42,7 @@ sha256sums=('02484a6782fb9d64040a139d7dbc525ba1c9a43b86fc7c4baa743d280fee204b'
             'SKIP'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
-            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
-            '8603a562cc2d65bf33582dfe80698c42e6edb365616f0004d9ac4089d8989c9c')
+            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f')
 
 prepare() {
   if [ ! -d gcc ]; then
@@ -56,12 +54,12 @@ prepare() {
   mv ../gmp-${_gmpver} gmp
   mv ../mpc-${_mpcver} mpc
   mv ../mpfr-${_mpfrver} mpfr
+  echo "${_realver}" >gcc/BASE-VER
 
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
   patch -Np0 -i ${srcdir}/gcc-ada-repro.patch
-  patch -Np1 -i ${srcdir}/fix-version-strings.patch
 
   mkdir -p ${srcdir}/gcc-build ${srcdir}/libgccjit-build
 }
@@ -140,7 +138,7 @@ check() {
 }
 
 package_gcc-libs-snapshot() {
-  pkgdesc='Runtime libraries shipped by GCC (snapshot RC candidate)'
+  pkgdesc='Runtime libraries shipped by GCC (snapshot)'
   depends=("glibc>=2.36")
   options=(!emptydirs !strip)
   provides=(${pkgname}-multilib gcc-libs-multilib "gcc-libs=${pkgver}-${pkgrel}" libgo.so
@@ -177,7 +175,7 @@ package_gcc-libs-snapshot() {
 }
 
 package_gcc-snapshot() {
-  pkgdesc='The GNU Compiler Collection - C and C++ frontends (snapshot RC candidate)'
+  pkgdesc='The GNU Compiler Collection - C and C++ frontends (snapshot)'
   depends=("gcc-libs-snapshot=${pkgver}-${pkgrel}" "binutils>=2.40" zstd)
   optdepends=("lib32-gcc-libs-snapshot: for generating code for 32-bit ABI")
   provides=(${pkgname}-multilib gcc-multilib gcc)
@@ -261,7 +259,7 @@ package_gcc-snapshot() {
 }
 
 package_gcc-fortran-snapshot() {
-  pkgdesc='Fortran front-end for GCC (snapshot RC candidate)'
+  pkgdesc='Fortran front-end for GCC (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
   provides=(${pkgname}-multilib gcc-fortran-multilib gcc-fortran)
   replaces=(${pkgname}-multilib gcc-fortran-multilib gcc-fortran)
@@ -284,7 +282,7 @@ package_gcc-fortran-snapshot() {
 }
 
 package_gcc-objc-snapshot() {
-  pkgdesc='Objective-C front-end for GCC (snapshot RC candidate)'
+  pkgdesc='Objective-C front-end for GCC (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
   provides=(${pkgname}-multilib gcc-objc-multilib gcc-objc)
   replaces=(${pkgname}-multilib gcc-objc-multilib gcc-objc)
@@ -302,7 +300,7 @@ package_gcc-objc-snapshot() {
 }
 
 package_gcc-ada-snapshot() {
-  pkgdesc='Ada front-end for GCC (snapshot RC candidate)'
+  pkgdesc='Ada front-end for GCC (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
   provides=(${pkgname}-multilib gcc-ada-multilib gcc-ada)
   replaces=(${pkgname}-multilib gcc-ada-multilib gcc-ada)
@@ -340,7 +338,7 @@ package_gcc-ada-snapshot() {
 }
 
 package_gcc-go-snapshot() {
-  pkgdesc='Go front-end for GCC (snapshot RC candidate)'
+  pkgdesc='Go front-end for GCC (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
   provides=("go=1.18" ${pkgname}-multilib gcc-go-multilib gcc-go)
   replaces=(${pkgname}-multilib gcc-go-multilib gcc-go)
@@ -362,7 +360,7 @@ package_gcc-go-snapshot() {
 }
 
 package_lib32-gcc-libs-snapshot() {
-  pkgdesc='32-bit runtime libraries shipped by GCC (snapshot RC candidate)'
+  pkgdesc='32-bit runtime libraries shipped by GCC (snapshot)'
   depends=("lib32-glibc>=2.36")
   provides=(lib32-gcc-libs libgo.so libgfortran.so libubsan.so libasan.so)
   replaces=(lib32-gcc-libs)
@@ -386,7 +384,7 @@ package_lib32-gcc-libs-snapshot() {
 }
 
 package_gcc-d-snapshot() {
-  pkgdesc='D frontend for GCC (snapshot RC candidate)'
+  pkgdesc='D frontend for GCC (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
   provides=(gcc-d gdc)
   replaces=(gcc-d gdc)
@@ -409,7 +407,7 @@ package_gcc-d-snapshot() {
 }
 
 package_gcc-m2-snapshot() {
-  pkgdesc='Modula-2 frontend for GCC (snapshot RC candidate)'
+  pkgdesc='Modula-2 frontend for GCC (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
   provides=(${pkgname}-multilib gcc-m2-multilib gcc-m2)
   replaces=(${pkgname}-multilib gcc-m2-multilib gcc-m2)
@@ -430,7 +428,7 @@ package_gcc-m2-snapshot() {
 }
 
 package_gcc-rust-snapshot() {
-  pkgdesc='Rust frontend for GCC (snapshot RC candidate)'
+  pkgdesc='Rust frontend for GCC (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
   provides=(${pkgname}-multilib gcc-rust-multilib gcc-rust)
   replaces=(${pkgname}-multilib gcc-rust-multilib gcc-rust)
@@ -447,7 +445,7 @@ package_gcc-rust-snapshot() {
 }
 
 package_lto-dump-snapshot() {
-  pkgdesc='Dump link time optimization object files (snapshot RC candidate)'
+  pkgdesc='Dump link time optimization object files (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
   provides=(lto-dump)
   replaces=(lto-dump)
@@ -463,7 +461,7 @@ package_lto-dump-snapshot() {
 }
 
 package_libgccjit-snapshot() {
-  pkgdesc='Just-In-Time Compilation with GCC backend (snapshot RC candidate)'
+  pkgdesc='Just-In-Time Compilation with GCC backend (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
   provides=(libgccjit)
   replaces=(libgccjit)
