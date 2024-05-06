@@ -4,10 +4,10 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.7.4
-_electronversion=29
+pkgver=0.7.5
+_electronversion=30
 _nodeversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
 arch=('any')
 url="https://www.waveterm.dev/"
@@ -23,19 +23,19 @@ makedepends=(
     'gendesk'
     'npm'
     'nodejs'
-    'git'
     'go>=1.18'
     'scripthaus'
     'base-devel'
     'zip'
+    'curl'
     'nvm'
 )
 source=(
-    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('711011d02c91051687c7ca257ee822aaebfb97ebbe0a55f302a36f4c95c2a157'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('8e776201f0b129bfabc33ab5b1891c1f291663ff92dd8a7e291481cf28b69861'
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -47,10 +47,10 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --categories="Utility" --name="${_appname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export CGO_ENABLED=1
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
@@ -59,7 +59,7 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
@@ -73,15 +73,14 @@ build() {
     fi
     sed "s|-l -p never|--dir|g" -i scripthaus.md
     yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn add -D electron-rebuild
     scripthaus run electron-rebuild
     scripthaus run build-backend
     scripthaus run build-package-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/make/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/make/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/make/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/make/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}.git/src/app/assets/${pkgname}-logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/app/assets/${pkgname}-logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
