@@ -2,7 +2,7 @@
 Name=Gemini
 Comment=Google Gemini desktop app (electron)
 Exec=google-gemini-nativefier
-Icon=gemini-nativefier
+Icon=google-gemini-nativefier
 Encoding=UTF-8
 StartupWMClass=gemini-nativefier-a3b338
 Terminal=false
