@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=extraChIPs
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,7 +17,6 @@ depends=(
   r-csaw
   r-dplyr
   r-edger
-  r-enrichedheatmap
   r-forcats
   r-genomeinfodb
   r-genomicinteractions
@@ -27,10 +26,8 @@ depends=(
   r-ggrepel
   r-ggside
   r-glue
-  r-gviz
   r-interactionset
   r-iranges
-  r-limma
   r-matrixstats
   r-patchwork
   r-rcolorbrewer
@@ -48,6 +45,8 @@ depends=(
   r-venndiagram
 )
 checkdepends=(
+  r-deseq2
+  r-enrichedheatmap
   r-harmonicmeanp
   r-testthat
 )
@@ -55,9 +54,13 @@ optdepends=(
   r-biocstyle
   r-covr
   r-cqn
+  r-deseq2
+  r-enrichedheatmap
+  r-gviz
   r-harmonicmeanp
   r-here
   r-knitr
+  r-limma
   r-magrittr
   r-plyranges
   r-quantro
@@ -66,8 +69,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1dd6dd8771e0dfa2ba6d612e53456eda')
-b2sums=('3acaec2c02ecb50d10d394dc7e129ea8830a5a66b5ab5d8244830e13c4b31ce43ecce13c97210a45c692d83decb10027a08024dc9cfd5c68cac47492313f2310')
+md5sums=('7b79cda4d4f6dcd728228d8e93518cd4')
+b2sums=('caf0603eeaa12fae94459601e5ed4849a6fbb25c20a572930cc0c514e004d1a00fd72e8971e6baace8a05c658d9258635d3cfddfa9420458ae5fcbe98357f24c')
 
 build() {
   mkdir build
