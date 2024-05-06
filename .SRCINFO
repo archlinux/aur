@@ -1,5 +1,5 @@
 pkgbase = jammer-appimage
-	pkgdesc = Play songs in cli with youtube and soundcloud support
+	pkgdesc = Play songs in cli with youtube and soundcloud support.
 	pkgver = 2.1.0.1
 	pkgrel = 1
 	url = https://github.com/jooapa/jammer
