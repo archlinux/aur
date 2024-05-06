@@ -21,6 +21,12 @@ sha256sums=('83477d6fda8e1a63acf8bc77921966cae284cf70e11920d7a56525ae3f937410'
             '4c0928194248ce56deab7a1eeec78d4a3827d7e8fbceba142b46d4f9c8eed387')
 options=(!strip !debug)
 
+prepare() {
+    cd "${pkgname}-dev-${pkgver}"
+    sed -i "s|version = '[0-9]\+\.[0-9]\+\.[0-9]\+';|version = '$pkgver';|" app/functions.php
+    sed -i 's|<i .\+git_pull.\+通过git拉取最新代码.\+></i>||' plugin/admin/app/view/index/dashboard.html
+}
+
 package() {
     install -Dm644 "${pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
