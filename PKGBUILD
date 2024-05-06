@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=chawan-git
-pkgver=r1938.3cc7f9d
+pkgver=r1948.9556626
 pkgrel=1
 pkgdesc="Web browser for your terminal"
 arch=(x86_64)
@@ -40,12 +40,11 @@ prepare() {
 
 build() {
   cd ${pkgname%-git}
-  make all
+  make
 }
 
 package() {
   cd ${pkgname%-git}
   install -vDm644 UNLICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}/
-  install -vd "$pkgdir"/usr/share/man/man{1,5}
   make DESTDIR="$pkgdir" PREFIX="/usr" LIBEXECDIR="$pkgdir"/usr/lib/${pkgname%-git} install
 }
