@@ -26,7 +26,7 @@ update_motd() {
     echo "Updating motd..."
     for rc_file in "${rc_files[@]}"; do
         if [ -f "$rc_file" ]; then
-            if ! grep -q "# user-motd" "$rc_file"; then
+            if ! grep -q "$start_line" "$rc_file"; then
                 echo "$motd_command" >>"$rc_file"
             else
                 sed -i "/$start_line/,/$end_line/d" "$rc_file"
