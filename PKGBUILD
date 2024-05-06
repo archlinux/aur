@@ -1,7 +1,7 @@
 # Maintainer: Jonas Costa <contact@jonascosta.ch>
 pkgname=filediver
-_pkgver='v0.3.0-1'
-pkgver=0.3.0.1
+_pkgver='v0.3.1'
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='An unofficial Helldivers 2 game asset extractor'
 source=("git+https://github.com/xypwn/filediver.git#tag=${_pkgver}")
