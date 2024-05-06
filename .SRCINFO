@@ -1,7 +1,7 @@
 pkgbase = python-autoimport
 	pkgdesc = Autoimport automatically fixes wrong import statements
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lyz-code/autoimport
 	arch = any
 	license = GPL3

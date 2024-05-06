@@ -3,7 +3,7 @@
 pkgname=python-autoimport
 _pkgname="${pkgname#python-}"
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Autoimport automatically fixes wrong import statements'
 arch=('any')
 url=https://github.com/lyz-code/autoimport
