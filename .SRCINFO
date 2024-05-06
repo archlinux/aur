@@ -1,7 +1,7 @@
 pkgbase = python-async_generator
 	pkgdesc = Making it easy to write async iterators
 	pkgver = 1.10
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/python-trio/async_generator
 	arch = any
 	license = MIT

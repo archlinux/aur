@@ -1,9 +1,9 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Niklas Reimer <niklas at backbord dot net>
 
 _pkgname=async_generator
 pkgname=python-${_pkgname}
 pkgver=1.10
-pkgrel=8
+pkgrel=9
 pkgdesc='Making it easy to write async iterators'
 url='https://github.com/python-trio/async_generator'
 arch=('any')
