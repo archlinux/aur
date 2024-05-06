@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=steamdepotdownloadergui-bin
 _pkgname=SteamDepotDownloaderGUI
-pkgver=2.4.1
-_electronversion=28
-pkgrel=4
+pkgver=2.4.2
+_electronversion=30
+pkgrel=1
 pkgdesc="Easily download older versions of games from Steam using DepotDownloader"
 arch=(
     'aarch64'
@@ -20,11 +20,11 @@ makedepends=(
     'fuse2'
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}-arm64.AppImage")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}-x64.AppImage")
-sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('2431e58e3e870e71ec047673f673d3897872d0d245c5aff92635ba90e0412d97')
-sha256sums_x86_64=('cd8a00d44b174b33d394997b56347d44b1a9f68b4d8c2444bd9401de4a2df0f0')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux-v${pkgver}-arm64.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux-v${pkgver}-x64.AppImage")
+sha256sums=('05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+sha256sums_aarch64=('b778985a7b623a20e162356e970fe8f6258a9f2a944f421b5de7d90f43b18d61')
+sha256sums_x86_64=('eb214ec13464acb52a8e0a5abff6fd398a9183858c21c146fdf3c9a792a4091d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \

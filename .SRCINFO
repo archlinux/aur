@@ -1,20 +1,20 @@
 pkgbase = steamdepotdownloadergui-bin
 	pkgdesc = Easily download older versions of games from Steam using DepotDownloader
-	pkgver = 2.4.1
-	pkgrel = 4
+	pkgver = 2.4.2
+	pkgrel = 1
 	url = https://github.com/mmvanheusden/SteamDepotDownloaderGUI
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = fuse2
-	depends = electron28
-	provides = steamdepotdownloadergui=2.4.1
+	depends = electron30
+	provides = steamdepotdownloadergui=2.4.2
 	conflicts = steamdepotdownloadergui
 	source = steamdepotdownloadergui.sh
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
-	source_aarch64 = steamdepotdownloadergui-2.4.1-aarch64.AppImage::https://github.com/mmvanheusden/SteamDepotDownloaderGUI/releases/download/v2.4.1/SteamDepotDownloaderGUI-linux-2.4.1-arm64.AppImage
-	sha256sums_aarch64 = 2431e58e3e870e71ec047673f673d3897872d0d245c5aff92635ba90e0412d97
-	source_x86_64 = steamdepotdownloadergui-2.4.1-x86_64.AppImage::https://github.com/mmvanheusden/SteamDepotDownloaderGUI/releases/download/v2.4.1/SteamDepotDownloaderGUI-linux-2.4.1-x64.AppImage
-	sha256sums_x86_64 = cd8a00d44b174b33d394997b56347d44b1a9f68b4d8c2444bd9401de4a2df0f0
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+	source_aarch64 = steamdepotdownloadergui-2.4.2-aarch64.AppImage::https://github.com/mmvanheusden/SteamDepotDownloaderGUI/releases/download/v2.4.2/SteamDepotDownloaderGUI-linux-v2.4.2-arm64.AppImage
+	sha256sums_aarch64 = b778985a7b623a20e162356e970fe8f6258a9f2a944f421b5de7d90f43b18d61
+	source_x86_64 = steamdepotdownloadergui-2.4.2-x86_64.AppImage::https://github.com/mmvanheusden/SteamDepotDownloaderGUI/releases/download/v2.4.2/SteamDepotDownloaderGUI-linux-v2.4.2-x64.AppImage
+	sha256sums_x86_64 = eb214ec13464acb52a8e0a5abff6fd398a9183858c21c146fdf3c9a792a4091d
 
 pkgname = steamdepotdownloadergui-bin
