@@ -10,7 +10,7 @@ depends=(ruby ruby-sprockets)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('b5a7396e1da26b5c3f9b1e04a6c1868d9b8657cb')
+sha256sums=('320a1d210a3e990b682c87dcca9881e78461c430636938b5a6053c5386aa2314')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
