@@ -1,0 +1,12 @@
+pkgbase = ttf-roboto-variable
+	pkgdesc = Variable version of Roboto
+	pkgver = 3.009
+	pkgrel = 1
+	url = https://github.com/googlefonts/roboto-classic
+	arch = any
+	license = OFL-1.1
+	provides = ttf-roboto
+	source = https://github.com/googlefonts/roboto-classic/releases/download/v3.009/Roboto_v3.009.zip
+	sha256sums = e33ed54b1f9e23df82b780c6c17043a49cab46fa9c661dc48c56671ac6868864
+
+pkgname = ttf-roboto-variable
