@@ -5,31 +5,23 @@
 pkgname=python-geoplot
 _name=geoplot
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='High-level geospatial data visualization library for Python'
 url='https://github.com/ResidentMario/geoplot'
 arch=('any')
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 depends=(
   'python-matplotlib'
   'python-seaborn'
   'python-pandas'
   'python-geopandas'
   'python-cartopy'
-  'python-descartes'
   'python-mapclassify'
   'python-contextily'
 )
 optdepends=(
-  'python-pytest'
-  'python-pytest-mpl'
   'python-scipy'
-  'python-pylint'
-  'python-sphinx'
-  'python-sphinx-gallery'
-  'python-sphinx_rtd_theme'
-  'python-mplleaflet'
 )
 source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
