@@ -1,0 +1,26 @@
+pkgbase = thunder-nas-bin
+	pkgdesc = Synology NAS thunder run on Linux
+	pkgver = 1.0.3
+	pkgrel = 0
+	url = https://github.com/gngpp/thunder
+	install = thunder-nas-bin.install
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	provides = thunder
+	provides = thunder-nas
+	conflicts = thunder
+	conflicts = thunder-nas
+	noextract = thunder-1.0.3-aarch64-unknown-linux-musl.tar.gz
+	noextract = thunder-1.0.3-x86_64-unknown-linux-musl.tar.gz
+	options = !strip
+	options = !debug
+	options = !lto
+	source = thunder-nas-bin.install
+	source = thunder-1.0.3-aarch64-unknown-linux-musl.tar.gz::https://github.com/gngpp/thunder/releases/download/v1.0.3/thunder-1.0.3-aarch64-unknown-linux-musl.tar.gz
+	source = thunder-1.0.3-x86_64-unknown-linux-musl.tar.gz::https://github.com/gngpp/thunder/releases/download/v1.0.3/thunder-1.0.3-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = b1578a3a34e201c77fe8a43b36b5fa4a97d25e8821d4b47d4f4eb70ae7357a39
+	sha256sums = 401bbfad610f587d8b70dd647985dcc4397052a857246de128ee114a72c10fd4
+	sha256sums = 2c10dd081bdb5707498575bc8273d80028467b0359d1bba93430d8ffeaa06f77
+
+pkgname = thunder-nas-bin

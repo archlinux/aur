@@ -1,0 +1,32 @@
+post_install() {
+cat << EOF
+----------------------------------------------
+Github Issuse: https://github.com/gngpp/thunder/issues
+> sudo thunder
+Synology NAS thunder run on Linux
+
+Usage: thunder
+       thunder <COMMAND>
+
+Commands:
+  install    Install thunder
+  uninstall  Uninstall thunder
+  run        Run thunder
+  start      Start thunder daemon
+  stop       Stop thunder daemon
+  log        Show the Http server daemon log
+  ps         Show the Http server daemon process
+  help       Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+-----------------------------------------------
+EOF
+
+}
+
+post_upgrade() {
+  post_install
+}
+
