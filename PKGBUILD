@@ -1,6 +1,6 @@
 # Maintainer: Diablo (https://github.com/progzone122) (https://t.me/DiabloSat)
 pkgname=powerdialog
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="GUI gtk3 dialogue of shutdown, logout, sleep, reboot PC"
 arch=('x86_64')

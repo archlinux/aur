@@ -1,6 +1,6 @@
 pkgbase = powerdialog
 	pkgdesc = GUI gtk3 dialogue of shutdown, logout, sleep, reboot PC
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/govnorice/powerdialog
 	arch = x86_64
