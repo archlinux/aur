@@ -1,19 +1,19 @@
 # Maintainer: Renato Caldas <renato@calgera.com>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-pkgname=('basix-git' 'python-fenics-basix-git')
-pkgdesc='FEniCS finite element basis evaluation library'
-pkgver="0.7.0.dev0_r934.571d504"
-pkgrel=3
-arch=('x86_64')
-url='https://fenicsproject.org'
-license=('MIT')
-makedepends=('git' 'cmake' 'python-build' 'python-installer' 'python-wheel'
-        'python-setuptools' 'pybind11' 'python-scikit-build-core' 'chrpath')
-conflicts=('basix' 'fenics-basix-git' 'python-fenics-basix' 'python-basix-git')
+pkgname=(basix-git python-fenics-basix-git)
+pkgdesc="FEniCSx finite element basis evaluation library"
+pkgver="0.9.0.dev0_r1041.8818981"
+pkgrel=1
+arch=(x86_64)
+url="https://github.com/FEniCS/basix"
+license=(MIT)
+makedepends=(cmake python-build python-installer python-wheel
+    python-setuptools nanobind python-scikit-build-core chrpath git)
+conflicts=(basix fenics-basix-git python-fenics-basix python-basix-git)
 source=('git+https://github.com/FEniCS/basix')
 sha512sums=('SKIP')
 
-pkgver()  {
+pkgver() {
     cd "$srcdir/basix"
     # The main repo unfortunately has no meaningful tags..
     printf "%s_r%s.%s" "$(sed -n -e 's/^version *= \"*\(.*\)\"/\1/p' pyproject.toml)" \
@@ -45,7 +45,7 @@ build() {
 }
 
 package_basix-git() {
-    depends=('blas' 'lapack')
+    depends=(blas lapack)
 
     cd "$srcdir/basix"
     DESTDIR="$pkgdir" cmake --install build
@@ -53,7 +53,7 @@ package_basix-git() {
 }
 
 package_python-fenics-basix-git() {
-    depends=('basix-git' 'python-fenics-ufl-git' 'python-numpy')
+    depends=(basix-git python-fenics-ufl-git python-numpy)
     optdepends=('python-numba: for Numba helper function support')
 
     cd "$srcdir/basix/python"
