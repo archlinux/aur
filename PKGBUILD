@@ -1,8 +1,6 @@
-# Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
-
 _gemname='capybara'
 pkgname="ruby-${_gemname}"
-pkgver=3.37.1
+pkgver=3.40.0
 pkgrel=1
 pkgdesc="An integration testing tool for rack based web applications. It simulates how a user would interact with a website"
 arch=('any')
@@ -13,7 +11,7 @@ depends=('ruby')
 depends=('ruby-addressable' 'ruby-mini_mime' 'ruby-nokogiri' 'ruby-rack' 'ruby-rack-test' 'ruby-regexp_parser' 'ruby-xpath')
 makedepends=('ruby-rake' 'ruby-rspec')
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('8cac60f6c919a2d05e974ecb384c8ebebc28ecfdf827ebfeb8f0fef106562cfc4ecadbaa4e8dbb499c491a4bff4a90362ddf5ef10128b3c21e643f5bb1804ca1')
+sha512sums=('d4762a01b234a73c5bc1a36b91c4bc3b86c47656cac151bbf1fd86ed1febcfae52934e2270583f52d08af18c6468cf007a423bbd8c8b18c81a49f9c15d41507f')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
