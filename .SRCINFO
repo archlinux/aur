@@ -1,16 +1,16 @@
 pkgbase = deckboard-bin
 	pkgdesc = Control your PC with your phone in easy way possible.
-	pkgver = 3.0.0_rc9
+	pkgver = 3.0.0_rc9.1
 	pkgrel = 1
 	url = https://deckboard.app/
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron29
-	provides = deckboard=3.0.0_rc9
+	provides = deckboard=3.0.0_rc9.1
 	conflicts = deckboard
 	source = deckboard.sh
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
-	source_x86_64 = deckboard-3.0.0_rc9-x86_64.deb::https://github.com/rivafarabi/deckboard/releases/download/v3.0.0-rc9/deckboard_3.0.0-rc9_amd64.deb
-	sha256sums_x86_64 = 4f52a3609b1f7e042a07e3a23bd10866be50132560e8ae12243855ca1fed2520
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+	source_x86_64 = deckboard-3.0.0_rc9.1-x86_64.deb::https://github.com/rivafarabi/deckboard/releases/download/v3.0.0-rc9.1/deckboard_3.0.0-rc9.1_amd64.deb
+	sha256sums_x86_64 = b2e9a202adc750db999cb5619a5a3b336a730e2199ee5000a0078767c8bb23b4
 
 pkgname = deckboard-bin
