@@ -4,13 +4,13 @@
 
 pkgname=python-ipdb
 pkgver=0.13.13
-pkgrel=3
+pkgrel=4
 pkgdesc="IPython-enabled pdb"
 url="https://pypi.python.org/pypi/ipdb"
 arch=("any")
 license=('BSD-3-Clause')
 depends=('ipython')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-tomli')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gotcha/ipdb/archive/$pkgver.tar.gz")
 sha512sums=('e6052d1b32b8ba499a42a121eba1ab7e814c81ac738ffaa088524840f54420546c9b3fa8c8c6beef61f6f2eb24f57984fa9953a3e60b986d14e542dcf9e3c6c8')
 
@@ -28,5 +28,10 @@ package() {
   cd ipdb-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
   ln -s ipdb3 "$pkgdir"/usr/bin/ipdb
-  install -Dm644 COPYING.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
+
+  # Symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s "$site_packages"/ipdb-$pkgver.dist-info/COPYING.txt \
+    "$pkgdir"/usr/share/licenses/$pkgname/COPYING.txt
 }
