@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ChatALL
 pkgname=chatall
-pkgver=1.78.103
-_electronversion=28
-_nodeversion=18
+pkgver=1.78.104
+_electronversion=30
+_nodeversion=20
 pkgrel=1
 pkgdesc="Concurrently chat with ChatGPT, Bing Chat, Bard, Alpaca, Vicuna, Claude, ChatGLM, MOSS, 讯飞星火, 文心一言 and more, discover the best answers"
 arch=('any')
@@ -20,15 +20,14 @@ makedepends=(
     'nvm'
     'npm'
     'python'
-    'git'
     'curl'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('c2c08eedea29f4325cd7d1b7d4b31f1300eb02123710d5f3075d785a22a16c05'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+sha256sums=('eb88a0c2d83452610ec7d00074d87f722f7499747c5a9b93563df75e7ff9809c'
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
