@@ -1,6 +1,6 @@
 pkgbase = python-lion-pytorch
 	pkgdesc = 🦁 Lion, new optimizer discovered by Google Brain using genetic algorithms that is purportedly better than Adam(w), in Pytorch
-	pkgver = 0.1.2
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/lucidrains/lion-pytorch
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-lion-pytorch
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-pytorch
-	source = python-lion-pytorch-0.1.2.tar.gz::https://github.com/lucidrains/lion-pytorch/archive/0.1.2.tar.gz
-	sha512sums = 3cec0a0ad08776778a2d38120c3b1da4942bd25f0f40070fa596b0fdeffc9be01dc9abe617d0899269f6a91727d4b9ee44ee924e533878bd9941f7c2b06dcf1a
+	source = python-lion-pytorch-0.1.4.tar.gz::https://github.com/lucidrains/lion-pytorch/archive/0.1.4.tar.gz
+	sha512sums = 0413eb0badf89a4899c79d949d96d4d4d0bbc8dd1f5ec85ab3ebacdc41cf9c6ed863f8da7135a7b3d78c49cd3e36a92a944647274b7f0f9f61292b4d215fa6a3
 
 pkgname = python-lion-pytorch
