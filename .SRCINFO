@@ -1,14 +1,14 @@
 pkgbase = philipshue-cli
 	pkgdesc = A cli interface for the philipshue api
-	pkgver = 0.2.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/AdriDevelopsThings/philipshue-cli
 	arch = x86_64
 	license = MIT
 	license = APACHE
-	source = philipshue-cli-0.2.2.tar.gz::https://github.com/AdriDevelopsThings/philipshue-cli/releases/download/0.2.2/philipshue-cli_0.2.2_x86_64-unknown-linux-musl.tar.gz
-	source = philipshue-cli-0.2.2.tar.gz::https://github.com/AdriDevelopsThings/philipshue-cli/releases/download/0.2.2/philipshue-cli_0.2.2_x86_64-unknown-linux-musl.tar.gz.sig
-	sha256sums = 864a791d54cf68b4efb7e12ef0764c2af057909f01f23b647513e21ca30fadaa
+	source = philipshue-cli-0.2.4.tar.gz::https://github.com/AdriDevelopsThings/philipshue-cli/releases/download/0.2.4/philipshue-cli_0.2.4_x86_64-unknown-linux-musl.tar.gz
+	source = philipshue-cli-0.2.4.tar.gz::https://github.com/AdriDevelopsThings/philipshue-cli/releases/download/0.2.4/philipshue-cli_0.2.4_x86_64-unknown-linux-musl.tar.gz.sig
+	sha256sums = 8591ec7920af8a4394789ac70c5eef15d2884f1176cfd771e8e06ef33f736fd1
 	sha256sums = SKIP
 
 pkgname = philipshue-cli
