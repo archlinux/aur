@@ -3,8 +3,8 @@ pkgname=flashpoint-launcher
 _pkgname="Flashpoint Launcher"
 pkgver=13.0.1
 _electronversion=19
-_nodeversion=16
-pkgrel=1
+_nodeversion=20
+pkgrel=2
 pkgdesc="A desktop application used to browse, manage and play games from Flashpoint Archive"
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
@@ -29,9 +29,9 @@ makedepends=(
     'libnss_nis'
 )
 source=(
-    "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('370d0088befdd781ff88c2cc6014cbe19d952b483acb8fa9f095de33118352e3')
+sha256sums=('f611ac9e63b7a565e58cb2c51dfb88b46ff991c8b700afaf287d818545419e58')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -41,14 +41,14 @@ _ensure_local_nvm() {
 build() {
     _ensure_local_nvm
     gendesk -q -f -n --categories="Game" --name="${_pkgname}" --exec="${pkgname} --no-sandbox %U"
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/launcher-${pkgver}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
@@ -61,15 +61,16 @@ build() {
     fi
     export CARGO_HOME="${srcdir}/.cargo"
     rm -rf dist
+    sed "s|PUBLISH=true|PUBLISH=false|g" -i package.json
+    sed 's|"deb", "7z"|"dir"|g' -i gulpfile.js
     npm install --force
-    npm run build
-    npm run pack
+    npm run release
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
-    cp -r "${srcdir}/${pkgname}.git/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/launcher-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
     ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/launcher-${pkgver}/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/launcher-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
