@@ -1,18 +1,20 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggspavis
-_pkgver=1.8.1
+_pkgver=1.9.10
 pkgname=r-${_pkgname,,}
-pkgver=1.8.1
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Visualization functions for spatially resolved transcriptomics data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+pkgdesc="Visualization functions for spatial transcriptomics data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-ggplot2
+  r-ggrepel
   r-ggside
+  r-rcolorbrewer
+  r-scales
   r-singlecellexperiment
   r-spatialexperiment
   r-summarizedexperiment
@@ -21,6 +23,7 @@ optdepends=(
   r-biocstyle
   r-bumpymatrix
   r-knitr
+  r-patchwork
   r-rmarkdown
   r-scater
   r-scran
@@ -29,15 +32,18 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3d77170f633c44140baf45b7051ff7ce2f770d184877818ebb6e88464e3e1d18')
+md5sums=('8ae0e48cac33cc32aa212747aaf43a16')
+b2sums=('c5e8f86f6dd734605737c40198bda606adcdadfcb60489909d96dbd704061537df4939099ef4b77884dcb290a6eb79b76cca6203c0c5f71570044bb04874bfad')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
