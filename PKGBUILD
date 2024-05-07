@@ -1,8 +1,8 @@
 # Maintainer: cyber-luna <cyber-luna@tuta.io>
 
 pkgname='lunas'
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 pkgdesc="A syncing cli tool that can handle more than two directories locally and remotely"
 arch=('any')
 url="https://codeberg.org/cyber-luna/lunas"
