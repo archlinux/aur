@@ -1,7 +1,7 @@
 # Maintainer: Diego Parra <diegoparranava@protonmail.com>
 pkgname='waypaper-engine'
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="A pleasant gui frontend for swww with batteries included!"
 arch=('x86_64')
 url="https://github.com/0bCdian/Waypaper-Engine"
