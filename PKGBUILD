@@ -8,13 +8,13 @@
 
 _target=arm-linux-gnueabihf
 pkgname="${_target}-gcc"
-pkgver=13.2.0
+pkgver=14.1.0
 _majorver=${pkgver%%.*}
 _gmpver=6.3.0
 _islver=0.26
 _mpcver=1.3.1
 _mpfrver=4.2.1
-pkgrel=11
+pkgrel=1
 pkgdesc="The GNU Compiler Collection"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -36,7 +36,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # jakub@redhat.com
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
+sha256sums=('e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -53,9 +53,7 @@ prepare() {
   mv ../mpc-${_mpcver} mpc
   mv ../mpfr-${_mpfrver} mpfr
 
-  echo "${pkgver}" > gcc/BASE-VER
-
-  # do not run fixincludes
+  #echo "${pkgver}" > gcc/BASE-VER
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
   mkdir -p "${srcdir}"/gcc-build
