@@ -4,16 +4,16 @@
 
 pkgname=gnome-shell-extension-tray-icons-reloaded
 pkgver=30
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Shell extension which bring back Tray Icons to top panel, with additional features."
 arch=('any')
 url="https://github.com/MartinPL/Tray-Icons-Reloaded"
 license=('GPL3')
 depends=('gnome-shell')
 _commit="d76277e93afbff4338060bcfec4d6cf85059c1d8"
-_name="Tray-Icons-Reloaded"
+_name="tray-icons-reloaded"
 source=("https://github.com/MartinPL/$_name/archive/$_commit.zip")
-sha256sums=('bf5cdb6576cb5b364edd2490ab432e04ee26d29ef19c4cdf8eb5eedc3afae772')
+sha256sums=('152177538252e496f3748eada9a481de650c602b0b899ad8911031625620854f')
 
 build() {
 	cd "${srcdir}/${_name}-${_commit}"

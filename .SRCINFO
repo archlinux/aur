@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-tray-icons-reloaded
 	pkgdesc = GNOME Shell extension which bring back Tray Icons to top panel, with additional features.
 	pkgver = 30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MartinPL/Tray-Icons-Reloaded
 	arch = any
 	license = GPL3
 	depends = gnome-shell
-	source = https://github.com/MartinPL/Tray-Icons-Reloaded/archive/d76277e93afbff4338060bcfec4d6cf85059c1d8.zip
-	sha256sums = bf5cdb6576cb5b364edd2490ab432e04ee26d29ef19c4cdf8eb5eedc3afae772
+	source = https://github.com/MartinPL/tray-icons-reloaded/archive/d76277e93afbff4338060bcfec4d6cf85059c1d8.zip
+	sha256sums = 152177538252e496f3748eada9a481de650c602b0b899ad8911031625620854f
 
 pkgname = gnome-shell-extension-tray-icons-reloaded
