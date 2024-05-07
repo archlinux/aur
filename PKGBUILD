@@ -5,8 +5,8 @@
 _name=gaphor
 pkgname=python-${_name}
 pkgver=2.25.1
-pkgrel=1
-pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
+pkgrel=2
+pkgdesc="Simple and easy to use modeling tool for UML"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
 license=('Apache')
@@ -39,8 +39,10 @@ checkdepends=(
 	'python-pytest-randomly'
 )
 provides=("${_name}")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('86a73972e90c448ecb08d32a374cbc465b58893a243501be5c8b97bd80df3f7a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+        "${_name}.xml")
+sha256sums=('86a73972e90c448ecb08d32a374cbc465b58893a243501be5c8b97bd80df3f7a'
+            'c3868ac8cb77749ef5a5afab722c67b6510f0bfe5a9e1da27ed06c3a8ab444a1')
 
 build() {
 	cd "${_name}-${pkgver}"
@@ -60,12 +62,13 @@ check() {
 }
 
 prepare() {
-	gendesk -f -n --pkgname="$_name" --pkgdesc="$pkgdesc" --icon='org.gaphor.Gaphor' --categories='Development' PKGBUILD
+	gendesk -f -n --pkgname="$_name" --pkgdesc="$pkgdesc" --genericname="UML modelling tool" --mimetypes="application/x-gaphor" --icon='org.gaphor.Gaphor' --categories='Development' PKGBUILD
 }
 
 package() {
 	cd "${_name}-${pkgver}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+  	install -Dm644 "$srcdir/${_name}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
 	install -Dm644 "$srcdir/${_name}.desktop" -t "$pkgdir"/usr/share/applications
 	install -Dm644 "$srcdir/${_name}-${pkgver}/data/logos/org.gaphor.Gaphor.svg" "$pkgdir"/usr/share/pixmaps/org.gaphor.Gaphor.svg
 }
