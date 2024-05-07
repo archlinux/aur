@@ -1,6 +1,6 @@
 pkgbase = moment-git
 	pkgdesc = A customizable, keyboard-operable Matrix client. Fork of Mirage
-	pkgver = v0.7.4.r0.fb4501e9
+	pkgver = v0.7.5.r7.07485e9a
 	pkgrel = 1
 	url = https://mx-moment.xyz/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = moment-git
 	depends = qt5-graphicaleffects
 	depends = qt5-imageformats
 	depends = python
-	depends = python-pyotherside
+	depends = python-pyotherside-moment-git
 	depends = libolm
 	depends = libjpeg-turbo
 	depends = zlib
