@@ -1,18 +1,18 @@
 pkgbase = siyuan-note-bin
 	pkgdesc = A local-first personal knowledge management system.Use system-wide electron.
-	pkgver = 3.0.12
+	pkgver = 3.0.13
 	pkgrel = 1
 	url = https://b3log.org/siyuan/
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = fuse2
-	depends = electron30
-	provides = siyuan-note=3.0.12
+	depends = electron28
+	provides = siyuan-note=3.0.13
 	conflicts = siyuan-note
 	conflicts = siyuan
-	source = siyuan-note-3.0.12.AppImage::https://github.com/siyuan-note/siyuan/releases/download/v3.0.12/siyuan-3.0.12-linux.AppImage
+	source = siyuan-note-3.0.13.AppImage::https://github.com/siyuan-note/siyuan/releases/download/v3.0.13/siyuan-3.0.13-linux.AppImage
 	source = siyuan-note.sh
-	sha256sums = 82b184611529957e2b148de7d40463de4bc70a66026f7a4059060a7e018aeb41
-	sha256sums = 61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3
+	sha256sums = 3e1b136fb71701fcb2e0c2e146955a1a5fbf2a8a087a38cab37967333af11f4f
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
 
 pkgname = siyuan-note-bin
