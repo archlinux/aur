@@ -1,5 +1,5 @@
-# Maintainer: Matthew Spangler. <mattspangler at protonmail dot com>
-# Contributor: Deab22 <deab22 dot thermal577 at simplelogin dot com>
+# Maintainer: Deab22 <deab22 dot thermal577 at simplelogin dot com>
+# Contributor: Matthew Spangler. <mattspangler at protonmail dot com>
 # Contributor: Valentijn V. <neko at catgirlsin dot space>
 pkgname=gb-studio-bin
 _pkgname=GB-Studio
