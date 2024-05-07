@@ -4,7 +4,7 @@
 
 pkgname=thunderbird-beta-bin
 _pkgname=thunderbird-beta
-pkgver=126.0b2
+pkgver=126.0b3
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -21,7 +21,7 @@ install=$pkgname.install
 source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2"
         'org.mozilla.thunderbird-beta-bin.desktop'
         'vendor.js')
-sha512sums=('9e6d4b0e8705c00e8dec4848cf39baccad303603e2a10bbafa3964885db4b026971c6175f4240cae7133daa7c2f9d61dc9ad082bcb0c36074b4211a560e84791'
+sha512sums=('0ba29ab87d5273848cf47f57e6c0aeadbf129aa2f5fd0fbc066c4f342fa74971b3d9973181c3f0a87b6b7f70e7b35c10fdfe5ce2f3cdcc6c5f9069c3923fd409'
             'b42b4b86aa072dca7f9e401c1f0c593396cda45fe56326af997db4042549cf895f1f0682c0d007647cda5200f11c06cef13e006a5973eae2bfa31b86d4d32f79'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 # RC
