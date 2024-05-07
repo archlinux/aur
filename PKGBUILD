@@ -3,7 +3,7 @@
 
 _pkgname="vala-panel"
 pkgname="$_pkgname"
-pkgver=24.03
+pkgver=24.05
 pkgrel=1
 pkgdesc="Panel for compositing window managers"
 url="https://gitlab.com/vala-panel-project/vala-panel"

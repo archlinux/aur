@@ -1,6 +1,6 @@
 pkgbase = vala-panel
 	pkgdesc = Panel for compositing window managers
-	pkgver = 24.03
+	pkgver = 24.05
 	pkgrel = 1
 	url = https://gitlab.com/vala-panel-project/vala-panel
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vala-panel
 	depends = gtk-layer-shell
 	depends = gtk3
 	depends = libwnck3
-	source = vala-panel::git+https://gitlab.com/vala-panel-project/vala-panel.git#tag=24.03
+	source = vala-panel::git+https://gitlab.com/vala-panel-project/vala-panel.git#tag=24.05
 	sha256sums = SKIP
 
 pkgname = vala-panel
