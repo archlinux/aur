@@ -8,9 +8,9 @@
 
 _target=arm-linux-gnueabihf
 pkgname=${_target}-gcc-stage1
-pkgver=13.2.0
+pkgver=14.1.0
 _majorver=${pkgver%%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -23,15 +23,13 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
+sha256sums=('e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840'
             'SKIP')
 
 prepare() {
   cd gcc-${pkgver/+/-}
 
-  # do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
   mkdir -p "${srcdir}"/gcc-build
