@@ -7,43 +7,52 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-pcsclite
-pkgver=2.0.3
+pkgver=2.2.0
 pkgrel=1
 arch=('any')
 pkgdesc="PC/SC Architecture smartcard middleware library (Android ${_android_arch})"
 url='https://pcsclite.apdu.fr/'
 license=('BSD')
 depends=('android-ndk')
-makedepends=('android-configure')
+makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://pcsclite.apdu.fr/files/pcsc-lite-${pkgver}.tar.bz2"{,.asc})
-md5sums=('4167d2d3fa2be3f8e24b2f44e38a35ee'
-         'SKIP')
+source=("https://pcsclite.apdu.fr/files/pcsc-lite-${pkgver}.tar.xz"{,.asc}
+        '0001-Fix-pcsc-arch.patch')
+md5sums=('9e4006e1f3210ffa7dd0fadbc9083dc2'
+         'SKIP'
+         '0d862bb58084ec6e7da1ccc764de4ac4')
 validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <rousseau@debian.org>
+
+prepare() {
+    cd "${srcdir}/pcsc-lite-$pkgver"
+
+    patch -Np1 -i ../0001-Fix-pcsc-arch.patch
+}
 
 build() {
     cd "${srcdir}/pcsc-lite-$pkgver"
     source android-env ${_android_arch}
 
-    android-${_android_arch}-configure \
-        --sbindir="${ANDROID_PREFIX_BIN}" \
-        --sysconfdir="${ANDROID_PREFIX_ETC}" \
-        --enable-usbdropdir="${ANDROID_PREFIX_LIB}/pcsc/drivers" \
-        --enable-filter \
-        --disable-libsystemd \
-        --disable-libudev \
-        --disable-polkit
-    make $MAKEFLAGS
+    android-${_android_arch}-meson build \
+        -Dlibsystemd=false \
+        -Dlibudev=false \
+        -Dlibusb=false \
+        -Dpolkit=false \
+        -Dusb=false \
+        -Dserial=false \
+        -Dserialconfdir="${ANDROID_PREFIX_ETC}/reader.conf.d" \
+        -Dusbdropdir="${ANDROID_PREFIX_LIB}/pcsc/drivers"
+    ninja -C build
 }
 
 package() {
     cd "${srcdir}/pcsc-lite-$pkgver"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    DESTDIR="${pkgdir}" meson install -C build
+    rm -rf "$pkgdir/bin"
     rm -f "$pkgdir/${ANDROID_PREFIX_BIN}/pcscd"
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
 
