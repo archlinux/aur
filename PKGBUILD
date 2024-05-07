@@ -1,17 +1,17 @@
-# system requirements: GNU make, C++11
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FLAMES
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='FLAMES: Full Length Analysis of Mutations and Splicing in long read RNA-seq data'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Full Length Analysis of Mutations and Splicing in long read RNA-seq data"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
-  r
+  bzip2
+  curl
   r-bambu
   r-basilisk
   r-biocgenerics
@@ -30,13 +30,12 @@ depends=(
   r-ggplot2
   r-gridextra
   r-igraph
+  r-iranges
   r-jsonlite
   r-magrittr
   r-multiassayexperiment
   r-rcolorbrewer
-  r-rcpp
   r-reticulate
-  r-rhtslib
   r-rsamtools
   r-rtracklayer
   r-s4vectors
@@ -46,9 +45,19 @@ depends=(
   r-singlecellexperiment
   r-stringr
   r-summarizedexperiment
+  r-tibble
   r-tidyr
+  r-tidyselect
+  r-txdbmaker
   r-withr
   r-zlibbioc
+  xz
+  zlib
+)
+makedepends=(
+  r-rcpp
+  r-rhtslib
+  r-testthat
 )
 optdepends=(
   r-biocfilecache
@@ -61,16 +70,18 @@ optdepends=(
   r-shortread
   r-testthat
   r-uwot
+  r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('da12030c47ad7d766a7a76ed97e5fb089af15fd1c78846afba7b11089efa6724')
+md5sums=('b4f8a2b352544fb940fcf3718956872f')
+b2sums=('dfd4f5cc647abf971173b45968ab8862322bbe5b9d5322315abebedc44a748e6cc3e19291ecccda09adf1fe82107a323b697d662543378b78888198a767eaa03')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
