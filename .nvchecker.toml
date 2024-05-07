@@ -1,0 +1,4 @@
+[gmsh]
+source = "regex"
+regex = "gmsh-([0-9].[0-9][0-9].[0-9]+)-source.tgz"
+url = "https://gmsh.info/src/"
