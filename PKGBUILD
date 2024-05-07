@@ -1,25 +1,31 @@
+# Maintainer: Manuel Hüsers <aur@huesers.de>
 # Contributor: graysky <graysky AT archlinux dot us>
-pkgname=('linpack')
-pkgver=2022.0.2.84
-_math_kernel_lib=2022.0.2
-pkgrel=1
-arch=('x86_64')
-license=('custom')
-url="http://software.intel.com/en-us/articles/intel-math-kernel-library-linpack-download"
-source=("https://downloadmirror.intel.com/721397/l-onemklbench-p-${pkgver//./-}.tgz"
-'linpack.conf' 'linpack_runme_xeon64')
-sha1sums=('3c9f41fcd1454bfbb5525a1056b18edc7f58aae5'
-          '96636f441f3ab48b2df5e24afd2775ff5f954446'
-          '9529264752433c0fa5fe33c9712ffc3cf83acc2a')
 
-package_linpack() {
-	pkgdesc='Benchmark based on linear algebra excellent app for stress testing.'
-	backup=(etc/linpack.conf)
-	_base="$srcdir/benchmarks_$_math_kernel_lib"
-	_test="$_base/linux/mkl/benchmarks/linpack"
-	
-	install -Dm755 linpack_runme_xeon64 "$pkgdir/usr/bin/linpack_runme_xeon64"
-	install -Dm644 linpack.conf "$pkgdir/usr/share/$pkgname/linpack.conf"
-	install -Dm644 "$_base/license.txt" "$pkgdir/usr/share/licenses/linpack/license.txt"
-	install -Dm755 "$_test/xlinpack_xeon64" "$pkgdir/usr/bin/xlinpack_xeon64"
+pkgname='linpack'
+_pkgver=2024.1.0_517
+_pkgid=819583
+pkgver=${_pkgver%%_*}
+_math_kernel_lib=${pkgver%%.0}
+pkgrel=1
+pkgdesc="Benchmark that measures a system's floating-point rate of execution by solving dense linear equations"
+arch=('x86_64')
+url='http://software.intel.com/en-us/articles/intel-math-kernel-library-linpack-download'
+license=('custom')
+backup=('etc/linpack.conf')
+options=('!strip')
+source=("https://downloadmirror.intel.com/${_pkgid}/l_onemklbench_p_${_pkgver}.tgz"
+	'linpack.conf'
+	'linpack_runme_xeon64')
+sha512sums=('c4b0704668f77deb5a3120f07a5e75dbecbf1a796294ec9ab83f1a4bcf2eb5a27d42a7c34bbcd462baf5ac35d8294be237210d481c7739efeffe302bbea65206'
+            '69b049a3a1c0b674e471bc61e1f88f729db1dd454eb0bfc9adde7c3a4876bb396a91f57f19d5e1add906ee4282068d8cd0fa5f1a59bf8a96784846a3c9f63ab1'
+            '3e880d4e0af8154ac1d591177e08ceda28f5ff5fbf698e47f99de8621e37137ecf26024048bd0ee81fc7af73ca8ae0deeb0a309325970a701ac5f13b571bdb60')
+
+package() {
+	local _base="${srcdir}/benchmarks_${_math_kernel_lib}"
+	local _test="${_base}/linux/share/mkl/benchmarks/linpack"
+
+	install -Dm755 linpack_runme_xeon64 "${pkgdir}/usr/bin/linpack_runme_xeon64"
+	install -Dm644 linpack.conf "${pkgdir}/usr/share/${pkgname}/linpack.conf"
+	install -Dm644 "${_base}/license.txt" "${pkgdir}/usr/share/licenses/linpack/license.txt"
+	install -Dm755 "${_test}/xlinpack_xeon64" "${pkgdir}/usr/bin/xlinpack_xeon64"
 }

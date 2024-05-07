@@ -1,16 +1,17 @@
 pkgbase = linpack
-	pkgver = 2022.0.2.84
+	pkgdesc = Benchmark that measures a system's floating-point rate of execution by solving dense linear equations
+	pkgver = 2024.1.0
 	pkgrel = 1
 	url = http://software.intel.com/en-us/articles/intel-math-kernel-library-linpack-download
 	arch = x86_64
 	license = custom
-	source = https://downloadmirror.intel.com/721397/l-onemklbench-p-2022-0-2-84.tgz
+	options = !strip
+	backup = etc/linpack.conf
+	source = https://downloadmirror.intel.com/819583/l_onemklbench_p_2024.1.0_517.tgz
 	source = linpack.conf
 	source = linpack_runme_xeon64
-	sha1sums = 3c9f41fcd1454bfbb5525a1056b18edc7f58aae5
-	sha1sums = 96636f441f3ab48b2df5e24afd2775ff5f954446
-	sha1sums = 9529264752433c0fa5fe33c9712ffc3cf83acc2a
+	sha512sums = c4b0704668f77deb5a3120f07a5e75dbecbf1a796294ec9ab83f1a4bcf2eb5a27d42a7c34bbcd462baf5ac35d8294be237210d481c7739efeffe302bbea65206
+	sha512sums = 69b049a3a1c0b674e471bc61e1f88f729db1dd454eb0bfc9adde7c3a4876bb396a91f57f19d5e1add906ee4282068d8cd0fa5f1a59bf8a96784846a3c9f63ab1
+	sha512sums = 3e880d4e0af8154ac1d591177e08ceda28f5ff5fbf698e47f99de8621e37137ecf26024048bd0ee81fc7af73ca8ae0deeb0a309325970a701ac5f13b571bdb60
 
 pkgname = linpack
-	pkgdesc = Benchmark based on linear algebra excellent app for stress testing.
-	backup = etc/linpack.conf
