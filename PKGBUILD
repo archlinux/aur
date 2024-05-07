@@ -2,7 +2,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=kwin
+pkgname=kwin-explicit-sync
+_pkgname=kwin
 pkgver=6.0.4.1
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
@@ -10,6 +11,7 @@ pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
+conflicts=(kwin)
 depends=(breeze
          gcc-libs
          glibc
@@ -79,17 +81,20 @@ makedepends=(extra-cmake-modules
              xorg-xwayland)
 optdepends=('maliit-keyboard: virtual keyboard for kwin-wayland')
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-install=$pkgname.install
-sha256sums=('56ffb37fa36e10f058ec5499c6858f6b21105b56ac7d70407921f063bc4bcb36'
-            'SKIP')
-validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
-              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
-              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
-              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+source=(
+  "git+https://invent.kde.org/plasma/kwin.git#tag=v$pkgver"
+  "explicit-sync.patch"
+)
+install=$_pkgname.install
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  git apply "$srcdir/explicit-sync.patch"
+}
 
 build() {
-  cmake -B build  -S $pkgname-$pkgver \
+  cmake -B build -S $_pkgname \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
