@@ -3,7 +3,7 @@
 
 _npmname=@gltf-transform/cli
 pkgname=nodejs-gltf-transform-cli
-pkgver="3.10.1"
+pkgver="4.0.0"
 pkgrel=1
 pkgdesc="CLI interface to glTF Transform"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=("${pkgname}-${pkgver}.tgz::http://registry.npmjs.org/${_npmname}/-/cli-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=("32efb9b7f3cc81ac292cacd1f92480adcec729eb729ebfe7031c487e7bb8eb08")
+sha256sums=("2af410edb6ee3c34920f9f80d2b3c9cde5cf15e5ae69be003b43a51372a34ddb")
 
 package() {
   # copied from: nodejs-nativefier
@@ -26,6 +26,6 @@ package() {
   # https://bugs.archlinux.org/task/63396
   chown -R root:root "${pkgdir}"
 
-  install -Dm644 "$pkgdir/usr/lib/node_modules/${_npmname}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgdir/usr/lib/node_modules/${_npmname}/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
 
