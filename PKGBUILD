@@ -1,6 +1,6 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=nuked-sc55
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Roland SC-55 series emulator'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('rtmidi' 'sdl2')
 makedepends=('cmake')
 source=("https://github.com/nukeykt/Nuked-SC55/archive/refs/tags/${pkgver}.tar.gz"
         "fix_base_path.patch")
-sha256sums=('13f402381c31e02981619f728dd2cdb938f7c7fe633c6afbcf8e3c12acea6df4'
+sha256sums=('339d807361819793606093588782ad7d3706bd7aa8cff09fb26bd0ce15a70e54'
             'e713fe18983e380910f29bcac74b5334fdd7a7962cacde64e10acf3e3af572ac')
 
 prepare() {
