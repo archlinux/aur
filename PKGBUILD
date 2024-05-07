@@ -6,7 +6,7 @@
 pkgname=slic3r-bin
 _pkgname=Slic3r
 pkgver=1.3.0
-pkgrel=12
+pkgrel=13
 pkgdesc="Open Source toolpath generator for 3D printers"
 arch=('x86_64')
 url="https://slic3r.org/"
@@ -46,7 +46,7 @@ build(){
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}.pl|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -n -f --categories="Utility;Development" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    gendesk -q -n -f --pkgname="${pkgname%-bin}" --categories="Utility;Development" --name="${_pkgname}" --exec="${pkgname%-bin}"
     unlink "${srcdir}/${_pkgname}/local-lib/lib/perl5/${CARCH}-linux-thread-multi/Alien/wxWidgets/gtk_3_0_2_uni/bin/wx-config"
 }
 package() {
