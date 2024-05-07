@@ -1,5 +1,5 @@
 pkgname=eigen-git
-pkgver=3.4.r1041.gbe54cc8
+pkgver=3.4.r1081.gff174f7
 pkgrel=1
 pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra."
 arch=('any')
@@ -18,6 +18,7 @@ pkgver() {
 
 build() {
   cmake -B build -S eigen
+  cmake --build build
 }
 
 package() {
