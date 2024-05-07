@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=extraChIPs
-_pkgver=1.8.0
+_pkgver=1.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -69,8 +69,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7b79cda4d4f6dcd728228d8e93518cd4')
-b2sums=('caf0603eeaa12fae94459601e5ed4849a6fbb25c20a572930cc0c514e004d1a00fd72e8971e6baace8a05c658d9258635d3cfddfa9420458ae5fcbe98357f24c')
+md5sums=('0afeb5903409d749f90b4e5a3aab9fad')
+b2sums=('4fcd2558a82f28d88d6e79e513a5024c575cd58e90ca5258e35a8783ea815c800fc99ec68a420ad16067d2f1d7010576fc3151c8dc7622c9d1224e2c24d11b81')
 
 build() {
   mkdir build
