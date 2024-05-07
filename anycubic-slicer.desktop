@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Icon=/usr/share/anycubic-slicer/resources/icons/AnycubicSlicer.png
+Name=AnycubicSlicer
+Exec=/usr/bin/anycubic-slicer
+Comment=G-code generator for 3D printers (Anycubic fork of Prusa Slicer).
+StartupNotify=true

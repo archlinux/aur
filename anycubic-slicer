@@ -1,0 +1,11 @@
+#!/bin/bash
+PROGRAM_NAME=anycubic-slicer
+export WINEPREFIX="${HOME}"/."${PROGRAM_NAME}"/wine
+INSTALL_PATH="${WINEPREFIX}/drive_c/Program Files/AnycubicSlicer"
+EXECUTABLE="${INSTALL_PATH}/Anycubic-Slicer.exe"
+if [ ! -d "${WINEPREFIX}" ] ; then
+   mkdir -p "${WINEPREFIX}"
+   wineboot -u
+   ln -s /usr/share/"${PROGRAM_NAME}" "${INSTALL_PATH}" 
+fi
+WINEDEBUG=-all wine "${EXECUTABLE}" "$@"
