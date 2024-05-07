@@ -2,17 +2,17 @@
 
 _name=photon
 pkgname="$_name-lemmy"
-pkgver=1.25.2
-pkgrel=2
+pkgver=1.28.4
+pkgrel=1
 pkgdesc='An alternative front end for Lemmy'
 arch=('any')
 url="https://github.com/Xyphyn/$_name"
 license=('AGPL3')
 depends=(
-  'nodejs'
+  'bun'
 )
 makedepends=(
-  'npm'
+  'yarn'
 )
 backup=('etc/photon-lemmy/config.env')
 source=(
@@ -22,19 +22,17 @@ source=(
   'tmpfiles.conf'
   'config.env'
 )
-b2sums=('387c47736e9a26d2f89947a7ac9e89cd8796ae4d1347100213403d6471cca314c1f60af54e3c1fc416e0959ec122c04b1a7817cc461ecbdc99abf87ec05f9199'
-        'cb52a8b9c6bacf1a458ce778958b4417de5b214ba1e8fa67f8a7951441a7fe2d4b1c4959a55bfd20a97b70e3fbdb77857e716d2a8b1ecf3831e1bc31fafae44d'
+b2sums=('ab392429d83b033f75bee98bf7e38da7b12f17905d3c438fe6d8c54e1597448547b24171fb41ded2c9c8e12ffc0d5edb3fb8cdeab89516da694ebb75642a1bce'
+        'd38cb9a71ea056a24bbec10fae6553fa97357d437de506d89b246ea38153ea6184394c3ebe49247b902f8bb03fcc0560b2f6c4a18a7b3fb0ce83d93e51838aa8'
         '02f70ad3274186cb9f5ba50e0717ebf17fc76450816174ed761d1c8a37c5f08bd906a1fe0573db647c92d91f900c67f9595478c625c2d22cf98f3769b55198d1'
         '4c403c969af4489b80fd76e662aa3a9fce354bb6441a5c68f4309205954fb71df2e29e45e6d87196db6ce0eeb157fb2d956e9b264507523eecf548ce29687c4e'
         '22567c2e2fac19a9c1acbb3ea2e811b30847429a2a14fafa21991fc8281a24bc3acb111b78e3a83b9261c193349156ccdd5b0fa20aa7c1fcd2113af47857e053')
-
 build() {
   cd "$_name-$pkgver"
-
-  npm install
-  ADAPTER=node npm run build
+  yarn install
+  ADAPTER=bun yarn build
   rm -rf node_modules
-  npm ci --omit dev
+  yarn install --production
 }
 
 package() {
