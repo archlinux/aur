@@ -3,7 +3,7 @@
 _name=photon
 pkgname="$_name-lemmy"
 pkgver=1.28.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An alternative front end for Lemmy'
 arch=('any')
 url="https://github.com/Xyphyn/$_name"
@@ -23,7 +23,7 @@ source=(
   'config.env'
 )
 b2sums=('ab392429d83b033f75bee98bf7e38da7b12f17905d3c438fe6d8c54e1597448547b24171fb41ded2c9c8e12ffc0d5edb3fb8cdeab89516da694ebb75642a1bce'
-        'd38cb9a71ea056a24bbec10fae6553fa97357d437de506d89b246ea38153ea6184394c3ebe49247b902f8bb03fcc0560b2f6c4a18a7b3fb0ce83d93e51838aa8'
+        'bed8fd89aac2ee4e33f14605a0bccad351d33164b002ee5c0fe8c46a4b97f6d8387b49321a734fbf2eb67256310cb7e9e9e8bffe8210d1107cf04882d87f1cd5'
         '02f70ad3274186cb9f5ba50e0717ebf17fc76450816174ed761d1c8a37c5f08bd906a1fe0573db647c92d91f900c67f9595478c625c2d22cf98f3769b55198d1'
         '4c403c969af4489b80fd76e662aa3a9fce354bb6441a5c68f4309205954fb71df2e29e45e6d87196db6ce0eeb157fb2d956e9b264507523eecf548ce29687c4e'
         '22567c2e2fac19a9c1acbb3ea2e811b30847429a2a14fafa21991fc8281a24bc3acb111b78e3a83b9261c193349156ccdd5b0fa20aa7c1fcd2113af47857e053')
@@ -31,8 +31,6 @@ build() {
   cd "$_name-$pkgver"
   yarn install
   ADAPTER=bun yarn build
-  rm -rf node_modules
-  yarn install --production
 }
 
 package() {

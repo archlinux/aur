@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=photon-lemmy
 WorkingDirectory=/usr/share/photon-lemmy
-ExecStart=/usr/bin/bun build
+ExecStart=/usr/bin/bun build/index.js
 EnvironmentFile=/etc/photon-lemmy/config.env
 Restart=on-failure
 
