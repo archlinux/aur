@@ -3,16 +3,16 @@
 pkgname='time-to-matrix-git'
 _pkgname='time-to-matrix'
 _exename='ttm'
-pkgver=v1.3.0.r7.gf51acb9
+pkgver=v1.4.4.r0.g1e2cf99
 pkgrel=1
 pkgdesc="A time-like command that will send end of an arbitrary command output and some other info (like exit status) to matrix room."
 arch=('x86_64')
-license=('MIT')
+license=('AGPL-3.0-or-later')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 url="https://gitlab.com/etke.cc/ttm.git"
 options=('!emptydirs')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'just')
 source=("${pkgname}"::"git+${url}")
 noextract=(${source[@]%%::*})
 sha256sums=('SKIP')
@@ -24,12 +24,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make build
+  just build
 }
 
 check() {
   cd "$srcdir/$pkgname"
-  make test
+  just test
 }
 
 package() {
