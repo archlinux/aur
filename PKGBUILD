@@ -1,4 +1,5 @@
-# Maintainer: 
+# Maintainer:
+# Contributor: BrianAbdlh <mohammadbrianabdillah@gmail.com>
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: K. Hampf <khampf@users.sourceforge.net>
@@ -6,13 +7,13 @@
 
 pkgname=playonlinux
 pkgver=4.4+29+gd0ae9ce6
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI for managing Windows programs under linux"
 arch=('x86_64')
 url="https://www.playonlinux.com/"
 license=('GPL')
 depends=('wine' 'imagemagick' 'xterm' 'python-wxpython' 'cabextract' 'unzip' 'mesa-utils' 'gnupg'
-         'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip' 'jq' 'perl' python-natsort which)
+         'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip' 'jq' 'perl' python-natsort which python-pyasyncore)
 makedepends=(git)
 #source=(https://www.playonlinux.com/script_files/PlayOnLinux/${pkgver/.0/}/PlayOnLinux_${pkgver/.0/}.tar.gz
 #source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PlayOnLinux/POL-POM-4/archive/refs/tags/4.4.tar.gz"

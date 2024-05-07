@@ -1,7 +1,7 @@
 pkgbase = playonlinux
 	pkgdesc = GUI for managing Windows programs under linux
 	pkgver = 4.4+29+gd0ae9ce6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.playonlinux.com/
 	arch = x86_64
 	license = GPL
@@ -22,6 +22,7 @@ pkgbase = playonlinux
 	depends = p7zip
 	depends = jq
 	depends = perl
+	depends = python-pyasyncore
 	depends = python-natsort
 	depends = which
 	options = !strip
