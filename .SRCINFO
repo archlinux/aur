@@ -1,0 +1,18 @@
+pkgbase = mixerdialog
+	pkgdesc = A simple application to control system volume with fancy visualisation
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/govnorice/mixerdialog
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = pacman>6.1
+	depends = gtk3
+	depends = alsa-lib
+	depends = alsa-utils
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	options = !lto
+	source = https://github.com/govnorice/mixerdialog/releases/download/0.1.2/mixerdialog
+	sha256sums = SKIP
+
+pkgname = mixerdialog
