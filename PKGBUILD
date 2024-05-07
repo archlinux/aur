@@ -1,8 +1,8 @@
 # Maintainer: arch-based <anonymous.negation790@passinbox.com>
-pkgname='fetcher'
+pkgname='fetcher-based'
 pkgver='2.1'
 pkgrel=1
-pkgdesc='A description of your fetcher program'
+pkgdesc='This is a tool to show system information in the real arch linux way.'
 
 arch=('x86_64')  # Adjust if your binary has architecture specific requirements
 

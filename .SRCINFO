@@ -1,9 +1,9 @@
-pkgbase = fetcher
-	pkgdesc = A description of your fetcher program
+pkgbase = fetcher-based
+	pkgdesc = This is a tool to show system information in the real arch linux way.
 	pkgver = 2.1
 	pkgrel = 1
 	arch = x86_64
 	source = https://github.com/arch-based/fetcher-cpp/raw/main/fetcher.tar.gz
 	sha256sums = 3c709094f500bb7ec1ff9cd218419bbc44fd5d4cbd6f29bd54739372f8658bbb
 
-pkgname = fetcher
+pkgname = fetcher-based
