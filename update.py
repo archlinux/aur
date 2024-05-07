@@ -48,5 +48,7 @@ patch_data = {}
 for key in key_list:
     patch_data[key] = product_data[key]
 
+patch_data["enableTelemetry"] = False
+
 with open(patch_path, "w") as patch_file:
     json.dump(patch_data, patch_file, indent='\t')
