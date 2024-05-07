@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-sdl2
-pkgver=2.30.2
+pkgver=2.30.3
 pkgrel=1
 arch=('any')
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) (Android ${_android_arch})"
@@ -25,7 +25,7 @@ makedepends=('android-cmake'
 optdepends=("android-${_android_arch}-alsa-lib: ALSA audio driver")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL2-${pkgver}.tar.gz"{,.sig})
-md5sums=('08667937c83fada423dacc7cd90f3ec8'
+md5sums=('85ceed58290332fa4ef75a3dabfa1b89'
          'SKIP')
 validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
 
@@ -50,7 +50,6 @@ package() {
     source android-env ${_android_arch}
 
     make -C build DESTDIR="$pkgdir" install
-#     rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
