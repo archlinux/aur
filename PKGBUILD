@@ -40,9 +40,4 @@ package() {
   # Move ZSH completions to correct directory
   mv "$pkgdir/usr/local/share/zsh" "$pkgdir/usr/share/"
   rm -rf "$pkgdir/usr/local"
-
-  # Install apparmor profile to allow Electron sandbox to work
-  # This disables user namespace restrictions
-  install -d "$pkgdir/etc/apparmor.d"
-  ln -s /opt/Mullvad\ VPN/resources/apparmor_mullvad "$pkgdir/etc/apparmor.d/mullvad"
 }
