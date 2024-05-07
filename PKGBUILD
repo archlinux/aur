@@ -2,10 +2,10 @@
 pkgdesc="Icons for the X Desktop Environment (XDE)"
 pkgname=xde-icons-git
 _pkgname=xde-icons
-pkgver=1.7.r1.gd93cd9c
-pkgrel=2
+pkgver=1.8.r1.g161539b
+pkgrel=1
 arch=('any')
-license=(CCPL:by-sa)
+license=(CC-BY-SA-1.0)
 url="https://github.com/bbidulock/xde-icons"
 groups=('xde-git')
 provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
