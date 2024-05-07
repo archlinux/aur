@@ -24,6 +24,6 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --no-rebuild --destdir "$pkgdir"
   chmod +x "$pkgdir/usr/bin/$pkgname"
 }
