@@ -1,12 +1,8 @@
 # Maintainer: Manuel Hüsers <aur@huesers.de>
 
-# Based off the discord_arch_electron_wayland PKGBUILD from Stick
-# Based off the discord_arch_electron PKGBUILD from johnnyapol, huyizheng, Thaodan and Zoddo
-# Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00)
-
 pkgname=discord-electron-openasar
 _pkgname=discord
-pkgver=0.0.52+827
+pkgver=0.0.53+827
 _pkgver=${pkgver%%+*}
 pkgrel=1
 _electronver=30
@@ -30,11 +26,11 @@ optdepends=(
 source=("https://dl.discordapp.net/apps/linux/${_pkgver}/${_pkgname}-${_pkgver}.tar.gz"
 	'discord-launcher.sh'
 	"git+https://github.com/goosemod/openasar.git#commit=4f264d860a5a6a32e1862ce26178b9cf6402335d")
-sha512sums=('42ff4b59a0dd846f06a297a1a8b5a1e28f37daa6951b4ce597d103492458c5ae90f69545908cd41238c5ed91b249ad2dd9b9cec3ef4feeb9ad22245c692eaa72'
+sha512sums=('dfc92d477397324383a4656a770c0aac153527002b07bac56ec5e3947443f2ab6d0958b2c508d6cf5ed2ecaff83b64616387b7a2459d340b438c3d73ab0f6f83'
             '9d00f9d2e05c2ba31c930c066f247954700bb0f96f2fc605e61c3973d7dacf962bf372659b71e05e5d8d4e152cc884bf12ec1fb5ecbfc4da55d22ab2591c4c40'
             '055bbe5fbc63a715ab8357db8aabacad282e3d176b48e322d7133a5887291577687456bbfaf7b832d19f13b1a5a373e2c0f6f82664887509feb3c193ee4f1849')
 
-_krisp_b2sum='ef14b1dc86613fdac87e3cd975f020192d9fd4dd5a88e685c3edbb245e343924c75179acb7724d81ae3e5b0b7b5f52d208f3f1a9b1ccd73a7fe06e96662c4e81'
+_krisp_b2sum='c4e49b1a0be64cacd23474c5e474130084755f2de36af01686ce94c6eceea67426b6d6aa81889a418f9d08476476e99d63479b6131d1f7eaef987ecf4d779cf9'
 
 # just in case I get the version wrong
 pkgver() {
