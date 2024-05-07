@@ -1,12 +1,12 @@
 # Maintainer: arch-based <anonymous.negation790@passinbox.com>
 pkgname='fetcher-based'
-pkgver='2.1'
+pkgver='1.1'
 pkgrel=1
 pkgdesc='This is a tool to show system information in the real arch linux way.'
-
-arch=('x86_64')  # Adjust if your binary has architecture specific requirements
-
-# URL for pre-built binary (replace with your download URL)
+arch=('x86_64')
+url="https://github.com/arch-based/fetcher-cpp"
+license=('GPL3')
+depends=('gcc' 'gcc-lib' 'make')
 source=(https://github.com/arch-based/fetcher-cpp/raw/main/fetcher.tar.gz)
 
 # Package Build Function
@@ -20,7 +20,7 @@ build() {
 
 # Package Install Function
 package() {
-	cd "$srcdir/"
+  cd "$srcdir/"
   # Install the binary with proper permissions
   install -Dm 755 usr/bin/fetcher "$pkgdir/usr/bin/fetcher"
 }
