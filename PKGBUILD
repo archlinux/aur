@@ -5,10 +5,10 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libgpg-error
-pkgver=1.48
-pkgrel=3
+pkgver=1.49
+pkgrel=1
 arch=('any')
-pkgdesc="Support library for libgcrypt (Android, ${_android_arch})"
+pkgdesc="Support library for libgcrypt (Android ${_android_arch})"
 url="https://www.gnupg.org"
 license=('LGPL')
 depends=('android-ndk')
@@ -17,7 +17,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"{,.sig}
         '0001-Unversioned-libs.patch')
 # https://www.gnupg.org/download/integrity_check.html
-sha256sums=('89ce1ae893e122924b858de84dc4f67aae29ffa610ebf668d5aa539045663d6f'
+sha256sums=('8b79d54639dbf4abc08b5406fb2f37e669a2dec091dd024fb87dd367131c63a9'
             'SKIP'
             'd109aec757f631d3cda57d396f473338df4d74ee69d940445d474208efc38f17')
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA') # Werner Koch (dist signing 2020)
@@ -28,7 +28,7 @@ prepare() {
     source android-env ${_android_arch}
 
     autoreconf -vfi
-    patch -Np1 -i "../0001-Unversioned-libs.patch"
+    patch -Np1 -i ../0001-Unversioned-libs.patch
 }
 
 build() {
@@ -67,8 +67,8 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}/" install
-    rm -rf "$pkgdir/${ANDROID_PREFIX_BIN}/gpg-error"
-    rm -f "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so.*
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}/gpg-error"
+    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
