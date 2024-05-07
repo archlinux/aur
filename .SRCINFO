@@ -1,6 +1,6 @@
 pkgbase = aihub
 	pkgdesc = A collection of large model capabilities of the client.一款集合多家大模型能力的客户端.
-	pkgver = 1.8.2
+	pkgver = 1.8.5
 	pkgrel = 1
 	url = https://github.com/classfang/AIHub
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = aihub
 	depends = electron30
 	provides = aihub
 	conflicts = aihub
-	source = aihub.tar.gz::https://github.com/classfang/AIHub/archive/refs/tags/v1.8.2.tar.gz
+	source = aihub.tar.gz::https://github.com/classfang/AIHub/archive/refs/tags/v1.8.5.tar.gz
 	source = aihub.sh
-	sha256sums = bac0eed51a2187a45e999d716e792c62ab18feb6c6e74a101b1bc71302f328c3
-	sha256sums = 61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3
+	sha256sums = 6eab81f8ae7ab2e0862a6e78d2522917ceb222bc93b6ec3cc03717a14c5ba480
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
 
 pkgname = aihub
