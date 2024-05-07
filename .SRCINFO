@@ -1,0 +1,14 @@
+pkgbase = fibonacci
+	pkgdesc = A very simple fibonacci sequence implementation
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/AdriDevelopsThings/fibonacci
+	arch = any
+	depends = gmp
+	source = https://adridoesthings.com/pub/fibonacci-1.0.tar.gz
+	source = https://adridoesthings.com/pub/fibonacci-1.0.tar.gz.sig
+	validpgpkeys = 94202C7FD9025BA4C574623981EDEA6080EEE7BF
+	sha256sums = b9f5ab047703809e21a9106588ed04df8e98f531dd16516986ac4ca180c2bf27
+	sha256sums = SKIP
+
+pkgname = fibonacci
