@@ -1,6 +1,6 @@
 pkgbase = r-netdx
 	pkgdesc = Network-based patient classifier
-	pkgver = 1.15.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/netDx
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = r-netdx
 	optdepends = r-rmarkdown
 	optdepends = r-scater
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/netDx_1.15.0.tar.gz
-	sha256sums = 903fe53e3b7840138dc08605e8c0d628c13927493e44ab5725f71a60151b1f5f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/netDx_1.16.0.tar.gz
+	sha256sums = 93885e7a15db9b43c032152c8953de163fecb5b22d0ba952bc06ac0f8b64f001
 
 pkgname = r-netdx
