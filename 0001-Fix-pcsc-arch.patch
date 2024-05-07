@@ -1,0 +1,20 @@
+--- a/meson.build
++++ b/meson.build
+@@ -116,16 +116,7 @@
+   features += 'systemd'
+ endif
+ 
+-target_system = target_machine.system()
+-if target_system == 'darwin'
+-  pcscd_dep += dependency('appleframeworks', modules : ['foundation', 'IOKit'])
+-  pcscd_src += files(['src/hotplug_macosx.c', 'src/dyn_macosx.c'])
+-  conf_data.set_quoted('PCSC_ARCH', 'MacOS')
+-elif target_system == 'linux'
+-  conf_data.set_quoted('PCSC_ARCH', 'Linux')
+-elif target_system == 'netbsd'
+-  conf_data.set_quoted('PCSC_ARCH', 'NetBSD')
+-endif
++conf_data.set_quoted('PCSC_ARCH', 'Linux')
+ pcscd_dep += [polkit_dep, systemd_dep]
+ 
+ features +=  conf_data.get_unquoted('PCSC_ARCH')
