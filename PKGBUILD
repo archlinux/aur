@@ -32,7 +32,7 @@ package_orchis-theme-git() {
 
   cd Orchis-theme
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks primary -d "$pkgdir/usr/share/themes/"
+  ./install.sh -t all --tweaks primary -d "$pkgdir/usr/share/themes"
 
   # Wallpapers
   install -Dm644 wallpaper/*.jpg -t \
@@ -50,7 +50,7 @@ package_orchis-dracula-theme-git() {
 
   cd Orchis-theme
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks primary dracula -d "$pkgdir/usr/share/themes/"
+  ./install.sh -t all --tweaks primary dracula -d "$pkgdir/usr/share/themes"
 }
 
 package_orchis-nord-theme-git() {
@@ -60,5 +60,5 @@ package_orchis-nord-theme-git() {
 
   cd Orchis-theme
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks primary nord -d "$pkgdir/usr/share/themes/"
+  ./install.sh -t all --tweaks primary nord -d "$pkgdir/usr/share/themes"
 }
