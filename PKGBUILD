@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aihub-git
 _pkgname=AIHub
-pkgver=1.8.2.r0.gbc2b6de
+pkgver=1.8.5.r0.g46a5370
 _electronversion=30
 pkgrel=1
 pkgdesc="A collection of large model capabilities of the client.一款集合多家大模型能力的客户端"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -42,11 +42,11 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
