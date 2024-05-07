@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/arch-based/fetcher-cpp"
 license=('GPL3')
 source=(https://github.com/arch-based/fetcher-cpp/raw/main/fetcher.tar.gz)
-sha256sums=('3c709094f500bb7ec1ff9cd218419bbc44fd5d4cbd6f29bd54739372f8658bbb')
+sha256sums=('9559358cbfb570771e3da2768efdbb5aae9fdc4e590e3afce5a5e09a1e5a4b61')
 
 # Package Build Function
 build() {
