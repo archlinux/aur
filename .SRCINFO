@@ -1,6 +1,6 @@
 pkgbase = moneymanagerex-git
 	pkgdesc = MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest commit.
-	pkgver = 1.6.4.r1630.g3296c175e
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = http://www.moneymanagerex.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = moneymanagerex-git
 	makedepends = pkg-config
 	makedepends = rapidjson
 	depends = wxwidgets-gtk3
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	optdepends = cups: for printing support
 	provides = moneymanagerex
 	conflicts = moneymanagerex
