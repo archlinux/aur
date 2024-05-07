@@ -2,7 +2,7 @@
 
 _name="Pogo"
 pkgname=tango-${_name,,}
-pkgver=9.8.3
+pkgver=9.9.0
 _jarfile="${_name}-${pkgver}-SNAPSHOT.jar"
 pkgrel=1
 pkgdesc="The TANGO code generator. It allows to define a TANGO class model"
