@@ -4,7 +4,7 @@
 pkgname=python-transformers
 _pkgname=${pkgname#python-}
 pkgver=4.40.2
-pkgrel=1
+pkgrel=2
 pkgdesc="State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow"
 arch=('any')
 url='https://github.com/huggingface/transformers'
@@ -41,8 +41,7 @@ build() {
 
 check() {
   cd "transformers-$pkgver"
-  PYTHONPATH=$PWD/src
-  python -c 'import transformers'
+  PYTHONPATH=$PWD/src python -c 'import transformers'
 }
 
 package() {
