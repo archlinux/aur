@@ -1,17 +1,15 @@
-# system requirements: BLAT, UCSC hg18 in 2bit format for BLAT
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hiReadsProcessor
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Functions to process LM-PCR reads from 454/Illumina data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Functions to process LM-PCR reads from 454/Illumina data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-biocgenerics
   r-biocparallel
   r-biostrings
@@ -19,6 +17,7 @@ depends=(
   r-genomicalignments
   r-genomicranges
   r-hiannotator
+  r-pwalign
   r-readxl
   r-soniclength
 )
@@ -28,14 +27,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ba8924a92f80f6aefa9f64070d5806428c15bd8430410ffdc94de54130246f36')
+md5sums=('a77515300961f592ea26eb818b1b6a32')
+b2sums=('86c4fde4bee6e9fa5b2b5f349d38a53de47ef1c6172ee9030ca0ae03dc0a8303e7e3d5ae0140d9b53ab2cd423af6e0113f52b63a9b86aa6196950c58bea10906')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
