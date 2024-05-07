@@ -1,7 +1,7 @@
 # Maintainer: Diablo (https://github.com/progzone122) (https://t.me/DiabloSat)
 pkgname=archarchive
-pkgver=0.1.0
-pkgrel=1
+pkgver=1.0.0
+pkgrel=2
 pkgdesc="A utility to quickly rollback an arch linux system using ALA (a.k.a Arch Linux Archive)"
 arch=('x86_64')
 url="https://github.com/govnorice/archarchive"
