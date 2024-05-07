@@ -1,0 +1,4 @@
+[gmsh-bin]
+source = "regex"
+regex = "gmsh-([0-9].[0-9][0-9].[0-9]+)-Linux64-sdk.tgz"
+url = "https://gmsh.info/bin/Linux/"
