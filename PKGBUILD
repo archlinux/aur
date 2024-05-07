@@ -6,7 +6,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-poppler
-pkgver=24.02.0
+pkgver=24.03.0
 pkgrel=1
 arch=('any')
 pkgdesc="PDF rendering library based on xpdf 3.0 (Android ${_android_arch})"
@@ -30,7 +30,7 @@ makedepends=('android-cmake'
 optdepends=("android-${_android_arch}-glib2: libpoppler-glib")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://poppler.freedesktop.org/poppler-${pkgver}.tar.xz")
-sha256sums=('19187a3fdd05f33e7d604c4799c183de5ca0118640c88b370ddcf3136343222e')
+md5sums=('2d50c3c8e0011d1fa14572c744cd33bb')
 
 build() {
     cd "${srcdir}/poppler-${pkgver}"
@@ -84,5 +84,5 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
