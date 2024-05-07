@@ -20,8 +20,9 @@ build() {
 
 # Package Install Function
 package() {
+	cd "$srcdir/"
   # Install the binary with proper permissions
-  install -Dm 755 fetcher "$pkgdir/usr/bin/fetcher"
+  install -Dm 755 usr/bin/fetcher "$pkgdir/usr/bin/fetcher"
 }
 
 sha256sums=('3c709094f500bb7ec1ff9cd218419bbc44fd5d4cbd6f29bd54739372f8658bbb')
