@@ -16,7 +16,7 @@ source=(
   launcher
 )
 sha256sums=(
-  '7cff020f2f250da4bb02e7da56d8f98f9bdc38618ca13ad9f455b049402c47f0'
+  'dad9ec461d97737588fb0e9eebc91ac953bdf308d55de0b6b4dada208dd4456d'
   'ac00d9dd4e3ed83af078296585b3201f03b0c0a2c0b23fe1705ce3abe648a713'
 )
 
