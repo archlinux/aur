@@ -1,7 +1,7 @@
 pkgbase = bubblewrap-overlayfs
 	pkgdesc = Unprivileged sandboxing tool (with overlay enabled)
 	pkgver = 0.9.0.r0.g8e51677
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/containers/bubblewrap
 	arch = x86_64
 	license = LGPL-2.0-or-later
@@ -16,8 +16,8 @@ pkgbase = bubblewrap-overlayfs
 	source = git+https://github.com/containers/bubblewrap#commit=8e51677abd7e3338e4952370bf7d902e37d8cbb6
 	source = bubblewrap-overlayfs-overlayfs.patch::https://github.com/containers/bubblewrap/pull/547.patch
 	sha256sums = 866b405721bf9bb3f6f1154e14517a6d4708f07673c60b78cc265c91a56c4289
-	sha256sums = b00f3c5e12ef4856a3bde21ea4be04658465062cc4af85928e05e6fbbfe628b3
+	sha256sums = 508ca9db98d61be50904e126a30550ae1527ee6801767ba204390f88127b2f8c
 
 pkgname = bubblewrap-overlayfs
-	provides = bubblewrap=0.9.0.r0.g8e51677-1
+	provides = bubblewrap=0.9.0.r0.g8e51677-2
 	conflicts = bubblewrap

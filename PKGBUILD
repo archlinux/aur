@@ -4,7 +4,7 @@
 _reponame=bubblewrap
 pkgname=${_reponame}-overlayfs
 pkgver=0.9.0.r0.g8e51677
-pkgrel=1
+pkgrel=2
 pkgdesc='Unprivileged sandboxing tool (with overlay enabled)'
 url='https://github.com/containers/bubblewrap'
 arch=(x86_64)
@@ -26,9 +26,9 @@ source=(
   "git+$url#commit=$_commit"
   "$pkgname-overlayfs.patch::$url/pull/547.patch"
 )
-  
+
 sha256sums=('866b405721bf9bb3f6f1154e14517a6d4708f07673c60b78cc265c91a56c4289'
-            'b00f3c5e12ef4856a3bde21ea4be04658465062cc4af85928e05e6fbbfe628b3')
+            '508ca9db98d61be50904e126a30550ae1527ee6801767ba204390f88127b2f8c')
 
 pkgver() {
 	cd "$_reponame"
@@ -55,7 +55,7 @@ check() {
 package() {
   provides=("bubblewrap=$pkgver-$pkgrel")
   conflicts=(bubblewrap)
-  
+
   meson install -C build --destdir "$pkgdir"
 }
 
