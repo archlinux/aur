@@ -1,6 +1,6 @@
 pkgbase = wasm-component-ld
 	pkgdesc = Command line linker for creating WebAssembly components
-	pkgver = 0.3.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/bytecodealliance/wasm-component-ld
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = wasm-component-ld
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	source = git+https://github.com/bytecodealliance/wasm-component-ld.git#commit=8e54a44a36e6fa5c15231592e09b5fac5a0adb5a
+	source = git+https://github.com/bytecodealliance/wasm-component-ld.git#commit=ef524ad0747ebe0060feb5060753642ea98bad4b
 	sha256sums = SKIP
 
 pkgname = wasm-component-ld

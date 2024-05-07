@@ -1,6 +1,6 @@
 pkgname=wasm-component-ld
-pkgver=0.3.0
-_commit=8e54a44a36e6fa5c15231592e09b5fac5a0adb5a
+_commit=ef524ad0747ebe0060feb5060753642ea98bad4b
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Command line linker for creating WebAssembly components"
 arch=(x86_64)
@@ -14,7 +14,6 @@ depends=(
 gcc-libs
 glibc
 )
-#options=(!lto)  # see https://github.com/briansmith/ring/issues/1444 and https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20#note_171886
 source=("git+https://github.com/bytecodealliance/wasm-component-ld.git#commit=${_commit}")
 sha256sums=('SKIP')
 
