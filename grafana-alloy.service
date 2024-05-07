@@ -1,0 +1,19 @@
+[Unit]
+Description=OpenTelemetry Collector distribution with programmable pipelines
+Documentation=https://grafana.com/docs/alloy
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Restart=always
+User=grafana-alloy
+Environment=HOSTNAME=%H
+EnvironmentFile=/etc/default/grafana-alloy
+WorkingDirectory=/var/lib/grafana-alloy
+ExecStart=/usr/bin/grafana-alloy run $CUSTOM_ARGS --storage.path=/var/lib/grafana-alloy/data $CONFIG_FILE
+ExecReload=/usr/bin/env kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

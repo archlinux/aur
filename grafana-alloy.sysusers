@@ -1,0 +1,2 @@
+u grafana-alloy - "grafana-alloy user" /var/lib/grafana-alloy
+m grafana-alloy systemd-journal
