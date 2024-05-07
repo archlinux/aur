@@ -9,8 +9,8 @@ pkgdesc="The TANGO code generator. It allows to define a TANGO class model"
 arch=('any')
 url="https://gitlab.com/tango-controls/${_name}"
 license=('GPL-3.0-or-later')
-depends=('java-runtime=11' jdk11-openjdk sh)
-makedepends=(maven)
+depends=('java-runtime=17' sh)
+makedepends=('java-environment=17' maven)
 source=(
   https://gitlab.com/tango-controls/${_name,,}/-/archive/${pkgver}/${_name,,}-${pkgver}.tar.gz
   launcher
