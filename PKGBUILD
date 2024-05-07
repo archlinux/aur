@@ -5,7 +5,7 @@
 # Contributor: Emanuel Fontelles ("emanuelfontelles") <emanuelfontelles@hotmail.com>
 
 pkgname=apache-spark
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="A unified analytics engine for large-scale data processing"
 arch=('any')
@@ -17,7 +17,7 @@ source=("https://dlcdn.apache.org/spark/spark-$pkgver/spark-$pkgver-bin-hadoop3.
         'apache-spark.sh'
         'apache-spark-master.service'
         'apache-spark-worker@.service')
-sha256sums=('ac064ec620129b4b9630e180e25ac2b71a8ccd4c6912bf5b5631943b742f0379'
+sha256sums=('5df15f8027067c060fe47ebd351a1431a61dbecc9c28b8dd29e2c6e1935c23eb'
             '0cc82baad4d878d4e2bc5864a00b99d38f2906781ea47ee6282546788e797049'
             'de54c025ca8ce34a7b4fd95ec7b8d5dec44582787a0bd8da09232f26e2182c9a'
             '47e6c154daecf7631ac9a33fe53a76888070c823c4381fcbde8d98377e586505')
@@ -28,7 +28,7 @@ prepare() {
     cd spark-${pkgver}-bin-hadoop3
 
     # Remove Python and R files
-    rm -rf python R
+    # rm -rf python R
 
     # Remove windows batch files
     rm bin/*.cmd
