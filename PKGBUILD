@@ -12,6 +12,7 @@ arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
 conflicts=(kwin)
+provides=(kwin)
 depends=(breeze
          gcc-libs
          glibc
@@ -90,7 +91,7 @@ sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  git apply "$srcdir/explicit-sync.patch"
+  patch -Np1 < "$srcdir/explicit-sync.patch"
 }
 
 build() {
