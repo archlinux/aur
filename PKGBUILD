@@ -3,12 +3,16 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: kappa <kappacurve@gmail.com>
 
+## useful links
+# https://github.com/dgud/wings
+# https://www.wings3d.com
+
 _pkgname="wings3d"
 pkgname="$_pkgname"
 pkgver=2.3
 pkgrel=2
 pkgdesc='3D modeler using the winged edge data structure'
-url='http://www.wings3d.com/' # https is not available
+url="https://www.wings3d.com/"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
 
@@ -34,7 +38,7 @@ sha256sums=(
 )
 
 prepare() {
-  cat > "$_pkgname.sh" <<'END'
+  cat > "$_pkgname.sh" << 'END'
 #!/usr/bin/env bash
 GDK_BACKEND=x11 exec /usr/bin/erl -noinput -smp \
   -pa /usr/lib/wings3d/ebin \
