@@ -1,0 +1,13 @@
+pkgbase = stmps-git
+	pkgdesc = Subsonic Terminal Music Player S
+	pkgver = 581b478
+	pkgrel = 1
+	url = https://github.com/spezifisch/stmps
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	depends = mpv
+	source = git+https://github.com/spezifisch/stmps
+	sha256sums = SKIP
+
+pkgname = stmps-git
