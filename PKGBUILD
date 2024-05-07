@@ -24,3 +24,4 @@ package() {
   install -Dm 755 usr/bin/fetcher "$pkgdir/usr/bin/fetcher"
 }
 # sha256sums=('9559358cbfb570771e3da2768efdbb5aae9fdc4e590e3afce5a5e09a1e5a4b61')
+sha256sums=('aecee5ed5f9752050ed84e4da77827b5e570cb3680075e9416ba6eb818863ad5')

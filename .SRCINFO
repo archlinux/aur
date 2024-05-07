@@ -6,5 +6,6 @@ pkgbase = fetcher-based
 	arch = x86_64
 	license = GPL3
 	source = https://github.com/arch-based/fetcher-cpp/raw/main/fetcher.tar.gz
+	sha256sums = aecee5ed5f9752050ed84e4da77827b5e570cb3680075e9416ba6eb818863ad5
 
 pkgname = fetcher-based
