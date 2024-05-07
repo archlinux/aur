@@ -88,7 +88,8 @@
 					"pathGlob": "{**/*.java}",
 					"important": true,
 					"whenNotInstalled": [
-						"ASF.apache-netbeans-java"
+						"ASF.apache-netbeans-java",
+						"Oracle.oracle-java"
 					]
 				},
 				{
@@ -97,7 +98,8 @@
 					],
 					"important": true,
 					"whenNotInstalled": [
-						"ASF.apache-netbeans-java"
+						"ASF.apache-netbeans-java",
+						"Oracle.oracle-java"
 					]
 				}
 			]
@@ -302,13 +304,6 @@
 				}
 			]
 		},
-		"ms-vscode.vscode-typescript-tslint-plugin": {
-			"onFileOpen": [
-				{
-					"pathGlob": "{**/tslint.json}"
-				}
-			]
-		},
 		"bmewburn.vscode-intelephense-client": {
 			"onFileOpen": [
 				{
@@ -352,13 +347,6 @@
 			]
 		},
 		"donjayamanne.githistory": {
-			"onFileOpen": [
-				{
-					"pathGlob": "{**/.gitignore,**/.git}"
-				}
-			]
-		},
-		"felipecaputo.git-project-manager": {
 			"onFileOpen": [
 				{
 					"pathGlob": "{**/.gitignore,**/.git}"
@@ -484,13 +472,6 @@
 				}
 			]
 		},
-		"GoogleCloudTools.cloudcode": {
-			"onFileOpen": [
-				{
-					"pathGlob": "{**/skaffold.yaml}"
-				}
-			]
-		},
 		"Oracle.oracledevtools": {
 			"onFileOpen": [
 				{
@@ -505,7 +486,7 @@
 				}
 			]
 		},
-		"Pivotal.vscode-boot-dev-pack": {
+		"vmware.vscode-boot-dev-pack": {
 			"onFileOpen": [
 				{
 					"pathGlob": "{**/application.properties}"
@@ -614,10 +595,11 @@
 					"important": true,
 					"isExtensionPack": true,
 					"whenNotInstalled": [
-						"ASF.apache-netbeans-java"
+						"ASF.apache-netbeans-java",
+						"Oracle.oracle-java"
 					]
 				},
-				"Pivotal.vscode-boot-dev-pack": {
+				"vmware.vscode-boot-dev-pack": {
 					"name": "Spring Boot Extension Pack",
 					"isExtensionPack": true
 				}
@@ -632,7 +614,8 @@
 					"important": true,
 					"isExtensionPack": true,
 					"whenNotInstalled": [
-						"ASF.apache-netbeans-java"
+						"ASF.apache-netbeans-java",
+						"Oracle.oracle-java"
 					]
 				}
 			}
