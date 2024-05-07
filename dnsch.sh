@@ -13,7 +13,7 @@ fi
 
 # Verify that argument is provided
 if [[ -z $1 ]]; then
-    echo "Usage: $0 {g|sh|ag|cf|403|bg}"
+    echo "Usage: $0 {g|sh|ag|cf|403|bg|rd|el|clear}"
     exit 1
 fi
 
@@ -41,11 +41,14 @@ case $1 in
         nameservers=("nameserver 10.202.10.10" "nameserver 10.202.10.11")
         ;;
     el)
-        nameservers=("nameserver 78.157.42.101" "nameserver 78.157.42.100")
+        nameservers=("nameserver 78.157.42.100" "nameserver 78.157.42.101")
+        ;;
+    clear)
+        nameservers=()
         ;;
     *)
         echo "Invalid option: $1"
-        echo "Usage: $0 {g|sh|ag|cf|403|bg}"
+        echo "Usage: $0 {g|sh|ag|cf|403|bg|rd|el|clear}"
         exit 1
         ;;
 esac
@@ -53,13 +56,14 @@ esac
 # Remove all existing nameservers and add new ones atomically
 # This avoids potential issues with an empty or partial file
 {
-    > /etc/resolv.conf
+    > /etc/resolv.conf.new
     for ns in "${nameservers[@]}"; do
         echo "$ns"
     done
 } > /etc/resolv.conf.new
 
-mv /etc/resolv.conf.new /etc/resolv.conf
+# Safely move the new file to the actual resolv.conf location
+mv -f /etc/resolv.conf.new /etc/resolv.conf || { echo "Failed to update resolv.conf"; exit 1; }
 
 # Confirm the changes
 echo "The resolv.conf file has been updated:"
