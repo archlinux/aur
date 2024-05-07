@@ -2,8 +2,8 @@
 _appname=typora
 pkgname="${_appname}-free-with-plugin"
 _pkgname=Typora
-pkgver=0.11.18
-_pluginver=1.8.33
+pkgver=1.8.34
+_typoraver=0.11.18
 _electronversion=13
 pkgrel=11
 pkgdesc="A minimal markdown editor and reader(free version). with obgnail/typora_plugin plugin."
@@ -31,11 +31,11 @@ depends=(
     'alsa-lib'
 )
 source=(
-    "${_appname}-plugin-${_pluginver}.tar.gz::${_pluginurl}/archive/refs/tags/${_pluginver}.tar.gz"
+    "${_appname}-plugin-${pkgver}.tar.gz::${_pluginurl}/archive/refs/tags/${pkgver}.tar.gz"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_dlurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_dlurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
-sha256sums=('c2934aeca2b558efb0b26093073ddf1436665978cf3747b2ee8224cdb7ee8058')
+source_aarch64=("${pkgname%-bin}-${_typoraver}-aarch64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${_typoraver}-x86_64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_amd64.deb")
+sha256sums=('72732fb9e60e90c05cc41958826c30c2203602b6e5d4d0e57d798bc210be0d9b')
 sha256sums_aarch64=('12ad46732c4da7d9414701c584fee942baf83b89165563f18ba03d859eb59ad8')
 sha256sums_x86_64=('a202935a754c4b7344cc947db143e12885e4a716ca5f70f607f0318c346bb6c6')
 build() {
@@ -44,7 +44,7 @@ build() {
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
     sed 's|<script src="./appsrc/window/frame.js" defer="defer"></script>|<script src="./appsrc/window/frame.js" defer="defer"></script><script src="./plugin/index.js" defer="defer"></script>|g' \
         -i "${srcdir}/usr/share/${_appname}/resources/window.html"
-    cp -r "${srcdir}/${_appname}_plugin-${_pluginver}/"{assets,plugin} "${srcdir}/usr/share/${_appname}/resources/"
+    cp -r "${srcdir}/${_appname}_plugin-${pkgver}/"{assets,plugin} "${srcdir}/usr/share/${_appname}/resources/"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{/opt/"${pkgname%-bin}",usr/bin}
