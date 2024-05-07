@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scanMiRApp
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='scanMiR shiny application'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="scanMiR shiny application"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-annotationdbi
   r-annotationfilter
   r-annotationhub
@@ -36,13 +35,15 @@ depends=(
   r-shiny
   r-shinycssloaders
   r-shinydashboard
-  r-waiter
   r-shinyjqui
+  r-txdbmaker
+  r-waiter
 )
 optdepends=(
   r-biocstyle
   r-bsgenome.hsapiens.ucsc.hg38
   r-bsgenome.mmusculus.ucsc.mm10
+  r-bsgenome.mmusculus.ucsc.mm39
   r-bsgenome.rnorvegicus.ucsc.rn6
   r-knitr
   r-rmarkdown
@@ -50,14 +51,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c9b97ba39395ca75fd844b0cb9e397cb733115961697336df628bb5049dd36e6')
+md5sums=('ffd8892c002d452584bbf670cd293e25')
+b2sums=('07e30009918f36cc2d11680aa77f057f2baf2cbeaa6b31b4dcdcc7249764cd1cfd13e72aa0160a7ab24706e11c19237f5eb119392e82a6d1b20c936e7af6af9e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
