@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=normcap
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
@@ -9,6 +9,7 @@ license=('GPL-3.0-or-later')
 depends=(
   'hicolor-icon-theme'
   'leptonica'
+  'libnotify'
   'pyside6'
   'python-jeepney'
   'python-pytesseract'
@@ -24,7 +25,8 @@ makedepends=(
 optdepends=(
   'qt6-wayland: Required in Wayland sessions'
   'wl-clipboard: clipboard access for Wayland'
-  'xclip: clipboard access for Xorg, AwesomeWM and GNOME 45'
+  'xclip: clipboard access for Xorg'
+  'xsel: alternative Xorg clipboard handler'
 )
 #checkdepends=(
 #  'python-pytest-instafail' ## TODO
@@ -32,10 +34,11 @@ optdepends=(
 #  'python-pytest-qt'
 #  'python-pytest-xvfb'
 #  'xclip'
+#  'xdg-desktop-portal'
 #)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('e483d1fa1c2612b48d812811400b4b64c1d7ed9d7edd3971a0fb121ce8fcae74'
+sha256sums=('9657dd87e04e065df42d16369d5ac553d75f28845a470bcbbb16b7618556b469'
             '29992fdb19773faa7582e44fe4394d4772984d5b7b9b7b347617c387f0a260f9')
 
 build() {
@@ -45,7 +48,15 @@ build() {
 
 #check() {
 #  cd "$pkgname-$pkgver"
-#  pytest
+#  export HOME=$(mktemp -d)
+
+#  # setup a virtual x11 display
+#  export DISPLAY=:$((2000 + $RANDOM % 1000))
+#  xvfb-run ${DISPLAY} -screen 5 1024x768x8 & xvfb_pid=$! dbus-run-session pytest
+
+#  # cleanup the virtual x11 display
+#  sleep 0.5
+#  kill ${xvfb_pid}
 #}
 
 package() {
