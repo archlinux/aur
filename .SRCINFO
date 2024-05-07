@@ -1,0 +1,14 @@
+pkgbase = bosh-7-cli
+	pkgdesc = BOSH command line interface tool
+	pkgver = 7.5.6
+	pkgrel = 1
+	url = https://bosh.io/
+	arch = i686
+	arch = x86_64
+	license = Apache2
+	makedepends = go
+	optdepends = openssh: bosh ssh
+	source = https://github.com/cloudfoundry/bosh-cli/archive/v7.5.6.tar.gz
+	sha256sums = 9cb4d8652d6bd3700e34170afca3cee31143e70ac588dd310b4122c2f1be53c6
+
+pkgname = bosh-7-cli
