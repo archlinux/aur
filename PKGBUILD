@@ -1,8 +1,8 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=sourcegit
-pkgver=8.10
-pkgrel=2
+pkgver=8.11
+pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
 url='https://github.com/sourcegit-scm/sourcegit'
@@ -12,7 +12,7 @@ makedepends=('dotnet-sdk-8.0')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz"
         'sourcegit.desktop')
-sha256sums=('bc136bad259a6fef14dbd9b2cda48e6666873cc7ecbf63ae5a73a9fbb6415761'
+sha256sums=('3ff54a17de9973f884defefddda76dde9456b23557985fb1cf6cb36ba5f9b4d4'
             '3488ee13a4ca1bae85c35f866d046304d8716a64c46cadb2576cb8b4ae44b058')
 
 
