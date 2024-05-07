@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=IRanges
-_bcver=2.36.0
+_bcver=2.38.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -28,7 +28,7 @@ optdepends=(
     "r-xvector"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=('4bf27cd83c6969c029afd25b61f06e883f4dc93e378821325168d3f983a5473571c00b2382973bf88bc24d9b637d83ddee4eb2f99a7bb9063f4d998cf751fadd')
+b2sums=("3ae9be65ebbd105d5309288eb4a21525baf3f2add31973f4a433d685c499a8cb932ce43bc4e6aa23268520b3cb342efbc91243ff760de18c25a40f75df28d54b")
 
 build() {
     R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
