@@ -1,0 +1,18 @@
+pkgbase = r-codingmatrices
+	pkgdesc = Alternative Factor Coding Matrices for Linear Model Formulae
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=codingMatrices
+	arch = any
+	license = GPL-2.0-or-later
+	depends = r-fractional
+	optdepends = r-car
+	optdepends = r-dplyr
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-xtable
+	source = https://cran.r-project.org/src/contrib/codingMatrices_0.4.0.tar.gz
+	md5sums = b7d15a0ce93cab8e8fb032ef8f4bc0e3
+	b2sums = 2ef7720cae7b1886c9c7554985b57f39d3c51f995f6f9eb6514ce786e61728bef292699aac2080fa96aa8dcf557de301c3b2fb55a5c8de0d76314832f3cec7a5
+
+pkgname = r-codingmatrices
