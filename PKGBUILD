@@ -3,8 +3,8 @@
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=blis
-pkgver=0.9.0
-pkgrel=4
+pkgver=1.0
+pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software Framework"
 arch=('i686' 'x86_64')
 url="https://github.com/flame/blis"
@@ -15,7 +15,7 @@ provides=('blas' 'cblas')
 conflicts=('blas' 'cblas')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/flame/blis/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1135f664be7355427b91025075562805cdc6cc730d3173f83533b2c5dcc2f308')
+sha256sums=('9c12972aa1e50f64ca61684eba6828f2f3dd509384b1e41a1e8a9aedea4b16a6')
 
 
 build() {
