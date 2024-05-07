@@ -2,7 +2,7 @@
 
 pkgname=proton-vpn-gtk-app
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ProtonVPN GTK app, Maintained by Community"
 arch=("any")
 url="https://github.com/ProtonVPN/proton-vpn-gtk-app"
@@ -54,4 +54,8 @@ package() {
 	cp ./rpmbuild/SOURCES/proton-vpn-logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
 	
 	python setup.py install --root="$pkgdir" --optimize=1
+	
+	echo "Cleaning version.py and versions.yml copied by mistake by setup.py"
+	rm "${pkgdir}/usr/version.py"
+	rm "${pkgdir}/usr/versions.yml"
 }
