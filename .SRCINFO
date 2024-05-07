@@ -1,6 +1,6 @@
 pkgbase = recompress-images-git
 	pkgdesc = Command-line tool to recompress PNG and JPEG images for smaller size
-	pkgver = 23.02.r21.g35b1c6b
+	pkgver = 23.09.r112.gf79138a
 	pkgrel = 1
 	url = https://github.com/trizen/perl-scripts
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = recompress-images-git
 	depends = perl-file-mimeinfo
 	depends = jpegoptim
 	depends = pngquant
-	optdepends = exiftool: alternative to perl-file-mimeinfo
+	optdepends = perl-image-exiftool: alternative to perl-file-mimeinfo (with --exiftool)
 	source = git+https://github.com/trizen/perl-scripts.git
 	sha512sums = SKIP
 
