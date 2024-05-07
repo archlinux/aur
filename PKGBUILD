@@ -3,7 +3,7 @@
 _name="Pogo"
 pkgname=tango-${_name,,}
 pkgver=9.9.0
-_jarfile="${_name}-${pkgver}-SNAPSHOT.jar"
+_jarfile="${_name}-${pkgver}.jar"
 pkgrel=1
 pkgdesc="The TANGO code generator. It allows to define a TANGO class model"
 arch=('any')
@@ -23,14 +23,17 @@ sha256sums=(
 prepare() {
   sed -i "s/jar_file/$_jarfile/" launcher
   sed -i "s/package_name/$pkgname/" launcher
+  sed -i "s/9.8.5-SNAPSHOT/$pkgver/" ${_name,,}-${pkgver}/pom.xml
+  sed -i "s/9.8.5-SNAPSHOT/$pkgver/" ${_name,,}-${pkgver}/org.tango.pogo/pom.xml
+  sed -i "s/9.8.5-SNAPSHOT/$pkgver/" ${_name,,}-${pkgver}/org.tango.pogo.gui/pom.xml
 }
 
 build() {
-  cd ${_name,,}-${pkgver}/fr.esrf.tango.pogo.parent
+  cd ${_name,,}-${pkgver}
   mvn package
 }
 
 package() {
-  install -D -m755 ${srcdir}/${_name,,}-${pkgver}/org.tango.pogo.pogo_gui/target/${_jarfile} ${pkgdir}/usr/share/java/${pkgname}/${_jarfile}
+  install -D -m755 ${srcdir}/${_name,,}-${pkgver}/org.tango.pogo.gui/target/${_jarfile} ${pkgdir}/usr/share/java/${pkgname}/${_jarfile}
   install -D -m755 ${srcdir}/launcher ${pkgdir}/usr/bin/${pkgname}
 }
