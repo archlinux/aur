@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${_name}")
 conflicts=("${_name}")
 source=("https://aka.ms/downloadazcopy-v10-linux")
-sha256sums=('69a72297736edd1afa068efc2ee0704baa819c49d6ca9d1a2950a5fff18b8431')
+sha256sums=('4932dd2bd3b97631938ab2bf9f73b73a7a2a9b62f0daa9341006fc64c4833883')
 
 package() {
     install -Dm755 "${_name}_linux_amd64_${pkgver}/${_name}" "$pkgdir"/usr/bin/"${_name}"
