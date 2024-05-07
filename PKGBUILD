@@ -1,6 +1,6 @@
 # Maintainer: ComixHe <heyuming@deepin.org>
 pkgname=dtk6systemsettings-git
-pkgver=6.0.1.r4.gbacf480
+pkgver=6.0.2.r0.g9aeeb77
 pkgrel=1
 sourcename=dtk6systemsettings
 sourcetars=("$sourcename"_"$pkgver".tar.xz)
@@ -9,7 +9,7 @@ pkgdesc='Qt-based development library for system settings on Deepin.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtk6systemsettings"
 license=('LGPL3')
-depends=('deepin-desktop-base-git' 'dtk6core-git' 'dtkcommon-git')
+depends=('deepin-desktop-base' 'dtk6core' 'dtkcommon')
 makedepends=('git' 'qt6-tools' 'qt6-base' 'ninja' 'cmake' 'doxygen' 'graphviz')
 conflicts=('dtk6systemsettings')
 provides=('dtk6systemsettings')
