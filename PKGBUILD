@@ -7,11 +7,11 @@ _android_arch=x86
 pkgbase=android-${_android_arch}-sqlite
 pkgname=("android-${_android_arch}-sqlite"
          "android-${_android_arch}-sqlite-tcl")
-pkgver=3.45.2
-_srcver=3450200
+pkgver=3.45.3
+_srcver=3450300
 pkgrel=1
 arch=('any')
-pkgdesc="A C library that implements an SQL database engine (Android, ${_android_arch})"
+pkgdesc="A C library that implements an SQL database engine (Android ${_android_arch})"
 license=('LicenseRef-Sqlite')
 url="https://www.sqlite.org/"
 makedepends=('android-configure'
@@ -20,24 +20,24 @@ makedepends=('android-configure'
              "android-${_android_arch}-zlib")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.sqlite.org/2024/sqlite-src-${_srcver}.zip")
-sha256sums=('4a45a3577cc8af683c4bd4c6e81a7c782c5b7d5daa06175ea2cb971ca71691b1')
+md5sums=('18ebfa01bd89454602fac7d82fdc9df2')
 
 prepare() {
-    cd "${srcdir}/sqlite-src-$_srcver"
+    cd "${srcdir}/sqlite-src-${_srcver}"
     source android-env ${_android_arch}
 
     autoreconf -vfi
 }
 
 build() {
-    cd "${srcdir}/sqlite-src-$_srcver"
+    cd "${srcdir}/sqlite-src-${_srcver}"
     source android-env ${_android_arch}
 
     # this uses malloc_usable_size, which is incompatible with fortification level 3
     export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
     export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
-    export CPPFLAGS="$CPPFLAGS \
+    export CPPFLAGS="${CPPFLAGS} \
         -DSQLITE_ENABLE_COLUMN_METADATA=1 \
         -DSQLITE_ENABLE_UNLOCK_NOTIFY \
         -DSQLITE_ENABLE_DBSTAT_VTAB=1 \
@@ -59,12 +59,12 @@ build() {
         --enable-rtree \
         --enable-json1 \
         --enable-session \
-        TCLLIBDIR="${ANDROID_PREFIX_LIB}/sqlite$pkgver"
+        TCLLIBDIR="${ANDROID_PREFIX_LIB}/sqlite${pkgver}"
     make $MAKEFLAGS
 }
 
 package_android-x86-sqlite() {
-    pkgdesc="A C library that implements an SQL database engine (Android, ${_android_arch})"
+    pkgdesc="A C library that implements an SQL database engine (Android ${_android_arch})"
     depends=("android-${_android_arch}-readline"
              "android-${_android_arch}-zlib")
 
@@ -73,7 +73,7 @@ package_android-x86-sqlite() {
 
     make DESTDIR="${pkgdir}" install
     rm -rf "$pkgdir/${ANDROID_PREFIX_BIN}"
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
 
     # split out tcl extension
@@ -82,12 +82,12 @@ package_android-x86-sqlite() {
 }
 
 package_android-x86-sqlite-tcl() {
-    pkgdesc="sqlite Tcl Extension Architecture (TEA) (Android, ${_android_arch})"
+    pkgdesc="sqlite Tcl Extension Architecture (TEA) (Android ${_android_arch})"
     depends=("android-${_android_arch}-sqlite")
 
     cd "${srcdir}/sqlite-src-$_srcver"
     source android-env ${_android_arch}
 
     install -m755 -d "${pkgdir}/${ANDROID_PREFIX_LIB}"
-    mv -f "$srcdir"/tcl/* "${pkgdir}/${ANDROID_PREFIX_LIB}"
+    mv -f "${srcdir}/tcl"/* "${pkgdir}/${ANDROID_PREFIX_LIB}"
 }
