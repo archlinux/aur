@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev at mail.ru>
 pkgname=comet-ms-bin
-pkgver=2023.01.1
+pkgver=2024.01.0
 pkgrel=1
 pkgdesc="Comet: an open source tandem mass spectrometry (MS/MS) sequence database search tool"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('Apache')
 depends=()
 makedepends=()
 optdepends=()
-source=("comet-${pkgver}.linux.exe::https://github.com/UWPR/Comet/releases/download/V${pkgver}/comet.linux.exe")
-sha1sums=('cd0575647a24d00158fbad72ad9302df1db7290d')
+source=("comet-${pkgver}.linux.exe::https://github.com/UWPR/Comet/releases/download/v${pkgver}/comet.linux.exe")
+sha1sums=('d689cea388e7641e26ea1be46ff2f4a9d885e108')
 
 package() {
     install -D "$srcdir/comet-${pkgver}.linux.exe" "$pkgdir/usr/bin/comet.exe"
