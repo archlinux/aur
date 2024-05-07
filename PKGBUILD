@@ -5,19 +5,21 @@
 
 pkgname=dia-git
 _pkgname=dia
-pkgver=6867.9c28c29ed
+pkgver=6871.4139f5aff
 pkgrel=1
 pkgdesc="A GTK+ based diagram creation program"
 arch=('x86_64')
 license=('GPL-2.0-or-later')
-url="http://live.gnome.org/Dia"
+url="https://wiki.gnome.org/action/show/Apps/Dia"
 depends=('poppler' 'python-gobject' 'libxslt' 'gtk3' 'freetype2' 'graphene' 'libemf')
-makedepends=('git' 'cmake' 'meson' 'intltool') # 'dblatex' 'docbook-xsl')
+makedepends=('git' 'meson' 'intltool' 'dblatex' 'appstream-glib')
 provides=('dia')
 conflicts=('dia')
 options=('docs' '!emptydirs')
-source=("git+https://gitlab.gnome.org/GNOME/dia.git")
-md5sums=('SKIP')
+source=("git+https://gitlab.gnome.org/GNOME/dia.git"
+        "git+https://gitlab.gnome.org/ZanderBrown/xpm-pixbuf.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -27,10 +29,11 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   sed -i "s/cc.find_library('ogdf'/cc.find_library('OGDF'/g" meson.build
+  ln -s ../../xpm-pixbuf subprojects
 }
 
 build() {
-  arch-meson -Ddoc=false build ${_pkgname}
+  arch-meson -Ddoc=true build ${_pkgname}
   ninja -C build
 }
 
