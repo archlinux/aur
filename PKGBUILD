@@ -14,7 +14,6 @@ source=("$_archive.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
 build() {
-	killall wpe-daemon
 	cd "$_archive"
 	cd daemon
 	npm install
