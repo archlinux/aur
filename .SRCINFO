@@ -1,12 +1,12 @@
 pkgbase = gnucash-select
 	pkgdesc = GnuCash File Selector
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/bulletmark/gnucash-select
 	arch = any
 	license = GPL3
 	depends = python>=3.8
-	source = gnucash-select-2.3.tar.gz::https://github.com/bulletmark/gnucash-select/archive/2.3.tar.gz
-	md5sums = 93d0f28d9cd6d558361293bc91ad5a33
+	source = gnucash-select-2.4.tar.gz::https://github.com/bulletmark/gnucash-select/archive/2.4.tar.gz
+	md5sums = 4d8a2e3ffeaf03055bd9845f8e550085
 
 pkgname = gnucash-select
