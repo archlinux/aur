@@ -1,0 +1,13 @@
+pkgbase = strain
+	pkgdesc = A CPU stressing utility written in Rust
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/JacoMalan1/strain
+	arch = x86_64
+	license = MIT
+	provides = strain
+	conflicts = strain
+	source = https://github.com/JacoMalan1/strain/releases/download/0.0.1/strain
+	sha256sums = c861270b18c444e205b5b174b89326299a1c510a7890359baf31cd357ff7863e
+
+pkgname = strain
