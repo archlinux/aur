@@ -1,0 +1,14 @@
+pkgbase = python-instagram-private-api
+	pkgdesc = A Python wrapper for the Instagram private API with no 3rd party dependencies
+	pkgver = 1.6.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/instagram-private-api/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/i/instagram_private_api/instagram_private_api-1.6.0.0.tar.gz
+	sha256sums = dfe0c2cb5aa881b98b2e428c3b02fa664a52af3f2d2354c19c4a8967cedf5d8e
+
+pkgname = python-instagram-private-api
