@@ -6,7 +6,6 @@ pkgdesc='This is a tool to show system information in the real arch linux way.'
 arch=('x86_64')
 url="https://github.com/arch-based/fetcher-cpp"
 license=('GPL3')
-depends=('gcc' 'gcc-lib' 'make')
 source=(https://github.com/arch-based/fetcher-cpp/raw/main/fetcher.tar.gz)
 
 # Package Build Function
