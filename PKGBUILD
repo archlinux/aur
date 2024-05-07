@@ -5,7 +5,7 @@ pkgname=(
   'orchis-nord-theme-git'
 )
 pkgbase=orchis-theme-git
-pkgver=2024.05.01.r3.g30ca8c58
+pkgver=2024.05.01.r8.g1e6b061c
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
@@ -35,7 +35,7 @@ package_orchis-theme-git() {
   ./install.sh -t all --tweaks primary -d "$pkgdir/usr/share/themes/"
 
   # Wallpapers
-  install -Dm644 src/wallpaper/*.jpg -t \
+  install -Dm644 wallpaper/*.jpg -t \
     "$pkgdir/usr/share/backgrounds/orchis/"
 
   # Firefox theme
