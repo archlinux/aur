@@ -4,10 +4,10 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-pciutils
-pkgver=3.11.1
-pkgrel=4
+pkgver=3.12.0
+pkgrel=1
 arch=('any')
-pkgdesc="PCI bus configuration space access library and tools (Android, ${_android_arch})"
+pkgdesc="PCI bus configuration space access library and tools (Android ${_android_arch})"
 license=('GPL2')
 url="https://mj.ucw.cz/sw/pciutils/"
 depends=("android-${_android_arch}-hwdata"
@@ -19,7 +19,7 @@ source=("https://mj.ucw.cz/download/linux/pci/pciutils-${pkgver}.tar.gz"{,.sign}
         '0001-Do-not-use-lresolv.patch'
         '0002-Disable-ecam.patch'
         '0003-Define-basename.patch')
-sha256sums=('1904864ce5b0272d0a2e42e72ceac9e8810d1898480567f36b70642f8205fbfd'
+sha256sums=('827a641d2016a15f0b959804daa5a05f055d0f91d58a70d32ac41ce7ef94164e'
             'SKIP'
             '8d31c8da27c19ff4c358fdb3f47eb34eb5b3f1660009999377c8f93e923a6d4f'
             '14a963d11acb299db114187768bdf53ee1cb39f1044a0a2aa5c5a90ae58e42a3'
@@ -28,7 +28,7 @@ sha256sums=('1904864ce5b0272d0a2e42e72ceac9e8810d1898480567f36b70642f8205fbfd'
 validpgpkeys=('C466A56CADA981F4297D20C31F3D0761D9B65F0B') # Martin Mares <mj@ucw.cz>
 
 prepare() {
-    cd "${srcdir}/pciutils-$pkgver"
+    cd "${srcdir}/pciutils-${pkgver}"
     source android-env ${_android_arch}
 
     patch -Np1 -i ../0001-Do-not-use-lresolv.patch
@@ -43,7 +43,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/pciutils-$pkgver"
+    cd "${srcdir}/pciutils-${pkgver}"
     source android-env ${_android_arch}
 
     # Platform specific patches
@@ -92,7 +92,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/pciutils-$pkgver"
+    cd "${srcdir}/pciutils-${pkgver}"
     source android-env ${_android_arch}
 
     # Platform specific patches
@@ -123,11 +123,11 @@ package() {
         install \
         install-lib
 
-    rm -f "$pkgdir/${ANDROID_PREFIX_BIN}/"{llvm-strip,lspci,pcilmr,setpci}
-    rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
+    rm -f "${pkgdir}/${ANDROID_PREFIX_BIN}/"{llvm-strip,lspci,pcilmr,setpci}
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     cp -f "${srcdir}/libpci.a" "${pkgdir}/${ANDROID_PREFIX_LIB}/"
     mv -f "${pkgdir}/${ANDROID_PREFIX_LIB}/libpci.so".*.* "${pkgdir}/${ANDROID_PREFIX_LIB}/libpci.so"
     rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}/libpci.so".*
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
