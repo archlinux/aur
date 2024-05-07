@@ -1,0 +1,15 @@
+pkgbase = unftp
+	pkgdesc = A FTP(S) server with a couple of twists written in Rust.
+	pkgver = 0.14.5
+	pkgrel = 1
+	url = https://github.com/bolcom/unFTP
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = unftp-0.14.5.tar.gz::https://static.crates.io/crates/unftp/unftp-0.14.5.crate
+	sha512sums = c73eb151ad0b85b4f3d8c5083027c38874352dd8e3fc476ceba41eff6bb993475a6b4abd0b8eb6a8f5c1657dd7cadb4eb42d45f92e420c496762bb67e82f29d0
+
+pkgname = unftp
