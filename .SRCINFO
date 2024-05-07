@@ -1,6 +1,6 @@
 pkgbase = spot-client
 	pkgdesc = Gtk/Rust native Spotify client
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/xou816/spot
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = spot-client
 	license = MIT
 	checkdepends = appstream-glib
 	makedepends = cargo
-	makedepends = meson>=0.50.0
+	makedepends = meson>=0.59.0
+	makedepends = blueprint-compiler>=0.8.1
 	depends = alsa-lib
 	depends = cairo
 	depends = glib2
@@ -25,9 +26,9 @@ pkgbase = spot-client
 	depends = pango
 	optdepends = org.freedesktop.secrets
 	options = !lto
-	source = https://github.com/xou816/spot/archive/0.4.0/spot-0.4.0.tar.gz
+	source = https://github.com/xou816/spot/archive/0.4.1/spot-0.4.1.tar.gz
 	source = disable-clippy.patch
-	sha512sums = 45b7b28250d6a3ccfd829984d5ee2f94fc8f052467cfa94403171d7c9fe803c65567759b3b01b86b8cc7a1d8cbdff64d99c82a72c34997192386ff9f51531d1d
-	sha512sums = 1cb0faced2e6801cb994e9af7b81411355837b2efcd9c82b82751508e0bfcc967c50b3d6296bfdb8c017bbf2e7a503a3920d36cb896e44c896c23f5b9e1d13f1
+	sha512sums = 05ee8ce9277230a0f6c25411b41788a508551a61cd436bdd6bb0d8245030b0523232c0e30c7d2f98977382e687ec0f502cb6eb9b95a7dbaae97042ec596f407e
+	sha512sums = 4e38fff2a5867c46749959ceb0fb16372f12c8f8038b6a33d43e126e741f43e524e1499bb9b514e56b036097aaa0ac5dd149823c2c9eba277ab0ea4f58d5fb55
 
 pkgname = spot-client
