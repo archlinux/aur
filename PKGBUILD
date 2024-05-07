@@ -1,8 +1,8 @@
 # Maintainer: arch-based <anonymous.negation790@passinbox.com>
 pkgname='fetcher-based'
-pkgver='1.1'
+pkgver='1.2'
 pkgrel=1
-pkgdesc='This is a tool to show system information in the real arch linux way.'
+pkgdesc='This is a tool to show system information in the real arch linux way. Re-written in C++.'
 arch=('x86_64')
 url="https://github.com/arch-based/fetcher-cpp"
 license=('GPL3')
