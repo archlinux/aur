@@ -1,7 +1,7 @@
 _pkgname=texmacs
 pkgname=${_pkgname}-qt
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.1.4
+pkgrel=1
 pkgdesc="WYSIWYG free scientific text editor and graphical frontend to various CASes \n
 (Giac, GTybalt, Macaulay 2, Maxima, Octave, Pari, Qcl, R and Yacas)"
 arch=('x86_64')
@@ -15,18 +15,17 @@ optdepends=(
   'imagemagick: convert images'
   'aspell: spell checking')
 makedepends=('ghostscript' 'cmake' 'cairo' 'imlib2')
-provides=("texmacs=${pkgver}")
-conflicts=("texmacs")
 options=('!emptydirs')
 source=("http://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-$pkgver-src.tar.gz"
         'http://www.texmacs.org/Images/tm_gnu1b.png'
         'texmacs.desktop')
-sha256sums=('918ca184aca0cb5335906a6c471a1ae3a80c47ab26b5d1c059f0dfcbd906e830'
+sha256sums=('87a6922ee0ddac0b55cce9cd54fa8c1165fd58b0c7b640a33f2f495d69c18186'
             'f11123275494718a3064c9c3ed9638bcc86402536cdcc875a1dd3c0196d08102'
             '0719f63ac6db6fffd979dba77a4ab8f9a8f21bcfef84ed5f425e709eb4bd503e')
 
 build() {
-  cd TeXmacs-${pkgver}-src
+  #cd TeXmacs-${pkgver}-src
+  cd TeXmacs
 
   [ -d build ] && rm -rv build
   mkdir -p build
@@ -42,7 +41,8 @@ build() {
 }
 
 package() {
-  cd TeXmacs-${pkgver}-src/build
+  #cd TeXmacs-${pkgver}-src/build
+  cd TeXmacs/build
 
   msg "### make install"
   make DESTDIR=${pkgdir} install

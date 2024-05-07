@@ -1,7 +1,7 @@
 pkgbase = texmacs-qt
 	pkgdesc = WYSIWYG free scientific text editor and graphical frontend to various CASes \n (Giac, GTybalt, Macaulay 2, Maxima, Octave, Pari, Qcl, R and Yacas)
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.1.4
+	pkgrel = 1
 	url = http://texmacs.org/
 	arch = x86_64
 	license = GPL3
@@ -19,13 +19,11 @@ pkgbase = texmacs-qt
 	optdepends = ghostscript: rendering ps files
 	optdepends = imagemagick: convert images
 	optdepends = aspell: spell checking
-	provides = texmacs=2.1.1
-	conflicts = texmacs
 	options = !emptydirs
-	source = http://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-2.1.1-src.tar.gz
+	source = http://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-2.1.4-src.tar.gz
 	source = http://www.texmacs.org/Images/tm_gnu1b.png
 	source = texmacs.desktop
-	sha256sums = 918ca184aca0cb5335906a6c471a1ae3a80c47ab26b5d1c059f0dfcbd906e830
+	sha256sums = 87a6922ee0ddac0b55cce9cd54fa8c1165fd58b0c7b640a33f2f495d69c18186
 	sha256sums = f11123275494718a3064c9c3ed9638bcc86402536cdcc875a1dd3c0196d08102
 	sha256sums = 0719f63ac6db6fffd979dba77a4ab8f9a8f21bcfef84ed5f425e709eb4bd503e
 
