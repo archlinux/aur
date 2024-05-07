@@ -7,7 +7,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libcap-ng
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 arch=('any')
 pkgdesc="A library for Linux that makes using posix capabilities easy (Android ${_android_arch})"
@@ -20,7 +20,7 @@ makedepends=('android-configure'
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/stevegrubb/libcap-ng/archive/v${pkgver}/libcap-ng-${pkgver}.tar.gz"
         '0001-Disable-fsetlocking.patch')
-md5sums=('42640e5395f607b1a6566146c080baae'
+md5sums=('8635fae2b1ead2381a9630d00e8f80b7'
          '2ecb9b10f198c5222237864ab215d217')
 
 prepare() {
@@ -51,8 +51,8 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
-    rm -rf "$pkgdir/${ANDROID_PREFIX_BIN}"
-    rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
