@@ -2,3 +2,4 @@
 !PKGBUILD
 !.gitignore
 !explicit-sync.patch
+!kwin.install
