@@ -1,17 +1,16 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=isomiRs
-_pkgver=1.30.0
+_pkgver=1.32.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Analyze isomiRs and miRNAs from small RNA-seq"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
   r-annotationdbi
-  r-assertive.sets
   r-biobase
   r-biocgenerics
   r-broom
@@ -47,8 +46,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('95b301f966153c00b98359bb6a0986cd')
-b2sums=('f41937f7ca7df0495856663c132d850e2544c97df04f2e31009e2bddc078abf34f50f90e49876a39a2da8a1247f88ec3ab1b27d6dc1db70f1a15a2a18d1583c9')
+md5sums=('96074868729ea613649a0775ee06b5b6')
+b2sums=('22ae13d0cc8c6f45b0e1e1ff523ab36bc8895b7a75488cf3372f5c9e5eaccb7e2b0bfa087d325af24b6c80eac3bde0241ee1c42e64a17a9d1f7bac8b765b36ec')
 
 build() {
   mkdir build
