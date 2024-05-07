@@ -2,27 +2,23 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Eli Schwartz
 pkgname=smile
-pkgver=2.9.4
-pkgrel=2
+pkgver=2.9.5
+pkgrel=1
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
 url="https://smile.mijorus.it"
 license=('GPL-3.0-or-later')
-depends=('dbus-python' 'emoji-font' 'libadwaita')
+depends=('dbus-python' 'emoji-font' 'libadwaita' 'python-gobject')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 optdepends=('wl-clipboard: Automatically paste emojis (Wayland)'
             'xdotool: Automatically paste emojis (X11)')
 conflicts=("$pkgname-emoji-picker")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('297f66ef664588079eeefa7d0bdecbcdc035616bae845b6ef9d072916ec1443c')
+sha256sums=('62b4cee49957182abdafd686d5fbdbc0553ff35eb61c702306e628e58e0af221')
 
 prepare() {
   cd "$pkgname-$pkgver"
-
-  # https://github.com/mijorus/smile/issues/3#issuecomment-1089216803
-  sed -i 's/MESON_INSTALL_PREFIX/MESON_INSTALL_DESTDIR_PREFIX/g' \
-    build-aux/meson/postinstall.py
 
   # This is not a Flatpak
   sed -i 's|flatpak run {self.application_id}|/usr/bin/smile|g' src/Settings.py
