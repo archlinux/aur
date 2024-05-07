@@ -1,8 +1,9 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-ezdxf
-pkgver=1.2.0
-pkgrel=2
+_commit=c64dd7133e2cd97abedddadd393898563c5dc67b
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Python interface to DXF"
 arch=('x86_64')
 url=https://ezdxf.mozman.at/
@@ -14,39 +15,47 @@ python-numpy
 python-fonttools
 )
 makedepends=(
-python-setuptools
+python-build
+python-installer
+python-wheel
 cython
+git
 )
 checkdepends=(
 python-nurbs
 python-pytest
 )
-source=("${pkgname}-${pkgver}.tar.gz"::https://github.com/mozman/ezdxf/archive/v${pkgver}.tar.gz)
-sha256sums=('199c9cb37029f212b8d0fff258e5daa44623e89fe231bc10117bec02c7f2a09c')
+source=("git+https://github.com/mozman/ezdxf.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ezdxf
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-  cd ezdxf-${pkgver}
+  cd ezdxf
 }
 
 build() {
-  cd ezdxf-${pkgver}
-  python setup.py build
+  cd ezdxf
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd ezdxf-${pkgver}
+  cd ezdxf
   cd src
   python -m pytest ../tests ../integration_tests -k 'not test_version and not test_audit_existing_file and not test_audit_file_not_found'
 }
 
 package() {
-  cd ezdxf-${pkgver}
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+  cd ezdxf
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   # install examples
-  mkdir -p "${pkgdir}/usr/share/${pkgname}"
-  cp -a examples "${pkgdir}/usr/share/${pkgname}"
-  cp -a examples_dxf "${pkgdir}/usr/share/${pkgname}"
+  #mkdir -p "${pkgdir}/usr/share/${pkgname}"
+  #cp -a examples "${pkgdir}/usr/share/${pkgname}"
+  #cp -a examples_dxf "${pkgdir}/usr/share/${pkgname}"
 }
 
 # vim:ts=2:sw=2:et:
