@@ -1,7 +1,7 @@
 pkgbase = showmethekey
 	pkgdesc = A screenkey alternative that works under Wayland via libinput.
 	pkgver = 1.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://showmethekey.alynx.one/
 	arch = x86_64
 	arch = i686

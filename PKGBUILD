@@ -1,7 +1,7 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 pkgname=showmethekey
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A screenkey alternative that works under Wayland via libinput."
 arch=("x86_64" "i686" "aarch64" "armv7h" "armv6h")
 url="https://showmethekey.alynx.one/"
@@ -25,6 +25,4 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}/build"
   meson install --destdir "${pkgdir}"
-  # Meson sets 755 for dirs, but polkit is 750.
-  install -d -o root -g 102 -m 750 "$pkgdir/usr/share/polkit-1/rules.d"
 }
