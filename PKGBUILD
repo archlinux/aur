@@ -21,9 +21,6 @@ pkgver() {
 
 build() {
 	cd "$_archive"
-	cd daemon
-	npm install
-	cd ..
 	npm run build
 }
 
