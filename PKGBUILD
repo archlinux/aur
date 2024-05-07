@@ -1,7 +1,7 @@
 # Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 # Maintainer: Sam L. Yes <samlukeyes123 at gmail dot com>
 pkgname=com.qq.weixin.spark
-pkgver=3.9.7deepin5
+pkgver=3.9.10deepin1
 pkgrel=1
 pkgdesc="Tencent WeChat Client from Spark Store"
 arch=('x86_64')
@@ -30,7 +30,7 @@ replaces=('com.qq.weixin.dcs')
 _mirror="https://cdn.d.store.deepinos.org.cn"
 # _mirror="https://mirrors.sdu.edu.cn/spark-store-repository"		# SDU mirror, sometimes outdated
 source=("${_mirror}/store/chat/${pkgname}/${pkgname}_${pkgver}_${_arch}.deb")
-b2sums=('37cc36b40974fdf65b610276f00a226284f1e733e59153dba4327a1dc572f1e8e2d373519e4d0d723600c02164374b25b6b96bb4ea1095b4aed25eddaba80e4e')
+b2sums=('63813b575b99fd9464009f62143e842af948891bba02f72dfef94a05780a865cba6b70fb3b8289f0ac23f29424dd3d7da5680f91dd93b5f8131a34b228a1492b')
 
 package() {
 	cd "${pkgdir}"

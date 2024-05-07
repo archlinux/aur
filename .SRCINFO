@@ -1,6 +1,6 @@
 pkgbase = com.qq.weixin.spark
 	pkgdesc = Tencent WeChat Client from Spark Store
-	pkgver = 3.9.7deepin5
+	pkgver = 3.9.10deepin1
 	pkgrel = 1
 	url = https://weixin.qq.com/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = com.qq.weixin.spark
 	optdepends = wqy-zenhei: Recommended font
 	conflicts = com.qq.weixin.dcs
 	replaces = com.qq.weixin.dcs
-	source = https://cdn.d.store.deepinos.org.cn/store/chat/com.qq.weixin.spark/com.qq.weixin.spark_3.9.7deepin5_all.deb
-	b2sums = 37cc36b40974fdf65b610276f00a226284f1e733e59153dba4327a1dc572f1e8e2d373519e4d0d723600c02164374b25b6b96bb4ea1095b4aed25eddaba80e4e
+	source = https://cdn.d.store.deepinos.org.cn/store/chat/com.qq.weixin.spark/com.qq.weixin.spark_3.9.10deepin1_all.deb
+	b2sums = 63813b575b99fd9464009f62143e842af948891bba02f72dfef94a05780a865cba6b70fb3b8289f0ac23f29424dd3d7da5680f91dd93b5f8131a34b228a1492b
 
 pkgname = com.qq.weixin.spark
