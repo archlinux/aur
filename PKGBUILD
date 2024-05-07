@@ -12,12 +12,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/felipealfonsog/OptiCPU/arch
 sha256sums=('fdf95e44bd35394c89e1244b18010894c83631f3188d55cf75de01b79266e7dc')
 
 build() {
-    cd "$pkgname-$pkgver"
-    make
+    cd "$srcdir/$pkgname-$pkgver/src"
+    gcc -o "$pkgname" "$pkgname.c"
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver/src"
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
