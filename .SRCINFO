@@ -1,7 +1,7 @@
 pkgbase = waypaper-engine
 	pkgdesc = A pleasant gui frontend for swww with batteries included!
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0bCdian/Waypaper-Engine
 	arch = x86_64
 	license = GLP
