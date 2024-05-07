@@ -23,9 +23,9 @@ package_x86_64() {
 }
 
 package_armv7h() {
-	install -Dm755 "$srcdir/typstyle-linux-armhf" "$pkgdir/usr/bin/typstyle"
+	install -Dm755 "$srcdir/$_pkgname-linux-armhf" "$pkgdir/usr/bin/$_pkgname"
 }
 
 package_aarch64() {
-	install -Dm755 "$srcdir/typstyle-linux-arm64" "$pkgdir/usr/bin/typstyle"
+	install -Dm755 "$srcdir/$_pkgname-linux-arm64" "$pkgdir/usr/bin/$_pkgname"
 }
