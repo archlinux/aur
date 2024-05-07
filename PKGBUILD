@@ -1,11 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=normcap
+_app_id="eu.dynobo.$pkgname"
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
 url="https://dynobo.github.io/normcap"
-license=('GPL-3.0-or-later')
+license=('AGPL-3.0-or-later AND MIT')
 depends=(
   'hicolor-icon-theme'
   'leptonica'
@@ -37,7 +38,7 @@ optdepends=(
 #  'xdg-desktop-portal'
 #)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
-        "$pkgname.desktop")
+        "${_app_id}.desktop")
 sha256sums=('9657dd87e04e065df42d16369d5ac553d75f28845a470bcbbb16b7618556b469'
             '29992fdb19773faa7582e44fe4394d4772984d5b7b9b7b347617c387f0a260f9')
 
@@ -49,14 +50,8 @@ build() {
 #check() {
 #  cd "$pkgname-$pkgver"
 #  export HOME=$(mktemp -d)
-
-#  # setup a virtual x11 display
 #  export DISPLAY=:$((2000 + $RANDOM % 1000))
-#  xvfb-run ${DISPLAY} -screen 5 1024x768x8 & xvfb_pid=$! dbus-run-session pytest
-
-#  # cleanup the virtual x11 display
-#  sleep 0.5
-#  kill ${xvfb_pid}
+#  xvfb-run ${DISPLAY} -screen 5 1024x768x8 dbus-run-session pytest
 #}
 
 package() {
@@ -71,8 +66,8 @@ package() {
   install -Dm644 "bundle/imgs/$pkgname.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 bundle/metainfo \
-    "$pkgdir/usr/share/metainfo/$pkgname.metainfo.xml"
-  install -Dm644 "$srcdir/$pkgname.desktop" -t \
+    "$pkgdir/usr/share/metainfo/${_app_id}.metainfo.xml"
+  install -Dm644 "$srcdir/${_app_id}.desktop" -t \
     "$pkgdir/usr/share/applications/"
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
