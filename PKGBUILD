@@ -7,7 +7,6 @@ arch=('x86_64')
 url="https://github.com/arch-based/fetcher-cpp"
 license=('GPL3')
 source=(https://github.com/arch-based/fetcher-cpp/raw/main/fetcher.tar.gz)
-sha256sums=('9559358cbfb570771e3da2768efdbb5aae9fdc4e590e3afce5a5e09a1e5a4b61')
 
 # Package Build Function
 build() {
@@ -24,3 +23,4 @@ package() {
   # Install the binary with proper permissions
   install -Dm 755 usr/bin/fetcher "$pkgdir/usr/bin/fetcher"
 }
+# sha256sums=('9559358cbfb570771e3da2768efdbb5aae9fdc4e590e3afce5a5e09a1e5a4b61')
