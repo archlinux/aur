@@ -1,0 +1,14 @@
+pkgbase = cmatrix-neo-git
+	pkgdesc = A ncmatrix fork with true colors and unicode support (https://github.com/st3w/neo)
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/st3w/neo
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	source = cmatrix-neo-git::git+https://github.com/st3w/neo.git
+	md5sums = SKIP
+
+pkgname = cmatrix-neo-git
