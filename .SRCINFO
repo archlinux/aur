@@ -6,10 +6,11 @@ pkgbase = perl-uri-db
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-module-build>=0.30
+	makedepends = perl-module-build>=0.30
 	depends = perl-uri>=1.40
 	depends = perl-uri-nested>=0.10
 	options = !emptydirs
+	options = purge
 	source = http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/URI-db-0.22.tar.gz
 	md5sums = 7487b4ea2ca5bd38401bbe2a95150981
 	sha512sums = 0812e692218641040e65defb1775519278eb7c21d7848e888c5202ee2ffd6ecbd2060031dd40329f2e067ebdde4a8f4da6bf5cd473fc02744a4a4847e2f1e3dc

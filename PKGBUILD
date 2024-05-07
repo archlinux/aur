@@ -7,9 +7,9 @@ pkgrel=1
 pkgdesc="Perl module representing database URIs"
 arch=('any')
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-module-build>=0.30' 'perl-uri>=1.40' 'perl-uri-nested>=0.10')
-makedepends=()
+options=('!emptydirs' 'purge')
+depends=('perl-uri>=1.40' 'perl-uri-nested>=0.10')
+makedepends=('perl-module-build>=0.30')
 url='https://metacpan.org/release/URI-db'
 source=('http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/URI-db-0.22.tar.gz')
 md5sums=('7487b4ea2ca5bd38401bbe2a95150981')
@@ -39,8 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   /usr/bin/perl Build install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
 # Local Variables:
