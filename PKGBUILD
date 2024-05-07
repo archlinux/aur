@@ -4,7 +4,7 @@
 pkgname=bruno-electron
 _pkgname=bruno
 pkgdesc="Bruno, an opensource API Client for Exploring and Testing APIs using the system provided Electron"
-pkgver=1.14.0
+pkgver=1.16.1
 pkgrel=1
 conflicts=('bruno')
 provides=('bruno')
@@ -14,7 +14,7 @@ license=('MIT')
 _electron=electron
 depends=(
     "${_electron}>=21.0.0"
-    "nodejs>=18.13.0"
+    "nodejs>=20.9.0"
 )
 makedepends=(
     'asar'
@@ -26,7 +26,7 @@ source=(
    com.usebruno.app.Bruno.desktop
 )
 
-sha256sums=('166660b80f07bff75645967112f4cf849114fd9195451e98ec2eef119b7646a3'
+sha256sums=('a3987d9fbcf44eac9ec1ca56661e91ddb75f958007b8e5611c25c56e184690e5'
             '7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051')
 
 prepare() {
