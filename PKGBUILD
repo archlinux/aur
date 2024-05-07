@@ -57,7 +57,7 @@ package_linvam-git() {
   install LinVAM/scripts/linvam -Dm755 "$pkgdir/usr/bin/linvam"
   install LinVAM/scripts/linvamrun -Dm755 "$pkgdir/usr/bin/linvamrun"
   install LinVAM/LICENSE.txt -Dm644 "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-  install LinVAM/rules/12-input.rules -Dm644 "$pkgdir/etc/udev/rules.d/12-input.rules"
-  install LinVAM/rules/50-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/50-uinput.rules"
+  # install LinVAM/rules/12-input.rules -Dm644 "$pkgdir/etc/udev/rules.d/12-input.rules"
+  # install LinVAM/rules/50-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/50-uinput.rules"
   install LinVAM/rules/80-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/80-uinput.rules"
 }
