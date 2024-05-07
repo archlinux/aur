@@ -16,8 +16,8 @@
 
 pkgname=discord-canary-electron-bin
 _pkgname=discord-canary
-pkgver=0.0.381
-pkgrel=2
+pkgver=0.0.385
+pkgrel=1
 pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord-canary')
@@ -38,7 +38,7 @@ source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkg
         'installed.json'
         )
 # Skip SHA256 of licenses, it fails always for some reason.
-sha256sums=('ea22f34891706e8364bdde5d508b52f4d543710fd2fe22cc5876a3d3871832f8'
+sha256sums=('4caac133320d1914574899700f147f19b76101418673fbec25a45d3966ab0ffc'
             'SKIP'
             'SKIP'
             '5afdfdcb67493946553cad1255e1084add21392171d8ffb79c0ce76865e71f0a'
@@ -49,7 +49,7 @@ sha256sums=('ea22f34891706e8364bdde5d508b52f4d543710fd2fe22cc5876a3d3871832f8'
 _tarname=DiscordCanary
 
 #installed.json needs to be copied to this folder or the updater breaks
-_discordmodules='$HOME'/.config/discordcanary/$pkgver/modules/
+_discordmodules='${DISCORD_USER_DATA_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}}'/discordcanary/$pkgver/modules/
 
 prepare() {
   # Extract the downloaded tar.
