@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Categories=Network;
+
+Name=Alpemix
+Comment=Remote access software
+Exec=/usr/bin/alpemix
+
+Icon=alpemix

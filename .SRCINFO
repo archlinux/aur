@@ -1,0 +1,22 @@
+pkgbase = alpemix-bin
+	pkgdesc = Free remote desktop program
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://www.alpemix.com/en/Linux
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = unzip
+	depends = glibc
+	depends = lib32-gcc-libs
+	depends = zlib
+	provides = alpemix=1.6.0
+	options = !strip
+	source = https://www.alpemix.com/site/linux/Alpemix.zip
+	source = alpemix.desktop
+	source = icons.zip
+	md5sums = 310efc91c7ac9cfc8172de8fb3f6ec67
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = alpemix-bin
