@@ -3,9 +3,9 @@ _Pkgname=Yakit
 _disname=yakit
 major_version=1
 minor_version=3
-patch_version=1
-sp_version='-sp3'
-_sp_version='_sp3'
+patch_version=2
+sp_version='-sp2'
+_sp_version='_sp2'
 
 pkgname="${_pkgname}"-appimage
 pkgver="${major_version}.${minor_version}.${patch_version}${_sp_version}"
@@ -14,12 +14,12 @@ pkgdesc="Cyber Security ALL-IN-ONE Platform"
 arch=('x86_64')
 url="https://github.com/yaklang/yakit"
 license=('AGPL-3')
-options=(!strip)
+options=('!strip' '!debug')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('yakit')
 
 source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}${sp_version}-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v${major_version}.${minor_version}.${patch_version}${sp_version}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}${sp_version}-linux-amd64.AppImage")
-sha256sums_x86_64=('dd6b67e2ba44b15ef3287ce5c02410a4f7a3e03674005fde18c26c2a0f04883a')
+sha256sums_x86_64=('e23174dd75eaa1e820d72c8618929a48d56c63c9643613c2fb87300f907e2770')
 
 _appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}${sp_version}-linux-amd64.AppImage"
 noextract=("${_appimage}")
@@ -42,7 +42,7 @@ build() {
 
 package() {
 	# AppImage
-	install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+	install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 	install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" "${pkgdir}/opt/${pkgname}/LICENSE"
 
 	# Desktop file
