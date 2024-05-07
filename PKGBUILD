@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=customProDB
-_pkgver=1.42.1
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.1
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Generate customized protein database from NGS data, with a focus on RNA-Seq data, for proteomics search'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="Generate customized protein database from NGS data, with a focus on RNA-Seq data, for proteomics search"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-ahocorasicktrie
   r-annotationdbi
   r-biomart
@@ -28,6 +27,7 @@ depends=(
   r-rtracklayer
   r-s4vectors
   r-stringr
+  r-txdbmaker
   r-variantannotation
 )
 optdepends=(
@@ -35,14 +35,15 @@ optdepends=(
   r-rmariadb
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('28be9c341aa2bc3e2c89560f041c5c3c23e6018de4591949f91a22043b3b51fc')
+md5sums=('fbeece69015d5687c3cc2ff4cd0b6544')
+b2sums=('2191f16d8759b32453cc923b72d7c1af4340b12c75f54604e07e7217b0759cdfa61a47ad85d1c46202d9f458d93159f2284c78b106b0a98e25f7b3cfb754a5f4')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
