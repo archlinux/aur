@@ -1,14 +1,14 @@
 pkgbase = astrojs-language-server
 	pkgdesc = The Astro language server, powered by Volar
-	pkgver = 2.8.4
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/withastro/language-tools/tree/main/packages/language-server#readme
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = language-server-2.8.4.tgz
-	source = https://registry.npmjs.org/@astrojs/language-server/-/language-server-2.8.4.tgz
-	sha256sums = 6c09757d1c47c0be45db08d2f8dd227d7f199d4968ed62ca15f397c8239f1cf4
+	noextract = language-server-2.9.0.tgz
+	source = https://registry.npmjs.org/@astrojs/language-server/-/language-server-2.9.0.tgz
+	sha256sums = 2a4b35d9b9681840ddd8189615d7058cb3dc98a1cb0885778193297925c8dc4a
 
 pkgname = astrojs-language-server
