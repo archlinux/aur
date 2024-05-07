@@ -1,7 +1,7 @@
 pkgbase = wowup-cf
 	pkgdesc = WowUp client with CurseForge support
-	pkgver = 2.11.1
-	pkgrel = 2
+	pkgver = 2.12.0
+	pkgrel = 1
 	url = https://github.com/WowUp/WowUp.CF
 	arch = x86_64
 	license = GPL3
@@ -24,7 +24,7 @@ pkgbase = wowup-cf
 	depends = libxcrypt-compat
 	provides = wowup-cf
 	conflicts = wowup-cf
-	source = wowup-cf-2.11.1.tar.gz::https://github.com/WowUp/WowUp.CF/archive/v2.11.1.tar.gz
-	sha256sums = 95fb48052b7f0ff400ba94771cec3dc7453877f990cdc2ebb2f8cbc863e27aa6
+	source = wowup-cf-2.12.0.tar.gz::https://github.com/WowUp/WowUp.CF/archive/v2.12.0.tar.gz
+	sha256sums = 0ab12327cc434fccbd2c6ff30731967c54a132be4d00cdcd2da73cc3a1fbd8fe
 
 pkgname = wowup-cf

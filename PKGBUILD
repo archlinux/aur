@@ -2,8 +2,8 @@
 
 pkgname=wowup-cf
 _appname=WowUp.CF
-pkgver=2.11.1
-pkgrel=2
+pkgver=2.12.0
+pkgrel=1
 pkgdesc='WowUp client with CurseForge support'
 arch=(x86_64)
 url='https://github.com/WowUp/WowUp.CF'
@@ -34,7 +34,7 @@ conflicts=(wowup-cf)
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('95fb48052b7f0ff400ba94771cec3dc7453877f990cdc2ebb2f8cbc863e27aa6')
+sha256sums=('0ab12327cc434fccbd2c6ff30731967c54a132be4d00cdcd2da73cc3a1fbd8fe')
 
 build() {
 	cd $_appname-$pkgver/wowup-electron
@@ -51,13 +51,13 @@ build() {
 package() {
 	install -d "$pkgdir"/opt/WowUp-CF "$pkgdir"/usr/share "$pkgdir"/usr/bin
 	# Install application
-	cp -av --no-preserve=ownership $_appname-$pkgver/wowup-electron/release/pacman/opt/WowUp-CF "$pkgdir"/opt
+	cp -a --no-preserve=ownership $_appname-$pkgver/wowup-electron/release/pacman/opt/WowUp-CF "$pkgdir"/opt
 	ln -sf /opt/WowUp-CF/$pkgname "$pkgdir"/usr/bin/$pkgname
 	# Install icons
-	cp -av --no-preserve=ownership $_appname-$pkgver/wowup-electron/release/pacman/usr/share/icons "$pkgdir"/usr/share
+	cp -a --no-preserve=ownership $_appname-$pkgver/wowup-electron/release/pacman/usr/share/icons "$pkgdir"/usr/share
 	# Install desktop file
-	install -vDm644 $_appname-$pkgver/wowup-electron/release/pacman/usr/share/applications/$pkgname.desktop \
+	install -Dm644 $_appname-$pkgver/wowup-electron/release/pacman/usr/share/applications/$pkgname.desktop \
 		"$pkgdir"/usr/share/applications/$pkgname.desktop
 	# Install license
-	install -vDm644 $_appname-$pkgver/wowup-electron/LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 $_appname-$pkgver/wowup-electron/LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
