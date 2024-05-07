@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.88
+pkgver=20.04.89
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   'grub: Required to apply kernel parameters'
   'pulseaudio: To apply microphone fix'
   'system76-dkms: Control hotkeys and fan on certain System76 laptops'
-  'system76-acpi-dkms: Provides the system76_acpi in-tree driver (only for (<5.16)'
+  'system76-acpi-dkms: Provides the system76_acpi in-tree driver (only for (<5.16))'
   'system76-io-dkms: Enable System76 I/O daughterboard'
   'system76-oled: Control brightness on OLED displays'
   'system76-power: System76 Power Management'
@@ -50,13 +50,13 @@ optdepends=(
   'xorg-xbacklight: To use the backlight service'
 )
 install="$pkgname.install"
-_commit=4724bdb071921bda0e5dde8b2c7fc62b164f53db  # tags/20.04.88^0
+_commit=ddc9b74d0499cdc6aecefdd0dd6ff20f0c49bfc6  # tags/20.04.89^0
 source=(
   "git+https://github.com/pop-os/system76-driver.git#commit=${_commit}"
   'cli.patch'
   'wayland.patch'
   'actions.patch')
-sha256sums=('SKIP'
+sha256sums=('543ed6c612aaa86cc70e3cfd040d3434dcb0793ba449dae421fa0965caeea6c5'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
             '2ffbd813744c0b99416947a2755767767af434758aa20dcfafefb49fb367d5d3'
             '3ade740c1681f8f33ef78e1e6c087e4002d14c888d7a5bf6bfbeb2aa70111119')
