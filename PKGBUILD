@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reor-bin
 _pkgname=Reor
-pkgver=0.2.7
+pkgver=0.2.8
 _electronversion=28
 pkgrel=1
 pkgdesc="AI note-taking app that runs models locally."
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f66731df6a58589ce7f1b5e0c61f82333cdb8b0661e56e7d2cefcdcb9a6d7843'
+sha256sums=('bf5d020479770b1dc8522841b4dce98202898484d5c92c091965db64f227534e'
             '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
