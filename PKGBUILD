@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="The TANGO code generator. It allows to define a TANGO class model"
 arch=('any')
 url="https://gitlab.com/tango-controls/${_name}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('java-runtime=11' jdk11-openjdk sh)
 makedepends=(maven)
 source=(
