@@ -1,6 +1,6 @@
 # Maintainer: arch-based <anonymous.negation790@passinbox.com>
 pkgname='fetcher-based'
-pkgver='1.2'
+pkgver='1.3'
 pkgrel=1
 pkgdesc='This is a tool to show system information in the real arch linux way. Re-written in C++.'
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = fetcher-based
 	pkgdesc = This is a tool to show system information in the real arch linux way. Re-written in C++.
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/arch-based/fetcher-cpp
 	arch = x86_64
