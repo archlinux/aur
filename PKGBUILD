@@ -1,6 +1,6 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 pkgname=fypp
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Python powered Fortran preprocessor"
 url="https://fypp.readthedocs.io/"
@@ -9,7 +9,7 @@ arch=('any')
 depends=('python')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/aradi/fypp/archive/${pkgver}.tar.gz")
-sha256sums=('0f66e849869632978a8a0623ee510bb860a74004fdabfbfb542656c6c1a7eb5a')
+sha256sums=('33f48c8d2337db539865265ce33c7c50e4d521aacbd31ac7b7e8b189d771ce1d')
 
 prepare() {
   cd ${srcdir}
