@@ -1,0 +1,15 @@
+pkgbase = zip2tar-git
+	pkgdesc = Command-line tool to convert ZIP files to TAR (with optional compression)
+	pkgver = 23.09.r114.ge687d10
+	pkgrel = 1
+	url = https://github.com/trizen/perl-scripts
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl>=5.36.0
+	depends = perl-archive-zip
+	optdepends = perl-io-compress-lzma: support for XZ compression
+	source = git+https://github.com/trizen/perl-scripts.git
+	sha512sums = SKIP
+
+pkgname = zip2tar-git
