@@ -1,20 +1,22 @@
 pkgbase = android-aarch64-pcsclite
 	pkgdesc = PC/SC Architecture smartcard middleware library (Android aarch64)
-	pkgver = 2.0.3
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://pcsclite.apdu.fr/
 	arch = any
 	license = BSD
-	makedepends = android-configure
+	makedepends = android-meson
 	depends = android-ndk
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://pcsclite.apdu.fr/files/pcsc-lite-2.0.3.tar.bz2
-	source = https://pcsclite.apdu.fr/files/pcsc-lite-2.0.3.tar.bz2.asc
+	source = https://pcsclite.apdu.fr/files/pcsc-lite-2.2.0.tar.xz
+	source = https://pcsclite.apdu.fr/files/pcsc-lite-2.2.0.tar.xz.asc
+	source = 0001-Fix-pcsc-arch.patch
 	validpgpkeys = F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E
-	md5sums = 4167d2d3fa2be3f8e24b2f44e38a35ee
+	md5sums = 9e4006e1f3210ffa7dd0fadbc9083dc2
 	md5sums = SKIP
+	md5sums = 0d862bb58084ec6e7da1ccc764de4ac4
 
 pkgname = android-aarch64-pcsclite
