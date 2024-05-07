@@ -3,7 +3,7 @@
 _pyname=angr
 pkgname=python-${_pyname}
 pkgver=9.2.81
-pkgrel=2
+pkgrel=3
 pkgdesc='A powerful and user-friendly binary analysis platform'
 url='https://github.com/angr/angr'
 license=('BSD')
@@ -48,9 +48,9 @@ b2sums=('bdaf94faffde85c1fc16b3a145f72e58bbb406e2953c08601abd3b42cb5693ac6d47c17
 
 prepare() {
   # we don't support version pinning
-  sed -e 's/==/>=/' -i $_pyname-$pkgver/{setup.cfg,pyproject.toml}
+  sed -e 's/==/>=/g' -i $_pyname-$pkgver/{setup.cfg,pyproject.toml}
   # we don't support post-release and developmental-release
-  sed -e 's/\.\(post\|dev\)[0-9]*//' -i $_pyname-$pkgver/{setup.cfg,pyproject.toml}
+  sed -e 's/\.\(post\|dev\)[0-9]*//g' -i $_pyname-$pkgver/{setup.cfg,pyproject.toml}
 }
 
 build() {

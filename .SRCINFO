@@ -1,7 +1,7 @@
 pkgbase = python-angr
 	pkgdesc = A powerful and user-friendly binary analysis platform
 	pkgver = 9.2.81
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/angr/angr
 	arch = any
 	license = BSD
