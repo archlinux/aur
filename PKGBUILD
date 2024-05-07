@@ -3,7 +3,7 @@
 _name=azcopy
 pkgname=azcopy-bin
 pkgver=10.24.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line utility that you can use to copy data to and from containers and file shares in Azure Storage accounts."
 arch=('x86_64')
 url="https://github.com/Azure/azure-storage-azcopy"
