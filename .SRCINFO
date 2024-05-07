@@ -1,6 +1,6 @@
 pkgbase = perl-math-mpfr
 	pkgdesc = Math::MPFR - perl interface to the MPFR (floating point) library.
-	pkgver = 4.28
+	pkgver = 4.29
 	pkgrel = 1
 	url = https://metacpan.org/release/Math-MPFR
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = perl-math-mpfr
 	depends = gmp>=6.1.1
 	depends = mpfr>=3.1.4.p1
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-MPFR-4.28.tar.gz
-	b2sums = 631fe86c03376bb998576fbac3f1ae589f26a988733fd2991e9f119aa5e2e4b667dd6b6212d65062c538f284053dd6b2e6330284cd710345678b44595a11ef94
+	source = https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-MPFR-4.29.tar.gz
+	b2sums = 7ff426c06435e2a983d1fe727641705c07f512951726bc0bd2684c8bd13a5b1f9f9668fc75c6f24fcf279079ec0a0986580146ee5829fb9408cd710cb59f68c3
 
 pkgname = perl-math-mpfr
