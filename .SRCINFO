@@ -1,0 +1,15 @@
+pkgbase = archarchive
+	pkgdesc = A utility to quickly rollback an arch linux system using ALA (a.k.a Arch Linux Archive)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/govnorice/archarchive
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	options = !lto
+	source = https://github.com/govnorice/archarchive/releases/download/0.1.0/pizdec
+	sha256sums = SKIP
+
+pkgname = archarchive
