@@ -1,28 +1,45 @@
-# Maintainer: isbest <icoderdev@outlook.com>
+# Maintainer: Yonggang Li <gnaggnoyil@gmail.com>
+# Contributor: isbest <icoderdev@outlook.com>
 
-_pkgname=pyspark
-pkgname=python-${_pkgname}
-pkgver=3.3.1
+_pkgbasename=pyspark
+pkgname=python-${_pkgbasename}
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Apache Spark Python API"
 arch=('any')
-url="https://pypi.org/project/pyspark${_pkgname}"
-license=('GPL2')
-optdepends=('python-pandas' 'python-pyarrow' 'python-psutil' 'python-scikit-learn' 'python-tornado' 'python-typing_extensions' 'python-matplotlib' 'ipython')
-makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('e99fa7de92be406884bfd831c32b9306a3a99de44cfc39a2eefb6ed07445d5fa')
+url="https://pypi.org/project/${_pkgbasename}"
+license=('Apache-2.0')
+depends=('python-py4j>=0.10.9.7')
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-wheel'
+    'python-setuptools'
+)
+optdepends=(
+    'python-pandas>=1.0.5'
+    'python-pyarrow>=4.0.0'
+    'python-numpy>=1.15'
+    'python-grpcio>=1.48'
+    'python-grpcio<1.57'
+    # Not avaliable in offical repo or AUR yet.
+    #'python-grpcio-status>=1.48'
+    #'python-grpcio-status<=1.57'
+    'python-googleapis-common-protos==1.56.4'
+)
+source=(
+    "https://pypi.org/packages/source/${_pkgbasename:0:1}/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz"
+)
+sha256sums=('dd6569e547365eadc4f887bf57f153e4d582a68c4b490de475d55b9981664910')
 
 build() {
-    cd "${_pkgname}-$pkgver"
-        python setup.py build
+    cd "${srcdir}/${_pkgbasename}-${pkgver}"
+	env PYTHONHASHSEED=0 python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_pkgname}-$pkgver"
-        export PYTHONHASHSEED=0
-        python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-        local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-        rm -rf "$pkgdir$site_packages/test"
+	cd "${srcdir}/${_pkgbasename}-${pkgver}"
+	env PYTHONHASHSEED=0 python -m installer --destdir="${pkgdir}" dist/*.whl
+	# Separate license file is not needed since this is an Apache project which
+	# uses vanilla apache-2.0 license file in apache offical website
 }
