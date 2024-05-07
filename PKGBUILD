@@ -1,21 +1,21 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=escape
-_pkgver=1.12.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Easy single cell analysis platform for enrichment'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Apache')
+pkgdesc="Easy single cell analysis platform for enrichment"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
-  r
+  r-aucell
   r-biocparallel
-  r-broom
-  r-data.table
   r-dplyr
+  r-ggdist
   r-ggplot2
+  r-ggpointdensity
   r-ggridges
   r-gseabase
   r-gsva
@@ -23,7 +23,7 @@ depends=(
   r-msigdbr
   r-patchwork
   r-reshape2
-  r-rlang
+  r-seuratobject
   r-singlecellexperiment
   r-stringr
   r-summarizedexperiment
@@ -31,23 +31,31 @@ depends=(
 )
 optdepends=(
   r-biocstyle
-  r-dittoseq
+  r-hexbin
   r-knitr
   r-markdown
+  r-rcolorbrewer
+  r-rlang
   r-rmarkdown
+  r-scran
   r-seurat
-  r-seuratobject
+  r-spelling
   r-testthat
+  r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d69dda267e9346b1d3f10274fb0985409d23060abba609d4e8859eae92b1b12e')
+md5sums=('7b3c16032574ae1639cf3d8b0f4eda1a')
+b2sums=('85b0342930e2971515787fbd0739062c8a8faecb6a8bb7a73b93c9fe8c79994c90a4b8fa3f3cf0919e155f3cd316d6afc15f5e55335cd49b93cbd7ebadacc5bd')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
