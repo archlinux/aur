@@ -2,8 +2,8 @@
 pkgname=ente-server-git
 _pkgname_alt=museum
 _pkg_git_src=https://github.com/ente-io/ente.git
-pkgver=r25070.7be2c66
-pkgrel=3
+pkgver=r1.40abb5c
+pkgrel=4
 pkgdesc="Self hosted server for Ente (mobile) clients"
 arch=(x86_64)
 url="https://github.com/ente-io"
@@ -49,15 +49,17 @@ pkgver() {
 }
 
 prepare() {
-  # obtain hash of latest ente server docker release, in an attempt to checkout a stable release
-  _pkg_git_latest_stable_release="$(curl https://github.com/ente-io/ente/pkgs/container/server/200088618?tag=latest  | grep 'Label mr-1 mb-2' | sed 's/.*tag=\([0-9a-f]*\).*/\1/')"
+  ## latest "stable" currently broken, so skipping this
+  ## obtain hash of latest ente server docker release, in an attempt to checkout a stable release
+  #_pkg_git_latest_stable_release="$(curl https://github.com/ente-io/ente/pkgs/container/server/200088618?tag=latest  | grep 'Label mr-1 mb-2' | sed 's/.*tag=\([0-9a-f]*\).*/\1/')"
 
   # only checkout ente server directory
   cd "${srcdir}"
   git clone --no-checkout --depth=1 --filter=tree:0 "${_pkg_git_src}" "${pkgname}"
   cd "${pkgname}"
   git sparse-checkout set --no-cone server
-  git checkout "$_pkg_git_latest_stable_release"
+  #git checkout "$_pkg_git_latest_stable_release"
+  git checkout
 
   # prepare GO environment
   export GOPATH="${srcdir}/gopath"
