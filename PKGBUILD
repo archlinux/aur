@@ -2,7 +2,7 @@
 
 pkgname=python-ipydatagrid
 _pkgname=ipydatagrid
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Fast Datagrid widget for the Jupyter Notebook and JupyterLab"
 arch=('any')
@@ -13,11 +13,10 @@ checkdepends=()
 optdepends=()
 makedepends=(python-installer)
 source=("https://files.pythonhosted.org/packages/py3/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver-py3-none-any.whl")
-sha256sums=('9736991879348fbca9b0b0fb91657f0fe7155da0a3ab1d9bb2741fad14544229')
+sha256sums=('6aa6e6a20705e8884a63fc802bbfb2d588302717fe20ac4b7ba0fdac04903ad5')
 
 package(){
-  cd "$_pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" ../*.whl
+  python -m installer --destdir="$pkgdir" $_pkgname-$pkgver-py3-none-any.whl
 }
 
 # vim:ts=2:sw=2:et:
