@@ -1,7 +1,7 @@
 pkgbase = moneymanagerex
 	pkgdesc = MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version.
 	pkgver = 1.8.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.moneymanagerex.org/
 	arch = x86_64
 	license = GPL
@@ -24,7 +24,7 @@ pkgbase = moneymanagerex
 	provides = moneymanagerex
 	conflicts = moneymanagerex-git
 	replaces = mmex
-	source = git+https://github.com/moneymanagerex/moneymanagerex.git
+	source = git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v1.8.0
 	sha512sums = SKIP
 
 pkgname = moneymanagerex

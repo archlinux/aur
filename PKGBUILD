@@ -2,7 +2,7 @@
 
 pkgname=moneymanagerex
 pkgver=1.8.0
-pkgrel=5
+pkgrel=6
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -13,16 +13,12 @@ optdepends=('cups: for printing support')
 replaces=('mmex')
 provides=('moneymanagerex')
 conflicts=('moneymanagerex-git')
-source=(git+https://github.com/moneymanagerex/moneymanagerex.git)
+source=(git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v${pkgver})
 sha512sums=('SKIP')
 
 prepare() {
   cd "${srcdir}"/moneymanagerex
   
-  # Disable "detached HEAD" warning
-  git config advice.detachedHead false
-
-  git checkout tags/v${pkgver}
   git submodule update --init --recursive
   
   # Fix https://github.com/moneymanagerex/moneymanagerex/issues/6693
