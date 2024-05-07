@@ -2,7 +2,7 @@
 # Submitter:  Yannik Stein <yannik.stein [at] gmail.com>
 
 pkgname=rhythmbox-tray-icon-git
-pkgrel=3
+pkgrel=4
 pkgver=3abf81c
 pkgdesc="Restores the tray icon functionality from the 0.x series."
 
@@ -12,7 +12,7 @@ license=('GPL3')
 provides=('rhythmbox-tray-icon')
 conflicts=('rhythmbox-tray-icon')
 depends=('rhythmbox>=2.90')
-makedepends=('git')
+makedepends=('git' 'unzip')
 
 source=("$pkgname::git+https://github.com/mendhak/rhythmbox-tray-icon.git")
 md5sums=('SKIP')
