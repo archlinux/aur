@@ -1,16 +1,17 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=inspector
-pkgdesc='Gives information about your system'
-pkgver=0.1.8
+pkgver=0.1.9
+_commit=e1ed9bfd2666852e638a92034a3c0357e2c44393
 pkgrel=1
-arch=('aarch64' 'x86_64')
+pkgdesc='Gives information about your system'
 url="https://github.com/Nokse22/inspector"
-license=('GPL3')
+license=('GPL-3.0-or-later')
+arch=('aarch64' 'x86_64')
 depends=('libadwaita' 'python')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-source=("git+$url.git#tag=v$pkgver")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
