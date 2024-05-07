@@ -1,7 +1,7 @@
 pkgbase = python-tokenizers
 	pkgdesc = Fast State-of-the-Art Tokenizers optimized for Research and Production
 	pkgver = 0.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/huggingface/tokenizers
 	arch = i686
 	arch = x86_64
