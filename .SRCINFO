@@ -1,0 +1,18 @@
+pkgbase = sowing-git
+	pkgdesc = Tools for documenting and improving portability
+	pkgver = 1.1.26.9
+	pkgrel = 1
+	url = http://www.cs.uiuc.edu/~wgropp/projects/software/sowing
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	depends = glibc
+	depends = perl
+	provides = sowing=1.1.26.9
+	conflicts = sowing
+	replaces = sowing
+	options = !makeflags
+	source = sowing::git+https://bitbucket.org/petsc/pkg-sowing.git
+	sha256sums = SKIP
+
+pkgname = sowing-git
