@@ -1,0 +1,18 @@
+pkgbase = export-matrix-messages-git
+	pkgdesc = A CLI tool that joins the room and exports last N messages to the file you specified.
+	pkgver = v0.9.6
+	pkgrel = 1
+	url = https://gitlab.com/etke.cc/tools/emm.git
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	makedepends = just
+	provides = export-matrix-messages
+	conflicts = export-matrix-messages
+	noextract = export-matrix-messages-git
+	options = !emptydirs
+	source = export-matrix-messages-git::git+https://gitlab.com/etke.cc/tools/emm.git
+	sha256sums = SKIP
+
+pkgname = export-matrix-messages-git
