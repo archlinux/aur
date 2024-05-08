@@ -3,12 +3,12 @@
 pkgname=hqplayer-client
 pkgver=5.7.1
 _debpkgver=5.7.1-19
-pkgrel=1
+pkgrel=2
 pkgdesc="The high-end upsampling multichannel software HD-audio player - client application"
 arch=('x86_64' 'x86_64_v3')
 url="http://www.signalyst.com/consumer.html"
 license=('custom')
-depends=('qt6-webengine' 'python311')
+depends=('qt6-webengine')
 optdepends=('hqplayer4' 'hqplayer5' 'hqplayer-embedded' 'hqplayer-embedded-sse')
 source=("https://www.signalyst.com/bins/jammy/hqplayer5desktop_"$_debpkgver"_amd64.deb")
 sha256sums=('a885f0ace0810968556f725287e3a050943c2e64e46f6d464203873385309629')
