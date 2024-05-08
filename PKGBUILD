@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tidylog
-_pkgver=1.0.2
+_pkgver=1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Logging for 'dplyr' and 'tidyr' Functions"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,23 +13,28 @@ depends=(
   r-clisymbols
   r-dplyr
   r-glue
+  r-rlang
   r-tidyr
 )
 checkdepends=(
   r-forcats
+  r-nycflights13
   r-testthat
+  r-units
 )
 optdepends=(
   r-bench
   r-covr
   r-forcats
   r-knitr
+  r-nycflights13
   r-rmarkdown
   r-testthat
+  r-units
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('17c4e3a5589ac9a1a0653ba54e979d52')
-b2sums=('74b34c2d2c510f5061da626c59176f896f8d8dc455115b3a34beb1b360172e4d0220c2b8d020813b99119f5dc19d56356ee1c6ca4ee1cfb0e2f32ddf1a698500')
+md5sums=('e7e6941312ac41dee0b1b836d628811c')
+b2sums=('7b007b6652f9c9077e233f3836b1cbe317db292ff2cfdb28d32f7c9f48608f9896db5f17e8e771aae02bbd5e2d597b54e6ce01457ff9e0bb0fd3d87fcc442f1e')
 
 build() {
   mkdir build
