@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=raer
-_pkgver=1.0.2
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,24 +10,25 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
+  bzip2
   curl
   r-biocgenerics
   r-biocparallel
   r-biostrings
   r-bsgenome
   r-cli
-  r-data.table
   r-genomeinfodb
   r-genomicalignments
   r-genomicfeatures
   r-genomicranges
   r-iranges
-  r-r.utils
   r-rsamtools
   r-rtracklayer
   r-s4vectors
   r-singlecellexperiment
   r-summarizedexperiment
+  xz
+  zlib
 )
 makedepends=(
   r-rhtslib
@@ -54,10 +55,11 @@ optdepends=(
   r-snplocs.hsapiens.dbsnp144.grch38
   r-testthat
   r-txdb.hsapiens.ucsc.hg38.knowngene
+  r-txdbmaker
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('da2d27f76962c7d534f36f05815670d3')
-b2sums=('0079593d5d24b9500788c10e025364972d4d8d0f8eede7ee58a8ace5e9bb0d2f83cdbe89b377936bb855c0302662c82c340a3026ba82266034c380578021a1fa')
+md5sums=('5d4a84abe3ffb879560d098a51e6c21e')
+b2sums=('ad54ccd4d31dc8c699b4a1e15f518c50db6cde5f70688b69eec858c30abac4aa3b800edf44982964a23055dcb1efe1909d580c13e7cb155f16cc930b4bd9dcaa')
 
 build() {
   mkdir build
