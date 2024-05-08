@@ -49,6 +49,9 @@ optdepends=(
   'xorg-xhost: To enable GUI applications on Wayland'
   'xorg-xbacklight: To use the backlight service'
 )
+checkdepends=(
+  'python-pytest'
+)
 install="$pkgname.install"
 _commit=ddc9b74d0499cdc6aecefdd0dd6ff20f0c49bfc6  # tags/20.04.89^0
 source=(
@@ -91,6 +94,11 @@ prepare() {
 build() {
   cd "$pkgname"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$pkgname"
+  pytest system76driver/tests || :
 }
 
 package() {

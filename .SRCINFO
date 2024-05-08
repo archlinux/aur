@@ -6,6 +6,7 @@ pkgbase = system76-driver
 	install = system76-driver.install
 	arch = any
 	license = GPL-2.0-or-later
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
