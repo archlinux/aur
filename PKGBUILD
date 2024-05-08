@@ -161,6 +161,7 @@ prepare(){
 # update to tdlib 0.9 (Fedora)
   patch -p1 -i ../sagemath-tdlib-0.9.patch
 
+  git cherry-pick -n cec595ef953bb9e180aadee8583ad5a2fa5577d3 # Fix build with GCC 14
   ./bootstrap
 }
 
