@@ -1,36 +1,37 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proBAMr
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Generating SAM file for PSMs in shotgun proteomics data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="Generating SAM file for PSMs in shotgun proteomics data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-annotationdbi
   r-biostrings
   r-genomicfeatures
   r-genomicranges
   r-iranges
   r-rtracklayer
+  r-txdbmaker
 )
 optdepends=(
   r-biocgenerics
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3984b967cc0b8e5a853b7a2029fc6a996ac7fb55edae5569f4d33b8bc866c04a')
+md5sums=('94d83f4f906106e1da12c9f9fdbb6485')
+b2sums=('63572fc9ddb06b7e835c156c1cce4f71e07d25cf0ddf72582f1faa46c418da02fb3fb362707ebb97cdd5ae61b85f718088faff53ec86903cb834f87b2dd10e2c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
