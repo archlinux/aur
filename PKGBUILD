@@ -8,7 +8,7 @@
 pkgname=gr-lora-git
 _gitname=gr-lora
 pkgver=0.6.2+60.r190.20211210.90343d4
-pkgrel=1
+pkgrel=2
 pkgdesc="GNURadio blocks for receiving LoRa modulated radio messages using SDR"
 arch=('any')
 url="https://github.com/rpp0/gr-lora"
@@ -28,6 +28,7 @@ makedepends=(
   'cmake'
   'doxygen'
   'git'
+  'log4cpp'
   'pybind11'
   'python>=3'
   'python-pygccxml'
