@@ -1,48 +1,51 @@
 # Maintainer:  kxxt <rsworktech at outlook dot com>
 pkgname=tracexec
-pkgver=0.0.5
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="A small utility for tracing execve{,at}"
+pkgdesc="A small utility for tracing execve{,at} and pre-exec behavior"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/kxxt/tracexec"
 license=('GPL-2.0-or-later')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'cargo-about' 'git')
 conflicts=('tracexec-bin')
 backup=()
 options=()
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-noextract=()
-b2sums=('a934637efb5be5a8fa573073ce89f18ec4a83b1ba1c4de52a821045a802d0b30fcd04488035fd02aef13b7527fa050157d5f3f71c384854838ac7db34317c979')
+source=("git+https://github.com/kxxt/tracexec.git#tag=v$pkgver")
+b2sums=('8625c4ebaaf346585342bbab8c99917112b3f2de1caf884730efc552c3e3af77774b119b687e5ceef136ad0890bec2e1b4657c7c97c596438b17355826f08215')
 
 case "$CARCH" in
     riscv64)
-        RUST_ARCH=riscv64gc
         _feature_flags="--no-default-features"
         ;;
-    *) RUST_ARCH="$CARCH" ;;
+    *)
+        _feature_flags="--all-features"
+        ;;
 esac
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    cargo fetch --locked --target "$RUST_ARCH-unknown-linux-gnu"
+    cd "$pkgname"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release $_feature_flags
+    # --bins: needed for test
+    cargo build --bins --frozen --release $_feature_flags
+    cargo about generate -o THIRD_PARTY_LICENSES.HTML about.hbs
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen $_feature_flags
+    cargo test --frozen --release $_feature_flags
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 THIRD_PARTY_LICENSES.HTML "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_LICENSES.HTML"
 }
