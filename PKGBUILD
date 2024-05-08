@@ -1,7 +1,7 @@
 # Maintainer: Michael Koloberdin <michael@koloberdin.com>
 pkgname=mingw-w64-catch2v3
-_gitcommit=6e79e682b726f524310d55dec8ddac4e9c52fb5f
-pkgver=3.4.0
+_gitcommit=4e8d92bf02f7d1c8006a0e7a5ecabd8e62d98502
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Modern, C++-native, header-only, test framework for unit-tests, TDD and BDD (v3) (mingw-w64)"
 arch=('any')
