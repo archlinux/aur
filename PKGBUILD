@@ -1,7 +1,7 @@
 # Maintainer: Nikl <nikl174@mailbox.org>
 pkgname=colord-brightness
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Adjust Display brightness with icc-profiles using the colord-daemon"
 arch=("any")
 url="https://github.com/Nikl174/colord-brightness"
@@ -26,7 +26,7 @@ build() {
   cd "$pkgname-$pkgver"
   mkdir build && cd build || cd build
 
-  cmake -D CMAKE_BUILD_TYPE="None" -Wno-dev ..
+  cmake -DCMAKE_BUILD_TYPE="None" -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev ..
   make
 }
 
@@ -38,7 +38,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  cmake --install build/ --config Release --prefix="$pkgdir/"
-  install -d "$pkgdir/lib/systemd/user/"
-  install -m 0644 scripts/$pkgname.service $pkgdir/lib/systemd/user/
+  cmake --install build/ --config Release --prefix="$pkgdir/usr"
+  install -d "$pkgdir/usr/lib/systemd/user/"
+  install -m 0644 scripts/$pkgname.service $pkgdir/usr/lib/systemd/user/
 }
