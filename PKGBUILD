@@ -3,7 +3,7 @@
 _reponame="plasmusic-toolbar"
 pkgname=plasma6-applets-plasmusic-toolbar
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Widget that shows currently playing song information and provide playback controls."
 arch=(any)
 url="https://github.com/ccatterina/$_reponame"
@@ -16,5 +16,6 @@ package() {
   _path="$pkgdir/usr/share/plasma/plasmoids/plasmusic-toolbar" 
   mkdir -p "$_path"
   cp -r "$srcdir/$_reponame-$pkgver/src"/* "$_path"
+  install -Dm 644 "$srcdir/$_reponame-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
