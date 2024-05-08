@@ -1,40 +1,83 @@
-# Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: Ricardo Vieira (https://aur.archlinux.org/account/ricardomv)
+# Contributor: MuPuF (https://aur.archlinux.org/account/MuPuF)
 
-_pkgname=liquid-dsp
-pkgname=${_pkgname}-git
-pkgver=v1.3.1.r134.gdd3facf8
+_pkgname="liquid-dsp"
+pkgname="${_pkgname}-git"
+pkgver=1.6.0+218.r7737.20240429.030b5b4c
 pkgrel=1
 pkgdesc="Digital signal processing library for software-defined radios"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://liquidsdr.org"
 license=('MIT')
 groups=()
-depends=()
-optdepends=('fftw: use shared fft library')
-makedepends=('git')
-provides=("${pkgname%}")
-conflicts=("${_pkgname%}")
+depends=(
+  'glibc'
+)
+optdepends=(
+  'fftw: efficient FFT'
+)
+makedepends=(
+  'autoconf'
+  'automake'
+  'git'
+  'gcc'
+  'fftw'
+  'make'
+)
+provides=(
+  "${_pkgname}=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
+)
 replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname%-git}::git+https://github.com/jgaeddert/liquid-dsp")
+source=("${_pkgname}::git+https://github.com/jgaeddert/liquid-dsp.git")
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP')
+
+prepare() {
+  cd "${_pkgname}"
+
+  ./bootstrap.sh
+
+  git log > "${srcdir}/git.log"
+}
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname}"
+  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	./bootstrap.sh
-	./configure --prefix=/usr
-	make
+  cd "$srcdir/${_pkgname}"
+
+  ./configure \
+    --prefix=/usr \
+    --disable-debug-messages \
+    --disable-fftoverride
+
+  make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+  cd "$srcdir/${_pkgname}"
+  make DESTDIR="${pkgdir}" install
+
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/gr-lora" "HISTORY" "TROUBLESHOOTING" "README.md" "${srcdir}/git.log"
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/gr-lora/LICENSE"
 }
