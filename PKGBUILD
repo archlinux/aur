@@ -3,8 +3,8 @@
 
 _gitname=frontend-sdl2
 pkgname=projectm-sdl2-git
-pkgver=57.a5152b3
-pkgrel=2
+pkgver=111.c53e732
+pkgrel=1
 provides=('projectm-sdl')
 conflicts=('projectm-sdl')
 pkgdesc="Music visualizer which uses 3D accelerated iterative image based rendering (git version)"
@@ -24,6 +24,8 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
+  git submodule init
+  git submodule update
   mkdir -p build
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ../
