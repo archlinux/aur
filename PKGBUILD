@@ -2,7 +2,7 @@
 
 pkgname=weakauras-companion-bin
 pkgver=5.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform application built to provide the missing link between Wago.io and World of Warcraft.'
 url='https://github.com/WeakAuras/WeakAuras-Companion'
 license=("GPL2")
@@ -13,11 +13,7 @@ sha512sums=('f05cd6541bfaa705a01e219d720e61b561c2db4e610a153c0a7a63cb0aa16f3fadb
 
 
 package() {
-  install -dm 755 "$pkgdir/usr/bin/"
-
   # Extract package data
   tar xf data.tar.xz -C "${pkgdir}"
-
-  ln -sf "/opt/WeakAuras Companion/weakauras-companion" "${pkgdir}/usr/bin/weakauras-companion"
 }
 
