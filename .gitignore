@@ -1,0 +1,5 @@
+/pkg
+/src
+*.pkg.tar.zst
+osu.Game.Rulesets.Sentakki.dll
+sentakki-language-packs.zip
