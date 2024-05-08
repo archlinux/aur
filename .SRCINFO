@@ -1,19 +1,19 @@
 pkgbase = yampl-bin
 	pkgdesc = Yaml templating via line-comments
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/clevyr/yampl
 	license = GPL-3.0
 	conflicts = yampl
 	provides = yampl
 	arch = aarch64
-	source_aarch64 = https://github.com/clevyr/yampl/releases/download/v0.4.1/yampl_0.4.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = a431db152f4dfe58b350d3e8e0061f1deb5a4a1251241b6c6103150ea3d9dec2
+	source_aarch64 = https://github.com/clevyr/yampl/releases/download/v0.5.0/yampl_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d617dfdc2eca9997aa06cea3d140c97b3dbc4e00de8529c85e415053128bd512
 	arch = armv7h
-	source_armv7h = https://github.com/clevyr/yampl/releases/download/v0.4.1/yampl_0.4.1_linux_armv7.tar.gz
-	sha256sums_armv7h = 597de037903ddd461a99c833f18fa203d6c61bede78c17531e597a59e03fa1bb
+	source_armv7h = https://github.com/clevyr/yampl/releases/download/v0.5.0/yampl_0.5.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 604d8867a6048637bd32ec4142ab966793fda4566f5898c9c120d04a4dac5904
 	arch = x86_64
-	source_x86_64 = https://github.com/clevyr/yampl/releases/download/v0.4.1/yampl_0.4.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = f81094d45a1cb863167e0add47017d90be20f1348a4de12a2c1794e25f00c050
+	source_x86_64 = https://github.com/clevyr/yampl/releases/download/v0.5.0/yampl_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = f1eedb0cb2360d59f9bceec87b7960a8430f387412abfe0b5fc4508bbb1416b4
 	
 pkgname = yampl-bin
