@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-liburing
-	pkgdesc = Linux-native io_uring I/O access library (android)
-	pkgver = 2.5
+	pkgdesc = Linux-native io_uring I/O access library (Android x86-64)
+	pkgver = 2.6
 	pkgrel = 1
 	url = https://git.kernel.dk/cgit/liburing
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = android-x86-64-liburing
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/axboe/liburing/archive/refs/tags/liburing-2.5.tar.gz
+	source = https://github.com/axboe/liburing/archive/refs/tags/liburing-2.6.tar.gz
 	source = 0001-Fix-libs-install.patch
-	md5sums = c7d5ad39446713cd18bde999ad32ae74
+	md5sums = 612e93b702a617e3d3e363311bef804d
 	md5sums = a0de03236c46346326adadb0139bc03d
 
 pkgname = android-x86-64-liburing

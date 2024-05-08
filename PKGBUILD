@@ -5,10 +5,10 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-liburing
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 arch=('any')
-pkgdesc="Linux-native io_uring I/O access library (android)"
+pkgdesc="Linux-native io_uring I/O access library (Android ${_android_arch})"
 url="https://git.kernel.dk/cgit/liburing"
 license=('(GPL-2.0-only WITH Linux-syscall-note) OR MIT'
          'LGPL-2.0-or-later'
@@ -18,20 +18,22 @@ makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/axboe/liburing/archive/refs/tags/liburing-${pkgver}.tar.gz"
         '0001-Fix-libs-install.patch')
-md5sums=('c7d5ad39446713cd18bde999ad32ae74'
+md5sums=('612e93b702a617e3d3e363311bef804d'
          'a0de03236c46346326adadb0139bc03d')
 
 prepare() {
     cd "${srcdir}/liburing-liburing-${pkgver}"
 
     patch -Np1 -i ../0001-Fix-libs-install.patch
+    sed -i 's|\$(QUIET_CC)||g' src/Makefile
 }
 
 build() {
     cd "${srcdir}/liburing-liburing-${pkgver}"
     source android-env ${_android_arch}
 
-    export LDFLAGS="-Wl,--undefined-version ${LDFLAGS}"
+    export CPPFLAGS="-D_FORTIFY_SOURCE=2 -D__USE_FORTIFY_LEVEL=2"
+    export LDFLAGS="${LDFLAGS} -Wl,--undefined-version"
 
     ./configure \
         --prefix="${ANDROID_PREFIX}" \
@@ -51,8 +53,8 @@ package() {
     source android-env ${_android_arch}
 
     make -C "${PWD}/src" DESTDIR="$pkgdir" ENABLE_SHARED=1 install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 
     for pc in liburing.pc liburing-ffi.pc; do
         pcFile=${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig/${pc}
