@@ -1,6 +1,6 @@
 pkgbase = hustmirror-cli
 	pkgdesc = The command line tool (hustmirror-cli) is a small tool that can help you quickly change sources to HUST mirror sources.
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/hust-open-atom-club/hustmirror-cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hustmirror-cli
 	makedepends = python3
 	depends = bash
 	conflicts = hustmirror-cli-git
-	source = hustmirror-cli-1.1.3.tar.gz::https://github.com/hust-open-atom-club/hustmirror-cli/archive/refs/tags/v1.1.3.tar.gz
+	source = hustmirror-cli-1.1.4.tar.gz::https://github.com/hust-open-atom-club/hustmirror-cli/archive/refs/tags/v1.1.4.tar.gz
 	source = hustmirror-cli.patch
 	source = hustmirror-cli-makefile.patch
 	sha256sums = SKIP
