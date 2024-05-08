@@ -8,6 +8,7 @@ url="https://gitee.com/tfcolin/ftbt"
 license=('MPL-2.0')
 depends=('ncurses')
 makedepends=('go>=1.20' 'git')
+options=('strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tfcolin/ftbt/archive/refs/tags/v${pkgver}.tar.gz")
 
 prepare() {
