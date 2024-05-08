@@ -1,7 +1,7 @@
 # Maintainer: James Appleton <james.appleton01@gmail.com>
 pkgname="flaq"
 pkgdesc="A simple CLI tool for modifying and querying metadata tags for \`.flac\` files."
-pkgrel=2
+pkgrel=3
 pkgver="0.2.0"
 
 makedepends=("git" "cargo" "jq")
@@ -27,35 +27,19 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	echo TODO
 	# export RUSTUP_TOOLCHAIN=stable
 	# cargo test --frozen --all-features
 }
 
 package() {
 	cd "$pkgname-$pkgver"
+	# install binary
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 
-	# install completion scripts
-	if [[ -d "$pkgdir/usr/share/bash-completion/completions" ]]; then
-		echo "Installed bash autocompletions"
-		install -Dm0755 -T "$pkgdir/usr/share/bash-completion/completions/$pkgname" "target/scripts/$pkgname.bash"
-	else
-		echo "Did not install bash autocompletions"
-	fi
-
-	# fish
-	# ZSH_PATH="${pkgdir}/usr/local/share/fish"
-
-	# fish TODO
-	# if [[ -r /usr/share/bash-completion/bash_completion ]]; then
-	#     install -Dm755 "./${pkgname}.bash" "${pkgdir}/usr/share/bash/completions/${pkgname}"
-	# fi
-
-	# elv TODO
-	# if [[ -r /usr/share/bash-completion/bash_completion ]]; then
-	#     install -Dm755 "./${pkgname}.bash" "${pkgdir}/usr/share/bash/completions/${pkgname}"
-	# fi
+	# install auto completion scripts
+	install -Dm644 "target/scripts/$pkgname.bash" "${pkgdir}/usr/share/bash-completion/completions/$pkgname.bash"
+	install -Dm644 "target/scripts/$pkgname.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/$pkgname.fish"
+	install -Dm644 "target/scripts/_$pkgname" "${pkgdir}/usr/share/zsh/site-functions/_$pkgname"
 }
 
 # pkgver() {
