@@ -1,11 +1,11 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=phantasusLite
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
-pkgdesc="Loading and annotation RNA-Seq counts matrices"
+pkgrel=1
+pkgdesc="Loading and annotation RNA-seq counts matrices"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5fe0e101ac53a89dd49e077d5fb4c07d')
-b2sums=('c28a7ab9128ccff247761208e759b9c462e08cbb2e50d3057fe1e0e2aa2a801260dfc4ddb31be6fc9f1ea295b91f423ead3365064d6296aeaad2c5c16666394c')
+md5sums=('4a03bee3356b509e2ef79d7177656a38')
+b2sums=('2266b8d3d16150958e01be1495d38a8cfb8a549168b9f4f1d7a08191e85d3cf6b192580f933fa7cb59f46279bfc2ef1094e463a98363cd8b0a66d7719ceefb13')
 
 build() {
   mkdir build
