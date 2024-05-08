@@ -15,7 +15,7 @@ depends=(
 )
 options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://github.com/tj/terminal-table/archive/v${pkgver}.tar.gz)
-sha1sums=('b8ccfd06e6a990b66b06802e97ef8d7282dac5f2')
+sha256sums=('817d1644eeef962f1a1b54ff79d2bd17543eb08c8fa095152c50485f85a2f6c6')
 
 prepare() {
   cd ${_gemname}-${pkgver}
