@@ -1,6 +1,6 @@
 pkgbase = vpkedit-bin
 	pkgdesc = A library and CLI/GUI tool to create, read, and write several pack file formats (binary release)
-	pkgver = 4.1.3
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/craftablescience/VPKEdit
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = vpkedit-bin
 	depends = qt6-base
 	provides = vpkedit
 	conflicts = vpkedit
-	source = vpkedit-4.1.3.zip::https://github.com/craftablescience/VPKEdit/releases/download/v4.1.3/VPKEdit-Linux-Installer-gcc-Release.zip
-	sha256sums = ec1b9cd6cd8e1f8d55abf8fba5b88de6e264ec22087d5325dbf7e48581fd991e
+	source = vpkedit-4.2.0.zip::https://github.com/craftablescience/VPKEdit/releases/download/v4.2.0/VPKEdit-Linux-Installer-gcc-Release.zip
+	sha256sums = 3b3ee25a41055c8107288cd9b00059fc3198931521aface1fa7675e97062b27d
 
 pkgname = vpkedit-bin
