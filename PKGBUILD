@@ -22,8 +22,6 @@ depends=(
   'libvolk'
   'boost-libs'
   'liquid-dsp'
-  #'python2-scipy'
-  #'python2-numpy'
 )
 makedepends=(
   'boost'
