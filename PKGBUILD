@@ -10,7 +10,7 @@ depends=(gcc-libs)
 makedepends=(cargo)
 checkdepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bertptrs/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('dcbff31d50a3731ce19a3c81e6568706')
+sha256sums=('479e7e0d8776def17eddd1b5873400589d99a8330f08ed058190009cf8619339')
 
 build() {
 	cd "$pkgname-$pkgver"
