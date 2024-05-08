@@ -3,7 +3,7 @@
 pkgname=python-rns
 _name='rns'
 pkgver=0.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Self-configuring, encrypted and resilient mesh networking stack"
 arch=('any')
 depends=('python-cryptography' 'python-pyserial')
