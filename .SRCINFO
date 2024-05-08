@@ -1,0 +1,16 @@
+pkgbase = snes-asar-thedopefish-git
+	pkgdesc = SNES assembler for applying patches to existing ROMs or creating new ROMs from scratch, thedopefish branch
+	pkgver = 1.90pre
+	pkgrel = 1
+	url = https://github.com/thedopefish/asar
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = git
+	provides = snes-asar
+	conflicts = snes-asar
+	source = git+https://github.com/thedopefish/asar.git
+	sha256sums = SKIP
+
+pkgname = snes-asar-thedopefish-git
