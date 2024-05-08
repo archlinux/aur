@@ -3,7 +3,7 @@
 pkgname=python-docker-pycreds
 _pkgname=${pkgname#python-}
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for the docker credentials store API Resources'
 arch=('any')
 url='https://github.com/shin-/dockerpy-creds'
