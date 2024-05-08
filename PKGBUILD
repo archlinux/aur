@@ -2,7 +2,7 @@
 
 pkgname=sourcegit
 pkgver=8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
 url='https://github.com/sourcegit-scm/sourcegit'
@@ -32,10 +32,10 @@ package() {
     install -d "$pkgdir/opt/$pkgname/"
     install -d "$pkgdir/usr/bin/"
 
-    cp -r "$srcdir/$pkgname-$pkgver/publish/"* "$pkgdir/opt/$pkgname/"
+    cp -r "$pkgname-$pkgver/publish/"* "$pkgdir/opt/$pkgname/"
     ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-    install -Dm644 "sourcegit.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$srcdir/$pkgname-$pkgver/build/resources/_common/usr/share/icons/sourcegit.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-    install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 sourcegit.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "$pkgname-$pkgver/build/resources/_common/usr/share/icons/sourcegit.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+    install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
