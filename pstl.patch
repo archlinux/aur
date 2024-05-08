@@ -1,0 +1,13 @@
+diff --git a/cpp/open3d/utility/ParallelScan.h b/cpp/open3d/utility/ParallelScan.h
+index a98015053..209328a5d 100644
+--- a/cpp/open3d/utility/ParallelScan.h
++++ b/cpp/open3d/utility/ParallelScan.h
+@@ -13,6 +13,8 @@
+ // clang-format off
+ #if TBB_INTERFACE_VERSION >= 10000
+     #ifdef OPEN3D_USE_ONEAPI_PACKAGES
++#define _PSTL_UDR_PRESENT 0
++#define _PSTL_UDS_PRESENT 0
+         #include <oneapi/dpl/execution>
+         #include <oneapi/dpl/numeric>
+     #else
