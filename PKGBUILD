@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://gitee.com/tfcolin/slide"
 license=('GPL-3.0-or-later')
 depends=('gtk3' 'ncurses')
+options=('strip' '!debug')
 source=("https://github.com/tfcolin/slide/archive/refs/tags/v$pkgver.tar.gz")
 
 build() {

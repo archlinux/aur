@@ -7,6 +7,8 @@ pkgbase = slidegame
 	license = GPL-3.0-or-later
 	depends = gtk3
 	depends = ncurses
+	options = strip
+	options = !debug
 	source = https://github.com/tfcolin/slide/archive/refs/tags/v1.2.0.tar.gz
 	sha256sums = 091cf17f0d3cb523f4950e7d8c684a1e2160438083d1d64ff3a4d3e54e3fed17
 
