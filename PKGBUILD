@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libx11
-pkgver=1.8.8
+pkgver=1.8.9
 pkgrel=1
 arch=('any')
 pkgdesc="X11 client-side library (Android ${_android_arch})"
@@ -20,13 +20,14 @@ makedepends=('android-configure'
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/releases/individual/lib/libX11-${pkgver}.tar.xz"{,.sig}
         '0001-Fix-missing-symbols.patch')
-md5sums=('b3ead07f3706fc530c8c584bbe86506b'
+md5sums=('b006876e5b749d82801fe9450d700daf'
          'SKIP'
          '7e75887c531b49934b9ac36ac329074a')
 validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alanc@freedesktop.org>
 
 prepare() {
     cd "$srcdir/libX11-${pkgver}"
+
     patch -Np1 -i ../0001-Fix-missing-symbols.patch
 }
 
@@ -48,6 +49,6 @@ package() {
     make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}/doc"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}/man"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
