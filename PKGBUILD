@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.22.0+r2661+gd2fb30a188
+pkgver=1.24.0+r490+g19bc0da824
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -48,7 +48,7 @@ makedepends=(
   lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-liblrdf lib32-ladspa lib32-libde265 lib32-lilv lib32-lv2
   lib32-libmpcdec lib32-neon lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch
   lib32-libsrtp lib32-zvbi lib32-wildmidi
-  lib32-nettle lib32-libxml2 lib32-json-glib lib32-libva lib32-libxkbcommon-x11
+  lib32-nettle lib32-libxml2 lib32-json-glib "lib32-libva>=2.21.0" lib32-libxkbcommon-x11
 
   # gst-plugins-ugly
   lib32-a52dec lib32-opencore-amr lib32-libcdio lib32-libdvdread lib32-libmpeg2 lib32-x264
@@ -84,6 +84,7 @@ build() {
     -D gpl=enabled
     -D gst-examples=disabled
     -D libnice=disabled
+    -D webrtc=disabled # remove deps for libnice
     -D orc=enabled # fix
     -D orc-source="system" # fix
     -D vaapi=enabled
@@ -578,7 +579,7 @@ package_lib32-gst-plugin-gtk-git() {
 
 package_lib32-gst-plugin-va-git() {
   pkgdesc+=" - va plugin"
-  depends=("lib32-gst-plugins-bad-libs-git=$pkgver" lib32-libva)
+  depends=("lib32-gst-plugins-bad-libs-git=$pkgver" "lib32-libva>=2.21.0")
   provides=("lib32-gst-plugin-va=$pkgver")
   conflicts=("lib32-gst-plugin-va")
 
@@ -642,7 +643,7 @@ package_lib32-gst-rtsp-server-git() {
 
 package_lib32-gstreamer-vaapi-git() {
   pkgdesc+=" - vaapi plugin"
-  depends=("lib32-gst-plugins-bad-libs-git=$pkgver" lib32-libva lib32-libxrandr)
+  depends=("lib32-gst-plugins-bad-libs-git=$pkgver" "lib32-libva>=2.21.0" lib32-libxrandr)
   provides=("lib32-gstreamer-vaapi=$pkgver")
   conflicts=("lib32-gstreamer-vaapi")
 
