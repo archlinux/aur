@@ -1,5 +1,5 @@
 [Unit]
-Description=World of Warcraft Vanilla login daemon
+Description=MMORPG login daemon
 Wants=network.target mariadb.service
 After=mariadb.service
 
