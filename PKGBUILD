@@ -1,73 +1,86 @@
 # Maintainer: gigas002 <gigas002@pm.me>
+# Maintainer: dr460nf1r3 <aur@dr460nf1r3.org>
 
 pkgname=plasma5-themes-sweet-full-git
 _pkgname=sweet
-pkgver=r327.8bb5040
-pkgrel=1
+pkgver=r368.cf72cb4
+pkgrel=2
 pkgdesc="Sweet KDE Plasma theme"
 arch=('x86_64')
 url="https://github.com/EliverLara/$_pkgname"
 license=('GPL3')
 makedepends=('git' 'inkscape' 'optipng')
 depends=('plasma5-themes-sweet-kde-git'
-		 'kvantum'
+         'kvantum'
          'candy-icons-git')
 optdepends=('ttf-roboto: primary font face defined (GTK theme)'
-			'ttf-ubuntu-font-family: secondary font face defined (GTK theme)'
-			'cantarell-fonts: tertiary font face defined (GTK theme)'
-			'sweet-folders-icons-git: sweet folder icons')
+            'ttf-ubuntu-font-family: secondary font face defined (GTK theme)'
+            'cantarell-fonts: tertiary font face defined (GTK theme)'
+            'sweet-folders-icons-git: sweet folder icons')
 provides=("sweet-theme")
 conflicts=('sweet-kde' 'sweet-kde-git' 'sweet-gtk-theme' 'sweet-theme-git'
            'sweet-cursor-theme-git' 'sweet-cursor-theme' 'sweet-cursors-theme'
            'kvantum-theme-sweet-git' 'sweet-kvantum-theme-git' 'sweet-gtk-theme-dark'
-		   'plasma5-theme-sweet-git' 'sweet-theme-full-git')
+           'plasma5-theme-sweet-git' 'sweet-theme-full-git')
 options=('!strip')
+patch="cursors.patch"
 source=("git+$url.git#branch=nova")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $srcdir/$_pkgname
-  	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd $srcdir/$_pkgname
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+ prepare() {
+    cd $srcdir/$_pkgname
+    patch -p1 -i ../../$patch
+ }
+
 build() {
-	cd $srcdir/$_pkgname
+    cd $srcdir/$_pkgname
 
-	export THEME_FONT_FACE=${THEME_FONT_FACE:-Roboto}
-	export THEME_FONT_SIZE=${THEME_FONT_SIZE:-10}
+    export THEME_FONT_FACE=${THEME_FONT_FACE:-Roboto}
+    export THEME_FONT_SIZE=${THEME_FONT_SIZE:-10}
 
-	msg2 "To customize the font and size for gnome-shell, build this package"
-	msg2 "with the variables below set to the desired font family and size"
-	msg2 "- THEME_FONT_FACE (default font family is Roboto)"
-	msg2 "- THEME_FONT_SIZE (default font point size is 10)"
+    msg2 "To customize the font and size for gnome-shell, build this package"
+    msg2 "with the variables below set to the desired font family and size"
+    msg2 "- THEME_FONT_FACE (default font family is Roboto)"
+    msg2 "- THEME_FONT_SIZE (default font point size is 10)"
 
-	msg2 "Rendering assets, please wait"
-	pushd gtk-2.0
-	while read $line; do echo -n "."; done < \
-		<(./render-assets.sh 2>/dev/null); echo
-	popd
+    msg2 "Rendering assets, please wait"
+    pushd gtk-2.0
+    while read $line; do echo -n "."; done < \
+        <(./render-assets.sh 2>/dev/null); echo
+    popd
 
-	pushd src
-	while read $line; do echo -n "."; done < \
-		<(./render-gtk3-assets.py 2>/dev/null; \
-		./render-gtk3-assets-hidpi.py 2>/dev/null; \
-		./render-wm-assets-hidpi.py 2>/dev/null; \
-		./render-wm-assets.py 2>/dev/null); echo
-	popd
-	msg2 "Done!"
+    pushd src
+    while read $line; do echo -n "."; done < \
+        <(./render-gtk3-assets.py 2>/dev/null; \
+        ./render-gtk3-assets-hidpi.py 2>/dev/null; \
+        ./render-wm-assets-hidpi.py 2>/dev/null; \
+        ./render-wm-assets.py 2>/dev/null); echo
+    popd
+    msg2 "Done!"
 
-	msg2 "Setting gnome-shell font face to $THEME_FONT_FACE"
-	msg2 "Setting gnome-shell font size to $THEME_FONT_SIZE"
+    msg2 "Setting gnome-shell font face to $THEME_FONT_FACE"
+    msg2 "Setting gnome-shell font size to $THEME_FONT_SIZE"
 
-	if [ "$THEME_FONT_FACE" != "Roboto" ]; then
-		sed -i -re "s/font-family: (.*);/font-family: $THEME_FONT_FACE, \1;/" \
-			"$srcdir/$_pkgname/gnome-shell/gnome-shell.css"
-	fi
+    if [ "$THEME_FONT_FACE" != "Roboto" ]; then
+        sed -i -re "s/font-family: (.*);/font-family: $THEME_FONT_FACE, \1;/" \
+            "$srcdir/$_pkgname/gnome-shell/gnome-shell.css"
+    fi
 
-	if [ $THEME_FONT_SIZE != "10" ]; then
-		sed -i -re "s/font-size: (.*);/font-size: $THEME_FONT_SIZEpt;/" \
-			"$srcdir/$_pkgname/gnome-shell/gnome-shell.css"
-	fi
+    if [ $THEME_FONT_SIZE != "10" ]; then
+        sed -i -re "s/font-size: (.*);/font-size: $THEME_FONT_SIZEpt;/" \
+            "$srcdir/$_pkgname/gnome-shell/gnome-shell.css"
+    fi
+
+    cd $srcdir/$_pkgname/kde/cursors
+
+    # # update xcursors
+    chmod +x build.sh
+    ./build.sh
 }
 
 package() {
@@ -94,22 +107,22 @@ package() {
     mv -f sddm $pkgdir/usr/share
 
     # cursors
-	mkdir -p $pkgdir/usr/share/icons
+    mkdir -p $pkgdir/usr/share/icons
     mv -f cursors/Sweet-cursors $pkgdir/usr/share/icons
 
     # kvantum
     mv -f Kvantum $pkgdir/usr/share
 
     # GTK
-	cd $srcdir/$_pkgname
+    cd $srcdir/$_pkgname
     mkdir -p $pkgdir/usr/share/themes/$_pkgname
-	mv -f assets $pkgdir/usr/share/themes/$_pkgname/
-	mv -f cinnamon $pkgdir/usr/share/themes/$_pkgname/
-	mv -f gnome-shell $pkgdir/usr/share/themes/$_pkgname/
-	mv -f gtk-2.0 $pkgdir/usr/share/themes/$_pkgname/
-	mv -f gtk-3.0 $pkgdir/usr/share/themes/$_pkgname/
-	mv -f gtk-4.0 $pkgdir/usr/share/themes/$_pkgname/
-	mv -f metacity-1 $pkgdir/usr/share/themes/$_pkgname/
-	mv -f xfwm4 $pkgdir/usr/share/themes/$_pkgname/
-	mv -f index.theme $pkgdir/usr/share/themes/$_pkgname/
+    mv -f assets $pkgdir/usr/share/themes/$_pkgname/
+    mv -f cinnamon $pkgdir/usr/share/themes/$_pkgname/
+    mv -f gnome-shell $pkgdir/usr/share/themes/$_pkgname/
+    mv -f gtk-2.0 $pkgdir/usr/share/themes/$_pkgname/
+    mv -f gtk-3.0 $pkgdir/usr/share/themes/$_pkgname/
+    mv -f gtk-4.0 $pkgdir/usr/share/themes/$_pkgname/
+    mv -f metacity-1 $pkgdir/usr/share/themes/$_pkgname/
+    mv -f xfwm4 $pkgdir/usr/share/themes/$_pkgname/
+    mv -f index.theme $pkgdir/usr/share/themes/$_pkgname/
 }
