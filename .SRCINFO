@@ -1,21 +1,28 @@
 pkgbase = gr-lora-git
 	pkgdesc = GNURadio blocks for receiving LoRa modulated radio messages using SDR
-	pkgver = 0.6.2.3
+	pkgver = 0.6.2+60.r190.20211210.90343d4
 	pkgrel = 1
 	url = https://github.com/rpp0/gr-lora
 	arch = any
-	license = unknown
+	license = GPL-3.0-or-later
+	makedepends = boost
 	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	makedepends = pybind11
+	makedepends = python>=3
+	makedepends = python-pygccxml
+	makedepends = swig
+	depends = gcc-libs
+	depends = glibc
 	depends = gnuradio
+	depends = gmp
 	depends = libosmocore
-	depends = boost
-	depends = swig
-	depends = liquid-dsp-git
-	depends = python2-scipy
-	depends = python2-numpy
-	provides = gr-lora
-	source = git+https://github.com/rpp0/gr-lora
-	sha1sums = SKIP
+	depends = libvolk
+	depends = boost-libs
+	depends = liquid-dsp
+	provides = gr-lora=0.6.2+60.r190.20211210.90343d4
+	source = gr-lora::git+https://github.com/rpp0/gr-lora.git
+	sha256sums = SKIP
 
 pkgname = gr-lora-git
-
