@@ -20,7 +20,7 @@ build() {
 package() {
 	# install binary
 	cd "${pkgname}/target/release/"
-	install -Dm755 "./${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Tm755 "./${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	# install completion scripts
 	cd ../scripts
@@ -28,7 +28,7 @@ package() {
 	# bash
 	BASH_PATH="${pkgdir}/usr/share/bash-completion/completions"
 	if [[ -e BASH_PATH ]]; then
-		install -D "./${pkgname}.bash" "${BASH_PATH}/${pkgname}"
+		install -T "./${pkgname}.bash" "${BASH_PATH}/${pkgname}"
 		echo "Installed bash autocompletions"
 	fi
 
