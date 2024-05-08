@@ -2,26 +2,26 @@
 
 pkgname=python-wandb
 _pkgname=${pkgname#python-}
-pkgver=0.16.6
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='A tool for visualizing and tracking your machine learning experiments'
 arch=('any')
 url='https://wandb.ai'
 license=('MIT')
 depends=(
-    'python-appdirs'
     'python-click'
     'python-docker-pycreds'
     'python-gitpython'
+    'python-platformdirs'
     'python-protobuf'
     'python-psutil'
-    'python-pyaml'
     'python-requests'
     'python-sentry_sdk'
     'python-setproctitle'
+    'python-setuptools'
+    'python-yaml'
 )
-makedepends=('python-build' 'python-installer' 'python-setuptools'
-             'python-wheel')
+makedepends=('gcc' 'go' 'python-build' 'python-hatchling' 'python-wheel')
 optdepends=(
     'python-moviepy: logging videos'
     'python-numpy: logging multi-dimensional arrays'
@@ -32,11 +32,16 @@ optdepends=(
 provides=('python-wandb')
 conflicts=('python-wandb-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wandb/wandb/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('938b7dd023a29282b63034d4d383939c1d0f00d3161375994f7a9d9d619bae45')
+sha256sums=('71aea4f98f635e8e61d6086b43610312b44d7e99f1ac0fa9ff0fc46b08e208a4')
 
 build() {
     cd "$_pkgname-$pkgver"
     python -m build -nw
+}
+
+check() {
+    cd "$_pkgname-$pkgver"
+    PYTHONPATH=$PWD python -c 'import wandb'
 }
 
 package() {
