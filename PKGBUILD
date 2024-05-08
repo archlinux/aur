@@ -4,7 +4,7 @@
 pkgname=plasma5-themes-sweet-full-git
 _pkgname=sweet
 pkgver=r368.cf72cb4
-pkgrel=2
+pkgrel=3
 pkgdesc="Sweet KDE Plasma theme"
 arch=('x86_64')
 url="https://github.com/EliverLara/$_pkgname"
@@ -34,7 +34,7 @@ pkgver() {
 
  prepare() {
     cd $srcdir/$_pkgname
-    patch -p1 -i ../../$patch
+    patch -p1 -i $startdir/$patch
  }
 
 build() {
