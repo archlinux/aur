@@ -1,20 +1,23 @@
 pkgbase = aliyunpan-go-bin
 	pkgdesc = 阿里云盘命令行客户端，支持webdav文件服务，支持JavaScript插件，支持同步备份功能。(Precompiled version)
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://github.com/tickstep/aliyunpan
-	arch = x86_64
 	arch = aarch64
-	arch = loong64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
 	license = Apache-2.0
 	depends = bash
-	provides = aliyunpan-go
+	provides = aliyunpan-go=0.3.2
 	conflicts = aliyunpan-go
-	source_x86_64 = https://github.com/tickstep/aliyunpan/releases/download/v0.3.1/aliyunpan-v0.3.1-linux-amd64.zip
-	sha512sums_x86_64 = 19be82f93b5280d034ad345ff205b71d3e764987dbfd70519e8cc13034cb5b663ca29656cf7ff56988d19735c23f63b3853cbbb3add2ad4a2ab0d3028d0363fb
-	source_aarch64 = https://github.com/tickstep/aliyunpan/releases/download/v0.3.1/aliyunpan-v0.3.1-linux-arm64.zip
-	sha512sums_aarch64 = 153705db593b163374ae8464455dc9f47fd0efac276b904335a2f9cd6d48d82a1d3bc324a5ba7c1571c5b51c796abdddd9d7d431b7b4cb41f0a00f367bbe6b22
-	source_loong64 = https://github.com/tickstep/aliyunpan/releases/download/v0.3.1/aliyunpan-v0.3.1-linux-loong64.zip
-	sha512sums_loong64 = dc8c5e3d2d7d367d442c098e3d4a71eabf76aa7593ac81768e3e4426fa087e752eae3c9273a2616440acffcc5a9a86732b8644577326800c4de49923b5bc1ba5
+	source_aarch64 = aliyunpan-go-0.3.2-aarch64.zip::https://github.com/tickstep/aliyunpan/releases/download/v0.3.2/aliyunpan-v0.3.2-linux-arm64.zip
+	sha256sums_aarch64 = 12057b251eec876812acf24c3c0ed67a66a098143966c856e5823ef31c23a857
+	source_armv7h = aliyunpan-go-0.3.2-armv7h.zip::https://github.com/tickstep/aliyunpan/releases/download/v0.3.2/aliyunpan-v0.3.2-linux-armv7.zip
+	sha256sums_armv7h = c6afd815fad7ff352fc3260d3725cb76f578f474159ad297ba5537f32a201bbf
+	source_i686 = aliyunpan-go-0.3.2-i686.zip::https://github.com/tickstep/aliyunpan/releases/download/v0.3.2/aliyunpan-v0.3.2-linux-386.zip
+	sha256sums_i686 = 7ea2d652d0dc8acf9c7df83b365e558505c217646c3b0fd1025de4925844746f
+	source_x86_64 = aliyunpan-go-0.3.2-x86_64.zip::https://github.com/tickstep/aliyunpan/releases/download/v0.3.2/aliyunpan-v0.3.2-linux-amd64.zip
+	sha256sums_x86_64 = ad67ae27aeb512a1689c2501309ecffac52272e7330b2eeabe043fb9f178c925
 
 pkgname = aliyunpan-go-bin

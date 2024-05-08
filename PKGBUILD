@@ -1,37 +1,32 @@
-# Maintainer: BryanLiang <liangrui.ch@gmail.com>
-
-pkgname=aliyunpan-go-bin
-_pkgname=aliyunpan-go
-pkgver=0.3.1
-pkgrel=2
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: BryanLiang <liangrui.ch@gmail.com>
+_pkgname=aliyunpan
+pkgname="${_pkgname}-go-bin"
+pkgver=0.3.2
+pkgrel=1
 pkgdesc='阿里云盘命令行客户端，支持webdav文件服务，支持JavaScript插件，支持同步备份功能。(Precompiled version)'
-arch=('x86_64' 'aarch64' 'loong64')
+arch=(
+    'aarch64'
+    'armv7h'
+    'i686'
+    'x86_64'
+)
 url='https://github.com/tickstep/aliyunpan'
 license=('Apache-2.0')
 depends=('bash')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-
-source_x86_64=("${url}/releases/download/v${pkgver}/aliyunpan-v${pkgver}-linux-amd64.zip")
-source_aarch64=("${url}/releases/download/v${pkgver}/aliyunpan-v${pkgver}-linux-arm64.zip")
-source_loong64=("${url}/releases/download/v${pkgver}/aliyunpan-v${pkgver}-linux-loong64.zip")
-
-sha512sums_x86_64=('19be82f93b5280d034ad345ff205b71d3e764987dbfd70519e8cc13034cb5b663ca29656cf7ff56988d19735c23f63b3853cbbb3add2ad4a2ab0d3028d0363fb')
-sha512sums_aarch64=('153705db593b163374ae8464455dc9f47fd0efac276b904335a2f9cd6d48d82a1d3bc324a5ba7c1571c5b51c796abdddd9d7d431b7b4cb41f0a00f367bbe6b22')
-sha512sums_loong64=('dc8c5e3d2d7d367d442c098e3d4a71eabf76aa7593ac81768e3e4426fa087e752eae3c9273a2616440acffcc5a9a86732b8644577326800c4de49923b5bc1ba5')
-
-declare -A _archmap=(
-    ['x86_64']='amd64'
-    ['aarch64']='arm64'
-    ['loong64']='loong64'
-)
-
-_arch="${_archmap[${CARCH}]}"
-
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.zip")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-armv7.zip")
+source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-386.zip")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.zip")
+sha256sums_aarch64=('12057b251eec876812acf24c3c0ed67a66a098143966c856e5823ef31c23a857')
+sha256sums_armv7h=('c6afd815fad7ff352fc3260d3725cb76f578f474159ad297ba5537f32a201bbf')
+sha256sums_i686=('7ea2d652d0dc8acf9c7df83b365e558505c217646c3b0fd1025de4925844746f')
+sha256sums_x86_64=('ad67ae27aeb512a1689c2501309ecffac52272e7330b2eeabe043fb9f178c925')
 package() {
-    cd "${srcdir}/aliyunpan-v${pkgver}-linux-${_arch}"
-    install -Dm 755 aliyunpan "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm 755 webdav.sh "${pkgdir}/usr/bin/${_pkgname}-webdav"
-    install -Dm 755 sync.sh "${pkgdir}/usr/bin/${_pkgname}-sync"
-    install -Dm 644 manual.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
+    install -Dm755 "${srcdir}/${_pkgname}-v${pkgver}-linux-"*/"${_pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/${_pkgname}-v${pkgver}-linux-"*/webdav.sh "${pkgdir}/usr/bin/${_pkgname}-webdav"
+    install -Dm755 "${srcdir}/${_pkgname}-v${pkgver}-linux-"*/sync.sh "${pkgdir}/usr/bin/${_pkgname}-sync"
+    install -Dm644 "${srcdir}/${_pkgname}-v${pkgver}-linux-"*/manual.md -t "${pkgdir}/usr/share/doc/${pkgname%-bin}"
 }
