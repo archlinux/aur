@@ -4,10 +4,12 @@ pkgbase = opticpu
 	pkgrel = 1
 	url = https://github.com/felipealfonsog/OptiCPU
 	arch = x86_64
-	license = GPL
+	license = BSD 3-clause
 	depends = gcc
 	depends = glibc
-	source = opticpu-1.0.tar.gz::https://github.com/felipealfonsog/OptiCPU/archive/v1.0.tar.gz
+	depends = libutil-linux
+	depends = coreutils
+	source = https://github.com/felipealfonsog/OptiCPU/archive/refs/tags/v1.0.tar.gz
 	sha256sums = fdf95e44bd35394c89e1244b18010894c83631f3188d55cf75de01b79266e7dc
 
 pkgname = opticpu
