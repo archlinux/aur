@@ -1,7 +1,7 @@
 pkgbase = cisco-hash-sigs-static
 	pkgdesc = A full-featured implementation of the LMS and HSS Hash Based Signature Schemes
 	pkgver = r51.b0631b8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cisco/hash-sigs
 	arch = x86_64
 	license = LicenseRef-Cisco

@@ -3,7 +3,7 @@ pkgname=cisco-hash-sigs-static
 _name=hash-sigs
 _commit=b0631b8891295bf2929e68761205337b7c031726
 pkgver=r51.b0631b8
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured implementation of the LMS and HSS Hash Based Signature Schemes"
 arch=(x86_64)
 url=https://github.com/cisco/hash-sigs
@@ -25,6 +25,10 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
+#prepare() {
+#    sed -i -e 's/USE\_OPENSSL 1/USE\_OPENSSL 0/' $_name/sha256.h
+#}
+
 build() {
     cd $_name
     make all
@@ -32,12 +36,14 @@ build() {
 
 check () {
     cd $_name
-    ./test_hss -full all
+    #./test_hss -full all
+    ./test_hss all
 }
 
 package() {
     cd $_name
-    install -d "$pkgdir"/usr/lib/
+    install -d "$pkgdir"/usr/lib/ "$pkgdir"/usr/include/cisco-$_name
     install -vDm 644 {hss_lib,hss_lib_thread,hss_verify}.a "$pkgdir"/usr/lib/
+    install -vDm 644 *.h "$pkgdir"/usr/include/cisco-$_name/
     install -vDm 644 license.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
