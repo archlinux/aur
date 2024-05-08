@@ -12,7 +12,7 @@ makedepends=('yq' 'rsync')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha512sums=('d621da568c11d525281de01d79121960e4819eea4ee3458fc2795fce97576c63b9af811ed147495454393047bc6b146685fac1ad66c26d4fd1af18cbe83823d9')
 
-# Boilerplate nextcloud version calculation adopted from other packages
+# BEGIN Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
     _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_appname}/appinfo/info.xml"| sed 's/"//g')"
     _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "${_appname}/appinfo/info.xml"| sed 's/"//g')"
@@ -20,14 +20,14 @@ _get_nextcloud_versions() {
     #echo "Min: ${_app_min_major_version}; Max: ${_app_max_major_version}"
 }
 
+_nextcloud_app_package() {
+    _get_nextcloud_versions
+    depends=("nextcloud>=${_app_min_major_version:-0}" "nextcloud<${_app_max_major_version:-999}")
+}
+# END Boilerplate nextcloud app version clamping
+
 prepare() {
     mv "${srcdir}/${_appname}-${pkgver}" "${srcdir}/${_appname}"
-
-    local _app_min_major_version
-    local _app_max_major_version
-    _get_nextcloud_versions
-
-    depends=("nextcloud>=${_app_min_major_version}" "nextcloud<${_app_max_major_version}")
 }
 
 build() {
@@ -42,4 +42,5 @@ package() {
 
     tar -x --no-same-owner -C "${pkgdir}/${_install_dir}" \
         -f "${srcdir}/${_appname}/build/artifacts/${_appname}.tar.gz"
+    _nextcloud_app_package
 }
