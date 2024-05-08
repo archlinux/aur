@@ -1,6 +1,6 @@
 pkgbase = unrpyc
 	pkgdesc = A ren'py script decompiler
-	pkgver = 2.0.1.r1.g11de7c0
+	pkgver = 2.0.1.r11.g1eae493
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/CensoredUsername/unrpyc
@@ -8,7 +8,7 @@ pkgbase = unrpyc
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = git+https://github.com/CensoredUsername/unrpyc.git
+	source = git+https://github.com/CensoredUsername/unrpyc.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = unrpyc

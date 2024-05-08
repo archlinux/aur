@@ -2,7 +2,7 @@
 # Contributor: Ezekiel Bethel <mctinfoilball@gmail.com>
 
 pkgname=unrpyc
-pkgver=2.0.1.r1.g11de7c0
+pkgver=2.0.1.r11.g1eae493
 pkgrel=1
 epoch=2
 pkgdesc="A ren'py script decompiler"
@@ -11,7 +11,7 @@ url="https://github.com/CensoredUsername/unrpyc"
 license=('MIT')
 depends=("python")
 makedepends=("python-setuptools")
-source=("git+https://github.com/CensoredUsername/unrpyc.git")
+source=("git+https://github.com/CensoredUsername/unrpyc.git#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
