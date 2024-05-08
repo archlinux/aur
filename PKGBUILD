@@ -1,7 +1,7 @@
 # Maintainer: Diptesh Choudhuri <ignisda2001@gmail.com>
 
 pkgname=devpod
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - unofficial package"
 arch=('x86_64')
