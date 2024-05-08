@@ -9,12 +9,12 @@
 pkgbase=ggnfs-svn
 pkgname=('ggnfs-lasieve4e-x86_64-svn' 'ggnfs-svn')
 pkgver=441
-pkgrel=3
+pkgrel=4
 pkgdesc="GGNFS is an open source implementation of General Number Field Sieve algorithm for factoring integers."
 arch=('x86_64')
 url="http://sourceforge.net/projects/ggnfs/"
 license=('GPL2')
-makedepends=('subversion' 'libgmp-static' 'texlive-core')
+makedepends=('subversion' 'libgmp-static' 'texlive-basic' 'texlive-binextra' 'texlive-latex')
 source=("ggnfs-code::svn://svn.code.sf.net/p/ggnfs/code/trunk"
 	"makefile-lasieve4_64.patch"
 	"lasieve4_64-athlon64-i7.patch"

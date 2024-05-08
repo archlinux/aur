@@ -1,13 +1,15 @@
 pkgbase = ggnfs-svn
 	pkgdesc = GGNFS is an open source implementation of General Number Field Sieve algorithm for factoring integers.
 	pkgver = 441
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sourceforge.net/projects/ggnfs/
 	arch = x86_64
 	license = GPL2
 	makedepends = subversion
 	makedepends = libgmp-static
-	makedepends = texlive-core
+	makedepends = texlive-basic
+	makedepends = texlive-binextra
+	makedepends = texlive-latex
 	source = ggnfs-code::svn://svn.code.sf.net/p/ggnfs/code/trunk
 	source = makefile-lasieve4_64.patch
 	source = lasieve4_64-athlon64-i7.patch
