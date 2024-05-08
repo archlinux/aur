@@ -1,7 +1,7 @@
 pkgbase = ags
 	pkgdesc = Engine to run adventure/quest games
 	pkgver = 3.6.1.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adventuregamestudio/ags
 	arch = x86_64
 	license = Artistic2.0

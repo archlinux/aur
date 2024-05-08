@@ -6,7 +6,7 @@
 
 pkgname=ags
 pkgver=3.6.1.24
-pkgrel=1
+pkgrel=2
 pkgdesc='Engine to run adventure/quest games'
 arch=('x86_64')
 url='https://github.com/adventuregamestudio/ags'
@@ -20,14 +20,17 @@ _srcdir="$pkgname-$pkgver"
 
 prepare() {
 	cd "$_srcdir"
-	
+
 	sed -i '/include_directories("${SDL_sound_INCLUDE_DIRS}")/d' 'CMakeLists.txt'
 	sed -i 's/find_package(SDL_sound REQUIRED)/find_package(SDL2_sound REQUIRED)/' 'CMakeLists.txt'
 	sed -i 's|add_subdirectory(Common/libsrc/freetype-2.1.3   EXCLUDE_FROM_ALL)|find_package(Freetype REQUIRED)|' 'CMakeLists.txt'
 	sed -i 's|set(FREETYPE_LIBRARIES FreeType::FreeType)|set(FREETYPE_LIBRARIES Freetype::Freetype)|' 'CMakeLists.txt'
+
+	sed -i '/<string.h>/a #include <strings.h>|' 'Common/util/string_compat.c'
 }
 
 build() {
+	CFLAGS+=' -Wno-error=incompatible-pointer-types'
 	cmake -S "$_srcdir" -B 'build' \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DCMAKE_BUILD_TYPE=None \
