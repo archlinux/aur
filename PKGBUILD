@@ -2,7 +2,7 @@
 
 pkgname=libretro-gpsp-git
 _gitname=gpsp
-pkgver=298
+pkgver=807.4caf7a1
 pkgrel=1
 pkgdesc="libretro implementation of gpsp"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ url="https://github.com/libretro/gpsp"
 license=('custom' 'GPL' 'LGPL')
 makedepends=('git')
 
-source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
+source=("${_gitname}::git+https://github.com/libretro/${_gitname}.git"
 	"https://raw.github.com/libretro/libretro-super/master/dist/info/gpsp_libretro.info")
 md5sums=('SKIP'
 	 'SKIP')
@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/gpsp_libretro.info" "${pkgdir}/usr/lib/libretro/libretro-gpsp.info"
+  install -Dm644 "${srcdir}/gpsp_libretro.info" "${pkgdir}/usr/share/libretro/info/libretro-gpsp.info"
   install -Dm644 "${_gitname}/gpsp_libretro.so" "${pkgdir}/usr/lib/libretro/libretro-gpsp.so"
 }
