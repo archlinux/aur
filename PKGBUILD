@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.8.8.arch1
+pkgver=6.8.9.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -34,12 +34,14 @@ source=(
   "choose-gcc-optimization.sh"
 
   "sys-kernel_arch-sources-g14-6.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-6.8-rc4%2B.patch"
+  
+  9999-fix-amdgpu-doorbell-regression.patch
 
   0001-acpi-proc-idle-skip-dummy-wait.patch
 
   0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   
-  0001-linux6.8.y-bore4.5.0.patch
+  #0001-linux6.8.y-bore4.5.2.patch
   
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
   0035-Add_quirk_for_polling_the_KBD_port.patch
@@ -82,16 +84,16 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('1c4cdcb9d560fad1fb95db2cb8afbedc922f9ead848371fe40363b13f9f631ba'
+sha256sums=('f905f1238ea7a8e85314bacf283302e8097006010d25fcea726d0de0ea5bc9b6'
             'SKIP'
-            '3328bb421dc41135584adc6295ad64125c217dc57939d5397b29f53d16f02da4'
+            '7a212eedb9fe3da99d6d5b63eb5f28c10ee4333e4d42ea1bb3842a15d3107bef'
             'SKIP'
-            '0e78254fa2d2718e8912a41047266b9a63aa53fb74198da4389b97fa8bf8c40b'
+            'e35c97eb1ab405b12489032225dfb07be591be03d292d8f2131f0df8481d91d8'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
-            'd69232afd0dd6982ae941cf2d1f577f4be2011e3bb847d1db37952acf416b5d3'
+            'f4e7fcd011f2691840d2c8c2361dca850a78ea33cc5c24d2e27c3e0294fd1dc5'
+            'f196d51a0536cf0fd6a17cead8be24920a75f392595abbb4654a6caa7e1cc17b'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
-            '09883311108d461da63a04012d7a2b7f6a4165ee0c4e9cb7a5dc3f9ade326fc7'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
