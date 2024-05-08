@@ -1,16 +1,14 @@
 pkgbase = perl-perl-tokenizer
 	pkgdesc = Perl::Tokenizer - a tiny Perl code tokenizer.
-	pkgver = 0.10
-	pkgrel = 2
+	pkgver = 0.11
+	pkgrel = 1
 	url = https://metacpan.org/release/Perl-Tokenizer
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl-html-parser
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Perl-Tokenizer-0.10.tar.gz
-	md5sums = 3c6486e60117bd225f3acc36a373d46e
-	sha512sums = 9d2cb284e2e921a1d1e3bdaf0d27a7705355fd5341c4d03bb027f6f92bc8f3d6252b775f59d8e09a9056a77c0b5dc67161d9e475988ee90f114259f1a4291711
+	source = https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Perl-Tokenizer-0.11.tar.gz
+	b2sums = 6eee7252d09e182f20bd1e720fd02e5d1119f58776551d2ee0ccf3ae51bcd2aabbd4d5a20c2d90907ba2d263c0a33c48983596075beb7b2cfa30537c2d06c021
 
 pkgname = perl-perl-tokenizer
-
