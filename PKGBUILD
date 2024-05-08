@@ -2,7 +2,7 @@
 
 pkgname=python-sysv_ipc
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="System V IPC primitives (semaphores, shared memory and message queues) for Python"
 url="http://semanchuk.com/philip/sysv_ipc/"
 license=('BSD')
@@ -21,7 +21,6 @@ check() {
   cd sysv_ipc-$pkgver
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
   PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" python -m unittest discover
-  python -m unittest discover
 }
 
 package() {
