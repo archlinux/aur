@@ -1,8 +1,8 @@
-# Sources
-src/
-*.tar.gz
-
-# Built package
-pkg/
-*.pkg.tar.xz
-*.pkg.tar.zst
+# Ignore everything
+*
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.patch
