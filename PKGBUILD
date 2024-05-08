@@ -8,6 +8,7 @@ arch=("x86_64")
 url="https://pypi.org/project/pnglatex"
 license=('GPL-3.0')
 _name=${pkgname#python-}
+depends=(texlive-basic)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('0995060d4926b6d3b40731586c615234c3e45b3142fc15b836601e3b0cf863d3')

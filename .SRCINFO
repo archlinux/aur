@@ -6,6 +6,7 @@ pkgbase = python-pnglatex
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = python-setuptools
+	depends = texlive-basic
 	source = https://files.pythonhosted.org/packages/source/p/pnglatex/pnglatex-1.1.tar.gz
 	sha256sums = 0995060d4926b6d3b40731586c615234c3e45b3142fc15b836601e3b0cf863d3
 
