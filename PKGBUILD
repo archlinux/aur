@@ -4,21 +4,21 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libwebp
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="WebP library and conversion tools (android)"
 arch=('any')
+pkgdesc="WebP library and conversion tools (Android ${_android_arch})"
 url="https://developers.google.com/speed/webp/"
 license=("BSD")
+groups=(android-libwebp)
 depends=("android-${_android_arch}-libjpeg-turbo"
          "android-${_android_arch}-libpng"
          "android-${_android_arch}-libtiff"
          "android-${_android_arch}-giflib")
-groups=(android-libwebp)
-options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
+options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/webmproject/libwebp/archive/v${pkgver}.tar.gz")
-md5sums=('827d510b73c73fca3343140556dd2943')
+md5sums=('9778f9be63f04f16f9ca3a4f36503399')
 
 prepare() {
     cd "$srcdir/libwebp-${pkgver}"
@@ -30,13 +30,11 @@ prepare() {
 build() {
     cd "$srcdir/libwebp-${pkgver}"
     source android-env ${_android_arch}
-    unset LDFLAGS
 
     android-${_android_arch}-configure \
         --enable-swap-16bit-csp \
         --enable-experimental \
         --enable-libwebp{mux,demux,decoder,extras}
-
     make $MAKEFLAGS
 }
 
@@ -45,8 +43,8 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
-    rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
-    rm -r "${pkgdir}"/${ANDROID_PREFIX_SHARE}
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
