@@ -1,7 +1,7 @@
 #!/bin/bash
 # script: wg++ (WebGrab+Plus)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 24/04/2024
+# rev.date: 08/05/2024
 
 # vars
 WGPP_USR=$(whoami)
@@ -84,8 +84,8 @@ genFolder() {
 runScript() {
 	cd "$WGPP_CFGDIR"
 	# workaround for 'No Internet' issue
-	sudo ./run.net.sh
-	#sudo -u $WGPP_USR ./run.net.sh
+	#sudo ./run.net.sh
+	sudo -u $WGPP_USR ./run.net.sh
 
 	# output 'guide.xml' file with pretty XML format
 	if [ ! -e "$WGPP_CFGDIR/latest.xml" ]; then

@@ -2,29 +2,33 @@
 
 pkgname=wg++
 pkgver=5.1.5
-pkgrel=7
+pkgrel=8
 pkgdesc="WebGrab+Plus is a Freeware, closed-source multi-site incremental XMLTV EPG grabber"
 arch=(any)
 url="http://webgrabplus.com/"
 license=(custom)
 depends=(
+	curl
 	dotnet-runtime-8.0
 	libxml2
 	unzip
 )
 source=("${pkgname}-5.1.0.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V5.1.0/WebGrabPlus_V5.1_install.tar_0.gz"
 	"${pkgname}-${pkgver}.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V${pkgver}/WebGrabPlus_V${pkgver}_beta_install.tar.gz"
-	"http://webgrabplus.com/sites/default/files/download/ini/SiteIniPack_current.zip"
 	'wgpp.sh')
 sha256sums=('368b14be4b0ec724ac394b59b26c05ecff3cef2864572a8cca844d56e1ce6f0f'
             '8d9b7cdff826ae4bd8aa8f033bafcf5bea6525b3b6fbdebf724918b1ba788ad0'
-            '0a4b3aa8f6aa56cea23268d7c3f08a1a37f1dbf965c81890988ef12a46f71ca8'
-            '940392becb59c70f97c5ed1a1d49aab7d69386b5a4bb724bd48b8da39e40e1cc')
+            'bb940c9e7bfd186b781ca9a5f69e3e47dfc26f654101903a3533797a98206092')
 
 prepare() {
 	# Rename folder
 	mv .$pkgname $pkgname
-	# Install latest SiteIniPack from 'http://webgrabplus.com/node/231'
+	# Download and install latest SiteIniPack from 'http://webgrabplus.com/epg-channels'
+	curl -sL http://webgrabplus.com/epg-channels | grep 'SiteIni\.Pack_' |
+		sed -e 's/.*btn"><a href="//' -e 's/".*//' -e "s/[^0-9][^0-9][^0-9]*//g" >siteini_ver
+	_siteini_ver=$(cat siteini_ver)
+	curl -LO http://webgrabplus.com/sites/default/files/download/ini/SiteIni.Pack_${_siteini_ver}.zip
+	unzip -q SiteIni.Pack_${_siteini_ver}.zip
 	cp -r siteini.pack/* $pkgname/siteini.pack.update
 	# Run install.sh script
 	cd $pkgname
