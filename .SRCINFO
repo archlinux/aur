@@ -1,10 +1,10 @@
 pkgbase = python-qiskit-machine-learning
 	pkgdesc = Quantum Machine Learning package for IBM qiskit framework
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qiskit-community/qiskit-machine-learning
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-ddt
 	checkdepends = python-pytest
 	makedepends = python-build
