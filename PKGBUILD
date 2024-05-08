@@ -1,12 +1,12 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-_pipname=vfbLib
-pkgname=python-${_pipname,,}
-pkgver=0.6.4
+_pyname=vfbLib
+pkgname=python-${_pyname,,}
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='Tools for converting FontLab Studio 5 (VFB) files'
 arch=(any)
-url="https://github.com/LuasFonts/$_pipname"
+url="https://github.com/LuasFonts/$_pyname"
 license=(GPL-3.0-only)
 _pydeps=(defcon
          fonttools
@@ -17,9 +17,9 @@ depends=(python
          "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
-_archive=$_pipname-$pkgver
-source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/$_pipname/$_archive.tar.gz")
-sha256sums=('0fc962be6cf04baa24cb222cfebf3e2c71231910669e7c0c662337b62d700e88')
+_archive=${_pyname,,}-$pkgver
+source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
+sha256sums=('8b9832a16b414c42e8d096b55dd8ee0e7548335b8f9bef0f397664ede42306dd')
 
 build() {
 	cd "$_archive"
