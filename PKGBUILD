@@ -3,7 +3,7 @@
 pkgname=thinkpad-l860-gl-fcc-unlock-bin
 
 # I do not know how lenovo intends on versioning this, hopefully it's sane
-pkgver=2.0
+pkgver=3.0
 pkgrel=1
 
 pkgdesc='FCC Unlocking tool for the L860-GL/L860R+ in X1 Carbon Gen 10/11 and X1 Yoga Gen 7/8'
@@ -17,16 +17,16 @@ url='https://download.lenovo.com/pccbbs/mobiles'
 makedepends=()
 depends=('dmidecode')
 conflicts=()
-source=("${url}/n3xwp02w.zip"
-        "${url}/n3xwp02w.txt")
+source=("${url}/n3xwp03w.zip"
+        "${url}/n3xwp03w.txt")
 
-sha256sums=('b07a34bf480e3552aa53413b11acbebeb2b807e4c5de7592498bebf5cc95290a'
-            'd50f827be0ffbf30f186c953d5026d509c70a42cf406ca25dc92651553c2e32a')
+sha256sums=('41b273e6bc0427c8f7e169999e727c085da46e066644e16b04fa2ad3ea8fd6f0'
+            '3fceaccc4d7c2143ea7d76b0ad8d29f7d9cdc5b72afc2e26913f68e54c314c14')
 
 install=$pkgname.install
 
 prepare() {
-    tar xf lenovo_wwan_fccunlock_package_2.0.tar.gz
+    tar xf lenovo_wwan_fccunlock_package_release2.tar.gz
 }
 
 # modified from fcc_unlock_setup.sh
@@ -34,17 +34,25 @@ package() {
     _srcdir=lenovo_wwan_fccunlock_package
 
     ### Copy fcc unlock script for MM
+    tar -zxf "$_srcdir/fcc-unlock.d.tar.gz" -C $_srcdir/
     install -Dm755 "$_srcdir/fcc-unlock.d/8086:7560" -t "$pkgdir/usr/lib/ModemManager/fcc-unlock.d/"
     install -Dm755 "$_srcdir/fcc-unlock.d/14c3:4d75" -t "$pkgdir/usr/lib/ModemManager/fcc-unlock.d/"
+    install -Dm755 "$_srcdir/fcc-unlock.d/1eac:100d" -t "$pkgdir/usr/lib/ModemManager/fcc-unlock.d/"
+    install -Dm755 "$_srcdir/fcc-unlock.d/1eac:1007" -t "$pkgdir/usr/lib/ModemManager/fcc-unlock.d/"
+    install -Dm755 "$_srcdir/fcc-unlock.d/2c7c:6008" -t "$pkgdir/usr/lib/ModemManager/fcc-unlock.d/"
 
     ### Copy FCC Unlock binary
     install -Dm755 "$_srcdir/DPR_Fcc_unlock_service" -t "$pkgdir/opt/fcc_lenovo/"
     install -Dm755 "$_srcdir/configservice_lenovo"   -t "$pkgdir/opt/fcc_lenovo/"
 
+    ### Copy SAR config files
+    tar -zxf "$_srcdir/sar_config_files.tar.gz" -C "$pkgdir/opt/fcc_lenovo/"
+
     ### Copy libraries
     install -Dm755 "$_srcdir/libmodemauth.so"        -t "$pkgdir/usr/lib/"
     install -Dm755 "$_srcdir/libconfigserviceR+.so"  -t "$pkgdir/usr/lib/"
     install -Dm755 "$_srcdir/libconfigservice350.so" -t "$pkgdir/usr/lib/"
+    install -Dm755 "$_srcdir/libmbimtools.so"        -t "$pkgdir/usr/lib/"
 
     ## copy and enable service
     install -Dm644 "$_srcdir/lenovo-cfgservice.service" -t "$pkgdir/usr/lib/systemd/system/"
