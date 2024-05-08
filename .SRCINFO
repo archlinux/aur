@@ -11,5 +11,6 @@ pkgbase = siyuan_stable
 	options = !strip
 	options = !debug
 	source = siyuan-3.0.13-linux.AppImage::https://github.com/siyuan-note/siyuan/releases/download/v3.0.13/siyuan-3.0.13-linux.AppImage
+	sha256sums = SKIP
 
 pkgname = siyuan_stable

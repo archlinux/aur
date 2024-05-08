@@ -16,6 +16,7 @@ options=("!strip" "!debug")
 depends=("fuse2")
 optdepends=('pandoc: docx export')
 source=("${_pkgname}::https://github.com/siyuan-note/siyuan/releases/download/v3.0.13/siyuan-3.0.13-linux.AppImage")
+sha256sums=('SKIP')
 
 _installdir=/opt/appimages
 
