@@ -1,6 +1,6 @@
 pkgbase = ffplayout-git
 	pkgdesc = 24/7 playout based on rust and ffmpeg
-	pkgver = r1969.664dbe3
+	pkgver = r2056.c944b57
 	pkgrel = 0
 	url = https://github.com/ffplayout/ffplayout
 	install = ffplayout.install
@@ -19,7 +19,7 @@ pkgbase = ffplayout-git
 	replaces = ffplayout,
 	replaces = ffplayout-unstable-git
 	options = !lto
-	backup = etc/ffplayout/ffplayout.yml
+	backup = etc/ffplayout/ffplayout.toml
 	source = ffplayout-git::git+https://github.com/ffplayout/ffplayout.git
 	source = ffplayout.install
 	sha256sums = SKIP

@@ -1,5 +1,5 @@
 pkgname=ffplayout-git
-pkgver=r1969.664dbe3
+pkgver=r2056.c944b57
 pkgrel=0
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
 provides=('ffplayout')
 conflicts=('ffplayout' 'ffplayout-unstable-git')
 replaces=('ffplayout', 'ffplayout-unstable-git')
-backup=('etc/ffplayout/ffplayout.yml')
+backup=('etc/ffplayout/ffplayout.toml')
 install='ffplayout.install'
 source=(
   "${pkgname}::git+https://github.com/ffplayout/ffplayout.git"
@@ -62,6 +62,7 @@ build() {
   npm run generate
   cp -vr .output/public "${srcdir}/${pkgname}/public"
 
+  # man docs
   cd "${srcdir}/${pkgname}"
   ./scripts/man_create.sh
 
@@ -74,8 +75,8 @@ package() {
 
     install -Dm755 target/x86_64-unknown-linux-musl/release/ffplayout "${pkgdir}/usr/bin/ffplayout"
     install -Dm755 target/x86_64-unknown-linux-musl/release/ffpapi "${pkgdir}/usr/bin/ffpapi"
-    install -Dm644 assets/ffplayout.yml "${pkgdir}/etc/ffplayout/ffplayout.yml"
-    install -Dm644 assets/advanced.yml "${pkgdir}/etc/ffplayout/advanced.yml"
+    install -Dm644 assets/ffplayout.toml "${pkgdir}/etc/ffplayout/ffplayout.toml"
+    install -Dm644 assets/advanced.toml "${pkgdir}/etc/ffplayout/advanced.toml"
     install -Dm644 assets/ffpapi.service "${pkgdir}/usr/lib/systemd/system/ffpapi.service"
     install -Dm644 assets/ffplayout.service "${pkgdir}/usr/lib/systemd/system/ffplayout.service"
     install -Dm644 assets/ffplayout@.service "${pkgdir}/usr/lib/systemd/system/ffplayout@.service"
@@ -83,7 +84,7 @@ package() {
     install -Dm644 assets/ffpapi.1.gz "${pkgdir}/usr/share/man/man1/ffpapi.1.gz"
     install -Dm644 assets/ffplayout.1.gz "${pkgdir}/usr/share/man/man1/ffplayout.1.gz"
     install -Dm644 assets/logo.png "${pkgdir}/usr/share/ffplayout/logo.png"
-    install -Dm644 assets/ffplayout.yml "${pkgdir}/usr/share/ffplayout/ffplayout.yml.orig"
+    install -Dm644 assets/ffplayout.toml "${pkgdir}/usr/share/ffplayout/ffplayout.toml.orig"
     install -Dm644 assets/ffplayout.conf "${pkgdir}/usr/share/ffplayout/ffplayout.conf.example"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/ffplayout/README"
     install -Dm644 LICENSE "${pkgdir}/usr/share/doc/ffplayout/copyright"
