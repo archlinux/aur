@@ -5,7 +5,7 @@
 
 
 pkgname=minetest-game-cdb
-pkgver=20240322
+pkgver=20240508
 pkgrel=1
 pkgdesc='Latest version of “Minetest Game” from the Minetest Content Database, but installed system-wide as a regular Arch package.'
 
@@ -35,7 +35,8 @@ pkgver() {
 
 build() {
     gamepath="${srcdir}/minetest_game"
-    sed -i '/^title /s/=.*$/= Minetest Game (CDB)/' "${gamepath}/game.conf"
+    newtitle="Minetest Game (CDB, ${pkgver})"
+    sed -i "/^title /s/=.*$/= ${newtitle}/" "${gamepath}/game.conf"
     cp "${srcdir}/minetest_cdb_icon.png" "${gamepath}/menu/icon.png"
 }
 
