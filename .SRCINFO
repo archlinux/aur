@@ -1,0 +1,17 @@
+pkgbase = wasip2-libc
+	pkgdesc = WASI preview 2 libc implementation for WebAssembly
+	pkgver = 0+374+9e8c5423
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/WebAssembly/wasi-libc
+	arch = any
+	license = Apache
+	license = MIT
+	makedepends = git
+	makedepends = llvm
+	makedepends = clang
+	options = staticlibs
+	source = git+https://github.com/WebAssembly/wasi-libc.git#commit=9e8c542319242a5e536e14e6046de5968d298038
+	b2sums = b38704e419dba9be28004d2615800082832769874573d8d9534e4c0386cf9a93214872bda7ce2d3793ec7a5a16bd444adef0b221cfbe60e38216b53b1cf02346
+
+pkgname = wasip2-libc
