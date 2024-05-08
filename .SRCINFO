@@ -10,6 +10,6 @@ pkgbase = siyuan_stable
 	noextract = siyuan-3.0.13-linux.AppImage
 	options = !strip
 	options = !debug
-	source = ::https://github.com/siyuan-note/siyuan/releases/download/v3.0.13/siyuan-3.0.13-linux.AppImage
+	source = siyuan-3.0.13-linux.AppImage::https://github.com/siyuan-note/siyuan/releases/download/v3.0.13/siyuan-3.0.13-linux.AppImage
 
 pkgname = siyuan_stable
