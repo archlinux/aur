@@ -4,10 +4,10 @@
 _pkgname=basilisk
 pkgname=${_pkgname}-bin
 epoch=1
-_buildid_x86_64=20240203205403
-_buildid_aarch64=20240203213910
-_date=2024.02.03
-pkgver=52.9.2024.02.03
+_buildid_x86_64=20240501150652
+_buildid_aarch64=20240507134710
+_date=2024.05.01
+pkgver=52.9.2024.05.01
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)."
 url="https://www.basilisk-browser.org"
@@ -21,15 +21,22 @@ source=('basilisk.desktop')
 source_x86_64=(https://archive.basilisk-browser.org/${_date}/linux/x86_64/gtk3/basilisk-${_buildid_x86_64}.linux-x86_64-gtk3.{tar.xz,json})
 source_aarch64=(https://archive.basilisk-browser.org/${_date}/linux/aarch64/gtk3/basilisk-${_buildid_aarch64}.linux-aarch64-gtk3.{tar.xz,json})
 sha256sums=('c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45')
-sha256sums_x86_64=('5a0aa97524e5e837b43df339ee90329b484bd3e190666a56090fc50dd64b1c6a'
-                   '82830e50c14729fbd5a0c15b8f0ce18db20a3345dbfacaa18c4ea4b5cd4dce9f')
-sha256sums_aarch64=('4fdfa512ef722bf7026c61d4f3050eecd2a547d2d3b46e013f835e61889a791f'
-                    'a7e90f001438bade53ffef24104fc6e16fe5351b583aa4acb47fedd3ba93751a')
+sha256sums_x86_64=('6ea9f8343e23a89345cbc365a95efefaecae5f71c92aa01f5e37d5bd115ed758'
+                   'a9b44a8b2197b562f083da7e6ba9b3589cdf5a42decc9a4a87ec2ef788403e26')
+sha256sums_aarch64=('19d277d3263226648ab08ef88fefea3ac45494fff59cb23df9a19d8d7e106e8a'
+                    'd88fca3b83343980699fbbdb9eabadfb6a30912fd8a1adec4ae78d055fb2d323')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
 pkgver() {
-	grep 'moz_app_version' "${srcdir}"/basilisk-*.json | sed -e 's/.*:[\ \t]*"//;s/"[,]*[\ \t]*$//'
+	case "$CARCH" in
+		'x86_64')
+			_buildid=${_buildid_x86_64} ;;
+		'aarch64')
+			_buildid=${_buildid_aarch64} ;;
+		*) exit 1 ;;
+	esac
+	grep 'moz_app_version' "${srcdir}"/basilisk-${_buildid}.linux-x86_64-gtk3.json | sed -e 's/.*:[\ \t]*"//;s/"[,]*[\ \t]*$//'
 #	cd "$srcdir"/basilisk
 #	./basilisk --version | grep -o -E '[0-9\.]+$'
 }
