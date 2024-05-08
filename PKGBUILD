@@ -1,4 +1,4 @@
-# Maintainer: yustin <#archlimux-proaudio@libera.chat>
+# Maintainer: yustin <#archlinux-proaudio@libera.chat>
 
 pkgname=rju-git
 _pkgname=rju
