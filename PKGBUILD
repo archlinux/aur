@@ -1,20 +1,20 @@
 # Maintainer: Bryan Jacobs <>
 
 pkgname=libfido2-full
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Library functionality for FIDO 2.0, with support for USB, NFC, and PCSC devices'
 url='https://developers.yubico.com/libfido2/'
 arch=('x86_64')
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('glibc' 'openssl' 'libcbor' 'libcbor.so' 'hidapi' 'systemd-libs'  'libudev.so' 'zlib' 'pcsclite')
 makedepends=('cmake' 'systemd')
 provides=('libfido2.so' 'libfido2')
 conflicts=('libfido2')
 source=("https://developers.yubico.com/libfido2/Releases/libfido2-${pkgver}.tar.gz"{,.sig})
-sha512sums=('90f8452cee4c9cc72241478e697c5c692ccff5ab27752f2f296c3623ee297d1f80a85a359b4d0656c67790084c116aac921894e762eb52d3a79056e5014c03e7'
+sha512sums=('83454b0db0cc8546f377d0dd59f95785fe6b73cf28e499a6182a6ece4b7bce17c3e750155262adf71f339ec0b3b6c3d3d64a07b01c8428b4b91de97ae768f0e6'
             'SKIP')
-b2sums=('506e0ecf89825e313fbcb0de59ef0b1a3aab483013f959b391448da0600979780ae76807639231ab8a60eead039471bba707073ec4e259b611d67031ac7713f1'
+b2sums=('244ad33f73e7aeb3e4523eeda8402c0fcb9de08d28d15d5881651ca5e05b78b4bec10fe58c33dda08e8b5f7be231bf36a85463ded2733d762e929414e4749765'
         'SKIP')
 validpgpkeys=(
   'EE90AE0D19774C8386628FAAB428949EF7914718' # pedro martelletto <pedro@yubico.com>
@@ -29,8 +29,7 @@ build() {
   cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS="${CFLAGS} ${CPPFLAGS}" \
+    -DCMAKE_BUILD_TYPE=None \
     -Wno-dev \
     -DUSE_PCSC=1 \
     -DNFC_LINUX=1 \
