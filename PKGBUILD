@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CellBarcode
-_pkgver=1.8.1
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Cellular DNA Barcode Analysis toolkit"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=('MIT')
+license=('Artistic-2.0')
 depends=(
   r-biostrings
   r-ckmeans.1d.dp
@@ -39,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('17e78449fe21396c431d8e541a169864')
-b2sums=('789af20a6ed95950cabb36b2b29d73e202a1aa02d620a1818823aedc4a1d8765e8adfe4302537c2af8b79c9789c0069ae11a50bed2966debe0d519ecc5f00e6f')
+md5sums=('8fcdd97fad72cef77e5e64facb406279')
+b2sums=('b8cd11cee9e287de212062d3268acccf09646cc3fc2ec27b01f50f20e70591389317d3bc9fcb42cc324dc147d07e87c62a95a7b1ea19a1209e59817d7beb6d07')
 
 build() {
   mkdir build
@@ -55,7 +55,4 @@ check() {
 package() {
   install -d "$pkgdir/usr/lib/R/library"
   cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
-
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
