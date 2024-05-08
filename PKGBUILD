@@ -2,8 +2,8 @@
 
 _npmname=apg-js
 pkgname=nodejs-"$_npmname"
-pkgver=4.3.0
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc='an ABNF parser generator creating recursive-descent parsers from a superset of ABNF'
 arch=(any)
 url="https://github.com/ldthomas/$_npmname"
@@ -13,7 +13,7 @@ makedepends=(jq
              moreutils
              npm)
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('322bfadc66788f3c48e654dcb85ab31c5cfefa3d9d069db0edeae3452c8c06e2')
+sha256sums=('79c9ad44a5b82d359ac68b69c3b4be46a269a7a953a98fd1b2dd757fcbfb3beb')
 noextract=("${source[@]##*/}")
 
 package() {
