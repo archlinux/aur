@@ -2,14 +2,13 @@
 
 pkgname=lvgl
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Light and Versatile Graphics Library"
 url="https://lvgl.io/"
 license=("MIT")
 arch=(x86_64 armv7h aarch64 riscv32 riscv64)
 depends=()
-makedepends=('cmake>=3.12.4' 'ninja')
-checkdepends=(SDL2)
+makedepends=('cmake>=3.12.4' 'ninja' 'sdl2')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lvgl/lvgl/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('6930f1605d305fcd43f31d5f470ecf4a013c4ce0980e78ee4c33b96a589bf433')
 
