@@ -1,6 +1,6 @@
 pkgbase = bypy-git
 	pkgdesc = Python client for Baidu Cloud Storage (百度网盘)
-	pkgver = 1.8.2.r1.gc61eb58
+	pkgver = 1.8.5.r1.g9e15307
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/houtianze/bypy
