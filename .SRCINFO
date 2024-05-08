@@ -10,6 +10,6 @@ pkgbase = nodejs-node-pre-gyp
 	depends = nodejs
 	noextract = node-pre-gyp-1.0.11.tgz
 	source = https://registry.npmjs.org/@mapbox/node-pre-gyp/-/node-pre-gyp-1.0.11.tgz
-	sha1sums = 417db42b7f5323d79e93b34a6d7a2a12c0df43fa
+	sha256sums = 86ae4b7e855ff0bbe7d023570595ba901d0087316659343dd1438f8aed016c24
 
 pkgname = nodejs-node-pre-gyp

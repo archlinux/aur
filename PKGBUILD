@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/@mapbox/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=("$_npmname-$pkgver.tgz")
-sha1sums=('417db42b7f5323d79e93b34a6d7a2a12c0df43fa')
+sha256sums=('86ae4b7e855ff0bbe7d023570595ba901d0087316659343dd1438f8aed016c24')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$_npmname-$pkgver.tgz"
