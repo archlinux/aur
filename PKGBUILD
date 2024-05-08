@@ -10,20 +10,21 @@ pkgname=(
   "${pkgbase}-doc"
 )
 pkgver=1.9.0+191.r4867.20240323.50e38cf36
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom core library (functions relating to mobile communication standards). Compiled without systemd logging dependency."
 arch=(
   'i686'
   'x86_64'
 )
 url="https://osmocom.org/projects/libosmocore/wiki/Libosmocore"
-license=('GPL')
+license=('GPL-2.0-or-later')
 makedepends=(
   'autoconf'
   'automake'
   'gcc'
   'git'
   'libtool'
+  'liburing'
   'make'
   'pkg-config'
   'python'
@@ -84,6 +85,7 @@ _package_main() {
     'gnutls'
     'libmnl'
     'libusb'
+    'liburing'
     'lksctp-tools'
     'pcsclite'
     'talloc'
