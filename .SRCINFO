@@ -1,6 +1,6 @@
 pkgbase = recompress-images-git
-	pkgdesc = Command-line tool to recompress PNG and JPEG images for smaller size
-	pkgver = 23.09.r112.gf79138a
+	pkgdesc = Command-line tool to recompress PNG and JPEG images for smaller size (lossy compression)
+	pkgver = 23.09.r115.ga21a696
 	pkgrel = 1
 	url = https://github.com/trizen/perl-scripts
 	arch = any

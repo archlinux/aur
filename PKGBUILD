@@ -2,9 +2,9 @@
 
 _pkgname=perl-scripts
 pkgname=recompress-images-git
-pkgver=23.09.r112.gf79138a
+pkgver=23.09.r116.g16b9a1a
 pkgrel=1
-pkgdesc="Command-line tool to recompress PNG and JPEG images for smaller size"
+pkgdesc="Command-line tool to recompress PNG and JPEG images for smaller size (lossy compression)"
 arch=('any')
 url="https://github.com/trizen/${_pkgname}"
 license=('GPL3')
@@ -26,5 +26,5 @@ pkgver() {
 
 package() {
     cd "$_pkgname"
-    install -D -m 755 "Image/recompress_images.pl" "$pkgdir/usr/bin/recompress-images"
+    install -D -m 755 "Image/recompress_images.pl" "$pkgdir/usr/bin/recompress-images.pl"
 }
