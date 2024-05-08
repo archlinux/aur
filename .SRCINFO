@@ -1,14 +1,14 @@
 pkgbase = ttf-lxgw-zhisong
 	pkgdesc = 霞鶩緻宋。一款衍生於「IPAex 明朝」的舊字形寫法中文字型。A Chinese font derived from IPAex Mincho.
 	pkgver = 0.300
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxgw/LxgwZhiSong
 	changelog = changelog.txt
 	arch = any
 	license = custom:IPA
 	conflicts = ttf-lxgw-zhisong
-	source = ttf-lxgw-zhisong-0.300-CL-1.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.300/LXGWZhiSongCL.ttf
-	source = ttf-lxgw-zhisong-0.300-MN-1.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.300/LXGWZhiSongMN.ttf
+	source = ttf-lxgw-zhisong-0.300-CL-2.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.300/LXGWZhiSongCL.ttf
+	source = ttf-lxgw-zhisong-0.300-MN-2.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.300/LXGWZhiSongMN.ttf
 	source = LICENSE_CHT.md
 	source = LICENSE.md
 	sha256sums = d1c2703f71fc75428f29f3b18f7b400a76bcb4c8a94875e23c3e4ba4b1faa8be
