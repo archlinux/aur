@@ -1,68 +1,37 @@
-diff --git a/ggpmisc/tests/testthat/test-stat-multcomp.R b/ggpmisc/tests/testthat/test-stat-multcomp.R
-index 2fb010c..e040c05 100644
---- a/ggpmisc/tests/testthat/test-stat-multcomp.R
-+++ b/ggpmisc/tests/testthat/test-stat-multcomp.R
-@@ -79,6 +79,7 @@ test_that("stat_multcomp_geoms", {
-                                               label.y = "bottom")
-   )
- 
-+  skip("fails")
-   vdiffr::expect_doppelganger("stat_multcomp_letters_label_tukey",
-                               ggplot(my.data, aes(group, y2)) +
-                                 stat_boxplot() +
-@@ -183,6 +184,7 @@ test_that("stat_multcomp_digits", {
-                                               p.digits = 2)
-   )
- 
-+  skip("fails")
-   vdiffr::expect_doppelganger("stat_multcomp_p.digits6",
-                               ggplot(my.data, aes(group, y2)) +
-                                 stat_boxplot() +
-@@ -230,6 +232,7 @@ test_that("stat_multcomp_methods", {
-                                 stat_multcomp(method = stats::aov)
-   )
- 
-+  skip("fails")
-   vdiffr::expect_doppelganger("stat_multcomp_rlm.char",
-                               ggplot(my.data, aes(group, y2)) +
-                                 stat_boxplot() +
-diff --git a/ggpmisc/tests/testthat/test-stat-poly-eq.R b/ggpmisc/tests/testthat/test-stat-poly-eq.R
-index 5fe2ae0..ed9dccd 100644
---- a/ggpmisc/tests/testthat/test-stat-poly-eq.R
-+++ b/ggpmisc/tests/testthat/test-stat-poly-eq.R
-@@ -625,6 +625,7 @@ test_that("textual_positions", {
-                                 stat_poly_eq(formula = formula, parse = TRUE,
-                                              geom = "text")
-   )
-+  skip("fails")
-   vdiffr::expect_doppelganger("stat_poly_eq_4",
-                               ggplot(my.data, aes(x, y)) +
-                                 geom_point() +
-@@ -691,6 +692,7 @@ test_that("numeric_positions", {
-                                              label.x = 0, label.y = -1e5,
-                                              geom = "text")
-   )
-+  skip("fails")
-   vdiffr::expect_doppelganger("stat_poly_eq_n4",
-                               ggplot(my.data, aes(x, y)) +
-                                 geom_point() +
-diff --git a/ggpmisc/tests/testthat/test-stat-quant-eq.R b/ggpmisc/tests/testthat/test-stat-quant-eq.R
-index e111948..6395198 100644
---- a/ggpmisc/tests/testthat/test-stat-quant-eq.R
-+++ b/ggpmisc/tests/testthat/test-stat-quant-eq.R
-@@ -452,6 +452,7 @@ test_that("textual_positions", {
-                                   stat_quant_eq(formula = formula, parse = TRUE,
-                                                 geom = "text")
-     )
-+    skip("fails")
-     vdiffr::expect_doppelganger("stat_quant_eq_4",
-                                 ggplot(my.data, aes(x, y)) +
-                                   geom_point() +
-@@ -524,6 +525,7 @@ test_that("numeric_positions", {
-                                                 label.x = 0, label.y = -1e5,
-                                                 geom = "text")
-     )
-+    skip("fails")
-     vdiffr::expect_doppelganger("stat_quant_eq_n4",
-                                 ggplot(my.data, aes(x, y)) +
-                                   geom_point() +
+diff --git a/ggpmisc/tests/testthat/_snaps/stat-multcomp/stat-multcomp-noload-more.svg b/ggpmisc/tests/testthat/_snaps/stat-multcomp/stat-multcomp-noload-more.svg
+index a5be143..61eeafd 100644
+--- a/ggpmisc/tests/testthat/_snaps/stat-multcomp/stat-multcomp-noload-more.svg
++++ b/ggpmisc/tests/testthat/_snaps/stat-multcomp/stat-multcomp-noload-more.svg
+@@ -66,19 +66,19 @@
+ <text x='261.96' y='281.43' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
+ <text x='263.74' y='281.43' style='font-size: 7.11px; font-family: sans;' textLength='17.80px' lengthAdjust='spacingAndGlyphs'>0.001</text>
+ <line x1='115.78' y1='250.49' x2='506.26' y2='250.49' style='stroke-width: 1.42;' />
+-<polygon points='276.55,257.26 345.50,257.26 345.45,257.26 345.65,257.25 345.86,257.21 346.05,257.14 346.23,257.04 346.39,256.91 346.52,256.75 346.63,256.58 346.72,256.39 346.76,256.19 346.78,255.98 346.78,255.98 346.78,246.47 346.78,246.47 346.76,246.26 346.72,246.06 346.63,245.87 346.52,245.70 346.39,245.54 346.23,245.41 346.05,245.31 345.86,245.24 345.65,245.20 345.50,245.19 276.55,245.19 276.70,245.20 276.50,245.19 276.29,245.21 276.09,245.27 275.91,245.36 275.74,245.48 275.59,245.62 275.47,245.78 275.37,245.97 275.30,246.16 275.27,246.37 275.27,246.47 275.27,255.98 275.27,255.88 275.27,256.09 275.30,256.29 275.37,256.49 275.47,256.67 275.59,256.83 275.74,256.98 275.91,257.09 276.09,257.18 276.29,257.24 276.50,257.26 ' style='stroke-width: 1.07; fill: #FFFFFF;' />
+-<text x='277.40' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='4.17px' lengthAdjust='spacingAndGlyphs'>Δ</text>
+-<text x='281.58' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
+-<text x='283.36' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='4.16px' lengthAdjust='spacingAndGlyphs'>=</text>
+-<text x='287.51' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
+-<text x='289.29' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='9.89px' lengthAdjust='spacingAndGlyphs'>66.</text>
+-<text x='299.18' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='3.95px' lengthAdjust='spacingAndGlyphs'>, </text>
+-<text x='303.13' y='252.29' style='font-size: 7.11px; font-style: italic; font-family: sans;' textLength='4.75px' lengthAdjust='spacingAndGlyphs'>P</text>
+-<text x='308.61' y='253.61' style='font-size: 4.98px; font-family: sans;' textLength='10.52px' lengthAdjust='spacingAndGlyphs'>HSD</text>
+-<text x='319.13' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
+-<text x='320.91' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='4.16px' lengthAdjust='spacingAndGlyphs'>&lt;</text>
+-<text x='325.07' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
+-<text x='326.85' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='17.80px' lengthAdjust='spacingAndGlyphs'>0.001</text>
++<polygon points='274.57,257.26 347.48,257.26 347.43,257.26 347.63,257.25 347.84,257.21 348.03,257.14 348.21,257.04 348.37,256.91 348.50,256.75 348.61,256.58 348.69,256.39 348.74,256.19 348.76,255.98 348.76,255.98 348.76,246.47 348.76,246.47 348.74,246.26 348.69,246.06 348.61,245.87 348.50,245.70 348.37,245.54 348.21,245.41 348.03,245.31 347.84,245.24 347.63,245.20 347.48,245.19 274.57,245.19 274.72,245.20 274.52,245.19 274.31,245.21 274.12,245.27 273.93,245.36 273.76,245.48 273.61,245.62 273.49,245.78 273.39,245.97 273.33,246.16 273.29,246.37 273.29,246.47 273.29,255.98 273.29,255.88 273.29,256.09 273.33,256.29 273.39,256.49 273.49,256.67 273.61,256.83 273.76,256.98 273.93,257.09 274.12,257.18 274.31,257.24 274.52,257.26 ' style='stroke-width: 1.07; fill: #FFFFFF;' />
++<text x='275.42' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='4.17px' lengthAdjust='spacingAndGlyphs'>Δ</text>
++<text x='279.60' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
++<text x='281.38' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='4.16px' lengthAdjust='spacingAndGlyphs'>=</text>
++<text x='285.53' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
++<text x='287.31' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='13.85px' lengthAdjust='spacingAndGlyphs'>66.0</text>
++<text x='301.16' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='3.95px' lengthAdjust='spacingAndGlyphs'>, </text>
++<text x='305.11' y='252.29' style='font-size: 7.11px; font-style: italic; font-family: sans;' textLength='4.75px' lengthAdjust='spacingAndGlyphs'>P</text>
++<text x='310.59' y='253.61' style='font-size: 4.98px; font-family: sans;' textLength='10.52px' lengthAdjust='spacingAndGlyphs'>HSD</text>
++<text x='321.11' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
++<text x='322.89' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='4.16px' lengthAdjust='spacingAndGlyphs'>&lt;</text>
++<text x='327.04' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
++<text x='328.82' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='17.80px' lengthAdjust='spacingAndGlyphs'>0.001</text>
+ <line x1='115.78' y1='221.35' x2='636.42' y2='221.35' style='stroke-width: 1.42;' />
+ <polygon points='339.65,228.13 412.56,228.13 412.51,228.13 412.71,228.12 412.92,228.08 413.11,228.00 413.29,227.90 413.45,227.77 413.58,227.62 413.69,227.44 413.77,227.25 413.82,227.05 413.84,226.85 413.84,226.85 413.84,217.33 413.84,217.33 413.82,217.13 413.77,216.93 413.69,216.74 413.58,216.56 413.45,216.41 413.29,216.28 413.11,216.17 412.92,216.10 412.71,216.06 412.56,216.05 339.65,216.05 339.80,216.06 339.60,216.05 339.39,216.08 339.20,216.13 339.01,216.22 338.84,216.34 338.69,216.48 338.57,216.65 338.47,216.83 338.41,217.02 338.37,217.23 338.37,217.33 338.37,226.85 338.37,226.74 338.37,226.95 338.41,227.15 338.47,227.35 338.57,227.53 338.69,227.70 338.84,227.84 339.01,227.96 339.20,228.04 339.39,228.10 339.60,228.13 ' style='stroke-width: 1.07; fill: #FFFFFF;' />
+ <text x='340.50' y='223.15' style='font-size: 7.11px; font-family: sans;' textLength='4.17px' lengthAdjust='spacingAndGlyphs'>Δ</text>

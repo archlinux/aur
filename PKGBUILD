@@ -4,10 +4,10 @@
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _pkgname=ggpmisc
-_pkgver=0.5.5
+_pkgver=0.5.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Miscellaneous Extensions to 'ggplot2'"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -48,13 +48,13 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('a6b7e07140e0899730b072b37dccc180'
-         'b186ea74c2b132a23bdf056f88bb65a1')
-b2sums=('5d6133acc51b30fbb3f95f9b6ea6e4bd030f638b29374518bb44d4316cb18692702838813cb44ddc648123881c508b6c32f7d6af281dc39be3d4b906b468a4bb'
-        'f3f4337822af9b3edc30243d416bc9d6695f40e6ce8d81096c8e3697b939d9e9d881c563b7d7db6ad2a5efd3e34ef2b9409ec46138a6d36fe5f81a4ff7443cec')
+md5sums=('5d785d0914a1d0efba63b4ce6f89ab46'
+         'b70e1e80a751c548eea21b0352b4f841')
+b2sums=('d7550858ecd09ad7f60b9713e5cb2083f32acf38c02f60fbe404681cce20d2194036b7fa0a0e8e98d6696387e129377872ecbc052466f6a7c1e6fb0d86aa3218'
+        '2bf10f63af8340d7881f57bcd41b7586c1f9a5a02b43dad48db1bc9e9779c907a689adb65a169c30b3b1fd08ec6d7cf0239f36f055c6083ba569ed99714208d3')
 
 prepare() {
-  # skip failing tests
+  # fix snapshot tests
   patch -Np1 -i fix-tests.patch
 }
 
