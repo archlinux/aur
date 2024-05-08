@@ -2,12 +2,12 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.7.120
+pkgver=0.7.121
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
-url="https://xemu.app/"
-license=(GPL-2.0-only LGPL-2.1-only LicenseRef-QEMUDistributionLicense)
+url=https://xemu.app/
+license=(GPL-2.0-only AND LGPL-2.1-only AND LicenseRef-QEMUDistributionLicense)
 depends=(
 	dtc
 	gcc-libs
@@ -40,9 +40,8 @@ optdepends=(
 	'fancy-mouse-boot-rom: first-stage xbox bootrom'
 )
 install=$pkgname.install
-_commit=94d826a4f125d755d6d37069ad7084bfde33d650
 source=(
-	"$pkgname::git+https://github.com/xemu-project/xemu.git#commit=$_commit"
+	"$pkgname::git+https://github.com/xemu-project/xemu.git#tag=v$pkgver"
 	"$pkgname-imgui::git+https://github.com/xemu-project/imgui.git"
 	'berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
 	'berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
@@ -52,17 +51,15 @@ source=(
 	'nv2a_vsh_cpu::git+https://github.com/abaire/nv2a_vsh_cpu.git'
 	'use-system-libs.patch'
 )
-b2sums=(
-	SKIP
-	SKIP
-	SKIP
-	SKIP
-	SKIP
-	SKIP
-	SKIP
-	SKIP
-	ab5636092dd543c38b9756914100f15a44222d5e4a3160360a1d739725a65f95ea8a5c48e11358397c0a07bbbc04ed604fc86295d979209481b1e56c5c7b4dcf
-)
+b2sums=('12b4937f82063c645161715fde94a071008e29e7a3b14300e5debaf3867e4e29e9cee9bd804f16cdbdf49eee202828c86c4d3f7522426287d955748f1c08d8bd'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'ab5636092dd543c38b9756914100f15a44222d5e4a3160360a1d739725a65f95ea8a5c48e11358397c0a07bbbc04ed604fc86295d979209481b1e56c5c7b4dcf')
 
 prepare() {
 	cd $pkgname
