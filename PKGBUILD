@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-mpg123
-pkgver=1.32.5
+pkgver=1.32.6
 pkgrel=1
 arch=('any')
 pkgdesc="Console based real time MPEG Audio Player for Layer 1, 2 and 3 (Android ${_android_arch})"
@@ -17,12 +17,12 @@ makedepends=('android-configure'
 optdepends=("android-${_android_arch}-sdl2: for sdl audio support")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://downloads.sourceforge.net/sourceforge/mpg123/mpg123-${pkgver}.tar.bz2"{,.sig})
-md5sums=('42cb343a7d018ff2571f272eb80cd6cc'
+md5sums=('19443e8ef816c95fb2ed92aa35ece1d3'
          'SKIP')
 validpgpkeys=('D021FF8ECF4BE09719D61A27231C4CBC60D5CAFE')
 
 build() {
-    cd "${srcdir}/mpg123-$pkgver"
+    cd "${srcdir}/mpg123-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
@@ -39,10 +39,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/mpg123-$pkgver"
+    cd "${srcdir}/mpg123-${pkgver}"
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
