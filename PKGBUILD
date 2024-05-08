@@ -1,6 +1,6 @@
 _dotnet_version=8.0
 pkgname="csharp-ls"
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Roslyn-based LSP language server for C#"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MIT")
 makedepends=("jq")
 depends=("dotnet-sdk-$_dotnet_version")
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('67f0137ec99c59bf087160d129afcac28c20e8c0edeee0abd00cb352e003b71d')
+sha256sums=('d969c914cefc8c0345a7e60ecbe2e6d9ec367d72c8ab10e5341884028e377857')
 options=("staticlibs")
 
 build(){
