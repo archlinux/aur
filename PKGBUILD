@@ -1,7 +1,7 @@
 # Maintainer: k1f0 <generic at k1f0.mozmail.com>
 
 pkgname=rwpspread-git
-pkgver=r314.434f28f
+pkgver=r346.839527b
 pkgrel=1
 pkgdesc='Multi-Monitor Wallpaper Utility'
 arch=('x86_64')
@@ -38,13 +38,13 @@ package() {
   # binary
   install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname%-git}"
   # shell completions
-  mv "completions/${pkgname%-git}.bash" "completions/${pkgname%-git}"
-  install -Dm0644 -t "${pkgdir}/usr/share/bash-completion/completions" "completions/${pkgname%-git}"
-  install -Dm0644 -t "${pkgdir}/usr/share/zsh/site-functions" "completions/_${pkgname%-git}"
-  install -Dm0644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" "completions/${pkgname%-git}.fish"
+  mv "target/release/completions/${pkgname%-git}.bash" "target/release/completions/${pkgname%-git}"
+  install -Dm0644 -t "${pkgdir}/usr/share/bash-completion/completions" "target/release/completions/${pkgname%-git}"
+  install -Dm0644 -t "${pkgdir}/usr/share/zsh/site-functions" "target/release/completions/_${pkgname%-git}"
+  install -Dm0644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" "target/release/completions/${pkgname%-git}.fish"
   # man page
-  gzip "man/${pkgname%-git}.1"
-  install -Dm0644 -t "${pkgdir}/usr/share/man/man1" "man/${pkgname%-git}.1.gz"
+  gzip "target/release/man/${pkgname%-git}.1"
+  install -Dm0644 -t "${pkgdir}/usr/share/man/man1" "target/release/man/${pkgname%-git}.1.gz"
   # license
   install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname%-git}" "LICENSE"
 }
