@@ -4,7 +4,7 @@
  GenericName[de]=CAD-Anwendung
  GenericName[ko]=CAD 응용프로그램
  GenericName[pl]=Aplikacja CAD
--Exec=AppRun --single-instance %F
+-Exec=ondsel-es --single-instance %F
 +Exec=/usr/bin/ondsel-es %F
  Terminal=false
  Type=Application

@@ -5,15 +5,16 @@
 # Contributor: Igor Moura <hi@igor.mp>
 
 pkgname=ondsel-es-appimage
-pkgver=2024.1.0
-pkgrel=5
-_gitrev=35694
-pkgdesc="A general purpose 3D CAD modeler based on FreeCAD (AppImage version)"
+pkgver=2024.2.0
+pkgrel=1
+_gitrev=37191
+pkgdesc="FreeCAD powered Engineering Suite (AppImage version)"
 arch=('x86_64' 'aarch64')
 url="https://ondsel.com/"
 license=('LGPL')
+depends=('fuse2')
 #appimagetool is needed only to work around https://github.com/realthunder/FreeCAD/issues/960
-depends=('fuse2' 'appimagetool')
+makedepends=('appimagetool')
 provides=('ondsel-es')
 conflicts=('ondsel-es')
 #!debug added to work around https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/19
@@ -27,9 +28,9 @@ source_x86_64=("ondsel-es-${pkgver}-x86_64.AppImage::https://github.com/Ondsel-D
 source_aarch64=("ondsel-es-${pkgver}-aarch64.AppImage::https://github.com/Ondsel-Development/FreeCAD/releases/download/${pkgver}/Ondsel_ES_${pkgver}.${_gitrev}-Linux-aarch64.AppImage")
 
 sha256sums=('bef63d2f4298c27f755664d124f61c29df34263253ad1f92241f54cbc96ae005'
-            '5374bf95dcc9bd3b9ea3087b66937e03d77d8ea3af90522247ac6eeb5a1b9d2c')
-sha256sums_x86_64=('50d96d7747c5d8cbd56e600d7046aa80406cadeaf1aa71821d95cc2c6a7a38ac')
-sha256sums_aarch64=('9d9f59cf43840d459028911eec0055a2ea6fabbbb9021641f94a014bf0f2f877')
+            '3658175d04739ef8617577a549d959aa069e26cb38dd82929f1f9089ad722a20')
+sha256sums_x86_64=('859abdbda8d268a4ba89cd0326b371b41c6a5deeb536cf2ebd105750b3e9d68b')
+sha256sums_aarch64=('1f06c0b3b53044964537a3a6898098da92590c9529167cadf5d74abee3621430')
 
 
 prepare() {
@@ -40,7 +41,6 @@ prepare() {
   rm squashfs-root/usr/lib/libdrm*
   unset SOURCE_DATE_EPOCH
   appimagetool -n squashfs-root/ ondsel-es-${pkgver}-modified.AppImage
-  chmod +x ondsel-es-${pkgver}-modified.AppImage
   ###
   #./ondsel-es-${pkgver}-${CARCH}.AppImage --appimage-extract com.ondsel.ES.desktop
   #./ondsel-es-${pkgver}-${CARCH}.AppImage --appimage-extract usr/share/icons
