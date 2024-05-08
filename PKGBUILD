@@ -2,12 +2,12 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-trx
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 pkgdesc="GSM Radio Modem based on a fork of the OpenBTS Transceiver program"
 url="https://osmocom.org/projects/osmotrx"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=(GPL)
+license=('AGPL-3.0-only')
 depends=('libosmocore'
          'libusb'
          'libuhd' # --with-uhd
@@ -20,16 +20,7 @@ backup=('etc/osmocom/osmo-trx-uhd.cfg'
         'etc/osmocom/osmo-trx-lms.cfg'
         'etc/osmocom/osmo-trx-ipc.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('a5ac6a301c2225d75fade2611c5fa4621a8c79324034151569c219c6b3e0dacd')
-
-prepare() {
-  # release tarballs (pkgver <= 1.6.1) are missing some symlinks
-  # see https://osmocom.org/issues/6349
-  cd "${srcdir}/${pkgname}-${pkgver}/doc/examples/osmo-trx-uhd"
-  ln -s osmo-trx-usrp_b200.cfg osmo-trx-uhd.cfg
-  cd "${srcdir}/${pkgname}-${pkgver}/doc/examples/osmo-trx-lms"
-  ln -s osmo-trx-limesdr.cfg osmo-trx-lms.cfg
-}
+sha256sums=('2103d68d98c18899adc54df12b442fb85ffb1d7f628bff2f46114eb9b44cb417')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
