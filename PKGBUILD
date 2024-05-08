@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=nodejs-lts-iron
-pkgver=20.12.2
+pkgver=20.13.0
 pkgrel=1
 pkgdesc="Evented I/O for V8 javascript (LTS release: Iron)"
 arch=(x86_64)
@@ -18,7 +18,7 @@ provides=("nodejs=$pkgver")
 conflicts=(nodejs)
 source=(https://nodejs.org/dist/v${pkgver}/node-v${pkgver}.tar.xz)
 # https://nodejs.org/download/release/latest-iron/SHASUMS256.txt.asc
-sha256sums=('d7cbcc5fbfb31e9001f3f0150bbeda59abe5dd7137aaa6273958cd59ce35ced7')
+sha256sums=('11d229fcad7e6e10f450301223c602043f021cda51259ffafc7e55e484b37dc7')
 
 build() {
   cd node-v${pkgver}
