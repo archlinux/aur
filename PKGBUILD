@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=blockyfish-client-bin
 _pkgname="Blockyfish Client"
-pkgver=3.2.0
+pkgver=3.2.1
 _electronversion=30
 pkgrel=1
 pkgdesc="A custom desktop client for deeeep.io v4 with some improvements. Made by pi."
@@ -23,14 +23,14 @@ source=(
     "${pkgname%-bin}.desktop"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7b9faa25228e1105e893442d14a3696c2814f3265ca4bd9f3096e8906fcf98c2'
+sha256sums=('17abae81f7d10fd18d447ebebfa8377afc15abd3739c7f5c2b70e9bfe9a71a81'
             'a12cbee4d98a5ce986a40d133219d735433edd94d858fc86babe0868e5e87145'
             'faa003033e5b2e0b9728cc4ac93eefd26a223a8cd1c6788eb1912e3537cf2765'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
+        -e "s|@runname@|app.asar|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
 }
