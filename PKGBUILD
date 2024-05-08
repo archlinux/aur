@@ -36,5 +36,5 @@ build() {
 package() {
   cd wasi-libc
   install -dm755 "${pkgdir}"/usr/share
-  cp -dr --preserve=mode,timestamp sysroot "${pkgdir}"/usr/share/wasip2-sysroot
+  cp -dr --preserve=mode,timestamp sysroot "${pkgdir}"/usr/share/wasi-sysroot
 }
