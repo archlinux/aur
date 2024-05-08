@@ -1,7 +1,7 @@
 # Maintainer: James Appleton <james.appleton01@gmail.com>
 pkgname="flaq"
 pkgdesc="A simple CLI tool for modifying and querying metadata tags for \`.flac\` files."
-pkgrel=4
+pkgrel=1
 pkgver="0.2.0"
 
 makedepends=("git" "cargo" "jq")
@@ -23,6 +23,8 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
+
+	./target/scripts locale/
 }
 
 check() {
@@ -42,7 +44,6 @@ package() {
 	install -Dm644 "target/scripts/_$pkgname" "${pkgdir}/usr/share/zsh/site-functions/_$pkgname"
 
 	install -d "$pkgdir/usr/share/"
-	cp -r locale "$pkgdir/usr/share/"
 }
 
 # pkgver() {
