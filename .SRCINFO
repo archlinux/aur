@@ -1,7 +1,7 @@
 pkgbase = ryzen-ppd
 	pkgdesc = Power management daemon for AMD Ryzen Mobile processors
-	pkgver = 0.4
-	pkgrel = 4
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/xsmile/ryzen-ppd
 	install = ryzen-ppd.install
 	arch = any
@@ -13,9 +13,10 @@ pkgbase = ryzen-ppd
 	depends = python-dbus-next-git
 	depends = python-gobject
 	depends = ryzenadj
+	depends = upower
 	optdepends = acpi_call: for setting ACPI platform profiles
 	backup = etc/ryzen-ppd.ini
-	source = ryzen-ppd-0.4.tar.gz::https://github.com/xsmile/ryzen-ppd/archive/0.4.tar.gz
-	sha256sums = 1ca58d82b20f088bef34fa5e3e1dde1c57f631fad72a10c688bcce2d7b89a7fb
+	source = ryzen-ppd-0.4.1.tar.gz::https://github.com/xsmile/ryzen-ppd/archive/0.4.1.tar.gz
+	sha256sums = b30fc89e9513209edcff6c1e0805ea0e22965b13da7f933b6308382fb977c347
 
 pkgname = ryzen-ppd
