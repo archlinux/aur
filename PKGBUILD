@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proActiv
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Estimate Promoter Activity from RNA-Seq data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+pkgdesc="Estimate Promoter Activity from RNA-Seq data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-annotationdbi
   r-biocparallel
   r-data.table
@@ -28,6 +27,7 @@ depends=(
   r-scales
   r-summarizedexperiment
   r-tibble
+  r-txdbmaker
 )
 optdepends=(
   r-gridextra
@@ -37,15 +37,18 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('12727aa216c2884a461a63222e9503bec5930536e0cddc836c3966f6604a9501')
+md5sums=('b41f3047e8eea9f19a7829524e190786')
+b2sums=('7d0cef54045b3686fb4a0bca705fba52f2553b7a6704b7f26924c95b3dd5547d414ed5737d52b800a3dba08d8c16e1ea5314a7c1ccff4804c04f4e233e7986e5')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
