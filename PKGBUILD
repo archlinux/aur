@@ -2,8 +2,8 @@
 _appname=xiao-hong-shu
 pkgname="${_appname//-/}-pake"
 _pkgname=XiaoHongShu
-pkgver=2.3.5
-pkgrel=2
+pkgver=2.3.6
+pkgrel=1
 pkgdesc="Use Pake to package XiaoHongShu.小红书 App,是年轻人的生活方式社区,每月有超过2亿人在这里分享生活经验,发现真实、美好、多元的世界,找到想要的生活 。"
 arch=('x86_64')
 url="https://www.xiaohongshu.com/"
@@ -19,8 +19,8 @@ source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('e3f77f8a432c69e2d88f86e3338489653115d43286b2f5fbd32d0982cd52d879'
-            'e7e0fe962c873b3998eacb9774629b672ff939d46ba5ec028b57cbdeb4900808')
+sha256sums=('53bbbcd5782b9ff3b3076292466798ac1460df45403c2e8e4b8556dd108d0bfc'
+            '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed "s|com-pake-${_appname//-/}|${pkgname%-pake}|g;s|Office|Utility;|g" -i "${srcdir}/usr/share/applications/com-pake-${_appname//-/}.desktop"
