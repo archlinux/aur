@@ -20,8 +20,8 @@ optdepends=('python-numpy: for working with pixel data'
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pydicom/pydicom/archive/v$pkgver.tar.gz"
         "pillow-10.1.patch")
-md5sums=('748bfd7ad12373675c9df4e088f38dd1'
-         '837949b3e4505c3fee9c43e8d5665251')
+sha256sums=('42c06ed74331174111dd42c89db774a13fc472abe18015f22c5aba80cddb7843'
+            '72aa784588b8f8d07142d130e755f223827d9e143e8ba07bc2276b5b0cca7633')
 
 prepare()
 {
