@@ -4,7 +4,6 @@
 
 [Unit]
 Description=Bacula Director
-Alias=bacula-dir
 Requires=network.target
 After=network.target remote-fs.target syslog.target
 # Dependency about the database

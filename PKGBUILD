@@ -15,33 +15,28 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-dir"
          "${_dir_backends[@]}"
          "${pkgbase}-dir-mysql")
-pkgver=11.0.5
-pkgrel=2
+pkgver=15.0.2
+pkgrel=1
 arch=(x86_64)
 pkgdesc="${pkgbase^} - A Network Backup Tool "
 url="https://www.${pkgbase}.org"
 license=('AGPL3')
 makedepends=(sqlite libmariadbclient postgresql-libs qt5-base openssl readline lzo)
 install="bacula.install"
-source=("https://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
+source=("https://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
         'bacula-dir.service'
         'bacula-fd.service'
         'bacula-sd.service')
 
-sha256sums=('ef5b3b67810442201b80dc1d47ccef77b5ed378fe1285406f3a73401b6e8111a'
-            'SKIP'
+sha256sums=('55515c2a66af9a86b955daea4089378b864d051b2e6e30383bef36e693acea7a'
             'd1f06403b3460ad8cb7bd063ec31108d87c77dc58bb8a916229262d2bac4a565'
             '072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39'
             'a5e75ee945479f9e38415d2841cf3485200d9d9374d5a68c19c13b39467ca5bb')
-
-# Bacula 4096 Distribution Verification Key (www.bacula.org)
-validpgpkeys=('5235F5B668D81DB61704A82DC0BE2A5FE9DF3643')
 
 _workdir="/var/lib/${pkgbase}"
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
-  patch -i ../../look-for-qt-order.patch
 
   ./configure                                \
     --enable-bat                             \
