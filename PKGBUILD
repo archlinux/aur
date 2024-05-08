@@ -5,7 +5,7 @@ pkgbase=python-glymur
 _pyname=${pkgbase#python-}
 #_pyname=Glymur
 pkgname=('python-glymur' 'python-glymur-doc')
-pkgver=0.13.1
+pkgver=0.13.2.post1
 #_commit="d0134123978678d33573d53a144ce1634e770e10"
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
@@ -26,8 +26,8 @@ checkdepends=('python-pytest'
               'python-scikit-image'
               'python-gdal')
 #              'python-imagecodecs')
-#source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver}.tar.gz")
-source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver/.p/p}.tar.gz")
+source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver}.tar.gz")
+#source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver/.p/p}.tar.gz")
 #source=("${_pyname}-${pkgver}.tar.gz::https://github.com/quintusdias/glymur/archive/${_commit}.tar.gz")
 #source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://github.com/quintusdias/glymur/raw/master/tests/data/0220000800_uuid.dat"
@@ -40,7 +40,7 @@ source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver/.p/p}
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.10.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.11.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.12.rst")
-md5sums=('12f56ecf3e19cf7cd5535404b0850f7c')
+md5sums=('7b3bfae206a16f385eb9a73330866e12')
 #        'SKIP'
 #        'SKIP'
 #        'SKIP'
@@ -69,8 +69,8 @@ get_pyver() {
 #}
 
 build() {
-#   cd ${srcdir}/${_pyname}-${pkgver}
-    cd ${srcdir}/${_pyname}-${pkgver/.p/p}
+    cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/${_pyname}-${pkgver/.p/p}
 #   cd ${srcdir}/${_pyname}-${_commit}
     python -m build --wheel --no-isolation
 
@@ -80,8 +80,8 @@ build() {
 }
 
 check() {
-#   cd ${srcdir}/${_pyname}-${pkgver}
-    cd ${srcdir}/${_pyname}-${pkgver/.p/p}
+    cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/${_pyname}-${pkgver/.p/p}
 #   cd ${srcdir}/${_pyname}-${_commit}
 
     pytest || warning "Tests failed" # -vv -ra --color=yes -o console_output_style=count
@@ -91,8 +91,8 @@ check() {
 }
 
 package_python-glymur() {
-#   cd ${srcdir}/${_pyname}-${pkgver}
-    cd ${srcdir}/${_pyname}-${pkgver/.p/p}
+    cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/${_pyname}-${pkgver/.p/p}
 #   cd ${srcdir}/${_pyname}-${_commit}
     depends=('python-numpy' 'python-lxml' 'python-packaging')
     optdepends=('openjpeg2'
@@ -107,8 +107,8 @@ package_python-glymur() {
 
 package_python-glymur-doc() {
     pkgdesc="Documentation for Python Glymur module"
-#   cd ${srcdir}/${_pyname}-${pkgver}/docs/build
-    cd ${srcdir}/${_pyname}-${pkgver/.p/p}/docs/build
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/build
+#   cd ${srcdir}/${_pyname}-${pkgver/.p/p}/docs/build
 #   cd ${srcdir}/${_pyname}-${_commit}/docs/build
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.txt
