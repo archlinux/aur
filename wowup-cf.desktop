@@ -1,6 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=wowup-cf
+Name=WowUp CF
+Terminal=false
 Icon=/usr/share/pixmaps/wowup_logo_cf.png
-Exec=/usr/bin/wowup-cf
+Comment=Word of Warcraft addon updater
+Exec=/usr/bin/wowup-cf %U
 Categories=Game;Application;
+MimeType=x-scheme-handler/wowup;
