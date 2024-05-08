@@ -25,10 +25,14 @@ package() {
 	# install completion scripts
     cd ../scripts
 
+    ls $pkgdir 
+    ls "./${pkgname}.bash"
+
     # bash
-    BASH_PATH="${pkgdir}/usr/share/bash-completion/completions/"
-    if [[ -r $BASH_PATH ]]; then
-	    install -Dm755 "./${pkgname}.bash" "${BASH_PATH}/${pkgname}"
+    BASH_PATH="${pkgdir}/usr/share/bash-completion/completions"
+    if [[ -e BASH_PATH ]] ; then
+        install "./${pkgname}.bash" "${BASH_PATH}/${pkgname}"
+        echo "Installed bash autocompletions"
     fi
 
     
