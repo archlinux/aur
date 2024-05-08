@@ -1,15 +1,16 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=enrichViewNet
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="From functional enrichment results to biological networks"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
+  r-dose
   r-enrichplot
   r-gprofiler2
   r-jsonlite
@@ -22,13 +23,14 @@ checkdepends=(
 )
 optdepends=(
   r-biocstyle
+  r-ggplot2
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5b2eb51ee4f57abd3b77da182e7e5d1a')
-b2sums=('a6412415bfbc3790ef5626e55f594b23a26da23cad38d889df068e0e5f8aeca9ae1b00f7b980b97afd0c1e410621bedb675ccfc860d38838271e180fa628eec6')
+md5sums=('f01eb6bcaefcabf4e714ca77f3b8d9e6')
+b2sums=('6eb49b798bb341ea9748d24e19870b4447f8e0e60cfbabf5284e696915f48b7132c6131a2684fb3c121fd0a780765460aa7aec46442c5ab9329bd6c30e63d972')
 
 build() {
   mkdir build
