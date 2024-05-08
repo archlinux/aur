@@ -1,6 +1,6 @@
 # maintainer: zxkmm (IHp4a21tQGhvdG1haWwuY29t)
 # auto running on siyuan official repo
-# PKGBUILD is copied from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=siyuan-appimage
+# PKGBUILD is modified from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=siyuan-appimage
 # which is made by vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=siyuan_stable
