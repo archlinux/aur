@@ -1,7 +1,7 @@
 pkgbase = nvm-desktop
 	pkgdesc = A version management desktop client for the Nodejs.
-	pkgver = 3.2.0
-	pkgrel = 2
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = https://github.com/1111mp/nvm-desktop
 	arch = aarch64
 	arch = x86_64
@@ -10,17 +10,17 @@ pkgbase = nvm-desktop
 	makedepends = npm
 	makedepends = nvm
 	makedepends = pnpm
-	makedepends = git
-	depends = electron29
+	makedepends = curl
+	depends = electron30
 	conflicts = nvm-desktop
-	noextract = nvmd-3.2.0-x86_64.zip
-	source = nvm-desktop.git::git+https://github.com/1111mp/nvm-desktop.git#tag=v3.2.0
+	noextract = nvmd-3.3.0-x86_64.zip
+	source = nvm-desktop-3.3.0.tar.gz::https://github.com/1111mp/nvm-desktop/archive/refs/tags/v3.3.0.tar.gz
 	source = nvm-desktop.sh
-	sha256sums = 9d4873c8f3bd02b4d4510eb764e1a1c1d3ff4a9f231283371c90e1020cc38207
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
-	source_aarch64 = nvmd-3.2.0-aarch64.zip::https://github.com/1111mp/nvmd-command/releases/download/v3.2.0/Linux-arm64.zip
-	sha256sums_aarch64 = 12d756d331e9da32a625748e13ee66231b88155e8dea9a014b888ba6fd8ac5d0
-	source_x86_64 = nvmd-3.2.0-x86_64.zip::https://github.com/1111mp/nvmd-command/releases/download/v3.2.0/Linux-x64.zip
-	sha256sums_x86_64 = 789f181af5c5e3c3104a427bdc1e171ddc34173d115c14cab688423fe75623fc
+	sha256sums = 75d22a3e513530999b03614e99ea9bb2bd8fe59ef29586e562c921dd7297b9ff
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+	source_aarch64 = nvmd-3.3.0-aarch64.zip::https://github.com/1111mp/nvmd-command/releases/download/v3.3.0/Linux-arm64.zip
+	sha256sums_aarch64 = 425aea3c4194c2c3a297e459563491b8fa8d5e4331f93cbc784d5e44b84bf8c4
+	source_x86_64 = nvmd-3.3.0-x86_64.zip::https://github.com/1111mp/nvmd-command/releases/download/v3.3.0/Linux-x64.zip
+	sha256sums_x86_64 = 7f24745cf7a9785206dcbf59a9ad969bd8cdc0b38be3d20782062fbe599e9732
 
 pkgname = nvm-desktop
