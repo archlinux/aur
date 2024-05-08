@@ -1,6 +1,6 @@
 pkgbase = nanoflann
 	pkgdesc = a C++ header-only library for Nearest Neighbor (NN) search wih KD-trees
-	pkgver = 1.5.0
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://github.com/jlblancoc/nanoflann
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = nanoflann
 	makedepends = gtest
 	depends = eigen
 	depends = python
-	source = https://github.com/jlblancoc/nanoflann/archive/v1.5.0.tar.gz
-	sha256sums = 89aecfef1a956ccba7e40f24561846d064f309bc547cc184af7f4426e42f8e65
+	source = https://github.com/jlblancoc/nanoflann/archive/v1.5.5.tar.gz
+	sha256sums = fd28045eabaf0e7f12236092f80905a1750e0e6b580bb40eadd64dc4f75d641d
 
 pkgname = nanoflann
