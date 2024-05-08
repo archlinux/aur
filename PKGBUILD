@@ -29,6 +29,6 @@ prepare() {
 
 package() {
     install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/siyuan.AppImage"
-    install -Dm644 "squashfs-root/resources/stage/icon.png" "/usr/share/icons/hicolor/512x512/apps/siyuan-appimage.png"
-    install -Dm644 "squashfs-root/siyuan.desktop" "${pkgdir}/usr/share/applications/siyuan-appimage.desktop"
+    install -Dm644 "squashfs-root/resources/stage/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/siyuan_stable.png"
+    install -Dm644 "squashfs-root/siyuan.desktop" "${pkgdir}/usr/share/applications/siyuan_stable.desktop"
 }
