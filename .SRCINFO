@@ -1,0 +1,20 @@
+pkgbase = lxqt-qt5plugin
+	pkgdesc = LXQt platform integration for Qt
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/lxqt/lxqt-qtplugin
+	arch = x86_64
+	groups = lxqt
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = lxqt-build-tools-qt5
+	depends = libdbusmenu-qt5
+	depends = libqt5xdg
+	depends = qt5-x11extras
+	depends = libfm-qt5
+	depends = libQt5XdgIconLoader.so
+	source = git+https://github.com/lxqt/lxqt-qtplugin?signed#tag=1.4.1
+	validpgpkeys = 19DFDF3A579BD509DBB572D8BE793007AD22DF7E
+	sha256sums = 022d1eacc98ac0b089dacef65f265c27bd7a6caed404112b2d3a34a1e2c75e35
+
+pkgname = lxqt-qt5plugin
