@@ -1,0 +1,15 @@
+pkgbase = ttf-moe-fonts
+	pkgdesc = National standard fonts from Taiwan Ministry of Education
+	pkgver = 1
+	pkgrel = 1
+	url = https://language.moe.gov.tw/Result.aspx?classify_sn=23&subclassify_sn=436
+	arch = any
+	license = CC-BY-ND-4.0
+	source = https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/edukai-5.0.zip
+	source = https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/eduSong_Unicode.zip
+	source = https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/MoeLI-3.0.zip
+	sha256sums = 57411e9ca399f372bda62fadd521a875d2062d34a0c654ace4a4c61539f3e10b
+	sha256sums = 3b0dadd40938d100fdace2082183e01d5a6c26cb2174513d495c39861f154eb6
+	sha256sums = fd7e633ed8cebc94d46e2295e6bd9d58814be5fb7489e99dc23f99b7e435dce0
+
+pkgname = ttf-moe-fonts
