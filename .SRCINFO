@@ -1,14 +1,14 @@
 pkgbase = vscode-langservers-extracted
 	pkgdesc = Language servers extracted from VSCode.
-	pkgver = 4.9.0
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = https://github.com/hrsh7th/vscode-langservers-extracted
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = vscode-langservers-extracted-4.9.0.tgz
-	source = https://registry.npmjs.org/vscode-langservers-extracted/-/vscode-langservers-extracted-4.9.0.tgz
-	sha256sums = cf53cd3ff8cdcad6968111274b46cc1e5ad5d608e3f667554f10ef8bd19f1819
+	noextract = vscode-langservers-extracted-4.10.0.tgz
+	source = https://registry.npmjs.org/vscode-langservers-extracted/-/vscode-langservers-extracted-4.10.0.tgz
+	sha256sums = d6e2d090d09c4b91daa74e9e7462a3d3f244efb96aa5111004cfffa49d6dc9ef
 
 pkgname = vscode-langservers-extracted
