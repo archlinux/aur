@@ -1,0 +1,28 @@
+pkgbase = sentakki
+	pkgdesc = An attempt to recreate maimai gameplay within osu!lazer.
+	pkgver = 2024.413.0
+	pkgrel = 1
+	url = https://github.com/LumpBloom7/sentakki
+	arch = any
+	license = MIT
+	makedepends = unzip
+	depends = osu-lazer
+	provides = sentakki
+	conflicts = sentakki
+	noextract = osu.Game.Rulesets.Sentakki.dll
+	noextract = sentakki-language-packs.zip
+	source = https://github.com/LumpBloom7/sentakki/releases/download/2024.413.0/osu.Game.Rulesets.Sentakki.dll
+	source = https://github.com/LumpBloom7/sentakki/releases/download/2024.413.0/sentakki-language-packs.zip
+	source = LICENSE.md
+	sha256sums = c923b7b71592e65a1e5c1f6f03424aa5ce1779033e3cd7cc83138ba3910ee02d
+	sha256sums = c22fff5f4e1d4758e9a53cfc7b30f20c8f12d3dbd459c39766fd734f4976c970
+	sha256sums = SKIP
+
+pkgname = sentakki-bin
+
+pkgname = sentakki-i18n
+	pkgdesc = Language pack for sentakki.
+	depends = sentakki
+	depends = osu-lazer
+	provides = 
+	conflicts = 
