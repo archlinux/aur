@@ -4,12 +4,12 @@
 
 pkgname=titan-git
 _pkgname=titan.core
-pkgver=10.0.0.r0.gbcf519d2b
+pkgver=10.1.0.r10.g4b13e0898
 pkgrel=1
 pkgdesc="TTCN3 test automation platform"
 arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
-license=('custom')
+license=('EPL-2.0')
 groups=('devel')
 makedepends=(
     'bison'
@@ -27,8 +27,8 @@ depends=(
 )
 source=(git+https://gitlab.eclipse.org/eclipse/titan/titan.core.git
         titan.profile)
-md5sums=('SKIP'
-         'ecccd5d48359f5f0bdd81c8cc036e806')
+sha256sums=('SKIP'
+            '6ac15bc40cbfce771ca828d2402e82a43c72fbcb4f2afb8714340bfd4133e9ff')
 
 pkgver() {
     cd "$_pkgname"
@@ -71,5 +71,4 @@ package() {
 
     install -D $srcdir/titan.profile \
         $pkgdir/etc/profile.d/titan.sh
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
