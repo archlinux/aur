@@ -15,7 +15,7 @@ source=(
 		"LICENSE"
 )
 
-sha256sums=('f53976f1359238aaa67697c46efef088f4cda993e4c076fd495fbdc144a528cb'
+sha256sums=('80a8aa3c0ceeede6232d1874b0a0a3834ddfed3ca209d6a48639840e45c7e1bc'
             '9caccb70771a676613a8a9a9863f20c49c861383af99c1dd7cc354226b375832')
 
 noextract=("Sarasa-TTF-$pkgver.7z")
