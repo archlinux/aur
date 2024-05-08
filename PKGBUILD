@@ -3,11 +3,11 @@
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 
 pkgname=djgpp-gcc
-pkgver=13.2.0
+pkgver=14.1.0
 _target="i686-pc-msdosdjgpp"
 _djver=2.05
 _build_ada=no
-pkgrel=2
+pkgrel=1
 pkgdesc="GCC for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -21,9 +21,9 @@ options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "lto.patch"
 	"gcc-djgpp.diff")
-sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
+sha256sums=('e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0'
-            'b97ab8ed68112f18f99afe1927f73dae1f510b5d3babc83ed13bd66a877cf203')
+            '2ccbf490286562def128c7585e294f05c1cad9790ce6306076580b3901b4fec0')
 
 prepare() {
   cd gcc-$pkgver
@@ -40,10 +40,10 @@ build() {
   rm -rf gcc-build-native gcc-install-native gcc-build-$_target
   if [ "$_build_ada" == "yes" ] ; then
      _bootstrap_languages=c,c++,ada
-     _build_languages=c,c++,fortran,objc,obj-c++,ada
+     _build_languages=c,c++,fortran,objc,obj-c++,ada,m2
   else
      _bootstrap_languages=c,c++
-     _build_languages=c,c++,fortran,objc,obj-c++
+     _build_languages=c,c++,fortran,objc,obj-c++,m2
   fi
   if [ "$(gcc -dumpversion | sed -e 's:\..*::')" != "$(echo $pkgver | sed -e 's:\..*::')" ] ; then
      echo "Different GCC major version: building native compiler at first"
