@@ -1,7 +1,7 @@
 # Maintainer: k1f0 <generic at k1f0.mozmail.com>
 
 pkgname=rwpspread
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 _patch=""
 pkgdesc='Multi-Monitor Wallpaper Utility'
@@ -15,7 +15,7 @@ optdepends=('wpaperd: wallpaper setter backend'
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}${_patch}::${url}/archive/refs/tags/v${pkgver}${_patch}.tar.gz")
-b2sums=('c20456ef8b4b89298ffdd7c973be8b1bbc047987c2706a14f80b06ed426fc2bf118f8e1d99fb55500812d287495b6b08e17acb6930e9da4786ebc9dea0ce3b55')
+b2sums=('a07b216474624f12225991e15f63dfa549a7b5afb35fbe868674f40b04f71fef1741fcf5bba5c575d5b374962f12c05859bc46e9cd6c2306bad13e8d431ec3f7')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}${_patch}"
@@ -34,13 +34,13 @@ package() {
   # binary
   install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname}"
   # shell completions
-  mv "completions/${pkgname%-git}.bash" "completions/${pkgname%-git}"
-  install -Dm0644 -t "${pkgdir}/usr/share/bash-completion/completions" "completions/${pkgname%-git}"
-  install -Dm0644 -t "${pkgdir}/usr/share/zsh/site-functions" "completions/_${pkgname%-git}"
-  install -Dm0644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" "completions/${pkgname%-git}.fish"
+  mv "target/release/completions/${pkgname%-git}.bash" "target/release/completions/${pkgname%-git}"
+  install -Dm0644 -t "${pkgdir}/usr/share/bash-completion/completions" "target/release/completions/${pkgname%-git}"
+  install -Dm0644 -t "${pkgdir}/usr/share/zsh/site-functions" "target/release/completions/_${pkgname%-git}"
+  install -Dm0644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" "target/release/completions/${pkgname%-git}.fish"
   # man page
-  gzip "man/${pkgname%-git}.1"
-  install -Dm0644 -t "${pkgdir}/usr/share/man/man1" "man/${pkgname%-git}.1.gz"
+  gzip "target/release/man/${pkgname%-git}.1"
+  install -Dm0644 -t "${pkgdir}/usr/share/man/man1" "target/release/man/${pkgname%-git}.1.gz"
   # license
   install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname%-git}" "LICENSE"
 }
