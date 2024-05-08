@@ -1,6 +1,6 @@
 pkgbase = svgo
 	pkgdesc = Tool for optimizing SVG files
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/svg/svgo
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = svgo
 	provides = nodejs-svgo
 	conflicts = nodejs-svgo
 	replaces = nodejs-svgo
-	noextract = svgo-3.2.0.tgz
-	source = https://registry.npmjs.org/svgo/-/svgo-3.2.0.tgz
-	sha256sums = e21ceba784118ebfd45a767d4a35b65bfcea4c743bced0ac5a3b75e7e8beb27c
+	noextract = svgo-3.3.0.tgz
+	source = https://registry.npmjs.org/svgo/-/svgo-3.3.0.tgz
+	sha256sums = 29cb49b168aff1a9149cbb6e1dfafe64b0aab9994dd6dd75065ee6b14a11f21a
 
 pkgname = svgo
