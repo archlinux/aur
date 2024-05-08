@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=emulsion
-pkgver=10.5.0
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="A fast and minimalistic image viewer"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver%.*}.tar.gz"
         "emulsion.desktop"
         "rustc_link_lib.patch")
-sha256sums=('1047b215ed364daa77dc28ec07dc96768688af56f74d054b0dc1e7c188e561af'
+sha256sums=('25c7f8808b17a138901a549c97791f70f6ead0b7f7ad89a8460c2099326e3d1e'
             '0ddafdb9abec4887cab3e211f216e5c7e0f69bb15cd5426a6b85e469aeafd0aa'
             '09a8d447d97d97426812e5815147704e3999ef993b7b89258107f1f3dcb3b8f2')
 
