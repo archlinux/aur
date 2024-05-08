@@ -11,21 +11,11 @@ pkgbase = cassette
 	makedepends = cmake
 	makedepends = blueprint-compiler
 	makedepends = git
-	makedepends = gcc
 	makedepends = vala
 	makedepends = appstream-glib
 	makedepends = python-packaging
-	depends = glib2
-	depends = gtk4
-	depends = libgee
-	depends = libadwaita
-	depends = libsoup3
-	depends = json-glib
-	depends = sqlite3
-	depends = libxml2
-	depends = gstreamer
-	depends = webkitgtk-6.0
-	depends = gst-plugins-good
+	depends = gcc=13.2.1
+	depends = gcc-libs=13.2.1
 	provides = cassette
 	conflicts = cassette
 	source = git+https://github.com/rirusha/cassette.git
