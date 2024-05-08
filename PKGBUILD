@@ -18,6 +18,6 @@ sha256sums=(
 )
 
 package() {
-    install -Dm0755 tlock "$pkgdir/usr/bin/$pkgname"
+    install -Dm0755 $pkgname "$pkgdir/usr/bin/$pkgname"
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
