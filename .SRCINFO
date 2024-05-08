@@ -1,6 +1,6 @@
 pkgbase = spacemesh-bin
-	pkgdesc = Spacemesh App (Smesher + Wallet)
-	pkgver = 1.5.1
+	pkgdesc = Spacemesh App (Smesher + Wallet). Use system-wide electron.
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://spacemesh.io/
 	arch = aarch64
@@ -8,13 +8,13 @@ pkgbase = spacemesh-bin
 	license = Apache-2.0
 	depends = electron25
 	depends = ocl-icd
-	provides = spacemesh=1.5.1
+	provides = spacemesh=1.5.2
 	conflicts = spacemesh
 	source = spacemesh.sh
-	sha256sums = 61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3
-	source_aarch64 = spacemesh-1.5.1-aarch64.deb::https://smapp.spacemesh.network/dist/v1.5.1/spacemesh_app_1.5.1_arm64.deb
-	sha256sums_aarch64 = da21e57ccaeabe3151fca1b5dba7845df954445e3140d35001d2a9100bbb09ce
-	source_x86_64 = spacemesh-1.5.1-x86_64.deb::https://smapp.spacemesh.network/dist/v1.5.1/spacemesh_app_1.5.1_amd64.deb
-	sha256sums_x86_64 = a476b9bc62a1efb33662a3a6d4a2ee9835c3ed61b6563be9488f84e85f5928c7
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+	source_aarch64 = spacemesh-1.5.2-aarch64.deb::https://smapp.spacemesh.network/dist/v1.5.2/spacemesh_app_1.5.2_arm64.deb
+	sha256sums_aarch64 = 180b41af406c993bf4c9aad4951f8fddd15525c2c9421c1e376b97e57b088b22
+	source_x86_64 = spacemesh-1.5.2-x86_64.deb::https://smapp.spacemesh.network/dist/v1.5.2/spacemesh_app_1.5.2_amd64.deb
+	sha256sums_x86_64 = a876e0e049cedbb1e372c9ae23dea08d480dc43aa02c8e9fb5b3f73df6d20674
 
 pkgname = spacemesh-bin
