@@ -1,11 +1,11 @@
-# Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Maintainer: Stefan Auditor <stefan@auditor.email>
 # Contributor: Johannes Schleifenbaum <johannes [at] js-webcoding [dot] de>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 _pkgname=php-box
 pkgname=${_pkgname}
-pkgver=4.6.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="An application for building and managing Phars"
 arch=("any")
