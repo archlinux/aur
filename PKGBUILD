@@ -2,7 +2,7 @@
 # Huge thanks to github.com/nebulosa2007 for this version of the PKGBUILD.
 
 pkgname=yabsnap
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
@@ -13,8 +13,9 @@ license=('Apache')
 #   rsync based options.
 # python3: Runtime. Typically present in a base install.
 depends=('bash' 'btrfs-progs' 'python')
+makedepends=('tar')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('215a6d540a856c3e075b4271486fe47e')
+md5sums=('803a3f7dcfee24973cf4416dc555bd4d')
 install="$pkgname".install
 
 check() {
@@ -25,16 +26,25 @@ check() {
 
 package() {
   cd "$pkgname"-"$pkgver"
-  for file in $(ls -A src/code/*.{py,conf} | grep -v "_test.py")
-  do
-    install -Dm 644 "$file" "$pkgdir"/usr/share/"$pkgname"/code/"${file##*/}"
-  done
+
+  readonly DEST="$pkgdir"/usr/share/"$pkgname"
+
+  mkdir -p "$DEST"
+  pushd src/
+  tar -cf - \
+    $(find -type f -not -name "*_test.py" \( -name "*.py" -o -name "*.conf" \)) |
+    tar -xf - -C "$DEST"/ --no-same-owner
+  pushd "$DEST"/
+  chmod -R u=rwX,go=rX .
+  popd
+  popd
+
   cd artifacts
   install -Dm 644 services/"$pkgname".{service,timer}      -t "$pkgdir"/usr/lib/systemd/system/
   install -Dm 664 pacman/*.hook     -t "$pkgdir"/usr/share/libalpm/hooks/
   install -Dm 644 "$pkgname".1.gz                          -t "$pkgdir"/usr/share/man/man1/
   cd ../src
-  install -Dm 755 "$pkgname".sh -t "$pkgdir"/usr/share/"$pkgname"/
+  install -Dm 755 "$pkgname".sh -t "$DEST"/
   install -d "$pkgdir"/usr/bin
   ln -s /usr/share/"$pkgname"/"$pkgname".sh "$pkgdir"/usr/bin/"$pkgname"
 }
