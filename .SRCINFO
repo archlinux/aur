@@ -1,7 +1,7 @@
 pkgbase = siyuan_stable
 	pkgdesc = auto upload to AUR when SiYuan stable release
-	pkgver = v.2.11.10
-	pkgrel = 2
+	pkgver = v.2.11.12
+	pkgrel = 0
 	url = https://b3log.org/siyuan
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -9,7 +9,7 @@ pkgbase = siyuan_stable
 	optdepends = pandoc: docx export
 	options = !strip
 	options = !debug
-	source = ::https://github.com/siyuan-note/siyuan/releases/download/v/
+	source = ::https://github.com/siyuan-note/siyuan/releases/download//
 	sha256sums = 82b184611529957e2b148de7d40463de4bc70a66026f7a4059060a7e018aeb41
 
 pkgname = siyuan_stable

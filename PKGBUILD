@@ -4,8 +4,8 @@
 # which is made by vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=siyuan_stable
-pkgver=v.2.11.10
-pkgrel=2
+pkgver=v.2.11.12
+pkgrel=0
 pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
 url="https://b3log.org/siyuan"
@@ -15,7 +15,7 @@ noextract=()
 options=("!strip" "!debug")
 depends=("fuse2")
 optdepends=('pandoc: docx export')
-source=("::https://github.com/siyuan-note/siyuan/releases/download/v/")
+source=("::https://github.com/siyuan-note/siyuan/releases/download//")
 sha256sums=("82b184611529957e2b148de7d40463de4bc70a66026f7a4059060a7e018aeb41")
 
 _installdir=/opt/appimages
