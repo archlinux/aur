@@ -1,7 +1,7 @@
 # Maintainer: m00nw4tch3r <m00nwtchr at duck dot com>
 
 pkgname=alvr
-pkgver=20.6.1
+pkgver=20.8.1
 pkgrel=2
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
