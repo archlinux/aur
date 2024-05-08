@@ -1,8 +1,8 @@
 # Maintainer: Tomasz Zok <tomasz dot zok (at) gmail dot com>
 pkgbase='python-rnapolis'
 pkgname='python-rnapolis'
-_name='RNApolis'
-pkgver='0.3.10'
+_name='rnapolis'
+pkgver='0.3.11'
 pkgrel=1
 pkgdesc="A Python library containing RNA-related bioinformatics functions and classes"
 url="https://github.com/tzok/rnapolis-py"
@@ -11,7 +11,7 @@ makedepends=(python-setuptools python-build python-installer python-wheel)
 license=(MIT)
 arch=(any)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name/-/_}-${pkgver}.tar.gz")
-sha256sums=('88a26047cd0079afe81a8c0c6ca85dd591eead7428ed99cff044d0e02b123d33')
+sha256sums=('99f745b026f7d5345065a413c78d3c81a7895eb912a597950d6aa7b8c11db59d')
 
 build() {
     cd "${_name}-${pkgver}"
