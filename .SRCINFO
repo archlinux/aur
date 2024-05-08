@@ -1,0 +1,22 @@
+pkgbase = sourcegit-bin
+	pkgdesc = GUI client for GIT users
+	pkgver = 8.11
+	pkgrel = 1
+	url = https://github.com/sourcegit-scm/sourcegit
+	arch = x86_64
+	license = MIT
+	makedepends = libicns
+	depends = dotnet-runtime-8.0
+	depends = git
+	depends = git-credential-manager
+	depends = xdg-utils
+	provides = sourcegit
+	conflicts = sourcegit
+	source = https://github.com/sourcegit-scm/sourcegit/releases/download/v8.11/sourcegit_8.11.linux-x64.tar.gz
+	source = sourcegit.desktop
+	source = LICENSE
+	sha256sums = 4929fd6b6b81d70253f76f49de9fd82371202afbe1b0c80d6217eafa0a23320d
+	sha256sums = 3488ee13a4ca1bae85c35f866d046304d8716a64c46cadb2576cb8b4ae44b058
+	sha256sums = 6cef41c8a297f46faafe40016ffcce9d968b3722048b81cd768fdbaa1be02ca1
+
+pkgname = sourcegit-bin

@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!PKGBUILD
+!sourcegit.desktop
+!LICENSE
+!.SRCINFO
