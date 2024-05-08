@@ -1,17 +1,18 @@
 # Maintainer: lakejason0 <lakesarchive@outlook.com>
 pkgname='ttf-lxgw-zhisong'
-pkgver=0.291.2
+pkgver=0.300
 pkgrel=1
 pkgdesc="霞鶩緻宋。一款衍生於「IPAex 明朝」的舊字形寫法中文字型。A Chinese font derived from IPAex Mincho."
 arch=('any')
 url="https://github.com/lxgw/LxgwZhiSong"
 license=('custom:IPA')
 source=("$pkgname-$pkgver-CL-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWZhiSongCL.ttf"
-#       "$pkgname-$pkgver-MN-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWZhiSongMN.ttf"
+        "$pkgname-$pkgver-MN-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWZhiSongMN.ttf"
         *.md)
 changelog='changelog.txt'
 conflicts=('ttf-lxgw-zhisong')
-sha256sums=('d17068a3abf211c48d51e6f58327a5f5b6fc59a29678a5ec036e9aaa7af18a4a'
+sha256sums=('d1c2703f71fc75428f29f3b18f7b400a76bcb4c8a94875e23c3e4ba4b1faa8be'
+            '91500bad153aafbb119e41a11668bf04d9c6ee5ec19597dada014408d63aa271'
             'e33bc6a5f48e8fef08f7ab74b24b199c2d6b1495d7a6fc5cc285c1e44d768877'
             '18e639e1d5d575cb92694c79b2aed1781a234eb5be4200c1479a6c27e11fddcc')
 
