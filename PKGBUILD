@@ -5,10 +5,10 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-openpmix
-pkgver=4.2.9
-pkgrel=4
+pkgver=5.0.2
+pkgrel=1
 arch=('any')
-pkgdesc="Extended version of the PMI standard (Android, ${_android_arch})"
+pkgdesc="Extended version of the PMI standard (Android ${_android_arch})"
 url="https://github.com/openpmix/openpmix"
 license=('BSD-3-Clause')
 depends=("android-${_android_arch}-hwloc"
@@ -24,13 +24,13 @@ source=("$url/releases/download/v$pkgver/pmix-$pkgver.tar.gz"
         '0001-Force-32-bits-compile.patch'
         '0002-Unversioned-libs.patch'
         '0003-Add-missing-headers.patch')
-md5sums=('6ef6da8a14d670712431fd62194bd390'
+md5sums=('40293e5adbaac80b62528ba8a7044659'
          'd0032b4f6868acb7b3a593f1a76f0eed'
          '47db6b8ab5894753aa4c508f64c75389'
          'a5c7336af3f4abce17ff7ecc1d08573a')
 
 prepare() {
-    cd "${srcdir}/pmix-$pkgver"
+    cd "${srcdir}/pmix-${pkgver}"
     source android-env ${_android_arch}
 
     ./autogen.pl
@@ -42,7 +42,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/pmix-$pkgver"
+    cd "${srcdir}/pmix-${pkgver}"
     source android-env ${_android_arch}
 
     # set environment variables for reproducible build
@@ -69,10 +69,10 @@ build() {
     esac
 
     ./configure \
-        --host=${host} \
-        --prefix=${ANDROID_PREFIX} \
-        --libdir=${ANDROID_PREFIX_LIB} \
-        --includedir=${ANDROID_PREFIX_INCLUDE} \
+        --host="${host}" \
+        --prefix="${ANDROID_PREFIX}" \
+        --libdir="${ANDROID_PREFIX_LIB}" \
+        --includedir="${ANDROID_PREFIX_INCLUDE}" \
         --enable-shared \
         --enable-static \
         --enable-pmix-binaries=no \
@@ -81,13 +81,14 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/pmix-$pkgver"
+    cd "${srcdir}/pmix-${pkgver}"
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
+    rm -rf "${pkgdir}/usr"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
     rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
 }
