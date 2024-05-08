@@ -5,8 +5,8 @@
 
 pkgname=eclipse-titan
 _pkgname=titan.core
-pkgver=10.0.0
-pkgrel=3
+pkgver=10.1.0
+pkgrel=1
 pkgdesc="A free and open source (FOSS) compiler both for TTCN-3 and for ASN.1"
 arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
@@ -28,7 +28,7 @@ conflicts=('titan-git')
 source=("https://gitlab.eclipse.org/eclipse/titan/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         0001-xsdconvert-xmlGetLastError-fix-invalid-pointer-conv.patch
         eclipse-titan.profile)
-sha256sums=('09433cffeb64aba1a97331ab5d73aa5e9c03455815310440b89e23eb15c20711'
+sha256sums=('68e36e23a64cabca780650f82331fa4ef0e00f1e75ccf02fc82f97d46c18ff1b'
             'e7f0c46fe6398dfd0fa96cf0f67f9e0f429e147750bd84fbbb6a5058bce0c37d'
             'ac28aeffaa7931d2bf1945778b088d6764e566fc04aa307d1bc3d2fb95f558cd')
 
