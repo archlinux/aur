@@ -1,0 +1,22 @@
+pkgbase = dilidili-git
+	pkgdesc = A bilibili BV downloader.bilibli + download = dilidili
+	pkgver = 1.0.6.r2.g00ae6fb
+	pkgrel = 1
+	url = https://github.com/Darcrandex/dilidili
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = git
+	makedepends = gendesk
+	makedepends = curl
+	depends = electron30
+	depends = nodejs
+	provides = dilidili=1.0.6
+	conflicts = dilidili
+	source = dilidili.git::git+https://github.com/Darcrandex/dilidili.git
+	source = dilidili.sh
+	sha256sums = SKIP
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+
+pkgname = dilidili-git
