@@ -1,16 +1,16 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DegNorm
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='DegNorm: degradation normalization for RNA-seq data'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgdesc="degradation normalization for RNA-seq data"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-3.0-or-later')
 depends=(
-  r
+  blas
   r-data.table
   r-doparallel
   r-foreach
@@ -23,10 +23,13 @@ depends=(
   r-plotly
   r-plyr
   r-rcpp
-  r-rcpparmadillo
   r-rsamtools
   r-s4vectors
+  r-txdbmaker
   r-viridis
+)
+makedepends=(
+  r-rcpparmadillo
 )
 optdepends=(
   r-formatr
@@ -34,14 +37,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dfde2d06f0dfd30f748f20a400390aa7dfd07407b90cc68a082445f21d6b57b4')
+md5sums=('ddec837f11060052bab42f70ca20d9ec')
+b2sums=('7c0949f8ab49e35495a2738ab0538db7e8c03f63faf8d39a27e4a68ca5c891901c3e5b8ec3720c8a4b3ef847a7f7ba8a01a543b52583905d7db997eb471e31cf')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
