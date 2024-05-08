@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.89
+pkgver=20.04.90
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -53,17 +53,16 @@ checkdepends=(
   'python-pytest'
 )
 install="$pkgname.install"
-_commit=ddc9b74d0499cdc6aecefdd0dd6ff20f0c49bfc6  # tags/20.04.89^0
+_commit=3bb15049bf78a25da77ede27681317da167acb60  # tags/20.04.90^0
 source=(
   "git+https://github.com/pop-os/system76-driver.git#commit=${_commit}"
   'cli.patch'
   'wayland.patch'
   'actions.patch')
-sha256sums=('543ed6c612aaa86cc70e3cfd040d3434dcb0793ba449dae421fa0965caeea6c5'
+sha256sums=('81df865a8a0adedc7d99d4360a1ee3f88fbc6384bfa7ce05a8941f70f77f9778'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
             '2ffbd813744c0b99416947a2755767767af434758aa20dcfafefb49fb367d5d3'
             '3ade740c1681f8f33ef78e1e6c087e4002d14c888d7a5bf6bfbeb2aa70111119')
-#validpgpkeys=('D3FB3AF9711C1CD12639C9F587F211AF2BE4C2FE') # Jeremy Soller (https://soller.dev) <jackpot51@gmail.com>
 
 pkgver() {
   cd "$pkgname"
@@ -113,12 +112,6 @@ package() {
   # Note: system76-driver* service files shortened to system76*
   install -Dm644 "debian/$pkgname.service" \
     "$pkgdir/usr/lib/systemd/system/system76.service"
-
-  # May only be needed with kernel 5.17.15
-  # https://github.com/pop-os/linux/pull/156
-  # https://github.com/pop-os/system76-driver/pull/242
-#  install -Dm644 "lib/systemd/system-sleep/${pkgname}_bluetooth-suspend" -t \
-#   "$pkgdir/usr/lib/systemd/system-sleep/"
 
   # Install scripts and configuration
   install -m755 system76-{nm-restart,thunderbolt-reload} "$pkgdir/usr/lib/$pkgname/"
