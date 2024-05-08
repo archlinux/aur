@@ -4,23 +4,22 @@ pkgname=rju-git
 _pkgname=rju
 _commit=8d86d170
 pkgver=r220.8d86d170
-pkgrel=1
+pkgrel=2
 pkgdesc='JackAudioToolkit'
 arch=( 'x86_64' )
 url='https://rohandrape.net/?t=rju'
 license=( 'gpl' )
 depends=( 'jack' 'asciidoc' 'libsamplerate' 'liblo' 'libsndfile' )
+makedepends=( 'git' )
 conflicts=( 'rju' )
 source=( "git+https://gitlab.com/rd--/rju#commit=${_commit}"
          vstsdkpath.patch
          xrealloc.patch
-         jack.plumbing
        )
   
 sha256sums=( 'SKIP'
              '11dfd9a08f916f3f03904b59ae3c49df4686a1ba86baa7b27773e050ed62380b'
              'fe261c0185256ff4a698f0a6e25a2789d197972863b3f17158af44a4452119f0'
-             '6974f25a6d3ad988564fe307f92e3a70d919dc20b06b14c2d8e4299fdbfd75ba'
            )
 
 prepare() {
