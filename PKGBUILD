@@ -1,7 +1,7 @@
 # Maintainer: dhruvasambrani <dhruvasambrani19 at gmail>
 
 pkgname=quarto-cli-bin-pre-release
-pkgver="1.5.32"
+pkgver="1.5.33"
 pkgrel=1
 pkgdesc="An open-source scientific and technical publishing system built on Pandoc  (pre-release binary from official repo)"
 arch=('x86_64')
@@ -24,5 +24,5 @@ package() {
     ln -s "/opt/quarto/bin/tools/${CARCH}/pandoc" "${pkgdir}/opt/quarto/bin/tools/pandoc" 
 }
 
-sha256sums=('c80440dd0dda18f1ed2715519d00b42ac30b323b700139a259a6d25d6e541449')
+sha256sums=('ebd071e97b1bac9157b2f082ef667503d5449b02ab6a5c86e16214dba88c313b')
 
