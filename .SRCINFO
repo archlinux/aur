@@ -1,0 +1,18 @@
+pkgbase = xdg-terminal-exec-mkhl
+	pkgdesc = xdg-terminal-exec rewritten in rust
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://codeberg.org/mkhl/xdg-terminal-exec/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = cargo
+	provides = xdg-terminal-exec
+	conflicts = xdg-terminal-exec
+	conflicts = xdg-terminal-exec-git
+	source = xdg-terminal-exec-mkhl-0.2.0.tar.gz::https://codeberg.org/mkhl/xdg-terminal-exec/archive/v0.2.0.tar.gz
+	sha512sums = 928dd19a248eb1a7ce09effbccc472558854bc41e0c9a8040bf818c3c7129d4e360d8e4dc630bee294edf404b029cd1178a23847983aedb7751d9e36d6caf985
+
+pkgname = xdg-terminal-exec-mkhl
