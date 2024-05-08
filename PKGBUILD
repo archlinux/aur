@@ -30,7 +30,7 @@ prepare() {
 }
 
 build() {
-	CFLAGS+=' -Wno-error=incompatible-pointer-types'
+	export CFLAGS+=' -Wno-error=incompatible-pointer-types'
 	cmake -S "$_srcdir" -B 'build' \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DCMAKE_BUILD_TYPE=None \
