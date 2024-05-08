@@ -1,6 +1,6 @@
 pkgname=dnsch
-pkgver=1.6
-pkgdesc="A simple package that helps you to set your Arch linux system to several DNSs"
+pkgver=1.7
+pkgdesc="A simple package that helps you to set your linux system DNS servers to several DNS servers"
 url="https://github.com/mohammadrostamiorg/dnsChanger"
 arch=('any')
 license=('MIT')
