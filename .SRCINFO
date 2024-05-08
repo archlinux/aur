@@ -1,7 +1,7 @@
 pkgbase = swiftly-bin
 	pkgdesc = A Swift toolchain installer and manager, written in Swift.
-	pkgver = 0.2.0
-	pkgrel = 5
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://swift-server.github.io/swiftly/
 	install = swiftly-bin.install
 	arch = x86_64
@@ -11,12 +11,13 @@ pkgbase = swiftly-bin
 	depends = libxml2
 	depends = ncurses
 	optdepends = python39: required for REPL
+	optdepends = gnupg: required for toolchain verification
 	provides = swift-language
 	conflicts = swift-language
 	options = !strip
-	source_x86_64 = https://github.com/swift-server/swiftly/releases/download/0.2.0/swiftly-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = e0e58f6cbd4ad60c4cd51eeed88c3e908b3e2951bf55bcd3799fdd66d0fddbf4
-	source_aarch64 = https://github.com/swift-server/swiftly/releases/download/0.2.0/swiftly-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = 446053021cc3c36ba78c6742d2a885650d6de59258382d229a167d070b827f69
+	source_x86_64 = https://github.com/swift-server/swiftly/releases/download/0.3.0/swiftly-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 1820d3096092f7cd9b907722746bd340ede9184fba6d34e9e244675c704694be
+	source_aarch64 = https://github.com/swift-server/swiftly/releases/download/0.3.0/swiftly-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = b0fc7373e4aefc2548fb2af35189cd869a7077503eb5a330485326481288fd3c
 
 pkgname = swiftly-bin
