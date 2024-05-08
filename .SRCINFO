@@ -1,6 +1,6 @@
 pkgbase = wails
 	pkgdesc = Create desktop apps using Go and Web Technologies
-	pkgver = 2.8.1
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://github.com/wailsapp/wails
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = wails
 	depends = glibc
 	depends = npm
 	optdepends = docker
-	source = https://github.com/wailsapp/wails/archive/v2.8.1/wails-2.8.1.tar.gz
-	sha512sums = 3d06b0ceaefd5146f3fd655bda871be4098a0cceb85d45278e88d4902ff1a68d8dc7892679db37139844328b800e9c82beda2dc827dd68e44e50fb199683f6c4
-	b2sums = 5f7da4ea70bcfd974a212519f701f3f7c2b75fa59b125ca4ca347e14d13f8f558e0d3836a2cc0adb20da1f0a9adb86cd47e247b53f8f62c23dcf1f3db3a9e6be
+	source = https://github.com/wailsapp/wails/archive/v2.8.2/wails-2.8.2.tar.gz
+	sha512sums = 6dae85f5a8cfbd60483fccd2e54e3f131f11556b8405f364ebde39a3d686f8c154e748f5675cdbb86df499e40a120e5e4243af9f3a90c463acd3ed310c71cbdd
+	b2sums = 2263b91338b079578ccba8cffe878444ac43d42ce2d7cdcf7bbd426215f032ce4036e1a133eadc9772cfd1aefcea663618823f0be73bcc28eda42bd87d36922c
 
 pkgname = wails
