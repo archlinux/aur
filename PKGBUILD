@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
 pkgver=4.1.1
-pkgrel=1
-pkgdesc="A fully integrated 3D graphics creation suite"
+pkgrel=2
+pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
 license=(
@@ -91,19 +91,14 @@ package() {
 	install -Dm644 copyright.txt "${pkgdir}/usr/share/licenses/$pkgname/copyright.txt"
 	install -Dm644 blender.desktop "${pkgdir}/usr/share/applications/blender.desktop"
 	
-	rsync -a -r "${pkgver:0:3}" "${pkgdir}/usr/lib/${pkgname}"
-
-	cd "$srcdir/blender-$pkgver-linux-x64/lib"
-	rsync -a -r materialx mesa usd "${pkgdir}/usr/lib/$pkgname/lib/"
+	rsync -a -r "${pkgver:0:3}" lib "${pkgdir}/usr/lib/${pkgname}"
+	rsync -a -r license/* "${pkgdir}/usr/share/licenses/${pkgname}/"
+	cd "${pkgdir}/usr/lib/${pkgname}/lib"
 	for file in *.so*;
 	do
-		install -Dm755 $file "${pkgdir}/usr/lib/$pkgname/lib/"
+		chmod 755 "$file"
 	done
-	cd "$srcdir/blender-$pkgver-linux-x64/license"
-	for file in *;
-	do
-		install -Dm644 $file "${pkgdir}/usr/share/licenses/$pkgname/"
-	done
+	cd "$srcdir/blender-$pkgver-linux-x64"
 
 	mkdir -p "${pkgdir}/usr/bin"
 
@@ -122,6 +117,31 @@ export LD_LIBRARY_PATH
 exec "\$BF_DIST_BIN/\$BF_PROGRAM" "\$@"
 EOF
 
+	cat >> "${pkgdir}/usr/bin/blender-softwaregl" <<-EOF
+#!/bin/sh
+BF_DIST_BIN="/usr/lib/blender-bin"
+BF_PROGRAM="blender" # BF_PROGRAM=\$(basename "\$0")-bin
+
+LD_LIBRARY_PATH=\${BF_DIST_BIN}/lib/mesa:\${LD_LIBRARY_PATH}
+
+if [ -n "\$LD_LIBRARYN32_PATH" ]; then
+    LD_LIBRARYN32_PATH=\${BF_DIST_BIN}/lib/mesa:\${LD_LIBRARYN32_PATH}
+fi
+if [ -n "\$LD_LIBRARYN64_PATH" ]; then
+    LD_LIBRARYN64_PATH=\${BF_DIST_BIN}/lib/mesa:\${LD_LIBRARYN64_PATH}
+fi
+if [ -n "\$LD_LIBRARY_PATH_64" ]; then
+    LD_LIBRARY_PATH_64=\${BF_DIST_BIN}/lib/mesa:\${LD_LIBRARY_PATH_64}
+fi
+
+# Workaround for half-transparent windows when compiz is enabled
+XLIB_SKIP_ARGB_VISUALS=1
+
+export LD_LIBRARY_PATH LD_LIBRARYN32_PATH LD_LIBRARYN64_PATH LD_LIBRARY_PATH_64 LD_PRELOAD XLIB_SKIP_ARGB_VISUALS
+
+exec "\$BF_DIST_BIN/\$BF_PROGRAM" "\$@"
+EOF
+
 	chmod 755 "${pkgdir}/usr/bin/blender"
-	chown -R root:root "${pkgdir}/usr"
+	chmod 755 "${pkgdir}/usr/bin/blender-softwaregl"
 }
