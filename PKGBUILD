@@ -1,26 +1,37 @@
 # Maintainer: Enzo Einhorn <enzo.einh@gmail.com>
-
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-extensions-cli
-_pkgname=gnome_extensions_cli
-commithash=5f3d0ed203f3d1df491e55d190b59298587f5198
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
-pkgdesc="Install, update and manage your Gnome Shell extensions from your terminal !"
-arch=("any")
-url="https://github.com/essembeh/$pkgname"
-license=("Apache")
-makedepends=(python-installer python-poetry)
-depends=(python python-colorama python-pydantic python-requests python-packaging)
-optdepends=("dbus: recommended, handle extensions with DBus")
-source=("https://github.com/essembeh/$pkgname/archive/$commithash.zip")
-sha256sums=("a71ecdd1e47b10eaef7097fbf95e3aa58fe79f6595db433a4b3d8e92ff0a068c")
+pkgdesc="Command line tool to manage your GNOME Shell extensions"
+arch=('any')
+url="https://github.com/essembeh/gnome-extensions-cli"
+license=('Apache-2.0')
+depends=(
+  'python-colorama'
+  'python-gobject'
+  'python-packaging'
+  'python-pydantic'
+  'python-requests'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-poetry-core'
+  'python-wheel'
+)
+optdepends=(
+  'dbus-python: communicate with GNOME Shell directly'
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('0695ce3e88713a8c96fe8399ed069bd39b5264b97d92ae29fdaed4cd652e29d2')
 
 build() {
-    cd $pkgname-$commithash
-    poetry build
+  cd "$pkgname-$pkgver"
+  GIT_DIR='.' python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$pkgname-$commithash/dist"
-    python -m installer --destdir="$pkgdir" *.whl
+  cd "$pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
