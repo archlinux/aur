@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tess-bin
 _pkgname=Tess
-pkgver=0.7_alpha.8
-pkgrel=2
+pkgver=0.7_alpha.10
+pkgrel=1
 pkgdesc="A hackable, simple, rapid and beautiful terminal for the new era of technology."
 arch=(
     'i686'
@@ -26,8 +26,8 @@ source=(
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/SquitchYT/Tess/${pkgver//_/-}/src-tauri/icons/icon.png"
 )
 sha256sums=('1f08c8a32224226bd1223669faac8f72619cee0375f0449130f8f382e9d64079')
-sha256sums_i686=('036ca159ba51cb32068f2c8d6222b7ac16d55a8f106e3237b96a202b296166a6')
-sha256sums_x86_64=('259451db8ad5e804001872f168016ab397abe3948e0c947b881b51e1d009b789')
+sha256sums_i686=('525ea577470500cd960bec7a5aac0ec07131a7306c403b2ebc6740509039eeb6')
+sha256sums_x86_64=('5ca080bd3caceba42d3a7580f96160bdb1d337eb0a6c282a2e3ea1535bcc2b02')
 build() {
     gendesk -q -f -n --categories="System;Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
 }

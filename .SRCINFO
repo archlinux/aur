@@ -1,7 +1,7 @@
 pkgbase = tess-bin
 	pkgdesc = A hackable, simple, rapid and beautiful terminal for the new era of technology.
-	pkgver = 0.7_alpha.8
-	pkgrel = 2
+	pkgver = 0.7_alpha.10
+	pkgrel = 1
 	url = https://tessapp.dev/discord
 	arch = i686
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = tess-bin
 	makedepends = gendesk
 	depends = webkit2gtk
 	depends = gtk3
-	provides = tess=0.7_alpha.8
+	provides = tess=0.7_alpha.10
 	conflicts = tess
-	source = tess.png::https://raw.githubusercontent.com/SquitchYT/Tess/0.7-alpha.8/src-tauri/icons/icon.png
+	source = tess.png::https://raw.githubusercontent.com/SquitchYT/Tess/0.7-alpha.10/src-tauri/icons/icon.png
 	sha256sums = 1f08c8a32224226bd1223669faac8f72619cee0375f0449130f8f382e9d64079
-	source_i686 = tess-0.7_alpha.8-i686::https://github.com/SquitchYT/Tess/releases/download/0.7-alpha.8/tess-i686-unknown-linux-gnu
-	sha256sums_i686 = 036ca159ba51cb32068f2c8d6222b7ac16d55a8f106e3237b96a202b296166a6
-	source_x86_64 = tess-0.7_alpha.8-x86_64::https://github.com/SquitchYT/Tess/releases/download/0.7-alpha.8/tess-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 259451db8ad5e804001872f168016ab397abe3948e0c947b881b51e1d009b789
+	source_i686 = tess-0.7_alpha.10-i686::https://github.com/SquitchYT/Tess/releases/download/0.7-alpha.10/tess-i686-unknown-linux-gnu
+	sha256sums_i686 = 525ea577470500cd960bec7a5aac0ec07131a7306c403b2ebc6740509039eeb6
+	source_x86_64 = tess-0.7_alpha.10-x86_64::https://github.com/SquitchYT/Tess/releases/download/0.7-alpha.10/tess-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 5ca080bd3caceba42d3a7580f96160bdb1d337eb0a6c282a2e3ea1535bcc2b02
 
 pkgname = tess-bin
