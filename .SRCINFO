@@ -1,26 +1,21 @@
 pkgbase = apple-music-electron-git
-	pkgdesc = An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. NOTE: This package has been archived by the development team for the newer native Cider Project.
-	pkgver = 3.0.0
+	pkgdesc = A desktop app in Pre-Alpha for Windows, macOS, and Linux, allowing customization with themes and plugins for a personalized music experience.
+	pkgver = 1.1.1.r0.gc0487bf
 	pkgrel = 1
-	url = https://github.com/CiderApp/Apple-Music-Electron.git
-	arch = armv7h
-	arch = i686
-	arch = x86_64
+	url = https://github.com/Zolvy/Apple-Music-Electron
+	arch = any
 	license = MIT
-	makedepends = yarn
+	makedepends = npm>=6.13.4
+	makedepends = yarn>=1.21.1
 	makedepends = git
-	makedepends = npm
-	makedepends = nodejs-lts-gallium
-	depends = gtk3
-	depends = libxss
-	depends = nss
-	optdepends = libnotify: Playback notifications
-	optdepends = otf-san-francisco: Use of SF Font for certain themes
-	provides = apple-music-electron
+	makedepends = nvm
+	makedepends = gendesk
+	depends = electron30
+	provides = apple-music-electron=1.1.1
 	conflicts = apple-music-electron
-	source = git+https://github.com/CiderApp/Apple-Music-Electron.git
-	source = Apple-Music-Electron.desktop
+	source = apple-music-electron.git::git+https://github.com/Zolvy/Apple-Music-Electron.git
+	source = apple-music-electron.sh
 	sha256sums = SKIP
-	sha256sums = 88ad7411fc3bbebc0c117170e82e2d2033ae2e736f447e10849c5e111caa3135
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
 
 pkgname = apple-music-electron-git
