@@ -2,12 +2,12 @@
 
 pkgbase=strain-git
 pkgname=strain-git
-pkgver=0.0.1.r1.g9b43a3f
+pkgver=0.0.4.r0.g56add02
 pkgrel=1
 pkgdesc="A CPU stressing tool written in Rust"
 arch=('x86_64')
 url="https://github.com/JacoMalan1/strain"
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=(gcc-libs gmp lib32-gmp mpfr libmpc)
 makedepends=('cargo' 'git' 'gcc')
 provides=('strain')
