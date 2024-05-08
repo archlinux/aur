@@ -1,5 +1,5 @@
-# Maintainer: dreieck
-# Contributor:: Vadim Yanitskiy
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: Vadim Yanitskiy
 
 _pkgname=libosmocore
 _pkgvariant=nosystemd
@@ -9,8 +9,8 @@ pkgname=(
   "${pkgbase}"
   "${pkgbase}-doc"
 )
-pkgver=1.9.0+191.r4867.20240323.50e38cf36
-pkgrel=2
+pkgver=1.9.0+196.r4872.20240417.99750d5ca
+pkgrel=3
 pkgdesc="Osmocom core library (functions relating to mobile communication standards). Compiled without systemd logging dependency."
 arch=(
   'i686'
@@ -53,6 +53,8 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   autoreconf -i
+
+  git log > "${srcdir}/git.log"
 }
 
 build() {
@@ -91,7 +93,7 @@ _package_main() {
     'talloc'
   )
   optdepends=(
-    "${_pkgname}-doc=${pkgver}:  Documentation for this software."
+    "${_pkgname}-doc=${pkgver}: Documentation for this software."
   )
   provides=(
     "${_pkgname}=${pkgver}"
@@ -110,6 +112,9 @@ _package_main() {
   make DESTDIR="${pkgdir}" install
   msg2 "Removing documentation ..."
   rm -R "${pkgdir}/usr/share/doc"
+
+  msg2 "Installing license ..."
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  COPYING
 }
 
 _package_docs() {
@@ -117,7 +122,7 @@ _package_docs() {
   arch=('any')
   depends=()
   optdepends=(
-    "${_pkgname}=${pkgver}:  The software this documentation is for."
+    "${_pkgname}=${pkgver}: The software this documentation is for."
   )
   provides=(
     "${_pkgname}-doc=${pkgver}"
@@ -137,6 +142,9 @@ _package_docs() {
   msg2 "Moving documentation in place and removing everything else ..."
   mv "${pkgdir}/staging/usr/share/doc"/* "${pkgdir}/usr/share/doc"/
   rm -R "${pkgdir}/staging"
+
+  msg2 "Installing git repository's information files ..."
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/libosmocore" "README.md" "TODO-RELEASE" "${srcdir}/git.log"
 }
 
 eval "package_${pkgname}() { _package_main \"\$@\"; }"
