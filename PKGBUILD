@@ -1,7 +1,7 @@
 # Maintainer: Denshi <alex@denshi.org>
 
 pkgname=synthv-studio
-pkgver=1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Synthesizer V studio by Dreamtonics"
 arch=("x86_64")
@@ -10,11 +10,10 @@ license=(custom)
 depends=()
 provides=("synthv-studio")
 conflicts=("synthv-studio")
-source=("https://resource.dreamtonics.com/download/Synthesizer%20V%20Studio%20Basic/latest/svstudio-basic-linux64-latest.zip"
+source=("https://resource.dreamtonics.com/download/English/Synthesizer%20V%20Studio%20Basic/$pkgver/svstudio-basic-linux64.zip"
 	"synthv-studio.sh")
 sha256sums=("SKIP"
 	"SKIP")
-	   
 
 build() {
   chmod +x "${srcdir}/Synthesizer V Studio Basic/synthv-studio"
