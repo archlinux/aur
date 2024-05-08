@@ -1,7 +1,7 @@
 # Maintainer: James Appleton <james.appleton01@gmail.com>
 pkgname="flaq"
 pkgdesc="A simple CLI tool for modifying and querying metadata tags for \`.flac\` files."
-pkgrel=1
+pkgrel=2
 pkgver="0.2.0"
 
 makedepends=("git" "cargo" "jq")
@@ -23,28 +23,31 @@ package() {
 	install -Dm755 "./${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	# install completion scripts
-    cd ../scripts
+	cd ../scripts
 
-    ls $pkgdir 
-    ls "./${pkgname}.bash"
+	ls $pkgdir
+	ls "./${pkgname}.bash"
+	ls .
 
-    # bash
-    BASH_PATH="${pkgdir}/usr/share/bash-completion/completions"
-    if [[ -e BASH_PATH ]] ; then
-        install "./${pkgname}.bash" "${BASH_PATH}/${pkgname}"
-        echo "Installed bash autocompletions"
-    fi
+	# bash
+	BASH_PATH="${pkgdir}/usr/share/bash-completion/completions"
+	if [[ -e BASH_PATH ]]; then
+		install "./${pkgname}.bash" "${BASH_PATH}/${pkgname}"
+		echo "Installed bash autocompletions"
+	fi
 
-    
-    # fish TODO
-    # if [[ -r /usr/share/bash-completion/bash_completion ]]; then
+	# fish
+	# ZSH_PATH="${pkgdir}/usr/local/share/fish"
+
+	# fish TODO
+	# if [[ -r /usr/share/bash-completion/bash_completion ]]; then
 	#     install -Dm755 "./${pkgname}.bash" "${pkgdir}/usr/share/bash/completions/${pkgname}"
-    # fi
+	# fi
 
-    # elv TODO
-    # if [[ -r /usr/share/bash-completion/bash_completion ]]; then
+	# elv TODO
+	# if [[ -r /usr/share/bash-completion/bash_completion ]]; then
 	#     install -Dm755 "./${pkgname}.bash" "${pkgdir}/usr/share/bash/completions/${pkgname}"
-    # fi
+	# fi
 }
 
 pkgver() {
