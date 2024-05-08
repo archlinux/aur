@@ -1,7 +1,7 @@
 # Maintainer: James Appleton <james.appleton01@gmail.com>
 pkgname="flaq"
 pkgdesc="A simple CLI tool for modifying and querying metadata tags for \`.flac\` files."
-pkgrel=3
+pkgrel=4
 pkgver="0.2.0"
 
 makedepends=("git" "cargo" "jq")
@@ -40,6 +40,9 @@ package() {
 	install -Dm644 "target/scripts/$pkgname.bash" "${pkgdir}/usr/share/bash-completion/completions/$pkgname.bash"
 	install -Dm644 "target/scripts/$pkgname.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/$pkgname.fish"
 	install -Dm644 "target/scripts/_$pkgname" "${pkgdir}/usr/share/zsh/site-functions/_$pkgname"
+
+	install -d "$pkgdir/usr/share/"
+	cp -r locale "$pkgdir/usr/share/"
 }
 
 # pkgver() {
