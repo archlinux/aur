@@ -1,7 +1,7 @@
 # Maintainer: Oliver Papst <opapst at ikp dot tu-darmstadt dot de>
 _pkgname=interspec
 pkgname="${_pkgname}-bin"
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="spectral radiation analysis software"
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://sandialabs.github.io/InterSpec/"
 license=('LGPL')
 options=(!emptydirs)
 source=(
-    "https://github.com/sandialabs/InterSpec/releases/download/v${pkgver}/InterSpec-linux-x64_v${pkgver}_0.zip"
+    "https://github.com/sandialabs/InterSpec/releases/download/v${pkgver}/InterSpec-linux-x64_v${pkgver}.zip"
     "InterSpec.desktop")
 sha256sums=(
-    '801d4d8272abcb3b93b009fbf3442dfec2a169bd512412c0e1d64968f94acc5a'
-    '3730c7e0599c7866e1eafb09efcc1b7e52ac8e85384836c80939da9fea3cd9b4')
+    '477e0fdf0047be185990620cee5f81785fb365069a08f6b306d5a6e8b677ea18'
+    'e74585565970d08fdd6945c3289e0cc27bf1ad73ee003146b4db7398fbd33eb7')
 
 package() {
     mkdir -p "${pkgdir}/opt/InterSpec"
