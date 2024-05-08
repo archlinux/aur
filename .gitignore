@@ -3,3 +3,4 @@
 !.gitignore
 !explicit-sync.patch
 !kwin.install
+!.SRCINFO
