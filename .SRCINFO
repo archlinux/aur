@@ -1,0 +1,16 @@
+pkgbase = flaq
+	pkgdesc = A simple CLI tool for modifying and querying metadata tags for `.flac` files.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jmsapt/flaq
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = jq
+	depends = glibc
+	depends = gcc-libs
+	source = flaq::git+https://github.com/jmsapt/flaq.git
+	md5sums = SKIP
+
+pkgname = flaq
