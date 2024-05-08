@@ -1,7 +1,7 @@
 # Maintainer: James Appleton <james.appleton01@gmail.com>
 pkgname="flaq"
 pkgdesc="A simple CLI tool for modifying and querying metadata tags for \`.flac\` files."
-pkgrel=3
+pkgrel=4
 pkgver="0.2.0"
 
 makedepends=("git" "cargo" "jq")
@@ -28,7 +28,7 @@ package() {
 	# bash
 	BASH_PATH="${pkgdir}/usr/share/bash-completion/completions"
 	if [[ -e BASH_PATH ]]; then
-		install -T "./${pkgname}.bash" "${BASH_PATH}/${pkgname}"
+		install -D "./${pkgname}.bash" "${BASH_PATH}/${pkgname}"
 		echo "Installed bash autocompletions"
 	fi
 
