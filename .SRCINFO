@@ -1,7 +1,7 @@
 pkgbase = libdft-git
 	pkgdesc = libdft: Practical Dynamic Data Flow Tracking
 	pkgver = r80.066c9d8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AngoraFuzzer/libdft64
 	arch = x86_64
 	license = BSD-3-Clause AND custom

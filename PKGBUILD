@@ -2,7 +2,7 @@
 
 pkgname=libdft-git
 pkgver=r80.066c9d8
-pkgrel=1
+pkgrel=2
 pkgdesc="libdft: Practical Dynamic Data Flow Tracking"
 arch=(x86_64)
 url="https://github.com/AngoraFuzzer/libdft64"
@@ -30,7 +30,7 @@ prepare() {
 pkgver() {
     cd "${srcdir}/${pkgname}"
     ( set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^V//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
