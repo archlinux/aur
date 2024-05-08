@@ -5,13 +5,13 @@
 pkgname=gtkmmorse
 pkgver=0.9.28
 #.r6.ge857be9
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI Morse code tutor (based on ALDO) - Koch & Classic training modes."
 arch=('i686' 'x86_64')
 url="http://gtkmmorse.nongnu.org/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('libao' 'gtkmm' 'gconfmm' 'hamradio-menus')
-makedepends=('autoconf' 'automake' 'pkg-config')
+makedepends=('autoconf' 'automake' 'pkg-config' 'git')
 source=("$pkgname::git://git.sv.gnu.org/$pkgname.git"
 	$pkgname.desktop)
 
