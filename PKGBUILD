@@ -1,7 +1,7 @@
 # Maintainer: James Appleton <james.appleton01@gmail.com>
 pkgname="flaq"
 pkgdesc="A simple CLI tool for modifying and querying metadata tags for \`.flac\` files."
-pkgrel=1
+pkgrel=2
 pkgver="0.2.0"
 
 makedepends=("git" "cargo" "jq")
@@ -23,8 +23,6 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
-
-	./target/scripts locale/
 }
 
 check() {
