@@ -1,20 +1,20 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rcpi
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
-pkgrel=3
-pkgdesc='Molecular Informatics Toolkit for Compound-Protein Interaction in Drug Discovery'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=1
+pkgdesc="Molecular Informatics Toolkit for Compound-Protein Interaction in Drug Discovery"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-biostrings
   r-doparallel
   r-foreach
   r-gosemsim
+  r-pwalign
   r-rcurl
   r-rjson
   r-rlang
@@ -25,14 +25,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5a085bf6ee3b958a53a807ae558c8004f29adde466437edd92bc7984b7e0cbf2')
+md5sums=('a96804d0873834e384d594a6a0b87845')
+b2sums=('c79601c8cb2b028a93d73f0808647631833145922eceab6be786b7e407ac46dc37d6013293a918c3b865220d6668a538e40214714e0f5719b4b2595595430e3e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
