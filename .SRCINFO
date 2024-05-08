@@ -1,0 +1,14 @@
+pkgbase = arwtojpg-git
+	pkgdesc = Fast extraction of embedded JPEGs from Sony ARW files
+	pkgver = 0.1.0.r0.g3036a34
+	pkgrel = 1
+	url = http://github.com/cdown/arwtojpg
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = arwtojpg
+	conflicts = arwtojpb
+	source = git+https://github.com/cdown/arwtojpg.git#branch=master
+	md5sums = SKIP
+
+pkgname = arwtojpg-git
