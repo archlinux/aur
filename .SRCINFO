@@ -1,11 +1,11 @@
 pkgbase = eclipse-titan
 	pkgdesc = A free and open source (FOSS) compiler both for TTCN-3 and for ASN.1
 	pkgver = 10.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://projects.eclipse.org/projects/tools.titan
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = EPL-2.0
 	makedepends = bison
 	makedepends = flex
 	makedepends = java-environment

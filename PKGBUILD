@@ -6,11 +6,11 @@
 pkgname=eclipse-titan
 _pkgname=titan.core
 pkgver=10.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free and open source (FOSS) compiler both for TTCN-3 and for ASN.1"
 arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
-license=('custom')
+license=('EPL-2.0')
 makedepends=(
     'bison'
     'flex'
@@ -69,5 +69,4 @@ package() {
         "$pkgdir/usr/share/doc/eclipse-titan/demo/Makefile"
 
     install -D $srcdir/eclipse-titan.profile $pkgdir/etc/profile.d/eclipse-titan.sh
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
