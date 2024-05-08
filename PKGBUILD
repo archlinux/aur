@@ -16,7 +16,7 @@ source=("git+https://git.sr.ht/~nytpu/${_name}")
 sha256sums=('SKIP')
 
 pkgname="${_name}-git"
-pkgver=2b6880b
+pkgver=610db22
 
 pkgver() {
     cd "${srcdir}/${_name}"

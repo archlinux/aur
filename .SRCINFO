@@ -1,6 +1,6 @@
 pkgbase = commons-downloader-git
 	pkgdesc = An “officially endorsed” bulk download script to download files from Wikimedia Commons.
-	pkgver = 2b6880b
+	pkgver = 610db22
 	pkgrel = 1
 	url = https://git.sr.ht/~nytpu/commons-downloader
 	arch = any
