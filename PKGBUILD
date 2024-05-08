@@ -1,35 +1,45 @@
 # Maintainer: James Appleton <james.appleton01@gmail.com>
 pkgname="flaq"
 pkgdesc="A simple CLI tool for modifying and querying metadata tags for \`.flac\` files."
-pkgrel=6
+pkgrel=2
 pkgver="0.2.0"
 
 makedepends=("git" "cargo" "jq")
 depends=("glibc" "gcc-libs")
 url="https://github.com/jmsapt/flaq"
-source=("${pkgname}::git+${url}.git")
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 arch=("any")
 license=("MIT")
 sha256sums=('SKIP')
 
+prepare() {
+	cd "$pkgname-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
-	cd "${pkgname}"
-	cargo build --release
+	cd "$pkgname-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	echo TODO
+	# export RUSTUP_TOOLCHAIN=stable
+	# cargo test --frozen --all-features
 }
 
 package() {
-	# install binary
-	cd "${pkgname}/target/release/"
-	install -Tm755 "./${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	cd "$pkgname-$pkgver"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 
 	# install completion scripts
-	cd ../scripts
-
-	# bash
-	BASH_PATH="${pkgdir}/usr/share/bash-completion/completions"
-	if [[ -d BASH_PATH ]]; then
-		install -T "./${pkgname}.bash" "${BASH_PATH}/${pkgname}"
+	if [[ -d "$pkgdir/usr/share/bash-completion/completions" ]]; then
 		echo "Installed bash autocompletions"
+		install -Dm0755 -T "$pkgdir/usr/share/bash-completion/completions/$pkgname" "target/scripts/$pkgname.bash"
 	else
 		echo "Did not install bash autocompletions"
 	fi
@@ -48,7 +58,7 @@ package() {
 	# fi
 }
 
-pkgver() {
-	cd "${pkgname}"
-	cargo metadata --format-version=1 --no-deps | jq ".packages[0].version"
-}
+# pkgver() {
+# 	cd "${pkgname}"
+# 	cargo metadata --format-version=1 --no-deps | jq ".packages[0].version"
+# }
