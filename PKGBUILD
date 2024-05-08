@@ -24,7 +24,7 @@ prepare() {
     chmod a+x ${_pkgname}
     ./${_pkgname} --appimage-extract >/dev/null
     sed -i "s+AppRun+${_installdir}/siyuan.AppImage+" "squashfs-root/siyuan.desktop"
-    sed -i "s+^Icon=.*+Icon=siyuan-appimage+" "squashfs-root/siyuan.desktop"
+    sed -i "s+^Icon=.*+Icon=${_installdir}/siyuan.AppImage+" "squashfs-root/siyuan.desktop"
 }
 
 package() {
