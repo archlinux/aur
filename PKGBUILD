@@ -5,7 +5,7 @@
 _pkgname="liquid-dsp"
 pkgname="${_pkgname}-git"
 pkgver=1.6.0+218.r7737.20240429.030b5b4c
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital signal processing library for software-defined radios"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://liquidsdr.org"
@@ -77,7 +77,7 @@ package() {
   cd "$srcdir/${_pkgname}"
   make DESTDIR="${pkgdir}" install
 
-  install -Dvm644 -t "${pkgdir}/usr/share/doc/gr-lora" "HISTORY" "TROUBLESHOOTING" "README.md" "${srcdir}/git.log"
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "HISTORY" "TROUBLESHOOTING" "README.md" "${srcdir}/git.log"
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-  ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/gr-lora/LICENSE"
+  ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
 }
