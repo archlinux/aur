@@ -37,7 +37,7 @@ prepare(){
   cd "$srcdir/$_pkgfqn"
 
   # https://github.com/python/cpython/issues/118777
-  sed '/PyObject *dict = type->tp_dict;/a\    if (dict == NULL) dict = PyType_GetDict(type);' -i sources/shiboken2/libshiboken/signature/signature_helper.cpp
+  sed '/PyObject \*dict = type->tp_dict;/a\    if (dict == NULL) dict = PyType_GetDict(type);' -i sources/shiboken2/libshiboken/signature/signature_helper.cpp
 
   # https://github.com/arch4edu/arch4edu/issues/268
   sed '/typing.TypeVar.__repr__ = _typevar__repr__/d' -i sources/pyside2/PySide2/support/generate_pyi.py
