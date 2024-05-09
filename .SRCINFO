@@ -1,6 +1,6 @@
 pkgbase = jarmemu
 	pkgdesc = Simple ARMv7 simulator written in Java, intended for educational purpose
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 4
 	url = https://dwightstudio.fr/jarmemu
 	arch = any
