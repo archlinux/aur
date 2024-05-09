@@ -16,6 +16,7 @@ makedepends=(
   'cargo'
   'git'
   'just'
+  'mold'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'cosmic-text-editor')
@@ -39,6 +40,11 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
+
+  # use mold instead of lld to speed up build
+  RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+
+  # use nice to build with lower priority
   just build-vendored
 }
 

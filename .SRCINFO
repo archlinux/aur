@@ -8,6 +8,7 @@ pkgbase = cosmic-edit-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = just
+	makedepends = mold
 	depends = cosmic-icons-git
 	depends = libxkbcommon
 	depends = wayland
