@@ -28,5 +28,6 @@ build() {
 package() {
     cd "${gitname}/"
     DESTDIR="${pkgdir}" ninja -C builddir install
+    sudo pacman -S gcc-libs gcc
 }
 
