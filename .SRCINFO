@@ -10,6 +10,7 @@ pkgbase = cosmic-panel-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = just
+	makedepends = mold
 	depends = libxkbcommon
 	depends = wayland
 	provides = cosmic-panel
