@@ -36,7 +36,7 @@ build() {
   cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  just build-vendored
+  nice just build-vendored
 }
 
 package() {
