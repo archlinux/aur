@@ -22,7 +22,7 @@ backup=(
 )
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
-  xmlto 
+  xmlto
   git
 )
 options=('!strip')
@@ -78,7 +78,7 @@ prepare() {
     echo "================================================================================"
     echo
     echo "Fetching ${REMOTE_PREFIX}${REMOTE} ${COMMIT}"
-    git fetch ${REMOTE_URL} ${COMMIT}
+    git fetch -t ${REMOTE_URL} ${COMMIT}
     git checkout -f FETCH_HEAD
   fi
 
@@ -161,7 +161,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm -f "$modulesdir"/{source,build}
@@ -190,7 +191,9 @@ _package-headers() {
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  if [[ -f "$builddir/tools/bpf/resolve_btfids" ]]; then
+    install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  fi
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
