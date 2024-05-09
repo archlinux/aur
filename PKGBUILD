@@ -9,7 +9,7 @@ pkgdesc="Universal virtual machine for running applications written in a variety
 arch=('x86_64'
 	'aarch64')
 url='https://www.graalvm.org/'
-license=('CustomRef-GFTC')
+license=('LicenseRef-GFTC')
 depends=('java-runtime-common'
 	'java-environment-common')
 makedepends=()

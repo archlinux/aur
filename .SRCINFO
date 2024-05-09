@@ -6,7 +6,7 @@ pkgbase = jdk21-graalvm-ee-bin
 	install = jdk21-graalvm-ee-bin.install
 	arch = x86_64
 	arch = aarch64
-	license = CustomRef-GFTC
+	license = LicenseRef-GFTC
 	depends = java-runtime-common
 	depends = java-environment-common
 	provides = java-runtime=21
