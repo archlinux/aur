@@ -1,9 +1,9 @@
 # Maintainer: Rasmus Moorats <xx+aur@nns.ee>
 
-_java=21
-_java_minor=+7.1
+_java=22
+_java_minor=+8.1
 pkgname="jdk${_java}-graalvm-ee-bin"
-pkgver=21.0.3
+pkgver=22.0.1
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${_java} version"
 arch=('x86_64'
@@ -19,8 +19,8 @@ options=('staticlibs')
 install="$pkgname.install"
 source=('graalvm-ee-rebuild-libpolyglot.hook')
 sha256sums=('7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca')
-sha256sums_x86_64=('1325ff2476c2faba7d0069b054242202fca61bc27cdaac2c7b19da5ae8a1251e')
-sha256sums_aarch64=('1ced168c9e95e4e33b62073934c7899f06ad6a1771554227d8b4f168e2e963c0')
+sha256sums_x86_64=('d583cdb01ca023a37eed45d9d184b68b7a8d7f50b58dde1369041f294c34f4a3')
+sha256sums_aarch64=('134166ea6141ee8dfda6eec95563a85d3f4174f5a2497071da13ef96bb83e65b')
 source_x86_64=("https://download.oracle.com/graalvm/${_java}/archive/graalvm-jdk-${pkgver}_linux-x64_bin.tar.gz")
 source_aarch64=("https://download.oracle.com/graalvm/${_java}/archive/graalvm-jdk-${pkgver}_linux-aarch64_bin.tar.gz")
 

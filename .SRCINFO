@@ -1,22 +1,22 @@
-pkgbase = jdk21-graalvm-ee-bin
-	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 21 version
-	pkgver = 21.0.3
+pkgbase = jdk22-graalvm-ee-bin
+	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 22 version
+	pkgver = 22.0.1
 	pkgrel = 1
 	url = https://www.graalvm.org/
-	install = jdk21-graalvm-ee-bin.install
+	install = jdk22-graalvm-ee-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = CustomRef-GFTC
 	depends = java-runtime-common
 	depends = java-environment-common
-	provides = java-runtime=21
-	provides = java-environment=21
+	provides = java-runtime=22
+	provides = java-environment=22
 	options = staticlibs
 	source = graalvm-ee-rebuild-libpolyglot.hook
 	sha256sums = 7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca
-	source_x86_64 = https://download.oracle.com/graalvm/21/archive/graalvm-jdk-21.0.3_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = 1325ff2476c2faba7d0069b054242202fca61bc27cdaac2c7b19da5ae8a1251e
-	source_aarch64 = https://download.oracle.com/graalvm/21/archive/graalvm-jdk-21.0.3_linux-aarch64_bin.tar.gz
-	sha256sums_aarch64 = 1ced168c9e95e4e33b62073934c7899f06ad6a1771554227d8b4f168e2e963c0
+	source_x86_64 = https://download.oracle.com/graalvm/22/archive/graalvm-jdk-22.0.1_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = d583cdb01ca023a37eed45d9d184b68b7a8d7f50b58dde1369041f294c34f4a3
+	source_aarch64 = https://download.oracle.com/graalvm/22/archive/graalvm-jdk-22.0.1_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = 134166ea6141ee8dfda6eec95563a85d3f4174f5a2497071da13ef96bb83e65b
 
-pkgname = jdk21-graalvm-ee-bin
+pkgname = jdk22-graalvm-ee-bin

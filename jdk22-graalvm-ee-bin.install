@@ -1,4 +1,4 @@
-THIS_JDK='java-21-graalvm-ee'
+THIS_JDK='java-22-graalvm-ee'
 
 fix_default() {
   if [ ! -x /usr/bin/java ]; then
