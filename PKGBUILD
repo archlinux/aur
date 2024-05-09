@@ -3,13 +3,18 @@
 _name='django-ranged-response'
 pkgname="python-$_name"
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Django ranged response'
 arch=('any')
 url="https://pypi.org/project/$_name"
 license=('MIT')
 depends=('python-django')
-makedepends=('python-setuptools')
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+)
 source=(
     "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
     'LICENSE'
@@ -19,8 +24,13 @@ sha256sums=(
     '5e47e2a8ca47cda5a311fea4e29186201e6f980fc20d24812596460d289a8275'
 )
 
+build() {
+    cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
 package() {
     cd "$srcdir/$_name-$pkgver"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    python './setup.py' install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }

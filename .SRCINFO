@@ -1,11 +1,14 @@
 pkgbase = python-django-ranged-response
 	pkgdesc = Django ranged response
 	pkgver = 0.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pypi.org/project/django-ranged-response
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-django
 	source = python-django-ranged-response-0.2.0.tar.gz::https://files.pythonhosted.org/packages/source/d/django-ranged-response/django-ranged-response-0.2.0.tar.gz
 	source = LICENSE
@@ -13,4 +16,3 @@ pkgbase = python-django-ranged-response
 	sha256sums = 5e47e2a8ca47cda5a311fea4e29186201e6f980fc20d24812596460d289a8275
 
 pkgname = python-django-ranged-response
-
