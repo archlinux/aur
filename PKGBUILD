@@ -5,7 +5,7 @@
 
 pkgname=seafile-server
 pkgver=11.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/haiwen/seafile-server'
@@ -25,6 +25,7 @@ makedepends=('vala' 'go' 'git')
 conflicts=('seafile')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-server.tar.gz"
+    'fix_build_with_gcc_14.1.diff'
     'fix_seafile-controller_paths.diff'
     'seafile-server@.service'
     'seafile-sysusers.conf'
@@ -32,6 +33,7 @@ source=(
 )
 sha256sums=(
     'ba08253d2e54ca236aeac71d28238ca8ffe42d6904a2f445870cade787c0d9ca'
+    '468415264179865358a983cbd7e64623c152b86b6aa706c0f5faf5c9dc8b95f8'
     'c4bd2b24fa2e5919b1ada61fff0dda7486460a8814764dc37db79178378d4930'
     'b09ab24829df0692e78b777802298b8cac23bdcdc31306e12ed3543833a7088e'
     '2faf52556d901ae18cfaa33b1cc55ee14abab4f78869eb6a2889ceeac4e3076a'
@@ -41,6 +43,7 @@ sha256sums=(
 prepare() {
     cd "$srcdir/$pkgname-$pkgver-server"
     sed -i 's|(DESTDIR)@prefix@|@prefix@|' './lib/libseafile.pc.in'
+    patch -p1 -i "$srcdir/fix_build_with_gcc_14.1.diff"
     patch -p1 -i "$srcdir/fix_seafile-controller_paths.diff"
 }
 
