@@ -1,44 +1,43 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=slack-export-viewer
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A Slack Export archive viewer"
-arch=('any')
-url="https://github.com/hfaran/slack-export-viewer"
-license=('MIT')
+arch=(any)
+url=https://github.com/hfaran/slack-export-viewer
+license=(MIT)
 depends=(
-    'python-click'
-    'python-emoji'
-    'python-flask'
-    'python-markdown2'
+    python-click
+    python-emoji
+    python-flask
+    python-markdown2
 )
 makedepends=(
-    'python-build'
-    'python-installer'
-    'python-setuptools'
-    'python-wheel'
+    python-build
+    python-installer
+    python-setuptools
+    python-wheel
 )
 optdepends=('python-frozen-flask: support static HTML output')
-checkdepends=('python-pytest')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hfaran/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('acc96850cc6d5534de6aa5882295ffac5ae973aa40bbf3daceb7c848500ff0adafe5b7e5994923e89b1b8350f53d2bcd55492639da3f2f7c55f515fa24a8dea3')
+checkdepends=(python-pytest)
+source=($pkgname-$pkgver.tar.gz::https://github.com/hfaran/$pkgname/archive/refs/tags/$pkgver.tar.gz)
+b2sums=('93cc844c111c5aa1559860d0dc3ea7675e195c07c1f9a6978c7edf03db9803f85a165db636d08f5aa20b51211531aa3249faf64941b01ef2239d4d4f6fe97aeb')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd $pkgname-$pkgver
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python -m installer --destdir="$srcdir/test" dist/*.whl
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    export PYTHONPATH="$srcdir"/test/usr/lib/python${python_version}/site-packages
-    python -m pytest tests/
+    cd $pkgname-$pkgver
+    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    python -m installer --destdir=../test_dir dist/*.whl
+    PYTHONPATH=../test_dir/$_site_packages pytest
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd $pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
  
