@@ -7,7 +7,7 @@ pkgdesc='SuperCard SD Patching Software'
 arch=(x86_64 i686)
 depends=('wine' 'winetricks')
 makedepends=('innoextract') # SuperCard used InnoSetup for this installer.
-source=(https://web.archive.org/web/20140720061837*/http://eng.supercard.sc/download/setupsdV271en.zip
+source=(https://web.archive.org/web/20140720061837/http://eng.supercard.sc/download/setupsdV271en.zip
         supercard-sd
         supercard-sd.desktop
         supercard-sd.png)
