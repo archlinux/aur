@@ -21,7 +21,6 @@ pkgbase = local-ai
 	makedepends = rocm-hip-sdk
 	makedepends = upx
 	depends = glibc
-	optdepends = ccache: for caching builds
 	provides = local-ai
 	conflicts = local-ai
 	options = !strip

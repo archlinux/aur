@@ -37,7 +37,6 @@ makedepends=(
   'rocm-hip-sdk'
   'upx'
 )
-optdepends=('ccache: for caching builds')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "${pkgbase}.conf"
   "${pkgbase}.tmpfiles"
