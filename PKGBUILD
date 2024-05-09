@@ -2,8 +2,8 @@
 
 pkgname=chk-upstream
 pkgver=1.1
-pkgrel=2
-pkgdesc='A tool to track upstream changes: retrieve a git repository version and compare it against a pacman package version against a git repository version'
+pkgrel=3
+pkgdesc='A tool to track upstream changes: retrieve a git repository version and compare it against a pacman package version'
 arch=('x86_64')
 url='https://github.com/mutoroglin/chk-upstream'
 license=('GPL-3.0-only')
