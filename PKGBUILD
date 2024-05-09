@@ -3,7 +3,7 @@
 
 pkgname=nodejs-lts-iron
 pkgver=20.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Evented I/O for V8 javascript (LTS release: Iron)"
 arch=(x86_64)
 url="https://nodejs.org/"
