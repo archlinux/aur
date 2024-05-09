@@ -2,8 +2,8 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=0.22.0
-pkgrel=3
+pkgver=0.22.1
+pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache')
@@ -36,7 +36,7 @@ source=(
 	"flutter-engine::git+https://github.com/flutter/engine.git"
 	'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
 	'flet-linux.patch')
-sha256sums=('40973cb2a3cbff37fb28339322bc3cd4114e8749301d2d247223fe26cf7d4021'
+sha256sums=('7223e719ac1915874b0d28cd0d2c4998b06adef0cb56b94b76121c5da8e1471d'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -48,9 +48,9 @@ _engine_version=3.19.6
 prepare() {
 	cd "${_srcdir}"
 	source '/opt/flutter-engine/pkgbuild-prepare.sh'
-	
+
 	patch -p1 -i "${srcdir}/flet-linux.patch"
-	
+
 	cd 'client'
 	flutter clean
 	flutter pub get
@@ -59,16 +59,16 @@ prepare() {
 build() {
 	cd "${_srcdir}"
 	source '/opt/flutter-engine/pkgbuild-build.sh'
-	
+
 	pushd 'client'
 		flutter build linux --release
 		#flutter build web --release
 	popd
-	
+
 	pushd 'server'
 		APPVEYOR_BUILD_VERSION=${pkgver} goreleaser build --clean --snapshot --single-target
 	popd
-	
+
 	for dir in 'sdk/python/packages/'{flet-core,flet,flet-runtime}; do
 		pushd "$dir"
 			python -m build --wheel --no-isolation
@@ -78,25 +78,25 @@ build() {
 
 package() {
 	cd "${_srcdir}"
-	
+
 	install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-	
+
 	for dir in 'sdk/python/packages/'{flet-core,flet,flet-runtime}; do
 		pushd "$dir"
 			python -m installer --destdir="$pkgdir" 'dist/'*.whl
 		popd
 	done
-	
+
 	local _client_installdir="opt/$pkgname"
 	install -dm0755 "${pkgdir}/${_client_installdir}"
 	cp -r "client/build/linux/x64/release/bundle/"* "$pkgdir/${_client_installdir}"
 	ln -s "/${_client_installdir}/flet" "$pkgdir/usr/bin/flet_view"
-	
+
 	#install -dm0755 "$pkgdir/usr/share/$pkgname"
 	#cp -r 'client/build/web' "$pkgdir/usr/share/$pkgname"
-	
+
 	install -Dm0755 "server/dist/fletd_"*'/fletd' -t "${pkgdir}/usr/bin"
-	
+
 	cd "$pkgdir/usr/lib/python"*
 	install -dm0755 'site-packages/flet/bin'
 	ln -s '/usr/bin/fletd' 'site-packages/flet/bin/fletd'
