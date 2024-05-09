@@ -8,7 +8,7 @@ pkgdesc='Lightweight and fast web browser'
 url='http://www.netsurf-browser.org/'
 license=('MIT' 'GPL2')
 
-depends=('curl' 'desktop-file-utils' 'duktape' 'gtk3' 'lcms' 'libmng' 'librsvg'
+depends=('curl' 'desktop-file-utils' 'duktape' 'gtk3' 'libmng' 'librsvg'
 	'libcss-git' 'libdom-git' 'libnsbmp-git' 'libnsgif-git' 'libnsutils-git' 'libutf8proc-git'
 )
 makedepends=('git' 'inetutils' 'netsurf-buildsystem-git' 'nsgenbind-git' 'perl-html-parser' 'setconf')
@@ -32,7 +32,7 @@ prepare() {
 
 build() {
 	make -C netsurf \
-		NETSURF_UA_FORMAT_STRING='"NetSurf/%d.%d (%s; Arch Linux)"' \
+		NETSURF_UA_FORMAT_STRING='"Mozilla/5.0 (%s; Arch Linux) NetSurf/%d.%d"' \
 		TARGET=gtk \
 		INCLUDEDIR=include \
 		LIBDIR=lib \

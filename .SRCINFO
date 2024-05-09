@@ -17,7 +17,6 @@ pkgbase = netsurf-git
 	depends = desktop-file-utils
 	depends = duktape
 	depends = gtk3
-	depends = lcms
 	depends = libmng
 	depends = librsvg
 	depends = libcss-git
