@@ -25,13 +25,11 @@ build() {
 
 # Package Install Function
 package() {
-	install -Dm755 -t /usr/bin ../target/debug/fetcher
+	install -Dm755 ../target/debug/fetcher /usr/bin/fetcher
 }
 
 
 #clean() {
 #	rm -r src target fetcher-rs.tar.gz pkg
 #}
-# sha256sums=('9559358cbfb570771e3da2768efdbb5aae9fdc4e590e3afce5a5e09a1e5a4b61')
-sha256sums=('3d29976f1fd376792589f38749936006770d94474d36d910cbf007d0c1f2096e')
-
+sha256sums=('5f9c9b5f7e3f30c9ead83fa1e6cca9a65f9d4795b9672dbe749c6752721bfd86')
