@@ -9,6 +9,7 @@ pkgbase = cosmic-comp-git
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
+	makedepends = mold
 	depends = fontconfig
 	depends = libseat.so
 	depends = libinput

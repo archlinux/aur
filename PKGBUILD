@@ -21,6 +21,7 @@ depends=(
 makedepends=(
   'cargo'
   'git'
+  'mold'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -44,7 +45,12 @@ build() {
   cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  make VENDOR='1' all
+
+  # use mold instead of lld to speed up build
+  RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+
+  # use nice to build with lower priority
+  nice make VENDOR='1' all
 }
 
 package() {
