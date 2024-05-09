@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-pkgver=3.14.2.sk.7.r0.gfe15211
+pkgver=3.14.2.sk.8.r0.g1b0bc50
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -51,7 +51,7 @@ makedepends=(
     vulkan-headers
     'wayland-protocols>=1.34'
 )
-_tag=3.14.2-sk-7
+_tag=3.14.2-sk-8
 # _branch="wayland-backend"
 source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
         "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
