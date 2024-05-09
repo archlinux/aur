@@ -4,7 +4,7 @@
 pkgname=python-ffmpeg-progress-yield
 _name=${pkgname#python-}
 pkgver=0.7.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Run an ffmpeg command with its progress yielded."
 arch=('any')
 url="https://github.com/slhck/ffmpeg-progress-yield"
@@ -17,14 +17,16 @@ sha512sums=('0ffae9db1567e749b03face8d3b039b521e1273bc22128fa710fd94fc06bec30442
 
 build() {
   cd ${_name}-${pkgver}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
+
 check() {
   cd ${_name}-${pkgver}
   pytest test/test.py
 }
+
 package() {
   cd ${_name}-${pkgver}
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
