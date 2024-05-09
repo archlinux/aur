@@ -21,7 +21,7 @@ options=(!strip)
 prepare() {
     cd "${_pkgname}"
     yarn
-    NODE_OPTIONS="--openssl-legacy-provider" NODE_NO_WARNINGS=1 yarn build
+    yarn build
 }
 
 pkgver() {
