@@ -29,6 +29,7 @@ makedepends=(
   'cargo'
   'git'
   'just'
+  'mold'
 )
 optdepends=(
   'cosmic-edit-git: COSMIC text editor'
@@ -62,7 +63,12 @@ build() {
   cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  just all
+
+  # use mold instead of lld to speed up build
+  RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+
+  # use nice to build with lower priority
+  nice just all
 }
 
 package() {

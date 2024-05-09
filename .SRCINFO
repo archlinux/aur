@@ -10,6 +10,7 @@ pkgbase = cosmic-session-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = just
+	makedepends = mold
 	depends = cosmic-applibrary-git
 	depends = cosmic-applets-git
 	depends = cosmic-bg-git
