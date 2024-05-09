@@ -16,6 +16,7 @@ makedepends=(
   'cargo'
   'git'
   'just'
+  'mold'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
