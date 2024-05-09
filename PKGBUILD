@@ -1,7 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: RadioactiveRadio <barraiser59@gmail.com>
 pkgname=blue-recorder-git
-pkgver=r178.6c34b6d
+_app_id=sa.sy.bluerecorder.desktop
+pkgver=r179.77d0c8a
 pkgrel=1
 pkgdesc="Simple Screen Recorder written in Rust based on Green Recorder"
 arch=('x86_64')
@@ -34,9 +35,7 @@ prepare() {
   cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
-
-  desktop-file-edit --set-icon="${pkgname%-git}" "data/${pkgname%-git}.desktop"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -45,17 +44,17 @@ build() {
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --all-features
+  cargo build --frozen --release --all-features
 }
 
 package() {
   cd "${pkgname%-git}"
   install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/opt/${pkgname%-git}/"
   install -Dm644 interfaces/main.ui -t "$pkgdir/opt/${pkgname%-git}/interfaces/"
-  install -Dm644 "data/${pkgname%-git}.desktop" -t \
-    "$pkgdir/usr/share/applications/"
+  install -Dm644 "data/${pkgname%-git}.desktop" \
+    "$pkgdir/usr/share/applications/${_app_id}.desktop"
   install -Dm644 "data/${pkgname%-git}.svg" -t \
-    "$pkgdir/usr/share/icons/scalable/apps/"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 "data/${pkgname%-git}.png" -t \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
   install -Dm644 "data/${pkgname%-git}@x96.png" \
