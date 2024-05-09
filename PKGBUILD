@@ -2,13 +2,13 @@
 
 _pkgname=twinkle
 pkgname=${_pkgname}-git
-pkgver=1.10.3.r415.15ece11
-pkgrel=2
+pkgver=1.10.3.r480.355813d
+pkgrel=1
 pkgdesc="A SIP-based VoIP client"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url=https://twinkle.dolezel.info
-license=('GPL')
-depends=('libzrtpcpp' 'alsa-lib' 'libsndfile' 'bcg729' 'hicolor-icon-theme' 'qt5-declarative')
+license=('GPL-2.0-only')
+depends=('libsndfile' 'bcg729' 'speex' 'libzrtpcpp' 'qt5-declarative' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'qt5-tools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -22,12 +22,12 @@ pkgver() {
 }
 
 build() {
-  cd $_pkgname
-  cmake $srcdir/$_pkgname -DCMAKE_INSTALL_PREFIX=/usr -DWITH_ZRTP=ON -DWITH_G729=ON
+  mkdir -p build && cd build
+  cmake ../$_pkgname -DCMAKE_INSTALL_PREFIX=/usr -DWITH_G729=ON -DWITH_SPEEX=ON -DWITH_ZRTP=ON
   make
 }
 
 package() {
-  cd $_pkgname
+  cd build
   make DESTDIR="$pkgdir/" install
 }
