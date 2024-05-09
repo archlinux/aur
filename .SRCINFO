@@ -1,7 +1,7 @@
 pkgbase = gmsh
-	pkgdesc = An automatic 3D finite element mesh generator with pre and post-processing facilities.
+	pkgdesc = An automatic 3D finite element mesh generator with pre and post-processing facilities
 	pkgver = 4.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gmsh.info
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -25,7 +25,7 @@ pkgbase = gmsh
 	source = https://gmsh.info/src/gmsh-4.13.1-source.tgz
 	source = gmsh.desktop
 	source = gmsh.completion
-	sha256sums = d164e78b5b0f0f6b739ebe61317cea02bdecda8f74fd057221098677ca4b28e4
+	sha256sums = 73c40af3014090a568560f0d2c9f5a1b449cc9e7d409250a3dc95d78b3b38a7e
 	sha256sums = 43a8ca33ac917ee7196fdae305ff2c8cb9ae1072569ee546c0ce8ff580c966ae
 	sha256sums = 11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef
 
@@ -47,4 +47,4 @@ pkgname = gmsh
 pkgname = gmsh-docs
 	pkgdesc = TXT, HMTL and PDF doc for Gmsh
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
