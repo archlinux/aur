@@ -1,13 +1,13 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir-git
-pkgver=0.0.1.r129.g5aa27bd
+pkgver=0.0.1.r163.g5862a10
 pkgrel=1
 pkgdesc="A sparsity and linearity-exploiting interior-point solver, now with readable internals"
 arch=('x86_64')
 url='https://github.com/SleipnirGroup/Sleipnir'
-depends=('eigen-git' 'fmt' 'python-numpy' 'python-scipy')
-makedepends=('cmake' 'pybind11' 'python-installer' 'python-py-build-cmake')
+depends=('eigen-git' 'python-numpy' 'python-scipy')
+makedepends=('cmake' 'pybind11' 'python-build' 'python-installer' 'python-py-build-cmake')
 checkdepends=('python-pytest')
 license=('BSD')
 options=('!strip' 'staticlibs')
@@ -27,7 +27,6 @@ prepare() {
 build() {
   cmake -B build -S "Sleipnir" \
     -DUSE_SYSTEM_EIGEN=ON \
-    -DUSE_SYSTEM_FMT=ON \
     -DUSE_SYSTEM_PYBIND=ON \
     -DCMAKE_INSTALL_PREFIX='/usr'
   cmake --build build
