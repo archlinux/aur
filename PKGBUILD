@@ -3,7 +3,7 @@
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=fizz
-pkgver=2024.05.02.00
+pkgver=2024.05.06.00
 pkgrel=1
 pkgdesc="C++14 implementation of the TLS-1.3 standard"
 arch=(x86_64)
@@ -36,7 +36,7 @@ source=(
   "add-missing-source-file.patch"
 )
 sha256sums=(
-  '2908ab098b6a8cb5cecdcdec54b3f1dd6d7169b939b980f0103b332c24a0740c'
+  '0ef68f05d73b32393953ef8c35b953bfd1260a91521b3f86475295c69590bf72'
   '4e25b9d22da13a82c85195d880592177a4ec0f2c54cfa771cdf3c92300f947d7'
 )
 
