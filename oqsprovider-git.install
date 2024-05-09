@@ -1,0 +1,44 @@
+post_install() {
+    echo -------------------------------------------------------------
+    echo '-> Optionally enable the provider in /etc/ssl/openssl.cnf:'
+    echo '[provider_sect]'
+    echo 'default = default_sect'
+    echo 'oqsprovider = oqsprovider_sect'
+    echo ''
+    echo '[default_sect]'
+    echo 'activate = 1'
+    echo ''
+    echo '[oqsprovider_sect]'
+    echo 'activate = 1'
+    echo ''
+    echo '-> Optionally limit the available sig algs for TLS'
+    echo '   Some servers may fail with too many sig algs.'
+    echo '   See: https://github.com/open-quantum-safe/oqs-provider/issues/399'
+    echo ''
+    echo '[openssl_init]'
+    echo '# ...'
+    echo 'ssl_conf = ssl_configuration'
+    echo ''
+    echo '[ssl_configuration]'
+    echo 'system_default = tls_system_default'
+    echo ''
+    echo '[tls_system_default]'
+    echo 'SignatureAlgorithms = ECDSA+SHA256:ECDSA+SHA384:ECDSA+SHA512:ed25519:ed448:rsa_pss_pss_sha256:rsa_pss_pss_sha384:rsa_pss_pss_sha512:rsa_pss_rsae_sha256:rsa_pss_rsae_sha384:rsa_pss_rsae_sha512:RSA+SHA256:RSA+SHA384:RSA+SHA512:ECDSA+SHA224:RSA+SHA224'
+    echo 'Groups = X25519:secp256r1:X448:secp521r1:secp384r1:ffdhe2048:ffdhe3072:ffdhe4096:ffdhe6144:ffdhe8192'
+    echo -------------------------------------------------------------
+}
+
+post_remove() {
+    echo -------------------------------------------------------------
+    echo '-> Remove oqsprovider from /etc/ssl/openssl.cnf:'
+    echo '[provider_sect]'
+    echo 'default = default_sect'
+    echo '# oqsprovider = oqsprovider_sect'
+    echo ''
+    echo '[default_sect]'
+    echo '# activate = 1'
+    echo ''
+    echo '# [oqsprovider_sect]'
+    echo '# activate = 1'
+    echo -------------------------------------------------------------
+}
