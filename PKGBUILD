@@ -9,7 +9,6 @@ depends=(
   'lib32-gcc-libs'
   'lib32-glibc'
   "rav1e=${pkgver}"
-  'lib32-libgit2'
 )
 makedepends=(
   'cargo-c'
@@ -17,7 +16,6 @@ makedepends=(
   'nasm'
   'rust'
   'lib32-rust-libs'
-  'lib32-libgit2'
 )
 provides=('librav1e.so')
 _tag=a8d05d0c43826a465b60dbadd0ab7f1327d75371
@@ -49,7 +47,6 @@ prepare() {
 build() {
   export CARGO_HOME="${srcdir}/fakehome/cargo"
 
-  export LDFLAGS+=' -lgit2'
   cargo build --target i686-unknown-linux-gnu \
     --release \
     --frozen \
@@ -76,8 +73,6 @@ check() {
 }
 
 package() {
-  depends+=('libgit2.so')
-
   export CARGO_HOME="${srcdir}/fakehome/cargo"
 
   cd rav1e
