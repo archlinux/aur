@@ -9,8 +9,7 @@ url="https://github.com/rirusha/${gitname}"
 license=('GPL3')
 depends=('glib2' 'gtk4' 'libgee' 'libadwaita' 'libsoup3' 'json-glib' 'sqlite3' 'libxml2' 'gstreamer' 'webkitgtk-6.0' 'gst-plugins-good' ) 
 optdepends=( )
-makedepends=('meson' 'ninja' 'cmake' 'blueprint-compiler' 'git' 'vala'  'appstream-glib' 'python-packaging')
-depends=('gcc=13.2.1' 'gcc-libs=13.2.1')
+makedepends=('meson' 'ninja' 'cmake' 'blueprint-compiler' 'git' 'vala' 'gcc' 'appstream-glib' 'python-packaging')
 provides=("$gitname")
 conflicts=("$gitname")
 source=("git+${url}.git")
@@ -18,13 +17,15 @@ md5sums=('SKIP')
 
 build() {
     cd "${gitname}/"
+    sudo pacman -Ud --noconfirm https://archive.archlinux.org/packages/g/gcc-libs/gcc-libs-13.2.1-6-x86_64.pkg.tar.zst
+    sudo pacman -Ud --noconfirm https://archive.archlinux.org/packages/g/gcc/gcc-13.2.1-6-x86_64.pkg.tar.zst
     git checkout tags/ver-"$pkgver"
-    meson . _build --prefix=/usr
-    ninja -C _build
+    meson . builddir --prefix=/usr
+    ninja -C builddir
 }
 
 package() {
     cd "${gitname}/"
-    DESTDIR="${pkgdir}" ninja -C _build install
+    DESTDIR="${pkgdir}" ninja -C builddir install
 }
 
