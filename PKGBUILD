@@ -5,11 +5,11 @@
 
 pkgname=ucommon
 pkgver=7.0.1
-pkgrel=1
-pkgdesc='GNU Common C++ is a class framework that was specifically designed for telephony applications.'
+pkgrel=2
+pkgdesc='A class framework that was specifically designed for telephony applications'
 arch=('i686' 'x86_64')
 url='https://www.gnu.org/software/commoncpp/'
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=('gcc-libs' 'openssl' 'bash')
 makedepends=('cmake')
 #source=("https://ftp.gnu.org/gnu/commoncpp/$pkgname-$pkgver.tar.gz"{,.sig})
