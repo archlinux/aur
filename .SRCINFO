@@ -1,6 +1,6 @@
 pkgbase = python-felupe
 	pkgdesc = Finite Element Analysis
-	pkgver = 8.5.0
+	pkgver = 8.5.1
 	pkgrel = 1
 	url = https://github.com/adtzlr/felupe
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-felupe
 	optdepends = python-meshio: for mesh-related I/O
 	optdepends = python-pyvista: for interactive visualizations
 	optdepends = python-tqdm: for showing progress bars during job evaluation
-	source = felupe-8.5.0.tar.gz::https://github.com/adtzlr/felupe/archive/v8.5.0.tar.gz
-	sha512sums = e4784341694db89e53df51a6d4b34610f116c33215adb3503169afa7a7bcbaae6b17de7ebfdf08c3010ec2ba1dc221c7124a2e6d8bc7f183cf504ae5f81cb98b
+	source = felupe-8.5.1.tar.gz::https://github.com/adtzlr/felupe/archive/v8.5.1.tar.gz
+	sha512sums = 06ee510d537db82397eafd6fc79fbc937262a5777b6353ba516fdb3d1a96d0311a420cfc75302581309f3c664cfd4e2351a7677955c69c2cbcb0153186069529
 
 pkgname = python-felupe
