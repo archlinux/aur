@@ -1,6 +1,6 @@
 pkgbase = oxdna-cuda-git
 	pkgdesc = DNA/RNA/etc simulator, from lorenzo-rovigatti/oxDNA, with CUDA support and analysis tools.
-	pkgver = v3.6.1.r10.g9af1214a
+	pkgver = v3.6.1.r18.gdbdc7265
 	pkgrel = 1
 	url = https://github.com/lorenzo-rovigatti/oxDNA
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = oxdna-cuda-git
 	makedepends = cmake
 	makedepends = gsl
 	makedepends = cuda
-	makedepends = gcc12
+	makedepends = gcc13
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer
@@ -23,6 +23,7 @@ pkgbase = oxdna-cuda-git
 	optdepends = python-matplotlib: for plotting
 	provides = oxdna
 	conflicts = oxdna
+	options = !lto
 	source = git+https://github.com/lorenzo-rovigatti/oxDNA.git
 	sha256sums = SKIP
 
