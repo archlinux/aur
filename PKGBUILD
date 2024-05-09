@@ -2,13 +2,14 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Lightning <sgsdxzy@gmail.com>
 # Contributor: Andrew Phelps <andrewphelpsj@gmail.com>
+# Contributor: Michał Kopeć <michal.kopec@3mdeb.com>
 _projectname='dolphin'
 _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='5.0.r21506.g57c890d4fc'
+pkgver='5.0.r21539.g50386c4e39'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -108,7 +109,7 @@ check() {
 	ninja unittests
 
 	# Verify that the basic functionality works
-	"$srcdir/$_sourcedirectory/build/Binaries/$_noguipkgname" --version | tee '/dev/stderr' | grep -q "^$_checkversion$"
+	QT_QPA_PLATFORM='offscreen' "$srcdir/$_sourcedirectory/build/Binaries/$_noguipkgname" --version | tee '/dev/stderr' | grep -q "^$_checkversion$"
 }
 
 package_dolphin-emu-git() {
