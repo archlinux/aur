@@ -38,7 +38,7 @@ prepare() {
 
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  just vendor
+  nice just vendor
 }
 
 build() {
