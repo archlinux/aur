@@ -2,7 +2,7 @@ _godot_repo=https://github.com/godotengine/godot/releases/download
 _godot=4.2.2
 
 pkgname=thrive
-pkgver=0.6.6
+pkgver=0.6.6.1
 pkgrel=1
 pkgdesc="the evolution game Thrive."
 arch=("x86_64")
@@ -21,12 +21,11 @@ source=(
     "git+https://github.com/cameron314/concurrentqueue.git"
     "$_godot.stable.mono.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_export_templates.tpz"
 )
-sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    '81a00143da2f8f89e2538843522202e2232be7e3de75fe45524daf919ab16a8b')
+sha256sums=('514a975facccb6a413a4114e1ae63419924615cf030283869acf449f319d3a7c'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '81a00143da2f8f89e2538843522202e2232be7e3de75fe45524daf919ab16a8b')
 
 
 prepare(){
@@ -47,8 +46,9 @@ prepare(){
         git -c protocol.file.allow=always submodule update
     done
     cd "$srcdir/Thrive"
-    git lfs install
-    git lfs pull
+    git lfs install --local
+    git lfs fetch
+    git lfs checkout
     sed -i "s/GODOT_VERSION = \".*\"/GODOT_VERSION = \"$_godot\"/" Scripts/GodotVersion.cs
     local templates="${XDG_DATA_HOME:-$HOME/.local/share}/godot/export_templates"
     mkdir -p "$templates"
