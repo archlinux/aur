@@ -2,7 +2,7 @@
 
 pkgname=kdb
 pkgver=3.2.0
-pkgrel=13
+pkgrel=14
 pkgdesc="A database connectivity and creation framework for various database vendors"
 arch=(x86_64)
 url="http://www.kexi-project.org/"
@@ -43,7 +43,8 @@ prepare() {
 build() {
   cmake -B build -S $pkgname-$pkgver \
     -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DBUILD_QCH=ON \
+    -DCMAKE_CXX_STANDARD=17
   cmake --build build
 }
 
