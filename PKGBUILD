@@ -23,5 +23,5 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
         make install DESTDIR="${pkgdir}"
-        install -m 644 -Dt "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/foomuuri-$pkgver/COPYING"
+        install -m 644 -Dt "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname-$pkgver/COPYING"
 }
