@@ -1,16 +1,16 @@
 pkgbase = python-airnef
 	pkgdesc = Wireless download from your Nikon/Sony/Canon camera
 	pkgver = 1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://testcams.com/airnef/
 	arch = any
 	license = GPL3
 	depends = python
+	depends = python-six
 	depends = tk
-	source = https://testcams.com/airnef/Version_1.1/airnef_v1.1_Source.zip
+	source = https://horshack-dpreview.github.io/airnef/Version_1.1/airnef_v1.1_Source.zip
 	source = airnef-linux.patch
 	sha512sums = b45b0591e42179d1e5b5eea9ede6762d311cd0642585c54568c90111424e2ca316aa444d772b4855afe42f25b6cc4b3e1b78bb5a0c2a4cb52440535894a5cba6
 	sha512sums = 2ebf9eda9c354f73a1a3084eca706c1d30d67737101d5bfb69474984f636ce5dc52092cec3de2d04e8ac61afa26ffe78e41dbf1a2fee5955af2ceed75620f154
 
 pkgname = python-airnef
-
