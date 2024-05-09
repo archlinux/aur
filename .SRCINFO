@@ -1,5 +1,5 @@
 pkgbase = perl-lingua-en-tagger
-	pkgdesc = Part-of-speech tagger for English natural language processing.
+	pkgdesc = Perl/CPAN Module Lingua::EN::Tagger: Part-of-speech tagger for English natural language processing.
 	pkgver = 0.31
 	pkgrel = 1
 	url = https://metacpan.org/release/Lingua-EN-Tagger
@@ -12,7 +12,8 @@ pkgbase = perl-lingua-en-tagger
 	depends = perl-memoize-expirelru
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/A/AC/ACOBURN/Lingua-EN-Tagger-0.31.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/A/AC/ACOBURN/Lingua-EN-Tagger-0.31.tar.gz
 	md5sums = 2046184b9b33ec5ae4b090b0941e8986
+	sha512sums = 396b96d9160185bf557b6caa3985153cea18fb05c82d295c7915424305b6ebe9a1a02091b9d32db3b83104d571e8eb8a31a58d35ea3ee960937230ac2b416e0d
 
 pkgname = perl-lingua-en-tagger
