@@ -18,7 +18,7 @@ options=('strip')
 
 build() {
     cd "${gitname}/"
-    sudo pacman -Ud --noconfirm https://archive.archlinux.org/packages/g/gcc-libs/gcc-libs-13.2.1-6-x86_64.pkg.tar.zst
+    sudo pacman -Ud https://archive.archlinux.org/packages/g/gcc-libs/gcc-libs-13.2.1-6-x86_64.pkg.tar.zst
     sudo pacman -Ud --noconfirm https://archive.archlinux.org/packages/g/gcc/gcc-13.2.1-6-x86_64.pkg.tar.zst
     meson . builddir --prefix=/usr
     meson configure -Dprofile=development builddir
@@ -28,6 +28,6 @@ build() {
 package() {
     cd "${gitname}/"
     DESTDIR="${pkgdir}" ninja -C builddir install
-    sudo pacman -S gcc-libs gcc
+    sudo pacman -S --noconfirm  gcc-libs gcc
 }
 
