@@ -1,7 +1,6 @@
 [zathura-pdf-mupdf]
-source = "gitlab"
-host = "git.pwmt.org"
-gitlab = "pwmt/zathura-pdf-mupdf"
+source = "github"
+github = "pwmt/zathura-pdf-mupdf"
 prefix = "v"
 use_max_tag = true
 exclude_regex = ".*(pre|a|alpha|b|beta|r|rc).*"
