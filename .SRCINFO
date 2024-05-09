@@ -10,6 +10,7 @@ pkgbase = cosmic-files-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = just
+	makedepends = mold
 	depends = glibc
 	provides = cosmic-files
 	conflicts = cosmic-files
