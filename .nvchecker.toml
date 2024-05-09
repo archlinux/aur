@@ -1,0 +1,5 @@
+[mfem]
+source = "github"
+github = "mfem/mfem"
+use_latest_release = "true"
+prefix = "v"

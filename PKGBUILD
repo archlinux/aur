@@ -1,22 +1,18 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=mfem
-pkgver=4.6
-pkgrel=3
+pkgver=4.7
+pkgrel=1
 pkgdesc="Lightweight, general, scalable C++ library for finite element methods"
 arch=(x86_64)
 url="https://github.com/${pkgname}/${pkgname}"
-license=(BSD-3-clause)
+license=(BSD-3-Clause)
 depends=(gcc-libs blitz metis hypre openmpi)
 # gnutls conduit ginkgo hdf5-openmpi libunwind mpfr | sundials scalapack scotch suitesparse superlu_dist
 makedepends=(cmake)
 provides=("libmfem.so=${pkgver}-64")
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('8805b4993b6f11abe7ac7dda59d0ddb2e0f5f6b09c2b9c57e665f481cd9bd6b669e63621b38989f70dc8ae38c42a7e8c4e10a1d87a4ac29d53ddd95ce79db0ae')
-
-prepare() {
-  sed -i '19 a #include <cstdint>' ${pkgname}-${pkgver}/general/kdtree.hpp
-}
+sha512sums=('c74f63f8256a8a0f7278b61120236bbab740e489b1c857bf35894c659e86b61cdce17e5ee42f763a516176e33e4bb93071d03d7dbb65637ec31b0de17ce1fc66')
 
 build() {
   cmake \
