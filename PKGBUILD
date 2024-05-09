@@ -41,12 +41,11 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  # note, consider rust build time optimisations: 
-  # https://matklad.github.io/2021/09/04/fast-rust-builds.html, 
-  # later. for now, ignore warnings, and build with lower priority 
-  # to not block user installing this pkg. to speed up build, use "mold" linker, see 
-  # https://stackoverflow.com/questions/67511990/how-to-use-the-mold-linker-with-cargo
-  RUSTFLAGS="-A warnings -C link-arg=-fuse-ld=mold"
+
+  # use mold instead of lld to speed up build
+  RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+
+  # use nice to build with lower priority
   nice just build-vendored
 }
 
