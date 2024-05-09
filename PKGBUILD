@@ -25,7 +25,7 @@ build() {
 
 # Package Install Function
 package() {
-	install -Dm755 ../target/debug/fetcher /usr/bin/fetcher
+	install -Dm755 "$srcdir/target/debug/fetcher" "$pkgdir/usr/bin/fetcher"
 }
 
 
