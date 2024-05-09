@@ -3,7 +3,7 @@
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 
 pkgname=unbuffered
-pkgver=2.0.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Copy stdin to stdout and stderr, unbuffered"
 arch=('i686' 'x86_64')
@@ -11,8 +11,7 @@ url="http://www.scylla-charybdis.com/tool.php/${pkgname}"
 license=('custom:CLL')
 makedepends=('git')
 depends=('glibc')
-_commit="7302072708acbac89e1a4193266115e42bcac68c"
-source=(${pkgname}-${pkgver}::"git+https://github.com/hilbix/unbuffered.git#commit=$_commit")
+source=(${pkgname}-${pkgver}::"git+https://github.com/hilbix/unbuffered.git#tag=unbuffered-${pkgver}")
 sha512sums=('SKIP')
 
 build() {

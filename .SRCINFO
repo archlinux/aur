@@ -1,6 +1,6 @@
 pkgbase = unbuffered
 	pkgdesc = Copy stdin to stdout and stderr, unbuffered
-	pkgver = 2.0.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://www.scylla-charybdis.com/tool.php/unbuffered
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = unbuffered
 	license = custom:CLL
 	makedepends = git
 	depends = glibc
-	source = unbuffered-2.0.0::git+https://github.com/hilbix/unbuffered.git#commit=7302072708acbac89e1a4193266115e42bcac68c
+	source = unbuffered-2.2.0::git+https://github.com/hilbix/unbuffered.git#tag=unbuffered-2.2.0
 	sha512sums = SKIP
 
 pkgname = unbuffered
