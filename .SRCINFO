@@ -1,4 +1,4 @@
-pkgbase = rosary
+pkgbase = rosary-git
 	pkgdesc = A Bible App developed with tauri
 	pkgver = 1.1.0
 	pkgrel = 1
@@ -35,4 +35,4 @@ pkgbase = rosary
 	source = git+https://github.com/RoseBlume/Rosary
 	sha256sums = SKIP
 
-pkgname = rosary
+pkgname = rosary-git

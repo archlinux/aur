@@ -1,5 +1,5 @@
 # Maintainer: James Rose <james.rose1103@protonmail.com>
-pkgname=rosary
+pkgname=rosary-git
 pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Bible App developed with tauri"
