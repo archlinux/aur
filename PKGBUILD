@@ -38,31 +38,15 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname%%-git}"
 
-  # frontend
-  pushd ui
-  npm install
-  npm run build
-  popd
+  make setup
+  make buildjs
 
-  # backend
-
-  # set Go flags
-  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOPATH="${srcdir}"
-
-  go build -v \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-compressdwarf=false \
-    -linkmode external \
-    -extldflags '${LDFLAGS}' \
-    -X github.com/navidrome/navidrome/consts.gitSha=$_commit \
-    -X github.com/navidrome/navidrome/consts.gitTag=$pkgver" \
-    -o build \
-    .
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -ldflags="-X github.com/navidrome/navidrome/consts.gitTag=v$pkgver" -tags=netgo
 }
 
 package() {
