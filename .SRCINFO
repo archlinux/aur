@@ -9,6 +9,7 @@ pkgbase = cosmic-settings-daemon-git
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
+	makedepends = mold
 	depends = geoclue
 	depends = systemd-libs
 	provides = cosmic-settings-daemon
