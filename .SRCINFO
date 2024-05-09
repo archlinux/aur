@@ -12,6 +12,7 @@ pkgbase = cosmic-files-git
 	makedepends = just
 	makedepends = mold
 	depends = glibc
+	depends = xdg-utils
 	provides = cosmic-files
 	conflicts = cosmic-files
 	source = git+https://github.com/pop-os/cosmic-files.git
