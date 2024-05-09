@@ -7,6 +7,7 @@ url="https://github.com/hermzz/fortunes-oblique-strategies"
 arch=(any)
 license=(unknown)
 depends=(fortune-mod)
+makedepends=(git)
 source=('git+https://github.com/hermzz/fortunes-oblique-strategies.git')
 md5sums=(SKIP)
 

@@ -5,9 +5,9 @@ pkgbase = fortune-mod-oblique-strategies
 	url = https://github.com/hermzz/fortunes-oblique-strategies
 	arch = any
 	license = unknown
+	makedepends = git
 	depends = fortune-mod
 	source = git+https://github.com/hermzz/fortunes-oblique-strategies.git
 	md5sums = SKIP
 
 pkgname = fortune-mod-oblique-strategies
-
