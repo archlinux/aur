@@ -1,5 +1,5 @@
 [Unit]
-Description=Flood rTorrent Web UI
+Description=Flood, torrent client Web UI
 After=network.target
 
 [Service]

@@ -2,11 +2,11 @@
 # Contributor: arshlinux
 pkgname=flood-git
 _pkgname=flood
-pkgver=4.7.0.r55.gce4b523d
+pkgver=4.8.2.r4.g812f351
 pkgrel=1
-pkgdesc='Flood: A web UI for rTorrent with a Node.js backend and React frontend.'
+pkgdesc='A modern web UI for various torrent clients with a Node.js backend and React frontend.'
 url='https://github.com/jesec/flood'
-license=('GPL3')
+license=('GPL-3.0-only')
 arch=('any')
 depends=('nodejs')
 makedepends=('git' 'npm')
@@ -23,7 +23,7 @@ source=("${_pkgname}::git+https://github.com/jesec/flood"
         'flood.conf.d')
 install=flood.install
 sha256sums=('SKIP'
-            '03ba8790b61378ec544db3d7a9057c112fd5ada643f0696ba0441fcf92c21f79'
+            '882ae5fb69bf157783d7f2bc14104e174f6f10abe3ccea71404f88aa1cc7680a'
             '351d9475fb25c43285f56b123d4415cd4a4bc5bebbc0c6cbe8be046031eb6900'
             'dee6aef8405bd527424c7ce44c3150fdd3aaaa2c8fcb9f9a57fb5d06e2b4402c'
             'd632f408d2ef9c61fe6a34d5480a96b5439b1bfdc2db9c45aaed7670b711bbb0'
@@ -31,7 +31,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${_pkgname}"
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -47,7 +47,7 @@ package() {
     install -D -m 644 "${srcdir}/${_pkgname}/package-lock.json" "${pkgdir}/usr/lib/flood/"
 
     cd "${pkgdir}/usr/lib/flood/"
-    npm ci --production --cache "${srcdir}/npm-cache"
+    npm ci --omit=dev --cache "${srcdir}/npm-cache" --ignore-scripts
 
     cp -r "${srcdir}/${_pkgname}/dist"/* "${pkgdir}/usr/lib/flood/"
 
@@ -55,7 +55,6 @@ package() {
 
     find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
-    chown -R root:root "${pkgdir}"
 
     install -Dm644 "${srcdir}/flood.service" "${pkgdir}/usr/lib/systemd/system/flood.service"
     install -Dm644 "${srcdir}/flood.sysusers" "${pkgdir}/usr/lib/sysusers.d/flood.conf"
