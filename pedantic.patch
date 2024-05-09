@@ -1,0 +1,14 @@
+
+diff --git a/cmd/Makefile b/cmd/Makefile
+index 23bacd1..0fe5e8c 100644
+--- a/cmd/Makefile
++++ b/cmd/Makefile
+@@ -8,7 +8,7 @@ CC = gcc # gcc clang
+ CXX = g++ # g++ clang++
+ AR = ar # ar llvm-ar
+
+-CPPFLAGS += -Wall -pedantic -O3 -g -ffast-math
++CPPFLAGS += -Wall -O3 -g -ffast-math -fpermissive
+ CFLAGS += -D_POSIX_C_SOURCE=200809 -std=c99
+ CXXFLAGS +=
+ LDLIBS = r-common/c/lib-r-common.a -ljack -lpthread -lm

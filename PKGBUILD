@@ -1,37 +1,51 @@
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Maintainer: yustin <#archlinux-proaudio@libera.chat>
 
 pkgname=rju-git
 _pkgname=rju
-_commit=8d86d170
-pkgver=r220.8d86d170
-pkgrel=2
+pkgver=0.19.r15.g359627c
+pkgrel=1
 pkgdesc='JackAudioToolkit'
-arch=( 'x86_64' )
+arch=('x86_64')
 url='https://rohandrape.net/?t=rju'
-license=( 'gpl' )
-depends=( 'jack' 'asciidoc' 'libsamplerate' 'liblo' 'libsndfile' )
-makedepends=( 'git' )
-conflicts=( 'rju' )
-source=( "git+https://gitlab.com/rd--/rju#commit=${_commit}"
-         vstsdkpath.patch
-         xrealloc.patch
+license=('GPL-2.0-only')
+depends=( 'jack' 'libsamplerate' 'liblo' 'libsndfile' 'libxext' 'libx11' 'libpng')
+makedepends=('git' 'cmake' 'asciidoc')
+options=('!lto' '!buildflags')
+conflicts=('rju')
+provides=('rju')
+source=( "git+https://gitlab.com/rd--/rju.git"
+        "git+https://gitlab.com/rd--/r-common.git"
+        "vstsdk::git+https://github.com/R-Tur/VST_SDK_2.4.git"
+        "pedantic.patch"
+        "pedantic2.patch"
        )
   
-sha256sums=( 'SKIP'
-             '11dfd9a08f916f3f03904b59ae3c49df4686a1ba86baa7b27773e050ed62380b'
-             'fe261c0185256ff4a698f0a6e25a2789d197972863b3f17158af44a4452119f0'
-           )
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            '51310e029f4f861f63693593aa95c7f83854807afea466f3491b4ff715254bc7'
+            '602d5b75419f0552f845af0b173cc5666cb2e80869ad7b5afa8bfa7661332378')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  cd ${srcdir}/${_pkgname}/cmd
-  patch -p0 < ${startdir}/vstsdkpath.patch
-  git submodule update --init --recursive
-  patch -p0 < ${startdir}/xrealloc.patch
+  cd "${srcdir}/${_pkgname}"
+  patch -p1 < "$srcdir/pedantic.patch"
+  git config --file=.gitmodules submodule.cmd/r-command.url "$srcdir/r-command"
+  git -c protocol.file.allow=always submodule update --init
+  cd "$srcdir/$_pkgname/cmd/r-common"
+  patch -p1 < "$srcdir/pedantic2.patch"
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}/cmd
-  make all -j1
+  cd "$srcdir/$_pkgname/cmd"
+  export CFLAGS+=" -I$srcdir/vstsdk/"
+  export CXXFLAGS+=" -I$srcdir/vstsdk/"
+  make all
  
   cd ${srcdir}/${_pkgname}/md
   for i in *.md ; do asciidoc $i; done
