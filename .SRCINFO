@@ -1,14 +1,13 @@
 pkgbase = nvhpc
 	pkgdesc = NVIDIA HPC SDK
 	pkgver = 24.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/badwaik/archlinux/aur/nvhpc
 	arch = x86_64
 	license = custom
 	makedepends = bash
 	depends = numactl
 	depends = java-runtime
-	depends = gcc12
 	optdepends = env-modules
 	conflicts = pgi-compilers
 	replaces = pgi-compilers
