@@ -5,13 +5,13 @@ pkgname=python-${_name}-git
 provides=("python-${_name}")
 conflicts=("python-${_name}")
 pkgver=r155.b057b07
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and differentiable MS-SSIM and SSIM for pytorch"
 url="https://github.com/VainF/${_name}"
 license=('MIT')
 arch=('any')
 depends=('python-pytorch')
-makedepends=(python-build python-installer python-wheel git python-pillow)
+makedepends=(python-build python-installer python-wheel git python-pillow python-setuptools)
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
