@@ -100,48 +100,8 @@ package() {
 	done
 	cd "$srcdir/blender-$pkgver-linux-x64"
 
-	mkdir -p "${pkgdir}/usr/bin"
-
-	cat >> "${pkgdir}/usr/bin/blender" <<-EOF
-#!/bin/sh
-BF_DIST_BIN="/usr/lib/blender-bin"
-BF_PROGRAM="blender"
-
-# Add own lib folder first, because Steam or other environments may set an
-# LD_LIBRARY_PATH that has priority over the runpath in the Blender excutable,
-# but contains incompatible libraries.
-LD_LIBRARY_PATH=\${BF_DIST_BIN}/lib:\${LD_LIBRARY_PATH}
-
-export LD_LIBRARY_PATH
-
-exec "\$BF_DIST_BIN/\$BF_PROGRAM" "\$@"
-EOF
-
-	cat >> "${pkgdir}/usr/bin/blender-softwaregl" <<-EOF
-#!/bin/sh
-BF_DIST_BIN="/usr/lib/blender-bin"
-BF_PROGRAM="blender" # BF_PROGRAM=\$(basename "\$0")-bin
-
-LD_LIBRARY_PATH=\${BF_DIST_BIN}/lib/mesa:\${LD_LIBRARY_PATH}
-
-if [ -n "\$LD_LIBRARYN32_PATH" ]; then
-    LD_LIBRARYN32_PATH=\${BF_DIST_BIN}/lib/mesa:\${LD_LIBRARYN32_PATH}
-fi
-if [ -n "\$LD_LIBRARYN64_PATH" ]; then
-    LD_LIBRARYN64_PATH=\${BF_DIST_BIN}/lib/mesa:\${LD_LIBRARYN64_PATH}
-fi
-if [ -n "\$LD_LIBRARY_PATH_64" ]; then
-    LD_LIBRARY_PATH_64=\${BF_DIST_BIN}/lib/mesa:\${LD_LIBRARY_PATH_64}
-fi
-
-# Workaround for half-transparent windows when compiz is enabled
-XLIB_SKIP_ARGB_VISUALS=1
-
-export LD_LIBRARY_PATH LD_LIBRARYN32_PATH LD_LIBRARYN64_PATH LD_LIBRARY_PATH_64 LD_PRELOAD XLIB_SKIP_ARGB_VISUALS
-
-exec "\$BF_DIST_BIN/\$BF_PROGRAM" "\$@"
-EOF
-
-	chmod 755 "${pkgdir}/usr/bin/blender"
-	chmod 755 "${pkgdir}/usr/bin/blender-softwaregl"
+	install -Dm755 blender-launcher "$pkgdir/usr/bin/blender"
+	install -Dm755 blender-softwaregl "$pkgdir/usr/bin/blender-softwaregl"
+	sed -i 's/BF_DIST_BIN=\$(dirname "\$0")/BF_DIST_BIN=\/usr\/lib\/blender-bin\//g' "$pkgdir/usr/bin/blender"
+	sed -i 's/BF_DIST_BIN=\$(dirname "\$0")/BF_DIST_BIN=\/usr\/lib\/blender-lib\//g' "$pkgdir/usr/bin/blender-softwaregl"
 }
