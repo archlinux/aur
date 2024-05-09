@@ -8,6 +8,6 @@ pkgbase = fetcher-based-rs
 	makedepends = rust
 	conflicts = fetcher-based-rs-bin
 	source = https://github.com/arch-based/fetcher-rs/raw/main/fetcher-rs.tar.gz
-	sha256sums = 5f9c9b5f7e3f30c9ead83fa1e6cca9a65f9d4795b9672dbe749c6752721bfd86
+	sha256sums = 6d161c72101b3b862bad36542a5090ca6bfa38278b1dafd47ca30c5dbeccb8ae
 
 pkgname = fetcher-based-rs
