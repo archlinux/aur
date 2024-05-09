@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/slhck/ffmpeg-progress-yield"
 license=('MIT')
 depends=('python-colorama' 'python-setuptools' 'python-tqdm')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('ffmpeg: command line mode')
 checkdepends=('ffmpeg' 'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
