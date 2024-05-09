@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=logr
-_pkgver=1.3.7
+_pkgver=1.3.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-tidylog
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d3fde9bc158ef1d20fb0c9d50ad7a806')
-b2sums=('c7bfa7202da86ac9cafff612b0a3182513e87f7d51ff8d11c29d354f24f8b0adc69e6120c6a0bac7fed4e6e6f1af8560d6cf9c14f8a547ecfd3a9cb1808ebd76')
+md5sums=('aae1b7d263853ecafe6125b16fb017d0')
+b2sums=('b09d156b1b0360e48f020bcf2b6abbda8e8dbf1f52b6e2e5177994d5b97f4a08d9c5230320aa8126791121b6b452f06c83bf181707af9ec8826063ae08c17393')
 
 build() {
   mkdir build
