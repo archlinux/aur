@@ -13,6 +13,7 @@ pkgbase = arc_unpacker-git
 	depends = libjpeg-turbo
 	depends = openssl
 	depends = libwebp
+	depends = zlib
 	provides = arc_unpacker-git
 	provides = arc_unpacker
 	conflicts = arc_unpacker
