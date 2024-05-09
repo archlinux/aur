@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
 url=https://xemu.app/
-license=(GPL-2.0-only AND LGPL-2.1-only AND LicenseRef-QEMUDistributionLicense)
+license=("GPL-2.0-only AND LGPL-2.1-only AND LicenseRef-QEMUDistributionLicense")
 depends=(
 	dtc
 	gcc-libs
