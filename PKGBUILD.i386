@@ -8,14 +8,14 @@ else
 fi
 
 # basic info
-_pkgname="thorium-browser-avx2"
+_pkgname="thorium-browser-i386"
 pkgname="$_pkgname-bin"
-pkgver=123.0.6312.133
+pkgver=123.0.6312.134
 pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium"
 license=('BSD')
-arch=('x86_64')
+arch=('i386')
 
 # main package
 _main_package() {
@@ -27,14 +27,14 @@ _main_package() {
   options=('!emptydirs' '!strip' '!debug')
 
   _dl_url="$url/releases/download/M${_pkgver:?}"
-  _dl_filename="${_pkgname%-avx2}_${_pkgver:?}_AVX2.deb"
+  _dl_filename="${_pkgname%-i386}_${_pkgver:?}_i386.deb"
   noextract+=("$_dl_filename")
 
   source=("$_dl_url/$_dl_filename")
   sha256sums=('SKIP')
 
   pkgver() {
-    echo "${_pkgver%M}"
+    echo "${_pkgver:?}"
   }
 }
 
@@ -43,29 +43,12 @@ prepare() {
   install -Dvm644 /dev/stdin "$_pkgname.sh" << END
 #!/usr/bin/env bash
 
-# check microprocessor architecture level
-if grep -qE '\bavx2\b' /proc/cpuinfo ; then
-  _message=''
-  _message+=\$'The fastest browser on Earth.'
-else
-  _message=''
-  _message+=\$'Your processor does not support AVX2 instructions.\n'
-  _message+=\$'thorium-browser may not work on your computer.'
-fi
-
 # Allow users to override command-line options
 XDG_CONFIG_HOME=\${XDG_CONFIG_HOME:-~/.config}
 _FLAGS_FILE="\$XDG_CONFIG_HOME/thorium-flags.conf"
 
 if [[ -f "\$_FLAGS_FILE" ]]; then
   _USER_FLAGS="\$(cat "\$_FLAGS_FILE")"
-fi
-
-# display processor support message
-if tty -s ; then
-  echo "\$_message"
-else
-  [ ! -e "\$XDG_CONFIG_HOME/thorium" ] && notify-send -a "thorium-browser" -t 7500 "\$_message"
 fi
 
 # Launch
@@ -83,7 +66,6 @@ package() {
     'cairo'
     'dbus'
     'libcups'
-    'libnotify' # notify-send
     'libxcomposite'
     'libxkbcommon'
     'libxrandr'
@@ -143,8 +125,8 @@ package() {
   sed -E \
     -e "s@thorium-browser@$_pkgname@" \
     -e "s@thorium-shell@thorium-shell-${_pkgname: -4}@" \
-    -e "s@^(Name\S*=.*)\$@\1 AVX2@" \
-    -e "s@^(GenericName\S*=.*)\$@\1 AVX2@" \
+    -e "s@^(Name\S*=.*)\$@\1 i386@" \
+    -e "s@^(GenericName\S*=.*)\$@\1 i386@" \
     -i "$pkgdir/usr/share/applications/thorium-browser.desktop"
 
   mv "$pkgdir/usr/share/applications/thorium-browser.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
@@ -154,8 +136,8 @@ package() {
     -e "s@^Icon=.*\$@Icon=thorium-shell-${_pkgname: -4}@" \
     -e "s@thorium-shell@thorium-shell-${_pkgname: -4}@" \
     -e "s@thorium_shell@thorium_shell_${_pkgname: -4}@" \
-    -e "s@^(Name\S*=.*)\$@\1 AVX2@" \
-    -e "s@^(GenericName\S*=.*)\$@\1 AVX2@" \
+    -e "s@^(Name\S*=.*)\$@\1 i386@" \
+    -e "s@^(GenericName\S*=.*)\$@\1 i386@" \
     -i "$pkgdir/usr/share/applications/thorium-shell.desktop"
 
   mv "$pkgdir/usr/share/applications/thorium-shell.desktop" "$pkgdir/usr/share/applications/thorium-shell-${_pkgname: -4}.desktop"
@@ -193,9 +175,6 @@ _update_version() {
   local _blacklist _response _tags _tag _pkgver_new
 
   _blacklist=(
-    123.0.6312.134
-    119.0.6045.214-2 # 32-bit SSE2
-    119.0.6045.214-1 # Windows
   )
   _response=$(curl -Ssf "$url/releases.atom")
   _tags=$(
