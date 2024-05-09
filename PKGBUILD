@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=foo-yc20
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a Faust implementation of a 1969 designed Yamaha combo organ, the YC-20. Available on the web, as a VST and LV2 plugins and a standalone version."
 arch=("x86_64" "i686")
 url="https://github.com/sampov2/foo-yc20"
@@ -38,6 +38,7 @@ depends=(
 	'libxinerama'
 	'libxrandr'
 	'libxrender'
+    'lv2'
 	'pango'
 	'pixman'
 )
