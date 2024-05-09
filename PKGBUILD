@@ -4,12 +4,12 @@
 pkgname=plasma5-themes-sweet-full-git
 _pkgname=sweet
 pkgver=r368.cf72cb4
-pkgrel=3
+pkgrel=4
 pkgdesc="Sweet KDE Plasma theme"
 arch=('x86_64')
 url="https://github.com/EliverLara/$_pkgname"
 license=('GPL3')
-makedepends=('git' 'inkscape' 'optipng')
+makedepends=('git' 'inkscape' 'optipng' 'xorg-xcursorgen')
 depends=('plasma5-themes-sweet-kde-git'
          'kvantum'
          'candy-icons-git')
