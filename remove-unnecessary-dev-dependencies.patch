@@ -1,16 +1,16 @@
-diff --unified --recursive --text css_parser-1.16.0.orig/css_parser.gemspec css_parser-1.16.0/css_parser.gemspec
---- css_parser-1.16.0.orig/css_parser.gemspec	2023-09-02 09:48:15.366045139 +0200
-+++ css_parser-1.16.0/css_parser.gemspec	2023-09-02 09:49:44.213048287 +0200
-@@ -19,12 +19,7 @@
- 
+diff --unified --recursive --text --new-file css_parser-1.17.1.orig/css_parser.gemspec css_parser-1.17.1/css_parser.gemspec
+--- css_parser-1.17.1.orig/css_parser.gemspec	2024-05-09 20:58:11.670986182 +0200
++++ css_parser-1.17.1/css_parser.gemspec	2024-05-09 20:58:34.134399487 +0200
+@@ -20,12 +20,7 @@
+
    s.add_runtime_dependency 'addressable'
- 
+
 -  s.add_development_dependency 'benchmark-ips'
 -  s.add_development_dependency 'bump'
    s.add_development_dependency 'maxitest'
 -  s.add_development_dependency 'memory_profiler'
    s.add_development_dependency 'rake'
--  s.add_development_dependency 'rubocop', '>= 1.8'
+-  s.add_development_dependency 'rubocop', '~> 1.8'
 -  s.add_development_dependency 'rubocop-rake'
    s.add_development_dependency 'webrick'
  end

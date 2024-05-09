@@ -4,7 +4,7 @@
 pkgname=ruby-css_parser
 _pkgname=${pkgname#ruby-}
 pkgver=1.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby CSS parser"
 arch=(any)
 url="https://github.com/premailer/css_parser"
@@ -14,14 +14,29 @@ depends=(
   ruby-addressable
 )
 makedepends=(ruby-rdoc)
+checkdepends=(
+  ruby-maxitest
+  ruby-rake
+  ruby-webrick
+)
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
-sha256sums=('069e419f2fdf2c500979f113348d459f7963c19ff72918a92b9b26a2fb0ee662')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz"
+  "remove-unnecessary-dev-dependencies.patch"
+)
+sha256sums=(
+  '069e419f2fdf2c500979f113348d459f7963c19ff72918a92b9b26a2fb0ee662'
+  '84214093e40180a2929c7e0dfd9fc28b8e539c95c9e11a0e610987f8fc7251fe'
+)
 
 _archive="$_pkgname-$pkgver"
 
 prepare() {
   cd "$_archive"
+
+  # Remove lockfile & unnecessary dev dependencies
+  rm Gemfile.lock
+  patch --strip=1 --input="$srcdir/remove-unnecessary-dev-dependencies.patch"
 
   # Update gemspec/Gemfile to allow newer version of the dependencies
   sed -i -E 's|~>|>=|g' "$_pkgname.gemspec"
@@ -68,6 +83,12 @@ build() {
     -iname "gem_make.out" \
     \) \
     -delete
+}
+
+check() {
+  cd "$_archive"
+
+  GEM_HOME="tmp_install/$(gem env gemdir)" rake test
 }
 
 package() {
