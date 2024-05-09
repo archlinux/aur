@@ -1,17 +1,17 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgbase=opm-common
 pkgname=("${pkgbase}" python-"${pkgbase}")
-_dunever=2.9.0
-pkgver=2023.10
+_dunever=2.9.1
+pkgver=2024.04
 pkgrel=1
-pkgdesc="Common components for OPM, in particular build system (cmake)"
+pkgdesc="Open Porous Media Initiative shared infrastructure"
 arch=(x86_64)
 url="https://github.com/OPM/${pkgbase}"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 makedepends=("dune-common>=${_dunever}" boost fmt cjson suitesparse texlive-basic doxygen graphviz
   pybind11 python-scikit-build python-setuptools-scm python-pytest-runner)
 source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('e5ab73ff3654ce3931d7bd006954d8f38ce4eb98189fa481967c2847009236973e3599915e259ce47cf62c0fa6443f6dfeb6d081c6a31b6380437c3fe47fb744')
+sha512sums=('60ca3cb83628b3efb0d7424b4a4bbc5c650f2b1095da5a32617f5e0ed94f2861156cd78bfbcc0e126cfb7727db8106a903f8a802ea380cc05313346099957d02')
 
 build() {
   cmake \

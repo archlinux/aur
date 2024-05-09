@@ -1,0 +1,7 @@
+[opm-common]
+source = "github"
+github = "OPM/opm-common"
+use_latest_release = "true"
+from_pattern = "/final"
+to_pattern = ""
+prefix = "release/"

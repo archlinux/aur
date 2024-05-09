@@ -1,11 +1,11 @@
 pkgbase = opm-common
-	pkgdesc = Common components for OPM, in particular build system (cmake)
-	pkgver = 2023.10
+	pkgdesc = Open Porous Media Initiative shared infrastructure
+	pkgver = 2024.04
 	pkgrel = 1
 	url = https://github.com/OPM/opm-common
 	arch = x86_64
-	license = GPL3
-	makedepends = dune-common>=2.9.0
+	license = GPL-3.0-or-later
+	makedepends = dune-common>=2.9.1
 	makedepends = boost
 	makedepends = fmt
 	makedepends = cjson
@@ -17,11 +17,11 @@ pkgbase = opm-common
 	makedepends = python-scikit-build
 	makedepends = python-setuptools-scm
 	makedepends = python-pytest-runner
-	source = opm-common-release-2023.10-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2023.10/final.tar.gz
-	sha512sums = e5ab73ff3654ce3931d7bd006954d8f38ce4eb98189fa481967c2847009236973e3599915e259ce47cf62c0fa6443f6dfeb6d081c6a31b6380437c3fe47fb744
+	source = opm-common-release-2024.04-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2024.04/final.tar.gz
+	sha512sums = 60ca3cb83628b3efb0d7424b4a4bbc5c650f2b1095da5a32617f5e0ed94f2861156cd78bfbcc0e126cfb7727db8106a903f8a802ea380cc05313346099957d02
 
 pkgname = opm-common
-	depends = dune-common>=2.9.0
+	depends = dune-common>=2.9.1
 	depends = boost
 	depends = fmt
 	depends = cjson
@@ -39,6 +39,6 @@ pkgname = opm-common
 	provides = summary
 
 pkgname = python-opm-common
-	pkgdesc = Common components for OPM, in particular build system (cmake) (python bindings)
-	depends = opm-common>=2023.10
+	pkgdesc = Open Porous Media Initiative shared infrastructure (python bindings)
+	depends = opm-common>=2024.04
 	depends = python-numpy
