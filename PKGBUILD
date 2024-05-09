@@ -1,15 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=firefly-shimmer-desktop-bin
-pkgver=2.1.14
+pkgver=2.1.15
 _electronversion=27
-pkgrel=2
+pkgrel=1
 pkgdesc="Try out new features introduced with Shimmer, such as minting native tokens, setting transaction expiry times, and sending microtransactions."
 arch=('x86_64')
 url="https://firefly.iota.org/"
 _ghurl="https://github.com/iotaledger/firefly"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}" "shimmer-firefly-wallet")
+conflicts=(
+    "${pkgname%-bin}"
+    "shimmer-firefly-wallet"
+)
 depends=(
     "electron${_electronversion}"
 )
@@ -20,8 +23,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/desktop-shimmer-${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('929b8c87c9f3935addff0367f9f9a13bc45947270f0ab8aee3971b561deb44de'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('60694a23609a0ac1aa0a1725474acb0eda1793eb76b735264d420e445b5a8d5b'
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
