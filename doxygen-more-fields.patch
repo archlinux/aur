@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index 107a31bbdb47..c9a53c5e4300 100644
+index 107a31bbdb47..893555358ed3 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
 @@ -185,8 +185,12 @@ HoverInfo::PrintedType printType(QualType QT, ASTContext &ASTCtx,
@@ -16,7 +16,7 @@ index 107a31bbdb47..c9a53c5e4300 100644
    }
    return Result;
  }
-@@ -1425,6 +1429,140 @@ static std::string formatOffset(uint64_t OffsetInBits) {
+@@ -1425,6 +1429,142 @@ static std::string formatOffset(uint64_t OffsetInBits) {
    return Offset;
  }
  
@@ -131,12 +131,14 @@ index 107a31bbdb47..c9a53c5e4300 100644
 +  if (!Params || Params->empty())
 +    return;
 +
-+  Output.addParagraph().appendText(ParagraphName + ": ");
-+  markup::BulletList &ReqList = Output.addBulletList();
-+
 +  auto It = Params->begin();
-+  for (; It != Params->end() && !It->Default; ++It) {
-+    presentOneParam(*It, ParamDocs, ReqList);
++  if (!It->Default) {
++    Output.addParagraph().appendText(ParagraphName + ": ");
++    markup::BulletList &ReqList = Output.addBulletList();
++
++    for (; It != Params->end() && !It->Default; ++It) {
++      presentOneParam(*It, ParamDocs, ReqList);
++    }
 +  }
 +
 +  if (It == Params->end())
@@ -150,14 +152,14 @@ index 107a31bbdb47..c9a53c5e4300 100644
 +  markup::BulletList &OptList = Output.addBulletList();
 +
 +  for (; It != Params->end(); ++It) {
-+    presentOneParam(*It, ParamDocs, ReqList);
++    presentOneParam(*It, ParamDocs, OptList);
 +  }
 +}
 +
  markup::Document HoverInfo::present() const {
    markup::Document Output;
  
-@@ -1460,6 +1598,9 @@ markup::Document HoverInfo::present() const {
+@@ -1460,6 +1600,9 @@ markup::Document HoverInfo::present() const {
    if (!Documentation.Brief.empty())
      parseDocumentation(Documentation.Brief, Output);
  
@@ -167,7 +169,7 @@ index 107a31bbdb47..c9a53c5e4300 100644
    // Print Types on their own lines to reduce chances of getting line-wrapped by
    // editor, as they might be long.
    if (ReturnType) {
-@@ -1468,44 +1609,20 @@ markup::Document HoverInfo::present() const {
+@@ -1468,44 +1611,20 @@ markup::Document HoverInfo::present() const {
      // Parameters:
      // - `bool param1`
      // - `int param2 = 5`
@@ -222,7 +224,7 @@ index 107a31bbdb47..c9a53c5e4300 100644
    }
  
    // Don't print Type after Parameters or ReturnType as this will just duplicate
-@@ -1577,6 +1694,39 @@ markup::Document HoverInfo::present() const {
+@@ -1577,6 +1696,39 @@ markup::Document HoverInfo::present() const {
        parseDocumentation(Note, L.addItem());
    }
  
@@ -262,7 +264,7 @@ index 107a31bbdb47..c9a53c5e4300 100644
    if (!Definition.empty()) {
      Output.addRuler();
      std::string Buffer;
-@@ -1627,71 +1777,6 @@ markup::Document HoverInfo::present() const {
+@@ -1627,71 +1779,6 @@ markup::Document HoverInfo::present() const {
    return Output;
  }
  
