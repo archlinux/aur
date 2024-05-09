@@ -650,22 +650,22 @@ index 0000000..85d0bb3
 +    qwt_wheel.cpp)
 +endif ()
 +
-+add_library (qwt ${qwt_headers} ${qwt_sources})
++add_library (qwt-qt6 ${qwt_headers} ${qwt_sources})
 +
-+target_compile_definitions(qwt
++target_compile_definitions(qwt-qt6
 +	PUBLIC
 +		$<$<BOOL:MSVC>:QWT_DLL>
 +	PRIVATE
 +		$<$<BOOL:MSVC>:QWT_MAKEDLL>
 +)
 +
-+target_include_directories(qwt
++target_include_directories(qwt-qt6
 +  PUBLIC
 +  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
 +  $<INSTALL_INTERFACE:include>)
 +
 +if (USE_QT6)
-+  target_link_libraries(qwt
++  target_link_libraries(qwt-qt6
 +    PUBLIC
 +      Qt6::Core
 +      Qt6::OpenGL
@@ -675,7 +675,7 @@ index 0000000..85d0bb3
 +      Qt6::PrintSupport
 +      Qt6::Svg)
 +else ()
-+    target_link_libraries(qwt
++    target_link_libraries(qwt-qt6
 +    PUBLIC
 +      Qt5::Core
 +      Qt5::OpenGL
@@ -685,14 +685,14 @@ index 0000000..85d0bb3
 +      Qt5::Svg)
 +endif ()
 +
-+set_target_properties(qwt PROPERTIES
++set_target_properties(qwt-qt6 PROPERTIES
 +  VERSION ${QWT_VERSION}
 +  SOVERSION ${QWT_VER_MAJ}
 +  AUTOMOC ON)
-+target_compile_definitions(qwt PRIVATE QWT_MOC_INCLUDE)
++target_compile_definitions(qwt-qt6 PRIVATE QWT_MOC_INCLUDE)
 +
-+install (FILES ${qwt_headers} DESTINATION include/qwt)
-+install (TARGETS qwt
++install (FILES ${qwt_headers} DESTINATION include/qwt-qt6)
++install (TARGETS qwt-qt6
 +          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 +          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 +          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
