@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Torelli <giovanni.walter@outlook.com>
 
 pkgname=hyprmixer
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A stylish volume mixer and media controller for your hyprland rice"
 arch=('x86_64')
