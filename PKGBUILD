@@ -3,8 +3,8 @@
 _packager="Romain Gallet <gr211 at users.noreply.github.com>"
 _deb_pkgname=kinesis-tailr
 pkgname=kinesis-tailr-bin
-md5sums=('13e5001caf461494341babe816b67039')
-pkgver=0.6.1
+md5sums=('8dcf8d55d9f621a43d9b56ab89cc8087')
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Kinesis tail tool'
 arch=('x86_64')
