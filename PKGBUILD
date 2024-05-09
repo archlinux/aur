@@ -1,6 +1,6 @@
 # Maintainer: Manuel Kauschinger <admin at bruzzzla dot de>
 pkgname=shimmer-firefly-wallet
-pkgver=2.1.14
+pkgver=2.1.15
 pkgrel=1
 pkgdesc="The SMR Firefly Wallet"
 arch=(x86_64)
@@ -11,7 +11,7 @@ options=('!strip')
 depends=('gnome-keyring' 'libsecret' 'gtk3' 'libxss' 'nss')
 
 source_x86_64=("https://github.com/iotaledger/firefly/releases/download/desktop-shimmer-$pkgver/firefly-shimmer-desktop-$pkgver.AppImage")
-sha256sums_x86_64=('929b8c87c9f3935addff0367f9f9a13bc45947270f0ab8aee3971b561deb44de')
+sha256sums_x86_64=('60694a23609a0ac1aa0a1725474acb0eda1793eb76b735264d420e445b5a8d5b')
 
 source=("shimmer-firefly-wallet.desktop")
 md5sums=('b86c333fd18633c8f94e86973c798eee')
