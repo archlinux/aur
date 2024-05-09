@@ -2,7 +2,7 @@
 
 pkgname=libxls
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Read binary Excel files from C/C++'
 arch=('i686' 'x86_64')
 url='https://github.com/libxls/libxls'
@@ -15,6 +15,7 @@ sha512sums=('9eb8dc78d9070ebe5af2629a358cea0f41db9e4accdfc2651093eaffaaeff5595e9
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   autoreconf -fiv
+  patch -p0 < ../../xlstypes.patch #fix xlstypes include bug
 }
 
 build() {

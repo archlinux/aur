@@ -1,0 +1,14 @@
+--- ./include/libxls/xlstypes.h	2021-01-04 12:31:47.000000000 +0800
++++ ./include/libxls/xlstypes.h	2024-05-09 19:15:09.855514549 +0800
+@@ -36,11 +36,7 @@
+ #ifndef XLS_TYPES_INC
+ #define XLS_TYPES_INC
+ 
+-#ifdef __cplusplus
+-#include <cstdint>
+-#else
+ #include <stdint.h>
+-#endif
+ #include <sys/types.h>
+ 
+ typedef unsigned char		BYTE;
