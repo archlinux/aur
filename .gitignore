@@ -1,0 +1,5 @@
+*
+!PKGBUILD
+!.SRCINFO
+!0001-Xsession-Don-t-start-ssh-agent-by-default.patch
+!.gitignore
