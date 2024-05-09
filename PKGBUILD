@@ -2,22 +2,22 @@
 # Contributor: Nico <d3sox at protonmail dot com>
 pkgname=fluent-reader-electron
 _pkgname=fluent-reader
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='Modern desktop RSS reader built with Electron, React, and Fluent UI'
 arch=('any')
 url='https://hyliu.me/fluent-reader/'
 license=('BSD')
-depends=('hicolor-icon-theme' 'electron21')
+depends=('hicolor-icon-theme' 'electron27')
 makedepends=('nodejs' 'node-gyp' 'npm')
 provides=("$_pkgname")
 conflicts=(""$_pkgname"")
 source=("https://github.com/yang991178/fluent-reader/archive/v${pkgver}.tar.gz"
         'fluent-reader.desktop'
         'fluent-reader.sh')
-sha256sums=('fbd17ecbebb4a10f3e2b6653a9fe5d41878a553a724e87e4c67405cb2d3e8fdf'
+sha256sums=('0c5e5a610a563fe012a870efad7196c0d0f5979b592314864bc68ac913da98fa'
             '5774f9dcd354761fb94d5f8ee8a534d879a7497c1e1834273dd3f55fbfdd0be4'
-            'a6758f88a37272d4ff606642859a7f379f372a5da5b901f1a85953243cf3e905')
+            '6ac3a97107ebdf00fa924c8922a5cdef6d8cac5251301cbaefc7012d2c6e0e1c')
 
 build() {
   cd ${_pkgname}-${pkgver}
