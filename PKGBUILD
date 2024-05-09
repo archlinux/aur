@@ -39,7 +39,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  just build-vendored
+  nice just build-vendored
 }
 
 package() {
