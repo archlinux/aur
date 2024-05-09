@@ -1,6 +1,6 @@
 pkgname=kakoune-git
-pkgver=2023.08.05
-pkgrel=2
+pkgver=v2023.08.05+r366+g8bb0f44c2
+pkgrel=1
 pkgdesc="Multiple-selection, UNIX-flavored modal editor"
 arch=("x86_64" "armv7h")
 url="https://github.com/mawww/kakoune"
@@ -28,7 +28,7 @@ options=("!buildflags")
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --tags | tr "-" "_" | sed "s/^v//; s/_/_r/"
+    git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 check() {
