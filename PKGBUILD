@@ -5,7 +5,7 @@ _vlcver=3.0.20
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=8
+pkgrel=9
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ _libdc1394ver=2.2.7
 _libmicrodnsver=0.2
 _libupnpver=1.14
 _libvpxver=1.14
-_livemedia=2023.01.19
+_livemedia=2024.04.19
 _mpg123ver=1.32.2
 _protobufver=25
 _taglibver=2
@@ -217,10 +217,12 @@ provides=("${_name}=${pkgver}")
 options=('!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
         'update-vlc-plugin-cache.hook'
-        'taglib-2.patch')
+        'taglib-2.patch'
+        'fix-incompatible-pointer-types.patch') # https://code.videolan.org/videolan/vlc/-/merge_requests/4645
 sha512sums=('02e58fb52dd75bf483ac4b298aecf86463b13d4782173d164adba6e4552d9262ff5e2ee1cbe1bce2c8a809801b79f328c6a8c475d34ae62aefaea02ae5ade406'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
-            'ea0d1e1dfed16dac8f9027eb55d987dee59630568b9744ceb42bfa134ea9295252d83574f3d793a76a5be3b02661c1731ed366003b6b55b2d7f02fde70586ff3')
+            'ea0d1e1dfed16dac8f9027eb55d987dee59630568b9744ceb42bfa134ea9295252d83574f3d793a76a5be3b02661c1731ed366003b6b55b2d7f02fde70586ff3'
+            'e41c99b08f85ee4e393fa9c7189f76edfe7160e3877d6f56e56de93d752bf15a28502de1417c0ed8008fa348a1e2480b9df0bd33acabe251df00ed2a92618740')
 
 prepare() {
   cd ${_name}-${_vlcver}
@@ -236,6 +238,10 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  # chromaprint: missing cast 
+  # https://code.videolan.org/videolan/vlc/-/commit/770789f265761fc7ab2de69ca105fec4ad93d9e2
+  sed 's/p_buf->p_buffer/(int16_t \*)p_buf->p_buffer/g' -i modules/stream_out/chromaprint.c
 
   # Fix to build against libcaca 0.99.beta20 (kept as comment)
   #sed -i 's/cucul_/caca_/g' modules/video_output/caca.c

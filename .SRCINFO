@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.20
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
 	arch = aarch64
@@ -49,7 +49,7 @@ pkgbase = vlc-luajit
 	makedepends = libvorbis
 	makedepends = libvpx>=1.14
 	makedepends = lirc
-	makedepends = live-media>=2023.01.19
+	makedepends = live-media>=2024.04.19
 	makedepends = mesa
 	makedepends = mpg123>=1.32.2
 	makedepends = opus
@@ -190,8 +190,10 @@ pkgbase = vlc-luajit
 	source = https://download.videolan.org/vlc/3.0.20/vlc-3.0.20.tar.xz
 	source = update-vlc-plugin-cache.hook
 	source = taglib-2.patch
+	source = fix-incompatible-pointer-types.patch
 	sha512sums = 02e58fb52dd75bf483ac4b298aecf86463b13d4782173d164adba6e4552d9262ff5e2ee1cbe1bce2c8a809801b79f328c6a8c475d34ae62aefaea02ae5ade406
 	sha512sums = b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3
 	sha512sums = ea0d1e1dfed16dac8f9027eb55d987dee59630568b9744ceb42bfa134ea9295252d83574f3d793a76a5be3b02661c1731ed366003b6b55b2d7f02fde70586ff3
+	sha512sums = e41c99b08f85ee4e393fa9c7189f76edfe7160e3877d6f56e56de93d752bf15a28502de1417c0ed8008fa348a1e2480b9df0bd33acabe251df00ed2a92618740
 
 pkgname = vlc-luajit
