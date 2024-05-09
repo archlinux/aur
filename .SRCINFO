@@ -9,6 +9,7 @@ pkgbase = cosmic-screenshot-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = just
+	makedepends = mold
 	depends = xdg-desktop-portal-cosmic-git
 	provides = cosmic-screenshot
 	conflicts = cosmic-screenshot
