@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-widgets-git
 _pkgname="Electron-Widgets"
-pkgver=2.0.3.r0.gbccec92
+pkgver=2.0.4.r0.gf61f63e
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -20,12 +20,13 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
+    'curl'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -51,9 +52,9 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
