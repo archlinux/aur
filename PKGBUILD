@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Copy stdin to stdout and stderr, unbuffered"
 arch=('i686' 'x86_64')
 url="http://www.scylla-charybdis.com/tool.php/${pkgname}"
-license=('custom:CLL')
+license=('LicenseRef-CLL')
 makedepends=('git')
 depends=('glibc')
 source=(${pkgname}-${pkgver}::"git+https://github.com/hilbix/unbuffered.git#tag=unbuffered-${pkgver}")

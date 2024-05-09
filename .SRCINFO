@@ -5,7 +5,7 @@ pkgbase = unbuffered
 	url = http://www.scylla-charybdis.com/tool.php/unbuffered
 	arch = i686
 	arch = x86_64
-	license = custom:CLL
+	license = LicenseRef-CLL
 	makedepends = git
 	depends = glibc
 	source = unbuffered-2.2.0::git+https://github.com/hilbix/unbuffered.git#tag=unbuffered-2.2.0
