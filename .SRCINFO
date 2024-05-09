@@ -1,7 +1,7 @@
 pkgbase = tarantool
 	pkgdesc = Lua application server integrated with a database management system
 	pkgver = 2.11.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tarantool.org
 	arch = x86_64
 	license = BSD
