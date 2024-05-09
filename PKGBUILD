@@ -40,7 +40,7 @@ build() {
 check() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --release $_feature_flags
+    RUST_TEST_THREADS=1 cargo test --frozen --release $_feature_flags
 }
 
 package() {
