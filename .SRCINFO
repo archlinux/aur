@@ -2,6 +2,7 @@ pkgbase = rosary-tauri
 	pkgdesc = A Bible App developed with tauri
 	pkgver = 1.0.0
 	pkgrel = 1
+	url = https://github.com/RoseBlume/Rosary
 	install = rosary-tauri.install
 	arch = x86_64
 	arch = aarch64
