@@ -13,7 +13,8 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/RoseBlume/Rosary-Tauri/releases/download/v$pkgver/rosary_"$pkgver"_amd64.deb")
 sha256sums_x86_64=('ca85f11732765bed78f93f55397b4b4cbb76685088553dad612c5062e3ec651f')
-
+source_aarch64=("https://github.com/RoseBlume/Rosary-Tauri/releases/download/v$pkgver/rosary_"$pkgver"_arm64.deb")
+sha256sums_aarch64=('ed2dc3169d34d91188fb55d39867713856dd02a2360ffe0661cb2e19bd701c3c')
 package(){
 
 	# Extract package data
