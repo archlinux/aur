@@ -1,12 +1,12 @@
 pkgbase = rig+
 	pkgdesc = random identity generator but with some more fun stuff
-	pkgver = 1
-	pkgrel = 2
+	pkgver = 2
+	pkgrel = 3
 	url = https://github.com/qsqcqs/rigp
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = rig
-	source = https://github.com/qsqcqs/rigp/archive/refs/tags/1-2.tar.gz
-	sha256sums = 7dab906f0b03df6859d801c41e48daf594b3dd0de33e377c9506c56fb21d0f95
+	source = https://github.com/qsqcqs/rigp/archive/refs/tags/2-3.tar.gz
+	sha256sums = 26f5c996fe6c7634b29e6f8c008308bc4caf704726bc9e1270529734f36bbf04
 
 pkgname = rig+
