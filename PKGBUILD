@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.38.86.r1.gb471f85
+pkgver=1.39.2.r1.g2001fe4
 _electronversion=26
 _nodeversion=20
 pkgrel=1
@@ -52,17 +52,17 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --categories="System" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    #export npm_config_build_from_source=true
+    export npm_config_build_from_source=true
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     #export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
