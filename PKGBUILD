@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/UnkwUsr/dalarma"
 license=('MIT')
 provides=("dalarma")
+depends=('st' 'wmctrl' 'libnotify')
 makedepends=('git')
 conflicts=('dalarma')
 source=("$pkgname::git+https://github.com/UnkwUsr/dalarma")
