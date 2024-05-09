@@ -10,7 +10,7 @@
 
 _pack=ga
 pkgname=octave-${_pack}
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="Genetic optimization code"
 arch=(any)
@@ -26,7 +26,7 @@ install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
 source=("https://downloads.sourceforge.net/octave/${_archive}")
 noextract=("${_archive}")
-sha512sums=('3ffebbd6058cdfd455c166b8641b78596c315dcece1116198eef67824369dc5cd3a12221ba655caa5895894695cbb05b583cfb98c3cd552e234efd53be14693f')
+sha512sums=('df46d9b4d8c97e61d682ca748bc8b7a554005f7c852fb1b7ab35791d101addb2d697f5f1b5636b60d597967857b4d2e827ac777b627967c02d61ac360d77fa16')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
