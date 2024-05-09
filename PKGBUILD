@@ -15,8 +15,6 @@ source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/Torelli/hyprmi
               )
 noextract=("${pkgname}-${pkgver}.AppImage")
 
-sha256sums_x86_64=('12579978470154f8b3619f561db4dce0e57d8cee6b2cf069b54491a996a7e958'
-                   '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355')
 prepare() {
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
@@ -39,3 +37,5 @@ package() {
     mkdir -p "${pkgdir}/usr/share/licenses/$pkgname"
     ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
+sha256sums_x86_64=('b0e07d2c06ebea5095ee2c1fee722ac58f6b121c96001544ba24aec8705b11c8'
+                   '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355')
