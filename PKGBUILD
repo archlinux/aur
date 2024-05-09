@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.0.11.r1.g398fdf164
+pkgver=3.0.13.r0.g17e1a55c4
 _electronversion=30
-_nodeversion=18
+_nodeversion=20.12.2
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
 arch=('x86_64')
@@ -24,18 +24,19 @@ makedepends=(
     'git'
     'nvm'
     'npm'
-    'go>=1.21'
+    'go>=1.22'
     'base-devel'
+    'curl'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -58,7 +59,6 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
@@ -70,6 +70,7 @@ build() {
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://electronjs.org/headers
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
         export GOPROXY=https://goproxy.cn
@@ -77,7 +78,7 @@ build() {
         echo "Your network is OK."
     fi
     sed "/tar.gz/d;s|AppImage|dir|g" -i electron-builder-linux.yml
-    npm add pnpm
+    npm install -g pnpm@9.0.6
     npx pnpm install --no-frozen-lockfile
     npx pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
