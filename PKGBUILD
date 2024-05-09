@@ -22,7 +22,9 @@ source=("https://github.com/Dwight-Studio/JArmEmu/releases/download/v$pkgver/JAr
 noextract=()
 sha256sums=("1f8a70a2bbc59b38f4bad6cfc9cc9babb2ee45f733cda920a521fc063ba575a7")
 
-build() {}
+build() {
+    cd $srcdir/jarmemu
+}
 
 package() {
     cd $srcdir/jarmemu
