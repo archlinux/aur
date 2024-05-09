@@ -7,12 +7,6 @@ post_install() {
   echo "     reboot"
 }
 
-post_upgrade() {
-  echo ':: Reminder: 3.17.3v has DNS LEAK and it is unable to connect as usual.'
-  echo '     The version above needs heed while using it and should be avoided.'
-  echo ':: 3.17.4v fix the issue present in previous version.'
-}
-
 pre_install() {
   if [ -d /var/lib/nordvpn/data/ ]; then
   	chattr -i /var/lib/nordvpn/data/*
