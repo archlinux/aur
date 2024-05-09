@@ -5,11 +5,11 @@
 
 pkgname=springlobby-git
 pkgver=0.274.4.g290f1fa73
-pkgrel=2
+pkgrel=3
 pkgdesc="A free cross-platform lobby client for the Spring RTS project, development version."
 arch=('i686' 'x86_64')
 url="https://github.com/springlobby/springlobby/wiki"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('wxwidgets-gtk3' 'libnotify' 'curl' 'hicolor-icon-theme' 'alure' 'minizip')
 optdepends=() 
 makedepends=('git' 'cmake' 'boost')
