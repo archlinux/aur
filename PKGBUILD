@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=drawio-nativefier
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=2
 pkgdesc="draw.io desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -25,7 +25,7 @@ build() {
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
     --single-instance \
-    --electron-version 30.0.2 \
+    --electron-version 30.0.3 \
     --honest \
     "${url}"
 }
