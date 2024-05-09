@@ -7,9 +7,9 @@ pkgbase = perl-test-distribution
 	license = PerlArtistic
 	license = GPL
 	makedepends = perl-module-build
-	depends = perl-file-find-rule
-	depends = perl-pod-coverage
-	depends = perl-test-pod
+	depends = perl-file-find-rule>=0.03
+	depends = perl-pod-coverage>=0.17
+	depends = perl-test-pod>=0.95
 	depends = perl-test-pod-coverage
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/S/SR/SRSHAH/Test-Distribution-2.00.tar.gz

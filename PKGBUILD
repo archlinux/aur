@@ -9,7 +9,7 @@ pkgdesc="Perl/CPAN Module Test::Distribution: perform tests on all modules of a 
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-find-rule' 'perl-pod-coverage' 'perl-test-pod' 'perl-test-pod-coverage')
+depends=('perl-file-find-rule>=0.03' 'perl-pod-coverage>=0.17' 'perl-test-pod>=0.95' 'perl-test-pod-coverage')
 makedepends=('perl-module-build')
 url='https://metacpan.org/dist/Test-Distribution'
 source=("https://cpan.metacpan.org/authors/id/S/SR/SRSHAH/Test-Distribution-${pkgver}.tar.gz")
