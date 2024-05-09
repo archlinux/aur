@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=firefly-iota-desktop-bin
-pkgver=2.0.9
+pkgver=2.0.10
 _electronversion=27
-pkgrel=2
+pkgrel=1
 pkgdesc="Manage your IOTA assets directly from your computer with both software and hardware wallet support. Earn staking rewards and participate in governance votes."
 arch=('x86_64')
 url="https://firefly.iota.org/"
@@ -23,8 +23,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/desktop-iota-${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1fecfb2a80d416b33e8862d92e1e7c5c2f1f2ca86caf766e92e6f1cc543b334a'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('cdbedf97ad9cda1c10227a8795c8633f4d55cece508113354a5cfc303e3435b7'
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
