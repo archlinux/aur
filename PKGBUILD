@@ -1,8 +1,8 @@
 # Maintainer: Josef Vybíhal <josef.vybihal@gmail.com>
 
 pkgname=boundary-desktop
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Desktop Client for Boundary"
 arch=('x86_64')
 url="https://www.boundaryproject.io/"
@@ -12,10 +12,11 @@ depends=("gtk3" "libnotify" "nss" "libxtst" "xdg-utils" "at-spi2-core" "libdrm" 
 # Recommends: pulseaudio | libasound2
 # Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
 source=("${pkgname}_${pkgver}_linux_amd64.deb::https://releases.hashicorp.com/boundary-desktop/${pkgver}/${pkgname}_${pkgver}_amd64.deb")
-b2sums=('9790de157e5bde131b1961a407b2974f7fa86621a3143dc0f59f8a897f6e4adc6ad322701d37eb3960139a2eb6a290f9d0223d066720cc50833d645d96e6ce12')
+b2sums=('7a6027ebcc23a50477aeb853e7dfe1e5f6a5795bfb5462d5c7025e7cf26d285bb0ec6369fdebda402d2d0033256c3d50af71c77a91783c91cc325369a70f2bbf')
 
 package() {
-  msg2 "Extracting the data.tar.xz"
+
+  msg2 "Extracting the data.tar.zst"
   tar -xf data.tar.zst -C "${pkgdir}/"
 
   # .deb has 775
