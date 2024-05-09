@@ -1,12 +1,12 @@
 pkgbase = adventuresofdemo-assets
 	pkgdesc = Adventures of Demo assets
-	pkgver = 1.3.6.3
+	pkgver = 1.3.6.5
 	pkgrel = 1
 	url = https://github.com/Wohlstand/TheXTech
 	arch = any
 	license = GPL
 	depends = unzip
-	source = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.3/thextech-adventure-of-demo-assets-full.7z
-	sha256sums = SKIP
+	source = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.6.5/thextech-adventure-of-demo-assets-full.7z
+	sha256sums = 8b8a2708acf6ffd577b5823ca7f66e5e17e914db2c803f47d8b00065829c3599
 
 pkgname = adventuresofdemo-assets
