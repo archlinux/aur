@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
-_pkgname=google-re2
+_pkgname=google_re2
 pkgname=python-re2
-pkgver=1.1
+pkgver=1.1.20240501
 pkgrel=1
 epoch=
 pkgdesc="RE2 Python bindings"
@@ -9,8 +9,8 @@ arch=('any')
 url="https://github.com/google/re2"
 license=('BSD')
 groups=()
-depends=('re2>=1:20230801-1')
-makedepends=('python-setuptools' 'pybind11')
+depends=('re2>=1:20240501-1')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'pybind11' 'python-installer')
 checkdepends=()
 optdepends=()
 provides=()
@@ -22,12 +22,12 @@ install=
 changelog=
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('d3a9467ee52b46ac77ca928f6d0cbeaccfd92f03ca0f0f65b9df6a95184f3a1c')
+sha256sums=('1a291ae834ec4230c71671b0162999ec76c0b88fbd33ab4d362a07fa9a7d37b4')
 validpgpkeys=()
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 check() {
@@ -36,7 +36,7 @@ check() {
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	find $pkgdir -type f -exec chmod 644 {} \;
 	find $pkgdir -type d -exec chmod 755 {} \;
 }
