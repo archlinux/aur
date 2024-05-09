@@ -1,7 +1,7 @@
 # Maintainer: Michael Thies <mail@mhthies.de>
 
 pkgname=justbuild
-pkgver='1.2.5'
+pkgver='1.3.0'
 pkgrel=1
 pkgdesc="A generic build system supporting multi-repository builds"
 arch=('x86_64')
@@ -12,8 +12,8 @@ makedepends=('gcc' 'wget' 'cli11' 'microsoft-gsl' 'nlohmann-json' 'pandoc')
 conflicts=('just' 'just-git' 'just-js')
 source=("justbuild-${pkgver}.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v${pkgver}.tar.gz"
         "gsl.pc")
-sha256sums=('9f0c336fc333b64e77622b2956b4c9733f998e2b0db575827f492da87703efbe'
-            'SKIP')
+sha256sums=('4f459ba5f88c2474c23bd3257a4a50653860c97fb5104750f2fdc3839f5c5d6f'
+            'c08f3e53356b1b258bb195ae0c2437f53269d7751d94800a46f75a3465346afe')
 
 build() {
     cd "${srcdir}/justbuild-${pkgver}"
@@ -41,6 +41,7 @@ package() {
     install -m 755 -Dt "${pkgdir}/usr/bin" "${srcdir}/build/out/bin/just" 
     install -m 755 -Dt "${pkgdir}/usr/bin" "${srcdir}/build/out/bin/just-mr"
     install -m 755 -DT "${srcdir}/justbuild-${pkgver}/bin/just-import-git.py" "${pkgdir}/usr/bin/just-import-git"
+    install -m 755 -DT "${srcdir}/justbuild-${pkgver}/bin/just-deduplicate-repos.py" "${pkgdir}/usr/bin/just-deduplicate-repos"
 	
     # bash completion
     mkdir -p "${pkgdir}"/usr/share/bash-completion/completions
