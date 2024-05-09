@@ -1,6 +1,6 @@
 pkgbase = decentr-browser
 	pkgdesc = A secure browser that gives you access to the blockchain
-	pkgver = 1.5.5
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://decentr.net
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = decentr-browser
 	provides = decentr-browser
 	conflicts = decentr-browser
 	conflicts = decentr-browser-unstable-bin
-	source = https://decentr.net/Ubuntu_x64_Decentr_1.5.5.zip
-	sha256sums = 30e8977d71f20eced2c6c346ac1cb201a3b5f788e3a3e1ce491a3c18c4b4a365
+	source = https://decentr.net/Ubuntu_X64_Decentr_1.6.0.zip
+	sha256sums = b89d1ab0fa0b90bc1faf90def6f0fadd45589d4f60e0f5c75aa9c3cbb4cef1f9
 
 pkgname = decentr-browser
