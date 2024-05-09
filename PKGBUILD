@@ -19,6 +19,7 @@ makedepends=(
   'clang'
   'git'
   'just'
+  'mold'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -41,7 +42,12 @@ build() {
   cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  just build-vendored
+
+  # use mold instead of lld to speed up build
+  RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+
+  # use nice to build with lower priority
+  nice just build-vendored
 }
 
 package() {
