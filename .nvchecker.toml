@@ -1,3 +1,4 @@
 [buildbot]
-source = "pypi"
-pypi = "buildbot"
+source = "git"
+git = "https://github.com/buildbot/buildbot.git"
+prefix = "v"
