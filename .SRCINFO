@@ -1,13 +1,12 @@
 pkgbase = libxml2
 	pkgdesc = XML C parser and toolkit
 	pkgver = 2.12.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = python
-	depends = icu
 	depends = ncurses
 	depends = readline
 	depends = xz
