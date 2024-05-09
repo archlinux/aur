@@ -4,14 +4,14 @@ _name="pytorch-msssim"
 pkgname=python-${_name}-git
 provides=("python-${_name}")
 conflicts=("python-${_name}")
-pkgver=r135.48e65c7
+pkgver=r155.b057b07
 pkgrel=1
 pkgdesc="Fast and differentiable MS-SSIM and SSIM for pytorch"
 url="https://github.com/VainF/${_name}"
 license=('MIT')
-arch=('x86_64')
+arch=('any')
 depends=('python-pytorch')
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel git python-pillow)
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -23,15 +23,23 @@ pkgver() {
   )
 }
 
+check() {
+    cd ${srcdir}/${_name}/tests
+    #python tests_comparisons_2d3d.py  # req skimage
+    #python tests_comparisons_skimage.py  # req skimage
+    #python tests_comparisons_tf_skimage.py  # req. skimage
+    python tests_loss.py  # req. pillow
+    #python tests_cuda.py  # req. cuda
+}
+
 build() {
-  cd ${srcdir}/${_name}
-  python setup.py build
+    cd ${srcdir}/${_name}
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${srcdir}/${_name}
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd ${srcdir}/${_name}
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
 
