@@ -1,11 +1,14 @@
 pkgbase = python-django-webpack-loader
 	pkgdesc = Transparently use webpack with django
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/django-webpack/django-webpack-loader
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-django
 	depends = python-lxml
 	depends = python-six
