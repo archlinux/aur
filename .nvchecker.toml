@@ -1,0 +1,7 @@
+[google-chrome-beta]
+source = "apt"
+mirror = "https://dl.google.com/linux/chrome/deb/"
+pkg = "google-chrome-beta"
+suite = "stable"
+repo = "main"
+strip_release = true
