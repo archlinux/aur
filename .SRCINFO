@@ -1,5 +1,5 @@
 pkgbase = perl-lingua-stem
-	pkgdesc = Stemming of words in various languages
+	pkgdesc = Perl/CPAN Module Lingua::Steam: Stemming of words in various languages
 	pkgver = 2.31
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Lingua-Stem
@@ -16,7 +16,7 @@ pkgbase = perl-lingua-stem
 	depends = perl-snowball-swedish
 	depends = perl-text-german
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SN/SNOWHARE/Lingua-Stem-2.31.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/S/SN/SNOWHARE/Lingua-Stem-2.31.tar.gz
 	md5sums = 8603031c938cfd75266a18da132d33c4
 
 pkgname = perl-lingua-stem
