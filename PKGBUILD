@@ -2,8 +2,8 @@
 
 _name='djangosaml2'
 pkgname='python-django-saml2'
-pkgver=1.9.2
-pkgrel=2
+pkgver=1.9.3
+pkgrel=1
 pkgdesc='A Django application that builds a Fully Compliant SAML2 Service Provider'
 arch=('any')
 url="https://github.com/IdentityPython/$_name"
@@ -16,7 +16,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7c1dc5573cba1ab16a4bed5fd5e619d0d6605a79a434fda4ce3c8429e3cf033e')
+sha256sums=('246a81ff17942fa726437669300c4929c018e0f957600b6b48aebac52235e5c3')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
