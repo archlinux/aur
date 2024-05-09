@@ -1,0 +1,5 @@
+[python-cryptolyzer]
+source = "gitlab"
+gitlab = "coroner/CryptoLyzer"
+use_max_tag = "true"
+prefix = "v"
