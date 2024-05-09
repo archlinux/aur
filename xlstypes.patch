@@ -12,3 +12,4 @@
  #include <sys/types.h>
  
  typedef unsigned char		BYTE;
+

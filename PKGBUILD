@@ -12,7 +12,7 @@ makedepends=('autoconf-archive')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/libxls/libxls/archive/v${pkgver}.tar.gz" 
         "xlstypes.patch")
 sha512sums=('9eb8dc78d9070ebe5af2629a358cea0f41db9e4accdfc2651093eaffaaeff5595e986346fa41a3b57740234f4a70d5aa394e5234f90e94ba41a782de574e4d00'
-            'fc271f6a76f6177f90fe7eab674a9d053a3608b2ca60558d5e306b51a12573ecd55c21b3f0505b4ce33bcb4412396922ac33f07e5875c943ca868c7c7cc1da76')
+            '2cb582e062fc5966e21f19a164cbb58a7a5b4842c5571e6ba7f73e2657e98e585dc082c513499887dd272039dc3e76a018501b08c80bd2b05b66df6e2f049265')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
