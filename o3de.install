@@ -1,16 +1,20 @@
 _engver=23.10.3
 
 o3de_python_install() {
-    if [ ! "$(logname 2>&1 >/dev/null)" ]; then
-        _user=$(logname)
-        _group=$(id -g -n ${_user})
-    else
-        _user=root
-        _group=root
+    # Try to get local user
+    _user=$(logname)
+    if [ -z $_user ] || [ $_user = "root" ]; then
+        # logname may not work for certain package helpers such as pamac
+        _user=$(who -q | head -1 | awk -e '{print $1;}')
     fi
+    if [ -z $_user ] || [ $_user = "root" ]; then
+        echo Failed to automatically run python installation as user. Please chown /opt/O3DE/${_engvar} as your user then run /opt/O3DE/${_engver}/python/get_python.sh before launching O3DE.
+        return 1
+    fi
+    
+    _group=$(id -g -n ${_user})
 
     # Change ownership to user
-    # Not entirely sure if this is still required
     chown -R ${_user}:${_group} /opt/O3DE/${_engver}
 
     # Run O3DE provided python install script as user
@@ -29,3 +33,4 @@ post_install() {
 post_upgrade() {
     o3de_python_install
 }
+
