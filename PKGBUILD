@@ -5,7 +5,7 @@
 
 pkgname=seahub
 pkgver=11.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='The web frontend for seafile server'
 arch=('any')
 url='https://github.com/haiwen/seahub'
@@ -40,7 +40,7 @@ depends=(
 optdepends=(
     'python-pymysql: Installation script'
     'python-wsgidav-seafile: Webdav support'
-    'python-django-pylibmc: Memcached support'
+    'python-pylibmc: Memcached support'
     'ffmpeg: For video thumbnails'
 )
 source=(

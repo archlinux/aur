@@ -1,7 +1,7 @@
 pkgbase = seahub
 	pkgdesc = The web frontend for seafile server
 	pkgver = 11.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seahub
 	arch = any
 	license = Apache
@@ -32,7 +32,7 @@ pkgbase = seahub
 	depends = python-ldap
 	optdepends = python-pymysql: Installation script
 	optdepends = python-wsgidav-seafile: Webdav support
-	optdepends = python-django-pylibmc: Memcached support
+	optdepends = python-pylibmc: Memcached support
 	optdepends = ffmpeg: For video thumbnails
 	options = !strip
 	source = seahub-11.0.8-server.tar.gz::https://github.com/haiwen/seahub/archive/v11.0.8-server.tar.gz
