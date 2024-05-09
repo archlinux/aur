@@ -10,12 +10,13 @@ pkgname=(
   libxml2-docs
 )
 pkgver=2.12.6
-pkgrel=3
+pkgrel=4
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
 license=(MIT)
 depends=(
+  icu
   ncurses
   readline
   xz
@@ -59,6 +60,7 @@ build() {
     --localstatedir=/var
     --disable-static
     --with-history
+    --with-icu
     --with-legacy
     --with-python=/usr/bin/python
     --with-threads
