@@ -32,5 +32,5 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname"
         make install DESTDIR="${pkgdir}"
-        install -m 644 -Dt "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$_pkgname/COPYING"
+        install -m 644 -Dt "$pkgdir/usr/share/licenses/$_pkgname" "$srcdir/$_pkgname/COPYING"
 }
