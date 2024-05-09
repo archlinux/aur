@@ -2,15 +2,15 @@
 
 pkgname=eww-x11
 pkgver=0.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A standalone widget system for X11 made in Rust."
 url='https://github.com/elkowar/eww'
 arch=(x86_64)
 license=(MIT)
 makedepends=(cargo)
 depends=(glibc gcc-libs 'gtk3>=3.22' pango cairo gdk-pixbuf2 glib2 libdbusmenu-gtk3)
-conflicts=(eww)
-provides=(eww)
+conflicts=(eww eww-systemd)
+provides=(eww eww-systemd)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/elkowar/eww/archive/refs/tags/v$pkgver.tar.gz"
     'eww.service'
     'eww-open@.service')
