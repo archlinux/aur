@@ -7,6 +7,7 @@ pkgbase = arc_unpacker-git
 	license = GPL
 	makedepends = boost
 	makedepends = cmake
+	makedepends = git
 	depends = boost-libs
 	depends = libpng
 	depends = libjpeg-turbo
