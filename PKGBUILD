@@ -15,10 +15,6 @@ package() {
 
     # Packaging files
     cd $srcdir
-    for dir in *; do
-      if [[ -d "$dir" ]]; then
-      cp -r "$dir" "$pkgdir/usr/share/games/$_pkgname"
-     fi
-    done
-    find -type f \( -iname "*.txt" -o -iname "*.ini" -o -iname "*.lvlx" \) -exec cp {} "$pkgdir/usr/share/games/$_pkgname" \;
+    rm -rf thextech-smbx13-assets-full.7z
+    cp -r * "$pkgdir/usr/share/games/$_pkgname"
 }
