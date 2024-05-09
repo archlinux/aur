@@ -9,6 +9,7 @@ pkgbase = cosmic-workspaces-git
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
+	makedepends = mold
 	depends = libinput
 	depends = libxkbcommon
 	depends = mesa
