@@ -1,0 +1,103 @@
+diff --unified --recursive --text omi-1.9.0-0.orig/Unix/configure omi-1.9.0-0.new/Unix/configure
+--- omi-1.9.0-0.orig/Unix/configure	2024-05-09 07:15:59.648845813 +0000
++++ omi-1.9.0-0.new/Unix/configure	2024-05-09 07:17:27.996159659 +0000
+@@ -2227,28 +2227,28 @@
+ ## Find openssl program.
+ ##
+ 
+-if [ ! -x "\`which openssl\`" ]; then
+-    echo "\$0: 'openssl' program not found on path. Please add to path an try again".
+-    exit 1
+-fi
++# if [ ! -x "\`which openssl\`" ]; then
++#     echo "\$0: 'openssl' program not found on path. Please add to path an try again".
++#     exit 1
++# fi
+ 
+ ##
+ ## Attempt to resolve OpenSSL libdir.
+ ##
+ 
+-openssllibdir=\`$buildtool openssllibdir $buildtoolopts\`
+-
+-if [ -n "\$openssllibdir" ]; then
+-    $ldlibrarypath=\$openssllibdir
+-    export $ldlibrarypath
+-fi
++# openssllibdir=\`$buildtool openssllibdir $buildtoolopts\`
+ 
+-openssl version > /dev/null 2> /dev/null
+-
+-if [ "\$?" != "0" ]; then
+-    echo "\$0: openssl program is not executable."
+-    exit 1
+-fi
++# if [ -n "\$openssllibdir" ]; then
++#     $ldlibrarypath=\$openssllibdir
++#     export $ldlibrarypath
++# fi
++
++# openssl version > /dev/null 2> /dev/null
++
++# if [ "\$?" != "0" ]; then
++#     echo "\$0: openssl program is not executable."
++#     exit 1
++# fi
+ 
+ ##
+ ## Create directories.
+@@ -2388,35 +2388,35 @@
+ ## Install certificates.
+ ##
+ 
+-hostname=`$buildtool hostname $buildtoolopts`
+-cnffile=$outputdirrelative/ssl.cnf
+-keyfile=\$destdir/$certsdir/omikey.pem
+-certfile=\$destdir/$certsdir/omi.pem
+-
+-if [ -f "\$keyfile" -a -f "\$certfile" ]; then
+-  echo
+-  echo "************************************************************"
+-  echo "* Warning: The certificate and keyfile were not generated  *"
+-  echo "* since they already exist.                                *"
+-  echo "************************************************************"
+-else
+-  openssl req -x509 -sha256 -newkey rsa:2048 -days 3650 -nodes -config \$cnffile -keyout \$keyfile -out \$certfile
+-  chmod 600 \$keyfile
+-  chmod 644 \$certfile
+-fi
++# hostname=`$buildtool hostname $buildtoolopts`
++# cnffile=$outputdirrelative/ssl.cnf
++# keyfile=\$destdir/$certsdir/omikey.pem
++# certfile=\$destdir/$certsdir/omi.pem
++#
++# if [ -f "\$keyfile" -a -f "\$certfile" ]; then
++#   echo
++#   echo "************************************************************"
++#   echo "* Warning: The certificate and keyfile were not generated  *"
++#   echo "* since they already exist.                                *"
++#   echo "************************************************************"
++# else
++#   openssl req -x509 -sha256 -newkey rsa:2048 -days 3650 -nodes -config \$cnffile -keyout \$keyfile -out \$certfile
++#   chmod 600 \$keyfile
++#   chmod 644 \$certfile
++# fi
+ 
+ ##
+ ## Configure PAM.
+ ##
+ 
+-$outputdirrelative/installpam
++# $outputdirrelative/installpam
+ 
+ ##
+ ## Install 'uninstall' script.
+ ##
+ 
+-cp $outputdirrelative/uninstall \$destdir/$bindir/omiuninstall
+-chmod 755 \$destdir/$bindir/omiuninstall
++# cp $outputdirrelative/uninstall \$destdir/$bindir/omiuninstall
++# chmod 755 \$destdir/$bindir/omiuninstall
+ 
+ ##
+ ## Print success message!
