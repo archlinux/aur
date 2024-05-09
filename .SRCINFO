@@ -1,0 +1,21 @@
+pkgbase = smbx
+	pkgdesc = Super Mario Bros. X is a Mario fan game originally made by Andrew Spinks in the year 2009 and supported by him up to 2011. This game combines various aspects of Super Mario Bros., Super Mario Bros. 2, Super Mario Bros. 3, Super Mario World, and other Mario games.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/smbx
+	arch = pentium4
+	arch = i386
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = thextech-bin
+	depends = smbx-assets
+	depends = wget
+	depends = unzip
+	depends = yad
+	source = https://gitlab.com/linuxbombay/smbx/-/archive/1.0.0/smbx-1.0.0.tar.bz2
+	sha256sums = 63506e3f44e4c44e0f830b72e449d1fc99c602fb3a340085a6ae61105df7d2a1
+
+pkgname = smbx
