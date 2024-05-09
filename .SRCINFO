@@ -1,0 +1,13 @@
+pkgbase = qwt-qt6
+	pkgdesc = Qt Widgets for Technical Applications (qt6)
+	pkgver = 6.3.0
+	pkgrel = 1
+	url = http://qwt.sourceforge.net
+	arch = any
+	license = custom:qwt
+	makedepends = qt6-base
+	depends = qt6-svg
+	source = http://downloads.sourceforge.net/qwt/qwt-6.3.0.tar.bz2
+	sha256sums = dcb085896c28aaec5518cbc08c0ee2b4e60ada7ac929d82639f6189851a6129a
+
+pkgname = qwt-qt6
