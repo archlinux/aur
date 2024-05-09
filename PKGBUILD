@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=microsoft-copilot-nativefier
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Microsoft Copilot desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -26,7 +26,7 @@ build() {
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
     --single-instance \
-    --electron-version 30.0.2 \
+    --electron-version 30.0.3 \
     "${url}"
 
     # --tray \
