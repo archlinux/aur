@@ -9,6 +9,7 @@ pkgbase = cosmic-osd-git
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
+	makedepends = mold
 	depends = libpulse
 	depends = libxkbcommon
 	depends = systemd-libs
