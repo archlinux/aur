@@ -3,7 +3,7 @@
 
 pkgname=python-bokeh
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive Web Plotting for Python'
 arch=('any')
 url='http://bokeh.pydata.org/'
@@ -30,7 +30,11 @@ optdepends=('python-selenium: svg export'
             'python-psutil: detailed memory logging'
             'python-networkx: plot directly from NetworkX data'
             'python-sphinx: support sphinx documentation')
-makedepends=('python-build' 'python-installer' 'python-setuptools-git-versioning')
+makedepends=('python-build'
+             'python-installer'
+             'python-wheel'
+             'python-setuptools-git-versioning'
+             'python-colorama')
 
 build() {
   cd "$srcdir/bokeh-$pkgver"

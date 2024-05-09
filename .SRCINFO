@@ -1,13 +1,15 @@
 pkgbase = python-bokeh
 	pkgdesc = Interactive Web Plotting for Python
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bokeh.pydata.org/
 	arch = any
 	license = BSD
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools-git-versioning
+	makedepends = python-colorama
 	depends = python-jinja
 	depends = python-contourpy
 	depends = python-numpy
