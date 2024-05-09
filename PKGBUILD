@@ -1,29 +1,31 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=superslicer-bin
-pkgver=2.4.58.5
+pkgver=2.5.59.9
 _pkgtag=$pkgver
 _appimage=SuperSlicer-ubuntu_18.04-$_pkgtag.AppImage
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Creality, RepRap, Makerbot, Ultimaker etc.) (binary AppImage)"
-arch=("$CARCH")
+arch=('x86_64')
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
 depends=('zlib' 'fuse2' 'glu')
-options=('!strip')
+options=('!strip' '!debug')
 replaces=('slic3r++')
 conflicts=('superslicer' 'superslicer-git' 'superslicer-prerelease')
 source=("$url/releases/download/$_pkgtag/$_appimage"
         "superslicer.patch"
         )
-sha256sums=('f3e450150833e2c50fbc788d23898cc6c5b4bc2a3f54a961cb21f2db09e1a8ea'
+sha256sums=('bb7eb22cbe309b0688f74d1d14a5c50d3c474705bcb51ce65b364e970dec5dec'
             'a2d8092e5ec12e96d487d55b564f56c2df5bd41a3be066734b94465695a6c404')
+b2sums=('5df6a081f280316c7a3e753f004f92a4ce8fda7d7b49b3652cb5a12f8b2d676d1463b8c40173d041368db77c2ca9177ec3f687335602f06cc07ac5cebff1929e'
+        '7547a6cc945948e637413b55af6a5a68fb6c08e8d5b3c03b137134cc5ed4f399b3d666985be5c2103240d3ae56d591ab9f02b5237a01978d422673247fef7061')
 noextract=("${_appimage}")
 
 prepare() {
     chmod +x ${srcdir}/${_appimage}
     ${srcdir}/${_appimage} --appimage-extract SuperSlicer.desktop
-    ${srcdir}/${_appimage} --appimage-extract resources/icons
+    ${srcdir}/${_appimage} --appimage-extract 'resources/icons/SuperSlicer_*px.png'
 }
 
 build() {
@@ -34,22 +36,27 @@ build() {
     patch -Np0 < ${srcdir}/superslicer.patch
 
     # Fix permissions; .AppImage permissions are 700 for all directories
-    chmod -R a-x+rX squashfs-root/resources
+    #chmod -R a-x+rX squashfs-root/resources
 }
 
 package() {
     # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
+    install -Dm 755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
+    #install -dm 755 "${pkgdir}/opt/${pkgname}/"
+    #cp "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/SuperSlicer.desktop"\
+    install -Dm 644 "${srcdir}/squashfs-root/SuperSlicer.desktop"\
             "${pkgdir}/usr/share/applications/SuperSlicer.desktop"
 
     # Icon images
-    install -dm755 "${pkgdir}/usr/share/"
-    cp -a "${srcdir}/squashfs-root/resources/icons" "${pkgdir}/usr/share/"
+    # Copy icons
+    for i in 32 128 192 ; do
+        install -Dm 0644 "${srcdir}/squashfs-root/resources/icons/SuperSlicer_${i}px.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/SuperSlicer.png"
+    done
 
     # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin"
+    install -dm 755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/superslicer"
 }
