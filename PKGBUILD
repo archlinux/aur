@@ -32,4 +32,4 @@ package() {
 #clean() {
 #	rm -r src target fetcher-rs.tar.gz pkg
 #}
-sha256sums=('72dcd74227f6f4e3bfad5a7359855a3c4235058ed38cf7d7e5f4f984311fc3bf')
+sha256sums=('7b64058d55047b4c5e91f01e1aa46fd096862ef6cc42225e7c84b737f9bddb7b')
