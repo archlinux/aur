@@ -6,7 +6,7 @@
 pkgname="odoo-17"
 _pkgname="odoo"
 pkgver=17.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Odoo. Open Source Apps To Grow Your Business."
 url="https://odoo.com/"
 arch=("any")
@@ -23,7 +23,7 @@ source=("https://nightly.odoo.com/$pkgver/nightly/src/${_pkgname}_$pkgver.latest
         "odoo.service"
         "odoo.sysusers"
         "odoo.tmpfiles")
-b2sums=('623b9a1074bfa10082c70cd28a22d378d04955859b9b76cae69b50f77717036d9e722fec1e69e04c0b1ab4c747e656a1e8a888167a84e42bdb87e2a752079f17'
+b2sums=('SKIP'
         '5ac1e505808280b824a364bc821014e219c42677ded3be1fb066bf356798e571b3bab47bc7bba5947268c738de3d68c94c8d592597593f2f457e83b3321a1ff9'
         '1ef682d87ba12dd8a185ba36701b737f8feb0c1e6eb4b23302a0dc5930ef63c990af65bc45a36313f879a29a23cbdb602e7fc34ba9cee2e46d9a3d8407d5751a'
         'a14636791b4f0ae76da8a69e95a6926287f5cfa215499be9a6880b6b63fa2081ecdd32ea0dc10fe4d7fe2d14968ac4ed08701c972bc2170e9f4dc36efa406c02'
