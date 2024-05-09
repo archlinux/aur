@@ -1,0 +1,5 @@
+[wxmaxima]
+source = "github"
+github = "wxmaxima-developers/wxmaxima"
+use_latest_release = "true"
+prefix = "Version-"

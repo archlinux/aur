@@ -5,12 +5,12 @@
 # Contributor: Vinay S Shastry <vinayshastry@gmail.com>
 
 pkgname=wxmaxima
-pkgver=24.02.2
+pkgver=24.05.0
 pkgrel=1
 pkgdesc="A wxWidgets GUI for the computer algebra system Maxima"
 arch=(x86_64)
 url="https://github.com/${pkgname}-developers/${pkgname}"
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(maxima wxwidgets-gtk3 webkit2gtk)
 makedepends=(cmake)
 checkdepends=(xorg-server-xvfb)
@@ -19,7 +19,7 @@ optdepends=('bash-completion: for completion when using bash'
 source=(${pkgname}-${pkgver}::${url}/archive/Version-${pkgver}/${pkgname}-Version-${pkgver}.tar.gz
   ${pkgname}-${pkgver}.asc::${url}/releases/download/Version-${pkgver}/Version-${pkgver}.tar.gz.asc)
 validpgpkeys=('53F047CE66B91B0F724C545D5C86C0E4211D5B8E') # Gunter Königsmann <wxmaxima@physikbuch.de>
-sha512sums=('012becedd9668de042596bbe81628962e91d5d0dba876d7195dc3bf00075ac7cc680e8dfa6fd5613077ae01bd5532eb2dc5401e6a1f0603612fef5dc0ed014cf'
+sha512sums=('62a5911220fc1a9403ca3af11110b9043cffcf0b3a1ef6e6a87f74e63de6a00e2bf809db1a05fe2b5bc40da155746c05d68ff247c424c63a6bd6724b5fe12be9'
             'SKIP')
 
 build() {
