@@ -1,11 +1,11 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=signifinder
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
-pkgdesc="Implementations of transcriptional cancer signatures"
+pkgrel=1
+pkgdesc="Collection and implementation of public transcriptional cancer signatures"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('AGPL-3.0-only')
@@ -29,6 +29,7 @@ depends=(
   r-org.hs.eg.db
   r-patchwork
   r-rcolorbrewer
+  r-sparrow
   r-spatialexperiment
   r-summarizedexperiment
   r-survminer
@@ -49,8 +50,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f24a46dbbbc9b688450e9f2a0e2e221e')
-b2sums=('fba1b218166a5dcfe58b773bceab2f987eb8db9fd70197767decc5b8120954e1277f5c5aed25b775174cce214cc878d3428fa3b44ae9d6452773690a5c8fd07a')
+md5sums=('1d53f15acfd9181d1fe5b78e93891373')
+b2sums=('b6a7efe722e9929012bc74aef4a7d3f8f0200066aa78ab3e88f25dbe3cc346dd8395091da54e37a13d727b538bb57e1e7ad298a81267b70c0717558e121ddbdd')
 
 build() {
   mkdir build
