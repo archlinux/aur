@@ -2,14 +2,14 @@
 
 _pkgname=foomuuri
 pkgname=foomuuri-git
-pkgver=r0.0000000
-pkgrel=1
+pkgver=r197.4a64873
+pkgrel=2
 pkgdesc="Multizone bidirectional nftables firewall"
 arch=('x86_64')
 url="https://github.com/FoobarOy/foomuuri"
 license=('GPL-2.0-or-later')
 depends=('python' 'dbus-python' 'python-systemd' 'python-gobject' 'python-requests')
-makedepends=('make' 'flake8' 'python-pylint')
+makedepends=('make' 'flake8' 'python-pylint' 'git')
 conflicts=('foomuuri')
 provides=('foomuuri')
 source=("git+https://github.com/FoobarOy/foomuuri.git")
@@ -32,5 +32,5 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname"
         make install DESTDIR="${pkgdir}"
-        install -m 644 -Dt "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/foomuuri-$pkgver/COPYING"
+        install -m 644 -Dt "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$_pkgname/COPYING"
 }
