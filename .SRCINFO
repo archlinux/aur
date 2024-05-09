@@ -1,0 +1,20 @@
+pkgbase = proton-mail-export
+	pkgdesc = Allows to export emails as eml files
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://proton.me/support/proton-mail-export-tool
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = clang
+	makedepends = go
+	makedepends = zip
+	makedepends = unzip
+	depends = gcc-libs
+	depends = glibc
+	options = !debug
+	source = git+https://github.com/ProtonMail/proton-mail-export.git#tag=v1.0.1
+	sha256sums = SKIP
+
+pkgname = proton-mail-export

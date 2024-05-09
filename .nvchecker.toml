@@ -1,0 +1,5 @@
+[proton-mail-export]
+source = 'github'
+github = 'ProtonMail/proton-mail-export'
+use_max_tag = true
+prefix = 'v'
