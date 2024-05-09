@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=openai-chatgpt-nativefier
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="OpnenAI ChatGPT desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -26,7 +26,7 @@ build() {
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
     --single-instance \
-    --electron-version 30.0.2 \
+    --electron-version 30.0.3 \
     --honest \
     --internal-urls "((.*?)(auth.openai.com)|(.*?)(chatgpt.com))" \
     "${url}"
@@ -53,4 +53,4 @@ package() {
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
 sha256sums=('9c55eca10f08761429d2b7b977c7aafc3c09789a9d1ec945d814d7de9d2b0203'
-            '6c806d5eef061f8f65c875295b2281cadb9aebe4e5f8c3aa7825fb534512e531')
+            '04ed8323dbdf9f2c4741fa05f171e2016feb9c51a5ca52917ab05785b71608f7')
