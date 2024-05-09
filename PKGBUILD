@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zachary Siedlecki <zacharysiedlecki01@gmail.com>
 pkgname=superfile-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Pretty fancy and modern file manager in terminal file manager"
 arch=(
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/downl
 #source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-v${pkgver}-arm.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86-64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-v${pkgver}-amd64.tar.gz")
 sha256sums=('cd6016ddc3148470a63564380bca1d4499ecc5fa3a89574c6a4cf4053dfcc1e4')
-sha256sums_aarch64=('f2d22f35b8e356b4e13368c09892788e52ac7916a0fd4949961ba639d0900a4a')
-sha256sums_x86_64=('a4d99be74dd6489f5809d9fa891744fc40765ad5f2c41c5faa6952147712cef8')
+sha256sums_aarch64=('79c2dec8114766dfd3df7f58d096a6601eb53d8792c539dd8f72a8968cc5e84c')
+sha256sums_x86_64=('b542e3d1de014e7fdef41a4975d50cbf76004a9cfe46526c661c5c184d9bd0c2')
 package() {
     install -Dm755 "${srcdir}/dist/${pkgname%-bin}-linux-v${pkgver}-"*/spf "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
