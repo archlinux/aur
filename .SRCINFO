@@ -1,6 +1,6 @@
 pkgbase = cosmic-tasks-git
 	pkgdesc = Task management app for the COSMIC desktop.
-	pkgver = r59.3b3c8ef
+	pkgver = r78.2f3c6ff
 	pkgrel = 1
 	url = https://tasks.edfloreshz.dev
 	arch = x86_64
@@ -9,11 +9,9 @@ pkgbase = cosmic-tasks-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = just
-	depends = gtk4
 	depends = libsecret
 	provides = cosmic-tasks
 	conflicts = cosmic-tasks
-	options = !lto
 	source = git+https://github.com/edfloreshz/cosmic-tasks.git
 	sha256sums = SKIP
 
