@@ -5,7 +5,7 @@
 pkgname=python-httpx-git
 _pkgname=httpx
 # https://github.com/encode/httpx/blob/master/CHANGELOG.md
-pkgver=0.24.0.r19.gee432c0d
+pkgver=0.27.0.r22.gfa6dac83
 pkgrel=1
 pkgdesc="A next generation HTTP client for Python"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-hatch-fancy-pypi-readme' 'git')
 checkdepends=('python-pytest-asyncio' 'python-pytest-trio' 'python-typing_extensions' 'python-brotlicffi' 'python-h2' 'python-trustme' 'uvicorn' 'python-socksio' python-brotli
-              'python-rich' 'python-chardet')
+              'python-rich' 'python-chardet' 'python-zstandard' 'python-anyio')
 provides=(python-httpx=$pkgver)
 conflicts=(python-httpx)
 replaces=(python-httpx)
