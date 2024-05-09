@@ -1,0 +1,17 @@
+[Unit]
+Description=Open Management Infrastructure (OMI)
+Wants=omigenkey.service
+After=omigenkey.service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/omi/bin/omiserver
+ExecReload=/bin/kill -HUP ${MAINPID}
+KillSignal=SIGINT
+TimeoutSec=60
+Restart=on-failure
+WatchdogSec=1m
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,2 @@
+d /var/opt/omi/run 0755 omi omi - -
+d /etc/opt/omi/conf/sockets 0700 omi omi - -

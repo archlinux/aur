@@ -4,4 +4,7 @@
 !PKGBUILD
 !.SRCINFO
 !/*.patch
-!/*.install
+!/*.service
+!/*.sysusers
+!/*.tmpfiles
+!/omikeygen

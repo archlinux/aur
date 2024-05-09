@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -e
+
+certsdir=/etc/opt/omi/ssl
+keyfile=$certsdir/omikey.pem
+certfile=$certsdir/omi.pem
+
+echo "Generating OMI certificates"
+
+openssl req -x509 -sha256 -newkey rsa:2048 -days 3650 -nodes -config - -keyout "$keyfile" -out "$certfile" <<EOF
+[ req ]
+distinguished_name     = req_distinguished_name
+prompt                 = no
+[ req_distinguished_name ]
+CN                     = hostname
+CN                     = longhostname
+EOF
+
+chmod 600 "$keyfile"
+chmod 644 "$certfile"
+
+chown omi:omi "$keyfile" "$certfile"

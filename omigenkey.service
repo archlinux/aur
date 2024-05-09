@@ -1,0 +1,9 @@
+[Unit]
+Description=OMI Key Generation
+ConditionPathExists=|!/etc/opt/omi/ssl/omikey.pem
+ConditionPathExists=|!/etc/opt/omi/ssl/omi.pem
+
+[Service]
+ExecStart=/opt/omi/bin/omikeygen
+Type=oneshot
+RemainAfterExit=yes

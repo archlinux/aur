@@ -1,0 +1,16 @@
+diff --unified --recursive --text omi-1.9.0-0.orig/Unix/etc/omiserver.conf omi-1.9.0-0.new/Unix/etc/omiserver.conf
+--- omi-1.9.0-0.orig/Unix/etc/omiserver.conf	2024-04-02 09:32:21.000000000 +0000
++++ omi-1.9.0-0.new/Unix/etc/omiserver.conf	2024-05-09 10:48:39.274073505 +0000
+@@ -79,10 +79,8 @@
+ ##
+ #NtlmCredsFile=/etc/opt/omi/.creds/ntlm
+ 
+-## non-root feature parameters, this is only for building the source code.
+-## if USER is specified within <> as the service account, 
+-##      it will be replaced with $USER when copied to output*
+-service=<USER>
++## non-root feature parameters
++service=omi
+ 
+ # Enabling this will cause each provider to run under it's own omiagent
+ # process. This will take considerably more memory, but is useful for

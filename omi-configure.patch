@@ -1,6 +1,6 @@
 diff --unified --recursive --text omi-1.9.0-0.orig/Unix/configure omi-1.9.0-0.new/Unix/configure
---- omi-1.9.0-0.orig/Unix/configure	2024-05-09 07:15:59.648845813 +0000
-+++ omi-1.9.0-0.new/Unix/configure	2024-05-09 07:17:27.996159659 +0000
+--- omi-1.9.0-0.orig/Unix/configure	2024-05-09 11:41:12.863430494 +0000
++++ omi-1.9.0-0.new/Unix/configure	2024-05-09 12:15:33.806125107 +0000
 @@ -2227,28 +2227,28 @@
  ## Find openssl program.
  ##
@@ -46,6 +46,24 @@ diff --unified --recursive --text omi-1.9.0-0.orig/Unix/configure omi-1.9.0-0.ne
  
  ##
  ## Create directories.
+@@ -2259,7 +2259,7 @@
+ mkdir -p \$destdir/$libdir
+ mkdir -p \$destdir/$localstatedir
+ mkdir -p \$destdir/$localstatedir/log
+-mkdir -p \$destdir/$localstatedir/run
++# mkdir -p \$destdir/$localstatedir/run
+ mkdir -p \$destdir/$sysconfdir
+ mkdir -p \$destdir/$providerdir
+ mkdir -p \$destdir/$certsdir
+@@ -2275,7 +2275,7 @@
+ mkdir -p "\$destdir/$sysconfdir/omiregister/root-omi"
+ mkdir -p "\$destdir/$sysconfdir/omiregister/root-check"
+ mkdir -p \$destdir/$sysconfdir/omiregister/$namespacedir
+-mkdir -m 700 -p \$destdir/$sysconfdir/sockets
++# mkdir -m 700 -p \$destdir/$sysconfdir/sockets
+ 
+ ##
+ ## Install executables.
 @@ -2388,35 +2388,35 @@
  ## Install certificates.
  ##
