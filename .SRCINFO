@@ -1,11 +1,12 @@
 pkgbase = pyside2
 	pkgver = 5.15.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = llvm
 	makedepends = clang=17.0.6
 	makedepends = qt5-multimedia
