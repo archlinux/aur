@@ -13,8 +13,8 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/janbuchar/rorqual/archive/
 	"requirements.txt"
 	"rorqual")
 
-sha256sums=("573de8c2b915b4f767461c7ba820dc5735274467c7d28c925be53562f91a5dd5"
-            "4406a5c36530d108f96d4f8c307ccab6aa7213a3b383024699e7cc7f019bad66"
+sha256sums=("31341369bc2d1839721118adc4d984a3a0723fe38ae3f20ad27c64ad9d27c789"
+            "0827cc9892691742886b7f589d4447ba2e3377911ef7e975cb193cf0981c0614"
             "ff4455d4d8880e143a593f9c55d16bf24387fa2f20a2fa6ea3233e618af44c5c")
 
 package() {
