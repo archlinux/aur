@@ -6,7 +6,7 @@
 
 pkgname=ondsel-es-appimage
 pkgver=2024.2.0
-pkgrel=1
+pkgrel=2
 _gitrev=37191
 pkgdesc="FreeCAD powered Engineering Suite (AppImage version)"
 arch=('x86_64' 'aarch64')
@@ -29,8 +29,8 @@ source_aarch64=("ondsel-es-${pkgver}-aarch64.AppImage::https://github.com/Ondsel
 
 sha256sums=('bef63d2f4298c27f755664d124f61c29df34263253ad1f92241f54cbc96ae005'
             '3658175d04739ef8617577a549d959aa069e26cb38dd82929f1f9089ad722a20')
-sha256sums_x86_64=('859abdbda8d268a4ba89cd0326b371b41c6a5deeb536cf2ebd105750b3e9d68b')
-sha256sums_aarch64=('1f06c0b3b53044964537a3a6898098da92590c9529167cadf5d74abee3621430')
+sha256sums_x86_64=('01ffae7e3daaaba937e68f168a9ade57e5fe598ff15f8542ffe514f70a29eec6')
+sha256sums_aarch64=('ff20903a26a68acdbb1d4425f1febc6c12ba969466776cfc785e4d91acb70cd8')
 
 
 prepare() {
