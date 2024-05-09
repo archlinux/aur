@@ -1,14 +1,15 @@
 pkgbase = perl-lingua-pt-stemmer
-	pkgdesc = Portuguese language stemming
+	pkgdesc = Perl/CPAN Module Lingua::PT::Stemmer: Portuguese language stemming
 	pkgver = 0.02
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Lingua-PT-Stemmer
+	url = https://search.cpan.org/dist/Lingua-PT-Stemmer
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Lingua-PT-Stemmer-0.02.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Lingua-PT-Stemmer-0.02.tar.gz
 	md5sums = 4ad757419b29bc326fde1529af5ed7b9
+	sha512sums = 3537d947b9deeab15376502beb5540fe6afdabc1cd5fd18ec399d12f4dc715def15eb5c9cb052eb5be4b3c03731fd0f0d25ef84bec797f38c3e0f0785c4859b5
 
 pkgname = perl-lingua-pt-stemmer
