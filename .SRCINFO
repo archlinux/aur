@@ -1,10 +1,10 @@
 pkgbase = quimup
 	pkgdesc = A simple Qt6 frontend to MPD
 	pkgver = 2.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sourceforge.net/projects/quimup/
 	arch = x86_64
-	license = GPL2
+	license = GPL-3.0-or-later
 	depends = mpd
 	depends = qt6-base
 	depends = taglib

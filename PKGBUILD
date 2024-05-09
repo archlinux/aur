@@ -3,11 +3,11 @@
 pkgname=quimup
 _pkgepoch=2.0
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple Qt6 frontend to MPD"
 arch=('x86_64')
 url="https://sourceforge.net/projects/quimup/"
-license=('GPL2')
+license=('GPL-3.0-or-later')
 makedepends=()
 depends=('mpd' 'qt6-base' 'taglib')
 source=("quimup-$pkgver-source.tar.gz::https://sourceforge.net/projects/quimup/files/Quimup%20$_pkgepoch/Quimup-$pkgver.source.tar.gz"
@@ -29,6 +29,12 @@ build() {
 package() {
   # there is no install target
   install -Dm755 "$srcdir/build/quimup" "$pkgdir/usr/bin/quimup"
+
+  # icons and other stuff
+  install -dm755 "$pkgdir/usr/share"
+  cp -r "$srcdir/Quimup/RPM_DEB_build/share/applications" "$pkgdir/usr/share"
+  cp -r "$srcdir/Quimup/RPM_DEB_build/share/icons" "$pkgdir/usr/share"
+  cp -r "$srcdir/Quimup/RPM_DEB_build/share/man" "$pkgdir/usr/share"
 }
 
 sha512sums=('fa4090bf4b573b5bd5b370a10e22dfac1608226cf6939e9a722bebf373218e12b8298a7b17e1eab241617ebd9bc5ddfe297f87a71daf0bcb3100bc1c902ee068'
