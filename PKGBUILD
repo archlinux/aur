@@ -1,6 +1,6 @@
 pkgname=lib32-rav1e
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An AV1 encoder focused on speed and safety. (32-bits)'
 arch=('x86_64')
 url='https://github.com/xiph/rav1e'
@@ -9,7 +9,7 @@ depends=(
   'lib32-gcc-libs'
   'lib32-glibc'
   "rav1e=${pkgver}"
-  'lib32-libgit2' 'libgit2.so'
+  'lib32-libgit2'
 )
 makedepends=(
   'cargo-c'
@@ -29,6 +29,7 @@ b2sums=(
   'SKIP'
   '7cbeaff87ca4e9db469be06cbead0c5b05af2064d6d5f12f97f5999992017b66a24bc19ed4eaf69f7d6579732f843f3e93f30d9581b8c8344728d3e3773a0f79'
 )
+options=('!lto')
 
 pkgver() {
   cd rav1e
@@ -75,6 +76,8 @@ check() {
 }
 
 package() {
+  depends+=('libgit2.so')
+
   export CARGO_HOME="${srcdir}/fakehome/cargo"
 
   cd rav1e
