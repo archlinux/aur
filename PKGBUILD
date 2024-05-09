@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg at gmail dot com>
 
 pkgname=wangle
-pkgver=2024.05.02.00
+pkgver=2024.05.06.00
 pkgrel=1
 pkgdesc="C++ networking library providing client/server abstractions for building services"
 arch=(x86_64)
@@ -28,7 +28,7 @@ makedepends=(
 )
 provides=(libwangle.so)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('258768db99ced458f3bf7927d3f52bd906609f4746b64319ee5c93b79a8647bf')
+sha256sums=('44e22905a7d5334b37cc25b27ca4124a63df6891b55641e157d9a75fea7bc21c')
 
 _archive="$pkgname-$pkgver"
 
