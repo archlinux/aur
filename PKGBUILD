@@ -1,16 +1,19 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=stwcs
 pkgname=python-${_pyname}-doc
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Documentation for STWCS"
 arch=('any')
 url="https://stwcs.readthedocs.io"
-license=('BSD')
-makedepends=("python-${_pyname}=${pkgver}" 'python-sphinx' 'python-sphinx_rtd_theme' 'texlive-latexextra')
+license=('BSD-3-Clause')
+makedepends=("python-${_pyname}=${pkgver}"
+             'python-sphinx'
+             'python-sphinx_rtd_theme'
+             'texlive-latexextra')  # latex.fmt: -latex; anyfontsize.sty: latexextra
 #source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7c9a2236c3313737483f8643843a3cae')
+md5sums=('ccf8403dbeca13a8dbae238a88d9025f')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/doc
