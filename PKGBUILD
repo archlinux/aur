@@ -2,9 +2,9 @@
 
 pkgname='perl-alien-cfitsio'
 pkgver='4.4.0.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Build and Install the CFITSIO library"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl' 'cfitsio' 'perl-alien-build')
