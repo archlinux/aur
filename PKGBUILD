@@ -4,13 +4,14 @@
 
 pkgname=netradiant-git
 pkgver=r2557.757a17fb
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
 url='https://netradiant.gitlab.io/'
-license=('BSD-3-Clause' 'GPL-2.0-or-later' 'LGPL-2.1-or-later' 'Zlib')
+license=('Apache-2.0' 'BSD-3-Clause' 'GPL-2.0-or-later' 'LGPL-2.1-or-later' 'MIT' 'Zlib')
 arch=('i686' 'x86_64')
-depends=('bash' 'cairo' 'gdk-pixbuf2' 'gcc-libs' 'glibc' 'glib2' 'gtk2' 'gtkglext' 'libglvnd' 'libjpeg-turbo' 'libpng' 'libwebp' 'libxml2' 'libx11' 'minizip' 'pango' 'zlib')
+depends=('bash' 'cairo' 'gdk-pixbuf2' 'gcc-libs' 'glibc' 'glib2' 'gtk2' 'gtkglext' 'libglvnd' 'libjpeg-turbo'
+         'libpng' 'libwebp' 'libxml2' 'libx11' 'minizip' 'pango' 'zlib')
 makedepends=('cmake' 'git' 'make' 'svn' 'unzip' 'wget')
 provides=('netradiant' 'h2data' 'q2map' 'q3data' 'q3map2' 'qdata3')
 source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git"
@@ -35,11 +36,14 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}/"
 
+    # Workaround for https://gitlab.com/xonotic/netradiant/-/issues/194
+    export CFLAGS+=" -Wno-error=incompatible-pointer-types"
+
     # Possible values for the GAMEPACKS_LICENSE_LIST filter are "free",
     # "all" (free + proprietary) and "none".
     # If you only want to fetch the Unvanquished and Xonotic gamepacks for example,
     # use -DGAMEPACKS_LICENSE_LIST=none and -DGAMEPACKS_NAME_LIST="Unvanquished Xonotic".
-    # See https://gitlab.com/xonotic/netradiant/-/blob/master/README.md for more information.
+    # See https://gitlab.com/xonotic/netradiant/-/blob/master/README.md for further instructions.
     cmake -G "Unix Makefiles" -S. -Bbuild \
     -DCMAKE_BUILD_TYPE=Release \
     -DOpenGL_GL_PREFERENCE=GLVND \
