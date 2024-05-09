@@ -3,7 +3,7 @@
 _reponame="PT-Plugin-Plus"
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-git"
-pkgver=1.6.1.2591
+pkgver=1.6.1.2650
 pkgrel=1
 pkgdesc="Microsoft Edge, Google Chrome, Firefox browser plugin (Web Extensions), which is mainly used to assist the seeds of downloading PT station."
 arch=("any")
@@ -20,15 +20,8 @@ options=(!strip)
 ## manifest.json are generated after "yarn build".
 prepare() {
     cd "${_pkgname}"
-    echo "ignore-engines true" > .yarnrc
-    NODE_OPTIONS="--openssl-legacy-provider" NODE_NO_WARNINGS=1 \
-        yarn build \
-            --ignore-engines \
-            --no-node-version-check \
-            --non-interactive \
-            --prod \
-            --silent \
-            --use-yarnrc .yarnrc
+    yarn
+    NODE_OPTIONS="--openssl-legacy-provider" NODE_NO_WARNINGS=1 yarn build
 }
 
 pkgver() {

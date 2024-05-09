@@ -1,6 +1,6 @@
 pkgbase = pt-plugin-plus-git
 	pkgdesc = Microsoft Edge, Google Chrome, Firefox browser plugin (Web Extensions), which is mainly used to assist the seeds of downloading PT station.
-	pkgver = 1.6.1.2591
+	pkgver = 1.6.1.2650
 	pkgrel = 1
 	url = https://github.com/pt-plugins/PT-Plugin-Plus
 	arch = any
