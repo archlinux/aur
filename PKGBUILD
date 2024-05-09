@@ -3,7 +3,7 @@
 # based on aur/balena-etcher: Matthew McGinn <mamcgi@gmail.com>
 pkgname=etcher-git
 _pkgname=balenaEtcher
-pkgver=1.19.16.r0.g6a648e92
+pkgver=1.19.17.r0.g62ac0b98
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -14,8 +14,8 @@ _ghurl="https://github.com/balena-io/etcher"
 license=("Apache-2.0")
 conflicts=(
     "${pkgname%-git}"
-    "balena-etcher"
-    "balena-etcher-electron"
+    "balena-${pkgname%-git}"
+    "balena-${pkgname%-git}-electron"
     "${pkgname%-git}-ng"
 )
 provides=("${pkgname%-git}=${pkgver%.r*}")
@@ -29,12 +29,13 @@ makedepends=(
     'gendesk'
     'base-devel'
     'gcc'
+    'curl'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -60,16 +61,17 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://electronjs.org/headers
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
     npm install
+    npm update node-abi
     npm run package
 }
 package() {
