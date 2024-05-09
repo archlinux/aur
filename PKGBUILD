@@ -45,7 +45,7 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  just build-vendored
+  nice just build-vendored
 }
 
 package() {
