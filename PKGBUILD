@@ -2,7 +2,7 @@
 # Contributor: Arlo Siemsen <arkixml@gmail.com>
 pkgname=gridmgr-git
 pkgver=r30.44be97c
-pkgrel=1
+pkgrel=2
 pkgdesc="command line tool which provides keyboard-bindable commands for easy window manipulation."
 arch=('i686' 'x86_64')
 url="http://nickbp.com/gridmgr/"
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   cd $pkgname
+  LDFLAGS+=' -Wl,-z,shstk'
   cmake src
   make
 }
