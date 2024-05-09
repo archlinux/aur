@@ -24,7 +24,7 @@ conflicts=(${_base})
 provides=("${_base}=${pkgver}")
 depends=(hdf5-openmpi fftw-openmpi gsl lapack libjpeg-turbo libyaml netcdf-openmpi
   python-numpy python-mpi4py superlu suitesparse zlib)
-makedepends=(cmake cython gcc gcc-fortran)
+makedepends=(cmake cython gcc gcc-fortran python-setuptools)
 checkdepends=()
 optdepends=('hypre: support for the hypre sparse system solver'
   'kokkos: support for Kokkos'

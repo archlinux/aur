@@ -11,6 +11,7 @@ pkgbase = petsc-complex
 	makedepends = cython
 	makedepends = gcc
 	makedepends = gcc-fortran
+	makedepends = python-setuptools
 	depends = hdf5-openmpi
 	depends = fftw-openmpi
 	depends = gsl
