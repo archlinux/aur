@@ -1,4 +1,5 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: 64bitman <chen.foxe@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: Steven Allen <steven@stebalien.com>
 # Contributor: trile7 at gmail dot com
@@ -9,7 +10,7 @@ _pkgname=yad
 pkgver=v13.0.r7.g92a7978
 pkgrel=1
 pkgdesc="A fork of zenity - display graphical dialogs from shell scripts or command line"
-url="http://github.com/v1cont/yad"
+url="https://github.com/v1cont/yad"
 arch=('x86_64')
 license=('GPL3')
 depends=('gtk3>=3.22.0' 'webkit2gtk-4.1' 'gspell' 'gtksourceview3')
