@@ -1,7 +1,7 @@
 # Maintainer: Nikl <nikl174@mailbox.org>
 pkgname=colord-brightness
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Adjust Display brightness with icc-profiles using the colord-daemon"
 arch=("any")
 url="https://github.com/Nikl174/colord-brightness"
@@ -20,7 +20,7 @@ options=()
 #https://github.com/Nikl174/colord-brightness/archive/refs/tags/1.0.0.tar.gz
 source=("https://github.com/Nikl174/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha256sums=('fc7006b47f2494503e6a08660eff582e8f87f2269f173aa205fe423d4689de4f')
+sha256sums=('a3eb63999843eb9eeb17c64bb1173193205d4dc241e96cae90402c2ed256bc82')
 
 build() {
   cd "$pkgname-$pkgver"
