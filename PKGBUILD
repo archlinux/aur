@@ -130,8 +130,8 @@
 : ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=19.r8943.gd8503a38b974
-pkgrel=2
+pkgver=19.r10770.gb52fa9461ab7
+pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -165,9 +165,9 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
         'config-include-style.patch'
         'lsp-preprocessor-folding.patch')
 sha256sums=('SKIP'
-            '75b331257caa768c16687fd668ec2b8be62feb283892d601476c3e039f298a54'  # hover-doxygen-trunk
+            '8d8ce66ba3a55559dacaefc5623bd1f3298d645a724f9961cc1089c563b8677d'  # hover-doxygen-trunk
             '614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94'  # doxygen-extra-render-trunk
-            'b42d27929fcec3825711c13baf0c5a4ea0da33b8ff5e6f60c3c61d2f1f9525af'  # doxygen-more-fields
+            '6798a2f9a94892e27a5c5449e2d6dec066e84a3122606ad9853ec361fc98dc1f'  # doxygen-more-fields
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
             '71ff16d268122b0ade2d8e071cfb2110cdd75ac54ae67e36bc04be8bc077c121'  # lsp-codelens
             '954a872fb74b5956feb8011befd4c383386fdae96358c680b771b6bd1ab82a5a'  # postfix-completion-trunk

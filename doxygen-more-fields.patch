@@ -1,21 +1,22 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index f7e01f4ccf32..4162f2b98501 100644
+index 107a31bbdb47..c9a53c5e4300 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -185,8 +185,11 @@ HoverInfo::PrintedType printType(QualType QT, ASTContext &ASTCtx,
+@@ -185,8 +185,12 @@ HoverInfo::PrintedType printType(QualType QT, ASTContext &ASTCtx,
    if (!QT.isNull() && Cfg.Hover.ShowAKA) {
      bool ShouldAKA = false;
      QualType DesugaredTy = clang::desugarForDiagnostic(ASTCtx, QT, ShouldAKA);
 -    if (ShouldAKA)
 +    if (ShouldAKA) {
        Result.AKA = DesugaredTy.getAsString(PP);
-+      if (Result.Type.length() > 16 && Result.AKA->length() < Result.Type.length())
++      if (Result.Type.length() > 16 &&
++          Result.AKA->length() < Result.Type.length())
 +        std::swap(*Result.AKA, Result.Type);
 +    }
    }
    return Result;
  }
-@@ -1425,6 +1428,114 @@ static std::string formatOffset(uint64_t OffsetInBits) {
+@@ -1425,6 +1429,140 @@ static std::string formatOffset(uint64_t OffsetInBits) {
    return Offset;
  }
  
@@ -50,7 +51,8 @@ index f7e01f4ccf32..4162f2b98501 100644
 +  return Line.slice(Offset, Next + Quote.size());
 +}
 +
-+static void parseDocumentationLine(llvm::StringRef Line, markup::Paragraph &Out) {
++static void parseDocumentationLine(llvm::StringRef Line,
++                                   markup::Paragraph &Out) {
 +  // Probably this is appendText(Line), but scan for something interesting.
 +  for (unsigned I = 0; I < Line.size(); ++I) {
 +    switch (Line[I]) {
@@ -85,6 +87,43 @@ index f7e01f4ccf32..4162f2b98501 100644
 +}
 +
 +static void
++presentOneParam(const HoverInfo::Param &Param,
++                const llvm::SmallVector<ParameterDocumentationOwned> &ParamDocs,
++                markup::BulletList &Output) {
++  auto &Paragraph = Output.addItem().addParagraph();
++
++  if (!Param.Name) {
++    Paragraph.appendCode(llvm::to_string(Param));
++    return;
++  }
++
++  // Strip system prefixes.
++  // E.g. for `char *strcpy (char * __dest, const char * __src)`, the `__dest`
++  // and `__src` will strip `__`. To get `dest` and `src`
++  std::size_t From = 0;
++  while ((*Param.Name)[From] == '_')
++    ++From;
++  auto Name = llvm::StringRef(*Param.Name).substr(From);
++
++  if (Param.Default)
++    Paragraph.appendCode(Name.str() + " = " + *Param.Default);
++  else
++    Paragraph.appendCode(Name);
++  Paragraph.appendText(": ");
++
++  auto *ParamDoc = std::find_if(
++      ParamDocs.begin(), ParamDocs.end(),
++      [Param](const auto &ParamDoc) { return Param.Name == ParamDoc.Name; });
++  if (ParamDoc != ParamDocs.end())
++    parseDocumentationLine(ParamDoc->Description, Paragraph);
++
++  if (Param.Type)
++    Paragraph.appendText(" (")
++        .appendCode(llvm::to_string(*Param.Type))
++        .appendText(")");
++}
++
++static void
 +presentParams(std::string ParagraphName,
 +              const std::optional<std::vector<HoverInfo::Param>> &Params,
 +              const llvm::SmallVector<ParameterDocumentationOwned> &ParamDocs,
@@ -93,44 +132,32 @@ index f7e01f4ccf32..4162f2b98501 100644
 +    return;
 +
 +  Output.addParagraph().appendText(ParagraphName + ": ");
-+  markup::BulletList &L = Output.addBulletList();
++  markup::BulletList &ReqList = Output.addBulletList();
 +
-+  for (const auto &Param : *Params) {
-+    auto &Paragraph = L.addItem().addParagraph();
++  auto It = Params->begin();
++  for (; It != Params->end() && !It->Default; ++It) {
++    presentOneParam(*It, ParamDocs, ReqList);
++  }
 +
-+    if (!Param.Name) {
-+      Paragraph.appendCode(llvm::to_string(Param));
-+      continue;
-+    }
++  if (It == Params->end())
++    return;
 +
-+    std::size_t From = 0;
-+    while ((*Param.Name)[From] == '_')
-+      ++From;
-+    auto Name = llvm::StringRef(*Param.Name).substr(From);
++  if (std::isupper(ParagraphName.front())) {
++    ParagraphName.front() = std::tolower(ParagraphName.front());
++    Output.addParagraph().appendText("Optional " + ParagraphName + ": ");
++  } else
++    Output.addParagraph().appendText("optional " + ParagraphName + ": ");
++  markup::BulletList &OptList = Output.addBulletList();
 +
-+    if (Param.Default)
-+      Paragraph.appendCode(Name.str() + " = " + *Param.Default);
-+    else
-+      Paragraph.appendCode(Name);
-+    Paragraph.appendText(": ");
-+
-+    auto *ParamDoc = std::find_if(
-+        ParamDocs.begin(), ParamDocs.end(),
-+        [Param](const auto &ParamDoc) { return Param.Name == ParamDoc.Name; });
-+    if (ParamDoc != ParamDocs.end())
-+      parseDocumentationLine(ParamDoc->Description, Paragraph);
-+
-+    if (Param.Type)
-+      Paragraph.appendText(" (")
-+          .appendCode(llvm::to_string(*Param.Type))
-+          .appendText(")");
++  for (; It != Params->end(); ++It) {
++    presentOneParam(*It, ParamDocs, ReqList);
 +  }
 +}
 +
  markup::Document HoverInfo::present() const {
    markup::Document Output;
  
-@@ -1460,6 +1571,9 @@ markup::Document HoverInfo::present() const {
+@@ -1460,6 +1598,9 @@ markup::Document HoverInfo::present() const {
    if (!Documentation.Brief.empty())
      parseDocumentation(Documentation.Brief, Output);
  
@@ -140,7 +167,7 @@ index f7e01f4ccf32..4162f2b98501 100644
    // Print Types on their own lines to reduce chances of getting line-wrapped by
    // editor, as they might be long.
    if (ReturnType) {
-@@ -1468,44 +1582,20 @@ markup::Document HoverInfo::present() const {
+@@ -1468,44 +1609,20 @@ markup::Document HoverInfo::present() const {
      // Parameters:
      // - `bool param1`
      // - `int param2 = 5`
@@ -155,11 +182,11 @@ index f7e01f4ccf32..4162f2b98501 100644
 -  if (Parameters && !Parameters->empty()) {
 -    Output.addParagraph().appendText("Parameters: ");
 -    markup::BulletList &L = Output.addBulletList();
--
--    llvm::SmallVector<ParameterDocumentationOwned> ParamDocs =
--        Documentation.Parameters;
 +      parseDocumentationLine(Documentation.Returns, P.appendText(": "));
  
+-    llvm::SmallVector<ParameterDocumentationOwned> ParamDocs =
+-        Documentation.Parameters;
+-
 -    for (const auto &Param : *Parameters) {
 -      auto &Paragraph = L.addItem().addParagraph();
 -      Paragraph.appendCode(llvm::to_string(Param));
@@ -195,7 +222,7 @@ index f7e01f4ccf32..4162f2b98501 100644
    }
  
    // Don't print Type after Parameters or ReturnType as this will just duplicate
-@@ -1577,6 +1667,39 @@ markup::Document HoverInfo::present() const {
+@@ -1577,6 +1694,39 @@ markup::Document HoverInfo::present() const {
        parseDocumentation(Note, L.addItem());
    }
  
@@ -235,7 +262,7 @@ index f7e01f4ccf32..4162f2b98501 100644
    if (!Definition.empty()) {
      Output.addRuler();
      std::string Buffer;
-@@ -1627,71 +1750,6 @@ markup::Document HoverInfo::present() const {
+@@ -1627,71 +1777,6 @@ markup::Document HoverInfo::present() const {
    return Output;
  }
  
@@ -453,10 +480,16 @@ index 77bd90927802..0c9db8653f22 100644
    /// e.g. "details".
    String Description;
 diff --git a/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h b/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h
-index 12c955c458cc..12a247ecf3ce 100644
+index 12c955c458cc..e79a261a480a 100644
 --- a/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h
 +++ b/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h
-@@ -37,6 +37,12 @@ matchesDoc(const SymbolDocumentation<S> &Expected) {
+@@ -32,11 +32,18 @@ matchesDoc(const SymbolDocumentation<S> &Expected) {
+ 
+   return AllOf(
+       Field("Brief", &SymbolDocumentation<S>::Brief, Expected.Brief),
++      Field("Details", &SymbolDocumentation<S>::Details, Expected.Details),
+       Field("Returns", &SymbolDocumentation<S>::Returns, Expected.Returns),
+       Field("Notes", &SymbolDocumentation<S>::Notes,
              ElementsAreArray(Expected.Notes)),
        Field("Warnings", &SymbolDocumentation<S>::Warnings,
              ElementsAreArray(Expected.Warnings)),
