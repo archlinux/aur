@@ -1,10 +1,10 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=python-pyhanko
 _pkgname=pyHanko
-pkgver=0.24.0
-pkgrel=2
+pkgver=0.25.0
+pkgrel=1
 pkgdesc="Tools for stamping and signing PDF files"
 url="https://github.com/MatthiasValvekens/pyHanko"
 license=(MIT)
@@ -51,7 +51,7 @@ optdepends=(
   'python-uharfbuzz: to use OpenType fonts'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bd910248bb93eb4a13c553cf2abc997285669cee826ebbc339287a4cb0eee40c')
+sha256sums=('427a1256f14d5bb53a31d26fb648c3d6031f31f776545094933626803523f1ad')
 
 _archive="$_pkgname-$pkgver"
 

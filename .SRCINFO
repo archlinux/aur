@@ -1,7 +1,7 @@
 pkgbase = python-pyhanko
 	pkgdesc = Tools for stamping and signing PDF files
-	pkgver = 0.24.0
-	pkgrel = 2
+	pkgver = 0.25.0
+	pkgrel = 1
 	url = https://github.com/MatthiasValvekens/pyHanko
 	arch = any
 	license = MIT
@@ -38,7 +38,7 @@ pkgbase = python-pyhanko
 	optdepends = python-defusedxml: to use XMP
 	optdepends = python-fonttools: to use OpenType fonts
 	optdepends = python-uharfbuzz: to use OpenType fonts
-	source = python-pyhanko-0.24.0.tar.gz::https://github.com/MatthiasValvekens/pyHanko/archive/v0.24.0.tar.gz
-	sha256sums = bd910248bb93eb4a13c553cf2abc997285669cee826ebbc339287a4cb0eee40c
+	source = python-pyhanko-0.25.0.tar.gz::https://github.com/MatthiasValvekens/pyHanko/archive/v0.25.0.tar.gz
+	sha256sums = 427a1256f14d5bb53a31d26fb648c3d6031f31f776545094933626803523f1ad
 
 pkgname = python-pyhanko
