@@ -2,7 +2,7 @@
 pkgname="flaq"
 pkgdesc="A simple CLI tool for modifying and querying metadata tags for \`.flac\` files."
 pkgrel=1
-pkgver="0.2.0"
+pkgver="0.3.0"
 
 makedepends=("git" "cargo" "jq")
 depends=("glibc" "gcc-libs")
