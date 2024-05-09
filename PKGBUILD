@@ -1,6 +1,6 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgname=python-yamlpath
 _name=${pkgname#python-}
@@ -9,9 +9,9 @@ arch=('any')
 url='https://github.com/wwkimball/yamlpath/wiki'
 license=('ISC')
 depends=('python-ruyaml' 'python-dateutil')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pytest')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pytest' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('8df74b1419670339c64252fc7ced277858acea9c2162f79d1da6b37af386f1a6debe302514d72b52bb373abed44d91e3a6ea15e8e6228ec14acd4afca348769a')
+sha512sums=('653996d1c16b7d35e1ad392f83422545848af0431e2d7aec3d935982daa1290596fb6506120091af06bdc42f0660804d215fd079ce2e24b18785e3ba0e628d39')
 
 build() {
     cd "$_name-$pkgver"
