@@ -1,14 +1,14 @@
 # Maintainer: Alexandre Leconte <aleconte@dwightstudio.fr>
 pkgname=jarmemu
-pkgver=0.2.0
-pkgrel=4
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Simple ARMv7 simulator written in Java, intended for educational purpose"
 arch=('any')
 url="https://dwightstudio.fr/jarmemu"
 license=('GPL-3')
 groups=()
 depends=()
-makedepends=()
+makedepends=("java-environment>=21" "maven" "desktop-file-utils" "xdg-utils")
 optdepends=()
 provides=()
 conflicts=()
@@ -17,24 +17,27 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Dwight-Studio/JArmEmu/releases/download/v$pkgver/JArmEmu-$pkgver-$pkgrel.flatpak-arch-source.zip")
+# TODO: Use portable archive instead
+source=("https://github.com/Dwight-Studio/JArmEmu/releases/download/v$pkgver/JArmEmu-$pkgver.zip")
 noextract=()
-sha256sums=("950fcdd77ff43021d8a643d43e57744e407d9508c73bf1f526cdca815e4040f8")
+sha256sums=("1f8a70a2bbc59b38f4bad6cfc9cc9babb2ee45f733cda920a521fc063ba575a7")
 
-build() {
-  cd "$srcdir/JArmEmu"
-}
+build() {}
 
 package() {
-  cd "$srcdir/JArmEmu"
+    cd $srcdir/jarmemu
 
-    mkdir -p $pkgdir/usr/share/java/JArmEmu/
-    cp -r java/JArmEmu $pkgdir/usr/share/java/
-    cp -r icons $pkgdir/usr/share/
-    install -Dm644 mime/packages/* -t $pkgdir/usr/share/mime/packages
-    install -Dm644 metainfo/* -t $pkgdir/usr/share/metainfo
-    install -Dm755 jarmemu $pkgdir/usr/bin/jarmemu
-    desktop-file-install --dir=$pkgdir/usr/share/applications fr.dwightstudio.JArmEmu.desktop
+    install -d  $pkgdir/usr/share/java/$pkgname/
+    install -Dm 644 *.jar $pkgdir/usr/share/java/$pkgname/
+    install -Dm 644 lib/* -t $pkgdir/usr/share/java/$pkgname/lib/
+    install -Dm 755 resources/$pkgname $pkgdir/usr/bin/$pkgname
+
+    install -Dm 644 resources/icons/hicolor/scalable/apps/fr.dwightstudio.JArmEmu.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/fr.dwightstudio.JArmEmu.svg
+    install -Dm 644 resources/mime/packages/fr.dwightstudio.JArmEmu.xml $pkgdir/usr/share/mime/packages/fr.dwightstudio.JArmEmu.xml
+    install -Dm 644 resources/metainfo/fr.dwightstudio.JArmEmu.metainfo.xml $pkgdir/usr/share/metainfo/fr.dwightstudio.JArmEmu.metainfo.xml
+
+    desktop-file-install --dir=$pkgdir/usr/share/applications data/fr.dwightstudio.JArmEmu.desktop
+    xdg-desktop-icon install --novendor resources/fr.dwightstudio.JArmEmu.desktop
 
     depends=("java-runtime>=21")
 }
