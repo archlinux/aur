@@ -1,74 +1,20 @@
-# Maintainer: kccat <kg.kg.gl+aur at gmail dot com>
+# Maintainer: Eikano <lcuoin@gmail.com>
+# Contributor: kccat <kg.kg.gl+aur at gmail dot com>
 
 pkgname=ttf-opposans
-pkgver=20191011
+pkgver=20231130
 pkgrel=1
-pkgdesc="OPPO Sans is a built-in font for ColorOS 7, including Chinese and Latin."
+pkgdesc="OPPO Sans"
 arch=('any')
 license=('custom')
-url='https://open.oppomobile.com/bbs/forum.php?mod=viewthread&tid=2274'
+url='https://www.coloros.com/article/A00000050/'
 
-source=("https://static01.coloros.com/www/public/img/topic7/font-opposans.zip")
+source=("https://coloros-website-cn.allawnfs.com/font/OPPOSans3.0.zip")
 
-sha256sums=('62b1fd121a13e84212fadcc801a1b397927c9d8224351f5b4b93bbcb42b3ad14')
+sha256sums=('4ade22c51d034682c466cec99d8fad941b2541879d4f9dfab17d7187bb6b6a0e')
 
 package() {
-  # Install fonts
-  install -Dt "$pkgdir/usr/share/fonts/${pkgname#ttf-}" -m644 \
-    Font-OPPOSans/*.ttf
-
-  cat << EOF > 65-${pkgname#ttf-}.conf
-<?xml version="1.0"?>
-<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
-<fontconfig>
-  <match target="scan">
-    <test name="fullname">
-      <string>OPPOSans R</string>
-    </test>
-    <edit name="weight">
-      <const>regular</const>
-    </edit>
-  </match>
-  <match target="scan">
-    <test name="fullname">
-      <string>OPPOSans B</string>
-    </test>
-    <edit name="weight">
-      <const>bold</const>
-    </edit>
-  </match>
-  <match target="scan">
-    <test name="fullname">
-      <string>OPPOSans H</string>
-    </test>
-    <edit name="weight">
-      <const>heavy</const>
-    </edit>
-  </match>
-  <match target="scan">
-    <test name="fullname">
-      <string>OPPOSans L</string>
-    </test>
-    <edit name="weight">
-      <const>light</const>
-    </edit>
-  </match>
-  <match target="scan">
-    <test name="fullname">
-      <string>OPPOSans M</string>
-    </test>
-    <edit name="weight">
-      <const>medium</const>
-    </edit>
-  </match>
-</fontconfig>
-EOF
-
-  # Install fontconfig
-  local fcdir="$pkgdir/usr/share/fontconfig"
-  install -Dt "$fcdir/conf.avail" -m644 *.conf
-  mkdir -p "$fcdir/conf.default"
-  ln -srt "$fcdir/conf.default" "$fcdir"/conf.avail/*
+	cd "${srcdir}/231130 品牌字体 OPPO Sans 3.0/中文简体+西文 Simplified Chinese+Cyrillic/ttf(优先安装 ttf 格式 preferred）"
+	install -dm755 "$pkgdir/usr/share/fonts/TTF"
+	install -Dm644 *.ttf "$pkgdir/usr/share/fonts/TTF"
 }
-
-# vim:set sw=2 et:
