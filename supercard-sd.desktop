@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=SuperCard SD
+Comment=SuperCard SD patcher for Windows
+Exec=supercard-sd
+Icon=supercard-sd
+Terminal=false
+Categories=Wine;Utility;

@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# WINE Launcher script for SuperCard SD software
+
+export WINEPREFIX=~/.supercard-sd
+export SAVEFILE=$WINEPREFIX/savefile
+export SCDIR=/usr/share/supercard-sd # installation dir for AUR package
+
+# configure registry
+configure() {
+    # configure hkcu
+    wine reg ADD HKCU\\Software\\SuperCard\\sc /v OUTPATH /t REG_SZ /d "Z:\\home\\$(whoami)\\Documents\\SuperCard" /reg:32 /f
+    wine reg ADD HKCU\\Software\\SuperCard\\sc /v LANGUAGE /t REG_DWORD /d 0 /reg:32 /f
+    touch $SAVEFILE # ensures that we don't repeat configuration process
+}
+
+
+if [ "$1" = "--mkpfx" ]; then # Force reconfigure prefix
+    configure
+    exit 0
+elif [ "$1" = "--erase" ]; then # delete all data in prefix
+    rm -rf $WINEPREFIX
+    exit 0
+elif [ "$1" = "--help" ]; then # show command info
+    cat << EOF
+SuperCard SD Linux Loader by Atapi/Sterophonick
+Original Program: (c) 200? SuperCard
+
+Output files are by default put in ~/Documents/SuperCard
+
+Usage:
+    supercard-sd [--mkpfx] [--erase] [--help]
+
+    --mkpfx: Re-configure WINE prefix
+    --erase: Erase all data in WINE prefix
+    --help: Show this screen
+
+EOF
+    exit 0
+elif [ ! -f "$SAVEFILE" ]; then # first boot
+    configure
+else
+    echo ""
+fi
+
+mkdir /home/$(whoami)/Documents/SuperCard
+cd $SCDIR # We must change our directory because it asks for a LANGUAGE.INI in the current working directory for some reason. I had to strace it to find this.
+wine SuperCardsd.exe # no args

@@ -1,0 +1,15 @@
+pkgbase = supercard-sd
+	pkgdesc = SuperCard SD Patching Software
+	pkgver = v271
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	makedepends = innoextract
+	depends = wine
+	depends = winetricks
+	source = https://web.archive.org/web/20140720061837*/http://eng.supercard.sc/download/setupsdV271en.zip
+	source = supercard-sd
+	source = supercard-sd.desktop
+	source = supercard-sd.png
+
+pkgname = supercard-sd
