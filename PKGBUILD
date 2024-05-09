@@ -9,15 +9,15 @@
 #                                                                             #
 # API changes between different Kodi versions make it necessary to specify    #
 # the version of Kodi you want to build this package for. You can choose      #
-# between Leia (18), Matrix (19), Nexus (20) and git master (99). Do so in    #
-# the following line.                                                         #
+# between Leia (18), Matrix (19), Nexus (20), Omega (21) and git master (99). #
+# Do so in the following line.                                                #
 #                                                                             #
 ###############################################################################
 
-API=20
+API=21
 
 pkgname=kodi-addon-pvr-hts-git
-pkgver=r1063.c8e933b
+pkgver=r1110.6c5564f
 pkgrel=1
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
@@ -34,6 +34,7 @@ case "$API" in
   18)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Leia" ;;
   19)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Matrix" ;;
   20)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Nexus" ;;
+  21)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Omega" ;;
   99)  ;;
   *)   echo "Unknown API version. Follow instructions in PKGBUILD." && false
 esac
