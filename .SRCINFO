@@ -1,14 +1,14 @@
 pkgbase = angie-mod-njs
 	pkgdesc = nginScript module for angie
-	pkgver = 0.8.3
-	pkgrel = 1
-	url = https://nginx.org/en/docs/njs_about.html
+	pkgver = 0.8.4
+	pkgrel = 2
+	url = https://github.com/nginx/njs
 	arch = x86_64
 	license = CUSTOM
 	makedepends = angie-src
 	depends = angie
 	depends = libxslt
-	source = njs-0.8.3.tar.gz::http://hg.nginx.org/njs/archive/0.8.3.tar.gz
-	sha256sums = b7afc0e67cf1be8f9ea4b1e6133026e7fb6b8953fafc947d0778ca48a0aa1e64
+	source = njs-0.8.4.tar.gz::http://hg.nginx.org/njs/archive/0.8.4.tar.gz
+	sha256sums = 8191bff8491af9169a92e30e383ef8614717b0c6d40913d83b95051031e92321
 
 pkgname = angie-mod-njs
