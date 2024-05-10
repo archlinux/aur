@@ -1,7 +1,7 @@
 pkgbase = bilibili-bin
 	pkgdesc = 哔哩哔哩官方客户端linux移植版。Bilibili official desktop client
 	pkgver = 1.13.2_2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 5
 	url = https://github.com/msojocs/bilibili-linux
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = bilibili-bin
 	source = LICENSE-1.13.2_2::https://raw.githubusercontent.com/msojocs/bilibili-linux/v1.13.2-2/license
 	source = bilibili.sh
 	sha256sums = 21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468
-	sha256sums = 91c94c21464757571064d5364835bef8c07e1436e9cafd427a9d45e46b3ad7e2
+	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
 	source_aarch64 = bilibili-1.13.2_2-aarch64.deb::https://github.com/msojocs/bilibili-linux/releases/download/v1.13.2-2/io.github.msojocs.bilibili_1.13.2-2_arm64.deb
 	sha256sums_aarch64 = 93ccb717daa680273bf6d725eea9c9881af621de4675b9e6045ca91c24320b54
 	source_x86_64 = bilibili-1.13.2_2-x86_64.deb::https://github.com/msojocs/bilibili-linux/releases/download/v1.13.2-2/io.github.msojocs.bilibili_1.13.2-2_amd64.deb
