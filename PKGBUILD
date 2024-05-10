@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BioNAR
-_pkgver=1.4.4
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -50,17 +50,9 @@ optdepends=(
   r-testthat
   r-vdiffr
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "fix-tests.patch")
-md5sums=('60ea801489d5db3a2bb2e00d1acc1056'
-         '4a0d1366b4a7d786d07d1553c9a7899e')
-b2sums=('9a2a1a98ccff8e9d8054295f5b53321dcd03f9d996a1931f4e6a51c98af378ac2d0e0ef9a1ff51e43b15ff795ac523305037197d6b0e63ddd2f4aeeb28f6ff34'
-        '5bcc25f82c45ce8442351f73a851f34bf2c76b286dd708141882f928876d02fba213e8760146cd3115d298985aa062fb67d9a5d89ea7a62687d65fdfb3349a84')
-
-prepare() {
-  # fix test snapshots
-  patch -Np1 -i fix-tests.patch
-}
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('09f2f54ad370dfbd2c42d2921f886102')
+b2sums=('122ef665600aeefde372364f7e0b7234090cf95248e5aefbcf10225e250db2a0e2d14239965f371dd3979b5ef7e157d89294428b749f62c13b6b8b495ae0f92f')
 
 build() {
   mkdir build
