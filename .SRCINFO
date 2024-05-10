@@ -1,11 +1,11 @@
 pkgbase = odoo-17
 	pkgdesc = Odoo. Open Source Apps To Grow Your Business.
 	pkgver = 17.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://odoo.com/
 	install = odoo.install
 	arch = any
-	license = LGPL-3.0-or-later
+	license = LGPL-3.0-only
 	depends = postgresql
 	depends = wkhtmltopdf
 	depends = python310
