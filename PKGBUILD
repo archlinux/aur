@@ -10,11 +10,11 @@ arch=("any")
 url="https://github.com/pt-plugins/${_reponame}"
 provides=("${_pkgname}-dev")
 license=("MIT")
-makedepends=("git" "jq" "nodejs" "yarn")
+makedepends=("git" "jq" "yarn")
 optdepends=('google-chrome' 'microsoft-edge-stable-bin')
 source=("${_pkgname}::git+${url}.git#branch=dev")
 sha256sums=('SKIP')
-options=(!strip)
+options=(!strip !debug)
 
 ## prepare function run before pkgver function, and build funtion run after pkgver function.
 ## manifest.json are generated after "yarn build".
@@ -34,6 +34,9 @@ pkgver() {
 }
 
 package() {
-    cd "${_pkgname}/dist"
+    cd "${_pkgname}"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+    cd "dist"
     find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}-dev/"{} \;
 }
