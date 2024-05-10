@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qlcMatrix
-_pkgver=0.9.7
+_pkgver=0.9.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Utility Sparse Matrix Functions for Quantitative Language Comparison"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -16,10 +16,11 @@ depends=(
 )
 optdepends=(
   r-knitr
+  r-rmarkdown
 )
-source=("https://cran.r-project.org/src/contrib/Archive/$_pkgname/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3b0734cb96c9cae62f760de1d4a4a8a7')
-b2sums=('4985f5c329070efa2565f0d531938b0d5be653757ba9d62082d3b98294b389f3c5d0394a6fda8a8cf21aad94d0bb53bbbadeaf7ff3c66627787fc2052de47080')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('29b54f102b72f2f2d8b2c015d965920a')
+b2sums=('355187c9458f34bcfc0d1f5021c557abfdff6ba5ea0a42d79b6fa3e5a465596cf1d3bdd14dc8848ed63552bd1190a5641b102181bba9dfb0ebb8a73134ec226a')
 
 build() {
   mkdir build
