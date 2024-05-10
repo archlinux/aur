@@ -1,0 +1,37 @@
+pkgbase = regina-rexx
+	pkgdesc = An implementation of the ANSI Standard REXX Programming Language
+	pkgver = 3.9.6
+	pkgrel = 1
+	epoch = 1
+	url = https://regina-rexx.sourceforge.io/
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	conflicts = regina-rexx-das
+	conflicts = regina-rexx-dasdoc
+	source = https://downloads.sourceforge.net/regina-rexx/regina-rexx-3.9.6.tar.gz
+	sha256sums = ed98c7a7f1d5a4148b02fef1b16aee4a6a6d8658d01a80cf5c503015ef01afa5
+	b2sums = d869f9285e0fa0810b690d97932059aa6d3aaf0d99355bad18ffd480cc322a076928d08fce03893124a0ebd330a55ac9b6c580657e92601d8204a2a0b3c15406
+
+pkgname = regina-rexx
+	changelog = regina-rexx.changelog
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	depends = libxcrypt
+	depends = ncurses
+	depends = readline
+	optdepends = regina-rexx-doc: Demo scripts and PDF documentation for Regina REXX and regutil
+	provides = libregina.so
+	provides = rexx
+	replaces = regina-rexx-das
+	options = lto
+	options = !makeflags
+
+pkgname = regina-rexx-doc
+	pkgdesc = Demo scripts and documentation for Regina REXX and regutil (PDF)
+	arch = any
+	depends = regina-rexx
+	replaces = regina-rexx-das-doc
