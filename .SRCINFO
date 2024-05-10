@@ -1,0 +1,15 @@
+pkgbase = pdf-Translator
+	pkgdesc = this script will translate your pdf , and create a new translated PDF
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/simit22/pdf-translator
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-pypdf2
+	depends = python-reportlab
+	depends = translate-shell
+	source = pdfTranslate.py
+	md5sums = SKIP
+
+pkgname = pdf-Translator
