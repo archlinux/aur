@@ -6,7 +6,7 @@ url='https://github.com/flexagoon/rounded-window-corners'
 license=('GPL-3.0-or-later')
 
 pkgver=6d0504d
-pkgrel=1
+pkgrel=2
 
 arch=('any')
 depends=('gnome-shell')
@@ -22,6 +22,7 @@ pkgver() {
 
 build() {
   cd rounded-window-corners
+  export NPM_CONFIG_CACHE=${srcdir}/npm-cache
   just pack
 }
 
@@ -29,7 +30,7 @@ package() {
   cd rounded-window-corners
 
   local uuid=$(grep -Po '(?<="uuid": ")[^"]*' _build/metadata.json)
-  local extdir="$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
+  local extdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
 
   install -d ${extdir}
   bsdtar -xvf "${uuid}.shell-extension.zip" -C ${extdir} --no-same-owner
