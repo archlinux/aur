@@ -1,6 +1,6 @@
 pkgbase = bluestone-git
 	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience.
-	pkgver = 0.21.3.r0.g12830cc
+	pkgver = 0.22.0.r1.g5b5b151
 	pkgrel = 1
 	url = https://github.com/1943time/bluestone
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = bluestone-git
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron29
-	provides = bluestone=0.21.3
+	provides = bluestone=0.22.0
 	conflicts = bluestone
 	source = bluestone.git::git+https://github.com/1943time/bluestone.git
 	source = bluestone.sh
 	sha256sums = SKIP
-	sha256sums = 61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
 
 pkgname = bluestone-git
