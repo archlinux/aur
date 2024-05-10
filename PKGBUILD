@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/resources/software_hardware/stsci_python"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
@@ -15,7 +15,8 @@ makedepends=('python-setuptools-scm'
              'qd>=2.3.24'
              'python-numpy'
              'python-sphinx-automodapi'
-             'python-numpydoc')
+             'python-numpydoc'
+             'gcc13')
 checkdepends=('python-pytest'
               'python-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
@@ -43,7 +44,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    CC=gcc-13 CXX=g++-13 python -m build --wheel --no-isolation
 
     msg "Building Docs"
     NUMPY_EXPERIMENTAL_DTYPE_API=1 PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" \
