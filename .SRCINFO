@@ -1,0 +1,24 @@
+pkgbase = ioq3-bin
+	pkgdesc = The ioquake3 community effort to continue supporting/developing id's Quake III Arena
+	pkgver = 5a918bf
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/ioq3
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = curl
+	depends = freetype2
+	depends = libjpeg
+	depends = libvorbis
+	depends = openal
+	depends = opus
+	depends = opusfile
+	depends = sdl2
+	depends = zlib
+	source_x86_64 = https://gitlab.com/linuxbombay/ioq3/5a918bf/-/raw/main/ioq3-linux-x64.tar.xz
+	sha256sums_x86_64 = 71a1cba96cc2957afe07636a29ea814798d368101ffed47bba676b8ef3d321c6
+	source_aarch64 = https://gitlab.com/linuxbombay/ioq3/5a918bf/-/raw/main/ioq3-linux-arm64.tar.xz
+	sha256sums_aarch64 = f49c26e9d3a5d04d82d9b679ad64c7b2c0d3d1a0f0718b92b6b28dba9ffbc27a
+
+pkgname = ioq3-bin
