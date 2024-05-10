@@ -3,7 +3,7 @@
 
 pkgname=vscodium-git
 pkgver=1.88.1.24104.r1.g39df447
-pkgrel=2
+pkgrel=3
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
@@ -34,7 +34,8 @@ makedepends=(
     'git'
     'git-lfs'
     'patch'
-    'python<3.12'
+    'python'
+    'python-distutils-extra'
     'pkg-config'
 )
 source=(
