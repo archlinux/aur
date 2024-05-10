@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GenomAutomorphism
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Compute the automorphisms between DNA's Abelian group representations"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -20,8 +20,10 @@ depends=(
   r-genomeinfodb
   r-genomicranges
   r-iranges
+  r-matrixstats
   r-numbers
   r-s4vectors
+  r-xvector
 )
 checkdepends=(
   r-testthat
@@ -34,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('36ebcd90b454dc7450e875730537811b')
-b2sums=('33be5f5772966e34b9a0d4a637e31cb6f5fc0c21688b82be58caaa6edcd7fc7ccc80ba1a7b30edaf79cd06b3be36342283fd1908e129261595cb0d1d7a461468')
+md5sums=('8e2b819e8ccd17678ee090501fb50703')
+b2sums=('54f22c18badeac9e372d53fb078b1487ec06fb566cbf3672cb55d92c1cadfed95652ff05c3cf3d8478821f6cb994a01e48370a3408ebbfcc9b9702c85b13ffde')
 
 build() {
   mkdir build
