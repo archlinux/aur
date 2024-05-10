@@ -1,21 +1,22 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgbase=vibrant
+_pkgbase=libvibrant
 pkgname=(libvibrant vibrant-cli)
-pkgver=1.0.3
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A simple library to adjust color saturation of X11 outputs."
 arch=(x86_64)
 url="https://github.com/libvibrant/libvibrant"
 license=("GPL3" "custom:MIT")
 makedepends=("git" "cmake" "libxrandr" "libxnvctrl")
-source=("${pkgbase}::git+https://github.com/libvibrant/libvibrant.git#tag=${pkgver}")
-sha512sums=('SKIP')
+source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/libvibrant/libvibrant/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('fd62ed53f6738c849c9ad613456edd314044d097b5f82e9cdff98ad646f01ce7ceb1ee4d2e6e5258f69dd03e8f0da12d627fb10ed1dfa76f288cc540f88b832a')
 
 
 build() {
 
-    cmake -B build -S "$pkgbase" \
+    cmake -B build -S "${_pkgbase}-${pkgver}" \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
@@ -31,7 +32,7 @@ package_libvibrant() {
 
     env DESTDIR="$pkgdir" cmake -DCOMPONENT=lib -P cmake_install.cmake
 
-    cd "../$pkgbase"
+    cd "../${_pkgbase}-${pkgver}"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
@@ -46,7 +47,7 @@ package_vibrant-cli() {
 
     env DESTDIR="$pkgdir" cmake -DCOMPONENT=cli -P cmake_install.cmake
 
-    cd "../$pkgbase"
+    cd "../${_pkgbase}-${pkgver}"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
