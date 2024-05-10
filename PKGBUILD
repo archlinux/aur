@@ -21,7 +21,7 @@ _urlprefix="https://github.com/pando85/${_pkgname}/releases/download/v${pkgver}"
 _source="${_pkgname}-${pkgver}-${arch}-unknown-linux-gnu.tar.gz"
 source=(${_urlprefix}/${_source})
 noextract=()
-sha256sums=('ba9174643bf33757d5df93c8aecded59552941100eb46c243059283c7891d1e8')
+sha256sums=('9717f8934db0ab630cb0df0f4ee947a1bffa30aa3b5da3a66932a03773a395b1')
 
 prepare() {
   cd "${srcdir}"
