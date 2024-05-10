@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-previewer
 	pkgdesc = Standalone previewer for VapourSynth scripts
-	pkgver = R3
+	pkgver = R4
 	pkgrel = 1
 	url = https://github.com/YomikoR/VapourSynth-Editor/tree/vse-previewer
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = vapoursynth-previewer
 	depends = qt6-multimedia
 	depends = vapoursynth>=R58
 	options = !lto
-	source = https://github.com/YomikoR/VapourSynth-Editor/archive/refs/tags/VSE-Previewer-R3.tar.gz
-	sha256sums = 759afe68db327bfa93ba28f6cf1f57b5328acf6b15119ffd938958abbe236869
+	source = https://github.com/YomikoR/VapourSynth-Editor/archive/refs/tags/VSE-Previewer-R4.tar.gz
+	sha256sums = dab73fd638d37900ced8d20a9d223ea0058e5c3c53d98491a4a68a4f80cc2452
 
 pkgname = vapoursynth-previewer
