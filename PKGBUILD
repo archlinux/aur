@@ -2,7 +2,7 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=5
 pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 arch=('x86_64' 'aarch64')
@@ -30,10 +30,8 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 source=(
         "fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.tar.gz"
-        "openssl-dynamic-link.patch"
 )
-sha256sums=('0fb007f2ed56ee46115606dae5eb2bb9eac238c344caae8d478eb80d71e6295f'
-            '30cabdeb108d7766b55c002978d8ef64df4dfba2e3e7b872de774727afa50730')
+sha256sums=('c8a0462a1729fc9feb7213af2266cc230dc61fad589b2507cdb4e8144a5fef19')
 
 prepare() {
   # overriding CMake flags for aarch64 in order to ensure build
@@ -46,7 +44,6 @@ prepare() {
     export CFLAGS="${CFLAGS/-fstack-clash-protection/ }"
   fi
   
-  patch --follow-symlinks -p1 -i "${srcdir}/openssl-dynamic-link.patch" -d "${srcdir}/${pkgname}-${pkgver}"
   pushd "${srcdir}/${pkgname}-${pkgver}"
   flutter pub get
 }
