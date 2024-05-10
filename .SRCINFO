@@ -1,0 +1,22 @@
+pkgbase = ghost-chat-git
+	pkgdesc = A standalone, multiplatform Twitch.tv chat as overlay on windowed/windowed fullscreen applications.
+	pkgver = 3.1.1.r0.g3c06667
+	pkgrel = 1
+	url = https://github.com/Enubia/ghost-chat
+	arch = any
+	license = Zlib
+	makedepends = pnpm>=9
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = curl
+	makedepends = git
+	depends = electron30
+	provides = ghost-chat=3.1.1
+	conflicts = ghost-chat
+	source = ghost-chat.git::git+https://github.com/Enubia/ghost-chat.git
+	source = ghost-chat.sh
+	sha256sums = SKIP
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+
+pkgname = ghost-chat-git
