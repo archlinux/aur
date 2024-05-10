@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SAIGEgds
-_pkgver=2.2.1
+_pkgver=2.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Scalable Implementation of Generalized mixed models using GDS files in Phenome-Wide Association Studies"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -14,17 +14,18 @@ depends=(
   blas
   lapack
   onetbb
+  r-compquadform
   r-gdsfmt
   r-rcpp
   r-rcppparallel
   r-seqarray
+  r-survey
 )
 makedepends=(
   r-rcpparmadillo
 )
 optdepends=(
   r-biocgenerics
-  r-compquadform
   r-crayon
   r-ggmanh
   r-knitr
@@ -32,11 +33,10 @@ optdepends=(
   r-rmarkdown
   r-runit
   r-snprelate
-  r-survey
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1187edceb086e860386386db76896e83')
-b2sums=('4088bd9e28b66232c74cc1e12291eb5799a231adfb00d7c200f161a20998552df3fb7097c3f16b88ce99cb9816f9cddfd0225af0c08171881a635e1d2037cc26')
+md5sums=('874595e6351ae7cceea8a4f4d92cd6db')
+b2sums=('d9301bcf684f4806895315ca3dcfe8f97d94c7756be80a55cb6fd35f8254915a107338dc341810f52a0141f16aefc7c6eea99fee2a871a9d5537c0e4e6a5243a')
 
 build() {
   mkdir build
