@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
 pkgver=4.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
@@ -103,5 +103,5 @@ package() {
 	install -Dm755 blender-launcher "$pkgdir/usr/bin/blender"
 	install -Dm755 blender-softwaregl "$pkgdir/usr/bin/blender-softwaregl"
 	sed -i 's/BF_DIST_BIN=\$(dirname "\$0")/BF_DIST_BIN=\/usr\/lib\/blender-bin\//g' "$pkgdir/usr/bin/blender"
-	sed -i 's/BF_DIST_BIN=\$(dirname "\$0")/BF_DIST_BIN=\/usr\/lib\/blender-lib\//g' "$pkgdir/usr/bin/blender-softwaregl"
+	sed -i 's/BF_DIST_BIN=\$(dirname "\$0")/BF_DIST_BIN=\/usr\/lib\/blender-bin\//g' "$pkgdir/usr/bin/blender-softwaregl"
 }
