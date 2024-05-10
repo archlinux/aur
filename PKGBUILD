@@ -6,38 +6,38 @@
 
 pkgname=qdl-git
 _pkgname=qdl
-pkgver=r83.3b22df2
-pkgrel=2
+pkgver=r98.b18bca7
+pkgrel=1
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=('armv7h' 'i686' 'x86_64')
-url='https://github.com/andersson/qdl'
+url='https://github.com/linux-msm/qdl'
 license=('BSD3')
 makedepends=('git')
-depends=('libxml2' 'systemd-libs')
+depends=('libxml2' 'libusb' 'systemd-libs')
 provides=("qdl")
 conflicts=("qdl")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$_pkgname
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_pkgname}/"
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build(){
-  cd $srcdir/$_pkgname
-  make CFLAGS:="${CFLAGS} `pkg-config --cflags libxml-2.0`" LDFLAGS:="${LDFLAGS} `pkg-config --libs libxml-2.0 libudev`"
+  cd "${srcdir}/${_pkgname}/"
+  make CFLAGS:="${CFLAGS} `pkg-config --cflags libxml-2.0 libusb-1.0`" LDFLAGS:="${LDFLAGS} `pkg-config --libs libxml-2.0 libusb-1.0`"
 }
 
 package(){
-  cd $srcdir/$_pkgname
-  make prefix="/usr" DESTDIR="$pkgdir" install
+  cd "${srcdir}/${_pkgname}/"
+  make prefix:="/usr" DESTDIR:="${pkgdir}" install
 
   # Package license
-  install -d "$pkgdir/usr/share/licenses/$_pkgname/"
-  install LICENSE "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -d "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  install LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/"
 
   # Package documentation
-  install -d "$pkgdir/usr/share/doc/$_pkgname/"
-  install README "$pkgdir/usr/share/doc/$_pkgname/"
+  install -d "${pkgdir}/usr/share/doc/${_pkgname}/"
+  install README "${pkgdir}/usr/share/doc/${_pkgname}/"
 }
