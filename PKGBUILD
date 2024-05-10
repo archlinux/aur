@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=nipalsMCIA
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Multiple Co-Inertia Analysis via the NIPALS Method"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -25,6 +25,7 @@ checkdepends=(
   r-testthat
 )
 optdepends=(
+  r-biocfilecache
   r-biocstyle
   r-circlize
   r-ggpubr
@@ -39,8 +40,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0558d05ea61523c6fcaed9d8ed9b0ded')
-b2sums=('1b4f12364525b2732899e332a90c97b3ba68320a996442e94cf67c983c97e5ad98c2ce65f6e85b2bcc5410118a1f279514199dfd35b4432651094f5beafe8e91')
+md5sums=('4092618c668e796e5fbaa4f6fe34bc2f')
+b2sums=('331f310aa90a60f66efaf44d30118d37c038330e3c8bc23cabffeccb8768924f985bfd89ab0ff0aa6fb921c53136df7e9e8792d33b8a31bd6e40a51b5d6c6dcb')
 
 build() {
   mkdir build
