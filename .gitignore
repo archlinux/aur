@@ -4,5 +4,4 @@
 !.SRCINFO
 !PKGBUILD
 !upload-symbol-archive
-!*.patch
 !*.desktop

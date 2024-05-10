@@ -7,7 +7,7 @@
 _pkgname=thunderbird
 pkgname=thunderbird-globalmenu
 pkgver=115.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone mail and news reader from mozilla.org (With appmenu patch from Ubuntu)"
 url="https://www.thunderbird.net/"
 arch=(x86_64)
@@ -39,7 +39,7 @@ makedepends=(
 	nasm
 	nodejs
 	python
-	rust
+	rustup
 	unzip
 	wasi-compiler-rt
 	wasi-libc
@@ -61,10 +61,9 @@ options=(
 	!makeflags)
 source=(
 	"https://archive.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz"{,.asc}
-	assert.patch
-	D187418.patch
-	D187749.patch
-	unity-menubar.patch
+	"D187418.patch::https://phabricator.services.mozilla.com/D187418?download=true"
+	"D187749.patch::https://phabricator.services.mozilla.com/D187749?download=true"
+	"feature-unity-menubar.patch::https://github.com/Betterbird/thunderbird-patches/raw/8c6d9032ad318a80f23a521d91f0fa6d5d5532ee/115/features/feature-unity-menubar.patch"
 	org.mozilla.thunderbird.desktop)
 validpgpkeys=(
 	# Mozilla Software Releases <release@mozilla.com>
@@ -73,10 +72,9 @@ validpgpkeys=(
 sha1sums=(
 		'17ef4cfaa43e6fed0bc5c7cf9ae263722b1a89a8'
 		'SKIP'
-		'bb4bbaddc549edd3506b5e955840fcebffcafb71'
 		'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
 		'559ce09fee54c849ea4da2bf881da37f5fc0cac9'
-		'076dc68b2ec6c454afe9b5a9b3fbb7908ce575b8'
+		'72583462c41d9cacfa6a749cff0500bdece08510'
 		'59206e9c42055ebcd15fb5fc27ff8f12d64b1f38')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -95,7 +93,7 @@ prepare() {
 	mkdir mozbuild
 	cd $_pkgname-$pkgver
 
-	for patch in "${source[@]}"; do
+	for patch in "${source[@]%%::*}"; do
 		if [[ $patch == *.patch ]]; then
 			msg2 "applying $patch"
 			patch --no-backup-if-mismatch -Np1 < "$srcdir/$patch"
@@ -155,6 +153,9 @@ fi
 
 build() {
 	cd $_pkgname-$pkgver
+
+	# The correct Rust version for thunderbird 115 is 1.70.0
+	export RUSTUP_TOOLCHAIN=1.77
 
 	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
 	export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -252,7 +253,7 @@ package() {
 	# Install a launcher for set necessary environment variable
 	install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<-END
 		#!/usr/bin/env sh
-		export MOZ_APP_LAUNCHER="\$0" # Used for determine whether firefox is default browser
+		export MOZ_APP_LAUNCHER="\$0" # For $_pkgname can correctly set itself as the default application
 		export MOZ_DESKTOP_FILE_NAME=$desktopid # https://bugzilla.mozilla.org/show_bug.cgi?id=1438051
 		exec /usr/lib/$_pkgname/$_pkgname "\$@"
 
