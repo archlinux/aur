@@ -6,7 +6,7 @@
 #
 
 pkgname=hpltt
-pkgver=6.2
+pkgver=6.3
 pkgrel=1
 pkgdesc="HP Library & Tape Tools - diagnostics for HP tape drives"
 arch=('x86_64')
@@ -17,9 +17,9 @@ depends=('ncurses5-compat-libs')
 options=(!strip)
 validpgpkeys=('57446EFDE098E5C934B69C7DC208ADDE26C2B797')
 
-source_x86_64=('https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v209012/hpe_ltt62_linux_x86_64.tar'{,.sig})
-sha256sums_x86_64=('222cd9071fdb95a356222d1fccc67a20d83cae40c63ef0c1394afaeb2129307a'
-                   'b6c4b2ed7c51eeec921123eed1e31299630c9c22ee03c362dbb1b440514b3614')
+source_x86_64=('https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v216477/hpe_ltt63_linux_x86_64.tar'{,.sig})
+sha256sums_x86_64=('58db89807152fc903b84bd76123e098c5cbf4aaa5f820402ef8a206ad0dc8cab'
+                   '3fd2c7a5102b7447a52c50c13b9f9629ef19eb065b7e7203a880d2a0c12004e7')
 
 package() {
 	bsdtar -x -f hpeltt-*.rpm || (error "Multiple .rpm files in source folder, please clean remnants from earlier build (delete $srcdir and use makepkg -c in future)" ; exit 1)
