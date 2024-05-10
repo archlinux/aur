@@ -1,0 +1,11 @@
+pkgbase = erlang-docs
+	pkgdesc = HTML and PDF documentation for Erlang
+	pkgver = 26.2.5
+	pkgrel = 1
+	url = http://erlang.org/doc/
+	arch = any
+	license = custom
+	source = https://github.com/erlang/otp/releases/download/OTP-26.2.5/otp_doc_html_26.2.5.tar.gz
+	b2sums = 2292745354b886beada8b26c2cf4c1fd43597829ced572adb9ca3412d9b82d9c97c8b543f4330496ab11be3fee0d80aea285019af1d5d302a4346cf05cbb3560
+
+pkgname = erlang-docs
