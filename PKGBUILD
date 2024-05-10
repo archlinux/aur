@@ -2,7 +2,7 @@
 
 pkgname=yosys-nightly
 pkgver=20240510_yosys_0.41_24_g1a54e8d47
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Yosys Open SYnthesis Suite, A framework for RTL synthesis"
 arch=("x86_64")
