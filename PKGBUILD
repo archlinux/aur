@@ -3,7 +3,7 @@ pkgname=bookord-bin
 _pkgname=Bookord
 pkgver=0.2.7
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="An e-book reader"
 arch=("x86_64")
 url="https://github.com/LiprikON2/Bookord"
@@ -16,7 +16,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('df5e504d61914ee5d66588105442c319ece715660acefb55f1fe8f9b46663b15'
-            '0c7371dd1f6de50d383f14ef602447382ff87871b4845c7e9c086aac34fe6365')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
