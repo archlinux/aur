@@ -1,22 +1,26 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggsc
-_pkgver=1.0.2
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
-pkgdesc="Visualizing Single Cell Data"
+pkgrel=1
+pkgdesc="Visualizing Single Cell and Spatial Transcriptomics"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
   blas
+  onetbb
   r-cli
   r-dplyr
+  r-ggfun
   r-ggplot2
+  r-rcolorbrewer
   r-rcpp
   r-rcppparallel
   r-rlang
+  r-scales
   r-scattermore
   r-seurat
   r-singlecellexperiment
@@ -45,6 +49,7 @@ optdepends=(
   r-prettydoc
   r-rmarkdown
   r-scater
+  r-scatterpie
   r-scran
   r-scuttle
   r-seuratobject
@@ -55,8 +60,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4c0a1656e9943cadf436244c65b18242')
-b2sums=('d8d67ddaf34fbdb71347226f6e916c22fd1338716a2b308e15b6d799e133dd9b9b7fba108b7e5792aed38c65efb4469cf9241cb2f3f50b3c2301c79cf169c228')
+md5sums=('9b2e1ac75f9a734608bdd581df506a74')
+b2sums=('774daf3d454078ef8c355f7817c546e7b84d9006f8ecf994e984ce7e20b1e7943cec296cb7fab90a0c50a55d0fe88f44ed245e252fbf08f0103f878420c99eba')
 
 build() {
   mkdir build
