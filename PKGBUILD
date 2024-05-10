@@ -8,7 +8,7 @@ makedepends=(
   'cargo'
   'wget'
 )
-provides=('fetcher-based-rs-bin')
+# provides=('fetcher-based-rs-bin')
 conflicts=('fetcher-based-rs-bin')
 url="https://github.com/arch-based/fetcher-rs"
 license=('GPL-3.0')
@@ -18,8 +18,8 @@ source=(https://github.com/arch-based/fetcher-rs/raw/main/fetcher-rs.tar.gz)
 build() {
   # Download the source tarball
   [[ -f fetcher-rs.tar.gz ]] || wget --no-check-certificate -O fetcher-rs.tar.gz 
-
-  # Extract the tarball
+ 
+   # Extract the tarball
   tar -xf fetcher-rs.tar.gz
   # Go into the directory where the tarball was extracted
   cd "$srcdir/src"
@@ -31,7 +31,6 @@ build() {
 package() {
   install -Dm755 "$srcdir/target/debug/fetcher" "$pkgdir/usr/bin/fetcher"
 }
-
 sha256sums=(
-  '5ed08c0cfa844d3aefb8823540574e63607dc83a38f27598367efb4f165cf51e'
+  '11e75e9eb3b9d9f158ed3291ba3ce76ef2c6810b1fe52b857f59980087fa2432'
 )
