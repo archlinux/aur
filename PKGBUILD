@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tishare-desktop-bin
 _pkgname=tiShare
-pkgver=0.3.8
+pkgver=0.4.0
 _electronversion=26
 pkgrel=1
 pkgdesc="tiShare aims to send files or folders between devices easily, with cross-platform support."
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dlguswo333/tishare-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d4d8773612fa9e6c04e33eac56cc7b5474fee86b7a7645d26946ea6a8b40eba7'
+sha256sums=('0df6c5896536151b3ac2538435ac673f46a50078b6886fd98e4b1e29ea56c39c'
             '5461c88ddb4ff9c0e56d75fdb18fe2719a5afe1c676513496a2e07b45ccebb99'
             '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 build() {
