@@ -1,11 +1,11 @@
 # Maintainer: arch-based <anonymous.negation790@passinbox.com>
 pkgname='fetcher-based-rs'
-pkgver='0.1.1'
+pkgver='0.1.2'
 pkgrel=2
 pkgdesc='This is a tool to show system information in the real arch linux way. Re-written in Rust.'
 arch=('x86_64')
 makedepends=(
-	'cargo'
+  'cargo'
   'wget'
 )
 provides=('fetcher-based-rs-bin')
@@ -21,19 +21,17 @@ build() {
 
   # Extract the tarball
   tar -xf fetcher-rs.tar.gz
-	# Go into the directory where the tarball was extracted
-	cd "$srcdir/src"
-	# Build the binary with cargo
-	cargo build
+  # Go into the directory where the tarball was extracted
+  cd "$srcdir/src"
+  # Build the binary with cargo
+  cargo build
 }
 
 # Package Install Function
 package() {
-	install -Dm755 "$srcdir/target/debug/fetcher" "$pkgdir/usr/bin/fetcher"
+  install -Dm755 "$srcdir/target/debug/fetcher" "$pkgdir/usr/bin/fetcher"
 }
 
-
-#clean() {
-#	rm -r src target fetcher-rs.tar.gz pkg
-#}
-sha256sums=('5ed08c0cfa844d3aefb8823540574e63607dc83a38f27598367efb4f165cf51e')
+sha256sums=(
+  '5ed08c0cfa844d3aefb8823540574e63607dc83a38f27598367efb4f165cf51e'
+)
