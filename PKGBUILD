@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=omicsViewer
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Interactive and explorative visualization of SummarizedExperssionSet or ExpressionSet using omicsViewer"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,6 +13,7 @@ depends=(
   r-beeswarm
   r-biobase
   r-curl
+  r-drc
   r-dt
   r-fastmatch
   r-fgsea
@@ -48,8 +49,8 @@ optdepends=(
   r-unittest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7d650ff242a133610199a574a29abfde')
-b2sums=('f97ece507080b043c87e59f55c3a84bfb391264a62ed1b1e67169794774e3e521c7ff904584199eae21b83c96f25a22335eb1625d6c284acf34a00dc7b2ab1e1')
+md5sums=('99de2e1df69e1e064471746fd94fb31f')
+b2sums=('cf4c1ae23e1dd6f1d44a7dcb0cce741dece1c1a8eb9e965464851f7b60b3fc8863b1fbdeb2626848bb78dc874d3de2f0afc199208f0bec35acc94ae1543fe990')
 
 build() {
   mkdir build
