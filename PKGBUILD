@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
-pkgver=1.13.2_1
+pkgver=1.13.2_2
 _electronversion=21
-pkgrel=2
+pkgrel=1
 pkgdesc="基于哔哩哔哩官方客户端移植的Linux版本 支持漫游"
 arch=(
     'aarch64'
@@ -30,8 +30,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('9764c9a3bba3de88ca594e48ea44277b2214c0dee6c40d0e4241d91620d308b7'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+sha256sums=('d0cc7e1c0f7e5c475b27eb55b223eb593ec501de4f4e2834996dd1a514d878c7'
+            '91c94c21464757571064d5364835bef8c07e1436e9cafd427a9d45e46b3ad7e2')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
