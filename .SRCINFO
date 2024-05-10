@@ -1,14 +1,15 @@
 pkgbase = vibrantlinux
 	pkgdesc = A tool to automate managing your screen's saturation depending on what programs are running
-	pkgver = 2.1.10
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/libvibrant/vibrantLinux
 	arch = x86_64
-	license = MIT
+	license = GPL
 	makedepends = git
-	depends = qt5-base
+	makedepends = cmake
+	depends = qt6-base
 	depends = libvibrant
-	source = vibrantlinux::git+https://github.com/libvibrant/vibrantLinux.git#tag=v2.1.10
-	sha512sums = SKIP
+	source = vibrantLinux-2.2.0.tar.gz::https://github.com/libvibrant/vibrantLinux/archive/refs/tags/v2.2.0.tar.gz
+	b2sums = 845f4bd44e3c9d6ff033f1a98f6bcb8c8144c6d965938f55e18497955c964b6988483129d39a1c56e5cf3a50d0066c3ed25f407d327f860c7cb3c978de4843d1
 
 pkgname = vibrantlinux
