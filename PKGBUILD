@@ -11,7 +11,7 @@ makedepends=(
 provides=('fetcher-based-rs-bin')
 conflicts=('fetcher-based-rs-bin')
 url="https://github.com/arch-based/fetcher-rs"
-license=('GPL3')
+license=('GPL-3.0')
 source=(https://github.com/arch-based/fetcher-rs/raw/main/fetcher-rs.tar.gz)
 
 # Package Build Function
@@ -20,7 +20,7 @@ build() {
   [[ -f fetcher-rs.tar.gz ]] || wget --no-check-certificate -O fetcher-rs.tar.gz 
 
   # Extract the tarball
-  tar -xvf fetcher-rs.tar.gz
+  tar -xf fetcher-rs.tar.gz
 	# Go into the directory where the tarball was extracted
 	cd "$srcdir/src"
 	# Build the binary with cargo
@@ -29,7 +29,7 @@ build() {
 
 # Package Install Function
 package() {
-	install -Dm755 -t "$pkgdir/usr/bin/fetcher" "$srcdir/target/debug/fetcher"
+	install -Dm755 "$srcdir/target/debug/fetcher" "$pkgdir/usr/bin/fetcher"
 }
 
 
