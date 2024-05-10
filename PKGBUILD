@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IgGeneUsage
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Differential gene usage in immune repertoires"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -33,17 +33,19 @@ optdepends=(
   r-ggforce
   r-ggplot2
   r-ggrepel
-  r-gridextra
   r-knitr
+  r-patchwork
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('231f1af3465f435ca3bb099a93e51e5b')
-b2sums=('6b645f318f8017a9ca973f869b5924899aaf39262e46e920d7757c8361d847ac4c623811df25dfbbeb12087fca01875edd6bbc84d2989c0d381f5e3c6bb6ed35')
+md5sums=('6b09f356086c2d9d212b6b64973d69a9')
+b2sums=('fa24145aaf622951e6439e2ee8859e7ce3cf5f133be0ff1828a46bbede22d787cf6af5b689cc33244d70bdf308d60e9470f1d130879bfa74eeb9d45245d4eaf6')
 
 build() {
   mkdir build
+  # compilation needs a lot of memory
+  MAKEFLAGS+=" -j1"
   R CMD INSTALL -l build "$_pkgname"
 }
 
