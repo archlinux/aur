@@ -6,7 +6,7 @@
 
 pkgname=ncsa-mosaic-git
 epoch=1
-pkgver=2.7b6.r37.6b855b3
+pkgver=2.7b6.r39.2e9a605
 _pkgver=2.7b6
 pkgrel=1
 pkgdesc="One of the first graphical web browsers"
@@ -29,8 +29,21 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
+
+	local customflags
+
 	# https://github.com/alandipert/ncsa-mosaic/issues/14
-	make linux customflags=-fcommon
+	customflags='-fcommon'
+
+	# Required since GCC 14, which turned many previous warnings
+	# into errors.
+	# https://gcc.gnu.org/gcc-14/porting_to.html#warnings-as-errors
+	customflags="$customflags -Wno-error=implicit-function-declaration"
+	customflags="$customflags -Wno-error=implicit-int"
+	customflags="$customflags -Wno-error=incompatible-pointer-types"
+	customflags="$customflags -Wno-error=int-conversion"
+
+	make linux customflags="$customflags"
 }
 
 package() {
