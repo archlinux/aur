@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=mariner
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Explore the Hi-Cs"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-abind
   r-assertthat
@@ -51,10 +51,10 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-test-snapshot.patch")
-md5sums=('6ed30878d03b8a17e8e7c4ee17218893'
-         'd0928c3ea11234e2200f31c9b4ff4ade')
-b2sums=('dfaa195e26df395d9948668e342bcc5bc2c593d42b102a7140cb6778fc904f171b561c7fe1d6bce1dbefbd22832b745888549f06eff42c5596455d48e2693db3'
-        'aba583ffb72fea9e7ce5820b8160418b345b87e1d93fe9533efeb5732011373bd18dfea4c16b49f869e0d698529f48f738bec528c77d67c1cf095e7656a6ca30')
+md5sums=('59fce5faa48236d0a9cd9bdda6480d3d'
+         'b055713d876d7ea3e97a92a152bb5f28')
+b2sums=('e2c553258972c7d24b907feab042be3fce9547636a6fbb1c264148002928b48fec581504e8281c214d076bdca3933eda08f9df6ad6f7b0d74d1e3847e8bee75f'
+        '6111457fda4b526e70b08ac62ec1ffd68dd8fe81d6d57cd715ef4f10a5156756d788043a924d9b3103958775cc28d02e0313947187a571907a9f6adf879148a1')
 
 prepare() {
   # fix snapshot test
