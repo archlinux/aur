@@ -35,7 +35,7 @@ pkgver() {
 
 package() {
     cd "${_pkgname}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}-dev/LICENSE"
 
     cd "dist"
     find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}-dev/"{} \;
