@@ -1,7 +1,7 @@
 pkgbase = vibrant
 	pkgdesc = A simple library to adjust color saturation of X11 outputs.
-	pkgver = 1.0.3
-	pkgrel = 4
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/libvibrant/libvibrant
 	arch = x86_64
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = vibrant
 	makedepends = cmake
 	makedepends = libxrandr
 	makedepends = libxnvctrl
-	source = vibrant::git+https://github.com/libvibrant/libvibrant.git#tag=1.0.3
-	sha512sums = SKIP
+	source = libvibrant-1.1.0.tar.gz::https://github.com/libvibrant/libvibrant/archive/refs/tags/1.1.0.tar.gz
+	b2sums = fd62ed53f6738c849c9ad613456edd314044d097b5f82e9cdff98ad646f01ce7ceb1ee4d2e6e5258f69dd03e8f0da12d627fb10ed1dfa76f288cc540f88b832a
 
 pkgname = libvibrant
 	depends = libxrandr
