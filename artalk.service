@@ -1,0 +1,19 @@
+[Unit]
+Description=artalk
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=artalk
+Group=artalk
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+ConfigurationDirectory=artalk
+StateDirectory=artalk
+WorkingDirectory=/var/lib/artalk
+ExecStart=/usr/bin/artalk server --config /etc/artalk/artalk.yml --workdir /var/lib/artalk
+ExecStartPre=/bin/bash -c '[ -f /etc/artalk/artalk.yml ] || /usr/bin/artalk gen config /etc/artalk/artalk.yml'
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

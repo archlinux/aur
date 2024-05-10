@@ -1,0 +1,5 @@
+#Type   Path                            Mode    User    Group   Age     Argument
+d       /var/lib/artalk                  0750    artalk   artalk   -       -
+d       /var/log/artalk                  0755    artalk   artalk   -       -
+d       /var/cache/artalk                0755    artalk   artalk   -       -
+d       /etc/artalk                      0750    artalk   artalk   -       -
