@@ -1,6 +1,6 @@
 pkgbase = fetcher-based-rs
 	pkgdesc = This is a tool to show system information in the real arch linux way. Re-written in Rust.
-	pkgver = 1.0
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/arch-based/fetcher-rs
 	arch = x86_64

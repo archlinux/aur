@@ -1,6 +1,6 @@
 # Maintainer: arch-based <anonymous.negation790@passinbox.com>
 pkgname='fetcher-based-rs'
-pkgver='1.0'
+pkgver='1.5'
 pkgrel=1
 pkgdesc='This is a tool to show system information in the real arch linux way. Re-written in Rust.'
 arch=('x86_64')
