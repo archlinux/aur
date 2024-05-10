@@ -3,7 +3,7 @@
 # Contributor: Yi donghoon <icq4ever@gmail.com>
 pkgname='kemai-git'
 pkgdesc='A QT6 client for Kimai time tracker'
-pkgver=0.11.0.r427.353607a
+pkgver=0.11.0.r432.83138ca
 pkgrel=1
 url='https://github.com/AlexandrePTJ/kemai'
 arch=('i686' 'x86_64')
@@ -25,8 +25,7 @@ build() {
     -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
-    -DFETCHCONTENT_TRY_FIND_PACKAGE_MODE=ALWAYS \
+    -DKEMAI_BUILD_LOCAL_DEPENDENCIES=OFF \
     -Wno-dev
   cmake --build build
 }
