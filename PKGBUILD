@@ -9,7 +9,7 @@ url="https://gitlab.com/linuxbombay/wolfboa"
 depends=('gzdoom-bin' 'aria2' 'unzip' 'yad')
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/wolfboa-$pkgver.tar.bz2")
-sha256sums=('9ee49e4a774a6c175b435e37306cca549cb7bc1a6fd8a1000009cded34d10803')
+sha256sums=('a64fb358a31616f443ca68e88eff1c2e4e532e3510ef9c5bc83b1aa2a00354d0')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
