@@ -46,23 +46,23 @@ pre_install() {
 post_install() {
   for user in "${users[@]}"; do
     _refresh_daemon "$user"
-    _start_service "$user"
-    _enable_service "$user"
+    # _start_service "$user"
+    # _enable_service "$user"
   done
 }
 
-pre_upgrade() {
-  for user in "${users[@]}"; do
-    if _is_service_active "$user"; then
-      _stop_service "$user"
-    fi
-  done
-}
+# pre_upgrade() {
+#   for user in "${users[@]}"; do
+#     if _is_service_active "$user"; then
+#       _stop_service "$user"
+#     fi
+#   done
+# }
 
 post_upgrade() {
   for user in "${users[@]}"; do
     _refresh_daemon "$user"
-    _start_service "$user"
+    # _start_service "$user"
   done
 }
 
@@ -70,6 +70,8 @@ pre_remove() {
   for user in "${users[@]}"; do
     if _is_service_active "$user"; then
       _stop_service "$user"
+    fi
+    if _is_service_enabled "$user"; then
       _disable_service "$user"
     fi
   done
