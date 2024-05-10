@@ -178,6 +178,7 @@ package_gcc12() {
 
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install
   rm -f "$pkgdir"/usr/lib/libgcc_s.so*
+  rm -f "$pkgdir"/usr/lib/gcc/x86_64-pc-linux-gnu/lib/libgcc_s.so*
 
   make -C $CHOST/libstdc++-v3/src DESTDIR="$pkgdir" install
   make -C $CHOST/libstdc++-v3/include DESTDIR="$pkgdir" install
