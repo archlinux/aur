@@ -1,7 +1,7 @@
-# Maintainer: water_lift <0xWATERx0@gmail.com>
+# Maintainer: Asakura Mizu <asakuramizu111@gmail.com>
 pkgname=defold
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Defold is a completely free to use game engine for development of desktop, mobile and web games."
 arch=(x86_64)
@@ -47,7 +47,7 @@ package() {
     mkdir -p "$pkgdir/opt/Defold"
     cp -r Defold "$pkgdir/opt"
     cp -r defoldsdk "$pkgdir/opt/Defold"
-    mkdir -p "$pkgdir/usr/include/dmsdk"
-    ln -s "$pkgdir/opt/Defold/defoldsdk/sdk/include/dmsdk" "$pkgdir/usr/include/dmsdk"
+    mkdir -p "$pkgdir/usr/include"
+    ln -s "/opt/Defold/defoldsdk/sdk/include/dmsdk" "$pkgdir/usr/include/dmsdk"
     install -Dm644 bob.jar "$pkgdir/opt/Defold"
 }

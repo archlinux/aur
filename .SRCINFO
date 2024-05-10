@@ -1,7 +1,7 @@
 pkgbase = defold
 	pkgdesc = Defold is a completely free to use game engine for development of desktop, mobile and web games.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://defold.com/
 	arch = x86_64
 	license = custom
