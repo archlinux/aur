@@ -1,0 +1,20 @@
+pkgbase = witsy-bin
+	pkgdesc = Generative AI desktop application
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/nbonamy/witsy
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = gendesk
+	depends = electron29
+	provides = witsy=1.5.2
+	conflicts = witsy
+	options = !emptydirs
+	source = witsy-1.5.2.zip::https://github.com/nbonamy/witsy/releases/download/v1.5.2/Witsy-linux-x64-1.5.2.zip
+	source = witsy-1.5.2.png::https://raw.githubusercontent.com/nbonamy/witsy/v1.5.2/assets/icon.png
+	source = witsy.sh
+	sha256sums = eac293a4ced2e650f441186994af1b489b1196e20247b690bec02d7801afd486
+	sha256sums = 1f290bf14df85930c04881b362b015791a0c94dd491979acfccb0bdcfd35e58e
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+
+pkgname = witsy-bin
