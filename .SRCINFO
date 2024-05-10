@@ -1,14 +1,14 @@
 pkgbase = python-django-multiselectfield
 	pkgdesc = A Multiple Choice model field
 	pkgver = 0.1.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/goinnn/django-multiselectfield
 	arch = any
 	license = LGPL-3.0-only
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = git
 	depends = python
 	depends = python-django
 	source = python-django-multiselectfield::git+https://github.com/goinnn/django-multiselectfield#tag=v0.1.12
