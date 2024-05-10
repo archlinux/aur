@@ -22,12 +22,12 @@ build() {
     sudo pacman -Ud --noconfirm https://archive.archlinux.org/packages/g/gcc/gcc-13.2.1-6-x86_64.pkg.tar.zst
     meson . builddir --prefix=/usr
     meson configure -Dprofile=development builddir
-    ninja -C builddir
+    meson compile -C builddir
 }
 
 package() {
     cd "${gitname}/"
-    DESTDIR="${pkgdir}" ninja -C builddir install
+    meson install -C builddir --destdir "$pkgdir"
     sudo pacman -S --noconfirm  gcc-libs gcc
 }
 
