@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-music-git
-pkgver=0.5.2.r0.g91a52ef
+pkgver=0.5.3.r0.g4704ab1
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -19,6 +19,7 @@ makedepends=(
     'npm'
     'pnpm'
     'nvm'
+    'curl'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
