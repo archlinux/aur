@@ -1,8 +1,7 @@
-# Maintainer: VVL <me@ivvl.ru>
-# Contributor: VVL <me@ivvl.ru>
+# Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=mtprotoproxy
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Telegram MTProto proxy written in pure python"
 arch=(any)
@@ -11,7 +10,7 @@ license=('MIT')
 source=("https://github.com/alexbers/mtprotoproxy/archive/v$pkgver.tar.gz"
         "mtprotoproxy.service")
 depends=('python' 'python-pycryptodome')
-sha256sums=('bfeec6d84d896fc79d40cb73fd3c3af4fc4c5fcf2d3fc67b5710d64a1ed58095'
+sha256sums=('966bb22d5e0a2543447837b94d23ef234d8dac2b5110b84cb39a89b2bb99b680'
             'cd993b52610d68361a3faf9500b744f5d5e4e8eb3e79effc36098576f24b950c')
 backup=('etc/mtprotoproxy.conf')
 package() {
