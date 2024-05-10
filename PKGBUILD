@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=hermes
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -54,18 +54,17 @@ optdepends=(
   r-statmod
   r-testthat
   r-vdiffr
-  r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "skip-tests.patch")
-md5sums=('9e758f81455d5fc7a8b57c3a65b4de5b'
-         'e228515b639417bea13853cfc94b866a')
-b2sums=('224fd9ad63e1bdf566a41e58f90c2cd120008add812f0ff4e777d72d9c3896c7d7ed06b5759b5c5330b2126dfc0cb6097584c7650c8a1f12fd2c1dcdf34ed99c'
-        'b781820238d74265dce64de9804bd568587c61c0460e15b32eabf27e0f827d673e52e852274e2613a2cf55bd54e218ad21493d78fc16f8fe954a98d3b9970bb7')
+        "fix-tests.patch")
+md5sums=('e2a043604334a9302285e5864ecd72ab'
+         '029546b1d58fdda69b7ffa514d60f183')
+b2sums=('a6264580c5c9d0591e4f5e3c0e9017e3f2666282d627beac7699d83572529646e053e5632de9ef76e615eab2226f5f0a568d22957d4bbe04d659a5f895491af3'
+        'cc64529e5965906de4292e712770f226e991a549d4bf6fe9b18db1b60fcdd0a4033a9aeb9ff7c59ccf1b2fe94dc69e9e492641a9df5b8579742abf726a36083b')
 
 prepare() {
-  # skip failing tests
-  patch -Np1 -i skip-tests.patch
+  # fix snapshot tests
+  patch -Np1 -i fix-tests.patch
 }
 
 build() {
