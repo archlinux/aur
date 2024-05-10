@@ -1,16 +1,16 @@
 pkgbase = bookord-bin
 	pkgdesc = An e-book reader
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/LiprikON2/Bookord
 	arch = x86_64
 	license = MIT
 	depends = electron29
-	provides = bookord=0.2.6
+	provides = bookord=0.2.7
 	conflicts = bookord
-	source = bookord-0.2.6.deb::https://github.com/LiprikON2/Bookord/releases/download/v0.2.6/bookord_0.2.6_amd64.deb
+	source = bookord-0.2.7.deb::https://github.com/LiprikON2/Bookord/releases/download/v0.2.7/bookord_0.2.7_amd64.deb
 	source = bookord.sh
-	sha256sums = 555ae27fcaf1a1bfc03f3a5acad6f36e3ac0e7eb625a0d1f0be420aff99133cd
-	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+	sha256sums = df5e504d61914ee5d66588105442c319ece715660acefb55f1fe8f9b46663b15
+	sha256sums = 0c7371dd1f6de50d383f14ef602447382ff87871b4845c7e9c086aac34fe6365
 
 pkgname = bookord-bin

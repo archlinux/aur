@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bookord-bin
 _pkgname=Bookord
-pkgver=0.2.6
+pkgver=0.2.7
 _electronversion=29
 pkgrel=1
 pkgdesc="An e-book reader"
@@ -15,11 +15,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('555ae27fcaf1a1bfc03f3a5acad6f36e3ac0e7eb625a0d1f0be420aff99133cd'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+sha256sums=('df5e504d61914ee5d66588105442c319ece715660acefb55f1fe8f9b46663b15'
+            '0c7371dd1f6de50d383f14ef602447382ff87871b4845c7e9c086aac34fe6365')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
