@@ -6,7 +6,7 @@ pkgname=(
   asusctl
   rog-control-center
 )
-pkgver=6.0.3
+pkgver=6.0.5
 pkgrel=0.1
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=(
   systemd
 )
 source=("git+https://gitlab.com/asus-linux/asusctl.git#tag=$pkgver")
-b2sums=('e625d14ab99b199e2ffffbb12e2f7c5f31bf60b9133dceb7a8f2293c732b6ab387361cbe21a2982f69e86dd81bac1868d953865a2d5bc53af47ee31caf806fee')
+b2sums=('0f56a852ce98cd5820ff57cc9f31d6e9387a8c529a9ef59ed8c93ae7c198c3bc25673e95236fa2c72b6d776eb5dc6fb0717dbd8b162e9aad4099cdf49d240671')
 
 prepare() {
   cd "${pkgbase}"
@@ -74,6 +74,7 @@ package_asusctl() {
     systemd
     systemd-libs
   )
+  conflicts=(gnome-shell-extension-asusctl-gnome)
   install=asusctl.install
   optdepends=(
     'acpi_call: fan control'

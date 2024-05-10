@@ -1,6 +1,6 @@
 pkgbase = asusctl
 	pkgdesc = A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops
-	pkgver = 6.0.3
+	pkgver = 6.0.5
 	pkgrel = 0.1
 	url = https://asus-linux.org
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = asusctl
 	makedepends = rust
 	makedepends = seatd
 	makedepends = systemd
-	source = git+https://gitlab.com/asus-linux/asusctl.git#tag=6.0.3
-	b2sums = e625d14ab99b199e2ffffbb12e2f7c5f31bf60b9133dceb7a8f2293c732b6ab387361cbe21a2982f69e86dd81bac1868d953865a2d5bc53af47ee31caf806fee
+	source = git+https://gitlab.com/asus-linux/asusctl.git#tag=6.0.5
+	b2sums = 0f56a852ce98cd5820ff57cc9f31d6e9387a8c529a9ef59ed8c93ae7c198c3bc25673e95236fa2c72b6d776eb5dc6fb0717dbd8b162e9aad4099cdf49d240671
 
 pkgname = asusctl
 	pkgdesc = A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops
@@ -32,6 +32,7 @@ pkgname = asusctl
 	optdepends = supergfxctl: hybrid GPU control
 	optdepends = asusctltray: tray profile switcher
 	optdepends = rog-control-center: app to control asusctl
+	conflicts = gnome-shell-extension-asusctl-gnome
 
 pkgname = rog-control-center
 	pkgdesc = App to control asusctl
