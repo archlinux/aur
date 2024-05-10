@@ -1,8 +1,8 @@
 pkgbase = gnome-shell-extension-rounded-corners-git
-	pkgdesc = https://github.com/lennart-k/gnome-rounded-corners
+	pkgdesc = Adds rounded corners to every monitor in GNOME.
 	pkgver = r34.571147a
 	pkgrel = 1
-	url = Adds rounded corners to every monitor in GNOME.
+	url = https://github.com/lennart-k/gnome-rounded-corners
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
