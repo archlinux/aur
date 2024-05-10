@@ -2,7 +2,7 @@
 pkgname=bilibili
 pkgver=1.13.2_2
 _electronversion=21
-pkgrel=1
+pkgrel=2
 pkgdesc="基于哔哩哔哩官方客户端移植的Linux版本 支持漫游"
 arch=(
     'aarch64'
@@ -31,11 +31,12 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('d0cc7e1c0f7e5c475b27eb55b223eb593ec501de4f4e2834996dd1a514d878c7'
-            '91c94c21464757571064d5364835bef8c07e1436e9cafd427a9d45e46b3ad7e2')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     cd "${srcdir}/${pkgname}-linux-${pkgver//_/-}"
