@@ -1,6 +1,6 @@
 pkgbase = python-apscheduler
 	pkgdesc = In-process task scheduler with Cron-like capabilities
-	pkgver = 3.10.1
+	pkgver = 3.10.4
 	pkgrel = 2
 	url = https://github.com/agronholm/apscheduler
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-apscheduler
 	depends = python-six
 	depends = python-pytz
 	depends = python-tzlocal
-	source = git+https://github.com/agronholm/apscheduler.git#commit=be291699755e58ff398f90b5e71bff1e163df1db
-	sha512sums = SKIP
+	source = git+https://github.com/agronholm/apscheduler.git#tag=3.10.4
+	sha512sums = c2b5648f8696afcc5413734de069977346a9c9adbb59a9889fd38cc0c9aa827e25977b7a3bef390f700a65ad4bdc31aaa49d469bfdeda66523adb9accf7c6b63
 
 pkgname = python-apscheduler

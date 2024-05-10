@@ -1,8 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-apscheduler
-pkgver=3.10.1
-_commit=be291699755e58ff398f90b5e71bff1e163df1db
+pkgver=3.10.4
 pkgrel=2
 pkgdesc="In-process task scheduler with Cron-like capabilities"
 url="https://github.com/agronholm/apscheduler"
@@ -14,8 +13,8 @@ checkdepends=('pifpaf' 'python-gevent' 'python-pytest-asyncio' 'python-pytest-co
               'python-pytest-tornado' 'python-redis' 'python-sqlalchemy' 'python-tornado'
               'python-twisted' 'redis')
 # python-kazoo, python-pymongo removed due to lack of running service
-source=("git+https://github.com/agronholm/apscheduler.git#commit=$_commit")
-sha512sums=('SKIP')
+source=("git+https://github.com/agronholm/apscheduler.git#tag=$pkgver")
+sha512sums=('c2b5648f8696afcc5413734de069977346a9c9adbb59a9889fd38cc0c9aa827e25977b7a3bef390f700a65ad4bdc31aaa49d469bfdeda66523adb9accf7c6b63')
 
 build() {
   cd apscheduler
