@@ -1,0 +1,38 @@
+--- a/stsci/skypac/region.py	2024-05-07 03:03:03.000000000 +0800
++++ b/stsci/skypac/region.py	2024-05-10 15:57:00.630415748 +0800
+@@ -41,7 +41,7 @@
+     Base class for regions.
+ 
+     Parameters
+-    -------------
++    ----------
+     rid: int or string
+         region ID
+     coordinate_system: astropy.wcs.CoordinateSystem instance or a string
+--- a/stsci/skypac/skystatistics.py	2024-05-07 03:03:03.000000000 +0800
++++ b/stsci/skypac/skystatistics.py	2024-05-10 15:57:46.118042948 +0800
+@@ -28,7 +28,7 @@
+         """ Initializes the SkyStats object.
+ 
+         Parameters
+-        -----------
++        ----------
+         skystat: str
+             Sets the statistics that will be returned by the
+             `~SkyStats.calc_sky`. The following statistics are supported:
+@@ -78,13 +78,13 @@
+         """ Computes statistics on data.
+ 
+         Parameters
+-        -----------
++        ----------
+         data: numpy.ndarray
+             A numpy array of values for which the statistics needs to be
+             computed.
+ 
+         Returns
+-        --------
++        -------
+         statistics: tuple
+             A tuple of two values: (``skyvalue``, ``npix``), where ``skyvalue``
+             is the statistics specified by the `skystat` parameter during
