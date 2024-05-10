@@ -8,14 +8,14 @@
 
 pkgname=tea-qt
 pkgver=63.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS with PDF and DJVU support"
 arch=(x86_64)
 url="https://tea.ourproject.org/"
 license=(GPL3)
 depends=(qt6-base hunspell )
 makedepends=(cmake git)
-optdepends=('poppler-cpp: open and search text in PDF files'
+optdepends=('poppler: open and search text in PDF files'
             'djvulibre: open and search in DJVU')
 source=("git+https://github.com/psemiletov/tea-qt.git#tag=${pkgver}")
 sha512sums=('SKIP')
