@@ -1,7 +1,7 @@
 # Maintainer: Christopher Kaster <me@atomicptr.de>
 # Contributor: Hanna Rose <imhxnna@gmail.com>
 
-pkgver=2024_04a
+pkgver=2024_05
 
 _srcname=odin
 pkgname=odin-bin
@@ -21,7 +21,7 @@ source=(
   "https://github.com/odin-lang/Odin/releases/download/dev-$pkgver_fixed/odin-ubuntu-amd64-dev-$pkgver_fixed.zip"
 )
 sha256sums=(
-  "c04ec0f1a44541fbd9b666449b7f70f835d0e4080ea6a82db355d57fab8b607c"
+  "32d99c1d7fdbb491a633e3fba67a06faea9000c181f3346040012b42b44144e2"
 )
 
 build() {
