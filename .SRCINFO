@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-vdr-vnsi-git
 	pkgdesc = VDR VNSI PVR client addon for Kodi
-	pkgver = r758.df0ddbe
+	pkgver = r792.3a1b449
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.vdr.vnsi
 	arch = armv7h
@@ -15,7 +15,7 @@ pkgbase = kodi-addon-pvr-vdr-vnsi-git
 	provides = kodi-addon-pvr-vdr-vnsi
 	conflicts = kodi-addon-pvr-vdr-vnsi
 	conflicts = kodi-pvr-addons
-	source = kodi-addon-pvr-vdr-vnsi-git::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Nexus
+	source = kodi-addon-pvr-vdr-vnsi-git::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Omega
 	md5sums = SKIP
 
 pkgname = kodi-addon-pvr-vdr-vnsi-git
