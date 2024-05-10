@@ -2,18 +2,18 @@
 
 pkgname=python-django-auditlog
 pkgver=3.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A Django app that keeps a log of changes made to an object"
 arch=('any')
 url="https://github.com/jazzband/django-auditlog"
 license=('MIT')
 depends=(
-  'git'
   'python'
   'python-django'
   'python-psycopg'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-setuptools'
