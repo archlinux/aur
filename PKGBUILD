@@ -1,37 +1,27 @@
+# -*- mode: sh -*-
+
 #  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # Contributor: Dwight Schauer <dschauer@gmail.com>
 # Contributor: Valere Monseur <valere_monseur@hotmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# -*- sh -*-
 
 _pkgname=regina
-_pkgsuffix=rexx
+_pkgsuff=rexx
 
-pkgname=regina-rexx-das
-pkgver=3.9.6
-pkgrel=1
-pkgdesc='An implementation of a ReXX interpreter, compliant with the ANSI Standard for Rexx (1996)'
 arch=('aarch64' 'i686' 'x86_64')
-url='http://regina-rexx.sourceforge.io/'
 license=('LGPL-2.0-or-later')  # SPDX-License-Identifier: LGPL-2.0-or-later
-depends=(
-  'bash'
-  'gcc-libs'
-  'glibc'
-  'libxcrypt'
-  'ncurses'
-  'readline'
-)
-provides=('rexx')
-options=('lto' '!makeflags')
+pkgdesc='An implementation of the ANSI Standard REXX Programming Language'
+pkgname=(regina-rexx-das{,-doc})
+pkgrel=2
+pkgver=3.9.6
 source=(
-  "https://downloads.sourceforge.net/regina-rexx/$_pkgname-$_pkgsuffix-$pkgver.tar.gz"
+  "https://downloads.sourceforge.net/regina-rexx/$_pkgname-$_pkgsuff-$pkgver.tar.gz"
 )
-changelog="$pkgname.changelog"
+url='http://regina-rexx.sourceforge.io/'
 
 build() {
-  cd "$srcdir/$_pkgname-$_pkgsuffix-$pkgver"
+  cd "$srcdir/$_pkgname-$_pkgsuff-$pkgver"
 
   # RFC-0023
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
@@ -52,14 +42,40 @@ build() {
   make
 }
 
-package() {
-  cd "$srcdir/$_pkgname-$_pkgsuffix-$pkgver"
+package_regina-rexx-das() {
+  changelog="$pkgname.changelog"
+  depends=(
+    'bash'
+    'gcc-libs'
+    'glibc'
+    'libxcrypt'
+    'ncurses'
+    'readline'
+  )
+  optdepends=(
+    'regina-rexx-das-doc: Demo scripts and PDF documentation for Regina REXX and regutil'
+  )
+  options=('lto' '!makeflags')
+  provides=('libregina.so' 'rexx')
+
+  cd "$srcdir/$_pkgname-$_pkgsuff-$pkgver"
 
   make DESTDIR="$pkgdir" install
 
+  # These can be found in the -doc package
+  rm -vrf "$pkgdir/usr/share/regina-rexx/examples/"
+}
+
+package_regina-rexx-das-doc() {
+  arch=('any')
+  depends=('regina-rexx-das')
+  pkgdesc='Demo scripts and documentation for Regina REXX and regutil (PDF)'
+
+  cd "$srcdir/$_pkgname-$_pkgsuff-$pkgver"
+
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     doc/*.pdf
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/demo/" \
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/examples/" \
     demo/*.rexx
 }
 
