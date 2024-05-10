@@ -1,0 +1,13 @@
+pkgbase = uuallpaper-git
+	pkgdesc = A brief description of your Go project
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/jrop/uuallpaper-git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = uuallpaper-git::git+https://gitlab.com/jrop/uuallpaper.git#branch=convert-to-go
+	sha256sums = SKIP
+
+pkgname = uuallpaper-git
