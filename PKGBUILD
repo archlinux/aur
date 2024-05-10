@@ -1,4 +1,4 @@
-# Maintainer: VVL <me@ivvl.ru>
+# Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=zitadel
 pkgver=2.51.3
@@ -12,7 +12,7 @@ optdepends=('postgresql: PostgreSQL database'
 makedepends=('go>=1.21' 'buf' 'yarn' 'dart-sass')
 conflicts=('zitadel-bin')
 license=('Apache License 2.0')
-source=("https://github.com/zitadel/zitadel/archive/refs/tags/v${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/zitadel/zitadel/archive/refs/tags/v${pkgver}.tar.gz"
         "zitadel.service"
         "zitadel.sysusers"
         "zitadel.tmpfiles"
