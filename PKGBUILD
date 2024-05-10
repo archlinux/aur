@@ -1,8 +1,8 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=modbus-tcp-client-shm
-pkgrel=2
-pkgver=1.6.2
+pkgrel=1
+pkgver=1.6.3
 pkgdesc="modbus tcp client that stores its data (registers) in shared memory"
 url="https://github.com/SHMModbus/modbus_tcp_client_shm"
 license=('GPL-3.0-only')
