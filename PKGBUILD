@@ -1,23 +1,23 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-fitsblender
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="FITS header merging from multiple images"
 arch=('any')
 url="https://github.com/spacetelescope/fitsblender"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx'
-             'python-astropy'
              'python-stsci.tools')
 checkdepends=('python-pytest') # stsci.tools already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('041fa126f37e54fe926367ca347650d5')
+md5sums=('8b121a1e9eccd76ce39ee41601556209')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -30,7 +30,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv --color=yes
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-fitsblender() {
