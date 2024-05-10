@@ -1,11 +1,11 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MultiRNAflow
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
-pkgdesc="An R package for analysing RNA-seq raw counts with several biological conditions and different time points"
+pkgrel=1
+pkgdesc="An R package for integrated analysis of temporal RNA-seq data with multiple biological conditions"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-3.0-only')
@@ -17,18 +17,14 @@ depends=(
   r-factominer
   r-ggalluvial
   r-ggplot2
+  r-ggplotify
   r-ggrepel
-  r-ggsci
   r-gprofiler2
   r-mfuzz
   r-plot3d
   r-plot3drgl
-  r-plyr
-  r-rcolorbrewer
   r-reshape2
-  r-rlang
   r-s4vectors
-  r-scales
   r-summarizedexperiment
   r-upsetr
 )
@@ -44,8 +40,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cefc109896f4cb34b4ee6a09ae966f42')
-b2sums=('f177caeb4ada5c30e51d852e816b2bfaad64149e2b6cba1a287f0b799a000998684bb54f6bb77cb49050a507a5cee5c5b9456ae3084362519ff8e67045321e41')
+md5sums=('223e9edd588edeb351f343daffb27bd3')
+b2sums=('c582f6e4081d04c5c7558def452d5f7b6c274382f52131316cd2ecc73e692ecbf9983b12c8ed29c9b9f49c24a910130c3d62bb43d54518bf0cb344e4c79fdcca')
 
 build() {
   mkdir build
