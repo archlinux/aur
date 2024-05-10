@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=darkwrite-bin
 pkgver=1.0.0_alpha.2
-pkgrel=4
+pkgrel=5
 pkgdesc="The eye-candy note taking and to-do application for all desktops"
 arch=('x86_64')
 url="https://github.com/astudentinearth/darkwrite"
@@ -11,7 +11,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'webkit2gtk'
     'gtk3'
-    'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/app-v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
