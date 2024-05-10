@@ -1,4 +1,4 @@
-pkgbase = pdf-Translator
+pkgbase = pdf_translator
 	pkgdesc = this script will translate your pdf , and create a new translated PDF
 	pkgver = 2.0
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = pdf-Translator
 	source = pdfTranslate.py
 	md5sums = SKIP
 
-pkgname = pdf-Translator
+pkgname = pdf_translator
