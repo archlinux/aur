@@ -1,0 +1,13 @@
+pkgbase = neovim-bepo-tsrn-git
+	pkgdesc = Opinionated mappings for the bepo layout in Lua
+	pkgver = r2.ac82e3d
+	pkgrel = 1
+	url = https://github.com/lthms/bepo-tsrn.nvim
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	depends = neovim
+	source = git+https://github.com/lthms/bepo-tsrn.nvim
+	sha256sums = SKIP
+
+pkgname = neovim-bepo-tsrn-git
