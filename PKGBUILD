@@ -3,16 +3,16 @@
 pkgname=python-gotenberg-client
 _pkgname=gotenberg-client
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A Python client for interfacing with the Gotenberg API"
 arch=('any')
 url="https://github.com/stumpylog/gotenberg-client"
 license=('MPL-2.0')
 depends=(
-  'git'
   'python'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-hatchling'
   'python-installer'
