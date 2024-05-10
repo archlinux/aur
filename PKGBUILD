@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MsBackendMsp
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Mass Spectrometry Data Backend for NIST msp Files"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,6 +13,7 @@ depends=(
   r-biocparallel
   r-iranges
   r-mscoreutils
+  r-protgenerics
   r-s4vectors
   r-spectra
 )
@@ -27,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('805d831547106b2f232bb9eda75172bc')
-b2sums=('2164f6a771b0d4fa1d33e8d2c6d6043a20fed24bc35feaeb8445287084bc488fb6f184039c4d878a998ebdeca09ae78ceec43042e81479442a990b73918255f3')
+md5sums=('0c1449c171d9dbb52f4a1f3815716b86')
+b2sums=('0c395932dfbccac200fbb1a2e54bac293de9513a052e19b4bb11a5bc0d770030f0146c1787729b76517a991274ecab4c9236b36a8be1cda73a878fbf85b60230')
 
 build() {
   mkdir build
