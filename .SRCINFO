@@ -1,20 +1,17 @@
 pkgbase = hpltt
 	pkgdesc = HP Library & Tape Tools - diagnostics for HP tape drives
-	pkgver = 4.30
+	pkgver = 6.2
 	pkgrel = 1
 	url = https://buy.hpe.com/us/en/storage/storage-software/storage-device-management-software/storeever-tape-device-management-software/hpe-library-tape-tools/p/406729
-	arch = i686
 	arch = x86_64
 	license = custom:HPLTT
 	makedepends = libarchive
 	depends = ncurses5-compat-libs
 	options = !strip
-	source_i686 = https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v175147/hpe_ltt430_linux_x86.tar
-	md5sums_i686 = 8f4a6a601a6d9aceb8fde3ab8438fd14
-	sha256sums_i686 = 4ab1beb325d9db17f43d27ebfbcb82987d8f95fcd3428ce935724a4740057007
-	source_x86_64 = https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v175147/hpe_ltt430_linux_x86_64.tar
-	md5sums_x86_64 = 31c96b9f50389d913a3016299622781c
-	sha256sums_x86_64 = 3053246134e6108d936627a6e9a5c5f4ebd634e0da6c31d8ca2802f26a8a43e4
+	validpgpkeys = 57446EFDE098E5C934B69C7DC208ADDE26C2B797
+	source_x86_64 = https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v209012/hpe_ltt62_linux_x86_64.tar
+	source_x86_64 = https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v209012/hpe_ltt62_linux_x86_64.tar.sig
+	sha256sums_x86_64 = 222cd9071fdb95a356222d1fccc67a20d83cae40c63ef0c1394afaeb2129307a
+	sha256sums_x86_64 = b6c4b2ed7c51eeec921123eed1e31299630c9c22ee03c362dbb1b440514b3614
 
 pkgname = hpltt
-
