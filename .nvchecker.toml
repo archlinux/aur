@@ -2,4 +2,8 @@
 source = "gitlab"
 gitlab = "pureos/core/debootstrap"
 host = "source.puri.sm"
+include_regex = ".*pureos.*"
+# Requires override for 1.0.128+nmu2pureos1
+# because there’s no `+` in `1.0.134pureos1`
+exclude_regex = "1\\.0\\.12.*"
 use_max_tag = true
