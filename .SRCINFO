@@ -1,12 +1,12 @@
 pkgbase = nextcloud-app-tables
 	pkgdesc = Tables app for Nextcloud
-	pkgver = 0.7.0
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/nextcloud/tables
 	arch = any
 	license = AGPL3
 	depends = nextcloud
-	source = https://github.com/nextcloud-releases/tables/releases/download/v0.7.0/tables-v0.7.0.tar.gz
-	sha512sums = dd60e92ff38486fa4a28d45dbe67d9fba85a18a8b658a2f0274eb1f920e70048720eee15661bf07aded9d711b913a731fcfbae0aacf5c6ef128f505bf0b8f0cd
+	source = https://github.com/nextcloud-releases/tables/releases/download/v0.7.2/tables-v0.7.2.tar.gz
+	sha512sums = 35e600484d01f150a8325e7c0c857ef1a4e089417633ed5cba4531c4e01667ebcd3c18ca9e05c6a11c727336c661a8b5f6180788d8185c9ce2b7ce9cc72b0a29
 
 pkgname = nextcloud-app-tables
