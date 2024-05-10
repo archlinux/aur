@@ -7,7 +7,7 @@
 # Contributor: Alan Beale <the.mrabz@gmail.com>
 
 pkgname=xrdp
-pkgver=0.10.0_beta.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="An open source remote desktop protocol (RDP) server"
 url="https://github.com/neutrinolabs/xrdp"
@@ -27,7 +27,7 @@ backup=('etc/xrdp/sesman.ini'
 install="${pkgname}.install"
 source=("https://github.com/neutrinolabs/xrdp/releases/download/v${pkgver//_/-}/xrdp-${pkgver//_/-}.tar.gz"
 	"arch-config.diff")
-sha256sums=('d3cd06122919a9a1864165e1adfa01d3d6f5613a540821f4eefae97c8bf18f09'
+sha256sums=('ddd20d1ba903483197a5beae3e46ae0dc1a16b196384935aefa99c2b08b253d9'
             'e0ffce5b1a436990281fe2cc4a3cd9c2840a1dad99740aeaea866ccd9ef56db0')
 
 prepare() {
