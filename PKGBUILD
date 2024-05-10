@@ -2,7 +2,7 @@
 # -*- mode: sh -*-
 
 pkgname=detect-old-python-modules
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Detect old modules after Python upgrade (ALPM hook)'
 arch=('any')
@@ -14,7 +14,12 @@ source=(
 )
 
 package() {
-  cd "$pkgname/src"
+  cd "$pkgname"
+
+  install -vDm0644 "README.md"     \
+    "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  cd "src"
 
   install -vDm0644 "$pkgname.hook" \
     "$pkgdir/usr/share/libalpm/hooks/$pkgname.hook"
@@ -23,7 +28,7 @@ package() {
 }
 
 sha256sums=(
-  '6378557a3dcd1b2bf2edbf37ef80dd3c30a0bfaab69292256583e7005ae6e09a'
+  'c9bad73d8d74313b1171f2005519cdf1f25ba65d8caec5f97f643a1aeffa5dd4'
 )
 
 # eof
