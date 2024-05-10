@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=3.1.0
+pkgver=3.1.1
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -14,19 +14,18 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'pnpm'
+    'pnpm>=9'
     'gendesk'
     'npm'
-    'nodejs'
-    'git'
+    'nvm'
     'curl'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('8cf136f096b65e41df2be89f3d7e7760333d7700fb9b8b39363b3e6f3dd91578'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+sha256sums=('84ba5f1fea5912d54f7b4de5026fea5086dd39ec2874057f7227ed80bfd150cf'
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -47,23 +46,22 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://electronjs.org/headers
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
-    sed "s|\/\${version}||g;s|\/\/ ||g;s|AppImage|dir|g" -i electron-builder.config.js
-    mv public/icons/icon-512x125.png public/icons/icon-512x512.png
-    npm add pnpm
-    npx pnpm install --no-lockfile
-    npx pnpm run release
+    sed "s|out\/release\/\${version}|release|g;s|\/\/ ||g;s|AppImage|dir|g" -i electron-builder.config.js
+    cp public/icons/icon-512x125.png public/icons/icon-512x512.png
+    pnpm install --no-lockfile
+    pnpm run release
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
