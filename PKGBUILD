@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pharmaspot-bin
 _pkgname=Pharmaspot
-pkgver=1.4.1
+_cfgdirname=PharmaSpot
+pkgver=1.4.2
 _electronversion=22
 pkgrel=1
 pkgdesc="A cross-platform Point of Sale system designed for pharmacies and built to streamline operations and enhance customer service."
@@ -25,14 +26,15 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/drkNsubuga/PharmaSpot/v${pkgver}/assets/images/favicon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4814c7009534caa7b22a46da33f6551f237a077d987a695eb7eb57756c849c49'
+sha256sums=('47d6b6da246deaa7d00be6b83673b4a0fbc95f9ad7f966d2d8d7592c1945733e'
             '66d59240c025ee617d78f981b88b1bb53393e657f064f9e8e0d68204644d8e1c'
             'ba44229f6c0a35bb02fe584adb1b33029c78a80b2bdb96877ddff05c3b6ac17a'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_cfgdirname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
