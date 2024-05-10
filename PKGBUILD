@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Macarron
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Prioritization of potentially bioactive metabolic features from epidemiological and environmental metabolomics datasets"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -15,11 +15,11 @@ depends=(
   r-delayedarray
   r-dynamictreecut
   r-ff
+  r-httr
   r-logging
   r-maaslin2
   r-plyr
   r-psych
-  r-rcurl
   r-rjsonio
   r-summarizedexperiment
   r-wgcna
@@ -37,8 +37,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('525669e56fccd2be5524315ee6a0eafb')
-b2sums=('9e5ae37af40ba687647a95c75b60c86cd3586de67ca7aa0ec3bb103faa59e13f7a29b1c216d9adfdd43c2a85b841cb9f2d2b9f16011a8be8efed2876a4e4c7a3')
+md5sums=('f0ab96828900fe45d5eb914afa5baf89')
+b2sums=('50a17512558616fdda67f672898a0d11cd2bf6ebcb8c57f41b77d22628abcefc5fc1b8752d4c1b8d37bcf9aaa785dbdc0e0e60a733b6260570a4d0ce494bef5d')
 
 build() {
   mkdir build
