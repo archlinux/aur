@@ -1,12 +1,12 @@
 pkgbase = feishin-bin
 	pkgdesc = Rewrite of Sonixd
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jeffvli/feishin
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
-	depends = mpv
+	optdepends = mpv: Alternative audio backend
 	provides = feishin
 	conflicts = feishin
 	source = feishin.desktop

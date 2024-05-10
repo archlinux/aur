@@ -3,11 +3,11 @@
 pkgname=feishin-bin
 pkgdesc='Rewrite of Sonixd'
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url='https://github.com/jeffvli/feishin'
 license=('GPL3')
-depends=('mpv') # TODO check node requirements
+optdepends=('mpv: Alternative audio backend')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 _filename=Feishin-${pkgver//_/-}-linux
