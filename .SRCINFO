@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-rounded-window-corners-reborn-git
 	pkgdesc = A GNOME Shell extension that adds rounded corners for all windows
 	pkgver = 6d0504d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flexagoon/rounded-window-corners
 	arch = any
 	license = GPL-3.0-or-later
