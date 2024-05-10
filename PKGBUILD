@@ -2,7 +2,7 @@
 
 _commit=84f1ebe188fb0405c259d153c570daa4d3f48a67
 pkgname=qtcurve
-pkgver=20240314
+pkgver=20240511
 pkgrel=1
 pkgdesc="A configurable set of widget styles for KDE and Gtk (Qt6 fork)"
 arch=(x86_64)

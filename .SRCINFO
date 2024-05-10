@@ -1,6 +1,6 @@
 pkgbase = qtcurve
 	pkgdesc = A configurable set of widget styles for KDE and Gtk (Qt6 fork)
-	pkgver = 20240314
+	pkgver = 20240511
 	pkgrel = 1
 	url = https://invent.kde.org/system/qtcurve
 	arch = x86_64
