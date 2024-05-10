@@ -2,8 +2,8 @@
 pkgname=ente-server-git
 _pkgname_alt=museum
 _pkg_git_src=https://github.com/ente-io/ente.git
-pkgver=r1.40abb5c
-pkgrel=4
+pkgver=r1.7490199
+pkgrel=5
 pkgdesc="Self hosted server for Ente (mobile) clients"
 arch=(x86_64)
 url="https://github.com/ente-io"
@@ -19,6 +19,7 @@ backup=(
 options=('!debug')
 source=(
     "https://raw.githubusercontent.com/ente-io/ente/main/LICENSE"
+    "${pkgname%-git}-configurable-delete-object-delay.patch"
     "${pkgname%-git}-man.1.md"
     "${pkgname%-git}-nginx.conf"
     "${pkgname%-git}-sysusers.conf"
@@ -31,12 +32,13 @@ source=(
 )
 sha256sums=(
     "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
-    "d4d6648ded8043d80d056cbafcaf87cacf9a5e79b22c02e0302506e6568c177c"
+    "f3624560a2c332724967e1e64689f8549a936fb85fc557ccc4bcbb7e57e373e8"
+    "9151cd1072cf33f88c355761ce931346a58555da49cb6241e9498b4c1dd0b87b"
     "2d5221aaa83f32bbc8c75c2d7c70f9ff8021d451b544f230c99fe29b84fcba75"
     "72c23c4ba9d3468a1b089d182917123cb15b8bf8b52b3955b98a0357d29b5cbd"
     "6ba953245f2a285dbd82ce65635d19410eab1dcd92821c398bdf7ffba9451a9b"
     "f5ae64093463a66fa66ecc4627f603ff0f9e17841e1d681dbcc68b1bad95100e"
-    "9a10d967adca272d3d04666adf6d39c74122941f2431d95a4bc2f8acd4f4cffb"
+    "c3e54eacff7f6b4a406dff4b871120c6a97dc5dca179347055514a19d10cfb72"
     "405365bd47efa25b8bcefc93a5c0535fd50cce22b5d8dcea070098aa432ff87e"
     "a1149c57e233f7be2f12668f5ef0f03409bd5ad37b1a223bb56d2ae865cf6358"
     "297bc7d90c473758c9054aaaa6155b4e7232d0dfea761a4e55ed8b743f289f86"
@@ -67,6 +69,11 @@ prepare() {
 }
 
 build() {
+  # patch ente-server: make MinIO/S3 object deletion delay configurable
+  cd "${srcdir}/${pkgname}/"
+  patch -p1 < "${srcdir}/${pkgname%-git}-configurable-delete-object-delay.patch"
+
+  # build ente-server binary
   cd "${srcdir}/${pkgname}/server/cmd/${_pkgname_alt}"
   export GOPATH="${srcdir}/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -75,9 +82,9 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw -mod=mod"
   mkdir -p ../../build
-  # patch cleanup -> reduce delay from 45 days to 5 minutes
-  sed -i 's@DeleteObjectQueue:         45 \* 24 \* 60, \/\/ 45 days in minutes@DeleteObjectQueue:                    5, // 5 minutes@' "${srcdir}/${pkgname}/server/pkg/repo/queue.go"
   go build -o ../../build/ente-server -v
+
+  # build ente-server tool binaries
   cd ../../tools
   for tool in *; do
       [ "${tool}" == 'pkg' ] && continue
@@ -85,6 +92,8 @@ build() {
       go build -o ../../build -v
       cd -
   done
+
+  # cleanup go module cache
   go clean -modcache
 }
 

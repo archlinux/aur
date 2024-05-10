@@ -20,7 +20,7 @@ For example when the Ente photos client is used, the client encrypts the photos,
 
 This AUR package is meant for self hosting in contrary to the by default provided dockerized Ente server. If a dockerized or hosted solution is required, please go to <https://ente.io> for more information.
 
-Note: Since self hosted server space is often available in limited quantity, this AUR package has been modified to cleanup old unlinked Ente server MinIO objects much faster. The default upstream Ente server cleans these object every 45 days by default, but this package decreased the delay to cleanup every 5 minutes instead.
+Note: Since self hosted server space is often available in limited quantity, this AUR package added the ability to change the cleanup delay cleanup before old unlinked ente-server `MinIO` objects will be actually deleted. This can be configured via the `internal:delete-object-delay` `ente-server` configuration parameter. The default upstream Ente server cleans these objects every 45 days by default, but when replication is not required, this setting can be set to cleanup every 5 minutes for example. Do note that this setting is **NOT** supported by the Ente developers, due to the possible risk of breaking `ente-server`. The full warning has been described in the `ente-server` configuration file.
 
 INSTALLATION
 ------------
