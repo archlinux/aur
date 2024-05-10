@@ -1,16 +1,16 @@
 pkgbase = awts-cli-bin
 	pkgdesc = Command-line tool for interacting with AWTS systematic trading system environments
-	pkgver = 0.5.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://alphaweighted.com
 	license = CC-BY-ND-4.0
 	conflicts = awts-cli
 	provides = awts-cli
 	arch = aarch64
-	source_aarch64 = https://github.com/alphaweighted/cli/releases/download/v0.5.0/awts-cli_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 0976da17678796342da04eac5877d78daa122c588b77d984dbb90193c87927f0
+	source_aarch64 = https://github.com/alphaweighted/cli/releases/download/v1.0.0/awts-cli_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d65d493d2b85d5df26bc900ec1c2c8ac15844294f37abf720b40fad43e26766a
 	arch = x86_64
-	source_x86_64 = https://github.com/alphaweighted/cli/releases/download/v0.5.0/awts-cli_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 4a7e411c77455199f9445cee7f3c5d88beb48822b6815757909866b0f99f7f05
+	source_x86_64 = https://github.com/alphaweighted/cli/releases/download/v1.0.0/awts-cli_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c05b2a9bd8839a00cb60dec7cd3f8cccfb826c4e3bac5bcd2fd9d37adee79b90
 	
 pkgname = awts-cli-bin
