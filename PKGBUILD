@@ -3,7 +3,7 @@
 
 pkgname=detect-old-python-modules
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Detect old modules after Python upgrade (ALPM hook)'
 arch=('any')
 url='https://codeberg.org/kas/detect-old-python-modules'
@@ -23,7 +23,7 @@ package() {
 
   install -vDm0644 "$pkgname.hook" \
     "$pkgdir/usr/share/libalpm/hooks/$pkgname.hook"
-  install -vDm0644 "$pkgname.py"   \
+  install -vDm0755 "$pkgname.py"   \
     "$pkgdir/usr/share/libalpm/scripts/$pkgname.py"
 }
 

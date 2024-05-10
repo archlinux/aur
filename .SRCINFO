@@ -1,7 +1,7 @@
 pkgbase = detect-old-python-modules
 	pkgdesc = Detect old modules after Python upgrade (ALPM hook)
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/kas/detect-old-python-modules
 	arch = any
 	license = AGPL-3.0-or-later
