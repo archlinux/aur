@@ -1,7 +1,7 @@
-# Maintainer: VVL <me@ivvl.ru>
+# Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=casdoor
-pkgver=1.595.0
+pkgver=1.611.2
 pkgrel=1
 pkgdesc="An open-source UI-first Identity and Access Management (IAM) / Single-Sign-On (SSO) platform"
 arch=('x86_64')
@@ -13,11 +13,11 @@ optdepends=('postgresql: PostgreSQL database'
             'nginx: reverse-proxy')
 makedepends=('go>=1.21' 'yarn')
 license=('Apache License 2.0')
-source=("https://github.com/casbin/casdoor/archive/refs/tags/v${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/casbin/casdoor/archive/refs/tags/v${pkgver}.tar.gz"
         "casdoor.service"
         "casdoor.sysusers"
         "casdoor.tmpfiles")
-sha512sums=('5e00b45626cf5dcb1648a2c9072acfa921117eecc5692fa038cef3c09749f57fb875f07855c9e7aae1c1763cf33c206425b12ad4974ba76b98374368c8353b0b'
+sha512sums=('275868964a63f9b2b04a81612c8bf785696cfe8017958828ff33ce6af7acd67c98f4a0b00433604a90cc2af45549c97c06ec282aaf23c41c98c150aea20d4c5b'
             'c4f2d91aaab7b024fe5618054f90cb37660b59c1822f01c02817fb204cc23deb1c885da19e3424a44e89bab41a4e0765086ed4cd27bf5ad6558fd1448088dc1e'
             '2f5ec975f0b121d356f282b3101856dc1ba1ca6d3aa9b65c0ccb66d85b793472d868dda4d51f7e7cf72e7dfa4a1e1a2f90c406f6cad94ddb9dc5a81d04bc2615'
             '6a128bb89359188b8e9198acd053a4cd713a1b61a5e61b5300fa9494a38c15e8ac7e647c9dc910d51fcc77b4c9d2b24d19d00173c949b53e92964e5ed157c9ec')
