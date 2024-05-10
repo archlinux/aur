@@ -1,0 +1,19 @@
+pkgbase = cosmic-webapps-git
+	pkgdesc = Web App Manager written with love and libcosmic.
+	pkgver = 0.3.6.2.r1.g848bfc1
+	pkgrel = 1
+	url = https://github.com/elevenhsoft/WebApps
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = gcc-libs
+	depends = openssl
+	provides = cosmic-webapps
+	conflicts = cosmic-webapps
+	conflicts = cosmic-wam
+	source = git+https://github.com/elevenhsoft/WebApps.git
+	sha256sums = SKIP
+
+pkgname = cosmic-webapps-git
