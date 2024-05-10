@@ -2,7 +2,7 @@
 # Contributor: Emilio Reggi <nag@mailbox.org>
 pkgname=postsack-bin
 pkgver=1.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Visually cluster your emails by sender, domain, and more to identify waste"
 arch=('x86_64')
 url="https://github.com/terhechte/postsack"
@@ -10,7 +10,6 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-   'hicolor-icon-theme'
    'libxcb'
 )
 source=(
