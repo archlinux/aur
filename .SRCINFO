@@ -1,7 +1,7 @@
 pkgbase = r-intact
 	pkgdesc = Integrate TWAS and Colocalization Analysis for Gene Set Enrichment Analysis
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/INTACT
 	arch = any
 	license = GPL-3.0-only AND AGPL-3.0-only
@@ -9,12 +9,13 @@ pkgbase = r-intact
 	depends = r-bdsmatrix
 	depends = r-numderiv
 	depends = r-squarem
+	depends = r-tidyr
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/INTACT_1.2.0.tar.gz
-	md5sums = d8646f4acb0cbb31ccf53a672818be40
-	b2sums = 4e08edba9ecf302ea643ecf7a1cc33836f59432829ce18c0022429c4c5a2f4c58c8185f0c55dfd1c03d30eec9827f4472c668705e46e32c7735648f5671e849e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/INTACT_1.4.0.tar.gz
+	md5sums = cd238b9043b3eeac41774eae1f8c67fd
+	b2sums = a64ff38bc6ebf192ad51d7c6e77557258f756b22acd9775437b6280c4fa85e69368e0a4f8c93723aeee518afd01b568bc0d4091b15244872afc406ff39e7065c
 
 pkgname = r-intact

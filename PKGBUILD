@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=INTACT
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Integrate TWAS and Colocalization Analysis for Gene Set Enrichment Analysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,6 +13,7 @@ depends=(
   r-bdsmatrix
   r-numderiv
   r-squarem
+  r-tidyr
 )
 checkdepends=(
   r-testthat
@@ -24,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d8646f4acb0cbb31ccf53a672818be40')
-b2sums=('4e08edba9ecf302ea643ecf7a1cc33836f59432829ce18c0022429c4c5a2f4c58c8185f0c55dfd1c03d30eec9827f4472c668705e46e32c7735648f5671e849e')
+md5sums=('cd238b9043b3eeac41774eae1f8c67fd')
+b2sums=('a64ff38bc6ebf192ad51d7c6e77557258f756b22acd9775437b6280c4fa85e69368e0a4f8c93723aeee518afd01b568bc0d4091b15244872afc406ff39e7065c')
 
 build() {
   mkdir build
