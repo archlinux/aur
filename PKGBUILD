@@ -1,7 +1,7 @@
 # Maintainer: munsternet <munsternet at ik dot me>
 _pkgname=trackaudio
 pkgname=trackaudio-bin
-pkgver=1.0.2_beta.3
+pkgver=1.0.2_beta.4
 pkgrel=1
 pkgdesc="Next-generation cross-platform Audio-For-VATSIM ATC Client"
 arch=('x86_64')
