@@ -1,0 +1,12 @@
+pkgbase = detect-old-python-modules
+	pkgdesc = Detect old modules after Python upgrade (ALPM hook)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://codeberg.org/kas/detect-old-python-modules
+	arch = any
+	license = AGPL-3.0-or-later
+	depends = python
+	source = detect-old-python-modules-0.0.1.tar.gz::https://codeberg.org/kas/detect-old-python-modules/archive/v0.0.1.tar.gz
+	sha256sums = 6378557a3dcd1b2bf2edbf37ef80dd3c30a0bfaab69292256583e7005ae6e09a
+
+pkgname = detect-old-python-modules
