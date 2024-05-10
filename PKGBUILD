@@ -1,10 +1,14 @@
 # Maintainer: arch-based <anonymous.negation790@passinbox.com>
 pkgname='fetcher-based-rs'
-pkgver='1.5'
-pkgrel=1
+pkgver='0.1.1'
+pkgrel=2
 pkgdesc='This is a tool to show system information in the real arch linux way. Re-written in Rust.'
 arch=('x86_64')
-makedepends=('rust')
+makedepends=(
+	'cargo'
+  'wget'
+)
+provides=('fetcher-based-rs-bin')
 conflicts=('fetcher-based-rs-bin')
 url="https://github.com/arch-based/fetcher-rs"
 license=('GPL3')
@@ -25,7 +29,7 @@ build() {
 
 # Package Install Function
 package() {
-	install -Dm755 "$srcdir/target/debug/fetcher" "$pkgdir/usr/bin/fetcher"
+	install -Dm0755 -t "$pkgdir/usr/bin/fetcher" "$srcdir/target/debug/fetcher"
 }
 
 
