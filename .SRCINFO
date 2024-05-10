@@ -1,0 +1,22 @@
+pkgbase = quicknote-git
+	pkgdesc = Helps to paste some random text or take some notes right from your taskbar!
+	pkgver = 2.0.1.r0.g93735eb
+	pkgrel = 1
+	url = https://srilakshmikanthanp.github.io/quicknote/
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = yarn
+	makedepends = git
+	makedepends = nvm
+	makedepends = curl
+	depends = electron22
+	provides = quicknote=2.0.1
+	conflicts = quicknote
+	source = quicknote.git::git+https://github.com/srilakshmikanthanp/quicknote.git#tag=v2.0.1.r0.g93735eb
+	source = quicknote.sh
+	sha256sums = ce47dcab42d0f5a925e991c113a0f8847d134a15ebde848fab7f384c7dad9c11
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+
+pkgname = quicknote-git
