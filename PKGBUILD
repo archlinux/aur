@@ -2,22 +2,31 @@
 # Contributor: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=python-pynput
 _name=${pkgname#python-}
-pkgver=1.7.6
-pkgrel=2
+pkgver=1.7.7
+pkgrel=1
 pkgdesc="Python library to monitor and control user input devices"
 arch=('any')
 url="https://github.com/moses-palmer/pynput"
 license=('LGPL-3.0-or-later')
-depends=('python-xlib' 'python-six' 'python-evdev')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        'setup.patch')
-sha256sums=('3a5726546da54116b687785d38b1db56997ce1d28e53e8d22fc656d8b92e533c'
-            'c519290a88baa3e15be4bb6cff4d665a020b9e0c8c1241749670d58a48b07e2c')
+depends=(
+  'python-evdev'
+  'python-six'
+  'python-xlib'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e042e70933938b3b1226aee936d60acf03f43d52e83d7abbd728e8bab2deeacd')
 
 prepare() {
   cd "$_name-$pkgver"
-  patch -Np1 -i $srcdir/setup.patch
+
+  # Don't require SETUP_PACKAGES since we're neither building docs nor uploading to PyPI
+  sed -i 's/setup_requires=RUNTIME_PACKAGES + SETUP_PACKAGES/setup_requires=RUNTIME_PACKAGES/g' setup.py
 }
 
 build() {
