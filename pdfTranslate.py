@@ -37,12 +37,10 @@ def create_pdf_with_text(output_pdf_path, text):
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
-        print("Usage: python pdf_text_extractor.py <input_pdf_file> <output_pdf_file> <target_language>")
+        print("Usage: pdfTranslate <input_pdf_file> <output_pdf_file> <target_language>")
         print("Example: python pdf_text_extractor.py input.pdf output.pdf en")
-        print("Target Language Codes:")
-        print("  en - English")
-        print("  fr - French")
-        print("  es - Spanish")
+        print("Target Language Codes example:")
+        print("  en - English | fr - French | es - Spanish")
         sys.exit(1)
 
     input_pdf_path = sys.argv[1]
