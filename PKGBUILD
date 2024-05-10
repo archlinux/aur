@@ -1,7 +1,7 @@
 # Maintainer: kumax <kumax2048@pm.me>
 pkgname=wechat-devtools-bin
-pkgver=1.06.2310080
-pkgrel=2
+pkgver=1.06.2402040
+pkgrel=1
 epoch=2
 pkgdesc="WeChat Devtools For Linux."
 license=("MIT")

@@ -1,7 +1,7 @@
 pkgbase = wechat-devtools-bin
 	pkgdesc = WeChat Devtools For Linux.
-	pkgver = 1.06.2310080
-	pkgrel = 2
+	pkgver = 1.06.2402040
+	pkgrel = 1
 	epoch = 2
 	url = https://github.com/msojocs/wechat-web-devtools-linux
 	arch = x86_64
