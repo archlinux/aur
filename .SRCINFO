@@ -1,6 +1,6 @@
 pkgbase = zitadel
 	pkgdesc = Identity infrastructure, simplified for you
-	pkgver = 2.50.1
+	pkgver = v2.51.3
 	pkgrel = 1
 	url = https://github.com/zitadel/zitadel/
 	install = zitadel.install
@@ -16,7 +16,7 @@ pkgbase = zitadel
 	conflicts = zitadel-bin
 	backup = etc/zitadel/master.key
 	backup = etc/zitadel/config.yaml
-	source = https://github.com/zitadel/zitadel/archive/refs/tags/v2.50.1.tar.gz
+	source = https://github.com/zitadel/zitadel/archive/refs/tags/vv2.51.3.tar.gz
 	source = zitadel.service
 	source = zitadel.sysusers
 	source = zitadel.tmpfiles

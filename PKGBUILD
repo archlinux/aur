@@ -1,7 +1,7 @@
 # Maintainer: VVL <me@ivvl.ru>
 
 pkgname=zitadel
-pkgver=2.50.1
+pkgver="v2.51.3"
 pkgrel=1
 pkgdesc="Identity infrastructure, simplified for you"
 arch=('x86_64')
