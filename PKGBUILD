@@ -1,11 +1,11 @@
 # Maintainer: archibald869 <archibald869 at web dot de>
 
 pkgname=cling
-pkgver=0.9
-pkgrel=5
+pkgver=1.0
+pkgrel=1
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
-url="https://root.cern.ch/cling"
+url="https://root.cern/cling/"
 license=("custom:Cling Release License")
 provides=("cling")
 conflicts=("cling")
@@ -18,31 +18,15 @@ optdepends=(
     "python-yaml: support for opt-viewer"
 )
 source=(
-    "cling-llvm::git+http://root.cern/git/llvm.git#tag=cling-v$pkgver"
-    "cling-clang::git+http://root.cern/git/clang.git#tag=cling-v$pkgver"
-    "cling::git+http://root.cern/git/cling.git#tag=v$pkgver"
+    "cling-llvm::git+https://github.com/root-project/llvm-project.git#tag=cling-llvm13-20240318-01"
+    "cling::git+https://github.com/root-project/cling.git#tag=v$pkgver"
 )
 sha256sums=(
     "SKIP"
     "SKIP"
-    "SKIP"
 )
-options=('!lto')
+options=(!lto !debug)
 
-
-prepare() {
-    if [ ! -h "$srcdir/cling-llvm/tools/clang" ]; then
-        ln -s "$srcdir/cling-clang" "$srcdir/cling-llvm/tools/clang"
-    fi
-
-    if [ ! -h "$srcdir/cling-llvm/tools/cling" ]; then
-        ln -s "$srcdir/cling" "$srcdir/cling-llvm/tools/cling"
-    fi
-
-    # patch missing header file
-    sed -i '/^#include <vector>$/i #include <limits>' \
-        "$srcdir/cling-llvm/utils/benchmark/src/benchmark_register.h"
-}
 
 build() {
     mkdir -p "$srcdir/build"
@@ -60,8 +44,10 @@ build() {
         -DLLVM_BUILD_TOOLS=OFF \
         -DLLVM_ENABLE_SPHINX=OFF \
         -DLLVM_ENABLE_DOXYGEN=OFF \
-        -DFFI_INCLUDE_DIR=$(pkg-config --cflags-only-I libffi | cut -c3-) \
-        "$srcdir/cling-llvm"
+        -DLLVM_EXTERNAL_PROJECTS=cling \
+        -DLLVM_EXTERNAL_CLING_SOURCE_DIR="$srcdir/cling" \
+        -DLLVM_ENABLE_PROJECTS=clang \
+        "$srcdir/cling-llvm/llvm"
 
     ninja
 }
@@ -74,12 +60,12 @@ package() {
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/cling/bin/cling" "$pkgdir/usr/bin/cling"
 
-    install -Dm644 "$srcdir/cling-llvm/tools/cling/LICENSE.TXT" \
+    install -Dm644 "$srcdir/cling/LICENSE.TXT" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # include CMake target import file so that other packages are able to use
     # `find_package(Cling REQUIRED)`
-    install -Dm644 "$srcdir/build/lib/cmake/cling/ClingTargets.cmake" \
+    install -Dm644 "$srcdir/build/tools/cling/lib/cmake/cling/ClingTargets.cmake" \
         "$pkgdir/opt/cling/lib/cmake/cling"
 
     # adjust cling target locations
