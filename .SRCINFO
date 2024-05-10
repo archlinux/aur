@@ -1,7 +1,7 @@
 pkgbase = python-slidge-git
 	pkgdesc = XMPP puppeteer gateway library in python
-	pkgver = 0.1.0alpha1.r1122.g1e9f9d0
-	pkgrel = 1
+	pkgver = 0.1.0.r9.gc45818f
+	pkgrel = 2
 	url = https://git.sr.ht/~nicoco/slidge
 	arch = x86_64
 	arch = armv7h
@@ -12,6 +12,7 @@ pkgbase = python-slidge-git
 	makedepends = python-wheel
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-poetry-core
 	depends = python
 	depends = python-slixmpp
 	depends = python-aiohttp
@@ -20,7 +21,8 @@ pkgbase = python-slidge-git
 	depends = python-configargparse
 	depends = python-pillow
 	depends = python-pickle-secure
-	provides = python-slidge=0.1.0alpha1.r1122.g1e9f9d0
+	depends = python-blurhash
+	provides = python-slidge=0.1.0.r9.gc45818f
 	conflicts = python-slidge
 	source = git+https://git.sr.ht/~nicoco/slidge
 	sha256sums = SKIP
