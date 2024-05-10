@@ -9,10 +9,10 @@
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
 _pkgname="io.github.msojocs.${pkgname%-bin}"
-pkgver=1.13.2_1
+pkgver=1.13.2_2
 _electronversion=21
 epoch=5
-pkgrel=3
+pkgrel=1
 pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client'
 arch=(
     'aarch64'
@@ -34,9 +34,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
-sha256sums_aarch64=('beef17931cbc34f451116557c84ce25bafdc6269954e477a3678b2e65335f60e')
-sha256sums_x86_64=('caa81036c4c3e224f9e0b25811b57a764ece0fb2a866f5fad57111610e0cb120')
+            '91c94c21464757571064d5364835bef8c07e1436e9cafd427a9d45e46b3ad7e2')
+sha256sums_aarch64=('93ccb717daa680273bf6d725eea9c9881af621de4675b9e6045ca91c24320b54')
+sha256sums_x86_64=('8709ebcdb9e5b7d67d70eaa8fe58b59efb2b1afeb6a2f31fc9b35569d22593f6')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
