@@ -10,6 +10,11 @@ makedepends=('cmake')
 source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz")
 sha256sums=('f45e71d1c4de157071adce36642239aa8e2b63e08caa85f59cf656519993ace1')
 
+prepare() {
+  cd $pkgname-$pkgver
+  sed -i "s|-Werror||g" CMakeLists.txt
+}
+
 build() {
   cd $pkgname-$pkgver
   cmake -DHMAT_GIT_VERSION=OFF -DCMAKE_INSTALL_PREFIX=/usr .
