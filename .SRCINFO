@@ -1,6 +1,6 @@
 pkgbase = kalker-bin
 	pkgdesc = Kalker/kalk is a calculator with math syntax that supports user-defined variables and functions, complex numbers, and estimation of derivatives and integrals
-	pkgver = 2.0.4
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://kalker.xyz/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kalker-bin
 	conflicts = kalker
 	conflicts = kalker-git
 	options = !strip
-	source = kalker-2.0.4::https://github.com/PaddiM8/kalker/releases/download/v2.0.4/kalker-linux
-	sha256sums = 84770659da12692599b9fe858b317467c85ee569e9205613c3239487e6236bc9
+	source = kalker-2.2.0::https://github.com/PaddiM8/kalker/releases/download/v2.2.0/kalker-linux
+	sha256sums = 3c4fd1fceb917b334c7aa1bf6637dc837d7580bd44ddd7779eda13cf08420404
 
 pkgname = kalker-bin
