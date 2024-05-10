@@ -1,11 +1,12 @@
-# Maintainer: Ewout van Mansom <ewout@vanmansom.name>
+# Maintainer: Duru Can Celasun <can[at]dcc[dot]im>
+# Contributor: Ewout van Mansom <ewout@vanmansom.name>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=122.0.1
+pkgver=125.0.3
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
@@ -64,8 +65,6 @@ source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   firefox.desktop
   identity-icons-brand.svg
-  0001-wayland-proxy.patch
-  0002-wayland-proxy.patch
   0003-enable-vaapi.patch
   0004-remove-nvidia-blocklist.patch
 )
@@ -74,20 +73,16 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('36f19c9a748eec2fd6d3a1594d0f1d7b715eaa1d9ed6d7eeda9db8478dcf36d6'
+sha256sums=('461c66b85e4a0345dcce422d3b66212489f3cca8f22a9a8f43a07a0c98bd5616'
             'SKIP'
             '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            'bbec9e3ed1fe1372f587383e8ca86bb28e4dd90874dc146450e6ecdc8d30f387'
-            '7303e0375154935149063f5273d387842af9ca22668192512b9839182c45d1da'
             '00c449422246283cd7e0bdc65d216fce4a42f755ad881106a08fb7d97eab1679'
             '75d3c213f3717cfc3f72acd4e3b6d029d373916f9ff9a1e8a3e2d7b0958760ed')
-b2sums=('ea4346b88c7f3e7e2126eed6b0f4b1460e70fa430944a7263d42ac762e10c8440967ebbae25ceff15e7afb451e1a890ab7e97ff60619a465152e9ff6a7691653'
+b2sums=('a8379eda733981158248134183a11c7fa4a2de7952a43b861e653a0d7c48743442c26312419ad85be2a5e8f242d23dda03ea1aa5041916a3e44d06926a8c1342'
         'SKIP'
         'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        '4daf6c7d670f94d782408cd6f7fa7c6a96e109d6d368f5e41b0353e6f81f9a12f0f32b72efb734814652df42e63941312edc54446e874ce84e82862fbdee8a33'
-        '0222e9f7abfa6f9546d72a6775e7c6d5f9eb30a613196b9b8ae42a8996144ff222e6d4a98b28cc20a8e4afba17d458b184f4b45e06619d76cce18750ce654ee4'
         'f84752e04c7e69b69158b9514a5227a2b71b60ccbbe5acb437d9830bfa2e725fe6784e1603890722a114abda424f9cafc007e9934310f21483b6540bc19da905'
         '87ecd8a3891a9a171173a97cf3b2b5f978be9ec876bb257d9f5e037f21dc5bd91167eabeb1c3cc181260b82cb2774c7b38ad73e1d807cc49b6d95617e2fb5d55')
 
@@ -106,13 +101,6 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1743144
-  # https://www.phoronix.com/news/Wayland-Proxy-Firefox
-  # https://mastransky.wordpress.com/2023/12/22/wayland-proxy-load-balancer/
-  # https://src.fedoraproject.org/rpms/firefox/c/5d26feb54833974e37fbf31d07d2ddf59538a157?branch=rawhide
-  patch -Np1 -i ../0001-wayland-proxy.patch
-  patch -Np1 -i ../0002-wayland-proxy.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1809068
   # https://bbs.archlinux.org/viewtopic.php?id=281398
