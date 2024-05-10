@@ -1,0 +1,16 @@
+pkgbase = dutor-bin
+	pkgdesc = Recursive detecting duplicate files in a folder.管理文件夹中内容相同的文件.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yubaoquan/dutor
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = electron28
+	provides = dutor=0.1.0
+	conflicts = dutor
+	source = dutor-0.1.0.deb::https://github.com/yubaoquan/dutor/releases/download/0.1.0/dutor_0.1.0_amd64.deb
+	source = dutor.sh
+	sha256sums = d4c64372113c37781eb65a726757439584d6d80bdf58851d8c0f154108715faa
+	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+
+pkgname = dutor-bin
