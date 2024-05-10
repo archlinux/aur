@@ -1,7 +1,7 @@
 # Maintainer: effeffe <filippo dot falezza at outlook dot it>
 
 pkgname=osp-tracker
-pkgver=6.1.1
+pkgver=6.1.6
 arch=('x86_64')
 pkgrel=2
 pkgdesc='Tracker video analysis and modeling tool'
@@ -18,7 +18,7 @@ source=(
   "tracker.desktop"
 )
 sha256sums=(
-  'f2523ae64f6ba9bd8a16767f02fb9dc165e2f3a6620bf87199efe2cc8749bb93'
+  '73ea697e51ac67e052c0f7e51f2dc33ca91e66bdcac846ffa1892e5293c08b44'
   '0c36e09d4f2e2ab8cd39ee1ed896ce96db217bd2eff7a8522d426e15acf93f8d'
   '73664881f365a5640ca0c4ef83776105522ce3594f6961f2505766fea6bc361b'
 )
