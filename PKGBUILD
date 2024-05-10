@@ -6,11 +6,11 @@
 pkgname="odoo-17"
 _pkgname="odoo"
 pkgver=17.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Odoo. Open Source Apps To Grow Your Business."
 url="https://odoo.com/"
 arch=("any")
-license=("LGPL-3.0-or-later")
+license=("LGPL-3.0-only")
 conflicts=("openerp" "odoo")
 replaces=("openerp", "odoo")
 depends=("postgresql"
