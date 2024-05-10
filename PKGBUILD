@@ -1,18 +1,18 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ClustIRR
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Clustering of immune receptor repertoires"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-3.0-only')
 depends=(
-  r-future
-  r-future.apply
+  r-blaster
   r-igraph
+  r-pwalign
   r-stringdist
   r-visnetwork
 )
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ffd1884844b297c2e593e465a776fb6d')
-b2sums=('91a1392f45f76d4c865931c8c48e05fc7fe033a8d406a66224260398c330925268c53e2a731372efb1ffb39c765df1e0f6d4432295346cb59d95b13ae530b3cb')
+md5sums=('a2a70cc35428d5d7f7029d4f29df16bb')
+b2sums=('220054fcdb95fd57efcfdfe629340692d4ea055cd51d9eec9bf17e9d628456f1ef875076a9bea1149635728c00f77385e96c674e2de1681e7c7a7cf6e735309c')
 
 build() {
   mkdir build
