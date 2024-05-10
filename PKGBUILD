@@ -23,32 +23,32 @@ source=('git+https://github.com/alandipert/ncsa-mosaic.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/${pkgname%-git}"
+    printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 
-	local customflags
+    local customflags
 
-	# https://github.com/alandipert/ncsa-mosaic/issues/14
-	customflags='-fcommon'
+    # https://github.com/alandipert/ncsa-mosaic/issues/14
+    customflags='-fcommon'
 
-	# Required since GCC 14, which turned many previous warnings
-	# into errors.
-	# https://gcc.gnu.org/gcc-14/porting_to.html#warnings-as-errors
-	customflags="$customflags -Wno-error=implicit-function-declaration"
-	customflags="$customflags -Wno-error=implicit-int"
-	customflags="$customflags -Wno-error=incompatible-pointer-types"
-	customflags="$customflags -Wno-error=int-conversion"
+    # Required since GCC 14, which turned many previous warnings
+    # into errors.
+    # https://gcc.gnu.org/gcc-14/porting_to.html#warnings-as-errors
+    customflags="$customflags -Wno-error=implicit-function-declaration"
+    customflags="$customflags -Wno-error=implicit-int"
+    customflags="$customflags -Wno-error=incompatible-pointer-types"
+    customflags="$customflags -Wno-error=int-conversion"
 
-	make linux customflags="$customflags"
+    make linux customflags="$customflags"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	install -Dm755 src/Mosaic -t "$pkgdir/usr/bin"
-	install -Dm644 COPYRIGHT -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-	install -Dm644 docs/resources.html -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
+    install -Dm755 src/Mosaic -t "$pkgdir/usr/bin"
+    install -Dm644 COPYRIGHT -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+    install -Dm644 docs/resources.html -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
