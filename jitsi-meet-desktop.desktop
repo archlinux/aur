@@ -6,4 +6,5 @@ Terminal=false
 Type=Application
 Icon=jitsi-meet
 StartupWMClass=Jitsi Meet
+MimeType=x-scheme-handler/jitsi-meet;
 Categories=VideoConference;AudioVideo;Audio;Video;Network;

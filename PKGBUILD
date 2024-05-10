@@ -21,7 +21,7 @@ options=(!strip)
 source=("jitsi-meet-${arch[0]}-${pkgver}.AppImage::https://github.com/jitsi/jitsi-meet-electron/releases/download/v${pkgver//_/-}/jitsi-meet-${arch[0]}.AppImage"
         "${_pkgname}.desktop")
 sha256sums=('af245fc5499fcb88fa9268b35c2a4e6e2d64100a2d4d5ef25e3508600c71a89c'
-            '16de58926874dd4bbb0f2a232eb7df7b57058d04637f0109cda4dbdeb0c23b9c')
+            '8d40cf396906992f4b17256bb096aa9a14de162b4918f99520e50c305cb1804d')
 
 
 prepare() {
