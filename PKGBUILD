@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=page-builder-bin
 pkgver=0.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="An open source drag and drop Page Builder Made with Tauri"
 arch=('x86_64')
 url="https://github.com/abkarim/page-builder"
@@ -10,7 +10,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'webkit2gtk'
-    'hicolor-icon-theme'
     'gtk3'
 )
 source=(
