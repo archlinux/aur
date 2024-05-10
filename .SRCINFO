@@ -1,0 +1,16 @@
+pkgbase = rime-ls-git
+	pkgdesc = A language server for Rime input method engine - git version
+	pkgver = 0.3.0.r1.g4ae817a
+	pkgrel = 1
+	url = https://github.com/wlh320/rime-ls
+	arch = x86_64
+	license = BSD3
+	makedepends = clang
+	makedepends = cargo
+	depends = librime
+	provides = rime-ls
+	conflicts = rime-ls
+	source = git+https://github.com/wlh320/rime-ls
+	sha512sums = SKIP
+
+pkgname = rime-ls-git
