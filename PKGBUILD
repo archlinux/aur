@@ -1,6 +1,6 @@
 # Maintainer: water_lift <0xWATERx0@gmail.com>
 pkgname=defold
-pkgver=1.6.4
+pkgver=1.8.0
 pkgrel=1
 epoch=
 pkgdesc="Defold is a completely free to use game engine for development of desktop, mobile and web games."
@@ -19,35 +19,35 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://d.defold.com/archive/editor-alpha/4689e4033ebfc982176b92545900302d0fcb03b3/editor-alpha/editor2/Defold-x86_64-linux.zip"
-	"http://d.defold.com/archive/stable/4689e4033ebfc982176b92545900302d0fcb03b3/engine/defoldsdk.zip"
-	"http://d.defold.com/archive/stable/4689e4033ebfc982176b92545900302d0fcb03b3/bob/bob.jar"
-	"Defold.desktop"
-	"LICENSE"
-	"logo.zip")
+source=("https://github.com/defold/defold/releases/download/${pkgver}/Defold-x86_64-linux.tar.gz"
+        "https://github.com/defold/defold/releases/download/${pkgver}/defoldsdk_headers.zip"
+        "https://github.com/defold/defold/releases/download/${pkgver}/bob.jar"
+        "Defold.desktop"
+        "LICENSE"
+        "logo.zip")
 noextract=("bob.jar")
-md5sums=("f774e8a5259e208574c8648dfb18bd18"
-	"ee724bfe82bff4d4f950d428f572fde4"
-	"4315081b6116c19d05c1efffe47fae72"
-	"9510a5ccb9310a95e80452330b0c4de8"
-	"12ddd6bdaaf6397931608af50492f005"
- 	"2e220c9bf4a7e2f5aa3b81cfd7b8c8fe")
+sha256sums=('3df316f1cd946d07698f543cd381fa67f5ca6cc0f6f93ff45df3e525b3489a19'
+            '2f0b876fec08bf0eab5f3c8038979df2abb55836f3b0535eeeaf3f07096bd8b6'
+            '452b84eabf5cff5cc70b3a411c8d6e46a74fe06142d7f02f87c36a730285bd9c'
+            '9725d96324da56845f78a74352340e72366efa448d7ad05af3d5ed8a22ab873a'
+            'be6e9921ba01445d200ba3dc09b5cab149a58d57a76ca98376b52af87d817a7a'
+            '3b8caea5c51ed35d0b192b621e55102c7336904d5bc096d801cbbe700ebf17ca')
 validpgpkeys=()
 
 package() {
-	cd "$srcdir"
+    cd "$srcdir"
 
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 Defold.desktop "$pkgdir/usr/share/applications/Defold.desktop"
-	install -Dm644 "logo/64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/defold.png"
-	install -Dm644 "logo/128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/defold.png"
-	install -Dm644 "logo/150.png" "$pkgdir/usr/share/icons/hicolor/150x150/apps/defold.png"
-	install -Dm644 "logo/310.png" "$pkgdir/usr/share/icons/hicolor/310x310/apps/defold.png"
-	install -Dm644 "logo/1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/defold.png"
-	mkdir -p "$pkgdir/opt/Defold"
-	cp -r Defold "$pkgdir/opt"
-	cp -r defoldsdk "$pkgdir/opt/Defold"
-	mkdir -p "$pkgdir/usr/include/dmsdk"
-	ln -s "$pkgdir/opt/Defold/defoldsdk/sdk/include/dmsdk" "$pkgdir/usr/include/dmsdk"
-	install -Dm644 bob.jar "$pkgdir/opt/Defold"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 Defold.desktop "$pkgdir/usr/share/applications/Defold.desktop"
+    install -Dm644 "logo/64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/defold.png"
+    install -Dm644 "logo/128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/defold.png"
+    install -Dm644 "logo/150.png" "$pkgdir/usr/share/icons/hicolor/150x150/apps/defold.png"
+    install -Dm644 "logo/310.png" "$pkgdir/usr/share/icons/hicolor/310x310/apps/defold.png"
+    install -Dm644 "logo/1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/defold.png"
+    mkdir -p "$pkgdir/opt/Defold"
+    cp -r Defold "$pkgdir/opt"
+    cp -r defoldsdk "$pkgdir/opt/Defold"
+    mkdir -p "$pkgdir/usr/include/dmsdk"
+    ln -s "$pkgdir/opt/Defold/defoldsdk/sdk/include/dmsdk" "$pkgdir/usr/include/dmsdk"
+    install -Dm644 bob.jar "$pkgdir/opt/Defold"
 }
