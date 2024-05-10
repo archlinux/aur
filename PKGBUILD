@@ -1,4 +1,5 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Matthieu Ippersiel <matthieu.ippersiel@gmail.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Alexander 'gridcol' Griesbaum <agrsbm@gmail.com>
 # Contributor: Ravenman <correo.cuervo@gmail.com>
@@ -6,7 +7,7 @@
 # Contributor: Angel 'angvp' Velasquez <angvp@archlinux.com.ve>
 
 pkgname=mantisbt
-pkgver=2.25.7
+pkgver=2.26.1
 pkgrel=1
 pkgdesc="Web-based issue tracking system"
 arch=(any)
@@ -23,60 +24,66 @@ optdepends=(
   'uwsgi-plugin-php: run as application container'
 )
 backup=(
-  etc/webapps/$pkgname/config_inc.php
-  etc/webapps/$pkgname/custom_strings_inc.php
-  etc/webapps/$pkgname/custom_relationships_inc.php
-  etc/webapps/$pkgname/custom_functions_inc.php
-  etc/webapps/$pkgname/custom_constants_inc.php
+  "etc/webapps/${pkgname}/config_inc.php"
+  "etc/webapps/${pkgname}/custom_strings_inc.php"
+  "etc/webapps/${pkgname}/custom_relationships_inc.php"
+  "etc/webapps/${pkgname}/custom_functions_inc.php"
+  "etc/webapps/${pkgname}/custom_constants_inc.php"
+  "etc/uwsgi/${pkgname}.ini"
 )
 # building from source requires dead tooling for documentation:
 # https://mantisbt.org/bugs/view.php?id=27140
-# source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/release-$pkgver.tar.gz"
+# source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/release-${pkgver}.tar.gz"
 source=(
-  https://downloads.sourceforge.net/project/$pkgname/mantis-stable/$pkgver/$pkgname-$pkgver.tar.gz
-  $pkgname.sysusers
-  $pkgname.tmpfiles
-  $pkgname.uwsgi
+  "https://downloads.sourceforge.net/project/${pkgname}/mantis-stable/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+  "${pkgname}.sysusers"
+  "${pkgname}.tmpfiles"
+  "${pkgname}.uwsgi"
 )
-sha512sums=('5afbf0820dcd572c326abbde14564242bfbcf4d7937e6821ce71c228a57b05da259b0bea97b241aa71e4bb03a0d759eaf58cb61ea1cb0c3d8ea63da57e6aa816'
-            '3fd4e7faad7774892abfd20006ae3efcd7b0ba315447da9cea8d7352d5fd1e7f0c558d3855ad4e667a0bfe6ae0d95d12c848a78d53312521a7f551f2edca723e'
-            'b1b9145d1ba423055d5e45734a9d74c639b75ae5b5d580024b50626332a74830dd39b976de590549ff1c47c400ba4e1c20b27b69fb140f7d8527d8d281d0c7bd'
-            '1b36d8956986360306eb15a9279c54eba46e74dfe0623dc26b3be3e8f409ab4f0afe6b34a9001cbeb9f33452fec5ccc8089a53352fa885894cc262ca9c12bc39')
-b2sums=('4c28eeb1312c7a3f40fa9660dacf841574a5985df49b8a17ee629ed47c39b650c546c7121de12dea8309d0a14b1fb1ac0e8b71fdd1b19d102d165b9f4254bd98'
-        'a533265d7bbbf1ae059a128baa43fb639e803094c62179252b416957fcfdb43a6068182d2bf29003c8fa55757a95bb1c3f054622bb0926055819c5dc989fe067'
-        'c70218e3aae3f7af3d5e7989545f3a21b93c0eae80d40ea2f89571d4a6d9181ec069323478fa20f6db66137f0c26777dceb37d19aeccc2351229dc8be3fc4417'
-        '2aa889fc1ded36b4229c3c77fad20c9699604f7d67bcecf09b0ba7cb81e01c0ba0cf309195475d6f96a28016bc2941e7241c4fce75db97056f77cbbe12d4e3bc')
-install=$pkgname.install
+sha512sums=('9d4b47d7c6df286205baa7d38bb3b9dee65f590cd7d57959721a79281807cd5845f6da94e1d24da8dffac74a0787a7c2fcc687c5e50d0d5343abe9f0c35417b5'
+  '3fd4e7faad7774892abfd20006ae3efcd7b0ba315447da9cea8d7352d5fd1e7f0c558d3855ad4e667a0bfe6ae0d95d12c848a78d53312521a7f551f2edca723e'
+  '6f6c6ca7cafeb3f76ba0aa62af1a7adb39b87d7db201b30a52d57507b1333cdffd60ae787b15c97919380a7a133daef73bd22fde5cccda2d5b98f54b32049c5b'
+  'e0ff53f4465fb2f73ef87ed9a036ad87e2d9c9fe40bd5562ba79282d019ff643205b7c55b0263fde6d55076b191c5a7e51a3cd4857dfc61cdfbf275accf08944')
+b2sums=('7c7cae3755cd96d8b4e68c319b792d01093da6f7cbae112d0d6b6b46aa51ed7d967cb38a4baff168aa7fd90a7bbb0aed4bfbc44a9fb4c0aded9b8d10e0bddf92'
+  'a533265d7bbbf1ae059a128baa43fb639e803094c62179252b416957fcfdb43a6068182d2bf29003c8fa55757a95bb1c3f054622bb0926055819c5dc989fe067'
+  '39b7704651933f3f153909e9b3900a65b24fc99eaa652c9b42affdaf1bb0b8383105573d7c8d9e6aa94250b9e5ea7b4ccc0dd781dbc888421930bc64773aa130'
+  '9c57af5d108c10c21a5f5c049716bdfe310d227f9932318e8f4c2904f18780a8536f5e2817717518a7158973bd9a555dfcb6e713eeef810634282765feedde69')
+install="${pkgname}.install"
 
 prepare() {
-  cd $pkgname-$pkgver
-  # create customization files
-  touch ../custom_{constants,functions,relationships,strings}_inc.php
-  # remove useless scripts
-  find vendor/ -type f -iname "*.py" -delete
+  # Create customization files
+  touch custom_{constants,functions,relationships,strings}_inc.php
+
+  # Remove useless scripts
+  find "${pkgname}-${pkgver}/vendor" -type f -iname "*.py" -delete
 }
 
 package() {
-  cd $pkgname-$pkgver
-  # configuration
-  install -vDm 640 config/config_inc.php.sample "$pkgdir/etc/webapps/$pkgname/config_inc.php"
-  rm -v config/config_inc.php.sample
-  install -vDm 644 ../*.php -t "$pkgdir/etc/webapps/$pkgname/"
-  # doc
-  install -vDm 644 ./*.md -t "$pkgdir/usr/share/doc/$pkgname/"
-  rm -v ./*.md
-  # web application
-  find . -type f -exec install -vDm 644 {} "$pkgdir/usr/share/webapps/$pkgname/"{} \;
-  # symlink configuration and customization
-  for config in {config,custom_{constants,functions,relationships,strings}}_inc.php ;do
-    ln -sv /etc/webapps/$pkgname/$config "$pkgdir/usr/share/webapps/$pkgname/config/$config"
-  done
-  # tmpfiles.d
-  install -vDm 644 ../$pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-  # sysusers.d
-  install -vDm 644 ../$pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  # uWSGI
-  install -vDm 644 ../$pkgname.uwsgi "$pkgdir/etc/uwsgi/$pkgname.ini"
-}
+  cd "${pkgname}-${pkgver}"
+  # Configuration and add suggestion disk location as per package structure
+  install -Dm 640 config/config_inc.php.sample "${pkgdir}/etc/webapps/${pkgname}/config_inc.php"
+  rm config/config_inc.php.sample
+  sed -i "/^# \\\$g_absolute_path_default_upload_folder/s|''|'/var/lib/${pkgname}/|" "${pkgdir}/etc/webapps/${pkgname}/config_inc.php"
+  install -Dm 644 ../*.php -t "${pkgdir}/etc/webapps/${pkgname}/"
 
-# vim: ts=2 sw=2 et:
+  # Doc
+  install -Dm 644 ./*.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  rm ./*.md
+
+  # Web application
+  find . -type f -exec install -Dm 644 {} "${pkgdir}/usr/share/webapps/${pkgname}/"{} \;
+
+  # Symlink configuration and customization
+  for config in {config,custom_{constants,functions,relationships,strings}}_inc.php; do
+    ln -s "/etc/webapps/${pkgname}/${config}" "${pkgdir}/usr/share/webapps/${pkgname}/config/${config}"
+  done
+
+  # tmpfiles.d
+  install -Dm 644 ../${pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+
+  # sysusers.d
+  install -Dm 644 ../${pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+
+  # uWSGI
+  install -Dm 644 ../${pkgname}.uwsgi "${pkgdir}/etc/uwsgi/${pkgname}.ini"
+}

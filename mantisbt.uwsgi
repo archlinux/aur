@@ -17,7 +17,7 @@ php-allowed-ext = .php
 php-docroot = /usr/share/webapps/mantisbt
 php-index = index.php
 php-set = date.timezone=Europe/Berlin
-php-set = open_basedir=/tmp/:/usr/share/fonts/TTF:/usr/share/webapps/mantisbt:/usr/share/webapps/mantisbt/core:/etc/webapps/mantisbt
+php-set = open_basedir=/tmp/:/usr/share/fonts/TTF:/usr/share/webapps/mantisbt:/usr/share/webapps/mantisbt/core:/etc/webapps/mantisbt:/var/lib/mantisbt
 php-set = session.save_path=/tmp
 php-set = session.gc_maxlifetime  21600
 php-set = session.gc_divisor  500
