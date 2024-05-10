@@ -19,11 +19,11 @@ index f6f901e9..184ec037 100644
 @@ -1,6 +1,7 @@
  pkgdatadir = join_paths(get_option('datadir'), meson.project_name())
  gnome = import('gnome')
- 
+
 +dependency('appstream', version : '>= 1.0')
- dependency('libadwaita-1', version : '>= 1.4')
+ dependency('libadwaita-1', version : '>= 1.5')
  dependency('webkitgtk-6.0', version : '>= 2.40')
- 
+
 diff --git a/src/models/applications.js b/src/models/applications.js
 index 1207266a..1c30257a 100644
 --- a/src/models/applications.js
@@ -31,17 +31,17 @@ index 1207266a..1c30257a 100644
 @@ -319,14 +319,18 @@ var FlatpakApplicationsModel = GObject.registerClass({
          if (component.get_name())
              appdata.name = component.get_name();
- 
+
 -        if (component.get_developer_name())
 -            appdata.author = component.get_developer_name();
 +        const developer = component.get_developer();
 +        if (developer && developer.get_name())
 +            appdata.author = developer.get_name();
- 
+
          const launchable = component.get_launchable(AppStream.LaunchableKind.DESKTOP_ID);
          if (launchable && launchable.get_entries())
              [appdata.launchable] = launchable.get_entries();
- 
+
 -        const [release] = component.get_releases();
 +        const releaselist = component.get_releases_plain();
 +        if (!releaselist)
@@ -49,4 +49,3 @@ index 1207266a..1c30257a 100644
 +        const [release] = releaselist.get_entries();
          if (!release)
              return appdata;
- 
