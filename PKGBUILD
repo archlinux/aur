@@ -1,11 +1,11 @@
 # Maintainer: xiretza <aur@xiretza.xyz>
 _pkgname=engage
 pkgname=$_pkgname-git
-pkgver=0.2.0.r14.gdd6f4d9
+pkgver=0.2.0.r15.g0a901f4
 pkgrel=1
 pkgdesc="A task runner with DAG-based parallelism"
 arch=(x86_64)
-url="https://or.computer.surgery/charles/engage"
+url="https://gitlab.computer.surgery/charles/engage"
 license=('Apache-2.0 OR MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'rust' 'cargo')
