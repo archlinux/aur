@@ -1,7 +1,7 @@
 # Maintainer: huochenghai <huochenghai@gmail.com>
 pkgname="otf-monaspace-bin"
 _pkgbase=${pkgname%-bin}
-pkgver="v1.100"
+pkgver="v1.101"
 pkgrel=1
 pkgdesc="An innovative superfamily of fonts for code"
 arch=("any")
@@ -10,7 +10,7 @@ url="https://monaspace.githubnext.com"
 license=("OFL")
 
 source=("https://github.com/githubnext/monaspace/releases/download/${pkgver}/monaspace-${pkgver}.zip")
-sha256sums=('c8f7e1a497cc128181d399b259b51e6fe332f7d0fed1fbb49bb05076a7753a9f')
+sha256sums=('7ff2317c7bdaed8e81dcbe1314e6ab12ad9641b7ddf921e996a227ff4ec7752f')
 
 package() {
 	install -d "${pkgdir}/usr/share/fonts/OTF/${_pkgbase#"otf-"}"
