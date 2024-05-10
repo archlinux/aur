@@ -2,17 +2,17 @@
 
 pkgname=python-blkinfo
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A python library to list information about all available or the specified block devices"
 arch=('any')
 url="https://github.com/grinrag/blkinfo"
 license=('GPL-3.0-only')
 depends=(
-  'git'
   'python'
   'util-linux'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-wheel'
