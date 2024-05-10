@@ -2,15 +2,15 @@
 
 pkgname=latynka-kbd
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Ukrainian Latin keyboard"
 arch=("any")
 url="https://github.com/vitalijr2/latynka-kbd"
 license=('Apache')
 depends=('xkeyboard-config')
-source=("https://github.com/vitalijr2/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-md5sums=('6066ec6325f6224a0246023d2ed15910')
-sha256sums=('b81d75853cb6c8ec6d4125358f76471d71476f2251e0539f117f290bccd15d43')
+source=("https://github.com/vitalijr2/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+md5sums=('c3d650f276b688d1457adcf3cdd89ae4')
+sha256sums=('e9b40b75aabb7ad83ab082b18da130781234a8d427c5e9084075834f2dd79798')
 
 package() {
 	cd "$pkgname-$pkgver"
