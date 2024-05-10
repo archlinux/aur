@@ -1,0 +1,22 @@
+pkgbase = xdg-desktop-portal-termfilechooser-nosystemd-git
+	pkgdesc = xdg-desktop-portal backend for your favorite terminal file chooser
+	pkgver = r4.71dc7ab
+	pkgrel = 1
+	url = https://github.com/GermainZ/xdg-desktop-portal-termfilechooser
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = scdoc
+	depends = xdg-desktop-portal
+	depends = libinih
+	optdepends = ranger: default for choosing files
+	optdepends = kitty: default terminal for launching ranger
+	provides = xdg-desktop-portal-impl
+	provides = xdg-desktop-portal-termfilechooser
+	provides = xdg-desktop-portal-termfilechooser-git
+	conflicts = xdg-desktop-portal-termfilechooser-git
+	conflicts = xdg-desktop-portal-termfilechooser-nosystemd
+	source = xdg-desktop-portal-termfilechooser-nosystemd-git::git+https://github.com/GermainZ/xdg-desktop-portal-termfilechooser.git
+	sha512sums = SKIP
+
+pkgname = xdg-desktop-portal-termfilechooser-nosystemd-git
