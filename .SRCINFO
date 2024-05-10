@@ -1,7 +1,7 @@
 pkgbase = python-pygraphviz
 	pkgdesc = Python interface to Graphviz graph drawing package
-	pkgver = 1.12
-	pkgrel = 2
+	pkgver = 1.13
+	pkgrel = 1
 	url = https://pygraphviz.github.io
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-pygraphviz
 	makedepends = python-setuptools
 	depends = python
 	depends = graphviz
-	source = https://pypi.org/packages/source/p/pygraphviz/pygraphviz-1.12.tar.gz
-	sha512sums = 2407fdd7de3b2f7f1d9f9e3e3fe0f19c4faad4a72db33a0b4341a01f98eecd4d240079f2d0ea5cf68a5e10236f11fd84e55fd44518611efde2fab7590e3aae90
+	source = https://pypi.org/packages/source/p/pygraphviz/pygraphviz-1.13.tar.gz
+	sha512sums = 3159fd9fb1226974c3a6289ebc437eed394021a7fc41669e29879fa6fd5e5cb809c808a4016cfb1afaf30dc10e467e8b0fe5c3b71fb9a1f889efcf5ae6ff3597
 
 pkgname = python-pygraphviz
