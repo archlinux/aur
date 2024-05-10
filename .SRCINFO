@@ -1,0 +1,16 @@
+pkgbase = mpdpopm
+	pkgdesc = Maintain ratings & playcounts for your mpd server
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/sp1ff/mpdpopm
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = base-devel
+	makedepends = cargo
+	makedepends = texinfo
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/sp1ff/mpdpopm/releases/download/0.3.3/mpdpopm-0.3.3.tar.gz
+	sha256sums = 56ef8fbf062845907f2dd7c26d19407363124019f9027b62e6c76668e4aad3e1
+
+pkgname = mpdpopm
