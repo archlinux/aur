@@ -1,6 +1,6 @@
 pkgbase = pdf_translator
 	pkgdesc = this script will translate your pdf , and create a new translated PDF
-	pkgver = 2.0
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/simit22/pdf-translator
 	arch = any

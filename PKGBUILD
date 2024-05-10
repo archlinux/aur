@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your_email@example.com>
 pkgname=pdf_translator
 pkgbase=pdf_translator
-pkgver=2.0
+pkgver=3.0
 pkgrel=1
 pkgdesc="this script will translate your pdf , and create a new translated PDF  "
 arch=('any')
