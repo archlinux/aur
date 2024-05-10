@@ -1,6 +1,6 @@
 # Maintainer: cyteon <cyteon on discord>
 pkgname=defold-engine
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 epoch=
 pkgdesc="Defold is a completely free to use game engine for development of desktop, mobile and web games."
@@ -19,16 +19,16 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/defold/defold/releases/download/1.7.0/Defold-x86_64-linux.zip"
-	"https://github.com/defold/defold/releases/download/1.7.0/defoldsdk.zip"
-	"https://github.com/defold/defold/releases/download/1.7.0/bob.jar"
+source=("https://github.com/defold/defold/releases/download/1.8.0/Defold-x86_64-linux.zip"
+	"https://github.com/defold/defold/releases/download/1.8.0/defoldsdk.zip"
+	"https://github.com/defold/defold/releases/download/1.8.0/bob.jar"
 	"Defold.desktop"
 	"LICENSE"
 	"logo.zip")
 noextract=("bob.jar")
-md5sums=("c8ce986432bb4d30729afbc4a5f9b99f"
-	"a52bd351b2fcd1d02b9f5446d5edbae9"
-	"02d06c08d7fb5f5e93731108a1d06a32"
+md5sums=("4c686d365bf36db7963ea919e591fe9a"
+	"727fe5ac7e2a9c0cfa8089cfde91b18e"
+	"885da607449d7898047bb833fc71d068"
 	"9510a5ccb9310a95e80452330b0c4de8"
 	"12ddd6bdaaf6397931608af50492f005"
 	"2e220c9bf4a7e2f5aa3b81cfd7b8c8fe")
