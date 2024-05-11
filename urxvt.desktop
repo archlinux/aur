@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=URxvt
+Comment=A unicode capable Rxvt clone
+Exec=urxvt
+Icon=terminal
+Terminal=false
+Type=Application
+Categories=Application;System;TerminalEmulator;

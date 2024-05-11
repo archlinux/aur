@@ -1,0 +1,35 @@
+--- /src/main.C
++++ /src/main.C
+@@ -588,7 +588,7 @@
+   unsigned int w, h;
+   unsigned int max_width, max_height;
+ 
+-  szHint.flags = PMinSize | PResizeInc | PBaseSize | PWinGravity;
++  szHint.flags = PMinSize | PWinGravity;
+   szHint.win_gravity = NorthWestGravity;
+   /* szHint.min_aspect.x = szHint.min_aspect.y = 1; */
+ 
+@@ -703,6 +703,8 @@
+ 
+   ncol = width  / fwidth;
+   nrow = height / fheight;
++  width = ncol * fwidth;
++  height = nrow * fheight;
+ 
+   // When the size of the vt window is not a multiple of the cell
+   // size, i.e., when the wm does not honour our size hints, there are
+@@ -1006,14 +1008,6 @@
+   window_calc (newwidth, newheight);
+ 
+   bool set_hint = !HOOK_INVOKE ((this, HOOK_RESIZE_ALL_WINDOWS, DT_INT, newwidth, DT_INT, newheight, DT_END));
+-
+-  // to avoid races between us and the wm, we clear the incremental size hints around the xresizewindow
+-  if (set_hint)
+-    {
+-      szHint.flags &= ~(PBaseSize | PResizeInc);
+-      XSetWMNormalHints (dpy, parent, &szHint);
+-      szHint.flags |= PBaseSize | PResizeInc;
+-    }
+ 
+   if (!ignoreparent)
+     {

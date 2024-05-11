@@ -1,0 +1,10 @@
+--- a/src/screen.C	2023-08-12 18:06:00.434833329 +0300
++++ b/src/screen.C	2023-08-12 18:06:09.208235384 +0300
+@@ -394,7 +394,6 @@
+ #endif
+         {
+           // wing, instead of wrap
+-          screen.cur.row += nrow - prev_nrow;
+ 
+           do
+             {
