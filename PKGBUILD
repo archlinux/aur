@@ -3,7 +3,7 @@
 
 pkgname=pje-office
 pkgver=2.5.13u
-pkgrel=1
+pkgrel=2
 pkgdesc="PJeOffice is a software made available by CNJ for electronic signing PJe system's documents"
 arch=('any')
 url='https://pjeoffice.trf3.jus.br'
@@ -30,7 +30,7 @@ _fix() {
         echo -e export PATH='"/usr/lib/jvm/java-11-openjdk/bin/:$PATH"' >> ${_launcher}
 	echo -e exec java -jar /usr/share/pjeoffice-pro/pjeoffice-pro.jar '"$@"' >> ${_launcher}
 
-        local _desktop
+	# create new .desktop launcher
         _desktop=usr/share/pjeoffice-pro/pje-office.desktop
 	echo -e [Desktop Entry] > ${_desktop}
 	echo -e Encoding=UTF-8 >> ${_desktop}
