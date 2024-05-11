@@ -1,32 +1,32 @@
-# system requirements: HMMER3
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MethTargetedNGS
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Perform Methylation Analysis on Next Generation Sequencing Data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="Perform Methylation Analysis on Next Generation Sequencing Data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
+  hmmer
   r-biostrings
   r-gplots
+  r-pwalign
   r-seqinr
   r-stringr
-  hmmer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8cef3643e99f5f79706f68d542e73be6a964649f7b382c66e9b8f08be3fd4817')
+md5sums=('69ab4e5fae7355ad1393b9d2a70595d4')
+b2sums=('bebcfebce2b3a1a6220c8021590314763b1ca671d709f2e65dd81b06aeb166b20c385ade514da8d005d36e39225c14e9d5e756dfdcda8016236077ab9e220692')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
