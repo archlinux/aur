@@ -2,10 +2,10 @@
 # Contributor: Filipe Bertelli <filipebertelli@tutanota.com>
 # Contributor: J. C. Hammons <jch at bitma dot st>
 # Contributor: Amr Okasha <amradel55 at gmail dot com>
-# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=netron-bin
 _pkgname=Netron
-pkgver=7.6.4
+pkgver=7.6.5
 _electronversion=30
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
@@ -23,13 +23,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lutzroeder/netron/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('baa2786b72ea83b1120a3eccb5091863945c15a215997d0fac460b8c65dc844e'
+sha256sums=('f081ce12aacd47245a25fa2bdfe50e2cc2f93e8573eb6619e454290936d38119'
             '535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
