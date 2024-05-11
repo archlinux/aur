@@ -16,7 +16,7 @@ source=(
   "${pkgname}::https://github.com/nimaaskarian/${_gitname}/releases/download/${pkgver}/c3.x86.linux"
 )
 
-md5sums=('03ab1ab1be7a9f71175aac4afd6d9954')
+md5sums=('452df8b1a0ab640ab2d3cb376749e388')
 
 package () {
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/c3"
