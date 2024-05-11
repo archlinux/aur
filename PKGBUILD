@@ -1,11 +1,11 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=php-legacy-imap
-pkgver=8.2.14
+pkgver=8.2.19
 pkgrel=1
 pkgdesc="PHP legacy extension for imap (excluded from official php packages)"
 arch=('x86_64')
-license=('PHP')
+license=('PHP-3.01')
 url='https://www.php.net/'
 depends=('php-legacy' 'c-client' 'libxcrypt')
 source=(
