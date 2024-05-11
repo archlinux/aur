@@ -13,7 +13,7 @@ md5sums=('ee556c383799aa778ccd40aadd51569d')
 options=(!strip)
 
 package() {
-	cd nwscript-code-1.6.0
+	cd nwscript-code-1.6.1
     install -Dm 755 "nwscript-code" -t "$pkgdir/usr/bin"
     install -Dm 755 "nsshotreload" -t "$pkgdir/usr/bin"
     install -Dm 755 "default_config.ini" -t "$pkgdir/usr/share/nwscript-code"
