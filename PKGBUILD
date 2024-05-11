@@ -2,17 +2,17 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 
 pkgname=ueberzugpp
-pkgver=2.9.4
-pkgrel=2
+pkgver=2.9.5
+pkgrel=1
 pkgdesc="Command line util which allows to display images in combination with X11 written in C++"
 arch=(x86_64 aarch64 powerpc64le)
 url="https://github.com/jstkdng/ueberzugpp"
 license=("GPL-3.0-or-later")
 makedepends=("cmake" "cli11" "nlohmann-json" "wayland-protocols" "extra-cmake-modules" "range-v3")
 depends=("opencv" "libvips" "glib2" "libxcb" "xcb-util-image" "libsixel" "openssl" "spdlog" "libglvnd"
-         "fmt" "turbo-base64" "chafa" "wayland" "onetbb" "glibc" "gcc-libs" "xcb-util-errors" "libexif")
+         "fmt" "turbo-base64" "chafa" "wayland" "onetbb" "glibc" "gcc-libs" "xcb-util-errors")
 source=("https://github.com/jstkdng/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('0ac48b0afa2a51402b32a8d93f3460e6f0a4317ee4f871efcfaf1afc7af2c4db')
+sha256sums=('79c077ef8e158db3b5eb9d40512c9f9749383a29df9e3f7b11837481d1d90c74')
 provides=("ueberzug")
 conflicts=("ueberzug")
 options=("debug")
