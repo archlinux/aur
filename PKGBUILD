@@ -1,34 +1,36 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=POMA
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='User-friendly Workflow for Metabolomics and Proteomics Data Analysis'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Tools for Omics Data Analysis"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-broom
   r-caret
   r-complexheatmap
   r-dbscan
   r-deseq2
   r-dplyr
+  r-fsa
   r-ggplot2
   r-ggrepel
-  r-glasso
   r-glmnet
   r-impute
+  r-janitor
   r-limma
+  r-lme4
   r-magrittr
   r-mixomics
   r-randomforest
   r-rankprod
-  r-rmarkdown
+  r-rlang
   r-summarizedexperiment
+  r-sva
   r-tibble
   r-tidyr
   r-uwot
@@ -38,6 +40,7 @@ optdepends=(
   r-biocstyle
   r-covr
   r-ggraph
+  r-ggtext
   r-knitr
   r-patchwork
   r-plotly
@@ -45,14 +48,15 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('83f550759c222e7aa4a640a6bdb0ce8e66445d5389d96f7487d8ac624b7db921')
+md5sums=('2319e020f51efe618ec87124847cfbc4')
+b2sums=('992e5eafcebcc30a9d52249b86008f28b47d01925a1ffd396cbc204f12a34006f29c4e1139af44fdc7bd924a7853bd84528df4e24d58c76af03a8df47cfa4437')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
