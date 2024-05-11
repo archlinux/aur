@@ -2,7 +2,7 @@
 
 pkgname=hyprpanel-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.1.8
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="An opinionated panel/shell for the Hyprland compositor."
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ optdepends=('systemd: logging support'
 _src="${url}/releases/download/v${pkgver}/hyprpanel_Linux"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_src}_x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_src}_arm64.tar.gz")
-sha256sums_x86_64=('d8c192b09d2c3345c3b9696558b63ce2ccb8b115ded687540814a5a73bf72077')
-sha256sums_aarch64=('2d384c2fbf2beae4752465600123d877a7e380981c651de31efb31831a7e2a19')
+sha256sums_x86_64=('0e5871f5e461e389169bdfee683bf1d7f2426d94cc385b397b5485eee282e858')
+sha256sums_aarch64=('081df976ce957993a086e0bc987d1bffeaac55cec8466780cc49059813ed1f69')
 
 package() {
 	install -Dm644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
