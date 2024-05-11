@@ -2,7 +2,7 @@
 pkgname=python-pyaml-env
 _pkgname=${pkgname#python-}
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Zero-dependency Python package for easy throttling with asyncio support'
 arch=('any')
 url="https://github.com/mkaranasou/pyaml_env"
