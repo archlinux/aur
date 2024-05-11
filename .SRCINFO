@@ -1,0 +1,18 @@
+pkgbase = ktls-utils-git
+	pkgdesc = TLS handshake utilities for in-kernel TLS consumers
+	pkgver = 0.10.r13.g15f57f6
+	pkgrel = 2
+	url = https://github.com/oracle/ktls-utils
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = glib2
+	depends = glibc
+	depends = gnutls
+	depends = libkeyutils.so
+	depends = libnl-3.so
+	backup = etc/tlshd.conf
+	source = git+https://github.com/oracle/ktls-utils.git#branch=main
+	b2sums = SKIP
+
+pkgname = ktls-utils-git
