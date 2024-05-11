@@ -47,7 +47,7 @@ prepare() {
      git clone "${srcdir}/ffmpeg.wasm" web/apps/photos/thirdparty/ffmpeg-wasm
      git clone "${srcdir}/PhotoSwipe" web/apps/photos/thirdparty/photoswipe
      # Ugly patch
-     sed 's/^\(\s\+mt:\)/\/\/\1/' -i "${srcdir}/ente-photos-v0.8.81/web/apps/photos/src/services/wasm/ffmpeg.ts"
+     sed 's/^\(\s\+mt:\)/\/\/\1/' -i "${srcdir}/${_pkgbase}-v${pkgver}/web/apps/photos/src/services/wasm/ffmpeg.ts"
 #     cd "${srcdir}/${_pkgbase}-v${pkgver}/web/apps/photos/thirdparty/ffmpeg-wasm"
      
 }
@@ -66,7 +66,12 @@ build() {
     yarn next telemetry disable
 #    NEXT_PUBLIC_ENTE_ENDPOINT=http://localhost:8080 yarn build
 #    NEXT_PUBLIC_ENTE_ENDPOINT=http://localhost:8080 yarn build:photos
-    NEXT_PUBLIC_ENTE_ENDPOINT=/api yarn build:photos
+    if [ "$NEXT_PUBLIC_ENTE_ENDPOINT" ];then
+        echo "Using $NEXT_PUBLIC_ENTE_ENDPOINT"
+        yarn build:photos
+    else
+        NEXT_PUBLIC_ENTE_ENDPOINT=/api yarn build:photos
+    fi
 }
 
 package_ente-server() {
