@@ -2,14 +2,18 @@
 
 pkgname=tea-qt-git
 pkgver=63.0.0.r1.g2cb6ddb
-pkgrel=1
+pkgrel=2
 pkgdesc="Rich-featured text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS. Build from good git-commit with PDF and DJVU support."
 arch=('x86_64')
 url="https://tea.ourproject.org"
 license=('GPL3')
 depends=('qt6-base' 'gcc-libs' 'hunspell' 'desktop-file-utils')
 optdepends=('poppler: open and search text in PDF files'
-            'djvulibre: open and search in DJVU')
+            'djvulibre: open and search in DJVU'
+            'aspell: Aspell spellchecker support'
+            'nuspell: Nuspell spellchecker support, Hunspell compatible'
+            'libspeechd: Speech Dispatcher support to speak the text'
+            )
 
 makedepends=('cmake' 'git')
 provides=('tea-qt')
