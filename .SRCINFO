@@ -1,7 +1,7 @@
 pkgbase = python-snakemake-interface-common
 	pkgdesc = Common functions and classes for Snakemake and its plugins
 	pkgver = 1.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snakemake/snakemake-interface-common
 	arch = any
 	license = MIT
