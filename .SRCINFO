@@ -1,6 +1,6 @@
 pkgbase = kani-verifier
 	pkgdesc = Bit-precise model checker for Rust
-	pkgver = 0.50.0
+	pkgver = 0.51.0
 	pkgrel = 1
 	url = https://github.com/model-checking/kani
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = kani-verifier
 	provides = cargo-kani
 	conflicts = kani
 	conflicts = cargo-kani
-	source = kani-verifier-0.50.0.tar.gz::https://static.crates.io/crates/kani-verifier/kani-verifier-0.50.0.crate
-	sha256sums = ca237f372cdfd4164537dd512a067776f27f64b44ec06a56409cbdac58eb7216
+	source = kani-verifier-0.51.0.tar.gz::https://static.crates.io/crates/kani-verifier/kani-verifier-0.51.0.crate
+	sha256sums = 072652a7825ef9cb0b1a30a170bef1ee94f9aaa4773de5c95ee6d4cbec9d8989
 
 pkgname = kani-verifier
