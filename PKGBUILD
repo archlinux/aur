@@ -2,7 +2,7 @@
 pkgname=python-cgen
 _pkgname=cgen
 pkgver=2020.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A C/C++ source generation from an AST"
 arch=('any')
 url="https://github.com/inducer/cgen"
