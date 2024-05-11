@@ -1,6 +1,6 @@
 pkgbase = chimera
 	pkgdesc = Configure and manage games in Steam
-	pkgver = 0.19.1
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/chimeraos/chimera
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = chimera
 	depends = python-pyudev
 	depends = python-plyvel
 	depends = python-tornado
+	depends = python-gbopyrator
 	depends = retroarch
 	depends = libretro-genesis-plus-gx
 	depends = libretro-mgba
@@ -59,7 +60,7 @@ pkgbase = chimera
 	provides = steam-buddy
 	conflicts = steam-tweaks
 	conflicts = steam-buddy
-	source = chimera-0.19.1.tar.gz::https://github.com/chimeraos/chimera/archive/0.19.1.tar.gz
-	md5sums = e591c0c2db80903f2abb55e292fe12e5
+	source = chimera-0.20.0.tar.gz::https://github.com/chimeraos/chimera/archive/0.20.0.tar.gz
+	md5sums = 0d54508b8e7c926c3a85c075e96c4149
 
 pkgname = chimera
