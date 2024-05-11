@@ -5,12 +5,13 @@
 _pkgname=raylib
 pkgname=raylib-oldgl-git
 pkgver=5.0
-pkgrel=0
-pkgdesc='Simple and easy-to-use game programming library (for old GPUs with 2.1 OpenGL or later)'
+pkgrel=1
+pkgdesc='Simple and easy-to-use game programming library (OpenGL 2.1)'
 arch=('armv7a' 'aarch64' 'i686' 'x86_64')
 url='http://github.com/raysan5/raylib'
 license=('zlib')
 depends=()
+makedepends=(libx11 libxcursor libxinerama libxrandr vulkan-headers xorg-server-devel xorg-xinput)
 optdepends=()
 provides=(raylib)
 conflicts=(raylib)
@@ -21,19 +22,21 @@ build(){
 	cd "$_pkgname-$pkgver/src" || return
 
 	cat <<-EOF
-		========================================================
-		If you want support for even earlier versions of OpenGL,
-		edit the PKGBUILD file in the package.
-		========================================================
+		===========================================================
+		If you want support for an even earlier versions of OpenGL,
+		change the version in the PKGBUILD file.
+		===========================================================
 	EOF
 
 	# Change 21 to the version you want.
-	make GRAPHICS=GRAPHICS_API_OPENGL_21 RAYLIB_LIBTYPE=SHARED
-	make GRAPHICS=GRAPHICS_API_OPENGL_21 RAYLIB_LIBTYPE=STATIC
+	for t in SHARED STATIC;do
+		make GRAPHICS=GRAPHICS_API_OPENGL_21 RAYLIB_LIBTYPE="$t"
+	done
 }
 
 package(){
 	cd "$_pkgname-$pkgver/src" || return
 
-	make DESTDIR="$pkgdir/usr/" install
+	make DESTDIR="$pkgdir/usr/" RAYLIB_LIBTYPE=STATIC install
+	cp -- *.so* "$pkgdir/usr/"
 }
