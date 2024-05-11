@@ -1,24 +1,24 @@
-# Maintainer: Matthias Lamers <aussieevil@hotmail.com>
+# Contributor: Matthias Lamers <aussieevil@hotmail.com>
 pkgname=ohrrpgce
-pkgver=gorgonzola.r11914
+pkgver=wip.r13543
 pkgrel=1
 pkgdesc="A role playing game creation engine"
 arch=(i686 x86_64)
 license=(GPL)
 url="http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page"
-depends=('sdl_mixer' 'openeuphoria' 'libxpm' 'libxrandr' 'ncurses' 'xterm')
+depends=('sdl2_mixer' 'openeuphoria' 'libxpm' 'libxrandr' 'ncurses' 'xterm')
 makedepends=('subversion' 'freebasic' 'python2-scons')
 optdepends=('timidity-freepats: midi music support')
-source=(svn+https://rpg.hamsterrepublic.com/source/rel/gorgonzola)
+source=(svn+https://rpg.hamsterrepublic.com/source/wip)
 
 pkgver(){
-	cd "${srcdir}/gorgonzola"
+	cd "${srcdir}/wip"
 	local ver="$(svnversion)"
-	printf "%s.r%s" "gorgonzola" "${ver//[[:alpha:]]}"
+	printf "%s.r%s" "wip" "${ver//[[:alpha:]]}"
 }
 
 prepare() {
-	cd "${srcdir}/gorgonzola"
+	cd "${srcdir}/wip"
 	#sed 's|env python|env python2|' -i reloadbasic/reloadbasic.py
 	#sed 's|env python|env python2|' -i SConscript
 	#sed 's|gcc_flags = \[\]|gcc_flags = ["-Wno-format"]|' -i SConscript
@@ -32,7 +32,7 @@ prepare() {
 build() {
 	cd "${srcdir}"
 	mkdir -p release/usr/share/games/ohrrpgce
-	cd "${srcdir}/gorgonzola"
+	cd "${srcdir}/wip"
 	cat << EOF > hspeak
 #!/bin/bash
 /usr/share/openeuphoria/bin/eui /usr/share/games/ohrrpgce/hspeak.exw $*
