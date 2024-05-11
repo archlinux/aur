@@ -8,7 +8,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-glib2
-pkgver=2.80.0
+pkgver=2.80.2
 pkgrel=1
 arch=('any')
 pkgdesc="Low level core library (Android ${_android_arch})"
@@ -22,34 +22,54 @@ depends=("android-${_android_arch}-libffi"
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://download.gnome.org/sources/glib/${pkgver%.*}/glib-${pkgver}.tar.xz")
-sha256sums=('8228a92f92a412160b139ae68b6345bd28f24434a7b5af150ebe21ff587a561d')
+md5sums=('399162c4e5f46e3f331a1f9c7478e4c5')
 
 build() {
-    cd "${srcdir}"/glib-${pkgver}
+    cd "${srcdir}/glib-${pkgver}"
     source android-env ${_android_arch}
 
-    for type in static shared; do
-        rm -rf "${srcdir}/glib-${pkgver}/build-${_android_arch}-${type}"
-        mkdir -p "${srcdir}/glib-${pkgver}/build-${_android_arch}-${type}"
-        cd "${srcdir}/glib-${pkgver}/build-${_android_arch}-${type}"
-        android-${_android_arch}-meson \
-            --default-library "${type}" \
-            -Dtests=false \
-            ..
-        ninja
-    done
+    android-${_android_arch}-meson build-static \
+        --default-library static \
+        -Dtests=false
+    ninja -C build-static
+
+    android-${_android_arch}-meson build-shared \
+        --default-library shared \
+        -Dtests=false \
+        -Dman-pages=false
+    ninja -C build-shared
 }
 
 package() {
+    cd "${srcdir}/glib-${pkgver}"
     source android-env ${_android_arch}
 
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/glib-${pkgver}/build-${_android_arch}-static" install
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/glib-${pkgver}/build-${_android_arch}-shared" install
+    DESTDIR="${pkgdir}" ninja -C build-static install
+    DESTDIR="${pkgdir}" ninja -C build-shared install
 
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    files=(gapplication
+           gdbus
+           gi-compile-repository
+           gi-decompile-typelib
+           gi-inspect-typelib
+           gio
+           gio-querymodules
+           glib-compile-resources
+           glib-compile-schemas
+           gobject-query
+           gresource
+           gsettings
+           gtester)
+
+    for f in "${files[@]}"; do
+        rm -f "${pkgdir}/${ANDROID_PREFIX_BIN}/$f"
+    done
 
     rm -f "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/libintl.h"
     rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}/libintl.a"
     rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}/libintl.so"
+    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}/gio-launch-desktop"
 }
