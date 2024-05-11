@@ -1,54 +1,70 @@
 # Maintainer: Geyslan G. Bem <geyslan@gmail.com>
-# Maintainer: Pedro Henrique Quitete Barreto <pedrohqb@gmail.com>
+# Maintainer: Pedro Henrique Quitete Barreto <pedrohqb g-mail>
 
 pkgname=pje-office
-pkgver=1.0.28
-pkgrel=2
+pkgver=2.5.13u
+pkgrel=1
 pkgdesc="PJeOffice is a software made available by CNJ for electronic signing PJe system's documents"
 arch=('any')
-url='http://www.cnj.jus.br/wiki/index.php/PJeOffice'
+url='https://pjeoffice.trf3.jus.br'
 license=('custom')
+options=(!debug)
 depends=('jre11-openjdk' 'bash')
-source=(${pkgname}-${pkgver}.deb::https://cnj-pje-programs.s3-sa-east-1.amazonaws.com/${pkgname}/${pkgname}_amd64.deb)
+makedepends=('wget')
+source=(https://pje-office.pje.jus.br/pro/pjeoffice-pro-v${pkgver}-linux_x64.zip)
 install=${pkgname}.install
-md5sums=('53bc26336a03705cde57e99aa74fc4ed')
+md5sums=('5603c7df377356249e402e8ae98d0c81')
 
 _fix() {
 	local _launcher
+	local _desktop
 
 	# why waste space?
-	rm -rf usr/share/${pkgname}/jre
+	rm -rf usr/share/pjeoffice-pro/jre
 
 	# new launcher using default installed java
-	_launcher=usr/share/${pkgname}/pjeOffice.sh
+	_launcher=usr/share/pjeoffice-pro/pjeoffice-pro.sh
 	echo "#!/bin/bash" > ${_launcher}
 	echo -e "# PJeOffice CLEAN script\n" >> ${_launcher}
 	echo -e "echo \"Iniciando o PJeOffice!\"\n" >> ${_launcher}
         echo -e export PATH='"/usr/lib/jvm/java-11-openjdk/bin/:$PATH"' >> ${_launcher}
-	echo -e exec java -jar /usr/share/${pkgname}/pjeOffice.jar '"$@"' >> ${_launcher}
+	echo -e exec java -jar /usr/share/pjeoffice-pro/pjeoffice-pro.jar '"$@"' >> ${_launcher}
 
-	# load icon from package path
-	sed -i "s/^Icon=.*/Icon=\/usr\/share\/${pkgname}\/shortcuts\/icons\/PJeOffice.png/" usr/share/${pkgname}/shortcuts/${pkgname}.desktop
+        local _desktop
+        _desktop=usr/share/pjeoffice-pro/pje-office.desktop
+	echo -e [Desktop Entry] > ${_desktop}
+	echo -e Encoding=UTF-8 >> ${_desktop}
+	echo -e Name=PJeOffice >> ${_desktop}
+	echo -e GenericName=PJeOffice >> ${_desktop}
+	echo -e Exec=/usr/bin/pjeoffice-pro >> ${_desktop}
+	echo -e Type=Application >> ${_desktop}
+	echo -e Terminal=false >> ${_desktop}
+	echo -e 'Categories=Office;' >> ${_desktop}
+	echo -e Comment=PJeOffice >> ${_desktop}
+	echo -e Icon=pjeoffice >> ${_desktop}
 }
 
 _clinks() {
 	local _basepath
-	_basepath=usr/share/${pkgname}
+	_basepath=usr/share/pjeoffice-pro
 
 	# creating symbolic links
 	mkdir -p usr/bin
-	ln -sf /${_basepath}/pjeOffice.sh usr/bin/pjeOffice
+	ln -sf /${_basepath}/pjeoffice-pro.sh usr/bin/pjeoffice-pro
 	mkdir -p usr/share/applications
-	ln -sf /${_basepath}/shortcuts/${pkgname}.desktop usr/share/applications/${pkgname}.desktop
+	ln -sf /${_basepath}/${pkgname}.desktop usr/share/applications/${pkgname}.desktop
 }
 
 prepare() {
-	tar xf data.tar.xz
+        mkdir -p usr/share/icons
+        rm pjeoffice-pro/.gitignore
+        mv pjeoffice-pro usr/share
+        wget https://www.pje.jus.br/wiki/skins/common/images/pje.png -O usr/share/icons/pjeoffice.png
 	_fix
 	_clinks
 }
 
 package() {
 	cp -R usr/ ${pkgdir}
-	chmod 755 ${pkgdir}/usr/share/pje-office/pjeOffice.sh
+	chmod 755 ${pkgdir}/usr/share/pjeoffice-pro/pjeoffice-pro.sh
 }
