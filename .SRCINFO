@@ -1,0 +1,17 @@
+pkgbase = waydroid-launcher-git
+	pkgdesc = For better launching Waydroid. Sources from Bazzite.
+	pkgver = r1.58d7810
+	pkgrel = 1
+	url = https://github.com/chenx-dust/waydroid-launcher
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = waydroid
+	depends = wlr-randr
+	depends = cage
+	depends = polkit
+	optdepends = waydroid-script-git: for easily managing waydroid
+	source = waydroid-launcher::git+https://github.com/chenx-dust/waydroid-launcher.git
+	md5sums = SKIP
+
+pkgname = waydroid-launcher-git
