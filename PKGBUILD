@@ -31,4 +31,6 @@ build() {
 package() {
   install -Dm755 "$srcdir/target/debug/fetcher" "$pkgdir/usr/bin/fetcher"
 }
-sha256sums=('085170d7182cc030d320a98640274bfd75943563521baaa93dffd5f5f5c32f3f')
+sha256sums=(
+  'f217d5568e6412b6c500e77d643789752c7e16b1bdf463500f6fbba2cf695fda'
+)
