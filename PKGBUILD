@@ -2,7 +2,7 @@
 pkgname=python-bioservices
 _name=${pkgname#python-}
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Access Bioinformatices Web Services and framework for WSDL/SOAP and REST wrappers"
 arch=('any')
 license=('GPL')
