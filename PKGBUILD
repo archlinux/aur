@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Seurat
-_pkgver=5.0.3
+_pkgver=5.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -61,14 +61,20 @@ makedepends=(
   r-rcppprogress
 )
 checkdepends=(
+  r-ape
+  r-arrow
   r-glmgampoi
   r-harmony
+  r-hdf5r
   r-limma
+  r-metap
+  r-sf
   r-singlecellexperiment
   r-testthat
 )
 optdepends=(
   r-ape
+  r-arrow
   r-biobase
   r-biocgenerics
   r-bpcells
@@ -99,8 +105,8 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2112a71f0ea07db422650c86aacc5d25')
-b2sums=('5a81b01893bf38e5e1e2e25ba3b4226eb3d12488db57983d7850e44f2b2530d10a1419dfd79211611c393a45343ca66a0363e5ee959784298e30a7628a31cdfa')
+md5sums=('f0f8ead2778e97d7c06bac7eb6276115')
+b2sums=('be75dc34da4ed25041659f746d683b7be1178e31151e81b5a2d34be323d799477eb9f477bc8e6b6748bf018ca8edba8614e7d00eba35615bdd9518e16ccefaf2')
 
 prepare() {
   # skip test that requires BPCells
