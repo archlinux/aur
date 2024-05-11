@@ -1,7 +1,7 @@
 # Maintainer: Luke Taylor <luket1@proton.me>
 
 pkgname=fooyin-git
-pkgver=0.3.10
+pkgver=r1978.c5aa3620
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/ludouzi/fooyin"
@@ -13,7 +13,6 @@ depends=(
     'alsa-lib'
     'taglib'
     'ffmpeg'
-    'qcoro-qt6'
     'kdsingleapplication'
     'hicolor-icon-theme'
     'glibc'
@@ -37,7 +36,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  echo r$(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
