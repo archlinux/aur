@@ -1,6 +1,6 @@
 pkgbase = koboldcpp
 	pkgdesc = An easy-to-use AI text-generation software for GGML and GGUF models
-	pkgver = 1.64.1
+	pkgver = 1.65
 	pkgrel = 1
 	url = https://github.com/LostRuins/koboldcpp
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = koboldcpp
 	depends = vulkan-icd-loader
 	optdepends = customtkinter: for GUI launcher
 	optdepends = python-psutil: increasing the process CPU priority
-	source = koboldcpp-1.64.1.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.64.1.tar.gz
-	sha256sums = ed0dad9812bc1cd1cf85ca43a22fceb497a10c83569c4bd3de2778806a57d01a
+	source = koboldcpp-1.65.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.65.tar.gz
+	sha256sums = ffcc20f2d1283c59e97e456b70ab39ba31e4318cdc4193b04d223fd7dc1fee2d
 
 pkgname = koboldcpp
