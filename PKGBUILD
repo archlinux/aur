@@ -2,7 +2,7 @@
 # Maintainer: Christian Winther <scm-engine at jippi dot dev>
 
 pkgname='scm-engine-bin'
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc='Makes working with .env files easy'
 url='https://github.com/jippi/scm-engine'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('scm-engine')
 conflicts=('scm-engine')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.7.4/scm-engine_Linux_arm64.tar.gz")
-sha256sums_aarch64=('d92a4629b2cb411e4d00f38f9a904ffc8242b5b7233dbc095cb9a8cd311e1aa5')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.7.5/scm-engine_Linux_arm64.tar.gz")
+sha256sums_aarch64=('c21f582ed5d47bfb081a6f76e6c0a3cf419db2c33b82364306c17e1c060df966')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.7.4/scm-engine_Linux_armv7.tar.gz")
-sha256sums_armv7h=('f9d31ba40cf1a99d42d4401aa2d57d34e688deb95ff973a1fe9ae201ac6e855f')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.7.5/scm-engine_Linux_armv7.tar.gz")
+sha256sums_armv7h=('ba98b7caf8438c3b587b641bf2a9f576a027996097afac0e03a3b1b1236ed86c')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.7.4/scm-engine_Linux_i386.tar.gz")
-sha256sums_i686=('3bc57baee56d19bfaf1258f8335bc21569035dd414fc365b6b24f5280faa99b6')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.7.5/scm-engine_Linux_i386.tar.gz")
+sha256sums_i686=('732bdd7e7ffc589bc2651d1c0b0ee2725c6dd1e77f5138598858ac1d49e3176e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.7.4/scm-engine_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('09d8f45cab6db9dc4a57d437800ad4ce26f0360c3cd16f8eea3a23ae51177a6f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.7.5/scm-engine_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('d375fff594cbec9a590ced98e06f7f403fb892667f55f2a9e423e7f9e63204b3')
 
 package() {
   # bin
