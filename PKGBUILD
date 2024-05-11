@@ -2,7 +2,7 @@
 
 pkgname=fav-bin
 _pkgname=fav
-pkgver=0.2.14
+pkgver=0.2.15
 pkgrel=1
 pkgdesc='Back up your favorite bilibili resources with CLI'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 source=("${_pkgname}-${pkgver}.tar.gz::$url/releases/download/v$pkgver/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 	"https://github.com/kingwingfly/fav/raw/v${pkgver}/LICENSE")
-sha256sums=('8b0dfcb92fc83374fe38335bc88b1c498d6bf70f4caa10377bd5ed8dc6bf8784'
+sha256sums=('83c5b6dc5f2776a662f6c8283131affc5bbe75bb3840fcbfcf9a1d838dc17f91'
             '54e2d4c99f8d0eacb6dd9cae4c1bddce86fe7926d29cdb0ceded4d3797df0d65')
 
 package() {
