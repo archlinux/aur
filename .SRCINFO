@@ -1,7 +1,7 @@
 pkgbase = uuallpaper-git
-	pkgdesc = A brief description of your Go project
+	pkgdesc = A wallpaper switcher for GNOME powered by Unsplash.
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/jrop/uuallpaper-git
 	arch = x86_64
 	license = MIT

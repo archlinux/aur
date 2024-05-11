@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Apodaca <jrapodaca@gmail.com>
 pkgname=uuallpaper-git
 pkgver=0.0.1
-pkgrel=1
-pkgdesc="A brief description of your Go project"
+pkgrel=2
+pkgdesc="A wallpaper switcher for GNOME powered by Unsplash."
 arch=('x86_64')
 url="https://gitlab.com/jrop/$pkgname"
 license=('MIT')
@@ -21,7 +21,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/uuallpaper"
   # Install other project files like documentation or configuration as needed
 }
 # vim: filetype=sh
