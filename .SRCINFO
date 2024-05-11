@@ -1,13 +1,13 @@
 pkgbase = raindrop
 	pkgdesc = All-in-one bookmark manager
-	pkgver = 5.6.19
+	pkgver = 5.6.27
 	pkgrel = 1
 	url = https://raindrop.io
 	arch = x86_64
 	license = MIT
 	makedepends = squashfs-tools
 	provides = raindrop
-	source = https://api.snapcraft.io/api/v1/snaps/download/B8ZjYQVKEem99E5WjVMGUr75feAUrnH5_13.snap
-	sha512sums = c5f9c486087c547e615fb40441791c97f25f080b24349bda0cdb583b886119eb7e9f4c8887129715bf941b3bc03a6dec18603f487893e6f88b0cdbd56836f29d
+	source = https://api.snapcraft.io/api/v1/snaps/download/B8ZjYQVKEem99E5WjVMGUr75feAUrnH5_14.snap
+	sha512sums = 2910d842a24449f2b1595f460f1736ae76f2f2e76de1e7330b0eafaba889f5f53391ddbd776f6e9b51834b62b16a0612c60b4d0e47cf7ca06f57cefbd9817e2f
 
 pkgname = raindrop

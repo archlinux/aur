@@ -1,7 +1,7 @@
 # Maintainer: Ben Towali <bentowalii@gmail.com>
 
 pkgname=raindrop
-pkgver='5.6.19'
+pkgver='5.6.27'
 pkgrel=1
 pkgdesc="All-in-one bookmark manager"
 arch=('x86_64')
@@ -12,9 +12,9 @@ makedepends=('squashfs-tools')
 provides=(raindrop)
 install=
 _snapid="B8ZjYQVKEem99E5WjVMGUr75feAUrnH5"
-_snaprev="13"
+_snaprev="14"
 source=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap")
-sha512sums=("c5f9c486087c547e615fb40441791c97f25f080b24349bda0cdb583b886119eb7e9f4c8887129715bf941b3bc03a6dec18603f487893e6f88b0cdbd56836f29d")
+sha512sums=("2910d842a24449f2b1595f460f1736ae76f2f2e76de1e7330b0eafaba889f5f53391ddbd776f6e9b51834b62b16a0612c60b4d0e47cf7ca06f57cefbd9817e2f")
 
 prepare() {
 	echo "Extracting snap file..."
