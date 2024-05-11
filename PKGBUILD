@@ -5,7 +5,7 @@ pkgname='slrn-snapshot'
 _pkgname='slrn'
 pkgver=1.0.4.9
 _prever='pre1.0.4-9'
-pkgrel=5
+pkgrel=6
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url='https://jedsoft.org/snapshots/'
@@ -26,6 +26,14 @@ sha512sums=(
 b2sums=(
   '667654876dfb087da62288d646a78454a3387e65555e56d34835b9bd6dfe3cf47d5e61ef52e3b11b2df377660db271d1a74e4e986fa826f475cf2bd51ddf6a5d'
 )
+
+prepare() {
+  cd "$srcdir/$_pkgname-$_prever"
+
+  # gcc 14 barfs over undefined VA_COPY
+  # https://github.com/jedsoft/slrn/issues/2
+  sed -i '/#include "slrnfeat.h"/i#include "slrnconf.h"' src/misc.c
+}
 
 # The current community/uudeview package is broken.
 # To build the slrn-snapshot without UU support, set the
