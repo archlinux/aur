@@ -2,9 +2,9 @@
 pkgname=python-rchitect
 _name=${pkgname#python-}
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal R API for Python"
-url="https://github.com/randy3k/$_name"
+url="https://github.com/randy3k/rchitect"
 arch=('any')
 license=('MIT')
 depends=('r>3.4.0' 'python-cffi>=1.10.0' 'python-six>=1.9.0')
