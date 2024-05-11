@@ -17,13 +17,17 @@ depends=('docker' 'python-aws-lambda-builders' 'python-aws-sam-translator' 'pyth
          'python-mypy-boto3-signer' 'python-mypy-boto3-stepfunctions' 'python-mypy-boto3-sts' 'python-mypy-boto3-xray'
          'python-mypy-boto3-kinesis' 'python-mypy-boto3-sqs'
         )
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('cf24b5642bafcb59434de5f8092c2b8cf48227a3357b4a221c39612eebda087a')
 
-package() {
-  cd "$pkgname-$pkgver"
+build() {
+  cd "${_name//-/_}-$pkgver"
+  python -m build --wheel --no-isolation
+}
 
-  /usr/bin/python setup.py install --root="$pkgdir/" --optimize=1
+package() {
+  cd "${_name//-/_}-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
