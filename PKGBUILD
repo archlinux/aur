@@ -38,5 +38,5 @@ package(){
 	cd "$_pkgname-$pkgver/src" || return
 
 	make DESTDIR="$pkgdir/usr/" RAYLIB_LIBTYPE=STATIC install
-	cp -- *.so* "$pkgdir/usr/"
+	cp -- *.so* "$pkgdir/usr/lib"
 }
