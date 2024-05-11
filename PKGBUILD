@@ -4,7 +4,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-secondaryscroll-clear
 pkgver=9.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support, secondary wheel srolling, and VTE clear"
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -52,6 +52,7 @@ source=(
     'starttop.patch'
     'popup-menu-hang.diff'
     'noinc.diff'
+    'searchable-scrollback-color.patch'
 )
 
 prepare() {
@@ -77,6 +78,7 @@ prepare() {
     patch -p1 -i ../clear.patch
     patch -p1 -i ../secondaryWheel.patch
     patch -p1 -i ../starttop.patch
+    patch -p0 -i ../searchable-scrollback-color.patch
 
     # the repo with original 24-bit-color.patch is no longer available:
     # https://gist.githubusercontent.com/dan-santana/63271adf12171e0fc0bc/raw/70c6343d1c0b3bca0aba4f587ed501e6cbd98d00/24-bit-color.patch
@@ -177,4 +179,5 @@ sha256sums=('aaa13fcbc149fe0f3f391f933279580f74a96fd312d6ed06b8ff03c2d46672e8'
             '9df34ba141a9e32d785f63b050ab82e6e6c745b391c5b16e17bec4dcd4a2b087'
             '26bcc874e17db6ab676649dab12f6afd308754fb77673df5e6b5a74d0b89efc7'
             '64afd103527ce2cb2a8c51fefd815615afd0a63bbb810f2fb5ea38f6280def03'
-            '0ee0434eb84b3ce1f62a4e02c0ba6d0940f4c62477e8982eb9219186feb393e3')
+            '0ee0434eb84b3ce1f62a4e02c0ba6d0940f4c62477e8982eb9219186feb393e3'
+            '9445f5c1e0d823c5ecbc31a8532fdb80c318903113a8a507034d52b04bd247dc')

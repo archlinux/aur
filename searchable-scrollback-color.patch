@@ -1,0 +1,28 @@
+OVERLAY_RSTYLE sometimes has odd fg and bg combinations, so use DEFAULT_RSTYLE
+
+--- src/perl/searchable-scrollback
++++ src/perl/searchable-scrollback
+@@ -100,10 +100,13 @@
+    ()
+ }
+ 
++our ($rend);
++$rend = urxvt::DEFAULT_RSTYLE|urxvt::RS_RVid;
++
+ sub msg {
+    my ($self, $msg) = @_;
+ 
+-   $self->{overlay} = $self->overlay (0, -1, $self->ncol, 1, urxvt::OVERLAY_RSTYLE, 0);
++   $self->{overlay} = $self->overlay (0, -1, $self->ncol, 1, $rend, 0);
+    $self->{overlay}->set (0, 0, $self->special_encode ($msg));
+ }
+ 
+@@ -124,7 +127,7 @@
+       refresh_end   => \&refresh,
+    );
+ 
+-   $self->{manpage_overlay} = $self->overlay (0, -2, $self->ncol, 1, urxvt::OVERLAY_RSTYLE, 0);
++   $self->{manpage_overlay} = $self->overlay (0, -2, $self->ncol, 1, $rend, 0);
+    $self->{manpage_overlay}->set (0, 0, "scrollback search, see the ${urxvt::RXVTNAME}perl manpage for details");
+ 
+    $self->idle;
