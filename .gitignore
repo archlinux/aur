@@ -1,0 +1,6 @@
+nomad-pack/
+LICENSE
+*.asc
+*.tar.*
+src/
+pkg/

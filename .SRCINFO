@@ -1,0 +1,23 @@
+pkgbase = nomad-pack
+	pkgdesc = A templating and packaging tool used with HashiCorp Nomad.
+	pkgver = v0.1.1
+	pkgrel = 1
+	url = https://github.com/hashicorp/nomad-pack
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = go
+	depends = openssl
+	depends = git
+	optdepends = bash-completion
+	provides = nomad-pack
+	conflicts = nomad-pack
+	source = git+https://github.com/hashicorp/nomad-pack.git#commit=5159a777162ff7481aa54c6519a245413b0fc558
+	source = bash-completion.sh
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	sha256sums = d5f660d8ca902f1f2e0692ebeb337cadfda8bd5878aa5274bafd428dda0d2a61
+	sha256sums = ac6a0c1f54833f4706ec7366c570b3088a06ca21128642f21435a7f464b98129
+
+pkgname = nomad-pack
