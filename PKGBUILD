@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=speckle
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Statistical methods for analysing single cell RNA-seq data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-edger
   r-ggplot2
@@ -32,13 +32,21 @@ optdepends=(
   r-testthat
   r-vdiffr
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4603cad300c83d6e6374e5989b5fe32a')
-sha256sums=('7ab4b4cc704042e0f505c3545bc1add88aabec7a63abd947350fd896f593b7df')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "fix-tests.patch")
+md5sums=('d96d04d5338171fa9e2a2213a39fe729'
+         '8af9b352ae92d11644cae8af98be635a')
+b2sums=('64d7333a2d92594dddefd2527cd1b18144888abfae7da66f276b1f646010863eca1494aa788370e7a7b0bd62338ecd8b47063b15d3494452248a777b53f513fe'
+        '3675d038b8f1a3df4a57c6227608bec986efcc0b8a551f1a5aec33cdcd19573c37c9f5ea2a7bdd37585187d6c8fd25c6cc849b9d5abad51e3d73bebec7af16c5')
+
+prepare() {
+  # fix test snapshots
+  patch -Np1 -i fix-tests.patch
+}
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

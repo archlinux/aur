@@ -1,0 +1,33 @@
+diff --git a/speckle/tests/testthat/_snaps/plotCellTypeProps/plotcelltypeprops.svg b/speckle/tests/testthat/_snaps/plotCellTypeProps/plotcelltypeprops.svg
+index 8f90ebd..57a9ba8 100644
+--- a/speckle/tests/testthat/_snaps/plotCellTypeProps/plotcelltypeprops.svg
++++ b/speckle/tests/testthat/_snaps/plotCellTypeProps/plotcelltypeprops.svg
+@@ -92,17 +92,17 @@
+ <text x='591.90' y='552.75' text-anchor='middle' style='font-size: 12.00px; fill: #4D4D4D; font-family: sans;' textLength='12.68px' lengthAdjust='spacingAndGlyphs'>s7</text>
+ <text x='345.15' y='567.61' text-anchor='middle' style='font-size: 14.00px; font-family: sans;' textLength='54.48px' lengthAdjust='spacingAndGlyphs'>Samples</text>
+ <text transform='translate(15.11,281.17) rotate(-90)' text-anchor='middle' style='font-size: 14.00px; font-family: sans;' textLength='71.60px' lengthAdjust='spacingAndGlyphs'>Proportions</text>
+-<rect x='652.20' y='240.01' width='62.32' height='82.31' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+-<text x='657.68' y='256.58' style='font-size: 14.00px; font-family: sans;' textLength='51.36px' lengthAdjust='spacingAndGlyphs'>Clusters</text>
+-<rect x='657.68' y='265.01' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #F2F2F2;' />
+-<rect x='658.39' y='265.72' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #F8766D;' />
+-<rect x='657.68' y='282.29' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #F2F2F2;' />
+-<rect x='658.39' y='283.00' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #00BA38;' />
+-<rect x='657.68' y='299.57' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #F2F2F2;' />
+-<rect x='658.39' y='300.28' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #619CFF;' />
+-<text x='681.94' y='277.78' style='font-size: 12.00px; font-family: sans;' textLength='12.68px' lengthAdjust='spacingAndGlyphs'>c0</text>
+-<text x='681.94' y='295.06' style='font-size: 12.00px; font-family: sans;' textLength='12.68px' lengthAdjust='spacingAndGlyphs'>c1</text>
+-<text x='681.94' y='312.34' style='font-size: 12.00px; font-family: sans;' textLength='12.68px' lengthAdjust='spacingAndGlyphs'>c2</text>
++<rect x='652.20' y='240.76' width='62.32' height='80.82' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
++<text x='657.68' y='257.33' style='font-size: 14.00px; font-family: sans;' textLength='51.36px' lengthAdjust='spacingAndGlyphs'>Clusters</text>
++<rect x='657.68' y='264.26' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
++<rect x='658.39' y='264.97' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #F8766D;' />
++<rect x='657.68' y='281.54' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
++<rect x='658.39' y='282.25' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #00BA38;' />
++<rect x='657.68' y='298.82' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
++<rect x='658.39' y='299.53' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #619CFF;' />
++<text x='680.44' y='277.03' style='font-size: 12.00px; font-family: sans;' textLength='12.68px' lengthAdjust='spacingAndGlyphs'>c0</text>
++<text x='680.44' y='294.31' style='font-size: 12.00px; font-family: sans;' textLength='12.68px' lengthAdjust='spacingAndGlyphs'>c1</text>
++<text x='680.44' y='311.59' style='font-size: 12.00px; font-family: sans;' textLength='12.68px' lengthAdjust='spacingAndGlyphs'>c2</text>
+ <text x='49.05' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='107.86px' lengthAdjust='spacingAndGlyphs'>plotCellTypeProps</text>
+ </g>
+ </svg>

@@ -1,10 +1,10 @@
 pkgbase = r-speckle
 	pkgdesc = Statistical methods for analysing single cell RNA-seq data
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/speckle
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	checkdepends = r-vdiffr
 	depends = r-edger
@@ -22,8 +22,11 @@ pkgbase = r-speckle
 	optdepends = r-statmod
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/speckle_1.2.0.tar.gz
-	md5sums = 4603cad300c83d6e6374e5989b5fe32a
-	sha256sums = 7ab4b4cc704042e0f505c3545bc1add88aabec7a63abd947350fd896f593b7df
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/speckle_1.4.0.tar.gz
+	source = fix-tests.patch
+	md5sums = d96d04d5338171fa9e2a2213a39fe729
+	md5sums = 8af9b352ae92d11644cae8af98be635a
+	b2sums = 64d7333a2d92594dddefd2527cd1b18144888abfae7da66f276b1f646010863eca1494aa788370e7a7b0bd62338ecd8b47063b15d3494452248a777b53f513fe
+	b2sums = 3675d038b8f1a3df4a57c6227608bec986efcc0b8a551f1a5aec33cdcd19573c37c9f5ea2a7bdd37585187d6c8fd25c6cc849b9d5abad51e3d73bebec7af16c5
 
 pkgname = r-speckle
