@@ -1,6 +1,6 @@
 pkgbase = fuse-archive-git
 	pkgdesc = Serve archives or compressed files as read-only FUSE filesystems
-	pkgver = 1
+	pkgver = 0.1.14.r1.g7008bfd
 	pkgrel = 1
 	url = https://github.com/google/fuse-archive
 	arch = x86_64
