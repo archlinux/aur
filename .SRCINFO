@@ -1,0 +1,15 @@
+pkgbase = python-mat73
+	pkgdesc = load MATLAB 7.3 .mat files into Python
+	pkgver = 0.63
+	pkgrel = 1
+	url = https://github.com/skjerns/mat7.3
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-h5py
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/m/mat73/mat73-0.63.tar.gz
+	sha256sums = c7e901e302d8172e6f1871819fb3f5f3d4a723c08c5aebde5d8d7b45e687d20b
+
+pkgname = python-mat73
