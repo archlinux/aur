@@ -17,12 +17,12 @@ unset _pkgtype
 # basic info
 _pkgname="wine"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=9.3.r194.gc1b8db0c
+pkgver=9.8.r57.gae9bdbda
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://gitlab.winehq.org/wine/wine"
 license=('LGPL-2.1-or-later')
-arch=(x86_64)
+arch=('x86_64')
 
 # main package
 _main_package() {
@@ -49,16 +49,11 @@ _main_package() {
     libxkbcommon
     wayland
   )
-  local _spacehogs=(
-    samba
-    sane
-  )
   makedepends=(
-    libcups               #lib32-libcups
-    libxxf86vm            #lib32-libxxf86vm
-    mesa                  #lib32-mesa
-    mesa-libgl            #lib32-mesa-libgl
-    vulkan-icd-loader     #lib32-vulkan-icd-loader
+    libxxf86vm        #lib32-libxxf86vm
+    mesa              #lib32-mesa
+    mesa-libgl        #lib32-mesa-libgl
+    vulkan-icd-loader #lib32-vulkan-icd-loader
     autoconf
     bison
     flex
@@ -67,41 +62,42 @@ _main_package() {
     opencl-headers
     perl
     vulkan-headers
-
-    "${_spacehogs[@]}"
   )
-  optdepends=(
-    alsa-plugins          #lib32-alsa-plugins
-    cups
-    dosbox
-
-    "${_spacehogs[@]}"
+  local _makeoptdeps=(
+    ::alsa-plugins #lib32-alsa-plugins
+    ::dosbox
+    libcups::cups #lib32-libcups
+    samba::samba
+    sane::sane
   )
+  for i in "${_makeoptdeps[@]}"; do
+    [ -n "${i%%::*}" ] && makedepends+=("${i%%::*}")
+    [ -n "${i##*::}" ] && optdepends+=("${i##*::}")
+  done
 
   options=(staticlibs !lto)
-
   backup=("usr/lib/binfmt.d/wine.conf")
 
   # provides/depends
   _pkgdep="$pkgname"
-  if [[ "$_pkgdep" =~ .*staging-wow64.* ]] ; then
+  if [[ "$_pkgdep" =~ .*staging-wow64.* ]]; then
     provides+=("wine-wow64=${pkgver%%.r*}")
     conflicts+=("wine-wow64")
   fi
-  while [[ "$_pkgdep" =~ .*-.* ]] ; do
+  while [[ "$_pkgdep" =~ .*-.* ]]; do
     _pkgdep="${_pkgdep%-*}"
     provides+=("${_pkgdep}=${pkgver%%.r*}")
     conflicts+=("${_pkgdep}")
   done
 
   # sources
-  if [[ "${_build_git::1}" != "t" ]] ; then
+  if [[ "${_build_git::1}" != "t" ]]; then
     _main_stable
   else
     _main_git
   fi
 
-  if [[ "${_build_staging::1}" == "t" ]] ; then
+  if [[ "${_build_staging::1}" == "t" ]]; then
     source+=("git+https://gitlab.winehq.org/wine/wine-staging.git")
     sha256sums+=('SKIP')
 
@@ -144,12 +140,12 @@ _main_stable() {
         | sort -V | tail -1
     )
 
-    if [[ "${_pkgver:?}" != "${pkgver%%.r*}" ]] ; then
+    if [[ "${_pkgver:?}" != "${pkgver%%.r*}" ]]; then
       git checkout -f "wine-$_pkgver"
       git describe --tags --long
     fi
 
-    if [[ "${_build_staging::1}" == "t" ]] ; then
+    if [[ "${_build_staging::1}" == "t" ]]; then
       git -C "$srcdir/wine-staging" checkout -f "v$_pkgver"
       git -C "$srcdir/wine-staging" describe --tags --long
     fi
@@ -195,6 +191,11 @@ prepare() {
 }
 
 build() {
+  # Apply flags for cross-compilation
+  export CROSSCFLAGS="${CFLAGS/-Werror=format-security/}"
+  export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+  export CROSSLDFLAGS="${LDFLAGS//-Wl,-z*([^[:space:]])/}"
+
   local _configure_options=(
     --disable-tests
     --prefix=/usr
