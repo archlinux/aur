@@ -2,16 +2,17 @@
 
 pkgname=wg++
 pkgver=5.1.5
-pkgrel=8
+pkgrel=9
 pkgdesc="WebGrab+Plus is a Freeware, closed-source multi-site incremental XMLTV EPG grabber"
 arch=(any)
 url="http://webgrabplus.com/"
 license=(custom)
 depends=(
-	curl
 	dotnet-runtime-8.0
-	libxml2
 	unzip
+	libxml2
+	curl
+	wget
 )
 source=("${pkgname}-5.1.0.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V5.1.0/WebGrabPlus_V5.1_install.tar_0.gz"
 	"${pkgname}-${pkgver}.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V${pkgver}/WebGrabPlus_V${pkgver}_beta_install.tar.gz"
@@ -23,14 +24,19 @@ sha256sums=('368b14be4b0ec724ac394b59b26c05ecff3cef2864572a8cca844d56e1ce6f0f'
 prepare() {
 	# Rename folder
 	mv .$pkgname $pkgname
-	# Download and install latest SiteIniPack from 'http://webgrabplus.com/epg-channels'
+	# Check for latest version of SiteIniPack from 'http://webgrabplus.com/epg-channels'
 	curl -sL http://webgrabplus.com/epg-channels | grep 'SiteIni\.Pack_' |
 		sed -e 's/.*btn"><a href="//' -e 's/".*//' -e "s/[^0-9][^0-9][^0-9]*//g" >siteini_ver
-	_siteini_ver=$(cat siteini_ver)
-	curl -LO http://webgrabplus.com/sites/default/files/download/ini/SiteIni.Pack_${_siteini_ver}.zip
-	unzip -q SiteIni.Pack_${_siteini_ver}.zip
-	cp -r siteini.pack/* $pkgname/siteini.pack.update
-	# Run install.sh script
+	# Download latest version of SiteIniPack
+	if [ -s siteini_ver ]; then
+		_siteini_ver=$(cat siteini_ver)
+		msg2 "Found latest SiteIniPack_V${_siteini_ver}"
+		curl -LO http://webgrabplus.com/sites/default/files/download/ini/SiteIni.Pack_${_siteini_ver}.zip
+		bsdtar -xf SiteIni.Pack_${_siteini_ver}.zip
+		rm -r $pkgname/siteini.pack.update/*
+		cp -r siteini.pack/* $pkgname/siteini.pack.update
+	fi
+	# Run 'install.sh' script
 	cd $pkgname
 	./install.sh
 	# Fix for 'No Internet' issue
@@ -38,11 +44,8 @@ prepare() {
 }
 
 package() {
-	install -d "$pkgdir"/usr/share/$pkgname/{bin.net,doc,mdb,rex,siteini.pack,siteini.user}
-	cp -r --no-preserve=mode,ownership "$srcdir"/$pkgname/{bin.net,doc,mdb,rex,siteini.pack} "$pkgdir"/usr/share/$pkgname
-	install -Dm644 "$srcdir"/$pkgname/WebGrab++.config.example.xml "$pkgdir"/usr/share/$pkgname/WebGrab++.config.example.xml
-	install -Dm644 "$srcdir"/$pkgname/WebGrab++.config.xml "$pkgdir"/usr/share/$pkgname/WebGrab++.config.xml
-	install -Dm755 "$srcdir"/$pkgname/install.sh "$pkgdir"/usr/share/$pkgname/install.sh
-	install -Dm755 "$srcdir"/$pkgname/run.net.sh "$pkgdir"/usr/share/$pkgname/run.net.sh
+	install -d "$pkgdir"/usr/share/$pkgname
+	cp -a --no-preserve=mode,ownership "$srcdir"/$pkgname "$pkgdir"/usr/share
+	find "$pkgdir" -name '*.sh' -exec chmod u=rwx,go=rx {} \;
 	install -Dm755 "$srcdir"/wgpp.sh "$pkgdir"/usr/bin/$pkgname
 }
