@@ -1,6 +1,6 @@
 pkgbase = autotrash
 	pkgdesc = Tool to automatically purge old trashed files
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/bneijt/autotrash
 	arch = any
@@ -8,8 +8,10 @@ pkgbase = autotrash
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
-	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/autotrash/autotrash-0.4.6.tar.gz
-	sha512sums = cfa59d025bb37ee31f0726e7f218f328af7e51c34de606fac384a342bd3e73761b313a3b71c4b2f3130125997640d5f18bd97ac6885d092749fc9e46aac744d5
+	makedepends = pandoc-cli
+	makedepends = git
+	depends = python>=3.8
+	source = autotrash::git+https://github.com/bneijt/autotrash.git#tag=0.4.7
+	sha512sums = 4735ffc89d56c3913075b4203e41d6dca70e13e85e9c6905327b1a38f5ad873f581b6b4dd179197d50d7a96547ce8b778b8380f7cdf0f3b4c944fc525b156f7e
 
 pkgname = autotrash

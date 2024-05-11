@@ -2,30 +2,30 @@
 # Contributor: Bram Neijt <bram at neijt dot nl>
 
 pkgname=autotrash
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc='Tool to automatically purge old trashed files'
 arch=(any)
 url="https://github.com/bneijt/$pkgname"
 license=(GPL3)
-depends=('python')
-makedepends=('python-build' 'python-installer' 'python-poetry-core')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('cfa59d025bb37ee31f0726e7f218f328af7e51c34de606fac384a342bd3e73761b313a3b71c4b2f3130125997640d5f18bd97ac6885d092749fc9e46aac744d5')
+depends=('python>=3.8')
+makedepends=('python-build'
+             'python-installer'
+             'python-poetry-core'
+             'pandoc-cli'
+             'git')
+source=("$pkgname::git+https://github.com/bneijt/$pkgname.git#tag=$pkgver")
+sha512sums=('4735ffc89d56c3913075b4203e41d6dca70e13e85e9c6905327b1a38f5ad873f581b6b4dd179197d50d7a96547ce8b778b8380f7cdf0f3b4c944fc525b156f7e')
 
 build() {
-	cd ..
-	[ -f .gitignore ] && mv .gitignore .gitignore.tmp
-
-	pushd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	python -m build --wheel --no-isolation
-
-	popd
-	[ -f .gitignore.tmp ] && mv .gitignore.tmp .gitignore || true
+	make -C doc "$pkgname.1"
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "doc/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
 }
