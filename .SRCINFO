@@ -1,6 +1,6 @@
 pkgbase = pandoc-sile-git
 	pkgdesc = Conversion between markup formats (sile fork, static build)
-	pkgver = 3.1.12.1.r189.g9c87deb
+	pkgver = 3.2.r14.g9c87deb
 	pkgrel = 1
 	url = https://pandoc.org
 	arch = x86_64
@@ -11,7 +11,15 @@ pkgbase = pandoc-sile-git
 	depends = gmp
 	depends = zlib
 	optdepends = pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter
-	optdepends = texlive-core: for pdf output
+	optdepends = texlive-context: for pdf output using context engine
+	optdepends = groff: for pdf output using pdfroff engine
+	optdepends = python-weasyprint: for pdf output using weasyprint engine
+	optdepends = sile: for pdf output using sile engine
+	optdepends = typst: for pdf output using typst engine
+	optdepends = tectonic: for pdf output using tectonic engine
+	optdepends = texlive-fontsrecommended: for pdf output using latex or xelatex engines
+	optdepends = texlive-latex: for pdf output using pdflatex engine
+	optdepends = texlive-xetex: for pdf output using xelatex engine
 	provides = pandoc=3.2
 	provides = pandoc-cli=3.2
 	conflicts = pandoc-cli

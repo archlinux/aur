@@ -5,7 +5,7 @@
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
 _pkgver=3.2
-pkgver=3.1.12.1.r189.g9c87deb
+pkgver=3.2.r14.g9c87deb
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
@@ -17,7 +17,15 @@ depends=(glibc # libm.so libc.so
 makedepends=(git
              stack)
 optdepends=('pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter'
-            'texlive-core: for pdf output')
+            'texlive-context: for pdf output using context engine'
+            'groff: for pdf output using pdfroff engine'
+            'python-weasyprint: for pdf output using weasyprint engine'
+            'sile: for pdf output using sile engine'
+            'typst: for pdf output using typst engine'
+            'tectonic: for pdf output using tectonic engine'
+            'texlive-fontsrecommended: for pdf output using latex or xelatex engines'
+            'texlive-latex: for pdf output using pdflatex engine'
+            'texlive-xetex: for pdf output using xelatex engine')
 provides=("$_pkgname=$_pkgver"
           "$_pkgname-cli=$_pkgver")
 conflicts=("$_pkgname-cli"
@@ -33,6 +41,9 @@ prepare() {
 
 pkgver() {
 	cd "$pkgname"
+	git tag --force \
+		"$(awk -F' *: *' '$1 ~ /^[Vv]ersion/ { print $2 }' *.cabal)" \
+		"$(git blame -p -L /^[Vv]ersion:/,+1 *.cabal | head -n1 | cut -d' ' -f1)"
 	git describe --long --tags --abbrev=7 --always HEAD --match "[0-9].[0-9]*" |
 		sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
