@@ -1,20 +1,26 @@
 pkgbase = pandoc-sile-git
 	pkgdesc = Conversion between markup formats (sile fork, static build)
-	pkgver = 3.1.12.1.r108.g85806c7
+	pkgver = 3.1.12.1.r189.g9c87deb
 	pkgrel = 1
 	url = https://pandoc.org
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = stack
-	optdepends = pandoc-citeproc: for citation rendering with pandoc-citeproc filter
+	depends = glibc
+	depends = gmp
+	depends = zlib
 	optdepends = pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter
 	optdepends = texlive-core: for pdf output
-	provides = pandoc=3.1.13
-	provides = pandoc-cli=3.1.13
+	provides = pandoc=3.2
+	provides = pandoc-cli=3.2
 	conflicts = pandoc-cli
 	conflicts = haskell-pandoc
-	source = pandoc-sile-git::git+https://github.com/alerque/pandoc.git#branch=sile-3.1.13
+	source = pandoc-sile-git::git+https://github.com/alerque/pandoc.git#branch=sile-3.2
 	sha256sums = SKIP
 
 pkgname = pandoc-sile-git
+	depends = glibc
+	depends = gmp
+	depends = zlib
+	depends = libz.so

@@ -4,17 +4,19 @@
 
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
-_pkgver=3.1.13
-pkgver=3.1.12.1.r108.g85806c7
+_pkgver=3.2
+pkgver=3.1.12.1.r189.g9c87deb
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
 license=(GPL-2.0-or-later)
 arch=(x86_64)
+depends=(glibc # libm.so libc.so
+         gmp # libgmp.so
+         zlib)
 makedepends=(git
              stack)
-optdepends=('pandoc-citeproc: for citation rendering with pandoc-citeproc filter'
-            'pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter'
+optdepends=('pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter'
             'texlive-core: for pdf output')
 provides=("$_pkgname=$_pkgver"
           "$_pkgname-cli=$_pkgver")
@@ -45,6 +47,7 @@ build() {
 }
 
 package() {
+	depends+=(libz.so)
 	cd "$pkgname"
 	find ./ -path '*/dist/*' -type f -name pandoc -perm /u+x \
 		-execdir install -Dm755 -t "$pkgdir/usr/bin/" {} \;
