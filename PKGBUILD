@@ -9,11 +9,11 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=9.7.1
+pkgver=9.8.0
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (Qt5, binary release)'
 url='https://github.com/peazip/PeaZip'
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 arch=('x86_64')
 depends=('brotli' 'hicolor-icon-theme' 'libx11' 'p7zip' 'qt5pas' 'zstd')
 options=('!emptydirs')
@@ -26,7 +26,7 @@ optdepends=('arc: Arc file archiver and compressor'
 provides=('peazip')
 conflicts=('peazip')
 source=("$url/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt5-1.x86_64.rpm")
-sha256sums=('5a08070febfcc5c48ac5ee00d3db1f5e60b67b1033ddaaf57a93c8924b1fad53')
+sha256sums=('cdb184db053dee98cb9015bd9533b8fcb64525b74a5f47556e8d28734f3074a3')
 
 prepare() {
   cd usr/share/peazip
