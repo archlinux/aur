@@ -1,9 +1,10 @@
 # Maintainer: Peter Semiletov <peter.semiletov@gmail.com>
 
 pkgname=tea-qt-git
-pkgver=63.0.0.r1.g2cb6ddb
-pkgrel=2
-pkgdesc="Rich-featured text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS. Build from good git-commit with PDF and DJVU support."
+pkgver=63.0.0.r0.ge882860
+
+pkgrel=1
+pkgdesc="Rich-featured text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS. Stable git-commit with all features."
 arch=('x86_64')
 url="https://tea.ourproject.org"
 license=('GPL3')
@@ -12,8 +13,7 @@ optdepends=('poppler: open and search text in PDF files'
             'djvulibre: open and search in DJVU'
             'aspell: Aspell spellchecker support'
             'nuspell: Nuspell spellchecker support, Hunspell compatible'
-            'libspeechd: Speech Dispatcher support to speak the text'
-            )
+            'libspeechd: Speech Dispatcher support to speak the text')
 
 makedepends=('cmake' 'git')
 provides=('tea-qt')
@@ -30,7 +30,7 @@ pkgver() {
 build() {
   mkdir -p "${srcdir}/tea-qt/b"
   cd "${srcdir}/tea-qt/b"
-  cmake .. -DUSE_PDF=ON -DUSE_DJVU=ON -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. -DUSE_PDF=ON -DUSE_DJVU=ON -DUSE_ASPELL=ON -DUSE_NUSPELL=ON -DUSE_SPEECH=ON -DCMAKE_INSTALL_PREFIX=/usr
   make
   cd "${srcdir}/tea-qt/"
   sed -i 's/tea %F/tea-qt %F/g' desktop/tea.desktop
