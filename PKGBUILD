@@ -4,9 +4,9 @@
 
 pkgname=ib-tws
 pkgver=10.29.1f
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
+pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers (IBKR)'
 arch=('x86_64')
 url="http://interactivebrokers.com/"
 license=('custom')
