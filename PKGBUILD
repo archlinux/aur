@@ -23,7 +23,7 @@ pkgrel=1
 pkgdesc='Type annotations and code completion for (some) boto3 components (Essentials+Requested)'
 arch=('any')
 url="https://pypi.org/project/boto3-stubs"
-makedepends=('python-setuptools' 'python-pip')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-pip')
 depends=('python-boto3' 'python-botocore-stubs')
 license=('MIT')
 
@@ -41,14 +41,19 @@ build() {
   rm -rf mypy_boto3_output
   python -m mypy_boto3_builder mypy_boto3_output --no-smart-version --product boto3 boto3-services --build-version ${_boto3_version} --services ${_services[@]}
   deactivate
+  cd "$srcdir/mypy_boto3_builder/mypy_boto3_output"
+  rm -fr boto3_stubs_lite_package
+  for dir in *package; do
+    cd "$dir"
+    python -m build --wheel --no-isolation
+    cd ..
+  done
 }
 
 package() {
   cd "$srcdir/mypy_boto3_builder/mypy_boto3_output"
-  for dir in boto3_stubs_package mypy_boto3*package; do
-    cd "$dir"
-    python setup.py install --root="${pkgdir}" --prefix=/usr
-    cd ..
+  for f in */dist/*.whl; do
+    python -m installer --destdir="$pkgdir" --prefix=/usr "$f"
   done
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   cp boto3_stubs_package/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
