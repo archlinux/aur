@@ -9,7 +9,7 @@
 
 _pkgbase=cockatrice
 pkgname=("cockatrice-client-git" "cockatrice-server-git")
-pkgver=2.9.0.r29.gf5fe56c8
+pkgver=2.9.0.r71.g2303880b
 pkgrel=1
 pkgdesc='Open-source multiplatform supported program for playing tabletop card games over a network.'
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ build() {
   # See the following:
   # https://wiki.archlinux.org/title/CMake_package_guidelines#CMake_can_automatically_override_the_default_compiler_optimization_flag
   # https://github.com/Cockatrice/Cockatrice/blob/master/CMakeLists.txt#L119
-  cmake -B "${_pkgbase}/build" -S "${_pkgbase}" -DCMAKE_INSTALL_PREFIX:PATH=/usr -DWITH_ORACLE=1 -DWITH_CLIENT=1 -DWITH_DBCONVERTER=1 -DWITH_SERVER=1 -DTEST=1
+  cmake -B "${_pkgbase}/build" -S "${_pkgbase}" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -DWITH_ORACLE=1 -DWITH_CLIENT=1 -DWITH_DBCONVERTER=1 -DWITH_SERVER=1 -DTEST=1
   make -C "${_pkgbase}/build"
 }
 
