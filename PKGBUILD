@@ -9,7 +9,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=c0bdc91234eb5afe29798876790d599f4d99f6e4
+_mozc_commit=8ff029c307ebc464b27bbd48859bc7ab43e6e1da
 _branch=fcitx
 # Sudachi Dictionary
 _sudachidict_date=20240409
@@ -17,7 +17,7 @@ _sudachidict_date=20240409
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5448.102
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')

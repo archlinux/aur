@@ -9,7 +9,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=c0bdc91234eb5afe29798876790d599f4d99f6e4
+_mozc_commit=8ff029c307ebc464b27bbd48859bc7ab43e6e1da
 _branch=fcitx
 # Sudachi Dictionary
 _sudachidict_date=20240409
@@ -17,7 +17,7 @@ _sudachidict_date=20240409
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
 pkgver=2.30.5448.102
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -109,7 +109,7 @@ package_fcitx-mozc-with-jp-dict() {
   depends=('fcitx' fcitx-qt6 gcc-libs glibc qt6-base)
   provides=('fcitx-mozc')
   replaces=('fcitx-mozc' "${pkgbase}-common")
-  conflicts=('fcitx-mozc' 'fcitx5-mozc' "${pkgbase}-common" 'ibus-mozc' ibus-mozc-with-jp-dict fcitx-mozc-with-jp-dict fcitx5-mozc-with-jp-dict fcitx5 fcitx5-qt fcitx5-configtool)
+  conflicts=('fcitx-mozc' 'fcitx5-mozc' "${pkgbase}-common" 'ibus-mozc' ibus-mozc-with-jp-dict fcitx5-mozc-with-jp-dict fcitx5 fcitx5-qt fcitx5-configtool)
 
   install_mozc-with-jp-dict-common
   export PREFIX="$pkgdir/usr"
