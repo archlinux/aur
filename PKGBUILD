@@ -3,8 +3,8 @@
 # Contributor: janezz55
 
 pkgname=dosbox-gcc
-pkgver=13.2.0
-libmver=0.8.1
+pkgver=14.1.0
+libmver=0.8.2
 _target="i586-pc-msdosdjgpp"
 _djver=2.05
 pkgrel=1
