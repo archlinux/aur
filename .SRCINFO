@@ -1,6 +1,6 @@
 pkgbase = metaphyuni-wallpapers
 	pkgdesc = metaphyuni-wallpapers (玄派壁纸)
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://metaphyuni.com/pc/wallpaper
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = metaphyuni-wallpapers
 	optdepends = wallutils: support the simple timed wallpaper format
 	provides = metaphyuni-wallpapers
 	conflicts = metaphyuni-wallpapers
-	source = metaphyuni-wallpapers-0.0.1.tar.gz::https://github.com/taotieren/metaphyuni-wallpapers/archive/refs/tags/v0.0.1.tar.gz
-	sha256sums = 8f5e00db4c416ea085d4f8ee68c17460f472ba25e6efaa6e29cbc5841066a159
+	source = metaphyuni-wallpapers-0.0.2.tar.gz::https://github.com/taotieren/metaphyuni-wallpapers/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = 62c1e8943080696885e6888ab0c44beebdd7184c2763a82d1d72b9096140ab62
 
 pkgname = metaphyuni-wallpapers

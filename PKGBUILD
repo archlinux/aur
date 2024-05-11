@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=metaphyuni-wallpapers
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="metaphyuni-wallpapers (玄派壁纸)"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/taotieren/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8f5e00db4c416ea085d4f8ee68c17460f472ba25e6efaa6e29cbc5841066a159')
+sha256sums=('62c1e8943080696885e6888ab0c44beebdd7184c2763a82d1d72b9096140ab62')
 
 package() {
     cd ${pkgname}-${pkgver}
