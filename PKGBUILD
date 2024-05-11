@@ -4,11 +4,11 @@
 
 pkgname="odoo"
 pkgver=17.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Web-based Open Source Business Apps"
 url="https://www.odoo.com/"
 arch=("any")
-license=("GPL3")
+license=("LGPL-3.0-only") # thanks SamWhited
 conflicts=("openerp")
 replaces=("openerp")
 depends=("postgresql"
@@ -29,7 +29,7 @@ depends=("postgresql"
         "python-idna"
         "python-jinja"
         "python-libsass"
-        "python-lxml"
+        "python-lxml<4.9.3"
         "python-mako"
         "python-markupsafe"
         "python-mock"
