@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Zelda64Recompilation
+Comment=Static recompilation of Majora's Mask for PC
+Icon=zelda64recomp
+Exec=zelda64recomp
+Categories=Game;
+Terminal=false

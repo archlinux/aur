@@ -1,0 +1,11 @@
+pkgbase = zelda64recomp-bin
+	pkgdesc = Static recompilation of Majora's Mask for PC
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Mr-Wiseguy/Zelda64Recomp
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/Mr-Wiseguy/Zelda64Recomp/releases/download/v1.0.0/Zelda64Recompiled-v1.0.0-Linux.tar.gz
+	sha256sums = f13d8d1250735bc4fae2a7c9a4365e28bc75239cffb51ce160d91a1aac6dbb87
+
+pkgname = zelda64recomp-bin
