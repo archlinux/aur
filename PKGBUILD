@@ -5,7 +5,7 @@ pkgname='slrn-snapshot-canlock'
 _pkgname='slrn'
 pkgver=1.0.4.9
 _prever='pre1.0.4-9'
-pkgrel=7
+pkgrel=8
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot with modern cancel-lock)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url='https://jedsoft.org/snapshots/'
@@ -43,18 +43,19 @@ prepare() {
 
   patch < "../$_canlock_dir/patch-changes.txt"  # FIXME: FAIL
 
-  for folder in doc src; do
-    cd "$srcdir/$_pkgname-$_prever/$folder" || exit 1
-    for diff in "$srcdir/$_canlock_dir/patch-$folder"_*.*; do
+  for _folder in doc src; do
+    cd "$srcdir/$_pkgname-$_prever/$_folder"
+    for diff in "$srcdir/$_canlock_dir/patch-$_folder"_*.*; do
       patch < "$diff"
     done
   done
 
   cd "$srcdir/$_pkgname-$_prever"
 
-  # gcc 14 barfs over undefined VA_COPY
+  # GCC 14 barfs over undefined VA_COPY
+  # https://github.com/jedsoft/slrn/pull/1
   # https://github.com/jedsoft/slrn/issues/2
-  sed -i '/#include "slrnfeat.h"/i#include "slrnconf.h"' src/misc.c
+  sed -i '/#undef VA_COPY_AS_ARRAY/i#define VA_COPY va_copy' src/config.hin
 }
 
 # The current community/uudeview package is broken.
