@@ -11,6 +11,6 @@ pkgbase = python-splinepy
 	makedepends = python-wheel
 	depends = python-gustaf
 	source = https://pypi.org/packages/source/s/splinepy/splinepy-0.0.52.tar.gz
-	sha512sums = 73ef20026a31b97ab3814b51cf88fcfef0ea247c99c4e1990cf3b8a04f18ce40addc73293cd9e1224eee58f95b42849964327eff332edd6e0d37b62acd58e703
+	sha512sums = 9401771c2a60502cb28795255e009291a00d5a2e248708c84db137f44ba9ce7f10c1c6dffdad3d8bc599f71b5013321c554847067eb08c74c7c6595b6475bc14
 
 pkgname = python-splinepy
