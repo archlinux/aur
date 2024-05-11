@@ -1,0 +1,87 @@
+--- a/Source/cmake_core.cmake
++++ b/Source/cmake_core.cmake
+@@ -169,20 +169,13 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_IS_VENEER)
+             $<${is_clang}:-Wdocumentation>
+ 
+             # Hide noise thrown up by Clang 10 and clang-cl
+-            $<${is_gnu_fe}:-Wno-unknown-warning-option>
+-            $<${is_gnu_fe}:-Wno-c++98-compat-pedantic>
+-            $<${is_gnu_fe}:-Wno-c++98-c++11-compat-pedantic>
+             $<${is_gnu_fe}:-Wno-float-equal>
+             $<${is_gnu_fe}:-Wno-deprecated-declarations>
+-            $<${is_gnu_fe}:-Wno-atomic-implicit-seq-cst>
+ 
+             # Clang 10 also throws up warnings we need to investigate (ours)
+             $<${is_gnu_fe}:-Wno-cast-align>
+             $<${is_gnu_fe}:-Wno-sign-conversion>
+-            $<${is_gnu_fe}:-Wno-implicit-int-conversion>
+-            $<${is_gnu_fe}:-Wno-shift-sign-overflow>
+             $<${is_gnu_fe}:-Wno-format-nonliteral>
+-            $<${is_gnu_fe}:-Wno-reserved-identifier>
+             $<${is_gnu_fe}:-Wno-cast-function-type>
+ 
+             # Force DWARF4 for Valgrind profiling
+@@ -307,7 +300,7 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_IS_VENEER)
+                 $<${is_clangcl}:-msse2>
+                 $<${is_gnu_fe}:-msse2>
+                 $<${is_gnu_fe}:-mno-sse4.1>
+-                $<${is_gnu_fe}:-Wno-unused-command-line-argument>)
++        )
+ 
+     elseif(${ASTCENC_ISA_SIMD} MATCHES "sse4.1")
+         target_compile_definitions(${ASTCENC_TARGET_NAME}
+@@ -324,13 +317,13 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_IS_VENEER)
+                 PRIVATE
+                     $<${is_gnu_fe}:-msse2>
+                     $<${is_gnu_fe}:-mno-sse4.1>
+-                    $<${is_gnu_fe}:-Wno-unused-command-line-argument>)
++            )
+         else()
+             target_compile_options(${ASTCENC_TARGET_NAME}
+                 PRIVATE
+                     $<${is_clangcl}:-msse4.1 -mpopcnt>
+                     $<${is_gnu_fe}:-msse4.1 -mpopcnt>
+-                    $<${is_gnu_fe}:-Wno-unused-command-line-argument>)
++            )
+         endif()
+ 
+     elseif(${ASTCENC_ISA_SIMD} MATCHES "avx2")
+@@ -348,14 +341,14 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_IS_VENEER)
+                 PRIVATE
+                     $<${is_gnu_fe}:-msse2>
+                     $<${is_gnu_fe}:-mno-sse4.1>
+-                    $<${is_gnu_fe}:-Wno-unused-command-line-argument>)
++            )
+         else()
+             target_compile_options(${ASTCENC_TARGET_NAME}
+                 PRIVATE
+                     $<${is_msvc_fe}:/arch:AVX2>
+                     $<${is_clangcl}:-mavx2 -mpopcnt -mf16c>
+                     $<${is_gnu_fe}:-mavx2 -mpopcnt -mf16c>
+-                    $<${is_gnu_fe}:-Wno-unused-command-line-argument>)
++            )
+         endif()
+ 
+         # Non-invariant builds enable us to loosen the compiler constraints on
+@@ -380,20 +373,13 @@ string(CONCAT EXTERNAL_CXX_FLAGS
+        " $<${is_gnu_fe}: -Wno-old-style-cast>"
+        " $<${is_gnu_fe}: -Wno-double-promotion>"
+        " $<${is_gnu_fe}: -Wno-zero-as-null-pointer-constant>"
+-       " $<${is_gnu_fe}: -Wno-disabled-macro-expansion>"
+-       " $<${is_gnu_fe}: -Wno-reserved-id-macro>"
+-       " $<${is_gnu_fe}: -Wno-extra-semi-stmt>"
+        " $<${is_gnu_fe}: -Wno-implicit-fallthrough>"
+-       " $<${is_gnu_fe}: -Wno-tautological-type-limit-compare>"
+        " $<${is_gnu_fe}: -Wno-cast-qual>"
+-       " $<${is_gnu_fe}: -Wno-reserved-identifier>"
+        " $<${is_clang}: -Wno-missing-prototypes>"
+        " $<${is_gnu_fe}: -Wno-missing-field-initializers>"
+        " $<${is_gnu_fe}: -Wno-suggest-override>"
+-       " $<${is_gnu_fe}: -Wno-used-but-marked-unused>"
+        " $<${is_gnu_fe}: -Wno-noexcept-type>"
+-       " $<${is_gnu_fe}: -Wno-comma>"
+-       " $<${is_gnu_fe}: -Wno-c99-extensions>")
++)
+ 
+ set_source_files_properties(astcenccli_image_external.cpp
+     PROPERTIES
