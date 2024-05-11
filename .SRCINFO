@@ -1,0 +1,13 @@
+pkgbase = words-tok
+	pkgdesc = wordlist of toki pona words for /usr/share/dict/
+	pkgver = r1.1a94664
+	pkgrel = 1
+	url = https://git.sr.ht/~anakojm/stardict-tok-eng
+	arch = any
+	license = CC-BY-SA-3.0
+	license = CC-BY-SA-4.0
+	makedepends = git
+	source = git+https://git.sr.ht/~anakojm/stardict-tok-eng
+	sha256sums = SKIP
+
+pkgname = words-tok
