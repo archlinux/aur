@@ -1,6 +1,6 @@
 pkgbase = chimera
 	pkgdesc = Configure and manage games in Steam
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/chimeraos/chimera
 	arch = any
@@ -37,7 +37,6 @@ pkgbase = chimera
 	depends = libretro-picodrive
 	depends = libretro-mesen-s
 	depends = dolphin-emu
-	depends = retroarch-autoconfig-udev-git
 	depends = flatpak
 	depends = xdotool
 	depends = xorg-xprop
@@ -60,7 +59,7 @@ pkgbase = chimera
 	provides = steam-buddy
 	conflicts = steam-tweaks
 	conflicts = steam-buddy
-	source = chimera-0.20.0.tar.gz::https://github.com/chimeraos/chimera/archive/0.20.0.tar.gz
-	md5sums = 0d54508b8e7c926c3a85c075e96c4149
+	source = chimera-0.21.0.tar.gz::https://github.com/chimeraos/chimera/archive/0.21.0.tar.gz
+	b2sums = facfc148c2b9999715d98e48efc70f703ef51c109048a4f192b39346328ec1746ba16429d3f8f349412396c270d7d1ba7e8e44faddf0b285b77a189a64bad1ba
 
 pkgname = chimera
