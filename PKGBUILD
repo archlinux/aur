@@ -9,7 +9,7 @@
 pkgname="wine-staging-wow64"
 pkgver=9.8
 _pkgver="${pkgver/rc/-rc}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
@@ -38,15 +38,10 @@ depends=(
   libxkbcommon
   wayland
 )
-_spacehogs=(
-  samba
-  sane
-)
 makedepends=(
   # staging
   git
 
-  libcups               #lib32-libcups
   libxxf86vm            #lib32-libxxf86vm
   mesa                  #lib32-mesa
   mesa-libgl            #lib32-mesa-libgl
@@ -58,16 +53,18 @@ makedepends=(
   opencl-headers
   perl
   vulkan-headers
-
-  "${_spacehogs[@]}"
 )
-optdepends=(
-  alsa-lib              #lib32-alsa-lib
-  cups
-  dosbox
-
-  "${_spacehogs[@]}"
+local _makeoptdeps=(
+  ::alsa-plugins #lib32-alsa-plugins
+  ::dosbox
+  libcups::cups #lib32-libcups
+  samba::samba
+  sane::sane
 )
+for i in "${_makeoptdeps[@]}"; do
+  [ -n "${i%%::*}" ] && makedepends+=("${i%%::*}")
+  [ -n "${i##*::}" ] && optdepends+=("${i##*::}")
+done
 
 provides=(
   "wine=$pkgver"
@@ -99,6 +96,11 @@ prepare() {
 }
 
 build() {
+  # Apply flags for cross-compilation
+  export CROSSCFLAGS="${CFLAGS/-Werror=format-security/}"
+  export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+  export CROSSLDFLAGS="${LDFLAGS//-Wl,-z*([^[:space:]])/}"
+
   cd "wine"
   ./configure \
     --disable-tests \
