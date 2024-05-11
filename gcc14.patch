@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -18,7 +18,7 @@ docdir=@datadir@/doc/xyzsh
+ ##########################################################
+ CC=@CC@
+ INSTALL=@INSTALL@
+-CFLAGS=@CFLAGS@
++CFLAGS=@CFLAGS@ -Wno-error=implicit-function-declaration
+ LIBS=@LIBS@
+ OBJ=@OBJ@
+ EXTOBJ=@EXTOBJ@
