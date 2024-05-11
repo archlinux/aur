@@ -5,7 +5,7 @@ pkgname='slrn-snapshot-canlock'
 _pkgname='slrn'
 pkgver=1.0.4.9
 _prever='pre1.0.4-9'
-pkgrel=6
+pkgrel=7
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot with modern cancel-lock)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url='https://jedsoft.org/snapshots/'
@@ -39,7 +39,8 @@ md5sums=(
 )
 
 prepare() {
-  cd "$srcdir/$_pkgname-$_prever" || exit 1
+  cd "$srcdir/$_pkgname-$_prever"
+
   patch < "../$_canlock_dir/patch-changes.txt"  # FIXME: FAIL
 
   for folder in doc src; do
@@ -48,6 +49,12 @@ prepare() {
       patch < "$diff"
     done
   done
+
+  cd "$srcdir/$_pkgname-$_prever"
+
+  # gcc 14 barfs over undefined VA_COPY
+  # https://github.com/jedsoft/slrn/issues/2
+  sed -i '/#include "slrnfeat.h"/i#include "slrnconf.h"' src/misc.c
 }
 
 # The current community/uudeview package is broken.
@@ -55,14 +62,14 @@ prepare() {
 # SLRN_NO_UU variable to true|yes|t|y|1, e.g.:
 #   env SLRN_NO_UU=true makepkg
 build() {
-  cd "$_pkgname-$_prever" || exit 1
+  cd "$_pkgname-$_prever"
 
   # RFC-0023
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
@@ -105,7 +112,7 @@ build() {
 }
 
 package() {
-  cd "$_pkgname-$_prever" || exit 1
+  cd "$_pkgname-$_prever"
 
   make DESTDIR="$pkgdir" install
 
