@@ -13,9 +13,12 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-react-console-view python-buildbot-react-grid-view
          python-buildbot-react-wsgi-dashboards)
 # https://github.com/buildbot/buildbot/releases
-pkgver=3.11.1
+pkgver=3.11.2
+# Pin tags manually until a stable pacman version includes the following fix
+# https://gitlab.archlinux.org/pacman/pacman/-/commit/9548d6cc765b1a8dcf933e8b1b89d0bcc3e50209
+_tag=346bd03bbf23239f7b1bd63c6394ec2b739420e1
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=2
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 # https://github.com/buildbot/buildbot/blob/v3.10.1/master/setup.py says GPLv2, and does not mention "any later version"
@@ -34,11 +37,11 @@ makedepends=(python-twisted python-jinja python-msgpack python-zope-interface py
              python-sphinx-jinja
              python-sphinx_rtd_theme
              git yarn)
-source=("git+https://github.com/buildbot/buildbot.git?signed#tag=v$pkgver"
+source=("git+https://github.com/buildbot/buildbot.git?signed#tag=$_tag"
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
         "disable-flaky-tests.diff")
-sha256sums=('b1895b9cd6c73b3fe132460626dbbcf6cfd3d7d14fa11cb10ea21eae0cef964b'
+sha256sums=('SKIP'
             '6ef2beaff974d48245a6a4f70219b89eb1ef6d484e27ee33b2ac6ab181ab3697'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
             '175cb41a707a278b0a7c0864304a00459d6e2dee16cd5ddbc28a6dc90abfd3fc')
@@ -50,6 +53,11 @@ validpgpkeys=(
 _buildbot_www_modules_with_tests=(base waterfall_view console_view grid_view wsgi_dashboards)
 _buildbot_www_react_modules_with_tests=(react-base react-waterfall_view react-console_view react-grid_view)
 _buildbot_www_modules=(${_buildbot_www_modules_with_tests[@]} ${_buildbot_www_react_modules_with_tests[@]} react-wsgi_dashboards badges)
+
+pkgver() {
+  cd buildbot
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
   cd buildbot
