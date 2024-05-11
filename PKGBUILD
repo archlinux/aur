@@ -2,7 +2,7 @@
 
 pkgname=rnsh
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Shell over Reticulum"
 arch=('any')
 depends=('python' 'python-rns' 'python-docopt' 'python-tomli')
