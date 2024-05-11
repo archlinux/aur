@@ -1,0 +1,15 @@
+pkgbase = terminalgoogle-git
+	pkgdesc = A useful way to use google in your terminal.
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://github.com/Raphadoodle/terminalgoogle-git.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gcc
+	depends = gcc-libs
+	depends = w3m
+	source = git+https://github.com/Raphadoodle/terminalgoogle-git.git
+	sha256sums = SKIP
+
+pkgname = terminalgoogle-git
