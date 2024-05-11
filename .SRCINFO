@@ -1,0 +1,13 @@
+pkgbase = linux-firmware-asus
+	pkgdesc = Firmware files for Linux from the ASUS Linux project
+	pkgver = 20231217.8db5bea4
+	pkgrel = 1
+	url = https://gitlab.com/asus-linux/firmware
+	arch = any
+	license = GPL2
+	license = GPL3
+	license = custom
+	source = https://gitlab.com/asus-linux/firmware/-/archive/8db5bea4cf1b95c54f92d051fad08542d34ea634/firmware-8db5bea4cf1b95c54f92d051fad08542d34ea634.tar.gz
+	sha256sums = 844d5c4c40104508d28d535e2a8e8bdeb1f09f8bcd7b71ba8f7718620bfa3e1e
+
+pkgname = linux-firmware-asus
