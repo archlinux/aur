@@ -1,0 +1,18 @@
+pkgbase = fuse-archive-git
+	pkgdesc = Serve archives or compressed files as read-only FUSE filesystems
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/google/fuse-archive
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = go
+	makedepends = git
+	depends = glibc
+	depends = fuse2
+	depends = libarchive
+	provides = fuse-archive
+	conflicts = fuse-archive
+	source = git+https://github.com/google/fuse-archive.git#branch=main
+	b2sums = SKIP
+
+pkgname = fuse-archive-git
