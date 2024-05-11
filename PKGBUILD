@@ -2,7 +2,7 @@
 _base=myokit
 pkgname=python-${_base}
 pkgdesc="A modeling and simulation tool for cardiac cellular electrophysiology"
-pkgver=1.36.0
+pkgver=1.36.1
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}/${_base}"
@@ -15,7 +15,7 @@ optdepends=('python-sympy: for formats.sympy support'
   'python-moviepy: for video support'
   'python-pyqt6: for gui support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('703a9dce5e9548dff63fb9c13fc20ed241980cca9830d81767cbece5a081bc57fec19b8c32d7f7647ccb568ed5e5b1f0f40fd183c44ca53d8f61f0dd6cdad6c3')
+sha512sums=('28fd6dd8394fc7794f051d70cfa5711d8210cecdac94dd5ce77991860fdf0f09cc3caddb97f0f31e821ec9dcaf1aa13f58d3357681bcf98fdfd66fbb819a02b8')
 
 build() {
   cd ${_base}-${pkgver}

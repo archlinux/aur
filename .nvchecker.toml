@@ -1,5 +1,5 @@
 [python-myokit]
 source = "github"
 github = "myokit/myokit"
-use_latest_release = "true"
+use_max_tag = "true"
 prefix = "v"
