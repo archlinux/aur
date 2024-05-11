@@ -1,4 +1,4 @@
-# Maintainer: Attila Fidan <localhost@localhost>
+# Maintainer: Attila Fidan <archlinux-buildsystem@print0.net>
 # Contributor: JianQing Liu <me at pegasis dot site>
 
 pkgname="discord-chat-exporter-cli"
