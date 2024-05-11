@@ -90,6 +90,8 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
   rm -rf "${pkgdir}"/usr/{bin/crashpad_handler,include,lib}
+  # Force X11 - menus are broken under Wayland
+  sed -i 's#Exec=\(.*\)#Exec=/usr/bin/env XDG_SESSION_TYPE=x11 \1#' "${pkgdir}/usr/share/applications/org.musescore.MuseScore.desktop"
 }
 
 # vim: ts=2 sw=2 et:
