@@ -1,7 +1,7 @@
 # Maintainer: TurtleRuss <tttturtleruss@gmail.com> 
 
 pkgname=hustmirror-cli-git
-pkgver=1.1.4.r0.g7d3ac16
+pkgver=1.1.4.r4.gf72022e
 pkgrel=1
 epoch=
 pkgdesc="The command line tool (hustmirror-cli) is a small tool that can help you quickly change sources to HUST mirror sources."
@@ -26,7 +26,7 @@ source=("git+${url}.git"
 noextract=()
 sha256sums=('SKIP'
             'a08dfc1246edcb721505d717dff36abdaa4aee0f1a74c02d4eece69f563cb5e8'
-	    '04c5c54b8dbf4f43d58024aacbfb05e769b5745a6bd090c1d2dbea6ce9f80b5d')
+	    '98b7f5cc6e8e8eb930417024c1382e8f29df4eab6d7c386329881c03f19a7c71')
 validpgpkeys=()
 
 pkgver() {
