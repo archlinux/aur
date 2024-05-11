@@ -1,8 +1,8 @@
 pkgbase = kokovp
-	pkgdesc = rastertokpsl CUPS filter for Kyocera printers built from source
+	pkgdesc = A modern mpv-based videoplayer
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/brainrom/rastertokpsl-re
+	url = https://github.com/brainrom/kokovp
 	arch = x86_64
 	license = GPL-2.0
 	makedepends = git
