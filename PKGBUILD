@@ -1,7 +1,7 @@
 # Maintainer: Michael Clayfield <me asdf michaelclayfield asdf com asdf>
 
 pkgname=hyprland-activewindow
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A multi-monitor aware Hyprland active window title outputer."
 url="https://github.com/FieldofClay/hyprland-activewindow"
@@ -10,7 +10,7 @@ depends=('hyprland')
 arch=('x86_64')
 license=('MIT')
 source=("https://github.com/FieldofClay/hyprland-activewindow/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3c70003b298095a7d7e159f5bc6b6b9adc74917b7deefab52a92e6cd2f522931')
+sha256sums=('16750131aa0e23eb56d644ab3bb63e3a5e926b9b2649f1f6f8ef01b9a5a3e7b9')
 
 build() {
   cd "$pkgname-$pkgver"
