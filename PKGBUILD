@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tauview-bin
 _pkgname=Tauview
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Minimalist image viewer based on Leaflet.js and Tauri."
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/sprout2000/tauview/v${pkgver}/LICENSE.md"
 )
-sha256sums=('2a5553b7149a0cb772ec0110e75b278eccaa90909cf1e5fa7916f587851ec388'
+sha256sums=('dba5674972805e68640663372455d1ddbabe3667539811b4f13a4c18eb4d476a'
             'b68cbd15f8aa5af28a19a93bf42d55e909d5ef19570af1855a6c6d4d41645db9')
 build() {
     bsdtar -xf "${srcdir}/data."*
