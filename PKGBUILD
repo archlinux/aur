@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=APL
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,12 +39,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e6a2a3a7eb66393dfc3216adbc757dc7')
-b2sums=('12d42e136bb087b7aa3b3764fbdc18b8fe32ec749e9be5dcd1df67dc11fe6bebcb6608f0e5a46af3c734b4538a6355bb354e9addb2fbc38b11b18a6399592cb7')
+md5sums=('a0515d71d7bde81144faf297c5e384b2')
+b2sums=('d6abf45d5e625a3c69ea26a773d9d07d453662ac71f94c88072701868578ff41c9a729a24ea988dbee8d4946929c41520f7de55ae72e5b018f75baf082c98a51')
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
+
+  # compile python bytecode
+  python -m compileall -o 0 -o 1 -s build -p /usr/lib/R/library "build/$_pkgname/python"
 }
 
 check() {
