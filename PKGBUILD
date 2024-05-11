@@ -3,7 +3,7 @@
 
 _pkgname="kwin-effect-rounded-corners"
 pkgname="$_pkgname-git"
-pkgver=0.6.1.r23.gbc4c2e1
+pkgver=0.6.5.r3.gc700296
 pkgrel=1
 pkgdesc="Rounds the corners of your windows"
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
@@ -40,7 +40,8 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
