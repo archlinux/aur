@@ -4,7 +4,7 @@ _pkgver=v1.0.80
 _channel=stable
 pkgname=lazycat-cloud-client
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc='懒猫微服'
 url='https://lazycat.cloud'
 arch=('x86_64')
@@ -14,12 +14,10 @@ depends=(
   'nss'
   'alsa-lib'
   'gtk3'
-  'zenity'
   'rclone'
   'fuse2')
 makedepends=(
-  'tar'
-  'zstd')
+  'tar')
 source=(
   "https://dl.lazycat.cloud/client/desktop/${_channel}/lzc-client-desktop_${_pkgver}.tar.zst"
   "lzc-client-desktop")
