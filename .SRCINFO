@@ -1,7 +1,7 @@
 pkgbase = ptyxis
 	pkgdesc = A terminal for a container-oriented desktop
 	pkgver = 46.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/chergert/ptyxis
 	arch = x86_64
 	license = GPL-3.0-or-later
