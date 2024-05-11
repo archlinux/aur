@@ -1,17 +1,18 @@
 pkgbase = terraform-provider-libvirt
-	pkgdesc = Terraform provider to provision infrastructure with Linux's KVM using libvirt
-	pkgver = 0.6.2
-	pkgrel = 0
+	pkgdesc = Provision libvirt machines with terraform
+	pkgver = v0.7.6
+	pkgrel = 1
 	url = https://github.com/dmacvicar/terraform-provider-libvirt
 	arch = x86_64
-	license = apache
-	makedepends = go
+	license = Apache
+	checkdepends = go
 	makedepends = git
-	makedepends = libssh
-	depends = terraform
+	makedepends = go
 	depends = libvirt
-	source = https://github.com/dmacvicar/terraform-provider-libvirt/archive/v0.6.2.tar.gz
-	sha256sums = 2bdb5e013b0f4ff576c4c023c02fb8936661bde766f42fd07221cd2c9210c633
+	depends = cdrtools
+	source = terraform-provider-libvirt-v0.7.6.tar.gz::https://github.com/dmacvicar/terraform-provider-libvirt/archive/refs/tags/v0.7.6.tar.gz
+	sha256sums = 03a8305b3f2361dc8a147ac4ea0897ca3cc66387ef4e7346d2233324135e1b8c
 
 pkgname = terraform-provider-libvirt
 
+pkgname = opentofu-provider-libvirt

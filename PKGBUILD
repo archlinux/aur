@@ -1,37 +1,62 @@
-# Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
-# Submitter:  Pascal Potvin <pascal dot potvin at gmail dot com>
+# Maintainer: Giorgi Taba K'obakhidze <t@gtk.ge>
+# Contributor: Simon Walker <s.r.walker101@googlemail.com>
 
-pkgname=terraform-provider-libvirt
-pkgver=0.6.2
-pkgrel=0
-pkgdesc="Terraform provider to provision infrastructure with Linux's KVM using libvirt"
-url="https://github.com/dmacvicar/terraform-provider-libvirt"
+# https://wiki.archlinux.org/title/Go_package_guidelines
+# https://developer.hashicorp.com/terraform/cli/config/config-file#implied-local-mirror-directories
+
+pkgname=({terraform,opentofu}-provider-libvirt)
+_pkgname="$pkgname"
+_pkgver=0.7.6
+pkgver="v${_pkgver}"
+pkgrel=1
+pkgdesc="Provision libvirt machines with terraform"
 arch=("x86_64")
-license=("apache")
-makedepends=("go" "git" "libssh")
-_namespace="github.com/dmacvicar/"
-depends=("terraform" "libvirt")
-source=("https://github.com/dmacvicar/terraform-provider-libvirt/archive/v$pkgver.tar.gz")
-sha256sums=(
-    '2bdb5e013b0f4ff576c4c023c02fb8936661bde766f42fd07221cd2c9210c633'
-)
-
-prepare() {
-    GOPATH="$(pwd)/go"
-    mkdir -p "$GOPATH/src/$_namespace"
-    rm -rf "$GOPATH/src/$_namespace/$pkgname"
-    mv -f "$pkgname-$pkgver" "$GOPATH/src/$_namespace/$pkgname"
-}
+_arch="linux_amd64"
+url="https://github.com/dmacvicar/${pkgname}"
+license=("Apache")
+depends=("libvirt" "cdrtools")
+makedepends=("git" "go")
+checkdepends=("go")
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=(03a8305b3f2361dc8a147ac4ea0897ca3cc66387ef4e7346d2233324135e1b8c)
 
 build() {
-    export GOPATH="$(pwd)/go"
-    GOBIN="$GOPATH/bin"
-    cd "$GOPATH/src/$_namespace/$pkgname"
-    PATH="$GOBIN:$PATH" go get -v
+    cd "${_pkgname}-${_pkgver}"
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+    unset LDFLAGS
+    make
 }
 
-package() {
-    GOPATH="$(pwd)/go"
-    GOBIN="$GOPATH/bin"
-    install -Dm755 "$GOBIN/$pkgname" "$pkgdir/usr/bin/$pkgname"
+check() {
+    cd "${_pkgname}-${_pkgver}"
+    make test
+}
+
+_package_common() {
+    cd "${_pkgname}-${_pkgver}"
+
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    install -Dm644 {CHANGELOG,README,docs/migration-13}.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    cp -r website/docs "$pkgdir/usr/share/doc/${pkgname}"
+}
+
+package_terraform-provider-libvirt() {
+    _package_common
+
+    install -Dm755 "${_pkgname}" \
+        -t "${pkgdir}/usr/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/${_pkgver}/linux_amd64"
+}
+
+package_opentofu-provider-libvirt() {
+    _package_common
+
+    install -Dm755 "${_pkgname}" \
+        -t "${pkgdir}/usr/share/terraform/plugins/registry.opentofu.org/dmacvicar/libvirt/${_pkgver}/linux_amd64"
 }
