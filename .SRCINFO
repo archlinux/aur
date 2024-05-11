@@ -1,7 +1,7 @@
 pkgbase = python-spectra
 	pkgdesc = Easy color scales and color conversion for Python
 	pkgver = 0.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jsvine/spectra
 	arch = any
 	license = MIT
