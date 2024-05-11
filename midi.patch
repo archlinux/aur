@@ -10,10 +10,10 @@ index 600a991708..99eeacd903 100644
 +++ b/src/engraving/playback/playbacksetupdataresolver.cpp
 @@ -80,9 +80,5 @@ void PlaybackSetupDataResolver::resolveChordSymbolsSetupData(const Instrument* i
  
- void PlaybackSetupDataResolver::resolveMetronomeSetupData(mpe::PlaybackSetupData& result) const
+ void PlaybackSetupDataResolver::resolveMetronomeSetupData(PlaybackSetupData& result) const
  {
--    static const mpe::PlaybackSetupData METRONOME_SETUP_DATA = {
--        SoundId::Block, SoundCategory::Percussions, { SoundSubCategory::Wooden }, {}
+-    static const PlaybackSetupData METRONOME_SETUP_DATA = {
+-        SoundId::Block, SoundCategory::Percussions, { SoundSubCategory::Wooden }
 -    };
 -
      result = METRONOME_SETUP_DATA;
@@ -44,7 +44,7 @@ index e99c01397e..b9c3b1c1f0 100644
 +    program_t program = channelMapping.second.program;
 +
 +    std::map<SoundMappingKey, midi::Programs> percussionsMapping = mappingByCategory(METRONOME_SETUP_DATA.category);
-+    SoundMappingKey metronomeSoundMapping = { METRONOME_SETUP_DATA.id,  { METRONOME_SETUP_DATA.subCategorySet } };
++    SoundMappingKey metronomeSoundMapping = { METRONOME_SETUP_DATA.soundId(),  { METRONOME_SETUP_DATA.soundSubCategories() } };
 +    program_t metronomeProgram = percussionsMapping.at(metronomeSoundMapping).begin()->program;
 +
 +    return program == metronomeProgram;
@@ -70,15 +70,14 @@ diff --git a/src/framework/mpe/events.h b/src/framework/mpe/events.h
 index 802fb8b2f4..16f7febe1f 100644
 --- a/src/framework/mpe/events.h
 +++ b/src/framework/mpe/events.h
-@@ -373,6 +373,13 @@ static const PlaybackSetupData GENERIC_SETUP_DATA = {
+@@ -373,6 +373,12 @@ static const PlaybackSetupData GENERIC_SETUP_DATA = {
  
  static const String GENERIC_SETUP_DATA_STRING = GENERIC_SETUP_DATA.toString();
  
 +static const PlaybackSetupData METRONOME_SETUP_DATA = {
 +    SoundId::Block,
 +    SoundCategory::Percussions,
-+    { SoundSubCategory::Wooden },
-+    {}
++    { SoundSubCategory::Wooden }
 +};
 +
  struct PlaybackData {
