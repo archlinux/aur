@@ -1,14 +1,17 @@
 pkgbase = grav1synth-git
 	pkgdesc = Grain Synth analyzer and editor for AV1 files
-	pkgver = 0.1.0_beta.5.r9.3f70dfd
+	pkgver = 0.1.0.beta.6.r6.gb877ba1
 	pkgrel = 1
 	url = https://github.com/rust-av/grav1synth
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = clang
 	depends = vapoursynth
 	depends = vapoursynth-plugin-lsmashsource
+	provides = grav1synth
+	conflicts = grav1synth
 	source = git+https://github.com/rust-av/grav1synth.git
 	sha256sums = SKIP
 
