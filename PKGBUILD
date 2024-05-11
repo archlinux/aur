@@ -7,7 +7,10 @@ pkgdesc="Telegram Desktop based messenger with Material Design and additional fe
 arch=(x86_64)
 url="https://github.com/kukuruzka165/materialgram"
 license=(GPL3)
-depends=('desktop-file-utils' 'glib2' 'ffmpeg' 'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'protobuf' 'rnnoise' 'openssl' 'hicolor-icon-theme' 'libdbus' 'libx11' 'libglvnd' 'fontconfig')
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
+         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
+         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'libxdamage' 'abseil-cpp' 'libdispatch'
+         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'kcoreaddons')
 makedepends=('chrpath')
 optdepends=('webkit2gtk: embedded browser features'
 	    'xdg-desktop-portal: desktop integration')
