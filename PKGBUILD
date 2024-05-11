@@ -5,7 +5,7 @@ pkgname='slrn-snapshot'
 _pkgname='slrn'
 pkgver=1.0.4.9
 _prever='pre1.0.4-9'
-pkgrel=6
+pkgrel=7
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url='https://jedsoft.org/snapshots/'
@@ -30,9 +30,10 @@ b2sums=(
 prepare() {
   cd "$srcdir/$_pkgname-$_prever"
 
-  # gcc 14 barfs over undefined VA_COPY
+  # GCC 14 barfs over undefined VA_COPY
+  # https://github.com/jedsoft/slrn/pull/1
   # https://github.com/jedsoft/slrn/issues/2
-  sed -i '/#include "slrnfeat.h"/i#include "slrnconf.h"' src/misc.c
+  sed -i '/#undef VA_COPY_AS_ARRAY/i#define VA_COPY va_copy' src/config.hin
 }
 
 # The current community/uudeview package is broken.
@@ -46,8 +47,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
