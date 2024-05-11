@@ -1,0 +1,5 @@
+[python-matadi]
+source = "github"
+github = "adtzlr/matadi"
+use_latest_release = "true"
+prefix = "v"
