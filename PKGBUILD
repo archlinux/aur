@@ -3,7 +3,7 @@
 # Based on labwc AUR from Lex Black <autumn-wind@web.de>
 
 pkgname=labwc-im
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox (with IME, IME popups and minimal text-input-v1 support)'
 url="https://github.com/labwc/labwc"
@@ -15,13 +15,13 @@ optdepends=("bemenu: default launcher via Alt+F3")
 conflicts=(labwc)
 provides=(labwc)
 source=(labwc-${pkgver}.tar.gz::"https://github.com/labwc/labwc/archive/${pkgver}.tar.gz"
-        'ime-popup-text-input-v1.patch')
-b2sums=('55e5539953edaccbb8b3c991b7cbc362c1783c0eb49ba92f3b135b95f2462226073d61a4122171662f63419b21141088da9a742a9b320e55e868fb6e2049d00a'
-        '997f5d03e9e82178b47415a480bdf1ac171b6ccaf9e8c582b77c03bfa1b5fe1cace4b5515f9ae88e4fe062c0e35ed525cfc4495f8226a866ba439ab1fdf8a19f')
+        '0001-IME-support-text-input-v1.patch')
+b2sums=('68d47d316f5dd19252db4ea11c313a9f8da560b25ff16623ee63f8ce88eccbea779e6a9f37bbf343a4926afecf40e3c9b1038833a171fe4acd90cf8b6b9035c0'
+        '574c56a3518dfd2aef5efa7cbb1b00a2c4bbaa6697a25a39127d5505a33b7c3baed9cb77b1556df1fd448b556be0c088fe145beec690d9446d781c19de8c76ed')
 
 prepare() {
   cd "labwc-$pkgver"
-  patch -Np1 -i ../ime-popup-text-input-v1.patch
+  patch -Np1 -i ../0001-IME-support-text-input-v1.patch
 }
 
 build() {
