@@ -1,0 +1,5 @@
+[python-nutils-poly]
+source = "github"
+github = "nutils/poly-py"
+use_max_tag = "true"
+prefix = "v"
