@@ -1,8 +1,8 @@
 #!/bin/sh
 
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 home="${XDG_CONFIG_HOME:-"$HOME/.config"}/bookman-cockpit"
-jfx_libs="$(readlink -f /usr/lib/jvm/java-21*-openjfx/lib)"
+jfx_libs="$(readlink -f /usr/lib/jvm/java-17*-openjfx/lib)"
 
 "${JAVA_HOME}/bin/java" \
     -Duser.home="$home" \
