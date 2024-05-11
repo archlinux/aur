@@ -11,7 +11,7 @@ depends=('php-legacy' 'c-client' 'libxcrypt')
 source=(
   "https://php.net/distributions/php-${pkgver}.tar.xz"
 )
-sha256sums=('763ecd39fcf51c3815af6ef6e43fa9aa0d0bd8e5a615009e5f4780c92705f583')
+sha256sums=('aecd63f3ebea6768997f5c4fccd98acbf897762ed5fc25300e846197a9485c13')
 _interpreter=${pkgver%.*}
 
 prepare() {
