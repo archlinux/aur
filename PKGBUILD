@@ -1,38 +1,33 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-
-pkgname=python-behave
-pkgver=1.2.7.dev3
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+_base=behave
+pkgname=python-${_base}
+pkgver=1.2.7.dev5
 pkgrel=1
 pkgdesc="Behaviour-driven development, Python style"
-url="https://github.com/behave/behave"
-license=('BSD')
-arch=('any')
-depends=('python-cucumber-tag-expressions' 'python-parse' 'python-parse-type' 'python-six'
-         'python-colorama')
-makedepends=('python-setuptools')
-checkdepends=('python-path' 'python-pyhamcrest' 'python-pytest' 'python-pytest-html')
-source=("https://github.com/behave/behave/archive/v$pkgver/$pkgname-$pkgver.tar.gz" "unittest-mock.patch")
-sha512sums=('c12f2bb7ffc0dbca7590e711f30927dc907cd124c75c2791a9a6cb9650a51e08cb5ece05326d200a299282ca8a8d98783a8c7964321b882c9e6b6bb8b7a144a4'
-            '999f45f2bd2f6010926cde07a71582ab8e533aeb8edd32401db7ad8c6f9245c33203415151f642ab2b78c4d2dac2050edeb94eeed2075f0de85e5135cc376bcd')
-
-prepare() {
-  cd behave-$pkgver
-  patch -Np1 -i ${srcdir}/unittest-mock.patch
-}
+url="https://github.com/${_base}/${_base}"
+license=(BSD-2-Clause)
+arch=(any)
+depends=(python-cucumber-tag-expressions python-parse-type python-colorama)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+# checkdepends=(python-pytest-html python-path python-pyhamcrest python-mock python-assertpy)
+source=(${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('3f810ea21a86cebff4667ebc4f875147e62ebd8a4d5b48d9e9faa31fbfec5168254e44a9b02cdb7a31ebdd1295e5dcb6f7d9370ba1f052692bcbfac82b89c22f')
 
 build() {
-  cd behave-$pkgver
-  python setup.py build
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-check() {
-  cd behave-$pkgver
-  pytest
-}
+# check() {
+#   cd ${_base}-${pkgver}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest
+# }
 
 package() {
-  cd behave-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
-
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+  cd ${_base}-${pkgver}
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }

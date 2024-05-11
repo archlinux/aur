@@ -1,0 +1,5 @@
+[python-behave]
+source = "github"
+github = "behave/behave"
+use_max_tag = "true"
+prefix = "v"
