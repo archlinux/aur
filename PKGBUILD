@@ -13,7 +13,7 @@ provides=("linux-wallpaperengine")
 source=("${pkgname}::git+https://github.com/Almamu/linux-wallpaperengine.git#branch=main")
 sha512sums=('SKIP')
 optdepends=(
-    'librandr: support for X11'
+    'xorg-xrandr: support for X11'
     'wayland-protocols: support for wayland')
 
 pkgver() {

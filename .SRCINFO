@@ -17,7 +17,7 @@ pkgbase = linux-wallpaperengine-git
 	depends = glew
 	depends = freeglut
 	depends = libpulse
-	optdepends = librandr: support for X11
+	optdepends = xorg-xrandr: support for X11
 	optdepends = wayland-protocols: support for wayland
 	provides = linux-wallpaperengine
 	source = linux-wallpaperengine-git::git+https://github.com/Almamu/linux-wallpaperengine.git#branch=main
