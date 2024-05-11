@@ -2,7 +2,7 @@
 
 pkgname=stormfetch
 pkgver=1.1.r0.g2b33b64
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple linux fetch program written in go and bash'
 arch=('any')
 url='https://gitlab.com/CapCreeperGR/stormfetch'
@@ -26,6 +26,7 @@ build() {
 
 package() {
     install -Dm755 "$srcdir/stormfetch/out" "$pkgdir/usr/bin/stormfetch"
+	install -Dm644 "$srcdir/stormfetch/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	mkdir -p "$pkgdir/etc"
 	cp -r "$srcdir/stormfetch/config" "$pkgdir/etc/stormfetch"
