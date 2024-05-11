@@ -1,45 +1,63 @@
-# system requirements: pandoc (http://pandoc.org/installing.html) forgenerating reports from markdown files.
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BatchQC
-_pkgver=1.30.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Batch Effects Quality Control Software'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Batch Effects Quality Control Software"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
-  r
-  r-corpcor
-  r-ggvis
-  r-gplots
-  r-heatmaply
-  r-knitr
+  r-data.table
+  r-deseq2
+  r-dplyr
+  r-ebseq
+  r-ggdendro
+  r-ggnewscale
+  r-ggplot2
   r-limma
   r-matrixstats
-  r-mcmcpack
-  r-moments
-  r-pander
+  r-pheatmap
+  r-rcolorbrewer
+  r-reader
   r-reshape2
-  r-rmarkdown
+  r-scran
   r-shiny
+  r-summarizedexperiment
   r-sva
-  pandoc
+  r-tibble
+  r-tidyr
+  r-tidyverse
 )
 optdepends=(
+  r-biocmanager
+  r-biocstyle
+  r-bladderbatch
+  r-dendextend
+  r-devtools
+  r-knitr
+  r-lintr
+  r-plotly
+  r-rmarkdown
+  r-shinythemes
+  r-spelling
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d89b36b950e87c4c7ae7e28d91fa997497b07a500eec85a8907f9f25c623caf5')
+md5sums=('775f7f746c2ada89c20ff78bb6faa103')
+b2sums=('3efff6f48d3a655cb32c4341d6cbb0a10b73560692bfaf6d2a5def765822a480a66be54d734d0c7702a4b430673e9b886e881851c7a4f7fde306917fc71f3d33')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
