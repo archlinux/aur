@@ -2,7 +2,7 @@
 
 pkgname=cutefish-settings
 pkgver=0.8
-pkgrel=6
+pkgrel=7
 pkgdesc="System Settings application for Cutefish Desktop"
 arch=('x86_64')
 url="https://github.com/cutefishos/settings"
@@ -21,6 +21,7 @@ sha512sums=('abb724e999b0f339cd90a36efef3ce4249da24a186c33d026ac1ca30c858b702025
 prepare() {
   cd settings-$pkgver
   patch -p1 -i ../$pkgname-qt5_create_translation.patch
+  sed -e 's|CMAKE_CXX_STANDARD 11|CMAKE_CXX_STANDARD 17|' -i CMakeLists.txt # Fix build with ICU 75
 }
 
 build() {
