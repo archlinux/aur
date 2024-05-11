@@ -1,0 +1,16 @@
+pkgbase = libleif
+	pkgdesc = Minimal, configurable & GPU accelerated Immediate Mode UI Library written with modern OpenGL
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/cococry/leif
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = glfw
+	provides = libleif
+	source = leif::git+https://github.com/cococry/leif.git
+	sha256sums = SKIP
+
+pkgname = libleif
