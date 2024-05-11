@@ -7,7 +7,7 @@
 
 pkgname=freefilesync
 pkgver=13.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="https://freefilesync.org"
@@ -21,7 +21,7 @@ source=(
 )
 noextract=("FreeFileSync_${pkgver}_Source.zip.1")
 sha256sums=('SKIP'
-            'bc6d296d3c67e9ce5d9c8f6ce7a96e55bbccbcd5d0c39a30fe9101fca5297079'
+            '949e0b8a2b14cbcc3a38f778e3026e7c7fa89756308ce7c541fab38f71d66f6c'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830')
 
