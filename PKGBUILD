@@ -2,16 +2,16 @@
 pkgname=python-pydstool
 _pkgname=PyDSTool
 pkgver=0.91.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simulation and analysis environment for dynamical systems"
-url="http://pydstool.sf.net/"
+url="https://github.com/robclewley/pydstool"
 license=('BSD')
 arch=('any')
 depends=('python<3.10' 'python-numpy' 'python-scipy')
 replaces=('python2-pydstool')
 makedepends=('dos2unix' 'python-setuptools')
 checkdepends=('python-pytest-mock' 'python-pytest-xdist')
-source=($_pkgname-$pkgver.tar.gz::https://github.com/robclewley/$_pkgname/archive/v$pkgver.tar.gz)
+source=($_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
 options=('!emptydirs')
 sha256sums=('828730549872851ff78746e17421ad66ce0dfd74026539bc72247f405f5768f7')
 

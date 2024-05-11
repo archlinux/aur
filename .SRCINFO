@@ -1,8 +1,8 @@
 pkgbase = python-pydstool
 	pkgdesc = Simulation and analysis environment for dynamical systems
 	pkgver = 0.91.0
-	pkgrel = 2
-	url = http://pydstool.sf.net/
+	pkgrel = 3
+	url = https://github.com/robclewley/pydstool
 	arch = any
 	license = BSD
 	checkdepends = python-pytest-mock
@@ -14,7 +14,7 @@ pkgbase = python-pydstool
 	depends = python-scipy
 	replaces = python2-pydstool
 	options = !emptydirs
-	source = PyDSTool-0.91.0.tar.gz::https://github.com/robclewley/PyDSTool/archive/v0.91.0.tar.gz
+	source = PyDSTool-0.91.0.tar.gz::https://github.com/robclewley/pydstool/archive/v0.91.0.tar.gz
 	sha256sums = 828730549872851ff78746e17421ad66ce0dfd74026539bc72247f405f5768f7
 
 pkgname = python-pydstool
