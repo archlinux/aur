@@ -2,8 +2,8 @@
 mypackagename=pulpo   # only if github repo has a different name than this pkgbase/pkgname
 pkgname=pulpo-bin
 pkgbase=pulpo-bin
-pkgver=1.4      # remember to also change the version number bellow in the pkgver() function
-pkgrel=14
+pkgver=1.5      # remember to also change the version number bellow in the pkgver() function
+pkgrel=15
 epoch=
 pkgdesc="A Gnome (wayland) shell notifier for Gotify and Ntfy server based on Rust."
 arch=('x86_64')
