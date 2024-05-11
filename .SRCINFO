@@ -1,7 +1,7 @@
 pkgbase = python-snakemake-interface-storage-plugins
 	pkgdesc = Common functions and classes for Snakemake and its plugins
 	pkgver = 3.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snakemake/snakemake-interface-storage-plugins
 	arch = any
 	license = MIT
