@@ -1,17 +1,16 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TissueEnrich
-_pkgver=1.22.0
+_pkgver=1.24.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Tissue-specific gene enrichment analysis"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
   r-dplyr
-  r-ensurer
   r-ggplot2
   r-gseabase
   r-summarizedexperiment
@@ -23,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5cc00925f523a6d82b216343e7f4b81a')
-b2sums=('d41c2a445c1ef71051e79dc00b1acfd4876a2153c92604a1362d9eec20aed59330e0947ec7e44827cac3a064961e889bb22d5134165d994e685aca5a3976ab27')
+md5sums=('dd520f8d4fe7eb07073f64f2df777dad')
+b2sums=('c73ce8666f4ea1a659de0cc8d4ab5a5ab027c7bc2d15e0dbf4e7c73701116460406e9903dfdc84ac3f60f246077b243d9795f2e77d75d1d69452213158a2ce74')
 
 build() {
   mkdir build
