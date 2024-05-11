@@ -2,7 +2,7 @@
 
 pkgname=loramon
 pkgver=0.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="LoRa packet sniffer for RNode hardware"
 arch=('any')
 depends=('python-pyserial')
