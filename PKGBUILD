@@ -8,20 +8,20 @@ pkgdesc='New DDE shell'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-shell"
 license=('LGPL3')
-depends=('dtk6declarative-git'
+depends=('dtk6declarative'
          'qt5-wayland'
          'qt6-wayland'
-         'dtkgui-git'
-         'dtkwidget-git'
+         'dtkgui'
+         'dtkwidget'
 )
 makedepends=('git'
              'qt6-tools'
              'qt5-tools'
-             'dtk6declarative-git'
+             'dtk6declarative'
              'qt5-wayland'
              'qt6-wayland'
-             'dtkgui-git'
-             'dtkwidget-git'
+             'dtkgui'
+             'dtkwidget'
              'cmake'
              'ninja'
 )
