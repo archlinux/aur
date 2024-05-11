@@ -2,7 +2,7 @@
 
 pkgname=cbp2make
 pkgver=147
-pkgrel=2
+pkgrel=3
 pkgdesc='Makefile generation tool for Code::Blocks IDE'
 arch=('x86_64' 'aarch64')
 url="https://sourceforge.net/projects/${pkgname}/"
@@ -24,6 +24,6 @@ build() {
 
 package() {
 	cd "${pkgname}-stl-rev${pkgver}"
-	install -Dm644 "bin/Release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "bin/Release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 "${startdir}/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }
