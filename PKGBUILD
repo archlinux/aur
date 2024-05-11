@@ -1,12 +1,12 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 
 pkgname=nomad-pack-git
-pkgver=v0.0.1.techpreview2.r101.ge633fd0
+pkgver=v0.0.1.techpreview2.r194.gbff08ce
 pkgrel=1
 pkgdesc="A templating and packaging tool used with HashiCorp Nomad."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/hashicorp/nomad-pack"
-license=('MPL2')
+license=('MPL-2.0')
 depends=(openssl git)
 makedepends=(git go)
 optdepends=(bash-completion)
