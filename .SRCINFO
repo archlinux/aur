@@ -1,6 +1,6 @@
 pkgbase = linkwiz
 	pkgdesc = A tool that lets users select their preferred browser for opening links.
-	pkgver = 0.2.4
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/icealtria/linkwiz
 	arch = any
@@ -9,11 +9,10 @@ pkgbase = linkwiz
 	depends = python-pyxdg
 	depends = python-tomli-w
 	depends = tk
-	depends = glib2
 	optdepends = python-unalix-rev
-	source = https://files.pythonhosted.org/packages/py3/l/linkwiz/linkwiz-0.2.4-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/l/linkwiz/linkwiz-0.2.6-py3-none-any.whl
 	source = https://raw.githubusercontent.com/icealtria/linkwiz/main/Linkwiz.desktop
-	sha256sums = bd61398ab227c75f31a907ecbbf9945339962c1d3bcc4db01f64bfe58b4807e5
+	sha256sums = 2f180d3edc87d21075b33dda9522896a0a3eee7fe752323f048d866d90832af1
 	sha256sums = b3f5e2b000f7d1e40eaa948ad3204b00a246155b9655190024eb35f784d3f98b
 
 pkgname = linkwiz
