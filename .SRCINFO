@@ -1,7 +1,7 @@
 pkgbase = python-simpy
 	pkgdesc = Event discrete, process based simulation for Python.
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://simpy.readthedocs.org/en/latest/
 	arch = any
 	license = MIT
