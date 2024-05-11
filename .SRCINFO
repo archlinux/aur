@@ -1,5 +1,5 @@
 pkgbase = rxvt-unicode-truecolor-secondaryscroll-clear
-	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support, secondary wheel srolling, and VTE clear
+	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support, secondary wheel scrolling, and VTE-like clear
 	pkgver = 9.31
 	pkgrel = 2
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
