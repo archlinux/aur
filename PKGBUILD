@@ -8,8 +8,7 @@ pkgname=({terraform,opentofu}-provider-libvirt)
 _pkgname="$pkgname"
 _pkgver=0.7.6
 pkgver="v${_pkgver}"
-pkgrel=1
-pkgdesc="Provision libvirt machines with terraform"
+pkgrel=2
 arch=("x86_64")
 _arch="linux_amd64"
 url="https://github.com/dmacvicar/${pkgname}"
@@ -48,6 +47,8 @@ _package_common() {
 }
 
 package_terraform-provider-libvirt() {
+    pkgdesc="Provision libvirt machines with terraform"
+
     _package_common
 
     install -Dm755 "${_pkgname}" \
@@ -55,6 +56,8 @@ package_terraform-provider-libvirt() {
 }
 
 package_opentofu-provider-libvirt() {
+    pkgdesc="Provision libvirt machines with OpenTofu"
+
     _package_common
 
     install -Dm755 "${_pkgname}" \
