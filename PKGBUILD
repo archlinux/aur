@@ -3,7 +3,7 @@
 # Contributor: Victor Häggqvist <aur a snilius d com>
 
 pkgname=solaar-git
-pkgver=1.1.12.r3.g704a8769
+pkgver=1.1.13rc1.r2.gbfc06502
 pkgrel=1
 pkgdesc="Linux device manager for a wide range of Logitech devices"
 url="https://pwr-solaar.github.io/Solaar/"
@@ -55,6 +55,7 @@ prepare() {
 
 build() {
   cd $pkgname
+  rm dist/*.whl # clean up old builds so dist/*.whl works in package
   python -m build --wheel --no-isolation
 }
 
