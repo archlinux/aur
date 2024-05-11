@@ -1,6 +1,6 @@
 # Maintainer: Stanisław Jasiewicz <stjasiewicz@protonmail.com>
 pkgname=nwscript-code
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Setup for a NWScript IDE assembled from VSC and various development tools"
 arch=('any')
@@ -8,8 +8,8 @@ url="https://gitlab.com/Taro94/nwscript-code/"
 license=('GPL')
 depends=('code' 'astyle' 'neverwinter.nim' 'nasher' 'nssnippets-bin' 'nssdefinitions-bin')
 optdepends=('wine')
-source=('https://gitlab.com/Taro94/nwscript-code/-/archive/1.6.0/nwscript-code-1.6.0.tar.gz')
-md5sums=('71f561adf4374b7ba65a9ef42c4d8e35')
+source=('https://gitlab.com/Taro94/nwscript-code/-/archive/1.6.1/nwscript-code-1.6.1.tar.gz')
+md5sums=('ee556c383799aa778ccd40aadd51569d')
 options=(!strip)
 
 package() {
