@@ -1,4 +1,3 @@
 pkg
 src
 *.tar.xz
-terraform-provider-libvirt

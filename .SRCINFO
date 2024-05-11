@@ -1,14 +1,23 @@
 pkgbase = terraform-provider-libvirt-git
-	pkgdesc = Provision libvirt machines with terraform
-	pkgver = r841.753afd8a074e
-	pkgrel = 1
+	pkgver = v0.7.6.r8.gd41792a
+	pkgrel = 9
 	url = https://github.com/dmacvicar/terraform-provider-libvirt
 	arch = x86_64
 	license = Apache
-	makedepends = go-pie
+	checkdepends = go
+	makedepends = git
+	makedepends = go
 	depends = libvirt
-	source = git+https://github.com/dmacvicar/terraform-provider-libvirt
+	depends = cdrtools
+	source = terraform-provider-libvirt::git+https://github.com/dmacvicar/terraform-provider-libvirt
 	sha256sums = SKIP
 
 pkgname = terraform-provider-libvirt-git
+	pkgdesc = Provision libvirt machines with terraform
+	provides = terraform-provider-libvirt
+	conflicts = terraform-provider-libvirt
 
+pkgname = opentofu-provider-libvirt-git
+	pkgdesc = Provision libvirt machines with OpenTofu
+	provides = opentofu-provider-libvirt
+	conflicts = opentofu-provider-libvirt

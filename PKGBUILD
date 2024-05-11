@@ -1,47 +1,75 @@
-# Maintainer: Simon Walker <s.r.walker101@googlemail.com>
-pkgname=terraform-provider-libvirt-git
-pkgver=r841.753afd8a074e
-pkgrel=1
-epoch=
-pkgdesc="Provision libvirt machines with terraform"
+# Maintainer: Giorgi Taba K'obakhidze <t@gtk.ge>
+# Contributor: Simon Walker <s.r.walker101@googlemail.com>
+
+# https://wiki.archlinux.org/title/VCS_package_guidelines
+# https://wiki.archlinux.org/title/Go_package_guidelines
+# https://developer.hashicorp.com/terraform/cli/config/config-file#implied-local-mirror-directories
+
+pkgname=({terraform,opentofu}-provider-libvirt-git)
+_pkgname="${pkgname%-git}"
+pkgver=v0.7.6.r8.gd41792a
+pkgrel=9
 arch=("x86_64")
-url="https://github.com/dmacvicar/terraform-provider-libvirt"
+url="https://github.com/dmacvicar/${_pkgname}"
 license=("Apache")
-groups=()
-depends=("libvirt")
-makedepends=("go-pie")
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+${url}")
-noextract=()
-md5sums=()
-validpgpkeys=()
+depends=("libvirt" "cdrtools")
+makedepends=("git" "go")
+checkdepends=("go")
+source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd terraform-provider-libvirt
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pkgname}"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd terraform-provider-libvirt
+    cd "${_pkgname}"
 
-    go build \
-        -gcflags "all=-trimpath=${PWD}" \
-        -asmflags "all=-trimpath=${PWD}" \
-        -ldflags "-extldflags ${LDFLAGS}"
-    }
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-package() {
-    (
-    cd "terraform-provider-libvirt"
-    install -Dm755 ./terraform-provider-libvirt "${pkgdir}/usr/bin/terraform-provider-libvirt"
-    )
+    unset LDFLAGS
+    make
+}
+
+check() {
+    cd "${_pkgname}"
+    make test
+}
+
+_package_common() {
+    cd "${_pkgname}"
+
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    install -Dm644 {CHANGELOG,README,docs/migration-13}.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    cp -r website/docs "$pkgdir/usr/share/doc/${pkgname}"
+}
+
+package_terraform-provider-libvirt-git() {
+    pkgdesc="Provision libvirt machines with terraform"
+    provides=("${pkgname%-git}")
+    conflicts=("${pkgname%-git}")
+
+    _package_common
+
+    _ver=${pkgver#v}; _ver=${_ver%."${pkgver#*.*.*.}"}
+    install -Dm755 "${_pkgname}" \
+        -t "${pkgdir}/usr/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/${_ver}/linux_amd64"
+}
+
+package_opentofu-provider-libvirt-git() {
+    pkgdesc="Provision libvirt machines with OpenTofu"
+    provides=("${pkgname%-git}")
+    conflicts=("${pkgname%-git}")
+
+    _package_common
+
+    _ver=${pkgver#v}; _ver=${_ver%."${pkgver#*.*.*.}"}
+    install -Dm755 "${_pkgname}" \
+        -t "${pkgdir}/usr/share/terraform/plugins/registry.opentofu.org/dmacvicar/libvirt/${_ver}/linux_amd64"
 }
