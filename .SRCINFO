@@ -1,0 +1,16 @@
+pkgbase = libcroco
+	pkgdesc = A CSS parsing library
+	pkgver = 0.6.13
+	pkgrel = 2
+	url = https://gitlab.gnome.org/GNOME/libcroco
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = git
+	makedepends = gtk-doc
+	depends = glib2
+	depends = libxml2
+	source = git+https://gitlab.gnome.org/GNOME/libcroco.git#commit=7e15ca6c2c29a4b78367e6efa6195b331a92b2a7
+	sha256sums = SKIP
+
+pkgname = libcroco
