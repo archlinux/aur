@@ -47,7 +47,7 @@ prepare() {
      git clone "${srcdir}/ffmpeg.wasm" web/apps/photos/thirdparty/ffmpeg-wasm
      git clone "${srcdir}/PhotoSwipe" web/apps/photos/thirdparty/photoswipe
      # Ugly patch
-#     sed 's/^\(\s\+mt:\)/\/\/\1/' -i "${srcdir}/${_pkgbase}-v${pkgver}/web/apps/photos/src/services/wasm/ffmpeg.ts"
+     sed 's/^\(\s\+mt:\)/\/\/\1/' -i "${srcdir}/${_pkgbase}-v${pkgver}/web/apps/photos/src/worker/ffmpeg.worker.ts"
 #     cd "${srcdir}/${_pkgbase}-v${pkgver}/web/apps/photos/thirdparty/ffmpeg-wasm"
      
 }
