@@ -1,9 +1,0 @@
-*
-
-!.gitignore
-!PKGBUILD
-!.SRCINFO
-!*.patch
-!*.diff
-!sonixd
-!*.desktop
