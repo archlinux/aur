@@ -2,7 +2,7 @@
 pkgname=python-snakemake-interface-executor-plugins
 _name=${pkgname#python-}
 pkgver=9.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Common functions and classes for Snakemake and its plugins"
 arch=('any')
 url="https://github.com/snakemake/snakemake-interface-executor-plugins"
