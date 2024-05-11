@@ -3,7 +3,7 @@
 
 pkgname=yass-proxy-cli
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 _pkgver=1.9.5
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy commandline"
@@ -15,12 +15,20 @@ makedepends=(git ninja perl pkg-config cmake gettext curl go clang lld llvm)
 checkdepends=(curl)
 provides=(yass-proxy-cli)
 conflicts=(yass-proxy-cli-git)
-source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.bz2")
-sha256sums=('26e013c811f0b4cb194bfd4587fa6e644b5f155593df0c6a15c026120084a635')
+source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.bz2"
+        "boringssl-gcc-14.patch"
+        "libcxx-gcc-14.patch"
+        )
+sha256sums=('26e013c811f0b4cb194bfd4587fa6e644b5f155593df0c6a15c026120084a635'
+            '6201584f8c5c983405e07f99a83e33a28e1aa907a752bc07bc641d0cf1087662'
+            '72f55c55adb141d31dd9cd892cd04a08df2d95a1d94ad3a4b421a312075782e4'
+            )
 
 prepare() {
   SRC_DIR="${srcdir}/yass-${_pkgver}"
   pushd $SRC_DIR
+  patch --forward --strip=1 --input=../boringssl-gcc-14.patch
+  patch --forward --strip=1 --input=../libcxx-gcc-14.patch
   cd tools
   go build
   cd ..
