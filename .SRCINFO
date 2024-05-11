@@ -9,6 +9,6 @@ pkgbase = fetcher-based-rs
 	makedepends = wget
 	conflicts = fetcher-based-rs-bin
 	source = https://github.com/arch-based/fetcher-rs/raw/main/fetcher-rs.tar.gz
-	sha256sums = 11e75e9eb3b9d9f158ed3291ba3ce76ef2c6810b1fe52b857f59980087fa2432
+	sha256sums = 085170d7182cc030d320a98640274bfd75943563521baaa93dffd5f5f5c32f3f
 
 pkgname = fetcher-based-rs
