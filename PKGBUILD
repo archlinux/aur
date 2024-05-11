@@ -33,19 +33,20 @@ prepare() {
 
 build() {
   cd "${srcdir}/jellyfin-media-player"
-  mkdir -p build
-  cd build
-  cp -r "${srcdir}/jellyfin-web_${_webver}" dist
+  rm -rf build
+  mkdir build
+  cp -r "${srcdir}/jellyfin-web_${_webver}" build/dist
   cmake \
+    -B build \
     -DCMAKE_BUILD_TYPE='Debug' \
     -DCMAKE_INSTALL_PREFIX='/usr/' \
     -DCMAKE_SKIP_RPATH=1 \
-    -DQTROOT=./qt \
-    ..
-  cmake build .
+    -DQTROOT=build/qt \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/jellyfin-media-player/build"
-  DESTDIR="${pkgdir}" make install
+  cd "${srcdir}/jellyfin-media-player"
+  DESTDIR="${pkgdir}" cmake --install build
 }
