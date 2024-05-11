@@ -2,21 +2,21 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _subproject_name='chcase'
-_subproject_commit='b430df2a3a4d369fa444dd8e38c262e365b74e35' # <-- NB: update on new version
+_subproject_commit='e1c664fdd8bded036fa1ce60747e1f92f889c2c4' # <-- NB: update on new version
 
 pkgname=konbucase
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='Convert case of your text'
 arch=('x86_64' 'aarch64')
 url='https://github.com/ryonakano/konbucase'
-license=('GPL3')
-depends=('granite7' 'gtksourceview5' 'libhandy' 'sassc')
+license=('GPL-3.0-or-later')
+depends=('granite7' 'gtksourceview5' 'libhandy' 'sassc' 'libadwaita')
 makedepends=('git' 'meson' 'vala' 'blueprint-compiler')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "git+${url%/*}/${_subproject_name}#commit=${_subproject_commit}")
-sha256sums=('dd16a506b29918ee5a0f24503f42201edc63f57fd637c17e3ca9bab1eb4a985c'
-            '77940d1dc984902f1c66242ce74e0b041e99c4fb43c8784a83df0e0f9ea4c4d7')
+sha256sums=('15f5259647b8acde4c2744f917e290bb6ce67accbf669cd59b5a0ed430ee7e1d'
+            '4b0b9e8133ee94c9bc3941b65e9b6a46f887bdb32e6ed2922ae72f9a80513073')
 
 prepare() {
   rm -rf "${pkgname}-${pkgver}/subprojects/${_subproject_name}"
