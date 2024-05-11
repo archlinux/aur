@@ -12,7 +12,7 @@ pkgname=(python-ipalib
          freeipa-client-common
          freeipa-client)
 pkgver=4.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
@@ -55,15 +55,15 @@ prepare() {
     sed -i 's|/etc/pki/ca-trust/source/ipa.p11-kit|/etc/ca-certificates/trust-source/ipa.p11-kit|' 'client/man/ipa-client-install.1'
     sed -i 's|/etc/sysconfig/network|/etc/hostname\n.br\n/etc/conf.d/network|' 'client/man/ipa-client-install.1'
     sed -i '/"ipaplatform.base"/a "ipaplatform.arch",' 'ipaplatform/setup.py'
-    
+
     tar xf "${srcdir}/ipaplatform.tar.gz"
 
     # Workaround: We want to build Python things twice. To be sure we do not mess
     # up something, do two separate builds in separate directories.
     cp -r ../freeipa-${pkgver} ../freeipa-${pkgver}-python3
-    
+
     # On Fedora, ldap is the non-threaded version while ldap_r is the threaded version.
-    # On Fedora 34, it stopped shipping both and ldap is symlinked to ldap_r. On Arch, 
+    # On Fedora 34, it stopped shipping both and ldap is symlinked to ldap_r. On Arch,
     # libldap is compiled as threaded.
     sed -i 's/ldap_r/ldap/' 'configure.ac'
     autoreconf
@@ -271,7 +271,7 @@ package_freeipa-client() {
 
     install -D -m644 -t"$pkgdir"/usr/share/doc/$pkgname README.md \
                                                         Contributors.txt
-                                                        
+
     install -Dm644 "$srcdir/nis-domainname.service" -t "$pkgdir/usr/lib/systemd/system"
     install -dm755 "$pkgdir/etc/krb5.conf.d"
 
