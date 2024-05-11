@@ -1,16 +1,16 @@
 pkgbase = python-easydev
 	pkgdesc = Provides utilities that are of general usage for the development of Python packages
-	pkgver = 0.13.1
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://github.com/cokelaer/easydev
 	arch = any
-	license = GPL
+	license = BSD
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-poetry-core
 	depends = python-sphinx
-	source = https://files.pythonhosted.org/packages/source/e/easydev/easydev-0.13.1.tar.gz
-	sha256sums = 5e0d75fc6111647e21a7c06fe6cb40df64100eae33860b75806e437c13374a0f
+	source = easydev-0.13.2.tar.gz::https://github.com/cokelaer/easydev/archive/v0.13.2.tar.gz
+	sha256sums = fcf2a26adfdc1e108ef65f6b5cbf917740feb4726ef3332ce2ec2cf29b722d6a
 
 pkgname = python-easydev
