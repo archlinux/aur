@@ -11,8 +11,8 @@ fi
 
 _pluginname=tuna
 pkgname=obs-$_pluginname
-pkgver=1.9.7
-pkgrel=3
+pkgver=1.9.8
+pkgrel=1
 arch=("x86_64" "aarch64")
 pkgdesc="Get song info from right within obs"
 url="https://obsproject.com/forum/resources/tuna.843/"
@@ -39,15 +39,13 @@ sha256sums=(
 prepare() {
   cd $_pluginname
 
-  git cherry-pick -n 723bd3c7b4e257cf0997611426e555068de77ae7
-
   sed -i 's|.value()|.binaryData()|g' src/util/cover_tag_handler.cpp
 
   cp $srcdir/FindLibMPDClient.cmake cmake/external/.
   cp $srcdir/FindTaglib.cmake cmake/external/.
   cp $srcdir/deps_CMakeLists.txt deps/CMakeLists.txt
 
-  sed -i '13 a find_package(LibMPDClient REQUIRED)\nfind_package(Taglib REQUIRED)' CMakeLists.txt
+  sed -i '28 a find_package(LibMPDClient REQUIRED)\nfind_package(Taglib REQUIRED)' CMakeLists.txt
 }
 
 build() {
@@ -55,8 +53,6 @@ build() {
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
-  -DLINUX_PORTABLE=OFF \
-  -DQT_VERSION=6 \
   -DCREDS="$SPOTIFY_TOKEN" \
   -DLASTFM_CREDS="$LASTFM_KEY" \
   -Wno-dev \
