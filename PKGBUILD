@@ -7,7 +7,7 @@
 
 pkgname=gcalcli
 pkgver=4.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Google calendar command line interface'
 arch=('any')
 url=https://github.com/insanum/gcalcli
@@ -32,10 +32,13 @@ build() {
     python setup.py build
 }
 
-check() {
-    cd "gcalcli-$pkgver"
-    python setup.py test
-}
+# Disabled because it downloads deps via pip. Report this upstream (if
+# they're still alive).
+#
+# check() {
+#     cd "gcalcli-$pkgver"
+#     python setup.py test
+# }
 
 package() {
     cd "gcalcli-$pkgver"

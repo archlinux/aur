@@ -1,7 +1,7 @@
 pkgbase = gcalcli
 	pkgdesc = Google calendar command line interface
 	pkgver = 4.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/insanum/gcalcli
 	arch = any
 	license = MIT
@@ -17,4 +17,3 @@ pkgbase = gcalcli
 	sha256sums = 597d96ee1c8b5f094cca75a059cb1a0056a612e734c32012ef0d41219ac3b0cd
 
 pkgname = gcalcli
-
