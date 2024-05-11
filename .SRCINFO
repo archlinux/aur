@@ -1,7 +1,7 @@
 pkgbase = myrddin
 	pkgdesc = Compiler and tools for the Myrddin programming language.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://myrlang.org/
 	arch = i686
 	arch = x86_64
@@ -12,4 +12,3 @@ pkgbase = myrddin
 	sha512sums = 99f8d933572b2e3750103c1d801a29575971242c347c7fb042a5114d2cf3fe7cca2b927190ba13728b46573e00f414015cc0ef04bca8db3c67427261600ddd95
 
 pkgname = myrddin
-
