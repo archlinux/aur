@@ -4,7 +4,7 @@ pkgname=steam-gamepadui-session-git
 _gitown=chenx-dust
 _gitdir=steam-gamepadui-session
 pkgver=r8.015e098
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam Big Picture session based on gamescope for vanilla Arch Linux"
 arch=('any')
 url="https://github.com/${_gitown}/${_gitdir}"
@@ -34,6 +34,7 @@ pkgver() {
 package() {
 	cd "$srcdir/${_gitdir}"
 	cp -rv "${srcdir}/${_gitdir}/usr" "${pkgdir}/usr"
+	cp -rv "${srcdir}/${_gitdir}/etc" "${pkgdir}/etc"
 	install -Dm644 "${srcdir}/${_gitdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	# font workaround for initial big picture mode startup
