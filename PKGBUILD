@@ -5,7 +5,7 @@
 pkgname=labwc-im
 pkgver=0.7.2
 pkgrel=1
-pkgdesc='stacking wayland compositor with look and feel from openbox (with IME, IME popups and minimal text-input-v1 support)'
+pkgdesc='stacking wayland compositor with look and feel from openbox (with text-input-v1 support)'
 url="https://github.com/labwc/labwc"
 arch=('x86_64')
 license=('GPL2')
