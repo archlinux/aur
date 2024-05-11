@@ -14,6 +14,7 @@ pkgbase = nomad-pack-git
 	optdepends = bash-completion
 	provides = nomad-pack
 	conflicts = nomad-pack
+	replaces = nomad-pack-nightly
 	source = git+https://github.com/hashicorp/nomad-pack.git#branch=main
 	source = bash-completion.sh
 	sha256sums = SKIP

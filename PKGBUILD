@@ -8,6 +8,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/hashicorp/nomad-pack"
 license=('MPL-2.0')
 depends=(openssl git)
+replaces=(nomad-pack-nightly)
 makedepends=(git go)
 optdepends=(bash-completion)
 provides=(nomad-pack)
