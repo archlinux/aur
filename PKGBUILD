@@ -2,11 +2,11 @@
 _base=bezier
 pkgname=python-${_base}
 pkgver=2023.7.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper for Bézier Curves, Triangles, and Higher Order Objects"
 arch=(x86_64)
 url="https://github.com/dhermes/${_base}"
-license=(Apache)
+license=(Apache-2.0)
 depends=(${_base} python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-scipy python-sympy python-matplotlib python-seaborn)
@@ -19,7 +19,9 @@ sha512sums=('beec5c3c9f903a81f02cb491a6c0abdf5d0ad8fb0b9a19a30403113b68b4eee1968
 
 build() {
   cd ${_base}-${pkgver}
-  BEZIER_INSTALL_PREFIX=/usr \
+  CFLAGS="-Wno-incompatible-pointer-types"
+  BEZIER_IGNORE_VERSION_CHECK=1 \
+    BEZIER_INSTALL_PREFIX=/usr \
     TARGET_NATIVE_ARCH=OFF \
     python -m build --wheel --skip-dependency-check --no-isolation
 }
