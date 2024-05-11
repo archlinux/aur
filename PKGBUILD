@@ -4,23 +4,24 @@
 pkgname=wireviz
 _pkgname=WireViz
 pkgver=0.4
-pkgrel=1
+_pkgversuffix='-rc'
+pkgrel=2
 pkgdesc='Easily document cables, wiring harnesses and connector pinouts'
 arch=('any')
 url='https://github.com/formatc1702/WireViz'
 license=('GPL3')
 depends=('python-graphviz' 'python-pillow' 'python-pyaml')
 makedepends=('git' 'python-setuptools')
-source=("https://github.com/formatc1702/WireViz/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5e2d3b58cefcff44eb46209127502b27f9d327c0992442e6e093472e2c16fe39')
+source=("https://github.com/formatc1702/WireViz/archive/refs/tags/v${pkgver}${_pkgversuffix}.tar.gz")
+sha256sums=('af4bdac77309e601bf933bcac4371c7c6c643265b798ab5074c1a39acc29c539')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}${_pkgversuffix}"
   python setup.py build
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}${_pkgversuffix}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dvm644 'docs/'*.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   cp -rfv 'examples' 'tutorial' "${pkgdir}/usr/share/doc/${pkgname}"
