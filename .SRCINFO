@@ -1,7 +1,7 @@
 pkgbase = python-lzstring
 	pkgdesc = String encoding/decoding of binary data
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gkovacs/lz-string-python
 	arch = any
 	license = BSD

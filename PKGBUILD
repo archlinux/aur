@@ -2,7 +2,7 @@
 pkgname=python-lzstring
 _pkgname=${pkgname#python-}
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='String encoding/decoding of binary data'
 arch=('any')
 url="https://github.com/gkovacs/lz-string-python"
