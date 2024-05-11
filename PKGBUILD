@@ -6,7 +6,7 @@
 pkgname=dia-git
 _pkgname=dia
 pkgver=6871.4139f5aff
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK+ based diagram creation program"
 arch=('x86_64')
 license=('GPL-2.0-or-later')
@@ -29,6 +29,7 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   sed -i "s/cc.find_library('ogdf'/cc.find_library('OGDF'/g" meson.build
+  sed -i 's/gnu++17/gnu++20/' meson.build
   ln -s ../../xpm-pixbuf subprojects
 }
 
