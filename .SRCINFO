@@ -1,14 +1,15 @@
 pkgbase = php-xattr
 	pkgdesc = PHP extension that allows to manipulate extended attributes on filesystems that support them
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pecl.php.net/package/xattr
 	arch = i686
 	arch = x86_64
 	license = PHP
 	depends = php
+	depends = attr
+	backup = etc/php/conf.d/xattr.ini
 	source = https://pecl.php.net/get/xattr-1.4.0.tgz
 	sha256sums = 744d2a3f1469de6d3b5f30b5b17095efc714c5f71c8af3734afdd9e4819c140b
 
 pkgname = php-xattr
-
