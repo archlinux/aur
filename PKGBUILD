@@ -1,27 +1,34 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-stsci.image
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
+_pname=${pkgbase#python-}
+_pyname=${_pname//./_}
+pkgname=("python-${_pname}")
 #"python-${_pyname}-doc")
-pkgver=2.3.5
+pkgver=2.3.7
 pkgrel=1
 pkgdesc="Image array manipulation functions"
 arch=('i686' 'x86_64')
 url="https://github.com/spacetelescope/stsci.image"
-license=('BSD')
-makedepends=('python-setuptools-scm' 'python-numpy')
+license=('BSD-3-Clause')
+makedepends=('python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             'python-numpy')
 #'python-stsci.sphinxext')
-checkdepends=('python-pytest' 'python-scipy')
+checkdepends=('python-pytest'
+              'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('34f9a03645fcbbe06f8882ff01aa53d3')
+md5sums=('a91a6026172d84a98bda268633c6199f')
 
-prepare() {
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+get_pyinfo() {
+     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+             python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation --skip-dependency-check
 
 #   msg "Building Docs"
 #   cd ${srcdir}/${_pyname}-${pkgver}/docs
@@ -31,19 +38,19 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-${_pyver}" || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-stsci.image() {
-    depends=('python-numpy>=1.14' 'python-scipy' 'python-stsci.tools')
+    depends=('python-numpy>=1.14' 'python-scipy')
     optdepends=('python-stsci.image-doc: Documentation for STScI Image')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
-    rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/stsci/__init__.py"
-    rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/stsci/__pycache__"/*
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    rm -r ${pkgdir}/$(get_pyinfo site)/stsci/{__init__.py,__pycache__/*}
+#   rm "${pkgdir}/usr/lib/python$(get_pyver .)/site-packages/stsci/__init__.py"
+#   rm "${pkgdir}/usr/lib/python$(get_pyver .)/site-packages/stsci/__pycache__"/*
 }
 
 #package_python-stsci.image-doc() {
