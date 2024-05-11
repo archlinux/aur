@@ -6,22 +6,22 @@
 
 pkgname=tmux-git
 _gitname=tmux
-pkgver=10096_3.3a.r263.g62f65784
+pkgver=10201_3.4.r33.g3823fa2c
 pkgrel=1
 pkgdesc="A terminal multiplexer"
 url="https://github.com/tmux/tmux/wiki"
 arch=('i686' 'x86_64' 'aarch64')
-license=('BSD')
-depends=('ncurses' 'libevent')
+license=('BSD-2-Clause' 'BSD-3-Clause' 'ISC')
+depends=('glibc' 'ncurses' 'libevent')
 makedepends=('git')
-optdepends=('libutempter: Record user sessions to utmp and wtmp files [add to depends array and rebuild to enable]')
-#depends+=('libutempter') && _addconfigureflags="--enable-utempter"
+#depends+=('libutempter') && _addconfigureflags+="--enable-utempter "
+#depends+=('libutf8proc') && _addconfigureflags+="--enable-utf8proc "
+#depends+=('systemd-libs') && _addconfigureflags+="--enable-systemd "
+#depends+=('libsixel') && _addconfigureflags+="--enable-sixel "
 provides=('tmux')
 conflicts=('tmux')
-source=('git+https://github.com/tmux/tmux.git'
-        'LICENSE')
-md5sums=('SKIP'
-         '71601bc37fa44e4395580b321963018e')
+source=('git+https://github.com/tmux/tmux.git')
+md5sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
@@ -46,7 +46,10 @@ package() {
   cd ${_gitname}
 
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  sed -n '2,14p' compat/daemon-darwin.c > "${pkgdir}/usr/share/licenses/${pkgname}/ISC-LICENSE"
+  sed -n '18,45p' compat/daemon-darwin.c > "${pkgdir}/usr/share/licenses/${pkgname}/BSD-2-Clause-LICENSE"
+  sed -n '5,33p' compat/bitstring.h > "${pkgdir}/usr/share/licenses/${pkgname}/BSD-3-Clause-LICENSE"
 
   # install example config file
   install -Dm755 example_tmux.conf "${pkgdir}/usr/share/tmux/example_tmux.conf"
