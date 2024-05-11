@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=FlashGBX
+Comment=Read and write DMG/CGB/AGB cartridge data with GBxCart RW
+Exec=flashgbx
+Icon=flashgbx
+Terminal=false
+Categories=Utility;

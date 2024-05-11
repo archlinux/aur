@@ -1,0 +1,9 @@
+pkgbase = flashgbx-desktop
+	pkgdesc = Desktop entries for FlashGBX
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	source = flashgbx.desktop
+	source = flashgbx.png
+
+pkgname = flashgbx-desktop
