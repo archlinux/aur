@@ -1,6 +1,6 @@
 # Maintainer: arch-based <anonymous.negation790@passinbox.com>
 pkgname='fetcher-based-rs-bin'
-pkgver='0.1.2'
+pkgver='0.1.3'
 pkgrel=2
 pkgdesc='This is a binary for the tool to show system information in the real arch linux way. Re-written in Rust.'
 arch=('x86_64')
@@ -26,6 +26,4 @@ build() {
 package() {
 	install -Dm755 "$srcdir/fetcher" "$pkgdir/usr/bin/fetcher"
 }
-sha256sums=(
-	'02ead4c05448c592d824091cb428dc043b296955381a9991570364de084bd9cf'
-)
+sha256sums=('900554c8fe6c778c842c9870f5bd1c44cdafc2a700b5da381057c9f21cd24d15')
