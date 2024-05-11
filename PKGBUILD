@@ -3,16 +3,16 @@
 _base=pyFFTW
 pkgname=python-${_base,,}
 pkgver=0.13.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A pythonic wrapper around FFTW"
 arch=(i686 x86_64)
 url="https://github.com/${_base}/${_base}"
 license=(BSD-3-Clause)
-depends=(fftw python-numpy)
+depends=(fftw python-numpy openmp)
 makedepends=(python-build python-installer python-setuptools python-wheel cython)
 checkdepends=(python-pytest python-scipy python-dask)
 optdepends=('python-scipy: scipy.fftpack support'
-  'python-dask: dask.fft support') # openmp
+  'python-dask: dask.fft support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   cython3.patch::${url}/pull/363.patch
   python312.patch::${url}/pull/370.patch)
@@ -30,6 +30,8 @@ prepare() {
 
 build() {
   cd ${_base}-${pkgver}
+  CFLAGS="-Wno-implicit-function-declaration -Wno-incompatible-pointer-types"
+  PYFFTW_USE_PTHREADS=1
   python setup.py \
     build_ext \
     --include-dirs=/usr/include \
