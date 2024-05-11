@@ -1,7 +1,7 @@
 pkgbase = python-multipledispatch
 	pkgdesc = Multiple dispatch implementation in Python
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrocklin/multipledispatch
 	arch = any
 	license = BSD
