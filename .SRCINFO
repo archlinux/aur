@@ -1,7 +1,7 @@
 pkgbase = python-argparse_dataclass
 	pkgdesc = Declarative CLIs with argparse and dataclasses
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mivade/argparse_dataclass
 	arch = any
 	license = MIT
