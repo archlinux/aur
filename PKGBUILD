@@ -1,69 +1,24 @@
-# SPDX-License-Identifier: AGPL-3.0
-#
-# Maintainer:  Pellegrino Prevete <pellegrinoprevete@gmail.com>
-# Maintainer:  Truocolo <truocolo@aol.com>
+# Maintainer:
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Truocolo <truocolo@aol.com>
 # Contributor: Filipe Bertelli <filipebertelli@tutanota.com>
 
-_pkgbase=hardhat
-pkgname="${_pkgbase}"
-pkgdesc='Ethereum development environment for professionals'
-pkgver=2.21.0
+pkgname=hardhat
+pkgver=2.22.3
 pkgrel=1
-arch=(
-  'any'
-)
-_ns="NomicFoundation"
-url="https://github.com/${_ns}/${_pkgbase}"
-license=(
-  'custom'
-)
-depends=(
-  'nodejs'
-  'inherits'
-)
-makedepends=(
-  'npm'
-)
-_npm=""http://registry.npmjs.org"
-source=(
-  "${_npm}/${_pkgbase}/-/${_pkgbase}-${pkgver}.tgz"
-)
-noextract=(
-  "${_pkgbase}-${pkgver}.tgz"
-)
-sha512sums=(
-  "f039490152431151da575b21f452ee28b2e0085bfd10027e33ef086e34883e0a1e368decb392f51e018131f9c8f3c73b3b330466475cbb21a8a1b15e2b73abab"
-)
+pkgdesc='Ethereum development environment for professionals'
+arch=('x86_64')
+url="https://github.com/NomicFoundation/hardhat"
+license=('MIT' 'Unlicense')
+depends=('nodejs')
+makedepends=('npm')
+source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+noextract=("${pkgbase}-${pkgver}.tgz")
+sha512sums=('93c255d8409635c843e9a864836051e70295c58d0e88aa2dedfbb1888a512b47eb46ac8e963711daf2b081648bc3a60878370d340e31c9b8fb3a0ecd4b1af684')
 
 package() {
-  cd \
-    "${pkgdir}"
-  local \
-    _npm_options=()
-  _npm_options=(
-    -g
-    # --user
-    #   root
-    --prefix
-      "${pkgdir}/usr"
-  )
-  npm \
-    install \
-      "${_npm_options[@]}" \
-      "${srcdir}/${_pkgbase}-${pkgver}.tgz"
-  rm \
-    -fr \
-    "${pkgdir}/usr/etc"
-  # Fix npm derp
-  find \
-    "${pkgdir}/usr" \
-    -type \
-      d \
-    -exec \
-      chmod \
-        755 \
-	'{}' \
-	+
+  npm install -g --prefix "${pkgdir}/usr" "${pkgbase}-${pkgver}.tgz"
+  install -Dm644 "${pkgdir}/usr/lib/node_modules/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-# vim:set sw=2 sts=-1 et:
+# vim:set sw=2 ts=2 et:
