@@ -1,31 +1,27 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ngsReports
-_pkgver=2.4.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
-pkgver=2.4.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Load FastqQC reports and other NGS related files'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('custom')
+pkgdesc="Load FastqQC reports and other NGS related files"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-3.0-only')
 depends=(
-  r
   r-biocgenerics
   r-biostrings
   r-checkmate
   r-dplyr
-  r-dt
   r-forcats
   r-ggdendro
   r-ggplot2
   r-jsonlite
   r-lifecycle
   r-lubridate
-  r-pander
   r-patchwork
   r-plotly
-  r-readr
   r-reshape2
   r-rlang
   r-rmarkdown
@@ -39,20 +35,23 @@ depends=(
 optdepends=(
   r-biocstyle
   r-cairo
+  r-dt
   r-knitr
+  r-pander
+  r-readr
   r-testthat
   r-truncnorm
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('abc115a8dd01244ce57952cfbee1d09b675d40c8141d53c4fc33b4adb1a9145e')
+md5sums=('c080f808fd3a26fe71440f9c2051bab2')
+b2sums=('09daa5fa3d5cba8fae8cdabde776ae88bc9cd803a20fdae49a8c1fb0a1a946adcbeb954c39ee12541aafcb87eb887b522316fedf6f217963bf7d4065aa7871d4')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
