@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=QFeatures
-_pkgver=1.14.0
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Quantitative features for mass spectrometry data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="Quantitative features for mass spectrometry data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-annotationfilter
   r-biobase
   r-biocgenerics
@@ -21,8 +20,11 @@ depends=(
   r-multiassayexperiment
   r-plotly
   r-protgenerics
+  r-reshape2
   r-s4vectors
   r-summarizedexperiment
+  r-tidyr
+  r-tidyselect
 )
 optdepends=(
   r-biocstyle
@@ -36,9 +38,9 @@ optdepends=(
   r-imputelcmd
   r-knitr
   r-limma
-  r-matrix
   r-matrixstats
   r-msdata
+  r-msdatahub
   r-norm
   r-pcamethods
   r-preprocesscore
@@ -50,14 +52,15 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8569179537e59b6d68e4a5cc1780e877b71a59bbc390212b9968d23cdf5d6b62')
+md5sums=('406acbe6cc86562cc5126e35894b6531')
+b2sums=('a8f179c6d3d66b377aaf3ed28889d182c4857a48041f2fd17a99a8de495553cace112d906d22567af63a82f4b076f7d391daf6e95cd7a466374a878732b6a2ce')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
