@@ -1,20 +1,20 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=QSutils
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Quasispecies Diversity'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('custom')
+pkgdesc="Quasispecies Diversity"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-ape
   r-biocgenerics
   r-biostrings
   r-psych
+  r-pwalign
 )
 optdepends=(
   r-biocstyle
@@ -23,15 +23,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d964b12cf00cdf9ca665bddc2e56083b3a5e6a2751e5605790c7ce7894ac238c')
+md5sums=('e22810c5de4ffad732597e641c47b875')
+b2sums=('f3dfd16562db0643d532e67df559131caa6afee60cfca44fdd185b72b95fe782a850a1ce594c823556a1ccbce4654caa57c2d9d593a755a931c73b41a6b5a3c1')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
