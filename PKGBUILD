@@ -3,7 +3,7 @@
 pkgname=python-lxmf
 _name='lxmf'
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Extensible Message Format for Reticulum"
 arch=('any')
 depends=('python-rns')
