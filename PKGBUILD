@@ -3,7 +3,7 @@
 
 pkgname=ueberzugpp-nogl
 _pkgname=ueberzugpp
-pkgver=2.9.4
+pkgver=2.9.5
 pkgrel=1
 pkgdesc="Command line util which allows to display images in combination with X11 written in C++ (without OpenGL support)"
 arch=(x86_64 aarch64 powerpc64le)
