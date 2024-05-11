@@ -1,18 +1,19 @@
 pkgbase = bpftop
 	pkgdesc = bpftop provides a dynamic real-time view of running eBPF programs
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Netflix/bpftop
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = git
+	makedepends = clang
 	depends = glibc
 	depends = libelf
 	depends = gcc-libs
 	depends = zlib
 	options = !lto
-	source = bpftop-0.4.2.tar.gz::https://github.com/Netflix/bpftop/archive/refs/tags/v0.4.2.zip
-	sha256sums = 63325f3f31e4d7124702e66148c5357293f0843fecefc48a26767c365610c39a
+	source = bpftop-0.5.0.tar.gz::https://github.com/Netflix/bpftop/archive/refs/tags/v0.5.0.zip
+	sha256sums = f22431b9da320a3421c7fca17be1068e5f6d5797bd2cfda6caab10dc24723dd9
 
 pkgname = bpftop
