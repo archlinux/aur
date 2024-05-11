@@ -1,6 +1,6 @@
 pkgbase = luau-bin
 	pkgdesc = A fast, small, safe, gradually typed embeddable scripting language derived from Lua
-	pkgver = 0.624
+	pkgver = 0.625
 	pkgrel = 1
 	url = https://github.com/luau-lang/luau
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = luau-bin
 	provides = luau
 	conflicts = luau
 	conflicts = luau-git
-	source = luau-0.624.zip::https://github.com/luau-lang/luau/releases/download/0.624/luau-ubuntu.zip
-	b2sums = 22f6bfa283ad1defa34ffe93f29f6f96b11e30806307485e971215efd38c5365f21c376772ab94bbd3481916f21f6f38bffef35ff4df97dff07512a12afe352f
+	source = luau-0.625.zip::https://github.com/luau-lang/luau/releases/download/0.625/luau-ubuntu.zip
+	b2sums = d899717bc38c3537637ea48d61da314fd87aa66809a1b13cd017e74eea8b9684cd3380b4d2cb4caeed884c74e5acf19627cafcc8376aa51794575f2a2318ea68
 
 pkgname = luau-bin
