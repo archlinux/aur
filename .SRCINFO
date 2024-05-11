@@ -1,6 +1,6 @@
 pkgbase = hyprland-nox
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o XWayland support)
-	pkgver = 0.39.1
+	pkgver = 0.40.0
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = hyprland-nox
 	makedepends = cmake
 	makedepends = git
 	makedepends = hwdata
+	makedepends = hyprwayland-scanner
 	makedepends = meson
 	makedepends = ninja
 	makedepends = wayland-protocols
@@ -29,19 +30,22 @@ pkgbase = hyprland-nox
 	depends = seatd
 	depends = systemd-libs
 	depends = tomlplusplus
+	depends = util-linux-libs
 	depends = wayland
 	optdepends = cmake: to build and install plugins using hyprpm
 	optdepends = cpio: to build and install plugins using hyprpm
 	optdepends = meson: to build and install plugins using hyprpm
 	provides = hyprland
 	conflicts = hyprland
-	source = hyprland-nox::git+https://github.com/hyprwm/Hyprland#tag=v0.39.1
+	source = hyprland-nox::git+https://github.com/hyprwm/Hyprland#tag=v0.40.0
 	source = hyprland-nox_wlroots-hyprland::git+https://github.com/hyprwm/wlroots-hyprland.git
 	source = hyprland-nox_hyprland-protocols::git+https://github.com/hyprwm/hyprland-protocols.git
 	source = hyprland-nox_udis86::git+https://github.com/canihavesomecoffee/udis86.git
-	sha256sums = 64cb3ae405a1282f15e1382d996683b080bf2d193861049420a7ea510c5fe95b
+	source = 0001-core-chase-hyprwayland-scanner.patch
+	sha256sums = 13a2f6da9afa5001bb745110d45d3a280a813ab5c9b838b0342cab461ff2ba7c
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 7445eb076ae0aa13492ecf99097e93cf8940c83185a957a77fb063e7fbc92ac8
 
 pkgname = hyprland-nox

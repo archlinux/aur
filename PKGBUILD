@@ -1,11 +1,11 @@
 # Maintainer: Piroro-hs
 
 pkgname=hyprland-nox
-pkgver=0.39.1
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
-url="https://github.com/hyprwm/Hyprland"
+url='https://github.com/hyprwm/Hyprland'
 license=('BSD-3-Clause')
 groups=()
 depends=('cairo'
@@ -26,10 +26,12 @@ depends=('cairo'
          'seatd'
          'systemd-libs'
          'tomlplusplus'
+         'util-linux-libs'
          'wayland')
 makedepends=('cmake'
              'git'
              'hwdata'
+             'hyprwayland-scanner'
              'meson'
              'ninja'
              'wayland-protocols')
@@ -43,11 +45,13 @@ backup=()
 source=("$pkgname::git+$url#tag=v$pkgver"
         "${pkgname}_wlroots-hyprland::git+https://github.com/hyprwm/wlroots-hyprland.git"
         "${pkgname}_hyprland-protocols::git+https://github.com/hyprwm/hyprland-protocols.git"
-        "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git")
-sha256sums=('64cb3ae405a1282f15e1382d996683b080bf2d193861049420a7ea510c5fe95b'
+        "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git"
+        '0001-core-chase-hyprwayland-scanner.patch')
+sha256sums=('13a2f6da9afa5001bb745110d45d3a280a813ab5c9b838b0342cab461ff2ba7c'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '7445eb076ae0aa13492ecf99097e93cf8940c83185a957a77fb063e7fbc92ac8')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -57,6 +61,7 @@ prepare() {
   git config submodule.subprojects/hyprland-protocols.url "$srcdir/${pkgname}_hyprland-protocols"
   git config submodule.subprojects/udis86.url "$srcdir/${pkgname}_udis86"
   git -c protocol.file.allow=always submodule update
+  patch -p1 -i ../0001-core-chase-hyprwayland-scanner.patch
 }
 
 build() {
@@ -67,7 +72,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  make PREFIX="$pkgdir/usr" MAKEFLAGS="-o installheaders" install
+  make PREFIX="$pkgdir/usr" MAKEFLAGS='-o installheaders' install
   rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
