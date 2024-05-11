@@ -3,6 +3,7 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 # Contributor: Mufflone
+# Contributor: switchnode
 pkgname=palemoon
 _repo=Pale-Moon
 epoch=1
@@ -47,6 +48,10 @@ build() {
   export MOZBUILD_STATE_PATH="${srcdir}/mozbuild"
   export MOZCONFIG="${srcdir}/mozconfig"
   export CPPFLAGS="${CPPFLAGS} -O2 -Wno-format-overflow"
+
+  # Fix build failures with GCC>=14
+  export CFLAGS="${CFLAGS} -Wno-implicit-int -Wno-incompatible-pointer-types -Wno-int-conversion"
+
   ./mach build
 }
 
