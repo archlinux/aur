@@ -1,0 +1,15 @@
+pkgbase = ssh-fingerprints
+	pkgdesc = Small script to display all used SSH fingerprints for easier verification
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/kepi/ssh-fingerprints
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = openssh
+	source = ssh-fingerprints-0.4.tar.gz::https://github.com/kepi/ssh-fingerprints/archive/refs/tags/v0.4.tar.gz
+	sha512sums = 4ef90e1c037f5352251a54778750bae1839cea8d95c3428c8583775419a0d9dfe1aa7728c9646bfa6032f35e509586113a1ac872d37ae7d28ab3d2c167f04fff
+
+pkgname = ssh-fingerprints
