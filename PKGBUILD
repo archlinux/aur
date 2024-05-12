@@ -1,13 +1,14 @@
 # Maintainer: razer <razer[at]neuf[dot]fr>
 pkgname=python-adafruit-platformdetect
-_pypi_pkgname=Adafruit-PlatformDetect
+_pypi_foldername=Adafruit_PlatformDetect
+_pypi_pkgname=adafruit_platformdetect
 pkgver=3.63.0
 pkgrel=0
 pkgdesc="Platform detection for use by libraries like Adafruit-Blinka"
 arch=('any')
 url="https://github.com/adafruit/Adafruit_Python_PlatformDetect"
 license=('MIT')
-source=("https://pypi.io/packages/source/A/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/A/${_pypi_foldername}/${_pypi_pkgname}-${pkgver}.tar.gz")
 makedepends=(
 'python-build'
 'python-installer'
@@ -27,3 +28,4 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+
