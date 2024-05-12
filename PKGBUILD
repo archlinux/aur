@@ -3,7 +3,7 @@ pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
 _reponame=sk-chos-config
-pkgver=r548.a1b9229
+pkgver=r549.33797d2
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -125,4 +125,8 @@ package() {
     # polkit rules
     install -dm755 "${pkgdir}/usr/share/polkit-1/rules.d"
     install -m644 -t "${pkgdir}/usr/share/polkit-1/rules.d" "${source_dir}/share/polkit-1/rules.d"/*
+
+    # udev rules
+    install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
+    install -m644 -t "${pkgdir}/usr/lib/udev/rules.d" "${source_dir}/lib/udev/rules.d"/*
 }
