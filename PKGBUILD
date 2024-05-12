@@ -4,7 +4,7 @@
 _name=etesync
 pkgname=python-etesync
 pkgver=0.12.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Python API to interact with legacy EteSync servers"
 arch=('any')
 url="https://github.com/etesync/etebase-py"
