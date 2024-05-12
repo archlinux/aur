@@ -1,0 +1,11 @@
+--- a/GoogleTest-CMakeLists.txt.in
++++ b/GoogleTest-CMakeLists.txt.in
+@@ -4,7 +4,7 @@ project(googletest-download NONE)
+ 
+ include(ExternalProject)
+ ExternalProject_Add(googletest
+-    GIT_REPOSITORY https://github.com/google/googletest.git
++    GIT_REPOSITORY "${CMAKE_CURRENT_BINARY_DIR}/../googletest"
+     GIT_TAG "release-1.8.1"
+     SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/googletest-src"
+     BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/googletest-build"

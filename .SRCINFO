@@ -1,19 +1,22 @@
 pkgbase = astc-codec-git
 	pkgdesc = A software ASTC decoder implementation which supports the ASTC LDR profile (git version)
 	pkgver = r22.g9757bef
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/astc-codec/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
 	provides = astc-codec
 	conflicts = astc-codec
 	source = git+https://github.com/google/astc-codec.git
+	source = git+https://github.com/google/googletest.git
 	source = 010-astc-codec-fix-shared-build.patch
+	source = 020-astc-codec-use-local-googletest-sources.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 79e77b104c82b5058b2f34549b51a4df901c8e34669f6dcf7b3074e99e842d2b
+	sha256sums = 56b1fe56757b4af06407ace488a9ebf0242b5f7607e8a7f5b8cf7226deca4797
 
 pkgname = astc-codec-git
-
