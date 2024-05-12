@@ -1,6 +1,6 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=opticpu
-pkgver=1.0
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="A utility for optimizing CPU usage and enhancing system performance on Linux."
 arch=('x86_64')
