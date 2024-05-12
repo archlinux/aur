@@ -1,0 +1,13 @@
+diff --git a/cisPath/src/cisPath.cpp b/cisPath/src/cisPath.cpp
+index 6c2f6c9..858ea4d 100644
+--- a/cisPath/src/cisPath.cpp
++++ b/cisPath/src/cisPath.cpp
+@@ -3552,7 +3552,7 @@ bool processWebInput(const char *input, bool addSwiss2Swiss, bool detectPathFlag
+         }
+         if(tokens.size() != 7){
+             PRINTFUNCTION("Invalid file format!\n");
+-            PRINTFUNCTION(buffer);
++            PRINTFUNCTION("%s", buffer);
+             return false;
+         }
+         /////////////////////////////////////
