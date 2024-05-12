@@ -1,12 +1,12 @@
 # Contributor: solarbaron
 pkgname=feishin-git
-pkgver=v0.6.1.r56.g9cd8807
-pkgdesc='Rewrite of Sonixd'
+pkgver=v0.7.1.r3.g168153b
+pkgdesc='Modern music player with support for navidrome servers.'
 pkgrel=1
 arch=('x86_64' 'aarch64')
 license=('GPL3')
 depends=('mpv')
-makedepends=('yarn')
+makedepends=('yarn' 'npm')
 url='https://github.com/jeffvli/feishin'
 provides=("${pkgname%-git}")
 conflicts=("feishin" "feishin-bin")
