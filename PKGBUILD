@@ -2,16 +2,19 @@
 
 pkgname=dektec-avfifo-examples
 pkgver=2023.2
-pkgrel=3
-_sdkver=2024.01.0
+pkgrel=4
+_sdkver=2024.04.0
 pkgdesc='AvFifoExamples - DekTec AvFifo (SMPTE 2110) Code Examples for Linux'
-arch=('x86_64')
+arch=(x86_64)
 url="https://www.dektec.com/downloads/SDK/#linux"
-license=('custom')
-depends=('sdl2' 'dektec-drivers-dkms')
+license=(custom)
+depends=(
+	sdl2
+	dektec-drivers-dkms
+)
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz"
 	"https://www.dektec.com/products/SDK/AvFifoExamples/downloads/avfifo_examples.tar.gz")
-sha256sums=('3b767e61a88833e23e735852ae448a8c17985397f416bd2655841faa14e75ff0'
+sha256sums=('feef9fd6310f1903edff87a510db3a78e9a79067006ee659b37d3dd34fa277e6'
             '378109bd8548ff6d210f78efd24057022c5fb1e96e74a570b62fab7941c1c8bb')
 
 prepare() {
