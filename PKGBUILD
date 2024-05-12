@@ -1,62 +1,48 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=oslo.metrics
-_pycname=${_pyname/./-}
-pkgname=python-${_pycname}
-pkgver=0.5.0
+pkgname=python-oslo-metrics
+pkgver=0.8.0
 pkgrel=1
-pkgdesc="Oslo Metrics API"
+pkgdesc="OpenStack library for collecting metrics from Oslo libraries"
 arch=(any)
-url="https://docs.openstack.org/oslo.metrics/latest/"
-license=(Apache)
-depends=(
-	python
-	python-pbr
-	python-oslo-utils
-	python-oslo-log
-	python-oslo-config
-	python-prometheus_client
-)
-makedepends=(
-	python-setuptools
-	python-openstackdocstheme
-	python-reno
-	python-sphinx
-	python-sphinxcontrib-apidoc
-	python-oslotest
-)
-checkdepends=(
-	python-hacking
-	python-oslotest
-	python-coverage
-	python-stestr
-	bandit
-)
-options=('!emptydirs')
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('2da28a79fcf9dc8c975ca57675c63bc4')
-sha256sums=('db9ae0d7dd3ba1a55f55c25226919ee1f454cfc2535ffa98d5b31ee3cbb67cc5')
-sha512sums=('e41236e54844cafc41f5a65602505291d2e3a80a5e01c3aa6f4c039ddd199a898d4c00b9b2d6ea923de6687217aceced409efa740b06be9d3b305b0bb7fe6038')
+url="https://opendev.org/openstack/oslo.metrics"
+license=(Apache-2.0)
+depends=('python'
+         'python-pbr'
+         'python-oslo-utils'
+         'python-oslo-log'
+         'python-oslo-config'
+         'python-prometheus_client')
+makedepends=('python-build'
+             'python-installer'
+             'python-sphinx'
+             'python-setuptools'
+             'python-wheel')
+checkdepends=('python-hacking'
+              'python-oslotest'
+              'bandit'
+              'python-coverage'
+              'python-stestr')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('df2d3f679a8675df597d51fffad4d466d45ba0bfd49405358a5b2ce2498f9bfe94ab75813c4120d417b0d34f69e57890c8489bc87b4faa7bdf6447153621a920')
 
-export PBR_VERSION=$pkgver
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	cd $_pyname-$pkgver
-	export PYTHONPATH="$PWD"
-	python setup.py build
-	sphinx-build -b text doc/source doc/build/text
+    cd "$pkgname-$pkgver"
+    PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 check(){
-	cd $_pyname-$pkgver
-	stestr run
+    cd "$pkgname-$pkgver"
+    stestr run
 }
 
 package(){
-	cd $_pyname-$pkgver
-	python setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	mkdir -p "$pkgdir/usr/share/doc"
-	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
-	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
