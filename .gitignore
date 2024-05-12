@@ -1,0 +1,6 @@
+*.zip
+*.zst
+src
+pkg
+tmp
+*.pdf

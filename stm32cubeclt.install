@@ -1,0 +1,34 @@
+#derived from wechat-universal-wrap
+
+if tput setaf 0 &>/dev/null; then
+    all_off="$(tput sgr0)"
+    bold="${all_off}$(tput bold)"
+    blue="${bold}$(tput setaf 4)"
+    yellow="${bold}$(tput setaf 3)"
+    red="${bold}$(tput setaf 1)"
+    eval "note() {
+        printf '${blue}==>${yellow} NOTE:${bold} %s${all_off}\n' \"\$@\"
+    }" # avoid run-time expanding
+else
+    note() {
+        printf '==> NOTE: %s\n' "$@"
+    }
+fi
+
+
+post_install() {
+    _stm32cubeclt_ver=${1%%-*}
+
+    if [[ "${LANG}" == zh_CN* ]]; then
+        note "你可以编辑 /etc/profile.d/cubeclt-bin-path_${_stm32cubeclt_ver}.sh
+        控制是否优先使用 stm32cubeclt 提供的工具"
+    else
+        note "You can edit /etc/profile.d/cubeclt-bin-path_${_stm32cubeclt_ver}.sh ...
+        to control whether to prioritize the use of tools provided by stm32cubeclt."
+    fi
+}
+
+post_upgrade() {
+  post_install $@
+}
+# vim: set sw=4 ts=4 et:
