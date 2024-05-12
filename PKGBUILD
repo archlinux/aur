@@ -1,7 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=snander
-pkgver=v.1.7.7
+pkgver=v.1.7.8
 pkgrel=1
 pkgdesc="SNANDer - Serial Nor/nAND/Eeprom programmeR (based on CH341A)"
 url="https://github.com/McMCCRU/SNANDer"
