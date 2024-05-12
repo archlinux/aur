@@ -3,7 +3,7 @@
 gemname=fugit
 pkgname=ruby-fugit
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Time tools for flor and the floraison project"
 arch=('any')
 url="https://github.com/floraison/fugit"
@@ -12,6 +12,10 @@ depends=('ruby' 'ruby-et-orbi' 'ruby-raabro')
 source=("https://rubygems.org/downloads/${gemname}-${pkgver}.gem")
 noextract=("${gemname}-${pkgver}.gem")
 sha256sums=('addc9cd3031611921d1dbac094de3a645bc8858828639fd035c9cedd3b460bb9')
+
+prepare() {
+  if type rvm &>/dev/null; then rvm use system; fi
+}
 
 package() {
   cd "$srcdir"

@@ -1,7 +1,7 @@
 pkgbase = ruby-fugit
 	pkgdesc = Time tools for flor and the floraison project
 	pkgver = 1.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/floraison/fugit
 	arch = any
 	license = MIT
