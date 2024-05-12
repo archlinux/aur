@@ -9,6 +9,7 @@ pkgbase = tsukimi-bin
 	makedepends = cargo
 	depends = ffmpeg
 	depends = libadwaita
+	depends = gstreamer
 	depends = gtk4
 	provides = tsukimi
 	conflicts = tsukimi-git

@@ -13,6 +13,7 @@ conflicts=('tsukimi-git')
 depends=(
 	'ffmpeg'
 	'libadwaita'
+	'gstreamer'
 	'gtk4')
 makedepends=(
 	'git'
