@@ -2,7 +2,7 @@
 
 pkgname=python-piplapis
 _pkgname=piplapis-python
-pkgver=5.2.3
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="Python Library for interfacing with pipl.com"
 url="https://pypi.org/project/piplapis-python/"
@@ -11,7 +11,7 @@ license=('Apache2')
 depends=('python-pytz')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-six')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('53effde6eb0e59401332f9f4a3a54666990782a50cde9d3f8f4d46d111f69f33')
+sha256sums=('ef1d1c3b9782ed212767631068381f0145f69967bba3c690db3167b1e26db611')
 
 build() {
     cd "piplapis-python-${pkgver}"
