@@ -9,7 +9,7 @@ license=('BSD 3-clause')
 depends=('gcc' 'glibc' 'libutil-linux' 'coreutils')
 
 source=("https://github.com/felipealfonsog/OptiCPU/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fdf95e44bd35394c89e1244b18010894c83631f3188d55cf75de01b79266e7dc')
+sha256sums=('6174d982d83446134cfd58062256e1da3fd52115f30a69b40e154d32dd511cb3')
 
 build() {
   cd "${srcdir}/OptiCPU-${pkgver}"
