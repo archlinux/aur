@@ -1,6 +1,6 @@
 pkgbase = autodafe
 	pkgdesc = Tools for converting an autotools recipe to a plain Makefile.
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 3
 	url = http://www.catb.org/~esr/autodafe
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = autodafe
 	makedepends = git
 	makedepends = asciidoctor
 	depends = python3
-	source = https://gitlab.com/esr/autodafe/-/archive/0.5/autodafe-0.5.tar.gz
-	sha256sums = 7b8b7aa7a9c3aa7738ee2cdbdda3d1b40c1abc355e3e0d0f9cc13dae162fc856
+	source = https://gitlab.com/esr/autodafe/-/archive/0.6/autodafe-0.6.tar.gz
+	sha256sums = d3c88147be8d802ba5ac8a3c3647a4997d76870b99cfcc967c7f23d15d7f44b5
 
 pkgname = autodafe
