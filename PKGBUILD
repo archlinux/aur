@@ -2,8 +2,8 @@
 # Contributor: Richard Quirk
 
 pkgname=cmake-lint
-pkgver=1.4.2
-pkgrel=7
+pkgver=1.4.3
+pkgrel=1
 pkgdesc="Check for coding style issues in CMake files"
 arch=(any)
 url="https://github.com/cmake-lint/cmake-lint"
@@ -16,22 +16,10 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-  "python3.12-compatibility.patch"
-)
-sha256sums=(
-  'bf060987c74e07890f7314a4832c2e54ffb9c5c1e6d799387bc438010f918676'
-  '4f1573fa02d542067f0d20eb178f50354bed451173c4f73175098ca4c6e569c1'
-)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('7a2be3b179c565373cb7ccfe3076b0d1fa051f2234b52e29f69fa386042ebb74')
 
 _archive="$pkgname-$pkgver"
-
-prepare() {
-  cd "$_archive"
-
-  patch --forward --strip=1 --input="$srcdir/python3.12-compatibility.patch"
-}
 
 build() {
   cd "$_archive"
