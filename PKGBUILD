@@ -1,11 +1,11 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
 
 _pkgbasename=sdl
 pkgname=lib32-$_pkgbasename
 pkgver=1.2.15
-pkgrel=8
+pkgrel=9
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (32-bit)"
 arch=('x86_64')
 url="https://www.libsdl.org"
@@ -105,7 +105,8 @@ build() {
 
   cd SDL-$pkgver
   ./configure --prefix=/usr --disable-nasm --enable-alsa \
-              --with-x --disable-rpath --disable-static --libdir=/usr/lib32
+              --with-x --disable-rpath --disable-static --libdir=/usr/lib32 \
+              --disable-input-tslib
   make
 }
 
