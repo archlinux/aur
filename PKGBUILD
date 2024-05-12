@@ -1,0 +1,43 @@
+# Maintainer: Christian Finnberg <christian at finnberg dot net>
+# Based on AUR package [marcel](https://aur.archlinux.org/packages/marcel) by Jiri Pospisil
+
+pkgname=marcel-git
+_reponame=marcel
+pkgver=v0.27.0.r0.g166d186
+pkgrel=1
+pkgdesc='A modern shell that accepts Python code and uses Python objects for piping'
+url='https://www.marceltheshell.org/'
+source=("git+https://github.com/geophile/marcel.git")
+arch=('any')
+depends=('python' 'python-dill' 'python-psutil')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-setuptools'
+)
+conflicts=('marcel')
+license=('GPL-3.0-only')
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$_reponame"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$srcdir/$_reponame"
+
+  rm -rf test
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "$srcdir/$_reponame"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Force the use of System's Python with Marcel, not the one that can be defined in the user's environment (i.e. with pyenv)
+  sed -i "s:^python:/usr/bin/python:" "$pkgdir/usr/bin/marcel"
+}
