@@ -8,7 +8,7 @@ pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://github.com/verticalsync/Sunroof"
 license=('GPL3')
-makedepends=('pnpm')
+makedepends=('pnpm nodejs')
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
