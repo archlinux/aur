@@ -9,18 +9,17 @@
 _pkgname=regina
 _pkgsuff=rexx
 
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
-conflicts=(regina-rexx-das{,doc})
-epoch=1
-license=('LGPL-2.0-or-later')  # SPDX-License-Identifier: LGPL-2.0-or-later
-pkgdesc='An implementation of the ANSI Standard REXX Programming Language'
 pkgname=(regina-rexx{,-doc})
-pkgrel=1
+pkgdesc='An implementation of the ANSI Standard REXX Programming Language'
+epoch=1
 pkgver=3.9.6
+pkgrel=2
+url='https://regina-rexx.sourceforge.io/'
 source=(
   "https://downloads.sourceforge.net/regina-rexx/$_pkgname-$_pkgsuff-$pkgver.tar.gz"
 )
-url='https://regina-rexx.sourceforge.io/'
+license=('LGPL-2.0-or-later')  # SPDX-License-Identifier: LGPL-2.0-or-later
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 
 build() {
   cd "$srcdir/$_pkgname-$_pkgsuff-$pkgver"
