@@ -1,36 +1,46 @@
 # Maintainer: Nikolay Bogoychev <nheart@gmail.com>
+# Improved by yochananmarqos https://aur.archlinux.org/packages/translatelocally-git
+
+groups=('modified')
 
 pkgname=translatelocally-git
-pkgver=r484.4b965cd
-pkgrel=1
-pkgdesc='A fast privacy focused machine translation client that translates on your own machine.'
+pkgver=r508.a210037
+pkgrel=2
+pkgdesc="Fast and secure translation on your local machine, powered by marian and Bergamot."
 arch=('x86_64')
-url='https://github.com/XapaJIaMnu/translateLocally'
+url="https://translatelocally.com"
 license=('MIT')
-depends=('qt6-base' 'qt6-svg' 'pcre2' 'libarchive' 'protobuf')
-makedepends=('git' 'cmake' 'qt6-tools' 'clang' 'make' 'binutils' 'intel-oneapi-mkl')
-source=("git+$url.git")
+depends=('libarchive' 'qt6-base' 'qt6-svg' 'pcre2')
+makedepends=('cmake' 'git' 'intel-oneapi-mkl' 'qt6-tools')
+source=('git+https://github.com/XapaJIaMnu/translateLocally.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd translateLocally
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  # No tags, do this when we have tags
-  # git describe --long --tags | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd translateLocally
+
+  # There are many submodules that may change occasionally
+  git submodule update --init --recursive
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cd translateLocally
-  mkdir -p build
-  cd build
-  CC=clang CXX=clang++ cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake -B build -S translateLocally \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-  cd translateLocally/build
-  install -Dm644 ../LICENCE.md "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
+
+  cd translateLocally
+
+  # Yes, they spelled it wrong...
+  install -Dm644 LICENCE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
