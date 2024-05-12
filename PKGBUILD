@@ -23,7 +23,7 @@ options=(!strip !debug)
 
 prepare() {
     cd "${pkgname}-dev-${pkgver}"
-    sed -i 's|<i .\+git_pull.\+通过git拉取最新代码.\+></i>||' plugin/admin/app/view/index/dashboard.html
+    sed -i 's|<span .\+git_pull.\+通过git拉取最新代码.\+</span>||' plugin/admin/app/view/index/dashboard.html
 }
 
 package() {
