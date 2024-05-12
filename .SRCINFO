@@ -1,8 +1,8 @@
 pkgbase = python-etesync
-	pkgdesc = Python API to interact with an EteSync server
+	pkgdesc = Python API to interact with legacy EteSync servers
 	pkgver = 0.12.1
 	pkgrel = 4
-	url = https://github.com/etesync/pyetesync
+	url = https://github.com/etesync/etebase-py
 	arch = any
 	license = LGPL3
 	checkdepends = python-pytest

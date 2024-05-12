@@ -1,12 +1,13 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: xiretza <aur@xiretza.xyz>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
 _name=etesync
 pkgname=python-etesync
 pkgver=0.12.1
 pkgrel=4
-pkgdesc="Python API to interact with an EteSync server"
+pkgdesc="Python API to interact with legacy EteSync servers"
 arch=('any')
-url="https://github.com/etesync/pyetesync"
+url="https://github.com/etesync/etebase-py"
 license=('LGPL3')
 depends=('python-appdirs' 'python-asn1crypto' 'python-cffi'
 'python-cryptography' 'python-dateutil' 'python-furl' 'python-idna'
