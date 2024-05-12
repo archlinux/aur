@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=errands
-pkgver=46.0.5
-_commit=6677fe04ab421b649e532496e6c8189d986f5348
+pkgver=46.0.6
+_commit=c21c6736afb1fa847d82e7fe871f218fabf56912
 pkgrel=1
 pkgdesc='Todo application for those who prefer simplicity'
 url="https://github.com/mrvladus/Errands"

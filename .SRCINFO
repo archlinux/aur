@@ -1,6 +1,6 @@
 pkgbase = errands
 	pkgdesc = Todo application for those who prefer simplicity
-	pkgver = 46.0.5
+	pkgver = 46.0.6
 	pkgrel = 1
 	url = https://github.com/mrvladus/Errands
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = errands
 	depends = libadwaita
 	depends = libsecret
 	optdepends = gnome-online-accounts
-	source = git+https://github.com/mrvladus/Errands.git#commit=6677fe04ab421b649e532496e6c8189d986f5348
+	source = git+https://github.com/mrvladus/Errands.git#commit=c21c6736afb1fa847d82e7fe871f218fabf56912
 	sha256sums = SKIP
 
 pkgname = errands
