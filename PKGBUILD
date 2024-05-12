@@ -1,7 +1,7 @@
 # Maintainer: Jeff Dickey <releases at mise dot jdx dot dev>
 
 pkgname=mise
-pkgver=2024.5.5
+pkgver=2024.5.7
 pkgrel=1
 pkgdesc='The front-end to your dev env'
 arch=('x86_64')
@@ -13,7 +13,8 @@ conflicts=('rtx' 'rtx-bin')
 replaces=('rtx')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jdx/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('c755930b9323c7bfdcc6207d72f52d70f132f38edcee25d12ad81ea6bc7993d0cd9062d8d795054524c414fe86017ca0e5645d2951a1dd32e457c67fc2314afe')
+sha512sums=('689e6e002a22a03526e92b84fefcc914a4f1b7750047d944c4ce2e108772312dde1d5087c7b1817a6842e99e36e119e5d7275309e220657c3813939cb763ba20')
+optdepends=('usage: completion support')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
