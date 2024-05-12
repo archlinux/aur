@@ -9,7 +9,7 @@
 pkgname="wine-staging-wow64"
 pkgver=9.8
 _pkgver="${pkgver/rc/-rc}"
-pkgrel=2
+pkgrel=3
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
@@ -101,8 +101,9 @@ build() {
   export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
   export CROSSLDFLAGS="${LDFLAGS//-Wl,-z*([^[:space:]])/}"
 
-  cd "wine"
-  ./configure \
+  mkdir -p build
+  cd build
+  ../wine/configure \
     --disable-tests \
     --prefix=/usr \
     --libdir=/usr/lib \
@@ -118,6 +119,10 @@ package() {
     dlldir="$pkgdir"/usr/lib/wine install
 
   ln -sf /usr/bin/wine "$pkgdir"/usr/bin/wine64
+
+  # Strip Windows binaries
+  i686-w64-mingw32-strip --strip-debug "$pkgdir"/usr/lib32/wine/i386-windows/*.dll
+  x86_64-w64-mingw32-strip --strip-debug "$pkgdir"/usr/lib/wine/x86_64-windows/*.dll
 
   # Font aliasing settings for Win32 applications
   install -Dm644 "$srcdir"/30-win32-aliases.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
