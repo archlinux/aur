@@ -4,13 +4,13 @@
 pkgname="odoo-nightly"
 _pkgname="odoo"
 pkgver=17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Odoo. Open Source Apps To Grow Your Business."
 url="https://odoo.com/"
 arch=("any")
 license=("LGPL-3.0-only")
 conflicts=("openerp" "odoo" "odoo-17")
-replaces=("openerp", "odoo" "odoo-17")
+replaces=("openerp" "odoo" "odoo-17")
 depends=("postgresql"
         "wkhtmltopdf"
         "python310")
