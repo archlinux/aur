@@ -1,7 +1,7 @@
 _electron='electron30'
 
 pkgname=webcord
-pkgver=4.9.1
+pkgver=4.9.2
 pkgrel=1
 pkgdesc='A Discord and SpaceBar Electron-based client implemented without Discord API'
 arch=('any')
@@ -14,14 +14,14 @@ options=('!strip' '!emptydirs')
 
 _snapshot="${_repo}-${pkgver}"
 source=(
-    "${_snapshot}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+    "${url}/archive/v${pkgver}/${_snapshot}.tar.gz"
     'buildInfo.json'
     'webcord.desktop'
     'webcord.sh'
 )
 
 sha256sums=(
-    'c2ffa502f9db1eadee5480df1233c278bf3b2acb484c8abba5f7868bc8d32db8'
+    '682b9e9e3ef106ac6db4bf02c8141225f6a338aa2bbcdf7627e26b8e322f30ae'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '5923151d1cc05d7e2ab0cb2103921f5f3985e08e48c74e7aa12003b32c0e2bae'
     'c41c46200b0dacf7d2ae3983e66bb9aad8314fdfc821f3ed559245ca205c087c'
@@ -35,8 +35,6 @@ prepare() {
 }
 
 build() {
-    cd "${_snapshot}"
-
     local common=(
         --outbase='sources'
         --outdir='app'
@@ -54,6 +52,7 @@ build() {
         --out-extension:'.js=.mjs'
     )
 
+    cd "${_snapshot}"
     esbuild 'sources/code/**/*.ts' "${common[@]}" "${cjs[@]}"
     esbuild 'sources/code/**/*.mts' "${common[@]}" "${esm[@]}"
 }
