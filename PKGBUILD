@@ -9,7 +9,7 @@
 pkgname="wine-staging-wow64"
 pkgver=9.8
 _pkgver="${pkgver/rc/-rc}"
-pkgrel=2
+pkgrel=4
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
