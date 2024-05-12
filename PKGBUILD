@@ -5,7 +5,7 @@
 
 _pkgname=ansible-lint
 pkgname=ansible-lint-git
-pkgver=6.10.2.r4.g2f688cc0
+pkgver=24.r13.gf6d47025
 pkgrel=1
 pkgdesc="Checks playbooks for practices and behaviour that could potentially be improved."
 arch=('any')
