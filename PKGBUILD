@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-chailove
 pkgname=$_pkgname-git
-pkgver=1.2.1.r27.g9677b14
+pkgver=1.3.0.r0.gfecf7da
 pkgrel=1
 pkgdesc="ChaiScript core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -20,7 +20,7 @@ source=(
 	'physfs::git+https://github.com/icculus/physfs.git'
 	'random::git+https://github.com/effolkronium/random.git'
 	'sdl-libretro::git+https://github.com/libretro/sdl-libretro.git'
-	'SDL_tty::git+https://gitlab.com/grumbel/SDL_tty.git'
+	'SDL_tty::git+https://github.com/Grumbel/SDL_tty.git'
 	'Snippets::git+https://github.com/DanielGibson/Snippets.git'
 	'stb::git+https://github.com/nothings/stb.git'
 	'TinySHA1::git+https://github.com/mohaps/TinySHA1.git'
@@ -52,7 +52,7 @@ prepare() {
 	git config submodule.vendor/physfs.url ../physfs
 	git config submodule.vendor/random.url ../random
 	git config submodule.vendor/sdl-libretro.url ../sdl-libretro
-	git config submodule.vendor/SDL_tty-gitlab.url ../SDL_tty
+	git config submodule.vendor/SDL_tty.url ../SDL_tty
 	git config submodule.vendor/Snippets.url ../Snippets
 	git config submodule.vendor/stb.url ../stb
 	git config submodule.vendor/TinySHA1.url ../TinySHA1
