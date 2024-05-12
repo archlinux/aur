@@ -3,7 +3,7 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r1973.c281d71
+pkgver=r2006.777cf8d
 pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,7 @@ url='https://github.com/dl1ycf/pihpsdr'
 license=('GPL2')
 depends=('fftw' 'libpulse' 'gtk3' 'soapysdr' 'alsa-lib')
 makedepends=('git')
+buildflags=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
@@ -33,10 +34,11 @@ prepare() {
 
 build() {
   cd "$_pkgname"
+  export CFLAGS="${CFLAGS} -D_GNU_SOURCE"
   make \
     GPIO= \
     MIDI=ON \
-    SATURN= \
+    SATURN=ON \
     SOAPYSDR=ON \
     AUDIO=PULSE
 }
