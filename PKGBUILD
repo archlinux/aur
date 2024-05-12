@@ -9,10 +9,9 @@ license=('BSD 3-clause')
 depends=('gcc' 'glibc' 'libutil-linux' 'coreutils')
 
 source=("https://github.com/felipealfonsog/OptiCPU/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('fdf95e44bd35394c89e1244b18010894c83631f3188d55cf75de01b79266e7dc')
 
 build() {
-  tar xf "$srcdir/v${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
-  ls -l "$srcdir"  # Agregamos esta línea para verificar el contenido de $srcdir
   cd "${srcdir}/OptiCPU-v${pkgver}"
   gcc -o opticpu src/opticpu.c
 }
@@ -21,6 +20,4 @@ package() {
   cd "${srcdir}/OptiCPU-v${pkgver}"
   install -Dm755 opticpu "${pkgdir}/usr/bin/opticpu"
 }
-
-sha256sums=('fdf95e44bd35394c89e1244b18010894c83631f3188d55cf75de01b79266e7dc')
 
