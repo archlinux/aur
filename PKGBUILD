@@ -1,14 +1,15 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='tracking'
 pkgdesc='Analyze how the behavior of a parallel application evolves through different scenarios (from BSC).'
-pkgver='2.7.0.20230719'
+pkgver='2.7.1.20240509'
 pkgrel='1'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
-license=('GPL2')
+# Upstream does not say whether later versions of LGPL are acceptable, so I am assuming they are not
+license=('LGPL-2.1-only')
 depends=(wxparaver clusteringsuite python-pillow python-wxpython python-matplotlib)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2")
-sha512sums=('ecc20c945c2440e4312db1eff5aec83d85e33e5f55114eb3f7d7cc88268c846ae83bd1ae7a4d9c4f5926814d8b4e8f5a708571fd6b12d3b65e68296beddb803d')
+sha512sums=('a20a3c99e61cd1acd047114ec75e1d0f3034fb5be947d6dc6baa4b4c7e5b4fc8a91d4ec3219608247eb3260608ab6a3c084871278e1f4326829a47d180817e2d')
 
 build() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
