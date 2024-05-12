@@ -2,8 +2,8 @@
 
 pkgname=python-django-channels
 _pypi_pkgname=channels
-pkgver=4.0.0
-pkgrel=1
+pkgver=4.1.0
+pkgrel=0
 pkgdesc="Developer-friendly asynchrony for Django"
 arch=(any)
 url="http://github.com/django/channels"
@@ -12,14 +12,15 @@ makedepends=('python-setuptools')
 depends=('python' 'python-django' 'python-asgiref' 'python-daphne')
 optdepends=()
 source=("https://pypi.io/packages/source/c/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('0ce53507a7da7b148eaa454526e0e05f7da5e5d1c23440e4886cf146981d8420')
+sha256sums=('e0ed375719f5c1851861f05ed4ce78b0166f9245ca0ecd836cb77d4bb531489d')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py build || return 1
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py install --root=${pkgdir} --optimize=1 || return 1
+    cd "$srcdir/${_pypi_pkgname}-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
