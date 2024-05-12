@@ -1,43 +1,38 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SQLDataFrame
-_pkgver=1.16.1
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.1
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Representation of SQL database in DataFrame metaphor'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Representation of SQL tables in DataFrame metaphor"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-3.0-or-later')
 depends=(
-  r
   r-biocgenerics
   r-dbi
-  r-dbplyr
-  r-dplyr
-  r-lazyeval
+  r-delayedarray
+  r-duckdb
   r-rsqlite
   r-s4vectors
-  r-tibble
 )
 optdepends=(
-  r-bigrquery
-  r-delayedarray
-  r-genomicranges
+  r-biocstyle
   r-knitr
   r-rmarkdown
-  r-rmysql
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d48c2bcaa4fade62ead21689d2bfcfc8d7e835291ee25ec5ff6b69db0021354d')
+md5sums=('d3f3b42d554d7262bb6dedc1d362d9b3')
+b2sums=('3953beef5982876d7d55f6f28dbff4e27cce3c6fc8c2ea8fbc73d2bd236d15b5755da43bc72fa02e43c2ef5f2fd409106c34ae4d75f4f54bd1c461a3d298fa3f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
