@@ -1,7 +1,7 @@
 pkgbase = ruby-et-orbi
 	pkgdesc = Time zones for fugit and rufus-scheduler. Urbi et Orbi.
 	pkgver = 1.2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/floraison/et-orbi
 	arch = any
 	license = MIT
