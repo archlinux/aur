@@ -3,7 +3,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=libbassflac
-pkgver=2.4.5.2
+pkgver=2.4.5.5
 pkgrel=1
 pkgdesc='BASS audio library FLAC plugin'
 arch=(i686 x86_64 armv6h armv7h aarch64)
@@ -11,7 +11,7 @@ url='https://www.un4seen.com/'
 license=(custom)
 depends=(alsa-lib libbass)
 source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/bassflac24-linux.zip")
-sha256sums=('322aeb03fa035334a08163ced9f8f91764bed8e29c77b0ac4d3f5efbddc59d88')
+sha256sums=('df56c4299aa92ae5cc609968235e82edb12bf0c013a788a9df9adbc710e546f3')
 
 prepare() {
   grep Lic "$srcdir/bassflac.txt" -A14 > LICENSE
