@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=124.0.6367.201
+pkgver=125.0.6422.41
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -35,13 +35,13 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         drop-flag-unsupported-by-clang17.patch
         compiler-rt-adjust-paths.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('11773c4cfce4b39ae1bbe711b2907cb86e9aa299b7c6a71656edb876f0c85992'
+sha256sums=('05652bf7a89c637f99cfc02cc9d312da074d2d0bce34d311434de3d36543dc72'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'c2bc4e65ed2a4e23528dd10d5c15bf99f880b7bbb789cc720d451b78098a7e12'
+            '58c8787bd215c4818893405dbb88c17b08bf13039fb5fbcb9dfe95ac51a86f3e'
             '75e1482d1b27c34ebe9d4bf27104fedcc219cdd95ce71fc41e77a486befd3f93'
             '3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
-            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
+            '69d2f076223cab0cf1094ae58c39b5687a98f69bf4545414a35f6a4d2708ed83')
 
 if (( _manual_clone )); then
   source[0]=fetch-chromium-release
