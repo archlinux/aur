@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Sunroof
+GenericName=Internet Messenger
+Comment=Suncord is a Vesktop fork that is a free/libre cross platform desktop app aiming to give you a snappier Discord experience with Suncord pre-installed
+Type=Application
+Exec=/usr/bin/suncord
+Icon=sunroof
+Categories=Network;InstantMessaging;
+StartupWMClass=sunroof;
+Keywords=discord;suncord;sunroof
