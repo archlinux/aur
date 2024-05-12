@@ -1,13 +1,11 @@
 pkgbase = ttf-aptos
-	pkgdesc = The (new) Aptos typeface for Microsoft 365.
-	pkgver = 1.0
-	pkgrel = 1
-	url = https://github.com/ironveil/github
-	arch = any
-	license = unknown
-	makedepends = git
-	depends = fontconfig
-	source = git+https://github.com/ironveil/ttf-aptos.git
-	md5sums = SKIP
-
+    pkgdesc = Default Microsoft Office font, developed by Microsoft
+    pkgver = 1.0
+    pkgrel = 1
+    url = https://learn.microsoft.com/en-us/typography/font-list/aptos
+    arch = any
+    license = custom
+    source = https://www.techspot.com/downloads/downloadnowfile/7566/?
+    sha256sums = c4953494f96e9e4bbe6dc9c92d8b791be230bdadd410160e9bf1d3e4edf178f9
+    
 pkgname = ttf-aptos
