@@ -1,0 +1,13 @@
+pkgbase = ruby-fugit
+	pkgdesc = Time tools for flor and the floraison project
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/floraison/fugit
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = fugit-1.11.0.gem
+	source = https://rubygems.org/downloads/fugit-1.11.0.gem
+	sha256sums = addc9cd3031611921d1dbac094de3a645bc8858828639fd035c9cedd3b460bb9
+
+pkgname = ruby-fugit
