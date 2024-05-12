@@ -1,19 +1,29 @@
-# Maintainer: Camren Mumme <camren.mumme@gmail.com>
+# Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
-pkgver=0.10.2
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/Meumeu/WiVRn"
-license=("GPL-3-only")
+license=("GPL-3.0-only")
 depends=(
-	"x264"
-	"eigen"
-	"libpulse"
 	"avahi"
-	"nlohmann-json"
+	"gcc-libs"
+	"glibc"
+	"libbsd"
+	"libgl"
+	"libpipewire"
+	"libpulse"
+	"libx11"
+	"libxcb"
+	"systemd-libs"
+	"vulkan-icd-loader"
+	"x264"
 )
-makedepends=("cmake")
+makedepends=(
+	"cmake"
+	"eigen"
+	"nlohmann-json")
 optdepends=(
 	"ffmpeg: AMD/Intel hardware encoding",
 	"cuda: NVIDIA hardware encoding"
