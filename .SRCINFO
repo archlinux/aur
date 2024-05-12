@@ -16,7 +16,6 @@ pkgbase = rju-git
 	depends = libxext
 	depends = libx11
 	depends = libpng
-	provides = rju
 	conflicts = rju
 	options = !buildflags
 	source = git+https://gitlab.com/rd--/rju.git

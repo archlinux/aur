@@ -6,17 +6,15 @@ _pkgname=rju
 pkgver=0.19.r15.g359627c
 pkgrel=1
 pkgdesc='JackAudioToolkit'
-arch=('x86_64')
+arch=( 'x86_64' )
 url='https://rohandrape.net/?t=rju'
-license=('GPL-3.0-only')
-depends=( 'jack' 'libsamplerate' 'liblo' 'libsndfile' 'libxext' 'libx11' 'libpng')
+license=( 'GPL-3.0-only' )
+depends=( 'jack' 'libsamplerate' 'liblo' 'libsndfile' 'libxext' 'libx11' 'libpng' )
 makedepends=( 'git' 'asciidoc' 'vst2sdk' 'sed' )
-#options=('!lto' '!buildflags')
 options=( '!buildflags')
-conflicts=('rju')
-provides=('rju')
+conflicts=( 'rju' )
 source=( "git+https://gitlab.com/rd--/rju.git"
-        "git+https://gitlab.com/rd--/r-common.git"
+         "git+https://gitlab.com/rd--/r-common.git"
        )
   
 sha256sums=('SKIP'
@@ -34,7 +32,8 @@ prepare() {
   git -c protocol.file.allow=always submodule update --init
   cd cmd
   sed 's#VST_SDK = $(HOME)/opt/build/vst3_sdk#VST_SDK = /usr/include/vst36#' -i Makefile
-  sed "/CXXFLAGS +=/s/=/= -fpermissive/" -i Makefile
+  sed "/int osc/s/void \*d/lo_message d/" -i rju-dl.c
+  sed "/int osc/s/void \*d/lo_message d/" -i rju-lxvst.cpp
 }
 
 build() {
