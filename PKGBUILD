@@ -2,7 +2,7 @@
 # Maintainer: Rob Shinn <rob d0t shinn at gmail dotcom> 
 
 pkgname=autodafe
-pkgver=0.6
+pkgver=0.7
 pkgrel=3
 pkgdesc='Tools for converting an autotools recipe to a plain Makefile.'
 arch=('any')
@@ -11,9 +11,8 @@ url="http://www.catb.org/~esr/autodafe"
 makedepends=('git' 'asciidoctor')
 depends=('python3')
 source=("https://gitlab.com/esr/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d3c88147be8d802ba5ac8a3c3647a4997d76870b99cfcc967c7f23d15d7f44b5')
+sha256sums=('ff57e193c137a61b6480f3cabcad2f3b10b67dff028725658f6a40ff41361068')
 _docs=('NEWS' 'README' 'TODO' 'de-autoconfiscation' 'hacking' 'configure')
-_htmldocs=('NEWS.html' 'README.html' 'TODO.html' 'de-autoconfiscation.html' 'deconfig.html' 'hacking.html' 'configure.html' 'makemake.html')
 
 build() { 
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -32,7 +31,7 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/configure.1 "${pkgdir}"/usr/share/man/man1/configure.1
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}"/deconfig "${pkgdir}"/usr/bin/deconfig
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/deconfig.1 "${pkgdir}"/usr/share/man/man1/deconfig.1
-  for i in ${_htmldocs[@]}; do
-    install -Dm644 "${srcdir}/${pkgname}"/$i "${pkgdir}"/usr/share/doc/${pkgname}/$i 
+  for i in ${_docs[@]}; do
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/$i.html "${pkgdir}"/usr/share/doc/${pkgname}/$i.html
   done
 }
