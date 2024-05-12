@@ -5,7 +5,7 @@
 _pkgname=zam-plugins
 pkgname=$_pkgname-git
 pkgver=4.3.r0.g9e824af
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of multi-format audio plugins for high-quality processing (git version)'
 arch=(x86_64)
 url='https://github.com/zamaudio/zam-plugins'
@@ -46,11 +46,11 @@ source=("$_pkgname::git+https://github.com/zamaudio/$_pkgname.git"
         'pugl::git+https://github.com/DISTRHO/pugl.git'
         'zam-plugins.directory'
         'zam-plugins.menu')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         '99e66b26922172cd212914230a557108'
-         '5be3eb16b1d91ae653af25c8dcddd70f')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            '057cd038c778a5121938160f1920112b9203615d8a706547c19b5f27e69230b8'
+            '62e4f6aa7c50ce6561d56a797e184d4eab56546f203607df52b2aa4ac940667f')
 
 _names=(zamaximx2 zamulticomp zammulticompx2 zamautosat zamcomp zamcompx2
         zamdelay zamdynamiceq zameq2 zamgeq31 zamgate zamgatex2 zamgrains

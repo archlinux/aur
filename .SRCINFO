@@ -1,7 +1,7 @@
 pkgbase = zam-plugins-git
 	pkgdesc = Collection of multi-format audio plugins for high-quality processing (git version)
 	pkgver = 4.3.r0.g9e824af
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zamaudio/zam-plugins
 	arch = x86_64
 	groups = clap-plugins
@@ -54,11 +54,11 @@ pkgbase = zam-plugins-git
 	source = pugl::git+https://github.com/DISTRHO/pugl.git
 	source = zam-plugins.directory
 	source = zam-plugins.menu
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 99e66b26922172cd212914230a557108
-	md5sums = 5be3eb16b1d91ae653af25c8dcddd70f
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 057cd038c778a5121938160f1920112b9203615d8a706547c19b5f27e69230b8
+	sha256sums = 62e4f6aa7c50ce6561d56a797e184d4eab56546f203607df52b2aa4ac940667f
 
 pkgname = zam-plugins-git
 	depends = gcc-libs
