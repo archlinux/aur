@@ -4,6 +4,7 @@ pkgbase = terminalgoogle-git
 	pkgrel = 1
 	url = https://github.com/Raphadoodle/terminalgoogle-git.git
 	arch = x86_64
+	arch = arm64
 	license = GPL
 	makedepends = git
 	depends = gcc
