@@ -1,0 +1,12 @@
+pkgbase = enhancd
+	pkgdesc = A next-generation cd command with your interactive filter
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/babarot/enhancd
+	install = enhancd.install
+	arch = any
+	license = MIT
+	source = https://github.com/babarot/enhancd/archive/refs/tags/v2.5.1.tar.gz
+	sha256sums = 93a3b935a9e9d9e7201827e7b45ee52df8eb77caf4bd93552f8fecc5fb634e28
+
+pkgname = enhancd

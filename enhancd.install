@@ -1,0 +1,3 @@
+post_install() {
+	echo "To use this plugin, execute \`source /usr/share/enhancd/init.sh\` or add this line in your .bashrc or .zshrc"
+}
