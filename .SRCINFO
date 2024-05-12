@@ -1,6 +1,6 @@
 pkgbase = airgorah
 	pkgdesc = A WiFi security auditing software mainly based on aircrack-ng tools suite
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/martin-olivier/airgorah
 	arch = any
@@ -21,9 +21,9 @@ pkgbase = airgorah
 	depends = wireshark-cli
 	depends = mdk4
 	depends = adwaita-icon-theme
-	provides = airgorah=0.7.2
+	provides = airgorah=0.7.3
 	conflicts = airgorah
-	source = airgorah-0.7.2::https://github.com/martin-olivier/airgorah/archive/refs/tags/v0.7.2.tar.gz
-	sha256sums = 453664661ba7dcf013a6ae61b5b5d19ef431eedcbad74bba0cad1fb6181c82f0
+	source = airgorah-0.7.3::https://github.com/martin-olivier/airgorah/archive/refs/tags/v0.7.3.tar.gz
+	sha256sums = 00c3b9cf91a728b1466ab8fcc7590245f3136ccd539ea1cf5be95f2c1c87920b
 
 pkgname = airgorah
