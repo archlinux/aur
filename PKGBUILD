@@ -10,7 +10,7 @@ depends=('hyprland')
 arch=('x86_64')
 license=('MIT')
 source=("https://github.com/FieldofClay/hyprland-activewindow/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('16750131aa0e23eb56d644ab3bb63e3a5e926b9b2649f1f6f8ef01b9a5a3e7b9')
+sha256sums=('4d318156067a911dd8c48d39526addabed2702d5e91ed05517bdc99c1b9d3263')
 
 build() {
   cd "$pkgname-$pkgver"
