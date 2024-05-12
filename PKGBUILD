@@ -1,4 +1,5 @@
-# Maintainer:Integral<luckys68@126.com>
+# Maintainer: Integral <integral@member.fsf.org>
+
 pkgname=codemao-kitten3-uos
 pkgver=3.7.14
 pkgrel=1
