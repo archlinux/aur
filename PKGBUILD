@@ -1,7 +1,7 @@
 # Maintainer: Beyley Thomas <ep1cm1n10n123@gmail.com>
 pkgname=lib32-libbass
 pkgver=2.4.17
-pkgrel=1
+pkgrel=2
 pkgdesc="BASS audio library (32-bit)"
 arch=(x86_64)
 url="http://www.un4seen.com/"
@@ -20,5 +20,4 @@ package () {
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     cd "$srcdir/$pkgname-$pkgver"
     install -D -m755 libs/x86/libbass.so "$pkgdir/usr/lib32/libbass.so"
-    install -D -m644 bass.chm "$pkgdir/usr/share/doc/libbass/bass.chm"
 }
