@@ -1,0 +1,17 @@
+pkgbase = oxi-sapphire-launcher-git
+	pkgdesc = A crossplatform CLI launcher for FFXIV Sapphire servers
+	pkgver = r1.a1b2c3d
+	pkgrel = 1
+	url = https://github.com/T00fy/oxi-sapphire-launcher
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cargo
+	makedepends = unshield
+	depends = unshield
+	provides = oxi-sapphire-launcher
+	conflicts = oxi-sapphire-launcher
+	source = git+https://github.com/T00fy/oxi-sapphire-launcher.git
+	md5sums = SKIP
+
+pkgname = oxi-sapphire-launcher-git
