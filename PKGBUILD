@@ -1,4 +1,5 @@
-# Maintainer:Integral<luckys68@126.com>
+# Maintainer: Integral <integral@member.fsf.org>
+
 pkgname=ydbg-bin
 _pkgname=ydbg
 pkgver=1.0.0
