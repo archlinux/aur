@@ -7,7 +7,6 @@ After=postgresql.service network-online.target
 Type=simple
 User=odoo
 Group=odoo
-ExecStartPre=/bin/bash -c '. /var/lib/odoo/.venv/bin/activate'
 ExecStart=/var/lib/odoo/.venv/bin/odoo --config /etc/odoo/odoo.conf --logfile /var/log/odoo/odoo-server.log
 KillMode=mixed
 
