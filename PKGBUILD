@@ -1,59 +1,75 @@
-# Maintainer: Grigory Vasilyev <echo "h0tc0d3(-*A*-)g-m*a-i-l(-d#t-)c#m" | sed -e 's/-//ig;s/*//ig;s/(A)/@/i;s/#/o/ig;s/(dot)/./i'>
-
-validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Contributor: Grigory Vasilyev <echo "h0tc0d3(-*A*-)g-m*a-i-l(-d#t-)c#m" | sed -e 's/-//ig;s/*//ig;s/(A)/@/i;s/#/o/ig;s/(dot)/./i'>
 
 pkgname=stlink-server
-pkgver=2.0.2
+_pkgname=st-link-server
+pkgver=2.1.1
 pkgrel=1
-pkgdesc='The ST-LINK server it is a debugging tool and a monitoring tool for st chips like stm32 family.'
+pkgdesc="An application to share the debug interface of a single ST-LINK board among several host applications, typically a debugging tool and a monitoring tool"
 arch=('x86_64')
-license=('Custom')
-url='https://www.st.com/en/development-tools/st-link-server.html'
+url="'https://www.st.com/en/development-tools/st-link-server.html"
+license=('custom:SLA0048')
+# stlink provides stlink udev rules
+depends=("stlink"
+         "libusb")
 
-provides=('stlink-server')
+_pkg_license_name="SLA0048_${_pkgname^^}.pdf"
+# Non-uniform name conventions
+_pkg_zip_name="en.${_pkgname}-v${pkgver}.zip"
+_pkg_uncompress_dir="en.${_pkgname}_v${pkgver}-2"
+_stlink_server_bin="${pkgname}.${pkgver}-1"
 
-prepare() {
+# User Agent
+# copy from stm32cubeide
+_curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
+                        AppleWebKit/537.36 (KHTML, like Gecko) \
+                        Chrome/120.0.0.0 \
+                        Safari/537.36"
+_curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
+_useragent_escaped="${_curl_useragent// /\\ }"
+DLAGENTS=("https::/usr/bin/curl \
+              -gqb '' --retry 3 --retry-delay 3 \
+              -H ${_useragent_escaped} \
+              -o %o --compressed %u")
 
-  if [ ! -f /tmp/en.st-link-server.zip ]; then
-    echo -e "\E[1;31mFile en.st-link-server.zip not found in the /tmp" \
-      "directory! \E[0m\nPlease open https://www.st.com/en/development-tools/st-link-server.html and" \
-      "download en.st-link-server.zip file.\nCopy en.st-link-server.zip to /tmp/en.st-link-server.zip" \
-      "with command\E[1;33m cp -f en.st-link-server.zip /tmp/en.st-link-server.zip\E[0m and start build again!"
-    exit 1
-  fi
+_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-performance-and-debuggers/st-link-server/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
 
-  unzip -o /tmp/en.st-link-server.zip -d "${srcdir:?}"
+_curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
+_pkg_url="$(grep -m 1 "${_pkg_zip_name}" <<< "$_curl_req")"
+_pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
+_download_path="https://www.st.com""$_pkg_url"
+source=("${_pkg_zip_name}::${_download_path}"
+        "https://www.st.com/resource/en/license/${_pkg_license_name}")
+sha256sums=('a84a0ada7c9b6343e559dacd37e42a815c500d0f4a517db3d1e511d056903bf6'
+            'a6115ff36c919e8c08544dab5fc6091899371628d28e87663539a327c7210048')
 
+_bundle_sh_extract() {
+  local bundle_sh="$1"
+  local target="$2"
+
+  chmod u+x "${bundle_sh}"
+  rm -rf "${target}"
+  ./${bundle_sh} --noexec --target "${target}"
 }
 
-build() {
-
-  cd "${srcdir}/en.st-link-server" || (
-    echo -e "\E[1;31mBuild Failed! \E[0mCan't cd to ${srcdir}/en.st-link-server directory! Perhaps unzip is not" \
-    "installed or the /tmp/en.st-link-server.zip archive is damaged! Please try install unzip and download again" \
-    "en.st-link-server.zip file!"
-    exit 1
-  )
-
-  sh "st-stlink-server.${pkgver}-${pkgrel}-linux-amd64.install.sh" --noexec
-
-  makeself_dir=$(find . -type d -name "makeself_dir*" | head -n 1)
-
-  if [[ ! -f "${srcdir:?}/en.st-link-server/${makeself_dir:?}/stlink-server"
-  || ! -f "${srcdir:?}/en.st-link-server/${makeself_dir:?}/prompt_linux_license.sh" ]]; then
-    echo -e "\E[1;31mBuild Failed! \E[0mSource directory ${srcdir}/en.st-link-server/${makeself_dir} not exist!"
-    exit 1
-  fi
-
-  sh "${makeself_dir:?}/prompt_linux_license.sh"
-  sed -n "/EOF/{:a;N;/^EOF\n/Ta};0,/EOF\n/D;p" "${makeself_dir:?}/prompt_linux_license.sh" > LICENSE
-  cp -f "${makeself_dir:?}/stlink-server" stlink-server
-
+_install_license_pdf() {
+  echo "Installing license ${_pkg_license_name}..."
+  install -Dm644 ${srcdir}/${_pkg_license_name} -t \
+                  "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 package() {
 
-  install -Dm644 "${srcdir:?}/en.st-link-server/LICENSE" "${pkgdir:?}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm755 "${srcdir:?}/en.st-link-server/stlink-server" "${pkgdir:?}/usr/bin/stlink-server"
+  cd ${srcdir}/${_pkg_uncompress_dir}
+  
+  chmod u+x ${_stlink_server_bin}
+  set junk  $(./${_stlink_server_bin} 2>&1 -v)
 
+  version_string=$3
+  timestamp=$4
+  echo "Installing stlink-server ${version_string} ${timestamp}..."
+  install -Dm755 ${_stlink_server_bin} ${pkgdir}/usr/bin/${pkgname}
+
+  _install_license_pdf
 }
+# vim: set sw=2 ts=2 et:
