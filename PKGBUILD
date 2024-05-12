@@ -1,4 +1,5 @@
-# Maintainer:Integral<luckys68@126.com>
+# Maintainer: Integral <integral@member.fsf.org>
+
 pkgname=codemao-wood-uos
 pkgver=0.1.3
 pkgrel=1
