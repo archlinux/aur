@@ -12,6 +12,7 @@ source=("https://github.com/felipealfonsog/OptiCPU/archive/refs/tags/v${pkgver}.
 
 build() {
   tar xf "$srcdir/v${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
+  ls -l "$srcdir"  # Agregamos esta línea para verificar el contenido de $srcdir
   cd "${srcdir}/OptiCPU-v${pkgver}"
   gcc -o opticpu src/opticpu.c
 }
