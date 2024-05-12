@@ -1,17 +1,3 @@
-pkgbase = python-netlink
-	pkgdesc = asynchronous implementation of the Linux netlink protocol
-	pkgver = 0.0.9
-	pkgrel = 1
-	url = https://github.com/tijko/netlink
-	arch = x86_64
-	license = GPL
-	makedepends = python-setuptools
-	depends = python
-	depends = python-trio
-	source = python-netlink-x86_64-0.0.9.tar.gz::https://github.com/tijko/netlink/releases/download/v0.0.9/netlink-x86_64-0.0.9.tar.gz
-	sha512sums = 00d8184deace851433768f485c32b0c08f68a1f1d2cd281ff7c73e690325c7c04acca7b85f6f5d86db6b93405f1dccc8ce5637fa4883f81074bd27f5af0a01e4
-
-pkgname = python-netlink
 pkgbase = netlink
 	pkgdesc = asynchronous implementation of the Linux netlink protocol
 	pkgver = 0.0.9
