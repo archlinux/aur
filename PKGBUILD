@@ -1,4 +1,5 @@
-# Maintainer:Integral<luckys68@126.com>
+# Maintainer: Integral <integral@member.fsf.org>
+
 pkgname=bcm-convertor-uos
 pkgver=1.3.0
 pkgrel=1
