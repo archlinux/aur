@@ -100,3 +100,9 @@ CONFIG_ATH_REG_DYNAMIC_USER_REG_HINTS=y
 
 # Enable support for AMDGPU color calibration features
 CONFIG_DRM_AMD_COLOR_STEAMDECK=y
+
+# Enable ath11k tracing for wifi debugging
+CONFIG_ATH11K_TRACING=y
+
+# Disable simple-framebuffer to fix logo regression
+CONFIG_SYSFB_SIMPLEFB=n

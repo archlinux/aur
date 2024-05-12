@@ -4,9 +4,9 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-neptune-65
-_tag=6.5.0-valve1
+_tag=6.5.0-valve5
 pkgver=${_tag//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc='SteamOS linux-neptune 6.5 mirrored from Valve'
 url="https://gitlab.steamos.cloud/jupiter/linux-integration/-/tree/$_tag"
 arch=(x86_64)
@@ -26,7 +26,7 @@ source=(
 )
 sha256sums=('SKIP'
             '5aff0f8584e01165dc20cd107df338f57a13ce7f0da14e07f4c9097cd748469f'
-            '84c0b6d9fa85ee75e713de2c83a8f2b432fdbe1498553f2129fccef2d5002019')
+            '94b879b743ea6385d1c7dbfbe65a003dd537b160f776f77bc43734466c726420')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
