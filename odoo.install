@@ -1,0 +1,12 @@
+post_upgrade(){
+ # show message only if major version differs
+ if [ "${1%.*}" -gt "${2%.*}" ]; then
+  echo "
+A new major version of Odoo has been released, you should upgrade
+the Odoo database by running the following as the odoo user
+
+    odoo -u all
+
+"
+ fi
+}
