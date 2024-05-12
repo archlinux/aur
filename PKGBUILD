@@ -5,8 +5,8 @@
 pkgname='python-bs4'
 _pkgname='bs4'
 pkgver='0.0.2'
-pkgrel=1
-pkgdesc='Beautiful Soup. bs4 name required by CrackMapExec trunk'
+pkgrel=2
+pkgdesc='Dummy package for BS4 name, because CME requires it.'
 arch=('any')
 url='https://pypi.python.org/pypi/bs4/'
 license=('custom:unknown')
