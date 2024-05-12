@@ -1,0 +1,39 @@
+diff --git a/rGADEM/src/background.c b/rGADEM/src/background.c
+index 896b581..4d4af4a 100644
+--- a/rGADEM/src/background.c
++++ b/rGADEM/src/background.c
+@@ -28,7 +28,7 @@ int read_userBackgModel(char *fileName,BACKGROUND_Model *back) {
+ 
+    fp=fopen(fileName,"r");
+    if (!fp) {
+-      error(fileName);
++      error("%s", fileName);
+       /*perror(fileName); exit(0); */
+    }
+ 
+diff --git a/rGADEM/src/read_matrix.c b/rGADEM/src/read_matrix.c
+index f131ce9..1ba2b1a 100755
+--- a/rGADEM/src/read_matrix.c
++++ b/rGADEM/src/read_matrix.c
+@@ -24,7 +24,7 @@ double **read_initial_pwm(int *matrixLen,char *fileName) {
+    pwm=alloc_double_double(MAX_MATRIX_LENGTH,4);
+ 
+    fp=fopen(fileName,"r");
+-   if (!fp) { error(fileName);}
++   if (!fp) { error("%s", fileName);}
+    /*if (!fp) { perror(fileName); exit(0); }*/
+ 
+    checkfscanf = fscanf(fp,"%d %d",&numRow,&numCol);
+diff --git a/rGADEM/src/read_seq.c b/rGADEM/src/read_seq.c
+index 8f156b4..c7556fb 100755
+--- a/rGADEM/src/read_seq.c
++++ b/rGADEM/src/read_seq.c
+@@ -27,7 +27,7 @@ char **read_seq(int *numSeq,int *seqLen,char **geneID,int maxNumSeq,int maxSeqLe
+    char  **seq,*buffer,*tok,*sscore;
+ 
+    fp=fopen(fileName,"r");
+-   if (!fp) { error(fileName);}
++   if (!fp) { error("%s", fileName);}
+    /*if (!fp) { perror(fileName); exit(0); }*/
+ 
+    maxBufferLen=MAX_BUFFER_LENGTH;
