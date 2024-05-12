@@ -4,7 +4,7 @@ url='https://wiki.ros.org/qt_gui_cpp'
 pkgname='ros-noetic-qt-gui-cpp'
 pkgver='0.4.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -44,7 +44,7 @@ source=(
 sha256sums=('fbc5a7b0a4da43f80e9216845aec2e247fac0a63512053c03a9f89024d026aad' 'SKIP')
 
 prepare() {
-    cd ${srcdir}/qt_gui-core-${pkgver}
+    cd ${srcdir}/qt_gui_core-${pkgver}
     patch -Np1 -i ${srcdir}/upstream.patch
 }
 
