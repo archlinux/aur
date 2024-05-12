@@ -2,7 +2,7 @@
 # Maintainer: Roman Zimbelmann <hut@hut.pm>
 
 pkgname=outfly-git
-pkgver=0.8.0_5_gc7e439a
+pkgver=0.8.5_20_gd03ca40
 pkgrel=1
 pkgdesc="A breathtaking 3D space game in the rings of Jupiter"
 arch=('any')
@@ -26,10 +26,10 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    cargo build --release --features "x11 wayland"
+    cargo build --release --features "x11 wayland embed_assets"
 }
 
 package() {
     cd "$srcdir/$pkgname"
-    src/build/linux/install.sh "$pkgdir"
+    build/linux/install.sh "$pkgdir"
 }

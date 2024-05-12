@@ -1,6 +1,6 @@
 pkgbase = outfly-git
 	pkgdesc = A breathtaking 3D space game in the rings of Jupiter
-	pkgver = 0.8.0_5_gc7e439a
+	pkgver = 0.8.5_20_gd03ca40
 	pkgrel = 1
 	url = https://codeberg.org/hut/outfly
 	arch = any

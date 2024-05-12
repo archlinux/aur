@@ -1,4 +1,4 @@
-src/
-pkg/
-outfly-git/
+src
+pkg
+outfly-git
 outfly-git*.tar*
