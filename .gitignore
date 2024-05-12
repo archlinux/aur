@@ -1,4 +1,5 @@
-*.zst
-/nimlangserver/
-/src/
-/pkg/
+*
+
+!PKGBUILD
+!.SRCINFO
+!nimble-lock.patch

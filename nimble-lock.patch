@@ -1,0 +1,19 @@
+--- src/nimlangserver-orig/nimble.lock	2024-05-12 14:52:48.660548013 +0200
++++ src/nimlangserver/nimble.lock	2024-05-12 14:53:40.870850984 +0200
+@@ -222,16 +191,6 @@
+         "sha1": "2e8a5f6fc067ed2eb103b54efe44d88da3526d36"
+       }
+     },
+-    "nim": {
+-      "version": "2.0.2",
+-      "vcsRevision": "c4c44d10df8a14204a75c34e499def200589cb7c",
+-      "url": "https://github.com/nim-lang/Nim.git",
+-      "downloadMethod": "git",
+-      "dependencies": [],
+-      "checksums": {
+-        "sha1": "3aa3fb7ac65816001bf960eb3a458681cebb1ff7"
+-      }
+-    },
+     "with": {
+       "version": "0.4.0",
+       "vcsRevision": "2f95909c767605e06670dc70f5cffd6b9284f192",
