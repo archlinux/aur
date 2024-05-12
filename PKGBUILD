@@ -28,15 +28,31 @@ pkgver() {
         | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_bumpVer() {
-    yq -i --yaml-output --arg pkg "$1" --arg ver "$2" \
+_rmDep() {
+    yq -i --yaml-output --arg pkg "$1" \
         "$(cat <<'EOF'
         ."extra-deps"
-        |= del(.[] | select(match("^\($pkg)-[0-9.]+")))
-         + [ "\($pkg)-\($ver)" ]
+        |= del(.[] | strings | select(match("^\($pkg)-[0-9.]+")))
 EOF
 )" stack.yaml
 }
+
+_bump() {
+    _rmDep "$1"
+    yq -i --yaml-output --argjson val "$2" '."extra-deps"+=[$val]' stack.yaml
+}
+
+__ver() { jq -cn '"\($pkg)-\($ver)"' --arg pkg "$1" --arg ver "$2"; }
+_bumpVer() { _bump "$1" "$(__ver "$@")"; }
+
+__repo() {
+    jq -cn '
+        $repo + {$commit, subdirs: $ARGS.positional}
+        | with_entries(select((.value|length) > 0))
+' --argjson repo "$1" --arg commit "$2" --args -- "${@:3}"
+}
+__kv() { jq -cn '{$key: $val}' --arg key "$1" --arg val "$2"; }
+_bumpGH() { _bump "$1" "$(__repo "$(__kv github "$2")" "${@:3}")"; }
 
 prepare() {
     cd "$pkgname"
@@ -47,23 +63,18 @@ prepare() {
     # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
     # for how to bump
     verPat='\([0-9]\+\.\)\{1,3\}[0-9]\+'
-    sedscript=''
     case "$_pandoc_type" in
     stock) return;;
-    commit)
-        sedscript+="/ pandoc-$verPat/{"
-        sedscript+='s#pandoc.*#github: jgm/pandoc#;'
-        sedscript+="a\  commit: $_pandoc_commit"$'\n'
-        sedscript+='}'
-        ;;
-    version)
-        sedscript+="s/ pandoc-$verPat/ pandoc-$_pandoc_ver/;"
-        sedscript+="s/ pandoc-cli-$verPat/ pandoc-cli-$_pandoc_ver/;"
+    commit)  _rmDep pandoc-cli
+             _rmDep pandoc-lua-engine
+             _bumpGH pandoc 'jgm/pandoc' "$_pandoc_commit" \
+                '.' 'pandoc-cli' 'pandoc-lua-engine';;
+    version) _bumpVer pandoc "$_pandoc_ver"
+             _bumpVer pandoc-cli "$_pandoc_ver"
         ;;
     esac
-    sed -i "$sedscript" stack.yaml
     _pandoc_bound=$(awk -F. '/[0-9]+\./{$NF++;print}' OFS=. <<<"${_pandoc_ver}")
-    sed -i "/, pandoc /s#<.*#<$_pandoc_bound#" \
+    sed -i "/pandoc.*< \?$_pandoc_ver/s#< \?[0-9.]*#<$_pandoc_bound#" \
         pandoc-crossref.cabal package.yaml
 }
 
