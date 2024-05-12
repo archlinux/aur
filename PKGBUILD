@@ -2,7 +2,7 @@
 
 pkgname=python-minikerberos
 _pkgname=minikerberos
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Kerberos manipulation library in pure Python"
 url="https://pypi.org/project/minikerberos"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-asn1crypto' 'python-asysocks' 'python-oscrypto')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('04408a586e67c4808e49f40981726a0a48b681cbff651ac3168e7b9d71ef868b')
+sha256sums=('1b07861c6c4038b66a3a755dcceb70d31bafb2b2ac681d607f5c59fd6b8547bc')
 
 build() {
     cd "${_pkgname}-${pkgver}"
