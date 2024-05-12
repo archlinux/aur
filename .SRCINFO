@@ -1,0 +1,18 @@
+pkgbase = python-mov-cli-youtube
+	pkgdesc = A mov-cli v4 plugin for watching youtube.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/mov-cli/mov-cli-youtube
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = python-build
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytubefix
+	depends = yt-dlp
+	provides = mov-cli-youtube
+	source = python-mov-cli-youtube-1.1.0.zip::https://github.com/mov-cli/mov-cli-youtube/archive/refs/tags/1.1.0.zip
+	md5sums = SKIP
+
+pkgname = python-mov-cli-youtube
