@@ -1,39 +1,37 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: incomplete <incomplete at axion dot co>
 # Contributor: ribbons <aur dot ribbons at codefive dot co dot uk>
-
-pkgname=python-vispy
-pkgver=0.14.1
+_base=vispy
+pkgname=python-${_base}
+pkgver=0.14.2
 pkgrel=1
-pkgdesc='A high-performance interactive 2D/3D data visualization library.'
-arch=('any')
-url='https://vispy.org'
-license=('BSD')
-depends=('python-numpy' 'python-freetype-py' 'python-hsluv' 'python-kiwisolver')
-makedepends=('python' 'python-build' 'python-installer' 'python-wheel'
-             'python-setuptools' 'python-numpy' 'cython' 'python-setuptools-scm'
-             'npm')
+pkgdesc="Interactive visualization in Python"
+arch=(any)
+url="https://${_base}.org"
+license=(BSD-3-Clause)
+depends=(python-numpy python-freetype-py python-hsluv python-kiwisolver python-packaging mesa-utils)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel cython npm fontconfig)
 optdepends=('ipython: ipython-static'
-            'python-pyglet: pyglet'
-            'python-pyqt5: pyqt5'
-            'python-pyqt6: pyqt6'
-            'pyside2: pyside2'
-            'pyside6: pyside6'
-            'python-pysdl2: sdl2'
-            'python-wxpython: wx'
-            'python-meshio: io'
-            'python-pillow: io')
-_pkgname=vispy
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vispy/vispy/archive/v$pkgver.tar.gz")
-sha256sums=('8a521a409b219506231ded04f814453ee4ab78979bddbfbe8ed04a29a9e85ca1')
+  'python-pyglet: pyglet'
+  'python-pyqt5: pyqt5'
+  'python-pyqt6: pyqt6'
+  'pyside2: pyside2'
+  'pyside6: pyside6'
+  'python-pysdl2: sdl2'
+  'python-wxpython: wx'
+  'python-meshio: io'
+  'python-pillow: io')
+source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base}/${_base}/archive/v${pkgver}.tar.gz)
+sha512sums=('1182ed867d0077db4f19a9a0bbb78c28a229a33e7b7d319b05c7db3486c01fcf4e30b75474a88a69325e2681d70b9f5059a39c74bd16195ade7e9628b753f4c6')
 
 build() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    python -m build --wheel --no-isolation
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    python -m installer --destdir="$pkgdir/" dist/*.whl
-    install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${_base}-${pkgver}
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

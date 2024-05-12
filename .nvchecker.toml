@@ -1,0 +1,5 @@
+[python-vispy]
+source = "github"
+github = "vispy/vispy"
+use_latest_release = "true"
+prefix = "v"
