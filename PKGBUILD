@@ -23,7 +23,7 @@ build() {
 package() {
   #cd "$srcdir/TermNotes-${pkgver}"
   cd "${srcdir}"/OptiCPU-v"${pkgver}"
-  install -Dm755 src/opticpu "$pkgdir/usr/bin/opticpu"
+  install -Dm755 opticpu "$pkgdir/usr/bin/opticpu"
 }
 
 sha256sums=('fdf95e44bd35394c89e1244b18010894c83631f3188d55cf75de01b79266e7dc')
