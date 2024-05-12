@@ -37,16 +37,15 @@ package() {
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "${pkgname}-${pkgver}.gem"
 
   gem unpack ${pkgname}-${pkgver}.gem --target $srcdir
-  local unpacked_dir="$srcdir/${pkgname}-${pkgver}"
-  mv $unpacked_dir/* $srcdir
-  rmdir $unpacked_dir
+  local gemsrc="$srcdir/${pkgname}-${pkgver}"
 
   # service
-  install -Dm644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/livesync.service"
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/system" "$gemsrc/livesync.service"
   # config
   install -d "$pkgdir/etc/livesync"
-  install -Dm640 "$srcdir/config/sample.rb" "$pkgdir/etc/livesync/config.rb"
+  install -Dm640 "$gemsrc/config/sample.rb" "$pkgdir/etc/livesync/config.rb"
 
+  rm -fr $gemsrc
   rm "$pkgdir/$_gemdir/cache/${pkgname}-${pkgver}.gem"
 }
 
