@@ -35,7 +35,7 @@ if "${_build_vulkan}"; then
   pkgname+=("${_name}-vulkan-git")
 fi
 pkgdesc='Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).'
-pkgver=0.1.32+1.r2377.20240416.9df6c85c
+pkgver=0.1.37+3.r2707.20240511.4ec7445a
 pkgrel=1
 arch=(
   'armv7h'
@@ -79,15 +79,15 @@ source=(
   "tmpfiles.d"
 )
 b2sums=(
-  'SKIP'
-  'SKIP'
-  '490289e7afe8720792a7890636737147041a1f60d91f70f1b39a758f75e00ebc21724a1beb4d6ec74b0ff868636c887953f50fffbb998edc56ab087fe9477bbb'
-  'a773bbf16cf5ccc2ee505ad77c3f9275346ddf412be283cfeaee7c2e4c41b8637a31aaff8766ed769524ebddc0c03cf924724452639b62208e578d98b9176124'
-  '3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec'
-  'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed'
+  'SKIP'  # ollama (git)
+  'SKIP'  # llama.cpp (git)
+  '02d92a87554f2842b100908395a2599a843d21b95bf2c1961c2d862c35dda906893af107460054bf02340c52e4b4e3baa80cf95d071968fb9e158e697edaf0c6'  # disable-rocm-cuda.gen_linux.sh.patch
+  'a773bbf16cf5ccc2ee505ad77c3f9275346ddf412be283cfeaee7c2e4c41b8637a31aaff8766ed769524ebddc0c03cf924724452639b62208e578d98b9176124'  # ollama.service
+  '3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec'  # sysusers.conf
+  'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed'  # tmpfiles.d
 )
 options+=('emptydirs')
-#options+=('!lto') # openmpi variant fails to link without LTO.
+#options+=('!lto') # openmpi variant fails to link _without_ LTO.
 
 _check_cpufeature() {
   ## Checks if the host CPU supports the feature passed as argument "$1".
@@ -245,9 +245,9 @@ build() {
 
   if "${_build_clblas}"; then
     cd "${srcdir}/ollama-clblas"
-    
+
     export OLLAMA_CUSTOM_CPU_DEFS="${_cmake_options_common} ${_cmake_options_clblas}"
-    
+
     printf '\n'
     printf '%s\n' "   > Compiling clblas variant ..."
     printf '\n'
