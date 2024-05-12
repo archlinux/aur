@@ -1,0 +1,16 @@
+pkgbase = python-mov-cli-files
+	pkgdesc = A mov-cli v4 plugin for watching files on your device.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/mov-cli/mov-cli-files
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = python-build
+	makedepends = python-wheel
+	depends = python
+	provides = mov-cli-files
+	source = python-mov-cli-files-1.1.0.zip::https://github.com/mov-cli/mov-cli-files/archive/refs/tags/1.1.0.zip
+	md5sums = SKIP
+
+pkgname = python-mov-cli-files
