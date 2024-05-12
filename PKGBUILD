@@ -1,7 +1,7 @@
 # Maintainer: lanthora <lanthora@outlook.com>
 
 pkgname=candy-git
-pkgver=5.5.r0.g4b9e79a
+pkgver=5.8.1.r1.gc76ef8f
 pkgrel=1
 pkgdesc="A reliable, low-latency, and anti-censorship virtual private network"
 url="https://github.com/lanthora/candy"
@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 makedepends=('cmake' 'ninja' 'pkgconf' 'gcc' 'git')
 depends=('fmt' 'glibc' 'gcc-libs' 'openssl' 'libconfig' 'uriparser' 'spdlog' 'poco')
 conflicts=('candy')
-backup=('etc/candy.conf')
+backup=('etc/candy.cfg')
 
 pkgver() {
         cd "$pkgname"
@@ -27,7 +27,7 @@ build() {
 
 package() {
         cd "$pkgname"
-        install -Dm644 candy.conf "$pkgdir/etc/candy.conf"
+        install -Dm644 candy.cfg "$pkgdir/etc/candy.cfg"
         install -Dm644 candy.service "$pkgdir/usr/lib/systemd/system/candy.service"
         install -Dm644 candy@.service "$pkgdir/usr/lib/systemd/system/candy@.service"
         install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
