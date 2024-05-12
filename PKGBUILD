@@ -2,7 +2,7 @@
 
 _pkgname=iyuuplus
 pkgname="${_pkgname}-git"
-pkgver=20240507.134502
+pkgver=20240512.105054
 pkgrel=1
 pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
@@ -33,7 +33,7 @@ package() {
     install -Dm644 "${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 
     cd "${_pkgname}"
-    sed -i 's|<i .\+git_pull.\+通过git拉取最新代码.\+></i>||' plugin/admin/app/view/index/dashboard.html
+    sed -i 's|<span .\+git_pull.\+通过git拉取最新代码.\+</span>||' plugin/admin/app/view/index/dashboard.html
 
     install -Dm644 LICENSE                "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     install -Dm644 README.md              "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
