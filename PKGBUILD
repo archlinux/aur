@@ -1,22 +1,22 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Rarr
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Read Zarr Files in R"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
   blosc
-  lz4
   r-httr
   r-jsonlite
   r-paws.storage
   r-r.utils
   r-stringr
+  zstd
 )
 checkdepends=(
   r-mockery
@@ -29,19 +29,9 @@ optdepends=(
   r-mockery
   r-tinytest
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "system-libs.patch")
-md5sums=('94af864ae3de3557840993a429944ea2'
-         '83d4df5360e4cf2088753078dc2970b6')
-b2sums=('1ed0ea1b9eb24b60fcbebcd56ebb49f149a82b3d3218d0f86214537836c051f07cfcceac84ac53711005249cbd5c157b55371c629510de7457f9054b1dee9d1c'
-        '137df7ed9d8504b913aebd2588a8d88651d6a46bb8985981f0aa3032244372fd163b48c691b1fd2918d8f9aa3834b2538f6a4901bb01538fa8a0875e0f771353')
-
-prepare() {
-  cd "$_pkgname"
-  # use system blosc and lz4
-  patch -Np1 -i ../system-libs.patch
-  autoconf
-}
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('b4ccf32bada187fdbb1ce37b6c49b23f')
+b2sums=('1b13a23377f723ea5d33e2b832edf10b79c92b1a6eca513859b3307b334b5a686bfc64a409a43dececda5840e093facd105b8582310a3c160f87954eccf57112')
 
 build() {
   mkdir build
