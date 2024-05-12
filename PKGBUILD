@@ -5,19 +5,18 @@ pkgrel=1
 pkgdesc="A utility for optimizing CPU usage and enhancing system performance on Linux."
 arch=('x86_64')
 url="https://github.com/felipealfonsog/OptiCPU"
-license=('BSD 3-clause')
+license=('GPL')
 depends=('gcc' 'glibc' 'libutil-linux' 'coreutils')
-
-source=("https://github.com/felipealfonsog/OptiCPU/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/felipealfonsog/OptiCPU/archive/v$pkgver.tar.gz")
 sha256sums=('234d213d96cd5ba10f575135bde35a0e143c03060490924fd4f968632625bb9e')
 
 build() {
-  cd "${srcdir}/OptiCPU-${pkgver}"
-  gcc -o opticpu src/opticpu.c || return 1
+    cd "$srcdir/$pkgname-$pkgver/src"
+    gcc -o "$pkgname" "$pkgname.c"
 }
 
 package() {
-  cd "${srcdir}/OptiCPU-${pkgver}/src"
-  install -Dm755 opticpu "${pkgdir}/usr/bin/opticpu" || return 1
+    cd "$srcdir/$pkgname-$pkgver/src"
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
