@@ -1,7 +1,7 @@
 pkgbase = ttop-bin
 	pkgdesc = System monitoring tool with historical data service, triggers and top-like TUI (binary release)
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/inv2004/ttop
 	arch = x86_64
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = ttop-bin
 	source = ttop1.5.0::https://github.com/inv2004/ttop/releases/download/v1.5.0/ttop
 	source = LICENSE2023::https://github.com/inv2004/ttop/raw/v1.5.0/LICENSE
 	source = README1.5.0.md::https://github.com/inv2004/ttop/raw/v1.5.0/README.md
-	source = https://github.com/inv2004/ttop/raw/v1.5.0/.github/images/screen.png
+	source = screen1.5.0.png::https://github.com/inv2004/ttop/raw/v1.5.0/.github/images/screen.png
 	sha256sums = 1b725380538fcc4a22356eba7f3a084d247ebf79af00012dd2cdab41b2401624
 	sha256sums = d02b237a4b7b295eea657a27274b6d6ed08695807006562d7252398e34f59079
 	sha256sums = 2a8e481fa846fcc5623f721a4aba8d9b7afee2ff2eaed8234a06107f77ac4d9d
-	sha256sums = 9debd882651a68296e54d89c012be37834ddaa926ba34bf7e4eb29ae6998c28c
+	sha256sums = 9746ec96a19dddb22eb8165825c70be3abcf8ff43e44301ef0ad9fc88fa98075
 
 pkgname = ttop-bin
