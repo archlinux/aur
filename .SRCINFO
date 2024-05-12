@@ -1,6 +1,6 @@
 pkgbase = mmtex
 	pkgdesc = A minimal modern (Lua)TeX distribution
-	pkgver = 20231121
+	pkgver = 20240512
 	pkgrel = 1
 	url = https://github.com/vlasakm/mmtex
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mmtex
 	depends = zlib
 	depends = otf-latin-modern
 	depends = otf-latinmodern-math
-	source = https://github.com/vlasakm/mmtex/archive/v20231121/mmtex-20231121.tar.gz
-	sha256sums = 14b56971bdc35f01f873f9704b5be9a3cbaff57394fb6a95d6739aca8d83baab
+	source = https://github.com/vlasakm/mmtex/archive/v20240512/mmtex-20240512.tar.gz
+	sha256sums = ca0d009e74dff59c0979ae86f6a952adae726c1898705325d4229b07fdd8fbd1
 
 pkgname = mmtex
