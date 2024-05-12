@@ -14,6 +14,6 @@ pkgbase = python-daphne
 	depends = python-twisted
 	depends = python-autobahn
 	source = https://pypi.io/packages/source/d/daphne/daphne-4.1.2.tar.gz
-	sha256sums = 882fab39d0b90c6b2709b38116c95f660b6cf236600115dd7c13161fb98b3448
+	sha256sums = fcbcace38eb86624ae247c7ffdc8ac12f155d7d19eafac4247381896d6f33761
 
 pkgname = python-daphne

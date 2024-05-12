@@ -22,7 +22,7 @@ depends=(
 )
 optdepends=()
 source=("https://pypi.io/packages/source/d/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('882fab39d0b90c6b2709b38116c95f660b6cf236600115dd7c13161fb98b3448')
+sha256sums=('fcbcace38eb86624ae247c7ffdc8ac12f155d7d19eafac4247381896d6f33761')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
