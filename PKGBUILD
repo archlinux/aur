@@ -1,5 +1,5 @@
-# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Maintainer: yustin <#archlinux-proaudio@libera.chat>
+# Co-Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=rju-git
 _pkgname=rju
@@ -8,24 +8,20 @@ pkgrel=1
 pkgdesc='JackAudioToolkit'
 arch=('x86_64')
 url='https://rohandrape.net/?t=rju'
-license=('GPL-2.0-only')
+license=('GPL-3.0-only')
 depends=( 'jack' 'libsamplerate' 'liblo' 'libsndfile' 'libxext' 'libx11' 'libpng')
-makedepends=('git' 'cmake' 'asciidoc')
-options=('!lto' '!buildflags')
+makedepends=( 'git' 'asciidoc' 'vst2sdk' 'sed' )
+#options=('!lto' '!buildflags')
+options=( '!buildflags')
 conflicts=('rju')
 provides=('rju')
 source=( "git+https://gitlab.com/rd--/rju.git"
         "git+https://gitlab.com/rd--/r-common.git"
-        "vstsdk::git+https://github.com/R-Tur/VST_SDK_2.4.git"
-        "pedantic.patch"
-        "pedantic2.patch"
        )
   
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
-            '51310e029f4f861f63693593aa95c7f83854807afea466f3491b4ff715254bc7'
-            '602d5b75419f0552f845af0b173cc5666cb2e80869ad7b5afa8bfa7661332378')
+            )
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -34,17 +30,15 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  patch -p1 < "$srcdir/pedantic.patch"
   git config --file=.gitmodules submodule.cmd/r-command.url "$srcdir/r-command"
   git -c protocol.file.allow=always submodule update --init
-  cd "$srcdir/$_pkgname/cmd/r-common"
-  patch -p1 < "$srcdir/pedantic2.patch"
+  cd cmd
+  sed 's#VST_SDK = $(HOME)/opt/build/vst3_sdk#VST_SDK = /usr/include/vst36#' -i Makefile
+  sed "/CXXFLAGS +=/s/=/= -fpermissive/" -i Makefile
 }
 
 build() {
   cd "$srcdir/$_pkgname/cmd"
-  export CFLAGS+=" -I$srcdir/vstsdk/"
-  export CXXFLAGS+=" -I$srcdir/vstsdk/"
   make all
  
   cd ${srcdir}/${_pkgname}/md
