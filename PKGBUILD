@@ -2,7 +2,7 @@
 
 pkgname=python-pywerview
 _pypiname=pywerview
-pkgver=0.5.1
+pkgver=0.6
 pkgrel=1
 pkgdesc="A (partial) Python rewriting of PowerSploit's PowerView."
 url="https://github.com/the-useless-one/pywerview"
@@ -11,7 +11,7 @@ license=('GPLv3')
 depends=('python' 'impacket' 'python-lxml' 'python-beautifulsoup4')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/the-useless-one/pywerview/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('68626566b17aabd523af3fc7c992181552280ba347383f6d2ab4ca007912a544')
+sha256sums=('b40bef606a2bf2665cee1642614ca3a5f8e5029e499e34ed726474b45e3e4d4d')
 
 build() {
     cd "${_pypiname}-${pkgver}"
