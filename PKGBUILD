@@ -20,7 +20,7 @@ source=("https://nightly.odoo.com/$pkgver/nightly/src/${_pkgname}_$pkgver.latest
         "odoo.service"
         "odoo.sysusers"
         "odoo.tmpfiles")
-b2sums=('623b9a1074bfa10082c70cd28a22d378d04955859b9b76cae69b50f77717036d9e722fec1e69e04c0b1ab4c747e656a1e8a888167a84e42bdb87e2a752079f17'
+b2sums=('SKIP'
         '8e9041197f9aa0dd84f55e7fd742382f52a3a2198fcf30743db5af2e50a52e2a402db3b777baa9d9f662ea51bf26296b27a3d0d9f4cbbf323f2aa7a93367a99c'
         '1ef682d87ba12dd8a185ba36701b737f8feb0c1e6eb4b23302a0dc5930ef63c990af65bc45a36313f879a29a23cbdb602e7fc34ba9cee2e46d9a3d8407d5751a'
         'd912aad674e86ed75820af252e978e0bc0bf2b8a5e956d7b33734eacff98639e5efe460a6a79ca1ffdad5a174a3a0f774cff56e2db19667e8597f9b27b3e547b'
