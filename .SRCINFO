@@ -18,6 +18,7 @@ pkgbase = sk-chos-addon
 	depends = cage
 	depends = wlr-randr
 	depends = glow
+	depends = libcec
 	provides = sk-chos-addon
 	conflicts = sk-chos-addon-git
 	replaces = sk-chos-addon-git

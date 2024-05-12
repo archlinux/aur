@@ -21,6 +21,7 @@ depends=('expect'
     'cage'
     'wlr-randr'
     'glow'
+    'libcec'
 )
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon-git)
