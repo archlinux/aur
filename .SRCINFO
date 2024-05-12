@@ -1,16 +1,18 @@
 pkgbase = python-optimistix
 	pkgdesc = Nonlinear optimisation in JAX and Equinox
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/patrick-kidger/optimistix
 	arch = any
-	license = Apache
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-beartype
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
 	makedepends = python-wheel
 	depends = python-lineax
-	source = optimistix-0.0.6.tar.gz::https://github.com/patrick-kidger/optimistix/archive/v0.0.6.tar.gz
-	sha512sums = 4d756b3160df9925f8f32071e9fb94e2637c2f82769f69aa296f63b1a8e81234239be7c17ced2148bbb8fa441a976aea951fe0a65619b45e481d5c7ef6e19adb
+	source = optimistix-0.0.7.tar.gz::https://github.com/patrick-kidger/optimistix/archive/v0.0.7.tar.gz
+	sha512sums = 845d3b0e5fba4b3e186eff1a7839147961adc0c4fbd6b8d0d3e261b9bc191e6b396ca8b96a222842b1762b907e5f78bec70b0ddc6e30ab1e4e35acc73bc39529
 
 pkgname = python-optimistix

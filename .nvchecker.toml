@@ -1,0 +1,5 @@
+[python-optimistix]
+source = "github"
+github = "patrick-kidger/optimistix"
+use_latest_release = "true"
+prefix = "v"
