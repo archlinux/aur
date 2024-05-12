@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
@@ -30,7 +30,7 @@ prepare() {
     cd "craftos2-$pkgver"
     mkdir icons
     unzip resources/linux-icons.zip -d icons
-    make -C craftos2-lua -j$(nproc) linux
+    make -C craftos2-lua -j$(nproc) linux MYCFLAGS=-Wno-error=incompatible-pointer-types
 }
 
 build() {
