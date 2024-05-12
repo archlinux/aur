@@ -5,7 +5,6 @@
 
 pkgname=edgetx-companion
 pkgver=2.10.0
-_rc=-rc3
 pkgrel=1
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
@@ -20,7 +19,7 @@ makedepends=('arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib'
 options=('!debug')
 provides=('companion')
 conflicts=('companion')
-source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver$_rc"
+source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
         "git+https://github.com/raphaelcoeffic/AccessDenied.git"
         "git+https://github.com/FreeRTOS/FreeRTOS-Kernel.git"
         "git+https://github.com/adfernandes/segger-rtt.git"
@@ -29,7 +28,7 @@ source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver$_rc"
         "git+https://github.com/EdgeTX/lvgl.git"
         "git+https://github.com/nothings/stb.git"
         install.patch)
-b2sums=('3330392c092e883ccca0cc45132c95b10a89b9b3d8bf62c761ffcf75eaa1a837fe23c51a787cb0f4a936f1447b134e9dab75818ab11e1c86a530d9e27bf6e051'
+b2sums=('0a0ff8407e81fa0f85c183f014087c2cf51ced4f4e48a1d5fb3638dd3b0e9e87960614a099a1edef7ca42e569778c4fc56a4b71d0f760f1e1d1ed218d0b90cb0'
         'SKIP'
         'SKIP'
         'SKIP'
