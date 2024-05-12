@@ -1,9 +1,10 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Alberto Oporto <otreblain@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Sam L. Yes <samlukeyes123@gmail.com>
 
 pkgname=python-pyreadstat
 _pkg=${pkgname#python-}
-pkgver=1.2.1
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Reads sas, spss and stata files into Pandas data frames."
 license=('Apache' 'MIT')
@@ -15,7 +16,7 @@ makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'pyt
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('163be03b2519a54feedbc30d0189aa00151cc211ec36d557a6d6e19bf266d240')
+sha256sums=('0118b0f6c945f71eef1dee94ce5865ddd61c7d1bc438f6fbb7c595e09b6167b9')
 
 build() {
 	cd "$_pkg-$pkgver"
