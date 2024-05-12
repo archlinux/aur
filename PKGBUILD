@@ -20,6 +20,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'nodejs'
   'pnpm'
 )
 optdepends=(
