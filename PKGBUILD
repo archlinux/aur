@@ -1,4 +1,5 @@
-# Maintainer:Integral<luckys68@126.com>
+# Maintainer: Integral <integral@member.fsf.org>
+
 pkgname=mastergo-uos
 pkgver=1.2.1
 pkgrel=1
