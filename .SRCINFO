@@ -1,13 +1,13 @@
 pkgbase = bip39-git
 	pkgdesc = Generate mnemonic codes according to BIP-0039
-	pkgver = r18.c019fc1
+	pkgver = 0.2.0.r1.6463895
 	pkgrel = 1
 	url = https://github.com/kugland/bip39
 	arch = x86_64
 	license = MIT
+	checkdepends = cunit
 	makedepends = git
-	makedepends = make
-	makedepends = gcc
+	makedepends = meson
 	depends = libsodium
 	conflicts = bip39
 	source = bip39::git+https://github.com/kugland/bip39.git
