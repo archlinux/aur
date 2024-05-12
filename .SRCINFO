@@ -1,0 +1,20 @@
+pkgbase = clash-rs-git
+	pkgdesc = custom protocol network proxy
+	pkgver = latest.r0.gc69339e6
+	pkgrel = 1
+	url = https://github.com/Watfaq/clash-rs
+	arch = any
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = xz
+	provides = clash-rs
+	conflicts = clash-rs
+	options = !lto
+	source = git+https://github.com/Watfaq/clash-rs.git
+	md5sums = SKIP
+
+pkgname = clash-rs-git
