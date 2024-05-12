@@ -1,4 +1,5 @@
-# Maintainer:Integral<luckys68@126.com>
+# Maintainer: Integral <integral@member.fsf.org>
+
 pkgname=maxhub-share-uos
 pkgver=3.12.77.6
 pkgrel=1
