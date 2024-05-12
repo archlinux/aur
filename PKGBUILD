@@ -1,8 +1,9 @@
 # Maintainer: qwjyh <urataw421 at gmail dot com>
 
-pkgname=servitor
+pkgname=servitor-bin
+_pkgname=servitor
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line Fediverse client that doesn’t require a server"
 arch=('x86_64' 'arm64')
 url="https://github.com/BentonEdmondson/servitor"
@@ -21,7 +22,7 @@ case "${CARCH}" in
 esac
 
 package() {
-    install -Dm755 "servitor.linux.${CARCH}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "servitor.linux.${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
 # vim: sw=2:
