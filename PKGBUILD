@@ -12,12 +12,12 @@ source=("https://github.com/felipealfonsog/OptiCPU/archive/refs/tags/v${pkgver}.
 sha256sums=('fdf95e44bd35394c89e1244b18010894c83631f3188d55cf75de01b79266e7dc')
 
 build() {
-  cd "${srcdir}/OptiCPU-v${pkgver}"
+  cd "${srcdir}/OptiCPU-${pkgver}"
   gcc -o opticpu src/opticpu.c
 }
 
 package() {
-  cd "${srcdir}/OptiCPU-v${pkgver}"
+  cd "${srcdir}/OptiCPU-${pkgver}/src"
   install -Dm755 opticpu "${pkgdir}/usr/bin/opticpu"
 }
 
