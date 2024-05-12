@@ -1,6 +1,7 @@
-# pre_remove() {
-# 	echo "Removing termtree"
-# 	ls
-# 	cd "$pkgname"
-# 	make uninstall
-# }
+pre_remove() {
+	echo "Removing termtree"
+	@sudo rm /usr/share/man/man1/ttree.1
+	@sudo rm /usr/bin/ttree
+	ls
+	cd "$pkgname"
+}

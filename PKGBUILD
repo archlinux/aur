@@ -25,12 +25,5 @@ build() {
 package() {
 	cd "$pkgname"
 	make install
-
-  pre_remove() {
-      echo "Removing termtree"
-      ls
-      cd "$pkgname"
-      make uninstall
-  }
 }
 
