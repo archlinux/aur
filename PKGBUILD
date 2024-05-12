@@ -6,7 +6,7 @@ pkgdesc="Remind you to pack your rain gear when it’s forecast to rain"
 url="https://gitlab.com/christophfink/wolkenbruch/"
 
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("GPL-3.0-or-later")
@@ -32,8 +32,6 @@ b2sums=('bd17b9c5776f31af26c3d47ae275a36dfc26a993f62c2f193f585a80ea36e07a77161ca
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
     python -m build --wheel --no-isolation
-
-    sed 's/^/# /' -i "src/wolkenbruch/wolkenbruch.yml.template"
 }
 
 package() {
