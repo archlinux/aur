@@ -1,0 +1,11 @@
+diff '--color=auto' --unified --recursive --text wsjtx-orig/qmap/libqmap/decode0.f90 wsjtx/qmap/libqmap/decode0.f90
+--- wsjtx-orig/qmap/libqmap/decode0.f90 2024-05-12 23:35:47.474710380 +0900
++++ wsjtx/qmap/libqmap/decode0.f90  2024-05-12 23:31:17.546623720 +0900
+@@ -2,6 +2,7 @@
+
+   use timer_module, only: timer
+   parameter (NSMAX=60*96000)
++  parameter (NFFT=32768)
+
+   real*4 dd(2,NSMAX),ss(322,NFFT),savg(NFFT)
+   real*8 fcenter

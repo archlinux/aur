@@ -5,12 +5,23 @@ pkgdesc="Fork of WSJT-X with automation features"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wsjt-z/"
 license=('GPL-3')
-makedepends=(cmake asciidoc asciidoctor boost git)
+makedepends=(cmake asciidoc asciidoctor boost dos2unix git)
+options=('!lto')
 depends=(hamlib qt5-base qt5-multimedia qt5-serialport qt5-tools libusb libusb-compat gcc-fortran libpulse libpng fftw)
 provides=(wsjtx)
 conflicts=(wsjtx)
-source=(https://netcologne.dl.sourceforge.net/project/wsjt-z/Source/wsjtz-$pkgver-rc2-$pkgrel.zip)
-sha512sums=('SKIP')
+source=(https://netcologne.dl.sourceforge.net/project/wsjt-z/Source/wsjtz-$pkgver-rc2-$pkgrel.zip
+	decode.patch)
+sha512sums=('SKIP'
+	    'SKIP')
+
+prepare(){
+    # decode patch
+    cd $srcdir/wsjtx
+    dos2unix $srcdir/wsjtx/qmap/libqmap/decode0.f90
+    patch --forward --strip 1 < $srcdir/decode.patch
+    unix2dos $srcdir/wsjtx/qmap/libqmap/decode0.f90
+}
 
 build() {
     mkdir -p $srcdir/build
