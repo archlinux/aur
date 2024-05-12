@@ -1,5 +1,6 @@
-# Maintainer:Integral<luckys68@126.com>
-# Maintainer:ston<2424284164@qq.com>
+# Maintainer: Integral <integral@member.fsf.org>
+# Maintainer: ston <2424284164@qq.com>
+
 pkgname=rishiqing-uos
 pkgver=3.3.1
 pkgrel=3
