@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=konversation-git
-pkgver=1.9.231170.r9356.388f98e6a
+pkgver=1.10.240770.r9556.e78b0ae1f
 pkgrel=1
 pkgdesc='A user friendly IRC client for KDE. (GIT Version)'
 arch=('x86_64')
@@ -10,33 +10,35 @@ license=('GPL2' 'FDL')
 depends=(
   'gcc-libs' # libstdc++.so
   'glibc' # libc.so libm.so
-  'karchive5' # libKF5Archive.so
-  'kbookmarks5' # libKF5Bookmarks.so
-  'kcodecs5' # libKF5Codecs.so
-  'kcompletion5' # libKF5Completion.so
-  'kconfig5' # libKF5ConfigCore.so libKF5ConfigGui.so
-  'kconfigwidgets5' # libKF5ConfigWidgets.so
-  'kcoreaddons5' # libKF5CoreAddons.so
-  'kcrash5' # libKF5Crash.so
-  'kdbusaddons5' # libKF5DBusAddons.so
-  'kglobalaccel5' # libKF5GlobalAccel.so
-  'ki18n5' # libKF5I18n.so
-  'kidletime5' # libKF5IdleTime.so
-  'kio5' # libKF5KIOCore.so libKF5KIOFileWidgets.so libKF5KIOGui.so libKF5KIOWidgets.so
-  'kitemviews5' # libKF5ItemViews.so
-  'knewstuff5' # libKF5NewStuffWidgets.so
-  'knotifications5' # libKF5Notifications.so
-  'knotifyconfig5' # libKF5NotifyConfig.so
-  'kparts5' # libKF5Parts.so
-  'kservice5' # libKF5Service.so
-  'ktextwidgets5' # libKF5TextWidgets.so
-  'kwallet5' # libKF5Wallet.so
-  'kwidgetsaddons5' # libKF5WidgetsAddons.so
-  'kwindowsystem5' # libKF5WindowSystem.so
-  'kxmlgui5' # libKF5XmlGui.so
-  'qca-qt5' # libqca-qt5.so
-  'qt5-base' # libQt5Core.so libQt5DBus.so libQt5Gui.so libQt5Network.so libQt5Widgets.so libQt5Xml.so
-  'qt5-multimedia' # libQt5Multimedia.so
+  'karchive' # libKF6Archive.so
+  'kbookmarks' # libKF6Bookmarks.so
+  'kcodecs' # libKF6Codecs.so
+  'kcompletion' # libKF6Completion.so
+  'kconfig' # libKF6ConfigCore.so libKF6ConfigGui.so
+  'kconfigwidgets' # libKF6ConfigWidgets.so
+  'kcoreaddons' # libKF6CoreAddons.so
+  'kcrash' # libKF6Crash.so
+  'kdbusaddons' # libKF6DBusAddons.so
+  'kglobalaccel' # libKF6GlobalAccel.so
+  'ki18n' # libKF6I18n.so
+  'kidletime' # libKF6IdleTime.so
+  'kio' # libKF6KIOCore.so libKF6KIOFileWidgets.so libKF6KIOGui.so libKF6KIOWidgets.so
+  'kitemviews' # libKF6ItemViews.so
+  'knewstuff' # libKF6NewStuffWidgets.so
+  'knotifications' # libKF6Notifications.so
+  'knotifyconfig' # libKF6NotifyConfig.so
+  'kparts' # libKF6Parts.so
+  'ktextwidgets' # libKF6TextWidgets.so
+  'kwallet' # libKF6Wallet.so
+  'kwidgetsaddons' # libKF6WidgetsAddons.so
+  'kwindowsystem' # libKF6WindowSystem.so
+  'kxmlgui' # libKF6XmlGui.so
+  'kstatusnotifieritem' # libKF6StatusNotifierItem.so
+  'kcolorscheme' # libKF6ColorScheme.so
+  'qca-qt6' # libqca-qt6.so
+  'qt6-base' # libQt6Core.so libQt6DBus.so libQt6Gui.so libQt6Network.so libQt6Widgets.so libQt6Xml.so
+  'qt6-multimedia' # libQt6Multimedia.so
+  'qt6-5compat' # libQt6Core5Compat.so
   'bash'
   'perl'
   'hicolor-icon-theme'
@@ -44,8 +46,8 @@ depends=(
 makedepends=(
   'git'
   'extra-cmake-modules'
-  'qt5-tools'
-  'kdoctools5'
+  'qt6-tools'
+  'kdoctools'
   'python'
 )
 optdepends=('python: python scripting support')
