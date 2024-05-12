@@ -1,0 +1,13 @@
+pkgbase = hare-nbt
+	pkgdesc = NBT support for Hare
+	pkgver = r2.c3b3c08
+	pkgrel = 1
+	url = https://git.sr.ht/~arslee07/hare-nbt
+	arch = any
+	license = MPL2
+	makedepends = git
+	depends = hare
+	source = hare-nbt::git+https://git.sr.ht/~arslee07/hare-nbt#commit=c3b3c08b5a4ba7c68a0bf5a8927955373e003dfd
+	b2sums = SKIP
+
+pkgname = hare-nbt
