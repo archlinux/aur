@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-fml
-pkgver=3.14.2
+pkgver=3.14.14
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -18,12 +18,12 @@ depends=(
   libdisplay-info.so
   libglvnd
   libdrm
+  libliftoff.so
   libinput
   libpipewire-0.3.so
   libpixman-1.so
   libseat.so
   libudev.so
-  libvulkan.so
   libx11
   libxcb
   libxcomposite
@@ -68,7 +68,7 @@ source=(
   0001-disable-steam-touch-click-atom.patch
 )
 
-sha256sums=('9ba53bdbae2407d74f35345c720b25977f46b1745df83214c9894b50e842afd2'
+sha256sums=('e9bb0560dcf6e9ba3a6b0a47b005609d9efea80d4fcb064b0aa4f60681338f4a'
             'e39e0c91b297bfd707afcda84ecdc15a08c22e2ad4c347fc3533b1ed98fb3f85'
             'SKIP'
             '03726f2fb44ae79e6a398e8f9aaaf8054800dda9b8298726157522fe5f7296b1'
