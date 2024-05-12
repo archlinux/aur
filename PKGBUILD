@@ -15,10 +15,12 @@ options=( '!buildflags')
 conflicts=( 'rju' )
 source=( "git+https://gitlab.com/rd--/rju.git"
          "git+https://gitlab.com/rd--/r-common.git"
+         "jack.plumbing"
        )
   
 sha256sums=('SKIP'
             'SKIP'
+            '6974f25a6d3ad988564fe307f92e3a70d919dc20b06b14c2d8e4299fdbfd75ba'
             )
 
 pkgver() {
