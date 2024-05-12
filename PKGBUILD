@@ -2,11 +2,12 @@
 # Contributor: Konsonanz <maximilian.lehmann@protonmail.com>
 
 ## WIP
+# Currently fails to build with Qt 6.7
 
 pkgname=gpgfrontend
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
-pkgdesc="OpenPGP crypto tool and gui frontend for modern GnuPG"
+pkgdesc="An exceptional GUI frontend for the modern GnuPG (gpg)"
 arch=('x86_64')
 url="https://gpgfrontend.bktus.com"
 license=('GPL-3.0-or-later')
@@ -19,30 +20,25 @@ depends=(
   'libassuan'
   'libconfig'
   'libgpg-error'
+  'mimalloc'
   'ncurses'
-  'qt6-5compat'
-  'qt6-base'
+  'qt5-base'
 )
 makedepends=(
   'boost'
   'chrpath'
   'cmake'
   'git'
-  'qt6-tools'
+  'qt5-tools'
 )
-_commit=f00c1725a247ea12760396ae5184ab17c7681f62  # tags/v2.1.2^0
-source=("git+https://github.com/saturneric/GpgFrontend#commit=${_commit}"
-        'git+https://github.com/gpg/gpgme.git'
-        'git+https://github.com/gpg/libassuan.git'
-        'git+https://github.com/gpg/libgpg-error.git'
-        'git+https://github.com/nlohmann/json.git'
+source=("git+https://github.com/saturneric/GpgFrontend#tag=v$pkgver"
         'git+https://github.com/bricke/Qt-AES.git'
+        'git+https://github.com/gabime/spdlog.git'
+        'git+https://github.com/microsoft/mimalloc.git'
+        'git+https://github.com/google/googletest.git'
         'git+https://github.com/libarchive/libarchive.git'
-        'git+https://github.com/hyperrealm/libconfig.git'
-        'git+https://github.com/gabime/spdlog.git')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
+        'git+https://github.com/qt/qttranslations.git')
+sha256sums=('529e48fbe251aed122f2b326074df66570ae9bafe381bc0cf5a7b26a1d15b2a2'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -50,22 +46,15 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
-pkgver() {
-  cd GpgFrontend
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
-
 prepare() {
   cd GpgFrontend
   git submodule init
-  git config submodule.third_party/gpgme.url "$srcdir/gpgme"
-  git config submodule.third_party/libassuan.url "$srcdir/libassuan"
-  git config submodule.third_party/libgpg-error.url "$srcdir/libgpg-error"
-  git config submodule.third_party/json.url "$srcdir/json"
-  git config submodule.third_party/Qt-AES.url "$srcdir/Qt-AES"
-  git config submodule.third_party/libarchive.url "$srcdir/libarchive"
-  git config submodule.third_party/libconfig.url "$srcdir/libconfig"
+  git config submodule.third_party/qt-aes.url "$srcdir/Qt-AES"
   git config submodule.third_party/spdlog.url "$srcdir/spdlog"
+  git config submodule.third_party/mimalloc.url "$srcdir/mimalloc"
+  git config submodule.third_party/googletest.url "$srcdir/googletest"
+  git config submodule.third_party/libarchive.url "$srcdir/libarchive"
+  git config submodule.third_party/qttranslations.url "$srcdir/qttranslations"
   git -c protocol.file.allow=always submodule update
 
   # /usr/local/ > /usr/
@@ -77,6 +66,7 @@ build() {
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DGPGFRONTEND_GENERATE_LINUX_INSTALL_SOFTWARE='ON' \
+    -DGPGFRONTEND_QT5_BUILD='ON' \
     -Wno-dev
   cmake --build build
 }
@@ -84,15 +74,15 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  install -m755 build/src/module/libgpgfrontend_module.so -t "$pkgdir/usr/lib/"
-  install -m755 build/src/module/integrated/gnupg_info_gathering_module/libgpgfrontend_integrated_module_gnupg_info_gathering.so -t "$pkgdir/usr/lib/"
-  install -m755 build/src/module/integrated/version_checking_module/libgpgfrontend_integrated_module_version_checking.so -t "$pkgdir/usr/lib/"
-  install -m755 build/src/pinentry/libgpgfrontend_pinentry.so -t "$pkgdir/usr/lib/"
-  install -m755 build/src/test/libgpgfrontend_test.so -t "$pkgdir/usr/lib/"
-  install -m755 build/third_party/mimalloc/libmimalloc-secure.{so,so.2.1} -t "$pkgdir/usr/lib/"
-  ln -s /usr/lib/libmimalloc-secure.so.2.1 "$pkgdir/usr/lib/libmimalloc-secure.so.2"
+#  install -m755 build/src/module/libgpgfrontend_module.so -t "$pkgdir/usr/lib/"
+#  install -m755 build/src/module/integrated/gnupg_info_gathering_module/libgpgfrontend_integrated_module_gnupg_info_gathering.so -t "$pkgdir/usr/lib/"
+#  install -m755 build/src/module/integrated/version_checking_module/libgpgfrontend_integrated_module_version_checking.so -t "$pkgdir/usr/lib/"
+#  install -m755 build/src/pinentry/libgpgfrontend_pinentry.so -t "$pkgdir/usr/lib/"
+#  install -m755 build/src/test/libgpgfrontend_test.so -t "$pkgdir/usr/lib/"
+#  install -m755 build/third_party/mimalloc/libmimalloc-secure.{so,so.2.1} -t "$pkgdir/usr/lib/"
+#  ln -s /usr/lib/libmimalloc-secure.so.2.1 "$pkgdir/usr/lib/libmimalloc-secure.so.2"
 
-  # Remove insecure RUNPATH pointing to build dir
-  chrpath --delete "$pkgdir"/usr/lib/*.so
-  chrpath --delete "$pkgdir"/usr/lib/libmimalloc-secure.so.2.1
+#  # Remove insecure RUNPATH pointing to build dir
+#  chrpath --delete "$pkgdir"/usr/lib/*.so
+#  chrpath --delete "$pkgdir"/usr/lib/libmimalloc-secure.so.2.1
 }
