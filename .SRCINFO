@@ -1,7 +1,7 @@
 pkgbase = coin-or-ipopt
 	pkgdesc = Interior Point OPTimizer
 	pkgver = 3.14.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coin-or/Ipopt
 	arch = x86_64
 	groups = coin-or
