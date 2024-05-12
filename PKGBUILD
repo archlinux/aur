@@ -1,8 +1,8 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=imibrowser
-pkgver=14.5.4751
-pkgrel=3
+pkgver=14.5.4753
+pkgrel=1
 pkgdesc="iReasoning Freeware MIB browser tool for SNMP API"
 url="https://www.ireasoning.com/mibbrowser.shtml"
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.zip::https://www.ireasoning.com/download/mibfree/mibbr
 	'iMIBrowser.desktop'
 	'SLA'
 )
-sha256sums=('dd441e6ebdb4aa929b027fb1a52f65d545865d90db1fd38d575c5c63902cb5e2'
+sha256sums=('3062aae3e2b160d1244419b056870c7db73aff9ed1cf259885dab5ec9e07bb3b'
             'ecfc557a66cb3e11f50c0034019fff55960d4b9551ba0639754ed14647cb6446'
             '13bc58030db2e471743fd920b327cb1711915220605f577c0db2588b1e2a15cf')
 
