@@ -12,6 +12,7 @@ source=("https://github.com/felipealfonsog/OptiCPU/archive/refs/tags/v${pkgver}.
 sha256sums=('234d213d96cd5ba10f575135bde35a0e143c03060490924fd4f968632625bb9e')
 
 build() {
+  tar xf "$srcdir/v${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
   cd "${srcdir}/OptiCPU-${pkgver}"
   gcc -o opticpu src/opticpu.c
 }
