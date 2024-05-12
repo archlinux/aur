@@ -5,8 +5,8 @@
 # Contributor: CRT <crt.011@gmail.com>
 
 pkgname=skipfish
-pkgver=2.10b_2kali5
-_pkgver=2.10b-2kali5
+pkgver=2.10b_2kali7
+_pkgver=2.10b-2kali7
 pkgrel=1
 pkgdesc="A fully automated, active web application security reconnaissance tool"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('openssl' 'libidn' 'zlib' 'glibc' 'sh')
 source=("https://gitlab.com/kalilinux/packages/skipfish/-/archive/kali/${_pkgver}/skipfish-kali-${_pkgver}.tar.gz"
 	"skipfish.patch")
 
-sha256sums=('f497d8bdce5f68c3ac13fb5144359145b777d55cc83262ad6ea8aafa9610a4e7'
+sha256sums=('8dca2a041ef0e739920057f27eb3961548b8eabc5ca1739ca2f9ab823178f4c3'
             '096e9f7095a499605c8bf29bb9737397e9d5a168ec47888004dc8c2e7ceb0b62')
 
 build() {
