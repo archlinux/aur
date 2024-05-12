@@ -1,10 +1,11 @@
-# Maintainer: Richard Steinmetz <steinmetz.richard@googlemail.com>
+# Maintainer: Pranay Kanwar <pranay.kanwar@gmail.com>
+# Contributor: Richard Steinmetz <steinmetz.richard@googlemail.com>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Bogdan Szczurek <thebodzio@gmail.com>
 
 _name='transmission-rpc'
 pkgname="python-${_name/-/}"
-pkgver=7.0.3
+pkgver=7.0.5
 pkgrel=1
 pkgdesc='Module to communicate with Transmission BT client via JSON-RPC'
 arch=('any')
@@ -14,7 +15,7 @@ license=('MIT')
 depends=('python-requests' 'python-typing_extensions')
 makedepends=('python-installer')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('7709aabf3edfd36cea2ead1c6a2a09c7fe3e03ca9064e42aab253477462aa931')
+sha256sums=('bb9f9400d99362e41b33cf787aaf74f52a03c8fa901c31276007e256d23c3ec6')
 
 package() {
   python -m installer --destdir="$pkgdir" "${_name//-/_}-$pkgver-py3-none-any.whl"
