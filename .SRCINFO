@@ -4,7 +4,6 @@ pkgbase = translatelocally-git
 	pkgrel = 2
 	url = https://translatelocally.com
 	arch = x86_64
-	groups = modified
 	license = MIT
 	makedepends = cmake
 	makedepends = git

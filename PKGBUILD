@@ -1,8 +1,5 @@
 # Maintainer: Nikolay Bogoychev <nheart@gmail.com>
 # Improved by yochananmarqos https://aur.archlinux.org/packages/translatelocally-git
-
-groups=('modified')
-
 pkgname=translatelocally-git
 pkgver=r508.a210037
 pkgrel=2
