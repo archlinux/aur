@@ -1,0 +1,27 @@
+pkgbase = oama-bin
+	pkgdesc = Provide OAuth2 renewal and authorization capabilities
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/pdobsan/oama
+	install = oama.install
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	depends = gnupg
+	optdepends = msmtp: an SMTP client
+	optdepends = fdm: fetch and deliver mail
+	optdepends = cronie: cron daemon to execute scheduled commands
+	optdepends = pass: stores, retrieves, generates, and synchronizes passwords securely
+	optdepends = gnome-keyring: Stores passwords and encryption keys
+	optdepends = gpg: OpenPGP encryption and signing tool
+	provides = oama
+	conflicts = oama
+	conflicts = oama-git
+	replaces = mailctl-bin
+	replaces = mailctl
+	source_x86_64 = https://github.com/pdobsan/oama/releases/download/0.10/oama-0.10-Linux-x86_64.tgz
+	sha256sums_x86_64 = ca6c5f968c2d2c64067256b2832e16c5e72029fd696700911fe737376f30b537
+	source_aarch64 = https://github.com/pdobsan/oama/releases/download/0.10/oama-0.10-Linux-aarch64.tgz
+	sha256sums_aarch64 = 1d25ac83cd6ec344b37dbacc60b2a7b8f7e0baaec2727a72a6e137d5dd09002c
+
+pkgname = oama-bin

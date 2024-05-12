@@ -1,0 +1,24 @@
+
+## arg 1:  the new package version
+post_install() {
+  cat <<EOF
+
+-----------------------------------------------------------------------------
+
+	`oama` version 0.10 or newer has a much simplified configuration system
+	and comes also with other **breaking changes**.
+
+	Please read the README file, in particular the Configuration section,
+	before start using it.
+
+-----------------------------------------------------------------------------
+
+EOF
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+	pos_install
+}
+
