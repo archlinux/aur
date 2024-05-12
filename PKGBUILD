@@ -17,7 +17,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/OptiCPU-v${pkgver}/src"
+  cd "${srcdir}/OptiCPU-v${pkgver}"
   install -Dm755 opticpu "${pkgdir}/usr/bin/opticpu"
 }
 
