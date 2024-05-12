@@ -1,10 +1,10 @@
 pkgbase = rmtrash
-	pkgdesc = trash-put made compatible to GNUs rm and rmdir
+	pkgdesc = trash-put made compatible with GNU's rm and rmdir
 	pkgver = 1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PhrozenByte/rmtrash
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = trash-cli
 	source = rmtrash-1.15.tar.gz::https://github.com/PhrozenByte/rmtrash/archive/v1.15.tar.gz
 	sha256sums = e238f24fe22a5fc6f35e137b000cb943b72debf2d02bd06a2c851804c6b15e4b
