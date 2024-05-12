@@ -1,7 +1,7 @@
 pkgbase = usrbinhx
-	pkgdesc = Provide /usr/bin/hx for the helix editor
+	pkgdesc = Please use the package ‘helixbinhx’ instead
 	pkgver = 2024.5.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/helixbinhx
 	install = usrbinhx.install
 	arch = any

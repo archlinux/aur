@@ -3,8 +3,8 @@
 
 pkgname='usrbinhx'
 pkgver='2024.5.12'
-pkgrel=1
-pkgdesc='Provide /usr/bin/hx for the helix editor'
+pkgrel=2
+pkgdesc='Please use the package ‘helixbinhx’ instead'
 arch=('any')
 url='https://aur.archlinux.org/packages/helixbinhx'
 license=('AGPL-3.0-or-later')
