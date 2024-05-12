@@ -2,7 +2,7 @@
 
 pkgname=python-aardwolf
 _pkgname=aardwolf
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Asynchronous RDP/VNC client in Python (headless)"
 url="https://github.com/skelsec/aardwolf"
