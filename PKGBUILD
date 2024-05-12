@@ -23,12 +23,15 @@ depends=(
   'libseat.so'
   'libxkbcommon'
   'org.freedesktop.secrets'
+  'otf-fira-mono'
+  'otf-fira-sans'
   'pop-icon-theme-git'
   'pop-launcher-git'
   'systemd-libs'
   'wayland'
   'xdg-desktop-portal'
   'xdg-utils'
+  'xorg-xwayland'
 )
 makedepends=(
   'cargo'
@@ -42,8 +45,6 @@ makedepends=(
 )
 optdepends=(
   'flatpak: Flatpak packages support for COSMIC Store'
-  'otf-fira-mono: Recommended Mono font'
-  'otf-fira-sans: Recommended Sans font'
   'packagekit: package manager integration module for COSMIC Store'
 )
 
