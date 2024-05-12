@@ -1,0 +1,16 @@
+pkgbase = r-adbcdrivermanager
+	pkgdesc = 'Arrow' Database Connectivity ('ADBC') Driver Manager
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=adbcdrivermanager
+	arch = x86_64
+	license = Apache
+	checkdepends = r-testthat
+	depends = r-nanoarrow
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/adbcdrivermanager_0.11.0.tar.gz
+	md5sums = dd000875d9a46549f07a4cf090ba5b37
+	b2sums = b222c9a4541318cb7af9746490c8392ceddc3618b05805c32896f28be7d6dc904b5c08b7be6acdbf386084e663075f95821d0cd8da227e75ce41bb0d651dd69c
+
+pkgname = r-adbcdrivermanager
