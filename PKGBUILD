@@ -1,12 +1,14 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Co-maintainer: GI_Jack <GI_Jack@hackermail.com>
 
+#website is gone, but file remains on debian servers
+
 pkgname=ttf-aenigma
 pkgver=20080510
-pkgrel=8
+pkgrel=9
 pkgdesc="465 free TrueType fonts by Brian Kent"
 arch=('any')
-url="http://www.aenigmafonts.com"
+url="https://www.myfonts.com/collections/brian-kent"
 license=('custom')
 depends=('fontconfig')
 source=('https://ftp.debian.org/debian/pool/main/t/ttf-aenigma/ttf-aenigma_0.0.20080510.dfsg-2_all.deb'
