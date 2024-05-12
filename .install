@@ -1,6 +1,6 @@
 # pre_remove() {
-#   echo "Removing termtree"
-#   ls
-#   cd "$pkgname"
-#   make uninstall
+# 	echo "Removing termtree"
+# 	ls
+# 	cd "$pkgname"
+# 	make uninstall
 # }
