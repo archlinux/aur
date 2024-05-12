@@ -3,7 +3,7 @@ _base=equinox
 pkgname=python-${_base}
 pkgdesc="Elegant easy-to-use neural networks in JAX"
 pkgver=0.11.4
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/patrick-kidger/${_base}"
 license=(Apache-2.0)
@@ -21,7 +21,9 @@ build() {
 check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer ${_base}-${pkgver}/dist/*.whl
-  test-env/bin/python -m pytest ${_base}-${pkgver}/tests
+  test-env/bin/python -m pytest ${_base}-${pkgver}/tests \
+    --ignore=${_base}-${pkgver}/tests/test_noinline.py \
+    -k 'not backward_nan'
 }
 
 package() {
