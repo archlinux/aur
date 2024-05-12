@@ -1,9 +1,10 @@
 pkgbase = usrbinhx
 	pkgdesc = Please use the package ‘helixbinhx’ instead
 	pkgver = 2024.5.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aur.archlinux.org/packages/helixbinhx
 	install = usrbinhx.install
+	changelog = usrbinhx.changelog
 	arch = any
 	license = AGPL-3.0-or-later
 	depends = helix
