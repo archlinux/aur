@@ -2,8 +2,8 @@
 
 gemname=ruby-livesync
 pkgname=ruby-livesync
-pkgver=1.0.0.beta1
-pkgrel=2
+pkgver=1.0.0.beta2
+pkgrel=3
 pkgdesc='Live sync solution using ssh + rsync'
 url=https://github.com/brauliobo/ruby-livesync
 license=(GPL-3.0-only)
@@ -15,15 +15,38 @@ depends=(
   ruby-rb-inotify
   ruby-rufus-scheduler
 )
-source=("https://rubygems.org/downloads/${pkgname}-${pkgver}.gem")
+backup=('etc/livesync/config.rb')
+
+if [ "$LOCAL" == "1" ]; then
+  source=("${pkgname}-${pkgver}.gem")
+  sha256sums=('SKIP')
+else
+  source=("https://rubygems.org/downloads/${pkgname}-${pkgver}.gem")
+  sha256sums=('5fcf2d3917f085eb2d818db30ac399a659a3c4332d9dd2f7cfdad092ebe2d7d2')
+fi
 noextract=("${pkgname}-${pkgver}.gem")
-sha256sums=('5fcf2d3917f085eb2d818db30ac399a659a3c4332d9dd2f7cfdad092ebe2d7d2')
+
+prepare() {
+  if type rvm &>/dev/null; then rvm use system; fi
+}
 
 package() {
   cd "$srcdir"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "${pkgname}-${pkgver}.gem"
+
+  gem unpack ${pkgname}-${pkgver}.gem --target $srcdir
+  local unpacked_dir="$srcdir/${pkgname}-${pkgver}"
+  mv $unpacked_dir/* $srcdir
+  rmdir $unpacked_dir
+
+  # service
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/livesync.service"
+  # config
+  install -d "$pkgdir/etc/livesync"
+  install -Dm640 "$srcdir/config/sample.rb" "$pkgdir/etc/livesync/config.rb"
+
   rm "$pkgdir/$_gemdir/cache/${pkgname}-${pkgver}.gem"
 }
 
