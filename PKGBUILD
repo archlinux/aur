@@ -12,23 +12,24 @@ checkdepends=('python-pytest')
 makedepends=(git python-build python-installer python-wheel python-setuptools)
 license=('LicenseRef-MIT')
 arch=('any')
-source=("$pkgname::git+$url#commit=b98e6f4f6cc90334f4d7040745aee91b4021cc42"
-    fix-tests.patch
-    version.sh)
-sha256sums=('6fa19d5ed3629de90256046c7e848805b90745460296b3b6677b0c61a9af2744'
-            '33a28897eda38828c197a6f31e0415a8804209c40f698ca5b5201b7660b65985'
-            'd15fca2becb34181a422547a3fed8695f4ff8459753d087aed768d0d010bf5db')
+source=("$pkgname::git+$url" fix-tests.patch)
+sha256sums=('SKIP'
+            '33a28897eda38828c197a6f31e0415a8804209c40f698ca5b5201b7660b65985')
 
+# Necessary since upstream, seemingly abandoned, has forgotten to tag the 1.0.2
+# release it cut
 _bumpTag() {
     cd "${srcdir}/$pkgname"
-    local version oldVer verCmd
+    local version oldVer verCmd _verCmd
+
+    verCmd=(python -c 'import setuptools; setuptools.setup()' --version)
 
     git stash &> /dev/null
-    version="$(bash "${srcdir}"/version.sh)"
+    version="$("${verCmd[@]}")"
     oldVer="$(git describe --abbrev=0)"
     if test "$version" != "$oldVer"; then
-        verCmd="$(cat "${srcdir}"/version.sh)"
-        printf 'test "$(%s)" != %s\n' "$verCmd" "$version" > bisector.sh
+        printf -v _verCmd '%q ' "${verCmd[@]}"
+        printf 'test "$(%s)" != %s\n' "$_verCmd" "$version" > bisector.sh
         chmod 755 bisector.sh
         git bisect start
         git bisect new
