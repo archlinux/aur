@@ -1,4 +1,5 @@
-# Maintainer:Integral<luckys68@126.com>
+# Maintainer:Integral <integral@member.fsf.org>
+
 pkgname=xelfviewer-bin
 _pkgname=xelfviewer
 pkgver=0.05
