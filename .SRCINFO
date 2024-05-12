@@ -1,0 +1,15 @@
+pkgbase = python-covdefaults
+	pkgdesc = A coverage plugin to provide sensible default settings.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/asottile/covdefaults
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-pytest-cov
+	source = https://files.pythonhosted.org/packages/source/c/covdefaults/covdefaults-2.3.0.tar.gz
+	sha256sums = 4e99f679f12d792bc62e5510fa3eb59546ed47bd569e36e4fddc4081c9c3ebf7
+
+pkgname = python-covdefaults
