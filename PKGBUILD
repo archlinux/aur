@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=msPurity
-_pkgver=1.28.0
+_pkgver=1.30.1
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.1
 pkgrel=1
 pkgdesc='Automated Evaluation of Precursor Ion Purity for Mass Spectrometry Based Fragmentation in Metabolomics'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-xcms
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fc8d983718934cc47d134536629fbbd9e51bf9e430bd8980f522a118effc7492')
+sha256sums=('807ac4b255204b79fb31edb9ce1cae91ebe9bb9925d74f60683aa22ea848040e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
