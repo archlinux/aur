@@ -1,0 +1,13 @@
+pkgbase = ruby-raabro
+	pkgdesc = A very dumb PEG parser library, with a horrible interface
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/jmettraux/raabro
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = raabro-1.4.0.gem
+	source = https://rubygems.org/downloads/raabro-1.4.0.gem
+	sha256sums = d4fa9ff5172391edb92b242eed8be802d1934b1464061ae5e70d80962c5da882
+
+pkgname = ruby-raabro
