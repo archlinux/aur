@@ -3,7 +3,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=libbasswv
-pkgver=2.4.7.3
+pkgver=2.4.7.4
 pkgrel=1
 pkgdesc='BASS audio library WavPack plugin'
 arch=(i686 x86_64 armv6h armv7h aarch64)
@@ -11,7 +11,7 @@ url='https://www.un4seen.com/'
 license=(custom)
 depends=(alsa-lib libbass)
 source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/basswv24-linux.zip")
-sha256sums=('bdeab6044f87aab2eb5bb0c1b4c17cbeb2f3775988fca657fc4834491d755def')
+sha256sums=('d2d6bd471fd81d7b4be2002f282c81bc12d6677cec97fad3beb9c28fb8da9e9d')
 
 prepare() {
   grep Lic "$srcdir/basswv.txt" -A14 > LICENSE
