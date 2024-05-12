@@ -3,16 +3,17 @@
 gemname=ruby-livesync
 pkgname=ruby-livesync
 pkgver=1.0.0.beta1
-pkgrel=1
+pkgrel=2
 pkgdesc='Live sync solution using ssh + rsync'
 url=https://github.com/brauliobo/ruby-livesync
 license=(GPL-3.0-only)
 arch=('any')
 depends=(
   ruby
+  ruby-pry
   ruby-activesupport
   ruby-rb-inotify
-  ruby-pry
+  ruby-rufus-scheduler
 )
 source=("https://rubygems.org/downloads/${pkgname}-${pkgver}.gem")
 noextract=("${pkgname}-${pkgver}.gem")
