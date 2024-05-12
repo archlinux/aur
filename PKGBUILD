@@ -16,7 +16,7 @@ optdepends=('python-pyqt5')
 makedepends=( 'cython' 'python-build' 'python-installer' 'python-wheel'
 	      'python-setuptools>=62.4' 'python-setuptools-rust>=1.5.2' 'rust')
 source=("https://github.com/skelsec/aardwolf/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('948e8cea1a56a2c32565bd553b0116d9a44b7e0679a33f86989914f05719c1d3')
+sha256sums=('98034239707819cb7faa026cbf3a8c5f2573db0bfe58d6957a47ce579b220c44')
 
 
 build() {
