@@ -4,7 +4,7 @@
 pkgname="odoo-nightly"
 _pkgname="odoo"
 pkgver=17.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Odoo. Open Source Apps To Grow Your Business."
 url="https://odoo.com/"
 arch=("any")
@@ -23,7 +23,7 @@ source=("https://nightly.odoo.com/$pkgver/nightly/src/${_pkgname}_$pkgver.latest
 b2sums=('SKIP'
         'fb140cadcd3a06535db170e4b06e025da3d23c28fb0e1e66cafeaad1d897f02d002a1af06b06120b25575488f1e618c92ceb7f4861a27a7b1c0f18fbbe201173'
         '1ef682d87ba12dd8a185ba36701b737f8feb0c1e6eb4b23302a0dc5930ef63c990af65bc45a36313f879a29a23cbdb602e7fc34ba9cee2e46d9a3d8407d5751a'
-        '13b0f8f3de488248cb5642b8d26ae3b91660edf72faf227f0c13b07521d3a5ae33a63c93e97d2943ef96d80b4b75557fbe34f8dfe2ab577bef9988fd51733b5c'
+        'a58c7b66e336f9393aefa7d1c40aabb4a6b3573ba65c073d40277e9a037a22d49f8c0c8c75c4eb0e13fb55ce2e87f0e31757ed78fcd12d3e15b547dccb9f828a'
         '311757f40c9de2845482ebf22e36469cc1058396bba9edaa2265a2bd085e2bcdd22115b098af3aaa037f7dac3a81212ae8b249df0b268f6bf2d798ee01698aae'
         'f899025f7637aaed2d231de33e5c2d2a831f21f038cb86b9794f9f75224f6eb14b6c9baf95663278ae15568a80ac49354446202232f38577991a24d332373b53')
 backup=("etc/odoo/odoo.conf")
