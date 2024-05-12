@@ -7,7 +7,7 @@ pkgdesc="Two-Factor Authentication Tokens Manager in Terminal"
 url="https://github.com/eklairs/tlock"
 arch=("x86_64")
 license=("MIT")
-tarball=tlock-v$pkgver-linux-amd64.tar.gz
+tarball=$pkgname-v$pkgver-linux-amd64.tar.gz
 source=(
     "$tarball::$url/releases/download/v$pkgver/$tarball"
     "$url/raw/v$pkgver/LICENSE"
