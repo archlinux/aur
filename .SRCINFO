@@ -1,6 +1,6 @@
 pkgbase = suncord-installer-bin
 	pkgdesc = CLI Installer for Suncord
-	pkgver = latest
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/verticalsync/SuncordInstaller
 	arch = x86_64
