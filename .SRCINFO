@@ -1,13 +1,12 @@
 pkgbase = ruby-rufus-scheduler
 	pkgdesc = Job scheduler for Ruby (at, in, cron and every jobs)
 	pkgver = 3.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmettraux/rufus-scheduler
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-fugit
-	depends = ruby-et-orbi
 	noextract = rufus-scheduler-3.9.1.gem
 	source = https://rubygems.org/downloads/rufus-scheduler-3.9.1.gem
 	sha256sums = 5fca077ca039a0025fa77fcc7484fa64e47a112124babc75d4c072ad05439992
