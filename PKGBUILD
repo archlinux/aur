@@ -1,16 +1,16 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ReactomeGSA
-_pkgver=1.16.1
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.1
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Client for the Reactome Analysis Service for comparative multi-omics gene set analysis'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+pkgdesc="Client for the Reactome Analysis Service for comparative multi-omics gene set analysis"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r
+  r-biobase
   r-dplyr
   r-ggplot2
   r-gplots
@@ -21,27 +21,25 @@ depends=(
   r-tidyr
 )
 optdepends=(
-  r-biobase
   r-devtools
-  r-edger
   r-knitr
-  r-limma
   r-reactomegsa.data
   r-rmarkdown
-  r-scater
-  r-seurat
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('faa9aad8c282a09909833ddcc261f502f1f786869e3425626771160881b9e35c')
+md5sums=('d26ef99a4e66f2bd8260f740756ff143')
+b2sums=('a8538e564bd3b83ed1aa968f8937a6797815474a76054978bec800e4fa1b2d3cc1ec933fdfb03062256deb9ed4e82a83430e05550e9262487234fbb02b566c70')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
