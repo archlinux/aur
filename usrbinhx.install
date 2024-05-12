@@ -1,0 +1,18 @@
+# -*- sh -*-
+
+pre_install() {
+  cat <<EOF >&2
+NB: This package has been scheduled for deletion.
+
+    The package ‘helixbinhx’ does a much better job,
+    please use that package instead:
+
+    https://aur.archlinux.org/packages/helixbinhx
+EOF
+}
+
+pre_upgrade() {
+  pre_install "$@"
+}
+
+# eof
