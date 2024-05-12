@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname"
-	make install
+	sudo install -Dm644 "${srcdir}/termtree/ttree.1" "${pkgdir}/usr/share/man/man1/ttree.1"
+	sudo install -Dm755 "${srcdir}/termtree/build/ttree" "${pkgdir}/usr/bin/ttree"
 }
 
