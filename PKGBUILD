@@ -31,7 +31,7 @@ pkgver() {
 
 
 package() {
-	cd "$pkgname"
+	cd "$pkgname/src"
 	gcc $pkgname.c -o $pkgname && sudo mv $pkgname /bin/
 
 }
