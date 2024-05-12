@@ -1,7 +1,7 @@
 pkgbase = regina-rexx
 	pkgdesc = An implementation of the ANSI Standard REXX Programming Language
 	pkgver = 3.9.6
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://regina-rexx.sourceforge.io/
 	arch = aarch64
@@ -30,6 +30,7 @@ pkgname = regina-rexx
 
 pkgname = regina-rexx-doc
 	pkgdesc = Demo scripts and documentation for Regina REXX and regutil (PDF)
+	changelog = regina-rexx.changelog
 	arch = any
-	depends = regina-rexx
+	optdepends = regina-rexx: Required to run the demo scripts
 	replaces = regina-rexx-das-doc

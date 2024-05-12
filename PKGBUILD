@@ -13,7 +13,7 @@ pkgname=(regina-rexx{,-doc})
 pkgdesc='An implementation of the ANSI Standard REXX Programming Language'
 epoch=1
 pkgver=3.9.6
-pkgrel=2
+pkgrel=3
 url='https://regina-rexx.sourceforge.io/'
 source=(
   "https://downloads.sourceforge.net/regina-rexx/$_pkgname-$_pkgsuff-$pkgver.tar.gz"
@@ -70,7 +70,10 @@ package_regina-rexx() {
 
 package_regina-rexx-doc() {
   arch=('any')
-  depends=('regina-rexx')
+  changelog="${pkgname/-doc}.changelog"
+  optdepends=(
+    'regina-rexx: Required to run the demo scripts'
+  )
   pkgdesc='Demo scripts and documentation for Regina REXX and regutil (PDF)'
   replaces=('regina-rexx-das-doc')
 
