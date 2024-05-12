@@ -111,26 +111,25 @@ build() {
     export TIC="/usr/bin/tic -o $srcdir/terminfo"
     ./configure \
         --prefix=/usr \
+        --disable-fallback \
+        --disable-pixbuf \
+        --disable-startup-notification \
+        --disable-transparency \
+        --disable-fading \
+        --disable-rxvt-scroll \
+        --disable-next-scroll \
+        --disable-xterm-scroll \
+        --disable-iso14755 \
+        --disable-smart-resize \
         --enable-xft \
         --enable-font-styles \
         --enable-xim \
         --enable-unicode3 \
         --enable-combining \
-        --disable-fallback \
-        --disable-pixbuf \
-        --disable-startup-notification \
-        --enable-transparency \
-        --disable-fading \
-        --enable-rxvt-scroll \
-        --enable-next-scroll \
-        --enable-xterm-scroll \
         --enable-frills \
-        --disable-iso14755 \
-        --enable-keepscrolling \
         --enable-selectionscrolling \
         --enable-mousewheel \
         --enable-slipwheeling \
-        --disable-smart-resize \
         --enable-text-blink \
         --enable-pointer-blank \
         --enable-perl \
