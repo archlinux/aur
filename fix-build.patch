@@ -1,0 +1,17 @@
+diff --git a/HilbertVisGUI/src/R_interface.cc b/HilbertVisGUI/src/R_interface.cc
+index ba92660..e9064c1 100644
+--- a/HilbertVisGUI/src/R_interface.cc
++++ b/HilbertVisGUI/src/R_interface.cc
+@@ -522,11 +522,9 @@ extern "C" SEXP R_display_hilbert( SEXP args)
+          for( int j = 0; j < i; j++ )
+             delete (*dataCols)[j];
+          delete dataCols;
+-         char buf[300];
+-         snprintf( buf, 300, i < Rf_length( seqnames ) ? 
++         Rf_error( i < Rf_length( seqnames ) ?
+             "R_display_hilbert: Data vector #%d is not a vector of integers or reals notan Rle object." :
+             "R_display_hilbert: Data vector #%d does not have a name in second argument.", i+1 );
+-         Rf_error( buf );
+       }
+       Glib::ustring name = CHAR(STRING_ELT( seqnames, i ));
+       long fl = ( ( full_lengths != R_NilValue ) && ( i < Rf_length(full_lengths) ) && 
