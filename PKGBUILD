@@ -3,7 +3,7 @@
 gemname=raabro
 pkgname=ruby-raabro
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A very dumb PEG parser library, with a horrible interface"
 arch=('any')
 url="https://github.com/jmettraux/raabro"
@@ -12,6 +12,10 @@ depends=('ruby')
 source=("https://rubygems.org/downloads/${gemname}-${pkgver}.gem")
 noextract=("${gemname}-${pkgver}.gem")
 sha256sums=('d4fa9ff5172391edb92b242eed8be802d1934b1464061ae5e70d80962c5da882')
+
+prepare() {
+  if type rvm &>/dev/null; then rvm use system; fi
+}
 
 package() {
   cd "$srcdir"

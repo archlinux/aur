@@ -1,7 +1,7 @@
 pkgbase = ruby-raabro
 	pkgdesc = A very dumb PEG parser library, with a horrible interface
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmettraux/raabro
 	arch = any
 	license = MIT
