@@ -1,5 +1,6 @@
 # Maintainer: Cortex
 # Forked from Vesktop
+
 _pkgname=Sunroof
 pkgname=sunroof-bin
 _appname=sunroof-desktop
