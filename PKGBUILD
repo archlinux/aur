@@ -4,7 +4,7 @@
 pkgname=python-pint-pandas
 _name=${pkgname#python-}
 _download=Pint-Pandas
-pkgver=0.3
+pkgver=0.5
 pkgrel=1
 pkgdesc='Pandas support for pint.'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(python-pint)
 makedepends=(python-build python-installer python-wheel)
 # source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_download-$pkgver.tar.gz)
-sha256sums=('154c05ebe3a295abe8c177a90317bae887d37ea5b88813a38e10e1d64fd1589d')
+sha256sums=('48ec96d457f802a347763dee1d3e1a273f11f90e4e595df17fd44613dd14a61c')
 
 build() {
   # cd $_name-$pkgver
