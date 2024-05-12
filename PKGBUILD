@@ -1,4 +1,5 @@
-# Maintainer:Integral<luckys68@126.com>
+# Maintainer: Integral <integral@member.fsf.org>
+
 pkgname=xapkdetector-bin
 _pkgname=xapkdetector
 pkgver=0.03
