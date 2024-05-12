@@ -1,24 +1,24 @@
 pkgbase = sov-git
-	pkgdesc = An overlay that shows schemas for all workspaces to make navigation in sway easier (git)
-	pkgver = 0.71.r8.ge57a84f
+	pkgdesc = An overlay that shows schemas for all workspaces to make navigation in sway easier
+	pkgver = 0.94.r9.g1bcf5fa
 	pkgrel = 1
 	url = https://github.com/milgra/sov
-	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = meson
 	makedepends = wayland-protocols
 	depends = freetype2
 	depends = glew
+	depends = glibc
 	depends = libegl
 	depends = libgl
 	depends = libpng
 	depends = libxkbcommon
 	depends = wayland
-	provides = sov
+	provides = sov=0.94.r9.g1bcf5fa
 	conflicts = sov
-	source = git+https://github.com/milgra/sov.git
+	source = git+https://github.com/milgra/sov.git#branch=main
 	b2sums = SKIP
 
 pkgname = sov-git
