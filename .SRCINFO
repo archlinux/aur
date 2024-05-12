@@ -1,7 +1,7 @@
 pkgbase = bolt-launcher
 	pkgdesc = Free open-source third-party implementation of the Jagex Launcher
-	pkgver = 0.8.2
-	pkgrel = 4
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://bolt.adamcake.com/
 	arch = x86_64
 	license = AGPL3
@@ -36,13 +36,13 @@ pkgbase = bolt-launcher
 	optdepends = jre17-openjdk: runelite/hdos
 	optdepends = gtk2: rs3
 	optdepends = openssl-1.1: rs3
-	source = git+https://github.com/Adamcake/Bolt.git#tag=0.8.2
+	source = git+https://github.com/Adamcake/Bolt.git#tag=0.9.0
 	source = https://adamcake.com/cef/cef-114.0.5735.134-linux-x86_64-minimal-ungoogled.tar.gz
 	source = fmt.patch
 	source = cef-no-fortify.patch
 	sha256sums = SKIP
 	sha256sums = 72c8c43dcb61f778a807eb262b2c2ebcb2e1705756de5a9003484af0663aa924
-	sha256sums = d6c2afbfc6e9d89cc0e8c8df5187ad9e56e8f3796d26aa5df353e7457d5577da
+	sha256sums = 8090a09d4d4c91b5675e6605f7c620b55e15f02136b0109036060a62bc66a490
 	sha256sums = 20b60ea029fe7fc95d5b8e3d4dcf035a418267d0b3c445bd821205784b037258
 
 pkgname = bolt-launcher

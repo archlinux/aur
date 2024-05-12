@@ -1,7 +1,7 @@
 ## Maintainer: Adam <classygopher@gmail.com>
 pkgname=bolt-launcher
-pkgver=0.8.2
-pkgrel=4
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="Free open-source third-party implementation of the Jagex Launcher"
 license=('AGPL3')
 url="https://bolt.adamcake.com/"
@@ -18,7 +18,7 @@ source=("git+https://github.com/Adamcake/Bolt.git#tag=${pkgver}"
         "cef-no-fortify.patch")
 sha256sums=('SKIP'
             '72c8c43dcb61f778a807eb262b2c2ebcb2e1705756de5a9003484af0663aa924'
-            'd6c2afbfc6e9d89cc0e8c8df5187ad9e56e8f3796d26aa5df353e7457d5577da'
+            '8090a09d4d4c91b5675e6605f7c620b55e15f02136b0109036060a62bc66a490'
             '20b60ea029fe7fc95d5b8e3d4dcf035a418267d0b3c445bd821205784b037258')
 
 prepare() {
