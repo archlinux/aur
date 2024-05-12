@@ -4,6 +4,7 @@ plugins = php
 master = true
 socket = /run/%n/%n.sock
 stats = /run/%n/%n-stats.sock
+#chmod-socket = 666
 uid = mantisbt
 gid = mantisbt
 processes = 10
