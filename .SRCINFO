@@ -18,8 +18,3 @@ pkgname = stm32cubeclt
 	depends = stlink
 	depends = libusb
 	depends = stlink-server
-
-pkgname = stm32cubeclt-stlink-server
-	pkgdesc = A toolset for third-party integrated development environment (IDE) providers, allowing the use of STMicroelectronics proprietary tools within their own IDE frameworks. - stlink tcp server to permit several applications to share the same usb device
-	depends = stlink
-	depends = libusb

@@ -1,8 +1,8 @@
-# Maintainer: yjun <jerrysteve1101 at gmail dot com>1
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
-pkgbase=stm32cubeclt
+pkgbase="stm32cubeclt"
+pkgname="stm32cubeclt"
 # pkgname=("stm32cubeclt" "stlink-server" "stlink-udev-rules")
-pkgname=("stm32cubeclt" "stm32cubeclt-stlink-server")
 _pkgname="STM32CubeCLT"
 pkgver=1.15.1
 pkgrel=1
@@ -43,15 +43,17 @@ _pkg_url="$(grep -m 1 "${_pkg_zip_name}" <<< "$_curl_req")"
 _pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
 _download_path="https://www.st.com""$_pkg_url"
 source=("${_pkg_zip_name}"::"$_download_path"
-        "https://www.st.com/resource/en/license/SLA0048_STM32CubeCLT.pdf")
+        "https://www.st.com/resource/en/license/${_pkg_license_name}")
 sha256sums=('be9befeef5bc68e5afa2d2e52191e30d53b4e3b79cef599722af715c82a0035b'
             '50b3b09396d8c0dad0bde596dcaf9ccb6b20d36fd6b02f8e8e5d0466087a9819')
 
+# not used, reserved.
 _pkgname_stlink_server="stlink-server"
 _pkgname_stlink_udev_rules="stlink-udev-rules"
 _pkgver_stlink_server="2.1.1-1"
 _pkgver_stlink_udev_rules="1.0.3-2"
 
+# not used, reserved.
 _pkg_stlink_server_name="${_pkgname_stlink_server}.${_pkgver_stlink_server}"
 _pkg_stlink_udev_rules_name="${_pkgname_stlink_udev_rules}-${_pkgver_stlink_udev_rules}"
 _pkg_stlink_server_sh_name="st-${_pkg_stlink_server_name}-linux-amd64.install.sh"
@@ -127,6 +129,8 @@ prepare() {
   local stlink_udev_rules_target=${_pkg_name}/${_pkg_stlink_udev_rules_name}
  
   _bundle_sh_extract ${_pkg_sh_name} ${pkg_target}
+
+  # not used, reserved.
   _bundle_sh_extract ${_pkg_name}/${_pkg_stlink_server_sh_name} \
                       ${stlink_server_target}
   _bundle_sh_extract ${_pkg_name}/${_pkg_stlink_udev_rules_sh_name} \
@@ -161,7 +165,8 @@ package_stm32cubeclt() {
   _install_license_pdf
 }
 
-package_stm32cubeclt-stlink-server() {
+# not used, split to stand-alone stlink-server on AUR https://aur.archlinux.org/packages/stlink-server.
+package_stlink-server() {
   # pkgver=${_pkgver_stlink_server}
   pkgdesc="${_pkgdesc} - stlink tcp server to permit several applications to share the same usb device"
   # stlink provides stlink udev rules
