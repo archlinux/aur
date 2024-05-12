@@ -1,0 +1,50 @@
+# Maintainer: Cortex
+# Forked from Vesktop
+_pkgname=Sunroof
+pkgname=sunroof-bin
+_appname=suncord-desktop
+pkgver=1.5.8
+_electronversion=29
+pkgrel=2
+pkgdesc="A Vesktop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Suncord pre-installed"
+arch=(
+    'aarch64'
+    'x86_64'
+)
+url="https://github.com/verticalsync/Sunroof"
+license=('GPL-3.0-only')
+provides=(
+    "${pkgname%-bin}=${pkgver}"
+    "${_appname}=${pkgver}"
+)
+conflicts=(
+    "${pkgname%-bin}"
+    "${_appname}"
+)
+depends=(
+    "electron${_electronversion}"
+)
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+source=("${pkgname%-bin}.sh")
+sha256sums=('ff735fe74c99880bd05cf90473db836149b7daa8d01bf7334b299aeb12a46f3e')
+sha256sums_aarch64=('11122656288b5c4d78d528bf46892cf55401e3f35ae8a3b223f14544264573a0')
+sha256sums_x86_64=('1f5ec85636bbb266b23831f32808db79ce1a391e42bda0860ea95fac09c56c51')
+build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/sunroof.desktop"
+}
+package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/applications/sunroof.desktop" -t "${pkgdir}/usr/share/applications"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+}
