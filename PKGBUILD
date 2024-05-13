@@ -1,7 +1,7 @@
 # Maintainer: pinapelz <yukais@pinapelz.com>
 
 pkgname=oxi-sapphire-launcher-git
-pkgver=r1.a1b2c3d
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A crossplatform CLI launcher for FFXIV Sapphire servers"
 arch=('x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/oxi-sapphire-launcher"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
