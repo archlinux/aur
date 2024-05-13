@@ -12,13 +12,13 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs'
          'glibc'
          'hicolor-icon-theme'
-         'qt5-base'
+         'qt6-base'
          'xdg-utils'
          )
 makedepends=('cmake'
              'git'
              'ninja'
-             'qt5-tools'
+             'qt6-tools'
              )
 optdepends=('fpc: Pascal support'
             'freebasic: BASIC support'
@@ -62,6 +62,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
         -DLEMON_BUILD_INFO="Build for Arch Linux (Git Version)" \
         -DLEMON_BUILD_EXTRA_INFO="Build on $(uname -a | cut -d " " -f3,13)" \
+        -DLEMON_QT6=ON \
         -DEMBED_TRANSLATIONS=OFF \
         -DEMBED_DOCS=OFF
     ninja -C build
