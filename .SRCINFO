@@ -1,6 +1,6 @@
 pkgbase = tippecanoe
 	pkgdesc = Builds vector tilesets from large (or small) collections of GeoJSON features
-	pkgver = 2.52.0
+	pkgver = 2.53.0
 	pkgrel = 1
 	url = https://github.com/felt/tippecanoe/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = tippecanoe
 	license = BSD
 	provides = tippecanoe
 	source = https://github.com/felt/tippecanoe/archive/2.52.0.tar.gz
-	md5sums = ed798e5c45003888237c0079bf426426 
+	md5sums = 882b8e17e192adfcc53b5ba263134423 
 
 pkgname = tippecanoe
 
