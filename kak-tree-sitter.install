@@ -1,0 +1,7 @@
+post_install() {
+	echo
+    echo To run it from kakoune add something like this to your kakrc:
+    printf "\n\t%s\n\n" 'eval %sh{ kak-tree-sitter -dks --with-text-objects --with-highlighting --session $kak_session }'
+    echo and set a tree-sitter-enabled colorscheme for highlighting.
+    echo
+}
