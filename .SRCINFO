@@ -1,0 +1,26 @@
+pkgbase = go-matrix-skype-bridge-git
+	pkgdesc = A Matrix-Skype puppeting bridge
+	pkgver = r157.59e2790
+	pkgrel = 1
+	url = https://github.com/kelaresg/go-skype-bridge
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = libolm
+	provides = go-matrix-skype-bridge
+	conflicts = go-matrix-skype-bridge
+	backup = etc/go-skype-bridge/go-skype-bridge.yaml
+	source = go-skype-bridge-r157.59e2790::git+https://github.com/kelaresg/go-skype-bridge.git
+	source = sysusers-go-skype-bridge.conf
+	source = go-skype-bridge.tmpfiles
+	source = go-skype-bridge.service
+	source = log-path.diff
+	sha256sums = SKIP
+	sha256sums = 56a18605edcc7a58d478a3a84995ec7f6d139e82577c9d75af3dd08354810f97
+	sha256sums = 4028a34a49874c74becccc034ed25332e1cbcfeac8dcdf56a2ce0bbc493d3706
+	sha256sums = 2928fc3c8141c54cbf282765b52bb33fcaa84a59c1565635502294b9d28e9a92
+	sha256sums = 32f1e72d1f7831b86fd5361fa5e469e91378a3ee054c39f6a2f0fe065515ccf8
+
+pkgname = go-matrix-skype-bridge-git

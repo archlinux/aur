@@ -1,0 +1,11 @@
+--- example-config.yaml	2024-05-13 14:21:05.144598136 +0200
++++ example-config.yaml	2024-05-13 14:22:42.576484426 +0200
+@@ -225,7 +225,7 @@
+ # Logging config.
+ logging:
+     # The directory for log files. Will be created if not found.
+-    directory: ./logs
++    directory: /var/lib/go-skype-bridge/logs
+     # Available variables: .Date for the file date and .Index for different log files on the same day.
+     file_name_format: "{{.Date}}-{{.Index}}.log"
+     # Date format for file names in the Go time format: https://golang.org/pkg/time/#pkg-constants

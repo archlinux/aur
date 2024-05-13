@@ -1,0 +1,6 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /etc/go-skype-bridge 0750 root go-skype-bridge
+z /etc/go-skype-bridge/* 0640 go-skype-bridge go-skype-bridge -
+d /var/log/go-skype-bridge 0700 go-skype-bridge go-skype-bridge
+d /var/lib/go-skype-bridge 0700 go-skype-bridge go-skype-bridge
+
