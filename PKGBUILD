@@ -1,41 +1,53 @@
-# Maintainer: HelloImWar <helloimwar at proton dot me>
+# Maintainer: Wing Hei Chan <whmunkchan@outlook.com>
+# Contributor: HelloImWar <helloimwar at proton dot me>
+# Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
-pkgname=tree-sitter-toml-git
-pkgver=0.5.1.r2.g8bd2056
-pkgrel=2
+_lang=toml
+_pkgname="tree-sitter-$_lang"
+pkgname="$_pkgname-git"
+pkgver=v0.5.1.r2.g8bd2056
+pkgrel=3
 pkgdesc="TOML grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/ikatyang/tree-sitter-toml"
 license=('MIT')
 groups=('tree-sitter-grammars')
-makedepends=('git' 'tree-sitter-cli' 'npm')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
-sha256sums=('SKIP')
+makedepends=('git' 'tree-sitter-cli')
+optdepends=('tree-sitter: core library')
+provides=("lib$_pkgname.so")
+source=("$_pkgname::git+$url")
+b2sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 \
+    | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 prepare() {
-	cd "$pkgname"
-	npm install --cache "$srcdir/npm-cache" regexp-util
-	tree-sitter generate
+  cd "$_pkgname"
+  tree-sitter generate --no-bindings src/grammar.json
 }
 
 build() {
-	cd "$pkgname/src/"
-	cc $CFLAGS -std=c99 -c parser.c scanner.c
-	cc $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
+  cd "$_pkgname"/src
+  cc $CFLAGS -fPIC -std=c99 -c parser.c
+  cc $CFLAGS -fPIC -std=c99 -I. -c scanner.c
+  cc $LDFLAGS -shared parser.o scanner.o \
+    -o "$srcdir"/"$_pkgname"/lib"$_pkgname".so
 }
 
 package() {
-	install -Dvm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-toml.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-toml.so" "$pkgdir/usr/share/nvim/runtime/parser/toml.so"
-	cd "$pkgname"
-	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  cd "$_pkgname"
+  install -Dm755 -t "$pkgdir"/usr/lib lib"$_pkgname".so
+  install -d "$pkgdir"/usr/lib/tree_sitter
+  ln -s /usr/lib/lib"$_pkgname".so \
+    "$pkgdir"/usr/lib/tree_sitter/"$_lang".so
+
+  install -Dm644 -t "$pkgdir"/usr/share/doc/"$_pkgname" README.md
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/"$_pkgname" LICENSE
 }
+# Local Variables:
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
