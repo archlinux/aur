@@ -1,10 +1,11 @@
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 _commit=d0c8469f66806b5ea738d607f7d2b000af8b1129
 
 pkgname=ftl-sdk
 pkgver=0.10.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Software Development Kit for Mixer's FTL Protocol"
 arch=(x86_64)
 url="https://github.com/Scrumplex/ftl-sdk"
@@ -44,6 +45,8 @@ build() {
     cmake -B build -S "$pkgname" \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
+	-DCMAKE_C_FLAGS="$CFLAGS -fpermissive" \
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS -fpermissive" \
         -Wno-dev
     make -C build
 }

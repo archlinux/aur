@@ -1,7 +1,7 @@
 pkgbase = ftl-sdk
 	pkgdesc = Software Development Kit for Mixer's FTL Protocol
 	pkgver = 0.10.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Scrumplex/ftl-sdk
 	arch = x86_64
 	license = MIT
