@@ -25,8 +25,8 @@ checkdepends=(
 makedepends=('python-build' 'python-installer' 'python-pdm' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lyz-code/autoimport/archive/refs/tags/${pkgver}.tar.gz"
 	"xdg-base-dirs.patch")
-sha512sums=('2719d66e4cf8e9169e6364220dcdb9f6399851ab61164c0f76cb94dc1b95f9855d749dec494306ed37999be410a3adbefcf715755b09024bfff6298bec83f397'
-	'2ba4a709f02a5aaf02c5acefddf0d4ed7b73c5249ad63700a71a0694a54fcc4593af6cefa03c9532026cab9980f864f8d1bfdd5b693168d5a465bde3c1f16ce1')
+sha512sums=('ecd2a3cf32f2fb8e29140cc0cec8dac378224e2b4f70029e96976d9f28353557c273d82a7d43d02b0dc34ee3c2a3d32b1a73f5df8859df21f8f91ba10bb36fe2'
+            '2ba4a709f02a5aaf02c5acefddf0d4ed7b73c5249ad63700a71a0694a54fcc4593af6cefa03c9532026cab9980f864f8d1bfdd5b693168d5a465bde3c1f16ce1')
 
 prepare() {
 	cd "${_pkgname}-${pkgver}"
