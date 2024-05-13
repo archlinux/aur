@@ -1,5 +1,5 @@
 pkgbase = bettersoundcloud
-	pkgdesc = A PC client of SoundCloud with improvement made using electronjs
+	pkgdesc = A PC client of SoundCloud with improvement made using electronjs.
 	pkgver = 0.5.3
 	pkgrel = 2
 	url = https://github.com/AlirezaKJ/BetterSoundCloud
