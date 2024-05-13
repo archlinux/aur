@@ -4,7 +4,7 @@
 pkgname=ttf-aptos
 pkgver=1.0
 pkgrel=1
-pkgdesc="Default Microsoft Office font, developed by Microsoft"
+pkgdesc="The new default Microsoft 365 font, used by Microsoft"
 arch=('any')
 url="https://learn.microsoft.com/en-us/typography/font-list/aptos"
 license=('custom')

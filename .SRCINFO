@@ -1,5 +1,5 @@
 pkgbase = ttf-aptos
-    pkgdesc = Default Microsoft Office font, developed by Microsoft
+    pkgdesc = The new default Microsoft 365 font, used by Microsoft
     pkgver = 1.0
     pkgrel = 1
     url = https://learn.microsoft.com/en-us/typography/font-list/aptos
