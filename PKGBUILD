@@ -6,7 +6,7 @@
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 
 pkgname=sqlite-jdbc
-pkgver=3.45.1.0
+pkgver=3.45.3.0
 pkgrel=1
 pkgdesc='JDBC driver for SQLite'
 arch=('x86_64')
@@ -15,8 +15,8 @@ license=('Apache')
 depends=('java-runtime>=8')
 makedepends=('maven')
 source=("https://github.com/xerial/sqlite-jdbc/archive/${pkgver}.tar.gz")
-md5sums=('96f9769292ccb9e4584ffad6f6f92aff')
-sha256sums=('aed7e39413c684b504b750ae10e4bfd1946daeba6876388e163588f68501d051')
+md5sums=('880b36c12740fc490b17056f594a4075')
+sha256sums=('0b3cde5c75c81651f27d83488cbbe1d7b835be14215c7e0f01b0ee51a36b24ea')
 
 prepare() {
   # update SLF4J
