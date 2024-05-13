@@ -1,3 +1,7 @@
 /PKGBUILD-namcap.log
 pkg/
 src/
+/*.log
+/*.zst
+/*.xz
+/*.gz
