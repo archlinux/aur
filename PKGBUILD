@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dockit-bin
 _pkgname=DocKit
-pkgver=0.2.9
+pkgver=0.3.0
 _electronversion=28
 pkgrel=1
 pkgdesc="GUI clients for elasticsearch, opensearch and etc"
@@ -22,13 +22,14 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
-sha256sums_aarch64=('493196538476e14db772758707a0976bee70b08b917dae0c98114e76ca27e1be')
-sha256sums_x86_64=('de39c1bc4194a6968c8c26f1f9938554bd88dc56b24a5a11a63a50dd4b998052')
+sha256sums=('41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums_aarch64=('d0e3677cd3f816e0bc058474440caacad39467ea4856f6821185c9e547860b5d')
+sha256sums_x86_64=('fc57d77c7536d5813e63d36fe7567f129c1c5f9dfadff279e0516ea806b0fe78')
 build() { 
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
