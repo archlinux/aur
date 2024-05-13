@@ -1,0 +1,17 @@
+pkgbase = go-tagalign-git
+	pkgdesc = Tagalign is a linter and language server for Rego
+	pkgver = v1.3.4.r0.e25313b
+	pkgrel = 1
+	url = https://github.com/4meepo/tagalign
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = go
+	provides = go-tagalign
+	conflicts = go-tagalign
+	replaces = go-tagalign
+	source = git+https://github.com/4meepo/tagalign.git
+	sha256sums = SKIP
+
+pkgname = go-tagalign-git
