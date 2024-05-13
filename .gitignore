@@ -1,0 +1,4 @@
+pkg/
+src/
+python-wavefile-*.pkg.tar.*
+wavefile-*.tar.gz
