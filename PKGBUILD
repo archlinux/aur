@@ -1,8 +1,8 @@
-# vim:set ft=sh:
-# Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
+# Maintainer: Arne Brücher <archlinux[at]arne-bruecher[dot]de>
+# Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=121.0.6167.140
+pkgver=124.0.6367.201
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('x86_64')
@@ -15,11 +15,8 @@ makedepends=(
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('2c4004dcdf83224544b038034c03fc58a8f6fdfb9551fb25befb774b4c5c1703b3537b2ebee082ec4b61abcd15896988b900173e0aff4b586976fab5c00fd164')
 
-#prepare() {
-  #cd "$srcdir/chromium-$pkgver"
-#}
+sha512sums=('fa7361c6142a13c4f696d4621b858c9b57cb9c36fc234dcac41770d4418c4e2d12a29a73090f146b4420ccdf41d7b3f70f8cc0f7a7d3e308bab77ba088969cd6')
 
 _build_flags=(
   'is_component_build=false'
