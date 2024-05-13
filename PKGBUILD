@@ -1,25 +1,27 @@
-# Maintainer: AtticFinder65536 <atticfinder -AT- rocklabs -DOT- xyz>
+# Maintainer: Attila Fidan <archlinux-buildsystem@print0.net>
 
-pkgname=('python-ipadic')
-_name=('ipadic')
+pkgname=python-ipadic
+_gitname=ipadic-py
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
+
 pkgdesc="IPAdic packaged for easy use from Python"
 url="https://github.com/polm/ipadic-py"
-license=('MIT')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('a32f925d8e9ff0cdb58a90410cbdd463494dd82b0e60a21355bfc53444f044d00dba3bd031370b159b1ddadcca1a48fc896726ee0c6b435c1dafeb9804604785')
-arch=('any')
-depends=('python')
-makedepends=('python-setuptools')
+license=(MIT)
+arch=(any)
 
-build(){
-        cd "${_name}-${pkgver}"
-        python setup.py build
+depends=(python)
+makedepends=(python-setuptools)
+
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('ed851e6dd6f79ce6bdd10075b471dba4985f56c3a5b11e304e23d62dd80547a0116081aa93753b56dc745b13c4391e05a20ab3dff19c7cca5c27ab10353fdf8c')
+
+build() {
+  cd "$_gitname-$pkgver"
+  python setup.py build
 }
 
-package(){
-        cd "${_name}-${pkgver}"
-        python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-        # No license file provided but project states it is licensed under the MIT
+package() {
+  cd "$_gitname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

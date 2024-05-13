@@ -1,13 +1,13 @@
 pkgbase = python-ipadic
 	pkgdesc = IPAdic packaged for easy use from Python
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/polm/ipadic-py
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/i/ipadic/ipadic-1.0.0.tar.gz
-	b2sums = a32f925d8e9ff0cdb58a90410cbdd463494dd82b0e60a21355bfc53444f044d00dba3bd031370b159b1ddadcca1a48fc896726ee0c6b435c1dafeb9804604785
+	source = python-ipadic-1.0.0.tar.gz::https://github.com/polm/ipadic-py/archive/refs/tags/v1.0.0.tar.gz
+	b2sums = ed851e6dd6f79ce6bdd10075b471dba4985f56c3a5b11e304e23d62dd80547a0116081aa93753b56dc745b13c4391e05a20ab3dff19c7cca5c27ab10353fdf8c
 
 pkgname = python-ipadic
