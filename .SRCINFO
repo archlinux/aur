@@ -23,12 +23,12 @@ pkgbase = widevine
 	sha256sums_x86_64 = c120e5d03ca6eb5243d4c69a6a4348e121233824ab26db9126a53ba99709d152
 	source_aarch64 = https://archive.raspberrypi.org/debian/pool/main/w/widevine/libwidevinecdm0_4.10.2252.0+3_arm64.deb
 	source_aarch64 = widevine_fixup.py
-	depends_aarch64 = glibc-widevine
+	depends_aarch64 = glibc>=2.39
 	makedepends_aarch64 = python
 	sha256sums_aarch64 = c88bbb210ca94cb4b5c3bb1ff11b5b24f146b76b22b1119b9cac37c421574284
 	sha256sums_aarch64 = 2504018f9128ed2b7ebe00d332383a78fb7e2bc76ad58a3f88c2159234cf86cf
 	source_armv7h = https://archive.raspberrypi.org/debian/pool/main/w/widevine/libwidevinecdm0_4.10.2252.0+3_armhf.deb
-	depends_armv7h = glibc-widevine
+	depends_armv7h = glibc>=2.39
 	sha256sums_armv7h = 5b1199bcd3471d126098be42ca0af0e486302df94cdf4643e4fe2a86d4c4c7d1
 
 pkgname = widevine
