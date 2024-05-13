@@ -6,7 +6,7 @@ arch=('any')
 license=('MIT')
 maintainer="Mohammad Rosstami <mohammad.jayant@gmail.com>"
 source=("dnsch.sh" "dnsch.1.gz")
-depends=('bash' 'coreutils')
+depends=('bash' 'coreutils' 'bc')
 pkgrel=1
 sha256sums=("SKIP" "SKIP")
 package() {

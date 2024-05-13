@@ -7,6 +7,7 @@ pkgbase = dnsch
 	license = MIT
 	depends = bash
 	depends = coreutils
+	depends = bc
 	source = dnsch.sh
 	source = dnsch.1.gz
 	sha256sums = SKIP
