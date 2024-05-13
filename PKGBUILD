@@ -1,41 +1,35 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=qpid-proton
-_pycname=python-$_pyname
-pkgbase=$_pycname
-pkgname=(python-$_pyname)
-pkgver=0.35.0
+pkgname=python-qpid-proton
+pkgver=0.39.0
 pkgrel=1
-pkgdesc="An AMQP based messaging library."
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+pkgdesc="An AMQP based messaging library"
+arch=(any)
 url="http://qpid.apache.org/proton/"
-license=(Apache)
-makedepends=(
-	swig
-	libsasl
-	openssl
-	python-setuptools
-)
-source=("https://pypi.io/packages/source/${_pycname::1}/${_pycname}/$_pycname-$pkgver.zip")
-md5sums=('6339e97a9b8454abdb834241b0569bea')
-sha256sums=('abafbedeaf6e138f8cba2bc871b7685c4fd156f3258cec17f253153ede18bbee')
-sha512sums=('aaad12959c0c587eeacb07a0f435bdac85bb0d0577b496cc9fa813a625e3380bec57a4c987ad0ad0a1688c0137341c3d39b3d64b082e623c9f4496fd3fbe1a67')
+license=('Apache-2.0')
+depends=('python'
+         'python-cffi'
+         'libsasl'
+         'openssl'
+         'gcc-libs')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+             'python-sphinx')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
+b2sums=('ca36f7b76b1b97d742494b7d28aa41eb52be8c6c6c0d3f30137c2b908e5774741f866d31ca09e2d796211b1dd5af8a4c0cb51fd3eaa3f5b269becae4cae78796')
 
 build(){
-	pushd $_pycname-$pkgver
-	python setup.py build
-	popd
+    cd "$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+    sphinx-build docs build --builder man
 }
 
-_package_python(){
-	depends=(
-		libsasl
-		openssl
-		python
-	)
-	cd $_pycname-$pkgver
-	python setup.py install --root "$pkgdir" --optimize=1
-	install -Dm644 docs/* -t "$pkgdir"/usr/share/docs/$pkgname
+package(){
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm 644 README.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm 644 "build/qpidprotonpythonapi.1" -t "$pkgdir/usr/share/man/man1/"
 }
-
-eval "package_python-${_pyname}(){ _package_python; }"
