@@ -16,6 +16,9 @@ makedepends=('git'
     'python-wheel'
 
     'python-hatchling'
+
+    'python-docutils'
+    'python-sphinx'
     'python-sphinx-click'
     )
 depends=('python'
