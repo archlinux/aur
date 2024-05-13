@@ -9,7 +9,7 @@
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
 pkgver=470.239.06
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -22,16 +22,22 @@ source=('nvidia-drm-outputclass.conf'
         "kernel-6.4.patch"
         "kernel-6.5.patch"
         "kernel-6.6.patch"
-        "kernel-6.1.76_6.6.15_6.7.3.patch")
+        "kernel-6.1.76_6.6.15_6.7.3.patch"
+        "0001-Fix-conftest-to-ignore-implicit-function-declaration.patch"
+        "0002-Fix-conftest-to-use-a-short-wchar_t.patch"
+        "0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch")
 
-sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'  #nvidia-drm-outputclass
-            '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'  #nvidia-470xx.sysusers
-            'e307e5fe005dfafee35c179c5f215e22a85dfd367a9b60d5092eee96f869d8ce4595fae33ce6febb74721974c6f781a53418ce1a3210768632347471ae3f5594'  #nvidia-470xx.rules
-            '92bdfb11db405071cd58deed2a0853448932657e256258e0a0bda5069f00485e2b6e49b4a0eeff499a4991be4f884273f3564c164110b1ed1f5d924506f13e2d'  #NVIDIA-Linux-*.run (changed most often)
-            'd9df8b13d5fbe4f456a31de3679fd11aca7cd88771f8f11a5cc8ab17bab05861823b26d2d467593e5b90967a2902db691ca832f09fe21a5975eb3e4d6275e00c'  #kernel-6.4 patch
-            '40ea983c81851b8a20629a943f9692cc0e007c815f46dd3b63cf1d7a44ccbed1ac5f9a3110720de54b017b9f9c7f5cc534ec6e097bc02fa5bd1de6b0a730c803'  #kernel-6.5 patch
-            'fa9985b0dd9d7a973019da88a40d7830ea53df83af2d71d498b6b9dde04c0c797570991239dafc30cc2ccabbb8e8a7c3fa1bf89f26d8e8a26e624d7a17e5a84b'  #kernel-6.6 patch
-            'e0756be173930faf6b5104562d8092ccf8967fba7bf1a97d8e0e86e76a5e0e944b41f24aaee98eb8c7b3ad995353f6acb20a0f6173b82ee718664293a6493fea') #kernel-6.1 patch
+sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
+            '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
+            'e307e5fe005dfafee35c179c5f215e22a85dfd367a9b60d5092eee96f869d8ce4595fae33ce6febb74721974c6f781a53418ce1a3210768632347471ae3f5594'
+            '92bdfb11db405071cd58deed2a0853448932657e256258e0a0bda5069f00485e2b6e49b4a0eeff499a4991be4f884273f3564c164110b1ed1f5d924506f13e2d'
+            'd9df8b13d5fbe4f456a31de3679fd11aca7cd88771f8f11a5cc8ab17bab05861823b26d2d467593e5b90967a2902db691ca832f09fe21a5975eb3e4d6275e00c'
+            '40ea983c81851b8a20629a943f9692cc0e007c815f46dd3b63cf1d7a44ccbed1ac5f9a3110720de54b017b9f9c7f5cc534ec6e097bc02fa5bd1de6b0a730c803'
+            'fa9985b0dd9d7a973019da88a40d7830ea53df83af2d71d498b6b9dde04c0c797570991239dafc30cc2ccabbb8e8a7c3fa1bf89f26d8e8a26e624d7a17e5a84b'
+            'e0756be173930faf6b5104562d8092ccf8967fba7bf1a97d8e0e86e76a5e0e944b41f24aaee98eb8c7b3ad995353f6acb20a0f6173b82ee718664293a6493fea'
+            '29df50e64a4f797028d05df78395683ce14b604fc7c7f8270c9c23b57311cfba749c132e8530d48eee935c2187323b14c6c429bf70243314350b99d2cac23acc'
+            '6cf622b8c139e1a08c7fcf248a6b5e2054cbad765fda9709c2ead17a937a2fe3d6822703ae406f0505d5f49511903b993a41f136b5329f7553dca973dc058280'
+            '118e38fe021c3b182a6014d5a0dafe5251a30fdb3424813a2808d0494c4021951ebf561fc15c60544e5fd4b24d1f5d944d473b16d3d641428de45acb605fd48f')
 
 create_links() {
     # create soname links
@@ -50,11 +56,15 @@ prepare() {
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
     cd kernel
+    
+     patch -p1 -i "${srcdir}/0001-Fix-conftest-to-ignore-implicit-function-declaration.patch"
+     patch -p1 -i "${srcdir}/0002-Fix-conftest-to-use-a-short-wchar_t.patch"
+     patch -p1 -i "${srcdir}/0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch"
 
-#    patch -p1 -i "$srcdir/kernel-6.4.patch"
-#    patch -p1 -i "$srcdir/kernel-6.5.patch"
-#    patch -p1 -i "$srcdir/kernel-6.6.patch"
-#    patch -p1 -i "$srcdir/kernel-6.1.76_6.6.15_6.7.3.patch"
+#    patch -p1 -i "${srcdir}/kernel-6.4.patch"
+#    patch -p1 -i "${srcdir}/kernel-6.5.patch"
+#    patch -p1 -i "${srcdir}/kernel-6.6.patch"
+#    patch -p1 -i "${srcdir}/kernel-6.1.76_6.6.15_6.7.3.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
