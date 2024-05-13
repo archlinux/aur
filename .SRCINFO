@@ -1,7 +1,7 @@
 pkgbase = iriunwebcam-bin
 	pkgdesc = Use your phone's camera as a wireless webcam in your PC
 	pkgver = 2.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://iriun.com/
 	arch = x86_64
 	license = LicenseRef-Iriun
@@ -15,3 +15,4 @@ pkgname = iriunwebcam-bin
 	depends = alsa-lib
 	depends = avahi
 	depends = qt5-base
+	depends = v4l2loopback-dkms

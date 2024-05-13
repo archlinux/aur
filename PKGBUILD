@@ -5,7 +5,7 @@
 _pkgname="iriunwebcam"
 pkgname="$_pkgname-bin"
 pkgver=2.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Use your phone's camera as a wireless webcam in your PC"
 url="https://iriun.com/"
 license=('LicenseRef-Iriun')
@@ -27,6 +27,7 @@ package() {
     'alsa-lib'
     'avahi'
     'qt5-base'
+    'v4l2loopback-dkms'
   )
 
   tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
