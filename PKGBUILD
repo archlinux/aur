@@ -3,7 +3,7 @@
 
 pkgname=wpaperd-git
 pkgver=r222.204b1c5
-pkgrel=1
+pkgrel=2
 pkgdesc='Wallpaper daemon for Wayland.'
 arch=('x86_64')
 url='https://github.com/danyspin97/wpaperd'
@@ -24,7 +24,7 @@ prepare() {
     cd "${srcdir}/${pkgname}" || exit
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo fetch --frozen --target "${CARCH}-unknown-linux-gnu"
+    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
