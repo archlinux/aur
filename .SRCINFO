@@ -1,18 +1,18 @@
 pkgbase = mdview-appimage
 	pkgdesc = Standalone Markdown viewer
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/c3er/mdview
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	depends = glibc
-	provides = mdview=3.1.0
+	provides = mdview=3.1.1
 	conflicts = mdview
 	options = !strip
-	source = mdview-3.1.0.AppImage::https://github.com/c3er/mdview/releases/download/v3.1.0/mdview-3.1.0-x86_64.AppImage
-	source = LICENSE-3.1.0::https://raw.githubusercontent.com/c3er/mdview/v3.1.0/LICENSE
-	sha256sums = 85dbed2a1553d28c902622477f103a0c84eb56c67591fbff89441f858706b38d
+	source = mdview-3.1.1.AppImage::https://github.com/c3er/mdview/releases/download/v3.1.1/mdview-3.1.1-x86_64.AppImage
+	source = LICENSE-3.1.1::https://raw.githubusercontent.com/c3er/mdview/v3.1.1/LICENSE
+	sha256sums = 4a0fe023d9a99d02a9a478243162e93b61032f2d663f071770f99fcbdfc74e44
 	sha256sums = 4014420ba4b48c5f19ac8645ebeec93b9a0ccd41359700efc8b4d83738d16eeb
 
 pkgname = mdview-appimage

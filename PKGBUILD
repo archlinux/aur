@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mdview-appimage
-pkgver=3.1.0
+pkgver=3.1.1
 _electronversion=30
 pkgrel=1
 pkgdesc="Standalone Markdown viewer "
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/c3er/mdview/v${pkgver}/LICENSE"
 )
-sha256sums=('85dbed2a1553d28c902622477f103a0c84eb56c67591fbff89441f858706b38d'
+sha256sums=('4a0fe023d9a99d02a9a478243162e93b61032f2d663f071770f99fcbdfc74e44'
             '4014420ba4b48c5f19ac8645ebeec93b9a0ccd41359700efc8b4d83738d16eeb')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
