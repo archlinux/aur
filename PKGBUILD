@@ -2,8 +2,8 @@
 
 _name=scikit-base
 pkgname=python-${_name,,}
-pkgver=0.7.7
-pkgrel=2
+pkgver=0.7.8
+pkgrel=1
 pkgdesc='Base classes for sklearn-like parametric objects'
 arch=('any')
 url="https://github.com/sktime/skbase"
@@ -12,7 +12,7 @@ depends=('python' 'python-numpy' 'python-scipy' 'python-scikit-learn' 'python-nu
 makedepends=('python-installer' 'python-wheel')
 _whl="${_name//-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=(1af90280e945f2390ef4482b2ae23d55213742bd02b755e6a727a0d9d929d190)
+sha256sums=(74c638ebe772f6e9fa6a8fcbdedea3b63aa7bad9a7ae42d7e695ef201e1d2bf7)
 
 noextract=("$_whl")
 package() {
