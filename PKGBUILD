@@ -1,5 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=live2d-kanban-desktop
+_pkgname=kanban-desktop
+pkgname="live2d-${_pkgname}"
 pkgver=2.8.0
 _electronversion=22
 _nodeversion=16
@@ -21,13 +22,13 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}.git::git+${_ghurl}#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "live2dcubismcore.min-${pkgver}.js::https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
+sha256sums=('a3868997ee7906a1edcf87ed718ff119a18ad3c3955142107906a6b20f5c7fa7'
             '942783587666a3a1bddea93afd349e26f798ed19dcd7a52449d0ae3322fcff7c'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -38,35 +39,37 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}.git"
+    gendesk -q -f -n --pkgname="live2d-${_pkgname}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl ifconfig.co/country` = "China" ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
     cp assets/applogo256.png assets/applogo.png
     npm install --no-package-lock
-    npm run pack #-linux
+    npm run pack
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm755 "${srcdir}/live2dcubismcore.min-${pkgver}.js" "${pkgdir}/usr/lib/${pkgname}/live2dcubismcore.min.js"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}.git/assets/app.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/app.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

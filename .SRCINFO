@@ -12,11 +12,11 @@ pkgbase = live2d-kanban-desktop
 	depends = electron22
 	depends = python>=3
 	conflicts = live2d-kanban-desktop
-	source = live2d-kanban-desktop.git::git+https://github.com/JimHans/live2d-kanban-desktop#tag=v2.8.0
+	source = live2d-kanban-desktop-2.8.0.tar.gz::https://github.com/JimHans/live2d-kanban-desktop/archive/refs/tags/v2.8.0.tar.gz
 	source = live2dcubismcore.min-2.8.0.js::https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js
 	source = live2d-kanban-desktop.sh
-	sha256sums = SKIP
+	sha256sums = a3868997ee7906a1edcf87ed718ff119a18ad3c3955142107906a6b20f5c7fa7
 	sha256sums = 942783587666a3a1bddea93afd349e26f798ed19dcd7a52449d0ae3322fcff7c
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
 
 pkgname = live2d-kanban-desktop
