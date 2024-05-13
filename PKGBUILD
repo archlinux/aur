@@ -1,10 +1,9 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
-# Contributor: AlphaJack <alphajack at tuta dot io>
 
 pkgname="odoo-nightly"
 _pkgname="odoo"
 pkgver=17.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Odoo. Open Source Apps To Grow Your Business."
 url="https://odoo.com/"
 arch=("any")
@@ -55,10 +54,15 @@ package() {
     # Install package
     python -m installer dist/*.whl
 
+    # Update the .venv path
+    pip install virtualenv-tools3
+    cd .venv
+    virtualenv-tools --update-path /var/lib/odoo/.venv/
+
     # Copy the .venv directory
     install -d -m 750 "$pkgdir/var/lib/odoo/.venv"
-    cp -r ".venv" "$pkgdir/var/lib/odoo/"
-
+    cp -r . "$pkgdir/var/lib/odoo/.venv/"
+    
     # Configuration file
     install -d -m 750 "$pkgdir/etc/odoo"
     install -D -m 640 "$srcdir/odoo.conf" "$pkgdir/etc/odoo/odoo.conf"
