@@ -6,7 +6,8 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=3.0.2
+_pkgname=Notesnook
+pkgver=3.0.4
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -38,9 +39,9 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('2710be86d5dddd03df2c14026a6db3214ec3f4220e3701156e7869fdc8f7acc3'
+sha256sums=('0226f15e07a97327c2a55687676d71a72747d72ef622f72ed2a70aee786f546c'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
-            '2baa2d2b7a4fdab0b032122370cebdd52cae85bcc175ac57383fd93f9cdd28ff')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -50,7 +51,8 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
@@ -61,10 +63,10 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
@@ -78,6 +80,7 @@ build() {
     npm run bootstrap -- --scope=desktop
     # Build Electron wrapper
     cd "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
+    sed 's|"asar": false,|"asar": true,|' -i package.json
     npx nx run release --project @notesnook/desktop
     npx electron-builder --dir
 }
