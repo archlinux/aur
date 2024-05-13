@@ -1,7 +1,7 @@
 # Maintainer: Kyle Schreiber <kyle@80x24.net>
 
 pkgname=kestrel
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="File encryption done right"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("BSD")
 depends=("gcc-libs")
 makedepends=("rust")
 source=("kestrel-${pkgver//_/-}.tar.gz::$url/releases/v${pkgver//_/-}/kestrel-${pkgver//_/-}.tar.gz")
-sha256sums=("83fc5dc6a487cefc1ef3c9d07b60193c1292b5988afe05d9ed11c98e68a871da")
+sha256sums=("c722cdf36c8a38606952c5891184bbc2bcc9cd89aa047eab2fc66c5419faf840")
 
 build() {
     cd kestrel-${pkgver//_/-}
