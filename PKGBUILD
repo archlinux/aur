@@ -3,7 +3,7 @@ pkgname=mudita-center-bin
 _pkgname="Mudita Center"
 pkgver=2.2.8
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to expand and update the features of Mudita Pure and Mudita Harmony, while using your computer. One application for every platform, open-sourced for transparency."
 arch=('x86_64')
 url="https://mudita.com/products/pure/"
@@ -13,7 +13,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'fuse2'
@@ -23,7 +22,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('0290995df96266c3a4633dde402e2335d6172f6256664f9e0cb35ff2c94e860d'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
@@ -33,6 +32,7 @@ package() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
