@@ -9,7 +9,7 @@ license=('APACHE')
 groups=()
 depends=('glibc')
 provides=("${pkgname}")
-source=(https://s3.us-east-1.amazonaws.com/amazon-ecs-agent-us-east-1/${pkgname}-latest.amd64.deb)
+source=(https://s3.us-east-1.amazonaws.com/amazon-ecs-agent-us-east-1/${pkgname}-${pkgver}-${pkgrel}.amd64.deb)
 md5sums=('99fb1e1812ff2999af9f2275590641e6')
 noextract=()
 

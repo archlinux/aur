@@ -7,7 +7,7 @@ pkgbase = amazon-ecs-init
 	license = APACHE
 	depends = glibc
 	provides = amazon-ecs-init
-	source = https://s3.us-east-1.amazonaws.com/amazon-ecs-agent-us-east-1/amazon-ecs-init-latest.amd64.deb
+	source = https://s3.us-east-1.amazonaws.com/amazon-ecs-agent-us-east-1/amazon-ecs-init-1.82.3-1.amd64.deb
 	md5sums = 99fb1e1812ff2999af9f2275590641e6
 
 pkgname = amazon-ecs-init
