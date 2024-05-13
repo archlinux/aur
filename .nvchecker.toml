@@ -1,0 +1,7 @@
+[opm-grid]
+source = "github"
+github = "OPM/opm-grid"
+use_latest_release = "true"
+from_pattern = "/final"
+to_pattern = ""
+prefix = "release/"
