@@ -1,9 +1,9 @@
 pkgbase = cpufreqctl
 	pkgdesc = A intel_pstate CPU freq controller for regular user (extracted from extension 'CPU Power Manager for Gnome')
 	pkgver = 10.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/martin31821/cpupower
-	arch = x86_64
+	arch = any
 	license = GPL-3.0-or-later
 	makedepends = make
 	depends = bash

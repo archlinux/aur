@@ -1,10 +1,11 @@
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Maintainer: Marcin Nowak < marcin dot j dot nowak at gmail dot com >
 
 pkgname=cpufreqctl
 pkgver=10.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A intel_pstate CPU freq controller for regular user (extracted from extension 'CPU Power Manager for Gnome')"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/martin31821/cpupower"
 source=(
     https://github.com/martin31821/cpupower/archive/v$pkgver.tar.gz
@@ -27,9 +28,9 @@ package() {
   install -Dm755 tool/cpufreqctl "$pkgdir/usr/bin"
 
   install -dm755 "$pkgdir/usr/share/polkit-1/actions"
-  install -dm750 "$pkgdir/usr/share/polkit-1/rules.d"
-  install -Dm750 data/10-mko.cpupower.setcpufreq.rules "$pkgdir/usr/share/polkit-1/rules.d/"
-  install -Dm755 data/mko.cpupower.policy.in "$pkgdir/usr/share/polki1-1/actions/mko.cpupower.policy"
+  install -dm755 "$pkgdir/usr/share/polkit-1/rules.d"
+  install -Dm755 data/10-mko.cpupower.setcpufreq.rules "$pkgdir/usr/share/polkit-1/rules.d/"
+  install -Dm755 data/mko.cpupower.policy.in "$pkgdir/usr/share/polkit-1/actions/mko.cpupower.policy"
 
 
 }
