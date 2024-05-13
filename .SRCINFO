@@ -1,4 +1,4 @@
-pkgbase = kwalletcli-git
+pkgname = kwalletcli-git
 	pkgdesc = Command-Line Interface for the KDE Wallet
 	pkgver = r109.e63d053
 	pkgrel = 1
@@ -12,6 +12,7 @@ pkgbase = kwalletcli-git
 	makedepends = make
 	depends = kwallet
 	depends = mksh
+	provides = kwalletcli
 	conflicts = kwalletcli
 	source = kwalletcli-git::git+https://github.com/MirBSD/kwalletcli.git
 	sha512sums = SKIP

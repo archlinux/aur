@@ -7,6 +7,7 @@ pkgdesc="Command-Line Interface for the KDE Wallet"
 url="https://www.mirbsd.org/kwalletcli.htm"
 license=('custom:MirOS' 'LGPL3')
 arch=('i686' 'x86_64')
+provides=("kwalletcli")
 depends=('kwallet' 'mksh')
 conflicts=('kwalletcli')
 makedepends=('git' 'gcc' 'make')
