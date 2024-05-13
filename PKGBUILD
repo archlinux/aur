@@ -3,9 +3,9 @@
 pkgname=rstudio-desktop
 _vermajor=2024
 _verminor=04
-_verpatch=0
-_versuffix=735
-_gitcommit=a00d0e7
+_verpatch=1
+_versuffix=748
+_gitcommit=3ada7c6
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}-${_versuffix}
@@ -31,7 +31,7 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "qt.conf"
         "pandoc_version.patch")
 
-sha256sums=('15dfab3e794b24dbc80093b83bda87a77b7ab197faa8b09fcbad84fc68985960'
+sha256sums=('5c1190ae22e3a25740727ff1f341ef568f47359a0d1358958ec22f7e5b59b75b'
             'df3a040f0cf4ce1892519082dd6822a8ca433e9e4f02d9394ab2931733f7e5a6'
             '724802c45237477dbe5777923743e6c77906830cae03a82b5653ebd75b301dda'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
