@@ -1,0 +1,22 @@
+pkgbase = krdp-git
+	pkgdesc = Library and examples for creating an RDP server.
+	pkgver = r201.08daacf
+	pkgrel = 1
+	url = https://invent.kde.org/plasma/krdp
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = plasma-wayland-protocols
+	depends = kcmutils
+	depends = qt6-base
+	depends = freerdp2
+	depends = kstatusnotifieritem
+	depends = kpipewire
+	depends = qtkeychain-qt6
+	provides = krdp
+	conflicts = krdp
+	source = git+https://invent.kde.org/plasma/krdp.git
+	sha256sums = SKIP
+
+pkgname = krdp-git
