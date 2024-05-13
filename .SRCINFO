@@ -1,7 +1,7 @@
 pkgbase = modoboa
 	pkgdesc = Mail hosting made simple
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://modoboa.org/
 	arch = any
 	license = MIT
@@ -26,6 +26,7 @@ pkgbase = modoboa
 	makedepends = python-uritemplate
 	makedepends = python-feedparser
 	makedepends = python-django-jsonfield
+	makedepends = python-django-rq
 	makedepends = python-django-xforwardedfor-middleware
 	makedepends = python-django-filter
 	makedepends = python-greenlet
