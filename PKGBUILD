@@ -1,8 +1,8 @@
 # Maintainer: James Appleton <james.appleton01@gmail.com>
 pkgname="flaq"
 pkgdesc="A simple CLI tool for modifying and querying metadata tags for \`.flac\` files."
-pkgrel=1
-pkgver="0.3.0"
+pkgrel=2
+pkgver="0.3.1"
 
 makedepends=("git" "cargo" "jq")
 depends=("glibc" "gcc-libs")
