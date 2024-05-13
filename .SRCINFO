@@ -1,21 +1,21 @@
 pkgbase = r-rnadecay
 	pkgdesc = Maximum Likelihood Decay Modeling of RNA Degradation Data
-	pkgver = 1.22.2
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RNAdecay
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-2.0-only
+	makedepends = r-rcppeigen
 	depends = r-ggplot2
 	depends = r-gplots
 	depends = r-nloptr
 	depends = r-scales
 	depends = r-tmb
 	optdepends = r-knitr
-	optdepends = r-parallel
 	optdepends = r-reshape2
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAdecay_1.22.2.tar.gz
-	sha256sums = c7ee3059b07ee28c2814ee9104e02259f5c53681cf04de9a311bc81a82c0ebdb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAdecay_1.24.0.tar.gz
+	md5sums = 4b013eb50cd972559df41fb6361bf1bc
+	b2sums = 5481d2048fdab3c21ebf0aceacdfe0cd9ffdcfb89c2ae5b82c72028a6cd477725ba78c73a32bea94a49e2d0f47111886072c0ccdfeed517434e212ad409281f8
 
 pkgname = r-rnadecay

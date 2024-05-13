@@ -1,37 +1,41 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNAdecay
-_pkgver=1.22.2
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.2
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Maximum Likelihood Decay Modeling of RNA Degradation Data'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Maximum Likelihood Decay Modeling of RNA Degradation Data"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-ggplot2
   r-gplots
   r-nloptr
   r-scales
   r-tmb
 )
+makedepends=(
+  r-rcppeigen
+)
 optdepends=(
   r-knitr
-  r-parallel
   r-reshape2
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c7ee3059b07ee28c2814ee9104e02259f5c53681cf04de9a311bc81a82c0ebdb')
+md5sums=('4b013eb50cd972559df41fb6361bf1bc')
+b2sums=('5481d2048fdab3c21ebf0aceacdfe0cd9ffdcfb89c2ae5b82c72028a6cd477725ba78c73a32bea94a49e2d0f47111886072c0ccdfeed517434e212ad409281f8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  # compilation needs a lot of memory
+  MAKEFLAGS+=" -j1"
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
