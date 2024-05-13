@@ -1,6 +1,6 @@
 pkgbase = python-miepython
 	pkgdesc = Mie scattering of light off perfect spheres
-	pkgver = 2.5.3
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://miepython.readthedocs.io/
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-miepython
 	depends = python-numpy
 	optdepends = jupyter-notebook: to run the included example notebooks
 	optdepends = python-scipy: to run the included examples
-	source = miepython-2.5.3.tar.gz::https://github.com/scottprahl/miepython/archive/v2.5.3.tar.gz
-	sha256sums = 5709931a0fb989ff6dbe7881defd9341153da457ff6f2e161e2841e22777ef6d
+	source = miepython-2.5.4.tar.gz::https://github.com/scottprahl/miepython/archive/2.5.4.tar.gz
+	sha256sums = 1fb677017e1ac33cb764a18c038ccc5d16848e7fb3d043294d72b6d89947fe32
 
 pkgname = python-miepython
