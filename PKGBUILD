@@ -10,7 +10,6 @@ _pkgver=0.7.6
 pkgver="v${_pkgver}"
 pkgrel=2
 arch=("x86_64")
-_arch="linux_amd64"
 url="https://github.com/dmacvicar/${pkgname}"
 license=("Apache")
 depends=("libvirt" "cdrtools")
