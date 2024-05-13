@@ -1,17 +1,18 @@
 _cranname=GCDkit
-_cranver=6.0
+_cranver=6.2
 pkgname=${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="An ODBC database interface"
 arch=(any)
-depends=("r-rodbc" "r>3.6.0" "r-sp" "r-r2html" "r-xml")
+depends=("r>3.6.0" "r-foreign" "r-sp" "r-r2html" "r-xml" "r-irdisplay" "r-lattice" "r-mass")
+optdepends=("r-curl" "r-rgdal" "r-rodbc" "r-tkrplot" "r-xml")
 makedepends=("tk")
 url="http://www.gcdkit.org"
 license=("unknown")
-source=("http://www.gcdkit.org/sw/GCDkit_${pkgver}.tar.gz")
-noextract=("GCDkit_${pkgver}.tar.gz")
-md5sums=('8f9aeb51fc8fdcefe4d05e8d7b015553')
+source=("http://www.gcdkit.org/sw/${_cranname}_${pkgver}.tar.gz")
+noextract=("${_cranname}_${pkgver}.tar.gz")
+md5sums=('545121976ebee0ef19019eef7349f601')
 
 build() {
     cd "${srcdir}"
