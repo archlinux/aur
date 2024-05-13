@@ -3,7 +3,7 @@ pkgname=altitude-metrix-wallet-bin
 _appname=Altitude-Metrix-Wallet
 pkgver=3.3.2
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="The Metrix wallet https://metrixcoin.com."
 arch=('x86_64')
 url="https://github.com/TheLindaProjectInc/Altitude"
@@ -11,8 +11,7 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'java-runtime'
     'nodejs'
 )
@@ -24,11 +23,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1dd43d34b0c4e8870d099dbcaacfe09b8121f16453e336f446aeae1e79871301'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
@@ -37,7 +37,7 @@ build() {
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" -t "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
