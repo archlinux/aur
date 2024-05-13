@@ -1,46 +1,80 @@
-# Maintainer: Ben Westover <kwestover.kw@gmail.com>
+# Maintainer:
+# Contributor: Ben Westover <kwestover.kw@gmail.com>
 
-pkgname=mtkclient-git
-pkgver=1.63.r38.gb63c933
+_pkgname="mtkclient"
+pkgname="$_pkgname-git"
+pkgver=1.63.r116.g8e46df6
 pkgrel=1
 pkgdesc="Unofficial MTK reverse engineering and flash tool"
-arch=('any')
 url="https://github.com/bkerler/mtkclient"
-license=('GPL3')
-depends=('libusb' 'python' 'python-pyusb' 'python-pyserial' 'python-pycryptodome' 'python-pycryptodomex' 'python-colorama' 'python-mock' 'shiboken6' 'pyside6')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-conflicts=('mtkclient')
-provides=('mtkclient')
-source=("git+https://github.com/bkerler/mtkclient.git"
-        "scripts-and-data-files.patch"
-        "udev.patch")
-sha256sums=('SKIP'
-            'd156e692d36fb48f9d385598a2b888ddf3bf0fea182cf9757a71c971c144f710'
-            'd4b6d7967324e585f69c51257e4293f390291a9534e697eefc94568d169220bc')
+license=('GPL-3.0-only')
+arch=('any')
+
+depends=(
+  python
+)
+makedepends=(
+  git
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc"::"git+https://github.com/bkerler/mtkclient.git"
+  "udev.patch"
+)
+sha256sums=(
+  'SKIP'
+  'd4b6d7967324e585f69c51257e4293f390291a9534e697eefc94568d169220bc'
+)
 
 pkgver() {
-	cd mtkclient
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd mtkclient
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd mtkclient
+  cd "$_pkgsrc"
 
-	# Prevent LICENSE and README.md from being installed directly into /usr.
-	# Also add mtk_gui to list of scripts to be insalled into /usr/bin.
-	cat ../scripts-and-data-files.patch | patch -p1
+  sed -E -e 's&GPLv3 License&GNU General Public License v3 (GPLv3)&' -i pyproject.toml
 
-	# Replace plugdev with uaccess and adbusers like upstream android-udev
-	cat ../udev.patch | patch -p1
+  cd "mtkclient"
+  # Replace plugdev with uaccess and adbusers like upstream android-udev
+  patch -Np1 -i ../../udev.patch
 }
 
 build() {
-	cd mtkclient
-	python -m build --wheel --no-isolation
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd mtkclient
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 Setup/Linux/51-edl.rules "$pkgdir/usr/lib/udev/rules.d/52-mtk-edl.rules"
+  depends+=(
+    libusb
+    pyside6
+    python-colorama
+    python-pycryptodome
+    python-pycryptodomex
+    python-pyusb
+
+    python-keystone
+    python-capstone
+    python-unicorn
+
+    # AUR
+    python-fusepy
+    python-mock
+  )
+
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 mtkclient/Setup/Linux/51-edl.rules "$pkgdir/usr/lib/udev/rules.d/52-mtk-edl.rules"
 }
