@@ -3,8 +3,8 @@
 
 pkgname=i3pystatus-git
 pkgdesc="i3status replacement written in python for the i3 window manager"
-pkgver=3.35.r370.gac71437
-pkgrel=2
+pkgver=3.35.r403.g28ed5c1
+pkgrel=1
 arch=('any')
 url="https://github.com/enkore/i3pystatus"
 license=('MIT')
@@ -24,12 +24,19 @@ makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest-runner' 'python-mock')
 provides=('i3pystatus')
 conflicts=('i3pystatus')
-source=("$pkgname::git+$url")
-md5sums=('SKIP')
+source=("$pkgname::git+$url"
+        "python-3.12.patch::https://github.com/enkore/i3pystatus/pull/865.patch")
+md5sums=('SKIP'
+         '7cb22a0fbdb4cc050d5ccc8d2e64541e')
 
 pkgver() {
 	cd "$pkgname"
 	git describe --long --tags | sed 's/-/.r/;s/-/./'
+}
+
+prepare () {
+        cd "$pkgname"
+        patch -Np1 -i ../python-3.12.patch
 }
 
 build() {
