@@ -1,13 +1,12 @@
 pkgbase = jeex
 	pkgdesc = Simple GTK+ hex editor
 	pkgver = 12.6.1
-	pkgrel = 5
-	url = http://sourceforge.net/projects/slackbuildsdirectlinks/files/jeex/
+	pkgrel = 6
+	url = http://sourceforge.net/projects/slackbuildsdirectlinks/files/jeex
 	arch = x86_64
 	license = GPL3
 	depends = gtk2
-	source = http://sourceforge.net/projects/slackbuildsdirectlinks/files/jeex/jeex-12.6.1.tar.bz2
-	md5sums = 7a6035de61d04b0dabb4b31fc356ac52
+	source = https://sourceforge.net/projects/slackbuildsdirectlinks/files/jeex/jeex-12.6.1.tar.bz2
+	sha256sums = 2e7fb88fad942a745a5daacbac34600182472488a3632802c52099a973027178
 
 pkgname = jeex
-

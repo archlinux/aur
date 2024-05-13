@@ -4,21 +4,21 @@
 
 pkgname=jeex
 pkgver=12.6.1
-pkgrel=5
-pkgdesc="Simple GTK+ hex editor"
-arch=('x86_64')
-#url="http://www.hds619.net/jeex.php"
-url="http://sourceforge.net/projects/slackbuildsdirectlinks/files/jeex/"
-license=('GPL3')
-depends=('gtk2')
+pkgrel=6
+pkgdesc='Simple GTK+ hex editor'
+arch=(x86_64)
+#url=http://www.hds619.net/jeex.php
+url=http://sourceforge.net/projects/slackbuildsdirectlinks/files/jeex
+license=(GPL3)
+depends=(gtk2)
 #backup=(etc/jeex.rc)
-source=(http://sourceforge.net/projects/slackbuildsdirectlinks/files/$pkgname/$pkgname-$pkgver.tar.bz2)
-md5sums=('7a6035de61d04b0dabb4b31fc356ac52')
+source=("https://sourceforge.net/projects/slackbuildsdirectlinks/files/$pkgname/$pkgname-$pkgver.tar.bz2")
+sha256sums=('2e7fb88fad942a745a5daacbac34600182472488a3632802c52099a973027178')
 
 _srcdir=$pkgname-${pkgver:0:4}
 
-# Workaround for GCC 10
-export CFLAGS="$CFLAGS -fcommon"
+# Workaround for GCC
+export CFLAGS="$CFLAGS -fcommon -Wno-implicit-function-declaration"
 
 build() {
   cd $_srcdir
@@ -27,12 +27,9 @@ build() {
 }
 
 check() {
-  cd $_srcdir
-  make check
+  make -C $_srcdir check
 }
 
 package() {
-  cd $_srcdir
-  make DESTDIR="$pkgdir/" install
+  make -C $_srcdir DESTDIR="$pkgdir/" install
 }
-
