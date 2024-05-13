@@ -6,7 +6,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libdovi
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Library to read and write Dolby Vision metadata (Android ${_android_arch})"
 url='https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision'
@@ -40,8 +40,6 @@ package() {
 
     android_cargo_cinstall \
         --destdir "${pkgdir}"
-    mv -f "${pkgdir}/${ANDROID_PREFIX_LIB}/libdovi.so".*.*.* "${pkgdir}/${ANDROID_PREFIX_LIB}/libdovi.so"
-    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}/libdovi.so".*
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
 }
