@@ -1,12 +1,12 @@
 pkgbase = python-digikey-api
 	pkgdesc = Python client for Digikey API
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/peeter123/digikey-api
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	depends = python
+	depends = python<3.12
 	depends = python-requests
 	depends = python-retrying
 	depends = python-fake-useragent

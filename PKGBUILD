@@ -2,11 +2,11 @@
 pkgname=python-digikey-api
 _name=${pkgname#python-}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python client for Digikey API"
 url="https://github.com/peeter123/digikey-api"
 depends=(
-    'python'
+    'python<3.12'
     'python-requests'
     'python-retrying'
     'python-fake-useragent'
