@@ -2,8 +2,8 @@
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 
 pkgname=ded
-pkgver=20230122
-_td_pkgver=20230122
+pkgver=20240424
+_td_pkgver=20240421
 pkgrel=1
 pkgdesc="directory editor, file manager similar to Emacs dired"
 arch=(i686 x86_64)
@@ -13,8 +13,8 @@ depends=(ncurses)
 source=(https://invisible-island.net/archives/ded/$pkgname-$pkgver.tgz
         https://invisible-island.net/archives/ded/td_lib-$_td_pkgver.tgz)
 sha256sums=(
-            79e05d4befc07a030b22552e75fb78f856e5d8758f9d8172ea697859ef19b1d8
-            1a2184958e774f8b3a09b08072974b29906e591278d7c4dc400c482ddc802f13
+            acc62c5e3f7de331a7ce56b54068224bf73ab0bebc2039baacb7180873fb720f
+            58f392cd0464e3e2cdc9e4e4a0e43abd12643e6131b4bd398682001299452ba5
            )
 
 build() {
@@ -23,8 +23,6 @@ build() {
   make -j1
 
   cd "$srcdir/$pkgname-$pkgver"
-  # side-by-side build seems broken. This worked for me:
-  sed -i 's/if test "$cf_cv_tdlib_devel/if ! test "$cf_cv_tdlib_devel/' configure
   ./configure --prefix=/usr --mandir=/usr/share/man
   make -j1
 }
