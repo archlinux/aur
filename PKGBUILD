@@ -16,7 +16,8 @@ sha256sums=('0427b911f6509e83c3e571fb6d2997fc8949a7a156f6efc366a4da32301640b4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  #patch -p1 < ../../mailgw.py.patch
+  patch -p1 < ../../mailer.py.patch
+  patch -p1 < ../../cgitb.py.patch
   python setup.py build
 }
 

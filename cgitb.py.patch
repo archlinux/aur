@@ -1,0 +1,13 @@
+--- a/roundup/cgi/cgitb.py
++++ b/roundup/cgi/cgitb.py
+@@ -129,8 +129,7 @@
+     pyver = 'Python ' + sys.version.split()[0] + '<br>' + sys.executable
+     head = pydoc.html.heading(
+         _('<font size=+1><strong>%(exc_type)s</strong>: %(exc_value)s</font>')
+-        % {'exc_type': etype, 'exc_value': evalue},
+-        '#ffffff', '#777777', pyver)
++        % {'exc_type': etype, 'exc_value': evalue})
+
+     head = head + (_('<p>A problem occurred while running a Python script. '
+                      'Here is the sequence of function calls leading up to '
+
