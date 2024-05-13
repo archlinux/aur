@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.28.4
+pkgver=0.29.1
 _electronversion=28
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
@@ -27,10 +27,10 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
-sha256sums_aarch64=('23e1d5f09e39e2d56f5d253cac6d0e7162e73a099a7e1ce113738090ef3f9add')
-sha256sums_armv7h=('ac1a335d3c8bb21e0f84d91c9190c6ae534e14edb3aa4cf14c2f37884fab5134')
-sha256sums_x86_64=('84e2fc0286b9ca2ea146230fed7c084da44d47b0ed13e6c297e5d5ea0039cec6')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums_aarch64=('9c58e67b08864c6771f694b7a1bf5c97abf7d0fc944019c8b27a0023fc022ac4')
+sha256sums_armv7h=('fd2aa56fb3f0ff16dd2c1a680af2b5c1a8ab6b20d52f8ef74bbdd47d4ea36f9b')
+sha256sums_x86_64=('cc411be19c4feaf562ab8ddb594ddf6403932eece8c07d69aa57ae18ff80a771')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -38,6 +38,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
