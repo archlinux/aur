@@ -8,6 +8,7 @@ url="https://github.com/Da4ndo/Hyde-Ext"
 license=('MIT')
 source=("Hyde-Ext-$pkgver-x86_64.tar.gz::https://github.com/Da4ndo/Hyde-Ext/releases/download/v$pkgver/Hyde-Ext-v$pkgver-x86_64.tar.gz")
 sha256sums=('SKIP')
+conflicts=('hyde-ext-git')
 
 pkgver() {
   local version=$(curl -s "https://api.github.com/repos/Da4ndo/Hyde-Ext/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")')
@@ -27,16 +28,19 @@ package() {
   # Ensure the assets directory exists
   install -dm755 "$pkgdir/usr/share/$pkgname/assets"
 
-  # Function to safely copy files with overwrite confirmation
+  # Function to safely copy files with overwrite confirmation and ensure directory existence
   safe_copy() {
     local src=$1
     local dest=$2
+    local dest_dir=$(dirname "$dest")
+    mkdir -p "$dest_dir" # Ensure the directory exists
     if [ -e "$dest" ]; then
       echo -e "\033[33mWarning: $dest exists. Overwriting...\033[0m"
     fi
     cp -rf "$src" "$dest"
   }
 
+  echo ":: Copying assets..."
   # Copy all contents of the assets directory recursively, using safe_copy
   find "./assets/" -type f | while read -r file; do
     local rel_path="${file#./assets/}" # Extract relative path
