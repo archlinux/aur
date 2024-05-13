@@ -1,12 +1,13 @@
 pkgbase = micropython-git
 	pkgdesc = A Python implementation for microcontrollers and constrained systems (UNIX git version)
-	pkgver = 1.23.0.r322.g5114f2c1ea
+	pkgver = 1.23.0.r368.gfa23e4b093
 	pkgrel = 1
 	epoch = 1
 	url = https://micropython.org/
 	changelog = ChangeLog
 	arch = x86_64
 	license = MIT
+	checkdepends = python
 	makedepends = git
 	makedepends = python
 	depends = glibc
