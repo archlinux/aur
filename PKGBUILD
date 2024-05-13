@@ -3,7 +3,7 @@
 pkgname=oama-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
 url="https://github.com/pdobsan/${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
             'gpg: OpenPGP encryption and signing tool'
            )
 provides=(${_pkgname})
-conflicts=(${_pkgname} ${_pkgname}-git)
+conflicts=(${_pkgname} ${_pkgname}-git mailctl mailctl-bin)
 replaces=(mailctl-bin mailctl)
 release=$_pkgname-$pkgver-Linux
 
