@@ -3,7 +3,7 @@
 _srcname=alloy
 pkgname=grafana-${_srcname}
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenTelemetry Collector distribution with programmable pipelines'
 arch=('x86_64' 'aarch64')
 url='https://grafana.com/oss/alloy'
@@ -35,7 +35,7 @@ package() {
   install -Dm755 -T build/alloy "$pkgdir/usr/bin/${pkgname}"
   install -Dm755 -d "$pkgdir/etc/${pkgname}"
   install -Dm644 packaging/config.alloy "$pkgdir/etc/${pkgname}"
-  sed "s|^CONFIG_FILE=.*$|CONFIG_FILE=\"/etc/${pkgname}/config.alloy\"|g" packaging/environment-file |
+  sed "s|^CONFIG_FILE=.*$|CONFIG_FILE=\"/etc/${pkgname}\"|g" packaging/environment-file |
     install -Dm644 -T /dev/stdin "$pkgdir/etc/default/${pkgname}"
 
   install -Dm644 "$srcdir/${pkgname}.sysusers" "$pkgdir/usr/lib/sysusers.d/${pkgname}.conf"
