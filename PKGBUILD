@@ -2,8 +2,8 @@
 
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
-pkgver=0.6.13
-pkgrel=0
+pkgver=0.6.14
+pkgrel=1
 epoch=2
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ source_x86_64=("${pkgname}-${epoch}-x86_64-${pkgver}.tgz::${url}/releases/downlo
 source_aarch64=("${pkgname}-${epoch}-aarch64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-aarch64-${pkgver}.tgz")
 sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e'
             '32d37f9ab2f20170c8938a7bf3349eac152f4ee663f2c630be3ca966f50300bc')
-sha256sums_x86_64=('59374e7785d4bc3a59217c98e145049cf3eb1f3b41110bf1655c52baac1fb998')
-sha256sums_aarch64=('c98bb398ba6670bfb728d76c61c0ca3d1c1ff906d5c871cd20903a10659a7d8d')
+sha256sums_x86_64=('92d8db587ff010a2d31f60e407c46e1f0c3f1dc6e386b59568afd6da387a505e')
+sha256sums_aarch64=('2affbe0caead6c3a96c378aef4e3e72221688de430810e11534c079b0ee0f0ec')
 noextract=(
     ${pkgname}-${epoch}-x86_64-${pkgver}.tgz
     ${pkgname}-${epoch}-aarch64-${pkgver}.tgz)
