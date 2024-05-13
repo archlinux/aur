@@ -4,7 +4,7 @@ pkgname=simplest-file-renamer-bin
 _pkgname=Simplest.File.Renamer
 pkgver=1.0.0
 _electronversion=8
-pkgrel=5
+pkgrel=6
 pkgdesc="Rename your files directly or with your favorite text editor, making use of all your 1337 keyboard shortcuts"
 arch=('x86_64')
 url='https://github.com/whyboris/Simplest-File-Renamer'
@@ -12,8 +12,7 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -25,11 +24,12 @@ source=(
 )
 sha256sums=('ee8d258a22da54055a6fb851884664ecbe4ca01234e6e81faf61eb9b2ba3c044'
             '52debcb7a9763131668b36c7a61730979cb67975b8b4004a12c62915221e836f'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
