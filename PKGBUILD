@@ -6,8 +6,8 @@
 # Contributor: dront78 <dront78@gmail.com>
 
 pkgname=systemtap
-pkgver=5.0
-pkgrel=2
+pkgver=5.1
+pkgrel=1
 pkgdesc="Infrastructure to simplify the gathering of information about the running Linux system"
 url="https://sourceware.org/systemtap/"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('sqlite3: for storing results in a database')
 options=('!emptydirs')
 install="${pkgname}.install"
 source=("https://sourceware.org/ftp/${pkgname}/releases/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha512sums=('dc511a05e66abcbbd8c926973962751196180f3c571d0cd2a3b158ae367c5339ad32967a680ecd03224ab5f7ed2c55be7064867e4fb1b1cd7ea1cb21b2436e4c'
+sha512sums=('da0fe237d2124031a5786d1221dbb420d90da5497376715fd43a7a9f61a354a229c1128e67ce6becbc012aa3796dc5d337149e239e3c1def0651b179e5bf199f'
             'SKIP')
 
 validpgpkeys=('41A0C11274B1E87FE28E4C53E3D77E1F95161991')
