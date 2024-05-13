@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vfox-bin
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A cross-platform and extendable version manager with support for Java, Node.js, Flutter, .Net & more"
 arch=(
@@ -24,17 +24,15 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_armv7.deb")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_i386.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_x86_64.deb")
-sha256sums_aarch64=('e5d6146981ce2380893061fe05c0c9a2fd66189c154c2bae40f537597c30d54f')
-sha256sums_armv7h=('805e6d7fce70e55e6794140d6d0b3c7bc916e99e5b7e71ff81690a496d3fdcad')
-sha256sums_i686=('5e93d3067264ffe815ea897b19ebaedc22491e5b5acb9ec009f0d9ac2570a13a')
-sha256sums_x86_64=('a584fcf893c8df80ccc96a274d352b036c0d80b71a694e31945ceb623da3f5b9')
+sha256sums_aarch64=('24760a49b73dac0feb047573472233036145c2c01282eeeedf737d4e1c2a1622')
+sha256sums_armv7h=('c9c777eab601ef3715ab811182034164a77afbcdfefa070c0940a1f5b35eebc5')
+sha256sums_i686=('8a82fa2bb7e13fb0d190d9916eeb573095dcd44e0270ed3ade363cc3aff115a4')
+sha256sums_x86_64=('a7bd0e49681319cf82f0b9f528483eb2811e728e1a1ab2a93584a0f745f9c8ac')
 build() {
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/share/bash-completions/completions/${pkgname%-bin}" -t "${pkgdir}/usr/share/bash-completion/completions"
-    if [ -f "/usr/bin/zsh" ];then 
-        install -Dm644 "${srcdir}/usr/share/zsh/vendor-completions/_${pkgname%-bin}" -t "${pkgdir}/usr/share/zsh/vendor-completions/"
-    fi
+    install -Dm644 "${srcdir}/usr/share/zsh/vendor-completions/_${pkgname%-bin}" -t "${pkgdir}/usr/share/zsh/vendor-completions/"
 }
