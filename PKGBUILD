@@ -2,7 +2,7 @@
 
 pkgname=rtl8188gu-dkms-git
 _pkgbase=rtl8188gu
-pkgver=r10.699d0cc
+pkgver=r12.9dec829
 pkgrel=1
 pkgdesc="Linux driver for Realtek RTL8188GU"
 url="https://github.com/lwfinger/rtl8188gu"
@@ -29,7 +29,4 @@ package() {
     sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
         -e "s/@PKGVER@/${pkgver}/" \
         -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-    
-    # Temporarily fixed for kernel 6.8+
-    sed -i '304c #if \(LINUX_VERSION_CODE >= KERNEL_VERSION\(2, 6, 19\) && LINUX_VERSION_CODE < KERNEL_VERSION\(6, 8, 0\)\)' "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/os_dep/linux/usb_intf.c
 }
