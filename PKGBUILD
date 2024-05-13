@@ -4,7 +4,7 @@
 pkgname=ded
 pkgver=20240424
 _td_pkgver=20240421
-pkgrel=1
+pkgrel=2
 pkgdesc="directory editor, file manager similar to Emacs dired"
 arch=(i686 x86_64)
 url="https://invisible-island.net/ded/ded.html"
@@ -23,7 +23,7 @@ build() {
   make -j1
 
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --mandir=/usr/share/man
+  ./configure --prefix=/usr
   make -j1
 }
 
