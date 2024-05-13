@@ -2,7 +2,7 @@
 
 pkgname=forego
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Foreman in Go"
 arch=('x86_64')
 url="https://github.com/jpillora/forego"
@@ -24,7 +24,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build 
+  go build -ldflags "-s -w -X main.Version=${pkgver}-arch" -o build
 }
 
 check() {
