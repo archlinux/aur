@@ -1,10 +1,10 @@
 pkgbase = manga-ocr-git
-	pkgdesc = Optical character recognition for Japanese text, trained to handle Japanese manga well
-	pkgver = 0.1.8.r0.g250b89f
-	pkgrel = 1
+	pkgdesc = Optical character recognition for Japanese text focused on manga
+	pkgver = 0.1.11.r0.g1a3ffca
+	pkgrel = 2
 	url = https://github.com/kha-white/manga-ocr
-	arch = any
-	license = Apache
+	arch = x86_64
+	license = Apache-2.0
 	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-setuptools
@@ -16,12 +16,16 @@ pkgbase = manga-ocr-git
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-pyperclip
-	depends = python-pytorch>=1.0
-	depends = python-transformers>=4.12.5
+	depends = python-pytorch
+	depends = python-transformers
 	depends = python-unidic-lite
-	provides = manga-ocr
+	optdepends = wl-clipboard: Read images from the clipboard in the command-line mode on Wayland
+	optdepends = xclip: Read images from the clipbaord in the command-line mode on X11
+	provides = manga-ocr=0.1.11.r0.g1a3ffca
 	conflicts = manga-ocr
-	source = git+https://github.com/kha-white/manga-ocr.git
+	source = git+https://github.com/kha-white/manga-ocr.git#branch=master
+	source = skip-example-run-on-boot.patch
 	b2sums = SKIP
+	b2sums = 57f9bd09a900e35983a876437dd1f50d811faf00122095dfe22309b113d02eb0185dc192baeac507205e2302a7d61ad378895133cfea123fa6aaa67447111a3b
 
 pkgname = manga-ocr-git

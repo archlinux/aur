@@ -1,0 +1,14 @@
+--- manga_ocr/ocr.py	2023-01-22 09:41:16.542263593 +1100
++++ manga_ocr/ocr.py-patched	2023-01-22 09:41:26.878835597 +1100
+@@ -21,11 +21,6 @@
+         else:
+             logger.info('Using CPU')
+ 
+-        example_path = Path(__file__).parent / 'assets/example.jpg'
+-        if not example_path.is_file():
+-            example_path = Path(__file__).parent.parent / 'assets/example.jpg'
+-        self(example_path)
+-
+         logger.info('OCR ready')
+ 
+     def __call__(self, img_or_path):
