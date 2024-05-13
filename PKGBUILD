@@ -1,16 +1,19 @@
 # Maintainer: Wing Hei Chan <whmunkchan@outlook.com>
 # Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
-_pkgname=tree-sitter-rust
+_lang=rust
+_pkgname="tree-sitter-$_lang"
 pkgname="$_pkgname-git"
-pkgver=v0.20.4.r25.g3a56481
+pkgver=v0.21.2.r2.g9c84af0
 pkgrel=1
-pkgdesc="Rust grammar for tree-sitter."
+pkgdesc="Rust grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-rust"
 license=('MIT')
-makedepends=('git' 'npm' 'tree-sitter' 'tree-sitter-cli')
-provides=("$_pkgname")
+groups=('tree-sitter-grammars')
+makedepends=('git' 'tree-sitter-cli')
+optdepends=('tree-sitter: core library')
+provides=("lib$_pkgname.so")
 source=("$_pkgname::git+$url")
 b2sums=('SKIP')
 
@@ -22,25 +25,23 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  tree-sitter generate
+  tree-sitter generate --no-bindings src/grammar.json
 }
 
 build() {
-  cd "$_pkgname/src"
-  cc $CFLAGS -std=c99 -c parser.c scanner.c
-  cc $LDFLAGS -shared parser.o scanner.o \
-    -o "$srcdir/libtree-sitter-rust.so"
+  cd "$_pkgname"
+  make PREFIX=/usr PARSER_URL="$url"
 }
 
 package() {
-  install -Dm 644 {,"$pkgdir/usr/lib/"}libtree-sitter-rust.so
+  install -d "$pkgdir"/usr/lib/tree_sitter
+  ln -s /usr/lib/lib"$_pkgname".so \
+    "$pkgdir"/usr/lib/tree_sitter/"$_lang".so
 
-  local nvim="$pkgdir/usr/share/nvim/runtime/parser"
-  mkdir -p "$nvim"
-  ln -s /usr/lib/libtree-sitter-rust.so "$nvim/rust.so"
-
-  install -Dm 644 "$_pkgname/LICENSE" -t \
-    "$pkgdir/usr/share/licenses/$pkgname"
+  cd "$_pkgname"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
+  install -Dm644 -t "$pkgdir"/usr/share/doc/"$_pkgname" README.md
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/"$_pkgname" LICENSE
 }
 # Local Variables:
 # indent-tabs-mode: nil
