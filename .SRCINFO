@@ -1,6 +1,6 @@
 pkgbase = dictpopup
 	pkgdesc = A Japanese popup dictionary working on mouse selection with Anki integration
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 3
 	epoch = 1
 	url = https://github.com/Ajatt-Tools/dictpopup
@@ -16,7 +16,7 @@ pkgbase = dictpopup
 	depends = libzip
 	depends = libnotify
 	provides = dictpopup
-	source = dictpopup-0.1.3.tar.gz::https://github.com/Ajatt-Tools/dictpopup/archive/v0.1.3.tar.gz
+	source = dictpopup-0.1.4.tar.gz::https://github.com/Ajatt-Tools/dictpopup/archive/v0.1.4.tar.gz
 	sha256sums = d7041edb2b883e5ac0fea3984563a8c6e5af05fa898d6a244e957f7481855cb5
 
 pkgname = dictpopup
