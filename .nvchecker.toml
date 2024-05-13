@@ -1,0 +1,7 @@
+[opm-models]
+source = "github"
+github = "OPM/opm-models"
+use_latest_release = "true"
+from_pattern = "/final"
+to_pattern = ""
+prefix = "release/"

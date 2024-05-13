@@ -1,17 +1,17 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=opm-models
-_dunever=2.9.0
-pkgver=2023.10
+_dunever=2.9.1
+pkgver=2024.04
 pkgrel=1
 pkgdesc="The models module for the Open Porous Media Simulation (OPM) framework"
 arch=(x86_64)
 url="https://github.com/OPM/${pkgname}"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=("opm-grid>=${pkgver}" "dune-alugrid>=${_dunever}" "dune-localfunctions>=${_dunever}")
 makedepends=(cppcheck superlu suitesparse)
 optdepends=('dune-fem: for dofmanager support')
 source=(${pkgname}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('ff9fef6a918528c3e8f5c6595cd088fbc52475c6ec4729d19c1ac607bab8357637ef6918862b8356b0ea9fcf02365ef598e87ba5874ee282a1de2676a7e569fa')
+sha512sums=('d57c775dad372153bb06aac129c33a0c32ba93a33a506dfd52a6defadbf5ed25ed8c5ea8b2ad92766729dbfdf993f8758aaa478f87088b849b19b625e415adb7')
 
 build() {
   export PATH="${srcdir}/${pkgname}-release-${pkgver}-final/bin:${PATH}"

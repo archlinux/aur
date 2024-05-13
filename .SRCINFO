@@ -1,18 +1,18 @@
 pkgbase = opm-models
 	pkgdesc = The models module for the Open Porous Media Simulation (OPM) framework
-	pkgver = 2023.10
+	pkgver = 2024.04
 	pkgrel = 1
 	url = https://github.com/OPM/opm-models
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cppcheck
 	makedepends = superlu
 	makedepends = suitesparse
-	depends = opm-grid>=2023.10
-	depends = dune-alugrid>=2.9.0
-	depends = dune-localfunctions>=2.9.0
+	depends = opm-grid>=2024.04
+	depends = dune-alugrid>=2.9.1
+	depends = dune-localfunctions>=2.9.1
 	optdepends = dune-fem: for dofmanager support
-	source = opm-models-release-2023.10-final.tar.gz::https://github.com/OPM/opm-models/archive/release/2023.10/final.tar.gz
-	sha512sums = ff9fef6a918528c3e8f5c6595cd088fbc52475c6ec4729d19c1ac607bab8357637ef6918862b8356b0ea9fcf02365ef598e87ba5874ee282a1de2676a7e569fa
+	source = opm-models-release-2024.04-final.tar.gz::https://github.com/OPM/opm-models/archive/release/2024.04/final.tar.gz
+	sha512sums = d57c775dad372153bb06aac129c33a0c32ba93a33a506dfd52a6defadbf5ed25ed8c5ea8b2ad92766729dbfdf993f8758aaa478f87088b849b19b625e415adb7
 
 pkgname = opm-models
