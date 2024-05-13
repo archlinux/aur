@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sjmisc
-_pkgver=2.8.9
+_pkgver=2.8.10
 pkgname=r-${_pkgname,,}
-pkgver=2.8.9
-pkgrel=4
+pkgver=2.8.10
+pkgrel=1
 pkgdesc='Data and Variable Transformation Functions'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -34,7 +34,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('78b05741ce9e1cc783fda97a0f18caff689822fdd4bdf733dc20f7c94ac2f3bf')
+sha256sums=('2d64ab3551e6ac5993ade0dd269619063018decaa2fd34d56a2541209052c58b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
