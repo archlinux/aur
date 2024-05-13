@@ -10,7 +10,7 @@ _debian_pkgrel=+3
 pkgname=widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content.  System-wide installation with automated registering for chromium and firefox.'
 pkgver=4.10.2710.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://www.widevine.com/'
 license=('custom')
@@ -38,7 +38,7 @@ sha256sums=(SKIP
             '5ffda209f750c8ba31800b5e28c9d32f04c4b261eeec09784ff7045b694456f4')
 sha256sums_x86_64=('c120e5d03ca6eb5243d4c69a6a4348e121233824ab26db9126a53ba99709d152')
 sha256sums_aarch64=('c88bbb210ca94cb4b5c3bb1ff11b5b24f146b76b22b1119b9cac37c421574284'
-                    '2504018f9128ed2b7ebe00d332383a78fb7e2bc76ad58a3f88c2159234cf86cf')
+                    '6e886755201f1ba9dab1ead5f11846bae321cbf343da1112f06c08c8a8012182')
 sha256sums_armv7h=('5b1199bcd3471d126098be42ca0af0e486302df94cdf4643e4fe2a86d4c4c7d1')
 
 pkgver() {
