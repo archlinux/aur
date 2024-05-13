@@ -1,4 +1,4 @@
-pkgname = kwalletcli
+pkgbase = kwalletcli
 	pkgdesc = Command-Line Interface for the KDE Wallet
 	pkgver = r109.e63d053
 	pkgrel = 1
