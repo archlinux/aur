@@ -1,0 +1,13 @@
+pkgbase = zed-editor-preview-bin
+	pkgdesc = A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
+	pkgver = 0.134.1
+	pkgrel = 1
+	url = https://github.com/zed-industries/zed
+	arch = x86_64
+	license = GPL3
+	provides = zed-editor
+	conflicts = zed-editor
+	source = https://zed.dev/api/releases/preview/0.134.1/zed-linux-x86_64.tar.gz
+	sha256sums = f18dc8b2095b0bbdd6e9fec09ca9635f12ab1ac30f28a6d3b7b9615490859393
+
+pkgname = zed-editor-preview-bin
