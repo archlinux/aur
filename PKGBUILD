@@ -10,7 +10,7 @@ depends=('gtk3' 'cairo' 'pango')
 makedepends=('git' 'make' 'go')
 provides=("${pkgname}")
 source=("hellocontest-$pkgver.tar.gz::https://github.com/ftl/hellocontest/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c1ea06d0eba36546fa693518dd7564ba7a6c7fd982b3961e461b4041cef06fbd')
+sha256sums=('fd4299e4a161af52254c7117e996ab7bb32754b28bd873f45379e7db7713da8f')
 
 build() {
     cd "$pkgname-$pkgver"
