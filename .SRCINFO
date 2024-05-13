@@ -1,6 +1,6 @@
 pkgbase = strain-git
 	pkgdesc = A CPU stressing tool written in Rust
-	pkgver = 0.0.4.r0.g56add02
+	pkgver = 0.0.6.r0.g8222234
 	pkgrel = 1
 	url = https://github.com/JacoMalan1/strain
 	arch = x86_64

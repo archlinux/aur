@@ -2,7 +2,7 @@
 
 pkgbase=strain-git
 pkgname=strain-git
-pkgver=0.0.4.r0.g56add02
+pkgver=0.0.6.r0.g8222234
 pkgrel=1
 pkgdesc="A CPU stressing tool written in Rust"
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgbase"
-  CARGO_TARGET_DIR=./target cargo build --frozen --release
+  CARGO_TARGET_DIR=./target cargo build --release
 }
 
 package() {
