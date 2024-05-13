@@ -1,5 +1,6 @@
 # Maintainer: Dominik Kummer <devel@arkades.org>
 
+pkgname=kwalletcli
 pkgname=kwalletcli-git
 pkgver=r109.e63d053
 pkgrel=1
