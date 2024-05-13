@@ -2,18 +2,18 @@
 
 _basename=sqlfmt
 pkgname=sqlfmt-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Experimental SQL formatter with width-aware output.'
 arch=('x86_64')
-url="https://github.com/mjibson/sqlfmt"
+url="https://github.com/maddyblue/sqlfmt"
 license=('APACHE')
 source=(
-  "$url/releases/download/v$pkgver/${_basename}_${pkgver}_linux_amd64.tar.gz"
-  "https://raw.githubusercontent.com/mjibson/sqlfmt/v${pkgver}/LICENSE"
+  "$url/releases/download/v$pkgver/${_basename}_Linux_x86_64.tar.gz"
+  "https://raw.githubusercontent.com/maddyblue/sqlfmt/v${pkgver}/LICENSE"
 )
 
-sha256sums=('df4d726e289c846761c9e1b54b1340e094e4e490b41002a60cf32e12db97693a'
+sha256sums=('3fe56335be7037b2d62103621be4e3d4106cbf6b39146f77528f8684fe05abce'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 
 package() {
