@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fslpy
-pkgver=3.18.1
+pkgver=3.18.3
 pkgrel=1
 pkgdesc="fslpy is the python library collection used by FSL and related projects"
 arch=('any')
@@ -15,7 +15,7 @@ provides=()
 conflicts=()
 replaces=()
 source=(https://git.fmrib.ox.ac.uk/fsl/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('961e0749fce6ecf0d28abf8ca0544a1df476c2d595b2dcec01f488ebe83f75a0')
+sha256sums=('ea1edd91fe979d0fbe3db698caf31874bd3afc611ac796fe3e6c476ee243adf0')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
