@@ -20,7 +20,7 @@ changelog=
 url="https://github.com/Ajatt-Tools/dictpopup"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('d7041edb2b883e5ac0fea3984563a8c6e5af05fa898d6a244e957f7481855cb5')
+sha256sums=('ca9b261503dbe8ccfa7f10eac33bd9a85e5bec5aefbf96541257d73a716bbbe3')
 validpgpkeys=()
 
 build() {
