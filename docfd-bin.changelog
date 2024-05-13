@@ -1,33 +1,12 @@
-## 6.0.0
+## 6.0.1
 
-- Fixed help message of `--max-linked-token-search-dist`
+- Fixed random UI freezes when updating search field
 
-- Fixed search result printing where output gets chopped off if terminal width is too small
+    - This is due to a race condition in the search cancellation mechanism that
+      may cause UI fiber to starve and wait forever for a cancellation
+      acknowledgement
 
-- Added smart additional line grabbing for search result printing
+    - This mechanism was put in place for asynchronous search since 4.0.0
 
-    - `--search-result-print-snippet-min-size N`
-        - If the search result to be printed has fewer than `N` non-space tokens,
-          then Docfd tries to add surrounding lines to the snippet
-          to give better context.
-    - `--search-result-print-snippet-max-add-lines`
-        - Controls maximum number of surrounding lines that can be added in each direction.
-
-- Added search result underlining when output is not a terminal,
-  e.g. redirected to file, piped to another command
-
-- Changed `--search` to show all search results
-
-- Added `--sample` that uses `--search` previous behavior where (by default)
-  only a handful of top search results are picked for each document
-
-- Changed `--search-result-count-per-doc` to `--sample-count-per-doc`
-
-- Added `--color` and `--underline` for controlling behavior of search result
-  printing, they can take one of:
-
-    - `never`
-    - `always`
-    - `auto`
-
-- Removed blinking for `Tab` key presses
+    - As usual with race conditions, this only manifests under some specific
+      timing by chance

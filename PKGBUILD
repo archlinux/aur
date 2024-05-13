@@ -1,10 +1,11 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 
 pkgname='docfd-bin'
 _pkgname="${pkgname/-bin}"
 _flavour='ubuntu-latest'
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc='TUI multiline fuzzy document finder (pre-compiled)'
 arch=('x86_64')
@@ -30,11 +31,11 @@ package() {
 }
 
 sha256sums=(
-  '9979ef80e28d03be9cbde7387dcec850255b815135ae93cced9d6d65fcef9eb1'
+  'cc0e68e2ae650efeae46e57c9d0c6c8bc607e9070829b9e6905ae8c5557d5c4e'
   'SKIP' 'SKIP' 'SKIP'
 )
 b2sums=(
-  '8b7bc458da0d24de4e0fd36e85f850a2fb993f7704f85c60333ea75f05c36e2c7b39413cb235db70b8206d4c2b544adb4d2d7375fa4f6d941f9bd298a38abaa6'
+  '013f1addb0136909e694d2779e08f0b895d215012c001c9a8d46dcf7f8101f50dd64fb0bdb43c09d92e5b63704584a218c3152016d5f3f2accbd8ba349737989'
   'SKIP' 'SKIP' 'SKIP'
 )
 
