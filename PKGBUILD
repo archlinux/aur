@@ -3,7 +3,7 @@
 pkgname=lemon-lime-git
 _pkgname=lemon-lime
 pkgver=0.3.5alpha2.r31.g5be9374
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
 arch=('x86_64' 'i686')
@@ -61,7 +61,6 @@ build() {
         -GNinja \
         -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
         -DLEMON_BUILD_INFO="Build for Arch Linux (Git Version)" \
-        -DLEMON_BUILD_EXTRA_INFO="Build on $(uname -a | cut -d " " -f3,13)" \
         -DLEMON_QT6=ON \
         -DEMBED_TRANSLATIONS=OFF \
         -DEMBED_DOCS=OFF
