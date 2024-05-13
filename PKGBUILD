@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=clvk
 pkgname=clvk-git
-pkgver=r664.85becb2
+pkgver=r674.b3407a7
 pkgrel=1
 pkgdesc="Experimental implementation of OpenCL 3.0 on Vulkan"
 arch=("x86_64")
@@ -56,7 +56,6 @@ build() {
 	-DCLVK_BUILD_SPIRV_TOOLS=O \
 	-DSKIP_SPIRV_TOOLS_INSTALL=1 \
 	-DCLSPV_BUILD_TESTS=0 \
-	-DCLVK_BUILD_STATIC_TESTS=0 \
 	-DCLVK_BUILD_TESTS=0 \
 	-DCMAKE_INSTALL_PREFIX=/opt/$_pkgname
 	cmake --build build
@@ -65,9 +64,14 @@ build() {
 package() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir" cmake --install build
-	mkdir -p "$pkgdir/etc/OpenCL/vendors" && touch "$pkgdir/etc/OpenCL/vendors/clvk64.icd"
+	mkdir -p "$pkgdir/etc/OpenCL/vendors"
+	mkdir -p "$pkgdir/etc/profile.d"
 
 	cat > "$pkgdir/etc/OpenCL/vendors/clvk64.icd" <<- EOF
 	/opt/clvk/libOpenCL.so
+	EOF
+
+	cat > "$pkgdir/etc/profile.d/clvk-git.sh" <<-EOF
+	export CLVK_CLSPV_PATH=/opt/clvk/clspv
 	EOF
 }
