@@ -3,7 +3,7 @@
 _pkgname=godot-mono
 pkgname=godot-mono
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 arch=('x86_64')
 url="https://godotengine.org/"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd libsquish
    libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama libxrandr
    mbedtls2 miniupnpc pcre2 dotnet-sdk hicolor-icon-theme)
-makedepends=(alsa-lib gcc pulseaudio scons yasm nuget python git rsync gzip python)
+makedepends=(alsa-lib gcc pulseaudio scons yasm nuget python git rsync python)
 optdepends=('pipewire-alsa: for audio support'
             'pipewire-pulse: for audio support')
 provides=('godot')
@@ -80,14 +80,14 @@ build() {
 
 package() {
     install -d \
-        "${pkgdir}/opt/${_pkgname}/" \
+        "${pkgdir}/usr/lib/${_pkgname}/" \
         "${pkgdir}/usr/bin/" \
         "${pkgdir}/usr/share/applications/"
 
     rsync -a \
-        "${srcdir}/godot-${pkgver}-stable/bin" "${pkgdir}/opt/${_pkgname}"
+        "${srcdir}/godot-${pkgver}-stable/bin" "${pkgdir}/usr/lib/${_pkgname}"
 
-    ln -s "/opt/${_pkgname}/bin/godot.linuxbsd.editor.x86_64.mono" "${pkgdir}/usr/bin/godot"
+    ln -s "/usr/lib/${_pkgname}/bin/godot.linuxbsd.editor.x86_64.mono" "${pkgdir}/usr/bin/godot"
     
     install -Dm644 \
         "${srcdir}/godot-${pkgver}-stable/icon.svg" \
@@ -97,11 +97,9 @@ package() {
 	"${srcdir}/godot-${pkgver}-stable/LICENSE.txt" \
 	"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    [[ -f "${srcdir}/godot-${pkgver}-stable/misc/dist/linux/godot.6" ]] && gzip -9 "${srcdir}/godot-${pkgver}-stable/misc/dist/linux/godot.6"
-
     install -Dm644 \
-	"${srcdir}/godot-${pkgver}-stable/misc/dist/linux/godot.6.gz" \
-	"${pkgdir}/usr/share/man/man6/${pkgname}.6.gz"
+	"${srcdir}/godot-${pkgver}-stable/misc/dist/linux/godot.6" \
+	"${pkgdir}/usr/share/man/man6/${pkgname}.6"
 
     install -Dm644 \
 	"${srcdir}/godot-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.xml" \
