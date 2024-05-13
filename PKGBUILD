@@ -3,7 +3,7 @@
 pkgname="odoo-nightly"
 _pkgname="odoo"
 pkgver=17.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Odoo. Open Source Apps To Grow Your Business."
 url="https://odoo.com/"
 arch=("any")
@@ -11,8 +11,8 @@ license=("LGPL-3.0-only")
 conflicts=("openerp" "odoo" "odoo-17")
 replaces=("openerp" "odoo" "odoo-17")
 depends=("postgresql"
-        "wkhtmltopdf"
-        "python310")
+         "wkhtmltopdf"
+         "python310")
 source=("https://nightly.odoo.com/$pkgver/nightly/src/${_pkgname}_$pkgver.latest.tar.gz"
         "odoo.conf"
         "odoo.logrotate"
@@ -22,57 +22,61 @@ source=("https://nightly.odoo.com/$pkgver/nightly/src/${_pkgname}_$pkgver.latest
 b2sums=('SKIP'
         'e0a384d279b7b2c09261041d630e65a2237f6ee4838cdc6d7cc839b7a0a83f7c93ff591c0a27f84d51b80a6f44c7933268a603c0318348d16795e4fa8e58b859'
         '1ef682d87ba12dd8a185ba36701b737f8feb0c1e6eb4b23302a0dc5930ef63c990af65bc45a36313f879a29a23cbdb602e7fc34ba9cee2e46d9a3d8407d5751a'
-        '270bef544eca08c3d5eb76c16d127e8f51061d4edf42f404abf2af15db0448f3a3810bcb22028c9c21868f7d4315af1601eda5cda206548fda4e8221e43c3da4'
+        '4d87a7d684ac3b594b9e8fb987897d772e0866684ed3f55bb07bfff51cac428dd9c9e97b1d9c6d24d73881b9bc3b8f5e25c2bfbb07fa317fa26d00f5912970d2'
         '311757f40c9de2845482ebf22e36469cc1058396bba9edaa2265a2bd085e2bcdd22115b098af3aaa037f7dac3a81212ae8b249df0b268f6bf2d798ee01698aae'
         'f899025f7637aaed2d231de33e5c2d2a831f21f038cb86b9794f9f75224f6eb14b6c9baf95663278ae15568a80ac49354446202232f38577991a24d332373b53')
 backup=("etc/odoo/odoo.conf")
 install="odoo.install"
 options=("!strip")
 
+prepare() {
+  rm -rf "$_pkgname-$pkgver.post"*
+}
+
 build() {
-    cd "$_pkgname-$pkgver.post"*
-    python3.10 -m venv .venv
-    source .venv/bin/activate
-    pip install --upgrade pip build installer wheel
+  cd "$_pkgname-$pkgver.post"*
+  python3.10 -m venv .venv
+  source .venv/bin/activate
+  pip install --upgrade pip build installer wheel
 
-    # provide out-of-the-box compatibility with the merge of libldap and libldap_r that happened with OpenLDAP's 2.5 release
-    sed -i 's/python-ldap==3.4.0/python-ldap==3.4.2/' requirements.txt
+  # provide out-of-the-box compatibility with the merge of libldap and libldap_r that happened with OpenLDAP's 2.5 release
+  sed -i 's/python-ldap==3.4.0/python-ldap==3.4.2/' requirements.txt
 
-    pip install -r requirements.txt
+  pip install -r requirements.txt
     
-    # Install Odoo DPD France dependency
-    pip install xmltodict 
+  # Install Odoo DPD France dependency
+  pip install xmltodict 
 
-    # Build the package
-    python -m build --wheel
+  # Build the package
+  python -m build --wheel
 }
 
 package() {
-    cd "$_pkgname-$pkgver.post"*
-    source .venv/bin/activate
+  cd "$_pkgname-$pkgver.post"*
+  source .venv/bin/activate
 
-    # Install package
-    python -m installer dist/*.whl
+  # Install package
+  python -m installer dist/*.whl
 
-    # Update the .venv path
-    pip install virtualenv-tools3
-    cd .venv
-    virtualenv-tools --update-path /var/lib/odoo/.venv/
+  # Update the .venv path
+  pip install virtualenv-tools3
+  cd .venv
+  virtualenv-tools --update-path /var/lib/odoo/.venv/
 
-    # Copy the .venv directory
-    rm -r "bin/__pycache__"
-    install -d -m 750 "$pkgdir/var/lib/odoo/.venv"
-    cp -r . "$pkgdir/var/lib/odoo/.venv/"
+  # Copy the .venv directory
+  rm -r "bin/__pycache__"
+  install -d -m 750 "$pkgdir/var/lib/odoo/.venv"
+  cp -r . "$pkgdir/var/lib/odoo/.venv/"
     
-    # Configuration file
-    install -d -m 750 "$pkgdir/etc/odoo"
-    install -D -m 640 "$srcdir/odoo.conf" "$pkgdir/etc/odoo/odoo.conf"
+  # Configuration file
+  install -d -m 750 "$pkgdir/etc/odoo"
+  install -D -m 640 "$srcdir/odoo.conf" "$pkgdir/etc/odoo/odoo.conf"
 
-    # Logrotate file
-    install -D -m 644 "$srcdir/odoo.logrotate" "$pkgdir/etc/logrotate.d/odoo"
+  # Logrotate file
+  install -D -m 644 "$srcdir/odoo.logrotate" "$pkgdir/etc/logrotate.d/odoo"
 
-    # Systemd files
-    install -D -m 644 "$srcdir/odoo.service" "$pkgdir/usr/lib/systemd/system/odoo.service"
-    install -D -m 644 "$srcdir/odoo.sysusers" "$pkgdir/usr/lib/sysusers.d/odoo.conf"
-    install -D -m 644 "$srcdir/odoo.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/odoo.conf"
+  # Systemd files
+  install -D -m 644 "$srcdir/odoo.service" "$pkgdir/usr/lib/systemd/system/odoo.service"
+  install -D -m 644 "$srcdir/odoo.sysusers" "$pkgdir/usr/lib/sysusers.d/odoo.conf"
+  install -D -m 644 "$srcdir/odoo.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/odoo.conf"
 }
