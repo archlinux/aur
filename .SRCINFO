@@ -1,6 +1,6 @@
 pkgbase = dnsch
 	pkgdesc = A simple package that helps you to set your linux system DNS servers to several DNS servers
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/mohammadrostamiorg/dnsChanger
 	arch = any

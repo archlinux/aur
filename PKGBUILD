@@ -1,5 +1,5 @@
 pkgname=dnsch
-pkgver=1.7
+pkgver=1.8
 pkgdesc="A simple package that helps you to set your linux system DNS servers to several DNS servers"
 url="https://github.com/mohammadrostamiorg/dnsChanger"
 arch=('any')
