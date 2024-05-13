@@ -2,8 +2,8 @@
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 
 pkgname=amdfand
-pkgver=1.0.12
-pkgrel=2
+pkgver=1.0.14
+pkgrel=1
 pkgdesc="AMDGPU fan speed management tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
