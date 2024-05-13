@@ -9,8 +9,8 @@ _debian_pkgrel=+3
 
 pkgname=widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content.  System-wide installation with automated registering for chromium and firefox.'
-pkgver=${_x86_64_pkgver}
-pkgrel=1
+pkgver=4.10.2710.0
+pkgrel=2
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://www.widevine.com/'
 license=('custom')
