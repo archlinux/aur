@@ -6,10 +6,10 @@ pkgver=20230122
 _td_pkgver=20230122
 pkgrel=1
 pkgdesc="directory editor, file manager similar to Emacs dired"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="https://invisible-island.net/ded/ded.html"
-license=('custom:BSD')
-depends=('ncurses')
+license=(custom:BSD)
+depends=(ncurses)
 source=(https://invisible-island.net/archives/ded/$pkgname-$pkgver.tgz
         https://invisible-island.net/archives/ded/td_lib-$_td_pkgver.tgz)
 sha256sums=(
