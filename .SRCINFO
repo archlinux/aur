@@ -1,11 +1,13 @@
 pkgbase = python-django-channels
 	pkgdesc = Developer-friendly asynchrony for Django
 	pkgver = 4.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = http://github.com/django/channels
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
 	depends = python
 	depends = python-django
 	depends = python-asgiref
