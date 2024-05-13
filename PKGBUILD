@@ -10,8 +10,15 @@ url="https://github.com/OPM/${pkgbase}"
 license=(GPL-3.0-or-later)
 makedepends=("dune-common>=${_dunever}" boost fmt cjson suitesparse texlive-basic doxygen graphviz
   pybind11 python-scikit-build python-setuptools-scm python-pytest-runner)
-source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('60ca3cb83628b3efb0d7424b4a4bbc5c650f2b1095da5a32617f5e0ed94f2861156cd78bfbcc0e126cfb7727db8106a903f8a802ea380cc05313346099957d02')
+source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz
+  gcc-14.patch::${url}/pull/4064.patch)
+sha512sums=('60ca3cb83628b3efb0d7424b4a4bbc5c650f2b1095da5a32617f5e0ed94f2861156cd78bfbcc0e126cfb7727db8106a903f8a802ea380cc05313346099957d02'
+  'fb960632ffdfefbe1564937bc72c82626728b1aa54d4f924e9c76bc0f0252897e67a29fe24a4812dac8cdcce539ec1076cf821b7b7a19cfa7c333ce15048cc67')
+
+prepare() {
+  cd ${pkgbase}-release-${pkgver}-final
+  patch -p1 -i ../gcc-14.patch
+}
 
 build() {
   cmake \
