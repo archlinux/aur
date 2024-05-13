@@ -3,7 +3,7 @@
 pkgname="odoo-nightly"
 _pkgname="odoo"
 pkgver=17.0
-pkgrel=11
+pkgrel=12
 pkgdesc="Odoo. Open Source Apps To Grow Your Business."
 url="https://odoo.com/"
 arch=("any")
@@ -28,10 +28,6 @@ b2sums=('SKIP'
 backup=("etc/odoo/odoo.conf")
 install="odoo.install"
 options=("!strip")
-
-prepare() {
-  rm -rf "$_pkgname-$pkgver.post"*
-}
 
 build() {
   cd "$_pkgname-$pkgver.post"*
@@ -64,7 +60,7 @@ package() {
   virtualenv-tools --update-path /var/lib/odoo/.venv/
 
   # Copy the .venv directory
-  rm -r "bin/__pycache__"
+  rm -rf "bin/__pycache__"
   install -d -m 750 "$pkgdir/var/lib/odoo/.venv"
   cp -r . "$pkgdir/var/lib/odoo/.venv/"
     
@@ -79,4 +75,7 @@ package() {
   install -D -m 644 "$srcdir/odoo.service" "$pkgdir/usr/lib/systemd/system/odoo.service"
   install -D -m 644 "$srcdir/odoo.sysusers" "$pkgdir/usr/lib/sysusers.d/odoo.conf"
   install -D -m 644 "$srcdir/odoo.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/odoo.conf"
+
+  # Clean build
+  rm -rf "$srcdir/$_pkgname-$pkgver.post"*
 }

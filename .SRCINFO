@@ -1,7 +1,7 @@
 pkgbase = odoo-nightly
 	pkgdesc = Odoo. Open Source Apps To Grow Your Business.
 	pkgver = 17.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://odoo.com/
 	install = odoo.install
 	arch = any
