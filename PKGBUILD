@@ -23,6 +23,8 @@ depends=("${_deps[@]/#/python-}")
 makedepends=(
         'git'
         'python-hatchling'
+        'python-build'
+        'python-installer'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
