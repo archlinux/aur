@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vookiimageviewer-bin
 _pkgname=VookiImageViewer
-pkgver=2023.12.24
+pkgver=2024.05.12
 _exiv2version=0.27.1
-pkgrel=3
+pkgrel=1
 pkgdesc="A cross-platform lightweight image viewer for a fast image preview."
 arch=('x86_64')
 url="https://vookiimageviewer.cz/"
@@ -21,7 +21,7 @@ source=(
     "exiv2-${_exiv2version}.zip::${_exiv2url}/releases/download/${_exiv2version}/exiv2-${_exiv2version}-Linux64.tar.gz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('53fc2d650013982912d2fda3204a6b2189231b0f573e4da23640d6affeb33943'
+sha256sums=('8508398251c18fe9baa890c4fab503c324cd66e163a56f32fd1a146ec50d0bac'
             'caafad455c88f4d9cf8ab338204e8ffafac2110e7b8a332d296c274963abf460'
             '1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5')
 build() {
