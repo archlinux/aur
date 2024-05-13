@@ -1,7 +1,7 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
 pkgname=lc0-cudnn-git
 _pkgname=lc0-cudnn
-pkgver=0.28.2.r0.gfa5864bb
+pkgver=0.30.0.r0.gee686691
 pkgrel=1
 pkgdesc="CudNN version of Leela Chess Zero."
 arch=('i686' 'x86_64')
