@@ -5,20 +5,20 @@
 
 pkgname='mozc'
 pkgver=2.30.5448.102
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
 depends=('qt6-base')
-makedepends=('bazel' 'git' 'python')
+makedepends=('bazel' 'git' 'python' 'gcc13')
 optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
 conflicts=('mozc-ut')
 options=(!distcc !ccache)
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=c50bd32a0931d558797d71cfc11091ee17c55ac1")
-sha256sums=('SKIP')
+sha256sums=('f1f7bb38dce2fae8884bd26a6b26a838128d244bf98faae18f43b789da04ff2e')
 
 prepare() {
     cd ${pkgname}-git/src
@@ -32,6 +32,11 @@ build() {
     unset ANDROID_NDK_HOME
     unset ANDROID_HOME
     export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
+
+    # Temp fix for GCC 14
+    export CC='/usr/bin/gcc-13'
+    export CXX='/usr/bin/g++-13'
+
     bazel build server:mozc_server gui/tool:mozc_tool --config oss_linux --compilation_mode opt
 }
 
