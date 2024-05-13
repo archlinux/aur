@@ -1,0 +1,20 @@
+pkgbase = deepin-session-git
+	pkgdesc = New DDE session
+	pkgver = 1.2.9.r0.gd07ba25
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dde-session
+	arch = x86_64
+	arch = aarch64
+	groups = deepin-git
+	license = LGPL3
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = cmake
+	makedepends = ninja
+	depends = systemd-libs
+	provides = dde-session
+	conflicts = dde-session
+	source = git+https://github.com/linuxdeepin/dde-session.git
+	sha512sums = SKIP
+
+pkgname = deepin-session-git
