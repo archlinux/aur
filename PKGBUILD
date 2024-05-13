@@ -1,7 +1,7 @@
 # Maintainer:
 
 # options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ]; then
   : ${_autoupdate:=false}
 else
   : ${_autoupdate:=true}
@@ -10,7 +10,7 @@ fi
 # basic info
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=1.7.5678
+pkgver=1.7.5804
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -44,8 +44,8 @@ build() {
   (
     # fix desktop file name
     cd "$srcdir/squashfs-root"
-    if [ ! -e "PCSX2.desktop" ] ; then
-      for i in *.desktop ; do
+    if [ ! -e "PCSX2.desktop" ]; then
+      for i in *.desktop; do
         mv "$i" PCSX2.desktop
         break
       done
@@ -73,7 +73,7 @@ package() {
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
-  if [[ "${_autoupdate::1}" != "t" ]] ; then
+  if [[ "${_autoupdate::1}" != "t" ]]; then
     return
   fi
 
@@ -87,7 +87,7 @@ _update_version() {
   )
 
   # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
     _pkgver="${_pkgver_new:?}"
   fi
 }
