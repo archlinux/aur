@@ -1,7 +1,7 @@
 # Maintainer: yvs <VSYakovetsky@gmail.com>
 
-_bver="0.2"
-_gtag="b215bec"
+_bver="0.3"
+_gtag="d3da356"
 
 pkgname=pingpath
 pkgver="$_bver"
@@ -10,7 +10,7 @@ pkgdesc="ping wrapper to display path"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yvs2014/$pkgname"
 license=('GPL-2.0-or-later')
-depends=('iputils' 'gtk4' 'json-glib')
+depends=('iputils' 'gtk4' 'json-glib' 'libglvnd' 'libepoxy' 'cglm')
 makedepends=('git' 'gcc' 'make' 'pkgconf')
 options=(strip !debug)
 
