@@ -9,7 +9,7 @@ conflicts=("${pkgname%-git}")
 arch=(x86_64)
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxtst' 'nss')
-makedepends=('git' 'lerna' 'npm' 'nodejs-lts-hydrogen')
+makedepends=('git' 'lerna' 'npm' 'nodejs-lts-iron')
 source=(
     'git+https://github.com/nukeop/nuclear.git'
 	'nuclear.desktop'
@@ -24,7 +24,6 @@ pkgver() {
 build(){
  cd nuclear
  npm install
- lerna bootstrap
  npm run build
 }
 package(){
