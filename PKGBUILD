@@ -2,23 +2,24 @@
 
 pkgname=ffmpeg-dektec
 pkgver=2023.09.0
-pkgrel=4
-_sdkver=2024.01.0
+pkgrel=5
+_sdkver=2024.04.0
 pkgdesc="FFmpeg Integration for DekTec Devices"
 arch=(x86_64)
 url="https://www.dektec.com/products/SDK/ffmpeg/"
 license=('custom: nonfree and unredistributable')
 depends=(dektec-drivers-dkms)
 makedepends=(
-	yasm 
+	yasm
 	sdl2
+	gcc13
 )
 source=("FFmpeg_v${pkgver}.tar.gz::https://www.dektec.com/products/SDK/ffmpeg/linux/downloads/FFmpeg_v${pkgver}.tar.gz"
 	"LinuxSDK_v${_sdkver}.tar.gz::https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz"
 	"070-ffmpeg-binutils2.41-fix.patch::https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/effadce6c756247ea8bae32dc13bb3e6f464f0eb")
 noextract=("FFmpeg_v${pkgver}.tar.gz")
 sha256sums=('18d5f0fc4ded9ccc28978fcf345125d4a91a765eb503e7e61ddacd6ede9be003'
-            '3b767e61a88833e23e735852ae448a8c17985397f416bd2655841faa14e75ff0'
+            'feef9fd6310f1903edff87a510db3a78e9a79067006ee659b37d3dd34fa277e6'
             'fec03e133521486ca258ae34ddf093eb6aab23f848c4332c367aadbfeaefda04')
 
 prepare() {
@@ -36,10 +37,12 @@ build() {
 	# Build
 	./configure \
 		--prefix='/usr' \
+		--cc=gcc-13 \
 		--disable-shared \
 		--disable-doc \
 		--disable-asm \
 		--disable-vulkan \
+		--disable-ffprobe \
 		--enable-static \
 		--enable-small \
 		--enable-dektec \
@@ -53,7 +56,6 @@ package() {
 	# Custom standalone installation
 	install -Dvm 755 ${pkgname}-${pkgver}/ffmpeg "$pkgdir"/usr/bin/ffmpeg-dektec
 	install -Dvm 755 ${pkgname}-${pkgver}/ffplay "$pkgdir"/usr/bin/ffplay-dektec
-	install -Dvm 755 ${pkgname}-${pkgver}/ffprobe "$pkgdir"/usr/bin/ffprobe-dektec
 
 	# Standard installation method
 	#make -C "${pkgname}-${pkgver}" DESTDIR="$pkgdir" install install-man
