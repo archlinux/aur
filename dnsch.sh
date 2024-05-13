@@ -54,10 +54,11 @@ if [[ $1 == "-s" || $1 == "--set" ]]; then
     nameservers=("nameserver $2" "nameserver $3")
 elif [[ $1 == "-p" || $1 == "--ping" ]]; then
     # Declare an array to hold each dns (bash is stupid).
+    echo "this command may take a few minutes please wait ... "
     declare -a firstKeys=()
 
     for key in "${!dnsList[@]}"; do
-        firstKey="${key%,*}"
+        firstKey="${key%,*}" 
         if [[ ! " ${firstKeys[@]} " =~ " ${firstKey} " ]]; then
             firstKeys+=("$firstKey")
         fi
