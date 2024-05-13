@@ -1,18 +1,19 @@
-# Maintainer: Ewout van Mansom <ewout@vanmansom.name>
+# Maintainer: Arne Brücher <archlinux[at]arne-bruecher[dot]de>
+# Contributor: Ewout van Mansom <ewout@vanmansom.name>
 
 pkgname=amdfand
 pkgver=1.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="AMDGPU fan speed management tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
-source=("amdfand::git+https://github.com/Eraden/amdgpud.git#tag=v${pkgver}")
+source=("amdfand::git+https://github.com/Eraden/amdgpud.git")
 arch=('x86_64')
-conflicts=('amdfand-bin')
+conflicts=('amdfand-bin' 'amdfand-git')
 provides=('amdfand')
 sha512sums=('SKIP')
 makedepends=('git' 'cargo')
-optdepends=('amdmond' 'amdguid-glow' 'amdguid-wayland' 'amdvold')
+optdepends=('amdguid-glow' 'amdguid-wayland')
 
 prepare() {
   cd "$pkgname"
