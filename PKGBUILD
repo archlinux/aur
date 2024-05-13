@@ -2,7 +2,7 @@
 
 pkgname=system76-power
 pkgver=1.1.26
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
@@ -19,7 +19,6 @@ optdepends=(
 'system76-io-dkms: some systems might need this driver'
 )
 makedepends=('rust')
-options=('!lto') # see https://aur.archlinux.org/packages/system76-power#comment-846879
 source=(
 "https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
 'use-mkinitcpio.patch'
@@ -37,6 +36,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  CFLAGS+=" -ffat-lto-objects"
   make
 }
 
