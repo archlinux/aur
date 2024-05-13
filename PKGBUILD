@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="frp-panel"
-pkgver=0.0.28
+pkgver=0.0.29
 pkgrel=1
 pkgdesc="A multi node frp webui and for frp server and client management"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -11,13 +11,13 @@ backup=(
     "etc/${pkgname}/master.env"
     "etc/${pkgname}/server.env"
 )
-license=("unkown")
+license=("GPL-3.0-or-later")
 makedepends=("go" "npm")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.tmpfiles"
         "${pkgname}@.service")
-sha256sums=('abcefa43ca1bae394872852cfa99968d29ce29bed10b5e385b9298f500717ce9'
+sha256sums=('b00cd3047f9d3078263db7ab153894b1156244744b366a5ba7381ba6a8e547c1'
             'd909eac5b51218404824363ce35886fcd2a8065773ffecde8f64855a107369a0'
             '430b38fb5de8ea2bdd03ef65d376b5aae7acad88cfffd5031d05b45e8ae1040b')
 
