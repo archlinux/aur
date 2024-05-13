@@ -1,9 +1,10 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 
 pkgname='makesure'
 pkgver=0.9.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple AWK-based task/command runner with declarative goals and dependencies'
 arch=('any')
 url='https://github.com/xonixx/makesure'
@@ -12,17 +13,16 @@ depends=('awk' 'sh')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 changelog="$pkgname.changelog"
 
+_docs='https://makesure.dev/'
+
 package() {
   cd "$pkgname-$pkgver"
 
-  # Be more verbose if standard output is a TTY
-  test -t 1 && _v='v' || _v=''
-
-  install "-${_v}Dm0755" makesure        "$pkgdir/usr/bin/makesure"
-  install "-${_v}Dm0644" completion.bash "$pkgdir/usr/share/bash-completion/completions/makesure"
-  install "-${_v}Dm0644" CHANGELOG.md    "$pkgdir/usr/share/docs/$pkgname/CHANGELOG.md"
-  install "-${_v}Dm0644" README.md       "$pkgdir/usr/share/docs/$pkgname/README.md"
-  install "-${_v}Dm0644" LICENSE         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0755 makesure "$pkgdir/usr/bin/makesure"
+  install -vDm0644 completion.bash "$pkgdir/usr/share/bash-completion/completions/makesure"
+  install -vDm0644 -t "$pkgdir/usr/share/docs/$pkgname/" \
+    CHANGELOG.md README.md
+  install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 sha256sums=(
