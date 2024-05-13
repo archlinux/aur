@@ -2,8 +2,8 @@
 pkgname=go-tagalign-git
 _pkgname="tagalign"
 pkgver=v1.3.4.r0.e25313b
-pkgrel=1
-pkgdesc="Tagalign is a linter and language server for Rego"
+pkgrel=2
+pkgdesc="TagAlign is used to align and sort tags in Go struct."
 arch=("x86_64")
 url="https://github.com/4meepo/tagalign"
 license=('MIT')
@@ -27,7 +27,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build ./cmd/tagalign
+  go build ./cmd/${_pkgname}
 }
 
 check() {

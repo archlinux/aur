@@ -1,7 +1,7 @@
 pkgbase = go-tagalign-git
-	pkgdesc = Tagalign is a linter and language server for Rego
+	pkgdesc = TagAlign is used to align and sort tags in Go struct.
 	pkgver = v1.3.4.r0.e25313b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/4meepo/tagalign
 	arch = x86_64
 	license = MIT
