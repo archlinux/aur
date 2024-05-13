@@ -1,8 +1,8 @@
 # Maintainer: asjur <asjur at proton dot me>
 pkgname=dbgate-beta-bin
 pkgver=5.2.8
-pkgrel=10
-_electronversion=25
+pkgrel=23
+_electronversion=30
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application"
 arch=(
     'aarch64'
@@ -21,7 +21,7 @@ depends=(
 makedepends=(
     'fuse2'
 )
-# https://github.com/dbgate/dbgate/releases/download/v5.2.8-beta.10/dbgate-5.2.8-beta.10-linux_x86_64.AppImage
+# https://github.com/dbgate/dbgate/releases/download/v5.2.8-beta.23/dbgate-5.2.8-beta.23-linux_x86_64.AppImage
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}-beta.${pkgrel}/dbgate-${pkgver}-beta.${pkgrel}-linux_arm64.AppImage")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}-beta.${pkgrel}/dbgate-${pkgver}-beta.${pkgrel}-linux_armv7l.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}-beta.${pkgrel}/dbgate-${pkgver}-beta.${pkgrel}-linux_x86_64.AppImage")
@@ -31,9 +31,9 @@ source=(
 )
 sha256sums=('4ba7d897a31d45781b6bbc0b87e9a241873d61fff657af2f0c54608f652d235b'
             'beb56bb45d0f3c3bf5bfb269bdc039355ff59dbb28c4f427f219385dba455ad3')
-sha256sums_aarch64=('dd602ab4106b7cbb5cee3115ab65e7dfe9e9672f8e34aac92d5e4c92bf7bda87')
-sha256sums_armv7h=('aae363642f3c02be45f8e8241c7797f8bbbdd47328b43ee6e9f6ebd1f751e526')
-sha256sums_x86_64=('a33d748090d50aebc19533e4a2101b83fe8e36d18c977a4fd92228c204fec127')
+sha256sums_aarch64=('adeda4a02ea3ba4982916cbe95b8a2a745cbb38eee25c442386eb6d2c40f12bb')
+sha256sums_armv7h=('676a57f49906104500da5f315e05f7eb8f35e6d90cd03a8766110cd7427ff1f7')
+sha256sums_x86_64=('68a1d3db04df3650f115355bae0bc56970ce852f79afd09cfe836b4ffcfd1c19')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -52,7 +52,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
 	install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
+    # install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
       install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-beta-bin}.png" \
