@@ -1,0 +1,13 @@
+pkgbase = amazon-ecs-init
+	pkgdesc = Amazon ECS Init
+	pkgver = 1.82.3
+	pkgrel = 1
+	url = https://github.com/aws/amazon-ecs-init
+	arch = x86_64
+	license = APACHE
+	depends = glibc
+	provides = amazon-ecs-init
+	source = https://s3.us-east-1.amazonaws.com/amazon-ecs-agent-us-east-1/amazon-ecs-init-latest.amd64.deb
+	md5sums = 99fb1e1812ff2999af9f2275590641e6
+
+pkgname = amazon-ecs-init
