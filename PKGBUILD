@@ -1,6 +1,9 @@
+# Maintainer: Arne Brücher <archlinux[at]arne-brucher[dot]de>
+# Contributor: lukpod <lukpod[at]mailoo[dot]org>
+
 pkgname=electrum-ltc
 pkgver=4.2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Litecoin wallet'
 arch=(any)
 url=https://electrum-ltc.org/
@@ -22,7 +25,7 @@ depends=(
   zbar
 )
 makedepends=(python-setuptools)
-source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz{,.asc})
+source=($url/download/Electrum-LTC-$pkgver.tar.gz{,.asc})
 validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
 b2sums=(
   77a3f3969d435492216fa93afe48228bec1e3897d83eb5ebce5aee7088304ae54ceeeb030c6250a761a1f5c02abe554bc5e38c055b9979c1b390304a2f4a0966
