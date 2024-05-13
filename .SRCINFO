@@ -1,0 +1,27 @@
+pkgbase = windfetch
+	pkgdesc = OS information tool. Fork of Neofetch
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://codeberg.org/chardon_cs/windfetch
+	arch = any
+	license = MIT
+	makedepends = make
+	depends = bash
+	optdepends = catimg: Display Images
+	optdepends = chafa: Image to text support
+	optdepends = feh: Wallpaper Display
+	optdepends = imagemagick: Image cropping / Thumbnail creation / Take a screenshot
+	optdepends = jp2a: Display Images
+	optdepends = libcaca: Display Images
+	optdepends = nitrogen: Wallpaper Display
+	optdepends = w3m: Display Images
+	optdepends = xdotool: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal
+	optdepends = xorg-xdpyinfo: Resolution detection (Single Monitor)
+	optdepends = xorg-xprop: Desktop Environment and Window Manager
+	optdepends = xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)
+	optdepends = xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal
+	source = https://codeberg.org/chardon_cs/windfetch/archive/v0.1.1.tar.gz
+	validpgpkeys = 69713F2236BBD93D3E78EFEF0D56181B48414DE8
+	sha256sums = 1a74c5618a22db4624c9b01a918d56ff83d0c8d4d5f44ef9665db4814d310be5
+
+pkgname = windfetch
