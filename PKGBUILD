@@ -3,7 +3,7 @@ pkgname=openhome-bin
 _pkgname=OpenHome
 pkgver=0.3.0
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="Application for importing and transferring Pokémon between save files"
 arch=('x86_64')
 url="https://github.com/andrewbenington/OpenHome"
@@ -11,18 +11,19 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d7c3c19e486b75a170d769569e9a43a3fbcd445af8f0a4ebc6557720567c773e'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
