@@ -5,6 +5,7 @@ pkgbase = hyde-ext
 	url = https://github.com/Da4ndo/Hyde-Ext
 	arch = x86_64
 	license = MIT
+	conflicts = hyde-ext-git
 	source = Hyde-Ext-1.1.0-x86_64.tar.gz::https://github.com/Da4ndo/Hyde-Ext/releases/download/v1.1.0/Hyde-Ext-v1.1.0-x86_64.tar.gz
 	sha256sums = SKIP
 
