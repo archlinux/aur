@@ -4,7 +4,7 @@
 
 pkgname=solaar-git
 pkgver=1.1.13.r2.g9d2cedbe
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux device manager for a wide range of Logitech devices"
 url="https://pwr-solaar.github.io/Solaar/"
 _url="https://github.com/pwr-Solaar/Solaar"
@@ -55,7 +55,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  rm -f dist/*.whl # clean up old builds so dist/*.whl works in package
+  rm -rf dist # clean up old builds so dist/*.whl works in package
   python -m build --wheel --no-isolation
 }
 

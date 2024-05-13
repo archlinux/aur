@@ -1,7 +1,7 @@
 pkgbase = solaar-git
 	pkgdesc = Linux device manager for a wide range of Logitech devices
 	pkgver = 1.1.13.r2.g9d2cedbe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pwr-solaar.github.io/Solaar/
 	arch = any
 	license = GPL-2.0-or-later
