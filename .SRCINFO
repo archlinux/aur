@@ -1,6 +1,6 @@
 pkgbase = duckstation
 	pkgdesc = Playstation emulator
-	pkgver = 0.1.6658
+	pkgver = 0.1.6720
 	pkgrel = 1
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = duckstation
 	depends = qt6-base
 	depends = sdl2
 	depends = shaderc
-	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=4e0c417add264226b3db065c1466791f0591a1b5
+	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=26917f14c568a8133721bb21614c08bd6fe1efce
 	sha256sums = SKIP
 
 pkgname = duckstation

@@ -14,7 +14,7 @@ unset _pkgtype
 # basic info
 _pkgname="duckstation"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.1.6658
+pkgver=0.1.6720
 pkgrel=1
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
@@ -51,7 +51,7 @@ makedepends=(
 )
 
 if [ "${_build_git::1}" != "t" ]; then
-  _commit=4e0c417add264226b3db065c1466791f0591a1b5
+  _commit=26917f14c568a8133721bb21614c08bd6fe1efce
 
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git#commit=$_commit")
