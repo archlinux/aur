@@ -4,14 +4,14 @@
 
 # shellcheck disable=SC1090,SC2207
 pkgname=pince-git
-pkgver=r1498.3da0f80
+pkgver=r1517.8f5b416
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL-3.0-or-later WITH CC-BY-3.0')
 depends=() # follow upstream, set this later
-makedepends=('python-pip' 'qt6-tools' 'lsb-release' 'pkgconf' 'git' 'sed')
+makedepends=('cmake' 'python-pip' 'qt6-tools' 'lsb-release' 'pkgconf' 'git' 'sed')
 optdepends=(
 	'qt6-wayland: wayland support'
 )
