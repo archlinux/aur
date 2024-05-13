@@ -8,7 +8,7 @@ Type=simple
 User=odoo
 Group=odoo
 Environment="PATH=/var/lib/odoo/.venv/bin:$PATH"
-ExecStart=/var/lib/odoo/.venv/bin/odoo --config /etc/odoo/odoo.conf --logfile /var/log/odoo/odoo-server.log
+ExecStart=/var/lib/odoo/.venv/bin/odoo --config /etc/odoo/odoo.conf 
 KillMode=mixed
 
 [Install]

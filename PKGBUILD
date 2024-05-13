@@ -3,7 +3,7 @@
 pkgname="odoo-nightly"
 _pkgname="odoo"
 pkgver=17.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Odoo. Open Source Apps To Grow Your Business."
 url="https://odoo.com/"
 arch=("any")
@@ -20,9 +20,9 @@ source=("https://nightly.odoo.com/$pkgver/nightly/src/${_pkgname}_$pkgver.latest
         "odoo.sysusers"
         "odoo.tmpfiles")
 b2sums=('SKIP'
-        'fb140cadcd3a06535db170e4b06e025da3d23c28fb0e1e66cafeaad1d897f02d002a1af06b06120b25575488f1e618c92ceb7f4861a27a7b1c0f18fbbe201173'
+        'f33eddbdf10e590a0b8de617db0683142e4dd09cd65ab6720b164e7d8f76267629f8f8700d70b49e7770a62e39b5dee911d754765d10c75ec2c4cd2916fd2c35'
         '1ef682d87ba12dd8a185ba36701b737f8feb0c1e6eb4b23302a0dc5930ef63c990af65bc45a36313f879a29a23cbdb602e7fc34ba9cee2e46d9a3d8407d5751a'
-        'a58c7b66e336f9393aefa7d1c40aabb4a6b3573ba65c073d40277e9a037a22d49f8c0c8c75c4eb0e13fb55ce2e87f0e31757ed78fcd12d3e15b547dccb9f828a'
+        '270bef544eca08c3d5eb76c16d127e8f51061d4edf42f404abf2af15db0448f3a3810bcb22028c9c21868f7d4315af1601eda5cda206548fda4e8221e43c3da4'
         '311757f40c9de2845482ebf22e36469cc1058396bba9edaa2265a2bd085e2bcdd22115b098af3aaa037f7dac3a81212ae8b249df0b268f6bf2d798ee01698aae'
         'f899025f7637aaed2d231de33e5c2d2a831f21f038cb86b9794f9f75224f6eb14b6c9baf95663278ae15568a80ac49354446202232f38577991a24d332373b53')
 backup=("etc/odoo/odoo.conf")
@@ -60,6 +60,7 @@ package() {
     virtualenv-tools --update-path /var/lib/odoo/.venv/
 
     # Copy the .venv directory
+    rm -r "bin/__pycache__"
     install -d -m 750 "$pkgdir/var/lib/odoo/.venv"
     cp -r . "$pkgdir/var/lib/odoo/.venv/"
     
