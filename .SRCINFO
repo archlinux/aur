@@ -1,19 +1,19 @@
 pkgbase = bettersoundcloud
 	pkgdesc = A PC client of SoundCloud with improvement made using electronjs
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlirezaKJ/BetterSoundCloud
 	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = nvm
-	makedepends = git
+	makedepends = curl
 	depends = electron22
 	conflicts = bettersoundcloud
-	source = bettersoundcloud.git::git+https://github.com/AlirezaKJ/BetterSoundCloud.git#tag=V0.5.3
+	source = bettersoundcloud-0.5.3.tar.gz::https://github.com/AlirezaKJ/BetterSoundCloud/archive/refs/tags/V0.5.3.tar.gz
 	source = bettersoundcloud.sh
-	sha256sums = SKIP
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = b7b96f25560512baae8a1ee798316a427b7adc9623808b0a47aae64288b4aa1b
+	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
 
 pkgname = bettersoundcloud
