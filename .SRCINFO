@@ -1,0 +1,8 @@
+pkgbase = i8042-keyboard-fix
+	pkgdesc = A (pseudo) fix for i8042 controller driver that breaks keyboard functionality on resume from suspend.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/mistine/i8042-keyboard-fix-linux
+	arch = any
+	source = git+https://github.com/mistine/i8042-keyboard-fix-linux.git
+pkgname = i8042-keyboard-fix
