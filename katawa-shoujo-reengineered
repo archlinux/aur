@@ -1,0 +1,6 @@
+#!/bin/sh
+BASE="/usr/share/katawa-shoujo-reengineered"
+LIB="$BASE/lib/py3-linux-x86_64"
+BASEFILE="Katawa Shoujo Re-Engineered"
+
+exec "$LIB/$BASEFILE" $RENPY_PYARGS # -EO "$BASE/$BASEFILE.py" "$@"
