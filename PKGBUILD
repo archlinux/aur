@@ -1,9 +1,8 @@
-# Contributor: skydrome <skydrome@protonmail.com>
-# Maintainer:  skydrome <skydrome@protonmail.com>
 # Maintainer:  Salama <salama@salama.xyz>
+# Contributor: skydrome <skydrome@protonmail.com>
 
 pkgname=i2p-bin
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="https://geti2p.net"
@@ -31,7 +30,7 @@ source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
         'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh')
 
-sha256sums=('61d3720accc6935f255611680b08ba1a414d32daa00d052017630c2424c30069'
+sha256sums=('1b0c1a12e64bd6dabd894a297b7bfd60ebe218a9177086f27367b8d4f1e30ab9'
             'SKIP'
             '925d931aae2bd03c08555536b1c836654a72cc4acfd9f440f1ad43958ba2108d'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
