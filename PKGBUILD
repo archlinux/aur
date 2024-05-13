@@ -2,7 +2,7 @@
 _pkgname=clvk
 pkgname=clvk-git
 pkgver=r674.b3407a7
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental implementation of OpenCL 3.0 on Vulkan"
 arch=("x86_64")
 url="https://github.com/kpet/clvk"
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=("vulkan-icd-loader" "ocl-icd" "ncurses" "gcc-libs" "zstd" "zlib")
 makedepends=("gcc" "git" "cmake" "python" "opencl-headers" "spirv-headers" 
 "spirv-tools" "spirv-llvm-translator" "vulkan-headers" "ninja")
-provides=("clvk")
+provides=("clvk" "opencl-driver")
 conflicts=("clvk")
 options=("!lto")
 install=$pkgname.install
