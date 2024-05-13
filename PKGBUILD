@@ -14,7 +14,7 @@ conflicts=('kwalletcli')
 makedepends=('git' 'gcc' 'make')
 source=("${pkgname}::git+https://github.com/MirBSD/kwalletcli.git")
 sha512sums=('SKIP')
- 
+
 pkgver() {
   cd "$pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
