@@ -2,7 +2,7 @@
 
 _name=solara
 pkgname=python-${_name,,}
-pkgver=1.32.1
+pkgver=1.32.2
 pkgrel=1
 pkgdesc="A pure Python, React-style web framework"
 arch=('any')
@@ -36,7 +36,7 @@ makedepends=('python-installer' 'python-wheel')
 
 _whl="${_name//-/_}-$pkgver-py2.py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_whl}")
-sha256sums=('b9ad9906413a5ad5796e7618a1b405dba69761281dbffaa0538d1691f72e573f')
+sha256sums=(ca4a793476b68ba345b6a538802d8fee0fb8e9764e7ecc55470d4c81d3d75a6b)
 
 noextract=("$_whl")
 package() {
