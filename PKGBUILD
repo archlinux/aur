@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xm-video-player-bin
-pkgver=0.5.1
-pkgrel=4
+pkgver=0.5.5
+pkgrel=1
 pkgdesc="A high-quality client that supports playing multiple streaming formats such as MP4, M3U8, FLV, mpeg flash, etc.一款高颜值的支持播放mp4, m3u8,flv,mpeg-dash等多种流媒体格式的客户端"
 arch=("x86_64")
 url="https://tauri-update-server-chi.vercel.app/"
@@ -10,7 +10,6 @@ license=('BSD-3-Clause')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'gtk3'
     'openssl-1.1'
     'webkit2gtk'
@@ -19,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/singcl/XmVideoPlayer/v${pkgver}/LICENSE"
 )
-sha256sums=('0b9b0ce028241b6e303ee86d61f3a6dba94c44597e9260be81e07c7b78a01d55'
+sha256sums=('a62da1f994c0f9e2da1422aeccae658384be82b5cddfe51bff6fe47da8385b4d'
             '37231024f052817f3bc0e2f73047cca63feb6c18bbe443e3bcbfbd2d28cfab3d')
 build() {
     bsdtar -xf "${srcdir}/data."*
