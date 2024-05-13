@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="DUNE module supporting grids in a corner-point format"
 arch=(x86_64)
 url="https://github.com/OPM/${pkgname}"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=("opm-common>=${pkgver}" "dune-grid>=${_dunever}" "dune-istl>=${_dunever}" suitesparse zoltan)
 makedepends=(cppcheck doxygen graphviz)
 optdepends=('man-db: manual pages for grdecl2vtu and mirror_grid')
