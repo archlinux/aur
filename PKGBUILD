@@ -24,6 +24,7 @@ options=(!strip !debug)
 prepare() {
     cd "${pkgname}-dev-${pkgver}"
     sed -i 's|<span .\+git_pull.\+通过git拉取最新代码.\+</span>||' plugin/admin/app/view/index/dashboard.html
+    echo "${pkgver}" > .version
 }
 
 package() {
