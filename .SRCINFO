@@ -7,7 +7,6 @@ pkgbase = qwerty-learner-pake
 	license = MIT
 	depends = gtk3
 	depends = webkit2gtk
-	depends = openssl-1.1
 	conflicts = qwerty
 	source = qwerty-learner-pake-2.5.1.deb::https://github.com/tw93/Pake/releases/download/V2.5.1/Qwerty_x86_64.deb
 	source = LICENSE-2.5.1::https://raw.githubusercontent.com/tw93/Pake/V2.5.1/LICENSE

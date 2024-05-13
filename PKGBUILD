@@ -13,7 +13,6 @@ conflicts=("${_appname}")
 depends=(
     'gtk3'
     'webkit2gtk'
-    'openssl-1.1'
 )
 source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
