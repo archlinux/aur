@@ -1,21 +1,27 @@
 # Maintainer: Salamandar <felix@piedallu.me>
-# Contributor: mdsitton <matthewsitton@gmail.com>
-pkgname='python2-fretwork-git'
+
+pkgname='python-fretwork-git'
 _gitname='fretwork'
-pkgver=0.5.0.r33.ea43bf0
+pkgver=0.5.0.r37.c195f40
 pkgrel=1
 pkgdesc=" Shared code for FoFiX and FoF:R"
 arch=('any')
 url="https://github.com/fofix/$_gitname.git"
 license=('GPL')
 groups=('games')
-makedepends=('git' 'cython2' 'sdl_mixer' 'python2-setuptools')
-depends=('python2' 'sdl_mixer' 'soundtouch')
+
+makedepends=('git' 'python-setuptools')
+depends=(
+    'python' 'python-gobject'
+    'sdl12_compat' 'sdl_mixer'
+    'libogg' 'libvorbis' 'libtheora' 'soundtouch'
+)
+
 source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_gitname"
+    cd "$_gitname"
     printf "%s.%s" "$( set -o pipefail
         git describe --long --tags 2>/dev/null \
             | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
@@ -24,9 +30,17 @@ pkgver() {
     )" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "$_gitname"
+    sed -i 's|pypandoc.convert(|pypandoc.convert_file(|' setup.py
+}
+
+build() {
+    cd "$_gitname"
+    python setup.py build
+}
 
 package() {
-    cd "$srcdir/$_gitname"
-    python2 setup.py install --root="$pkgdir"
-
+    cd "$_gitname"
+    python setup.py install --root="$pkgdir" --optimize=1
 }
