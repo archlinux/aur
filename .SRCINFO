@@ -1,7 +1,7 @@
 pkgbase = superfile-bin
 	pkgdesc = Pretty fancy and modern file manager in terminal file manager
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MHNightCat/superfile
 	arch = aarch64
 	arch = x86_64
