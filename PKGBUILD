@@ -2,10 +2,10 @@
 
 pkgname=plattenalbum
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Browse music with MPD"
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 url="https://github.com/SoongNoonien/plattenalbum"
 depends=('python-mpd2>=3.1' 'gtk4' 'python-gobject' 'libadwaita')
 makedepends=('meson' 'gettext' 'glib2')
