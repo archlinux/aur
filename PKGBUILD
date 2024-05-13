@@ -26,8 +26,7 @@ depends=(
     curl libcurl.so
     systemd-libs libudev.so
     hicolor-icon-theme
-    glslang
-    spirv-tools
+    shaderc
 )
 makedepends=(
     git
@@ -44,8 +43,6 @@ makedepends=(
     sndio
     ninja
     jack
-    python
-    spirv-headers
 )
 optdepends=(
     'qt6-wayland: Wayland support'
@@ -58,12 +55,10 @@ provides=(duckstation)
 conflicts=(duckstation)
 source=(
     git+"$url".git
-    git+https://github.com/google/shaderc.git#tag=v2024.0
     duckstation-qt.desktop
     duckstation-qt.sh)
 sha256sums=(
     'SKIP'
-    'c1f935c1e0338e274cea4f106fc3b13e02f4150e504a255ddb18221bd80bb416'
     'ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b'
     '221a8fc0d1f0cebdf281acc26484e98ebbb59f876e12fdef3f03cf91380e31f5'
 )
@@ -74,56 +69,12 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/shaderc"
-  # apply duckstation patch
-  git apply "$srcdir/$_pkgname/scripts/shaderc-changes.patch" \
-    --exclude=CMakeLists.txt \
-    --exclude=libshaderc/CMakeLists.txt \
-    --exclude third_party/CMakeLists.txt
-
-  # de-vendor libs and disable git versioning
-  sed '/examples/d;/third_party/d' -i CMakeLists.txt
-  sed '/build-version/d' -i glslc/CMakeLists.txt
-  cat <<- EOF > glslc/src/build-version.inc
-"${pkgver}\\n"
-"$(pacman -Q spirv-tools|cut -d \  -f 2|sed 's/-.*//')\\n"
-"$(pacman -Q glslang|cut -d \  -f 2|sed 's/-.*//')\\n"
-EOF
-
-  cd "$srcdir/duckstation"
-  # preparation for find shaderc as static
-  sed -e 's|shaderc_shared|shaderc_combined|g' \
-      -e 's|PUBLIC Shaderc|PRIVATE Shaderc|g' \
-      -e '/PRIVATE Shaderc/a target_link_libraries(util PUBLIC glslang::glslang)' \
-      -e '/PRIVATE Shaderc/a target_link_libraries(util PUBLIC glslang::SPIRV)' \
-      -e '/if(SHADERC_FOUND)/a find_package(glslang 14.1.0 REQUIRED)' \
-      -i CMakeModules/FindShaderc.cmake \
-      -i src/util/CMakeLists.txt
-  sed -e '/INTERFACE_COMPILE/d' \
-      -i CMakeModules/FindShaderc.cmake
+    cd "$srcdir/duckstation"
+    # get rid of non_semantic_debug_info
+    sed -e '/shaderc_compile_options_set_emit_non_semantic_debug_info/d' -i src/util/gpu_device.cpp
 }
 
 build() {
-    echo "Building shaderc..."
-
-    cmake -B build-shaderc -S shaderc \
-        -G Ninja \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_C_COMPILER=clang \
-        -DCMAKE_CXX_COMPILER=clang++ \
-        -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-        -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-        -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DSHADERC_SKIP_TESTS=ON \
-        -DSHADERC_SKIP_EXAMPLES=ON \
-        -DSHADERC_SKIP_COPYRIGHT_CHECK=ON \
-        -Dglslang_SOURCE_DIR=/usr/include/glslang
-    ninja -C build-shaderc
-    DESTDIR="$srcdir/deps" ninja -C build-shaderc install
-
-    echo "Building duckstation..."
-
     cmake -B build -S duckstation \
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
@@ -135,8 +86,6 @@ build() {
         -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
         -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-        -DCMAKE_PREFIX_PATH="$srcdir/deps/usr" \
-        -DCMAKE_SKIP_RPATH=ON \
         -DBUILD_NOGUI_FRONTEND=OFF \
         -DBUILD_QT_FRONTEND=ON \
         -Wno-dev
