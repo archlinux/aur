@@ -3,7 +3,7 @@ pkgname=live-plus-plus-bin
 _pkgname="live++"
 pkgver=2.3.6
 _electronversion=24
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight live streaming client.轻量级的直播客户端"
 arch=('x86_64')
 url="https://github.com/dipelta/live-plus-plus"
@@ -14,7 +14,7 @@ conflicts=(
     "${_pkgname}"
 )
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -25,12 +25,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a8ca3c43067a4b9c7e9daaa612e11af380906efca6f14bd2bb99cbcd16f4d5c6'
-            'f44595b913c3d20e62170b0f5fb4ea1467345ec5e6ca1d8041ad536554adfe78'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '8c66ee49d3a6ff7eb085eb7d896bdea56da0cac5c97bd60735847901d006f748'
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
