@@ -5,7 +5,7 @@ post_install() {
     echo "   https://github.com/dmlls/whatsapp-emoji-linux/blob/main/TROUBLESHOOTING.md#non-color-emojis-being-displayed-in-some-apps"
     echo
     echo "   Furthermore, if some websites are displaying incorrect font kerning,"
-    echo "   make sure popular fonts such as'Roboto' or 'Arial' are installed on"
+    echo "   make sure popular fonts such as 'Roboto' or 'Arial' are installed on"
     echo "   your system. Find more info at:"
     echo
     echo "   https://wiki.archlinux.org/title/fonts#Font_packages"

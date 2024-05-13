@@ -1,7 +1,7 @@
 # Maintainer: Diego Miguel Lozano <hello@diegomiguel.me>
 
 pkgname='ttf-whatsapp-emoji'
-pkgver='2.24.2.76'
+pkgver='2.24.8.85'
 pkgrel=1
 pkgdesc='TrueType WhatsApp emoji'
 arch=('any')
@@ -18,11 +18,11 @@ conflicts=(
 )
 install="$pkgname.install"
 source=(
-    "WhatsAppEmoji-$pkgver.ttf::$url/releases/download/2.24.2.76-1/WhatsAppEmoji.ttf"
+    "WhatsAppEmoji-$pkgver.ttf::$url/releases/download/2.24.8.85-1/WhatsAppEmoji.ttf"
     "75-whatsapp-emoji.conf"
 )
 sha512sums=(
-    "b9741dd41fb9219f98e582b12a8020828f7b5e763eca79a013f5a14ca248f0391919ecde251cbd6c8d7c34e75fd865ea0dc206eb1f3a909af365d85348ccf6f8"
+    "6c631c59bc3659a2b8ab36b64b179b7fa77b4b55f2da80a01a9b3848930d8ef95296ca64cd8a5ba84e61c18efec4c2fe7bafd7928a2e302a7c03efd7e987c1a7"
     "e9b9115a70488c407b60f52cfd850e64cd447d5ec314b8f116bcb1ab355e6fd15e3856f6bbdc7c5928ec763a56ff00be98c09d6d89c7ade44fc2e0fefc98a208"
 )
 package() {
