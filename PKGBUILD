@@ -1,29 +1,29 @@
 # Maintainer Adrian Woźniak <adrian.wozniak@ita-prog.pl>
+# Contributor: Arne Brücher <archlinux[at]arne-bruecher[dot]de>
 
 pkgbase=amdfand-bin
 pkgname=amdfand-bin
-pkgver=1.0.13
-pkgrel=4
+pkgver=1.0.14
+pkgrel=5
 pkgdesc="AMDGPU fan speed management tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
-source=( "https://github.com/Eraden/amdgpud/releases/download/v1.0.11/amdfand-1.0.11.tar.gz")
+source=( "$url/releases/download/v1.0.12/amdfand-archlinux-latest-$pkgver.zip")
 arch=('x86_64')
-md5sums=( '799d49fafd429d493c2f6fa158112493')
+md5sums=('1a30e5ee9a3526f25c3b8b04141cb55c')
 keywords=( 'amdgpu' 'controller' 'fan', 'overclocking', 'voltage')
+makedeps=('unzip')
 optdepends=('amdmond-bin' 'amdguid-glow-bin' 'amdguid-wayland-bin' 'amdvold-bin')
 
 build() {
     cd $srcdir/
-    tar -xvf $srcdir/amdfand-1.0.11.tar.gz
+    unzip -v $srcdir/amdfand-archlinux-latest-$pkgver.zip
 }
 
 package() {
     cd $srcdir/
     mkdir -p $pkgdir/usr/bin/
     mkdir -p $pkgdir/usr/lib/systemd/system/
-    install -m 0755 $srcdir/amdfand $pkgdir/usr/bin
-    install -m 0755 $srcdir/amdfand.service "$pkgdir/usr/lib/systemd/system/amdfand.service"
+    install -m 0755 $srcdir/target/release/amdfand $pkgdir/usr/bin
+    install -m 0755 $srcdir/services/amdfand.service "$pkgdir/usr/lib/systemd/system/amdfand.service"
 }
-
-#vim: syntax=sh
