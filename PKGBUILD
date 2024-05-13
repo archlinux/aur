@@ -4,7 +4,7 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.13.r411.g7d327e85
+pkgver=0.13.r443.gb6fe8962
 pkgrel=1
 pkgdesc="Command-line document and bibliography manager"
 arch=('any')
@@ -33,13 +33,13 @@ depends=('python'
          'python-lxml'
          'python-platformdirs'
          'python-prompt_toolkit'
-         'python-pyaml'
          'python-pygments'
          'python-pyparsing'
          'python-requests'
          'python-slugify'
          'python-stevedore'
          'python-typing_extensions'
+         'python-yaml'
         )
 optdepends=(
     'fzf: fzf picker'
@@ -74,8 +74,8 @@ checkdepends=(
     # For mypy
     mypy
     python-types-beautifulsoup4
-    python-types-pyaml
     python-types-pygments
+    python-types-pyyaml
     python-types-requests
     python-types-setuptools
     )
