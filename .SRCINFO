@@ -1,7 +1,7 @@
 pkgbase = aniflix-bin
 	pkgdesc = Anime Streaming Desktop App
 	pkgver = 0.0.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://aniflix.lamaau.space/
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = aniflix-bin
 	source = aniflix.sh
 	sha256sums = db3c22d7f9d359852125fd5f3dc570fe540d3e10b2a172472cbf0c9df2b986da
 	sha256sums = c3cc74287725f86a3a56a0e4d88895716ff81ff3c576ae69221feaa2539c0f86
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
 
 pkgname = aniflix-bin

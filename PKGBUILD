@@ -2,7 +2,7 @@
 pkgname=aniflix-bin
 pkgver=0.0.1
 _electronversion=23
-pkgrel=9
+pkgrel=10
 pkgdesc="Anime Streaming Desktop App"
 arch=('x86_64')
 url="https://aniflix.lamaau.space/"
@@ -20,11 +20,12 @@ source=(
 )
 sha256sums=('db3c22d7f9d359852125fd5f3dc570fe540d3e10b2a172472cbf0c9df2b986da'
             'c3cc74287725f86a3a56a0e4d88895716ff81ff3c576ae69221feaa2539c0f86'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
