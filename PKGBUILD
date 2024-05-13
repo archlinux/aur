@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=124.0.6367.201
+pkgver=125.0.6422.41
 pkgrel=1
 _manual_clone=0
 _system_clang=1
@@ -16,7 +16,7 @@ depends=('nss' 'libffi')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'rust' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/122/chromium-patches-122.tar.bz2
+        "chromium-125-system-zstd.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/www-client/chromium/files/chromium-125-system-zstd.patch?id=9549b6e8362e0a5a5cc950ca4f0604353ac87152"
         drop-flag-unsupported-by-clang17.patch
         compiler-rt-adjust-paths.patch
         abseil-remove-unused-targets.patch
@@ -24,8 +24,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-no-matching-strcat.patch
         fix-numeric_limits.patch
         fix-undeclared-isnan.patch)
-sha256sums=('11773c4cfce4b39ae1bbe711b2907cb86e9aa299b7c6a71656edb876f0c85992'
-            '1f6acf165578288dc84edc7d9dcfabf7d38f55153b63a37ee5afa929f0e2baad'
+sha256sums=('05652bf7a89c637f99cfc02cc9d312da074d2d0bce34d311434de3d36543dc72'
+            '1259768f2d835a124fc8038353093c896b442680969eee7ed6880d17a2601c0b'
             '3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             SKIP
@@ -47,6 +47,7 @@ declare -gA _system_libs=(
   # [absl_base]=abseil-cpp
   # [absl_cleanup]=
   # [absl_container]=
+  # [absl_crc]=
   # [absl_debugging]=
   # [absl_flags]=
   # [absl_functional]=
@@ -79,6 +80,7 @@ _unwanted_bundled_libs=(
   # third_party/abseil-cpp/absl/base
   # third_party/abseil-cpp/absl/cleanup
   # third_party/abseil-cpp/absl/container
+  # third_party/abseil-cpp/absl/crc
   # third_party/abseil-cpp/absl/debugging
   # third_party/abseil-cpp/absl/flags
   # third_party/abseil-cpp/absl/functional
@@ -168,7 +170,7 @@ prepare() {
   # Disables logging as it's unconfigurable, which is undesired in a library
   patch -p0 -i ../disable-logging.patch
 
-  # Fixes building with system Abseil (needs libstdc++)
+  # Fixes building with system Abseil (needs libstdc++ and yet unreleased HexStringToBytes() variant)
   # patch -p0 -i ../abseil-remove-unused-targets.patch
 
   # Fixes `implicit instantiation of undefined template 'std::numeric_limits<unsigned long>'` error
@@ -180,7 +182,7 @@ prepare() {
 
   # Make building with system zstd possible
   rm -f build/linux/unbundle/zstd.gn
-  patch -Np1 -i ../chromium-patches-*/chromium-117-system-zstd.patch
+  patch -Np1 -i ../chromium-125-system-zstd.patch
 
   if (( !_system_clang )); then
     # Use prebuilt rust as system rust cannot be used due to the error:
@@ -199,6 +201,7 @@ prepare() {
     find "$_lib" -type f \
       \! -path "$_lib/chromium/*" \
       \! -path "$_lib/google/*" \
+      \! -path "third_party/abseil-cpp/absl/base/dynamic_annotations.h" \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done

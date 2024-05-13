@@ -1,4 +1,5 @@
 *.tar
 *.tar.*
+chromium-125-system-zstd.patch
 pkg
 src

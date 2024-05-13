@@ -1,216 +1,51 @@
 These targets are dead code and they aren't available with system Abseil. Based on:
 https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electron
 
---- third_party/abseil-cpp/BUILD.gn	2024-03-13 20:35:54.618683000 +0100
-+++ third_party/abseil-cpp/BUILD.gn	2024-03-16 12:55:25.440050645 +0100
-@@ -61,9 +61,6 @@
-     "//third_party/abseil-cpp/absl/base",
-     "//third_party/abseil-cpp/absl/base:config",
-     "//third_party/abseil-cpp/absl/base:core_headers",
--    "//third_party/abseil-cpp/absl/base:no_destructor",
--    "//third_party/abseil-cpp/absl/base:nullability",
--    "//third_party/abseil-cpp/absl/base:prefetch",
-     "//third_party/abseil-cpp/absl/cleanup",
-     "//third_party/abseil-cpp/absl/container:btree",
-     "//third_party/abseil-cpp/absl/container:fixed_array",
-@@ -78,24 +75,17 @@
-     "//third_party/abseil-cpp/absl/functional:any_invocable",
-     "//third_party/abseil-cpp/absl/functional:bind_front",
-     "//third_party/abseil-cpp/absl/functional:function_ref",
--    "//third_party/abseil-cpp/absl/functional:overload",
-     "//third_party/abseil-cpp/absl/hash",
--    "//third_party/abseil-cpp/absl/log:absl_check",
--    "//third_party/abseil-cpp/absl/log:absl_log",
--    "//third_party/abseil-cpp/absl/log:die_if_null",
-     "//third_party/abseil-cpp/absl/memory",
-     "//third_party/abseil-cpp/absl/meta:type_traits",
-     "//third_party/abseil-cpp/absl/numeric:bits",
-     "//third_party/abseil-cpp/absl/numeric:int128",
-     "//third_party/abseil-cpp/absl/random",
--    "//third_party/abseil-cpp/absl/random:distributions",
-     "//third_party/abseil-cpp/absl/status",
-     "//third_party/abseil-cpp/absl/status:statusor",
-     "//third_party/abseil-cpp/absl/strings",
-     "//third_party/abseil-cpp/absl/strings:cord",
--    "//third_party/abseil-cpp/absl/strings:has_ostream_operator",
-     "//third_party/abseil-cpp/absl/strings:str_format",
--    "//third_party/abseil-cpp/absl/strings:string_view",
-     "//third_party/abseil-cpp/absl/synchronization",
-     "//third_party/abseil-cpp/absl/time",
-     "//third_party/abseil-cpp/absl/types:optional",
-@@ -194,37 +184,22 @@
-         "absl/algorithm:algorithm_test",
-         "absl/algorithm:container_test",
-         "absl/base:config_test",
--        "absl/base:no_destructor_test",
--        "absl/base:nullability_test",
-         "absl/base:prefetch_test",
-         "absl/cleanup:cleanup_test",
+--- third_party/abseil-cpp/BUILD.gn	2024-05-08 22:30:02.272433000 +0200
++++ third_party/abseil-cpp/BUILD.gn	2024-05-13 13:11:28.294308251 +0200
+@@ -150,20 +150,15 @@
+   public_deps = [
+     # Banned because each flag registration generates a static initializer, and
+     # the flag registration mechanism is problematic in component builds.
+-    "//third_party/abseil-cpp/absl/flags:config",
+     "//third_party/abseil-cpp/absl/flags:flag",
+     "//third_party/abseil-cpp/absl/flags:parse",
+-    "//third_party/abseil-cpp/absl/flags:reflection",
+     "//third_party/abseil-cpp/absl/flags:usage",
  
-         # TODO(mbonadei): Fix issue with EXPECT_DEATH and uncomment.
-         # "absl/container:btree_test",
-         "absl/container:common_policy_traits_test",
--        "absl/container:fixed_array_test",
--        "absl/container:flat_hash_map_test",
--        "absl/container:flat_hash_set_test",
+     # Banned because the LOG and CHECK macros conflict with Chrome's version of
+     # those macros.
+     "//third_party/abseil-cpp/absl/log",
+-    "//third_party/abseil-cpp/absl/log:check",
+ 
+     # TODO(danilchap): Investigate if these targets need to be banned in 3rd party library code.
+-    "//third_party/abseil-cpp/absl/log:globals",
+-    "//third_party/abseil-cpp/absl/log:initialize",
+     "//third_party/abseil-cpp/absl/random:bit_gen_ref",
+   ]
+ 
+@@ -172,7 +167,7 @@
+     ":absl_full",
+   ]
+ 
+-  public_configs = [ "//third_party/abseil-cpp/absl/flags:absl_flags_config" ]
++  public_configs = []
+ }
+ 
+ config("absl_include_config") {
+@@ -278,7 +273,6 @@
+         "absl/container:fixed_array_test",
+         "absl/container:flat_hash_map_test",
+         "absl/container:flat_hash_set_test",
 -        "absl/container:hash_function_defaults_test",
          "absl/container:inlined_vector_test",
          "absl/container:node_slot_policy_test",
--        "absl/container:raw_hash_set_allocator_test",
--        "absl/container:raw_hash_set_test",
-         "absl/container:sample_element_size_test",
-         "absl/crc:crc32c_test",
-         "absl/crc:crc_cord_state_test",
-         "absl/crc:crc_memcpy_test",
-         "absl/crc:non_temporal_memcpy_test",
--        "absl/debugging:stacktrace_test",
--        "absl/flags:flag_test",
-         "absl/functional:any_invocable_test",
--        "absl/functional:function_ref_test",
--        "absl/functional:overload_test",
--        "absl/hash:hash_instantiated_test",
-         "absl/hash:hash_test",
-         "absl/hash:low_level_hash_test",
--        "absl/log:absl_check_test",
--        "absl/log:absl_log_basic_test",
-         "absl/log:die_if_null_test",
-         "absl/log:flags_test",
-         "absl/log:globals_test",
-@@ -236,19 +211,13 @@
-         "absl/log:log_streamer_test",
-         "absl/log:scoped_mock_log_test",
-         "absl/log:stripping_test",
--        "absl/log:vlog_is_on_test",
--        "absl/log/internal:fnmatch_test",
-         "absl/log/internal:stderr_log_sink_test",
-         "absl/memory:memory_test",
-         "absl/meta:type_traits_test",
--        "absl/numeric:int128_test",
-         "absl/profiling:exponential_biased_test",
-         "absl/profiling:periodic_sampler_test",
--        "absl/status:status_test",
-         "absl/status:statusor_test",
-         "absl/strings:ascii_test",
--        "absl/strings:char_formatting_test",
--        "absl/strings:charset_test",
-         "absl/strings:cord_buffer_test",
-         "absl/strings:cord_data_edge_test",
-         "absl/strings:cord_rep_btree_navigator_test",
-@@ -261,26 +230,11 @@
-         "absl/strings:cordz_test",
-         "absl/strings:cordz_update_scope_test",
-         "absl/strings:cordz_update_tracker_test",
--        "absl/strings:damerau_levenshtein_distance_test",
--        "absl/strings:has_absl_stringify_test",
--        "absl/strings:has_ostream_operator_test",
-         "absl/strings:match_test",
--        "absl/strings:str_format_arg_test",
--        "absl/strings:str_format_bind_test",
--        "absl/strings:str_format_checker_test",
--        "absl/strings:str_format_convert_test",
--        "absl/strings:str_format_extension_test",
--        "absl/strings:str_format_output_test",
--        "absl/strings:str_format_parser_test",
--        "absl/strings:str_format_test",
-         "absl/strings:str_replace_test",
-         "absl/strings:string_view_test",
--        "absl/synchronization:kernel_timeout_internal_test",
--        "absl/synchronization:waiter_test",
--        "absl/time:time_test",
+         "absl/container:raw_hash_set_allocator_test",
+@@ -352,7 +346,6 @@
+         "absl/synchronization:waiter_test",
+         "absl/time:time_test",
          "absl/types:optional_test",
+-        "absl/types:span_test",
          "absl/types:variant_test",
--        "absl/utility:if_constexpr_test",
+         "absl/utility:if_constexpr_test",
          "//third_party/googletest:gtest_main",
-       ]
-     }
---- third_party/abseil-cpp/absl/crc/BUILD.gn	2024-03-13 20:35:54.646685100 +0100
-+++ third_party/abseil-cpp/absl/crc/BUILD.gn	2024-03-16 12:55:25.533373392 +0100
-@@ -28,9 +28,6 @@
-     ":cpu_detect",
-     "//third_party/abseil-cpp/absl/base:config",
-     "//third_party/abseil-cpp/absl/base:core_headers",
--    "//third_party/abseil-cpp/absl/base:endian",
--    "//third_party/abseil-cpp/absl/base:prefetch",
--    "//third_party/abseil-cpp/absl/base:raw_logging_internal",
-     "//third_party/abseil-cpp/absl/memory",
-     "//third_party/abseil-cpp/absl/numeric:bits",
-   ]
-@@ -56,10 +53,7 @@
-     ":non_temporal_memcpy",
-     "//third_party/abseil-cpp/absl/base:config",
-     "//third_party/abseil-cpp/absl/base:core_headers",
--    "//third_party/abseil-cpp/absl/base:endian",
--    "//third_party/abseil-cpp/absl/base:prefetch",
-     "//third_party/abseil-cpp/absl/strings:str_format",
--    "//third_party/abseil-cpp/absl/strings:string_view",
-   ]
- }
- 
-@@ -69,7 +63,6 @@
-     ":crc32c",
-     "//third_party/abseil-cpp/absl/strings",
-     "//third_party/abseil-cpp/absl/strings:str_format",
--    "//third_party/abseil-cpp/absl/strings:string_view",
-   ]
- }
- 
-@@ -95,9 +88,7 @@
-     ":crc32c",
-     "//third_party/abseil-cpp/absl/memory",
-     "//third_party/abseil-cpp/absl/random",
--    "//third_party/abseil-cpp/absl/random:distributions",
-     "//third_party/abseil-cpp/absl/strings",
--    "//third_party/abseil-cpp/absl/strings:string_view",
-   ]
- }
- 
-@@ -112,7 +103,6 @@
-   deps = [
-     ":crc32c",
-     "//third_party/abseil-cpp/absl/base:config",
--    "//third_party/abseil-cpp/absl/base:no_destructor",
-     "//third_party/abseil-cpp/absl/numeric:bits",
-   ]
-   visibility = [
---- third_party/fuzztest/BUILD.gn	2024-03-13 20:36:14.852145700 +0100
-+++ third_party/fuzztest/BUILD.gn	2024-03-16 12:55:25.553371123 +0100
-@@ -74,7 +74,6 @@
-     deps = [
-       "//third_party/abseil-cpp:absl",
-       "//third_party/abseil-cpp/absl/log:check",
--      "//third_party/abseil-cpp/absl/log:log",
-     ]
-     configs += [ ":fuzztest_internal_config" ]
-     configs -= fuzzing_engine_remove_configs
-@@ -100,7 +99,6 @@
-     deps = [
-       ":centipede_common",
-       "//third_party/abseil-cpp:absl",
--      "//third_party/abseil-cpp/absl/log:log",
-     ]
-     configs += [ ":fuzztest_internal_config" ]
-     configs -= fuzzing_engine_remove_configs
-@@ -201,7 +199,6 @@
-       "//third_party/abseil-cpp:absl",
-       "//third_party/abseil-cpp/absl/flags:flag",
-       "//third_party/abseil-cpp/absl/log:check",
--      "//third_party/abseil-cpp/absl/log:log",
-     ]
-     sources = [
-       "src/centipede/centipede_main.cc",
-@@ -289,7 +286,6 @@
-   deps = [
-     "//testing/gtest",
-     "//third_party/abseil-cpp/absl/flags:flag",
--    "//third_party/abseil-cpp/absl/random:bit_gen_ref",
-   ]
- 
-   if (build_with_chromium) {
-@@ -334,7 +330,6 @@
-   deps = [
-     "//testing/gtest",
-     "//third_party/abseil-cpp/absl/flags:flag",
--    "//third_party/abseil-cpp/absl/log:log",
-   ]
-   if (use_centipede) {
-     # If we are building for centipede, we want to make fuzztest executables

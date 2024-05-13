@@ -36,6 +36,7 @@ while IFS= read -r line; do
 	base_name=${dependency#"//${lib_path}/"}
 
 	sed -i -e "\|^\s*\"\(//${lib_path}/\)\{0,1\}${base_name}\",\$|d" \
+		-e "s|\[\s*\"\(//${lib_path}/\)\{0,1\}${base_name}\"\s*\]|[]|g" \
 		"${tmp_dir}/${build_file}"
 done
 
