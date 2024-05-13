@@ -1,0 +1,14 @@
+pkgbase = lightningcss
+	pkgdesc = An extremely fast CSS parser, transformer, bundler, and minifier written in Rust.
+	pkgver = 1.24.1
+	pkgrel = 1
+	url = https://lightningcss.dev/
+	arch = i686
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	source = lightningcss-1.24.1.tar.gz::https://github.com/parcel-bundler/lightningcss/archive/v1.24.1.tar.gz
+	sha256sums = d6a6bb9c51c98878e365deaf5477c22da5be29fc2a975abdda9d255e116ae268
+
+pkgname = lightningcss
