@@ -5,41 +5,45 @@ _pkgname=katawa-shoujo-reengineered
 pkgname=${_pkgname}-bin
 pkgver=1.4.7
 pkgrel=1
-pkgdesc="A fan-made modernization of the classic visual novel"
+pkgdesc="A fan-made modernization of the classic visual novel (uses bundled Ren'Py)"
 arch=("x86_64")
 url="https://www.fhs.sh/projects"
-license=("CCPL:BY-NC-ND")
+license=('MPL-2.0' 'CC-BY-NC-ND')
+conflicts=('katawa-shoujo-reengineered')
 options=("!strip")
 
 source=(
-  "KSRE-linux.tar.bz2::https://github.com/fleetingheart/ksre/releases/download/v${pkgver}/KSRE-linux.tar.bz2"
-  "katawa-shoujo-reengineered"
-  "katawa-shoujo-reengineered.png"
-  "katawa-shoujo-reengineered.desktop"
+    "KSRE-linux.tar.bz2::https://github.com/fleetingheart/ksre/releases/download/v${pkgver}/KSRE-linux.tar.bz2"
+    "${_pkgname}"
+    "${_pkgname}.png"
+    "${_pkgname}.desktop"
 )
 
 package() {
-	cd "${srcdir}/KSRE-linux"
+    cd "${srcdir}/KSRE-linux"
 
-	install -d -m755 "${pkgdir}/usr/share/${_pkgname}"
-	cp -r game renpy "Katawa Shoujo Re-Engineered.py" "${pkgdir}/usr/share/${_pkgname}"
-	install -d -m755 "${pkgdir}/usr/share/${_pkgname}/lib"
-	cp -r lib/py3-linux-x86_64 lib/python3.9 "${pkgdir}/usr/share/${_pkgname}/lib"
+    # main files
+    install -d -m755 "${pkgdir}/usr/share/${_pkgname}"
+    cp -r game renpy "Katawa Shoujo Re-Engineered.py" "${pkgdir}/usr/share/${_pkgname}"
 
-	# start script
-	install -D -m755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    # libraries
+    install -d -m755 "${pkgdir}/usr/share/${_pkgname}/lib"
+    cp -r lib/py3-linux-x86_64 lib/python3.9 "${pkgdir}/usr/share/${_pkgname}/lib"
 
-	# icon / desktop file
-	install -D -m644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-	install -D -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    # start script
+    install -D -m755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-	# license
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    # icon / desktop file
+    install -D -m644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    install -D -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+    # license
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 sha512sums=(
-  "915e6e85e93a352c240d9af2358065d84b790e36da8d58c10da24cd96b0f2334763c10be486e330aa854ea0eb5722796eb4361a6ad590b2cc6ba2e4f4fff6a73"
-  "cef74391b6691e8f480fe4527265af96cba5c4b9c87418fe2665bc5e5965e26f225545704b4aba85ddff1609ba96a1f43314dd713abfda8d4fca449993811725"
-  "a1e5d6f0662955fe5abd48b5d0e3f3d82faa3c6f6f845fefe5facad93a7ba42f2b682dd52845189432f4328ccef437d786ed942aaaee44d97df86acd47a9bc03"
-  "e4c4413fd9418adf91b97b5d23f3f30008fff909a7b0e3190be5d56b2b163d81cfefe78981dbad42562b749de0f5666596b582a0476c649d138f512068e1bbe6"
+    "915e6e85e93a352c240d9af2358065d84b790e36da8d58c10da24cd96b0f2334763c10be486e330aa854ea0eb5722796eb4361a6ad590b2cc6ba2e4f4fff6a73"
+    "cef74391b6691e8f480fe4527265af96cba5c4b9c87418fe2665bc5e5965e26f225545704b4aba85ddff1609ba96a1f43314dd713abfda8d4fca449993811725"
+    "a1e5d6f0662955fe5abd48b5d0e3f3d82faa3c6f6f845fefe5facad93a7ba42f2b682dd52845189432f4328ccef437d786ed942aaaee44d97df86acd47a9bc03"
+    "e4c4413fd9418adf91b97b5d23f3f30008fff909a7b0e3190be5d56b2b163d81cfefe78981dbad42562b749de0f5666596b582a0476c649d138f512068e1bbe6"
 )
