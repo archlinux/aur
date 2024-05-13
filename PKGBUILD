@@ -1,14 +1,18 @@
 # Maintainer: Wing Hei Chan <whmunkchan@outlook.com>
-_pkgname=tree-sitter-typst
+
+_lang=typst
+_pkgname="tree-sitter-$_lang"
 pkgname="$_pkgname-git"
-pkgver=v0.9.0.1.r13.g1651d6e
+pkgver=v0.11.0.r3.g3924cb9
 pkgrel=1
-pkgdesc="A TreeSitter grammar for the Typst language."
+pkgdesc="Typst grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/uben0/tree-sitter-typst"
 license=('MIT')
-makedepends=('git' 'npm' 'tree-sitter' 'tree-sitter-cli')
-provides=("$_pkgname")
+groups=('tree-sitter-grammars')
+makedepends=('git' 'tree-sitter-cli')
+optdepends=('tree-sitter: core library')
+provides=("lib$_pkgname.so")
 source=("$_pkgname::git+$url")
 b2sums=('SKIP')
 
@@ -20,26 +24,26 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  tree-sitter generate
+  tree-sitter generate --no-bindings src/grammar.json
 }
 
 build() {
-  cd "$_pkgname/src"
+  cd "$_pkgname"/src
   cc $CFLAGS -fPIC -std=c99 -c parser.c
   cc $CFLAGS -fPIC -std=c99 -c scanner.c
   cc $LDFLAGS -shared parser.o scanner.o \
-    -o "$srcdir/libtree-sitter-typst.so"
+    -o "$srcdir"/"$_pkgname"/lib"$_pkgname".so
 }
 
 package() {
-  install -Dm 644 {,"$pkgdir/usr/lib/"}libtree-sitter-typst.so
+  cd "$_pkgname"
+  install -Dm755 -t "$pkgdir"/usr/lib lib"$_pkgname".so
+  install -d "$pkgdir"/usr/lib/tree_sitter
+  ln -s /usr/lib/lib"$_pkgname".so \
+    "$pkgdir"/usr/lib/tree_sitter/"$_lang".so
 
-  local nvim="$pkgdir/usr/share/nvim/runtime/parser"
-  mkdir -p "$nvim"
-  ln -s /usr/lib/libtree-sitter-typst.so "$nvim/typst.so"
-
-  install -Dm 644 "$_pkgname/LICENSE" -t \
-    "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 -t "$pkgdir"/usr/share/doc/"$_pkgname" README.md
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/"$_pkgname" LICENSE
 }
 # Local Variables:
 # indent-tabs-mode: nil
