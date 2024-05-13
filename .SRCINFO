@@ -1,0 +1,17 @@
+pkgbase = stylishcv-git
+	pkgdesc = A tweaked version and fork of latex-ninja's simple-hipstercv latex package
+	pkgver = 1.0.r5.g9c58b09
+	pkgrel = 1
+	url = https://github.com/cryptection/stylishcv
+	arch = any
+	license = CC BY-NC-SA 4.0
+	makedepends = git
+	depends = texlive-latex
+	depends = texlive-latexextra
+	depends = texlive-fontsextra
+	depends = texlive-latexrecommended
+	depends = texlive-pictures
+	source = git+https://github.com/cryptection/stylishcv.git
+	md5sums = SKIP
+
+pkgname = stylishcv-git
