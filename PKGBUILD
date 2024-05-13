@@ -1,11 +1,11 @@
 # Maintainer: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=plattenalbum-git
-pkgver=2.0.0.r0.g9cf9d8f
+pkgver=2.1.0.r3.gf0d4593
 pkgrel=1
 pkgdesc="Browse music with MPD"
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 url="https://github.com/SoongNoonien/plattenalbum"
 depends=('python-mpd2>=3.1' 'gtk4' 'python-gobject' 'libadwaita')
 makedepends=('git' 'meson' 'gettext' 'glib2')
