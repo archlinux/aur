@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aihub-bin
 _pkgname=AIHub
-pkgver=1.8.6
+pkgver=1.8.7
 _electronversion=30
 pkgrel=1
 pkgdesc="A collection of large model capabilities of the client.一款集合多家大模型能力的客户端."
@@ -17,12 +17,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('928a50423207e61f860f1fa3dac8ad4ba8777210a7b35b1928fb996185b6eee4'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+sha256sums=('f9c9d1cba84d02560738f03061f006bbd03ba081cafe7c72a16bf315234818e4'
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
