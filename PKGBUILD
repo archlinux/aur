@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-music
-pkgver=0.5.7
+pkgver=0.5.8
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('f9705f83d9f5950c9d0a539fdd6cdc64b2525a0f8ff8534bdc51e59de9fdcd97'
+sha256sums=('5550941d8040acb520e333530ae0e4afafd30d8dbf98f10e41c36674800a6e4a'
             '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -37,8 +37,7 @@ build() {
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
         -e "s|@cfgdirname@|${pkgname}|g" \
-        -e "sgit clone git+ssh://aur@aur.archlinux.org/simple-music && cd simple-music && touch PKGBUILD simple-music.sh
-|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="AudioVideo" --name="${pkgdesc}" --exec="${pkgname} %U"
