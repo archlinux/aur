@@ -7,7 +7,7 @@
 pkgname='mlmmj'
 pkgver=1.4.5
 _pkgver=1_4_5
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('bash' 'glibc' 'smtp-server')
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -38,6 +38,7 @@ build() {
 
   # Tests require “atf-c”. Anyone?
   ./configure --prefix=/usr --disable-tests
+
   make
 }
 
@@ -46,12 +47,11 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  for fname in AUTHORS COPYING LICENSE; do
-    install -vDm0644 "$fname" "$pkgdir/usr/share/licenses/$pkgname/$fname"
-  done
-
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     ChangeLog FAQ README README.* TODO TUNABLES UPGRADE
+
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+    AUTHORS COPYING LICENSE
 
   cd "$srcdir"
 

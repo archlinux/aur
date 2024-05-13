@@ -1,7 +1,7 @@
 pkgbase = mlmmj
 	pkgdesc = Simple and slim mailing list manager (MLM) inspired by ezmlm
 	pkgver = 1.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/mlmmj/mlmmj
 	arch = aarch64
 	arch = armv7h
