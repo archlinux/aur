@@ -19,6 +19,6 @@ EOF
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
-	pos_install
+	post_install
 }
 
