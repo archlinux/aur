@@ -5,7 +5,7 @@ post_install() {
 
 -----------------------------------------------------------------------------
 
-	`oama` version 0.10 or newer has a much simplified configuration system
+	oama version 0.10 or newer has a much simplified configuration system
 	and comes also with other **breaking changes**.
 
 	Please read the README file, in particular the Configuration section,
