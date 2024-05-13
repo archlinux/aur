@@ -6,7 +6,7 @@
 pkgname=sway-disable-titlebar
 _pkgname=${pkgname%-disable-titlebar}
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (added disable_titlebar open - PR #8026)'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -65,7 +65,7 @@ validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48'  # Simon Ser
               '9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A') # Drew DeVault
 
 prepare() {
-  cd "$_pkgname-$_pkgver"
+  cd "$_pkgname-$pkgver"
 
   patch --forward --strip=1 --input=../8026.patch
 
@@ -75,13 +75,13 @@ prepare() {
 
 build() {
   mkdir -p build
-  arch-meson build "$_pkgname-$_pkgver" -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
+  arch-meson build "$_pkgname-$pkgver" -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
   ninja -C build
 }
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 "$_pkgname-$_pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
   install -Dm644 sway-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/sway-portals.conf"
 }

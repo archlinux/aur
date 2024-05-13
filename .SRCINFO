@@ -1,7 +1,7 @@
 pkgbase = sway-disable-titlebar
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager (added disable_titlebar open - PR #8026)
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://swaywm.org/
 	install = sway.install
 	arch = x86_64
