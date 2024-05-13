@@ -2,7 +2,7 @@
 _appname=xiao-hong-shu
 pkgname="${_appname//-/}-pake"
 _pkgname=XiaoHongShu
-pkgver=2.3.6
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Use Pake to package XiaoHongShu.小红书 App,是年轻人的生活方式社区,每月有超过2亿人在这里分享生活经验,发现真实、美好、多元的世界,找到想要的生活 。"
 arch=('x86_64')
@@ -13,13 +13,12 @@ conflicts=("${pkgname%-pake}")
 depends=(
     'gtk3'
     'webkit2gtk'
-    'openssl-1.1'
 )
 source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('53bbbcd5782b9ff3b3076292466798ac1460df45403c2e8e4b8556dd108d0bfc'
+sha256sums=('a3e78972d733e79f1026c665e26215864499ed35d3b5d9beb4c79f450fcdfb76'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 build() {
     bsdtar -xf "${srcdir}/data."*
