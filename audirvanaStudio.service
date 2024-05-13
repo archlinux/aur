@@ -1,7 +1,7 @@
 [Unit]
 Description=Run audirvanaStudio
 DefaultDependencies=no
-After=network.target
+After=avahi-daemon.service
 
 [Service]
 Type=simple
