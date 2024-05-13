@@ -1,6 +1,6 @@
 pkgbase = atuin-bin
 	pkgdesc = Magical shell history
-	pkgver = 18.1.0
+	pkgver = 18.2.0
 	pkgrel = 1
 	url = https://github.com/ellie/atuin
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = atuin-bin
 	depends = gcc-libs
 	provides = atuin
 	conflicts = atuin
-	source_x86_64 = https://github.com/ellie/atuin/releases/download/v18.1.0/atuin-v18.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha512sums_x86_64 = 6b9f07c0b1d88127b809612c9dc96fd1569a6e3b15989e174ead55658a1af0e441b16976b674c6e0e12316268ebb63270e3f1cb81e301c0fc519b297da015b2c
+	source_x86_64 = https://github.com/ellie/atuin/releases/download/v18.2.0/atuin-v18.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums_x86_64 = 399e03358395ebc51816cf66c14438f7b7f5ca871274b3c9a642229dcb1851933be744088677f4bb228c7927cb0cd083cdaa34cef7a9246f4719aafa0eaa1ba0
 
 pkgname = atuin-bin
