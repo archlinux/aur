@@ -1,0 +1,7 @@
+[opm-upscaling]
+source = "github"
+github = "OPM/opm-upscaling"
+use_latest_release = "true"
+from_pattern = "/final"
+to_pattern = ""
+prefix = "release/"

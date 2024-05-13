@@ -1,16 +1,15 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=opm-upscaling
-_dunever=2.9.0
-pkgver=2023.10
+pkgver=2024.04
 pkgrel=1
 pkgdesc="Single-phase and steady-state upscaling methods"
 arch=(x86_64)
 url="https://github.com/OPM/${pkgname}"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=("opm-grid>=${pkgver}")
 makedepends=(gcc-fortran suitesparse superlu)
 source=(${pkgname}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('c73bba05a4e07344f767a926672d1b4de8ab8a49d7cfa06e3e29e4b522b9bdedc48b16400f86b56836b85975bde7cc6ccea9e6b33cf208450c731d67fbebed0c')
+sha512sums=('4744f9855a09772f4d38dea1117b8ca089c7a3473a0c8715daecdddd18224c74f94b192d19f208636d82a47f75100ce2d5ce6a5f204cbd70251f51108b44dbf6')
 
 build() {
   cmake \

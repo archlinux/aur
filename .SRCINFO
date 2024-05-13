@@ -1,15 +1,15 @@
 pkgbase = opm-upscaling
 	pkgdesc = Single-phase and steady-state upscaling methods
-	pkgver = 2023.10
+	pkgver = 2024.04
 	pkgrel = 1
 	url = https://github.com/OPM/opm-upscaling
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = gcc-fortran
 	makedepends = suitesparse
 	makedepends = superlu
-	depends = opm-grid>=2023.10
-	source = opm-upscaling-release-2023.10-final.tar.gz::https://github.com/OPM/opm-upscaling/archive/release/2023.10/final.tar.gz
-	sha512sums = c73bba05a4e07344f767a926672d1b4de8ab8a49d7cfa06e3e29e4b522b9bdedc48b16400f86b56836b85975bde7cc6ccea9e6b33cf208450c731d67fbebed0c
+	depends = opm-grid>=2024.04
+	source = opm-upscaling-release-2024.04-final.tar.gz::https://github.com/OPM/opm-upscaling/archive/release/2024.04/final.tar.gz
+	sha512sums = 4744f9855a09772f4d38dea1117b8ca089c7a3473a0c8715daecdddd18224c74f94b192d19f208636d82a47f75100ce2d5ce6a5f204cbd70251f51108b44dbf6
 
 pkgname = opm-upscaling
