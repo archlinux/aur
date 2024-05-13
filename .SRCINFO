@@ -1,22 +1,21 @@
 pkgbase = dosbox-staging-bin
 	pkgdesc = A modern continuation of DOSBox with advanced features and current development practices.
-	pkgver = 0.81.0
+	pkgver = 0.81.1
 	pkgrel = 1
 	url = https://github.com/dosbox-staging/dosbox-staging
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = alsa-lib
 	depends = sdl2
-	depends = hicolor-icon-theme
 	depends = libglvnd
 	depends = sdl2_image
 	depends = sdl2_net
-	provides = dosbox-staging=0.81.0
-	provides = dosbox=0.81.0
+	provides = dosbox-staging=0.81.1
+	provides = dosbox=0.81.1
 	conflicts = dosbox-staging
-	source = dosbox-staging-0.81.0.tar.xz::https://github.com/dosbox-staging/dosbox-staging/releases/download/v0.81.0/dosbox-staging-linux-v0.81.0.tar.xz
+	source = dosbox-staging-0.81.1.tar.xz::https://github.com/dosbox-staging/dosbox-staging/releases/download/v0.81.1/dosbox-staging-linux-v0.81.1.tar.xz
 	source = dosbox-staging.sh
-	sha256sums = 034b08a941a7fd0279a81b10af620999c569f7e81b786e7f4b59a0b94e46d399
+	sha256sums = 5aee92774569cf1e39ade3fccff03994464d17b396b0ae98360af61e9d37cba7
 	sha256sums = 8e4b518b19641352cabe2604117457d45ecf8b252f789113590f47e376ff4461
 
 pkgname = dosbox-staging-bin
