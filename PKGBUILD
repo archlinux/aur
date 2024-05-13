@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aihub
 _pkgname=AIHub
-pkgver=1.8.6
+pkgver=1.8.7
 _electronversion=30
 pkgrel=1
 pkgdesc="A collection of large model capabilities of the client.一款集合多家大模型能力的客户端."
@@ -17,20 +17,22 @@ makedepends=(
     'npm'
     'nodejs>=21.1.0'
     'gendesk'
+    'curl'
 )
 source=(
     "${pkgname}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('dec95f1d08a91fe2a56b2ed10b455d5291e5f6539fc1952c28a0b545f7d62d86'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+sha256sums=('5f51599e825142a92a9dd81aba0602ac6cf625ce1f41caa6a70a25089832736f'
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n --pkgname="${pkgname}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_pkgname}-${pkgver}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
