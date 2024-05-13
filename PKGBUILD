@@ -20,7 +20,7 @@ makedepends=(libarchive)
 optdepends=('docker: Pack, ship and run any application as a lightweight container'
     'davfs2: File system driver that allows you to mount a WebDAV folder')
 backup=()
-options=(!strip)
+options=('!strip' '!debug' '!lto')
 install=${pkgname}.install
 source=("LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.github.io/gh-pages/eula.html"
     "${pkgname}.install")
