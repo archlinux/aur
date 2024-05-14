@@ -1,0 +1,14 @@
+pkgbase = ez4-client
+	pkgdesc = Legacy EZ-Flash IV patching client
+	pkgver = 20140306
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	depends = wine
+	depends = winetricks
+	source = https://www.ezflash.cn/zip/EZ4_20140306.zip
+	source = ez4-client
+	source = ez4-client.desktop
+	source = ez4-client.png
+
+pkgname = ez4-client

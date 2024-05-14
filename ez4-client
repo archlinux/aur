@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# WINE Launcher script for the legacy EZ-Flash IV client
+# This isn't really needed anymore but I personally found it important to make
+#     accessible if you're like me and enjoy screwing with legacy cartridges
+
+export WINEPREFIX=~/.ez4-client
+export SAVEFILE=$WINEPREFIX/savefile
+export EZ4DIR=/usr/share/ez4-client # installation dir for AUR package
+
+# configure registry
+configure() {
+    winetricks -q mfc42
+    touch $SAVEFILE # ensures that we don't repeat configuration process
+}
+
+
+if [ "$1" = "--mkpfx" ]; then # Force reconfigure prefix
+    configure
+    exit 0
+elif [ "$1" = "--erase" ]; then # delete all data in prefix
+    rm -rf $WINEPREFIX
+    exit 0
+elif [ "$1" = "--help" ]; then # show command info
+    cat << EOF
+EZ4 Client Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2006-2014 EZ-Flash
+
+Usage:
+    ez4-client [--mkpfx] [--erase] [--help]
+
+    --mkpfx: Re-configure WINE prefix
+    --erase: Erase all data in WINE prefix
+    --help: Show this screen
+
+EOF
+    exit 0
+elif [ ! -f "$SAVEFILE" ]; then # first boot
+    configure
+else
+    echo ""
+fi
+
+cd $EZ4DIR
+wine EZ4_Client.exe

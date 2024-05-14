@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=EZ4 Client
+Comment=Legacy EZ-Flash IV patching client
+Exec=ez4-client
+Icon=ez4-client
+Terminal=false
+Categories=Wine;Utility;
