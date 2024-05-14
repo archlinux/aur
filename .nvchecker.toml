@@ -1,0 +1,4 @@
+[copasi-bin]
+source = "github"
+github = "copasi/COPASI"
+use_latest_release = "true"
