@@ -1,19 +1,22 @@
 pkgbase = uyou-todo-bin
 	pkgdesc = A todo list with electron
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/tonylu110/uyou-todo-electron
+	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	depends = electron26
-	provides = uyou-todo=2.2.0
+	provides = uyou-todo=2.2.1
 	conflicts = uyou-todo
-	source = uyou-todo-2.2.0.AppImage::https://github.com/tonylu110/uyou-todo-electron/releases/download/2.2.0/uyou.ToDo-2.2.0.AppImage
-	source = LICENSE-2.2.0::https://raw.githubusercontent.com/tonylu110/uyou-todo-electron/2.2.0/LICENSE
+	source = LICENSE-2.2.1::https://raw.githubusercontent.com/tonylu110/uyou-todo-electron/2.2.1/LICENSE
 	source = uyou-todo.sh
-	sha256sums = ac746a7a5660253ef02cc41aa3de0352fe7df9c918fb646675838b897f84fc67
 	sha256sums = 39db5a38eec57377569ab296b6a804062b8e7a72908db228ae1d6d91bcbb61d3
-	sha256sums = 24c1c5b90cba47cd3d7a3ff11a934fcdbb499f8c56423d22009ef33a775e2d21
+	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+	source_aarch64 = uyou-todo-2.2.1-aarch64.AppImage::https://github.com/tonylu110/uyou-todo-electron/releases/download/2.2.1/uyou.ToDo-2.2.1-arm64.AppImage
+	sha256sums_aarch64 = f295023bf3427a0067140e6789cedf9e9350216a914378b53228539d63117080
+	source_x86_64 = uyou-todo-2.2.1-x86_64.AppImage::https://github.com/tonylu110/uyou-todo-electron/releases/download/2.2.1/uyou.ToDo-2.2.1.AppImage
+	sha256sums_x86_64 = 70f0ddceda8aecc4f1ff1f1443b3ea2320ed315e886418306d092be9fc5ecbf5
 
 pkgname = uyou-todo-bin
