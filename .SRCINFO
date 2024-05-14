@@ -1,20 +1,23 @@
 pkgbase = patchance-git
 	pkgdesc = A modern graphical patchbay for JACK (git version)
-	pkgver = 0.2.3.r2.ga2e8c61
+	pkgver = 1.1.0.r6.g9d279f4
 	pkgrel = 1
 	url = https://github.com/Houston4444/Patchance
 	arch = any
 	groups = pro-audio
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = qt5-tools
 	depends = hicolor-icon-theme
+	depends = python-pyalsa
 	depends = python-pyqt5
 	provides = patchance
 	conflicts = patchance
 	source = patchance::git+https://github.com/Houston4444/Patchance.git
 	source = HoustonPatchbay::git+https://github.com/Houston4444/HoustonPatchbay.git
+	source = patchance-disable-alsa.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = f6efe60272b10759f2dcbd3676e4bc1cdaaafad5e22bf5a0da554260c24ace59
 
 pkgname = patchance-git
