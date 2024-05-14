@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.2.0_devel.188553.6ab4b2d7a06
+pkgver=24.2.0_devel.189258.5502ecd7716
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -51,9 +51,6 @@ pkgver() {
 
 build() {
 
-#  llvm trunk since https://github.com/llvm/llvm-project/commit/90c738ef15fc6f10255dced0b1557f2cd2c4f43b 
-# breaks build, see https://gitlab.freedesktop.org/mesa/mesa/-/issues/10947
-# disabling intel OpenGL & Vulkan driver for now
     meson setup mesa _build \
        -D b_ndebug=true \
        -D b_lto=false \
