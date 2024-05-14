@@ -3,11 +3,11 @@
 pkgname=dovecot-fts-flatcurve-git
 _pkgname=dovecot-fts-flatcurve
 pkgver=r433.8b530f5
-pkgrel=3
+pkgrel=4
 pkgdesc="Dovecot FTS Flatcurve plugin (Xapian)"
 arch=('x86_64')
 url="https://github.com/slusarz/dovecot-fts-flatcurve"
-license=('LGPL2.1')
+license=('LGPL-2.1-only')
 depends=("dovecot-with-stemmer>=2.3.0" "dovecot-with-stemmer<2.4.0" 'icu' 'xapian-core')
 install="$_pkgname.install"
 source=("git+https://github.com/slusarz/$_pkgname.git"
@@ -21,6 +21,9 @@ pkgver() {
 }
 
 build() {
+  CFLAGS=${CFLAGS//FORTIFY_SOURCE=?/FORTIFY_SOURCE=2}
+  CXXFLAGS=${CXXFLAGS//FORTIFY_SOURCE=?/FORTIFY_SOURCE=2}
+  export CFLAGS CXXFLAGS
   cd "$_pkgname"
   ./autogen.sh
   ./configure \
