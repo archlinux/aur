@@ -1,5 +1,5 @@
 pkgname=iroh
-pkgver=0.12.0
+pkgver=0.16.2
 pkgrel=1
 pkgdesc='IPFS reimagined'
 arch=(x86_64 aarch64)
@@ -9,7 +9,7 @@ depends=(gcc-libs)
 makedepends=(cargo)
 checkdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('a11ae672b264ec9dc212f3b36cad7f7b325c7abc774ce88e75bdb5839ed8d1877eac3ae33641a0d1c2938da8872f51eec27b8342b68da668c5eef0ce28118fe7')
+b2sums=('d2343efdadd23cc908d752de8ba2b08421b9186b96970ac5f596bb60bc985a29493d29f21269055e8bf6f0e1ac9f14c0e8780d2de31b5bc0e61f0fbc24397c75')
 
 prepare() {
     cd "$pkgname-$pkgver"
