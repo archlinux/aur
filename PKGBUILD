@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: soloturn <soloturn@gmail.com>
 pkgname=cosmic-notifications-git
-pkgver=r63.4ea0564
+pkgver=r68.f72b316
 pkgrel=1
 pkgdesc="Layer Shell notifications daemon which integrates with COSMIC."
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,8 @@ prepare() {
 
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  nice just vendor
+#  nice just vendor
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -47,7 +48,8 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use nice to build with lower priority
-  nice just build-vendored
+#  nice just build-vendored
+  nice just build-release
 }
 
 package() {
