@@ -1,6 +1,6 @@
 pkgbase = cosmic-settings-daemon-git
 	pkgdesc = WIP COSMIC settings daemon
-	pkgver = r39.a949447
+	pkgver = r45.fa09322
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-settings-daemon
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = cosmic-settings-daemon-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = mold
+	depends = acpid
+	depends = adw-gtk3
 	depends = geoclue
 	depends = systemd-libs
 	provides = cosmic-settings-daemon
