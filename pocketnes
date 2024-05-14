@@ -26,7 +26,7 @@ Original Program: (c) 2003 Titney from PocketHeaven
                   (c) 2013 FluBBa and Dwedit
 
 Usage:
-    ez4-client [--mkpfx] [--erase] [--help]
+    pocketnes [--mkpfx] [--erase] [--help]
 
     --mkpfx: Re-configure WINE prefix
     --erase: Erase all data in WINE prefix
