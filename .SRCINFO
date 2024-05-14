@@ -1,7 +1,7 @@
 pkgbase = modoboa
 	pkgdesc = Mail hosting made simple
 	pkgver = 2.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://modoboa.org/
 	arch = any
 	license = MIT
@@ -39,6 +39,10 @@ pkgbase = modoboa
 	makedepends = python-chardet
 	makedepends = python-ovh
 	makedepends = python-oath
+	makedepends = python-magic
+	makedepends = python-tldextract
+	makedepends = python-reportlab
+	makedepends = python-aiosmtplib
 	depends = python>=3.8
 	depends = python-django
 	depends = python-dj-database-url
