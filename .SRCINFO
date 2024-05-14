@@ -1,0 +1,14 @@
+pkgbase = zxadvance
+	pkgdesc = ARM Powered ZX Spectrum emulator for the GBA (tm)
+	pkgver = 1.0.1
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	depends = wine
+	depends = winetricks
+	source = https://www.zophar.net/fileuploads/1/267umkwg/ZXAdvance101.zip
+	source = zxadvance
+	source = zxadvance.desktop
+	source = zxadvance.png
+
+pkgname = zxadvance

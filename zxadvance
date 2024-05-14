@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# WINE Launcher script for ZXAdvance
+
+export WINEPREFIX=~/.gba-emu
+export ZXDIR=/usr/share/zxadvance # installation dir for AUR package
+
+cat << EOF
+ZXAdvance Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2003 [- The HiVE -]
+
+EOF
+
+cd $ZXDIR
+wine ZXAdvance\ 1.0.1.exe
