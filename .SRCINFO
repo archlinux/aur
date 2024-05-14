@@ -1,14 +1,16 @@
-pkgbase = smsadvance
-	pkgdesc = SMSAdvance ROM Builder
-	pkgver = 2.5
+pkgbase = pceadvance
+	pkgdesc = PCEAdvance ROM Builder
+	pkgver = 7.5
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
 	depends = wine
 	depends = winetricks
-	source = https://www.zophar.net/fileuploads/2/16428iussy/SMSAdvance25Bin.zip
-	source = smsadvance
-	source = smsadvance.desktop
-	source = smsadvance.png
+	source = https://www.zophar.net/fileuploads/2/16439qqcnu/PCEAdvance75Bin.zip
+	source = https://www.zophar.net/fileuploads/2/16440lvavd/PCEAdvance75EZ3.zip
+	source = https://www.zophar.net/fileuploads/2/16441nhucp/PCEAdvanceSC.zip
+	source = pceadvance
+	source = pceadvance.desktop
+	source = pceadvance.png
 
-pkgname = smsadvance
+pkgname = pceadvance
