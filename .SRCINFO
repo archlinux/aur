@@ -1,7 +1,7 @@
 pkgbase = logitechmediaserver
 	pkgdesc = Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Release-Version, if you prefer bleeding edge consider using logitechmediaserver-git instead)
 	pkgver = 8.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LMS-Community/slimserver
 	install = logitechmediaserver.install
 	arch = i686

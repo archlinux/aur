@@ -2,7 +2,7 @@
 
 pkgname=logitechmediaserver
 pkgver=8.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Release-Version, if you prefer bleeding edge consider using logitechmediaserver-git instead)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/LMS-Community/slimserver'
@@ -37,6 +37,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/slimserver-vendor-public-${_vendorver}/CPAN"
+	sed -i "/cd giflib-4.1.6/a sed -i '/#include \"gif_lib_private.h\"/a #include <stdlib.h>' lib/gif_hash.c" buildme.sh
 	sh buildme.sh -t
 }
 
