@@ -19,6 +19,7 @@
 
 readonly lock_timeout=10s
 readonly lock_color=111111
+readonly ankiconnect_url=127.0.0.1:8765
 
 while getopts 'a p H v h s i d    t: b: l: L: k:' flag; do
 	case $flag in
@@ -123,7 +124,7 @@ close_review_window() {
 	# this function will close the review window before a break starts.
 	# Requires AnkiConnect to work.
 	curl \
-		-s 'localhost:8765' \
+		-fsS "$ankiconnect_url" \
 		-X POST \
 		-d '{ "action": "guiDeckBrowser", "version": 6 }' >/dev/null &
 }
