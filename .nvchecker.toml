@@ -1,0 +1,4 @@
+[python-mpi4py-fft]
+source = "github"
+github = "mpi4py/mpi4py-fft"
+use_latest_release = "true"

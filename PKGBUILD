@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=mpi4py-fft
 pkgname=python-${_base}
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Parallel Fast Fourier Transforms (FFTs) using MPI for Python"
 arch=(x86_64)
@@ -15,7 +15,7 @@ optdepends=('python-h5py-openmpi'
   'python-pyfftw'
   'python-mkl-fft')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('447cbbf9feb468d843f2a8d5e32f2ea44536952c5e53701a6737521e29cca9cfbc1c700954dd2cecf8d8dc9fff4fc4f5cf01a7c8f1939a02e90552a22e77cc0e')
+sha512sums=('6ad806d5b18463efd6f113e6135e8d0dff4f4686899127ce1f03bd2fa3f24eb5d628657ff6261e5df023fda63aca4cb883b90ec376829dc474bc487b27835f2b')
 
 build() {
   cd ${_base}-${pkgver}
