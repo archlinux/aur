@@ -1,4 +1,5 @@
 # vim:set ft=sh:
+# Maintainer: XSilverTH <XSilverTH AT outlook DOT com>
 # Maintainer: Shadowphoenix <allescool85 AT gmail DOT com>
 # Contributor: Carlinix <rcarlini DOT aur AT gmail DOT com>
 # Contributor: BlackEagle <ike DOT devolder AT gmail DOT com>
@@ -11,7 +12,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=109.0.5097.68
+pkgver=110.0.5130.23
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
@@ -33,7 +34,7 @@ source=(
     'privacy.html'
 )
 
-sha512sums=('56e090b9997a21b0ad9f957fd54b963a1b12a83ed59fb409b124f4793e4dde3bc67ee896c29845fe1eccddc81739c9eca28f3a8e382014df9480552bc2372f76'
+sha512sums=('8b311cf3edd2faab48f5c1d4034c7595855e5c505a0d148f34b7d49992278a8f2f11c4ab6ed8ea18a45e219ae28fbf87e292322e31fb4db3cc607af49bb24b07'
             '7e854e4c972785b8941f60117fbe4b88baeb8d7ca845ef2e10e8064043411da73821ba1ab0068df61e902f242a3ce355b51ffa9eab5397ff3ae3b5defd1be496'
             'ddb1773877fcfd7d9674e63263a80f9dd5a3ba414cda4cc6c411c88d49c1d5175eede66d9362558ddd53c928c723101e4e110479ae88b8aec4d2366ec179297f'
             'aaaa4435a3b6a08bf8e6ad4802afcbf111c1e8f477054251f031b70ae57ac1234fa19048121d64c878dc3b1de03522ce7ef11a263a86dc7062f643d569ecff82'
