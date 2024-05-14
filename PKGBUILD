@@ -14,16 +14,15 @@ depends=(
   gcc-libs
   glibc
   glm
+  libavif
   libcap.so
+  libdecor
   libdisplay-info.so
-  libglvnd
   libdrm
   libliftoff.so
-  libinput
   libpipewire-0.3.so
-  libpixman-1.so
-  libseat.so
-  libudev.so
+  libvulkan.so
+  libwlroots.so
   libx11
   libxcb
   libxcomposite
@@ -36,14 +35,10 @@ depends=(
   libxres
   libxtst
   libxxf86vm
-  opengl-driver
   openvr
   sdl2
   vulkan-icd-loader
   wayland
-  xcb-util-errors
-  xcb-util-renderutil
-  xcb-util-wm
   xorg-server-xwayland
 )
 makedepends=(
