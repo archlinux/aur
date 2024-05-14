@@ -1,0 +1,12 @@
+pkgbase = excelcompare
+	pkgdesc = Command line tool (and API) for diffing Excel Workbooks
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/na-ka-na/ExcelCompare
+	arch = x86_64
+	license = MIT
+	depends = java-runtime>=8
+	source = https://github.com/na-ka-na/ExcelCompare/releases/download/0.7.0/ExcelCompare-0.7.0.zip
+	sha256sums = bf5709fc7c86a59f6f535685b0e08a7c8bcb73c48c4c03e4d54b1fd816c90825
+
+pkgname = excelcompare
