@@ -1,3 +1,4 @@
+
 pre_install() {
     cat <<EOF
 
@@ -20,4 +21,8 @@ Please, remove mailctl-bin and install oama-bin instead:
 
 EOF
 
+}
+
+pre_upgrade() {
+  pre_install
 }
