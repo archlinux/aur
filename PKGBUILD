@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=r131.d5d9c58
+pkgver=r134.5613bc6
 pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,10 @@ depends=(
   'cosmic-settings-daemon-git'
   'cosmic-settings-git'
   'cosmic-workspaces-git'
+  'otf-fira-mono'
+  'otf-fira-sans'
   'xdg-desktop-portal-cosmic-git'
+  'xorg-xwayland'
 )
 makedepends=(
   'cargo'
@@ -36,8 +39,26 @@ optdepends=(
   'cosmic-files-git: COSMIC file manager'
   'cosmic-store-git: COSMIC store'
   'cosmic-term-git: COSMIC terminal'
-  'otf-fira-mono: Recommended Mono font'
-  'otf-fira-sans: Recommended Sans font'
+
+  # Default applications
+  # See data/cosmic-mimeapps.list
+#  'abiword'
+#  'brasero'
+#  'eog'
+#  'dia'
+#  'evince'
+#  'evolution'
+#  'file-roller'
+#  'firefox'
+#  'gimp'
+#  'gnome-font-viewer'
+#  'gnumeric'
+#  'libreoffice'
+#  'popsicle'
+#  'rhythmbox'
+#  'sound-juicer'
+#  'totem'
+#  'yelp'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
