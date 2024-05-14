@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-launcher-git
-pkgver=r198.f6b9df7
+pkgver=r204.8c8a27f
 pkgrel=1
 pkgdesc="WIP Layer Shell frontend for Pop Launcher."
 arch=('x86_64' 'aarch64')
@@ -15,6 +15,7 @@ depends=(
 )
 makedepends=(
   'cargo'
+  'clang'
   'git'
   'intltool'
   'just'
@@ -39,6 +40,8 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+
+  # use nice to build with lower priority
   nice just build-vendored
 }
 
