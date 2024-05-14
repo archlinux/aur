@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=additivityTests
-_pkgver=1.1-4.1
+_pkgver=1.1-4.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Additivity Tests in the Two Way Anova with Single Sub-Class Numbers"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-knitr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0aa55442e90e17042e1fdb78b29c525c')
-b2sums=('fdddc851dc30942495272e759e06965a6cda841de4c7b7edb113beb74f2d96b5116f8d30f9c7a5f001377350e7d8d26d1c503957827d5cbb7ebf953f3f1488c7')
+md5sums=('9ebfdadd8435d3597c120f6aa5d8a621')
+b2sums=('e9c6b9ae13be1ff34c10ba10109181db921c0b46f73d847f799a57496a6b4fd5e78c21aca069689fa1cb50ee8c8cea7297bef64410c5896884b74bd84ba82f22')
 
 build() {
   mkdir build
