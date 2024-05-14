@@ -1,0 +1,10 @@
+[Unit]
+Description=BD Prochot STOP service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/bdprochot
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+pkgbase = bdprochot-bin
+	pkgdesc = Simple BDPROCHOT disabler
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/myandin/bdprochot/
+	arch = x86_64
+	license = GPL2
+	source = https://github.com/myandin/bdprochot/releases/download/v1.0/bdprochot.tar.gz
+	source = bdprochot.service
+	md5sums = fc7dcb3e62b461f65574f152fa5833fa
+	md5sums = 32c1bb7899190a345e8a78945be5d46e
+
+pkgname = bdprochot-bin
