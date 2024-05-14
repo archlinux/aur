@@ -1,10 +1,10 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=parameters
-_pkgver=0.21.6
+_pkgver=0.21.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Processing of Model Parameters"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -35,6 +35,7 @@ optdepends=(
   r-classdiscovery
   r-clubsandwich
   r-coda
+  r-coxme
   r-cplm
   r-dbscan
   r-domir
@@ -64,7 +65,6 @@ optdepends=(
   r-haven
   r-hmisc
   r-httr
-  r-ivprobit
   r-ivreg
   r-knitr
   r-lavaan
@@ -127,8 +127,8 @@ optdepends=(
   r-wrs2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('00964d116b406c02fe6d6c3c5d223782')
-b2sums=('f87d3d051ec3ffe9b70abdaf630c4d99d09ee0ab92748aacba9246bc2a1729900cdc562e527ad96d45aa0d827032d8cd7c8c51e884d62084571b877bc507563c')
+md5sums=('96bbcf277b2ab87132b962ad6d60eb2b')
+b2sums=('3e9d736fbf6195e2e3f9bf2219d7f4d7149f3dc68175bb74d65486fbab21366aa061f0154b1ef59245279292339870e1aa763d5ff3903cda430aed375d3dfa12')
 
 build() {
   mkdir build

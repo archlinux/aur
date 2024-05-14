@@ -1,7 +1,7 @@
 pkgbase = r-parameters
 	pkgdesc = Processing of Model Parameters
-	pkgver = 0.21.6
-	pkgrel = 2
+	pkgver = 0.21.7
+	pkgrel = 1
 	url = https://cran.r-project.org/package=parameters
 	arch = any
 	license = GPL-3.0-only
@@ -28,6 +28,7 @@ pkgbase = r-parameters
 	optdepends = r-classdiscovery
 	optdepends = r-clubsandwich
 	optdepends = r-coda
+	optdepends = r-coxme
 	optdepends = r-cplm
 	optdepends = r-dbscan
 	optdepends = r-domir
@@ -57,7 +58,6 @@ pkgbase = r-parameters
 	optdepends = r-haven
 	optdepends = r-hmisc
 	optdepends = r-httr
-	optdepends = r-ivprobit
 	optdepends = r-ivreg
 	optdepends = r-knitr
 	optdepends = r-lavaan
@@ -118,8 +118,8 @@ pkgbase = r-parameters
 	optdepends = r-vgam
 	optdepends = r-withr
 	optdepends = r-wrs2
-	source = https://cran.r-project.org/src/contrib/parameters_0.21.6.tar.gz
-	md5sums = 00964d116b406c02fe6d6c3c5d223782
-	b2sums = f87d3d051ec3ffe9b70abdaf630c4d99d09ee0ab92748aacba9246bc2a1729900cdc562e527ad96d45aa0d827032d8cd7c8c51e884d62084571b877bc507563c
+	source = https://cran.r-project.org/src/contrib/parameters_0.21.7.tar.gz
+	md5sums = 96bbcf277b2ab87132b962ad6d60eb2b
+	b2sums = 3e9d736fbf6195e2e3f9bf2219d7f4d7149f3dc68175bb74d65486fbab21366aa061f0154b1ef59245279292339870e1aa763d5ff3903cda430aed375d3dfa12
 
 pkgname = r-parameters
