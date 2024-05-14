@@ -1,8 +1,10 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=quik
-pkgver=11.1.4
+pkgver=11.2.0
 pkgrel=1
 stratver=3.0.5
+trustver=2.10.0
+btradever=1.2.1002
 pkgdesc="Trading terminal in Wine"
 url="https://arqatech.com/ru/"
 arch=('x86_64')
@@ -10,8 +12,10 @@ depends=('wine')
 noextract=('keygen.zip')
 
 source=(
-"ftp://ftp.quik.ru/public/updates/11.1/quik_${pkgver}_upd.zip"
+"ftp://ftp.quik.ru/public/updates/11.2/quik_${pkgver}_upd.zip"
+"ftp://ftp.quik.ru/public/updates/11.1/TrustManager_${trustver}_upd.zip"
 "ftp://ftp.quik.ru/public/updates/10.2/StratVolat_${stratver}_upd.zip"
+"ftp://ftp.quik.ru/public/updates/10.2/BTrading_${btradever}_upd.zip"
 "keygen.zip::ftp://ftp.quik.ru/public/updates/keygen_1.3.0_upd.zip"
 "https://github.com/alain-riedinger/luasocket/releases/download/3.0-5.3.5/luasocket-3.0-5.3.5.zip"
 "https://github.com/alain-riedinger/luasocket/releases/download/3.0-5.4.3/luasocket-3.0-5.4.3.zip"
@@ -21,11 +25,13 @@ source=(
 "ip.cfg"
 )
 sha256sums=(
-'6477c511b609f86f9928db1d8e3a2aea7d58b76d4abb555de37e95f4e9f2eb2e'
-'d32095309cd7359f4078a74179d8ae42e013e3fd3ad75837f0fa3941e7091b75'
-'bc66665d2209836abe51ae9258c289c0f682dba4ea5261f9319996a60a6a4ae7'
-'b2a3a2e2a895cea35aad5dee97640ef7bcccbb38e61e61b14baff6cecbdd79af'
-'2e69ea49e9b6a9d7c84bcf37653f4a1e15e8b73d7b21302e7cd40d29af6104aa'
+'19dfef6490a40b5d6dd0a37fe90d0735286539bdad66cdc29d41d916ace579cb' # QUIK
+'ff4dd52e56fabe8c06730daca770a92312338303bc06b58d417105d44c5a0869' # TrustManager
+'d32095309cd7359f4078a74179d8ae42e013e3fd3ad75837f0fa3941e7091b75' # StratVolat
+'0f6724e6666c379cf9a1f53aa627f4b0c56fded2d7e3fbf3704d6526066fa8e3' # BasketTrading
+'bc66665d2209836abe51ae9258c289c0f682dba4ea5261f9319996a60a6a4ae7' # keygen
+'b2a3a2e2a895cea35aad5dee97640ef7bcccbb38e61e61b14baff6cecbdd79af' # lua-socket 5.3.5
+'2e69ea49e9b6a9d7c84bcf37653f4a1e15e8b73d7b21302e7cd40d29af6104aa' # lua-socket 5.4.3
 'e4ddfc7a2a12bba0fdc880dcb05757fff2c035b2625f721ea1a0383bdc6ad1bf'
 '92563c563a9781592d1e119117e3b7a899addfabd733648986b97db999386821'
 'd981ee4cc35d33a3b37c43fb7343bde5c24e15e003dbb67907b602d22f60a469'
