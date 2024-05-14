@@ -1,8 +1,8 @@
 pkgbase = python-zsh-jupyter-kernel
 	pkgdesc = Z shell kernel for Jupyter
 	pkgver = 3.5.0
-	pkgrel = 1
-	url = https://github.com/dany-oak/zsh-jupyter-kernel
+	pkgrel = 2
+	url = https://github.com/dahn-zk/zsh-jupyter-kernel
 	arch = any
 	license = unknown
 	makedepends = python-build

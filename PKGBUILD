@@ -3,10 +3,10 @@
 pkgname=python-zsh-jupyter-kernel
 _name=${pkgname#python-}
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Z shell kernel for Jupyter"
 arch=('any')
-url="https://github.com/dany-oak/zsh-jupyter-kernel"
+url="https://github.com/dahn-zk/zsh-jupyter-kernel"
 license=('unknown')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 depends=('python-jupyter-client' 'zsh')
@@ -21,4 +21,5 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    python zsh_jupyter_kernel/install.py --prefix="$pkgdir/usr"
 }
