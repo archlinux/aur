@@ -2,7 +2,7 @@
 
 _pkgname=('bitwuzla')
 pkgname=("${_pkgname}-git")
-pkgver=0.4.0.r33.g72cad5f
+pkgver=0.4.0.r51.g31330f2
 pkgrel=1
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
 arch=('x86_64')
@@ -37,7 +37,6 @@ optdepends=(
 )
 provides=(
     "${_pkgname}=$pkgver"
-    'bitwuzla.cpython-311-x86_64-linux-gnu.so'
     'libbitwuzlabv.so'
     'libbitwuzlabb.so'
     'libbitwuzlals.so'
