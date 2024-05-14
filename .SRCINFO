@@ -1,0 +1,12 @@
+pkgbase = fcitx5-skin-ori-git
+	pkgdesc = A round corner and svg theme for fcitx5.
+	pkgver = v0.1.r1.g9acce9
+	pkgrel = 1
+	url = https://github.com/Reverier-Xu/Ori-fcitx5
+	arch = x86_64
+	license = MPL
+	depends = fcitx5
+	source = git+https://github.com/Reverier-Xu/Ori-fcitx5.git
+	md5sums = SKIP
+
+pkgname = fcitx5-skin-ori-git
