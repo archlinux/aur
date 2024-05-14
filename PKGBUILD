@@ -5,7 +5,7 @@
 
 pkgname=wlroots-displaylink-git
 pkgver=0.18.0.r7000.7e5bf4ae
-pkgrel=3
+pkgrel=4
 pkgdesc='Modular Wayland compositor library (git development version)'
 arch=(x86_64)
 url=https://gitlab.freedesktop.org/kennylevinsen/wlroots
@@ -41,8 +41,8 @@ makedepends=(
 optdepends=(
 	'xorg-xwayland: enable X11 support'
 )
-provides=("libwlroots.so" "${pkgname%-displaylink-git}=${pkgver%%.r*}")
-conflicts=("wlroots")
+provides=("libwlroots.so" "${pkgname%-displaylink-git}=${pkgver%%.r*}" "wlroots-git")
+conflicts=("wlroots" "wlroots-git")
 source=("${pkgname}::git+${url}.git#branch=displaylink-hack")
 b2sums=('SKIP')
 _builddir="build"
