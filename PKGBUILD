@@ -1,12 +1,12 @@
 # Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
 # shellcheck shell=bash
-# shellcheck disable=2034,2154
+# shellcheck disable=SC2034,SC2154
 
 pkgname=truckersmp-cli
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/truckersmp-cli/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('26b42319f67f29bd6147a52e0d1cef0c96887b9d3d1eacacef7e95df3471a6ecabefb2cc57ba058e255c731ce20a463c5d8698f35e714b1b43bb14582e8455e9')
+sha512sums=('36bd5e79760142adb77a791e99f06b63f2d40fb5a9ff03d772ec76557bb5b27f1c475647de6609107dee1f7abf74ce2912b5348b619e6f91b7732a3a378f055e')
 
 pkgdesc="A simple launcher for TruckersMP to play ATS or ETS2 in multiplayer."
 arch=('x86_64')
