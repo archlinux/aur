@@ -10,6 +10,8 @@ url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL-3.0-or-later AND MPL-2.0 AND CC-BY-SA-4.0')
 depends=(
   'accountsservice'
+  'acpid'
+  'adw-gtk3'
   'archlinux-appstream-data'
   'cage'
   'fontconfig'
