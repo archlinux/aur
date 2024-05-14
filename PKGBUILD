@@ -3,13 +3,13 @@ pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver_=3.0.0-beta
 pkgver=${pkgver_//-}
-pkgrel=2
+pkgrel=3
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask.mpie.de'
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 makedepends=('cmake' 'python-setuptools'
-             'petsc<3.22' 'hdf5-openmpi' 'fftw' 'zlib' 'libfyaml'
+             'petsc<3.22' 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
              'python-matplotlib' 'python-scipy' 'python-pandas' 'python-h5py' 'python-pyaml')
 optdepends=('paraview: post-processing')
 source=(https://damask.mpie.de/files/download/damask-${pkgver_}.tar.xz)
@@ -72,10 +72,9 @@ check() {
 
 package_damask-grid() {
   pkgdesc='Grid solver for DAMASK'
-  depends=('petsc<3.22' 'openmpi' 'hdf5-openmpi' 'fftw' 'zlib' 'libfyaml')
+  depends=('petsc<3.22' 'openmpi' 'hdf5-openmpi' 'libfyaml' 'zlib' 'fftw-openmpi')
   optdepends=('dream3d: pre-processing')
 
-  install -Dm644 ${pkgbase}-${pkgver_}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
   cp -r ${pkgbase}-${pkgver_}/examples/grid/* ${pkgdir}/usr/share/doc/${pkgname}/
 
@@ -87,7 +86,6 @@ package_damask-mesh() {
   depends=('petsc<3.22' 'openmpi' 'hdf5-openmpi' 'libfyaml')
   optdepends=('neper: pre-processing')
 
-  install -Dm644 ${pkgbase}-${pkgver_}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
   cp -r ${pkgbase}-${pkgver_}/examples/mesh/* ${pkgdir}/usr/share/doc/${pkgname}/
 
@@ -101,15 +99,12 @@ package_python-damask() {
               'jupyterlab: comfortable shell'
               'ipython: comfortable shell')
 
-  install -Dm644 ${pkgbase}-${pkgver_}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-
   python -m installer --destdir=${pkgdir} ${pkgbase}-${pkgver_}/python/dist/*.whl
 }
 
 package_damask() {
   depends=('python-damask' 'damask-grid' 'damask-mesh')
 
-  install -Dm644 ${pkgbase}-${pkgver_}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
   cp -r ${pkgbase}-${pkgver_}/examples/config/* ${pkgdir}/usr/share/doc/${pkgname}/
 
