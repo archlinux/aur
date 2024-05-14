@@ -80,17 +80,15 @@ sha256sums=('e9bb0560dcf6e9ba3a6b0a47b005609d9efea80d4fcb064b0aa4f60681338f4a'
 prepare() {
   cd "$srcdir/$_pkgname"
 
-  git submodule update --init --recursive
-
+  #  meson subprojects download
+  git config submodule.src/reshade.url ../reshade
+  git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
+  git -c protocol.file.allow=always submodule update --init --recursive
+  
   # make stb.wrap use our local clone
   rm -rf subprojects/stb
   git clone "$srcdir/stb" subprojects/stb
   cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
-
-  # Replace spirv-headers include with the system directory
-  sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/meson.build
-  
-
   
   
   patch -Np1 -i ../720p.patch
