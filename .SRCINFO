@@ -1,12 +1,12 @@
 pkgbase = hyde-ext
 	pkgdesc = Hyde-Ext is a Rust-based command-line application designed to enhance the HyDE (HyDE_CLI) environment. It automates tasks, installs essential tools, manages configurations, and restores settings from backups.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Da4ndo/Hyde-Ext
 	arch = x86_64
 	license = MIT
 	conflicts = hyde-ext-git
-	source = Hyde-Ext-1.1.0-x86_64.tar.gz::https://github.com/Da4ndo/Hyde-Ext/releases/download/v1.1.0/Hyde-Ext-v1.1.0-x86_64.tar.gz
+	source = Hyde-Ext-1.1.1-x86_64.tar.gz::https://github.com/Da4ndo/Hyde-Ext/releases/download/v1.1.1/Hyde-Ext-v1.1.1-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = hyde-ext
