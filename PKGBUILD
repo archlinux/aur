@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netron-git
 _pkgname=Netron
-pkgver=7.6.5.r0.g3bcea5b
+pkgver=7.6.6.r0.gb7bccef
 _electronversion=30
 _nodeversion=20
 pkgrel=1
