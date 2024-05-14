@@ -8,7 +8,7 @@ pkgname="lime3ds-appimage"
 #       2. go to https://github.com/Lime3DS/Lime3DS/releases
 #       3. copy version number to pkgver
 pkgver=2112
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger, GUI version, already compiled"
 url="https://lime3ds.github.io/"
@@ -22,7 +22,7 @@ depends=("ffmpeg"
 source=("https://github.com/Lime3DS/Lime3DS/releases/download/$pkgver/lime3ds-$pkgver-linux-appimage.tar.gz"
         "lime3ds.desktop")
 b2sums=('d83ea3eaa1ce2b8413af7e1925b348eb13cf0137d6edc4cb32953a9359467f5aec56d69c9a795e19a387cd69ac9018f635e906490fbd24433abb20f7ee914a1c'
-        'afc63b0ccc3ad90debf3e7aac3c2f6bcb328c15f8f2d4ca13033c1546ffe741858e5297a8ed7c012e63b8420c006dcc76a2cb3075da715ae20c3b6316cdf2abf')
+        'be5cbb996af3fdd28b955d3a32171138a696753edd73d5d7b4de645f22f4e49bb5b51dab12309962189ac32d0913dde1dc9f15f50437ee2f621803a6b1e0edd4')
 options=("!strip")
 
 package(){
