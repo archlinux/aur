@@ -1,5 +1,5 @@
 pkgbase = tea-qt-git
-	pkgdesc = Rich-featured text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS. Stable git-commit with all features.
+	pkgdesc = Rich-featured text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS. Stable git-commit.
 	pkgver = 63.0.2.r1.g2329f3b
 	pkgrel = 1
 	url = https://tea.ourproject.org
