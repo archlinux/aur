@@ -1,7 +1,7 @@
 pkgbase = python-stdlib-list
 	pkgdesc = A list of Python Standard Libraries
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pypi/stdlib-list
 	arch = any
 	license = MIT
