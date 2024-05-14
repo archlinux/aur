@@ -3,7 +3,7 @@ pkgname=tjmc-launcher-bin
 _pkgname=TJMC-Launcher
 pkgver=0.2.7
 _electronversion=23
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple to use, extremely fast, and well supported app, that allows you to install pure and modded versions of Java Minecraft."
 arch=(
     'aarch64'
@@ -15,7 +15,6 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     "electron${_electronversion}"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-setup-arm64.deb")
@@ -25,13 +24,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1a25e3b0f4bf16543e5f802cf6d9d189bcae27617ca8be936ad866a8955d9ce6'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 sha256sums_aarch64=('56b47b4d68367661f3e0b6a42b96c916b091908b420158e5b3d0df1e04941358')
 sha256sums_x86_64=('b4a0666c537e9e172748d785196a8d99698244ba25d9dffc5c0f55375a188ce9')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
