@@ -2,7 +2,7 @@
 
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.9.2
+pkgver=99.9
 pkgrel=1
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
@@ -19,7 +19,7 @@ optdepends=(
             'gnome-keyring: Stores passwords and encryption keys'
            )
 provides=(${_pkgname})
-conflicts=(${_pkgname} ${_pkgname}-git)
+conflicts=(oama oama-bin ${_pkgname} ${_pkgname}-git)
 release=$_pkgname-$pkgver-Linux
 
 source_x86_64=(https://github.com/pdobsan/mailctl/releases/download/${pkgver}/$release-x86_64.tgz)
@@ -30,15 +30,7 @@ sha256sums_aarch64=('217c9852323bf83e99c8f6ada4c157b3672bcffad4c4bc84d75b45f7987
 install=.INSTALL
 
 package() {
-  cd $release-$CARCH
-  install -Dm755 ${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-
-  install -Dm644 LICENSE ${pkgdir}/usr/share/${_pkgname}/LICENSE
-  install -Dm644 README.md ${pkgdir}/usr/share/${_pkgname}
-  install -Dm644 cabal.project.freeze ${pkgdir}/usr/share/${_pkgname}
-  cp -r configs ${pkgdir}/usr/share/${_pkgname}
-
-  install -Dm644 completions/${_pkgname}.bash ${pkgdir}/usr/share/bash-completion/completions/${_pkgname}.bash
-  install -Dm644 completions/${_pkgname}.fish ${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish
-  install -Dm644 completions/${_pkgname}.zsh ${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}
+	echo doing nothing ...
+	echo ... nothing changed.
+	exit 1
 }
