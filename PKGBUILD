@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-settings-git
-pkgver=r278.dd16b92
+pkgver=r352.e7921d0
 pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -17,6 +17,8 @@ depends=(
   'iso-codes'
   'libinput'
   'libxkbcommon'
+  'otf-fira-mono'
+  'otf-fira-sans'
   'systemd-libs'
   'wayland'
 )
@@ -26,10 +28,6 @@ makedepends=(
   'git'
   'just'
   'mold'
-)
-optdepends=(
-  'otf-fira-mono: Recommended Mono font'
-  'otf-fira-sans: Recommended Sans font'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
