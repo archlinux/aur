@@ -1,8 +1,8 @@
 diff --git a/meson.build b/meson.build
-index 94c2295..87ae1ef 100644
+index 4f7898f..f6f3e94 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -296,6 +296,7 @@ if host_machine.system() != 'gba'
+@@ -302,6 +302,7 @@ if host_machine.system() != 'gba'
              dependencies : dependencies,
              link_args : link_args,
              win_subsystem : 'windows',
@@ -10,7 +10,7 @@ index 94c2295..87ae1ef 100644
              install : true
          )
          if host_machine.system() == 'darwin'
-@@ -305,8 +306,7 @@ if host_machine.system() != 'gba'
+@@ -311,8 +312,7 @@ if host_machine.system() != 'gba'
              install_subdir(audio_dir, install_dir : 'Contents/Resources')
              install_subdir('license', install_dir : 'Contents/Resources')
          else

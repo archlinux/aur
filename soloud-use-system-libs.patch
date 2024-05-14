@@ -12,15 +12,15 @@ index 0c7622d..178a79c 100644
  namespace SoLoud
  {
 diff --git a/meson.build b/meson.build
-index 66cc82f..bdfb986 100644
+index 462b846..e9bd185 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -44,7 +44,7 @@ sources = files(
+@@ -43,7 +43,7 @@ sources = files(
+ 
  opus = dependency('opus', fallback : ['opus', 'opus_dep'])
  ogg = dependency('ogg', fallback : ['ogg', 'libogg_dep'])
- 
 -openmpt = dependency('openmpt', default_options : ['default_library=static'], fallback : ['openmpt', 'openmpt_dep'])
 +openmpt = dependency('libopenmpt', default_options : ['default_library=static'], fallback : ['openmpt', 'openmpt_dep'])
- sources += files('src/backend/sdl2_static/soloud_sdl2_static.cpp')
- arg = '-DWITH_SDL2_STATIC=1'
- sdl2_dep = dependency('sdl2', default_options : ['default_library=static'], fallback : ['sdl2', 'sdl2_dep'])
+ 
+ deps = [
+     ogg,
