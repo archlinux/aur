@@ -6,7 +6,7 @@
 pkgname=kraft
 pkgver=1.2.1
 _ver=v$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Kraft helps you to handle documents like quotes and invoices in your small business."
 arch=('x86_64')
 url="http://www.volle-kraft-voraus.de/"
@@ -54,7 +54,7 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
-  make test
+  QT_QPA_PLATFORM=offscreen make test
 }
 
 package() {
