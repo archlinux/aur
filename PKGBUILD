@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.0.13.r0.g17e1a55c4
+pkgver=3.0.14.r0.g61a89f6
 _electronversion=30
 _nodeversion=20.12.2
 pkgrel=1
@@ -33,7 +33,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -48,6 +48,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|SiYuan-Electron|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
@@ -78,13 +79,13 @@ build() {
         echo "Your network is OK."
     fi
     sed "/tar.gz/d;s|AppImage|dir|g" -i electron-builder-linux.yml
-    npm install -g pnpm@9.0.6
-    npx pnpm install --no-frozen-lockfile
-    npx pnpm run build
+    sed "/pnpm@9.0.6/d" -i package.json
+    pnpm install --no-frozen-lockfile
+    pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
     go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "${srcdir}/${pkgname//-/.}/app"
-    npx pnpm run dist-linux
+    pnpm run dist-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
