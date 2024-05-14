@@ -1,22 +1,23 @@
 # Maintainer: ml <ml-aur@ransomware.download>
 pkgname=kind
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('aarch64' 'x86_64')
 url='https://kind.sigs.k8s.io/'
-license=('Apache')
-depends=('kubectl')
+license=('Apache-2.0')
+depends=('glibc' 'kubectl')
 makedepends=('go' 'git')
 optdepends=(
-  'docker: provider docker'
-  'podman: provider podman'
+  'docker: docker node provider'
+  'podman: podman node provider'
+  'nerdctl: nerdctl node provider'
 )
 install=kind.install
 source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
-        modules-load.conf
-        registry-aliases.conf)
-sha256sums=('e3e21c8d1c4566d0d255e16e65bbc39297c8f5db41e7ec38d9d62a1ac9e51980'
+  modules-load.conf
+  registry-aliases.conf)
+sha256sums=('b8ea6665bc37a34de0a6fe7592fb8ae376847e1c93fc5d6377140a98c1aa6a55'
             '87bc2d0263e7393c66d540375efa9b68f2e3fdd72d5b12688587e0c3d6b99d88'
             '82b71230a61f9b1f5072c841bb637aac200272a9cbbddcfc6fd01c308dbb5923')
 
@@ -31,7 +32,7 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS='-buildmode=pie -modcacherw -trimpath'
 
-  go build -o "$pkgname" -ldflags="-linkmode=external \
+  go build -o "$pkgname" -ldflags="-buildid= -linkmode=external \
     -X sigs.k8s.io/kind/pkg/cmd/kind/version.GitCommit=$_commit"
 
   ./"$pkgname" completion bash >completion.bash
