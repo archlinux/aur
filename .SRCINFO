@@ -1,7 +1,7 @@
 pkgbase = hyperscan-chimera-static
 	pkgdesc = Hyperscan Intel library with chimera support
 	pkgver = 5.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://intel.github.io/hyperscan/dev-reference/chimera.html#requirements
 	arch = x86_64
 	license = BSD
