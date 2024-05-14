@@ -1,15 +1,29 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Hoàng Văn Khải <hvksmr1996 at gmail dot com>
 pkgname=dialect-git
-pkgver=2.2.0.r6.g9975da9
+pkgver=2.3.0.r20.g70e12f4
 pkgrel=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
 url="https://apps.gnome.org/Dialect"
 license=('GPL-3.0-or-later')
-depends=('dbus-python' 'gst-python' 'libadwaita' 'libsoup3' 'python-gobject' 'python-gtts')
-makedepends=('blueprint-compiler' 'git' 'gobject-introspection' 'meson')
-checkdepends=('appstream-glib')
+depends=(
+  'gst-python'
+  'libadwaita'
+  'libsoup3'
+  'python-dbus'
+  'python-gobject'
+  'python-gtts'
+)
+makedepends=(
+  'blueprint-compiler'
+  'git'
+  'gobject-introspection'
+  'meson'
+)
+checkdepends=(
+  'appstream-glib'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/dialect-app/dialect.git'
