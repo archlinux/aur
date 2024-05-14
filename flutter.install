@@ -1,11 +1,19 @@
+_builders=(
+  builder
+  builduser
+  flutteruser
+  main-builder
+)
+
 post_install() {
+  # primary flutter group
   groupadd -f flutter
   setfacl -R -m "g:flutter:rwX" /opt/flutter
 
-  # needed to build with clean chroot scripts
-  for _builder in builduser main-builder; do
-    if grep "$_builder" /etc/passwd > /dev/null; then
-      setfacl -R -m "u:$_builder:rwX" /opt/flutter
+  # clean chroot/container builders
+  for _group in "${_builders[@]}"; do
+    if grep -q "$_group" /etc/passwd > /dev/null; then
+      setfacl -R -m "u:$_group:rwX" /opt/flutter
     fi
   done
 
@@ -18,6 +26,14 @@ post_upgrade() {
 }
 
 post_remove() {
+  # remove extra permissions
+  for _group in "${_builders[@]}"; do
+    if grep -q "group:$_group" <<< $(getfacl -ac /opt/flutter 2>/dev/null); then
+      sudo setfacl -R -x "g:flutter" /opt/flutter
+    fi
+  done
+
+  # leave group to prevent orphan permissions
   echo "The 'flutter' group may be removed, if no longer needed:"
   echo "   sudo groupdel flutter"
 }
