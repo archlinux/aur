@@ -46,5 +46,4 @@ package() {
 
 	mkdir -p "$pkgdir/usr/share/man/man1"
 	"$pkgdir/usr/bin/maa" mangen --path "$pkgdir/usr/share/man/man1"
-	gzip "$pkgdir"/usr/share/man/man1/*.1
 }
