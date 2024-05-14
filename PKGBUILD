@@ -85,6 +85,7 @@ prepare() {
   git config submodule.src/reshade.url ../reshade
   git submodule init thirdparty/SPIRV-Headers
   git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
+  git submodule init subprojects/vkroots
   git -c protocol.file.allow=always submodule update   
   
   # make stb.wrap use our local clone
