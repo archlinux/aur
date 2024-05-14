@@ -4,7 +4,7 @@
 
 pkgname=python-rl
 pkgver=3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Alternative Python bindings for GNU Readline"
 arch=('i686' 'x86_64' 'aarch64')
 depends=('python' 'readline')
