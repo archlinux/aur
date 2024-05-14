@@ -1,9 +1,9 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-media-player-git
-pkgver=r1749.95cb20f
+pkgver=r1781.2b00125
 _webver=10.9.1
-pkgrel=4
+pkgrel=1
 pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -17,7 +17,7 @@ source=('git+https://github.com/jellyfin/jellyfin-media-player.git'
         "disable-update-check.patch")
 sha256sums=('SKIP'
             '8b59359002c7ba6247aa00a96eb443c4f6436d6e979c256b95351d1b0e1e2039'
-            'add2430dec35bef4fbf028273f8492cc8a530e9f6a3c2ae4b0a33d83e743aec1')
+            '23727ef8f727ac17af228f29aa5508230caac9d02f37d6c12908fcf50d4f382a')
 
 pkgver() {
   cd jellyfin-media-player
