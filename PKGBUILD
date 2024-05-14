@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-git
-pkgver=r996.3da08ed
+pkgver=r1041.36bf611
 pkgrel=1
 pkgdesc="Compositor for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,8 @@ depends=(
   'libxcb'
   'libxkbcommon'
   'mesa'
-  'systemd-libs'
+  'pixman'
+  'systemd'
   'wayland'
 )
 makedepends=(

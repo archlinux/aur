@@ -1,6 +1,6 @@
 pkgbase = cosmic-comp-git
 	pkgdesc = Compositor for the COSMIC desktop environment
-	pkgver = r996.3da08ed
+	pkgver = r1041.36bf611
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-comp
 	arch = x86_64
@@ -16,7 +16,8 @@ pkgbase = cosmic-comp-git
 	depends = libxcb
 	depends = libxkbcommon
 	depends = mesa
-	depends = systemd-libs
+	depends = pixman
+	depends = systemd
 	depends = wayland
 	provides = cosmic-comp
 	conflicts = cosmic-comp
