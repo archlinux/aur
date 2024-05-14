@@ -8,7 +8,7 @@ note1() {
 }
 
 note2() {
-  printf "${BLUE}==>      ${BOLD} $1${ALL_OFF}\n"
+  printf "${BLUE}==>  ${BOLD} $1${ALL_OFF}\n"
 }
 
 ALL_OFF="$(tput sgr0)"
@@ -24,11 +24,11 @@ WHITE="${BOLD}$(tput setaf 7)"
 
 post_install() {
     note1 'Enable and start the Mozilla VPN daemon with:'
-    note2 '    systemctl enable mozillavpn.service'
-    note2 '    systemctl start mozillavpn.service'
+    note2 '  systemctl enable mozillavpn.service'
+    note2 '  systemctl start mozillavpn.service'
 }
 
 post_upgrade() {
     note1 'Restart the Mozilla VPN daemon with:'
-    note2 '    systemctl restart mozillavpn.service'
+    note2 '  systemctl restart mozillavpn.service'
 }

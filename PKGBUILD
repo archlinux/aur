@@ -11,7 +11,7 @@
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 
 pkgname=mozillavpn
-pkgver=2.21.0
+pkgver=2.22.0
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
@@ -54,11 +54,11 @@ optdepends=(
 
 install=mozillavpn.install
 
-_debian_series="mantic1"
+_debian_series="noble1"
 _dl_url="https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn"
 _pkgsrc="$pkgname-$pkgver"
 source=("$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz")
-sha256sums=('406dde90e90cbc2419f66b6b822314b02936ff089ef15ae08008f2a67c77b5b5')
+sha256sums=('e8c46a97ebfd01c0d59a96a3c33232d4ae2529d02e49fa7095bc47a58c3d9d68')
 
 build() {
     local _cmake_options=(
