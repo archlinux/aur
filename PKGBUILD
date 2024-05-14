@@ -15,8 +15,15 @@ depends=(
   'python-gobject'
   'python-gtts'
 )
-makedepends=('blueprint-compiler' 'git' 'gobject-introspection' 'meson')
-checkdepends=('appstream-glib')
+makedepends=(
+  'blueprint-compiler'
+  'git'
+  'gobject-introspection'
+  'meson'
+)
+checkdepends=(
+  'appstream-glib'
+)
 source=("git+https://github.com/dialect-app/dialect.git#tag=$pkgver"
         'git+https://github.com/dialect-app/po.git')
 sha256sums=('da2f83db0e9ff2687600cdfd4b1b0930e0f406fce85b9dec3232f216bc3e8db3'
