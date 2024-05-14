@@ -4,11 +4,11 @@
 # https://wiki.archlinux.org/title/Go_package_guidelines
 # https://developer.hashicorp.com/terraform/cli/config/config-file#implied-local-mirror-directories
 
-pkgname=({terraform,opentofu}-provider-hcloud)
-_pkgname="$pkgname"
+pkgname=({opentofu,terraform}-provider-hcloud)
+_pkgname="${pkgname[1]}"
 _pkgver=1.47.0
 pkgver="v${_pkgver}"
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 url="https://github.com/hetznercloud/${pkgname}"
 license=("MPL-2.0")
