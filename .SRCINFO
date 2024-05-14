@@ -1,11 +1,10 @@
 pkgbase = rosary-tauri
 	pkgdesc = A Bible App developed with tauri
-	pkgver = 1.0.0
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/RoseBlume/Rosary
 	install = rosary-tauri.install
 	arch = x86_64
-	arch = aarch64
 	license = mit
 	depends = cairo
 	depends = desktop-file-utils
@@ -18,9 +17,7 @@ pkgbase = rosary-tauri
 	depends = webkit2gtk
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/RoseBlume/Rosary-Tauri/releases/download/v1.0.0/rosary_1.0.0_amd64.deb
-	sha256sums_x86_64 = ca85f11732765bed78f93f55397b4b4cbb76685088553dad612c5062e3ec651f
-	source_aarch64 = https://github.com/RoseBlume/Rosary-Tauri/releases/download/v1.0.0/rosary_1.0.0_arm64.deb
-	sha256sums_aarch64 = ed2dc3169d34d91188fb55d39867713856dd02a2360ffe0661cb2e19bd701c3c
+	source_x86_64 = https://github.com/RoseBlume/Rosary/releases/download/v1.2.3/rosary_1.2.3_amd64.deb
+	sha256sums_x86_64 = f9b983b37f359b54e1d73ba55e6ff822c3d81306601879c031eb160b74390bda
 
 pkgname = rosary-tauri
