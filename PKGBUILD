@@ -2,7 +2,7 @@
 
 pkgname=pyznap
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ZFS snapshot tool written in Python"
 url="https://github.com/yboetz/pyznap"
 depends=('python')
