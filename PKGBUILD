@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher
 _pkgname="FreeSO Launcher"
-pkgver=1.12.1_prod.18
+pkgver=1.12.1_prod.19
 _electronversion=30
 _nodeversion=16
 pkgrel=1
@@ -31,7 +31,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('a6ee8a80b52930c77b92f0c39e6e88ac1506a5509baf890eec6c0da26ae0060f'
+sha256sums=('8d17fd95f96df76bbe602f08c500381a36be7c15775c07189faecfa486927c55'
             '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
