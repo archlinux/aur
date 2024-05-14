@@ -4,11 +4,11 @@
 
 pkgname=bazelisk
 pkgver=1.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A user-friendly launcher for Bazel.'
 arch=('x86_64')
 url='https://github.com/bazelbuild/bazelisk'
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('go' 'git')
 # https://github.com/bazelbuild/bazelisk#installation
 # We should add both `bazelisk` and `bazel` to PATH
