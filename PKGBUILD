@@ -4,13 +4,14 @@ pkgname="${_appname}-tools-bin"
 _pkgname=He3
 pkgver=2.0.20
 _electronversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="Open, Intelligent, Efficient Developer Toolbox"
 arch=(
     'aarch64'
     'x86_64'
 )
 url="https://he3app.com"
+_ghurl="https://github.com/he3-app"
 _dlurl="https://he3-1309519128.cos.accelerate.myqcloud.com"
 license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -21,7 +22,6 @@ depends=(
     'python>=3'
     'python-setuptools'
     'java-runtime'
-    'hicolor-icon-theme'
 )
 options=(
     '!strip'
@@ -33,13 +33,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('92eb03e0339af737f930be9f3f95fe74ebce8eeca4835fbe7b50dc7c5fa94601'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 sha256sums_aarch64=('f439cd9fe1b60bf407dd0e08ab506c60148f06b7c8e1292ce180c1b1bf4d0d6b')
 sha256sums_x86_64=('80788fa9c8606cb6647992e78cceb1c4e529d4a65d764be12cc46fa8977d38c3')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
@@ -48,7 +49,6 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/opt/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
