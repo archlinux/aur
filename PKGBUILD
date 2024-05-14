@@ -3,7 +3,7 @@
 
 pkgname='perl-astro-fits-cfitsio'
 pkgver='1.18'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Perl extension for using the cfitsio library"
 arch=('i686' 'x86_64')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
@@ -40,6 +40,8 @@ package() {
   cd "$srcdir/$_distdir"
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  # set the library to be root-writable so it can be stripped
+  chmod 755 "$pkgdir"/usr/lib/perl*/*/vendor_perl/auto/Astro/FITS/CFITSIO/CFITSIO.so
 }
 
 # Local Variables:
