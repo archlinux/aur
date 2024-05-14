@@ -1,0 +1,5 @@
+[python-sql]
+source = "gitlab"
+gitlab = "tryton/python-sql"
+host = "foss.heptapod.net"
+use_max_tag = "true"

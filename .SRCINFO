@@ -1,6 +1,6 @@
 pkgbase = python-sql
 	pkgdesc = Library to write SQL queries
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://python-sql.tryton.org
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-sql
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://pypi.org/packages/source/p/python-sql/python-sql-1.4.2.tar.gz
-	sha512sums = 3d9d075ba8ed9c9214bc40aa0fac485d20446397d2dd7b769f0512c350b1f2c8b8985e47f6667e97c6cfc0e9130f9d2999f5625bfc46ee163d7deaacfd52b4c2
+	source = https://foss.heptapod.net/tryton/python-sql/-/archive/1.5.0/python-sql-1.5.0.tar.gz
+	sha512sums = 6e62370e3637f43a9a30c06e5acf3ef164761cc0baaa11c6816c6118524e4b6ab2ed88be971277fde42154b86e778c29efb6f0a03765c28a68004a2a441f563d
 
 pkgname = python-sql
