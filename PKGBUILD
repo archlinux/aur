@@ -8,12 +8,14 @@ url='https://localsend.org/'
 arch=('x86_64')
 license=('MIT')
 depends=('xdg-user-dirs' 'libayatana-appindicator')
-makedepends=('flutter-engine' 'git' 'yq')
+makedepends=('flutter-engine' 'git' 'yq' 'python>=3.11' 'python<3.12')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-	"flutter::git+https://github.com/flutter/flutter.git"
-	"flutter-engine::git+https://github.com/flutter/engine.git")
+	'flutter::git+https://github.com/flutter/flutter.git'
+	'flutter-engine::git+https://github.com/flutter/engine.git'
+	'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git')
 sha256sums=('06dab4ced0c434d617e355dbe64f4cd793ddedd86939fd65b308590d122b3a06'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -23,10 +25,10 @@ _engine_version=3.13.9
 prepare() {
 	cd "${_srcdir}/app"
 	source '/opt/flutter-engine/pkgbuild-prepare.sh'
-	
+
 	local dartpkg="$(yq -er .name 'pubspec.yaml')"
 	flutter create --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
-	
+
 	flutter clean
 	flutter pub get
 }
@@ -34,7 +36,7 @@ prepare() {
 build() {
 	cd "${_srcdir}/app"
 	source '/opt/flutter-engine/pkgbuild-build.sh'
-	
+
 	flutter pub run build_runner build --release --delete-conflicting-outputs
 	flutter build linux --release
 }
@@ -59,7 +61,7 @@ package() {
 	ln -s \
 		"/opt/${pkgname}/${pkgname}" \
 		"${pkgdir}/usr/bin/${pkgname}"
-	
+
 	# Icon for .desktop
 	install -Dm644 \
 		"${srcdir}/${_srcdir}/app/build/flutter_assets/assets/img/logo-512.png" \

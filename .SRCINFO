@@ -8,12 +8,16 @@ pkgbase = localsend
 	makedepends = flutter-engine
 	makedepends = git
 	makedepends = yq
+	makedepends = python>=3.11
+	makedepends = python<3.12
 	depends = xdg-user-dirs
 	depends = libayatana-appindicator
 	source = localsend-1.14.0.tar.gz::https://github.com/localsend/localsend/archive/refs/tags/v1.14.0.tar.gz
 	source = flutter::git+https://github.com/flutter/flutter.git
 	source = flutter-engine::git+https://github.com/flutter/engine.git
+	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	sha256sums = 06dab4ced0c434d617e355dbe64f4cd793ddedd86939fd65b308590d122b3a06
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
