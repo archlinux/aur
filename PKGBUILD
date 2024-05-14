@@ -16,7 +16,7 @@ depends=(
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cherio/$pkgname/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('218d39873d67266ed5449b73e69fdf77613b516d0052f88865f61f521f768811')
+sha256sums=('325870744f47c8408e52885ca94501b83004a6b33bca0a413dbda9f7e1e3747f')
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
