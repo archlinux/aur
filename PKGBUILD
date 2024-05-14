@@ -1,8 +1,8 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=singularity-ce
-pkgver=4.1.2
-pkgrel=2
+pkgver=4.1.3
+pkgrel=1
 pkgdesc='An open source container platform designed to be simple, fast, and secure.'
 arch=(x86_64)
 url='https://github.com/sylabs/singularity'
@@ -23,24 +23,24 @@ backup=(
     'etc/singularity/network/40_fakeroot.conflist'
     'etc/singularity/seccomp-profiles/default.json'
 )
-depends=('cryptsetup' 'go>=1.20' 'libseccomp' 'squashfs-tools>=4.3')
+depends=('cryptsetup' 'go>=1.21' 'libseccomp' 'squashfs-tools>=4.3')
 makedepends=('fuse3' 'git')
 optdepends=('libnvidia-container-tools: use nvidia-container-cli for GPU setup (experimental)')
 provides=('singularity-container')
 conflicts=('singularity-container')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         'tmpfiles.conf')
-b2sums=('af1f717bbfe09f8d392ce3e2c5cecc462359856a735fb9f07e8245dc75d2cdde5069aebe01deb4668bb2859e6f396911e00b581d8cc9ba3334a7384e6ec72681'
+b2sums=('6527752b1615a92704ad899f0e7f4dc1cb29333126eff3b6aede731f58c9cdea2996b1dd4fe96e6ddfe11840960f253048355595be6690a9301c3405b051d5f6'
         '97226e92c3ae887c4e33561fddf60887c395b02a8aee11be78c28fc909df597ed806dd11cdbde00b22452ddeeff04f1ed94d45bb5330b1b38449f6f829f42385')
 
 build() {
     cd $pkgname-$pkgver
 
     export CGO_ENABLED="1"
-    export CGO_CPPFLAGS="$CPPFLAGS"
-    export CGO_CFLAGS="$CFLAGS"
-    export CGO_CXXFLAGS="$CXXFLAGS"
-    export CGO_LDFLAGS="$LDFLAGS"
+    # export CGO_CPPFLAGS="$CPPFLAGS"
+    # export CGO_CFLAGS="$CFLAGS"
+    # export CGO_CXXFLAGS="$CXXFLAGS"
+    # export CGO_LDFLAGS="$LDFLAGS"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     # libexecdir is recommended here https://wiki.archlinux.org/title/Arch_package_guidelines#Package_etiquette
