@@ -1,17 +1,30 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 pkgname=slimbookamdcontroller
-pkgver=0.3.9beta
+pkgver=0.4beta
 pkgrel=1
 pkgdesc="Application for the performance management of AMD processors"
 arch=('any')
-url="https://github.com/slimbook/slimbookamdcontroller"
+url="https://github.com/Slimbook-Team/slimbookamdcontroller"
 license=('GPL-3.0-or-later')
-depends=('dbus-python' 'gtk3' 'libayatana-appindicator' 'libnotify' 'mokutil'
-         'python-gobject' 'python-pillow' 'python-pyamdgpuinfo' 'ryzenadj' 'systemd-libs')
+depends=(
+  'gtk3'
+  'libayatana-appindicator'
+  'libnotify'
+  'mokutil'
+  'python-dbus'
+  'python-gobject'
+  'python-matplotlib'
+  'python-numpy'
+  'python-pillow'
+  'python-pyamdgpuinfo'
+  'ryzenadj'
+  'systemd-libs'
+)
 install="$pkgname.install"
-source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('76a645a7fcb710e91123b8e1bd0e483e1ec080c5e617e6cb1cb32c1f3d9b9b22')
+source=("$url/releases/download/v$pkgver/${pkgname}_${pkgver}_all.deb")
+#source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
+sha256sums=('47440908028b77a3d8502f3e0466d203bfe78a39d0e87d44d098b8e8a262c5c8')
 
 package() {
   bsdtar xf data.tar.xz -C "$pkgdir"
