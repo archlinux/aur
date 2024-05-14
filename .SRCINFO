@@ -1,14 +1,14 @@
-pkgbase = pocketnes
-	pkgdesc = PocketNES ROM Builder
-	pkgver = 1.2a
+pkgbase = smsadvance
+	pkgdesc = SMSAdvance ROM Builder
+	pkgver = 2.5
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
 	depends = wine
 	depends = winetricks
-	source = https://www.dwedit.org/gba/pocketnes_2013_07_01.zip
-	source = pocketnes
-	source = pocketnes.desktop
-	source = pocketnes.png
+	source = https://www.zophar.net/fileuploads/2/16428iussy/SMSAdvance25Bin.zip
+	source = smsadvance
+	source = smsadvance.desktop
+	source = smsadvance.png
 
-pkgname = pocketnes
+pkgname = smsadvance
