@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# WINE Launcher script for PocketNES Menu Builder
+
+export WINEPREFIX=~/.gba-emu
+export SAVEFILE=$WINEPREFIX/savefile
+export PNESDIR=/usr/share/pocketnes # installation dir for AUR package
+
+# configure registry
+configure() {
+    # winetricks -q mfc42
+    touch $SAVEFILE # ensures that we don't repeat configuration process
+}
+
+
+if [ "$1" = "--mkpfx" ]; then # Force reconfigure prefix
+    configure
+    exit 0
+elif [ "$1" = "--erase" ]; then # delete all data in prefix
+    rm -rf $WINEPREFIX
+    exit 0
+elif [ "$1" = "--help" ]; then # show command info
+    cat << EOF
+PocketNES Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2003 Titney from PocketHeaven
+                  (c) 2013 FluBBa and Dwedit
+
+Usage:
+    ez4-client [--mkpfx] [--erase] [--help]
+
+    --mkpfx: Re-configure WINE prefix
+    --erase: Erase all data in WINE prefix
+    --help: Show this screen
+
+EOF
+    exit 0
+elif [ ! -f "$SAVEFILE" ]; then # first boot
+    configure
+else
+    echo ""
+fi
+
+wine $PNESDIR/pnesmmw.exe

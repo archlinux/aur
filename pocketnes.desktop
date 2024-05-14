@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=PocketNES Menu Builder
+Comment=Pack NES ROMs for the Game Boy Advance
+Exec=pocketnes
+Icon=pocketnes
+Terminal=false
+Categories=Wine;Utility;Game;
