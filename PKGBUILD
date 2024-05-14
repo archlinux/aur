@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname=libb6
 pkgver=r5.4e330d5
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for interfacing with SkyRC B6xx series chargers"
 arch=('x86_64')
 url="https://github.com/maciek134/libb6"
@@ -10,6 +10,7 @@ depends=('libusb')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/maciek134/libb6.git#commit=4e330d5")
 sha256sums=('SKIP')
+options=(!strip)
 
 pkgver() {
 
@@ -21,7 +22,7 @@ pkgver() {
 build() {
 
  cd "$srcdir/$pkgname"
- cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_BUILD_TYPE=Release
+ cmake . -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_BUILD_TYPE=Release
  make
 
 }
