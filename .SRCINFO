@@ -15,8 +15,8 @@ pkgbase = autokey
 
 pkgname = autokey-common
 	pkgdesc = A desktop automation utility for Linux and X11 - common data
-	depends = dbus-python
 	depends = imagemagick
+	depends = python-dbus
 	depends = python-packaging
 	depends = python-pyinotify
 	depends = python-xlib

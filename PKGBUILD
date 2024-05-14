@@ -38,8 +38,8 @@ build() {
 package_autokey-common() {
   pkgdesc+=" - common data"
   depends=(
-    'dbus-python'
     'imagemagick'
+    'python-dbus'
     'python-packaging'
     'python-pyinotify'
     'python-xlib'
