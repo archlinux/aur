@@ -1,14 +1,14 @@
 pkgbase = inter-font-unhinted
 	pkgdesc = A typeface specially designed for user interfaces (Desktop OTF version)
-	pkgver = 3.19
+	pkgver = 4.0
 	pkgrel = 1
-	url = https://github.com/rsms/inter/
+	url = https://github.com/rsms/inter
 	arch = any
 	license = custom:OFL
 	provides = inter-font
 	conflicts = inter-font
-	noextract = Inter-3.19.zip
-	source = https://github.com/rsms/inter/releases/download/v3.19/Inter-3.19.zip
-	sha256sums = 150ab6230d1762a57bebf35dfc04d606ff91598a31d785f7f100356ecdcc0032
+	source = https://github.com/rsms/inter/releases/download/v4.0/Inter-4.0.zip
+	sha256sums = ff970a5d4561a04f102a7cb781adbd6ac4e9b6c460914c7a101f15acb7f7d1a4
+	b2sums = ace3b847e5354642623868441b433a9a4e57e6a78fa56bd4e7ee28d01399b000f81abb5a3cab9fb8e89588980b2ca81f41de4673609fd5626781d7bc139834be
 
 pkgname = inter-font-unhinted

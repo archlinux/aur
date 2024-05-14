@@ -3,7 +3,7 @@
 # Reference: PKGBUILD(5)
 
 _pkgname=inter-font
-pkgname="${_pkgname}-otf"
+pkgname="${_pkgname}-unhinted"
 pkgver=4.0
 pkgrel=1
 pkgdesc="A typeface specially designed for user interfaces (Desktop OTF version)"
