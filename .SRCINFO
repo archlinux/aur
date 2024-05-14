@@ -1,16 +1,17 @@
 pkgbase = apk-installer
 	pkgdesc = 一款Apk安装器软件,快速安装Apk至手机。
 	pkgver = 1.6.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/zhujiaming/apk-installer
 	arch = any
 	license = MIT
-	depends = electron10-bin
+	depends = electron10
 	depends = java-runtime
+	depends = android-sdk-platform-tools
 	conflicts = apk-installer
-	source = apk-installer.git::git+https://github.com/zhujiaming/apk-installer.git#tag=1.6.0
+	source = apk-installer-1.6.0.tar.gz::https://github.com/zhujiaming/apk-installer/archive/refs/tags/1.6.0.tar.gz
 	source = apk-installer.sh
-	sha256sums = SKIP
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = f58d1e672a98961307577251a5952521f723607d4920138e1d325bf14297c52c
+	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
 
 pkgname = apk-installer
