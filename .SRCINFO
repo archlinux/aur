@@ -1,6 +1,6 @@
 pkgbase = lime3ds-git
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
-	pkgver = r10319.c9932b6
+	pkgver = r10324.467afbb
 	pkgrel = 1
 	url = https://github.com/Lime3DS/Lime3DS
 	arch = x86_64
@@ -36,6 +36,7 @@ pkgbase = lime3ds-git
 	depends = libinih
 	depends = openal
 	depends = enet
+	conflicts = lime3ds-appimage
 	options = lto
 	options = !buildflags
 	source = Lime3DS::git+https://github.com/Lime3DS/Lime3DS
