@@ -4,7 +4,7 @@
 _pkgname=wavefile
 pkgname=python-$_pkgname
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=(GPL-3.0-or-later)
 pkgdesc='Pythonic libsndfile wrapper to read and write audio files'
@@ -22,7 +22,7 @@ build() {
 
 check() {
   cd $_pkgname-$pkgver
-  pytest
+  pytest --override-ini="addopts="
 }
 
 package() {

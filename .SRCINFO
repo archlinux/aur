@@ -1,7 +1,7 @@
 pkgbase = python-wavefile
 	pkgdesc = Pythonic libsndfile wrapper to read and write audio files
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vokimon/python-wavefile
 	arch = any
 	license = GPL-3.0-or-later
