@@ -15,6 +15,7 @@ makedepends=(
   'nodejs-lts-iron'
   'npm'
   'pandoc'
+  'git'
 )
 provides=('ffplayout')
 conflicts=('ffplayout' 'ffplayout-unstable-git')

@@ -11,6 +11,7 @@ pkgbase = ffplayout-git
 	makedepends = nodejs-lts-iron
 	makedepends = npm
 	makedepends = pandoc
+	makedepends = git
 	depends = ffmpeg-ffplayout
 	depends = sudo
 	provides = ffplayout
