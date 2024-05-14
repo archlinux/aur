@@ -1,0 +1,14 @@
+pkgbase = goomba-color
+	pkgdesc = DMG/CGB emulator for Game Boy Advance
+	pkgver = 2019-05-04
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	depends = wine
+	depends = winetricks
+	source = https://www.dwedit.org/gba/goombacolor_2019_5_4.zip
+	source = goomba-front
+	source = goomba-front.desktop
+	source = goomba-front.png
+
+pkgname = goomba-color
