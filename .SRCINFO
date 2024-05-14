@@ -1,0 +1,12 @@
+pkgbase = pairdrop-cli
+	pkgdesc = File sharing on your local network that works on all platforms.
+	pkgver = 1.10.8
+	pkgrel = 1
+	url = https://pairdrop.net
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	source = https://github.com/schlagmichdoch/PairDrop/releases/download/v1.10.8/pairdrop-cli.zip
+	sha512sums = d3677f775607aae8483a13a009e367656ff832515b482b6444db462ef3ee4a081f07e7123cda24306207000e290ad31abdf1bca368f87b3bba09b2881da8adf0
+
+pkgname = pairdrop-cli
