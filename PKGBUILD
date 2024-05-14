@@ -2,7 +2,7 @@
 # Maintainer: Rob Shinn <rob.shinn@gmail.com> 
 
 pkgname=autodafe-git
-pkgver=0.5.r21.ge8290ae
+pkgver=0.7.r85.g96c07c1
 pkgrel=1
 pkgdesc='Tools for converting an autotools recipe to a plain Makefile.'
 provides=('autodafe')
@@ -16,8 +16,6 @@ source=("git+https://gitlab.com/esr/autodafe")
 sha256sums=('SKIP')
 _pkgname=autodafe
 _docs=('NEWS' 'README' 'TODO' 'de-autoconfiscation' 'hacking' 'configure')
-_htmldocs=('NEWS.html' 'README.html' 'TODO.html' 'de-autoconfiscation.html' 'deconfig.html' 'hacking.html' 'configure.html' 'makemake.html')
-
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -27,9 +25,7 @@ pkgver() {
 build() { 
   cd "${srcdir}/${_pkgname}"
   make all
-  make configure.1
-  make deconfig.1
-  for i in ${docs[@]}; do
+  for i in ${_docs[@]}; do
     asciidoctor $i.adoc
   done
 }
@@ -37,12 +33,12 @@ build() {
 package() {  
   cd "${srcdir}/${_pkgname}"
   DESTDIR="$pkgdir" prefix=/usr make install
-  install -Dm755 "${srcdir}/${_pkgname}"/configure "${pkgdir}"/usr/bin/configure
-  install -Dm644 "${srcdir}/${_pkgname}"/configure.1 "${pkgdir}"/usr/share/man/man1/configure.1
-  install -Dm755 "${srcdir}/${_pkgname}"/deconfig "${pkgdir}"/usr/bin/deconfig
-  install -Dm644 "${srcdir}/${_pkgname}"/deconfig.1 "${pkgdir}"/usr/share/man/man1/deconfig.1
-  for i in ${htmldocs[@]}; do
-    install -Dm644 "${srcdir}/${_pkgname}"/$i "${pkgdir}"/usr/share/doc/${pkgname}/$i 
-  done
+  # install -Dm755 "${srcdir}/${_pkgname}"/configure "${pkgdir}"/usr/bin/configure
+  # install -Dm644 "${srcdir}/${_pkgname}"/configure.1 "${pkgdir}"/usr/share/man/man1/configure.1
+  # install -Dm755 "${srcdir}/${_pkgname}"/deconfig "${pkgdir}"/usr/bin/deconfig
+  # install -Dm644 "${srcdir}/${_pkgname}"/deconfig.1 "${pkgdir}"/usr/share/man/man1/deconfig.1
+  for i in ${_docs[@]}; do
+    install -Dm644 "${srcdir}/${_pkgname}"/$i.html "${pkgdir}"/usr/share/doc/${_pkgname}/$i.html
+   done
 }
 
