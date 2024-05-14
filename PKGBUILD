@@ -3,7 +3,7 @@
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
 pkgver=99.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
 url="https://github.com/pdobsan/${_pkgname}"
@@ -27,6 +27,27 @@ sosurce=(Deprecation.txt)
 install=.INSTALL
 
 package() {
+    cat <<EOF
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+
+WARNING:
+
+mailctl is deprecated in favor of oama from the same author.
+oama's home page:
+
+  https://github.com/pdobsan/oama
+
+Please, remove mailctl-bin and install oama-bin instead:
+
+  https://aur.archlinux.org/packages/oama-bin
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+
+EOF
+
 	echo doing nothing ...
 	echo ... nothing changed.
 	exit 1
