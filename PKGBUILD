@@ -1,6 +1,6 @@
 # Maintainer: Da4ndo <contact@da4ndo.com>
 pkgname=hyde-ext
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Hyde-Ext is a Rust-based command-line application designed to enhance the HyDE (HyDE_CLI) environment. It automates tasks, installs essential tools, manages configurations, and restores settings from backups."
 arch=('x86_64')
