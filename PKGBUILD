@@ -70,6 +70,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/duckstation"
+    # system shaderc is still at v2024.0
+    git checkout 0e2204e9289e5173ef7bb0f793575110a709a79e
     # get rid of non_semantic_debug_info
     sed -e '/shaderc_compile_options_set_emit_non_semantic_debug_info/d' -i src/util/gpu_device.cpp
 }
