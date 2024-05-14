@@ -10,6 +10,6 @@ pkgbase = qwq
 	replaces = uwu-qwq
 	replaces = uwu
 	source = https://github.com/qsqcqs/qwq/archive/refs/tags/nya-3.tar.gz
-	sha256sums = 3ea7cd6ed6b018421aa405c013ca170bdfb59065db0d6642d36012ef15af44d8
+	sha256sums = 80c4a89be2023a5911553d199682651c606c3c4ddd49c1a5f50a47953d3c9f63
 
 pkgname = qwq
