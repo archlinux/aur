@@ -1,11 +1,11 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 pkgname=neper
-pkgver=4.8.0
+pkgver=4.8.2
 pkgrel=1
 pkgdesc='Polycrystal generation and meshing'
 arch=('x86_64')
 url='https://neper.info'
-license=('GPL')
+license=('GPL-3.0-only')
 depends=('nlopt'
          'gmsh'
          'scotch'
@@ -13,7 +13,7 @@ depends=('nlopt'
 makedepends=('cmake')
 source=(neper-${pkgver}.tar.gz::https://github.com/neperfepx/neper/archive/refs/tags/v${pkgver}.tar.gz)
 
-sha512sums=('efa7d13c1e7b7e6ae719b4171119f13219085649d42ae9dfcc58dc4255bb22e5046fe405d4153dc9f13fb5e9212f6e42b0f5fe529e9fa3749c919c0149170410')
+sha512sums=('bbeab53a3f0b9a4352aed03810bc40eebcf4714fc594eea7fc48ba5e5ea755dedd5709d256c5ff4b204ce5f32a94b2e9742c1e0f6128cdbe3ba6faefb8da45ca')
 
 build() {
   cmake -S ${pkgname}-${pkgver}/src \
