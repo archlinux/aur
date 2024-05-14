@@ -1,0 +1,29 @@
+---
+
+version: '3'
+
+tasks:
+  build:
+    description: Build the package
+    cmds:
+      - makepkg -s
+
+  install:
+    description: Install the package
+    cmds:
+      - sudo pacman -U *.pkg.tar.zst
+
+  clean:
+    description: Clean up build files
+    cmds:
+      - rm -rf src pkg *.pkg.tar.zst *.tar.gz *.sig
+
+  updpkgsums:
+    description: Update checksums in PKGBUILD
+    cmds:
+      - updpkgsums
+
+  srcinfo:
+    description: Generate .SRCINFO file
+    cmds:
+      - makepkg --printsrcinfo > .SRCINFO

@@ -2,8 +2,7 @@
 #
 pkgname=yubico-authenticator-bin
 pkgver=7.0.0
-pkgdesc="Yubico Authenticator 6 is a cross-platform application for managing your YubiKey's second factor credentials.\
-Yubico Authenticator 6 is a complete rewrite of the application using the Flutter framework."
+pkgdesc="Cross-platform application for managing your YubiKey's second factor credentials (version 7)"
 arch=('x86_64')
 url="https://github.com/Yubico/yubioath-flutter"
 license=('GPL')
@@ -12,7 +11,7 @@ conflicts=('yubico-authenticator')
 options=(!strip)
 optdepends=('gnome-screenshot: QR scanning feature on GNOME'
             'spectacle: QR scanning feature on KDE')
-pkgrel=1
+pkgrel=2
 source=(
     "${url}/releases/download/${pkgver}/yubico-authenticator-${pkgver}-linux.tar.gz"{,.sig}
 )
@@ -24,11 +23,9 @@ validpgpkeys=(
 sha256sums=('ec6bdca21ffabb0565d0d63f3e5525953dbb98b7ac2263bacea3770a18555ee5'
             'SKIP')
 
+# If the installation fails with 'One or more PGP signatures could not be verified',
+# then install the key with 'gpg --recv-keys 20EE325B86A81BCBD3E56798F04367096FBA95E8'
 prepare() {
-    echo -e "\n\033[0;32mINSTALLATION NOTE:\n"
-    echo -e "If installation fails with 'One or more PGP signatures could not be verified', then install the key with:\n"
-    echo -e "  gpg --recv-keys 20EE325B86A81BCBD3E56798F04367096FBA95E8\n"
-    echo -e "Then retry the installation.\033[0m\n"
     sed -i 's|\(Exec="\)@EXEC_PATH|\1/opt/yubico-authenticator|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.authenticator.desktop
     sed -i 's|\(Icon=\)@EXEC_PATH/linux_support/|\1|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.authenticator.desktop
 }

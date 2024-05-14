@@ -3,3 +3,4 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
+!Taskfile.yaml

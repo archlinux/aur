@@ -1,7 +1,7 @@
 pkgbase = yubico-authenticator-bin
-	pkgdesc = Yubico Authenticator 6 is a cross-platform application for managing your YubiKey's second factor credentials.Yubico Authenticator 6 is a complete rewrite of the application using the Flutter framework.
+	pkgdesc = Cross-platform application for managing your YubiKey's second factor credentials (version 7)
 	pkgver = 7.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Yubico/yubioath-flutter
 	arch = x86_64
 	license = GPL
