@@ -1,30 +1,24 @@
 # Maintainer: Microeinstein <mu ddoott emc2 ddoott flower at inventati ddoott org>
 # Contributor: Ivy Foster <iff@archlinux.org>
+# Reference: PKGBUILD(5)
 
-pkgname=inter-font-unhinted
-pkgver=3.19
+_pkgname=inter-font
+pkgname="${_pkgname}-otf"
+pkgver=4.0
 pkgrel=1
-pkgdesc='A typeface specially designed for user interfaces (Desktop OTF version)'
-url=https://github.com/rsms/inter/
+pkgdesc="A typeface specially designed for user interfaces (Desktop OTF version)"
+url="https://github.com/rsms/inter"
 license=(custom:OFL)
-provides=('inter-font')
-conflicts=('inter-font')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 arch=(any)
-source=("https://github.com/rsms/inter/releases/download/v$pkgver/Inter-$pkgver.zip")
-# Warning: checksums provided by packager, not upstream
-sha256sums=(150ab6230d1762a57bebf35dfc04d606ff91598a31d785f7f100356ecdcc0032)
-noextract=("Inter-$pkgver.zip")
+source=("$url/releases/download/v$pkgver/Inter-$pkgver.zip")
 
-# Upstream dumps a *bunch* of stuff into the top level of the archive
-prepare() {
-	mkdir "inter-$pkgver"
-	cd "inter-$pkgver"
-	bsdtar xf ../Inter-$pkgver.zip
-}
+# Warning: checksums provided by packager, not upstream
+sha256sums=('ff970a5d4561a04f102a7cb781adbd6ac4e9b6c460914c7a101f15acb7f7d1a4')
+b2sums=('ace3b847e5354642623868441b433a9a4e57e6a78fa56bd4e7ee28d01399b000f81abb5a3cab9fb8e89588980b2ca81f41de4673609fd5626781d7bc139834be')
 
 package() {
-	cd "inter-$pkgver"
-	install -d "$pkgdir/usr/share/fonts/inter"
-	install -m644 -t "$pkgdir/usr/share/fonts/inter" 'Inter Desktop'/*.otf
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/inter-font/LICENSE.txt"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/inter" 'extras/otf/'*
+    install -Dm644 -t "$pkgdir/usr/share/licenses/${_pkgname}" LICENSE.txt
 }
