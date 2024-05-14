@@ -1,16 +1,15 @@
 # Maintainer: Patrick Hechler <patrjprof.aur@ph.anderemails.de>
 pkgname=patrjprof
 pkgver=1.2.3r149
-_pkgver="$(echo "${pkgver}" | sed -E 's/([^r])r[0-9]+/\1/')"
+_pkgver="$(echo "${pkgver}" | sed -E 's/r[0-9]+$//')"
 pkgrel=1
-pkgdesc="An Open source Java profiler written in Java"
+pkgdesc="A Free Java profiler written in Java"
 arch=('any')
 url="https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler"
 license=('AGPL-3.0-or-later')
 groups=()
 depends=('java-runtime-headless>=8')
 makedepends=()
-#makedepends=('git' 'maven' 'java-environment>=8')
 optdepends=('java-runtime-headless>=16: support for socket files for server/client communication'
            'java-runtime>=8: graphical user interface'
            'java-runtime>=16: socket files + graphical user interface'
@@ -32,7 +31,7 @@ source=("patr-java-profiler-start-${_pkgver}.sh::https://nexuspat.hechler.de/rep
         )
 noextract=("${source[@]%%::*}")
 sha512sums=('cdef6de2254f01d4398b2fcd8f9c43ca5aa1cac5d44d66595f0c0d7cdcab5082dea7fd323548df46dde468b5f307cc44a267927ed103324b2e0f41df99ab0bc4'
-            'fa8e8d274d4d1dd15e9dba377783e49191de5e55ccc5b5e4a2c765c525ece8e3ddccee583cb266ef247b5af12569e77a9c3325b3e659442dc62d782ba913a805' # agent
+            'fa8e8d274d4d1dd15e9dba377783e49191de5e55ccc5b5e4a2c765c525ece8e3ddccee583cb266ef247b5af12569e77a9c3325b3e659442dc62d782ba913a805'
             '5d29b69636e06c830d006af148c79812cf7339ced88ddee59cf5add839cef934ebf1842554ec95bf89281ad34e12e9eac46fdbc861920f93f167d7543f7ff4d8'
             'cc85720462434d8692c2d8856004de444396906c616aa6b896d3cac150027d594f52b3f5e1001ba3038bda84b3fc3f8398c2a18c2e09250a36ed026f6400204e'
             '7cb871422c5c766b09c2a6dfe211191162bd8f0324470163e603e24c93981f027bb52d9c5d492f7200d400e9219660a04b6b2301c2e71e1d9f2792f27bb37bdc'
