@@ -1,0 +1,4 @@
+iam-policy-json-to-terraform_amd64
+*.pkg.tar.zst
+/src
+/pkg
