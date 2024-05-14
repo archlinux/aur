@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.0.11
+pkgver=3.0.14
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -23,15 +23,15 @@ makedepends=(
     'git'
     'nvm'
     'npm'
-    'go>=1.21'
+    'go>=1.22'
     'base-devel'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/siyuan-note/siyuan/archive/refs/tags/v3.0.11.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('7bc8062444e33a37a058ec8f14f161404ba07cdcff419f8d83fd2048e033926a'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+sha256sums=('7810e8c9da1ccfc5265ad7d96af25ccee8656e525dab1c6868a4623b29cdc93c'
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -42,6 +42,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|SiYuan-Electron|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
@@ -53,7 +54,6 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
@@ -65,6 +65,7 @@ build() {
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
         export GOPROXY=https://goproxy.cn
@@ -72,13 +73,13 @@ build() {
         echo "Your network is OK."
     fi
     sed "/tar.gz/d;s|AppImage|dir|g" -i electron-builder-linux.yml
-    npm add pnpm
-    npx pnpm install --no-frozen-lockfile
-    npx pnpm run build
+    sed "/pnpm@9.0.6/d" -i package.json
+    pnpm install --no-frozen-lockfile
+    pnpm run build
     cd "${srcdir}/${pkgname}-${pkgver}/kernel"
     go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "${srcdir}/${pkgname}-${pkgver}/app"
-    npx pnpm run dist-linux
+    pnpm run dist-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
