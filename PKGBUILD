@@ -1,7 +1,7 @@
 # Maintainer: Eugene Gershnik <gershnik@hotmail.com>
 pkgname='wsdd-native'
 pkgver='1.12'
-pkgrel=1
+pkgrel=2
 pkgdesc='WS-Discovery Host Daemon'
 arch=('x86_64')
 url='https://github.com/gershnik/wsdd-native'
@@ -19,7 +19,7 @@ build() {
     cmake -S . -B out -DCMAKE_BUILD_TYPE=None
     cmake --build out
     cp installers/wsddn.conf out/
-    sed -i "s/{RELOAD_INSTRUCTIONS}/ sudo systemctl restart wsddn\n/g" out/wsddn.conf
+    sed -i "s/{RELOAD_INSTRUCTIONS}/# sudo systemctl restart wsddn\n/g" out/wsddn.conf
     sed -i "s/{SAMPLE_IFACE_NAME}/eth0/g" out/wsddn.conf
 }
 

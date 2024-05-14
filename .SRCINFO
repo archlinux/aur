@@ -1,7 +1,7 @@
 pkgbase = wsdd-native
 	pkgdesc = WS-Discovery Host Daemon
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gershnik/wsdd-native
 	arch = x86_64
 	license = BSD-3-Clause
