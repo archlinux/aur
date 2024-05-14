@@ -88,15 +88,15 @@ prepare() {
   cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
 
   # Replace spirv-headers include with the system directory
-#  sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/meson.build
+  sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/meson.build
   
 
   
   
-#  patch -Np1 -i ../720p.patch
-#  patch -Np1 -i ../disable-steam-touch-click-atom.patch
-#  patch -Np1 -i ../external-rotation.patch
-#  patch -Np1 -i ../panel-type.patch
+  patch -Np1 -i ../720p.patch
+  patch -Np1 -i ../disable-steam-touch-click-atom.patch
+  patch -Np1 -i ../external-rotation.patch
+  patch -Np1 -i ../panel-type.patch
 }
 
 pkgver() {
