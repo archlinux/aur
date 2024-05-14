@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# WINE Launcher script for PCEAdvance
+
+export WINEPREFIX=~/.gba-emu
+export PCEDIR=/usr/share/pceadvance # installation dir for AUR package
+
+cat << EOF
+PCEAdvance Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2009 HoeBot & FluBBa
+
+EOF
+
+cd $PCEDIR
+wine PCEAdvance_ROM_BUILDER.EXE
+
+if [ $? -eq 53 ]
+then
+    winetricks -q comdlg32ocx
+    winetricks -q comctl32ocx
+    wine PCEAdvance_ROM_BUILDER.EXE
+fi
