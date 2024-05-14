@@ -1,6 +1,6 @@
 pkgbase = r-farver
 	pkgdesc = High Performance Colour Space Manipulation
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 3
 	url = https://cran.r-project.org/package=farver
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = r-farver
 	license = MIT
 	depends = r
 	optdepends = r-covr
-	source = https://cran.r-project.org/src/contrib/farver_2.1.1.tar.gz
-	b2sums = 8aae9b293163faaefa87227286e8c49fc7432689338120a07ec00f6337828eaf5bcee2ef1ab2ceadfe1846546fe1397647d324c69a43735f3e595d3361bcc3b5
+	source = https://cran.r-project.org/src/contrib/farver_2.1.2.tar.gz
+	b2sums = a596176653bb794c182035f5596f75d332ff6a48b014cc9b08ff7dcff70f1ed775e7328396c8b9d79d96e58487bf2723330a15bc8b0adc2d28c94575c4e60675
 
 pkgname = r-farver
