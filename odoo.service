@@ -7,7 +7,6 @@ After=postgresql.service network-online.target
 Type=simple
 User=odoo
 Group=odoo
-Environment="PATH=/var/lib/odoo/.venv/bin:/usr/bin"
 ExecStart=/var/lib/odoo/.venv/bin/odoo --config /etc/odoo/odoo.conf 
 KillMode=mixed
 
