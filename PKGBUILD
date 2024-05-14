@@ -7,7 +7,7 @@ pkgname="lime3ds-appimage"
 #       1. reset $pkgrel to 1
 #       2. go to https://github.com/Lime3DS/Lime3DS/releases
 #       3. copy version number to pkgver
-pkgver=2111
+pkgver=2112
 pkgrel=1
 epoch=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger, GUI version, already compiled"
@@ -21,15 +21,15 @@ depends=("ffmpeg"
          "sdl2")
 source=("https://github.com/Lime3DS/Lime3DS/releases/download/$pkgver/lime3ds-$pkgver-linux-appimage.tar.gz"
         "lime3ds.desktop")
-b2sums=('c0935965814bd89534b9980105a9c0010f75af76b0acff9a22d1d118ad9fff686487a371f10c7fd57547272b829a265d3e2a96e24a38466b8aa283e5d4b6ab99'
+b2sums=('d83ea3eaa1ce2b8413af7e1925b348eb13cf0137d6edc4cb32953a9359467f5aec56d69c9a795e19a387cd69ac9018f635e906490fbd24433abb20f7ee914a1c'
         'afc63b0ccc3ad90debf3e7aac3c2f6bcb328c15f8f2d4ca13033c1546ffe741858e5297a8ed7c012e63b8420c006dcc76a2cb3075da715ae20c3b6316cdf2abf')
 options=("!strip")
 
 package(){
  cd "lime3ds-$pkgver-linux-appimage"
- install -D -m 755 "lime.AppImage"       "$pkgdir/usr/bin/lime3ds"
- install -D -m 755 "lime-room.AppImage"  "$pkgdir/usr/bin/lime-room"
- install -D -m 755 "lime-qt.AppImage"    "$pkgdir/usr/bin/lime-qt"
+ install -D -m 755 "lime3ds-cli.AppImage"       "$pkgdir/usr/bin/lime3ds-cli"
+ install -D -m 755 "lime3ds-room.AppImage"  "$pkgdir/usr/bin/lime3ds-room"
+ install -D -m 755 "lime3ds-gui.AppImage"    "$pkgdir/usr/bin/lime3ds-gui"
  install -D -m 755 "scripting/citra.py"    -t "$pkgdir/usr/bin"
  install -D -m 644 "dist/lime.png"        -t "$pkgdir/usr/share/pixmaps"
  install -D -m 644 "$srcdir/lime3ds.desktop" -t "$pkgdir/usr/share/applications"
