@@ -1,3 +1,49 @@
+Mullvad Browser 13.0.15 - May 15 2024
+ * All Platforms
+   * Updated Firefox to 115.11.0esr
+   * Bug 296: Rebase Mullvad Browser stable onto 115.10.0esr [mullvad-browser]
+   * Bug 42391: IndexDB's private directory not removed on browser shutdown in global private browsing mode [tor-browser]
+   * Bug 42532: Use the HomePage module for new identity checks [tor-browser]
+   * Bug 42565: Backport Android and desktop security fixes from Firefox 126 [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41122: Add release date to rbm.conf [tor-browser-build]
+   * macOS
+     * Bug 42535: mac: app change to ja doesn't apply ja translations to most (all?) chrome [tor-browser]
+
+Mullvad Browser 13.5a7 - April 25 2024
+ * All Platforms
+   * Updated Firefox to 115.10.0esr
+   * Updated uBlock Origin to 1.57.2
+   * Bug 283: New identity complains about about:mullvad-browser [mullvad-browser]
+   * Bug 289: The Letterboxing>Content Alignment heading doesn't follow the Firefox design document capitalization [mullvad-browser]
+   * Bug 291: Rebase Mullvad Browser Alpha onto 115.10.0esr [mullvad-browser]
+   * Bug 40919: Consider dropping protection against line-height introduced in #23104 [tor-browser]
+   * Bug 42172: browser.startup.homepage and TOR_DEFAULT_HOMEPAGE are ignored for the new window opened by New Identity [tor-browser]
+   * Bug 42192: Correctly round new windows when bookmarks toolbar is set to "Only Show on New Tab" [tor-browser]
+   * Bug 42315: compat: why is eventCounts undefined? [tor-browser]
+   * Bug 42490: Install svg from branding theme to browser/chrome/icons/default [tor-browser]
+   * Bug 42500: When startup window is maximized per letterboxing.rememberSize on startup, the restore button shrinks it to its minimum size [tor-browser]
+   * Bug 42520: Correctly record new initial window size after auto-shrinking [tor-browser]
+   * Bug 42529: Try not to spoof system-ui in contexts exempt from RFP [tor-browser]
+   * Bug 42532: Use the HomePage module for new identity checks [tor-browser]
+   * Bug 42537: Move Fluent files from "browser" to "toolkit" [tor-browser]
+ * Windows
+   * Bug 41901: windows: FontSubstitutes can leak system locale [tor-browser]
+ * Linux
+   * Bug 41112: Fix indentation of projects/browser/RelativeLink/start-browser [tor-browser-build]
+ * Build System
+   * All Platforms
+     * Bug 282: Move `--disable-eme` to OS- and architecture-specific mozconfigs [mullvad-browser]
+     * Bug 42519: Update the profile directory patch to check both for `system-install` and for `is-packaged-app` file [tor-browser]
+     * Bug 41122: Add release date to rbm.conf [tor-browser-build]
+   * macOS
+     * Bug 42535: mac: app change to ja doesn't apply ja translations to most (all?) chrome [tor-browser]
+     * Bug 41124: Since TB/MB 13.5a5 macos signed installers contain all .DS_Store [tor-browser-build]
+   * Linux
+     * Bug 42491: Add mozconfig-linux-aarch64 [tor-browser]
+     * Bug 41083: Make deb package for Mullvad Browser [tor-browser-build]
+
 Mullvad Browser 13.0.14 - April 16 2024
  * All Platforms
    * Updated Firefox to 115.10.0esr
