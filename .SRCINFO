@@ -1,11 +1,11 @@
 pkgbase = perl-data-validate
 	pkgdesc = common data validation methods
 	pkgver = 0.09
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Data-Validate
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/S/SO/SONNEN/Data-Validate-0.09.tar.gz
