@@ -3,12 +3,12 @@
 _pkgname=patchance
 pkgname="$_pkgname-git"
 pkgver=1.1.0.r6.g9d279f4
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern graphical patchbay for JACK (git version)'
 arch=(any)
 url='https://github.com/Houston4444/Patchance'
 license=(GPL-2.0-only)
-depends=(hicolor-icon-theme python-pyalsa python-pyqt5)
+depends=(hicolor-icon-theme python-pyqt5)
 makedepends=(git qt5-tools)
 groups=(pro-audio)
 provides=($_pkgname)
