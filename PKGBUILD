@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=girens
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A Plex GTK client for playing movies, TV shows and music from your Plex library."
 arch=('any')
@@ -29,16 +29,16 @@ depends=(
   'python-urllib3'
   'python-websocket-client'
 )
-makedepends=('blueprint-compiler' 'git' 'meson')
-checkdepends=('appstream-glib')
-_commit=55f5ecc0d7b259929857019952ee133080e87433  # 2.0.3
-source=("git+https://gitlab.gnome.org/tijder/girens.git#commit=$_commit")
-sha256sums=('SKIP')
-
-#pkgver() {
-#  cd $pkgname
-#  git describe --tags | sed 's/^v//;s/-/+/g'
-#}
+makedepends=(
+  'blueprint-compiler'
+  'git'
+  'meson'
+)
+checkdepends=(
+  'appstream-glib'
+)
+source=("git+https://gitlab.gnome.org/tijder/girens.git#tag=v$pkgver")
+sha256sums=('4f322347b4366cf124987268550f737f9edc41c94d30d1f0a780536c4e62bf4c')
 
 build() {
   arch-meson "$pkgname" build --libdir=lib
