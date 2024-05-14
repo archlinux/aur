@@ -11,7 +11,6 @@ license=('mit')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-https://github.com/RoseBlume/Rosary/releases/download/v1.2.3/rosary_1.2.3_amd64.deb
 source_x86_64=("https://github.com/RoseBlume/Rosary/releases/download/v$pkgver/rosary_"$pkgver"_amd64.deb")
 sha256sums_x86_64=('f9b983b37f359b54e1d73ba55e6ff822c3d81306601879c031eb160b74390bda')
 package(){
