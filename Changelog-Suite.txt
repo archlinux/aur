@@ -1,5 +1,121 @@
 Changelog for AirVPN Suite
 
+Version 2.0.0 beta 1 - 13 May 2024
+
+- [ProMIND] updated install.sh and uninstall.sh scripts for suspend and resume services
+
+airvpnmanifest
+
+- [ProMIND] searchServer(): pattern is now searched in continent code and name as well
+
+
+airvpnserver
+
+- [ProMIND] method getContinent() renamed to getContinentCode()
+- [ProMIND] method setContinent() renamed to setContinentCode()
+- [ProMIND] added method getContinentName()
+- [ProMIND] implemented boolean comparison methods for std::sort
+
+
+airvpnserverprovider
+
+- [ProMIND] getFilteredServerList(): added handling for continents in country white and black lists
+- [ProMIND] method compareServerScore() moved to AirVPNServer class
+
+
+airvpntools
+
+- [ProMIND] added method directoryExists()
+- [ProMIND] added method startsWith()
+- [ProMIND] method getLoad() renamed to getTrafficLoad()
+- [ProMIND] split() fixed bug in case string does not contain delimiter
+- [ProMIND] SERVER_READ_TIMEOUT is now set to 15 seconds
+- [ProMIND] requestAirVPNDocument(): vector bootServerList is now shuffled before starting the document request
+
+
+countrycontinent
+
+- [ProMIND] Added method realCountryName()
+- [ProMIND] Added constants EARTH, AFRICA, AMERICA, NORTH_AMERICA, SOUTH_AMERICA, ASIA, EUROPE and OCEANIA
+
+
+dnsmanager
+
+- [ProMIND] All binary paths are now searched at construction time
+- [ProMIND] Added DNSManagerException class
+
+
+execproc.c
+
+- [ProMIND] Added function exec_error_description()
+- [ProMIND] Added function exec_cmd_error_description()
+- [ProMIND] Added function exec_cmd_args_error_description()
+
+
+loadmod.c
+
+- [ProMIND] Added function is_module_loaded()
+
+
+netfilter
+
+- [ProMIND] All binary paths are now searched at construction time
+- [ProMIND] Added method isNftUsingIptables()
+- [ProMIND] Added iptables-nft support to iptablesSave() and iptablesRestore() methods
+- [ProMIND] Added method isPfEnabled()
+- [ProMIND] Added methods allowPrivateNetwork() and isPrivateNetworkAllowed()
+- [ProMIND] Added local and service IPv6 network classes to the default initialization of netfilter
+- [ProMIND] setup(): added optional argument for private network management
+
+
+network
+
+- [ProMIND] struct Gateway: added isDefault field
+- [ProMIND] method scanDefaultGateway() renamed to scanGateway()
+- [ProMIND] added method getGatewayFromRouteTable()
+- [ProMIND] added method getGateway()
+- [ProMIND] removed member defaultGateway
+- [ProMIND] added members IPv4Gateway and IPv6Gateway
+
+
+openvpnclient
+
+- [ProMIND] implemented OpenVpnClient::acc_event() in order to comply to new master specifications. Event is ignored.
+- [ProMIND] Added private network option for constructors using a private NetFilter
+
+
+optionparser
+
+- [ProMIND] added mode to OptionConfig and Option structures
+- [ProMIND] added function getOptionsForMode()
+- [ProMIND] added function getInvalidOptionsForMode()
+
+
+trafficsplit
+
+- [ProMIND] added methods removeNamespaceDirectory(), namespaceConfigurationExists(), isDirty() and recover()
+- [ProMIND] removed methods removeDefaultNamespaceDirectory(), defaultNamespaceConfigurationExists()
+- [ProMIND] added methods getIPv4Gateway(), setIPv4Gateway(), getIPv6Gateway() and setIPv6Gateway()
+
+
+wireguardclient
+
+- [ProMIND] added method setEndPointPort()
+- [ProMIND] added method removeDevice()
+- [ProMIND] added methods createInterfaceDevice(), setDeviceConfiguration(), getDeviceList(), changeWgFilesOwnership() ands restoreWgFilesOwnership() (macOS support)
+- [ProMIND] Added private network option for constructors using a private NetFilter
+- [ProMIND] Implemented event management
+- [ProMIND] Improved handshake timeout management
+
+
+vpnclient
+
+- [ProMIND] Added private network option for constructors using a private NetFilter
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 2.0.0 alpha 2 - 24 November 2023
 
 execproc.c
@@ -8,7 +124,13 @@ execproc.c
 - [ProMIND] added functions exec_set_mode(), exec_set_environ() and exec_reset()
 - [ProMIND] do_execute(): added mode and environment handling
 - [ProMIND] execute_process(), execute_process_args(): call exec_reset() before returning
-- [ProMIND] get_exec_path(): renamed to exec_get_path() and added an extra argument to specify the column separated search path
+- [ProMIND] get_exec_path(): renamed to exec_get_path() and added an extra argument to specify a colon separated search path
+
+airvpntools
+
+- [ProMIND] method architecture() now uses GCC macros only
+- [ProMIND] added method platform()
+
 
 dnsmanager
 
@@ -32,6 +154,8 @@ openvpnclient
 
 - [ProMIND] added inheritance from vpnclient class
 - [ProMIND] get_connection_stats(): added timestamp item
+- [ProMIND] function openVPNInfo() renamed to getInfo()
+- [ProMIND] function openVPNCopyright() renamed to getCopyright()
 
 
 wireguardclient
