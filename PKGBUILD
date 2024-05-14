@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=mousam
-pkgver=1.1.0
-_commit=de0a7a9084acd1dc3c83cff64a22c9e0e2a38c14
+pkgver=1.2.0
+_commit=82b3424dffec61f634de45231460ea7ef6de74b6
 pkgrel=1
 pkgdesc='Beautiful and lightweight weather app build using Gtk4, Libadwaita and Python'
 url="https://github.com/amit9838/mousam"
