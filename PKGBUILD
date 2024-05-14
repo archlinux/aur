@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=opencpu
-_pkgver=2.2.11
+_pkgver=2.2.12
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Producing and Reproducing Results"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -39,8 +39,8 @@ optdepends=(
   r-unix
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('24b7991213fd80293dbd775721ee3bb7')
-b2sums=('b603b93462575bf66ce42798b200024d06b4fa7c5a4a1167d46aa092f9ab453eee5d0e005bdbc5908e130091b6cfa3604f43cf05b05c1475d51d6f36baf2364f')
+md5sums=('30227fe77179e600ca729d4d3b00c9bb')
+b2sums=('2bf54984c6876e46c0714d4c692a5879f9dca92edaab0cd6dbcd1b3553bc2f5afbdf9eef807c754d68717c0111255507c7ff25c3f35f0c806fd98ce993f0f0f5')
 
 build() {
   mkdir build
