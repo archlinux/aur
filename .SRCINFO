@@ -1,0 +1,16 @@
+pkgbase = python-did-git
+	pkgdesc = What did you do last week, month, year? Patched version for a proper github comments
+	pkgver = 0.21.1.r584.d585e98
+	pkgrel = 1
+	url = https://github.com/Felixoid/did
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = python-did
+	conflicts = python-did
+	source = did::git+https://github.com/Felixoid/did.git
+	sha256sums = SKIP
+
+pkgname = python-did-git
