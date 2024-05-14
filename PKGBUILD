@@ -5,14 +5,14 @@
 _pkgname=zam-plugins
 pkgname=$_pkgname-git
 pkgver=4.3.r0.g9e824af
-pkgrel=2
+pkgrel=3
 pkgdesc='Collection of multi-format audio plugins for high-quality processing (git version)'
 arch=(x86_64)
 url='https://github.com/zamaudio/zam-plugins'
 license=(GPL2)
 groups=(clap-plugins ladspa-plugins lv2-plugins pro-audio vst-plugins vst3-plugins)
 depends=(gcc-libs glibc libglvnd libx11 libxcursor libxext libxrandr)
-makedepends=(alsa-lib dbus gendesk git ladspa libsamplerate jack lv2 zita-convolver)
+makedepends=(dbus fftw  gendesk git ladspa libsamplerate jack lv2 zita-convolver)
 optdepends=(
   'clap-host: to load the CLAP format plugins'
   'jack: to run the standalone applications'
@@ -71,8 +71,6 @@ prepare() {
   git submodule init
   git submodule set-url dgl/src/pugl-upstream "$srcdir"/pugl
   git -c protocol.file.allow=always submodule update
-
-  cd ..
 
   declare -A exec_names=(
     [zamautosat]=ZaAutoSat
@@ -134,6 +132,7 @@ prepare() {
     [zamulticompx2]="Stereo Multiband Compressor"
     [zamverb]="Reverb"
   )
+  cd ..
   for name in "${_names[@]}"; do
     gendesk -f -n \
       --pkgname "com.zamaudio.$name" \
@@ -147,11 +146,12 @@ prepare() {
 build() {
   cd $_pkgname
   export HAVE_ZITA_CONVOLVER=true
-  make
+  make SKIP_NATIVE_AUDIO_FALLBACK=true
 }
 
 package() {
-  depends+=(libasound.so libdbus-1.so libGL.so libsamplerate.so libzita-convolver.so)
+  depends+=(libdbus-1.so libfftw3f.so libGL.so libsamplerate.so
+            libzita-convolver.so)
   cd $_pkgname
   make DESTDIR="$pkgdir" PREFIX=/usr install
   # XDG desktop integration
