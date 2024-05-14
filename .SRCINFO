@@ -1,7 +1,7 @@
 pkgbase = python-rosdistro
 	pkgdesc = A tool to work with rosdistro files
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/ros-infrastructure/rosdistro
 	arch = any
 	license = BSD
@@ -12,7 +12,7 @@ pkgbase = python-rosdistro
 	depends = python-setuptools
 	depends = python-yaml
 	conflicts = python2-rosdistro
-	source = https://github.com/ros-infrastructure/rosdistro/archive/0.9.0.tar.gz
-	sha256sums = b49d9c3c65cc1dff3b56ba61559d70439597417491e1525e4e314f15503517f9
+	source = https://github.com/ros-infrastructure/rosdistro/archive/0.9.1.tar.gz
+	sha256sums = 1ab7ce5e09432b0d4c00ffd2405101bb9b168e13181b4779f5d0c6935806e904
 
 pkgname = python-rosdistro
