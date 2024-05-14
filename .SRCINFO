@@ -1,14 +1,14 @@
-pkgbase = ez4-client
-	pkgdesc = Legacy EZ-Flash IV patching client
-	pkgver = 20140306
+pkgbase = pocketnes
+	pkgdesc = PocketNES ROM Builder
+	pkgver = 1.2a
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
 	depends = wine
 	depends = winetricks
-	source = https://www.ezflash.cn/zip/EZ4_20140306.zip
-	source = ez4-client
-	source = ez4-client.desktop
-	source = ez4-client.png
+	source = https://www.dwedit.org/gba/pocketnes_2013_07_01.zip
+	source = pocketnes
+	source = pocketnes.desktop
+	source = pocketnes.png
 
-pkgname = ez4-client
+pkgname = pocketnes
