@@ -1,6 +1,6 @@
 # Maintainer: Dominicentek <dominicentekgaming@gmail.com>
 pkgname=saturn
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=2
 pkgdesc="A cross-platform, all-in-one machinima studio for Super Mario 64."
 arch=('x86_64')
@@ -8,7 +8,7 @@ depends=('sdl2' 'glew')
 makedepends=('gcc' 'make' 'git' 'python3')
 source=('https://github.com/Llennpie/Saturn/archive/legacy.tar.gz' 'makepkg.patch')
 sha256sums=(
-  'caaac8612185986214afcda28e8f67a3104464ec70e81726a622e86662742cbd'
+  'f9d526ceeac9f7805e06115624f0b09c7d14ec1e8bf70727d8d84c661607045d'
   '801329b27ed096584ec1d4ab3b9afba063318de1993c13990685c74e3b2cb6ee'
 )
 
