@@ -1,7 +1,7 @@
 pkgname=python-wyoming
 _pkgname=wyoming
 pkgdesc="Peer-to-peer protocol for voice assistants"
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 arch=(any)
 url="https://github.com/rhasspy/wyoming"
@@ -10,7 +10,7 @@ depends=(python)
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('python-zeroconf: Zeroconf support')
 source=("https://github.com/rhasspy/wyoming/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('00b9129a7af8d44297398690199f874183ffe0c62399283e07768915c1c8518b')
+sha256sums=('2f24a7ee259f3c39a288e47ffc932ff58f34ed27ffd7d6660fe443df33d969a8')
 
 build() {
   cd $_pkgname-$pkgver
