@@ -1,39 +1,32 @@
-# Maintainer: Gennadiy Chernyshyk <genaloner@gmail.com>
+# Contributor: Gennadiy Chernyshyk <genaloner@gmail.com>
 pkgname=deadbeef-plugin-headerbar-gtk3-git
-pkgver=r102
+pkgver=1.3.r0.ge8fe283
 pkgrel=1
 pkgdesc="Headerbar Plugin for the DeaDBeeF audio player (development version)"
 url="https://github.com/saivert/ddb_misc_headerbar_GTK3"
-arch=("i686" "x86_64")
-license=("GPL2")
+arch=(i686 x86_64 armv7h aarch64)
+license=(GPL-2.0-only)
+depends=(deadbeef gtk3 glib2 glibc)
+makedepends=(git meson)
+conflicts=(deadbeef-plugin-headerbar-gtk3)
+provides=(deadbeef-plugin-headerbar-gtk3)
 
 _gitname=ddb_misc_headerbar_GTK3
-_gitroot=https://github.com/saivert/${_gitname}
+_gitroot=https://github.com/saivert/$_gitname
 
 source=("git+$_gitroot")
-md5sums=("SKIP")
+md5sums=(SKIP)
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  printf "r""$(git rev-list --count HEAD)"
+  git -C "$_gitname" describe --long --abbrev=7 --tags \
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 build() {
-  cd $_gitname
-
-  touch AUTHORS
-  touch ChangeLog
-
-  ./autogen.sh
-  ./configure
-  make
+  arch-meson $_gitname build
+  meson compile -C build
 }
 
 package() {
-  depends=("deadbeef" "gtk3")
-  conflicts=("deadbeef-plugin-headerbar-gtk3")
-  provides=("deadbeef-plugin-headerbar-gtk3")
-  install -D -v -c $srcdir/$_gitname/src/.libs/ddb_misc_headerbar_GTK3.so $pkgdir/usr/lib/deadbeef/ddb_misc_headerbar_GTK3.so
+  install -Dvm755 build/ddb_misc_headerbar_GTK3.so $pkgdir/usr/lib/deadbeef/ddb_misc_headerbar_GTK3.so
 }
-
