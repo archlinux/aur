@@ -1,6 +1,6 @@
 pkgbase = python-ctgan
 	pkgdesc = Create tabular synthetic data using a conditional GAN
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/sdv-dev/CTGAN
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-ctgan
 	depends = python-pytorch
 	depends = python-rdt
 	depends = python-tqdm
-	source = CTGAN-0.10.0.tar.gz::https://github.com/sdv-dev/CTGAN/archive/v0.10.0.tar.gz
-	sha512sums = 9939018e6ce4e558aef8ebffb573c4c485c790069b4c5bb589dcd6cce4742e69ea485a24693d9c78aa7fc7a79325a40c73927966deee88dedb5211328b65a671
+	source = CTGAN-0.10.1.tar.gz::https://github.com/sdv-dev/CTGAN/archive/v0.10.1.tar.gz
+	sha512sums = 1a5986c336ec668d78f51d1fbdcb7cb919fbe94081ca091559849743afceb625a054199830e94a5d66d2119fc75b87557573bde1175757f4fd3a0ca46553fcd4
 
 pkgname = python-ctgan
