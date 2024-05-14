@@ -1,0 +1,23 @@
+post_install () {
+  cat <<EOF
+
+==================== Warning ====================
+The cp210x driver is natively support by mainline kernel. So if you just want
+to use cp210x normally, this package is not for you.
+
+From the specification of silabs clearly states that the maximum baud rate of
+cp2102 is only 1Mbps. But, some cp2102 chips can indeed support 1.5MHz baudrate
+and the driver provided by silabs for Windows is also support 1.5MHz baudrate.
+So this DKMS modules is for that.
+
+I'm not sure if there is any problem or will it do any damage to you hardware
+with this "over clock". So Use it with care.
+
+To take effect please reload the cp210x by:
+
+$ modprobe -r cp210x
+$ modprobe cp210x
+=================================================
+
+EOF
+}
