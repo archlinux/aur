@@ -19,6 +19,7 @@ pkgbase = lime3ds-git
 	makedepends = catch2
 	makedepends = clang
 	makedepends = libc++
+	makedepends = ninja
 	depends = sdl2
 	depends = mbedtls
 	depends = speexdsp

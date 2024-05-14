@@ -9,7 +9,7 @@ pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
 license=('GPL-2.0')
 depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'libc++')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'libc++' 'ninja')
 conflicts=('lime3ds-appimage')
 options=('lto' '!buildflags')
 source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
@@ -126,37 +126,20 @@ prepare() {
 }
 
 build() {
-    # cd "$srcdir/Lime3DS/build"
-    
     # Fix to help cmake find libusb
     CXXFLAGS+=" -I/usr/lib/libusb-1.0"
     
-    #[[ -d build ]] && rm -rf build"
-    
-    cmake -B build -S "Lime3DS" \
-        -DCMAKE_BUILD_TYPE='None' \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCMAKE_CXX_COMPILER=clang++ \
-        -DCMAKE_C_COMPILER=clang \
-        -DCMAKE_CXX_FLAGS="-O2 -g -stdlib=libc++" \
-	-Wno-dev
-
-    cmake --build build -j$(nproc)
+    cmake -B build -S "Lime3DS" -G Ninja \
+	-DCMAKE_BUILD_TYPE=Release \
+    	-DCMAKE_CXX_COMPILER=clang++ \
+    	-DCMAKE_C_COMPILER=clang \
+    	-DENABLE_QT_TRANSLATION=ON \
+    	-DUSE_DISCORD_PRESENCE=ON
+    cd build
+    ninja
+    strip -s bin/Release/*
 }
 
 package() {   
-    
-    cd "$srcdir/Lime3DS/build"
-    install -D -m 755 "$srcdir/Lime3DS/build/bin/Release/lime"       "$pkgdir/usr/bin/lime"
-    install -D -m 755 "$srcdir/Lime3DS/build/bin/Release/lime-room"  "$pkgdir/usr/bin/lime-room"
-    install -D -m 755 "$srcdir/Lime3DS/build/bin/Release/lime-qt"    "$pkgdir/usr/bin/lime-qt"
-    install -D -m 644 "$srcdir/Lime3DS/dist/lime.png"        -t "$pkgdir/usr/share/pixmaps"
-    install -D -m 644 "$srcdir/Lime3DS/dist/lime-qt.desktop" "$pkgdir/usr/share/applications/Lime3DS.desktop"
-   
-   
-    # cd "$srcdir/"
-    # DESTDIR="$pkgdir/" cmake --install build
-    # rm -rf "$pkgdir/usr/include"
-    # rm -rf "$pkgdir/usr/lib"
-    # rm -rf "$pkgdir/usr/share/cmake"
+    DESTDIR="$pkgdir/" ninja -C build install
 }
