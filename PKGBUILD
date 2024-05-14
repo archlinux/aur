@@ -4,6 +4,7 @@
 pkgname=hotspot
 pkgver=1.5.0
 pkgrel=2
+epoch=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('x86_64')
 url="https://github.com/KDAB/hotspot"
