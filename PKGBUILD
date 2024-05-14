@@ -2,7 +2,7 @@
 
 pkgname=discord-electron-openasar
 _pkgname=discord
-pkgver=0.0.53+827
+pkgver=0.0.54+827
 _pkgver=${pkgver%%+*}
 pkgrel=1
 _electronver=30
@@ -26,7 +26,7 @@ optdepends=(
 source=("https://dl.discordapp.net/apps/linux/${_pkgver}/${_pkgname}-${_pkgver}.tar.gz"
 	'discord-launcher.sh'
 	"git+https://github.com/goosemod/openasar.git#commit=4f264d860a5a6a32e1862ce26178b9cf6402335d")
-sha512sums=('dfc92d477397324383a4656a770c0aac153527002b07bac56ec5e3947443f2ab6d0958b2c508d6cf5ed2ecaff83b64616387b7a2459d340b438c3d73ab0f6f83'
+sha512sums=('ceb6265e846fafd27e3c2941f00f0a2d4e045abe5471a2691b070bedb330ef345edee838a706b27ff65ecce40aec46b1a1dd9c4bb9763dadaa907ec181c1a222'
             '9d00f9d2e05c2ba31c930c066f247954700bb0f96f2fc605e61c3973d7dacf962bf372659b71e05e5d8d4e152cc884bf12ec1fb5ecbfc4da55d22ab2591c4c40'
             '055bbe5fbc63a715ab8357db8aabacad282e3d176b48e322d7133a5887291577687456bbfaf7b832d19f13b1a5a373e2c0f6f82664887509feb3c193ee4f1849')
 
