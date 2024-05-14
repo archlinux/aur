@@ -1,6 +1,6 @@
 # Maintainer: <ayedeil at posteo dot com>
 pkgname=bricklink-studio
-pkgver=2.24.2_4
+pkgver=2.24.4_4
 pkgrel=1
 pkgdesc="Lego cad software created by Bricklink"
 arch=('x86_64')
@@ -11,12 +11,14 @@ makedepends=('innoextract')
 source=("$pkgname-$pkgver.exe::https://s3.amazonaws.com/blstudio/Studio2.0/Archive/$pkgver/Studio+2.0.exe"
         "$pkgname.sh"
         "$pkgname.desktop"
-        "$pkgname.xml")
+        "$pkgname.xml"
+        "icon.png")
 noextract=("$pkgname-$pkgver.exe")
-sha256sums=('32145060ce44f69fc0970a7d4652343c2d944ee3402f783809e31d59be2cf3d7'
+sha256sums=('29b00368f04544ac4d9ebdbb3fa9b59c473520e547273f95aaaba45c5153302f'
             'a6b6ec21561e2a9594d8ba9e7dc496b819060003eef52a98c474f256da626f24'
-            '0751e793784b23635ac722df64954ad8dc2037e53fdffd79ad513ef0e79ab2de'
-            '7d3e39b48657b25f93a4e680e4d1473dad004dca8338467028c9aa3dc498326a')
+            'cd760f9ad2a3210359ff6c0862cc3aa548a78a81246962748896f624364da47b'
+            '799ebcbfd268cba96294f128abb2ea4b24f6841a8ee4863a10ef4ad4912419f3'
+            'edfb03fbc30b6c39d0a63e5e04296a58439db44e2bc50434c270cdf441978927')
 options=(!strip)
 
 prepare() {
@@ -30,5 +32,7 @@ package() {
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "$srcdir/$pkgname.xml" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
+  install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/application-bricklink-studio-model.png"
 }
 
