@@ -3,8 +3,8 @@
 
 _pkgname=mmc-utils
 pkgname=${_pkgname}-git
-pkgver=r113.9582278
-pkgrel=2
+pkgver=r128.f757f41
+pkgrel=1
 epoch=1
 pkgdesc="Userspace tools for MMC/SD devices"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
@@ -28,6 +28,6 @@ build() {
 
 package() {
 	cd "${_pkgname}"
+	mkdir -p "${pkgdir}/usr/share/man/man1/"
 	make DESTDIR="${pkgdir}" prefix=/usr install
-	install -Dm644 man/mmc.1 "${pkgdir}/usr/share/man/man1/mmc.1"
 }
