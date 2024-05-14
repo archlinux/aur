@@ -1,7 +1,7 @@
 # Maintainer: libjared <4498312-libjared@users.noreply.gitlab.com>
 # Maintainer: YTJVDCM <50657624+YTJVDCM@users.noreply.github.com>
 pkgname=vrc-get
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Open Source command line client of VRChat Package Manager"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(cargo dotnet-sdk)
 # most rust projects that link with native libs can't use lto
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8ad73183ce957abc63006c97efa63314c34e1f0f6f2ec0a55a48f5a8147c199f')
+sha256sums=('79157a0dc592837aca541b1b85a2fab4eb86e0becbc28282459b2d60a6097144')
 
 prepare() {
   cd "$pkgname-$pkgver"
