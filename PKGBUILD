@@ -2,7 +2,7 @@
 pkgname=patrjprof-git
 pkgver=1.2.3r149
 pkgrel=1
-pkgdesc="An Open source Java profiler written in Java"
+pkgdesc="A Free Java profiler written in Java"
 arch=('any')
 url="https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler"
 license=('AGPL-3.0-or-later')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=('git+https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler.git#branch=latest-snapshot')
 noextract=()
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "patr-java-profiler"
