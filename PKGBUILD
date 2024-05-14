@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
-pkgver=0.21.2
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
