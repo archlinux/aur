@@ -1,7 +1,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=windfetch
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="OS information tool. Fork of Neofetch"
 arch=("any")
@@ -34,7 +34,6 @@ optdepends=(
 provides=()
 conflicts=()
 replaces=()
-backup=()
 options=()
 install=
 changelog=
@@ -43,7 +42,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-	"1555102b908882f50b9e0066cf99953a14ace7a646f829a7ae1847eeaf887266"
+	"3fffd6b516777f79bcb7ff4a2bed7ca54497e1dd7ffd046712152f652326c30d"
 )
 validpgpkeys=(
 	"69713F2236BBD93D3E78EFEF0D56181B48414DE8" # Charles Dong

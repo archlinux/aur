@@ -1,6 +1,6 @@
 pkgbase = windfetch
 	pkgdesc = OS information tool. Fork of Neofetch
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://codeberg.org/chardon_cs/windfetch
 	arch = any
@@ -20,8 +20,9 @@ pkgbase = windfetch
 	optdepends = xorg-xprop: Desktop Environment and Window Manager
 	optdepends = xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)
 	optdepends = xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal
-	source = https://codeberg.org/chardon_cs/windfetch/archive/v0.1.2.tar.gz
+	backup = etc/neofetch/config.conf
+	source = https://codeberg.org/chardon_cs/windfetch/archive/v0.1.3.tar.gz
 	validpgpkeys = 69713F2236BBD93D3E78EFEF0D56181B48414DE8
-	sha256sums = 1555102b908882f50b9e0066cf99953a14ace7a646f829a7ae1847eeaf887266
+	sha256sums = 3fffd6b516777f79bcb7ff4a2bed7ca54497e1dd7ffd046712152f652326c30d
 
 pkgname = windfetch
