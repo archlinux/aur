@@ -16,7 +16,11 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/oxi-sapphire-launcher"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git fetch --tags --force
+  local ver="$(git describe --tags --abbrev=0)"
+  local rev="$(git rev-list --count ${ver}..HEAD)"
+  local hash="$(git rev-parse --short HEAD)"
+  echo "${ver}.r${rev}.${hash}"
 }
 
 prepare(){
