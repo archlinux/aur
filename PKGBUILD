@@ -9,7 +9,7 @@ pkgdesc="Modern preset-oriented graphical launcher of ZDoom and derivatives"
 arch=('x86_64')
 url="https://github.com/Youda008/DoomRunner"
 license=('GPL3')
-depends=('qt5-base')
+depends=('qt6-base')
 makedepends=('git' 'gcc')
 backup=('opt/DoomRunner')
 source=("https://github.com/Youda008/DoomRunner/archive/refs/tags/v${pkgver}.tar.gz")
@@ -19,7 +19,7 @@ md5sums=('1891b7d0e30e48e598e104ae6f533595')
 build() {
 	mkdir -p "${srcdir}/DoomRunner-${pkgver}/build-dynamic"
 	cd "${srcdir}/DoomRunner-${pkgver}/build-dynamic"
-	qmake ../DoomRunner.pro -spec linux-g++ "CONFIG+=release"
+	qmake6 ../DoomRunner.pro -spec linux-g++ "CONFIG+=release"
 	make	
 }
 
