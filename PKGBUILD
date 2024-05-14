@@ -4,18 +4,28 @@
 # Contributor: Dimitrios Vogiatzis <me@dimtree.net>
 pkgname=python-plexapi-girens
 pkgver=3.0.6+559+gcadb3d2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the Plex API."
 arch=('any')
 url="https://github.com/tijder/python-plexapi"
-license=('BSD')
-depends=('python-requests' 'python-tqdm' 'python-websocket-client')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+license=('BSD-3-Clause')
+depends=(
+  'python-requests'
+  'python-tqdm'
+  'python-websocket-client'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 provides=('python-plexapi')
 conflicts=('python-plexapi')
 _commit=cadb3d2a399702ae3908cad70e52e439d9b665a2  # branch/master
 source=("git+https://github.com/tijder/python-plexapi.git#commit=${_commit}")
-sha256sums=('SKIP')
+sha256sums=('8da661f11a423b133a18bfff5cd1e5965f04794550b733cc929d3ea170c5cdf7')
 
 pkgver() {
   cd python-plexapi
