@@ -1,6 +1,6 @@
 pkgbase = goomba-color
 	pkgdesc = DMG/CGB emulator for Game Boy Advance
-	pkgver = 2019-05-04
+	pkgver = 2019.05.04
 	pkgrel = 1
 	arch = x86_64
 	arch = i686

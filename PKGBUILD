@@ -1,7 +1,7 @@
 # Maintainer: Sterophonick
 pkgname=goomba-color
 _pkgname='goomba-color'
-pkgver=2019-05-04
+pkgver=2019.05.04
 pkgrel=1
 pkgdesc='DMG/CGB emulator for Game Boy Advance'
 arch=(x86_64 i686)
