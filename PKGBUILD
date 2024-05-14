@@ -1,7 +1,7 @@
 # Maintainer: qsqcqs
 pkgname='qwq'
 pkgver=nya
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="uwu/qwq for terminal"
 arch=('x86_64')
