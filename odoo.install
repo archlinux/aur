@@ -1,15 +1,15 @@
 post_install(){
-  # show message after each install
+  # show message after first install
   echo "If first install, you need to set your database connection details in /etc/odoo/odoo.conf.
         You then need to initialize the database:
-	sudo -u odoo /var/lib/odoo/.venv/bin/odoo --config /etc/odoo/odoo.conf --logfile /var/log/odoo/odoo-server.log -i base"
+	sudo -u odoo /var/lib/odoo/.venv/bin/odoo --config /etc/odoo/odoo.conf -i base"
 }
 
 post_upgrade(){
-  # show message only if major version differs
+  # show message after upgrade only if major version differs
   if [ "${1%.*}" -gt "${2%.*}" ]; then
     echo "A new major version of Odoo has been released, you should upgrade
           the odoo database by running the following as the odoo user:
-          sudo -u odoo /var/lib/odoo/.venv/bin/odoo --config /etc/odoo/odoo.conf --logfile /var/log/odoo/odoo-server.log -u all"
+          sudo -u odoo /var/lib/odoo/.venv/bin/odoo --config /etc/odoo/odoo.conf -u all"
   fi
 }
