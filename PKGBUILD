@@ -3,7 +3,7 @@
 
 pkgname=libredefender-git
 pkgver=0.7.0.r1.g6d9eadf
-pkgrel=2
+pkgrel=3
 pkgdesc='Light-weight antivirus scanner for Linux (-git version)'
 url='https://github.com/kpcyrd/libredefender'
 arch=('x86_64')
@@ -27,12 +27,12 @@ prepare() {
 
 build() {
   cd libredefender
-  cargo build --frozen --release
+  RUSTFLAGS='-C link-args=-Wl,-z,shstk' cargo build --frozen --release
 }
 
 check() {
   cd libredefender
-  cargo test --frozen
+  RUSTFLAGS='-C link-args=-Wl,-z,shstk' cargo test --frozen
 }
 
 package() {
