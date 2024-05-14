@@ -1,6 +1,6 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 pkgname=logitechmediaserver-git
-pkgver=20210327.21451_359cd3a1d
+pkgver=20240514.22852.251c1b0de
 pkgrel=1
 pkgdesc='Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Git-Version, if you prefer stability consider using logitechmediaserver instead)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,8 +12,8 @@ makedepends=('git' 'nasm' 'yasm' 'rsync' 'gd' 'zlib')
 optdepends_x86_64=('lib32-glibc: transcoding on 64-bit systems' 'lib32-gcc-libs: transcoding on 64-bit systems')
 install=install
 
-source=("git+https://github.com/Logitech/slimserver.git"
-        "git+https://github.com/Logitech/slimserver-vendor.git"
+source=("git+https://github.com/LMS-Community/slimserver.git"
+        "git+https://github.com/LMS-Community/slimserver-vendor.git"
         'service')
 sha256sums=('SKIP'
             'SKIP'
@@ -36,6 +36,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${url##*/}-vendor/CPAN"
+    sed -i "/cd giflib-4.1.6/a sed -i '/#include \"gif_lib_private.h\"/a #include <stdlib.h>' lib/gif_hash.c" buildme.sh
     sh buildme.sh -t
 }
 

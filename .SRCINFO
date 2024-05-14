@@ -1,6 +1,6 @@
 pkgbase = logitechmediaserver-git
 	pkgdesc = Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Git-Version, if you prefer stability consider using logitechmediaserver instead)
-	pkgver = 20210327.21451_359cd3a1d
+	pkgver = 20240514.22852.251c1b0de
 	pkgrel = 1
 	url = https://github.com/Logitech/slimserver
 	install = install
@@ -21,8 +21,8 @@ pkgbase = logitechmediaserver-git
 	depends = perl>=5.26
 	depends = perl-io-socket-ssl
 	provides = logitechmediaserver
-	source = git+https://github.com/Logitech/slimserver.git
-	source = git+https://github.com/Logitech/slimserver-vendor.git
+	source = git+https://github.com/LMS-Community/slimserver.git
+	source = git+https://github.com/LMS-Community/slimserver-vendor.git
 	source = service
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -31,4 +31,3 @@ pkgbase = logitechmediaserver-git
 	optdepends_x86_64 = lib32-gcc-libs: transcoding on 64-bit systems
 
 pkgname = logitechmediaserver-git
-
