@@ -1,65 +1,77 @@
 # Maintainer: Harrison <htv04rules at gmail dot com>
 
 pkgname=funkin
-pkgver=0.2.7.1
+pkgver=0.3.2
 pkgrel=1
-pkgdesc="Friday Night Funkin': A rhythm game originally made for Ludum Dare 47 \"Stuck in a Loop\""
-arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
-url="https://github.com/ninjamuffin99/Funkin"
-license=("Apache")
-makedepends=("git" "haxe")
-source=("git+https://github.com/ninjamuffin99/Funkin.git#tag=v0.2.7.1"
-        "APIStuff.hx"
+pkgdesc="A rhythm game made with HaxeFlixel"
+arch=(any)
+url="https://github.com/FunkinCrew/Funkin"
+license=(Apache)
+depends=(vlc fuse3 fuse-overlayfs)
+makedepends=(git haxe)
+source=("git+https://github.com/FunkinCrew/Funkin.git#tag=v$pkgver"
+        "git+https://github.com/FunkinCrew/funkin.assets"
+        "git+https://github.com/FunkinCrew/funkin.art"
+        "hmm-commitfix.patch"
+        "assets-picofix.patch"
         "funkin.sh"
         "funkin.desktop")
 sha256sums=("SKIP"
-            "ade2e5b25db77b404a6ed074d59d7fa80c1cbb627e18e1cc3bf6177020eee92f"
-            "75ef6c467feac3a57848b2f01677d88be40b3b79a826cb0d450d6f5fd7b11c1f"
-            "7fe0fa2ac1312201c93f41cf9395c46703abf989e7f65783ff95e0d3b8c183e6")
+            "SKIP"
+            "SKIP"
+            "dc69a9a89fd9f7736d5105e96b5fde79e7592fb5aedf24b43d2e9d3829d59e9b"
+            "086b1280e1f81de47471491b2827aa7a6ffb8a3f28c92ad573f352ba73124d62"
+            "c409b0fa9d1194801f7a0c90f711e4a1194467f1d2524417d3e08e8facbf8d32"
+            "fe2d70bffe9c8702c35da89e7fca84200bd05bee104d1014a1c444462527b6ba")
 
 prepare() {
-  # https://github.com/ninjamuffin99/Funkin/issues/146#issuecomment-755064854
-  cp APIStuff.hx "${srcdir}/Funkin/APIStuff.hx"
+  cd "$srcdir/Funkin"
+
+  # Initialize Git submodules
+  git submodule init
+  git config submodule.assets.url "$srcdir/funkin.assets"
+  git config submodule.art.url "$srcdir/funkin.art"
+  git -c protocol.file.allow=always submodule update
+
+  # Apply patches
+  patch -N -r - -i "$srcdir/hmm-commitfix.patch" "hmm.json" || :
+  patch -N -r - -i "$srcdir/assets-picofix.patch" "assets/preload/data/characters/pico-playable.json" || :
 }
 
 build() {
-  # Create/confirm local haxelib repo for libraries
+  cd "$srcdir/Funkin"
+  
+  # Create/confirm local repo for Haxe libraries
   haxelib newrepo
 
-  # Install and setup lime and HaxeFlixel
-  haxelib install lime
-  haxelib install openfl
-  haxelib install flixel
-  echo n | haxelib run lime setup # Decline prompt to add lime command
-  haxelib run lime setup flixel
+  # Download required Haxe libraries via HMM
+  haxelib install hmm
+  haxelib run hmm reinstall
 
-  # Install other depends
-  haxelib install newgrounds
-  haxelib git polymod https://github.com/larsiusprime/polymod.git
+  # Set up Lime
+  echo n | haxelib run lime setup # Decline prompt to add "lime" command
+  haxelib run lime rebuild linux -64 -release
 
-  # Build game
-  pushd "${srcdir}/Funkin" > /dev/null
-  haxelib run lime build linux -final
-  popd > /dev/null
+  # Build Friday Night Funkin'
+  haxelib run lime build linux -64 -release
 }
 
 package() {
-  pushd "${srcdir}/Funkin" > /dev/null
+  # Copy launcher files
+  mkdir -p "$pkgdir/usr/bin"
+  cp "funkin.sh" "$pkgdir/usr/bin/funkin"
+  mkdir -p "$pkgdir/usr/share/applications"
+  cp "funkin.desktop" "$pkgdir/usr/share/applications/funkin.desktop"
 
-  # Copy game files to /usr/share/funkin
-  install -dm0755 "${pkgdir}/usr/share/funkin"
-  cp -r export/release/linux/bin/* "${pkgdir}/usr/share/funkin/"
+  cd "$srcdir/Funkin"
+
+  # Copy game files
+  mkdir -p "$pkgdir/usr/share"
+  cp -r "export/release/linux/bin" "$pkgdir/usr/share/funkin"
 
   # Install icons
   for size in 16 32 64; do
-    install -Dm0644 "art/icon${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/funkin.png"
+    mkdir -p "$pkgdir/usr/share/icons/hicolor/${size}x$size/apps"
+    cp "art/icon$size.png" "$pkgdir/usr/share/icons/hicolor/${size}x$size/apps/funkin.png"
   done
-
-  popd > /dev/null
-
-  # Install launcher script as binary
-  install -Dm0755 funkin.sh "${pkgdir}/usr/bin/funkin"
-
-  # Install desktop file
-  install -Dm0644 funkin.desktop "${pkgdir}/usr/share/applications/funkin.desktop"
 }

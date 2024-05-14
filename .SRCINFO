@@ -1,25 +1,28 @@
 pkgbase = funkin
-	pkgdesc = Friday Night Funkin': A rhythm game originally made for Ludum Dare 47 "Stuck in a Loop"
-	pkgver = 0.2.7.1
+	pkgdesc = A rhythm game made with HaxeFlixel
+	pkgver = 0.3.2
 	pkgrel = 1
-	url = https://github.com/ninjamuffin99/Funkin
-	arch = x86_64
-	arch = i686
-	arch = pentium4
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
+	url = https://github.com/FunkinCrew/Funkin
+	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = haxe
-	source = git+https://github.com/ninjamuffin99/Funkin.git#tag=v0.2.7.1
-	source = APIStuff.hx
+	depends = vlc
+	depends = fuse3
+	depends = fuse-overlayfs
+	source = git+https://github.com/FunkinCrew/Funkin.git#tag=v0.3.2
+	source = git+https://github.com/FunkinCrew/funkin.assets
+	source = git+https://github.com/FunkinCrew/funkin.art
+	source = hmm-commitfix.patch
+	source = assets-picofix.patch
 	source = funkin.sh
 	source = funkin.desktop
 	sha256sums = SKIP
-	sha256sums = ade2e5b25db77b404a6ed074d59d7fa80c1cbb627e18e1cc3bf6177020eee92f
-	sha256sums = 75ef6c467feac3a57848b2f01677d88be40b3b79a826cb0d450d6f5fd7b11c1f
-	sha256sums = 7fe0fa2ac1312201c93f41cf9395c46703abf989e7f65783ff95e0d3b8c183e6
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = dc69a9a89fd9f7736d5105e96b5fde79e7592fb5aedf24b43d2e9d3829d59e9b
+	sha256sums = 086b1280e1f81de47471491b2827aa7a6ffb8a3f28c92ad573f352ba73124d62
+	sha256sums = c409b0fa9d1194801f7a0c90f711e4a1194467f1d2524417d3e08e8facbf8d32
+	sha256sums = fe2d70bffe9c8702c35da89e7fca84200bd05bee104d1014a1c444462527b6ba
 
 pkgname = funkin
