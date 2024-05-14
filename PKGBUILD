@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=quicknote-git
-pkgver=2.0.1.r0.g93735eb
+pkgver=2.0.2.r0.gf7ab028
 _electronversion=22
 _nodeversion=18
 pkgrel=1
@@ -23,11 +23,11 @@ makedepends=(
     'curl'
 )
 source=(
-    "${pkgname//-/.}::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname//-/.}::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
-sha256sums=('ce47dcab42d0f5a925e991c113a0f8847d134a15ebde848fab7f384c7dad9c11'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+sha256sums=('SKIP'
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -42,10 +42,11 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${pkgname%-git}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git}"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
