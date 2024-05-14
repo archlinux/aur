@@ -61,11 +61,10 @@ source=(
   git+https://github.com/Joshua-Ashton/reshade.git
   git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1
   git+https://github.com/KhronosGroup/SPIRV-Headers.git
-  chimeraos.patch
-  crashfix.patch
-  add_720p_var.patch
-  crashfix.patch
-  0001-disable-steam-touch-click-atom.patch
+  720p.patch
+  disable-steam-touch-click-atom.patch
+  external-rotation.patch
+  panel-type.patch
 )
 
 sha256sums=('e9bb0560dcf6e9ba3a6b0a47b005609d9efea80d4fcb064b0aa4f60681338f4a'
@@ -73,11 +72,10 @@ sha256sums=('e9bb0560dcf6e9ba3a6b0a47b005609d9efea80d4fcb064b0aa4f60681338f4a'
             'SKIP'
             '03726f2fb44ae79e6a398e8f9aaaf8054800dda9b8298726157522fe5f7296b1'
             'SKIP'
-            '3da074f82c7cc68f28a371c2711306e1e3cef38b36598c87693183147924e3ac'
-            '184a8660cc789e31573edfdadb0f79b7f90714e8ee6b5bc9e70f8ed88fad1e5a'
-            'ecd03eef896e6c5edfed6d5eeaa2f6a27a0fba25852f2efd57dc3ddbf7fd5f5e'
-            '184a8660cc789e31573edfdadb0f79b7f90714e8ee6b5bc9e70f8ed88fad1e5a'
-            'f908e641be087b3c01b2f43dd3c5d2ea4435080421c0660fa15a8337285fcb03')
+            '63a9c78d2871b5f53e037b43929a9db5fac1d464a0026d0d0b207227bbd9dcd5'
+            'b12682ccaf9e0fd25bfed37c16f79d79ce418564b73b2ed1e4a81b2b03dc43cf'
+            '86f0832f00f5c4f75df8bd5d2a434a31ae4879b59dbee63239d4035b75c56b02'
+            '5b09480791d07f76df4da2fafc54336ad6806d3eaaf57ab81c651ebd3b56ff51')
 
 prepare() {
   cd "$srcdir/$_pkgname"
@@ -95,11 +93,10 @@ prepare() {
   cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
   
   
-#  patch -Np1 -i ../chimeraos.patch
-#  patch -Np1 -i ../crashfix.patch
-#  patch -Np1 -i ../add_720p_var.patch
-#  patch -Np1 -i ../0001-disable-steam-touch-click-atom.patch
-
+  patch -Np1 -i ../720p.patch
+  patch -Np1 -i ../disable-steam-touch-click-atom.patch
+  patch -Np1 -i ../external-rotation.patch
+  patch -Np1 -i ../panel-type.patch
 }
 
 pkgver() {
