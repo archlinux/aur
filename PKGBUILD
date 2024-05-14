@@ -3,7 +3,7 @@
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
 pkgver=99.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
 url="https://github.com/pdobsan/${_pkgname}"
@@ -22,8 +22,7 @@ provides=(${_pkgname})
 conflicts=(oama oama-bin ${_pkgname} ${_pkgname}-git)
 release=$_pkgname-$pkgver-Linux
 
-source_x86_64=()
-source_aarch64=()
+sosurce=(Deprecation.txt)
 
 install=.INSTALL
 
