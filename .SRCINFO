@@ -14,7 +14,7 @@ pkgbase = gnome-extensions-cli
 	depends = python-packaging
 	depends = python-pydantic
 	depends = python-requests
-	optdepends = dbus-python: communicate with GNOME Shell directly
+	optdepends = python-dbus: communicate with GNOME Shell directly
 	source = gnome-extensions-cli-0.10.1.tar.gz::https://github.com/essembeh/gnome-extensions-cli/archive/refs/tags/0.10.1.tar.gz
 	sha256sums = 0695ce3e88713a8c96fe8399ed069bd39b5264b97d92ae29fdaed4cd652e29d2
 

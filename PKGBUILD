@@ -21,7 +21,7 @@ makedepends=(
   'python-wheel'
 )
 optdepends=(
-  'dbus-python: communicate with GNOME Shell directly'
+  'python-dbus: communicate with GNOME Shell directly'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('0695ce3e88713a8c96fe8399ed069bd39b5264b97d92ae29fdaed4cd652e29d2')
