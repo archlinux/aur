@@ -8,12 +8,27 @@ pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
 url="https://github.com/slimbook/slimbookbattery"
 license=('GPL-3.0-or-later')
-depends=('cron' 'dbus-python' 'dmidecode' 'gtk3' 'libayatana-appindicator'
-         'libnotify' 'polkit' 'python-gobject' 'python-pillow' 'python-setuptools'
-         'tlp' 'tlp-rdw' 'vte3' 'xorg-xdpyinfo')
-optdepends=('nvidia-prime: for hybrid graphics switching'
-            'slimbookamdcontroller: Synchronize battery mode with CPU TDP mode'
-            'slimbookintelcontroller: Synchronize battery mode with CPU TDP mode')
+depends=(
+  'cron'
+  'dmidecode'
+  'gtk3'
+  'libayatana-appindicator'
+  'libnotify'
+  'polkit'
+  'python-dbus'
+  'python-gobject'
+  'python-pillow'
+  'python-setuptools'
+  'tlp'
+  'tlp-rdw'
+  'vte3'
+  'xorg-xdpyinfo'
+)
+optdepends=(
+  'nvidia-prime: for hybrid graphics switching'
+  'slimbookamdcontroller: Synchronize battery mode with CPU TDP mode'
+  'slimbookintelcontroller: Synchronize battery mode with CPU TDP mode'
+)
 install="$pkgname.install"
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
 sha256sums=('7b585c1d0ca4f4c02750245a487067d8eeebbb52bd5315d38a87fd07e57f1b38')
