@@ -1,6 +1,6 @@
 pkgname=mariebuild
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple build system with support for incremental builds"
 arch=('x86_64')
 url="https://github.com/FelixEcker/mariebuild"
@@ -13,6 +13,7 @@ build() {
 	cd "$pkgname-$pkgver"
         bash setup.bash
         bash build.bash
+        ./mb -t release
 }
 
 package() {

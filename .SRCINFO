@@ -1,7 +1,7 @@
 pkgbase = mariebuild
 	pkgdesc = A simple build system with support for incremental builds
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FelixEcker/mariebuild
 	arch = x86_64
 	license = BSD-3
