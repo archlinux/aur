@@ -12,8 +12,8 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=24.2.0_devel.188557.ea863c0c1cc
-pkgrel=2
+pkgver=24.2.0_devel.189269.02efe52aab6
+pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'python-packaging' 'lib32-libxml2' 'lib32-libx11' 'xorgproto' 'lib32-gcc-libs' 'lib32-libelf' 'git' 'lib32-libglvnd'
                         'wayland-protocols' 'lib32-wayland' 'meson' 'lib32-libva' 'lib32-libxrandr' 'mesa-minimal-git' 'lib32-llvm-minimal-git' 'lib32-libvdpau' 
@@ -64,8 +64,8 @@ build () {
         -D sysconfdir=/etc \
         --libdir=/usr/lib32 \
         -D platforms=x11,wayland \
-        -D gallium-drivers=radeonsi,swrast,zink \
-        -D vulkan-drivers=amd,swrast \
+        -D gallium-drivers=radeonsi,swrast,zink,iris \
+        -D vulkan-drivers=amd,swrast,intel \
         -D dri3=enabled \
         -D egl=enabled \
         -D gallium-extra-hud=true \
