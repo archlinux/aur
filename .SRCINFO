@@ -1,0 +1,14 @@
+pkgbase = pocketnes
+	pkgdesc = PocketNES ROM Builder
+	pkgver = 1.2a
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	depends = wine
+	depends = winetricks
+	source = https://www.dwedit.org/gba/pocketnes_2013_07_01.zip
+	source = pocketnes
+	source = pocketnes.desktop
+	source = pocketnes.png
+
+pkgname = pocketnes

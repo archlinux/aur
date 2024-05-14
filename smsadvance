@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# WINE Launcher script for SMSAdvance
+
+export WINEPREFIX=~/.gba-emu
+export SMSDIR=/usr/share/smsadvance # installation dir for AUR package
+
+cat << EOF
+SMSAdvance Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2009 FluBBa
+
+EOF
+
+cd $SMSDIR
+wine SMSAdvance.exe
+
+if [ $? -eq 53 ]
+then
+    winetricks -q mfc42
+    wine $SMSDIR/SMSAdvance.exe
+fi
