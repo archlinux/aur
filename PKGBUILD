@@ -2,10 +2,10 @@
 # Contributor: Samuel Williams <samuel.williams@oriontransfer.co.nz>
 pkgname=scotch
 pkgver=7.0.4
-pkgrel=4
-pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps)."
+pkgrel=6
+pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering"
 url="https://gitlab.inria.fr/scotch/scotch"
-license=("custom:CeCILL-C")
+license=('CECILL-C')
 depends=('zlib' 'openmpi' 'bzip2' 'xz')
 makedepends=('gcc-fortran' 'cmake')
 provides=('ptscotch' 'ptscotch-openmpi' 'scotch_esmumps' 'scotch_ptesmumps')
@@ -35,15 +35,11 @@ build() {
 }
 
 check() {
-  if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
-    export _libcuda=0
-  fi
   make -C build test
 }
 
 package() {
-  DESTDIR=${pkgdir} cmake --install build
   # To avoid conflict with extra/gpart, maybe move the package to /opt/scotch ?
-  install -m 644 -D "${pkgname}-v${pkgver}/doc/CeCILL-C_V1-en.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  DESTDIR=${pkgdir} cmake --install build
 }
 
