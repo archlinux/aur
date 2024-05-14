@@ -79,14 +79,12 @@ sha256sums=('e9bb0560dcf6e9ba3a6b0a47b005609d9efea80d4fcb064b0aa4f60681338f4a'
 
 prepare() {
   cd "$srcdir/$_pkgname"
-   
+
   #  meson subprojects download
-  git submodule init src/reshade
+  git submodule init
   git config submodule.src/reshade.url ../reshade
-  git submodule init thirdparty/SPIRV-Headers
   git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
-  git submodule init subprojects/vkroots
-  git -c protocol.file.allow=always submodule update   
+  git -c protocol.file.allow=always submodule update
   
   # make stb.wrap use our local clone
   rm -rf subprojects/stb
