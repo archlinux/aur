@@ -1,4 +1,5 @@
-# Maintainer:  JP-Ellis <josh@jpellis.me>
+# Maintainer: Stefan Gehr <stefan@gehr.xyz>
+
 pkgname=papis
 pkgver=0.13
 pkgrel=3
