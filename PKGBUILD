@@ -110,7 +110,14 @@ build() {
     -Dpipewire=enabled \
     -Denable_gamescope=true \
     -Denable_gamescope_wsi_layer=true \
-    -Denable_openvr_support=true
+    -Denable_openvr_support=true \
+    -Ddrm_backend=enabled \
+    -Drt_cap=enabled \
+    -Davif_screenshots=enabled \
+    -Dinput_emulation=enabled \
+    -Dsdl2_backend=enabled \
+    -Dforce_fallback_for=vkroots \
+    -Dforce_fallback_for=wlroots
   meson compile -C build
 }
 
