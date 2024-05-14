@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname=charge-guru
 pkgver=r8.38563a9
-pkgrel=1
+pkgrel=2
 pkgdesc="Application to control SkyRC B6* chargers"
 arch=('x86_64')
 url="https://github.com/maciek134/charge-guru"
@@ -30,7 +30,7 @@ pkgver() {
 build() {
 
  cd "$srcdir/$pkgname"
- cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_BUILD_TYPE=Release
+ cmake . -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_BUILD_TYPE=Release
  make
 
 }

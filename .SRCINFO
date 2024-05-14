@@ -1,7 +1,7 @@
 pkgbase = charge-guru
 	pkgdesc = Application to control SkyRC B6* chargers
 	pkgver = r8.38563a9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maciek134/charge-guru
 	arch = x86_64
 	license = GPL3
