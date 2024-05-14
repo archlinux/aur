@@ -81,9 +81,10 @@ prepare() {
   cd "$srcdir/$_pkgname"
 
   #  meson subprojects download
+  git submodule init
   git config submodule.src/reshade.url ../reshade
   git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
-  git -c protocol.file.allow=always submodule update --init --recursive
+  git -c protocol.file.allow=always submodule update
   
   # make stb.wrap use our local clone
   rm -rf subprojects/stb
