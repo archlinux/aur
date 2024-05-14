@@ -1,7 +1,7 @@
 # Maintainer: qsqcqs
 pkgname='qwq'
 pkgver=nya
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="uwu/qwq for terminal"
 arch=('x86_64')
@@ -31,5 +31,5 @@ package() {
 
 
 
-sha256sums=('3ea7cd6ed6b018421aa405c013ca170bdfb59065db0d6642d36012ef15af44d8')
-sha256sums=('80c4a89be2023a5911553d199682651c606c3c4ddd49c1a5f50a47953d3c9f63')
+
+sha256sums=('bd68a337409493d18ed948662de6745a726b4b8d724fe40cd3a9d40ad2f6c031')

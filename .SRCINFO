@@ -1,7 +1,7 @@
 pkgbase = qwq
 	pkgdesc = uwu/qwq for terminal
 	pkgver = nya
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/qsqcqs/qwq
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = qwq
 	depends = python3
 	replaces = uwu-qwq
 	replaces = uwu
-	source = https://github.com/qsqcqs/qwq/archive/refs/tags/nya-3.tar.gz
-	sha256sums = 80c4a89be2023a5911553d199682651c606c3c4ddd49c1a5f50a47953d3c9f63
+	source = https://github.com/qsqcqs/qwq/archive/refs/tags/nya-4.tar.gz
+	sha256sums = bd68a337409493d18ed948662de6745a726b4b8d724fe40cd3a9d40ad2f6c031
 
 pkgname = qwq
