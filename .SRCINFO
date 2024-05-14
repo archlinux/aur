@@ -1,6 +1,6 @@
 pkgbase = iyuuplus-git
 	pkgdesc = IYUU Auto Reseed Plus
-	pkgver = 20240512.192105
+	pkgver = 20240514.094712
 	pkgrel = 1
 	url = https://github.com/ledccn/iyuuplus-dev
 	arch = any
