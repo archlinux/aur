@@ -3,7 +3,7 @@
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
 pkgver=99.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
 url="https://github.com/pdobsan/${_pkgname}"
@@ -22,10 +22,8 @@ provides=(${_pkgname})
 conflicts=(oama oama-bin ${_pkgname} ${_pkgname}-git)
 release=$_pkgname-$pkgver-Linux
 
-source_x86_64=(https://github.com/pdobsan/mailctl/releases/download/${pkgver}/$release-x86_64.tgz)
-source_aarch64=(https://github.com/pdobsan/mailctl/releases/download/${pkgver}/$release-aarch64.tgz)
-sha256sums_x86_64=('5717229ae19a002d5d72d64c41164c2da91656fffd559876768c0b73d4c4f29f')
-sha256sums_aarch64=('217c9852323bf83e99c8f6ada4c157b3672bcffad4c4bc84d75b45f79872f4ba')
+source_x86_64=()
+source_aarch64=()
 
 install=.INSTALL
 
