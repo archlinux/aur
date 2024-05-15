@@ -5,7 +5,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org
 
 pkgname=guitarix-git
-pkgver=0.44.1.r121.g056c2577
+pkgver=0.46.0.r4.g3964866a
 pkgrel=1
 pkgdesc="virtual guitar amplifier for Jack/Linux"
 arch=('x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${pkgname%-*}/trunk"
-  waf configure --prefix=/usr \
+  ./waf configure --prefix=/usr \
   				--optimization \
 				--includeresampler \
 				--includeconvolver \
@@ -38,12 +38,12 @@ build() {
                 --lib-dev \
                 --cxxflags='-flto' \
                 --ldflags="${LDFLAGS}"
-  waf build -vv
+  ./waf build -vv
 }
 
 package() {
   cd "${pkgname%-*}/trunk"
-  waf install --destdir="${pkgdir}"
+  ./waf install --destdir="${pkgdir}"
   # docs
   install -vDm 644 {changelog,README} -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
