@@ -1,7 +1,7 @@
 # Maintainer: Chase 李 <aur@chase.ninja>
 
 pkgname=tenv-bin
-pkgver=1.9.4
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="OpenTofu / Terraform / Terragrunt version manager"
 arch=('x86_64' 'i386' 'armv6' 'arm64')
@@ -35,7 +35,7 @@ package() {
   install -Dm 0755 "tofu" "${pkgdir}/usr/bin/tofu"
 }
 
-sha256sums_x86_64=('b12491f9ac61e5abfc64b716a9020aacc67ff873f3f01d6cc7175d945a7d2a4c')
-sha256sums_i386=('06431eec1e4ef27ce2aeb2ccd446dbd4d9fd6feb0b9314ec960dd7232f12a64e')
-sha256sums_armv6=('b9f0775764e2b685e9061e7832b4cb98f20ab7c2ef71ec58fe53671373bd6589')
-sha256sums_arm64=('15cb57b579982878b2f349c38f899be801ae30dc3e5b5b75ce151e4f206b9b7e')
+sha256sums_x86_64=('7ceb2eefbdf08fc7326118b685de7f3ff0c02eaa61f0ec61b4b49d6ab55e42db')
+sha256sums_i386=('f973b02e84a8c19145a132ffadcfe0956c597525bd9b690693d5ed2664cc3f3f')
+sha256sums_armv6=('67092829df6c4829be06837f71fb7faedef0701bfc958d240611ef2be31abc49')
+sha256sums_arm64=('1868e60775a1c1f41b502930ac921cf1cce2c94e0d67f0b12db6eadbb7c7a56e')
