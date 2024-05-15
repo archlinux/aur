@@ -12,6 +12,6 @@ source=("https://github.com/ArmCord/Legcord/releases/download/${pkgver}/LegcordL
 md5sums=('SKIP')
 
 package() {
-    install -Dm755 "${srcdir}/LegcordLinux-ed8ca6a" "${pkgdir}/opt/legcord/legcord"
-    rm -f "${pkgdir}/LegcordLinux-ed8ca6a"
+    install -Dm755 "${srcdir}/LegcordLinux" "${pkgdir}/opt/legcord/legcord"
+    rm -f "${pkgdir}/LegcordLinux"
 }
