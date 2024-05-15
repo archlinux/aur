@@ -9,7 +9,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=b62fe31a8dc5882eca1f7aaafd6e4d22a92df45a
+_mozc_commit=16826a12128fb394ad3fda2b80e94c20644d119e
 _branch=fcitx
 # Sudachi Dictionary
 _sudachidict_date=20240409
@@ -17,7 +17,7 @@ _sudachidict_date=20240409
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5448.102
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -106,6 +106,7 @@ build() {
   #bazel clean
   if [[ $CC =~ gcc ]];then
     bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so
+    #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
   else
     bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
   fi
@@ -156,7 +157,7 @@ package_fcitx5-mozc-with-jp-dict() {
   export PREFIX="$pkgdir/usr"
   export _bldtype
   cd ${srcdir}/mozc/src || exit
-  #../scripts/install_fcitx5
+
   ../scripts/install_fcitx5_bazel
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   install -m 644 LICENSE data/installer/*.html "$pkgdir/usr/share/licenses/$pkgname/"
@@ -176,7 +177,7 @@ package_ibus-mozc-with-jp-dict() {
   install -D -m 755 bazel-bin/unix/ibus/ibus_mozc         "$pkgdir/usr/lib/ibus-mozc/ibus-engine-mozc"
   install -D -m 644 bazel-bin/unix/ibus/mozc.xml          "$pkgdir/usr/share/ibus/component/mozc.xml"
   install -D -m 755 bazel-bin/renderer/qt/mozc_renderer      "${pkgdir}/usr/lib/mozc/mozc_renderer"
-  
+
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   install -m 644 LICENSE data/installer/*.html "$pkgdir/usr/share/licenses/$pkgname/"
 
