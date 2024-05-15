@@ -4,28 +4,39 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
-pkgver=2024.2
+pkgver=2024.3
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'gtk3' 'iputils' 'libnftnl' 'libnotify' 'nss')
-makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'npm' 'protobuf')
+makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'nvm' 'protobuf')
 install="$pkgname.install"
-_commit=d5772339cee9c1a0d7671968746f02499b78e245
+_commit=7db2c76522e29b4acd8f461fc87f794954c6df95
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"  # signed by Oskar Nyberg (raksooo), public key not uploaded yet
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
         'no-rpm.diff'
         "$pkgname.sh")
-sha256sums=('b50af32532ecb05502bbd6eab4514417bd6889bbaefccc11d0f5cefbf7685d8e'
-            '255d3b3de761215b02086184006d65bd5c6972f9e9f7364c177693d67429547f'
+sha256sums=('8064e0181b1d30352f25eab563bade47b2fd157ca9646b97aff928241d9870ea'
+            '76015a774788a2274d29e3fa1e06cb752a8488f24a973b5143d8659d5b290e9c'
             'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
               '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
               )
+
+_ensure_local_nvm() {
+  # let's be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="$srcdir/.nvm"
+
+  # The init script returns 3 if version specified
+  # in ./.nvrc is not (yet) installed in $NVM_DIR
+  # but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
 
 prepare() {
   cd mullvadvpn-app
@@ -49,6 +60,8 @@ prepare() {
   pushd gui
   echo "Installing JavaScript dependencies..."
   export npm_config_cache="$srcdir/npm_cache"
+  _ensure_local_nvm
+  nvm install "${_nodeversion}"
   npm ci
   popd
 }
@@ -99,7 +112,7 @@ build() {
   done
 
   echo "Updating relays.json..."
-  cargo run --bin relay_list --frozen --release > dist-assets/relays.json
+  cargo run --bin relay_list "${CARGO_ARGS[@]}" > build/relays.json
 
   # Move binaries to correct locations in dist-assets
   binaries=(
@@ -118,6 +131,7 @@ build() {
   pushd gui
   echo "Packing Mullvad VPN ${PRODUCT_VERSION} artifact(s)..."
   export npm_config_cache="$srcdir/npm_cache"
+  _ensure_local_nvm
   npm run pack:linux --release
   popd
 }
