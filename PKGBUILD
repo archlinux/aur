@@ -4,7 +4,7 @@
 # Maintainer: Miguel Revilla Rodríguez <yo at miguelrevilla.com>
 
 pkgname=scribus-svn
-pkgver=25998
+pkgver=26135
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -61,6 +61,12 @@ pkgver() {
   printf "%s" "${ver//[[:alpha:]]}"
 }
 
+prepare() {
+  cd ${_svnmod}/Scribus
+
+  sed -i "s/inline int operator ==/inline bool operator ==/" scribus/third_party/lib2geom/point.h
+}
+
 build() {
   cd ${_svnmod}/Scribus
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
@@ -70,24 +76,24 @@ build() {
 	-DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=FALSE \
 	-DQT_PREFIX:PATH="/usr" \
 	-DWANT_SVNVERSION:BOOL=YES \
-	-DWANT_CPP17:BOOL=YES \
-	-DWANT_CPP17=ON \
+	-DWANT_CPP20:BOOL=YES \
+	-DWANT_CPP20=ON \
 	-DWITH_PODOFO=ON
 
   make
 }
 
 package () {
-  cd $_svnmod/Scribus
-  make DESTDIR="$pkgdir" install
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
-  install -Dm644 scribus.desktop "$pkgdir"/usr/share/applications/scribus.desktop
-  install -d "$pkgdir"/usr/share/pixmaps
-  ln -s /usr/share/scribus/icons/1_5_0/scribus.png "$pkgdir"/usr/share/pixmaps/scribus.png
+  cd ${_svnmod}/Scribus
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
+  install -Dm644 scribus.desktop "${pkgdir}"/usr/share/applications/scribus.desktop
+  install -d "${pkgdir}"/usr/share/pixmaps
+  ln -s /usr/share/scribus/icons/1_5_0/scribus.png "${pkgdir}"/usr/share/pixmaps/scribus.png
   # move around some picture files
   for _i in AppIcon.png AllCaps.png Kapital.xpm Strike.xpm \
 		       outlined.png shadow.png shade.png Revers.png zeichen.png
-  do install "$pkgdir"/usr/share/scribus/icons/1_5_0/$_i "$pkgdir"/usr/share/scribus/icons/1_5_1/$_i
-     rm "$pkgdir"/usr/share/scribus/icons/1_5_0/$_i
+  do install "${pkgdir}"/usr/share/scribus/icons/1_5_0/$_i "${pkgdir}"/usr/share/scribus/icons/1_5_1/$_i
+     rm "${pkgdir}"/usr/share/scribus/icons/1_5_0/$_i
   done
 }
