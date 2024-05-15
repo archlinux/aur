@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.3-1] 2024-05-15
+
+### Changed
+
+- Moved `fluidsynth` and `libmad` from optional to required dependencies (Gyroplast)
+- Adapt source path to desktop icon (Gyroplast)
+
 ## [1.6.2-1] 2024-04-04
 
 Switch to an actively maintained
@@ -32,6 +39,7 @@ Package submitted.
 
 - Add .desktop file (carstene1ns)
 
+[1.6.3-1]: https://github.com/gameflorist/dunedynasty/releases/tag/v1.6.3
 [1.6.2-1]: https://github.com/gameflorist/dunedynasty/releases/tag/v1.6.2
 [1.5.7-1]: https://dunedynasty.sourceforge.net/changes.html#version-1.5.7-2013-08-18
 

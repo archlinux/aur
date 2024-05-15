@@ -2,7 +2,7 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=dunedynasty
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Maintained fork of an enhanced continuation of the classic real-time strategy game Dune II"
 url="https://github.com/gameflorist/dunedynasty"
@@ -12,20 +12,20 @@ depends=(
   'allegro'
   'alsa-lib'
   'enet'
+  'fluidsynth'
   'libgl'
+  'libmad'
 )
 makedepends=('cmake')
 optdepends=(
-  'fluidsynth: MIDI music support alternative'
   'soundfont-fluid: soundfont for fluidsynth'
   'timidity++: MIDI music support alternative'
   'timidity-freepats: patch set for timidity++'
-  'libmad: MP3 music support'
 )
 install="${pkgname}.install"
 changelog=CHANGELOG.md
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gameflorist/dunedynasty/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('97ca7af2423279674e4ac290a1c7d6ae85ad8a58b56108c8acceae829086a40f')
+sha256sums=('43d113541acfe3435e5bc740371f3cd3a25bb7a1adf4e7f9024fda63c9487844')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -71,5 +71,5 @@ package() {
 
   # desktop file and icon
   install -Dm644 src/video/dune2_32x32.xpm "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
-  install -Dm644 "dist/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "dist-os-specific/linux/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
