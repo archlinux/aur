@@ -7,7 +7,7 @@ _electron=electron27
 _nodejs="18.17.1"
 
 pkgname=${_pkgname}-electron
-pkgver=1.88.1.24102
+pkgver=1.89.1.24130
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,7 +17,7 @@ depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('x11-ssh-askpass: SSH authentication'
 	    'gvfs: For move to trash functionality'
 	    'libdbusmenu-glib: For KDE global menu')
-makedepends=('git' 'python' 'nvm' 'jq')
+makedepends=('git' 'python' 'nvm' 'jq' 'python-distutils-extra')
 provides=(
     'codium'
     'vscodium'
