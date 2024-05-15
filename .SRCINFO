@@ -1,6 +1,6 @@
 pkgbase = keyd-openrc
 	pkgdesc = A key remapping daemon for linux
-	pkgver = 2.4.2.r108.bcfb8bb
+	pkgver = 2.4.3.r63.02c77af
 	pkgrel = 1
 	url = https://github.com/rvaiya/keyd
 	arch = x86_64
