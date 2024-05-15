@@ -2,7 +2,7 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=dunedynasty-git
-pkgver=1.6.2.r2.gc71bcb5c
+pkgver=1.6.3.r2.g7491dd3e
 pkgrel=1
 pkgdesc="Maintained fork of an enhanced continuation of the classic real-time strategy game Dune II"
 url="https://github.com/gameflorist/dunedynasty"
@@ -12,15 +12,15 @@ depends=(
   'allegro'
   'alsa-lib'
   'enet'
+  'fluidsynth'
   'libgl'
+  'libmad'
 )
 makedepends=('cmake' 'git')
 optdepends=(
-  'fluidsynth: MIDI music support alternative'
   'soundfont-fluid: soundfont for fluidsynth'
   'timidity++: MIDI music support alternative'
   'timidity-freepats: patch set for timidity++'
-  'libmad: MP3 music support'
 )
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
