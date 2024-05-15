@@ -2,7 +2,7 @@
 
 pkgname=valijson-git
 pkgdesc='Header-only C++ library for JSON Schema validation (git version)'
-pkgver=1.0.2.r8.g27f7e75
+pkgver=1.0.2.r10.gc1dde4e
 pkgrel=1
 arch=(any)
 url="https://github.com/tristanpenman/valijson"
