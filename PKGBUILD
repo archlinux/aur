@@ -3,7 +3,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)info>
 
 pkgname=freelib
-pkgver=6.0.83
+pkgver=6.0.93
 pkgrel=1
 pkgdesc="Freelib is book library manager"
 arch=(x86_64)
@@ -11,11 +11,12 @@ url="https://github.com/petrovvlad/freeLib"
 license=(GPL3)
 depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6)
 optdepends=('kindlegen: convert to EPUB, MOBI, AZW3')
+optdepends=('djvulibre: djvu covers')
 makedepends=(git cmake)
 source=("git+https://github.com/petrovvlad/freeLib.git#tag=v${pkgver}"
         "git+https://github.com/stachenov/quazip.git"
         "freelib-SmtpClient-for-Qt::git+https://github.com/petrovvlad/SmtpClient-for-Qt.git")
-sha256sums=('SKIP'
+sha256sums=('52973c0e601993b30bf837f724480b5e41728c85745d39d387d73e6bfc38cf95'
             'SKIP'
             'SKIP')
 
@@ -40,3 +41,4 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
 }
+
