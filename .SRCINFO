@@ -1,6 +1,6 @@
 pkgbase = firebase-tools-bin
 	pkgdesc = The Firebase Command Line Tools (bundled official standalone binary)
-	pkgver = 13.8.3
+	pkgver = 13.9.0
 	pkgrel = 1
 	url = https://github.com/firebase/firebase-tools
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = firebase-tools-bin
 	options = !debug
 	depends = glibc
 	depends = gcc-libs
-	source = firebase-tools-linux-13.8.3::https://github.com/firebase/firebase-tools/releases/download/v13.8.3/firebase-tools-linux
-	source = LICENSE-13.8.3::https://github.com/firebase/firebase-tools/raw/v13.8.3/LICENSE
-	md5sums = 85920061e2bf61a5f2e4fec8ba7dffc3
+	source = firebase-tools-linux-13.9.0::https://github.com/firebase/firebase-tools/releases/download/v13.9.0/firebase-tools-linux
+	source = LICENSE-13.9.0::https://github.com/firebase/firebase-tools/raw/v13.9.0/LICENSE
+	md5sums = d9fc353b9acb356534f34fc8d2ceaad4
 	md5sums = 6ea8f4d1de9a164d33ffe95483a58af4
 	
 
