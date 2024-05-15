@@ -20,7 +20,7 @@ pipeline {
         stage('Update PKGBUILD') {
             steps {
                 sh '''
-                    sed -ie 's/pkgver=.*$/'pkgver="$VERSION"'/g' PKGBUILD
+                    sed -ie "s/pkgver=.*$/"pkgver=$VERSION"/g" PKGBUILD
                     rm PKGBUILDe
                 '''
             }
@@ -35,7 +35,7 @@ pipeline {
         stage('Make Package') {
             steps {
                 sh '''
-                    makepkg -s
+                    makepkg --printsrcinfo > .SRCINFO
                 '''
             }
         }
