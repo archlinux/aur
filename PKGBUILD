@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tome-bin
 _pkgname=Tome
-pkgver=0.9.0
+pkgver=0.10.0
 _electronversion=22
 pkgrel=1
 pkgdesc="Git integrated cross-platform markdown editor"
@@ -19,13 +19,14 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/evinowen/tome/${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e3cc0844c6024fae89b4b246c904ac8cf5dd64de2d47140027ee5456a58f4fad'
+sha256sums=('a2bf21566b2243152e1d40bc700020b1bcf10db3130eae3177ae1536df34b18b'
             '3103a7058613516746435f89ff07509d42d9a07a485ad7b7fbc2781b06be4722'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
