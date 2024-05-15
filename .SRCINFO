@@ -1,13 +1,16 @@
 pkgbase = ros2-humble-xacro
 	pkgdesc = A tool to construct shorter and more readable XML files by using macros that expand to larger XML expressions
 	pkgver = 2.0.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://index.ros.org/p/xacro/
 	arch = any
+	license = BSD-3-Clause
 	makedepends = cmake
 	depends = ros2-humble
 	depends = python-yaml
-	source = https://github.com/ros/xacro/archive/refs/tags/2.0.9.tar.gz
+	source = ros2-humble-xacro-2.0.9.tar.gz::https://github.com/ros/xacro/archive/2.0.9.tar.gz
+	source = support-python3.12.patch
 	sha256sums = a8802a5b48f7479bae1238e822ac4ebb47660221eb9bc40a608e899d60f3f7e4
+	sha256sums = 96a0669a1c2190e49d2dd93f7f2fea534d699bb32b96c0d02760041f89cb2836
 
 pkgname = ros2-humble-xacro

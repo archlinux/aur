@@ -1,0 +1,14 @@
+diff -Naur xacro-2.0.9/xacro/__init__.py xacro-2.0.9_/xacro/__init__.py
+--- xacro-2.0.9/xacro/__init__.py	2023-02-28 05:01:59.000000000 +0800
++++ xacro-2.0.9_/xacro/__init__.py	2024-05-15 22:22:55.093092222 +0800
+@@ -555,8 +555,8 @@
+     return False
+ 
+ 
+-default_value = '''\$\{.*?\}|\$\(.*?\)|(?:'.*?'|\".*?\"|[^\s'\"]+)+|'''
+-re_macro_arg = re.compile(r'^\s*([^\s:=]+?)\s*:?=\s*(\^\|?)?(' + default_value + ')(?:\s+|$)(.*)')
++default_value = r'''\$\{.*?\}|\$\(.*?\)|(?:'.*?'|\".*?\"|[^\s'\"]+)+|'''
++re_macro_arg = re.compile(r'^\s*([^\s:=]+?)\s*:?=\s*(\^\|?)?(' + default_value + r')(?:\s+|$)(.*)')
+ #                          space(   param )(   :=  )(  ^|  )(        default      )( space )(rest)
+ 
+ 
