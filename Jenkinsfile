@@ -70,8 +70,7 @@ pipeline {
     }
     post {
         always {
-            echo "Always Run"
-            // deleteDir() /* clean up our workspace */
+            deleteDir() /* clean up our workspace */
         }
         success {
             withCredentials([string(credentialsId: 'Discord_Webhook', variable: 'WEBHOOK_URL')]) {
