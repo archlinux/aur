@@ -55,9 +55,9 @@ pipeline {
                     sh '''
                         git config user.email "aman.iv0012@gmail.com"
                         git config user.name "Aman Gupta"
-                        git commit -am "Automated Commit: Update to v${VERSION}"
+                        git commit -am "Automated Commit: Update to ${VERSION}"
                         export GIT_SSH_COMMAND="ssh -i $KEY"
-                        
+                        git push ssh://aur@aur.archlinux.org/logstash.git
                     '''
                 }
             }
@@ -65,8 +65,7 @@ pipeline {
     }
     post {
         always {
-            echo "Always Run"
-            // deleteDir() /* clean up our workspace */
+            deleteDir() /* clean up our workspace */
         }
         success {
             withCredentials([string(credentialsId: 'Discord_Webhook', variable: 'WEBHOOK_URL')]) {
