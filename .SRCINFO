@@ -1,6 +1,6 @@
 pkgbase = kubo-git
 	pkgdesc = An IPFS implementation in Go
-	pkgver = 0.28.0.r11.g2841ec0
+	pkgver = 0.28.0.r14.gbde3a42
 	pkgrel = 1
 	url = https://github.com/ipfs/kubo
 	arch = x86_64
