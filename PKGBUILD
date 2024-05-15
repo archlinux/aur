@@ -2,7 +2,7 @@
 # Contributor: Alessio Biancone <alebian1996@gmail.com>
 
 pkgname=ra-multiplex
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="allows multiple LSP to share a single rust-analyzer instance per cargo workspace."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/pr2502/ra-multiplex"
 license=(MIT)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('a61b4c0c6a9b5e23ab51db337d8fd839bd4233766777e5a8b5eb1f231a35ba4aed330f6372295c6efe44db01f441c5ed7c803703ba31d03fbba665d9b81f242d')
+b2sums=('55069070d8283e27179f5eeb80f5ac98032fc87aee886cae5a623ac64b96f39e17551f46d73fc0afa10feaabe49ae2ae5ced402f3e4deea142e032fe17a85d93')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
