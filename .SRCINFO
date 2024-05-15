@@ -1,6 +1,6 @@
 pkgbase = pearson-reader-plus-full-lang
 	pkgdesc = A simple Reader for Pearson digital books.
-	pkgver = 4.9
+	pkgver = 5.2
 	pkgrel = 1
 	url = https://www.pearson.com/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = pearson-reader-plus-full-lang
 	optdepends = mupdf: a pdf viewer
 	options = !emptydirs
 	options = !strip
-	source = https://link.pearson.it/B300361C
-	sha256sums = e58754c4bfbc0770a180fb22aaea7cf48466d2277c8558c6ce330d8b7fd81d3e
+	source = https://readerplus-download.s3.amazonaws.com/rplus4_desktop_prod_builds/5.2/ReaderPlus_5.2_Desktop_Linux.deb
+	sha256sums = 4203ab3a02b8fc3179b9528102caff0275fbbfe9f7e81b1eb6bd581e9b4431c8
 
 pkgname = pearson-reader-plus-full-lang
