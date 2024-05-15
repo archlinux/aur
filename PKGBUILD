@@ -3,7 +3,7 @@
 pkgname=napture
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A description of what Napture does"
+pkgdesc="Napture is a simple browser using a modified version of the http protocol called buss, it uses Lua instead of JavaScript and has support for most HTML and CSS tags, it uses a custom DNS found at api.buss.lol."
 arch=('x86_64')
 url="https://github.com/face-hh/webx"
 license=('MIT')
@@ -19,7 +19,6 @@ package() {
     cd "$srcdir/webx/napture"
     install -Dm755 "target/release/webx" "$pkgdir/usr/bin/napture"
     install -Dm644 "file.png" "$pkgdir/usr/share/pixmaps/napture.png"
-    install -Dm644 "src/resources/settings.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/settings.gschema.xml"
 
 	mkdir -p "$pkgdir/usr/share/applications"
 	
@@ -27,10 +26,11 @@ package() {
     cat << EOF > "$pkgdir/usr/share/applications/napture.desktop"
 [Desktop Entry]
 Name=Napture
+Comment=Napture is a simple browser using a modified version of the http protocol called buss, it uses Lua instead of JavaScript and has support for most HTML and CSS tags, it uses a custom DNS found at api.buss.lol.
 Exec=napture
 Icon=napture
 Type=Application
-Categories=Utility;
+Categories=Internet;
 EOF
 }
 
