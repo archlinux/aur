@@ -1,0 +1,18 @@
+pkgbase = legcord-bin
+	pkgdesc = A minimal custom client for Discord that keeps everything lightweight while using the official web app.
+	pkgver = ed8ca6a
+	pkgrel = 1
+	url = https://github.com/ArmCord/Legcord
+	arch = x86_64
+	license = MIT
+	depends = wget
+	depends = python-pyqt5
+	depends = python-pyqt5-webengine
+	depends = webkit2gtk
+	depends = python-cairo
+	depends = cairo
+	depends = python-pyqt5-webkit
+	source = https://github.com/ArmCord/Legcord/releases/download/ed8ca6a/LegcordLinux
+	md5sums = SKIP
+
+pkgname = legcord-bin
