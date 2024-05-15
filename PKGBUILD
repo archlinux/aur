@@ -4,20 +4,20 @@
 
 pkgname=freelib
 pkgver=6.0.93
-pkgrel=1
+pkgrel=2
 pkgdesc="Freelib is book library manager"
 arch=(x86_64)
 url="https://github.com/petrovvlad/freeLib"
 license=(GPL3)
 depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6)
-optdepends=('kindlegen: convert to EPUB, MOBI, AZW3')
-optdepends=('djvulibre: djvu covers')
+optdepends=('kindlegen: convert to EPUB, MOBI, AZW3'
+            'djvulibre: djvu covers')
 makedepends=(git cmake)
 source=("git+https://github.com/petrovvlad/freeLib.git#tag=v${pkgver}"
-        "git+https://github.com/stachenov/quazip.git"
+        "git+https://github.com/stachenov/quazip.git#tag=v1.4"
         "freelib-SmtpClient-for-Qt::git+https://github.com/petrovvlad/SmtpClient-for-Qt.git")
 sha256sums=('52973c0e601993b30bf837f724480b5e41728c85745d39d387d73e6bfc38cf95'
-            'SKIP'
+            '227ee101df7e98fb5d32b03b195186585cab0ff0bf065ac20f08aab94b9a13f7'
             'SKIP')
 
 prepare() {
