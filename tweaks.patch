@@ -1,9 +1,10 @@
 --- Makefile
-@@ -46,14 +46,7 @@
+@@ -49,15 +49,7 @@
  		scdoc < "$$f" | gzip > "$$target"; \
  	done
  install:
--	@if [ -e $(DESTDIR)$(PREFIX)/lib/systemd/ ]; then \
+-	@if [ -e /run/systemd/system ]; then \
+-		mkdir -p $(DESTDIR)$(PREFIX)/lib/systemd/system/; \
 -		install -Dm644 keyd.service $(DESTDIR)$(PREFIX)/lib/systemd/system/keyd.service; \
 -	else \
 -		echo "NOTE: systemd not found, you will need to manually add keyd to your system's init process."; \
@@ -14,27 +15,13 @@
  		install -Dm755 src/vkbd/usb-gadget.sh $(DESTDIR)$(PREFIX)/bin/keyd-usb-gadget.sh; \
  	fi
  
-@@ -72,9 +65,9 @@
- 	install -m644 layouts/* $(DESTDIR)$(PREFIX)/share/keyd/layouts
- 	install -m644 data/*.1.gz $(DESTDIR)$(PREFIX)/share/man/man1/
- 	install -m644 data/keyd.compose $(DESTDIR)$(PREFIX)/share/keyd/
--
+@@ -80,7 +72,8 @@
+ 
  uninstall:
+ 	-groupdel keyd
 -	rm -rf $(DESTDIR)$(PREFIX)/lib/systemd/system/keyd.service \
 +	rm -rf \
 +		$(DESTDIR)$(PREFIX)/etc/init.d/keyd \
  		$(DESTDIR)$(PREFIX)/bin/keyd \
  		$(DESTDIR)$(PREFIX)/bin/keyd-application-mapper \
  		$(DESTDIR)$(PREFIX)/share/doc/keyd/ \
-
---- src/config.h
-@@ -112,7 +112,7 @@ Allow more descriptors -- rvaiya/keyd#314
- 	struct layer layers[MAX_LAYERS];
- 
- 	/* Auxiliary descriptors used by layer bindings. */
--	struct descriptor descriptors[64];
-+	struct descriptor descriptors[256];
- 	struct macro macros[256];
- 	struct command commands[64];
- 	char aliases[256][32];
-

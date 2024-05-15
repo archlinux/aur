@@ -3,7 +3,7 @@
 
 pkgref=keyd
 pkgname=keyd-openrc
-pkgver=2.4.3.r10.eeea96a
+pkgver=2.4.3.r63.02c77af
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc='A key remapping daemon for linux'
