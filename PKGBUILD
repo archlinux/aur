@@ -1,0 +1,17 @@
+# Maintainer: Louise <louise.aur@mailbox.org>
+
+pkgname=xkb-ergol
+pkgver=0.7.0
+pkgrel=1
+pkgdesc='A Colemak-style keyboard layout for French-speaking typists and programmers.'
+arch=('any')
+url='https://ergol.org/'
+license=('WTFPL')
+depends=('xkeyboard-config')
+provides=("xkb-ergol")
+source=("https://github.com/Nuclear-Squid/ergol/raw/main/0_7_0/ergol.xkb_custom")
+b2sums=('1f090835574e594c954b6f0360c7e53785208a268da6f484a6649c54818213c0361ac93425d652d1ed988259d17c1fbed481b07af50771d41a0d12cdb3e564de')
+
+package() {
+    install -Dm644 ergol.xkb_custom "$pkgdir/usr/share/X11/xkb/symbols/ergol"
+}
