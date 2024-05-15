@@ -1,8 +1,8 @@
 diff --git CodeLite/CMakeLists.txt CodeLite/CMakeLists.txt
-index f0f48e2d3..f4019cf5f 100644
+index ead3093ea..063d3faca 100644
 --- CodeLite/CMakeLists.txt
 +++ CodeLite/CMakeLists.txt
-@@ -58,7 +58,8 @@ include_directories(
+@@ -33,7 +33,8 @@ include_directories(
      "${CL_SRC_ROOT}/CodeLite/ssh"
      "${CL_SRC_ROOT}/PCH"
      "${CL_SRC_ROOT}/Interfaces"
