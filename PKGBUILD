@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=losslesscut-git
 _pkgname=LosslessCut
-pkgver=3.60.0.r132.g236bdd8
+_appname="no.mifi.${pkgname%-git}"
+pkgver=3.61.0.r2.g2599c4c
 _electronversion=27
 _nodeversion=18
 pkgrel=1
@@ -17,7 +18,7 @@ provides=(
 )
 depends=(
     "electron${_electronversion}"
-    'ffmpeg'
+    'ffmpeg>6'
 )
 makedepends=(
     'gendesk'
@@ -53,7 +54,6 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --categories="AudioVideo" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -65,7 +65,7 @@ build() {
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+        #export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
@@ -74,12 +74,14 @@ build() {
     # .yarnrc.yml existed
     sed "s|--linux|-l --dir|g" -i package.json
     yarn install
-    yarn run build
     yarn run pack-linux
+    sed "s|\/app\/bin\/run.sh|${pkgname%-git}|g;s|${_appname}|${pkgname%-git}|g" -i "${_appname}.desktop"
+    sed "s|${_appname}|${pkgname%-git}|g" -i "${_appname}.appdata.xml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/icon-build/app-512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/${_appname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-git}.appdata.xml"
 }
