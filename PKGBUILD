@@ -2,7 +2,7 @@
 pkgname=pceadvance
 _pkgname='pceadvance'
 pkgver=7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='PCEAdvance ROM Builder'
 arch=(x86_64 i686)
 depends=('wine' 'winetricks')

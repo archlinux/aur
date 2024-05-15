@@ -1,7 +1,7 @@
 pkgbase = pceadvance
 	pkgdesc = PCEAdvance ROM Builder
 	pkgver = 7.5
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	depends = wine
