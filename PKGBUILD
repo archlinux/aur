@@ -1,14 +1,14 @@
 pkgname=mfa2
 _pkgname=MFA2
 pkgver=2.72.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fan made beat em up Marvel game created by ZVitor."
 arch=('x86_64')
-url="https://gitlab.com/linuxbombay/mfa2/mfa2"
+url="https://gitlab.com/linuxbombay/mfa2"
 license=('GPL')
-depends=('openbor-bin' 'git' 'sdl2' 'sdl2_gfx' 'unzip')
+depends=('openbor-bin' 'git' 'sdl2' 'sdl2_gfx' 'wget')
 makedepends=('unzip')
-source=("git+https://gitlab.com/linuxbombay/mfa2oldgroup/mfa2.git")
+source=("git+https://gitlab.com/linuxbombay/mfa2.git")
 sha256sums=("SKIP")
 
 package() {
@@ -18,8 +18,6 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     
     # Packaging files
-    #for dir in $_pkgname-$pkgver ; do mv "${dir}" "$pkgname" ;done
-    # Check if MFA2.pak exists so it doesn't redownload the file when it doesn't need to.
     FILE="/usr/share/games/$_pkgname/MFA2.pak"
      if test -f "$FILE"
     then

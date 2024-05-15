@@ -1,8 +1,8 @@
 pkgbase = mfa2
 	pkgdesc = Fan made beat em up Marvel game created by ZVitor.
 	pkgver = 2.72.0
-	pkgrel = 1
-	url = https://gitlab.com/linuxbombay/mfa2/mfa2
+	pkgrel = 2
+	url = https://gitlab.com/linuxbombay/mfa2
 	arch = x86_64
 	license = GPL
 	makedepends = unzip
@@ -10,8 +10,8 @@ pkgbase = mfa2
 	depends = git
 	depends = sdl2
 	depends = sdl2_gfx
-	depends = unzip
-	source = git+https://gitlab.com/linuxbombay/mfa2oldgroup/mfa2.git
+	depends = wget
+	source = git+https://gitlab.com/linuxbombay/mfa2.git
 	sha256sums = SKIP
 
 pkgname = mfa2
