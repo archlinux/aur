@@ -4,7 +4,7 @@ _reponame=airwin2rack
 _plugin_name="Airwindows Consolidated"
 pkgname=airwindows-consolidated-git
 pkgver=2.12.0.r221.33650be
-pkgrel=1
+pkgrel=2
 pkgdesc="Airwindows effects as a single plugin or stand-alone program with documentation"
 arch=(x86_64)
 url='https://github.com/baconpaul/airwin2rack'
@@ -73,9 +73,9 @@ package() {
     -t "$pkgdir"/usr/lib/lv2/"$_plugin_name".lv2
   # VST3 plugin
   install -vDm 644 "$_plugin_name".vst3/Contents/Resources/* \
-    -t "$pkgdir"/usr/lib/vst3/"$_plugin_name".vst/Contents/Resources
+    -t "$pkgdir"/usr/lib/vst3/"$_plugin_name".vst3/Contents/Resources
   install -vDm 755 "$_plugin_name".vst3/Contents/$CARCH-linux/*.so \
-    -t "$pkgdir"/usr/lib/vst3/"$_plugin_name".vst/Contents/$CARCH-linux
+    -t "$pkgdir"/usr/lib/vst3/"$_plugin_name".vst3/Contents/$CARCH-linux
 
   cd "$srcdir"/$_reponame
   # License

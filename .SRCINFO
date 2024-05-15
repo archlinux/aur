@@ -1,7 +1,7 @@
 pkgbase = airwindows-consolidated-git
 	pkgdesc = Airwindows effects as a single plugin or stand-alone program with documentation
 	pkgver = 2.12.0.r221.33650be
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/baconpaul/airwin2rack
 	arch = x86_64
 	groups = pro-audio
