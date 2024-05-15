@@ -1,12 +1,12 @@
-# Maintainer: Uffe Jakobsen <uffe@uffe.org>
+# Maintainer: Uffe Jakobsen <_ microtop _at_ starion.dk _>
 
 pkgname=tapclean-git
-pkgver=r1102.dbbea87
+pkgver=r1153.0c326a4
 pkgrel=1
 pkgdesc="Commodore tape preservation and restoration tool"
 arch=('i686' 'x86_64')
-url="https://sourceforge.net/projects/tapclean"
-license=('GPL2')
+url="https://tapclean.sourceforge.io/"
+license=('GPL-2.0-only')
 _pkgname=tapclean
 _pkgver="src"
 depends=()
