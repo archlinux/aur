@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Writemonkey3
+Exec="/usr/bin/writemonkey3" %U
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/hicolor/1024x1024/apps/writemonkey3.png
+StartupWMClass=Writemonkey3
+Comment=Text Editor for Writers
+MimeType=text/markdown;
+Categories=Office;
