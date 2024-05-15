@@ -1,7 +1,7 @@
 pkgbase = youtube-to-mp3
 	pkgdesc = YouTube to Mp3 converter\nDownloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally
 	pkgver = 3.9.9.92
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mediahuman.com/youtube-to-mp3-converter/
 	arch = i386
 	arch = x86_64
@@ -13,6 +13,6 @@ pkgbase = youtube-to-mp3
 	source_i386 = youtube-to-mp3-3.9.9.92.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.i386.deb
 	md5sums_i386 = 1b366db15c58d01c583f60c5c4ea3380
 	source_x86_64 = youtube-to-mp3-3.9.9.92.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.amd64.deb
-	md5sums_x86_64 = 536b9737a82b8c44017202234c48a361
+	md5sums_x86_64 = 254d159a2ba63e67c0409a550ae0670c
 
 pkgname = youtube-to-mp3
