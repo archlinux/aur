@@ -1,0 +1,20 @@
+commit 526c91ee0636fe2705a165856da85aceff676ed7 (HEAD)
+Author: Yoann Laissus <yoann.laissus@gmail.com>
+Date:   Wed May 15 16:10:44 2024 +0200
+
+    Force drag event to be finished when it's accepted
+    
+    Patch by terranova : https://bugs.kde.org/show_bug.cgi?id=482142#c34
+
+diff --git a/src/wayland/seat.cpp b/src/wayland/seat.cpp
+index 9698156f6f..8cda1a94f4 100644
+--- a/src/wayland/seat.cpp
++++ b/src/wayland/seat.cpp
+@@ -290,6 +290,7 @@ void SeatInterfacePrivate::endDrag()
+             Q_EMIT q->dragDropped();
+             dragTargetDevice->drop();
+             dragSource->dropPerformed();
++            dragSource->dndFinished();
+         } else {
+             dragSource->dropPerformed();
+             dragSource->dndCancelled();
