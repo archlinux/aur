@@ -9,7 +9,7 @@
 pkgname='python2-werkzeug'
 _commit='54acdd16b247f7037482737e72ec52fc6d50a78d' # 1.0.2 unreleased
 pkgver=1.0.2u.r5.g54acdd16
-pkgrel=1
+pkgrel=2
 pkgdesc='Swiss Army knife of Python web development (legacy Python 2 version)'
 arch=('any')
 url="https://pypi.org/project/werkzeug/"
@@ -70,7 +70,7 @@ check() {
 
 package() {
   cd "${_tarname}"
-  python2 setup.py install --root="${pkgdir}" --prefix='/usr' --optimize=1 --skip-build
+  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   install --verbose -Dm 644 'LICENSE.rst' -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install --verbose -Dm 644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
