@@ -1,0 +1,18 @@
+pkgbase = fvm-git
+	pkgdesc = Flutter Version Management: A simple CLI to manage Flutter SDK versions
+	pkgver = 3.1.4.r2.g3cad095
+	pkgrel = 1
+	url = https://github.com/leoafarias/fvm
+	arch = x86_64
+	license = MIT
+	makedepends = dart
+	depends = git
+	depends = unzip
+	provides = fvm=3.1.4
+	conflicts = fvm
+	options = !strip
+	options = !debug
+	source = fvm::git+https://github.com/leoafarias/fvm.git
+	sha256sums = SKIP
+
+pkgname = fvm-git
