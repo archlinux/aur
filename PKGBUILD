@@ -2,7 +2,7 @@
 # Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
-pkgver=2024.2
+pkgver=2024.3
 pkgrel=1
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
@@ -13,11 +13,11 @@ makedepends=('cargo' 'git' 'go' 'protobuf')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install="${pkgname%-*}.install"
-_commit=d5772339cee9c1a0d7671968746f02499b78e245
+_commit=7db2c76522e29b4acd8f461fc87f794954c6df95
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"  # signed by Oskar Nyberg (raksooo), public key not uploaded yet
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed")
-sha256sums=('b50af32532ecb05502bbd6eab4514417bd6889bbaefccc11d0f5cefbf7685d8e'
-            '255d3b3de761215b02086184006d65bd5c6972f9e9f7364c177693d67429547f')
+sha256sums=('8064e0181b1d30352f25eab563bade47b2fd157ca9646b97aff928241d9870ea'
+            '76015a774788a2274d29e3fa1e06cb752a8488f24a973b5143d8659d5b290e9c')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
               '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
@@ -86,7 +86,7 @@ build() {
   done
 
   echo "Updating relays.json..."
-  cargo run --bin relay_list --frozen --release > dist-assets/relays.json
+  cargo run --bin relay_list "${CARGO_ARGS[@]}" > build/relays.json
 }
 
 package() {
@@ -109,7 +109,7 @@ package() {
   ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" "$pkgdir/usr/bin/"
 
   # Install relay list
-  install -m644 dist-assets/relays.json -t "$pkgdir/opt/Mullvad VPN/resources/"
+  install -m644 build/relays.json -t "$pkgdir/opt/Mullvad VPN/resources/"
 
   # Install OpenVPN certificate
   install -m644 dist-assets/ca.crt -t "$pkgdir/opt/Mullvad VPN/resources/"
