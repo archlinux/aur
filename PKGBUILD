@@ -1,7 +1,7 @@
 # Maintainer: Azim Muradov <azim.muradov.dev@gmail.com>
 pkgname=stardew-valley-designer-bin
 pkgver=0.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The goal of this project is to provide a finely tuned editor for designing your farm and the interior of all its buildings."
 arch=('x86_64')
 url="https://stardewdesigner.com/"
