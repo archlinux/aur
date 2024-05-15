@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gtile
 	pkgdesc = A window tiling extension for GNOME Shell
-	pkgver = 59
+	pkgver = 60
 	pkgrel = 1
 	url = https://github.com/gTile/gTile
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-gtile
 	makedepends = npm
 	makedepends = typescript
 	depends = gnome-shell
-	source = https://github.com/gTile/gTile/archive/V59/gnome-shell-extension-gtile-59.tar.gz
-	sha256sums = 656321eef2c1b7d4b1749f330dce9c73ec7a8b4b8847317a66797d99ee8663e1
+	source = https://github.com/gTile/gTile/archive/V60/gnome-shell-extension-gtile-60.tar.gz
+	sha256sums = ee50ebfdd6660f00a7350d1b7b44e7938d91978449ea5f1807380f434f4dd07f
 
 pkgname = gnome-shell-extension-gtile
