@@ -4,7 +4,7 @@ pipeline {
     environment {
         VERSION = """${sh(
                 returnStdout: true,
-                script: 'curl https://api.github.com/repos/elastic/logstash/releases/latest | jq -r '.tag_name' | cut -c2-'
+                script: "curl https://api.github.com/repos/elastic/logstash/releases/latest | jq -r '.tag_name' | cut -c2-"
             )}"""
     }
     stages {
