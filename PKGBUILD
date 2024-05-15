@@ -12,7 +12,7 @@
 
 _pkgname=cockroachdb
 pkgname="$_pkgname-bin"
-pkgver=23.2.4
+pkgver=23.2.5
 pkgrel=1
 pkgdesc="Cloud-native, distributed SQL database"
 url='https://www.cockroachlabs.com'
@@ -29,10 +29,10 @@ _pkgsrc_source="cockroach-$pkgver"
 source=(
   "$_pkgname-$pkgver.tar.gz"::"https://binaries.cockroachdb.com/$_pkgsrc.tgz"
   "LICENSE-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/LICENSE"
-  "LICENSE.CCL-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/licenses/CCL.txt"  
+  "LICENSE.CCL-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/licenses/CCL.txt"
 )
 sha256sums=(
-  '2d7b33e23549c8d89892b12b2e3237029a012154437fc82754ac861ba6fcc61c'
+  'f8c21f6ed2aee6fc57a60799ef5fbed477d820522106c225a1da705524478403'
   'SKIP'
   'SKIP'
 )
@@ -57,23 +57,23 @@ package() {
   install -Dm644 "$_pkgsrc/lib/libgeos_c.so" "$pkgdir/$_install_path/$_pkgname/lib/libgeos_c.so"
 
   # script
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/cockroach" <<EOF
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/cockroach" << EOF
 #!/usr/bin/env sh
 exec /$_install_path/$_pkgname/cockroach "\$@"
 EOF
 
   # user/group & owned directories
-  install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/cockroach.conf" <<END
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/cockroach.conf" << END
 u cockroach - "CockroachDB" /var/lib/cockroach
 END
 
-  install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/cockroach.conf" <<END
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/cockroach.conf" << END
 d /etc/cockroach 0755 root cockroach - -
 d /var/lib/cockroach 0750 cockroach cockroach - -
 END
 
   # services & runtime
-  install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/cockroach.service" <<END
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/cockroach.service" << END
 [Unit]
 Description=CockroachDB database server
 Requires=network-online.target
@@ -95,7 +95,7 @@ NoNewPrivileges=true
 WantedBy=multi-user.target
 END
 
-  install -Dm644 /dev/stdin "$pkgdir/etc/default/cockroach" <<END
+  install -Dm644 /dev/stdin "$pkgdir/etc/default/cockroach" << END
 COCKROACH_FLAGS="--insecure"
 COCKROACH_STORE="path=/var/lib/cockroach"
 END
@@ -105,7 +105,7 @@ END
 
   # shell completion
   install -Dm644 cockroach.bash "$pkgdir/usr/share/bash-completion/completions/cockroach"
-  install -Dm644 cockroach.zsh  "$pkgdir/usr/share/zsh/site-functions/_cockroach"
+  install -Dm644 cockroach.zsh "$pkgdir/usr/share/zsh/site-functions/_cockroach"
 
   # licenses
   install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
