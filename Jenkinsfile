@@ -57,12 +57,12 @@ pipeline {
                         git config user.email "aman.iv0012@gmail.com"
                         git config user.name "Aman Gupta"
                         export GIT_SSH_COMMAND="ssh -i $KEY"
-                        git branch release
+                        git checkout -B release
                         git checkout master
                         git merge release
                         git remote add ssh-origin ssh://aur@aur.archlinux.org/logstash.git
                         git commit -am "Automated Release: Updated to v${VERSION}"
-                        git push ssh-origin master
+                        git push -vvv ssh-origin master
                     '''
                 }
             }
