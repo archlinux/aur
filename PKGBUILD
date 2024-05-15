@@ -5,8 +5,8 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libnghttp3
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 arch=('any')
 pkgdesc="HTTP/3 library written in C (Android ${_android_arch})"
 url='https://github.com/ngtcp2/nghttp3'
@@ -14,10 +14,8 @@ license=('MIT')
 depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/ngtcp2/nghttp3/releases/download/v${pkgver}/nghttp3-${pkgver}.tar.xz"{,.asc})
-sha256sums=('d2e216bae7bd7362f850922e4237a5caa204853b3594b22adccab4c1e1c1d1aa'
-            'SKIP')
-validpgpkeys=('F4F3B91474D1EB29889BD0EF7E8403D5D673C366') # Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+source=("https://github.com/ngtcp2/nghttp3/releases/download/v${pkgver}/nghttp3-${pkgver}.tar.xz")
+md5sums=('7bb5c4e3c39e76931c64ea94d6f8cda8')
 
 prepare() {
     cd "${srcdir}/nghttp3-$pkgver"
