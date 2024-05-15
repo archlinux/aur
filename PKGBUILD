@@ -7,7 +7,7 @@
 _gitname="webkit2gtk"
 _pkgname="$_gitname-unstable"
 pkgname="$_pkgname"
-pkgver=2.43.4
+pkgver=2.45.2
 pkgrel=1
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org/"
@@ -91,30 +91,19 @@ options=('!emptydirs')
 _pkgsrc="webkitgtk-$pkgver"
 source=(
   "$url/releases/$_pkgsrc.tar.xz"{,.asc}
-  #"GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch"
 )
 sha256sums=(
-  '80545ddc4edbb249f302d7235c54d0a0823b6f61ddf96a80f2f334e89a35caeb'
+  '0ddbe3541e8cb28e37d226f2cc46ca9c9c47d0524ea12e6c39d7b9c4603a1741'
   'SKIP'
-  #'e315919f2901e6eea70f6d29bccd22be7d76b5109f3f2487385b405911878f8f'
 )
 
 validpgpkeys=(
-  'D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'  # Carlos Garcia Campos <cgarcia@igalia.com>
-  '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B'  # Adrián Pérez de Castro <aperez@igalia.com>
+  'D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3' # Carlos Garcia Campos <cgarcia@igalia.com>
+  '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B' # Adrián Pérez de Castro <aperez@igalia.com>
 )
 
 conflicts=(webkitgtk-6.0)
 provides=(webkitgtk-6.0)
-
-prepare() {
-  cd "$_pkgsrc"
-
-  # https://bugs.archlinux.org/task/79783
-  # https://bugs.webkit.org/show_bug.cgi?id=262607
-  # https://github.com/WebKit/WebKit/pull/18614
-  #patch -Np1 -F100 -i ../GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch
-}
 
 build() {
   local cmake_options=(
@@ -173,11 +162,11 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   cd "$_pkgsrc"
-  find Source -name 'COPYING*' -or -name 'LICENSE*' -print0 | sort -z |
-    while IFS= read -d $'\0' -r _f; do
+  find Source -name 'COPYING*' -or -name 'LICENSE*' -print0 | sort -z \
+    | while IFS= read -d $'\0' -r _f; do
       echo "### $_f ###"
       cat "$_f"
       echo
-    done |
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    done \
+    | install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
