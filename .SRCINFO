@@ -2,12 +2,11 @@ pkgbase = tapclean
 	pkgdesc = Commodore tape preservation and restoration tool
 	pkgver = 0.38
 	pkgrel = 1
-	url = https://sourceforge.net/projects/tapclean
+	url = https://tapclean.sourceforge.io/
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	source = https://sourceforge.net/projects/tapclean/files/tapclean/TAPClean%200.38/tapclean-0.38-src.tgz
 	md5sums = e6489783241bb30affdb33d19fff04fb
 
 pkgname = tapclean
-
