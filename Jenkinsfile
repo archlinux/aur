@@ -2,20 +2,15 @@
 pipeline {
     agent any
     environment {
-        VERSION = ''
+        VERSION = """${sh(
+                returnStdout: true,
+                script: 'curl https://api.github.com/repos/elastic/logstash/releases/latest | jq -r '.tag_name' | cut -c2-'
+            )}"""
     }
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
-            }
-        }
-        stage('Get Latest Version') {
-            steps {
-                sh '''
-                    VERSION = $(curl https://api.github.com/repos/elastic/logstash/releases/latest | jq -r '.tag_name' | cut -c2-)
-                    echo ${VERSION}
-                '''
             }
         }
         stage('Update PKGBUILD') {
