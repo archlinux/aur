@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=radiant.data
-_pkgver=1.6.3
+_pkgver=1.6.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Data Menu for Radiant: Business Analytics using R and Shiny"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -59,8 +59,8 @@ optdepends=(
   r-webshot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ec3fac3727cc43558103804934e60f36')
-b2sums=('be550f6bebdeb5a1ec9a1660979875c110b60dd3f8941334c8b7318788e357d509b5b22b18046cdd68412e933dd63888e6b2f2d55ab75e0133f2395db9f6a4a2')
+md5sums=('e5432e5ef8796bb18f6ab0d40f91c7e1')
+b2sums=('c7d8de7be7bc38fb838579186279cdf151b8e3c686cb40143c54e944b9f7c9633e11152614d49a93cd158bfb079f20a342a2cad9ac98a22c2257d4c6d5f2ed9d')
 
 build() {
   mkdir build
