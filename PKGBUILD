@@ -2,7 +2,7 @@
 
 _pkgname=deluge-client
 pkgname=python-${_pkgname}
-pkgver=1.9.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Simple python Deluge Client"
 url="https://pypi.python.org/pypi/deluge-client"
@@ -10,7 +10,7 @@ license=('MIT')
 arch=('any')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('e4b002e45a3681700a3343cbae0664575348d6bf8cd9ede821d1bbe1e061773e8da8a48a631f7f1fdc5d70bca80bb49dbe18c4cff34b77e2692aa4881c9dcb20')
+b2sums=('21685a07a27f6ef726cd052869c46b086fce96f0b94277874e9e0489e0196d69ae993f2f402522b88a767339fc23d8885e0216245abe80bd289d820e521cdddc')
 
 build() {
     cd "${_pkgname}-${pkgver}"
