@@ -2,7 +2,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.18.0.r6859.4688a371
+pkgver=0.18.0.r7047.2c4d3ad1
 pkgrel=1
 pkgdesc='Modular Wayland compositor library (git development version)'
 arch=(x86_64)
@@ -16,6 +16,7 @@ depends=(
 	libliftoff
 	libxcb
 	libglvnd
+	lcms2
 	libxkbcommon
 	systemd-libs
 	opengl-driver
