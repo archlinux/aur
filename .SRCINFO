@@ -1,6 +1,6 @@
 pkgbase = bitwig-studio-earlyaccess
 	pkgdesc = Digital audio workstation for music production, remixing and live performance - early access version
-	pkgver = 5.1.3
+	pkgver = 5.2b2
 	pkgrel = 1
 	url = https://www.bitwig.com/
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = bitwig-studio-earlyaccess
 	optdepends = alsa-lib
 	optdepends = oss
 	optdepends = ffmpeg: MP3 support
-	provides = bitwig-studio-earlyaccess
 	provides = clap-host
 	provides = vst-host
 	provides = vst3-host
@@ -20,7 +19,7 @@ pkgbase = bitwig-studio-earlyaccess
 	conflicts = bitwig-8-track
 	conflicts = bitwig-studio
 	options = !strip
-	source = https://downloads.bitwig.com/5.1.3/bitwig-studio-5.1.3.deb
-	sha256sums = d7f88a7b3383d870b29ba2415d16bdac6a63a25263af1459038bf07e06725678
+	source = https://downloads-secure.bitwig.com/5.2%20Beta%202/bitwig-studio-5.2-beta-2.deb?__token__=st=1715797619.0~exp=1715798219.0~hmac=d97f14ca37b4857a9ddcf129756ae57b02e542223e675f6603903c88e6e6f6b6&source_url=/dl/Bitwig%20Studio/5.2%20Beta%202/installer_linux/
+	sha256sums = 085e175037a759539ec1742715448b4f5405d5ff0a9e76eef5287cdc735de4be
 
 pkgname = bitwig-studio-earlyaccess
