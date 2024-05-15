@@ -1,16 +1,15 @@
 pkgname=zeldalttp
 _pkgname=Zeldalttp
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Legend Of Zelda: Link to the Past game powered by the zelda3."
 arch=('pentium4' 'i386' 'i686' 'x86_64' 'aarch64')
 license=('GPL')
+url="https://gitlab.com/linuxbombay/zeldalttp"
 depends=('zelda3-bin' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
-#source=("https://gitlab.com/zelda3pkg/$_pkgname/-/archive/$pkgver-$pkgrel/$pkgname-$pkgver-$pkgrel.tar.bz2")
-#Backup temp repo
-source=("https://github.com/zelda3-pkg/zelda3/archive/refs/tags/$pkgname-$pkgver.tar.gz")
-sha256sums=("SKIP")
+source=("$url/-/archive/$pkgver/zeldalttp-$pkgver.tar.bz2")
+sha256sums=('f1ff517eff8223815aea282cddf692fdf8deab42abe0f2d919c43822e4976245')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
@@ -18,24 +17,24 @@ package() {
     install -dm755 "$pkgdir/usr/share/pixmaps"
 
     # Packaging files
-    for dir in $_pkgname-$pkgver-$pkgrel-*/ ; do mv "${dir}" "$pkgname-$pkgver-$pkgrel" ;done
     # Check if zelda3_assets.dat exists so it doesn't redownload the file when it doesn't need to.
     FILE="/usr/share/games/$_pkgname/zelda3_assets.dat"
      if test -f "$FILE"
     then
         echo "$FILE exists skipping download."
+        ln -s /usr/share/games/$_pkgname/zelda3_assets.dat "$pkgdir/usr/share/games/$_pkgname/zelda3_assets.dat"
     else
         echo "$FILE does not exist, Starting download.."
-        cd $srcdir/$pkgname-$pkgver-$pkgrel
+        cd $srcdir/$pkgname-$pkgver
         wget "https://archive.org/download/zelda3_assets/zelda3_assets.dat"
     fi    
-    cd $srcdir/$pkgname-$pkgver-$pkgrel
-    cp "$srcdir/$pkgname-$pkgver-$pkgrel/$pkgname" "$pkgdir/usr/bin"
+    cd $srcdir/$pkgname-$pkgver
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin"
     cp -r ./ "$pkgdir/usr/share/games/$_pkgname"
-    cp zelda3.png "$pkgdir/usr/share/pixmaps"
+    install -Dm755 zelda3.png "$pkgdir/usr/share/pixmaps"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$pkgname-$pkgver-$pkgrel/$_pkgname.desktop" \
+    install -Dm644 "$_pkgname.desktop" \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
