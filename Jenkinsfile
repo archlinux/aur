@@ -16,7 +16,7 @@ pipeline {
         stage('Update PKGBUILD') {
             steps {
                 sh '''
-                    sed -ie "s/pkgver=.*$/pkgver="${VERSION}"/g" PKGBUILD
+                    sed -ie "s/pkgver=.*$/pkgver=${VERSION}/g" PKGBUILD
                     rm PKGBUILDe
                 '''
             }
