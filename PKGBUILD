@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electronim-bin
-pkgver=0.0.100
-_electronversion=28
-pkgrel=2
+_pkgname=ElectronIM
+pkgver=0.0.101
+_electronversion=29
+pkgrel=1
 pkgdesc="Electron based multi IM (Instant Messaging) client"
 arch=('x86_64')
 url="https://github.com/manusa/electronim"
@@ -19,12 +20,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ff2201b97274c59766ae491bb266583344456e3864c1a857f4fd7d9e1523ccde'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('c07e5a8f5d14dd8531ce3488c9756bd566f02f6c4794b43ce9a7696268542d7b'
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
