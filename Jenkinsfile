@@ -14,6 +14,7 @@ pipeline {
             steps {
                 sh '''
                     VERSION = $(curl https://api.github.com/repos/elastic/logstash/releases/latest | jq -r '.tag_name' | cut -c2-)
+                    echo ${VERSION}
                 '''
             }
         }
