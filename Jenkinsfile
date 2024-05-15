@@ -59,6 +59,7 @@ pipeline {
     }
     post {
         always {
+            echo "Always Run"
             // deleteDir() /* clean up our workspace */
         }
         success {
