@@ -59,9 +59,9 @@ pipeline {
                         git branch release
                         git checkout master
                         git merge release
-                        git show-ref
+                        git remote add ssh-origin ssh://aur@aur.archlinux.org/logstash.git
                         git commit -am "Automated Release: Updated to v${VERSION}"
-                        git push -vvv origin master
+                        git push ssh-origin master
                     '''
                 }
             }
