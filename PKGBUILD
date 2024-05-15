@@ -3,7 +3,7 @@
 pkgname="orca-slicer"
 pkgver=2.0.0
 _tag='2.0.0'
-pkgrel=1
+pkgrel=3
 pkgdesc="Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
@@ -15,11 +15,13 @@ conflicts=("orca-slicer")
 source=(
   "https://github.com/SoftFever/OrcaSlicer/archive/refs/tags/v${_tag}.tar.gz"
   "https://raw.githubusercontent.com/SoftFever/OrcaSlicer/v${_tag}/deps/Boost/0001-Boost-fix.patch"
+  'CMakeLists.txt.patch'
   'orca-slicer.sh'
   '0002-clipper.patch'
   )
 sha256sums=('1b431d5060f3ed4edde39c0ad841548249962d6ef7b80a178036e3a8a8a6bd31'
             'bb2662d0a4c58c43726ec98ef4acf201fcf98719c9bbfd207e2d6cdf695a2093'
+            '01171a77d533584026f113092a6586e28c9d87e10117c0f81cb4357d11a29fb1'
             '30d860958f3fd5fc657daa6addce45e91689d9833b931c9feb646da760d61de8'
             '2bc8019afc15a48759f239cbcea57112299c4253470bbdbbba424a7099b257bc'
             )
@@ -29,6 +31,7 @@ prepare() {
   ln -sf OrcaSlicer-${_tag} OrcaSlicer
   # add missing 0001-Boost-fix.patch
   cp 0001-Boost-fix.patch OrcaSlicer/deps/Boost
+  patch -p0 < "$srcdir/CMakeLists.txt.patch"
   patch -p0 < "$srcdir/0002-clipper.patch"
 }
 
