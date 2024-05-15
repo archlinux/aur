@@ -3,7 +3,7 @@
 
 pkgname=btrustbiss
 pkgver=3.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser independent signing service."
 arch=('x86_64')
 url="https://www.b-trust.org"
@@ -16,13 +16,14 @@ install=$pkgname.install
 
 package(){
     # Extract tar package
-    tar xvf B-TrustBISS.tar
+    tar -xvf B-TrustBISS.tar
+    
     # Extract deb package
-    ar xv btrustbiss_3.32-1_amd64.deb
+    ar -xv btrustbiss_3.32-1_amd64.deb
 
     # Install package
-    tar Jxf data.tar.xz -C "$pkgdir"
+    tar -Jxf data.tar.xz -C "$pkgdir"
     
     # Fix for wrong permissions on subdirs
-    find "$pkgdir" -type d -exec chmod 755 {} \;
+    # find "$pkgdir" -type d -exec chmod 755 {} \;
 }
