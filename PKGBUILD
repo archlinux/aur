@@ -1,6 +1,6 @@
 # Maintainer: Balazs Ruzsa <ruzsa.balazs@gmail.com>
 pkgname=retro-debugger-git
-pkgver=v0.64.66.r1.83245f8
+pkgver=v0.64.66.r2.186c3da
 pkgrel=1
 pkgdesc="Multiplatform debugger APIs host for retro computers: C64 (Vice), Atari800 and NES (NestopiaUE)"
 arch=(x86_64)
@@ -38,7 +38,7 @@ build() {
 	cd "$srcdir/RetroDebugger"
   mkdir -p build
   cd build
-  cmake ..
+  cmake -DCMAKE_C_FLAGS="-fpermissive" ..
   make
 }
 
