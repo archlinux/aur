@@ -11,14 +11,14 @@
 pkgbase=firefox-esr
 pkgname=(firefox-esr)
 pkgver=115.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/enterprise/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
+             autoconf2.13 rustup clang llvm jack nodejs cbindgen nasm
              python lld dump_syms
              wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -29,7 +29,10 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 options=(!emptydirs !makeflags !strip !lto !debug)
 source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
-        $pkgname.desktop identity-icons-brand.svg)
+        $pkgname.desktop identity-icons-brand.svg
+        18d19413472f.patch
+        6af7194e2778.patch
+        b1cc62489fae.patch)
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -47,6 +50,11 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 prepare() {
   mkdir -p mozbuild
   cd firefox-$pkgver
+
+  # Unbreak distutils
+  patch -Np1 -i ../18d19413472f.patch
+  patch -Np1 -i ../6af7194e2778.patch
+  patch -Np1 -i ../b1cc62489fae.patch
 
   echo "${noextract[@]}"
 
@@ -98,6 +106,8 @@ END
 
 build() {
   cd firefox-$pkgver
+
+  export RUSTUP_TOOLCHAIN=1.77
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -349,6 +359,9 @@ sha512sums=('0f3a87c99fb008088afd509d9259f893fdd44ea6bf6a5e69806fefb8d355415e81b
             'SKIP'
             '4b53ee133a4ecaf068e240f6a05a1ebf4b788d67fe9141cc5b3561e1128907c8c3edb49bf2b24ba89daf1552f94ac48adf682dbe7dd070cffe7f78d98f2b3338'
             'b579b73176c72a5ecf36e3f63bba08fdb8041ae99d54e5cab906660fed6a9cf2311f7ca1ec1649e451cc6d5a4b1e6060b974b1d7befe9c8df3c5a89c50383c17'
+            '0078598c69c232ff4ea7b4d9fec8e438b5d748b8ece993894859d90d3d4c179814a4f1e6fdcd7f709ca5e2273602001b2a03cccfbb105e7c8b401e1768c9efd0'
+            '2f0871f46ec3c8e4b6aadf12c955ce85b2767f951b6a3e59ab01137ae318114d85012ed860ba3268257d9a1174ac5fa0b806d29f420ec75a7652eb3c69766b24'
+            'e79af42d8118feca5b96a35b8d13aaf8fd88720fc425bc5476ee96854d420c7071949b3c752af8e30c3f154e2613aeb2785c2841ccade07b0fa2966d4b896029'
             '02bb5ff090eae756f5c6a88fa1958e278bd245e3c63cd7ca6203f1494d80d603316e45972098a19f1ae60ac5b9b609cfebbe629c9d2d7cd90739dcbe024f3178'
             '4698b724b44df392ae3318ad53e2b59dfea743db9a2e98c6c35237e2dd246bfd6275a6938edecb38b7bcae19789ddde37c4d3f2f2b2a39192b43bebd258aaf87'
             'aa99343d32625e50cfb9494e494840bfc18d46391b8b43d004f2741bc9fe89dec45ea8d5d35fed4a21b6073608878a62b9fa0330418777a331922e7cb934c475'
