@@ -6,6 +6,7 @@ pipeline {
                 returnStdout: true,
                 script: "curl https://api.github.com/repos/elastic/logstash/releases/latest | jq -r '.tag_name' | cut -c2- | tr -d '\n'"
             )}"""
+        VERSION = "8.13.4"
     }
     stages {
         stage('Checkout') {
