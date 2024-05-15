@@ -1,0 +1,13 @@
+pkgbase = firefox-extensions-shinigami-eyes-bin
+	pkgdesc = Highlights transphobic/anti-LGBT and trans-friendly subreddits/facebook pages/groups with different colors.
+	pkgver = 1.0.33
+	pkgrel = 1
+	url = https://github.com/shinigami-eyes/shinigami-eyes
+	arch = any
+	license = MIT
+	depends = firefox
+	noextract = shinigami_eyes-1.0.33.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/4035973/shinigami_eyes-1.0.33.xpi
+	sha256sums = c2ef94a9303040c267202505fd7aff311f6a945b0127be49c55a8b46c8f96db2
+
+pkgname = firefox-extensions-shinigami-eyes-bin
