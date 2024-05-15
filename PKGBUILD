@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-music
-pkgver=0.5.8
+pkgver=0.5.9
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('5550941d8040acb520e333530ae0e4afafd30d8dbf98f10e41c36674800a6e4a'
+sha256sums=('aa789be2220f11d4ccdf280db0d41b2e68f36ccc9d20bc332f80ef60eff84242'
             '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"

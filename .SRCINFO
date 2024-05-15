@@ -1,6 +1,6 @@
 pkgbase = simple-music
 	pkgdesc = Light music.轻音乐
-	pkgver = 0.5.8
+	pkgver = 0.5.9
 	pkgrel = 1
 	url = https://simple-music.netlify.app/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = simple-music
 	makedepends = curl
 	depends = electron30
 	conflicts = simple-music
-	source = simple-music-0.5.8.tar.gz::https://github.com/joey2217/simple-music/archive/refs/tags/v0.5.8.tar.gz
+	source = simple-music-0.5.9.tar.gz::https://github.com/joey2217/simple-music/archive/refs/tags/v0.5.9.tar.gz
 	source = simple-music.sh
-	sha256sums = 5550941d8040acb520e333530ae0e4afafd30d8dbf98f10e41c36674800a6e4a
+	sha256sums = aa789be2220f11d4ccdf280db0d41b2e68f36ccc9d20bc332f80ef60eff84242
 	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
 
 pkgname = simple-music
