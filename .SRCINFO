@@ -1,7 +1,7 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source Eurorack modular synthesizer simulator
 	pkgver = 2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vcvrack.com/
 	install = .install
 	arch = aarch64
@@ -28,7 +28,7 @@ pkgbase = vcvrack
 	depends = jansson
 	provides = vcvrack-fundamental=2.6.0
 	conflicts = vcvrack-fundamental
-	source = Rack::git+https://github.com/VCVRack/Rack#tag=58f2482df860fe878581423aedc8cadb1d94eb50
+	source = Rack::git+https://github.com/VCVRack/Rack#tag=v2.5.2
 	source = filesystem.git::git+https://github.com/gulrak/filesystem
 	source = fuzzysearchdatabase.git::git+https://bitbucket.org/j_norberg/fuzzysearchdatabase
 	source = nanosvg.git::git+https://github.com/memononen/nanosvg
@@ -44,7 +44,7 @@ pkgbase = vcvrack
 	source = vcvrack.sh
 	source = profile.sh
 	source = trademark.eml
-	sha256sums = SKIP
+	sha256sums = 54e544541d35bced4a60e278a1bde3f821b332b97d48bdb8e26c21a6d48184ae
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

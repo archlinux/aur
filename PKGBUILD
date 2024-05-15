@@ -8,7 +8,7 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(custom GPL-3.0-or-later)
@@ -23,9 +23,8 @@ makedepends=(alsa-lib cmake curl gendesk git glew jack jq libarchive libpulse op
 provides=("$_plugin_pkg=$_plugin_ver")
 conflicts=($_plugin_pkg)
 groups=(pro-audio)
-_tag=58f2482df860fe878581423aedc8cadb1d94eb50
 source=(
-  "$_name::git+https://github.com/VCVRack/$_name#tag=$_tag"
+  "$_name::git+https://github.com/VCVRack/$_name#tag=v$pkgver"
   'filesystem.git::git+https://github.com/gulrak/filesystem'
   'fuzzysearchdatabase.git::git+https://bitbucket.org/j_norberg/fuzzysearchdatabase'
   'nanosvg.git::git+https://github.com/memononen/nanosvg'
@@ -42,7 +41,7 @@ source=(
   'profile.sh'
   'trademark.eml'
 )
-sha256sums=('SKIP'
+sha256sums=('54e544541d35bced4a60e278a1bde3f821b332b97d48bdb8e26c21a6d48184ae'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -58,11 +57,6 @@ sha256sums=('SKIP'
             '21ac35c6ad4e5a29c32939b17baaf7ac1936077eda2214e28675eefcf2021db8'
             'e1da6ccf04bae3a2101151fec7ddd32e48ff92b0a1146b559fd3221c778d521f'
             '1159629aa90abb7c972c0f630d55d018b88a6b3bc3ff0bb9466cc06982f38641')
-
-pkgver() {
-  cd $_name
-  git describe --tags | tr -d v
-}
 
 prepare() {
   cd $_name
