@@ -12,6 +12,9 @@ Please, remove mailctl-bin and install oama-bin instead:
 
   https://aur.archlinux.org/packages/oama-bin
 
+This upgrade intentionally fails, makes no changes to your system.
+Its only purpose is to notify you about oama replacing mailctl.
+
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 

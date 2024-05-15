@@ -3,7 +3,7 @@
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
 pkgver=99.9
-pkgrel=5
+pkgrel=6
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
 url="https://github.com/pdobsan/${_pkgname}"
@@ -24,10 +24,8 @@ release=$_pkgname-$pkgver-Linux
 
 sosurce=(Deprecation.txt)
 
-install=.INSTALL
-
 package() {
-    cat <<EOF
+  cat <<EOF
 
 -----------------------------------------------------------------
 -----------------------------------------------------------------
@@ -43,12 +41,13 @@ Please, remove mailctl-bin and install oama-bin instead:
 
   https://aur.archlinux.org/packages/oama-bin
 
+This upgrade intentionally fails, makes no changes to your system.
+Its only purpose is to notify you about oama replacing mailctl.
+
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 
 EOF
 
-	echo doing nothing ...
-	echo ... nothing changed.
-	exit 1
+  exit 1
 }
