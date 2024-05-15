@@ -3,7 +3,7 @@
 
 pkgname=vulkan-validation-layers-git
 pkgdesc='Vulkan Validation Layers (git version)'
-pkgver=1.3.277.r61.g7266a47
+pkgver=1.3.285.r5.gaf31268
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ValidationLayers'
