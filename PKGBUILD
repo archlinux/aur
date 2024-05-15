@@ -1,4 +1,5 @@
-# Maintainer: Arturo Penen <apenen@gmail.com>
+# Maintainer: Max Harmathy <harmathy@secure.mailbox.org>
+# Contributor: Arturo Penen <apenen@gmail.com>
 
 pkgname=ghorg
 pkgver=1.9.11
