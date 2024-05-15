@@ -4,7 +4,7 @@
 
 pkgname=lib32-vulkan-utility-libraries-git
 pkgdesc='Vulkan Utility Libraries (32-bit) (git version)'
-pkgver=1.3.277.r0.g86de0a0
+pkgver=1.3.285.r0.g777358f
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Utility-Libraries'
