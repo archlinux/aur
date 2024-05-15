@@ -1,6 +1,6 @@
 # Maintainer: Frederick Price <fprice@pricemail.ca>
 
-_pkgname=aeolus_plugin
+_pkgname=aeolus-plugin
 pkgname=${_pkgname}-git
 pkgver=r220.50494c1
 pkgrel=1
