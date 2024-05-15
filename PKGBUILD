@@ -1,3 +1,5 @@
+# Maintainer: Ankit Bhatia <ankbhatia19@gmail.com>
+
 pkgbase='python-ultralytics'
 pkgname=('python-ultralytics')
 _module='ultralytics'
@@ -6,7 +8,7 @@ _src_folder=${_module}-${pkgver}
 pkgrel=1
 pkgdesc="Ultralytics YOLOv8 for SOTA object detection, multi-object tracking, instance segmentation, pose estimation and image classification."
 url="https://github.com/ultralytics/ultralytics"
-depends=('python-matplotlib' 'python-opencv' 'python-pillow' 'python-requests' 'python-scipy' 'python-pytorch' 'python-torchvision' 'python-tqdm' 'python-psutil' 'python-py-cpuinfo' 'python-thop' 'python-pandas' 'python-seaborn' 'python-lap')
+depends=('python-matplotlib' 'python-opencv' 'python-pillow' 'python-requests' 'python-scipy' 'python-pytorch' 'python-torchvision' 'python-tqdm' 'python-psutil' 'python-py-cpuinfo' 'python-thop' 'python-pandas' 'python-seaborn' 'python-lapx')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('AGPL-3.0-or-later')
 arch=('any')
