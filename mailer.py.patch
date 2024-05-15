@@ -8,18 +8,24 @@
  import sys
  import time
  import traceback
-@@ -312,8 +313,11 @@
+@@ -312,8 +313,18 @@ def __init__(self, config):
          # start the TLS if requested
          if config["MAIL_TLS"]:
              self.ehlo()
 -            self.starttls(config["MAIL_TLS_KEYFILE"],
 -                          config["MAIL_TLS_CERTFILE"])
-+            sslctx = ssl.SSLContext()
-+            if config["MAIL_TLS_CERTFILE"]:
-+                load_cert_chain(config["MAIL_TLS_CERTFILE"],
-+                                keyfile=config["MAIL_TLS_KEYFILE"])
-+            self.starttls(context=sslctx)
-
++            if sys.version_info[0:2] >= (3, 6):
++                sslctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
++                if config["MAIL_TLS_CERTFILE"]:
++                    sslctx.load_cert_chain(config["MAIL_TLS_CERTFILE"],
++                                           keyfile=config["MAIL_TLS_KEYFILE"])
++                    sslctx.check_hostname = True
++                else:
++                    sslctx.load_default_certs()
++                self.starttls(context=sslctx)
++            else:
++                self.starttls(config["MAIL_TLS_KEYFILE"],
++                              config["MAIL_TLS_CERTFILE"])
++
          # ok, now do we also need to log in?
          mailuser = config["MAIL_USERNAME"]
-
