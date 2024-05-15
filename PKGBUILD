@@ -3,21 +3,21 @@
 # (This PKGBUILD is modified from xorg-xwayland)
 
 pkgname=xwayland-standalone-with-libdecor
-pkgver=23.2
+pkgver=24.1
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="https://xorg.freedesktop.org"
 pkgdesc="A standalone Xwayland binary with libdecor support"
-depends=('nettle' 'libepoxy' 'systemd-libs' 'libxfont2' 
-         'pixman' 'xorg-server-common' 'libxcvt' 'mesa'
+depends=('nettle' 'libepoxy' 'libxfont2' 'pixman'
+         'xorg-server-common' 'libxcvt' 'mesa'
          'libglvnd' 'libxau' 'wayland' 'libdrm' 'libtirpc'
          'libxshmfence' 'glibc' 'libdecor')
 makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
              'xorg-font-util' 'wayland-protocols' 'mesa-libgl'
-             'systemd' 'egl-wayland')
-source=("git+https://gitlab.freedesktop.org/xorg/xserver.git#branch=xwayland-23.2")
+             'systemd')
+source=("git+https://gitlab.freedesktop.org/xorg/xserver.git#branch=xwayland-24.1")
 sha512sums=('SKIP')
 #provides=('xorg-server-xwayland')
 #conflicts=('xorg-server-xwayland')
@@ -35,7 +35,6 @@ build() {
     -D xdmcp=false \
     -D xcsecurity=true \
     -D dri3=true \
-    -D xwayland_eglstream=true \
     -D glamor=true \
     -D xkb_dir=/usr/share/X11/xkb \
     -D xkb_output_dir=/var/lib/xkb \

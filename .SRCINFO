@@ -1,6 +1,6 @@
 pkgbase = xwayland-standalone-with-libdecor
 	pkgdesc = A standalone Xwayland binary with libdecor support
-	pkgver = 23.2
+	pkgver = 24.1
 	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
@@ -15,10 +15,8 @@ pkgbase = xwayland-standalone-with-libdecor
 	makedepends = wayland-protocols
 	makedepends = mesa-libgl
 	makedepends = systemd
-	makedepends = egl-wayland
 	depends = nettle
 	depends = libepoxy
-	depends = systemd-libs
 	depends = libxfont2
 	depends = pixman
 	depends = xorg-server-common
@@ -32,7 +30,7 @@ pkgbase = xwayland-standalone-with-libdecor
 	depends = libxshmfence
 	depends = glibc
 	depends = libdecor
-	source = git+https://gitlab.freedesktop.org/xorg/xserver.git#branch=xwayland-23.2
+	source = git+https://gitlab.freedesktop.org/xorg/xserver.git#branch=xwayland-24.1
 	sha512sums = SKIP
 
 pkgname = xwayland-standalone-with-libdecor
