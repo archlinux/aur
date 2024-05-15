@@ -8,7 +8,6 @@ pkgbase = steam-screensaver-fix
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = glibc
 	source = git+https://gitlab.com/patlefort/steam-screensaver-fix.git#commit=c0f1b3efe513e21762b263ac1ccf91afb302bb53
 	sha256sums = SKIP
 	depends_x86_64 = lib32-glibc
