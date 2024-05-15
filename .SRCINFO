@@ -1,20 +1,20 @@
 pkgbase = frigoligo-bin
 	pkgdesc = An universal wallabag client made with Flutter.
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/casimir/frigoligo
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	depends = gtk3
-	provides = frigoligo=1.0.9
+	provides = frigoligo=1.0.10
 	conflicts = frigoligo
-	noextract = frigoligo-1.0.9.tar.gz
-	source = frigoligo-1.0.9.tar.gz::https://github.com/casimir/frigoligo/releases/download/v1.0.9/Frigoligo-v1.0.9-linux-x64.tar.gz
-	source = LICENSE-1.0.9::https://raw.githubusercontent.com/casimir/frigoligo/v1.0.9/LICENSE
-	source = frigoligo-1.0.9.png::https://raw.githubusercontent.com/casimir/frigoligo/v1.0.9/assets/logos/frigoligo.png
+	noextract = frigoligo-1.0.10.tar.gz
+	source = frigoligo-1.0.10.tar.gz::https://github.com/casimir/frigoligo/releases/download/v1.0.10/Frigoligo-v1.0.10-linux-x64.tar.gz
+	source = LICENSE-1.0.10::https://raw.githubusercontent.com/casimir/frigoligo/v1.0.10/LICENSE
+	source = frigoligo-1.0.10.png::https://raw.githubusercontent.com/casimir/frigoligo/v1.0.10/assets/logos/frigoligo.png
 	source = frigoligo.sh
-	sha256sums = ae4902fa94662641e962ec305af9909d28369a148e1d038453a7cf309950bc3d
+	sha256sums = 635bc0a98aba66d4f2d5c6e38615944999b2a4dd51d29cc7abd63b707c8338c7
 	sha256sums = 3feb1ea09cc75f148e715820992fd28a3881572e3540b629059f22293b2e17db
 	sha256sums = 886063acc61302d4ee369f06b6062257883dd4e3f1d6ab199ca8e64db3091491
 	sha256sums = b80a05fa761440dc131976b08181f3f064acaf78d273d50bf418778bd5f10238
