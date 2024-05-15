@@ -6,6 +6,7 @@ pkgbase = tapclean-git
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-only
+	conflicts = tapclean
 	source = tapclean::git+https://git.code.sf.net/p/tapclean/gitcode
 	md5sums = SKIP
 

@@ -10,7 +10,7 @@ license=('GPL-2.0-only')
 _pkgname=tapclean
 _pkgver="src"
 depends=()
-conflict=("tapclean")
+conflicts=("tapclean")
 source=("${_pkgname}::git+https://git.code.sf.net/p/tapclean/gitcode")
 
 md5sums=('SKIP')
@@ -33,3 +33,5 @@ package()
   cd "${srcdir}/${_pkgname}/src"
   install -D --mode=0755 tapclean "${pkgdir}/usr/bin/tapclean"
 }
+
+# EOF
