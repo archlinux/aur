@@ -1,4 +1,4 @@
-/* groovylint-disable LineLength */
+/* groovylint-disable GStringExpressionWithinString, LineLength */
 pipeline {
     agent any
     environment {
@@ -31,7 +31,47 @@ pipeline {
         stage('Make Package') {
             steps {
                 sh '''
+                    makepkg -s
+                '''
+            }
+        }
+        stage('Generate .SRCINFO') {
+            steps {
+                sh '''
                     makepkg --printsrcinfo > .SRCINFO
+                '''
+            }
+        }
+        stage('Cleanup - makepkg Artifacts') {
+            steps {
+                sh '''
+                    rm -rf pkg src logstash-8*
+                '''
+            }
+        }
+        stage('Git Push') {
+            steps {
+                sh '''
+                    git commit -am "Automated Commit: Update to ${VERSION}"
+                '''
+            }
+        }
+    }
+    post {
+        always {
+            // deleteDir() /* clean up our workspace */
+        }
+        success {
+            withCredentials([string(credentialsId: 'Discord_Webhook', variable: 'WEBHOOK_URL')]) {
+                sh '''
+                    curl -H "Content-Type: application/json" -d "{"content": "✅ Logstash v${VERSION} Released to AUR 🎆"}" "${WEBHOOK_URL}"
+                '''
+            }
+        }
+        failure {
+            withCredentials([string(credentialsId: 'Discord_Webhook', variable: 'WEBHOOK_URL')]) {
+                sh '''
+                    curl -H "Content-Type: application/json" -d "{"content": "❌ Logstash v${VERSION} Pipeline Failed 🛠️"}" "${WEBHOOK_URL}"
                 '''
             }
         }
