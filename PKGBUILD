@@ -3,7 +3,7 @@
 
 pkgname=lib32-vulkan-extension-layers-git
 pkgdesc='Layer providing Vulkan features when native support is unavailable (32-bit) (git version)'
-pkgver=1.3.277.r1.g419e442
+pkgver=1.3.285.r0.gab096d0
 pkgrel=1
 arch=(i686 x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git'
