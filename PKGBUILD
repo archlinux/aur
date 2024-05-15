@@ -5,7 +5,7 @@
 pkgname=papis-git
 _pkgname=papis
 pkgver=0.13.r443.gb6fe8962
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line document and bibliography manager"
 arch=('any')
 url="https://github.com/papis/papis"
@@ -14,7 +14,6 @@ depends=('python'
     'python-arxiv'
     'python-beautifulsoup4'
     'python-bibtexparser'
-    'python-chardet'
     'python-click'
     'python-colorama'
     'python-doi'
