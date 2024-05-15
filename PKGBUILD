@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-posix-strftime-compiler
-pkgver=0.44
+pkgver=0.46
 pkgrel=1
 pkgdesc='Perl module providing GNU C library compatible strftime for loggers and servers'
 arch=('any')
@@ -11,9 +11,9 @@ url='https://metacpan.org/release/POSIX-strftime-Compiler'
 license=('PerlArtistic' 'GPL')
 depends=('perl')
 makedepends=('perl-module-build-tiny>=0.035')
-source=(http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/POSIX-strftime-Compiler-0.44.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/POSIX-strftime-Compiler-0.46.tar.gz)
 options=(!emptydirs)
-md5sums=('3a5ae7d56a5917410c1b661e01ed1a68')
+md5sums=('e64777d20d363a1b47acf85774d108da')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
@@ -21,20 +21,20 @@ sanitize() {
 }
 
 build() {
-	cd POSIX-strftime-Compiler-0.44
+	cd POSIX-strftime-Compiler-0.46
 	sanitize
 	/usr/bin/perl Build.PL --installdirs vendor --destdir "$pkgdir"
 	/usr/bin/perl Build
 }
 
 check() {
-	cd POSIX-strftime-Compiler-0.44
+	cd POSIX-strftime-Compiler-0.46
 	sanitize
 	/usr/bin/perl Build test
 }
 
 package() {
-	cd POSIX-strftime-Compiler-0.44
+	cd POSIX-strftime-Compiler-0.46
 	sanitize
 	/usr/bin/perl Build install
 	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
