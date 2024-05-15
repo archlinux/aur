@@ -1,11 +1,13 @@
 pkgbase = perl-directory-scratch
 	pkgdesc = Easy-to-use self-cleaning scratch space.
 	pkgver = 0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Directory-Scratch
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-string-random
+	makedepends = perl-module-build-tiny
 	depends = perl-path-class
 	depends = perl-path-tiny
 	options = !emptydirs

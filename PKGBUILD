@@ -1,14 +1,16 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
 pkgname='perl-directory-scratch'
 pkgver='0.18'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Easy-to-use self-cleaning scratch space."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-path-class' 'perl-path-tiny')
-makedepends=()
+makedepends=('perl-module-build-tiny')
+checkdepends=('perl-string-random')
 url='http://search.cpan.org/dist/Directory-Scratch'
 source=('https://cpan.metacpan.org/authors/id/E/ET/ETHER/Directory-Scratch-0.18.tar.gz')
 md5sums=('66ea2b47c1bb184b08ba562d14727fb4')
