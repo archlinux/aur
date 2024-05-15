@@ -1,0 +1,12 @@
+pkgbase = python-noisereduce
+	pkgdesc = Noise reduction using Spectral Gating in Python
+	pkgver = 3.0.2
+	pkgrel = 2
+	url = https://github.com/timsainb/noisereduce
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/timsainb/noisereduce/archive/v3.0.2.zip
+	sha256sums = af1c46cdbc1eefe0bc3ba5971c49686c3bc9f085f3589dc6e4195f0701b69b2e
+
+pkgname = python-noisereduce
