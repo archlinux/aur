@@ -1,0 +1,17 @@
+pkgbase = foon
+	pkgdesc = Spectrum Emulator for the Game Boy Advance
+	pkgver = 0.22
+	pkgrel = 1
+	url = http://foon.pocketheaven.com
+	arch = x86_64
+	arch = i686
+	depends = wine
+	depends = winetricks
+	source = http://web.archive.org/web/20050205181902/http://foon.pocketheaven.com/downloads/foon022.zip
+	source = foon
+	source = foon.desktop
+	source = foon.png
+	md5sums = 44e3497aff83af18db38f61d87611b94
+
+pkgname = foon
+

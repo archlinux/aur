@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=FooN
+Comment=Proudly Un-Advancing the Game Boy Advance
+Exec=foon
+Icon=foon
+Terminal=false
+Categories=Wine;Game;Utility;

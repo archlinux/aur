@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# WINE Launcher script for FooN injector
+
+export WINEPREFIX=~/.gba-emu
+export FOONDIR=/usr/share/foon # installation dir for AUR package
+
+cat << EOF
+FooN Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2002 Strags Research
+
+EOF
+
+wine $FOONDIR/INJECT.EXE
