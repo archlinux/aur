@@ -1,7 +1,9 @@
 # Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
+# Maintainer: Mirko Scholz <mirko.scholz9@gmail.com>
+# Contributor: fiffy326
 pkgname=esp8266-rtos-sdk
 pkgver=3.4
-pkgrel=3
+pkgrel=4
 pkgdesc="ESP8266 RTOS SDK"
 arch=('x86_64')
 url="https://github.com/espressif/ESP8266_RTOS_SDK"
@@ -11,9 +13,16 @@ optdepends=('xtensa-lx106-elf-gcc-bin: Toolchain for the ESP8266')
 makedepends=(gcc gperf)
 options=(!strip)
 source=("https://github.com/espressif/ESP8266_RTOS_SDK/releases/download/v${pkgver}/ESP8266_RTOS_SDK-v${pkgver}.zip"
-	"esp8266-rtos-sdk.sh")
+	"esp8266-rtos-sdk.sh"
+	"esp8266-rtos-sdk-aur-ncurses-fix.patch")
 sha256sums=('1e6c0da481f844de8eeb85dfb2db9d7c130cffc2047549eb34b3deaf9bd515c1'
-            '8fd9449b64edd705c635e4a9f482c2a38b877a939ebadaba375f1a3ef06648f3')
+            '8fd9449b64edd705c635e4a9f482c2a38b877a939ebadaba375f1a3ef06648f3'
+            '4d1e014590f4aeae0ae10655f79bbb5b7a2ebd67bf8536418992099ffa90e3f4')
+
+prepare() {
+	cd ESP8266_RTOS_SDK
+	patch --forward --strip=1 --input=../esp8266-rtos-sdk-aur-ncurses-fix.patch
+}
 
 build() {
 	# enable 'make menuconfig'
