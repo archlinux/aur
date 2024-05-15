@@ -3,7 +3,7 @@
 
 pkgname=lime3ds-git
 pkgver=r10324.467afbb
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
