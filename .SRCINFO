@@ -13,12 +13,14 @@ pkgbase = libldap24
 	makedepends = unixodbc
 	makedepends = libsodium
 	depends = libsasl
-	depends = e2fsprogs
+	depends = openssl
 	options = !makeflags
 	options = emptydirs
 	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.59.tgz
 	source = libldap-symbol-versions.patch
+	source = macro.patch
 	sha256sums = 99f37d6747d88206c470067eda624d5e48c1011e943ec0ab217bae8712e22f34
 	sha256sums = c7862f6605450b15aff1f967bd17d57470d6d9fa4242c6306499173f0e67938c
+	sha256sums = a76edf2c9e75f9914d81ee6247e58f1948ae6a6a1028f6d9f717a83a549eb544
 
 pkgname = libldap24
