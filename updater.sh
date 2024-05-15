@@ -32,7 +32,7 @@ try_increment() {
     rm -f *.deb *.pkg.*
 
     ## Download the package
-    wget -q --show-progress "${source[0]}" || return
+    wget -q --show-progress -O "${source[0]%%::*}" "${source[0]#*::}" || return
 
     ## Update checksum
     local targetsum="$(sha256sum bitwig-studio-${shortver}.deb | cut -d ' ' -f 1)"
