@@ -3,7 +3,7 @@
 
 pkgname=vulkan-icd-loader-git
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (git version)'
-pkgver=1.3.277.r2.ge0d594e
+pkgver=1.3.285.r1.g1e8781e
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Loader'
