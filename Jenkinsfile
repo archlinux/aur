@@ -57,7 +57,8 @@ pipeline {
                         git config user.name "Aman Gupta"
                         git commit -am "Automated Commit: Update to v${VERSION}"
                         export GIT_SSH_COMMAND="ssh -i $KEY"
-                        git push ssh://aur@aur.archlinux.org/logstash.git master
+                        git remote add origin ssh://aur@aur.archlinux.org/logstash.git
+                        git push origin master
                     '''
                 }
             }
