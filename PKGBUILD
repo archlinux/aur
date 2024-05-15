@@ -16,7 +16,7 @@ makedepends=(
     'npm'
     'nvm'
     'gendesk'
-    'git'
+    'curl'
     'icoutils'
 )
 source=(
@@ -35,7 +35,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
+        -e "s|@cfgdirname@|${pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
