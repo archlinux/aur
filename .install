@@ -1,0 +1,91 @@
+post_install() {
+
+	# summary of how this script can be called:
+	#          <new-version>
+	#          <failed-install-package> <version> `removing'
+	#          <conflicting-package> <version>
+
+	action=$1
+	prev_version=$2
+
+	bold=$(tput -Txterm bold); normal=$(tput -Txterm sgr0); yellow=$(tput -Txterm setaf 11)
+
+	function msg() {
+	  echo "${bold}> $*${normal}"
+	}
+
+	function first_run() {
+	  service_names=""
+	  if [[ "$service_names" == "" ]]; then return; fi
+
+	  systemctl enable --now $service_names
+	  # Show the user what's happened and if it successfully started up.
+	  msg "Started via systemd: $service_names"
+	  systemctl --no-pager status $service_names
+
+	  nginx_file=
+	  if [[ "$nginx_file" != "" ]]; then
+	    msg "A sample ${yellow}nginx${normal}${bold} config is available. Customize it and then enable with this command:"
+	    msg "ln -s /etc/nginx/sites-available/$nginx_file /etc/nginx/sites-enabled/ && systemctl reload nginx"
+	  fi
+
+	  apache_file=
+	  if [[ "$apache_file" != "" ]]; then
+	    n=$(basename $apache_file)
+	    msg "An ${yellow}apache2${normal}${bold} site config is available."
+	    msg "Customize /etc/apache2/sites-available/$n and then try: a2ensite $n && systemctl reload apache2"
+	  fi
+	}
+
+	function try() { if command -v $1 &>/dev/null; then eval "$@" || true; fi }
+
+	if [ -d /run/systemd/system ]; then
+	    systemctl daemon-reload
+	    systemd-sysusers
+
+	    # that are installed outside /usr i.e. they do not implement the same search path as systemd itself.
+	    if [[ "$action" == "configure" ]]; then
+	        # If this is the first install, enable and start the service_names.
+	        if [[ "$prev_version" == "" ]]; then
+	          first_run
+	        elif [[ "" != "" ]]; then
+	          systemctl start 
+	        fi
+	    fi
+	fi
+
+	# Refresh desktop integration files for GUI apps, if there are any. We don't care if this fails - it just means this
+	# machine isn't a desktop.
+	try update-mime-database /usr/share/mime
+	try update-icon-caches /usr/share/icons/hicolor
+	try update-desktop-database
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	if [ -d /run/systemd/system ] && [[ "" != "" ]]; then
+	    # Shut down any installed services before we uninstall or upgrade to avoid the files changing underneath them.
+	    # Whilst some programs can handle this, others cannot because they open and close files during runtime and expect
+	    # them to be consistent. We default to the safest approach.
+	    systemctl stop  2>/dev/null || true
+	fi
+}
+
+post_remove() {
+
+	# If we installed services, refresh systemd to clear them out.
+	if [ -d /run/systemd/system ] && [[ "" != "" ]]; then
+	    systemctl --system daemon-reload
+	fi
+
+	# Refresh desktop integration files for GUI apps, if there are any.
+	# We don't care if this fails - it just means this machine isn't a desktop.
+	function try() { if command -v $1 &>/dev/null; then eval "$@" || true; fi }
+	try update-desktop-database
+	try update-icon-caches /usr/share/icons/hicolor
+	try update-mime-database /usr/share/mime
+}
+
