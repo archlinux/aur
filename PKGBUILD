@@ -1,14 +1,17 @@
+# Maintainer: Matthieu Leboeuf <contact@matthieul.dev>
+# Contributor: skrewball <aur at joickle dot com> gitlab.com/skrewball/aur
+
 pkgname=gnome-shell-extension-app-icons-taskbar
 _pkgbase=aztaskbar
-pkgver=22
+pkgver=23
 pkgrel=1
-pkgdesc="A simple app icon taskbar extension for GNOME"
+pkgdesc="A simple app icon taskbar. Show running apps and favorites on the main panel."
 arch=('any')
 url="https://gitlab.com/AndrewZaech/aztaskbar"
 license=('GPL3')
 depends=('dconf' 'gnome-shell>=1:45')
 source=("${url}/-/archive/v${pkgver}/${_pkgbase}-v${pkgver}.tar.gz")
-sha256sums=('4e672777eaf9700764ce8ec2072551200ce4dbdbaf80c9e07c73777590321822')
+b2sums=('935a4196e9dff01c5cf387c88efdbc595514ccded53e95c54e65296751a02a7a9b875f005c311a4dd71ca2f3e514c645b3f1e4031ffa65fd6990f8b27a204b57')
 
 build() {
   cd "${_pkgbase}-v${pkgver}"
