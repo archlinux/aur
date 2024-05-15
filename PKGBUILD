@@ -16,7 +16,7 @@ provides=('clap-host' 'vst-host' 'vst3-host')
 replaces=()
 conflicts=('bitwig-studio-legacy' 'bitwig-8-track' 'bitwig-studio')
 options=(!strip)
-source=("https://downloads-secure.bitwig.com/5.2%20Beta%202/bitwig-studio-5.2-beta-2.deb?__token__=st=1715797619.0~exp=1715798219.0~hmac=d97f14ca37b4857a9ddcf129756ae57b02e542223e675f6603903c88e6e6f6b6&source_url=/dl/Bitwig%20Studio/5.2%20Beta%202/installer_linux/")
+source=("https://downloads-secure.bitwig.com/5.2%20Beta%202/bitwig-studio-5.2-beta-2.deb")
 #source=("https://downloads.bitwig.com/${_pkgver}/bitwig-studio-${_pkgver}.deb")
 
 

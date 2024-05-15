@@ -19,7 +19,7 @@ pkgbase = bitwig-studio-earlyaccess
 	conflicts = bitwig-8-track
 	conflicts = bitwig-studio
 	options = !strip
-	source = https://downloads-secure.bitwig.com/5.2%20Beta%202/bitwig-studio-5.2-beta-2.deb?__token__=st=1715797619.0~exp=1715798219.0~hmac=d97f14ca37b4857a9ddcf129756ae57b02e542223e675f6603903c88e6e6f6b6&source_url=/dl/Bitwig%20Studio/5.2%20Beta%202/installer_linux/
+	source = https://downloads-secure.bitwig.com/5.2%20Beta%202/bitwig-studio-5.2-beta-2.deb
 	sha256sums = 085e175037a759539ec1742715448b4f5405d5ff0a9e76eef5287cdc735de4be
 
 pkgname = bitwig-studio-earlyaccess
