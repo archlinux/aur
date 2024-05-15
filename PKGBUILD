@@ -3,7 +3,7 @@
 
 pkgbase=vulkan-lunarg-tools-git
 pkgname=(vulkan-extra-tools-git vulkan-extra-layers-git)
-pkgver=1.3.275.r12027.g5ea187c6c
+pkgver=1.3.283.r12124.gd0fee2e2a
 _major=1.3
 pkgrel=1
 arch=(x86_64)
