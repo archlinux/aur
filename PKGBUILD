@@ -3,7 +3,7 @@
 # Contributor sumt <sumt at sci dot fi>
 
 pkgname=yle-dl
-pkgver=20240130
+pkgver=20240429
 pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
