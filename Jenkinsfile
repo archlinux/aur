@@ -59,8 +59,9 @@ pipeline {
                         git branch release
                         git checkout master
                         git merge release
+                        git show-ref
                         git commit -am "Automated Release: Updated to v${VERSION}"
-                        git push origin master
+                        git push -vvv origin master
                     '''
                 }
             }
@@ -68,7 +69,8 @@ pipeline {
     }
     post {
         always {
-            deleteDir() /* clean up our workspace */
+            echo "Always Run"
+            // deleteDir() /* clean up our workspace */
         }
         success {
             withCredentials([string(credentialsId: 'Discord_Webhook', variable: 'WEBHOOK_URL')]) {
