@@ -1,7 +1,7 @@
 pkgbase = pq-cli
 	pkgdesc = Progress Quest: the CLI edition
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rr-/pq-cli
 	arch = any
 	license = MIT
