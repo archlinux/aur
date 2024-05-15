@@ -20,7 +20,7 @@ optdepends=('wget: for some rare streams'
 )
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aajanki/yle-dl/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7b71815387b3e58b37b9ff00beb82fb16df8005dadd5cf4f2f375ce1d36ed5b0')
+sha256sums=('f6bdd0f1d97edc6bbab5d7ab3af1a01261e9cb2cd05d4feb0a883a4db3afdc0f')
 
 
 build() {
