@@ -2,7 +2,7 @@
 _pkgname=openplc-editor
 pkgname="${_pkgname}-git"
 pkgver=r184.f772039
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenPLC editor"
 arch=("x86_64")
 url="https://github.com/thiagoralves/OpenPLC_Editor"
@@ -28,7 +28,7 @@ build() {
 
 prepare() {
   mkdir -p "${srcdir}/OpenPLC_Editor/.venv"
-  python3.8 -m venv "${srcdir}/OpenPLC_Editor/.venv"
+  python3.9 -m venv "${srcdir}/OpenPLC_Editor/.venv"
   "${srcdir}/OpenPLC_Editor/.venv/bin/python" -m pip install --upgrade pip
   "${srcdir}/OpenPLC_Editor/.venv/bin/python" -m pip install wheel jinja2 lxml==4.6.2 future matplotlib zeroconf pyserial pypubsub pyro5 attrdict3
   "${srcdir}/OpenPLC_Editor/.venv/bin/python" -m pip install wxPython==4.2.0
