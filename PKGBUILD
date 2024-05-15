@@ -3,7 +3,7 @@ pkgname=fairshare-bin
 _appname=FAIRshare
 pkgver=2.1.0
 _electronversion=25
-pkgrel=7
+pkgrel=8
 pkgdesc="Simplifying the curation and sharing of biomedical research data and software according to applicable FAIR guidelines"
 arch=('x86_64')
 url="https://fairdataihub.org/fairshare"
@@ -12,7 +12,7 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -24,21 +24,28 @@ source=(
 )
 sha256sums=('9c6bf87ec638dcb3dc44de81e268a57453f26c4e345023a3664ed0f744c2a7c3'
             'f53ab2779598ebdd8bef9425c402eed3cac0e2a6dc3ec5cbda5a07de0bdcf7dc'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
+    asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    sed -e "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" \
+        -e "s|__dirname,\"pyflask\",\"api.py\"|\"\/usr\/lib\/${pkgname%-bin}\",\"api\"|g" \
+        -i "${srcdir}/app.asar.unpacked/background.js"
+    cp "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" "${srcdir}/app.asar.unpacked/Icon.png"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm755 "${srcdir}/squashfs-root/resources/api" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
