@@ -3,7 +3,7 @@
 _reponame=airwin2rack
 _plugin_name="Airwindows Consolidated"
 pkgname=airwindows-consolidated-git
-pkgver=2.12.0.221.33650be
+pkgver=2.12.0.r221.33650be
 pkgrel=1
 pkgdesc="Airwindows effects as a single plugin or stand-alone program with documentation"
 arch=(x86_64)
@@ -27,12 +27,13 @@ provides=(${pkgname%-*})
 conflicts=(${pkgname%-*})
 source=("$_reponame::git+$url.git"
         'airwindows::git+https://github.com/airwindows/airwindows')
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd $_reponame
   local ver=$(grep version plugin.json | cut -d '"' -f 4)
-  printf "$ver.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "$ver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -57,9 +58,9 @@ build() {
 }
 
 package() {
-  depends+=(libasound.so libbrotlicommon.so.1 libbz2.so.1.0 libfreetype.so
-            libglib-2.0.so.0 libgraphite2.so.3 libharfbuzz.so.0 libpcre2-8.so.0
-            libpng16.so.16 libbz2.so.1.0)
+  depends+=(libasound.so libbrotlicommon.so libbz2.so libfreetype.so
+            libglib-2.0.so libgraphite2.so libharfbuzz.so libpcre2-8.so
+            libpng16.so libbz2.so)
   cd $pkgname-build/awcons-products
   # Stand-alone
   install -vDm 755 "$_plugin_name" -t "$pkgdir"/usr/bin
