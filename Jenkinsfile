@@ -70,14 +70,14 @@ pipeline {
         success {
             withCredentials([string(credentialsId: 'Discord_Webhook', variable: 'WEBHOOK_URL')]) {
                 sh '''
-                    curl -H 'Content-Type: application/json' -d '{\"content\": \"✅ Logstash - $VERSION Released to AUR 🎆\"}' ${WEBHOOK_URL}
+                    curl -H 'Content-Type: application/json' -d '{\"content\": \"✅ Logstash - '"$VERSION"' Released to AUR 🎆\"}' ${WEBHOOK_URL}
                 '''
             }
         }
         failure {
             withCredentials([string(credentialsId: 'Discord_Webhook', variable: 'WEBHOOK_URL')]) {
                 sh '''
-                    curl -H 'Content-Type: application/json' -d '{\"content\": \"❌ Logstash - $VERSION Pipeline Failed 🛠️\"}' ${WEBHOOK_URL}
+                    curl -H 'Content-Type: application/json' -d '{\"content\": \"❌ Logstash - '"$VERSION"' Pipeline Failed 🛠️\"}' ${WEBHOOK_URL}
                 '''
             }
         }
