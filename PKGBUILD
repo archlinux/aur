@@ -10,40 +10,29 @@ pkgdesc="Command-line document and bibliography manager"
 arch=('any')
 url="https://github.com/papis/papis"
 license=('GPL-3.0-or-later')
-makedepends=('git'
-    'python-build'
-    'python-installer'
-    'python-wheel'
-
-    'python-hatchling'
-
-    'python-docutils'
-    'python-sphinx'
-    'python-sphinx-click'
-    )
 depends=('python'
-         'python-arxiv'
-         'python-beautifulsoup4'
-         'python-bibtexparser'
-         'python-chardet'
-         'python-click'
-         'python-colorama'
-         'python-doi'
-         'python-dominate'
-         'python-filetype'
-         'python-habanero'
-         'python-isbnlib'
-         'python-lxml'
-         'python-platformdirs'
-         'python-prompt_toolkit'
-         'python-pygments'
-         'python-pyparsing'
-         'python-requests'
-         'python-slugify'
-         'python-stevedore'
-         'python-typing_extensions'
-         'python-yaml'
-        )
+    'python-arxiv'
+    'python-beautifulsoup4'
+    'python-bibtexparser'
+    'python-chardet'
+    'python-click'
+    'python-colorama'
+    'python-doi'
+    'python-dominate'
+    'python-filetype'
+    'python-habanero'
+    'python-isbnlib'
+    'python-lxml'
+    'python-platformdirs'
+    'python-prompt_toolkit'
+    'python-pygments'
+    'python-pyparsing'
+    'python-requests'
+    'python-slugify'
+    'python-stevedore'
+    'python-typing_extensions'
+    'python-yaml'
+)
 optdepends=(
     'fzf: fzf picker'
     'papis-rofi: integration with rofi'
@@ -54,6 +43,17 @@ optdepends=(
     'python-papis-scihub: imports from scihub'
     'python-markdownify: convert zenodo imports to markdown'
     'python-whoosh: whoosh database backend'
+)
+makedepends=('git'
+    'python-build'
+    'python-installer'
+    'python-wheel'
+
+    'python-hatchling'
+
+    'python-docutils'
+    'python-sphinx'
+    'python-sphinx-click'
 )
 checkdepends=(
     # For pytest
@@ -81,7 +81,7 @@ checkdepends=(
     python-types-pyyaml
     python-types-requests
     python-types-setuptools
-    )
+)
 provides=("papis")
 conflicts=("papis")
 source=("git+https://github.com/papis/papis.git")
@@ -90,13 +90,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
   git describe --long --tags | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-check() {
-  cd "${_pkgname}"
-  python -m pytest papis tests
-  python -m flake8 papis tests examples
-  python -m mypy papis
 }
 
 build() {
@@ -110,6 +103,13 @@ build() {
   make -C doc man
 
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${_pkgname}"
+  python -m pytest papis tests
+  python -m flake8 papis tests examples
+  python -m mypy papis
 }
 
 package() {
