@@ -1,0 +1,11 @@
+pkgbase = ttf-unitbv-utsans
+	pkgdesc = TrueType UTSans Fonts from the Transilvania University of Brașov
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.unitbv.ro/en/
+	arch = any
+	license = custom:UniTBv
+	source = https://intranet.unitbv.ro/Portals/0/Identitate%20vizuala/UT-Sans-TTF.zip
+	sha256sums = 842607b9dd6c8180bfcfdfaea56bdf0e3ca58013be078177ca154e6bb7fb4e2b
+
+pkgname = ttf-unitbv-utsans
