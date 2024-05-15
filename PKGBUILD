@@ -43,12 +43,12 @@ package() {
 	mkdir -p $pkgdir/opt/$pkgname
 	mv  $srcdir/$pkgname/*  $pkgdir/opt/$pkgname/
 
-	mkdir -p "${pkgdir}"/usr/bin
-	ln -s $pkgdir/opt/$pkgname/nw "$pkgdir"/usr/bin/$pkgname
+	mkdir -p $pkgdir/usr/bin
+	ln -s /opt/$pkgname/nw $pkgdir/usr/bin/$pkgname
 
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 $pkgdir/opt/$pkgname/wmFavicon.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/$pkgname.png
-	install -Dm644 $pkgdir/opt/$pkgname/wm.ico ${pkgdir}/usr/share/icons/hicolor/256x256/apps/$pkgname.ico
-	install -Dm644 $pkgdir/opt/$pkgname/wm3icon.png ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/$pkgname.png
+	install -Dm644 $pkgdir/opt/$pkgname/wmFavicon.png $pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png
+	install -Dm644 $pkgdir/opt/$pkgname/wm.ico $pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.ico
+	install -Dm644 $pkgdir/opt/$pkgname/wm3icon.png $pkgdir/usr/share/icons/hicolor/1024x1024/apps/$pkgname.png
 
 }
