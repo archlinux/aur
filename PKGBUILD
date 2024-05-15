@@ -1,12 +1,12 @@
 pkgname=snotify-git
-pkgver=0.0.2.r14.gd7e39399
+pkgver=0.1.0.r7.g03631efc
 pkgrel=1
 epoch=1
 pkgdesc="Play sounds when reciving a notification."
 arch=("any")
 url="https://github.com/Kimiblock/snotify"
 license=("GPL-2.0-or-later")
-depends=("mpv" "dbus" "glibc")
+depends=("dbus" "glibc" "pipewire" "pipewire-audio" "pipewire-pulse" "wireplumber")
 makedepends=('go' 'git')
 conflicts=('snotify')
 backup=()
