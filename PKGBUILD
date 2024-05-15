@@ -2,7 +2,7 @@
 # Contributor: Noah Vogt <noah@noahvogt.com>
 
 pkgname=localsend-git
-pkgver=v1.14.0.r30.g3d6bf26
+pkgver=v1.14.0.r42.gc04684a
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop '
 url=https://github.com/localsend/localsend
@@ -12,7 +12,7 @@ options=(!debug)
 depends=(zenity xdg-user-dirs libayatana-appindicator)
 conflicts=('localsend')
 provides=('localsend')
-makedepends=('cmake' 'ninja' 'git' 'fvm')
+makedepends=('cmake' 'ninja' 'git' 'fvm' 'clang')
 source=("git+https://github.com/localsend/localsend" "${pkgname%-*}.desktop")
 sha256sums=('SKIP' 'SKIP')
 
