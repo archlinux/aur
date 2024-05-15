@@ -2,7 +2,7 @@
 pkgname=redis-viewer-bin
 _pkgname=redisviewer
 _appname="Redis Viewer"
-pkgver=2.4.1
+pkgver=2.4.2
 _electronversion=28
 pkgrel=1
 pkgdesc="A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode."
@@ -19,13 +19,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/redisviewer/RedisViewer/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bb8a3331c58a6a0b28f68b76685e0e9e21b8679ce5e3217813a05b2f054d959b'
+sha256sums=('8299dcb41f8387305e649a8cc4daf8fcef962129afe0810e71b7974bdd1122ee'
             '68f3ca5eaa3a59b7e01cbafc7848cb20ea108627ed0c94023e7536adfeeb3e89'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
