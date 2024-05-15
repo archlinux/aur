@@ -1,11 +1,12 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
 pkgname='perl-module-signature'
 pkgver='0.88'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Module signature file manipulation"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later' 'CC0-1.0')
 options=('!emptydirs')
 depends=('perl>=5.005')
 makedepends=('perl-ipc-run')

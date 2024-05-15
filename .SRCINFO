@@ -1,11 +1,12 @@
 pkgbase = perl-module-signature
 	pkgdesc = Module signature file manipulation
 	pkgver = 0.88
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Module-Signature
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
+	license = CC0-1.0
 	makedepends = perl-ipc-run
 	depends = perl>=5.005
 	options = !emptydirs
