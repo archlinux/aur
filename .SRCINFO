@@ -1,0 +1,15 @@
+pkgbase = python2-pytest-rerunfailures
+	pkgdesc = A plugin for py.test that re-runs failed tests to eliminate intermittent failures
+	pkgver = 6.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-rerunfailures/
+	arch = any
+	license = MPL2
+	checkdepends = python2-pytest
+	checkdepends = python2-mock
+	makedepends = python2-setuptools
+	depends = python2-pytest
+	source = https://files.pythonhosted.org/packages/source/p/pytest-rerunfailures/pytest-rerunfailures-6.0.tar.gz
+	sha512sums = 654a6afea01e5d7e0f516a6427eee5bd2947757a0c05ee177521f607d8cc7e472e614267e414ce014528c4bd5de99a4bfaf5381d6c5dbf5abd9e7170a4c3fbc8
+
+pkgname = python2-pytest-rerunfailures
