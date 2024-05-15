@@ -3,10 +3,10 @@
 pkgbase='juicity'
 pkgname=(${pkgbase}-{client,server})
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A quic-based proxy protocol and implementation, inspired by tuic.'
 url='https://github.com/juicity/juicity'
-license=('AGPL-3.0-or-later')
+license=('AGPL-3.0-only')
 arch=('x86_64' 'aarch64' 'riscv64')
 depends=('glibc')
 makedepends=('go')
