@@ -4,6 +4,7 @@ Comment=Jitsi Meet Desktop App
 Exec=jitsi-meet-desktop
 Terminal=false
 Type=Application
+MimeType=x-scheme-handler/jitsi-meet;
 Icon=jitsi-meet-desktop
 StartupWMClass=Jitsi Meet
 Categories=VideoConference;AudioVideo;Audio;Video;Network;

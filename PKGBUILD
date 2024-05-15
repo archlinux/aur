@@ -4,7 +4,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2024.3.0
+pkgver=2024.5.0
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ license=('Apache')
 conflicts=('jitsi-meet-desktop-bin'
            'jitsi-meet-electron-bin'
            'jitsi-meet-electron')
-_electron_pkg="electron29"
+_electron_pkg="electron30"
 depends=('gtk3'
          'libxss'
          'nss'
@@ -28,9 +28,9 @@ options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'no_targets.patch'
         'jitsi-meet-desktop.desktop')
-sha256sums=('e602782aa644fc4980a299d4a50ba04669e9a359b51f6e925263292756ca04fa'
+sha256sums=('aa66315cd5011ccbeb08efaf2a62302de401e60234dac0847a256fafc16afe85'
             'ed3a4d4c524611ba66c9f0e28d2da77cb2948c6785367d69b86aa4965dd6bb99'
-            '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
+            'bc4464a6e84857ec4400e199a9022169824a8fab0ae5a1efc0d8fc28dcfffcac')
 
 case "$CARCH" in
         aarch64)
