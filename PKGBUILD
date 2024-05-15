@@ -1,7 +1,7 @@
 # Maintainer: Alex Tharp <alex@toastercup.io>
 _appname=firestorm-next
 pkgname="${_appname}-bin"
-pkgver=7.1.7.73873
+pkgver=7.1.7.73900
 pkgrel=1
 pkgdesc="[PRE-RELEASE] Firestorm is a feature-packed third-party viewer for Second Life. This is the *alpha* release that currently features PBR support. **USE AT YOUR OWN RISK**"
 url="http://www.firestormviewer.org/"
@@ -27,7 +27,7 @@ source=("${_appname}.desktop"
         "${_appname}.launcher")
 md5sums=('bdf52344099529a7006ea67426239182'
          '6a56b1a0df5960481ad40ed40dca8f91')
-_tar_md5sum='5dfe5e28165e72aa37be18caa41f59d0' # verified in prepare()
+_tar_md5sum='84b45ab547496e6881fc0db4269aeb35' # verified in prepare()
 
 # Text formatting
 _bold_font_weight=$(tput bold)
