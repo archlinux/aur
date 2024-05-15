@@ -2,8 +2,8 @@
 # Contributor: piratecarrot <39475419+piratecarrot@users.noreply.github.com>
 pkgname=gama
 pkgver=2.30
-pkgrel=1
-pkgdesc="GNU Gama package is dedicated to the adjustment of surveying networks."
+pkgrel=2
+pkgdesc="package dedicated to the adjustment of surveying networks."
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/gama/"
 license=('GPL')
