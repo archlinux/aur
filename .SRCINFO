@@ -12,6 +12,7 @@ pkgbase = sysdig-inspect-bin
 	depends = nss
 	optdepends = org.freedesktop.secrets
 	noextract = sysdig-inspect-bin_0.11.0_amd64.deb
+	options = !debug
 	source = sysdig-inspect-bin_0.11.0_amd64.deb::https://github.com/draios/sysdig-inspect/releases/download/0.11.0/sysdig-inspect-linux-x86_64.deb
 	b2sums = 5dbd51b645253ef549481460f5423c96849a492572e8eb44e3c931769c220bf66120adad207cd33d05f73619b06d5344e390a3c3d38bcd4e939653623acbad98
 
