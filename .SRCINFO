@@ -1,0 +1,21 @@
+pkgbase = writemonkey3
+	pkgdesc = Text Editor for Writers
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://writemonkey.com/wm3/
+	arch = x86_64
+	license = proprietary
+	makedepends = unzip
+	depends = libnotify
+	depends = gtk2
+	depends = gconf
+	depends = gcc
+	depends = electron25-bin
+	provides = Writemonkey
+	noextract = writemonkey3-3.3.0.zip
+	source = writemonkey3-3.3.0.zip::http://writemonkey.com/wm3/Writemonkey3-linux-64bit-v3-3-0-jan2023.zip
+	source = writemonkey3.desktop
+	sha256sums = 78cfe853aabbacba38538d2fd6637e0ae6d6465c52988795dae711c13cdb61d6
+	sha256sums = cc60d97bb9dd206452fc19e64b835ad80370362c90247de6e987c43a5c60bf34
+
+pkgname = writemonkey3
