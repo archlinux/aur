@@ -5,7 +5,7 @@
 pkgname=papis-git
 _pkgname=papis
 pkgver=0.13.r443.gb6fe8962
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line document and bibliography manager"
 arch=('any')
 url="https://github.com/papis/papis"
@@ -42,6 +42,10 @@ optdepends=(
     'python-papis-scihub: imports from scihub'
     'python-markdownify: convert zenodo imports to markdown'
     'python-whoosh: whoosh database backend'
+    'python-docutils: for papis.sphinx_ext (used by some plugins)'
+    'python-sphinx: for papis.sphinx_ext (used by some plugins)'
+    'python-sphinx-click: for papis.sphinx_ext (used by some plugins)'
+    'python-pytest: for papis.testing (used by some plugins)'
 )
 makedepends=('git'
     'python-build'
@@ -50,8 +54,6 @@ makedepends=('git'
 
     'python-hatchling'
 
-    'python-docutils'
-    'python-sphinx'
     'python-sphinx-click'
 )
 checkdepends=(
