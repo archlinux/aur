@@ -60,7 +60,7 @@ pipeline {
                         git checkout master
                         git merge release
                         git commit -am "Automated Release: Updated to v${VERSION}"
-                        git push
+                        git push origin master
                     '''
                 }
             }
