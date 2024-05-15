@@ -173,7 +173,7 @@
            // the xft font cell might differ from the terminal font cell,
 --- src/screen.C
 +++ src/screen.C
-@@ -976,7 +976,61 @@
+@@ -977,7 +977,61 @@
  # endif
  #endif
  
@@ -236,7 +236,7 @@
  
            // if the character doesn't fit into the remaining columns...
            if (ecb_unlikely (screen.cur.col > ncol - width && ncol >= width))
-@@ -2435,7 +2489,12 @@
+@@ -2436,7 +2490,12 @@
                  text--, count++, xpixel -= fwidth;
  
                // force redraw after "careful" characters to avoid pixel droppings

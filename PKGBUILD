@@ -2,27 +2,24 @@
 # Contributor: ferdig <ferdinand.goldmann@jku.at>
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
+pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support'
 pkgver=9.31
-pkgrel=7
-pkgdesc="Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support"
-arch=('i686' 'x86_64')
+pkgrel=8
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
-license=('GPL')
-makedepends=(
-    'signify'
-)
+arch=('i686' 'x86_64')
+license=('GPL-3.0-or-later')
+makedepends=('signify')
 depends=(
     'libxft'
     'libxt'
+    'libxext'
+    'libxmu'
     'perl'
     'startup-notification'
     'libnsl'
     'libptytty'
-    'libxext'
 )
-optdepends=(
-    'gtk2-perl: to use the urxvt-tabbed'
-)
+optdepends=('gtk2-perl: to use the urxvt-tabbed')
 provides=(
     'rxvt-unicode'
     'rxvt-unicode-terminfo'
@@ -47,6 +44,7 @@ source=(
     'keyboard-select'
     '7-bit-queries.patch'
     'perl-5.38.patch'
+    'lines-rewrap.patch'
     '24-bit-color.patch'
     'enable-wide-glyphs.patch'
     'improve-font-rendering.patch'
@@ -61,9 +59,10 @@ b2sums=('439a8c33b7260e0f2fd68b8a4409773c06c3bb7623b5dfbbb0742cc198c9fd25e8a2479
         '9e3c03390d44a53b933fd6e11f3b644c43f377d3848975d9a5d1b964b042aca08995c968ada22b143bdc014691282242c8e718820f16086b35588242eb71a15b'
         '94b110f9901786c398c313199da17b5981644241de2385208d36a3cccbf029c518ee619bbadff0348405bc01cd8f24abf41aa361b2f140178345197c2b476e03'
         'dcaeac1c3822bf27d0ea4ac3ae6a8852c88420b3b30a5b31ec9022afbf4f65aa29b1e11e0b5e3f6098de057983d886b6a54b5e3ce489ac93320245a6d6f64703'
-        '201d6a056f55d069af15568ee1dfa1c3eafb019d0dc9629882f93b45a067542a8351c745ff7b9eeba699590bfa85df39da1b22c2f02e8a6e36199bf1bd9ff1c5'
-        '8d360d8b0cd274b63f3c0c7651b358cf94aa71c39adb15ca5d8f3c8a05d930bf96ac559e6b7eceb6b3706a2caa3bf7002f75f596a1efdb5e54e43d20b9341590'
-        '77b2a764558660cbc16325eacca3a2b17d3071d59c7a956a43c796a8d9374f5d202012e13a50ef4d978e2826009d9f1a93fb118d97e27e4cfbf0569e1d781082')
+        '06b8a321a59c92ad781f882e454a4868a5b9e6bf482217568a6ed8a2e82e5e2e604bcea1efd79aa6dbaffb6c1e12416f4232966e718b2001142082a57e15468f'
+        'ba382f5b1b2d7494a2faee2674530fae21aa36ce9e6aea7375c354fa8036ef37f34759b164658856cb4bebbc8f34be79dc26eca83670b945e956dae1d54bf842'
+        '83cad5f2583ea152c7da1fc804a9ce7e7ee8d7b9735645b647172a8d0512c8cdcf44b45e16ccd3b8770c971749aecfc8d172009bffb479ca00d12b7697b012cd'
+        '05faae03a36b71fa5a9105f143b8e2d084014857cc4012c25a531808392c5a6e48ea72cd0857beb494d76b7b0a7943ec8da3e28e411d800e29b8ac6ae4e21788')
 
 prepare() {
     mv -v "$_archive.tar.bz2.signature" "$_archive.tar.bz2.sig"
@@ -71,11 +70,18 @@ prepare() {
 
     cd "$_archive"
 
-    # workaround: multiple-char sequence for 7-bit queries
+    # WORKAROUND: multiple-char sequence for 7-bit queries
+    # http://lists.schmorp.de/pipermail/rxvt-unicode/2023q1/002640.html
     patch -p0 -i ../7-bit-queries.patch
 
-    # workaround: locale for perl 5.38
+    # WORKAROUND: locale for perl 5.38
+    # http://lists.schmorp.de/pipermail/rxvt-unicode/2023q3/002665.html
     patch -p0 -i ../perl-5.38.patch
+
+    # WORKAROUND: prompt position (revert lines-rewrap update in screen.C to 9.30)
+    # http://lists.schmorp.de/pipermail/rxvt-unicode/2023q2/002661.html
+    # https://wiki.archlinux.org/title/Rxvt-unicode#Wrong_shell_prompt_placement_after_upgrading_to_9.31
+    patch -p0 -i ../lines-rewrap.patch
 
     ################################################################
     #                                                              #
