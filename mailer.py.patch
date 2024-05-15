@@ -26,6 +26,6 @@
 +            else:
 +                self.starttls(config["MAIL_TLS_KEYFILE"],
 +                              config["MAIL_TLS_CERTFILE"])
-+
+ 
          # ok, now do we also need to log in?
          mailuser = config["MAIL_USERNAME"]
