@@ -56,7 +56,9 @@ pipeline {
                         git config user.email "aman.iv0012@gmail.com"
                         git config user.name "Aman Gupta"
                         export GIT_SSH_COMMAND="ssh -i $KEY"
-                        git switch master
+                        git branch release
+                        git checkout master
+                        git merge release
                         git commit -am "Automated Release: Updated to v${VERSION}"
                         git push
                     '''
