@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://tapclean.sourceforge.io/"
 license=('GPL-2.0-only')
 depends=()
+conflicts=("tapclean.git")
 source=("https://sourceforge.net/projects/tapclean/files/tapclean/TAPClean%20${pkgver}/${pkgname}-${pkgver}-src.tgz")
 md5sums=('e6489783241bb30affdb33d19fff04fb')
 
