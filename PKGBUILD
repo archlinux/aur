@@ -1,7 +1,7 @@
 # Maintainer: David Biro <dbiro97@gmail.com>
 
 pkgname=vonal-bin
-pkgver="v1.5"
+pkgver="v1.5.0"
 pkgrel=1
 pkgdesc='Global search for tiling window managers'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('GPLv3')
 provides=(vonal)
 options=('!strip')
 source=("${url}/releases/download/${pkgver}/vonal.tar.gz")
-b2sums=('1df08061035d67231b62d96f2de54ed922797f43114757138d01b0286621c98de5bbc133170682430c6e72d38f7e40768ac1a39738e70d6f817476f7f6bd4d5e')
+b2sums=('99a3e6fd3336037ec843da40d72d8f95672afd8fff86964b41fb0fa856319ebb4f38ab1e0751c06253c4b4c9d237256a07285a3a40eb174b3bc61ddf19a444f6')
 
 package() {
 	install -D "${srcdir}/vonal" "${pkgdir}/usr/bin/vonal"
