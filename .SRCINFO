@@ -1,0 +1,16 @@
+pkgbase = xfce4-nvgpugraph-plugin
+	pkgdesc = nvidia GPU Graph plugin for the Xfce4 panel.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mwyborski/xfce4-nvgpugraph-plugin
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = xfce4-dev-tools
+	depends = xfce4-panel
+	provides = xfce4-nvgpugraph-plugin
+	conflicts = xfce4-nvgpugraph-plugin
+	source = xfce4-nvgpugraph-plugin::git+https://github.com/mwyborski/xfce4-nvgpugraph-plugin.git
+	md5sums = SKIP
+
+pkgname = xfce4-nvgpugraph-plugin
