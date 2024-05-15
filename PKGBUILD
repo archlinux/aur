@@ -8,13 +8,8 @@
 ## useful links
 # https://www.gnu.org/software/gnuzilla/
 # https://git.savannah.gnu.org/cgit/gnuzilla.git
-#
-# https://icecatbrowser.org/
-# https://codeberg.org/chippy/gnuzilla
-# https://software.classictetris.net/icecat/last_version_check
 
 ## options
-: ${_build_prepatched:=false}
 : ${_build_save_source:=true}
 : ${_build_repatch:=false}
 
@@ -22,24 +17,23 @@
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=true}
 
-# set to download only one language
+# set to download only one language; en-US does not work
 : ${_lang:=}
 
-if [ "${_build_prepatched::1}" != "t" ] || [ -n "$_pkgver" ]; then
-  : ${_autoupdate:=false}
-fi
+## update
+_icver="115.11.0"
+_commit="5107c173217a594c52c6c301be62a4dc603b3f6f"
+_icsum="4cee9abd2b32030b83d4b3ce3326919c57414d102b8db96dafc3cbf07a9f6e62"
+_ffsum="16be46f16a356a2b8bd3541805a24c8a2acf6f077cf8a65859689685c26025e0"
 
 if [ -n "$_srcinfo" ]; then
-  : ${_autoupdate:=false}
   : ${_lang:=en-US}
 fi
-
-: ${_autoupdate:=true}
 
 ## basic info
 _pkgname="icecat"
 pkgname="$_pkgname"
-pkgver=115.10.0
+pkgver="$_icver"
 pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
 license=('MPL-2.0')
@@ -82,7 +76,7 @@ _main_package() {
     nodejs
     python
     python-setuptools
-    rust
+    rustup
     unzip
     wasi-compiler-rt
     wasi-libc
@@ -90,6 +84,14 @@ _main_package() {
     wasi-libc++abi
     yasm
     zip
+
+    ## _makeicecat
+    git
+    m4
+    python-jsonschema
+    python-psutil
+    python-setuptools
+    wget
   )
   optdepends=(
     'hunspell-dictionary: Spell checking'
@@ -98,17 +100,6 @@ _main_package() {
     'speech-dispatcher: Text-to-Speech'
     'xdg-desktop-portal: Screensharing with Wayland'
   )
-
-  if [ "${_build_prepatched::1}" != "t" ]; then
-    makedepends+=(
-      git
-      m4
-      python-jsonschema
-      python-psutil
-      python-setuptools
-      wget
-    )
-  fi
 
   if [[ "${_build_pgo::1}" == "t" ]]; then
     if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
@@ -132,61 +123,56 @@ _main_package() {
     !strip
   )
 
-  if [[ "${_build_prepatched::1}" == "t" ]]; then
-    url="https://icecatbrowser.org/"
-    _update_version
+  url="https://git.savannah.gnu.org/cgit/gnuzilla.git"
 
-    _pkgsrc="$_pkgname-$_pkgver"
-    _pkgext="tar.bz2"
-    source+=("https://software.classictetris.net/icecat/${_pkgver}esr/$_pkgsrc-gnu1.$_pkgext")
+  noextract=("firefox-${pkgver}esr.source.tar.xz")
+
+  _patch_commit="24a6ea8"
+
+  _pkgsrc="$_pkgname-$pkgver"
+  _pkgsrc_gnuzilla="gnuzilla-$_commit"
+  _pkgsrc_firefox="firefox-${pkgver}"
+  _pkgext="tar.gz"
+  source+=(
+    "https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/$_pkgsrc_gnuzilla.$_pkgext"
+    "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"{,.asc}
+
+    "18d19413472f-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=$_patch_commit"
+    "6af7194e2778-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=$_patch_commit"
+    "b1cc62489fae-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit"
+  )
+  sha256sums+=(
+    "$_icsum"
+    "$_ffsum"
+    'SKIP'
+
+    '3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18'
+    '6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e'
+    'f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117'
+  )
+
+  validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
+
+  _languages=(
+    ach af an ar ast az be bg bn br bs ca ca-valencia cak cs cy da de dsb
+    el en-CA en-GB eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fur fy-NL
+    ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM ia id is it ja ja-JP-mac
+    ka kab kk km kn ko lij lt lv mk mr ms my nb-NO ne-NP nl nn-NO oc
+    pa-IN pl pt-BR pt-PT rm ro ru sc sco si sk sl son sq sr sv-SE szl
+    ta te tg th tl tr trs uk ur uz vi xh zh-CN zh-TW
+  )
+
+  [ -n "$_lang" ] && _languages=("$_lang")
+
+  for _locale in "${_languages[@]}"; do
+    [ "$_locale" = "en-US" ] && continue
+    source+=("l10n-central-$pkgver-$pkgrel-$_locale.zip"::"https://hg.mozilla.org/l10n-central/$_locale/archive/tip.zip")
     sha256sums+=('SKIP')
-  else
-    url="https://git.savannah.gnu.org/cgit/gnuzilla.git"
-
-    noextract=("firefox-${pkgver}esr.source.tar.xz")
-
-    _commit=40e114e5e8fd0b4d3621d6c8aebf0c78100578f2
-    _ffsum=0afd3c733d95f7047f258d1a9768d06d856217fe736d85bfb370db9dd926eef2
-    _pkgsrc="$_pkgname-$pkgver"
-    _pkgsrc_gnuzilla="gnuzilla-$_commit"
-    _pkgext="tar.gz"
-    source+=(
-      "https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/$_pkgsrc_gnuzilla.$_pkgext"
-      "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"{,.asc}
-    )
-    sha256sums+=(
-      'e254c2588f4f0640979fe6b59e11f0c2ccc0b65189231ce4f4daf1717b877468'
-      "$_ffsum"
-      'SKIP'
-    )
-
-    validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
-
-    _languages=(
-      ach af an ar ast az be bg bn br bs ca ca-valencia cak cs cy da de dsb
-      el en-CA en-GB eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fur fy-NL
-      ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM ia id is it ja ja-JP-mac
-      ka kab kk km kn ko lij lt lv mk mr ms my nb-NO ne-NP nl nn-NO oc
-      pa-IN pl pt-BR pt-PT rm ro ru sc sco si sk sl son sq sr sv-SE szl
-      ta te tg th tl tr trs uk ur uz vi xh zh-CN zh-TW
-    )
-
-    [ -n "$_lang" ] && _languages=("$_lang")
-
-    for _locale in "${_languages[@]}"; do
-      [ "$_locale" = "en-US" ] && continue
-      source+=("l10n-central-$pkgver-$pkgrel-$_locale.zip"::"https://hg.mozilla.org/l10n-central/$_locale/archive/tip.zip")
-      sha256sums+=('SKIP')
-      noextract+=("l10n-central-$pkgver-$pkgrel-$_locale.zip")
-    done
-  fi
+    noextract+=("l10n-central-$pkgver-$pkgrel-$_locale.zip")
+  done
 }
 
 _make_icecat() {
-  if [[ "${_build_prepatched::1}" == "t" ]]; then
-    return
-  fi
-
   if [ "${_build_repatch::1}" != "t" ] && [ -e "$SRCDEST/$_pkgsrc.tar.zst" ]; then
     echo "Restoring previously patched sources..."
     rm -rf "$srcdir/$_pkgsrc"
@@ -196,22 +182,22 @@ _make_icecat() {
 
   pushd "$_pkgsrc_gnuzilla"
 
-  # uncomment if there are problems with gpg
-  #sed -e 's/^verify_sources$//g' -i makeicecat
-
   # clean output in case there is already an old build
   mkdir output || rm -rf output/*
   mkdir output/l10n
 
   echo "Preparing Firefox ESR..."
-  cp --reflink=auto -f "$srcdir"/firefox-${pkgver}esr.source.tar.xz{,.asc} output/
+  # cp --reflink=auto -f "$srcdir/firefox-${pkgver}esr.source.tar.xz"{,.asc} "$_pkgsrc_gnuzilla"/output/
+
+  bsdtar xf "$srcdir/firefox-${pkgver}esr.source.tar.xz"
+  mv "$_pkgsrc_firefox" "$srcdir/$_pkgsrc_gnuzilla/output/$_pkgsrc"
 
   echo "Preparing translations..."
   local L10N_PREFS_DIR="browser/chrome/browser/preferences"
   local L10N_DTD_FILE="advanced-scripts.dtd"
 
   for _locale in "${_languages[@]}"; do
-    mkdir "output/l10n/$_locale"
+    mkdir -p "output/l10n/$_locale"
     bsdtar -C "output/l10n/$_locale" --strip-components 1 -xf "$srcdir/l10n-central-$pkgver-$pkgrel-$_locale.zip"
     mkdir -p "output/l10n/$_locale/$L10N_PREFS_DIR"
     touch "output/l10n/$_locale/$L10N_PREFS_DIR/$L10N_DTD_FILE"
@@ -220,21 +206,15 @@ _make_icecat() {
 
   echo "Patching sources..."
 
-  # avoid redownloading firefox
-  sed -e '/rm -rf output/d' -i makeicecat
-  sed -e 's/wget -N/wget -nv -Nc/g' -i makeicecat
-
-  # update firefox version
-  sed -E \
-    -e '/^readonly FFMAJOR/s&(FFMAJOR)=.*$&\1='"$(cut -d'.' -f1 <<< "$pkgver")"'&' \
-    -e '/^readonly FFMINOR/s&(FFMINOR)=.*$&\1='"$(cut -d'.' -f2 <<< "$pkgver")"'&' \
-    -e '/^readonly FFSUB/s&(FFSUB)=.*$&\1='"$(cut -d'.' -f3 <<< "$pkgver")"'&' \
-    -e '/^readonly FFBUILD/s&(FFBUILD)=.*$&\1='"$(cut -d'.' -f1 <<< "$pkgrel")"'&' \
-    -e '/^readonly SOURCEBALL_CHECKSUM/s&(SOURCEBALL_CHECKSUM)=.*$&\1='"${_ffsum}"'&' \
-    -i makeicecat
-
   # don't make source tarball
   sed '/^finalize_sourceball$/d' -i makeicecat
+
+  # don't redownload or reextract firefox
+  sed \
+    -e '/^fetch_source$/d' \
+    -e '/^verify_sources$/d' \
+    -e '/^extract_sources$/d' \
+    -i makeicecat
 
   # don't redownload languages
   sed -E -e '/DEVEL/s&^(\s*)!.*continue$&\1continue&' -i makeicecat
@@ -248,7 +228,8 @@ _make_icecat() {
   done
 
   # produce icecat sources
-  bash makeicecat
+  cd output
+  bash ../makeicecat
   popd
 
   if [[ "${_build_save_source::1}" == "t" ]]; then
@@ -398,6 +379,13 @@ END
 build() {
   cd "$_pkgsrc"
 
+  # patch to fix rust issues
+  patch -Np1 -F100 -i "$srcdir/18d19413472f-$_patch_commit.patch"
+  patch -Np1 -F100 -i "$srcdir/6af7194e2778-$_patch_commit.patch"
+  patch -Np1 -F100 -i "$srcdir/b1cc62489fae-$_patch_commit.patch"
+
+  export RUSTUP_TOOLCHAIN=1.77
+
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
 
@@ -407,6 +395,10 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
+
+  # malloc_usable_size is used in various parts of the codebase
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
   # LTO/PGO needs more open files
   ulimit -n 4096
@@ -598,23 +590,6 @@ END
     install -Dvm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
-}
-
-# update version
-_update_version() {
-  : ${_pkgver:=${pkgver%%.r*}}
-
-  if [[ "${_autoupdate::1}" != "t" ]]; then
-    return
-  fi
-
-  local _ver_url="https://software.classictetris.net/icecat/last_version_check"
-  local _pkgver_new=$(curl -Ssf "$_ver_url")
-
-  # update _pkgver
-  if [ "$_pkgver" == "${_pkgver_new:?}" ]; then
-    _pkgver="${_pkgver_new:?}"
-  fi
 }
 
 # execute
