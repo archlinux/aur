@@ -16,7 +16,7 @@ depends=(
 makedepends=(
     'gendesk'
     'npm'
-    'nodejs'
+    'nvm'
     'curl'
 )
 source=(
