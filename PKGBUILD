@@ -2,7 +2,7 @@
 
 pkgname=python-pexpect-git
 pkgver=r1628.aa98959
-pkgrel=1
+pkgrel=2
 pkgdesc='For controlling and automating applications'
 arch=(any)
 url='https://pexpect.readthedocs.org/en/stable/'

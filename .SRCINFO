@@ -1,7 +1,7 @@
 pkgbase = python-pexpect-git
 	pkgdesc = For controlling and automating applications
 	pkgver = r1628.aa98959
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pexpect.readthedocs.org/en/stable/
 	arch = any
 	license = MIT
