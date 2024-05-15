@@ -1,4 +1,4 @@
-pkgbase = legcord-bin
+pkgbase = legcord
 	pkgdesc = A minimal custom client for Discord that keeps everything lightweight while using the official web app.
 	pkgver = ed8ca6a
 	pkgrel = 1
