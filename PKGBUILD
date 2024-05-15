@@ -1,40 +1,27 @@
-# Maintainer: Joar Heimonen <joarheimonen@live.no>
-# Note: This is only an install script for Yuma123, not the actual project itself.
+# Maintainer: Fhilipe Coelho <fhilipecoelho.dev@gmail.com>
 
-pkgname=yuma123
-pkgver=1
+pkgname=hydra-launcher-bin
+_pkgname=hydra-launcher
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Package description for yuma123"
+pkgdesc="A game launcher with its own embedded bittorrent client and a self-managed repack scraper."
 arch=('x86_64')
-url="https://github.com/vlvassilev/yuma123"
-#license=('GPL3')
+url="https://github.com/hydralauncher/hydra"
+license=('MIT')
+provides=('hydra-launcher')
+options=(debug !strip)
+depends=('lutris')
 
-#depends=('vi' 'ffmpeg')
-#makedepends=('qt5-tools')
+source=()
 
-#source=("https://github.com/[your package].tar.gz")
-
-#sha512sums=("[paste sha512sum output]")
-
-
-build() {
-  cd "$srcdir"
-  # Your build
-   cd "$srcdir/yuma123"
-   make DESTDIR="${pkgdir}" install
-   mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
- }
+source_x86_64=("https://github.com/hydralauncher/hydra/releases/download/v${pkgver}/hydra_${pkgver}_amd64.deb")
+sha256sums_x86_64=('54cccb6aa73f3729340ec18ec411884eb375fa0590e0e146697037120151aba0')
 
 package() {
-
-  # Create necessary directories
-  #install -d "$pkgdir/usr/bin"
-
-
-  # Install additional files
-  #install -m644 usr/share/[package name]/[folder name]/* "$pkgdir/usr/share/[package name]/[folder name]"
-
-  # Change ownership
-  #chown -R "$USER:$USER" "$pkgdir/usr/share/[your package]"
-
+  tar -xvf 'data.tar.xz' -C "${pkgdir}"
+  install -dv "${pkgdir}/usr/bin"
+  ln -sfv "/opt/hydra" -t "${pkgdir}/usr/bin"
+  install -Dvm644 "${pkgdir}/opt/Hydra/"LICENSES.chromium.html \
+    -t "${pkgdir}/usr/share/licenses/hydra-launcher"
 }
+
