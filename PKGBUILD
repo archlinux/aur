@@ -1,14 +1,14 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=windfetch
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="OS information tool. Fork of Neofetch"
 arch=("any")
 url="https://codeberg.org/chardon_cs/windfetch"
 license=('MIT')
 groups=()
-backup=('etc/neofetch/config.conf')
+backup=('etc/windfetch/config.conf')
 depends=(
 	"bash"
 )
@@ -42,7 +42,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-	"3fffd6b516777f79bcb7ff4a2bed7ca54497e1dd7ffd046712152f652326c30d"
+	"0b37f949fe549eb5e3bdfc8c9bd094ee2aebe190c49f4d872137772ccc31b734"
 )
 validpgpkeys=(
 	"69713F2236BBD93D3E78EFEF0D56181B48414DE8" # Charles Dong
