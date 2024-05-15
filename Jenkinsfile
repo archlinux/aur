@@ -55,7 +55,7 @@ pipeline {
                     sh '''
                         git config user.email "aman.iv0012@gmail.com"
                         git config user.name "Aman Gupta"
-                        git commit -am "Automated Commit: Update to ${VERSION}"
+                        git commit -am "Automated Commit: Update to v${VERSION}"
                         export GIT_SSH_COMMAND="ssh -i $KEY"
                         
                     '''
@@ -70,14 +70,14 @@ pipeline {
         success {
             withCredentials([string(credentialsId: 'Discord_Webhook', variable: 'WEBHOOK_URL')]) {
                 sh '''
-                    curl -H 'Content-Type: application/json' -d '{\"content\": \"✅ Logstash v '"$VERSION"' Released to AUR 🎆\"}' ${WEBHOOK_URL}
+                    curl -H 'Content-Type: application/json' -d '{\"content\": \"✅ Logstash v'"$VERSION"' Released to AUR 🎆\"}' ${WEBHOOK_URL}
                 '''
             }
         }
         failure {
             withCredentials([string(credentialsId: 'Discord_Webhook', variable: 'WEBHOOK_URL')]) {
                 sh '''
-                    curl -H 'Content-Type: application/json' -d '{\"content\": \"❌ Logstash v '"$VERSION"' Pipeline Failed 🛠️\"}' ${WEBHOOK_URL}
+                    curl -H 'Content-Type: application/json' -d '{\"content\": \"❌ Logstash v'"$VERSION"' Pipeline Failed 🛠️\"}' ${WEBHOOK_URL}
                 '''
             }
         }
