@@ -1,27 +1,19 @@
 # Maintainer: Adrian Room <ingolemo@gmail.com>
 
 pkgname=knightsgame
-pkgver=025
-pkgrel=2
+pkgver=026
+pkgrel=1
 pkgdesc="A free multiplayer competitive game involving knights, dungeons, and quests."
 arch=('x86_64')
 url="http://www.knightsgame.org.uk/"
-license=('GPL3')
-depends=('boost-libs' 'sdl' 'curl' 'fontconfig')
+license=('GPL2')
+depends=('boost-libs' 'sdl2' 'curl' 'fontconfig')
 makedepends=('boost')
 source=(http://www.knightsgame.org.uk/files/knights_${pkgver}_src.tar.gz)
-md5sums=('99d55713c2a0ca605252d87641817da4')
+sha256sums=('6e49d071385008bc431b8e08a9d2721ce1cabdcb356ef76c881256a0780721b2')
 
 build() {
 	cd "$srcdir/knights_${pkgver}_src"
-
-	# apparently freetype-config has been deprecated for a while and
-	# was removed from the freetype2 package in summer 2018
-	sed 's/freetype-config/pkgconf freetype2/' -i Makefile
-
-	# the knights_server binary needs -lpthread but this isn't
-	# passed for some reason
-	sed 's/$^ `curl-config --libs`/$^ `curl-config --libs` -lpthread/' -i Makefile
 
 	prefix=/usr
 	make \
