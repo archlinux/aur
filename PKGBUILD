@@ -2,8 +2,8 @@
 
 pkgname=telegram-a
 realname=telegram-tt
-pkgver=10.9.2
-gitpkgver=75f6b476926d760a606ce64e941c64f6a676599f
+pkgver=10.9.6
+gitpkgver=6eaaa5dce5dbcd533362da6766eb0f09d3911fcb
 pkgrel=1
 _electron=electron22
 pkgdesc="Official Telegram Web client version A system Electron version"
@@ -18,14 +18,12 @@ source=("https://github.com/Ajaxy/${realname}/archive/${gitpkgver}.tar.gz"
                 "set_custom_app_name.patch"
                 "set_custom_window_title_from_env.patch"
                 "disable_statoscope.patch"
-                "run_husky_install_only_in_git.patch"
                 "force-disable-auto-update.patch")
-sha256sums=('48b512db9e5f1e69f44959d2d7d7ae7cc3975fc7307d4839eff9df5bf5fd805f'
+sha256sums=('b28022fa1b78701782ef0ee38189b08a2d491dfaa78f8abd761b13a73f0e9895'
                 'efeb0cd71fd3d39d75744885a585e9961481a68ccf885a0b4f929eaf062c2b35'
                 'be1ec2ce92c6017e55ea79254502e34bf744fdeccd8952bce9eb69d0a7ee231a'
                 'ecd8513d233fa5da2925ef68a97cd03ddcea81c2a050576e64dcfa8f177aea0b'
                 '00f7cf0019c84fbd0da5014fdf3cc6eba35cbed2a3574951bbe57e9fd0ecbcd9'
-                '7492e3db6991a6917b206ee2324c783fcfd3e67b3d01cf5a17cfd613ef94aeb0'
                 '4e9f3c68fa01604d71002bb03fcdb248e8468cff2d279ecffff2619402ea29df')
 
 prepare() {
@@ -35,7 +33,6 @@ prepare() {
     patch -Np1 -i "${srcdir}/set_custom_app_name.patch"
     patch -Np1 -i "${srcdir}/set_custom_window_title_from_env.patch"
     patch -Np1 -i "${srcdir}/disable_statoscope.patch"
-    patch -Np1 -i "${srcdir}/run_husky_install_only_in_git.patch"
     patch -Np1 -i "${srcdir}/force-disable-auto-update.patch"
 
     # Workaround 
