@@ -1,0 +1,25 @@
+pkgbase = aeolus_plugin-git
+	pkgdesc = Synthesised pipe organ emulator
+	pkgver = r220.50494c1
+	pkgrel = 1
+	url = https://github.com/Archie3d/aeolus_plugin
+	arch = x86_64
+	groups = pro-audio
+	license = GPL-3.0-only
+	makedepends = alsa-lib
+	makedepends = clthreads
+	makedepends = clxclient
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	conflicts = aeolus
+	source = aeolus_plugin-git::git+https://github.com/Archie3d/aeolus_plugin
+	md5sums = SKIP
+
+pkgname = aeolus_plugin-git
+	depends = gcc-libs
+	depends = glibc
+	depends = alsa-lib
+	depends = libasound.so
+	depends = freetype2
