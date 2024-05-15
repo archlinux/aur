@@ -1,0 +1,25 @@
+pkgbase = dopamine-git
+	pkgdesc = The audio player that keeps it simple
+	pkgver = 3.0.0.preiew.25.r17.geb49a34
+	pkgrel = 1
+	url = https://github.com/digimezzo/dopamine
+	arch = any
+	license = GPL-3.0-only
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = base-devel
+	makedepends = gcc
+	makedepends = curl
+	depends = electron25
+	depends = libvips
+	depends = nodejs
+	provides = dopamine=3.0.0.preiew.25
+	conflicts = dopamine
+	source = dopamine.git::git+https://github.com/digimezzo/dopamine.git
+	source = dopamine.sh
+	sha256sums = SKIP
+	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+
+pkgname = dopamine-git
