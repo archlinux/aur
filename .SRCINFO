@@ -1,7 +1,7 @@
 pkgbase = metacubexd
 	pkgdesc = Mihomo Dashboard, The Official One, XD
 	pkgver = 1.138.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MetaCubeX/metacubexd
 	arch = any
 	license = MIT
@@ -10,9 +10,7 @@ pkgbase = metacubexd
 	optdepends = mihomo: Another Clash Kernel by MetaCubeX
 	optdepends = sing-box: The universal proxy platform
 	provides = metacubexd
-	provides = metacubexd-bin
 	conflicts = metacubexd
-	conflicts = metacubexd-bin
 	source = metacubexd-1.138.1.tar.gz::https://github.com/MetaCubeX/metacubexd/archive/refs/tags/v1.138.1.tar.gz
 	sha256sums = fdaef50c1c19faae2f7000bd9741e9889789752824702001ac0d31b8a5055927
 

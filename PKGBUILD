@@ -2,13 +2,13 @@
 
 pkgname="metacubexd"
 pkgver=1.138.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mihomo Dashboard, The Official One, XD"
 arch=("any")
 url="https://github.com/MetaCubeX/${pkgname}"
 license=("MIT")
-provides=("${pkgname}"{,-bin})
-conflicts=("${pkgname}"{,-bin})
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 makedepends=("yarn")
 optdepends=('clash: A rule-based tunnel in Go'
             'mihomo: Another Clash Kernel by MetaCubeX'
@@ -23,6 +23,8 @@ build() {
 }
 
 package() {
+    install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
     cd "${pkgname}-${pkgver}/dist"
     find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/"{} \;
 }
