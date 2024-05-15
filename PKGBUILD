@@ -5,8 +5,8 @@ _name=${pkgname#python-}
 pkgdesc="Encode spatial data as topology in Python"
 url="https://mattijn.github.io/topojson/"
 
-pkgver=1.8
-pkgrel=2
+pkgver=1.9
+pkgrel=1
 
 arch=("any")
 license=("BSD")
@@ -32,9 +32,8 @@ checkdepends=(
     "python-pytest"
     "python-simplification"
 )
-
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("64d51e8be2292874bffe5628bd90151dc6f2d4c92cefcd19db9f95789f65dcfe2afd05946e065f7ba8ba8a3c370ff9e65e0d805428d89059d7b79fd1f9dcf95d")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mattijn/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=("b33dc37a51b6de26b25819e8f889eb1e0f74f586798e26e1fe8dcf59e16ff866a76eeea6aba74ab1d1840ba7881c1a9d004a7eb6b99c1ca79a54c6f253ee052c")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
