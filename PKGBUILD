@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/gabrie30/ghorg'
 license=('Apache-2.0')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/gabrie30/ghorg/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('29e11bfc4f313bcd4f4c8fcb58921b8e4b98ba4570f7b0c85e0e360d9685cd00')
 
 build() {
