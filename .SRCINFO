@@ -1,0 +1,16 @@
+pkgbase = hypermicmonitor-git
+	pkgdesc = Command-line tool for controlling Mic Monitoring on HyperX headsets.
+	pkgver = r3.c8e25b1
+	pkgrel = 1
+	url = https://github.com/acidiclight/hypermicmonitor
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk
+	makedepends = git
+	depends = hidapi
+	provides = hypermicmonitor
+	conflicts = hypermicmonitor
+	source = hypermicmonitor::git+https://github.com/acidiclight/hypermicmonitor.git
+	sha256sums = SKIP
+
+pkgname = hypermicmonitor-git
