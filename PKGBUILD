@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=pascal-sdl2-git
 pkgver=1.72.r138.201a767
-pkgrel=2
+pkgrel=3
 pkgdesc="Pascal SDL 2 Headers"
 arch=('i686' 'x86_64')
 url="https://github.com/ev1313/Pascal-SDL-2-Headers"
@@ -41,4 +41,5 @@ package() {
   install -dm755 "$pkgdir"/usr/lib/fpc/${_fpcver}/${_unitdir}/sdl2
   install -m644 *.o "$pkgdir"/usr/lib/fpc/${_fpcver}/${_unitdir}/sdl2
   install -m644 *.ppu "$pkgdir"/usr/lib/fpc/${_fpcver}/${_unitdir}/sdl2
+  install -D -m644 "zlib-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/zlib-LICENSE"
 }
