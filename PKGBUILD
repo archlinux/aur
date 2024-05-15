@@ -3,7 +3,7 @@
 
 pkgname=papis
 pkgver=0.13
-pkgrel=4
+pkgrel=5
 pkgdesc="Command-line document and bibliography manager"
 arch=('any')
 url="https://github.com/papis/papis"
@@ -20,13 +20,14 @@ depends=('python'
     'python-habanero'
     'python-isbnlib'
     'python-lxml'
-    'python-platformdirs'
     'python-prompt_toolkit'
     'python-pygments'
     'python-pyparsing'
     'python-requests'
     'python-slugify'
     'python-stevedore'
+    'python-tqdm'
+    'python-typing_extensions'
     'python-yaml'
 )
 optdepends=(
@@ -51,26 +52,30 @@ makedepends=(
 
     'python-setuptools'
 )
-#checkdepends=(
-#    'python-pytest'
-#    'python-pytest-cov'
-#    'python-jinja'
-#    'python-markdownify'
-#    'python-whoosh'
-#)
+checkdepends=(
+    'python-pytest'
+    'python-pytest-cov'
+    # These are optional -- if they're not installed, papis will automatically
+    # skip these tests -- and are only necessary if you intend to use the
+    # optdeps as well
+    'python-jinja'
+    'python-markdownify'
+    'python-whoosh'
+)
 
-source=("https://github.com/papis/papis/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=("efff09aeaaacf170ef5c01170f1c856dbe09566096deb7ae649bfe755d58f225467241464e4b4bf8f36c25898fc7e9f689358073ab45e81d651defd127729af3")
+source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('efff09aeaaacf170ef5c01170f1c856dbe09566096deb7ae649bfe755d58f225467241464e4b4bf8f36c25898fc7e9f689358073ab45e81d651defd127729af3')
 
 build() {
   cd "${pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
-#check() {
-#  cd "${pkgname}-${pkgver}"
-#  python -m pytest papis tests
-#}
+check() {
+  cd "${pkgname}-${pkgver}"
+  python -m pytest papis tests \
+    -k 'not (test_config.py and test_get_configuration)'
+}
 
 package() {
   cd "${pkgname}-${pkgver}"
