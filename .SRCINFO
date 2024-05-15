@@ -1,7 +1,7 @@
 pkgbase = hfsutils
 	pkgdesc = HFS Access utils
-	pkgver = 3.2.6_p15
-	pkgrel = 2
+	pkgver = 3.2.6_p16
+	pkgrel = 1
 	url = https://www.mars.org/home/rob/proj/hfs/
 	arch = x86_64
 	license = GPL2
@@ -9,8 +9,8 @@ pkgbase = hfsutils
 	optdepends = tcl: xhfs GUI
 	optdepends = tk: xhfs GUI
 	source = https://deb.debian.org/debian/pool/main/h/hfsutils/hfsutils_3.2.6.orig.tar.gz
-	source = https://deb.debian.org/debian/pool/main/h/hfsutils/hfsutils_3.2.6-15.debian.tar.xz
+	source = https://deb.debian.org/debian/pool/main/h/hfsutils/hfsutils_3.2.6-16.debian.tar.xz
 	sha256sums = bc9d22d6d252b920ec9cdf18e00b7655a6189b3f34f42e58d5bb152957289840
-	sha256sums = 1477221ab2e563198f111e2b9f6564e9af3ce4c5ae7f9fccd983ec41c70a15d9
+	sha256sums = fa128b4701b02d5698fc4bbb393ad1a8a54fdd9a33ffad3fdc1f10fd0ad11a89
 
 pkgname = hfsutils
