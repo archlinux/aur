@@ -24,7 +24,7 @@ sha256sums=('085e175037a759539ec1742715448b4f5405d5ff0a9e76eef5287cdc735de4be')
 
 package() {
   # Unpack package contents
-  bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
+  bsdtar -xf ${srcdir}/data.tar.zst -C ${pkgdir}/
 
   # Install license
   install -D -m644 ${pkgdir}/opt/bitwig-studio/EULA.rtf ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
