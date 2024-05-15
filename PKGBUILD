@@ -1,8 +1,9 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 pkgname=python2-pytest-rerunfailures
-pkgver=6.0
+# Do NOT update this further. Version 9.0 dropped support for Python 2.
+pkgver=8.0
 pkgrel=1
-pkgdesc='A plugin for py.test that re-runs failed tests to eliminate intermittent failures'
+pkgdesc='A plugin for py.test that re-runs failed tests to eliminate intermittent failures (Legacy Python 2 version)'
 arch=('any')
 url='https://github.com/pytest-dev/pytest-rerunfailures/'
 license=('MPL2')
@@ -10,7 +11,7 @@ depends=('python2-pytest')
 makedepends=('python2-setuptools')
 checkdepends=('python2-pytest' 'python2-mock')
 source=("https://files.pythonhosted.org/packages/source/p/pytest-rerunfailures/pytest-rerunfailures-${pkgver}.tar.gz")
-sha512sums=('654a6afea01e5d7e0f516a6427eee5bd2947757a0c05ee177521f607d8cc7e472e614267e414ce014528c4bd5de99a4bfaf5381d6c5dbf5abd9e7170a4c3fbc8')
+sha512sums=('538fe5ca579ec50fc1689c4b7df3a55e0bdb08f87c2dfeb219ee141ef67c6c74a324c64f183f3ff85a5289ecfb54beef0fde2105eb0ae888ed861a15194a9dc5')
 
 build() {
   cd "pytest-rerunfailures-${pkgver}"
