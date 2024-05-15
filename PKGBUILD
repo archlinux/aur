@@ -10,7 +10,7 @@ depends=('jre-openjdk-headless')
 makedepends=()
 # provides=()
 # conflicts=()
-install=.install
+install=.INSTALL
 source=(stardew-valley-designer-${pkgver}-linux-amd64.tar.gz::https://github.com/AzimMuradov/stardew-valley-designer/releases/download/v${pkgver}/stardew-valley-designer-${pkgver}-linux-amd64.tar.gz)
 sha256sums=(d51d8c5e70ad7e34aa49af65824f6f61adc15b166226cc8232b50a03b4b7836f)
 
