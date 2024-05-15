@@ -4,9 +4,9 @@
 # Maintainer: TTsdzb <ttsdzb at outlook dot com>
 
 pkgname=hmcl-bin
-_ver=3.5.7.246
+_ver=3.5.7.247
 pkgver=${_ver}
-pkgrel=2
+pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -23,7 +23,7 @@ sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
             'ebbb213b2e21321af6b1825740b2b8f66e70a922a4427e90fa21a2c998b39b34'
             '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '46eb9e7dc92c052a70ba1c738a09e551009b45aba62a9fbfbd4ef0697708b981')
+            'd883daa7cc59c9502b9db6a63e6be6552afd3fa9527d69590e9e1b97d3e9e443')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 
