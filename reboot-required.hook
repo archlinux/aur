@@ -1,0 +1,30 @@
+[Trigger]
+Operation = Upgrade
+Operation = Remove
+Type = Package
+
+# These only apply at boot time
+Target = amd-ucode
+Target = grub
+Target = intel-ucode
+Target = linux
+Target = linux-firmware
+Target = mkinitcpio
+
+# These various packages are so core to the system that it's
+# simply easier to reboot the machine than to find every process
+# and restart them
+Target = ca-certificates
+Target = dbus-broker
+Target = gcc-libs
+Target = glib2
+Target = glibc
+Target = libcap
+Target = openssl
+Target = systemd
+Target = zlib
+
+[Action]
+Description = Marking the system as requiring a reboot
+When = PostTransaction
+Exec = /usr/bin/touch /run/reboot-required
