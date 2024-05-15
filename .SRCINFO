@@ -25,6 +25,7 @@ pkgbase = ansible-lint-git
 	depends = python-rich
 	depends = python-ruamel-yaml
 	depends = python-wcmatch
+	depends = python-importlib-metadata
 	optdepends = ansible: check official ansible collections
 	provides = ansible-lint
 	conflicts = ansible-lint
