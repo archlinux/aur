@@ -1,0 +1,15 @@
+pkgbase = hyprnome
+	pkgdesc = GNOME-like workspace switching in Hyprland.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/donovanglover/hyprnome
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	source = hyprnome-0.2.0.tar.gz::https://github.com/donovanglover/hyprnome/archive/0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = hyprnome
