@@ -1,14 +1,12 @@
 pkgbase = tabaur-git
 	pkgdesc = A customizable and lightweight AUR helper, designed to be simple but powerful.
-	pkgver = 0.6.4.r18.1712d47
+	pkgver = 0.6.4.r73.4977236
 	pkgrel = 1
 	url = https://github.com/BurntRanch/TabAUR
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
-	makedepends = cmake
-	makedepends = make
-	makedepends = gcc
+	makedepends = base-devel
 	depends = pacman
 	depends = curl
 	optdepends = sudo: privilege elevation
