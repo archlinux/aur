@@ -1,0 +1,12 @@
+pkgbase = syspower
+	pkgdesc = Simple power menu/shutdown screen written in gtkmm4
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/System64fumo/syspower
+	arch = any
+	depends = gtkmm-4.0
+	depends = gtk4-layer-shell
+	source = git+https://github.com/System64fumo/syspower
+	sha256sums = SKIP
+
+pkgname = syspower
