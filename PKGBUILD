@@ -1,14 +1,14 @@
 # Maintainer: shizhiex <shizhiex@gmail.com>
 
 pkgname="orca-slicer"
-pkgver=1.9.1
-_tag='1.9.1'
+pkgver=2.0.0
+_tag='2.0.0'
 pkgrel=1
 pkgdesc="Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL3')
-depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'ttf-harmonyos-sans')
+depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'ttf-harmonyos-sans' 'gst-plugins-base')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'm4' 'pkgconf')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
@@ -16,10 +16,12 @@ source=(
   "https://github.com/SoftFever/OrcaSlicer/archive/refs/tags/v${_tag}.tar.gz"
   "https://raw.githubusercontent.com/SoftFever/OrcaSlicer/v${_tag}/deps/Boost/0001-Boost-fix.patch"
   'orca-slicer.sh'
+  '0002-clipper.patch'
   )
-sha256sums=('a21b0e55708d5335985be2e1bb9e40c12b7e91162dc0d5b78d48a139dcad1dd6'
+sha256sums=('1b431d5060f3ed4edde39c0ad841548249962d6ef7b80a178036e3a8a8a6bd31'
             'bb2662d0a4c58c43726ec98ef4acf201fcf98719c9bbfd207e2d6cdf695a2093'
             '30d860958f3fd5fc657daa6addce45e91689d9833b931c9feb646da760d61de8'
+            '2bc8019afc15a48759f239cbcea57112299c4253470bbdbbba424a7099b257bc'
             )
 
 prepare() {
@@ -27,6 +29,7 @@ prepare() {
   ln -sf OrcaSlicer-${_tag} OrcaSlicer
   # add missing 0001-Boost-fix.patch
   cp 0001-Boost-fix.patch OrcaSlicer/deps/Boost
+  patch -p0 < "$srcdir/0002-clipper.patch"
 }
 
 build() {
