@@ -3,7 +3,7 @@
 
 pkgname=roundup
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple-to-use and install issue-tracking system with command-line, web and e-mail interfaces. Highly customisable."
 arch=('any')
 url="https://www.roundup-tracker.org"
