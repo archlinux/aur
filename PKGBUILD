@@ -1,5 +1,5 @@
 # Maintainer: Archfapper <archfapper@archlinux.org>
-pkgname=legcord-bin
+pkgname=legcord
 pkgver=ed8ca6a
 pkgrel=1
 pkgdesc="A minimal custom client for Discord that keeps everything lightweight while using the official web app."
