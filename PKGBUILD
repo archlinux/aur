@@ -7,15 +7,14 @@
 # Contributor: Richard Murri
 
 pkgname='python2-werkzeug'
-_name="${pkgname#python2-}"
 _commit='54acdd16b247f7037482737e72ec52fc6d50a78d' # 1.0.2 unreleased
 pkgver=1.0.2u.r5.g54acdd16
 pkgrel=1
 pkgdesc='Swiss Army knife of Python web development (legacy Python 2 version)'
 arch=('any')
-url="https://pypi.org/project/${_name}/"
-_repourl="https://github.com/pallets/${_name}"
+url="https://pypi.org/project/werkzeug/"
 license=('custom:BSD')
+depends=('python2')
 makedepends=('python2-setuptools')
 optdepends=(
   'python2-cryptography: for serving WSGI applications'
@@ -27,8 +26,8 @@ _checkdepends_needed=(
   'python2-requests-unixsocket'
 )
 optdepends+=("${_checkdepends_needed[@]/%/: needed for check() during build}")
-_tarname="${_name}-${_commit}"
-source=("${_tarname}.tar.gz::${_repourl}/archive/${_commit}.tar.gz")
+_tarname="werkzeug-${_commit}"
+source=("${_tarname}.tar.gz::https://github.com/pallets/werkzeug/archive/${_commit}.tar.gz")
 b2sums=('805001d280ae0818ea0dbecfe543a08f9fa5a9dcacb03b4cb630dce538cc251295811118d42f5a740f2180bbd429874a63570d34218b5e794a1e3220afe60e94')
 
 _checkinstalled() {
@@ -39,8 +38,7 @@ prepare() {
   cd "${_tarname}"
 
   echo "Changing hashbangs in *.py files to refer to 'python2'"
-  sed -e '1s|#![ ]*/[a-zA-Z0-9./_ ]*python.*|#!/usr/bin/env python2|' \
-      -i $(find . -name '*.py')
+  sed -e '1s|#![ ]*/[a-zA-Z0-9./_ ]*python.*|#!/usr/bin/env python2|' -i $(find . -name '*.py')
 
   echo "Configuring 'setup.cfg': pytest: don't treat warnings as errors"
   sed -e '/filterwarnings =/{n' \
@@ -71,8 +69,6 @@ check() {
 }
 
 package() {
-  depends=('python2')
-
   cd "${_tarname}"
   python2 setup.py install --root="${pkgdir}" --prefix='/usr' --optimize=1 --skip-build
 
