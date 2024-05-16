@@ -10,7 +10,7 @@ url="https://github.com/univrsal/tuna"
 license=('GPL2')
 depends=("obs-studio")
 provides=("obs-plugin-tuna=$pkgver")
-conflicts=("obs-plugin-tuna" "obs-plugin-tuna-git" "obs-tuna")
+conflicts=("obs-plugin-tuna" "obs-tuna")
 source=("https://github.com/univrsal/tuna/releases/download/v$pkgver/tuna-$pkgver-x86_64-linux-gnu.deb")
 sha256sums=('833a11edee5614bd70afce733454a374c9a559d1da1cce117ddbfa89d55cf586')
 
