@@ -1,15 +1,12 @@
 pkgbase = stormfetch
 	pkgdesc = A simple linux fetch program written in go and bash
-	pkgver = 1.1.r0.g2b33b64
-	pkgrel = 3
+	pkgver = 3.0.r0.g2af3ab1
+	pkgrel = 1
 	url = https://gitlab.com/CapCreeperGR/stormfetch
 	arch = any
 	license = MIT
 	makedepends = go
 	depends = bash
-	optdepends = xorg-xhost: display DE/WM and monitor information
-	optdepends = xorg-xdpyinfo: display screen resolution
-	optdepends = lshw: display GPU information
 	source = git+https://gitlab.com/CapCreeperGR/stormfetch
 	sha256sums = SKIP
 

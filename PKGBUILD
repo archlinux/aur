@@ -1,8 +1,8 @@
 # Maintainer: let <let@notlet.dev>
 
 pkgname=stormfetch
-pkgver=1.1.r0.g2b33b64
-pkgrel=3
+pkgver=3.0.r0.g2af3ab1
+pkgrel=1
 pkgdesc='A simple linux fetch program written in go and bash'
 arch=('any')
 url='https://gitlab.com/CapCreeperGR/stormfetch'
@@ -10,11 +10,13 @@ license=('MIT')
 
 makedepends=('go')
 depends=('bash')
-optdepends=(
-	'xorg-xhost: display DE/WM and monitor information'
-	'xorg-xdpyinfo: display screen resolution'
-	'lshw: display GPU information'
-)
+
+# no longer needed
+# optdepends=(
+# 	'xorg-xhost: display DE/WM and monitor information'
+# 	'xorg-xdpyinfo: display screen resolution'
+# 	'lshw: display GPU information'
+# ) 
 
 source=('git+https://gitlab.com/CapCreeperGR/stormfetch')
 sha256sums=('SKIP')
