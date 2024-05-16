@@ -4,12 +4,12 @@ pkgname=musyx-extract-git
 pkgdesc="Sample extractor for GameCube MusyX files"
 
 pkgver=r18.1d9e5c4
-pkgrel=3
+pkgrel=4
 
 arch=(any)
 
 url="https://github.com/Nisto/musyx-extract"
-license=("LicenseRef-unknown")
+#license=("LicenseRef-unknown")
 
 depends=(python)
 makedepends=(git)
@@ -27,20 +27,12 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-prepare() {
+package() {
 	# move to the source directory
 	cd musyx-extract
 
 	# add the shebang to the script
 	sed -i '1s/^/#!\/usr\/bin\/python\n/' MusyXExtract.py
-}
-
-package() {
-	# move to the source directory
-	cd musyx-extract
-
-	# make the script executable
-	chmod +x MusyXExtract.py
 
 	# install the script to /usr/bin
 	install -Dm755 MusyXExtract.py "${pkgdir}/usr/bin/musyx-extract"
