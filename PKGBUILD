@@ -1,5 +1,5 @@
 pkgname=python-tree-sitter
-pkgver=0.21.3
+pkgver=0.22.2
 pkgrel=1
 pkgdesc='Python bindings to the tree-sitter parsing library'
 arch=('x86_64')
@@ -18,13 +18,13 @@ source=(
   'LICENSE'
 )
 sha256sums=(
-  'b5de3028921522365aa864d95b3c41926e0ba6a85ee5bd000e10dc49b0766988'
+  '83b1e625c1e4e485af4cda226605d682ecaf3445bcf36cd471bad103f7b0df8b'
   SKIP
 )
 
 build() {
   cd "$srcdir/tree-sitter-$pkgver"
-  python -m build --wheel
+  python -m build --no-isolation --wheel
 }
 
 package() {
