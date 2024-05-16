@@ -7,7 +7,7 @@ _channel=stable
 _rel=1
 #pkgver=${_pkgver}.${_channel}${_rel}  # beta
 pkgver=${_pkgver}.${_channel}  # stable
-pkgrel=1
+pkgrel=2
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
@@ -25,11 +25,13 @@ source=(
   "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
   'no-rpm.diff'
+  'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
 sha256sums=('8064e0181b1d30352f25eab563bade47b2fd157ca9646b97aff928241d9870ea'
             '76015a774788a2274d29e3fa1e06cb752a8488f24a973b5143d8659d5b290e9c'
             'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
+            'ef7a74e0c26c315e8f5a7b62c19ec0d30ab49f053c8f6215cce2f746ef79366b'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
