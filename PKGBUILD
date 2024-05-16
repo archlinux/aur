@@ -2,10 +2,10 @@
 
 pkgbase=angie
 pkgname=(angie angie-src)
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 arch=('x86_64')
-url='https://angie.software'
+url="https://github.com/webserver-llc/angie"
 license=('BSD')
 makedepends=(pcre2 zlib openssl geoip mailcap libxcrypt)
 #checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached memcached ffmpeg)
@@ -25,12 +25,12 @@ source=(https://download.angie.software/files/$pkgbase-$pkgver.tar.gz{,.asc}
 validpgpkeys=(
   'EB8EAF3D4EF1B1ECF34865A2617AB978CB849A76' # Angie (Signing Key) <devops@tech.wbsrv.ru>
 )
-sha512sums=('23ae9fdbdaa458682e544d0411d25959bb936bc814e37c48c3b9632049d277b73f523e1f9d30c32e23f77681ee16f4056c1820ad51ea0a1d5e81b6bda2603c84'
+sha512sums=('bfbd93551f268a1e55b16140d3194b1838174779b006fa259ef978894548d25d4fb3216fe132621c620ef9815ad1cdc7bd133482536ad10ce26dfe52326cad43'
             'SKIP'
             '65e3ba379411c638db6ac506b08efc118c975b00f65ed43c8af9d45d564711d55520bf56524e787df31a9b7dc65af4c7454b3b9baf2f8f013a44d9087be53a51'
             '2f4dfcfa711b8bcbc5918ba635f5e430ef7132e66276261ade62bb1cba016967432c8dce7f84352cb8b07dc7c6b18f09177aa3eb92c8e358b2a106c8ca142fe9'
             'f3e2b68cfae760fd04ad4829834bf562bb65a9204e2c83798550b4e53a12f532c878148b2c675370f9fef069b58b68e5b99b3b6fe6fe4f4e046ad61bab538c74')
-b2sums=('927ff4b01f1ee432e058a5d8f65b604b122a94e257df8b673dc4c94612a7c045ad49703b4f8b2b8daeb8262a560b1d5465d33c7f9c884b3901f53c40c8d7f579'
+b2sums=('2e26eb73f293643eb33476fd42af937b8650bec1eda9f9731173270a839f9f266290f3296235b92cef81c7da1f2469919d4c8a623437a62c52c98fdc1eb79b33'
         'SKIP'
         '27619a4a3ca0c1b977c54c8ba99fa19abebef37e8eff7c211567e47a98b80ce038f7ec20b7ec936aa0f8945a16fe064cf1fe58d68db3d493f4f63d057d5bf007'
         'e1755f61b4eaece83c6c22e48f9e5e316851d1dc35f8d770f837c7d3c8bdc894af1b697c25f1788ac50cd597085c22fb9bf8096a55ecf7659d63185f68ba2d8a'
