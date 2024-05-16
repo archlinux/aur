@@ -3,7 +3,7 @@
 
 pkgname=torrserver-git
 _pkgname="${pkgname%-git}"
-pkgver=127.r1.g90c5679
+pkgver=132.2.r2.g92e8063
 pkgrel=1
 pkgdesc="Torrent stream server"
 arch=('x86_64' 'armv7h' 'aarch64' 'i686')
@@ -28,6 +28,7 @@ pkgver() {
 prepare() {
     cd "$pkgname"/web
     yarn install --no-fund --cache "${srcdir}/yarn" 
+    env -C "$srcdir/$pkgname/server" GOPATH="$srcdir"/gopath go mod tidy
 }
 
 build() {

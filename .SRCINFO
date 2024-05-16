@@ -1,6 +1,6 @@
 pkgbase = torrserver-git
 	pkgdesc = Torrent stream server
-	pkgver = 127.r1.g90c5679
+	pkgver = 132.2.r2.g92e8063
 	pkgrel = 1
 	url = https://github.com/YouROK/TorrServer
 	install = torrserver.install
@@ -15,7 +15,7 @@ pkgbase = torrserver-git
 	makedepends = npm
 	depends = glibc
 	depends = gcc-libs
-	provides = torrserver=127
+	provides = torrserver=132
 	conflicts = torrserver
 	options = !lto
 	source = torrserver-git::git+https://github.com/YouROK/TorrServer.git
