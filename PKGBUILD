@@ -34,11 +34,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-zen-bmq
-pkgver=6.8.1.zen1
+pkgver=6.9.0.zen1
 pkgrel=1
-linuxver=6.8.1
-commit=d51ddadb4c484aaba621bfe57812085c4fddbdc8
-versiontag=6.8.1-zen1
+linuxver=6.9
+commit=acf99677bdec5cb27dc0e4e262f3f63a9696e13a
+versiontag=6.9-zen1
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -306,7 +306,7 @@ _package-headers(){
   # https://bugs.archlinux.org/task/71392
   install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
-  msg "Installing KConfig files..."
+  msg "Installing Kconfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
   msg "Removing unneeded architectures..."
@@ -351,9 +351,9 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
-            '1f86318ff6d2c14eed7c01cb83407df2d8c52b21c6ee887869e3bef748d6a790'
-            '026dfadb2b5af1190d7360fbfe4630d5e83c6a890abed56ff1594f028408f110')
+sha256sums=('24fa01fb989c7a3e28453f117799168713766e119c5381dac30115f18f268149'
+            'bb6df9549a545f9867d938076b0f6b9bf085680e6d7c505456dbe9e71c8f7af6'
+            '7e56d4a74ce056ca4373cf74b85d323906e2c4ef5149811563a1549a9e376188')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
