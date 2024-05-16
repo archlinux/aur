@@ -1,6 +1,6 @@
 pkgbase = bayestraits
 	pkgdesc = A computer package for performing analyses of trait evolution among groups of species for which a phylogeny or sample of phylogenies is available
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = http://www.evolution.reading.ac.uk/BayesTraits.html
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = bayestraits
 	makedepends = gcc
 	makedepends = nlopt
 	makedepends = gsl
-	source = http://www.evolution.reading.ac.uk/BayesTraitsV4.1.1/Files/BayesTraitsV4.1.1-src.tar.gz
-	sha256sums = e79abcf0fd54199853f51c3860cadeeef666aa9c87a3cff03a5896a999c81479
+	source = http://www.evolution.reading.ac.uk/BayesTraitsV4.1.2/Files/BayesTraitsV4.1.2-src.tar.gz
+	sha256sums = 0423daf1e385c8a007d932fb4c31365ec2a834d5929915ecd999c8e732d07d4a
 
 pkgname = bayestraits
 	depends = nlopt
