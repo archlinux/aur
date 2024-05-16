@@ -8,7 +8,7 @@ url="https://github.com/McMCCRU/SNANDer"
 arch=('any')
 license=('GPL2')
 source=("SNANDer-$pkgver.tar.gz::https://codeload.github.com/McMCCRU/SNANDer/tar.gz/refs/tags/$pkgver")
-sha512sums=('4d28b66a850cc0788d53e13cf2f530e0db3d9e44c2792c84a64ef51564958f3e1f2d28d5118cb0670e88921d91be81a4094a9e13ac7165548ce0ebe11878f0ac  pkg.tar.gz')
+sha512sums=('4d28b66a850cc0788d53e13cf2f530e0db3d9e44c2792c84a64ef51564958f3e1f2d28d5118cb0670e88921d91be81a4094a9e13ac7165548ce0ebe11878f0ac')
 
 build() {
   cd "${srcdir}/SNANDer-$pkgver/src"
