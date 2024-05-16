@@ -15,8 +15,8 @@ makedepends=('git'
              'cmake'
              'ninja'
 )
-conflicts=('dde-session')
-provides=('dde-session')
+conflicts=('deepin-session')
+provides=('deepin-session')
 groups=('deepin-git')
 source=("git+https://github.com/linuxdeepin/dde-session.git")
 sha512sums=('SKIP')

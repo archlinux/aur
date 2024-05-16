@@ -12,8 +12,8 @@ pkgbase = deepin-session-git
 	makedepends = cmake
 	makedepends = ninja
 	depends = systemd-libs
-	provides = dde-session
-	conflicts = dde-session
+	provides = deepin-session
+	conflicts = deepin-session
 	source = git+https://github.com/linuxdeepin/dde-session.git
 	sha512sums = SKIP
 
