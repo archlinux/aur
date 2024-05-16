@@ -1,0 +1,19 @@
+pkgbase = yvt
+	pkgdesc = The script serves as a graphical interface for torctl/tor.
+	pkgver = 1.1.0.r0.gba4d567
+	pkgrel = 1
+	url = https://github.com/s-n-alexeyev/torctl-gui
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = vot-cli
+	depends = ffmpeg
+	depends = yt-dlp
+	depends = jq
+	provides = yvt
+	source = git+https://github.com/s-n-alexeyev/yvt.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = yvt
