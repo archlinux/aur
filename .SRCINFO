@@ -1,16 +1,18 @@
 pkgbase = gtk3-patched-filechooser-icon-view
 	pkgdesc = GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch.
-	pkgver = 3.24.41
+	pkgver = 3.24.42
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Dudemanguy/gtk
 	install = gtk3.install
 	arch = x86_64
-	license = LGPL-2.0-only
+	license = LGPL-2.1-or-later
+	makedepends = at-spi2-core
 	makedepends = git
 	makedepends = glib2-docs
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
+	makedepends = hicolor-icon-theme
 	makedepends = meson
 	makedepends = sassc
 	makedepends = wayland-protocols
@@ -23,6 +25,7 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	depends = fribidi
 	depends = gdk-pixbuf2
 	depends = glib2
+	depends = glibc
 	depends = harfbuzz
 	depends = gtk-update-icon-cache
 	depends = iso-codes
@@ -33,8 +36,8 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	depends = libepoxy
 	depends = libgl
 	depends = librsvg
-	depends = libxcomposite
 	depends = libx11
+	depends = libxcomposite
 	depends = libxcursor
 	depends = libxdamage
 	depends = libxext
@@ -50,7 +53,7 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	depends = wayland
 	optdepends = evince: Default print preview command
 	optdepends = glib2-patched-thumbnailer: Thumbnail generation in upload dialog
-	provides = gtk3=3.24.41
+	provides = gtk3=3.24.42
 	provides = gtk3-print-backends
 	provides = libgailutil-3.so
 	provides = libgdk-3.so
@@ -58,11 +61,13 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	conflicts = gtk3
 	conflicts = gtk3-print-backends
 	replaces = gtk3-print-backends<=3.22.26-1
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=77ebdd85091833a7869ece48c3114fa6d9966321
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#tag=3.24.42
 	source = gtk-query-immodules-3.0.hook
+	source = 0001-Allow-disabling-legacy-Tracker-search.patch
 	source = gtk3-filechooser-icon-view.patch
-	b2sums = SKIP
+	b2sums = 3f79244cfeac535186b84e6c9ad3dad7dbb5737e4ebd8762985fce95930a9bbb07fcc331fb915b7f6ab8496afd7995a5aa501377af01710ff2649e5adabcb249
 	b2sums = 8e6a3906126749c6d853f582e3802254cdbba099c6af7190ad576eff6ea5425404a72b1b36950a87e3afdac82295cfe246003172c3e0341a73bd931a36f3b407
+	b2sums = 7da1746e7702e4bf397f59dd1019e2c8fa8951b2bcc6bf64ec05f322de6dcec6fe5552848d6b389818f625988a3fb2211501d7f72ae97d2c49fbad1e5fe9cd6a
 	b2sums = a19fce8e87f2789d0bca3a62d2858d89e4db4a14cf76930228b01d94aefb8b58867df9c63a194fd3a2542382e3968bef2eda37e1a33847cbbe77838932d9f6c3
 
 pkgname = gtk3-patched-filechooser-icon-view

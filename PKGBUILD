@@ -4,7 +4,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.24.41
+pkgver=3.24.42
 pkgrel=1
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
@@ -20,6 +20,7 @@ depends=(
   fribidi
   gdk-pixbuf2
   glib2
+  glibc
   harfbuzz
   gtk-update-icon-cache
   iso-codes
@@ -30,8 +31,8 @@ depends=(
   libepoxy
   libgl
   librsvg
-  libxcomposite
   libx11
+  libxcomposite
   libxcursor
   libxdamage
   libxext
@@ -47,10 +48,12 @@ depends=(
   wayland
 )
 makedepends=(
+  at-spi2-core
   git
   glib2-docs
   gobject-introspection
   gtk-doc
+  hicolor-icon-theme
   meson
   sassc
   wayland-protocols
@@ -66,16 +69,17 @@ provides=(
 )
 conflicts=(gtk3 gtk3-print-backends)
 replaces=('gtk3-print-backends<=3.22.26-1')
-license=(LGPL-2.0-only)
+license=(LGPL-2.1-or-later)
 install=gtk3.install
-_commit=77ebdd85091833a7869ece48c3114fa6d9966321  # tags/3.24.41^0
 source=(
-  "git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/GNOME/gtk.git#tag=$pkgver"
   gtk-query-immodules-3.0.hook
+  0001-Allow-disabling-legacy-Tracker-search.patch
   gtk3-filechooser-icon-view.patch
 )
-b2sums=('SKIP'
+b2sums=('3f79244cfeac535186b84e6c9ad3dad7dbb5737e4ebd8762985fce95930a9bbb07fcc331fb915b7f6ab8496afd7995a5aa501377af01710ff2649e5adabcb249'
         '8e6a3906126749c6d853f582e3802254cdbba099c6af7190ad576eff6ea5425404a72b1b36950a87e3afdac82295cfe246003172c3e0341a73bd931a36f3b407'
+        '7da1746e7702e4bf397f59dd1019e2c8fa8951b2bcc6bf64ec05f322de6dcec6fe5552848d6b389818f625988a3fb2211501d7f72ae97d2c49fbad1e5fe9cd6a'
         'a19fce8e87f2789d0bca3a62d2858d89e4db4a14cf76930228b01d94aefb8b58867df9c63a194fd3a2542382e3968bef2eda37e1a33847cbbe77838932d9f6c3')
 
 pkgver() {
@@ -85,6 +89,8 @@ pkgver() {
 
 prepare() {
   cd gtk
+
+  git apply -3 ../0001-Allow-disabling-legacy-Tracker-search.patch
 
   # apply icon-view patch
   patch -Np1 -i ../gtk3-filechooser-icon-view.patch
@@ -99,6 +105,7 @@ build() {
     -D introspection=true
     -D demos=false
     -D man=true
+    -D tracker=false
     -D tracker3=true
   )
 
