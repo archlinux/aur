@@ -1,0 +1,16 @@
+pkgbase = elite-pip-macro-bin
+	pkgdesc = Elite Dangerous Pip Macros for Linux X11 made with Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/CMDR-WDX/elite-pip-macro
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = alsa-lib
+	depends = pkgconf
+	depends = libxtst
+	conflicts = elite-pip-macro
+	source = elite-pip-macro-bin.tar.gz::https://github.com/CMDR-WDX/elite-pip-macro/releases/download/v0.1.0/elite-pip-macro.tar.gz
+	sha256sums = e007680d557d2595ce01decde76896f4aaf81384280b845e6942ff6c896164ce
+
+pkgname = elite-pip-macro-bin
