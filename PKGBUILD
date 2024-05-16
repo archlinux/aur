@@ -4,18 +4,18 @@ pkgname="jpsxdec-bin"
 pkgdesc="A modern, cross-platform PlayStation 1 audio/video converter"
 
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 
 arch=(any)
 
 url="http://jpsxdec.blogspot.com"
-license=("LicenseRef-jPSXdec")
+license=("BSD-3-Clause")
 
 depends=("java-runtime>=8")
 makedepends=(unzip gendesk)
 
 provides=(jpsxdec)
-conflicts=(jpsxdec jpsxdec-git)
+#conflicts=(jpsxdec jpsxdec-git)
 
 source=("https://github.com/m35/jpsxdec/releases/download/v${pkgver}/jpsxdec_v${pkgver}.zip" "jpsxdec")
 md5sums=("bfa6db7bebac5a88e0c18336f066f1af" "df950dfd76574ba615d245eafd5e34d6")
