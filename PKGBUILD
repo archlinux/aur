@@ -23,8 +23,7 @@ sha256sums=('1b431d5060f3ed4edde39c0ad841548249962d6ef7b80a178036e3a8a8a6bd31'
             'bb2662d0a4c58c43726ec98ef4acf201fcf98719c9bbfd207e2d6cdf695a2093'
             '01171a77d533584026f113092a6586e28c9d87e10117c0f81cb4357d11a29fb1'
             '30d860958f3fd5fc657daa6addce45e91689d9833b931c9feb646da760d61de8'
-            '2bc8019afc15a48759f239cbcea57112299c4253470bbdbbba424a7099b257bc'
-            )
+            '2bc8019afc15a48759f239cbcea57112299c4253470bbdbbba424a7099b257bc')
 
 prepare() {
   # link up directory
@@ -44,7 +43,8 @@ build() {
   cd build
   if [ ! -f $srcdir/.deps_done ]; then
     cmake ../ -DDESTDIR="$srcdir/dep_linux" -DCMAKE_BUILD_TYPE=Release -DDEP_WX_GTK3=1 -DJPEG_VERSION=8
-    { test "$(nproc --ignore 4)" -gt 1 && make -j"$(nproc --ignore 4)" ;} || make
+    # do not override -j from makepkg.conf
+    make
   fi
   touch $srcdir/.deps_done
 
@@ -55,7 +55,8 @@ build() {
   done
   cd build
   cmake .. -DSLIC3R_FHS=1 -DSLIC3R_STATIC=ON -DSLIC3R_GTK=3 -DBBL_RELEASE_TO_PUBLIC=1 -DCMAKE_PREFIX_PATH="$srcdir/dep_linux/usr/local" -DCMAKE_INSTALL_PREFIX="$srcdir/install_dir"
-  { test "$(nproc --ignore 4)" -gt 1 && cmake --build . --target install --config Release -j"$(nproc --ignore 4)" ;} || cmake --build . --target install --config Release
+  # do not override -j from makepkg.conf
+  cmake --build . --target install --config Release
 }
 
 package() {
