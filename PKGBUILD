@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.22.3
+pkgver=1.22.4
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -20,6 +20,8 @@ prepare() {
 
   # link with shared blas/lapack libs: https://github.com/OpenModelica/OpenModelica/issues/10304
   sed -i "s|-Wl,-Bstatic -lSimulationRuntimeFMI \$LDFLAGS \$LD_LAPACK -Wl,-Bdynamic|-Wl,-Bstatic -lSimulationRuntimeFMI -Wl,-Bdynamic \$LDFLAGS \$LD_LAPACK|g" OMCompiler/configure.ac
+
+  curl -L https://github.com/OpenModelica/OMCompiler-3rdParty/pull/158.patch | patch -p1 -d OMCompiler/3rdParty
 }
 
 build() {
