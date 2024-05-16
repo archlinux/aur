@@ -1,8 +1,8 @@
 # Maintainer: BryanLiang <liangrui.ch at gmail dot com>
 
 pkgname=spotifox
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Yet another Spotify CLI client similar to go-musicfox.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/go-musicfox/spotifox'
@@ -15,7 +15,7 @@ depends=('glibc'
 source=("spotifox-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'spotifox_auth')
 
-sha256sums=('2511f656d4247e8cd431a9ae13c1464f5ef3c5d8aafe256b2ba98ea569e9c747'
+sha256sums=('b6b8be2245a501293964d3869ca8c97196f945ec96614309613ab9ed09d61a5e'
             '3a5186abc2863545b6ec9529e5e4d015882ffcc2374ef7304fca1ed7c587b5ae')
 
 build() {

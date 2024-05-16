@@ -1,7 +1,7 @@
 pkgbase = spotifox
 	pkgdesc = Yet another Spotify CLI client similar to go-musicfox.
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/go-musicfox/spotifox
 	arch = x86_64
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = spotifox
 	depends = alsa-lib
 	conflicts = spotifox-bin
 	conflicts = spotifox-git
-	source = spotifox-1.0.2.tar.gz::https://github.com/go-musicfox/spotifox/archive/refs/tags/v1.0.2.tar.gz
+	source = spotifox-1.1.0.tar.gz::https://github.com/go-musicfox/spotifox/archive/refs/tags/v1.1.0.tar.gz
 	source = spotifox_auth
-	sha256sums = 2511f656d4247e8cd431a9ae13c1464f5ef3c5d8aafe256b2ba98ea569e9c747
+	sha256sums = b6b8be2245a501293964d3869ca8c97196f945ec96614309613ab9ed09d61a5e
 	sha256sums = 3a5186abc2863545b6ec9529e5e4d015882ffcc2374ef7304fca1ed7c587b5ae
 
 pkgname = spotifox
