@@ -2,7 +2,7 @@
 # Contributor: Katoitalia
 
 pkgname=obs-plugin-tuna-git
-pkgver=1.9.7.r45.g72270af
+pkgver=1.9.9.r3.g6cf08dd
 pkgrel=1
 arch=(x86_64)
 pkgdesc="Song information plugin for obs-studio git version"
@@ -10,8 +10,8 @@ url="https://github.com/univrsal/tuna"
 license=('GPL2')
 depends=("obs-studio")
 makedepends=("clang" "cmake" "git")
-conflicts=("obs-plugin-tuna-bin")
-provides=("obs-plugin-tuna-git=$pkgver")
+conflicts=("obs-plugin-tuna-bin" "obs-plugin-tuna" "obs-tuna")
+provides=("obs-plugin-tuna=$pkgver")
 source=("$pkgname::git+https://github.com/univrsal/tuna.git"
         "git+https://github.com/taglib/taglib"
         "git+https://github.com/MusicPlayerDaemon/libmpdclient")
