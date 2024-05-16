@@ -20,14 +20,14 @@
 # Maintainer: Minh Ngo <iam.minhnc@outlook.com>
 
 pkgname=ibus-bamboo-git
-pkgver=0.8.3+RC6+15+g0d766c1
-pkgrel=1
+pkgver=0.8.3.rc6+15+g0d766c1
+pkgrel=2
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
 license=(GPL3)
 url="https://github.com/BambooEngine/ibus-bamboo"
-depends=('ibus')
-makedepends=('go' 'libx11' 'libxtst')
+optdepends=('ibus')
+makedepends=('go' 'libibus' 'libx11' 'gtk3' 'libxtst')
 conflicts=(ibus-bamboo)
 options=('!strip')
 source=("$pkgname"::git+$url)
@@ -35,7 +35,7 @@ md5sums=('SKIP')
 
 pkgver() {
  cd "$pkgname"
- git describe --long --tags | sed 's#v##;s#-#+#g'
+ git describe --long --tags | sed 's#v##;s#-RC#.rc#;s#-#+#g'
 }
 
 build() {
