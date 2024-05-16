@@ -1,6 +1,6 @@
 pkgbase = python-weasel
 	pkgdesc = A small and easy workflow system
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/explosion/weasel/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-weasel
 	depends = python-smart_open
 	depends = python-requests
 	depends = python-pydantic
-	source = python-weasel-0.4.0.tar.gz::https://github.com/explosion/weasel/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 27ba1bff3e94e1e9361065f2ae8fa743854fb44c4623c3b50a2f6850bfe7d856
+	source = python-weasel-0.4.1.tar.gz::https://github.com/explosion/weasel/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = a38aaef04b471b98a4ac73b90c893bff0a8ba53aaefa70167e2571c87f051825
 
 pkgname = python-weasel
