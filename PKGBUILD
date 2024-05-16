@@ -2,7 +2,7 @@
 pkgname=cosmic-files-git
 pkgver=r130.4f19123
 pkgrel=1
-pkgdesc="WIP COSMIC file manager"
+pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-files"
 license=('GPL-3.0-or-later')
