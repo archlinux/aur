@@ -4,12 +4,12 @@ pkgname="craftworld-toolkit"
 pkgdesc="Tools for working with the LittleBigPlanet series"
 
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 
 arch=(x86_64 aarch64)
 
 url="https://github.com/ennuo/toolkit"
-license=("LicenseRef-unknown")
+#license=("LicenseRef-unknown")
 
 depends=("java-runtime>=17")
 makedepends=("java-environment>=17" maven gendesk)
