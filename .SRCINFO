@@ -1,4 +1,4 @@
-pkgbase = nvidia-flip-cuda
+pkgbase = nvidia-flip-cuda-git
 	pkgdesc = A Tool for Visualizing and Communicating Errors in Rendered Images - CUDA version
 	pkgver = r219.22aa24f
 	pkgrel = 1
@@ -6,7 +6,7 @@ pkgbase = nvidia-flip-cuda
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = git
-	source = nvidia-flip-cuda::git+https://github.com/NVlabs/flip
+	source = nvidia-flip-cuda-git::git+https://github.com/NVlabs/flip
 	sha256sums = SKIP
 
 pkgname = nvidia-flip-cuda-git

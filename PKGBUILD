@@ -1,7 +1,7 @@
-# Maintainer: Chris Zhang <me [at] zcy [dot] moe>
+# Maintainer: Chuyan Zhang <me [at] zcy [dot] moe>
 
-pkgbase=nvidia-flip-cuda
-pkgname=("$pkgbase-git")
+pkgbase=nvidia-flip-cuda-git
+pkgname=("$pkgbase")
 pkgdesc="A Tool for Visualizing and Communicating Errors in Rendered Images - CUDA version"
 pkgver="r219.22aa24f"
 pkgver() {
