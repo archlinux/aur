@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r131.7a45dce
+pkgver=r133.39eafda
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -67,6 +67,7 @@ _submodules=(
   cosmic-session
   cosmic-settings
   cosmic-settings-daemon
+  cosmic-store
   cosmic-term
   cosmic-workspaces-epoch
   xdg-desktop-portal-cosmic
@@ -75,19 +76,16 @@ _submodules=(
 provides=(
   'cosmic-epoch'
   'cosmic-icons'
-  'cosmic-store'
   'cosmic-workspaces'
   "${_submodules[@]}"
 )
 conflicts=(
   'cosmic-epoch'
   'cosmic-icons'
-  'cosmic-store'
   'cosmic-workspaces'
   "${_submodules[@]}"
 )
 backup=('etc/cosmic-comp/config.ron')
-options=('!lto')
 source=(
   'git+https://github.com/pop-os/cosmic-epoch.git'
   'git+https://github.com/pop-os/cosmic-applets.git'
@@ -111,11 +109,9 @@ source=(
   'git+https://github.com/pop-os/cosmic-term.git'
   'git+https://github.com/pop-os/cosmic-workspaces-epoch.git'
   'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git'
-  'git+https://github.com/jackpot51/appstream.git'
   'justfile.diff'
 )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -155,20 +151,9 @@ prepare() {
     git config submodule.cosmic-icons.url "$srcdir/cosmic-icons"
     git -c protocol.file.allow=always submodule update
 
-    git config submodule.cosmic-store.url "$srcdir/cosmic-store"
-    pushd cosmic-store
-    git config submodule.appstream.url "$srcdir/appstream"
-    git -c protocol.file.allow=always submodule update
-    popd
-
     pushd "${submodule#*::}"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
     popd
-
-    pushd cosmic-store
-    cargo fetch --target "$CARCH-unknown-linux-gnu"
-    popd
-
   done
 
   # Use mold linker instead of lld
@@ -189,7 +174,7 @@ prepare() {
 
 build() {
   cd cosmic-epoch
-#  CFLAGS+=" -ffat-lto-objects"  ## cosmic-edit fails
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
