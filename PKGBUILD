@@ -1,3 +1,6 @@
+# Maintainer: Minh Ngo <iam.minhnc@outlook.com>
+# Author: Luong Thanh Lam <ltlam93@gmail.com>
+# Contributor: Trần Công <nopain2110@gmail.com>
 #
 # Bamboo - A Vietnamese Input method editor
 # Copyright (C) 2018 Luong Thanh Lam <ltlam93@gmail.com>
@@ -15,13 +18,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Author: Luong Thanh Lam <ltlam93@gmail.com>
-# Contributor: Trần Công <nopain2110@gmail.com>
-# Maintainer: Minh Ngo <iam.minhnc@outlook.com>
 
 pkgname=ibus-bamboo-git
 pkgver=0.8.3.rc6+15+g0d766c1
-pkgrel=2
+pkgrel=3
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
 license=(GPL3)
