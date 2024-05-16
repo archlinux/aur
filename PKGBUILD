@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=sdl2_sound-git
-pkgver=2.0.1.r44.g495e948
+pkgver=2.0.2.r17.gfdcecaf
 pkgrel=1
 pkgdesc="An abstract soundfile decoder (development version)"
 arch=('i686' 'x86_64')
@@ -20,9 +20,8 @@ pkgver() {
 }
 
 build() {
-  rm -rf build
   cmake ${pkgname%-*} -Bbuild -GNinja \
-    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr \
     -DSDLSOUND_DECODER_MIDI=TRUE -DSDLSOUND_BUILD_STATIC=FALSE
   cmake --build build
 }
