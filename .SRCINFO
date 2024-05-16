@@ -1,6 +1,6 @@
 pkgbase = zuo-git
 	pkgdesc = A tiny Racket for scripting.
-	pkgver = r14.ea42b63
+	pkgver = r71.8a66ab8
 	pkgrel = 1
 	url = https://github.com/racket/zuo
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = zuo-git
 	license = MIT
 	makedepends = git
 	provides = zuo
+	conflicts = zuo
 	source = zuo::git+https://github.com/racket/zuo
 	b2sums = SKIP
 
