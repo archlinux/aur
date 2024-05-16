@@ -30,8 +30,8 @@ package() {
 
   cat<<EOF>>"$srcdir/$_gitname/$pkgname.desktop"
 [Desktop Entry]
-Name=torctl-gui
-Name[ru]=torctl-gui
+Name=Managing tor/torctl
+Name[ru]=Управление tor/torctl
 Comment=The script serves as a graphical interface for torctl/tor
 Comment[ru]=Скрипт является графической оболочкой для torctl/tor
 GenericName=The script serves as a graphical interface for torctl/tor
