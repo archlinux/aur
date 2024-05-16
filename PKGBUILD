@@ -1,8 +1,8 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Game Engine meets a Display Server meets a Multimedia Framework'
 pkgname='arcan-git'
-pkgver=r4353.ad9686c7
-pkgrel=2
+pkgver=r4375.e9fe275c
+pkgrel=1
 license=('GPL2' 'LGPL' 'custom:BSD')
 arch=(aarch64 'x86_64')
 depends=('freetype2' 'harfbuzz' 'harfbuzz-icu' 'mesa' 'luajit' 'sqlite'
@@ -13,7 +13,8 @@ conflicts=('arcan')
 url='https://arcan-fe.com/'
 source=("${pkgname}::git+https://github.com/letoram/arcan.git"
         "0001-fix-build-werror.patch")
-sha512sums=('SKIP' 'SKIP')
+sha512sums=('SKIP'
+            '709f4ec87d722cfafaed406596ed4e49d035f21fe6c50847521018b73fe426a767de437690c774f9f95d9095c65cb12f8bea3ce05c08b423425c7e95c23529fc')
 
 pkgver () {
 	cd "${pkgname}"
@@ -26,13 +27,17 @@ pkgver () {
 
 prepare () {
   cd "${srcdir}"
-  patch -Np1 -i 0001-fix-build-werror.patch
+  #patch -Np1 -i 0001-fix-build-werror.patch
 }
 
 build () {
 	pushd "${pkgname}/doc" &> /dev/null
 	ruby docgen.rb mangen
 	popd &> /dev/null
+
+  cd "${pkgname}/external/git"
+  ./clone.sh || echo "foobar"
+  cd ../../../
 
 	rm -rf "${pkgname}/build"
 	mkdir "${pkgname}/build"
