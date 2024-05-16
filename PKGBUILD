@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=ascii-draw
-pkgver=0.3.2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Draw diagrams and more using ASCII'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'python-emoji' 'python-gobject' 'python-pyfiglet')
 makedepends=('appstream-glib' 'meson')
 source=("${pkgname}-${pkgver//+/-}.tar.gz::https://github.com/Nokse22/ascii-draw/archive/v${pkgver//+/-}.tar.gz")
-b2sums=('4184ab4501f0af7ad4d2534e11364a40a06416bcd3b8c6d06ad811f5d6cbba482227f60a2ff75655d3102da7763e7850f3594a762da744e1aea1f607dad678ee')
+b2sums=('074621955e742da4533eb5952d68b154c6fbc6606f1c41534b3ae74caced62b56fdfd699e43f306906ac8578552109af763cd9ea074f3d749bb43b76c44845d5')
 
 build() {
   arch-meson "${pkgname}-${pkgver//+/-}" build
