@@ -13,11 +13,11 @@ optdepends=('ffmpeg: timelapse support'
 provides=('octoprint')
 conflicts=('octoprint')
 install=octoprint.install
-source=("https://pypi.io/packages/source/o/octoprint/OctoPrint-${pkgver}.tar.gz"
+source=("https://github.com/OctoPrint/OctoPrint/releases/download/${pkgver}/OctoPrint-${pkgver}.source.tar.gz"
         'octoprint.service'
         'octoprint.sysusers'
         'octoprint.tmpfiles')
-sha256sums=('08e6762001dde60c825dc7dcf327b1e0e30219a01427d00eabcaab8f010e0eeb'
+sha256sums=('5503fdc72b54b283f46436bb6f4a0df1aac4ca8515eef5d1c80745f83ba9fc0c'
             '70be0efa0f6a536ed8a89a81bfdb5a978b1036ffead09a4db2e4d67599e02302'
             '79d0f9fe053181eaa77f472b5235463ce217475d47fada9869f42d313b4651a9'
             '67f7844f39428058d59e2a7cb03b3d3077b5f4b0a136fc9dd123e6538a92e851')
