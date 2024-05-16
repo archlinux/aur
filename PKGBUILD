@@ -3,8 +3,8 @@
 
 _name=DXconvert
 pkgname=${_name,,}
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.2.2
+pkgrel=1
 pkgdesc='A file conversion and manipulation toolkit for Yamaha FM synth patches'
 arch=(any)
 url='http://dxconvert.martintarenskeen.nl/'
@@ -19,7 +19,7 @@ optdepends=(
 )
 groups=(pro-audio)
 source=("https://dxconvert.martintarenskeen.nl/$_name-$pkgver.zip")
-sha256sums=('3495e3ee1f60e556001a7ab03dddec4fb190e2f1cbdc3f3503311d3f43181a21')
+sha256sums=('adc3f1d3188e58ae99ab83286b53ad4a8fc077c6e0784dea01ad9f1d163f393d')
 
 prepare() {
   cd $_name-$pkgver
@@ -32,7 +32,7 @@ package() {
   local py_major_ver="$(python -c 'import sys; print("%i.%i" % sys.version_info[:2])')"
 
   # install Python package
-  install -Dm644 DXconvert/* \
+  install -Dm644 DXconvert/*.{gif,help,py} \
     -t "$pkgdir"/usr/lib/python$py_major_ver/site-packages/DXconvert
 
   # install scripts in root dir
