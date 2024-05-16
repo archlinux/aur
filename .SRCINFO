@@ -1,6 +1,6 @@
 pkgbase = python-sdv
 	pkgdesc = Generate synthetic data for single table, multi table and sequential data
-	pkgver = 1.12.1
+	pkgver = 1.13.1
 	pkgrel = 1
 	url = https://github.com/sdv-dev/SDV
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = python-sdv
 	depends = python-deepecho
 	depends = python-rdt
 	depends = python-sdmetrics
-	source = SDV-1.12.1.tar.gz::https://github.com/sdv-dev/SDV/archive/v1.12.1.tar.gz
-	sha512sums = ee77e1d4e826205d71ec1d46ee30eabe5610ade8ed9813bc36c78dcad3874d54aaf7c1bf7aabdd23e84e8ec06cecf0bd2c07da7bedbb30bebcecf739310a4b00
+	source = SDV-1.13.1.tar.gz::https://github.com/sdv-dev/SDV/archive/v1.13.1.tar.gz
+	sha512sums = 6ff325204b6a4b88ff5f065673490f5243fe9a6c5ef382cfb6586e91fb130184fff7e6e1573d25fc4ec6e1c30597dd64fd64121ffdae7bbf3e1531856b9ec2eb
 
 pkgname = python-sdv
