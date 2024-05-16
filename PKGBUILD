@@ -5,10 +5,10 @@ pkgname="yuzu-appimage"
 _commit="537296095"
 pkgver="20240304"
 
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger, GUI version, already compiled"
-url="https://citra-emu.org"
+url="https://github.com/LightningMods/def-not-yuzu/"
 license=("GPL2")
 arch=("x86_64")
 provides=("yuzu")

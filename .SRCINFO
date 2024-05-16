@@ -1,9 +1,9 @@
 pkgbase = yuzu-appimage
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger, GUI version, already compiled
 	pkgver = 20240304
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://citra-emu.org
+	url = https://github.com/LightningMods/def-not-yuzu/
 	arch = x86_64
 	license = GPL2
 	depends = fuse2
