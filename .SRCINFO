@@ -1,0 +1,21 @@
+pkgbase = r-caic4
+	pkgdesc = Provides functions for the estimation of the conditional Akaike information in generalized mixed-effect models fitted with (g)lmer() from 'lme4', lme() from 'nlme' and gamm() from 'mgcv'.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=cAIC4
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-lme4
+	depends = r-matrix
+	depends = r-methods
+	depends = r-mgcv
+	depends = r-mvtnorm
+	depends = r-nlme
+	depends = r-rlrsim
+	depends = r-stats4
+	optdepends = r-gamm4
+	source = https://cran.r-project.org/src/contrib/cAIC4_1.0.tar.gz
+	sha256sums = 8f416289ec6daccb0820a0638f461f335cf49ddfcf815bef9f3c09f0c01be7e1
+
+pkgname = r-caic4
