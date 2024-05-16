@@ -2,7 +2,7 @@
 pkgname=fooyin
 _pkgname=Fooyin
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A customisable music player"
 arch=('any')
 url="https://github.com/ludouzi/fooyin"
@@ -38,9 +38,6 @@ source=(
 )
 sha256sums=('1538a5300ce4a78db3a412a6aaff5b5c27bc29fae21e5e7152a280b50b085d87')
 build() {
-    sed -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|${pkgname}|g" \
-        -i "${srcdir}/${pkgname}.sh"
     cd "${srcdir}/${pkgname}-${pkgver}"
     cmake -S . -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
