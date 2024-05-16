@@ -8,8 +8,8 @@ version=$(curl -sL \
 	jq "map(select(.prerelease != true))[0].name" -r |\
 	tr -d "v")
 echo $version
-
 sed "s/:version:/$version/" PKGBUILD.template > PKGBUILD
+updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 git add -A
 git commit -am "Autorelease version $version"
