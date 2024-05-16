@@ -1,7 +1,7 @@
 pkgbase = aero2solver
 	pkgdesc = Solve Aero2 captchas automatically using the magic of machine learning and computer vision
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dumbasPL/aero2solver
 	arch = x86_64
 	arch = arm
