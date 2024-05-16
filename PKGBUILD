@@ -1,25 +1,24 @@
 pkgname=superlu_mt
-pkgver=3.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Set of subroutines to solve a sparse linear system (multithreading extension)"
 arch=('x86_64')
-url="https://portal.nersc.gov/project/sparse/superlu"
+url=""https://github.com/xiaoyeli/superlu_mt
 license=('BSD')
 depends=('blas')
 makedepends=('gcc-fortran')
-options=('staticlibs' '!makeflags')
-source=("${url}/superlu_mt_${pkgver}.tar.gz")
-sha256sums=(SKIP)
+options=('staticlibs')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('35f8a4c06e791b9f94fdad7a8f2806f4ba76d2c4b9eaaca3882dc13438f9bf67')
 
 build() {
-  cd "$srcdir/SuperLU_MT_${pkgver}"
-  make CFLAGS="${CFLAGS} -fPIC" BLASLIB="-lblas" lib
+  cd "$srcdir/superlu_mt-${pkgver}"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -Denable_examples=OFF -Denable_tests=OFF -DPLAT="_OPENMP" .
+  make
 }
 
 package() {
-  cd "$srcdir/SuperLU_MT_${pkgver}"
-  install -d ${pkgdir}/usr/{lib,include/superlu_mt} 
-  install -m644 lib/libsuperlu_mt_PTHREAD.a ${pkgdir}/usr/lib
-  install -m644 SRC/*.h ${pkgdir}/usr/include/superlu_mt 
+  cd "$srcdir/superlu_mt-${pkgver}"
+  make install DESTDIR="${pkgdir}"
 }
 
