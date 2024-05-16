@@ -1,13 +1,21 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="citra-appimage"
-# to update:
+
+# to update manually:
 #       1. reset $pkgrel to 1
 #       2. go to https://github.com/PabloMK7/citra/releases
 #       3. copy release date to $pkgver
 #       4. copy commit to $_commit
-pkgver=20240422
-_commit=a8e601a
+#pkgver=20240422
+#_commit=a8e601a
+
+# to update automatically:
+#       1. run makepkg
+_url="$(curl -s "https://api.github.com/repos/PabloMK7/citra/releases/latest" | jq -r '.assets[].browser_download_url | select(test("citra-linux-appimage.*tar.gz"))')"
+_commit="$(echo $_url | awk -F '[-.]' '{print $6}')"
+pkgver="$(echo $_url | awk -F '[-.]' '{print $5}')"
+
 pkgrel=1
 epoch=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger, GUI version, already compiled"
@@ -26,9 +34,10 @@ replaces=("citra-bin"
           "citra-qt-bin")
 depends=("ffmpeg"
          "sdl2")
+makedepends=("curl" "jq")
 source=("https://github.com/PabloMK7/citra/releases/download/r$_commit/citra-linux-appimage-$pkgver-$_commit.tar.gz"
         "citra.desktop")
-b2sums=('ee973c62ace3baba8f25871ea9000f21b471f1e16c3da6c5a9ccd165a474d2975d819d465f968d219d969a2aaacd7b4f650f24ce1e4280492f264c2a1525300e'
+b2sums=('SKIP'
         '1c12c015380367b599cb56cabfdcf9065e2cbb04e3145d0dcfdfc5e2cb404926c2851e58383c930f569b67da8f89095164b7d1f482f39fb5e1f5a1c26e1853b0')
 options=("!strip")
 
