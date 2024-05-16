@@ -1,17 +1,17 @@
 pkgbase = ai-chat-bin
 	pkgdesc = A cross-platform desktop application that provides quick access to chatbots like OpenAI ChatGPT from the menu bar (tray)
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://www.chatbar.top/
 	arch = x86_64
 	license = LicenseRef-unknown
 	makedepends = fuse2
 	depends = electron28
-	provides = ai-chat=1.2.4
+	provides = ai-chat=1.2.5
 	conflicts = ai-chat
-	source = ai-chat-1.2.4.AppImage::https://github.com/rabrain/ai-chat/releases/download/v1.2.4/AI-Chat-1.2.4-linux-x86_64.AppImage
+	source = ai-chat-1.2.5.AppImage::https://github.com/rabrain/ai-chat/releases/download/v1.2.5/AI-Chat-1.2.5-linux-x86_64.AppImage
 	source = ai-chat.sh
-	sha256sums = 71eb949b3004607b9a72852d48fb94c9877f90c415ec9c1a9be4ee13f377379d
+	sha256sums = e8c85506ef9116456fd8763d7a7833cf491565fa895fe200c56421e83b6cc4a2
 	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
 
 pkgname = ai-chat-bin
