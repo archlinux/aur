@@ -4,7 +4,7 @@
 set -u
 pkgname='lib32-libstdc++5'
 pkgver='3.3.6'
-pkgrel='8'
+pkgrel='9'
 pkgdesc='Legacy GNU Standard C++ library version 3 (32 bit)'
 arch=('x86_64')
 url='http://gcc.gnu.org'
@@ -29,7 +29,17 @@ prepare() {
 
   # fix lib64 lib32 paths. During testing these folders were found to be wrong 
   # but since the patch isn't needed being wrong isn't wrong.
-  patch -Nup1 -i "${srcdir}/gcc-3.4.3-no_multilib_amd64.patch"
+  #patch -Nup1 -i "${srcdir}/gcc-3.4.3-no_multilib_amd64.patch"
+  local _pt
+  for _pt in "${source[@]%%::*}"; do
+    _pt="${_pt##*/}"
+    if [[ "${_pt}" = *.patch ]]; then
+      set +u; msg2 "Patch ${_pt}"; set -u
+      patch -Nup1 -i "${srcdir}/${_pt}"
+    fi
+  done
+  #cd ..; cp -pr "gcc-${pkgver}" 'a'; ln -s "gcc-${pkgver}" 'b'; false
+  # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   # Patches are the wrong way to do this
   sed -e '# gcc-3.4.6-ucontext.patch' \
@@ -67,8 +77,8 @@ build(){
   # These must be export for all the configure inside make
   # Can't add any warning removal flags that xgcc doesn't support
   export CFLAGS='-march=i686 -m32 -O2 -pipe'
-  export CPPFLAGS='-march=i686 -m32 -O2 -pipe'
-  export CXXFLAGS='-march=i686 -m32 -O2 -pipe'
+  export CPPFLAGS="${CFLAGS}"
+  export CXXFLAGS="${CFLAGS}"
   export SHELL='/usr/bin/bash' # doesn't work with fish
 
   mkdir -p 'gcc-build'
@@ -79,27 +89,20 @@ build(){
     local _copts=(
       #--build='i686-pc-linux-gnu'
       #--host='i686-pc-linux-gnu'
-      --enable-__cxa_atexit \
-      --enable-languages='c++' \
-      --enable-multilib \
-      --enable-shared \
-      --enable-threads='posix' \
-      --libdir='/usr/lib32' \
+      --enable-__cxa_atexit
+      --enable-languages='c++'
+      --enable-multilib
+      --enable-shared
+      --enable-threads='posix'
+      --libdir='/usr/lib32'
       --prefix='/usr'
     )
+    export CC='gcc -Wno-implicit-int -Wno-implicit-function-declaration -Wno-incompatible-pointer-types -Wno-int-conversion' # https://gcc.gnu.org/gcc-14/porting_to.html
     ../gcc-${pkgver}/configure "${_copts[@]}"
-  fi
-  local _mflags=()
-  if [ -z "${MAKEFLAGS:=}" ] || [ "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
-    local _nproc="$(nproc)"
-    if [ "${_nproc}" -gt 8 ]; then
-      _nproc=8
-    fi
-    _mflags+=('-j' "${_nproc}")
   fi
   # We build the full multilib libstdc++5 here, no idea how to restrict
   # the build process to the 32 bit version only.
-  nice make 'all-target-libstdc++-v3' BOOT_CFLAGS="${CFLAGS}" STAGE1_CFLAGS='-O' "${_mflags[@]}"
+  nice make 'all-target-libstdc++-v3' BOOT_CFLAGS="${CFLAGS}" STAGE1_CFLAGS='-O'
   set +u
 }
 
