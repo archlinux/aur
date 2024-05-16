@@ -1,0 +1,17 @@
+pkgbase = wgcf-cli
+	pkgdesc = A command-line tool for Cloudflare-WARP API, built using Cobra.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/ArchiveNetwork/wgcf-cli
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	arch = s390x
+	arch = riscv64
+	license = MPL-2.0
+	makedepends = go
+	source = wgcf-cli-0.3.4.tar.gz::https://github.com/ArchiveNetwork/wgcf-cli/archive/v0.3.4.tar.gz
+	sha512sums = 7de81bc118996c5618dc4c34d07b5f46a9f7fe7086454796095c25ff9cbc200a3164fe676f6c74733aa71c85fbf1f646f2487a650670c6006cda6921d3acce57
+
+pkgname = wgcf-cli
