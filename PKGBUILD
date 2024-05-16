@@ -8,14 +8,11 @@ pkgdesc="Crossplatform configuration tool for the Betaflight flight control syst
 arch=('x86_64')
 url="https://github.com/betaflight/betaflight-configurator"
 license=('GPL3')
-depends=('nwjs-bin')
 makedepends=('yarn' 'npm' 'git')
 source=("git+https://github.com/betaflight/betaflight-configurator.git#tag=$pkgver"
-        "$pkgname.sh"
         "$pkgname.desktop"
         "remove_android_build_deps.patch")
 sha512sums=('a1d29f60df7d5b507c0ac68253014a3161b5a78eae6b66922d66a5c5a77a592ceca094dbf00b2217aa395097f17140602dc0f6c1aed7c9aea8ea53688d38302f'
-            '1f9113fce812355d1f8cc614d4905845c601622b87aad2b6e74b62913582018a87059727a333db0673a4b767a10564389eece1f588658d171dc4d8446055a0e9'
             '79e5ab59cf8520ce7e20fb2bd89ee99ce3debba69e7da892bf219912cc32c7056a7c8fd6dae19eebfe4956c948d0bc75ece40911b203fcc2f34e43f2d8329532'
             'faa4c8a6edf932068e97bc4435d5237379daf12f3c8c21ab1facf1c9db186261d23270c48f1601565c1af1d742f4ac3469c156f3535d5176a427c5ba13ac1b5d')
 options=(!strip)
@@ -35,16 +32,19 @@ build() {
 	cd $pkgname
 
 	yarn install
-	./node_modules/.bin/gulp dist --linux64
+	yarn release --linux64
 }
 
 package() {
 	cd $pkgname
-	install -d "$pkgdir/usr/share/$pkgname/"
-	cp -r dist/* "$pkgdir/usr/share/$pkgname/"
+
+	install -d "$pkgdir/opt/$pkgname/"
+	cp -r apps/$pkgname/linux64/* "$pkgdir/opt/$pkgname/"
+	chmod -R a=u,g-w,o-w "$pkgdir/opt/$pkgname/"
+
 	install -Dm644 "assets/linux/icon/bf_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	
 	install -d "$pkgdir/usr/bin/"
-	install -Dm 755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+	ln -s /opt/$pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
 }
