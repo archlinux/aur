@@ -3,7 +3,7 @@
 # Contributor: Crowdsec Team <debian@crowdsec.net>
 
 pkgname=crowdsec-bin
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="The open-source and participative security solution offering crowdsourced protection against malicious IPs and access to the most advanced real-world CTI"
 arch=('any')
@@ -35,9 +35,9 @@ source=(
   crowdsec-bin.install
   crowdsec.sysusers
 )
-sha256sums=('8a9e9385d1a2615c7cadb8f499b0012372dcbea1ad1c7e6b38b87962fa569597'
-  'cd5a8ca9d46d6d6ce9f94c72530dc6594351b28e5764e2a6ef7692a63a92a7f3'
-  'a97e2c4bc07470dad890fca27b6da7c4a9ac9762551a0888dd812d2da63200ad')
+sha256sums=('944f2fd983f297d916abbd45b1ec60a3506b02da3a8eb73d845c97e8d004dd96'
+            'cd5a8ca9d46d6d6ce9f94c72530dc6594351b28e5764e2a6ef7692a63a92a7f3'
+            'a97e2c4bc07470dad890fca27b6da7c4a9ac9762551a0888dd812d2da63200ad')
 
 prepare() {
   cd "$srcdir/crowdsec-v${pkgver}"
