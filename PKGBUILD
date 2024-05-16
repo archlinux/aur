@@ -4,7 +4,7 @@
 # Contributor: Claudia Pellegrino <aur ät cpellegrino.de>
 pkgname=python-standardebooks
 _name=tools
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 pkgdesc="The toolset used to produce Standard Ebooks epub ebooks."
 arch=(x86_64)
