@@ -1,0 +1,5 @@
+[python-skimpy]
+source = "github"
+github = "aeturrell/skimpy"
+use_latest_release = "true"
+prefix = "v"
