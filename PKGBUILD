@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=station-bin
 _pkgname=Station
-pkgver=2.7.3
-_electronversion=25
-pkgrel=2
+pkgver=3.0.0
+_electronversion=27
+pkgrel=1
 pkgdesc="The first open-source smart browser for busy people. A single place for all of your web applications."
 arch=('x86_64')
 url="https://getstation.com/"
@@ -12,8 +12,7 @@ license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -22,12 +21,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6b420c84cfcfcf0f01729381c042202bc941a90bd5bdcf91241e9dc99fadbbdd'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('3667a751c63c68d4bcc123ecdc442ddd4b1d109565bf1efadd06192d7cb5b1f1'
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}v2|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
