@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pedax-bin
-pkgver=6.48.0_144
+pkgver=6.49.0_145
 pkgrel=1
 pkgdesc="Reversi Board with edax, which is the strongest reversi engine."
 arch=("x86_64")
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/${pkgver//_/%2B}/${pkgname%-bin}-Linux.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6da6fd450e59b9f9d467e2a8bdd6e920e9bbcea1657a9820a7296f4ea8d2b6c5'
+sha256sums=('820f1047a4667308ae2c1c6981a239a5cedafde383a1743db13f2dedeb479f06'
             '840eb0ad528d294064aa09b2b6df7a0e4a800249f43305c756cf78bee627fe1d')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
@@ -28,7 +28,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/opt/${pkgname%-bin}"
-    gendesk -q -f -n --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
