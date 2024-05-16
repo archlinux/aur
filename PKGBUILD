@@ -21,6 +21,8 @@ depends=(
   libdrm
   libliftoff.so
   libpipewire-0.3.so
+  libvulkan.so
+  libwlroots.so
   libx11
   libxcb
   libxcomposite
