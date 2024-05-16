@@ -1,6 +1,6 @@
 # Maintainer: L B
 pkgname=asusctltray-git
-pkgver=r27.b2a7373
+pkgver=r28.c8ef0ba
 pkgrel=1
 pkgdesc="Simple tray profile switcher for asusctl"
 url="https://github.com/Baldomo/asusctltray"
