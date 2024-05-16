@@ -1,7 +1,7 @@
 pkgbase = electrum-ltc
 	pkgdesc = Litecoin wallet
 	pkgver = 4.2.2.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://electrum-ltc.org/
 	arch = any
 	license = MIT
