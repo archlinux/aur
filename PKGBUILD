@@ -1,20 +1,19 @@
-# Maintained by Faisal Moledina (faisal at moledina dot me)
-pkgname=onedriver-git
+# Maintainer: Wing Hei Chan <whmunkchan@outlook.com>
+# Contributor: Faisal Moledina <faisal at moledina dot me>
+
 _pkgname=onedriver
-pkgver=0.12.0.r11.g65be12a
+pkgname="$_pkgname-git"
+pkgver=0.14.1.r8.gf07678f
 pkgrel=1
 pkgdesc="Native Linux filesystem for Microsoft OneDrive"
 arch=('x86_64')
 url='https://github.com/jstaf/onedriver'
 license=('GPL3')
-depends=(
-  'fuse2'
-  'webkit2gtk'
-)
+depends=('fuse3' 'webkit2gtk')
 makedepends=('go')
 provides=('onedriver')
 conflicts=('onedriver')
-source=("$_pkgname::git+$url.git#branch=master")
+source=("$_pkgname::git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -29,6 +28,9 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_ENABLED=1
+
+  ./cgo-helper.sh
 
   go build \
     -v \
@@ -53,13 +55,11 @@ build() {
 
 package() {
   cd "$_pkgname"
+  install -Dm 755 -t "$pkgdir"/usr/bin $_pkgname{,-launcher}
 
-  install -Dm 755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
-  install -Dm 755 $_pkgname-launcher "$pkgdir"/usr/bin/$_pkgname-launcher
-
-  install -Dm 644 "resources/$_pkgname@.service" "$pkgdir"/usr/lib/systemd/user/"$_pkgname@.service"
-  install -Dm 644 resources/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
-  install -Dm 644 resources/$_pkgname.png "$pkgdir"/usr/share/icons/onedriver/$_pkgname.png
-  install -Dm 644 resources/$_pkgname.svg "$pkgdir"/usr/share/icons/onedriver/$_pkgname.svg
-  install -Dm 644 resources/$_pkgname.1 "$pkgdir"/usr/share/man/man1/$_pkgname.1
+  cd pkg/resources
+  install -Dm 644 -t "$pkgdir"/usr/lib/systemd/user $_pkgname@.service
+  install -Dm 644 -t "$pkgdir"/usr/share/applications $_pkgname-launcher.desktop
+  install -Dm 644 -t "$pkgdir"/usr/share/icons/onedriver $_pkgname{.png,-128.png,.svg}
+  install -Dm 644 -t "$pkgdir"/usr/share/man/man1 $_pkgname.1
 }
