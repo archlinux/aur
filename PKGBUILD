@@ -1,7 +1,7 @@
 # Maintainer: Martin Hundebøll <martin@hundeboll.net>
 
 pkgname=tio
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc="The simple TTY terminal I/O application"
 url="https://tio.github.io/"
@@ -11,7 +11,7 @@ depends=('glibc' 'lua' 'glib2')
 optdepends=('bash-completion: bash completion support')
 makedepends=('meson')
 source=("https://github.com/tio/tio/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('9208e98dce783598a76c406f0b076f07dc0f645aaaab99ee5c3039744e8c0e2a')
+sha256sums=('506635b2e922306be3ded980d0b6fd8bb74647b1561b01015b769041f7ddca8d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
