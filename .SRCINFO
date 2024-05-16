@@ -1,0 +1,17 @@
+pkgbase = firefly-canary-desktop-bin
+	pkgdesc = Official wallet application of IOTA Canary
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://firefly.iota.org/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = fuse2
+	depends = electron27
+	provides = firefly-canary-desktop=3.0.0
+	conflicts = firefly-canary-desktop
+	source = firefly-canary-desktop-3.0.0.AppImage::https://github.com/iotaledger/firefly/releases/download/desktop-canary-3.0.0/firefly-canary-desktop-3.0.0.AppImage
+	source = firefly-canary-desktop.sh
+	sha256sums = d34c8c1608502ffe8de1c24b693645b941bcfc57d6dcbed6213c18533f6a4fa9
+	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+
+pkgname = firefly-canary-desktop-bin
