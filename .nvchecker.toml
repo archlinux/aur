@@ -1,0 +1,5 @@
+[python-sphinxcontrib-katex]
+source = "github"
+github = "hagenw/sphinxcontrib-katex"
+use_latest_release = "true"
+prefix = "v"
