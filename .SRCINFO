@@ -1,6 +1,6 @@
 pkgbase = python-kubernetes-git
 	pkgdesc = Python Kubernetes-client git version.
-	pkgver = r809.140af57f9
+	pkgver = r1756.94e42113a
 	pkgrel = 1
 	url = https://github.com/kubernetes-client/python
 	arch = x86_64
@@ -23,4 +23,3 @@ pkgbase = python-kubernetes-git
 	md5sums = SKIP
 
 pkgname = python-kubernetes-git
-

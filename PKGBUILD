@@ -6,7 +6,7 @@
 # Maintainer: George Raven <GeorgeRavenCommunity AT pm dot me>
 pkgname=python-kubernetes-git
 _pkgsrcname="python-kubernetes"
-pkgver=r809.140af57f9
+pkgver=r1756.94e42113a
 pkgrel=1
 pkgdesc="Python Kubernetes-client git version."
 arch=("x86_64")
@@ -55,7 +55,8 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrcname}"
+  cp -Lr "${srcdir}/${_pkgsrcname}" "${srcdir}/${_pkgsrcname}-deref"
+  cd "${srcdir}/${_pkgsrcname}-deref"
   python3 ./setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
