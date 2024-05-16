@@ -1,6 +1,6 @@
 pkgbase = gameclock-git
 	pkgdesc = Track your Game time with your friends !
-	pkgver = r119.5763422
+	pkgver = 1.0.r0.gab854f5
 	pkgrel = 1
 	url = https://github.com/Didiloy/GameClock
 	arch = any
@@ -13,11 +13,11 @@ pkgbase = gameclock-git
 	makedepends = gcc
 	makedepends = curl
 	depends = electron29
-	provides = gameclock=r119.5763422
+	provides = gameclock=1.0
 	conflicts = gameclock
 	source = gameclock.git::git+https://github.com/Didiloy/GameClock.git
 	source = gameclock.sh
 	sha256sums = SKIP
-	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
 
 pkgname = gameclock-git
