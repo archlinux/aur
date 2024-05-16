@@ -1,7 +1,11 @@
-post_install(){
-    if [ $(id mscs >/dev/null 2>&1) ]; then
-        useradd mscs --system --user-group \
-            --create-home --home /opt/mscs \
-            -K UMASK=0022
+post_install() {
+    if ! id -u "minecraft" >/dev/null 2>&1; then
+        useradd --system --user-group --create-home -K UMASK=0022 --home /opt/mscs minecraft
+    fi
+}
+
+post_remove() {
+    if id -u "minecraft" >/dev/null 2>&1; then
+        userdel --system --remove-home minecraft
     fi
 }
