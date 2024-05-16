@@ -2,14 +2,14 @@
 
 pkgname=ragel-git
 pkgver=7.0.4.r32.g65540b65
-pkgrel=1
+pkgrel=2
 pkgdesc="Compile executable finite state machines from regular languages"
 arch=('i686' 'x86_64')
 url="https://www.colm.net/open-source/ragel/"
 license=('MIT')
 depends=('gcc-libs' 'colm')
 makedepends=('git')
-provides=('ragel')
+provides=("ragel=$pkgver")
 conflicts=('ragel')
 options=('staticlibs')
 source=("git+https://github.com/adrian-thurston/ragel.git")
@@ -33,8 +33,7 @@ build() {
   CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr" \
-    --with-colm="/usr" \
-    --disable-manual
+    --with-colm="/usr"
   make
 }
 
