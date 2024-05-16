@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-webapps
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Web App Manager written with love and libcosmic."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'git' 'openssl')
 makedepends=('cargo' 'just')
 conflicts=('cosmic-wam')
 source=("git+https://github.com/elevenhsoft/WebApps.git#tag=$pkgver")
-sha256sums=('07458ef86e87b3ad0f1f965c8e89f060d7d839b088c43aaa6c9a5eb75925436e')
+sha256sums=('52eb1932ea1cadaba6059d8adc74b1940a0254308f8b1dc3fcee858507e7ce3f')
 
 prepare() {
   cd WebApps
