@@ -6,7 +6,7 @@
 pkgname=hmcl-bin
 _ver=3.5.8
 pkgver=${_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -16,12 +16,12 @@ provides=('hmcl')
 conflicts=('hmcl')
 source=("hmcl.desktop"
         "hmcl-launch-script"
-        "craft_table.png"
+        "icon@8x.png"
         "LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/javafx/LICENSE"
         "${pkgname}-${pkgver}-${pkgrel}.jar::https://github.com/HMCL-dev/HMCL/releases/download/release-${pkgver}/HMCL-${pkgver}.jar")
 sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
             'ebbb213b2e21321af6b1825740b2b8f66e70a922a4427e90fa21a2c998b39b34'
-            '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
+            'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '1d14d72612ad441fa900d30067d47590db126e5fd1afa6bcc0c85f68f783ff8d')
 
@@ -31,6 +31,6 @@ package() {
   install -Dm755 "hmcl-launch-script" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "hmcl.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${pkgname}-${pkgver}-${pkgrel}.jar" "${pkgdir}/usr/share/java/hmcl-bin/hmcl-bin.jar"
-  install -Dm644 "craft_table.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
+  install -Dm644 "icon@8x.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
   install -Dm644 "LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
