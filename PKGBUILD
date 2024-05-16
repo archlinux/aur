@@ -1,6 +1,6 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=opticpu
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A utility for optimizing CPU usage and enhancing system performance on Linux."
 arch=('x86_64')
@@ -21,5 +21,5 @@ package() {
   install -Dm755 opticpu "$pkgdir/usr/bin/opticpu"
 }
 
-sha256sums=('d815d5dbd8d2de37172f0f6752e2b6b98b23f3e4a66cf295e82b4d5f2e086099')
+sha256sums=('44d7ee54c8cc0da285df4c2f8ee99d143d2669e047ba8d104f90f51b81df9f8f')
 
