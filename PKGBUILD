@@ -2,9 +2,8 @@
 
 pkgname=python-pytensor
 _pkgname=${pkgname#python-}
-pkgver=2.20.0
-_commit=ef22377d7e6ea6c74c36a8dc634ef7f1f1f8f9c6
-pkgrel=2
+pkgver=2.21.0
+pkgrel=1
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(x86_64)
 url="https://github.com/pymc-devs/pytensor"
@@ -43,14 +42,8 @@ optdepends=(
   'python-numba: for graph transpilation compilation via Numba'
   'python-tensorflow-probability: for graph transpilation compilation via JAX'
 )
-source=(
-  "git+$url.git#commit=$_commit"
-  "remove-bin-package.patch"
-)
-sha256sums=(
-  '121ab3cdb287e0e9dbad241f501e5fa9640c10336289652b6a83af809691e189'
-  '73360d53a5c5e5718a544c69218d3d64adc2390007a9b6781f7b61cc32415e59'
-)
+source=("git+$url.git#tag=rel-$pkgver")
+sha256sums=('281c01e049b17fd6a33fbb8d432a124e49d3fc11f098773e731ed673fc14b67b')
 
 _archive="$_pkgname"
 
@@ -58,12 +51,6 @@ pkgver() {
   cd "$_archive"
 
   git describe --tags | sed 's/^rel-//'
-}
-
-prepare() {
-  cd "$_archive"
-
-  patch --forward --strip=1 --input="$srcdir/remove-bin-package.patch"
 }
 
 build() {
