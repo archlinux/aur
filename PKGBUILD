@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-files-git
-pkgver=r130.4f19123
+pkgver=r305.93de78d
 pkgrel=1
 pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-files"
 license=('GPL-3.0-or-later')
 groups=('cosmic')
-depends=('glibc' 'xdg-utils')
+depends=('glib2' 'xdg-utils')
 makedepends=('cargo' 'git' 'just' 'mold')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
