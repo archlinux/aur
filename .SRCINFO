@@ -1,6 +1,6 @@
 pkgbase = python-aksharamukha
 	pkgdesc = Indic scripts converter
-	pkgver = 2.1.2
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://aksharamukha.appspot.com/python
 	arch = any
@@ -16,7 +16,10 @@ pkgbase = python-aksharamukha
 	depends = python-requests
 	depends = python-yaml
 	depends = python>=3.8
-	source = https://files.pythonhosted.org/packages/source/a/aksharamukha/aksharamukha-2.1.2.tar.gz
-	sha256sums = 30ba28d78046e390537c93e45ff8d54398a8e91e4b569ffe6db42fd81c2ff894
+	optdepends = python-khmer-nltk: processing Khmer script,
+	optdepends = python-lxml: transliterate_file submodule
+	optdepends = python-beautifulsoup4: transliterate_file submodule
+	source = https://files.pythonhosted.org/packages/source/a/aksharamukha/aksharamukha-2.2.2.tar.gz
+	sha256sums = 9464f1c0f18da23e9112b93d12bee35a569cd729a4699fe1775722d40747bc28
 
 pkgname = python-aksharamukha
