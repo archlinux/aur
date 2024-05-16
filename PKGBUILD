@@ -3,8 +3,14 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
+# We DO NOT add bash4 to /etc/shells
+# As the primary shell /usr/bin/bash it's already there.
+# As the alternate shell it uses readline and will break on EVERY upgrade.
+# Use dash if you want a shell that doesn't depend on curses or readline.
+
 _opt_sig=0 # 1 to check sigs and check()
 _opt_alt=1 # 1 to install as alternate version (bash4), 0 to replace bash
+_opt_32bit=0 # 0 to build default (probably 64 bit), 1 to build 32 bit
 
 set -u
 _pkgname='bash'
@@ -28,9 +34,17 @@ source=("https://ftp.gnu.org/gnu/bash/bash-${_basever}.tar.gz")
 if [ "${_opt_sig}" -ne 0 ]; then
   source+=("${source[0]}.sig")
 fi
+if [ "${_opt_32bit}" -ne 0 ]; then
+  depends_x86_64+=("${depends[@]/#/lib32-}")
+  depends_+=("${depends_x86_64[@]}")
+  makedepends_x86_64+=('lib32-gcc-libs')
+fi
 if [ "${_opt_alt}" -ne 0 ]; then
   provides=("${pkgname}=${pkgver}")
   depends+=('bash' 'readline>=8.0')
+  if [ "${_opt_32bit}" -ne 0 ]; then
+    depends_x86_64+=("lib32-readline>=8.0")
+  fi
 else
   backup=(etc/bash.bash{rc,_logout} etc/skel/.bash{rc,_profile,_logout})
   provides=("${_pkgname}=${pkgver}" 'sh')
@@ -117,6 +131,21 @@ prepare() {
     set +u; msg2 "applying patch ${_p}"; set -u
     patch -Ncp0 -i "${srcdir}/${_p}"
   done
+
+  # Branding
+  sed -e 's:\bMACHTYPE\b:"Arch Linux":g' -i 'version.c' 'shell.c'
+
+  # Name conflict with glibc function
+  sed -e 's:exp2:bash_&:g' -i 'expr.c'
+
+  if [ "${_opt_32bit}" -ne 0 ]; then
+    # Doesn't work. printf '%x' is sign extended to 64 bit
+    true sed -e '# Switch back to 32 bit integers' \
+        -e 's:intmax_t:int_fast32_t:g' \
+        -e 's:INTMAX_MIN:INT_FAST32_MIN:g' \
+      -i 'expr.c'
+    true sed -e '/evalexp/ s:intmax_t:int_fast32_t:g' -i 'externs.h'
+  fi
   set +u
 }
 
@@ -132,6 +161,12 @@ build() {
       -DSYS_BASH_LOGOUT="'\"/etc/bash.bash_logout\"'"
       -DNON_INTERACTIVE_LOGIN_SHELLS
     )
+    if [ "${_opt_32bit}" -ne 0 ]; then
+      _bashconfig+=(-m32)
+      CFLAGS="${CFLAGS//-march=x86-64/-march=i686}"
+      LDFLAGS+=' -m32'
+    fi
+    CFLAGS+=' -Wno-implicit-function-declaration'
     local _cfg=(
       --prefix='/usr'
       --with-curses
