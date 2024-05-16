@@ -2,7 +2,7 @@
 
 _pkgname=MangoHud
 pkgname=lib32-mangohud-git
-pkgver=0.7.1.r20.g5598fda
+pkgver=0.7.2.rc3.r15.g6ab4624
 pkgrel=1
 pkgdesc="32-bit libraries for MangoHud and MangoApp"
 url='https://github.com/flightlessmango/MangoHud'
@@ -29,7 +29,7 @@ build() {
      arch-meson "$_pkgname" build \
         -Dmangoapp_layer=true \
         -Dinclude_doc=false \
-        --wrap-mode=nofallback \
+        --wrap-mode=default \
         --libdir lib32
 
     meson compile -C build
