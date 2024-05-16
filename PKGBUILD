@@ -3,7 +3,7 @@
 # Contributor: Simon Thorpe <simon@hivetechnology.com.au>
 
 pkgname=pianoteq-stage-trial-bin
-pkgver=8.2.1
+pkgver=8.2.2
 pkgrel=1
 _name="Pianoteq ${pkgver%%.*} STAGE"
 pkgdesc='Physical modelling piano instrument standalone program, VST2 and LV2 plugin. STAGE trial version'
@@ -22,7 +22,7 @@ provides=(${pkgname%-*})
 conflicts=(${pkgname%-bin} pianoteq-stage-bin)
 source=("local://pianoteq_stage_linux_trial_v${pkgver//./}.7z"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-sha256sums=('fe31cd6ec22579bf2c13795e21ea5ab1b09ffa54e6fd7859967cdf41ebb23c6b'
+sha256sums=('9db8e1c4950a925809ab5375e7847a48553fd59d1654d1fb85d0d47d954054df'
             '94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 
 prepare() {
