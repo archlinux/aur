@@ -1,30 +1,52 @@
-# Maintainer: Steve Engledow <steve@engledow.me>
+# Maintainer: Nick Syntychakis <nsyntych@punkops.dev>
+# Contributor: Steve Engledow <steve@engledow.me>
+
 pkgname=aws-cli-v2-bin
-pkgver=2.8.3
+# https://github.com/aws/aws-cli/raw/v2/CHANGELOG.rst
+pkgver=2.15.51
 pkgrel=1
-pkgdesc='Universal Command Line Interface for Amazon Web Services version 2'
-arch=('aarch64' 'x86_64')
-url='https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html'
+epoch=1
+pkgdesc='Unified command line interface for Amazon Web Services (version 2) (binary release)'
+arch=(x86_64 aarch64)
+url='https://github.com/aws/aws-cli/tree/v2'
 license=('Apache')
-provides=('aws-cli' 'aws-cli-v2')
-conflicts=('aws-cli' 'aws-cli-v2')
 makedepends=('unzip')
 depends=('less')
-source_aarch64=("https://awscli.amazonaws.com/awscli-exe-linux-aarch64-$pkgver.zip")
-source_x86_64=("https://awscli.amazonaws.com/awscli-exe-linux-x86_64-$pkgver.zip")
-sha256sums_aarch64=('07d432065bac792c1f8fc9cd652b68943c5288bd37f4f6d7eea15323a7c35169')
-sha256sums_x86_64=('471a40dbcb97a061c07095576fee3f9e89ae74d8b9d4d671fa1145539542f6d2')
+optdepends=()
+provides=(aws-cli)
+conflicts=(aws-cli aws-cli-v2)
+install=aws-cli-v2-bin.install
+
+source=("aws_bash_completer"
+        "aws_zsh_completer.sh"
+		"LICENSE.txt")
+
+sha256sums=('451a681062516a0473c8764a6593b0a65b6e558bf6128899b1d5e19b258f679e'
+            '426e99f1e8cd00cce9263693d29ceac5b4834f6cf1766cd57b985a440eea2e87'
+			'a395e1165c2ed0e2bf041ae28e528245aedd4009b7e94ad407780257f704afc1')
+
+source_x86_64=(${pkgname}-${pkgver}-x86_64.zip::https://awscli.amazonaws.com/awscli-exe-linux-x86_64-${pkgver}.zip)
+source_aarch64=(${pkgname}-${pkgver}-aarch64.zip::https://awscli.amazonaws.com/awscli-exe-linux-aarch64-${pkgver}.zip)
+
+sha256sums_x86_64=('0dbb53f5cf49c9699d0a7b7fb7cd70f2b2b50e664928cdd645377557f2df7a1c')
+sha256sums_aarch64=('ab9ac09ea7a02c775859235b055af48c24c9f007fcbe1c8b7ef632eef47b68b8')
+validpgpkeys=(
+  'FB5DB77FD5C118B80511ADA8A6310ACC4672475C'  # the key mentioned on https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+)
 
 package() {
-  $srcdir/aws/install -i "$pkgdir/usr/share/aws-cli" -b "$pkgdir/usr/bin" >/dev/null
+	# Create the install dir and move the binary files there
+	mkdir -p $pkgdir/usr/local/aws-cli
+  	mv aws/dist $pkgdir/usr/local/aws-cli/v2
 
-  # Install binary symlinks
-  BIN_DIR="/usr/share/aws-cli/v2/$pkgver/bin"
-  for i in $pkgdir/$BIN_DIR/*; do
-    ln -sf "$BIN_DIR/$(basename $i)" "$pkgdir/usr/bin/"
-  done
-  
-  # Fix symlink for current version
-  rm "$pkgdir/usr/share/aws-cli/v2/current"
-  ln -s "/usr/share/aws-cli/v2/$pkgver" "$pkgdir/usr/share/aws-cli/v2/current"
+	# Install completions scripts
+	install -Dm644 aws_bash_completer $pkgdir/usr/share/bash-completion/completions/aws
+	install -Dm644 aws_zsh_completer.sh $pkgdir/usr/bin/aws_zsh_completer.sh
+	
+	# Install license
+	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	
+	# aws and aws_completer symlinks to /usr/bin
+	ln -sf /usr/local/aws-cli/v2/aws $pkgdir/usr/bin/aws
+	ln -sf /usr/local/aws-cli/v2/aws_completer $pkgdir/usr/bin/aws_completer
 }
