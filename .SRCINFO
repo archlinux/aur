@@ -1,7 +1,7 @@
 pkgbase = stardew-valley-designer-bin
   pkgdesc = The goal of this project is to provide a finely tuned editor for designing your farm and the interior of all its buildings.
   pkgver = 0.12.0
-  pkgrel = 4
+  pkgrel = 5
   url = https://stardewdesigner.com/
   install = .INSTALL
   arch = x86_64
