@@ -4,14 +4,12 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 pkgname=hfsutils
 pkgver=3.2.6_p16
-pkgrel=1
+pkgrel=2
 pkgdesc="HFS Access utils"
 arch=('x86_64')
 license=('GPL2')
 url="https://www.mars.org/home/rob/proj/hfs/"
-depends=(glibc)
-optdepends=('tcl: xhfs GUI'
-            'tk: xhfs GUI')
+depends=(glibc tcl tk)
 source=(
 	"https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver/_p*}.orig.tar.gz"
 	"https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver/_p/-}.debian.tar.xz"
@@ -28,12 +26,8 @@ prepare() {
 build() {
 	cd "${pkgname}-${pkgver%_p*}"
 	autoreconf -fi
-  # test for tcl and tk presence
-  if [ -x /usr/bin/tclsh -a -x /usr/bin/wish ]; then
-	  ./configure --with-tcl --with-tk
-  else
-	  ./configure
-  fi
+	CFLAGS="$CFLAGS -Wno-error=incompatible-pointer-types"
+	./configure --with-tcl --with-tk
 	make prefix=/usr
 	make -C hfsck prefix=/usr
 }
