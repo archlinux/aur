@@ -2,13 +2,13 @@
 
 pkgname=xplayer-git
 _pkgbasename=xplayer
-pkgver=2.4.2.r2.g50f3bd9
-pkgrel=2
+pkgver=2.4.4.r4.ga97dd8d
+pkgrel=1
 pkgdesc="Simple media player. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=(
-    'clutter-gtk' 'clutter-gst' 'xplayer-plparser-git'
+    'clutter-gtk' 'clutter-gst' 'xplayer-plparser'
     'desktop-file-utils' 'iso-codes' 'yelp-xsl'
     'libpeas' 'gsettings-desktop-schemas' 'dbus-glib'
     'python-gobject' 'gst-plugins-base' 'gst-plugins-good'
