@@ -21,8 +21,6 @@ depends=(
   libdrm
   libliftoff.so
   libpipewire-0.3.so
-  libvulkan.so
-  libwlroots.so
   libx11
   libxcb
   libxcomposite
@@ -49,6 +47,7 @@ makedepends=(
   ninja
   vulkan-headers
   wayland-protocols
+  cmake
 )
 source=(
   git+https://github.com/ValveSoftware/gamescope.git#tag=${pkgver}
