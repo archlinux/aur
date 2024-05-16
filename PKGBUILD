@@ -1,37 +1,63 @@
+# Contributor: Gesh <gesh@gesh.uni.cx>
 # Maintainer: Stefan Gehr <stefan@gehr.xyz>
 
 pkgname=papis
 pkgver=0.13
-pkgrel=3
-pkgdesc="Papis is a powerful and highly extensible command-line based document and bibliography manager."
+pkgrel=4
+pkgdesc="Command-line document and bibliography manager"
 arch=('any')
 url="https://github.com/papis/papis"
-license=('GPL')
-depends=('python-pyaml'
-         'python-arxiv2bib'
-         'python-beautifulsoup4'
-         'python-bibtexparser'
-         'python-click'
-         'python-colorama'
-         'python-dominate'
-         'python-filetype'
-         'python-habanero'
-         'python-isbnlib'
-         'python-lxml'
-         'python-platformdirs'
-         'python-prompt_toolkit'
-         'python-pygments'
-         'python-pyparsing'
-         'python-doi'
-         'python-slugify'
-         'python-requests'
-         'python-stevedore'
-        )
-optdepends=(
-  'papis-rofi: integration with rofi'
-  'python-whoosh'
+license=('GPL-3.0-or-later')
+depends=('python'
+    'python-arxiv2bib'
+    'python-beautifulsoup4'
+    'python-bibtexparser'
+    'python-click'
+    'python-colorama'
+    'python-doi'
+    'python-dominate'
+    'python-filetype'
+    'python-habanero'
+    'python-isbnlib'
+    'python-lxml'
+    'python-platformdirs'
+    'python-prompt_toolkit'
+    'python-pygments'
+    'python-pyparsing'
+    'python-requests'
+    'python-slugify'
+    'python-stevedore'
+    'python-yaml'
 )
-makedepends=(python-build python-installer python-wheel)
+optdepends=(
+    'fzf: fzf picker'
+    'papis-rofi: integration with rofi'
+    'papis-zotero: imports from zotero'
+    'pdfjs: pdf reader in the web app'
+    'python-chardet: improved encoding autodetection when scraping'
+    'python-jinja: jinja formatting'
+    'python-papis-scihub: imports from scihub'
+    'python-markdownify: convert zenodo imports to markdown'
+    'python-whoosh: whoosh database backend'
+    'python-docutils: for papis.sphinx_ext (used by some plugins)'
+    'python-sphinx: for papis.sphinx_ext (used by some plugins)'
+    'python-sphinx-click: for papis.sphinx_ext (used by some plugins)'
+    'python-pytest: for papis.testing (used by some plugins)'
+)
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-wheel'
+
+    'python-setuptools'
+)
+#checkdepends=(
+#    'python-pytest'
+#    'python-pytest-cov'
+#    'python-jinja'
+#    'python-markdownify'
+#    'python-whoosh'
+#)
 
 source=("https://github.com/papis/papis/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=("efff09aeaaacf170ef5c01170f1c856dbe09566096deb7ae649bfe755d58f225467241464e4b4bf8f36c25898fc7e9f689358073ab45e81d651defd127729af3")
@@ -40,6 +66,11 @@ build() {
   cd "${pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
+
+#check() {
+#  cd "${pkgname}-${pkgver}"
+#  python -m pytest papis tests
+#}
 
 package() {
   cd "${pkgname}-${pkgver}"
