@@ -4,7 +4,7 @@ pkgname=chomikbox
 pkgdesc="A desktop application for Chomikuj.pl integration"
 
 pkgver=2.0.5
-pkgrel=4
+pkgrel=5
 
 arch=(i686 x86_64)
 
@@ -14,7 +14,7 @@ license=("LicenseRef-ChomikBox")
 depends=(qt4 gstreamer0.10-base)
 
 source=("LICENSE" "chomikbox.png" "chomikbox-music-light.png")
-md5sums=("73f39ee9232c081dc1e6998f86c7d23b" "644b11c413a5542b187e7a040b7a0d5e" "0ccd8b3e3ce7fb30a5706f80f4959b5c")
+md5sums=("5226a506d93635a3f85bbb23826758b3" "644b11c413a5542b187e7a040b7a0d5e" "0ccd8b3e3ce7fb30a5706f80f4959b5c")
 
 source_i686=("http://bts.box.chomikuj.pl/repo/all/${pkgver}/linux32/ChomikBox-pl-installer.32.sh")
 source_x86_64=("http://bts.box.chomikuj.pl/repo/all/${pkgver}/linux64/ChomikBox-pl-installer.64.sh")
