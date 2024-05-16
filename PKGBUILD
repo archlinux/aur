@@ -1,7 +1,7 @@
 # Maintainer: Sergey Alexeyev s.n.alexeyev@gamil.com
 
 author=s-n-alexeyev
-pkgname=yvt-git
+pkgname=yvt
 _gitname=yvt
 pkgver=1.1.0.r0.gba4d567
 pkgrel=1
