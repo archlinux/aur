@@ -5,12 +5,13 @@ pkgname=${_target}-toolchain
 pkgver=13.2.rel1
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM64 target"
-arch=('aarch64' 'x86_64')
+arch=('x86_64')
 url="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads"
 license=('GPL' 'LGPL')
 source=("https://developer.arm.com/-/media/Files/downloads/gnu/${pkgver}/binrel/arm-gnu-toolchain-${pkgver}-${arch}-${_target}.tar.xz")
 sha256sums=('7fe7b8548258f079d6ce9be9144d2a10bd2bf93b551dafbf20fe7f2e44e014b8')
 provides=('aarch64-none-elf-toolchain')
+depends=('ncurses5-compat-libs')
 
 package() {
   mkdir -p ${pkgdir}/usr
