@@ -3,7 +3,7 @@
 pkgname='python-aksharamukha'
 _proj_name="${pkgname#python-}"
 pkgver='2.2.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='Indic scripts converter'
 arch=(any)
 url='https://aksharamukha.appspot.com/python'
@@ -18,7 +18,7 @@ depends=(
   'python-yaml'
   'python>=3.8')
 optdepends=(
-  'python-khmer-nltk: processing Khmer script',
+  'python-khmer-nltk: processing Khmer script'
   'python-lxml: transliterate_file submodule'
   'python-beautifulsoup4: transliterate_file submodule')
 makedepends=('python-build' 'python-installer' 'python-wheel')
