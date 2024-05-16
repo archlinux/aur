@@ -1,6 +1,6 @@
 # Maintainer: Matteo Giordano <mail@matteogiordano.me>
 pkgname=phoenixd-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="phoenixd is the server equivalent of the popular phoenix wallet for mobile"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/ACINQ/phoenixd/"
 license=('Apache-2.0')
 _source="phoenix-$pkgver-linux-x64"
 source=("https://github.com/ACINQ/phoenixd/releases/download/v$pkgver/$_source.zip")
-sha512sums=('fb1f54e22b8c0a2be81aba5f510dfd45f721842cdd7133370bae5b6928c51e48b83220a6da1fc999cfc5939c475ddc5f98ea630c7a5e2a1a3dcf4abc673af5a5')
+sha512sums=('6b37668ce22e7290de2bd27be3dfc5b6c5b3551bb1daccff5236a915c32a96eb2d2765e2cb08ed4bcf75fd798ee8c21c1c4871eb9bdbe43ac5f3ae6dd40679ce')
 
 package() {
     cd "$_source"
