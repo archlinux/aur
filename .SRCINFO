@@ -1,14 +1,22 @@
 pkgbase = aarch64-none-elf-toolchain
-	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target
-	pkgver = 13.2.rel1
+	pkgdesc = A complete gcc/binutils/newlib toolchain for aarch64-none-elf
+	pkgver = 20230502
 	pkgrel = 1
-	url = https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
+	url = http://www.gnu.org
 	arch = x86_64
 	license = GPL
-	license = LGPL
-	depends = ncurses5-compat-libs
-	provides = aarch64-none-elf-toolchain
-	source = https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-x86_64-aarch64-none-elf.tar.xz
-	sha256sums = 7fe7b8548258f079d6ce9be9144d2a10bd2bf93b551dafbf20fe7f2e44e014b8
+	license = BSD
+	makedepends = git
+	depends = libelf
+	conflicts = aarch64-none-elf-elf-gcc
+	conflicts = aarch64-elf-binutils
+	conflicts = aarch64-elf-newlib
+	options = !strip
+	source = git+https://sourceware.org/git/binutils-gdb.git#commit=594dcc92e8d1f6bb30e3dfa4eb343febcda66f1a
+	source = git+https://gcc.gnu.org/git/gcc.git#commit=ffc6b225c955a3d8478de1beba5ad08a7396648c
+	source = git+https://sourceware.org/git/newlib-cygwin.git#commit=ab49db3a8c08e2240e53d8f12d6a14fd285def4e
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = aarch64-none-elf-toolchain

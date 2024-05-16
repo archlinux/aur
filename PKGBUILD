@@ -1,22 +1,78 @@
-# Maintainer: hendy643 <hendy643@hotmail.com>
+# Maintainer: Christer Solskogen <christer.solskogen@gmail.com
 
-_target=aarch64-none-elf
-pkgname=${_target}-toolchain
-pkgver=13.2.rel1
+_arch=aarch64
+_target=$_arch-none-elf
+pkgname=$_target-toolchain
+pkgver=20230502
 pkgrel=1
-pkgdesc="The GNU Compiler Collection - cross compiler for ARM64 target"
+pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
+depends=('zlib' 'bash' 'libmpc' 'libisl')
+url="http://www.gnu.org"
+conflicts=($_target-elf-gcc $_arch-elf-binutils $_arch-elf-newlib)
 arch=('x86_64')
-url="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads"
-license=('GPL' 'LGPL')
-source=("https://developer.arm.com/-/media/Files/downloads/gnu/${pkgver}/binrel/arm-gnu-toolchain-${pkgver}-${arch}-${_target}.tar.xz")
-sha256sums=('7fe7b8548258f079d6ce9be9144d2a10bd2bf93b551dafbf20fe7f2e44e014b8')
-provides=('aarch64-none-elf-toolchain')
-depends=('ncurses5-compat-libs')
+depends=(libelf)
+makedepends=(git)
+license=('GPL' 'BSD')
+options=('!strip')
+_binutils_commit=594dcc92e8d1f6bb30e3dfa4eb343febcda66f1a
+_gcc_commit=ffc6b225c955a3d8478de1beba5ad08a7396648c
+_newlib_commit=ab49db3a8c08e2240e53d8f12d6a14fd285def4e
 
-package() {
-  mkdir -p ${pkgdir}/usr
-  _tc_dir=$(ls ${srcdir} | grep arm-gnu-toolchain | grep -v "tar.xz")
-  cp -a ${srcdir}/${_tc_dir}/* ${pkgdir}/usr
-  rm -f ${pkgdir}/usr/*-manifest.txt ${pkgdir}/usr/lib/bfd-plugins/libdep.so
-  rm -rf ${pkgdir}/usr/include ${pkgdir}/usr/share/{dejagnu,doc,gcc-*,gdb,info,locale} ${pkgdir}/usr/share/man/{man1/runtest.1,man5,man7}
+source=(git+https://sourceware.org/git/binutils-gdb.git#commit=${_binutils_commit}
+                  git+https://gcc.gnu.org/git/gcc.git#commit=${_gcc_commit}
+                  git+https://sourceware.org/git/newlib-cygwin.git#commit=${_newlib_commit}
+)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
+CFLAGS=${CFLAGS/-Werror=format-security/}
+CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+
+prepare() {
+	cd "${srcdir}"/binutils-gdb
+	
+	#for i in bfd binutils gas gold ld libctf libsframe opcodes; do ln -snfv ../binutils-gdb/$i; done
+	for i in gcc fixincludes libcody libcpp libgcc libstdc++-v3; do ln -snfv ../gcc/$i; done
+	for i in newlib libgloss; do ln -snfv ../newlib-cygwin/$i; done
+
+	mkdir -p "${srcdir}/obj"
+}
+
+build()
+{
+	cd "${srcdir}"/obj
+	"${srcdir}"/binutils-gdb/configure --prefix=/usr --libexecdir=/usr/lib --target=${_target} --enable-languages=c,c++ --disable-libstdcxx-pch \
+	--with-newlib --with-libgloss --with-system-zlib --disable-nls --enable-plugins --enable-deterministic-archives --enable-relro --enable-__cxa_atexit \
+	--enable-linker-build-id --enable-plugin --enable-checking=release --enable-host-shared --disable-libssp --disable-libunwind-exceptions --disable-source-highlight
+
+	make
+}
+
+package()
+{
+	cd "${srcdir}/obj"
+	make install DESTDIR="${pkgdir}" -j1
+	rm -rf "${pkgdir}"/usr/share
+	rm -rf "${pkgdir}"/usr/include
+	rm -rf "${pkgdir}"/usr/lib/libcc1.*
+	rm -rf "${pkgdir}"/usr/lib/bfd-plugins
+	find "${pkgdir}" -name '*.py' -delete 
+
+
+	# local variable is scoped to the function, for general tidiness. 
+	local regex='ELF ().*(executable|shared object).*'
+	# read null-terminated filenames from stdin, and use a while loop to operate on each one
+	# for each run of the loop, the filename is stored in the intuitive variable "filename". :) 
+	while read -r -d '' filename; do
+	# test if the output of `file` matches the regular expression defined earlier
+	if [[ $(file -b "$filename") =~ $regex ]]; then
+       	 # awesome, it matches! So, do the standard strip routine since this isn't an $_target executable
+        	strip --strip-unneeded "$filename"
+    	fi
+	# this find command uses process substitution to pass the output of find into the `while read` loop
+	done < <(find "$pkgdir" -type f -print0)
+
+	find "${pkgdir}/usr/lib/gcc/${_target}" "${pkgdir}/usr/${_target}/lib" -type f -name '*.o' -o -name '*.a' -exec "${pkgdir}"/usr/bin/${_target}-strip -g {} +
+
 }
