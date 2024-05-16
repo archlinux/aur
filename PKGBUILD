@@ -1,8 +1,8 @@
 # Maintainer: Yichao Zhou <broken.zhou@gmail.com>
 pkgname=freetype2-macos-browsers-binary-patcher
 pkgver=2.13
-pkgrel=1
-pkgdesc="Scripts to patch freetype2 library in chrome and vivaldi to use a similar filter as the one in freetype2-macos.  It will also install a hook to execute the scripts when you install or upgrade chrome and vivaldi."
+pkgrel=2
+pkgdesc="Script that patches freetype2 library in Chrome and Vivaldi to use a similar filter as the one in freetype2-macos.  It will also install a hook to run the scripts when you install or upgrade Chrome and Vivaldi."
 url="https://www.freetype.org/"
 arch=('any')
 license=('GPL')
