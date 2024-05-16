@@ -21,8 +21,6 @@ depends=(
   libdrm
   libliftoff.so
   libpipewire-0.3.so
-  libvulkan.so
-  libwlroots.so
   libx11
   libxcb
   libxcomposite
@@ -76,6 +74,7 @@ prepare() {
   cd "$srcdir/$_pkgname"
    
   #  meson subprojects download
+  meson subprojects download
   git submodule init src/reshade
   git config submodule.src/reshade.url ../reshade
   git submodule init thirdparty/SPIRV-Headers
@@ -86,7 +85,6 @@ prepare() {
   rm -rf subprojects/stb
   git clone "$srcdir/stb" subprojects/stb
   cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
-  
   
   patch -Np1 -i ../720p.patch
   patch -Np1 -i ../disable-steam-touch-click-atom.patch
@@ -118,4 +116,3 @@ package() {
     --skip-subprojects
   install -Dm 644 gamescope/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
 }
-
