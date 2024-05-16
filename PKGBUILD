@@ -3,21 +3,21 @@
 # list of versions can be retrieved from https://dl.google.com/widevine-cdm/versions.txt
 _x86_64_pkgver=4.10.2710.0
 
-_debian_pkgname='libwidevinecdm0'
-_debian_pkgver=4.10.2252.0
-_debian_pkgrel=+3
+_lacros_url='https://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/'
+_lacros_img_aarch64=chromeos-lacros-arm64-squash-zstd
+_lacros_img_armv7h=chromeos-lacros-arm-squash-zstd
+_lacros_version=120.0.6098.0
 
 pkgname=widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content.  System-wide installation with automated registering for chromium and firefox.'
 pkgver=4.10.2710.0
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://www.widevine.com/'
 license=('custom')
-depends=('gcc-libs' 'glib2' 'nspr' 'nss')
-depends_aarch64=('glibc>=2.39')
-depends_armv7h=('glibc>=2.39')
-makedepends_aarch64=('python')
+depends=('gcc-libs' 'glib2' 'nspr' 'nss' 'glibc>=2.39')
+makedepends_aarch64=('python' 'squashfs-tools')
+makedepends_armv7h=('squashfs-tools')
 provides=('chromium-widevine')
 conflicts=('chromium-widevine')
 install="widevine.install"
@@ -25,27 +25,29 @@ options=('!strip')
 
 source=("chrome-eula_text.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html"
         "widevine.install")
-
 source_x86_64=("https://dl.google.com/widevine-cdm/${_x86_64_pkgver}-linux-x64.zip")
-
-source_aarch64=("https://archive.raspberrypi.org/debian/pool/main/w/widevine/${_debian_pkgname}_${_debian_pkgver}${_debian_pkgrel}_arm64.deb"
+source_aarch64=("lacros-arm64.squashfs::${_lacros_url}${_lacros_img_aarch64}-${_lacros_version}"
                 "widevine_fixup.py")
 
-source_armv7h=("https://archive.raspberrypi.org/debian/pool/main/w/widevine/${_debian_pkgname}_${_debian_pkgver}${_debian_pkgrel}_armhf.deb")
-
+source_armv7h=("lacros-arm.squashfs::${_lacros_url}${_lacros_img_armv7h}-${_lacros_version}")
 
 sha256sums=(SKIP
             '5ffda209f750c8ba31800b5e28c9d32f04c4b261eeec09784ff7045b694456f4')
 sha256sums_x86_64=('c120e5d03ca6eb5243d4c69a6a4348e121233824ab26db9126a53ba99709d152')
-sha256sums_aarch64=('c88bbb210ca94cb4b5c3bb1ff11b5b24f146b76b22b1119b9cac37c421574284'
+sha256sums_aarch64=('38a57cc3975af68675a1219b00354f08890ff58d0c54b690dcf5d2dd904b1576'
                     '6e886755201f1ba9dab1ead5f11846bae321cbf343da1112f06c08c8a8012182')
-sha256sums_armv7h=('5b1199bcd3471d126098be42ca0af0e486302df94cdf4643e4fe2a86d4c4c7d1')
+sha256sums_armv7h=('c11d54ce5953c72cdb0a9b4c1e3a6442e872aaf90c80ca95f21d5182b1560363')
 
 prepare() {
-  if [[ $CARCH == "aarch64" || $CARCH == "armv7h" ]]; then
-    # Extract data.tar.gz from deb package
-    tar -xf data.tar.xz
+  if [[ $CARCH == "aarch64" ]]; then
+    unsquashfs -q lacros-arm64.squashfs 'WidevineCdm/*'
+  fi
 
+  if [[ $CARCH == "armv7h" ]]; then
+    unsquashfs -q lacros-arm.squashfs 'WidevineCdm/*'
+  fi
+
+  if [[ $CARCH == "aarch64" || $CARCH == "armv7h" ]]; then
     # Get major and minor version numbers from pkgver string
     _major_version="$(echo ${pkgver} | cut -d. -f1)"
     _minor_version="$(echo ${pkgver} | cut -d. -f2)"
@@ -80,9 +82,9 @@ prepare() {
 build() {
   if [[ $CARCH == "aarch64" ]]; then
     # patch widevine lib to add missing functions and add support for non-4k systems
-    python ../widevine_fixup.py opt/WidevineCdm/_platform_specific/linux_arm64/libwidevinecdm_real.so libwidevinecdm.so
+    python ../widevine_fixup.py squashfs-root/WidevineCdm/_platform_specific/cros_arm64/libwidevinecdm.so libwidevinecdm.so
   elif [[ $CARCH == "armv7h" ]]; then
-    mv opt/WidevineCdm/_platform_specific/linux_arm/libwidevinecdm.so libwidevinecdm.so
+    mv squashfs-root/WidevineCdm/_platform_specific/cros_arm/libwidevinecdm.so libwidevinecdm.so
   fi
 }
 
