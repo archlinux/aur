@@ -2,7 +2,7 @@
 
 pkgname=colm-git
 pkgver=0.14.7.r44.g28b6e0a0
-pkgrel=3
+pkgrel=4
 pkgdesc="A programming language designed for the analysis and transformation of computer languages"
 arch=('i686' 'x86_64')
 url="https://www.colm.net/open-source/colm/"
@@ -29,8 +29,7 @@ build() {
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   ./configure \
-    --prefix="/usr" \
-    --datadir="/usr/share/colm"
+    --prefix="/usr"
   make
 }
 
