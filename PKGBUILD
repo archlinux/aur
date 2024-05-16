@@ -5,6 +5,8 @@
 _pkgname=pytorch
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
+# When updating pytorch, also check the compatibility table for torchvision
+# https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.3.0
 _pkgver=2.3.0
 pkgrel=5
