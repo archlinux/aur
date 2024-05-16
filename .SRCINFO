@@ -1,7 +1,7 @@
 pkgbase = colm-git
 	pkgdesc = A programming language designed for the analysis and transformation of computer languages
 	pkgver = 0.14.7.r44.g28b6e0a0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.colm.net/open-source/colm/
 	arch = i686
 	arch = x86_64
