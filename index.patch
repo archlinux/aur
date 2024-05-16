@@ -1,0 +1,13 @@
+diff --git a/src/exm-upgrade-assistant.c b/src/exm-upgrade-assistant.c
+index 6eca4c7..ac07dbd 100644
+--- a/src/exm-upgrade-assistant.c
++++ b/src/exm-upgrade-assistant.c
+@@ -595,7 +595,7 @@ populate_drop_down (ExmUpgradeAssistant *self)
+         gchar *key;
+ 
+         key = g_strdup_printf ("GNOME %d", index);
+-        g_hash_table_insert (hash_table, key, index);
++        g_hash_table_insert (hash_table, key, &index);
+         gtk_string_list_append (string_list, key);
+     }
+ 
