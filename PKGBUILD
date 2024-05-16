@@ -1,18 +1,19 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: a821 at mail de
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
 
 pkgname=python-libnacl
-pkgver=1.9.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='A simple ctypes based python binding to libsodium'
 arch=('any')
 url='https://libnacl.readthedocs.org'
-license=('Apache')
+license=('Apache-2.0')
 depends=('python' 'libsodium')
 makedepends=('python-build' 'python-installer' 'python-poetry-core')
 source=("https://github.com/saltstack/libnacl/archive/v$pkgver/libnacl-$pkgver.tar.gz")
-sha512sums=('1c1011f218864f4eab6a985a957f7ec5b8a227ed107ab336a0bc076be10bae6d598f3e81f3a20177e81f25f93c36b23118f515b98f87e11b1f727cae3db1e267')
+sha512sums=('717aec5fcc9ffbb7fef5f265861f86a087cc1ad1a122d752b1d8447bf495b98106056f19ff2ad1001ca81b84085ae6167ec96db2c2f3823f0f9a72a2a54788df')
 
 build() {
   cd libnacl-$pkgver
