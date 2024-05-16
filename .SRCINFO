@@ -1,12 +1,12 @@
 pkgbase = ddcutil-service
 	pkgdesc = A Dbus ddcutil server for control of DDC Monitors/VDUs
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/digitaltrails/ddcutil-service
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = ddcutil
-	source = ddcutil-service-1.0.6.tar.gz::https://github.com/digitaltrails/ddcutil-service/archive/refs/tags/v1.0.6.tar.gz
-	sha256sums = eec7f05f4bfb67dcada22cfd41f45d4b4f6e9b74e3e4590767c834a8f0db3711
+	source = ddcutil-service-1.0.7.tar.gz::https://github.com/digitaltrails/ddcutil-service/archive/refs/tags/v1.0.7.tar.gz
+	sha256sums = 58a26f611e5ec69e1dcd90a6e9609564a6d489fa54cc5f25b12a451eb805f40e
 
 pkgname = ddcutil-service
