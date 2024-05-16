@@ -2,7 +2,7 @@
 _base=monty
 pkgname=python-${_base}
 pkgdesc="Missing complement to Python"
-pkgver=2024.4.17
+pkgver=2024.5.15
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/materialsvirtuallab/${_base}"
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-bson python-pandas python-pydantic
   python-ruamel-yaml python-tqdm python-pytorch)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('d7f157f5edf5ce58d4a1289468e9f80ebcf72c21177a94e4d44d787d8bcce09303db0160231be1f2e85166e7f550c579a02c6a7e2cbd7d7417acd13d7c821ab7')
+sha512sums=('fa52501eb7509ec2be6003ecd99dc6efcd05a35d87387caf1b1244b3b107b2945e072b6a3011720f9926f9d1cbef13feee121cb5166f9be3666516ed56f1963d')
 
 build() {
   cd ${_base}-${pkgver}
