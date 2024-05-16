@@ -1,22 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=musicpod-git
 _app_id=org.feichtmeier.Musicpod
-pkgver=1.3.4.r0.g7c5fae2
+pkgver=1.4.1.r0.g174f145
 pkgrel=1
-_flutter_ver=3.19.6
 pkgdesc="Music, radio, television and podcast player"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ubuntu-flutter-community/musicpod"
 license=('GPL-3.0-or-later')
 depends=('gstreamer' 'gtk3' 'mpv')
-#makedepends=('chrpath' 'clang' 'cmake' 'git' 'ninja')
-makedepends=('clang' 'cmake' 'git' 'ninja')
+#makedepends=('chrpath' 'clang' 'cmake' 'fvm' 'git' 'ninja')
+makedepends=('clang' 'cmake' 'fvm' 'git' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/ubuntu-flutter-community/musicpod.git'
-        "flutter-${_flutter_ver}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutter_ver/.hotfix/+hotfix}-stable.tar.xz")
-sha256sums=('SKIP'
-            'db6742a20626d0d2a089eb41ad61b9b2138b996679911e9c8268c1f896191f97')
+source=('git+https://github.com/ubuntu-flutter-community/musicpod.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -25,16 +22,23 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+  export FVM_CACHE_PATH="$srcdir/fvm"
+  fvm install 3.19.6
+  fvm global 3.19.6
+
+  # Disable analytics
+  fvm flutter --disable-analytics
+
+  # Pull dependencies within prepare, allowing for offline builds later on
+  fvm flutter pub get
+
   desktop-file-edit  --set-icon="${pkgname%-git}" "snap/gui/${pkgname%-git}.desktop"
 }
 
 build() {
   cd "${pkgname%-git}"
-  export FLUTTER_HOME="$srcdir/flutter"
-  export PATH="${FLUTTER_HOME}/bin:${PATH}"
-  flutter --disable-analytics
-  flutter pub get
-  flutter build linux
+  export FVM_CACHE_PATH="$srcdir/fvm"
+  fvm flutter build linux
 }
 
 check() {
