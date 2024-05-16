@@ -1,0 +1,44 @@
+From e50457a52aafcdfe0e230a3e6ec97eddc66eb989 Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Fri, 26 Jan 2024 16:56:17 +0100
+Subject: [PATCH] Drop usage of return*_if_fail() to avoid return-mismatch
+ error of C compiler
+
+return*_if_fail() macros are not suitable in certain places.
+---
+ src/widgets/ColorSchemeThumbnail.vala | 2 +-
+ src/widgets/Window.vala               | 5 +----
+ 2 files changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/src/widgets/ColorSchemeThumbnail.vala b/src/widgets/ColorSchemeThumbnail.vala
+index 2e1e57e..8c73e3d 100644
+--- a/src/widgets/ColorSchemeThumbnail.vala
++++ b/src/widgets/ColorSchemeThumbnail.vala
+@@ -125,7 +125,7 @@ public class Terminal.ColorSchemePreviewPaintable : GLib.Object, Gdk.Paintable {
+ 
+   private async void load_image () {
+     var file_content = ColorSchemeThumbnailProvider.apply_scheme (this.scheme);
+-    return_if_fail (file_content != null);
++    if (file_content == null) return;
+ 
+     try {
+       this.handler = new Rsvg.Handle.from_data (file_content);
+diff --git a/src/widgets/Window.vala b/src/widgets/Window.vala
+index 1388685..abdc8fd 100644
+--- a/src/widgets/Window.vala
++++ b/src/widgets/Window.vala
+@@ -38,10 +38,7 @@ public struct Terminal.Padding {
+   }
+ 
+   public static Padding from_variant (Variant vari) {
+-    return_val_if_fail (
+-      vari.check_format_string ("(uuuu)", false),
+-      Padding.zero ()
+-    );
++    if (!vari.check_format_string ("(uuuu)", false)) return Padding.zero ();
+ 
+     var iter = vari.iterator ();
+     uint top = 0, right = 0, bottom = 0, left = 0;
+-- 
+GitLab
+
