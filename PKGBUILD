@@ -1,7 +1,7 @@
 # Maintainer: Azim Muradov <azim.muradov.dev@gmail.com>
 pkgname=stardew-valley-designer-bin
 pkgver=0.12.0
-pkgrel=5
+pkgrel=6
 pkgdesc="The goal of this project is to provide a finely tuned editor for designing your farm and the interior of all its buildings."
 arch=('x86_64')
 url="https://stardewdesigner.com/"
@@ -30,10 +30,10 @@ package() {
   cd "stardew-valley-designer-${pkgver}"
   mkdir usr
   mkdir usr/bin
-  mkdir usr/lib
+  mkdir -p usr/lib/stardew-valley-designer
   mv share usr
-  mv bin lib usr/lib
-  ln -s ../lib/bin/stardew-valley-designer usr/bin/stardew-valley-designer
+  mv bin lib usr/lib/stardew-valley-designer
+  ln -s ../lib/stardew-valley-designer/bin/stardew-valley-designer usr/bin/stardew-valley-designer
   mv usr ${pkgdir}
 }
 
