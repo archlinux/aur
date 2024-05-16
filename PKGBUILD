@@ -2,7 +2,7 @@
 
 pkgname=windfetch
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OS information tool. Fork of Neofetch"
 arch=("any")
 url="https://codeberg.org/chardon_cs/windfetch"
@@ -49,7 +49,7 @@ validpgpkeys=(
 )
 
 package() {
-	cd "${pkgname}"
+	cd "${pkgname}-${pkgver}"
 	make DESTDIR="$pkgdir" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
