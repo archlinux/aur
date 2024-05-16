@@ -1,6 +1,6 @@
 pkgbase = cosmic-store-git
 	pkgdesc = WIP COSMIC app store
-	pkgver = r184.8f13d37
+	pkgver = r202.07a9d72
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-store
 	arch = x86_64
@@ -13,15 +13,13 @@ pkgbase = cosmic-store-git
 	makedepends = just
 	makedepends = mold
 	depends = archlinux-appstream-data
-	depends = gcc-libs
-	depends = hicolor-icon-theme
+	depends = cosmic-icons-git
+	depends = glib2
 	optdepends = flatpak: Flatpak packages support
 	optdepends = packagekit: package manager integration module
 	provides = cosmic-store
 	conflicts = cosmic-store
 	source = git+https://github.com/pop-os/cosmic-store.git
-	source = git+https://github.com/jackpot51/appstream.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = cosmic-store-git

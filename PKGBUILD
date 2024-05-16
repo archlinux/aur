@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-store-git
-pkgver=r184.8f13d37
+pkgver=r202.07a9d72
 pkgrel=1
 pkgdesc="WIP COSMIC app store"
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ license=('GPL-3.0-or-later')
 groups=('cosmic')
 depends=(
   'archlinux-appstream-data'
-  'gcc-libs'
-  'hicolor-icon-theme'
+  'cosmic-icons-git'
+  'glib2'
 )
 makedepends=(
   'cargo'
@@ -25,10 +25,8 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/pop-os/cosmic-store.git'
-        'git+https://github.com/jackpot51/appstream.git')
-sha256sums=('SKIP'
-            'SKIP')
+source=('git+https://github.com/pop-os/cosmic-store.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -37,10 +35,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  git submodule init
-  git config submodule.appstream.url "$srcdir/appstream"
-  git -c protocol.file.allow=always submodule update
-
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just vendor
