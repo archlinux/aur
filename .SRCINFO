@@ -1,7 +1,7 @@
 pkgbase = regina-rexx
 	pkgdesc = An implementation of the ANSI Standard REXX Programming Language
 	pkgver = 3.9.6
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://regina-rexx.sourceforge.io/
 	arch = aarch64

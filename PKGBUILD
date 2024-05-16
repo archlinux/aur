@@ -13,7 +13,7 @@ pkgname=(regina-rexx{,-doc})
 pkgdesc='An implementation of the ANSI Standard REXX Programming Language'
 epoch=1
 pkgver=3.9.6
-pkgrel=3
+pkgrel=4
 url='https://regina-rexx.sourceforge.io/'
 source=(
   "https://downloads.sourceforge.net/regina-rexx/$_pkgname-$_pkgsuff-$pkgver.tar.gz"
@@ -35,7 +35,11 @@ build() {
     * ) : pass ;;
   esac
 
-  env CC=gcc ./configure \
+  # If the user wants to compile regina with another compiler, let them.
+  # Use CC=gcc per default.
+  test "Z$CC" = 'Z' && export CC='gcc'
+
+  ./configure \
     --prefix=/usr \
     --libdir=/usr/lib \
     --sysconfdir=/etc
@@ -47,7 +51,7 @@ package_regina-rexx() {
   changelog="$pkgname.changelog"
   depends=(
     'bash'
-    'gcc-libs'
+    'gcc-libs'  # strictly unneeded if CC != gcc
     'glibc'
     'libxcrypt'
     'ncurses'
