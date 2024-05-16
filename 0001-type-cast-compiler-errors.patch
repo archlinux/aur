@@ -1,0 +1,105 @@
+From ab048abab15b89adeeb5fdc1ee4611016ee8907c Mon Sep 17 00:00:00 2001
+From: nate <njsimon10@gmail.com>
+Date: Wed, 15 May 2024 16:51:58 -0500
+Subject: [PATCH] Fix compiler errors related to invalid/missing type casts
+
+---
+ src/backend/bacon-video-widget-gst-missing-plugins.c | 2 +-
+ src/backend/bacon-video-widget.c                     | 2 +-
+ src/backend/gsd-osd-window.c                         | 2 +-
+ src/xplayer-fullscreen.c                             | 2 +-
+ src/xplayer-object.c                                 | 4 ++--
+ src/xplayer-private.h                                | 2 +-
+ 6 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/backend/bacon-video-widget-gst-missing-plugins.c b/src/backend/bacon-video-widget-gst-missing-plugins.c
+index 045e0d8..d1dc44a 100644
+--- a/src/backend/bacon-video-widget-gst-missing-plugins.c
++++ b/src/backend/bacon-video-widget-gst-missing-plugins.c
+@@ -282,7 +282,7 @@ bacon_video_widget_start_plugin_installation (XplayerCodecInstallContext *ctx,
+ 	}
+ #endif /* GDK_WINDOWING_X11 */
+ 
+-	status = gst_install_plugins_async (ctx->details, install_ctx,
++	status = gst_install_plugins_async ((const gchar * const*)ctx->details, install_ctx,
+ 	                                    on_plugin_installation_done,
+ 	                                    ctx);
+ 
+diff --git a/src/backend/bacon-video-widget.c b/src/backend/bacon-video-widget.c
+index 444413c..27fe45b 100644
+--- a/src/backend/bacon-video-widget.c
++++ b/src/backend/bacon-video-widget.c
+@@ -1923,7 +1923,7 @@ bvw_handle_buffering_message (GstMessage * message, BaconVideoWidget *bvw)
+        gst_element_set_state (GST_ELEMENT (bvw->priv->play), GST_STATE_PAUSED);
+ 
+        bvw_reconfigure_fill_timeout (bvw, 200);
+-       bvw->priv->download_buffering_element = g_object_ref (message->src);
++       bvw->priv->download_buffering_element = GST_ELEMENT_CAST(g_object_ref (message->src));
+      }
+ 
+      return;
+diff --git a/src/backend/gsd-osd-window.c b/src/backend/gsd-osd-window.c
+index 8644a53..54a8585 100644
+--- a/src/backend/gsd-osd-window.c
++++ b/src/backend/gsd-osd-window.c
+@@ -250,7 +250,7 @@ draw_action_custom (GsdOsdDrawContext  *ctx,
+                 g_free (name);
+                 if (pixbuf == NULL)
+                 {
+-                    return FALSE;
++                    return;
+                 }
+             }
+ 
+diff --git a/src/xplayer-fullscreen.c b/src/xplayer-fullscreen.c
+index 52ad039..5d7d6dc 100644
+--- a/src/xplayer-fullscreen.c
++++ b/src/xplayer-fullscreen.c
+@@ -585,7 +585,7 @@ xplayer_fullscreen_toggle_blank_monitors (XplayerFullscreen *fs, GtkWidget *wind
+ 		xapp_monitor_blanker_unblank_monitors(fs->xapp_monitor_blanker);
+ 	}
+ 	else {
+-		xapp_monitor_blanker_blank_other_monitors(fs->xapp_monitor_blanker, window);
++		xapp_monitor_blanker_blank_other_monitors(fs->xapp_monitor_blanker, GTK_WINDOW(window));
+ 	}
+ 	xplayer_fullscreen_move_popups (fs);
+ }
+\ No newline at end of file
+diff --git a/src/xplayer-object.c b/src/xplayer-object.c
+index 146f3ca..85aefcc 100644
+--- a/src/xplayer-object.c
++++ b/src/xplayer-object.c
+@@ -1612,7 +1612,7 @@ xplayer_action_fullscreen (XplayerObject *xplayer, gboolean state)
+ void
+ xplayer_action_blank (XplayerObject *xplayer)
+ {
+-	xplayer_fullscreen_toggle_blank_monitors(xplayer->fs, GTK_WINDOW (xplayer->win));
++	xplayer_fullscreen_toggle_blank_monitors(xplayer->fs, GTK_WIDGET (xplayer->win));
+ }
+ 
+ void
+@@ -4304,7 +4304,7 @@ xplayer_callback_connect (XplayerObject *xplayer)
+ 	gtk_action_set_sensitive (action, FALSE);
+ 
+     sidebar_toolbar = xplayer_playlist_get_toolbar (xplayer->playlist);
+-    size_box = GTK_BOX (gtk_builder_get_object (xplayer->xml, "tmw_controls_vbox"));
++    size_box = GTK_WIDGET (gtk_builder_get_object (xplayer->xml, "tmw_controls_vbox"));
+     size_group = gtk_size_group_new (GTK_SIZE_GROUP_VERTICAL);
+     gtk_size_group_add_widget (size_group, size_box);
+     gtk_size_group_add_widget (size_group, sidebar_toolbar);
+diff --git a/src/xplayer-private.h b/src/xplayer-private.h
+index d17e6d6..91ab09b 100644
+--- a/src/xplayer-private.h
++++ b/src/xplayer-private.h
+@@ -106,7 +106,7 @@ struct _XplayerObject {
+ 	GtkAdjustment *seekadj;
+ 	gboolean seek_lock;
+ 	gboolean seekable;
+-	XplayerTimeLabel *time_label;
++	GtkWidget *time_label;
+ 
+ 	/* Volume */
+ 	GtkWidget *volume;
+-- 
+2.45.1
+
