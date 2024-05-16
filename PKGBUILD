@@ -1,7 +1,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=windfetch
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="OS information tool. Fork of Neofetch"
 arch=("any")
@@ -38,11 +38,11 @@ options=()
 install=
 changelog=
 source=(
-	https://codeberg.org/chardon_cs/windfetch/archive/v${pkgver}.tar.gz
+	https://github.com/chardoncs/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz
 )
 noextract=()
 sha256sums=(
-	"0b37f949fe549eb5e3bdfc8c9bd094ee2aebe190c49f4d872137772ccc31b734"
+	"c032a0d35ea739092352463f36c0e2cc5b9b0650563c7df4ff0cfbccb0755f94"
 )
 validpgpkeys=(
 	"69713F2236BBD93D3E78EFEF0D56181B48414DE8" # Charles Dong
@@ -51,5 +51,5 @@ validpgpkeys=(
 package() {
 	cd "${pkgname}"
 	make DESTDIR="$pkgdir" install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
