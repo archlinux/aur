@@ -1,7 +1,7 @@
 pkgbase = papis-git
 	pkgdesc = Command-line document and bibliography manager
 	pkgver = 0.13.r443.gb6fe8962
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/papis/papis
 	arch = any
 	license = GPL-3.0-or-later
@@ -47,7 +47,6 @@ pkgbase = papis-git
 	depends = python-requests
 	depends = python-slugify
 	depends = python-stevedore
-	depends = python-typing_extensions
 	depends = python-yaml
 	optdepends = fzf: fzf picker
 	optdepends = papis-rofi: integration with rofi
