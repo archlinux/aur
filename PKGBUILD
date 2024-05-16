@@ -14,12 +14,14 @@ depends=(
   gcc-libs
   glibc
   glm
+  hwdata
   libavif
   libcap.so
   libdecor
   libdisplay-info.so
   libdrm
   libliftoff.so
+  libinput
   libpipewire-0.3.so
   libx11
   libxcb
@@ -27,27 +29,30 @@ depends=(
   libxdamage
   libxext
   libxfixes
-  libxkbcommon.so
+  libxkbcommon
   libxmu
   libxrender
   libxres
   libxtst
   libxxf86vm
   openvr
+  seatd
   sdl2
   vulkan-icd-loader
   wayland
+  xcb-util-wm
+  xcb-util-errors
   xorg-server-xwayland
 )
 makedepends=(
   benchmark
+  cmake
   git
   glslang
   meson
   ninja
   vulkan-headers
   wayland-protocols
-  cmake
 )
 source=(
   git+https://github.com/ValveSoftware/gamescope.git#tag=${pkgver}
@@ -73,6 +78,14 @@ sha256sums=('e9bb0560dcf6e9ba3a6b0a47b005609d9efea80d4fcb064b0aa4f60681338f4a'
 
 prepare() {
   cd "$srcdir/$_pkgname"
+
+  for src in "${source[@]}"; do
+          src="${src%%::*}"
+          src="${src##*/}"
+          [[ $src = *.patch ]] || continue
+          echo "Applying patch $src..."
+          git apply "../$src"
+      done
    
   #  meson subprojects download
   meson subprojects download
@@ -86,11 +99,9 @@ prepare() {
   rm -rf subprojects/stb
   git clone "$srcdir/stb" subprojects/stb
   cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
-  
-  patch -Np1 -i ../720p.patch
-  patch -Np1 -i ../disable-steam-touch-click-atom.patch
-  patch -Np1 -i ../external-rotation.patch
-  patch -Np1 -i ../panel-type.patch
+
+  # Use Arch provided libdisplay-info, do use other subprojects as is
+  rm -rf subprojects/libdisplay-info
 }
 
 pkgver() {
@@ -100,7 +111,7 @@ pkgver() {
 
 build() {
   arch-meson gamescope build \
-    -Dforce_fallback_for=stb \
+    -Dforce_fallback_for=stb,wlroots \
     -Dpipewire=enabled \
     -Denable_gamescope=true \
     -Denable_gamescope_wsi_layer=true \
