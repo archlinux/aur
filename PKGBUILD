@@ -25,8 +25,7 @@ depends=(
   zbar
 )
 makedepends=(python-setuptools)
-source=($url/download/Electrum-LTC-$pkgver.tar.gz{,.asc})
-source=(libsecp256k1-new-versions.patch)
+source=($url/download/Electrum-LTC-$pkgver.tar.gz{,.asc} 'libsecp256k1-new-versions.patch')
 validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
 
 b2sums=('77a3f3969d435492216fa93afe48228bec1e3897d83eb5ebce5aee7088304ae54ceeeb030c6250a761a1f5c02abe554bc5e38c055b9979c1b390304a2f4a0966'
