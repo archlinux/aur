@@ -1,10 +1,9 @@
 # Maintainer: Fijxu <fijxu [at] nadeko [dot] net>
-# Maintainer: Jeremy Kescher <jeremy@kescher.at>
 
 # Based on https://aur.archlinux.org/packages/monero-feather-git/
 
 pkgname='feather-wallet'
-pkgver=2.6.5
+pkgver=2.6.7
 _pkgname=feather-${pkgver}
 pkgrel=1
 pkgdesc='A free Monero desktop wallet'
@@ -21,7 +20,7 @@ conflicts=('monero-feather' 'monero-feather-git' 'featherwallet-bin' 'featherwal
 
 source=(https://featherwallet.org/files/releases/source/feather-${pkgver}.tar.gz)
 
-sha256sums=('1afb81bc81a9bc77efb1eff5c86052f0e0ba40b81e1bda90f30e2e570ace1c46')
+sha256sums=('597e020d642df72e11862549e1ee8de5ac67d9cf97310b2a3e2634b4b5526124')
 
 prepare() {
 	cd ${_pkgname}
@@ -42,4 +41,3 @@ package() {
   install -Dm644 "${srcdir}/${_pkgname}/src/assets/feather.desktop" "${pkgdir}/usr/share/applications/feather.desktop"
   install -Dm644 "${srcdir}/${_pkgname}/src/assets/images/appicons/256x256.png" "${pkgdir}/usr/share/pixmaps/feather.png"
 }
-
