@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=GodSVG
+GenericName=SVG Editor
+Comment=An editor for Scalable Vector Graphics (SVG) files. Built with Godot
+Exec=godsvg %U
+Icon=godsvg.png
+Terminal=false
+StartupNotify=false
+Categories=Multimedia;Graphics;2DGraphics;VectorGraphics;Application;
+Keywords=svg;Vector;Godot;
+MimeType=image/svg+xml
+
