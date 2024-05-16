@@ -16,6 +16,7 @@ license=("BSD-3-Clause")
 source=("$pkgbase::git+$url")
 sha256sums=('SKIP')
 makedepends=(git)
+depends=(cuda)
 
 prepare() {
     cd "$pkgbase"

@@ -6,6 +6,7 @@ pkgbase = nvidia-flip-cuda-git
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = git
+	depends = cuda
 	source = nvidia-flip-cuda-git::git+https://github.com/NVlabs/flip
 	sha256sums = SKIP
 
