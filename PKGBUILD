@@ -2,7 +2,7 @@
 _pkgname=stardew-valley-designer
 pkgname=stardew-valley-designer-bin
 pkgver=0.12.0
-pkgrel=6
+pkgrel=7
 pkgdesc="The goal of this project is to provide a finely tuned editor for designing your farm and the interior of all its buildings."
 arch=('x86_64')
 url='https://stardewdesigner.com'
