@@ -1,0 +1,16 @@
+pkgbase = r-rlrsim
+	pkgdesc = Provides functions for the estimation of the conditional Akaike information in generalized mixed-effect models fitted with (g)lmer() from 'lme4', lme() from 'nlme' and gamm() from 'mgcv'.
+	pkgver = 3.1.8
+	pkgrel = 1
+	url = https://cran.r-project.org/package=RLRsim
+	arch = any
+	license = GPL
+	makedepends = gcc
+	depends = r
+	depends = r-rcpp
+	depends = r-lme4
+	depends = r-mgcv
+	depends = r-nlme
+	source = https://cran.r-project.org/src/contrib/RLRsim_3.1-8.tar.gz
+
+pkgname = r-rlrsim
