@@ -1,22 +1,23 @@
 pkgbase = fooyin-bin
 	pkgdesc = A customisable music player
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ludouzi/fooyin
-	arch = any
+	arch = x86_64
 	license = GPL-3.0-only
 	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-tools
 	depends = alsa-lib
-	depends = ffmpeg
 	depends = taglib
-	optdepends = sdl2
-	optdepends = pipewire
+	depends = ffmpeg
+	depends = kdsingleapplication
+	optdepends = sdl2: For the SDL2 audio output plugin
+	optdepends = pipewire: For the PipeWire audio output plugin
 	provides = fooyin=0.4.1
 	conflicts = fooyin
 	options = !strip
 	source = fooyin-0.4.1.deb::https://github.com/ludouzi/fooyin/releases/download/v0.4.1/fooyin_0.4.1-mantic_amd64.deb
-	source = fooyin.sh
 	sha256sums = 64c459ba91df8ff6f4c4768090fb259e2e76c0bcecc10e37a8747ee2a63d1f7b
-	sha256sums = 840eb0ad528d294064aa09b2b6df7a0e4a800249f43305c756cf78bee627fe1d
 
 pkgname = fooyin-bin
