@@ -1,7 +1,7 @@
 # Maintainer: Shane Blackthorne <arch@blackthorne.dev>
 
 pkgname=spotify-player-full-pipe
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="A terminal Spotify player - compiled with pulse/pipewire, lyrics, and image support"
 arch=('x86_64')
