@@ -58,7 +58,7 @@ prepare() {
   # Disable building rpm
   patch --strip=1 gui/tasks/distribution.js < ../no-rpm.diff
 
-  # Disabling publishing for CIs
+  # Disable publishing for CIs
   patch --strip=1 gui/tasks/distribution.js < ../no-publish.diff
 
   export CARGO_HOME="$srcdir/cargo-home"
