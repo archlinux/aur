@@ -1,0 +1,18 @@
+pkgbase = zarn
+	pkgdesc = A lightweight static code security analysis for Modern Perl Applications
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/htrgouvea/zarn
+	arch = any
+	license = MIT
+	depends = perl
+	depends = perl-json
+	depends = perl-file-find-rule
+	depends = perl-yaml-tiny
+	depends = perl-ppi
+	source = https://github.com/htrgouvea/zarn/archive/refs/tags/0.0.9.tar.gz
+	source = Makefile.PL
+	sha512sums = f9901eb94e8435b1688349eef1b1d06342090ad4eeeeb4a07faac20571761566a64343fa5829245f2e7b62d171d5c4fa20fdfe61439bba1eaf9a9c172cdfa76b
+	sha512sums = 3630a13898eaebdf64858882819a74b9e98772898b48b0139775a3a28cd8b8b280aa84b1727518144558c148759029db4385d7d034a90311f3e4dbc09bc5ee53
+
+pkgname = zarn
