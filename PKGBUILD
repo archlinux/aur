@@ -13,9 +13,6 @@ depends=('torctl' 'tor' 'yad' 'macchanger' 'iproute2' 'pam' 'libnotify' 'systemd
 makedepends=("git" "coreutils")
 provides=("torctl-gui")
 source=("git+https://github.com/$author/$_gitname.git")
-
-md5sums=('SKIP')
-sha1sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
