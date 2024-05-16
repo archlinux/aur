@@ -9,9 +9,9 @@ pkgdesc='Yandex Video Translate. The script downloads videos from most popular v
 arch=('any')
 url='https://github.com/s-n-alexeyev/yvt'
 license=('GPL3')
-depends=( 'vot-cli' 'ffmpeg'  'yt-dlp' 'jq')
-makedepends=("git")
-provides=("yvt")
+depends=( 'vot-cli' 'ffmpeg' 'yt-dlp' 'jq')
+makedepends=('git')
+provides=('yvt')
 source=("git+https://github.com/$author/$_gitname.git")
 
 md5sums=('SKIP')
