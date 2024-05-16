@@ -3,7 +3,7 @@
 
 pkgname=electrum-ltc
 pkgver=4.2.2.1
-pkgrel=2
+pkgrel=1
 pkgdesc='Litecoin wallet'
 arch=(any)
 url=https://electrum-ltc.org/
