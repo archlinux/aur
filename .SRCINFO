@@ -9,7 +9,7 @@ pkgbase = scitopdf
 	makedepends = git
 	provides = scitopdf
 	conflicts = scitopdf-git
-	source = scitopdf::git+https://github.com/dougy147/scitopdf.git
+	source = scitopdf::git+https://github.com/dougy147/scitopdf.git#tag=v0.6.6.r0.g8090a3d
 	md5sums = SKIP
 
 pkgname = scitopdf

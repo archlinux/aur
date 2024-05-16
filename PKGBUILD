@@ -13,7 +13,7 @@ optdepends=()
 provides=(scitopdf)
 conflicts=(scitopdf-git)
 replaces=()
-source=("${pkgname}::git+${url}")
+source=("${pkgname}::git+${url}#tag=v${pkgver}")
 noextract=()
 md5sums=('SKIP')
 
@@ -27,6 +27,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
