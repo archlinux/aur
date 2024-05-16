@@ -1,7 +1,7 @@
 pkgbase = melonds
 	pkgdesc = DS emulator, sorta
 	pkgver = 0.9.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://melonds.kuribo64.net/
 	arch = x86_64
 	arch = i686
