@@ -3,7 +3,7 @@
 
 pkgname=python-rich-click
 _pkgname=${pkgname#python-}
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Python module to format click help output nicely with Rich."
 arch=(any)
@@ -23,7 +23,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2f2c250a5ad3fac19da366fed10be4174fb3c7fec2ad5e352d2e35bed55b7df1')
+sha256sums=('9a46f2e171cf662cfcc111e6be613f62d94e608ec92033f552bcd1646662ab87')
 
 _archive="$_pkgname-$pkgver"
 
