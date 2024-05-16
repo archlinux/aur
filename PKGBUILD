@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ROCit
-_pkgver=2.1.1
+_pkgver=2.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Performance Assessment of Binary Classifier with Visualization"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4c3fabfdc2925c5a5c27ebeedecfbb90')
-b2sums=('0ecf098496b766b904b521ee015d262c4d74b101377dcae36cfc3e87c4b09e899a00dfaf65e82b23beeca2e77e4bbba9c9c6a8c2f6356d6e5f9e02258053a326')
+md5sums=('ae0b1be3445f98c2a35c5a8e91297be0')
+b2sums=('6fc3b144a71065997d86f6074c9b1f9bce24e5839f6f67966df7375396a5b21d1f8b1fbd91b6271db44538dd71e14d4779cadcdf315fe8359a10c47db23b341f')
 
 build() {
   mkdir build
