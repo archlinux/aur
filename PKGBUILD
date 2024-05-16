@@ -11,7 +11,7 @@
 
 pkgname=epson-inkjet-printer-escpr
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Epson Inkjet Printer Driver (ESC/P-R) for Linux'
 arch=('x86_64' 'aarch64')
 url='http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX'
@@ -33,6 +33,8 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+
+  CFLAGS="${CFLAGS} -Wno-implicit-function-declaration"
 
   ./configure \
   	--prefix=/usr \
