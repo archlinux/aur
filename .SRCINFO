@@ -1,0 +1,15 @@
+pkgbase = pmtiles
+	pkgdesc = Smemstat reports the physical memory usage taking into consideration shared memory.
+	pkgver = 1.19.1
+	pkgrel = 1
+	url = https://github.com/protomaps/go-pmtiles/
+	arch = x86_64
+	license = BSD-3-Clause
+	provides = pmtiles
+	provides = go-pmtiles
+	conflicts = pmtiles
+	conflicts = go-pmtiles
+	source = https://github.com/protomaps/go-pmtiles/releases/download/v1.19.1/go-pmtiles_1.19.1_Linux_x86_64.tar.gz
+	b2sums = 8c735059fc82dfd0648615a51cdb6505c13a31a20f7dc8309fc78c756b02a8bb54d572a48b6a290adb03fcb6ba74bb3f36786af247d417a8975f8a9cbd50c6fc
+
+pkgname = pmtiles
