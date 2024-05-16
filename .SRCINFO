@@ -1,0 +1,13 @@
+pkgbase = xcat-git
+	pkgdesc = A command line tool to XOR a data stream with a given key
+	pkgver = r2.d92ce2e
+	pkgrel = 1
+	url = https://github.com/mstrand/xcat
+	arch = any
+	makedepends = git
+	depends = python
+	provides = xcat
+	source = git+https://github.com/mstrand/xcat.git
+	md5sums = SKIP
+
+pkgname = xcat-git
