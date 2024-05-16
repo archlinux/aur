@@ -1,0 +1,26 @@
+pkgbase = chafa-git
+	pkgdesc = Terminal graphics for the 21st century
+	pkgver = 1.14.0.r29.g5e9a6ea
+	pkgrel = 1
+	url = https://hpjansson.org/chafa/
+	arch = i686
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = gtk-doc
+	depends = glibc
+	depends = freetype2
+	depends = libavif
+	depends = libjpeg
+	depends = libjxl
+	depends = librsvg
+	depends = libtiff
+	depends = libwebp
+	provides = chafa=1.14.0.r29.g5e9a6ea
+	provides = libchafa.so
+	conflicts = chafa
+	options = staticlibs
+	source = git+https://github.com/hpjansson/chafa.git
+	sha256sums = SKIP
+
+pkgname = chafa-git
