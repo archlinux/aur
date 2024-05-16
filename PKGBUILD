@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: rpkak <rpkak@users.noreply.github.com>
 pkgname=vulkan-memory-allocator
-pkgver=3.0.1.r161.g19b940e
+pkgver=3.0.1.r165.geaf8fc2
 pkgrel=1
 pkgdesc="Easy to integrate Vulkan memory allocation library"
 arch=('any')
@@ -10,9 +10,9 @@ license=('MIT')
 groups=('vulkan-devel')
 depends=('vulkan-headers')
 makedepends=('cmake' 'doxygen' 'git')
-_commit=19b940e864bd3a5afb3c79e3c6788869d01a19eb
+_commit=eaf8fc27eeadf6f21b11183651b829e897f01957
 source=("$pkgname::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git#commit=$_commit")
-b2sums=('f4bd8a5e93dfb606418098ba89e63a8bec9a90b773c2b63fb1119671b5e0f7a707a7f467f495b2bdd916cd608ff7d0bb3a9baf64b0ac170f25eba452c81e08f9')
+b2sums=('405efdffb8caf885c07d8305ff90a13f0c96b2ca2193d4ae025088a2f30dabbc1324083be679ddcf20e5e2b42fafbf3517dabc0056e1efbc08d8d6eacf7a7ecf')
 
 pkgver() {
 	cd $pkgname
