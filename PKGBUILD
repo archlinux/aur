@@ -1,20 +1,29 @@
-# Maintainer: portaloffreedom
+# Maintainer: gilcu3
+# Previous Maintainer: portaloffreedom
 
-_pkgsrcname=wolframalpha
-pkgname=python-wolframalpha
-pkgver=3.0.1
+_pkgname=wolframalpha
+pkgname=python-$_pkgname
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Wolfram|Alpha 2.0 API client"
 url="https://github.com/jaraco/wolframalpha"
 license=("MIT")
 arch=("any")
-depends=('python' 'python-six' 'python-xmltodict' 'python-jaraco')
-source=("https://pypi.python.org/packages/65/6e/1516f03f6fbd9b93f856637394b1e467c0ae07975882425af7b0564c258e/$_pkgsrcname-$pkgver.tar.gz")
-md5sums=('74ab78e33fc0affbef9fce2c3d63bac9')
+depends=('python' 'python-six' 'python-xmltodict')
+source=($url/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('16098fff0f299bb97cbd241f31c8b844479e9cd210015e530e3e022b312c1c17')
+
+
+build() {
+  cd $srcdir/${_pkgname}-$pkgver
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  cd $srcdir/${_pkgsrcname}-$pkgver
-  python3 setup.py install --root $pkgdir
+  cd $srcdir/${_pkgname}-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
 
 
