@@ -20,7 +20,6 @@ depends=('alsa-lib'
          'libxrender'
          'libxtst'
          'zlib')
-install=.INSTALL
 source=(${pkgname}-${pkgver}-linux-amd64.tar.gz::https://github.com/AzimMuradov/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz)
 sha256sums=(d51d8c5e70ad7e34aa49af65824f6f61adc15b166226cc8232b50a03b4b7836f)
 
