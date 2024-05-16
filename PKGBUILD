@@ -1,4 +1,4 @@
-# Maintainer: Minh Ngo <iam.minhnc@outlook.com>
+# Maintainer: toitenminh <iam.minhnc@outlook.com>
 # Author: Luong Thanh Lam <ltlam93@gmail.com>
 # Contributor: Trần Công <nopain2110@gmail.com>
 #
@@ -21,7 +21,7 @@
 
 pkgname=ibus-bamboo-git
 pkgver=0.8.3.rc6+15+g0d766c1
-pkgrel=3
+pkgrel=4
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
 license=(GPL3)
