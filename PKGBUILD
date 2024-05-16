@@ -4,12 +4,12 @@ pkgname=soundfont-sm64
 pkgdesc="Super Mario 64 soundfont for MIDI playback made by PablosCorner"
 
 pkgver=2
-pkgrel=1
+pkgrel=2
 
 arch=(any)
 
 url="https://www.smwcentral.net/?p=viewthread&t=88116"
-license=("LicenseRef-unknown")
+#license=("LicenseRef-unknown")
 
 makedepends=(megatools)
 
