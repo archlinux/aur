@@ -1,7 +1,7 @@
 pkgbase = cava
 	pkgdesc = Console-based Audio Visualizer for Alsa
 	pkgver = 0.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/karlstav/cava
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = cava
 	makedepends = m4
 	makedepends = automake
 	makedepends = autoconf
+	makedepends = libpipewire
 	depends = fftw
 	depends = alsa-lib
 	depends = ncurses
@@ -18,6 +19,7 @@ pkgbase = cava
 	depends = sndio
 	depends = portaudio
 	optdepends = pulseaudio
+	optdepends = pipewire
 	source = cava-0.10.2.tar.gz::https://github.com/karlstav/cava/archive/0.10.2.tar.gz
 	sha512sums = c28ef5a89668b8f90a3b4cbf71b208dd067268d5ed9eca35ff3881bfab0fd7bf72efe2164f29af47ca7972637d8f1d6a86ff2b2e0c9c9221a1856d8dfa960065
 
