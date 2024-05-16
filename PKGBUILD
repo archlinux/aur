@@ -1,7 +1,7 @@
-# Maintainer: Chris Zhang <me [at] zcy [dot] moe>
+# Maintainer: Chuyan Zhang <me [at] zcy [dot] moe>
 
-pkgbase=nvidia-flip-cpu
-pkgname=("$pkgbase-git")
+pkgbase=nvidia-flip-cpu-git
+pkgname=($pkgbase)
 pkgdesc="A Tool for Visualizing and Communicating Errors in Rendered Images - CPU version"
 pkgver="r219.22aa24f"
 pkgver() {

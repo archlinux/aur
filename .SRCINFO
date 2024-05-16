@@ -1,4 +1,4 @@
-pkgbase = nvidia-flip-cpu
+pkgbase = nvidia-flip-cpu-git
 	pkgdesc = A Tool for Visualizing and Communicating Errors in Rendered Images - CPU version
 	pkgver = r219.22aa24f
 	pkgrel = 1
@@ -6,7 +6,7 @@ pkgbase = nvidia-flip-cpu
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = git
-	source = nvidia-flip-cpu::git+https://github.com/NVlabs/flip
+	source = nvidia-flip-cpu-git::git+https://github.com/NVlabs/flip
 	sha256sums = SKIP
 
 pkgname = nvidia-flip-cpu-git
