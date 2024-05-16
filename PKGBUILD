@@ -1,6 +1,6 @@
 # Maintainer: RaphGL <raphfl.dev@gmail.com>
 pkgname=neosent-git
-pkgver=v1.2
+pkgver=v1.3
 pkgrel=1
 epoch=1
 pkgdesc="Suckful Sent - plaintext slide presentations"

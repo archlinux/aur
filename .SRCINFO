@@ -1,6 +1,6 @@
 pkgbase = neosent-git
 	pkgdesc = Suckful Sent - plaintext slide presentations
-	pkgver = v1.2
+	pkgver = v1.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/RaphGL/NeoSent
