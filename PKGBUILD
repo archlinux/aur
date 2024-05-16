@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-polyfactory
 _pkgname=${pkgname#python-}
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="Simple and powerful factories for mock data generation"
 arch=(any)
@@ -33,7 +33,7 @@ checkdepends=(
   python-pytest-asyncio
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('45024371c1b30b34cf54119fb5fb84468ef82934cb12ca1e2f558aa1d93a6719')
+sha256sums=('fbbc13bd2ab8801901c0a1aaa27978ede126b54deb9687d7faec9d62cbe3dec9')
 
 _archive="$_pkgname-$pkgver"
 
