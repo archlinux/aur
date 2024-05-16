@@ -4,13 +4,13 @@ pkgname=fastvideods-encoder-git
 pkgdesc="Encoder for the FastVideoDS format"
 
 pkgver=r2.1a25c4f
-pkgrel=3
+pkgrel=4
 epoch=1 # required because of the changed version numbering scheme
 
 arch=(i686 x86_64)
 
 url="https://github.com/Gericom/FastVideoDSEncoder"
-license=("LicenseRef-unknown")
+#license=("LicenseRef-unknown")
 
 depends=(dotnet-runtime-6.0 ffmpeg5.1)
 makedepends=(git dotnet-sdk)
@@ -53,7 +53,10 @@ package() {
 	mkdir -p "${pkgdir}/usr/bin/"
 
 	# copy the build files to the package directory
-	install -Dm755 Build/* "${pkgdir}/usr/share/fastvideods-encoder/"
+	find Build/* -type f -exec install -Dm644 {} "${pkgdir}/usr/share/fastvideods-encoder/" \;
+
+	# make the program executable
+	chmod +x "${pkgdir}/usr/share/fastvideods-encoder/FastVideoDSEncoder"
 
 	# make a symlink to the executable
 	ln -s /usr/share/fastvideods-encoder/FastVideoDSEncoder "${pkgdir}/usr/bin/fastvideods-encoder"
