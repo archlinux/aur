@@ -10,7 +10,7 @@
 _commit=222b36d7bd3a98616eae82993552098747268d5e
 pkgname=h2o-git
 pkgver=2.2.0.8004
-pkgrel=4
+pkgrel=6
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
@@ -42,7 +42,7 @@ prepare() {
         git config core.autocrlf false
         git submodule update --init --recursive
         
-        # libressl-3.8
+        # libressl-3.8(OPENSSL_NO_ENGINE)
         git apply ${srcdir}/neverbleed-fix-when-lacking-engines.patch
 
 	# set CMake minimal version to 3.9 to set CMP0039 to new
