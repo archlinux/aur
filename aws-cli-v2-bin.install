@@ -1,0 +1,12 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  if [ "$(vercmp $2 2.13.25)" -le 0 ]; then
+    cat << EOF
+===> zsh completions are no longer automatically enabled.
+===> You can put the following line in a zsh startup script
+===> or run it manually before using aws zsh completions.
+===>     source /usr/bin/aws_zsh_completer.sh
+EOF
+  fi
+}
