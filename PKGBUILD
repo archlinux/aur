@@ -4,20 +4,20 @@ pkgname="osaka-simulator"
 pkgdesc="A fanmade interactive Osaka simulator from hirahira.net for PC"
 
 pkgver=Aug_2003
-pkgrel=3
+pkgrel=4
 
 arch=(any)
 
-url="https://azumanga.fandom.com/wiki/Ayumu_Kasuga%27s_Mail_Order_Life"
-license=("LicenseRef-unknown")
+url="http://web.archive.org/web/20230207145313/http://www.hirahira.net/products/tsu_hanFinal/index.html"
+license=("LicenseRef-OsakaSimulator")
 
 depends=(wine winetricks)
 makedepends=(unzip gendesk icoutils)
 
 provides=(osaka-simulator)
 
-source=("file://Osaka Simulator FINAL (standalone).zip" "osaka-simulator" "tsu_han.cfg")
-md5sums=("69c5e729bd4acc28320afbcc863b454a" "8af04a78b75b73656908f722d6cbce19" "7b644ee8fdf4d1b8213115bef3a1b90c")
+source=("file://Osaka Simulator FINAL (standalone).zip" "LICENSE" "osaka-simulator" "tsu_han.cfg")
+md5sums=("69c5e729bd4acc28320afbcc863b454a" "8dbaaafc4d661ff2eed17a2e3d32ca77" "8af04a78b75b73656908f722d6cbce19" "7b644ee8fdf4d1b8213115bef3a1b90c")
 
 DLAGENTS=("file::/usr/bin/echo Could not find %u. Please download it to `$(pwd)` in order to build the package.")
 
@@ -60,4 +60,7 @@ package() {
 	# copy the extracted icon and the generated .desktop file
 	install -Dm644 OsakaSimulator.png "${pkgdir}/usr/share/pixmaps/osaka-simulator.png"
 	install -Dm644 "Ayumu Kasuga's Mail Order Life.desktop" "${pkgdir}/usr/share/applications/osaka-simulator.desktop"
+
+	# copy the license
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/osaka-simulator/LICENSE"
 }
