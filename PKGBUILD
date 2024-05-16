@@ -4,7 +4,7 @@
 pkgname='supermariowar-bin'
 _pkgname='supermariowar'
 pkgdesc="Super Mario War multiplayer game."
-pkgver='2024.04.01'
+pkgver='2024.05.07'
 _pkgver="${pkgver//./-}"
 pkgrel=1
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 )
 install="${_pkgname}.install"
 noextract=( 'icons.tar.gz' )
-sha256sums=('ab5acfc76da18d15bf203ff520cd05e420302e5286e2ed430e7a2c50c5f6813a'
+sha256sums=('cbdfce6790ed05a7beba471ad91a79937eaaadcf679f77a0f5378830a0181dea'
             'd92e0c1390e45a09f5c3a56d23d44cd6723cd4cb81fefac33a783acc79301bbc')
 
 package() {

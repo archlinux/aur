@@ -1,6 +1,6 @@
 pkgbase = supermariowar-bin
 	pkgdesc = Super Mario War multiplayer game.
-	pkgver = 2024.04.01
+	pkgver = 2024.05.07
 	pkgrel = 1
 	url = https://github.com/mmatyas/supermariowar
 	install = supermariowar.install
@@ -18,9 +18,9 @@ pkgbase = supermariowar-bin
 	provides = smw-worldedit
 	conflicts = smw-git
 	noextract = icons.tar.gz
-	source = supermariowar-2024.04.01.zip::https://github.com/mmatyas/supermariowar/releases/download/continuous/supermariowar_2024-04-01_linux.zip
+	source = supermariowar-2024.05.07.zip::https://github.com/mmatyas/supermariowar/releases/download/continuous/supermariowar_2024-05-07_linux.zip
 	source = icons.tar.gz
-	sha256sums = ab5acfc76da18d15bf203ff520cd05e420302e5286e2ed430e7a2c50c5f6813a
+	sha256sums = cbdfce6790ed05a7beba471ad91a79937eaaadcf679f77a0f5378830a0181dea
 	sha256sums = d92e0c1390e45a09f5c3a56d23d44cd6723cd4cb81fefac33a783acc79301bbc
 
 pkgname = supermariowar-bin
