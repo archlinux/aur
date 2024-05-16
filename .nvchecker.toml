@@ -1,0 +1,6 @@
+[python-pystencils]
+source = "gitlab"
+gitlab = "pycodegen/pystencils"
+host = "i10git.cs.fau.de"
+use_max_tag = "true"
+prefix = "release/"
