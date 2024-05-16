@@ -1,7 +1,7 @@
 pkgbase = snx-rs-git
 	pkgdesc = Open source VPN client for Checkpoint security gateways (git version)
 	pkgver = 2.2.0.r339.g8569428
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ancwrd1/snx-rs
 	install = snx-rs.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = snx-rs-git
 	depends = openssl
 	depends = systemd
 	depends = iproute2
+	depends = webkit2gtk-4.1
 	optdepends = zenity: libadwaita systray dialogues (takes precedence over kdialog)
 	optdepends = kdialog: qt systray dialogues
 	conflicts = snx-rs
