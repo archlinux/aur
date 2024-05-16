@@ -1,0 +1,12 @@
+pkgbase = simple-completion-language-server-git
+	pkgdesc = Allow to use common word completion and snippets for Helix editor
+	pkgver = r83.e03dca5
+	pkgrel = 1
+	url = https://github.com/estin/simple-completion-language-server
+	arch = any
+	license = MIT
+	makedepends = cargo
+	source = git+https://github.com/estin/simple-completion-language-server.git
+	sha256sums = SKIP
+
+pkgname = simple-completion-language-server-git
