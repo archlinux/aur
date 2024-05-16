@@ -2,8 +2,8 @@
 # The pkgbuild is based on the original pkgbuild for citra.
 
 pkgname=lime3ds-git
-pkgver=r10324.467afbb
-pkgrel=3
+pkgver=r10328.f1e0b5d
+pkgrel=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
@@ -51,8 +51,10 @@ source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         #libadrenotools' submodule
         "git+https://github.com/bylaws/liblinkernsbypass.git"
+        "git+https://github.com/Lime3DS/compatibility-list"
         )
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -99,7 +101,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/Lime3DS"
     git submodule init
-    for submodule in {boost,nihstro,catch2,soundtouch,dynarmic,xbyak,enet,inih,libressl,libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng,zstd,libyuv,cryptopp-cmake,cryptopp,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut,dds-ktx,fmt,sdl2};
+    for submodule in {boost,nihstro,catch2,soundtouch,dynarmic,xbyak,enet,inih,libressl,libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng,zstd,libyuv,cryptopp-cmake,cryptopp,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut,dds-ktx,fmt,sdl2,compatibility-list};
     do
     git config submodule.${submodule}.url "$srcdir/${submodule}"
     done
