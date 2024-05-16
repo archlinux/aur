@@ -1,0 +1,22 @@
+#!/bin/bash
+
+BROWSERS=$(cat <<END
+/opt/google/chrome-beta/chrome
+/opt/google/chrome-unstable/chrome
+/opt/google/chrome/chrome
+/opt/vivaldi/vivaldi-bin
+END
+)
+
+for browser in $BROWSERS; do
+  [ -f "$browser" ] || continue
+  echo "Checking and patching freetype filters in $browser. This can take a while..."
+  offset=$(bgrep 084d564d08 "$browser" | awk -F: '{print $1}')
+  if [ -z "$offset" ]; then
+    echo ">  Original filter pattern not found in $browser. It might have already been patched."
+    continue
+  fi
+  echo ">  Original filter pattern found in $browser. Patching at offset 0x$offset"
+  printf '\x1f\x47\x6b\x47\x1f' | dd conv=notrunc of="$browser" bs=1 seek=$((0x$offset)) &> /dev/null
+  [ $? -eq 0 ] && echo ">  Patch successfully" || echo ">  Failed to patch"
+done

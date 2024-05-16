@@ -1,0 +1,14 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=vivaldi
+Target=vivaldi-snapshot
+Target=google-chrome
+Target=google-chrome-dev
+Target=google-chrome-beta
+
+[Action]
+Description=Patch browser binaries to use MacOS-style lcdfilter in freetype
+When=PostTransaction
+Exec=/usr/bin/binary-patch-freetype-in-broswers
