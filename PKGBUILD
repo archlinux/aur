@@ -2,7 +2,7 @@
 _pkgname='matrix-authentication-service'
 pkgname="$_pkgname-git"
 pkgver=r2156.ba95dd02
-pkgrel=1
+pkgrel=2
 pkgdesc='Authentication service for Matrix Synapse'
 arch=('x86_64')
 url="https://github.com/matrix-org/$_pkgname"
@@ -26,7 +26,7 @@ source=(
 )
 b2sums=('SKIP'
         'e32a10d979cb385be8191ac29096ff25ea6233f693a5ec0aaf3eff76411aca4bd9298dfe36585da36f2128cf2f2e48878ffcf2c5a44452d86970e57ee77098d3'
-        '42b3ab44075de968dd87668f54044e8215ceb57b77cac1b19b1f012afbc9d10352886c281fd539efa76d972fac1cb5478128240dc6e4565fe51c051d1dc79c84'
+        '0b2cb1df7d8b91970ef418d1ec3a075ac21f36ef11cf1152a61217d90405ee3b51e3a12e628d4be1b2e681273e1bde085b3dd6f572fc01fb986786f519340347'
         'fd206cf9fbe26f3509053f3893066c6368024e8569194981085aff7bdbe65ecdcdd4384a5ba8119e1e6114eb576b9c683552c09f865f09e5171feecf3f0254f3'
         '39ba8399ca52b5bc5984f4fd426f812d6017a096368b3e63e16c0d9a0a2ec695b02b418b821adc62fb29609803355a1f673da3be7af5d9436e3c49e461d7d049')
 pkgver() {
