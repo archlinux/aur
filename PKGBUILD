@@ -1,40 +1,37 @@
-# Maintainer: Joar Heimonen <joarheimonen@live.no>
-# Note: This is only an install script for Yuma123, not the actual project itself.
+# Maintainer: Filip Parag <filip@parag.rs>
 
-pkgname=yuma123
-pkgver=1
+pkgname=bas-celik-cli-bin
+pkgver=1.6.0
 pkgrel=1
-pkgdesc="Package description for yuma123"
-arch=('x86_64')
-url="https://github.com/vlvassilev/yuma123"
-#license=('GPL3')
+pkgdesc='Command line program for reading smart-card documents issued by the government of Serbia'
+arch=(x86_64)
+conflicts=(bas-celik)
+provides=()
+url='https://github.com/ubavic/bas-celik/'
+license=(MIT)
+depends=(ccid opensc)
+source=("bas_celik_cli-${pkgver}_amd64::https://github.com/ubavic/bas-celik/releases/download/v${pkgver}/bas-celik-cli.linux.amd64")
+sha256sums=('365a3adc7b3b217569fc43ae32c8fada88ace0cf792325b1b1ea94439001fcc7')
 
-#depends=('vi' 'ffmpeg')
-#makedepends=('qt5-tools')
+package()
+{
+    cd "${srcdir}"
+    install -Dm 755 "bas_celik_cli-${pkgver}_amd64" "${pkgdir}/usr/bin/bas-celik-cli"
+}
 
-#source=("https://github.com/[your package].tar.gz")
+test_pcscd()
+{
+    if ! systemctl is-active --quiet pcscd.service; then
+        echo 'This program requires pcscd service to be running'
+    fi
+}
 
-#sha512sums=("[paste sha512sum output]")
+post_install()
+{
+    test_pcscd
+}
 
-
-build() {
-  cd "$srcdir"
-  # Your build
-   cd "$srcdir/yuma123"
-   make DESTDIR="${pkgdir}" install
-   mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
- }
-
-package() {
-
-  # Create necessary directories
-  #install -d "$pkgdir/usr/bin"
-
-
-  # Install additional files
-  #install -m644 usr/share/[package name]/[folder name]/* "$pkgdir/usr/share/[package name]/[folder name]"
-
-  # Change ownership
-  #chown -R "$USER:$USER" "$pkgdir/usr/share/[your package]"
-
+post_upgrade()
+{
+    test_pcscd
 }
