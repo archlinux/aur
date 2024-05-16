@@ -4,9 +4,10 @@
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
 
+_pkgbase=gdal
 pkgbase=gdal-libkml-filegdb
 pkgname=(gdal-libkml-filegdb python-gdal-libkml-filegdb)
-pkgver=3.8.5
+pkgver=3.9.0
 pkgrel=1
 provides=('gdal')
 pkgdesc="A translator library for raster and vector geospatial data formats (with libkml and filegdb support)"
@@ -21,15 +22,20 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
              libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libaec libkml-git)
 # armadillo brunsli lerc libkml qb3 rasterlite2 sfcgal tiledb
 # ogdi
-changelog=gdal.changelog
-source=(https://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.xz)
-b2sums=('2c5f9b3fa1c3d5d7879c2aa1c95f82c6360b35a259443a8ad68ff8f471f4efa8d2fd7935c57317ee5e94789244067706967f9c5df413bccd2556b5790d51d349')
+changelog=$_pkgbase.changelog
+source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
+        https://github.com/OSGeo/gdal/commit/7b526b12.patch)
+b2sums=('5b1453b889768359d36c6da435b27f6d31bb1ba95cecfd05d525d63258100705778d2675219711d0c2ab0e2392dd0eabffa1af3ffd055ebfc14840aaa1e768c0'
+        '801eb649c20ef81d7590888589d4049eab4505fac6efbe1718d8bc9e01a35390b9d8cad090c3421ff90d769fe3f5aec4d1641409ecc5a434ba68c4c5d30eec85')
+
+prepare() {
+  patch -d $_pkgbase-$pkgver -p1 < 7b526b12.patch # Fix build with C++20
+}
 
 build() {
-  export PATH="$(pwd)/build/apps:$PATH"
-  cmake -B build -S gdal-$pkgver \
+  #-DCMAKE_CXX_STANDARD=20 \
+  cmake -B build -S $_pkgbase-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_STANDARD=17 \
     -DENABLE_IPO=ON \
     -DBUILD_PYTHON_BINDINGS=ON \
     -DGDAL_ENABLE_PLUGINS=ON \
@@ -101,7 +107,7 @@ package_gdal-libkml-filegdb () {
               'libwebp: WebP support')
 
   make -C build DESTDIR="${pkgdir}" install
-  install -Dm644 gdal-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/gdal/
+  install -Dm644 ${_pkgbase}-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/$_pkgbase/
   # Move python stuff
   mkdir -p {bin,lib}
   mv "${pkgdir}"/usr/bin/*py bin
@@ -118,7 +124,7 @@ package_python-gdal-libkml-filegdb () {
   mv bin/* "${pkgdir}"/usr/bin
   mv lib/* "${pkgdir}"/usr/lib
   install -dm755 "${pkgdir}"/usr/share/licenses
-  ln -s gdal "${pkgdir}"/usr/share/licenses/$pkgname
+  ln -s $pkgbase "${pkgdir}"/usr/share/licenses/$pkgname
   # byte-compile python modules since the CMake build does not do it.
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m compileall -o 0 -o 1 -o 2 --hardlink-dupes -s "${pkgdir}" "${pkgdir}"${site_packages}
