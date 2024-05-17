@@ -8,7 +8,7 @@ _pkgbase=gdal
 pkgbase=gdal-libkml-filegdb
 pkgname=(gdal-libkml-filegdb python-gdal-libkml-filegdb)
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 provides=('gdal')
 pkgdesc="A translator library for raster and vector geospatial data formats (with libkml and filegdb support)"
 arch=(x86_64)
@@ -107,7 +107,7 @@ package_gdal-libkml-filegdb () {
               'libwebp: WebP support')
 
   make -C build DESTDIR="${pkgdir}" install
-  install -Dm644 ${_pkgbase}-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/$_pkgbase/
+  install -Dm644 ${_pkgbase}-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/$pkgbase/
   # Move python stuff
   mkdir -p {bin,lib}
   mv "${pkgdir}"/usr/bin/*py bin
