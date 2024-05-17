@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ENmix
-_pkgver=1.40.0
+_pkgver=1.40.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -46,8 +46,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5df1f3cd42d4cfb2fd7eaaf879f7a69f')
-b2sums=('b2bd607c327746abfa5766838ad35470479ab3d086bf156bd1834959def0b29af425e9872a8c30d2e3b6d8b96751d42ef327b09d79e41e87aebb574351d9d118')
+md5sums=('9fb6da31de636754a4f3de5525603db5')
+b2sums=('861e0caace3bae0876691e6b77d1eb89125c70c614fcf2c33839408461040b9713eaed9e28a9c50fc437bce885f7241d50cf4f82f02aff0a2715806b068a6533')
 
 build() {
   mkdir build
