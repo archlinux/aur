@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=bauerbill
 pkgver=2021.12.31
-pkgrel=13
+pkgrel=14
 pkgdesc='Extension of Powerpill with AUR and ABS support.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/bauerbill"
 depends=('pacman>=5.2.0' pbget pm2ml powerpill python-pyxdg python3 python3-aur python3-colorsysplus python3-memoizedb python3-xcgf python3-xcpf)
+makedepends=(python-setuptools)
 backup=(etc/bauerbill/bauerbill.json)
 source=(
   https://xyne.dev/projects/bauerbill/src/bauerbill-2021.12.31.tar.xz

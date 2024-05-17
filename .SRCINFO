@@ -1,10 +1,11 @@
 pkgbase = bauerbill
 	pkgdesc = Extension of Powerpill with AUR and ABS support.
 	pkgver = 2021.12.31
-	pkgrel = 13
+	pkgrel = 14
 	url = https://xyne.dev/projects/bauerbill
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = pacman>=5.2.0
 	depends = pbget
 	depends = pm2ml
