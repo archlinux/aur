@@ -1,11 +1,12 @@
 post_install() {
-    username=$(whoami)
     echo "Thank you for installing auto_facelock."
     echo
     echo "To enroll your face, run:"
     echo "  sudo auto_facelock_enroll.py"
     echo
     echo "To enable and start the service, run:"
-    echo "  sudo systemctl enable auto_facelock@${username}.service"
-    echo "  sudo systemctl start auto_facelock@${username}.service"
+    echo "  sudo systemctl enable auto_facelock@\$(whoami).service"
+    echo "  sudo systemctl start auto_facelock@\$(whoami).service"
+    echo
+    echo "Note: If you are running these commands as a different user, replace \$(whoami) with your actual username."
 }

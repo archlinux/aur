@@ -28,7 +28,6 @@ def load_known_faces(known_faces_dir):
             known_names.append(os.path.splitext(filename)[0])
         else:
             logger.warning(f"No face found in {filename}, deleting file.")
-            os.remove(image_path)
     logger.info(f"Loaded {len(known_faces)} known face(s) from {known_faces_dir}")
     return known_faces, known_names
 

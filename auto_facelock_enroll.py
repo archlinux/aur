@@ -112,7 +112,6 @@ def main(num_captures):
         for _ in range(num_captures):
             image = capture_image()
             if image is not None:
-                save_image_with_increment(temp_dir, 'captured_image.jpg', image)
                 filtered_image, face_box = filter_background(image)
                 if filtered_image is not None:
                     filename = save_image_with_increment(temp_dir, 'filtered_image.jpg', filtered_image)
