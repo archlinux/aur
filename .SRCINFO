@@ -1,13 +1,14 @@
 pkgbase = python-jdtranslationhelper
 	pkgdesc = A simple API for translating your programs
-	pkgver = 2.1
+	pkgver = 3.3
 	pkgrel = 1
-	url = https://gitlab.com/JakobDev/jdTranslationHelper
+	url = https://codeberg.org/JakobDev/jdTranslationHelper
 	arch = any
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	source = python-jdtranslationhelper-2.1.tar.gz::https://gitlab.com/JakobDev/jdTranslationHelper/-/archive/2.1/jdTranslationHelper-2.1.tar.gz
-	sha256sums = 86be8fb6ca81505cc1e9fd393cab853867923b2ed01e1a06fa630ab877557d87
+	source = python-jdtranslationhelper-3.3.tar.gz::https://codeberg.org/JakobDev/jdTranslationHelper/archive/3.3.tar.gz
+	sha256sums = 3e9da9743839b1223fa190c5449ce460b9cb97504610a36db0a93530dfae4b58
 
 pkgname = python-jdtranslationhelper
-
