@@ -2,7 +2,7 @@
 
 pkgname=rofi-browser-bin
 _bin_name=rofi-browser
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A simple profile launcher for Mozilla Firefox-based browsers"
 arch=('x86_64')
@@ -12,11 +12,11 @@ depends=(rofi glibc)
 conflicts=(rofi-browser)
 provides=(rofi-browser)
 source_i386=(${_bin_name}_${pkgver}_linux_386.tar.gz::${url}/releases/download/${pkgver}/rofi-browser_${pkgver}_linux_386.tar.gz)
-sha256sums_i386=(9928dc4cfdc89cfce0ea292e334e7c445b18a80b662070547fcf339caa15a5e0)
+sha256sums_i386=(94001396955887d8bd0c89287626e5bfefbf8548c745e88087bf6ced99748016)
 source_x86_64=(${_bin_name}_${pkgver}_linux_amd64.tar.gz::${url}/releases/download/${pkgver}/rofi-browser_${pkgver}_linux_amd64.tar.gz)
-sha256sums_x86_64=(1267127898edca9d36e8ecdb3f667bdd9e9a7c9749ce0360d5e23f4cf1965add)
+sha256sums_x86_64=(054a16fd8f1c830c37d510cac59011151ccb0df4dd3dea8fdcbf1321ba5fc4d4)
 source_aarch64=(${_bin_name}_${pkgver}_linux_arm64.tar.gz::${url}/releases/download/${pkgver}/rofi-browser_${pkgver}_linux_arm64.tar.gz)
-sha256sums_aarch64=(14f02ad54f72a68002cc7a8d9e3a6da1d3c6bc598a5b5cc98644f4a619983bc1)
+sha256sums_aarch64=(50fbe210d5fd5c8e9b3f208f08b022ac82585ec929fb7234c0e8b495c1a77196)
 
 package() {
   cd "$srcdir"
