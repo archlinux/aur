@@ -1,6 +1,6 @@
 pkgname=python-tree-sitter
 pkgver=0.22.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Python bindings to the tree-sitter parsing library'
 arch=('x86_64')
 url='https://github.com/tree-sitter/py-tree-sitter'
@@ -11,8 +11,9 @@ depends=(
 )
 makedepends=(
   'python-build'
-  'python-installer'
+  'python-setuptools'
   'python-wheel'
+  'python-installer'
 )
 source=(
   "https://pypi.io/packages/source/t/tree-sitter/tree-sitter-$pkgver.tar.gz"
