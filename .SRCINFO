@@ -1,0 +1,875 @@
+pkgbase = tesseract-data-best
+	pkgdesc = Tesseract OCR data
+	pkgver = 4.1.0
+	pkgrel = 4
+	epoch = 2
+	url = https://github.com/tesseract-ocr/tessdata_best
+	arch = any
+	license = Apache
+	source = https://github.com/tesseract-ocr/tessdata_best/archive/4.1.0/tessdata-4.1.0.tar.gz
+	sha256sums = bb05b738298ae73e7130e2913ed002b49d94cd1cea508e63be1928fe47770b32
+
+pkgname = tesseract-data-best-afr
+	pkgdesc = Tesseract OCR data (afr)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-afr
+
+pkgname = tesseract-data-best-amh
+	pkgdesc = Tesseract OCR data (amh)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-amh
+
+pkgname = tesseract-data-best-ara
+	pkgdesc = Tesseract OCR data (ara)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ara
+
+pkgname = tesseract-data-best-asm
+	pkgdesc = Tesseract OCR data (asm)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-asm
+
+pkgname = tesseract-data-best-aze_cyrl
+	pkgdesc = Tesseract OCR data (aze_cyrl)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-aze_cyrl
+
+pkgname = tesseract-data-best-aze
+	pkgdesc = Tesseract OCR data (aze)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-aze
+
+pkgname = tesseract-data-best-bel
+	pkgdesc = Tesseract OCR data (bel)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-bel
+
+pkgname = tesseract-data-best-ben
+	pkgdesc = Tesseract OCR data (ben)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ben
+
+pkgname = tesseract-data-best-bod
+	pkgdesc = Tesseract OCR data (bod)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-bod
+
+pkgname = tesseract-data-best-bos
+	pkgdesc = Tesseract OCR data (bos)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-bos
+
+pkgname = tesseract-data-best-bre
+	pkgdesc = Tesseract OCR data (bre)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-bre
+
+pkgname = tesseract-data-best-bul
+	pkgdesc = Tesseract OCR data (bul)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-bul
+
+pkgname = tesseract-data-best-cat
+	pkgdesc = Tesseract OCR data (cat)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-cat
+
+pkgname = tesseract-data-best-ceb
+	pkgdesc = Tesseract OCR data (ceb)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ceb
+
+pkgname = tesseract-data-best-ces
+	pkgdesc = Tesseract OCR data (ces)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ces
+
+pkgname = tesseract-data-best-chi_sim
+	pkgdesc = Tesseract OCR data (chi_sim)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-chi_sim
+
+pkgname = tesseract-data-best-chi_sim_vert
+	pkgdesc = Tesseract OCR data (chi_sim_vert)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-chi_sim_vert
+
+pkgname = tesseract-data-best-chi_tra
+	pkgdesc = Tesseract OCR data (chi_tra)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-chi_tra
+
+pkgname = tesseract-data-best-chi_tra_vert
+	pkgdesc = Tesseract OCR data (chi_tra_vert)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-chi_tra_vert
+
+pkgname = tesseract-data-best-chr
+	pkgdesc = Tesseract OCR data (chr)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-chr
+
+pkgname = tesseract-data-best-cos
+	pkgdesc = Tesseract OCR data (cos)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-cos
+
+pkgname = tesseract-data-best-cym
+	pkgdesc = Tesseract OCR data (cym)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-cym
+
+pkgname = tesseract-data-best-dan
+	pkgdesc = Tesseract OCR data (dan)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-dan
+
+pkgname = tesseract-data-best-deu
+	pkgdesc = Tesseract OCR data (deu)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-deu
+
+pkgname = tesseract-data-best-div
+	pkgdesc = Tesseract OCR data (div)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-div
+
+pkgname = tesseract-data-best-dzo
+	pkgdesc = Tesseract OCR data (dzo)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-dzo
+
+pkgname = tesseract-data-best-ell
+	pkgdesc = Tesseract OCR data (ell)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ell
+
+pkgname = tesseract-data-best-eng
+	pkgdesc = Tesseract OCR data (eng)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-eng
+
+pkgname = tesseract-data-best-enm
+	pkgdesc = Tesseract OCR data (enm)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-enm
+
+pkgname = tesseract-data-best-epo
+	pkgdesc = Tesseract OCR data (epo)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-epo
+
+pkgname = tesseract-data-best-est
+	pkgdesc = Tesseract OCR data (est)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-est
+
+pkgname = tesseract-data-best-eus
+	pkgdesc = Tesseract OCR data (eus)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-eus
+
+pkgname = tesseract-data-best-fao
+	pkgdesc = Tesseract OCR data (fao)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-fao
+
+pkgname = tesseract-data-best-fas
+	pkgdesc = Tesseract OCR data (fas)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-fas
+
+pkgname = tesseract-data-best-fil
+	pkgdesc = Tesseract OCR data (fil)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-fil
+
+pkgname = tesseract-data-best-fin
+	pkgdesc = Tesseract OCR data (fin)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-fin
+
+pkgname = tesseract-data-best-fra
+	pkgdesc = Tesseract OCR data (fra)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-fra
+
+pkgname = tesseract-data-best-frk
+	pkgdesc = Tesseract OCR data (frk)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-frk
+
+pkgname = tesseract-data-best-frm
+	pkgdesc = Tesseract OCR data (frm)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-frm
+
+pkgname = tesseract-data-best-fry
+	pkgdesc = Tesseract OCR data (fry)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-fry
+
+pkgname = tesseract-data-best-gla
+	pkgdesc = Tesseract OCR data (gla)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-gla
+
+pkgname = tesseract-data-best-gle
+	pkgdesc = Tesseract OCR data (gle)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-gle
+
+pkgname = tesseract-data-best-glg
+	pkgdesc = Tesseract OCR data (glg)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-glg
+
+pkgname = tesseract-data-best-grc
+	pkgdesc = Tesseract OCR data (grc)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-grc
+
+pkgname = tesseract-data-best-guj
+	pkgdesc = Tesseract OCR data (guj)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-guj
+
+pkgname = tesseract-data-best-hat
+	pkgdesc = Tesseract OCR data (hat)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-hat
+
+pkgname = tesseract-data-best-heb
+	pkgdesc = Tesseract OCR data (heb)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-heb
+
+pkgname = tesseract-data-best-hin
+	pkgdesc = Tesseract OCR data (hin)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-hin
+
+pkgname = tesseract-data-best-hrv
+	pkgdesc = Tesseract OCR data (hrv)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-hrv
+
+pkgname = tesseract-data-best-hun
+	pkgdesc = Tesseract OCR data (hun)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-hun
+
+pkgname = tesseract-data-best-hye
+	pkgdesc = Tesseract OCR data (hye)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-hye
+
+pkgname = tesseract-data-best-iku
+	pkgdesc = Tesseract OCR data (iku)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-iku
+
+pkgname = tesseract-data-best-ind
+	pkgdesc = Tesseract OCR data (ind)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ind
+
+pkgname = tesseract-data-best-isl
+	pkgdesc = Tesseract OCR data (isl)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-isl
+
+pkgname = tesseract-data-best-ita_old
+	pkgdesc = Tesseract OCR data (ita_old)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ita_old
+
+pkgname = tesseract-data-best-ita
+	pkgdesc = Tesseract OCR data (ita)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ita
+
+pkgname = tesseract-data-best-jav
+	pkgdesc = Tesseract OCR data (jav)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-jav
+
+pkgname = tesseract-data-best-jpn
+	pkgdesc = Tesseract OCR data (jpn)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-jpn
+
+pkgname = tesseract-data-best-jpn_vert
+	pkgdesc = Tesseract OCR data (jpn_vert)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-jpn_vert
+
+pkgname = tesseract-data-best-kan
+	pkgdesc = Tesseract OCR data (kan)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-kan
+
+pkgname = tesseract-data-best-kat_old
+	pkgdesc = Tesseract OCR data (kat_old)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-kat_old
+
+pkgname = tesseract-data-best-kat
+	pkgdesc = Tesseract OCR data (kat)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-kat
+
+pkgname = tesseract-data-best-kaz
+	pkgdesc = Tesseract OCR data (kaz)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-kaz
+
+pkgname = tesseract-data-best-khm
+	pkgdesc = Tesseract OCR data (khm)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-khm
+
+pkgname = tesseract-data-best-kir
+	pkgdesc = Tesseract OCR data (kir)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-kir
+
+pkgname = tesseract-data-best-kmr
+	pkgdesc = Tesseract OCR data (kmr)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-kmr
+
+pkgname = tesseract-data-best-kor
+	pkgdesc = Tesseract OCR data (kor)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-kor
+
+pkgname = tesseract-data-best-kor_vert
+	pkgdesc = Tesseract OCR data (kor_vert)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-kor_vert
+
+pkgname = tesseract-data-best-lao
+	pkgdesc = Tesseract OCR data (lao)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-lao
+
+pkgname = tesseract-data-best-lat
+	pkgdesc = Tesseract OCR data (lat)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-lat
+
+pkgname = tesseract-data-best-lav
+	pkgdesc = Tesseract OCR data (lav)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-lav
+
+pkgname = tesseract-data-best-lit
+	pkgdesc = Tesseract OCR data (lit)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-lit
+
+pkgname = tesseract-data-best-ltz
+	pkgdesc = Tesseract OCR data (ltz)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ltz
+
+pkgname = tesseract-data-best-mal
+	pkgdesc = Tesseract OCR data (mal)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-mal
+
+pkgname = tesseract-data-best-mar
+	pkgdesc = Tesseract OCR data (mar)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-mar
+
+pkgname = tesseract-data-best-mkd
+	pkgdesc = Tesseract OCR data (mkd)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-mkd
+
+pkgname = tesseract-data-best-mlt
+	pkgdesc = Tesseract OCR data (mlt)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-mlt
+
+pkgname = tesseract-data-best-mon
+	pkgdesc = Tesseract OCR data (mon)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-mon
+
+pkgname = tesseract-data-best-mri
+	pkgdesc = Tesseract OCR data (mri)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-mri
+
+pkgname = tesseract-data-best-msa
+	pkgdesc = Tesseract OCR data (msa)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-msa
+
+pkgname = tesseract-data-best-mya
+	pkgdesc = Tesseract OCR data (mya)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-mya
+
+pkgname = tesseract-data-best-nep
+	pkgdesc = Tesseract OCR data (nep)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-nep
+
+pkgname = tesseract-data-best-nld
+	pkgdesc = Tesseract OCR data (nld)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-nld
+
+pkgname = tesseract-data-best-nor
+	pkgdesc = Tesseract OCR data (nor)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-nor
+
+pkgname = tesseract-data-best-oci
+	pkgdesc = Tesseract OCR data (oci)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-oci
+
+pkgname = tesseract-data-best-ori
+	pkgdesc = Tesseract OCR data (ori)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ori
+
+pkgname = tesseract-data-best-osd
+	pkgdesc = Tesseract OCR data (yor)
+	conflicts = tesseract-data-osd
+
+pkgname = tesseract-data-best-pan
+	pkgdesc = Tesseract OCR data (pan)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-pan
+
+pkgname = tesseract-data-best-pol
+	pkgdesc = Tesseract OCR data (pol)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-pol
+
+pkgname = tesseract-data-best-por
+	pkgdesc = Tesseract OCR data (por)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-por
+
+pkgname = tesseract-data-best-pus
+	pkgdesc = Tesseract OCR data (pus)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-pus
+
+pkgname = tesseract-data-best-que
+	pkgdesc = Tesseract OCR data (que)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-que
+
+pkgname = tesseract-data-best-ron
+	pkgdesc = Tesseract OCR data (ron)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ron
+
+pkgname = tesseract-data-best-rus
+	pkgdesc = Tesseract OCR data (rus)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-rus
+
+pkgname = tesseract-data-best-san
+	pkgdesc = Tesseract OCR data (san)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-san
+
+pkgname = tesseract-data-best-sin
+	pkgdesc = Tesseract OCR data (sin)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-sin
+
+pkgname = tesseract-data-best-slk
+	pkgdesc = Tesseract OCR data (slk)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-slk
+
+pkgname = tesseract-data-best-slv
+	pkgdesc = Tesseract OCR data (slv)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-slv
+
+pkgname = tesseract-data-best-snd
+	pkgdesc = Tesseract OCR data (snd)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-snd
+
+pkgname = tesseract-data-best-spa_old
+	pkgdesc = Tesseract OCR data (spa_old)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-spa_old
+
+pkgname = tesseract-data-best-spa
+	pkgdesc = Tesseract OCR data (spa)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-spa
+
+pkgname = tesseract-data-best-sqi
+	pkgdesc = Tesseract OCR data (sqi)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-sqi
+
+pkgname = tesseract-data-best-srp_latn
+	pkgdesc = Tesseract OCR data (srp_latn)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-srp_latn
+
+pkgname = tesseract-data-best-srp
+	pkgdesc = Tesseract OCR data (srp)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-srp
+
+pkgname = tesseract-data-best-sun
+	pkgdesc = Tesseract OCR data (sun)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-sun
+
+pkgname = tesseract-data-best-swa
+	pkgdesc = Tesseract OCR data (swa)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-swa
+
+pkgname = tesseract-data-best-swe
+	pkgdesc = Tesseract OCR data (swe)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-swe
+
+pkgname = tesseract-data-best-syr
+	pkgdesc = Tesseract OCR data (syr)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-syr
+
+pkgname = tesseract-data-best-tam
+	pkgdesc = Tesseract OCR data (tam)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-tam
+
+pkgname = tesseract-data-best-tat
+	pkgdesc = Tesseract OCR data (tat)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-tat
+
+pkgname = tesseract-data-best-tel
+	pkgdesc = Tesseract OCR data (tel)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-tel
+
+pkgname = tesseract-data-best-tgk
+	pkgdesc = Tesseract OCR data (tgk)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-tgk
+
+pkgname = tesseract-data-best-tha
+	pkgdesc = Tesseract OCR data (tha)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-tha
+
+pkgname = tesseract-data-best-tir
+	pkgdesc = Tesseract OCR data (tir)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-tir
+
+pkgname = tesseract-data-best-ton
+	pkgdesc = Tesseract OCR data (ton)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ton
+
+pkgname = tesseract-data-best-tur
+	pkgdesc = Tesseract OCR data (tur)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-tur
+
+pkgname = tesseract-data-best-uig
+	pkgdesc = Tesseract OCR data (uig)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-uig
+
+pkgname = tesseract-data-best-ukr
+	pkgdesc = Tesseract OCR data (ukr)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-ukr
+
+pkgname = tesseract-data-best-urd
+	pkgdesc = Tesseract OCR data (urd)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-urd
+
+pkgname = tesseract-data-best-uzb_cyrl
+	pkgdesc = Tesseract OCR data (uzb_cyrl)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-uzb_cyrl
+
+pkgname = tesseract-data-best-uzb
+	pkgdesc = Tesseract OCR data (uzb)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-uzb
+
+pkgname = tesseract-data-best-vie
+	pkgdesc = Tesseract OCR data (vie)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-vie
+
+pkgname = tesseract-data-best-yid
+	pkgdesc = Tesseract OCR data (yid)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-yid
+
+pkgname = tesseract-data-best-yor
+	pkgdesc = Tesseract OCR data (yor)
+	groups = tesseract-data-best
+	depends = tesseract
+	provides = tessdata
+	conflicts = tesseract-data-yor
