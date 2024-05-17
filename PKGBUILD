@@ -5,13 +5,13 @@
 
 pkgname='emacs-mozc'
 pkgver=2.30.5448.102
-pkgrel=2
+pkgrel=3
 pkgdesc='Mozc module for Emacs'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
 depends=('emacs' 'mozc>=2.30.5448.102')
-makedepends=('bazel' 'git' 'python' 'qt6-base' 'gcc13')
+makedepends=('bazel' 'git' 'python' 'qt6-base')
 options=(!distcc !ccache)
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=c50bd32a0931d558797d71cfc11091ee17c55ac1")
 sha256sums=('f1f7bb38dce2fae8884bd26a6b26a838128d244bf98faae18f43b789da04ff2e')
@@ -30,8 +30,7 @@ build() {
     export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
 
     # Temp fix for GCC 14
-    export CC='/usr/bin/gcc-13'
-    export CXX='/usr/bin/g++-13'
+    sed -i -e '/Werror/d' third_party/protobuf/build_defs/cpp_opts.bzl
 
     bazel build unix/emacs:mozc_emacs_helper --config oss_linux --compilation_mode opt
 }
