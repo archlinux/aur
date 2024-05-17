@@ -1,10 +1,11 @@
 pkgbase = hapi
 	pkgdesc = Python library, command-line tools and server for annotating Mandarin Chinese with phonetics (pinyin, zhuyin, etc.) and colors by tone.
 	pkgver = 2021
-	pkgrel = 15
+	pkgrel = 16
 	url = https://xyne.dev/projects/hapi
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = python-lxml
 	depends = python3
 	depends = python3-colorsysplus
