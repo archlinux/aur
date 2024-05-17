@@ -1,3 +1,5 @@
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org> from aur/aws-cli-v2
+
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {

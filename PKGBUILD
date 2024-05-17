@@ -1,15 +1,17 @@
 # Maintainer: Nick Syntychakis <nsyntych@punkops.dev>
 # Contributor: Steve Engledow <steve@engledow.me>
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=aws-cli-v2-bin
 # https://github.com/aws/aws-cli/raw/v2/CHANGELOG.rst
 pkgver=2.15.51
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc='Unified command line interface for Amazon Web Services (version 2) (binary release)'
 arch=(x86_64 aarch64)
 url='https://github.com/aws/aws-cli/tree/v2'
 license=('Apache')
+options=(!strip !debug)
 makedepends=('unzip')
 depends=('less')
 optdepends=()
@@ -17,9 +19,9 @@ provides=(aws-cli)
 conflicts=(aws-cli aws-cli-v2)
 install=aws-cli-v2-bin.install
 
-source=("aws_bash_completer"
-        "aws_zsh_completer.sh"
-		"LICENSE.txt")
+source=("aws_bash_completer::https://raw.githubusercontent.com/aws/aws-cli/${pkgver}/bin/aws_bash_completer"
+        "aws_zsh_completer.sh::https://raw.githubusercontent.com/aws/aws-cli/${pkgver}/bin/aws_zsh_completer.sh"
+		"LICENSE.txt::https://raw.githubusercontent.com/aws/aws-cli/${pkgver}/LICENSE.txt")
 
 sha256sums=('451a681062516a0473c8764a6593b0a65b6e558bf6128899b1d5e19b258f679e'
             '426e99f1e8cd00cce9263693d29ceac5b4834f6cf1766cd57b985a440eea2e87'
