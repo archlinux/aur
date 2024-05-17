@@ -3,11 +3,12 @@ pkgbase = libtorrent-ps-ch
 	pkgver = 1.8.3
 	pkgrel = 3
 	url = https://github.com/rakshasa/libtorrent
-	arch = any
+	arch = x86_64
 	license = GPL2
-	depends = openssl
 	depends = autoconf
 	depends = automake
+	depends = openssl
+	depends = zlib
 	provides = libtorrent
 	conflicts = libtorrent
 	conflicts = libtorrent-ps
@@ -21,4 +22,3 @@ pkgbase = libtorrent-ps-ch
 	md5sums = dfae06b33afa738211619040810be8b4
 
 pkgname = libtorrent-ps-ch
-
