@@ -5,7 +5,7 @@
 
 pkgname=plymouth-git
 _pkgname=plymouth
-pkgver=24.004.60.r19.g954abd07
+pkgver=24.004.60.r34.gedc7c3ea
 pkgrel=1
 pkgdesc='Graphical boot splash screen (git version)'
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ sha256sums=('SKIP'
             '77b0984473a3a179546605d5346a445e78b45967730f7da13b0d4cf701570137'
             'cfd0c754437d582bbc8d2cbb545a777b00b5c77a6302522577e9d88b169e2f59'
             '00ae44f702b5adce9d98d2b702d94c787491a50ad322a6b0fece1f2714743e6e'
-            '04af86a0ec83fc92d7339e1a7fcc0d55b86b95797a1a5f1a3b8d850996a3926c')
+            '91df753b37fa33493a3fa4b966f5535e9694022a4ba083dcc504404ab25715b1')
 
 pkgver() {
   cd $_pkgname
