@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-cactus
 pkgver=2021
-pkgrel=14
+pkgrel=15
 pkgdesc='Interface modules for CACTUS (CADD Group Chemoinformatics Tools and User Services).'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/python3-cactus"
 depends=(python-openbabel python3 python3-memoizedb)
+makedepends=(python-setuptools)
 source=(
   https://xyne.dev/projects/python3-cactus/src/python3-cactus-2021.tar.xz
   https://xyne.dev/projects/python3-cactus/src/python3-cactus-2021.tar.xz.sig

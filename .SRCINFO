@@ -1,10 +1,11 @@
 pkgbase = python3-cactus
 	pkgdesc = Interface modules for CACTUS (CADD Group Chemoinformatics Tools and User Services).
 	pkgver = 2021
-	pkgrel = 14
+	pkgrel = 15
 	url = https://xyne.dev/projects/python3-cactus
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = python-openbabel
 	depends = python3
 	depends = python3-memoizedb
