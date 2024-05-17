@@ -1,6 +1,6 @@
 pkgbase = ayatana-webmail
 	pkgdesc = Webmail notifications and actions for any desktop
-	pkgver = 24.5.15
+	pkgver = 24.5.17
 	pkgrel = 1
 	url = https://tari.in/www/software/ayatana-webmail/
 	install = ayatana-webmail.install
@@ -23,7 +23,7 @@ pkgbase = ayatana-webmail
 	depends = gsettings-desktop-schemas
 	conflicts = unity-mail
 	replaces = unity-mail
-	source = ayatana-webmail-24.5.15.tar.gz::https://github.com/AyatanaIndicators/ayatana-webmail/archive/24.5.15.tar.gz
-	md5sums = 49066fdb8f8011679dd418853c2d1873
+	source = ayatana-webmail-24.5.17.tar.gz::https://github.com/AyatanaIndicators/ayatana-webmail/archive/24.5.17.tar.gz
+	md5sums = 5c202c540631443b8dead9c62cb49475
 
 pkgname = ayatana-webmail
