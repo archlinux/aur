@@ -37,10 +37,12 @@ check() {
 
 package() {
     cd "$pkgname-$pkgver" || exit
-    mapfile -t binaries < <(find target/release -maxdepth 1 -type f -executable)
-    for binary in "${binaries[@]}"; do
-        install -vDm755 "$binary" -t "$pkgdir/usr/bin/"
-    done
+
+    find target/release \
+        -maxdepth 1 \
+        -executable \
+        -type f \
+        -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 
     install -vDm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname/"
     install -vDm644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname/"
