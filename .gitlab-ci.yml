@@ -26,7 +26,13 @@ lint:
     - pacman -Syu --noconfirm --noprogressbar --cachedir .pkg-cache git python python-pre-commit
   script:
     - export XDG_CACHE_HOME=.pre-commit
-    - pre-commit run -a || (cat /builds/w-m-d/auto_facelock/.pre-commit/pre-commit/pre-commit.log && false)
+    - pre-commit run -a || (cat /builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.pre-commit/pre-commit.log && false)
+  after_script:
+    - git config --global user.email "matthew.d.weger@gmail.com"
+    - git config --global user.name "Matthew Weger"
+    - git add .
+    - git commit -m "Apply pre-commit fixes"
+    - git push
 
 build:
   stage: build
