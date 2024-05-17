@@ -3,7 +3,7 @@
 pkgname=atom-ng-bin
 _pkgname=Atom-ng
 pkgver=1.66.12
-pkgrel=7
+pkgrel=8
 pkgdesc="The hyper-hackable text editor. Community maintained fork with compiler optimizations."
 arch=('x86_64')
 url="https://thorium.rocks/atom-ng/"
@@ -43,6 +43,7 @@ depends=(
     'openssl-1.1'
     'libsecret'
     'libx11'
+    'gendesk'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_${pkgver}_AVX.zip"
