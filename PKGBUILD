@@ -2,7 +2,7 @@
 # Contributor: Ruijie Yu (first.last@outlook.com)
 
 pkgname=ctre
-pkgver=3.8.1
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="Fast compile-time regular expressions with support for
          matching/searching/capturing during compile-time or runtime"
@@ -11,7 +11,7 @@ arch=("any")
 license=("Apache-2.0")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hanickadot/compile-time-regular-expressions/archive/v${pkgver}.tar.gz")
-b2sums=("30ee11613b9f0623c5f40c1580d3a6f2e2d583d5783d5fe77fb485375f307081ee2c35f6f5968a7a89c9827fa5cee9fdd2c07addad08a870ee73ef93c984ec0d")
+b2sums=("a54564e61d4081b1ae19b2d4198dd7cfce842b52026b25d4ed315529b5e5d680c507baad5d50df5f7a788437856f51ea84cf8a7037883556d0ec5847e5888eee")
 
 build() {
   cmake -B "build/" -S "compile-time-regular-expressions-${pkgver}" \
