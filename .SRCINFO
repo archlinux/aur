@@ -1,7 +1,7 @@
 pkgbase = wsdd-native
 	pkgdesc = WS-Discovery Host Daemon
-	pkgver = 1.12
-	pkgrel = 2
+	pkgver = 1.13
+	pkgrel = 0
 	url = https://github.com/gershnik/wsdd-native
 	arch = x86_64
 	license = BSD-3-Clause
@@ -15,7 +15,7 @@ pkgbase = wsdd-native
 	depends = gcc-libs
 	conflicts = wsdd
 	backup = etc/wsddn.conf
-	source = wsdd-native-1.12.tar.gz::https://github.com/gershnik/wsdd-native/archive/v1.12.tar.gz
-	sha256sums = 370fb5cbaf581158774dee3e00ddc7703219ed0578637a39f79a0d7f74e8e3a8
+	source = wsdd-native-1.13.tar.gz::https://github.com/gershnik/wsdd-native/archive/v1.13.tar.gz
+	sha256sums = da126e5678ff8a8f4b0bb5d28b855974edd06d1841ac352a3675546a3973f50b
 
 pkgname = wsdd-native

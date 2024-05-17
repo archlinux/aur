@@ -1,7 +1,7 @@
 # Maintainer: Eugene Gershnik <gershnik@hotmail.com>
 pkgname='wsdd-native'
-pkgver='1.12'
-pkgrel=2
+pkgver='1.13'
+pkgrel=0
 pkgdesc='WS-Discovery Host Daemon'
 arch=('x86_64')
 url='https://github.com/gershnik/wsdd-native'
@@ -11,7 +11,7 @@ makedepends=('cmake>=3.25' 'make' 'gcc>=11.3' 'git' 'patch' 'libsystemd')
 conflicts=('wsdd')
 backup=('etc/wsddn.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gershnik/wsdd-native/archive/v$pkgver.tar.gz")
-sha256sums=('370fb5cbaf581158774dee3e00ddc7703219ed0578637a39f79a0d7f74e8e3a8')
+sha256sums=('da126e5678ff8a8f4b0bb5d28b855974edd06d1841ac352a3675546a3973f50b')
 
 
 build() {
