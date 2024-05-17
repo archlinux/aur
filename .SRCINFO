@@ -1,7 +1,7 @@
 pkgbase = python-pygithub-git
 	pkgdesc = Use the full Github API v3
-	pkgver = v2.1.1.r3.gdc37d5c1
-	pkgrel = 2
+	pkgver = v2.3.0.r1.g60136105
+	pkgrel = 1
 	url = https://github.com/PyGithub/PyGithub
 	arch = any
 	license = LGPL
