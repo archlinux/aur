@@ -1,13 +1,13 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl-git
-pkgver=r29.20a06f4
-pkgrel=2
+pkgver=r34.e97f4b3
+pkgrel=1
 pkgdesc="A simple systemd service to better control Framework Laptop's fan"
 arch=(any)
 url="https://github.com/TamtamHero/fw-fanctrl"
 license=('BSD-3')
 groups=()
-depends=(python-watchdog ectool)
+depends=(python-watchdog fw-ectool-git)
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
