@@ -30,6 +30,10 @@ optdepends=(
 	"python-lxml: For faster beautifulsoup parser."
 
 	"vlc: Optional media player."
+
+	"ffmpeg: For downloading media"
+
+	"yt-dlp"
 )
 checkdepends=()
 provides=("mov-cli")
