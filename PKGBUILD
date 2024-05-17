@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=obfilebrowser
 pkgver=2021
-pkgrel=14
+pkgrel=15
 pkgdesc='An Openbox pipe menu application and file browser.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/obfilebrowser"
 depends=(mimeo python-pyxdg python3)
+makedepends=(python-setuptools)
 source=(
   https://xyne.dev/projects/obfilebrowser/src/obfilebrowser-2021.tar.xz
   https://xyne.dev/projects/obfilebrowser/src/obfilebrowser-2021.tar.xz.sig
