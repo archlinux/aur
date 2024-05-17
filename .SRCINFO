@@ -1,7 +1,7 @@
 pkgbase = pmtiles
-	pkgdesc = Smemstat reports the physical memory usage taking into consideration shared memory.
+	pkgdesc = Single-file executable tool for working with PMTiles archives
 	pkgver = 1.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/protomaps/go-pmtiles/
 	arch = x86_64
 	license = BSD-3-Clause
