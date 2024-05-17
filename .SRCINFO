@@ -1,10 +1,11 @@
 pkgbase = svgtools
 	pkgdesc = Tools for working with SVG files and JessyInk presentations.
 	pkgver = 2023
-	pkgrel = 11
+	pkgrel = 12
 	url = https://xyne.dev/projects/svgtools
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = python3
 	optdepends = inkscape: required for ji2pdf and jessy_to_slides
 	optdepends = parallel: GNU Parallel support for ji2pdf
