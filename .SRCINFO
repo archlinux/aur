@@ -1,10 +1,10 @@
 pkgbase = gnome-encfs-manager-bzr
 	pkgdesc = An easy to use manager and mounter for Encfs stashes
 	pkgver = 1.9.r562.c1721
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/gencfsm
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = breezy
 	makedepends = intltool
 	makedepends = vala

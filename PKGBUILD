@@ -4,10 +4,10 @@
 _pkgname="gnome-encfs-manager"
 pkgname="$_pkgname-bzr"
 pkgver=1.9.r562.c1721
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use manager and mounter for Encfs stashes"
 url="https://launchpad.net/gencfsm"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 arch=('x86_64')
 
 depends=(
@@ -38,6 +38,10 @@ pkgver() {
   local _cnt=$(bzr revno)
   local _rev=$((_cnt - _tag))
   printf '%s.r%s.c%s' "$_ver" "$_rev" "$_cnt"
+}
+
+prepare() {
+  sed -E -e 's&^(#include.*)$&\1\n\nextern void gnome_encfs_manager_on_logout();&' -i "$_pkgsrc/src/tools.c"
 }
 
 build() {
