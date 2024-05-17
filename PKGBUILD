@@ -1,21 +1,18 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
+
 pkgname=hellpot-git
 _targetname=hellpot
-pkgver=v0.4.1.r7.gd5b34bb
+pkgver=v0.4.4.r0.g28169bd
 pkgrel=1
-_srcname=HellPot
-pkgdesc="An endless honeypot that sends bots to hell. (Git version)"
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+pkgdesc="HellPot is a portal to endless suffering meant to punish unruly HTTP bots. (Git version)"
+arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/yunginnanet/HellPot"
 license=('MIT')
-makedepends=(
-  'go'
-  'git'
-)
+makedepends=('go' 'git')
 provides=('hellpot')
 conflicts=('hellpot')
 source=(
-    "$_srcname::git+https://github.com/yunginnanet/HellPot.git"
+    "$_targetname::git+https://github.com/yunginnanet/HellPot.git"
     "service"
     "tmpfiles"
     "sysusers"
@@ -29,18 +26,27 @@ sha256sums=('SKIP'
             '5663856679a38a69572683f9720c4a20aeaf3eb6a26f5ca067e23d4fcc2b28ac')
 
 pkgver() {
-  cd "$_srcname"
+  cd "$_targetname"
   git describe --long --tags | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_srcname"
-  go build -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" -o $_targetname ./cmd/HellPot
+  cd "$srcdir/$_targetname"
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOPATH="${srcdir}"
+  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
+
+  go build -ldflags "-compressdwarf=false -X main.version=$(git tag --sort=-version:refname | head -n 1) -linkmode external" -o $_targetname ./cmd/HellPot
 }
 
 package() {
   cd "$srcdir"
-  install -Dm755 $_srcname/$_targetname "${pkgdir}"/usr/bin/$_targetname
+
+  install -Dm755 $_targetname/$_targetname "${pkgdir}"/usr/bin/$_targetname
   install -Dm644 config.toml "${pkgdir}"/etc/$_targetname/config.toml
   install -Dm644 service "${pkgdir}"/usr/lib/systemd/system/$_targetname.service
   install -Dm644 tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/$_targetname.conf
