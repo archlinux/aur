@@ -1,6 +1,6 @@
 [Unit]
 Description=Face Detection Screen Lock Service for %I
-After=multi-user.target
+After=graphical-session.target
 
 [Service]
 Type=simple

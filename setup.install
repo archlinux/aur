@@ -9,4 +9,5 @@ post_install() {
     echo "  sudo systemctl start auto_facelock@\$(whoami).service"
     echo
     echo "Note: If you are running these commands as a different user, replace \$(whoami) with your actual username."
+    systemctl daemon-reload
 }
