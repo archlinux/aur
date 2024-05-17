@@ -1,6 +1,6 @@
 pkgbase = conduwuit
 	pkgdesc = a very cool, featureful fork of conduit
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/girlbossceo/conduwuit
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = conduwuit
 	provides = conduwuit
 	options = !lto
 	backup = etc/conduwuit.toml
-	source = git+https://github.com/girlbossceo/conduwuit#tag=v0.3.3
+	source = git+https://github.com/girlbossceo/conduwuit#tag=v0.3.4
 	md5sums = SKIP
 
 pkgname = conduwuit
