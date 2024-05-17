@@ -1,11 +1,8 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
-# For Issues, Pull Requests
-# https://github.com/phnx47/pkgbuilds
-
 _pkgname=renovate
 pkgname="${_pkgname}-git"
-pkgver=36.64.0.r0.ge45bacf
+pkgver=37.368.3.r0.g8216f20
 pkgrel=1
 pkgdesc="Automated dependency updates (git-latest)"
 arch=('any')

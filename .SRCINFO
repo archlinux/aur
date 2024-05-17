@@ -1,6 +1,6 @@
 pkgbase = renovate-git
 	pkgdesc = Automated dependency updates (git-latest)
-	pkgver = 36.64.0.r0.ge45bacf
+	pkgver = 37.368.3.r0.g8216f20
 	pkgrel = 1
 	url = https://github.com/renovatebot/renovate
 	arch = any
