@@ -19,7 +19,7 @@ pkgbase = torctl-gui
 	depends = libnotify
 	depends = systemd
 	provides = torctl-gui
-	source = git+https://github.com/$author/$_gitname.git
+	source = git+https://github.com/s-n-alexeyev/torctl-gui.git
 	sha256sums = SKIP
 
 pkgname = torctl-gui
