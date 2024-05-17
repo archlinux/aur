@@ -1,7 +1,7 @@
 pkgbase = atom-ng-bin
 	pkgdesc = The hyper-hackable text editor. Community maintained fork with compiler optimizations.
 	pkgver = 1.66.12
-	pkgrel = 7
+	pkgrel = 8
 	url = https://thorium.rocks/atom-ng/
 	arch = x86_64
 	license = MIT
@@ -36,6 +36,7 @@ pkgbase = atom-ng-bin
 	depends = openssl-1.1
 	depends = libsecret
 	depends = libx11
+	depends = gendesk
 	provides = atom=1.66.12
 	provides = atom-ng=1.66.12
 	conflicts = atom-ng
