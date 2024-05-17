@@ -1,7 +1,7 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 
 pkgname=ansible-navigator
-pkgver=24.2.0
+pkgver=24.3.2
 pkgrel=1
 pkgdesc="A text-based user interface (TUI) for Ansible."
 arch=('any')
