@@ -3,7 +3,7 @@ pkgname=maa-x-bin
 _pkgname=Maa-X
 pkgver=2.0.0_beta.14
 _electronversion=25
-pkgrel=6
+pkgrel=7
 pkgdesc="MAA GUI with Electron & Vue3"
 arch=(
     'aarch64'
@@ -15,7 +15,7 @@ license=("AGPL-3.0-only")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'android-sdk-platform-tools'
     'python>3'
     'perl'
@@ -24,21 +24,26 @@ depends=(
 makedepends=(
     'gendesk'
 )
+options=(
+    '!strip'
+    '!emptydirs'
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-arm64-${pkgver//_/-}.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-x64-${pkgver//_/-}.zip")
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_aarch64=('d0a59e9b51e9087fe5ed4a26255bb55cf8a7c373bbfba0b22b76b2249e50f171')
 sha256sums_x86_64=('fd314076dab798f9121002d1f06fc514253c39614b4bbe3a5844cab8182d2953')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -f -n -q --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -f -n -q --pkgname="${pkgname%-bin}" --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
