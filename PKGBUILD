@@ -52,7 +52,6 @@ makedepends=(cbindgen
   nasm
   nodejs
   python
-  rust
   unzip
   wasi-compiler-rt
   wasi-libc
@@ -79,9 +78,11 @@ options=(!debug
 backup=("usr/lib/${pkgname}/${pkgname}.cfg"
   "usr/lib/${pkgname}/distribution/policies.json")
 source=(https://gitlab.com/api/v4/projects/55893651/packages/generic/firedragon/${_pkgver}/firedragon-v${_pkgver}.source.tar.zst
+  rustup.sh::https://sh.rustup.rs
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   "${pkgname}.desktop")
 sha256sums=('880e094a9fb72b2f4c6ee212d5b530b9fd5c72bf0a6b755af309afb4c09f151c'
+            '32a680a84cf76014915b3f8aa44e3e40731f3af92cd45eb0fcc6264fd257c428'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 install="${pkgname}.install"
@@ -98,6 +99,13 @@ fi
 prepare() {
   rm -rf "${srcdir}/mozbuild"
   mkdir "${srcdir}/mozbuild"
+
+  # Install rust 1.77 in $srcdir and preprend to path
+  export RUSTUP_HOME="${srcdir}/rustup"
+  export CARGO_HOME="${srcdir}/cargo"
+  export RUSTUP_INIT_SKIP_PATH_CHECK=yes
+  sh "${srcdir}/rustup.sh" -q -y --no-modify-path --default-toolchain 1.77
+  export PATH="${srcdir}/cargo/bin:$PATH"
 
   cd firedragon-v"${_pkgver}" || exit
   cat > ../mozconfig << END
