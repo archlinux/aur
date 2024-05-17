@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=powerpill
 pkgver=2021.11
-pkgrel=14
+pkgrel=15
 pkgdesc='Pacman wrapper for faster downloads.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/powerpill"
 depends=(aria2 'pm2ml>2012.12.12' pyalpm python3 python3-xcgf python3-xcpf)
+makedepends=(python-setuptools)
 optdepends=('python3-threaded_servers: internal Pacserve support' 'reflector: Reflector and Rsync support' 'rsync: Rsync download support')
 backup=(etc/powerpill/powerpill.json)
 source=(
