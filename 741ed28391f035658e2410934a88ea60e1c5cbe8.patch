@@ -1,0 +1,33 @@
+From 741ed28391f035658e2410934a88ea60e1c5cbe8 Mon Sep 17 00:00:00 2001
+From: Agent_00Ming <agent00ming9366@gmail.com>
+Date: Tue, 7 May 2024 09:08:40 -0400
+Subject: [PATCH] Fixup patch script for tarball releases (#10) 	modified:  
+ patches/apply.sh
+
+---
+ patches/apply.sh | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/patches/apply.sh b/patches/apply.sh
+index d5492b1b..87d84848 100755
+--- a/patches/apply.sh
++++ b/patches/apply.sh
+@@ -4,15 +4,15 @@
+ PATCHES=$(find patches/ -type f -name '*.patch')
+ 
+ apply () {
+-	git apply $PATCH
++	patch -p1 -r /dev/null -N -s < $PATCH >/dev/null 2>&1 && echo NEW: \'$PATCH\'
+ }
+ 
+ check_applied () {
+-	git apply --check --reverse -q $PATCH
++	patch -p1 -r /dev/null --dry-run -R -s < $PATCH >/dev/null 2>&1 && echo OK: \'$PATCH\'
+ }
+ 
+ fail () {
+-	echo =======\> \'$PATCH\' was not applied && exit 1
++	echo FAILED: \'$PATCH\' NOT APPLICABLE && exit 1
+ }
+ 
+ if [ -n "$PATCHES" ];

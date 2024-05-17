@@ -10,11 +10,11 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-legacyrenderer"
-pkgver=0.39.1
+pkgver=0.40.0
 pkgrel=1
-pkgdesc='a highly customizable dynamic tiling Wayland compositor (using the legacyrenderer build option by Skerse https://gist.github.com/Skerse/0780196bda625b41df9ca292c360f47a)'
+pkgdesc='a highly customizable dynamic tiling Wayland compositor (legacy renderer)'
 arch=(x86_64 aarch64)
-url="https://github.com/hyprwm/Hyprland"
+url="https://github.com/hyprwm/${_pkgname^}"
 license=(BSD-3-Clause)
 depends=(cairo # libcairo.so
          gcc-libs # libgcc_s.so libstdc++.so
@@ -56,6 +56,7 @@ depends=(cairo # libcairo.so
          xorg-xwayland)
 makedepends=(cmake
              gdb
+             hyprwayland-scanner
              meson
              ninja
              vulkan-headers
@@ -63,16 +64,23 @@ makedepends=(cmake
 optdepends=('cmake: to build and install plugins using hyprpm'
             'cpio: to build and install plugins using hyprpm'
             'meson: to build and install plugins using hyprpm')
-conflicts=("$_pkgname" "$_pkgname-git")
-provides=("$_pkgname")
+conflicts=("$_pkgname" "$_pkgname-git" "$pkgname-git")
+provides=("$_pkgname")            
 _archive="${_pkgname^}-$pkgver"
-source=("$_archive.tar.gz::$url/releases/download/v$pkgver/source-v$pkgver.tar.gz")
-sha256sums=('48d1c58fd8db365635a56d76e05e6ea2d99fa20c020a061ee88a20407cfde787')
+source=("$_archive.tar.gz::$url/releases/download/v$pkgver/source-v$pkgver.tar.gz"
+        741ed28391f035658e2410934a88ea60e1c5cbe8.patch
+        ec092bd601d9d351ff6ca34bd97f12055b2a4dd9.patch)
+sha256sums=('0995fe7924a60e3d81428b3fa03ab15d8065958d6285443225afbafa31d29038'
+            'd0719d5f1df0ed9b8cd92169aab4819457078c046e4253e752ff7ce5ad9e44d8'
+            'a4ab9aad0aeba3aa1f806f5716b01745ef1ea24bae1349b1d2fe3ab29fee5e1c')
 
 prepare() {
 	ln -sf hyprland-source "$_archive"
 	cd "$_archive"
 	sed -i -e '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
+
+	patch -d subprojects/wlroots-hyprland/ -p1 -i "${srcdir}"/741ed28391f035658e2410934a88ea60e1c5cbe8.patch
+	patch -p1 -i "${srcdir}"/ec092bd601d9d351ff6ca34bd97f12055b2a4dd9.patch
 }
 
 build() {
