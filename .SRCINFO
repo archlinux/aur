@@ -8,6 +8,7 @@ pkgbase = torctl-git
 	makedepends = git
 	makedepends = make
 	makedepends = fakeroot
+	makedepends = gcc
 	depends = tor
 	depends = systemd
 	depends = curl

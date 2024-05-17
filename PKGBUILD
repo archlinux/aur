@@ -10,7 +10,7 @@ arch=('any')
 url='https://github.com/BlackArch/torctl'
 license=('GPL3')
 depends=('tor' 'systemd' 'curl' 'iptables' 'secure-delete' 'iproute2' 'macchanger')
-makedepends=("git" "make" "fakeroot")
+makedepends=("git" "make" "fakeroot" "gcc")
 provides=("torctl")
 source=("git+https://github.com/$author/$_gitname.git")
 
