@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.2.2
+pkgver=4.2.3
 _electronversion=26
 _nodeversion=16
-pkgrel=3
+pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
 url="https://rubick.vip/"
@@ -32,7 +32,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.sh"
 )
-sha256sums=('2e45eecb9b2736b83fc8d26c932b350ee141722a3d4f9e2bb40f819194dc3389'
+sha256sums=('bcb019b501ac013df55908d8369598511b792a443ebbef5e4fd41031c06d7589'
             '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -48,7 +48,7 @@ build() {
 		-e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
 	_ensure_local_nvm
-	gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
+	gendesk -q -f -n --pkgname="${pkgname}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	export npm_config_build_from_source=true
 	#export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -71,9 +71,9 @@ build() {
 	yarn global add xvfb-maybe @vue/cli
 	cd "${srcdir}/${pkgname}-${pkgver}/feature"
 	yarn install --cache-folder "${srcdir}/.yarn_cache"
-	npm run build
+	yarn run build
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	npm run release
+	yarn run release
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
