@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockery-bin
-pkgver=2.43.0
+pkgver=2.43.1
 pkgrel=1
 pkgdesc='A mock code autogenerator for golang'
 arch=(
@@ -16,9 +16,17 @@ conflicts=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_aarch64=('404f5f070b5f3effd93e8159b498495531dd3cc860630a3ac0b1517615edd5e7')
-sha256sums_x86_64=('ecb3a4ac0023bcb0025c15a7c49d2aa60af22745a32e2862234ca174d576be2e')
+sha256sums_aarch64=('b5b802c556e033c9acbc8bf98085c124cf634f40e0d1d8c38068bfa9bb0657b0')
+sha256sums_x86_64=('23538399c555557b6acd1babf2eaa96399dd13740bb074c58835b82502e5f98d')
+build() {
+    "${srcdir}/${pkgname%-bin}" completion bash > "${srcdir}/${pkgname%-bin}.bash"
+    "${srcdir}/${pkgname%-bin}" completion fish > "${srcdir}/${pkgname%-bin}.fish"
+    "${srcdir}/${pkgname%-bin}" completion zsh > "${srcdir}/${pkgname%-bin}.zsh"
+}
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.fish" "${pkgdir}/usr/share/fish/vendor.completions.d/${pkgname%-bin}.fish"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname%-bin}"
     install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
