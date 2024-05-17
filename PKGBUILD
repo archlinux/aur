@@ -105,7 +105,7 @@ build() {
   #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
   #bazel clean
   if [[ $CC =~ gcc ]];then
-    bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so
+    bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
     #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
   else
     bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
