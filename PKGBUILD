@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=xac
 pkgver=2021
-pkgrel=14
+pkgrel=15
 pkgdesc='A markdown- and Pandoc-based content management system (CMS).'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/xac"
 depends=(pandoc python3)
+makedepends=(python-setuptools)
 optdepends=('graphviz: plugin support' 'openbabel: plugin support' 'source-highlight: plugin support' 'tex2png: plugin support')
 source=(
   https://xyne.dev/projects/xac/src/xac-2021.tar.xz
