@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-xynexdg
 pkgver=2021
-pkgrel=14
+pkgrel=15
 pkgdesc='Implementation of various freedesktop.org standards, for internal use in Xyne'"'"'s modules.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/python3-xynexdg"
 depends=(python3)
+makedepends=(python-setuptools)
 source=(
   https://xyne.dev/projects/python3-xynexdg/src/python3-xynexdg-2021.tar.xz
   https://xyne.dev/projects/python3-xynexdg/src/python3-xynexdg-2021.tar.xz.sig
