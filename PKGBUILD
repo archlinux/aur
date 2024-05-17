@@ -2,18 +2,18 @@
 
 pkgname=epsonscan2-non-free-plugin
 pkgver=1.0.0.6
-pkgrel=1
-_epsonscan2_ver=6.7.42.0
-arch=('i686' 'x86_64')
+pkgrel=2
+arch=('armv7h' 'i686' 'x86_64')
 pkgdesc="Plugins for Epson Scan 2"
 url="http://support.epson.net/linux/en/epsonscan2.php"
-license=('custom')
+license=('LicenseRef-EULA')
 depends=('epsonscan2')
-replaces=('epsonscan2-non-free-plugin-bin')
-source_i686=("https://download2.ebz.epson.net/epsonscan2/common/deb/x86/epsonscan2-bundle-${_epsonscan2_ver}.i686.deb.tar.gz")
-source_x86_64=("https://download2.ebz.epson.net/epsonscan2/common/deb/x64/epsonscan2-bundle-${_epsonscan2_ver}.x86_64.deb.tar.gz")
-sha512sums_i686=('0725b243bc6007934df1a9355cc1aa3198aa63aced18c4dc935a5e6b4d417c2c156fddb997cde1647d2ef9049b88d5094e3f1a76022314a9d6513c84707da27e')
-sha512sums_x86_64=('88b6aecbf45dec7a10bce95e611f57f9f7d0d39dd069729d709028ad269d1efc1d421831563544d7f44455aa3240d05e71c5be12cd5d90c65af87e7c418aadaf')
+source_armv7h=("https://download3.ebz.epson.net/dsc/f/03/00/15/17/63/48960ec5ddbf40da95caaac2ed1ced296fdc2110/epsonscan2-bundle-6.7.63.0.armv7l.deb.tar.gz")
+source_i686=("https://download3.ebz.epson.net/dsc/f/03/00/15/17/67/ceae6a02aaa81cb61012899987fbb5ab891b6ab2/epsonscan2-bundle-6.7.63.0.i686.deb.tar.gz")
+source_x86_64=("https://download3.ebz.epson.net/dsc/f/03/00/15/17/68/050e5a55ed90f4efb4ca3bdd34e5797b149443ca/epsonscan2-bundle-6.7.63.0.x86_64.deb.tar.gz")
+b2sums_armv7h=('c9de6f511bf91a311f0bc92a8feb1aa436aee9850aeb1312ef337eb7c1fa9ee3df71b61911df8fc8c195383df38a52e9baa57f17eb31ed6cabe4337a80fc5e1e')
+b2sums_i686=('292a5f5022653c7a89e4439fde30cd2dcba498e58d7d06b30ceaedf898c016f0622f2eb1478c624b51036a10eac457a006aefe35b3e1e56e50b87058c22979a1')
+b2sums_x86_64=('822bca019da25ae23840ab2f9886f08dcc7bc0fed5e1b4516c942269005a513710bf2718b2a39d0aba8000b052b28b84a987b27d29438f7f7c608b6374c176d9')
 
 prepare() {
   cd epsonscan2-bundle-${_epsonscan2_ver}*/plugins
