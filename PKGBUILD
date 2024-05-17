@@ -1,4 +1,5 @@
 # Maintainer: Manuel Palenzuela <sadshinobi@protonmail.com>
+# PKGBUILD Fixed by: Sergey Alexeyev <s.n.alexeyev@gamil.com>
 
 author=BlackArch
 pkgname=torctl-git
