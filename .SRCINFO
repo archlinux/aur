@@ -6,7 +6,7 @@ pkgbase = cleaner-advanced
 	arch = any
 	license = MIT
 	depends = bash
-	source = cleaner-advanced-1.0.0.tar.gz::https://github.com/KlodCripta/Cleaner-Advanced/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/KlodCripta/Cleaner-Advanced/raw/main/cleaner-advanced-1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = cleaner-advanced
