@@ -4,7 +4,7 @@
 pkgname=sunloginclient
 _pkgname=sunlogin
 _debname=SunloginClient
-pkgver=15.2.0.62802
+pkgver=15.2.0.63062
 pkgrel=1
 pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
@@ -23,7 +23,7 @@ install="${pkgname}.install"
 options=(emptydirs)
 sha256sums=('bdf8bae0231c1ba656adba5d8fb519fa00eb2294dee487e8c06b4ffd3e9f487e'
             'SKIP')
-sha256sums_x86_64=('9838813c5253772cff234f66509955c7c1d3bad0eb89d9993b7b1ec64e9976bc')
+sha256sums_x86_64=('143956eaa79b4ae9939b16ca2691c201f6299b81222081d5d5ce186d593b0c11')
 
 build() {
   mkdir -p build
