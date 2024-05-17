@@ -13,7 +13,7 @@ depends=('tor' 'systemd' 'curl' 'iptables' 'secure-delete' 'iproute2'
          'macchanger')
 makedepends=("git")
 provides=("torctl")
-source=("git://github.com/$author/$_gitname.git")
+source=("git+https://github.com/$author/$_gitname.git")
 
 md5sums=('SKIP')
 sha1sums=('SKIP')
