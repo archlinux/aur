@@ -3,21 +3,22 @@
 pkgname=oama-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
 url="https://github.com/pdobsan/${_pkgname}"
 license=('BSD')
 groups=()
-depends=(gnupg)
+depends=()
 makedepends=()
 optdepends=(
+            'gnome-keyring: Stores passwords and encryption keys'
+            'gnupg: OpenPGP encryption and signing tool'
             'msmtp: an SMTP client'
             'fdm: fetch and deliver mail'
+            'offlineimap: Synchronizes emails between two repositories'
+            'isync: IMAP and MailDir mailbox synchronizer'
             'cronie: cron daemon to execute scheduled commands'
-            'pass: stores, retrieves, generates, and synchronizes passwords securely'
-            'gnome-keyring: Stores passwords and encryption keys'
-            'gpg: OpenPGP encryption and signing tool'
            )
 provides=(${_pkgname})
 conflicts=(mailctl-bin ${_pkgname} ${_pkgname}-git )

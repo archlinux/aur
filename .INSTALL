@@ -5,23 +5,25 @@ post_install() {
 
 -----------------------------------------------------------------------------
 
-	Made ServiceAPI fields configurable.
+  Made ServiceAPI fields configurable.
 
-	While this gives the user more flexibility, for example extending the scope
-	to calendar services, the defaults did not change and should work as they
-	are. For more details, see the Configuration section in the README.
+  While this gives the user more flexibility, for example extending the scope
+  to calendar services, the defaults did not change and should work as they
+  are. For more details, see the Configuration section in the README.
 
-	This is a BREAKING UPDATE in the sense that you need to recreate your
-	config file. However, the modification is small, just follow the steps below.
+WARNING!
 
-	cd ~/.config/oama
-	# rename your old config file
-	mv config.yaml config.yaml.old
-	# run oama to create a new config file
-	oama
-	# edit oama.yaml transfering the needed info from old config
-	# test the result by issuing
-	oama printenv
+  This is a BREAKING UPDATE in the sense that you need to recreate your
+  config file. However, the modification is small, just follow the steps below.
+
+  cd ~/.config/oama
+  # rename your old config file
+  mv config.yaml config.yaml.old
+  # run oama to create a new config file
+  oama
+  # edit oama.yaml transfering the needed info from old config
+  # test the result by issuing
+  oama printenv
 
 -----------------------------------------------------------------------------
 
