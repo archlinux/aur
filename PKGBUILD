@@ -6,7 +6,7 @@ epoch=
 pkgdesc="WeChat Qt w/ bwrap sandbox"
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://weixin.qq.com/"
-license=('proprietary')
+license=('LicenseRef-proprietary')
 groups=()
 options=(!debug)
 

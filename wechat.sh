@@ -164,6 +164,7 @@ function execApp() {
 	-p RestrictAddressFamilies=~AF_NETLINK \
 	-p RestrictAddressFamilies=~AF_PACKET \
 	-p PrivateTmp=yes \
+	-- \
 	bwrap \
 		--unsetenv WAYLAND_DISPLAY \
 		--cap-drop ALL \
@@ -221,7 +222,8 @@ function execApp() {
 		${bwCamPar} \
 		--setenv XDG_DOCUMENTS_DIR "${XDG_DOCUMENTS_DIR}" \
 		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
-		"${launchTarget}"
+		-- \
+			"${launchTarget}"
 }
 
 function dbusProxy() {
@@ -319,6 +321,12 @@ function launch() {
 		export QT_SCREEN_SCALE_FACTOR=2
 		launchTarget="gamescope -F fsr --sharpness 0 -S integer -- /opt/wechat-uos-qt/files/wechat"
 	fi
+	if [[ -f "${XDG_DATA_HOME}"/WeChat_Data/bwrap.optargs ]]; then
+		userConf="$(cat ${XDG_DATA_HOME}/WeChat_Data/bwrap.optargs)"
+	else
+		echo "[Info] User defined bwrap options can be set in ${XDG_DATA_HOME}/WeChat_Data/bwrap.optargs"
+		userConf=""
+	fi
 	if [[ ${trashAppUnsafe} = 1 ]]; then
 		echo "Launching WeChat UOS (unsafe)..."
 		execAppUnsafe
@@ -327,15 +335,6 @@ function launch() {
 		dbusProxy &
 		sleep 0.1
 		execApp
-	fi
-}
-
-function bwCmd() {
-	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "sd-run" ]]; then
-		echo "[Info] Using systemd"
-		bwCmd="systemd-run -p KeyringMode=private -p ProtectClock=yes -p ProtectControlGroups=yes -p CapabilityBoundingSet= -p ProtectKernelModules=yes -p PrivateMounts=yes -p SystemCallArchitectures=native -p MemoryDenyWriteExecute=yes -p RestrictNamespaces=yes -p RestrictSUIDSGID=yes -p ProtectHostname=yes -p LockPersonality=yes -p ProtectKernelTunables=yes -p RestrictRealtime=yes -p ProtectSystem=strict -p ProtectProc=invisible -p ProtectHome=no -p PrivateUsers=yes -p UMask=077 bwrap"
-	else
-		bwCmd="bwrap"
 	fi
 }
 
