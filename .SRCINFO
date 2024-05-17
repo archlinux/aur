@@ -1,10 +1,11 @@
 pkgbase = pm2ml
 	pkgdesc = Generate metalinks for downloading Pacman packages and databases.
 	pkgver = 2021.11.20.1
-	pkgrel = 14
+	pkgrel = 15
 	url = https://xyne.dev/projects/pm2ml
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = pyalpm
 	depends = python3
 	depends = python3-xcgf
