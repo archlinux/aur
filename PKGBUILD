@@ -3,8 +3,8 @@
 
 pkgname=quicktile-git
 _pkgname=${pkgname%-git}
-pkgver=422.ca8105d
-pkgrel=4
+pkgver=463.ce0c088
+pkgrel=1
 epoch=1
 url="https://github.com/ssokolow/quicktile"
 pkgdesc="Adds window-tiling hotkeys to any X11 desktop"
