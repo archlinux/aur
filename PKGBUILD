@@ -3,16 +3,23 @@
 
 pkgname=qt5-webkit-git
 pkgver=5.212.0.alpha4.r13.gac8ebc6c3
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url='https://github.com/qtwebkit/qtwebkit'
-license=(GPL3 LGPL3 FDL custom)
+license=(LGPL2.1)
 pkgdesc='Classes for a WebKit2 based implementation and a new QML API'
 source=("qt5-webkit::git+https://code.qt.io/qt/qtwebkit.git#branch=5.212"
         "https://src.fedoraproject.org/rpms/qt5-qtwebkit/raw/rawhide/f/qtwebkit-cstdint.patch"
          icu68.patch
-         glib-2.68.patch)
-depends=(qt5-location qt5-sensors qt5-webchannel libwebp libxslt libxcomposite gst-plugins-base hyphen woff2)
+         glib-2.68.patch
+        "https://src.fedoraproject.org/rpms/qt5-qtwebkit/raw/rawhide/f/qtwebkit-fix-build-gcc14.patch")
+depends=(qt5-location qt5-sensors qt5-webchannel libwebp libxcomposite gst-plugins-base hyphen woff2
+
+         # namcap implicit depends
+         glibc gcc-libs glib2 zlib libx11 sqlite gst-plugins-base-libs libjpeg-turbo icu libpng gstreamer libxml2
+         qt5-base qt5-declarative)
+         # libxslt
+depends+=(libicuuc.so libicui18n.so)
 makedepends=(git cmake ruby gperf python qt5-doc qt5-tools)
 optdepends=('gst-plugins-good: Webm codec support')
 provides=(qt5-webkit)
@@ -21,7 +28,8 @@ options=(!lto)
 sha256sums=('SKIP'
             '4c71c958eae45cae65c9f002024eb1369d06029b668e595158138ff7971e64f1'
             '0b40ed924f03ff6081af610bb0ee01560b7bd1fb68f8af02053304a01d4ccdf0'
-            '4969dd03e482155e2490b50307dada81dda7bbc9e5398e3a53c20bc474f7c04e')
+            '4969dd03e482155e2490b50307dada81dda7bbc9e5398e3a53c20bc474f7c04e'
+            'eea38db22078700887bf22b6a49bb628fd8444cdb2e506770c993df883d0e8fb')
 
 pkgver() {
   cd "$srcdir/qt5-webkit"
@@ -33,6 +41,7 @@ prepare() {
   patch -p0 -i ../icu68.patch # Fix build with ICU 68.x
   patch -p1 -i ../glib-2.68.patch # https://github.com/qtwebkit/qtwebkit/issues/1057
   patch -p1 -i ../qtwebkit-cstdint.patch # gcc 11.1
+  patch -p1 -i ../qtwebkit-fix-build-gcc14.patch # GCC 14.1
 }
 
 build() {
@@ -40,6 +49,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG" \
     -DPORT=Qt \
+    -DUSE_LD_GOLD=OFF \
     -DENABLE_XSLT=OFF \
     -DENABLE_TOOLS=OFF
   cmake --build build
