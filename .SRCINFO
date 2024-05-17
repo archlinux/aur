@@ -1,0 +1,14 @@
+pkgbase = cargo-limit
+	pkgdesc = Cargo with less noise
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/cargo-limit/cargo-limit
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	depends = cargo
+	source = cargo-limit-0.0.10.tar.gz::https://github.com/cargo-limit/cargo-limit/archive/refs/tags/0.0.10.tar.gz
+	sha256sums = 85fe2b48178494123fddbfcc94c0a796629eb21ebca579de6a2408fc6d2a553c
+
+pkgname = cargo-limit
