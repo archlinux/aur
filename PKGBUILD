@@ -28,14 +28,14 @@ esac
 
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=3.20.0+69.r11780.20240324.2732b32bd
+pkgver=3.20.0+91.r11802.20240516.4636eae6c
 pkgrel=1
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
   'i686'
   'x86_64'
 )
-license=('GPL3')
+license=('GPL3.0-or-later')
 url='https://www.claws-mail.org/'
 depends=(
   'cairo'
@@ -322,7 +322,7 @@ package() {
 
   # Install more information
   msg2 "Installing extra documentation and license ..."
-  for _docfile in ABOUT-NLS AUTHORS ChangeLog* INSTALL NEWS README RELEASE_NOTES TODO version; do
+  for _docfile in ABOUT-NLS AUTHORS ChangeLog* INSTALL NEWS README RELEASE_NOTES version; do
       install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
   install -D -v -m644 "${srcdir}/git.log" "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
