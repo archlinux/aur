@@ -8,11 +8,10 @@ pkgrel=1
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="http://vcmi.eu"
-license=('GPL2')
-depends=('boost-libs' 'ffmpeg' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'qt5-base' 'qt5-tools' 'libxkbcommon-x11'
-         'desktop-file-utils' 'gtk-update-icon-cache' 'hicolor-icon-theme' 'onetbb' 'fuzzylite'
-         'luajit')
-makedepends=('boost' 'cmake' 'git' 'ccache')
+license=('GPL-2.0-or-later AND CC-BY-SA-4.0')
+depends=('boost-libs' 'ffmpeg' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'qt5-base' 'libxkbcommon-x11'
+         'hicolor-icon-theme' 'onetbb' 'fuzzylite' 'luajit')
+makedepends=('boost' 'cmake' 'git' 'ccache' 'qt5-tools')
 optdepends=('innoextract: required by vcmibuilder' 'unshield: required by vcmibuilder' 'unzip: required by vcmibuilder')
 provides=('vcmi')
 conflicts=('vcmi')
