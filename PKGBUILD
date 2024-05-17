@@ -3,11 +3,13 @@
 #
 # Maintainer: uffe _.at._ uffe _.dot._ org
 #
+
 pkgname=minipro-git
 pkgver=0.7.r2.g0a686a3
 pkgrel=1
 
-pkgdesc="Open source programming utility for autoelectric.cn MiniPro TL866xx series of chip programmers"
+pkg_name_ver="${pkgname}-${pkgver}"
+pkgdesc="Open source chip programming utility for autoelectric.cn MiniPro TL866xx series (TL866CS, TL866A, and TL866II+)"
 
 url="https://gitlab.com/DavidGriffith/minipro"
 arch=("i686" "x86_64")

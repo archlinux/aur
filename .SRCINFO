@@ -1,5 +1,5 @@
 pkgbase = minipro-git
-	pkgdesc = Open source programming utility for autoelectric.cn MiniPro TL866xx series of chip programmers
+	pkgdesc = Open source chip programming utility for autoelectric.cn MiniPro TL866xx series (TL866CS, TL866A, and TL866II+)
 	pkgver = 0.7.r2.g0a686a3
 	pkgrel = 1
 	url = https://gitlab.com/DavidGriffith/minipro
