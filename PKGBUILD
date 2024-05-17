@@ -2,7 +2,7 @@
 
 pkgname=snipaste
 pkgver=2.9_Beta2
-pkgrel=1
+pkgrel=2
 pkgdesc="Snip & Paste!"
 arch=('x86_64')
 url="https://www.snipaste.com"
@@ -10,19 +10,18 @@ license=('custom')
 options=(!strip)
 depends=()
 makedepends=()
-
 source_x86_64=(
-	"Snipaste.AppImage::https://download.snipaste.com/archives/Snipaste-2.9-Beta2-x86_64.AppImage"
+	"$pkgname-$pkgver.AppImage::https://download.snipaste.com/archives/Snipaste-2.9-Beta2-x86_64.AppImage"
 )
 sha256sums_x86_64=(
 	"549bf0dccd4e85f8e2fcfa08c67e2073d29c165e87d704585b93db7f5a79ae58"
 )
 
-noextract=('Snipaste.AppImage')
+noextract=("$pkgname-$pkgver.AppImage")
 
 prepare () {
-	chmod +x Snipaste.AppImage
-	./Snipaste.AppImage --appimage-extract
+	chmod +x "$pkgname-$pkgver.AppImage"
+	./$pkgname-$pkgver.AppImage --appimage-extract
 }
 
 package() {
