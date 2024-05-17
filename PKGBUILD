@@ -2,30 +2,34 @@
 # Contributor: Michael Riegert <michael at eowyn net>
 # Contributor: Danilo Kuehn <dk at nogo-software dot de>
 
+## useful links
+# https://nextcloud.com/
+# https://github.com/nextcloud/desktop
+
+# basic info
 _pkgname="nextcloud-client"
 pkgname="$_pkgname-git"
-pkgver=3.10.1.r224.gbfb016c28
+pkgver=3.13.0.r185.gf15810a
 pkgrel=1
 pkgdesc="Nextloud client for linux"
-#url="https://nextcloud.com/"
 url="https://github.com/nextcloud/desktop"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
 
 depends=(
-  inkscape
-  karchive5
+  karchive
+  kguiaddons
+  kio
   libcloudproviders
   openssl
-  qt5-graphicaleffects
-  qt5-quickcontrols2
-  qt5-svg
-  qt5-webengine
-  qt5-webkit
-  qt5-websockets
-  qtkeychain-qt5
+  qt6-5compat
+  qt6-base
+  qt6-declarative
+  qt6-svg
+  qt6-webengine
+  qt6-websockets
+  qtkeychain-qt6
   sqlite
-  xdg-utils
 )
 makedepends=(
   cmocka
@@ -33,16 +37,17 @@ makedepends=(
   extra-cmake-modules
   git
   python-sphinx
-  qt5-tools
+  qt6-tools
 )
 optdepends=(
-  'kio5: integration with Dolphin'
   'nemo-python: integration with Nemo'
   'python-caja: integration with Caja'
   'python-nautilus: integration with Nautilus'
 )
-provides=('mirall' 'mirall-git' 'owncloud-client' 'nextcloud-client')
-conflicts=('mirall-git' 'owncloud-client' 'owncloud-client-ngs' 'nextcloud-client' 'owncloud-client-git')
+
+provides=('owncloud-client' 'nextcloud-client')
+conflicts=('owncloud-client' 'nextcloud-client')
+
 backup=('etc/Nextcloud/sync-exclude.lst')
 
 _pkgsrc="$_pkgname"
@@ -57,52 +62,29 @@ sha256sums=(
 
 pkgver() {
   cd "$_pkgsrc"
+  local _tag=$(git tag | grep -Ev '[a-z]{2}' | sort -rV | head -1)
+  local _ver="${_tag#v}"
+  local _rev=$(git rev-list --count --cherry-pick $_tag...HEAD)
+  local _hash=$(git rev-parse --short=7 HEAD)
 
-  local _file='VERSION.cmake'
-
-  local _ver_major=$(
-    grep -E 'MIRALL_VERSION_MAJOR\s+([0-9]+)' "$_file" \
-      | sed -E 's@^.*MIRALL_VERSION_MAJOR\s+([0-9]+).*$@\1@'
-  )
-  local _ver_minor=$(
-    grep -E 'MIRALL_VERSION_MINOR\s+([0-9]+)' "$_file" \
-      | sed -E 's@^.*MIRALL_VERSION_MINOR\s+([0-9]+).*$@\1@'
-  )
-  local _version=$(
-    git tag -l "v${_ver_major:?}.${_ver_minor:?}.[0-9]" | sort -h | tail -1
-  )
-  local _revision=$(
-    git rev-list --count ${_version:?}..HEAD
-  )
-  local _hash=$(
-    git rev-parse --short HEAD
-  )
-
-  printf '%s.r%s.g%s' \
-    "${_version#v}" \
-    "${_revision:?}" \
-    "${_hash:?}"
+  printf '%s.r%s.g%s' "${_ver:?}" "${_rev:?}" "${_hash:?}"
 }
-
-_prepare_nextcloud_client() (
-  cd "${srcdir:?}/$_pkgsrc"
-  local -A _submodules=(
-    ['dschmidt.libcrashreporter-qt']='src/3rdparty/libcrashreporter-qt'
-  )
-  _submodule_update
-)
 
 prepare() {
   _submodule_update() {
-    local key;
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    local _module
+    for _module in "${_submodules[@]}" ; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
-  _prepare_nextcloud_client
+  cd "$srcdir/$_pkgsrc"
+  local _submodules=(
+    'dschmidt.libcrashreporter-qt'::'src/3rdparty/libcrashreporter-qt'
+  )
+  _submodule_update
 }
 
 build() {
@@ -113,6 +95,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_INSTALL_LIBDIR='lib'
     -DWITH_DOC=FALSE
+    -DBUILD_TESTING=OFF
     -Wno-dev
   )
 
@@ -121,5 +104,5 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
