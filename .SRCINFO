@@ -9,6 +9,7 @@ pkgbase = torctl-gui
 	makedepends = coreutils
 	makedepends = make
 	makedepends = fakeroot
+	makedepends = gcc
 	depends = torctl
 	depends = tor
 	depends = yad
@@ -18,7 +19,7 @@ pkgbase = torctl-gui
 	depends = libnotify
 	depends = systemd
 	provides = torctl-gui
-	source = git+https://github.com/s-n-alexeyev/torctl-gui.git
+	source = git+https://github.com/$author/$_gitname.git
 	sha256sums = SKIP
 
 pkgname = torctl-gui

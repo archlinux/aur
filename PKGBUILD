@@ -10,9 +10,9 @@ arch=('any')
 url='https://github.com/s-n-alexeyev/torctl-gui'
 license=('GPL3')
 depends=('torctl' 'tor' 'yad' 'macchanger' 'iproute2' 'pam' 'libnotify' 'systemd')
-makedepends=("git" "coreutils" 'make' 'fakeroot')
-provides=("torctl-gui")
-source=("git+https://github.com/$author/$_gitname.git")
+makedepends=('git' 'coreutils' 'make' 'fakeroot' 'gcc')
+provides=('torctl-gui')
+source=('git+https://github.com/$author/$_gitname.git')
 sha256sums=('SKIP')
 
 pkgver() {
