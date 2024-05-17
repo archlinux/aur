@@ -1,0 +1,5 @@
+adwaita-icon-theme/
+*.deb
+*.rpm
+*.tar.gz
+*.tar.zst
