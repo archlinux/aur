@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=pbget
 pkgver=2021.12
-pkgrel=13
+pkgrel=14
 pkgdesc='Retrieve PKGBUILDs and local source files from Git, ABS and the AUR for makepkg.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/pbget"
 depends=(git pm2ml python3 python3-aur python3-xcgf python3-xcpf)
+makedepends=(python-setuptools)
 source=(
   https://xyne.dev/projects/pbget/src/pbget-2021.12.tar.xz
   https://xyne.dev/projects/pbget/src/pbget-2021.12.tar.xz.sig

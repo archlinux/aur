@@ -1,10 +1,11 @@
 pkgbase = pbget
 	pkgdesc = Retrieve PKGBUILDs and local source files from Git, ABS and the AUR for makepkg.
 	pkgver = 2021.12
-	pkgrel = 13
+	pkgrel = 14
 	url = https://xyne.dev/projects/pbget
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = git
 	depends = pm2ml
 	depends = python3
