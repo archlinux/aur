@@ -1,17 +1,17 @@
 pkgbase = minipro-git
-	pkgdesc = Open source programming utility for autoelectric.cn Minipro TL866
-	pkgver = 0.6.r15.g0c1e950
+	pkgdesc = Open source programming utility for autoelectric.cn MiniPro TL866xx series of chip programmers
+	pkgver = 0.7.r2.g0a686a3
 	pkgrel = 1
 	url = https://gitlab.com/DavidGriffith/minipro
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = git
 	depends = libusb
-	depends = srecord
+	optdepends = srecord: Motorola srecord format
 	provides = minipro
 	conflicts = minipro
 	source = minipro-git::git+https://gitlab.com/DavidGriffith/minipro.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = minipro-git

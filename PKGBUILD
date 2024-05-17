@@ -1,18 +1,24 @@
+#
+# PKGBUILD for minipro (unstable)
+#
 # Maintainer: uffe _.at._ uffe _.dot._ org
-
+#
 pkgname=minipro-git
-pkgver=0.6.r15.g0c1e950
+pkgver=0.7.r2.g0a686a3
 pkgrel=1
-pkgdesc="Open source programming utility for autoelectric.cn Minipro TL866"
+
+pkgdesc="Open source programming utility for autoelectric.cn MiniPro TL866xx series of chip programmers"
+
 url="https://gitlab.com/DavidGriffith/minipro"
 arch=("i686" "x86_64")
-license=("GPL")
-depends=("libusb" "srecord")
+license=("GPL-3.0-only")
 makedepends=("git")
+depends=("libusb")
+optdepends=("srecord: Motorola srecord format")
 source=(${pkgname}::git+https://gitlab.com/DavidGriffith/minipro.git)
 conflicts=("minipro")
 provides=("minipro")
-md5sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver()
 {
@@ -36,3 +42,6 @@ package()
 }
 
 # vim: ts=2 sw=2 et:
+#
+# EOF
+#
