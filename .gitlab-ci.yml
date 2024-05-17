@@ -1,0 +1,58 @@
+name: Build and Package PKGBUILD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        sudo pacman -Syu --noconfirm
+        sudo pacman -S --needed --noconfirm base-devel git yay
+
+    - name: Set up Git for AUR
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+
+    - name: Build package
+      run: |
+        makepkg --printsrcinfo > .SRCINFO
+        makepkg -si --noconfirm
+
+    - name: Archive package
+      run: |
+        mkdir -p artifacts
+        cp *.pkg.tar.* artifacts/
+        cp *.src.tar.gz artifacts/
+        COMMIT_HASH=$(git rev-parse --short HEAD)
+        mv artifacts/*.pkg.tar.* artifacts/${COMMIT_HASH}.pkg.tar.xz
+        mv artifacts/*.src.tar.gz artifacts/${COMMIT_HASH}.src.tar.gz
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: pkgbuild
+        path: artifacts/
+
+    - name: Publish to AUR (optional)
+      if: github.ref == 'refs/heads/main'
+      env:
+        AUR_SSH_PRIVATE_KEY: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$AUR_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+        git remote add aur ssh://aur@aur.archlinux.org/your-aur-package.git
+        git push aur main
+
