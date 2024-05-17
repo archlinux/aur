@@ -1,10 +1,11 @@
 pkgbase = cronwhip
 	pkgdesc = Run missed cronjobs.
 	pkgver = 2021
-	pkgrel = 15
+	pkgrel = 16
 	url = https://xyne.dev/projects/cronwhip
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = python3
 	depends = sysvinit-tools
 	source = https://xyne.dev/projects/cronwhip/src/cronwhip-2021.tar.xz

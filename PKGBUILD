@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=cronwhip
 pkgver=2021
-pkgrel=15
+pkgrel=16
 pkgdesc='Run missed cronjobs.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/cronwhip"
 depends=(python3 sysvinit-tools)
+makedepends=(python-setuptools)
 source=(
   https://xyne.dev/projects/cronwhip/src/cronwhip-2021.tar.xz
   https://xyne.dev/projects/cronwhip/src/cronwhip-2021.tar.xz.sig
