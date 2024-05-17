@@ -1,6 +1,6 @@
 pkgbase = youtube-music-for-desktop-bin
 	pkgdesc = Unofficial Youtube Music Desktop App, with LastFM support.
-	pkgver = 0.12.7
+	pkgver = 0.12.11
 	pkgrel = 1
 	url = https://youtube-music.app/
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = youtube-music-for-desktop-bin
 	license = CC0-1.0
 	makedepends = fuse2
 	depends = electron20
-	provides = youtube-music-for-desktop=0.12.7
+	provides = youtube-music-for-desktop=0.12.11
 	conflicts = youtube-music-for-desktop
-	source = LICENSE-0.12.7::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v0.12.7/LICENSE
+	source = LICENSE-0.12.11::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v0.12.11/LICENSE
 	source = youtube-music-for-desktop.sh
 	sha256sums = 33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
-	source_aarch64 = youtube-music-for-desktop-0.12.7-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.12.7/YouTube-Music-for-Desktop-0.12.7-arm64.AppImage
-	sha256sums_aarch64 = 2a158d1a20c4a3e8a5e8d072b9748b8cee2fdc45f9c6eedc56a408ad8cad6166
-	source_x86_64 = youtube-music-for-desktop-0.12.7-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.12.7/YouTube-Music-for-Desktop-0.12.7.AppImage
-	sha256sums_x86_64 = 8579ff1dc0618dd52b3cfd880f9e65b13be1f5a9ae303b1c167c8dca0bf88faf
+	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+	source_aarch64 = youtube-music-for-desktop-0.12.11-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.12.11/YouTube-Music-for-Desktop-0.12.11-arm64.AppImage
+	sha256sums_aarch64 = 5134dfe9cae45e0aa894a06eb7b24e99837fa960a9ee870b3549cd1045033aa6
+	source_x86_64 = youtube-music-for-desktop-0.12.11-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.12.11/YouTube-Music-for-Desktop-0.12.11.AppImage
+	sha256sums_x86_64 = de53fd4caae7bd7386794b1a4d4f8de4dc5a57d4729321e0297e8b2d6fe719cf
 
 pkgname = youtube-music-for-desktop-bin

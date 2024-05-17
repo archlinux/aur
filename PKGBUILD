@@ -2,7 +2,7 @@
 _appname="youtube music for desktop"
 pkgname="${_appname// /-}-bin"
 _pkgname=YouTube-Music-for-Desktop
-pkgver=0.12.7
+pkgver=0.12.11
 _electronversion=20
 pkgrel=1
 pkgdesc="Unofficial Youtube Music Desktop App, with LastFM support."
@@ -28,13 +28,14 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('2a158d1a20c4a3e8a5e8d072b9748b8cee2fdc45f9c6eedc56a408ad8cad6166')
-sha256sums_x86_64=('8579ff1dc0618dd52b3cfd880f9e65b13be1f5a9ae303b1c167c8dca0bf88faf')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums_aarch64=('5134dfe9cae45e0aa894a06eb7b24e99837fa960a9ee870b3549cd1045033aa6')
+sha256sums_x86_64=('de53fd4caae7bd7386794b1a4d4f8de4dc5a57d4729321e0297e8b2d6fe719cf')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname//-/ }|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
