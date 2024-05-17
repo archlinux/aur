@@ -3,8 +3,8 @@
 # Contributor : Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Contributor : mickael9 <mickael9 at gmail dot com>
 pkgname=wapiti
-pkgver=3.1.7
-pkgrel=4
+pkgver=3.1.8
+pkgrel=1
 pkgdesc='Comprehensive web app vulnerability scanner written in Python'
 arch=('any')
 url="https://wapiti-scanner.github.io"
