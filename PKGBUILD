@@ -165,7 +165,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.6
-_minor=30
+_minor=31
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -216,6 +216,7 @@ fi
 # NVIDIA pre-build module support
 if [ -n "$_build_nvidia" ]; then
     source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run"
+             "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch"
              "${_patchsource}/misc/nvidia/0001-NVIDIA-take-modeset-ownership-early.patch")
 fi
 
@@ -265,6 +266,7 @@ prepare() {
         src="${src%%::*}"
         src="${src##*/}"
         src="${src%.zst}"
+        [[ $src = make-modeset-fbdev-default.patch ]] && continue
         [[ $src = 0001-NVIDIA-take-modeset-ownership-early.patch ]] && continue
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
@@ -558,7 +560,8 @@ prepare() {
         cd "${srcdir}"
         sh "${_nv_pkg}.run" --extract-only
 
-        # Temporary fix for nvidia module
+        # Use fbdev and modeset as default
+        patch -Np1 -i "${srcdir}/make-modeset-fbdev-default.patch" -d "${srcdir}/${_nv_pkg}"
         patch -Np2 --no-backup-if-mismatch -i "${srcdir}/0001-NVIDIA-take-modeset-ownership-early.patch" -d "${srcdir}/${_nv_pkg}/kernel"
     fi
 }
@@ -745,8 +748,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('b66a5b863b0f8669448b74ca83bd641a856f164b29956e539bbcb5fdeeab9cc6'
+sha256sums=('d6ecff966f8c95ec4cb3bb303904f757b7de6a6bcfef0d0771cb852158e61c20'
             'fdc2b032badafe9eb4b5e27925df057fe6d24dc0803bd37dd4be895f3606dbed'
             '3f3233256725683aa95c29ee423932a5bcc74c0653e09d502240601387c3edec'
-            '054d5faa8e1314ae0393bd4502f82319e32719a92cfd6fd5468aea999b077a18'
+            '794a5b743bd94a715957dc5fa391c3e3cd283b4aa12a4af9487565639192ef72'
             'e5bac2247f709a073ff5c901e9ec2043641d0cf61d8e64dcdfd35f489c72c13a')
