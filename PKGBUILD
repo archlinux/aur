@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-scinum
 pkgver=2021
-pkgrel=14
+pkgrel=15
 pkgdesc='A collection of scientific number classes for arbitrary precision, standard and custom units, and uncertainty for measured values.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/python3-scinum"
 depends=(python3)
+makedepends=(python-setuptools)
 source=(
   https://xyne.dev/projects/python3-scinum/src/python3-scinum-2021.tar.xz
   https://xyne.dev/projects/python3-scinum/src/python3-scinum-2021.tar.xz.sig
