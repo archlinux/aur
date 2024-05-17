@@ -1,8 +1,9 @@
 # Maintainer: Tjw123hh <tjw123hh@outlook.com>
+# Contributor: Cassandra Watergate <spammmwhat@gmail.com>
 
 pkgname=bleachbit-root
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Run bleachbit as root for cleaning system files"
 arch=('any')
 url="https://www.bleachbit.org/"
