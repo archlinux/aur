@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-aria2jsonrpc
 pkgver=2021
-pkgrel=14
+pkgrel=15
 pkgdesc='A wrapper class around Aria2'"'"'s JSON RPC interface.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/python3-aria2jsonrpc"
 depends=(python3)
+makedepends=(python-setuptools)
 source=(
   https://xyne.dev/projects/python3-aria2jsonrpc/src/python3-aria2jsonrpc-2021.tar.xz
   https://xyne.dev/projects/python3-aria2jsonrpc/src/python3-aria2jsonrpc-2021.tar.xz.sig
