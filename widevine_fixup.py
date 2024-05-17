@@ -76,15 +76,15 @@ This process is fragile, and may not work as-is on future revisions of widevine.
 
 import ctypes
 
-class Elf32_Ehdr(ctypes.Structure):
+class Elf64_Ehdr(ctypes.Structure):
     _fields_ = [
         ('e_ident', ctypes.c_ubyte * 16),
         ('e_type', ctypes.c_uint16),
         ('e_machine', ctypes.c_uint16),
         ('e_version', ctypes.c_uint32),
-        ('e_entry', ctypes.c_uint32),
-        ('e_phoff', ctypes.c_uint32),
-        ('e_shoff', ctypes.c_uint32),
+        ('e_entry', ctypes.c_uint64),
+        ('e_phoff', ctypes.c_uint64),
+        ('e_shoff', ctypes.c_uint64),
         ('e_flags', ctypes.c_uint32),
         ('e_ehsize', ctypes.c_uint16),
         ('e_phentsize', ctypes.c_uint16),
@@ -94,16 +94,16 @@ class Elf32_Ehdr(ctypes.Structure):
         ('e_shstrndx', ctypes.c_uint16),
     ]
 
-class Elf32_Phdr(ctypes.Structure):
+class Elf64_Phdr(ctypes.Structure):
     _fields_ = [
         ('p_type', ctypes.c_uint32),
-        ('p_offset', ctypes.c_uint32),
-        ('p_vaddr', ctypes.c_uint32),
-        ('p_paddr', ctypes.c_uint32),
-        ('p_filesz', ctypes.c_uint32),
-        ('p_memsz', ctypes.c_uint32),
         ('p_flags', ctypes.c_uint32),
-        ('p_align', ctypes.c_uint32),
+        ('p_offset', ctypes.c_uint64),
+        ('p_vaddr', ctypes.c_uint64),
+        ('p_paddr', ctypes.c_uint64),
+        ('p_filesz', ctypes.c_uint64),
+        ('p_memsz', ctypes.c_uint64),
+        ('p_align', ctypes.c_uint64),
     ]
 
 class P_FLAGS:
@@ -132,34 +132,34 @@ class PT:
     PT_GNU_RELRO=0x6474e552
     PT_GNU_PROPERTY=0x6474e553
 
-class Elf32_Shdr(ctypes.Structure):
+class Elf64_Shdr(ctypes.Structure):
     _fields_ = [
         ('sh_name', ctypes.c_uint32),
         ('sh_type', ctypes.c_uint32),
-        ('sh_flags', ctypes.c_uint32),
-        ('sh_addr', ctypes.c_uint32),
-        ('sh_offset', ctypes.c_uint32),
-        ('sh_size', ctypes.c_uint32),
+        ('sh_flags', ctypes.c_uint64),
+        ('sh_addr', ctypes.c_uint64),
+        ('sh_offset', ctypes.c_uint64),
+        ('sh_size', ctypes.c_uint64),
         ('sh_link', ctypes.c_uint32),
         ('sh_info', ctypes.c_uint32),
-        ('sh_addralign', ctypes.c_uint32),
-        ('sh_entsize', ctypes.c_uint32),
+        ('sh_addralign', ctypes.c_uint64),
+        ('sh_entsize', ctypes.c_uint64),
     ]
 
-class Elf32_Sym(ctypes.Structure):
+class Elf64_Sym(ctypes.Structure):
     _fields_ = [
         ('st_name', ctypes.c_uint32),
-        ('st_value', ctypes.c_uint32),
-        ('st_size', ctypes.c_uint32),
         ('st_info', ctypes.c_ubyte),
         ('st_other', ctypes.c_ubyte),
         ('st_shndx', ctypes.c_uint16),
+        ('st_value', ctypes.c_uint64),
+        ('st_size', ctypes.c_uint64),
     ]
 
-class Elf32_Dyn(ctypes.Structure):
+class Elf64_Dyn(ctypes.Structure):
     _fields_ = [
-        ('d_tag', ctypes.c_uint32),
-        ('d_val', ctypes.c_uint32), # union with d_ptr
+        ('d_tag', ctypes.c_uint64),
+        ('d_val', ctypes.c_uint64), # union with d_ptr
     ]
 
 class D_TAG: # XXX: this is very incomplete
@@ -169,16 +169,16 @@ class D_TAG: # XXX: this is very incomplete
     DT_SONAME=14
     DT_VERNEED=0x6ffffffe
 
-class Elf32_Rela(ctypes.Structure):
+class Elf64_Rela(ctypes.Structure):
     _fields_ = [
-        ('r_offset', ctypes.c_uint32),
-        #('r_info', ctypes.c_uint32),
+        ('r_offset', ctypes.c_uint64),
+        #('r_info', ctypes.c_uint64),
         ('r_type', ctypes.c_uint32),
         ('r_symbol', ctypes.c_uint32),
-        ('r_addend', ctypes.c_int32),
+        ('r_addend', ctypes.c_int64),
     ]
 
-class Elf32_Verneed(ctypes.Structure):
+class Elf64_Verneed(ctypes.Structure):
     _fields_ = [
         ('vn_version', ctypes.c_uint16),
         ('vn_cnt', ctypes.c_uint16),
@@ -187,7 +187,7 @@ class Elf32_Verneed(ctypes.Structure):
         ('vn_next', ctypes.c_uint32),
     ]
 
-class Elf32_Vernaux(ctypes.Structure):
+class Elf64_Vernaux(ctypes.Structure):
     _fields_ = [
         ('vna_hash', ctypes.c_uint32),
         ('vna_flags', ctypes.c_uint16),
@@ -230,10 +230,10 @@ print(f"Fixing up ChromeOS Widevine CDM module for Linux compatibility...")
 elf_length = len(elf)
 elf += bytearray(0x100000) # pre-expand the buffer by more than enough
 
-ehdr = Elf32_Ehdr.from_buffer(elf)
+ehdr = Elf64_Ehdr.from_buffer(elf)
 
 phdrs = [
-    Elf32_Phdr.from_buffer(memoryview(elf)[ehdr.e_phoff + i * ehdr.e_phentsize:])
+    Elf64_Phdr.from_buffer(memoryview(elf)[ehdr.e_phoff + i * ehdr.e_phentsize:])
     for i in range(ehdr.e_phnum)
 ]
 
@@ -307,7 +307,7 @@ free_addr = inject_addr + len(injected_code)
 ehdr.e_shoff = adjust_offset(ehdr.e_shoff)
 
 shdrs = [
-    Elf32_Shdr.from_buffer(memoryview(elf)[ehdr.e_shoff + i * ehdr.e_shentsize:])
+    Elf64_Shdr.from_buffer(memoryview(elf)[ehdr.e_shoff + i * ehdr.e_shentsize:])
     for i in range(ehdr.e_shnum)
 ]
 
@@ -336,7 +336,7 @@ shdr_by_name = {
 dynsym = shdr_by_name[b".dynsym"]
 dynstr = shdr_by_name[b".dynstr"]
 for i in range(0, dynsym.sh_size, dynsym.sh_entsize):
-    sym = Elf32_Sym.from_buffer(memoryview(elf)[dynsym.sh_offset + i:])
+    sym = Elf64_Sym.from_buffer(memoryview(elf)[dynsym.sh_offset + i:])
     name = resolve_string(elf, dynstr, sym.st_name)
     if name in [b"__aarch64_ldadd4_acq_rel", b"__aarch64_swp4_acq_rel"]:
         log(f"  Weak binding {name}")
@@ -345,17 +345,17 @@ for i in range(0, dynsym.sh_size, dynsym.sh_entsize):
 """
 dynamic = shdr_by_name[b".dynamic"]
 for i in range(0, dynamic.sh_size, dynamic.sh_entsize):
-    dyn = Elf32_Dyn.from_buffer(memoryview(elf)[dynamic.sh_offset + i:])
+    dyn = Elf64_Dyn.from_buffer(memoryview(elf)[dynamic.sh_offset + i:])
     if dyn.d_tag == D_TAG.DT_SONAME:
         print("hijacking SONAME tag to point to NEEDED libgcc_hide.so")
         dyn.d_tag = D_TAG.DT_NEEDED
         dyn.d_val = inject_addr - dynstr.sh_offset
         dynstr.sh_size = (inject_addr - dynstr.sh_offset) + len(PATH_TO_INJECT) + 1
 """
-"""
-rela_plt = shdr_by_name[b".rel.plt"]
+
+rela_plt = shdr_by_name[b".rela.plt"]
 for i in range(0, rela_plt.sh_size, rela_plt.sh_entsize):
-    rela = Elf32_Rela.from_buffer(memoryview(elf)[rela_plt.sh_offset + i:])
+    rela = Elf64_Rela.from_buffer(memoryview(elf)[rela_plt.sh_offset + i:])
     sym = resolve_string(elf, dynstr, rela.r_symbol, count=True)
     if sym in [b"__aarch64_ldadd4_acq_rel", b"__aarch64_swp4_acq_rel"]:
         log(f"  Modifying {sym} plt reloc to point into injected code")
@@ -363,7 +363,6 @@ for i in range(0, rela_plt.sh_size, rela_plt.sh_entsize):
         rela.r_addend = inject_addr
         if sym == b"__aarch64_swp4_acq_rel":
             rela.r_addend += 6*4
-"""
 
 # Move the dynstr section to the hole and add the missing GLIBC_ABI_DT_RELR
 log("  Moving .dynstr to free space and adding GLIBC_ABI_DT_RELR...")
@@ -387,13 +386,13 @@ ver_r_data += bytes(16)
 p = 0
 offset = 0
 while True:
-    need = Elf32_Verneed.from_buffer(memoryview(ver_r_data)[p: p + 16])
+    need = Elf64_Verneed.from_buffer(memoryview(ver_r_data)[p: p + 16])
     filename = resolve_string(elf, dynstr, need.vn_file)
     need.vn_aux += offset
     if filename == b'libc.so.6':
         q = p + need.vn_aux
         for i in range(need.vn_cnt):
-            aux = Elf32_Vernaux.from_buffer(memoryview(ver_r_data)[q: q + 16])
+            aux = Elf64_Vernaux.from_buffer(memoryview(ver_r_data)[q: q + 16])
             ver = resolve_string(elf, dynstr, aux.vna_name)
             q += aux.vna_next
         need.vn_cnt += 1
@@ -401,7 +400,7 @@ while True:
         q += 16
         # Make space here
         ver_r_data[q + 16:] = ver_r_data[q:-16]
-        aux = Elf32_Vernaux.from_buffer(memoryview(ver_r_data)[q: q + 16])
+        aux = Elf64_Vernaux.from_buffer(memoryview(ver_r_data)[q: q + 16])
         aux.vna_hash = 0xfd0e42
         aux.vna_name = abi_dt_relr_off
         aux.vna_other = 3
@@ -423,13 +422,10 @@ free_addr += ver_r.sh_size
 # Now fix the DYNAMIC section
 log("  Fixing up DYNAMIC section...")
 for p in range(phdr_dynamic.p_offset, phdr_dynamic.p_offset + phdr_dynamic.p_filesz, 16):
-    dyn = Elf32_Dyn.from_buffer(memoryview(elf)[p: p + 16])
-    print(dyn, dyn.d_tag, dyn.d_val)
+    dyn = Elf64_Dyn.from_buffer(memoryview(elf)[p: p + 16])
     if dyn.d_tag == D_TAG.DT_VERNEED:
-        print(dyn.d_tag, dyn.d_val)
         dyn.d_val = ver_r.sh_offset
     if dyn.d_tag == D_TAG.DT_STRTAB:
-        print(dyn.d_tag, dyn.d_val)
         dyn.d_val = dynstr.sh_offset
 
 if not weakened_security:
