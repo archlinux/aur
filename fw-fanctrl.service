@@ -5,9 +5,9 @@ After=multi-user.target
 [Service]
 Type=simple
 Restart=always
-ExecStart=/usr/bin/python3 /usr/bin/fw-fanctrl --config /etc/fw-fanctrl/config.json --no-log
+ExecStart=/usr/bin/python3 /usr/bin/fw-fanctrl --run --config /etc/fw-fanctrl/config.json --no-log
 # make sure to reenable automatic fan control on shutdown
-ExecStopPost=/usr/bin/ectool --interface=lpc autofanctrl
+ExecStopPost=bin/sh -c "ectool autofanctrl"
 
 [Install]
 WantedBy=multi-user.target
