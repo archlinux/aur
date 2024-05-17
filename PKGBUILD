@@ -7,7 +7,7 @@
 # LLVM Version
 _pkgver_major=18
 _pkgver_minor=1
-_pkgver_patch=4
+_pkgver_patch=5
 
 # Whether we intend to build the generic llvm package or not
 # Switching betwwen specialized and generic llvm package also requires to change
@@ -44,11 +44,11 @@ source=($_source_base/llvm-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
         $_source_base/third-party-$pkgver.src.tar.xz{,.sig}
         fix_typeids_test_external_data_section.patch)
-b2sums=('071702c92782e1a731aca72d49429312466ce8f932bb9b2610b933a6d7907f28b475fe7ff88263427ee29e88db22bd16c94d5dd8df775bb5bc0e1670c01fb521'
+b2sums=('2ec08d839e9e07fd90c2b39dd3c16de9023824a6915d7d187c52554e0750959d3d59acd7359ccaaa6cd4f8abcfdc6408ec4c63d993d837f185282072c0d533aa'
         'SKIP'
-        '5e40dcb6ad179ca41a633719639ce7227dc30705cbe43cead6534cc36ca5adbbc1ed990ae7a693f7fb2ab51188aa79ba6468d1e8dfaee8b2d9c2a098a5db7aca'
+        '579b87053c38c24f6db5f3a2bc75624f155f2b860a704ba3c382215f79526fed0101e489c5c6ccf2a81654dcc88cd5bff5e5f859201a4ee740e3180221713312'
         'SKIP'
-        '3adc0453cbd2c2951abca1804f87aea5a482a36fbe8f8c84d1bfcaa15a346622f35ac7824f2ba95d7f8f47499abd01ef213bd1d578bcabaf987471acf684d6d5'
+        '459670e6fd6027921dcda386e1a38f1f42e018fce48c0dcf0583e1d0b818fb03780f2e4512253268e2fe78235fb9a1c47c16e47f7015433ba963044a04ee27d2'
         'SKIP'
         '9ed263e76af56a8d749592ebd1538725784a08479f06df436b83762ebf150529e3e4d687ae42e2634961a101e3c9c786d93064a9ed8266392f4cdd4279482608')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
