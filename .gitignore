@@ -1,0 +1,4 @@
+TabAUR/
+pkg/
+src/
+*.tar.zst

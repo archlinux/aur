@@ -1,14 +1,14 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="tabaur"
 _pkgname="TabAUR"
-pkgver=0.6.4
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="A customizable and lightweight AUR helper, designed to be simple but powerful."
 arch=('x86_64' 'aarch64')
 url="https://github.com/BurntRanch/TabAUR"
 license=('GPL3')
 depends=('pacman' 'curl')
-makedepends=('cmake' 'make' 'gcc')
+makedepends=('base-devel' 'cmake')
 optdepends=(
   "sudo: privilege elevation"
   "doas: privilege elevation"
@@ -26,11 +26,11 @@ prepare() {
 }
 
 build() {
-    make -C "${srcdir}/${_pkgname}" CPPFLAGS="-O2 -mtune=generic -funroll-all-loops -march=native -isystem include -std=c++20"
+    make -C "${srcdir}/${_pkgname}" DEBUG=0
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    install -Dm755 "taur" "${pkgdir}/usr/bin/taur"
+    make install PREFIX="${pkgdir}/usr"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
