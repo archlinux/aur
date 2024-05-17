@@ -2,7 +2,7 @@
 pkgname=wordpress-studio-git
 _appname=Studio
 _pkgname="WordPress ${_appname}"
-pkgver=1.0.2.beta.2.r5.g051ae0f
+pkgver=1.0.2.r0.g14ef3c0
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -54,9 +54,9 @@ build() {
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
