@@ -13,6 +13,7 @@ pkgbase = torctl-git
 	depends = secure-delete
 	depends = iproute2
 	depends = macchanger
+	depends = fakeroot
 	provides = torctl
 	source = git+https://github.com/BlackArch/torctl.git
 	md5sums = SKIP

@@ -9,8 +9,7 @@ pkgdesc='Script to redirect all traffic through tor network including dns querie
 arch=('any')
 url='https://github.com/BlackArch/torctl'
 license=('GPL3')
-depends=('tor' 'systemd' 'curl' 'iptables' 'secure-delete' 'iproute2'
-         'macchanger')
+depends=('tor' 'systemd' 'curl' 'iptables' 'secure-delete' 'iproute2' 'macchanger' 'fakeroot')
 makedepends=("git")
 provides=("torctl")
 source=("git+https://github.com/$author/$_gitname.git")
