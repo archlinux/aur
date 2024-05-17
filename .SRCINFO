@@ -1,6 +1,6 @@
 pkgbase = gzdoom-git
 	pkgdesc = Feature centric port for all Doom engine games (git version)
-	pkgver = 4.12pre+382+gdecaf07
+	pkgver = 4.13pre+56+g6d8bee9
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -16,7 +16,6 @@ pkgbase = gzdoom-git
 	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libvpx>=1.14
-	depends = libwebp
 	depends = openal
 	depends = sdl2
 	depends = zmusic>=1.1.8
@@ -50,4 +49,3 @@ pkgbase = gzdoom-git
 	optdepends_x86_64 = vulkan-icd-loader: Vulkan renderer
 
 pkgname = gzdoom-git
-
