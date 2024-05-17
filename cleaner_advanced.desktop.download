@@ -2,8 +2,8 @@
 Version=1.0
 Name=Cleaner Advanced
 Comment=An advanced system cleaning program
-Exec=konsole -e /home/klod/cleaner_advanced.sh
-Icon=/home/klod/icons8-clean-48.png
+Exec=cleaner_advanced
+Icon=icons8-clean-48
 Terminal=false
 Type=Application
 Categories=System;

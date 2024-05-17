@@ -7,11 +7,11 @@ arch=('any')
 url="https://github.com/KlodCripta/Cleaner-Advanced"
 license=('MIT')
 depends=('bash')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/KlodCripta/Cleaner-Advanced/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=("https://github.com/KlodCripta/Cleaner-Advanced/raw/main/cleaner-advanced-1.0.0.tar.gz")
+sha256sums=('2ca6ab0da74a7ef35d2eaa4cd40bc0a4ffaf05752d988f39ff42c58c0ed171fd')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 cleaner_advanced.sh "$pkgdir/usr/bin/cleaner_advanced"
-    install -Dm644 cleaner_advanced.desktop "$pkgdir/usr/share/applications/cleaner_advanced.desktop"
+    install -Dm755 "$srcdir/cleaner_advanced.sh" "$pkgdir/usr/bin/cleaner_advanced"
+    install -Dm644 "$srcdir/cleaner_advanced.desktop" "$pkgdir/usr/share/applications/cleaner_advanced.desktop"
+    install -Dm644 "$srcdir/icons8-clean-48.png" "$pkgdir/usr/share/pixmaps/icons8-clean-48.png"
 }
