@@ -6,6 +6,7 @@ pkgbase = torctl-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = make
 	makedepends = fakeroot
 	depends = tor
 	depends = systemd
