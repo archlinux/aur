@@ -14,7 +14,7 @@ pkgbase = fw-fanctrl-git
 	source = fw-fanctrl-suspend
 	source = fw-fanctrl.service
 	sha256sums = SKIP
-	sha256sums = ba58336a8e46fab3d1aad40a99eaead44af41ab530dcd72c31e8f6d098c8e2dc
-	sha256sums = 14745a7cb3b2cefd2dca87532a924bae684d878b55608a6799916f3c34821bb3
+	sha256sums = db31b5bb877ead3c06548d0d1aecaffa57320e4331cd0bd90fa8fa225026b4e5
+	sha256sums = 2e7a8ceb24f342146b1d0d6e1c863eeccc221709d04ad617247f7e23dd1eb708
 
 pkgname = fw-fanctrl-git
