@@ -2,9 +2,9 @@
 _appname=flowtest
 pkgname="${_appname}ai-git"
 _pkgname=FlowTestAI
-pkgver=r351.36677dd
+pkgver=1.1.0.r0.g67064c3
 _electronversion=29
-_nodeversion=20
+_nodeversion=18.17.0
 pkgrel=1
 pkgdesc="GenAI powered OpenSource IDE for API first workflows."
 arch=('any')
@@ -18,6 +18,7 @@ depends=(
 )
 makedepends=(
     'npm'
+    'pnpm'
     'git'
     'nvm'
     'gendesk'
@@ -26,10 +27,10 @@ source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '0c7b4041ba449cb35cb5cb23503be164af78e85572dda2d8db0ae3dc7fa2629c')
+            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -41,35 +42,36 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${_appname}ai-git" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
+    pnpm config set store-dir "${srcdir}/.pnpm_store"
+    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
+    pnpm config set link-workspace-packages true
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
-    npm run clean
-    sed "s|compute\/requestNode|compute\/requestnode|g;s|compute\/complexnode|compute\/complexNode|g" \
-        -i src/components/molecules/flow/graph/Graph.js
-    npm install
-    npm add -D "@babel/plugin-proposal-private-property-in-object"
-    npm run build
-    npm run postinstall
+    sed "/packageManager/d" -i package.json
+    pnpm install
+    pnpm run build
     cd "${srcdir}/${pkgname//-/.}/packages/${_appname}-electron"
-    npm run pack
+    export npm_config_cache="${srcdir}/.npm_cache"
+    npm install
+    pnpm run pack
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
