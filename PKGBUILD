@@ -7,9 +7,9 @@ pkgver=1.8.3
 pkgrel=4
 pkgdesc='Extended rTorrent-ps with additional UI patches, general fixes and enhancements'
 license=('GPL2')
-arch=('any')
+arch=('x86_64')
 url='https://github.com/chros73/rtorrent-ps-ch'
-depends=('curl>=7.15.4' 'autoconf' 'automake' 'ncurses' 'xmlrpc-c' 'libtorrent-ps-ch')
+depends=('curl' 'autoconf' 'automake' 'ncurses' 'xmlrpc-c' 'libtorrent-ps-ch')
 provides=('rtorrent')
 conflicts=('rtorrent' 'rtorrent-ps')
 

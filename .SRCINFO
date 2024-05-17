@@ -1,16 +1,16 @@
 pkgbase = rtorrent-ps-ch
-	pkgdesc = Extended rTorrent-ps with additional UI patches, general fixes, and enhancements
+	pkgdesc = Extended rTorrent-ps with additional UI patches, general fixes and enhancements
 	pkgver = 1.8.3
 	pkgrel = 4
 	url = https://github.com/chros73/rtorrent-ps-ch
-	arch = any
+	arch = x86_64
 	license = GPL2
-	depends = curl>=7.15.4
-	depends = ncurses
-	depends = libtorrent-ps-ch
-	depends = xmlrpc-c
+	depends = curl
 	depends = autoconf
 	depends = automake
+	depends = ncurses
+	depends = xmlrpc-c
+	depends = libtorrent-ps-ch
 	provides = rtorrent
 	conflicts = rtorrent
 	conflicts = rtorrent-ps
@@ -58,4 +58,3 @@ pkgbase = rtorrent-ps-ch
 	md5sums = 0e9791d796e2185279d7f109b064576b
 
 pkgname = rtorrent-ps-ch
-
