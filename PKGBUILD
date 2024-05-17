@@ -1,11 +1,11 @@
 # Maintainer: Matthew Weger <matthew.d.weger@gmail.com>
 pkgname=auto_facelock
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Face Detection Auto Screen Lock Service"
 arch=('any')
 license=('MIT')
-depends=('python' 'python-opencv' 'python-numpy' 'python-face_recognition')
+depends=('python' 'python-opencv' 'python-numpy' 'python-face_recognition' )
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=('SKIP')

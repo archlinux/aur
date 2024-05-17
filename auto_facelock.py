@@ -191,6 +191,7 @@ def main(known_faces_dir, check_interval, retries):
                     if not recognized:
                         unrecognized_count += 1
                         logger.warning("Unrecognized face, trying again")
+                        break  # Retry immediately
 
                 if unrecognized_count >= retries:
                     logger.warning("Unrecognized face detected, locking screen.")
