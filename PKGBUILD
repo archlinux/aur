@@ -1,13 +1,13 @@
 # Maintainer: Jonathan Apodaca <jrapodaca@gmail.com>
 pkgname=uuallpaper-git
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A wallpaper switcher for GNOME powered by Unsplash."
 arch=('x86_64')
 url="https://gitlab.com/jrop/$pkgname"
 license=('MIT')
 makedepends=('git' 'go')
-source=("$pkgname::git+https://gitlab.com/jrop/uuallpaper.git#branch=convert-to-go")
+source=("$pkgname::git+https://gitlab.com/jrop/uuallpaper.git#branch=master")
 sha256sums=('SKIP')
 
 prepare() {

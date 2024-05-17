@@ -1,13 +1,13 @@
 pkgbase = uuallpaper-git
 	pkgdesc = A wallpaper switcher for GNOME powered by Unsplash.
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/jrop/uuallpaper-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = uuallpaper-git::git+https://gitlab.com/jrop/uuallpaper.git#branch=convert-to-go
+	source = uuallpaper-git::git+https://gitlab.com/jrop/uuallpaper.git#branch=master
 	sha256sums = SKIP
 
 pkgname = uuallpaper-git
