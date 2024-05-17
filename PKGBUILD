@@ -1,12 +1,9 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
-# For Issues, Pull Requests
-# https://github.com/phnx47/pkgbuilds
-
 _pkgname=proto
 pkgname="${_pkgname}-bin"
 pkgdesc='Pluggable multi-language version manager'
-pkgver=0.35.1
+pkgver=0.35.2
 pkgrel=1
 license=('MIT')
 provides=("${_pkgname}")
@@ -15,7 +12,7 @@ url='https://github.com/moonrepo/proto'
 arch=('x86_64')
 depends=('git' 'gcc-libs' 'xz')
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/proto_cli-${arch[0]}-unknown-linux-gnu.tar.xz")
-sha256sums=('ad5837ed546e0e259289aa9bc960439da05e5d2054fd67da195f7f86d12b339f')
+sha256sums=('6142b8eca0c27155012d6b4b4af9165e0f377df733d25614d20103b3a527d830')
 
 prepare() {
   cd "proto_cli-${CARCH}-unknown-linux-gnu"
