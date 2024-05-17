@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=mimeo
 pkgver=2023
-pkgrel=12
+pkgrel=13
 pkgdesc='Open files by MIME-type or file name using regular expressions.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/mimeo"
 depends=(file python-pyxdg python3)
+makedepends=(python-setuptools)
 optdepends=('shared-mime-info: for recognizing more MIME-types')
 source=(
   https://xyne.dev/projects/mimeo/src/mimeo-2023.tar.xz
