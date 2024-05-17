@@ -1,7 +1,7 @@
 # Maintainer: asjur <asjur at proton dot me>
 pkgname=dbgate-beta-bin
-pkgver=5.2.8
-pkgrel=23
+pkgver=5.2.9
+pkgrel=2
 _electronversion=30
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application"
 arch=(
@@ -21,7 +21,7 @@ depends=(
 makedepends=(
     'fuse2'
 )
-# https://github.com/dbgate/dbgate/releases/download/v5.2.8-beta.23/dbgate-5.2.8-beta.23-linux_x86_64.AppImage
+# https://github.com/dbgate/dbgate/releases/download/v5.2.9-beta.2/dbgate-5.2.9-beta.2-linux_x86_64.AppImage
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}-beta.${pkgrel}/dbgate-${pkgver}-beta.${pkgrel}-linux_arm64.AppImage")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}-beta.${pkgrel}/dbgate-${pkgver}-beta.${pkgrel}-linux_armv7l.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}-beta.${pkgrel}/dbgate-${pkgver}-beta.${pkgrel}-linux_x86_64.AppImage")
@@ -31,9 +31,9 @@ source=(
 )
 sha256sums=('4ba7d897a31d45781b6bbc0b87e9a241873d61fff657af2f0c54608f652d235b'
             'beb56bb45d0f3c3bf5bfb269bdc039355ff59dbb28c4f427f219385dba455ad3')
-sha256sums_aarch64=('adeda4a02ea3ba4982916cbe95b8a2a745cbb38eee25c442386eb6d2c40f12bb')
-sha256sums_armv7h=('676a57f49906104500da5f315e05f7eb8f35e6d90cd03a8766110cd7427ff1f7')
-sha256sums_x86_64=('68a1d3db04df3650f115355bae0bc56970ce852f79afd09cfe836b4ffcfd1c19')
+sha256sums_aarch64=('6343d827f5e1897c5aaa238d13f16344e0ad657d9e7591821ae43e3b2bf31a65')
+sha256sums_armv7h=('b79bf25951259bad22c630b3455eb4cd4bbc7bacb098f56e155ac96587516112')
+sha256sums_x86_64=('ae93c54f1b03d70707930c36f114c8517d0b287949b754eeef23114df0bda3a2')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
