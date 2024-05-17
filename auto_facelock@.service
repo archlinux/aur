@@ -1,6 +1,7 @@
 [Unit]
 Description=Face Detection Screen Lock Service for %I
-After=graphical-session.target
+After=graphical.target
+Requires=graphical.target
 
 [Service]
 Type=simple
@@ -11,4 +12,4 @@ Environment=DISPLAY=:0
 Environment=XAUTHORITY=/home/%I/.Xauthority
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

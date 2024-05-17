@@ -9,5 +9,7 @@ post_install() {
     echo "  sudo systemctl start auto_facelock@\$(whoami).service"
     echo
     echo "Note: If you are running these commands as a different user, replace \$(whoami) with your actual username."
+    echo "Ensure that user services can run even after logging out by enabling lingering:"
+    echo "  sudo loginctl enable-linger \$(whoami)"
     systemctl daemon-reload
 }
