@@ -4,12 +4,13 @@ pkgbase = napture-git
 	pkgrel = 1
 	url = https://github.com/face-hh/webx
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
 	depends = glib2
 	depends = cargo
 	depends = gtk4
 	depends = libadwaita
 	depends = lua
+	provides = napture
 	source = git+https://github.com/face-hh/webx.git
 	sha256sums = SKIP
 
