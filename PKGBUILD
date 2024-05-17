@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Rivas Costa <rodrigorivascosta at gmail dot com>
 pkgname=papercraft
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="A tool to unwrap 3D paper models"
 arch=('i686' 'x86_64')
@@ -15,6 +15,8 @@ sha512sums=('SKIP')
 build() {
   cd ${srcdir}/${pkgname}
   git submodule update --init
+  export CFLAGS="$CFLAGS -fno-lto"
+  export CXXFLAGS="$CXXFLAGS -fno-lto"
   cargo build --release
 }
 
