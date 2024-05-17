@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-tabulator
 pkgver=2021
-pkgrel=14
+pkgrel=15
 pkgdesc='A table formatter class with support for a variety of outputs.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/python3-tabulator"
 depends=(python3)
+makedepends=(python-setuptools)
 source=(
   https://xyne.dev/projects/python3-tabulator/src/python3-tabulator-2021.tar.xz
   https://xyne.dev/projects/python3-tabulator/src/python3-tabulator-2021.tar.xz.sig
