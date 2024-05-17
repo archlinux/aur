@@ -3,7 +3,7 @@
 # Contributor: Sandy Carter <bwrsandman@gmail.com>
 
 pkgname=vcmi
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -17,7 +17,7 @@ provides=('vcmi')
 conflicts=('vcmi')
 install="${pkgname}.install"
 source=("https://github.com/vcmi/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('38fa48c7da318aa5a9e0d3319fcb24f4dfdf78555c21b8b0b9f9bbb4cedf33f8')
+sha256sums=('3f9f120204e7676a41641970f5b1a9f9c6f8c2967ed8da9c98dc8e3fec01c249')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
