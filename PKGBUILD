@@ -1,34 +1,28 @@
 # Maintainer: Crazybrain <crazy+aur at crazy dot biscuitmafia dot xyz>
 
 pkgname=ss14.launcher
-pkgver=0.26.0
-pkgrel=3
+pkgver=0.27.2
+pkgrel=1
 pkgdesc="Space Station 14 launcher"
 arch=('x86_64')
 url='https://spacestation14.io'
 license=('MIT')
 depends=('gtk3' 'dotnet-runtime-8.0')
 makedepends=('dotnet-sdk-8.0')
-optdepends=('fluidsynth: for in-game MIDI instruments')
-source=(
-    "${pkgname}.v${pkgver}.tar.gz::https://github.com/space-wizards/SS14.Launcher/archive/refs/tags/v${pkgver}.tar.gz"
-    "https://github.com/space-wizards/Robust.LoaderApi/archive/99a2f4b88077629f69fb66f74f50e88dbe43e0e8.zip"
-    'spacestation14.svg'::'https://raw.githubusercontent.com/space-wizards/asset-dump/master/icon.svg'
-    'ss14.launcher.desktop')
-sha256sums=(
-    '8784bdcdf2b48b9cecd44dc6a16f74e82b8260495f8c1de42cd41bbe07629840'
-    'eff77547bbdfe9d9bb633926b6763ca72793bad58adeda2cc33c15defe593ad3'
-    'a047c810a26088cc1fd1df73036bd5b4cfb441c0697a2cbd583733d08474f37e'
-    '4d68643cccbbb78dd92a14b37edf5476eaa48d5d523ef0d3fbf78f591b1f9ac2')
-options=('!debug')
+optdepends=('fluidsynth: to hear and play in-game MIDI instruments' 'soundfont-fluid: soundfont for in-game MIDI instuments')
+source=("${pkgname}.v${pkgver}.tar.gz::https://github.com/space-wizards/SS14.Launcher/archive/refs/tags/v${pkgver}.tar.gz"
+        "https://github.com/space-wizards/Robust.LoaderApi/archive/99a2f4b88077629f69fb66f74f50e88dbe43e0e8.zip"
+        'spacestation14.svg'::'https://raw.githubusercontent.com/space-wizards/asset-dump/master/icon.svg'
+        'ss14.launcher.desktop')
+sha256sums=('3bb5842b49a3ee8da088f68981799fda8204e72492f3e402894cedecd9fdd1ad'
+            'eff77547bbdfe9d9bb633926b6763ca72793bad58adeda2cc33c15defe593ad3'
+            'a047c810a26088cc1fd1df73036bd5b4cfb441c0697a2cbd583733d08474f37e'
+            '4d68643cccbbb78dd92a14b37edf5476eaa48d5d523ef0d3fbf78f591b1f9ac2')
 
 prepare() {
     # link the submodule
     rm -rf "$srcdir/SS14.Launcher-$pkgver/Robust.LoaderApi"
     ln -sf "$srcdir/Robust.LoaderApi-$(basename -- "${source[1]}" .zip)" "$srcdir/SS14.Launcher-$pkgver/Robust.LoaderApi"
-
-    # workaround for animation using 100% CPU by making the dung spinner never run
-    sed -i 's/INFINITE/0/' "$srcdir/SS14.Launcher-$pkgver/SS14.Launcher/Theme/ThemeDungSpinner.xaml"
 }
 
 build() {
