@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=monokle-bin
 _pkgname=Monokle
-pkgver=2.4.5
-_electronversion=27
-pkgrel=2
+pkgver=2.4.8
+_electronversion=28
+pkgrel=1
 pkgdesc="Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management."
 arch=(
     'aarch64'
@@ -28,8 +28,8 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kubeshop/monokle/v${pkgver}/LICENSE"
 )
 sha256sums=('7a89ae90e9c88d5de936743c0432f43051d79d286aff3c4e669b2b3252b84528')
-sha256sums_aarch64=('e34b9adc29d7314c1c47b938763d75c893a85f38d6e6bebd754039a77600fbc4')
-sha256sums_x86_64=('5d5068cf1d6fc51e0557c5219d61d13f8022f03ac16a65bdc8a5a96aef26aff5')
+sha256sums_aarch64=('ac7d6562c7e3455084c017358c3747e7a26d9b12ef7b3c6c26caec243b8b9bbd')
+sha256sums_x86_64=('aab1ee58f84db25a4e30e9a6c5f7cadf3c967f647094d526d8d42a4e41260190')
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin} --no-sandbox|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
