@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gklib
 	pkgdesc = A library of various helper routines and frameworks used by many of the labs software (mingw-w64)
 	pkgver = 5.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KarypisLab/GKlib
 	arch = any
 	license = Apache

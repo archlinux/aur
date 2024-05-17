@@ -1,6 +1,6 @@
 pkgname=mingw-w64-gklib
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A library of various helper routines and frameworks used by many of the labs software (mingw-w64)'
 url="https://github.com/KarypisLab/GKlib"
 license=('Apache')
@@ -17,9 +17,10 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare () {
   cd "${srcdir}"/GKlib-METIS-v5.1.1-DistDGL-0.5
   curl -L https://github.com/KarypisLab/GKlib/pull/9.patch | patch -p1
-  curl -L https://github.com/KarypisLab/GKlib/commit/98d2d28a834b45f052412d2be80743d91b43477e.patch | patch -p1 -f || echo "nope"
   echo "target_link_libraries(GKlib /usr/\${CMAKE_SYSTEM_PROCESSOR}-w64-mingw32/lib/libregex.a)" >> CMakeLists.txt
   sed -i "s|LIBRARY DESTINATION lib/\${LINSTALL_PATH})|LIBRARY DESTINATION lib/\${LINSTALL_PATH} RUNTIME DESTINATION bin)|g" CMakeLists.txt
+  sed -i "s|march=native|march=nocona|g" GKlibSystem.cmake
+  sed -i "s|Werror|Wall|g" GKlibSystem.cmake
 }
 
 build() {
