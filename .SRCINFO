@@ -1,7 +1,7 @@
 pkgbase = supersonic-desktop-bin
 	pkgdesc = A lightweight cross-platform desktop client for Subsonic music servers.
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dweymouth/supersonic
 	arch = x86_64
 	license = GPL-3.0-only
