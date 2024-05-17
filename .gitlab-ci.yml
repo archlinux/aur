@@ -1,58 +1,80 @@
-name: Build and Package PKGBUILD
+image: archlinux:base-devel
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+# Cache directories to speed up consecutive builds
+cache:
+  key: system-v1
+  paths:
+    - .pkg-cache
+    - .venv
+    - .pre-commit
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+variables:
+  AUR_SSH_PRIVATE_KEY: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
+  PACKAGE_NAME: "auto_facelock"
+  CURRENT_DIR: "$(pwd)"
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+# Define stages
+stages:
+  - lint
+  - build
+  - archive
+  - publish
 
-    - name: Install dependencies
-      run: |
-        sudo pacman -Syu --noconfirm
-        sudo pacman -S --needed --noconfirm base-devel git yay
+# Lint stage
+lint:
+  stage: lint
+  before_script:
+    - pacman -Sy --noconfirm --noprogressbar --cachedir .pkg-cache archlinux-keyring
+    - pacman -Syu --noconfirm --noprogressbar --cachedir .pkg-cache git python python-pre-commit
+  script:
+    - export XDG_CACHE_HOME=.pre-commit
+    - pre-commit run -a
 
-    - name: Set up Git for AUR
-      run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
+# Build stage
+build_package:
+  stage: build
+  script:
+    - pacman -Syu --noconfirm --needed --cachedir .pkg-cache git yay
+    - makepkg --printsrcinfo > .SRCINFO
+    - makepkg -si --noconfirm
+  artifacts:
+    paths:
+      - "*.pkg.tar.*"
+      - "*.src.tar.gz"
+    expire_in: 1 week
 
-    - name: Build package
-      run: |
-        makepkg --printsrcinfo > .SRCINFO
-        makepkg -si --noconfirm
+# Archive stage
+rename_artifacts:
+  stage: archive
+  script:
+    - mkdir -p artifacts
+    - COMMIT_HASH=$(git rev-parse --short HEAD)
+    - mv *.pkg.tar.* "artifacts/${PACKAGE_NAME}-${COMMIT_HASH}.pkg.tar.xz"
+    - mv *.src.tar.gz "artifacts/${PACKAGE_NAME}-${COMMIT_HASH}.src.tar.gz"
+  dependencies:
+    - build_package
+  artifacts:
+    paths:
+      - artifacts/
+    expire_in: 1 week
 
-    - name: Archive package
-      run: |
-        mkdir -p artifacts
-        cp *.pkg.tar.* artifacts/
-        cp *.src.tar.gz artifacts/
-        COMMIT_HASH=$(git rev-parse --short HEAD)
-        mv artifacts/*.pkg.tar.* artifacts/${COMMIT_HASH}.pkg.tar.xz
-        mv artifacts/*.src.tar.gz artifacts/${COMMIT_HASH}.src.tar.gz
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: pkgbuild
-        path: artifacts/
-
-    - name: Publish to AUR (optional)
-      if: github.ref == 'refs/heads/main'
-      env:
-        AUR_SSH_PRIVATE_KEY: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-      run: |
-        mkdir -p ~/.ssh
-        echo "$AUR_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-        git remote add aur ssh://aur@aur.archlinux.org/your-aur-package.git
-        git push aur main
+# Publish stage (optional)
+publish_to_aur:
+  stage: publish
+  only:
+    - main
+  script:
+    - pacman -S --noconfirm --needed --cachedir .pkg-cache openssh
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$AUR_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - git remote add aur ssh://aur@aur.archlinux.org/your-aur-package.git
+    - git push aur main
+  dependencies:
+    - rename_artifacts
+  environment:
+    name: production
+  when: manual
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
 
