@@ -2,10 +2,10 @@
 
 pkgname='perl-plack-middleware-debug'
 pkgver='0.18'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="display information about the current request/response"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=5.8.1' 'perl-class-method-modifiers>=1.05' 'perl-data-dump' 'perl-data-dumper-concise' 'perl-file-sharedir>=1.00' 'perl-plack' 'perl-text-microtemplate>=0.15')
 makedepends=('perl-module-build-tiny')
