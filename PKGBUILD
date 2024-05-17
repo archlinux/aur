@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-nist
 pkgver=2021
-pkgrel=14
+pkgrel=15
 pkgdesc='Modules for accessing and working with data from the National Institute of Standards and Technology (NIST).'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/python3-nist"
 depends=(python-pyxdg python3 python3-scinum)
+makedepends=(python-setuptools)
 optdepends=('python3-tabulator: support for command-line query scripts')
 source=(
   https://xyne.dev/projects/python3-nist/src/python3-nist-2021.tar.xz
