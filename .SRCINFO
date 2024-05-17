@@ -1,6 +1,6 @@
 pkgbase = zmake
 	pkgdesc = Unofficial ZeppOS build system
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://melianmiko.ru/en/zmake
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = zmake
 	depends = python
 	depends = python-pillow
 	depends = python-qrcode
-	source = zmake-1.9.1::git+https://github.com/melianmiko/zmake.git
+	source = zmake-1.9.2::git+https://github.com/melianmiko/zmake.git#tag=v1.9.2
 	md5sums = SKIP
 
 pkgname = zmake
