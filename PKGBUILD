@@ -1,8 +1,8 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=shared-mem-random
-pkgrel=2
-pkgver=1.4.0
+pkgrel=1
+pkgver=1.4.1
 pkgdesc="write random values to a shared memory"
 url="https://github.com/SHMModbus/shared_mem_random"
 license=('MIT')
