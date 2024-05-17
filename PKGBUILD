@@ -2,7 +2,7 @@
 
 _pkgname="tsukimi"
 pkgname="${_pkgname}-bin"
-pkgver=0.4.10
+pkgver=0.4.13
 pkgrel=1
 pkgdesc='A simple third-party Emby client'
 arch=('x86_64')
@@ -22,10 +22,10 @@ source=("https://github.com/tsukinaha/tsukimi/releases/download/v${pkgver}/tsuki
 	"moe.tsuna.tsukimi.gschema.xml::https://raw.githubusercontent.com/tsukinaha/tsukimi/main/moe.tsuna.tsukimi.gschema.xml"
 	"tsukimi.desktop"
 	"tsukimi.png")
-sha256sums=('eeb056c7b22b8400cb9d30dde7bb380336eed3182df69c852f15c1a4c493f081'
-	'510c9ec7630948a56abad5fb9b9ae6a1296fae5cec1232b46d7d4159ed436a7c'
-	'c4ddf8dbf68f04ecefd4280b48ef4084ae7d4d9ce1072f97e30832a565d13bf6'
-	'04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893')
+sha256sums=('bdbeb07e6b66eb22e896b8865d7aa22cb5db3cef0b190a8ae889b803ae1d0d32'
+            '7091b3602cde7454d1ef7f481696b4838697b60f353eab1b0196045d304a63a1'
+            'c4ddf8dbf68f04ecefd4280b48ef4084ae7d4d9ce1072f97e30832a565d13bf6'
+            '04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893')
 
 package() {
 	install -Dm0755 -t "${pkgdir}/usr/bin/" "tsukimi"
