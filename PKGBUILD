@@ -2,36 +2,37 @@
 # Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=parabolic
-pkgver=2023.12.0
+pkgver=2024.5.0
 pkgrel=1
 pkgdesc="Download web video and audio"
 arch=('x86_64')
 url="https://github.com/NickvisionApps/Parabolic"
 license=('MIT')
 depends=('bash' 'dotnet-runtime' 'ffmpeg' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'python-psutil' 'yt-dlp')
-makedepends=('blueprint-compiler' 'dotnet-sdk' 'libadwaita')
+makedepends=('blueprint-compiler' 'dotnet-sdk' 'git' 'libadwaita')
 provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
-_commit='cbc0135ee8a02f85d6f1a8525096c26d059886e8'
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-        "https://github.com/NickvisionApps/CakeScripts/archive/${_commit}.tar.gz")
-sha256sums=('77c33fe556eab5721d4deaa6a8425b6d5305852b46b1ca85355c07a859ccbdde'
-            '93961fc1fde9b4f01f86197946accfefb227ef34a3cc1719a203235ea56a837e')
+source=("git+${url}#tag=${pkgver}"
+        "git+https://github.com/NickvisionApps/CakeScripts")
+sha256sums=('b5a674b4769ca5e2bcb215d409a12869329bd2a5897c33d5aa451c5e62b1c19a'
+            'SKIP')
 
 prepare() {
-    mv "CakeScripts-${_commit}"/* "${pkgname^}-${pkgver}/CakeScripts"
-    cd "${pkgname^}-${pkgver}"
+    cd "${pkgname^}"
+    git submodule init
+    git config submodule.CakeScripts.url "${srcdir}/CakeScripts"
+    git -c protocol.file.allow=always submodule update
     dotnet tool restore
 }
 
 build() {
-    cd "${pkgname^}-${pkgver}"
+    cd "${pkgname^}"
     dotnet cake --target=Publish --prefix=/usr --ui=gnome
 }
 
 package() {
-    cd "${pkgname^}-${pkgver}"
+    cd "${pkgname^}"
     dotnet cake --target=Install --destdir="${pkgdir}"
     ln -s org.nickvision.tubeconverter "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
