@@ -13,7 +13,7 @@ pkgname=(regina-rexx{,-doc})
 pkgdesc='An implementation of the ANSI Standard REXX Programming Language'
 epoch=1
 pkgver=3.9.6
-pkgrel=4
+pkgrel=5
 url='https://regina-rexx.sourceforge.io/'
 source=(
   "https://downloads.sourceforge.net/regina-rexx/$_pkgname-$_pkgsuff-$pkgver.tar.gz"
@@ -51,12 +51,14 @@ package_regina-rexx() {
   changelog="$pkgname.changelog"
   depends=(
     'bash'
-    'gcc-libs'  # strictly unneeded if CC != gcc
     'glibc'
     'libxcrypt'
     'ncurses'
     'readline'
   )
+  case "Z$CC" in
+    Z | Zgcc ) depends+=('gcc-libs')
+  esac
   optdepends=(
     'regina-rexx-doc: Demo scripts and PDF documentation for Regina REXX and regutil'
   )
