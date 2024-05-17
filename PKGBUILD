@@ -1,8 +1,8 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgbase=web-eid
 pkgname=("web-eid-native" "web-eid-firefox" "web-eid-chrome")
-pkgver=2.4.0.639
-_rls_tag=v2.4.0
+pkgver=2.5.0.642
+_rls_tag=v2.5.0
 _ext_ver=2.2.1
 pkgrel=1
 arch=('x86_64')

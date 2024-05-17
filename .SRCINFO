@@ -1,5 +1,5 @@
 pkgbase = web-eid
-	pkgver = 2.4.0.639
+	pkgver = 2.5.0.642
 	pkgrel = 1
 	url = https://www.id.ee/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = web-eid
 	depends = hicolor-icon-theme
 	conflicts = chrome-token-signing
 	noextract = web_eid_webextension-2.2.1.xpi
-	source = web-eid::git+https://github.com/web-eid/web-eid-app.git?signed#tag=v2.4.0
+	source = web-eid::git+https://github.com/web-eid/web-eid-app.git?signed#tag=v2.5.0
 	source = web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git
 	source = web-eid-libpcsc-cpp::git+https://github.com/web-eid/libpcsc-cpp.git
 	source = web-eid-libpcsc-mock::git+https://github.com/web-eid/libpcsc-mock.git
