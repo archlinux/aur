@@ -1,0 +1,18 @@
+pkgbase = loongarch64-linux-gnu-gcc-libc
+	pkgdesc = Build tools for Loongson (Binary).
+	pkgver = 2023.08.08
+	pkgrel = 1
+	url = https://github.com/loongson/build-tools
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = coreutils
+	makedepends = pacman
+	makedepends = tar
+	makedepends = xz
+	options = !debug
+	source = https://github.com/loongson/build-tools/releases/download/2023.08.08/x86_64-cross-tools-loongarch64-gcc-libc.tar.xz
+	sha256sums = 2595bc127a2198f5303f80ec09ea2e21004e5ea0b52fbf495e26c6abf2ec9a81
+
+pkgname = loongarch64-linux-gnu-gcc-libc
