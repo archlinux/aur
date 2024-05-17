@@ -3,7 +3,7 @@
 pkgbase=python-sphinx_mdinclude
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Markdown extension for Sphinx"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-flit-core'
 checkdepends=('python-pytest') # mistune sphinx already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'Makefile')
-md5sums=('9efe5d1e9fe283b17b52e971bab37d7a'
+md5sums=('1705b74f3affd93694a7b6b73341f994'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 prepare() {
@@ -41,7 +41,7 @@ check() {
 }
 
 package_python-sphinx_mdinclude() {
-    depends=('python>=3.8' 'python-docutils>=0.16' 'python-mistune>=3.0' 'python-pygments>=2.8')
+    depends=('python>=3.8' 'python-sphinx>=6' 'python-mistune>=3.0' 'python-pygments>=2.8')
     optdepends=('python-sphinx_mdinclude-doc: Documentation for ndcube')
     cd ${srcdir}/${_pyname}-${pkgver}
 
