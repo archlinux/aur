@@ -18,22 +18,8 @@ package() {
     install -d "$pkgdir/usr/local/share/known_faces"
 }
 
-
-post_install() {
-    echo "Starting post_install script..." | tee -a /tmp/post_install.log
-    echo "***********************************************************" | tee -a /tmp/post_install.log
-    echo "* Thank you for installing auto_facelock.                 *" | tee -a /tmp/post_install.log
-    echo "*                                                         *" | tee -a /tmp/post_install.log
-    echo "* To enable and start the service, run:                   *" | tee -a /tmp/post_install.log
-    echo "*   sudo systemctl enable auto_facelock@<username>.service*" | tee -a /tmp/post_install.log
-    echo "*   sudo systemctl start auto_facelock@<username>.service *" | tee -a /tmp/post_install.log
-    echo "*                                                         *" | tee -a /tmp/post_install.log
-    echo "* Replace <username> with your actual username.           *" | tee -a /tmp/post_install.log
-    echo "*                                                         *" | tee -a /tmp/post_install.log
-    echo "***********************************************************" | tee -a /tmp/post_install.log
-}
-
-# Optional: Create a post_upgrade function if needed
-post_upgrade() {
-    post_install
-}
+# Detailed description:
+# auto_facelock is a utility that uses face recognition to lock the screen.
+# It continuously monitors the webcam and locks the screen if an unrecognized face is detected.
+# The tool is useful for enhancing security on personal and shared systems.
+# If the Feds snatch your computer like they did to dread pirate roberts you'll be relived to find it locked automatically
