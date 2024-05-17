@@ -6,14 +6,15 @@ pkgbase = ayatana-indicator-display
 	arch = i686
 	arch = x86_64
 	arch = pentium4
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = intltool
 	makedepends = cmake
 	makedepends = cmake-extras
 	makedepends = systemd
 	makedepends = properties-cpp
+	makedepends = libxrandr
 	depends = xsct
-	depends = libayatana-common>=0.9.8
+	depends = libayatana-common
 	depends = geoclue
 	depends = hicolor-icon-theme
 	depends = glib2
