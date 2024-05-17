@@ -10,7 +10,7 @@ _pkgname=tessdata
 epoch=2
 pkgver=4.1.0
 pkgrel=4
-pkgdesc='Tesseract OCR data from tessdata_best repository. Replacements for original packages.'
+pkgdesc='Best performing Tesseract OCR LSTM data'
 arch=(any)
 url="https://github.com/tesseract-ocr/${_pkgname}_best"
 license=(Apache)
@@ -27,6 +27,7 @@ build() {
 # it is not sufficient to provide a language as the virtual 'tessdata' package
 # nor is it included in the group
 package_tesseract-data-best-osd() {
+	provides=(tesseract-data-osd)
 	conflicts=(tesseract-data-osd)
 	local lang=${pkgname##*-}
 	pkgdesc+=" ($lang)"
@@ -41,7 +42,7 @@ for lang in ${_langs[@]}; do
 package_tesseract-data-best-$lang(){
 	pkgdesc+=' ($lang)'
 	depends=(tesseract)
-	provides=($_pkgname)
+	provides=($_pkgname tesseract-data-$lang)
 	conflicts=(tesseract-data-$lang)
 	groups=($pkgbase)
 	cd '$_archive_dir'
