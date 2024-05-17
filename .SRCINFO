@@ -1,0 +1,16 @@
+pkgbase = napture
+	pkgdesc = An alternative for the World Wide Web
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/face-hh/webx
+	arch = x86_64
+	license = MIT
+	depends = glib2
+	depends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = lua
+	source = git+https://github.com/face-hh/webx.git
+	sha256sums = SKIP
+
+pkgname = napture
