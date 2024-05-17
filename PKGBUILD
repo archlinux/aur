@@ -17,7 +17,7 @@ makedepends=(
 	git
 	ninja
 )
-_commit=7e8858d88d5da22fa1a57727ca578a1bec376335 # tags/v0.1.0
+_commit=c08393a2ddbee32557990d13dc705a6f15821b22 # tags/v0.1.0
 source=("git+https://github.com/maxsharabayko/srt-xtransmit#commit=$_commit")
 b2sums=('SKIP')
 
