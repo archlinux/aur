@@ -3,7 +3,7 @@
 
 pkgname="discord-chat-exporter-cli"
 _apkgname="DiscordChatExporter"
-pkgver=2.43
+pkgver=2.43.1
 pkgrel=1
 _dotnet_ver=8.0
 
@@ -27,7 +27,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   "$pkgname"
 )
-b2sums=('8efbf68a20cc0115872a944f95482ca3bcc84532944ff8d24d9e5fc28be575ea6e5a657d1dc5021fa84225f5610a189803666a4299043eb7c7e1214a0f0912ce'
+b2sums=('43e4465c2c3c92dfb29d9cb3eb124b39dff08257b561612128b68157909681d64efd6654f6bb314c7c7541d6ab26c375c60d0915815555f668642b2c917fad11'
         '7540fb95f81c1041c87778c590a9438ffb64bf417c3d4d3f1363da5a25898c98f9dcd1209b9237bd595374a33326b7f23043bd6156cc7e14f0bff230ee0f6de6')
 
 prepare() {
