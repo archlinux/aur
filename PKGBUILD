@@ -1,7 +1,7 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl-git
 pkgver=r34.e97f4b3
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple systemd service to better control Framework Laptop's fan"
 arch=(any)
 url="https://github.com/TamtamHero/fw-fanctrl"
@@ -19,7 +19,7 @@ source=("${pkgname%-git}::git+https://github.com/TamtamHero/fw-fanctrl.git" fw-f
 noextract=()
 sha256sums=('SKIP'
             'db31b5bb877ead3c06548d0d1aecaffa57320e4331cd0bd90fa8fa225026b4e5'
-            '2e7a8ceb24f342146b1d0d6e1c863eeccc221709d04ad617247f7e23dd1eb708')
+            'c68d51ce6504a3ed3ba2f0b6291ee5bc4a8ff1147bba72244415f8b2f159a6ba')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
