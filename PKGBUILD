@@ -13,12 +13,12 @@
 # Contributor: Simon Gardling <titaniumtown@gmail.com>
 # Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 
-pkgbase=mutter-git
+pkgbase=mutter-text-input-v1-git
 pkgname=(
-  mutter-git
-  mutter-docs-git
+  mutter-text-input-v1-git
+  mutter-docs-text-input-v1-git
 )
-pkgver=46.0+r26+ga834eb5c9
+pkgver=46.1+r32+g0ab5ff6ee
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -99,12 +99,19 @@ checkdepends=(
   wireplumber
   zenity
 )
-source=('git+https://gitlab.gnome.org/GNOME/mutter.git')
-b2sums=('SKIP')
+source=('git+https://gitlab.gnome.org/GNOME/mutter.git'
+        'text-input-v1.patch::https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3751/diffs.patch')
+b2sums=('SKIP'
+        'SKIP')
 
 pkgver() {
   cd mutter
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
+
+prepare() {
+  cd mutter
+  git apply -3 ../text-input-v1.patch
 }
 
 build() {
@@ -151,18 +158,18 @@ _pick() {
   done
 }
 
-package_mutter-git() {
+package_mutter-text-input-v1-git() {
   provides=(mutter libmutter-14.so)
-  conflicts=(mutter)
+  conflicts=(mutter mutter-git)
 
   meson install -C build --destdir "$pkgdir"
 
   _pick docs "$pkgdir"/usr/share/mutter-*/doc
 }
 
-package_mutter-docs-git() {
+package_mutter-docs-text-input-v1-git() {
   provides=(mutter-docs)
-  conflicts=(mutter-docs)
+  conflicts=(mutter-docs mutter-docs-git)
   pkgdesc+=" (documentation)"
   depends=()
 

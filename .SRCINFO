@@ -1,6 +1,6 @@
-pkgbase = mutter-git
+pkgbase = mutter-text-input-v1-git
 	pkgdesc = Window manager and compositor for GNOME
-	pkgver = 46.0+r26+ga834eb5c9
+	pkgver = 46.1+r32+g0ab5ff6ee
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -75,15 +75,19 @@ pkgbase = mutter-git
 	depends = wayland
 	depends = xorg-xwayland
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git
+	source = text-input-v1.patch::https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3751/diffs.patch
+	b2sums = SKIP
 	b2sums = SKIP
 
-pkgname = mutter-git
+pkgname = mutter-text-input-v1-git
 	provides = mutter
 	provides = libmutter-14.so
 	conflicts = mutter
+	conflicts = mutter-git
 
-pkgname = mutter-docs-git
+pkgname = mutter-docs-text-input-v1-git
 	pkgdesc = Window manager and compositor for GNOME (documentation)
 	depends = 
 	provides = mutter-docs
 	conflicts = mutter-docs
+	conflicts = mutter-docs-git
