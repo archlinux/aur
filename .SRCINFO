@@ -1,6 +1,6 @@
 pkgbase = audirvana-origin
 	pkgdesc = Audirvana Origin audio player
-	pkgver = 2.5.12.5
+	pkgver = 2.5.12.6
 	pkgrel = 1
 	url = https://audirvana.com/
 	install = audirvana-origin.install
@@ -12,9 +12,9 @@ pkgbase = audirvana-origin
 	depends = avahi
 	depends = curl
 	depends = libxml2
-	source = https://audirvana.com/delivery/linux/apt-repo/pool/non-free/audirvana-origin/audirvana-origin_2.5.12.5_amd64.deb
+	source = https://audirvana.com/delivery/linux/apt-repo/pool/non-free/audirvana-origin/audirvana-origin_2.5.12.6_amd64.deb
 	source = audirvanaOrigin.service
-	sha256sums = f02be3fb260c678e702c7891b1c72bf9854362379be7b964f7508bd4551dd16a
+	sha256sums = 5fe0dadb21df71e6fb0c27c80c5cf5abcc4e90bd27d27565bc3cc801e7c2480a
 	sha256sums = ad6c44ea90d96f13c8623f411b51138bc3deab7eeca476a0fbe51b2dbc0cb758
 
 pkgname = audirvana-origin
