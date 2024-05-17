@@ -9,7 +9,7 @@
 pkgname="wine-staging-wow64"
 pkgver=9.8
 _pkgver="${pkgver/rc/-rc}"
-pkgrel=4
+pkgrel=5
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
@@ -101,8 +101,9 @@ build() {
   export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
   export CROSSLDFLAGS="${LDFLAGS//-Wl,-z*([^[:space:]])/}"
 
-  cd "wine"
-  ./configure \
+  mkdir -p build
+  cd build
+  ../wine/configure \
     --disable-tests \
     --prefix=/usr \
     --libdir=/usr/lib \
@@ -112,7 +113,7 @@ build() {
 }
 
 package() {
-  cd "wine"
+  cd build
   make prefix="$pkgdir"/usr \
     libdir="$pkgdir"/usr/lib \
     dlldir="$pkgdir"/usr/lib/wine install
