@@ -23,6 +23,11 @@ pkgver() {
 }
 
 build() {
+  CFLAGS+=" -Wno-error=incompatible-pointer-types"
+  CXXFLAGS+=" -Wno-error=incompatible-pointer-types"
+  export CFLAGS
+  export CXXFLAGS
+
   arch-meson $_gitname build
   meson compile -C build
 }
