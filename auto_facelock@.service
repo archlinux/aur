@@ -4,7 +4,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/auto_facelock.py --known_faces_dir /usr/local/share/known_faces --check_interval 60 --retries 2 
+ExecStart=/usr/local/bin/auto_facelock.py --known_faces_dir /usr/local/share/known_faces --check_interval 60 --retries 2
 Restart=on-failure
 User=%I
 Environment=DISPLAY=:0
@@ -12,4 +12,3 @@ Environment=XAUTHORITY=/home/%I/.Xauthority
 
 [Install]
 WantedBy=multi-user.target
-

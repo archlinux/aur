@@ -208,4 +208,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(args.known_faces_dir, args.check_interval, args.retries)
-

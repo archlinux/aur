@@ -53,7 +53,7 @@ def filter_background(image, padding=40):
     if not os.path.exists(face_cascade_path):
         logger.error("Face cascade file not found at: %s", face_cascade_path)
         return None, None
-    
+
     face_cascade = cv2.CascadeClassifier(face_cascade_path)
 
     if face_cascade.empty():
@@ -150,6 +150,5 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Capture and filter images, then compare faces.")
     parser.add_argument('--num_captures', type=int, default=10, help='Number of images to capture and compare')
     args = parser.parse_args()
-    
-    main(args.num_captures)
 
+    main(args.num_captures)

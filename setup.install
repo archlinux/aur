@@ -9,4 +9,3 @@ post_install() {
     echo "  sudo systemctl enable auto_facelock@${username}.service"
     echo "  sudo systemctl start auto_facelock@${username}.service"
 }
-
