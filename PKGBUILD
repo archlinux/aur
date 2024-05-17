@@ -7,10 +7,10 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
-_commit=222b36d7bd3a98616eae82993552098747268d5e
+_commit=aee409f9ae648bbd3899d92e12481d05883b5aa3
 pkgname=h2o-git
-pkgver=2.2.0.8004
-pkgrel=6
+pkgver=2.2.0.8006
+pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
