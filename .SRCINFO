@@ -1,6 +1,6 @@
 pkgbase = auto_facelock
 	pkgdesc = Face Detection Auto Screen Lock Service
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	install = setup.install
 	arch = any
