@@ -1,6 +1,6 @@
 pkgbase = libelectron
 	pkgdesc = A collection of npm dependencies for electron packages.
-	pkgver = 1.0.22
+	pkgver = 1.0.23
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/libelectron/libelectron
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libelectron
 	depends = npm
 	depends = git
 	depends = icu
-	source = https://gitlab.com/linuxbombay/libelectron/libelectron/-/archive/1.0.22-1/libelectron-1.0.22-1.tar.bz2
-	sha256sums = a78b041b355c65c1e7a1713d91a74ba25ad601e3620fff6193b716e4651919e9
+	source = https://gitlab.com/linuxbombay/libelectron/libelectron/-/archive/1.0.23/libelectron-1.0.23.tar.bz2
+	sha256sums = 63b9c2a610ff76014cf7ededc38fa3c744fb4fd582d3a9ac68d8a07d121d1c10
 
 pkgname = libelectron
