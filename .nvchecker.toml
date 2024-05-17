@@ -1,5 +1,5 @@
 [ttf-tabler-icons]
 source = "github"
 github = "tabler/tabler-icons"
-prefix = "v"
 use_max_tag = true
+prefix = "v"
