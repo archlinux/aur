@@ -2,7 +2,7 @@
 
 _pkgname="dofi"
 pkgname="dofi-manager"
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A simple dotfile manager"
 arch=("x86_64")
@@ -10,7 +10,7 @@ makedepends=("cargo" "git")
 url="https://github.com/akiirui/dofi"
 license=("MIT")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/akiirui/dofi/archive/v$pkgver.tar.gz")
-b2sums=('ade2cc95a593a3b5ce6ce67ee2991ea24a3adca22a2d35ceba9e5df85f0483b96279a45d6b3d5384caf2b96928ac3ab0b887afe360bb00753c419c85a6dd0f81')
+b2sums=('00e7e39d6db843239e88d0275803a8fbb3f7ebcd03a80dda6ca01a052f8e5448f1cdf19498772db12ec7fe05329a9ed9e2289e9893fb8b01d7321b0e7db25a61')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
