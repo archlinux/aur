@@ -1,10 +1,11 @@
 pkgbase = python3-xcgf
 	pkgdesc = Xyne's common generic functions, for internal use.
 	pkgver = 2021
-	pkgrel = 14
+	pkgrel = 15
 	url = https://xyne.dev/projects/python3-xcgf
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = python3
 	source = https://xyne.dev/projects/python3-xcgf/src/python3-xcgf-2021.tar.xz
 	source = https://xyne.dev/projects/python3-xcgf/src/python3-xcgf-2021.tar.xz.sig
