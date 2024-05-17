@@ -1,6 +1,6 @@
 # Maintainer: ASOwnerYT <asowneryt@protonmail.com>
 # Contributor: Smartlinuxcoder <smartcoder@linuxmail.org>
-pkgname=napture
+pkgname=napture-git
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="An alternative for the World Wide Web"

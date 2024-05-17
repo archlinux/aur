@@ -1,4 +1,4 @@
-pkgbase = napture
+pkgbase = napture-git
 	pkgdesc = An alternative for the World Wide Web
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = napture
 	source = git+https://github.com/face-hh/webx.git
 	sha256sums = SKIP
 
-pkgname = napture
+pkgname = napture-git
