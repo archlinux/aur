@@ -3,7 +3,7 @@
 pkgname=osu-lazer-extracted-bin
 _pkgname=${pkgname%-extracted-bin}
 pkgver=2024.412.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=(x86_64)
 url="https://osu.ppy.sh"
@@ -21,7 +21,7 @@ conflicts=(
 options=(!strip)
 source=(
   "osu.AppImage::https://github.com/ppy/osu/releases/download/$pkgver/osu.AppImage"
-  "start-osu"
+  "osu-lazer"
   "mime-16.png"
   "mime-32.png"
   "mime-48.png"
@@ -77,7 +77,7 @@ prepare() {
 package() {
   # game
   install -dm755 "$pkgdir/opt/$_pkgname"
-  install -Dm755 start-osu "$pkgdir/usr/bin/start-osu"
+  install -Dm755 osu-lazer "$pkgdir/usr/bin/osu-lazer"
   cp -r ./squashfs-root/usr/bin/* "$pkgdir/opt/$_pkgname"
 
   # desktop file
@@ -85,7 +85,7 @@ package() {
   desktop-file-edit --remove-key="SingleMainWindow" --set-key="Version" --set-value="1.4" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   desktop-file-edit --set-key="X-SingleMainWindow" --set-value="true" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   desktop-file-edit --set-key="Icon" --set-value="osu-lazer" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  desktop-file-edit --set-key="Exec" --set-value="start-osu %F" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  desktop-file-edit --set-key="Exec" --set-value="osu-lazer %F" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   desktop-file-edit --set-key="StartupWMClass" --set-value="osu!" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   desktop-file-edit --set-key="StartupNotify" --set-value="true" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   desktop-file-edit --set-key="MimeType" --set-value="application/x-osu-beatmap;application/x-osu-beatmap-archive;application/x-osu-skin-archive;application/x-osu-storyboard;application/x-osu-replay;application/zip;x-scheme-handler/osu" "$pkgdir/usr/share/applications/$_pkgname.desktop"
