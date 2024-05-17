@@ -1,12 +1,13 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-gpg_batch_sign
 pkgver=2022
-pkgrel=6
+pkgrel=7
 pkgdesc='A module and stand-alone script for batch-signing files with GPG.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/python3-gpg_batch_sign"
 depends=(python3)
+makedepends=(python-setuptools)
 source=(
   https://xyne.dev/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2022.tar.xz
   https://xyne.dev/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2022.tar.xz.sig

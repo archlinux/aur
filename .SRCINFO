@@ -1,10 +1,11 @@
 pkgbase = python3-gpg_batch_sign
 	pkgdesc = A module and stand-alone script for batch-signing files with GPG.
 	pkgver = 2022
-	pkgrel = 6
+	pkgrel = 7
 	url = https://xyne.dev/projects/python3-gpg_batch_sign
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = python3
 	source = https://xyne.dev/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2022.tar.xz
 	source = https://xyne.dev/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2022.tar.xz.sig
