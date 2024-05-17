@@ -44,32 +44,12 @@ def log(s):
         print(s)
 
 """
-Widevine fixup tool for aarch64 systems
+Widevine fixup tool for armv7h systems.
+This is based on prior scripts made by David Buchanan and subsequent changes
+made by Hector Martin.
 
-Old aarch64 widevine builds currently only support 4k page sizes.
-
-This script fixes that, by pre-padding the LOAD segments so that they meet
-the alignment constraints required by the loader, and then fixing up the
-relevant header offsets to keep the file valid.
-
-It also injects two functions that are not exported from typical libgccs, into
-the empty space at the end of the .text segment. This avoids any LD_PRELOAD
-workarounds. (The injected functions are __aarch64_ldadd4_acq_rel
-and __aarch64_swp4_acq_rel)
-
-IMPORTANT NOTE: On systems with >4k page size (e.g. Apple Silicon devices),
-using the resulting binary *significantly* weakens the security of your web
-browser, in two ways. Firstly, it disables the RELRO security mitigation, and
-secondly it creates a RWX mapping.
-
-This script also adds the necessary GLIBC_ABI_DT_RELR version tag so that
+This script adds the necessary GLIBC_ABI_DT_RELR version tag so that
 current glibc versions can load the library without requiring any patches.
-
-Newer Widevine versions do have 64K aligned segments, and do not need the
-padding process. They also do not have the same security implications, so its
-use is recommended. However, we still adjust the segment offsets to open up
-space for adding the missing functions, and to insert the GLIBC_ABI_DT_RELR
-version.
 
 This process is fragile, and may not work as-is on future revisions of widevine.
 """
@@ -105,15 +85,6 @@ class Elf32_Phdr(ctypes.Structure):
         ('p_flags', ctypes.c_uint32),
         ('p_align', ctypes.c_uint32),
     ]
-
-class P_FLAGS:
-    """ Flag values for the p_flags field of program headers
-    """
-    PF_X=0x1
-    PF_W=0x2
-    PF_R=0x4
-    PF_MASKOS=0x00FF0000
-    PF_MASKPROC=0xFF000000
 
 class PT:
     PT_NULL=0
@@ -198,27 +169,7 @@ class Elf32_Vernaux(ctypes.Structure):
 
 import mmap
 TARGET_PAGE_SIZE = mmap.PAGESIZE
-WEAKEN_SECURITY = mmap.PAGESIZE > 0x1000
 inject_addr = None
-
-weakened_security = False
-
-"""
-0000000000000b24 <__aarch64_ldadd4_acq_rel>:
-b24:   2a0003e2        mov     w2, w0
-b28:   885ffc20        ldaxr   w0, [x1]
-b2c:   0b020003        add     w3, w0, w2
-b30:   8804fc23        stlxr   w4, w3, [x1]
-b34:   35ffffa4        cbnz    w4, b28 <__aarch64_ldadd4_acq_rel+0x4>
-b38:   d65f03c0        ret
-
-0000000000000b3c <__aarch64_swp4_acq_rel>:
-b3c:   2a0003e2        mov     w2, w0
-b40:   885ffc20        ldaxr   w0, [x1]
-b44:   8803fc22        stlxr   w3, w2, [x1]
-b48:   35ffffc3        cbnz    w3, b40 <__aarch64_swp4_acq_rel+0x4>
-b4c:   d65f03c0        ret
-"""
 
 injected_code = bytes.fromhex("e203002a20fc5f880300020b23fc0488a4ffff35c0035fd6e203002a20fc5f8822fc0388c3ffff35c0035fd6")
 
@@ -284,23 +235,12 @@ for phdr in phdrs:
             assert align_off >= len(injected_code)
             prev.p_filesz += min(delta_needed, align_off)
             prev.p_memsz += min(delta_needed, align_off)
-
-            if WEAKEN_SECURITY and not skip_perms_hack:
-                phdr.p_flags |= P_FLAGS.PF_X # XXX: this is a hack!!! (at the very least, we should apply it only to the mappings that need it)
-                remove_relro = True
-                weakened_security = True
     prev = phdr
-
-    if WEAKEN_SECURITY and remove_relro and phdr.p_type == PT.PT_GNU_RELRO:
-        print("  Neutering relro") # XXX: relro is a security mechanism
-        phdr.p_type = PT.PT_NOTE
-        weakened_security = True
 
 if inject_addr is None:
     inject_addr = (elf_length + 3) & ~3
     elf[inject_addr: inject_addr + len(injected_code)] = injected_code
     elf_length += 0x10000
-
 
 free_addr = inject_addr + len(injected_code)
 # the section headers have moved
@@ -330,40 +270,6 @@ shdr_by_name = {
     resolve_string(elf, strtab, shdr.sh_name): shdr
     for shdr in shdrs
 }
-
-# XXX: unfortunately this does not do anything useful!
-# It doesn't hurt either, so I'm leaving it here just in case.
-dynsym = shdr_by_name[b".dynsym"]
-dynstr = shdr_by_name[b".dynstr"]
-for i in range(0, dynsym.sh_size, dynsym.sh_entsize):
-    sym = Elf32_Sym.from_buffer(memoryview(elf)[dynsym.sh_offset + i:])
-    name = resolve_string(elf, dynstr, sym.st_name)
-    if name in [b"__aarch64_ldadd4_acq_rel", b"__aarch64_swp4_acq_rel"]:
-        log(f"  Weak binding {name}")
-        sym.st_info = (sym.st_info & 0x0f) | (2 << 4) # STB_WEAK
-
-"""
-dynamic = shdr_by_name[b".dynamic"]
-for i in range(0, dynamic.sh_size, dynamic.sh_entsize):
-    dyn = Elf32_Dyn.from_buffer(memoryview(elf)[dynamic.sh_offset + i:])
-    if dyn.d_tag == D_TAG.DT_SONAME:
-        print("hijacking SONAME tag to point to NEEDED libgcc_hide.so")
-        dyn.d_tag = D_TAG.DT_NEEDED
-        dyn.d_val = inject_addr - dynstr.sh_offset
-        dynstr.sh_size = (inject_addr - dynstr.sh_offset) + len(PATH_TO_INJECT) + 1
-"""
-"""
-rela_plt = shdr_by_name[b".rel.plt"]
-for i in range(0, rela_plt.sh_size, rela_plt.sh_entsize):
-    rela = Elf32_Rela.from_buffer(memoryview(elf)[rela_plt.sh_offset + i:])
-    sym = resolve_string(elf, dynstr, rela.r_symbol, count=True)
-    if sym in [b"__aarch64_ldadd4_acq_rel", b"__aarch64_swp4_acq_rel"]:
-        log(f"  Modifying {sym} plt reloc to point into injected code")
-        rela.r_type = 1027 # R_AARCH64_RELATIVE
-        rela.r_addend = inject_addr
-        if sym == b"__aarch64_swp4_acq_rel":
-            rela.r_addend += 6*4
-"""
 
 # Move the dynstr section to the hole and add the missing GLIBC_ABI_DT_RELR
 log("  Moving .dynstr to free space and adding GLIBC_ABI_DT_RELR...")
@@ -422,25 +328,14 @@ free_addr += ver_r.sh_size
 
 # Now fix the DYNAMIC section
 log("  Fixing up DYNAMIC section...")
-for p in range(phdr_dynamic.p_offset, phdr_dynamic.p_offset + phdr_dynamic.p_filesz, 16):
-    dyn = Elf32_Dyn.from_buffer(memoryview(elf)[p: p + 16])
-    print(dyn, dyn.d_tag, dyn.d_val)
+for p in range(phdr_dynamic.p_offset, phdr_dynamic.p_offset + phdr_dynamic.p_filesz, 8):
+    dyn = Elf32_Dyn.from_buffer(memoryview(elf)[p: p + 8])
     if dyn.d_tag == D_TAG.DT_VERNEED:
-        print(dyn.d_tag, dyn.d_val)
         dyn.d_val = ver_r.sh_offset
+        print("Succeeded in injecting GLIBC_ABI_DT_RELR! (1)")
     if dyn.d_tag == D_TAG.DT_STRTAB:
-        print(dyn.d_tag, dyn.d_val)
         dyn.d_val = dynstr.sh_offset
-
-if not weakened_security:
-    print()
-    print("Good news! This CDM version supports your page size, so we didn't have")
-    print("to weaken memory permissions. Rejoice!")
-else:
-    print()
-    print("It looks like you're running Asahi, or some other device with >4k page size.")
-    print("This CDM only supports smaller page sizes, so we had to weaken memory")
-    print("permissions to make it work.")
+        print("Succeeded in injecting GLIBC_ABI_DT_RELR! (2)")
 
 with open(args[1], "wb") as outfile:
     outfile.write(memoryview(elf)[:elf_length])

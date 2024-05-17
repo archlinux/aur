@@ -11,13 +11,13 @@ _lacros_version=120.0.6098.0
 pkgname=widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content.  System-wide installation with automated registering for chromium and firefox.'
 pkgver=4.10.2710.0
-pkgrel=5
+pkgrel=6
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://www.widevine.com/'
 license=('custom')
 depends=('gcc-libs' 'glib2' 'nspr' 'nss' 'glibc>=2.39')
 makedepends_aarch64=('python' 'squashfs-tools')
-makedepends_armv7h=('squashfs-tools')
+makedepends_armv7h=('python' 'squashfs-tools')
 provides=('chromium-widevine')
 conflicts=('chromium-widevine')
 install="widevine.install"
@@ -28,15 +28,16 @@ source=("chrome-eula_text.html::https://www.google.com/intl/en/chrome/privacy/eu
 source_x86_64=("https://dl.google.com/widevine-cdm/${_x86_64_pkgver}-linux-x64.zip")
 source_aarch64=("lacros-arm64.squashfs::${_lacros_url}${_lacros_img_aarch64}-${_lacros_version}"
                 "widevine_fixup.py")
-
-source_armv7h=("lacros-arm.squashfs::${_lacros_url}${_lacros_img_armv7h}-${_lacros_version}")
+source_armv7h=("lacros-arm.squashfs::${_lacros_url}${_lacros_img_armv7h}-${_lacros_version}"
+               "widevine_fixup_32.py")
 
 sha256sums=(SKIP
             '5ffda209f750c8ba31800b5e28c9d32f04c4b261eeec09784ff7045b694456f4')
 sha256sums_x86_64=('c120e5d03ca6eb5243d4c69a6a4348e121233824ab26db9126a53ba99709d152')
 sha256sums_aarch64=('38a57cc3975af68675a1219b00354f08890ff58d0c54b690dcf5d2dd904b1576'
                     '6e886755201f1ba9dab1ead5f11846bae321cbf343da1112f06c08c8a8012182')
-sha256sums_armv7h=('c11d54ce5953c72cdb0a9b4c1e3a6442e872aaf90c80ca95f21d5182b1560363')
+sha256sums_armv7h=('c11d54ce5953c72cdb0a9b4c1e3a6442e872aaf90c80ca95f21d5182b1560363'
+                   'c66c83a1d2a673f96de946b8dbfcf2c0a2d23db0a8931a7a5a89f6e4f45f24be')
 
 prepare() {
   if [[ $CARCH == "aarch64" ]]; then
@@ -84,7 +85,7 @@ build() {
     # patch widevine lib to add missing functions and add support for non-4k systems
     python ../widevine_fixup.py squashfs-root/WidevineCdm/_platform_specific/cros_arm64/libwidevinecdm.so libwidevinecdm.so
   elif [[ $CARCH == "armv7h" ]]; then
-    mv squashfs-root/WidevineCdm/_platform_specific/cros_arm/libwidevinecdm.so libwidevinecdm.so
+    python ../widevine_fixup_32.py squashfs-root/WidevineCdm/_platform_specific/cros_arm/libwidevinecdm.so libwidevinecdm.so
   fi
 }
 
