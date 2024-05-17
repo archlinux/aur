@@ -203,6 +203,8 @@ function execApp() {
 			"${XDG_CONFIG_HOME}"/user-dirs.dirs \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/fontconfig \
 			"${XDG_CONFIG_HOME}"/fontconfig \
+		--ro-bind-try "${XDG_DATA_HOME}/fonts" \
+			"${XDG_DATA_HOME}/fonts" \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/Trolltech.conf \
 			"${XDG_CONFIG_HOME}"/Trolltech.conf \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/mimeapps.list \
