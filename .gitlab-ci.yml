@@ -1,6 +1,17 @@
 image: archlinux:base-devel
 
-# Cache directories to speed up consecutive builds
+variables:
+  PACKAGE_NAME: "auto_facelock"
+  AUR_REPO: "ssh://aur@aur.archlinux.org/${PACKAGE_NAME}.git"
+  COMMIT_HASH: "$CI_COMMIT_SHORT_SHA"
+  CURRENT_DIR: "$(pwd)"
+
+stages:
+  - lint
+  - build
+  - archive
+  - publish
+
 cache:
   key: system-v1
   paths:
@@ -8,18 +19,6 @@ cache:
     - .venv
     - .pre-commit
 
-variables:
-  PACKAGE_NAME: "auto_facelock"
-  CURRENT_DIR: "$(pwd)"
-
-# Define stages
-stages:
-  - lint
-  - build
-  - archive
-  - publish
-
-# Lint stage
 lint:
   stage: lint
   before_script:
@@ -29,8 +28,7 @@ lint:
     - export XDG_CACHE_HOME=.pre-commit
     - pre-commit run -a
 
-# Build stage
-build_package:
+build:
   stage: build
   script:
     - pacman -Syu --noconfirm --needed --cachedir .pkg-cache git yay
@@ -42,33 +40,37 @@ build_package:
       - "*.src.tar.gz"
     expire_in: 1 week
 
-# Archive stage
-rename_artifacts:
+archive:
   stage: archive
   script:
     - mkdir -p artifacts
-    - COMMIT_HASH=$(git rev-parse --short HEAD)
     - mv *.pkg.tar.* "artifacts/${PACKAGE_NAME}-${COMMIT_HASH}.pkg.tar.xz"
     - mv *.src.tar.gz "artifacts/${PACKAGE_NAME}-${COMMIT_HASH}.src.tar.gz"
   dependencies:
-    - build_package
+    - build
   artifacts:
     paths:
       - artifacts/
     expire_in: 1 week
 
-# Publish stage (optional)
-publish_to_aur:
+publish:
   stage: publish
   script:
     - pacman -S --noconfirm --needed --cachedir .pkg-cache openssh
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - echo "$AUR_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - git remote add aur ssh://aur@aur.archlinux.org/your-aur-package.git
-    - git push aur main
+    - git clone $AUR_REPO aur_repo
+    - cd aur_repo
+    - cp ../artifacts/*.pkg.tar.xz .
+    - cp ../artifacts/*.src.tar.gz .
+    - cp ../PKGBUILD .
+    - cp ../.SRCINFO .
+    - git add PKGBUILD .SRCINFO
+    - git commit -m "Update package to commit ${COMMIT_HASH}"
+    - git push origin master
   dependencies:
-    - rename_artifacts
+    - archive
   environment:
     name: production
   when: manual
