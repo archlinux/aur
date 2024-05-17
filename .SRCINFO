@@ -17,7 +17,7 @@ pkgbase = 8188eu-aircrack-dkms-git
 	source = https://github.com/aircrack-ng/rtl8188eus/pull/275.patch
 	source = blacklist-r8188eu.conf
 	md5sums = SKIP
-	md5sums = 326dec3c6a032cea962531016ff41c98
+	md5sums = 3e2686afdd8e48e461562ece0825a8ed
 	md5sums = 8af5df9ed717b3bb48df59dac0c8a9c8
 
 pkgname = 8188eu-aircrack-dkms-git

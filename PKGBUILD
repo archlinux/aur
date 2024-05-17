@@ -17,7 +17,7 @@ source=("${_pkgname}::git+${url}#branch=v${_pkgver}"
 	'https://github.com/aircrack-ng/rtl8188eus/pull/275.patch'
         'blacklist-r8188eu.conf')
 md5sums=('SKIP'
-         '326dec3c6a032cea962531016ff41c98'
+         '3e2686afdd8e48e461562ece0825a8ed'
          '8af5df9ed717b3bb48df59dac0c8a9c8')
 
 pkgver() {
