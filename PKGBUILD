@@ -1,13 +1,14 @@
-# Maintainer: Cameron Eagans <me@cweagans.net>
+# Maintainer: Rene Peinthor <peinthor@gmail.com>
 # Based on brother-hll2370dn package from AUR.
 
 pkgname="brother-dcpl3550cdw"
 pkgver="1.0.2"
-pkgrel=2
+pkgrel=3
 pkgdesc="CUPS driver for Brother DCP-L3550CDW"
 arch=('x86_64')
 url="https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpl3550cdw_eu"
 license=('unknown')
+depends=('lib32-glibc')
 _model="dcpl3550cdw"
 _revision=0
 
