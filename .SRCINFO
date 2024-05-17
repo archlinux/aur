@@ -1,0 +1,39 @@
+pkgbase = fjordlauncher-git
+	pkgdesc = Prism Launcher fork with support for alternative auth servers
+	pkgver = 8.3.r2.g59c0625f0
+	pkgrel = 1
+	url = https://github.com/unmojang/FjordLauncher
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = jdk17-openjdk
+	makedepends = scdoc
+	makedepends = ghc-filesystem
+	makedepends = gamemode
+	depends = java-runtime=17
+	depends = libgl
+	depends = qt6-base
+	depends = qt6-5compat
+	depends = qt6-svg
+	depends = qt6-imageformats
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = quazip-qt6
+	depends = cmark
+	depends = tomlplusplus
+	optdepends = glfw: to use system GLFW libraries
+	optdepends = openal: to use system OpenAL libraries
+	optdepends = visualvm: Profiling support
+	optdepends = xorg-xrandr: for older minecraft versions
+	optdepends = java-runtime=8: for older minecraft versions
+	provides = fjordlauncher
+	conflicts = fjordlauncher
+	options = debug
+	source = git+https://github.com/unmojang/FjordLauncher.git
+	sha256sums = SKIP
+
+pkgname = fjordlauncher-git

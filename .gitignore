@@ -1,0 +1,7 @@
+src
+pkg
+FjordLauncher
+
+*.tar.gz
+*.tar.zst
+
