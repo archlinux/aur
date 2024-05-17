@@ -1,4 +1,5 @@
-pkg/
+*.tar.*
 src/
-*.pkg.tar.xz
-kops-linux-amd64
+pkg/
+kops-bin-*
+kops-linux-*

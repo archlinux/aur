@@ -1,19 +1,20 @@
-# Maintainer: Marat Bakeev <hawara@gmail.com>
+# Maintainer: lerentis <lerentis+aur@uploadfilter24.eu>
+# Ex-Maintainer: Marat Bakeev <hawara@gmail.com>
 # Ex-Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: mickybart <mickybart@pygoscelis.org>
 
 pkgname=kops-beta-bin
-pkgver=1.22.0_beta.2
+pkgver=v1.30.0_alpha.1
 _build=${pkgver//_/-}
 pkgrel=1
-pkgdesc='Kubernetes Operations Beta (kops beta) - Production Grade K8s Installation, Upgrades, and Management'
+pkgdesc='Kubernetes Operations Prerelease builds - Production Grade K8s Installation, Upgrades, and Management'
 url='https://github.com/kubernetes/kops'
 arch=('x86_64')
 license=('apache')
 conflicts=('kops-bin' 'kops')
 
-source=("https://github.com/kubernetes/kops/releases/download/v${_build}/kops-linux-amd64")
-sha256sums=('a353c31810cedbafc038747dd721c83512d24ffb6d029a527281f47c539eda95')
+source=("https://github.com/kubernetes/kops/releases/download/${_build}/kops-linux-amd64")
+sha256sums=('ba13da0dd2a5fb813a00fbf128f67a956180e6e642a20e47a0a4d0880c7ac94b')
 
 package() {
     install -d ${pkgdir}/usr/bin
