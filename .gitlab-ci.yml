@@ -9,7 +9,6 @@ cache:
     - .pre-commit
 
 variables:
-  AUR_SSH_PRIVATE_KEY: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
   PACKAGE_NAME: "auto_facelock"
   CURRENT_DIR: "$(pwd)"
 
@@ -61,8 +60,6 @@ rename_artifacts:
 # Publish stage (optional)
 publish_to_aur:
   stage: publish
-  only:
-    - main
   script:
     - pacman -S --noconfirm --needed --cachedir .pkg-cache openssh
     - mkdir -p ~/.ssh
@@ -77,4 +74,5 @@ publish_to_aur:
   when: manual
   rules:
     - if: '$CI_COMMIT_REF_NAME == "main"'
+      when: manual
 
