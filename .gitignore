@@ -12,3 +12,7 @@
 
 pkg/
 src/
+
+/aws_bash_completer
+/aws_zsh_completer.sh
+/LICENSE.txt
