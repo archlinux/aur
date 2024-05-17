@@ -3,7 +3,7 @@ pkgname=musicfree-desktop-git
 _pkgname=MusicFreeDesktop
 pkgver=0.0.3.r2.gba906a2
 _electronversion=25
-_nodeversion=16
+_nodeversion=18
 pkgrel=1
 pkgdesc="插件化、定制化、无广告的免费音乐播放器"
 arch=('any')
@@ -13,7 +13,7 @@ _pluginurl="https://gitee.com/maotoumao/MusicFreePlugins/raw/master/plugins.json
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-git}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'libvips'
     'nodejs'
 )
@@ -31,10 +31,10 @@ source=(
 )
 options=('!strip')
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -46,10 +46,11 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${_pkgname%Desktop}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -f -q -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -f -q -n --pkgname="${pkgname%-git}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
