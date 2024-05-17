@@ -1,6 +1,6 @@
 pkgbase = speedtest-go
 	pkgdesc = CLI and Go API to Test Internet Speed using speedtest.net
-	pkgver = 1.7.6
+	pkgver = 1.7.7
 	pkgrel = 1
 	url = https://github.com/showwin/speedtest-go
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = speedtest-go
 	makedepends = go
 	provides = speedtest-go
 	conflicts = speedtest-go
-	source = https://github.com/showwin/speedtest-go/archive/refs/tags/v1.7.6.tar.gz
-	sha256sums = 714f1c264b375d5efc0021fa9211aa3073fafeb68155a1e7c1ffbd556283d016
+	source = https://github.com/showwin/speedtest-go/archive/refs/tags/v1.7.7.tar.gz
+	sha256sums = 68609998d91e6ac159b41cf85c758058805527044e1af3d557fd67bb4fabd9de
 
 pkgname = speedtest-go
