@@ -1,7 +1,7 @@
 pkgbase = python-lapx
 	pkgdesc = Customized Tomas Kazmar's lap, Linear Assignment Problem solver (LAPJV/LAPMOD).
 	pkgver = 0.5.9
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/rathaROG/lapx
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = python-lapx
 	depends = python-scipy
 	depends = python-pytest
 	depends = python-numpy
+	provides = python-lap
 	conflicts = python-lap
 	source = lapx-0.5.9.tar.gz::https://github.com/rathaROG/lapx/archive/refs/tags/v0.5.9.tar.gz
 	sha256sums = SKIP
