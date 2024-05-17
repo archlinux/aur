@@ -1,7 +1,7 @@
 pkgbase = spotifox-bin
 	pkgdesc = Yet another spotify CLI client similar to go-musicfox. (Precompiled version)
-	pkgver = 1.0.2
-	pkgrel = 6
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/go-musicfox/spotifox
 	arch = aarch64
 	arch = armv7h
@@ -10,17 +10,17 @@ pkgbase = spotifox-bin
 	makedepends = gendesk
 	depends = glibc
 	depends = alsa-lib
-	provides = spotifox=1.0.2
+	provides = spotifox=1.1.0
 	conflicts = spotifox
-	source = LICENSE-1.0.2::https://raw.githubusercontent.com/go-musicfox/spotifox/v1.0.2/LICENSE
-	source = spotifox-1.0.2.png::https://raw.githubusercontent.com/go-musicfox/spotifox/v1.0.2/previews/logo.png
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/go-musicfox/spotifox/v1.1.0/LICENSE
+	source = spotifox-1.1.0.png::https://raw.githubusercontent.com/go-musicfox/spotifox/v1.1.0/previews/logo.png
 	sha256sums = 20535828272932407c2f5172aeb714ac7b374a34e5ecb1825af509f2902cde54
 	sha256sums = c5be3b8375d0cff7661a7283c0e03b64f696059346a3441c79b41e28368aed24
-	source_aarch64 = spotifox-1.0.2-aarch64.zip::https://github.com/go-musicfox/spotifox/releases/download/v1.0.2/spotifox_1.0.2_linux_arm64.zip
-	sha256sums_aarch64 = 062cfb2f7d6c14458fe08e9a5ac32b4041d021835ee313c41836fb0f1fd306cc
-	source_armv7h = spotifox-1.0.2-armv7h.zip::https://github.com/go-musicfox/spotifox/releases/download/v1.0.2/spotifox_1.0.2_linux_arm.zip
-	sha256sums_armv7h = 5c15d13f3f75a72f9db3a815bac68b80379cf0917e86ecf411b7ea345fcf3461
-	source_x86_64 = spotifox-1.0.2-x86_64.zip::https://github.com/go-musicfox/spotifox/releases/download/v1.0.2/spotifox_1.0.2_linux_amd64.zip
-	sha256sums_x86_64 = 23d3b1c97ce0407c7975b5bd5e8917e90486f52b50aa0b9c602658b6ea0fbba0
+	source_aarch64 = spotifox-1.1.0-aarch64.zip::https://github.com/go-musicfox/spotifox/releases/download/v1.1.0/spotifox_1.1.0_linux_arm64.zip
+	sha256sums_aarch64 = 1f151ea71bf8eb0f0f7dfe0c85bd1ca357b2a3712dfa98050f71e8d1a10fa4b2
+	source_armv7h = spotifox-1.1.0-armv7h.zip::https://github.com/go-musicfox/spotifox/releases/download/v1.1.0/spotifox_1.1.0_linux_arm.zip
+	sha256sums_armv7h = dd374fb97ec7220cf6dd1425fbfcaed4c84716baa5f0bbfe8c72f23bcf41e70f
+	source_x86_64 = spotifox-1.1.0-x86_64.zip::https://github.com/go-musicfox/spotifox/releases/download/v1.1.0/spotifox_1.1.0_linux_amd64.zip
+	sha256sums_x86_64 = 4177f9fbd9758cd7ef2247b2052b80d13b41d1ea939b7dad9e0acf619cf9537f
 
 pkgname = spotifox-bin
