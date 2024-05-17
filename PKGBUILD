@@ -9,8 +9,8 @@ url="https://github.com/cargo-limit/cargo-limit"
 license=(MIT Apache-2.0)
 depends=(
     cargo
-    # gcc-libs
-    # glibc
+    gcc-libs
+    glibc
 )
 makedepends=(rust)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
