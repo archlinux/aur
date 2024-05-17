@@ -1,10 +1,11 @@
 pkgbase = python3-xcpf
 	pkgdesc = Xyne's common Pacman functions, for internal use.
 	pkgver = 2021.12
-	pkgrel = 13
+	pkgrel = 14
 	url = https://xyne.dev/projects/python3-xcpf
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = pyalpm
 	depends = python-pyxdg
 	depends = python3
