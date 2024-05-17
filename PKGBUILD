@@ -1,7 +1,7 @@
 pkgname=mingw-w64-lapack
 pkgname=('mingw-w64-lapack' 'mingw-w64-blas' 'mingw-w64-cblas' 'mingw-w64-lapacke')
 pkgver=3.12.0
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="Linear Algebra PACKage (mingw-w64)"
 makedepends=('mingw-w64-cmake')
@@ -28,6 +28,7 @@ build()
       -DBUILD_SHARED_LIBS=OFF \
       -DLAPACKE=ON \
       -DCBLAS=ON \
+      -DBUILD_DEPRECATED=ON \
       -DBUILD_TESTING=OFF \
       ..
     make
@@ -37,6 +38,7 @@ build()
       -DCMAKE_BUILD_TYPE=Release \
       -DLAPACKE=ON \
       -DCBLAS=ON \
+      -DBUILD_DEPRECATED=ON \
       -DBUILD_TESTING=OFF \
       ..
     make
