@@ -1,12 +1,11 @@
 pkgbase = aa-snapshot-maker
 	pkgver = 1.0.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://audioassault.mx/products/snapshot-maker
 	arch = x86_64
 	license = EULA
 	makedepends = xdg-user-dirs
 	makedepends = unzip
-	depends = aa-snapshot-player
 	depends = alsa-lib
 	depends = bzip2
 	depends = brotli
@@ -36,7 +35,7 @@ pkgbase = aa-snapshot-maker
 	depends = zstd
 	source = AA Snapshot Maker.desktop
 	source = aa-snapshot-maker.png
-	sha256sums = 54e94ec27822963e4fcfaa9d3b0b59eaf308764f93e998ebacb348a448227751
+	sha256sums = b8dcdabd714eaed0b4d06861c5dc6245529ca5e8ef90b46a927878494be17cd6
 	sha256sums = 2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5
 
 pkgname = aa-snapshot-maker-docs-bin

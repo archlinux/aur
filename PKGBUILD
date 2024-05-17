@@ -1,15 +1,15 @@
 pkgbase=aa-snapshot-maker
 pkgname=('aa-snapshot-maker-docs-bin' 'aa-snapshot-maker-standalone-bin')
 pkgver=1.0.9
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://audioassault.mx/products/snapshot-maker"
 license=('EULA')
-depends=('aa-snapshot-player' 'alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'keyutils' 'krb5' 'libcurl-gnutls' 'libffi' 'libnghttp2' 'libidn2' 'libp11-kit' 'libpng' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libxau' 'libxcb' 'libx11' 'nettle' 'openssl' 'pcre2' 'zlib' 'zstd')
+depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'keyutils' 'krb5' 'libcurl-gnutls' 'libffi' 'libnghttp2' 'libidn2' 'libp11-kit' 'libpng' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libxau' 'libxcb' 'libx11' 'nettle' 'openssl' 'pcre2' 'zlib' 'zstd')
 makedepends=('xdg-user-dirs' 'unzip')
 source=('AA Snapshot Maker.desktop'
         'aa-snapshot-maker.png')
-sha256sums=('54e94ec27822963e4fcfaa9d3b0b59eaf308764f93e998ebacb348a448227751'
+sha256sums=('b8dcdabd714eaed0b4d06861c5dc6245529ca5e8ef90b46a927878494be17cd6'
             '2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5')
 
 prepare () {
