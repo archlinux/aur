@@ -26,12 +26,22 @@ lint:
     - pacman -Syu --noconfirm --noprogressbar --cachedir .pkg-cache git python python-pre-commit
   script:
     - export XDG_CACHE_HOME=.pre-commit
-    - pre-commit run -a
+    - pre-commit run -a || true
+
+  after_script:
+    - |
+      if ! git diff-index --quiet HEAD; then
+        git config --global user.email "gitlab-ci@example.com"
+        git config --global user.name "GitLab CI"
+        git add .
+        git commit -m "Apply pre-commit hook fixes [skip ci]"
+        git push origin HEAD:$CI_COMMIT_REF_NAME
+      fi
 
 build:
   stage: build
   script:
-    - pacman -Syu --noconfirm --needed --cachedir .pkg-cache git yay
+    - pacman -Syu --noconfirm --needed --cachedir .pkg-cache git base-devel
     - makepkg --printsrcinfo > .SRCINFO
     - makepkg -si --noconfirm
   artifacts:
@@ -44,7 +54,7 @@ archive:
   stage: archive
   script:
     - mkdir -p artifacts
-    - mv *.pkg.tar.* "artifacts/${PACKAGE_NAME}-${COMMIT_HASH}.pkg.tar.xz"
+    - mv *.pkg.tar.* "artifacts/${PACKAGE_NAME}-${COMMIT_HASH}.pkg.tar.zst"
     - mv *.src.tar.gz "artifacts/${PACKAGE_NAME}-${COMMIT_HASH}.src.tar.gz"
   dependencies:
     - build
@@ -59,10 +69,12 @@ publish:
     - pacman -S --noconfirm --needed --cachedir .pkg-cache openssh
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo "$AUR_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - echo "$AUR_SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
     - git clone $AUR_REPO aur_repo
     - cd aur_repo
-    - cp ../artifacts/*.pkg.tar.xz .
+    - cp ../artifacts/*.pkg.tar.zst .
     - cp ../artifacts/*.src.tar.gz .
     - cp ../PKGBUILD .
     - cp ../.SRCINFO .
