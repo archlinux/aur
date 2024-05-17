@@ -1,7 +1,7 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Sergey Bargamon <sergey@bargamon.ru>
 pkgname=clink
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Clean URLs copied to clipboard"
 arch=("x86_64" "x86_64_v3")
@@ -13,7 +13,7 @@ makedepends=(
   libxkbcommon
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('b57738e524219eb63f5dd3730d2c98b9fe515aace7ce9b653a7a21574adb36857d102e08f16c03082070aedee351348fb1a92e4a65188afcc81c6be51fca84d1')
+b2sums=('c7ece9a4d1c7e038f17726180a26160cd042c5cb8c0cf2cfaee81606fd34db14e76b61b900e10c94d37f0dcbbe381104c604a21dc878adcb3dd65465caae8d6c')
 
 build() {
     cd "$pkgname-$pkgver"
