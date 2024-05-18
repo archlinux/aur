@@ -1,4 +1,4 @@
-# Maintainer: Sergey Alexeyev s.n.alexeyev@gamil.com
+# Maintainer: Sergey Alexeyev <acenotass@gamil.com>
 
 author=s-n-alexeyev
 pkgname=torctl-gui
@@ -26,7 +26,6 @@ pkgver() {
 package() {
   cd "$srcdir/$_gitname"
   install -Dm 755 "$_gitname" "$pkgdir/usr/bin/$_gitname"
-  install -Dm 644 "$srcdir/$_gitname/tor.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 
   cat<<EOF>>"$srcdir/$_gitname/$pkgname.desktop"
 [Desktop Entry]
@@ -45,9 +44,8 @@ Terminal=false
 Keywords[ru]=tor;torctl;
 Keywords=tor;torctl;
 EOF
-
   install -Dm 644 "$srcdir/$_gitname/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 
+  sed -n '/<svg/,/<\/svg>/p' $_gitname | sed "s/^[^<]*<svg/<svg/" | sed "s/<\/svg>[^>]*$/<\/svg>/" > "$srcdir/$_gitname/tor.svg"
+  install -Dm 644 "$srcdir/$_gitname/tor.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 }
-
-
