@@ -52,10 +52,11 @@ pipeline {
         }
         stage('Git Push') {
             steps {
-                sshagent (credentials: ['Arch_AUR']) {
+                withCredentials([sshUserPrivateKey(credentialsId: "Arch_AUR", keyFileVariable: 'KEY')]) {
                     sh '''
                         git config user.email "aman.iv0012@gmail.com"
                         git config user.name "Aman Gupta"
+                        export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -i $KEY"
                         git branch release
                         git checkout master
                         git merge release
