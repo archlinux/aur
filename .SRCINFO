@@ -1,7 +1,7 @@
 pkgbase = python-oslo-middleware
 	pkgdesc = OpenStack middleware library
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opendev.org/openstack/oslo.middleware
 	arch = any
 	license = Apache-2.0
@@ -28,6 +28,12 @@ pkgbase = python-oslo-middleware
 	depends = python-debtcollector
 	depends = python-statsd
 	depends = python-bcrypt
+	depends = python-greenlet
+	depends = python-oslotest
+	depends = python-testtools
+	depends = python-fixtures
+	depends = python-oslo-serialization
+	depends = python-requests
 	source = python-oslo-middleware-6.1.0.tar.gz::https://opendev.org/openstack/oslo.middleware/archive/6.1.0.tar.gz
 	b2sums = 49f8fd07956afb30f12292bac384c58d93b539264638dda0f0a48b983caaa4bdc3c3a0f870027ebf34fc4257d965585bce561693be90d1c7d180b9a7357b74b3
 

@@ -3,7 +3,7 @@
 
 pkgname=python-oslo-middleware
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenStack middleware library"
 arch=(any)
 url="https://opendev.org/openstack/oslo.middleware"
@@ -19,7 +19,13 @@ depends=('python'
          'python-webob'
          'python-debtcollector'
          'python-statsd'
-         'python-bcrypt')
+         'python-bcrypt'
+         'python-greenlet'
+         'python-oslotest'
+         'python-testtools'
+         'python-fixtures'
+         'python-oslo-serialization'
+         'python-requests')
 makedepends=('python-build'
              'python-installer'
              'python-sphinx'
@@ -51,5 +57,8 @@ check(){
 package(){
     cd "$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 HACKING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
