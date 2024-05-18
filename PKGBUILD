@@ -1,7 +1,6 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
-pkgname=python-inventree-part-import
-_name=${pkgname#python-}
-pkgver=1.6
+pkgname=python-inventree-part-import-git
+pkgver=r192.f206e5c
 pkgrel=1
 pkgdesc="CLI to import parts from into your InvenTree instance"
 url="https://github.com/30350n/inventree_part_import"
@@ -22,15 +21,26 @@ depends=(
 makedepends=(python-build python-installer python-wheel python-poetry)
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('bb30358e8c311cf3c015e9c5400471157998742c5af0042c88092d20c38b07cb')
+source=("$pkgname::git+https://github.com/30350n/inventree_part_import.git")
+sha256sums=('SKIP')
+conflicts=('python-inventree-part-import')
+provides=("python-inventree-part-import=${pkgver}")
+
+pkgver() {
+	cd "$pkgname"
+	(
+		set -o pipefail
+		git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	)
+}
 
 build() {
-	cd "$srcdir/$_name-$pkgver"
-    python -m build --wheel --no-isolation
+	cd "$srcdir/$pkgname"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+	cd "$srcdir/$pkgname"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
