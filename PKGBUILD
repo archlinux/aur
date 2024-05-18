@@ -1,13 +1,13 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 pkgname=deltachat-desktop-git
-pkgver=1.44.1.r65.g69f3a76e8
+pkgver=1.44.1.r78.g1dafb97c3
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
 license=("GPL")
 #IMPORTANT: if you update electron, make sure to also update deltachat-desktop.sh 
-depends=('electron28')
+depends=('electron30')
 makedepends=('npm' 'nodejs' 'git' 'rustup' 'python')
 source=(
     "deltachat-desktop-git::git+https://git@github.com/deltachat/deltachat-desktop.git"
@@ -19,7 +19,7 @@ source=(
 sha256sums=(
     "SKIP"
     "bdd5740b8d051fe9b4d3bace656b2475a322352f9826eb329a0daf0a7bf3a4c2"
-    "5c92de2d18839f3dedf677c3830da5edbb8d69545f607d114b5bf853786a7c8d"
+    "b06fdecd741618604e364c07cb02ed8eab135a92c6ebe1958c59a287d759cdc3"
     "851a593350fa064dfcb8ea2a021dc997c908c7568c3ceb5dab6809209958b9aa"
 )
 
