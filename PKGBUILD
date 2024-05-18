@@ -1,17 +1,19 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=textpieces-git
-pkgver=3.4.1.r0.gb14fd2c
+pkgver=4.0.6.r0.g8042824
 pkgrel=1
-pkgdesc="Transform text without using random websites"
+pkgdesc="Small tool for quick text transformations"
 arch=('x86_64' 'aarch64')
-url="https://github.com/liferooter/textpieces"
-license=('GPL3')
-depends=('libadwaita' 'libportal-gtk4' 'gtksourceview5' 'json-glib' 'libgee' 'python-pyaml')
-makedepends=('git' 'blueprint-compiler' 'meson' 'vala')
+url="https://gitlab.com/liferooter/textpieces"
+license=('GPL-3.0-or-later')
+depends=('libadwaita' 'gtksourceview5')
+makedepends=('blueprint-compiler' 'git' 'meson' 'rust' 'vala')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!debug' '!emptydirs')
 source=(git+$url.git)
 b2sums=('SKIP')
 
@@ -21,8 +23,11 @@ pkgver() {
 }
 
 build() {
+  mkdir -p "${srcdir}"/output
   arch-meson "${pkgname%-git}" build
   meson compile -C build
+  # Install step must be on build because it builds something
+  meson install -C build --destdir "${srcdir}"/output
 }
 
 check() {
@@ -30,5 +35,8 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  mv "${srcdir}"/output/* "${pkgdir}"
+  rmdir "${srcdir}"/output
+  # Removes unnecessary dummy translation
+  rm -r "${pkgdir}"/usr/share/locale/xx_XX/
 }
