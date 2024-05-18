@@ -1,13 +1,13 @@
 # Maintainer: Giuseppe Sellaroli <g.sellaroli  at  yahoo  dot  it>
 pkgname=scala-music-scales
-pkgver=90
+pkgver=92
 pkgrel=1
 pkgdesc='Collection of scales to be used with the Scala music software'
 url='http://www.huygens-fokker.org/scala/'
 arch=('any')
 source=("http://www.huygens-fokker.org/docs/scales.zip")
 depends=('scala-music')
-md5sums=('529136bbbf911912fb3619e87b97cdb8')
+md5sums=('2c646e41dcca700e33e37221db9f8fde')
 install=$pkgname.install
 
 
