@@ -2,26 +2,24 @@
 # Inspired from the PKGBUILD for ferdi-git.
 
 _electron='electron30'
-_recipes_commit='7ab6497fbd7bc64c3f2b17b587d273c9bbd155c8'
+_recipes_commit='ae724d09560576253952f8884497a8d797215ae1'
 
 pkgname="ferdium-electron"
-pkgver=6.7.3
+pkgver=6.7.4
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
 depends=("$_electron")
-makedepends=('git' 'python' 'jq' 'asar'
-             'pnpm'
-             'nodejs')
+makedepends=('git' 'python' 'jq' 'asar' 'nodejs')
 provides=('ferdium')
 conflicts=('ferdium')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ferdium/ferdium-app/archive/v$pkgver.tar.gz"
         "ferdium-recipes-$pkgver.tar.gz::https://github.com/ferdium/ferdium-recipes/archive/$_recipes_commit.tar.gz"
         ferdium.desktop)
-sha256sums=('fda8e2683b10c4c2b13eab3f2de79c5357df0d0eb7f639bb4e5889c979327fcb'
-            '328d5882238c7fb12db7fc37c6e8d9ee97575d30baa9e6c57fad574f0f29a015'
+sha256sums=('2d890ba0aeb7107153957729fd3cab2aa55b7e613f08b1228d1ecd115e25a08b'
+            '82bece3240f132150094be513a93e4a8dde24c9a9afe2c9ca439c5557dbbc292'
             'd6e129220ed947cb5fa205211dabc6311a3d9c92434b6bc8deb2fae802c0b0d0')
 
 prepare() {
@@ -30,10 +28,9 @@ prepare() {
   cp -Tr "$srcdir/ferdium-recipes-$_recipes_commit" recipes
 
   local node_ver=$(node -v | sed -e 's/^v//')
-  local pnpm_ver=$(pnpm -v)
   local electron_ver=$(cat "/usr/lib/${_electron}/version")
 
-  local jq_expr=".engines.node = \"$node_ver\" | .engines.pnpm = \"$pnpm_ver\" | .devDependencies.electron = \"$electron_ver\""
+  local jq_expr=".engines.node = \"$node_ver\" | .devDependencies.electron = \"$electron_ver\""
 
   jq "$jq_expr" package.json > package.tmp.json
   mv package.tmp.json package.json
@@ -51,6 +48,11 @@ build() {
   cd "ferdium-app-$pkgver"
 
   export CI=true
+
+  mkdir -p "$srcdir/.buildtools"
+  export PATH="$srcdir/.buildtools:$PATH"
+
+  corepack enable --install-directory "$srcdir/.buildtools"
 
   pnpm install --no-frozen-lockfile --ignore-script
 
