@@ -4,7 +4,7 @@
 _pkgname=themix-theme-oomox
 _reponame=oomox-gtk-theme
 pkgname="${_pkgname}-git"
-pkgver=1.12.5
+pkgver=1.12.6
 pkgrel=1
 pkgdesc="Oomox theme plugin
  (GTK2, GTK3, Cinnamon, Metacity, Openbox, Qt5ct, Qt6ct, Unity, Xfwm) for Themix GUI designer.
