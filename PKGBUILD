@@ -1,6 +1,6 @@
 pkgname=ffplayout
 pkgver=0.22.3
-pkgrel=0
+pkgrel=1
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
 url="https://github.com/ffplayout/ffplayout"
@@ -29,7 +29,6 @@ source=(
 )
 sha256sums=('SKIP'
             '91fa57deb966dd5f3f611d0a8213934f200487c64153167a1d9d6f7c9b1b85e8')
-options=('!lto')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -50,6 +49,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/rust-home"
   export RUSTUP_HOME="$srcdir/rust-home"
   export RUSTUP_TOOLCHAIN=stable
