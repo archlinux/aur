@@ -1,7 +1,7 @@
 pkgbase = teapot-tools
 	pkgdesc = Replacement for depot_tools (gclient) and luci-go (cipd)
 	pkgver = 0.4.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/selfisekai/teapot_tools/
 	arch = x86_64
 	arch = i686
@@ -23,6 +23,7 @@ pkgbase = teapot-tools
 pkgname = teapot-gclient
 	pkgdesc = Replacement for depot_tools (gclient)
 	provides = depot-tools
+	provides = depot-tools-git
 	conflicts = depot-tools
 	conflicts = depot-tools-git
 	conflicts = teapot-tools

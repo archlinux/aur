@@ -3,7 +3,7 @@
 pkgbase=teapot-tools
 pkgdesc="Replacement for depot_tools (gclient) and luci-go (cipd)"
 pkgver=0.4.3
-pkgrel=3
+pkgrel=4
 url="https://codeberg.org/selfisekai/teapot_tools/"
 arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "arm7h" "aarch64" "riscv64")
 _srcname=teapot_tools
@@ -41,7 +41,7 @@ check() {
 
 _package-gclient() {
 	pkgdesc="Replacement for depot_tools (gclient)"
-	provides=("depot-tools")
+	provides=("depot-tools" "depot-tools-git")
 	conflicts=("depot-tools" "depot-tools-git" "teapot-tools")
 
         install -Dm755 "${srcdir}/${_srcname}/target/release/gclient" "${pkgdir}/usr/bin/gclient"
