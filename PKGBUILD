@@ -1,15 +1,15 @@
 # Maintainer: dllud <dllud riseup net>
 
 pkgname=ckb-cli
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc='Nervos CKB (Common Knowledge Base) command line tool'
 arch=('i686' 'x86_64')
 url='https://github.com/nervosnetwork/ckb-cli'
 license=('MIT')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nervosnetwork/ckb-cli/archive/v$pkgver.tar.gz")
-b2sums=('1660df79438942e03f47c9344df9b08bd5207518e1ffd3e0967a7d7db5ff8e796b555372b19f76b0b37d06cddef7d4eea45c0ce472acb9bb8c381acb1f1be1b4')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nervosnetwork/ckb-cli/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('21161831df673b804faf0de03d142d8a22244512a669bf1030e32ce20bb97f601ff10a15f48bf25ebec7d7489d1091a6d77a305e9c5caef344f98439769d062f')
 options=(!lto)
 
 prepare() {
