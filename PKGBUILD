@@ -4,7 +4,7 @@
 
 pkgname=kubelet-bin
 pkgdesc="Kubernetes.io kubelet binary"
-pkgver=1.30.0 # renovate: datasource=github-tags depName=kubernetes/kubernetes
+pkgver=1.30.1 # renovate: datasource=github-tags depName=kubernetes/kubernetes
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
@@ -15,7 +15,7 @@ source=(
   "kubelet.service"
 )
 b2sums=('edaa6c5354476c2047d75c0984321aa2fa92dae715c15555b6923fe08a88bfdebc94a7e72bc87c3f187ae98fd9ce1c257b9a7a9e1b6ef36a5faccba1946d4835'
-        '34a89b377c6ab020a6a0d0310e9a24a92a943613e8fb6301eef73d57117d3c120b917166fb66d964adfe9a3dac6f45930c7d243117332447feb9891b88e71c01')
+        '173666fa841644ff951a764242948fcb5542e89148125de4160d13c1da9ea56e490e73a30622fa2dd4bb8c2b4b2469364c76c4f549fbfe8f174ccbb50ab58086')
 
 # if CARCH is not set default to x86_64
 # https://stackoverflow.com/a/11362364/11164973
