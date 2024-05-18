@@ -702,3 +702,22 @@ index 5f41269d..cb25e3b8 100644
  
  /*
   *----------------------------------------------------------------------
+Patch for Linux 6.9 from https://github.com/mkubecek/vmware-host-modules/issues/239
+--- a/vmnet-only/vmnetInt.h
++++ b/vmnet-only/vmnetInt.h
+@@ -62,8 +62,13 @@
+     compat_skb_set_network_header(skb, sizeof (struct ethhdr)),  \
+     dev_queue_xmit(skb)                                   \
+   )
+-#define dev_lock_list()    read_lock(&dev_base_lock)
+-#define dev_unlock_list()  read_unlock(&dev_base_lock)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 9, 0)
++#   define dev_lock_list()    rcu_read_lock()
++#   define dev_unlock_list()  rcu_read_unlock()
++#else
++#   define dev_lock_list()    read_lock(&dev_base_lock)
++#   define dev_unlock_list()  read_unlock(&dev_base_lock)
++#endif
+ #ifdef VMW_NETDEV_HAS_NET
+ #   define DEV_GET(x)      __dev_get_by_name(&init_net, (x)->name)
+ #   ifdef VMW_NETDEV_HAS_DEV_NET
