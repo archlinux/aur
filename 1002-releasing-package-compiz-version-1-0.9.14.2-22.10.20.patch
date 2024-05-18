@@ -1,0 +1,59 @@
+From 8a47e8da2c5b05f19870ef78ee902acf6d2ba17f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jeremy=20B=C3=ADcha?= <jeremy.bicha@canonical.com>
+Date: Thu, 7 Mar 2024 15:44:43 -0500
+Subject: [PATCH 2/4] releasing package compiz version
+ 1:0.9.14.2+22.10.20220822-0ubuntu6
+
+---
+ a                                             | 25 +++++++++++++++++++
+ .../tests/compiz_config_test.py               |  2 +-
+ 2 files changed, 26 insertions(+), 1 deletion(-)
+ create mode 100644 a
+
+diff --git a/a b/a
+new file mode 100644
+index 000000000..4f955601c
+--- /dev/null
++++ b/a
+@@ -0,0 +1,25 @@
++diff -Nru compiz-0.9.14.2+22.10.20220822/compizconfig/compizconfig-python/tests/compiz_config_test.py compiz-0.9.14.2+22.10.20220822/compizconfig/compizconfig-python/tests/compiz_config_test.py
++--- compiz-0.9.14.2+22.10.20220822/compizconfig/compizconfig-python/tests/compiz_config_test.py	2022-08-22 05:54:46.000000000 +0000
+++++ compiz-0.9.14.2+22.10.20220822/compizconfig/compizconfig-python/tests/compiz_config_test.py	2024-01-23 17:18:21.000000000 +0000
++@@ -11,7 +11,7 @@
++ os.environ["LIBCOMPIZCONFIG_BACKEND_PATH"] = "compizconfig/libcompizconfig/backend/"
++ os.environ["XDG_DATA_DIRS"] = "generated/"
++ 
++-sys.path.insert (0, "compizconfig/compizconfig-python/build/lib.%s-%s.%s" % (arch, *sys.version_info[:2]))
+++sys.path.insert (0, "compizconfig/compizconfig-python/build/lib.%s-cpython-%s%s" % (arch, *sys.version_info[:2]))
++ 
++ import unittest
++ import compizconfig
++diff -Nru compiz-0.9.14.2+22.10.20220822/debian/changelog compiz-0.9.14.2+22.10.20220822/debian/changelog
++--- compiz-0.9.14.2+22.10.20220822/debian/changelog	2024-01-19 19:07:54.000000000 +0000
+++++ compiz-0.9.14.2+22.10.20220822/debian/changelog	2024-01-23 17:37:25.000000000 +0000
++@@ -1,3 +1,9 @@
+++compiz (1:0.9.14.2+22.10.20220822-0ubuntu6) noble; urgency=medium
+++
+++  * Adjust path for the CompizConfigPython tests (LP: #2050888)
+++
+++ -- Graham Inggs <ginggs@ubuntu.com>  Tue, 23 Jan 2024 17:37:25 +0000
+++
++ compiz (1:0.9.14.2+22.10.20220822-0ubuntu5) noble; urgency=medium
++ 
++   * No-change rebuild with Python 3.12 as default
+diff --git a/compizconfig/compizconfig-python/tests/compiz_config_test.py b/compizconfig/compizconfig-python/tests/compiz_config_test.py
+index cb6dc2237..7ac40b8e9 100644
+--- a/compizconfig/compizconfig-python/tests/compiz_config_test.py
++++ b/compizconfig/compizconfig-python/tests/compiz_config_test.py
+@@ -11,7 +11,7 @@ os.environ["XDG_CONFIG_HOME"] = "compizconfig/libcompizconfig/config"
+ os.environ["LIBCOMPIZCONFIG_BACKEND_PATH"] = "compizconfig/libcompizconfig/backend/"
+ os.environ["XDG_DATA_DIRS"] = "generated/"
+ 
+-sys.path.insert (0, "compizconfig/compizconfig-python/build/lib.%s-%s.%s" % (arch, *sys.version_info[:2]))
++sys.path.insert (0, "compizconfig/compizconfig-python/build/lib.%s-cpython-%s%s" % (arch, *sys.version_info[:2]))
+ 
+ import unittest
+ import compizconfig
+-- 
+2.45.1
+

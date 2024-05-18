@@ -1,0 +1,40 @@
+From 25b6fcf77f1731ac9e0949fafe8da00777e33ebc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jeremy=20B=C3=ADcha?= <jbicha@ubuntu.com>
+Date: Thu, 7 Mar 2024 15:46:39 -0500
+Subject: [PATCH 3/4] Drop toggle-shaded since it's no longer included in
+ gsettings-desktop-schemas 45
+
+---
+ gtk/gnome/50-compiz-windows.xml.in            |  2 --
+ .../compiz-profile-independent-keys.convert   |  1 -
+ 3 files changed, 28 deletions(-)
+ delete mode 100644 a
+
+diff --git a/gtk/gnome/50-compiz-windows.xml.in b/gtk/gnome/50-compiz-windows.xml.in
+index e947db654..5385ead1a 100644
+--- a/gtk/gnome/50-compiz-windows.xml.in
++++ b/gtk/gnome/50-compiz-windows.xml.in
+@@ -11,8 +11,6 @@
+ 
+ 	<KeyListEntry name="unmaximize" _description="Restore window" />
+ 
+-	<KeyListEntry name="toggle-shaded" _description="Toggle shaded state" />
+-
+ 	<KeyListEntry name="close" _description="Close window" />
+ 
+ 	<KeyListEntry name="minimize" _description="Minimize window" />
+diff --git a/postinst/convert-files/compiz-profile-independent-keys.convert b/postinst/convert-files/compiz-profile-independent-keys.convert
+index fdc949e4f..f15c23964 100644
+--- a/postinst/convert-files/compiz-profile-independent-keys.convert
++++ b/postinst/convert-files/compiz-profile-independent-keys.convert
+@@ -39,7 +39,6 @@ toggle-fullscreen = /apps/metacity/window_keybindings/toggle_fullscreen
+ toggle-maximized = /apps/metacity/window_keybindings/toggle_maximized
+ maximize = /apps/metacity/window_keybindings/maximize
+ unmaximize = /apps/metacity/window_keybindings/unmaximize
+-toggle-shaded = /apps/metacity/window_keybindings/toggle_shaded
+ close = /apps/metacity/window_keybindings/close
+ minimize = /apps/metacity/window_keybindings/minimize
+ begin-move = /apps/metacity/window_keybindings/begin_move
+-- 
+2.45.1
+

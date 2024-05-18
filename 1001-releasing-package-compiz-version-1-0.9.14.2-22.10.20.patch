@@ -1,0 +1,90 @@
+From de87003c6d3d48f741d7c1478a4855a965f19364 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jeremy=20B=C3=ADcha?= <jeremy.bicha@canonical.com>
+Date: Thu, 7 Mar 2024 15:43:50 -0500
+Subject: [PATCH 1/4] releasing package compiz version
+ 1:0.9.14.2+22.10.20220822-0ubuntu4
+
+---
+ cmake/CompizCommon.cmake                                      | 1 -
+ compizconfig/gsettings/mocks/CMakeLists.txt                   | 1 -
+ compizconfig/gsettings/tests/CMakeLists.txt                   | 1 -
+ compizconfig/integration/gnome/gsettings/tests/CMakeLists.txt | 1 -
+ compizconfig/integration/gnome/tests/CMakeLists.txt           | 1 -
+ compizconfig/libcompizconfig/tests/CMakeLists.txt             | 1 -
+ 6 files changed, 6 deletions(-)
+
+diff --git a/cmake/CompizCommon.cmake b/cmake/CompizCommon.cmake
+index b567cfca5..8cb572ca5 100644
+--- a/cmake/CompizCommon.cmake
++++ b/cmake/CompizCommon.cmake
+@@ -54,7 +54,6 @@ set (
+ 
+ # Almost everything is a shared library now, so almost everything needs -fPIC
+ set (COMMON_FLAGS "-fPIC -Wall")
+-set (COMMON_CXX_FLAGS "-std=c++11")
+ 
+ option (COMPIZ_SUBOBJECT_LINKAGE_WARNINGS "Warn about subobject linkage" OFF)
+ if (NOT COMPIZ_SUBOBJECT_LINKAGE_WARNINGS)
+diff --git a/compizconfig/gsettings/mocks/CMakeLists.txt b/compizconfig/gsettings/mocks/CMakeLists.txt
+index 14fe51e3f..5474c7237 100644
+--- a/compizconfig/gsettings/mocks/CMakeLists.txt
++++ b/compizconfig/gsettings/mocks/CMakeLists.txt
+@@ -8,7 +8,6 @@ if (GLIB_FOUND)
+ 			 ${CMAKE_CURRENT_SOURCE_DIR}/../gsettings_backend_shared
+ 			 ${GLIB_INCLUDE_DIRS})
+ 
+-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ 
+     add_library (compizconfig_ccs_gsettings_wrapper_mock STATIC
+ 	         ${CMAKE_CURRENT_SOURCE_DIR}/ccs_gsettings_wrapper_mock.cpp
+diff --git a/compizconfig/gsettings/tests/CMakeLists.txt b/compizconfig/gsettings/tests/CMakeLists.txt
+index 9a81a5d7c..ae3a1d370 100644
+--- a/compizconfig/gsettings/tests/CMakeLists.txt
++++ b/compizconfig/gsettings/tests/CMakeLists.txt
+@@ -16,7 +16,6 @@ pkg_check_modules (COMPIZCONFIG_TEST_GSETTINGS gio-2.0 glib-2.0)
+ 
+ if (COMPIZCONFIG_TEST_GSETTINGS_FOUND)
+ 
+-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ 
+     link_directories (${CMAKE_CURRENT_BINARY_DIR}/../../libcompizconfig/tests)
+     link_directories (${CMAKE_CURRENT_BINARY_DIR}/../testenvironments)
+diff --git a/compizconfig/integration/gnome/gsettings/tests/CMakeLists.txt b/compizconfig/integration/gnome/gsettings/tests/CMakeLists.txt
+index 683c83fcb..b6144fccb 100644
+--- a/compizconfig/integration/gnome/gsettings/tests/CMakeLists.txt
++++ b/compizconfig/integration/gnome/gsettings/tests/CMakeLists.txt
+@@ -11,7 +11,6 @@ link_directories (${CMAKE_CURRENT_BINARY_DIR}/../../mocks/libcompizconfig)
+ link_directories (${CMAKE_CURRENT_BINARY_DIR}/../../tests/)
+ link_directories (${CMAKE_CURRENT_BINARY_DIR}/../src/)
+ 
+-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ 
+ add_executable (compizconfig_test_ccs_gnome_gsettings_integrated_setting
+ 		${CMAKE_CURRENT_SOURCE_DIR}/compizconfig_test_ccs_gnome_gsettings_integrated_setting.cpp)
+diff --git a/compizconfig/integration/gnome/tests/CMakeLists.txt b/compizconfig/integration/gnome/tests/CMakeLists.txt
+index 30fd55210..7df9c6e06 100644
+--- a/compizconfig/integration/gnome/tests/CMakeLists.txt
++++ b/compizconfig/integration/gnome/tests/CMakeLists.txt
+@@ -8,7 +8,6 @@ include_directories (${CMAKE_CURRENT_SOURCE_DIR}/../../../gsettings/mocks)
+ include_directories (${CMAKE_SOURCE_DIR}/compizconfig/tests)
+ link_directories (${CMAKE_INSTALL_PREFIX}/lib)
+ 
+-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ 
+ add_library (compizconfig_ccs_mock_gnome_integrated_setting_composition
+ 	     ${CMAKE_CURRENT_SOURCE_DIR}/compizconfig_ccs_mock_gnome_integrated_setting_composition.c)
+diff --git a/compizconfig/libcompizconfig/tests/CMakeLists.txt b/compizconfig/libcompizconfig/tests/CMakeLists.txt
+index a3a42f98a..527467066 100644
+--- a/compizconfig/libcompizconfig/tests/CMakeLists.txt
++++ b/compizconfig/libcompizconfig/tests/CMakeLists.txt
+@@ -9,7 +9,6 @@ link_directories (${CMAKE_CURRENT_BINARY_DIR}/../../mocks/libcompizconfig)
+ link_directories (${CMAKE_CURRENT_BINARY_DIR}/../../tests/)
+ link_directories (${CMAKE_CURRENT_BINARY_DIR}/../src/)
+ 
+-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ 
+ add_definitions (-DCONFIGDIR="${COMPIZCONFIG_CONFIG_DIR}")
+ 
+-- 
+2.45.1
+
