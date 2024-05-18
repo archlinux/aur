@@ -84,7 +84,7 @@ StateDirectory=matrix-conduit
 RuntimeDirectory=conduwuit
 RuntimeDirectoryMode=0750
 
-Environment="CONDUIT_CONFIG=/etc/conduwuit/conduwuit.toml"
+Environment="CONDUIT_CONFIG=/etc/conduwuit.toml"
 
 ExecStart=/usr/bin/conduwuit
 Restart=on-failure
