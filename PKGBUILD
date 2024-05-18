@@ -17,14 +17,20 @@ _url="$(curl -s "https://api.github.com/repos/PabloMK7/citra/releases/latest" | 
 _commit="$(echo $_url | awk -F '[-.]' '{print $6}')"
 pkgver="$(echo $_url | awk -F '[-.]' '{print $5}')"
 
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger, GUI version, already compiled"
 url="https://citra-emu.org"
 license=("GPL2")
 arch=("x86_64")
 provides=("citra")
-conflicts=("yuzu-early-access-appimage")
+conflicts=("citra-bin"
+           "citra-git"
+           "citra-canary-bin"
+           "citra-canary-git"
+           "citra-qt-git"
+           "citra-qt-canary-bin"
+           "citra-qt-bin")
 replaces=("citra-bin"
           "citra-qt-bin")
 depends=("ffmpeg"
