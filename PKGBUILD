@@ -2,7 +2,7 @@
 _pkgname=notesnook
 pkgname="${_pkgname}-electron-bin"
 _appname=Notesnook
-pkgver=3.0.5
+pkgver=3.0.6
 _electronversion=29
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.Use system-wide Electron"
@@ -27,9 +27,9 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/do
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
-sha256sums_aarch64=('720cb7d5640a43be34fb2f91fec48f3a4148faf67afbfd3d816ecb4e2754b3ed')
-sha256sums_x86_64=('44fd08a825c632a41876b17971dfbceade9cb8dc773e8a6c9a432f995334a276')
+sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums_aarch64=('6936b2b51c79e6bc0f40ccd7f6125cdceda06e16872c741dc1e2eb30816689e1')
+sha256sums_x86_64=('eb4ebef1eb8b9d97483d4c22fb08a5260be73503700428fa0066459a9f47396b')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
