@@ -1,6 +1,6 @@
 pkgbase = scitopdf
 	pkgdesc = bash script to quickly fetch, download and open scientific papers from Sci-Hub's database.
-	pkgver = 0.6.6.r0.g8090a3d
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/dougy147/scitopdf.git
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = scitopdf
 	makedepends = git
 	provides = scitopdf
 	conflicts = scitopdf-git
-	source = scitopdf::git+https://github.com/dougy147/scitopdf.git#tag=v0.6.6.r0.g8090a3d
+	source = scitopdf::git+https://github.com/dougy147/scitopdf.git#tag=v0.6.6
 	md5sums = SKIP
 
 pkgname = scitopdf

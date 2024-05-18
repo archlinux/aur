@@ -1,6 +1,6 @@
 # Maintainer: Luc <luc@dougy147.com>
 pkgname=scitopdf
-pkgver=0.6.6.r0.g8090a3d
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="bash script to quickly fetch, download and open scientific papers from Sci-Hub's database."
 arch=(x86_64 i686)
@@ -26,8 +26,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  #git describe --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
