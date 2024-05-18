@@ -16,7 +16,8 @@ sha256sums=('4ab79266194bdb4b2a1bf0ed22113de483bf33e5272e5f97b33c229cfa66aaee')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem -- --with-cflags="-fpermissive"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem \
+   -- --with-cflags="-Wno-int-conversion -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types"
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
 
