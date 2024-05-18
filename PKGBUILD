@@ -1,5 +1,5 @@
 # Maintainer: Airlongdian <Airlongdian@gmail.com>
-pkgname=MeowSans-ttf
+pkgname=meowsans-ttf
 pkgver=1.0.0
 pkgrel=1
 pkgdesc=" JetbrainsMono + OPlusSans3 + NerdIcon"

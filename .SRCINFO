@@ -1,4 +1,4 @@
-pkgbase = MeowSans-ttf
+pkgbase = meowsans-ttf
 	pkgdesc = JetbrainsMono + OPlusSans3 + NerdIcon
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = MeowSans-ttf
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = MeowSans-ttf
+pkgname = meowsans-ttf
