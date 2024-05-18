@@ -1,6 +1,6 @@
 pkgbase = pdfmixtool-git
 	pkgdesc = An application to perform common editing operations on PDF files
-	pkgver = r565.4926728
+	pkgver = r601.3b3f7a4
 	pkgrel = 1
 	url = https://www.scarpetta.eu/pdfmixtool
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = pdfmixtool-git
 	depends = qt6-svg
 	depends = qpdf
 	depends = imagemagick
+	depends = poppler-qt6
 	provides = pdfmixtool
 	conflicts = pdfmixtool
 	source = git+https://gitlab.com/scarpetta/pdfmixtool.git

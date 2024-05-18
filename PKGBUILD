@@ -1,13 +1,13 @@
 # Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=pdfmixtool-git
-pkgver=r565.4926728
+pkgver=r601.3b3f7a4
 pkgrel=1
 pkgdesc='An application to perform common editing operations on PDF files'
 arch=('i686' 'x86_64')
 url='https://www.scarpetta.eu/pdfmixtool'
 license=('GPL')
-depends=('qt6-base' 'qt6-svg' 'qpdf' 'imagemagick')
+depends=('qt6-base' 'qt6-svg' 'qpdf' 'imagemagick' 'poppler-qt6')
 makedepends=('git' 'cmake' 'qt6-tools')
 conflicts=(pdfmixtool)
 provides=(pdfmixtool)
@@ -28,7 +28,6 @@ build() {
   cmake -G "Unix Makefiles" ../pdfmixtool/ \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DQT_VERSION=6
   make
 }
 
