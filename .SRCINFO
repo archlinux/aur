@@ -9,6 +9,7 @@ pkgbase = bonk-git
 	makedepends = make
 	makedepends = git
 	makedepends = libx11
+	makedepends = ruby-ronn-ng
 	depends = libxcb
 	depends = xcb-util-wm
 	source = bonk.git::git+https://github.com/FascinatedBox/bonk

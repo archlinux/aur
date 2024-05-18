@@ -12,20 +12,22 @@ source=(
   "${_pkgname}.git::git+${url}"
 )
 depends=('libxcb' 'xcb-util-wm')
-makedepends=('cmake' 'make' 'git' 'libx11')
+makedepends=('cmake' 'make' 'git' 'libx11' 'ruby-ronn-ng')
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}.git"
   (
-    set -o pipefail
+    set -euo pipefail
     git describe --long --tags 2> /dev/null | sed "s/^[A-Za-z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
-    printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
   )
 }
 
 build() {
-  cmake -B build -S "${_pkgname}.git" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr 
+  cmake -B build -S "${_pkgname}.git" \
+    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+    -DWITH_DOCS=true
   cmake --build build
 }
 
