@@ -1,12 +1,12 @@
 # Maintainer: Laura Demkowicz-Duffy <laura@demkowiczduffy.co.uk>
 pkgname=openrocket-git
 _pkgname=openrocket
-pkgver=r4823.d67f7aa94
+pkgver=r5928.7a9bb436c
 pkgrel=1
 pkgdesc="A free and fully featured rocket flight simulator - 6 degrees of freedom"
-arch=('any')
+arch=('x86_64')
 url=https://github.com/openrocket/openrocket
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('java-environment=11' 'desktop-file-utils')
 makedepends=('git' 'ant')
 provides=('openrocket')
