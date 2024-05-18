@@ -1,7 +1,7 @@
 # Maintainer: Danct12 <danct12@disroot.org>
 
 pkgname=libgbinder
-pkgver=1.1.38
+pkgver=1.1.39
 pkgrel=1
 pkgdesc="GLib-style interface to binder"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/mer-hybris/libgbinder.git"
 license=('BSD')
 depends=('libglibutil' 'glib2')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mer-hybris/libgbinder/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('610dbe962287278de0e3549b4f7d15f6af0017afa0da356f6a72550c8d5c9925960527a30fd4d4e66c64f9cfd63915ba60b990220e350fee935bef5bf5a17710')
+sha512sums=('ce6b1ec2c18a0d3da3f6a2e76acdf879163a8123207c1814362b8e5c0c8c592a1e9f9d378c44f3b29d6feaf4671dce3b37d06dd1c64b9ec9198a579e131146c5')
 
 build() {
   cd $pkgname-$pkgver
