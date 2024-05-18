@@ -1,0 +1,11 @@
+pkgbase = isomacprog
+	pkgdesc = Program to make a standard Linux 64-bit distro ISO compatible with 32-bit EFI Macs
+	pkgver = 2016
+	pkgrel = 1
+	url = https://mattgadient.com/linux-dvd-images-and-how-to-for-32-bit-efi-macs-late-2006-models/
+	arch = x86_64
+	license = custom:isomacprog
+	source = isomacprog.c::https://mattgadient.com/dl/linux-iso-program/isomacprog.c.txt
+	sha256sums = 800693bd0bb9f11e7553e3dee02d0456d42c789e78ae06b70b667b2043f1f447
+
+pkgname = isomacprog
