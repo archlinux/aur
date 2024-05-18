@@ -1,7 +1,7 @@
-From 9befccd11d338dfc7220a3ae3695634cefd2c359 Mon Sep 17 00:00:00 2001
+From 18a2a932df9c1b6b3c7513a6c161d4259f052ca9 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Mon, 12 Feb 2024 12:31:30 -0700
-Subject: [PATCH 26/29] Linux 6.8: use hlist iteration for dentry children
+Subject: [PATCH 26/32] Linux 6.8: use hlist iteration for dentry children
 
 Linux 6.8 commit 'dentry: switch the lists of children to hlist'
 (da549bdd15) replaces the dentry lists d_subdirs/d_child with the hlist
@@ -20,6 +20,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit 8e0bbe6a07523dd2e7efb3c9d1b4ad9e19fc9bb7)
 
 Change-Id: Ief4c334c4ef3e54822e068dcdf654541e86b9176
+Reviewed-on: https://gerrit.openafs.org/15704
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Tested-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/afs/LINUX/osi_vcache.c    | 10 +++++++++-
  src/cf/linux-kernel-struct.m4 |  3 +++
@@ -68,5 +73,5 @@ index 2824ec198..5cd346fb5 100644
  AC_CHECK_LINUX_STRUCT([group_info], [gid], [cred.h])
  AC_CHECK_LINUX_STRUCT([inode], [i_alloc_sem], [fs.h])
 -- 
-2.44.0
+2.45.1
 

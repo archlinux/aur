@@ -1,7 +1,7 @@
-From 93669f535752e759b820a21883a6a8c6fba4e73e Mon Sep 17 00:00:00 2001
+From 53752b01bc734f4bd5f5da24ac116c7fcb2ac07f Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Mon, 12 Feb 2024 09:43:29 -0700
-Subject: [PATCH 19/29] afs: Remove SRXAFSCB* protos from afs_prototypes.h
+Subject: [PATCH 19/32] afs: Remove SRXAFSCB* protos from afs_prototypes.h
 
 The prototypes for the afscbint RPC functions (SRXAFSCB_*) implemented
 in afs_callback.c are defined in 2 locations, afs_protypes.h and
@@ -33,6 +33,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit fae4003b403420d0b548920c7837a2d2b6e432ae)
 
 Change-Id: I7d435455fc60cc10200ee91d0d76534367ab5883
+Reviewed-on: https://gerrit.openafs.org/15697
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/afs/afs_callback.c   |  2 ++
  src/afs/afs_prototypes.h | 37 -------------------------------------
@@ -102,5 +107,5 @@ index d7894dd67..b9811f892 100644
  /* afs_cbqueue.c */
  extern afs_rwlock_t afs_xcbhash;
 -- 
-2.44.0
+2.45.1
 

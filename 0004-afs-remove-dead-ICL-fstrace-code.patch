@@ -1,7 +1,7 @@
-From 7d45e9f76541e2d0b57984b9ba272a86bbd9791b Mon Sep 17 00:00:00 2001
+From 05ac6149f2f7998b6110c403d26757151b8e8ffe Mon Sep 17 00:00:00 2001
 From: Mark Vitale <mvitale@sinenomine.net>
 Date: Thu, 11 Mar 2021 15:36:54 -0500
-Subject: [PATCH 04/29] afs: remove dead ICL (fstrace) code
+Subject: [PATCH 04/32] afs: remove dead ICL (fstrace) code
 
 The ICL code (afs/afs_icl.c) which supports fstrace includes a number of
 functions that have been dead code since the original IBM code import.
@@ -16,6 +16,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit ba58d9912cff07a6f2af7275017cf70115f1a88d)
 
 Change-Id: Ic0a6d5dac200e7e130fa8df66005bdaf291cf088
+Reviewed-on: https://gerrit.openafs.org/15682
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/afs/afs_icl.c        | 147 ---------------------------------------
  src/afs/afs_prototypes.h |  19 -----
@@ -261,5 +266,5 @@ index e9a655e65..ed43635aa 100644
  extern int afs_icl_SetHold(struct afs_icl_set *setp);
  extern int afs_icl_ZapSet(struct afs_icl_set *setp);
 -- 
-2.44.0
+2.45.1
 

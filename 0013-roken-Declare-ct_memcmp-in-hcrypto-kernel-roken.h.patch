@@ -1,7 +1,7 @@
-From e5d980ec4a4d41f965fcfe968a2cf00e0b99a3e1 Mon Sep 17 00:00:00 2001
+From 15357006d9e8e45ac0be9e0c7e87456ee3857d90 Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Tue, 30 Jan 2024 20:44:48 -0600
-Subject: [PATCH 13/29] roken: Declare ct_memcmp in hcrypto kernel roken.h
+Subject: [PATCH 13/32] roken: Declare ct_memcmp in hcrypto kernel roken.h
 
 Currently, we build roken's ct.c for our kernel module to provide
 ct_memcmp(). We declare a prototype for ct_memcmp() in krb5_locl.h,
@@ -39,6 +39,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit be236069e9d26339ed5f9939965bca0dd3f8bf4e)
 
 Change-Id: I1112881938b0585263871f8f83d63b8909b12f0d
+Reviewed-on: https://gerrit.openafs.org/15691
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/crypto/hcrypto/kernel/roken.h | 17 +++++++++++++++++
  src/crypto/rfc3961/krb5_locl.h    |  6 +-----
@@ -91,5 +96,5 @@ index eb279a95f..6e706737c 100644
  #include "crypto.h"
  
 -- 
-2.44.0
+2.45.1
 

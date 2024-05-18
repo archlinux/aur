@@ -1,0 +1,97 @@
+From fa093a57d443a30be0891caacb18677fd4b73ac0 Mon Sep 17 00:00:00 2001
+From: Andrew Deason <adeason@sinenomine.net>
+Date: Thu, 25 Apr 2024 15:58:49 -0500
+Subject: [PATCH 32/32] afs: Reintroduce and use DFlushDCache()
+
+This reverts commit 432ac5810e51bb5bb2cf1df0bfebc64d1c4d7a39 (afs:
+Remove DFlushDCache()). This also re-adds the caller of DFlushDCache()
+removed by commit 4045f3d5350955de91e019b09ad2ed7941f6dadb
+(disconnected-shadow-directory-fixes-20090121), and the prototype
+removed by commit 5ad1e6cb904b953fbb04603f3ce1466dcc38cd48 (dir:
+Prototype and function name cleanup).
+
+The removal of the DFlushDCache() call in commit 4045f3d535 seems like
+a mistake. If the directory in question has dirty pages in memory, we
+need to flush those to the cache before making a copy of the
+directory's data, because we read the existing dir's data from the
+cache. If we don't flush, afs_MakeShadowDir() might make a copy of the
+dcache that is missing updates to the directory blob.
+
+Reviewed-on: https://gerrit.openafs.org/15740
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+(cherry picked from commit 799d789fbaefc8c4dbcb803b885deb35f4947d26)
+
+Change-Id: I3bffab4bae4214503591ac102aba59c7072b39af
+---
+ src/afs/afs_buffer.c     | 25 +++++++++++++++++++++++++
+ src/afs/afs_dcache.c     |  3 +++
+ src/afs/afs_prototypes.h |  1 +
+ 3 files changed, 29 insertions(+)
+
+diff --git a/src/afs/afs_buffer.c b/src/afs/afs_buffer.c
+index 9538c6806..747bd7afb 100644
+--- a/src/afs/afs_buffer.c
++++ b/src/afs/afs_buffer.c
+@@ -516,6 +516,31 @@ DFlushBuffer(struct buffer *ab)
+     afs_CFileClose(tfile);
+ }
+ 
++void
++DFlushDCache(struct dcache *adc)
++{
++    int i;
++    struct buffer *tb;
++
++    ObtainReadLock(&afs_bufferLock);
++
++    for (i = 0; i <= PHPAGEMASK; i++)
++	for (tb = phTable[pHash(adc->index, i)]; tb != NULL; tb = tb->hashNext)
++	    if (tb->fid == adc->index) {
++		ObtainWriteLock(&tb->lock, 701);
++		tb->lockers++;
++		ReleaseReadLock(&afs_bufferLock);
++		if (tb->dirty) {
++		    DFlushBuffer(tb);
++		}
++		tb->lockers--;
++		ReleaseWriteLock(&tb->lock);
++		ObtainReadLock(&afs_bufferLock);
++	    }
++
++    ReleaseReadLock(&afs_bufferLock);
++}
++
+ int
+ DFlush(void)
+ {
+diff --git a/src/afs/afs_dcache.c b/src/afs/afs_dcache.c
+index 46d0bdba5..35fd59473 100644
+--- a/src/afs/afs_dcache.c
++++ b/src/afs/afs_dcache.c
+@@ -3842,6 +3842,9 @@ afs_MakeShadowDir(struct vcache *avc, struct dcache *adc)
+ 
+     ReleaseWriteLock(&afs_xdcache);
+ 
++    /* Make sure and flush dir buffers back into the disk cache */
++    DFlushDCache(adc);
++
+     /* Alloc a 4k block. */
+     data = afs_osi_Alloc(4096);
+     if (!data) {
+diff --git a/src/afs/afs_prototypes.h b/src/afs/afs_prototypes.h
+index b9811f892..2ca80a563 100644
+--- a/src/afs/afs_prototypes.h
++++ b/src/afs/afs_prototypes.h
+@@ -26,6 +26,7 @@ extern void afs_FreeAllAxs(struct axscache **headp);
+ extern void shutdown_xscache(void);
+ 
+ /* afs_buffer.c */
++extern void DFlushDCache(struct dcache *);
+ extern void shutdown_bufferpackage(void);
+ 
+ /* afs_call.c */
+-- 
+2.45.1
+

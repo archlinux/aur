@@ -1,0 +1,91 @@
+From d1a42401fddc51bd2f16da39dfebe0f60fc670ad Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 29 Feb 2024 17:58:17 -0700
+Subject: [PATCH 29/32] Linux: Remove weak attribute for key_type_keyring
+
+The reference to the Linux symbol key_type_keyring uses a weak
+attribute to assist in determining if the symbol is exported.  This
+method was introduced in commit: 'keyring-updated-20080310' (b7fb842b1c)
+as a way to detect if the symbol was exported by the Linux kernel.  A
+later commit: 'linux-keyring-export-check-20090701' (4ca66112c2)
+introduced an autoconf test that eliminated the need for using the weak
+attribute, but the commit did not remove the attribute.
+
+On a Debian-12 system on ARM64 the use of the weak attribute in this
+case causes an error when loading the kernel module:
+  "ERROR: could not insert 'openafs': Exec format error".
+The error is due to the Linux module loader not supporting the
+relocation entry type in the openafs kernel module for the
+key_type_keyring.  Further investigation showed that this problem could
+occur with gcc-12 on a ARM64 system (see below for additional
+information).
+
+The code in osi_groups.c uses a pointer, __key_type_keyring, to the
+key_type_keyring.  When this symbol is exported by the Linux kernel, the
+loader would resolve the address and __key_type_keyring would contain
+the address.  If the key_type_keyring symbol was not exported,
+__key_type_keyring would be set to NULL (due to the weak attribute
+associated with key_type_keyring).
+
+Remove the weak attribute for key_type_keyring when the configure
+test, introduced in the 4ca66112c2 commit, determines that the symbol
+is exported (EXPORTED_KEY_TYPE_KEYRING is defined).  When the symbol
+isn't exported (pre Linux 2.6.22), just set the pointer,
+__key_type_keyring to NULL.
+
+NOTE:
+
+The load error was reported on the openafs IRC channel by "clarkb"
+
+The problem of loading the openafs kernel module was also observed
+on a NixOS system as well, and is described in the NixOS ticket
+
+  https://github.com/NixOS/nixpkgs/issues/284501
+
+A Debian-11 system did not have a problem loading the openafs kernel
+module. Investigation of the differences between Debian-11 and Debian-12
+showed that the problem is due to a series of fixes in the toolchain
+(in particular gcc-12) to address 'Cortex-A53 erratum #843419', which
+deals with how the ARM64 ADRP instruction is used. With gcc-12, the
+code generated uses a R_AARCH64_ADR_GOT for this particular case (which
+isn't supported by the Linux kernel module loader).  Gcc-11 created a
+R_AARCH64_ABS64 relocation entry type for the symbol.
+
+Reviewed-on: https://gerrit.openafs.org/15668
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 2f260825b96b76556aba82fc364c841357a23a7d)
+
+Change-Id: Ifce08cb01f0b642ee9c2d90480b8a1766dfc52ff
+Reviewed-on: https://gerrit.openafs.org/15728
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+---
+ src/afs/LINUX/osi_groups.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/afs/LINUX/osi_groups.c b/src/afs/LINUX/osi_groups.c
+index 87d149f56..901312d2a 100644
+--- a/src/afs/LINUX/osi_groups.c
++++ b/src/afs/LINUX/osi_groups.c
+@@ -166,8 +166,11 @@ __setpag(cred_t **cr, afs_uint32 pagvalue, afs_uint32 *newpag,
+ }
+ 
+ #ifdef LINUX_KEYRING_SUPPORT
+-extern struct key_type key_type_keyring __attribute__((weak));
++# if defined(EXPORTED_KEY_TYPE_KEYRING)
+ static struct key_type *__key_type_keyring = &key_type_keyring;
++# else
++static struct key_type *__key_type_keyring;
++# endif
+ 
+ /* install_session_keyring returns negative error values */
+ static int
+-- 
+2.45.1
+

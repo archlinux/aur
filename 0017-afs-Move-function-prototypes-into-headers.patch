@@ -1,7 +1,7 @@
-From 1505e0d19cba9b66d0e357f6eafdde15f638eb2e Mon Sep 17 00:00:00 2001
+From c04c2d07226583846c3949a4855c7db4316438da Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 15 Feb 2024 09:00:05 -0700
-Subject: [PATCH 17/29] afs: Move function prototypes into headers
+Subject: [PATCH 17/32] afs: Move function prototypes into headers
 
 Several .c files contain external function prototypes, while the
 implementing files do not have these prototypes.
@@ -32,6 +32,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit 85781d7e83ae4501d8ab267bf55ef63f90f63101)
 
 Change-Id: I74333e99e08af88bebdcbff4767d79397acac358
+Reviewed-on: https://gerrit.openafs.org/15695
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/afs/LINUX/osi_ioctl.c       | 3 ---
  src/afs/LINUX/osi_syscall.c     | 3 ---
@@ -140,5 +145,5 @@ index 208bd0338..9b3b1afec 100644
  extern int afs_readdir(OSI_VC_DECL(avc), struct uio *auio,
  		       afs_ucred_t *acred, int *eofp);
 -- 
-2.44.0
+2.45.1
 
