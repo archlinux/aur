@@ -1,0 +1,16 @@
+pkgbase = python-error-helper
+	pkgdesc = minimalistic python module which helps you print colorful messages for CLI tools
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/30350n/error_helper
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/e/error_helper/error_helper-1.1.tar.gz
+	sha256sums = 7753b3e7509373b7f525ced9b98da3bed09e3c3839c93405b061f00e5a7e67ab
+
+pkgname = python-error-helper
