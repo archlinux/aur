@@ -2,7 +2,7 @@
 pkgname=lcode-bin
 _binname=lcode
 _repository=lcode
-pkgver=v0.9.0
+pkgver=v0.9.1
 pkgrel=1
 epoch=
 pkgdesc="An application of terminal write leetcode."
@@ -23,9 +23,9 @@ install=
 changelog=
 
 source_x86_64=("https://github.com/saying121/${_repository}/releases/download/${pkgver}/${_binname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('8e2b8685d88fba67fbc3a877ee6efb253cdfd17d355874f56403cc81a5589733')
-sha256sums_aarch64=('bfe30b35e061bb2d16462b04504b20667197838f0d46096a97e7a1d817e22861')
+sha256sums_x86_64=('ed6aab2b66d72ec65a15e1d6d1782d2eab47447d99d17d05cc11a1a5986a0aba')
 source_aarch64=("https://github.com/saying121/${_repository}/releases/download/${pkgver}/${_binname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_aarch64=('9d56dcb687ef5beb89702365be419ea8fe45de6b9d7ea9c28506c81e940059fa')
 
 noextract=()
 validpgpkeys=()
