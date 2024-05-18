@@ -2,17 +2,17 @@
 
 pkgname=drmdb-git
 _pkgname=drmdb
-pkgver=r123.96444f0746a3
+pkgver=r155.d11aeba82736
 pkgrel=1
 pkgdesc='A Direct Rendering Manager database'
 arch=('x86_64')
-url='https://git.sr.ht/~emersion/drmdb'
+url='https://gitlab.freedesktop.org/emersion/drmdb'
 license=('MIT')
 makedepends=('git' 'go')
 provides=('drmdb')
 conflicts=('drmdb')
 source=(
-	"git+https://git.sr.ht/~emersion/drmdb"
+	"git+https://gitlab.freedesktop.org/emersion/drmdb.git"
 	"drmdb.sysusers"
 	"drmdb.service"
 	"drmdb.tmpfiles"
