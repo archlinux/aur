@@ -6,19 +6,21 @@ pkgbase = ayatana-indicator-sound
 	arch = i686
 	arch = x86_64
 	arch = pentium4
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake-extras
 	makedepends = intltool
 	makedepends = vala
 	makedepends = systemd
-	makedepends = glib2
 	makedepends = libxml2
 	makedepends = gobject-introspection
 	depends = accountsservice
 	depends = libpulse
 	depends = libgee
 	depends = libnotify
-	depends = libayatana-common>=0.9.9
+	depends = libayatana-common
+	depends = glibc
+	depends = glib2
+	depends = dconf
 	source = ayatana-indicator-sound-24.4.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-sound/archive/24.4.0.tar.gz
 	md5sums = 321b40f4c24c5d6986081d589a9d37dc
 
