@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.8.9.arch1
+pkgver=6.9.1.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -35,16 +35,18 @@ source=(
 
   "sys-kernel_arch-sources-g14-6.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-6.8-rc4%2B.patch"
   
-  9999-fix-amdgpu-doorbell-regression.patch
-
   0001-acpi-proc-idle-skip-dummy-wait.patch
 
   0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   
-  #0001-linux6.8.y-bore4.5.2.patch
+#  0001-linux6.8.y-bore5.1.0.patch
   
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
   0035-Add_quirk_for_polling_the_KBD_port.patch
+  
+  0001-hid-asus-use-hid-for-brightness-control-on-keyboard.patch
+
+#  "0001-sched-ext.patch"::"https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.8/sched/0001-sched-ext.patch"
 
   0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
@@ -84,18 +86,18 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('f905f1238ea7a8e85314bacf283302e8097006010d25fcea726d0de0ea5bc9b6'
+sha256sums=('01b414ba98fd189ecd544435caf3860ae2a790e3ec48f5aa70fdf42dc4c5c04a'
             'SKIP'
-            '7a212eedb9fe3da99d6d5b63eb5f28c10ee4333e4d42ea1bb3842a15d3107bef'
+            '8cb3d0a2769d1471c38fb5f1bdd1395333790453a399767c3af8673bc6a714b5'
             'SKIP'
-            'e35c97eb1ab405b12489032225dfb07be591be03d292d8f2131f0df8481d91d8'
+            '5f8a4de3f17d6d1b624e70514327b05fafffe8af913f95829b9c6830b4a8a4e3'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'f4e7fcd011f2691840d2c8c2361dca850a78ea33cc5c24d2e27c3e0294fd1dc5'
-            'f196d51a0536cf0fd6a17cead8be24920a75f392595abbb4654a6caa7e1cc17b'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
+            'dfa24a178cf3d533e09892bdae9365784771bf10fa7f771f559f54026dee92e4'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             '9f98765b43f5f31b33ed05f3611508113b02518e680ee82b251de80dae2e141d'
@@ -240,6 +242,9 @@ prepare() {
 
   # try to fix stuttering on some ROG laptops
   scripts/config --disable CONFIG_HW_RANDOM_TPM
+
+  # enable SCHED_CLASS_EXT
+  scripts/config --enable CONFIG_SCHED_CLASS_EXT
 
   # HACK: forcibly fixup CONFIG_CMDLINE here as using scripts/config mangles escaped quotes
   sed -i 's#makepkgplaceholderyolo#ibt=off pm_debug_messages amd_pmc.dyndbg=\\"+p\\" acpi.dyndbg=\\"file drivers/acpi/x86/s2idle.c +p\\"#' .config

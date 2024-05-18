@@ -35,6 +35,7 @@ fi
 
 # use modprobed-db
 cp PKGBUILD .PKGBUILD
+modprobed-db store
 cp $HOME/.config/modprobed.db "$(dirname "$(readlink -f -- "$0")")"
 sed 's|#  modprobed-db|  modprobed-db|g' -i PKGBUILD
 sed 's|#  modprobed.db|  modprobed.db|g' -i PKGBUILD
