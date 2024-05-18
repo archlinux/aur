@@ -1,7 +1,7 @@
 pkgbase = python-inventree-part-import
 	pkgdesc = CLI to import parts from into your InvenTree instance
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/30350n/inventree_part_import
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = python-inventree-part-import
 	depends = python-click
 	depends = python-cutie
 	depends = python-digikey-api
+	depends = python-error-helper
 	depends = python-fake-useragent
 	depends = python-inventree
 	depends = python-isocodes
