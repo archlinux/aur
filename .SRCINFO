@@ -1,6 +1,6 @@
 pkgbase = ffplayout-unstable-git
 	pkgdesc = 24/7 playout based on rust and ffmpeg
-	pkgver = r2062.7c8ad52
+	pkgver = r2067.8bb2e96
 	pkgrel = 0
 	url = https://github.com/jb-alvarado/ffplayout
 	install = ffplayout.install
