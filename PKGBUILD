@@ -17,6 +17,7 @@ pkgver=12.5.9
 _buildver=7535481
 _pkgver=${pkgver}_${_buildver}
 pkgrel=32
+_tools_version=10.1.6-5214329
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -66,7 +67,15 @@ backup=(
   'etc/conf.d/vmware'
 )
 source=(
-  "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/core/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-freebsd-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component.tar"
 
   'vmware-bootstrap'
   'vmware-vix-bootstrap'
@@ -96,7 +105,15 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  'd099c048a33e58e05a5b247a2fc216e5178eb35097ed3e3836de52c6388121c3'
+  'bcc7d49d5d93f397920f8ea6e5166b49f1a91ce6a1b4366e9e686ad7530bf9fe'
+  '32f6b9ad4f8bce35796cbee51faa4f12f5b7bcd94b5d0622e5377167aafff394'
+  '409aacb7413a6f8cda959b35b778d3a167e08c0afa365e3e6755601412a4c5cf'
+  'b504f04a8a95e018a8e9d94dcb6d60da22bd65e4bbb0b6b482bfc791367acfc2'
+  '7fbd9063e5cd993b16741e335f602139735df0cf91f18afdb0cefa954620c554'
+  'ed79d279e61f3227d01b73c0cce2400af47edc1253b43b50a384590332efb176'
+  'eb6d2e89bec8f6ec8c946cabd7a8e27b4fc95b23cad38e7f2697ab33722b4308'
+  '40f37a11279b7c55f9dae3acb533a3cf8dafd083d6b10048857a6d5749fe79ed'
+  'f0a6d5992cd3ee188f1974b2a93285ab215d69afb0e9952ad0173caedb5a5a50'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -144,7 +161,7 @@ _vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
 
 makedepends+=(
   python
-  unzip
+  p7zip
   uefitool
 )
 
@@ -193,16 +210,21 @@ prepare() {
   [[ -d "$extracted_dir" ]] && rm -r "$extracted_dir"
 
   bash \
-    "$(readlink -f "$srcdir/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle")" \
+    "$(readlink -f "$srcdir/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle")" \
+    --install-component "vmware-tools-freebsd-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component" \
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
   for isoimage in ${_fusion_isoimages[@]}
   do
-    unzip -q com.vmware.fusion.tools.$isoimage.zip
-    install -Dm 644 "$srcdir/payload/$isoimage.iso" "$srcdir/fusion-isoimages/$isoimage.iso"
-    install -Dm 644 "$srcdir/payload/$isoimage.iso.sig" "$srcdir/fusion-isoimages/$isoimage.iso.sig"
-    rm -rf payload manifest.plist
+    7z e -y com.vmware.fusion.tools.$isoimage.zip payload/\* -o"fusion-isoimages" > /dev/null
   done
 
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
