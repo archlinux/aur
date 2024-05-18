@@ -1,0 +1,3 @@
+post_install() {
+	echo '[I] Be sure to select the correct layout in asus_stylus.service'
+}
