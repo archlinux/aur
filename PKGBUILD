@@ -1,13 +1,14 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
 pkgname='perl-tkx'
 pkgver='1.10'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Yet another Tk interface"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.008' 'perl-tcl>=1')
+depends=('perl>=5.008' 'perl-tcl>=1' 'tk')
 makedepends=()
 url='http://search.cpan.org/dist/Tkx'
 source=('https://cpan.metacpan.org/authors/id/C/CA/CAC/Tkx-1.10.tar.gz')
