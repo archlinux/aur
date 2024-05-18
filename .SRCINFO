@@ -1,0 +1,18 @@
+pkgbase = xpad-noone-git
+	pkgdesc = This is the original upstream xpad driver from the Linux kernel with support for Xbox One controllers removed.
+	pkgver = r8.6970c40
+	pkgrel = 1
+	url = https://github.com/medusalix/xpad-noone
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	provides = xpad-noone
+	conflicts = xpad-dkms-git
+	source = xpad-noone::git+https://github.com/medusalix/xpad-noone.git
+	source = modprobe.conf
+	sha256sums = SKIP
+	sha256sums = bdc54ef5b9728751f89f08039c69141f7515b9df723cbda1df0239c5109d249b
+
+pkgname = xpad-noone-git
