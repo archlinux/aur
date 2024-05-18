@@ -1,12 +1,12 @@
 pkgbase = yambar-hyprland-wses
 	pkgdesc = Enable Yambar to show Hyprland workspaces
 	pkgver = 0.2.0_alpha.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonhoo/yambar-hyprland-wses
 	arch = x86_64
 	license = MIT,
 	license = Apache-2.0
-	makedepends = rust
+	makedepends = cargo
 	source = yambar-hyprland-wses-.tar.gz::https://github.com/jonhoo/yambar-hyprland-wses/archive/refs/tags/v0.2.0-alpha.1.tar.gz
 	sha256sums = 6934c2b3d8666d58e600e0d9690d252fa9787e414f915b8a7572e4d37c49caf9
 
