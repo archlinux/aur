@@ -13,7 +13,7 @@
 ## basic info
 _pkgname="midori"
 pkgname="$_pkgname-git"
-pkgver=11.3.2.r24.ga9c39ee
+pkgver=11.3.3.r2.gc9f1cc5
 pkgrel=1
 pkgdesc="Web browser based on Floorp"
 url="https://github.com/goastian/midori-desktop"
@@ -56,7 +56,7 @@ makedepends=(
   nodejs
   python
   python-setuptools
-  rust
+  rustup
   unzip
   wasi-compiler-rt
   wasi-libc
@@ -101,18 +101,28 @@ conflicts=("$_pkgname")
 : ${_lssver:=v2022.10.12}
 noextract=("lss-${_lssver}.tar.gz")
 
+_patch_commit="24a6ea8"
+
 _pkgsrc="midori-tensei"
 source=(
   "$_pkgsrc"::"git+https://github.com/goastian/midori-desktop.git"
   "goastian.l10n-central"::"git+https://github.com/goastian/l10n-central.git"
   "lss-${_lssver}.tar.gz"::"https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/${_lssver}.tar.gz"
   "$_pkgname.desktop"
+
+  "18d19413472f-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=$_patch_commit"
+  "6af7194e2778-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=$_patch_commit"
+  "b1cc62489fae-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
   '7ef0f85f2b111caa08a3e855cb4b6595b6d0f62b3de13ce59eea94a580eec470'
+
+  '3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18'
+  '6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e'
+  'f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117'
 )
 
 pkgver() {
@@ -231,10 +241,16 @@ export CXX='clang++'
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 END
+
+  patch -Np1 -F100 -i "$srcdir/18d19413472f-$_patch_commit.patch"
+  patch -Np1 -F100 -i "$srcdir/6af7194e2778-$_patch_commit.patch"
+  patch -Np1 -F100 -i "$srcdir/b1cc62489fae-$_patch_commit.patch"
 }
 
 build() {
   cd "$_pkgsrc"
+
+  export RUSTUP_TOOLCHAIN=1.77
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
@@ -245,6 +261,10 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
+
+  # malloc_usable_size is used in various parts of the codebase
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
   # LTO/PGO needs more open files
   ulimit -n 4096
