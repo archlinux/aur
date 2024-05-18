@@ -2,60 +2,71 @@
 pkgname=spx-translation
 pkgver=2.0.5_1
 _electronversion=25
-pkgrel=4
+_nodeversion=18
+pkgrel=5
 pkgdesc="聚合翻译程序(谷歌+deepl)"
 arch=('x86_64')
 url="https://github.com/mlmdflr/spx-translation"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
-    'yarn'
+    'pnpm'
     'npm'
-    'nodejs'
+    'nvm'
     'git'
     'python>3'
     'base-devel'
     'gcc'
+    'curl'
 )
 source=(
     "${pkgname}.git::git+${url}#tag=vv${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('9120060cc50a5676bb182d42b3e71b5c24b7fafbb7b35a4093a89e69538439e9'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
+    _ensure_local_nvm
+    gendesk -f -n -q --pkgname="${pkgname}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
-    if [ `curl ifconfig.co/country` = "China" ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+    pnpm config set store-dir "${srcdir}/.pnpm_store"
+    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
+    pnpm config set link-workspace-packages true
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export npm_config_registry=https://registry.npmmirror.com
+        #export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
-    sed "s|, 'snap', 'deb', 'rpm', 'pacman'||g" -i scripts/cfg.js
-    sed "s|, 'snap', 'deb', 'rpm', 'pacman'||g" -i scripts/build.js
-    sed "14,22d" -i scripts/build.js
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run build
+    sed "s|'AppImage', 'snap', 'deb', 'rpm', 'pacman'|'dir'|g" -i scripts/cfg.js
+    sed "s|'AppImage', 'snap', 'deb', 'rpm', 'pacman'|'dir'|g" -i scripts/build.js
+    #sed "14,22d" -i scripts/build.js
+    pnpm install
+    pnpm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"

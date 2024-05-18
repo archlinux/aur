@@ -1,23 +1,24 @@
 pkgbase = spx-translation
 	pkgdesc = 聚合翻译程序(谷歌+deepl)
 	pkgver = 2.0.5_1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/mlmdflr/spx-translation
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	makedepends = yarn
+	makedepends = pnpm
 	makedepends = npm
-	makedepends = nodejs
+	makedepends = nvm
 	makedepends = git
 	makedepends = python>3
 	makedepends = base-devel
 	makedepends = gcc
-	depends = electron25-bin
+	makedepends = curl
+	depends = electron25
 	conflicts = spx-translation
 	source = spx-translation.git::git+https://github.com/mlmdflr/spx-translation#tag=vv2.0.5-1
 	source = spx-translation.sh
-	sha256sums = SKIP
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 9120060cc50a5676bb182d42b3e71b5c24b7fafbb7b35a4093a89e69538439e9
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = spx-translation
