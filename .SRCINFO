@@ -1,6 +1,6 @@
 pkgbase = futex-test-git
 	pkgdesc = Programme that tests if the kernel supports futex calls supported by some wine version for increased gaming performance.
-	pkgver = r8.20240430.d7e8431
+	pkgver = r10.20240517.65f2fcc
 	pkgrel = 1
 	url = https://github.com/weirddan455/futex-test
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = futex-test-git
 	license = MIT
 	makedepends = git
 	depends = glibc
-	provides = futex-test=r8.20240430.d7e8431
+	provides = futex-test=r10.20240517.65f2fcc
 	conflicts = futex-test
 	source = futex-test::git+https://github.com/weirddan455/futex-test.git
 	sha256sums = SKIP
