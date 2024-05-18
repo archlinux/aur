@@ -1,6 +1,6 @@
 pkgbase = finamp-git
 	pkgdesc = A Jellyfin music client for mobile and desktop
-	pkgver = 1879.d1e9358f
+	pkgver = 2094.38bc397a
 	pkgrel = 1
 	url = https://github.com/jmshrv/finamp
 	arch = x86_64
@@ -18,8 +18,6 @@ pkgbase = finamp-git
 	provides = finamp
 	conflicts = finamp
 	source = finamp::git+https://github.com/jmshrv/finamp.git#branch=desktop-beta
-	source = finamp.desktop
 	b2sums = SKIP
-	b2sums = 12f2f43187df2af4c03134a78fa6587084c84d5280a9562230e021eaae0006dd252e64bfb300b0ba37bb48f7d31aeb352573f77084dfdb334eae8c582f74691d
 
 pkgname = finamp-git
