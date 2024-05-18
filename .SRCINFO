@@ -1,6 +1,6 @@
 pkgbase = ais-catcher
 	pkgdesc = Receiver for Automatic Identifaction System of boats using an SDR device (RTL-SDR, AirSpy, HackRF, ...)
-	pkgver = 0.56
+	pkgver = 0.59
 	pkgrel = 1
 	url = https://github.com/jvde-github/AIS-catcher
 	arch = i686
