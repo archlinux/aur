@@ -1,0 +1,16 @@
+pkgbase = webfsd
+	pkgdesc = A simple HTTP server for mostly static content written in C
+	pkgver = 1.21
+	pkgrel = 1
+	url = https://github.com/ourway/webfsd
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = gcc
+	makedepends = make
+	depends = openssl
+	provides = webfsd
+	conflicts = webfsd
+	source = https://github.com/ourway/webfsd/archive/refs/tags/1.21.tar.gz
+	b2sums = 420177e8e7f0a74e722cf642ed00179a8f42a1ad35a38f9e8852faed866fb8d612c438d6f467df7c8b376d3affc7fb471b96bd048dab29033de6adaf6214e976
+
+pkgname = webfsd
