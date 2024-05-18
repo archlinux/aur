@@ -1,0 +1,5 @@
+[python-niapy]
+source = "github"
+github = "NiaOrg/NiaPy"
+use_latest_release = "true"
+prefix = "v"
