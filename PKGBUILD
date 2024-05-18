@@ -13,6 +13,7 @@ sha256sums=('d48bc2e9f81846a14551a07fc5767bf79394e42bc124caea98070fe27fb32792')
 prepare() {
     cd "$srcdir"
     tar -xvf cleaner-advanced-1.0.0.tar.gz
+    cd cleaner-advanced-1.0.0
 }
 
 package() {
