@@ -12,6 +12,7 @@ Original Program: (c) 2009 HoeBot & FluBBa
 EOF
 
 cd $PCEDIR
+winetricks -q vb6run
 winetricks -q comdlg32ocx
 winetricks -q comctl32ocx
 wine PCEAdvance_ROM_BUILDER.EXE
