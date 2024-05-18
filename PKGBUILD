@@ -3,7 +3,7 @@
 _srcname=shadowsocks-libev
 pkgname=${_srcname}-static
 pkgver=3.3.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Statically-compiled shadowsocks-libev, intended to replace community/shadowsocks-libev"
 arch=('x86_64')
 url='https://github.com/shadowsocks/shadowsocks-libev'
@@ -22,10 +22,10 @@ source=("${_srcname}::git+https://github.com/shadowsocks/${_srcname}.git#tag=v$p
         'shadowsocks-libev-redir@.service'
         'shadowsocks-libev-tunnel@.service')
 
-_mbedtls_ver=2.28.5
+_mbedtls_ver=2.28.8
 _libsodium_ver=1.0.19
 _libev_ver=4.33
-_cares_ver=1.22.0
+_cares_ver=1.28.1
 _pcre_ver=8.45
 
 source+=("https://github.com/ARMmbed/mbedtls/archive/mbedtls-${_mbedtls_ver}.tar.gz")
@@ -34,15 +34,15 @@ source+=("http://dist.schmorp.de/libev/libev-${_libev_ver}.tar.gz")
 source+=("https://github.com/c-ares/c-ares/releases/download/cares-${_cares_ver//./_}/c-ares-${_cares_ver}.tar.gz")
 source+=("https://sourceforge.net/projects/pcre/files/pcre/${_pcre_ver}/pcre-${_pcre_ver}.tar.bz2")
 
-sha256sums=('SKIP'
+sha256sums=('5a75fc07d476a7e59249dcd6eb8c0a52a8099ed08ccfe1732746fc3aff647251'
             'c5148bfb453467258917012a029fb7e935c72e4066e06447357941c68f7282fb'
             '8fb077d92af2626cff904128ba410170baacf02cb92a6d58ec860be659ecde0b'
             'c51e9c0838b85d66467164c4ecff20e4180aa57a3c56ce9eae41353c4f5bfd78'
             '9dc81d58dde8a94f25a7475c626af7cb5507c795fcf3abc5b6367576e725d9a0'
-            'dbd42a11c26143aa8de1c07fd6ec6765395e86b06f583f051cfa60e8f0b23125'
+            '98b91415d86311b9c08f383906f58332429605895b53bb598d61b0bc29128a1d'
             '018d79fe0a045cca07331d37bd0cb57b2e838c51bc48fd837a1472e50068bbea'
             '507eb7b8d1015fbec5b935f34ebed15bf346bed04a11ab82b8eee848c4205aea'
-            'ad2e205088083317147c9f9eab5f24b82c3d50927c381a7c963deeb1182dbc21'
+            '675a69fc54ddbf42e6830bc671eeb6cd89eeca43828eb413243fd2c0a760809d'
             '4dae6fdcd2bb0bb6c37b5f97c33c2be954da743985369cddac3546e3218bffb8')
 
 export LDFLAGS="$LDFLAGS -static"
