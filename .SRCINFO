@@ -1,40 +1,30 @@
 pkgbase = octopi
-	pkgver = 0.15.0
-	pkgrel = 4
+	pkgdesc = A powerful Pacman frontend using Qt libs
+	pkgver = 0.15.0+19+ga081ac2b
+	pkgrel = 1
 	url = https://tintaescura.com/projects/octopi
 	arch = x86_64
 	license = GPL-2.0-or-later
-	makedepends = qt5-tools
-	makedepends = knotifications5
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt6-tools
 	depends = alpm-octopi-utils
+	depends = qt-sudo
+	depends = qt6-5compat
 	depends = qtermwidget
-	source = octopi-0.15.0.tar.gz::https://github.com/aarnt/octopi/archive/v0.15.0.tar.gz
-	sha256sums = e94525d906d6ab4f5fc594cf1a267668ae5f1fa7f32e449ddfa84328dd738f30
-
-pkgname = octopi
-	pkgdesc = A powerful Pacman frontend using Qt libs
-	optdepends = octopi-notifier-qt5: Notifier for Octopi using Qt5 libs
-	optdepends = octopi-notifier-frameworks: Notifier for Octopi with Knotifications support
 	optdepends = pacaur: for AUR support
+	optdepends = pacmanlogviewer: to view pacman log files
 	optdepends = paru: for AUR support
 	optdepends = pikaur: for AUR support
 	optdepends = trizen: for AUR support
 	optdepends = yay: for AUR support
-	optdepends = pacmanlogviewer: to view pacman log files
-	optdepends = opendoas: privilege elevation
-	optdepends = sudo: privilege elevation
+	provides = octopi-notifier
 	provides = octopi-repoeditor
 	provides = octopi-cachecleaner
-
-pkgname = octopi-notifier-qt5
-	pkgdesc = Notifier for Octopi using Qt5 libs
-	depends = octopi
-	provides = octopi-notifier
 	conflicts = octopi-notifier
+	replaces = octopi-notifier-qt5
+	replaces = octopi-notifier-frameworks
+	source = git+https://github.com/aarnt/octopi.git#commit=a081ac2bfd0564be64348f9a3a74ac9f4952bee1
+	sha256sums = 60250c4d6d638e8e3e4692a1397020411b00f1eb187f648d7a3420658e1942df
 
-pkgname = octopi-notifier-frameworks
-	pkgdesc = Notifier for Octopi with Knotifications support
-	depends = octopi
-	depends = knotifications5
-	provides = octopi-notifier
-	conflicts = octopi-notifier
+pkgname = octopi
