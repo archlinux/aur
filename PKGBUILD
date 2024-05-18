@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Filipp "Scorp" Andjelo <scorp@mailueberfall.de>
 
 pkgname=syslog-notify
