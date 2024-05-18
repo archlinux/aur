@@ -21,19 +21,4 @@ package() {
   rm -r "$pkgdir"/usr/share/info
   rm -r "$pkgdir"/usr/share/locale
   rm -r "$pkgdir"/usr/share/man/man7
-  # install -Ddm755 "$pkgdir"/usr/libexec/gcc
-  # install -Ddm755 "$pkgdir"/usr/lib/gcc
-  # install -Ddm755 "$pkgdir"/usr/bin
-  # install -Ddm755 "$pkgdir"/usr/share/man
-  # cp "$srcdir"/cross-tools/bin/* "$pkgdir"/usr/bin
-  # cp -r "$srcdir"/cross-tools/share/man/man1 "$pkgdir"/usr/share/man
-  # cp -r "$srcdir"/cross-tools/share/man/man5 "$pkgdir"/usr/share/man
-  # cp -r "$srcdir"/cross-tools/libexec/gcc/* "$pkgdir"/usr/libexec/gcc
-  # cp -r "$srcdir"/cross-tools/lib/gcc/* "$pkgdir"/usr/lib/gcc
-  # cp -r "$srcdir"/cross-tools/target/* "$pkgdir"/usr/"$_target"
-  # cp -r "$srcdir"/cross-tools/"$_target"/lib/* "$pkgdir"/usr/"$_target"/lib
-  # mv "$pkgdir"/usr/"$_target"/usr/sbin/* "$pkgdir"/usr/"$_target"/sbin
-  # ln -s ./usr/bin "$pkgdir"/usr/"$_target"/bin
-  # ln -s ./usr/include "$pkgdir"/usr/"$_target"/include
-  # ln -s ./usr/share "$pkgdir"/usr/"$_target"/share
 }
