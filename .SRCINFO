@@ -1,0 +1,14 @@
+pkgbase = libgen-cli-bin
+	pkgdesc = A CLI tool to access the Library Genesis dataset
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/ciehanski/libgen-cli
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = libgen-cli
+	conflicts = libgen-cli
+	source = libgen::https://github.com/ciehanski/libgen-cli/releases/download/v1.1.0/libgen-cli-v1.1.0-linux
+	sha512sums = 09ea5be792011a3fca0e7e151d52a6091601a85a243d7970826ef9998431927c9cd88955b446f21b50db7aefe1c67f035000fe00c2e8f3cdfce6e9052ebe5522
+
+pkgname = libgen-cli-bin

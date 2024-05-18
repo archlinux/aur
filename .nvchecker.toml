@@ -1,0 +1,5 @@
+[libgen-cli-bin]
+source = "github"
+github = "ciehanski/libgen-cli"
+use_latest_release = "true"
+prefix = "v"
