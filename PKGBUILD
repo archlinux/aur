@@ -1,65 +1,55 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=tooz
-pkgname=python-$_pyname
-pkgver=3.1.0
+pkgname=python-tooz
+pkgver=6.1.0
 pkgrel=1
-pkgdesc="Coordination library for distributed systems."
+pkgdesc="Coordinate distributed systems"
 arch=(any)
-url="https://docs.openstack.org/tooz/latest/"
-license=(Apache)
-depends=(
-	python
-	python-pbr
-	python-stevedore
-	python-voluptuous
-	python-msgpack
-	python-fasteners
-	python-tenacity
-	python-futurist
-	python-oslo-utils
-	python-oslo-serialization
-)
-makedepends=(
-	python-setuptools
-	python-sphinx
-	python-openstackdocstheme
-	python-reno
-	consul
-	python-sysv_ipc
-	python-zake
-	python-redis
-	python-psycopg2
-	python-pymysql
-	python-pymemcache
-	python-etcd3
-	python-etcd3gw
-)
-checkdepends=(
-	python-subunit
-	python-testtools
-	python-coverage
-	python-fixtures
-	python-pifpaf
-	python-stestr
-	python-ddt
-	python-nose
-	python-pre-commit
-)
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('b2ab720867b00d66b2c30afc182f7290')
-sha256sums=('689ba42055fe1fedf4c2d90a58c92e70b8c5df068ef30a483960055c9fcc2c44')
-sha512sums=('86fe16dc0dfcb49bc34c720d295daed920e788330581dc41d9d1a3d3d9202cb58ff2f88882f0b84ff48a0618d634080d7b1fb5366e9139bb0b124f7cdce2d540')
+url="https://opendev.org/openstack/tooz"
+license=('Apache-2.0')
+depends=('python'
+         'python-stevedore'
+         'python-voluptuous'
+         'python-msgpack'
+         'python-fasteners'
+         'python-tenacity'
+         'python-futurist'
+         'python-oslo-utils'
+         'python-oslo-serialization'
+         'python-testtools'
+         'python-pymysql'
+         'python-pymemcache'
+         'python-sysv_ipc'
+         'python-ddt'
+         'python-fixtures'
+         'python-psycopg2'
+         'python-etcd3gw'
+         'python-kazoo'
+         'python-requests'
+         'python-redis'
+         'python-zake')
+makedepends=('python-build'
+             'python-installer'
+             'python-wheel'
+             'python-setuptools'
+             'tar')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('716dca5312f1f54aea613ebdbccf2b7215f33ba825b49c105564bd162f043e660937853285e35540b232af0327b812c9f63dded52a75be26c76ba997c186e680')
 
-export PBR_VERSION=$pkgver
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	cd $_pyname-$pkgver
-	python setup.py build
+    cd "$pkgname-$pkgver"
+    PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 package(){
-	cd $_pyname-$pkgver
-	python setup.py install --root "$pkgdir" --optimize=1
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
