@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-coinmumps
-pkgver=3.0.6
+pkgver=3.0.7
 pkgrel=1
 pkgdesc="COIN-OR autotools harness to build MUMPS (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-metis' 'mingw-w64-lapack')
 makedepends=('mingw-w64-configure' 'wget')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/coin-or-tools/ThirdParty-Mumps/archive/releases/$pkgver.tar.gz")
-sha256sums=('45ae948bd2cedeb337a6deeff18b51e70b58db50624ba401ea946192fc92917c')
+sha256sums=('3847b3665e7235ead8710b13ee7f19159926e33a640a0225c08ad766db02d761')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
