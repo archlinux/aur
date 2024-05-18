@@ -2,7 +2,7 @@
 # https://github.com/TD-Sky/PKGBUILDs
 
 pkgname=iwant
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Install applications what I WANT"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('paru: AUR support'
             'flatpak: flathub support'
             'npm: npm support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3789e236240e10832c11511731010d21bfbb0d85ab504d3527d3888a8e43876e')
+sha256sums=('5fd0acd5303b39e3142a28a643415fcd49b50bc45039a333dfdd6ae536dac685')
 
 prepare() {
   cd "$pkgname-$pkgver"

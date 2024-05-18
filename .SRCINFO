@@ -1,6 +1,6 @@
 pkgbase = iwant
 	pkgdesc = Install applications what I WANT
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/TD-Sky/iwant
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = iwant
 	optdepends = flatpak: flathub support
 	optdepends = npm: npm support
 	conflicts = iwant-bin
-	source = iwant-0.5.0.tar.gz::https://github.com/TD-Sky/iwant/archive/v0.5.0.tar.gz
-	sha256sums = 3789e236240e10832c11511731010d21bfbb0d85ab504d3527d3888a8e43876e
+	source = iwant-0.5.1.tar.gz::https://github.com/TD-Sky/iwant/archive/v0.5.1.tar.gz
+	sha256sums = 5fd0acd5303b39e3142a28a643415fcd49b50bc45039a333dfdd6ae536dac685
 
 pkgname = iwant
