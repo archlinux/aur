@@ -1,7 +1,7 @@
 pkgbase = python-transformers
 	pkgdesc = State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow
-	pkgver = 4.40.2
-	pkgrel = 2
+	pkgver = 4.41.0
+	pkgrel = 1
 	url = https://github.com/huggingface/transformers
 	arch = any
 	license = Apache
@@ -25,7 +25,7 @@ pkgbase = python-transformers
 	optdepends = python-pytorch: PyTorch support
 	optdepends = python-tensorflow: TensorFlow support
 	optdepends = python-tf2onnx: TensorFlow support
-	source = python-transformers-4.40.2.tar.gz::https://github.com/huggingface/transformers/archive/refs/tags/v4.40.2.tar.gz
-	sha256sums = 90dae660a873fcfb31d23afb0665ce85fa5886237a80b3f740f63e5e5f8c6564
+	source = python-transformers-4.41.0.tar.gz::https://github.com/huggingface/transformers/archive/refs/tags/v4.41.0.tar.gz
+	sha256sums = a4979b5a0c9b2cd2e1a91674cb9b235aa155e189fafb021a3edd62886553134c
 
 pkgname = python-transformers
