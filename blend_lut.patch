@@ -1,0 +1,26 @@
+From d1986e24444b4b37462569200e48085a4b2beba6 Mon Sep 17 00:00:00 2001
+From: Ethan Lee <flibitijibibo@gmail.com>
+Date: Sat, 20 Apr 2024 15:39:13 -0400
+Subject: [PATCH] [HACK] drm/amd/display: Attach blend_lut property for DCN
+ >=3.2
+
+---
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm_plane.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm_plane.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm_plane.c
+index 8a4c40b4c27e..c73df03fcc22 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm_plane.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm_plane.c
+@@ -1516,7 +1516,7 @@ dm_atomic_plane_attach_color_mgmt_properties(struct amdgpu_display_manager *dm,
+ 					   MAX_COLOR_3DLUT_SIZE);
+ 	}
+ 
+-	if (dpp_color_caps.ogam_ram) {
++	if (dpp_color_caps.ogam_ram || amdgpu_ip_version(dm->adev, DCE_HWIP, 0) >= IP_VERSION(3, 2, 0)) {
+ 		drm_object_attach_property(&plane->base,
+ 					   mode_info.plane_blend_lut_property, 0);
+ 		drm_object_attach_property(&plane->base,
+-- 
+2.44.0
+
