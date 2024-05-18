@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@protonmail.com>
 
 pkgname=i2p-bin
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="https://geti2p.net"
@@ -18,9 +18,10 @@ noextract=("i2pinstall_${pkgver}.jar")
 options=(!strip)
 
 # https://geti2p.net/en/get-involved/develop/release-signing-key
-# https://geti2p.net/en/blog/post/2023/03/13/new_release_2.2.0
+# https://geti2p.net/_static/zzz.key.asc
 # https://geti2p.net/_static/idk.key.asc
-validpgpkeys=('70D2060738BEF80523ACAFF7D75C03B39B5E14E1')
+validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8'
+              '70D2060738BEF80523ACAFF7D75C03B39B5E14E1')
 
 _url="https://files.i2p-projekt.de/${pkgver}"
 #_url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
@@ -30,7 +31,7 @@ source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
         'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh')
 
-sha256sums=('1b0c1a12e64bd6dabd894a297b7bfd60ebe218a9177086f27367b8d4f1e30ab9'
+sha256sums=('751f48cfb380c8796bd645621b149114d55f32cd4330784cb287be9413b02569'
             'SKIP'
             '925d931aae2bd03c08555536b1c836654a72cc4acfd9f440f1ad43958ba2108d'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
