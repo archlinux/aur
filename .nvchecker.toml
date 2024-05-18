@@ -1,0 +1,5 @@
+[zotero-extension-scihub]
+source = "github"
+github = "ethanwillis/zotero-scihub"
+use_latest_release = "true"
+prefix = "v"

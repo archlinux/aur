@@ -1,0 +1,12 @@
+pkgbase = zotero-extension-scihub
+	pkgdesc = Download papers and books by DOI from Sci-Hub
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/ethanwillis/zotero-scihub
+	arch = any
+	groups = zotero-addons
+	license = AGPL-3.0-or-later
+	source = https://github.com/ethanwillis/zotero-scihub/releases/download/v1.4.4/zotero-scihub-1.4.4.xpi
+	sha512sums = 46ecf21057df781e95a3776924d6dea5620cf02e92a4371a0051939e7d8f9eba5f83f1d5f19e70c186eb669c45a6401629bc667137a538f13b68623132f89c8e
+
+pkgname = zotero-extension-scihub
