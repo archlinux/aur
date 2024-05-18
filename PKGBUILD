@@ -144,6 +144,10 @@ prepare() {
   git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
   # Fix build with latest vulkan headers
   git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e
+  # avcodec/nvenc: stop using long deprecated format specifiers 
+  git cherry-pick -n 43b417d516b0fabbec1f02120d948f636b8a018e
+  # avcodec/nvenc: support SDK 12.2 bit depth API 
+  git cherry-pick -n 06c2a2c425f22e7dba5cad909737a631cc676e3f
 }
 
 pkgver() {
