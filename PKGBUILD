@@ -4,7 +4,7 @@
 # Contributor: Chizuru-Kagurazaka <chizuru-mtf@outlook.com>
 # Contributor: bilibili_xiaok <the_xiaok@qq.com>
 pkgname=xmcl-launcher
-pkgver=0.44.3
+pkgver=0.44.5
 pkgrel=1
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
 arch=('x86_64')

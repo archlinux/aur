@@ -1,6 +1,6 @@
 pkgbase = xmcl-launcher
 	pkgdesc = X Minecraft Launcher - 一个现代化的 Minecraft 启动器
-	pkgver = 0.44.3
+	pkgver = 0.44.5
 	pkgrel = 1
 	url = https://xmcl.app/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = xmcl-launcher
 	optdepends = jre17-openjdk: 推荐使用此Java版本启动1.17及以上的版本
 	optdepends = jre22-openjdk: 推荐使用此Java版本启动1.20.5及以上版本
 	conflicts = xmcl-launcher-bin
-	source = git+https://github.com/Voxelum/x-minecraft-launcher.git#tag=v0.44.3
+	source = git+https://github.com/Voxelum/x-minecraft-launcher.git#tag=v0.44.5
 	source = git+https://github.com/Voxelum/minecraft-launcher-core-node
 	source = LICENSE::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher/master/LICENSE
 	source = xmcl.desktop
