@@ -1,6 +1,6 @@
 pkgbase = auto_facelock
 	pkgdesc = Face Detection Auto Screen Lock Service
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	install = setup.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = auto_facelock
 	depends = python-opencv
 	depends = python-numpy
 	depends = python-face_recognition
-	source = auto_facelock-1.0.4.tar.gz
+	source = auto_facelock-1.0.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = auto_facelock
