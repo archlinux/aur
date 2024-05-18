@@ -1,8 +1,8 @@
 # Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=ais-catcher
-pkgver=0.58
-_commit=f13ef0b
+pkgver=0.56
+_commit=c5354a3
 pkgrel=1
 pkgdesc='Receiver for Automatic Identifaction System of boats using an SDR device (RTL-SDR, AirSpy, HackRF, ...)'
 arch=('i686' 'x86_64')
