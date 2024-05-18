@@ -1,0 +1,80 @@
+diff --unified --recursive --text package.orig/pykwalify-1.8.0/tests/test_core.py package.new/pykwalify-1.8.0/tests/test_core.py
+--- package.orig/pykwalify-1.8.0/tests/test_core.py     2020-12-30 06:31:07.000000000 -0700
++++ package.new/pykwalify-1.8.0/tests/test_core.py      2024-03-31 15:54:58.926575787 -0700
+@@ -12,7 +12,7 @@
+
+ # 3rd party imports
+ import pytest
+-from pykwalify.compat import yaml
++from pykwalify.compat import yml
+ from testfixtures import compare
+
+
+@@ -567,7 +567,7 @@
+         for passing_test_file in pass_tests:
+             f = self.f(os.path.join("success", passing_test_file))
+             with open(f, "r") as stream:
+-                yaml_data = yaml.safe_load_all(stream)
++                yaml_data = yml.load_all(stream)
+
+                 for document_index, document in enumerate(yaml_data):
+                     data = document["data"]
+@@ -588,7 +588,7 @@
+         for failing_test, exception_type in _fail_tests:
+             f = self.f(os.path.join("fail", failing_test))
+             with open(f, "r") as stream:
+-                yaml_data = yaml.safe_load_all(stream)
++                yaml_data = yml.load_all(stream)
+
+                 for document_index, document in enumerate(yaml_data):
+                     data = document["data"]
+diff --unified --recursive --text package.orig/pykwalify-1.8.0/tests/test_unicode.py package.new/pykwalify-1.8.0/tests/test_unicode.py
+--- package.orig/pykwalify-1.8.0/tests/test_unicode.py  2020-12-06 13:29:59.000000000 -0700
++++ package.new/pykwalify-1.8.0/tests/test_unicode.py   2024-03-31 15:50:39.926571625 -0700
+@@ -12,7 +12,7 @@
+ from pykwalify.errors import SchemaError
+
+ # 3rd party imports
+-from pykwalify.compat import yaml
++from pykwalify.compat import yml
+ from testfixtures import compare
+
+
+@@ -47,7 +47,8 @@
+         }
+
+         source_f = tmpdir.join(u"2så.json")
+-        source_f.write(yaml.safe_dump(fail_data_2s_yaml, allow_unicode=True))
++        with source_f.open('w') as stream:
++            yml.dump(fail_data_2s_yaml, stream)
+
+         _pass_tests = [
+             # Test mapping with unicode key and value
+@@ -65,7 +66,7 @@
+             f = self.f(passing_test_files)
+
+             with open(f, "r") as stream:
+-                yaml_data = yaml.safe_load(stream)
++                yaml_data = yml.load(stream)
+                 data = yaml_data["data"]
+                 schema = yaml_data["schema"]
+
+@@ -102,7 +103,8 @@
+         }
+
+         source_f = tmpdir.join(u"2få.json")
+-        source_f.write(yaml.safe_dump(fail_data_2f_yaml, allow_unicode=True))
++        with source_f.open('w') as stream:
++            yml.dump(fail_data_2f_yaml, stream)
+
+         _fail_tests = [
+             # Test mapping with unicode key and value but wrong type
+@@ -120,7 +122,7 @@
+             f = self.f(failing_test)
+
+             with open(f, "r") as stream:
+-                yaml_data = yaml.safe_load(stream)
++                yaml_data = yml.load(stream)
+                 data = yaml_data["data"]
+                 schema = yaml_data["schema"]
+                 errors = yaml_data["errors"]
