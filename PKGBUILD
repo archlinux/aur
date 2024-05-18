@@ -2,8 +2,8 @@
 
 gemname=ruby-livesync
 pkgname=ruby-livesync
-pkgver=1.0.0.beta2
-pkgrel=3
+pkgver=1.0.0.beta5
+pkgrel=1
 pkgdesc='Live sync solution using ssh + rsync'
 url=https://github.com/brauliobo/ruby-livesync
 license=(GPL-3.0-only)
@@ -13,16 +13,14 @@ depends=(
   ruby-pry
   ruby-activesupport
   ruby-rb-inotify
-  ruby-rufus-scheduler
 )
 backup=('etc/livesync/config.rb')
 
 if [ "$LOCAL" == "1" ]; then
   source=("${pkgname}-${pkgver}.gem")
-  sha256sums=('SKIP')
 else
   source=("https://rubygems.org/downloads/${pkgname}-${pkgver}.gem")
-  sha256sums=('5fcf2d3917f085eb2d818db30ac399a659a3c4332d9dd2f7cfdad092ebe2d7d2')
+sha256sums=('76dd4e8077e1cf3dbd22589a8d91533858e1e6233d68aeaa7796f55763940af6')
 fi
 noextract=("${pkgname}-${pkgver}.gem")
 

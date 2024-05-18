@@ -1,7 +1,7 @@
 pkgbase = ruby-livesync
 	pkgdesc = Live sync solution using ssh + rsync
-	pkgver = 1.0.0.beta2
-	pkgrel = 3
+	pkgver = 1.0.0.beta5
+	pkgrel = 1
 	url = https://github.com/brauliobo/ruby-livesync
 	arch = any
 	license = GPL-3.0-only
@@ -9,10 +9,9 @@ pkgbase = ruby-livesync
 	depends = ruby-pry
 	depends = ruby-activesupport
 	depends = ruby-rb-inotify
-	depends = ruby-rufus-scheduler
-	noextract = ruby-livesync-1.0.0.beta2.gem
+	noextract = ruby-livesync-1.0.0.beta5.gem
 	backup = etc/livesync/config.rb
-	source = https://rubygems.org/downloads/ruby-livesync-1.0.0.beta2.gem
-	sha256sums = 5fcf2d3917f085eb2d818db30ac399a659a3c4332d9dd2f7cfdad092ebe2d7d2
+	source = https://rubygems.org/downloads/ruby-livesync-1.0.0.beta5.gem
+	sha256sums = 76dd4e8077e1cf3dbd22589a8d91533858e1e6233d68aeaa7796f55763940af6
 
 pkgname = ruby-livesync
