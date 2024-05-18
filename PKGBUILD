@@ -124,4 +124,8 @@ package() {
     # udev rules
     install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
     install -m644 -t "${pkgdir}/usr/lib/udev/rules.d" "${source_dir}/lib/udev/rules.d"/*
+
+    # /usr/share/plymouth/themes/steamos/*
+    install -dm755 "${pkgdir}/usr/share/plymouth/themes/steamos"
+    install -m644 -t "${pkgdir}/usr/share/plymouth/themes/steamos" "${source_dir}/share/plymouth/themes/steamos"/*
 }
