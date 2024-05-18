@@ -12,29 +12,23 @@ pkgname="citra-appimage"
 
 # to update automatically:
 #       1. run makepkg
-_url="$(curl -s "https://api.github.com/repos/PabloMK7/citra/releases/latest" | jq -r '.assets[].browser_download_url | select(test("citra-linux-appimage.*tar.gz"))')"
+#_url="$(curl -s "https://api.github.com/repos/PabloMK7/citra/releases/latest" | jq -r '.assets[].browser_download_url | select(test("citra-linux-appimage.*tar.gz"))')"
+_url="$(curl -s "https://api.github.com/repos/PabloMK7/citra/releases/latest" | awk -F'"' '/browser_download_url.*citra-linux-appimage.*tar.gz/ {print $4}')"
 _commit="$(echo $_url | awk -F '[-.]' '{print $6}')"
 pkgver="$(echo $_url | awk -F '[-.]' '{print $5}')"
 
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger, GUI version, already compiled"
 url="https://citra-emu.org"
 license=("GPL2")
 arch=("x86_64")
 provides=("citra")
-conflicts=("citra-bin"
-           "citra-git"
-           "citra-canary-bin"
-           "citra-canary-git"
-           "citra-qt-git"
-           "citra-qt-canary-bin"
-           "citra-qt-bin")
+conflicts=("yuzu-early-access-appimage")
 replaces=("citra-bin"
           "citra-qt-bin")
 depends=("ffmpeg"
          "sdl2")
-makedepends=("curl" "jq")
 source=("https://github.com/PabloMK7/citra/releases/download/r$_commit/citra-linux-appimage-$pkgver-$_commit.tar.gz"
         "citra.desktop")
 b2sums=('SKIP'
