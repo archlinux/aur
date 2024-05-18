@@ -48,6 +48,8 @@ _source=("https://download.opensuse.org/repositories/home:/paul4us/Arch")
 source=("${_source}/${arch}/${_pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
 sha256sums=('dc06809e7f3782b52291c23f73d88d66403a3316d3774471f4bf1fa8ae15a872')
 
+options=(!debug)
+
 package() {
-    cp -r "${srcdir}/usr/" "${pkgdir}"
+	cp -r "${srcdir}/usr/" "${pkgdir}"
 }

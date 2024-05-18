@@ -37,6 +37,7 @@ pkgbase = klassy-bin
 	provides = klassy
 	conflicts = klassy
 	replaces = classik
+	options = !debug
 	source = https://download.opensuse.org/repositories/home:/paul4us/Arch/x86_64/klassy-6.1.breeze6.0.3-1-x86_64.pkg.tar.zst
 	sha256sums = dc06809e7f3782b52291c23f73d88d66403a3316d3774471f4bf1fa8ae15a872
 
