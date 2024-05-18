@@ -1,4 +1,5 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=shedskin
 pkgver=0.9.8
