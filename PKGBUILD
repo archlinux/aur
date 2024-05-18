@@ -1,5 +1,5 @@
 pkgname=lichess-local-engine-bin
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Desktop app for Lichess external engine"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('gtk3' 'webkit2gtk' 'hicolor-icon-theme')
 provides=('lichess-local-engine')
 conflicts=('lichess-local-engine')
 source=("https://github.com/fitztrev/lichess-tauri/releases/download/app-v${pkgver}/lichess-local-engine_${pkgver}_amd64.deb")
-sha256sums=('3385a80196f6ca94521eabc5d93e066d9c96ece20d5594b2652328d39dd2e134')
+sha256sums=('f675b299143f55d7124cfbf38f1b4c1c92ac6f008dabc75e7394f6155fcebf58')
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
