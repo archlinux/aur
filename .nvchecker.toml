@@ -1,0 +1,4 @@
+[pybind11-json]
+source = "github"
+github = "pybind/pybind11_json"
+use_latest_release = "true"

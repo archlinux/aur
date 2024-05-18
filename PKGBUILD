@@ -2,7 +2,7 @@
 _base=pybind11_json
 pkgname=${_base/_/-}
 pkgdesc="Using nlohmann::json with pybind11"
-pkgver=0.2.13
+pkgver=0.2.14
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base::6}/${_base}"
@@ -10,7 +10,7 @@ license=('custom:BSD-3-clause')
 depends=(pybind11 nlohmann-json)
 makedepends=(cmake python)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('1d29d5a3a4e4cca8555a20c9a872b05804bcbbda0a6e001fdf9ea2070f63776f33fddfac6794c60d668fcab68f9c4ef312002c411323ae18562441631d3912b0')
+sha512sums=('5084fa778ca833a93c138649cdf04e7e2b77686c877799507573abc3db438108ee6590d4e204499e07490580f277cc565ca8000db2cb571b7ecdb2103e8f1dfc')
 
 build() {
   cmake \
