@@ -1,16 +1,17 @@
 pkgbase = rakubrew-bin
 	pkgdesc = A Raku installation tool. It allows to have multiple versions of different Raku implementations installed in parallel and switch between them.
-	pkgver = 37
+	pkgver = 39
 	pkgrel = 1
 	url = https://rakubrew.org/
 	arch = x86_64
 	license = MIT
 	depends = perl
 	provides = rakubrew
+	conflicts = rakubrew
 	options = !strip
-	source = rakubrew-bin-37::https://rakubrew.org/files/37/perl/rakubrew
-	source = file:///LICENSE
-	sha256sums = 285b2657501d027836e14c46c42b181c2fcb4242027204e950ed03b603b6e825
+	source = rakubrew-bin-39::https://rakubrew.org/files/39/perl/rakubrew
+	source = LICENSE
+	sha256sums = cf2215d0f39c3579eee9736525ee9a05fcfb5a385218e7b76297702b921da3b6
 	sha256sums = 0bc1b636841114f78c1dbbb2e4c63916dc87c3d085d940866c7f33115b7156a9
 
 pkgname = rakubrew-bin
