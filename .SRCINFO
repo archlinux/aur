@@ -1,34 +1,6 @@
 pkgbase = xmcl-launcher
 	pkgdesc = X Minecraft Launcher - 一个现代化的 Minecraft 启动器
 	pkgver = 0.44.5
-	pkgrel = 1
-	url = https://xmcl.app/
-	arch = x86_64
-	license = MIT
-	makedepends = pnpm
-	depends = electron29
-	optdepends = jre8-openjdk: 启动低版本游戏的最低要求
-	optdepends = jre11-openjdk: 推荐使用此Java版本启动1.12-1.17
-	optdepends = jre17-openjdk: 推荐使用此Java版本启动1.17及以上的版本
-	optdepends = jre22-openjdk: 推荐使用此Java版本启动1.20.5及以上版本
-	conflicts = xmcl-launcher-bin
-	source = git+https://github.com/Voxelum/x-minecraft-launcher.git#tag=v0.44.5
-	source = git+https://github.com/Voxelum/minecraft-launcher-core-node
-	source = LICENSE::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher/master/LICENSE
-	source = xmcl.desktop
-	source = xmcl.png
-	source = xmcl-launcher
-	sha256sums = b7356494b24dc0119a65d79dab2551dffd3e4539e71327afbffab3429ee1a8a6
-	sha256sums = SKIP
-	sha256sums = 72e17fb1c83deda594cf7c6bf61b45ee31880b86e2d526e9a4b16d2d8b3fc7fa
-	sha256sums = c0712f9a3be2bfd2aabc3f11965dc46fc2d5e2652f5431fc6e7fb618d1b45de5
-	sha256sums = 4c56e72cc6784c4c2d870c307d74e7afa6c13b001bb52f9b255cd82ab709adcb
-	sha256sums = b6d56ce25d2ce5163253e0ff7c159849d3ecbfad4a9d3d809dcdd2522b3c7007
-
-pkgname = xmcl-launcher
-pkgbase = xmcl-launcher
-	pkgdesc = X Minecraft Launcher - 一个现代化的 Minecraft 启动器
-	pkgver = 0.44.5
 	pkgrel = 2
 	url = https://xmcl.app/
 	arch = x86_64
