@@ -2,7 +2,7 @@
 #
 # Generated from npm2PKGBUILD
 # 
-# Note, fast-cli uses puppeteer, which cotains chromium.  The dependencies of
+# Note, fast-cli uses puppeteer, which contains chromium.  The dependencies of
 # chromium are included, otherwise fast-cli won't work as expected.  It's more
 # than just including the library/shared object (.so/ldd) dependencies of the
 # chromium binary.  This is a limitation of puppeteer.  It uses chromium's
@@ -11,10 +11,9 @@
 # this web page.
 #
 
-_npmname=fast-cli
-_npmver=3.2.0
-pkgname=nodejs-fast-cli # All lowercase
-pkgver=3.2.0
+pkgname=nodejs-fast-cli
+_npmname=${pkgname/nodejs-/}
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Test your download and upload speed using fast.com from Netflix"
 arch=(any)
@@ -61,18 +60,17 @@ depends=(
          'xdg-utils'
 )
 optdepends=()
-source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-noextract=($_npmname-$_npmver.tgz)
-sha1sums=(f28160d9356163e4f43bfe596693ecac38886c16)
-sha256sums=(d5a68ad0e82de530a0c94bceda2b6abf553983328bb9d27fbbc05085ddf259d3)
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+noextract=($_npmname-$pkgver.tgz)
 
 package() {
   cd $srcdir
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
   chown -R root:root "$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
+sha256sums=('a3132015439a57d18d782f11c3c5c4d27f8be867643eb8526111514966715524')
