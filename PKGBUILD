@@ -1,7 +1,7 @@
 # Maintainer: Grant G <grant@fig.io>
 
 pkgname='fig-nightly-bin'
-pkgver='2.20.0_nightly.20240517'
+pkgver='2.20.0_nightly.20240518'
 pkgrel=1
 pkgdesc='Adds IDE-style autocomplete to your existing terminal.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('fig')
 makedepends=('jq' 'xz')
 source=("${pkgname}-${pkgver//_/-}.tar.xz::https://repo.fig.io/generic/nightly/asset/${pkgver//_/-}/x86_64/fig.tar.xz")
 
-sha256sums=('6f614c8896b9f234a0a2c1fd111eefccb12a55da5db11db8cbefc3d43135ab07')
+sha256sums=('3316b83877f44e6134103945d30e3aa4bd9bc8123040ef05ba21104f7cb0c16e')
 
 package() {
   cp -r "${srcdir}/usr" "${pkgdir}/usr"
