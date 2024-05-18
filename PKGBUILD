@@ -5,9 +5,9 @@
 _microarchitecture=0
 
 ## Major kernel version
-_major=6.8
+_major=6.9
 ## Minor kernel version
-_minor=9
+_minor=1
 
 ## PKGBUILD ##
 
@@ -34,7 +34,7 @@ validpgpkeys=(
   '83BC8889351B5DEBBB68416EB8AC08600F108CDF'  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('f905f1238ea7a8e85314bacf283302e8097006010d25fcea726d0de0ea5bc9b6'
+sha256sums=('01b414ba98fd189ecd544435caf3860ae2a790e3ec48f5aa70fdf42dc4c5c04a'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -84,11 +84,11 @@ prepare() {
   msg2 "Apply 0006-add-acs-overrides_iommu.patch..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
 
-  #msg2 "Apply 0007-v${_major}-winesync.patch..."
-  #patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
-
   msg2 "Apply 0007-v${_major}-fsync1_via_futex_waitv.patch..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
+
+  msg2 "Apply 0007-v${_major}-ntsync.patch..."
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-ntsync.patch
 
   msg2 "Apply 0012-misc-additions.patch..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
@@ -145,6 +145,7 @@ prepare() {
   scripts/config --disable CONFIG_KGDB
   scripts/config --disable CONFIG_FUNCTION_TRACER
   scripts/config --disable CONFIG_STACK_TRACER
+  scripts/config --disable CONFIG_STACK_VALIDATION
   
   ### Use Nconfig to customize compile options
   #make nconfig
@@ -173,6 +174,10 @@ _package() {
     'KSMBD-MODULE'
     'VIRTUALBOX-GUEST-MODULES'
     'WIREGUARD-MODULE'
+  )
+  replaces=(
+    'virtualbox-guest-modules-arch'
+    'wireguard-arch'
   )
 
   cd $_srcname
