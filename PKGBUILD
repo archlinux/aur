@@ -2,12 +2,12 @@
 # Contributor: c4tz
 # Submitter: c4tz
 pkgname=kodi-addon-pvr-zattoo
-pkgver=20.3.14
+pkgver=21.0.1
 pkgrel=1
 pkgdesc='Zattoo PVR Plugin for Kodi'
-_koditarget=Nexus
+_koditarget=Omega
 _gitname=pvr.zattoo
-_kodiver=20.2
+_kodiver=21.0
 arch=('any')
 url="https://github.com/rbuehlma/${_gitname}"
 license=('GPL')
@@ -19,8 +19,8 @@ depends=('kodi' 'kodi-addon-script-module-inputstreamhelper')
 source=("https://github.com/rbuehlma/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('b6f5205caede6aaf57c1eab8206c5a5b3aaa6b5d8bda862d983ca53150cdf14a'
-            '4e81abf81172812bc8891f69a7a80a2b846298cecaae7b5009725e28a3040c23')
+sha256sums=('5908de86c038b3565d8b3a8d4578d4cac0d37287fc039808542b874d9fb2bffa'
+            '7f54c1fd8456ac46221fbc85e447362bdc209163c6cb19fca98d106560071b7c')
 
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
