@@ -2,29 +2,24 @@
 # Contributor: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
 _backend=openmpi
 pkgname=ampi-${_backend}
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="Adaptive Message Passing Interface, OpenMPI backend"
-arch=('x86_64')
-license=('custom:Charm++/Converse License')
-url="http://charm.cs.uiuc.edu/research/ampi/"
-depends=('openmpi')
-makedepends=('gcc-fortran')
-source=("http://charm.cs.illinois.edu/distrib/charm-${pkgver}.tar.gz")
-sha512sums=('ea74616d3ae26548fbaa280678258198dc350bb20ecf9a4f00d3b63cc8bf86f145069a4f7641a3f0781775e42b9a845d911e1cec860933a85e6986c02898a1dd')
+arch=(x86_64)
+license=(Apache-2.0)
+url="http://charm.cs.uiuc.edu/research/ampi"
+depends=(openmpi)
+makedepends=(gcc-fortran)
+source=(charm-${pkgver}.tar.gz::https://github.com/UIUC-PPL/charm/archive/v${pkgver}.tar.gz)
+sha512sums=('baed3a7823f004ae24a6c49b5cdccc468ce36dcd5988e4d35ad19865a20e68939963ae9411a8afe8b9e3850d82a6a7b93085afc3f7e6de7e5a6877e19508e637')
 
 build() {
-  cd "charm-v${pkgver}"
-  ./build AMPI mpi-linux-$CARCH --with-production
+  cd charm-${pkgver}
+  ./buildold AMPI mpi-linux-$CARCH --with-production
 }
 
 package() {
-  cd "charm-v${pkgver}"
+  cd charm-${pkgver}
   make -C tmp install DESTDIR="${pkgdir}/opt/ampi-${_backend}"
-  # Workaround https://github.com/UIUC-PPL/charm/issues/2275
-  for wrapper in ampicc ampiCC ampicxx; do
-    f="${pkgdir}/opt/ampi-${_backend}/bin/$wrapper"
-    echo "Patching $f"
-    sed -i 's|charmarch=$(cat $CHARMBIN/../tmp/.gdir)|charmarch=mpi|g' "$f"
-  done
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
