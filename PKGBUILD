@@ -1,32 +1,35 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=avro
-pkgbase=python-$_pyname
-pkgname=(python-$_pyname)
-pkgver=1.11.1
+pkgname=python-avro
+pkgver=1.11.3
 pkgrel=1
 pkgdesc="Avro is a serialization and RPC framework."
 arch=(any)
 url="https://avro.apache.org/"
-license=(Apache)
-depends=(python)
-makedepends=(
-	python
-	python-setuptools
-)
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('b6177d3d2b1646cb331745837af72ed0')
-sha256sums=('f123623ecc648d0e20ce14f8ed85162140c13cc4b108865d1b2529fbfa06c008')
-sha512sums=('4e2158fd060642b3820fff7969b3122a89c5258d8f7d6d6ef176b3b4ad123f87283c3b74c671bbcbb54843ee22ba6f2a3a6c986d4835bf509698d7bba33e6b31')
+license=('Apache-2.0')
+depends=('python'
+         'python-zstandard'
+         'python-snappy')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/a/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz")
+b2sums=('3fbd8ea80eeea212e9136207c5207af5571ad74e21d5ab469fc1a86525cffb2f80477757be8b63cd026d9b75ec596d30b2c1bdf4abba6b15711cd3dffafcf80e')
+
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	pushd $_pyname-$pkgver
-	python setup.py build
-	popd
+    cd "$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package(){
-	cd $_pyname-$pkgver
-	python setup.py install --root "$pkgdir" --optimize=1
-	install -Dm644 avro/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.md -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 avro/LICENSE -t "$pkgdir/usr/share/$pkgname/"
 }

@@ -1,16 +1,18 @@
 pkgbase = python-avro
 	pkgdesc = Avro is a serialization and RPC framework.
-	pkgver = 1.11.1
+	pkgver = 1.11.3
 	pkgrel = 1
 	url = https://avro.apache.org/
 	arch = any
-	license = Apache
-	makedepends = python
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = https://pypi.io/packages/source/a/avro/avro-1.11.1.tar.gz
-	md5sums = b6177d3d2b1646cb331745837af72ed0
-	sha256sums = f123623ecc648d0e20ce14f8ed85162140c13cc4b108865d1b2529fbfa06c008
-	sha512sums = 4e2158fd060642b3820fff7969b3122a89c5258d8f7d6d6ef176b3b4ad123f87283c3b74c671bbcbb54843ee22ba6f2a3a6c986d4835bf509698d7bba33e6b31
+	depends = python-zstandard
+	depends = python-snappy
+	source = python-avro-1.11.3.tar.gz::https://files.pythonhosted.org/packages/source/a/avro/avro-1.11.3.tar.gz
+	b2sums = 3fbd8ea80eeea212e9136207c5207af5571ad74e21d5ab469fc1a86525cffb2f80477757be8b63cd026d9b75ec596d30b2c1bdf4abba6b15711cd3dffafcf80e
 
 pkgname = python-avro
