@@ -1,6 +1,6 @@
 pkgbase = kubectl-bin
 	pkgdesc = Kubernetes.io kubectl binary
-	pkgver = 1.30.0
+	pkgver = 1.30.1
 	pkgrel = 1
 	url = http://kubernetes.io
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kubectl-bin
 	license = apache
 	provides = kubectl
 	conflicts = kubectl
-	source = kubectl-bin-1.30.0-amd64::https://storage.googleapis.com/kubernetes-release/release/v1.30.0/bin/linux/amd64/kubectl
-	b2sums = 1cfbc6865c0dac5023076207ebbecc034015639e136245af0937c31f9ce05333da5dc690452d706c6fd87bd653e25cea32e25cdb1b231fc77421efe291b691e4
+	source = kubectl-bin-1.30.1-amd64::https://storage.googleapis.com/kubernetes-release/release/v1.30.1/bin/linux/amd64/kubectl
+	b2sums = a187fa8ad46b0f126ec991a4921a8eeba9d6af93fdada8a3e587afb6757e82d15b9827bc4f85991ff2cb716297b0e447c19417d7284030af0dec443763aa0f23
 
 pkgname = kubectl-bin
