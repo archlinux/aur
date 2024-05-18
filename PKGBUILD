@@ -1,0 +1,36 @@
+# Maintainer: Andrej Radović <r.andrej@gmail.com>
+pkgname=python-inventree-part-import
+_name=${pkgname#python-}
+pkgver=1.6
+pkgrel=1
+pkgdesc="CLI to import parts from into your InvenTree instance"
+url="https://github.com/30350n/inventree_part_import"
+depends=(
+    'python-beautifulsoup4'
+    'python-click'
+    'python-cutie'
+    'python-digikey-api'
+    'python-fake-useragent'
+    'python-inventree'
+    'python-isocodes'
+    'python-platformdirs'
+    'python-requests'
+    'python-tablib'
+    'python-thefuzz'
+    'python-yaml'
+)
+makedepends=(python-build python-installer python-wheel python-poetry)
+license=('MIT')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('bb30358e8c311cf3c015e9c5400471157998742c5af0042c88092d20c38b07cb')
+
+build() {
+	cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
+package() {
+	cd "$srcdir/$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+}

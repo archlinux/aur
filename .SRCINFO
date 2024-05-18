@@ -1,0 +1,27 @@
+pkgbase = python-inventree-part-import
+	pkgdesc = CLI to import parts from into your InvenTree instance
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/30350n/inventree_part_import
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python-beautifulsoup4
+	depends = python-click
+	depends = python-cutie
+	depends = python-digikey-api
+	depends = python-fake-useragent
+	depends = python-inventree
+	depends = python-isocodes
+	depends = python-platformdirs
+	depends = python-requests
+	depends = python-tablib
+	depends = python-thefuzz
+	depends = python-yaml
+	source = https://files.pythonhosted.org/packages/source/i/inventree_part_import/inventree_part_import-1.6.tar.gz
+	sha256sums = bb30358e8c311cf3c015e9c5400471157998742c5af0042c88092d20c38b07cb
+
+pkgname = python-inventree-part-import
