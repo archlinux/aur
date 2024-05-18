@@ -1,0 +1,17 @@
+pkgbase = heartlib
+	pkgdesc = Comprehensive API for Nintendo GBA inspired by HAMLib and HELlib
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://github.com/Sterophonick/HeartLib
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	makedepends = base-devel
+	depends = devkitARM
+	depends = devkitARM-gdb
+	depends = maxmod-gba
+	depends = gba-examples
+	source = https://github.com/Sterophonick/HeartLib
+
+pkgname = heartlib
+
