@@ -1,14 +1,14 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Kyle Keen <keenerd@gmail.com>
 pkgname=multimon-ng-git
-pkgver=20240106
-pkgrel=2
+pkgver=20240517
+pkgrel=1
 pkgdesc="An sdr decoder, supports pocsag, ufsk, clipfsk, afsk, hapn, fsk, dtmf, zvei."
 url="http://dekar.wc3edit.net/2012/05/24/multimonng/"
 arch=('i686' 'x86_64')
 license=("GPL2")
 depends=('ncurses' 'libpulse' 'libx11')
-makedepends=('git' 'qt4')
+makedepends=('git' 'qt5-base')
 optdepends=('sox: wav conversion')
 provides=('multimon-ng')
 conflicts=('multimon-ng')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
 
-  qmake-qt4 PREFIX=/usr multimon-ng.pro
+  qmake PREFIX=/usr multimon-ng.pro
   sed -i 's/-lpulse-simple/& -lpulse/' Makefile
   make PREFIX=/usr
 }
