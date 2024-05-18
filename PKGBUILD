@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=escheR
-_pkgver=1.3.2
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-stexampledata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('db0a4cc95d4270dc69ce292d88e8c006')
-b2sums=('2045dd02a2b038df9c39e0a0fe8056b83c68e2ce9e579bd018de7b8c0b91a22de8961e0507acd537288318c5e0d596ece9c9a954aa8e28fd4e7ad4582b82cba5')
+md5sums=('c285bb9db644170a9b00e77b64b99147')
+b2sums=('6f50c031c5571b6a56b3e6b2d4138ed06a6da4d505066a5d9dfaa475c7f7e66183ce96fd89529ee8ad35241afea4ec08a8fc626b41181234fe2ef9584c9f2f69')
 
 build() {
   mkdir build
