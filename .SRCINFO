@@ -1,12 +1,13 @@
 pkgbase = razercfg
 	pkgdesc = Razer mouse configuration tool
 	pkgver = 0.42
-	pkgrel = 7
+	pkgrel = 8
 	url = https://bues.ch/cms/hacking/razercfg
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = systemd
+	makedepends = python-setuptools
 	depends = hicolor-icon-theme
 	depends = libusb
 	depends = python

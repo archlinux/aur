@@ -1,16 +1,17 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Maxwell "Synthead" Pray <synthead@gmail.com>
 # Contributor: Fergus Symon <fergofrog@fergofrog.com>
 
 pkgname=razercfg
 pkgver=0.42
-pkgrel=7
+pkgrel=8
 pkgdesc='Razer mouse configuration tool'
 arch=('x86_64')
 url=https://bues.ch/cms/hacking/razercfg
 license=('GPL-2.0-or-later')
 depends=('hicolor-icon-theme' 'libusb' 'python')
-makedepends=('cmake' 'systemd')
+makedepends=('cmake' 'systemd' 'python-setuptools')
 optdepends=('python-pyqt5: for the graphical qrazercfg tool')
 provides=('razerd')
 backup=('etc/razer.conf')
