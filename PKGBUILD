@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Alexandre Courbot <gnurou@gmail.com>
 # Contributor: Michal Hybner <dta081@gmail.com>
 pkgname=libkarma
@@ -5,7 +6,7 @@ pkgver=0.1.2
 pkgrel=1
 pkgdesc="Network access library for the Rio Karma"
 arch=(i686 x86_64)
-url="http://www.freakysoft.de/html/libkarma/"
+url="http://www.freakysoft.de/libkarma/"
 license=('GPL')
 depends=('libusb-compat' 'taglib')
 source=(http://www.freakysoft.de/libkarma/libkarma-${pkgver}.tar.gz)
