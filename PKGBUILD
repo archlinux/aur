@@ -15,7 +15,7 @@ sha512sums=('baed3a7823f004ae24a6c49b5cdccc468ce36dcd5988e4d35ad19865a20e6893996
 
 build() {
   cd charm-${pkgver}
-  ./buildold AMPI mpi-linux-$CARCH --with-production
+  ./buildold AMPI mpi-linux-$CARCH --with-production -Wno-implicit-int
 }
 
 package() {
