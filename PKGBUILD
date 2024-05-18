@@ -65,7 +65,7 @@ backup=(
   'etc/conf.d/vmware'
 )
 source=(
-  "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
+  "file://VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
 
   'vmware-bootstrap'
   'vmware-vix-bootstrap'
@@ -149,7 +149,7 @@ makedepends+=(
 )
 
 source+=(
-  "https://download3.vmware.com/software/fusion/file/VMware-Fusion-${_vmware_fusion_ver_full/_/-}.dmg"
+  "file://VMware-Fusion-${_vmware_fusion_ver_full/_/-}.dmg"
   "unlocker.py"
   "efi-patches.txt"
 )
