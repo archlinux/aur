@@ -17,6 +17,7 @@ prepare() {
   git submodule update --force --init --recursive
   curl -L https://github.com/OpenModelica/OMCompiler-3rdParty/pull/158.patch | patch -p1 -d OMCompiler/3rdParty
   curl -L https://github.com/OpenModelica/OMSimulator/pull/1295.patch | patch -p1 -d OMSimulator
+  curl -L https://github.com/OpenModelica/OMSimulator/pull/1300.patch | patch -p1 -d OMSimulator
 }
 
 build() {
