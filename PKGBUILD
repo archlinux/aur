@@ -3,7 +3,7 @@
 _pkgname="tinyMediaManager"
 pkgname="${_pkgname,,}-bin"
 pkgver=5.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A media management tool written in Java/Swing."
 provides=("${_pkgname,,}")
 conflicts=("${_pkgname,,}")
@@ -23,7 +23,11 @@ sha256sums_aarch64=('6fc261123aa3faeb89424dddf08ba17dbbc116663c10e3d96e77b2ed11d
 prepare() {
     cd "${_pkgname}"
     mv LICENSE ..
-    rm -rf jre native/linux/addons/*
+    rm -rf jre
+    case $CARCH in
+        x86_64)  rm -rf native/linux/addons/* ;;
+        aarch64) rm -rf native/arm/addons/* ;;
+    esac
 }
 
 package() {
@@ -36,5 +40,8 @@ package() {
 
     ln -s "/opt/${_pkgname,,}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname,,}"
     ln -s /usr/lib/jvm/default             "${pkgdir}/opt/${_pkgname,,}/jre"
-    ln -s /usr/bin/ffmpeg                  "${pkgdir}/opt/${_pkgname,,}/native/linux/addons/ffmpeg"
+    case $CARCH in
+        x86_64)  ln -s /usr/bin/ffmpeg     "${pkgdir}/opt/${_pkgname,,}/native/linux/addons/ffmpeg" ;;
+        aarch64) ln -s /usr/bin/ffmpeg     "${pkgdir}/opt/${_pkgname,,}/native/arm/addons/ffmpeg"   ;;
+    esac
 }
