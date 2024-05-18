@@ -1,4 +1,4 @@
-From 53c49da37bba2d6c1d83299fbe3112220d00743a Mon Sep 17 00:00:00 2001
+From d6a106a2336775c36651deadafe6cb8b48e87339 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
@@ -6,29 +6,29 @@ Subject: [PATCH 2/2] Cleanup
 Co-authored-by: zhaose <weiliang1503@outlook.com>
 Signed-off-by: Aviana Cruz <gwencroft@proton.me>
 ---
- .../java/org/jackhuang/hmcl/Launcher.java     |   8 -
+ .../java/org/jackhuang/hmcl/Launcher.java     |   9 -
  .../java/org/jackhuang/hmcl/Metadata.java     |   2 -
  .../org/jackhuang/hmcl/countly/Countly.java   |  86 ------
  .../org/jackhuang/hmcl/ui/Controllers.java    |   9 -
  .../org/jackhuang/hmcl/ui/CrashWindow.java    |   3 -
- .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  77 -----
+ .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  76 -----
  .../hmcl/ui/account/CreateAccountPane.java    |  16 -
  .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  79 -----
  .../hmcl/ui/main/LauncherSettingsPage.java    |  14 +-
  .../org/jackhuang/hmcl/ui/main/MainPage.java  | 135 +--------
- .../org/jackhuang/hmcl/ui/main/RootPage.java  |   3 -
+ .../org/jackhuang/hmcl/ui/main/RootPage.java  |  11 -
  .../jackhuang/hmcl/ui/main/SettingsPage.java  |  60 ----
  .../jackhuang/hmcl/ui/main/SettingsView.java  |  58 ----
  .../hmcl/upgrade/ExecutableHeaderHelper.java  | 124 --------
  .../hmcl/upgrade/HMCLDownloadTask.java        |  68 -----
- .../hmcl/upgrade/IntegrityChecker.java        | 146 ---------
+ .../hmcl/upgrade/IntegrityChecker.java        | 145 ---------
  .../jackhuang/hmcl/upgrade/RemoteVersion.java | 103 -------
  .../jackhuang/hmcl/upgrade/UpdateChannel.java |  42 ---
- .../jackhuang/hmcl/upgrade/UpdateChecker.java | 128 --------
- .../jackhuang/hmcl/upgrade/UpdateHandler.java | 282 ------------------
+ .../jackhuang/hmcl/upgrade/UpdateChecker.java | 127 --------
+ .../jackhuang/hmcl/upgrade/UpdateHandler.java | 281 ------------------
  .../jackhuang/hmcl/util/CrashReporter.java    |   5 -
  .../hmcl/game/GameDumpGenerator.java          |   6 +-
- 22 files changed, 3 insertions(+), 1451 deletions(-)
+ 22 files changed, 3 insertions(+), 1456 deletions(-)
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/countly/Countly.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
@@ -41,10 +41,10 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-index 772a436e1..e28bf7805 100644
+index 494dda7b3..de7786921 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-@@ -33,8 +33,6 @@ import org.jackhuang.hmcl.setting.SambaException;
+@@ -30,8 +30,6 @@ import org.jackhuang.hmcl.setting.SambaException;
  import org.jackhuang.hmcl.task.AsyncTaskExecutor;
  import org.jackhuang.hmcl.task.Schedulers;
  import org.jackhuang.hmcl.ui.Controllers;
@@ -53,7 +53,7 @@ index 772a436e1..e28bf7805 100644
  import org.jackhuang.hmcl.util.CrashReporter;
  import org.jackhuang.hmcl.util.Lang;
  import org.jackhuang.hmcl.util.StringUtils;
-@@ -119,8 +117,6 @@ public final class Launcher extends Application {
+@@ -111,8 +109,6 @@ public final class Launcher extends Application {
                  Platform.setImplicitExit(false);
                  Controllers.initialize(primaryStage);
  
@@ -62,11 +62,12 @@ index 772a436e1..e28bf7805 100644
                  primaryStage.show();
              });
          } catch (Throwable e) {
-@@ -259,10 +255,6 @@ public final class Launcher extends Application {
+@@ -212,11 +208,6 @@ public final class Launcher extends Application {
      }
  
      public static void main(String[] args) {
 -        if (UpdateHandler.processArguments(args)) {
+-            LOG.shutdown();
 -            return;
 -        }
 -
@@ -186,10 +187,10 @@ index f18b19685..000000000
 -    private static final String APP_KEY = "";
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-index 9975f47d2..b9a5753ad 100644
+index af9c01d4a..82758c65e 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-@@ -385,15 +385,6 @@ public final class Controllers {
+@@ -386,15 +386,6 @@ public final class Controllers {
  
      public static void onHyperlinkAction(String href) {
          if (href.startsWith("hmcl://")) {
@@ -206,7 +207,7 @@ index 9975f47d2..b9a5753ad 100644
              FXUtils.openLink(href);
          }
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
-index a3f85c619..098536408 100644
+index c1f7158d4..60215297a 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
 @@ -28,7 +28,6 @@ import javafx.scene.layout.StackPane;
@@ -228,10 +229,10 @@ index a3f85c619..098536408 100644
          lblCrash.setWrapText(true);
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
 deleted file mode 100644
-index b43133a1c..000000000
+index e8602e394..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
 +++ /dev/null
-@@ -1,77 +0,0 @@
+@@ -1,76 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2021  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -261,11 +262,10 @@ index b43133a1c..000000000
 -import org.jackhuang.hmcl.ui.construct.DialogCloseEvent;
 -import org.jackhuang.hmcl.upgrade.RemoteVersion;
 -
--import java.util.logging.Level;
 -
 -import static org.jackhuang.hmcl.Metadata.CHANGELOG_URL;
 -import static org.jackhuang.hmcl.ui.FXUtils.onEscPressed;
--import static org.jackhuang.hmcl.util.Logging.LOG;
+-import static org.jackhuang.hmcl.util.logging.Logger.LOG;
 -import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
 -
 -public class UpgradeDialog extends JFXDialogLayout {
@@ -290,7 +290,7 @@ index b43133a1c..000000000
 -                });
 -                setBody(webView);
 -            } catch (NoClassDefFoundError | UnsatisfiedLinkError e) {
--                LOG.log(Level.WARNING, "WebView is missing or initialization failed", e);
+-                LOG.warning("WebView is missing or initialization failed", e);
 -                FXUtils.openLink(url);
 -            }
 -        }
@@ -675,7 +675,7 @@ index 6f1cf7f17..c63d73ce9 100644
          FXUtils.checkFxUserThread();
          this.profile = profile;
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-index 9ef6da0f4..2963bb587 100644
+index abf24d6ce..c892a4180 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 @@ -42,7 +42,6 @@ import org.jackhuang.hmcl.ui.nbt.NBTEditorPage;
@@ -686,7 +686,7 @@ index 9ef6da0f4..2963bb587 100644
  import org.jackhuang.hmcl.util.Lang;
  import org.jackhuang.hmcl.util.StringUtils;
  import org.jackhuang.hmcl.util.TaskCancellationAction;
-@@ -110,8 +109,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+@@ -109,8 +108,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
                      });
  
              FXUtils.onChangeAndOperate(Profiles.selectedVersionProperty(), mainPage::setCurrentGame);
@@ -695,8 +695,30 @@ index 9ef6da0f4..2963bb587 100644
  
              Profiles.registerVersionsListener(profile -> {
                  HMCLGameRepository repository = profile.getRepository();
+@@ -174,13 +171,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+             launcherSettingsItem.setTitle(i18n("settings"));
+             launcherSettingsItem.setOnAction(e -> Controllers.navigate(Controllers.getSettingsPage()));
+ 
+-            // sixth item in left sidebar
+-            AdvancedListItem chatItem = new AdvancedListItem();
+-            chatItem.setLeftGraphic(wrap(SVG.CHAT));
+-            chatItem.setActionButtonVisible(false);
+-            chatItem.setTitle(i18n("chat"));
+-            chatItem.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/groups.html"));
+-
+             // the left sidebar
+             AdvancedListBox sideBar = new AdvancedListBox()
+                     .startCategory(i18n("account").toUpperCase(Locale.ROOT))
+@@ -191,7 +181,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+                     .add(downloadItem)
+                     .startCategory(i18n("settings.launcher.general").toUpperCase(Locale.ROOT))
+                     .add(launcherSettingsItem)
+-                    .add(chatItem)
+                     ;
+ 
+             // the root page, with the sidebar in left, navigator in center.
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
-index 1e6975e4d..e0e7e3d58 100644
+index 90df9e610..2de8c21d2 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
 @@ -27,10 +27,6 @@ import org.jackhuang.hmcl.setting.Settings;
@@ -707,10 +729,10 @@ index 1e6975e4d..e0e7e3d58 100644
 -import org.jackhuang.hmcl.upgrade.UpdateChannel;
 -import org.jackhuang.hmcl.upgrade.UpdateChecker;
 -import org.jackhuang.hmcl.upgrade.UpdateHandler;
- import org.jackhuang.hmcl.util.Logging;
  import org.jackhuang.hmcl.util.StringUtils;
  import org.jackhuang.hmcl.util.i18n.Locales;
-@@ -69,57 +65,6 @@ public final class SettingsPage extends SettingsView {
+ import org.jackhuang.hmcl.util.io.FileUtils;
+@@ -68,57 +64,6 @@ public final class SettingsPage extends SettingsView {
                  Bindings.createObjectBinding(() -> Optional.ofNullable(Settings.instance().getCommonDirectory())
                                  .orElse(i18n("launcher.cache_directory.disabled")),
                          config().commonDirectoryProperty(), config().commonDirTypeProperty()));
@@ -768,7 +790,7 @@ index 1e6975e4d..e0e7e3d58 100644
      }
  
      @Override
-@@ -143,11 +88,6 @@ public final class SettingsPage extends SettingsView {
+@@ -142,11 +87,6 @@ public final class SettingsPage extends SettingsView {
          });
      }
  
@@ -781,7 +803,7 @@ index 1e6975e4d..e0e7e3d58 100644
      protected void clearCacheDirectory() {
          FileUtils.cleanDirectoryQuietly(new File(Settings.instance().getCommonDirectory(), "cache"));
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
-index 445f28be1..aa0d7e298 100644
+index 39bd0ae17..4eb1fd25b 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
 @@ -50,11 +50,6 @@ public abstract class SettingsView extends StackPane {
@@ -1078,10 +1100,10 @@ index 8b6fdc06c..000000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
 deleted file mode 100644
-index d03600e2e..000000000
+index 510a59c8a..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
 +++ /dev/null
-@@ -1,146 +0,0 @@
+@@ -1,145 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -1115,12 +1137,11 @@ index d03600e2e..000000000
 -import java.util.Map;
 -import java.util.Map.Entry;
 -import java.util.TreeMap;
--import java.util.logging.Level;
 -import java.util.zip.ZipEntry;
 -import java.util.zip.ZipFile;
 -
 -import static java.nio.charset.StandardCharsets.UTF_8;
--import static org.jackhuang.hmcl.util.Logging.LOG;
+-import static org.jackhuang.hmcl.util.logging.Logger.LOG;
 -
 -/**
 - * A class that checks the integrity of HMCL.
@@ -1216,7 +1237,7 @@ index d03600e2e..000000000
 -                LOG.info("Successfully verified current JAR");
 -                selfVerified = true;
 -            } catch (IOException e) {
--                LOG.log(Level.WARNING, "Failed to verify myself, is the JAR corrupt?", e);
+-                LOG.warning("Failed to verify myself, is the JAR corrupt?", e);
 -                selfVerified = false;
 -            }
 -
@@ -1387,10 +1408,10 @@ index 998a3da7d..000000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
 deleted file mode 100644
-index eb9f896cb..000000000
+index b4663b0f2..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
 +++ /dev/null
-@@ -1,128 +0,0 @@
+@@ -1,127 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -1420,11 +1441,10 @@ index eb9f896cb..000000000
 -import org.jackhuang.hmcl.util.versioning.VersionNumber;
 -
 -import java.io.IOException;
--import java.util.logging.Level;
 -
 -import static org.jackhuang.hmcl.util.Lang.mapOf;
 -import static org.jackhuang.hmcl.util.Lang.thread;
--import static org.jackhuang.hmcl.util.Logging.LOG;
+-import static org.jackhuang.hmcl.util.logging.Logger.LOG;
 -import static org.jackhuang.hmcl.util.Pair.pair;
 -
 -public final class UpdateChecker {
@@ -1505,7 +1525,7 @@ index eb9f896cb..000000000
 -                    result = checkUpdate(channel);
 -                    LOG.info("Latest version (" + channel + ") is " + result);
 -                } catch (IOException e) {
--                    LOG.log(Level.WARNING, "Failed to check for update", e);
+-                    LOG.warning("Failed to check for update", e);
 -                }
 -
 -                RemoteVersion finalResult = result;
@@ -1521,10 +1541,10 @@ index eb9f896cb..000000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 deleted file mode 100644
-index eb2d179a8..000000000
+index d0dccc4f7..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 +++ /dev/null
-@@ -1,282 +0,0 @@
+@@ -1,281 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -1569,13 +1589,12 @@ index eb2d179a8..000000000
 -import java.nio.file.Paths;
 -import java.util.*;
 -import java.util.concurrent.CancellationException;
--import java.util.logging.Level;
 -import java.util.regex.Matcher;
 -import java.util.regex.Pattern;
 -
 -import static org.jackhuang.hmcl.ui.FXUtils.checkFxUserThread;
 -import static org.jackhuang.hmcl.util.Lang.thread;
--import static org.jackhuang.hmcl.util.Logging.LOG;
+-import static org.jackhuang.hmcl.util.logging.Logger.LOG;
 -import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
 -
 -public final class UpdateHandler {
@@ -1593,7 +1612,7 @@ index eb2d179a8..000000000
 -            try {
 -                performMigration();
 -            } catch (IOException e) {
--                LOG.log(Level.WARNING, "Failed to perform migration", e);
+-                LOG.warning("Failed to perform migration", e);
 -                SwingUtils.showErrorDialog(i18n("fatal.apply_update_failure", Metadata.PUBLISH_URL) + "\n" + StringUtils.getStackTrace(e));
 -            }
 -            return true;
@@ -1608,7 +1627,7 @@ index eb2d179a8..000000000
 -            try {
 -                applyUpdate(Paths.get(args[1]));
 -            } catch (IOException e) {
--                LOG.log(Level.WARNING, "Failed to apply update", e);
+-                LOG.warning("Failed to apply update", e);
 -                SwingUtils.showErrorDialog(i18n("fatal.apply_update_failure", Metadata.PUBLISH_URL) + "\n" + StringUtils.getStackTrace(e));
 -            }
 -            return true;
@@ -1635,7 +1654,7 @@ index eb2d179a8..000000000
 -            try {
 -                downloaded = Files.createTempFile("hmcl-update-", ".jar");
 -            } catch (IOException e) {
--                LOG.log(Level.WARNING, "Failed to create temp file", e);
+-                LOG.warning("Failed to create temp file", e);
 -                return;
 -            }
 -
@@ -1654,15 +1673,15 @@ index eb2d179a8..000000000
 -                        }
 -
 -                        requestUpdate(downloaded, getCurrentLocation());
--                        System.exit(0);
+-                        Main.exit(0);
 -                    } catch (IOException e) {
--                        LOG.log(Level.WARNING, "Failed to update to " + version, e);
+-                        LOG.warning("Failed to update to " + version, e);
 -                        Platform.runLater(() -> Controllers.dialog(StringUtils.getStackTrace(e), i18n("update.failed"), MessageType.ERROR));
 -                    }
 -
 -                } else {
 -                    Exception e = executor.getException();
--                    LOG.log(Level.WARNING, "Failed to update to " + version, e);
+-                    LOG.warning("Failed to update to " + version, e);
 -                    if (e instanceof CancellationException) {
 -                        Platform.runLater(() -> Controllers.showToast(i18n("message.cancelled")));
 -                    } else {
@@ -1689,7 +1708,7 @@ index eb2d179a8..000000000
 -                Files.move(target, newFilename.get());
 -                target = newFilename.get();
 -            } catch (IOException e) {
--                LOG.log(Level.WARNING, "Failed to move target", e);
+-                LOG.warning("Failed to move target", e);
 -            }
 -        }
 -
@@ -1800,7 +1819,7 @@ index eb2d179a8..000000000
 -                    LOG.info("Successfully broke the force update feature");
 -                }
 -            } catch (IOException e) {
--                LOG.log(Level.WARNING, "Failed to break the force update feature", e);
+-                LOG.warning("Failed to break the force update feature", e);
 -            } catch (JsonParseException e) {
 -                hmclVersionJson.toFile().delete();
 -            }
@@ -1808,7 +1827,7 @@ index eb2d179a8..000000000
 -    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java b/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
-index f1d00548f..ba2158ac2 100644
+index ad3121b5b..434a6433a 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
 @@ -23,8 +23,6 @@ import javafx.scene.control.Alert.AlertType;
@@ -1820,7 +1839,7 @@ index f1d00548f..ba2158ac2 100644
  import org.jackhuang.hmcl.util.io.NetworkUtils;
  
  import java.io.IOException;
-@@ -103,9 +101,6 @@ public final class CrashReporter implements Thread.UncaughtExceptionHandler {
+@@ -102,9 +100,6 @@ public final class CrashReporter implements Thread.UncaughtExceptionHandler {
                      if (showCrashWindow) {
                          new CrashWindow(report).show();
                      }
@@ -1831,10 +1850,10 @@ index f1d00548f..ba2158ac2 100644
              });
          } catch (Throwable handlingException) {
 diff --git a/HMCLCore/src/main/java/org/jackhuang/hmcl/game/GameDumpGenerator.java b/HMCLCore/src/main/java/org/jackhuang/hmcl/game/GameDumpGenerator.java
-index 984cdfd79..7fd482fca 100644
+index 36ab72ee2..eae748add 100644
 --- a/HMCLCore/src/main/java/org/jackhuang/hmcl/game/GameDumpGenerator.java
 +++ b/HMCLCore/src/main/java/org/jackhuang/hmcl/game/GameDumpGenerator.java
-@@ -165,10 +165,6 @@ public final class GameDumpGenerator {
+@@ -164,10 +164,6 @@ public final class GameDumpGenerator {
      }
  
      private static InputStream executeJVMCommand(VirtualMachine vm, String command) throws IOException, AttachNotSupportedException {
@@ -1847,5 +1866,5 @@ index 984cdfd79..7fd482fca 100644
      }
  }
 -- 
-2.44.0
+2.45.1
 
