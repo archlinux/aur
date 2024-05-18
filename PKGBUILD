@@ -2,7 +2,7 @@
 
 pkgname=imibrowser
 pkgver=14.5.4753
-pkgrel=1
+pkgrel=2
 pkgdesc="iReasoning Freeware MIB browser tool for SNMP API"
 url="https://www.ireasoning.com/mibbrowser.shtml"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(
 	custom
 	GPL
 )
-depends=(jre-openjdk)
+depends=(jdk-openjdk)
 makedepends=(imagemagick)
 source=("$pkgname-$pkgver.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
 	'iMIBrowser.desktop'
