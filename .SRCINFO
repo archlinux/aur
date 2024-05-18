@@ -1,7 +1,7 @@
 pkgbase = yambar-hyprland-wses
 	pkgdesc = Enable Yambar to show Hyprland workspaces
 	pkgver = 0.2.0_alpha.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jonhoo/yambar-hyprland-wses
 	arch = x86_64
 	license = MIT,

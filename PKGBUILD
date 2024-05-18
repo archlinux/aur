@@ -1,7 +1,7 @@
 # Maintainer: Carwyn Nelson <carwyn at hey dot com>
 pkgname=yambar-hyprland-wses
 pkgver=0.2.0_alpha.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Enable Yambar to show Hyprland workspaces"
 arch=('x86_64')
 url="https://github.com/jonhoo/yambar-hyprland-wses"
@@ -34,5 +34,5 @@ check() {
 package() {
   cd "$pkgname-${pkgver//_/-}"
 
-  install -Dm0755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
