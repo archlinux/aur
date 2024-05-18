@@ -1,7 +1,7 @@
 pkgbase = unison-2.48.4-compat-bin
-	pkgdesc = File-synchronization tool. Specific version ${_pkgver}, compatible with parallel installation to other versions of unison binaries (but pay attention to the local user configurations!). Prebuilt binary from debian, repackaged.
+	pkgdesc = File-synchronization tool. Specific version 2.48.4, compatible with parallel installation to other versions of unison binaries (but pay attention to the local user configurations!). Prebuilt binary from debian, repackaged.
 	pkgver = 2.48.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.cis.upenn.edu/~bcpierce/unison/
 	arch = x86_64
 	license = GPL2
