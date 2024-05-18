@@ -3,22 +3,22 @@
 
 pkgname=python-oslo-metrics
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenStack library for collecting metrics from Oslo libraries"
 arch=(any)
 url="https://opendev.org/openstack/oslo.metrics"
 license=(Apache-2.0)
 depends=('python'
-         'python-pbr'
          'python-oslo-utils'
          'python-oslo-log'
          'python-oslo-config'
-         'python-prometheus_client')
+         'python-prometheus_client'
+         'python-oslotest')
 makedepends=('python-build'
              'python-installer'
-             'python-sphinx'
              'python-setuptools'
-             'python-wheel')
+             'python-wheel'
+             'tar')
 checkdepends=('python-hacking'
               'python-oslotest'
               'bandit'
@@ -44,5 +44,7 @@ check(){
 package(){
     cd "$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
