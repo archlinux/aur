@@ -3,7 +3,7 @@ pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
 _reponame=sk-chos-config
-pkgver=r549.33797d2
+pkgver=r560.fa7dbb8
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -129,4 +129,8 @@ package() {
     # udev rules
     install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
     install -m644 -t "${pkgdir}/usr/lib/udev/rules.d" "${source_dir}/lib/udev/rules.d"/*
+
+    # /usr/share/plymouth/themes/steamos/*
+    install -dm755 "${pkgdir}/usr/share/plymouth/themes/steamos"
+    install -m644 -t "${pkgdir}/usr/share/plymouth/themes/steamos" "${source_dir}/share/plymouth/themes/steamos"/*
 }
