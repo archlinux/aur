@@ -2,7 +2,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=zesarux-git
-pkgver=ZEsarUX.11.0.beta1.r194.g50ebe51
+pkgver=ZEsarUX.11.0.beta1.r343.gc7b4dcc
 _ver=11.0
 pkgrel=1
 epoch=2
@@ -32,6 +32,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/zesarux-code/src"
+	
+	# Working around a gcc bug (?)
+	
+	export CFLAGS=-Wno-implicit-function-declaration
+	
 	# disable libcaca for now
 	./configure --prefix /usr --enable-memptr --enable-visualmem --enable-cpustats --disable-caca --enable-sdl2
 	sed -i 's/tar -C/#tar -C/g' Makefile
