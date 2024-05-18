@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=nnSVG
-_pkgver=1.7.4
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,9 +34,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('d4d153515f4a8e6dd0593ecf25bf885c'
+md5sums=('24adcb1712b14cf817e92590762ed6be'
          '41ab7394f6ddcf0b0751e14cbe78b1d1')
-b2sums=('57356e3974e67d9ee5b686fa5374dcc9af137d48b7c32e05108cd2f87f3044fc4ea50f521f11dd4e6438422ee253c40b993fed9d29036dada270d6691ccdf8e2'
+b2sums=('f5e894d5bb9553f5dbcca9558d49622d2e0bfc4ca1e66247aebf4c27a749377a39cf959b3f2575379315968813005c87c37d64fcf6b8b4fb5dd90553dfad91f5'
         'c586a59926aad5469e9ea58861829cd70326cb0023b28e8b814df2cdcc6efb1636fbcf548fcf561d19d6e7b4f2356a6d7a29b1cb9fc2bffdf2b1de45737d3c5a')
 
 prepare() {
