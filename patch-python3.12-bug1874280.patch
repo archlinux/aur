@@ -1,0 +1,30 @@
+Bug 1874280 - use ConfigParser instead of SafeConfigParser for manifestupdate.py r=jgraham
+
+Since our minimum supported Python version is 3.7, we can unconditionally
+change to ConfigParser here.
+
+Differential Revision: https://phabricator.services.mozilla.com/D198327
+
+diff --git a/testing/web-platform/manifestupdate.py b/testing/web-platform/manifestupdate.py
+--- a/testing/web-platform/manifestupdate.py
++++ b/testing/web-platform/manifestupdate.py
+@@ -170,17 +170,17 @@ def ensure_manifest_directories(logger, 
+                     raise
+         elif not os.path.isdir(manifest_dir):
+             raise IOError("Manifest directory is a file")
+ 
+ 
+ def read_local_config(wpt_dir):
+     src_config_path = os.path.join(wpt_dir, "wptrunner.ini")
+ 
+-    parser = configparser.SafeConfigParser()
++    parser = configparser.ConfigParser()
+     success = parser.read(src_config_path)
+     assert src_config_path in success
+     return parser
+ 
+ 
+ def generate_config(logger, repo_root, wpt_dir, dest_path, force_rewrite=False):
+     """Generate the local wptrunner.ini file to use locally"""
+     if not os.path.exists(dest_path):
+

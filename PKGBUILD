@@ -78,10 +78,18 @@ options=(!debug
 backup=("usr/lib/${pkgname}/${pkgname}.cfg"
   "usr/lib/${pkgname}/distribution/policies.json")
 source=(https://gitlab.com/api/v4/projects/55893651/packages/generic/firedragon/${_pkgver}/firedragon-v${_pkgver}.source.tar.zst
+  patch-python3.12-bug1831512.patch
+  patch-python3.12-bug1860051.patch
+  patch-python3.12-bug1866829.patch
+  patch-python3.12-bug1874280.patch
   rustup.sh::https://sh.rustup.rs
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   "${pkgname}.desktop")
 sha256sums=('1ad498bfd401b961611915ffb256ae62a9bacf6d5b207fff93058031309145d8'
+            '9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3'
+            '168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455'
+            'df27ed1e0da5b192224978dc2a593a97e18e6e22062c611fc32b277500324e62'
+            'cf1c69fd3338fd8f5e482f55b669160b08dfb021f2348b620f0a85dd9dee8150'
             '32a680a84cf76014915b3f8aa44e3e40731f3af92cd45eb0fcc6264fd257c428'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
@@ -108,6 +116,12 @@ prepare() {
   export PATH="${srcdir}/cargo/bin:$PATH"
 
   cd firedragon-v"${_pkgver}" || exit
+
+  patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1831512.patch"
+  patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1860051.patch"
+  patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1866829.patch"
+  patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1874280.patch"
+
   cat > ../mozconfig << END
 ac_add_options --with-app-basename=${_pkgname}
 ac_add_options --with-app-name=${pkgname}
