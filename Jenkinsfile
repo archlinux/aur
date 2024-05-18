@@ -2,11 +2,10 @@
 pipeline {
     agent any
     environment {
-        // VERSION = """${sh(
-        //         returnStdout: true,
-        //         script: "curl https://api.github.com/repos/elastic/logstash/releases/latest | jq -r '.tag_name' | cut -c2- | tr -d '\n'"
-        //     )}"""
-        VERSION = "8.13.1"
+        VERSION = """${sh(
+                returnStdout: true,
+                script: "curl https://api.github.com/repos/elastic/logstash/releases/latest | jq -r '.tag_name' | cut -c2- | tr -d '\n'"
+            )}"""
     }
     stages {
         stage('Checkout') {
