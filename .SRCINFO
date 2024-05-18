@@ -20,7 +20,7 @@ pkgbase = opm-common
 	source = opm-common-release-2024.04-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2024.04/final.tar.gz
 	source = gcc-14.patch::https://github.com/OPM/opm-common/pull/4064.patch
 	sha512sums = 60ca3cb83628b3efb0d7424b4a4bbc5c650f2b1095da5a32617f5e0ed94f2861156cd78bfbcc0e126cfb7727db8106a903f8a802ea380cc05313346099957d02
-	sha512sums = fb960632ffdfefbe1564937bc72c82626728b1aa54d4f924e9c76bc0f0252897e67a29fe24a4812dac8cdcce539ec1076cf821b7b7a19cfa7c333ce15048cc67
+	sha512sums = c462d8149d70083abf536de8283633149319e16db439625073f89b7e65961c69e4fd9da2a4e21dfbcfbd37019afadc411b797e1f14279250b2c479e88976161d
 
 pkgname = opm-common
 	depends = dune-common>=2.9.1
