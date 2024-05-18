@@ -1,7 +1,7 @@
 pkgbase = python-qpid-proton
 	pkgdesc = An AMQP based messaging library
 	pkgver = 0.39.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qpid.apache.org/proton/
 	arch = any
 	license = Apache-2.0
