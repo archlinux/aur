@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=mescc-tools
