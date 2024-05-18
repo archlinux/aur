@@ -1,5 +1,5 @@
-# Maintainer: wowario <wowario[at]protonmail[dot]com>
-# Contributor: Giorgi Taba K'obakhidze <t@gtk.ge>
+# Maintainer: Giorgi Taba K'obakhidze <t@gtk.ge>
+# Contributor: wowario <wowario[at]protonmail[dot]com>
 
 pkgname=wowlet-git
 _pkgname=wowlet
