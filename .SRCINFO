@@ -11,6 +11,7 @@ pkgbase = heartlib
 	depends = devkitARM-gdb
 	depends = maxmod-gba
 	depends = gba-examples
+	depends = devkitpro-keyring
 	license = gplv3
 	source = https://github.com/Sterophonick/HeartLib
 
