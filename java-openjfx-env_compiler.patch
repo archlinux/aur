@@ -1,0 +1,16 @@
+diff -urN a/buildSrc/linux.gradle b/buildSrc/linux.gradle
+--- a/buildSrc/linux.gradle	2024-04-16 16:57:08.000000000 +0200
++++ b/buildSrc/linux.gradle	2024-05-13 22:04:53.150565968 +0200
+@@ -208,8 +208,10 @@
+     }
+ )
+ 
+-def compiler = IS_COMPILE_PARFAIT ? "parfait-gcc" : "${toolchainDir}gcc";
+-def linker = IS_STATIC_BUILD ? "ar" : IS_COMPILE_PARFAIT ? "parfait-g++" : "${toolchainDir}g++";
++def envCompiler = System.getenv("CC")
++def compiler = IS_COMPILE_PARFAIT ? "parfait-gcc" : envCompiler ? envCompiler : "${toolchainDir}gcc";
++def envLinker = System.getenv("CXX")
++def linker = IS_STATIC_BUILD ? "ar" : IS_COMPILE_PARFAIT ? "parfait-g++" : envLinker ? envLinker : "${toolchainDir}g++";
+ 
+ // Strip native .so shared libraries as a postprocess step when copying them
+ LINUX.strip = "${toolchainDir}strip"

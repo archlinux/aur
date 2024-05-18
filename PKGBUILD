@@ -17,7 +17,7 @@ pkgname=(
   java17-openjfx-src
 )
 pkgver=17.0.12.u0
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX 17 client application platform (open-source implementation of JavaFX)"
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -32,7 +32,6 @@ makedepends=(
   gdk-pixbuf2
   glib2
   gperf
-  gradle
   gtk2
   gtk3
   java-environment-openjdk=17
@@ -46,6 +45,7 @@ makedepends=(
   unzip
   webkit2gtk
   zip
+  gcc13
 )
 source=(
   # https://github.com/openjdk/jfx/archive/refs/tags/jfx-${pkgver//.u/+}.tar.gz
@@ -54,12 +54,14 @@ source=(
   java-openjfx-flags.patch
   java-openjfx-no-xlocale.patch
   java-openjfx-gstreamer-lite-gcc10-compat.patch
+  java-openjfx-env_compiler.patch
 )
 b2sums=('283470829a16117725c8e4950a3876c8a4eeb4d9a23dae07ea711cc672ca200420deece512c1bbce0bfb95e86b4875453bb538cf679dc0451214ac38646749a3'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
         'a56a5cfebb44cdbe3ada9c6da88fda6427a5bd1bf9fcc491df289c4f5c0e96ac3614c619aaf9428340f11e9dabf0a85fc7db4f49754c2700587cc66fc15372fd'
         '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e'
-        '119fa1cc5da2cdefa22bbe9b6f76581faa74e05fa7b6e5576470fc0251c6e257f122fbba03754cc01f7c7251145cfa1cab4ffc2f9d59ff0c175a121e943a0f64')
+        '119fa1cc5da2cdefa22bbe9b6f76581faa74e05fa7b6e5576470fc0251c6e257f122fbba03754cc01f7c7251145cfa1cab4ffc2f9d59ff0c175a121e943a0f64'
+        '189f689fb43447b0aeb3cfac561be94f76b243bcf31736c528b9a1b9a528d71b7cb6d3a801b42d8cd10a235a6a8b1bdd31de39d2e09523c3b6a34e5e03d67770')
 
 prepare() {
   # cd jfx-${pkgver//.u/-}
@@ -69,20 +71,36 @@ prepare() {
   patch -Np1 -i ../java-openjfx-flags.patch
   patch -Np1 -i ../java-openjfx-no-xlocale.patch
   patch -Np1 -i ../java-openjfx-gstreamer-lite-gcc10-compat.patch
+  patch -Np1 -i ../java-openjfx-env_compiler.patch
   sed 's|, "-Werror"||g' -i buildSrc/linux.gradle
+
+  # Make Gradle wrapper executable
+  chmod +x gradlew
+
+  # Run Gradle stuff inside srcdir so that it can be easily cleaned
+  export GRADLE_USER_HOME="$srcdir/gradle"
+
+  # Ensure safety for CFLAGS and LDFLAGS
+  OLD_CFLAGS="$CFLAGS"
+  OLD_LDFLAGS="$LDFLAGS"
+  export CFLAGS="" LDFLAGS=""
+
+  # Download most of the dependencies via metadata verification
+  ./gradlew --no-daemon --write-verification-metadata sha256 help
+
+  # Restore the flags, if any
+  export CFLAGS="$OLD_CFLAGS" LDFLAGS="$OLD_LDFLAGS"
 }
 
 build() {
   # cd jfx-${pkgver//.u/-}
   cd jfx17u-${pkgver//.u/-}
 
-  chmod +x gradlew
+  # Run Gradle stuff inside srcdir so that it can be easily cleaned
+  export GRADLE_USER_HOME="$srcdir/gradle"
 
   # build against ffmpeg4.4
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
-
-  # Run Gradle stuff inside srcdir so that it can be easily cleaned
-  export GRADLE_USER_HOME="$srcdir/gradle"
 
   # Workaround for situation where the linker treats whitespace as arguments
   # From `java-openjfx` and comments
@@ -96,7 +114,8 @@ build() {
     export NUMBER_OF_PROCESSORS="$JOBS"
   fi
 
-  ./gradlew --no-daemon zips
+  export CC=gcc-13 CXX=g++-13
+  ./gradlew --no-daemon --offline zips
 }
 
 package_java17-openjfx() {
