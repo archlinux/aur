@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="tabaur"
 _pkgname="TabAUR"
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="A customizable and lightweight AUR helper, designed to be simple but powerful."
 arch=('x86_64' 'aarch64')
@@ -31,6 +31,6 @@ build() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    make install PREFIX="${pkgdir}/usr"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    make install DESTDIR="${pkgdir}" PREFIX="/usr"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

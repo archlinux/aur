@@ -1,6 +1,6 @@
 pkgbase = tabaur
 	pkgdesc = A customizable and lightweight AUR helper, designed to be simple but powerful.
-	pkgver = 0.6.6
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/BurntRanch/TabAUR
 	arch = x86_64
