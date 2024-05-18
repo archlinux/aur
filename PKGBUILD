@@ -2,19 +2,19 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-nevergrad
-pkgver=0.4.3
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Gradient-free optimization'
 arch=('any')
 url='https://github.com/facebookresearch/nevergrad'
 license=(MIT)
 depends=('mypy' 'python-bayesian-optimization' 'python-cma' 'python-coverage'
-         'python-genty' 'python-joblib' 'python-matplotlib' 'python-nose'
+         'python-joblib' 'python-matplotlib' 'python-nose'
          'python-nose-timer' 'python-numpy' 'python-pandas'
-         'python-typing-extensions' 'python-pyproj')
-makedepends=('git' 'python-setuptools' 'python-pytest' 'python-gym')
+         'python-pyproj')
+makedepends=('git' 'python-setuptools' 'python-pytest')
 source=("git+$url#tag=$pkgver")
-md5sums=('SKIP')
+md5sums=('5aebbd24699e9552426f8b226dc96991')
 
 build() {
   cd nevergrad
@@ -23,10 +23,10 @@ build() {
 
 # tests require some packages that are not in the aur such as fcmaes and maybe
 # some others
-#check() {
-#  cd nevergrad
-#  pytest
-#}
+# check() {
+#   cd "${pkgname#*-}-$pkgver"
+#   pytest
+# }
 
 package() {
   cd nevergrad
