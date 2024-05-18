@@ -24,7 +24,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.8.9
+pkgver=6.9.1
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -56,7 +56,7 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
 sha256sums+=(
-  'f905f1238ea7a8e85314bacf283302e8097006010d25fcea726d0de0ea5bc9b6'
+  '01b414ba98fd189ecd544435caf3860ae2a790e3ec48f5aa70fdf42dc4c5c04a' #####
   'SKIP'
   'SKIP'
 )
@@ -80,11 +80,6 @@ fi
 if [[ ${_build_arch_patch::1} == "t" ]]; then
   _srctag=v${pkgver}-arch1
   _dl_url_arch='https://github.com/archlinux/linux'
-
-  # if no new patch, use previous one
-  if grep 404 <(curl -sI $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst | head -1) > /dev/null; then
-    _srctag=v${pkgver::4}$((${pkgver##*.} - 1))-arch1
-  fi
 
   source+=(
     $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
