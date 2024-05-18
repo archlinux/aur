@@ -16,8 +16,8 @@
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.12.2
-pkgrel=2
+pkgver=11.13.0
+pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 arch=('x86_64')
@@ -61,7 +61,7 @@ _main_package() {
     nodejs
     python
     python-setuptools
-    rust
+    rustup
     unzip
     wasi-compiler-rt
     wasi-libc
@@ -103,19 +103,28 @@ _main_package() {
     !strip
   )
 
+  _patch_commit="24a6ea8"
+
   _pkgsrc="Floorp"
   source=(
     "$_pkgsrc"::"git+https://github.com/Floorp-Projects/Floorp.git#tag=v$pkgver"
     "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
     "floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
     "$_pkgname.desktop"
-  )
 
+    "18d19413472f-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=$_patch_commit"
+    "6af7194e2778-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=$_patch_commit"
+    "b1cc62489fae-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit"
+  )
   sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
+
+    '3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18'
+    '6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e'
+    'f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117'
   )
 
   if [[ "${_build_private::1}" == "t" ]]; then
@@ -259,10 +268,16 @@ END
 ac_add_options --enable-private-components
 END
   fi
+
+  patch -Np1 -F100 -i "$srcdir/18d19413472f-$_patch_commit.patch"
+  patch -Np1 -F100 -i "$srcdir/6af7194e2778-$_patch_commit.patch"
+  patch -Np1 -F100 -i "$srcdir/b1cc62489fae-$_patch_commit.patch"
 }
 
 build() {
   cd "$_pkgsrc"
+
+  export RUSTUP_TOOLCHAIN=1.77
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
@@ -273,6 +288,10 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
+
+  # malloc_usable_size is used in various parts of the codebase
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
   # LTO/PGO needs more open files
   ulimit -n 4096
