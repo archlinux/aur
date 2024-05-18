@@ -1,11 +1,12 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname='perl-template-alloy'
 pkgver='1.022'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="TT2/3, HT, HTE, Tmpl, and Velocity Engine"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()

@@ -1,11 +1,11 @@
 pkgbase = perl-template-alloy
 	pkgdesc = TT2/3, HT, HTE, Tmpl, and Velocity Engine
 	pkgver = 1.022
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.mcpan.org/dist/Template-Alloy
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
 	depends = perl
 	options = !emptydirs
 	source = http://search.mcpan.org/CPAN/authors/id/R/RH/RHANDOM/Template-Alloy-1.022.tar.gz
