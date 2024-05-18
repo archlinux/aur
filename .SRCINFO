@@ -1,13 +1,13 @@
 pkgbase = python-aliyun-python-sdk-kms
 	pkgdesc = The kms module of Aliyun Python sdk.
-	pkgver = 2.16.2
+	pkgver = 2.16.3
 	pkgrel = 1
 	url = https://github.com/aliyun/aliyun-openapi-python-sdk/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-aliyun-python-sdk-core
-	source = https://files.pythonhosted.org/packages/cb/87/f0004243da50bb102715fdc92e2fbff92b039bfbd16400c57a7dba572308/aliyun-python-sdk-kms-2.16.2.tar.gz
-	sha256sums = f87234a8b64d457ca2338f87650db18a3ce7f7dbc9bfef71efe8f2894aded3d6
+	source = https://files.pythonhosted.org/packages/c5/a6/f958162647f2f581a5d767a5cf1b9e172183863559abfbe594face7141f7/aliyun-python-sdk-kms-2.16.3.tar.gz
+	sha256sums = c31b7d24e153271a3043e801e7b6b6b3f0db47e95a83c8d10cdab8c11662fc39
 
 pkgname = python-aliyun-python-sdk-kms
