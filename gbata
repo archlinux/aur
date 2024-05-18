@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# WINE Launcher script for GBA Tool Advance
+
+export WINEPREFIX=~/.gba-emu
+export GBATADIR=/usr/share/gbata # installation dir for AUR package
+
+cat << EOF
+GBA Tool Advance Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2006 CoolHJ
+
+EOF
+
+wine $GBATADIR/gbata.exe

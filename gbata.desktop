@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=GBA Tool Advance
+Comment=Game Boy Advance ROM viewer, patcher, and trimmer
+Exec=gbata
+Icon=gbata
+Terminal=false
+Categories=Wine;Utility;

@@ -1,0 +1,17 @@
+pkgbase = gbata
+	pkgdesc = Game Boy Advance ROM viewer and patcher
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://gbadat.altervista.org
+	arch = x86_64
+	arch = i686
+	depends = wine
+	depends = winetricks
+	source = https://s3-external-1.amazonaws.com/romhacking-hacks/utilities/%5B601%5Dgbata7a-en.zip
+	source = gbata
+	source = gbata.desktop
+	source = gbata.png
+	md5sums = e59501521166ffe4568fbb8fee59357f
+
+pkgname = gbata
+
