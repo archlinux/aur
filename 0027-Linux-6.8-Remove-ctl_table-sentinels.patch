@@ -1,7 +1,7 @@
-From f9f074e6f9a3114b1926a90bd7810bfa192f9886 Mon Sep 17 00:00:00 2001
+From 6333fae573f8a7b7656e9c1b05d445a37b951b88 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Tue, 5 Mar 2024 08:37:47 -0700
-Subject: [PATCH 27/29] Linux 6.8: Remove ctl_table sentinels
+Subject: [PATCH 27/32] Linux 6.8: Remove ctl_table sentinels
 
 The Linux 6.8 commit 'sysctl: Remove the now superfluous sentinel
 elements from ctl_table array' (c8a65501d3) was a clean up commit
@@ -36,6 +36,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit 35c8c1bf0b1cb48178f676ba5bcf16ad59c5a33b)
 
 Change-Id: I34cb7586003e10a6c7438d7205123d57af30585e
+Reviewed-on: https://gerrit.openafs.org/15705
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/afs/LINUX/osi_sysctl.c | 16 ++++++++++------
  1 file changed, 10 insertions(+), 6 deletions(-)
@@ -82,5 +87,5 @@ index a0a039892..c1116fc79 100644
  # endif
  int
 -- 
-2.44.0
+2.45.1
 

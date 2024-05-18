@@ -1,7 +1,7 @@
-From 8b9831622af6da269d12668e1b50816872dafcc7 Mon Sep 17 00:00:00 2001
+From 57e0192a690942c2a0f4f1f685cfadf2106b763a Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Tue, 7 Dec 2021 15:43:35 -0600
-Subject: [PATCH 24/29] rxgen: Declare generated PKG_TranslateOpCode()
+Subject: [PATCH 24/32] rxgen: Declare generated PKG_TranslateOpCode()
 
 Ever since commit 5c77a6ca (rxgen: add *TranslateOpcode functions to
 XDR code), rxgen generates a PKG_TranslateOpCode function in the
@@ -21,6 +21,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit 9b2c27fc6d299cb0b23eca3e8cb25b7e0c41b11a)
 
 Change-Id: I2479ff7f6579769b3319b2939ffde60fe570c880
+Reviewed-on: https://gerrit.openafs.org/15702
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/rxgen/rpc_parse.c | 4 ++++
  1 file changed, 4 insertions(+)
@@ -48,5 +53,5 @@ index 768e42f3b..59854f4d5 100644
  
  void
 -- 
-2.44.0
+2.45.1
 

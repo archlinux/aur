@@ -1,7 +1,7 @@
-From 78e644655a3858113f33f534d018220ab2eaabc0 Mon Sep 17 00:00:00 2001
+From fca6fd911e493a344c040a95ea4ab820e2828802 Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Thu, 28 Jun 2018 12:50:52 -0500
-Subject: [PATCH 01/29] afs: Make afs_AllocDCache static
+Subject: [PATCH 01/32] afs: Make afs_AllocDCache static
 
 Nothing using afs_AllocDCache outside of afs_dcache.c. Declare the
 function static, to ensure that nobody else uses it, and to maybe
@@ -13,6 +13,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit 4ab70de9641807bd06056f0c1ac79550453b9574)
 
 Change-Id: I6fd9e31c4b2e862174402f731a77c91599893223
+Reviewed-on: https://gerrit.openafs.org/15679
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/afs/afs_dcache.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -31,5 +36,5 @@ index 3572f2f23..46d0bdba5 100644
  		struct VenusFid *ashFid)
  {
 -- 
-2.44.0
+2.45.1
 

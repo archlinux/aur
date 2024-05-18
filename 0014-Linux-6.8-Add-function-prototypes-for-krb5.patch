@@ -1,7 +1,7 @@
-From e8e23ccf9d81e5c7df49d4e28441d7c986e47886 Mon Sep 17 00:00:00 2001
+From b1c93f13870e24795b857cb483320871703d00e8 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Wed, 7 Feb 2024 15:25:10 -0700
-Subject: [PATCH 14/29] Linux 6.8: Add function prototypes for krb5
+Subject: [PATCH 14/32] Linux 6.8: Add function prototypes for krb5
 
 The external files for heimdal/krb5 do not provide function prototypes
 in a header file that is used when building files that we use from
@@ -30,6 +30,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit 612927dd1dd44bbd08eda790de12b24213583156)
 
 Change-Id: Iaae28186a24c3c5ca4407de9563c8cfed9644921
+Reviewed-on: https://gerrit.openafs.org/15692
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/crypto/rfc3961/krb5_locl.h | 132 +++++++++++++++++++++++++++++++++
  1 file changed, 132 insertions(+)
@@ -178,5 +183,5 @@ index 6e706737c..04292eefa 100644
  
  struct _krb5_checksum_type * _krb5_find_checksum (krb5_cksumtype);
 -- 
-2.44.0
+2.45.1
 

@@ -1,7 +1,7 @@
-From fb336c461e9c212d450ce5e00890e8bbb2d9a4f7 Mon Sep 17 00:00:00 2001
+From 9f052c137d1184a783c8ac3182c3544b275484f5 Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Sat, 9 Jan 2021 12:50:03 -0600
-Subject: [PATCH 03/29] afs: Remove SRXAFSCB_GetDE
+Subject: [PATCH 03/32] afs: Remove SRXAFSCB_GetDE
 
 The GetDE RPC has been commented out from afscbint.xg effectively
 since it was introduced, but we still define the SRXAFSCB_GetDE server
@@ -24,6 +24,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit 444a971edc47c34efbefed6e332ee6e843ae072b)
 
 Change-Id: I83846d79ce3143571923cb6023075620091f093d
+Reviewed-on: https://gerrit.openafs.org/15681
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/afs/afs_callback.c | 11 -----------
  1 file changed, 11 deletions(-)
@@ -48,5 +53,5 @@ index e7d8ab5d4..22edefb3f 100644
 -
 -} /*SRXAFSCB_GetDE*/
 -- 
-2.44.0
+2.45.1
 

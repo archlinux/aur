@@ -1,7 +1,7 @@
-From d82082f27ba7308c41c7e2ef7585ed33d384bad7 Mon Sep 17 00:00:00 2001
+From 195f154aaf2d8aff1f6debdb47c0db8f07cb5c5e Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 29 Feb 2024 17:53:31 -0700
-Subject: [PATCH 22/29] afs: Add static attribute to internal functions
+Subject: [PATCH 22/32] afs: Add static attribute to internal functions
 
 When building against a Linux 6.8 kernel, functions that are missing
 prototypes or declarations are flagged.
@@ -25,6 +25,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit efee796f28b53bf3ffc03186f81790c36c23c94c)
 
 Change-Id: I0d923a65731f825d6c190056b0ccc3d362236706
+Reviewed-on: https://gerrit.openafs.org/15700
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/afs/LINUX/osi_file.c       |  2 +-
  src/afs/LINUX/osi_module.c     |  4 ++--
@@ -483,5 +488,5 @@ index e72b45ea4..f500b65a3 100644
  {
      /*
 -- 
-2.44.0
+2.45.1
 

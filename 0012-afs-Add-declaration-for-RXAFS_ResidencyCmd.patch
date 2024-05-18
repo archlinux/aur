@@ -1,7 +1,7 @@
-From ae193277f1e2af7137e86ab5e96673c6d9fae217 Mon Sep 17 00:00:00 2001
+From 5d2c4a0a8ada4a87d7f39dc21dbce14b3b2a978f Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 12 Jan 2024 15:52:57 -0700
-Subject: [PATCH 12/29] afs: Add declaration for RXAFS_ResidencyCmd()
+Subject: [PATCH 12/32] afs: Add declaration for RXAFS_ResidencyCmd()
 
 The function RXAFS_ResidencyCmd() is 'manually' defined within the
 afsint.xg, so a prototype for the function is not defined.
@@ -27,6 +27,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit 1d6cfbc5f627abf3808aae97afb72662301483b5)
 
 Change-Id: I42d0868b83e119b0c3348a3af8aaf5961c040bb2
+Reviewed-on: https://gerrit.openafs.org/15690
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/fsint/afsint.xg | 1 +
  1 file changed, 1 insertion(+)
@@ -44,5 +49,5 @@ index 9fe4980c6..cdcd07a29 100644
  %{
  %  return RXAFS_FsCmd(z_conn, Fid, Inputs, Outputs);
 -- 
-2.44.0
+2.45.1
 

@@ -1,7 +1,7 @@
-From 216078c99ab6d65ba607d5d7522fdb154048ea59 Mon Sep 17 00:00:00 2001
+From 90b8dcff36e9b03ec01550ad1a070a0ab7db8c46 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 9 Feb 2024 09:01:33 -0700
-Subject: [PATCH 21/29] afs: fix 'ops' variable may be used uninitialized
+Subject: [PATCH 21/32] afs: fix 'ops' variable may be used uninitialized
 
 When the function rxfs_storeInit() has the static attribute, gcc flags
 the variable 'ops' as possibly uninitialized.
@@ -49,6 +49,11 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit 36e4c02ff27b9d66755b9544778896b9b1e5c391)
 
 Change-Id: I9d8a07e576c6bf889f8f182c6fc0d34dc997c004
+Reviewed-on: https://gerrit.openafs.org/15699
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 ---
  src/afs/afs_fetchstore.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
@@ -76,5 +81,5 @@ index 7b35b8f7f..63b370dae 100644
  #ifdef AFS_64BIT_CLIENT
  	      restart:
 -- 
-2.44.0
+2.45.1
 
