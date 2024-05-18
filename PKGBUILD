@@ -3,7 +3,7 @@
 pkgname='python-imgtool'
 _name="imgtool"
 pkgdesc="MCUboot's image signing and key management"
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 arch=('any')
 url='https://pypi.org/project/imgtool/'
@@ -28,4 +28,4 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('7a541255e69eec1f12aa38dce1f1d4fe20d8212677c68a9b6ec634ca91a06612')
+sha256sums=('4f7fbcdf53c44eaaa6226504510ccb52f7ef00c997503cf94934b330c9607b60')

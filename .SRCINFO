@@ -1,6 +1,6 @@
 pkgbase = python-imgtool
 	pkgdesc = MCUboot's image signing and key management
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://pypi.org/project/imgtool/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-imgtool
 	depends = python-intelhex>=2.2.1
 	depends = python-cbor2
 	depends = python-click
-	source = https://files.pythonhosted.org/packages/source/i/imgtool/imgtool-2.0.0.tar.gz
-	sha256sums = 7a541255e69eec1f12aa38dce1f1d4fe20d8212677c68a9b6ec634ca91a06612
+	source = https://files.pythonhosted.org/packages/source/i/imgtool/imgtool-2.1.0.tar.gz
+	sha256sums = 4f7fbcdf53c44eaaa6226504510ccb52f7ef00c997503cf94934b330c9607b60
 
 pkgname = python-imgtool
