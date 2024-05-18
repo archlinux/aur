@@ -1,11 +1,11 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland
-pkgver=2.2.20
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Customize your Hyprland with scratchpads, menus, easy monitor layout and other extensions"
 arch=(any)
-url="https://github.com/fdev31/pyprland"
+url="https://github.com/hyprland-community/pyprland"
 license=('MIT')
 groups=()
 depends=('python' 'python-aiofiles' 'hyprland')
@@ -17,7 +17,7 @@ backup=()
 options=()
 noextract=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('76e71dd7da5cb5e3b3fd5d6ef8375f5eb4588f07a3c488813c0bf0b72c624ea5')
+sha256sums=('6dcfa9ced685cb76d3459cbf94d1094cdda9b791bc66a027f1dd44801a86fce8')
 
 build() {
     cd $pkgname-$pkgver

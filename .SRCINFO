@@ -1,8 +1,8 @@
 pkgbase = pyprland
 	pkgdesc = Customize your Hyprland with scratchpads, menus, easy monitor layout and other extensions
-	pkgver = 2.2.20
-	pkgrel = 2
-	url = https://github.com/fdev31/pyprland
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/hyprland-community/pyprland
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -13,7 +13,7 @@ pkgbase = pyprland
 	depends = hyprland
 	provides = pyprland
 	conflicts = pyprland
-	source = pyprland-2.2.20.tar.gz::https://github.com/fdev31/pyprland/archive/refs/tags/2.2.20.tar.gz
-	sha256sums = 76e71dd7da5cb5e3b3fd5d6ef8375f5eb4588f07a3c488813c0bf0b72c624ea5
+	source = pyprland-2.3.0.tar.gz::https://github.com/hyprland-community/pyprland/archive/refs/tags/2.3.0.tar.gz
+	sha256sums = 6dcfa9ced685cb76d3459cbf94d1094cdda9b791bc66a027f1dd44801a86fce8
 
 pkgname = pyprland
