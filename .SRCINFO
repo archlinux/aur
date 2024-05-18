@@ -1,6 +1,6 @@
 pkgbase = python-rich-pixels
 	pkgdesc = A Rich-compatible module for writing pixel images and other colourful grids to the terminal.
-	pkgver = 2.2.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/darrenburns/rich-pixels
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-rich-pixels
 	depends = python
 	depends = python-rich
 	depends = python-pillow
-	source = https://github.com/darrenburns/rich-pixels/archive/refs/tags/2.2.0.tar.gz
-	sha256sums = ed45a3d9cf9e0a3cfb7a1609bf179b3f921436d2dcc9b99e47cd6d450d911b32
+	source = https://github.com/darrenburns/rich-pixels/archive/refs/tags/3.0.1.tar.gz
+	sha256sums = 3047b032824876f09bc7078ed02ecd6d81f60918b338622db83972f4214817a5
 
 pkgname = python-rich-pixels
