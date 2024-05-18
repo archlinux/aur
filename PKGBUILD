@@ -3,7 +3,7 @@
 # Contributor: Thomas Gläßle <t_glaessle@gmx.de>
 
 pkgname='git-quick-stats'
-pkgver='2.5.5'
+pkgver='2.5.6'
 pkgrel=1
 pkgdesc='Simple and efficient way to access various statistics in git repository'
 arch=('any')
