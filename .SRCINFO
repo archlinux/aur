@@ -1,7 +1,7 @@
 pkgbase = loongarch64-linux-gnu-gcc-libc
 	pkgdesc = Build tools for Loongson (Binary).
 	pkgver = 14.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/loongson/build-tools
 	arch = x86_64
 	license = GPL
