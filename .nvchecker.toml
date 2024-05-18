@@ -1,0 +1,5 @@
+[charmplusplus-openmpi]
+source = "github"
+github = "UIUC-PPL/charm"
+use_latest_release = "true"
+prefix = "v"
