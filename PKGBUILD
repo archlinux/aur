@@ -1,73 +1,66 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=oslo.cache
-_pycname=${_pyname/./-}
-pkgname=python-${_pycname}
-pkgver=3.1.0
+pkgname=python-oslo-cache
+pkgver=3.7.0
 pkgrel=1
-pkgdesc="Cache storage for OpenStack projects."
+pkgdesc="An oslo.config enabled dogpile.cache"
 arch=(any)
-url="https://docs.openstack.org/oslo.cache/latest/"
-license=(Apache)
-depends=(
-	python
-	python-pbr
-	python-dogpile.cache
-	python-oslo-config
-	python-oslo-i18n
-	python-oslo-log
-	python-oslo-utils
-)
-makedepends=(
-	python-setuptools
-	python-openstackdocstheme
-	python-sphinx
-	python-reno
-	python-sphinxcontrib-apidoc
-	python-mock
-	python-oslotest
-	python-binary-memcached
-	python-memcached
-	python-etcd3gw
-)
-checkdepends=(
-	python-hacking
-	python-oslotest
-	python-pifpaf
-	bandit
-	python-stestr
-	python-pre-commit
-	python-pymemcache
-	python-binary-memcached
-	python-memcached
-	python-pymongo
-	python-etcd3gw
-)
-options=('!emptydirs')
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('908f4b039da131f2e82d38ddb19a02b6')
-sha256sums=('04c1089ca53fa6445711ed06e2e3737c5cbc55a6d0d1ea4c99cf3fb18e88738c')
-sha512sums=('3f5e51ddedd0cf99c35d4164471fb51219c8f6489a902ac742a3b4b6fd2daaf12699e152f27ef84eb8dd6af08f98b700f2194de4810e479cb8fc94e6334081eb')
+url="https://opendev.org/openstack/oslo.cache"
+license=('Apache-2.0')
+depends=('python'
+         'python-pbr'
+         'python-dogpile.cache'
+         'python-oslo-config'
+         'python-oslo-i18n'
+         'python-oslo-log'
+         'python-oslo-utils'
+         'python-pymongo'
+         'python-eventlet'
+         'python-memcached'
+         'python-oslotest'
+         'python-testtools'
+         'python-oslo-serialization'
+         'python-pymemcache'
+         'python-binary-memcached'
+         'python-etcd3gw')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+             'tar'
+             'python-sphinxcontrib-apidoc')
+checkdepends=('python-oslotest'
+              'python-pifpaf'
+              'python-stestr'
+              'python-pymemcache'
+              'python-binary-memcached'
+              'python-memcached'
+              'python-pymongo'
+              'python-etcd3gw'
+              'redis')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('58f77ac2ff3736072592b4a65c87388e42cf593329c4eaa5e64d4e6d86854ad968ec3765a8d6f4b85a50fb80b6c3e5e9b7206fde9a93610f99dcefb5547a38a4')
 
-export PBR_VERSION=$pkgver
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	cd $_pyname-$pkgver
-	export PYTHONPATH="$PWD"
-	python setup.py build
-	sphinx-build -b text doc/source doc/build/text
+    cd "$pkgname-$pkgver"
+    PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 check(){
-	cd $_pyname-$pkgver
-	stestr run
+    cd "$pkgname-$pkgver"
+    stestr run
 }
 
 package(){
-	cd $_pyname-$pkgver
-	python setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	mkdir -p "$pkgdir/usr/share/doc"
-	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
-	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 HACKING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
