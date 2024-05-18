@@ -1,7 +1,7 @@
 pkgbase = unison-gtk-2.48.4-compat-bin
-	pkgdesc = GTK2-GUI for unison. Specific version ${_pkgver}, compatible with parallel installation to other versions of unison binaries (but pay attention to the local user configurations!). Prebuilt binary from debian, repackaged.
+	pkgdesc = GTK2-GUI for unison. Specific version 2.48.4, compatible with parallel installation to other versions of unison binaries (but pay attention to the local user configurations!). Prebuilt binary from debian, repackaged.
 	pkgver = 2.48.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cis.upenn.edu/~bcpierce/unison/
 	arch = x86_64
 	license = GPL2
@@ -16,4 +16,3 @@ pkgbase = unison-gtk-2.48.4-compat-bin
 	sha256sums = 54ab2d5a7595ef82950f2c3228adc98e022690fb0ba25102d479da46124f32ce
 
 pkgname = unison-gtk-2.48.4-compat-bin
-

@@ -7,8 +7,8 @@ _pkgver=2.48.4
 _debianver="-1+b1"
 pkgname="${_pkgname}-${_pkgver}-compat-bin"
 pkgver="${_pkgver}"
-pkgrel=2
-pkgdesc='GTK2-GUI for unison. Specific version ${_pkgver}, compatible with parallel installation to other versions of unison binaries (but pay attention to the local user configurations!). Prebuilt binary from debian, repackaged.'
+pkgrel=3
+pkgdesc="GTK2-GUI for unison. Specific version ${_pkgver}, compatible with parallel installation to other versions of unison binaries (but pay attention to the local user configurations!). Prebuilt binary from debian, repackaged."
 url='http://www.cis.upenn.edu/~bcpierce/unison/'
 arch=(
   'x86_64'
