@@ -10,7 +10,7 @@ license=(
 	custom
 	GPL
 )
-depends=(jdk-openjdk)
+depends=(java-runtime)
 makedepends=(imagemagick)
 source=("$pkgname-$pkgver.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
 	'iMIBrowser.desktop'
