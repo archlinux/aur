@@ -1,0 +1,5 @@
+/hyper8/
+/pkg/
+/src/
+/*.pkg.tar.zst
+/*.tar.gz
