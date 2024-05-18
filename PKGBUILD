@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bookord-bin
 _pkgname=Bookord
-pkgver=0.2.10
+pkgver=0.3.2
 _electronversion=29
 pkgrel=1
 pkgdesc="An e-book reader"
@@ -21,8 +21,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e00aa43cd5c95abfe21f95d4284f254ba889237021690bd01295e87af4e80eda'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('0887d14b3064327543ab8981e47ce213770f3f7baa1148991f31087186ffc283'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \

@@ -1,6 +1,6 @@
 pkgbase = bookord-bin
 	pkgdesc = An e-book reader
-	pkgver = 0.2.10
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/LiprikON2/Bookord
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = bookord-bin
 	depends = electron29
 	optdepends = espeak-ng
 	optdepends = speech-dispatcher
-	provides = bookord=0.2.10
+	provides = bookord=0.3.2
 	conflicts = bookord
-	source = bookord-0.2.10.deb::https://github.com/LiprikON2/Bookord/releases/download/v0.2.10/bookord_0.2.10_amd64.deb
+	source = bookord-0.3.2.deb::https://github.com/LiprikON2/Bookord/releases/download/v0.3.2/bookord_0.3.2_amd64.deb
 	source = bookord.sh
-	sha256sums = e00aa43cd5c95abfe21f95d4284f254ba889237021690bd01295e87af4e80eda
-	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+	sha256sums = 0887d14b3064327543ab8981e47ce213770f3f7baa1148991f31087186ffc283
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = bookord-bin
