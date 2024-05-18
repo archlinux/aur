@@ -1,13 +1,14 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
 pkgname='perl-tcl'
 pkgver='1.32'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Tcl extension module for Perl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.006')
+depends=('perl>=5.006' 'tcl')
 makedepends=()
 url='http://search.cpan.org/dist/Tcl'
 source=('http://search.cpan.org/CPAN/authors/id/V/VK/VKON/Tcl-1.32.tar.gz')
