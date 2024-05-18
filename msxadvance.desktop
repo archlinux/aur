@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=MSXAdvance
+Comment=Compilation ROM builder for MSXAdvance
+Exec=msxadvance
+Icon=msxadvance
+Terminal=false
+Categories=Wine;Utility;Game;

@@ -1,0 +1,14 @@
+pkgbase = msxadvance
+	pkgdesc = MSXAdvance ROM Builder
+	pkgver = 0.4
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	depends = wine
+	depends = winetricks
+	source = https://www.zophar.net/fileuploads/2/16423qstzl/MSXAdvance04Bin.zip
+	source = msxadvance
+	source = msxadvance.desktop
+	source = msxadvance.png
+
+pkgname = msxadvance

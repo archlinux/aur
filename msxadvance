@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# WINE Launcher script for MSXAdvance
+
+export WINEPREFIX=~/.gba-emu
+export MSXDIR=/usr/share/msxadvance # installation dir for AUR package
+
+cat << EOF
+MSXAdvance Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2009 FluBBa
+
+EOF
+
+cd $MSXDIR
+wine MSXAdvance.exe
+
+if [ $? -eq 53 ]
+then
+    winetricks -q mfc42
+    wine $MSXDIR/MSXAdvance.exe
+fi
