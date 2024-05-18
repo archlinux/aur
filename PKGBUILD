@@ -1,6 +1,6 @@
 # Maintainer: Matthew Weger <matthew.d.weger@gmail.com>
 pkgname=auto_facelock
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Face Detection Auto Screen Lock Service"
 arch=('any')
