@@ -1,5 +1,5 @@
 pkgname=ffplayout-git
-pkgver=r2064.e691522
+pkgver=r2068.e35b512
 pkgrel=0
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
@@ -22,6 +22,7 @@ conflicts=('ffplayout' 'ffplayout-unstable-git')
 replaces=('ffplayout', 'ffplayout-unstable-git')
 backup=('etc/ffplayout/ffplayout.toml')
 install='ffplayout.install'
+
 source=(
   "${pkgname}::git+https://github.com/ffplayout/ffplayout.git"
   'ffplayout.install'
