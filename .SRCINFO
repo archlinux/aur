@@ -1,0 +1,14 @@
+pkgbase = python-command_runner
+	pkgdesc = Platform agnostic command and shell execution tool, also allows UAC/sudo privilege elevation
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/netinvent/command_runner
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	depends = python
+	depends = python-psutil
+	source = python-command_runner-1.6.0.tar.gz::https://github.com/netinvent/command_runner/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = cfee07ee442d7fb8d8f4882396d4150f862b0826b481c7d8edcf3f5be1bb7df5
+
+pkgname = python-command_runner
