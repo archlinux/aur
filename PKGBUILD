@@ -1,7 +1,8 @@
 # Maintainer: Abdur-Rahman Mansoor <armansoor at missingno dot dev>
 
 _pkgname='html2atom'
-pkgname='html2atom-git'
+pkgbase="$_pkgname"
+pkgname="$_pkgname-git"
 pkgver=r3.f936aa6
 pkgrel=1
 url="https://codeberg.org/ramenu/$_pkgname"

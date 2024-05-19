@@ -1,4 +1,4 @@
-pkgbase = html2atom-git
+pkgbase = html2atom
 	pkgdesc = Convert vanilla HTML file(s) to a Atom feed
 	pkgver = r3.f936aa6
 	pkgrel = 1
