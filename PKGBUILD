@@ -2,7 +2,7 @@
 
 pkgname=iyuuplus
 pkgver=8.2.14
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
@@ -11,19 +11,21 @@ license=("MIT")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=("composer" "mariadb" "php-gd" "php-sodium")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+makedepends=("git")
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('8aad361a4d88b2ea33f531f0d85a58eb1d74b06aa1169c10cd5c15071c8227d3'
+sha256sums=('9bd4e67909a7c9b7ee151c636654de97d76699039c40e7fbe79dca83618bf4ff'
             'e20db7d3e6cdaa5f3b345bde4bd63cde2458b23516c80cfebcf0a32ec19d921c'
             'e64af1d0d088fa30e864897a43597026ee95f5e2590e79ac4055786795c60622'
             '4c0928194248ce56deab7a1eeec78d4a3827d7e8fbceba142b46d4f9c8eed387')
 options=(!strip !debug)
 
 prepare() {
-    cd "${pkgname}-dev-${pkgver}"
+    cd "${pkgname}"
     sed -i 's|<span .\+git_pull.\+通过git拉取最新代码.\+</span>||' plugin/admin/app/view/index/dashboard.html
+    sed -i "s|current_git_commit()|\"$(git rev-parse --short HEAD)\"|" plugin/admin/app/controller/IndexController.php
     echo "${pkgver}" > .version
 }
 
@@ -32,7 +34,7 @@ package() {
     install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-    cd "${pkgname}-dev-${pkgver}"
+    cd "${pkgname}"
     install -Dm644 LICENSE               "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md             "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
