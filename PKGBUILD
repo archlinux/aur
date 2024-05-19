@@ -3,7 +3,7 @@
 pkgname=dosbox-x-sdl2
 _pkgname=dosbox-x
 pkgver=2024.03.01
-pkgrel=4
+pkgrel=5
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64 aarch64)
 url="http://dosbox-x.com"
@@ -18,6 +18,13 @@ options=(!debug)
 
 build() {
   cd "$srcdir/dosbox-x-dosbox-x-v$pkgver"
+  
+  # Workaround a bug in gcc 13.x+ grabbed from dosbox-x AUR PKGBUILD
+ 
+  export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions \
+    -Wp,-D_FORTIFY_SOURCE=2 -Wformat \
+    -fstack-clash-protection -fcf-protection"
+  export CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
    
   ./autogen.sh
   ./configure --enable-debug --enable-avcodec --prefix=/usr --enable-sdl2
