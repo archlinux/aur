@@ -1,7 +1,7 @@
 pkgbase = qmp3gain-git
 	pkgdesc = User interface front end supporting famous MP3Gain engine which analyzes and losslessly adjusts MP3 files to a specified target volume.
 	pkgver = 0.9.3.r123.20220727.95b2608
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/qmp3gain/
 	arch = i686
 	arch = x86_64

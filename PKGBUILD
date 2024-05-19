@@ -4,7 +4,7 @@ _pkgname=qmp3gain
 pkgname="${_pkgname}-git"
 _gitname="${_pkgname}"
 pkgver=0.9.3.r123.20220727.95b2608
-pkgrel=1
+pkgrel=2
 pkgdesc='User interface front end supporting famous MP3Gain engine which analyzes and losslessly adjusts MP3 files to a specified target volume.'
 url='https://sourceforge.net/projects/qmp3gain/ '
 _giturl="git://git.code.sf.net/p/${_pkgname}/code"
@@ -68,6 +68,17 @@ pkgver() {
 build() {
   cd "$srcdir/${_gitname}"
 
+  # Add here stuff which may be needed to fix compilation errors because of warnings treated as error.
+  _FIXWERROR=""
+  # Silence compiler warnings
+  #_SILENCEWARNINGS="-Wno-deprecated-declarations -Wno-template-id-cdtor -Wno-unused-variable -Wno-unused-parameter"
+  _SILENCEWARNINGS="-w"
+  _CFLAGSADDITIONS=" ${_FIXWERROR} ${_SILENCEWARNINGS}"
+  CFLAGS+="${_CFLAGSADDITIONS}"
+  CXXFLAGS+="${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
   qmake-qt5
   make
 
@@ -78,16 +89,7 @@ package() {
   cd "$srcdir/${_gitname}"
 
   ## Insall manually, since `DESTDIR` seems not to be honoured.
-
-  # Install executable:
-  install -Dvm755 -t "${pkgdir}/usr/bin" "bin/qmp3gain"
-
-  # Install `.desktop` file, icons and sounds:
-  install -Dvm644 -t "${pkgdir}/usr/share/applications" "resources/linux/applications"/qmp3gain.desktop
-  for _resolution in "resources/linux/icons/hicolor"/*; do
-    install -Dvm644 -t "${pkgdir}/usr/share/icons/hicolor/${_resolution}" "${_resolution}"/*.png
-  done
-  install -Dvm644 -t "${pkgdir}/usr/share/sounds/${_pkgname}" "resources/sounds"/*
+  INSTALL_ROOT="${pkgdir}" make install
 
   # Install help files:
   install -dvm755 "${pkgdir}/usr/share/doc/${_pkgname}"
