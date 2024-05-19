@@ -4,7 +4,7 @@ pkgname=alberta
 pkgver=3.1.0
 pkgrel=2
 pkgdesc="Adaptive multi-Level finite element toolbox"
-url="https://www.alberta-fem.de"
+url="https://www.${pkgname}-fem.de"
 license=(GPL2)
 arch=(x86_64)
 makedepends=(gcc-fortran) # blas electricfence duma
@@ -32,14 +32,15 @@ build() {
     --without-OpenDX \
     --without-grape \
     --without-silo \
+    --quiet \
     CC="gcc -B/usr/bin/mold"
 
-  make
+  make V=0
 }
 
 check() {
   cd ${pkgname}3-v${pkgver}
-  CFLAGS="-Wno-incompatible-pointer-types" make distcheck
+  make distcheck V=0
 }
 
 package() {
