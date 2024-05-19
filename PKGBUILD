@@ -1,7 +1,7 @@
-# Maintainer: tristero <crf8472@web.de>
+# Maintainer: tristero <crf8472@mailbox.org>
 
 pkgname=libarcstk-git
-pkgver=0.1.0rc4+0.601af78
+pkgver=0.2.0alpha1+1.77a4d0a
 pkgrel=1
 pkgdesc='Toolkit to calculate and verify AccurateRip checksums and ids'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=('gcc-libs')
-makedepends=('git>=2.0' 'cmake>=3.9.6')
+makedepends=('git' 'cmake')
 optdepends=('doxygen>=1.8.14: build documentation'
             'python-virtualenv: build HTML documentation with m.css')
 source=("${pkgname%-git}::git+https://codeberg.org/tristero/${pkgname%-git}.git#branch=main")
