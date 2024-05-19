@@ -1,7 +1,7 @@
 # Maintainer: Luke Taylor <luket1@proton.me>
 
 pkgname=fooyin-git
-pkgver=r1978.c5aa3620
+pkgver=r2068.acf02d2d
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/ludouzi/fooyin"
@@ -21,6 +21,7 @@ depends=(
 makedepends=(
     'cmake'
     'git'
+    'libpipewire'
     'ninja'
     'pkgconf'
     'qt6-tools'
@@ -43,6 +44,7 @@ build() {
   cd "${srcdir}/$pkgname"
   cmake -S . -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
     -DBUILD_PCH=ON
   cmake --build build
 }

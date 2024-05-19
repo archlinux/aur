@@ -1,12 +1,13 @@
 pkgbase = fooyin-git
 pkgdesc = A customisable music player
 pkgver = r1978.c5aa3620
-pkgrel = 1
+pkgrel = 2
 url = https://github.com/ludouzi/fooyin
 arch = any
 license = GPL-3.0-only
 makedepends = cmake
 makedepends = git
+makedepends = libpipewire
 makedepends = ninja
 makedepends = pkgconf
 makedepends = qt6-tools
