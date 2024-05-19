@@ -1,0 +1,18 @@
+pkgbase = fvm-flutter-proxy
+	pkgdesc = flutter fvm proxy
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	arch = any
+	license = MPL-2.0
+	depends = fvm
+	provides = flutter
+	provides = dart
+	conflicts = flutter
+	conflicts = dart
+	source = fvm-dart.sh
+	source = fvm-flutter.sh
+	md5sums = 5c14f921a75035640d205dde32fb8425
+	md5sums = b51d0af495125e38ea8e69d4c2edca71
+
+pkgname = fvm-flutter-proxy
