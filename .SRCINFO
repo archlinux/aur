@@ -1,6 +1,6 @@
 pkgbase = kplotting5
 	pkgdesc = Lightweight plotting framework
-	pkgver = 5.115.0
+	pkgver = 5.116.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = kplotting5
 	depends = qt5-base
 	conflicts = kplotting<5.111
 	replaces = kplotting<5.111
-	source = https://download.kde.org/stable/frameworks/5.115/kplotting-5.115.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.115/kplotting-5.115.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.116/kplotting-5.116.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.116/kplotting-5.116.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 836e5c74a9c4c812e4fce2399cc2c29cb61c7810e7d3f4f992d051e1c5f0e1f3
+	sha256sums = bc3703f2ccd5d9d6a5e881a9476a6d21b2722aecbe5dfe48c03d1008772be579
 	sha256sums = SKIP
 
 pkgname = kplotting5
