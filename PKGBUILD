@@ -20,7 +20,7 @@ _pkgfqn="qtpositioning-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
 sha256sums=('1d601ba43c26c8a01db81eeaaeea5943c015da98caa59d7905b86e0e9d609ddf')
 
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   for _arch in ${_architectures}; do
