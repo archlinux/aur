@@ -11,7 +11,7 @@
 ## basic info
 _pkgname="skippy-xd"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2023.07.30.r35.g9ffbaadd
+pkgver=2023.07.30.r143.gc5a68d6
 pkgrel=1
 pkgdesc="A full-screen Exposé-style task switcher for X11"
 url="https://github.com/felixfung/skippy-xd"
@@ -22,6 +22,7 @@ depends=(
   giflib
   libjpeg
   libxcomposite
+  libxdamage
   libxft
   libxinerama
   xorg-server
@@ -30,7 +31,7 @@ makedepends=(
   git
 )
 
-if [ "${_build_git::1}" != "t" ] ; then
+if [ "${_build_git::1}" != "t" ]; then
   : ${_pkgver=${pkgver%%.r*}}
 
   _pkgsrc=$(sed -E -e 's&^\S+*/(\S+/\S+)$&\1&; s&/&.&' <<< "$url")
@@ -50,7 +51,19 @@ else
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+    local _regex='^\s*SKIPPYXD_VERSION = .* \((20[0-9]{2}\.[0-9]{2}\.[0-9]{2}).*\).*$'
+    local _file='Makefile'
+
+    local _version=$(grep -Esm1 "$_regex" "$_file" | sed -E "s@$_regex@\1@")
+    local _line_num=$(grep -Ensm1 "$_regex" "$_file" | cut -d':' -f1)
+
+    local _commit=$(git blame -L $_line_num,+1 -- "$_file" | awk '{print $1;}')
+
+    local _revision=$(git rev-list --count --cherry-pick "$_commit"...HEAD)
+    local _hash=$(git rev-parse --short=7 HEAD)
+
+    printf "%s.r%s.g%s" "${_version:?}" "${_revision:?}" "${_hash:?}"
   }
 fi
 

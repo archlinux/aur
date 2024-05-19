@@ -1,6 +1,6 @@
 pkgbase = skippy-xd-git
 	pkgdesc = A full-screen Exposé-style task switcher for X11
-	pkgver = 2023.07.30.r35.g9ffbaadd
+	pkgver = 2023.07.30.r143.gc5a68d6
 	pkgrel = 1
 	url = https://github.com/felixfung/skippy-xd
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = skippy-xd-git
 	depends = giflib
 	depends = libjpeg
 	depends = libxcomposite
+	depends = libxdamage
 	depends = libxft
 	depends = libxinerama
 	depends = xorg-server
