@@ -10,10 +10,11 @@ license=('GPL3')
 depends=('pacman' 'curl')
 optdepends=(
   "sudo: privilege elevation"
-  "doas: privilege elevation"
-  "git: for using the AUR git repo"
-  "tar: for using the AUR tarball repo"
+  "opendoas: privilege elevation"
+  "git: use AUR packages git repos"
+  "tar: use AUR packages tarballs"
 )
+conflicts=('tabaur' 'tabaur-git')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.tar.zst")
 sha256sums=("7b20cc048148ad86afcaf652811f0610f846a8d3a5902c6faf59ab7285714404")
 
