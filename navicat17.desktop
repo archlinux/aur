@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Navicat Premium 17
+GenericName=Database Development Tool
+Icon=navicat17.png
+Exec=/opt/navicat17-premium-en/AppRun
+Categories=Development;
+Keywords=database;sql;
+
