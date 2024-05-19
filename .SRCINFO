@@ -1,6 +1,6 @@
 pkgbase = kdesu5
 	pkgdesc = Integration with su for elevated privileges
-	pkgver = 5.115.0
+	pkgver = 5.116.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = kdesu5
 	depends = kconfig5
 	conflicts = kdesu<5.111
 	replaces = kdesu<5.111
-	source = https://download.kde.org/stable/frameworks/5.115/kdesu-5.115.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.115/kdesu-5.115.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.116/kdesu-5.116.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.116/kdesu-5.116.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 03e2b7963bc02492639193d20c76723430d5f530b6dee60d61b8dd64f0698b62
+	sha256sums = 01c9c884ff92e23fcabc95da7445ada07d5ce5057f19a4ea4f452048d0e0d8cb
 	sha256sums = SKIP
 
 pkgname = kdesu5
