@@ -1,5 +1,5 @@
 pkgname=ruffle-bin
-pkgver=2024.04.19
+pkgver=2024.05.19
 pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_i386=1
@@ -13,16 +13,16 @@ license=('Apache' 'MIT')
 depends=('gtk3' 'libxcb' 'zlib' 'libxcb' 'alsa-lib' 'libxkbcommon-x11')
 makedepends=('unzip')
 conflicts=(ruffle-git)
-sha256sums_i386=('91f03283c15b04c5aafd697914b13618a4d92d355463e95624ef97fd58080b4a'
-                 'cee3e631a02d3513f5f5bdb89fbf7794571ae9c8a6d8c339bf0293e397131c41')
-sha256sums_pentium4=('91f03283c15b04c5aafd697914b13618a4d92d355463e95624ef97fd58080b4a'
-                     'cee3e631a02d3513f5f5bdb89fbf7794571ae9c8a6d8c339bf0293e397131c41')
-sha256sums_i686=('91f03283c15b04c5aafd697914b13618a4d92d355463e95624ef97fd58080b4a'
-                 'cee3e631a02d3513f5f5bdb89fbf7794571ae9c8a6d8c339bf0293e397131c41')
-sha256sums_x86_64=('f023720c38d8aec709efd345336336e88faa9ae5f9228fc5c113b2d004afb4e6'
-                   'cee3e631a02d3513f5f5bdb89fbf7794571ae9c8a6d8c339bf0293e397131c41')
-sha256sums_aarch64=('619851ace3eb74acc2327f66677de37e84a4cb89749ab379a31df318777f81a8'
-                    'cee3e631a02d3513f5f5bdb89fbf7794571ae9c8a6d8c339bf0293e397131c41')
+sha256sums_i386=('3fd04c151f2e07fa913742617bf6efd896ab09484e991b4ba8b0799fb5b34587'
+                 '4ee7e6ee5abd0a274bb1241ede2f3da1278691ab15fa80e4d94102dd68762f26')
+sha256sums_pentium4=('3fd04c151f2e07fa913742617bf6efd896ab09484e991b4ba8b0799fb5b34587'
+                     '4ee7e6ee5abd0a274bb1241ede2f3da1278691ab15fa80e4d94102dd68762f26')
+sha256sums_i686=('3fd04c151f2e07fa913742617bf6efd896ab09484e991b4ba8b0799fb5b34587'
+                 '4ee7e6ee5abd0a274bb1241ede2f3da1278691ab15fa80e4d94102dd68762f26')
+sha256sums_x86_64=('8e2b94875de9955b5d5cbdf5b48d8a9e59539fafc1a6579e928da42ec2cfeb88'
+                   '4ee7e6ee5abd0a274bb1241ede2f3da1278691ab15fa80e4d94102dd68762f26')
+sha256sums_aarch64=('aa0c8dc3b64cea877824d010c24ff9afb6cf6e0cd2f17e096faa34d7d7427e9c'
+                    '4ee7e6ee5abd0a274bb1241ede2f3da1278691ab15fa80e4d94102dd68762f26')
 source_x86_64=("https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-x64.tar.xz" 
 "https://gitlab.com/linuxbombay/ruffle-linux/ruffle/-/archive/ruffle-$pkgver/ruffle-$pkgver.tar.bz2")
 
