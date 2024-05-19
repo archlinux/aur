@@ -1,17 +1,17 @@
 pkgbase = python-simpleitk-bin
 	pkgdesc = A simplified layer built on top of ITK
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://simpleitk.org/
 	arch = x86_64
 	license = apache
-	makedepends = python-pip
+	makedepends = python-installer
 	depends = python
 	provides = python-simpleitk
 	conflicts = python-simpleitk
-	noextract = SimpleITK-2.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux1_x86_64.whl
+	noextract = SimpleITK-2.3.1-cp312-cp312-manylinux_2_17_x86_64.manylinux1_x86_64.whl
 	options = !strip
-	source = https://files.pythonhosted.org/packages/cp311/S/SimpleITK/SimpleITK-2.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	sha256sums = e5eb7507bc0f0cefed667d1d0ce9f2adc43bb672c630233af8481eff8388b1d0
+	source = https://files.pythonhosted.org/packages/cp312/S/SimpleITK/SimpleITK-2.3.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = 7b4b9e7d64e53539216666a6b5b477e033e8738b1725f938e3c331b07539bd82
 
 pkgname = python-simpleitk-bin
