@@ -67,7 +67,13 @@ sha256sums=('11b2e29e2e52fb0e3b453ea13bbe51a10fdff36e1c192d8868c5a40233b8b254'
             'ce7dc86c30f160e6d565c579a84e0b0f799b1afa751ebe0748a0e80f8408cb7f'
             '55959f673e409ea952661cbddfb8b046bec7cda3d8b05686bed82ace4246e273')
 
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+# disable i686 build because 32-bit Windows is generally not supported by upstream and
+# it does not build anymore as of GCC 14 (probably due to commit 9a19fa8b616f83474c35cc5b34a3865073ced829)
+# remarks:
+# - This is in-line with MSYS2's packaging of mingw-w64 Qt 6 packages.
+# - You may override MINGW_W64_QT6_ARCHS by adding the variable to `/etc/makepkg.conf` in case you
+#   nevertheless want to attempt the i686 build.
+_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 prepare () {
   cd $_pkgfqn
