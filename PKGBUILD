@@ -13,13 +13,13 @@ _nodever=18.19.1
 _pandocver="current"
 _quarto="FALSE"
 
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
 depends=('r>=3.3.0' 'boost-libs' 'qt5-sensors' 'qt5-svg' 'qt5-webengine' 'qt5-xmlpatterns' 'postgresql-libs' 'sqlite3' 'soci' 'clang' 'hunspell-en_US' 'mathjax2' 'pandoc' 'yaml-cpp')
-makedepends=('git' 'cmake>3.14' 'boost' 'desktop-file-utils' 'jdk8-openjdk' 'apache-ant' 'unzip' 'openssl' 'libcups' 'pam' 'patchelf' 'wget' 'yarn')
+makedepends=('git' 'cmake>=3.29' 'boost' 'desktop-file-utils' 'jdk8-openjdk' 'apache-ant' 'unzip' 'openssl' 'libcups' 'pam' 'patchelf' 'wget' 'yarn')
 optdepends=('git: for git support'
             'subversion: for subversion support'
             'openssh-askpass: for a git ssh access'
@@ -109,10 +109,14 @@ build() {
     # https://github.com/nodejs/node/issues/48444
     export UV_USE_IO_URING=0
 
+    # -DCMAKE_INSTALL_PREFIX seems ignored for sub-dependencies, 
+    # which results as empty '/usr/local/bin' in package
+    # Following override works for cmake >3.29
+    export CMAKE_INSTALL_PREFIX=/usr/lib/rstudio
+
     cmake -S "${srcdir}/${_srcname}" -B build \
           -DRSTUDIO_TARGET=Desktop \
           -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio \
           -DRSTUDIO_USE_SYSTEM_BOOST=yes \
           -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake \
           -DBoost_NO_BOOST_CMAKE=ON \
@@ -122,6 +126,10 @@ build() {
 }
 
 package() {
+
+    # Should work for cmake >3.29
+    export CMAKE_INSTALL_PREFIX=/usr/lib/rstudio
+
     # Install the program
     make -C build DESTDIR="${pkgdir}" install
 
