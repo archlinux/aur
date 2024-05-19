@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-09-04.
+# PKGBUILD last time manually edited: At least on 2024-05-19.
 
 url="https://chaps.cz/eng/download/idos/zip#kotvaprg"
 _zipfile="TTFONT.ZIP"
@@ -9,7 +9,7 @@ _pkgver() {
   # Reason for a $_pkgver(): Have something to run before source download so that we can have version aware source downloads.
   _unpackeddir="${srcdir}"
   cd "${_unpackeddir}"
-  
+
   # _ver="$(fc-query -f "%{fontversion}" "${_fontfile}")"
   # _ver="$(wget -q -O- "${url}" | html2text -b 0 | grep 'Font Timetable, version' | sed 's|^.*version[[:space:]]\([0-9\.]*\)[^0-9].*$|\1|g')"
   _ver="$(wget -nv -O- "${url}" | sed -n 's|^.*Font Timetable, version[[:space:]]*\([0-9\.]*\)[^0-9].*$|\1|p')"
@@ -21,7 +21,7 @@ _pkgver() {
     false
     _exitcode=1
   fi
-  
+
   if [ -z "${_date}" ]; then
     echo "$0: Error: Could not determine release date." > /dev/stderr
     false
@@ -75,7 +75,7 @@ source=(
 
 sha256sums=(
   "930e43563335292abefc231e55ca7152572ac1175d4c3bd5247d648a397e1721"  # TTFONT.ZIP
-  "SKIP"  # IDOS-Licence.pdf
+  "SKIP"                                                              # IDOS-Licence.pdf
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"  # license-dummy.txt
   "4c021678394399056573ae7f85779a7fde86f0c70fec6e64f6e1a379195ef4da"  # info.url
   "6a00ba2e7e0e7610dd4a4a064716bcf368b4269f75046aee585208dd3d6a998f"  # ${install}
@@ -92,7 +92,7 @@ package() {
   install -D -m644 "${_unpackeddir}/${_fontfile}" "${pkgdir}/usr/share/fonts/timetable/TT.ttf"
   ln -s TT.ttf "${pkgdir}/usr/share/fonts/timetable/tt.ttf"
   ln -s TT.ttf "${pkgdir}/usr/share/fonts/timetable/timetable.ttf"
-  
+
   install -D -m644 info.url "${pkgdir}/usr/share/doc/${pkgname}/info.url"
 
   install -D -m644 license-dummy.txt "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
