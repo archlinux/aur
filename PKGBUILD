@@ -2,7 +2,7 @@
 # Contributor: Ziqi Yang <mr.ziqiyang@gmail.com>
 
 pkgname='ttf-lxgw-neo-xihei-screen-full'
-pkgver=1.121
+pkgver=1.122
 pkgrel=1
 pkgdesc="霞鹜新晰黑屏幕阅读版Droid Sans Fallback打底补全版，更适合 PC 及 Android 手机屏幕显示。"
 arch=("any")
@@ -11,7 +11,7 @@ license=("LicenseRef-IPA")
 source=("${pkgname}-${pkgver}-${pkgrel}.ttf::${url}/releases/download/v${pkgver}/LXGWNeoXiHeiScreenFull.ttf"
         "LICENSE.md"
         "LICENSE_CHS.md")
-sha256sums=('91c89dfa6ebaf28b1a888102619306c8fc444b7ad306474047faa292ddee82a1'
+sha256sums=('803658c1b1fa1361fa94578709645e15ef9e6e1daeea7d538317a88dbd09f5aa'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf'
             'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1')
 
