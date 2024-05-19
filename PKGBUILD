@@ -28,8 +28,8 @@ noextract=()
 _pkgname=OpenCBM
 _pkgver=${pkgver}
 _src_dirname=${_pkgname}-${_pkgver}
-source=("opencbm.tgz::https://github.com/OpenCBM/${_pkgname}/archive/v${_pkgver}.tar.gz")
-#        "nibtools.tgz::https://github.com/OpenCBM/nibtools/archive/refs/heads/master.tar.gz")
+source=("opencbm.src.tgz::https://github.com/OpenCBM/${_pkgname}/archive/v${_pkgver}.tar.gz")
+#        "nibtools.src.tgz::https://github.com/OpenCBM/nibtools/archive/refs/heads/master.tar.gz")
 sha256sums=('5499cd1143b4a246d6d7e93b94efbdf31fda0269d939d227ee5bcc0406b5056a')
 #            "a96022c26bc0dd175ca0428bc101c5d87bd891569953c06123d75244b775a466")
 
@@ -63,12 +63,12 @@ build()
   CC65_HOME="/usr/share/cc65"
   export CC65_HOME
 
-  #make -f LINUX/Makefile opencbm plugin
-  make -f LINUX/Makefile opencbm plugin-xum1541 plugin-xu1541
+  #make -w -s -f LINUX/Makefile opencbm plugin
+  make -w -s -f LINUX/Makefile opencbm plugin-xum1541 plugin-xu1541
 
   # kernel module: build (optional)
   if test "x${build_kernel_module}" != "x"; then
-    make -f LINUX/Makefile plugin-xa1541
+    make -w -s -f LINUX/Makefile plugin-xa1541
   fi
 }
 
@@ -83,7 +83,7 @@ package()
 
   mkdir -p "${pkgdir}/etc/udev/rules.d"
 
-  make -f LINUX/Makefile PREFIX="/usr" MANDIR="/usr/share/man/man1" INFODIR="/usr/share/info" DESTDIR="${pkgdir}/" install install-plugin-xum1541 install-plugin-xu1541
+  make -w -s -f LINUX/Makefile PREFIX="/usr" MANDIR="/usr/share/man/man1" INFODIR="/usr/share/info" DESTDIR="${pkgdir}/" install install-plugin-xum1541 install-plugin-xu1541
 
   mv "${pkgdir}/etc/opencbm.conf" "${pkgdir}/etc/opencbm.conf.sample"
 

@@ -13,7 +13,7 @@ pkgbase = opencbm
 	provides = opencbm
 	conflicts = opencbm
 	backup = etc/opencbm.conf
-	source = opencbm.tgz::https://github.com/OpenCBM/OpenCBM/archive/v0.4.99.104.tar.gz
+	source = opencbm.src.tgz::https://github.com/OpenCBM/OpenCBM/archive/v0.4.99.104.tar.gz
 	sha256sums = 5499cd1143b4a246d6d7e93b94efbdf31fda0269d939d227ee5bcc0406b5056a
 
 pkgname = opencbm
