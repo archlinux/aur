@@ -1,14 +1,14 @@
 pkgbase = pyswisseph
-	pkgdesc = Python 2 extension to the Swiss Ephemeris
-	pkgver = 2.08.00.1
+	pkgdesc = Python extension to the Swiss Ephemeris.
+	pkgver = 2.10.3.2
 	pkgrel = 1
 	url = https://github.com/astrorigin/pyswisseph
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = python2
-	source = https://pypi.python.org/packages/source/p/pyswisseph/pyswisseph-2.08.00-1.tar.gz
-	md5sums = 9335e106f8dafb7093a1d75666f5b889
+	depends = python
+	conflicts = pyswisseph3
+	source = https://pypi.python.org/packages/source/p/pyswisseph/pyswisseph-2.10.3.2.tar.gz
+	md5sums = 0d01b42ddf082f41000cf08a85ff18fe
 
 pkgname = pyswisseph
-

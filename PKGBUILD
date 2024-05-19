@@ -1,19 +1,20 @@
-# Maintainer: Martin C. Doege <mdoege at compuserve dot com>
+# Maintainer: Len Share <dranukan at proton dot me>
 
-_u_pkgrel=1
-_u_pkgver=2.08.00
 pkgname='pyswisseph'
-pkgver="${_u_pkgver}.${_u_pkgrel}"
-pkgrel='1'
-pkgdesc='Python 2 extension to the Swiss Ephemeris'
+pkgver='2.10.3.2'
+pkgrel=1
+pkgdesc='Python extension to the Swiss Ephemeris.'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/astrorigin/pyswisseph'
-depends=("python2")
-source=("https://pypi.python.org/packages/source/p/pyswisseph/pyswisseph-${_u_pkgver}-${_u_pkgrel}.tar.gz")
+depends=('python')
+conflicts=('pyswisseph3')
+
+source=("https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver%%.1}.tar.gz")
+md5sums=('0d01b42ddf082f41000cf08a85ff18fe')
 
 package() {
-    cd "$srcdir/$pkgname-${_u_pkgver}-${_u_pkgrel}"
-    python2 setup.py install --root="${pkgdir}" || return 1
+    cd "$srcdir/${pkgname}-${pkgver%%.1}"
+    python setup.py install --root=$pkgdir || return 1
 }
-md5sums=('9335e106f8dafb7093a1d75666f5b889')
+
