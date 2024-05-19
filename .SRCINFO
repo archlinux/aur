@@ -1,5 +1,5 @@
 pkgbase = opencbm-git
-	pkgdesc = OpenCBM allows access to Commodore (C64) floppy drives 1540, 1541, 1570, 1571, or 1581
+	pkgdesc = OpenCBM allows access to Commodore (C64) floppy drives 1540, 1541, 1570, 1571, 1581
 	pkgver = r1506.db80d1be
 	pkgrel = 1
 	url = https://github.com/OpenCBM/OpenCBM
