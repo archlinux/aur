@@ -2,24 +2,31 @@
 # Contributor: Ryan Young <ry an. ry. young@gmail.com> (omit spaces)
 
 pkgname=temp-throttle
-pkgver=2.20
+pkgver=3.02
 pkgrel=1
 pkgdesc="A shell script for throttling system CPU frequency based on a desired maximum temperature."
 arch=('any')
 url="https://github.com/Sepero/temp-throttle"
-license=('GPL2')
-source=("${pkgname}-v${pkgver}.tar.gz"::"https://github.com/Sepero/${pkgname}/archive/v${pkgver}.tar.gz"
-        "${pkgname}@.service")
-sha256sums=('4ab30f204bdf407ebbfa5abdaa3b3d780e3bc674dca0bb08dbde650ccc015cf7'
-            '18ae3edd7b41508da279df6d67f1c5d86e1dbfe2daebbc42bbe39c26031b22e0')
+license=('GPL-2.0-only')
+depends=('bash')
+backup=('etc/temp-throttle.conf')
+source=("${pkgname}-v${pkgver}.tar.gz"::"https://github.com/Sepero/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('b9602edb2d0e17f4bf1522ee58a498e558ee0a9e7cdfc3c0d7fd376c7e827182')
 
 package() {
   cd "${pkgname}-${pkgver}"
+  # Install executable
   install -m 755 -d "${pkgdir}/usr/bin"
-  install -m 755 'temp_throttle.sh' "${pkgdir}/usr/bin/${pkgname}"
+  install -m 755 -t "${pkgdir}/usr/bin" "usr/sbin/temp-throttle"
+  # Install configuration file
+  install -m 755 -d "${pkgdir}/etc"
+  install -m 755 -t "${pkgdir}/etc" "etc/temp-throttle.conf"
+  # Install documentation
   install -m 755 -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "README.md"
+  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "usr/share/doc/${pkgname%-git}/README"
+  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "usr/share/doc/${pkgname%-git}/credits.txt"
+  # Install systemd service
   install -m 755 -d "${pkgdir}/usr/lib/systemd/system"
-  install -m 644 -t "${pkgdir}/usr/lib/systemd/system" "${srcdir}/${pkgname}@.service"
+  install -m 644 -t "${pkgdir}/usr/lib/systemd/system" "usr/lib/systemd/system/temp-throttle.service"
 }
 
