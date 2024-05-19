@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
-pkgver=4.2.0.r0.g6ca847b
+pkgver=4.2.0.r4.g6ee6751
 epoch=1
 pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
@@ -51,9 +51,9 @@ prepare() {
 	do
 		git config submodule.src/gui/thirdparty/$submodule.url "$srcdir/${submodule}"
 	done
-	git config submodule.src/cli/thirdparty/indicators.url "$srcdir/indicators"
 	git config submodule.src/cli/thirdparty/argparse.url "$srcdir/argparse"
 	git config submodule.src/lib/thirdparty/minizip-ng.url "$srcdir/minizip-ng"
+	git config submodule.src/cli/thirdparty/indicators.url "$srcdir/indicators"
 	git config submodule.src/lib/thirdparty/cryptopp.url "$srcdir/cryptopp"
 	git -c protocol.file.allow=always submodule update
 
@@ -69,8 +69,8 @@ build() {
 	cd "$srcdir"
 	cmake -B build \
 	-S "$pkgname" \
-	-DCMAKE_INSTALL_PREFIX=/opt/vpkedit \
-	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr/lib/$pkgname \
+	-DCMAKE_BUILD_TYPE=None \
 	-DVPKEDIT_BUILD_LIBC=OFF
 
 	cmake --build build
@@ -81,8 +81,14 @@ package() {
 	DESTDIR="$pkgdir" cmake --install build
 
 	# Remove Qt libs copied from system
-	cd "$pkgdir/opt/vpkedit"
+	cd "$pkgdir/usr/lib/$pkgname"
 	rm -rf libQt*
+	ln -sf "/usr/lib/$pkgname/vpkedit" "$pkgdir/usr/bin/vpkedit"
+	ln -sf "/usr/lib/$pkgname/vpkeditcli" "$pkgdir/usr/bin/vpkeditcli"
+
+	# Change desktop file to point towards /usr/lib/vpkedit
+	cd "$pkgdir/usr/share/applications"
+	sed -i 's/Exec=\/opt\/vpkedit\//Exec=/g' vpkedit.desktop
 
 	# Install License
 	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
