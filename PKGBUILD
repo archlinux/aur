@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: MatMoul <matmoul at the google email domain which is .com>
 pkgname=octopi
-pkgver=0.15.0+19+ga081ac2b
+pkgver=0.15.0+23+g8c508c91
 pkgrel=1
 pkgdesc="A powerful Pacman frontend using Qt libs"
 arch=('x86_64')
@@ -19,10 +19,14 @@ makedepends=(
   'qt6-tools'
 )
 optdepends=(
+  'inxi: for SysInfo log'
+  'lsb-release: for SysInfo log'
+  'mhwd: for SysInfo log'
   'pacaur: for AUR support'
   'pacmanlogviewer: to view pacman log files'
   'paru: for AUR support'
   'pikaur: for AUR support'
+  'systemd: for SysInfo log'
   'trizen: for AUR support'
   'yay: for AUR support'
 )
@@ -34,9 +38,9 @@ provides=(
 conflicts=(
   'octopi-notifier'
 )
-_commit=a081ac2bfd0564be64348f9a3a74ac9f4952bee1  # branch/master
+_commit=8c508c91c8f4cc4923ea731a22261fa7d3be4ccb  # branch/master
 source=("git+https://github.com/aarnt/octopi.git#commit=${_commit}")
-sha256sums=('60250c4d6d638e8e3e4692a1397020411b00f1eb187f648d7a3420658e1942df')
+sha256sums=('1bfbe5b403128209101b37f7b91a0c1eb5810dc496943b4d13326b26a41f99eb')
 
 pkgver() {
   cd "$pkgname"
@@ -46,14 +50,8 @@ pkgver() {
 prepare() {
   cd "$pkgname"
 
-  # Add missing cmake_minimum_required command
-  sed -i '1 i\cmake_minimum_required(VERSION 3.5)' notifier/CMakeLists.txt
-
   # Don't hardcode qt-sudo path
   sed -i 's/usr\/local/usr/g' src/constants.h
-
-  # why doesn't upstream just do this so we don't have to...
-  cp -f "resources/images/${pkgbase}_green.png" "resources/images/${pkgbase}.png"
 }
 
 build() {
@@ -67,4 +65,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  # remove duplicate license
+  rm -r "$pkgdir/usr/share/licenses"
 }
