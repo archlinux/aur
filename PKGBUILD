@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia
 _pkgname=gamescope
-pkgver=3.14.14
+pkgver=3.14.16
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -43,13 +43,13 @@ makedepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-  "gamescope::git+https://github.com/ValveSoftware/gamescope.git#tag=$pkgver"
+  "$_pkgname::git+https://github.com/ValveSoftware/gamescope.git#tag=$pkgver"
   "reshade::git+https://github.com/Joshua-Ashton/reshade.git#commit=9fdbea6892f9959fdc18095d035976c574b268b7"
   "vkroots::git+https://github.com/Joshua-Ashton/vkroots.git#commit=5106d8a0df95de66cc58dc1ea37e69c99afc9540"
   "wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=a5c9826e6d7d8b504b07d1c02425e6f62b020791"
   "stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9"
   "reverts-bd722f7.patch")
-sha1sums=('a8a0df037a4cca63a3f50639997492a73d67ebce'
+sha1sums=('30904f8ef824cc32e8d57d369ce986d3b0d05313'
           '5860b457b6bb00d1fdfd6dd068516604e87a6466'
           'fc042f50602b41be8a7c6be0a85c14cc70da761b'
           '0e6ccd1ec72dc3471594568097c922bec551fc3c'
@@ -60,13 +60,15 @@ prepare() {
   # apply nvidia-fix patchs from
   # https://github.com/sharkautarch/gamescope/tree/nvidia-fix
   for patch in "${source[@]}"; do
+    patch="${patch%%::*}"
+    patch="${patch##*/}"
     if [[ $patch == *.patch ]]; then
       msg2 "Applying $patch"
-      patch --no-backup-if-mismatch -d gamescope -Np1 -i "$srcdir/$patch"
+      patch --no-backup-if-mismatch -d "$_pkgname" -Np1 -i "$srcdir/$patch"
     fi
   done
 
-  cd gamescope
+  cd $_pkgname
 
   # use system spirv-headers
   sed -i "s|'.*spirv/unified1|'/usr/include/spirv/unified1|" src/meson.build
