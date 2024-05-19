@@ -1,5 +1,5 @@
 pkgname=vapoursynth-preview-iew-git
-pkgver=0.8.1.14.g0418418
+pkgver=0.8.1.38.g64ddaec
 pkgrel=1
 pkgdesc="Standalone previewer for VapourSynth scripts (GIT version)"
 arch=('any')
@@ -15,6 +15,7 @@ depends=(
     'vapoursynth-plugin-vsakarin-git'
     'python-matplotlib'
     'vapoursynth-plugin-vstools-git'
+    'python-requests-toolbelt'
 )
 makedepends=('git'
     'python-pip'
