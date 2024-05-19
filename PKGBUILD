@@ -8,7 +8,7 @@ url="https://github.com/KlodCripta/Cleaner-Advanced"
 license=('MIT')
 depends=('bash')
 source=("https://github.com/KlodCripta/Cleaner-Advanced/raw/main/cleaner-advanced.tar.gz")
-sha256sums=('d48bc2e9f81846a14551a07fc5767bf79394e42bc124caea98070fe27fb32792')
+sha256sums=('cfeb60fed2e496ba8e41d6d02a706301a537076b2713c7ac46bd2d5384aa0217')
 
 prepare() {
     cd "$srcdir"
