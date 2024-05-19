@@ -1,29 +1,35 @@
-# Maintainer: Daniel Milde <daniel@milde.cz>
+# Contributor: Daniel Milde <daniel@milde.cz>
 # Based on https://github.com/aerospike/aerospike-client-c
 
 pkgname=aerospike-client-c-libev
-pkgver=4.4.0
+pkgver=6.6.1
 pkgrel=1
 pkgdesc="The Aerospike C client provides a C interface for interacting with the Aerospike Database."
 arch=('any')
 url="https://github.com/aerospike/aerospike-client-c"
 license=('apache')
-depends=('libev' 'python2')
+depends=('libev' 'python')
 makedepends=('git')
 provides=('aerospike-client-c')
 conflicts=('aerospike-client-c-libuv' 'aerospike-client-c-libevent')
 _gitroot="https://github.com/aerospike/aerospike-client-c.git"
 _gitname="aerospike-client-c"
+source=("git+$_gitroot#tag=$pkgver"
+        "git+https://github.com/aerospike/aerospike-common"
+        "git+https://github.com/aerospike/aerospike-mod-lua"
+        "git+https://github.com/aerospike/lua.git")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+prepare() {
+  cd ${srcdir}/${_gitname}/
+  git submodule init
+  git config submodule.modules/common.url "${srcdir}/aerospike-common"
+  git config submodule.modules/mod-lua.url "${srcdir}/aerospike-mod-lua"
+  git config submodule.modules/lua.url "${srcdir}/lua"
+  git submodule--helper update
+}
 
 build() {
-  cd ${srcdir}/
-
-  if [[ -d ${srcdir}/${_gitname} ]] ; then
-    rm -rf "${srcdir}/${_gitname}"
-  fi
-
-  git clone --recursive --branch ${pkgver} ${_gitroot}
-
   cd ${srcdir}/${_gitname}/
 
   make EVENT_LIB=libev
