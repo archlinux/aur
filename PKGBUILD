@@ -3,7 +3,7 @@
 # Contributor: fortea
 
 pkgname=apx
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Package manager with support for multiple sources'
 arch=(x86_64 aarch64)
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('0ff60546fcce40c808d3aa8c27faebf2c1c0d29c8b7ee2534ec2fde93f5d2bc5c9f5c33a61eafea2c931f4195585209307e853ce722ea2a4636ced9680adb11a')
+b2sums=('8c686c2ced0b1f237e815efa45378b455129ed76e5c4e180637d29475b24fc0c778f2a4c177f25f315a2ee1018b20b7bdf3b3ec5cc069d904288a2be58a7f694')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
