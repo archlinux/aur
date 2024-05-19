@@ -2,7 +2,7 @@ pkgbase = hut-git
 	pkgdesc = A CLI tool for sr.ht (sourcehut)
 	pkgver = r244.ed21e0c
 	pkgrel = 1
-	url = https://sr.ht/~emersion/hut
+	url = https://sr.ht/~xenrox/hut
 	arch = x86_64
 	arch = aarch64
 	license = AGPL3
@@ -11,7 +11,7 @@ pkgbase = hut-git
 	makedepends = scdoc
 	provides = hut
 	conflicts = hut
-	source = hut::git+https://git.sr.ht/~emersion/hut
+	source = hut::git+https://git.sr.ht/~xenrox/hut
 	sha256sums = SKIP
 
 pkgname = hut-git

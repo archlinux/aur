@@ -6,12 +6,12 @@ pkgver=r244.ed21e0c
 pkgrel=1
 pkgdesc='A CLI tool for sr.ht (sourcehut)'
 arch=('x86_64' 'aarch64')
-url='https://sr.ht/~emersion/hut'
+url='https://sr.ht/~xenrox/hut'
 license=('AGPL3')
 makedepends=('git' 'go' 'scdoc')
 provides=('hut')
 conflicts=('hut')
-source=("$_pkgname::git+https://git.sr.ht/~emersion/${_pkgname}")
+source=("$_pkgname::git+https://git.sr.ht/~xenrox/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
