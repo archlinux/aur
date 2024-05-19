@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-careful-git
-pkgver=0.4.1.r0.g741695a
+pkgver=0.4.2.r0.g12e0bf1
 pkgrel=1
 pkgdesc="Execute Rust code carefully, with extra checking along the way"
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
