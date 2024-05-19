@@ -1,7 +1,7 @@
 # Maintainer: wuhang2003 <i@zwh.moe>
 
 pkgname=ttf-sarasa-gothic-nerd-fonts
-pkgver=1.0.11_0
+pkgver=1.0.12_0
 pkgrel=1
 pkgdesc="Nerd fonts patched Sarasa Gothic font. (TTC)"
 arch=('any')
@@ -10,7 +10,7 @@ license=('OFL')
 provides=('ttf-sarasa-gothic-nerd-fonts')
 source=(sarasa-nerd-font-ttc-${pkgver}-${pkgrel}.zip::"https://github.com/jonz94/ttc-sarasa-gothic-nerd-fonts/releases/download/v${pkgver//_/-}/sarasa-nerd-font-ttc.zip"
         "LICENSE-${pkgver//_/-}::https://raw.githubusercontent.com/jonz94/Sarasa-Gothic-Nerd-Fonts/v${pkgver//_/-}/LICENSE")
-sha512sums=('28e26bf16572017c8171dc5c74a921fc3f9510c93d0e9acacc2b719408b3236ae3c28c1b909d39658bc55124dcb8004a4c9d28bdc0943d12e3d9a31f447a3cc9'
+sha512sums=('ba172213729b5900bda2761b2c2f7189e2fedf0a8ccd16419f2827980c516ba92217d04a87308720a1b21c19791500642d3d8a2778d9b1c1d8fa4b8e2df4d5c7'
             '81709acc66bb7c2de2635c9b6e043f35126228d1f2a8dc6acd93245061177e136be08a7f7aa314731bc95c5fb8c9841b78d9129810650f9a9f590753ae1c8484')
 
 package() {
