@@ -15,10 +15,11 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation-openrc
-pkgver=17.5.1
-_buildver=23298084
+pkgver=17.5.2
+_buildver=23775571
 _pkgver=${pkgver}_${_buildver}
-pkgrel=2
+pkgrel=1
+_tools_version=12.4.0_23259341
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC. Modified to use OpenRC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -59,7 +60,14 @@ backup=(
   'etc/conf.d/vmware'
 )
 source=(
-  "https://download3.vmware.com/software/WKST-${pkgver//./}-LX/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/core/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component.tar"
 
   'vmware-bootstrap'
   'vmware-vix-bootstrap'
@@ -77,7 +85,14 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  'aa60b7cef2a87acefbcf7c7a5242c7b09d7b910acbd5afebc5ef6617e50c7496'
+  'f4eb354eb2a417bc81f9d33001a29ed1150b41eaa3364291cbc139475247414f'
+  'd862be0d12796134b40e5ffc7534a5e6161b8898355fe32ca8f705a3806cbfe4'
+  'd79f79f17e5f37399046d16be3967e0cff3c9474e2cb6ea3f2c3ebea3ff68cea'
+  '4643fff3ed4f8af5a56a1c4c2084fa7327d78e58ee9b0687b98390a4b4a1ac14'
+  '196c842f758b813afb202b0db2d09d457fccafac212ca41ef3277dfe9ceaf9ec'
+  '3a6a2ea1bf0262830be5f8b5e0636654101a20d62fe3eb65565a9afa4a4bafbd'
+  'd4e9884f5f11cef4e261023d895eba5b57a8a80623bff0de8b3f1c47154b2a11'
+  '20abd21da43ac31741f8bb26db1ae7d8f4ef4c5082c9a2cc3ae5da494f1b9529'
 
   '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -92,7 +107,7 @@ sha256sums=(
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
   '2bd592c28c383264a14167ddca8686912ddbadb1ba16d40560d75b082d439ed7'
-  '4332a189c79ce15fa4d59dc45cffc78f42f48cfbb059b5eeafbb43a9cac835ba'
+  'b4fd63440e6829d8d73055d23e451386837683e2ac1e84549d58a748b486743a'
 )
 options=(!strip emptydirs !debug)
 
@@ -107,25 +122,24 @@ _isoimages=(linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=13.5.1
-_vmware_fusion_buildver=23298085
+_vmware_fusion_ver=13.5.2
+_vmware_fusion_buildver=23775688
 _vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 makedepends+=(
   python
-  dmg2img
   p7zip
   uefitool
 )
 
 source+=(
-  "https://download3.vmware.com/software/FUS-${_vmware_fusion_ver//./}/VMware-Fusion-${_vmware_fusion_ver_full/_/-}_universal.dmg"
+  "VMware-Fusion-${_vmware_fusion_ver_full/_/-}_universal.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver}/${_vmware_fusion_buildver}/universal/core/com.vmware.fusion.zip.tar"
   "unlocker.py"
   "efi-patches.txt"
 )
 sha256sums+=(
-  '7ff2797c44f9569980acb0c41ebf647c9db59556602d5d7f0a2f0d2be3c4cc86'
+  '4d470e2160acb5da7d52d478f6ef12829c5ebe3c04e3154652466ba0bfeed3f6'
   '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
@@ -162,12 +176,18 @@ prepare() {
   [[ -d "$extracted_dir" ]] && rm -r "$extracted_dir"
 
   bash \
-    "$(readlink -f "$srcdir/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle")" \
+    "$(readlink -f "$srcdir/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle")" \
+    --install-component "vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component" \
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
-  dmg2img -s VMware-Fusion-${_vmware_fusion_ver_full/_/-}_universal.dmg VMware-Fusion-${_vmware_fusion_ver_full/_/-}.iso
-  7z e -y VMware-Fusion-${_vmware_fusion_ver_full/_/-}.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
+  7z e -y com.vmware.fusion.zip payload/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null
 
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
 fi
