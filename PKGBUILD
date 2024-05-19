@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2024-01-14.
+# PKGBUILD last time manually edited: At least on 2024-05-19.
 
 _year='24'
 _prevyear="$(( ${_year} - 1 ))"
