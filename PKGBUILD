@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: MatMoul <matmoul at the google email domain which is .com>
 pkgname=octopi
-pkgver=0.15.0+23+g8c508c91
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A powerful Pacman frontend using Qt libs"
 arch=('x86_64')
@@ -38,27 +38,20 @@ provides=(
 conflicts=(
   'octopi-notifier'
 )
-_commit=8c508c91c8f4cc4923ea731a22261fa7d3be4ccb  # branch/master
-source=("git+https://github.com/aarnt/octopi.git#commit=${_commit}")
-sha256sums=('1bfbe5b403128209101b37f7b91a0c1eb5810dc496943b4d13326b26a41f99eb')
-
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/aarnt/octopi/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('12438b73009e80fb86b6c126b406624f7df7cd8ebaf006853b2e6c258a79aec8')
 
 prepare() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # Don't hardcode qt-sudo path
   sed -i 's/usr\/local/usr/g' src/constants.h
 }
 
 build() {
-  cmake -B build -S "$pkgname" \
+  cmake -B build -S "$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DUSE_QTERMWIDGET6='ON' \
     -Wno-dev
   cmake --build build
 }

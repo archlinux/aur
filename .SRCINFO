@@ -1,6 +1,6 @@
 pkgbase = octopi
 	pkgdesc = A powerful Pacman frontend using Qt libs
-	pkgver = 0.15.0+23+g8c508c91
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://tintaescura.com/projects/octopi
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = octopi
 	provides = octopi-repoeditor
 	provides = octopi-cachecleaner
 	conflicts = octopi-notifier
-	source = git+https://github.com/aarnt/octopi.git#commit=8c508c91c8f4cc4923ea731a22261fa7d3be4ccb
-	sha256sums = 1bfbe5b403128209101b37f7b91a0c1eb5810dc496943b4d13326b26a41f99eb
+	source = octopi-0.16.0.tar.gz::https://github.com/aarnt/octopi/archive/refs/tags/v0.16.0.tar.gz
+	sha256sums = 12438b73009e80fb86b6c126b406624f7df7cd8ebaf006853b2e6c258a79aec8
 
 pkgname = octopi
