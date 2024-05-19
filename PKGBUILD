@@ -1,16 +1,16 @@
-# Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
+# Maintainer: Martino Pilia <martino.pilia@gmail.com>
 
 _pkgname=groovy-language-server
 pkgname=${_pkgname}-git
-pkgver=r67.610f81b
+pkgver=r202.8b5fbc3
 pkgrel=1
 pkgdesc="A language server for Groovy"
 arch=('any')
-url="https://github.com/prominic/groovy-language-server"
+url="https://github.com/GroovyLanguageServer/groovy-language-server"
 license=('Apache')
-depends=('java-runtime')
+depends=('java-runtime<=19')
 makedepends=('git')
-source=('git+https://github.com/prominic/groovy-language-server')
+source=('git+https://github.com/GroovyLanguageServer/groovy-language-server')
 md5sums=('SKIP')
 
 pkgver() {
