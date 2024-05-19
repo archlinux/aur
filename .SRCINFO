@@ -1,12 +1,13 @@
 pkgbase = terri-fried-git
 	pkgdesc = A multi-platform C++ game made for Ludum Dare 46
 	pkgver = r34.463aa1e
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/polymarsdev/terri-fried
 	arch = x86_64
-	license = custom
+	license = LicenseRef-Custom
 	makedepends = git
 	makedepends = gcc
+	makedepends = pkg-config
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_ttf
@@ -18,7 +19,7 @@ pkgbase = terri-fried-git
 	source = terri-fried
 	source = terri-fried.desktop
 	sha512sums = SKIP
-	sha512sums = 2f95712b853703111aba74ee9f2411c750bdbca973216eb7f2c06302ed9dbcbbd31b2139ff310ac0d140660092b60456b3b275fe1e92db58705063edf6a11d6c
+	sha512sums = 3cd1eab4e20cb5bb726b70028b5cfe9ade8c30cedd6976b725bc0721bf9a05f7b98f58ad5265e008748d767640d8cef1a7908d6a53fcafd6559a2189f3315bbd
 	sha512sums = cb435d7f26523d1af1182cd5f4af010c45cb4630133e04155ff806ca500c9e6882ae14ab0319b062aa3686bf72fd9e8569f449eef62571c8e080d7998b9100be
 
 pkgname = terri-fried-git
