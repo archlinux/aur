@@ -1,0 +1,26 @@
+pkgbase = lib32-libcap
+	pkgdesc = POSIX 1003.1e capabilities (32-bit)
+	pkgver = 2.70
+	pkgrel = 1
+	url = https://sites.google.com/site/fullycapable/
+	arch = x86_64
+	license = BSD-3-Clause OR GPL-2.0-only
+	makedepends = linux-api-headers
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-pam
+	provides = libcap.so
+	provides = libpsx.so
+	source = https://kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.70.tar.xz
+	source = https://kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.70.tar.sign
+	validpgpkeys = 38A644698C69787344E954CE29EE848AE2CCF3F4
+	sha512sums = 4e0bf0efeccb654c409afe9727b2b53c1d4da8190d7a0a9848fc52550ff3e13502add3eacde04a68a5b7bec09e91df487f64c5746ba987f873236a9e53b3d4e8
+	sha512sums = SKIP
+	b2sums = 77b72acee53032117ea481e3380d1b497f9264b6193b9523542508c7c3e46070248ca4ed910d35809ce6e52caa60cbb31edb125c47221627eeda35c61bd0914b
+	b2sums = SKIP
+
+pkgname = lib32-libcap
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-pam
+	depends = libcap=2.70

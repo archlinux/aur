@@ -4,14 +4,13 @@
 
 _name=libcap
 pkgname=lib32-libcap
-pkgver=2.69
+pkgver=2.70
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
 url="https://sites.google.com/site/fullycapable/"
 license=('BSD-3-Clause OR GPL-2.0-only')
 depends=(
-  libcap=$pkgver
   lib32-gcc-libs
   lib32-glibc
   lib32-pam
@@ -24,10 +23,11 @@ provides=(
   libpsx.so
 )
 source=(https://kernel.org/pub/linux/libs/security/linux-privs/${_name}2/$_name-$pkgver.tar.{xz,sign})
-sha512sums=('647c307dc451517da9d089495ab959b4a6fbbe41c79f4e1e9bb663569dad630ead0c2e413dfb393319e3ea14dc9848c81b392107fe3382ce1813d278c3394a7f'
+sha512sums=('4e0bf0efeccb654c409afe9727b2b53c1d4da8190d7a0a9848fc52550ff3e13502add3eacde04a68a5b7bec09e91df487f64c5746ba987f873236a9e53b3d4e8'
             'SKIP')
-b2sums=('94d1fef7666a1c383a8b96f1f6092bd242164631532868b628d2f5de71b42a371d041a978ef7fbadfee3eeb433165444995d1078cd790275bc0433a7875a697e'
+b2sums=('77b72acee53032117ea481e3380d1b497f9264b6193b9523542508c7c3e46070248ca4ed910d35809ce6e52caa60cbb31edb125c47221627eeda35c61bd0914b'
         'SKIP')
+# NOTE: contacted upstream on 2024-05-19 about unsafe (and differing) key for signed git tags and use of SHA-1 binding signatures in key used for custom source tarballs in the hopes of them using a new key in the future
 validpgpkeys=(38A644698C69787344E954CE29EE848AE2CCF3F4) # Andrew G. Morgan <morgan@kernel.org>
 
 build() {
@@ -59,8 +59,13 @@ package() {
     -C $_name-$pkgver
   )
 
+  depends+=(
+    libcap=$pkgver
+  )
+
   make "${make_options[@]}"
   install -vDm 644 $_name-$pkgver/{CHANGELOG,README} -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -vDm 644 $_name-$pkgver/License -t "$pkgdir/usr/share/licenses/$pkgname/"
   # remove files provided by libcap
   rm -rv "$pkgdir/usr/"{include,share/man,bin}
 }
