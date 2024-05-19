@@ -2,12 +2,13 @@
 
 pkgname=thumbor
 pkgver=7.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='open-source photo thumbnail service'
 arch=(x86_64)
 url='https://github.com/thumbor/thumbor'
 license=(MIT)
 depends=(
+  glibc
   python
   python-colorama
   python-pycurl
@@ -17,36 +18,44 @@ depends=(
   gifsicle
   python-libthumbor
   python-derpconf
-  python-socketfromfd
   python-piexif
   python-jpegiptc
+  python-pillow
+  python-numpy
 )
 makedepends=(python-setuptools)
-checkdepends=(python-pytest python-preggy python-pyssim)
+checkdepends=(python-pytest python-preggy python-pyssim python-pytz python-sentry_sdk python-redis python-pytest-asyncio)
 backup=('etc/thumbor.conf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        'thumbor.service')
+        'thumbor.service'
+        'arch-config.patch')
 b2sums=('5c663f37888bdd9d9002eb3f6b8f7fffb8593b138058174887fef0bd1883a14fa1455ba28b9c4e2814171e7aeb0f946c14fb01283fc1fdcbe174d48ba7a37279'
-        '9f5b837710e47654d522c5791cb5c6e01d6452093837a0c57b7158cbc8be6a7a3b5380efe2e975d6396bc1fd23a5f922f6ede9aa921142fd004ff48381f58db3')
+        '9f5b837710e47654d522c5791cb5c6e01d6452093837a0c57b7158cbc8be6a7a3b5380efe2e975d6396bc1fd23a5f922f6ede9aa921142fd004ff48381f58db3'
+        '7f84c5e210b21af45b1162fdc80e7016dca8b3c92a4d3ac303f3e35aa6405a476dab26af3840e6cd20e492e814c23380a9838035934adb352c91fcab2fb992ba')
 
 prepare() {
   cd $pkgname-$pkgver
 
   # adjust storage/cache paths to match systemd service
-  sed -e "s|FILE_STORAGE_ROOT_PATH = join(home, 'thumbor', 'storage' )|FILE_STORAGE_ROOT_PATH = '/var/lib/thumbor'|" \
-      -e "s|RESULT_STORAGE_FILE_STORAGE_ROOT_PATH = join(home, 'thumbor', 'result_storage')|RESULT_STORAGE_FILE_STORAGE_ROOT_PATH = '/var/cache/thumbor'|" \
-      -i $pkgname/$pkgname.conf
+  patch -p1 < ../arch-config.patch
 }
 
-# skip tests for now, they are utterly broken and require sentry.io sdk
+# tests are disabled for now
+# many of them are failing or require whole new dependency chains
 #check(){
-#  cd "$pkgname-$pkgver"
-#  pytest
+#  cd $pkgname-$pkgver
+#  pytest -vvs \
+#    --ignore=tests/detectors/test_queued_detector.py \
+#    --ignore=tests/optimizers/test_gifv.py \
+#    --ignore=tests/handlers/test_base_handler_with_gifv.py \
+#    --ignore=tests/metrics/test_statsd_metrics.py \
+#    --ignore=tests/handlers/test_base_handler_with_result_storage.py
+#    --deselect integration_tests/pil_test.py::PILTest::test_single_params
 #}
 
 build() {
   cd $pkgname-$pkgver
-  python setup.py build
+  python setup.py build_ext -i
 }
 
 package() {

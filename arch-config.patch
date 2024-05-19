@@ -1,0 +1,21 @@
+diff --git a/thumbor/thumbor.conf b/thumbor/thumbor.conf
+index 24a9986..ee7d5cc 100644
+--- a/thumbor/thumbor.conf
++++ b/thumbor/thumbor.conf
+@@ -114,14 +114,14 @@ STORAGE = "thumbor.storages.file_storage"
+ # STORAGE = "thumbor.compatibility.storage"
+ 
+ ## root path of the file storage
+-FILE_STORAGE_ROOT_PATH = join(home, "thumbor", "storage")
++FILE_STORAGE_ROOT_PATH = "/var/lib/thumbor"
+ 
+ ## If you want to cache results, use this options to specify how to cache it
+ ## Set Expiration seconds to ZERO if you want them not to expire.
+ RESULT_STORAGE = "thumbor.result_storages.file_storage"
+ # RESULT_STORAGE = "thumbor.compatibility.result_storage"
+ RESULT_STORAGE_EXPIRATION_SECONDS = 60 * 60 * 24  # one day
+-RESULT_STORAGE_FILE_STORAGE_ROOT_PATH = join(home, "thumbor", "result_storage")
++RESULT_STORAGE_FILE_STORAGE_ROOT_PATH = "/var/cache/thumbor"
+ 
+ RESULT_STORAGE_STORES_UNSAFE = False
+ 
