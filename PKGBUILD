@@ -32,7 +32,8 @@ build() {
     --without-OpenDX \
     --without-grape \
     --without-silo \
-    CC="gcc -B/usr/bin/mold"
+    CC="gcc -B/usr/bin/mold" \
+    CFLAGS="-Wno-incompatible-pointer-types"
 
   make
 }
