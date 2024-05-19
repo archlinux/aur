@@ -8,7 +8,7 @@ pkgbase = zsteg
 	depends = ruby
 	depends = ruby-zpng
 	depends = ruby-iostruct
-	source = zsteg.tar.gz::https://github.com/zed-0xff/zsteg/archive/refs/tags/v0.2.13.tar.gz
+	source = zsteg-0.2.13.tar.gz::https://github.com/zed-0xff/zsteg/archive/refs/tags/v0.2.13.tar.gz
 	sha256sums = 7113fee4bba57df3eb9874ba2b4dbc00826b0bec72e77ac2af24fbdc356e3469
 
 pkgname = zsteg

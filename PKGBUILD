@@ -1,4 +1,6 @@
 # Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
+# Contributor: Yigit Sever <yigit at yigitsever dot com>
+# Contributor: gryffyn <aur at evan dot me>
 
 pkgname=zsteg
 pkgver=0.2.13
@@ -12,24 +14,28 @@ depends=(
         "ruby-zpng"
         "ruby-iostruct"
 )
-source=("${pkgname}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("7113fee4bba57df3eb9874ba2b4dbc00826b0bec72e77ac2af24fbdc356e3469")
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  # update gemspec/Gemfile to allow newer version of the dependencies
+  sed --in-place --regexp-extended 's|~>|>=|g' "$pkgname.gemspec"
+}
 
 build() {
   cd "$pkgname-$pkgver"
   gem build "$pkgname.gemspec"
-}
 
-package() {
   local _gemdir="$(gem env gemdir)"
 
-  cd "$pkgname-$pkgver"
   gem install \
     --local \
     --ignore-dependencies \
     --no-user-install \
-    --install-dir "$pkgdir/$_gemdir" \
-    --bindir "$pkgdir/usr/bin" \
+    --install-dir "tmp_install/$_gemdir" \
+    --bindir "tmp_install/usr/bin" \
     "$pkgname-$pkgver.gem"
 
   # remove unrepreducible files
@@ -38,7 +44,7 @@ package() {
     "$pkgdir/$_gemdir/gems/$pkgname-$pkgver/vendor/" \
     "$pkgdir/$_gemdir/doc/$pkgname-$pkgver/ri/ext/"
 
-  find "$pkgdir/$_gemdir/gems/" \
+  find "tmp_install/$_gemdir/gems/" \
     -type f \
     \( \
         -iname "*.o" -o \
@@ -50,11 +56,16 @@ package() {
     \) \
     -delete
 
-  find "$pkgdir/$_gemdir/extensions/" \
+  find "tmp_install/$_gemdir/extensions/" \
     -type f \
     \( \
       -iname "mkmf.log" -o \
       -iname "gem_make.out" \
     \) \
     -delete
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  cp --archive --verbose tmp_install/* "$pkgdir"
 }
