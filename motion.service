@@ -8,5 +8,16 @@ ExecStart=/usr/bin/motion -n
 Type=simple
 StandardError=null
 
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
+LockPersonality=true
+ProtectHostname=true
+
 [Install]
 WantedBy=multi-user.target

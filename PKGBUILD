@@ -5,7 +5,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=motion-git
-pkgver=4.6.0.r10.11e5ca7
+pkgver=4.6.0.r11.629b3ba
 pkgrel=1
 pkgdesc='Monitor and record video signals from many types of cameras'
 arch=(x86_64)
@@ -19,12 +19,12 @@ backup=('etc/motion/motion.conf')
 source=("git+https://github.com/Motion-Project/motion.git"
         ${pkgname%-git}.{service,sysusers,tmpfiles})
 b2sums=('SKIP'
-        'c66ca8a7723b78f05cf4750377276891cb6025a74ec33960ccaa3939a25edb6eca713d36ded94d20db70cd1bd6694629eb6d43ba63e8165be145bb9d6a668771'
+        'f2ecae6cdf3e650edca4b69c859c9f16b1a8541d94a880cb29a73237a2b1abd65d3e20ca701603c250d96564294c6967d6bfe917e0aa9aface0c0b41fe65d90f'
         'e923b20ceb893fb52cffc530f3d777ccbaffd7aef447f368a6a83b73043795acfb6a26da0bcdeb695a3b356baebe9ad89ea9aabd27e986c482dcd71670957a84'
         '3f39854b561200ad052529f187a83f135be3ca4ea20e9897fe41fbae7ed898850017bdd496996199afc00f151a2302314aef8c2f6847337cf1b8e8e7579be4e7')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd ${pkgname%-git}
 	printf "%s" "$(git describe --long --tags | sed 's/release-//g;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
@@ -44,9 +44,9 @@ package(){
   cd ${pkgname%-git}
   make DESTDIR="$pkgdir" install
   install -Dm644 data/motion-dist.conf "$pkgdir"/etc/motion/motion.conf
-  install -Dm644 "$srcdir"/motion.service "$pkgdir"/usr/lib/systemd/system/motion.service
-  install -Dm644 "$srcdir"/motion.sysusers "$pkgdir"/usr/lib/sysusers.d/motion.conf
-  install -Dm644 "$srcdir"/motion.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/motion.conf
+  install -Dm644 ../motion.service "$pkgdir"/usr/lib/systemd/system/motion.service
+  install -Dm644 ../motion.sysusers "$pkgdir"/usr/lib/sysusers.d/motion.conf
+  install -Dm644 ../motion.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/motion.conf
 }
 
 # vim:set ts=2 sw=2 et:
