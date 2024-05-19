@@ -1,12 +1,12 @@
 pkgbase = xfs_undelete-git
 	pkgdesc = Undelete tool for the XFS filesystem
-	pkgver = 13.1.r0.gc01b5fa
+	pkgver = 14.0.r0.gc311722
 	pkgrel = 1
 	url = https://github.com/ianka/xfs_undelete
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
-	provides = xfs_undelete=13.1
+	provides = xfs_undelete=14.0
 	conflicts = xfs_undelete
 	source = xfs_undelete::git+https://github.com/ianka/xfs_undelete.git
 	sha256sums = SKIP

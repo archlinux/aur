@@ -2,7 +2,7 @@
 
 _pkgname="xfs_undelete"
 pkgname="$_pkgname-git"
-pkgver=13.1.r0.gc01b5fa
+pkgver=14.0.r0.gc311722
 pkgrel=1
 pkgdesc='Undelete tool for the XFS filesystem'
 url="https://github.com/ianka/xfs_undelete"
@@ -21,8 +21,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
@@ -34,8 +34,6 @@ package() {
   )
 
   cd "$_pkgsrc"
-
   install -Dm755 "xfs_undelete" -t "$pkgdir/usr/bin/"
   install -Dm644 "xfs_undelete.man" "$pkgdir/usr/share/man/man1/xfs_undelete.1"
 }
-
