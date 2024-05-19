@@ -30,13 +30,13 @@ pkgver()
 
 build()
 {
-    msg "Configure"
+    printf "CMake Configure\n"
 
 	cmake -DCMAKE_BUILD_TYPE=Release    \
 		  -DCMAKE_INSTALL_PREFIX="/usr" \
 		  "${srcdir}/${pkgname%-git}/"
 
-    msg "Build"
+    printf "CMake Build\n"
 
     cmake --build .
 }
@@ -47,12 +47,11 @@ build()
 
 package()
 {
-	msg "Install library and files"
+	printf "Install library and files\n"
 
     make DESTDIR="${pkgdir}/" install
 
-
-	msg "Install license"
+	printf "Install license\n"
 
 	install -D -m644 "${srcdir}/${pkgname%-git}/LICENSE" \
 		"${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
