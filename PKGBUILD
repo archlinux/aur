@@ -1,7 +1,6 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 
 pkgname=fvm-flutter-proxy
-epoch=1
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="flutter fvm proxy"
