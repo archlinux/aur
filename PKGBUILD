@@ -4,11 +4,11 @@ url="https://github.com/vectozavr/shooter"
 license=("MIT")
 
 pkgver=0.1.1.r9.g0db3301
-pkgrel=2
+pkgrel=3
 
 arch=("x86_64")
 depends=("sfml" "openal")
-makedepends=("gcc" "cmake" "git" "sfml" "openal")
+makedepends=("gcc" "cmake" "git")
 
 source=(
     "$pkgname::git+https://github.com/vectozavr/shooter.git#branch=master"
@@ -32,7 +32,6 @@ build() {
     cd "$pkgname"
     cmake -B build .
     cmake --build build
-    rm -rf build $(find . -regex '.*\.\(h\|cpp\)$')
 }
 
 package() {
@@ -45,6 +44,7 @@ package() {
 
     cp -r "$pkgname" "$pkgdir/opt/"
     chmod 755 "$pkgdir/opt"
+    rm -rf "$pkgdir/opt/$pkgname/build" $(find "$pkgdir/opt/$pkgname" -regex '.*\.\(h\|cpp\)$')
 
     echo "cd '/opt/$pkgname'; ./shooter" > "$pkgdir/usr/bin/vectozavr-shooter"
 }
