@@ -1,0 +1,5 @@
+[python-diffrax]
+source = "github"
+github = "patrick-kidger/diffrax"
+use_latest_release = "true"
+prefix = "v"
