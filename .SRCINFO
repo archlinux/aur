@@ -1,0 +1,20 @@
+pkgbase = vectozavr-shooter-git
+	pkgdesc = Multiplayer shooter written in C++
+	pkgver = 0.1.1.r9.g0db3301
+	pkgrel = 1
+	url = https://github.com/vectozavr/shooter
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = git
+	makedepends = sfml
+	makedepends = openal
+	depends = sfml
+	depends = openal
+	source = vectozavr-shooter-git::git+https://github.com/vectozavr/shooter.git#branch=master
+	source = git+https://github.com/vectozavr/3dzavr.git#branch=sfml_version
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vectozavr-shooter-git
