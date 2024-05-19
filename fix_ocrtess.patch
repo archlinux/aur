@@ -1,0 +1,15 @@
+--- a/willuslib/CMakeLists.txt	2024-05-19 11:18:59.620084018 +0200
++++ b/willuslib/CMakeLists.txt	2024-05-19 11:21:26.688802928 +0200
+@@ -26,9 +26,9 @@
+   set(WILLUSLIB_SRC ${WILLUSLIB_SRC} ocrgocr.c)
+ endif(GOCR_FOUND)
+ 
+-if(TESSERACT_FOUND)
+-  set(WILLUSLIB_SRC ${WILLUSLIB_SRC} ocrtess.c)
+-endif(TESSERACT_FOUND)
++#if(TESSERACT_FOUND)
++#  set(WILLUSLIB_SRC ${WILLUSLIB_SRC} ocrtess.c)
++#endif(TESSERACT_FOUND)
+ 
+ if(DJVU_FOUND)
+   set(WILLUSLIB_SRC ${WILLUSLIB_SRC} bmpdjvu.c)

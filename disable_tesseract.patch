@@ -1,0 +1,12 @@
+diff --git a/config.h.in b/config.h.in
+index 896c651..64f8500 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -13,6 +13,6 @@
+ #cmakedefine HAVE_DJVU_LIB
+ #cmakedefine HAVE_GOCR_LIB
+ #cmakedefine HAVE_LEPTONICA_LIB
+-#cmakedefine HAVE_TESSERACT_LIB
++//#cmakedefine HAVE_TESSERACT_LIB
+ 
+ #endif

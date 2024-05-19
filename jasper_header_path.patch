@@ -1,0 +1,13 @@
+diff --git a/willuslib/bmp.c b/willuslib/bmp.c
+index cc79ab3..fb7f6ee 100644
+--- a/willuslib/bmp.c
++++ b/willuslib/bmp.c
+@@ -37,7 +37,7 @@
+ #include <jpeglib.h>
+ #endif
+ #ifdef HAVE_JASPER_LIB
+-#include <jasper.h>
++#include <jasper/jasper.h>
+ #endif
+ 
+ #define BOUND(x,xmin,xmax)  if ((x)<(xmin)) (x)=(xmin); else { if ((x)>(xmax)) (x)=(xmax); }
