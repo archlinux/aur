@@ -1,0 +1,16 @@
+diff --git a/setup.cfg b/setup.cfg
+index 4293e27..d783954 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,8 +1,5 @@
+ [metadata]
+-description-file = README.md
+-
+-[tool:pytest]
+-pep8maxlinelength = 160
++description_file = README.md
+ 
+ [pep8]
+-max-line-length = 160
+\ No newline at end of file
++max_line_length = 160
