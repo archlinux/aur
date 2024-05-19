@@ -1,7 +1,7 @@
 # Maintainer: HaoCheng <ch1994@outlook.com>
 _pkgname=unblockneteasemusic
 pkgname=$_pkgname-bin
-pkgver=0.27.6
+pkgver=0.27.7
 pkgrel=1
 pkgdesc="Revive unavailable songs for Netease Cloud Music"
 provides=($_pkgname)
@@ -31,8 +31,8 @@ sha256sums=('a10419b2f0618e664c1663851b2cd627c4da7026287718619706d723d968ec72'
             '59dc25365cc6ea9e0f0e4e2b66b8b079eb74d542c5548c1c1b2722aef2f94270'
             '855d3b27684803b726a3415732d9cc1788f1baa835d8016017b390c711b4624f'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('248ab09fdcb3c4289022767b990b4df8524d35655e901e349abe0b6bca8281f3')
-sha256sums_aarch64=('d0e668bb0f4bbe3221cb75e8eae292cade1da03217e2b4c246fb1d95a456dad3')
+sha256sums_x86_64=('ad5801d20c1f9a14b06fa672a330a7ad2e07b4340a4f13ab8bac6a43d3b544d7')
+sha256sums_aarch64=('5770beaf9a3b990a71b286c4e821ba449f7f3e7fa293ec8c6802d54043098c20')
 
 package() {
 	install -Dm755 "$srcdir/$_pkgname-$CARCH" "$pkgdir/usr/bin/$_pkgname"
