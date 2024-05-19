@@ -1,6 +1,6 @@
 pkgbase = kitemmodels5
 	pkgdesc = Models for Qt Model/View system
-	pkgver = 5.115.0
+	pkgver = 5.116.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = kitemmodels5
 	optdepends = qt5-declarative: QML bindings
 	conflicts = kitemmodels<5.111
 	replaces = kitemmodels<5.111
-	source = https://download.kde.org/stable/frameworks/5.115/kitemmodels-5.115.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.115/kitemmodels-5.115.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.116/kitemmodels-5.116.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.116/kitemmodels-5.116.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = fffad18b40bb81cde41968459fcdf354bd3a68f1241bd625cba48ee44b68ef0c
+	sha256sums = 537cee9bbadf5471e5217e48605adbf941335de45f0041e7d5a31422e4b49ff1
 	sha256sums = SKIP
 
 pkgname = kitemmodels5
