@@ -32,15 +32,14 @@ build() {
     --without-OpenDX \
     --without-grape \
     --without-silo \
-    CC="gcc -B/usr/bin/mold" \
-    CFLAGS="-Wno-incompatible-pointer-types"
+    CC="gcc -B/usr/bin/mold"
 
   make
 }
 
 check() {
   cd ${pkgname}3-v${pkgver}
-  make distcheck
+  CFLAGS="-Wno-incompatible-pointer-types" make distcheck
 }
 
 package() {
