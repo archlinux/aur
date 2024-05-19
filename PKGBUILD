@@ -4,7 +4,7 @@
 pkgname=python-viztracer
 _pkgname=viztracer
 pkgver=0.16.3
-pkgrel=2
+pkgrel=3
 pkgdesc='VizTracer is a low-overhead logging/debugging/profiling tool that can trace and visualize your python code execution.'
 arch=('x86_64')
 url="https://github.com/gaogaotiantian/viztracer"
@@ -47,17 +47,17 @@ build() {
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver" || exit
-
   # From upstream, virtual environment is highly recommended.
   python -m venv venv --system-site-packages
   source venv/bin/activate
   $PWD/venv/bin/python -m pip install loky
   $PWD/venv/bin/python -m installer dist/*.whl
   $PWD/venv/bin/python -m unittest
+  deactivate # existing in virtual environment
 }
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver" || exit
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/python-$_pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
