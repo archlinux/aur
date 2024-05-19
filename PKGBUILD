@@ -11,7 +11,7 @@ provides=('protonup-rs')
 conflicts=('protonup-rs')
 source=(https://github.com/auyer/Protonup-rs/releases/download/v$pkgver/protonup-rs-linux-amd64.tar.gz)
 
-sha256sums=('afaa272a1f0671646999f6e1a90b8f287e8f966a4d6a962af0e11b156f951386')
+sha256sums=('ad3804b08739b2ceed64e67819d51553bad854193b5334995a0c84ac57009dbc')
 
 package() {
 	install -D protonup-rs	"$pkgdir"/usr/bin/protonup-rs
