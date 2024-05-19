@@ -4,7 +4,7 @@
 
 pkgname=ivtv-utils
 pkgver=1.4.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Userspace utilities for Hauppauge PVR cards"
 arch=('x86_64')
 license=('GPL')
@@ -15,6 +15,7 @@ url="http://ivtvdriver.org"
 source=("http://us.archive.ubuntu.com/ubuntu/pool/multiverse/i/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
         "http://pkgs.fedoraproject.org/repo/pkgs/ivtv-firmware/ivtv-firmware-20080701.tar.gz/b9a871f1c569025be9c48a77b3515faf/ivtv-firmware-20080701.tar.gz")
 depends=('gcc-libs')
+conflicts=('v4l-utils')
 md5sums=('3a4219d698262ca2b28e41f0f547b0a2'
          'b9a871f1c569025be9c48a77b3515faf')
  
