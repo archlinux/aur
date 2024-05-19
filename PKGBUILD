@@ -2,9 +2,9 @@
 
 pkgname=ksud
 pkgver=0.9.4
-pkgrel=4
+pkgrel=5
 pkgdesc='KernelSU userspace cli'
-arch=('any')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://kernelsu.org/'
 license=('GPL-3.0-or-later')
 makedepends=('cargo')
@@ -33,11 +33,14 @@ prepare() {
 
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
-    unzip "$srcdir/Magisk-v27.0.apk" "lib/x86_64/libmagiskboot.so" -d "$srcdir/Magisk-v27.0"
-    install -Dm755 "$srcdir/Magisk-v27.0/lib/x86_64/libmagiskboot.so" "bin/aarch64/magiskboot"
+    declare -A ARCH_MAP
+    ARCH_MAP=( [i686]="x86" [x86_64]="x86_64" [armv7h]="armeabi-v7a" [aarch64]="arm64-v8a" )
+
+    yes|unzip "$srcdir/Magisk-v27.0.apk" "lib/${ARCH_MAP[$CARCH]}/libmagiskboot.so" -d "$srcdir/Magisk-v27.0"
+    install -v -Dm755 "$srcdir/Magisk-v27.0/lib/${ARCH_MAP[$CARCH]}/libmagiskboot.so" "bin/aarch64/magiskboot"
 
     for ko in $srcdir/*.ko; do 
-        install -Dm755 "$ko" -t "bin/aarch64"
+        install -v -Dm644 "$ko" -t "bin/aarch64"
     done
 }
 
