@@ -1,11 +1,11 @@
 pkgbase = otf-tenderness
 	pkgdesc = Serif font with a soft impression
 	pkgver = 0.601
-	pkgrel = 5
+	pkgrel = 6
 	url = https://dotcolon.net/font/tenderness
 	arch = any
 	license = OFL-1.1
-	source = http://dotcolon.net/download/fonts/tenderness_0601.zip
+	source = https://dotcolon.net/downloads/fonts/tenderness_0601.zip
 	sha256sums = e9d512398aca5ae3633795b80918af30df7c7d616a5c381d130bf8ca32037891
 
 pkgname = otf-tenderness
