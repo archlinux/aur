@@ -1,0 +1,8 @@
+[nhiicc]
+source = "regex"
+url = "https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/Eventesting.aspx"
+regex = "mLNHIICC_Setup\\..*\\.tar\\.gz\\s*MD5驗證碼：([0-9a-f]+)"
+encoding = "utf-8"
+
+# Custom attributes used by https://gitlab.com/yan12125/aur/
+__custom_attributes__.pkgbuild_field = "${md5sums[0]}"
