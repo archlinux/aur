@@ -7,29 +7,31 @@
 pkgname=('mysql80' 'libmysqlclient80' 'mysql-clients80')
 pkgbase=mysql80
 _pkgbase=mysql
-pkgver=8.0.36
+pkgver=8.0.37
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition, v8.0"
 arch=('x86_64')
 makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'systemd-libs' 'libaio'
              'jemalloc' 'rpcsvc-proto' 'libtirpc' 'icu' 'libedit' 'libevent'
              'libfido2' 're2' 'rapidjson')
-license=('GPL')
+license=('GPL-2.0-only')
 url="https://www.mysql.com/products/community/"
-source=("https://cdn.mysql.com/Downloads/MySQL-8.0/${_pkgbase}-boost-${pkgver}.tar.gz"
+source=("https://cdn.mysql.com/Downloads/MySQL-8.0/${_pkgbase}-boost-${pkgver}.tar.gz"{,.asc}
         "my-default.cnf"
         "mysql-ld.so.conf"
         "mysql.sysconfig"
         "mysqld_service.patch"
         "systemd-tmpfiles.patch"
         "systemd-sysusers.conf")
-sha256sums=('429c5f69f3722e31807e74119d157a023277af210bfee513443cae60ebd2a86d'
+sha256sums=('fe0c7986f6a2d6a2ddf65e00aadb90fa6cb73da38c4172dc2b930dd1c2dc4af6'
+            'SKIP'
             '6bc24ae510f6b6bbad6b3edda2d0028b29292937b482274a4c2fae335f4de328'
             'e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f'
             '203dcd22fea668477ac7123dbd9909fae72d3d07f8855417a669a9c94db072ae'
             '8fbedfc2c5fe271ed13217feeceeac00202d2cb135e4283eeee2f9a13d6251af'
             '270074dc0a01e0f959590ad95e5bbaaac3f821bb44eba32d039a6aee506b9c6a'
             '200a992eb41c95efa99845d017439ddd4018a3e51f57ffca8cb802b0d25123f1')
+validpgpkeys=('BCA43417C3B485DD128EC6D4B7B3B788A8D3785C') # MySQL Release Engineering
 
 build() {
   rm -rf build
@@ -169,7 +171,7 @@ package_mysql80(){
   rm "${pkgdir}/usr/lib/libmysqlclient.a"
   rm "${pkgdir}/usr/lib/libmysqlclient.so"
   rm "${pkgdir}/usr/lib/libmysqlclient.so.21"
-  rm "${pkgdir}/usr/lib/libmysqlclient.so.21.2.36"
+  rm "${pkgdir}/usr/lib/libmysqlclient.so.21.2.37"
   rm "${pkgdir}/usr/lib/libmysqlservices.a"
   rm "${pkgdir}/usr/lib/pkgconfig/mysqlclient.pc"
   rmdir "${pkgdir}/usr/lib/pkgconfig"
