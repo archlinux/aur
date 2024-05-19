@@ -2,7 +2,7 @@
 pkgbase=vpkedit
 pkgname=(vpkedit libvpkeditc)
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -59,8 +59,8 @@ build() {
 	cd "$srcdir"
 	cmake -B build \
 	-S "$pkgname" \
-	-DCMAKE_INSTALL_PREFIX=/opt/vpkedit \
-	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr/lib/$pkgname \
+	-DCMAKE_BUILD_TYPE=None \
 	-DVPKEDIT_BUILD_LIBC=ON
 
 	cmake --build build
@@ -73,9 +73,17 @@ package_vpkedit() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir" cmake --install build
 
-	# Remove Qt libs copied from system
-	cd "$pkgdir/opt/vpkedit"
+	# Remove Qt libs copied from system, and propperly symlink
+	cd "$pkgdir/usr/lib/$pkgname"
 	rm -rf libQt*
+	ln -sf "/usr/lib/$pkgname/vpkedit" "$pkgdir/usr/bin/vpkedit"
+	ln -sf "/usr/lib/$pkgname/vpkeditcli" "$pkgdir/usr/bin/vpkeditcli"
+
+	# Change desktop file to point towards /usr/lib/vpkedit
+	cd "$pkgdir/usr/share/applications"
+	sed -i 's/Exec=\/opt\/vpkedit\//Exec=/g' vpkedit.desktop
+
+
 
 	# Install License
 	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
