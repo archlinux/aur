@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Lua execution engine"
 arch=('i686' 'x86_64')
