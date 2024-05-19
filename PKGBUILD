@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Mangano <fmang+aur mg0.fr>
 
 pkgname=opustags
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='Opus tags editor'
 
@@ -13,7 +13,7 @@ depends=('libogg')
 makedepends=('cmake' 'pkgconf')
 
 source=("https://github.com/fmang/opustags/archive/$pkgver.tar.gz")
-sha256sums=('761d3ac036205b9193bc6a610c3610c401d89fde2c955acfa7e26b1328e190b7')
+sha256sums=('703096e9c41481e30ab90eefdd8fafc4c3a138998b3f8281aa4f023e7058bc86')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
