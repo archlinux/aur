@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=normcap
 _app_id="eu.dynobo.$pkgname"
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
 #)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
         "${_app_id}.desktop")
-sha256sums=('1deb3b167446014f759a8757288e90aaeeb5cbdc3c52fbfe029ad0a376188bb4'
+sha256sums=('5b334cffa6c10d0675a49fd9b06b114dbc954f259202119dfc859b0ddf63be32'
             '29992fdb19773faa7582e44fe4394d4772984d5b7b9b7b347617c387f0a260f9')
 
 build() {
