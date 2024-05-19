@@ -13,13 +13,13 @@ _nodever=18.19.1
 _pandocver="current"
 _quarto="FALSE"
 
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
 depends=('r>=3.3.0' 'boost-libs' 'qt5-sensors' 'qt5-svg' 'qt5-webengine' 'qt5-xmlpatterns' 'postgresql-libs' 'sqlite3' 'soci' 'clang' 'hunspell-en_US' 'mathjax2' 'pandoc' 'yaml-cpp')
-makedepends=('git' 'cmake>=3.6.3' 'boost' 'desktop-file-utils' 'jdk8-openjdk' 'apache-ant' 'unzip' 'openssl' 'libcups' 'pam' 'patchelf' 'wget' 'yarn')
+makedepends=('git' 'cmake>3.14' 'boost' 'desktop-file-utils' 'jdk8-openjdk' 'apache-ant' 'unzip' 'openssl' 'libcups' 'pam' 'patchelf' 'wget' 'yarn')
 optdepends=('git: for git support'
             'subversion: for subversion support'
             'openssh-askpass: for a git ssh access'
@@ -100,13 +100,20 @@ build() {
     export RSTUDIO_VERSION_SUFFIX="+${_versuffix}"
     export GIT_COMMIT=${_gitcommit}
     export PACKAGE_OS=$(uname -om)
-    
+
+    # node-gyp or node have a bug that prevents building with "text file busy"
+    # if the kernel is too fast, so we have to disable IO_URING support. This
+    # is cleary a hack and needs to be removed as soon as possible
+    # nodejs/node#48444 is the necro bumped thread
+    # originally from docker
+    # https://github.com/nodejs/node/issues/48444
+    export UV_USE_IO_URING=0
+
     cmake -S "${srcdir}/${_srcname}" -B build \
           -DRSTUDIO_TARGET=Desktop \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio \
           -DRSTUDIO_USE_SYSTEM_BOOST=yes \
-          -DRSTUDIO_USE_SYSTEM_YAML_CPP=yes \
           -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake \
           -DBoost_NO_BOOST_CMAKE=ON \
           -DQUARTO_ENABLED=${_quarto} \

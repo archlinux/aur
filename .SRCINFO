@@ -1,12 +1,12 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
 	pkgver = 2024.04.1.748
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rstudio.com/products/rstudio/
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
-	makedepends = cmake>=3.6.3
+	makedepends = cmake>3.14
 	makedepends = boost
 	makedepends = desktop-file-utils
 	makedepends = jdk8-openjdk
