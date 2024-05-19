@@ -1,7 +1,7 @@
 pkgbase = adventuresofdemo
 	pkgdesc = This is a small game based on the TheXTech engine with the A2XT content pack made by the Talkhaus community. It's a remix of old SMBX episodes such as The Invasion 1, brought to the A2XT universe!
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/adventuresofdemo
 	arch = pentium4
 	arch = i386
