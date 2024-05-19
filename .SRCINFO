@@ -1,6 +1,6 @@
 pkgbase = cassette-dev
 	pkgdesc = GTK4/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux.
-	pkgver = 0.2.0.20240518
+	pkgver = 0.2.0.20240519
 	pkgrel = 1
 	url = https://github.com/rirusha/cassette
 	arch = x86_64
