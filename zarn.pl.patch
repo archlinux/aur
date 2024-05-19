@@ -1,0 +1,13 @@
+--- a/zarn.pl	2024-05-18 22:25:07.750911543 +0200
++++ b/zarn.pl	2024-05-18 22:28:18.394246542 +0200
+@@ -14,7 +14,9 @@
+ our $VERSION = '0.0.9';
+ 
+ sub main {
+-    my $rules = "rules/default.yml";
++    use File::Basename;
++    my $dirname = -l __FILE__ ? dirname(readlink(__FILE__)) : dirname(__FILE__); 
++    my $rules = "$dirname/rules/default.yml";
+     my ($source, $ignore, $sarif, @results);
+ 
+     Getopt::Long::GetOptions (
