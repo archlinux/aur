@@ -61,7 +61,7 @@ build() {
 
   if [ $REMOTE_DATA_FILES == "TRUE" ]; then
     echo "Downloading game data..."
-    wget -O data.zip $REMOTE_DATA$REMOTE_DATA_ID
+    wget -O data.zip "$REMOTE_DATA"
     echo "Done."
   fi
 }
