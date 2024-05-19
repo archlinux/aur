@@ -2,7 +2,7 @@
 
 pkgname=wipemychat
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Delete all your messages in public and private Telegram chats"
 arch=('any')
 url="https://github.com/rusq/wipemychat"
@@ -15,11 +15,11 @@ sha256sums=('e8ac2bd483fc212a951474e6da46216136486c8fe6d8bb1cb7c237ea69502a3c')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export CGO_LDFLAGS="-L/usr/local/opt/openssl/lib"
-  make
+  make -j$(nproc)
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm755 "tgmsgdel" "$pkgdir/usr/bin/${pkgname}"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
 }
