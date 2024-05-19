@@ -1,6 +1,6 @@
 pkgbase = kunitconversion5
 	pkgdesc = Support for unit conversion
-	pkgver = 5.115.0
+	pkgver = 5.116.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = kunitconversion5
 	depends = ki18n5
 	conflicts = kunitconversion<5.111
 	replaces = kunitconversion<5.111
-	source = https://download.kde.org/stable/frameworks/5.115/kunitconversion-5.115.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.115/kunitconversion-5.115.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.116/kunitconversion-5.116.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.116/kunitconversion-5.116.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 9f89eb8b337af6dfe8150c6b83d9aa8d9b42e7cc9066af33b538e84aa0968e74
+	sha256sums = ef689b29a27e57b6e5b41107d6fbb0252aba6788f6f96e079da0bddbc43a1c94
 	sha256sums = SKIP
 
 pkgname = kunitconversion5
