@@ -1,6 +1,6 @@
 pkgbase = soh
 	pkgver = 8.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shipofharkinian.com/
 	arch = x86_64
 	arch = i686
@@ -26,11 +26,13 @@ pkgbase = soh
 	source = libultraship-96c8a892.tar.gz::https://github.com/Kenix3/libultraship/archive/96c8a8929c18c1bffd7d92a35a589f74cf16fc59.tar.gz
 	source = ZAPDTR-eff29036.tar.gz::https://github.com/HarbourMasters/ZAPDTR/archive/eff29036118349e142ee8efca80fd975a2a2b6ff.tar.gz
 	source = OTRExporter-04b85b95.tar.gz::https://github.com/HarbourMasters/OTRExporter/archive/04b85b95fab07a394b62dcd28a502a3040f08e0c.tar.gz
+	source = misc-compile-fixes.patch::https://github.com/HarbourMasters/Shipwright/commit/1bc15d5bf3042d4fd64e1952eb68c47a7d5d8061.patch
 	source = soh.desktop
 	sha256sums = 95b5ad92d197528523869f59f386755e981cc68ae640e99bc1efbe9128cc7e63
 	sha256sums = 52486d1de70a7298b5930309d34ccf7f30c3341cb6f817aaf4d1e8f3e814cc5a
 	sha256sums = 6438cd1c7abad6ea9b65326892a1b220384bdce78e9d1a324c132d68c982111c
 	sha256sums = 5f5ff0a0eb7f5536c9076dd777d3914c4b2e064c7a22303a24c1a4a9ed7d462f
+	sha256sums = e39dbd17a8b2e584465bfc5c0c5667bf331072edf9d08abde328393ece626f5e
 	sha256sums = 25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2
 
 pkgname = soh
