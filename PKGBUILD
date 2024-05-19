@@ -4,7 +4,7 @@ url="https://github.com/vectozavr/shooter"
 license=("MIT")
 
 pkgver=0.1.1.r9.g0db3301
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 depends=("sfml" "openal")
@@ -12,7 +12,7 @@ makedepends=("gcc" "cmake" "git" "sfml" "openal")
 
 source=(
     "$pkgname::git+https://github.com/vectozavr/shooter.git#branch=master"
-    "git+https://github.com/vectozavr/3dzavr.git#branch=sfml_version"
+    "3dzavr::git+https://github.com/vectozavr/3dzavr.git#branch=sfml_version"
 )
 sha256sums=('SKIP' 'SKIP')
 
@@ -32,6 +32,7 @@ build() {
     cd "$pkgname"
     cmake -B build .
     cmake --build build
+    rm -rf build $(find . -regex '.*\.\(h\|cpp\)$')
 }
 
 package() {
