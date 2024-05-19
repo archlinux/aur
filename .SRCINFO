@@ -1,6 +1,6 @@
 pkgbase = haveno
 	pkgdesc = Decentralised P2P exchange built on Monero and Tor.
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/haveno-dex/haveno
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = haveno
 	makedepends = java-environment>=21
 	depends = bash
 	depends = java-runtime>=21
-	source = haveno-v1.0.4.tar.gz::https://github.com/haveno-dex/haveno/archive/refs/tags/1.0.4.tar.gz
+	source = haveno-v1.0.5.tar.gz::https://github.com/haveno-dex/haveno/archive/refs/tags/1.0.5.tar.gz
 	source = haveno.desktop
-	sha512sums = 80d3686cf471bad425a23aea3778c50ddef192fe322998efc1b61f049ab3668cc600588df17cc29b4e033c4cd9c18397d500a3d9f14ac0ca3f2721cedc7e18a2
+	sha512sums = ae3b62de8fb5a52f2b5bcf2e212c810eff8fdf885b1bb09b8084112c3440db340461fe42530cffdfbe080ed660fddaf1247b591b63d15130d655f82aaf5a5b06
 	sha512sums = 046e32ecc69058d270b5660d55c323d1458b91989f1a3ddc8a107edc28c196029d25b5a5f5f46b754a778919cca13d016ef3e17813578605938c2b3b289b8e93
 
 pkgname = haveno
