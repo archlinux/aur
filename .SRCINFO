@@ -1,7 +1,7 @@
 pkgbase = plasma-framework5
 	pkgdesc = Plasma library and runtime components based upon KF5 and Qt5
-	pkgver = 5.115.0
-	pkgrel = 3
+	pkgver = 5.116.0
+	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5
@@ -18,10 +18,10 @@ pkgbase = plasma-framework5
 	depends = kirigami2
 	conflicts = plasma-framework<5.111
 	replaces = plasma-framework<5.111
-	source = https://download.kde.org/stable/frameworks/5.115/plasma-framework-5.115.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.115/plasma-framework-5.115.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.116/plasma-framework-5.116.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.116/plasma-framework-5.116.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 2c6f30bb11a6476b706f34d2f5af1c9e4c98177dc885f9c95d4a24752c9611f7
+	sha256sums = 7e932c4da5f527206ce07d3b145231ef396a3d22441edcd24deeaf9dac509f4f
 	sha256sums = SKIP
 
 pkgname = plasma-framework5
