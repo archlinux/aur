@@ -1,7 +1,7 @@
 pkgbase = python2-reportlab
 	pkgdesc = A proven industry-strength PDF generating solution
 	pkgver = 3.5.34
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.reportlab.com/
 	arch = x86_64
 	license = BSD

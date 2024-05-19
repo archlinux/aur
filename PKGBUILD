@@ -3,7 +3,7 @@
 
 pkgname=python2-reportlab
 pkgver=3.5.34
-pkgrel=2
+pkgrel=3
 pkgdesc="A proven industry-strength PDF generating solution"
 url="http://www.reportlab.com/"
 depends=('freetype2' 'python2-pillow' )
@@ -14,6 +14,7 @@ source=("https://files.pythonhosted.org/packages/0f/0b/bce8f4a6641c30889fd82b506
 md5sums=('77d37a7f9f785b3666206de0fbc44aab')
 
 build() {
+  CFLAGS+=" -Wno-error=incompatible-pointer-types"
     cd $srcdir/${pkgname#*-}-$pkgver
     python2 setup.py build
 }
