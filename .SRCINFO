@@ -6,13 +6,8 @@ pkgbase = python-spark-parser
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/s/spark_parser/spark_parser-1.8.9.tar.gz
 	sha256sums = a7bb97b97953fb8bf0cd8158d820b6467ef1e7f747738e82248ae4c824f1e25a
 
 pkgname = python-spark-parser
 	depends = python-click
-
-pkgname = python2-spark-parser
-	depends = python2-click
-
