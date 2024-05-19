@@ -1,13 +1,13 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=sled
-pkgver=0.13.1
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="Simple text editor"
 arch=('x86_64')
 url="https://strahinja.srht.site/sled"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/sled/archive/v$pkgver.tar.gz")
-md5sums=('fdc7ec958a5a7595a7728fc664ba8ae8')
+md5sums=('735826c418c0a3cd2721be9b392d97f5')
 
 build() {
 	cd "${pkgname}-v$pkgver"
