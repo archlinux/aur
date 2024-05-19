@@ -2,4 +2,5 @@ pkg/
 src/
 libarcstk/
 *.zst
+*.zst.sig
 
