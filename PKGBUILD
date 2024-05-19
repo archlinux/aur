@@ -12,7 +12,7 @@ conflicts=("${pkgname%-git}")
 depends=('gcc-libs' 'libarcstk'
 	'libcue>=2.0.0' ## default metadata parsers
 	'flac>=1.3.1' 'wavpack>=5.0.0' 'ffmpeg>=3.1') ## default audio decoders
-makedepends=('git' 'cmake', 'flex', 'bison')
+makedepends=('git' 'cmake' 'flex' 'bison')
 optdepends=('doxygen>=1.8.14: build documentation'
             'python-virtualenv: build HTML documentation with m.css')
 source=("${pkgname%-git}::git+https://codeberg.org/tristero/${pkgname%-git}.git#branch=main")
@@ -34,13 +34,13 @@ pkgver()
 
 build()
 {
-    msg "Configure"
+    printf "CMake Configure\n"
 
 	cmake -DCMAKE_BUILD_TYPE=Release    \
 		  -DCMAKE_INSTALL_PREFIX="/usr" \
 		  "${srcdir}/${pkgname%-git}/"
 
-    msg "Build"
+    printf "CMake Build\n"
 
     cmake --build .
 }
@@ -51,12 +51,11 @@ build()
 
 package()
 {
-	msg "Install library and files"
+	printf "Install library and files\n"
 
     make DESTDIR="${pkgdir}/" install
 
-
-	msg "Install license"
+	printf "Install license\n"
 
 	install -D -m644 "${srcdir}/${pkgname%-git}/LICENSE" \
 		"${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
