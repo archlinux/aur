@@ -14,7 +14,7 @@ makedepends=('git')
 source=("git+https://github.com/libimobiledevice/idevicerestore"
         '0001-configure.ac-check-for-pthreads.patch')
 sha256sums=('SKIP'
-            'd7fcc4e46a175d309298bd95d330c027fcca7dba3226f3e1b802c8ebe8d8ed15')
+            '1eef0bb3be0e88658c0b32a3e707fac9467f8d03dffd508484db410156c16003')
 
 pkgver() {
 	cd idevicerestore
