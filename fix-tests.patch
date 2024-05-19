@@ -1,0 +1,18 @@
+diff --git a/SpatialFeatureExperiment/tests/testthat/test-featureData.R b/SpatialFeatureExperiment/tests/testthat/test-featureData.R
+index 5e41ad4..458847b 100644
+--- a/SpatialFeatureExperiment/tests/testthat/test-featureData.R
++++ b/SpatialFeatureExperiment/tests/testthat/test-featureData.R
+@@ -1,3 +1,4 @@
++skip_if_not_installed("Voyager")
+ library(SFEData)
+ library(scater)
+ library(spdep)
+diff --git a/SpatialFeatureExperiment/tests/testthat/test-utils.R b/SpatialFeatureExperiment/tests/testthat/test-utils.R
+index b1123e0..e317b02 100644
+--- a/SpatialFeatureExperiment/tests/testthat/test-utils.R
++++ b/SpatialFeatureExperiment/tests/testthat/test-utils.R
+@@ -1,3 +1,4 @@
++skip_if_not_installed("Voyager")
+ library(SFEData)
+ library(sf)
+ library(scater)
