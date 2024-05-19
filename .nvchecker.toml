@@ -1,0 +1,5 @@
+[oneshot-bin]
+source = "github"
+github = "raphaelreyna/oneshot"
+use_latest_release = "true"
+prefix = "v"
