@@ -2,7 +2,7 @@
 
 pkgname=ksud
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc='KernelSU userspace cli'
 arch=('any')
 url='https://kernelsu.org/'
@@ -52,6 +52,6 @@ check() {
 package() {
     cd "$_srcname-$pkgver"
 
-    install -Dm755 "userspace/ksud/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm755 "userspace/ksud/target/release/$pkgname"     -t "$pkgdir/usr/bin/"
+    install -Dm644 "LICENSE"                                    -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
