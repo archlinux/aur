@@ -63,12 +63,12 @@ build()
   CC65_HOME="/usr/share/cc65"
   export CC65_HOME
 
-  #make -w -s -f LINUX/Makefile opencbm plugin
-  make -w -s -f LINUX/Makefile opencbm plugin-xum1541 plugin-xu1541
+  #make -s -w -f LINUX/Makefile opencbm plugin
+  make -s -w -f LINUX/Makefile opencbm plugin-xum1541 plugin-xu1541
 
   # kernel module: build (optional)
   if test "x${build_kernel_module}" != "x"; then
-    make -w -s -f LINUX/Makefile plugin-xa1541
+    make -s -w -f LINUX/Makefile plugin-xa1541
   fi
 }
 
@@ -83,7 +83,7 @@ package()
 
   mkdir -p "${pkgdir}/etc/udev/rules.d"
 
-  make -w -s -f LINUX/Makefile PREFIX="/usr" MANDIR="/usr/share/man/man1" INFODIR="/usr/share/info" DESTDIR="${pkgdir}/" install install-plugin-xum1541 install-plugin-xu1541
+  make -s -w -f LINUX/Makefile PREFIX="/usr" MANDIR="/usr/share/man/man1" INFODIR="/usr/share/info" DESTDIR="${pkgdir}/" install install-plugin-xum1541 install-plugin-xu1541
 
   mv "${pkgdir}/etc/opencbm.conf" "${pkgdir}/etc/opencbm.conf.sample"
 
@@ -97,7 +97,7 @@ package()
 
   # kernel module: build (optional)
   if test "x${build_kernel_module}" != "x"; then
-    make -f LINUX/Makefile PREFIX="/usr" MANDIR="/usr/share/man/man1" INFODIR="/usr/share/info" DESTDIR="${pkgdir}/" install install-plugin-xa1541
+    make -s -w -f LINUX/Makefile PREFIX="/usr" MANDIR="/usr/share/man/man1" INFODIR="/usr/share/info" DESTDIR="${pkgdir}/" install install-plugin-xa1541
     # kernel module: copy and compress
     cp -a "${pkgdir}/lib" "${pkgdir}/usr"
     gzip "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/char/cbm.ko"
