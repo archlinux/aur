@@ -1,7 +1,7 @@
-# Maintainer: Bernhard Landauer <bernhard@manjaro.org>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Bernhard Landauer <bernhard@manjaro.org>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
-
 pkgname=appimagelauncher
 pkgver=2.2.0
 pkgrel=6
