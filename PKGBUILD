@@ -2,7 +2,7 @@
 # The pkgbuild is based on the original pkgbuild for citra.
 
 pkgname=lime3ds-git
-pkgver=r10328.f1e0b5d
+pkgver=r10343.ceb97be
 pkgrel=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
