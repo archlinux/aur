@@ -1,13 +1,13 @@
 # Maintainer: Your Name <your_email@example.com>
 # Contributor: Contributor's Name <contributor_email@example.com>
 pkgname=napture
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Napture is a simple browser using a modified version of the http protocol called buss, it uses Lua instead of JavaScript and has support for most HTML and CSS tags, it uses a custom DNS found at api.buss.lol."
 arch=('x86_64')
 url="https://github.com/face-hh/webx"
-license=('MIT')
-depends=('glib2' 'cargo')
+license=('Apache2')
+depends=('glib2' 'cargo' 'gtk4' 'libadwaita')
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 build() {
