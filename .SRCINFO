@@ -1,0 +1,11 @@
+pkgbase = ham-libhel
+	pkgdesc = Extension library for HAMlib
+	pkgver = v2.5
+	pkgrel = 1
+	url = http://console-dev.de/project/hel-library-for-gba/
+	arch = x86_64
+	arch = i686
+	depends = ham-v2.71-linux
+	source = http://www.console-dev.de/libhel/libhel-v25.zip
+
+pkgname = ham-libhel
