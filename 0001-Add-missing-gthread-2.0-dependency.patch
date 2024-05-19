@@ -1,0 +1,45 @@
+From 1eb3e39c9a376b65881c3c34801fbcc0610a7bf1 Mon Sep 17 00:00:00 2001
+From: Dan Printzell <xwildn00bx@gmail.com>
+Date: Sun, 19 May 2024 22:55:07 +0200
+Subject: [PATCH] Add missing gthread-2.0 dependency
+
+Needed to fix 'undefined symbol: g_thread_init'
+
+Signed-off-by: Dan Printzell <xwildn00bx@gmail.com>
+---
+ meson.build | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 138e969..0b4fd35 100644
+--- a/meson.build
++++ b/meson.build
+@@ -20,6 +20,7 @@ glib_dep          = dependency('glib-2.0')
+ gmodule_dep       = dependency('gmodule-2.0')
+ gobject_dep       = dependency('gobject-2.0')
+ gio_dep           = dependency('gio-2.0')
++gthread_dep       = dependency('gthread-2.0')
+ # The Glib gir files are part of the gobject introspection package.
+ introspection_dep = dependency('gobject-introspection-1.0')
+ 
+@@ -47,7 +48,7 @@ gir_binding_sources = girtod_gen.stdout().strip().split('\n')
+ glibd = library('glibd-2.0',
+     [gir_binding_sources],
+     include_directories: [gir_bind_dir],
+-    dependencies: [glib_dep, gmodule_dep, gobject_dep, gio_dep],
++    dependencies: [glib_dep, gmodule_dep, gobject_dep, gio_dep, gthread_dep],
+     install: true,
+     soversion: project_soversion,
+     version: meson.project_version())
+@@ -61,7 +62,7 @@ pkg_conf.generate(glibd,
+     name: 'glibd-2.0',
+     subdirs: 'd/glibd-2',
+     version: meson.project_version(),
+-    requires: [glib_dep, gmodule_dep, gio_dep, gobject_dep],
++    requires: [glib_dep, gmodule_dep, gio_dep, gobject_dep, gthread_dep],
+     description: 'D bindings for the GLib C Utility Library.')
+ 
+ # for use by others which embed this as subproject
+-- 
+2.45.1
+
