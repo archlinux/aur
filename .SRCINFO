@@ -1,6 +1,6 @@
 pkgbase = kirigami2
 	pkgdesc = A QtQuick based components set
-	pkgver = 5.115.0
+	pkgver = 5.116.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = kirigami2
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
-	source = https://download.kde.org/stable/frameworks/5.115/kirigami2-5.115.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.115/kirigami2-5.115.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.116/kirigami2-5.116.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.116/kirigami2-5.116.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 15e242fa05869c33ef4b1ecd02b09feecd050902079f24762ebe03a210c0a2b9
+	sha256sums = 8b584da74a0c4488ad5e31c3d740a1813c35d28bc003fef8854963d17058c9e0
 	sha256sums = SKIP
 
 pkgname = kirigami2
