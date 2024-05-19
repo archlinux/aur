@@ -8,7 +8,7 @@ pkgname=opencbm-git
 pkgver=r1506.db80d1be
 pkgrel=1
 epoch=
-pkgdesc="OpenCBM allows access to Commodore (C64) floppy drives 1540, 1541, 1570, 1571, or 1581 (includes nibtools)"
+pkgdesc="OpenCBM allows access to Commodore (C64) floppy drives 1540, 1541, 1570, 1571, or 1581"
 arch=('i686' 'x86_64')
 url="https://github.com/OpenCBM/OpenCBM"
 license=('GPL-2.0-only')
@@ -16,7 +16,7 @@ groups=()
 depends=('libusb' 'ncurses')
 makedepends=('git' 'cc65')
 checkdepends=()
-optdepends=()
+optdepends=("nibtools: Commodore 1541/1571 disk image nibbler")
 provides=('opencbm')
 conflicts=('opencbm')
 replaces=()
@@ -46,9 +46,10 @@ prepare()
   cd "${srcdir}/${_repo_dirname}"
 
   # nibtools submodule
-  git submodule update --init
+  # not in use - there is a separate nibtools package
+  #git submodule update --init
   # temp hack in order to compile nibtools
-  echo "CFLAGS+=-D_DEFAULT_SOURCE" >> opencbm/nibtools/GNU/Makefile
+  #echo "CFLAGS+=-D_DEFAULT_SOURCE" >> opencbm/nibtools/GNU/Makefile
 
   # kernel module: add includes to kernel module source
   #sed -i '\!#include <asm/uaccess.h>!s!.*!&\n#include <linux/uaccess.h>\n#include <linux/sched/signal.h>!' opencbm/sys/linux/cbm_module.c
@@ -59,8 +60,10 @@ prepare()
 build()
 {
   cd "${srcdir}/${_repo_dirname}"
+
   CC65_HOME="/usr/share/cc65"
   export CC65_HOME
+
   #make -f LINUX/Makefile opencbm plugin
   make -f LINUX/Makefile opencbm plugin-xum1541 plugin-xu1541
 
@@ -78,8 +81,11 @@ check()
 package()
 {
   cd "${srcdir}/${_repo_dirname}"
+
   mkdir -p "${pkgdir}/etc/udev/rules.d"
+
   make -f LINUX/Makefile PREFIX="/usr" MANDIR="/usr/share/man/man1" INFODIR="/usr/share/info" DESTDIR="${pkgdir}/" install install-plugin-xum1541 install-plugin-xu1541
+
   mv "${pkgdir}/etc/opencbm.conf" "${pkgdir}/etc/opencbm.conf.sample"
 
   # Don't overwrite ld.so.conf
