@@ -3,7 +3,7 @@
 
 pkgbase=linux-amd-color
 pkgver=6.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux with experimental AMD color management enabled'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
@@ -28,6 +28,7 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz
   config  # the main kernel config file
   blend_lut.patch
+  bluetooth_firmware_fix.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -37,10 +38,12 @@ validpgpkeys=(
 
 sha256sums=('01b414ba98fd189ecd544435caf3860ae2a790e3ec48f5aa70fdf42dc4c5c04a'
             'bbf3ebee5fcf2780a5f6b14fd13ceea809b0e332eebc452a63b5d0513747bf7e'
-            '37b3c194bceacd0b10da26484f5740b3d92010099fba183dd0fad9b8266e6a83')
+            '37b3c194bceacd0b10da26484f5740b3d92010099fba183dd0fad9b8266e6a83'
+            'c9406e5559fbf05fd65e73edc9dac83c86f46eca82abeba7699c09243f815473')
 b2sums=('388af1d13e78a424f72a961697f4b0b6a234e54ce1e4a2532fc73717301e048c6f4a6251b6e3c4541179d1382566c3f411baa6883818a10d178ef27d036b5379'
         '7834f8e796d188bad31689f85cad01fdd9311b1f40d37405bcf64b44245008e44cff09410690e6e9b67dc8f6281f02fcf60b355e5844eaffd4906a19a0cba6b8'
-        '393ef3c1f22899f2d6ed7a712f41e297cf38c64e4552d61fa138b8e67a0b897ddc5cbe0744b8cb0826a701ee8b68f3583d5e8df0de4b1cc1ed2e2c9291fdf2b1')
+        '393ef3c1f22899f2d6ed7a712f41e297cf38c64e4552d61fa138b8e67a0b897ddc5cbe0744b8cb0826a701ee8b68f3583d5e8df0de4b1cc1ed2e2c9291fdf2b1'
+        '0b1f10f20bde021a6441598cc2d1c780dc71c0922eff33361bdbfa671fbab8af43a4132ef4cbe92126712b117e7d1335f6a1a3e5aae6c31df0f1dd4a5cbaed60')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
