@@ -4,11 +4,12 @@
 
 pkgname=arch-backup
 pkgver=0.8.11
-pkgrel=2
+pkgrel=3
 pkgdesc="trivial backup scripts (ssh/smb support)"
 arch=(any)
 url="https://github.com/p5n/archlinux-stuff/tree/master/arch-backup"
 license=("GPL")
+makedepends=('git')
 depends=()
 backup=(etc/arch-backup/arch-backup.conf)
 source=("${pkgname}.git::git+https://github.com/p5n/archlinux-stuff.git")
