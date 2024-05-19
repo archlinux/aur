@@ -25,7 +25,7 @@ sha256sums=('869bbcd6f413152be15ed82ac39593e9ad895346e79a8c01e2b620375f28b326'
 prepare() {
     # patching
     cd "$srcdir/$pkgname-$pkgver"
-    patch --strip=2 < ../../meson_build.patch
+    patch --strip=2 < ../meson_build.patch
 }
 
 build() {
