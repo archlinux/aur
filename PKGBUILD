@@ -2,7 +2,7 @@
 # Contributor: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
 _name='signal'
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge (go rewrite)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -28,7 +28,7 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('68e4ee81689ebaafa2c7cf84297e5ed0491926344ac673fe8313b1427a671d98'
+sha256sums=('e06e32fb678c15c532041c1a08e952a14fabd89c01693d4aa3630fbfa85c86ba'
             'e9a6a88f7b08fa00b354c3d50ded995f5578e6a6b75b96988cc2b27432575ded'
             'b47c0829a9f285e0a4bd7852e601f325e1fa8385ea96eaa92cad204c0e583adf'
             '5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5')
