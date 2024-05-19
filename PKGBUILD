@@ -13,6 +13,7 @@ md5sums=('0106914abde67de1c44cf67d2a1be557' 'ddb03ef20c340416f14f7fe9f23caf9e')
 
 prepare(){
 cd "$pkgname-$pkgver"
+# diff against /usr/share/automake-1.16/config.guess from automake 1.16.5-2 
 patch -Np0 -i ../automake.patch
 }
 build(){
