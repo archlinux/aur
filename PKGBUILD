@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=unitizer
-_pkgver=1.4.20
+_pkgver=1.4.21
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Interactive R Unit Tests"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a0e2e77bc73d40eff1e07cd684a16e80')
-b2sums=('358439c99bd1a389ffd29076d26ced9a57f07f30383b29efb1df308fcf44ecec755afb1885a6058d68f173f6a6207b12c0304c2fc5d8681986360e485efd651b')
+md5sums=('e023cbe14710eb11f2469de609c9bb11')
+b2sums=('4bc745c2e4fbcd43a251d48ba8da69a7da3a7eb7eafac45fb759d7a0f32878b8db9746d64afb6980ab116b8e096c6a416c42bac77275fc46e73afa1b437050df')
 
 build() {
   mkdir build
