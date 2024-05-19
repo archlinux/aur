@@ -1,6 +1,6 @@
 pkgbase = python-subprocess_shell
 	pkgdesc = A shell for subprocess
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://gitlab.com/notEvil/subprocess_shell
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-subprocess_shell
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://pypi.io/packages/source/s/subprocess-shell/subprocess_shell-1.0.1.tar.gz
-	sha256sums = 39ad9bf02bbc4f334b79b3e33895ac2e796d58ccef8b179dbb04f2d21ce388e9
+	source = https://pypi.io/packages/source/s/subprocess-shell/subprocess_shell-1.0.2.tar.gz
+	sha256sums = 890bf9b537cfb3d510b7414062f8f6eaea3a0a0233fb743a6198bb335646061f
 
 pkgname = python-subprocess_shell

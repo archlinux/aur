@@ -1,5 +1,5 @@
 pkgname=python-subprocess_shell
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='A shell for subprocess'
 arch=('any')
@@ -9,7 +9,7 @@ source=(
   "https://pypi.io/packages/source/s/subprocess-shell/subprocess_shell-$pkgver.tar.gz"
 )
 sha256sums=(
-  '39ad9bf02bbc4f334b79b3e33895ac2e796d58ccef8b179dbb04f2d21ce388e9'
+  '890bf9b537cfb3d510b7414062f8f6eaea3a0a0233fb743a6198bb335646061f'
 )
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel')
