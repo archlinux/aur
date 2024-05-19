@@ -16,6 +16,8 @@ pkgbase = libastal-git
 	depends = glibc
 	depends = gtk3
 	depends = gtk-layer-shell
+	provides = libastal
+	provides = libastal.so=0-64
 	source = git+https://github.com/astal-sh/libastal
 	sha256sums = SKIP
 
