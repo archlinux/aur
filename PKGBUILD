@@ -3,16 +3,16 @@ DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=pulse-secure
 pkgver=22.7r1.0_b28369
-pkgrel=1
+pkgrel=2
 pkgdesc='Ivanti Secure Access Client'
 arch=(x86_64)
 license=(custom)
 url='https://www.pulsesecure.net/'
 depends=(gcc-libs libgnome-keyring openssl curl dbus libbsd dmidecode)
 install=${pkgname}.install
-source=(EULA.txt)
+source=("EULA.txt" "setup_cef.sh.patch")
 source_x86_64=("https://descargas.grancanaria.com/Sistemas/PulseSecureClients/ps-pulse-linux-22.7r1.0-b28369-64bit-installer.rpm")
-md5sums=('261848a28201e5386ec4bf587473a48b')
+md5sums=('261848a28201e5386ec4bf587473a48b' '31c0e4d462053b189274b8f6df340525')
 md5sums_x86_64=('b6ef3316547b22a22d81a26c2cf16d3b')
 optdepends=('psmisc: for pulsesvc -K', 'gtkmm3: for pulseUi', 'webkit2gtk: for pulseUi')
 conflicts=(pulse-connect-secure)
@@ -23,6 +23,7 @@ package() {
     for d in $(find opt/pulsesecure -type d); do
         install -dm755 "$d" "$pkgdir"/"$d";
     done
+    patch opt/pulsesecure/bin/setup_cef.sh setup_cef.sh.patch
     for f in $(find opt/pulsesecure/bin -type f); do
         install -Dm755 "$f" "$pkgdir"/"$f";
     done

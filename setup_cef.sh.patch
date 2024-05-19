@@ -1,0 +1,11 @@
+--- setup_cef.sh	2024-05-19 12:44:48.627275977 +0900
++++ setup_cef.sh.new	2024-05-19 12:45:10.434819102 +0900
+@@ -119,7 +119,7 @@
+ DATE=$(full_path_command "date")
+ GREP=$(full_path_command "grep")
+ AWK=$(full_path_command "awk")
+-SHASUM=$(full_path_command "shasum")
++SHASUM=$(which "shasum")
+ TR=$(full_path_command "tr")
+ BASE64=$(full_path_command "base64")
+ CUT=$(full_path_command "cut")
