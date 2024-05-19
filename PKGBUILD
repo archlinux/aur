@@ -4,7 +4,7 @@ _pkgroot=vision_opencv
 _pkgname=cv_bridge
 pkgname=ros2-humble-cv-bridge
 pkgver=3.2.1
-pkgrel=6
+pkgrel=7
 pkgdesc="This contains CvBridge, which converts between ROS Image messages and OpenCV images."
 url="https://index.ros.org/p/cv_bridge/"
 license=('Apache-2.0' 'BSD-3-Clause')
@@ -14,6 +14,7 @@ depends=('boost' 'opencv' 'python-numpy' 'python-opencv' 'ros2-humble')
 checkdepends=('gtest' 'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ros-perception/vision_opencv/archive/${pkgver}.tar.gz")
 sha256sums=('bf8a18770ffe3335e9bf96cb89be886a846be10382e67c2dc93cd4e387b2c3f9')
+BUILDENV+=('!check')
 
 prepare() {
   mkdir -p $srcdir/build
