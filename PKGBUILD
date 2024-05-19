@@ -1,6 +1,6 @@
 # Contributor: Gennadiy Chernyshyk <genaloner@gmail.com>
 pkgname=deadbeef-plugin-headerbar-gtk3-git
-pkgver=1.3.r0.ge8fe283
+pkgver=1.3.r1.g63ed1ad
 pkgrel=1
 pkgdesc="Headerbar Plugin for the DeaDBeeF audio player (development version)"
 url="https://github.com/saivert/ddb_misc_headerbar_GTK3"
@@ -23,11 +23,6 @@ pkgver() {
 }
 
 build() {
-  CFLAGS+=" -Wno-error=incompatible-pointer-types"
-  CXXFLAGS+=" -Wno-error=incompatible-pointer-types"
-  export CFLAGS
-  export CXXFLAGS
-
   arch-meson $_gitname build
   meson compile -C build
 }
