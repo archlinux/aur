@@ -1,5 +1,5 @@
-# Submitter: ObserverOfTime <chronobserver@disroot.org>
 # Maintainer: Blazingblast <lukabijma1@gmail.com>
+# Contributor: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=gdlauncher-git
 pkgver=1.1.30.r1.g97c33ac7
