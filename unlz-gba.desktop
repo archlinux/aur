@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=unLZ-GBA
+Comment=Extract and insert LZ77 compressed graphics in GBA ROMs
+Exec=unlz-gba
+Icon=unlz-gba
+Terminal=false
+Categories=Wine;Graphics;

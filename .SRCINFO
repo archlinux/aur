@@ -1,0 +1,15 @@
+pkgbase = unlz-gba
+	pkgdesc = Scan GBA ROMs for LZ77 compressed graphics
+	pkgver = 1.0Beta
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	depends = wine
+	depends = winetricks
+	source = https://s3-external-1.amazonaws.com/romhacking-hacks/utilities/%5B362%5Dunlz-gba.zip
+	source = unlz-gba
+	source = unlz-gba.desktop
+	source = unlz-gba.png
+
+pkgname = unlz-gba
+

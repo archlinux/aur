@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# WINE Launcher script for unLZ-GBA
+
+export UNLZDIR=/usr/share/unlz-gba # installation dir for AUR package
+
+cat << EOF
+unLZ-GBA Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2004 loadingNOW
+
+EOF
+
+wine $UNLZDIR/unLZ-GBA.exe
