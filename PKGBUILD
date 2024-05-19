@@ -2,7 +2,7 @@
 
 pkgname=ttf-0xproto
 pkgver=2.001
-pkgrel=2
+pkgrel=3
 pkgdesc="An opinionated font for software engineers"
 arch=(any)
 url="https://github.com/0xType/0xProto"
@@ -14,6 +14,6 @@ sha256sums=('fa35e66b4bc045717dcec67f6b6a83a8128b34b1bd024a7f6a689908f15d6cf2'
 
 package() {
     install -d $pkgdir/usr/share/fonts/TTF
-    install -m644 fonts/0xProto-*.ttf $pkgdir/usr/share/fonts/TTF
+    install -m644 0xProto-*.ttf $pkgdir/usr/share/fonts/TTF
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
 }
