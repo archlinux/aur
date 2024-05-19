@@ -1,0 +1,48 @@
+diff --git a/configuration.go b/configuration.go
+index 06f170a..bd80daa 100644
+--- a/configuration.go
++++ b/configuration.go
+@@ -41,8 +41,8 @@ func NewConfiguration() *Configuration {
+ 			Host:           		"",											// command line option "-n"
+ 			Port:					432,										// command line option "-p"
+ 			Domain:					"hide.me",									// Not configurable
+-			CA:						"CA.pem",									// command line option "-ca"
+-			AccessTokenPath:		"accessToken.txt",							// command line option "-t"
++			CA:						"/usr/share/hide.me/CA.pem",									// command line option "-ca"
++			AccessTokenPath:		"/etc/hide.me/accessToken.txt",							// command line option "-t"
+ 			Username:       		"",											// command line option "-u"
+ 			Password:				"",											// Only configurable through the config file
+ 			RestTimeout:	 		10 * time.Second,							// Only configurable through the config file
+@@ -188,4 +188,4 @@ func ( c *Configuration ) Parse() ( err error ) {
+ 		if err != nil { return }
+ 	})
+ 	return
+-}
+\ No newline at end of file
++}
+diff --git a/hide.me@.service b/hide.me@.service
+index 58cea7c..db02f09 100644
+--- a/hide.me@.service
++++ b/hide.me@.service
+@@ -6,10 +6,10 @@ DefaultDependencies=yes
+ 
+ [Service]
+ Type=notify
+-ExecStart=/opt/hide.me/hide.me $OPTIONS connect %i
+-WorkingDirectory=/opt/hide.me
+-ReadWritePaths=/opt/hide.me /etc /run/systemd/resolve
+-EnvironmentFile=/opt/hide.me/config
++ExecStart=/usr/bin/hide.me $OPTIONS connect %i
++WorkingDirectory=/etc/hide.me
++ReadWritePaths=/etc/hide.me -/run/systemd/resolve
++EnvironmentFile=/etc/hide.me/config
+ TimeoutStopSec=30
+ Restart=always
+ RestartSec=5s
+@@ -31,4 +31,4 @@ Group=root
+ LimitNOFILE=64
+ 
+ [Install]
+-WantedBy=multi-user.target
+\ No newline at end of file
++WantedBy=multi-user.target

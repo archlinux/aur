@@ -1,7 +1,7 @@
 pkgbase = hide-client
 	pkgdesc = Hide.me CLI VPN client for Linux
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eventure/hide.client.linux
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,8 @@ pkgbase = hide-client
 	depends = glibc
 	backup = etc/hide.me/config
 	source = hide-client-0.9.9.zip::https://github.com/eventure/hide.client.linux/archive/0.9.9.zip
+	source = arch-config.patch
 	b2sums = ca30b3442d9cee438c69719725f33d6702e82c252d5ee2130e984bc57f221edfa2dc943b07c6564f347cb4c618d0d5b0ab98851da31f8da0fe37e803f837c84b
+	b2sums = bcb78baaf6682803cddd29a770a229bf9baf79c26244759db7176b65ff3b0c82fc1561066fbd81a68dcd77911bad654827ac2fba19d1ced0d33718b8a9831ed3
 
 pkgname = hide-client
