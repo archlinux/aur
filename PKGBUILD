@@ -2,7 +2,7 @@
 
 pkgname=hydra-launcher-bin
 _pkgname=hydra-launcher
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A game launcher with its own embedded bittorrent client and a self-managed repack scraper."
 arch=('x86_64')
