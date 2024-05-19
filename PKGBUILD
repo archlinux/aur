@@ -1,7 +1,7 @@
-# Contributor: tristero
+# Maintainer: tristero <crf8472@mailbox.org>
 
 pkgname=arcs-tools-git
-pkgver=0.1.0alpha2+30.8eafeec
+pkgver=0.1.2alpha1+0.341a005
 pkgrel=1
 pkgdesc='Example Toolkit for AccurateRip checksums and ids'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=('gcc-libs' 'libarcstk' 'libarcsdec' 'doxygen>=1.8.14' )
-makedepends=('git>=2.0' 'cmake>=3.9.6')
+makedepends=('git' 'cmake')
 source=("${pkgname%-git}::git+https://codeberg.org/tristero/${pkgname%-git}.git#branch=main")
 md5sums=('SKIP')
 

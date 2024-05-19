@@ -2,4 +2,5 @@ pkg/
 src/
 arcs-tools/
 *.zst
+*.zst.sig
 
