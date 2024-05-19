@@ -1,0 +1,50 @@
+--- fs/httpfs.cc    2021-12-07 15:43:56.000000000 +0100
++++ fs/httpfs.cc    2024-05-18 16:11:02.848787530 +0200
+@@ -37,6 +37,7 @@
+ #ifdef HAVE_DLOPEN
+ #include <dlfcn.h>
+ #endif
+
++#include <algorithm>
+ #include <list>
+ #include <unordered_map>
+--- src/aconnect.cc 2021-12-07 15:43:56.000000000 +0100
++++ src/aconnect.cc 2024-05-18 16:11:02.848787530 +0200
+@@ -6,6 +6,7 @@
+ #include "debug.h"
+ #include "portutils.h"
+
++#include <algorithm>
+ #include <future>
+
+ #include <sys/types.h>
+
+--- src/acregistry.cc   2021-12-07 15:43:56.000000000 +0100
++++ src/acregistry.cc   2024-05-18 16:11:02.848787530 +0200
+@@ -5,6 +5,7 @@
+ #include "cleaner.h"
+ #include "evabase.h"
+
++#include <algorithm>
+ #include <list>
+
+ #define IN_ABOUT_ONE_DAY 100000
+
+--- src/caddrinfo.cc    2021-12-07 15:43:56.000000000 +0100
++++ src/caddrinfo.cc    2024-05-18 16:11:02.848787530 +0200
+@@ -1,5 +1,6 @@
+ #include "meta.h"
+
++#include <algorithm>
+ #include <deque>
+ #include <memory>
+ #include <list>
+
+--- src/header.cc   2021-12-07 15:43:56.000000000 +0100
++++ src/header.cc   2024-05-18 16:11:02.848787530 +0200
+@@ -1,4 +1,5 @@
+
++#include <algorithm>
+ #include "debug.h"
+ #include "acfg.h"
+ #include "meta.h"
