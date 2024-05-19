@@ -1,14 +1,14 @@
 pkgbase = cosmic-webapps
 	pkgdesc = Web App Manager written with love and libcosmic.
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elevenhsoft/WebApps
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
+	makedepends = git
 	makedepends = just
 	depends = gcc-libs
-	depends = git
 	depends = libxkbcommon
 	depends = openssl
 	conflicts = cosmic-wam
