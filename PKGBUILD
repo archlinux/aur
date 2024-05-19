@@ -1,9 +1,10 @@
-# Maintainer: ObserverOfTime <chronobserver@disroot.org>
+# Submitter: ObserverOfTime <chronobserver@disroot.org>
+# Maintainer: Blazingblast <lukabijma1@gmail.com>
 
 pkgname=gdlauncher-git
 pkgver=1.1.30.r1.g97c33ac7
-pkgrel=1
-pkgdesc='Modded Minecraft launcher built with Electron/React (git version)'
+pkgrel=2
+pkgdesc='Modded Minecraft launcher built with Rust and Electron/React (git version)'
 arch=('x86_64')
 url='https://gdevs.io'
 license=('GPL3')
