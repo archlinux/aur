@@ -2,21 +2,25 @@
 
 _plug=neo_f3kdb
 pkgbase="foosynth-plugin-${_plug}-git"
-pkgname=("avisynth-plugin-${_plug}-git"
-         "vapoursynth-plugin-${_plug}-git"
-         )
+pkgname=(
+  "avisynth-plugin-${_plug}-git"
+  "vapoursynth-plugin-${_plug}-git"
+)
 pkgver=9.0.g56bfb1b
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=176553'
 license=('GPL')
-makedepends=('git'
-             'cmake'
-             'avisynthplus'
-             'vapoursynth'
-             'tbb'
-             )
+makedepends=(
+  'git'
+  'cmake'
+  'avisynthplus'
+  'vapoursynth'
+  'tbb'
+  'gcc-libs'
+  'glibc'
+)
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_f3kdb.git")
 sha256sums=('SKIP')
 options=('debug')
@@ -43,7 +47,12 @@ build() {
 
 package_avisynth-plugin-neo_f3kdb-git() {
   pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
-  depends=('avisynthplus')
+  depends=(
+    'avisynthplus'
+    'tbb'
+    'gcc-libs'
+    'glibc'
+  )
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
@@ -53,7 +62,12 @@ package_avisynth-plugin-neo_f3kdb-git() {
 
 package_vapoursynth-plugin-neo_f3kdb-git() {
   pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-  depends=('vapoursynth')
+  depends=(
+    'vapoursynth'
+    'tbb'
+    'gcc-libs'
+    'glibc'
+  )
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
