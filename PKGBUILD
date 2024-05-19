@@ -3,7 +3,7 @@ pkgver=0.8.1.38.g64ddaec
 pkgrel=1
 pkgdesc="Standalone previewer for VapourSynth scripts (GIT version)"
 arch=('any')
-url='https://github.com/Irrational-Encoding-Wizardry/vs-preview'
+url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-preview'
 license=('MIT')
 depends=(
     'vapoursynth'
@@ -23,7 +23,7 @@ makedepends=('git'
 )
 provides=("vapoursynth-preview")
 conflicts=("vapoursynth-preview" "vapoursynth-preview-git")
-source=("vapoursynth-preview::git+https://github.com/Irrational-Encoding-Wizardry/vs-preview.git")
+source=("vapoursynth-preview::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-preview.git")
 sha256sums=('SKIP')
 
 pkgver() {
