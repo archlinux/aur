@@ -2,14 +2,14 @@
 # Contributor: Andrej Marolt <andrej.marolt@gmail.com>
 
 pkgname=source-to-image-bin
-pkgver=1.3.9
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="A tool for building artifacts from source and injecting into container images"
 arch=('x86_64')
 url="https://github.com/openshift/source-to-image"
 license=('Apache-2.0')
-source=("https://github.com/openshift/source-to-image/releases/download/v${pkgver}/source-to-image-v${pkgver}-574a2640-linux-amd64.tar.gz")
-sha256sums=('6e09fb234c8e8cbef547b9a46036797320cf137f8e06cf5bf8538a64908a93b9')
+source=("https://github.com/openshift/source-to-image/releases/download/v${pkgver}/source-to-image-v${pkgver}-d3544c7e-linux-amd64.tar.gz")
+sha256sums=('bd2cfd94bf9ed07a7ae990ce5eef358d3f8fb29327bc9614c82aab03f4ec0feb')
 
 build() {
     ${srcdir}/s2i completion bash > ${srcdir}/s2i.bash
