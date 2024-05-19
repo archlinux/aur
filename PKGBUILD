@@ -2,7 +2,7 @@
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=mrboom
-pkgver=5.4
+pkgver=5.5
 pkgrel=1
 pkgdesc="Mr.Boom is a 8 players Bomberman clone"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL2')
 makedepends=('git' 'libmodplug' 'sdl2')
 depends=('sdl2_mixer' 'minizip')
 source=("https://github.com/Javanaise/mrboom-libretro/releases/download/$pkgver/MrBoom-src-${pkgver}.tar.gz")
-sha256sums=('5f8f612a850a184dc59f03bcc74e279b50bc027d8ca2d9a4927a4caaa570b93a')
+sha256sums=('c37c09c30662b17f1c7da337da1475f534674686ce78c7e15b603eeadc4498f0')
 
 build() {
   cd "${srcdir}/MrBoom-src-${pkgver}"
