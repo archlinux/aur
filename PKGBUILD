@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Voyager
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="From geospatial to spatial omics"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biocparallel
   r-bluster
@@ -16,6 +16,7 @@ depends=(
   r-ggplot2
   r-lifecycle
   r-matrixstats
+  r-memuse
   r-patchwork
   r-rlang
   r-rspectra
@@ -32,29 +33,31 @@ depends=(
 )
 checkdepends=(
   r-automap
-  r-dropletutils
   r-ggh4x
   r-gstat
   r-hexbin
+  r-rbioformats
   r-scater
   r-scattermore
   r-scran
+  r-sfarrow
   r-sfedata
   r-testthat
   r-vdiffr
-  r-vroom
 )
 optdepends=(
   r-automap
   r-biocsingular
   r-biocstyle
   r-cowplot
+  r-ebimage
   r-experimenthub
   r-ggh4x
   r-gstat
   r-hexbin
   r-knitr
   r-pheatmap
+  r-rbioformats
   r-rhdf5
   r-rmarkdown
   r-scater
@@ -65,14 +68,15 @@ optdepends=(
   r-testthat
   r-vdiffr
   r-vroom
+  r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1cc32e63cf1c410d82c2cd1a26f9f929')
-sha256sums=('e04a6570a1b15319841d68946f59a9f9296b52c0776200a68663313ff447f538')
+md5sums=('e36fbb30df3c719968b231fafd5dbd98')
+b2sums=('6a075c04ce15737758f3cf5a4a6bd7986a97aab2886501e1ac846fac2be03c7a3d59973157f6b5dcb274a723826f990796edb36039f450bc780f7b29930dabe4')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
