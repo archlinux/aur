@@ -26,7 +26,7 @@ sha256sums=('450485a213fb479042c36e37bfa0f8f7fcff4cf54f053de9d4f226810834d0b3'
             'bc65d03b23c52b28b52e7476b373dbbdf32af7c510728f73dee187872e3b0105'
             '0b27ecbba1123e349fce11f38dd68ce6addce4d1309568b52cb816324aae4974')
 
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 prepare () {
   cd $_pkgfqn
