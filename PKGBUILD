@@ -11,10 +11,11 @@ depends=('pacman' 'curl')
 makedepends=('base-devel' 'cmake')
 optdepends=(
   "sudo: privilege elevation"
-  "doas: privilege elevation"
-  "git: for using the AUR git repo"
-  "tar: for using the AUR tarball repo"
+  "opendoas: privilege elevation"
+  "git: use AUR packages git repos"
+  "tar: use AUR packages tarballs"
 )
+conflicts=('tabaur-git' 'tabaur-bin')
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
