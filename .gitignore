@@ -1,0 +1,5 @@
+pkg/
+*.pkg.tar.zst
+python-x3dh/
+src/
+*.zip
