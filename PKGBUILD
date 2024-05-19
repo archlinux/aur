@@ -34,10 +34,6 @@ provides=(
 conflicts=(
   'octopi-notifier'
 )
-replaces=(
-  'octopi-notifier-qt5'
-  'octopi-notifier-frameworks'
-)
 _commit=a081ac2bfd0564be64348f9a3a74ac9f4952bee1  # branch/master
 source=("git+https://github.com/aarnt/octopi.git#commit=${_commit}")
 sha256sums=('60250c4d6d638e8e3e4692a1397020411b00f1eb187f648d7a3420658e1942df')
