@@ -11,9 +11,11 @@ pkgbase = tabaur-git
 	depends = pacman
 	depends = curl
 	optdepends = sudo: privilege elevation
-	optdepends = doas: privilege elevation
-	optdepends = git: for using the AUR git repo
-	optdepends = tar: for using the AUR tarball repo
+	optdepends = opendoas: privilege elevation
+	optdepends = git: use AUR packages git repos
+	optdepends = tar: use AUR packages tarballs
+	conflicts = tabaur
+	conflicts = tabaur-bin
 	source = git+https://github.com/BurntRanch/TabAUR.git
 	sha256sums = SKIP
 
