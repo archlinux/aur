@@ -3,11 +3,10 @@ pkgbase=libastal-git
 pkgname=('libastal-git' 'python-libastal-git')
 _pkgname=libastal
 pkgver=r3.5f41c07
-pkgrel=1
+pkgrel=2
 pkgdesc="Building blocks for building desktop shells."
 arch=('x86_64')
 license=('GPL-3')
-provides=(libastal libastal.so=0-64)
 url="https://github.com/astal-sh/libastal"
 makedepends=('git' 'gobject-introspection' 'meson' 'vala' 'python-poetry' 'python-build' 'python-installer')
 depends=('glib2' 'glibc' 'gtk3' 'gtk-layer-shell')
@@ -30,6 +29,7 @@ build() {
 }
 
 package_libastal-git() {
+  provides=(libastal libastal.so=0-64)
   cd $srcdir/$_pkgname
   meson install -C build --destdir "$pkgdir"
 }
