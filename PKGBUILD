@@ -4,14 +4,13 @@
 
 pkgname=pygtk
 pkgver=2.24.0
-pkgrel=12
+pkgrel=13
 pkgdesc="Python bindings for the GTK widget set"
 url='https://wiki.gnome.org/Projects/PyGTK'
 arch=('x86_64' 'aarch64')
-license=('LGPL')
-depends=('libglade' 'python2-cairo' 'python2-gobject2')
-makedepends=('python2-numpy' 'python2-gobject2')
-optdepends=('python2-numpy')
+license=('LGPL-2.1-or-later')
+depends=('python2-cairo' 'python2-gobject2')
+optdepends=('python2-numpy' 'libglade')
 source=("${pkgname}-${pkgver}.tar.bz2::https://download.gnome.org/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
         'drop-pangofont.patch'
         'python27.patch'
@@ -38,7 +37,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  PYTHON=/usr/bin/python2 ./configure --prefix=/usr --build=unknown-unknown-linux --disable-docs
+  PYTHON=/usr/bin/python2 CFLAGS+=" -fpermissive" ./configure --prefix=/usr --build=unknown-unknown-linux --disable-docs
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
