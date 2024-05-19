@@ -1,0 +1,14 @@
+pkgbase = krita-ai-tools
+	pkgdesc = Krita plugin which adds selection tools to mask objects with a single click, or by drawing a bounding box.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Acly/krita-ai-tools
+	arch = x86_64
+	license = GPL
+	makedepends = tar
+	depends = krita
+	depends = kseexpr
+	source = https://github.com/Acly/krita-ai-tools/releases/download/v1.0.2/krita_segmentation_plugin-linux-x64-1.0.2.tar.gz
+	sha256sums = 94b7fa45db584e17edd34e005254bac053598dac5216b99308d55bca1ad95c03
+
+pkgname = krita-ai-tools
