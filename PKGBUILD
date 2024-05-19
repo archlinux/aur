@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
