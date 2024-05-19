@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
 url="https://sites.google.com/site/fullycapable/"
-license=(GPL2)
+license=('BSD-3-Clause OR GPL-2.0-only')
 depends=(
   libcap=$pkgver
   lib32-gcc-libs
