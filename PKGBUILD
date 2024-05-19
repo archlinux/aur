@@ -2,7 +2,7 @@
 _base=adios4dolfinx
 pkgname=python-${_base}
 pkgdesc="Wrappers for reading/writing DOLFINx meshes/functions with ADIOS2"
-pkgver=0.8.0
+pkgver=0.8.1.post0
 pkgrel=1
 arch=(any)
 url="https://github.com/jorgensd/${_base}"
@@ -11,11 +11,7 @@ depends=(python-fenics-dolfinx adios2)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-ipyparallel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('a104dbef03a7c3bf77efce84f2a94ec57d45071d287d9aacdd50318a17527ceb8eadff86ab868919f7a674a20e6e68e931e408245d909c28a3d2b1be51ed254b')
-
-prepare() {
-  sed -i 's/.dev0//' ${_base}-${pkgver}/pyproject.toml
-}
+sha512sums=('da1ef1c1cadeff93f8b30a2c36136609ed00ceff487b6eecbf4286f7b167f07e72ba8db9d457f9ab289132e2c196a4665aa4ea753f7aab9015e623026123cc5a')
 
 build() {
   cd ${_base}-${pkgver}
@@ -28,10 +24,7 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest \
-    --ignore=tests/test_checkpointing_vector.py \
-    --ignore=tests/test_mesh_writer.py \
-    --ignore=tests/test_meshtags.py \
-    --ignore=tests/test_original_checkpoint.py
+    --ignore=tests/test_mesh_writer.py
 }
 
 package() {
