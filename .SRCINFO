@@ -1,6 +1,6 @@
 pkgbase = kfilemetadata5
 	pkgdesc = A library for extracting file metadata
-	pkgver = 5.115.0
+	pkgver = 5.116.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -27,10 +27,10 @@ pkgbase = kfilemetadata5
 	optdepends = libappimage: AppImage extractor
 	conflicts = kfilemetadata<5.111
 	replaces = kfilemetadata<5.111
-	source = https://download.kde.org/stable/frameworks/5.115/kfilemetadata-5.115.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.115/kfilemetadata-5.115.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.116/kfilemetadata-5.116.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.116/kfilemetadata-5.116.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = fefd0ec7068f28f609948621d02c91ef74a0d99dd1704a93308501ab5123c90c
+	sha256sums = 195c2c8c4a18a24552fd1c020335f7e1e564c3acfaec4e918319d62c8067ce8f
 	sha256sums = SKIP
 
 pkgname = kfilemetadata5
