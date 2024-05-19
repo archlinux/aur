@@ -1,7 +1,7 @@
 pkgbase = swbis
 	pkgdesc = software packaging -- again
 	pkgver = 1.13.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/swbis/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = swbis
 	depends = glibc
 	optdepends = inetutils
 	source = https://ftp.gnu.org/gnu/swbis/swbis-1.13.3.tar.gz
+	source = automake.patch
 	md5sums = 0106914abde67de1c44cf67d2a1be557
+	md5sums = ddb03ef20c340416f14f7fe9f23caf9e
 
 pkgname = swbis
