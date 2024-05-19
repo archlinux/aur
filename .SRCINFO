@@ -1,7 +1,7 @@
 pkgbase = yass-proxy-cli
 	pkgdesc = lightweight http/socks proxy commandline
-	pkgver = 1.10.0
-	pkgrel = 2
+	pkgver = 1.10.1
+	pkgrel = 1
 	url = https://github.com/Chilledheart/yass
 	arch = x86_64
 	license = GPL-2.0-only
@@ -24,11 +24,9 @@ pkgbase = yass-proxy-cli
 	depends = c-ares
 	provides = yass-proxy-cli
 	conflicts = yass-proxy-cli-git
-	source = https://github.com/Chilledheart/yass/releases/download/1.10.0/yass-1.10.0.tar.bz2
+	source = https://github.com/Chilledheart/yass/releases/download/1.10.1/yass-1.10.1.tar.bz2
 	source = libcxx-gcc-14.patch
-	source = telegram-http-proxy-fix.patch
-	sha256sums = 3140611a5f70148664fd54cb2db8aa6b178395eeec56ffdc6b5dd22b011e0a6f
+	sha256sums = f1dc0ccdbf19dd691824a4c051aa4c69000b16c9df9bccd38682e8c7c2f454fd
 	sha256sums = 72f55c55adb141d31dd9cd892cd04a08df2d95a1d94ad3a4b421a312075782e4
-	sha256sums = 8d8ef6f29774609c5457354afc6b7a314eaef9eb753edcfd4a86cab8f20693ff
 
 pkgname = yass-proxy-cli
