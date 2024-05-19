@@ -1,0 +1,4 @@
+[sbctl]
+source = "github"
+github = "foxboron/sbctl"
+use_max_tag = true
