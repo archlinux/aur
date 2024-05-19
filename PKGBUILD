@@ -1,7 +1,7 @@
-# Maintainer: tristero <crf8472@web.de>
+# Maintainer: tristero <crf8472@mailbox.org>
 
 pkgname=libarcsdec-git
-pkgver=0.1.0alpha4+11.64fbefc
+pkgver=0.1.1alpha1+3.8aebeec
 pkgrel=1
 pkgdesc='Audio decoder and TOC parser adapters for libarcstk'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-git}")
 depends=('gcc-libs' 'libarcstk'
 	'libcue>=2.0.0' ## default metadata parsers
 	'flac>=1.3.1' 'wavpack>=5.0.0' 'ffmpeg>=3.1') ## default audio decoders
-makedepends=('git>=2.0' 'cmake>=3.9.6')
+makedepends=('git' 'cmake', 'flex', 'bison')
 optdepends=('doxygen>=1.8.14: build documentation'
             'python-virtualenv: build HTML documentation with m.css')
 source=("${pkgname%-git}::git+https://codeberg.org/tristero/${pkgname%-git}.git#branch=main")
