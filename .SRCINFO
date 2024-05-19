@@ -1,7 +1,7 @@
 pkgbase = wgcf-cli
 	pkgdesc = A command-line tool for Cloudflare-WARP API, built using Cobra.
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ArchiveNetwork/wgcf-cli
 	arch = i686
 	arch = x86_64

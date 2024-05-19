@@ -2,7 +2,7 @@
 
 pkgname=wgcf-cli
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line tool for Cloudflare-WARP API, built using Cobra.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 's390x' 'riscv64')
 url='https://github.com/ArchiveNetwork/wgcf-cli'
@@ -32,10 +32,10 @@ build(){
 package() {
     cd "$pkgname-$pkgver"
 
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm755 "$pkgname"        -t "$pkgdir/usr/bin/"
+    install -Dm644 "LICENSE"         -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-    install -Dm644 completions/bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-    install -Dm644 completions/zsh "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
-    install -Dm644 completions/fish "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+    install -Dm644 completions/bash     "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+    install -Dm644 completions/zsh      "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+    install -Dm644 completions/fish     "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
