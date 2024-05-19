@@ -1,7 +1,7 @@
 pkgbase = kate-root
 	pkgdesc = Advanced Text Editor from the KDE project, patched to be able to run as root.
 	pkgver = 24.02.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apps.kde.org/kate/
 	arch = x86_64
 	arch = i686
@@ -36,6 +36,7 @@ pkgbase = kate-root
 	depends = glibc
 	depends = kcompletion>=6
 	depends = ki18n>=6
+	depends = kcolorscheme
 	depends = kconfig>=6
 	depends = kconfigwidgets>=6
 	depends = kcoreaddons>=6

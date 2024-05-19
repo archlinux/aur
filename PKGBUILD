@@ -11,7 +11,7 @@
 _pkgname=kate
 pkgname="${_pkgname}-root"
 pkgver=24.02.2
-pkgrel=2
+pkgrel=3
 arch=(
   'x86_64'
   'i686'
@@ -43,6 +43,7 @@ depends=(
   # 'kactivities5>=5.90.0'
   'kcompletion>=6'
   'ki18n>=6'
+  'kcolorscheme'
   'kconfig>=6'
   'kconfigwidgets>=6'
   'kcoreaddons>=6'
