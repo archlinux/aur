@@ -6,6 +6,7 @@ pkgbase = python-fiat
 	arch = any
 	groups = fenics
 	license = LGPL3
+	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-sympy
 	conflicts = python-fiat-git
