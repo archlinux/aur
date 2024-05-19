@@ -1,19 +1,21 @@
 # Maintainer: Martino Pilia <martino.pilia@gmail.com>
 pkgname=vsce
-pkgver=2.22.0
+pkgver=2.26.1
 pkgrel=1
 pkgdesc="Visual Studio Code extension manager"
 arch=('any')
 url="https://github.com/Microsoft/vscode-vsce"
 license=('MIT')
-depends=('nodejs')
-makedepends=(
+depends=(
+    'nodejs'
 	'npm'
+)
+makedepends=(
 	'typescript'
     'yarn'
 )
 source=("https://registry.npmjs.org/@vscode/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('0d497e0d955ce9d4d8c41df6231139d74a50f8eb72be07af6547912e0690c106')
+sha256sums=('9cc76d0615d11275c298dd78de31f9b34a607df05823b90b7c56f89a35f8bb03')
 
 package() {
 	npm install -g \
