@@ -1,8 +1,9 @@
-# Maintainer: kusakata <shohei atmark kusakata period com>
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: kusakata (https://aur.archlinux.org/account/kusakata)
 
 pkgname=libzc
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool and library for cracking zip files"
 url="https://github.com/mferland/libzc"
 license=('GPL-3.0-or-later')

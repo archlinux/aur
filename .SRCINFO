@@ -1,7 +1,7 @@
 pkgbase = libzc
 	pkgdesc = Tool and library for cracking zip files
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mferland/libzc
 	arch = x86_64
 	license = GPL-3.0-or-later
