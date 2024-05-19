@@ -8,7 +8,7 @@ url='http://console-dev.de/project/hel-library-for-gba/'
 arch=(x86_64 i686)
 depends=(ham-v2.71-linux)
 source=(http://www.console-dev.de/libhel/libhel-v25.zip)
-md5sums=('cdaa002e25c1967be341a4008b4b08cd')
+md5sums=('e30e47063cd39ffabbacb4de99431e72')
 options=(!strip)
 
 package() {
