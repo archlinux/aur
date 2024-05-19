@@ -1,13 +1,14 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/Meumeu/WiVRn"
 license=("GPL-3.0-only")
 depends=(
 	"avahi"
+	"ffmpeg"
 	"gcc-libs"
 	"glibc"
 	"libbsd"
@@ -25,39 +26,27 @@ makedepends=(
 	"eigen"
 	"nlohmann-json")
 optdepends=(
-	"ffmpeg: AMD/Intel hardware encoding",
 	"cuda: NVIDIA hardware encoding"
 )
 provides=("openxr-runtime")
-source=("$pkgname-$pkgver::git+https://github.com/Meumeu/WiVRn.git#tag=v$pkgver")
-sha256sums=("SKIP")
-
-_use_nvenc=OFF
-
-prepare() {
-	# Use NVENC if cuda is installed. Build errors if compiled with 
-	# DWIVRN_USE_NVENC on non-nvidia system. (or it's just broken,
-	# I don't have a nvidia system to test on)
-	# TODO: Find a better way to do this?
-	_use_nvenc=[[ $(pacman -Q cuda) = "" ]] && echo "OFF" || echo "ON"
-	echo "Build with NVENC: $_use_nvenc"
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Meumeu/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('fab236e3e6506bd87ef0ecdb8999a5bca932dbaffe1cc87f2b1ca35615e77395')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "WiVRn-$pkgver"
 	cmake -B build-server . -GNinja \
 	-DWIVRN_BUILD_CLIENT=OFF \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DWIVRN_USE_VAAPI=ON \
 	-DWIVRN_USE_X264=ON \
-	-DWIVRN_USE_NVENC=$_use_nvenc \
+	-DWIVRN_USE_NVENC=ON \
 	-Wno-dev
 
 	cmake --build build-server
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "WiVRn-$pkgver"
 	DESTDIR="$pkgdir" cmake --install build-server
 }

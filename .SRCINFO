@@ -1,7 +1,7 @@
 pkgbase = wivrn-server
 	pkgdesc = A wireless Monado-based OpenXR runtime for standalone headsets.
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Meumeu/WiVRn
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,6 +9,7 @@ pkgbase = wivrn-server
 	makedepends = eigen
 	makedepends = nlohmann-json
 	depends = avahi
+	depends = ffmpeg
 	depends = gcc-libs
 	depends = glibc
 	depends = libbsd
@@ -20,10 +21,9 @@ pkgbase = wivrn-server
 	depends = systemd-libs
 	depends = vulkan-icd-loader
 	depends = x264
-	optdepends = ffmpeg: AMD/Intel hardware encoding,
 	optdepends = cuda: NVIDIA hardware encoding
 	provides = openxr-runtime
-	source = wivrn-server-0.14.1::git+https://github.com/Meumeu/WiVRn.git#tag=v0.14.1
-	sha256sums = SKIP
+	source = wivrn-server-0.14.1.tar.gz::https://github.com/Meumeu/WiVRn/archive/refs/tags/v0.14.1.tar.gz
+	sha256sums = fab236e3e6506bd87ef0ecdb8999a5bca932dbaffe1cc87f2b1ca35615e77395
 
 pkgname = wivrn-server
