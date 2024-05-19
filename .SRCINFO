@@ -1,22 +1,21 @@
 pkgbase = ao-git
 	pkgdesc = An Electron wrapper for Microsoft To-Do
-	pkgver = 6.9.0.r12.g7533b53
-	pkgrel = 3
+	pkgver = 6.9.0.r13.g86ceea6
+	pkgrel = 1
 	url = https://github.com/klaussinani/ao
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	makedepends = electron
 	makedepends = git
-	depends = gconf
 	depends = libnotify
 	depends = libxtst
 	depends = nss
 	depends = libxss
+	depends = libxcrypt-compat
 	provides = ao
 	conflicts = ao
 	source = git+https://github.com/klaussinani/ao.git
 	md5sums = SKIP
 
 pkgname = ao-git
-

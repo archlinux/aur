@@ -1,17 +1,17 @@
-# Maintainer: peeweep <peeweep at 0x0 dot ee>
+# Contributor: peeweep <peeweep at 0x0 dot ee>
 # Contributor: Modelmat <modelmat@outlook.com.au>
 # Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
 # Contributor: David Naramski <david.naramski@gmail.com>
 pkgname=ao-git
 _pkgname=ao
-pkgver=6.9.0.r12.g7533b53
+pkgver=6.9.0.r13.g86ceea6
 _pkgver=${pkgver%%.r*}
-pkgrel=3
+pkgrel=1
 pkgdesc="An Electron wrapper for Microsoft To-Do"
 arch=('x86_64')
 url="https://github.com/klaussinani/ao"
 license=('MIT')
-depends=('gconf' 'libnotify' 'libxtst' 'nss' 'libxss')
+depends=('libnotify' 'libxtst' 'nss' 'libxss' 'libxcrypt-compat')
 makedepends=('npm' 'electron' 'git')
 provides=('ao')
 conflicts=('ao')
