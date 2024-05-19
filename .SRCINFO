@@ -6,11 +6,14 @@ pkgbase = python-ufl
 	arch = any
 	groups = fenics
 	license = LGPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-numpy
 	conflicts = python-ufl-git
 	options = !emptydirs
-	source = ufl-2022.3.0.tar.gz::https://github.com/FEniCS/ufl-legacy/archive/refs/tags/2022.3.0.tar.gz
+	source = ufl-legacy-2022.3.0.tar.gz::https://github.com/FEniCS/ufl-legacy/archive/refs/tags/2022.3.0.tar.gz
 	sha256sums = 2d0f4c88fe151d631e1d389faf61f58bbbe649fd08106e756fd5d6c53213660a
 
 pkgname = python-ufl

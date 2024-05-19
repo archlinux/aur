@@ -14,24 +14,22 @@ groups=('fenics')
 conflicts=('python-ufl-git')
 depends=('python-numpy')
 options=(!emptydirs)
-makedepends=('python-setuptools')
-source=(${_base}-${pkgver}.tar.gz::"${url}/archive/refs/tags/${pkgver}.tar.gz")
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=(${_base}-legacy-${pkgver}.tar.gz::"${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('2d0f4c88fe151d631e1d389faf61f58bbbe649fd08106e756fd5d6c53213660a')
 
-_basedir=${startdir}/src/${_base}-legacy-${pkgver}
-
 prepare (){
-    cd ${_basedir}
+    cd ${_base}-legacy-${pkgver}
     sed -i 's/README.rst/README.md/g' setup.cfg
 }
 
 build() {
-	cd ${_basedir}
-	python -m build --wheel --skip-dependency-check --no-isolation
+	cd ${_base}-legacy-${pkgver}
+	python -OO -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-	cd ${_basedir}
+	cd $srcdir/${_base}-legacy-${pkgver}
 	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
