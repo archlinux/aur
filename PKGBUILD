@@ -1,8 +1,9 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: Nathaniel van Diepen <eeems@eeems.email>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=gnome-shell-extension-burn-my-windows
 _pkgname=Burn-My-Windows
-pkgver=38
+pkgver=41
 pkgrel=1
 pkgdesc="Disintegrate your apps the old-school way."
 arch=('any')
@@ -11,7 +12,7 @@ license=('GPL3')
 depends=('gnome-shell')
 makedepends=('zip')
 source=(${url}/archive/v$pkgver.tar.gz)
-b2sums=('7df8b00d6ea0616d384b3bf3ec09d6b73824f65f349a18f6e8170dc9d6ef3cba3490ccf65a724c15f1cd7502be69ceb79141e29cb275eb2f6c1bf77419148666')
+sha256sums=('d6a78a00c39373b5f2731c70e9353ac1c14c06197b375c440c5397a34cf92aad')
 
 build() {
   cd "$_pkgname-$pkgver"
