@@ -1,0 +1,37 @@
+# Maintainer: angelodalzotto <angelodalzotto97 at gmail dot com>
+
+_target=riscv64-elf
+_pkgname=picolibc
+pkgname=$_target-$_pkgname
+pkgver=1.8.6
+pkgrel=1
+pkgdesc='C library designed for embedded 32- and 64- bit systems'
+arch=(x86_64)
+url='https://github.com/picolibc/picolibc'
+license=('BSD')
+makedepends=("$_target-gcc" 'meson')
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('42696b358c249cfd6e13db672438d6549873ad26816823236e7c9447dbd01db0')
+options=(!strip !buildflags)
+
+prepare() {
+  cp "$_pkgname-$pkgver/scripts/cross-riscv64-unknown-elf.txt" "cross-$_target.txt"
+  sed -i 's/unknown-//g' "cross-$_target.txt"
+}
+
+build() {
+  meson setup \
+    --prefix="/usr/$_target" \
+    --cross-file "cross-${_target}.txt" \
+    -Dincludedir=lib/$_pkgname/include \
+    -Dlibdir=lib/$_pkgname/lib \
+    -Dspecsdir=lib/ \
+    "$_pkgname-$pkgver" build
+
+  meson compile -C build
+}
+
+package() {
+  meson install -C build --destdir "$pkgdir"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/$_pkgname-$pkgver/COPYING."{GPL2,NEWLIB,picolibc}
+}
