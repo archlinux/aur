@@ -3,7 +3,7 @@
 
 pkgname=godot-voxel-bin
 _pkgname=godot-voxel
-pkgver=4.1.4rc+2d3b2abcf
+pkgver=4.2.2rc+15073afe3
 pkgrel=1
 pkgdesc="Binary files for the Godot game engine with Zylann's voxel tools module."
 arch=("x86_64")
