@@ -1,8 +1,8 @@
 # Maintainer: Florian Wetzel <aur@commanderred.xyz>
 pkgname=prometheus-adaptec-exporter
 
-pkgver=1.0.0
-commit="acb8d139dcbe2b67615b99ce5d7e8bd59bb5a8df"
+pkgver=1.0.1
+commit="2cb1e244ea7319117e1de13e0054d0bc0ceb3d76"
 pkgrel=1
 pkgdesc="Prometheus Adaptec Exporter"
 
@@ -17,7 +17,7 @@ source=(
   "https://github.com/CommanderRedYT/prometheus-adaptec-exporter/archive/${commit}.tar.gz"
 )
 sha256sums=(
-  'ff13749be733357ed5ab2731eb600d689a0cb722f421e27a93f364fc3b2994a0'
+  '2954d9e3b3061e258cf4786c4373621be65b05f87180f8e7993582b689373c0a'
 )
 
 build() {
