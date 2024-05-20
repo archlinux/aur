@@ -1,7 +1,7 @@
 pkgbase = python-pyotherside
 	pkgdesc = Asynchronous Python 3 Bindings for Qt5
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.6.1
+	pkgrel = 1
 	url = https://thp.io/2011/pyotherside
 	arch = x86_64
 	license = ISC
@@ -9,7 +9,7 @@ pkgbase = python-pyotherside
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-svg
-	source = python-pyotherside-1.6.0.tar.gz::https://github.com/thp/pyotherside/archive/1.6.0.tar.gz
-	sha256sums = ead71d0a549acb6664d72745fae5b1d4e433274c64be6a680ceeeef0754451ab
+	source = python-pyotherside-1.6.1.tar.gz::https://github.com/thp/pyotherside/archive/1.6.1.tar.gz
+	sha256sums = d8ce8383990635472be98461f12c2352e98bc8351faa3416e6fa4679f8f08f06
 
 pkgname = python-pyotherside
