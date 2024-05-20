@@ -1,4 +1,6 @@
-# Maintainer: Martin -nexus- Mlynář <nexus+arch@smoula.net>
+# Maintainer: Ernesto Castellotti <ernesto@castellotti.net>
+# Contributor: Martin -nexus- Mlynář <nexus+arch@smoula.net>
+
 pkgname=tayga
 pkgver=0.9.2
 pkgrel=2
@@ -11,9 +13,9 @@ source=(
 	"tayga.conf"
 	"tayga.service"
 )
-md5sums=('7a7b24165ce008df772f398d86fa280e'
-         '0b818fcfe82dc618bb36da705de18ee3'
-	 '9d41c4a9effcf1402bae3141917effa9')
+sha256sums=('2b1f7927a9d2dcff9095aff3c271924b052ccfd2faca9588b277431a44f0009c'
+         '623b56227bed86faa77aa20d4efe71440935b9534f94ec7f4993a5600b5c3b71'
+	 '5d6e1e3f22e0a7dae72473b021e62427a0e838337d0d690bd1e0b325d2bc9c02')
 
 build() {
   cd $srcdir/tayga-${pkgver}
