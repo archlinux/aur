@@ -3,12 +3,12 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
-pkgver=30.1.1.r33.g3a10355
+pkgver=30.1.2.r205.g72924ac
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
-license=("GPL2")
+license=("GPL-2.0-only")
 depends=("curl"
          "ffmpeg"
          "gtk-update-icon-cache"
@@ -24,11 +24,13 @@ depends=("curl"
          "pciutils"
          "qrcodegencpp-cmake"
          "qt6-svg"
-         "speexdsp")
+         "rnnoise"
+         "speexdsp"
+         "uthash")
 makedepends=("asio"
              "cef-minimal-obs-bin"
              "cmake"
-             "ffnvcodec-headers"
+             "ffnvcodec-headers<=12.1.14.0"
              "git"
              "libfdk-aac"
              "libxcomposite"
