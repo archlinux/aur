@@ -1,12 +1,12 @@
 [Unit]
-Description=conduwuit Matrix homeserver
+Description=Grapevine matrix homeserver
 After=network-online.target
 
 [Service]
 DynamicUser=yes
-User=_conduwuit
-Group=_conduwuit
-Type=notify
+User=_grapevine
+Group=_grapevine
+Type=notify-reload
 
 AmbientCapabilities=
 CapabilityBoundingSet=
@@ -39,14 +39,13 @@ SystemCallArchitectures=native
 SystemCallFilter=@system-service @resources
 SystemCallFilter=~@clock @debug @module @mount @reboot @swap @cpu-emulation @obsolete @timer @chown @setuid @privileged @keyring @ipc
 SystemCallErrorNumber=EPERM
-StateDirectory=matrix-conduit
+StateDirectory=grapevine
 
-RuntimeDirectory=conduwuit
+RuntimeDirectory=grapevine
 RuntimeDirectoryMode=0750
 
-Environment="CONDUIT_CONFIG=/etc/conduwuit/conduwuit.toml"
-
-ExecStart=/usr/bin/conduwuit
+ExecStart=/usr/bin/grapevine serve --config /etc/grapevine/grapevine.toml
+Environment=RUST_BACKTRACE=full
 Restart=on-failure
 RestartSec=5
 

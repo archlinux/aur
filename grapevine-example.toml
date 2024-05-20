@@ -1,0 +1,31 @@
+#conduit_compat = false
+server_name = "your-hostname-here.example"
+
+max_request_size = 100_000_000
+#allow_registration = false
+#registration_token = ""
+#serve_media_unauthenticated = false
+
+#[tls]
+#certs = "/path/to/fullchain.pem"
+#key = "/path/to/privkey.pem"
+
+[[listen]]
+type = "tcp"
+#tls = false
+port = 8448
+address = "::"
+
+[server_discovery.server]
+authority = "your-hostname-here.example:99999"
+
+[server_discovery.client]
+base_url = "https://your-hostname-here.example:99999"
+
+[federation]
+enable = true
+trusted_servers = ["matrix.org"]
+
+[database]
+backend = "rocksdb"
+path = "/var/lib/grapevine/"
