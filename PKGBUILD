@@ -4,23 +4,23 @@
 set -u
 pkgname=notepadqq
 pkgname+='-git'
-pkgver=2.0.0.beta.r12.gd8000f25
+pkgver=2.0.0.beta.r13.gb426303b
 pkgrel=1
 pkgdesc='Notepad++-like text editor for Linux'
 arch=('x86_64')
 arch+=('i686')
 #url='http://notepadqq.altervista.org/wp/'
 url='https://notepadqq.com/'
-license=('GPL3')
-depends=('hicolor-icon-theme' 'qt5-svg' 'qt5-webkit')
-depends+=('desktop-file-utils')
-depends[1]='qt5-svg>=5.6'
+license=('GPL-3.0-or-later')
+depends=('glibc' 'gcc-libs' 'bash' 'hicolor-icon-theme' 'qt5-base' 'qt5-svg>=5.6' 'qt5-webchannel')
+#depends+=('desktop-file-utils')
+depends+=('nodejs')
 depends+=('qt5-webengine>=5.6' 'uchardet')
 makedepends=('git' 'qt5-tools')
 makedepends+=('qt5-websockets' 'qt5-tools>=5.6')
 optdepends=('mathjax2: Math rendering')
 options=('!emptydirs')
-options+=('!strip')
+#options+=('!strip')
 provides=("notepadqq=${pkgver%%.r*}")
 conflicts=('notepadqq') # 'notepadqq-bin' 'notepadqq-common' 'notepadqq-src'
 #install="${pkgname#-git}.install"
