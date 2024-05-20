@@ -2,8 +2,8 @@
 
 pkgname=oama-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.11
-pkgrel=3
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
 url="https://github.com/pdobsan/${_pkgname}"
@@ -27,8 +27,8 @@ release=$_pkgname-$pkgver-Linux
 
 source_x86_64=(https://github.com/pdobsan/oama/releases/download/${pkgver}/$release-x86_64.tgz)
 source_aarch64=(https://github.com/pdobsan/oama/releases/download/${pkgver}/$release-aarch64.tgz)
-sha256sums_x86_64=('4ed514193a203e58029c1eda64bf80c5af251c90bc89354e6d826c286cf03998')
-sha256sums_aarch64=('dd019d75f015889962ac50b6df6e6e68692a5bcd8572391d17ddf949230e653e')
+sha256sums_x86_64=('24247d1530fce10f5bfc3052e745bcbb59d2d24a33c34b70e8a410255a9d3983')
+sha256sums_aarch64=('37534ca649a1e4c97c4b14f4e2947e262640766e7fa550f913680c994f696e37')
 
 install=.INSTALL
 
