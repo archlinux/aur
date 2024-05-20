@@ -1,13 +1,13 @@
-# Maintainer: Ivan Volkov <angrycore at yandex dot ru>
+# Maintainer: Alex Ganin <alex at ganin dot tech>
 
 pkgname=bitrix24
-pkgver=14.3.10
+pkgver=14.4.0.75
 pkgrel=1
 pkgdesc="Official Bitrix24 client for Linux."
 arch=("x86_64")
 url="https://www.bitrix24.com/applications.php"
 source=("https://dl.bitrix24.com/b24/bitrix24_desktop.rpm")
-md5sums=('f7f8a61288f8ad0354beeea6a00ebd00')
+md5sums=('0976dacc12ffcee6fa9ed9c184b9bbae')
 depends=(
    'gtk3'
    'libnotify'
