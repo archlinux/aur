@@ -17,7 +17,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma')
 provides=("chromium=$pkgver" "chromedriver=$pkgver")
 conflicts=('chromium' 'chromedriver')
-source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
+source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
 sha256sums=('1ba06f39fcb7617f7d348e559f19b0263a4a5ea2935f42971ed1d4e99c89e931')
 
 declare -gA _system_libs=(
