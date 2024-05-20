@@ -1,51 +1,101 @@
-# Maintainer: Michael Migliore <mcmigliore+aur@gmail.com>
-# Maintainer: Mathieu Wespthal <mathieu.westphal+aur@gmail.com>
+# Maintainer:
+# Contributor: Michael Migliore <mcmigliore+aur@gmail.com>
+# Contributor: Mathieu Wespthal <mathieu.westphal+aur@gmail.com>
 
-export GIT_LFS_SKIP_SMUDGE=1
-_name=f3d
-pkgname=$_name-git
-pkgver=nightly.r2.gabca2cc5
+_pkgname="f3d"
+pkgname="$_pkgname-git"
+pkgver=2.4.0.r48.g6133d0f
 pkgrel=1
 pkgdesc='A fast and minimalist 3D viewer'
+url="https://github.com/f3d-app/f3d"
+license=('BSD-3-Clause')
 arch=('x86_64')
-url="https://github.com/$_name-app/$_name"
-license=('BSD')
-depends=('vtk' 'glew' 'netcdf' 'ospray' 'assimp' 'opencascade' 'alembic' 'draco' 'python' 'fmt')
-makedepends=('git' 'git-lfs' 'cmake' 'help2man' 'pybind11' 'jdk-openjdk' 'nlohmann-json')
+
+depends=(
+  alembic
+  assimp
+  boost-libs
+  draco
+  fmt
+  glew
+  hicolor-icon-theme
+  libxcursor
+  netcdf
+  nlohmann-json
+  onetbb
+  opencascade
+  openexr
+  ospray
+  pugixml
+  python
+  usd
+  verdict
+  vtk
+)
+makedepends=(
+  boost
+  cmake
+  eigen
+  fast_float
+  git
+  help2man
+  jdk-openjdk
+  ninja
+  openmp
+  pybind11
+  python
+  utf8cpp
+)
+optdepends=(
+  java-runtime
+)
+
 provides=('f3d')
 conflicts=('f3d')
-source=("git+https://github.com/$_name-app/$_name.git")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_name"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+
 }
 
 build() {
-  cd "$srcdir/$_name"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DF3D_BINDINGS_JAVA=ON \
-        -DF3D_BINDINGS_PYTHON=ON \
-        -DF3D_LINUX_GENERATE_MAN=ON \
-        -DF3D_MODULE_EXTERNAL_RENDERING=ON \
-        -DF3D_MODULE_RAYTRACING=ON \
-        -DF3D_PLUGINS_STATIC_BUILD=ON \
-        -DF3D_PLUGIN_BUILD_ALEMBIC=ON \
-        -DF3D_PLUGIN_BUILD_ASSIMP=ON \
-        -DF3D_PLUGIN_BUILD_DRACO=ON \
-        -DF3D_PLUGIN_BUILD_OCCT=ON \
-        ..
-  cmake --build .
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DF3D_BINDINGS_JAVA=ON
+    -DF3D_BINDINGS_PYTHON=ON
+    -DF3D_LINUX_GENERATE_MAN=ON
+    -DF3D_MODULE_EXTERNAL_RENDERING=ON
+    -DF3D_MODULE_RAYTRACING=ON
+    -DF3D_MODULE_EXR=ON
+    -DF3D_PLUGINS_STATIC_BUILD=ON
+    -DF3D_PLUGIN_BUILD_ALEMBIC=ON
+    -DF3D_PLUGIN_BUILD_ASSIMP=ON
+    -DF3D_PLUGIN_BUILD_DRACO=ON
+    -DF3D_PLUGIN_BUILD_OCCT=ON
+    -DF3D_PLUGIN_BUILD_USD=ON
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_name/build"
-  DESTDIR="$pkgdir" cmake --install .
-  DESTDIR="$pkgdir" cmake --install . --component mimetypes
-  DESTDIR="$pkgdir" cmake --install . --component sdk
-  DESTDIR="$pkgdir" cmake --install . --component configuration
+  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build --component mimetypes
+  DESTDIR="$pkgdir" cmake --install build --component sdk
+  DESTDIR="$pkgdir" cmake --install build --component configuration
+
+  install -Dm644 "$_pkgsrc/LICENSE.md" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
