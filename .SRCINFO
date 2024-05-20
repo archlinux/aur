@@ -12,8 +12,8 @@ pkgbase = tt-damage-calculator
 	makedepends = python-wheel
 	depends = python
 	depends = tk
-	optdepends = xdg-utils
-	source = https://github.com/Vhou-Atroph/tt-damage-calculator/archive/refs/tags/V4.3.0_dev.4.tar.gz
+	optdepends = xdg-utils: in-app settings opening support
+	source = git+https://github.com/Vhou-Atroph/tt-damage-calculator.git#tag=V4.3.0_dev.4
 	sha256sums = SKIP
 
 pkgname = tt-damage-calculator
