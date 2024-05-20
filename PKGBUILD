@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=0.50.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -102,6 +102,8 @@ optdepends=(
     'youtube-dl: Support for downloading/streaming YouTube videos, as well as other video platforms'
 )
 
+conflicts=("${pkgname}-git")
+provides=('platypush')
 options=(!strip)
 source=("v${pkgver}.tar.gz::https://git.platypush.tech/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('700b585367386cdb1043140ffffed576836d2327aec40db983ee46246e319328670207bb9702dd3b477a42654654d6a5d90e5395efe9f7fc2a91109f9bf92829')
