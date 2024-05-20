@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=json-schema-for-humans
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Quickly generate HTML documentation from a JSON schema"
 arch=(any)
@@ -31,7 +31,7 @@ checkdepends=(
   python-pytest
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e6fb3073a53137a9cc52dcc6ae720bdf81a928a9d907f83a4319844a31d1b9ac')
+sha256sums=('20ef9c6b4495d39b9e3cc273c5a4852c580cd62820a9a8c9ef1276fa078bc4bc')
 
 _archive="$pkgname-$pkgver"
 
