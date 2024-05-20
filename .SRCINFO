@@ -1,7 +1,7 @@
 pkgbase = bitscoper-usb-logger-bin
 	pkgdesc = Monitors udev USB events and logs device attributes.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitscoper/Bitscoper_USB_Logger/
 	arch = x86_64
 	license = GPL3
