@@ -30,7 +30,7 @@ license=('Apache-2.0')
 replaces=('salt-zmq' 'salt-raet')
 conflicts=('salt-zmq' 'salt-raet' 'salt')
 depends=()
-makedepends=('python-pip' 'python-virtualenv' 'patchelf')
+makedepends=('python-pip' 'python-virtualenv' 'patchelf' 'rsync')
 optdepends=('dmidecode: decode SMBIOS/DMI tables')
 backup=('etc/logrotate.d/salt'
         'etc/salt/master'
