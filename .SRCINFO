@@ -1,0 +1,15 @@
+pkgbase = xcursor-pro-hyprcursor
+	pkgdesc = Hyprcursor port of https://github.com/ful1e5/XCursor-pro
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/0xk1f0/XCursor-Pro-Hyprcursor
+	arch = any
+	license = GPL-3.0-only
+	source = https://github.com/0xk1f0/XCursor-Pro-Hyprcursor/releases/download/v0.1/XCursor-Pro-Hyprcursor-Dark.tar.gz
+	source = https://github.com/0xk1f0/XCursor-Pro-Hyprcursor/releases/download/v0.1/XCursor-Pro-Hyprcursor-Light.tar.gz
+	source = https://github.com/0xk1f0/XCursor-Pro-Hyprcursor/releases/download/v0.1/XCursor-Pro-Hyprcursor-Red.tar.gz
+	sha256sums = ddcc4be68bf18486b8090588a80bfae72b7ef1dbb2d2ade88bf15c16b4e7bf18
+	sha256sums = e656804228d942de57062d527e91323bfd19574c37d2bac85eb7e14ee5237829
+	sha256sums = 9ee021aaf8a3577cf8a9a1b532fc02477c8cfc648dcadf7ad55245f9619d0e47
+
+pkgname = xcursor-pro-hyprcursor
