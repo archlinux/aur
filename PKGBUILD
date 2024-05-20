@@ -42,7 +42,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname}" --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_pkgname}-${pkgver}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
