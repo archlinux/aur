@@ -4,7 +4,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=tree-sitter-requirements
 pkgname=python-$_pkgname
-pkgver=0.1.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A tree-sitter parser for requirements.txt files"
 arch=(x86_64)
@@ -12,9 +12,9 @@ url=https://github.com/Freed-Wu/$_pkgname
 depends=(python)
 makedepends=(python-installer)
 license=(GPL3)
-_py=cp37
+_py=cp39
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
-sha256sums=('6c2ed84d8b5d436667513ca16653da3f7bf8ae579918c5b8d196aa3de3ab4dab')
+sha256sums=('7f81c6ed5dcbc8e26510fa664351eec27e89e8de0da3debdb88cc95304e155c1')
 
 package() {
 	python -minstaller -d"$pkgdir" ./*.whl
