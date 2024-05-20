@@ -2,9 +2,9 @@
 pkgname=fooyin
 _pkgname=Fooyin
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A customisable music player"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/ludouzi/fooyin"
 license=('GPL-3.0-only')
 conflicts=("${pkgname}")
@@ -24,6 +24,7 @@ makedepends=(
     'base-devel'
     'pkgconf'
     'cmake'
+    'libpipewire'
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
@@ -41,7 +42,7 @@ build() {
     cmake -S . -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_PCH=ON \
-        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_BUILD_TYPE=None
     cmake --build build -j$(nproc)
 }
 package() {
