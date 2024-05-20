@@ -1,6 +1,6 @@
 pkgbase = torctl-gui
 	pkgdesc = The script serves as a graphical interface for torctl/tor
-	pkgver = v1.1.0.r0.ga2b44e5
+	pkgver = v1.1.0.r1.g0aebddc
 	pkgrel = 1
 	url = https://github.com/s-n-alexeyev/torctl-gui
 	arch = any
