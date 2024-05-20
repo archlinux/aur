@@ -15,7 +15,7 @@ unset _pkgtype
 # basic info
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
@@ -35,7 +35,7 @@ _main_package() {
     'python'
   )
 
-  if [[ "${_build_clang::1}" == "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]]; then
     makedepends+=(
       'clang'
       'lld'
@@ -43,7 +43,7 @@ _main_package() {
     )
   fi
 
-  if [ "${_build_git::1}" != "t" ] ; then
+  if [ "${_build_git::1}" != "t" ]; then
     _main_stable
   else
     _main_git
@@ -159,8 +159,8 @@ _source_vinniefalco_luabridge() {
 # common functions
 prepare() {
   _submodule_update() {
-    local key;
-    for key in ${!_submodules[@]} ; do
+    local key
+    for key in ${!_submodules[@]}; do
       git submodule init "${_submodules[${key}]}"
       git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
       git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
@@ -168,7 +168,7 @@ prepare() {
   }
 
   apply-patch() {
-    if patch -Np1 -F100 --dry-run -i "$1" &>/dev/null ; then
+    if patch -Np1 -F100 --dry-run -i "$1" &> /dev/null; then
       printf '\nApplying patch: %s\n' "$1"
       patch -Np1 -F100 -i "$1"
     else
@@ -194,13 +194,13 @@ build() {
     -Wno-dev
   )
 
-  if [[ "${_build_clang::1}" == "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]]; then
     export CC=clang
     export CXX=clang++
     export LDFLAGS+=" -fuse-ld=lld"
   fi
 
-  if [[ "${_build_avx::1}" == "t" ]] ; then
+  if [[ "${_build_avx::1}" == "t" ]]; then
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
     export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
@@ -221,7 +221,7 @@ package() {
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
-  if [[ "${_autoupdate::1}" != "t" ]] ; then
+  if [[ "${_autoupdate::1}" != "t" ]]; then
     return
   fi
 
@@ -235,7 +235,7 @@ _update_version() {
   local _pkgver_new="${_tag#v}"
 
   # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
     _pkgver="$_pkgver_new"
   fi
 }
