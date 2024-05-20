@@ -1,10 +1,10 @@
 pkgbase = pacroller
 	pkgdesc = Unattended upgrade for archlinux
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/isjerryxiao/pacroller
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
@@ -13,7 +13,7 @@ pkgbase = pacroller
 	backup = etc/pacroller/smtp.json
 	backup = etc/pacroller/telegram.json
 	backup = etc/pacroller/known_output_override.py
-	source = pacroller::git+https://github.com/isjerryxiao/pacroller#tag=0.1.8
-	md5sums = SKIP
+	source = pacroller::git+https://github.com/isjerryxiao/pacroller#tag=0.1.9
+	md5sums = 46a1b320d91793fa7fbd86c3ccaafd89
 
 pkgname = pacroller
