@@ -1,5 +1,5 @@
 pkgbase = linux-rt-lts61
-	pkgdesc = LTS Linux
+	pkgdesc = LTS Linux with realtime patches
 	pkgver = 6.1.91
 	pkgrel = 1
 	url = https://www.kernel.org
@@ -52,7 +52,7 @@ pkgbase = linux-rt-lts61
 	b2sums = 1a1adfb82e2d8a7fa9153ef4277a3d660e7f44af213e8b4039c4675991a115c05dc563575157c470341d4d990a02b74fefba322fbce22ad060d369be69e67fe9
 
 pkgname = linux-rt-lts61
-	pkgdesc = The LTS Linux kernel and modules
+	pkgdesc = The LTS Linux with realtime patches kernel and modules
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -64,8 +64,8 @@ pkgname = linux-rt-lts61
 	replaces = wireguard-lts
 
 pkgname = linux-rt-lts61-headers
-	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel
+	pkgdesc = Headers and scripts for building modules for the LTS Linux with realtime patches kernel
 	depends = pahole
 
 pkgname = linux-rt-lts61-docs
-	pkgdesc = Documentation for the LTS Linux kernel
+	pkgdesc = Documentation for the LTS Linux with realtime patches kernel

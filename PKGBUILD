@@ -1,4 +1,5 @@
-# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Maintainer: Charlie Wolf <charlie@wolf.is>
+# Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 _rtver=30
@@ -6,7 +7,7 @@ _rtbase=6.1.90
 pkgbase=linux-rt-lts61
 pkgver=6.1.91
 pkgrel=1
-pkgdesc='LTS Linux'
+pkgdesc='LTS Linux with realtime patches'
 url='https://www.kernel.org'
 arch=(x86_64)
 license=(GPL2)
