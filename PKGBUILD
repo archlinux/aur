@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=gql
 _pkgname=GQL
-pkgver=0.18.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Git Query language (GQL) is an SQL like language to perform queries on .git files"
 url="https://github.com/AmrDeveloper/GQL"
@@ -19,7 +19,7 @@ makedepends=(
 conflicts=(gitql)
 options=(!lto) # Linking zlib with flake2 fails with LTO enabled
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('7517e8b7c90878c9b1c556b950446acd497263f99d0e602ff901684ed8580b4f')
+sha256sums=('41a899b6f48cb4b7fc7685bd6943eb5be6196eeca84190d3d4ae7d741701beec')
 
 _archive="$_pkgname-$pkgver"
 
