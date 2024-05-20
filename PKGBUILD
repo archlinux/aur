@@ -3,7 +3,7 @@
 # Contributor: Ezequiel Rabelo de Aguiar <ezeq.cruel@gmail.com>
 
 pkgname=cadzinho
-pkgver=0.5.0
+pkgver=0.6.0
 luaver=5.4.6
 pkgrel=1
 pkgdesc="Minimalist computer aided design (CAD) software"
@@ -37,5 +37,5 @@ package() {
   install -m644 ${srcdir}/CadZinho-$pkgver/lang/*.lua "$pkgdir/usr/share/$pkgname/lang/"
   install -D -m755 ${srcdir}/CadZinho-$pkgver/cadzinho ${pkgdir}/usr/bin/cadzinho
 }
-sha256sums=('bd279790b0323742958791f14f1b5c3134ed32d863a100b6cf474d442082c829'
+sha256sums=('8f7341d37e80736755f67e0f73be128e3a5514a862c6179f25ac338fe9034908'
             '7d5ea1b9cb6aa0b59ca3dde1c6adcb57ef83a1ba8e5432c0ecd06bf439b3ad88')
