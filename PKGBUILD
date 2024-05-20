@@ -1,9 +1,9 @@
 # Maintainer: Kimiblock Moe
 pkgname=(wechat-uos-bwrap wechat-uos-qt)
 pkgver=1.0.0.241
-pkgrel=7
+pkgrel=8
 epoch=
-pkgdesc="WeChat Qt w/ bwrap sandbox"
+pkgdesc="WeChat Qt"
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://weixin.qq.com/"
 license=('LicenseRef-proprietary')
@@ -87,7 +87,7 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
-md5sums=('b70d5263b49234a9aedf18641c9128c1'
+md5sums=('675b22efe5568cead13bacd20bc39ca9'
          '82a5663ce32a0504f1f7575d51f2c7cb'
          '600e74549ce2258c045d5c2f7689ea63'
          'dfc069e6c8d9dbaa90fe388cab4002c9'
@@ -116,6 +116,8 @@ function package_wechat-uos-qt() {
 	chmod 0755 "${pkgdir}/usr/lib/license" -R
 	cp "${srcdir}/license"/* -r "${pkgdir}/usr/share/wechat-uos-qt/license"
 	chmod 0755 -R "${pkgdir}/usr/share/wechat-uos-qt/license"
+	install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
+	echo "https://www.wechat.com/us/service_terms.html" >"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
 }
 
 function package_wechat-uos-bwrap() {

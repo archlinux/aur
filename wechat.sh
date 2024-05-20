@@ -63,12 +63,18 @@ function createWrapIfNotExist() {
 
 function inputMethod() {
 	if [[ ${XMODIFIERS} =~ fcitx ]]; then
-		export QT_IM_MODULE=fcitx
-		export GTK_IM_MODULE=fcitx
+		QT_IM_MODULE=fcitx
+		GTK_IM_MODULE=fcitx
 	elif [[ ${XMODIFIERS} =~ ibus ]]; then
-		export QT_IM_MODULE=ibus
-		export GTK_IM_MODULE=ibus
-		export IBUS_USE_PORTAL=1
+		QT_IM_MODULE=ibus
+		GTK_IM_MODULE=ibus
+		IBUS_USE_PORTAL=1
+	elif [[ ${XMODIFIERS} =~ gcin ]]; then
+		QT_IM_MODULE=ibus
+		GTK_IM_MODULE=gcin
+		LC_CTYPE=zh_TW.UTF-8
+	else
+		echo '[Warn] Input Method potentially broken! Please set $XMODIFIERS properly'
 	fi
 }
 
@@ -82,7 +88,7 @@ function lnDir() {
 
 function importEnv() {
 	if [ -e "${XDG_DATA_HOME}"/WeChat_Data/wechat.env ]; then
-		echo "[Info] Sourcing env vars..."
+		echo "[Info] ${XDG_DATA_HOME}/WeChat_Data/wechat.env exists"
 	else
 		touch "${XDG_DATA_HOME}"/WeChat_Data/wechat.env
 	fi
@@ -115,13 +121,13 @@ function execApp() {
 	importEnv
 	systemd-run --user ${sdOption} \
 	-p CPUWeight=50 \
-	-p IOWeight=50 \
+	-p IOWeight=40 \
 	-p IPAccounting=yes \
 	-p UnsetEnvironment=XDG_CURRENT_DESKTOP \
+	-p UnsetEnvironment=WAYLAND_DISPLAY \
+	-p UnsetEnvironment=XDG_SESSION_TYPE \
 	-p PrivateIPC=yes \
-	-p DeviceAllow=/dev/dri/* \
-	-p DeviceAllow=/dev/video* \
-	-p DevicePolicy=closed \
+	-p DevicePolicy=strict \
 	-p EnvironmentFile=/usr/lib/wechat-uos-qt/envs \
 	-p EnvironmentFile="${XDG_DATA_HOME}"/WeChat_Data/wechat.env \
 	-p Environment=GTK_IM_MODULE="${GTK_IM_MODULE}" \
@@ -166,11 +172,10 @@ function execApp() {
 	-p PrivateTmp=yes \
 	-- \
 	bwrap \
-		--unsetenv WAYLAND_DISPLAY \
-		--cap-drop ALL \
 		--dev /dev \
 		--dev-bind /dev/dri /dev/dri \
 		--dev-bind /dev/shm /dev/shm \
+		--tmpfs /sys \
 		--ro-bind /sys/dev/char /sys/dev/char \
 		--ro-bind /sys/devices /sys/devices \
 		--proc /proc \
@@ -193,6 +198,8 @@ function execApp() {
 		--ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
 		--unshare-all \
 		--share-net \
+		--unshare-user \
+		--disable-userns \
 		--ro-bind /usr/lib/wechat-uos-qt/open \
 			/sandbox/dde-file-manager \
 		--ro-bind /usr/share/wechat-uos-qt/license/var/ /var/ \
