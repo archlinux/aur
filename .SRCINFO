@@ -1,0 +1,26 @@
+pkgbase = virt-p2v
+	pkgdesc = Convert a physical machine to a virtual machine
+	pkgver = 1.42.3
+	pkgrel = 1
+	url = http://libguestfs.org/virt-p2v.1.html
+	install = virt-p2v.install
+	arch = x86_64
+	license = GPL2
+	makedepends = perl-list-moreutils
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	makedepends = ocaml-libvirt
+	depends = perl-list-moreutils
+	depends = glib2
+	depends = libvirt
+	depends = libguestfs
+	depends = gtk3
+	depends = pixman
+	depends = libnbd
+	depends = nbdkit
+	source = https://download.libguestfs.org/virt-p2v/virt-p2v-1.42.3.tar.gz
+	source = virt-p2v.install
+	sha256sums = 80e7bf6069c92bea349270b16ee40325dc6f814c3a06e0a0e329c86bd5d04f77
+	sha256sums = 05e57b3604be161ed9dbbada0b4c31bfc14b884cf4ff9cf887378d3b372689e4
+
+pkgname = virt-p2v
