@@ -29,7 +29,7 @@ source=("https://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${p
         'bacula-sd.service')
 
 sha256sums=('55515c2a66af9a86b955daea4089378b864d051b2e6e30383bef36e693acea7a'
-            'd1f06403b3460ad8cb7bd063ec31108d87c77dc58bb8a916229262d2bac4a565'
+            '9a1c3fca9ac71f3bb72d100d328f265317404b226396e3a4030cdb3e4e69bd9f'
             '072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39'
             'a5e75ee945479f9e38415d2841cf3485200d9d9374d5a68c19c13b39467ca5bb')
 
