@@ -3,9 +3,9 @@
 _pkgname='html2atom'
 pkgbase="$_pkgname"
 pkgname="$_pkgname-git"
-pkgver=r3.f936aa6
+pkgver=r10.ebd28c3
 pkgrel=1
-url="https://codeberg.org/ramenu/$_pkgname"
+url="https://git.missingno.dev/$_pkgname"
 pkgdesc='Convert vanilla HTML file(s) to a Atom feed'
 arch=(
 	'x86_64' 
@@ -14,7 +14,7 @@ arch=(
 )
 makedepends=('cargo' 'git')
 license=('GPL-3.0')
-source=("$_pkgname::git+$url.git")
+source=("$_pkgname::git+$url")
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 b2sums=('SKIP')

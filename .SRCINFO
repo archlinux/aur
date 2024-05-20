@@ -1,8 +1,8 @@
 pkgbase = html2atom
 	pkgdesc = Convert vanilla HTML file(s) to a Atom feed
 	pkgver = r3.f936aa6
-	pkgrel = 1
-	url = https://codeberg.org/ramenu/html2atom
+	pkgrel = 2
+	url = https://git.missingno.dev/html2atom
 	arch = x86_64
 	arch = i686
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = html2atom
 	makedepends = git
 	provides = html2atom
 	conflicts = html2atom
-	source = html2atom::git+https://codeberg.org/ramenu/html2atom.git
+	source = html2atom::git+https://git.missingno.dev/html2atom
 	b2sums = SKIP
 
 pkgname = html2atom-git
