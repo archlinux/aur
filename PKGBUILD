@@ -8,7 +8,7 @@ arch=("x86_64")
 provides=("caligula")
 conflicts=("caligula")
 source=("https://github.com/ifd3f/caligula/releases/download/v$pkgver/caligula-$CARCH-linux")
-sha256sums=("d008c2aeb4c6204db467bf9fe4e263ce382924b4fc19361752b33a677046303a")
+sha256sums=("5fdd670ecad0c610a25f32e3ce095f567a8455f373e1183a9464f06236a7ba54")
 
 package() {
     mv caligula-x86_64-linux caligula
