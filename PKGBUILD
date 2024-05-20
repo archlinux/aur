@@ -1,9 +1,9 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgrel=1
-pkgver=6.3
+pkgver=6.3.1
 _pkgname=AutoLinux
-pkgname=autolinux
+pkgname=autolinux-git
 pkgbase=autolinux-git
 pkgdesc="A riced spin on Suckless DWM"
 arch=('x86_64')
@@ -19,8 +19,6 @@ optdepends=(
 		'xorg-xbacklight: Allows for changing the brightness of the screen'
 	)
 provides=(AutoLinux)
-conflicts=(AutoLinux)
-backup=(usr/bin/AutoLinux.bak)
 source=("git+$url.git")
 md5sums=('SKIP')
 

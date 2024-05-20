@@ -1,6 +1,6 @@
 pkgbase = autolinux-git
 	pkgdesc = A riced spin on Suckless DWM
-	pkgver = 6.3
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = https://gitlab.com/a4to/AutoLinux
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = autolinux-git
 	optdepends = xorg-xsetroot: Allows for changing the background color of the bar and WM
 	optdepends = xorg-xbacklight: Allows for changing the brightness of the screen
 	provides = AutoLinux
-	conflicts = AutoLinux
-	backup = usr/bin/AutoLinux.bak
 	source = git+https://gitlab.com/a4to/AutoLinux.git
 	md5sums = SKIP
 
-pkgname = autolinux
+pkgname = autolinux-git
