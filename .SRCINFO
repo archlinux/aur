@@ -1,8 +1,8 @@
 pkgbase = libastal-git
 	pkgdesc = Building blocks for building desktop shells.
-	pkgver = r3.5f41c07
-	pkgrel = 2
-	url = https://github.com/astal-sh/libastal
+	pkgver = r4.913738c
+	pkgrel = 1
+	url = file:///home/kotontrion/Projects/github/libastal
 	arch = x86_64
 	license = GPL-3
 	makedepends = git
@@ -12,11 +12,15 @@ pkgbase = libastal-git
 	makedepends = python-poetry
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua53
+	makedepends = luarocks
 	depends = glib2
 	depends = glibc
 	depends = gtk3
 	depends = gtk-layer-shell
-	source = git+https://github.com/astal-sh/libastal
+	source = git+file:///home/kotontrion/Projects/github/libastal
 	sha256sums = SKIP
 
 pkgname = libastal-git
@@ -28,3 +32,9 @@ pkgname = python-libastal-git
 	depends = libastal-git
 	depends = python
 	depends = python-gobject
+
+pkgname = lua-libastal-git
+
+pkgname = lua51-libastal-git
+
+pkgname = lua53-libastal-git
