@@ -2,8 +2,8 @@
 # Contributor: Igor <f2404@yandex.ru>
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
-pkgver=1.9.6.r20.g1405af0b
-pkgrel=2
+pkgver=1.9.6.r29.g4a95e514
+pkgrel=1
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
 url="https://gnunn1.github.io/tilix-web"
@@ -13,6 +13,7 @@ depends=(
   'gsettings-desktop-schemas'
   'gtkd'
   'liblphobos'
+  'libunwind'
   'libx11'
   'vte3'
 )
