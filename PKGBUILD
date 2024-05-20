@@ -1,12 +1,12 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-git
-pkgver=r187.3ed1031
+pkgver=r212.8b03f0e
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
-license=('BSD-2')
+license=('BSD-2-Clause')
 makedepends=(git rust)
 depends=(
 	avahi
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	install -Dm755 target/release/${pkgname%-git} "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm755 "$srcdir/moonshine/target/release/moonshine" "$pkgdir/usr/bin/moonshine"
+	install -Dm755 "$srcdir/moonshine/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/moonshine.service" "$pkgdir/usr/lib/systemd/user/moonshine.service"
 }
