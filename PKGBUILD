@@ -4,13 +4,13 @@
 
 pkgname=trojita
 pkgver=0.7
-pkgrel=10
+pkgrel=11
 pkgdesc='A Qt IMAP email client'
 arch=(x86_64)
 url='https://trojita.flaska.net'
 license=(GPL)
 makedepends=(cmake qt5-tools pinentry)
-depends=(hicolor-icon-theme qt5-webkit qtkeychain-qt5 qt5-svg qgpgme mimetic)
+depends=(hicolor-icon-theme qt5-webkit qtkeychain-qt5 qt5-svg qgpgme-qt5 mimetic)
 source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.xz{,.asc}
         trojita-fix-crash.patch::"https://invent.kde.org/pim/trojita/-/commit/cf2364b8.patch"
         trojita-qt5.15.patch::"https://invent.kde.org/pim/trojita/-/commit/2869c385.patch"

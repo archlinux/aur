@@ -1,7 +1,7 @@
 pkgbase = trojita
 	pkgdesc = A Qt IMAP email client
 	pkgver = 0.7
-	pkgrel = 10
+	pkgrel = 11
 	url = https://trojita.flaska.net
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = trojita
 	depends = qt5-webkit
 	depends = qtkeychain-qt5
 	depends = qt5-svg
-	depends = qgpgme
+	depends = qgpgme-qt5
 	depends = mimetic
 	options = debug
 	source = https://downloads.sourceforge.net/trojita/trojita-0.7.tar.xz
