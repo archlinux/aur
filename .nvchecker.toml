@@ -1,4 +1,5 @@
 [comrak]
 source = "github"
 github = "kivikakk/comrak"
+prefix = "v"
 use_max_tag = true
