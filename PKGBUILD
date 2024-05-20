@@ -1,7 +1,7 @@
 # Maintainer: Amurru Zerouk <ammarzerouk[at]gmail[dot]com>
 pkgname=ballerina-bin
 _pkgname=ballerina
-pkgver=2201.8.6
+pkgver=2201.9.0
 pkgrel=1
 pkgdesc="Ballerina, an open-source programming language for the cloud"
 arch=("any")
@@ -15,19 +15,19 @@ options=()
 changelog=
 source=(
 ${_pkgname}-bin.sh
-https://github.com/ballerina-platform/ballerina-distribution/releases/download/v2201.8.6/ballerina-2201.8.6-swan-lake.zip
+https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${pkgver}/ballerina-${pkgver}-swan-lake.zip
 )
 sha256sums=(
-'7a65e1705dd8868524452b07a32d8eee2f8a94534ac263947b9e2cfd0edfdcb2'
-'b72b523130286aa8a438f49c84c15893688daaee867ad000d66c0ba940eda255'
+'7089633fd3b49a6d3e5ea2c793e213907ca7fc4bd670a422f911a74bbf470c95'
+'e89d6b2102b9c16b898f9652bc917f32bbb6e5ddd40d554fe3f732bb292c07e7'
 )
 
 prepare() {
-	unzip -o ballerina-2201.8.6-swan-lake.zip
+	unzip -o ballerina-${pkgver}-swan-lake.zip
 }
 
 package() {
-	_pkg=ballerina-2201.8.6-swan-lake
+	_pkg=ballerina-${pkgver}-swan-lake
 	install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
 	install -d "${pkgdir}/opt/${_pkgname}"
 	install -d "${pkgdir}/usr/bin"
