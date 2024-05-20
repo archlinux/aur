@@ -1,5 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=jamesdsp-headless-git
+pkgname=jamesdsp-headless
 _app_id=me.timschneeberger.jdsp4linux
 pkgver=2.7.0.r16.g6b35b75
 pkgrel=1
