@@ -2,7 +2,7 @@
 pkgname=jamesdsp-pulse
 _app_id=me.timschneeberger.jdsp4linux.pulse
 pkgver=2.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -13,22 +13,18 @@ makedepends=('git')
 provides=('jamesdsp')
 conflicts=('jamesdsp' 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 options=('!strip')
-_commit=30a30aa5ce90f97ea2c93bc372c0a67c8e3c54c8  # tags/2.7.0^0
-source=("git+https://github.com/Audio4Linux/JDSP4Linux.git#commit=$_commit"
+source=("git+https://github.com/Audio4Linux/JDSP4Linux.git#tag=$pkgver"
         'git+https://github.com/ThePBone/GraphicEQWidget.git'
         'git+https://github.com/ThePBone/FlatTabWidget.git'
         'git+https://github.com/ThePBone/LiquidEqualizerWidget.git'
-        'git+https://github.com/ThePBone/LiveprogIDE.git')
-sha256sums=('SKIP'
+        'git+https://github.com/ThePBone/LiveprogIDE.git'
+        'gcc14.patch')
+sha256sums=('5ec9e4a5206d164804848982b0948ba5d7bb1c742feb5c669869847c2cb5575e'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
-
-pkgver() {
-  cd JDSP4Linux
-  git describe --tags | sed 's/-/+/g'
-}
+            'SKIP'
+            'cd327a8356072202368e0965c1e5aa6a57abddd13c5d6483af03d0f4deff7143')
 
 prepare() {
   cd JDSP4Linux
@@ -39,6 +35,9 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   mkdir -p build
+
+  # https://github.com/Audio4Linux/JDSP4Linux/pull/191 (merged)
+  patch -Np1 -i ../gcc14.patch
 }
 
 build() {

@@ -1,0 +1,311 @@
+From 5f47c16b465eda09b670913d7a151273de619128 Mon Sep 17 00:00:00 2001
+From: Andrew Robbins <andrew@robbinsa.me>
+Date: Mon, 22 Apr 2024 11:48:06 -0400
+Subject: [PATCH 1/3] define struct dspsys before usage
+
+---
+ .../subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/jdsp_header.h    | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/jdsp_header.h b/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/jdsp_header.h
+index 901c4d0a..ec3e10be 100644
+--- a/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/jdsp_header.h
++++ b/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/jdsp_header.h
+@@ -440,6 +440,7 @@ int BS2BCalculateflevel(unsigned int fcut, unsigned int gain);
+ void BS2BInit(t_bs2bdp *bs2bdp, unsigned int samplerate, int flevel);
+ /* sample poits to double floats native endians */
+ void BS2BProcess(t_bs2bdp *bs2bdp, double *sampleL, double *sampleR);
++typedef struct dspsys dspsys;
+ typedef struct
+ {
+ 	int mode; // 0: BS2B Lv 1, 1: BS2B Lv 2, 2: HRTF crossfeed, 2: HRTF surround 1, 2: HRTF surround 2, 2: HRTF surround 3
+@@ -449,7 +450,6 @@ typedef struct
+ 	FFTConvolver2x4x2 *convLong_S_S;
+ 	void(*process)(struct dspsys *, size_t);
+ } Crossfeed;
+-typedef struct dspsys dspsys;
+ typedef struct
+ {
+ 	FFTConvolver2x2 *conv1d2x2_S_S;
+
+From e8a8b3cefd3d1a343592b2cedb22404c1a49d257 Mon Sep 17 00:00:00 2001
+From: Andrew Robbins <andrew@robbinsa.me>
+Date: Tue, 23 Apr 2024 00:27:09 -0400
+Subject: [PATCH 2/3] cleaned a ton of bitrot
+
+---
+ libjamesdsp/JdspImpResToolbox.c               | 23 ++++++++--
+ libjamesdsp/JdspImpResToolbox.h               |  1 -
+ libjamesdsp/PrintfStdOutExtension.c           |  4 +-
+ libjamesdsp/PrintfStdOutExtension.h           |  5 +++
+ .../jdsp/Effects/eel2/nseel-compiler.c        | 44 +++++++++----------
+ .../jamesdsp/jdsp/Effects/liveprogWrapper.c   |  1 +
+ .../jni/jamesdsp/jdsp/jdspController.c        |  5 ++-
+ 7 files changed, 55 insertions(+), 28 deletions(-)
+
+diff --git a/libjamesdsp/JdspImpResToolbox.c b/libjamesdsp/JdspImpResToolbox.c
+index 0c6b70fc..b317ef22 100755
+--- a/libjamesdsp/JdspImpResToolbox.c
++++ b/libjamesdsp/JdspImpResToolbox.c
+@@ -252,10 +252,26 @@ static void decompressResamplerMQ(const double y[701], float *yi)
+         yi[k] = xloc * (xloc * (xloc * coefs[low_i] + coefs[low_i + 700]) + coefs[low_i + 1400]) + coefs[low_i + 2100];
+     }
+ }
+-
++void jds_reverse(float *arr, int32_t start, int32_t end)                                                                    {
++        while (start < end)
++        {
++                float tmp = arr[start];
++                arr[start] = arr[end];
++                arr[end] = tmp;
++                start++;
++                end--;
++        }
++}
++void jds_shift(float *arr, int32_t k, int32_t n)
++{
++        k = k % n;
++        jds_reverse(arr, 0, n - 1);
++        jds_reverse(arr, 0, n - k - 1);
++        jds_reverse(arr, n - k, n - 1);
++}
+ void circshift(float *x, int n, int k)
+ {
+-    k < 0 ? shift(x, -k, n) : shift(x, n - k, n);
++    k < 0 ? jds_shift(x, -k, n) : jds_shift(x, n - k, n);
+ }
+ #define NUMPTS 15
+ #define NUMPTS_DRS (7)
+@@ -303,10 +319,11 @@ float* loadAudioFile(const char *filename, double targetFs, unsigned int *channe
+     unsigned int fs = 1;
+     const char *ext = get_filename_ext(filename);
+     float *pSampleData = 0;
++    drflac_uintptr *totalPCMFrameFlac = (drflac_uintptr *) totalPCMFrameCount;
+     if (!strncmp(ext, "wav", 5) || !strncmp(ext, "irs", 5))
+         pSampleData = drwav_open_file_and_read_pcm_frames_f32(filename, channels, &fs, totalPCMFrameCount, 0);
+     if (!strncmp(ext, "flac", 5))
+-        pSampleData = drflac_open_file_and_read_pcm_frames_f32(filename, channels, &fs, totalPCMFrameCount, 0);
++        pSampleData = drflac_open_file_and_read_pcm_frames_f32(filename, channels, &fs, totalPCMFrameFlac, 0);
+     /*if (!strncmp(ext, "mp3", 5))
+     {
+         drmp3_config mp3Conf;
+diff --git a/libjamesdsp/JdspImpResToolbox.h b/libjamesdsp/JdspImpResToolbox.h
+index 02f6275d..8396588b 100644
+--- a/libjamesdsp/JdspImpResToolbox.h
++++ b/libjamesdsp/JdspImpResToolbox.h
+@@ -1,6 +1,5 @@
+ #ifndef JDSPIMPRESTOOLBOX_H
+ #define JDSPIMPRESTOOLBOX_H
+-
+ extern float* ReadImpulseResponseToFloat(const char* mIRFileName, int targetSampleRate, int* jImpInfo, int convMode, int* javaAdvSetPtr);
+ extern int ComputeEqResponse(const double* jfreq, double* jgain, int interpolationMode, int queryPts, double* dispFreq, float* response);
+ extern int ComputeCompResponse(int n, const double* jfreq, const double* jgain, int queryPts, const double* dispFreq, float* response);
+diff --git a/libjamesdsp/PrintfStdOutExtension.c b/libjamesdsp/PrintfStdOutExtension.c
+index bcced004..63961f17 100644
+--- a/libjamesdsp/PrintfStdOutExtension.c
++++ b/libjamesdsp/PrintfStdOutExtension.c
+@@ -1,5 +1,7 @@
+ #include "PrintfStdOutExtension.h"
+ #include <stdarg.h>
++#include <stdio.h>
++#include <stdlib.h>
+ 
+ static stdOutHandler _printfStdOutHandlerPtr = 0;
+ static void* _printfStdOutHandlerUserPtr = 0;
+@@ -23,7 +25,7 @@ int redirected_printf(const char * format, ...) {
+     return result;
+ }
+ 
+-void __android_log_print(int severity, const char* tag, const char* msg) {
++void __android_log_print(int severity, const char* tag, const char* msg, ...) {
+     char *s;
+     if (asprintf(&s, "%s: %s", tag, msg) > 0 && s != 0)
+     {
+diff --git a/libjamesdsp/PrintfStdOutExtension.h b/libjamesdsp/PrintfStdOutExtension.h
+index 8e52d7f0..012b4b48 100644
+--- a/libjamesdsp/PrintfStdOutExtension.h
++++ b/libjamesdsp/PrintfStdOutExtension.h
+@@ -6,5 +6,10 @@ typedef void (*stdOutHandler)(const char*, void*);
+ 
+ extern void setPrintfStdOutHandler(stdOutHandler funcPtr, void* userData);
+ extern int isPrintfStdOutHandlerSet();
++extern void __android_log_print(int severity, const char* tag, const char* msg, ...)
++#if defined(__GNUC__)
++    __attribute__ ((format(printf, 3, 4)))
++#endif
++    ;
+ 
+ #endif // EELSTDOUTEXTENSION_H
+diff --git a/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/Effects/eel2/nseel-compiler.c b/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/Effects/eel2/nseel-compiler.c
+index 33b8f422..3cb309b2 100644
+--- a/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/Effects/eel2/nseel-compiler.c
++++ b/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/Effects/eel2/nseel-compiler.c
+@@ -1366,6 +1366,24 @@ static float NSEEL_CGEN_CALL arburgPredictBackward(float *blocks, float *start)
+ 	double output = predictArburg(backwardState, predictionCoefficients, *flag);
+ 	return (float)output;
+ }
++void reverse(float *arr, int32_t start, int32_t end)
++{
++        while (start < end)
++        {
++                float tmp = arr[start];
++                arr[start] = arr[end];
++                arr[end] = tmp;
++                start++;
++                end--;
++        }
++}
++void shift(float *arr, int32_t k, int32_t n)
++{
++        k = k % n;
++        reverse(arr, 0, n - 1);
++        reverse(arr, 0, n - k - 1);
++        reverse(arr, n - k, n - 1);
++}
+ static float NSEEL_CGEN_CALL arburgPredictForward(float *blocks, float *start)
+ {
+ 	int32_t offs = (int32_t)(*start + NSEEL_CLOSEFACTOR);
+@@ -1376,24 +1394,6 @@ static float NSEEL_CGEN_CALL arburgPredictForward(float *blocks, float *start)
+ 	double output = predictArburg(forwardState, predictionCoefficients, *flag);
+ 	return (float)output;
+ }
+-void reverse(float *arr, int32_t start, int32_t end)
+-{
+-	while (start < end)
+-	{
+-		float tmp = arr[start];
+-		arr[start] = arr[end];
+-		arr[end] = tmp;
+-		start++;
+-		end--;
+-	}
+-}
+-void shift(float *arr, int32_t k, int32_t n)
+-{
+-	k = k % n;
+-	reverse(arr, 0, n - 1);
+-	reverse(arr, 0, n - k - 1);
+-	reverse(arr, n - k, n - 1);
+-}
+ float * NSEEL_CGEN_CALL __NSEEL_circshift(float *blocks, float *offptr, float *shiftptr, float *lenptr)
+ {
+ 	uint32_t offs = (uint32_t)(*offptr + NSEEL_CLOSEFACTOR);
+@@ -1646,7 +1646,7 @@ static float NSEEL_CGEN_CALL  eel_mean(float *blocks, float *start, float *lengt
+  ---------------------------------------------------------------------------*/
+ float kth_smallest(float a[], int n, int k)
+ {
+-	register i, j, l, m;
++	register int i, j, l, m;
+ 	register float x;
+ 
+ 	l = 0; m = n - 1;
+@@ -3855,7 +3855,7 @@ static float NSEEL_CGEN_CALL _eel_flacDecodeFile(void *opaque, INT_PTR num_param
+ 	float *blocks = c->ram_state;
+ 	const char *filename = (const char*)GetStringForIndex(c->region_context, *parms[0], 0);
+ 	uint32_t channels, fs;
+-	uint64_t frameCount;
++	drflac_uintptr frameCount;
+ 	float *signal = drflac_open_file_and_read_pcm_frames_f32(filename, &channels, &fs, &frameCount, 0);
+ 	float targetFs = *parms[2];
+ 	if (targetFs > FLT_EPSILON)
+@@ -3917,7 +3917,7 @@ static float NSEEL_CGEN_CALL _eel_flacDecodeMemory(void *opaque, INT_PTR num_par
+ 	size_t actualSize;
+ 	unsigned char *memoryBlk = base64_decode((const unsigned char*)base64String, strlen(base64String), &actualSize);
+ 	uint32_t channels, fs;
+-	uint64_t frameCount;
++	drflac_uintptr frameCount;
+ 	float *signal = drflac_open_memory_and_read_pcm_frames_f32(memoryBlk, actualSize, &channels, &fs, &frameCount, 0);
+ 	float targetFs = *parms[2];
+ 	if (targetFs > FLT_EPSILON)
+@@ -8185,4 +8185,4 @@ opcodeRec *nseel_translate(compileContext *ctx, const char *tmp, size_t tmplen)
+ 		return nseel_createCompiledValue(ctx, (float)rv);
+ 	}
+ 	return nseel_createCompiledValue(ctx, (float)atof(tmp));
+-}
+\ No newline at end of file
++}
+diff --git a/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/Effects/liveprogWrapper.c b/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/Effects/liveprogWrapper.c
+index a837db5e..77c93015 100644
+--- a/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/Effects/liveprogWrapper.c
++++ b/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/Effects/liveprogWrapper.c
+@@ -1,5 +1,6 @@
+ void NSEEL_HOSTSTUB_EnterMutex() { }
+ void NSEEL_HOSTSTUB_LeaveMutex() { }
++#include <math.h>
+ #include "../jdsp_header.h"
+ void LiveProgConstructor(JamesDSPLib *jdsp)
+ {
+diff --git a/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/jdspController.c b/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/jdspController.c
+index b8402403..990ffda7 100644
+--- a/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/jdspController.c
++++ b/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/jdspController.c
+@@ -3,11 +3,14 @@
+ #include <string.h>
+ #include <math.h>
+ #include <time.h>
++#include <sys/time.h>
+ #include <float.h>
++#include <unistd.h>
+ #include "Effects/eel2/dr_flac.h"
+ #include "Effects/eel2/ns-eel.h"
+ #include "jdsp_header.h"
+ #define TAG "EffectDSPMain"
++#include "PrintfStdOutExtension.h"
+ 
+ #ifdef __ANDROID_API__
+ #if __ANDROID_API__ < __ANDROID_API_J_MR2__
+@@ -1259,4 +1262,4 @@ void JamesDSPFree(JamesDSPLib *jdsp)
+ 		FreeIntegerASRCHandler(&jdsp->asrc[1]);
+ 	}
+ 	jdsp_unlock(jdsp);
+-}
+\ No newline at end of file
++}
+
+From 4a53af2e84dfec94132e72a695db385ed3e39600 Mon Sep 17 00:00:00 2001
+From: Andrew Robbins <andrew@robbinsa.me>
+Date: Tue, 23 Apr 2024 00:35:30 -0400
+Subject: [PATCH 3/3] restored unnecessary shift of functions
+
+---
+ .../jdsp/Effects/eel2/nseel-compiler.c        | 20 +++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/Effects/eel2/nseel-compiler.c b/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/Effects/eel2/nseel-compiler.c
+index 3cb309b2..98e4ed67 100644
+--- a/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/Effects/eel2/nseel-compiler.c
++++ b/libjamesdsp/subtree/Main/libjamesdsp/jni/jamesdsp/jdsp/Effects/eel2/nseel-compiler.c
+@@ -1366,6 +1366,16 @@ static float NSEEL_CGEN_CALL arburgPredictBackward(float *blocks, float *start)
+ 	double output = predictArburg(backwardState, predictionCoefficients, *flag);
+ 	return (float)output;
+ }
++static float NSEEL_CGEN_CALL arburgPredictForward(float *blocks, float *start)
++{
++	int32_t offs = (int32_t)(*start + NSEEL_CLOSEFACTOR);
++	char *burg = (char*)__NSEEL_RAMAlloc(blocks, (uint64_t)offs);
++	unsigned int *flag = (unsigned int*)(burg + 1);
++	double *predictionCoefficients = (double*)(flag + 1);
++	double *forwardState = ((double*)(flag + 1)) + (*flag + 1) * 5 + (*flag + 2) * 2;
++	double output = predictArburg(forwardState, predictionCoefficients, *flag);
++	return (float)output;
++}
+ void reverse(float *arr, int32_t start, int32_t end)
+ {
+         while (start < end)
+@@ -1384,16 +1394,6 @@ void shift(float *arr, int32_t k, int32_t n)
+         reverse(arr, 0, n - k - 1);
+         reverse(arr, n - k, n - 1);
+ }
+-static float NSEEL_CGEN_CALL arburgPredictForward(float *blocks, float *start)
+-{
+-	int32_t offs = (int32_t)(*start + NSEEL_CLOSEFACTOR);
+-	char *burg = (char*)__NSEEL_RAMAlloc(blocks, (uint64_t)offs);
+-	unsigned int *flag = (unsigned int*)(burg + 1);
+-	double *predictionCoefficients = (double*)(flag + 1);
+-	double *forwardState = ((double*)(flag + 1)) + (*flag + 1) * 5 + (*flag + 2) * 2;
+-	double output = predictArburg(forwardState, predictionCoefficients, *flag);
+-	return (float)output;
+-}
+ float * NSEEL_CGEN_CALL __NSEEL_circshift(float *blocks, float *offptr, float *shiftptr, float *lenptr)
+ {
+ 	uint32_t offs = (uint32_t)(*offptr + NSEEL_CLOSEFACTOR);
