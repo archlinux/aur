@@ -2,8 +2,9 @@
 # The pkgbuild is based on the original pkgbuild for citra.
 
 pkgname=lime3ds
+_pkgname=unified-source-20240517-ceb97be
 pkgver=2113
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
@@ -12,7 +13,7 @@ depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'lib
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'libc++' 'ninja')
 conflicts=('lime3ds-appimage' 'lime3ds-git')
 options=('lto' '!buildflags')
-source=("Lime3DS-$pkgver::git+https://github.com/Lime3DS/Lime3DS#tag=$pkgver"
+source=("lime3ds::https://github.com/Lime3DS/Lime3DS/releases/download/2113/lime3ds-$_pkgname.tar.xz"
         "boost::git+https://github.com/blitzingeagle/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
         "catch2::git+https://github.com/catchorg/Catch2.git"
@@ -53,7 +54,7 @@ source=("Lime3DS-$pkgver::git+https://github.com/Lime3DS/Lime3DS#tag=$pkgver"
         "git+https://github.com/bylaws/liblinkernsbypass.git"
         "git+https://github.com/Lime3DS/compatibility-list"
         )
-md5sums=('SKIP'
+md5sums=('4fe007c27741f393a7d97ceed4b96a4b'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -91,41 +92,12 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP')
 
-prepare() {
-    cd "$srcdir/Lime3DS-$pkgver"
-    git init
-    git submodule init
-    for submodule in {boost,nihstro,catch2,soundtouch,dynarmic,xbyak,enet,inih,libressl,libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng,zstd,libyuv,cryptopp-cmake,cryptopp,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut,dds-ktx,fmt,sdl2,compatibility-list};
-    do
-    git config --file=.gitmodules  submodule.${submodule}.url "$srcdir/${submodule}"
-    done
-    git -c protocol.file.allow=always submodule update
-
-    cd "$srcdir/Lime3DS-$pkgver/externals/cubeb"
-    git submodule init
-    git config submodule.googletest.url "$srcdir/googletest"
-    git config submodule."cmake/sanitizers-cmake".url "$srcdir/sanitizers-cmake"
-    git -c protocol.file.allow=always submodule update
-
-    cd "$srcdir/Lime3DS-$pkgver/externals/sirit/"
-    git submodule init
-    git config submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
-    git -c protocol.file.allow=always submodule update
-
-    cd "$srcdir/Lime3DS-$pkgver/externals/libadrenotools/"
-    git submodule init
-    git config submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
-    git -c protocol.file.allow=always submodule update 
-    
-    cd "$srcdir/Lime3DS-$pkgver"
-    # mkdir build
-}
 
 build() {
     # Fix to help cmake find libusb
     CXXFLAGS+=" -I/usr/lib/libusb-1.0"
     
-    cmake -B build -S "Lime3DS-$pkgver" -G Ninja \
+    cmake -B build -S "$pkgname-$_pkgname" -G Ninja \
 	-DCMAKE_BUILD_TYPE=Release \
     	-DCMAKE_CXX_COMPILER=clang++ \
     	-DCMAKE_C_COMPILER=clang \
