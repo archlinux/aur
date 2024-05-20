@@ -1,4 +1,4 @@
-pkgbase = autolinux
+pkgbase = autolinux-git
 	pkgdesc = A riced spin on Suckless DWM
 	pkgver = 6.2.5
 	pkgrel = 1

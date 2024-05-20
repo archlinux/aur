@@ -3,6 +3,7 @@
 pkgrel=1
 pkgver=6.2.5
 _pkgname=AutoLinux
+pkgbase=autolinux-git
 pkgname=autolinux
 pkgdesc="A riced spin on Suckless DWM"
 arch=('x86_64')
