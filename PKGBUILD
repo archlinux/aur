@@ -1,45 +1,59 @@
-# Maintainer: easymodo <easymodofrf@gmail.com>
-pkgname=qimgv-git
+# Maintainer:
+# Contributor: easymodo <easymodofrf@gmail.com>
+
 _pkgname=qimgv
-pkgver=v1.0.3.alpha.r21.g825d9a1
-pkgrel=2
-pkgdesc="Qt image viewer. Fast, configurable, easy to use. Supports video playback."
-arch=('i686' 'x86_64')
+pkgname="$_pkgname-git"
+pkgver=1.0.2.r135.gb515dcd
+pkgrel=1
+pkgdesc="Qt image viewer with video playback"
 url="https://github.com/easymodo/qimgv"
-license=('GPL3')
-depends=('qt5-base' 'qt5-imageformats' 'qt5-svg' 'mpv' 'exiv2' 'opencv')
-makedepends=('git' 'cmake' 'pkgconf' 'qt5-tools' 'mpv' 'exiv2' 'opencv')
-#checkdepends=()
-optdepends=('kimageformats: support for more image formats'
-            'qt5-apng-plugin: apng support'
-            'qtraw-git: RAW support'
-            'qt5-jpegxl-image-plugin: JPEG-XL support'
-            'qt-avif-image-plugin-git: AVIF support')
+license=('GPL-3.0-or-later')
+arch=('i686' 'x86_64')
+
+depends=(
+  'exiv2'
+  'mpv'
+  'opencv'
+  'qt6-base'
+  'qt6-svg'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+  'qt6-tools'
+)
+optdepends=(
+  'kimageformats: support for more image formats'
+)
+
 provides=("qimgv")
 conflicts=("qimgv")
-source=('git+https://github.com/easymodo/qimgv.git')
-md5sums=('SKIP')
+
+_pkgsrc="$_pkgname"
+source=("$_pkgname"::"git+https://github.com/easymodo/qimgv.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd ${_pkgname}
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-    install -d build
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}/build"
-    cmake .. \
-        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_BUILD_TYPE=Release
-    make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}/build"
-	make DESTDIR=${pkgdir} install
+  DESTDIR="$pkgdir" cmake --install build
 }
