@@ -7,7 +7,7 @@
 
 pkgname=python-stdnum
 pkgver=1.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Handle, parse and validate standard numbers, e.g. IBAN, EAN, ISBN"
 arch=('any')
 url="http://arthurdejong.org/python-stdnum"
