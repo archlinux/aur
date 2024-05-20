@@ -21,7 +21,7 @@ sha512sums=('cbdc1a26b72c4b78d60e1566d687a17acbf64127c69e5b4e168593fee67d8715e2a
             'fd306d395b9c5f5c7e0a4e17015235ef674e24fcd7022538872f8661e1964e23b12ed4b27335755b666a3e5fd9aef3e47e94436f1068e6f5908a27507cf7ffcb'
             'bfb718592f7ca86049f81f1b8b9efae4bbcf600846d0c3d14d965a8062c9a571d0243768fd753052d62fe4c690c76c5f28171c9a7a50ff4219149f49a489f128'
             '3fceac6686975feed7162f06f5a87eefd7fcee5caa0c68ba12cbda3fe0ad531e575d2ef1feccbf0b0445379ea5fae00ccc0a09497ba6116d6cd926865c041c69'
-            '6321ecf0d88206a962078c264b166ce10f8089bc252d4ca4d78810100fefd5d3e675b3d4fcc4f09d3ca929f8937966699be9447872131b82fe3acade0262ff5b')
+            '786cafcbd1540b9a9a80dcea651b88e0e3dd317101e591ebd2e4453c4dcda96291903e63109dc0b0f6933c8b13be036942becdfb49fc0a3f5dcc66d864b30346')
 backup=('etc/teslamate.conf')
 install=teslamate.install
 
@@ -42,6 +42,7 @@ package() {
   depends+=("grafana" "postgresql")
   cd "$pkgname-$pkgver"
   HEX_HOME=${srcdir}/.hex MIX_HOME=${srcdir}/.mix MIX_ENV=prod mix do phx.digest, release --overwrite --path=${pkgdir}/usr/share/webapps/${pkgname}
+  install -Dm 644 "${srcdir}/teslamate.conf" "${pkgdir}/etc/teslamate.conf"
   install -Dm 644 "${srcdir}/teslamate.service" "${pkgdir}/usr/lib/systemd/system/teslamate.service"
   install -Dm 644 "${srcdir}/teslamate.sysusers" "${pkgdir}/usr/lib/sysusers.d/teslamate.conf"
   install -Dm 644 "${srcdir}/teslamate.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/teslamate.conf"
