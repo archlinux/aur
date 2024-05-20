@@ -1,14 +1,17 @@
 pkgbase = dotlink
 	pkgdesc = Automated deployment of dotfiles to local or remote locations
-	pkgver = 0.6.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/jreese/dotlink
 	arch = any
 	license = MIT
-	makedepends = git
-	depends = python-setuptools
-	source = https://pypi.python.org/packages/source/D/Dotlink/Dotlink-0.6.0.tar.gz
-	md5sums = f3034e0113089178352511b2f3590ff0
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-installer
+	depends = python-click
+	depends = python-platformdirs
+	depends = python-typing_extensions
+	source = https://pypi.python.org/packages/source/D/Dotlink/dotlink-2.1.tar.gz
+	md5sums = 32d0636b460fc43dd73e2653822f34d4
 
 pkgname = dotlink
-
