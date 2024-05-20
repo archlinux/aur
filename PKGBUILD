@@ -3,7 +3,7 @@
 author=s-n-alexeyev
 pkgname=torctl-gui
 _gitname=torctl-gui
-pkgver=v1.1.0.r0.ga2b44e5
+pkgver=v1.1.0.r1.g0aebddc
 pkgrel=1
 pkgdesc='The script serves as a graphical interface for torctl/tor'
 arch=('any')
