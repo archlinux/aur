@@ -1,8 +1,8 @@
 pkgbase = libastal-git
 	pkgdesc = Building blocks for building desktop shells.
 	pkgver = r4.913738c
-	pkgrel = 1
-	url = file:///home/kotontrion/Projects/github/libastal
+	pkgrel = 2
+	url = https://github.com/astal-sh/libastal
 	arch = x86_64
 	license = GPL-3
 	makedepends = git
@@ -20,7 +20,7 @@ pkgbase = libastal-git
 	depends = glibc
 	depends = gtk3
 	depends = gtk-layer-shell
-	source = git+file:///home/kotontrion/Projects/github/libastal
+	source = git+https://github.com/astal-sh/libastal
 	sha256sums = SKIP
 
 pkgname = libastal-git
