@@ -1,11 +1,10 @@
 pkgbase = python-chai
 	pkgdesc = Easy to use mocking, stubbing and spying framework.
 	pkgver = 1.1.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/agoragames/chai
 	arch = any
 	license = BSD
-	checkdepends = python-nose
 	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/c/chai/chai-1.1.2.tar.gz

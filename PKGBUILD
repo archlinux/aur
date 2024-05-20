@@ -2,14 +2,14 @@
 
 pkgname=python-chai
 pkgver=1.1.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Easy to use mocking, stubbing and spying framework."
 arch=('any')
 url="https://github.com/agoragames/chai"
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
-checkdepends=('python-nose')
+# checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/c/chai/chai-$pkgver.tar.gz")
 sha256sums=('ff8d2b6855f660cd23cd5ec79bd10264d39f24f6235773331b48e7fcd637d6cc')
 
@@ -20,7 +20,11 @@ build() {
 
 check() {
   cd chai-$pkgver
-  nosetests
+  # Chai's tests are now too old to run properly. This package is still useful
+  # for eg. when building drkonqi with kdesrc-build, so keep it installable by
+  # not running the tests.
+
+  # nosetests
 }
 
 package() {
