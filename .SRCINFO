@@ -1,6 +1,6 @@
 pkgbase = whatsdesk-git
 	pkgdesc = unofficial client of whatsapp
-	pkgver = 0.3.9
+	pkgver = 0.3.9.r31.366e49c
 	pkgrel = 1
 	url = https://zerkc.gitlab.io/whatsdesk
 	arch = x86_64

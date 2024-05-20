@@ -1,8 +1,9 @@
 # Maintainer: Tricia, `creyon` <gtcreyon@gmail.com>
 # Contributor: Giancarlo Grasso <gianniesoft at gmail dot com>
 
+_pkgname=whatsdesk
 pkgname=whatsdesk-git
-pkgver=0.3.9
+pkgver=0.3.9.r31.366e49c
 pkgrel=1
 pkgdesc="unofficial client of whatsapp"
 arch=('x86_64')
@@ -24,8 +25,14 @@ source=('git+https://gitlab.com/zerkc/whatsdesk.git'
 sha256sums=('SKIP'
             'SKIP')
 
+pkgver() {
+    cd $_pkgname
+    # Get the version from `package.json` because the repo doesn't have tags.
+    printf "%s.r%s.%s" "$(cat package.json | jq -r '.version')" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
 prepare() {
-    cd whatsdesk
+    cd $_pkgname
 
     # Don't build the Gitlab Pages page, because we don't need it.
     patch -p1 -d . < ../no-page.patch
@@ -35,7 +42,7 @@ prepare() {
 }
 
 build() {
-    cd whatsdesk
+    cd $_pkgname
     npm install
 
     # Had to remove these because they were causing build to fail.
@@ -47,7 +54,7 @@ build() {
 }
 
 package() {
-    cd whatsdesk
+    cd $_pkgname
     install -d "$pkgdir/opt/whatsdesk"
     install -d "$pkgdir/usr/bin"
     cp -r "dist/linux-unpacked/." "$pkgdir/opt/whatsdesk/"
