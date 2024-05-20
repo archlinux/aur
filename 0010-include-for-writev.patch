@@ -1,0 +1,24 @@
+From: "Barak A. Pearlmutter" <barak+git@pearlmutter.net>
+Date: Tue, 19 Feb 2019 12:02:21 +0000
+Subject: include for writev
+
+nat64.c:119:6: warning: implicit declaration of function `writev'; did you mean `write'? [-Wimplicit-function-declaration]
+  if (writev(gcfg->tun_fd, iov, data_len ? 2 : 1) < 0)
+      ^~~~~~
+      write
+---
+ tayga.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tayga.h b/tayga.h
+index 2284d2a..c8aadb8 100644
+--- a/tayga.h
++++ b/tayga.h
+@@ -20,6 +20,7 @@
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ #include <sys/socket.h>
++#include <sys/uio.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ #include <unistd.h>

@@ -1,0 +1,33 @@
+From: "Barak A. Pearlmutter" <barak+git@cs.nuim.ie>
+Date: Wed, 18 Apr 2012 11:47:19 +0100
+Subject: guard write
+
+Guard write call, avoid ignored-return-value warning.
+
+(This is not a false positive: a very subtle attack would consist of
+filling up the filesystem so much that only a partial PID is written,
+causing the wrong PID to be signaled later.)
+
+(Note that, technically speaking, if only some of the buffer is
+written we should retry the rest in a loop.  But in this case, that
+seems exceedingly unlikely.)
+---
+ tayga.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/tayga.c b/tayga.c
+index 3886831..5027d0a 100644
+--- a/tayga.c
++++ b/tayga.c
+@@ -439,7 +439,10 @@ int main(int argc, char **argv)
+ 
+ 	if (pidfile) {
+ 		snprintf(addrbuf, sizeof(addrbuf), "%ld\n", (long)getpid());
+-		write(pidfd, addrbuf, strlen(addrbuf));
++		if (write(pidfd, addrbuf, strlen(addrbuf)) != strlen(addrbuf)) {
++			slog(LOG_CRIT, "Error, unable to write PID file.\n");
++			exit(1);
++		}
+ 		close(pidfd);
+ 	}
+ 

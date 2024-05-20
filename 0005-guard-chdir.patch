@@ -1,0 +1,39 @@
+From: "Barak A. Pearlmutter" <barak+git@cs.nuim.ie>
+Date: Wed, 18 Apr 2012 11:37:58 +0100
+Subject: guard chdir
+
+Guard chdir calls to avoid ignored-return-value warnings.
+---
+ tayga.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/tayga.c b/tayga.c
+index fbd2e64..3886831 100644
+--- a/tayga.c
++++ b/tayga.c
+@@ -388,7 +388,11 @@ int main(int argc, char **argv)
+ 					"is specified in %s\n", conffile);
+ 			exit(1);
+ 		}
+-		chdir("/");
++		if (chdir("/")) {
++			slog(LOG_CRIT, "Error: unable to chdir to /, aborting: %s\n",
++					strerror(errno));
++			exit(1);
++		}
+ 	} else if (chdir(gcfg->data_dir) < 0) {
+ 		if (user || errno != ENOENT) {
+ 			slog(LOG_CRIT, "Error: unable to chdir to %s, "
+@@ -460,7 +464,11 @@ int main(int argc, char **argv)
+ 					gcfg->data_dir, strerror(errno));
+ 			exit(1);
+ 		}
+-		chdir("/");
++		if (chdir("/")) {
++			slog(LOG_CRIT, "Error: unable to chdir to /, aborting: %s\n",
++					strerror(errno));
++			exit(1);
++		}
+ 	}
+ 
+ 	if (gr) {
