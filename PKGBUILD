@@ -2,7 +2,7 @@
 
 _basename=freeciv
 pkgname=freeciv-git
-pkgver=r30730.832f32b001
+pkgver=r30957.e43360ff51
 pkgrel=1
 pkgdesc="A multiuser clone of the famous Microprose game of Civilization"
 arch=('x86_64')
@@ -28,8 +28,7 @@ build() {
         -Dclients=gtk4,qt,sdl2 \
         -Dfcmp=cli,gtk4,qt \
         -Dqtver=qt6 \
-        -Dsyslua=true \
-        -Dgitrev=true
+        -Dsyslua=true
 
     meson compile -C build
 }
