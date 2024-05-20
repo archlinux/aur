@@ -8,6 +8,7 @@ pkgbase = salt-onedir
 	makedepends = python-pip
 	makedepends = python-virtualenv
 	makedepends = patchelf
+	makedepends = rsync
 	optdepends = dmidecode: decode SMBIOS/DMI tables
 	provides = salt
 	conflicts = salt-zmq
