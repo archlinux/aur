@@ -1,0 +1,12 @@
+/var/log/salt/master
+/var/log/salt/minion
+/var/log/salt/key
+/var/log/salt/cloud
+/var/log/salt/ssh
+ {
+  compress
+  copytruncate
+  missingok
+  notifempty
+  rotate 7
+}

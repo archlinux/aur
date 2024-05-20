@@ -1,0 +1,65 @@
+diff --git a/pkg/common/salt-api.service b/pkg/common/salt-api.service
+index d0b6d74..6c988df 100644
+--- a/pkg/common/salt-api.service
++++ b/pkg/common/salt-api.service
+@@ -7,7 +7,7 @@ After=network.target
+ Type=notify
+ NotifyAccess=all
+ LimitNOFILE=8192
+-ExecStart=/usr/bin/salt-api
++ExecStart=/opt/salt/bin/salt-api
+ TimeoutStopSec=3
+ 
+ [Install]
+diff --git a/pkg/common/salt-master.service b/pkg/common/salt-master.service
+index 377c87a..f9978bd 100644
+--- a/pkg/common/salt-master.service
++++ b/pkg/common/salt-master.service
+@@ -7,7 +7,7 @@ After=network.target
+ LimitNOFILE=100000
+ Type=notify
+ NotifyAccess=all
+-ExecStart=/usr/bin/salt-master
++ExecStart=/opt/salt/bin/salt-master
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/pkg/common/salt-minion.service b/pkg/common/salt-minion.service
+index 69aff18..047a508 100644
+--- a/pkg/common/salt-minion.service
++++ b/pkg/common/salt-minion.service
+@@ -8,7 +8,7 @@ KillMode=process
+ Type=notify
+ NotifyAccess=all
+ LimitNOFILE=8192
+-ExecStart=/usr/bin/salt-minion
++ExecStart=/opt/salt/bin/salt-minion
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/pkg/common/salt-proxy@.service b/pkg/common/salt-proxy@.service
+index 1eebc88..8a07384 100644
+--- a/pkg/common/salt-proxy@.service
++++ b/pkg/common/salt-proxy@.service
+@@ -4,7 +4,7 @@ Documentation=man:salt-proxy(1) file:///usr/share/doc/salt/html/contents.html ht
+ After=network.target
+ 
+ [Service]
+-ExecStart=/usr/bin/salt-proxy --proxyid=%i
++ExecStart=/opt/salt/bin/salt-proxy --proxyid=%i
+ Type=simple
+ Restart=on-failure
+ RestartSec=5s
+diff --git a/pkg/common/salt-syndic.service b/pkg/common/salt-syndic.service
+index ed403d5..a59d3ac 100644
+--- a/pkg/common/salt-syndic.service
++++ b/pkg/common/salt-syndic.service
+@@ -8,7 +8,7 @@ PartOf=salt-master.service
+ Type=notify
+ NotifyAccess=all
+ LimitNOFILE=8192
+-ExecStart=/usr/bin/salt-syndic
++ExecStart=/opt/salt/bin/salt-syndic
+ 
+ [Install]
+ WantedBy=multi-user.target

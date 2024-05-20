@@ -1,0 +1,264 @@
+diff --git a/bin/calc-prorate b/bin/calc-prorate
+index c82c37d..2b769d8 100755
+--- a/bin/calc-prorate
++++ b/bin/calc-prorate
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/cheroot b/bin/cheroot
+index 8ce5333..dec3dbb 100755
+--- a/bin/cheroot
++++ b/bin/cheroot
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/cherryd b/bin/cherryd
+index 93c1352..86357b8 100755
+--- a/bin/cherryd
++++ b/bin/cherryd
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/distro b/bin/distro
+index ea5c05b..43bab43 100755
+--- a/bin/distro
++++ b/bin/distro
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/normalizer b/bin/normalizer
+index 1f55101..ceef711 100755
+--- a/bin/normalizer
++++ b/bin/normalizer
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/pip3 b/bin/pip3
+index c96317a..71b8553 100755
+--- a/bin/pip3
++++ b/bin/pip3
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/pip3.10 b/bin/pip3.10
+index c96317a..71b8553 100755
+--- a/bin/pip3.10
++++ b/bin/pip3.10
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/relenv b/bin/relenv
+index ab494b4..9395cfc 100755
+--- a/bin/relenv
++++ b/bin/relenv
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt b/bin/salt
+index e725b9a..03cf954 100755
+--- a/bin/salt
++++ b/bin/salt
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt-api b/bin/salt-api
+index 03e53b6..c15b60b 100755
+--- a/bin/salt-api
++++ b/bin/salt-api
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt-call b/bin/salt-call
+index 606fedf..d5e4d61 100755
+--- a/bin/salt-call
++++ b/bin/salt-call
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt-cloud b/bin/salt-cloud
+index 589c697..5cce282 100755
+--- a/bin/salt-cloud
++++ b/bin/salt-cloud
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt-cp b/bin/salt-cp
+index 7a3127e..f4ea82a 100755
+--- a/bin/salt-cp
++++ b/bin/salt-cp
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt-key b/bin/salt-key
+index c559565..d3f579d 100755
+--- a/bin/salt-key
++++ b/bin/salt-key
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt-master b/bin/salt-master
+index 1e059b6..3294fbf 100755
+--- a/bin/salt-master
++++ b/bin/salt-master
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt-minion b/bin/salt-minion
+index b7177c6..08b4e2a 100755
+--- a/bin/salt-minion
++++ b/bin/salt-minion
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt-pip b/bin/salt-pip
+index c597969..607c2f1 100755
+--- a/bin/salt-pip
++++ b/bin/salt-pip
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt-proxy b/bin/salt-proxy
+index 9c4d3c6..94845ed 100755
+--- a/bin/salt-proxy
++++ b/bin/salt-proxy
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt-run b/bin/salt-run
+index ee6339d..6d6248b 100755
+--- a/bin/salt-run
++++ b/bin/salt-run
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt-ssh b/bin/salt-ssh
+index 7a2fa47..b2e8f4c 100755
+--- a/bin/salt-ssh
++++ b/bin/salt-ssh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/salt-syndic b/bin/salt-syndic
+index 0cf5993..e4fe117 100755
+--- a/bin/salt-syndic
++++ b/bin/salt-syndic
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/bin/spm b/bin/spm
+index e0fc918..0545aa1 100755
+--- a/bin/spm
++++ b/bin/spm
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ "true" ''''
+-"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"
++"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"
+ '''
+ # -*- coding: utf-8 -*-
+ import re
