@@ -5,8 +5,8 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.17.1.r0.ge9a92b6
-_pandoc_type=commit
+pkgver=0.3.17.1.r2.g6307fca
+_pandoc_type=stock
 _pandoc_ver=3.2
 _pandoc_commit=12de77958fc4bb97707f63cb9d9194f3b050a6f6
 pkgrel=1
@@ -56,15 +56,7 @@ _bumpGH() { _bump "$1" "$(__repo "$(__kv github "$2")" "${@:3}")"; }
 
 prepare() {
     cd "$pkgname"
-    stack config set resolver lts-22.19 # ghc-9.6.4
-    echo 'compiler: ghc-9.6.5' >> stack.yaml
-
-    _bumpVer djot 0.1.2
-    _bumpVer hslua-module-zip 1.1.3
-    _bumpVer pandoc-lua-marshal 0.2.7
-    _bumpVer skylighting 0.14.1.2
-    _bumpVer skylighting-core 0.14.1.2
-    _bumpVer texmath 0.12.8.9
+    stack config set resolver lts-22.22 # ghc-9.6.5
 
     # if pandoc updates break the golden tests, cf
     # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
