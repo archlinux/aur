@@ -1,0 +1,37 @@
+pkgbase = subtitlecomposer-qt6-git
+	pkgdesc = Video subtitle editor
+	pkgver = 0.8.0.r103.gd6e8215
+	pkgrel = 1
+	url = https://invent.kde.org/multimedia/subtitlecomposer
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = blas
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = jack
+	depends = ffmpeg
+	depends = kcodecs
+	depends = kcompletion
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kio
+	depends = ktextwidgets
+	depends = kwidgetsaddons
+	depends = kxmlgui
+	depends = libicui18n.so
+	depends = openal
+	depends = openssl
+	depends = qt6-5compat
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = sonnet
+	optdepends = ruby: scripting
+	optdepends = python: scripting
+	provides = subtitlecomposer=0.8.0
+	conflicts = subtitlecomposer
+	source = subtitlecomposer::git+https://invent.kde.org/multimedia/subtitlecomposer.git
+	sha256sums = SKIP
+
+pkgname = subtitlecomposer-qt6-git
