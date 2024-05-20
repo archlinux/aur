@@ -1,16 +1,17 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 
 pkgname=libastal-auth-git
-_pkgname=libastal-auth
-pkgver=r6.df48cbd
+_pkgname=auth
+pkgver=r9.611f7ec
 pkgrel=1
-provides=(libastal-auth libastal-auth.so=0-64)
+provides=(astal-auth libastal-auth libastal-auth.so=0-64)
 pkgdesc="Authentication library intended for use with the libastal suite."
 arch=(x86_64)
 license=(GPL-3)
-url="https://github.com/astal-sh/libastal-auth"
+url="https://github.com/astal-sh/auth"
 depends=(
   glib2
+  glibc
   pam
 )
 makedepends=(

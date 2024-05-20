@@ -1,8 +1,8 @@
 pkgbase = libastal-auth-git
 	pkgdesc = Authentication library intended for use with the libastal suite.
-	pkgver = r6.df48cbd
+	pkgver = r9.611f7ec
 	pkgrel = 1
-	url = https://github.com/astal-sh/libastal-auth
+	url = https://github.com/astal-sh/auth
 	arch = x86_64
 	license = GPL-3
 	makedepends = meson
@@ -10,10 +10,12 @@ pkgbase = libastal-auth-git
 	makedepends = gobject-introspection
 	makedepends = vala
 	depends = glib2
+	depends = glibc
 	depends = pam
+	provides = astal-auth
 	provides = libastal-auth
 	provides = libastal-auth.so=0-64
-	source = git+https://github.com/astal-sh/libastal-auth
+	source = git+https://github.com/astal-sh/auth
 	sha256sums = SKIP
 
 pkgname = libastal-auth-git
