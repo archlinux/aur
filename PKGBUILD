@@ -2,7 +2,7 @@
 
 pkgname=xcursor-pro-hyprcursor
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprcursor port of https://github.com/ful1e5/XCursor-pro"
 arch=(any)
 url="https://github.com/0xk1f0/XCursor-Pro-Hyprcursor"
@@ -19,8 +19,6 @@ sha256sums=(
 )
 
 package() {
-    cd "${srcdir}"
-    ls -la
 	install -d "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Dark"
     cp -ar --no-preserve=ownership "${srcdir}/XCursor-Pro-Hyprcursor-Dark/." "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Dark"
 	install -d "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Light" "XCursor-Pro-Hyprcursor-Light"

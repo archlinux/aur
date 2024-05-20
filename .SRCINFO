@@ -1,7 +1,7 @@
 pkgbase = xcursor-pro-hyprcursor
 	pkgdesc = Hyprcursor port of https://github.com/ful1e5/XCursor-pro
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0xk1f0/XCursor-Pro-Hyprcursor
 	arch = any
 	license = GPL-3.0-only
