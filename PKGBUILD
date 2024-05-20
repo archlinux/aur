@@ -48,7 +48,7 @@ package_webstorm-eap() {
   install -m 644 "${pkgdir}/opt/${pkgname}/bin/webstorm.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
   install -m 644 "${_pkgname}_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${_pkgname}_license.txt"
 
-  ln -s "/opt/${pkgname}/bin/webstorm.sh" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/bin/webstorm" "${pkgdir}/usr/bin/${pkgname}"
 }
 
 package_webstorm-eap-jre() {
