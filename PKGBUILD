@@ -5,7 +5,7 @@ pkgver=r2068.acf02d2d
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/ludouzi/fooyin"
-arch=('any')
+arch=('x86_64')
 license=('GPL-3.0-only')
 depends=(
     'qt6-base'
