@@ -17,7 +17,6 @@ pkgbase = gzdoom-bin
 	depends = openal
 	depends = sdl2
 	depends = zmusic
-	provides = zmusic
 	conflicts = gzdoom
 	conflicts = gzdoom-git
 	conflicts = zmusic-bin

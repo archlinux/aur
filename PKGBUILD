@@ -7,7 +7,6 @@ url="https://gitlab.com/linuxbombay/gzdoom"
 license=('BSD' 'GPL3' 'LGPL3')
 depends=('gtk3' 'hicolor-icon-theme' 'libgl' 'libvpx>=1.14' 'libwebp' 'openal' 'sdl2' 'zmusic')
 conflicts=("gzdoom" "gzdoom-git" "zmusic-bin")
-provides=('zmusic')
 makedepends=('unzip')
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
