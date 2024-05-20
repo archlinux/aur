@@ -1,9 +1,9 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 
-_name=ledgercomm
 pkgname=python-ledgercomm
+_name="${pkgname#python-}"
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to communicate with Ledger Nano S/X and Speculos."
 arch=('any')
 url="https://github.com/LedgerHQ/ledgercomm"
@@ -16,16 +16,18 @@ makedepends=('python-build'
              'python-tomli'
              'python-wheel')
 optdepends=('python-hidapi>=0.9.0.post3: HID interface communication')
-source=("${_name}-${pkgver}::git+https://github.com/LedgerHQ/${_name}.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('015cfc05f16b8c59f8cc1d9fc0b8935923f1fcc3806d33eeb6b0e055b44f5a91')
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${_name}-${pkgver}"
+
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${_name}-${pkgver}"
+
   python -m installer --destdir="$pkgdir" \
     "./dist/${_name}-${pkgver}-py3-none-any.whl"
 }
