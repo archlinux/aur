@@ -1,9 +1,9 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgbase=rubymine-eap
 pkgname=(rubymine-eap rubymine-eap-jre)
-pkgver=241.17011.8
+pkgver=242.10180.28
 _pkgname=RubyMine
-_pkgver=2024.1.2
+_pkgver=2024.2
 pkgrel=1
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools (EAP)."
 arch=('i686' 'x86_64')
@@ -16,12 +16,12 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('f25b4538a4eb91a91aaed3fc3287f10bd94bbdd8080c290ea8226e2d8158e24c'
+sha256sums=('333c7404dcc76030cb2182d9a0fdcfe1e9cd0d15b0658aca5e804c1e96085eb7'
             '02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${_pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   rm Install-Linux-tar.txt
   rm help/ReferenceCardForMac.pdf
@@ -37,18 +37,18 @@ package_rubymine-eap() {
   install -d ${pkgdir}/{opt,usr/share}
 
   # Pre-packaged program files
-  cp --recursive "${srcdir}/${_pkgname}-${_pkgver}" "${pkgdir}/opt/${pkgname}"
+  cp --recursive "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   # Desktop file
   install -Dm644 "${pkgdir}/opt/${pkgname}/bin/rubymine.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
   install -Dm644 "rubymine-eap.desktop" "${pkgdir}/usr/share/applications/rubymine-eap.desktop"
   install -d -m 755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/bin/rubymine.sh" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/bin/rubymine" "${pkgdir}/usr/bin/${pkgname}"
 
   # License
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  find "$srcdir/$_pkgname-$_pkgver/license/" -type f -exec \
+  find "$srcdir/$_pkgname-$pkgver/license/" -type f -exec \
     install -Dm644 '{}' "$pkgdir/usr/share/licenses/$pkgname/" \;
 
   # Java config
@@ -61,5 +61,5 @@ package_rubymine-eap-jre() {
   url='https://github.com/JetBrains/JetBrainsRuntime'
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
-  cp -a "${srcdir}/${_pkgname}-${_pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
+  cp -a "${srcdir}/${_pkgname}-${pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
 }
