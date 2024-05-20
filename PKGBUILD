@@ -1,17 +1,19 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 
 pkgname='slxfig-snapshot'
 _pkgname="${pkgname%-snapshot}"
 _pkgver=0.2.0-138
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Xfig-based publication quality plotting package for the S-Lang interpreter (development snapshot)'
 arch=('aarch64' 'x86_64')
 url='https://jedsoft.org/snapshots/'
 license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
 depends=('glibc' 'slang')
+makedepends=('slsh')
 provides=('slxfig')
 conflicts=('slxfig')
 options=('lto' '!makeflags')
@@ -27,14 +29,15 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
   esac
 
   ./configure --prefix=/usr
+
   make
 }
 
@@ -42,19 +45,28 @@ package() {
   cd "$_pkgname-$_prever"
 
   make DESTDIR="$pkgdir" install
+
   # Change permissions of the gcontour module: 0644 → 0755
   chmod 0755 "$pkgdir/usr/lib/slang/v2/modules/gcontour-module.so"
 
   # Install extra documentation
-  for _doc in changes.txt INSTALL README TODO doc/text/slxfig.txt; do
-    install -Dm0644 "$_doc" "$pkgdir/usr/share/doc/$pkgname/${_doc##*/}"
-  done
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/${_doc##*/}" \
+    changes.txt INSTALL README TODO doc/text/slxfig.txt
+
   cp -fax examples "$pkgdir/usr/share/doc/$pkgname/"
+
+  # Byte-compile S-Lang files
+  cd "$pkgdir/usr/share/slsh/local-packages/"
+  slsh -e '
+    for ($1=0; $1<__argc; $1++) {
+      $2 = __argv[$1];
+      () = printf("Byte-compiling %s …", $2);
+      byte_compile_file($2, 0);
+      () = printf("\n");
+    }
+  ' *.sl */*.sl
 }
 
-sha256sums=(
-  '7820457eb5961ef6619cf0319934f2d4e37bdf7bd195a759be1280510beaf0f1'
-)
 b2sums=(
   '8819329e3ec2da03e690a0b3c85369b33210b2a95e5a4480a536148593790b83a0e0f0c301ee962ddd55ec9bb01034fb757c8aefc6dd048a7051702d05200c89'
 )
