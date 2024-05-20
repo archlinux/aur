@@ -1,0 +1,5 @@
+[floorp]
+source = "github"
+github = "Floorp-Projects/Floorp"
+prefix = "v"
+use_latest_release = true
