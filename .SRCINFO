@@ -1,0 +1,23 @@
+pkgbase = wechat-universal-appimage
+	pkgdesc = AppImage version of WeChat for linux desktop.
+	pkgver = 1.0.0.241
+	pkgrel = 1
+	url = https://bgithub.xyz/zydou/WeChat-AppImage
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = wechat-universal
+	conflicts = wechat-universal
+	conflicts = wechat-universal-bwrap
+	noextract = wechat-universal-1.0.0.241-x86_64.AppImage
+	options = !strip
+	options = !debug
+	source_x86_64 = wechat-universal-1.0.0.241-x86_64.AppImage::https://bgithub.xyz/zydou/WeChat-AppImage/releases/download/1.0.0.241/WeChat-1.0.0.241-x86_64.AppImage
+	sha1sums_x86_64 = 82538d5cb9d5f3bf73d8bab57d353b29c02a36ee
+	source_aarch64 = wechat-universal-1.0.0.241-aarch64.AppImage::https://bgithub.xyz/zydou/WeChat-AppImage/releases/download/1.0.0.241/WeChat-1.0.0.241-aarch64.AppImage
+	sha1sums_aarch64 = a66ed8a149205ab54d6b8d02db70638445bfbddd
+
+pkgname = wechat-universal-appimage
