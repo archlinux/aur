@@ -1,0 +1,17 @@
+pkgbase = otf-hanken-grotesk
+	pkgdesc = sans serif typeface inspired by the classic grotesques
+	pkgver = 20240130
+	pkgrel = 1
+	url = https://github.com/marcologous/hanken-grotesk
+	arch = any
+	license = OFL
+	makedepends = fontbakery
+	makedepends = gftools
+	makedepends = git
+	makedepends = python-fontmake
+	makedepends = python-networkx
+	makedepends = python-ninja
+	source = otf-hanken-grotesk::git+https://github.com/marcologous/hanken-grotesk.git#commit=1ab416e82130b2d3ddb7710abf7ceabf07156a13
+	b2sums = 8b6dc7629c83a2f89107af9f6583978270b8691f09e8a4b07c41171eca801480c79b0d072e500f699018f4a93777f34c9dc3f54788fbf2704f4a8419fb19728a
+
+pkgname = otf-hanken-grotesk
