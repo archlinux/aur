@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mefa
-_pkgver=3.2-8
+_pkgver=3.2-9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Multivariate Data Handling in Ecology and Biogeography"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-vegan
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c6ab090090a592167dd5ead38703e19b')
-b2sums=('5a9469896668120e78017f20dc1c431fc20fccf53764761ed72b6b1e304bda7fdbe969d9f886ec5b87e1ac4647345ed5e61861d475d5b0c92b6a4c5e517e9f5f')
+md5sums=('7cc82dc53a2f47423125ead8b370ac45')
+b2sums=('d66c6bda04762125ae30472bcef62b1d9c2a554bc5dfcb2bf631984566ebff13ef5ed8d1dec2b32d6ff7bd98fac6b037078d231fbf320afdc8c000323712ffd2')
 
 build() {
   mkdir build

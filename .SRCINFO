@@ -1,15 +1,15 @@
 pkgbase = r-mefa
 	pkgdesc = Multivariate Data Handling in Ecology and Biogeography
-	pkgver = 3.2.8
-	pkgrel = 7
+	pkgver = 3.2.9
+	pkgrel = 1
 	url = https://cran.r-project.org/package=mefa
 	arch = any
 	license = GPL-2.0-only
 	depends = r
 	optdepends = r-mefa4
 	optdepends = r-vegan
-	source = https://cran.r-project.org/src/contrib/mefa_3.2-8.tar.gz
-	md5sums = c6ab090090a592167dd5ead38703e19b
-	b2sums = 5a9469896668120e78017f20dc1c431fc20fccf53764761ed72b6b1e304bda7fdbe969d9f886ec5b87e1ac4647345ed5e61861d475d5b0c92b6a4c5e517e9f5f
+	source = https://cran.r-project.org/src/contrib/mefa_3.2-9.tar.gz
+	md5sums = 7cc82dc53a2f47423125ead8b370ac45
+	b2sums = d66c6bda04762125ae30472bcef62b1d9c2a554bc5dfcb2bf631984566ebff13ef5ed8d1dec2b32d6ff7bd98fac6b037078d231fbf320afdc8c000323712ffd2
 
 pkgname = r-mefa
