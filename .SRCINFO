@@ -1,0 +1,15 @@
+pkgbase = prometheus-adaptec-exporter
+	pkgdesc = Prometheus Adaptec Exporter
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/CommanderRedYT/prometheus-adaptec-exporter
+	arch = any
+	license = GPLv3
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-prometheus_client
+	source = https://github.com/CommanderRedYT/prometheus-adaptec-exporter/archive/acb8d139dcbe2b67615b99ce5d7e8bd59bb5a8df.tar.gz
+	sha256sums = ff13749be733357ed5ab2731eb600d689a0cb722f421e27a93f364fc3b2994a0
+
+pkgname = prometheus-adaptec-exporter
