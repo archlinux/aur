@@ -3,8 +3,8 @@
 
 pkgname=torrserver-git
 _pkgname="${pkgname%-git}"
-pkgver=132.2.r2.g92e8063
-pkgrel=1
+pkgver=132.2.r4.g65e08eb
+pkgrel=2
 pkgdesc="Torrent stream server"
 arch=('x86_64' 'armv7h' 'aarch64' 'i686')
 url="https://github.com/YouROK/TorrServer"
@@ -26,21 +26,19 @@ pkgver() {
 }
 
 prepare() {
-    cd "$pkgname"/web
-    yarn install --no-fund --cache "${srcdir}/yarn" 
-    env -C "$srcdir/$pkgname/server" GOPATH="$srcdir"/gopath go mod tidy
+    env -C "$srcdir/$pkgname/web" yarn install --ignore-scripts --no-fund --cache "$srcdir/yarn"
+    env -C "$srcdir/$pkgname/server" go mod tidy
 }
 
 build() {
-    export GOPATH="$srcdir"/gopath \
-           GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -tags=nosqlite"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
            CGO_CPPFLAGS="${CPPFLAGS}" \
            CGO_CFLAGS="${CFLAGS}" \
            CGO_CXXFLAGS="${CXXFLAGS}" \
            CGO_LDFLAGS="${LDFLAGS}" \
-           CGO_ENABLED=1 \
+           CGO_ENABLED=1
 
-    env -C "$srcdir/$pkgname/web" NODE_OPTIONS=--openssl-legacy-provider yarn run build --no-fund --cache "${srcdir}/yarn" 
+    env -C "$srcdir/$pkgname/web" UV_USE_IO_URING=0 NODE_OPTIONS=--openssl-legacy-provider yarn run build --no-fund --cache "${srcdir}/yarn"
     env -C "$srcdir/$pkgname" go run gen_web.go
     env -C "$srcdir/$pkgname/server" go build -o "$_pkgname" ./cmd
 }
