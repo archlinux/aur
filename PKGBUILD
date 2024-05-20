@@ -1,24 +1,23 @@
 # Maintainer: Thorsten Roth <elthoro@gmx.de>
 pkgname=stackandconquer
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='A challenging tower conquest board game.'
 arch=('x86_64')
 url='https://github.com/ElTh0r0/stackandconquer/'
-license=('GPL3')
-makedepends=('qt5-tools')
-depends=('qt5-declarative' 'qt5-svg' 'hicolor-icon-theme')
+license=('GPL-3.0-or-later')
+makedepends=('cmake' 'qt6-tools')
+depends=('qt6-declarative' 'qt6-svg' 'hicolor-icon-theme')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ElTh0r0/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b9b6c2b0ced8800396e8a27451244143abbcb02a91f747560dc2a66da73e8a51')
+sha256sums=('3bca84d87981c34bf6f38aa653e6ca3b133f905d8fa6edc3cfc64fac7136c718')
 
 build() {
-    cd "$pkgname-$pkgver"
-    lrelease-qt5 $pkgname.pro
-    qmake-qt5 PREFIX=/usr
-    make
+    cmake -B build-cmake -S "${pkgname}-${pkgver}" \
+      -DCMAKE_PREFIX_PATH=/usr/include/qt6 \
+      -DCMAKE_INSTALL_PREFIX="/usr"
+    cmake --build build-cmake
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    make INSTALL_ROOT="$pkgdir/" install
+    DESTDIR="$pkgdir/" cmake --install build-cmake
 }
