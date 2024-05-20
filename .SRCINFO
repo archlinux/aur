@@ -1,16 +1,16 @@
 pkgbase = alfae
 	pkgdesc = An Itch.io/Epic Games/GOG launcher that works through plugins
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/suchmememanyskill/Alfae
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = dotnet-sdk
 	makedepends = git
 	depends = legendary
 	depends = heroic-gogdl
 	options = !strip
-	source = git+https://github.com/suchmememanyskill/Alfae.git#tag=1.4.2
+	source = git+https://github.com/suchmememanyskill/Alfae.git#tag=1.4.3
 	sha256sums = SKIP
 
 pkgname = alfae
