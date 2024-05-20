@@ -1,14 +1,13 @@
 pkgbase = graylog
 	pkgdesc = Free and open source log management platform
 	pkgver = 6.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/graylog2/graylog2-server
 	install = graylog.install
 	changelog = UPGRADING.md
 	arch = any
 	license = custom:SSPL
 	depends = java-runtime>=17
-	optdepends = elasticsearch>=7
 	optdepends = mongodb>=5
 	optdepends = opensearch
 	backup = etc/graylog/server/server.conf
