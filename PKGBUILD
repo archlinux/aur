@@ -13,11 +13,11 @@ provides=("godot-voxel")
 conflicts=("godot-voxel")
 source=("godot-voxel.desktop"
         "https://github.com/godotengine/godot/blob/master/icon.svg"
-        "https://github.com/Zylann/godot_voxel/releases/download/v1.1.0/godot.linuxbsd.template_release.x86_64.zip"
+        "https://github.com/Zylann/godot_voxel/releases/download/v1.2.0/godot.linuxbsd.template_release.x86_64.zip"
         )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
+md5sums=('ac244a0be7056833787095663ba181e6'
+         'a1150c81468cb080ee51437c4ddbf64f'
+         'b1450e49104e58523ddd727e1f2c0f88')
 
 package() {
   install -Dm644 "$srcdir/godot-voxel.desktop" "$pkgdir/usr/share/applications/godot-voxel.desktop"

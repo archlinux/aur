@@ -2,5 +2,5 @@
 !.gitignore
 !.SRCINFO
 !*.desktop
-!icons.tar.gz
+!*.svg
 !PKGBUILD
