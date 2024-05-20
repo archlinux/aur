@@ -1,12 +1,22 @@
 pkgbase = ttf-comfortaa
 	pkgdesc = Rounded geometric sans-serif typeface from Google by Johan Aakerlund
 	pkgver = 3.105
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.google.com/specimen/Comfortaa
 	arch = any
 	license = custom:OFL
 	conflicts = ttf-google-fonts-git
-	source = ttf-comfortaa-3.105.zip::https://fonts.google.com/download?family=Comfortaa
-	sha256sums = SKIP
+	source = Comfortaa-Bold-3.105.ttf::https://github.com/googlefonts/comfortaa/raw/969f9e563003fd12e578354963917735113816b1/fonts/TTF/Comfortaa-Bold.ttf
+	source = Comfortaa-Light-3.105.ttf::https://github.com/googlefonts/comfortaa/raw/969f9e563003fd12e578354963917735113816b1/fonts/TTF/Comfortaa-Light.ttf
+	source = Comfortaa-Medium-3.105.ttf::https://github.com/googlefonts/comfortaa/raw/969f9e563003fd12e578354963917735113816b1/fonts/TTF/Comfortaa-Medium.ttf
+	source = Comfortaa-Regular-3.105.ttf::https://github.com/googlefonts/comfortaa/raw/969f9e563003fd12e578354963917735113816b1/fonts/TTF/Comfortaa-Regular.ttf
+	source = Comfortaa-SemiBold-3.105.ttf::https://github.com/googlefonts/comfortaa/raw/969f9e563003fd12e578354963917735113816b1/fonts/TTF/Comfortaa-SemiBold.ttf
+	source = ttf-comfortaa-3.105-OFL.txt::https://github.com/googlefonts/comfortaa/raw/969f9e563003fd12e578354963917735113816b1/OFL.txt
+	sha256sums = 1960ed76ee4fe61de32b5779d104072d5d10431bf7fa45bc982d0cf71004843d
+	sha256sums = ecdc9d45e17fd24b66def307d139efe48a317ebb6dc929b5e7f697423610d062
+	sha256sums = 8160917fc5d64ff6df33e9b568f048f6e1f3168fc525213eef1252e7fbff2f56
+	sha256sums = f8e0843e8e373fd95beb1d8a10894c7413af437a77e5162fddbcbefdda45bb7d
+	sha256sums = 18cf25ac2e86f2e4edefb2f5f4d3d9b309629578a4c4c3196a2e556474d8e692
+	sha256sums = bc85bae0b512b799bbfb2b916e4d0a34cfd963d09778cd783e248b479e67760a
 
 pkgname = ttf-comfortaa
