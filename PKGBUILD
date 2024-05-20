@@ -1,7 +1,8 @@
-# Maintainer: Giancarlo Grasso <gianniesoft at gmail dot com>
+# Maintainer: Tricia, `creyon` <gtcreyon@gmail.com>
+# Contributor: Giancarlo Grasso <gianniesoft at gmail dot com>
 
 pkgname=whatsdesk-git
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="unofficial client of whatsapp"
 arch=('x86_64')
@@ -16,23 +17,41 @@ depends=('libxss'
          'libappindicator-gtk3')
 makedepends=('git'
              'nodejs'
-             'npm')
-commit="426b01b731995155ca73de7127f2a309b0f11124"
-source_x86_64=("whatsdesk-${pkgver}-${pkgrel}.tar::https://gitlab.com/zerkc/whatsdesk/-/archive/master/whatsdesk-master.tar?commit=$commit")
-sha256sums_x86_64=('94e4a61777631d0bea3a594a8a3aae37f2887337eec03a4bedc1ad8d347aa08a')
+             'npm'
+             'jq')
+source=('git+https://gitlab.com/zerkc/whatsdesk.git'
+        'no-page.patch')
+sha256sums=('SKIP'
+            'SKIP')
+
+prepare() {
+    cd whatsdesk
+
+    # Don't build the Gitlab Pages page, because we don't need it.
+    patch -p1 -d . < ../no-page.patch
+
+    mv package.json package.json.tmp
+    jq ".build.linux.target={\"target\": \"dir\",\"arch\":[\"x64\"]}" package.json.tmp > package.json
+}
 
 build() {
-    cd whatsdesk-master
-    mv package.json package.json.tmp
-    jq ".build.linux.target={\"target\": \"deb\",\"arch\":[\"x64\"]}" package.json.tmp > package.json
+    cd whatsdesk
     npm install
+
+    # Had to remove these because they were causing build to fail.
+    # Don't know what they do... Hope that's not a problem.
+    rm -rf node_modules/@types/yargs
+    rm -rf node_modules/@types/babel__traverse
+
     npm run build
 }
 
 package() {
-  ar xv ${srcdir}/whatsdesk-master/dist/whatsdesk_"$pkgver"_amd64.deb
-  bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
-  mkdir -p "${pkgdir}/usr/bin/"
-  ln -s "/opt/whatsdesk/whatsdesk" "${pkgdir}/usr/bin"
-  install -Dm644 "$srcdir/whatsdesk-master/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd whatsdesk
+    install -d "$pkgdir/opt/whatsdesk"
+    install -d "$pkgdir/usr/bin"
+    cp -r "dist/linux-unpacked/." "$pkgdir/opt/whatsdesk/"
+    install -Dm755 "dist/linux-unpacked/whatsdesk" "$pkgdir/opt/whatsdesk/whatsdesk"
+    ln -s "/opt/whatsdesk/whatsdesk" "$pkgdir/usr/bin/whatsdesk"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

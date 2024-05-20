@@ -1,0 +1,19 @@
+diff -ruN a/build.js b/build.js
+--- a/build.js	2024-05-20 17:56:45.869209150 +0100
++++ b/build.js	2024-05-20 18:55:10.720660153 +0100
+@@ -4,7 +4,6 @@
+ const fs = require('fs');
+ const path = require('path');
+ const package = require('./package.json');
+-const { BuildPublic } = require('./buildpublic');
+ 
+ 
+ const outDir = path.resolve(__dirname, "electron-build/");
+@@ -37,7 +36,6 @@
+ 				...package.build,
+             }
+         })
+-        await BuildPublic();
+     }catch(ex){
+         console.error(ex);
+     }
