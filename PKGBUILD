@@ -13,14 +13,23 @@
 
 pkgname=awesfx
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for emu10k1 cards (e.g. asfxload)"
 arch=('i686' 'x86_64')
 url="https://github.com/tiwai/awesfx"
 license=('GPL2')
 depends=('alsa-lib')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tiwai/awesfx/archive/v0.5.2.tar.gz")
-sha256sums=('0d3ff4e00b22cf9ef8b538304a6a11391e8618dae112f56f16e3083379ac8888')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tiwai/awesfx/archive/v0.5.2.tar.gz"
+	"0001_set_gus_bank_fix.patch")
+sha256sums=('0d3ff4e00b22cf9ef8b538304a6a11391e8618dae112f56f16e3083379ac8888'
+	'e9ffb89ba5378f7a0b7ac40e77f67fc4cc38a969817b6cca9944255bb2fa91a4')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
+    # Fix a compile-time issues with newer versions of GCC
+    patch -Np1 -i "${srcdir}/0001_set_gus_bank_fix.patch"
+}
 
 build() {
   cd "${pkgname}-${pkgver}"

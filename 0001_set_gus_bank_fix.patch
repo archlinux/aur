@@ -1,0 +1,14 @@
+This patch fixes a compile-time issue with GCC 14
+
+From https://github.com/tiwai/awesfx/issues/3
+--- a/alsa.c
++++ b/alsa.c
+@@ -139,7 +139,7 @@
+ 	return snd_hwdep_ioctl(hwdep, SNDRV_EMUX_IOCTL_MISC_MODE, &mode);
+ }
+ 
+-void seq_set_gus_bank(int bank)
++int seq_set_gus_bank(int bank)
+ {
+ 	struct sndrv_emux_misc_mode mode;
+ 	mode.port = -1;
