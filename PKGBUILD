@@ -1,13 +1,13 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 pkgname=bookman-cockpit
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 options=(!strip)
 pkgdesc="Bookman Cockpit"
 arch=(any)
 url="https://www.bookman.de/"
 license=('custom')
-depends=('java-environment=17' 'java-openjfx=17')
+depends=('java-environment=17' 'java17-openjfx')
 makedepends=('jdk17-openjdk' 'unzip')
 # the bit.ly link looks suspicious, but that's what they use on their website.
 # Also the download is not versioned, so this will eventuelly break due to integrity checks failing.
