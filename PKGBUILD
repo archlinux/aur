@@ -7,7 +7,7 @@ _pkgname="${pkgname%-snapshot}"
 _pkgver=2.3.4-14
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 provides=('libslang.so' 'slang' 'slsh')
@@ -58,6 +58,22 @@ package() {
   cd "${_pkgname}-${_prever}"
 
   make DESTDIR="${pkgdir}" install-all
+
+  cd "$pkgdir/usr/share/slsh"
+
+  # Let's byte-compile *.sl for greater goodness
+  ../../bin/slsh -e '
+    for ($1=1; $1<__argc; $1++) {
+      $2 = __argv[$1];
+      () = printf("Byte-compiling %s …", $2);
+      byte_compile_file($2, 0);
+      () = printf("\n");
+    }
+  ' *.sl */*.sl
+
+  # We shouldn't have byte-compiled this, as it
+  # contains both the client and the server code.
+  rm -vf sldbsock.slc
 }
 
 # Calculated
