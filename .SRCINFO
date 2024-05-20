@@ -1,7 +1,7 @@
 pkgbase = bilibili-bin
 	pkgdesc = 哔哩哔哩官方客户端linux移植版。Bilibili official desktop client
-	pkgver = 1.13.2_2
-	pkgrel = 2
+	pkgver = 1.13.4_1
+	pkgrel = 1
 	epoch = 5
 	url = https://github.com/msojocs/bilibili-linux
 	arch = aarch64
@@ -10,15 +10,15 @@ pkgbase = bilibili-bin
 	depends = ffmpeg
 	depends = electron21
 	depends = libappindicator-gtk3
-	provides = bilibili=1.13.2_2
+	provides = bilibili=1.13.4_1
 	conflicts = bilibili
-	source = LICENSE-1.13.2_2::https://raw.githubusercontent.com/msojocs/bilibili-linux/v1.13.2-2/license
+	source = LICENSE-1.13.4_1::https://raw.githubusercontent.com/msojocs/bilibili-linux/v1.13.4-1/license
 	source = bilibili.sh
 	sha256sums = 21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468
-	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
-	source_aarch64 = bilibili-1.13.2_2-aarch64.deb::https://github.com/msojocs/bilibili-linux/releases/download/v1.13.2-2/io.github.msojocs.bilibili_1.13.2-2_arm64.deb
-	sha256sums_aarch64 = 93ccb717daa680273bf6d725eea9c9881af621de4675b9e6045ca91c24320b54
-	source_x86_64 = bilibili-1.13.2_2-x86_64.deb::https://github.com/msojocs/bilibili-linux/releases/download/v1.13.2-2/io.github.msojocs.bilibili_1.13.2-2_amd64.deb
-	sha256sums_x86_64 = 8709ebcdb9e5b7d67d70eaa8fe58b59efb2b1afeb6a2f31fc9b35569d22593f6
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	source_aarch64 = bilibili-1.13.4_1-aarch64.deb::https://github.com/msojocs/bilibili-linux/releases/download/v1.13.4-1/io.github.msojocs.bilibili_1.13.4-1_arm64.deb
+	sha256sums_aarch64 = 1699cacc16aa86839303e2fd01ad4148be3682e29e9044ed94d7d8907fdd3664
+	source_x86_64 = bilibili-1.13.4_1-x86_64.deb::https://github.com/msojocs/bilibili-linux/releases/download/v1.13.4-1/io.github.msojocs.bilibili_1.13.4-1_amd64.deb
+	sha256sums_x86_64 = ce7570f17f9c8a9ab4f978660f5cc33c5d7ec9b0b4514418bc2083509c49580d
 
 pkgname = bilibili-bin
