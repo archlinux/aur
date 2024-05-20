@@ -4,10 +4,13 @@ pkgbase = cheatbreaker
 	pkgrel = 1
 	url = https://cheatbreaker.net
 	arch = x86_64
+	arch = arm64
 	depends = fuse
 	depends = xorg-xrandr
 	options = !strip
-	source = https://github.com/CheatBreakerNet/Launcher/releases/download/2.5.2/CheatBreaker.AppImage
-	md5sums = d900ded3ebaed39927a1365811652b11
+	source_x86_64 = https://github.com/CheatBreakerNet/Launcher/releases/download/2.5.2/CheatBreaker.AppImage
+	md5sums_x86_64 = d900ded3ebaed39927a1365811652b11
+	source_arm64 = https://github.com/CheatBreakerNet/Launcher/releases/download/2.5.2/CheatBreaker-ARM64.AppImage
+	md5sums_arm64 = d4c935b349cfa17879202e70a2faae30
 
 pkgname = cheatbreaker
