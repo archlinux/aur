@@ -1,80 +1,32 @@
-commit 7f945b31465d63ea9b2b229bd38cbba8f9fd4e76
+commit c371c017c24a8d9f60406ea1138644a7135771d4
 Author: Dominicentek <dominicentekgaming@gmail.com>
-Date:   Wed Apr 17 10:48:31 2024 +0200
+Date:   Mon May 20 19:03:07 2024 +0200
 
     makepkg patch
 
 diff --git a/.patched b/.patched
 new file mode 100644
 index 00000000..e69de29b
-diff --git a/src/pc/pc_main.c b/src/pc/pc_main.c
-index c3b65530..80b2ec8a 100644
---- a/src/pc/pc_main.c
-+++ b/src/pc/pc_main.c
-@@ -1,3 +1,5 @@
-+#include <linux/limits.h>
-+#include <unistd.h>
- #include <stdlib.h>
- #include <stdio.h>
- #include <signal.h>
-@@ -210,6 +212,7 @@ void main_func(void) {
-     fs_init(sys_ropaths, gamedir, userpath);
- 
-     configfile_load(configfile_name());
-+    chdir(userpath);
- 
-     if (gCLIOpts.FullScreen == 1)
-         configWindow.fullscreen = true;
-diff --git a/src/saturn/saturn.cpp b/src/saturn/saturn.cpp
-index c40ab5e6..a4e34c74 100644
---- a/src/saturn/saturn.cpp
-+++ b/src/saturn/saturn.cpp
-@@ -725,7 +725,7 @@ s32 saturn_begin_extract_rom_thread() {
-     extract_thread_began = true;
-     extraction_finished = false;
-     extract_thread = std::thread([]() {
--        saturn_extract_rom(EXTRACT_TYPE_ALL);
-+        if (saturn_extract_rom(EXTRACT_TYPE_ALL)) exit(1);
-         extraction_finished = true;
-     });
-     return false;
 diff --git a/src/saturn/saturn_rom_extract.cpp b/src/saturn/saturn_rom_extract.cpp
-index 0d3aa02b..b66c8637 100644
+index ccf4069a..6f298f01 100644
 --- a/src/saturn/saturn_rom_extract.cpp
 +++ b/src/saturn/saturn_rom_extract.cpp
-@@ -312,10 +312,12 @@ int saturn_rom_status(std::filesystem::path extract_dest, std::vector<std::strin
-         }
-     }
-     if (!needs_extract) return ROM_OK;
--    if (!std::filesystem::exists("sm64.z64") && needs_rom) return ROM_MISSING;
--    return ROM_NEED_EXTRACT;
-+    return ROM_MISSING;
- }
+@@ -44,7 +44,7 @@ std::map<std::string, FormatTableEntry> format_table = {
+ };
  
-+bool rom_inputted = false;
-+std::string rom_input = "";
-+
- int saturn_extract_rom(int type) {
-     std::filesystem::path extract_dest = EXTRACT_PATH;
-     std::vector<std::string> todo = {};
-@@ -323,15 +325,13 @@ int saturn_extract_rom(int type) {
+ #define EXTRACT_PATH std::filesystem::path(sys_user_path()) / "res"
+-#define EXTRACT_ROM "sm64.z64"
++#define EXTRACT_ROM "~/sm64.z64"
+ #define ROM_SIZE (8 * 1024 * 1024)
+ #define ROM_CHECKSUM 0x3CE60709
+ 
+@@ -402,7 +402,7 @@ int saturn_extract_rom(int type) {
  
      if (status == ROM_OK) return ROM_OK;
      if (status == ROM_MISSING) {
 -        pfd::message("Missing ROM","Cannot find sm64.z64\n\nPlease place an unmodified, US Super Mario 64 ROM next to the .exe and name it \"sm64.z64\"", pfd::choice::ok);
--        return ROM_MISSING;
--    }
--    if (status == ROM_INVALID) {
--        pfd::message("Invalid ROM", "Couldn't verify sm64.z64\n\nThe file may be corrupted, extended, or from the wrong region. Use an unmodified US version of SM64", pfd::choice::ok);
--        return ROM_INVALID;
-+        pfd::message("Missing ROM", "Need an unmodified, US version of Super Mario 64 to continue.", pfd::choice::ok).result();
-+        std::vector<std::string> paths = pfd::open_file("Select ROM", "", { "N64 ROM", "*.z64" }).result();
-+        if (paths.empty()) return ROM_MISSING;
-+        rom_input = paths[0];
++        std::cout << "Missing ROM! Place an unmodified US SM64 ROM into your home directory and rename it to 'sm64.z64'" << std::endl;
++        pfd::message("Missing ROM","Cannot find sm64.z64\n\nPlease place an unmodified, US Super Mario 64 ROM in your home directory and name it \"sm64.z64\"", pfd::choice::ok);
+         return ROM_MISSING;
      }
-     extraction_progress = 0;
--    std::ifstream stream = std::ifstream("sm64.z64", std::ios::binary);
-+    std::ifstream stream = std::ifstream(rom_input, std::ios::binary);
-     unsigned char* data = (unsigned char*)malloc(1024 * 1024 * 8);
-     stream.read((char*)data, 1024 * 1024 * 8);
-     stream.close();
+     if (status == ROM_INVALID) {
