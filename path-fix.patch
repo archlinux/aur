@@ -1,6 +1,6 @@
---- main-a.cpp	2022-06-20 09:04:26.860669409 -0600
-+++ main-b.cpp	2022-06-20 09:27:38.592967912 -0600
-@@ -36,10 +36,10 @@
+--- a/QtScrcpy/main.cpp
++++ b/QtScrcpy/main.cpp
+@@ -36,10 +36,10 @@ int main(int argc, char *argv[])
  #endif
  
  #ifdef Q_OS_LINUX

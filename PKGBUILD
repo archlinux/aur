@@ -1,6 +1,10 @@
 # Maintainer:
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
+## useful links
+# https://github.com/barry-ran/QtScrcpy
+# https://github.com/barry-ran/QtScrcpyCore
+
 ## options
 : ${_install_path:=opt}
 
@@ -8,7 +12,7 @@
 _pkgname=qtscrcpy
 pkgname="$_pkgname"
 pkgver=2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache-2.0')
@@ -31,25 +35,29 @@ conflicts=('qtscrcpy-docs')
 backup=("etc/$_pkgname/config.ini")
 
 _pkgsrc="$_pkgname"
+_pkgsrc_core="qtscrcpycore"
 source=(
   "$_pkgname"::"git+$url.git#tag=v$pkgver"
-  "qtscrcpycore"::"git+https://github.com/barry-ran/QtScrcpyCore.git"
+  "$_pkgsrc_core"::"git+https://github.com/barry-ran/QtScrcpyCore.git"
   "path-fix.patch"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
-  'a80a69c96361e671db319be612dc08f26142886875a35c9cd5df57c100ddae3a'
+  '863e9179ef63914cd1bdcb35b1c27ba4cde05bbaa33fbbde7460841c880debb8'
 )
 
-# common functions
 prepare() {
-  cd "$_pkgsrc"
+  cd "$_pkgsrc_core"
+  git remote set-url origin https://github.com/barry-ran/QtScrcpyCore.git
+  git fetch origin 769943161f99dbc7b0c55f7f769e32729ab06693
+
+  cd "$srcdir/$_pkgsrc"
   git submodule init
   git config submodule.QtScrcpy/QtScrcpyCore.url "$srcdir/qtscrcpycore"
   git -c protocol.file.allow=always submodule update
 
-  patch --strip=1 QtScrcpy/main.cpp < "$srcdir/path-fix.patch"
+  patch -Np1 -F100 -i "$srcdir/path-fix.patch"
 }
 
 build() {
