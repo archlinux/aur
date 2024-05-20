@@ -2,7 +2,7 @@
 
 pkgname=e2-sat-editor
 pkgdesc="Satellite channel lists editor: Enigma2, Neutrino, dreambox"
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 arch=('any')
 url="https://github.com/ctlcltd/e2-sat-editor"
@@ -14,7 +14,7 @@ provides=('e2-sat-editor')
 conflicts=('e2-sat-editor')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ctlcltd/e2-sat-editor/archive/v$pkgver.tar.gz")
-sha256sums=('4c8cd28348054a757805b9bf8df27699feb3697191d31d02b512bc500e6f6421')
+sha256sums=('7fecaa043c36052dbffa50ec7e0fff558bdc26e4de9fd01067c49bb812eff5fc')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver/src"
@@ -31,6 +31,6 @@ package() {
 
 	DESTDIR="$pkgdir" ninja -C build install
 
-	install -Dm644 "$pkgdir/usr/share/$pkgname/License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "$pkgdir/usr/share/$pkgname/Readme.txt" "$pkgdir/usr/share/doc/$pkgname/README"
+	install -Dm644 "$pkgdir/usr/share/$pkgname/License.txt" "$pkgdir/usr/share/licenses/$pkgname/copyright"
+	install -Dm644 "$pkgdir/usr/share/$pkgname/Readme.txt" "$pkgdir/usr/share/doc/$pkgname/readme"
 }
