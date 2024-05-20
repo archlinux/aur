@@ -1,12 +1,12 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=speedata-publisher
-pkgver=4.19.2
+pkgver=4.19.3
 pkgrel=1
 pkgdesc='a database publishing software that creates high-quality layouted PDFs fully automatically'
 arch=(x86_64)
 url='https://github.com/speedata/publisher'
-license=(AGPL3)
+license=(AGPL-3.0-only)
 depends=(crimson-pro-font
          glibc
          tex-gyre-fonts
@@ -19,7 +19,7 @@ provides=(libsplib.so
           luaglue.so)
 _archive="${pkgname#*-}-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('ed562520f2f396dee063f7c4b8e9d6c448bf0014ee8c313f53eaa04291d7e32b')
+sha256sums=('06e99977355363bdef00ce68cef4781856572372a99548b591250af44da7c92e')
 
 prepare() {
 	cd "$_archive"
