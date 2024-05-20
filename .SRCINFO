@@ -1,10 +1,10 @@
 pkgbase = moonshine
 	pkgdesc = Streaming server for Moonlight clients, written in Rust.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/hgaiser/moonshine
 	arch = x86_64
-	license = BSD-2
+	license = BSD-2-Clause
 	makedepends = clang
 	makedepends = cmake
 	makedepends = rust
@@ -20,9 +20,9 @@ pkgbase = moonshine
 	provides = moonshine
 	conflicts = moonshine
 	options = !lto
-	source = https://github.com/hgaiser/moonshine/archive/refs/tags/v0.3.0.tar.gz
+	source = https://github.com/hgaiser/moonshine/archive/refs/tags/v0.3.1.tar.gz
 	source = moonshine.service
-	sha256sums = 33321f30c6637e27f3b50d8da293c027b8946fb496d432b040110ed8a6505f5b
+	sha256sums = e4f787e96de4f313a782f325b9c2ff956becc0f875872244d8a4ea2a5234b9f2
 	sha256sums = dc1d8e62f3a3d6b6af11f0c6418a29ba6889301e48d23b50d15cdde4f8e81099
 
 pkgname = moonshine
