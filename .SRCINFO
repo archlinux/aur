@@ -1,0 +1,19 @@
+pkgbase = tt-damage-calculator
+	pkgdesc = A damage calculator for Toontown Rewritten
+	pkgver = 4.3.0_dev.4
+	pkgrel = 1
+	url = https://vhou.gloop.group/projects/gagcalc
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = maturin
+	makedepends = python-installer
+	makedepends = python-pypatchelf
+	makedepends = python-wheel
+	depends = python
+	depends = tk
+	optdepends = xdg-utils
+	source = https://github.com/Vhou-Atroph/tt-damage-calculator/archive/refs/tags/V4.3.0_dev.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = tt-damage-calculator
