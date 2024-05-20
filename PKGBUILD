@@ -4,12 +4,12 @@
 pkgname=rju-git
 _pkgname=rju
 pkgver=0.19.r15.g359627c
-pkgrel=1
+pkgrel=2
 pkgdesc='JackAudioToolkit'
 arch=( 'x86_64' )
 url='https://rohandrape.net/?t=rju'
 license=( 'GPL-3.0-only' )
-depends=( 'jack' 'libsamplerate' 'liblo' 'libsndfile' 'libxext' 'libx11' 'libpng' )
+depends=( 'jack' 'libsamplerate' 'liblo' 'libsndfile' 'libxext' 'libx11' 'libpng' 'glibc' 'gcc-libs' 'ncurses' )
 makedepends=( 'git' 'asciidoc' 'vst2sdk' 'sed' )
 options=( '!buildflags')
 conflicts=( 'rju' )
@@ -33,7 +33,7 @@ prepare() {
   git config --file=.gitmodules submodule.cmd/r-command.url "$srcdir/r-command"
   git -c protocol.file.allow=always submodule update --init
   cd cmd
-  sed 's#VST_SDK = $(HOME)/opt/build/vst3_sdk#VST_SDK = /usr/include/vst36#' -i Makefile
+  sed 's#VST_SDK = $(HOME)/opt/build/vst3_sdk#VST_SDK = /usr/src/vst2sdk#' -i Makefile
   sed "/int osc/s/void \*d/lo_message d/" -i rju-dl.c
   sed "/int osc/s/void \*d/lo_message d/" -i rju-lxvst.cpp
 }
@@ -48,11 +48,18 @@ build() {
 
 package () {
   mkdir -p ${pkgdir}/usr/{bin,include,share/rju}
-  cd ${_pkgname}/cmd
-  make install prefix=${pkgdir}/usr
-  cd ../md
-  cp -r *.html announce/ ${pkgdir}/usr/share/rju
-  cp ${startdir}/jack.plumbing ${pkgdir}/usr/share/rju/rju.plumbing.example
+  cd "$srcdir/${_pkgname}/cmd"
+  for file in rju-{data,dl,level,lxvst,osc,play,plumbing,record,scope,transport,udp};
+  do
+    install -Dm755 $file "$pkgdir/usr/bin/$file"
+  done
+  cd "$srcdir/${_pkgname}/md"
+  for file in rju-{data,dl,level,lxvst,osc,play,plumbing,record,scope,transport,udp}.html;
+  do
+    install -Dm644 $file "$pkgdir/usr/share/rju/$file"
+  done
+  rsync -r announce "$pkgdir/usr/share/rju/" && chmod 644 -R "$pkgdir/usr/share/rju/announce"
+  install -Dm644 "$srcdir/jack.plumbing" "${pkgdir}/usr/share/rju/rju.plumbing.example"
 }
 
 # vim: ts=2 sw=2 et:
