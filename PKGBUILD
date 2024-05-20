@@ -1,7 +1,7 @@
 # Maintainer: Dušan Mitrović <dusan@dusanmitrovic.xyz>
 pkgname=supersonic-desktop
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers"
 _pkgname="${pkgname//-desktop/}"
 arch=('x86_64')
@@ -12,6 +12,8 @@ depends=(
     'libglvnd'
     'libx11'
     'mpv'
+    'libxinerama'
+    'libxi'
 )
 optdepends=(
     "libappindicator-gtk3: Systray indicator support"
