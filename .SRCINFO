@@ -1,4 +1,4 @@
-pkgbase = jamesdsp-headless-git
+pkgbase = jamesdsp-headless
 	pkgdesc = An audio effect processor for PipeWire clients
 	pkgver = 2.7.0.r16.g6b35b75
 	pkgrel = 1
@@ -29,4 +29,4 @@ pkgbase = jamesdsp-headless-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = jamesdsp-headless-git
+pkgname = jamesdsp-headless
