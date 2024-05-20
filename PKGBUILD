@@ -2,13 +2,13 @@
 pkgname=python-cobaya
 _name=${pkgname#python-}
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Code for Bayesian Analysis in Cosmology"
 arch=(any)
 url="https://github.com/CobayaSampler/$_name"
 license=()
 groups=()
-depends=(python-numpy python-scipy python-pytz python-six python-dateutil python-pandas python-yaml wget python-pybobyqa python-kiwisolver python-pyparsing python-cycler python-matplotlib python-getdist python-fuzzywuzzy pyside2)
+depends=(python-numpy python-scipy python-pytz python-six python-dateutil python-pandas python-yaml wget python-pybobyqa python-kiwisolver python-pyparsing python-cycler python-matplotlib python-getdist python-fuzzywuzzy pyside6)
 makedepends=(python-build python-installer)
 provides=()
 conflicts=()
