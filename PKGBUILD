@@ -17,7 +17,7 @@ source=(
   "https://github.com/CommanderRedYT/prometheus-adaptec-exporter/archive/${commit}.tar.gz"
 )
 sha256sums=(
-  '2954d9e3b3061e258cf4786c4373621be65b05f87180f8e7993582b689373c0a'
+  'ea129eba251a8f6a5fc29fa55c47c7f11a9eceff98f0dcd3dc56ac2644cf9671'
 )
 
 build() {
