@@ -1,16 +1,13 @@
 # Maintainer: Serge K <arch@phnx47.net>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
-# For Issues, Pull Requests
-# https://github.com/phnx47/pkgbuilds
-
 _appname=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Maintain your Ledger devices"
 _electron='electron28'
-_sha='4d0b535f2cc7e10c2079eeb62dd9e9ee0ace9447'
+_sha='6beccf3764d005179185f2d5954f593c5965c817'
 _short_sha="${_sha::7}"
-pkgver=2.80.0
+pkgver=2.81.1
 pkgrel=1
 arch=('x86_64')
 _gh_owner='LedgerHQ'
@@ -21,7 +18,7 @@ depends=('ledger-udev' "${_electron}")
 makedepends=('node-gyp' 'pnpm' 'nvm')
 source=("${pkgname}-${pkgver}-${_short_sha}.tar.gz::https://api.github.com/repos/${_gh_owner}/${_gh_repo}/tarball/${_sha}"
         "${_appname}.sh")
-sha512sums=('a5f96f921f3bbc25d662e9b5789574b45ecc88cc1f35e98079243d59c4fbba63af837b6d02d2ed8f8eaea97e843647f72593d61417966fd0babfee362d4e7619'
+sha512sums=('89a27bb2b54b956c031fb0eaec7b4f6b96186760d8425e58edc00830b332670b0fe249c50c9f073faddab7a81006d9388870f8482cc8f5b7ad35dbd64ed72b9d'
             '70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755')
 
 _nvm_install() {
