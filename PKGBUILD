@@ -1,6 +1,6 @@
 # Maintainer: Frigyes Erdosi-Szucs <eszfrigyes06 at gmail dot com>
 pkgname=universal-android-debloater-git
-pkgver=1.0.2.r42.g4c6621d
+pkgver=1.0.3.r100.g0dbd9f9
 pkgrel=1
 epoch=
 pkgdesc="A cross-platform GUI debloater for android devices"
@@ -19,7 +19,6 @@ conflicts=('universal-android-debloater-opengl'
         'universal-android-debloater-bin')
 replaces=()
 backup=()
-options=('!lto')
 changelog=
 source=("git+$url#branch=main")
 noextract=()
@@ -44,6 +43,7 @@ build() {
     export CARGO_HOME="$srcdir/cargo-home"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    CFLAGS+=" -ffat-lto-objects"
     cargo build --frozen --release --no-default-features --features wgpu,no-self-update
 }
 
