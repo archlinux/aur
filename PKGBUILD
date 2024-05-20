@@ -1,7 +1,7 @@
 # Maintainer: Liu Xiangzhi <liuxiangzhi000@gmail.com>
 pkgname=cami
-pkgver=0.2.0
-pkgrel=1
+pkgver=0.2.1
+pkgrel=2
 epoch=
 pkgdesc="C Abstract Machine Interpreter. A detector of undefined behavior and other common defects"
 arch=('x86_64')
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=('https://github.com/Liu-Xiangzhi/CAMI/archive/refs/tags/0.2.0.tar.gz')
+source=('https://github.com/Liu-Xiangzhi/CAMI/archive/refs/tags/0.2.1.tar.gz')
 noextract=()
-sha256sums=('3b85287e77e1cc560b257738a072c4bd5015bacc922aaa78a2ae95edc09e2d7c')
+sha256sums=('bee5e27fa56791e7fe050a4c3006a87dfb4bc552ce5538592931aba198cc760c')
 validpgpkeys=()
 
 build() {
