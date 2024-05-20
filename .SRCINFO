@@ -39,6 +39,7 @@ pkgbase = lime3ds
 	depends = enet
 	conflicts = lime3ds-appimage
 	conflicts = lime3ds-git
+	conflicts = citra
 	options = lto
 	options = !buildflags
 	source = lime3ds::https://github.com/Lime3DS/Lime3DS/releases/download/2113/lime3ds-unified-source-20240517-ceb97be.tar.xz
