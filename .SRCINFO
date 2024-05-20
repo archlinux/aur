@@ -1,7 +1,7 @@
 pkgbase = xwayland-satellite
 	pkgdesc = Xwayland outside your Wayland
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Supreeeme/xwayland-satellite
 	arch = x86_64
 	license = MPL-2.0
@@ -11,6 +11,7 @@ pkgbase = xwayland-satellite
 	depends = glibc
 	depends = libxcb
 	depends = xcb-util-cursor
+	depends = xorg-server-xwayland
 	options = !debug
 	source = https://github.com/Supreeeme/xwayland-satellite/archive/v0.2/xwayland-satellite-0.2.tar.gz
 	b2sums = fe06ce1428fb45ba12a622aa5d869f7aa1e5b496669d7c23f0da3b3b04f3ce6b853af9a0c846b21e6cb1651cf05d5c06e8d84f2081d896fbad5a5102c0b855be

@@ -2,7 +2,7 @@
 
 pkgname=xwayland-satellite
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Xwayland outside your Wayland"
 arch=(x86_64)
 url="https://github.com/Supreeeme/$pkgname"
@@ -12,6 +12,7 @@ depends=(
   glibc
   libxcb
   xcb-util-cursor
+  xorg-server-xwayland
 )
 makedepends=(
   clang
