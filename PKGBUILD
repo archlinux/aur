@@ -5,21 +5,21 @@ pkgdesc="A Flutter application consisting of TCP Port Scanner, Route Tracer, Pin
 url="https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/"
 license=("GPL3")
 provides=("bitscoper-cyber-toolbox-bin")
-makedepends=("jq" "unzip")
-depends=('gtk3')
-# checkdepends=('')
-# optdepends=('')
+makedepends=("unzip")
+depends=("gtk3")
+# checkdepends=("")
+# optdepends=("")
 options=(!debug)
 # install="${pkgname%}.install"
-source=('https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/releases/latest/download/Linux_x64_Executable.zip')
-sha256sums=('SKIP')
-arch=('x86_64')
+source=("https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/releases/latest/download/Linux_x64_Executable.zip")
+sha256sums=("SKIP")
+arch=("x86_64")
 pkgver=8.0.4
-pkgrel=3
+pkgrel=4
 
 package() {
   install -dm755 "$pkgdir/opt/Bitscoper_Cyber_ToolBox/"
-  install -Dm755 "$srcdir/Linux_x64_Executable/Bitscoper_Cyber_ToolBox" "$pkgdir/opt/Bitscoper_Cyber_ToolBox/"
+  install -Dm755 "$srcdir/Linux_x64_Executable/Bitscoper_Cyber_ToolBox" "$pkgdir/opt/Bitscoper_Cyber_ToolBox/Bitscoper_Cyber_ToolBox"
 
   install -dm755 "$pkgdir/opt/Bitscoper_Cyber_ToolBox/lib/"
   cp -r "$srcdir/Linux_x64_Executable/lib/"* "$pkgdir/opt/Bitscoper_Cyber_ToolBox/lib/"
