@@ -1,0 +1,18 @@
+pkgbase = wprs-git
+	pkgdesc = Like xpra, but for Wayland, and written in Rust.
+	pkgver = r34.64c01e1
+	pkgrel = 1
+	url = https://github.com/wayland-transpositor/wprs
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = libxkbcommon
+	depends = python-psutil
+	provides = wprs
+	conflicts = wprs
+	options = !lto
+	source = wprs::git+https://github.com/wayland-transpositor/wprs.git
+	sha256sums = SKIP
+
+pkgname = wprs-git
