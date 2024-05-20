@@ -1,6 +1,6 @@
 # Maintainer: 1ridic <i at 8f dot al>
 pkgname=easylpac
-pkgver=0.7.5
+pkgver=0.7.6.2
 pkgrel=1
 pkgdesc="lpac GUI Frontend"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("easylpac")
 source=(
   easylpac-$pkgver.tar.gz::https://github.com/creamlike1024/EasyLPAC/archive/refs/tags/$pkgver.tar.gz
 )
-sha256sums=('f079089d7cc11c4d846ae3d2b89d052bf74454431f478e45e87a34cce21860f5')
+sha256sums=('09f1016230f1f95e619581e6705140f0191d308e37c1035c448f9ef3c82e67b0')
 
 build() {
   cd $srcdir/EasyLPAC-$pkgver
