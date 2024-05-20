@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dockit-bin
 _pkgname=DocKit
-pkgver=0.3.0
+pkgver=0.3.1
 _electronversion=28
 pkgrel=1
 pkgdesc="GUI clients for elasticsearch, opensearch and etc"
@@ -22,9 +22,9 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
-sha256sums_aarch64=('d0e3677cd3f816e0bc058474440caacad39467ea4856f6821185c9e547860b5d')
-sha256sums_x86_64=('fc57d77c7536d5813e63d36fe7567f129c1c5f9dfadff279e0516ea806b0fe78')
+sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums_aarch64=('9331d3460bb93740824dd3990a7d9466adf6840f529a91a237b2c70cda2ab2d4')
+sha256sums_x86_64=('f298bb0971cddeea9320001867d6a6a25fe91fb0352335ed4dec603325a0f432')
 build() { 
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
