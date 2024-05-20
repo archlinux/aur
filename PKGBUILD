@@ -1,7 +1,9 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
-pkgbase=linux-lts61
+_rtver=30
+_rtbase=6.1.90
+pkgbase=linux-rt-lts61
 pkgver=6.1.91
 pkgrel=1
 pkgdesc='LTS Linux'
@@ -30,6 +32,7 @@ _srcname=linux-$pkgver
 _srctag=v$pkgver
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
+  https://cdn.kernel.org/pub/linux/kernel/projects/rt/${pkgver:0:3}/patches-${_rtbase}-rt${_rtver}.tar.{gz,sign}
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0004-Sphinx-7.2.2-8.0-PosixPath.patch
   config  # the main kernel config file
@@ -37,23 +40,30 @@ source=(
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+  D5653EA39C8675DA4BD5971C13B55DD07C53B851  # Clark Williams
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 md5sums=('b90778cad489fa0b1ecdb55ea7ff5383'
          'SKIP'
+         'a6f84904a99bbcde8273c49b72158ded'
+         'SKIP'
          'cb32cb125ea45ac05782630dfc9fc951'
          '806e76e95002ecbf49b03d6e655dc567'
-         'c7f23b1bcb226f29451d47bb7ae8604b')
+         'ba035ba9a8d8cd396d3e368de8c4c7fb')
 sha256sums=('880ace63ca2291b8b639e9bd862cc828649d3e1e00ccfee5861473debd2e4dec'
+            'SKIP'
+            'e482cc10668a6a4ceb5bd1a65622151e93fdf5adc0422b06a9898528938cfd80'
             'SKIP'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '08ef05d8a4fc8117d131f219d753caa138a0fb7c8f00690ff6dc35ac6aacdb83'
-            'ea7a177caf7170b9f3746732e3d32703357d19cbafd463069aa34a8d8386c1e9')
+            'f02a74973a4e3a2165a82e62cb682e0eed8bb5ade6f951564c45d24e2b5f07ff')
 b2sums=('1bb497a5c95baf9385639c822ac9696f05d573e226ccbe8047fed20def6776e8e64aba5187b44fd41cd86ebe0645b7770f3148632d07c36183b038d6fd50e699'
+        'SKIP'
+        '1cefe5e0b9daf7ff9a6695d085c92b354e9add9356712405116378c2286955ae696b9d1b8ba74a28c8021ae6fe4f5749795e40aac74186a656d6fbc2f33b31bf'
         'SKIP'
         '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
         'a208eece0028ca98e64637b58d0d4c2e641a111d2f8f9f4a9c71531bb12f75edae14c9e7dbeb840d88be9fdc0b0022cf0a30e3f6a9c34d58e068e02a79940ea8'
-        'c277e4a3bb39e126fc10d37fe98e34c93332c8f7db6d134fd6d2e7ce30ae4840596eff5fdf3ce85f923b944981bd3a2fea912c11dedaa25d04d460b6d112806a')
+        '1a1adfb82e2d8a7fa9153ef4277a3d660e7f44af213e8b4039c4675991a115c05dc563575157c470341d4d990a02b74fefba322fbce22ad060d369be69e67fe9')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -74,6 +84,11 @@ prepare() {
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
+  done
+
+  for patch in ../patches/*.patch; do
+    echo "Applying patch $patch..."
+    patch -Np1 < "$patch"
   done
 
   echo "Setting config..."
