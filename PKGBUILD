@@ -2,7 +2,7 @@
 pkgname=deepin-wine-pandaocr.pro
 _pkgname=com.pandaocr.pro.spark
 _officalname=PandaOCR.Pro
-pkgver=5.53
+pkgver=5.54
 sparkver=1.0.0
 pkgrel=1
 epoch=
@@ -30,8 +30,8 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('f21c8dd02ee531e32a6f8b4b9cf8c49a21d6c85d422063673ff172e07deeb98f'
-            'bbc874199739342761996d76fb07273ea32cb0db9a702461864ea08fcba3b45f'
-            '7861deaaf747a5c7fdb04b236ff61fe708743899df3f95c6d3d5da1a0ff59d94'
+            'b7d0d7f428cfab32b8d0567c81d593aad7f114e2bb51d038fedb407315c48908'
+            '40964a5d392e1bca1e7deb5a7feb76656fb6c19008b8496b4a4d15ecbcca1394'
             'b4948024dbc267c51f609200d000794b4dcff51eae3b677b53710ee04d9548c0')
 build() {
     sed -e "s|@appname@|${pkgname}|g" \
