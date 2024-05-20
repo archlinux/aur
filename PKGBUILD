@@ -1,6 +1,6 @@
 # Maintainer: James Rose <james.rose1103@protonmail.com>
 pkgname=rosary-git
-pkgver=1.1.0
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A Bible App developed with tauri"
 arch=('any')
@@ -19,7 +19,7 @@ prepare() {
 	npm run tauri build
 }
 package(){
-	cd "$srcdir"/Rosary/src-tauri/target/*unknown-linux*/release/bundle/deb
+	cd "$srcdir"/Rosary/src-tauri/target/release/bundle/deb
 	dpkg-deb -x *.deb here
 	cd here
 
