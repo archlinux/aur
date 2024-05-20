@@ -1,7 +1,7 @@
 pkgbase = papis
 	pkgdesc = Command-line document and bibliography manager
 	pkgver = 0.13
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/papis/papis
 	arch = any
 	license = GPL-3.0-or-later
