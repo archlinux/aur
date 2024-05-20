@@ -1,10 +1,7 @@
-# Maintainer: Daniel Albers <daniel@lbe.rs>
-# https://github.com/AlD/archlinux/tree/master/pkgbuilds/kodi-addon-pvr-hts
-
 pkgname=kodi-addon-pvr-hts
 pkgbase=${pkgname}
 _gitname=pvr.hts
-pkgver=21.2.2
+pkgver=21.2.3
 
 _gitver=branch=Omega
 pkgrel=1
@@ -13,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/$_gitname"
 license=('GPL')
 groups=('kodi-addons')
-makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev>=21')
+makedepends=('cmake' 'kodi-platform' 'git' "kodi-dev>=${pkgver%%.*}")
 depends=('kodi' 'p8-platform')
 source=("git+https://github.com/kodi-pvr/${_gitname}.git#${_gitver}")
 md5sums=('SKIP')
