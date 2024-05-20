@@ -1,8 +1,8 @@
 # Maintainer: Florian Wetzel <aur@commanderred.xyz>
 pkgname=prometheus-adaptec-exporter
 
-pkgver=1.0.1
-commit="2cb1e244ea7319117e1de13e0054d0bc0ceb3d76"
+pkgver=1.0.2
+commit="c1015b1cf04a57648a06a1e05e17fcbca5202d94"
 pkgrel=1
 pkgdesc="Prometheus Adaptec Exporter"
 
