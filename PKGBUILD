@@ -1,10 +1,10 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=ruby-cool.io
 _pkgname=${pkgname#ruby-}
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="Simple evented I/O for Ruby"
 arch=(x86_64)
 url="https://github.com/tarcieri/cool.io"
@@ -13,28 +13,28 @@ depends=(
   glibc
   ruby
 )
-makedepends=(rubygems)
+makedepends=(
+  git
+  rubygems
+)
 checkdepends=(ruby-rspec)
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e0500529b86e487cb7a682833e46d30dc6e6fbf63e9d5e419aee05bd7cadb9bd')
+source=("$pkgname::git+$url.git#tag=v$pkgver")
+sha256sums=('0364aaf3f35cbe09fb18f274d2f42e21c147dbda9990b8716b3c76c01c4a2183')
 
-_archive="$_pkgname-$pkgver"
+_archive="$pkgname"
 
 prepare() {
   cd "$_archive"
 
   # Update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "$_pkgname.gemspec"
-
-  # We don't build from a git checkout
-  sed --in-place --regexp-extended 's|git ls-files|find . -type f -not -path "*/\.git/*"|' "$_pkgname.gemspec"
 }
 
 build() {
   cd "$_archive"
 
-  local _gemdir="$(gem env gemdir)"
+  local gemdir="$(gem env gemdir)"
 
   gem build "$_pkgname.gemspec"
 
@@ -43,17 +43,17 @@ build() {
     --verbose \
     --ignore-dependencies \
     --no-user-install \
-    --install-dir "tmp_install/$_gemdir" \
+    --install-dir "tmp_install/$gemdir" \
     --bindir "tmp_install/usr/bin" \
     "$_pkgname-$pkgver.gem"
 
   # Remove unrepreducible files
   rm --force --recursive --verbose \
-    "tmp_install/$_gemdir/cache/" \
-    "tmp_install/$_gemdir/gems/$_pkgname-$pkgver/vendor/" \
-    "tmp_install/$_gemdir/doc/$_pkgname-$pkgver/ri/ext/"
+    "tmp_install/$gemdir/cache/" \
+    "tmp_install/$gemdir/gems/$_pkgname-$pkgver/vendor/" \
+    "tmp_install/$gemdir/doc/$_pkgname-$pkgver/ri/ext/"
 
-  find "tmp_install/$_gemdir/gems/" \
+  find "tmp_install/$gemdir/gems/" \
     -type f \
     \( \
     -iname "*.o" -o \
@@ -65,7 +65,7 @@ build() {
     \) \
     -delete
 
-  find "tmp_install/$_gemdir/extensions/" \
+  find "tmp_install/$gemdir/extensions/" \
     -type f \
     \( \
     -iname "mkmf.log" -o \
@@ -77,15 +77,13 @@ build() {
 check() {
   cd "$_archive"
 
-  local _gemdir="$(gem env gemdir)"
-  GEM_HOME="tmp_install/$_gemdir" rspec
+  GEM_HOME="tmp_install/$(gem env gemdir)" rspec
 }
 
 package() {
   cd "$_archive"
 
-  cp --archive tmp_install/* "$pkgdir"
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  cp -a tmp_install/* "$pkgdir"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
