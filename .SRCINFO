@@ -1,14 +1,18 @@
 pkgbase = vst2sdk
 	pkgdesc = Steinberg's VST2 SDK
-	pkgver = 3.6.10
-	pkgrel = 2
+	pkgver = 2.4
+	pkgrel = 1
+	epoch = 1
 	url = http://www.steinberg.net/en/company/developers.html
-	arch = any
-	license = eula
-	provides = steinberg-vst36
-	provides = vst2sdk
-	conflicts = steinberg-vst36
-	source = https://web.archive.org/web/20181016150224/https://download.steinberg.net/sdk_downloads/vstsdk3610_11_06_2018_build_37.zip
-	sha512sums = f93a6dc52ed4ba0ed5684cf0e9d5e5cf61dafff8faeea4d006f18a80ea374acc6ec4a8bd94f630aa28852b3f16595fef308baf5783865a8726d7336ab26eb317
+	arch = x86_64
+	arch = i686
+	license = LicenseRef-SteinBerge-License
+	makedepends = git
+	makedepends = cmake
+	options = !staticlibs
+	source = https://download.steinberg.net/sdk_downloads/vst-sdk_3.7.11_build-10_2024-04-22.zip
+	source = git+https://github.com/R-Tur/VST_SDK_2.4.git#commit=4610873fa433d263a5c4a68b5b8b59ffcf6ca6db
+	sha512sums = e19ff4ac0c5005b97402eddfce39e94dacd2e55f6ac8a288d5520cb48fb41dfff05188ff8ea1a4a1b1b0d6a89f558c798e8356cf9fcb68bd4e8b3431aee02932
+	sha512sums = e288ed04834440498a9180149832d0936a7858ff759f59f38a4f3d6a8d4aee99711be36c4597ef6571b8265d0e7769a453056d8ab540f3ad4d2e5a516cb61c69
 
 pkgname = vst2sdk
