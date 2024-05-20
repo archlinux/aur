@@ -1,6 +1,6 @@
 pkgbase = sourcegit-bin
 	pkgdesc = GUI client for GIT users
-	pkgver = 8.12
+	pkgver = 8.13
 	pkgrel = 1
 	url = https://github.com/sourcegit-scm/sourcegit
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = sourcegit-bin
 	depends = xdg-utils
 	provides = sourcegit
 	conflicts = sourcegit
-	source = https://github.com/sourcegit-scm/sourcegit/releases/download/v8.12/sourcegit_8.12.linux-x64.tar.gz
+	source = https://github.com/sourcegit-scm/sourcegit/releases/download/v8.13/sourcegit_8.13.linux-x64.tar.gz
 	source = sourcegit.desktop
 	source = LICENSE
-	sha256sums = fd7114b47650d1590af47bd90bebfac034a540820931407c17e6f7bd883353b7
+	sha256sums = ce5b96ce817a7ff40e64bdd2e6a89d7bee8eb4c1aa1133d583f75a87dbc622c2
 	sha256sums = 3488ee13a4ca1bae85c35f866d046304d8716a64c46cadb2576cb8b4ae44b058
 	sha256sums = 6cef41c8a297f46faafe40016ffcce9d968b3722048b81cd768fdbaa1be02ca1
 
