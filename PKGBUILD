@@ -1,12 +1,12 @@
 pkgname=raze-bin
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/raze"
 license=('custom:BUILD' 'GPL2')
-depends=('gtk3' 'hicolor-icon-theme' 'libgl' 'libjpeg' 'libvpx' 'openal' 'sdl2' 'zmusic-bin')
-conflicts=("raze" "raze-git")
+depends=('gtk3' 'hicolor-icon-theme' 'libgl' 'libjpeg' 'libvpx' 'openal' 'sdl2' 'zmusic')
+conflicts=("raze" "raze-git" "zmusic-bin")
 optdepends=('gxmessage: crash dialog (GNOME)' 'kdialog: crash dialog (KDE)' 'xorg-xmessage: crash dialog (other)')
 makedepends=('unzip')
 _pkgrel_x86_64=1
