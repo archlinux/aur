@@ -4,7 +4,7 @@
 pkgname=paru-static
 _pkgname=paru
 pkgver=2.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz"
@@ -71,9 +71,9 @@ build () {
 
   # paru
   cd "$srcdir/$_pkgname-$pkgver"
-  if pacman -T pacman-git > /dev/null; then
+  #if pacman -T pacman-git > /dev/null; then
     _features+="git,"
-  fi
+  #fi
   if [[ $TARGET =~ musl ]]; then
     _features+="static,"
   fi
