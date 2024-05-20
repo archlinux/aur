@@ -2,7 +2,7 @@
 
 pkgname=python-anthropic
 _pkgname=anthropic-sdk-python
-pkgver=0.25.9
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Python library that provides convenient access to the Anthropic REST API"
 arch=(any)
@@ -42,7 +42,7 @@ source=(
   "fix-pytest-asyncio-usage.patch"
 )
 sha256sums=(
-  'f4c97300a52a08768acfe13f213cd0c0b7235ee09e10ce7d8c0168d724bdc3a9'
+  '241f42c1b1050e782e610af98116926d947782c3ef6e0051a8c4bf640a1e8068'
   '9058cc717a6e8eebba65d9735e7376f9d1a024f0e4a2635b96278e6a39b31e01'
 )
 
