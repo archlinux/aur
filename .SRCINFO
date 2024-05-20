@@ -1,7 +1,7 @@
 pkgbase = c3-bin
 	pkgdesc = A TUI to-do list that uses and extends calcurse format to have tree-like dependencies.
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/nimaaskarian/c3
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,6 @@ pkgbase = c3-bin
 	provides = c3
 	conflicts = c3
 	source = c3-bin::https://github.com/nimaaskarian/c3/releases/download/1.0.1/c3.x86.linux
-	md5sums = f7944522f94b5e79e6a85b2ebb2608e5
+	md5sums = 09a0ba1e6139c6b160e91924d5414b36
 
 pkgname = c3-bin
