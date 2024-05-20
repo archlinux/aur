@@ -36,12 +36,3 @@ index a6661760..b301a6c6 100644
  {
      const char *msg = aErr->message ? aErr->message : "<none>";
      size_t msgLen = strlen(msg);
-@@ -1856,7 +1856,7 @@ static void xmlParserBaseGenericError(void *pCtx, const char *pszMsg, ...) RT_NO
-     va_end(args);
- }
- 
--static void xmlParserBaseStructuredError(void *pCtx, xmlErrorPtr error) RT_NOTHROW_DEF
-+static void xmlParserBaseStructuredError(void *pCtx, const xmlError *error) RT_NOTHROW_DEF
- {
-     NOREF(pCtx);
-     /* we expect that there is always a trailing NL */

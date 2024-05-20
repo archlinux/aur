@@ -7,9 +7,9 @@
 
 pkgname=virtualbox-kvm
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
-pkgver=20240502
+pkgver=20240515
 _pkgver=dev-${pkgver}
-_vboxver='7.0.14'
+_vboxver='7.0.18'
 pkgrel=1
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
@@ -53,8 +53,8 @@ source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vb
         '013-support-building-from-dkms.patch'
         '018-upate-xclient-script.patch'
         '019-libxml-2-12.patch')
-sha256sums=('45860d834804a24a163c1bb264a6b1cb802a5bc7ce7e01128072f8d6a4617ca9'
-            '9e9d1d9c4f02414686dc7dabeb8a757bde000ea0e0a445c151742734b882e056'
+sha256sums=('d999513533631674a024762668de999411d8197060c51e68c5faf0a2c0eea1a5'
+            '4839daa07fb470f09b365aacef3ce22e84c6633470f067fb62f2163bfff5cf6a'
             '76d98ea062fcad9e5e3fa981d046a6eb12a3e718a296544a68b66f4b65cb56db'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             'da4c49f6ca94e047e196cdbcba2c321199f4760056ea66e0fbc659353e128c9e'
@@ -74,7 +74,7 @@ sha256sums=('45860d834804a24a163c1bb264a6b1cb802a5bc7ce7e01128072f8d6a4617ca9'
             '81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024'
             '00f68b86d32a1fada900c2da8dad2ab4215106cd58004f049bded99727cda2ff'
             '87dddfd9047480e4c2b73367facf5dd3702148418c2efcd606af17c07da90fe0'
-            '25271f26d897bb76ae2a39b6fdf10409acc929e2d424e34d1bd42014a42a0d31')
+            '7e5f1e386032dbe1042101d44bf454fddce8f7cbacea686816283840572b4201')
 
 prepare() {
     cd "VirtualBox-${_vboxver}"
@@ -94,7 +94,7 @@ prepare() {
     cp "${srcdir}/LocalConfig.kmk" .
 
     echo 'Use our CFLAGS'
-    echo "VBOX_GCC_OPT=$CXXFLAGS" >> LocalConfig.kmk
+    echo "VBOX_GCC_OPT=$CXXFLAGS -Wno-error=stringop-truncation" >> LocalConfig.kmk
 }
 
 build() {
