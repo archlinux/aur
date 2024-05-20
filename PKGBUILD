@@ -7,7 +7,7 @@ _pkgname="${pkgname%-snapshot}"
 _pkgver=2.3.4-14
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 provides=('libslang.so' 'slang' 'slsh')
@@ -63,7 +63,7 @@ package() {
 
   # Let's byte-compile *.sl for greater goodness
   ../../bin/slsh -e '
-    for ($1=1; $1<__argc; $1++) {
+    for ($1=0; $1<__argc; $1++) {
       $2 = __argv[$1];
       () = printf("Byte-compiling %s …", $2);
       byte_compile_file($2, 0);
