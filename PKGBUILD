@@ -2,14 +2,14 @@
 
 _pkgname='quikc'
 pkgname='quikc-git'
-pkgver=r368.4981652
-pkgrel=2
-url="https://codeberg.org/ramenu/$_pkgname"
+pkgver=r374.fa09550
+pkgrel=1
+url="https://git.missingno.dev/$_pkgname"
 pkgdesc='A minimalistic, safety-focused build system for C/C++'
 arch=('x86_64')
 makedepends=('cargo' 'git')
 license=('MIT')
-source=("$_pkgname::git+$url.git")
+source=("$_pkgname::git+$url")
 optdepends=('gcc: GNU C/C++ compiler'
 		    'clang: LLVM C/C++ frontend'
 			'pkgconf: for automatic third party dependency resolution'
