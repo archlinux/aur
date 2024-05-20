@@ -1,2 +1,5 @@
 *.deb
 .vscode
+src
+pkg
+*.pkg.tar.zst
