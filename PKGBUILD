@@ -6,7 +6,7 @@
 pkgname=osu-lazer
 _pkgname=osu
 pkgver=2024.519.1
-pkgrel=2
+pkgrel=1
 pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=('x86_64')
 url="https://osu.ppy.sh/"
