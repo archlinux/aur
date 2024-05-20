@@ -1,15 +1,15 @@
 pkgbase = comrak
 	pkgdesc = CommonMark + GFM compatible Markdown parser and renderer
-	pkgver = 0.23.0
+	pkgver = 0.24.1
 	pkgrel = 1
 	url = https://github.com/kivikakk/comrak
 	arch = x86_64
 	arch = i686
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/kivikakk/comrak/archive/0.23.0/comrak-0.23.0.tar.gz
-	sha256sums = e291ac08a699cc6c4afb79f3dd23ee1b453dfd66d1c86af5d71889e25a458830
+	source = https://github.com/kivikakk/comrak/archive/v0.24.1/comrak-0.24.1.tar.gz
+	sha256sums = 045aadd282968c15499bf308974fb9ea4293b9b8ada29baaafa818546943297d
 
 pkgname = comrak
