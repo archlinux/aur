@@ -2,9 +2,9 @@
 pkgname=airvpn-suite
 _pkgname=AirVPN-Suite
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 _commit="ef5ce5ad8fff24f3476f3a072f44d31a5cd1d3fc"
-pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – stable"
+pkgdesc="AirVPN client software collection – stable"
 arch=('x86_64')
 url="https://gitlab.com/AirVPN/$_pkgname"
 license=('GPL3')
@@ -12,8 +12,11 @@ provides=('hummingbird' 'hummingbird-bin' 'airvpn-suite-bin' 'airvpn-suite-beta-
 conflicts=('hummingbird' 'hummingbird-bin' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
 depends=('dbus' 'libxml2' 'crypto++' 'curl' 'zlib' 'lz4' 'openssl' 'zstd' 'xz' 'glibc' 'gcc-libs')
 makedepends=('git' 'wget' 'wireguard-tools')
-source=("git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+source=(
+    "git+$url.git#commit=$_commit"
+    'openvpn3-airvpn-source::git+https://github.com/AirVPN/openvpn3-airvpn.git')
+sha256sums=('c7c823d7bb813ac384cd8feb2854bff37c03c295b3a0ed2835ac21c46485b1ff'
+            'SKIP')
 backup=('etc/airvpn/bluetit.rc')
 install="$pkgname.install"
 changelog="Changelog-Suite.txt"
@@ -25,15 +28,14 @@ build() {
     export DL="$O3/dl" && mkdir "$DL"
     cd "$O3"
 
-    # clone and build OpenVPN3 core
-    git clone https://github.com/AirVPN/openvpn3-airvpn.git core
+    # build OpenVPN3 core
+    ln -sf "$srcdir/openvpn3-airvpn-source" 'core'
     cd core/scripts/linux
     ./build-all
 
     # move directories around for the suite build scripts
-    cd "$srcdir"
-    mv "$O3/core" "$srcdir/openvpn3-airvpn"
-    mv "$O3/deps/asio" "$srcdir"
+    rm -rf "$srcdir/openvpn3-airvpn" && mv "$O3/core" "$srcdir/openvpn3-airvpn"
+    rm -rf "$srcdir/asio" && mv "$O3/deps/asio" "$srcdir"
 
     # build the suite
     cd "$_pkgname"
