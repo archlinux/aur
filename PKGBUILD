@@ -4,7 +4,7 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=15.2.4
+pkgver=15.3.1
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -102,7 +102,7 @@ package_teleport-client() {
     install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl"
     install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh"
 }
-sha512sums=('abec5efeae36b11a4ad66d00d8ddae67fabccf82392dc6afc9b80526c3b63034e1b047598bc42c583711b8ee3df9188a8899c7e10a6bf4e604f51b6476bfe86c'
+sha512sums=('6e0dce363061162a23270757a2d8084fd136d6d0ea8f1e8543ba0d2d2af8543ed2427437e3bf88a91217c359f9da627601435d3cb3c29587f128e9feed05c3c1'
             'bf13a77d1cdaa0c3e09034ede9acdf6834a7e21dbb18b0f9d8f46917be9772416edba7f0001cd38f6124564c0c31549f8d7048dd7a9f5ad76ff8e02f4451f044'
             '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
             '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
