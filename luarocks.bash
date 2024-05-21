@@ -1,0 +1,1 @@
+source <(luarocks completion bash)

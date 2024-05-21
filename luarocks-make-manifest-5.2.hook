@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/luarocks/rocks-5.2/*/**
+
+[Action]
+Description = Generating luarocks manifest for Lua 5.2...
+When = PostTransaction
+Exec = /usr/bin/luarocks-admin make_manifest --local-tree --lua-version=5.2 /usr/lib/luarocks/rocks-5.2/
+Depends = luarocks

@@ -1,0 +1,5 @@
+[luarocks]
+source = "github"
+github = "luarocks/luarocks"
+prefix = "v"
+use_max_tag = true
