@@ -1,5 +1,5 @@
 pkgname=companion
-pkgver=3.2.2
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('x86_64' 'aarch64')
@@ -10,26 +10,24 @@ makedepends=('nvm' 'git' 'zip' 'python>=3.10.0')
 install=companion.install
 
 source=("${pkgname}-${pkgver}::git+https://github.com/bitfocus/companion.git#tag=v${pkgver}"
-		"companion_headless.sh"
 		"bitfocus-companion.desktop")
 
-sha256sums=('SKIP'
-            '56b46d5369bdae8ef83d244b86002a3f2e354e68c6706d884eb09233c4e6df79'
-            '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
+sha256sums=('7980721ff74217082d94f0f287d47a52c08db93ab85bc57bf88d105aa6dac3c3'
+			'65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
 
 _ensure_local_nvm() {
-    # let's be sure we are starting clean
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
+	# let's be sure we are starting clean
+	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+	export NVM_DIR="${srcdir}/.nvm"
 
-    # The init script returns 3 if version specified
-    # in ./.nvrc is not (yet) installed in $NVM_DIR
-    # but nvm itself still gets loaded ok
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    
-    export PATH="$(npm bin):${PATH}"
-    export SHARP_IGNORE_GLOBAL_LIBVIPS=yes
-    export YARN_CACHE_FOLDER="${srcdir}/yarn"
+	# The init script returns 3 if version specified
+	# in ./.nvrc is not (yet) installed in $NVM_DIR
+	# but nvm itself still gets loaded ok
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	
+	export PATH="$(npm bin):${PATH}"
+	export SHARP_IGNORE_GLOBAL_LIBVIPS=yes
+	export YARN_CACHE_FOLDER="${srcdir}/yarn"
 }
 
 prepare() {
@@ -47,8 +45,9 @@ prepare() {
 
 	nvm install
 	npm config set cache "${srcdir}/npm"
-	npm install -g node-gyp
-	npm install -g yarn
+
+	# Enable corepack
+	corepack enable
 }
 
 build() {
@@ -80,9 +79,6 @@ package() {
 
 	rm -f "${pkgdir}/usr/lib/bitfocus-companion/resources/node-runtime/bin/npm"
 	rm -f "${pkgdir}/usr/lib/bitfocus-companion/resources/node-runtime/bin/npx"
-
-	rm -f "${pkgdir}/usr/lib/bitfocus-companion/companion_headless.sh"
-	install -Dm755 companion_headless.sh -t "${pkgdir}/usr/lib/bitfocus-companion/"
 
 	# Install bin symlinks
 	install -d "${pkgdir}/usr/bin"
