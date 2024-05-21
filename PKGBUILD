@@ -3,10 +3,13 @@
 pkgname=platypush-git
 pkgver=0.50.3.r985.g4038ef3b
 pkgrel=1
-pkgdesc="Universal multi-platform command executor and automation manager"
+pkgdesc="A general-purpose, event-driven, plugin-based platform for automation-as-code"
 arch=('any')
 license=('MIT')
-url="https://git.platypush.tech/platypush/platypush"
+backup=(
+  'etc/platypush/config.yaml'
+)
+url="https://platypush.tech"
 makedepends=('git')
 depends=(
     'python'
@@ -100,7 +103,7 @@ optdepends=(
 	'python-watchdog: File monitor support'
     'python-weasyprint: PDF generation support'
 	'pyzbar: QR code and barcodes integration'
-    'youtube-dl: Support for downloading/streaming YouTube videos, as well as other video platforms'
+    'yt-dlp: Support for downloading/streaming YouTube videos, as well as other video platforms'
 )
 
 conflicts=('platypush')
@@ -113,19 +116,22 @@ package() {
     cd "${srcdir}/platypush"
     PYTHONDONTWRITEBYTECODE=1 python3 setup.py install --root="${pkgdir}/" --optimize=1
 
+    install -m750 -d "${pkgdir}/var/lib/platypush"
+    install -m755 -d "${pkgdir}/usr/lib/systemd/system"
     install -m755 -d "${pkgdir}/usr/lib/systemd/user"
-    install -m644 "${srcdir}/platypush/examples/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/user"
-
-    echo
-    echo
-    echo ---------------------------------------------
-    echo You can start the Platypush service through
-    echo systemctl --user start platypush.
-    echo
-    echo Remember to enable/start the Redis service
-    echo before starting Platypush.
-    echo ---------------------------------------------
-    echo
-    echo
+    install -m644 "${srcdir}/platypush/platypush/config/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/user/platypush.service"
+    install -m644 "${srcdir}/platypush/platypush/config/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/system/platypush.service"
+    sed -i "${pkgdir}/usr/lib/systemd/system/platypush.service" -r \
+        -e 's/^#\s*Requires=(.*)/Requires=\1/' \
+        -e 's/^\[Service\]$/\[Service\]\
+User=platypush\
+Group=platypush\
+WorkingDirectory=\/var\/lib\/platypush\
+Environment="PLATYPUSH_CONFIG=\/etc\/platypush\/config.yaml"\
+Environment="PLATYPUSH_WORKDIR=\/var\/lib\/platypush"/'
+    install -m750 -d "${pkgdir}/etc/platypush"
+    install -m750 -d "${pkgdir}/etc/platypush/scripts"
+    install -m644 "${srcdir}/platypush/platypush/config/config.yaml" "${pkgdir}/etc/platypush/config.yaml"
+    install -Dm644 "${srcdir}/platypush/platypush/config/systemd/platypush-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/platypush.conf"
+    install -Dm644 "${srcdir}/platypush/platypush/config/systemd/platypush-tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/platypush.conf"
 }
-

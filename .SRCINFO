@@ -1,8 +1,8 @@
 pkgbase = platypush-git
-	pkgdesc = Universal multi-platform command executor and automation manager
+	pkgdesc = A general-purpose, event-driven, plugin-based platform for automation-as-code
 	pkgver = 0.50.3.r985.g4038ef3b
 	pkgrel = 1
-	url = https://git.platypush.tech/platypush/platypush
+	url = https://platypush.tech
 	arch = any
 	license = MIT
 	makedepends = git
@@ -94,10 +94,11 @@ pkgbase = platypush-git
 	optdepends = python-watchdog: File monitor support
 	optdepends = python-weasyprint: PDF generation support
 	optdepends = pyzbar: QR code and barcodes integration
-	optdepends = youtube-dl: Support for downloading/streaming YouTube videos, as well as other video platforms
+	optdepends = yt-dlp: Support for downloading/streaming YouTube videos, as well as other video platforms
 	provides = platypush
 	conflicts = platypush
 	options = !strip
+	backup = etc/platypush/config.yaml
 	source = master.tar.gz::https://git.platypush.tech/platypush/platypush/archive/master.tar.gz
 	sha256sums = SKIP
 
