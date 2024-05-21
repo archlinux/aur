@@ -1,0 +1,17 @@
+pkgbase = zeldaoot
+	pkgdesc = The Legend of Zelda: Ocarina of Time game powered by the soh.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/zeldaoot
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = soh-bin
+	depends = wget
+	depends = unzip
+	depends = yad
+	source = https://gitlab.com/linuxbombay/zeldaoot/-/archive/1.0.0/zeldaoot-1.0.0.tar.bz2
+	sha256sums = 7e7bd07952b787f028eea53513d0624a3ecf51d9c0459f9352c7a77c8ebd1952
+
+pkgname = zeldaoot
