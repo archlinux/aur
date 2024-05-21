@@ -2,7 +2,7 @@
 # Contributor: Repentinus <aur at repentinus dot eu>
 # Contributor: Mario Finelli <mario dot finelli at yahoo dot com>
 
-pkgname=neovim-colors-solarized-truecolor-only
+pkgname=neovim-colors-solarized-truecolor-only-git
 pkgver=20161106
 pkgrel=1
 pkgdesc="Precision colors for machines and people."
