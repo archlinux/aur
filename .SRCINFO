@@ -1,6 +1,6 @@
 pkgbase = r-stanheaders
 	pkgdesc = C++ Header Files for Stan
-	pkgver = 2.32.7
+	pkgver = 2.32.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=StanHeaders
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = r-stanheaders
 	optdepends = r-rmarkdown
 	optdepends = r-rstan
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/StanHeaders_2.32.7.tar.gz
+	source = https://cran.r-project.org/src/contrib/StanHeaders_2.32.8.tar.gz
 	source = fix-flags.patch
-	md5sums = c71af22c52802af07d46b506b23bfe54
+	md5sums = 9132b500cd1a8119b40eacfaa603055b
 	md5sums = 0d0c50619b42dc9d75209fc43320c71b
-	b2sums = 776518ce514fd07c53427751b8d52d8fc483255ae5c79fd8d4261308e72f8c7645b6c052577629cba1e9479cb5e1768e64fb027db54a8b838a63da1c779e0aa8
+	b2sums = 0d4f074e70e08c27da4525afbfe2b32e5726edfe9ecda0a59a53a2586f62f341decc93b3d7e000cf5f6c0968d7125f916c93af1772b395f8dac777e6e24475ce
 	b2sums = 11ef9d240340ee8aaee7d0786dfbd8b412c90b22289a4fc1b9787907b78c6fd75a401078f1be796833fbc87f18095a0960c1b132efc2481e339a10bccf8782aa
 
 pkgname = r-stanheaders
