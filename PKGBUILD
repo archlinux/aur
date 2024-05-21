@@ -2,8 +2,8 @@
 # Contributor: pureboys <yuyuud@yuyuud@gmail.com>
 
 pkgname='kikoplay'
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3' 'MIT')
@@ -19,7 +19,7 @@ source=(
     "git+https://github.com/KikoPlayProject/KikoPlayApp"
 )
 sha256sums=(
-    "da33b02f2b4264c3040feec8a24986f323174feac3505ec52e0a68e5c9ce7b76"
+    "2bb06fe88ba4af98597f626f57256776425c6a3fb6d4b7881452f37f4926a93a"
     SKIP
     SKIP
 )
@@ -68,7 +68,7 @@ package() {
     make install INSTALL_ROOT="${pkgdir}"
     ln -sf KikoPlay "${pkgdir}/usr/bin/kikoplay"
     
-    # also package KikoPlayScript KikoPlayApp, but only exclude the ".git" directory
+    # also package KikoPlayScript and KikoPlayApp, but only exclude the ".git" directory
     install -dm755 "${pkgdir}/usr/share/kikoplay/extension/script"
     cp -r "${srcdir}"/KikoPlayScript/{bgm_calendar,danmu,library,resource} "${pkgdir}/usr/share/kikoplay/extension/script"
     install -dm755 "${pkgdir}/usr/share/kikoplay/extension/app"
