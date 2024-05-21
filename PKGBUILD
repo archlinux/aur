@@ -13,7 +13,7 @@ _build_clblas=false # 2024-04-17: Fails to link with
                     # ggml-opencl.cpp:(.text+0x46): undefined reference to `clEnqueueReadBuffer'
                     # ```
                     # and more errors.
-_build_vulkan=true
+_build_vulkan=false
 
 # Those variables skip CUDA and ROCm build, introduced in https://github.com/ollama/ollama/pull/4462/files.
 export OLLAMA_SKIP_CUDA_GENERATE=true
@@ -40,7 +40,7 @@ if "${_build_vulkan}"; then
 fi
 pkgdesc='Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).'
 pkgver=0.1.38+29.r2757.20240522.4434d7f4
-pkgrel=1
+pkgrel=2
 arch=(
   'armv7h'
   'aarch64'

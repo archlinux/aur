@@ -1,7 +1,7 @@
 pkgbase = ollama-nogpu-git
 	pkgdesc = Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).
 	pkgver = 0.1.38+29.r2757.20240522.4434d7f4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmorganca/ollama
 	arch = armv7h
 	arch = aarch64
@@ -51,16 +51,6 @@ pkgname = ollama-openmpi-git
 
 pkgname = ollama-openblas-git
 	pkgdesc = Create, run and share large language models (LLMs). CPU optimisation with openblas.
-	depends = gcc-libs
-	depends = glibc
-	depends = openssl
-	optdepends = 
-	provides = ollama=0.1.38+29.r2757.20240522.4434d7f4
-	provides = ollama-git=0.1.38+29.r2757.20240522.4434d7f4
-	conflicts = ollama
-
-pkgname = ollama-vulkan-git
-	pkgdesc = Create, run and share large language models (LLMs). With vulkan backend.
 	depends = gcc-libs
 	depends = glibc
 	depends = openssl
