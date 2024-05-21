@@ -5,11 +5,11 @@
 # and uses xfce patches from:
 # https://github.com/simplejack-src/gtk3-classic-xfce (repository no longer available)
 
-__arch_pkg_commit="e0b04924de3fb69bdc60fc1f7f322b0bc5ce1802"
-_gtkver=3.24.41
+__arch_pkg_commit="e6dc1b0abce1d021ea3cec2f8c0d3fdf93cd0b87"
+_gtkver=3.24.42
 
 _gtk3_classic_url=https://github.com/lah7/gtk3-classic
-_gtk3_classic_commit="c0af0886c1e9d3c66e03e57c8084fb2c2259f3e2"
+_gtk3_classic_commit="83313fe74b0611d59099871941441ff7d8b74bb6"
 
 _gtk3_classic=gtk3-classic
 
@@ -23,9 +23,8 @@ conflicts=(gtk3 gtk3-typeahead gtk3-print-backends gtk3-nocsd gtk3-nocsd-git gtk
 provides=(gtk3-classic=$_gtkver gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-mushrooms=$_gtkver gtk3-print-backends
           libgtk-3.so libgdk-3.so libgailutil-3.so)
 arch=(x86_64)
-license=(LGPL-2.0-only)
+license=(LGPL-2.1-or-later)
 depends=(
-	at-spi2-atk
 	atk
 	cairo
 	desktop-file-utils
@@ -54,8 +53,7 @@ optdepends=(
 )
 
 makedepends=(
-	adwaita-icon-theme
-	at-spi2-atk
+	at-spi2-core
 	atk
 	cairo
 	cantarell-fonts
@@ -65,6 +63,7 @@ makedepends=(
 	git
 	gobject-introspection
 	gtk-update-icon-cache
+	hicolor-icon-theme
 	libcups
 	libegl
 	libepoxy
@@ -79,6 +78,7 @@ makedepends=(
 	libxrandr
 	meson
 	pango
+	python-packaging
 	quilt
 	sassc
 	shared-mime-info
@@ -92,8 +92,8 @@ source=(git+$_gtk3_classic_url.git#commit=$_gtk3_classic_commit
 	settings.ini
         appearance__file-chooser-xfce.patch
 )
-sha256sums=('SKIP'
-            '47da61487af3087a94bc49296fd025ca0bc02f96ef06c556e7c8988bd651b6fa'
+sha256sums=('738383c7dccc345c71c8018ff64651dcf410be9c554918e7c27fd5a8cd3107d9'
+            '50f89f615092d4dd01bbd759719f8bd380e5f149f6fd78a94725e2de112377e2'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'c443bfa1f70ac5ce2102c83b38b193e78f614b606cb0dae807ecd25d591f1e99')
