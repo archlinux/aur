@@ -1,0 +1,16 @@
+pkgbase = neovim-colors-solarized-truecolor-only
+	pkgdesc = Precision colors for machines and people.
+	pkgver = 20161106
+	pkgrel = 1
+	url = http://ethanschoonover.com/solarized
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = vim-solarized
+	conflicts = vim-solarized
+	conflicts = vim-colors-solarized-git
+	source = neovim-colors-solarized-truecolor-only::git+https://github.com/frankier/neovim-colors-solarized-truecolor-only.git
+	sha256sums = SKIP
+
+pkgname = neovim-colors-solarized-truecolor-only
