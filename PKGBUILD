@@ -1,8 +1,8 @@
 # Maintainer: Gregor Boehl <admin@gregorboehl.com>
 
 pkgname=manjaro-zsh-config
-pkgver=0.25
-pkgrel=3
+pkgver=0.26
+pkgrel=1
 pkgdesc="Zsh configuration for manjaro"
 arch=('any')
 url="https://github.com/Chrysostomus/manjaro-zsh-config"
@@ -16,8 +16,9 @@ depends=('zsh-autosuggestions'
 	'ttf-noto-nerd'
 	'zsh-theme-powerlevel10k')
 makedepends=('git')
+backup=('root/.zshrc')
 install="$pkgname.install"
-_commit=a09dbc3f6bf22d553def64247b3529d9310c7b1f
+_commit=1f9d0da2c8408de895156cb65d324636d656df1c
 source=("git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
@@ -28,7 +29,6 @@ package() {
 	install -D -m644 zsh-maia-prompt -t "${pkgdir}/usr/share/zsh/"
 	install -D -m644 p10k.zsh -t "${pkgdir}/usr/share/zsh/"
 	install -D -m644 p10k-portable.zsh -t "${pkgdir}/usr/share/zsh/"
-	install -D -m644 command-not-found.zsh -t "${pkgdir}/usr/share/zsh/functions/"
 	install -D -m640 .zshrc -t "${pkgdir}/etc/zsh/zshrc-manjaro"
 	install -d "${pkgdir}/usr/share/zsh/scripts"
 	cp -r base16-shell "${pkgdir}/usr/share/zsh/scripts/"
