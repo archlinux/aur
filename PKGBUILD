@@ -2,14 +2,14 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Customize your Hyprland with scratchpads, menus, easy monitor layout and other extensions"
 arch=(any)
 url="https://github.com/hyprland-community/pyprland"
 license=('MIT')
 groups=()
-depends=('python' 'python-aiofiles' 'hyprland')
-makedepends=('python-build' 'python-installer' 'python-poetry')
+depends=('python' 'python-aiofiles' 'hyprland' 'python-build' 'python-installer')
+makedepends=('python-poetry')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=()
