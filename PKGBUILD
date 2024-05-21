@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyplayer-bin
-pkgver=3.3.5
+pkgver=3.3.6
 _electronversion=19
 pkgrel=1
 pkgdesc="跨平台桌面端视频资源播放器,免费高颜值"
@@ -26,8 +26,8 @@ source=(
 )
 sha256sums=('05a41f7b9dc819453e9c8c3ea4e144fe7e3d09d0f78bdf800e92810312f99094'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch=('188082b7ede8297e6e282eca9c9418a6047ab88e8dc31d33d9f195f6161eaa89')
-sha256sums_x86_64=('b2af951780ee9ef8969a573ae3c5f84a6743aa9b897219610156a8567b46b671')
+sha256sums_aarch=('4e26ec5b6b377bfbae0daa9c8c82ac15112c31639bb9cd85035b7cafd8591cdb')
+sha256sums_x86_64=('876c67d6f6535fe29d6e5ff643bfcc2381ffdb7b91856ec645dffe529b8eda7e')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
