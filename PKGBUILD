@@ -7,7 +7,7 @@ _projectname=electron
 _major=31
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver="0.0-beta.4"
+_subver="0.0-beta.5"
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
@@ -38,7 +38,7 @@ optdepends=(
     'qt6-base: enable Qt6 with --enable-features=AllowQt'
     'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
     'trash-cli: file deletion support (trash-put)'
-    'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
+    "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
 )
 source_aarch64=(
     "${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-arm64.zip"
@@ -52,12 +52,12 @@ source_x86_64=(
     "${pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-x64.zip"
     "${pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-x64.zip"
 )
-sha256sums_aarch64=('18e4b297c7cf9ba818e393ce8645a22b4c152f846adb61812aa1bf74823b946c'
-                    'a828edbc4f64b3168f833e24da189bde17308c7ef1eb20183dc96b85b04b4e38')
-sha256sums_armv7h=('3bd0a9e1d7b05e385146d8fc0482e31cc689f5b81c63a9d3eb02b21a9fdcf322'
-                   '309f1c0f5482b734ddda531be0c97b19b014debaa27d821d729f38a361cec551')
-sha256sums_x86_64=('df49739fe52bcc3fefe44c50f73a50d68449bcbe390e0ce02ca2f0878d4a4ab0'
-                   '93b1631c0414e0eb9d3e845c9fcc4d14dba30fc7a5acd02b8614a9e187ba7654')
+sha256sums_aarch64=('25cf9101940c678914e5b695adb71e13e3721e7c5d548f46576be21b3bee3e37'
+                    'ca1d4d1be4242db7bd3c53121e16bebcb217636ad9c3a52eff783a413ec52816')
+sha256sums_armv7h=('63a7946b7d5ebccbbade40910459d764ed571e44ac30faca6fc6efdad2b843ae'
+                   '8e60518e4f510b9b1fef72c7f95c3f8982e7fe234a8fe1932aaad4c39a587e36')
+sha256sums_x86_64=('709852241dbfaf4a4a65d5b277def81c058c98ba9676c5760049fd45cce38858'
+                   '1a1aeb5f4b8aa9c315a945065e87ad7196519876061cb53f0aa3e1206f030284')
 package() {
     install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
     find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
