@@ -2,7 +2,7 @@ pkgbase = outfly-git
 	pkgdesc = A breathtaking 3D space game in the rings of Jupiter
 	pkgver = 0.8.5_20_gd03ca40
 	pkgrel = 1
-	url = https://codeberg.org/hut/outfly
+	url = https://codeberg.org/outfly/outfly
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = outfly-git
 	depends = alsa-lib
 	depends = systemd-libs
 	provides = outfly
-	source = outfly-git::git+https://codeberg.org/hut/outfly
+	source = outfly-git::git+https://codeberg.org/outfly/outfly
 	md5sums = SKIP
 
 pkgname = outfly-git

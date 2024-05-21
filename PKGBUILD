@@ -6,12 +6,12 @@ pkgver=0.8.5_20_gd03ca40
 pkgrel=1
 pkgdesc="A breathtaking 3D space game in the rings of Jupiter"
 arch=('any')
-url="https://codeberg.org/hut/outfly"
+url="https://codeberg.org/outfly/outfly"
 license=('GPL-3.0-only')
 depends=('glibc' 'libcap' 'gcc-libs' 'alsa-lib' 'systemd-libs')
 makedepends=('git' 'rust' 'libx11' 'pkgconf')
 provides=('outfly')
-source=("$pkgname::git+https://codeberg.org/hut/outfly")
+source=("$pkgname::git+https://codeberg.org/outfly/outfly")
 md5sums=('SKIP')
 
 prepare() {
