@@ -1,7 +1,7 @@
 pkgbase = kwin
 	pkgdesc = An easy to use, but flexible, composited Window Manager
 	pkgver = 6.0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	install = kwin.install
 	arch = x86_64
@@ -61,7 +61,6 @@ pkgbase = kwin
 	depends = libxkbcommon-x11
 	depends = mesa
 	depends = pipewire-session-manager
-	depends = python
 	depends = libplasma
 	depends = qt6-5compat
 	depends = qt6-base
