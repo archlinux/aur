@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lisk-desktop-bin
-pkgver=3.0.1
-_electronversion=27
-pkgrel=4
+pkgver=3.0.2
+_electronversion=29
+pkgrel=1
 pkgdesc="Lisk graphical user interface for desktop"
 arch=('x86_64')
 url="https://lisk.com/wallet"
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 makedepends=(
     'fuse2'
@@ -21,13 +20,14 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-desktop-bin}-linux-${CARCH}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bd548311200426532284afd32cebcf56086f92da54bbadbd31e8a0d8d0dd2f9e'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('712c2fd28af2f169b0ebee91070ad968325467cfe80fa2839472ea6b9f2aface'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@cfgdirname@|Lisk|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
