@@ -2,7 +2,7 @@
 # Maintainer: Roman Zimbelmann <hut@hut.pm>
 
 pkgname=outfly-git
-pkgver=0.8.5_20_gd03ca40
+pkgver=0.9.0_23_g77b682a
 pkgrel=1
 pkgdesc="A breathtaking 3D space game in the rings of Jupiter"
 arch=('any')
