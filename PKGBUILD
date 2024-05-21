@@ -1,5 +1,5 @@
 pkgname=mock-core-configs
-pkgver=40.3
+pkgver=40.4
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -10,7 +10,7 @@ license=('GPL-2.0-or-later')
 depends=('distribution-gpg-keys>=1.98')
 backup=('etc/mock/default.cfg')
 source=("$url/archive/$_pkgtag.tar.gz")
-sha256sums=('06816cd69fa1f567d1ea13d2c2458f3f37e235de6655d98cce331dda79d2f0e2')
+sha256sums=('e1cf847944f4c578bdc8dc435bc31579a93334db1e458e7a29d9cbeeacbc00d0')
 
 # Uncomment to not package configs for EOLed versions of distributions
 #_without_eol=1
