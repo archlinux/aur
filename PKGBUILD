@@ -9,7 +9,7 @@
 pkgname=luarocks-git
 _pkgname=${pkgname%-git}
 pkgver=v3.11.0.r12.gdc0af58
-pkgrel=1
+pkgrel=2
 pkgdesc='Deployment and management system for Lua modules'
 backup=(etc/luarocks/config-5.{1,2,3,4}.lua)
 arch=('any')
@@ -26,6 +26,8 @@ optdepends=('cvs: for fetching sources from CVS repositories'
             'mercurial: for fetching sources from mercurial repositories'
             'cmake: for building rocks that use the cmake build system'
             'lua-sec: HTTPS support')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+https://github.com/${_pkgname}/${_pkgname}"
         luarocks-make-manifest-5.{1,2,3,4}.hook
         "luarocks.bash"
