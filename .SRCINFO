@@ -1,0 +1,21 @@
+pkgbase = libastal-notifd-git
+	pkgdesc = A notification daemon library and cli tool
+	pkgver = r3.5929e35
+	pkgrel = 1
+	url = https://github.com/astal-sh/notifd
+	arch = x86_64
+	license = GPL-3
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = json-glib
+	depends = gdk-pixbuf2
+	provides = astal-notifd
+	provides = libastal-notifd
+	provides = libastal-notifd.so=0-64
+	source = git+https://github.com/astal-sh/notifd
+	sha256sums = SKIP
+
+pkgname = libastal-notifd-git
