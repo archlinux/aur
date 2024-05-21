@@ -1,6 +1,6 @@
 pkgbase = imfile-bin
 	pkgdesc = A full-featured download manager.Forked from motrix.
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://imfile.io/
 	arch = aarch64
@@ -9,19 +9,19 @@ pkgbase = imfile-bin
 	license = MIT
 	depends = electron30
 	provides = motrix
-	provides = imfile=1.0.8
+	provides = imfile=1.0.9
 	conflicts = imfile
 	conflicts = imfile-electron
 	conflicts = motrix
-	source = LICENSE-1.0.8::https://raw.githubusercontent.com/imfile-io/imfile-desktop/v1.0.8/LICENSE
+	source = LICENSE-1.0.9::https://raw.githubusercontent.com/imfile-io/imfile-desktop/v1.0.9/LICENSE
 	source = imfile.sh
 	sha256sums = f60775e705e2c7418665ac2c7f386d28cc2927df98a440ced1703a7ed3ca86b7
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
-	source_aarch64 = imfile-1.0.8-aarch64.deb::https://github.com/imfile-io/imfile-desktop/releases/download/v1.0.8/imfile_1.0.8_arm64.deb
-	sha256sums_aarch64 = abeec5642407d8b21edd8adff26d555308f2d369ed0f33d674d61766094e647f
-	source_armv7h = imfile-1.0.8-armv7h.deb::https://github.com/imfile-io/imfile-desktop/releases/download/v1.0.8/imfile_1.0.8_armv7l.deb
-	sha256sums_armv7h = 3ffb279458b1238f36da1f6842724af5d24e7fc8860e9a38421d502fb773c506
-	source_x86_64 = imfile-1.0.8-x86_64.deb::https://github.com/imfile-io/imfile-desktop/releases/download/v1.0.8/imfile_1.0.8_amd64.deb
-	sha256sums_x86_64 = ffe20f5aa57ac7014dc42a0e6b6dab2f9acd431e956e40f2128ec1862d99ed70
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	source_aarch64 = imfile-1.0.9-aarch64.deb::https://github.com/imfile-io/imfile-desktop/releases/download/v1.0.9/imfile_1.0.9_arm64.deb
+	sha256sums_aarch64 = 93e882feefe519c4098bcf4e585b8d3b747f39a0093a86f2e96c64b0b7f17c43
+	source_armv7h = imfile-1.0.9-armv7h.deb::https://github.com/imfile-io/imfile-desktop/releases/download/v1.0.9/imfile_1.0.9_armv7l.deb
+	sha256sums_armv7h = fd0ffd143bb11d8c6802316ea969c159d13ea3103ed3dcffc276992ab783a9eb
+	source_x86_64 = imfile-1.0.9-x86_64.deb::https://github.com/imfile-io/imfile-desktop/releases/download/v1.0.9/imfile_1.0.9_amd64.deb
+	sha256sums_x86_64 = 86d8c23b6ac7742fcfe681c72a8db78cc4c006bce5258d49c4b48036ee244bb3
 
 pkgname = imfile-bin

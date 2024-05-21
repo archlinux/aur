@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imfile-bin
 _pkgname=imFile
-pkgver=1.0.8
+pkgver=1.0.9
 _electronversion=30
 pkgrel=1
 pkgdesc="A full-featured download manager.Forked from motrix."
@@ -33,14 +33,15 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('f60775e705e2c7418665ac2c7f386d28cc2927df98a440ced1703a7ed3ca86b7'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('abeec5642407d8b21edd8adff26d555308f2d369ed0f33d674d61766094e647f')
-sha256sums_armv7h=('3ffb279458b1238f36da1f6842724af5d24e7fc8860e9a38421d502fb773c506')
-sha256sums_x86_64=('ffe20f5aa57ac7014dc42a0e6b6dab2f9acd431e956e40f2128ec1862d99ed70')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums_aarch64=('93e882feefe519c4098bcf4e585b8d3b747f39a0093a86f2e96c64b0b7f17c43')
+sha256sums_armv7h=('fd0ffd143bb11d8c6802316ea969c159d13ea3103ed3dcffc276992ab783a9eb')
+sha256sums_x86_64=('86d8c23b6ac7742fcfe681c72a8db78cc4c006bce5258d49c4b48036ee244bb3')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
