@@ -15,6 +15,10 @@ _build_clblas=false # 2024-04-17: Fails to link with
                     # and more errors.
 _build_vulkan=true
 
+# Those variables skip CUDA and ROCm build, introduced in https://github.com/ollama/ollama/pull/4462/files.
+export OLLAMA_SKIP_CUDA_GENERATE=true
+export OLLAMA_SKIP_ROCM_GENERATE=true
+
 _name="ollama"
 _pkgbase="${_name}-nogpu"
 pkgbase="${_pkgbase}-git"
@@ -36,7 +40,7 @@ if "${_build_vulkan}"; then
 fi
 pkgdesc='Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).'
 pkgver=0.1.37+3.r2707.20240511.4ec7445a
-pkgrel=1
+pkgrel=2
 arch=(
   'armv7h'
   'aarch64'
@@ -73,7 +77,7 @@ fi
 source=(
   "${_name}::git+${url}.git"
   "llama.cpp::git+https://github.com/ggerganov/llama.cpp.git" # Submodule
-  'disable-rocm-cuda.gen_linux.sh.patch'
+#   'disable-rocm-cuda.gen_linux.sh.patch'
   "ollama.service"
   "sysusers.conf"
   "tmpfiles.d"
@@ -81,7 +85,7 @@ source=(
 b2sums=(
   'SKIP'  # ollama (git)
   'SKIP'  # llama.cpp (git)
-  '02d92a87554f2842b100908395a2599a843d21b95bf2c1961c2d862c35dda906893af107460054bf02340c52e4b4e3baa80cf95d071968fb9e158e697edaf0c6'  # disable-rocm-cuda.gen_linux.sh.patch
+#   '02d92a87554f2842b100908395a2599a843d21b95bf2c1961c2d862c35dda906893af107460054bf02340c52e4b4e3baa80cf95d071968fb9e158e697edaf0c6'  # disable-rocm-cuda.gen_linux.sh.patch
   'a773bbf16cf5ccc2ee505ad77c3f9275346ddf412be283cfeaee7c2e4c41b8637a31aaff8766ed769524ebddc0c03cf924724452639b62208e578d98b9176124'  # ollama.service
   '3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec'  # sysusers.conf
   'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed'  # tmpfiles.d
@@ -151,10 +155,10 @@ prepare() {
   git config --local submodule.llama.cpp.url "${srcdir}/llama.cpp"
   git -c protocol.file.allow=always submodule update
 
-  for _patch in "${srcdir}/disable-rocm-cuda.gen_linux.sh.patch"; do
-    printf '%s\n' "   > Applying patch $(basename "${_patch}") ..."
-    patch -Np1 --follow-symlinks -i "${_patch}"
-  done
+#   for _patch in "${srcdir}/disable-rocm-cuda.gen_linux.sh.patch"; do
+#     printf '%s\n' "   > Applying patch $(basename "${_patch}") ..."
+#     patch -Np1 --follow-symlinks -i "${_patch}"
+#   done
 
   # Generate git logfile for later installation into the documentation directory
   git log > git.log
