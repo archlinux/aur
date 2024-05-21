@@ -2,7 +2,7 @@
 # Contributor: santost12 <santost12 AT noreply DOT archlinux DOT org>
 
 pkgname=darkmx
-pkgver=1.36
+pkgver=1.37
 pkgrel=1
 pkgdesc="Decentralized communication app that utilizes Tor hidden services to allow you to easily have an anonymous, reliable, and censorship-resistant presence on the internet."
 arch=('x86_64')
@@ -12,9 +12,9 @@ depends=('gtk2' 'hicolor-icon-theme' 'dbus-glib')
 optdepends=('gconf: for shell integration')
 install='darkmx.install'
 source=('LICENSE')
-source_x86_64=("https://download.darkmx.app/darkmx-1.36-linux64.tar.gz")
+source_x86_64=("https://download.darkmx.app/darkmx-1.37-linux64.tar.gz")
 sha256sums=('c4adbd46bfdeaf329fa03c578960b157f211a3626c532ae168be9d60514ef0d0')
-sha256sums_x86_64=('c30bcb5637e56442289df1f84384862d6de9fc3110519212fa7cb32f20725027')
+sha256sums_x86_64=('dc84a0becf891c75e81e224f03f9014ebc515fecfbf3559b14a5c1567d00b7bd')
 
 package() {
   if [ "$CARCH" == "x86_64" ]
