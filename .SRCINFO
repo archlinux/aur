@@ -1,6 +1,6 @@
 pkgbase = python-nestedtext
 	pkgdesc = Human readable and writable data interchange format
-	pkgver = 3.6
+	pkgver = 3.7
 	pkgrel = 1
 	url = https://github.com/KenKundert/nestedtext
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-nestedtext
 	makedepends = python-flit-core
 	makedepends = python-wheel
 	depends = python-inform
-	source = python-nestedtext-3.6.tar.gz::https://files.pythonhosted.org/packages/source/n/nestedtext/nestedtext-3.6.tar.gz
-	sha256sums = 8837596bdb5936b05ead4517713dc67f8118760ef59e58777475d4a8dd20cbac
+	source = python-nestedtext-3.7.tar.gz::https://files.pythonhosted.org/packages/source/n/nestedtext/nestedtext-3.7.tar.gz
+	sha256sums = 0a58fe2789535139b9eb532b7bb6e810e5e288421b061eab6c942839e88a796d
 
 pkgname = python-nestedtext
