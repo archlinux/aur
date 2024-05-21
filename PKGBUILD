@@ -20,6 +20,8 @@ checkdepends=(python-dbusmock
               python-isort
               python-mccabe
               umockdev)
+provides=('power-profiles-daemon')
+conflicts=('power-profiles-daemon')
 source=(https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
 sha256sums=('c15a368a59f2cae1474bdfccdd9357f06b0abc9eb7638a87f68c091aaf570349')
 
