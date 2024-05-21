@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="nginx-ui"
-pkgver=2.0.0.beta.23.patch.2
+pkgver=2.0.0.beta.24
 _pkgver=$(echo ${pkgver} | sed -E 's|\.([a-zA-Z]+)|-\1|g')
 pkgrel=1
 pkgdesc="Yet another WebUI for Nginx"
@@ -13,7 +13,7 @@ depends=("nginx")
 makedepends=("npm" "go")
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
         "${pkgname}.service")
-sha256sums=('7e3877b015ad3a2c70526a47454ccdee020cd1e9202f674e005a8fcca9700755'
+sha256sums=('73f1f5db269e0ea5d059e299e9e80ad9f1cce21672768d41356a4403d1c32ad2'
             'ff046cd729097a4c68c4f6d3d035125455457933fed18300c63072e9c55a8fdd')
 
 build() {
