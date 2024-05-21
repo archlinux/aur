@@ -5,6 +5,7 @@ pkgbase = jdk11-temurin
 	url = https://adoptium.net/
 	install = install_jdk11-temurin.sh
 	arch = x86_64
+	arch = armv7h
 	license = custom
 	depends = java-runtime-common>=3
 	depends = java-environment-common
@@ -48,5 +49,7 @@ pkgbase = jdk11-temurin
 	sha256sums = 0f53d0b34412d1a2f30c33bcd68a8f682f1fc86fc76bf290bbb91cb5c1ad28ed
 	source_x86_64 = https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.23%2B9/OpenJDK11U-jdk_x64_linux_hotspot_11.0.23_9.tar.gz
 	sha256sums_x86_64 = 23e47ea7a3015be3240f21185fd902adebdcf76530757c9b482c7eb5bd3417c2
+	source_armv7h = https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.23%2B9/OpenJDK11U-jdk_arm_linux_hotspot_11.0.23_9.tar.gz
+    sha256sums_armv7h = 8077edc07a57d846c3d11286a7caf05ed6ca6d6c1234bf0e03611f18e187f075
 
 pkgname = jdk11-temurin
