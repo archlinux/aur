@@ -1,6 +1,6 @@
 pkgbase = stack-clean-old-static-git
 	pkgdesc = Manage Haskell stack snapshot builds and ghc versions (static build)
-	pkgver = 0.5.r0.g1af052f
+	pkgver = 0.5.1.r1.g899235a
 	pkgrel = 1
 	url = https://github.com/juhp/stack-clean-old
 	arch = i686

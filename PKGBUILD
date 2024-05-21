@@ -2,7 +2,7 @@
 
 pkgname=stack-clean-old-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.5.r0.g1af052f
+pkgver=0.5.1.r1.g899235a
 pkgrel=1
 pkgdesc='Manage Haskell stack snapshot builds and ghc versions (static build)'
 arch=('i686' 'x86_64')
@@ -21,8 +21,7 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    stack config set resolver lts-22.19 # ghc-9.6.4
-    echo 'compiler: ghc-9.6.5' >> stack.yaml
+    stack config set resolver lts-22.22 # ghc-9.6.5
 }
 
 build() {
