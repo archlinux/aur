@@ -1,11 +1,11 @@
 pkgbase = osqp
 	pkgdesc = The Operator Splitting QP Solver
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/osqp/osqp
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = apache-2.0
 	makedepends = cmake
 	makedepends = python-scipy
 	options = staticlibs
