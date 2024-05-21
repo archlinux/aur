@@ -1,6 +1,6 @@
 pkgbase = python-tensortrax
 	pkgdesc = Math on (Hyper-Dual) Tensors with Trailing Axes
-	pkgver = 0.22.0
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/adtzlr/tensortrax
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-tensortrax
 	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-joblib
-	source = tensortrax-0.22.0.tar.gz::https://github.com/adtzlr/tensortrax/archive/v0.22.0.tar.gz
-	sha512sums = 0468bdfe49c79c8311d9e1fd34e6d0031af8d06ab79a0a3340fc057436991cf09d6a425c3ae6b86db87e5aafdac0313c851e6304f601a49ac6e5e910d5d3917a
+	source = tensortrax-0.23.0.tar.gz::https://github.com/adtzlr/tensortrax/archive/v0.23.0.tar.gz
+	sha512sums = eb854069c826778b57f12817be0cc18fd16dc8a126c07910cac18ce6d4061f3ff1c5214441a5f00f9bb87970e3849d36665a70d55cb2c12947f0b4e20a5c8d5c
 
 pkgname = python-tensortrax
