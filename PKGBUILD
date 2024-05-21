@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine-bin
 _pkgname=AFFiNE
-pkgver=0.14.5
+pkgver=0.14.6
 _electronversion=30
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
@@ -26,10 +26,10 @@ source=(
     "LICENSE-MIT-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver}/LICENSE-MIT"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('641ee55fe29f0184fc590d18af8f45d156d97e89f868ca381ac7f8ce3dc6bc7a'
+sha256sums=('519a8ba06a0c5c231fa2d294505115f35149ee9746a53a6aaff8418d25bd6640'
             'b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f'
             '1cdeca52d4f740361f103926144eb8b3f265975b2337d4e27b3313f72465897f'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
