@@ -3,7 +3,7 @@
 
 _pkgname=vlang
 pkgname=vlang-bin
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software (binary release)'
 arch=('x86_64')
@@ -16,8 +16,8 @@ optdepends=('glfw: Needed for graphics support'
             'freetype2: Needed for graphics support'
             'openssl: Needed for http support')
 source=("${_pkgname}-${pkgver}.zip::https://github.com/vlang/v/releases/download/${pkgver}/v_linux.zip")
-sha256sums=('1e9650c26b9453835f3e34b0ebfcdb572a6324530abaece0bc3494d3bd314ee8')
-sha512sums=('b06aa2f7a67e58b0f3e6b86e1d682a35b97b4e1269a20c34b1b2180e7896d21341adcf19a8f139e3e6110ac310b5aae0d0fc3837a767ae07472506650214bea2')
+sha256sums=('f7ebe5464a2344f1bdb91094743171e5c868d1e4c2aeb07916c8591ee43284b8')
+sha512sums=('b37b5cc2eba0fcffd14cbcecce09dc44eced2a03e74624a704eb12f0a10ba656ee0cabe8000d9989a79b2868b48cd0dffa87ca1aed8c07f86e277e6d60ea7758')
 
 build() {
     cd v
