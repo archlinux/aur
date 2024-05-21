@@ -77,7 +77,6 @@ fi
 source=(
   "${_name}::git+${url}.git"
   "llama.cpp::git+https://github.com/ggerganov/llama.cpp.git" # Submodule
-#   'disable-rocm-cuda.gen_linux.sh.patch'
   "ollama.service"
   "sysusers.conf"
   "tmpfiles.d"
@@ -85,7 +84,6 @@ source=(
 b2sums=(
   'SKIP'  # ollama (git)
   'SKIP'  # llama.cpp (git)
-#   '02d92a87554f2842b100908395a2599a843d21b95bf2c1961c2d862c35dda906893af107460054bf02340c52e4b4e3baa80cf95d071968fb9e158e697edaf0c6'  # disable-rocm-cuda.gen_linux.sh.patch
   'a773bbf16cf5ccc2ee505ad77c3f9275346ddf412be283cfeaee7c2e4c41b8637a31aaff8766ed769524ebddc0c03cf924724452639b62208e578d98b9176124'  # ollama.service
   '3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec'  # sysusers.conf
   'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed'  # tmpfiles.d
@@ -155,11 +153,6 @@ prepare() {
   git config --local submodule.llama.cpp.url "${srcdir}/llama.cpp"
   git -c protocol.file.allow=always submodule update
 
-#   for _patch in "${srcdir}/disable-rocm-cuda.gen_linux.sh.patch"; do
-#     printf '%s\n' "   > Applying patch $(basename "${_patch}") ..."
-#     patch -Np1 --follow-symlinks -i "${_patch}"
-#   done
-
   # Generate git logfile for later installation into the documentation directory
   git log > git.log
 
@@ -197,10 +190,6 @@ pkgver() {
 
 build() {
   export GOPATH="${srcdir}/go"
-  #export CFLAGS="-march=native -mtune=generic -O2 -pipe -fno-plt"
-  #export CXXFLAGS="$CFLAGS"
-  #export CGO_CFLAGS="$CFLAGS" CGO_CPPFLAGS="$CPPFLAGS" CGO_CXXFLAGS="$CXXFLAGS" CGO_LDFLAGS="$LDFLAGS"
-
 
   if "${_build_generic}"; then
     cd "${srcdir}/ollama-generic"
@@ -212,7 +201,7 @@ build() {
     printf '\n'
     go generate ./...
     cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
-    cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
+    # cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
     go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-buildid='' -ldflags="-X=github.com/jmorganca/ollama/version.Version=${pkgver}"
   fi
 
@@ -227,7 +216,7 @@ build() {
     printf '\n'
     go generate ./...
     cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
-    cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
+    # cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
     go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-buildid='' -ldflags="-X=github.com/jmorganca/ollama/version.Version=${pkgver}"
   fi
 
@@ -242,7 +231,7 @@ build() {
     printf '\n'
     go generate ./...
     cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
-    cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
+    # cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
     go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-buildid='' -ldflags="-X=github.com/jmorganca/ollama/version.Version=${pkgver}"
   fi
 
@@ -257,7 +246,7 @@ build() {
     printf '\n'
     go generate ./...
     cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
-    cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
+    # cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
     go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-buildid='' -ldflags="-X=github.com/jmorganca/ollama/version.Version=${pkgver}"
   fi
 
@@ -272,7 +261,7 @@ build() {
     printf '\n'
     go generate ./...
     cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
-    cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
+    # cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
     go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-buildid='' -ldflags="-X=github.com/jmorganca/ollama/version.Version=${pkgver}"
   fi
 }
