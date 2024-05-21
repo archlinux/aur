@@ -1,6 +1,6 @@
 pkgbase = clangd-opt-git
 	pkgdesc = Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)
-	pkgver = 19.r11902.g375761bcaba9
+	pkgver = 19.r11903.gbb3d261f55e7
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -48,6 +48,7 @@ pkgbase = clangd-opt-git
 	source = hover-record-paddings.patch
 	source = config-include-style.patch
 	source = lsp-preprocessor-folding.patch
+	source = hover-field-idx.patch
 	sha256sums = SKIP
 	sha256sums = 8d8ce66ba3a55559dacaefc5623bd1f3298d645a724f9961cc1089c563b8677d
 	sha256sums = 614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94
@@ -69,5 +70,6 @@ pkgbase = clangd-opt-git
 	sha256sums = 0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7
 	sha256sums = a05f3894ddb881ef77146da6955fc0612de684d7bc09a2ef9b9fc6aa750efcac
 	sha256sums = 020e5509e2e13578abb6943ccf228feaa0083dd27cc611fa62c7cd3d700d82f7
+	sha256sums = 4531b804507d11e1918858551575fee81605dbac0617d7b22f335b10642e782d
 
 pkgname = clangd-opt-git

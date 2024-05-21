@@ -106,6 +106,11 @@
 # CLANGD_PREPROCESSOR_FOLDING:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
+#
+# Hover information: Show fields indexes in layout: `Offset: 8 bytes (index 1)`
+# CLANGD_HOVERFIELDIDX:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
 
 
 : ${CLANGD_DEFAULT_PATCH_STATE:=n}
@@ -128,9 +133,10 @@
 : ${CLANGD_HOVERRECORDPAD:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_CONFIG_INCLUDE_STYLE:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_HOVERFIELDIDX:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=19.r11902.g375761bcaba9
+pkgver=19.r11903.gbb3d261f55e7
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -163,7 +169,8 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
         'lsp-remove-files-from-cdb.patch'
         'hover-record-paddings.patch'
         'config-include-style.patch'
-        'lsp-preprocessor-folding.patch')
+        'lsp-preprocessor-folding.patch'
+        'hover-field-idx.patch')
 sha256sums=('SKIP'
             '8d8ce66ba3a55559dacaefc5623bd1f3298d645a724f9961cc1089c563b8677d'  # hover-doxygen-trunk
             '614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94'  # doxygen-extra-render-trunk
@@ -184,7 +191,8 @@ sha256sums=('SKIP'
             '459bc42c7366305e562fa710551de909b581aa2358ca739585a0477dd06ebd6d'  # lsp-remove-files-from-cdb
             '0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7'  # hover-record-paddings
             'a05f3894ddb881ef77146da6955fc0612de684d7bc09a2ef9b9fc6aa750efcac'  # config-include-style
-            '020e5509e2e13578abb6943ccf228feaa0083dd27cc611fa62c7cd3d700d82f7') # lsp-preprocessor-folding
+            '020e5509e2e13578abb6943ccf228feaa0083dd27cc611fa62c7cd3d700d82f7'  # lsp-preprocessor-folding
+            '4531b804507d11e1918858551575fee81605dbac0617d7b22f335b10642e782d') # hover-field-idx
 
 pkgver() {
     cd llvm-project
@@ -227,6 +235,9 @@ prepare() {
     fi
     if [ "$CLANGD_HOVERRECORDPAD" != "n" ]; then
         apply_patch hover-record-paddings
+    fi
+    if [ "$CLANGD_HOVERFIELDIDX" != "n" ]; then
+        apply_patch hover-field-idx
     fi
 
     # LSP patches

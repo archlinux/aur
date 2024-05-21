@@ -1,0 +1,40 @@
+diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
+index 06b949bc4a2b..cea25d736185 100644
+--- a/clang-tools-extra/clangd/Hover.cpp
++++ b/clang-tools-extra/clangd/Hover.cpp
+@@ -1015,6 +1015,7 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+     if (Record && !Record->isInvalidDecl() && !Record->isDependentType()) {
+       HI.Align = Ctx.getTypeAlign(FD->getType());
+       const ASTRecordLayout &Layout = Ctx.getASTRecordLayout(Record);
++      HI.Index = FD->getFieldIndex();
+       HI.Offset = Layout.getFieldOffset(FD->getFieldIndex());
+       if (FD->isBitField())
+         HI.Size = FD->getBitWidthValue(Ctx);
+@@ -1484,8 +1485,12 @@ markup::Document HoverInfo::present() const {
+     P.appendCode(*Value);
+   }
+ 
+-  if (Offset)
+-    Output.addParagraph().appendText("Offset: " + formatOffset(*Offset));
++  if (Offset) {
++    auto &P =
++        Output.addParagraph().appendText("Offset: " + formatOffset(*Offset));
++    if (Index)
++      P.appendText(llvm::formatv(" (index {0})", *Index).str());
++  }
+   if (Size) {
+     auto &P = Output.addParagraph().appendText("Size: " + formatSize(*Size));
+     if (Padding && *Padding != 0) {
+diff --git a/clang-tools-extra/clangd/Hover.h b/clang-tools-extra/clangd/Hover.h
+index fe689de44732..3e6af029732a 100644
+--- a/clang-tools-extra/clangd/Hover.h
++++ b/clang-tools-extra/clangd/Hover.h
+@@ -95,6 +95,8 @@ struct HoverInfo {
+   std::optional<uint64_t> Size;
+   /// Contains the offset of fields within the enclosing class.
+   std::optional<uint64_t> Offset;
++  /// Contains the index of fields within the enclosing class.
++  std::optional<uint64_t> Index;
+   /// Contains the padding following a field within the enclosing class.
+   std::optional<uint64_t> Padding;
+   /// Contains the alignment of fields and types where it's interesting.
