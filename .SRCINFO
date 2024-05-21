@@ -1,0 +1,16 @@
+pkgbase = libepc
+	pkgdesc = Easy Publish and Consume Library
+	pkgver = 0.4.6
+	pkgrel = 2
+	url = https://wiki.gnome.org/Projects/libepc
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = python
+	depends = gtk3
+	depends = avahi
+	depends = libsoup
+	source = https://download.gnome.org/sources/libepc/0.4/libepc-0.4.6.tar.xz
+	sha256sums = 215990847a8526c85774cb74fbcaea4c46866df58281b21dce5a62aac5da7ae8
+
+pkgname = libepc
