@@ -1,11 +1,8 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
-# For Issues, Pull Requests
-# https://github.com/phnx47/pkgbuilds
-
 pkgname=moon
 pkgdesc='Task runner and repo management tool for the web ecosystem'
-pkgver=1.24.5
+pkgver=1.24.6
 pkgrel=1
 license=('MIT')
 _gh_owner='moonrepo'
@@ -15,10 +12,10 @@ arch=('x86_64' 'aarch64')
 depends=('gcc-libs' 'xz')
 makedepends=('cargo')
 options=('!lto')
-_sha='c568984f731338dbba853a8cade4fe4867eb6f5c'
+_sha='e045a392e6866186ee1a258f4a6b0dd6bf13c6ed'
 _short_sha="${_sha::7}"
 source=("${pkgname}-${pkgver}-${_short_sha}.tar.gz::https://api.github.com/repos/${_gh_owner}/${_gh_repo}/tarball/${_sha}")
-sha256sums=('27e7aeb7390a1d8b02dc61fa3aef390c0688ff7614fdce483fe5ad46e77b1ad7')
+sha256sums=('9c41d61322b8eef279aec6389f89b625367d47cf8dcce98fc63f3f1ba601504e')
 
 prepare() {
   cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
