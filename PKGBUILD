@@ -1,5 +1,5 @@
 # Maintainer: Eric TK <ericatkusa@gmail.com>
-pkgname=clearch-cli
+pkgname=clearch
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A simple CLI tool written in Rust"
@@ -15,7 +15,7 @@ build() {
     cargo build --release --locked --all-features --target-dir=target
 }
 package() {
-    install -Dm755 "$srcdir/target/release/clearch" "$pkgdir/usr/bin/clearch-cli"
+    install -Dm755 "$srcdir/target/release/clearch" "$pkgdir/usr/bin/clearch"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
