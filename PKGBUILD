@@ -9,7 +9,7 @@
 _pkgname="subtitlecomposer"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Video subtitle editor"
 url="https://invent.kde.org/multimedia/subtitlecomposer"
 license=('GPL-2.0-or-later')
@@ -71,7 +71,13 @@ _backport() (
 
 prepare() {
   _backports=(
+    # KIO
     f8280dbcc0b23aed2e55d8db39c220ad900e7825
+
+    # GL Renderer
+    4ae795f0cabdf9236f144ac14202de9df39b8232
+    75882f06140ed76aa3e86c759f0fdcec11c6ee51
+    a5f82704da9e143ed29cccbe71b06bf0b507ec3b
   )
 
   _backport
