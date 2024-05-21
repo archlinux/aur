@@ -1,9 +1,9 @@
-# Maintainer: Anatoly Bashmakov <anatoly at posteo dot net>
+# Contributor: Anatoly Bashmakov <anatoly at posteo dot net>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=execjs
 pkgname=ruby-$_gemname
-pkgver=2.8.1
+pkgver=2.9.1
 pkgrel=1
 pkgdesc='Run JavaScript code from Ruby'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('6d939919cfd81bcc4d6556f322c3995a70cfe4289ea0bd3b1f999b489c323088')
+sha256sums=('e8fd066f6df60c8e8fbebc32c6fb356b5212c77374e8416a9019ca4bb154dcfb')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

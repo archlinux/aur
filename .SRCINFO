@@ -1,6 +1,6 @@
 pkgbase = ruby-execjs
 	pkgdesc = Run JavaScript code from Ruby
-	pkgver = 2.8.1
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/rails/execjs
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = ruby-execjs
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = nodejs
-	noextract = execjs-2.8.1.gem
+	noextract = execjs-2.9.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/execjs-2.8.1.gem
-	sha256sums = 6d939919cfd81bcc4d6556f322c3995a70cfe4289ea0bd3b1f999b489c323088
+	source = https://rubygems.org/downloads/execjs-2.9.1.gem
+	sha256sums = e8fd066f6df60c8e8fbebc32c6fb356b5212c77374e8416a9019ca4bb154dcfb
 
 pkgname = ruby-execjs
