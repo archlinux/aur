@@ -2,7 +2,7 @@
 # Contributor: Dino Morelli <dino@ui3.info>
 
 pkgname=hlint-static-git
-pkgver=3.8.r19.g323eb45e
+pkgver=3.8.r22.g752baba9
 pkgrel=1
 pkgdesc='Haskell source code suggestions'
 arch=('x86_64')
@@ -23,8 +23,7 @@ pkgver() {
 prepare() {
     cd "$pkgname"
 
-    stack config set resolver lts-22.19 # ghc-9.6.4
-    echo 'compiler: ghc-9.6.5' >> stack.yaml
+    stack config set resolver lts-22.22 # ghc-9.6.5
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = hlint-static-git
 	pkgdesc = Haskell source code suggestions
-	pkgver = 3.8.r19.g323eb45e
+	pkgver = 3.8.r22.g752baba9
 	pkgrel = 1
 	url = https://github.com/ndmitchell/hlint
 	arch = x86_64
