@@ -20,7 +20,7 @@ source=(https://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
         ${_pkgname}_license.txt)
 
 sha256sums=('1baecb50865db6b9fad2a9733c496a23d6e7b2a9a27e64f865a15cd55cb6dbb2'
-            'e8d1be7f980b7d371ef5aa65f2375397d970e887659bf3b280601cced8498e32'
+            'd66b0401d6132ff24bd422a824436dd8f33b47619149659f8567980d71c6e34f'
             '8464fc766dbb4f6a0de4acd84007fc2916b50ca48ce7d22654144f549c8c6f4c')
 
 prepare() {
