@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=firefly-canary-desktop-bin
 _pkgname="Firefly Canary"
-pkgver=3.0.0
+pkgver=3.0.1
 _electronversion=27
 pkgrel=1
 pkgdesc="Official wallet application of IOTA Canary"
@@ -21,8 +21,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/desktop-canary-${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d34c8c1608502ffe8de1c24b693645b941bcfc57d6dcbed6213c18533f6a4fa9'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('44ac576ec141d92941a63937637d72ad0d7ae86055e8c3e2bb76cb7cab265462'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
