@@ -11,6 +11,7 @@ pkgbase = loongarch64-linux-gnu-gcc-libc
 	makedepends = pacman
 	makedepends = tar
 	makedepends = xz
+	conflicts = loongarch64-linux-gnu-gcc
 	options = !debug
 	source = https://github.com/loongson/build-tools/releases/download/2023.08.08/x86_64-cross-tools-loongarch64-gcc-libc.tar.xz
 	sha256sums = 2595bc127a2198f5303f80ec09ea2e21004e5ea0b52fbf495e26c6abf2ec9a81
