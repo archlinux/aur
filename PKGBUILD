@@ -3,7 +3,7 @@ pkgbase=python-stsci.stimage
 _pname=${pkgbase#python-}
 _pyname=${_pname//./_}
 pkgname=("python-${_pname}")
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="STScI image processing"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('python-setuptools-scm'
              'python-numpy')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('5612e2f2010947a5a132105d5f0d66fc')
+md5sums=('b51796441746e63d77b892aebbe38207')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
