@@ -1,0 +1,12 @@
+pkgbase = deep-cleaner
+	pkgdesc = A deeper system cleaning program for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/KlodCripta/deep-cleaner
+	arch = any
+	license = MIT
+	depends = bash
+	source = https://github.com/KlodCripta/deep-cleaner/raw/main/deep-cleaner-1.0.0.tar.gz
+	sha256sums = 70819385c559ceb82ce5824a099209d506a8f5d435639af73f0cb61b6627fc54
+
+pkgname = deep-cleaner
