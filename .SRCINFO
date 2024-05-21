@@ -1,6 +1,6 @@
 pkgbase = strain
 	pkgdesc = A CPU stressing utility written in Rust
-	pkgver = 0.0.6
+	pkgver = 0.1.0
 	pkgrel = 2
 	url = https://github.com/JacoMalan1/strain
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = strain
 	depends = libmpc
 	provides = strain
 	conflicts = strain
-	source = https://github.com/JacoMalan1/strain/archive/refs/tags/0.0.6.zip
-	sha256sums = db193c2ad6ce5c3113fddc79331ef8230d4555d83762ad41b9b1906a23d0b16a
+	source = https://github.com/JacoMalan1/strain/archive/refs/tags/0.1.0.zip
+	sha256sums = c9b2f0b68624bb811275cf79d5a0a2ca2a491359a44b941b79157a554536ff37
 
 pkgname = strain

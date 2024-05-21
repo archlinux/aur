@@ -1,7 +1,7 @@
 # Maintainer: Jaco Malan <jacom@codelog.co.za>
 pkgbase=strain
 pkgname=strain
-pkgver=0.0.6
+pkgver=0.1.0
 pkgrel=2
 pkgdesc="A CPU stressing utility written in Rust"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'git' 'gcc')
 provides=('strain')
 conflicts=('strain')
 source=("https://github.com/JacoMalan1/$pkgbase/archive/refs/tags/$pkgver.zip")
-sha256sums=('db193c2ad6ce5c3113fddc79331ef8230d4555d83762ad41b9b1906a23d0b16a')
+sha256sums=('c9b2f0b68624bb811275cf79d5a0a2ca2a491359a44b941b79157a554536ff37')
 
 build() {
 	cd "$srcdir/$pkgbase-$pkgver"
