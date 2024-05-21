@@ -1,22 +1,22 @@
 pkgbase = meshroom
-	pkgdesc = Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework.
-	pkgver = 2021.1.0
-	pkgrel = 6
+	pkgdesc = A free, open-source 3D Reconstruction Software based on the AliceVision framework
+	pkgver = 2023.3.0
+	pkgrel = 1
 	url = https://alicevision.github.io/
-	arch = i686
 	arch = x86_64
 	license = MPL2
 	makedepends = git
 	makedepends = cmake
-	makedepends = python-cx-freeze-qfix
 	makedepends = python-idna
 	makedepends = python-setuptools
-	makedepends = patchelf
+	makedepends = ninja
+	makedepends = boost
+	makedepends = coin-or-lemon
 	depends = alice-vision
 	depends = alembic
 	depends = openimageio
-	depends = python
 	depends = python-psutil
+	depends = popsift
 	depends = pyside2
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
@@ -26,17 +26,12 @@ pkgbase = meshroom
 	depends = qt5-location
 	depends = qt5-svg
 	depends = qt5-charts
-	source = meshroom::git+https://github.com/alicevision/meshroom.git#tag=v2021.1.0
+	optdepends = alice-vision-cuda: for DepthMap nodes
+	source = meshroom::git+https://github.com/alicevision/meshroom.git#tag=v2023.3.0
 	source = voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git
-	source = git+https://github.com/alicevision/QtOIIO.git#tag=v2021.1.0
-	source = git+https://github.com/alicevision/qmlAlembic.git#tag=v2021.1.0
-	source = pyside_property_error.patch
-	source = Fix-incompatibility-with-recent-cx_Freeze.patch
+	source = git+https://github.com/alicevision/QtAliceVision.git#tag=v2023.3.0
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = e211783ead22d388c72f60bac7ab95d670a4d6ae196225c15038b5c9e7c80fdc
-	sha256sums = 40ee489604627e5be1b8ce5f3fdd4b1828a5588427fda298b61aa37beb9125c5
 
 pkgname = meshroom
