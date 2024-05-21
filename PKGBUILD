@@ -20,6 +20,9 @@ sha512sums=('6e427505b9237a2165dee8c198708a26f4b366ca31a424340206d29c56d04b13405
 prepare() {
   cd "${srcdir}"
 
+  # Make configure use bash
+  sed -i 's@#! /bin/sh@#!/bin/bash@g' ${pkgname}-${pkgver}/src/configure
+
   # Patch for Alder Lake X support
   patch -Np1 -i ../alderlakex-support.patch
 }
