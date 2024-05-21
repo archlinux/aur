@@ -1,7 +1,13 @@
-# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Maintainer: Hikari Takahashi <yyrud4c1p@mozmail.com>
+# This script is not official and it is provided as a helper. You are solely responsible for the use of this installer.
+
+# By using CrowdStrike, you are bound by CrowdStrike license terms that may change without notice.
+# Terms of Use: https://www.crowdstrike.com/software-terms-of-use/
+# Privacy Notice: https://www.crowdstrike.com/privacy-notice/
 
 pkgname=falcon-sensor
-pkgver=7.01.0_15604
+pkgver=7.14.0.16703
+_pkgver=7.14.0-16703
 pkgrel=1
 pkgdesc="Crowdstrike Falcon Sensor daemon and kernel modules"
 arch=("x86_64")
@@ -16,7 +22,7 @@ source=(
 )
 sha256sums=(
   "SKIP"
-  "76dbcf8027846d9a8c2fbd9ca2a163c171bbc75161b46a24f59bf64dd44fc6e9"
+  "323c9971c5f7e3b360783601922c063801e0bbd425351faaafaf476b5b29fecb"
 )
 
 prepare() {
@@ -40,4 +46,6 @@ package() {
 
   chmod a+x "${pkgdir}/opt/CrowdStrike"
   chmod -R a+r "${pkgdir}/opt/CrowdStrike"
+  
+  #/opt/CrowdStrike/falconctl -s --cid=<your CID here>  
 }
