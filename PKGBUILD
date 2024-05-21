@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
 url="https://spack.io/"
@@ -71,5 +71,5 @@ package() {
   install -Dm 644 ${pkgname}.pkrules ${pkgdir}/usr/share/polkit-1/rules.d/${pkgname}.rules
   install -Dm 644 ${pkgname}.pkaction ${pkgdir}/usr/share/polkit-1/actions/org.archlinux.pkexec.spack.policy
   # Fix mode to match polkit.
-  install -d -o root -g 102 -m 750 ${pkgdir}/usr/share/polkit-1/rules.d
+  install -d -o root -g 102 -m 755 ${pkgdir}/usr/share/polkit-1/rules.d
 }
