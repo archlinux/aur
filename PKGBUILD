@@ -2,7 +2,7 @@
 
 _pkgname="tsukimi"
 pkgname="${_pkgname}-git"
-pkgver=0.4.10.r222.g84c0510
+pkgver=0.4.13.r239.ga5164b5
 pkgrel=1
 pkgdesc='A simple third-party Emby client'
 arch=('x86_64')
