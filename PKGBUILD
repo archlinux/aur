@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notepad--
 _pkgname=NotePad--
-pkgver=2.15
+pkgver=2.16
 pkgrel=1
 pkgdesc="一个国产跨平台、轻量级的文本编辑器，是替换notepad++的一种选择。其内置强大的代码对比功能，让你丢掉付费的beyond compare。"
 arch=('x86_64')
@@ -22,17 +22,16 @@ makedepends=(
     'qt5-tools'
     'qt5-xmlpatterns'
     'qscintilla-qt5'
-    
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgname//--/}-v${pkgver}.tar.gz"
 )
-sha256sums=('f33e4b3a239e459f3725f9d67595b58e848713143523dcce2f607b1560f9262f')
+sha256sums=('80f979d60948805adcb45224bb71f7ef7c3837eb3b899be5a9eaa8aae710e88b')
 build() {
     cd "${srcdir}/${pkgname}-${pkgname//--/}-v${pkgver}"
     sed "s|intptr_t|__intptr_t|g" -i src/qscint/src/xmlMatchedTagsHighlighter.cpp
     sed "s|intptr_t|__intptr_t|g" -i src/qscint/src/xmlMatchedTagsHighlighter.h
-    cmake -S . -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -W no-dev
+    cmake -S . -Bbuild -GNinja -DCMAKE_BUILD_TYPE=None -W no-dev
     ninja -C build
     sed "s|${_pkgname} %F|${pkgname} %F|g;s|/usr/share/icons/hicolor/128x128/apps/${pkgname}.png|${pkgname}|g" \
         -i src/linux/usr/share/applications/"${_pkgname}".desktop
