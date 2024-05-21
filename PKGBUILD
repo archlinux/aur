@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xm-video-player-bin
-pkgver=0.5.8
+pkgver=0.5.10
 pkgrel=1
 pkgdesc="A high-quality client that supports playing multiple streaming formats such as MP4, M3U8, FLV, mpeg flash, etc.一款高颜值的支持播放mp4, m3u8,flv,mpeg-dash等多种流媒体格式的客户端"
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/singcl/XmVideoPlayer/v${pkgver}/LICENSE"
 )
-sha256sums=('09af805848eb1ad4fe10081fb81748efe62a6a5ce019613202d96d48bb3d407d'
+sha256sums=('108686091c2c972ed81a8f29ce6f754cbc8111937984f10eabd6a512424396b6'
             '37231024f052817f3bc0e2f73047cca63feb6c18bbe443e3bcbfbd2d28cfab3d')
 build() {
     bsdtar -xf "${srcdir}/data."*
