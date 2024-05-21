@@ -4,7 +4,7 @@
 pkgbase=plasma6-themes-chromeos-kde-git
 pkgname=(plasma6-themes-chromeos-kde-git)
 _pkgname=ChromeOS-kde
-pkgver=r81.1df8fd7
+pkgver=r83.1dd53ec
 pkgrel=1
 pkgdesc="ChromeOS theme for kde plasma"
 arch=(any)
@@ -15,6 +15,7 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 makedepends=('git')
 optdepends=('chromeos-gtk-theme: Matching GTK theme'
+            'kvantum: Better theme engine (Recommended)'
             'tela-icon-theme: Matching icon theme')
 
 pkgver() {
@@ -30,17 +31,14 @@ prepare() {
     sed -i "s#/usr/share#$pkgdir/usr/share#" install.sh
 }
 
-package_chromeos-kde-git() {
-    provides=('chromeos-kde')
-
-
-    # Run install script from GitHub
-    cd "$srcdir/${pkgname%-git}"
+package() {
+    # Auroae, color-scheme, Kvantum, Plasma and Wallpaper
+    cd "$srcdir/${_pkgname%-git}"
     install -d "$pkgdir/usr/share"
     ./install.sh
 
-    # SDDM theme
-    cd "$srcdir/${pkgname%-git}/sddm"
+    # Install SDDM theme
+    cd "$srcdir/${_pkgname%-git}/sddm"
     install -d "$pkgdir/usr/share/sddm/themes"
     ./install.sh
 }

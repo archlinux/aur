@@ -1,6 +1,6 @@
 pkgbase = plasma6-themes-chromeos-kde-git
 	pkgdesc = ChromeOS theme for kde plasma
-	pkgver = r81.1df8fd7
+	pkgver = r83.1dd53ec
 	pkgrel = 1
 	url = https://github.com/vinceliuice/ChromeOS-kde
 	arch = any
