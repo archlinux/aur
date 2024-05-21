@@ -4,8 +4,8 @@
 
 pkgname=ormolu-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.7.3.0.r6.g05647fd
-pkgrel=2
+pkgver=0.7.4.0.r6.gf42e8d0
+pkgrel=1
 pkgdesc="A formatter for Haskell source code"
 arch=('i686' 'x86_64')
 url="https://github.com/tweag/${_pkgname}"
@@ -23,8 +23,7 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
-    stack config set resolver lts-22.19 # ghc-9.6.4
-    echo 'compiler: ghc-9.6.5' >> stack.yaml
+    stack config set resolver lts-22.22 # ghc-9.6.5
 }
 
 build() {
