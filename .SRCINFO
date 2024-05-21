@@ -1,0 +1,14 @@
+pkgbase = hermes-dec-git
+	pkgdesc = A tool for reverse engineering React Native bytecode files
+	pkgver = r61.7c9d958
+	pkgrel = 1
+	url = https://github.com/P1sec/hermes-dec
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/P1sec/hermes-dec.git
+	md5sums = SKIP
+
+pkgname = hermes-dec-git
