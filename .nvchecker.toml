@@ -1,5 +1,4 @@
-[python-tensortrax]
+[python-pyro-hydro]
 source = "github"
-github = "adtzlr/tensortrax"
+github = "python-hydro/pyro2"
 use_latest_release = "true"
-prefix = "v"
