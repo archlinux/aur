@@ -1,0 +1,14 @@
+pkgbase = tlock-git
+	pkgdesc = Two-Factor Authentication Tokens Manager in Terminal
+	pkgver = 1.0.0.r12.g6602694
+	pkgrel = 1
+	url = https://github.com/eklairs/tlock
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	conflicts = _pkgname
+	source = tlock::git+https://github.com/eklairs/tlock.git
+	sha256sums = SKIP
+
+pkgname = tlock-git
