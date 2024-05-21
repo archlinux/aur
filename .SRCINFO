@@ -1,6 +1,6 @@
 pkgbase = gnome-break-timer-git
 	pkgdesc = The new typing break for GNOME, (replaces gnome-typing-break-bzr & drwright)
-	pkgver = 3.1.0_1_gceef277
+	pkgver = 3.1.0_6_gc13c273
 	pkgrel = 1
 	url = https://wiki.gnome.org/GnomeBreakTimer
 	install = gnome-break-timer-git.install
@@ -21,6 +21,7 @@ pkgbase = gnome-break-timer-git
 	depends = cairo
 	depends = json-glib
 	depends = dconf
+	depends = gcc-libs
 	conflicts = gnome-typing-break-bzr
 	replaces = gnome-typing-break-bzr
 	options = !makeflags
