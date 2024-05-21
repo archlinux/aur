@@ -6,7 +6,7 @@
 
 pkgname=fluent-bit
 
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 epoch=
 
@@ -71,7 +71,7 @@ package() {
 }
 
 # r!. %; curl -s https://releases.fluentbit.io/${pkgver\%.*}/source-$pkgver.tar.gz.{md5,sha256} | awk '{print $1}'
-md5sums=('cd9a9492a65c103cb6ea3154f8dd82f2'
+md5sums=('fe796a645a2ab6d43e167461342bbd3c'
          'SKIP')
-sha256sums=('fa6058513bcd0d31ad0dec24a34fdfaeb8bc8eb06e4975d98b2ac535fa4de98a'
+sha256sums=('6427c98b7e6f5a6befa322ea90016b1d1176fc70c00934c5a0afe9c5858fac26'
             'SKIP')
