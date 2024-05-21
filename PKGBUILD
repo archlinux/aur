@@ -2,7 +2,7 @@
 # Co-Maintainer: Takase <takase1121@proton.me>
 
 pkgname=derper
-pkgver=1.66.1
+pkgver=1.66.4
 pkgrel=1
 
 pkgdesc='Tailscale runs DERP relay servers to help connect your nodes.'
@@ -21,13 +21,13 @@ source=("derper-v$pkgver.tar.gz::https://github.com/tailscale/tailscale/archive/
         derper.service
         derper.conf)
 
-sha256sums=('a3c8645891d2dd25ad417df16e7f635cdf98d2c01778614942c6e39218c84a65'
+sha256sums=('db94df254a263110439aa9d6cf6e1e64a5644b6e6e459ab5298ba6e478a988cf'
             '2547fa9f0bfb250507d5edfef3bb6304835c9de2c061386a89543eebf16a8bc8'
             'ecaebd5f1fb0853464afeece438269303e8590aec8689554516036575deabcfc')
 
 build() {
   cd tailscale-$pkgver
-  go build -buildmode=pie -ldflags "-linkmode=external -extldflags=$LDFLAGS" ./cmd/derper
+  go build -buildmode=pie -ldflags "-linkmode external \"-extldflags=$LDFLAGS\"" ./cmd/derper
 }
 
 package() {
