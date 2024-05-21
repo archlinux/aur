@@ -7,7 +7,7 @@
 pkgdesc='A simple VTE-based terminal'
 pkgname=termite
 pkgver=16.9
-pkgrel=1
+pkgrel=2
 url=https://github.com/aperezdc/termite
 license=(LGPL-2.1-only)
 depends=(gtk3 pcre2 gnutls vte-common)
