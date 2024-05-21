@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.rc1.r19.g6e81004
+pkgver=4.0.0.rc1.r35.g34bb44e
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -39,9 +39,11 @@ conflicts=('mapnik')
 provides=('mapnik')
 source=('git+https://github.com/mapnik/mapnik.git'
         'mapnik-use-system-sparsehash.patch'
+        'mapnik-gcc14.patch'
         'git+https://github.com/mapnik/test-data.git')
 sha256sums=('SKIP'
             'dabb1b99540a6df86b34511d0d94ef505f706419b7e6d1d69314797ebcdce72f'
+            '9916d5c2958bca6e2789b18cd8c738bc10363289d96b436f7a9e6a0d9048e17b'
             'SKIP')
 
 pkgver() {
@@ -52,6 +54,7 @@ pkgver() {
 prepare() {
   cd mapnik || exit
   patch -Np1 < ../mapnik-use-system-sparsehash.patch
+  patch -Np1 < ../mapnik-gcc14.patch
   git submodule init \
     test/data
   git config submodule.test/data.url "$srcdir"/test-data
