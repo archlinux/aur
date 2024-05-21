@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rebels-in-the-sky-git
-pkgver=1.0.8.r0.gd61f281
+pkgver=1.0.9.r0.g201d183
 pkgrel=1
 pkgdesc="P2P terminal game about spacepirates playing basketball across the galaxy (git)"
 url="https://github.com/ricott1/rebels-in-the-sky"
