@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rebels-in-the-sky
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="P2P terminal game about spacepirates playing basketball across the galaxy"
 url="https://github.com/ricott1/rebels-in-the-sky"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('GPL-3.0')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b7e27305e82d996b926422996555d3f73a6a0adc3c717fb3127e71a44b57f8171ab35860ab9892b5a3ffecc1d71e45ad208e6da3175dae04804e9342138939b7')
+sha512sums=('105b4100d8e52fba68a2e4ec5459ef33c67d09e8599d6877767ce3330814efda8fde9ea165fd20e02379970a8cc597e76b72c1291575d7e31a3c45eda7fc97a2')
 options=('!lto')
 
 prepare() {
