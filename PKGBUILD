@@ -9,13 +9,13 @@ _lang='de_DE'
 
 pkgname=dm-fotowelt
 pkgdesc='an offline client for creating photobooks, greeting cards, posters and more, uploading and ordering them at fotoparadies.de'
-sha256sums=('0946535b003e50091303db60b83bc3c2a9e947f076d3ec9c011eba62c0fc4c47')
-pkgver=7.4.2
+sha256sums=('ac9c0eacf75553f9c137eea9865ca3b04125fe1482eacde84e006e8370ba676a')
+pkgver=7.4.3
 pkgrel=1
 url="https://www.fotoparadies.de/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat' 'libtiff5')
-makedepends=('unzip' 'xdg-utils')
+depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
+makedepends=('p7zip' 'xdg-utils')
 arch=('i686' 'x86_64')
 # https://dls.photoprintit.com/api/getClient/1320-de_DE/hps/x_x_x_x_24441_x_24441-0yELEgWuBDCUV/linux
 source=("https://dls.photoprintit.com/download/Data/$_keyaccount-$_lang/hps/setup_${_productUrname// /_}.tgz")
@@ -67,7 +67,7 @@ package() {
 		Categories=Graphics;Photography;
 		MimeType=application/x-hps-mcf
 	EOF
-	chmod 755 $pkgdir/usr/bin/$pkgname $pkgdir/usr/share/applications/$pkgname.desktop
+	chmod 755 $pkgdir/usr/bin/$pkgname $pkgdir/usr/share/applications/$pkgname.desktop $(find $_installDir -type d)
 
 	# adjust product name in mimetype comment
 	sed -i "s/$_productUrname/$_productRename/" $pkgdir/usr/share/mime/packages/*
