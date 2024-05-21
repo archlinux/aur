@@ -1,12 +1,11 @@
-# Contributor: skydrome <skydrome@protonmail.com>
-# Maintainer:  skydrome <skydrome@protonmail.com>
 # Maintainer:  Salama <salama@salama.xyz>
+# Contributor: skydrome <skydrome@protonmail.com>
 
 # uncomment if you do not want to build all language translations
 #export LG2=en
 
 pkgname=i2p
-pkgver=2.5.0
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
@@ -21,9 +20,10 @@ install='i2p.install'
 options=(!strip)
 
 # https://geti2p.net/en/get-involved/develop/release-signing-key
-# https://geti2p.net/en/blog/post/2023/03/13/new_release_2.2.0
+# https://geti2p.net/_static/zzz.key.asc
 # https://geti2p.net/_static/idk.key.asc
-validpgpkeys=('70D2060738BEF80523ACAFF7D75C03B39B5E14E1')
+validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8'
+              '70D2060738BEF80523ACAFF7D75C03B39B5E14E1')
 
 _url="https://files.i2p-projekt.de/${pkgver}"
 #_url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
@@ -35,7 +35,7 @@ source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         #upstream.patch::'https://github.com/i2p/i2p.i2p/commit/6c0e18d3.patch'
 )
 
-sha256sums=('6bda9aff7daa468cbf6ddf141c670140de4d1db145329645a90c22c1e5c7bc01'
+sha256sums=('f23d0746d72a55cccbd17f40762e491ae1b42cdf55d7e73404d213a84985ca73'
             'SKIP'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
             'fc30dd32f48fe1c93bf36c8297ca48203a1479e4e221ebe62c57cf3c3c0347d3'
