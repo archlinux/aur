@@ -1,11 +1,9 @@
 [Unit]
 Description=conduwuit Matrix homeserver
-After=network-online.target
+After=network.target
 
 [Service]
 DynamicUser=yes
-User=_conduwuit
-Group=_conduwuit
 Type=notify
 
 AmbientCapabilities=
@@ -44,7 +42,7 @@ StateDirectory=matrix-conduit
 RuntimeDirectory=conduwuit
 RuntimeDirectoryMode=0750
 
-Environment="CONDUIT_CONFIG=/etc/conduwuit/conduwuit.toml"
+Environment="CONDUIT_CONFIG=/etc/conduwuit.toml"
 
 ExecStart=/usr/bin/conduwuit
 Restart=on-failure
