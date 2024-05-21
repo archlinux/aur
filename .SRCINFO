@@ -1,0 +1,15 @@
+pkgbase = v-analyzer-git
+	pkgdesc = Bring IDE features for V programming languages in VS Code, Vim and other editors
+	pkgver = r488.7e11a6f
+	pkgrel = 1
+	url = https://github.com/vlang/v-analyzer
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = vlang
+	provides = v-analyzer
+	conflicts = v-analyzer
+	source = git+https://github.com/vlang/v-analyzer.git
+	sha256sums = SKIP
+
+pkgname = v-analyzer-git
