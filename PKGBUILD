@@ -1,6 +1,6 @@
 # Maintainer: Dan Fuhry <dan@fuhry.com>
 pkgname=tunerstudio
-pkgver=3.2.00
+pkgver=3.2.03
 pkgrel=1
 pkgdesc="Graphical engine tuning and analysis software for Megasquirt ECUs"
 arch=(any)
@@ -34,6 +34,6 @@ package()
 	mkdir -p "${pkgdir}/usr/share/applications"
 	install -m644 "${srcdir}/tunerstudio.desktop" "${pkgdir}/usr/share/applications/tunerstudio.desktop"
 }
-sha256sums=('a9ef385d50d7b93c2968717d3675194dd8cc0e34fbf483ffc1c55d8f9667b618'
+sha256sums=('13eebff9a5bb7aedbd88b1999e3db053c744b6309550ac9c931c2455cbe94fd5'
             'e787c1df189a86b54c16ce6a4e49fcecfe91dbf4f58ee0c3d7887de1ac1fe418'
             'a493f95c6b311c9a3be3cdd6a06462f9bdd9c10905e73825a085339abd3eee6b')
