@@ -1,18 +1,28 @@
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: Alonso Rodríguez <alonso.rodriguez (at) udc.es>
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: wuxb <wuxb45@gmail.com>
 # Contributor: eolianoe <eolianoe At GoogleMAIL DoT com>
 # Contributor: Jed Brown <jed@59A2.org>
 
 pkgname=papi
 pkgver=7.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Performance Application Programming Interface"
 arch=('x86_64' 'i686')
 url="http://icl.cs.utk.edu/${pkgname}"
 license=('BSD')
 depends=('glibc' 'gcc-fortran')
-source=(http://icl.cs.utk.edu/projects/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('6ffe5f2c90bf699dcb937961ee0483e7edbb1909451d4bfcfe1949ad389b4089bbd7573b4055164fede9944d678e582c23a0cb74741c480e72e5e01b2061d0b0')
+source=("http://icl.cs.utk.edu/projects/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz"
+        'alderlakex-support.patch')
+sha512sums=('6e427505b9237a2165dee8c198708a26f4b366ca31a424340206d29c56d04b13405d20a734f311a1f18cbbbc1b940eb5c93535cd734b0c796459623e93624219'
+            '6da4732f9fb87bad0359f1526bcfe00f8ea00ba47df0cabbf35a3324a5e309f9967a18bf9c9855d1cb753f5468161893f1ff8a37cf5114320a9e8466898c700d')
+
+prepare() {
+  cd "${srcdir}"
+
+  # Patch for Alder Lake X support
+  patch -Np1 -i ../alderlakex-support.patch
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"

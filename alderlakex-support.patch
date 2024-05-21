@@ -1,0 +1,12 @@
+diff --git a/papi-7.1.0/src/libpfm4/lib/pfmlib_intel_skl.c b/papi-7.1.0/src/libpfm4/lib/pfmlib_intel_skl.c
+index b8c9f99..2a7ea08 100644
+--- a/papi-7.1.0/src/libpfm4/lib/pfmlib_intel_skl.c
++++ b/papi-7.1.0/src/libpfm4/lib/pfmlib_intel_skl.c
+@@ -30,6 +30,7 @@ static const int skl_models[] = {
+	78, /* Skylake mobile */
+	94, /* Skylake desktop */
+	142,/* KabyLake mobile */
++	151,/* Value fix for AlderLake X */
+	158,/* KabyLake desktop */
+	165,/* CometLake mobile */
+	166,/* CometLake */
