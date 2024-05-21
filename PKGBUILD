@@ -4,7 +4,7 @@ _cranver=1.3.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Client for 'jq', a 'JSON' processor (<https://jqlang.github.io/jq/>), written in C. 'jq' allows the following with 'JSON' data: index into, parse, do calculations, cut up and filter, change key names and values, perform conditionals and comparisons, and more."
+pkgdesc="Client for 'jq', a 'JSON' processor (<https://jqlang.github.io/jq/>), written in C."
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
