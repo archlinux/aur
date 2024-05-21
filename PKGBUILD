@@ -3,7 +3,7 @@
 
 pkgname=veridian-bin
 pkgver=0.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A SystemVerilog Language Server"
 arch=('x86_64')
 url="https://github.com/vivekmalneedi/${pkgname%-*}"

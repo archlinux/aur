@@ -1,7 +1,7 @@
 pkgbase = veridian-bin
 	pkgdesc = A SystemVerilog Language Server
 	pkgver = 0.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/vivekmalneedi/veridian
 	arch = x86_64
 	license = MIT
