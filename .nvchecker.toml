@@ -1,0 +1,5 @@
+[python-tensortrax]
+source = "github"
+github = "adtzlr/tensortrax"
+use_latest_release = "true"
+prefix = "v"
