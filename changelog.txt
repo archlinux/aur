@@ -1,14 +1,2 @@
-v0.300.4
-調整以下漢字字形：溃腾馈。
-
-v0.300.3
-MN 版調整以下漢字字形：諱
-CL 版無變動。
-
-v0.300.2
-MN 調整以下字形：臾。
-CL 無變動。
-
-v0.300.1
-MN 版調整以下漢字字形：勺。
-CL 版無變動。
+補全原始字型 IPAexMincho 包含的 JIS 第一～四水準漢字，以及「jf 7000 當務字集」基本包所收錄的漢字，[詳情按此查看](https://github.com/lxgw/LxgwZhiSong/blob/main/documentation/changelog/20240519.md)。
+新增以下符號：℉⍻☑☒✗。
