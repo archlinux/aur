@@ -5,7 +5,7 @@ _fontname="font-awesome"
 _pkgname="ttf-$_fontname-4"
 pkgbase="$_pkgname"
 pkgver=4.7.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Iconic font designed for Bootstrap (version 4.x)"
 url="https://github.com/FortAwesome/Font-Awesome"
 license=('OFL-1.1')
@@ -32,6 +32,6 @@ package_ttf-font-awesome-4() {
 }
 
 package_otf-font-awesome-4() {
-  install -Dm644 "$_pkgsrc"/fonts/*.otf "$pkgdir/usr/share/fonts/OTF"
+  install -Dm644 "$_pkgsrc"/fonts/*.otf -t "$pkgdir/usr/share/fonts/OTF/"
   install -Dm644 "LICENSE.OFL-1.1" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

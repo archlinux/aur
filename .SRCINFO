@@ -1,7 +1,7 @@
 pkgbase = ttf-font-awesome-4
 	pkgdesc = Iconic font designed for Bootstrap (version 4.x)
 	pkgver = 4.7.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/FortAwesome/Font-Awesome
 	arch = any
 	license = OFL-1.1
