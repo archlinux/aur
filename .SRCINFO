@@ -1,0 +1,22 @@
+pkgbase = r-googlepolylines
+	pkgdesc = Encodes simple feature ('sf') objects and coordinates, and decodes polylines using the 'Google' polyline encoding algorithm
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=googlePolylines
+	arch = any
+	license = MIT
+	makedepends = gcc
+	depends = r
+	depends = r-rcpp
+	depends = r-bh
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-sf
+	optdepends = r-sfheaders
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/googlePolylines_0.8.4.tar.gz
+	sha256sums = 38e79a69e263a86fd143efa283fb9515f46dbb85cd4d11a314cf6ceb187b31e3
+
+pkgname = r-googlepolylines
