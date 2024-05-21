@@ -1,6 +1,6 @@
 pkgbase = netpad-bin
 	pkgdesc = A cross-platform C# editor and playground.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/tareqimbasher/NetPad
 	arch = x86_64
@@ -8,13 +8,15 @@ pkgbase = netpad-bin
 	depends = electron23
 	depends = dotnet-sdk
 	optdepends = aspnet-runtime: ASP.NET Support
-	provides = netpad=0.7.0
+	provides = netpad=0.7.1
 	conflicts = netpad
-	source = netpad-0.7.0.pacman::https://github.com/tareqimbasher/NetPad/releases/download/v0.7.0/netpad-0.7.0-linux-x64.pacman
-	source = LICENSE-0.7.0::https://raw.githubusercontent.com/tareqimbasher/NetPad/v0.7.0/LICENSE
+	options = !strip
+	options = !emptydirs
+	source = netpad-0.7.1.pacman::https://github.com/tareqimbasher/NetPad/releases/download/v0.7.1/netpad-0.7.1-linux-x64.pacman
+	source = LICENSE-0.7.1::https://raw.githubusercontent.com/tareqimbasher/NetPad/v0.7.1/LICENSE
 	source = netpad.sh
-	sha256sums = cb0c2c9efb51bc2ea74ddaf245f873a1a356f6960a8fd9bb9d464f519b4a369a
+	sha256sums = 362df336b2521a7c4ad0b92be9074b1141c10c9823740e67e6a799e3eeb1c8e3
 	sha256sums = 43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = netpad-bin
