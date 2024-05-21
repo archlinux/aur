@@ -2,9 +2,9 @@
 # Contributor: steelt <steeltitanium1 at gmail dot com>
 
 pkgname=ringracers
-pkgver=2.2
-_dataver=2.2
-pkgrel=2
+pkgver=2.3
+_dataver=2.3
+pkgrel=1
 pkgdesc="Kart racing video game originally based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2"
 arch=('x86_64' 'aarch64')
 license=('GPL2')
@@ -14,19 +14,13 @@ makedepends=('cmake' 'ninja' 'mold')
 _archive="RingRacers-$pkgver"
 
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/KartKrewDev/RingRacers/archive/refs/tags/v$pkgver.tar.gz"
-  "org.kartkrew.RingRacers.desktop"
-  "0001-rapidjson-remove-non-compiling-assignment-operator.patch")
+  "org.kartkrew.RingRacers.desktop")
 
-sha256sums=('cf68c9fefba8e3b8e8c737b5e88aed87d5a67591991719f9b344e26ab7ea4c80'
-            '812a12ad6a7e5ef7bea3ef3b24bc4e686e9b8df16221c478f202c96ee6ce413d'
-            '332639804a1b221d44befc903c14d86d98419c343f39d3d1ad525df6e496871b')
-
-prepare() {
-    patch -N -d $_archive -i ../0001-rapidjson-remove-non-compiling-assignment-operator.patch -p 1
-}
+sha256sums=('68b1022f6ef92c178ca3b046b86a477edaec436ecd3c90a10221f3dcc2d45d81'
+            '812a12ad6a7e5ef7bea3ef3b24bc4e686e9b8df16221c478f202c96ee6ce413d')
 
 build() {
-  # Unset U_GLIBCXX_ASSERTIONS as a workaround until crashes related to it are fixed
+  # Unset D_GLIBCXX_ASSERTIONS as a workaround until crashes related to it are fixed
   CXXFLAGS="$CXXFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
 
   cd "$_archive"
