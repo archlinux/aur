@@ -1,6 +1,6 @@
 pkgbase = waterfox-kde
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions
-	pkgver = G6.0.11
+	pkgver = G6.0.14
 	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -51,26 +51,28 @@ pkgbase = waterfox-kde
 	options = !makeflags
 	options = zipman
 	options = !lto
-	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G6.0.11
-	source = waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/waterfox.desktop
-	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/distribution.ini
-	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/vendor.js
-	source = waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/waterfox.1
-	source = syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/syspref.js
-	source = waterfox.appdata.xml.in::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/waterfox.appdata.xml.in
-	source = g-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/patches/g-kde.patch
-	source = fis-csd-global-menu.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/patches/fis-csd-global-menu.patch
-	source = nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/patches/nongnome-proxies.patch
-	source = mozilla-ntlm-full-path.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/patches/mozilla-ntlm-full-path.patch
-	source = libavcodec58_91.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/patches/libavcodec58_91.patch
-	source = fix-langpack-id.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/patches/fix-langpack-id.patch
-	source = fix-wayland-build.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/patches/fix-wayland-build.patch
-	source = mach-depends.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/patches/mach-depends.patch
+	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G6.0.14
+	source = waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/waterfox.desktop
+	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/distribution.ini
+	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/vendor.js
+	source = waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/waterfox.1
+	source = syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/syspref.js
+	source = waterfox.appdata.xml.in::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/waterfox.appdata.xml.in
+	source = g-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/g-kde.patch
+	source = fis-csd-global-menu.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/fis-csd-global-menu.patch
+	source = nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/nongnome-proxies.patch
+	source = mozilla-ntlm-full-path.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/mozilla-ntlm-full-path.patch
+	source = libavcodec58_91.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/libavcodec58_91.patch
+	source = fix-langpack-id.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/fix-langpack-id.patch
+	source = fix-wayland-build.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/fix-wayland-build.patch
+	source = mach-depends.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/mach-depends.patch
+	source = rust-1.78.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/rust-1.78.patch
+	source = rust-1.78_p2.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/rust-1.78_p2.patch
 	sha256sums = SKIP
 	sha256sums = ec32cbe949ed23bf7a61eef468a70a2e00e9fc448e4912c1200d110f5538d63a
 	sha256sums = 63cc269f591b2c6409cd7773f929bcb64f9acf3c9f5c1b8c1848c077056094fe
 	sha256sums = 5a3b4ebefbd9e5dd3abdc9e694ef4dadcce6fcc93f9352ee30f1fcb639a227f6
-	sha256sums = 405cc621d68ad61443ace33142b46c2f089f4a9f021b4ea62ec4183c9046d0f7
+	sha256sums = 183d439ab5964c5cb70a6794c81cb60a6a2b00aca99eef12e9ffee2aa5fc663b
 	sha256sums = 0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab
 	sha256sums = 26db702cd9c258548313d66f53722d7cadd206779e066d1fca5816256581e344
 	sha256sums = 9cebb1377a40b8776a7c913641911743a116abaddbff10ff2f9f8dff973bb73c
@@ -81,6 +83,8 @@ pkgbase = waterfox-kde
 	sha256sums = 0f9d1d22ec686639c31245fff7db837428e0880fd9ad698890ec81326be52ae0
 	sha256sums = 10714e2363c05bf611eec927807101a5babc94a0ab9b584ce8204a89d4f8b73a
 	sha256sums = 105fa659e4242c1b08bda0457bfddc28762bdd4a33e9bda05940ab38d26b334c
+	sha256sums = ada7f4258fa82d16f900d804cb362db6dfc156f35b0b0cfada864131d813d0db
+	sha256sums = 95fd4efcf1d98193a5707892d15d4a1bb1debdbea4846ca9128fad64ad978686
 
 pkgname = waterfox-kde
 	optdepends = networkmanager: Location detection via available WiFi networks
@@ -90,5 +94,5 @@ pkgname = waterfox-kde
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = kwaterfoxhelper: KDE Plasma Integration
-	provides = waterfox-g=6.0.11
-	provides = waterfox=G6.0.11
+	provides = waterfox-g=6.0.14
+	provides = waterfox=G6.0.14

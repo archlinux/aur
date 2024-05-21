@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde
-_pkgver=6.0.11
+_pkgver=6.0.14
 pkgver=G${_pkgver}
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
@@ -17,7 +17,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-s
              'git')
 replaces=("waterfox-g4-kpe" "waterfox-g3-kpe" "waterfox-g-kpe")
 options=('!emptydirs' '!makeflags' 'zipman' '!lto')
-_filesrev=b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3
+_filesrev=93a95779a069656459343d3965e0b1e7667d6945
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-kde
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$_pkgver"
         "waterfox.desktop::$_filesurl/waterfox.desktop"
@@ -34,12 +34,14 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$_pkgver"
         "fix-langpack-id.patch::$_filesurl/patches/fix-langpack-id.patch"
         "fix-wayland-build.patch::$_filesurl/patches/fix-wayland-build.patch"
         "mach-depends.patch::$_filesurl/patches/mach-depends.patch"
+        "rust-1.78.patch::$_filesurl/patches/rust-1.78.patch"
+        "rust-1.78_p2.patch::$_filesurl/patches/rust-1.78_p2.patch"
         )
 sha256sums=('SKIP'
             'ec32cbe949ed23bf7a61eef468a70a2e00e9fc448e4912c1200d110f5538d63a'
             '63cc269f591b2c6409cd7773f929bcb64f9acf3c9f5c1b8c1848c077056094fe'
             '5a3b4ebefbd9e5dd3abdc9e694ef4dadcce6fcc93f9352ee30f1fcb639a227f6'
-            '405cc621d68ad61443ace33142b46c2f089f4a9f021b4ea62ec4183c9046d0f7'
+            '183d439ab5964c5cb70a6794c81cb60a6a2b00aca99eef12e9ffee2aa5fc663b'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
             '26db702cd9c258548313d66f53722d7cadd206779e066d1fca5816256581e344'
             '9cebb1377a40b8776a7c913641911743a116abaddbff10ff2f9f8dff973bb73c'
@@ -49,7 +51,9 @@ sha256sums=('SKIP'
             'c10baed9fab17b0c39839df3970d9254b21b17c9b6a36f7c8523bac609d24d57'
             '0f9d1d22ec686639c31245fff7db837428e0880fd9ad698890ec81326be52ae0'
             '10714e2363c05bf611eec927807101a5babc94a0ab9b584ce8204a89d4f8b73a'
-            '105fa659e4242c1b08bda0457bfddc28762bdd4a33e9bda05940ab38d26b334c')
+            '105fa659e4242c1b08bda0457bfddc28762bdd4a33e9bda05940ab38d26b334c'
+            'ada7f4258fa82d16f900d804cb362db6dfc156f35b0b0cfada864131d813d0db'
+            '95fd4efcf1d98193a5707892d15d4a1bb1debdbea4846ca9128fad64ad978686')
 
 prepare() {
 
@@ -64,6 +68,8 @@ prepare() {
   patch -Np1 -i ../fix-langpack-id.patch
   patch -Np1 -i ../fix-wayland-build.patch
   patch -Np1 -i ../mach-depends.patch
+  patch -Np1 -i ../rust-1.78.patch
+  patch -Np1 -i ../rust-1.78_p2.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-alsa
