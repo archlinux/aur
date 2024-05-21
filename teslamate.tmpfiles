@@ -1,2 +1,2 @@
 Z /usr/share/webapps/teslamate/lib/tzdata-1.1.1/priv/	0750	teslamate	teslamate	-
-d /run/teslamate/					0777	teslamate	teslamate	-
+d /run/teslamate/					0755	teslamate	teslamate	-
