@@ -1,0 +1,16 @@
+pkgbase = armory-cli
+	pkgdesc = ARMORY 是翼辉信息自主研发的软件包管理工具.
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = http://10.7.1.31:3001
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = glibc
+	provides = armory
+	options = !strip
+	options = !debug
+	source = armory-v1.5.1-x86_64.tar.gz::http://10.7.1.31:3001/v1/packages/@armory/armory-cli/v/1.5.1/p/Linux/a/x86_64
+	sha256sums = SKIP
+
+pkgname = armory-cli
