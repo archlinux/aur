@@ -1,6 +1,6 @@
 pkgbase = clangd-opt-git
 	pkgdesc = Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)
-	pkgver = 19.r10770.gb52fa9461ab7
+	pkgver = 19.r11902.g375761bcaba9
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -54,7 +54,7 @@ pkgbase = clangd-opt-git
 	sha256sums = 8c42651b7636726efc02bb258fcc33ac3d7ae7db4b98c58df1b96494631dbe98
 	sha256sums = 9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7
 	sha256sums = 71ff16d268122b0ade2d8e071cfb2110cdd75ac54ae67e36bc04be8bc077c121
-	sha256sums = 954a872fb74b5956feb8011befd4c383386fdae96358c680b771b6bd1ab82a5a
+	sha256sums = 7eef87c878abf154548ed635cdc801004efff41facb7c0320ba31ebe50471316
 	sha256sums = f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb
 	sha256sums = 2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00
 	sha256sums = ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa
