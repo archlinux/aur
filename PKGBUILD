@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-web-server-bin
 _pkgname=Simple-Web-Server
-pkgver=1.2.10
+pkgver=1.2.11
 _electronversion=28
-pkgrel=3
+pkgrel=1
 pkgdesc="Create a local web server in just a few clicks with an easy to use interface. A continuation of Web Server for Chrome, built with Electron."
 arch=(
     "aarch64"
@@ -24,13 +24,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('57e19cef8140644e1f4ac091f5bb90dc20e65f26232a756233cba336c2dbd85b'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('f570b30f373f0d6056dd3a2e31050c74b6eb322af4079d0034c8380066051929')
-sha256sums_x86_64=('9bb848f65527ff45511dad2733ac86bd618f72684fadc12921128a370320563e')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums_aarch64=('bde9d3f38ee0544eb467edd57b467c842a20b63b8a905ba7ba06a4f0634d547a')
+sha256sums_x86_64=('5400668727aec4701097929db27a330a89c57fec5404903e0fc9e0f894cc5470')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname//-/ }|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
