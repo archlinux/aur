@@ -1,0 +1,14 @@
+pkgbase = goocanvasmm
+	pkgdesc = C++ wrappers for goocanvas
+	pkgver = 1.90.11
+	pkgrel = 7
+	url = https://download.gnome.org/sources/goocanvasmm/
+	arch = x86_64
+	license = GPL
+	makedepends = mm-common
+	depends = goocanvas
+	depends = gtkmm3
+	source = https://download.gnome.org/sources/goocanvasmm/1.90/goocanvasmm-1.90.11.tar.xz
+	sha512sums = f4decc16fc927dd044714558d1edd5a1dc53bc084b1ad361f791bb3f21bedd298a14aa603e3087df7c61d6d873c86a5b00e1ff82cffa5cafa7f06e86b59a7241
+
+pkgname = goocanvasmm
