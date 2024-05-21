@@ -3,7 +3,6 @@ pkgbase = falcon-sensor
 	pkgver = 7.14.0.16703
 	pkgrel = 1
 	url = https://crowdstrike.com
-	install = falcon-sensor.install
 	arch = x86_64
 	license = custom
 	depends = openssl

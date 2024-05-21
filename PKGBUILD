@@ -15,7 +15,6 @@ url="https://crowdstrike.com"
 license=("custom")
 depends=("openssl" "libnl1")
 backup=("etc/logrotate.d/falcon-sensor")
-install="${pkgname}.install"
 source=(
   "manual://${pkgname}_${pkgver/_/-}_amd64.deb"
   "LICENSE"
