@@ -1,6 +1,6 @@
 pkgbase = xemu
 	pkgdesc = Original Xbox emulator (fork of XQEMU)
-	pkgver = 0.7.121
+	pkgver = 0.7.122
 	pkgrel = 1
 	url = https://xemu.app/
 	install = xemu.install
@@ -31,7 +31,7 @@ pkgbase = xemu
 	depends = sdl2
 	depends = zlib
 	optdepends = fancy-mouse-boot-rom: first-stage xbox bootrom
-	source = xemu::git+https://github.com/xemu-project/xemu.git#tag=v0.7.121
+	source = xemu::git+https://github.com/xemu-project/xemu.git#tag=v0.7.122
 	source = xemu-imgui::git+https://github.com/xemu-project/imgui.git
 	source = berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git
 	source = berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git
@@ -40,7 +40,7 @@ pkgbase = xemu
 	source = keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git
 	source = nv2a_vsh_cpu::git+https://github.com/abaire/nv2a_vsh_cpu.git
 	source = use-system-libs.patch
-	b2sums = 12b4937f82063c645161715fde94a071008e29e7a3b14300e5debaf3867e4e29e9cee9bd804f16cdbdf49eee202828c86c4d3f7522426287d955748f1c08d8bd
+	b2sums = d4622ff13f48892fa13ae9d4714b9dc600d3b6d09f0776455e8c9ad31ed48d16ddc728920fb9616f6142ad291e35934fee26e6c7e598cf4c1a34d852d50e47ea
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
