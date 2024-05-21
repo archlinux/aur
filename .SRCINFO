@@ -1,0 +1,16 @@
+pkgbase = osqp-eigen
+	pkgdesc = Simple Eigen-C++ wrapper for OSQP library
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://robotology.github.io/osqp-eigen
+	arch = x86_64
+	arch = i686
+	license = BSD-3-Clause
+	checkdepends = catch2-v2
+	makedepends = cmake
+	depends = eigen
+	depends = osqp
+	source = osqp-eigen-0.8.1.tar.gz::https://github.com/robotology/osqp-eigen/archive/v0.8.1.tar.gz
+	sha256sums = 21f04878bed68cb433c4341570ee2e5755f7d499d8ab550e7dc2308569dabf71
+
+pkgname = osqp-eigen
