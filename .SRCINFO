@@ -1,7 +1,7 @@
 pkgbase = graphmod-git
 	pkgdesc = Present the module dependencies of a program as a 'dot' graph
 	pkgver = 1.4.r53.g983c38f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yav/graphmod
 	arch = i686
 	arch = x86_64
