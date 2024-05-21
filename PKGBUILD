@@ -16,7 +16,7 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir/deep-cleaner"
+    cd "$srcdir/deep-cleaner-1.0.0"
     install -Dm755 "deep-cleaner.sh" "$pkgdir/usr/bin/deep-cleaner"
     install -Dm644 "deep-cleaner.desktop" "$pkgdir/usr/share/applications/deep-cleaner.desktop"
     install -Dm644 "icon.png" "$pkgdir/usr/share/pixmaps/deep-cleaner.png"
