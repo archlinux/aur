@@ -4,7 +4,7 @@
 
 pkgname=ghcup-hs-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.1.22.0.r45.g4513c39
+pkgver=0.1.22.0.r50.g9b76170
 pkgrel=1
 pkgdesc='GHC toolchain installer'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -33,10 +33,7 @@ _allowNewerDeps() {
 
 prepare() {
     cd "$pkgname"
-    stack config set resolver lts-22.19 # ghc-9.6.4
-    echo 'compiler: ghc-9.6.5' >> stack.yaml
-
-    _allowNewerDeps cabal-install-parsers ghcup semigroupoids unix-bytestring
+    stack config set resolver lts-22.22 # ghc-9.6.5
 
     # enable tests
     yq -i --yaml-output \
