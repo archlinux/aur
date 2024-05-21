@@ -1,32 +1,23 @@
 pkgbase = power-profiles-daemon-patched-amd-git
 	pkgdesc = Makes power profiles handling available over D-Bus (with AMD patches by Mario Limonciello)
-	pkgver = 0.13
-	pkgrel = 3
-	url = https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/tree/?h=f39
+	pkgver = 0.21
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/upower/power-profiles-daemon
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = python-dbusmock
-	checkdepends = python-pylint
+	checkdepends = python-isort
+	checkdepends = python-mccabe
 	checkdepends = umockdev
-	makedepends = git
 	makedepends = meson
-	makedepends = ninja
-	depends = upower
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = libgudev
 	depends = polkit
+	depends = upower
 	optdepends = python-gobject: for powerprofilesctl
-	provides = power-profiles-daemon
-	conflicts = power-profiles-daemon
-	source = https://gitlab.freedesktop.org/hadess/power-profiles-daemon/uploads/1f2ea40547b2af8d255875d7085211e5/power-profiles-daemon-0.13.tar.xz
-	source = https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/plain/0001-tests-Split-immutable-control-into-a-test-helper.patch?h=f39
-	source = https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/plain/0002-Allow-both-CPU-and-platform-drivers-to-be-simultaneo.patch?h=f39
-	source = https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/plain/0003-Update-integration-test-to-be-compatible-with-pm-pro.patch?h=f39
-	source = https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/plain/0004-Disable-loading-amd-pstate-when-the-PM-profile-is-a-.patch?h=f39
-	source = https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/plain/0005-Don-t-change-governor-for-amd-pstate-at-probe.patch?h=f39
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
+	source = https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/archive/0.21/power-profiles-daemon-0.21.tar.gz
+	sha256sums = c15a368a59f2cae1474bdfccdd9357f06b0abc9eb7638a87f68c091aaf570349
 
 pkgname = power-profiles-daemon-patched-amd-git

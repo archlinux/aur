@@ -2,38 +2,40 @@
 
 pkgname=power-profiles-daemon-patched-amd-git
 _pkgname=power-profiles-daemon
-pkgver=0.13
-pkgrel=3
-pkgdesc="Makes power profiles handling available over D-Bus (with AMD patches by Mario Limonciello)"
-url="https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/tree/?h=f39"
-license=(GPL3)
+pkgver=0.21
+pkgrel=1
+pkgdesc="[redundant] Makes power profiles handling available over D-Bus (with AMD patches by Mario Limonciello)"
+url='https://gitlab.freedesktop.org/upower/power-profiles-daemon'
+license=(GPL-3.0-only)
 arch=(x86_64)
-depends=('upower' 'polkit')
+depends=(gcc-libs
+         glib2
+         glibc
+         libgudev
+         polkit
+         upower)
 optdepends=('python-gobject: for powerprofilesctl')
-makedepends=('git' 'meson' 'ninja')
-checkdepends=('python-dbusmock' 'python-pylint' 'umockdev')
-provides=('power-profiles-daemon')
-conflicts=('power-profiles-daemon')
-source=("https://gitlab.freedesktop.org/hadess/power-profiles-daemon/uploads/1f2ea40547b2af8d255875d7085211e5/power-profiles-daemon-0.13.tar.xz" "https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/plain/0001-tests-Split-immutable-control-into-a-test-helper.patch?h=f39" "https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/plain/0002-Allow-both-CPU-and-platform-drivers-to-be-simultaneo.patch?h=f39" "https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/plain/0003-Update-integration-test-to-be-compatible-with-pm-pro.patch?h=f39" "https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/plain/0004-Disable-loading-amd-pstate-when-the-PM-profile-is-a-.patch?h=f39" "https://copr-dist-git.fedorainfracloud.org/cgit/mariolimonciello/power-profiles-daemon/power-profiles-daemon.git/plain/0005-Don-t-change-governor-for-amd-pstate-at-probe.patch?h=f39")
-b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-
-prepare() {
-  cd "$_pkgname-$pkgver"
-  patch --forward --strip=1 --input="${srcdir}/0001-tests-Split-immutable-control-into-a-test-helper.patch?h=f39"
-  patch --forward --strip=1 --input="${srcdir}/0002-Allow-both-CPU-and-platform-drivers-to-be-simultaneo.patch?h=f39"
-  patch --forward --strip=1 --input="${srcdir}/0003-Update-integration-test-to-be-compatible-with-pm-pro.patch?h=f39"
-  patch --forward --strip=1 --input="${srcdir}/0004-Disable-loading-amd-pstate-when-the-PM-profile-is-a-.patch?h=f39"
-  patch --forward --strip=1 --input="${srcdir}/0005-Don-t-change-governor-for-amd-pstate-at-probe.patch?h=f39"
-}
+makedepends=(meson)
+checkdepends=(python-dbusmock
+              python-isort
+              python-mccabe
+              umockdev)
+source=(https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
+sha256sums=('c15a368a59f2cae1474bdfccdd9357f06b0abc9eb7638a87f68c091aaf570349')
 
 build() {
-  arch-meson "$_pkgname-$pkgver" _build
+  meson $_pkgname-$pkgver build \
+    --prefix /usr \
+    --libexec lib \
+    --sysconfdir /usr/share
+  meson compile -C build
 }
 
 check() {
-  meson test -C _build
+  meson test -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -v -C _build install
+  meson install -C build --destdir "$pkgdir"
+  echo -e "\033[1;31mWARNING: This package is now redundant, as these patches have been mainlined into the base version."
 }
