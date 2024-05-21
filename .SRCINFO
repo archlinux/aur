@@ -1,13 +1,14 @@
 pkgbase = nestris-bin
 	pkgdesc = Tetris NES powered by the Nestris reimplimentation engine.
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/nestris-bin
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
 	depends = sdl2
+	depends = yaml-cpp
 	source_x86_64 = https://gitlab.com/linuxbombay/nestris-bin/binaries/0.7/-/raw/main/nestris-linux-x64.tar.xz
 	source_x86_64 = git+https://gitlab.com/linuxbombay/nestris-bin/tetris
 	sha256sums_x86_64 = 9b0f734616c9f7c8768b713e1ca286719ea73cf376d2bc755f236edce13d29ad
