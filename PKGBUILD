@@ -5,7 +5,7 @@
 
 pkgname='neovim-telescope'
 _projname='telescope.nvim'
-pkgver='0.1.6'
+pkgver='0.1.7'
 pkgrel=1
 pkgdesc='Extendable fuzzy search for Neovim'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
 )
 conflicts=("${pkgname}-git")
 source=("${_projname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4e37fe58054ad226fb1263b22b621355e9ec24432662cf4cb1f28be878470a44')
+sha256sums=('751ed8a86550cb978d3eca10830edece96f98c5ec062d429c74ad86ea9a25013')
 
 package() {
   pkgdir=${pkgdir:?}
@@ -32,7 +32,6 @@ package() {
   cd "${_projname}-${pkgver}"
 
   find "${dirs[@]}" \
-    -not \( -path lua/tests -prune \) \
     -type f \
     -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 
