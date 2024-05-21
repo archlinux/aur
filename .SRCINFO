@@ -1,0 +1,25 @@
+pkgbase = polyendtracker-midi-export
+	pkgdesc = MIDI exporter for Polyend Tracker project files
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/DataGreed/polyendtracker-midi-export
+	arch = any
+	license = MIT
+	checkdepends = mediainfo
+	checkdepends = python-installer
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-midiutil
+	options = !debug
+	options = !strip
+	source = polyendtracker-midi-export-0.3.2.tar.gz::https://github.com/DataGreed/polyendtracker-midi-export/archive/v0.3.2.tar.gz
+	source = github-pr-4.patch
+	source = github-pr-5-backported.patch
+	sha512sums = a5cf2534caee849abf7f417671d8d5fa94f2af3c831b35b30eefd54005f832bf397d1e1632a09a3a8766b1bd44f6b8d275e4f375e83f13609068498d024ef4a3
+	sha512sums = 00a6c545366298c4e3c2fbc354034dc9628204bf2dbb5eceef56ad0a512d99cdd6f1f64359b0cba256fc44da73f4c6ccb69d9838d2d5ccd43d4a5fab62dbeee3
+	sha512sums = 6f41834aa6a5588bcd7104d20cd9857432a41a3bd2772483ad1532695c8b25979ae4097a47cf1893c4ce18e82831bdd8b69970cbc9ca5d8108ce3cdc5687b54e
+
+pkgname = polyendtracker-midi-export

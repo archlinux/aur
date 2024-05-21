@@ -1,0 +1,219 @@
+From c92673f307bac129112a40b32cc40f5c46ddc07b Mon Sep 17 00:00:00 2001
+From: Claudia <claui@users.noreply.github.com>
+Date: Tue, 21 May 2024 17:46:50 +0200
+Subject: [PATCH 1/2] MIDIUtil: work around crash due to de-duplication
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The test project included in the test data folder triggers several bugs
+in the third-party `MIDIUtil` dependency.
+
+One of the bugs is caused by the de-duplication algorithm in `MIDIUtil`
+and a mismatch of expectations between itself and the de-interleaving
+step that follows.
+
+The bug can be triggered by two or more `NoteOn` events that happen
+at the same time but have different durations. In that case, the
+de-duplication algorithm removes duplicate `NoteOn` events but
+leaves the `NoteOff` events untouched because they occur on
+different ticks.
+
+This throws the ratio of `NoteOn` to `NoteOff` events out of balance
+and causes a stack underrun in the de-interleaving algorithm.
+
+Example for such a group of events, discovered in the included test
+pattern:
+
+```py
+from pprint import pprint
+from polytrackermidi.parsers import patterns
+from polytrackermidi.exporters import midi
+
+INPUT_FILENAME = './reverse-engineering/test data/chords and arps/1 chord arp test data project/patterns/pattern_01.mtp'
+
+pattern = patterns.PatternParser(filename=INPUT_FILENAME)
+midi_exporter = midi.PatternToMidiExporter(pattern=pattern.parse())
+
+midi_tracks = midi_exporter.generate_midi().tracks
+
+events_for_pitch_24 = [
+    (event.tick, event.evtname, getattr(event, 'duration', None))
+    for event in midi_tracks[1].eventList
+    if event.evtname in ['NoteOn', 'NoteOff'] and event.pitch == 24
+]
+
+pprint(sorted(events_for_pitch_24))
+```
+
+The output reveals a duplicate note at tick 1680 but with different
+durations, and another at tick 1920:
+
+```plain
+[(960, 'NoteOn', 240),
+ (1200, 'NoteOff', None),
+ (1680, 'NoteOn', 120),
+ (1680, 'NoteOn', 240),
+ (1800, 'NoteOff', None),
+ (1920, 'NoteOff', None),
+ (1920, 'NoteOn', 80),
+ (1920, 'NoteOn', 240),
+ (2000, 'NoteOff', None),
+ (2160, 'NoteOff', None)]
+```
+
+This bug is one of the causes for upstream issue 34. [1]
+
+A fix for the de-interleaving algorithm has been proposed upstream
+[2], allowing unbalanced event ratios. However, the upstream project
+appears unmaintained so the fix might never make it into a new
+release of `MIDIUtil`.
+
+As a workaround for `polyendtracker-midi-export`, skip MIDIUtil’s
+de-duplication step, which seems to be unnecessary for the use case
+of this project anyway.
+
+[1]: https://github.com/MarkCWirt/MIDIUtil/issues/34
+[2]: https://github.com/MarkCWirt/MIDIUtil/pull/36
+---
+ polytrackermidi/exporters/midi.py | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/polytrackermidi/exporters/midi.py b/polytrackermidi/exporters/midi.py
+index d983a18..4bd65ab 100644
+--- a/polytrackermidi/exporters/midi.py
++++ b/polytrackermidi/exporters/midi.py
+@@ -108,7 +108,13 @@ class PatternToMidiExporter(BaseMidiExporter):
+             tempo = 60  # In BPM
+ 
+             midi_tracks_count = len(instruments)
+-            midi_file = MIDIFile(midi_tracks_count)
++
++            # There is a bug in MIDIUtil that sometimes crashes when a
++            # note played by the same instrument is overlapping with
++            # itself: https://github.com/MarkCWirt/MIDIUtil/issues/34
++            #
++            # As a workaround, skip removing duplicate MIDI events.
++            midi_file = MIDIFile(midi_tracks_count, removeDuplicates=False)
+             midi_file.addTempo(track=0, time=0, tempo=self.tempo_bpm)
+ 
+             for i in range(len(instruments)):
+@@ -231,6 +237,10 @@ class PatternToMidiExporter(BaseMidiExporter):
+                                               )
+ 
+                     else:
++                        # note that there is a bug in MIDIUtil with track numbers /note values
++                        # overlapping that is described in the deInterlaveNotes method in MIDIUtil:
++                        # https://github.com/MarkCWirt/MIDIUtil/blob/8f858794b03fcbfdd9d689ac39cf0f9a6792e416/src/midiutil/MidiFile.py#L873-L876
++
+                         # default case - just a regular single note playing
+                         midi_file.addNote(track=instrument_to_midi_track_map[step.instrument_number],
+                                           channel=channel,
+@@ -279,7 +289,7 @@ class SongToMidiExporter(BaseMidiExporter):
+         # this should be faster than calling instruments.indexOf()
+         instrument_to_midi_track_map = {}
+ 
+-        midi_file = MIDIFile(midi_tracks_count)
++        midi_file = MIDIFile(midi_tracks_count, removeDuplicates=False)
+         #FIXME: write bpm to song to get it from there
+         midi_file.addTempo(track=0, time=0, tempo=self.song.bpm)
+ 
+-- 
+2.45.1
+
+
+From 9a3980835102b2b289db42558a5fb1ee449c3488 Mon Sep 17 00:00:00 2001
+From: Claudia <claui@users.noreply.github.com>
+Date: Tue, 21 May 2024 19:00:53 +0200
+Subject: [PATCH 2/2] MIDIUtil: work around crash on zero-duration notes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+If a `NoteOff` event appears at exactly the same MIDI tick as its
+corresponding `NoteOn` event, then MIDIUtil’s sorting key causes the
+`NoteOff` to appear first, crashing its de-interleaving algorithm.
+
+Hence, MIDIUtil always crashes on a note whose duration is 0.
+
+Example for a zero-duration note, discovered in the included test
+pattern:
+
+```py
+from pprint import pprint
+from polytrackermidi.parsers import patterns
+from polytrackermidi.exporters import midi
+
+INPUT_FILENAME = './reverse-engineering/test data/chords and arps/1 chord arp test data project/patterns/pattern_01.mtp'
+
+pattern = patterns.PatternParser(filename=INPUT_FILENAME)
+midi_exporter = midi.PatternToMidiExporter(pattern=pattern.parse())
+
+midi_tracks = midi_exporter.generate_midi().tracks
+
+events_near_arpeggio = [
+    (event.tick, event.pitch, event.evtname, getattr(event, 'duration', None))
+    for event in midi_tracks[1].eventList
+    if event.tick in range(4400, 4560)
+]
+
+pprint(sorted(events_near_arpeggio))
+```
+
+The output reveals a zero-duration note at tick 4559, which would
+cause MIDIUtil’s de-interleaver to crash:
+
+```plain
+[(4400, 44, 'NoteOn', 80),
+ (4400, 48, 'NoteOff', None),
+ (4479, 41, 'NoteOn', 80),
+ (4480, 44, 'NoteOff', None),
+ (4559, 41, 'NoteOff', None),
+ (4559, 48, 'NoteOff', None),
+ (4559, 48, 'NoteOn', 0)]
+```
+
+To work around this issue, skip generating a MIDI note if its duration
+would be zero in MIDIUtil’s time granularity, which is currently
+960 ticks per quarter beat.
+
+This bug is probably another cause for upstream issue #34. [1]
+
+[1]: https://github.com/MarkCWirt/MIDIUtil/issues/34
+---
+ polytrackermidi/exporters/midi.py | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/polytrackermidi/exporters/midi.py b/polytrackermidi/exporters/midi.py
+index 4bd65ab..ef931e0 100644
+--- a/polytrackermidi/exporters/midi.py
++++ b/polytrackermidi/exporters/midi.py
+@@ -209,14 +209,17 @@ class PatternToMidiExporter(BaseMidiExporter):
+                                 # so we going to jsut shorten its duration
+                                 arp_note_duration = arp_end_time - arp_note_start_time
+ 
+-                            midi_file.addNote(track=instrument_to_midi_track_map[step.instrument_number],
+-                                              channel=channel,
+-                                              pitch=PatternToMidiExporter.get_midi_note_value(note),
+-                                              time=start_time_offset + arp_note_start_time,
+-                                              duration=arp_note_duration,
+-                                              # TODO: write velocity fx value if set (needs to be converted to 0...127!!!)
+-                                              volume=default_volume,
+-                                              )
++                            # Workaround for MIDIUtil, which crashes if a note has a duration of 0.
++                            # See also: https://github.com/MarkCWirt/MIDIUtil/issues/34
++                            if arp_note_duration >= 1 / midi_file.ticks_per_quarternote:
++                                midi_file.addNote(track=instrument_to_midi_track_map[step.instrument_number],
++                                                channel=channel,
++                                                pitch=PatternToMidiExporter.get_midi_note_value(note),
++                                                time=start_time_offset + arp_note_start_time,
++                                                duration=arp_note_duration,
++                                                # TODO: write velocity fx value if set (needs to be converted to 0...127!!!)
++                                                volume=default_volume,
++                                                )
+ 
+                             # increment starting time for the next note
+                             arp_note_start_time += arp_note_duration
+-- 
+2.45.1
+

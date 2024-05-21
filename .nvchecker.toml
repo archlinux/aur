@@ -1,0 +1,5 @@
+[polyendtracker-midi-export]
+source = "github"
+github = "DataGreed/polyendtracker-midi-export"
+prefix = "v"
+use_latest_release = true

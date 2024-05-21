@@ -1,0 +1,113 @@
+From 0596d44603b16e055010dc41d974acd82770d0d0 Mon Sep 17 00:00:00 2001
+From: Claudia <claui@users.noreply.github.com>
+Date: Tue, 21 May 2024 17:10:07 +0200
+Subject: [PATCH] Fix `ModuleNotFoundError` when using wheel
+
+Installing the wheel and then running the `polymidiexport` executable
+leads to a `ModuleNotFound` error:
+
+```sh
+$ cd "$(mktemp -d)"
+$ python -m venv .venv
+$ . .venv/bin/activate
+$ pip install polyendtracker-midi-export==0.3.2
+$ polymidiexport
+Traceback (most recent call last):
+  File "/tmp/tmp.HDmTtQbmHc/.venv/bin/polymidiexport", line 5, in <module>
+    from polytracker2midi import main
+ModuleNotFoundError: No module named 'polytracker2midi'
+```
+
+The root cause of this error is a feature mismatch in the build system.
+While setuptools is built around Python packages, the
+`polytracker2midi.py` file is actually just a Python script (and module)
+but not a package. Therefore, `setuptools` ignores that file and its
+sibling, `polytracker2text.py`. The wheel is then published to PyPI
+without those modules.
+
+To work around the issue, convert both files to packages. That way, they
+can still be invoked via `python` (you just have to drop the `.py`), and
+setuptools will pick them up as packages and include them in the wheel.
+
+(Note: an alternative solution would have been to switch to a different
+build system, e.g. Poetry, which supports single-file scripts and
+includes them in wheels as if they were packages. However, switching to
+Poetry would involve converting `setup.py` to a `pyproject.toml` file,
+an effort probably not worth the hassle, given that setuptools has
+worked just fine for this project so far.)
+---
+ README.md                                           | 2 +-
+ polytracker2midi.py => polytracker2midi/__init__.py | 6 ------
+ polytracker2midi/__main__.py                        | 3 +++
+ polytracker2text.py => polytracker2text/__init__.py | 5 -----
+ polytracker2text/__main__.py                        | 3 +++
+ 5 files changed, 7 insertions(+), 12 deletions(-)
+ rename polytracker2midi.py => polytracker2midi/__init__.py (98%)
+ create mode 100644 polytracker2midi/__main__.py
+ rename polytracker2text.py => polytracker2text/__init__.py (97%)
+ create mode 100644 polytracker2text/__main__.py
+
+diff --git a/README.md b/README.md
+index 8f8bc8e..83fa0a7 100644
+--- a/README.md
++++ b/README.md
+@@ -52,7 +52,7 @@ Converting Polyend Tracker `*.mtp` pattern file to a text file (outputs a table
+ pattern similar to how you see it in Tracker UI):
+ 
+ ```sh
+-:$ python polytracker2text.py ./my-tracker-project/patterns/pattern_02.mtp 
++$ python polytracker2text ./my-tracker-project/patterns/pattern_02.mtp
+ ```
+ 
+ You can see an example of pattern text representation [here](./reverse-engineering/session%201/project%20files/datagreed%20-%20rebel%20path%20tribute%202/patterns/pattern_01.txt)
+diff --git a/polytracker2midi.py b/polytracker2midi/__init__.py
+similarity index 98%
+rename from polytracker2midi.py
+rename to polytracker2midi/__init__.py
+index 62f951f..82420cc 100644
+--- a/polytracker2midi.py
++++ b/polytracker2midi/__init__.py
+@@ -103,9 +103,3 @@ def main():
+             pattern_output_filename = out_folder + "patterns_midi/" + f"pattern_{number_string}.mid"
+             midi_exporter.write_midi_file(pattern_output_filename)
+             print(f"Exported pattern midi to {os.path.abspath(pattern_output_filename)}")
+-
+-
+-
+-if __name__ == '__main__':
+-
+-    main()
+diff --git a/polytracker2midi/__main__.py b/polytracker2midi/__main__.py
+new file mode 100644
+index 0000000..8e99e4e
+--- /dev/null
++++ b/polytracker2midi/__main__.py
+@@ -0,0 +1,3 @@
++from polytracker2midi import main
++
++main()
+diff --git a/polytracker2text.py b/polytracker2text/__init__.py
+similarity index 97%
+rename from polytracker2text.py
+rename to polytracker2text/__init__.py
+index 48348a3..965a158 100644
+--- a/polytracker2text.py
++++ b/polytracker2text/__init__.py
+@@ -56,8 +56,3 @@ def main():
+ 
+ 
+     print(f"Exported text table to {os.path.abspath(output_filename)}")
+-
+-
+-if __name__ == '__main__':
+-
+-    main()
+diff --git a/polytracker2text/__main__.py b/polytracker2text/__main__.py
+new file mode 100644
+index 0000000..064e628
+--- /dev/null
++++ b/polytracker2text/__main__.py
+@@ -0,0 +1,3 @@
++from polytracker2text import main
++
++main()
