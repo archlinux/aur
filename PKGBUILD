@@ -10,7 +10,7 @@ url="https://github.com/vivekmalneedi/${pkgname%-*}"
 license=('MIT')
 provides=('veridian')
 source=("$url/releases/download/nightly/${pkgname%-*}-ubuntu-22.04.tar.gz")
-sha256sums=('ec4c25b8a2d0bde4a755555160d9ff47df5d9e9d034935cea658189f4be578a0')
+sha256sums=('SKIP')
 optdepends=(
 	'verible-bin: syntax checking and formatting (binary)'
 	'verible: syntax checking and formatting'
