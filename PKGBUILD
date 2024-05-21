@@ -2,14 +2,14 @@
 # Contributor: asm0dey <pavel.finkelshtein@gmail.com>
 
 pkgname=fselect-git
-pkgrel=1
+pkgrel=2
 pkgver=0.7.6.r0.g5013085
 url="https://github.com/jhspetersson/fselect"
 license=("MIT")
 arch=(i686 x86_64)
 pkgdesc='Find files with SQL-like queries'
 
-source=("$pkgname::git://github.com/jhspetersson/fselect.git")
+source=("$pkgname::git+https://github.com/jhspetersson/fselect.git")
 md5sums=('SKIP')
 makedepends=('rust' 'git')
 depends=('gcc-libs')
