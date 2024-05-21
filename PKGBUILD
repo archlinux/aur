@@ -3,7 +3,7 @@
 
 _pkgname=mediapipe
 pkgname=python-mediapipe
-pkgver=0.10.13
+pkgver=0.10.14
 pkgrel=1
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
@@ -43,7 +43,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/google/mediapipe/archi
   "0004-use-opencv4-headers.patch"
   "0005-add-arg-experimental_allow_proto3_optional-to-protoc.patch"
 )
-sha256sums=('6dd7d31d40ceaf93cd3628815be554c90eaffa0e6143ae4f135a6fa53a4d8905'
+sha256sums=('9d46fa5363f5c4e11c3d1faec71b0746f15c5aab7b5460d0e5655d7af93c6957'
             '407eed253257d32c210589109067911a7f32d27155527919b6de7ea2a78d5d6b'
             'a2626c181e854ffd56b72b8ca96ef728272c510c9ae9bdd9d55388ac7d786484'
             '55adaa6a74015f160b0dbf45d997c004cd7ecded501940a32c69c512956b0524'
