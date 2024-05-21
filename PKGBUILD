@@ -10,9 +10,9 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc13 gcc13-libs gcc13-fortran)
-pkgver=13.2.1
+pkgver=13.3.0
 _majorver=${pkgver%%.*}
-_commit=ca7d454804045a39d10a9b1f691a940aeacdf25b
+_commit=b71f1de6e9cf7181a288c0f39f9b1ef6580cf5c8
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
@@ -46,7 +46,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('4730129b2d8bc80630bfe512e6cbe69151395be6bd2eb1967d64ca87ed8c0e09'
+sha256sums=('9ee55a2c27bf0110ffe06fe0356027480626169dbbb8ea94b7baed3ec24c8447'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
             '5ede1f5fec5b664428412a0849b28895be1c8d8982d3c0d246a4e95fd4730d65')
