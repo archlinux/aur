@@ -1,17 +1,22 @@
-# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Maintainer: Amish <contact@via.aur>
+# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
-
 pkgname=procmail
 pkgver=3.24
-pkgrel=3
-pkgdesc="Highly configurable auto mail processing."
+pkgrel=4
+pkgdesc="Mail processing and sorting program"
 arch=('x86_64')
-#url="http://www.procmail.org" # offline
 url="https://github.com/BuGlessRB/procmail"
-license=('GPL' 'custom:Artistic')
-source=("https://github.com/BuGlessRB/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('514ea433339783e95df9321e794771e4887b9823ac55fdb2469702cf69bd3989')
+license=('GPL-2.0-or-later')
+source=("procmail-${pkgver}.tar.gz::https://github.com/BuGlessRB/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+        procmail-3.24-gcc-14-fix.patch)
+sha256sums=('514ea433339783e95df9321e794771e4887b9823ac55fdb2469702cf69bd3989'
+            '1813e5cfe2c3763f825bef085d4cce05984b8d855f0ed49f9873c8df33f1587d')
 
+prepare() {
+  cd $pkgname-$pkgver
+  patch -p1 -i "${srcdir}"/procmail-3.24-gcc-14-fix.patch
+}
 
 build() {
   cd $pkgname-$pkgver
