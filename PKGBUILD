@@ -23,7 +23,7 @@ build() {
   cmake \
     -Bbuild \
     -GNinja \
-    -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
+    -DCUDA_HOST_COMPILER="$NVCC_CCBIN" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
