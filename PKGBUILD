@@ -4,9 +4,9 @@
 # aarch64 tester: Irissman    <irissman@probus.ca>
 # armv7h tester: kauron
 pkgname=duplicati-beta-bin
-pkgver=2.0.7.1
+pkgver=2.0.8.1
 pkgrel=2
-_date=2023-05-25
+_date=2024-05-07
 _branch=beta
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
 url="http://duplicati.com"
@@ -28,7 +28,7 @@ noextract=(
 backup=(
   etc/default/duplicati
 )
-sha256sums=('264ea6262c123a60cb7603a72314ad7be6fbc2bd3696b5ba960b35316c29dea7'
+sha256sums=('516d83a78123f876a85e012d8adfccb31e77cdaf9bf85d527ce30b5541094675'
             '5e47acfb251e0fbe4c01bd75ba88a78c497208bf767addb59010baea049dd19f'
             '9e88381d56b462643a152945b81f98d3a7744bdc760fe201aec02a50bccbb5c4'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
