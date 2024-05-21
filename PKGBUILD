@@ -2,7 +2,7 @@
 
 pkgname=cqrlogo
 pkgver=0.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc='CGI QR-Code logo for web services'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/cqrlogo'
@@ -24,6 +24,12 @@ validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("https://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
 sha256sums=('b0d218764f0afcab9439570050ed7af9f23ee2e887a495e43e2265a0f30639b9'
             'SKIP')
+
+prepare() {
+  cd ${pkgname}-${pkgver}/
+
+  sed -i 's|iniparser.h|iniparser/iniparser.h|' lib/libcqrlogo.h
+}
 
 build() {
 	cd ${pkgname}-${pkgver}/
