@@ -2,8 +2,8 @@
 # Contributor: graysky <graysky AT archlinux DOT us>
 
 pkgname=ssh-audit
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc='SSH configuration auditing'
 arch=('any')
 url='https://github.com/jtesta/ssh-audit'
@@ -17,15 +17,9 @@ makedepends=(
   'python-setuptools'
 )
 checkdepends=('python-pytest')
-_commit='dd91c2a41adf12deb4dc5bf51544413abec22289'
-source=("$pkgname::git+$url#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+source=("$pkgname::git+$url#tag=v$pkgver")
+sha512sums=('30803f7cad987cf381973df285f0a85110c2da571a85f920b78ec25cae952d44201cb4bb427551b05cfa14811009a4b9b2d324298b95086a71f1bd8153640bd1')
+b2sums=('0ab4843bd1c5ad49f8b04febbe1f58a0a41befdddfacc86268176c0e555cd2b329abfff7efe2fe0e16574c5b44141e4bf4d91f06015af6f3b8c92c7a1f5c0b86')
 
 build() {
   cd "$pkgname"
