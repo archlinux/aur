@@ -1,9 +1,11 @@
 pkgbase = quikc-git
 	pkgdesc = A minimalistic, safety-focused build system for C/C++
 	pkgver = r374.fa09550
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.missingno.dev/quikc
 	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git

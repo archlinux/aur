@@ -3,10 +3,14 @@
 _pkgname='quikc'
 pkgname='quikc-git'
 pkgver=r374.fa09550
-pkgrel=1
+pkgrel=2
 url="https://git.missingno.dev/$_pkgname"
 pkgdesc='A minimalistic, safety-focused build system for C/C++'
-arch=('x86_64')
+arch=(
+	'x86_64'
+	'i686'
+	'aarch64'
+)
 makedepends=('cargo' 'git')
 license=('MIT')
 source=("$_pkgname::git+$url")
