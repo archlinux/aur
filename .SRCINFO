@@ -1,6 +1,6 @@
 pkgbase = mock
 	pkgdesc = A simple chroot build environment manager for building RPMs
-	pkgver = 5.5
+	pkgver = 5.6
 	pkgrel = 1.1
 	url = https://github.com/rpm-software-management/mock
 	install = mock.install
@@ -15,19 +15,19 @@ pkgbase = mock
 	depends = python-templated-dictionary
 	depends = rpm-tools
 	optdepends = createrepo_c: for mockchain command
-	optdepends = dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia
+	optdepends = dnf-plugins-core: to build RPMs for DNF based distributions (hint: use bootstrap images instead)
+	optdepends = dnf5: to build RPMs for DNF5 based distributions (hint: use bootstrap images instead)
 	optdepends = lvm2: for lvm_root plugin
 	optdepends = nosync: to speed up yum/dnf database access
 	optdepends = pigz: for parallel compression of chroot cache
-	optdepends = podman: to use bootstrap images
+	optdepends = podman: to use bootstrap images (recommended)
 	optdepends = procenv: for procenv plugin
-	optdepends = yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)
 	backup = etc/mock/logging.ini
 	backup = etc/mock/site-defaults.cfg
-	source = https://github.com/rpm-software-management/mock/archive/mock-5.5-1.tar.gz
+	source = https://github.com/rpm-software-management/mock/archive/mock-5.6-1.tar.gz
 	source = mock.sysusers
 	source = mock.tmpfiles
-	sha256sums = c5ed11a0a9716a0801ffbf31e764cf6130f6865a13d65e4e74140108a5ef4469
+	sha256sums = 0a902c1b89667e9653664487bfa7f9acfcb8f55ba9d64a021058cec40144697d
 	sha256sums = f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651
 	sha256sums = a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3
 

@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=5.5
+pkgver=5.6
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -19,20 +19,20 @@ depends=('mock-core-configs>=39' 'python' 'python-backoff' 'python-distro'
          'rpm-tools')
 ((_with_usermode)) && depends+=('usermode')
 optdepends=('createrepo_c: for mockchain command'
-            'dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia'
+            'dnf-plugins-core: to build RPMs for DNF based distributions (hint: use bootstrap images instead)'
+            'dnf5: to build RPMs for DNF5 based distributions (hint: use bootstrap images instead)'
             'lvm2: for lvm_root plugin'
             'nosync: to speed up yum/dnf database access'
             'pigz: for parallel compression of chroot cache'
-            'podman: to use bootstrap images'
-            'procenv: for procenv plugin'
-            'yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)')
+            'podman: to use bootstrap images (recommended)'
+            'procenv: for procenv plugin')
 install="$pkgname.install"
 backup=("etc/$pkgname/logging.ini"
         "etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('c5ed11a0a9716a0801ffbf31e764cf6130f6865a13d65e4e74140108a5ef4469'
+sha256sums=('0a902c1b89667e9653664487bfa7f9acfcb8f55ba9d64a021058cec40144697d'
             'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
             'a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3')
 
