@@ -11,7 +11,7 @@
 pkgname=mpd-light-pulse-ffmpeg
 _pkgname=mpd
 pkgver=0.23.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without openal, ao, jack, mikmod, modplug, mpg123, openmpt, pipewire, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, zziplib and gme support.'
 url='https://www.musicpd.org/'
 license=(
@@ -19,7 +19,7 @@ license=(
   GPL-2.0-or-later
 )
 arch=('x86_64')
-depends=('gcc-libs' 'pcre2' 'glibc' 'libcdio-paranoia' 'libmad' 'sqlite'
+depends=('gcc-libs' 'pcre2' 'glibc' 'libcdio-paranoia' 'libmad' 'sqlite' 'git'
          'libmms' 'libnfs' 'libsoxr' 'zlib'
          'alsa-lib' 'audiofile' 'curl' 'faad2' 'ffmpeg' 'flac' 'fmt'
          'icu' 'libid3tag' 'libmpdclient' 'libogg' 'libpulse' 'libsamplerate'
@@ -28,13 +28,12 @@ makedepends=('boost' 'meson' 'python-sphinx')
 provides=("mpd=${pkgver}")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("https://www.musicpd.org/download/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
+source=("$_pkgname::git+https://github.com/MusicPlayerDaemon/MPD.git#tag=v${pkgver}?signed"
         "${_pkgname}.conf"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles"
         "${_pkgname}.service.override")
-sha512sums=('12329dbd0c1994c1bd95b88ce2a62a4c1d691b655e9e4fac7e9ef7066d0be3422b26fad3ea6ca144ba9b21add0a7c492c4f74fd2b68a1539bff2e0d2714db709'
-            'SKIP'
+sha512sums=('bce2314087725e709e5936f9e5e74ac1b4713cb3402aecf75ebc81d7eb7cab0237a6dfc90ba71672ffe60593a9c627b918c44c79e4f081b1b8987dbc2c029e17'
             '25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1'
             '6e467481406279767b709ec6d5c06dbd825c0de09045c52ffa2d21d0604dcfe19b7a92bf42bed25163d66a3a0d1dbde6185a648b433eaf5eac56be90491e2e18'
             'db473db27cd68994c3ee26e78e0fb34d13126301d8861563dcc12a22d62ecb14c4ffb1e0798c6aaccdff34e73bae3fbeeff7b42606c901a2d35e278865cdf35d'
@@ -77,7 +76,7 @@ build() {
          '-Dgme=disabled'
   )
 
-  arch-meson ${_opts[@]} build "${_pkgname}-${pkgver}"
+  arch-meson ${_opts[@]} build "${_pkgname}"
   ninja -C build
 }
 
@@ -87,9 +86,9 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  install -vDm 644 ${_pkgname}-$pkgver/doc/${_pkgname}conf.example -t "$pkgdir/usr/share/doc/${_pkgname}/"
+  install -vDm 644 ${_pkgname}/doc/${_pkgname}conf.example -t "$pkgdir/usr/share/doc/${_pkgname}/"
   # NOTE: BSD-2-Clause license file currently missing: https://github.com/MusicPlayerDaemon/MPD/issues/1877
-  # install -vDm 644 $pkgname-$pkgver/LICENSES/BSD-2-Clause -t "$pkgdir/usr/share/licenses/$pkgname/"
+  # install -vDm 644 ${_pkgname}/LICENSES/BSD-2-Clause -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 ${_pkgname}.service.override "$pkgdir/usr/lib/systemd/system/mpd.service.d/00-arch.conf"
   install -vDm 644 ${_pkgname}.conf -t "$pkgdir/etc/"
   install -vDm 644 ${_pkgname}.sysusers "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
