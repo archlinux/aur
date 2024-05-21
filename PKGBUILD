@@ -150,6 +150,11 @@ _build_zfs=${_build_zfs-}
 # This does replace the requirement of nvidia-dkms
 _build_nvidia=${_build_nvidia-}
 
+# Builds the open nvidia module and package it into a own base
+# This does replace the requirement of nvidia-open-dkms
+# Use this only if you have Turing+ GPU
+_build_nvidia_open=${_build_nvidia_open-}
+
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ "$_use_lto_suffix" = "y"  ]; then
     pkgsuffix=cachyos-${_cpusched}-lto
     pkgbase=linux-$pkgsuffix
@@ -159,7 +164,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.8
-_minor=9
+_minor=10
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -169,12 +174,12 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler and hardened Kernel by CachyOS with other patches and improvements'
-pkgrel=4
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL-2.0-only')
-options=('!strip' '!debug')
+options=('!strip' '!debug' '!lto')
 makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch' 'python')
 # LLVM makedepends
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
@@ -190,6 +195,7 @@ fi
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 _nv_ver=550.78
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
+_nv_open_pkg="open-gpu-kernel-modules-${_nv_ver}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
     "config"
@@ -212,6 +218,13 @@ if [ -n "$_build_nvidia" ]; then
     source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run"
              "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch"
              "${_patchsource}/misc/nvidia/0001-NVIDIA-take-modeset-ownership-early.patch")
+fi
+
+if [ -n "$_build_nvidia_open" ]; then
+    source+=("nvidia-open-${_nv_ver}.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${_nv_ver}.tar.gz"
+             "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch"
+             "${_patchsource}/misc/nvidia/0001-NVIDIA-take-modeset-ownership-early.patch"
+             "${_patchsource}/misc/nvidia/nvidia-open-gcc-ibt-sls.patch")
 fi
 
 ## List of CachyOS schedulers
@@ -258,6 +271,7 @@ prepare() {
         src="${src%.zst}"
         [[ $src = make-modeset-fbdev-default.patch ]] && continue
         [[ $src = 0001-NVIDIA-take-modeset-ownership-early.patch ]] && continue
+        [[ $src = nvidia-open-gcc-ibt-sls.patch ]] && continue
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
@@ -531,8 +545,16 @@ prepare() {
         sh "${_nv_pkg}.run" --extract-only
 
         # Use fbdev and modeset as default
-        patch -Np1 -i "${srcdir}/make-modeset-fbdev-default.patch" -d "${srcdir}/${_nv_pkg}"
+        patch -Np1 -i "${srcdir}/make-modeset-fbdev-default.patch" -d "${srcdir}/${_nv_pkg}/kernel"
         patch -Np2 --no-backup-if-mismatch -i "${srcdir}/0001-NVIDIA-take-modeset-ownership-early.patch" -d "${srcdir}/${_nv_pkg}/kernel"
+    fi
+
+    if [ -n "$_build_nvidia_open" ]; then
+        patch -Np1 -i "${srcdir}/make-modeset-fbdev-default.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
+        patch -Np2 --no-backup-if-mismatch -i "${srcdir}/0001-NVIDIA-take-modeset-ownership-early.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
+
+        # Fix for https://bugs.archlinux.org/task/74886
+        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/nvidia-open-gcc-ibt-sls.patch" -d "${srcdir}/${_nv_open_pkg}"
     fi
 }
 
@@ -541,7 +563,6 @@ build() {
     make ${BUILD_FLAGS[*]} -j$(nproc) all
 
     if [ -n "$_build_nvidia" ]; then
-        cd "${srcdir}/${_nv_pkg}/kernel"
         local MODULE_FLAGS=(
            KERNEL_UNAME="${pkgver}-${pkgsuffix}"
            IGNORE_PREEMPT_RT_PRESENCE=1
@@ -549,7 +570,22 @@ build() {
            SYSSRC="${srcdir}/${_srcname}"
            SYSOUT="${srcdir}/${_srcname}"
         )
+
+        cd "${srcdir}/${_nv_pkg}/kernel"
         make ${BUILD_FLAGS[*]} ${MODULE_FLAGS[*]} -j$(nproc) modules
+
+    fi
+
+    if [ -n "$_build_nvidia_open" ]; then
+        cd "${srcdir}/${_nv_open_pkg}"
+        local MODULE_FLAGS=(
+           KERNEL_UNAME="${pkgver}-${pkgsuffix}"
+           IGNORE_PREEMPT_RT_PRESENCE=1
+           IGNORE_CC_MISMATCH=yes
+           SYSSRC="${srcdir}/${_srcname}"
+           SYSOUT="${srcdir}/${_srcname}"
+        )
+        CFLAGS= CXXFLAGS= LDFLAGS= make ${BUILD_FLAGS[*]} ${MODULE_FLAGS[*]} -j$(nproc) modules
     fi
 
     if [ -n "$_build_zfs" ]; then
@@ -686,6 +722,7 @@ _package-zfs(){
     pkgdesc="zfs module for the $pkgdesc kernel"
     depends=('pahole' $pkgbase=$_kernver)
     provides=('ZFS-MODULE')
+    license=('CDDL')
 
     cd ${srcdir}/"zfs"
     install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
@@ -707,9 +744,24 @@ _package-nvidia(){
     find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
 }
 
+_package-nvidia-open(){
+    pkgdesc="nvidia open modules of ${_nv_ver} driver for the linux-$pkgsuffix kernel"
+    depends=("$pkgbase=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
+    provides=('NVIDIA-MODULE')
+    license=('GPL')
+
+    cd "${srcdir}/${_nv_open_pkg}"
+    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -m644 kernel-open/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 COPYING
+
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+}
+
 pkgname=("$pkgbase" "$pkgbase-headers")
 [ -n "$_build_zfs" ] && pkgname+=("$pkgbase-zfs")
 [ -n "$_build_nvidia" ] && pkgname+=("$pkgbase-nvidia")
+[ -n "$_build_nvidia_open" ] && pkgname+=("$pkgbase-nvidia-open")
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
@@ -717,9 +769,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('0305b6636a4e382855a2804cedc3984f1e891b26b24412e3533b1f29a07459d39be5121d4618da20098623290e922d502b7ac1b774f39e732f23a778a4b5b5be'
-        '9c5217493fec1b348a645a3ad5d002b0d452224f2734fad0999fc700a0e1c07e4865b169356da7c0c386e1c7c41734a8724d3d736a208223d5da505e6a3904ac'
+b2sums=('1e3fba4cdbe1c3d4f0ea56f8e54242e0276a3ae47e5dc97152d0afd7042a02ae9b57d6808ed8482358eb244eecc73ed41f7411ab50d4b462fc776b68c293c30a'
+        'd741eaffda855a073fb8b67a93b9d79702f7c5f24038d2d6f7dd49f315e86547cb0798ae907b561d812d060b3dafa1e7a6520d76f6703a1449730c8f687ad705'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        'cf12e295a43d5803a0a5f22e15e96e6e0cd7b7ed3cf34771f666d085abe2014f323ab876b7016afe59b42dee798f504569afbb175c08f24c4760f94956f5dd15'
+        '633a543935badc6d0a32de284c1da1fdf17162692d15ba218f4e422e523cfda22e6e672f014d873c4c12649f74054fbf1d56264f524b76aaa359c39d023bf406'
         'b768b9ceae2eb07964e4cde7a6894744a14eb6f5f2ebd68353035085020c1cdbc4151a8d28d6c70f27a780f31297589d00bf0fdf7faca00b436dfe631608419c'
-        '4dbae9ca35a02575d3664a8d9d366ed985a987948d8520be171f8fb3390a419cab844b423fc7abf3b0c65149d1942aedd5a18dfdd8432ca7b45a3b0b0e517019')
+        'ad8f9e901641dd97d0d76524efb10eb2a37947615e60d9b290a100ed25da08f3d47b6fc9d8e62b55aa8b7ed54c83e9cabbe145e56cd523488ed21f020849c786')
