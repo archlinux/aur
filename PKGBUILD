@@ -1,14 +1,14 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=tunefish4
-pkgname="${_pkgname}-git"
+pkgname=$_pkgname-git
 pkgver=4.3.0.r107.7e48ce8
-pkgrel=2
+pkgrel=3
 pkgdesc='An additive wavetable-based synthesizer VST plugin (git version)'
 arch=(x86_64)
 url="https://www.tunefish-synth.com/"
 # See https://github.com/paynebc/tunefish/blob/master/COPYING
-license=(GPL3)
+license=(GPL-3.0-or-later)
 groups=(vst-plugins)
 depends=(glibc gcc-libs)
 makedepends=(alsa-lib curl freetype2 git vst2sdk)
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   cd $_pkgname/src/tunefish4/Builds/LinuxMakefile
-  export CPPFLAGS="$CPPFLAGS -I/usr/include/vst36"
+  export CPPFLAGS="$CPPFLAGS -I/usr/src/vst2sdk"
   make
 }
 

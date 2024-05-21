@@ -1,7 +1,5 @@
 src/
 pkg/
 tunefish4/
-tunefish4-git-*.tar.xz
-tunefish4-git-*.tar.zst
+tunefish4-git-*.pkg.tar.*
 tunefish4-git-*.src.tar.gz
-.AURINFO

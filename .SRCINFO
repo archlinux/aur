@@ -1,11 +1,11 @@
 pkgbase = tunefish4-git
 	pkgdesc = An additive wavetable-based synthesizer VST plugin (git version)
 	pkgver = 4.3.0.r107.7e48ce8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tunefish-synth.com/
 	arch = x86_64
 	groups = vst-plugins
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = alsa-lib
 	makedepends = curl
 	makedepends = freetype2
