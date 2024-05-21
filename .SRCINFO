@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-libfdk_aac
 	pkgdesc = Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)
-	pkgver = 6.1.1
-	pkgrel = 8
+	pkgver = 7.0
+	pkgrel = 2
 	epoch = 2
 	url = https://ffmpeg.org
 	arch = x86_64
@@ -102,10 +102,10 @@ pkgbase = ffmpeg-libfdk_aac
 	provides = libswscale.so
 	conflicts = ffmpeg
 	options = debug
-	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=6f4048827982a8f48f71f551a6e1ed2362816eec
+	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=fa053f314a0150bebe073438867e454182909c53
 	source = add-av_stream_get_first_dts-for-chromium.patch
 	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
-	b2sums = SKIP
+	b2sums = 4b2057fb68a0137bf149779beee3b7066835216a830896d4de4d31d0c00c2ab13419d4a3f0ccba1ab6d0cb063bdc91f2fc35d5916ddd65288c327880cbdefc41
 	b2sums = 555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de
 
 pkgname = ffmpeg-libfdk_aac
