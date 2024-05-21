@@ -1,6 +1,6 @@
-# Clearch
+# Clearch-cli
 
-Clearch is a command-line tool written in Rust that provides a fast and efficient way to search queries using the Gemini API. It's designed to be user-friendly, offering a simple interface for performing searches directly from the command line.
+Clearch-cli is a command-line tool written in Rust that provides a fast and efficient way to search queries using the Gemini API. It's designed to be user-friendly, offering a simple interface for performing searches directly from the command line.
 
 ## Features
 

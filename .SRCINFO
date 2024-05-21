@@ -1,4 +1,4 @@
-pkgbase = clearch-cli
+pkgbase = clearch
 	pkgdesc = A simple CLI tool written in Rust
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = clearch-cli
 	source = https://github.com/Zane-Dev14/ClearchOnlyTar/raw/main/clearch-cli-0.1.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = clearch-cli
+pkgname = clearch
