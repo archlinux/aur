@@ -9,8 +9,10 @@ pkgver=0.3.4.3314.g9eb0784f
 pkgrel=1
 makedepends=("rust" "cargo" "git" "clang")
 depends=("gcc-libs" "glibc" "liburing")
-source=("git+https://github.com/girlbossceo/conduwuit")
-sha512sums=('SKIP')
+source=("git+https://github.com/girlbossceo/conduwuit"
+		"conduwuit.service")
+sha512sums=('SKIP'
+            '563b2fbfb79a018737005a2ec5232afd85b70d463b05e889d092a45cb00038c4cf9f19c9a89a28838d9dc8d7e4178ebd2edf756e1e13c18e9a02b949f7e9c286')
 provides=("conduwuit")
 options=(!lto)
 backup=("etc/conduwuit.toml")
