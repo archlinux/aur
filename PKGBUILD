@@ -2,7 +2,7 @@
 # Contributor: Marcs <aur (at) mg.odd.red>
 
 pkgname=lerna
-pkgver=6.5.1
+pkgver=8.1.3
 pkgrel=1
 pkgdesc="A fast, modern build system for managing and publishing multiple JavaScript/TypeScript packages from the same repository."
 arch=(any)
@@ -13,11 +13,10 @@ makedepends=('npm')
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
 options=(!strip)
+sha256sums=('1af740d44c04badf4ce1c9bddab9a4df4ae3053075a1e41904643cbbc6a01909')
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +
   chown -R root:root "${pkgdir}"
 }
-
-sha256sums=('05288dbf9c3fa5523d68ad04e80f69ba88c8e4f00b68c03bb990202d4341ea20')
