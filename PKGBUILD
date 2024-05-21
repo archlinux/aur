@@ -2,14 +2,14 @@
 _pkgname=tev
 pkgname=${_pkgname}
 pkgver=1.27
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."
 arch=("i686" "x86_64")
 url="https://github.com/Tom94/tev"
-license=('BSD')
-depends=("libpng" "hicolor-icon-theme" "libglvnd")
-makedepends=("cmake" "git" "clang")
+license=('LicenseRef-BSD')
+depends=("hicolor-icon-theme" "libc++" "libc++abi" "libdeflate" "libglvnd" "libpng")
+makedepends=("clang" "cmake" "git")
 provides=("tev")
 conflicts=("tev")
 install=
@@ -23,14 +23,20 @@ prepare() {
 
 build() {
   cd "${_pkgname}/build" || exit 1
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
+    -DOPENEXR_INSTALL=OFF\
+    -DOPENEXR_INSTALL_TOOLS=OFF \
+    -DOPENEXR_INSTALL_PKG_CONFIG=OFF \
+    -DIMATH_INSTALL=OFF \
+    -DIMATH_INSTALL_PKG_CONFIG=OFF \
+    -GNinja \
     ..
   cmake --build .
 }
 
 package() {
-  cmake --build "${_pkgname}/build" --target install -- DESTDIR="${pkgdir}"
+  cmake --build "${_pkgname}/build" --target install
   install -Dm644 "${_pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
