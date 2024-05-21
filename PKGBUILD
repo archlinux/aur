@@ -1,6 +1,6 @@
 # Maintainer: Emily Ellis <emily@scgtrp.net>
 pkgname=gcmc
-pkgver=1.9.0
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="G-code meta-compiler"
 depends=('glibc' 'readline')
@@ -8,15 +8,7 @@ arch=(x86_64)
 url="http://www.vagrearg.org/content/gcmc"
 license=('GPL-3.0-or-later')
 source=("http://www.vagrearg.org/gcmc/gcmc-$pkgver.tar.gz")
-sha512sums=('7562670cbad67d95522cee20b39fd5402151efbb8058ec1c0855df0d03bdbbf7c555dbbb3af0e4486bd333307734bbdd2dd49c4e73f3a52c1ebdfead8a9995a9')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	# colors.gcmc is listed twice, which makes make install fail
-	awk '!/colors\.gcmc/ || ++n != 2' ./example/Makefile.am >./example/Makefile.am.new
-	mv ./example/Makefile.am.new ./example/Makefile.am
-	aclocal
-}
+sha512sums=('4ed2df7a565de5b825b7374f3ac82059148eb65ea29485ec3a02661d3204f9c5ea791354c79d6d3c69fccf3d471d71ce9d257d66333319c06cf040af4e05888f')
 
 build() {
 	cd "$pkgname-$pkgver"
