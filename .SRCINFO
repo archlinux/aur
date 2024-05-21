@@ -1,12 +1,13 @@
 pkgbase = procmail
-	pkgdesc = Highly configurable auto mail processing.
+	pkgdesc = Mail processing and sorting program
 	pkgver = 3.24
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/BuGlessRB/procmail
 	arch = x86_64
-	license = GPL
-	license = custom:Artistic
-	source = https://github.com/BuGlessRB/procmail/archive/refs/tags/v3.24.tar.gz
+	license = GPL-2.0-or-later
+	source = procmail-3.24.tar.gz::https://github.com/BuGlessRB/procmail/archive/refs/tags/v3.24.tar.gz
+	source = procmail-3.24-gcc-14-fix.patch
 	sha256sums = 514ea433339783e95df9321e794771e4887b9823ac55fdb2469702cf69bd3989
+	sha256sums = 1813e5cfe2c3763f825bef085d4cce05984b8d855f0ed49f9873c8df33f1587d
 
 pkgname = procmail
