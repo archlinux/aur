@@ -12,7 +12,7 @@ pkgname=(python-ipalib
          freeipa-client-common
          freeipa-client)
 pkgver=4.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
@@ -149,7 +149,8 @@ package_python-ipalib() {
              'python-netaddr'
              'python-dnspython>=1.15'
              'python-netifaces>=0.10.4'
-             'python-pyusb')
+             'python-pyusb'
+             'python-urllib3')
     provides=("python-ipapython=$pkgver-$pkgrel"
               "python-ipaplatform=$pkgver-$pkgrel")
 
