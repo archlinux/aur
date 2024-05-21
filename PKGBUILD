@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MMUPHin
-_pkgver=1.18.0
+_pkgver=1.18.1
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='Meta-analysis Methods with Uniform Pipeline for Heterogeneity in Microbiome Studies'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-vegan
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a57c0492688b0940118418be3f87c4067ee69c40440c4efe0a92ccd8f7b37a73')
+sha256sums=('528d21015505040a03f33e60655be1c0a4536b43d5e6fab39b1fb925174a0972')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
