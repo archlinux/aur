@@ -1,10 +1,11 @@
-# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: tarball <bootlctl@gmail.com>
+# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=youtube-dl
 pkgver=2021.12.17
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
 url="https://ytdl-org.github.io/youtube-dl/"
