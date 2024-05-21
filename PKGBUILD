@@ -1,7 +1,7 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=superslicer-bin
-pkgver=2.5.59.9
+pkgver=2.5.59.10
 _pkgtag=$pkgver
 _appimage=SuperSlicer-ubuntu_18.04-$_pkgtag.AppImage
 pkgrel=1
@@ -16,9 +16,9 @@ conflicts=('superslicer' 'superslicer-git' 'superslicer-prerelease')
 source=("$url/releases/download/$_pkgtag/$_appimage"
         "superslicer.patch"
         )
-sha256sums=('bb7eb22cbe309b0688f74d1d14a5c50d3c474705bcb51ce65b364e970dec5dec'
+sha256sums=('86474cadcc210d7740d557426f432e0990b83f69bd5cbc00bc0f06178dc16391'
             'a2d8092e5ec12e96d487d55b564f56c2df5bd41a3be066734b94465695a6c404')
-b2sums=('5df6a081f280316c7a3e753f004f92a4ce8fda7d7b49b3652cb5a12f8b2d676d1463b8c40173d041368db77c2ca9177ec3f687335602f06cc07ac5cebff1929e'
+b2sums=('78652a686d91dfb70395ea04b0c7a83048f918312a2b5c082b21c0cb41789a174e048d678916b04483c334694fde01218229bcaae344f91eddab175ffc75582c'
         '7547a6cc945948e637413b55af6a5a68fb6c08e8d5b3c03b137134cc5ed4f399b3d666985be5c2103240d3ae56d591ab9f02b5237a01978d422673247fef7061')
 noextract=("${_appimage}")
 
