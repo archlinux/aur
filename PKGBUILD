@@ -1,6 +1,6 @@
 pkgname=gpt4all-chat
 pkgver=2.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
 url="https://gpt4all.io"
@@ -12,6 +12,7 @@ makedepends=("cmake" "shaderc" "vulkan-tools" "vulkan-headers")
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/nomic-ai/gpt4all/archive/refs/tags/v$pkgver.tar.gz"
     "001-change-binary-name.diff"
+    "002-fix-include-algorithm.diff"
 )
 declare -rAg _modules_name_map=(
     [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/a3f03b7e793ee611c4918235d4532ee535a9530d.tar.gz
@@ -35,6 +36,7 @@ do
 done
 sha256sums=('6849bfa2956019a3f24e350984fe9114b0c6e71932665640f770549d20721243'
             'c9f1242ff0dfd7367387d5e7d228b808cdb7f6a0a368ba37e326afb21c603a44'
+            '33353c4d0d7a5da7862c4965cf4e69452dda68d2dca184c38208cd6d20746913'
             'b47b1d8154a99304a406d564dfaad6dc91332b8bccc4ef15f1b2d2cce332b84b'
             '2fef47fc74c8ccc32b33b8c83f9833b6a4c02e09da8d688abb6ee35167652ea9')
 
@@ -65,6 +67,7 @@ prepare() {
         fi
     done
     patch -Np1 -i ../001-change-binary-name.diff
+    patch -Np1 -i ../002-fix-include-algorithm.diff
 }
 build() {
     cmake -B build-chat -S "$srcdir/gpt4all-$pkgver/gpt4all-chat" \
