@@ -1,0 +1,17 @@
+pkgbase = helmfile-bin
+	pkgdesc = Helmfile is a declarative spec for deploying helm charts.
+	pkgver = 0.164.0
+	pkgrel = 1
+	url = https://github.com/helmfile/helmfile
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = helmfile
+	conflicts = helmfile
+	noextract = helmfile-bin-0.164.0.tar.gz
+	source_x86_64 = helmfile-bin-0.164.0.tar.gz::https://github.com/helmfile/helmfile/releases/download/v0.164.0/helmfile_0.164.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6c2ef280f0d09ea0d9f3eb7d6eed68870d28f25fdf02021228690b3fe6ae6ff3
+	source_aarch64 = helmfile-bin-0.164.0.tar.gz::https://github.com/helmfile/helmfile/releases/download/v0.164.0/helmfile_0.164.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d52902e198e5c3584beaed28f4b06680ac3ada674797973832ffb051776fdebb
+
+pkgname = helmfile-bin
