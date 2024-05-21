@@ -1,0 +1,4 @@
+[python-nodepy]
+source = "github"
+github = "ketch/nodepy"
+use_latest_release = "true"
