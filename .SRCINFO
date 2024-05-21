@@ -1,7 +1,7 @@
 pkgbase = mpd-notification
 	pkgdesc = Notify about tracks played by mpd
 	pkgver = 0.8.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/eworm-de/mpd-notification
 	arch = i686
 	arch = x86_64
