@@ -4,9 +4,9 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-_qtver=6.7.0
+_qtver=6.7.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -36,19 +36,17 @@ provides=(qt6-base)
 _pkgfn=qtbase
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver
         qt6-base-cflags.patch
-        qt6-base-nostrip.patch
-        fix-wrong-cpp-if.patch::https://code.qt.io/cgit/qt/qtbase.git/patch/?id=68102202)
-sha256sums=('ee87abbfdf2d5bb204056bcb6c53e21c03e1abd779e3669faa56db7249c5e39e'
+        qt6-base-nostrip.patch)
+sha256sums=('bc68440a69a331b6b79b3c36acc8346b5dc0aad1b53536fe363860af31dd494b'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
-            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
-            '81c4821fb1c258603474771a267d450aa8b5d1d298443bc04620d70719c7eab7')
+            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
 prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
-  patch -d $_pkgfn -p1 < fix-wrong-cpp-if.patch # https://bugreports.qt.io/browse/QTBUG-123937
+
   cd $_pkgfn
-  git cherry-pick -n 7c4e1357e49baebdd2d20710fccb5604cbb36c0d # CVE-2024-33861
+  git cherry-pick -n f05cf3f11f4e42e05d069b5d9249d4b9aff41ffe # Fix locale issues
 }
 
 build() {
