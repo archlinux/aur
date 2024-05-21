@@ -1,7 +1,7 @@
 # Maintainer: Vhou-Atroph <vhouatroph@proton.me>
 pkgname="tt-damage-calculator"
 pkgver="4.3.0_dev.4"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A damage calculator for Toontown Rewritten"
 arch=(
@@ -16,7 +16,7 @@ makedepends=(
 "cargo"
 "maturin"
 "python-installer"
-"python-pypatchelf"
+"patchelf"
 "python-wheel")
 checkdepends=()
 optdepends=(

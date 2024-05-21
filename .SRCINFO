@@ -1,14 +1,14 @@
 pkgbase = tt-damage-calculator
 	pkgdesc = A damage calculator for Toontown Rewritten
 	pkgver = 4.3.0_dev.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vhou.gloop.group/projects/gagcalc
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = maturin
 	makedepends = python-installer
-	makedepends = python-pypatchelf
+	makedepends = patchelf
 	makedepends = python-wheel
 	depends = python
 	depends = tk
