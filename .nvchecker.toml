@@ -1,0 +1,5 @@
+[python-discretize]
+source = "github"
+github = "simpeg/discretize"
+use_latest_release = "true"
+prefix = "v"

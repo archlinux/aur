@@ -1,0 +1,18 @@
+pkgbase = python-discretize
+	pkgdesc = Discretization tools for finite volume and inverse problems
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/simpeg/discretize
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = meson-python
+	makedepends = cython
+	depends = python-scipy
+	source = discretize-0.10.0.tar.gz::https://github.com/simpeg/discretize/archive/v0.10.0.tar.gz
+	sha512sums = 6b63e073953881178bf4f022591689549b3edef8d223e50d2e60d49543b9a2b200ade3d4a904b0adac787f8ff943b8250c930caf55439aacad460fa8053d3194
+
+pkgname = python-discretize
