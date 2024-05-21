@@ -10,7 +10,7 @@ url="https://github.com/eklairs/tlock"
 arch=("x86_64")
 license=("MIT")
 makedepends=('go' 'git')
-conflicts=(_pkgname)
+conflicts=($_pkgname)
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 

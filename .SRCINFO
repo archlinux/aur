@@ -7,7 +7,7 @@ pkgbase = tlock-git
 	license = MIT
 	makedepends = go
 	makedepends = git
-	conflicts = _pkgname
+	conflicts = tlock
 	source = tlock::git+https://github.com/eklairs/tlock.git
 	sha256sums = SKIP
 
