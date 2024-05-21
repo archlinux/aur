@@ -6,7 +6,7 @@ pkgbase=qt6-base
 pkgname=(qt6-base
          qt6-xcb-private-headers)
 pkgver=6.7.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -90,6 +90,9 @@ sha256sums=('bc68440a69a331b6b79b3c36acc8346b5dc0aad1b53536fe363860af31dd494b'
 prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
+
+  cd $_pkgfn
+  git cherry-pick -n f05cf3f11f4e42e05d069b5d9249d4b9aff41ffe # Fix locale issues
 }
 
 build() {
