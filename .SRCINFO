@@ -1,13 +1,14 @@
 pkgbase = python-pyro-hydro
 	pkgdesc = A python hydrodynamics code for teaching and prototyping
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-hydro/pyro2
 	arch = any
 	license = BSD-3-Clause
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-numba
 	depends = python-matplotlib
