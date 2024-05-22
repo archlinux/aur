@@ -1,45 +1,14 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 pkgname=riscv-gnu-toolchain-bin
 pkgver=2024.04.12
-pkgrel=1
-pkgrel=1
-pkgdesc="GNU toolchain for RISC-V, including GCC. Precompiled riscv64-unknown-elf-gcc, riscv32-unknown-elf-gcc, riscv64-unknown-linux-gnu-gcc, and riscv32-unknown-linux-gnu-gcc."
-arch=('x86_64')
+pkgrel=2
+pkgdesc="Meta-package for a pre-compiled GNU toolchain for riscv32 and riscv64, linux and ELF."
+arch=('any')
 url="https://github.com/riscv-collab/riscv-gnu-toolchain"
 license=('GPL2')
-depends=()
-optdepends=()
-makedepends=()
-options=(!strip)
-source=(
-  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2024.04.12/riscv32-elf-ubuntu-22.04-gcc-nightly-2024.04.12-nightly.tar.gz"
-  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2024.04.12/riscv32-glibc-ubuntu-22.04-gcc-nightly-2024.04.12-nightly.tar.gz"
-  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2024.04.12/riscv64-elf-ubuntu-22.04-gcc-nightly-2024.04.12-nightly.tar.gz"
-  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2024.04.12/riscv64-glibc-ubuntu-22.04-gcc-nightly-2024.04.12-nightly.tar.gz"
+depends=(
+  'riscv32-gnu-toolchain-elf-bin'
+  'riscv32-gnu-toolchain-glibc-bin'
+  'riscv64-gnu-toolchain-elf-bin'
+  'riscv64-gnu-toolchain-glibc-bin'
 )
-sha512sums=(
-  "0feef02f43e194bc693bd8a3c6189abbac3b91e840bcc8828fbc08455db8fa2ad2e3fcf1d6e2bf4ad7c8bbf6b0aed55692e6a56eaefbd3040d858f63a188b03e"
-  "07dc63c0644d810c1497cb846382ecb5aeaac6ae54bb663bed8ff1cdac86d6ae84ebcefb06104e45866db0bf5685e8493ee3e42cf6991e2fe39ae79ace5e26ff"
-  "cabdfda0410d2b8a8de0ba7879174b4d240675adaa45fc95c4c807859fed176d5d4309fbaa278887533000b1dd96ebedc9e1b5bf140a50743de4fa613c7028ac"
-  "d794bef40b81abd6246af2ee09195c544c13e3624574ed4b21861766d07d4d87852545bc9cf19b523a30d4dc237193d85570fc0804ed7571cb17e11f1f2babc3"
-)
-
-package() {
-  install -dm755 "${pkgdir}"/usr/
-
-  cp -pr "${srcdir}"/riscv/* "${pkgdir}"/usr/
-
-  # Remove existing conflicts with gcc and other packages
-  rm -rf "${pkgdir}"/usr/include/gdb/jit-reader.h
-  rm -rf "${pkgdir}"/usr/share/man/man7
-  rm -rf "${pkgdir}"/usr/lib/libcc1.so*
-  rm -rf "${pkgdir}"/usr/lib/bfd-plugins/libdep.so
-  rm -rf "${pkgdir}"/usr/share/gcc-*/python/libstdcxx
-  rm -rf "${pkgdir}"/usr/share/gdb/python/gdb
-  rm -rf "${pkgdir}"/usr/share/gdb/syscalls
-  rm -rf "${pkgdir}"/usr/share/gdb/system-gdbinit
-  rm -rf "${pkgdir}"/usr/share/info
-  rm -rf "${pkgdir}"/usr/bin/qemu-*
-  rm -rf "${pkgdir}"/usr/include/qemu-*
-  rm -rf "${pkgdir}"/usr/share/qemu
-}
