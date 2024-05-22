@@ -1,0 +1,35 @@
+pkgbase = buildbox
+	pkgdesc = A set of tools for remote worker build execution
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://buildgrid.build
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = benchmark
+	makedepends = c-ares
+	makedepends = cmake
+	makedepends = git
+	makedepends = gmock
+	makedepends = gtest
+	makedepends = ninja
+	makedepends = nlohmann-json
+	makedepends = tomlplusplus
+	depends = glibc
+	depends = gcc-libs
+	depends = abseil-cpp
+	depends = fuse3
+	depends = google-glog
+	depends = grpc
+	depends = openssl
+	depends = protobuf
+	depends = util-linux-libs
+	provides = buildbox-casd
+	provides = buildbox-fuse
+	provides = buildbox-run-bubblewrap
+	conflicts = buildbox-casd
+	conflicts = buildbox-fuse
+	conflicts = buildbox-run-bubblewrap
+	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox#tag=1.2.2
+	sha256sums = SKIP
+
+pkgname = buildbox
