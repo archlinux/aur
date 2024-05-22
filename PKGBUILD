@@ -3,20 +3,20 @@
 
 _plugin=file-sharing
 pkgname="cockpit-${_plugin}"
-pkgver="3.3.6"
+pkgver="3.3.7"
 pkgrel=1
 pkgdesc="A Cockpit plugin to easily manage samba and NFS file sharing."
-arch=('any')
+arch=("any")
 url="https://github.com/45Drives/cockpit-file-sharing"
-license=('GPL3')
+license=("GPL-3.0")
 depends=("cockpit" "python" "samba" "nfs-utils")
 makedepends=("make")
 provides=("${pkgname}")
 source=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}_generic.zip")
-sha512sums=("5a022bcbf9e4b7725fb96fb03748e912de45ea5361a38959dda174b2bf5e4640b364786ffa157cfab986c83e8219d7fb24843860655d89b63ff66efd13eb43c6")
+sha512sums=("94265c91aae54b377fafecef3e921639cf7f678a837393b9a2fed0ba8f5f3a7fe838bec13c700f2b5a4b30664872e8850fec4ad51cb79dcd9fb0668d178dc74b")
 
 package() {
-    cd ${pkgname}_${pkgver}_generic
-    sudo make install RESTART_COCKPIT=1
+    cd "${srcdir}/${pkgname}_${pkgver}_generic"
+    make DESTDIR="${pkgdir}/" install RESTART_COCKPIT=1
 }
 
