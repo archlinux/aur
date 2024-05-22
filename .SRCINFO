@@ -1,4 +1,4 @@
-pkgbase = pillow_heif
+pkgbase = python-pillow_heif
 	pkgdesc = Python bindings to libheif for working with HEIF images and plugin for Pillow.
 	pkgver = 0.16.0
 	pkgrel = 1
@@ -12,7 +12,7 @@ pkgbase = pillow_heif
 	depends = x265
 	depends = aom
 	depends = libde265
-	source = pillow_heif-0.16.0.tar.gz::https://github.com/bigcat88/pillow_heif/archive/refs/tags/v0.16.0.tar.gz
+	source = python-pillow_heif-0.16.0.tar.gz::https://github.com/bigcat88/pillow_heif/archive/refs/tags/v0.16.0.tar.gz
 	sha256sums = 81d6fe55172ad75b18f4c8a52f234a0da06aa97314e2829bea7bac9fa16635e7
 
-pkgname = pillow_heif
+pkgname = python-pillow_heif
