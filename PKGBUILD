@@ -3,7 +3,7 @@
 # Maintainer: Jan Cholasta <jan at cholasta net>
 
 pkgname=nblood-git
-pkgver=r13623.3843a7f93
+pkgver=r14041.6c3f8e754
 pkgrel=1
 pkgdesc='Blood port based on EDuke32 (git version)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,7 +17,6 @@ depends=('flac'
          'libvorbis'
          'libvpx'
          'sdl2'
-         'sdl2_mixer'
          'timidity++')
 makedepends=('git' 'imagemagick')
 makedepends_i686=('nasm')
@@ -36,7 +35,7 @@ pkgver() {
 
 build() {
     cd NBlood
-    NOONE_EXTENSIONS=0 make blood
+    make blood
 }
 
 package() {
