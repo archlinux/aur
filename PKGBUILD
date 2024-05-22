@@ -2,7 +2,7 @@
 
 pkgname=changedetection.io
 pkgver=0.45.23
-pkgrel=1
+pkgrel=2
 pkgdesc='change monitoring of web pages'
 arch=(any)
 url='https://github.com/dgtlmoon/changedetection.io'
@@ -66,7 +66,7 @@ package() {
   sed -i 's/[~=]=.*//' requirements.txt
   python setup.py install --root="$pkgdir" --optimize=1
   # command per https://wiki.archlinux.org/title/Python_package_guidelines (now removed from page?)
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps pyppeteer-ng==2.0.0rc5 validators
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps pyppeteer-ng==2.0.0rc5 validators pyppeteerstealth
   sed -Ei '/Requires-Dist: (aenum|typing_extensions|typing_inspect|websockets)/s/\(.*//' "$pkgdir"/usr/lib/changedetection.io/pyppeteer_ng-2.0.0rc5.dist-info/METADATA
   python -O -m compileall -s ${pkgdir} "${pkgdir}/usr/lib/changedetection.io"
   install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/changedetection.io.conf"
