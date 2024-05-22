@@ -11,6 +11,7 @@ license=('ISC')
 depends=('python'
          'python-pyopenssl'
          'python-webcolors'
+         'python-future'
          'python-atomicwrites'
          'python-attrs'
          'python-logbook'
