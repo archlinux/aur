@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=wiper
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Disk cleanup tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('620dffad02072c0022ffe56295275b1eac2e1530a04647fe01a4280842ee1a8fab79d9b7a4b0c7ccf834ed50e214b6fc8ec6e39def971a073171f5bb7525e834')
+sha512sums=('ca3568358538138979ef1d40753d279495b69b44c073d5165bc265e880f3ecabca104eb3efa614782ad55a99f045bac1490f69d5b0fca81d8032e08178e7326d')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -25,7 +25,8 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --frozen
+  # https://github.com/ikebastuz/wiper/issues/11
+  cargo test --frozen -- --skip "delete"
 }
 
 package() {
