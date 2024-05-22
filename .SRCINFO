@@ -1,5 +1,5 @@
 pkgbase = pacundo
-	pkgdesc = A time machine to rollback your ArchLinux machine back to a working state.
+	pkgdesc = A time machine to rollback your ArchLinux machine to a working state.
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://code.ortegas.org/nortega/pacundo
