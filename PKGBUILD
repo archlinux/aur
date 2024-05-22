@@ -1,7 +1,7 @@
 # Maintainer: Maxr1998 <aur@maxr1998.de>
 _pkgname=finamp
 pkgname=finamp-git
-pkgver=2094.38bc397a
+pkgver=2129.a6332cce
 pkgrel=1
 pkgdesc="A Jellyfin music client for mobile and desktop"
 arch=("x86_64" "aarch64")
@@ -11,7 +11,7 @@ depends=('gtk3' 'pango')
 makedepends=('git' 'flutter-tool' 'flutter-target-linux' 'clang' 'cmake' 'ninja' 'xz')
 provides=('finamp')
 conflicts=('finamp')
-source=("$_pkgname::git+$url.git#branch=desktop-beta")
+source=("$_pkgname::git+$url.git#branch=redesign")
 b2sums=('SKIP')
 
 pkgver() {
