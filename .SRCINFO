@@ -19,7 +19,7 @@ pkgbase = tsukimi-bin
 	source = tsukimi.png
 	sha256sums = bdbeb07e6b66eb22e896b8865d7aa22cb5db3cef0b190a8ae889b803ae1d0d32
 	sha256sums = 7091b3602cde7454d1ef7f481696b4838697b60f353eab1b0196045d304a63a1
-	sha256sums = c4ddf8dbf68f04ecefd4280b48ef4084ae7d4d9ce1072f97e30832a565d13bf6
+	sha256sums = d12dc777bbb05ed92d75f8d36e453b651e12596ead6e297386419a24d051a0a3
 	sha256sums = 04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893
 
 pkgname = tsukimi-bin
