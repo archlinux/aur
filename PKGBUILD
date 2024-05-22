@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.38.1
+pkgver=1.38.2
 pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
@@ -35,7 +35,6 @@ source=(
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz"
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz.sig"
 		broken-file.patch
-		0001-tests-gcs-skip-tests-without-google-cloud-module.patch
 )
 
 prepare() {
@@ -43,7 +42,6 @@ prepare() {
 
   # https://github.com/file/file/pull/137
   patch -p1 < "${srcdir}/broken-file.patch"
-  patch -p1 < "${srcdir}/0001-tests-gcs-skip-tests-without-google-cloud-module.patch"
 
 }
 
@@ -72,7 +70,6 @@ check() {
   make check
 }
 
-sha256sums=('c6ee1d73fe033fff1168b61f64e03d796a0dfd4d5e81537069dd174cecdc78b3'
+sha256sums=('b5dbf13178c7f0285fc7b0282e6b1b7f300c24180afec317751923e2e9e32d4c'
             'SKIP'
-            '7150a8b5849ef48c7e60a93cd461ee658df02a4184c182df305b2cd16371473e'
-            'e76cb0a6dfdd444689f957d56b0a5b07178f015d909418e1d859d04aaaf466e2')
+            '7150a8b5849ef48c7e60a93cd461ee658df02a4184c182df305b2cd16371473e')
