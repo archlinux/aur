@@ -1,6 +1,0 @@
-#!/bin/sh
-
-case $1 in
-    pre)  /usr/bin/python3 /usr/bin/fw-fanctrl --pause ;;
-    post) /usr/bin/python3 /usr/bin/fw-fanctrl --resume ;;
-esac

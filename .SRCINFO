@@ -1,7 +1,7 @@
 pkgbase = fw-fanctrl-git
 	pkgdesc = A simple systemd service to better control Framework Laptop's fan
-	pkgver = r35.176d34b
-	pkgrel = 3
+	pkgver = r37.fb4c933
+	pkgrel = 1
 	url = https://github.com/TamtamHero/fw-fanctrl
 	arch = any
 	license = BSD-3
@@ -11,10 +11,6 @@ pkgbase = fw-fanctrl-git
 	provides = fw-fanctrl
 	conflicts = fw-fanctrl
 	source = fw-fanctrl::git+https://github.com/TamtamHero/fw-fanctrl.git
-	source = fw-fanctrl-suspend
-	source = fw-fanctrl.service
 	sha256sums = SKIP
-	sha256sums = a52883d4d14c964f7eba35bb74ce7989ede5063e53dcd9fe8799b076178a3db5
-	sha256sums = c68d51ce6504a3ed3ba2f0b6291ee5bc4a8ff1147bba72244415f8b2f159a6ba
 
 pkgname = fw-fanctrl-git
