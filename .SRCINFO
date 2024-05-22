@@ -7,10 +7,11 @@ pkgbase = puma-dev-git
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = go
+	depends = authbind
 	provides = puma-dev
 	source = puma-dev-git::git+https://github.com/puma/puma-dev
-	source = puma-dev@.service
+	source = user.service
 	md5sums = SKIP
-	md5sums = a080c67779718704cb55aa1aaf6eb3ef
+	md5sums = 308627b449810f382900a2e2d263862e
 
 pkgname = puma-dev-git

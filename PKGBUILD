@@ -1,18 +1,19 @@
 # Maintainer: Zacharias Knudsen <z@chari.as>
 pkgname=puma-dev-git
 pkgver=v0.18.3.r0.gdb9ec15
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to manage rack apps in development with puma "
 arch=('x86_64')
 url="https://github.com/puma/puma-dev"
 license=('BSD-3-Clause')
+depends=('authbind')
 makedepends=('go')
 provides=('puma-dev')
 install=puma-dev-git.install
 source=("$pkgname::git+$url"
-        'puma-dev@.service')
+        'user.service')
 md5sums=('SKIP'
-         'a080c67779718704cb55aa1aaf6eb3ef')
+         '308627b449810f382900a2e2d263862e')
 
 pkgver() {
   cd "$pkgname"
@@ -38,5 +39,5 @@ package() {
   cd "$pkgname"
   install -Dm755 build/puma-dev "$pkgdir"/usr/bin/puma-dev
 
-  install -Dm644 "$srcdir"/puma-dev@.service "$pkgdir"/usr/lib/systemd/system/puma-dev@.service
+  install -Dm644 "$srcdir"/user.service "$pkgdir"/usr/lib/systemd/user/puma-dev.service
 }

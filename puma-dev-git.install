@@ -1,3 +1,5 @@
 post_install() {
-    printf "To enable puma-dev, use systemctl enable --now puma-dev@USER\n"
+    printf "To enable puma-dev, use:\n"
+    printf "sudo setcap 'cap_net_bind_service=+ep' /usr/bin/puma-dev\n"
+    printf "systemctl --user enable --now puma-dev\n"
 }

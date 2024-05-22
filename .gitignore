@@ -3,4 +3,4 @@
 !.SRCINFO
 !PKGBUILD
 !puma-dev-git.install
-!puma-dev@.service
+!user.service
