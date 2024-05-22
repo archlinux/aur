@@ -1,14 +1,14 @@
-# Maintainer: SanskritFritz (gmail)
-# Contributor: dreieck (AUR)
+# Maintainer:  SanskritFritz (gmail; https://aur.archlinux.org/account/SanskritFritz)
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 
 _pkgname=toppler
 pkgname="${_pkgname}-git"
-pkgver=1.3+7+r541.20220315.060f7dc
+pkgver=1.3+8+r542.20220323.c8bf02b
 pkgrel=1
 pkgdesc='A reimplementation of the classic jump & run game "Nebulus"'
 arch=('i686' 'x86_64')
 url="https://gitlab.com/roever/toppler/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'sdl2' 'sdl2_mixer' 'zlib')
 makedepends=('gettext' 'gimp' 'git' 'imagemagick' 'libpng' 'povray')
 optdepends=(
@@ -26,6 +26,12 @@ sha256sums=(
   'SKIP'
   '828b4f8f6901e757de8cce76473caa1064b2db1375330eee370b0eff79909e9a'
 )
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  git log > git.log
+}
 
 pkgver () {
   cd "${srcdir}/${_pkgname}"
@@ -55,5 +61,6 @@ package() {
   for _docfile in README.md doc/*; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
+  install -D -v -m644 "${srcdir}/git.log" "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
   install -D -v -m644 'COPYING' "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.GPL3.txt"
 }
