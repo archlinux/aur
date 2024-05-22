@@ -2,12 +2,12 @@
 
 pkgname=dracut-ukify
 pkgver=8
-pkgrel=3
+pkgrel=4
 pkgdesc="Integration layer for dracut and systemd's ukify tool for Arch Linux"
 url="https://aur.archlinux.org/packages/dracut-ukify"
 arch=(any)
 license=('MIT')
-depends=(dracut systemd-ukify python util-linux)
+depends=(dracut systemd-ukify)
 optdepends=(
 	'sbsigntools: secureboot support'
 )
