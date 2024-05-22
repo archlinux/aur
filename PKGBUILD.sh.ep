@@ -1,0 +1,19 @@
+% layout 'mingw-w64-qt5-module';
+\
+% content_for additional_contributors => begin
+# Contributor: Wolfgang Pupp <wolfgang.pupp@gmail.com>
+% end
+\
+pkgver=5.15.13
+pkgrel=1
+arch=('any')
+pkgdesc="Qt module for general purpose serial bus access (mingw-w64)"
+depends=(<%== qt5deps qw(serialport) %>)
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
+\
+% content_for prepare => begin
+
+  # don't build examples or tests
+  sed -i 's/ examples tests//' qtserialbus.pro
+% end
