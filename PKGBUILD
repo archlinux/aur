@@ -4,7 +4,7 @@
 _pkgname=toppler
 pkgname="${_pkgname}-git"
 pkgver=1.3+8+r542.20220323.c8bf02b
-pkgrel=2
+pkgrel=3
 pkgdesc='A reimplementation of the classic jump & run game "Nebulus"'
 arch=('i686' 'x86_64')
 url="https://gitlab.com/roever/toppler/"
@@ -38,7 +38,7 @@ prepare() {
     patch -Np1 --follow-symlinks -i "${_patch}"
   done
 
-  git log > git.log
+  git log > "${srcdir}/git.log"
 }
 
 pkgver () {
