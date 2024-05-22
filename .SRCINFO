@@ -1,0 +1,61 @@
+pkgbase = libgda
+	pkgdesc = Database access library
+	pkgver = 5.2.10
+	pkgrel = 5
+	url = https://www.gnome-db.org/
+	arch = x86_64
+	license = GPL
+	makedepends = glade
+	makedepends = mariadb-libs
+	makedepends = postgresql-libs
+	makedepends = libfbclient
+	makedepends = jdk11-openjdk
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = vala
+	makedepends = itstool
+	makedepends = gnome-common
+	makedepends = git
+	depends = gtksourceview3
+	depends = libxslt
+	depends = python
+	depends = libsecret
+	depends = graphviz
+	depends = goocanvas
+	depends = iso-codes
+	depends = libgee
+	depends = openssl
+	source = git+https://gitlab.gnome.org/GNOME/libgda.git#commit=85a2532df64698306fd3be324bb2052fb1b80fd3
+	source = 0001-Use-single-header-with-GtkSource.patch
+	source = 0002-Use-goocanvas-3.0.patch
+	sha256sums = SKIP
+	sha256sums = 104594a6034b041d87c1129b0b5544c8899393d66a6a0fb7a8b55f7fcb77e560
+	sha256sums = 81ab26fd12f7174e880815f6aa624c24821b1f9c7f386ae566293df7f041b25b
+
+pkgname = libgda
+	optdepends = libgda-firebird: provider for Firebird
+	optdepends = libgda-jdbc: provider for JDBC
+	optdepends = libgda-mysql: provider for MySQL
+	optdepends = libgda-postgres: provider for PostgreSQL
+	options = emptydirs
+
+pkgname = libgda-firebird
+	pkgdesc = libgda provider for Firebird
+	depends = libgda
+	depends = libfbclient
+
+pkgname = libgda-jdbc
+	pkgdesc = libgda provider for JDBC
+	depends = libgda
+	depends = java-environment
+
+pkgname = libgda-mysql
+	pkgdesc = libgda provider for MySQL
+	depends = libgda
+	depends = mariadb-libs
+
+pkgname = libgda-postgres
+	pkgdesc = libgda provider for PostgreSQL
+	depends = libgda
+	depends = postgresql-libs
