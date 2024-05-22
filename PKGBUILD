@@ -1,7 +1,7 @@
 # Maintainer: Ben Edwards <aur at artfuldodge dot io>
 
 pkgname='restish'
-pkgver='0.17.0'
+pkgver='0.20.0'
 pkgrel=1
 pkgdesc='A CLI for interacting with REST-ish HTTP APIs'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 makedepends=(go)
 depends=(glibc)
 source=("https://github.com/danielgtaylor/restish/archive/v${pkgver}.tar.gz")
-sha256sums=('09fd99f868b047fb9159314441edfe6e960a6a8227accf270ba343d4949efbeb')
+sha256sums=('0aebd5eaf4b34870e40c8b94a0cc84ef65c32fde32eddae48e9529c73a31176d')
 
 prepare() {
   cd restish-$pkgver
