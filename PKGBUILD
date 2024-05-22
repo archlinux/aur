@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributer: Radu Potop <radu at wooptoo com>
 pkgname=nodejs-docs
-pkgver=21.6.1
+pkgver=22.2.0
 pkgrel=1
 pkgdesc="Node.js API documentation."
 arch=(any)
@@ -9,7 +9,7 @@ url="https://nodejs.org/en/docs/"
 license=('MIT')
 options=('docs')
 source=("https://nodejs.org/dist/v${pkgver}/node-v${pkgver}.tar.gz")
-sha256sums=('7e284d0d64c2edcec84ecfd5bda1d9e7b82a8a3fe401f8b7023c5bc1d9fdd4d5')
+sha256sums=('2210ce0a40aa6aec3cc118228fdad6536607002319b1fde24260d179118c1055')
 
 package() {
     cd "node-v${pkgver}"

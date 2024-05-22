@@ -1,12 +1,12 @@
 pkgbase = nodejs-docs
 	pkgdesc = Node.js API documentation.
-	pkgver = 21.6.1
+	pkgver = 22.2.0
 	pkgrel = 1
 	url = https://nodejs.org/en/docs/
 	arch = any
 	license = MIT
 	options = docs
-	source = https://nodejs.org/dist/v21.6.1/node-v21.6.1.tar.gz
-	sha256sums = 7e284d0d64c2edcec84ecfd5bda1d9e7b82a8a3fe401f8b7023c5bc1d9fdd4d5
+	source = https://nodejs.org/dist/v22.2.0/node-v22.2.0.tar.gz
+	sha256sums = 2210ce0a40aa6aec3cc118228fdad6536607002319b1fde24260d179118c1055
 
 pkgname = nodejs-docs
