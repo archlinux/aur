@@ -1,8 +1,9 @@
 pkgbase = jellyfin-rpc-bin
 	pkgdesc = Displays the content you're currently watching on Discord
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Radiicall/jellyfin-rpc
+	install = jellyfin-rpc-bin.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -13,8 +14,8 @@ pkgbase = jellyfin-rpc-bin
 	source = https://github.com/Radiicall/jellyfin-rpc/releases/download/1.1.0/jellyfin-rpc-x86_64-linux
 	source = git+https://github.com/Radiicall/jellyfin-rpc
 	source = https://raw.githubusercontent.com/Radiicall/jellyfin-rpc/1.1.0/scripts/jellyfin-rpc.service
+	md5sums = d4c753b2abcae4291339cba2a44b4d5e
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = d962dcaa648d0337f92844149295d94c
 
 pkgname = jellyfin-rpc-bin
