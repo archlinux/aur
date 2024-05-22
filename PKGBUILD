@@ -3,7 +3,7 @@ pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
 _reponame=sk-chos-config
-pkgver=r577.cdce1a6
+pkgver=r578.c23f30d
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -144,4 +144,8 @@ package() {
     cd "${pkgdir}/usr/lib/systemd/system"
     ln -s sk-setup-kernel-options.service sk-update-boot-entry.service
     ln -s sk-setup-next-boot.service sk-auto-keep-boot-entry.service
+
+    # systemd/user
+    cd "${pkgdir}/usr/lib/systemd/user"
+    ln -s sk-first-setup-daemon.service sk-first-run-daemon.service
 }
