@@ -1,0 +1,25 @@
+From 7952a390eeff752c8b532d23282688fe1041bd6f Mon Sep 17 00:00:00 2001
+From: Hamad Marri <hamad.s.almarri@gmail.com>
+Date: Sat, 30 Mar 2024 03:52:07 +0300
+Subject: [PATCH 16/16] ECHO CPU scheduler v6.8
+
+---
+ kernel/sched/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index 49df55bb0..f8f5ad0d2 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -9928,7 +9928,7 @@ void __init sched_init(void)
+ 	wait_bit_init();
+ 
+ #ifdef CONFIG_ECHO_SCHED
+-	printk(KERN_INFO "ECHO CPU scheduler v6.7 by Hamad Al Marri.");
++	printk(KERN_INFO "ECHO CPU scheduler v6.8 by Hamad Al Marri.");
+ #endif
+ 
+ #ifdef CONFIG_FAIR_GROUP_SCHED
+-- 
+2.44.0
+

@@ -1,0 +1,27 @@
+From 439c2265ffa2cf6f5484ef24a9cc746ce8357840 Mon Sep 17 00:00:00 2001
+From: Hamad Marri <hamad.s.almarri@gmail.com>
+Date: Sun, 31 Mar 2024 00:59:25 +0300
+Subject: [PATCH] RR_TIMESLICE to 1ms
+
+---
+ include/linux/sched/rt.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/include/linux/sched/rt.h b/include/linux/sched/rt.h
+index b2b9e6eb9..13f362537 100644
+--- a/include/linux/sched/rt.h
++++ b/include/linux/sched/rt.h
+@@ -58,6 +58,10 @@ extern void normalize_rt_tasks(void);
+  * default timeslice is 100 msecs (used only for SCHED_RR tasks).
+  * Timeslices get refilled after they expire.
+  */
++#ifdef CONFIG_ECHO_SCHED
++#define RR_TIMESLICE		(1)
++#else
+ #define RR_TIMESLICE		(100 * HZ / 1000)
++#endif
+ 
+ #endif /* _LINUX_SCHED_RT_H */
+-- 
+2.44.0
+

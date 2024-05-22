@@ -34,11 +34,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-echo
-pkgver=6.8.4
-_pkgver=6.8.4
+pkgver=6.9.0
+_pkgver=6.9
 pkgrel=1
-major=6.8
-commit=1b0c0b620d3d8838bf95cb5c80e8b8bdc070466c
+major=6.9
+commit=1e29f0ecf2221b2fbf580752f42ab5040d88b5e0
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -94,7 +94,7 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
         0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
         0003-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch
-        0004-xen-netfront-Add-missing-skb_mark_for_recycle.patch
+        0004-docs-kernel_include.py-Fix-build-with-docutils-0.21..patch
         # ECHO
         # All commits from Hamad Al Marri in the linux-6.8.y-echo branch
         # Some commits are not in the official path from the  ECHO-CPU-Scheduler repo
@@ -388,12 +388,12 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('d5dec495fc00605fa9e04114df547fbc92b33d9ea7a4a2b7073c589590e79e63'
-            '5c0ebdac3ab21e1282cca9f5d41412eab90352f6f2ec22ce660ad038a5ff48fa'
-            '014474c35c7c7e1555661994af446ba3f8d21768e12eca0838eb9155624d937e'
-            '7a715017061c7122977b260a5917e65ac756343552ff3f8463fb9329a50848ee'
-            '074a0870a523d36874903fc496c49f568e50c837180ab898fcb5334318c72158'
-            '284c4235fcf6bce55e443707dbe72862090027a1a29a4083a2dbbb03ad778e19'
+sha256sums=('24fa01fb989c7a3e28453f117799168713766e119c5381dac30115f18f268149'
+            '5f8a4de3f17d6d1b624e70514327b05fafffe8af913f95829b9c6830b4a8a4e3'
+            'e3ff7450ac5ce41729febf471cba26446f88c3e711808cb01a012ed4d9f8d345'
+            '29c297704b3e6a8b865457061dd829e449e4c7a5fda29b74352738643ef649cc'
+            '87470fae9a8a0080c2cb3d38be224b3ccbcb2004316207e0d148ff8a62764a9e'
+            '1e36095b05ee849ad05e3696f3e16cc15e0467b7065ec8fe4624bffa3afaf6b5'
             'decfd4c32e2a20accd20b1df6209b5821f97bf6b567c00e4be0f1209d94190dc'
             'd2d9b13bd70047c44eec1a65d85ad7f868aac95f61e589a754d34a429f526075'
             '6149cd3f81aaa2bdf9e976fd9f23427fc744cc95a27908421600d1c60d6f203b'
