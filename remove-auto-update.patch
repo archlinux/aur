@@ -1,6 +1,6 @@
 diff --color --unified --recursive --text app/index.js app2/index.js
---- app/index.js	2022-10-10 00:16:46.949457385 +0200
-+++ app2/index.js	2022-10-10 00:22:26.917985986 +0200
+--- app/index.js	2024-05-22 23:47:34.270550768 +0200
++++ app2/index.js	2024-05-22 23:51:14.762831630 +0200
 @@ -9,7 +9,6 @@
  
  // expose globals to electron
@@ -17,18 +17,16 @@ diff --color --unified --recursive --text app/index.js app2/index.js
  // expose primary window instance id globally
  global.env.windowInstanceID = null;
  global.env.windowStateEventDebounce = null;
-@@ -190,14 +188,6 @@
+@@ -76,12 +74,6 @@
+       // ----- PRODUCTION ----- //
+     }
  
-         // ----- PRODUCTION ----- //
-         }
+-    // check for updates after launch
+-    autoUpdate.init();
 -
--        // check for updates after launch
--        autoUpdate.init();
--
--        // hourly update check
--        autoUpdateCronJob = new CronJob('0 15 * * *', () => autoUpdate.checkForUpdate());
--        autoUpdateCronJob.start();
--
-     });
+-    // hourly update check
+-    autoUpdateCronJob = new CronJob('0 15 * * *', () => autoUpdate.checkForUpdate());
+-    autoUpdateCronJob.start();
+   });
  
-     // dereference window object upon close
+   // dereference window object upon close

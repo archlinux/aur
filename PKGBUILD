@@ -1,7 +1,7 @@
 # Maintainer: nezu <nezu@nezu.cc>
 pkgname=teamwork-desktop
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Teamwork for Desktop - Launch Teamwork directly from your desktop."
 arch=('any')
 url="https://integrations.teamwork.com/integrations/teamwork-projects-desktop/"
@@ -15,17 +15,17 @@ source=(
 	"remove-auto-update.patch"
 	"teamwork-desktop.desktop"
 	"teamwork-desktop.sh")
-sha256sums=('c553c13ee1f242884cb74e6d3bf28b9d4734968791fbe89b847708894a28f087'
-            '1a79b996a5913f3cd7957014631e8e71bd7b4bcadd51dfca729a2d9fdcfd9020'
-            '18d089a98af2961f2a4e6feb2e63f74c9990f65d04b2055733630f08458e43bc'
+sha256sums=('ce0ea182dd402c30df568c2e92c2cff2d3e1f29133577d53ce2b61a9b18c0d2b'
+            'e0c69e7a9d26d4afe1389a0348e34d84affa6783b0f64b4a6c9752041e8d0595'
+            '57071e5305fe9b973b8d48e90e827a9323f3f0b5b15f3ba5ecb4e57e03b1cc8f'
             'abd0bf317ac70d5aa51516508cdcf09875496b8bfde643af52df98f0e58d0b93'
             '241c4bdb71974742a4204f0d1cd0c58b007cb459961e278dbd77f3e4ea0c54f5')
 
 prepare() {
 	cd resources
 	asar extract app.asar app
-	patch --directory="app" --forward --strip=1 --input="${srcdir}/fix-titlebar.patch"
 	patch --directory="app" --forward --strip=1 --input="${srcdir}/remove-auto-update.patch"
+	patch --directory="app" --forward --strip=1 --input="${srcdir}/fix-titlebar.patch"
 }
 
 build() {
