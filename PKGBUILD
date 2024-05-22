@@ -139,4 +139,8 @@ package() {
     cd "${pkgdir}/usr/lib/systemd/system"
     ln -s sk-setup-kernel-options.service sk-update-boot-entry.service
     ln -s sk-setup-next-boot.service sk-auto-keep-boot-entry.service
+
+    # systemd/user
+    cd "${pkgdir}/usr/lib/systemd/user"
+    ln -s sk-first-setup-daemon.service sk-first-run-daemon.service
 }
