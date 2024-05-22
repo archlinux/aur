@@ -93,6 +93,6 @@ build() {
 
 package() {
   cd "$srcdir/dbus-$pkgver"
-  make DESTDIR="$pkgdir" -C dbus install
+  make -C dbus DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/libdbus/COPYING"
 }
