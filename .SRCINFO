@@ -1,6 +1,6 @@
 pkgbase = yank-note
 	pkgdesc = A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement.
-	pkgver = 3.70.3
+	pkgver = 3.70.4
 	pkgrel = 1
 	url = https://yank-note.com/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = yank-note
 	depends = python>=3.11.5
 	depends = java-runtime
 	conflicts = yank-note
-	source = yank-note-3.70.3.tar.gz::https://github.com/purocean/yn/archive/refs/tags/v3.70.3.tar.gz
+	source = yank-note-3.70.4.tar.gz::https://github.com/purocean/yn/archive/refs/tags/v3.70.4.tar.gz
 	source = yank-note.sh
-	sha256sums = c0bf724ee0567d627041bc53d539856004253d57bb67d93d69b6f06bffd81d75
+	sha256sums = 8e032a875ff20a90d384af31d8f4a6cc6dbb515d84be7fc152df94075eb6adf3
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = yank-note
