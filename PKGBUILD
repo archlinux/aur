@@ -1,25 +1,33 @@
-# Maintainer: Philipp Joram <phijor AT t-online DOT de>
+# Maintainer: Josh Holmer <jholmer.in@gmail.com>
 
-pkgname=python-wget
-_hgname=$pkgname
-_hgauthor=techtonik
-_hgcommit=e19779610914
+_plug=wget
+pkgname=python-${_plug}
 pkgver=3.2
 pkgrel=1
-pkgdesc="pure python download utility"
-arch=(any)
-url="http://bitbucket.org/$_hgauthor/$_hgname"
-license=('GPL')
-depends=('python')
-makedepends=('python-setuptools')
-options=(!emptydirs)
+pkgdesc="Python Package: ${_plug} (GIT version)"
+arch=('any')
+url='https://pypi.org/project/wget/'
+license=('MIT')
+depends=(
+)
+makedepends=(
+    'git'
+    'python-build'
+    'python-wheel'
+    'python-installer'
+    'python-setuptools'
+)
+provides=("python-${_plug}")
+conflicts=("python-${_plug}")
+source=("${_plug}::https://files.pythonhosted.org/packages/47/6a/62e288da7bcda82b935ff0c6cfe542970f04e29c756b0e147251b2fb251f/wget-3.2.zip")
+sha256sums=('SKIP')
 
-source=("https://bitbucket.org/$_hgauthor/$_hgname/get/$pkgver.tar.gz")
-sha512sums=('83c1c929dbd61e822df405e3f8235a1caf7082c56963f3735cf02db6e42a2e615544c8c5537507d88f7d7e618991444ddbe66f6e0966f7171fe7f287b6ec27a6')
-
-package() {
-  cd "$srcdir/$_hgauthor-$_hgname-$_hgcommit"
-  python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+    cd "${_plug}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+    cd "${_plug}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+}

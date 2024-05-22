@@ -1,15 +1,18 @@
 pkgbase = python-wget
-	pkgdesc = pure python download utility
+	pkgdesc = Python Package: wget (GIT version)
 	pkgver = 3.2
 	pkgrel = 1
-	url = http://bitbucket.org/techtonik/python-wget
+	url = https://pypi.org/project/wget/
 	arch = any
-	license = GPL
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
-	options = !emptydirs
-	source = https://bitbucket.org/techtonik/python-wget/get/3.2.tar.gz
-	sha512sums = 83c1c929dbd61e822df405e3f8235a1caf7082c56963f3735cf02db6e42a2e615544c8c5537507d88f7d7e618991444ddbe66f6e0966f7171fe7f287b6ec27a6
+	provides = python-wget
+	conflicts = python-wget
+	source = wget::https://files.pythonhosted.org/packages/47/6a/62e288da7bcda82b935ff0c6cfe542970f04e29c756b0e147251b2fb251f/wget-3.2.zip
+	sha256sums = SKIP
 
 pkgname = python-wget
-
