@@ -1,3 +1,8 @@
-pkg
-src
-*.tar*
+# Ignore everything
+*
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.patch
