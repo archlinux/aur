@@ -42,7 +42,7 @@ build() {
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
         -e "s|@cfgdirname@|${_pkgname//-/ }|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
