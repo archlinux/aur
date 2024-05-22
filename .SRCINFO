@@ -1,0 +1,20 @@
+pkgbase = libastal-apps-git
+	pkgdesc = Library and cli tool for querying applications.
+	pkgver = r3.e88b3da
+	pkgrel = 1
+	url = https://github.com/astal-sh/apps
+	arch = x86_64
+	license = GPL-3
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = json-glib
+	provides = astal-apps
+	provides = libastal-apps
+	provides = libastal-apps.so=0-64
+	source = git+https://github.com/astal-sh/apps
+	sha256sums = SKIP
+
+pkgname = libastal-apps-git
