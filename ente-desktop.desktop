@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ente
+Exec=ente-desktop --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=ente-desktop
+StartupWMClass=ente
+Comment=Desktop client for (self hosted) Ente server
+Categories=Graphics;
