@@ -3,7 +3,7 @@
 # Contributor: Lorenzo Gaifas <brisvag at gmail dot com>
 # Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 pkgname=snapgene-viewer
-pkgver=7.2.0
+pkgver=7.2.1
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
 pkgrel=1
@@ -47,7 +47,7 @@ depends=('qt6-base'
 )
 # A valid licence is required to use the full version of snapgene
 source=("https://cdn.snapgene.com/downloads/SnapGeneViewer/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/snapgene_viewer_"$pkgver"_linux.rpm" "snapgene-viewer")
-sha512sums=('df675f3e9c9696aa4c035e391a3eea1564e4ef5a623a88090385e509cf755bddc6e32561682b99a776dc74d6cc88a89fb960e89d0548e0d9b674403c8b8569b9' '082c0fe6d8d5a6b8822d73589718d1baf9d4f651092c4beea8247e8a7af7ee9597858502124300111d020a07b3da612609caca21eb78fc889e6948d579ee7ea9')
+sha512sums=('7a0c4c87a3130030041182ffb05c9f6e3c4d528713b6a2a429cb8a31306e20e45765bff3590a99a3decace14fd4c3d06685c06c63df054a6d6ee22b1dac26840' '082c0fe6d8d5a6b8822d73589718d1baf9d4f651092c4beea8247e8a7af7ee9597858502124300111d020a07b3da612609caca21eb78fc889e6948d579ee7ea9')
 
 package() {
   cd "$pkgdir"
