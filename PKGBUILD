@@ -8,14 +8,15 @@
 
 _name=subtitlecomposer
 pkgname=${_name}-git
-pkgver=0.7.1+git298.fe1477b5
-pkgrel=2
+pkgver=0.8.0+git105.e588beff
+pkgrel=1
 pkgdesc="A KDE subtitle editor (git version)"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/multimedia/${_name}"
 license=('GPL')
-depends=('kcoreaddons5' 'ktextwidgets5' 'kio5' 'sonnet5' 'kcodecs5' 'kxmlgui5' 'ki18n5' 'ffmpeg' 'openal')
-makedepends=('extra-cmake-modules' 'jack' 'blas' 'xorg-server-xvfb')
+depends=('kcoreaddons' 'ktextwidgets' 'kio' 'sonnet' 'kcodecs' 'kxmlgui' 'ki18n' 'ffmpeg' 'openal')
+makedepends=('extra-cmake-modules' 'jack' 'blas')
+checkdepends=('xorg-server-xvfb')
 
 # Comment/uncomment the following dependency to disable/enable
 # building the speech recognition plugin
@@ -38,6 +39,7 @@ pkgver() {
 
 build() {
   cmake -S "${srcdir}/${_name}" -B "${srcdir}/build" \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
