@@ -14,6 +14,7 @@ depends=('mpv'
 	'ffmpeg'
 	'libadwaita'
 	'gstreamer'
+	'clapper'
 	'gtk4')
 makedepends=(
 	'git'
@@ -24,8 +25,8 @@ source=(
 	tsukimi.png
 )
 sha256sums=('SKIP'
-            'd12dc777bbb05ed92d75f8d36e453b651e12596ead6e297386419a24d051a0a3'
-            '04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893')
+	'd12dc777bbb05ed92d75f8d36e453b651e12596ead6e297386419a24d051a0a3'
+	'04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893')
 
 pkgver() {
 	cd "${_pkgname}"
