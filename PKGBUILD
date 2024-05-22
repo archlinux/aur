@@ -2,7 +2,7 @@
 
 pkgname=python-ngs
 _source=sra-tools
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="python module for NCBI NGS Language Bindings"
 url="https://github.com/ncbi/sra-tools"
@@ -19,7 +19,7 @@ license=('custom: Public Domain')
 arch=('any')
 source=("$_source-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/$pkgver.tar.gz")
 options=(!strip) # strip isn't useful for python files and takes forever
-sha256sums=('ce92ce887ee4a7581a7511cfb6b965ac6a5e38841bad9be66a3aee903ec48952')
+sha256sums=('96b110bd5a30ad312e2f02552062b48a77d40c763e6aba5bb84e83662a505cf1')
 
 build() {
   cd ${srcdir}/"$_source-$pkgver"/ngs/ngs-python
