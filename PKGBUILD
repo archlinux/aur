@@ -1,3 +1,4 @@
+# Maintainer: Nakidai <plaza521 at inbox dot ru>
 pkgname=vectozavr-shooter-git
 pkgdesc="Multiplayer shooter written in C++"
 url="https://github.com/vectozavr/shooter"
