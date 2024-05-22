@@ -1,6 +1,6 @@
 pkgname=nyaa
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tui tool for browsing and downloading torrents from nyaa.si"
 url='https://github.com/Beastwick18/nyaa/'
 arch=(x86_64)
@@ -10,6 +10,7 @@ source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgn
 conflicts=('nyaa')
 provides=('nyaa')
 b2sums=('SKIP')
+options=(!lto)
 
 prepare() {
 	cd $pkgname-$pkgver
