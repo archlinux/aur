@@ -5,7 +5,7 @@
 pkgname=mipsel-elf-gcc
 _pkgname=gcc
 _target="mipsel-elf"
-pkgver=13.2.0
+pkgver=14.1.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - C and C++ frontends (for baremetal MIPS)"
 url="https://www.gnu.org/software/gcc/"
@@ -15,7 +15,7 @@ depends=("${_target}-binutils")
 makedepends=("gcc-ada>=${pkgver:0:2}")
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da')
+sha256sums=('e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840')
 
 prepare() {
     cd "$srcdir"/${_pkgname}-${pkgver}
@@ -70,4 +70,3 @@ package() {
     # remove unnecessary files
     rm "$pkgdir"/usr/lib/libcc1.*
 }
-sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da')
