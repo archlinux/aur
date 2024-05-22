@@ -8,11 +8,11 @@
 
 pkgname=opencpn
 pkgver=5.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Chart Plotting / Marine Navigation"
 arch=('x86_64' 'aarch64')
 license=("GPL2")
-depends=('wxgtk3' 'portaudio' 'tinyxml' 'libsndfile' 'libarchive' 'libexif' 'glew' 'glu' 'webkit2gtk' 'wxsvg')
+depends=('wxwidgets-gtk3' 'portaudio' 'tinyxml' 'libsndfile' 'libarchive' 'libexif' 'glew' 'glu' 'webkit2gtk-4.1' 'wxsvg' 'rapidjson')
 optdepends=('gpsd: GPS position support')
 makedepends=('cmake' 'lsb-release')
 url="http://opencpn.org"
