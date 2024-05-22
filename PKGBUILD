@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.rc1.r35.g34bb44e
+pkgver=4.0.0.rc1.r45.gd7a490f
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -36,6 +36,7 @@ makedepends=('boost'
              'protozero'
              'sparsehash')
 conflicts=('mapnik')
+options=(staticlibs)
 provides=('mapnik')
 source=('git+https://github.com/mapnik/mapnik.git'
         'mapnik-use-system-sparsehash.patch'
