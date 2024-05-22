@@ -23,7 +23,7 @@ options=('!strip')
 
 _filever="$([ $_eap = y ] && echo -n $pkgver || echo -n $_pkgver)"
 source=("pycharm-community-eap.desktop")
-sha256sums=('f76a04261fb91a8ede8859f6b46352bdeb92f79210a9fc87b5ac959063cb1715')
+sha256sums=('5996ba03e5f4d7be7c6f002a1294b97674cb4b6d0f8b3777bc67e255ad20ff85')
 sha256sums_x86_64=('2b16a80062d0e773a2ed9024a89b78979796da0e20dbf7a75af06a920db926da')
 sha256sums_aarch64=('1586e9f76105c587299636746fb5f67edda32a1332921b65655ec0eee73eaf7a')
 
@@ -45,7 +45,7 @@ package() {
 	install -Dm644 "${startdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 
 	ln -sf "/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/pycharm-community-eap.png"
-	ln -s "/opt/${pkgname}/bin/pycharm.sh" "${pkgdir}/usr/bin/pycharm-community-eap"
+	ln -s "/opt/${pkgname}/bin/pycharm" "${pkgdir}/usr/bin/pycharm-community-eap"
 }
 
 # vim: ts=4 sw=4 noet ft=PKGBUILD:
