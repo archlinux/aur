@@ -3,7 +3,7 @@
 
 pkgname=php-codesniffer-phpcsutils
 _pkgname=PHPCSUtils
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="A set of utilities to aid developers of sniffs for PHP_CodeSniffer"
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('php-codesniffer')
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('1bffed7470f53ea9f6fe73808b659695a28f2713dd317dec976728052cfdeccc12f3aa0aeb873f96aaa26d1ff71cd49957311837440f41acf037a1b6e9147adf')
+b2sums=('17c9faa5d4beded9ba9335a971e330e791fef30ce581ee620c517a7f8fbc73dda5ee6ee9ed1a323428f8c6d3d6340236d008e54370e4ebc598e65fd77c35b187')
 
 package() {
   install -d "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/PHPCSUtils"
