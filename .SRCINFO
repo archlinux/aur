@@ -1,0 +1,18 @@
+pkgbase = python-flowdyn
+	pkgdesc = Model of discretization of hyperbolic model, base is Finite Volume method
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/jgressier/flowdyn
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python-numpy
+	optdepends = python-aerokit
+	optdepends = python-matplotlib
+	source = https://pypi.org/packages/source/f/flowdyn/flowdyn-1.3.1.tar.gz
+	sha512sums = 15956ea29733a4ae90a262c4ca642e035cd2ad6cb18106948f38c1e29b59695e49d42e1139b6c527095546457b7dba602b3c5c106c4680faeee740985cf9126b
+
+pkgname = python-flowdyn
