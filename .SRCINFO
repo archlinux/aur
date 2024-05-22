@@ -1,0 +1,13 @@
+pkgbase = riscv32-gnu-toolchain-glibc-llvm-bin
+	pkgdesc = GNU toolchain for riscv32 linux, including GCC and LLVM.
+	pkgver = 2024.04.12
+	pkgrel = 1
+	url = https://github.com/riscv-collab/riscv-gnu-toolchain
+	arch = x86_64
+	license = GPL2
+	conflicts = riscv32-gnu-toolchain-glibc-bin
+	options = !strip
+	source = https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2024.04.12/riscv32-glibc-ubuntu-22.04-llvm-nightly-2024.04.12-nightly.tar.gz
+	sha512sums = a276c9912ff94654b5224dabbd4c21be146332c714af3ad74150322dff9044311ada4aadc6d5c8a93fe703be675aeafa6b8310a902981cc1ed4b149ff5cfaed1
+
+pkgname = riscv32-gnu-toolchain-glibc-llvm-bin
