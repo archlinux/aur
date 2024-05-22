@@ -2,14 +2,14 @@
 _pkgname=javy
 pkgname=javy-bin
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A JavaScript to Webassembly toolchain"
 arch=(x86_64)
 url="https://github.com/bytecodealliance/javy"
 license=(APACHE)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$url/raw/$pkgver/LICENSE.md"
+source=("$url/raw/v$pkgver/LICENSE.md"
 		"$url/releases/download/v$pkgver/$_pkgname-$arch-linux-v$pkgver.gz.sha256")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$arch-linux-v$pkgver.gz")
 sha256sums=('3b26cd02b9d9bf324bce59edd88c02cb93fa9a908528b805264db8cde53295e6'
