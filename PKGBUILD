@@ -3,12 +3,12 @@ DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=pulse-secure
 pkgver=22.7r1.0_b28369
-pkgrel=2
+pkgrel=3
 pkgdesc='Ivanti Secure Access Client'
 arch=(x86_64)
 license=(custom)
 url='https://www.pulsesecure.net/'
-depends=(gcc-libs libgnome-keyring openssl curl dbus libbsd dmidecode)
+depends=(gcc-libs libgnome-keyring openssl curl dbus libbsd dmidecode patch)
 install=${pkgname}.install
 source=("EULA.txt" "setup_cef.sh.patch")
 source_x86_64=("https://descargas.grancanaria.com/Sistemas/PulseSecureClients/ps-pulse-linux-22.7r1.0-b28369-64bit-installer.rpm")

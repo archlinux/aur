@@ -1,7 +1,7 @@
 pkgbase = pulse-secure
 	pkgdesc = Ivanti Secure Access Client
 	pkgver = 22.7r1.0_b28369
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.pulsesecure.net/
 	install = pulse-secure.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = pulse-secure
 	depends = dbus
 	depends = libbsd
 	depends = dmidecode
+	depends = patch
 	optdepends = psmisc: for pulsesvc -K,
 	optdepends = gtkmm3: for pulseUi,
 	optdepends = webkit2gtk: for pulseUi
