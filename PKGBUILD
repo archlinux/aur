@@ -1,7 +1,7 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 pkgname=riscv64-gnu-toolchain-glibc-llvm-bin
 pkgver=2024.04.12
-pkgrel=2
+pkgrel=3
 pkgrel=1
 pkgdesc="GNU toolchain for riscv64 linux, including GCC and LLVM."
 arch=('x86_64')
@@ -28,7 +28,7 @@ _toolchain_prefix='riscv64-unknown-linux-gnu'
 package() {
   install -dm755 "${pkgdir}"/opt/riscv64-gnu-toolchain-glibc-llvm-bin "${pkgdir}"/usr/bin "${pkgdir}"/usr/lib/gcc
   cp -pR "${srcdir}"/riscv/* "${pkgdir}"/opt/riscv64-gnu-toolchain-glibc-llvm-bin
-  ln -s /opt/riscv64-gnu-toolchain-glibc-llvm-bin "${pkgdir}"/usr/
+  ln -s /opt/riscv64-gnu-toolchain-glibc-llvm-bin/"${_toolchain_prefix}" "${pkgdir}"/usr
   for f in "${srcdir}"/riscv/bin/"${_toolchain_prefix}"-*; do
     f="$(basename "${f}")"
     ln -s /opt/riscv64-gnu-toolchain-glibc-llvm-bin/bin/"${f}" "${pkgdir}"/usr/bin
