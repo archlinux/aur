@@ -2,12 +2,12 @@
 
 pkgname=rwpspread
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 _patch=""
 pkgdesc='Multi-Monitor Wallpaper Utility'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/0xk1f0/rwpspread'
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('cargo' 'git' 'gzip')
 optdepends=('wpaperd: wallpaper setter backend'
             'swaybg: wallpaper setter backend'
