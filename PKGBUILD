@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=edgetx-buddy-bin
 pkgver=0.1.0
-_electronversion=16
-pkgrel=11
+_electronversion=29
+pkgrel=12
 pkgdesc="The next generation tool for EdgeTX. A cross platform app, with browser compatibility."
 arch=('x86_64')
 url="https://buddy.edgetx.org/"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -21,14 +21,15 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/EdgeTX/buddy/latest/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1ebe11f1c701b976b9c13bd9800ad016305f60dde32e5d94bc21ae15ba7c1d54'
+sha256sums=('8460d2ca3d6049546a69d1ef22bbda3edf6f8b5c5dec82648519faad9675ccbe'
             'b439e9847dce86ac976ddeb9949eb190c53322569f05f43d1cb4278ef1d90167'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
