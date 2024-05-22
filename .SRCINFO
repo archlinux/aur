@@ -1,0 +1,11 @@
+pkgbase = commandmoney
+	pkgdesc = Simple money management program written in Go - CLI backend
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/owenrummage/CommandMoney
+	arch = x86_64
+	makedepends = go
+	source = commandmoney_0.0.1.tgz::https://github.com/owenrummage/CommandMoney/archive/refs/tags/v0.0.1.tar.gz
+	sha512sums = 422df6a54826a98911dd8c4dbdce1272d6305314cb7ccd8eab130cc1135be9e3ff0317ba4f4bbc43c71d70d4d5a9054c5c1c65f973a5ec1d1789cc39abcb8c75
+
+pkgname = commandmoney
