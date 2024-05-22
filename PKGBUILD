@@ -4,13 +4,26 @@
 _pkgname=toppler
 pkgname="${_pkgname}-git"
 pkgver=1.3+8+r542.20220323.c8bf02b
-pkgrel=3
+pkgrel=4
 pkgdesc='A reimplementation of the classic jump & run game "Nebulus"'
 arch=('i686' 'x86_64')
 url="https://gitlab.com/roever/toppler/"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'sdl2' 'sdl2_mixer' 'zlib')
-makedepends=('gettext' 'gimp' 'git' 'imagemagick' 'libpng' 'povray')
+depends=(
+  'gcc-libs'
+  'glibc'
+  'sdl2'
+  'sdl2_mixer' 
+  'zlib'
+)
+makedepends=(
+  'gettext'
+  'gimp'
+  'git'
+  'imagemagick'
+  'libpng'
+  'povray'
+)
 optdepends=(
   "${_pkgname}-upstream-levels: The upstream levels as individual missions that can be played individually, and files that can be loaded into the level editor."
 )
@@ -34,7 +47,7 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   for _patch in "${srcdir}"/fix-for-gcc14.patch; do
-    printf "   > Applying patch $(basename "${_patch}") ..."
+    printf '%s\n' "   > Applying patch $(basename "${_patch}") ..."
     patch -Np1 --follow-symlinks -i "${_patch}"
   done
 
