@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-git')
 pkgver=1.1.0.r0.gde57060
-pkgrel=1
+pkgrel=2
 pkgdesc="Displays the content you're currently watching on Discord"
 arch=('any')
 url="https://github.com/Radiicall/jellyfin-rpc"
@@ -13,6 +13,7 @@ conflicts=('jellyfin-rpc')
 source=("git+https://github.com/Radiicall/jellyfin-rpc.git")
 md5sums=('SKIP')
 options=(!lto)
+install=jellyfin-rpc-git.install
 
 pkgver() {
   cd jellyfin-rpc
@@ -39,7 +40,6 @@ check() {
 	cd jellyfin-rpc
 	export RUSTUP_TOOLCHAIN=stable
 	cargo test --frozen --all-features
-
 }
 
 package() {
@@ -48,21 +48,4 @@ package() {
 	install -Dm0644 "example.json" -t "$pkgdir/usr/lib/jellyfin-rpc/"
 	install -Dm0644 ./README.md "$pkgdir/usr/share/doc/jellyfin-rpc"
 	install -Dm0644 "scripts/jellyfin-rpc.service" -t "$pkgdir/usr/lib/systemd/user/"
-
-	echo
-	echo
-	echo -------------------------------------------------------------
-	echo 'READ THE GITHUB DOCUMENTATION - CONFIG FILE MUST BE EDITED BEFORE USE'
-	echo 'jellyfin-rpc binary is located at /usr/lib/jellyfin-rpc/jellyfin-rpc'
-	echo 'systemd service file is located at /usr/lib/systemd/user/jellyfin-rpc.service'
-	echo 'example config is located at /usr/lib/jellyfin-rpc/example.json'
-	echo
-	if [ -d $XDG_CONFIG_HOME ]; then
-		echo "Place your main.json at $XDG_CONFIG_HOME/jellyfin-rpc/main.json"
-	else
-		echo "Place your main.json at /home/$USER/.config/jellyfin-rpc/main.json"
-	fi
-	echo -------------------------------------------------------------
-	echo
-	echo
 }
