@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=sirikali
 _name=SiriKali
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs"
 arch=('i686' 'x86_64' 'aarch64')
@@ -22,7 +22,7 @@ optdepends=('lxqt_wallet: use an external lxqt_wallet (must recompile)'
 conflicts=("sirikali-git")
 source=("${_name}-${pkgver}.tar.xz::https://github.com/mhogomchungu/${pkgname}/releases/download/${pkgver}/${_name}-${pkgver}.tar.xz"
         "${_name}-${pkgver}.tar.xz.asc::https://github.com/mhogomchungu/${pkgname}/releases/download/${pkgver}/${_name}-${pkgver}.tar.xz.asc")
-sha256sums=('073977cd727227c13285d59c399b5756e7876e9bf61f089059076117d389d270'
+sha256sums=('971112f4ff5ab0a11ef670bec63052b3399b0182999ac43a762f45e5b6c3053d'
             'SKIP')
 validpgpkeys=('6855E493B5B2DF96E319BB6D16E2E1ACC6F51242')
 
@@ -57,7 +57,6 @@ build() {
     -DINTERNAL_LXQT_WALLET=$intwallet \
     -DNOKDESUPPORT=$skipkde \
     -DNOSECRETSUPPORT=$skipsecret \
-    -DQT5=true \
     . ..
   make
 }
