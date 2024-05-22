@@ -2,10 +2,10 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=zesarux-git
-pkgver=ZEsarUX.11.0.beta1.r343.gc7b4dcc
+pkgver=ZEsarUX.11.0.Beta2.r13.g322cf11
 _ver=11.0
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc="A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support. Development version."
 arch=('i686' 'x86_64')
 url="https://github.com/chernandezba/zesarux"
