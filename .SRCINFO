@@ -1,7 +1,7 @@
 pkgbase = nekoray
 	pkgdesc = Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)
 	pkgver = 3.26
-	pkgrel = 6
+	pkgrel = 7
 	url = https://matsuridayo.github.io
 	arch = x86_64
 	arch = aarch64
@@ -17,6 +17,7 @@ pkgbase = nekoray
 	depends = protobuf
 	depends = yaml-cpp
 	depends = zxing-cpp
+	depends = abseil-cpp
 	optdepends = v2ray-domain-list-community: geosite data for NekoRay
 	optdepends = v2ray-geoip: geoip data for NekoRay
 	optdepends = sing-geoip: geoip data for NekoBox

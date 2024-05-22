@@ -3,7 +3,7 @@
 
 pkgname=nekoray
 pkgver=3.26
-pkgrel=6
+pkgrel=7
 pkgdesc='Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)'
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://matsuridayo.github.io"
@@ -12,6 +12,7 @@ makedepends=('cmake' 'git' 'ninja' 'go')
 depends=(
 	'qt6-base' 'qt6-svg' 'qt6-tools'
 	'protobuf' 'yaml-cpp' 'zxing-cpp'
+	'abseil-cpp'
 )
 
 optdepends=(
