@@ -3,7 +3,7 @@
 _plug=vodesfunc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=1.6.1.0.g2e44930
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Vodes/vodesfunc'
@@ -15,6 +15,7 @@ depends=(
     'vapoursynth-plugin-vskernels-git'
     'vapoursynth-plugin-vstools-git'
     'vapoursynth-plugin-vsmasktools-git'
+    'vapoursynth-plugin-vsmuxtools-git'
 )
 makedepends=(
     'git'

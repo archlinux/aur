@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-vodesfunc-git
 	pkgdesc = Plugin for Vapoursynth: vodesfunc (GIT version)
 	pkgver = 1.6.1.0.g2e44930
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vodes/vodesfunc
 	arch = any
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = vapoursynth-plugin-vodesfunc-git
 	depends = vapoursynth-plugin-vskernels-git
 	depends = vapoursynth-plugin-vstools-git
 	depends = vapoursynth-plugin-vsmasktools-git
+	depends = vapoursynth-plugin-vsmuxtools-git
 	provides = vapoursynth-plugin-vodesfunc
 	conflicts = vapoursynth-plugin-vodesfunc
 	source = vodesfunc::git+https://github.com/Vodes/vodesfunc.git
