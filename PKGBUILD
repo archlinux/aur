@@ -2,17 +2,21 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=229.240514.1
+pkgver=229.240517.0
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tuta.com"
 license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'gtk3' 'libsecret' 'nss')
-makedepends=('git' 'nvm' 'python')
-source=("https://github.com/tutao/tutanota/archive/$pkgname-release-$pkgver.tar.gz"
+makedepends=('emscripten' 'git' 'nvm' 'python')
+source=("git+https://github.com/tutao/tutanota.git#tag=$pkgname-release-$pkgver"
+        'git+https://github.com/P-H-C/phc-winner-argon2.git'
+        'git+https://github.com/open-quantum-safe/liboqs.git'
         "$pkgname.desktop")
-sha256sums=('4f3c90e1c2d0288837a19c4bc217f91d3e7a135d68939e23d546c43786431caf'
+sha256sums=('f93c7a2fb4cb12084889a673f0e59f7af2be9b73e07a3b21dbff47ff2f6849c4'
+            'SKIP'
+            'SKIP'
             '669bff831e12ff91e62eef1b0dbad7e9458b255d90eee456b6d2a50f149d819b')
 
 _ensure_local_nvm() {
@@ -26,13 +30,18 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd "${pkgname%-*}-$pkgname-release-$pkgver"
+  cd "${pkgname%-*}"
+  git submodule init
+  git config submodule.libs/webassembly/phc-winner-argon2.url "$srcdir/phc-winner-argon2"
+  git config submodule.libs/webassembly/liboqs.url "$srcdir/liboqs"
+  git -c protocol.file.allow=always submodule update
+
   _ensure_local_nvm
   nvm install
 }
 
 build() {
-  cd "${pkgname%-*}-$pkgname-release-$pkgver"
+  cd "${pkgname%-*}"
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   npm ci
@@ -41,7 +50,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-*}-$pkgname-release-$pkgver"
+  cd "${pkgname%-*}"
   install -d "$pkgdir/opt/$pkgname/"
   cp -av artifacts/desktop/linux-unpacked/* "$pkgdir/opt/$pkgname/"
   chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
@@ -49,11 +58,11 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/"
 
-  for icon_size in 16x16 32x32 128x128 256x256 512x512; do
-    install -Dm644 resources/desktop-icons/logo-solo-red.png.iconset/icon_${icon_size}.png \
-      "$pkgdir/usr/share/icons/hicolor/${icon_size}/apps/$pkgname.png"
-    install -Dm644 resources/desktop-icons/logo-solo-red.png.iconset/icon_${icon_size}@2x.png \
-      "$pkgdir/usr/share/icons/hicolor/${icon_size}@2x/apps/$pkgname.png"
+  for i in 16 32 48 64 128 256 512; do
+    install -Dm644 resources/desktop-icons/logo-solo-red.png.iconset/icon_${i}x${i}.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
+    install -Dm644 resources/desktop-icons/logo-solo-red.png.iconset/icon_${i}x${i}@2x.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}@2x/apps/$pkgname.png"
   done
 
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
