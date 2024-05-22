@@ -43,7 +43,7 @@ build() {
 }
 
 check() {
-  ctest --test-dir build --ouput-on-failure
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
