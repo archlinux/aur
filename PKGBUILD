@@ -4,8 +4,11 @@ pkgdesc="Minecraft launcher powered by Rust"
 url="https://github.com/Umatriz/nomi"
 license=("GPL-3.0-or-later")
 
+provides=("nomi")
+conflicts=("nomi")
+
 pkgver=0.1.2.fixed.r55.g19ac2df
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 options=(!lto)
@@ -24,11 +27,14 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-targets
 }
 
