@@ -1,6 +1,6 @@
 pkgbase = python-vcard
 	pkgdesc = vCard validator
-	pkgver = 0.14.1
+	pkgver = 0.16.1
 	pkgrel = 2
 	url = https://gitlab.com/engmark/vcard
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-vcard
 	makedepends = python-wheel
 	depends = python-dateutil
 	depends = python-typing_extensions
-	source = python-vcard-0.14.1.tar.bz2::https://gitlab.com/engmark/vcard/-/archive/v0.14.1/vcard-v0.14.1.tar.bz2
-	sha256sums = 345fd6ee49b5cd0d5ea8246475d80088f55fd4f0aa24ee7a41eb76b96cf5d492
+	source = python-vcard-0.16.1.tar.bz2::https://gitlab.com/engmark/vcard/-/archive/v0.16.1/vcard-v0.16.1.tar.bz2
+	sha256sums = 670fe68bc514e7fea0b7cfe60f6339a3557bcc7132ad2bbe2e0e45e12d473cc4
 
 pkgname = python-vcard

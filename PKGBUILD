@@ -4,7 +4,7 @@
 
 pkgname=python-vcard
 _pkg="${pkgname#python-}"
-pkgver=0.14.1
+pkgver=0.16.1
 pkgrel=2
 pkgdesc="vCard validator"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python-dateutil' 'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-poetry' 'python-wheel')
 checkdepends=('python-pytest' 'python-mock')
 source=("$pkgname-$pkgver.tar.bz2::$url/-/archive/v$pkgver/vcard-v$pkgver.tar.bz2")
-sha256sums=('345fd6ee49b5cd0d5ea8246475d80088f55fd4f0aa24ee7a41eb76b96cf5d492')
+sha256sums=('670fe68bc514e7fea0b7cfe60f6339a3557bcc7132ad2bbe2e0e45e12d473cc4')
 
 prepare() {
 	cd "$_pkg-v$pkgver"
