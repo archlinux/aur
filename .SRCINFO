@@ -1,6 +1,6 @@
 pkgbase = azure-dev-cli
 	pkgdesc = Developer CLI that reduces the time it takes for you to get started on Azure
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://github.com/Azure/azure-dev
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = azure-dev-cli
 	depends = kubectl
 	depends = python
 	depends = terraform
-	source = azure-dev-cli-1.9.2.tar.gz::https://github.com/Azure/azure-dev/archive/azure-dev-cli_1.9.2.tar.gz
-	sha256sums = ea84c47612090f31e4cd94f51ffe320be4fd8e3fa2710eeaf884610709c63ba2
+	source = azure-dev-cli-1.9.3.tar.gz::https://github.com/Azure/azure-dev/archive/azure-dev-cli_1.9.3.tar.gz
+	sha256sums = 84c90505387f9014fc376d1dd141534edcd0b127d9fb6bcad70f4fb2b810bea1
 
 pkgname = azure-dev-cli
