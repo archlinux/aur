@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-fml
-pkgver=3.14.16
+pkgver=3.14.17
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -66,7 +66,7 @@ source=(
   panel-type.patch
 )
 
-sha256sums=('e9bb0560dcf6e9ba3a6b0a47b005609d9efea80d4fcb064b0aa4f60681338f4a'
+sha256sums=('04c8e16fd94e8703c8c95f5422b0fd7c6b3c64b7478b8278164eff02e2afd6a2'
             'e39e0c91b297bfd707afcda84ecdc15a08c22e2ad4c347fc3533b1ed98fb3f85'
             'SKIP'
             '03726f2fb44ae79e6a398e8f9aaaf8054800dda9b8298726157522fe5f7296b1'
