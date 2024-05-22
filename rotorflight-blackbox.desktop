@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Rotorflight Blackbox
+Comment=Crossplatform configuration tool for the Rotorflight Blackbox
+Exec=rotorflight-blackbox
+Icon=rotorflight-blackbox
+Terminal=false
+Type=Application
+Categories=Utility
+

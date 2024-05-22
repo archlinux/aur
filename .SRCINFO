@@ -1,0 +1,18 @@
+pkgbase = rotorflight-blackbox
+	pkgdesc = Rotorflight Blackbox for Rotorflight FBL Controller
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/rotorflight/rotorflight-blackbox
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	depends = python
+	depends = nodejs
+	depends = npm
+	depends = nvm
+	source = rotorflight-blackbox-2.0.0.tar.gz::https://github.com/rotorflight/rotorflight-blackbox/archive/refs/tags/release/2.0.0.tar.gz
+	source = rotorflight-blackbox.desktop
+	sha512sums = 1778007336f8f84cb9fa45a6b2988cb7a637df7a7f42d21d700a013d84f7cd3128addd8281a58b91f433f7422f8c07dc67a69ac60608e66950d302e1a6d6fe59
+	sha512sums = dc323d2e7bab4d0f65a9cd62d99e7bc696ac880bbe3ed824959c9d6b5142f9095195b3a234fb4676ef49dc5419f41218107e9f324e6351870a47aa19571b64f7
+
+pkgname = rotorflight-blackbox
