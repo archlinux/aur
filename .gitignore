@@ -1,4 +1,4 @@
 /src/
 /pkg/
-/*.tgz
+/sshcommand
 /*.pkg.tar.zst
