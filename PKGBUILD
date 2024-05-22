@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-python-crontab
 _name=python-crontab
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Crontab module for reading and writing crontab files and accessing the system cron automatically and simply using a direct API."
 arch=('any')
 url="https://gitlab.com/doctormo/python-crontab"
@@ -13,22 +13,22 @@ checkdepends=('python-pytest' 'python-tests')
 optdepends=('cronie'
             'python-cron-descriptor: Ask for a translated string'
             'python-croniter: Run a cron tab as a daemon')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('79fb7465039ddfd4fb93d072d6ee0d45c1ac8bf1597f0686ea14fd4361dba379')
+source=("$url/-/archive/v$pkgver/$_name-v$pkgver.tar.gz")
+sha256sums=('67f8c53163acc1491401de1983eddbcac7145e6295098381abe08cb3f175607a')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "$_name-v$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_name-$pkgver"
+  cd "$_name-v$pkgver"
 
   # test_07_non_posix_shell - only for Windows
   pytest -k "not test_07_non_posix_shell" || :
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "$_name-v$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
