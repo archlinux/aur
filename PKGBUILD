@@ -15,7 +15,7 @@ conflicts=('psi-plus-mediaplugin')
 provides=("psi-plus-mediaplugin=$pkgver")
 source=('git+https://github.com/psi-im/psimedia'
         'git+https://github.com/psi-im/psi.git'
-        '${_pkgbase}::git+https://github.com/psi-plus/main.git'
+        "${_pkgbase}::git+https://github.com/psi-plus/main.git"
         'git+https://github.com/psi-im/libpsi.git')
 md5sums=('SKIP'
          'SKIP'
