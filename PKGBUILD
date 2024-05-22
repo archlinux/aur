@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=vfox
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="A cross-platform and extendable version manager with support for Java, Node.js, Flutter, .Net & more"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/version-fox/vfox/archive/v$pkgver.tar.gz")
-sha256sums=('d9c96154f1ba815eec3a22cf4967bad73eee69214dab83f79a587a9e908cac9b')
+sha256sums=('8a081b0f7a58204487bccce9cce26bbe389c2f0f76c67f93f825cafbacd8a837')
 
 build() {
     cd $pkgname-$pkgver
