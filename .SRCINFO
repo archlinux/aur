@@ -1,6 +1,6 @@
 pkgbase = elixir-ls
 	pkgdesc = A frontend-independent Language Server Protocol for Elixir
-	pkgver = 0.21.1
+	pkgver = 0.21.3
 	pkgrel = 1
 	url = https://github.com/elixir-lsp/elixir-ls
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = elixir-ls
 	makedepends = rebar3
 	depends = elixir
 	depends = erlang-nox
-	source = elixir-ls-0.21.1.tar.gz::https://github.com/elixir-lsp/elixir-ls/archive/v0.21.1.tar.gz
-	sha256sums = 711fdcd404e451b2be0fd90db00e1fe4c26f396000f79559d7fc9308f3ebaaa0
-	b2sums = 82d34f9d1619ce6bc7c26d3c1e585425c418b033de4bd99b0491ad56a83075bf24ac8f7c62f574db496ea5bd5695b7ce8a89793edfcbc1281a2489bed02af22c
+	source = elixir-ls-0.21.3.tar.gz::https://github.com/elixir-lsp/elixir-ls/archive/v0.21.3.tar.gz
+	sha256sums = 81a97816533910de5b8a4a7d73f597b6429af29001e2f931f1bbb147e8ca6593
+	b2sums = 18c0e5dc16d3fb678c11c7dc9ae356e8c82d55da4e98ef2d348b990a53814f56188ec2b9b88f158ce3643834a7ec80916a450da3bd2a63ac74bd15fec044009c
 
 pkgname = elixir-ls
