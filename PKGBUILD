@@ -1,9 +1,10 @@
-# Maintainer: Gabriel Guldner <gabriel at guldner dot eu>
+# Maintainer: nezu <nezu@nezu.cc>
+# Contributor: Gabriel Guldner <gabriel at guldner dot eu>
 
 pkgname=itext-rups-bin
 _pkgname=itext-rups
 pkgver=7.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='iText RUPS is a tool to view PDF structure in a Swing GUI.'
 provides=("$_pkgname")
 arch=('any')

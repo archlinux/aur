@@ -1,7 +1,7 @@
 pkgbase = itext-rups-bin
 	pkgdesc = iText RUPS is a tool to view PDF structure in a Swing GUI.
 	pkgver = 7.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/itext/i7j-rups/
 	arch = any
 	license = AGPL3
