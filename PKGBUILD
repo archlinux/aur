@@ -1,6 +1,6 @@
 # Maintainer: Peter Nokes <peter@peternokes.co.uk>
 
-pkgname=pillow_heif
+pkgname=python-pillow_heif
 author=bigcat88
 pkgver=0.16.0
 pkgrel=1
