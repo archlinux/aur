@@ -1,28 +1,48 @@
-# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Contributor: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=python-collada
-pkgver=0.7.2
-pkgrel=2
-pkgdesc="python library for reading and writing collada documents"
+_pkgname=pycollada
+pkgver=0.8
+pkgrel=1
+pkgdesc="A python COLLADA library"
 arch=(any)
 url="https://github.com/pycollada/pycollada"
-license=('BSD')
-depends=(python python-dateutil python-numpy python-lxml)
-makedepends=(python-setuptools)
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pycollada/pycollada/archive/v${pkgver}.tar.gz)
-sha512sums=('5c21155d52d54de62d192d4da0385bc7110ddd3962fe3e0e9e5904bbcd0e66cb1a95765c9996cdc5beef0edb30ee2123ae23b904d029be1c119e902d2fc4e7fe')
+license=(BSD-3-Clause)
+depends=(
+  python
+  python-dateutil
+  python-lxml
+  python-numpy
+  python-pillow
+  python-setuptools
+)
+makedepends=(
+  python-build
+  python-installer
+  python-wheel
+)
+checkdepends=(python-pytest)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('0ed3d422c2e287c187a6f744ad9db2d3bfef69f72d3666d037f1e01a245f5cbc')
+
+_archive="$_pkgname-$pkgver"
 
 build() {
-  cd "pycollada-${pkgver}"
-  python setup.py build
+  cd "$_archive"
+
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "pycollada-${pkgver}/collada"
-  PYTHONPATH=../ python -m unittest discover tests
+  cd "$_archive"
+
+  pytest
 }
 
 package() {
-  cd "pycollada-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "$_archive"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
 }
