@@ -1,21 +1,18 @@
 pkgbase = webos-dev-manager-bin
-	pkgdesc = Easy tool to manage developer mode and sideload applications on your webOS TV
-	pkgver = 1.12.5
+	pkgdesc = Device/DevMode Manager for webOS TV
+	pkgver = 1.99.3
 	pkgrel = 1
 	url = https://github.com/webosbrew/dev-manager-desktop
+	arch = aarch64
 	arch = x86_64
-	license = Apache
-	depends = fuse3
-	provides = webos-dev-manager
-	replaces = webos-dev-manager
-	replaces = webos-dev-manager-git
-	noextract = webos-dev-manager-1.12.5.AppImage
-	options = !strip
-	source_x86_64 = webos-dev-manager.png
-	source_x86_64 = webos-dev-manager.desktop
-	source_x86_64 = webos-dev-manager-1.12.5.AppImage::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.12.5/web-os-dev-manager_1.12.5_amd64.AppImage
-	sha256sums_x86_64 = 739240d83b15aa19e5d1b8b2589f50be7de3bec3a9c781e3cf97261fa3de4a22
-	sha256sums_x86_64 = ba969ef1cd5a46ce953620bc097c18c9d82432e6c23afef8f67ff620417b80a3
-	sha256sums_x86_64 = 3bfda1ffbf53c16248e1c2865eb7b7018af80eeb12230225afba70a776227e93
+	license = Apache-2.0
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = webos-dev-manager=1.99.3
+	conflicts = webos-dev-manager
+	source_aarch64 = webos-dev-manager-1.99.3-aarch64.deb::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.99.3/webos-dev-manager_1.99.3_arm64.deb
+	sha256sums_aarch64 = 6ff073e2e45b8db67cf5d00a82e3386fd12889d5bbd33b36ce83ac563aefd08b
+	source_x86_64 = webos-dev-manager-1.99.3-x86_64.deb::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.99.3/webos-dev-manager_1.99.3_amd64.deb
+	sha256sums_x86_64 = 0fa6d10a9a320eb9744e13e62fb5c7ad315655dba45c6e9b535170b2aa006897
 
 pkgname = webos-dev-manager-bin

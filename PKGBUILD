@@ -1,45 +1,33 @@
-# Maintainer: Jan Claussen <jan dot claussen10 at web dot de>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Jan Claussen <jan dot claussen10 at web dot de>
 pkgname=webos-dev-manager-bin
-_pkgname=webos-dev-manager
-pkgver=1.12.5
+pkgver=1.99.3
 pkgrel=1
-pkgdesc="Easy tool to manage developer mode and sideload applications on your webOS TV"
-arch=(x86_64)
+pkgdesc="Device/DevMode Manager for webOS TV"
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/webosbrew/dev-manager-desktop"
-license=('Apache')
-depends=("fuse3")
-options=(!strip)
-provides=("webos-dev-manager")
-replaces=("webos-dev-manager" "webos-dev-manager-git")
-source_x86_64=(
-	"webos-dev-manager.png"
-	"webos-dev-manager.desktop"
-	"${_pkgname}-${pkgver}.AppImage::https://github.com/webosbrew/dev-manager-desktop/releases/download/v${pkgver}/web-os-dev-manager_${pkgver}_amd64.AppImage"
+license=('Apache-2.0')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    'gtk3'
+    'webkit2gtk-4.1'
 )
-
-noextract=("${_pkgname}-${pkgver}.AppImage")
-
-sha256sums_x86_64=(
-	'739240d83b15aa19e5d1b8b2589f50be7de3bec3a9c781e3cf97261fa3de4a22'
-	'ba969ef1cd5a46ce953620bc097c18c9d82432e6c23afef8f67ff620417b80a3'
-	'3bfda1ffbf53c16248e1c2865eb7b7018af80eeb12230225afba70a776227e93'
-)
-
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+sha256sums_aarch64=('6ff073e2e45b8db67cf5d00a82e3386fd12889d5bbd33b36ce83ac563aefd08b')
+sha256sums_x86_64=('0fa6d10a9a320eb9744e13e62fb5c7ad315655dba45c6e9b535170b2aa006897')
+build() {
+    bsdtar -xf "${srcdir}/data."*
+}
 package() {
-
-	# Install AppImage
-	install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
-
-	# Symlink executable
-	mkdir -p "${pkgdir}/usr/bin"
-	ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
-
-	# Install icon
-	mkdir -p "${pkgdir}/usr/share/pixmaps/"
-	install -m 644 "${srcdir}/webos-dev-manager.png" "${pkgdir}/usr/share/pixmaps/"
-
-	# Install desktop file
-	echo "install webos-dev-manager.desktop"
-	mkdir -p "${pkgdir}/usr/share/applications/"
-	install -m 664 "${srcdir}/webos-dev-manager.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    for _icons in 32x32 128x128 256x256@2;do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps"
+    done
 }
