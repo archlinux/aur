@@ -1,6 +1,6 @@
 pkgbase = 86box-manager-git
 	pkgdesc = A (cross-platform) configuration manager for the 86Box emulator
-	pkgver = v1.7.6.0d.r5.ga045810
+	pkgver = 1.7.6.0d.r5.ga045810
 	pkgrel = 1
 	url = https://github.com/RetBox/86BoxManagerX
 	arch = x86_64

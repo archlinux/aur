@@ -4,7 +4,7 @@ _appname=86BoxManager
 _reponame=86BoxManagerX
 _basename=86box-manager
 pkgname=$_basename-git
-pkgver=v1.7.6.0d.r5.ga045810
+pkgver=1.7.6.0d.r5.ga045810
 pkgrel=1
 pkgdesc="A (cross-platform) configuration manager for the 86Box emulator"
 arch=('x86_64')
@@ -30,11 +30,8 @@ md5sums=('SKIP'
          '057671d91413133a13a89fd6525c9bc3')
 
 pkgver() {
-  cd "$srcdir/$_reponame"
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+	cd "$srcdir/$_reponame"
+	git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
