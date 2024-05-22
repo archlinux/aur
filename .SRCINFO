@@ -1,10 +1,10 @@
 pkgbase = libosmo-sccp
 	pkgdesc = Osmocom library for SCCP
 	pkgver = 1.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osmocom.org/projects/libosmo-sccp
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = libosmocore
 	depends = libosmo-netif
 	provides = libosmo-sigtran.so=9-64
