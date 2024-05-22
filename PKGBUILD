@@ -1,18 +1,31 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=docker-image-labeler
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Adds and removes labels from docker images'
 arch=('x86_64')
 url='https://github.com/dokku/docker-image-labeler'
 license=('BSD')
-source=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64.tgz"
-        'LICENSE')
-sha256sums=('8b1e8d62ab724c50847c6c159396b4c43ef5cdc7a81c94ef9219e36e9cba7ffe'
-            'e35631b792185502df2e65b8c3d4469351df0c6e31eed8e8548920f38b0fa203')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ee6fb89968d638911110190add662a84e719194ad98f4f273c36700975cef403')
+makedepends=('go')
+
+build() {
+  cd "${pkgname}-${pkgver}"
+
+  # Build executable
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-asmflags=-trimpath=/src -gcflags=-trimpath=/src"
+  go build -a -ldflags "-s -w -X main.Version=${pkgver}" -o "${pkgname}-build" .
+}
 
 package() {
-  install -Dm755 docker-image-labeler-amd64 "${pkgdir}/usr/bin/${pkgname}"
+  cd "${pkgname}-${pkgver}"
+
+  install -Dm755 "${pkgname}-build" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
