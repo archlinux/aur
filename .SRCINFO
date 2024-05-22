@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-violentmonkey-bin
 	pkgdesc = Violentmonkey provides userscripts support for browsers. It works on browsers with WebExtensions support.
-	pkgver = 2.16.0
+	pkgver = 2.19.0
 	pkgrel = 1
 	url = https://github.com/violentmonkey/violentmonkey
 	arch = any
@@ -9,5 +9,7 @@ pkgbase = firefox-extension-violentmonkey-bin
 	makedepends = curl
 	provides = firefox-extension-violentmonkey
 	conflicts = firefox-extension-violentmonkey
+	source = ext.xpi::https://github.com/violentmonkey/violentmonkey/releases/download/v2.19.0/Violentmonkey-webext-v2.19.0.zip
+	sha256sums = 860268a111673f3967fa2a51a15383b900cb6f4ee84fa6f166ce1133caba39e6
 
 pkgname = firefox-extension-violentmonkey-bin
