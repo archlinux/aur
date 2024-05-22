@@ -68,6 +68,7 @@ pkgbase = waterfox-kde
 	source = mach-depends.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/mach-depends.patch
 	source = rust-1.78.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/rust-1.78.patch
 	source = rust-1.78_p2.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/rust-1.78_p2.patch
+	source = pgo_py12.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/93a95779a069656459343d3965e0b1e7667d6945/waterfox-kde/patches/pgo_py12.patch
 	sha256sums = SKIP
 	sha256sums = ec32cbe949ed23bf7a61eef468a70a2e00e9fc448e4912c1200d110f5538d63a
 	sha256sums = 63cc269f591b2c6409cd7773f929bcb64f9acf3c9f5c1b8c1848c077056094fe
@@ -85,6 +86,7 @@ pkgbase = waterfox-kde
 	sha256sums = 105fa659e4242c1b08bda0457bfddc28762bdd4a33e9bda05940ab38d26b334c
 	sha256sums = ada7f4258fa82d16f900d804cb362db6dfc156f35b0b0cfada864131d813d0db
 	sha256sums = 95fd4efcf1d98193a5707892d15d4a1bb1debdbea4846ca9128fad64ad978686
+	sha256sums = 1f55e6ff5a45b3510eb218d1f1874374f0c1abacbd4e2a5319c9dee438f92846
 
 pkgname = waterfox-kde
 	optdepends = networkmanager: Location detection via available WiFi networks
