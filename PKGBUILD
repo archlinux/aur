@@ -1,7 +1,7 @@
 # Maintainer: Presence <dan465 at mail dot com>
 
 pkgname=pyobd
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="An OBD-II compliant car diagnostic tool"
 arch=('any')
@@ -13,7 +13,7 @@ source=(https://github.com/barracuda-fsh/pyobd/archive/refs/tags/v${pkgver}.tar.
         pyobd
         pyobd.desktop
         pyobd.png)
-sha256sums=('8ddf462c8069f41256567445667350d6b5cdb508f0b5974aea8c1a583037b3df'
+sha256sums=('a10a09113dc20e28938f58a54337ae69577405a4e01795441eb1dc0b5f08cdef'
             '78399115ad17dedfaf6d0391e8bc5cf11575b0dcab4beff8103bbabe094d998f'
             'cc7c1e48b320fad408a49e876ceb841c19cbd921ebe58a25966eb224daef7e22'
             '14d0d90dcda38c339dc8397f004923075f6d4fce37b7c8539021f4a77b3a86fd')
