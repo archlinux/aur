@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-keyboard
 	pkgdesc = Ayatana Indicator Keyboard Applet
-	pkgver = 24.2.0
+	pkgver = 24.5.0
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-keyboard
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = ayatana-indicator-keyboard
 	depends = libxkbcommon
 	optdepends = matekbd-keyboard-display: Needed for displaying keyboard layouts on MATE
 	optdepends = libgnomekbd: Needed for displaying keyboard layouts on non-MATE
-	source = ayatana-indicator-keyboard-24.2.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-keyboard/archive/24.2.0.tar.gz
-	md5sums = 991a2cc34d8b567507de217b8d06be11
+	source = ayatana-indicator-keyboard-24.5.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-keyboard/archive/24.5.0.tar.gz
+	md5sums = 82e253571ad55b73f50958e55e5c8d9c
 
 pkgname = ayatana-indicator-keyboard
