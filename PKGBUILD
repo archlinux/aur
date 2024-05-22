@@ -4,16 +4,17 @@
 _pkgname=cups-print-to-programme
 pkgname="${_pkgname}"
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual printer for cups which prints to a file and opens that with a programme the user can choose in the settings. For example, print to gimp."
 arch=('any')
 depends=(
+  'bash'
   'cups'
   'mariadb' # For the 'replace'-executable.
 )
 install=cups-programme.install
 url="http://felics.kettenbruch.de/software/cups-print-to-programme/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 source=(
   "cups-programme.sh"
   "cups-programme.conf"
