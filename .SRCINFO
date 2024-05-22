@@ -1,11 +1,11 @@
 pkgbase = toppler-upstream-levels-git
 	pkgdesc = Provides the upstream levels ("towers") of the game "toppler" as stand-alone mission files (one file mission per tower), to be played individually and to be loaded into the level editor.
 	pkgver = 1.3+8.r542.20220323.c8bf02b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/roever/toppler/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = libpng
 	makedepends = sdl2_mixer
