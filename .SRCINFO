@@ -1,7 +1,7 @@
 pkgbase = icu74
 	pkgdesc = International Components for Unicode library (legacy version 74).
 	pkgver = 74.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.icu-project.org/
 	arch = i686
 	arch = x86_64
@@ -37,9 +37,9 @@ pkgbase = icu74
 	conflicts = libicuuc.so=74
 	source = https://github.com/unicode-org/icu/releases/download/release-74-2/icu4c-74_2-src.tgz
 	source = https://github.com/unicode-org/icu/raw/main/LICENSE
-	md5sums = 342c8bebe704ec96df8bd6bd7040af1c
-	md5sums = SKIP
-	sha256sums = 5e4fb11d6a3e6b85afb55de8da8a71538f1d8fd64fce893986b37d60e5bb0091
-	sha256sums = SKIP
+	md5sums = 94c0b370f43123ea92b146ebea9c709d
+	md5sums = ce7acbc234de1fa02ab706fc47ca65df
+	sha256sums = 68db082212a96d6f53e35d60f47d38b962e9f9d207a74cfac78029ae8ff5e08c
+	sha256sums = 533baeb24c2ef84f58a0d08db3b63a6ed67699d272c0016719edba3f59a60222
 
 pkgname = icu74

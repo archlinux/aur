@@ -8,7 +8,7 @@ _pkgmainver=74
 _pkgminorver=2
 pkgname="${_pkgname}${_pkgmainver}"
 pkgver="${_pkgmainver}.${_pkgminorver}"
-pkgrel=4
+pkgrel=5
 pkgdesc="International Components for Unicode library (legacy version ${_pkgmainver})."
 arch=(
   'i686'
@@ -59,16 +59,10 @@ source=(
   #"https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz.asc"
   "https://github.com/unicode-org/icu/raw/main/LICENSE"
 )
-sha256sums=(
-  '5e4fb11d6a3e6b85afb55de8da8a71538f1d8fd64fce893986b37d60e5bb0091'
-  #'1ca528b0017bae639fec7e89e3f988d0fa7def3e2436e5f7f5f9ec7dec2d9ece'
-  'SKIP'
-)
-md5sums=(
-  '342c8bebe704ec96df8bd6bd7040af1c'
-  #'fc2fcf1924f4e2311c383cbb846aff19'
-  'SKIP'
-)
+md5sums=('94c0b370f43123ea92b146ebea9c709d'
+         'ce7acbc234de1fa02ab706fc47ca65df')
+sha256sums=('68db082212a96d6f53e35d60f47d38b962e9f9d207a74cfac78029ae8ff5e08c'
+            '533baeb24c2ef84f58a0d08db3b63a6ed67699d272c0016719edba3f59a60222')
 #validpgpkeys=(
 #  '4058F67406EAA6AB'
 #)
