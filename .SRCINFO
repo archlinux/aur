@@ -1,0 +1,12 @@
+pkgbase = lusc-c
+	pkgdesc = Linux UEFI STUB Creator - the easy way
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lennart1978/lusc
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	source = lusc-c-1.0.0.tar.gz::https://github.com/lennart1978/lusc/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = lusc-c
