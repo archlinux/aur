@@ -7,8 +7,8 @@ _shortname=ghostery
 # Warning: Don't forget to also change the first sha256sum hash with the
 # correct version below
 _lang=en-US
-pkgver=2024.03
-_builddate=2024-03-06
+pkgver=2024.05
+_builddate=2024-05-22
 pkgrel=1
 pkgdesc="Privacy aware web browser from Ghostery (binary release)."
 arch=('x86_64')
@@ -24,13 +24,13 @@ source=("https://github.com/ghostery/user-agent-desktop/releases/download/${_bui
         "https://raw.githubusercontent.com/ghostery/user-agent-desktop/master/LICENSE"
         "https://raw.githubusercontent.com/ghostery/ghostery-browser-linux-support/main/data/${_vendorname}.desktop"
         "ghostery.profile")
-sha256sums=('989123c5e8704bbf011746a5e70c989be9667654b2282bc4e6031cb019174dd4'
+sha256sums=('065eba574072de6ff3eb8409d005638851df3cc84a03c84d9bb322c2a2b9bf56'
             '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
             '9ee052fb8a96cecd4b9e6686a189cb84793c8e72c1d30bc2b6eddc9a30b93d72'
             'dbdfb7e32bb874d6b0c67b10524508620e2137662b7f928750f41f0df926040f')
-# Hash to use with en-US: 989123c5e8704bbf011746a5e70c989be9667654b2282bc4e6031cb019174dd4
-# Hash to use with de: 96d0e1cec66048b84b2a635d77a7be2e6a28924ed01d8f7f0fad6eedfb229bc5
-# Hash to use with fr: abb4071fe60253498d443a4697922f236e9fe4a2527b86c15f2743a07f6e965e
+# Hash to use with en-US: 065eba574072de6ff3eb8409d005638851df3cc84a03c84d9bb322c2a2b9bf56
+# Hash to use with de: 9731261570534c0881936e96c9fd51b62117f3a034d5d6902248d49aec552b19
+# Hash to use with fr: 40f0e9dbd01eb67d577f0bebd0cdc0f659ed6da5762e639ab8f7dc4e3ed295ad
 
 prepare() {
   # NOTE: the following line will be removed once related fix is integrated in
