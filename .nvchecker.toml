@@ -1,0 +1,5 @@
+[python-aerokit]
+source = "github"
+github = "jgressier/aerokit"
+use_max_tag = "true"
+prefix = "v"
