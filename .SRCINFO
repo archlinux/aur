@@ -1,0 +1,17 @@
+pkgbase = nomi-git
+	pkgdesc = Minecraft launcher powered by Rust
+	pkgver = 0.1.2.fixed.r55.g19ac2df
+	pkgrel = 1
+	url = https://github.com/Umatriz/nomi
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = bzip2
+	options = !lto
+	source = nomi-git::git+https://github.com/Umatriz/nomi.git#branch=main
+	sha256sums = SKIP
+
+pkgname = nomi-git
