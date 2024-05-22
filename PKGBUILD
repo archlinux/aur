@@ -2,14 +2,15 @@
 
 pkgname=oranda
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="generate beautiful landing pages for your projects"
 url="https://github.com/axodotdev/oranda"
 depends=(gcc-libs oniguruma tailwindcss)
 makedepends=(cargo)
 arch=(i686 x86_64)
 license=(APACHE MIT)
-# TODO: switch to github and pull the entire workspace to get things to build
+# Pulls the entire workspace because otherwise various paths in oranda's
+# workspace dependencies don't resolve right
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('de22d327b1f5ea674d16c50a7472d827c7f7a834bee747e1d15a4f82d3e6a42535c64657dac933035e46b3757785ee6f18fdd2f85c0caa6c16b80d10e322c967')
 
@@ -33,7 +34,7 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE-APACHE
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE-MIT
-  install -Dm0755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+  install -Dm0755 -t "$pkgdir/usr/bin" "target/dist/$pkgname"
 }
 
 # vi: filetype=sh shiftwidth=2 expandtab
