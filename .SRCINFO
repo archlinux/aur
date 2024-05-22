@@ -1,6 +1,6 @@
 pkgbase = pipxu
 	pkgdesc = Install and Run Python Applications in Isolated Environments using UV
-	pkgver = 1.17
+	pkgver = 1.18
 	pkgrel = 1
 	url = https://github.com/bulletmark/pipxu
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = pipxu
 	depends = python-platformdirs
 	depends = python-argcomplete
 	depends = uv>=0.1.33
-	source = pipxu-1.17.tar.gz::https://github.com/bulletmark/pipxu/archive/1.17.tar.gz
-	sha1sums = 50e03542f32b95f4dcae437e7ad8432ae2df99b6
+	source = pipxu-1.18.tar.gz::https://github.com/bulletmark/pipxu/archive/1.18.tar.gz
+	sha1sums = 50b392bc68fdc5bf26d064ed739685d979c30be1
 
 pkgname = pipxu

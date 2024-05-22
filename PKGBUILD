@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pipxu
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc="Install and Run Python Applications in Isolated Environments using UV"
 url="https://github.com/bulletmark/$pkgname"
@@ -11,7 +11,7 @@ depends=("python>=3.8" "python-filelock" "python-platformdirs"
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('50e03542f32b95f4dcae437e7ad8432ae2df99b6')
+sha1sums=('50b392bc68fdc5bf26d064ed739685d979c30be1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
