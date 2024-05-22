@@ -1,7 +1,7 @@
 pkgbase = riscv32-gnu-toolchain-glibc-bin
 	pkgdesc = GNU toolchain for riscv32 linux, including GCC.
 	pkgver = 2024.04.12
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/riscv-collab/riscv-gnu-toolchain
 	arch = x86_64
 	license = GPL2
