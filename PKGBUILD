@@ -6,7 +6,7 @@ _pkgbase=tuberry-color-picker
 pkgver=43
 _commit=ce661a3
 _sass_commit=adeed6c9b448521bf044bb153f0f29dc950c33ea
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple color picker for Gnome Shell'
 arch=(any)
 url='https://github.com/tuberry/color-picker'
@@ -23,8 +23,7 @@ prepare() {
 }
 
 build() {
-  arch-meson $_pkgbase-$_commit build -Dversion=${pkgver} -Dtarget=system
-  meson compile -C build
+  arch-meson $_pkgbase-$_commit build --reconfigure -Dversion=${pkgver} -Dtarget=system
 }
 
 package() {
