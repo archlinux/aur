@@ -1,0 +1,14 @@
+pkgbase = goradion-bin
+	pkgdesc = Terminal based online radio player
+	pkgver = v0.3.6
+	pkgrel = 1
+	url = https://github.com/agejevasv/goradion
+	arch = any
+	license = Unlicense
+	depends = mpv
+	provides = goradion
+	conflicts = goradion
+	source = goradion-v0.3.6-linux::https://github.com/agejevasv/goradion/releases/download/v0.3.6-build3/goradion-linux-amd64
+	b2sums = bba2cbdb47a8bb65437738e56de02ac562feb20cc49bf35056509ba97b1db93544c22d7aa12ec32366c320f7d26f7580315fd7b180f12400e08b717f4519cd59
+
+pkgname = goradion-bin
