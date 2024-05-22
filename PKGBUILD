@@ -1,8 +1,7 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 pkgname=riscv64-gnu-toolchain-glibc-llvm-bin
 pkgver=2024.04.12
-pkgrel=3
-pkgrel=1
+pkgrel=4
 pkgdesc="GNU toolchain for riscv64 linux, including GCC and LLVM."
 arch=('x86_64')
 url="https://github.com/riscv-collab/riscv-gnu-toolchain"
