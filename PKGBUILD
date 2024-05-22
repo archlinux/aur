@@ -1,10 +1,10 @@
 # Maintainer: Carlos Galindo <arch -at- cgj.es>
 # Maintainer: Darkfish Tech <arch at darkfish dot com dot au>
 
-pkgname=nextcloud-app-files_retention
 _appname=files_retention
-pkgver=1.17.2
-pkgrel=2
+pkgname=nextcloud-app-files_retention
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="Nextcloud app to delete files after a specified amount of days"
 arch=('any')
 url="https://github.com/nextcloud/files_retention"
@@ -12,7 +12,7 @@ license=('AGPL3')
 makedepends=('npm' 'yq' 'rsync')
 groups=('nextcloud-apps')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('f3685f3eb9750fdf2aeb2d4dbbe50a2bfb6841f00a7cd50b09bc689260da9949cbb8cb33bf11c5a9cb54e42e87744b3a2bee33bca5822462bf8c8739c20a4ebe')
+sha512sums=('bcaa34801dabc25e66abc1a977cd69f1f023ba018c7fcbf02d799c8950f51cb846c0c14390f343db0ffb6735eb2608f80f1896cec394e0e23e5a9e82920422c2')
 
 # Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
@@ -21,14 +21,14 @@ _get_nextcloud_versions() {
   echo "Min: ${_app_min_major_version}; Max: ${_app_max_major_version}"
 }
 
+_nextcloud_app_package() {
+    _get_nextcloud_versions
+    depends=("nextcloud>=${_app_min_major_version:-0}" "nextcloud<${_app_max_major_version:-999}")
+}
+# END Boilerplate nextcloud app version clamping
+
 prepare() {
     mv "${srcdir}/${_appname}-${pkgver}" "${srcdir}/${_appname}"
-
-    local _app_min_major_version
-    local _app_max_major_version
-    _get_nextcloud_versions
-
-    depends=("nextcloud>=${_app_min_major_version}" "nextcloud<${_app_max_major_version}")
 }
 
 build() {
@@ -43,4 +43,6 @@ package() {
     tar -x --no-same-owner -C "${pkgdir}/${_install_dir}" \
         -f "${srcdir}/${_appname}/build/artifacts/${_appname}.tar.gz"
     rm -rf "${pkgdir}/${_install_dir}/${_appname}/${_appname}-${pkgver}/"
+
+    _nextcloud_app_package
 }
