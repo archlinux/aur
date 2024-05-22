@@ -3,7 +3,7 @@
 _plug=muxtools
 pkgname=python-${_plug}-git
 pkgver=0.1.0.7.g4b1ca0d
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Package: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/muxtools'
@@ -12,7 +12,7 @@ depends=(
     'python-requests'
     # 'python-fontcollector' # package doesn't exist
     # 'python-ass' # package is broken
-    # 'python-wget' # package doesn't exist
+    'python-wget'
     'python-py7zr'
     'python-pymediainfo'
     'python-rich'
@@ -44,6 +44,5 @@ package() {
     cd "${_plug}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
