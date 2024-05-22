@@ -2,7 +2,7 @@
 
 _program_name="rapidgzip"
 pkgname="python-${_program_name}"
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="A parallelized gzip decoder with seek capability"
 arch=('x86_64')
@@ -21,8 +21,8 @@ makedepends=(
 	'cython'
 )
 _pkg_ext=".tar.gz"
-source=("${pkgname}-${pkgver}${_pkg_ext}::https://files.pythonhosted.org/packages/b6/ae/63d246aa22d2075267e406b9de88b145b8131908c39a8fafdf1edae1e76a/${_program_name}-${pkgver}${_pkg_ext}")
-sha256sums=('f7302c06e16f231bfee3ca39296215715e868d3fbcd48115c82900d218f1aa0a')
+source=("${pkgname}-${pkgver}${_pkg_ext}::https://files.pythonhosted.org/packages/18/96/4b47bcdeea98e25ce6a094a81abe3cdfc8b58c5853f7ab8ad75688492221/${_program_name}-${pkgver}${_pkg_ext}")
+sha256sums=('f3836269a381c3a92a07055f55372769e6d16901f96e0f49bf1a21c109186409')
 
 provides=("rapidgzip")
 
