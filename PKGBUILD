@@ -17,7 +17,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-s
              'git')
 replaces=("waterfox-g4-kpe" "waterfox-g3-kpe" "waterfox-g-kpe")
 options=('!emptydirs' '!makeflags' 'zipman' '!lto')
-_filesrev=93a95779a069656459343d3965e0b1e7667d6945
+_filesrev=1e1c4654756af73031f4ac3d568253b9ca302a52
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-kde
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$_pkgver"
         "waterfox.desktop::$_filesurl/waterfox.desktop"
