@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-bluetooth
 	pkgdesc = Ayatana system bluetooth indicator
-	pkgver = 23.10.0
+	pkgver = 24.5.0
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ayatana-indicator-bluetooth
 	depends = blueman
 	depends = libayatana-common>=0.9.9
 	options = !emptydirs
-	source = ayatana-indicator-bluetooth-23.10.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth/archive/23.10.0.tar.gz
-	md5sums = 3a622c799f175472416e9be64cc409e6
+	source = ayatana-indicator-bluetooth-24.5.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth/archive/24.5.0.tar.gz
+	md5sums = 2ec07d43b33409b7b960340aa6e4924d
 
 pkgname = ayatana-indicator-bluetooth
