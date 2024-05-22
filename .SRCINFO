@@ -1,11 +1,12 @@
 pkgbase = anythingllm-desktop-bin
 	pkgdesc = The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop.
 	pkgver = 1.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://useanything.com/
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
+	makedepends = asar
 	depends = electron26
 	depends = nodejs
 	depends = python
