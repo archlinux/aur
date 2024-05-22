@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 pkgname=buildbox
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of tools for remote worker build execution"
 arch=(x86_64)
 url="https://buildgrid.build"
@@ -24,13 +24,14 @@ makedepends=(
   'git'
   'gmock'
   'gtest'
+  'net-tools'
   'ninja'
   'nlohmann-json'
   'tomlplusplus'
 )
 provides=('buildbox-casd' 'buildbox-fuse' 'buildbox-run-bubblewrap')
 conflicts=('buildbox-casd' 'buildbox-fuse' 'buildbox-run-bubblewrap')
-source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox#tag=${pkgver}")
+source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
