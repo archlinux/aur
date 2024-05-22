@@ -6,7 +6,7 @@
 pkgname='neovim-telescope'
 _projname='telescope.nvim'
 pkgver='0.1.7'
-pkgrel=1
+pkgrel=2
 pkgdesc='Extendable fuzzy search for Neovim'
 arch=('any')
 url="https://github.com/nvim-telescope/telescope.nvim"
@@ -14,11 +14,14 @@ license=('MIT')
 groups=('neovim-plugins')
 depends=('neovim' 'neovim-plenary')
 optdepends=(
-  'bat: for inline previews'
-  'fd'
+  'bat: alternative inline previews'
+  'fd: finder'
+  'neovim-tree-sitter: finder and preview'
+  'ripgrep: live_grep(), grep_srting(), find_files()'
+  'vim-devicons: icons'
+)
+checkdepends=(
   'ripgrep'
-  'neovim-tree-sitter'
-  'vim-devicons'
 )
 conflicts=("${pkgname}-git")
 source=("${_projname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
