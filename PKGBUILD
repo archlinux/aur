@@ -1,43 +1,82 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
-# Contributor: gspu <bssbk2455[at]gmail[dot]com>
-# Contributor: Previous maintainer Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
-# Contributor: Limao Luo <luolimao+AUR@gmail.com>
-# Contributor: TuxSpirit <tuxspirit@archlinux.fr>
+# Maintainer:
 
-pkgname=peazip-gtk2
-pkgver=7.3.0
+_pkgname="peazip"
+pkgname="$_pkgname-gtk2"
+pkgver=9.8.0
 pkgrel=1
-pkgdesc="Linux file manager and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility
-"
+pkgdesc='Cross-platform file and archive manager'
+url="https://github.com/peazip/PeaZip"
+license=('LGPL-3.0-or-later')
 arch=('i686' 'x86_64')
-url='http://www.peazip.org/peazip-linux.html'
-license=('GPL3')
-depends=('lib32-curl'
-         'lib32-gmp4'
-         'lib32-gtk2'
-         'balz'
-         'paq8o'
-         'p7zip'
-         'upx'
-         'zpaq')
-options=('!emptydirs')
-optdepends=('quad: A ROLZ-based file compressor' 
-            'unace: Support for ace files'
-            'arc: Support for arc files')
+
+depends=(
+  '7-zip'
+  'brotli'
+  'gtk2'
+  'zstd'
+)
+makedepends=(
+  'git'
+  'lazarus'
+)
+optdepends=(
+  'paq8o'
+  'quad'
+  'unace'
+  'upx'
+  'zpaq'
+)
+
 provides=('peazip')
-conflicts=('peazip'
-           'peazip-gtk2-build'
-           'peazip-qt'
-           'peazip-qt-build'
-           'peazip-qt-opensuse-latest')
-source=("${pkgname}-${pkgver}.rpm::https://sourceforge.net/projects/peazip/files/${pkgver}/peazip-${pkgver}.LINUX.GTK2-1.x86_64.rpm")
-sha256sums=('c32e90773a2c731bc82f40fa8c63e6e507979ba68e930b446a273bfb274bddfe')
+conflicts=('peazip')
+
+options=('!strip')
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
+sha256sums=('SKIP')
+
+build() {
+  cd "$_pkgsrc/peazip-sources/dev"
+  lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=gtk2 --add-package metadarkstyle/metadarkstyle.lpk
+  lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=gtk2 --build-all project_pea.lpi
+  lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=gtk2 --build-all project_peach.lpi
+}
 
 package() {
-  cp -aR usr/ "${pkgdir}/"
-  mv "${pkgdir}/usr/share/PeaZip" "${pkgdir}/usr/share/${pkgname}"
-  rm "${pkgdir}/usr/bin/peazip"
-  ln -s /usr/share/peazip-gtk2/peazip "${pkgdir}/usr/bin/peazip"
-  rm -rf "${pkgdir}/usr/lib"
-  chmod --recursive 755 "${pkgdir}/usr/share/peazip-gtk2/FreeDesktop_integration"
+  depends+=('hicolor-icon-theme')
+
+  # binary
+  install -Dm755 "$_pkgsrc/peazip-sources/dev/peazip" "$pkgdir/usr/lib/peazip/peazip"
+  install -Dm755 "$_pkgsrc/peazip-sources/dev/pea" "$pkgdir/usr/lib/peazip/pea"
+
+  # icon
+  cd "$srcdir/$_pkgsrc/peazip-sources/res/share/icons"
+  install -Dm644 peazip_{7z,rar,zip}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes"
+  install -Dm644 peazip_{add,extract,browse,convert}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/actions"
+
+  # desktop
+  cd "$srcdir/$_pkgsrc/peazip-sources/res/share/batch/freedesktop_integration"
+  install -Dm644 peazip.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  install -Dm644 peazip.desktop -t "$pkgdir/usr/share/applications"
+
+  # res
+  cd "$srcdir/$_pkgsrc/peazip-sources/res/share"
+  install -d "$pkgdir/usr/share/peazip"
+  cp -r icons lang themes "$pkgdir/usr/share/peazip/"
+  install -d "$pkgdir/usr/lib/peazip/res"
+  ln -sf /usr/share/peazip "$pkgdir/usr/lib/peazip/res/share"
+
+  # 3rdprart binary
+  install -d "$pkgdir/usr/lib/peazip/res/bin"
+  install -d "$pkgdir/usr/lib/peazip/res/bin/7z"
+  ln -sf /usr/bin/7zz "$pkgdir/usr/lib/peazip/res/bin/7z/7z"
+  for _file in brotli/brotli lpaq/lpaq8 paq/paq8o quad/bcm unace/unace upx/upx zpaq/zpaq zstd/zstd; do
+    install -d "$pkgdir/usr/lib/peazip/res/bin/$(dirname $_file)/"
+    ln -sf "/usr/bin/$(basename $_file)" "$pkgdir/usr/lib/peazip/res/bin/$_file"
+  done
+
+  install -d "$pkgdir"/usr/bin/
+  ln -sf /usr/lib/peazip/peazip "$pkgdir/usr/bin/peazip"
+  ln -sf /usr/lib/peazip/pea "$pkgdir/usr/bin/pea"
 }
