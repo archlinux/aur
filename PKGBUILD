@@ -23,9 +23,9 @@ source=("https://github.com/tsukinaha/tsukimi/releases/download/v${pkgver}/tsuki
 	"tsukimi.desktop"
 	"tsukimi.png")
 sha256sums=('bdbeb07e6b66eb22e896b8865d7aa22cb5db3cef0b190a8ae889b803ae1d0d32'
-            '7091b3602cde7454d1ef7f481696b4838697b60f353eab1b0196045d304a63a1'
-            'd12dc777bbb05ed92d75f8d36e453b651e12596ead6e297386419a24d051a0a3'
-            '04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893')
+	'SKIP'
+	'd12dc777bbb05ed92d75f8d36e453b651e12596ead6e297386419a24d051a0a3'
+	'04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893')
 
 package() {
 	install -Dm0755 -t "${pkgdir}/usr/bin/" "tsukimi"
