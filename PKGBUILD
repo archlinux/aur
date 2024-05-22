@@ -4,7 +4,7 @@
 # Maintainer: taoky <me@taoky.moe>
 
 pkgname=autocorrect-bin
-pkgver=2.9.4
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="A linter and formatter for help you improve copywriting, to correct spaces, punctuations between CJK (Chinese, Japanese, Korean)."
 arch=("x86_64" "aarch64")
@@ -18,8 +18,8 @@ source_x86_64=("$pkgname-x86_64::https://github.com/huacnlee/autocorrect/release
 source_aarch64=("$pkgname-aarch64::https://github.com/huacnlee/autocorrect/releases/download/v$pkgver/autocorrect-linux-arm64.tar.gz")
 
 sha256sums=('7015e54d13cf39b8d6ceb60209849c019ed8effc564abb5a77685c75ae76b5be')
-sha256sums_x86_64=('c4bf7a8af29cee8843b23f9d05456b895782b36bcb0efbe64383ef155d6e71dd')
-sha256sums_aarch64=('02ea7373782a4fd10df17bf1b47d05a174c896ddc2d896814ea82ed93e5c0538')
+sha256sums_x86_64=('0dde19d33d9f0fe59b9baccb4acd28a4ed016a56a710962f2eb13b15d6553197')
+sha256sums_aarch64=('e0d0df3c1d748e66926a3520f9dcff06b3bd47e356cc154f95a21cb9b31d5fe5')
 
 package() {
 	install -Dm755 "autocorrect" -t "${pkgdir}/usr/bin/"
