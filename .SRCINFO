@@ -1,13 +1,14 @@
 pkgbase = python-pillow_heif
 	pkgdesc = Python bindings to libheif for working with HEIF images and plugin for Pillow.
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bigcat88/pillow_heif
 	arch = any
-	license = MIT
+	license = BSD-3
 	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
-	depends = python-setuptools
 	depends = libheif
 	depends = x265
 	depends = aom
