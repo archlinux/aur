@@ -2,12 +2,12 @@
 
 pkgname=ksud
 pkgver=0.9.4
-pkgrel=5
+pkgrel=6
 pkgdesc='KernelSU userspace cli'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://kernelsu.org/'
 license=('GPL-3.0-or-later')
-makedepends=('cargo')
+makedepends=('cargo' 'unzip')
 _srcname='KernelSU'
 source=("$_srcname-$pkgver.tar.gz::https://github.com/tiann/$_srcname/archive/v$pkgver.tar.gz"
         "https://github.com/tiann/$_srcname/releases/download/v$pkgver/android12-5.10_kernelsu.ko"

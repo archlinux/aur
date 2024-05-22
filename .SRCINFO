@@ -1,7 +1,7 @@
 pkgbase = ksud
 	pkgdesc = KernelSU userspace cli
 	pkgver = 0.9.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://kernelsu.org/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = ksud
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
+	makedepends = unzip
 	source = KernelSU-0.9.4.tar.gz::https://github.com/tiann/KernelSU/archive/v0.9.4.tar.gz
 	source = https://github.com/tiann/KernelSU/releases/download/v0.9.4/android12-5.10_kernelsu.ko
 	source = https://github.com/tiann/KernelSU/releases/download/v0.9.4/android13-5.10_kernelsu.ko
