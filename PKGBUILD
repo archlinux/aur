@@ -1,16 +1,17 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=oranda
-pkgver=0.2.0
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="generate beautiful landing pages for your projects"
 url="https://github.com/axodotdev/oranda"
-depends=('gcc-libs')
-makedepends=('cargo')
-arch=('i686' 'x86_64')
+depends=(gcc-libs oniguruma tailwindcss)
+makedepends=(cargo)
+arch=(i686 x86_64)
 license=(APACHE MIT)
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('07bcb3be11aed0831355222a83ce01e3686721e6f18113fda03250bb47087809a800ea5e10b42fc938050441625de40cf2832ecf5a6dae210b6c37df534b8294')
+# TODO: switch to github and pull the entire workspace to get things to build
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('de22d327b1f5ea674d16c50a7472d827c7f7a834bee747e1d15a4f82d3e6a42535c64657dac933035e46b3757785ee6f18fdd2f85c0caa6c16b80d10e322c967')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -22,7 +23,9 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  export RUSTONIG_SYSTEM_LIBONIG=yes
+  export ORANDA_USE_TAILWIND_BINARY=true
+  cargo build --frozen --profile dist --all-features
 }
 
 package() {
