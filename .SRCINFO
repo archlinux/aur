@@ -1,6 +1,6 @@
 pkgbase = lib32-sdl3-git
 	pkgdesc = A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)
-	pkgver = 3.1.1.r50.g132cef91c
+	pkgver = 3.1.2.r242.g86b2f441c
 	pkgrel = 1
 	url = https://www.libsdl.org
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = lib32-sdl3-git
 	makedepends = lib32-pipewire
 	makedepends = lib32-libdecor
 	makedepends = git
+	depends = sdl3
 	depends = lib32-glibc
 	depends = lib32-libxext
 	depends = lib32-libxrender

@@ -3,7 +3,7 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=lib32-sdl3-git
-pkgver=3.1.1.r50.g132cef91c
+pkgver=3.1.2.r242.g86b2f441c
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64' 'i686')
@@ -35,6 +35,7 @@ build() {
 	export LDFLAGS+=" -m32"
 	export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 	cmake -S SDL -B build -G Ninja \
+	-D CMAKE_BUILD_TYPE=None \
 	-D SDL_HIDAPI_LIBUSB=ON \
 	-D CMAKE_INSTALL_PREFIX=/usr \
 	-D CMAKE_INSTALL_LIBDIR=lib32 \
