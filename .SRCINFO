@@ -1,0 +1,23 @@
+pkgbase = python-muxtools-git
+	pkgdesc = Python Package: muxtools (GIT version)
+	pkgver = 0.1.0.7.g4b1ca0d
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/muxtools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-py7zr
+	depends = python-pymediainfo
+	depends = python-rich
+	depends = python-pyparsebluray-git
+	provides = python-muxtools
+	conflicts = python-muxtools
+	source = muxtools::git+https://github.com/Jaded-Encoding-Thaumaturgy/muxtools.git
+	sha256sums = SKIP
+
+pkgname = python-muxtools-git
