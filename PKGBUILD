@@ -1,10 +1,10 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
 pkgbase=postgresql15
-pkgver=15.6
+pkgver=15.7
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=2
+pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         pgenv.sh
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch)
-sha256sums=('8455146ed9c69c93a57de954aead0302cafad035c2b242175d6aa1e17ebcb2fb'
+sha256sums=('a46fe49485ab6385e39dabbbb654f5d3049206f76cd695e224268729520998f7'
             'fe19a0f68a9f10435fe09efbe7407de8cbe9bf16686d63524778e90dad67f863'
             '8426f2ad548fb00452b340a631ab070899c0d44e7a88c8c3eec087c75ce32e6e'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
