@@ -1,7 +1,7 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 pkgname=riscv32-gnu-toolchain-elf-llvm-bin
 pkgver=2024.04.12
-pkgrel=2
+pkgrel=3
 pkgrel=1
 pkgdesc="GNU toolchain for riscv32 ELF, including GCC and LLVM."
 arch=('x86_64')
@@ -24,14 +24,21 @@ sha512sums=(
   "c1d3b81b5c09ebcec447ffeaf2850c8636daa8d10f865ce004f183bc41aa71f5219c13322b2ba14d43a9ab95270aae682e6fb84bd444889953bc42ee4660ecb2"
 )
 _toolchain_prefix='riscv32-unknown-elf'
+_toolchain_prefix_alt='riscv32-unknown-unknown-elf'
 
 package() {
   install -dm755 "${pkgdir}"/opt/riscv32-gnu-toolchain-elf-llvm-bin "${pkgdir}"/usr/bin "${pkgdir}"/usr/lib/gcc
   cp -pR "${srcdir}"/riscv/* "${pkgdir}"/opt/riscv32-gnu-toolchain-elf-llvm-bin
-  ln -s /opt/riscv32-gnu-toolchain-elf-llvm-bin "${pkgdir}"/usr/
+  ln -s /opt/riscv32-gnu-toolchain-elf-llvm-bin/"${_toolchain_prefix}" "${pkgdir}"/usr
   for f in "${srcdir}"/riscv/bin/"${_toolchain_prefix}"-*; do
     f="$(basename "${f}")"
     ln -s /opt/riscv32-gnu-toolchain-elf-llvm-bin/bin/"${f}" "${pkgdir}"/usr/bin
   done
   ln -s /opt/riscv32-gnu-toolchain-elf-llvm-bin/lib/gcc/"${_toolchain_prefix}" "${pkgdir}"/usr/lib/gcc
+
+  # Also provide target quadruplet to prevent confusing clang
+  ln -s "${_toolchain_prefix}" "${pkgdir}"/usr/"${_toolchain_prefix_alt}"
+  ln -s "${_toolchain_prefix}" "${pkgdir}"/opt/riscv32-gnu-toolchain-elf-llvm-bin/"${_toolchain_prefix_alt}"
+  ln -s "${_toolchain_prefix}" "${pkgdir}"/usr/lib/gcc/"${_toolchain_prefix_alt}"
+  ln -s "${_toolchain_prefix}" "${pkgdir}"/opt/riscv32-gnu-toolchain-elf-llvm-bin/lib/gcc/"${_toolchain_prefix_alt}"
 }
