@@ -2,7 +2,7 @@
 
 pkgname=dyna-git
 pkgver=0.1.1.r13.g96545ad
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert a colorscheme from one terminal emulator to another.'
 arch=('x86_64')
 url='https://git.sr.ht/~grtcdr/dyna'
@@ -20,14 +20,15 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-*}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname%-*}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release
+  cargo build --frozen --release --all-features
 }
 
 package() {
