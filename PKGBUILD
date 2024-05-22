@@ -1,8 +1,9 @@
 # Maintainer: Daniel Menelkir (dmenelkir at gmail dot com)
 
 pkgname=fuse-emulator-sdl-git
-pkgver=1.7.0.5114e2
-pkgrel=1
+pkgver=1.6.0.r76.gd9dc145
+pkgrel=2
+epoch=1
 pkgdesc="ZX Spectrum emulator (SDL GUI)."
 arch=('i686' 'x86_64')
 url="http://fuse-emulator.sourceforge.net/fuse.php"
@@ -15,6 +16,12 @@ source=("fuse-emulator::git+https://git.code.sf.net/p/fuse-emulator/fuse"
 sha512sums=("SKIP"
 				"16f0993e6237252893e4624733f6e609a02a7cd9a726976b6dbf3ef1f08b3bda36c5ebadb07ba5283326dce1f71be10ce1ef6601262aa11e1ddc94e958ab63ac"
 				"f1a3b0920092b5d55d5d021cfa16331d656114eaf0dabff065f8adc727d1642a2dce788c0fd2c7385ff843720da1a90e8b8a7d1858786d0bd882fc4462cba421")
+
+pkgver() {
+  cd "fuse-emulator"
+  git describe --long --tags --abbrev=7 | sed 's/^fuse-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 
 build() {
 	cd "fuse-emulator"
