@@ -128,4 +128,15 @@ package() {
     # /usr/share/plymouth/themes/steamos/*
     install -dm755 "${pkgdir}/usr/share/plymouth/themes/steamos"
     install -m644 -t "${pkgdir}/usr/share/plymouth/themes/steamos" "${source_dir}/share/plymouth/themes/steamos"/*
+
+    # 创建软链接解决重命名兼容
+    # bin
+    cd "${pkgdir}/usr/bin"
+    ln -s sk-first-setup sk-first-run
+    ln -s sk-chos-tool-update skt-update
+
+    # systemd/system
+    cd "${pkgdir}/usr/lib/systemd/system"
+    ln -s sk-setup-kernel-options.service sk-update-boot-entry.service
+    ln -s sk-setup-next-boot.service sk-auto-keep-boot-entry.service
 }
