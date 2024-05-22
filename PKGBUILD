@@ -24,7 +24,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DUNITTESTS=ON -DENABLE_MKL_PARDISO=OFF \
         -DDLONG=OFF \
-        -DPRINTING=OFF
+        -DPRINTING=OFF \
+        -Wno-dev
     cmake --build build
 }
 
