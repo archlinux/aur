@@ -1,5 +1,4 @@
 .idea/
 pkg/
-*.pkg.tar.xz
 src/
-*.tar.gz
+*.tar.*
