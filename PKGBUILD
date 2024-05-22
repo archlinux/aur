@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-display"
-pkgver="24.4.1"
+pkgver="24.5.0"
 pkgrel="1"
 pkgdesc="Ayatana Indicator Display"
 arch=("i686" "x86_64" "pentium4")
@@ -10,7 +10,7 @@ license=("GPL-3.0-or-later")
 depends=("xsct" "libayatana-common" "geoclue" "hicolor-icon-theme" "glib2" "gcc-libs" "glibc" "dconf" "accountsservice")
 makedepends=("intltool" "cmake" "cmake-extras" "systemd" "properties-cpp")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("0024e343b41b4f702b55c8fb2bc05647")
+md5sums=("9e8c383a0e763325a0da94918f1fb4c3")
 conflicts=("redshift")
 
 build()
