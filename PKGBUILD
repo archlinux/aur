@@ -7,13 +7,13 @@ pkgname="${_pkgname}"
 epoch=0
 _pkgver=1.0.0
 pkgver="${_pkgver}"
-pkgrel=6
+pkgrel=7
 pkgdesc="Printer filter for Pentax PocketJet 200 and PocketJet II printers. Needed in addition to the PPDs/ files that come with foomatic-db/ CUPS. Includes printer documentation."
 arch=('i686' 'x86_64')
-url="http://ww1.pragana.net/gdiprinters.html#pentaxpj"
+url="http://web.archive.org/web/20191225160215/http://ww1.pragana.net/gdiprinters.html#pentaxpj"
 license=(
-  'GPL'
-  'custom:proprietary'
+  'GPL-2.0-only'
+  'LicenseRef-custom:proprietary'
 )
 
 # groups=(
@@ -21,7 +21,9 @@ license=(
 #        )
 
 depends=(
+  "bash"
   "ghostscript"
+  "glibc"
 )
 
 makedepends=(
@@ -55,7 +57,7 @@ install="${_pkgname}.install"
 _target="pentaxpj-${_pkgver}.tar.gz"
 
 source=(
-  "${_target}::http://ww1.pragana.net/pentaxpj-${_pkgver}.tar.gz"
+  "${_target}::http://web.archive.org/web/20160517131113if_/http://ww1.pragana.net/pentaxpj-${_pkgver}.tar.gz"
   "pentaxpj.conf.a4"
   "pentaxpj.conf.letter"
   "Pentax_PocketJet_II_and_PocketJet_200_users_guide.pdf::http://web.archive.org/web/20071017093018/http://www.megatron.fr/imprimantes/pdf/manuels/thermal/pentax/doc_pocketjet_II-200_user_guide_e.pdf"
@@ -71,6 +73,8 @@ sha256sums=(
   "348c4ba58e0dfaf49db9bee73f55f6ac049d084e9cc19df81950c0cf1f65eecc"
   "385590851fdc8464f0cb844f0d93e2b625ee46772ce8fad9d287d640db7e9fc2"
 )
+
+options+=('emptydirs')
 
 build() {
   cd "${srcdir}/pentaxpj"
@@ -96,6 +100,8 @@ package() {
   _docdir="${pkgdir}/${_docdirbase}"
   _licensedirbase="/usr/share/licenses/${pkgname}"
   _licensedir="${pkgdir}/${_licensedirbase}"
+  _pixmapdirbase="/usr/share/pixmaps"
+  _pixmapdir="${pkgdir}/${_pixmapdirbase}"
   
   cd "${_srcdir}"
   
@@ -109,7 +115,9 @@ package() {
     chmod 754 "${_instdir}"/pentaxsetup
     chmod 755 "${_instdir}"/{pentaxpj,pentaxpj_sh}
 
-    install -v -D -m644 README "${_docdir}"/README
+    install -v -D -m644 README "${_docdir}"/README#
+
+    install -v -D -m644 pentax.xpm "${_pixmapdir}/pentaxpj.xpm"
   )
   
   for _docfile in pentaxpj.conf.* Pentax_PocketJet_II_and_PocketJet_200_users_guide.pdf; do
