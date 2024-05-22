@@ -2,7 +2,7 @@
 pkgname=karbonized-bin
 pkgver=1.12.0
 _electronversion=25
-pkgrel=6
+pkgrel=7
 pkgdesc="Awesome Image Generator for Code Snippets & Screenshots"
 arch=('x86_64')
 url="https://github.com/yossTheDev/karbonized"
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -20,11 +20,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ec525f543d01b865a12896eed63c1334fb4acc2178cc68af009bc314a8de8a62'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
