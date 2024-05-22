@@ -33,5 +33,5 @@ check() {
 
 package() {
   cd "${_dir}"
-  install -Dm755 "$pkgname" "$pkgdir/usr/local/bin/$pkgname"
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
