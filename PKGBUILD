@@ -1,10 +1,10 @@
 # Maintainer: k1f0 <generic at k1f0.mozmail.com>
 
 pkgname=rwpspread-git
-pkgver=r346.839527b
+pkgver=r354.eea96c5
 pkgrel=1
 pkgdesc='Multi-Monitor Wallpaper Utility'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/0xk1f0/rwpspread'
 license=('GPL-3.0-only')
 makedepends=('cargo' 'git' 'gzip')
