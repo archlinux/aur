@@ -3,8 +3,8 @@
 
 pkgname=gnome-shell-extension-color-picker
 _pkgbase=tuberry-color-picker
-pkgver=38
-_commit=455de8f
+pkgver=43
+_commit=ce661a3
 _sass_commit=adeed6c9b448521bf044bb153f0f29dc950c33ea
 pkgrel=1
 pkgdesc='Simple color picker for Gnome Shell'
@@ -15,11 +15,11 @@ depends=('dconf' 'gnome-shell')
 makedepends=('meson' 'sassc')
 source=("${_pkgbase}-${_commit}.tar.gz::${url}/tarball/${_commit}"
         "gnome-shell-sass-${_sass_commit}.tar::https://gitlab.gnome.org/GNOME/gnome-shell-sass/-/archive/${_sass_commit}/.tar")
-sha256sums=('558f5338a87f926d965cfd9bf8f26f48223367b53300b17c2d41e30bfd83023f'
+sha256sums=('58a5b2a4f1699171b5e20432daa8d3688e5d3f52a6b57eacf24a823aece46a10'
             'a7ce4d4aec881a2f5505f13506eb5139f1ab3cc1192be916c8ad59686c3b6919')
 
 prepare() {
-  cp -r gnome-shell-sass-${_sass_commit}/. ${_pkgbase}-${_commit}/res/styles/gnome-shell-sass
+  cp -r gnome-shell-sass-${_sass_commit}/. ${_pkgbase}-${_commit}/res/style/gnome-shell-sass
 }
 
 build() {
