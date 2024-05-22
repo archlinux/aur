@@ -1,6 +1,6 @@
 pkgbase = python-shenfun
 	pkgdesc = High performance computational platform in Python for the spectral Galerkin method
-	pkgver = 4.1.4
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/spectralDNS/shenfun
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = python-shenfun
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = cython0
+	makedepends = cython
 	depends = python-mpi4py-fft
 	depends = python-scipy
-	source = shenfun-4.1.4.tar.gz::https://github.com/spectralDNS/shenfun/archive/4.1.4.tar.gz
-	sha512sums = 7b64adefbf90bb3dd7295fe8952e7528ff59f4033b1366db2dca84a3303dec80b8ec5af3d3fe3bc172661b87b10e336fb14522976023a4657789ed971592cd90
+	source = shenfun-4.2.0.tar.gz::https://github.com/spectralDNS/shenfun/archive/4.2.0.tar.gz
+	sha512sums = 9cbc31c23099e98c99b561cd75f619100ec264a129b67a8dbb3fb8f0817334d36b1db396d22ba9a102cff74fe16923fa5b18d16e8d220ca7600d24be176382a3
 
 pkgname = python-shenfun

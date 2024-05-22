@@ -1,0 +1,4 @@
+[python-shenfun]
+source = "github"
+github = "spectralDNS/shenfun"
+use_latest_release = "true"
