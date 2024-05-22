@@ -7,7 +7,7 @@ pkgdesc="MATLAB and Python toolbox of high-performance GPU primitives for 2D and
 arch=(x86_64)
 url="https://github.com/astra-toolbox/astra-toolbox"
 license=(GPL3)
-depends=(python-numpy python-scipy python-six boost)
+depends=(python-numpy python-scipy python-six boost 'python>=3.12')
 makedepends=(python-setuptools cython)
 source=(https://github.com/astra-toolbox/astra-toolbox/archive/refs/tags/v${pkgver}.tar.gz
 	fix-python-install-prefix.patch
@@ -37,6 +37,6 @@ package() {
   cd build/linux
   make install
 # ugly fix to make 'import astra' work
-  cd "$pkgdir"/usr/lib/python3.11/site-packages
-  ln -s astra_toolbox-2.1.0-py3.11-linux-x86_64.egg/astra/ astra
+  cd "$pkgdir"/usr/lib/python3.12/site-packages
+  ln -s astra_toolbox-2.1.0-py3.12-linux-x86_64.egg/astra/ astra
 }

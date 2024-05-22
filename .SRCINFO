@@ -11,6 +11,7 @@ pkgbase = python-astra-toolbox
 	depends = python-scipy
 	depends = python-six
 	depends = boost
+	depends = python>=3.12
 	source = https://github.com/astra-toolbox/astra-toolbox/archive/refs/tags/v2.1.0.tar.gz
 	source = fix-python-install-prefix.patch
 	source = Fix-numpy.int-deprecation.patch
