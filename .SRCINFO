@@ -1,0 +1,17 @@
+pkgbase = brother-hll2460dw
+	pkgdesc = CUPS driver for HL-L2460DW model.
+	pkgver = 4.1.0_1
+	pkgrel = 1
+	url = http://support.brother.com/g/s/id/linux/en
+	arch = i686
+	arch = x86_64
+	license = custom:Brother
+	depends = glibc
+	depends = bash
+	depends = perl
+	optdepends = cups: printing support
+	optdepends = ghostscript
+	source = http://download.brother.com/welcome/dlf105969/hll2460dwpdrv-4.1.0-1.i386.rpm
+	sha256sums = fbf572819a0e5e4869bd338604952ed5cca3192cea6aab5529ca4ddb931bec05
+
+pkgname = brother-hll2460dw
