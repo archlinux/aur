@@ -1,8 +1,8 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-libass
-pkgver=0.17.1
-pkgrel=2
+pkgver=0.17.2
+pkgrel=1
 pkgdesc="A portable library for SSA/ASS subtitles rendering (mingw-w64)"
 arch=('any')
 url="https://github.com/libass/libass/"
@@ -10,13 +10,13 @@ license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-fribidi' 'mingw-w64-fontconfig' 'mingw-w64-freetype2' 'mingw-w64-harfbuzz' 'mingw-w64-libunibreak')
 options=(!strip !buildflags !libtool staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-configure' 'nasm' 'git')
-_tag=915599d88e951e34079383cf926d2731bb45cea1
+_tag=48c02e7a101a35ae613972474464275432a2fa04
 source=(git+https://github.com/libass/libass.git?signed#tag=${_tag})
 validpgpkeys=(
   5458C3100671F252B0F4C7708079D18C21AAAAFF # Oleg Oshmyan (Chortos-2) <chortos@inbox.lv>
   5EE63F2A71BF132CFE3567E1DFFE615F2824C720 # Oneric <oneric@oneric.de>
 )
-b2sums=(SKIP)
+b2sums=('0e19f84ea73ca4b72a9a6f8ddb9a859301deefcf486e5f44178a7ad5b74ba48f8df2e20d8795260eaf87be2f4f48b6def97c942939bf158bbbb3959c1ec5623e')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
