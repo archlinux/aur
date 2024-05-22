@@ -3,7 +3,7 @@
 _plug=vsmuxtools
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=0.1.0.1.g1f1d8cf
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-muxtools'
@@ -12,7 +12,7 @@ depends=(
     'vapoursynth'
     'vapoursynth-plugin-vstools-git'
     'python-numpy'
-    # 'python-muxtools'
+    'python-muxtools'
 )
 makedepends=(
     'git'
