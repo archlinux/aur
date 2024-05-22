@@ -2,7 +2,7 @@
 # Based on PKGBUILD by Kevin S <aur@eldenring.mozmail.com>
 pkgname=audiobookshelf
 pkgver=v2.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=('x86_64')
 url="https://github.com/advplyr/audiobookshelf"
@@ -10,8 +10,6 @@ license=('GPL-3.0-only')
 depends=('ffmpeg')
 makedepends=('nodejs' 'npm' 'git')
 optdepends=('tone-bin')
-provides=("audiobookshelf")
-conflicts=("audiobookshelf")
 backup=('etc/conf.d/audiobookshelf')
 options=(!debug !strip)
 
