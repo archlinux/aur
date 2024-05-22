@@ -1,10 +1,11 @@
 # Maintainer: dreieck
 
+_gitname="toppler"
 _pkgname="toppler-upstream-levels"
 pkgname="${_pkgname}-git"
 _pkgver=latest
 pkgver=1.3+8.r542.20220323.c8bf02b
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides the upstream levels ("towers") of the game "toppler" as stand-alone mission files (one file mission per tower), to be played individually and to be loaded into the level editor.'
 arch=(
   'i686'
@@ -36,16 +37,26 @@ replaces=(
   "toppler-levels<=1.2+10+r531.20220201.8596a68"
 )
 source=(
-  "toppler::git+https://gitlab.com/roever/toppler.git"
+  "${_gitname}::git+https://gitlab.com/roever/toppler.git"
+  "fix-for-gcc14.patch"
 )
 
 sha256sums=(
-  'SKIP'
+  'SKIP'                                                              # Upstream git source
+  '25753ed79c12e9635d5ef8cb3f1ec380998f5ccaec37818b056b0541c9cd4c9f'  # fix-for-gcc14.patch
 )
 
+prepare() {
+  cd "${srcdir}/${_gitname}"
+
+  for _patch in "${srcdir}"/fix-for-gcc14.patch; do
+    printf "   > Applying patch $(basename "${_patch}") ..."
+    patch -Np1 --follow-symlinks -i "${_patch}"
+  done
+}
 
 pkgver () {
-  cd "${srcdir}/toppler"
+  cd "${srcdir}/${_gitname}"
   _ver="$(git describe --tags | sed 's|^[vV]||' | sed 's|-[^-]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
@@ -61,7 +72,7 @@ pkgver () {
 
 
 build() {
-  cd "${srcdir}/toppler"
+  cd "${srcdir}/${_gitname}"
 
   # Build mission creator
   make _build/tools/cremission
@@ -80,7 +91,7 @@ build() {
 
 
 package() {
-  cd "${srcdir}/toppler/datafile/levels"
+  cd "${srcdir}/${_gitname}/datafile/levels"
 
   for _mission in *.ttm; do
     install -D -m644 -v "${_mission}" "${pkgdir}/usr/share/toppler/${_mission}"
