@@ -3,7 +3,7 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl3-git
-pkgver=3.1.1.r1.g58529c182
+pkgver=3.1.2.r242.g86b2f441c
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -31,6 +31,7 @@ pkgver() {
 build() {
 	CFLAGS+=" -ffat-lto-objects"
 	cmake -S SDL -B build -G Ninja \
+	-D CMAKE_BUILD_TYPE=None \
 	-D SDL_HIDAPI_LIBUSB=ON \
 	-D CMAKE_INSTALL_PREFIX=/usr \
 	-D SDL_RPI=OFF \
