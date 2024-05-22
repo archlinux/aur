@@ -3,7 +3,7 @@ pkgname=realm-studio-bin
 _pkgname="Realm Studio"
 pkgver=15.0.1
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool, any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.'
 arch=('x86_64')
 url="https://realm.io/products/realm-studio/"
@@ -23,11 +23,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('af385768cbc01d443ac24ec889642de936ca1d3b0f176a396de9193bd0c15b31'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
