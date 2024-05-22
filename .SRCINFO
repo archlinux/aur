@@ -1,18 +1,18 @@
 pkgbase = psi-plus-mediaplugin-git
 	pkgdesc = Psi+ Audio/video RTP
-	pkgver = 1.0.5.159.g9fd3307
+	pkgver = 1.0.5.175.g478567e
 	pkgrel = 1
-	url = https://psi-plus.com
+	url = https://github.com/psi-im/psimedia
 	arch = x86_64
-	license = GPL2
+	license = LGPL2
 	makedepends = git
 	makedepends = cmake
 	depends = psi-plus-git
-	provides = psi-plus-mediaplugin=1.0.5.159.g9fd3307
+	provides = psi-plus-mediaplugin=1.0.5.175.g478567e
 	conflicts = psi-plus-mediaplugin
 	source = git+https://github.com/psi-im/psimedia
 	source = git+https://github.com/psi-im/psi.git
-	source = psi-plus::git+https://github.com/psi-plus/main.git
+	source = ${_pkgbase}::git+https://github.com/psi-plus/main.git
 	source = git+https://github.com/psi-im/libpsi.git
 	md5sums = SKIP
 	md5sums = SKIP
