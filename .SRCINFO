@@ -1,7 +1,7 @@
 pkgbase = kwin-explicit-sync
 	pkgdesc = An easy to use composited Window Manager with explicit sync patches
-	pkgver = 6.0.4.1
-	pkgrel = 2
+	pkgver = 6.0.5
+	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	install = kwin.install
 	arch = x86_64
@@ -77,7 +77,7 @@ pkgbase = kwin-explicit-sync
 	optdepends = maliit-keyboard: virtual keyboard for kwin-wayland
 	provides = kwin
 	conflicts = kwin
-	source = git+https://invent.kde.org/plasma/kwin.git#tag=v6.0.4.1
+	source = git+https://invent.kde.org/plasma/kwin.git#tag=v6.0.5
 	source = explicit-sync.patch
 	sha256sums = SKIP
 	sha256sums = c10925e401fe53507d0ada6d9955cb33114fcec7db9b83fbc34338dd31e1f19b
