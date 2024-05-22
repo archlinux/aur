@@ -1,7 +1,7 @@
 pkgbase = toppler-git
 	pkgdesc = A reimplementation of the classic jump & run game "Nebulus"
 	pkgver = 1.3+8+r542.20220323.c8bf02b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/roever/toppler/
 	arch = i686
 	arch = x86_64
@@ -21,8 +21,10 @@ pkgbase = toppler-git
 	conflicts = toppler
 	replaces = toppler-darcs
 	source = toppler::git+https://gitlab.com/roever/toppler.git
+	source = fix-for-gcc14.patch
 	source = toppler.desktop
 	sha256sums = SKIP
+	sha256sums = 25753ed79c12e9635d5ef8cb3f1ec380998f5ccaec37818b056b0541c9cd4c9f
 	sha256sums = 828b4f8f6901e757de8cce76473caa1064b2db1375330eee370b0eff79909e9a
 
 pkgname = toppler-git

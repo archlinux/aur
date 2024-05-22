@@ -4,7 +4,7 @@
 _pkgname=toppler
 pkgname="${_pkgname}-git"
 pkgver=1.3+8+r542.20220323.c8bf02b
-pkgrel=1
+pkgrel=2
 pkgdesc='A reimplementation of the classic jump & run game "Nebulus"'
 arch=('i686' 'x86_64')
 url="https://gitlab.com/roever/toppler/"
@@ -19,16 +19,24 @@ conflicts=("${_pkgname}")
 replaces=("${_pkgname}-darcs")
 source=(
   "${_pkgname}::git+https://gitlab.com/roever/toppler.git"
+  "fix-for-gcc14.patch"
   "${_pkgname}.desktop"
 )
 
 sha256sums=(
-  'SKIP'
-  '828b4f8f6901e757de8cce76473caa1064b2db1375330eee370b0eff79909e9a'
+  'SKIP'                                                              # Upstream git source
+  '25753ed79c12e9635d5ef8cb3f1ec380998f5ccaec37818b056b0541c9cd4c9f'  # fix-for-gcc14.patch
+  '828b4f8f6901e757de8cce76473caa1064b2db1375330eee370b0eff79909e9a'  # ${_pkgname}.desktop
+
 )
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+
+  for _patch in "${srcdir}"/fix-for-gcc14.patch; do
+    printf "   > Applying patch $(basename "${_patch}") ..."
+    patch -Np1 --follow-symlinks -i "${_patch}"
+  done
 
   git log > git.log
 }

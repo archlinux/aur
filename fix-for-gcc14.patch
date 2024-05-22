@@ -1,0 +1,15 @@
+diff -rU1 toppler.orig/src/decl.cc toppler/src/decl.cc
+--- toppler.orig/src/decl.cc	2024-05-22 14:48:10.274030769 +0200
++++ toppler/src/decl.cc	2024-05-22 14:51:58.627373253 +0200
+@@ -23,2 +23,3 @@
+ 
++#include <algorithm>
+ #include <cstdlib>
+diff -rU1 toppler.orig/src/level.cc toppler/src/level.cc
+--- toppler.orig/src/level.cc	2024-05-22 14:48:10.274030769 +0200
++++ toppler/src/level.cc	2024-05-22 14:53:17.674043103 +0200
+@@ -18,2 +18,4 @@
+ 
++#include <algorithm>
++
+ #ifndef CREATOR
