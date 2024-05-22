@@ -5,6 +5,7 @@ pkgbase = riscv64-gnu-toolchain-glibc-llvm-bin
 	url = https://github.com/riscv-collab/riscv-gnu-toolchain
 	arch = x86_64
 	license = GPL2
+	provides = riscv64-gnu-toolchain-glibc-bin
 	conflicts = riscv64-gnu-toolchain-glibc-bin
 	options = !strip
 	source = https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2024.04.12/riscv64-glibc-ubuntu-22.04-llvm-nightly-2024.04.12-nightly.tar.gz
