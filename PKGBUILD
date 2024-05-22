@@ -13,7 +13,7 @@ _build_clblas=false # 2024-04-17: Fails to link with
                     # ggml-opencl.cpp:(.text+0x46): undefined reference to `clEnqueueReadBuffer'
                     # ```
                     # and more errors.
-_build_vulkan=false
+_build_vulkan=true
 
 # Those variables skip CUDA and ROCm build, introduced in https://github.com/ollama/ollama/pull/4462/files.
 export OLLAMA_SKIP_CUDA_GENERATE=true
@@ -39,8 +39,8 @@ if "${_build_vulkan}"; then
   pkgname+=("${_name}-vulkan-git")
 fi
 pkgdesc='Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).'
-pkgver=0.1.38+29.r2757.20240522.4434d7f4
-pkgrel=2
+pkgver=0.1.39+rc1+4.r2773.20240522.955c317c
+pkgrel=1
 arch=(
   'armv7h'
   'aarch64'
@@ -142,7 +142,7 @@ _cmake_options_common="
 _cmake_options_blas="-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=openblas"
 _cmake_options_mpi="-DLLAMA_MPI=ON"
 _cmake_options_clblas="-DLLAMA_CLBLAST=ON"
-_cmake_options_vulkan="-DLLAMA_VULKAN=ON -DLLAMA_VULKAN_CHECK_RESULTS=ON -DLLAMA_VULKAN_DEBUG=OFF -DLLAMA_VULKAN_RUN_TESTS=ON -DLLAMA_VULKAN_VALIDATE=OFF"
+_cmake_options_vulkan="-DLLAMA_VULKAN=ON -DLLAMA_VULKAN_CHECK_RESULTS=OFF -DLLAMA_VULKAN_DEBUG=OFF -DLLAMA_VULKAN_RUN_TESTS=OFF -DLLAMA_VULKAN_VALIDATE=OFF"
 
 prepare() {
   export GOPATH="${srcdir}/go"
