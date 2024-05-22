@@ -1,0 +1,33 @@
+From 34fa84a06de74cfde95faf3e4a0d30922d08601d Mon Sep 17 00:00:00 2001
+From: Karol Herbst <kherbst@redhat.com>
+Date: Fri, 17 May 2024 23:25:12 +0200
+Subject: [PATCH] rusticl/meson: add build root dir to the include dirs of
+ rusticl_c
+
+The static inline wrapper includes the header file relatively from where
+`bindgen` gets executed, or so it seems.
+
+I'm sure we can come up with a better solution, but this unbreaks builds.
+
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/11178
+Fixes: 53629b0a2d4 ("rusticl: make use of new `output_inline_wrapper` meson.rust.bindgen feature")
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/29275>
+---
+ src/gallium/frontends/rusticl/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/gallium/frontends/rusticl/meson.build b/src/gallium/frontends/rusticl/meson.build
+index 39b2089fcfc9d..0663a2b6c59a0 100644
+--- a/src/gallium/frontends/rusticl/meson.build
++++ b/src/gallium/frontends/rusticl/meson.build
+@@ -347,6 +347,7 @@ rusticl_c = static_library(
+   ],
+   gnu_symbol_visibility : 'hidden',
+   include_directories : [
++    meson.build_root(),
+     inc_gallium,
+     inc_gallium_aux,
+     inc_include,
+-- 
+GitLab
+
