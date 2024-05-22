@@ -1,7 +1,7 @@
 # Maintainer: JP Roemer <jp+aur@roemer.im>
 
 pkgname=kconnect
-pkgver=0.5.15
+pkgver=0.5.16
 _saml2awsver="35a4d415a9823c2811c108b9106cae77e006414f"
 pkgrel=1
 pkgdesc='CLI utility that can be used to discover and securely access Kubernetes clusters across multiple operating environments.'
@@ -17,10 +17,8 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-bin")
 source=(
     "${pkgname}_${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-    "saml2aws_${_saml2awsver}.tar.gz::https://github.com/richardcase/saml2aws/archive/${_saml2awsver}.tar.gz"
 )
-sha256sums=('d2ffadb516d6e1cf757d426f6e361c9b5bfebe06ac7f2889a2b9e610e79c2d01'
-            '5a5f59b9bacbc5a375894ee9c880811d42ec9e086ead8595c60d5be043f8186e')
+sha256sums=('f611453e8133d3b5315e96cf989a258013efb3ed3fc145349edd96f43f86f5d2')
 
 export GGO_ENABLED="0"
 export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -28,11 +26,6 @@ export CGO_CFLAGS="${CFLAGS}"
 export CGO_CXXFLAGS="${CXXFLAGS}"
 export CGO_LDFLAGS="${LDFLAGS}"
 export GOFLAGS="-trimpath -mod=readonly -modcacherw"
-
-prepare() {
-    cp -ra "${srcdir}/saml2aws-${_saml2awsver}/." \
-        "${srcdir}/${pkgname}-${pkgver}/third_party/saml2aws"
-}
 
 build() {
     local _commit _flags
