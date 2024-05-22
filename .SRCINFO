@@ -1,6 +1,6 @@
 pkgbase = r-plsvarsel
 	pkgdesc = Variable Selection in Partial Least Squares
-	pkgver = 0.9.11
+	pkgver = 0.9.12
 	pkgrel = 1
 	url = https://cran.r-project.org/package=plsVarSel
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-plsvarsel
 	depends = r-praznik
 	depends = r-progress
 	optdepends = r-rmpi
-	source = https://cran.r-project.org/src/contrib/plsVarSel_0.9.11.tar.gz
-	sha256sums = 6b5a16a5802fc44443ce22ebc5c959088a36f77ce56b2bb0c9e3deac7ce89d49
+	source = https://cran.r-project.org/src/contrib/plsVarSel_0.9.12.tar.gz
+	sha256sums = 5dad86f957035c6aa5207351cff1ebb88cfa50aa0576a6f4a1a23e2e2d866004
 
 pkgname = r-plsvarsel
