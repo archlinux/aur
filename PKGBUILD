@@ -1,7 +1,7 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl-git
 pkgver=r34.e97f4b3
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple systemd service to better control Framework Laptop's fan"
 arch=(any)
 url="https://github.com/TamtamHero/fw-fanctrl"
@@ -31,7 +31,7 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 
 	install -Dm0755 ./fanctrl.py "${pkgdir}"/usr/bin/fw-fanctrl
-	install -Dm0655 ./config.json "${pkgdir}"/etc/fw-fanctrl/config.json
-	install -Dm0655 "${srcdir}/fw-fanctrl.service" "${pkgdir}"/usr/lib/systemd/system/fw-fanctrl.service
+	install -Dm0644 ./config.json "${pkgdir}"/etc/fw-fanctrl/config.json
+	install -Dm0644 "${srcdir}/fw-fanctrl.service" "${pkgdir}"/usr/lib/systemd/system/fw-fanctrl.service
 	install -Dm0755 "${srcdir}/fw-fanctrl-suspend" "${pkgdir}"/usr/lib/systemd/system-sleep/fw-fanctrl-suspend
 }
