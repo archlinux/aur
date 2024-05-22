@@ -1,0 +1,18 @@
+pkgbase = rotorflight-configurator
+	pkgdesc = Rotorflight Configurator for Rotorflight FBL Controller
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/rotorflight/rotorflight-configurator
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	depends = python
+	depends = nodejs
+	depends = npm
+	depends = nvm
+	source = rotorflight-configurator-2.0.0.tar.gz::https://github.com/rotorflight/rotorflight-configurator/archive/refs/tags/release/2.0.0.tar.gz
+	source = rotorflight-configurator.desktop
+	sha512sums = 4e344c15a014102bc102fdbe7ce46119b2aaa44f025eff1f16b0f97c71a2af564251f45f6e47f8ef644b6e888360b8c00e79bac8d7639aef1c1215bace8ab4d8
+	sha512sums = 415dd974a570d35fd0c42004005584a8da0c91cf2d3bb030f42ce068ada27a31c2d517637b962f1085266a0e6c2dce1dda6230cdcb1d65de85b9761f48accb06
+
+pkgname = rotorflight-configurator

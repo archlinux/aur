@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Rotorflight Configurator
+Comment=Crossplatform configuration tool for the Rotorflight control system
+Exec=rotorflight-configurator
+Icon=rotorflight-configurator
+Terminal=false
+Type=Application
+Categories=Utility
+
