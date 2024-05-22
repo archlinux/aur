@@ -40,7 +40,7 @@ if "${_build_vulkan}"; then
 fi
 pkgdesc='Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).'
 pkgver=0.1.39+rc1+4.r2773.20240522.955c317c
-pkgrel=1
+pkgrel=2
 arch=(
   'armv7h'
   'aarch64'
