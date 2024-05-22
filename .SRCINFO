@@ -1,6 +1,6 @@
 pkgbase = vgmtrans-git
 	pkgdesc = Converter for sequenced videogame music
-	pkgver = r1283.4b3cab2
+	pkgver = r1294.0744d39
 	pkgrel = 1
 	url = https://github.com/vgmtrans/vgmtrans
 	arch = x86_64
@@ -10,11 +10,14 @@ pkgbase = vgmtrans-git
 	makedepends = git
 	makedepends = qt6-tools
 	depends = hicolor-icon-theme
-	depends = minizip
 	depends = qt6-base
 	depends = qt6-svg
 	source = vgmtrans::git+https://github.com/vgmtrans/vgmtrans
+	source = git+https://github.com/zlib-ng/minizip-ng.git
 	source = git+https://github.com/gabime/spdlog.git
+	source = git+https://github.com/zlib-ng/zlib-ng.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
