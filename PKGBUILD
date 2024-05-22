@@ -2,7 +2,7 @@
 
 pkgname=python-pytensor
 _pkgname=${pkgname#python-}
-pkgver=2.21.0
+pkgver=2.22.0
 pkgrel=1
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(x86_64)
@@ -43,7 +43,7 @@ optdepends=(
   'python-tensorflow-probability: for graph transpilation compilation via JAX'
 )
 source=("git+$url.git#tag=rel-$pkgver")
-sha256sums=('281c01e049b17fd6a33fbb8d432a124e49d3fc11f098773e731ed673fc14b67b')
+sha256sums=('067ba293512b8e1f469dca2ba4d29bcac23fe92eb156df6ef82b12a6f321eb69')
 
 _archive="$_pkgname"
 
