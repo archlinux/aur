@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
-pkgver=229.240514.1
+pkgver=229.240517.0
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -14,8 +14,8 @@ source=("${pkgname%-bin}-$pkgver.AppImage::https://github.com/tutao/tutanota/rel
         "tutao-pub-$pkgver.pem::https://github.com/tutao/tutanota/raw/${pkgname%-bin}-release-$pkgver/tutao-pub.pem")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-linux")
-sha512sums=('81ffd5250f50be8c9841980ad0e54946fa13cfaee51b35fbaaa1a9569db816b1c0b4f0ddabe031b7ab42e35032bf8096eef29ab5ccba533a8246a890b6b130e9'
-            '0f52a488caf616af5c488a3138190a90a5bb78c1a8ac6f08a69420574944419e39c8767bb15cd83f639397ecd7a8764e7ffb1fcf10ffd14e98cb7bca2cfbcbb8'
+sha512sums=('21457eba5a973a7218fd267c5e132011f5c84c2408e14f4b450b6600ed48392b10de3ab1bf0e9d36414570c20ca07ee7f825009b27fbb977d35444948da9752c'
+            'd5ce9f00236c21d65fc5d2c77f55c1ec7ae502ae261cb1f6613b81305cedd77e47677cb4f58778d49cddd595707f958529d56ea245b327c3a3c16be97534c2b5'
             '7c6cf9f1074c08b4d38567ced95159c0809af025efe01b0163d9bb5107daabfa873064255186c071a7dc3a9177ccd0c1b2fcc8b085bdbff234965a6710b3ae45')
 
 prepare() {
@@ -27,12 +27,11 @@ prepare() {
   chmod +x "${pkgname%-bin}-$pkgver.AppImage"
   ./"${pkgname%-bin}-$pkgver.AppImage" --appimage-extract
 
-  # Correct path for .desktop file
-  sed -i 's|Exec=AppRun|Exec=/opt/tutanota-desktop/tutanota-desktop|g' \
+  # Correct path for desktop file, remove unneeded desktop file keys
+  desktop-file-edit --set-key=Exec --set-value="/opt/${pkgname%-bin}/${pkgname%-bin}" \
+    --remove-key="X-AppImage-Version" \
+    --remove-key="X-Desktop-File-Install-Version" \
     "squashfs-root/${pkgname%-bin}.desktop"
-
-  # Remove X-AppImage-Version
-  sed -i '/AppImage/d' "squashfs-root/${pkgname%-bin}.desktop"
 }
 
 package() {
