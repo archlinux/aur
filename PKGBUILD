@@ -1,19 +1,15 @@
-# Maintainer: Michael Wyraz <archlinux@michael.wyraz.de>
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Arjan Timmerman <arjan@archlinux.org>
-# Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
-# Contributor: Tor Krill <tor@krill.nu>
-# Contributor: Will Rea <sillywilly@gmail.com>
+# Maintainer:
+# Contributor: Michael Wyraz <archlinux@michael.wyraz.de>
 
-pkgbase=network-manager-applet-nolibappindicator
-pkgname=(network-manager-applet-nolibappindicator)
-pkgver=1.32.0
-pkgrel=3
+_pkgname="network-manager-applet"
+pkgname="$_pkgname-nolibappindicator"
+pkgver=1.36.0
+pkgrel=1
 pkgdesc="Applet for managing network connections"
 url="https://gitlab.gnome.org/GNOME/network-manager-applet"
-arch=(x86_64)
-license=(GPL LGPL)
+license=('GPL-2.0-or-later')
+arch=('x86_64')
+
 depends=(
   libmm-glib
   libnma
@@ -24,31 +20,15 @@ makedepends=(
   git
   gobject-introspection
   gtk-doc
-  libgudev
   meson
 )
-options=(debug)
-_commit=06645751f898ab49181e52beb4f34fb83efc6c5e  # tags/1.32.0^0
-source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=$_commit")
+
+conflicts=('network-manager-applet')
+provides=('network-manager-applet')
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
-conflicts=(network-manager-applet)
-provides=(network-manager-applet)
-
-pkgver() {
-  cd network-manager-applet
-  git describe --tags | sed 's/-dev/dev/;s/[^-]*-g/r&/;s/-/+/g'
-}
-
-prepare() {
-  cd network-manager-applet
-
-  # Drop libgudev makedep
-  git cherry-pick -n d536d046ccd97b3eba76d2425f571bc8b7ada383
-
-  # Fix crash when importing VPN profiles
-  # https://bugs.archlinux.org/task/78360
-  git cherry-pick -n 01281fae6b601598cd2006bc8f2d5be98810228d
-}
 
 build() {
   local meson_options=(
@@ -56,7 +36,7 @@ build() {
     -D appindicator=no
   )
 
-  arch-meson network-manager-applet build "${meson_options[@]}"
+  arch-meson "$_pkgsrc" build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -65,7 +45,8 @@ check() {
 }
 
 _pick() {
-  local p="$1" f d; shift
+  local p="$1" f d
+  shift
   for f; do
     d="$srcdir/$p/${f#$pkgdir/}"
     mkdir -p "$(dirname "$d")"
@@ -88,5 +69,3 @@ package_network-manager-applet-nolibappindicator() {
   _pick nmce usr/share/man/man1/nm-connection-editor.1
   _pick nmce usr/share/metainfo
 }
-
-# vim:set sw=2 sts=-1 et:

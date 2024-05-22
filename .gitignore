@@ -1,4 +1,4 @@
-/network-manager-applet/
-/*.pkg.tar.zst
-/pkg/
-/src/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
