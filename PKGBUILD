@@ -4,7 +4,7 @@ _pkgname=WooCommerce-POS
 pkgver=1.4.6
 _electronversion=28
 _nodeversion=16
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron Desktop App for WooCommerce POS"
 arch=('x86_64')
 url="https://github.com/wcpos/electron"
@@ -21,15 +21,16 @@ makedepends=(
     'yarn'
     'base-devel'
     'gcc'
+    'curl'
 )
 source=(
-    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "expo.git::git+https://github.com/wcpos/managed-expo.git"
     "${pkgname}.sh"
 )
-sha256sums=('5ed72b17542dbc9b20ac73db505c2780d14aaa6d621fcd6cfa85668387115a8a'
+sha256sums=('9f092bfa1b612ad6531e84eac366b38d9c4e3880184006c03536b512cb46177e'
             'SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -40,23 +41,24 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname//-/ }|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
+    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
@@ -66,9 +68,9 @@ build() {
     yarn export:electron
     # Fix bundle path
     sed -i 's/src="\/_expo/src="_expo/g' dist/index.html
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/electron-${pkgver}"
     sed "s|dist|..\/..\/${pkgname}\/dist|g" -i src/main/util.ts
-    cp -r "${srcdir}/expo.git/dist" "${srcdir}/${pkgname}.git"
+    cp -r "${srcdir}/expo.git/dist" "${srcdir}/electron-${pkgver}"
     # .yarnrc.yml existed.
     yarn install
     yarn run rebuild:all
@@ -77,8 +79,8 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/out/${_pkgname//-/ }-linux-"*/resources/{app,dist} "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/electron-${pkgver}/out/${_pkgname//-/ }-linux-"*/resources/{app,dist} "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}.git/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.git/out/${_pkgname//-/ }-linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/electron-${pkgver}/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/electron-${pkgver}/out/${_pkgname//-/ }-linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
