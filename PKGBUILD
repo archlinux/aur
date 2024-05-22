@@ -3,7 +3,7 @@
 # Contributor: Bitts311 <oceanmail311@gmail.com>
 
 _pkgname=Qogir-theme
-_pkgver=2023-05-24
+_pkgver=2024-05-22
 pkgname="qogir-gtk-theme"
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
     "options.txt"
 )
-sha256sums=('e4c681f10cd9c9ff829f0e9c7b56f857120ec4fd5638203494db3a9b188b8796'
+sha256sums=('9ccebe06ef467f2628ddea7e5a6b09f671d486283a06f89eb7e888e01648dd5f'
             'fabf821acfe0641fd233d4d7a42a536aedc369516de62f877e83a1070c73327e')
 
 package() {
