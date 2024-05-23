@@ -20,4 +20,5 @@ package_python-spark-parser() {
 
     cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1
+    install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
