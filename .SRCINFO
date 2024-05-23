@@ -1,6 +1,6 @@
 pkgbase = colord-kde
 	pkgdesc = Interfaces and session daemon to colord for KDE
-	pkgver = 24.04.90
+	pkgver = 24.05.0
 	pkgrel = 1
 	url = https://userbase.kde.org/Color_Management
 	arch = x86_64
@@ -24,12 +24,12 @@ pkgbase = colord-kde
 	depends = libxrandr
 	depends = qt6-base
 	depends = qt6-declarative
-	source = https://download.kde.org/unstable/release-service/24.04.90/src/colord-kde-24.04.90.tar.xz
-	source = https://download.kde.org/unstable/release-service/24.04.90/src/colord-kde-24.04.90.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/24.05.0/src/colord-kde-24.05.0.tar.xz
+	source = https://download.kde.org/stable/release-service/24.05.0/src/colord-kde-24.05.0.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 7e15294b880666e82e761c5e8bfe02aa536fcfca82d1f2dfc5d2000ee91a07a3
+	sha256sums = 9491924c8bcc089a64cdd4f684b6b7831ef05399795eb2b109420eb1ecd5dc75
 	sha256sums = SKIP
 
 pkgname = colord-kde
