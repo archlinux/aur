@@ -6,6 +6,7 @@ pkgdesc="Rotorflight Blackbox for Rotorflight FBL Controller"
 arch=('x86_64')
 url="https://github.com/rotorflight/rotorflight-blackbox"
 license=('MIT')
+options=('!debug')
 depends=('python' 'nodejs' 'npm' 'nvm')
 makedepends=('yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rotorflight/rotorflight-blackbox/archive/refs/tags/release/${pkgver}.tar.gz"
