@@ -8,8 +8,8 @@ license=('custom:Public Domain')
 makedepends=('python-setuptools' 'python' 'python-future')
 depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib')
 optdepends=('gmsh: creation of irregular meshes')
-source=("fipy-$pkgver.tar.gz::https://github.com/usnistgov/fipy/archive/${pkgver}.tar.gz")
-sha256sums=('9b69a3569d93bb56a2b7aa9813b2b70dccf607b934750ee59bd7ab8f16f63f6f')
+source=("fipy-$pkgver.tar.gz::https://github.com/usnistgov/fipy/releases/download/${pkgver}/FiPy-${pkgver}.tar.gz")
+sha256sums=('b69f84643d345dbf8a3a358757719c182b19ee3403c5e17e44457babbf561b7d')
 
 prepare(){
    cp -R fipy-${pkgver} fipy-${pkgver}-py3
