@@ -1,7 +1,7 @@
 pkgbase = freecalypso-usbser-tools
 	pkgdesc = FreeCalypso USB-serial tools
 	pkgver = r1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.freecalypso.org/hg/fc-usbser-tools
 	arch = x86_64
 	arch = i686

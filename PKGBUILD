@@ -3,7 +3,7 @@
 _pkgname=fc-usbser-tools
 pkgname=freecalypso-usbser-tools
 pkgver=r1
-pkgrel=2
+pkgrel=3
 pkgdesc="FreeCalypso USB-serial tools"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_pkgname}"
@@ -17,7 +17,7 @@ sha256sums=('9df1ab84340c42f4485db10743d228997e631c8f4225d793cca511efa8d87346')
 
 build() {
 	cd "${_tarname}"
-	make
+	make CFLAGS="-std=gnu89 ${CFLAGS}"
 }
 
 package() {
