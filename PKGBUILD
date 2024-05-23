@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/tembo-io/pg_vectorize"
 license=('MIT')
 depends=('postgresql' 'pg_cron' 'pgvector')
-makedepends=('cargo' 'postgresql-libs')
+makedepends=('cargo' 'postgresql-libs' 'cargo-pgrx')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('6577218f9e30d37625f4f153b2fa2b18fef43fea9cd0cc328ad95cd7735add3f')
 

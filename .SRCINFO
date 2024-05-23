@@ -7,6 +7,7 @@ pkgbase = pg_vectorize
 	license = MIT
 	makedepends = cargo
 	makedepends = postgresql-libs
+	makedepends = cargo-pgrx
 	depends = postgresql
 	depends = pg_cron
 	depends = pgvector
