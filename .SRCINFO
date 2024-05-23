@@ -1,5 +1,5 @@
-pkgbase = glib-networking
-	pkgdesc = Network extensions for GLib
+pkgbase = glib-networking-gnutls-openssl
+	pkgdesc = Network extensions for GLib with both GnuTLS and OpenSSL enabled
 	pkgver = 2.80.0
 	pkgrel = 1
 	epoch = 1
@@ -12,9 +12,12 @@ pkgbase = glib-networking
 	depends = glib2
 	depends = glibc
 	depends = gnutls
+	depends = openssl
 	depends = gsettings-desktop-schemas
 	depends = libproxy
+	provides = glib-networking
+	conflicts = glib-networking
 	source = git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=3ae624d21b586ec33543004b037fd343042cb04b
 	b2sums = SKIP
 
-pkgname = glib-networking
+pkgname = glib-networking-gnutls-openssl

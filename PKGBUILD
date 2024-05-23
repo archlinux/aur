@@ -1,18 +1,24 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Fabian Bornschein <fabiscafe@archlinux.org>
+# Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
-pkgname=glib-networking
+# This package is entirely based on https://gitlab.archlinux.org/archlinux/packaging/packages/glib-networking
+
+pkgname=glib-networking-gnutls-openssl
 pkgver=2.80.0
 pkgrel=1
 epoch=1
-pkgdesc="Network extensions for GLib"
+pkgdesc="Network extensions for GLib with both GnuTLS and OpenSSL enabled"
 url="https://gitlab.gnome.org/GNOME/glib-networking"
 arch=(x86_64)
 license=(LGPL-2.1-or-later)
+provides=('glib-networking')
+conflicts=('glib-networking')
 depends=(
   glib2
   glibc
   gnutls
+  openssl
   gsettings-desktop-schemas
   libproxy
 )
@@ -35,7 +41,12 @@ prepare() {
 }
 
 build() {
-  arch-meson glib-networking build
+  local meson_options=(
+    -D gnutls=enabled
+    -D openssl=enabled
+  )
+
+  arch-meson glib-networking build "${meson_options[@]}"
   meson compile -C build
 }
 
