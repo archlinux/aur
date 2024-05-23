@@ -4,7 +4,7 @@ pkgbase=python-ewah-bool-utils
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="EWAH Bool Array utils for yt"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ makedepends=('python-setuptools'
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix-title-underline.patch')
-md5sums=('a13d864b0ee7f800c493b4d08e3fe868'
+md5sums=('ef2eb7b525ff5efde44ebc24869839ce'
          '7c4351256659c6fe4d7d369e3ff57398')
 
 get_pyver() {
