@@ -4,7 +4,7 @@ options=(!strip)  # Don't strip libs because there aren't any
 pkgname=hydrus
 _pkgname=hydrus
 pkgver=576
-pkgrel=1
+pkgrel=2
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(custom)
@@ -32,6 +32,7 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'python-pympler: debug menus to profile memory usage'
             # 'python-pyqt6-charts: display bandwidth usage charts'
             'python-cryptography: to generate certificates for accessing client API and server via HTTPS'
+            'python-olefile: support legacy microsoft office file formats'
             'python-pyopenssl: to generate certificates for accessing client API and server via HTTPS'
             'qt6-webengine: to display PDF thumbnails'
             # 'python-pyparsing: currently unused'
