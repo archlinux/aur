@@ -1,6 +1,6 @@
 pkgbase = knightsgame
 	pkgdesc = A free multiplayer competitive game involving knights, dungeons, and quests.
-	pkgver = 026
+	pkgver = 027
 	pkgrel = 1
 	url = http://www.knightsgame.org.uk/
 	arch = x86_64
@@ -9,8 +9,10 @@ pkgbase = knightsgame
 	depends = boost-libs
 	depends = sdl2
 	depends = curl
+	depends = lua
 	depends = fontconfig
-	source = http://www.knightsgame.org.uk/files/knights_026_src.tar.gz
-	sha256sums = 6e49d071385008bc431b8e08a9d2721ce1cabdcb356ef76c881256a0780721b2
+	depends = enet
+	source = http://www.knightsgame.org.uk/files/knights_027_src.tar.gz
+	sha256sums = b344315a56d20b7de537de8d9aea3207127629b4a94915187653e260b35f99fd
 
 pkgname = knightsgame
