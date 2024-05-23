@@ -1,6 +1,6 @@
 pkgbase = r-googleauthr
 	pkgdesc = Authenticate and Create Google APIs
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=googleAuthR
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-googleauthr
 	optdepends = r-shiny
 	optdepends = r-testthat
 	optdepends = r-usethis
-	source = https://cran.r-project.org/src/contrib/googleAuthR_2.0.1.tar.gz
-	sha256sums = 9b19a63bc250151674f20b27389baa95c10cc62dc7c3c0ff12a8d684bdb8a14b
+	source = https://cran.r-project.org/src/contrib/googleAuthR_2.0.2.tar.gz
+	sha256sums = fd55c85b5f78aa52b6e5cabd4143162cb497ab7288c8db3676acf58a0f393996
 
 pkgname = r-googleauthr

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=googleAuthR
-_pkgver=2.0.1
+_pkgver=2.0.2
 pkgname=r-${_pkgname,,}
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Authenticate and Create Google APIs'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-usethis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9b19a63bc250151674f20b27389baa95c10cc62dc7c3c0ff12a8d684bdb8a14b')
+sha256sums=('fd55c85b5f78aa52b6e5cabd4143162cb497ab7288c8db3676acf58a0f393996')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
