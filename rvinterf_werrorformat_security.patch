@@ -1,20 +1,27 @@
 # HG changeset patch
-# User Vadim Yanitskiy <fixeria@osmocom.org>
-# Date 1716481958 -25200
-#      Thu May 23 23:32:38 2024 +0700
-# Node ID 1882f20bad701f1315834104e8d89e48da8e075b
+# User Mychaela Falconia <falcon@freecalypso.org>
+# Date 1716485397 0
+#      Thu May 23 17:29:57 2024 +0000
+# Node ID 6d9b10633f104d5f300defb60cb5bc21f4eb89ad
 # Parent  1d144553a5d0c6c3e1d255bd4d8019d78cb9ce0d
-rvinterf: fix -Werror=format-security in get_pirelli_imei()
+etmsync Pirelli IMEI retrieval: fix poor use of printf()
 
-diff -r 1d144553a5d0 -r 1882f20bad70 rvinterf/etmsync/pirimei.c
+Bug reported by Vadim Yanitskiy <fixeria@osmocom.org>: the construct
+where a static-allocated string was passed to printf() without any
+format arguments causes newer compilers to report a security problem.
+Given that formatted output is not needed here, just fixed string
+output, change printf() to fputs(), and direct the error message
+to stderr while at it.
+
+diff -r 1d144553a5d0 -r 6d9b10633f10 rvinterf/etmsync/pirimei.c
 --- a/rvinterf/etmsync/pirimei.c	Tue Dec 12 07:45:56 2023 +0000
-+++ b/rvinterf/etmsync/pirimei.c	Thu May 23 23:32:38 2024 +0700
++++ b/rvinterf/etmsync/pirimei.c	Thu May 23 17:29:57 2024 +0000
 @@ -30,7 +30,7 @@
  	cl_des(ciphertext[0], dieid_key, decrypted[0], CL_DES_DECRYPTION);
  	cl_des(ciphertext[1], dieid_key, decrypted[1], CL_DES_DECRYPTION);
  	if (bcmp(decrypted[1], dieid_key, 8)) {
 -		printf(failmsg);
-+		puts(failmsg);
++		fputs(failmsg, stderr);
  		return(ERROR_TARGET);
  	}
  	bcopy(decrypted[0], pirelli_imeisv, 8);

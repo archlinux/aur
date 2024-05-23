@@ -2,7 +2,7 @@
 
 pkgname=freecalypso-tools
 pkgver=r21
-pkgrel=2
+pkgrel=3
 pkgdesc="FreeCalypso host tools package"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${pkgname}"
@@ -13,7 +13,7 @@ _tarname=fc-host-tools-${pkgver}
 source=("https://www.freecalypso.org/pub/GSM/FreeCalypso/${_tarname}.tar.bz2"
 	'rvinterf_werrorformat_security.patch')
 sha256sums=('e038b3bdd30f60e7e1cf08837f29a0865463d4a80e5bec47054795fbac446862'
-            '79f9a4f1fecf56097f7bf49f67f7b07efb5f734ff17b938dfec10575e6cec046')
+            '7d0141203308108b0e17727171fa3e2a1e8f309aeb083c2012c2bde75c85414b')
 
 prepare() {
 	cd "${_tarname}"
