@@ -1,6 +1,6 @@
 # Maintainer: Luna
 pkgname=uwu-h
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A basic AUR helper written in Rust."
 arch=('x86_64')
