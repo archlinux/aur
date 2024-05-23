@@ -6,9 +6,10 @@
 
 _pkgname=thunderbird
 pkgname=thunderbird-globalmenu
-pkgver=115.10.2
-pkgrel=2
+pkgver=115.11.0
+pkgrel=4
 pkgdesc="Standalone mail and news reader from mozilla.org (With appmenu patch from Ubuntu)"
+install="$_pkgname.install"
 url="https://www.thunderbird.net/"
 arch=(x86_64)
 license=(MPL-2.0)
@@ -63,19 +64,20 @@ source=(
 	"https://archive.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz"{,.asc}
 	"D187418.patch::https://phabricator.services.mozilla.com/D187418?download=true"
 	"D187749.patch::https://phabricator.services.mozilla.com/D187749?download=true"
-	"feature-unity-menubar.patch::https://github.com/Betterbird/thunderbird-patches/raw/8c6d9032ad318a80f23a521d91f0fa6d5d5532ee/115/features/feature-unity-menubar.patch"
+	"feature-unity-menubar-m-c.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar-m-c.patch"
+	"feature-unity-menubar-comm.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar.patch"
 	org.mozilla.thunderbird.desktop)
 validpgpkeys=(
 	# Mozilla Software Releases <release@mozilla.com>
 	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
 	'14F26682D0916CDD81E37B6D61B7B526D98F0353')
-sha1sums=(
-		'17ef4cfaa43e6fed0bc5c7cf9ae263722b1a89a8'
-		'SKIP'
-		'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
-		'559ce09fee54c849ea4da2bf881da37f5fc0cac9'
-		'72583462c41d9cacfa6a749cff0500bdece08510'
-		'59206e9c42055ebcd15fb5fc27ff8f12d64b1f38')
+sha1sums=('f16406772406b674a41668383f15ff00a82d8728'
+          'SKIP'
+          'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
+          '559ce09fee54c849ea4da2bf881da37f5fc0cac9'
+          '0b5cb49417c6666fe9c1ff8ea6b5f0bfacac24d0'
+          '84a41fe516ce8c79e6f026029b7bda67ad4d9bf8'
+          '59206e9c42055ebcd15fb5fc27ff8f12d64b1f38')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -95,8 +97,12 @@ prepare() {
 
 	for patch in "${source[@]%%::*}"; do
 		if [[ $patch == *.patch ]]; then
-			msg2 "applying $patch"
-			patch --no-backup-if-mismatch -Np1 < "$srcdir/$patch"
+			msg2 "Applying $patch"
+			if [[ $patch == *-comm.patch ]]; then
+				patch --no-backup-if-mismatch -Np1 -d "comm" -i "$srcdir/$patch"
+			else
+				patch --no-backup-if-mismatch -Np1 -i "$srcdir/$patch"
+			fi
 		fi
 	done
 

@@ -1,8 +1,9 @@
 pkgbase = thunderbird-globalmenu
 	pkgdesc = Standalone mail and news reader from mozilla.org (With appmenu patch from Ubuntu)
-	pkgver = 115.10.2
-	pkgrel = 2
+	pkgver = 115.11.0
+	pkgrel = 4
 	url = https://www.thunderbird.net/
+	install = thunderbird.install
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cbindgen
@@ -43,23 +44,25 @@ pkgbase = thunderbird-globalmenu
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = libotr: OTR support for active one-to-one chats
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = thunderbird=115.10.2
+	provides = thunderbird=115.11.0
 	conflicts = thunderbird
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = https://archive.mozilla.org/pub/thunderbird/releases/115.10.2/source/thunderbird-115.10.2.source.tar.xz
-	source = https://archive.mozilla.org/pub/thunderbird/releases/115.10.2/source/thunderbird-115.10.2.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/thunderbird/releases/115.11.0/source/thunderbird-115.11.0.source.tar.xz
+	source = https://archive.mozilla.org/pub/thunderbird/releases/115.11.0/source/thunderbird-115.11.0.source.tar.xz.asc
 	source = D187418.patch::https://phabricator.services.mozilla.com/D187418?download=true
 	source = D187749.patch::https://phabricator.services.mozilla.com/D187749?download=true
-	source = feature-unity-menubar.patch::https://github.com/Betterbird/thunderbird-patches/raw/8c6d9032ad318a80f23a521d91f0fa6d5d5532ee/115/features/feature-unity-menubar.patch
+	source = feature-unity-menubar-m-c.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar-m-c.patch
+	source = feature-unity-menubar-comm.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar.patch
 	source = org.mozilla.thunderbird.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha1sums = 17ef4cfaa43e6fed0bc5c7cf9ae263722b1a89a8
+	sha1sums = f16406772406b674a41668383f15ff00a82d8728
 	sha1sums = SKIP
 	sha1sums = b3ccca02959d94ef2a5db8f140ff96a2cd9724ef
 	sha1sums = 559ce09fee54c849ea4da2bf881da37f5fc0cac9
-	sha1sums = 72583462c41d9cacfa6a749cff0500bdece08510
+	sha1sums = 0b5cb49417c6666fe9c1ff8ea6b5f0bfacac24d0
+	sha1sums = 84a41fe516ce8c79e6f026029b7bda67ad4d9bf8
 	sha1sums = 59206e9c42055ebcd15fb5fc27ff8f12d64b1f38
 
 pkgname = thunderbird-globalmenu
