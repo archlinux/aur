@@ -4,7 +4,7 @@ pkgbase = python-stegoveritas
 	pkgrel = 1
 	url = https://github.com/bannsec/stegoVeritas
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pillow
@@ -18,7 +18,7 @@ pkgbase = python-stegoveritas
 	depends = python-apng
 	depends = python-pfp
 	depends = python-distro
-	source = stegoVeritas-1.10::https://github.com/bannsec/stegoVeritas/archive/1.10.tar.gz
+	source = stegoVeritas-1.10.tar.gz::https://github.com/bannsec/stegoVeritas/archive/1.10.tar.gz
 	sha256sums = 980e94dd3baa3c6f213ff19cd8493522f6421a7ec79bd052ba8e10d1f274c118
 
 pkgname = python-stegoveritas
