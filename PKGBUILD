@@ -1,8 +1,11 @@
+
 # Maintainer: BadBoy <luckmelove2@gmail.com>
+#
+# https://data.nephobox.com/issue/terabox/Linux/1.5.0/TeraBox_1.5.0_amd64.deb
 
 pkgname='terabox-bin'
 _pkgname="$(echo $pkgname |cut -d - -f 1 | tr 'tb' 'TB')"
-pkgver='1.2.0'
+pkgver='1.5.0'
 pkgrel='1'
 pkgdesc='Baidu netdisc international version'
 arch=('x86_64')
@@ -18,9 +21,7 @@ depends=(
 # DEB package
 source=("https://data.nephobox.com/issue/terabox/Linux/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 
-sha256sums=(
-    '6fdc136b27b402417d914591dc7f6781ab7d9dbf00c229c9c8c8bd2f7c097aa6'
-)
+sha256sums=('15d91aee6f239670d93a2ec45d4dbb3009879aa7fbe7589e2d9828e9ad5b0aee')
 
 options=(!strip)
 
@@ -47,3 +48,4 @@ package() {
     ln -s "/usr/lib/${_pkgname}/LICENSES.chromium.html" \
     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.chromium.html"
 }
+
