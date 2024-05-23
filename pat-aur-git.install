@@ -1,0 +1,8 @@
+post_install() {
+  echo '==============================================================='
+  echo '  Please read /usr/share/doc/pat-aur/readme.md for first quick setup.'
+  echo '  Read files in /usr/share/doc/pat-aur/examples for examples and'
+  echo '  documentation for configuring pat-aur. Read the manual for command'
+  echo '  usage.'
+  echo '==============================================================='
+}

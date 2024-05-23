@@ -1,0 +1,35 @@
+pkgbase = pat-aur-git
+	pkgdesc = AUR helper and tool to build Arch Linux packages in clean containers.
+	pkgver = r177.9fe7c05
+	pkgrel = 1
+	url = https://gitlab.com/patlefort/pat-aur
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = libxslt
+	makedepends = docbook-xsl-ns
+	makedepends = rsync
+	depends = elvish
+	source = git+https://gitlab.com/patlefort/pat-aur.git
+	sha256sums = SKIP
+
+pkgname = pat-aur-client-git
+	pkgdesc = AUR helper and tool to build Arch Linux packages in clean containers. (client only)
+	depends = elvish
+	depends = pacutils
+	provides = pat-aur-client
+	conflicts = pat-aur-client
+
+pkgname = pat-aur-host-git
+	pkgdesc = AUR helper and tool to build Arch Linux packages in clean containers. (host machine)
+	install = pat-aur-git.install
+	depends = elvish
+	depends = pat-aur-client-git
+	depends = parallel
+	depends = dumb-init
+	depends = devtools
+	depends = pacutils
+	depends = aurutils
+	depends = bubblewrap-overlayfs
+	provides = pat-aur-host
+	conflicts = pat-aur-host
