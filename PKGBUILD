@@ -5,7 +5,7 @@ _pkgname=thelounge
 pkgname=thelounge-beta
 _pkgver=4.4.3
 pkgver=${_pkgver/-/}
-pkgrel=2
+pkgrel=3
 pkgdesc='Modern self-hosted web IRC client (Latest release/pre-release)'
 url='https://thelounge.chat/'
 arch=('any')
@@ -52,6 +52,12 @@ build() {
     file:"$srcdir/$_pkgname-${_pkgver}.tgz"
 
     # fetch sqlite3 binary blob
+
+    # node-gyp or node have a bug that prevents building with "text file busy" if the kernel is too fast
+    # so we have to disable IO_URING support. This is cleary a hack and needs to be removed as soon as possible
+    # https://github.com/nodejs/node/issues/48444 is the necro bumped thread originally in docker
+    export UV_USE_IO_URING=0
+
     cd node_modules/sqlite3 || exit 1
     yarn run install
 }
