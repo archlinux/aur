@@ -2,7 +2,7 @@
 
 pkgname=zapzap-git
 _pkgname=com.rtosta.zapzap
-pkgver=5.3.4.r3.g52baadd
+pkgver=5.3.5.r7.gebcae63
 pkgrel=1
 pkgdesc="WhatsApp desktop application written in Pyqt6 + PyQt6-WebEngine"
 arch=('x86_64')
