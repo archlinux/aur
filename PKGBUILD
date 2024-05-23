@@ -2,7 +2,7 @@
 # Co-Maintainer: Lukas Grossar <lukasgrossar@gmail.com>
 
 pkgname=kubeswitch-bin
-pkgver=0.8.1
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="The kubectx for operators."
 arch=('x86_64')
@@ -10,11 +10,13 @@ url="https://github.com/danielfoehrKn/kubeswitch"
 license=('Apache')
 source=("switcher_linux_amd64-${pkgver}::https://github.com/danielfoehrKn/kubeswitch/releases/download/${pkgver}/switcher_linux_amd64"
         "switch.sh-${pkgver}::https://github.com/danielfoehrKn/kubeswitch/releases/download/${pkgver}/switch.sh")
-sha256sums=('c943332f30e5106ece06bd06e6bda91b577961526a532b33c917b35af5acb887'
-            '11d6f4b6d32632cf4080e67b72e99352cb50e8866543732f70998a20e0b77d47')
+sha256sums=('c7df78eba2688b53ceb88c5245a199a669d9faaa26c71278c80a17d565d154c8'
+            '661609a860ac75377423656c878e904d8b0ba4fd5613717e43d6499ad76e233b')
 options=(!strip)
 
 package() {
   install -Dm 755 "$srcdir/switcher_linux_amd64-${pkgver}" "$pkgdir/usr/bin/switcher"
   install -Dm 755 "$srcdir/switch.sh-${pkgver}" "$pkgdir/usr/bin/switch.sh"
 }
+sha256sums=('c7df78eba2688b53ceb88c5245a199a669d9faaa26c71278c80a17d565d154c8'
+            '661609a860ac75377423656c878e904d8b0ba4fd5613717e43d6499ad76e233b')
