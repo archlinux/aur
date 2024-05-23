@@ -1,9 +1,10 @@
-# Maintainer: Andrew Kotsyuba <avallach2000@gmail.com>
+# Maintainer: exu <aur _a_ frm01 _d_ net>
+# Contributor: Andrew Kotsyuba <avallach2000@gmail.com>
 
 _pkgbase=digimend-kernel-drivers
 _dkmsbase=digimend
 pkgname=digimend-kernel-drivers-dkms
-pkgver=10
+pkgver=13
 pkgrel=1
 pkgdesc='Linux kernel modules (DKMS) for non-Wacom USB graphics tablets'
 arch=('any')
@@ -11,14 +12,10 @@ url='https://digimend.github.io'
 license=('GPL2')
 depends=('dkms' 'systemd' 'xf86-input-wacom')
 conflicts=("${pkgname}-git")
-source=(
-    "${pkgname}-v${pkgver}.tar.gz::https://github.com/DIGImend/${_pkgbase}/archive/refs/tags/v${pkgver}.tar.gz"
-    "Makefile"
-)
-sha256sums=(
-    '3f4c1e2f66b2c1b12a0895dfdf0fe567381ea92cfe7d62ab4645242dd4e98152'
-    'bacc8a6b0c5fdbc95b9ef6072c9db6afc56958c0f8e539d4338b8895377355fe'
-)
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/DIGImend/${_pkgbase}/archive/refs/tags/v${pkgver}.tar.gz"
+        "Makefile")
+sha256sums=('ee3fcd2eaa32bee4e5ce742c81e31d7290893772c3931d1888b32fe34ec0f3c8'
+            'bacc8a6b0c5fdbc95b9ef6072c9db6afc56958c0f8e539d4338b8895377355fe')
 install="${pkgname}.install"
 
 package() {
