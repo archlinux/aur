@@ -2,14 +2,15 @@
 pkgname=ham-v2.71-linux
 _pkgname='ham-v2.71-linux'
 pkgver=2.71
-pkgrel=1
+pkgrel=2
 pkgdesc='Legacy Game Boy Advance development kit based on GCC 3.2.2'
 url='http://ngine.de'
 arch=(x86_64 i686)
 makedepends=(p7zip unrar sed)
-source=(https://web.archive.org/web/20070708215529/http://www.ngine.de/download/ham-271-linux-full.rar)
+source=(https://web.archive.org/web/20070708215529/http://www.ngine.de/download/ham-271-linux-full.rar 10-ham-sdk.conf)
 noextract=(ham-271-linux-full.rar)
-md5sums=('1e2e105a2a71a77036fbd8cafb041dd3')
+md5sums=('1e2e105a2a71a77036fbd8cafb041dd3'
+         '300796835173e04a8f8cab11c1f272ac')
 license=('nonfree')
 options=(!debug !strip)
 
@@ -44,8 +45,7 @@ package() {
   cp -r * $pkgdir/opt/ham-gba
   chmod -R 777 $pkgdir/opt/ham-gba
   rm $pkgdir/opt/ham-gba/ham-271-linux-full.rar # remove weird symlink
-}
 
-post_install() {
-  echo "Make sure you set \$HAMDIR = /opt/ham-gba in your environment."
+  mkdir -p $pkgdir/etc/environment.d
+  cp 10-ham-sdk.conf $pkgdir/etc/environment.d
 }
