@@ -4,7 +4,7 @@ _appname=dl-desktop
 _pkgname=ro.go.hmlendea.DL-Desktop
 pkgver=4.0.1
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the Duolingo language learning application"
 arch=("x86_64")
 url="https://github.com/hmlendea/dl-desktop"
@@ -21,12 +21,13 @@ source=(
 )
 sha256sums=('81dc8d5ac056212208ba665ebabd1df2d063dae9b1fe26ca606153d62e487995'
             '67642cd03a241ff097a83800f39e442c533e8b7a92a9235c0375ef866a708f0e'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@cfgdirname@|DL: language lessons|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${_appname}/${_appname}|${pkgname%-bin}|g;s|${_pkgname}|${pkgname%-bin}|g" -i "${srcdir}/${_pkgname}.desktop"
 }
