@@ -24,7 +24,7 @@ prepare() {
   sed -i 's@#! /bin/sh@#!/bin/bash@g' ${pkgname}-${pkgver}/src/configure
 
   # Patch for Alder Lake X support
-  patch -Np1 -i ../alderlakex-support.patch
+  patch -Np1 -i alderlakex-support.patch
 }
 
 build() {
