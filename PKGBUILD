@@ -3,10 +3,10 @@
 
 pkgname=alist-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.34.0
-pkgrel=0
+pkgver=3.35.0
+pkgrel=1
 pkgdesc="Another file list program that supports multiple storage"
-arch=("aarch64" "x86_64" "riscv64")
+arch=("aarch64" "x86_64")
 url="https://github.com/alist-org/alist"
 license=('AGPL3')
 provides=(${_pkgname})
@@ -16,15 +16,13 @@ source=("alist.service" "config.json" "alist.sysusers" "alist.tmpfiles")
 install=alist.install
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz"::"${url}/releases/download/v${pkgver//_/-}/alist-linux-arm64.tar.gz")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz"::"${url}/releases/download/v${pkgver//_/-}/alist-linux-amd64.tar.gz")
-source_riscv64=("$_pkgname-$pkgver-riscv64.tar.gz"::"${url}/releases/download/v${pkgver//_/-}/alist-linux-riscv64.tar.gz")
 options=(!debug)
 sha256sums=('5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
             'b72f194a7b8855e97eeb76e63e179f38132cc9e6be9daa5b396699c9c11611de'
             '3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d'
             'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de')
-sha256sums_aarch64=('863fdb69fb366169e3eaed48e1c54fd909c111f453a777a7d3bb7d646b27aa3c')
-sha256sums_x86_64=('f0b6f8e225193e16d74696f29db523e3403c7da9414841580e04e75d420b445b')
-sha256sums_riscv64=('a50286af3d6a12be5caf5a1710cf8fa409c50cb3a5d4bedf56d5d0132969a483')
+sha256sums_aarch64=('7efbe64f5a54dfd17d22030e84034b134bc3ebd13568ecd2f8e59c7101ac7fa6')
+sha256sums_x86_64=('543e147086b26e1c8f5435460a155de04a31ba3b233a91bff100c1e16cac41cb')
 
 package() {
     install -Dm755 alist ${pkgdir}/usr/bin/alist
