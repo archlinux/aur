@@ -2,7 +2,7 @@
 
 pkgname="flashprog"
 pkgdesc="Flashprog is a utility which can be used to detect, read, erase, or write BIOS chips (DIP, PLCC, SPI)."
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 url="https://flashprog.org/"
 license=('GPL')
@@ -17,6 +17,7 @@ arch=('riscv64' 'aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 build() {
 	cd "${srcdir}/${pkgname}"
 	make
+	make -C util/ich_descriptors_tool/
 }
 
 package() {
