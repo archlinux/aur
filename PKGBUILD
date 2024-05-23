@@ -2,27 +2,21 @@
 
 _hgname=gsm-codec-lib
 pkgname="freecalypso-${_hgname}"
-pkgver=r2
-pkgrel=3
+pkgver=r3
+pkgrel=1
 pkgdesc="FreeCalypso GSM codec libraries and utilities"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_hgname}"
 license=('custom')
 groups=('freecalypso')
-depends=('gsm')
 conflicts=("${pkgname}-hg")
 _tarname="${_hgname}-${pkgver}"
 source=("https://www.freecalypso.org/pub/GSM/codecs/${_tarname}.tar.bz2")
-sha256sums=('9e6bd1c3e99aa42b448706562262966371c9e9fb4f910c4f3d1bf662c2085449')
-
-prepare() {
-	cd "${_tarname}"
-	files=$(grep -Rl "#include <gsm.h>")
-	sed -i "s#include <gsm.h>#include <gsm/gsm.h>#" $files
-}
+sha256sums=('f5b9e719b4c715c9d9e3bbbf89c12eacdf6030f357d226cef3ec33a6a123a6ea')
 
 build() {
 	cd "${_tarname}"
+	./configure --prefix="/usr" CFLAGS="-std=gnu89 ${CFLAGS}"
 	make
 }
 
@@ -33,14 +27,5 @@ package() {
 	install -d "${pkgdir}/usr/share/doc/${pkgname}"
 	cp -r doc/* "${pkgdir}/usr/share/doc/${pkgname}/"
 
-	# DESTDIR is not respected, use INSTALL_PREFIX and INSTBIN instead
-	make INSTALL_PREFIX="${pkgdir}/usr" install-lib
-	make INSTBIN="${pkgdir}/opt/freecalypso/bin" install-utils
-
-	# For the sake of consistency with the 'gsm' package, move all header files
-	# to '/usr/include/gsm'.  This problem was discussed here:
-	# https://www.freecalypso.org/pipermail/community/2023-September/000892.html
-	# https://www.freecalypso.org/pipermail/community/2023-September/000895.html
-	install -d "${pkgdir}/usr/include/gsm"
-	mv ${pkgdir}/usr/include/*.h "${pkgdir}/usr/include/gsm/"
+	make DESTDIR=$pkgdir install
 }
