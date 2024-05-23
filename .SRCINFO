@@ -1,6 +1,6 @@
 pkgbase = sdl2-compat-git
 	pkgdesc = SDL2 runtime compatibility library using SDL3
-	pkgver = r522.44fec4d
+	pkgver = r561.cddd4fa
 	pkgrel = 1
 	url = https://github.com/libsdl-org/sdl2-compat
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = sdl2-compat-git
 	makedepends = cmake
 	makedepends = libgl
 	makedepends = ninja
+	makedepends = git
 	depends = sdl3
 	provides = sdl2
 	conflicts = sdl2
-	replaces = sdl2
 	source = git+https://github.com/libsdl-org/sdl2-compat.git
 	sha512sums = SKIP
 
