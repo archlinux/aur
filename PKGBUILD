@@ -3,7 +3,7 @@ pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=1.12.0
-_pkgver=${pkgver/.0}
+#_pkgver=${pkgver/.0}
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
 arch=('i686' 'x86_64')
@@ -30,7 +30,8 @@ checkdepends=('python-pytest-astropy-header'
               'python-scikit-learn'
               'python-gwcs')    # scipy scikit-image shapely rasterio already in makedepends
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${_pkgver}.tar.gz")
+source=("https://github.com/astropy/photutils/releases/download/${pkgver}/${_pyname}-${pkgver}.tar.gz")
+#source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${_pkgver}.tar.gz")
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/M6707HH.fits"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/SA112-SF1-001R1.fit.gz"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/SA112-SF1-ra-dec-list.txt"
@@ -42,13 +43,14 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_catalog.xml"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_image.fits"
 #       'datasets-use-local.patch')
-md5sums=('ca4a1f47f68c320217328b5c63df0eca')
+md5sums=('4b73c16d02f55e6a1bac8e2d32510ab3')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 #prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
 #    cd ${srcdir}/${_pyname}-${_pkgver}
 #
 #    sed -e "/bool8/a \	ignore:jsonschema.exceptions.RefResolutionError is deprecated:DeprecationWarning" \
@@ -58,7 +60,8 @@ get_pyver() {
 #}
 
 build() {
-    cd ${srcdir}/${_pyname}-${_pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/${_pyname}-${_pkgver}
     python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
@@ -66,7 +69,8 @@ build() {
 }
 
 check() {
-    cd ${srcdir}/${_pyname}-${_pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/${_pyname}-${_pkgver}
 
     pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count --remote-data=any
 }
@@ -83,7 +87,8 @@ package_python-photutils() {
                 'python-rasterio: Used for converting source segments into polygon objects'
                 'python-shapley: Used for converting source segments into polygon objects'
                 'python-photutils-doc: Documentation for python-photutils')
-    cd ${srcdir}/${_pyname}-${_pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/${_pyname}-${_pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -93,7 +98,8 @@ package_python-photutils() {
 package_python-photutils-doc() {
     pkgdesc="Documentation for Python Photutils module"
     arch=('any')
-    cd ${srcdir}/${_pyname}-${_pkgver}/docs/_build
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+#   cd ${srcdir}/${_pyname}-${_pkgver}/docs/_build
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.rst
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
