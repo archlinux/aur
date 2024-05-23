@@ -8,11 +8,16 @@ _pkgmainver=74
 _pkgminorver=2
 pkgname="${_pkgname}${_pkgmainver}"
 pkgver="${_pkgmainver}.${_pkgminorver}"
-pkgrel=5
+pkgrel=6
 pkgdesc="International Components for Unicode library (legacy version ${_pkgmainver})."
 arch=(
+  'i486'
   'i686'
+  'pentium4'
   'x86_64'
+  'armv6h'
+  'armv7h'
+  'aarch64'
 )
 url="http://www.icu-project.org/"
 license=('custom:icu')
@@ -57,15 +62,32 @@ conflicts=(
 source=(
   "https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz"
   #"https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz.asc"
+  "ICU-22132.patch"
+  "icudata-stdlibs.patch"
   "https://github.com/unicode-org/icu/raw/main/LICENSE"
 )
 md5sums=('94c0b370f43123ea92b146ebea9c709d'
+         '7e501a2e7d14ce94b843e6853d96e4c2'
+         '4e5202245fce364490334bd66b5edabc'
          'ce7acbc234de1fa02ab706fc47ca65df')
 sha256sums=('68db082212a96d6f53e35d60f47d38b962e9f9d207a74cfac78029ae8ff5e08c'
+            'f534b472dd7a6961591466eef542e2c3ad698d3008c9b6af813c66cbc0b4dd8e'
+            '13444e40ec8da75a3c4140448b25bdf51887a2691c9afdb0c63134ddd33d915b'
             '533baeb24c2ef84f58a0d08db3b63a6ed67699d272c0016719edba3f59a60222')
 #validpgpkeys=(
 #  '4058F67406EAA6AB'
 #)
+
+prepare() {
+  cd icu/source
+  # Required fix for thunderbird 115 to show Calendar and sidebar properly
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1843007
+  # https://unicode-org.atlassian.net/browse/ICU-22132
+  patch -Np1 < "../../ICU-22132.patch"
+  patch -p2 -i ${srcdir}/icudata-stdlibs.patch
+  sed -r -i 's/(for ac_prog in )clang(\+\+)? /\1/g' configure
+}
+
 
 build()
 {
