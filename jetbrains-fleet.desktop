@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=JetBrains Fleet
-Comment=Next-generation IDE by JetBrains
+Name=Fleet
+Comment=JetBrains IDE for any language
 Exec=jetbrains-fleet %u
 Icon=jetbrains-fleet
 Terminal=false

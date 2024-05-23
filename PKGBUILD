@@ -3,9 +3,9 @@
 # Contributor: Funami
 
 pkgname=jetbrains-fleet
-pkgver=1.35.110
+pkgver=1.35.115
 pkgrel=1
-pkgdesc="Next-generation IDE by JetBrains"
+pkgdesc="JetBrains IDE for any language"
 arch=('x86_64' 'aarch64')
 url="https://www.jetbrains.com/fleet/"
 license=('custom:jetbrains')
@@ -13,10 +13,10 @@ options=('!strip')
 source=("${pkgname}.desktop" 'LICENSE')
 source_x86_64=("${pkgname}-${pkgver}-${arch[0]}.tar.gz::https://download-cdn.jetbrains.com/fleet/installers/linux_x64/Fleet-${pkgver}.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-${arch[1]}.tar.gz::https://download-cdn.jetbrains.com/fleet/installers/linux_${arch[1]}/Fleet-${pkgver}-${arch[1]}.tar.gz")
-sha256sums=('af62a597c595edc5b4a8ea3f80ab0a18ea953bfc2d4feaf30e41c6e0dd23d426'
+sha256sums=('cd955f6a93108b2438e6d8ff0434dae97c076f2201b64783338bbdad06d047fb'
             'db26ca1fd026fbacfeb87f4bad42d78b3512bb733ce1c566bdd5b751e77d7bb3')
-sha256sums_x86_64=('2606f34a7014774ce4d90a2fd703bb66f2f446caac9bb0108ef5a2b936f98292')
-sha256sums_aarch64=('bbcf73aa291f5db3b4856d861f6bae56862aa2dc81c70719a9d06e4102718bd1')
+sha256sums_x86_64=('b4b999de964e7e6d451f5fe0a5bfffdda2fa180cf6a4544de576d07a3a7b67f0')
+sha256sums_aarch64=('0a0c22dcc19f0bfe4159e1a652626fa1452476f7c5ed0205fb9564bfcd44b4b0')
 
 package() {
   install -dm 755 "${pkgdir}/opt/${pkgname}"
