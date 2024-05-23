@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=No$2k6
+Comment=Atari 2600 Debugger
+Exec=nocash2k6
+Icon=nocash2k6
+Terminal=false
+Categories=Wine;Game;Emulator;
+MimeType=application/x-atari-2600-rom;

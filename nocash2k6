@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# WINE Launcher script for NO$2K6
+
+export WINEPREFIX=~/.nocash2k6
+export NOCASHDIR=/usr/share/nocash2k6
+
+[[ "$1" == "" ]] && wine $NOCASHDIR/NO\$2K6.EXE # no args
+[[ "$1" != "" ]] && wine $NOCASHDIR/NO\$2K6.EXE "$(winepath -w "$1")" # args

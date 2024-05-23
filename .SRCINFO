@@ -1,0 +1,16 @@
+pkgbase = nocash2k6
+	pkgdesc = Atai 2600 Debugger
+	pkgver = 1.1
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	makedepends = p7zip
+	depends = wine
+	depends = winetricks
+	source = https://problemkaputt.de/no$2k6-w.zip
+	source = nocash2k6
+	source = nocash2k6.desktop
+	source = nocash2k6.png
+	md5sum = 7876291b6f99ec3ea1fad2bf6a1ddc4b
+
+pkgname = nocash2k6
