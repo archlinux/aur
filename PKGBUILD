@@ -1,16 +1,15 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 pkgname=riscv64-gnu-toolchain-elf-llvm-bin
 pkgver=2024.04.12
-pkgrel=4
-pkgdesc="GNU toolchain for riscv64 ELF, including GCC and LLVM."
+pkgrel=5
+pkgdesc="GNU toolchain for riscv64 ELF, including GCC and clang."
 arch=('x86_64')
 url="https://github.com/riscv-collab/riscv-gnu-toolchain"
 license=('GPL2')
-depends=()
-conflicts=(
+provides=(
   'riscv64-gnu-toolchain-elf-bin'
 )
-provides=(
+conflicts=(
   'riscv64-gnu-toolchain-elf-bin'
 )
 optdepends=()
@@ -22,22 +21,42 @@ source=(
 sha512sums=(
   "0b5a852416667460d7ba2bfe9820577bfd5f52b9ab7145aafdced09d4f4619f09af0714c0d8df2a5aff2e89be2711db856b32caca51ff9780852c91c806e8ec0"
 )
-_toolchain_prefix='riscv64-unknown-elf'
-_toolchain_prefix_alt='riscv64-unknown-unknown-elf'
 
 package() {
   install -dm755 "${pkgdir}"/opt/riscv64-gnu-toolchain-elf-llvm-bin "${pkgdir}"/usr/bin "${pkgdir}"/usr/lib/gcc
   cp -pR "${srcdir}"/riscv/* "${pkgdir}"/opt/riscv64-gnu-toolchain-elf-llvm-bin
-  ln -s /opt/riscv64-gnu-toolchain-elf-llvm-bin/"${_toolchain_prefix}" "${pkgdir}"/usr
-  for f in "${srcdir}"/riscv/bin/"${_toolchain_prefix}"-*; do
+
+  # Install sysroot
+  if test -d "${pkgdir}"/opt/riscv64-gnu-toolchain-elf-llvm-bin/sysroot; then
+    sysroot=/opt/riscv64-gnu-toolchain-elf-llvm-bin/sysroot
+  else
+    sysroot=/opt/riscv64-gnu-toolchain-elf-llvm-bin/riscv64-unknown-elf
+  fi
+  ln -s "${sysroot}" "${pkgdir}"/usr/riscv64-unknown-elf
+
+  # Install cross libgcc
+  ln -s /opt/riscv64-gnu-toolchain-elf-llvm-bin/lib/gcc/riscv64-unknown-elf "${pkgdir}"/usr/lib/gcc
+
+  # Install binaries
+  for f in "${srcdir}"/riscv/bin/riscv64-unknown-elf-*; do
     f="$(basename "${f}")"
     ln -s /opt/riscv64-gnu-toolchain-elf-llvm-bin/bin/"${f}" "${pkgdir}"/usr/bin
   done
-  ln -s /opt/riscv64-gnu-toolchain-elf-llvm-bin/lib/gcc/"${_toolchain_prefix}" "${pkgdir}"/usr/lib/gcc
 
   # Also provide target quadruplet to prevent confusing clang
-  ln -s "${_toolchain_prefix}" "${pkgdir}"/usr/"${_toolchain_prefix_alt}"
-  ln -s "${_toolchain_prefix}" "${pkgdir}"/opt/riscv64-gnu-toolchain-elf-llvm-bin/"${_toolchain_prefix_alt}"
-  ln -s "${_toolchain_prefix}" "${pkgdir}"/usr/lib/gcc/"${_toolchain_prefix_alt}"
-  ln -s "${_toolchain_prefix}" "${pkgdir}"/opt/riscv64-gnu-toolchain-elf-llvm-bin/lib/gcc/"${_toolchain_prefix_alt}"
+  ln -s riscv64-unknown-elf "${pkgdir}"/usr/riscv64-unknown-unknown-elf
+  ln -s riscv64-unknown-elf "${pkgdir}"/usr/lib/gcc/riscv64-unknown-unknown-elf
+  find \
+    "${pkgdir}" \
+    -name riscv64-unknown-elf \
+    -type d \
+    -exec /bin/sh -c 'ln -s riscv64-unknown-elf "$(dirname "$0")"/riscv64-unknown-unknown-elf' {} \;
+
+  # Strip
+  find \
+    "${pkgdir}"/opt/riscv64-gnu-toolchain-elf-llvm-bin/bin \
+    "${pkgdir}"/opt/riscv64-gnu-toolchain-elf-llvm-bin/lib \
+    "${pkgdir}"/opt/riscv64-gnu-toolchain-elf-llvm-bin/libexec \
+    -type f \
+    -exec /bin/sh -c 'if file --no-sandbox "$0" | grep -qE "ELF.*(executable|shared object)"; then strip "$0"; fi' {} \;
 }
