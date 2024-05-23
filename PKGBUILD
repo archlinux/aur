@@ -6,11 +6,11 @@
 
 pkgname=xavs2-git
 pkgver=1.4.r0.geae1e8b
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard (git version)'
 url='https://github.com/pkuvcl/xavs2/'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('glibc' 'liblsmash.so')
 makedepends=('git' 'nasm' 'l-smash')
 provides=('xavs2' 'libxavs2-git')
@@ -26,6 +26,10 @@ pkgver() {
 
 build() {
     cd xavs2/build/linux
+    
+    # fix build with gcc 14
+    export CFLAGS+=' -Wno-incompatible-pointer-types'
+    
     ./configure \
         --prefix='/usr' \
         --enable-shared \
