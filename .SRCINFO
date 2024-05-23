@@ -4,10 +4,12 @@ pkgbase = pg_vectorize
 	pkgrel = 1
 	url = https://github.com/tembo-io/pg_vectorize
 	arch = x86_64
-	license = PostgreSQL
+	license = MIT
 	makedepends = cargo
 	makedepends = postgresql-libs
 	depends = postgresql
+	depends = pg_cron
+	depends = pgvector
 	source = https://github.com/tembo-io/pg_vectorize/archive/refs/tags/v0.15.0.tar.gz
 	sha256sums = 6577218f9e30d37625f4f153b2fa2b18fef43fea9cd0cc328ad95cd7735add3f
 
