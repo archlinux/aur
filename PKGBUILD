@@ -5,7 +5,7 @@
 
 pkgname=rtl8814au-dkms-git
 _pkgbase=rtl8814au
-pkgver=5.8.5.1.r149.g752d8ea
+pkgver=5.8.5.1.r182.g8105736
 pkgrel=1
 pkgdesc="RTL8814AU and RTL8813AU chipset driver with firmware v5.8.5.1"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')

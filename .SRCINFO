@@ -1,6 +1,6 @@
 pkgbase = rtl8814au-dkms-git
 	pkgdesc = RTL8814AU and RTL8813AU chipset driver with firmware v5.8.5.1
-	pkgver = 5.8.5.1.r149.g752d8ea
+	pkgver = 5.8.5.1.r182.g8105736
 	pkgrel = 1
 	url = https://github.com/morrownr/8814au
 	arch = x86_64
