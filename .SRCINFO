@@ -1,0 +1,21 @@
+pkgbase = pulsecontrol-git
+	pkgdesc = A fork of pavucontrol aiming at better UX
+	pkgver = 0.9
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.freedesktop.org/oxayotl/pavucontrol/-/tree/fork
+	arch = x86_64
+	license = GPL
+	checkdepends = tidy
+	makedepends = git
+	makedepends = meson
+	depends = gtkmm-4.0
+	depends = json-glib
+	depends = libcanberra
+	depends = libsigc++
+	depends = libadwaita
+	optdepends = pulseaudio: Audio backend
+	source = git+https://gitlab.freedesktop.org/oxayotl/pavucontrol.git#branch=fork
+	b2sums = SKIP
+
+pkgname = pulsecontrol-git
