@@ -1,7 +1,7 @@
 pkgbase = hardinfo2
 	pkgdesc = System Information and Benchmark for Linux Systems.
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hardinfo2.org
 	arch = x86_64
 	license = GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later

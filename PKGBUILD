@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
 url="https://www.hardinfo2.org"
@@ -27,7 +27,7 @@ sha256sums=('f09f42f4e27e9d1989f2b1accff002bae4ce07e18c8fafa3e08184f965a56a96')
 
 build() {
   cmake -B build -S "$pkgname-release-$pkgver" \
-    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='lib' \
     -Wno-dev
