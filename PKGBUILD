@@ -1,7 +1,7 @@
 # Maintainer: Janne Veteläinen <janne.p.w.vetelainen@gmail.com>
 
 pkgname=vmangos-git
-pkgver=r6191.7e38088bb
+pkgver=r6209.1ba3b859c
 pkgrel=1
 pkgdesc="MMORPG server emulator"
 arch=('x86_64')
@@ -28,17 +28,18 @@ backup=(
     'etc/vmangos/mangosd.conf'
     'etc/vmangos/realmd.conf'
 )
-install="${pkgname}.install"
+install="$pkgname.install"
 provides=('vmangos')
 conflicts=('vmangos')
 source=(
-    "${pkgname}::git+https://github.com/vmangos/core.git"
+    "$pkgname::git+https://github.com/vmangos/core.git"
     "worlddb::git+https://github.com/brotalnia/database.git"
     "user.conf"
     "tmpfile.conf"
     "vmangos-realmd.service"
     "vmangos-mangosd.service"
     "vmangos-mangosd.socket"
+    "cpp17.patch"
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -46,7 +47,8 @@ sha256sums=('SKIP'
             '4e48db8fa3291429f7b0a5fe7a5a696ddc1809efd781b78355e4d6804d4dadc3'
             'cf30a0c18c6596235f3f95868a1d19bd2a07fd6accd946b619e3d1c3de8d3514'
             '9d99c70255ec8749a8d59010c53d76c41251783acfccf6c335c5dffa63b5d037'
-            'c3cee4cb049545cb9c0857f8977120d219d8afcf5c1cb0531546d38ecde98783')
+            'c3cee4cb049545cb9c0857f8977120d219d8afcf5c1cb0531546d38ecde98783'
+            'd04b6f59367d0fae2afd91dfa09837d55942838a28abb021637f9491b923e035')
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -54,6 +56,9 @@ pkgver() {
 }
 
 prepare() {
+    cd "$srcdir/$pkgname"
+    patch < "$srcdir/cpp17.patch"
+
     cd "$srcdir/worlddb"
     7z e world_full_14_june_2021.7z
 
