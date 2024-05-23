@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=8.2.r7.g7b0d44f8
+pkgver=9.9.r5.g68925c8f
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('x86_64')
 url='https://www.wine-staging.com/'
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=(
     'attr'             'lib32-attr'
     'fontconfig'       'lib32-fontconfig'
@@ -43,7 +43,6 @@ makedepends=('git' 'perl' 'mingw-w64-gcc'
     'ffmpeg'
     'samba'
     'opencl-headers'
-    'python'
 )
 optdepends=(
     'giflib'                'lib32-giflib'
@@ -104,9 +103,15 @@ pkgver() {
 }
 
 build() {
-    # does not compile without remove these flags as of 4.10
-    export CFLAGS="${CFLAGS/-fno-plt/}"
-    export LDFLAGS="${LDFLAGS/,-z,now/}"
+    export CFLAGS+=' -ffat-lto-objects'
+    
+    # apply flags for cross-compilation
+    export CROSSCFLAGS="${CFLAGS/-Werror=format-security/}"
+    export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+    export CROSSLDFLAGS="${LDFLAGS//-Wl,-z*([^[:space:]])/}"
+    
+    # fix build with gcc 14
+    export CFLAGS+=' -Wno-incompatible-pointer-types'
     
     # build wine-staging 64-bit
     # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
