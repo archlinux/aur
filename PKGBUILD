@@ -1,7 +1,7 @@
 # Maintainer: paradoxxx.zero <paradoxxx.zero@gmail.com>
 
 pkgname=zed-editor-preview-bin
-pkgver=0.136.2
+pkgver=0.137.0
 pkgrel=1
 pkgdesc="A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter. (binary package)"
 arch=('x86_64')
@@ -11,12 +11,13 @@ depends=("alsa-lib" "gcc-libs" "glibc" "libxau" "libxcb" "libxdmcp" "libxkbcommo
 _filename="zed-linux-${CARCH}.tar.gz"
 _appdir="zed-preview.app"
 source=("$pkgname-$pkgver.tar.gz::https://zed.dev/api/releases/preview/${pkgver}/${_filename}")
-sha256sums=('55a7065b0432f388927940715887403464634827b09304cd648048acd7d1d979')
+sha256sums=('99336c43348e92c2cf0e333cc4664e49332c20ccc988a0dc520511b56e66e57b')
 provides=(zed-editor)
 conflicts=(zed-editor)
+options=(!strip !debug)
 
 package() {
-  tar -xv -f "$srcdir/$pkgname-$pkgver.tar.gz"
+  tar -xv -f "$srcdir/$pkgname-$pkgver.tar.gz" bin share
   cd "${_appdir}"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "bin/zed"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "bin/cli"
