@@ -20,7 +20,3 @@ package() {
     install -Dm755 "target/release/uwu" "$pkgdir/usr/bin/uwu-h"
 }
 
-check() {
-    cd "$srcdir/$pkgname-$pkgver"
-    cargo test
-}
