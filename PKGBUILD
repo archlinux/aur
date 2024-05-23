@@ -1,5 +1,5 @@
 pkgname=pocketbase-bin
-pkgver=v0.22.12
+pkgver=0.22.12
 pkgrel=1
 pkgdesc="Open source backend for your next project in 1 file"
 arch=('x86_64')
