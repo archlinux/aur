@@ -1,2 +1,5 @@
+*.deb
+*.rpm
 *.tar.gz
-*.pkg.tar*
+*.tar.zst
+*.zip
