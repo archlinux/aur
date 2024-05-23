@@ -1,48 +1,67 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
 # Contributor: Nikola Hadžić <nikola@firemail.cc>
-
 pkgname=gst-plugins-rs
-pkgver=1.24.2
+pkgver=1.24.3
 pkgrel=1
-pkgdesc="GStreamer plugins written in Rust (dav1d disabled when fail to build)"
-arch=(x86_64)
+pkgdesc="GStreamer plugins written in Rust"
+arch=('x86_64')
 url="https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs"
-license=(Apache LGPL2.1 MIT MPL2)
-depends=(glibc gcc-libs glib2 pango cairo graphene openssl
-         gst-plugins-base-libs gst-plugins-bad-libs
-         gstreamer gtk4 dav1d libsodium libwebp)
-makedepends=(git rust meson cargo-c clang nasm hotdoc python-tomli)
-provides=(gst-plugin-gtk4)
-conflicts=(gst-plugin-gtk4)
-source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=gstreamer-${pkgver}")
-sha256sums=(SKIP)
-options=(!lto)
+license=('Apache-2.0 AND LGPL-2.1-or-later AND MIT AND MPL-2.0')
+depends=(
+  'cairo'
+#  'dav1d'  ## requires <1.3
+  'gst-plugins-base-libs'
+  'gst-plugins-bad-libs'
+  'graphene'
+  'gstreamer'
+  'gtk4'
+  'libwebp'
+  'libsodium'
+  'openssl'
+  'pango'
+)
+makedepends=(
+  'cargo'
+  'cargo-c'
+  'clang'
+  'git'
+  'hotdoc'
+  'meson'
+  'nasm'
+  'python-tomli'
+)
+provides=('gst-plugin-gtk4')
+conflicts=('gst-plugin-gtk4')
+source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=gstreamer-$pkgver")
+sha256sums=('c350793466ebca167839156a30587c6a8cce29fdcbf3f33d665c57c8fb9cc2b2')
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
-  #cargo fetch --target x86_64-unknown-linux-gnu --manifest-path "${srcdir}/${pkgname}/Cargo.toml"
+  cd "$pkgname"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target x86_64-unknown-linux-gnu
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-
-  #  -D doc=disabled \
-  #  -D csound=enabled \
-  #  -D dav1d=enabled \
-  #  -D sodium=enabled
-  #  -D sodium-source=system
-
+  CFLAGS+=" -ffat-lto-objects"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  arch-meson build \
-    -D dav1d=disabled
-
+  arch-meson "$pkgname" build \
+    -D sodium-source='system' \
+    -D dav1d='disabled'
   meson compile -C build
 }
 
+check() {
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  meson test -C build --print-errorlogs || :
+}
+
 package() {
-  cd "${srcdir}/${pkgname}"
-  meson install -C build --destdir "${pkgdir}"
-  install -D LICENSE-* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  meson install -C build --destdir "$pkgdir"
+
+  cd "$pkgname"
+  install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
