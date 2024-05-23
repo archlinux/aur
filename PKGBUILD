@@ -7,13 +7,14 @@ pkgdesc="A Postgres extension that automates the transformation and orchestratio
 arch=('x86_64')
 url="https://github.com/tembo-io/pg_vectorize"
 license=('MIT')
-depends=('postgresql' 'pg_cron' 'pgvector')
+depends=('postgresql' 'pg_cron' 'pgvecto.rs-bin')
 makedepends=('cargo' 'postgresql-libs' 'cargo-pgrx')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('6577218f9e30d37625f4f153b2fa2b18fef43fea9cd0cc328ad95cd7735add3f')
 
 build() {
     cd "$srcdir/pg_vectorize-$pkgver/extension"
+      cargo pgrx init --pg16 /usr/bin/pg_config
     cargo build --release --features pg16 --no-default-features
 }
 
