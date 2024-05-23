@@ -8,6 +8,7 @@ url="https://github.com/rotorflight/rotorflight-configurator"
 license=('MIT')
 depends=('python' 'nodejs' 'npm' 'nvm')
 makedepends=('yarn')
+options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rotorflight/rotorflight-configurator/archive/refs/tags/release/${pkgver}.tar.gz"
         "$pkgname.desktop")
 sha512sums=('4e344c15a014102bc102fdbe7ce46119b2aaa44f025eff1f16b0f97c71a2af564251f45f6e47f8ef644b6e888360b8c00e79bac8d7639aef1c1215bace8ab4d8'
