@@ -9,10 +9,10 @@ arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
 license=('Apache')
 
-depends=('cmake' 'ninja' 'gperf' 'ccache' 'dfu-util' 'dtc'
-         'python-pip' 'python-pyelftools' 'python-setuptools' 'python-wheel'
-         'tk' 'xz')
-optdepends=('pyocd: programming and debugging ARM MCUs'
+depends=('cmake' 'gperf' 'dfu-util' 'dtc' 'tk' 'xz')
+makedepends=('python')
+optdepends=('ninja' 'make' 'ccache' 'python-pyelftools'
+            'pyocd: programming and debugging ARM MCUs'
             'python-west: Zephyr RTOS Project meta-tool')
 makedepends=('patchelf' 'wget')
 provides=('zephyr-sdk')
