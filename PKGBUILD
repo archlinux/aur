@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=adbcdrivermanager
-_pkgver=0.11.0
+_pkgver=0.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dd000875d9a46549f07a4cf090ba5b37')
-b2sums=('b222c9a4541318cb7af9746490c8392ceddc3618b05805c32896f28be7d6dc904b5c08b7be6acdbf386084e663075f95821d0cd8da227e75ce41bb0d651dd69c')
+md5sums=('28e8be398fd50f01e5358c044f7956d0')
+b2sums=('c5e2a85c3d4d424aaa3f43062ebcc8866bcbcf7f060148c43b8993e2d5ff836a75be150783906ac25af9437b5796cdf959fcae569f2b44a855a6a1cdba16c4f6')
 
 build() {
   mkdir build
