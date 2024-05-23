@@ -54,7 +54,7 @@ build() {
                        -gencode=arch=compute_90,code=compute_90"
 
   export CXXFLAGS+=" -ffat-lto-objects"
-  make CXX=/opt/cuda/bin/g++ CUDA_HOME=/opt/cuda PREFIX=/usr src.build
+  make CXX="$NVCC_CCBIN" CUDA_HOME=/opt/cuda PREFIX=/usr src.build
 }
 
 package() {
