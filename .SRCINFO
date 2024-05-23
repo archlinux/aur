@@ -1,6 +1,6 @@
 pkgbase = hydrus-docs
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop (documentation)
-	pkgver = 575
+	pkgver = 576
 	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = hydrus-docs
 	makedepends = mkdocs-material
 	makedepends = pymdown-extensions>=9.4
 	options = !strip
-	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=2e28ed3ca9ba9d0f92b34adf7bc520cb9ffb66fa
+	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=b202eb70dfecc38ad858c7c9a185f571be8ee197
 	sha256sums = SKIP
 
 pkgname = hydrus-docs
