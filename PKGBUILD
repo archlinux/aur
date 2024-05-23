@@ -1,6 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
-pkgname=zephyr-sdk
+_pkgname=zephyr-sdk
+pkgname="${_pkgname}-bin"
 pkgver=0.16.6
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
@@ -14,6 +15,8 @@ depends=('cmake' 'ninja' 'gperf' 'ccache' 'dfu-util' 'dtc'
 optdepends=('pyocd: programming and debugging ARM MCUs'
             'python-west: Zephyr RTOS Project meta-tool')
 makedepends=('patchelf' 'wget')
+provides=('zephyr-sdk')
+conflicts=('zephyr-sdk')
 
 source=("profile-zephyr-sdk.sh" "profile-zephyr-sdk.ash")
 source_x86_64=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64.tar.xz")
