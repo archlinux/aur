@@ -4,10 +4,10 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=rio
-_pkgver=1.0.1
+_pkgver=1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A Swiss-Army Knife for Data I/O"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ depends=(
   r-haven
   r-lifecycle
   r-r.utils
+  r-readr
   r-readxl
-  r-stringi
   r-tibble
   r-writexl
 )
@@ -46,16 +46,17 @@ optdepends=(
   r-pzfx
   r-qs
   r-readods
-  r-readr
   r-rmarkdown
   r-rmatio
+  r-stringi
   r-testthat
+  r-withr
   r-xml2
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('10999152910a11bcccc2b85e78cfda4f')
-b2sums=('dfe07373a3c0430a651de382a4ba13e3d079ff4e63cb9f51752e3314cf3dc1eec849039c737213983efd1b2a92e60752adfe65e9743d2bcd8917f27e660d7602')
+md5sums=('a2c0c95c95553f4f0b19e1ed42d4464c')
+b2sums=('598938bdbc29b4470a2df661ef4d954f7d1f57e7d658f5b85561e7dc222188bf3beb89d058d2e6d276b0eca72cb2da8b9745cf7bbf2c705c2989f90dc1cef03b')
 
 build() {
   mkdir build
