@@ -11,11 +11,12 @@ pkgbase = seven-waves-git
 	makedepends = yarn
 	makedepends = icoutils
 	makedepends = git
+	makedepends = curl
 	depends = electron22
 	conflicts = seven-waves
 	source = seven-waves.git::git+https://github.com/Togohogo1/7-Waves.git
 	source = seven-waves.sh
 	sha256sums = SKIP
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = seven-waves-git
