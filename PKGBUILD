@@ -4,7 +4,7 @@
 
 _target=riscv-none-elf
 pkgname=$_target-gcc-stage1
-pkgver=13.2.0
+pkgver=14.1.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for RISC-V (bare-metal) target, stage 1'
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=($_target-binutils zlib libmpc libisl zstd)
 makedepends=(gmp mpfr)
 options=(!emptydirs !lto)
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
-sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
+sha512sums=('e9e224f2b26646fcf038d28dfa08b94c623bc57941f99894a321d01c600f7c68aff6b8837fd25e73e540de1f8de5606e98694a62cdcdfb525ce768b3ef6879ea'
             'SKIP')
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
