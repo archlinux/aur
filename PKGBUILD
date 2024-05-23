@@ -1,17 +1,18 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
-_hgname=fc-ota-tools
+_hgname=themwi-ota-tools
 _pkgname=freecalypso-ota-tools
 pkgname="${_pkgname}-hg"
-pkgver=r9.b6331ae4eea9
-pkgrel=2
+pkgver=r11.b4b4a822286c
+pkgrel=1
 pkgdesc="FreeCalypso tools for OTA SIM programming"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_hgname}"
 license=('custom')
 groups=('freecalypso')
-depends=()
+depends=('openssl')
 makedepends=('mercurial')
+conflicts=("${_pkgname}")
 source=("hg+https://www.freecalypso.org/hg/${_hgname}")
 md5sums=('SKIP')
 
@@ -22,6 +23,7 @@ pkgver() {
 
 build() {
 	cd "${_hgname}"
+	./configure --prefix="/usr" CFLAGS="-std=gnu89 ${CFLAGS}"
 	make
 }
 
@@ -30,6 +32,5 @@ package() {
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-	# DESTDIR is not respected, use INSTBIN instead (there is no INSTALL_PREFIX!)
-	make INSTBIN="${pkgdir}/opt/freecalypso/bin" install
+	make DESTDIR=$pkgdir install
 }
