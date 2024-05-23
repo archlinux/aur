@@ -3,13 +3,13 @@
 pkgbase=vosk-api
 pkgname=('vosk-api' 'python-vosk')
 pkgver=0.3.50
-pkgrel=1
+pkgrel=2
 _openblas_ver=0.3.20
 _clapack_ver=3.2.1
-_model_small_ver=0.15
-_model_spk_ver=0.4
 _openfst_commit=7dfd808194105162f20084bb4d8e4ee4b65266d5
 _kaldi_commit=2b69aed630e26fb2c700bba8c45f3bd012371c5c
+_model_small_ver=0.15
+_model_spk_ver=0.4
 pkgdesc='Offline speech recognition toolkit'
 arch=('x86_64')
 url='https://alphacephei.com/vosk/'
@@ -21,26 +21,32 @@ checkdepends=('ffmpeg' 'python-numpy')
 source=("https://github.com/alphacep/vosk-api/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz"
         "https://github.com/xianyi/OpenBLAS/archive/v${_openblas_ver}/openblas-${_openblas_ver}.tar.gz"
         "https://github.com/alphacep/clapack/archive/v${_clapack_ver}/clapack-${_clapack_ver}.tar.gz"
+        "git+https://github.com/alphacep/openfst.git#commit=${_openfst_commit}"
         "kaldi-vosk-g${_kaldi_commit:0:7}.tar.gz"::"https://github.com/alphacep/kaldi/archive/${_kaldi_commit}.tar.gz"
         "https://alphacephei.com/vosk/models/vosk-model-small-en-us-${_model_small_ver}.zip"
         "https://alphacephei.com/vosk/models/vosk-model-spk-${_model_spk_ver}.zip"
-        "git+https://github.com/alphacep/openfst.git#commit=${_openfst_commit}")
+        '010-vosk-api-openfst-gcc14-fix.patch')
 noextract=("vosk-model-small-en-us-${_model_small_ver}.zip")
 sha256sums=('cc1067bcc599c9a2f5f38d4257caf2ac636ba244f7c965cee20293a41024f70f'
             '8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c'
             '8d8ff8259454cae392bb58bc4971fef1db632c9fb5cdf61255cd495bd6d6ac4d'
+            'cfab49539f89e7e0ceba228300c08343a6857c28d1afcfecaaa6656bc6ab675e'
             'fc025cae7246b780ba7ba85deeff0386ec272d901185058c0b5e614543d5676c'
             '30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498'
             'a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7'
-            'cfab49539f89e7e0ceba228300c08343a6857c28d1afcfecaaa6656bc6ab675e')
+            '30908c76206fdf88b5606234665f12fc6effd61cd09c64ec6dfd379c383dda15')
 
 prepare() {
     mkdir -p models
     bsdtar -x -f  "vosk-model-small-en-us-${_model_small_ver}.zip" -C models
+    
     ln -sf "../../../vosk-model-spk-${_model_spk_ver}" "${pkgbase}-${pkgver}/python/example/model-spk"
     ln -sf "../../OpenBLAS-${_openblas_ver}" "kaldi-${_kaldi_commit}/tools/OpenBLAS"
     ln -sf "../../clapack-${_clapack_ver}" "kaldi-${_kaldi_commit}/tools/clapack"
     ln -sf ../../openfst "kaldi-${_kaldi_commit}/tools/openfst"
+    
+    patch -d openfst -Np1 -i "${srcdir}/010-vosk-api-openfst-gcc14-fix.patch"
+    
     autoreconf -fi openfst
 }
 
@@ -50,16 +56,18 @@ build() {
     export CXXFLAGS+=' -ffat-lto-objects'
     
     # openblas
+    CFLAGS+=' -Wno-implicit-function-declaration' \
     make -C "OpenBLAS-${_openblas_ver}" ONLY_CBLAS='1' DYNAMIC_ARCH='1' TARGET='NEHALEM' USE_LOCKING='1' USE_THREAD='0' all
     make -C "OpenBLAS-${_openblas_ver}" PREFIX="${srcdir}/OpenBLAS-${_openblas_ver}/install" install
     
     # clapack
-    CFLAGS+=' -Wno-error=format-security -fcommon' cmake -B "build-clapack-${_clapack_ver}" -S "clapack-${_clapack_ver}" -Wno-dev
+    CFLAGS+=' -Wno-error=format-security -fcommon -Wno-implicit-function-declaration' \
+    cmake -B "build-clapack-${_clapack_ver}" -S "clapack-${_clapack_ver}" -Wno-dev
     cmake --build "build-clapack-${_clapack_ver}"
     while read -r -d '' _file
     do
         cp -af "$_file" "${srcdir}/OpenBLAS-${_openblas_ver}/install/lib"
-    done < <(find "build-clapack-${_clapack_ver}" -type f -name '*.a' -print0)
+    done < <(find "build-clapack-${_clapack_ver}" -type f -name 'lib*.a' -print0)
     
     # openfst
     cd openfst
@@ -130,9 +138,9 @@ package_python-vosk() {
     depends=('python' 'python-cffi' 'python-requests' 'python-srt' 'python-tqdm' 'python-websockets'
              "vosk-api=${pkgver}")
     
-    local _pyver
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+    local _site_pkgs
+    _site_pkgs="$(python -c 'import site; print(site.getsitepackages()[0])')"
     python -m installer --destdir="$pkgdir" "${pkgbase}-${pkgver}/python/dist"/*.whl
-    rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
-    ln -s ../../../libvosk.so "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
+    rm "${pkgdir}${_site_pkgs}/vosk/libvosk.so"
+    ln -s ../../../libvosk.so "${pkgdir}${_site_pkgs}/vosk/libvosk.so"
 }
