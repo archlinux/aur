@@ -4,14 +4,17 @@ _pkgname=crossover-overlay
 _pkgname2=crossoverlay
 pkgname=$_pkgname-bin
 pkgver=3.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="🎯 A Crosshair Overlay for any screen (binary release, system Electron)"
 arch=('x86_64' 'i686')
 url="https://github.com/lacymorrow/crossover"
-license=('CCPL:by-nc-sa4')
-depends=('electron' 'http-parser' 'libappindicator-gtk3' 'libnotify' 'libvpx' 'libxss' 're2')
-conflicts=($_pkgname)
-provides=($_pkgname)
+license=('CC-BY-SA-4.0')
+arch=('x86_64' 'i686')
+depends=('at-spi2-core' 'electron' 'gtk3' 'libnotify' 'libsecret' 'libxss' 'libxtst'
+         'nss' 'util-linux-libs' 'xdg-utils')
+optdepends=('libappindicator-gtk3')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 _desktop=$_pkgname2.desktop
 source_x86_64=("$url/releases/download/v$pkgver/CrossOver-$pkgver-x86_64.rpm")
 source_i686=("$url/releases/download/v$pkgver/CrossOver-$pkgver-i686.rpm ")
@@ -20,13 +23,14 @@ sha256sums_i686=('SKIP')
 
 prepare() {
   # Create an exec file
-  echo -e "export ELECTRON_IS_DEV=0\n\
+  echo -e "#!/bin/sh\n\
+export ELECTRON_IS_DEV=0\n\
 cd /usr/lib/$_pkgname2\n\
 exec electron /usr/lib/$_pkgname2/app.asar \$@" > $_pkgname2
   # Edit the shortcut
   mv usr/share/applications/crossover.desktop $_desktop
   chmod 644 $_desktop
-  sed -i -E "s|Exec=/opt/CrossOver/crossover %U|Exec=$_pkgname2 %U|g" $_desktop
+  sed -i -E "s|Exec=/opt/CrossOver/crossover %U|Exec=$_pkgname2|g" $_desktop
   sed -i -E "s|Icon=crossover|Icon=$_pkgname2|g" $_desktop
   # Remove unnecessary files
   cd opt/CrossOver/resources
