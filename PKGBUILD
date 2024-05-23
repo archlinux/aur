@@ -17,6 +17,6 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 "target/release/uwu" "$pkgdir/usr/bin/uwu-h"
+    install -Dm755 "target/release/uwu-h" "$pkgdir/usr/bin/uwu-h"
 }
 
