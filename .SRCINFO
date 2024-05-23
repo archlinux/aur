@@ -1,6 +1,6 @@
 pkgbase = okular
 	pkgdesc = Document Viewer
-	pkgver = 24.04.90
+	pkgver = 24.05.0
 	pkgrel = 1
 	url = https://apps.kde.org/okular/
 	arch = x86_64
@@ -53,12 +53,12 @@ pkgbase = okular
 	optdepends = unarchiver: Comic Book Archive support (alternative)
 	optdepends = unrar: Comic Book Archive support
 	options = !zipman
-	source = https://download.kde.org/unstable/release-service/24.04.90/src/okular-24.04.90.tar.xz
-	source = https://download.kde.org/unstable/release-service/24.04.90/src/okular-24.04.90.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/24.05.0/src/okular-24.05.0.tar.xz
+	source = https://download.kde.org/stable/release-service/24.05.0/src/okular-24.05.0.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 307bde281a6fd8d55d34df7fa195ea2e680c2b7352a74fa02491fe7967e480b2
+	sha256sums = 6f322f78de2aa0a4079351fe4651c080bd98d27eeb7f9dcc37765271b4a3ac80
 	sha256sums = SKIP
 
 pkgname = okular
