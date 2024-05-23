@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=recount
-_pkgver=1.28.0
+_pkgver=1.30.2
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.2
 pkgrel=1
 pkgdesc='Explore and download data from the recount project'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ef6037f3fccee7a3b5e823202753b3d490173ea4e401e0668af364e64976c2da')
+sha256sums=('2b91c76dc911a17f91f1e3f92f0654ceeca0ad71902dbaf8f77ff64d23b8b639')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
