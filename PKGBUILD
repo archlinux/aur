@@ -3,7 +3,7 @@
 
 pkgname="discord-chat-exporter-cli"
 _apkgname="DiscordChatExporter"
-pkgver=2.43.1
+pkgver=2.43.2
 pkgrel=1
 _dotnet_ver=8.0
 
@@ -27,7 +27,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   "$pkgname"
 )
-b2sums=('43e4465c2c3c92dfb29d9cb3eb124b39dff08257b561612128b68157909681d64efd6654f6bb314c7c7541d6ab26c375c60d0915815555f668642b2c917fad11'
+b2sums=('906acb0ef2335acb7d4b9cc88bf017c4b6e9e3ca83d349cdbb67747e339f4e36c11e6847586e781344e2757bf0456ed424c2026f044a3cfd2babbce06e1b3131'
         '7540fb95f81c1041c87778c590a9438ffb64bf417c3d4d3f1363da5a25898c98f9dcd1209b9237bd595374a33326b7f23043bd6156cc7e14f0bff230ee0f6de6')
 
 prepare() {
@@ -42,6 +42,7 @@ build() {
   mkdir -p "$srcdir/bin"
   cd "$_apkgname-$pkgver"
 
+  # trimming is only relevant for self-contained builds
   export DOTNET_NOLOGO=true
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
   dotnet publish \
@@ -49,6 +50,7 @@ build() {
     --self-contained false \
     --configuration Release \
     --output "$srcdir/bin" \
+    -p:PublishTrimmed=false \
     "$_apkgname.Cli"
 }
 
