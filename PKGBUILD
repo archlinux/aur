@@ -280,7 +280,7 @@ _prepare() {
   export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
   export CC=/usr/bin/gcc
   export CXX=/usr/bin/g++
-  export CUDAHOSTCXX=/opt/cuda/bin/g++
+  export CUDAHOSTCXX="${NVCC_CCBIN}"
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
   # hide build-time CUDA devices
