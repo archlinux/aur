@@ -1,11 +1,12 @@
+# Maintainer: Karl Ludwig Brennan <karlludwigbrennan@outlook.com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: James Rayner <iphitus@gmail.com>
 
 pkgbase=nvidia-510xx-utils
 pkgname=('nvidia-510xx-utils' 'opencl-510xx-nvidia' 'nvidia-510xx-dkms')
-pkgver=510.85.02
-pkgrel=2
+pkgver=510.108.03
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -14,11 +15,27 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=('nvidia-drm-outputclass.conf'
         'nvidia-utils.sysusers'
         'nvidia.rules'
-        "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
+        "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
+        "0001-Fix-conftest-to-ignore-implicit-function-declaration.patch"
+        "0002-Fix-conftest-to-use-a-short-wchar_t.patch"
+        "0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch"
+        'kernel-6.2.patch'
+        'kernel-6.3.patch'
+        'kernel-6.4.patch'
+        'kernel-6.5.patch'
+        'kernel-6.8.patch')
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
-            'ce04706b707d08f601ee23ed2f4b5d6b4c2e8c17d74557b720be64e0c0f4ff915bcf35efa2470c27d90a7e1bad4eab48e6d9b2b1f05442546d3324f2a10fa69b')
+            '70fbd91b0dc5db119acf20654854c417bb14889e84145e2675dc893e7247a9c34f90820cddb8202cf5c3219abc286c7014b247a2ce94bdb5681a1bca96f41a29'
+            '29df50e64a4f797028d05df78395683ce14b604fc7c7f8270c9c23b57311cfba749c132e8530d48eee935c2187323b14c6c429bf70243314350b99d2cac23acc'
+            '6cf622b8c139e1a08c7fcf248a6b5e2054cbad765fda9709c2ead17a937a2fe3d6822703ae406f0505d5f49511903b993a41f136b5329f7553dca973dc058280'
+            '118e38fe021c3b182a6014d5a0dafe5251a30fdb3424813a2808d0494c4021951ebf561fc15c60544e5fd4b24d1f5d944d473b16d3d641428de45acb605fd48f'
+            '0446d411f549e1a56d48c53f8d0284eb9942d1addeb7f6b8b72c8425303b94f0602f9227f8777898aa6c3a23a6ef572a4ce57739ac848fac34abd85fed10255c'
+            '7454bd88dbe0c9e162724e9be695db41510de0804453e0158d0d807077196d305e02ad215c2f9d2ad00cdb33fead71e4f26976391dec63f409fe5c60d79cf3ed'
+            'd5f80a7deb76ada84e89ff1ca26772546505f11322bfe3f6f17a043f17bcaace3512096af8d4156f725cf7d87dfb2218a23a9edf0f326834c85144bebb7ec3c6'
+            'c71753a23cc7bb1b8750cc24c64f1a31bf50680af555406eaa5a5b19fde4933cdf9fbc6a0d9d46030feaf8b5fa42267ad509b0f8b478ae2dabb3f4be23d85be2'
+            'd4faf1807de57265407fd6dba9734301b8281c942324851792047708a50442a1feb76fd2ae48bc8e162210ee72e0f13ed0373ed33a7637a382703d6b96fe54de')
 
 
 create_links() {
@@ -37,6 +54,16 @@ prepare() {
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
     cd kernel
+
+    patch -p1 -i "${srcdir}/0001-Fix-conftest-to-ignore-implicit-function-declaration.patch"
+    patch -p1 -i "${srcdir}/0002-Fix-conftest-to-use-a-short-wchar_t.patch"
+    patch -p1 -i "${srcdir}/0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch"
+
+    patch -p1 -i "$srcdir/kernel-6.2.patch"
+    patch -p1 -i "$srcdir/kernel-6.3.patch"
+    patch -p1 -i "$srcdir/kernel-6.4.patch"
+    patch -p1 -i "$srcdir/kernel-6.5.patch"
+    patch -p1 -i "$srcdir/kernel-6.8.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
