@@ -2,14 +2,14 @@
 # Co-Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=ctlptl-bin
-pkgver=0.8.28
+pkgver=0.8.29
 pkgrel=1
 pkgdesc="Making local Kubernetes clusters fun and easy to set up"
 arch=('x86_64')
 url="https://github.com/tilt-dev/ctlptl"
 license=('Apache')
 source=("https://github.com/tilt-dev/ctlptl/releases/download/v${pkgver}/ctlptl.${pkgver}.linux.x86_64.tar.gz")
-sha256sums=('98a55d8bfd61ab95b72e2e81d21e540d704065ce90d7972cd4ed8600dd091905')
+sha256sums=('37872b5c6c053d233009f6b77c43c5e9d6f0486ef73ade66e6f9e5259b9ca483')
 
 package() {
   install -Dm 755 "$srcdir/ctlptl" "$pkgdir/usr/bin/ctlptl"
