@@ -2,7 +2,7 @@
 
 _pkgname=freecalypso-tools
 pkgname="${_pkgname}-hg"
-pkgver=r964.a96cb97b66a2
+pkgver=r1010.1d144553a5d0
 pkgrel=1
 pkgdesc="FreeCalypso host tools package"
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}"
-	make
+	make CFLAGS="-std=gnu89 ${CFLAGS}"
 }
 
 package() {
