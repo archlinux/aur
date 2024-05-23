@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226 at dot outlook.com>
 
 pkgname=ftb-app
-pkgver=1.25.9
+pkgver=1.25.10
 pkgrel=1
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
