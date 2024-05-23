@@ -16,6 +16,7 @@ depends=('glibc' 'gcc-libs' 'bash' 'hicolor-icon-theme' 'qt5-base' 'qt5-svg>=5.6
 #depends+=('desktop-file-utils')
 depends+=('nodejs')
 depends+=('qt5-webengine>=5.6' 'uchardet')
+depends+=('qt5-webkit') # It is required though namcap can't find any reference. notepadqq loads without webkit but crashes when you start editing
 makedepends=('git' 'qt5-tools')
 makedepends+=('qt5-websockets' 'qt5-tools>=5.6')
 optdepends=('mathjax2: Math rendering')

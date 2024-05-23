@@ -20,6 +20,7 @@ pkgbase = notepadqq-git
 	depends = nodejs
 	depends = qt5-webengine>=5.6
 	depends = uchardet
+	depends = qt5-webkit
 	optdepends = mathjax2: Math rendering
 	provides = notepadqq=2.0.0.beta
 	conflicts = notepadqq
