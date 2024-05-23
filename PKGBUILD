@@ -6,13 +6,13 @@
 pkgname=archey3
 # https://github.com/lclarkmichalek/archey3/blob/master/PKGBUILD
 pkgver=0.5
-pkgrel=15
+pkgrel=16
 pkgdesc='Output a logo and various system information'
 arch=(any)
 url='https://lclarkmichalek.github.io/archey3/'
 license=(GPL-3.0-or-later)
 depends=(python)
-makedepends=(git python-build python-installer python-wheel)
+makedepends=(git python-build python-installer python-wheel python-setuptools)
 optdepends=('imagemagick: for default screenshot command'
   'python-logbook: alternative logging system')
 source=('git+https://github.com/lclarkmichalek/archey3#commit=ac687529ec6208954f09c29f01760c66f73b1d10'
