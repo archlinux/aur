@@ -2,12 +2,12 @@
 # Contributor: Bumsik Kim <k.bumsik@gmail.com>
 
 pkgname=uftrace
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="Function graph tracer for C/C++/Rust"
 arch=('x86_64')
 url="https://github.com/namhyung/uftrace"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=(
   'libelf'
   'python'
@@ -26,7 +26,7 @@ makedepends=(
 options=('!lto')
 source=("uftrace-v${pkgver}.tar.gz"::"https://github.com/namhyung/uftrace/archive/v${pkgver}.tar.gz")
 # Use updpkgsums to update the checksum
-sha256sums=('c4f2a45687fd39dbde509635ebf094d7ed301793920f37bcaabb8161ff69f2fd')
+sha256sums=('dd0549f610d186b6f25fa2334a5e82b6ddc232ec6ca088dbb41b3fe66961d6bb')
 
 build() {
     cd "${pkgname}-${pkgver}"
