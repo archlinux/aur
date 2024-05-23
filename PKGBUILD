@@ -23,6 +23,7 @@ depends=('expect'
     'glow'
     'libcec'
     'python-systemd'
+    'amdgpu-test-scripts-common-git'
     'amd-s2idle-analysis-script-git'
 )
 provides=(sk-chos-addon)

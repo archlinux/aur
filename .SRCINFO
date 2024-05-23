@@ -20,6 +20,7 @@ pkgbase = sk-chos-addon
 	depends = glow
 	depends = libcec
 	depends = python-systemd
+	depends = amdgpu-test-scripts-common-git
 	depends = amd-s2idle-analysis-script-git
 	provides = sk-chos-addon
 	conflicts = sk-chos-addon-git
