@@ -1,73 +1,79 @@
-# Maintainer: Darius Niminenn <root at dnim dot dev>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Darius Niminenn <root at dnim dot dev>
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
-pkgname=litellm
-pkgver=1.31.8
+pkgname="litellm"
+pkgver=1.38.0
 pkgrel=1
-pkgdesc='Call all LLM APIs using the OpenAI format'
+pkgdesc="Call all LLM APIs using the OpenAI format"
 arch=(any)
-url='https://pypi.org/project/litellm/'
-license=(MIT)
+url="https://pypi.org/project/litellm/"
+license=("MIT")
 depends=(
-    'python'
-    'python-openai'
-    'python-dotenv'
-    'python-tiktoken'
-    'python-argon2_cffi'
-    'python-importlib-metadata'
-    'python-tokenizers'
-    'python-click'
-    'python-jinja'
-    'python-aiohttp'
-    'python-python-multipart'
-    'python-requests'
-    'python-setuptools'
+ "gunicorn"
+ "uvicorn"
+ "python"
+ "python-aiohttp"
+ "python-argon2_cffi"
+ "python-backoff"
+ "python-click"
+ "python-dotenv"
+ "python-fastapi"
+ "python-importlib-metadata"
+ "python-jinja"
+ "python-openai"
+ "python-orjson"
+ "python-pyjwt"
+ "python-python-multipart"
+ "python-requests"
+ "python-setuptools"
+ "python-tiktoken"
+ "python-tokenizers"
 )
 makedepends=(
-    'python-build'
-    'python-installer'
-    'python-poetry-core'
-    'python-wheel'
+ "python-build"
+ "python-installer"
+ "python-poetry-core"
+ "python-wheel"
 )
 optdepends=(
-    'uvicorn: ASGI server for asyncio'
-    'gunicorn: WSGI HTTP Server'
-    'python-fastapi: Framework for building APIs'
-    'python-backoff: Backoff strategies for retrying operations'
-    'python-yaml: YAML parser and emitter'
-    'python-rq: Simple job queues for Python'
-    'python-orjson: Fast JSON parser and serializer'
-    'python-apscheduler: Task scheduler'
-    'python-streamlit: App framework for Machine Learning and Data Science'
-    'ollama: Serve local ollama models'
+ "uvicorn: ASGI server for asyncio"
+ "gunicorn: WSGI HTTP Server"
+ "python-fastapi: Framework for building APIs"
+ "python-backoff: Backoff strategies for retrying operations"
+ "python-yaml: YAML parser and emitter"
+ "python-rq: Simple job queues for Python"
+ "python-orjson: Fast JSON parser and serializer"
+ "python-apscheduler: Task scheduler"
+ "python-streamlit: App framework for Machine Learning and Data Science"
+ "ollama: Serve local ollama models"
 )
 
-source=(
-	"https://files.pythonhosted.org/packages/source/l/$pkgname/$pkgname-$pkgver.tar.gz"
-)
-sha256sums=('c7a066bf607a9d0da065002d1c97e0acb15b7ac10a70f028f7acabf35fbbc207')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+b2sums=('f94859d674088e9a827f8d8ab5e8b71797f74a9b3ed3b0115aafb0c5bd2f351a7645b2f22663b5bde4f7a2fde167dfe59549f4ad2b7419747cf1d0d1e4c61616')
+options=("!strip")
 
-prepare() {
-	cd "$pkgname-$pkgver"
-	rm -rf dist
+prepare(){
+ cd "$pkgname-$pkgver"
+ # fix relative import
+ sed -i "llmlite/proxy/proxy_cli.py" \
+     -e "s|from proxy_server import|from .proxy_server import|g"
 }
 
-build() {
-	cd "$pkgname-$pkgver"
-	python -m build --wheel --no-isolation
+build(){
+ cd "$pkgname-$pkgver"
+ python -m build --wheel --no-isolation
 }
 
-package() {
-	cd "$pkgname-$pkgver"
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	
-	# wrapper script for server
-	cat << EOF > "$pkgdir/usr/bin/$pkgname"
+package(){
+ cd "$pkgname-$pkgver"
+ python -m installer --destdir="$pkgdir" dist/*.whl
+
+ # wrapper script for server
+ cat << EOF > "$pkgdir/usr/bin/$pkgname"
 #!/usr/bin/env python3
 import litellm
 litellm.run_server()
 EOF
-	chmod +x "$pkgdir/usr/bin/$pkgname"
+ chmod +x "$pkgdir/usr/bin/$pkgname"
 }
-
-
