@@ -4,17 +4,6 @@ post_install() {
   cat <<EOF
 
 -----------------------------------------------------------------------------
-
-## New features
-
-One option and two new commands have been added.
-
-    -c,--config <config>     Configuration file
-                             (default: "~/.config/oama/config.yaml
-
-    oama show <email>        Show current credentials for email
-    template                 Print the default config template
-
 -----------------------------------------------------------------------------
 
 EOF
