@@ -1,6 +1,6 @@
 pkgbase = filecrab-bin
 	pkgdesc = A CLI to share files and text with Filecrab
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/NicolasGB/filecrab
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = filecrab-bin
 	depends = openssl
 	provides = filecrab
 	conflicts = filecrab
-	source = https://github.com/NicolasGB/filecrab/releases/download/v0.1.1/filecrab
-	sha256sums = 56006a17b991f5cd0f94a046b1086291fb4a54e9fc601b9c3dc4dc25f3da49a7
+	source = https://github.com/NicolasGB/filecrab/releases/download/v0.2.0/filecrab
+	sha256sums = d357c84a4cff77313c3b646be5abdca4f067828f18e08255db9978bef97fdbdf
 
 pkgname = filecrab-bin
