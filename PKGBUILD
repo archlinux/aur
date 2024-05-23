@@ -1,7 +1,7 @@
 # Maintainer: Sterophonick
 pkgname=devkitadv
 _pkgname='devkitadv'
-pkgver=r4-linux
+pkgver=r4linux
 pkgrel=1
 pkgdesc="Jason Wilkins' Game Boy Advance SDK (GCC 3.1)"
 url='https://sourceforge.net/projects/devkitadv/'
