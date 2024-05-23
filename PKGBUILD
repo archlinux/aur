@@ -4,7 +4,7 @@ _hgname=fc-sim-tools
 _pkgname=freecalypso-sim-tools
 pkgname="${_pkgname}-hg"
 pkgver=r103.3477438b5706
-pkgrel=3
+pkgrel=4
 pkgdesc="FreeCalypso SIM card tools"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_hgname}"
@@ -12,6 +12,7 @@ license=('custom')
 groups=('freecalypso')
 depends=('pcsclite')
 makedepends=('mercurial')
+conflicts=("${_pkgname}")
 source=("hg+https://www.freecalypso.org/hg/${_hgname}")
 md5sums=('SKIP')
 
@@ -22,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "${_hgname}"
-	make
+	make CFLAGS="-std=gnu89 ${CFLAGS}" CFLAGS_PCSC="-std=gnu89 ${CFLAGS} -I/usr/include/PCSC"
 }
 
 package() {
