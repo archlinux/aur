@@ -84,7 +84,7 @@ DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' dkms.conf
 }
 
 package_opencl-510xx-nvidia() {
-    pkgdesc="OpenCL implemention for NVIDIA"
+    pkgdesc="OpenCL implemention for NVIDIA, 510 branch"
     depends=('zlib')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
     provides=('opencl-driver' 'opencl-nvidia')
@@ -103,7 +103,7 @@ package_opencl-510xx-nvidia() {
 }
 
 package_nvidia-510xx-dkms() {
-    pkgdesc="NVIDIA drivers - module sources"
+    pkgdesc="NVIDIA drivers - module sources, 510 branch"
     depends=('dkms' "nvidia-510xx-utils=$pkgver" 'libglvnd')
     provides=('NVIDIA-MODULE')
     conflicts=('nvidia-dkms')
@@ -117,7 +117,7 @@ package_nvidia-510xx-dkms() {
 }
 
 package_nvidia-510xx-utils() {
-    pkgdesc="NVIDIA drivers utilities"
+    pkgdesc="NVIDIA drivers utilities, 510 branch"
     depends=('xorg-server' 'libglvnd' 'egl-wayland')
     optdepends=('nvidia-510xx-settings: configuration tool'
                 'xorg-server-devel: nvidia-xconfig'

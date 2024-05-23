@@ -31,7 +31,7 @@ pkgbase = nvidia-510xx-utils
 	sha512sums = d4faf1807de57265407fd6dba9734301b8281c942324851792047708a50442a1feb76fd2ae48bc8e162210ee72e0f13ed0373ed33a7637a382703d6b96fe54de
 
 pkgname = nvidia-510xx-utils
-	pkgdesc = NVIDIA drivers utilities
+	pkgdesc = NVIDIA drivers utilities, 510 branch
 	install = nvidia-510xx-utils.install
 	depends = xorg-server
 	depends = libglvnd
@@ -48,7 +48,7 @@ pkgname = nvidia-510xx-utils
 	replaces = nvidia-libgl
 
 pkgname = opencl-510xx-nvidia
-	pkgdesc = OpenCL implemention for NVIDIA
+	pkgdesc = OpenCL implemention for NVIDIA, 510 branch
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-driver
@@ -56,7 +56,7 @@ pkgname = opencl-510xx-nvidia
 	conflicts = opencl-nvidia
 
 pkgname = nvidia-510xx-dkms
-	pkgdesc = NVIDIA drivers - module sources
+	pkgdesc = NVIDIA drivers - module sources, 510 branch
 	depends = dkms
 	depends = nvidia-510xx-utils=510.108.03
 	depends = libglvnd
