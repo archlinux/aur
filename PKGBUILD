@@ -22,6 +22,7 @@ optdepends=(
     'libxkbcommon: xkb layout conversion support'
     )
 makedepends=(
+    'git'
     'meson'
     )
 

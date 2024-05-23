@@ -5,6 +5,7 @@ pkgbase = sfwbar
 	url = https://github.com/LBCrion/sfwbar
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = meson
 	depends = wayland
 	depends = gtk3
