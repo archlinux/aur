@@ -6,8 +6,8 @@ pkgdesc="A lightweight message queue. Like AWS SQS and RSMQ but on Postgres."
 arch=('x86_64')
 url="https://github.com/tembo-io/pgmq"
 license=('MIT')
-depends=('postgresql' 'cargo' 'cargo-pgrx')
-makedepends=('git')
+depends=('postgresql')
+makedepends=('git' 'cargo' 'cargo-pgrx')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tembo-io/pgmq/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('f522c0938b8c7cfc30d3142e684853a417e66762eaa7cf0be238af93f9f5bb14')
 
