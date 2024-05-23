@@ -1,13 +1,14 @@
 pkgbase = freecalypso-sim-sniff-hg
 	pkgdesc = FreeCalypso SIM sniffer
 	pkgver = r58.95ed46b5f8f1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freecalypso.org/hg/fc-sim-sniff
 	arch = x86_64
 	arch = i686
 	groups = freecalypso
 	license = custom
 	makedepends = mercurial
+	conflicts = freecalypso-sim-sniff
 	source = hg+https://www.freecalypso.org/hg/fc-sim-sniff
 	md5sums = SKIP
 

@@ -4,7 +4,7 @@ _hgname=fc-sim-sniff
 _pkgname=freecalypso-sim-sniff
 pkgname="${_pkgname}-hg"
 pkgver=r58.95ed46b5f8f1
-pkgrel=1
+pkgrel=2
 pkgdesc="FreeCalypso SIM sniffer"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_hgname}"
@@ -12,6 +12,7 @@ license=('custom')
 groups=('freecalypso')
 depends=()
 makedepends=('mercurial')
+conflicts=("${_pkgname}")
 source=("hg+https://www.freecalypso.org/hg/${_hgname}")
 md5sums=('SKIP')
 
@@ -21,8 +22,8 @@ pkgver() {
 }
 
 build() {
-	cd "${_hgname}/sw"
-	make
+	cd "${_hgname}"
+	make -C sw CFLAGS="-std=gnu89 ${CFLAGS}"
 }
 
 package() {
@@ -34,5 +35,5 @@ package() {
 	cp -r doc/* "${pkgdir}/usr/share/doc/${_pkgname}/"
 
 	# DESTDIR is not respected, use INSTALL_PREFIX instead
-	make INSTALL_PREFIX="${pkgdir}/opt/freecalypso/" install
+	make -C sw INSTALL_PREFIX="${pkgdir}/opt/freecalypso/" install
 }
