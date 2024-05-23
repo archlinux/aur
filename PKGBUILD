@@ -9,7 +9,7 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.3.6
+pkgver=1.3.7
 _skiaver=m102
 _skiahash=861e4743af
 pkgrel=1
@@ -49,17 +49,19 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2523.patch
         shared-libwebp.patch
         shared-skia-deps.patch
-        optional-pixman.patch)
+        optional-pixman.patch
+        ENABLE_UPDATER-fix.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('5e974aa2786297981cd5ebe81f040a49b722bddfe33d70def207ad06cb0d34fc'
+sha256sums=('6524b4dd38adac22f954122846ccca7377983cee2e0f17c1482294cf09cbdcfc'
             '8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3'
             'd7f2f8c43d24382453273ed17b1c0e05928980a36ad0b7c988da3aa0fe32de53'
             '320ed456512fb26f30aa682d7d34529d6fc3372d76daba3812cecb8fc21d5f1d'
             'eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0'
-            'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654')
+            'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654'
+            '31369a5063d5f7839699fea00235b70057b0f2619592ba1db5af6d12c4f1171c')
 
 prepare() {
 	# Extract Aseprite's sources
@@ -78,6 +80,8 @@ prepare() {
 	# Their "FindSkia" module forcefully tries to use Skia's FreeType and HarfBuzz,
 	# but we don't clone those because we use the shared ones. Avoid overwriting the settings instead.
 	env -C aseprite patch -tp1 <shared-skia-deps.patch
+	# Backport https://github.com/aseprite/aseprite/commit/8fce589069090bb086d7ad7b0b50340171c98b17
+	env -C aseprite patch -tp1 <ENABLE_UPDATER-fix.patch
 }
 
 build() {
