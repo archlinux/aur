@@ -1,10 +1,10 @@
 pkgbase = morphoj
 	pkgdesc = integrated program package for doing geometric morphometrics https://doi.org/10.1111/j.1755-0998.2010.02924.x
-	pkgver = 1.08.01
-	pkgrel = 2
+	pkgver = 1.08.02
+	pkgrel = 1
 	url = https://morphometrics.uk/MorphoJ_page.html
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = tar
 	depends = java-runtime=17
 	depends = alsa-lib
@@ -12,7 +12,7 @@ pkgbase = morphoj
 	depends = zlib
 	depends = freetype2
 	depends = hicolor-icon-theme
-	source = https://morphometrics.uk/MorphoJ_stuff/download.php?get=MorphoJ-1.08.01_amd64.deb
-	sha256sums = bf262f01be579295eeb00f49438a93d82c6dd000bc4bb6899a2febba0a900735
+	source = https://morphometrics.uk/MorphoJ_stuff/download.php?get=MorphoJ-1.08.02_amd64.deb
+	sha256sums = 4c9b68d5ee8d2e9957c095f7a4de4b6a332c4fee04a33cac49e61af84e3203b2
 
 pkgname = morphoj
