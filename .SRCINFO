@@ -1,6 +1,6 @@
 pkgbase = kea_config
 	pkgdesc = Manage kea dhcp4 configs from single source config
-	pkgver = 4.8.3
+	pkgver = 4.8.4
 	pkgrel = 1
 	url = https://github.com/gene-git/kea_config
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = kea_config
 	depends = python>3.10
 	depends = python-dnspython
 	depends = python-toml
-	source = git+https://github.com/gene-git/kea_config#tag=4.8.3
+	source = git+https://github.com/gene-git/kea_config#tag=4.8.4
 	sha512sums = SKIP
 
 pkgname = kea_config
