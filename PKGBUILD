@@ -5,12 +5,13 @@
 
 _pkgname=konsole
 pkgname=$_pkgname-osc52
-pkgver=24.02.2
-pkgrel=2
+pkgver=24.05.0
+pkgrel=1
 arch=(x86_64)
 url='https://apps.kde.org/konsole/'
 pkgdesc='KDE terminal emulator patched with OSC52 copy support'
-license=(GPL-2.0-or-later LGPL-2.0-or-later)
+license=(GPL-2.0-or-later
+         LGPL-2.0-or-later)
 groups=(kde-applications
         kde-utilities)
 depends=(glibc
@@ -49,9 +50,9 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
         osc52.patch)
-sha256sums=('66467e336536d7df5c12bcad31a3ef0a2150c40351d87677047a40eae440ee2f'
+sha256sums=('53efd25c1d574448db57f446f423328c7f2f08889f67defc1ed5c783c9ef47f4'
             'SKIP'
-            'e7c2ca3b30e018139a139e99141202a2efc8e4e880e2965b09537f9a97865e53')
+            'a7f354e4764a3c841bfa43fd41182c7068053000185bceeaff30d5eb2159c4f8')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
