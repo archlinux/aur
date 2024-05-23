@@ -1,0 +1,16 @@
+pkgbase = signal-monochrome-tray
+	pkgdesc = changes the tray icon of Signal to monochrome
+	pkgver = 0.1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = asar
+	depends = imagemagick
+	depends = papirus-icon-theme
+	depends = signal-desktop
+	source = signal-tray
+	source = signal-tray.hook
+	sha256sums = 0335f16c7ad7603993584a4e1f6809af89b65731daf80faa934209d8c91e7ca8
+	sha256sums = 7ef7234482f4ffbd8f775e0f82597bf161267328667cfd55e02e2b5499aecabd
+
+pkgname = signal-monochrome-tray

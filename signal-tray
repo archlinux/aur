@@ -1,0 +1,7 @@
+#!/bin/bash
+tmp="/tmp/signal-tray"
+if [[ -e "/usr/lib/signal-desktop/resources/app.asar" ]]; then
+    asar extract /usr/lib/signal-desktop/resources/app.asar $tmp
+    convert -size 32x32 -background none /usr/share/icons/Papirus/16x16/panel/signal-tray.svg $tmp/images/icon_32.png >>/dev/null 2>&1
+    asar pack $tmp /usr/lib/signal-desktop/resources/app.asar
+fi

@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = signal-desktop
+Target = signal-monochrome-tray
+
+[Action]
+Description = Updating Signal trayicon...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/signal-tray
