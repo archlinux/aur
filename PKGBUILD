@@ -2,7 +2,7 @@
 pkgname=todometer-bin
 pkgver=2.0.1
 _electronversion=7
-pkgrel=6
+pkgrel=7
 pkgdesc="A simple, meter-based to-do list built with Electron and React."
 arch=('x86_64')
 url="https://cassidoo.github.io/todometer/"
@@ -11,8 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -26,14 +25,15 @@ source=(
 sha256sums=('87fa096049457bc9a63fb33c8040c15a668c81c8aab92be4efadc4a05dd50b20'
             '493e4a9d6f7124993ebc7ceaaa071da339b57ff8a76fa836f54b0977316c31d8'
             'a89aea8ce4dce004a824cba2d6d93f40a31fa876b4c0e8796cefa0bf6ff8a24c'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
