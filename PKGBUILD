@@ -16,7 +16,7 @@
 pkgname=dovecot-with-stemmer
 _pkgname=dovecot
 pkgver=2.3.21
-pkgrel=3
+pkgrel=4
 
 pkgdesc="An IMAP and POP3 server written with security primarily in mind"
 url="https://dovecot.org/"
