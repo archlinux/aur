@@ -5,14 +5,14 @@ pkgdesc='A GNOME Shell extension that adds rounded corners for all windows'
 url='https://github.com/flexagoon/rounded-window-corners'
 license=('GPL-3.0-or-later')
 
-pkgver=12.c0a5905
+pkgver=12.61c326e
 pkgrel=1
 
 arch=('any')
 depends=('gnome-shell')
 
 source=('https://github.com/GrzegorzKozub/aur/raw/master/gnome-shell-extension-rounded-window-corners-reborn/rounded-window-corners@fxgn.shell-extension.zip')
-sha256sums=('6e3618e001d40898757a2b6f02fb3f6acb75eb9a64ce08910932f59d640c2ef1')
+sha256sums=('8b90d24f5d567628291571e658a0ed72f51cc1097fd0e4415ba7694320df46fa')
 
 package() {
   local uuid='rounded-window-corners@fxgn'
