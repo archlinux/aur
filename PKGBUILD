@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jsonbox-bin
-pkgver=2.3.1
+pkgver=2.3.3
 _electronversion=19
-pkgrel=4
+pkgrel=1
 pkgdesc="A cross platform JSON formatting tool跨平台的json格式化工具"
 arch=('x86_64')
 url="https://docs.r-xnoro.com/jsonbox"
@@ -11,8 +11,7 @@ license=('Apache-2.0')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -21,12 +20,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/dist/${pkgname%-bin}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('10971c1196d1e729d10f58e352afb4c4872458a910d2b55b16c670d4becb6a7f'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('eb998cdf8565aad83b52e5b2b53e6c16281d6f72bc29f3e940194737213db6be'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
