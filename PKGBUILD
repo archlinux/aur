@@ -1,4 +1,4 @@
-pkgname=amber-bash
+pkgname=amber-bash-bin
 pkgver=0.3.1.alpha
 pkgrel=1
 pkgdesc="The programming language compiled to bash"
