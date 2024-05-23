@@ -1,0 +1,66 @@
+From 74c497bfd3cf08b0b81aa1063899c9de2e66716d Mon Sep 17 00:00:00 2001
+From: Simon Marchi <simon.marchi@efficios.com>
+Date: Wed, 24 Apr 2024 15:45:50 -0400
+Subject: [PATCH] tests: test_dwarf.c: initialize `tag` variable
+
+On Arch Linux, When configuring with:
+
+    $ /home/smarchi/src/babeltrace/configure CFLAGS='-O2 -flto=auto' LDFLAGS='-flto=auto'
+
+I get:
+
+      CCLD     test_dwarf
+    In function 'test_bt_dwarf',
+        inlined from 'main' at /home/smarchi/src/babeltrace/tests/plugins/flt.lttng-utils.debug-info/test_dwarf.c:163:2:
+    /home/smarchi/src/babeltrace/tests/plugins/flt.lttng-utils.debug-info/test_dwarf.c:136:9: error: 'tag' may be used uninitialized [-Werror=maybe-uninitialized]
+      136 |         ok(tag == DW_TAG_typedef, "bt_dwarf_die_get_tag - correct tag value");
+          |         ^
+    /home/smarchi/src/babeltrace/tests/plugins/flt.lttng-utils.debug-info/test_dwarf.c: In function 'main':
+    /home/smarchi/src/babeltrace/tests/plugins/flt.lttng-utils.debug-info/test_dwarf.c:79:22: note: 'tag' was declared here
+       79 |         int fd, ret, tag;
+          |                      ^
+
+Indeed, `tag` is not set if `bt_dwarf_die_get_tag()` fails, and I
+suppose that LTO is able to "see" through the function call, despite the
+implementation being in another compilation unit.
+
+Fix this by initializing `tag` to an invalid DIE tag value.
+
+For some reason, I only see this error on the stable-2.0 branch, not on
+master.  But I think it wouldn't hurt to merge this patch to both master
+and stable-2.0.
+
+I caught this when trying to build the 2.0.6 release as an Arch package,
+using the official PKGBUILD as a base.
+
+[1] https://gitlab.archlinux.org/archlinux/packaging/packages/babeltrace2/-/blob/d6c58a3a8e0dbbbac7424dec28212f0fd1720eb7/PKGBUILD
+
+Change-Id: I5475efdf095511404ecf8a214ab33358b41230fa
+Signed-off-by: Simon Marchi <simon.marchi@efficios.com>
+Reviewed-on: https://review.lttng.org/c/babeltrace/+/12473
+Reviewed-by: Michael Jeanson <mjeanson@efficios.com>
+Reviewed-by: Philippe Proulx <eeppeliteloop@gmail.com>
+Tested-by: jenkins <jenkins@lttng.org>
+(cherry picked from commit 580c25a54f55788fcf8d0dacce972952fb1ebc8f)
+---
+ tests/plugins/flt.lttng-utils.debug-info/test_dwarf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/plugins/flt.lttng-utils.debug-info/test_dwarf.c b/tests/plugins/flt.lttng-utils.debug-info/test_dwarf.c
+index 01a7b5172500..bfdbb4cfe781 100644
+--- a/tests/plugins/flt.lttng-utils.debug-info/test_dwarf.c
++++ b/tests/plugins/flt.lttng-utils.debug-info/test_dwarf.c
+@@ -76,7 +76,7 @@ void test_bt_no_dwarf(const char *data_dir)
+ static
+ void test_bt_dwarf(const char *data_dir)
+ {
+-	int fd, ret, tag;
++	int fd, ret, tag = -1;
+ 	char *path;
+ 	char *die_name = NULL;
+ 	struct bt_dwarf_cu *cu = NULL;
+
+base-commit: 825a0ed6d0ca29c894429157b1950e477210b325
+-- 
+2.44.0
+
