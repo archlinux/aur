@@ -49,7 +49,7 @@ build() {
   _target_os=linux-deb
   _target_dist=linux:deb
   node tools/patches/post-patch-threema-web.js $_target_os $_variant
-  if [ "$_variant" = "red" ]; then tools/patches/red-patch-threema-web.sh; fi
+  if [ "$_variant" = "blue" ]; then tools/patches/blue-patch-threema-web.sh; fi
   npm run electron:dist:$_target_dist:$_variant
 }
 

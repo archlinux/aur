@@ -4,7 +4,7 @@
 set -euo pipefail
 
 print_usage() {
-    echo "Usage: $0 (red|work)"
+    echo "Usage: $0 (blue|work)"
 }
 
 capitalize() {
@@ -19,7 +19,7 @@ if [[ $# -ne 1 ]]; then
     exit 1
 fi
 target=$1
-if [[ $target != "red" && $target != "work" ]]; then
+if [[ $target != "blue" && $target != "work" ]]; then
     print_usage
     exit 1
 fi
