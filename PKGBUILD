@@ -2,7 +2,7 @@
 
 pkgname=zed-editor-preview-bin
 pkgver=0.137.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter. (binary package)"
 arch=('x86_64')
 url="https://github.com/zed-industries/zed"
@@ -17,10 +17,10 @@ conflicts=(zed-editor)
 options=(!strip !debug)
 
 package() {
-  tar -xv -f "$srcdir/$pkgname-$pkgver.tar.gz" bin share
+  tar -xv -f "$srcdir/$pkgname-$pkgver.tar.gz" "${_appdir}/bin" "${_appdir}/share"
   cd "${_appdir}"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "bin/zed"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "bin/cli"
-	install -Dm0644 -t "$pkgdir/usr/share/applications/" "share/applications/zed-preview.desktop"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "bin/zed"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "bin/cli"
+  install -Dm0644 -t "$pkgdir/usr/share/applications/" "share/applications/zed-preview.desktop"
   cp -r "share/icons" "$pkgdir/usr/share/"
 }
