@@ -6,8 +6,8 @@ pkgname=(
   "duckdb"
   "python-duckdb"
 )
-pkgver=0.10.2
-pkgrel=2
+pkgver=0.10.3
+pkgrel=1
 pkgdesc="An in-process SQL OLAP database management system"
 arch=("x86_64" "aarch64" "armv7h")
 url="https://duckdb.org"
@@ -29,7 +29,7 @@ makedepends=(
   "python-setuptools-scm"
 )
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/duckdb/duckdb/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('2bd0aab845444dc746ee4826dc977374ab27b586a62bea5e3c4913bf2f4f5eae34b3bf0cbbbb5a8e46d92f5d0b7677ac43c26085165dee4ca79e937f1d7d70aa')
+b2sums=('7c8f0bb3261c525df38e54f7da43387f4e8e4d641fe8fb879ea9d5de0edd997b5533650ef03f15965dd8f4ee6b50e1c5ad6231b6559cba17c1f8b1b727df4091')
 
 prepare() {
   cmake \
