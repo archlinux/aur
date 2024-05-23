@@ -1,7 +1,7 @@
 # Maintainer: Lukas Spies <lukas (at) previewqt _dot_ org>
 
 pkgname=previewqt
-pkgver=2.0
+pkgver=3.0
 pkgrel=1
 pkgdesc="Simple application for previewing all kinds of files, from images to videos, from documents to archives."
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
 source=(https://previewqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('4773c916a10e73e2437f59068e9355a687cfad87f0d8b80daed2055a488a7738')
+sha256sums=('a3f7f13fad68035d6ef7766d2f1d8df680c35ee415d3aace3ef19f7ae7cfd2be')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change

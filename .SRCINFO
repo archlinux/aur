@@ -1,6 +1,6 @@
 pkgbase = previewqt
 	pkgdesc = Simple application for previewing all kinds of files, from images to videos, from documents to archives.
-	pkgver = 2.0
+	pkgver = 3.0
 	pkgrel = 1
 	url = http://previewqt.org/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = previewqt
 	depends = resvg
 	optdepends = libqpsd-git: PSB/PSD support
 	optdepends = xcftools: XCF support
-	source = https://previewqt.org/downloads/source/previewqt-2.0.tar.gz
-	sha256sums = 4773c916a10e73e2437f59068e9355a687cfad87f0d8b80daed2055a488a7738
+	source = https://previewqt.org/downloads/source/previewqt-3.0.tar.gz
+	sha256sums = a3f7f13fad68035d6ef7766d2f1d8df680c35ee415d3aace3ef19f7ae7cfd2be
 
 pkgname = previewqt
