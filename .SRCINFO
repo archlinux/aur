@@ -1,0 +1,14 @@
+pkgbase = decker-bin
+	pkgdesc = Decker is used to create interactive webpresentations.
+	pkgver = 0.13.4
+	pkgrel = 1
+	url = https://decker.cs.tu-dortmund.de/
+	arch = x86_64
+	license = gpl-3.0
+	provides = decker
+	conflicts = decker
+	noextract = decker-v0.13.4-Linux-X64
+	source_x86_64 = https://github.com/decker-edu/decker/releases/download/v0.13.4/decker-v0.13.4-Linux-X64
+	sha256sums_x86_64 = 2d9d23d97d3308ff57b16825738f3c9cbdb9c375665a1fd36312b5c7a2bac8e2
+
+pkgname = decker-bin
