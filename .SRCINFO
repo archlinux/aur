@@ -1,0 +1,15 @@
+pkgbase = finamp-bin
+	pkgdesc = An open source Jellyfin music player
+	pkgver = 0.9.7_beta
+	pkgrel = 1
+	url = https://github.com/jmshrv/finamp
+	arch = x86_64
+	license = MPL-2.0
+	depends = gtk3
+	depends = pango
+	provides = finamp
+	conflicts = finamp
+	source = https://github.com/jmshrv/finamp/releases/download/0.9.7-beta/finamp-0.9.7-linux-release-bundle.tar.gz
+	sha256sums = 0698bf3aa326561f1dcdc85b11d0b3ab9f27fe930be367780dbc5d1ee2c00781
+
+pkgname = finamp-bin
