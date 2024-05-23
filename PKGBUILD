@@ -4,7 +4,7 @@ pkgbase=python-sphinx_design
 _pname=${pkgbase#python-}
 _pyname=${_pname/_/-}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A sphinx extension for designing beautiful, screen-size responsive web components"
 arch=('any')
@@ -20,7 +20,7 @@ checkdepends=('python-pytest-regressions')  # myst-parser already in makedepends
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pname}/${_pname}-${pkgver}.tar.gz")
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/executablebooks/sphinx-design/archive/refs/tags/v${pkgver}.tar.gz"
         'Makefile')
-md5sums=('a127b4dc73893156687c2dcaab77ae7d'
+md5sums=('62bf1abf18cd5294c39182b4d719bbb1'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 prepare() {
@@ -48,12 +48,12 @@ check() {
 
 package_python-sphinx_design() {
     depends=('python-sphinx')
-    optdepends=('python-pre-commit: code_style'
+    optdepends=('pre-commit: code-style'
                 'python-myst-parser: rtd'
-                'python-sphinx-furo: theme_furo'
-                'python-sphinx_rtd_theme: theme_rtd'
-                'python-sphinx-book-theme: theme_sbt'
-                'python-pydata-sphinx-theme: theme_pydata'
+                'python-sphinx-furo: theme-furo'
+                'python-sphinx_rtd_theme: theme-rtd'
+                'python-sphinx-book-theme: theme-sbt'
+                'python-pydata-sphinx-theme: theme-pydata'
                 'python-sphinx_design-doc: Documentation for sphinx_design')
     cd ${srcdir}/${_pyname}-${pkgver}
 
