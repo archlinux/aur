@@ -1,13 +1,18 @@
-# Name: v11.0.2 
-### URL: https://github.com/webtorrent/bittorrent-tracker/releases/tag/v11.0.2
-### published at '2024-03-12T17:43:45Z' by webtorrent-bot
+# Name: v11.1.0 
+### URL: https://github.com/webtorrent/bittorrent-tracker/releases/tag/v11.1.0
+### published at '2024-05-22T21:58:49Z' by webtorrent-bot
 ---
-## [11.0.2](https://github.com/webtorrent/bittorrent-tracker/compare/v11.0.1...v11.0.2) (2024-03-12)
+# [11.1.0](https://github.com/webtorrent/bittorrent-tracker/compare/v11.0.2...v11.1.0) (2024-05-22)
 
 
 ### Bug Fixes
 
-* **parse-http:** ignore announcements from peers with invalid announcement ports. ([#513](https://github.com/webtorrent/bittorrent-tracker/issues/513)) ([fe75272](https://github.com/webtorrent/bittorrent-tracker/commit/fe75272d51653e626583689081afb0b7aeadb84f))
+* semantic release ([#520](https://github.com/webtorrent/bittorrent-tracker/issues/520)) ([428fb22](https://github.com/webtorrent/bittorrent-tracker/commit/428fb224f5666731332738032649f4448b2e1e4f))
+
+
+### Features
+
+* updated webrtc implementation ([#519](https://github.com/webtorrent/bittorrent-tracker/issues/519)) ([633d68a](https://github.com/webtorrent/bittorrent-tracker/commit/633d68a32c2c143fec0182317a9801dd1b64faef))
 
 
 
