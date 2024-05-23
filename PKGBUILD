@@ -14,15 +14,15 @@ depends=('cmake' 'ninja' 'gperf' 'ccache' 'dfu-util' 'dtc'
 optdepends=('pyocd: programming and debugging ARM MCUs'
             'python-west: Zephyr RTOS Project meta-tool')
 makedepends=('patchelf' 'wget')
-source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64.tar.xz"
-        "zephyrrc"
-)
-sha256sums=('eb4495e2e04387c822f8482be116a8f4ab3d1d2bfc1c1aeb53ca67937acf0009'
-            '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
 
+source=("profile-zephyr-sdk.sh" "profile-zephyr-sdk.ash")
+source_x86_64=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64.tar.xz")
+
+sha256sums=('10d0873b848df7dc30940a5642957763d48ab53b04ea828e1a404c6016d4b0de'
+            '4f6058f9e3990143d4f7d5f2aed6053bb6b5eb8b6034538b02a06b70f807b4f8')
+sha256sums_x86_64=('eb4495e2e04387c822f8482be116a8f4ab3d1d2bfc1c1aeb53ca67937acf0009')
 
 options=(!strip)
-install=$pkgname.install
 
 _installdir=opt/zephyr-sdk
 _setupsh=setup.sh
@@ -46,7 +46,8 @@ package ()
   # Disables sanboxing on systems where libseccomp is available
   sed -i 's/xargs -n100 file/xargs -n100 file -S/' $pkgdir/$_installdir/zephyr-sdk-x86_64-hosttools-standalone-*.sh
 
-  install -Dm644 zephyrrc $pkgdir/usr/share/zephyr-sdk/zephyrrc
+  install -Dm644 profile-zephyr-sdk.sh $pkgdir/etc/profile.d/zephyr-sdb.sh
+  install -Dm644 profile-zephyr-sdk.ash $pkgdir/etc/profile.d/zephyr-sdb.ash
 
   cd $pkgdir/$_installdir
 
@@ -67,6 +68,7 @@ package ()
   sed -i "s@\(relocate_sdk.py\s\+\)${pkgdir}/${_installdir} ${pkgdir}/${_installdir}@\1 /${_installdir} /${_installdir}@g" relocate_sdk.sh
   ./relocate_sdk.sh
 
+  rm environment-setup-*
   rm zephyr-sdk-*-hosttools-standalone-*.sh
   rm relocate_sdk.{py,sh}
   rm setup.sh

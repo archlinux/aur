@@ -1,4 +1,0 @@
-post_install() {
-    echo ">>> Create a config file:"
-    echo ">>>     cp /usr/share/zephyr-sdk/zephyrrc ~/.zephyrrc"
-}
