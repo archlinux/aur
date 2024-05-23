@@ -2,7 +2,7 @@
 
 _pkgname="flutter"
 pkgname="$_pkgname-bin"
-pkgver=3.22.0
+pkgver=3.22.1
 pkgrel=1
 pkgdesc="Cross platform widget toolkit for Dart (monolithic)"
 arch=("x86_64")
@@ -61,7 +61,7 @@ source=(
 )
 
 sha256sums=(
-  'de78685478b224caf2c5b4e508892a0d6ddea70777efcac139a59b5588558299'
+  'fb8ce30fd21d8f43cd2540af6d9f9452cbfc80a85706f26cb072386fc51fbfce'
 )
 
 prepare() {

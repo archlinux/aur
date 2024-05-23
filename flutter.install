@@ -18,7 +18,7 @@ post_install() {
   done
 
   echo "Users may be added to the 'flutter' group:"
-  echo "   sudo usermod -a -G flutter"
+  echo "   sudo usermod -a -G flutter [username]"
 }
 
 post_upgrade() {
@@ -28,12 +28,17 @@ post_upgrade() {
 post_remove() {
   # remove extra permissions
   for _group in "${_builders[@]}"; do
-    if grep -q "group:$_group" <<< $(getfacl -ac /opt/flutter 2>/dev/null); then
+    if grep -q "group:$_group" <<< $(getfacl -ac /opt/flutter 2> /dev/null); then
       sudo setfacl -R -x "g:flutter" /opt/flutter
     fi
   done
 
+  # leave opt directory to prevent data loss
+  echo "The 'flutter' directory may be removed, if not needed:"
+  echo "   sudo \rm -rf /opt/flutter"
+  echo
+
   # leave group to prevent orphan permissions
-  echo "The 'flutter' group may be removed, if no longer needed:"
+  echo "The 'flutter' group may also be removed:"
   echo "   sudo groupdel flutter"
 }
