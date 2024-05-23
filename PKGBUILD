@@ -11,7 +11,7 @@
 pkgname=ace
 _pkgver=8_0_0
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 arch=('x86_64')
 url="https://www.dre.vanderbilt.edu/~schmidt/ACE.html"
@@ -81,7 +81,6 @@ EOF
     #EOF
 
     export LD_LIBRARY_PATH="$ACE_ROOT/lib:$LD_LIBRARY_PATH"
-    export CXXFLAGS="-std=c++17:$CXXFLAGS"
     "$ACE_ROOT/bin/mwc.pl" -type gnuace ACE.mwc
     make
 }

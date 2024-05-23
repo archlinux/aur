@@ -1,7 +1,7 @@
 pkgbase = ace
 	pkgdesc = Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems.
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dre.vanderbilt.edu/~schmidt/ACE.html
 	arch = x86_64
 	license = DOC
