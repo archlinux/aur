@@ -9,8 +9,8 @@
 # Contributor: Alex Belanger <i.caught.air@gmail.com>
 
 pkgname=ace
-_pkgver=7_1_4
-pkgver=7.1.4
+_pkgver=8_0_0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 arch=('x86_64')
@@ -29,61 +29,59 @@ provides=('libACE.so' 'libACEXML.so' 'libACEXML_Parser.so'
 )
 
 source=("https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-$_pkgver/ACE-src-$pkgver.tar.gz")
-sha256sums=('97b83924ef161e6d8869b95d73b2553e19f79a2bb326dcb0092cd376b971dedf')
+sha256sums=('9d2d3c24d33742ea348a841dcc46efbf86d6d350ef57dd31176ac941be838259')
 
 prepare() {
     export ACE_ROOT="$srcdir/ACE_wrappers"
     cd "$ACE_ROOT"
 
-    # Disable expandtab if modifying these here-strings
-    # Indentation in resulted file is wrong if indented with spaces
-
     # Built a select subset of components in the ACE release
     # Inspired by Debian
-	cat <<-EOF > "$ACE_ROOT/ACE.mwc"
-	workspace {
-	    exclude {
-	        apps/gperf/tests
-	        apps/Gateway
-	        apps/JAWS
-	        apps/JAWS2
-	        apps/JAWS3
-	        apps/drwho
-	        apps/mkcsregdb
-	        apps/soreduce
+    cat <<EOF > "$ACE_ROOT/ACE.mwc"
+workspace {
+    exclude {
+        apps/gperf/tests
+        apps/Gateway
+        apps/JAWS
+        apps/JAWS2
+        apps/JAWS3
+        apps/drwho
+        apps/mkcsregdb
+        apps/soreduce
 
-	        ACEXML/tests
-	        Kokyu/tests
-	        ACEXML/examples
-	        netsvcs/clients
-	        protocols/examples
+        ACEXML/tests
+        Kokyu/tests
+        ACEXML/examples
+        netsvcs/clients
+        protocols/examples
 
-	        ASNMP
-	        examples
-	        performance-tests
-	        websvcs
-	    }
-	}
-	EOF
+        ASNMP
+        examples
+        performance-tests
+        websvcs
+    }
+}
+EOF
 }
 
 build() {
     export ACE_ROOT="$srcdir/ACE_wrappers"
     cd "$ACE_ROOT"
 
-	cat <<-EOF > "$ACE_ROOT/ace/config.h"
-	#include "ace/config-linux.h"
-	EOF
+    cat <<EOF > "$ACE_ROOT/ace/config.h"
+#include "ace/config-linux.h"
+EOF
 
-	cat <<-EOF > "$ACE_ROOT/include/makeinclude/platform_macros.GNU"
-	INSTALL_PREFIX = /usr
-	include \$(ACE_ROOT)/include/makeinclude/platform_linux.GNU
-	EOF
+    cat <<EOF > "$ACE_ROOT/include/makeinclude/platform_macros.GNU"
+INSTALL_PREFIX = /usr
+include \$(ACE_ROOT)/include/makeinclude/platform_linux.GNU
+EOF
 
-	#cat <<-EOF > "$ACE_ROOT/bin/MakeProjectCreator/config/default.features"
-	#EOF
+    #cat <<-EOF > "$ACE_ROOT/bin/MakeProjectCreator/config/default.features"
+    #EOF
 
     export LD_LIBRARY_PATH="$ACE_ROOT/lib:$LD_LIBRARY_PATH"
+    export CXXFLAGS="-std=c++17:$CXXFLAGS"
     "$ACE_ROOT/bin/mwc.pl" -type gnuace ACE.mwc
     make
 }
@@ -95,14 +93,12 @@ check() {
 
     # Tests that are failing on my system
     # (Clean chroot, kernel defaults sysctl, limits)
-    sed -i '/Bug_2610_Regression_Test/d' "$ACE_ROOT/tests/run_test.lst"
     sed -i '/Bug_2740_Regression_Test/d' "$ACE_ROOT/tests/run_test.lst"
     sed -i '/Bug_3943_Regression_Test/d' "$ACE_ROOT/tests/run_test.lst"
     sed -i '/MT_Reference_Counted_Event_Handler_Test/d' "$ACE_ROOT/tests/run_test.lst"
     sed -i '/INET_Addr_Test_IPV6/d' "$ACE_ROOT/tests/run_test.lst"
-    sed -i '/Multicast_Test_IPV6/d' "$ACE_ROOT/tests/run_test.lst"
 
-    "$ACE_ROOT/bin/auto_run_tests.pl" -Config FIXED_BUGS_ONLY 2>&1 | tee tests.log
+    "$ACE_ROOT/bin/auto_run_tests.pl" -Config FIXED_BUGS_ONLY -Config NO_MCAST 2>&1 | tee tests.log
 
     local status=0
 
