@@ -49,7 +49,7 @@ build() {
       -DAF_BUILD_DOCS=ON \
       -DCUDA_architecture_build_targets="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.7;8.9;9.0;9.0+PTX" \
       -DCMAKE_BUILD_TYPE=None \
-      -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
+      -DCUDA_HOST_COMPILER="$NVCC_CCBIN" \
       -DBoost_NO_BOOST_CMAKE=ON
 
   ninja -C build
