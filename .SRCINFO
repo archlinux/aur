@@ -1,7 +1,7 @@
 pkgbase = riscv32-gnu-toolchain-elf-llvm-bin
-	pkgdesc = GNU toolchain for riscv32 ELF, including GCC and LLVM.
+	pkgdesc = GNU toolchain for riscv32 ELF, including GCC and clang.
 	pkgver = 2024.04.12
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/riscv-collab/riscv-gnu-toolchain
 	arch = x86_64
 	license = GPL2
