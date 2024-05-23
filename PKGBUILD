@@ -1,6 +1,6 @@
 # Maintainer: AntiCompositeNumber <anticompositenumber+aur@gmail.com>
 pkgname=f1multiviewer-digiflag
-pkgver=2.6.7
+pkgver=2.6.8
 pkgrel=1
 pkgdesc="Adding a DigiFlag functionality to MultiViewer For F1"
 arch=('any')
@@ -18,7 +18,7 @@ source=(
     "f1multiviewer-digiflag.desktop"
     "$pkgname.png::https://github.com/LapsTimeOFF/DigiFlag_F1MV/raw/v${pkgver//_/-}/build/icon.png"
 )
-b2sums=('950feab41be1a558661e72fa0f647d6db956840b927ff88d8daaefa32c46bec634f75ab695f39dc6b8bc8dfc3e788a7901976a19ab9844711ebba85a4d9e5572'
+b2sums=('812ca9414324537d4236a2e5d6b7f94ea8a9c49802236d151cb52c72f6a1bf88b93115c0ace3930ec7ad372ac4156f1953723d2d7c8ac78555937df6afebedda'
         '996640c9866adf775cb6b8ecbb04840d29ca1ba9e4a65e69b0b99c7480b4ed28d0e55969d210aaca68b85a2f18ae0592ae30b8211d1fd291a918a7b9e8149f23'
         '8fd78bb18556365153e318fd035caba71fb6fd8706603b4467cf9ea1e510b506049c0337054e27a74bc51e6282fbf3ea4786befa349c1f00bc55298069e39b06'
         'bd8e947e5ad86ed46eee44765d145f34df49f2afe702c84bb969dc0195984024fd7a6efa9cc9ffb5329c54d731efad8d0b0d630268ccd1de2bfd1199cf81df2c')
