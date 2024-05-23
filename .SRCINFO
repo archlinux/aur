@@ -9,6 +9,7 @@ pkgbase = python-starlink-pyast
 	makedepends = python-setuptools
 	makedepends = python-numpy
 	makedepends = libyaml
+	makedepends = gcc13
 	source = https://files.pythonhosted.org/packages/source/s/starlink-pyast/starlink-pyast-3.15.4.tar.gz
 	md5sums = abb0759b0e725302b955d8058d8a5187
 

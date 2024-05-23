@@ -11,7 +11,8 @@ url="http://starlink.eao.hawaii.edu/starlink/AST"
 license=('LGPL3')
 makedepends=('python-setuptools'
              'python-numpy'
-             'libyaml')
+             'libyaml'
+             'gcc13')
 #            'python-wheel'
 #            'python-build'
 #            'python-installer')
@@ -28,7 +29,7 @@ get_pyver() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
+    CC=gcc-13 CXX=g++-13 python setup.py build
 #   python -m build --wheel --no-isolation
 }
 
