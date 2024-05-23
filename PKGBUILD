@@ -1,10 +1,10 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.16.5
+pkgver=0.16.6
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
 license=('Apache')
 
@@ -17,10 +17,12 @@ makedepends=('patchelf' 'wget')
 
 source=("profile-zephyr-sdk.sh" "profile-zephyr-sdk.ash")
 source_x86_64=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64.tar.xz")
+source_aarch64=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-aarch64.tar.xz")
 
 sha256sums=('10d0873b848df7dc30940a5642957763d48ab53b04ea828e1a404c6016d4b0de'
             '4f6058f9e3990143d4f7d5f2aed6053bb6b5eb8b6034538b02a06b70f807b4f8')
-sha256sums_x86_64=('eb4495e2e04387c822f8482be116a8f4ab3d1d2bfc1c1aeb53ca67937acf0009')
+sha256sums_x86_64=('bca2b2dc306dd8766322efe9a13ca2f45b06558cf7382b57a695a5fd2d999c4a')
+sha256sums_aarch64=('2a3ce7e6b04b6daf725dc01bc5868fd559fd3308ba94f029b3b00b91a7f0fce9')
 
 options=(!strip)
 
