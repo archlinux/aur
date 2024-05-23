@@ -1,8 +1,8 @@
-# Maintainer: Martin Rys <rys.pw/contact>
+# Maintainer: Martin Rys <rys.rs/contact>
 
 pkgname=bookstack
 _camelname=BookStack
-pkgver=24.02.3
+pkgver=24.05.1
 pkgrel=1
 pkgdesc='A simple, self-hosted, easy-to-use platform for organising and storing information'
 arch=('any')
@@ -24,7 +24,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/BookStackApp/BookStack/archive/v${pkgver}.tar.gz"
 	'bookstack.conf'
 )
-sha256sums=('55e11562e550722bbbf923fc4b80f185213c033a297a16d2037b793c73464980'
+sha256sums=('64b484710a2683e75283497a566b4311d2df4d24ae11eccc87620940afe218c6'
             '82152fc91366d1bd623c559c03240f070e08d45a084a4c6e2e211f671bee8c78')
 options=('!strip')
 backup=("etc/webapps/$pkgname/config.env")
