@@ -1,3 +1,4 @@
+# Maintainer: Karl Ludwig Brennan <karlludwigbrennan@outlook.com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: James Rayner <iphitus@gmail.com>
@@ -5,7 +6,7 @@
 _pkgbasename=nvidia-510xx-utils
 pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-nvidia-510xx-utils' 'lib32-opencl-nvidia-510xx')
-pkgver=510.85.02
+pkgver=510.108.03
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -14,7 +15,7 @@ license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
-sha512sums=('ce04706b707d08f601ee23ed2f4b5d6b4c2e8c17d74557b720be64e0c0f4ff915bcf35efa2470c27d90a7e1bad4eab48e6d9b2b1f05442546d3324f2a10fa69b')
+sha512sums=('70fbd91b0dc5db119acf20654854c417bb14889e84145e2675dc893e7247a9c34f90820cddb8202cf5c3219abc286c7014b247a2ce94bdb5681a1bca96f41a29')
 
 create_links() {
     # create soname links
