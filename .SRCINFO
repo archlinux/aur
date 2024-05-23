@@ -1,7 +1,7 @@
 pkgbase = wit-bindgen
 	pkgdesc = A language binding generator for WebAssembly interface types
 	pkgver = 0.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bytecodealliance/wit-bindgen
 	arch = x86_64
 	license = Apache-2.0
