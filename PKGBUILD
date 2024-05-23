@@ -9,7 +9,7 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite-skia-bin
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
@@ -42,15 +42,17 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2523.patch
         shared-libwebp.patch
         shared-skia-deps.patch
-        optional-pixman.patch)
+        optional-pixman.patch
+        ENABLE_UPDATER-fix.patch)
 noextract=("${source[0]##*/}" "${source[1]##*/}") # Don't extract Aseprite sources or Skia at the root
-sha256sums=('5e974aa2786297981cd5ebe81f040a49b722bddfe33d70def207ad06cb0d34fc'
+sha256sums=('6524b4dd38adac22f954122846ccca7377983cee2e0f17c1482294cf09cbdcfc'
             '66293c15aa773a96121afb01f09109d3e5d455a6fd51944e0bb8bdc0829913ea'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'e42675504bfbc17655aef1dca957041095026cd3dd4e6981fb6df0a363948aa7'
             '320ed456512fb26f30aa682d7d34529d6fc3372d76daba3812cecb8fc21d5f1d'
             'eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0'
-            'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654')
+            'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654'
+            '31369a5063d5f7839699fea00235b70057b0f2619592ba1db5af6d12c4f1171c')
 
 prepare() {
 	mkdir -p aseprite skia
@@ -66,6 +68,8 @@ prepare() {
 	# Their "FindSkia" module forcefully tries to use Skia's FreeType and HarfBuzz,
 	# but we don't clone those because we use the shared ones. Avoid overwriting the settings instead.
 	env -C aseprite patch -tp1 <shared-skia-deps.patch
+	# Backport https://github.com/aseprite/aseprite/commit/8fce589069090bb086d7ad7b0b50340171c98b17
+	env -C aseprite patch -tp1 <ENABLE_UPDATER-fix.patch
 }
 
 build() {
