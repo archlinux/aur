@@ -10,11 +10,21 @@ license=('MPL-2.0')
 depends=('gtk3' 'pango')
 provides=('finamp')
 conflicts=('finamp')
-source=("$url/releases/download/${pkgver//_/-}/finamp-${pkgver//_beta/}-linux-release-bundle.tar.gz")
-sha256sums=('0698bf3aa326561f1dcdc85b11d0b3ab9f27fe930be367780dbc5d1ee2c00781')
+source=("$url/releases/download/${pkgver//_/-}/finamp-${pkgver//_/-}-linux-release.tar.gz")
+sha256sums=('5eb59bcbad93eee334c43de98912a854fae5a3af96f4808197a986d0b8e96fd0')
 
 package() {
-    cd "$srcdir/bundle"
+    cd "$srcdir"
+
+    # Install release bundle
     install -dm755 "$pkgdir/opt/$_pkgname"
-    cp -rdp --no-preserve=ownership . "$pkgdir/opt/$_pkgname/"
+    cp -rdp --no-preserve=ownership "bundle/." "$pkgdir/opt/$_pkgname/"
+
+    # Install desktop entry
+    install -dm755 "$pkgdir/usr/share/applications/"
+    m4 -D__INSTALL_PATH__="/opt/$_pkgname" "finamp.desktop.m4" > "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
+    # Install icons
+    install -dm755 "$pkgdir/usr/share/icons/hicolor"
+    cp -rdp --no-preserve=ownership "icons/." "$pkgdir/usr/share/icons/hicolor"
 }

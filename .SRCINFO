@@ -9,7 +9,7 @@ pkgbase = finamp-bin
 	depends = pango
 	provides = finamp
 	conflicts = finamp
-	source = https://github.com/jmshrv/finamp/releases/download/0.9.7-beta/finamp-0.9.7-linux-release-bundle.tar.gz
-	sha256sums = 0698bf3aa326561f1dcdc85b11d0b3ab9f27fe930be367780dbc5d1ee2c00781
+	source = https://github.com/jmshrv/finamp/releases/download/0.9.7-beta/finamp-0.9.7-beta-linux-release.tar.gz
+	sha256sums = 5eb59bcbad93eee334c43de98912a854fae5a3af96f4808197a986d0b8e96fd0
 
 pkgname = finamp-bin
