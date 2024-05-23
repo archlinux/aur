@@ -1,4 +1,6 @@
 # Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
+# Contributor: M0ustach3 <pablobondialuttiau@gmail.com>
+# Contributor: kpcyrd <git@rxv.cc>
 
 pkgname=recon-ng
 pkgver=5.1.2
