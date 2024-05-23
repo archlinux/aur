@@ -5,3 +5,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+
+!gcc14.patch
