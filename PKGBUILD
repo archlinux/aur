@@ -11,8 +11,8 @@ confilicts=('amber-bash')
 source_x86_64=("https://github.com/Ph0enixKM/Amber/releases/download/0.3.1-alpha/amber_linux_x86_64")
 source_aarch64=("https://github.com/Ph0enixKM/Amber/releases/download/0.3.1-alpha/amber_linux_aarch64")
 
-sha256sums_x86_64=('45c58eb59dde765a73f0594f9e246c0808f9b28dcba5f551712bd89d0c05af4c')
-sha256sums_aarch64=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums_x86_64=('19677119811c864dd3092f48b9149612cf1dbd77e4172ff4e52b92ca3625c952')
+sha256sums_aarch64=('73870093f74a413205a5967242fddbf6c692f1ab868fec9a24157680ec41d988')
 
 package() {
 	binfile=$(find . -name "amber_linux_*")
