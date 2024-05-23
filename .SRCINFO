@@ -1,12 +1,14 @@
 pkgbase = devkitadv
 	pkgdesc = Jason Wilkins' Game Boy Advance SDK (GCC 3.1)
 	pkgver = r4linux
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/devkitadv/
 	arch = x86_64
 	arch = i686
 	source = https://master.dl.sourceforge.net/project/devkitadv/Linux/Release%204/devkitadv.tar.bz2
+	source = 10-devkitadv.conf
 	md5sums = 03f107b3decff9238572f90939c4b16b
+	md5sums = 1994d47e35d52f8c55dee5aee78eed9e
 
 pkgname = devkitadv
 
