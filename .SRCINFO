@@ -9,7 +9,7 @@ pkgbase = lib32-nvidia-510xx-utils
 	sha512sums = 70fbd91b0dc5db119acf20654854c417bb14889e84145e2675dc893e7247a9c34f90820cddb8202cf5c3219abc286c7014b247a2ce94bdb5681a1bca96f41a29
 
 pkgname = lib32-nvidia-510xx-utils
-	pkgdesc = NVIDIA drivers utilities (32-bit)
+	pkgdesc = NVIDIA drivers utilities (32-bit), 510 branch
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	depends = lib32-libglvnd
@@ -24,7 +24,7 @@ pkgname = lib32-nvidia-510xx-utils
 	replaces = lib32-nvidia-libgl
 
 pkgname = lib32-opencl-nvidia-510xx
-	pkgdesc = OpenCL implemention for NVIDIA (32-bit)
+	pkgdesc = OpenCL implemention for NVIDIA (32-bit), 510 branch
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	optdepends = opencl-headers: headers necessary for OpenCL development

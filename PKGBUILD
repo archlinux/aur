@@ -32,7 +32,7 @@ build() {
 }
 
 package_lib32-opencl-nvidia-510xx() {
-    pkgdesc="OpenCL implemention for NVIDIA (32-bit)"
+    pkgdesc="OpenCL implemention for NVIDIA (32-bit), 510 branch"
     depends=('lib32-zlib' 'lib32-gcc-libs')
     conflicts=('lib32-opencl-nvidia')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
@@ -51,7 +51,7 @@ package_lib32-opencl-nvidia-510xx() {
 }
 
 package_lib32-nvidia-510xx-utils() {
-    pkgdesc="NVIDIA drivers utilities (32-bit)"
+    pkgdesc="NVIDIA drivers utilities (32-bit), 510 branch"
     depends=('lib32-zlib' 'lib32-gcc-libs' 'lib32-libglvnd' 'nvidia-510xx-utils')
     optdepends=('lib32-opencl-nvidia')
     conflicts=('lib32-nvidia-libgl' 'lib32-nvidia-utils')
