@@ -1,6 +1,6 @@
 pkgbase = nvidia-510xx-settings
-	pkgdesc = Tool for configuring the NVIDIA graphics driver
-	pkgver = 510.85.02
+	pkgdesc = Tool for configuring the NVIDIA graphics driver, 510 branch
+	pkgver = 510.108.03
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-settings
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = nvidia-510xx-settings
 	makedepends = nvidia-510xx-utils
 	makedepends = libxext
 	options = staticlibs
-	source = nvidia-510xx-settings-510.85.02.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/510.85.02.tar.gz
+	source = nvidia-510xx-settings-510.108.03.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/510.108.03.tar.gz
 	source = libxnvctrl_so.patch
-	sha512sums = f5f80423b2878013823afdc09979546cf72018e8d58de916b8be36216755af37d7a840d5370d49d5596ccd256cf1187b5d11777ecfcf94d5b0ce42fbbdcef115
+	sha512sums = 6569d7489d97d240a4a8585ff82ffdf83ac551b396081cd29431fa35d3216ef64cd302d9a4c9fd9fe4f6c6b2d839869e83d71605a6c25449cc9a958b74742799
 	sha512sums = 91ff94736063b911c83b8876fe3e3778db82e0ffe0102036d81a3a6e872ca44a585914646fcbbbe399cd63aa17685fc7f73263ec4f4084f48768ca4d704037fa
 
 pkgname = nvidia-510xx-settings

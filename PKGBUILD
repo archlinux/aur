@@ -1,3 +1,4 @@
+# Maintainer: Karl Ludwig Brennan <karlludwigbrennan@outlook.com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
@@ -5,9 +6,9 @@
 _pkgbase=nvidia-settings
 pkgbase=nvidia-510xx-settings
 pkgname=('nvidia-510xx-settings' 'libxnvctrl-510xx')
-pkgver=510.85.02
+pkgver=510.108.03
 pkgrel=1
-pkgdesc='Tool for configuring the NVIDIA graphics driver'
+pkgdesc='Tool for configuring the NVIDIA graphics driver, 510 branch'
 url='https://github.com/NVIDIA/nvidia-settings'
 arch=('x86_64')
 license=('GPL2')
@@ -15,7 +16,7 @@ makedepends=('inetutils' 'jansson' 'gtk2' 'gtk3' 'libxv' 'libvdpau' 'nvidia-510x
 options=('staticlibs')
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
         libxnvctrl_so.patch)
-sha512sums=('f5f80423b2878013823afdc09979546cf72018e8d58de916b8be36216755af37d7a840d5370d49d5596ccd256cf1187b5d11777ecfcf94d5b0ce42fbbdcef115'
+sha512sums=('6569d7489d97d240a4a8585ff82ffdf83ac551b396081cd29431fa35d3216ef64cd302d9a4c9fd9fe4f6c6b2d839869e83d71605a6c25449cc9a958b74742799'
             '91ff94736063b911c83b8876fe3e3778db82e0ffe0102036d81a3a6e872ca44a585914646fcbbbe399cd63aa17685fc7f73263ec4f4084f48768ca4d704037fa')
 
 prepare() {
