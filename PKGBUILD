@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spicyR
-_pkgver=1.16.0
+_pkgver=1.16.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,16 +11,16 @@ arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
-  r-biocgenerics
   r-biocparallel
   r-classifyr
+  r-cli
   r-concaveman
   r-data.table
   r-dplyr
   r-ggforce
   r-ggplot2
-  r-iranges
   r-lmertest
+  r-magrittr
   r-pheatmap
   r-rlang
   r-s4vectors
@@ -39,10 +39,11 @@ optdepends=(
   r-knitr
   r-pkgdown
   r-rmarkdown
+  r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('67d81f12feb75b7779bc260f198fb997')
-b2sums=('d624270e4572d5f4b53af1b202453d851c8322d43cce9b7ea90bdcc26a1b8db17ef9acfb6422d173f61615715ee544ae03c7b2c6e0eac41d8eee0b23366b5273')
+md5sums=('9da8d8ea658c646fe92512fd30e52704')
+b2sums=('c3da29c375e344fb994ed8b5786905c80bd48a48c92105018a6355221d7ec67308334995d564c6acee7e19d7e04df50e8c82bcb21c6e24e62c8b039e783cae74')
 
 build() {
   mkdir build
