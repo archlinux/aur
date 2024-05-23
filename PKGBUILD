@@ -22,6 +22,7 @@ depends=('expect'
     'wlr-randr'
     'glow'
     'libcec'
+    'amd-s2idle-analysis-script-git'
 )
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon-git)

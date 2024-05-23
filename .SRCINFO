@@ -19,6 +19,7 @@ pkgbase = sk-chos-addon
 	depends = wlr-randr
 	depends = glow
 	depends = libcec
+	depends = amd-s2idle-analysis-script-git
 	provides = sk-chos-addon
 	conflicts = sk-chos-addon-git
 	replaces = sk-chos-addon-git
