@@ -20,7 +20,7 @@ license=('LicenseRef-Aseprite-EULA')
 depends=(# ~ Aseprite's direct dependencies ~
          # pixman is not linked to because we use Skia instead
          # harfbuzz is linked statically because Aseprite expects an older version
-         cmark libcurl.so libgif.so libjpeg.so zlib libpng tinyxml libfreetype.so libarchive.so libfmt.so
+         cmark libcurl.so libgif.so libjpeg.so zlib libpng tinyxml2 libfreetype.so libarchive.so libfmt.so
          libwebp.so libwebpmux.so libwebpdemux.so
          hicolor-icon-theme # For installing Aseprite's icons
          # ~ Skia deps ~
