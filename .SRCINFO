@@ -1,7 +1,7 @@
 pkgbase = seven-waves
 	pkgdesc = A dodging game with 7 levels of increasing difficulty
 	pkgver = 1.2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Togohogo1/7-Waves
 	arch = any
 	license = CC0-1.0
@@ -11,11 +11,11 @@ pkgbase = seven-waves
 	makedepends = yarn
 	makedepends = icoutils
 	makedepends = git
-	depends = electron9-bin
+	depends = electron9
 	conflicts = seven-waves
-	source = seven-waves.git::git+https://github.com/Togohogo1/7-Waves.git#tag=v1.2.0
+	source = seven-waves-1.2.0.tar.gz::https://github.com/Togohogo1/7-Waves/archive/refs/tags/v1.2.0.tar.gz
 	source = seven-waves.sh
-	sha256sums = SKIP
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 80ba41476b3bcfa8421a5b28348e0f5387a8f6ef6854ede25cb9a7cb59aaa8b8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = seven-waves
