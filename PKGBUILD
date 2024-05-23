@@ -3,7 +3,7 @@ pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
 _reponame=sk-chos-config
-pkgver=r586.ccbdaa6
+pkgver=r587.b13d824
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -23,6 +23,7 @@ depends=('expect'
     'glow'
     'libcec'
     'python-systemd'
+    'amdgpu-test-scripts-common-git'
     'amd-s2idle-analysis-script-git'
 )
 provides=(sk-chos-addon)
