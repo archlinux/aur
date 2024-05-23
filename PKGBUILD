@@ -5,17 +5,18 @@ _paname=${pkgbase#python-}
 _pyname=astLib
 pkgname=("python-${_paname}" "python-${_paname}-doc")
 pkgver=0.11.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of Python modules that provides some tools for research astronomers"
 arch=('i686' 'x86_64')
 url="https://astlib.readthedocs.io"
-license=('LGPL')
+license=('LGPL-2.0-only')
 makedepends=('python-setuptools'
 #            'python-wheel'
 #            'python-build'
 #            'python-installer'
              'wcstools-all'
-             'swig')
+             'swig'
+             'gcc13')
 #            'python-sphinx-epytext'
 #            'python-readthedocs-sphinx-ext'
 #            'python-sphinx_rtd_theme'
@@ -32,7 +33,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         'fix-deprecated-imp.patch')
 sha256sums=('c7a7edf73202e35a07d363cd60fa1ee77faef9f605f29b69e91b1654138ba72e'
             'cb8e9bfabc91992c49daae7d5bc6a476caedd5c3b5c60f26f32bcbb216daf6cd'
-            'bb98c544a695f5ca6a5f614557459dd6f1921f81c8c4ef02b5923f7ce6ff5ec3')
+            'ea99eedbe5d67ebed17f3383d6b1eaf7a8b1f38a2d3e009fa69a8a084487185b')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -42,13 +43,13 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     patch -Np1 -i "${srcdir}/use_system_wcstools.patch"
-#   patch -Np1 -i "${srcdir}/fix-deprecated-imp.patch"
+    patch -Np1 -i "${srcdir}/fix-deprecated-imp.patch"
 #   mkdir -p docs/_static
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
+    CC=gcc-13 CXX=g++-13 python setup.py build
 #   python -m build --wheel --no-isolation
 
 #   msg "Building Docs"
