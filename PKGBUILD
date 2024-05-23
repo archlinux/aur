@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=psichomics
-_pkgver=1.28.1
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.1
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Graphical Interface for Alternative Splicing Quantification, Analysis and Visualisation'
 arch=('x86_64')
@@ -58,7 +58,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ec00f9ba9cb85ddbc9006ec31b51d1f22315b63209fe19a6e39fccd13bc052cd')
+sha256sums=('406e75696fbeda518ea23f85456d395dab7675ec4de10f26fead57a202578e5b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
