@@ -1,7 +1,7 @@
 pkgbase = python-oslo-service
 	pkgdesc = Library for running OpenStack services
-	pkgver = 3.4.0
-	pkgrel = 2
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = https://opendev.org/openstack/oslo.service
 	arch = any
 	license = Apache-2.0
@@ -39,7 +39,7 @@ pkgbase = python-oslo-service
 	depends = python-requests
 	depends = python-fixtures
 	depends = python-testtools
-	source = python-oslo-service-3.4.0.tar.gz::https://opendev.org/openstack/oslo.service/archive/3.4.0.tar.gz
-	b2sums = 0581b6a62fa5a72a0a4c59f9a07d41f01393bd687be550c0da0948097e0813cdda75abc5266c2cb443722e6665f57edaac85692574fd4afe648922c3d7ef139e
+	source = python-oslo-service-3.5.0.tar.gz::https://opendev.org/openstack/oslo.service/archive/3.5.0.tar.gz
+	b2sums = 2d0ffc47d263b0ce9b9f18443a78714107634862472b6fadd89578340c929d181a8093b404a5caedc32b8a3d2df64e3e89499370b825fdf01e93c05fe80ec893
 
 pkgname = python-oslo-service

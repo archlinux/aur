@@ -2,8 +2,8 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-service
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Library for running OpenStack services"
 arch=(any)
 url="https://opendev.org/openstack/oslo.service"
@@ -43,7 +43,7 @@ checkdepends=('python-fixtures'
               'python-testtools'
               'python-paste')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('0581b6a62fa5a72a0a4c59f9a07d41f01393bd687be550c0da0948097e0813cdda75abc5266c2cb443722e6665f57edaac85692574fd4afe648922c3d7ef139e')
+b2sums=('2d0ffc47d263b0ce9b9f18443a78714107634862472b6fadd89578340c929d181a8093b404a5caedc32b8a3d2df64e3e89499370b825fdf01e93c05fe80ec893')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
