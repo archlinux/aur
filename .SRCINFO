@@ -1,6 +1,6 @@
 pkgbase = python-oslo-messaging
 	pkgdesc = OpenStack library for messaging
-	pkgver = 14.7.0
+	pkgver = 14.8.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/oslo.messaging
 	arch = any
@@ -58,7 +58,7 @@ pkgbase = python-oslo-messaging
 	depends = python-oslo-context
 	depends = python-yaml
 	depends = python-requests
-	source = python-oslo-messaging-14.7.0.tar.gz::https://opendev.org/openstack/oslo.messaging/archive/14.7.0.tar.gz
-	b2sums = 37ca6de346925117b3797d0bf352f98152e00ed809c67f7cb81a833c1e6c7a85fc093f7471f8272a1a68a96be758156af4c0e506865c20130f83353629f37136
+	source = python-oslo-messaging-14.8.0.tar.gz::https://opendev.org/openstack/oslo.messaging/archive/14.8.0.tar.gz
+	b2sums = 02b8d3c5c9f0ec5ce11ae3f95422783a38626648eea5efd0f37e705b65b567c511ba77ed1c0a50e3d4a80d11aeed69dd98b4e7140a1185f291c7777c3e080cd2
 
 pkgname = python-oslo-messaging
