@@ -1,7 +1,7 @@
 # Maintainer: TurtleRuss <tttturtleruss@gmail.com> 
 
 pkgname=hustmirror-cli-git
-pkgver=1.1.4.r4.gf72022e
+pkgver=1.1.4.r6.g4314ffe
 pkgrel=1
 epoch=
 pkgdesc="The command line tool (hustmirror-cli) is a small tool that can help you quickly change sources to HUST mirror sources."
