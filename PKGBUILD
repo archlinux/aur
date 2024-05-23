@@ -1,27 +1,26 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=microsip
-pkgver=3.21.3
-pkgrel=3
+pkgver=3.21.4
+pkgrel=1
 pkgdesc="Open source portable SIP softphone for Windows based on PJSIP stack"
 _repouser=post-factum
 _reponame=microsip
 _wrapperver=1.1
 arch=(x86_64)
 url="https://www.microsip.org/"
-license=(GPL2)
-conflicts=(wine-staging)
+license=(GPL-2.0-or-later)
 
 source=("MicroSIP-Lite-${pkgver}.zip"::"https://www.microsip.org/downloads/?file=MicroSIP-Lite-${pkgver}.zip"
 		"${_reponame}-${_wrapperver}.tar.gz"::"https://codeberg.org/${_repouser}/${_reponame}/archive/v${_wrapperver}.tar.gz")
 
-sha256sums=('856087fbb8fd124615f9af9081c9e7882dedd276ee639932bc58a929481feab1'
+sha256sums=('6d60997d7d0824c762f513113a5d45484f3fb838b34f065a2d3b14ffcc42f87b'
             '7ff13e1c93434f1350132aad1b708461ef84e2fe181cade419d0f25e5a9f3510')
 
 package() {
 	depends=(wine lib32-libpulse xorg-xdpyinfo)
 
 	install -Dt "${pkgdir}"/usr/share/licenses/${pkgname} -m0644 License.txt
-	install -Dt "${pkgdir}"/usr/share/doc/${pkgname} -m0644 "MicroSIP Website.url"
+	install -Dt "${pkgdir}"/usr/share/doc/${pkgname} -m0644 MicroSIP.url
 	install -Dt "${pkgdir}"/usr/share/${pkgname} -m0644 hangup.wav
 	install -Dt "${pkgdir}"/usr/share/${pkgname} -m0644 msgin.wav
 	install -Dt "${pkgdir}"/usr/share/${pkgname} -m0644 msgout.wav
@@ -37,4 +36,3 @@ package() {
 	install -Dt "${pkgdir}"/usr/share/applications -m0644 ${_reponame}/${pkgname}.desktop
 	install -Dt "${pkgdir}"/usr/share/icons/hicolor/256x256/apps -m0644 ${_reponame}/${pkgname}.png
 }
-
