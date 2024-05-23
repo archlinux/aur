@@ -3,7 +3,7 @@
 pkgname=abrowser-bin
 _pkgname=${pkgname%-*}
 pkgver=126.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Binary version of Abrowser, safe and easy web browser from Mozilla"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
