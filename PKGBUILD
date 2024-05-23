@@ -2,14 +2,14 @@
 
 pkgbase=vosk-api-git
 pkgname=('vosk-api-git' 'python-vosk-git')
-pkgver=0.3.45.r0.gcf2560c
+pkgver=0.3.50.r1.g7358c79
 pkgrel=1
 _model_small_ver=0.15
 _model_spk_ver=0.4
 pkgdesc='Offline speech recognition toolkit (git version)'
 arch=('x86_64')
 url='https://alphacephei.com/vosk/'
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('git' 'cmake' 'gradle' 'python' 'python-build' 'python-cffi' 'python-installer'
              'python-requests' 'python-setuptools' 'python-srt' 'python-tqdm' 'python-websockets'
              'python-wheel' 'java-environment=17')
@@ -20,7 +20,8 @@ source=('git+https://github.com/alphacep/vosk-api.git'
         'git+https://github.com/alphacep/openfst.git'
         'git+https://github.com/alphacep/kaldi.git#branch=vosk'
         "https://alphacephei.com/kaldi/models/vosk-model-small-en-us-${_model_small_ver}.zip"
-        "https://alphacephei.com/vosk/models/vosk-model-spk-${_model_spk_ver}.zip")
+        "https://alphacephei.com/vosk/models/vosk-model-spk-${_model_spk_ver}.zip"
+        '010-vosk-api-openfst-gcc14-fix.patch')
 noextract=("vosk-model-small-en-us-${_model_small_ver}.zip")
 sha256sums=('SKIP'
             'SKIP'
@@ -28,7 +29,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498'
-            'a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7')
+            'a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7'
+            '30908c76206fdf88b5606234665f12fc6effd61cd09c64ec6dfd379c383dda15')
 
 prepare() {
     local _curl='curl -sqgb "" -fLC - --retry 3 --retry-delay 3'
@@ -40,10 +42,13 @@ prepare() {
     
     mkdir -p models
     bsdtar -x -f  "vosk-model-small-en-us-${_model_small_ver}.zip" -C models
+    
     ln -sf "../../../vosk-model-spk-${_model_spk_ver}" vosk-api/python/example/model-spk
     ln -sf ../../OpenBLAS kaldi/tools/OpenBLAS
     ln -sf ../../clapack kaldi/tools/clapack
     ln -sf ../../openfst kaldi/tools/openfst
+    
+    patch -d openfst -Np1 -i "${srcdir}/010-vosk-api-openfst-gcc14-fix.patch"
     
     autoreconf -fi openfst
 }
@@ -58,16 +63,18 @@ build() {
     export CXXFLAGS+=' -ffat-lto-objects'
     
     # openblas
+    CFLAGS+=' -Wno-implicit-function-declaration' \
     make -C OpenBLAS ONLY_CBLAS='1' DYNAMIC_ARCH='1' TARGET='NEHALEM' USE_LOCKING='1' USE_THREAD='0' all
     make -C OpenBLAS PREFIX="${srcdir}/OpenBLAS/install" install
     
     # clapack
-    CFLAGS+=' -Wno-error=format-security -fcommon' cmake -B build-clapack -S clapack -Wno-dev
-    make -C build-clapack
+    CFLAGS+=' -Wno-error=format-security -fcommon -Wno-implicit-function-declaration' \
+    cmake -B build-clapack -S clapack -Wno-dev
+    cmake --build build-clapack
     while read -r -d '' _file
     do
         cp -af "$_file" "${srcdir}/OpenBLAS/install/lib"
-    done < <(find build-clapack -type f -name '*.a' -print0)
+    done < <(find build-clapack -type f -name 'lib*.a' -print0)
     
     # openfst
     cd openfst
@@ -145,9 +152,9 @@ package_python-vosk-git() {
     provides=('python-vosk')
     conflicts=('python-vosk')
     
-    local _pyver
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+    local _site_pkgs
+    _site_pkgs="$(python -c 'import site; print(site.getsitepackages()[0])')"
     python -m installer --destdir="$pkgdir" vosk-api/python/dist/*.whl
-    rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
-    ln -s ../../../libvosk.so "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
+    rm "${pkgdir}${_site_pkgs}/vosk/libvosk.so"
+    ln -s ../../../libvosk.so "${pkgdir}${_site_pkgs}/vosk/libvosk.so"
 }
