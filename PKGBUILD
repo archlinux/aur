@@ -1,16 +1,15 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 pkgname=riscv64-gnu-toolchain-glibc-llvm-bin
 pkgver=2024.04.12
-pkgrel=4
-pkgdesc="GNU toolchain for riscv64 linux, including GCC and LLVM."
+pkgrel=5
+pkgdesc="GNU toolchain for riscv64 Linux, including GCC and clang."
 arch=('x86_64')
 url="https://github.com/riscv-collab/riscv-gnu-toolchain"
 license=('GPL2')
-depends=()
-conflicts=(
+provides=(
   'riscv64-gnu-toolchain-glibc-bin'
 )
-provides=(
+conflicts=(
   'riscv64-gnu-toolchain-glibc-bin'
 )
 optdepends=()
@@ -22,15 +21,35 @@ source=(
 sha512sums=(
   "318da38ec7705c29d0dcf16f0f482ee83d08bb8bbfb62a706900aeb57108bc2d9c1ea71479d92de19527417d99cb32da17ad8652b332fef62881552391aae9e9"
 )
-_toolchain_prefix='riscv64-unknown-linux-gnu'
 
 package() {
   install -dm755 "${pkgdir}"/opt/riscv64-gnu-toolchain-glibc-llvm-bin "${pkgdir}"/usr/bin "${pkgdir}"/usr/lib/gcc
   cp -pR "${srcdir}"/riscv/* "${pkgdir}"/opt/riscv64-gnu-toolchain-glibc-llvm-bin
-  ln -s /opt/riscv64-gnu-toolchain-glibc-llvm-bin/"${_toolchain_prefix}" "${pkgdir}"/usr
-  for f in "${srcdir}"/riscv/bin/"${_toolchain_prefix}"-*; do
+
+  # Install sysroot
+  if test -d "${pkgdir}"/opt/riscv64-gnu-toolchain-glibc-llvm-bin/sysroot; then
+    sysroot=/opt/riscv64-gnu-toolchain-glibc-llvm-bin/sysroot
+  else
+    sysroot=/opt/riscv64-gnu-toolchain-glibc-llvm-bin/riscv64-unknown-linux-gnu
+  fi
+  ln -s "${sysroot}" "${pkgdir}"/usr/riscv64-unknown-linux-gnu
+
+  # Install cross libgcc
+  ln -s /opt/riscv64-gnu-toolchain-glibc-llvm-bin/lib/gcc/riscv64-unknown-linux-gnu "${pkgdir}"/usr/lib/gcc
+
+  # Install binaries
+  for f in "${srcdir}"/riscv/bin/riscv64-unknown-linux-gnu-*; do
     f="$(basename "${f}")"
     ln -s /opt/riscv64-gnu-toolchain-glibc-llvm-bin/bin/"${f}" "${pkgdir}"/usr/bin
   done
-  ln -s /opt/riscv64-gnu-toolchain-glibc-llvm-bin/lib/gcc/"${_toolchain_prefix}" "${pkgdir}"/usr/lib/gcc
+
+  
+
+  # Strip
+  find \
+    "${pkgdir}"/opt/riscv64-gnu-toolchain-glibc-llvm-bin/bin \
+    "${pkgdir}"/opt/riscv64-gnu-toolchain-glibc-llvm-bin/lib \
+    "${pkgdir}"/opt/riscv64-gnu-toolchain-glibc-llvm-bin/libexec \
+    -type f \
+    -exec /bin/sh -c 'if file --no-sandbox "$0" | grep -qE "ELF.*(executable|shared object)"; then strip "$0"; fi' {} \;
 }
