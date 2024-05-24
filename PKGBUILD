@@ -1,8 +1,8 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=proton-vpn-gtk-app
-pkgver=4.3.1
-pkgrel=2
+pkgver=4.3.2
+pkgrel=1
 pkgdesc="ProtonVPN GTK app, Maintained by Community"
 arch=("any")
 url="https://github.com/ProtonVPN/proton-vpn-gtk-app"
@@ -18,7 +18,6 @@ depends=("python-proton-core"
 		"python-proton-vpn-network-manager-openvpn"
 		"python-proton-vpn-killswitch"
 		"python-proton-vpn-killswitch-network-manager"
-		"python-proton-vpn-session"
 		"python-aiohttp"
 		"python-bcrypt"
 		"python-cairo"
