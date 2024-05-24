@@ -19,7 +19,7 @@
 _phpbase="74"
 _suffix=""
 pkgver="7.4.33"
-pkgrel="5"
+pkgrel="6"
 pkgbase="php74"
 pkgdesc="PHP 7.4.33 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
@@ -135,6 +135,7 @@ source=(
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
     "php-libxml.patch"
+    "litespeed-phpheader.patch"
     "mysql-socket-php7.1.patch"
     "php74-enchant.patch"
     "debian-php-7.4.patch"
@@ -205,6 +206,7 @@ arch=(
 )
 _patches=(
     "php-libxml.patch"
+    "litespeed-phpheader.patch"
     "mysql-socket-php7.1.patch"
     "php74-enchant.patch"
     "debian-php-7.4.patch"
@@ -511,8 +513,8 @@ _build_sapi() {
 # BUILD them all
 ################################################################################
 build() {
-    export CFLAGS="${CFLAGS} -fPIC"
-    export CXXFLAGS="${CXXFLAGS} -fPIC"
+    export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
+    export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_openssl_v10_patch)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.0"
@@ -1541,6 +1543,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '924846abf93bc613815c55dd3f5809377813ac62a9ec4eb3778675b82a27b927'
             'e757f84d2d72ea39259450c32f3a83c72262da4294152ae3e9fbc0cada622bba'
+            'c397a96905011907a2efa51dc9ea447dcf1a204f24fb190b9be156dbaae15dde'
             '0a3a6e8ff04ff1e0869befcf2c7bca4e886d94065da6d7a10b809a4750b961a0'
             '8fb103438fe12875dbe7c1f5b0899a81a76b4ce1456f16960e23e287d273df14'
             'c30ff6fcf75b0c0068f3d49fde8024719b3677f104d93232e52c5358c840c0f5'
