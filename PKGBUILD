@@ -5,7 +5,7 @@
 pkgname=forticlient
 pkgver=7.2.4.0809
 pkgrel=1
-pkgdesc="An endpoint protection application"
+pkgdesc="Fortinet VPN client ZTNA edition"
 arch=('x86_64')
 url="https://www.forticlient.com"
 license=('custom')
