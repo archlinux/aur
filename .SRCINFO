@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-notfound-page
 	pkgdesc = Sphinx extension to build a 404 page with absolute URLs
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://sphinx-notfound-page.readthedocs.io
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-sphinx-notfound-page
 	makedepends = python-sphinx-tabs
 	makedepends = python-sphinxemoji
 	makedepends = python-sphinx_rtd_theme
-	source = https://files.pythonhosted.org/packages/source/s/sphinx_notfound_page/sphinx_notfound_page-1.0.1.tar.gz
-	md5sums = 0094d48499921411ba06c25ded807e4e
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_notfound_page/sphinx_notfound_page-1.0.2.tar.gz
+	md5sums = 0327369cdd2151b66add1e753cc8defa
 
 pkgname = python-sphinx-notfound-page
 	depends = python-sphinx>=5

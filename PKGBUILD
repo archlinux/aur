@@ -4,7 +4,7 @@ pkgbase=python-sphinx-notfound-page
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Sphinx extension to build a 404 page with absolute URLs"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=('python-flit-core'
              'python-sphinx_rtd_theme')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0094d48499921411ba06c25ded807e4e')
+md5sums=('0327369cdd2151b66add1e753cc8defa')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
