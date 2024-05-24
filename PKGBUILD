@@ -4,7 +4,7 @@ pkgname="${_appname}-player-bin"
 _pkgname="Flaru Player"
 pkgver=1.13.5
 _electronversion=27
-pkgrel=4
+pkgrel=5
 pkgdesc='An "unofficial" emulator based on Ruffle Flash Emulator. Created to provide a friendly interface and enhanced playing experience. It is a complete alternative to Adobe Flash Player. Run Flash Safely Anywhere'
 arch=('x86_64')
 url="https://github.com/jooy2/flaru"
@@ -24,11 +24,12 @@ source=(
 )
 sha256sums=('af81ddd6a4abec83fc95c90e37f5c9f055a686239ecd716d56524464cac1d092'
             '22f86a10f95ec7f4695c4d39a1df4464a6d61d7fe457dcd9181d71d530b0b70a'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
