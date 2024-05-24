@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Lsetwatch
+GenericName=LEGO collection management software
+Terminal=false
+Type=Application
+Exec=lsetwatch %f
+Icon=lsetwatch
