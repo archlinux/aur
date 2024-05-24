@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mudita-center-bin
 _pkgname="Mudita Center"
-pkgver=2.2.8
+pkgver=2.3.0
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="Allows you to expand and update the features of Mudita Pure and Mudita Harmony, while using your computer. One application for every platform, open-sourced for transparency."
 arch=('x86_64')
 url="https://mudita.com/products/pure/"
@@ -21,8 +21,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname// /-}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0290995df96266c3a4633dde402e2335d6172f6256664f9e0cb35ff2c94e860d'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('b0374044702d4b6d7f7f04d0d955dbdfa120d75d8b46630abbedd8e712eac893'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
