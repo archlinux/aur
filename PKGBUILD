@@ -1,5 +1,5 @@
 pkgname=vgmstream-git
-pkgver=r1917.39.g46eb81ac
+pkgver=r1917.48.g5e25e543
 pkgrel=1
 pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
@@ -14,13 +14,11 @@ replaces=(vgmstream-kode54-git)
 source=(${pkgname}::git+https://github.com/vgmstream/vgmstream.git
         https://downloads.xiph.org/releases/celt/celt-0.6.1.tar.gz
         https://downloads.xiph.org/releases/celt/celt-0.11.0.tar.gz
-        install-headers.patch
-        0001-meta-ubi_hx-Fix-typing-of-chunk_size.patch)
+        install-headers.patch)
 sha256sums=('SKIP'
             'a991dff4a9e0772ede0881d81cdc7ac559148c2194885cbdd534fe4af43779da'
             'c94d4d34f5a2caa1574b1a94869202cacd959b55f643a8bafe0660008acad9c3'
-            '927d61ab752c2bc10a15185a52a0a004cf7149a90a3b195034f4956b5af8d124'
-            '0956f950caa420d169fa80d7bca8356797823d70fc124dfc0c9da662cee46f13')
+            '927d61ab752c2bc10a15185a52a0a004cf7149a90a3b195034f4956b5af8d124')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -30,7 +28,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   patch -p0 < "$srcdir"/install-headers.patch
-  patch -p1 < "$srcdir"/0001-meta-ubi_hx-Fix-typing-of-chunk_size.patch
 }
 
 celt_symbols=(
