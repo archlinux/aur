@@ -1,32 +1,28 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
 pkgver=6.9.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pixel phone flashing GUI utility with features."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/badabing2005/PixelFlasher"
 license=('GPL-3.0-or-later')
 depends=(
-  'glibc'
   'hicolor-icon-theme'
   'python-beautifulsoup4'
+  'python-bsdiff4'
   'python-chardet'
   'python-cryptography'
-  'python-bsdiff4'
+  'python-darkdetect'
   'python-json5'
   'python-lz4'
+  'python-markdown'
+  'python-packaging'
+  'python-platformdirs'
+  'python-protobuf'
   'python-psutil'
   'python-pyperclip'
-  'python-rsa'
-  'zlib'
-)
-makedepends=(
-  'pyinstaller'
-  'python-darkdetect'
-  'python-httplib2'
-  'python-markdown'
-  'python-protobuf'
   'python-requests'
+  'python-rsa'
   'python-six'
   'python-wxpython'
 )
@@ -40,18 +36,25 @@ source=("PixelFlasher-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 sha256sums=('683512df9d369ec106ca8fe6a1915d9317c757943ff8129594f2910ed882f6de'
             '3f503e3e3b819562669e1d0a8a25043c478c8c1709b376642fd678caf3d8ee34')
 
-build() {
-  cd "PixelFlasher-$pkgver"
-  pyinstaller --noconfirm build-on-linux.spec
-}
-
 package() {
   cd "PixelFlasher-$pkgver"
-  install -Dm755 dist/PixelFlasher -t "$pkgdir/usr/bin/"
+  install -Dm755 bin/* -t "$pkgdir/opt/$pkgname/bin/"
+  rm "$pkgdir/opt/$pkgname/bin"/7z{.dll,.exe}
+
+  for f in *.py *.json *.pem; do
+    install -m644 "${f}" -t "$pkgdir/opt/$pkgname/"
+  done
+
+  install -Dm644 images/*.png -t "$pkgdir/opt/$pkgname/images/"
+  install -Dm644 images/pif/*.png -t "$pkgdir/opt/$pkgname/images/pif/"
+
+  chmod +x "$pkgdir/opt/$pkgname/PixelFlasher.py"
+  install -d "$pkgdir/usr/bin"
+  ln -s  "/opt/$pkgname/PixelFlasher.py" "$pkgdir/usr/bin/PixelFlasher"
 
   for i in 64 128 256; do
     install -Dm644 "images/icon-${i}.png" \
-    "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/PixelFlasher.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/PixelFlasher.png"
   done
 
   install -Dm644 "$srcdir/PixelFlasher.desktop" -t "$pkgdir/usr/share/applications/"
