@@ -1,7 +1,7 @@
 pkgbase = neovim-telescope
 	pkgdesc = Extendable fuzzy search for Neovim
-	pkgver = 0.1.7
-	pkgrel = 2
+	pkgver = 0.1.8
+	pkgrel = 1
 	url = https://github.com/nvim-telescope/telescope.nvim
 	arch = any
 	groups = neovim-plugins
@@ -15,7 +15,7 @@ pkgbase = neovim-telescope
 	optdepends = ripgrep: live_grep(), grep_srting(), find_files()
 	optdepends = vim-devicons: icons
 	conflicts = neovim-telescope-git
-	source = telescope.nvim-0.1.7.tar.gz::https://github.com/nvim-telescope/telescope.nvim/archive/refs/tags/0.1.7.tar.gz
-	sha256sums = 751ed8a86550cb978d3eca10830edece96f98c5ec062d429c74ad86ea9a25013
+	source = telescope.nvim-0.1.8.tar.gz::https://github.com/nvim-telescope/telescope.nvim/archive/refs/tags/0.1.8.tar.gz
+	sha256sums = 2480c5675def3368fcc5a6c890ab44f02d95a389743f309ca958f244381065dd
 
 pkgname = neovim-telescope
