@@ -1,7 +1,7 @@
 pkgbase = armcord
 	pkgdesc = A custom client designed to enhance your Discord experience while keeping everything lightweight.
 	pkgver = 3.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://armcord.app/
 	arch = any
 	license = OSL-3.0
@@ -9,8 +9,8 @@ pkgbase = armcord
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = git
-	makedepends = pnpm
 	makedepends = curl
+	makedepends = pnpm>=9.1.1
 	depends = electron30
 	conflicts = armcord
 	source = armcord-3.2.7.tar.gz::https://github.com/ArmCord/ArmCord/archive/refs/tags/v3.2.7.tar.gz

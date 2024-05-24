@@ -4,7 +4,7 @@ _pkgname=ArmCord
 pkgver=3.2.7
 _electronversion=30
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom client designed to enhance your Discord experience while keeping everything lightweight."
 arch=('any')
 url="https://armcord.app/"
@@ -19,8 +19,8 @@ makedepends=(
     'nvm'
     'gendesk'
     'git'
-    'pnpm'
     'curl'
+    'pnpm>=9.1.1'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -62,6 +62,7 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|icon.icns|icon.png|g" -i package.json
+    echo "package-manager-strict=false" >> .npmrc
     pnpm install
     pnpm run packageQuick
 }
