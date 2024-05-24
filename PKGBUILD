@@ -4,7 +4,7 @@
 # Contributor: Joan Rieu <toto_pirate@hotmail.fr>
 
 pkgname=roxterm-git
-pkgver=3.11.1
+pkgver=3.15.0.r2.g6534479
 pkgrel=1
 pkgdesc="Tabbed, VTE-based terminal emulator"
 epoch=1
@@ -16,15 +16,21 @@ makedepends=('cmake' 'git' 'docbook-xsl' 'xmlto' 'po4a' 'imagemagick' \
   'librsvg' 'itstool' 'sed' 'pkgconf')
 provides=('roxterm')
 conflicts=('roxterm')
-source=("$pkgname::git+https://github.com/realh/roxterm.git")
+source=("$pkgname::git+https://github.com/realh/roxterm.git#branch=osc52-goshim")
 md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
+  git switch osc52-vte &>/dev/null
   vs=`git describe --match '[0-9]*'`
   vl=`git describe --long --match '[0-9]*'`
   [ "$vs" = "$vl" ] && vs=`echo "$vs" | sed -r 's,([^-]*-g),r\1,;s,-,.,g'`
   echo $vs
+}
+
+prepare() {
+  cd $pkgname
+  printf "$pkgver" > version
 }
 
 build() {
