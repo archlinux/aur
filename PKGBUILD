@@ -26,14 +26,13 @@ validpgpkeys=()
 
 build() {
 	cd terminalgoogle-git
-	make
+	make -s
 }
 
 
 package() {
 	cd terminalgoogle-git
-        install -Dm644 tgoogle "${pkgdir}/usr/local/bin/tgoogle"
-        chmod +x "${pkgdir}/usr/local/bin/tgoogle"
+        install -Dm755 tgoogle "${pkgdir}/usr/local/bin/tgoogle"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
