@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='ascii-movie-bin'
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='Star Wars SSH + Telnet server written in Go'
 url='https://github.com/gabe565/ascii-movie'
@@ -11,14 +11,14 @@ license=('GPL-3.0')
 provides=('ascii-movie')
 conflicts=('ascii-movie')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/ascii-movie/releases/download/v1.9.2/ascii-movie_1.9.2_linux_arm64.tar.gz")
-sha256sums_aarch64=('c31a83058e9479958e2d1096efff106d9b110995b4362a271f318082f86fba8d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/ascii-movie/releases/download/v1.9.3/ascii-movie_1.9.3_linux_arm64.tar.gz")
+sha256sums_aarch64=('38728b0acf9ce96206155109a6f57d48301fce05585a008cc2dfcfa498e405d9')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/ascii-movie/releases/download/v1.9.2/ascii-movie_1.9.2_linux_armv7.tar.gz")
-sha256sums_armv7h=('05727efe5d1a69f49688a1f5767621db592f2240f1c7f232c582bd0a967b8397')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/ascii-movie/releases/download/v1.9.3/ascii-movie_1.9.3_linux_armv7.tar.gz")
+sha256sums_armv7h=('a766f0748c65d0ec9106448f603d04b98892f690c2a0619b46e98705867eb4d3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/ascii-movie/releases/download/v1.9.2/ascii-movie_1.9.2_linux_amd64.tar.gz")
-sha256sums_x86_64=('82762758861fcab64c37a397a3ee1253db849774b92ecc18397ee6df6dc4424f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/ascii-movie/releases/download/v1.9.3/ascii-movie_1.9.3_linux_amd64.tar.gz")
+sha256sums_x86_64=('3ba8af27dbaa1b94fc8f8302d37906c0cf6f63888e6c2524a7411cb91aedd073')
 
 package() {
   # bin
