@@ -129,6 +129,11 @@ close_review_window() {
 		-d '{ "action": "guiDeckBrowser", "version": 6 }' >/dev/null &
 }
 
+focus_window() {
+	assert_installed i3-msg
+	i3-msg -q "[class=\"$1\"] focus" || true
+}
+
 setallmpv() {
 	# Sends pause/play commands to mpv.
 	# Requires the mpvSockets user-script for mpv.
@@ -138,7 +143,7 @@ setallmpv() {
 
 	if [[ $1 == play ]]; then
 		local -r cmd=${cmd/<pause>/false}
-		i3-msg -q '[class="mpv"] focus' || true
+		focus_window mpv
 	else
 		local -r cmd=${cmd/<pause>/true}
 	fi
