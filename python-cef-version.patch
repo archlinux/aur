@@ -6,11 +6,11 @@ index c796388..3b3d9d0 100644
  #include "../../build/build_cefpython/cefpython_py38_fixed.h"
  #elif PY_MINOR_VERSION == 9
  #include "../../build/build_cefpython/cefpython_py39_fixed.h"
-+#elif PY_MINOR_VERSION == 11
-+#include "../../build/build_cefpython/cefpython_py311_fixed.h"
++#elif PY_MINOR_VERSION == 12
++#include "../../build/build_cefpython/cefpython_py312_fixed.h"
  #endif // PY_MINOR_VERSION
  #endif // PY_MAJOR_VERSION
- 
+
 diff --git a/tools/common.py b/tools/common.py
 index 303ccb8..694ba9f 100644
 --- a/tools/common.py
@@ -19,7 +19,7 @@ index 303ccb8..694ba9f 100644
          return "VS2015" if vs_prefix else "2015"
      elif sys.version_info[:2] == (3, 9):
          return "VS2015" if vs_prefix else "2015"
-+    elif sys.version_info[:2] == (3, 11):
++    elif sys.version_info[:2] == (3, 12):
 +        return "VS2015" if vs_prefix else "2015"
      else:
          print("ERROR: This version of Python is not supported")
@@ -32,9 +32,9 @@ index 624a26e..28fffa2 100644
  elif sys.version_info[:2] == (3, 9):
      # noinspection PyUnresolvedReferences
      from . import cefpython_py39 as cefpython
-+elif sys.version_info[:2] == (3, 11):
++elif sys.version_info[:2] == (3, 12):
 +    # noinspection PyUnresolvedReferences
-+    from . import cefpython_py311 as cefpython
++    from . import cefpython_py312 as cefpython
  else:
      raise Exception("Python version not supported: " + sys.version)
 diff --git a/tools/installer/cefpython3.setup.py b/tools/installer/cefpython3.setup.py
@@ -45,7 +45,7 @@ index d14ee2c..852b095 100644
              "Programming Language :: Python :: 3.7",
              "Programming Language :: Python :: 3.8",
              "Programming Language :: Python :: 3.9",
-+            "Programming Language :: Python :: 3.11",
++            "Programming Language :: Python :: 3.12",
              "Topic :: Desktop Environment",
              "Topic :: Internet",
              "Topic :: Internet :: WWW/HTTP",
@@ -56,7 +56,7 @@ index 012e665..ad0b4b6 100644
 @@ -365,12 +365,13 @@ def copy_cpp_extension_dependencies_issue359(pkg_dir):
      # in the package. Thus if included, msvcpxx.dll dependency is
      # required as well.
- 
+
 -    # Python 3.5 / 3.6 / 3.7 / 3.8 / 3.9
 +    # Python 3.5 / 3.6 / 3.7 / 3.8 / 3.9 / 3.11
      if os.path.exists(os.path.join(pkg_dir, "cefpython_py35.pyd")) \
@@ -65,7 +65,7 @@ index 012e665..ad0b4b6 100644
              or os.path.exists(os.path.join(pkg_dir, "cefpython_py38.pyd")) \
 -            or os.path.exists(os.path.join(pkg_dir, "cefpython_py39.pyd")):
 +            or os.path.exists(os.path.join(pkg_dir, "cefpython_py39.pyd")) \
-+            or os.path.exists(os.path.join(pkg_dir, "cefpython_py311.pyd")):
++            or os.path.exists(os.path.join(pkg_dir, "cefpython_py312.pyd")):
          search_paths = [
              # This is where Microsoft Visual C++ 2015 Update 3 installs
              # (14.00.24212).

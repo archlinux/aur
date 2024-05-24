@@ -4,7 +4,7 @@
 pkgname='python-cef'
 _vermajor="66"
 pkgver=66.1.r3.g5679f28
-pkgrel=3
+pkgrel=4
 pkgdesc="CEF python bindings (with bundled spotify-built CEF)"
 arch=('x86_64')
 url='https://github.com/cztomczak/cefpython'
@@ -17,8 +17,8 @@ source=("git+https://github.com/cztomczak/cefpython.git#commit=5679f28cec18a57a5
         "${pkgname}-version.patch"
         "https://github.com/cztomczak/cefpython/releases/download/v${_vermajor}-upstream/${_cefstring}.zip"
         "${pkgname}-fix-build.patch")
-sha256sums=('SKIP'
-            '4c1402716a3d05179bbf0cc88de7dcafb0191381410347bc1747e4ac983165ea'
+sha256sums=('8f6f193593a06f66c1697a4c97fddf311e8af4d1897a31854b8f555a1c4fb9bc'
+            'f164e02a0cfb2263b2782f078a1a66d648f56ffb8ed9f6a4ae1d7c25d7c1472c'
             'a9ec9a72cc84f290cb985bbf06b9825312b7f84cb3e1ca3f4dcfeeeef338d84b'
             '74aa087814d6f34366b0f01c95eb2d0c31dd4e9c3614f00d33436f8c733529a1')
 
@@ -38,6 +38,8 @@ prepare() {
 	sed -i 's/command = sudo_command/#command = sudo_command/' 'tools/build.py'
 	sed -i 's/open(header_file, "rU")/open(header_file, "r", newline=None)/' 'tools/common.py'
 	sed -i 's/cpdef list headerMultimap = \[\]/cdef list headerMultimap = \[\]/' 'src/request.pyx' 'src/response.pyx'
+	sed -i 's/os.environ\["CEF_CCFLAGS"\] = "-std=gnu++11 -DNDEBUG -Wall -Werror -Wno-deprecated-declarations"/os.environ["CEF_CCFLAGS"] = "-std=gnu++11 -DNDEBUG -Wall -Werror -Wno-deprecated-declarations " + os.environ["CXXFLAGS"] + " " + os.environ["LDFLAGS"]/' \
+		'tools/build.py'
 
 	mkdir -p 'build'
 	cd 'build'
@@ -46,12 +48,14 @@ prepare() {
 	fi
 	#cythonver="$(pacman -Q cython | cut -d' ' -f2 | cut -d'-' -f1)"
 	#sed -i "s;Cython ==;Cython == $cythonver;" '../tools/requirements.txt'
-	
+
 	sed -i '/check_cython_version()$/d' '../tools/build.py'
 }
 
 build() {
 	cd "${_dir}/build"
+	export CXXFLAGS+=" -Wno-error=template-id-cdtor"
+	export LDFLAGS="$LDFLAGS"
 	python '../tools/build.py' "${_dirpkgver}"
 }
 
