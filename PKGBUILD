@@ -9,10 +9,11 @@ _ff_theme=official
 
 _pkgname=firefox-esr
 pkgname=firefox-esr-globalmenu
-pkgver=115.10.0
-pkgrel=1
+pkgver=115.11.0
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)"
 url="https://www.mozilla.org/en-US/firefox/enterprise/"
+install="$_pkgname.install"
 arch=(x86_64)
 license=(MPL-2.0)
 provides=("$_pkgname=$pkgver")
@@ -42,7 +43,7 @@ makedepends=(
 	nasm
 	nodejs
 	python
-	rust
+	rustup
 	unzip
 	wasi-compiler-rt
 	wasi-libc
@@ -64,22 +65,27 @@ options=(
 	!makeflags)
 source=(
 	"https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"{,.asc}
-	assert.patch
-	D187418.patch
-	D187749.patch
-	unity-menubar.patch
-	fix_csd_window_buttons.patch)
+	"D187418.patch::https://phabricator.services.mozilla.com/D187418?download=true" # Tooltip only when focusd
+	"D187749.patch::https://phabricator.services.mozilla.com/D187749?download=true" # Tooltip only when focusd
+	"D208884.patch::https://phabricator.services.mozilla.com/D208884?download=true" # Unbreak distutils
+	"D194781.patch::https://phabricator.services.mozilla.com/D194781?download=true" # Unbreak distutils
+	"D205839.patch::https://phabricator.services.mozilla.com/D205839?download=true" # Unbreak distutils
+	"feature-unity-menubar-m-c.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar-m-c.patch"
+	"fis-csd-global-menu.patch::https://github.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/raw/7e9b3f679ebf55a8dbbd52dad692167fe6ff14fb/waterfox-kde/patches/fis-csd-global-menu.patch")
 validpgpkeys=(
 	# Mozilla Software Releases <release@mozilla.com>
 	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
 	'14F26682D0916CDD81E37B6D61B7B526D98F0353')
-sha1sums=('fb7a9d9bd6632f83f8d3f1a67e31d69515aab3f7'
-          'SKIP'
-          'bb4bbaddc549edd3506b5e955840fcebffcafb71'
-          'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
-          '559ce09fee54c849ea4da2bf881da37f5fc0cac9'
-          '076dc68b2ec6c454afe9b5a9b3fbb7908ce575b8'
-          '4193d307cfc152ef2813973b0eae4385a4a2a968')
+sha1sums=(
+		'822bb539528c0f6c1bf0a2b8bbdd0a33b546c2c3'
+		'SKIP'
+		'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
+		'559ce09fee54c849ea4da2bf881da37f5fc0cac9'
+		'0ab2fac39fc6b10eb4aa3c40435fe0d83cb73a1b'
+		'4e39ef39439bc397215c94a73dcf1660a1023258'
+		'c50399b3d9b241e938c86f07e455a730bbe0416a'
+		'0b5cb49417c6666fe9c1ff8ea6b5f0bfacac24d0'
+		'801ec02b5dce0ddae3610b84241d2528717afa5c')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -101,10 +107,10 @@ prepare() {
 	
 	cd firefox-$pkgver
 
-	for patch in "${source[@]}"; do
+	for patch in "${source[@]%%::*}"; do
 		if [[ $patch == *.patch ]]; then
-			msg2 "applying $patch"
-			patch --no-backup-if-mismatch -Np1 < "$srcdir/$patch"
+			msg2 "Applying $patch"
+			patch --no-backup-if-mismatch -Np1 -i "$srcdir/$patch"
 		fi
 	done
 
@@ -168,6 +174,9 @@ fi
 
 build() {
 	cd firefox-$pkgver
+
+	# The correct Rust version for thunderbird 115 is 1.70.0
+	export RUSTUP_TOOLCHAIN=1.77
 
 	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
 	export MOZBUILD_STATE_PATH="$srcdir/mozbuild"

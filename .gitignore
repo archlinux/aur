@@ -4,4 +4,4 @@
 !.SRCINFO
 !PKGBUILD
 !upload-symbol-archive
-!*.patch
+!*.install

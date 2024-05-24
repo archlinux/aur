@@ -1,0 +1,27 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} Note:${bold} $1${all_off}\n"
+}
+
+do_setcap() {
+  note 'For enable Global Menu:'
+  msg_blue "1. Type ${all_off}about:config${bold} in the address bar then press enter"
+  msg_blue "2. Search for ${all_off}widget.gtk.global-menu.enabled"
+  msg_blue "3. Set it to true"
+}
+
+post_install() {
+  do_setcap
+}
+
+post_upgrade() {
+  do_setcap
+}

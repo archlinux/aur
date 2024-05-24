@@ -1,8 +1,9 @@
 pkgbase = firefox-esr-globalmenu
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)
-	pkgver = 115.10.0
-	pkgrel = 1
+	pkgver = 115.11.0
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/enterprise/
+	install = firefox-esr.install
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cbindgen
@@ -17,7 +18,7 @@ pkgbase = firefox-esr-globalmenu
 	makedepends = nasm
 	makedepends = nodejs
 	makedepends = python
-	makedepends = rust
+	makedepends = rustup
 	makedepends = unzip
 	makedepends = wasi-compiler-rt
 	makedepends = wasi-libc
@@ -43,25 +44,29 @@ pkgbase = firefox-esr-globalmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox-esr=115.10.0
+	provides = firefox-esr=115.11.0
 	conflicts = firefox-esr
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = https://archive.mozilla.org/pub/firefox/releases/115.10.0esr/source/firefox-115.10.0esr.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/115.10.0esr/source/firefox-115.10.0esr.source.tar.xz.asc
-	source = assert.patch
-	source = D187418.patch
-	source = D187749.patch
-	source = unity-menubar.patch
-	source = fix_csd_window_buttons.patch
+	source = https://archive.mozilla.org/pub/firefox/releases/115.11.0esr/source/firefox-115.11.0esr.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/115.11.0esr/source/firefox-115.11.0esr.source.tar.xz.asc
+	source = D187418.patch::https://phabricator.services.mozilla.com/D187418?download=true
+	source = D187749.patch::https://phabricator.services.mozilla.com/D187749?download=true
+	source = D208884.patch::https://phabricator.services.mozilla.com/D208884?download=true
+	source = D194781.patch::https://phabricator.services.mozilla.com/D194781?download=true
+	source = D205839.patch::https://phabricator.services.mozilla.com/D205839?download=true
+	source = feature-unity-menubar-m-c.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar-m-c.patch
+	source = fis-csd-global-menu.patch::https://github.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/raw/7e9b3f679ebf55a8dbbd52dad692167fe6ff14fb/waterfox-kde/patches/fis-csd-global-menu.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha1sums = fb7a9d9bd6632f83f8d3f1a67e31d69515aab3f7
+	sha1sums = 822bb539528c0f6c1bf0a2b8bbdd0a33b546c2c3
 	sha1sums = SKIP
-	sha1sums = bb4bbaddc549edd3506b5e955840fcebffcafb71
 	sha1sums = b3ccca02959d94ef2a5db8f140ff96a2cd9724ef
 	sha1sums = 559ce09fee54c849ea4da2bf881da37f5fc0cac9
-	sha1sums = 076dc68b2ec6c454afe9b5a9b3fbb7908ce575b8
-	sha1sums = 4193d307cfc152ef2813973b0eae4385a4a2a968
+	sha1sums = 0ab2fac39fc6b10eb4aa3c40435fe0d83cb73a1b
+	sha1sums = 4e39ef39439bc397215c94a73dcf1660a1023258
+	sha1sums = c50399b3d9b241e938c86f07e455a730bbe0416a
+	sha1sums = 0b5cb49417c6666fe9c1ff8ea6b5f0bfacac24d0
+	sha1sums = 801ec02b5dce0ddae3610b84241d2528717afa5c
 
 pkgname = firefox-esr-globalmenu
