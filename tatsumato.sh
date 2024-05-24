@@ -21,7 +21,7 @@ readonly lock_timeout=10s
 readonly lock_color=111111
 readonly ankiconnect_url=127.0.0.1:8765
 
-while getopts 'a p H v h s i d    t: b: l: L: k:' flag; do
+while getopts 'a A p H v h s i d    t: b: l: L: k:' flag; do
 	case $flag in
 	H) human=false ;;
 	v) verbose=true ;;
@@ -30,6 +30,7 @@ while getopts 'a p H v h s i d    t: b: l: L: k:' flag; do
 	i) use_i3lock=true ;;
 	p) control_player=true ;;
 	a) control_anki=true ;;
+	A) focus_anki=true ;;
 	d) dmenu_nag=true ;;
 
 	t) pomtime=${OPTARG} ;;
@@ -48,6 +49,7 @@ readonly silent=${silent:-false}
 readonly use_i3lock=${use_i3lock:-false}
 readonly control_player=${control_player:-false}
 readonly control_anki=${control_anki:-false}
+readonly focus_anki=${focus_anki:-false}
 readonly dmenu_nag=${dmenu_nag:-false}
 
 readonly pomtime=${pomtime:-25}
@@ -76,6 +78,7 @@ show_help() {
 		  -i|Run i3lock when a pomodoro is over.
 		  -p|Pause/unpause mpv between breaks.
 		  -a|Control Anki. Close Anki's review screen before a break starts.
+		  -A|Focus Anki. Focus Anki's window after a break ends.
 		  -d|Show a dmenu (or rofi) dialog after each pomodoro.
 	EOF
 	cat <<-END
@@ -229,6 +232,7 @@ main() {
 			$use_i3lock && unlock_screen
 			$control_player && pause_player
 			$dmenu_nag && dmenu_nagscreen
+			$focus_anki && focus_window anki
 		fi
 
 		if [[ ${mode,,} == "long break" ]]; then
