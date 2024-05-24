@@ -3,13 +3,13 @@
 _pkgname=mimic
 _pkgbase=$_pkgname-bpf
 pkgname=($_pkgbase-git $_pkgbase-dkms-git)
-pkgver=0.3.0.r76.6eb613f
+pkgver=0.4.1.r0.6dc4578
 pkgrel=1
 pkgdesc="eBPF UDP -> TCP obfuscator"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/hack3ric/$_pkgname"
 license=('GPL-2.0-only')
-makedepends=('git' 'clang' 'bpf' 'libbpf' 'json-c' 'libffi')
+makedepends=('git' 'clang' 'bpf' 'ruby-ronn-ng' 'libbpf' 'libffi')
 source=("git+https://github.com/hack3ric/$_pkgname#branch=master")
 b2sums=('SKIP')
 
@@ -29,15 +29,16 @@ prepare() {
 
 build() {
   cd $_pkgname
-  make MODE=release out/$_pkgname
+  make MODE=release build-cli generate-manpage
 }
 
 package_mimic-bpf-git() {
-  depends=('glibc' 'gcc-libs' 'libbpf' 'json-c' 'libffi' $_pkgbase-modules=$pkgver)
+  depends=('glibc' 'gcc-libs' 'libbpf' 'libffi' $_pkgbase-modules=$pkgver)
   provides=($_pkgbase)
   conflicts=($_pkgbase)
 
   install -Dm755 "$srcdir/$_pkgname/out/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "$srcdir/$_pkgname/out/$_pkgname.1.gz" "$pkgdir/usr/share/man/man1/$_pkgname.1.gz"
   install -Dm644 "$srcdir/$_pkgname/install/eth0.conf.example" "$pkgdir/etc/mimic/eth0.conf.example"
   install -Dm644 "$srcdir/$_pkgname/install/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
   install -Dm644 "$srcdir/$_pkgname/install/$_pkgname@.service" "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
