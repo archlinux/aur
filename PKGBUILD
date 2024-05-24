@@ -4,7 +4,7 @@
 
 _pkgname=streamlit
 pkgname=python-streamlit
-pkgver=1.34.0
+pkgver=1.35.0
 pkgrel=1
 pkgdesc='The fastest way to build data apps in Python'
 arch=('any')
@@ -43,16 +43,16 @@ makedepends=(
 
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
 )
-sha512sums=('7b52d3c189b64da713ddc66b5663709bf2c1687771dfbfd01feffe1c737db8809be9a605444e495ad164bf25af8db55381d42a8042805b75f6e30d41229eb0c0')
+sha512sums=('859daba233dea1178ecff5612a43699170d27759f8f1a0e322a68c4fadbf7682048d3d99946e74835e2725a7ea00f41d1a194cf3fd452d6e37b732fcdcd89a0e')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=0 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   rm -vf "${pkgdir}/usr/bin/streamlit.cmd"
 }
 # vim:set ts=2 sw=2 et:
