@@ -1,6 +1,6 @@
 pkgbase = utools
 	pkgdesc = uTools Utilities
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://u.tools/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = utools
 	depends = nss
 	depends = alsa-lib
 	depends = openssl-1.1
-	source = https://publish.u-tools.cn/version2/utools_5.1.0_amd64.deb
-	sha512sums = 7593de81e37a996aa36c4599d264098d49a9e01f8ab9d05794ec469f0cd7ab067b2a0681e8bc9c8cdeca09d0515f3332672e0a4847cfb0549430a1da43795363
+	source = https://publish.u-tools.cn/version2/utools_5.1.1_amd64.deb
+	sha512sums = b08d27f57b0a9d25bd657471cf1dbaddbab6d935398f83442f77fa6fd4ae620376830bb9700de8fde9087539a3c935e5b89969b68f4d48a5d6125a60b6707a4e
 
 pkgname = utools
