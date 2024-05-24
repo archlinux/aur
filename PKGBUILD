@@ -1,48 +1,51 @@
-# Maintainer: Hoang Nguyen <toi at doclai dot com>
-# Contributor: gesh <gesh@gesh.uni.cx>
+# Maintainer:
+# Contributor: Hoang Nguyen <toi at doclai dot com>
 
-_pkgname=nchat
-pkgname="${_pkgname}"
-pkgver=4.41
+_pkgname="nchat"
+pkgname="$_pkgname"
+pkgver=4.50
 pkgrel=1
 pkgdesc="console-based chat client with support for Telegram"
-arch=('x86_64')
-depends=(
-    'file'
-    'ncurses'
-    'openssl'
-    'sqlite'
-    'zlib'
-)
-makedepends=(
-    'cmake'
-    'go'
-    'gperf'
-)
-
-conflicts=("${_pkgname}-git")
-
-_pkgsrc="$_pkgname-$pkgver"
 url="https://github.com/d99kris/nchat"
 license=('MIT')
-source=("$_pkgsrc.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('368cfe30594b88c580d9e9ccf24a0ff4eda7e6fea3d5a2e0f4051eab81fbf9ca')
+arch=('x86_64')
+
+depends=(
+  'ncurses'
+  'openssl'
+  'sqlite'
+  'zlib'
+)
+makedepends=(
+  'cmake'
+  'go'
+  'gperf'
+  'ninja'
+)
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('afc0ff8ba5453986406b69253e6140db47ac699e3c1597fee408855cd0ba13ea')
 
 build() {
-	local _cmake_options=(
-			-B build
-			-S "$_pkgsrc"
-			-G 'Unix Makefiles'
-			-DCMAKE_BUILD_TYPE=None
-			-DCMAKE_INSTALL_PREFIX='/usr'
-			-DCMAKE_INSTALL_MANDIR='/usr/share/man'
-			-Wno-dev
-			)
-	
-	cmake "${_cmake_options[@]}"
-	cmake --build build
+  export GOFLAGS+=' -buildvcs=false'
+
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_MANDIR='/usr/share/man'
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
+
 package() {
-	DESTDIR="$pkgdir" cmake --install build
-	install -D -m644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
