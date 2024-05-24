@@ -1,6 +1,6 @@
 pkgbase = git-autofixup
 	pkgdesc = A git subcommand to automatically create fixup commits for topic branches
-	pkgver = 0.004003
+	pkgver = 0.004005
 	pkgrel = 1
 	url = https://github.com/torbiak/git-autofixup
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = git-autofixup
 	depends = perl
 	depends = git
 	optdepends = git-revise: efficiently apply fixup commits
-	source = git-autofixup-0.004003.tar.gz::https://github.com/torbiak/git-autofixup/archive/refs/tags/v0.004003.tar.gz
-	sha512sums = 5d4b9b830ac3a02a427af631a33af15ff6a10098ab26c9bbc0533e2d4f4b8213cf472287f98cf5dae9489ee7958b96a42278473ecd2145c0007f42bd0073dfba
+	source = git-autofixup-0.004005.tar.gz::https://github.com/torbiak/git-autofixup/archive/refs/tags/v0.004005.tar.gz
+	sha512sums = 769fb6936b5ae82aae66b8ea6228e76a915f1a284f91f57b2cc2d6aaf669393f76822b1c846c44a53151cb9e71d234ef4a75d98557214409ae7aee0d087cc111
 
 pkgname = git-autofixup
