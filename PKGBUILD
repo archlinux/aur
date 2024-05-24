@@ -3,7 +3,7 @@ pkgname=serina-bin
 _pkgname=Serina
 pkgver=0.4.0
 _electronversion=24
-pkgrel=4
+pkgrel=5
 pkgdesc="GUI for create translation files for i18next"
 arch=('x86_64')
 url="https://orn-fox.github.io/serina-1/"
@@ -12,7 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'nodejs'
 )
 makedepends=(
@@ -23,14 +23,15 @@ source=(
     "${pkgname%-bin}".sh
 )
 sha256sums=('69d3988f02868299b31f974d1d3774431998a14a18e6469be0675211d290b524'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -f -n -q --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
