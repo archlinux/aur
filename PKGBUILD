@@ -1,7 +1,7 @@
 # Maintainer: William Edwards <shadowapex@gmail.com>
 pkgname=inputplumber-bin
 _pkgbase=inputplumber
-pkgver=v0.21.1
+pkgver=v0.22.1
 pkgrel=1
 pkgdesc="Open source input router and remapper daemon for Linux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('inputplumber')
 conflicts=('inputplumber-git')
 source=(inputplumber-$pkgver.tar.gz::https://github.com/ShadowBlip/inputplumber/releases/download/$pkgver/inputplumber.tar.gz)
 
-sha256sums=('d3a62b1bc75820d8d759d4a4cf04a2d2151ad37508ec71cdbd3b6f328eeaf402')
+sha256sums=('1c2f5b640d940b68348aaf7b0e1b2a0c9b77295a097eb05c1a8069c9f16f3c55')
 
 prepare() {
 	cd "$srcdir/${_pkgbase}"
