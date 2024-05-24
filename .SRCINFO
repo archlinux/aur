@@ -1,12 +1,11 @@
 pkgbase = subtitler-bin
 	pkgdesc = Quickly download subtitles
 	pkgver = 1.5.5
-	pkgrel = 9
+	pkgrel = 10
 	url = https://s8sachin.github.io/subtitler/
 	arch = x86_64
 	license = MIT
-	depends = hicolor-icon-theme
-	depends = electron8-bin
+	depends = electron8
 	provides = subtitler=1.5.5
 	conflicts = subtitler
 	source = subtitler-1.5.5.AppImage::https://github.com/s8sachin/subtitler/releases/download/v1.5.5/subtitler_1.5.5_amd64.deb
@@ -14,6 +13,6 @@ pkgbase = subtitler-bin
 	source = subtitler.sh
 	sha256sums = ca37a8487fcf6283b36adcb43de9ebc4a12d7bd2ab96a73a1695f3c2b4d51f81
 	sha256sums = 61c4ef762e75d209db99b0ddd77c9931c1d966f19d72b5dc1f46e8041f18309c
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = subtitler-bin
