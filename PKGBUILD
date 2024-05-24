@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
 url=https://github.com/RPCS3/rpcs3
-license=(GPL2)
+license=(GPL-2.0-only)
 depends=(
   alsa-lib
   glew
@@ -48,7 +48,7 @@ makedepends=(
 )
 provides=(rpcs3)
 conflicts=(rpcs3)
-options=(!emptydirs !lto)
+options=(!emptydirs !lto !strip)
 source=(
   git+https://github.com/RPCS3/rpcs3.git
   llvm::git+https://github.com/llvm/llvm-project.git
