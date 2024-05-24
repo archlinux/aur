@@ -1,7 +1,7 @@
 pkgbase = glibc-eac-bin
 	pkgdesc = GNU C Library with DT_HASH patch for games using EAC (CI built binary version)
 	pkgver = 2.39+r52+gf8e4623421
-	pkgrel = 2
+	pkgrel = 4
 	url = https://aur.archlinux.org/pkgbase/glibc-eac/
 	arch = x86_64
 	license = GPL-2.0-or-later

@@ -3,7 +3,7 @@
 pkgbase=glibc-eac-bin
 pkgname=(glibc-eac-bin lib32-glibc-eac-bin glibc-eac-locales-bin)
 pkgver=2.39+r52+gf8e4623421
-pkgrel=2
+pkgrel=4
 _pkgrel=1
 pkgdesc="GNU C Library with DT_HASH patch for games using EAC (CI built binary version)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ b2sums=('a672527b774c82cc15caa898c7af975a46eead9e88ac4cd814efd5002b6d05ec818770b
 noextract=("${source[@]##*/}")
 
 prepare() {
-    for item in "glibc-eac-$pkgver-$pkgrel-x86_64" "lib32-glibc-eac-$pkgver-$pkgrel-x86_64" "glibc-eac-locales-$pkgver-$pkgrel-x86_64"; do
+    for item in "glibc-eac-$pkgver-$_pkgrel-x86_64" "lib32-glibc-eac-$pkgver-$_pkgrel-x86_64" "glibc-eac-locales-$pkgver-$_pkgrel-x86_64"; do
         install -dm755 "$item"
         tar -xf "$item.pkg.tar.zst" --directory="$item"
         rm "$item"/{".BUILDINFO",".INSTALL",".MTREE",".PKGINFO"} -f
@@ -44,7 +44,7 @@ package_glibc-eac-bin() {
     install=glibc-eac-bin.install
     backup=(etc/gai.conf
         etc/locale.gen)
-    cp -a "$srcdir/glibc-eac-$pkgver-$pkgrel-x86_64/." "$pkgdir"
+    cp -a "$srcdir/glibc-eac-$pkgver-$_pkgrel-x86_64/." "$pkgdir"
 }
 
 package_lib32-glibc-eac-bin() {
@@ -54,7 +54,7 @@ package_lib32-glibc-eac-bin() {
     conflicts=("lib32-glibc")
     options+=('!emptydirs')
     install=lib32-glibc-eac-bin.install
-    cp -a "$srcdir/lib32-glibc-eac-$pkgver-$pkgrel-x86_64/." "$pkgdir"
+    cp -a "$srcdir/lib32-glibc-eac-$pkgver-$_pkgrel-x86_64/." "$pkgdir"
 }
 
 package_glibc-eac-locales-bin() {
@@ -62,5 +62,5 @@ package_glibc-eac-locales-bin() {
     depends=("glibc-eac-bin=$pkgver")
     provides=("glibc-locales")
     conflicts=("glibc-locales")
-    cp -a "$srcdir/glibc-eac-locales-$pkgver-$pkgrel-x86_64/." "$pkgdir"
+    cp -a "$srcdir/glibc-eac-locales-$pkgver-$_pkgrel-x86_64/." "$pkgdir"
 }
