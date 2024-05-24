@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-gui7
-pkgver=7.2.1
-pkgrel=3
+pkgver=7.2.2
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Graphical interfaces for robotics applications"
@@ -29,7 +29,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('15047e78012dcedb90af431d8b893c035146e6301ce02a40a47ffff0a90e2261')
+sha256sums=('26b5c502977cf87f13e86bc504a72b1a8d810d4100c2878c76f7a0994ea26617')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \

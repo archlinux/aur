@@ -1,7 +1,7 @@
 pkgbase = gz-gui7
 	pkgdesc = Graphical interfaces for robotics applications
-	pkgver = 7.2.1
-	pkgrel = 3
+	pkgver = 7.2.2
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-gui
 	arch = any
 	license = Apache
@@ -20,7 +20,7 @@ pkgbase = gz-gui7
 	depends = qt5-base
 	depends = qt5-quickcontrols2
 	provides = gz-gui=7
-	source = https://github.com/gazebosim/gz-gui/archive/gz-gui7_7.2.1.tar.gz
-	sha256sums = 15047e78012dcedb90af431d8b893c035146e6301ce02a40a47ffff0a90e2261
+	source = https://github.com/gazebosim/gz-gui/archive/gz-gui7_7.2.2.tar.gz
+	sha256sums = 26b5c502977cf87f13e86bc504a72b1a8d810d4100c2878c76f7a0994ea26617
 
 pkgname = gz-gui7
