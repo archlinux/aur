@@ -2,8 +2,8 @@
 # Contributor: zwindl on AUR
 
 pkgname=python-pypugjs
-pkgver=5.9.12
-pkgrel=5
+pkgver=5.10.1
+pkgrel=1
 pkgdesc='PugJS syntax adapter for Django, Jinja2 and Mako templates'
 url='https://github.com/kakulukia/pypugjs'
 depends=(python python-six python-charset-normalizer)
@@ -12,16 +12,11 @@ makedepends=(python-build python-installer python-setuptools python-wheel ${optd
 checkdepends=(python-pytest)
 license=(MIT)
 arch=(any)
-source=("https://github.com/kakulukia/pypugjs/archive/v$pkgver/pypugjs-$pkgver.tar.gz"
-        "0001-ditching-nose-since-its-not-going-to-be-compatible-t.patch")
-sha256sums=('a13a78aa26e05613a3d6a7551a08895139a2053978000a3d8a8e3c44f24f3c64'
-            '1be170894b71c512519aec8f6fb3da41d0b7d248b0643afa17d8974dedc1d95e')
+source=("https://github.com/kakulukia/pypugjs/archive/v$pkgver/pypugjs-$pkgver.tar.gz")
+sha256sums=('201a2fa2d0298ae81ff8e01405b4e6812061b0e4052169c04a94672376676a3e')
 
 prepare() {
   cd pypugjs-$pkgver
-
-  # Cherry-picked from https://github.com/kakulukia/pypugjs/commit/754308ae6dccdf0fecb034fa5634b996430d8cd7
-  patch -Np1 -i ../0001-ditching-nose-since-its-not-going-to-be-compatible-t.patch
 
   # avoid using upstream pyproject.toml as it seems unmaintained
   # out-dated version= value, missing metadata fields, excessive dependencies
