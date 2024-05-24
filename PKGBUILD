@@ -1,6 +1,6 @@
 #Maintainer: Ponies <marmabelle at gmail dot com>
 pkgname=postman-cli
-pkgver=1.7.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="The Postman CLI is the command-line companion that is developed, supported, and signed by Postman. All test results will be automatically pushed to the app."
 provides=('postman-cli')
@@ -11,7 +11,7 @@ license=('custom')
 source=("postman-cli.tar.gz::https://dl-cli.pstmn.io/download/latest/linux64")
 depends=(libxss nss)
 
-sha256sums=('45a205d2dcc90399fe736fa95ac36304dcbd12977214cb6b3070f17205f780b7')
+sha256sums=('c553f03f8fb0ae589fe2be438036bae76e92b8af63114df23f4fdc41fe42ee82')
 prepare(){
     cd "$srcdir"
     tar -xzf postman-cli.tar.gz
