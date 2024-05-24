@@ -1,7 +1,7 @@
 pkgbase = polycule-git
 	pkgdesc = A simple and beautiful matrix client written in Flutter.
 	pkgver = 1ac50db
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/polycule_client/polycule
 	arch = x86_64
 	arch = aarch64
