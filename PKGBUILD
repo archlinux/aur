@@ -3,14 +3,14 @@
 
 pkgname=servefile
 pkgver=0.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Serve or receive files from shell via a small HTTP server"
 arch=('any')
 url="https://github.com/sebageek/servefile"
 license=('GPL3')
 depends=('python')
 optdepends=('python-pyopenssl: HTTPS support')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-pip')
 checkdepends=('python-pytest' 'python-pyopenssl')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -24,6 +24,9 @@ check() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1
+	# See https://github.com/pypa/pip/issues/3063 for the
+	# reason behind "ignore-installed" & "--no-deps".
+	# tl;dr: It's an almost decade-old pip-bug...
+	python -m pip install --prefix="$pkgdir/" --ignore-installed --no-deps .
 	install -D servefile.1 "$pkgdir/usr/share/man/man1/servefile.1"
 }
