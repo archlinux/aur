@@ -2,7 +2,7 @@
 
 _appname=user_usage_report
 pkgname=nextcloud-app-user-usage-report
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Provides a command which generates a report about all the users and their usage."
 arch=('any')
@@ -44,3 +44,4 @@ package() {
 
     _nextcloud_app_package
 }
+sha512sums=('f045dc98bfcd3f7b9495294800ccac5c9ba1fa186f8891261fbd88f71c8c4d572e7e2ad64269d86ce00f57b0b7d53473fa1c5e31620d546170ff875693c2950f')
