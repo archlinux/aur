@@ -1,14 +1,14 @@
-# Maintainer: Tyler Murphy <tylermurphy534@gmail.com>
+# Maintainer: Freya Murphy <contact@freyacat.org>
 pkgname=crab
 pkgver=0.0.6
 pkgrel=1
 pkgdesc="A rusty permission authentication system"
 arch=('x86_64' 'i686')
-url="https://g.tylerm.dev/tylermurphy534/crab"
+url="https://g.freya.cat/freya/crab"
 license=('GPL3')
 makedepends=('cargo')
 depends=('glibc' 'pam')
-source=("$pkgname-$pkgver.tar.gz::https://f.tylerm.dev/source/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://f.freya.cat/source/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('SKIP')
 
 build() {
