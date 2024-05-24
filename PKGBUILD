@@ -3,7 +3,7 @@
 
 pkgname=python-flax
 _pkgname=${pkgname#python-}
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='A neural network library and ecosystem for JAX designed for flexibility'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
     'tensorboard: TensorBoard visualization and logging.'
 )
 source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e74f0f56abec3fff1f85dbe4dc69dcc4d92abad796886df7d434a6dbd157129a')
+sha256sums=('770eaa4d9d3fe8a139780bae0e833373b1237d113ad40350df372614de6aa901')
 
 build() {
     python -m build -nw $_pkgname-$pkgver
