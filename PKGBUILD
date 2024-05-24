@@ -2,7 +2,7 @@
 
 pkgname=python-click-extra
 _name=${pkgname#python-}
-pkgver=4.7.4
+pkgver=4.8.1
 pkgrel=1
 pkgdesc='Extra colorization and configuration loading for Click.'
 url='https://kdeldycke.github.io/click-extra/'
@@ -12,7 +12,7 @@ checkdepends=(python-pytest python-pytest-cov python-pytest-httpserver python-py
 license=('GPL2')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('d2d38321fb0df75443084cb80e24a03e090457ab1e5533ffec633b6c23fe3e7f8e30015f6d7223bc465dd428da23a56d1fa5e050b6c50d0c17b0b9a876625898')
+sha512sums=('3fd9688432fdbff1ef00c35bcf7f1dddd0ee7c5c41ed8d446c346ae478db41b377f0a5a29dbfb511f4a18a8e05c2858cd541a24bd046dd02092efcfdfd9ee558')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
