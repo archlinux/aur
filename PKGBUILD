@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-launch7
-pkgver=7.0.0
-pkgrel=2
+pkgver=7.1.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Run and manage programs and plugins."
@@ -33,7 +33,7 @@ optdepends=(
 )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('264a4a24c7f01a71dcd2f9f872c4ed7c761078072890521175e78df5dc9944f9')
+sha256sums=('627eab6312836dc90f3adbd70a63c37badf5b1dc982573b80657de5e8453de81')
 
 build() {
   export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/ffmpeg4.4/pkgconfig"
