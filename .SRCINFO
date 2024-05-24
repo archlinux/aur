@@ -1,6 +1,6 @@
 pkgbase = koboldcpp-cuda
 	pkgdesc = An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)
-	pkgver = 1.65
+	pkgver = 1.66
 	pkgrel = 1
 	url = https://github.com/LostRuins/koboldcpp
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = koboldcpp-cuda
 	depends = cuda
 	optdepends = customtkinter: for GUI launcher
 	optdepends = python-psutil: increasing the process CPU priority
-	provides = koboldcpp=1.65
+	provides = koboldcpp=1.66
 	conflicts = koboldcpp
-	source = koboldcpp-cuda-1.65.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.65.tar.gz
-	sha256sums = ffcc20f2d1283c59e97e456b70ab39ba31e4318cdc4193b04d223fd7dc1fee2d
+	source = koboldcpp-cuda-1.66.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.66.tar.gz
+	sha256sums = 921baff506759f0472fe3ff01eba8c7c236d6ad0eff13c74c18cfe812710a6e8
 
 pkgname = koboldcpp-cuda
