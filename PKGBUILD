@@ -2,12 +2,12 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=zip-password-finder-git
-pkgver=0.7.0.r0.gad220e7
+pkgver=0.8.0.r1.g082f538
 pkgrel=1
 pkgdesc="Find the password of protected ZIP files (git)"
 arch=('x86_64')
 url="https://github.com/agourlay/zip-password-finder"
-license=('Apache')
+license=('Apache-2.0')
 depends=('bzip2')
 makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
