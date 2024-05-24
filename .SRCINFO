@@ -1,6 +1,6 @@
 pkgbase = fluffychat-git
 	pkgdesc = Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized.
-	pkgver = rc1.19.0.4.r4.g9a8f604f
+	pkgver = rc1.20.0.2.r74.g8da714b0
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = fluffychat-git
 	makedepends = git
 	makedepends = flutter-tool
 	makedepends = flutter-target-linux
+	makedepends = cmake
 	depends = gtk3
 	depends = jsoncpp
 	depends = libsecret
