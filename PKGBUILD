@@ -66,6 +66,11 @@ prepare() {
   # enter the source directory
   cd "${srcdir}/${_name}"
 
+  # ensure a clean CMakeCache
+  if [ -f "build/linux/${_dartarch}/release/CMakeCache.txt" ]; then
+    rm "build/linux/${_dartarch}/release/CMakeCache.txt"
+  fi
+
   # download dart dependencies without lockfile update or retry with
   flutter pub get --enforce-lockfile || flutter pub get
 }
