@@ -1,6 +1,6 @@
 pkgbase = moza-ff-dkms-git
 	pkgdesc = Moza Racing FFB driver
-	pkgver = 0.1
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/JacKeTUs/moza-ff
 	arch = x86_64

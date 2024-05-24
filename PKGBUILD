@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
 _reponame=moza-ff
 pkgname=moza-ff-dkms-git
-pkgver=0.1
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="Moza Racing FFB driver"
 arch=('x86_64')
