@@ -1,11 +1,10 @@
 pkgbase = python-justbases
 	pkgdesc = conversion of ints and rationals to any base
 	pkgver = 0.15
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/mulkieran/justbases
 	arch = any
 	license = GPL
-	checkdepends = python-nose
 	checkdepends = python-hypothesis
 	makedepends = python-setuptools
 	depends = python
