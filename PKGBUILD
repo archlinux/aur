@@ -11,7 +11,7 @@ makedepends=('git' 'cargo')
 conflicts=('pueue')
 provides=('pueue')
 url='https://github.com/Nukesor/pueue'
-source=("$pkgname"::"git+https://github.com/Nukesor/pueue.git#branch=development")
+source=("$pkgname"::"git+https://github.com/Nukesor/pueue.git")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -10,7 +10,7 @@ pkgbase = pueue-git
 	provides = pueue
 	conflicts = pueue
 	options = !lto
-	source = pueue-git::git+https://github.com/Nukesor/pueue.git#branch=development
+	source = pueue-git::git+https://github.com/Nukesor/pueue.git
 	sha256sums = SKIP
 
 pkgname = pueue-git
