@@ -1,6 +1,6 @@
 pkgbase = python-datalad-next
 	pkgdesc = extension for new and improved functionality and user experience in datalad
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/datalad/datalad-next
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-datalad-next
 	makedepends = python-wheel
 	depends = python
 	depends = python-datalad
-	source = https://github.com/datalad/datalad-next/archive/1.4.0/datalad-next-1.4.0.tar.gz
-	sha256sums = 8dd5ca55c420212c3ec437572e6e6c2f4f7a95d024b3f7a6a775d7e5d9c872d4
+	source = https://github.com/datalad/datalad-next/archive/1.4.1/datalad-next-1.4.1.tar.gz
+	sha256sums = 3ef558b372fa7676dbbe05900ff137fc7a338b939f4c33ced50df38f6acca56d
 
 pkgname = python-datalad-next
