@@ -5,7 +5,7 @@ pkgname=fluffychat
 _name=${pkgname}
 _appid=chat.fluffy.fluffychat
 pkgver=1.20.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 # Flutter officially supports amd64 and AArch64
 arch=('x86_64' 'aarch64')
@@ -57,6 +57,11 @@ prepare() {
 
   # enter the source directory
   cd "${srcdir}/${_name}-${pkgver}"
+
+  # ensure a clean CMakeCache
+  if [ -f "build/linux/${_dartarch}/release/CMakeCache.txt" ]; then
+    rm "build/linux/${_dartarch}/release/CMakeCache.txt"
+  fi
 
   # download dart dependencies without lockfile update or retry with
   flutter pub get --enforce-lockfile || flutter pub get

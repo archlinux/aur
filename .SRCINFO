@@ -1,7 +1,7 @@
 pkgbase = fluffychat
 	pkgdesc = Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized.
 	pkgver = 1.20.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://fluffychat.im/
 	arch = x86_64
 	arch = aarch64
