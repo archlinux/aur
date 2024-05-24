@@ -1,0 +1,135 @@
+diff --git a/Source/WebCore/platform/graphics/gstreamer/GStreamerVideoFrameHolder.cpp b/Source/WebCore/platform/graphics/gstreamer/GStreamerVideoFrameHolder.cpp
+index 271ca069b52a..a84c0230a47c 100644
+--- a/Source/WebCore/platform/graphics/gstreamer/GStreamerVideoFrameHolder.cpp
++++ b/Source/WebCore/platform/graphics/gstreamer/GStreamerVideoFrameHolder.cpp
+@@ -126,6 +126,7 @@ void GstVideoFrameHolder::updateTexture(BitmapTexture& texture)
+     texture.updateContents(srcData, WebCore::IntRect(0, 0, m_size.width(), m_size.height()), WebCore::IntPoint(0, 0), stride);
+ }
+ 
++#if USE(COORDINATED_GRAPHICS)
+ std::unique_ptr<TextureMapperPlatformLayerBuffer> GstVideoFrameHolder::platformLayerBuffer()
+ {
+     if (!m_hasMappedTextures)
+@@ -186,6 +187,7 @@ std::unique_ptr<TextureMapperPlatformLayerBuffer> GstVideoFrameHolder::platformL
+ 
+     return nullptr;
+ }
++#endif
+ 
+ }
+ #endif
+diff --git a/Source/WebCore/platform/graphics/gstreamer/GStreamerVideoFrameHolder.h b/Source/WebCore/platform/graphics/gstreamer/GStreamerVideoFrameHolder.h
+index 5d83e9ab4edf..86c7b4aa25a4 100644
+--- a/Source/WebCore/platform/graphics/gstreamer/GStreamerVideoFrameHolder.h
++++ b/Source/WebCore/platform/graphics/gstreamer/GStreamerVideoFrameHolder.h
+@@ -30,7 +30,11 @@ namespace WebCore {
+ 
+ enum class TextureMapperFlags : uint16_t;
+ 
+-class GstVideoFrameHolder : public TextureMapperPlatformLayerBuffer::UnmanagedBufferDataHolder {
++class GstVideoFrameHolder
++#if USE(COORDINATED_GRAPHICS)
++    : public TextureMapperPlatformLayerBuffer::UnmanagedBufferDataHolder
++#endif
++{
+ public:
+     explicit GstVideoFrameHolder(GstSample*, std::optional<GstVideoDecoderPlatform>, OptionSet<TextureMapperFlags>, bool gstGLEnabled);
+     virtual ~GstVideoFrameHolder();
+@@ -46,7 +50,9 @@ public:
+     bool hasMappedTextures() const { return m_hasMappedTextures; }
+     const GstVideoFrame& videoFrame() const { return m_videoFrame; }
+     void updateTexture(BitmapTexture&);
++#if USE(COORDINATED_GRAPHICS)
+     std::unique_ptr<TextureMapperPlatformLayerBuffer> platformLayerBuffer();
++#endif
+ 
+     bool hasDMABuf() const { return false; }
+ 
+diff --git a/Source/WebCore/platform/graphics/gstreamer/MediaPlayerPrivateGStreamer.cpp b/Source/WebCore/platform/graphics/gstreamer/MediaPlayerPrivateGStreamer.cpp
+index 270617dcb54d..961a5f95720a 100644
+--- a/Source/WebCore/platform/graphics/gstreamer/MediaPlayerPrivateGStreamer.cpp
++++ b/Source/WebCore/platform/graphics/gstreamer/MediaPlayerPrivateGStreamer.cpp
+@@ -52,6 +52,7 @@
+ #include "InbandTextTrackPrivateGStreamer.h"
+ #include "TextCombinerGStreamer.h"
+ #include "TextSinkGStreamer.h"
++#include "TextureMapperFlags.h"
+ #include "VideoFrameMetadataGStreamer.h"
+ #include "VideoTrackPrivateGStreamer.h"
+ 
+@@ -151,7 +152,7 @@ MediaPlayerPrivateGStreamer::MediaPlayerPrivateGStreamer(MediaPlayer* player)
+     , m_maxTimeLoadedAtLastDidLoadingProgress(MediaTime::zeroTime())
+     , m_drawTimer(RunLoop::main(), this, &MediaPlayerPrivateGStreamer::repaint)
+     , m_pausedTimerHandler(RunLoop::main(), this, &MediaPlayerPrivateGStreamer::pausedTimerFired)
+-#if USE(TEXTURE_MAPPER) && !USE(NICOSIA)
++#if USE(TEXTURE_MAPPER) && !USE(NICOSIA) && USE(COORDINATED_GRAPHICS)
+     , m_platformLayerProxy(adoptRef(new TextureMapperPlatformLayerProxyGL))
+ #endif
+ #if !RELEASE_LOG_DISABLED
+@@ -3239,6 +3240,11 @@ PlatformLayer* MediaPlayerPrivateGStreamer::platformLayer() const
+ #endif
+ }
+ 
++void MediaPlayerPrivateGStreamer::paintToTextureMapper(TextureMapper&, const FloatRect&, const TransformationMatrix&, float)
++{
++}
++
++#if USE(COORDINATED_GRAPHICS)
+ #if USE(NICOSIA)
+ void MediaPlayerPrivateGStreamer::swapBuffersIfNeeded()
+ {
+@@ -3313,6 +3319,7 @@ void MediaPlayerPrivateGStreamer::pushTextureToCompositor()
+     proxyOperation(*m_platformLayerProxy);
+ #endif
+ }
++#endif
+ #endif // USE(TEXTURE_MAPPER)
+ 
+ #if USE(TEXTURE_MAPPER_DMABUF)
+@@ -3800,7 +3807,7 @@ void MediaPlayerPrivateGStreamer::triggerRepaint(GRefPtr<GstSample>&& sample)
+         return;
+     }
+ 
+-#if USE(TEXTURE_MAPPER)
++#if USE(TEXTURE_MAPPER) && USE(COORDINATED_GRAPHICS)
+     if (m_isUsingFallbackVideoSink) {
+         Locker locker { m_drawLock };
+         auto proxyOperation =
+diff --git a/Source/WebCore/platform/graphics/gstreamer/MediaPlayerPrivateGStreamer.h b/Source/WebCore/platform/graphics/gstreamer/MediaPlayerPrivateGStreamer.h
+index 3809a5fd3624..b171d2c35cb4 100644
+--- a/Source/WebCore/platform/graphics/gstreamer/MediaPlayerPrivateGStreamer.h
++++ b/Source/WebCore/platform/graphics/gstreamer/MediaPlayerPrivateGStreamer.h
+@@ -35,6 +35,7 @@
+ #include "MediaPlayerPrivate.h"
+ #include "PlatformLayer.h"
+ #include "PlatformMediaResourceLoader.h"
++#include "TextureMapperPlatformLayer.h"
+ #include "TrackPrivateBaseGStreamer.h"
+ #include <glib.h>
+ #include <gst/gst.h>
+@@ -197,6 +198,7 @@ public:
+ 
+ #if USE(TEXTURE_MAPPER)
+     PlatformLayer* platformLayer() const override;
++    void paintToTextureMapper(TextureMapper&, const FloatRect& targetRect, const TransformationMatrix&, float opacity) override;
+ #if PLATFORM(WIN)
+     // FIXME: Accelerated rendering has not been implemented for WinCairo yet.
+     bool supportsAcceleratedRendering() const override { return false; }
+@@ -293,7 +295,7 @@ protected:
+     GstElement* createVideoSinkGL();
+ #endif
+ 
+-#if USE(TEXTURE_MAPPER)
++#if USE(TEXTURE_MAPPER) && USE(COORDINATED_GRAPHICS)
+     void pushTextureToCompositor();
+ #if USE(NICOSIA)
+     void swapBuffersIfNeeded() final;
+@@ -558,7 +560,7 @@ private:
+ #if USE(TEXTURE_MAPPER)
+ #if USE(NICOSIA)
+     RefPtr<Nicosia::ContentLayer> m_nicosiaLayer;
+-#else
++#elif USE(COORDINATED_GRAPHICS)
+     RefPtr<TextureMapperPlatformLayerProxy> m_platformLayerProxy;
+ #endif
+ #endif
