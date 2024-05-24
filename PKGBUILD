@@ -1,14 +1,14 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 # Contributor: Guillaume Dolle <dolle.guillaume@gmail.com>
 _driver='c368-series'
-_fileid='951f83f68051fc0335ff27f72165fad5'
-_documentid='138068'
+_fileid='b49df471de0baa5fe71f3ed738182ddd'
+_documentid='140305'
 _type='1558521685'
 _system='KonicaMinolta'
 _lang='EN'
 
 pkgname=konica-minolta-bizhub-c368-series
-pkgver=1.25
+pkgver=1.26
 pkgrel=1
 pkgdesc='CUPS PostScript printer driver for bizhub (423 4750 4752 5020I 554E 652 750I 754 C35 C360 C360I C368 C3850 C3851 C650I C652D C658 C754 C759 WPH)'
 arch=('any')
@@ -18,9 +18,9 @@ depends=('cups')
 makedepends=('gzip')
 _srcdir="KMbeuUXv${pkgver//\./_}_multi_language"
 
-source=("${_srcdir}.tar.gz::https://dl.konicaminolta.eu/en/?tx_kmanacondaimport_downloadproxy[fileId]=${_fileid}&tx_kmanacondaimport_downloadproxy[documentId]=${_documentid}&tx_kmanacondaimport_downloadproxy[system]=${_system}&tx_kmanacondaimport_downloadproxy[language]=${_lang}&type=${_type}")
-sha256sums=('42ed9f69864fc58bf4c77cdcade775a34a2c7b8d4fad238c5c3b974a392b11bb') #if the download fails, please download the file manually:
-#https://dl.konicaminolta.eu/en?tx_kmdownloadcentersite_downloadproxy[fileId]=951f83f68051fc0335ff27f72165fad5&tx_kmdownloadcentersite_downloadproxy[documentId]=138068&tx_kmdownloadcentersite_downloadproxy[system]=KonicaMinolta&tx_kmdownloadcentersite_downloadproxy[language]=EN&type=1558521685
+source=("${_srcdir}.tar.gz::https://dl.konicaminolta.eu/en?tx_kmdownloadcentersite_downloadproxy[fileId]=${_fileid}&tx_kmdownloadcentersite_downloadproxy[documentId]=${_documentid}&tx_kmdownloadcentersite_downloadproxy[system]=${_system}&tx_kmdownloadcentersite_downloadproxy[language]=${_lang}&type=${_type}")
+sha256sums=('3e1e62a960b0ef3618ad53af0202b5f382f0a0e2df117da319996eead6ae9aa8') #if the download fails, please download the file manually:
+#https://dl.konicaminolta.eu/en?tx_kmdownloadcentersite_downloadproxy[fileId]=b49df471de0baa5fe71f3ed738182ddd&tx_kmdownloadcentersite_downloadproxy[documentId]=140305&tx_kmdownloadcentersite_downloadproxy[system]=KonicaMinolta&tx_kmdownloadcentersite_downloadproxy[language]=EN&type=1558521685
 
 package() {
   cd $srcdir/$_srcdir
