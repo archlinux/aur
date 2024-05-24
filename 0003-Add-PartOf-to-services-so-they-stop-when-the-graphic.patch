@@ -1,4 +1,4 @@
-From 5a9247d3eb92cd18be0991de6dbd5298a4764fef Mon Sep 17 00:00:00 2001
+From c145bc9a4996735e4af541015d326ff808543de0 Mon Sep 17 00:00:00 2001
 From: ArenM <aren@peacevolution.org>
 Date: Sat, 18 Feb 2023 15:13:53 -0500
 Subject: [PATCH sxmo-utils 3/6] Add PartOf to services so they stop when the
@@ -179,7 +179,7 @@ index 1f759f3..04c0d3a 100644
  [Service]
  Type=simple
 diff --git a/configs/services/sxmo_wob.service b/configs/services/sxmo_wob.service
-index 600646f..5bacf13 100644
+index d1b7496..376b94f 100644
 --- a/configs/services/sxmo_wob.service
 +++ b/configs/services/sxmo_wob.service
 @@ -1,5 +1,6 @@
@@ -212,5 +212,5 @@ index f987ac3..0f5d2f6 100644
  [Service]
  Type=simple
 -- 
-2.43.0
+2.45.0
 

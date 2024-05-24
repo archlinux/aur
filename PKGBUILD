@@ -2,7 +2,7 @@
 # Contributor: dni <office@dnilabs.com>
 
 pkgname=('sxmo-utils-git' 'sxmo-utils-sway-git')
-pkgver=1.15.1.r20.6a024f2
+pkgver=1.15.2.r50.0b58e5e
 pkgrel=1
 pkgdesc="Utility scripts, programs, and configs that hold the sxmo UI environment together"
 url="https://git.sr.ht/~mil/sxmo-utils"
@@ -17,18 +17,16 @@ source=("git+https://git.sr.ht/~mil/sxmo-utils"
         '0005-Add-hook-to-manage-services.patch'
         '0006-start-stop-graphical-session.target.patch'
         '00-sxmo.rules'
-        '10-sxmo.conf'
-        'sxmo-setpermissions.service')
+        '10-sxmo.conf')
 sha512sums=('SKIP'
-            '0e5abaaa638d544e83f674fdfbccdec705faa541d3dd272d22580c1997cb1e40785a1d3dbe1ec0f7aad21d07c6ebdf715eb028dba8aab8f9e9f08a01005bd7d8'
-            'f315c6fbfc842a9ced93c8f493ce601f46fd0a4a0974bef22730e3e693aeff6b4c259ddc0165a6a891c6889b016c33ed5b640d787b16a1ca5525fa9f8a8b0096'
-            '9790135846977e6d0ff681858db99e3c2dc8040a505db5b24f5cc5eefb474971db627f7a2af4ab60130e865f2c024543915f30b57a485cf56ece98dca94759ee'
-            '20be8a30ddcd0c3acc22c3a8171e397d34cef8a3b32ad5e624105826c3ad9d1ad561a00ddbab32d931753fd782faaf2ffa1f231b1158404a2e5723189d189079'
-            '8d60d253b5399f64a565c244a8ef210a646ed5e00ef2cc234e3170103ee5629d10fdb7847fa6cf01d41da9cb904a7ed1a72c3e7c915fd46b3646555a354f00e1'
-            'f31200582fcb3888509788a88459f27249dc2340937265fd81be54d567c92c8ed19a6b74d0dc29b82645fc27c98e67e7fc085ee8bb5843b16b0af6c759aaa601'
+            'b85d430141601aba9c0c1b2c782abc2b259b4dbc4b099bd2ddd57403c8b75da7e3e3e8d2ff4c95a783f8cb5ba709fe856b8e52ce3cb5ccc70b3c08c9cec0e625'
+            '708e6c073ec9503fd10d14f6f090a694777e77ad92f38885416d368d482e61f2e3aba18d220100f7dd03c3fe80a799b8d3ff59bbac6b58ecbab48c31886cda72'
+            '4eb8b89021a910b295bbf7c032e03fd017ce82ccb2e5d101e085de0fe03b58b7e30c0602904155d48a3520c07590826a79f77fa0092a53eae43744e599247014'
+            '015e9d8fc54d5e16a403bb5a64fe473f2c5fdd846d927e7e4487c11541f02a022a51d0de7ed25b5e0934374f7a29c05d452cb8651bcbf1c9be5287924495b7e1'
+            '2ee19773bc515621699b424d609ef3a29ba8a7bf444b51d8259cd71f69d39d1dd9960aa1d0e0effd4ff5c226ce7812991806c1fe1ab56a951ec7759902fbd687'
+            '7ecc3a7da7bdd98f173202fda300d2b5f0e353d725c4c74d491b0ff713bb5779dd4a5642e37f457d4272fa4013ba060cff34e2b7a9f44c784c7788cfb6c0664a'
             '8a21e62b7ff0982a5406e98510a3004c62f883b9fae0cad5b63f6a7df520896b65c726321da515dab754a91ed94280922e3f424ecc983c1a33eb1ec287b268a2'
-            'b69a09f98f8a5cad8164cd48c5f6a78f2ce0e9818fb77ccf2a3e243cd0f2023e438022b20aad9e6b5edd90e1bb862326db79dc423630682d4c43e897090d3da1'
-            '532c3045f52f872704876bdf56afbc7470c5d17e46655dd4040d545b6d3eb34a8791909e554c560471f9494c7382107839bcff1e48be242d5eea0092482165cd')
+            'b69a09f98f8a5cad8164cd48c5f6a78f2ce0e9818fb77ccf2a3e243cd0f2023e438022b20aad9e6b5edd90e1bb862326db79dc423630682d4c43e897090d3da1')
 
 pkgver() {
   cd "sxmo-utils"
@@ -57,7 +55,7 @@ package_sxmo-utils-git() {
     'bc'
     'curl'
     'gawk'
-    'gojq'
+    'jq'
     'less'
     'net-tools' # netstat command
     'pnc'
@@ -76,6 +74,8 @@ package_sxmo-utils-git() {
     'xdg-user-dirs'
 
     # Audio
+    # TODO: alsa-utils is only required for sxmo_record.sh, it can probably be
+    # removed soon
     'alsa-utils'
     'bluez'
     'bluez-utils'
@@ -127,8 +127,6 @@ package_sxmo-utils-git() {
 
   # HACK: doas is built without --with-doas-confdir so install the sxmo config directly
   install -Dm640 "$pkgdir/etc/doas.d/sxmo.conf" "$pkgdir/etc/doas.conf"
-
-  install -Dm644 "$srcdir/sxmo-setpermissions.service" "$pkgdir/usr/lib/systemd/system/sxmo-setpermissions.service"
 }
 
 package_sxmo-utils-sway-git() {

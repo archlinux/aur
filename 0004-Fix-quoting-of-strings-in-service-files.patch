@@ -1,4 +1,4 @@
-From 920c70568dc53df8f14c72aa37fb36e0f110fba7 Mon Sep 17 00:00:00 2001
+From 6131ee671e0c7275bef7cc308709f37719c492e0 Mon Sep 17 00:00:00 2001
 From: ArenM <aren@peacevolution.org>
 Date: Wed, 5 Apr 2023 17:42:36 -0400
 Subject: [PATCH sxmo-utils 4/6] Fix quoting of strings in service files
@@ -32,5 +32,5 @@ index a4fca14..774591e 100644
 -ExecStart=conky -c "$XDG_CONFIG_HOME"/sxmo/conky.conf
 +ExecStart=conky -c "${XDG_CONFIG_HOME}/sxmo/conky.conf"
 -- 
-2.43.0
+2.45.0
 

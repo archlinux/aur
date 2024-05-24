@@ -1,4 +1,4 @@
-From 3ba6d0415e24febb1dcf26c1f4ec6d144f32b8e2 Mon Sep 17 00:00:00 2001
+From 20b911105f35402eab064ca9f2d7248ed5b1a3ec Mon Sep 17 00:00:00 2001
 From: ArenM <aren@peacevolution.org>
 Date: Fri, 22 Apr 2022 18:24:27 -0400
 Subject: [PATCH sxmo-utils 6/6] start / stop graphical-session.target
@@ -10,10 +10,10 @@ Subject: [PATCH sxmo-utils 6/6] start / stop graphical-session.target
  create mode 100644 configs/services/sxmo-session.target
 
 diff --git a/configs/default_hooks/sxmo_hook_service.sh b/configs/default_hooks/sxmo_hook_service.sh
-index 18ae8b3..3ce6d8f 100644
+index f744659..5d25c68 100644
 --- a/configs/default_hooks/sxmo_hook_service.sh
 +++ b/configs/default_hooks/sxmo_hook_service.sh
-@@ -54,8 +54,10 @@ case "$MANAGER" in
+@@ -52,8 +52,10 @@ case "$MANAGER" in
  		case "$1" in
  			sxmo_starting)
  				printenv | cut -d '=' -f 1 | xargs systemctl --user import-environment
@@ -37,5 +37,5 @@ index 0000000..1bea6c3
 +Wants=graphical-session-pre.target
 +After=graphical-session-pre.target
 -- 
-2.43.0
+2.45.0
 

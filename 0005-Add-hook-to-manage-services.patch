@@ -1,4 +1,4 @@
-From e6c38034a069ad6e0e451d8bf7418e6b743d6575 Mon Sep 17 00:00:00 2001
+From 6fcf5b7ca0e447f92f159afae9b81381775947b9 Mon Sep 17 00:00:00 2001
 From: Aren Moynihan <aren@peacevolution.org>
 Date: Fri, 13 Oct 2023 17:23:28 -0400
 Subject: [PATCH sxmo-utils 5/6] Add hook to manage services
@@ -9,17 +9,17 @@ command format is mostly the same as it was with superd, but this allows
 us to hide the differences between service managers.
 ---
  .../default_hooks/sxmo_hook_contextmenu.sh    | 12 ++--
- configs/default_hooks/sxmo_hook_service.sh    | 65 +++++++++++++++++++
- configs/default_hooks/sxmo_hook_start.sh      |  7 +-
+ configs/default_hooks/sxmo_hook_service.sh    | 63 +++++++++++++++++++
+ configs/default_hooks/sxmo_hook_start.sh      |  7 +--
  scripts/core/sxmo_appmenu.sh                  |  4 +-
  scripts/core/sxmo_common.sh                   |  1 +
  scripts/core/sxmo_winit.sh                    |  1 +
  scripts/core/sxmo_xinit.sh                    |  1 +
- 7 files changed, 75 insertions(+), 16 deletions(-)
+ 7 files changed, 73 insertions(+), 16 deletions(-)
  create mode 100644 configs/default_hooks/sxmo_hook_service.sh
 
 diff --git a/configs/default_hooks/sxmo_hook_contextmenu.sh b/configs/default_hooks/sxmo_hook_contextmenu.sh
-index 2445c2f..e0a8953 100755
+index 26d21ef..1d5dd6d 100755
 --- a/configs/default_hooks/sxmo_hook_contextmenu.sh
 +++ b/configs/default_hooks/sxmo_hook_contextmenu.sh
 @@ -14,10 +14,6 @@
@@ -54,7 +54,7 @@ index 2445c2f..e0a8953 100755
  			$icon_cfg Toggle Bar ^ 0 ^ sxmo_wm.sh togglebar
  			$icon_bth Bluetooth $(
  				rfkill list bluetooth | grep -q "yes" &&
-@@ -642,7 +638,7 @@ case "$WMCLASS" in
+@@ -695,7 +691,7 @@ case "$WMCLASS" in
  		;;
  	org.gnome.maps)
  	CHOICES="
@@ -65,22 +65,20 @@ index 2445c2f..e0a8953 100755
  		$icon_fnd Explore POI ^ 0 ^ sxmo_type -M ctrl -M Shift F
 diff --git a/configs/default_hooks/sxmo_hook_service.sh b/configs/default_hooks/sxmo_hook_service.sh
 new file mode 100644
-index 0000000..18ae8b3
+index 0000000..f744659
 --- /dev/null
 +++ b/configs/default_hooks/sxmo_hook_service.sh
-@@ -0,0 +1,65 @@
+@@ -0,0 +1,63 @@
 +#! /bin/sh
 +# SPDX-License-Identifier: AGPL-3.0-only
 +# Copyright 2023 Sxmo Contributors
 +
-+# include common definitions
-+# shellcheck source=scripts/core/sxmo_common.sh
-+. sxmo_common.sh
-+# prevent infinite recursion
-+unalias superd
-+
 +set -e
 +
++# WARNING: we can't source sxmo_common.sh, otherwise calling sueprd will cause a
++# loop
++# TODO: this needs better detection logic, perhaps it's just a compiel time
++# flag?
 +if [ -n "$SXMO_SERVICE_MANAGER" ]; then
 +	MANAGER="$SXMO_SERVICE_MANAGER"
 +elif command -v systemctl > /dev/null; then
@@ -135,7 +133,7 @@ index 0000000..18ae8b3
 +		esac
 +esac
 diff --git a/configs/default_hooks/sxmo_hook_start.sh b/configs/default_hooks/sxmo_hook_start.sh
-index 35bc59a..1a79d63 100755
+index 50fa86e..a838e24 100755
 --- a/configs/default_hooks/sxmo_hook_start.sh
 +++ b/configs/default_hooks/sxmo_hook_start.sh
 @@ -9,12 +9,7 @@
@@ -168,13 +166,13 @@ index 10c2f51..a7c7733 100755
  		sxmo_notify_user.sh "$1 Stopped"
  	else
 diff --git a/scripts/core/sxmo_common.sh b/scripts/core/sxmo_common.sh
-index 4eb0a1f..b6cabf9 100755
+index 270c1f8..aa9dc8a 100755
 --- a/scripts/core/sxmo_common.sh
 +++ b/scripts/core/sxmo_common.sh
-@@ -16,6 +16,7 @@ command -v shopt > /dev/null && shopt -s expand_aliases
+@@ -15,6 +15,7 @@ command -v shopt > /dev/null && shopt -s expand_aliases
+ 
  alias dmenu="sxmo_dmenu.sh"
  alias bemenu="sxmo_dmenu.sh"
- alias jq="gojq" # better performances
 +alias superctl=sxmo_hook_service.sh
  
  if ! command -v sxmobar > /dev/null; then
@@ -192,7 +190,7 @@ index 220daac..a8c381f 100755
  	pkill bemenu
  	pkill wvkbd
 diff --git a/scripts/core/sxmo_xinit.sh b/scripts/core/sxmo_xinit.sh
-index 9a491ba..f490aa4 100755
+index cafb1ab..e6a29ed 100755
 --- a/scripts/core/sxmo_xinit.sh
 +++ b/scripts/core/sxmo_xinit.sh
 @@ -45,6 +45,7 @@ with_dbus() {
@@ -204,5 +202,5 @@ index 9a491ba..f490aa4 100755
  	pkill svkbd
  	pkill dmenu
 -- 
-2.43.0
+2.45.0
 
