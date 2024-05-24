@@ -1,4 +1,4 @@
-# Maintainer: agamemnon <zarberus at gmail dot com>
+# Maintainer: Meowser <edward dot o dot holmes at gmail dot com>
 # Contributor: Brendan <ball dot brendan 50 at gmail dot com>
 # Contributor: Harms <thotro at lyse dot net>
 # Contributor: dnikoloski <nikoloskid at proton dot me>
