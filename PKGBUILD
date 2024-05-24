@@ -86,9 +86,10 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${_name}/${_name}" "${pkgdir}/usr/bin/${_name}"
 
-  # install desktop file, metainfo and icons
+  # install desktop file, metainfo, license and icons
   install -Dm 644 "${srcdir}/${_name}-${pkgver}/assets/favicon.png" "${pkgdir}/usr/share/pixmaps/${_appid}.png"
   install -Dm 644 "${srcdir}/${_name}-${pkgver}/assets/favicon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_appid}.png"
+  install -Dm644 "${srcdir}/${_name}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
   install -dm 755 "${pkgdir}/usr/share/applications"
   cat > ${pkgdir}/usr/share/applications/${_appid}.desktop << EOF
 [Desktop Entry]
