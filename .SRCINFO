@@ -1,13 +1,13 @@
 pkgbase = wiper
 	pkgdesc = Disk cleanup tool
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/ikebastuz/wiper
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = wiper-0.2.0.tar.gz::https://github.com/ikebastuz/wiper/archive/v0.2.0.tar.gz
-	sha512sums = ca3568358538138979ef1d40753d279495b69b44c073d5165bc265e880f3ecabca104eb3efa614782ad55a99f045bac1490f69d5b0fca81d8032e08178e7326d
+	source = wiper-0.2.1.tar.gz::https://github.com/ikebastuz/wiper/archive/v0.2.1.tar.gz
+	sha512sums = e053ab596c4f424cbacbe63900623a6aff4f3185de9cc1b73bc45cb094800f0682db028a8612c31db49990bd15901851b6e8b00579170e35462ab8f7337bea94
 
 pkgname = wiper
