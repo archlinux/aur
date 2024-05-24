@@ -4,7 +4,7 @@
 
 pkgname=python-roman
 pkgver=4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Integer to Roman numerals converter"
 url="https://github.com/zopefoundation/roman"
 depends=(python)
@@ -17,6 +17,11 @@ sha256sums=('1b7daf7e6df4372630bb38e67d439368258d0c1f0f0708e6be9296b91c0efee2')
 build() {
     cd "${srcdir}/roman-${pkgver}"
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${srcdir}/roman-${pkgver}/src"
+    python -m unittest tests.py
 }
 
 package() {
