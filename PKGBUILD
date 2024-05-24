@@ -4,7 +4,7 @@ pkgname="${_pkgname}-beta-bin"
 _appname="Prospect Mail"
 pkgver=0.5.2
 _electronversion=27
-pkgrel=4
+pkgrel=5
 pkgdesc="The Outlook desktop client for the new Outlook Interface from Microsoft 365.Use system-width electron."
 arch=(
     "aarch64"
@@ -20,7 +20,6 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-aarch64.pacman")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.pacman::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-armv7l.pacman")
@@ -30,7 +29,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d0e5830cefea162e44ae617ea67300234f69b9fc9c2c9e220ad2b56f9cc189df'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_aarch64=('5e34e57f495623106338b34fa05cef14199ae7189cf2c91c04641070e24e4979')
 sha256sums_armv7h=('7ec1e0a63c83b99b84ad565042927e4e6696b192b5d4fcd853c8059484438a7a')
 sha256sums_x86_64=('60995b68d8224942c65172381bf098d233dc3194f9b2e1e90d50b236d8fa6513')
@@ -38,6 +37,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|\"/opt/${_appname}/${_pkgname}\"|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
