@@ -1,6 +1,6 @@
 pkgbase = gz-fuel-tools9
 	pkgdesc = A client library and command line tools for interacting with Gazebo Fuel servers.
-	pkgver = 9.0.2
+	pkgver = 9.0.3
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-fuel-tools
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = gz-fuel-tools9
 	depends = tinyxml2
 	optdepends = ruby
 	provides = gz-fuel-tools=9
-	source = https://github.com/gazebosim/gz-fuel-tools/archive/gz-fuel-tools9_9.0.2.tar.gz
-	sha256sums = 1000b56c96f087fffd64c1812916c4f8d6609221b6ea2b8f0ffd85e18b995aab
+	source = https://github.com/gazebosim/gz-fuel-tools/archive/gz-fuel-tools9_9.0.3.tar.gz
+	sha256sums = fba6798efd7db5a6ac824113123effd19e9907cd479d5d1b1314bb3dd4c6f705
 
 pkgname = gz-fuel-tools9
