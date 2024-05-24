@@ -4,14 +4,14 @@
 pkgname='python-into-dbus'
 _srcname='into-dbus-python'
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Facilities for converting an object that inhabits core Python types, e.g., lists, ints, dicts, to an object that inhabits dbus-python types, e.g., dbus.Array, dbus.UInt32, dbus.Dictionary based on a specified dbus signature.'
 arch=('any')
 license=('Apache')
 url="https://github.com/stratis-storage/$_srcname"
 depends=('dbus-python' 'python-dbus-signature-pyparsing')
 makedepends=('git' 'python-pylint' 'python-setuptools')
-checkdepends=('python-nose' 'python-hypothesis' 'python-hs-dbus-signature')
+checkdepends=('python-hypothesis' 'python-hs-dbus-signature')
 source=(
   "${_srcname}-${pkgver}.tar.gz::https://github.com/stratis-storage/${_srcname}/archive/v${pkgver}.tar.gz"
 )
@@ -19,7 +19,7 @@ sha256sums=('df54a6f37ccd3b3f0df7f557ad8d7bdd412152b568beccd8d71cd73d4a9343e6')
 
 check() {
   cd "${_srcname}-${pkgver}"
-  nosetests || true # test failing for now
+  PYTHONPATH=src python -m unittest discover -vs .
 }
 
 package() {
