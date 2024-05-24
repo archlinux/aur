@@ -1,7 +1,7 @@
 pkgbase = litellm
 	pkgdesc = Call all LLM APIs using the OpenAI format
 	pkgver = 1.38.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/litellm/
 	arch = any
 	license = MIT

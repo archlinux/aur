@@ -4,7 +4,7 @@
 
 pkgname="litellm"
 pkgver=1.38.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Call all LLM APIs using the OpenAI format"
 arch=(any)
 url="https://pypi.org/project/litellm/"
@@ -56,7 +56,7 @@ options=("!strip")
 prepare(){
  cd "$pkgname-$pkgver"
  # fix relative import
- sed -i "llmlite/proxy/proxy_cli.py" \
+ sed -i "litellm/proxy/proxy_cli.py" \
      -e "s|from proxy_server import|from .proxy_server import|g"
 }
 
