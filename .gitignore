@@ -3,3 +3,4 @@ nugget-doom-*.log
 nugget-doom-*.tar.zst
 pkg/
 src/
+PKGBUILD-namcap.log
