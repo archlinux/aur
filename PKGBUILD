@@ -29,9 +29,9 @@ provides=('anytype')
 conflicts=('anytype'
            'anytype-legacy')
 source=(
-	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}-patch-alpha/anytype_${pkgver}-patch-alpha_amd64.deb"
+	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}-patch2-alpha/anytype_${pkgver}-patch2-alpha_amd64.deb"
     )
-sha256sums=('c62bf9e10e9fce6b3ef2c385d2efced310d2d83852737b2e1b971b554aca9c9d')
+sha256sums=('1af8ef11e78ee933bb444064d05e4ba516c24b1d3be09dc412a3cd822f7d9816')
 
 package() {
   	tar -xvf data.tar.* -C $pkgdir

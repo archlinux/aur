@@ -16,7 +16,7 @@ pkgbase = anytype-electron-bin
 	provides = anytype
 	conflicts = anytype
 	conflicts = anytype-legacy
-	source = https://github.com/anyproto/anytype-ts/releases/download/v0.40.9-patch-alpha/anytype_0.40.9-patch-alpha_amd64.deb
-	sha256sums = c62bf9e10e9fce6b3ef2c385d2efced310d2d83852737b2e1b971b554aca9c9d
+	source = https://github.com/anyproto/anytype-ts/releases/download/v0.40.9-patch2-alpha/anytype_0.40.9-patch2-alpha_amd64.deb
+	sha256sums = 1af8ef11e78ee933bb444064d05e4ba516c24b1d3be09dc412a3cd822f7d9816
 
 pkgname = anytype-electron-bin
