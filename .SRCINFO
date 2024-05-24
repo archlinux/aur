@@ -1,6 +1,6 @@
 pkgbase = cronet
 	pkgdesc = The networking stack of Chromium put into a library
-	pkgver = 125.0.6422.76
+	pkgver = 125.0.6422.112
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = cronet
 	depends = minizip
 	depends = double-conversion
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-125.0.6422.76.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-125.0.6422.112.tar.xz
 	source = chromium-125-system-zstd.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/www-client/chromium/files/chromium-125-system-zstd.patch?id=9549b6e8362e0a5a5cc950ca4f0604353ac87152
 	source = drop-flag-unsupported-by-clang17.patch
 	source = compiler-rt-adjust-paths.patch
@@ -32,7 +32,7 @@ pkgbase = cronet
 	source = fix-no-matching-strcat.patch
 	source = fix-numeric_limits.patch
 	source = fix-undeclared-isnan.patch
-	sha256sums = 4167218463d2848f4a0fe35f60d062a8e7e5c7ce5bc8c8c2260a80186b1deccf
+	sha256sums = ba48d13e506ae68bd6d01a808cdc186ee09322daafeb0bddf95dae59b0b4276b
 	sha256sums = 1259768f2d835a124fc8038353093c896b442680969eee7ed6880d17a2601c0b
 	sha256sums = 3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1
 	sha256sums = b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961
