@@ -1,7 +1,7 @@
 # Maintainer: Cacoro2 <marcos707@gmail.com>
 # Contributor: Christopher Wallace <christopher@wallaces.email>
 pkgname=(webull-desktop)
-pkgver=7.5.2
+pkgver=7.10.0
 pkgrel=1
 pkgdesc="Invest in stocks, ETFs, and options with Webull Financial, all commission-free, \$0 minimum deposit."
 arch=('x86_64')
@@ -9,13 +9,13 @@ url="https://webull.com"
 options=("!strip")
 license=('custom')
 depends=('hicolor-icon-theme' 'nss')
-source_x86_64=("https://u1sweb.webullfintech.com/us/Webull%20Desktop_7.5.2_global_x64signed.deb")
-sha512sums_x86_64=('d6a12c504cd82468af1af297c28ad6367dcf1eabd6daac6ae0272e427ee484ff10f58f1d0a47a010615a7d753b4a0cc5d87847a98aa2497c66e6854a6ad25757')
+source_x86_64=("https://u1sweb.webullfintech.com/us/Webull%20Desktop_7.10.0_7001000_global_x64signed.deb")
+sha512sums_x86_64=('6f4e63a32ecaabbf172dcc389e37748300ebf92d812dab740c03d3693deccb9a6d88928049bbf304619d4d15e43660e0a00680ea1339345a255514bca96fefe5')
 
 package(){
   bsdtar --no-same-owner -xf  data.tar.xz -C "${pkgdir}"
   mv "${pkgdir}"/usr/local/ "${pkgdir}"/opt
-  rm "${pkgdir}"/opt/WebullDesktop/libnssutil3.so
+  #rm "${pkgdir}"/opt/WebullDesktop/libnssutil3.so
   ln -s /usr/lib/libnssutil3.so "${pkgdir}"/opt/WebullDesktop/libnssutil3.so
   install -Dm644 "${pkgdir}"/opt/WebullDesktop/LICENSE.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE.txt
   install -dm755 "${pkgdir}"/usr/bin
