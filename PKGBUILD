@@ -61,12 +61,21 @@ if [ "${_build_git::1}" != "t" ]; then
     cd "$_pkgsrc"
     git describe --tag | sed -E 's/^[^0-9]*//;s/-/./g'
   }
+
+  _prepare() {
+    # remove shaderc semantic debug
+    sed -e '/vk_khr_shader_non_semantic_info/d' \
+      -e '/SetEmitNonSemanticDebugInfo/d' \
+      -i "$_pkgsrc/src/util/vulkan_pipeline.cpp"
+  }
 else
   provides=("$_pkgname")
   conflicts=("$_pkgname")
 
+  _commit=0e2204e9289e5173ef7bb0f793575110a709a79e
+
   _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
+  source+=("$_pkgsrc"::"git+$url.git#commit=_commit")
   sha256sums+=('SKIP')
 
   pkgver() {
@@ -78,13 +87,16 @@ else
 
     printf "%s.r%s.g%s" "${_pkgver:?}" "${_revision:?}" "${_commit:?}"
   }
+
+  _prepare() {
+    # remove shaderc semantic debug
+    sed -e '/shaderc_compile_options_set_emit_non_semantic_debug_info/d' \
+      -i "$_pkgsrc/src/util/gpu_device.cpp"
+  }
 fi
 
 prepare() {
-  # remove shaderc semantic debug
-  sed -e '/vk_khr_shader_non_semantic_info/d' \
-    -e '/SetEmitNonSemanticDebugInfo/d' \
-    -i "$_pkgsrc/src/util/vulkan_pipeline.cpp"
+  _prepare
 }
 
 build() {
@@ -135,7 +147,7 @@ Categories=Game;Emulator;Qt;
 END
 
   install -dm755 "$pkgdir/usr/share/pixmaps/"
-  ln "$pkgdir/opt/$_pkgname/resources/images/duck.png" "$pkgdir/usr/share/pixmaps/duckstation-qt.png"
+  ln -sf "$pkgdir/opt/$_pkgname/resources/images/duck.png" "$pkgdir/usr/share/pixmaps/duckstation-qt.png"
 
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
