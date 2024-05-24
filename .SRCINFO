@@ -1,6 +1,6 @@
 pkgbase = idevicerestore-git
 	pkgdesc = Restore/upgrade firmware of iOS devices
-	pkgver = 1.0.0.r188.g56d2c01
+	pkgver = 1.0.0.r190.gdf06f4d
 	pkgrel = 1
 	epoch = 1
 	url = http://www.libimobiledevice.org
@@ -15,6 +15,7 @@ pkgbase = idevicerestore-git
 	depends = libplist-git
 	depends = libimobiledevice-git
 	depends = libirecovery-git
+	depends = libtatsu-git
 	source = git+https://github.com/libimobiledevice/idevicerestore
 	source = 0001-configure.ac-check-for-pthreads.patch
 	sha256sums = SKIP
