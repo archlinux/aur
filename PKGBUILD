@@ -4,7 +4,7 @@ pkgname=polycule-git
 _name=polycule
 _appid=business.braid.polycule
 pkgver=1ac50db
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple and beautiful matrix client written in Flutter."
 # Flutter officially supports amd64 and AArch64
 arch=('x86_64' 'aarch64')
@@ -65,6 +65,11 @@ prepare() {
   # enter the source directory
   cd "${srcdir}/${_name}"
 
+  # ensure a clean CMakeCache
+  if [ -f "build/linux/${_dartarch}/release/CMakeCache.txt" ]; then
+    rm "build/linux/${_dartarch}/release/CMakeCache.txt"
+  fi
+
   # download dart dependencies without lockfile update or retry with
   flutter pub get --enforce-lockfile || flutter pub get
 }
@@ -93,9 +98,10 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${_name}/${_name}" "${pkgdir}/usr/bin/${_name}"
 
-  # install desktop file, metainfo and icons
+  # install desktop file, metainfo, license and icons
   install -Dm 644 "${srcdir}/${_name}/linux/${_appid}.desktop" "${pkgdir}/usr/share/applications/${_appid}.desktop"
   install -Dm 644 "${srcdir}/${_name}/linux/${_appid}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${_appid}.metainfo.xml"
+  install -Dm644 "${srcdir}/${_name}/LICENSE" "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
   install -Dm 644 "${srcdir}/${_name}/assets/logo/logo-circle.svg" "${pkgdir}/usr/share/pixmaps/${_appid}.svg"
   install -Dm 644 "${srcdir}/${_name}/assets/logo/logo-circle.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appid}.svg"
 }
