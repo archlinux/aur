@@ -1,6 +1,6 @@
 pkgbase = python-proton-vpn-api-core
 	pkgdesc = The proton-vpn-core-api acts as a facade to the other Proton VPN components, exposing a uniform API to the available Proton VPN services.
-	pkgver = 0.23.1
+	pkgver = 0.24.4
 	pkgrel = 1
 	url = https://github.com/ProtonVPN/python-proton-vpn-api-core
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-proton-vpn-api-core
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
-	source = git+https://github.com/ProtonVPN/python-proton-vpn-api-core.git#tag=v0.23.1
+	source = git+https://github.com/ProtonVPN/python-proton-vpn-api-core.git#tag=v0.24.4
 	sha256sums = SKIP
 
 pkgname = python-proton-vpn-api-core
