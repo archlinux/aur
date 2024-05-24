@@ -2,7 +2,7 @@
 
 _pkgname="nchat"
 pkgname="${_pkgname}-git"
-pkgver=4.41.r6.gf0e91a37
+pkgver=4.50.r41.g9ebe018
 pkgrel=1
 pkgdesc="console-based chat client with support for Telegram"
 url="https://github.com/d99kris/nchat"
@@ -10,13 +10,11 @@ license=('MIT')
 arch=('x86_64')
 
 depends=(
-  'file'
   'ncurses'
   'openssl'
   'sqlite'
   'zlib'
 )
-
 makedepends=(
   'cmake'
   'git'
@@ -34,10 +32,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
+  export GOFLAGS+=' -buildvcs=false'
+
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
@@ -54,6 +54,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  install -D -m644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
