@@ -9,7 +9,7 @@
 _pkgname=libtorrent
 pkgname=libtorrent-ipv6
 pkgver=0.13.8
-pkgrel=4
+pkgrel=5
 pkgdesc='BitTorrent library with a focus on high performance and good code, with ipv6 support'
 url='https://github.com/rakshasa/libtorrent'
 arch=('x86_64')

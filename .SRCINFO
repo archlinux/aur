@@ -1,7 +1,7 @@
 pkgbase = libtorrent-ipv6
 	pkgdesc = BitTorrent library with a focus on high performance and good code, with ipv6 support
 	pkgver = 0.13.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/rakshasa/libtorrent
 	arch = x86_64
 	license = GPL
