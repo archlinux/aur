@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kando-bin
 _pkgname=Kando
-pkgver=0.8.1
+pkgver=0.9.0
 _electronversion=28
-pkgrel=2
+pkgrel=1
 pkgdesc="A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions. "
 arch=("x86_64")
 url="https://ko-fi.com/post/Introducing-Ken-Do-L3L7L0FQ2"
@@ -23,14 +23,18 @@ optdepends=(
     'alsa-lib'
     'pulseaudio'
 )
+options=(
+    '!strip'
+    '!emptydirs'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kando-menu/kando/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f9098938d98e3f49e11487dff80def955fa2240d7465c1f28829f916d6be51c4'
+sha256sums=('3cd5387d0a2319471d64af365417fe90a56066065d3d455a9134c1fed2c52855'
             'fd6cb731b549de5452efacb0833cda7a328eb5263537d29ca18de9d7938f7bab'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \

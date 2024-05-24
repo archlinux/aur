@@ -1,7 +1,7 @@
 pkgbase = kando-bin
 	pkgdesc = A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://ko-fi.com/post/Introducing-Ken-Do-L3L7L0FQ2
 	arch = x86_64
 	license = MIT
@@ -13,13 +13,15 @@ pkgbase = kando-bin
 	optdepends = gvfs
 	optdepends = alsa-lib
 	optdepends = pulseaudio
-	provides = kando=0.8.1
+	provides = kando=0.9.0
 	conflicts = kando
-	source = kando-0.8.1.rpm::https://github.com/kando-menu/kando/releases/download/v0.8.1/kando_0.8.1_amd64.deb
-	source = LICENSE-0.8.1::https://raw.githubusercontent.com/kando-menu/kando/v0.8.1/LICENSE.md
+	options = !strip
+	options = !emptydirs
+	source = kando-0.9.0.rpm::https://github.com/kando-menu/kando/releases/download/v0.9.0/kando_0.9.0_amd64.deb
+	source = LICENSE-0.9.0::https://raw.githubusercontent.com/kando-menu/kando/v0.9.0/LICENSE.md
 	source = kando.sh
-	sha256sums = f9098938d98e3f49e11487dff80def955fa2240d7465c1f28829f916d6be51c4
+	sha256sums = 3cd5387d0a2319471d64af365417fe90a56066065d3d455a9134c1fed2c52855
 	sha256sums = fd6cb731b549de5452efacb0833cda7a328eb5263537d29ca18de9d7938f7bab
-	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = kando-bin
