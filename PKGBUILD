@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-common5
-pkgver=5.5.1
+pkgver=5.6.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -28,7 +28,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('d176a113db3324dd3598c3418285ea5afcb44286dba0b29f07ab1b0482df7748')
+sha256sums=('39d02930638c5da35bbdd4925385bfe10180a8166c9c649b8ae67e083a47130e')
 
 build() {
   export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/ffmpeg4.4/pkgconfig"
