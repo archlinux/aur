@@ -1,7 +1,6 @@
 pkgname=pulsecontrol-git
 pkgver=0.9
 pkgrel=1
-epoch=1
 pkgdesc="A fork of pavucontrol aiming at better UX"
 url="https://gitlab.freedesktop.org/oxayotl/pavucontrol/-/tree/fork"
 arch=(x86_64)
@@ -10,7 +9,6 @@ depends=(
   gtkmm-4.0
   json-glib
   libcanberra
-  libsigc++
   libadwaita
 )
 makedepends=(
