@@ -2,8 +2,8 @@
 
 pkgname="aider-chat"
 _pkgname="aider_chat"
-pkgver=0.35.0
-pkgrel=2
+pkgver=0.36.0
+pkgrel=1
 pkgdesc="AI pair programming in your terminal"
 url="https://aider.chat/"
 license=("Apache2")
