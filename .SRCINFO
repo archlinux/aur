@@ -1,13 +1,13 @@
 pkgbase = lazyjj-bin
 	pkgdesc = TUI for Jujutsu/jj
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Cretezy/lazyjj
 	arch = x86_64
 	license = Apache-2.0
 	provides = lazyjj
 	conflicts = lazyjj
-	source = https://github.com/Cretezy/lazyjj/releases/download/v0.1.2/lazyjj-v0.1.2-x86_64-aur.tar.gz
-	sha256sums = d2a5c7dc4ec6152dd03496cfd45267efb46408e444401b68f8ac83630caf75f2
+	source = https://github.com/Cretezy/lazyjj/releases/download/v0.1.3/lazyjj-v0.1.3-x86_64-aur.tar.gz
+	sha256sums = 6acd06ed42bb2aecf4b8adb6912bbc229ce9f2401cb6c7fbac8f65975c47a4ff
 
 pkgname = lazyjj-bin
