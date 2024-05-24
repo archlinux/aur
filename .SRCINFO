@@ -1,0 +1,19 @@
+pkgbase = ctr-modsdk-pc-git
+	pkgdesc = PC re-implementation of Crash Team Racing (engine only, 32-bit for now)
+	pkgver = r11.r3273.gfb5ea06
+	pkgrel = 1
+	url = https://github.com/CTR-tools/CTR-ModSDK
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = lib32-sdl2
+	depends = lib32-openal
+	depends = lib32-glibc
+	options = !buildflags
+	source = ctr-modsdk-pc-git::git+https://github.com/CTR-tools/CTR-ModSDK.git
+	source = psycross::git+https://github.com/OpenDriver2/PsyCross.git#commit=0ce306d6c32412986037e7e5e1dbdc1bf72e066a
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = ctr-modsdk-pc-git
