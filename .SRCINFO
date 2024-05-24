@@ -1,7 +1,7 @@
 pkgbase = vectozavr-shooter-git
 	pkgdesc = Multiplayer shooter written in C++
 	pkgver = 0.1.1.r9.g0db3301
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vectozavr/shooter
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,9 @@ pkgbase = vectozavr-shooter-git
 	depends = openal
 	source = vectozavr-shooter-git::git+https://github.com/vectozavr/shooter.git#branch=master
 	source = 3dzavr::git+https://github.com/vectozavr/3dzavr.git#branch=sfml_version
+	source = vectozavr-shooter.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = e9bf38e4957c8a8c9407fd3cf1bfeeca5e85c21b2fde2859c0e30a9635182330
 
 pkgname = vectozavr-shooter-git
