@@ -2,7 +2,7 @@
 pkgname=cellframe-node-debug
 _pkgname=cellframe-node
 pkgver=5.2.518
-pkgrel=1
+pkgrel=2
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -45,6 +45,7 @@ build() {
 	cd "$_pkgname"
 	cmake -B build \
 		-DCMAKE_BUILD_TYPE='Debug' \
+		-DCMAKE_C_FLAGS="-fpermissive" \
         -Wno-dev
 	cmake --build build -j$(nproc)
 }
