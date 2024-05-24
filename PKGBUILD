@@ -1,13 +1,15 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
 # Contributor: Elkin Cruz <agnelkincc@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=shedskin-git
 pkgver=0.9.8.r68.g937e8196
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental (restricted) Python-to-C++ compiler (development version)'
 url='https://github.com/shedskin/shedskin'
-license=('GPL3')
+license=('GPL3' 'Expat' 'BSD-3')
+# Not sure whether this is GPL-3.0-only or GPL-3.0-or-later, upstream issue #469
 source=(git+https://github.com/shedskin/shedskin.git)
 sha256sums=('SKIP')
 arch=('any')
