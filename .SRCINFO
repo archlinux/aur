@@ -1,0 +1,16 @@
+pkgbase = libcapi-gitee
+	pkgdesc = Modular libcapi20
+	pkgver = 3.2.3
+	pkgrel = 2
+	url = https://www.tabos.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	makedepends = git
+	conflicts = isdn4k-utils
+	options = !emptydirs
+	source = git+https://gitee.com/liushuai05/libcapi-gitee.git#tag=v3.2.3
+	sha512sums = SKIP
+
+pkgname = libcapi-gitee
