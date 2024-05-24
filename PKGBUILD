@@ -7,20 +7,20 @@
 #
 
 pkgname=fileobj
-pkgver=0.8.2
+pkgver=0.8.6
 pkgrel=1
 
 pkgdesc="Ncurses based hex editor with vi interface written in Python "
 arch=('any')
 url="https://github.com/kusumi/fileobj"
-license=('GPL')
+license=('BSD-2-Clause')
 depends=('python')
 makedepends=()
 optdepends=()
 
 source=(https://github.com/kusumi/${pkgname}/archive/v${pkgver//_/-}.tar.gz)
 
-sha256sums=('6d459eb801e381652868bc1799b6ed9b80ac670559f7019e7d9aeed0a5f06416')
+sha256sums=('3b8d907798bc072faf0afe7b42557f1923080e46d80e0737493f01a08d0c5254')
 
 noextract=()
 
@@ -42,6 +42,7 @@ check() {
 package() {
   cd "${srcdir}/${pkg_name_ver}"
   python ./setup.py install --root "${pkgdir}"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
 
 #

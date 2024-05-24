@@ -1,12 +1,12 @@
 pkgbase = fileobj
 	pkgdesc = Ncurses based hex editor with vi interface written in Python
-	pkgver = 0.8.2
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = https://github.com/kusumi/fileobj
 	arch = any
-	license = GPL
+	license = BSD-2-Clause
 	depends = python
-	source = https://github.com/kusumi/fileobj/archive/v0.8.2.tar.gz
-	sha256sums = 6d459eb801e381652868bc1799b6ed9b80ac670559f7019e7d9aeed0a5f06416
+	source = https://github.com/kusumi/fileobj/archive/v0.8.6.tar.gz
+	sha256sums = 3b8d907798bc072faf0afe7b42557f1923080e46d80e0737493f01a08d0c5254
 
 pkgname = fileobj
