@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
 pkgver=6.9.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('any')
 url="https://github.com/badabing2005/PixelFlasher"
@@ -58,4 +58,8 @@ package() {
   done
 
   install -Dm644 "$srcdir/PixelFlasher.desktop" -t "$pkgdir/usr/share/applications/"
+
+  # Compile Python bytecode
+  python -m compileall -d / "$pkgdir/opt/$pkgname"
+  python -O -m compileall -d / "$pkgdir/opt/$pkgname"
 }
