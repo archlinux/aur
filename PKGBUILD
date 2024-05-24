@@ -1,8 +1,8 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 # Contributor: Ross Whitfield <whitfieldre@ornl.gov>
 
-pkgver=4.4.5
-pkgrel=4
+pkgver=4.4.6
+pkgrel=1
 pkgname='python-pycifrw'
 _name='PyCifRW'
 pkgdesc='CIF/STAR file support for Python'
@@ -12,7 +12,7 @@ license=('Python-2.0')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('f1484789fc9f32b7fc9f2c0ab176992a571e4c5bf8d7794e0f1c1c0a7d1c8271133f0775d17b2bf47984d5c41d9c3f0ff70ef2df19525c0655bcabdb974c8b0e')
+sha512sums=('9a3d83dfcbbc2a84642eb87df42c9162c1c6f6034b9ff8b3eca34283dfc30991db49164f3e23e824537ffe4114c8bef2c960ca734f0382a3f793e38a950a3872')
 
 build() {
     cd "$_name-$pkgver"
@@ -22,5 +22,4 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
