@@ -4,7 +4,7 @@
 
 _pkgname=corectrl
 pkgname=${_pkgname}-git
-pkgver=1.3.0.r138.g3ff1f2d
+pkgver=1.4.0.r7.g306bc61
 pkgrel=1
 pkgdesc="Application to control your hardware with ease using application profiles"
 url="https://gitlab.com/corectrl/corectrl"
