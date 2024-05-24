@@ -2,7 +2,7 @@
 
 pkgname=gpt4all-chat-git
 _gitname=gpt4all
-pkgver=r1747.67843edc
+pkgver=r1809.0b63ad5e
 pkgrel=1
 pkgdesc="Cross platform Qt based GUI for GPT4All versions"
 arch=('x86_64')
@@ -45,6 +45,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/opt/gpt4all-chat \
     -DCMAKE_BUILD_TYPE=Release \
     -DKOMPUTE_OPT_DISABLE_VULKAN_VERSION_CHECK=ON \
+    -DLLMODEL_CUDA=OFF \
+    -DCMAKE_CXX_FLAGS="-Wno-dangling-reference" \
     ..
   make
 }
