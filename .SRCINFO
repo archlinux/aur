@@ -1,7 +1,7 @@
 pkgbase = upscayl-rpm-bin
 	pkgdesc = Free and Open Source AI Image Upscaler (binary release, system Electron)
 	pkgver = 2.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/upscayl/upscayl
 	arch = x86_64
 	license = AGPL-3.0-or-later

@@ -2,7 +2,7 @@
 
 pkgname=upscayl-rpm-bin
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and Open Source AI Image Upscaler (binary release, system Electron)"
 url="https://github.com/upscayl/upscayl"
 license=('AGPL-3.0-or-later')
@@ -17,7 +17,8 @@ sha256sums=('ef66e3473a64b9c902ce31bb800e29bda9069c050dbb4eda6eacb6a0f0058224')
 
 prepare() {
 # Create an exec file
-  echo -e "export ELECTRON_IS_DEV=0\n\
+  echo -e "#!/bin/sh\n\
+export ELECTRON_IS_DEV=0\n\
 cd /usr/lib/upscayl\n\
 exec electron /usr/lib/upscayl/app.asar \$@" > upscayl
 # Edit the shortcut
