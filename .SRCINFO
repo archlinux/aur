@@ -1,7 +1,7 @@
 pkgbase = evil-helix-bin
 	pkgdesc = Helix fork with Vim keybindings and more
 	pkgver = 20240524
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/usagi-flow/evil-helix
 	arch = x86_64
 	license = MPL2

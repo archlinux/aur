@@ -2,7 +2,7 @@
 
 pkgname=evil-helix-bin
 pkgver=20240524
-pkgrel=2
+pkgrel=3
 pkgdesc="Helix fork with Vim keybindings and more"
 arch=('x86_64')
 url="https://github.com/usagi-flow/evil-helix"
@@ -22,6 +22,7 @@ package() {
 	install -D -m755 helix/hx "$pkgdir/opt/helix/hx"
 	cp -r helix/runtime "$pkgdir/opt/helix/"
 
+	mkdir -pv "$pkgdir/usr/local/bin"
 	cd "$pkgdir/usr/local/bin"
 	if [ ! -e hx ]; then
 		ln -sv "$pkgdir/opt/helix/hx" .
