@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=draw.io
 pkgname="${_pkgname//./}-desktop-git"
-pkgver=24.4.6.r1.g1a8b145
+pkgver=24.4.7.r1.g6735294
 _electronversion=30
 _nodeversion=20
 pkgrel=1
