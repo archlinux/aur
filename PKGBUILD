@@ -3,7 +3,7 @@ pkgname=rendertune-bin
 _pkgname=RenderTune
 pkgver=1.1.4
 _electronversion=11
-pkgrel=5
+pkgrel=6
 pkgdesc="A free electron app that uses ffmpeg to combine audio.+image file(s) into video files."
 arch=('x86_64')
 url="https://www.martinbarker.me/RenderTune"
@@ -12,7 +12,8 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
+    'nodejs'
 )
 makedepends=(
     'fuse2'
@@ -24,11 +25,12 @@ source=(
 )
 sha256sums=('ae8b05956400735952af42beea18b2cf71a0607071e079365237731f0d3b8425'
             '11a272e7544439f19cffcd33c12ea39777fa581122babf7fe5e9b94712660af8'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
