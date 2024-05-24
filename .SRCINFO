@@ -40,6 +40,8 @@ pkgbase = goldendict-ng
 	replaces = goldendict-git-opt
 	replaces = goldendict-webengine-git
 	source = goldendict-ng-24.05.05.tar.gz::https://github.com/xiaoyifang/goldendict-ng/archive/refs/tags/v24.05.05-LiXia.ecd1138c.tar.gz
+	source = fix-ffmpeg7.patch
 	sha256sums = e7cf55fef4ddf00d87b4e54489ec33a605b1d5634d0b7c46ddcdd261c3113790
+	sha256sums = ba55e479670629ca9b940e9cfdbeb5af901a28aac86c4f9fb57fe77127e9e782
 
 pkgname = goldendict-ng
