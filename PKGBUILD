@@ -3,7 +3,7 @@
 
 pkgname=python-voila
 _name=${pkgname#python-}
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="Voilà turns Jupyter notebooks into standalone web applications"
 arch=(any)
@@ -41,7 +41,7 @@ makedepends=(
     jupyter-lsp
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('3d3040fcd16bde303d23eace14cd512865155620acbcb288b8d0088b1553244556616a038177e701eb22e8d1be559fa8024ca8f2720dec099602426111736c4f')
+b2sums=('d59f7fc34c2c216f1027b628ceefbefcab3869fb748752906f68aba95945de1ebdf041f34ca50fc9ad0e37872c7e1a518b86ba41a349c7c5e3ab12c5dd9a5e93')
 
 build() {
     cd $_name-$pkgver
