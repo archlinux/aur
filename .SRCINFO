@@ -1,6 +1,6 @@
 pkgbase = pat-aur-git
 	pkgdesc = AUR helper and tool to build Arch Linux packages in clean containers.
-	pkgver = r177.9fe7c05
+	pkgver = r185.648a201
 	pkgrel = 1
 	url = https://gitlab.com/patlefort/pat-aur
 	arch = any
