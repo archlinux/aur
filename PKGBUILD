@@ -15,10 +15,6 @@ makedepends=('python-setuptools')
 source=("$_pypiname-$pkgver.tar.gz::https://github.com/pmaupin/$_pypiname/archive/v$pkgver.tar.gz")
 sha256sums=('f4da059213a0fdf8f63aa3f711cfbc25a5100333514b396f71bb90cb7bd4365f')
 
-prepare(){
-    cp -r "$srcdir/$_pypiname-$pkgver" "$srcdir/$_pypiname-$pkgver-py2"
-}
-
 package() {
     cd "$srcdir/$_pypiname-$pkgver"
     python3 setup.py install --root="$pkgdir" -O1
