@@ -1,0 +1,15 @@
+pkgbase = python-pulp-git
+	pkgdesc = A python Linear Programming API
+	pkgver = v2.1.r159.gcfb8a0f
+	pkgrel = 1
+	url = https://github.com/coin-or/pulp
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	depends = python
+	provides = python-pulp
+	conflicts = python-pulp
+	source = git+https://github.com/coin-or/pulp
+	sha256sums = SKIP
+
+pkgname = python-pulp-git
