@@ -1,6 +1,6 @@
 pkgbase = python-pyjess
 	pkgdesc = Cython bindings and Python interface to Jess, a 3D template matching software.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/althonos/pyjess
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = python-pyjess
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pyjess/pyjess-0.1.0.tar.gz
-	sha256sums = de7958f7b386620ba30c4c5266aec902047b05a2abd8c5227ddeba896bcc0204
+	source = https://files.pythonhosted.org/packages/source/p/pyjess/pyjess-0.2.0.tar.gz
+	sha256sums = 173ac71a72a88b435198aa14c334d947452535b4394171bf96b9fa76852e3041
 
 pkgname = python-pyjess
