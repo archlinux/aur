@@ -1,14 +1,14 @@
-# Maintainer: Tyler Murphy <tylerm@tylerm.dev>
+# Maintainer: Freya Murphy <contact@freyacat.org>
 pkgname=wig
 pkgver=0.0.1
 pkgrel=2
 pkgdesc="A simple dns client written in C"
 arch=('x86_64' 'i686')
-url="https://g.tylerm.dev/tylermurphy534/wig"
+url="https://g.freya.cat/freya/wig"
 license=('GPL3')
 makedepends=()
 depends=()
-source=("$pkgname-$pkgver.tar.gz::https://f.tylerm.dev/source/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://f.freya.cat/source/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('SKIP')
 
 build() {
