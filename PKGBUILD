@@ -2,15 +2,14 @@
 pkgname=better-osu-skills-bin
 pkgver=1.0.6
 _electronversion=11
-pkgrel=5
+pkgrel=6
 pkgdesc="Gets results from the osu!Skills training page and PMs them on osu! using your own IRC credentials"
 arch=('x86_64')
 url="https://github.com/straightcurve/better-osuskills"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -20,11 +19,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('8fe449e2e93f061a3446aa2fd346eaeb0982b83529ed381834b059c7bb1f7d28'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
