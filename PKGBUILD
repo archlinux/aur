@@ -3,10 +3,10 @@
 pkgbase=glibc-eac-bin
 pkgname=(glibc-eac-bin lib32-glibc-eac-bin glibc-eac-locales-bin)
 pkgver=2.39+r52+gf8e4623421
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU C Library with DT_HASH patch for games using EAC (CI built binary version)"
 arch=('x86_64')
-url='https://aur.archlinux.org/pkgbase/glibc-eac/ https://github.com/chise0713/glibc-eac-ci/'
+url='https://aur.archlinux.org/pkgbase/glibc-eac/'
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 options=(staticlibs !lto)
 provides=('glibc' 'lib32-glibc' 'glibc-locales')
