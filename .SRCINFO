@@ -1,6 +1,6 @@
 pkgbase = forticlient
 	pkgdesc = An endpoint protection application
-	pkgver = 7.2.2.0753
+	pkgver = 7.2.4.0809
 	pkgrel = 1
 	url = https://www.forticlient.com
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = forticlient
 	options = !strip
 	options = !emptydirs
 	backup = etc/forticlient/config.db
-	source = https://repo.fortinet.com/repo/7.2/ubuntu/pool/multiverse/forticlient/forticlient_7.2.2.0753_amd64.deb
-	sha512sums = 081bf7958d3c3205000d24e54b6132f5e5963f3ba32982b5f36d16fa63c9fe11d5429bf64c8a0af371fa0e2902e45580857aec27caaa5b8fd3d9594e087ab297
+	source = https://repo.fortinet.com/repo/forticlient/7.2/ubuntu/pool/multiverse/forticlient/forticlient_7.2.4.0809_amd64.deb
+	sha512sums = 417ab5bf8623f81f2894aef9e8e1415d48ca13be098de989036a99d2289953398614b9af8594608b037b9fe6e676f079ba9f6d357d96b36eea92c319fa44cd89
 
 pkgname = forticlient
