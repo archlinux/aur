@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-gui8
-pkgver=8.1.0
+pkgver=8.1.1
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -30,7 +30,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('adb9b67535bedd140725062e48df4933e9fea0cdfa0b6e9dbf20331e1cd912c3')
+sha256sums=('f0365ee732133c4c173aa664eb3092a4a60c13c120a59500dcdafadd4a55ec17')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \

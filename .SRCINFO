@@ -1,6 +1,6 @@
 pkgbase = gz-gui8
 	pkgdesc = Graphical interfaces for robotics applications
-	pkgver = 8.1.0
+	pkgver = 8.1.1
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-gui
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = gz-gui8
 	depends = qt5-base
 	depends = qt5-quickcontrols2
 	provides = gz-gui=8
-	source = https://github.com/gazebosim/gz-gui/archive/gz-gui8_8.1.0.tar.gz
-	sha256sums = adb9b67535bedd140725062e48df4933e9fea0cdfa0b6e9dbf20331e1cd912c3
+	source = https://github.com/gazebosim/gz-gui/archive/gz-gui8_8.1.1.tar.gz
+	sha256sums = f0365ee732133c4c173aa664eb3092a4a60c13c120a59500dcdafadd4a55ec17
 
 pkgname = gz-gui8
