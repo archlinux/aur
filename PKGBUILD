@@ -15,7 +15,7 @@ depends=(
 	"libnotify"
 )
 optdepends=(
-	"i3-wm: focus mpv when a break starts"
+	"i3-wm: focus windows, e.g. focus mpv when a break starts"
 	"socat: pause and unpause mpv between pomodoros (+ requires 'wis/mpvSockets')"
 	"i3lock: lock and unlock screen between pomodoros"
 	"curl: control Anki's review screen via AnkiConnect"
