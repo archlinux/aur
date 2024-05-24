@@ -2,7 +2,7 @@
 pkgname=moose-bin
 pkgver=0.6.2
 _electronversion=9
-pkgrel=2
+pkgrel=3
 pkgdesc="An application to stream, cast and download torrents."
 arch=('x86_64')
 url="https://moose.riteshkr.com/"
@@ -11,11 +11,11 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
-    'hicolor-icon-theme'
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
+    'asar'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
@@ -24,11 +24,12 @@ source=(
 )
 sha256sums=('3db219ca2c04ff538f81df99e485f9ae843e62adf1406b57d108662dc80773f4'
             '85438e003b5df78c417d91e824cdc860f0b8848b076afe44a5d73925ec24ff0c'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
