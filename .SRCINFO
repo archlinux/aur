@@ -1,6 +1,6 @@
 pkgbase = nugget-doom
 	pkgdesc = Fork of Woof! with additional features
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/MrAlaux/Nugget-Doom
 	install = install.sh
@@ -17,7 +17,7 @@ pkgbase = nugget-doom
 	depends = fluidsynth
 	depends = libxmp
 	optdepends = soundfont-fluid: soundfont for MIDI playback
-	source = nugget-doom-3.0.0.tar.gz::https://github.com/MrAlaux/Nugget-Doom/archive/refs/tags/nugget-doom-3.0.0.tar.gz
-	sha256sums = 96098debdad16b890a8d19b9e644bf1310fe4f48018797c995f5c1bc852522ff
+	source = nugget-doom-3.1.0.tar.gz::https://github.com/MrAlaux/Nugget-Doom/archive/refs/tags/nugget-doom-3.1.0.tar.gz
+	sha256sums = d488d47d6f8a1d38492b633ff446fb9856c005c62d2b38d2dd81e6491772c714
 
 pkgname = nugget-doom
