@@ -1,0 +1,11 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  iconvconfig --nostdlib -o /usr/lib32/gconv/gconv-modules.cache /usr/lib32/gconv
+}
+
+pre_remove() {
+  rm -f /usr/lib32/gconv/gconv-modules.cache
+}
