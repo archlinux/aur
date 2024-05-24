@@ -4,7 +4,7 @@ pkgname=polycule-git
 _name=polycule
 _appid=business.braid.polycule
 pkgver=1ac50db
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple and beautiful matrix client written in Flutter."
 # Flutter officially supports amd64 and AArch64
 arch=('x86_64' 'aarch64')
@@ -65,8 +65,8 @@ prepare() {
   # enter the source directory
   cd "${srcdir}/${_name}"
 
-  # download dart dependencies without lockfile update
-  flutter pub get --enforce-lockfile
+  # download dart dependencies without lockfile update or retry with
+  flutter pub get --enforce-lockfile || flutter pub get
 }
 
 build() {
