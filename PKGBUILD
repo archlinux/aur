@@ -4,13 +4,13 @@
 pkgname=java17-openjfx-bin
 _majorver=17.0.9
 pkgver=17
-pkgrel=2
+pkgrel=3
 pkgdesc="Java OpenJFX ${_majorver} client application platform (Gluon build)."
 arch=('x86_64')
 url='https://openjfx.io/'
 license=('GPL2')
 depends=('ffmpeg' 'gstreamer' 'java-environment=17' 'libxtst' 'qt5-base' 'webkit2gtk')
-provides=("java17-openjfx")
+provides=("java17-openjfx" "java-openjfx=17")
 conflicts=("java17-openjfx")
 options=(!strip)
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}_linux-x64_bin-sdk.zip"
