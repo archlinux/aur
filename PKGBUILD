@@ -24,7 +24,7 @@ unset _pkgtype
 # basic info
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=5.0.r21148.g5090a028
+pkgver=5.0.r21593.g222a393
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator'
 url="https://github.com/dolphin-emu/dolphin"
@@ -83,7 +83,7 @@ _main_package() {
     python
   )
 
-  if [[ "${_build_unittests::1}" == "t" ]] ; then
+  if [[ "${_build_unittests::1}" == "t" ]]; then
     checkdepends=('gtest')
 
     check() {
@@ -93,7 +93,7 @@ _main_package() {
 
   options=(!emptydirs)
 
-  if [[ "${_build_clang::1}" == "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]]; then
     makedepends+=(
       clang
       llvm
@@ -102,13 +102,13 @@ _main_package() {
     options+=(!lto)
   fi
 
-  if [[ "${_build_mold::1}" == "t" ]] ; then
+  if [[ "${_build_mold::1}" == "t" ]]; then
     makedepends+=(mold)
-  elif [[ "${_build_clang::1}" == "t" ]] ; then
+  elif [[ "${_build_clang::1}" == "t" ]]; then
     makedepends+=(lld)
   fi
 
-  if [[ "${_build_git::1}" != "t" ]] ; then
+  if [[ "${_build_git::1}" != "t" ]]; then
     _main_stable
   else
     _main_git
@@ -142,6 +142,7 @@ _source_dolphin_emu() {
     'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
     'syoyo.tinygltf'::'git+https://github.com/syoyo/tinygltf.git'
     'zlib-ng'::'git+https://github.com/zlib-ng/zlib-ng.git'
+    'zlib-ng.minizip-ng'::'git+https://github.com/zlib-ng/minizip-ng.git'
   )
   sha256sums+=(
     #'SKIP'
@@ -166,33 +167,35 @@ _source_dolphin_emu() {
     'SKIP'
     'SKIP'
     'SKIP'
+    'SKIP'
   )
 
   _prepare_dolphin_emu() (
     cd "$_pkgsrc"
-    local -A _submodules=(
-      #['bylaws.libadrenotools']='Externals/libadrenotools'
-      #['curl']='Externals/curl/curl'
-      #['dolphin-emu.ext-win-ffmpeg']='Externals/FFmpeg-bin'
-      #['dolphin-emu.ext-win-qt']='Externals/Qt'
-      #['fmtlib.fmt']='Externals/fmt/fmt'
-      #['google.googletest']='Externals/gtest'
-      #['khronosgroup.spirv-cross']='Externals/spirv_cross/SPIRV-Cross'
-      #['libsdl-org.sdl']='Externals/SDL/SDL'
-      #['libusb']='Externals/libusb/libusb'
-      #['libusb.hidapi']='Externals/hidapi/hidapi-src'
-      #['lz4']='Externals/lz4/lz4'
-      #['mozilla.cubeb']='Externals/cubeb/cubeb'
-      #['randy408.libspng']='Externals/libspng/libspng'
+    local _submodules=(
+      #'bylaws.libadrenotools'::'Externals/libadrenotools'
+      #'curl'::'Externals/curl/curl'
+      #'dolphin-emu.ext-win-ffmpeg'::'Externals/FFmpeg-bin'
+      #'dolphin-emu.ext-win-qt'::'Externals/Qt'
+      #'fmtlib.fmt'::'Externals/fmt/fmt'
+      #'google.googletest'::'Externals/gtest'
+      #'khronosgroup.spirv-cross'::'Externals/spirv_cross/SPIRV-Cross'
+      #'libsdl-org.sdl'::'Externals/SDL/SDL'
+      #'libusb'::'Externals/libusb/libusb'
+      #'libusb.hidapi'::'Externals/hidapi/hidapi-src'
+      #'lz4'::'Externals/lz4/lz4'
+      #'mozilla.cubeb'::'Externals/cubeb/cubeb'
+      #'randy408.libspng'::'Externals/libspng/libspng'
 
-      ['cyan4973.xxhash']='Externals/xxhash/xxHash'
-      ['epezent.implot']='Externals/implot/implot'
-      ['gpuopen-librariesandsdks.vulkanmemoryallocator']='Externals/VulkanMemoryAllocator'
-      ['lsalzman.enet']='Externals/enet/enet'
-      ['mgba-emu.mgba']='Externals/mGBA/mgba'
-      ['retroachievements.rcheevos']='Externals/rcheevos/rcheevos'
-      ['syoyo.tinygltf']='Externals/tinygltf/tinygltf'
-      ['zlib-ng']='Externals/zlib-ng/zlib-ng'
+      'cyan4973.xxhash'::'Externals/xxhash/xxHash'
+      'epezent.implot'::'Externals/implot/implot'
+      'gpuopen-librariesandsdks.vulkanmemoryallocator'::'Externals/VulkanMemoryAllocator'
+      'lsalzman.enet'::'Externals/enet/enet'
+      'mgba-emu.mgba'::'Externals/mGBA/mgba'
+      'retroachievements.rcheevos'::'Externals/rcheevos/rcheevos'
+      'syoyo.tinygltf'::'Externals/tinygltf/tinygltf'
+      'zlib-ng'::'Externals/zlib-ng/zlib-ng'
+      'zlib-ng.minizip-ng'::'Externals/minizip-ng/minizip-ng'
     )
     _submodule_update
   )
@@ -222,20 +225,20 @@ _main_git() {
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags --abbrev=8 | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
   }
 }
 
 # common functions
 prepare() {
   _submodule_update() {
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    local _module
+    for _module in "${_submodules[@]}"; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
-
   _prepare_dolphin_emu
 
   # Fix version string
@@ -269,17 +272,17 @@ build() {
     -Wno-dev
   )
 
-  if [ "${_debugfast::1}" == "t" ] ; then
+  if [ "${_debugfast::1}" == "t" ]; then
     _cmake_options+=(-DFASTLOG=ON)
   fi
 
-  if [[ "${_build_unittests::1}" == "t" ]] ; then
+  if [[ "${_build_unittests::1}" == "t" ]]; then
     _cmake_options+=(-DENABLE_TESTS=ON)
   else
     _cmake_options+=(-DENABLE_TESTS=OFF)
   fi
 
-  if [[ "${_build_clang::1}" == "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]]; then
     export AR=llvm-ar
     export NM=llvm-nm
     export CC=clang
@@ -293,13 +296,13 @@ build() {
     _cmake_options+=(-DENABLE_LTO=OFF)
   fi
 
-  if [[ "${_build_mold::1}" == "t" ]] ; then
+  if [[ "${_build_mold::1}" == "t" ]]; then
     export LDFLAGS+=" -fuse-ld=mold"
-  elif [[ "${_build_clang::1}" == "t" ]] ; then
+  elif [[ "${_build_clang::1}" == "t" ]]; then
     export LDFLAGS+=" -fuse-ld=lld"
   fi
 
-  if [[ "${_build_avx::1}" == "t" ]] ; then
+  if [[ "${_build_avx::1}" == "t" ]]; then
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
     export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi

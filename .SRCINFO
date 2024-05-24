@@ -1,6 +1,6 @@
 pkgbase = dolphin-emu-debugfast-git
 	pkgdesc = A Gamecube and Wii emulator
-	pkgver = 5.0.r21148.g5090a028
+	pkgver = 5.0.r21593.g222a393
 	pkgrel = 1
 	url = https://github.com/dolphin-emu/dolphin
 	arch = x86_64
@@ -60,6 +60,8 @@ pkgbase = dolphin-emu-debugfast-git
 	source = retroachievements.rcheevos::git+https://github.com/RetroAchievements/rcheevos.git
 	source = syoyo.tinygltf::git+https://github.com/syoyo/tinygltf.git
 	source = zlib-ng::git+https://github.com/zlib-ng/zlib-ng.git
+	source = zlib-ng.minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
