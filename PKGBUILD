@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas-bin
 _pkgname=Commas
-pkgver=0.31.0
-_electronversion=29
+pkgver=0.32.1
+_electronversion=30
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
 arch=("x86_64")
@@ -23,16 +23,17 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/CyanSalt/commas/v${pkgver}/resources/images/icon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b63245a931a8d62dea49e99bad985e2124471eafc8207c5011faad86d7a0c23c'
+sha256sums=('600161b8fa6693bd46080dc610e4b30d58e8dfd36047fd18dd09f9dee5855d4c'
             '65b65c25d8d68549dc271f7c755426ba8884f6ae9fb3a8061eec65c241345f48'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
