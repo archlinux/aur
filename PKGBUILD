@@ -3,7 +3,7 @@
 # Contributor: Jian Zeng <anonymousknight96@gmail.com>
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 pkgbase=tidb-bin
-_basever=8.0.0
+_basever=8.1.0
 #_relver=-prega
 #pkgver=$_basever.$_relver
 pkgver=$_basever
@@ -35,9 +35,9 @@ source=("https://tiup-mirrors.pingcap.com/tidb-v$_basever-linux-amd64.tar.gz"
         pd.toml
         tidb.toml
         tikv.toml)
-sha256sums=('98c8471797de5a19bd88b237cce0746e52864f6c167115b96cbcb8db9ccae185'
-            '11e1a38b8c547a4df159f8802d1e30cb8e5a6da9b737472333fec12a2cdeba0b'
-            '09d8d5fdeff882d2629f8679ae1195df5922e4383c116cce7eadae61112a3960'
+sha256sums=('adcd25595b002075ab3d742ddcbe5b3a029024739df575f96450af8045b44662'
+            'e65c3f967e932256bb8eee731abd5d6a89b3eb5ca3e13415e13d9cb13dc291e5'
+            'f215c2a63c97bdd0f221b5cba9fd803bd4d80a0c9d3796eed0e194a9447b6218'
             'b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924'
             '22318c19bb89ff5a0852df5186cc1496214cd49f2264192413a326d1e8c93dc9'
             '870b8eaf83bc0d22b05b0f3a7890660e483cf77bb1d84bc50ad04fb23068cd8c'
