@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.12.0] - 2024-05-23
+### Added
+- textDocument/definition
+  - support navigating the definitions of heredocs ([rcjsuen/dockerfile-language-service#122](https://github.com/rcjsuen/dockerfile-language-service/issues/122))
+- textDocument/publishDiagnostics
+  - support parsing the new `--exclude` flag for ADD and COPY instructions ([rcjsuen/dockerfile-utils#124](https://github.com/rcjsuen/dockerfile-utils/issues/124))
+  - support parsing the new `--parents` flag for COPY instructions ([rcjsuen/dockerfile-utils#123](https://github.com/rcjsuen/dockerfile-utils/issues/123))
+
 ## [0.11.0] - 2023-09-10
 ### Added
 - textDocument/publishDiagnostics
@@ -725,7 +733,8 @@ All notable changes to this project will be documented in this file.
 - textDocument/formatting
 - textDocument/rangeFormatting
 
-[Unreleased]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.11.0...HEAD
+[Unreleased]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.12.0...HEAD
+[0.12.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.11.0...v0.12.0
 [0.11.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.10.2...v0.11.0
 [0.10.2]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.10.1...v0.10.2
 [0.10.1]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.10.0...v0.10.1
