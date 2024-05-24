@@ -1,6 +1,6 @@
 pkgbase = decasify
 	pkgdesc = cast strings to title-case according to locale specific style guides including Turkish
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/alerque/decasify
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = decasify
 	makedepends = jq
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/alerque/decasify/releases/download/v0.5.0/decasify-0.5.0.tar.zst
-	source = https://github.com/alerque/decasify/releases/download/v0.5.0/decasify-0.5.0.tar.zst.asc
+	source = https://github.com/alerque/decasify/releases/download/v0.5.1/decasify-0.5.1.tar.zst
+	source = https://github.com/alerque/decasify/releases/download/v0.5.1/decasify-0.5.1.tar.zst.asc
 	validpgpkeys = 9F377DDB6D3153A48EB3EB1E63CC496475267693
-	sha256sums = ee658e950f55b97ff43beabcff8d1909448db890f3e036d8038618e4e3ae32d2
+	sha256sums = 4ba23a7d4be6356fa02250cf37b493bd70e7ed64fe5ecb4f4794ad46129b1a04
 	sha256sums = SKIP
 
 pkgname = decasify
