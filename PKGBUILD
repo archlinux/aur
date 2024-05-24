@@ -3,7 +3,7 @@
 
 pkgname=servefile
 pkgver=0.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Serve or receive files from shell via a small HTTP server"
 arch=('any')
 url="https://github.com/sebageek/servefile"
@@ -27,6 +27,6 @@ package() {
 	# See https://github.com/pypa/pip/issues/3063 for the
 	# reason behind "ignore-installed" & "--no-deps".
 	# tl;dr: It's an almost decade-old pip-bug...
-	python -m pip install --prefix="$pkgdir/" --ignore-installed --no-deps .
+	python -m pip install --root="$pkgdir/" --ignore-installed --no-deps .
 	install -D servefile.1 "$pkgdir/usr/share/man/man1/servefile.1"
 }
