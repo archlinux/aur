@@ -1,0 +1,25 @@
+pkgbase = polycule-git
+	pkgdesc = A simple and beautiful matrix client written in Flutter.
+	pkgver = 1ac50db
+	pkgrel = 1
+	url = https://gitlab.com/polycule_client/polycule
+	arch = x86_64
+	arch = aarch64
+	license = EUPL1.2
+	makedepends = git
+	makedepends = flutter-tool
+	makedepends = flutter-target-linux
+	makedepends = cmake
+	depends = gtk3
+	depends = jsoncpp
+	depends = libsecret
+	depends = xdg-user-dirs
+	depends = libolm
+	depends = zenity
+	depends = openssl
+	provides = polycule
+	conflicts = polycule
+	source = git+https://gitlab.com/polycule_client/polycule.git
+	sha256sums = SKIP
+
+pkgname = polycule-git
