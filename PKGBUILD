@@ -6,7 +6,7 @@
 
 pkgname=pyfa
 pkgver=2.58.3
-pkgrel=1
+pkgrel=2
 _distname="Pyfa-${pkgver}"
 pkgdesc="EVE Online Fitting Assistant"
 arch=('any')
@@ -22,7 +22,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pyfa-org/Pyfa/archive/v$
        )
 
 sha256sums=('12ff221de023f9a574eda6aea34cbb6a8f58c48655d01a2cf41477000f193a73'
-            'b54ef367e93d7916f6ef3106a27018571d35afc1aa9eadcccc79463050e70786'
+            '4a9b543a8cbf4c4fef6758a4be2b3c9ff9aa6e7f8281d8b0efbfb0dcd39bc635'
             '0fa4a1cb835ddbb764957cd00426f9bfa52b17bcb6d5dc7428afc256da5e01da')
 
 build() {
