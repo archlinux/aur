@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=iyuuplus
-pkgver=8.2.21
+pkgver=8.2.22
 pkgrel=1
 epoch=3
 pkgdesc="IYUU Auto Reseed Plus"
@@ -16,7 +16,7 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('025d7c0a804da67404c54ae9f38550ad643c8b28a52f91f540e77f396cc3103e'
+sha256sums=('1b0623aa4c65af8b76a773a0299dfe1c47555411865e539ddbdfc60cf21ba70b'
             'e20db7d3e6cdaa5f3b345bde4bd63cde2458b23516c80cfebcf0a32ec19d921c'
             'e64af1d0d088fa30e864897a43597026ee95f5e2590e79ac4055786795c60622'
             '4c0928194248ce56deab7a1eeec78d4a3827d7e8fbceba142b46d4f9c8eed387')
