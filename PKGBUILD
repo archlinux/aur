@@ -6,7 +6,7 @@
 pkgname=hmcl-java-run
 _pkgname=HMCL
 _ver=3.5
-_build=7
+_build=8
 _pkgver=release-$_ver.$_build
 _java_version=17
 _jar_path="/usr/share/java/$pkgname.jar"
@@ -16,19 +16,20 @@ pkgdesc='An unofficial build of HMCL that use aur/archlinux-java-run to select j
 arch=('any')
 url='https://github.com/HMCL-dev/HMCL'
 license=('GPL3')
-depends=("java-runtime>=$_java_version" "java-openjfx>=$_java_version" 'hicolor-icon-theme' 'archlinux-java-run')
+depends=("java-runtime>=$_java_version" 'hicolor-icon-theme' 'archlinux-java-run')
 makedepends=("java-environment>=$_java_version" 'gradle')
+optdepends=("java-openjfx>=$_java_version: Require a Java version that support openjfx")
 provides=('hmcl')
 conflicts=('hmcl')
 source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
-		"0001-Target-Java-$_java_version.patch"
-		"0002-Cleanup.patch")
-sha256sums=('115af54c288521cb5fdb087cee44b6ee7ef613970bde2fbff230f69605242e68'
-            '0dc7909795777dff86c5c3cee030e1768387e52b92a2e569686788b093e76945'
-            '98100e45c3253ddf6c1cbb3e2d164584021958fa4251b9f035b61ab44d2aa231')
+		"0001-Target-Java-17.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-Target-Java-17.patch?h=hmcl-new&id=2eae537a39fef0042254bcd392b9210a54edc75a"
+		"0002-Cleanup.patch::https://aur.archlinux.org/cgit/aur.git/plain/0002-Cleanup.patch?h=hmcl-new&id=2eae537a39fef0042254bcd392b9210a54edc75a")
+sha256sums=('1f581e24ad39ba250a7ac8bfcc7488579a10b0e90e6f9f39469b2daef0baa0df'
+            '0097a5e14b4ae2690dec40c8f0b0d2770dd7d1fc726c54552b3ed584bdb27bcf'
+            'd0e287dc475f89e7df05df7225da16064dbfa2216749384bfefa444e6835fe80')
 
 prepare() {
-	for patch in "${source[@]}"; do
+	for patch in "${source[@]%%::*}"; do
 		if [[ $patch == *.patch ]]; then
 			msg2 "applying $patch"
 			patch -d "$_pkgname-$_pkgver" -Np1 < "$patch"

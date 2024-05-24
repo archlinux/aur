@@ -1,6 +1,6 @@
 pkgbase = hmcl-java-run
 	pkgdesc = An unofficial build of HMCL that use aur/archlinux-java-run to select java version with javaFX (with aur/hmcl-new changes)
-	pkgver = 3.5.7
+	pkgver = 3.5.8
 	pkgrel = 1
 	url = https://github.com/HMCL-dev/HMCL
 	arch = any
@@ -8,16 +8,16 @@ pkgbase = hmcl-java-run
 	makedepends = java-environment>=17
 	makedepends = gradle
 	depends = java-runtime>=17
-	depends = java-openjfx>=17
 	depends = hicolor-icon-theme
 	depends = archlinux-java-run
+	optdepends = java-openjfx>=17: Require a Java version that support openjfx
 	provides = hmcl
 	conflicts = hmcl
-	source = HMCL-release-3.5.7.tar.gz::https://github.com/HMCL-dev/HMCL/archive/refs/tags/release-3.5.7.tar.gz
-	source = 0001-Target-Java-17.patch
-	source = 0002-Cleanup.patch
-	sha256sums = 115af54c288521cb5fdb087cee44b6ee7ef613970bde2fbff230f69605242e68
-	sha256sums = 0dc7909795777dff86c5c3cee030e1768387e52b92a2e569686788b093e76945
-	sha256sums = 98100e45c3253ddf6c1cbb3e2d164584021958fa4251b9f035b61ab44d2aa231
+	source = HMCL-release-3.5.8.tar.gz::https://github.com/HMCL-dev/HMCL/archive/refs/tags/release-3.5.8.tar.gz
+	source = 0001-Target-Java-17.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-Target-Java-17.patch?h=hmcl-new&id=2eae537a39fef0042254bcd392b9210a54edc75a
+	source = 0002-Cleanup.patch::https://aur.archlinux.org/cgit/aur.git/plain/0002-Cleanup.patch?h=hmcl-new&id=2eae537a39fef0042254bcd392b9210a54edc75a
+	sha256sums = 1f581e24ad39ba250a7ac8bfcc7488579a10b0e90e6f9f39469b2daef0baa0df
+	sha256sums = 0097a5e14b4ae2690dec40c8f0b0d2770dd7d1fc726c54552b3ed584bdb27bcf
+	sha256sums = d0e287dc475f89e7df05df7225da16064dbfa2216749384bfefa444e6835fe80
 
 pkgname = hmcl-java-run
