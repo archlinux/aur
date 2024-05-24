@@ -4,6 +4,7 @@ pkgbase=glibc-eac-bin
 pkgname=(glibc-eac-bin lib32-glibc-eac-bin glibc-eac-locales-bin)
 pkgver=2.39+r52+gf8e4623421
 pkgrel=2
+_pkgrel=1
 pkgdesc="GNU C Library with DT_HASH patch for games using EAC (CI built binary version)"
 arch=('x86_64')
 url='https://aur.archlinux.org/pkgbase/glibc-eac/'
@@ -12,9 +13,9 @@ options=(staticlibs !lto)
 provides=('glibc' 'lib32-glibc' 'glibc-locales')
 conflicts=('glibc' 'lib32-glibc' 'glibc-locales')
 source=(
-    "https://github.com/chise0713/glibc-eac-ci/releases/download/$pkgver-$pkgrel/glibc-eac-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
-    "https://github.com/chise0713/glibc-eac-ci/releases/download/$pkgver-$pkgrel/glibc-eac-locales-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
-    "https://github.com/chise0713/glibc-eac-ci/releases/download/$pkgver-$pkgrel/lib32-glibc-eac-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
+    "https://github.com/chise0713/glibc-eac-ci/releases/download/$pkgver-$_pkgrel/glibc-eac-$pkgver-$_pkgrel-x86_64.pkg.tar.zst"
+    "https://github.com/chise0713/glibc-eac-ci/releases/download/$pkgver-$_pkgrel/glibc-eac-locales-$pkgver-$_pkgrel-x86_64.pkg.tar.zst"
+    "https://github.com/chise0713/glibc-eac-ci/releases/download/$pkgver-$_pkgrel/lib32-glibc-eac-$pkgver-$_pkgrel-x86_64.pkg.tar.zst"
     "lib32-glibc-eac-bin.install"
     "glibc-eac-bin.install"
 )
