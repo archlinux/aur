@@ -2,13 +2,12 @@
 
 pkgname=c-intro-and-ref
 pkgver=0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU C Language Introduction and Reference Manual"
 arch=('any')
 url="https://www.gnu.org/software/c-intro-and-ref/"
 license=('GFDL-1.3-or-later')
 optdepends=('texinfo: to view documentation in info format')
-options=(!emptydirs)
 source=(https://ftp.gnu.org/gnu/c-intro-and-ref/c-intro-and-ref-${pkgver}.tar.gz)
 sha256sums=('d5fa39fd1433e2c4c0ea5638c0162ebee6ec00ffed628621237b10025171eb4a')
 
