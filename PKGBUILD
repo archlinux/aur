@@ -10,7 +10,7 @@ url="https://github.com/nextcloud/user_usage_report"
 license=('AGPL-3.0-or-later')
 makedepends=('yq' 'rsync')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('971805f606b155491308425d5a7f68e2df5fbec4cefd452ac4d8e4c9335eb13b113c00c32d49a5be211c06bca5ca039f3900bd07a613c17dbc044479604d2878')
+sha512sums=('f045dc98bfcd3f7b9495294800ccac5c9ba1fa186f8891261fbd88f71c8c4d572e7e2ad64269d86ce00f57b0b7d53473fa1c5e31620d546170ff875693c2950f')
 
 # Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
@@ -44,4 +44,3 @@ package() {
 
     _nextcloud_app_package
 }
-sha512sums=('f045dc98bfcd3f7b9495294800ccac5c9ba1fa186f8891261fbd88f71c8c4d572e7e2ad64269d86ce00f57b0b7d53473fa1c5e31620d546170ff875693c2950f')
