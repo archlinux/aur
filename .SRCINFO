@@ -1,10 +1,10 @@
 pkgbase = emacs-prop-menu-git
 	pkgdesc = Compute pop-up menus from text and overlay properties
 	pkgver = 20150728
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/david-christiansen/prop-menu-el
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = emacs
 	provides = emacs-prop-menu
