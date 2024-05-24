@@ -1,0 +1,14 @@
+pkgbase = python-highs-git
+	pkgdesc = A Python thin wrapper around HiGHS solver: linear optimization software
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/ergo-code/highs
+	arch = x86_64
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-numpy
+	source = git+https://github.com/ergo-code/highs
+	sha256sums = SKIP
+
+pkgname = python-highs-git
