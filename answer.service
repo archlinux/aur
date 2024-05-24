@@ -1,0 +1,13 @@
+[Unit]
+Description=running answer daemon
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+# 'setcap CAP_NET_BIND_SERVICE=+ep' is to allow non-root user binding port within 1-1024
+ExecStart=bash -c 'if [[ -d "/var/lib/answer/data/i18n/" ]]; then sudo -u answer /usr/bin/answer run; else setcap CAP_NET_BIND_SERVICE=+ep /usr/bin/answer && sudo -u answer /usr/bin/answer init ;fi'
+ExecStop=
+
+[Install]
+WantedBy=multi-user.target

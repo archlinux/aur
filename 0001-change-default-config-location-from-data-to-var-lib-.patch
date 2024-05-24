@@ -1,0 +1,653 @@
+From b7a99c2fddf89b7ec286cd96d9a20d679f934e95 Mon Sep 17 00:00:00 2001
+From: suzakuwcx <suzakuwcx@gmail.com>
+Date: Fri, 24 May 2024 23:27:51 +0800
+Subject: [PATCH] change default config location from '/data' to
+ '/var/lib/answer'
+
+---
+ charts/values.yaml             | 2 +-
+ cmd/command.go                 | 2 +-
+ configs/config.yaml            | 8 ++++----
+ i18n/af_ZA.yaml                | 2 +-
+ i18n/ar_SA.yaml                | 2 +-
+ i18n/az_AZ.yaml                | 2 +-
+ i18n/bal_BA.yaml               | 2 +-
+ i18n/ban_ID.yaml               | 2 +-
+ i18n/bn_BD.yaml                | 2 +-
+ i18n/bs_BA.yaml                | 2 +-
+ i18n/ca_ES.yaml                | 2 +-
+ i18n/cs_CZ.yaml                | 2 +-
+ i18n/cy_GB.yaml                | 2 +-
+ i18n/da_DK.yaml                | 2 +-
+ i18n/el_GR.yaml                | 2 +-
+ i18n/en_US.yaml                | 2 +-
+ i18n/fa_IR.yaml                | 2 +-
+ i18n/fi_FI.yaml                | 2 +-
+ i18n/fr_FR.yaml                | 2 +-
+ i18n/he_IL.yaml                | 2 +-
+ i18n/hi_IN.yaml                | 2 +-
+ i18n/hu_HU.yaml                | 2 +-
+ i18n/hy_AM.yaml                | 2 +-
+ i18n/id_ID.yaml                | 2 +-
+ i18n/it_IT.yaml                | 2 +-
+ i18n/ja_JP.yaml                | 2 +-
+ i18n/ko_KR.yaml                | 2 +-
+ i18n/nl_NL.yaml                | 2 +-
+ i18n/no_NO.yaml                | 2 +-
+ i18n/pl_PL.yaml                | 2 +-
+ i18n/pt_BR.yaml                | 2 +-
+ i18n/pt_PT.yaml                | 2 +-
+ i18n/ro_RO.yaml                | 2 +-
+ i18n/ru_RU.yaml                | 2 +-
+ i18n/sk_SK.yaml                | 2 +-
+ i18n/sq_AL.yaml                | 2 +-
+ i18n/sr_SP.yaml                | 2 +-
+ i18n/sv_SE.yaml                | 2 +-
+ i18n/te_IN.yaml                | 2 +-
+ i18n/tr_TR.yaml                | 2 +-
+ i18n/uk_UA.yaml                | 2 +-
+ i18n/vi_VN.yaml                | 2 +-
+ i18n/zh_CN.yaml                | 2 +-
+ i18n/zh_TW.yaml                | 2 +-
+ ui/src/pages/Install/index.tsx | 2 +-
+ 45 files changed, 48 insertions(+), 48 deletions(-)
+
+diff --git a/charts/values.yaml b/charts/values.yaml
+index c7a9c20d..4e8972e7 100644
+--- a/charts/values.yaml
++++ b/charts/values.yaml
+@@ -43,7 +43,7 @@ env:
+   #   value: "sqlite3"
+   #   # DB_FILE Only for sqlite3
+   # - name: DB_FILE
+-  #   value: "/data/answer.db"
++  #   value: "/var/lib/answer/answer.db"
+   # - name: LANGUAGE
+   #   value: "en-US"
+   # - name: SITE_NAME
+diff --git a/cmd/command.go b/cmd/command.go
+index 5b3bb700..862bf4e8 100644
+--- a/cmd/command.go
++++ b/cmd/command.go
+@@ -52,7 +52,7 @@ var (
+ func init() {
+ 	rootCmd.Version = fmt.Sprintf("%s\nrevision: %s\nbuild time: %s", Version, Revision, Time)
+ 
+-	rootCmd.PersistentFlags().StringVarP(&dataDirPath, "data-path", "C", "/data/", "data path, eg: -C ./data/")
++	rootCmd.PersistentFlags().StringVarP(&dataDirPath, "data-path", "C", "/var/lib/answer/data/", "data path, eg: -C /var/lib/answer/data/")
+ 
+ 	dumpCmd.Flags().StringVarP(&dumpDataPath, "path", "p", "./", "dump data path, eg: -p ./dump/data/")
+ 
+diff --git a/configs/config.yaml b/configs/config.yaml
+index 1b01e06a..c84f54ab 100644
+--- a/configs/config.yaml
++++ b/configs/config.yaml
+@@ -21,15 +21,15 @@ server:
+ data:
+   database:
+     driver: "sqlite3"
+-    connection: "/data/sqlite3/answer.db"
++    connection: "/var/lib/answer/sqlite3/answer.db"
+   cache:
+-    file_path: "/data/cache/cache.db"
++    file_path: "/var/lib/answer/cache.db"
+ i18n:
+-  bundle_dir: "/data/i18n"
++  bundle_dir: "/var/lib/answer/i18n"
+ swaggerui:
+   show: true
+   protocol: http
+   host: 127.0.0.1
+   address: ':80'
+ service_config:
+-  upload_path: "/data/uploads"
++  upload_path: "/var/lib/answer/uploads"
+diff --git a/i18n/af_ZA.yaml b/i18n/af_ZA.yaml
+index 89c34f73..1fb02e94 100644
+--- a/i18n/af_ZA.yaml
++++ b/i18n/af_ZA.yaml
+@@ -925,7 +925,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/ar_SA.yaml b/i18n/ar_SA.yaml
+index 28941e9e..cbb2e7c5 100644
+--- a/i18n/ar_SA.yaml
++++ b/i18n/ar_SA.yaml
+@@ -925,7 +925,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/az_AZ.yaml b/i18n/az_AZ.yaml
+index 483744f7..78ed9554 100644
+--- a/i18n/az_AZ.yaml
++++ b/i18n/az_AZ.yaml
+@@ -917,7 +917,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/bal_BA.yaml b/i18n/bal_BA.yaml
+index 483744f7..78ed9554 100644
+--- a/i18n/bal_BA.yaml
++++ b/i18n/bal_BA.yaml
+@@ -917,7 +917,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/ban_ID.yaml b/i18n/ban_ID.yaml
+index 483744f7..78ed9554 100644
+--- a/i18n/ban_ID.yaml
++++ b/i18n/ban_ID.yaml
+@@ -917,7 +917,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/bn_BD.yaml b/i18n/bn_BD.yaml
+index 483744f7..78ed9554 100644
+--- a/i18n/bn_BD.yaml
++++ b/i18n/bn_BD.yaml
+@@ -917,7 +917,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/bs_BA.yaml b/i18n/bs_BA.yaml
+index 483744f7..78ed9554 100644
+--- a/i18n/bs_BA.yaml
++++ b/i18n/bs_BA.yaml
+@@ -917,7 +917,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/ca_ES.yaml b/i18n/ca_ES.yaml
+index 28941e9e..cbb2e7c5 100644
+--- a/i18n/ca_ES.yaml
++++ b/i18n/ca_ES.yaml
+@@ -925,7 +925,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/cs_CZ.yaml b/i18n/cs_CZ.yaml
+index e71eeda4..6ba45f24 100644
+--- a/i18n/cs_CZ.yaml
++++ b/i18n/cs_CZ.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/cy_GB.yaml b/i18n/cy_GB.yaml
+index a1c14f5f..ec296bf3 100644
+--- a/i18n/cy_GB.yaml
++++ b/i18n/cy_GB.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/da_DK.yaml b/i18n/da_DK.yaml
+index 0d48719d..d6caef5e 100644
+--- a/i18n/da_DK.yaml
++++ b/i18n/da_DK.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/el_GR.yaml b/i18n/el_GR.yaml
+index 28941e9e..cbb2e7c5 100644
+--- a/i18n/el_GR.yaml
++++ b/i18n/el_GR.yaml
+@@ -925,7 +925,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/en_US.yaml b/i18n/en_US.yaml
+index 943608dd..d49896c2 100644
+--- a/i18n/en_US.yaml
++++ b/i18n/en_US.yaml
+@@ -1327,7 +1327,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/fa_IR.yaml b/i18n/fa_IR.yaml
+index 0f52761b..3a749c7f 100644
+--- a/i18n/fa_IR.yaml
++++ b/i18n/fa_IR.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: نام پایگاه داده میزبان نمیتواند خالی باشد.
+     db_file:
+       label: فایل پایگاه داده
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: فایل پایگاه داده نمیتواند خالی باشد.
+     config_yaml:
+       title: Config.yaml را بسازید
+diff --git a/i18n/fi_FI.yaml b/i18n/fi_FI.yaml
+index 28941e9e..cbb2e7c5 100644
+--- a/i18n/fi_FI.yaml
++++ b/i18n/fi_FI.yaml
+@@ -925,7 +925,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/fr_FR.yaml b/i18n/fr_FR.yaml
+index a389a08e..62658af2 100644
+--- a/i18n/fr_FR.yaml
++++ b/i18n/fr_FR.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Le nom de la base de données ne peut pas être vide.
+     db_file:
+       label: Fichier de base de données
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Le fichier de base de données ne doit pas être vide.
+     config_yaml:
+       title: Créer config.yaml
+diff --git a/i18n/he_IL.yaml b/i18n/he_IL.yaml
+index 28941e9e..cbb2e7c5 100644
+--- a/i18n/he_IL.yaml
++++ b/i18n/he_IL.yaml
+@@ -925,7 +925,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/hi_IN.yaml b/i18n/hi_IN.yaml
+index 0d48719d..d6caef5e 100644
+--- a/i18n/hi_IN.yaml
++++ b/i18n/hi_IN.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/hu_HU.yaml b/i18n/hu_HU.yaml
+index 28941e9e..cbb2e7c5 100644
+--- a/i18n/hu_HU.yaml
++++ b/i18n/hu_HU.yaml
+@@ -925,7 +925,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/hy_AM.yaml b/i18n/hy_AM.yaml
+index 483744f7..78ed9554 100644
+--- a/i18n/hy_AM.yaml
++++ b/i18n/hy_AM.yaml
+@@ -917,7 +917,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/id_ID.yaml b/i18n/id_ID.yaml
+index de2f95c4..037113c9 100644
+--- a/i18n/id_ID.yaml
++++ b/i18n/id_ID.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/it_IT.yaml b/i18n/it_IT.yaml
+index 52b3d016..1a0407c0 100644
+--- a/i18n/it_IT.yaml
++++ b/i18n/it_IT.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Il nome del database non può essere vuoto.
+     db_file:
+       label: File del database
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Il file del database non può essere vuoto.
+     config_yaml:
+       title: Crea config.yaml
+diff --git a/i18n/ja_JP.yaml b/i18n/ja_JP.yaml
+index d1452052..afae1d36 100644
+--- a/i18n/ja_JP.yaml
++++ b/i18n/ja_JP.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/ko_KR.yaml b/i18n/ko_KR.yaml
+index 1e584537..2633fe80 100644
+--- a/i18n/ko_KR.yaml
++++ b/i18n/ko_KR.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/nl_NL.yaml b/i18n/nl_NL.yaml
+index 28941e9e..cbb2e7c5 100644
+--- a/i18n/nl_NL.yaml
++++ b/i18n/nl_NL.yaml
+@@ -925,7 +925,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/no_NO.yaml b/i18n/no_NO.yaml
+index 28941e9e..cbb2e7c5 100644
+--- a/i18n/no_NO.yaml
++++ b/i18n/no_NO.yaml
+@@ -925,7 +925,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/pl_PL.yaml b/i18n/pl_PL.yaml
+index b33392da..329f1d90 100644
+--- a/i18n/pl_PL.yaml
++++ b/i18n/pl_PL.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Nazwa bazy danych nie może być pusta.
+     db_file:
+       label: Plik bazy danych
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Plik bazy danych nie może być pusty.
+     config_yaml:
+       title: Utwórz plik config.yaml
+diff --git a/i18n/pt_BR.yaml b/i18n/pt_BR.yaml
+index e2acd794..268514f9 100644
+--- a/i18n/pt_BR.yaml
++++ b/i18n/pt_BR.yaml
+@@ -925,7 +925,7 @@ ui:
+       msg: Database Nome não pode ser vazio.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File não pode ser vazio.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/pt_PT.yaml b/i18n/pt_PT.yaml
+index 8142d538..935d9d69 100644
+--- a/i18n/pt_PT.yaml
++++ b/i18n/pt_PT.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database Nome não pode ser vazio.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File não pode ser vazio.
+     config_yaml:
+       title: Criar config.yaml
+diff --git a/i18n/ro_RO.yaml b/i18n/ro_RO.yaml
+index 9f3ec8b6..e19e84ff 100644
+--- a/i18n/ro_RO.yaml
++++ b/i18n/ro_RO.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Numele bazei de date nu poate fi gol.
+     db_file:
+       label: Fișierul bazei de date
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Fişierul bazei de date nu poate fi gol.
+     config_yaml:
+       title: Crează config.yaml
+diff --git a/i18n/ru_RU.yaml b/i18n/ru_RU.yaml
+index e56120b6..d495499d 100644
+--- a/i18n/ru_RU.yaml
++++ b/i18n/ru_RU.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Имя базы данных не может быть пустым.
+     db_file:
+       label: Файл базы данных
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Файл базы данных не может быть пустым.
+     config_yaml:
+       title: Создайте файл config.yaml
+diff --git a/i18n/sk_SK.yaml b/i18n/sk_SK.yaml
+index 7daf62b0..f7e032f5 100644
+--- a/i18n/sk_SK.yaml
++++ b/i18n/sk_SK.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Vytvoriť config.yaml
+diff --git a/i18n/sq_AL.yaml b/i18n/sq_AL.yaml
+index 483744f7..78ed9554 100644
+--- a/i18n/sq_AL.yaml
++++ b/i18n/sq_AL.yaml
+@@ -917,7 +917,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/sr_SP.yaml b/i18n/sr_SP.yaml
+index 28941e9e..cbb2e7c5 100644
+--- a/i18n/sr_SP.yaml
++++ b/i18n/sr_SP.yaml
+@@ -925,7 +925,7 @@ ui:
+       msg: Database Name cannot be empty.
+     db_file:
+       label: Database File
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database File cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/sv_SE.yaml b/i18n/sv_SE.yaml
+index 7cef6932..6a7f9431 100644
+--- a/i18n/sv_SE.yaml
++++ b/i18n/sv_SE.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Skapa config.yaml
+diff --git a/i18n/te_IN.yaml b/i18n/te_IN.yaml
+index dc22340c..a8f64ccf 100644
+--- a/i18n/te_IN.yaml
++++ b/i18n/te_IN.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/tr_TR.yaml b/i18n/tr_TR.yaml
+index 0460fda5..8be6ef23 100644
+--- a/i18n/tr_TR.yaml
++++ b/i18n/tr_TR.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/uk_UA.yaml b/i18n/uk_UA.yaml
+index 21421f66..274bbdb8 100644
+--- a/i18n/uk_UA.yaml
++++ b/i18n/uk_UA.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/vi_VN.yaml b/i18n/vi_VN.yaml
+index d28041ce..4f9824c6 100644
+--- a/i18n/vi_VN.yaml
++++ b/i18n/vi_VN.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: Create config.yaml
+diff --git a/i18n/zh_CN.yaml b/i18n/zh_CN.yaml
+index f4d142ca..46a76a03 100644
+--- a/i18n/zh_CN.yaml
++++ b/i18n/zh_CN.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: 数据库名称不能为空。
+     db_file:
+       label: 数据库文件
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: 数据库文件不能为空。
+     config_yaml:
+       title: 创建 config.yaml
+diff --git a/i18n/zh_TW.yaml b/i18n/zh_TW.yaml
+index c0377af7..172cfe3a 100644
+--- a/i18n/zh_TW.yaml
++++ b/i18n/zh_TW.yaml
+@@ -1288,7 +1288,7 @@ ui:
+       msg: Database name cannot be empty.
+     db_file:
+       label: Database file
+-      placeholder: /data/answer.db
++      placeholder: /var/lib/answer/answer.db
+       msg: Database file cannot be empty.
+     config_yaml:
+       title: 創建 config.yaml
+diff --git a/ui/src/pages/Install/index.tsx b/ui/src/pages/Install/index.tsx
+index 69723d29..12c15014 100644
+--- a/ui/src/pages/Install/index.tsx
++++ b/ui/src/pages/Install/index.tsx
+@@ -84,7 +84,7 @@ const Index: FC = () => {
+       errorMsg: '',
+     },
+     db_file: {
+-      value: '/data/answer.db',
++      value: '/var/lib/answer/answer.db',
+       isInvalid: false,
+       errorMsg: '',
+     },
+-- 
+2.44.0
+
