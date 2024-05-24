@@ -3,7 +3,7 @@
 pkgname=pineappl
 pkgver=0.7.4
 fullver=${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='PineAPPL is not an extension of APPLgrid. Installs pineappl_cli, pineappl library and python package'
 arch=('any')
 url="https://nnpdf.github.io/pineappl/"
@@ -30,18 +30,18 @@ prepare() {
 }
 
 build() {
+    export CARGO_TARGET_DIR=target
     cd "$pkgname-$fullver"/pineappl_py
     # Now build the python interface
-    maturin build --release
+    maturin build --release --locked
 }
 
 package() {
-    export RUSTUP_TOOLCHAIN=stable
  	cd "$pkgname-$pkgver"
     cargo install --path pineappl_cli --root=${pkgdir}/usr --no-track --locked --features=evolve
     # Install also the pineappl_capi
  	cd pineappl_capi
-    cargo cinstall --release --destdir=${pkgdir} --prefix=/usr
+    cargo cinstall --locked --release --destdir=${pkgdir} --prefix=/usr
     cd ..
     # And the python wrapper
     cd pineappl_py/target/wheels/
