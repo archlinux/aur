@@ -1,0 +1,2058 @@
+From 510fa3df8656779655d42c194758776e5dcf6ebf Mon Sep 17 00:00:00 2001
+From: Laio Oriel Seman <laioseman@gmail.com>
+Date: Fri, 8 Mar 2024 11:30:24 -0300
+Subject: [PATCH 1/2] ITD
+
+---
+ MAINTAINERS                              |   1 +
+ arch/x86/include/asm/cpufeatures.h       |   2 +
+ arch/x86/include/asm/disabled-features.h |   8 +-
+ arch/x86/include/asm/hfi.h               |  85 +++++
+ arch/x86/include/asm/hreset.h            |  30 ++
+ arch/x86/include/asm/msr-index.h         |  12 +
+ arch/x86/include/asm/topology.h          |  15 +
+ arch/x86/kernel/Makefile                 |   2 +
+ arch/x86/kernel/cpu/common.c             |  33 +-
+ arch/x86/kernel/cpu/cpuid-deps.c         |   1 +
+ arch/x86/kernel/process_32.c             |   3 +
+ arch/x86/kernel/process_64.c             |   3 +
+ arch/x86/kernel/sched_ipcc.c             |  93 +++++
+ drivers/thermal/intel/Kconfig            |   1 +
+ drivers/thermal/intel/intel_hfi.c        | 411 ++++++++++++++++++-----
+ drivers/thermal/thermal_netlink.c        |  62 +++-
+ drivers/thermal/thermal_netlink.h        |  26 ++
+ include/linux/sched.h                    |  24 +-
+ include/linux/sched/topology.h           |   6 +
+ init/Kconfig                             |  12 +
+ kernel/sched/core.c                      |  10 +-
+ kernel/sched/fair.c                      | 324 +++++++++++++++++-
+ kernel/sched/sched.h                     |  66 ++++
+ kernel/sched/topology.c                  |   9 +
+ kernel/time/timer.c                      |   2 +-
+ 25 files changed, 1133 insertions(+), 108 deletions(-)
+ create mode 100644 arch/x86/include/asm/hfi.h
+ create mode 100644 arch/x86/include/asm/hreset.h
+ create mode 100644 arch/x86/kernel/sched_ipcc.c
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 8ceb49f1b63..e6aa56c1485 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -21943,6 +21943,7 @@ L:	linux-pm@vger.kernel.org
+ S:	Supported
+ Q:	https://patchwork.kernel.org/project/linux-pm/list/
+ T:	git git://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git thermal
++F:	arch/x86/include/asm/hfi.h
+ F:	Documentation/ABI/testing/sysfs-class-thermal
+ F:	Documentation/admin-guide/thermal/
+ F:	Documentation/devicetree/bindings/thermal/
+diff --git a/arch/x86/include/asm/cpufeatures.h b/arch/x86/include/asm/cpufeatures.h
+index f0337f7bcf1..b4154391655 100644
+--- a/arch/x86/include/asm/cpufeatures.h
++++ b/arch/x86/include/asm/cpufeatures.h
+@@ -328,6 +328,7 @@
+ #define X86_FEATURE_LKGS		(12*32+18) /* "" Load "kernel" (userspace) GS */
+ #define X86_FEATURE_WRMSRNS		(12*32+19) /* "" Non-serializing WRMSR */
+ #define X86_FEATURE_AMX_FP16		(12*32+21) /* "" AMX fp16 Support */
++#define X86_FEATURE_HRESET		(12*32+22) /* Hardware history reset instruction */
+ #define X86_FEATURE_AVX_IFMA            (12*32+23) /* "" Support for VPMADD52[H,L]UQ */
+ #define X86_FEATURE_LAM			(12*32+26) /* Linear Address Masking */
+ 
+@@ -362,6 +363,7 @@
+ #define X86_FEATURE_HWP_EPP		(14*32+10) /* HWP Energy Perf. Preference */
+ #define X86_FEATURE_HWP_PKG_REQ		(14*32+11) /* HWP Package Level Request */
+ #define X86_FEATURE_HFI			(14*32+19) /* Hardware Feedback Interface */
++#define X86_FEATURE_ITD			(14*32+23) /* Intel Thread Director */
+ 
+ /* AMD SVM Feature Identification, CPUID level 0x8000000a (EDX), word 15 */
+ #define X86_FEATURE_NPT			(15*32+ 0) /* Nested Page Table support */
+diff --git a/arch/x86/include/asm/disabled-features.h b/arch/x86/include/asm/disabled-features.h
+index da4054fbf53..2476e7cf541 100644
+--- a/arch/x86/include/asm/disabled-features.h
++++ b/arch/x86/include/asm/disabled-features.h
+@@ -129,6 +129,12 @@
+ #define DISABLE_SEV_SNP		(1 << (X86_FEATURE_SEV_SNP & 31))
+ #endif
+ 
++#ifdef CONFIG_IPC_CLASSES
++# define DISABLE_ITD	0
++#else
++# define DISABLE_ITD	(1 << (X86_FEATURE_ITD & 31))
++#endif
++
+ /*
+  * Make sure to add features to the correct mask
+  */
+@@ -147,7 +153,7 @@
+ 			 DISABLE_CALL_DEPTH_TRACKING|DISABLE_USER_SHSTK)
+ #define DISABLED_MASK12	(DISABLE_FRED|DISABLE_LAM)
+ #define DISABLED_MASK13	0
+-#define DISABLED_MASK14	0
++#define DISABLED_MASK14	(DISABLE_ITD)
+ #define DISABLED_MASK15	0
+ #define DISABLED_MASK16	(DISABLE_PKU|DISABLE_OSPKE|DISABLE_LA57|DISABLE_UMIP| \
+ 			 DISABLE_ENQCMD)
+diff --git a/arch/x86/include/asm/hfi.h b/arch/x86/include/asm/hfi.h
+new file mode 100644
+index 00000000000..b7fda3e0e8c
+--- /dev/null
++++ b/arch/x86/include/asm/hfi.h
+@@ -0,0 +1,85 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++#ifndef _ASM_X86_HFI_H
++#define _ASM_X86_HFI_H
++
++/* CPUID detection and enumeration definitions for HFI */
++
++union hfi_capabilities {
++	struct {
++		u8	performance:1;
++		u8	energy_efficiency:1;
++		u8	__reserved:6;
++	} split;
++	u8 bits;
++};
++
++union cpuid6_edx {
++	struct {
++		union hfi_capabilities	capabilities;
++		u32			table_pages:4;
++		u32			__reserved:4;
++		s32			index:16;
++	} split;
++	u32 full;
++};
++
++union cpuid6_ecx {
++	struct {
++		u32	dont_care0:8;
++		u32	nr_classes:8;
++		u32	dont_care1:16;
++	} split;
++	u32 full;
++};
++
++/**
++ * struct hfi_hdr - Header of the HFI table
++ * @perf_updated:	Hardware updated performance capabilities
++ * @ee_updated:		Hardware updated energy efficiency capabilities
++ *
++ * Properties of the data in an HFI table. There exists one header per each
++ * HFI class.
++ */
++struct hfi_hdr {
++	u8	perf_updated;
++	u8	ee_updated;
++} __packed;
++
++/**
++ * struct hfi_table - Representation of an HFI table
++ * @base_addr:		Base address of the local copy of the HFI table
++ * @timestamp:		Timestamp of the last update of the local table.
++ *			Located at the base of the local table.
++ * @hdr:		Base address of the header of the local table
++ * @data:		Base address of the data of the local table
++ */
++struct hfi_table {
++	union {
++		void			*base_addr;
++		u64			*timestamp;
++	};
++	void			*hdr;
++	void			*data;
++};
++
++/**
++ * struct hfi_features - Supported HFI features
++ * @nr_classes:		Number of classes supported
++ * @nr_table_pages:	Size of the HFI table in 4KB pages
++ * @cpu_stride:		Stride size to locate the capability data of a logical
++ *			processor within the table (i.e., row stride)
++ * @class_stride:	Stride size to locate a class within the capability
++ *			data of a logical processor or the HFI table header
++ * @hdr_size:		Size of the table header
++ *
++ * Parameters and supported features that are common to all HFI instances
++ */
++struct hfi_features {
++	unsigned int	nr_classes;
++	size_t		nr_table_pages;
++	unsigned int	cpu_stride;
++	unsigned int	class_stride;
++	unsigned int	hdr_size;
++};
++
++#endif /* _ASM_X86_HFI_H */
+diff --git a/arch/x86/include/asm/hreset.h b/arch/x86/include/asm/hreset.h
+new file mode 100644
+index 00000000000..d68ca2fb864
+--- /dev/null
++++ b/arch/x86/include/asm/hreset.h
+@@ -0,0 +1,30 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++#ifndef _ASM_X86_HRESET_H
++
++/**
++ * HRESET - History reset. Available since binutils v2.36.
++ *
++ * Request the processor to reset the history of task classification on the
++ * current logical processor. The history components to be
++ * reset are specified in %eax. Only bits specified in CPUID(0x20).EBX
++ * and enabled in the IA32_HRESET_ENABLE MSR can be selected.
++ *
++ * The assembly code looks like:
++ *
++ *	hreset %eax
++ *
++ * The corresponding machine code looks like:
++ *
++ *	F3 0F 3A F0 ModRM Imm
++ *
++ * The value of ModRM is 0xc0 to specify %eax register addressing.
++ * The ignored immediate operand is set to 0.
++ *
++ * The instruction is documented in the Intel SDM.
++ */
++
++#define __ASM_HRESET  ".byte 0xf3, 0xf, 0x3a, 0xf0, 0xc0, 0x0"
++
++void reset_hardware_history(void);
++
++#endif /* _ASM_X86_HRESET_H */
+diff --git a/arch/x86/include/asm/msr-index.h b/arch/x86/include/asm/msr-index.h
+index 05956bd8bac..0def6bc3055 100644
+--- a/arch/x86/include/asm/msr-index.h
++++ b/arch/x86/include/asm/msr-index.h
+@@ -1182,7 +1182,19 @@
+ 
+ /* Hardware Feedback Interface */
+ #define MSR_IA32_HW_FEEDBACK_PTR        0x17d0
++#define HW_FEEDBACK_PTR_VALID           BIT_ULL(0)
++#define HW_FEEDBACK_PTR_RESERVED_MASK   GENMASK_ULL(11, 1)
++
+ #define MSR_IA32_HW_FEEDBACK_CONFIG     0x17d1
++#define MSR_IA32_HW_FEEDBACK_THREAD_CONFIG 0x17d4
++#define MSR_IA32_HW_FEEDBACK_CHAR	0x17d2
++
++/* Hardware History Reset  */
++#define MSR_IA32_HW_HRESET_ENABLE	0x17da
++
++#define HW_FEEDBACK_CONFIG_HFI_ENABLE   BIT_ULL(0)
++#define HW_FEEDBACK_CONFIG_ITD_ENABLE   BIT_ULL(1)
++#define HW_FEEDBACK_THREAD_CONFIG_ENABLE BIT_ULL(0)
+ 
+ /* x2APIC locked status */
+ #define MSR_IA32_XAPIC_DISABLE_STATUS	0xBD
+diff --git a/arch/x86/include/asm/topology.h b/arch/x86/include/asm/topology.h
+index abe3a8f22cb..6291232db51 100644
+--- a/arch/x86/include/asm/topology.h
++++ b/arch/x86/include/asm/topology.h
+@@ -297,4 +297,19 @@ void init_freq_invariance_cppc(void);
+ #define arch_init_invariance_cppc init_freq_invariance_cppc
+ #endif
+ 
++#ifdef CONFIG_INTEL_HFI_THERMAL
++int intel_hfi_read_classid(u8 *classid);
++unsigned long intel_hfi_get_ipcc_score(unsigned short ipcc, int cpu);
++#else
++static inline int intel_hfi_read_classid(u8 *classid) { return -ENODEV; }
++static inline unsigned long
++intel_hfi_get_ipcc_score(unsigned short ipcc, int cpu) { return -ENODEV; }
++#endif
++
++#ifdef CONFIG_IPC_CLASSES
++void intel_update_ipcc(struct task_struct *curr);
++#define arch_update_ipcc intel_update_ipcc
++#define arch_get_ipcc_score intel_hfi_get_ipcc_score
++#endif
++
+ #endif /* _ASM_X86_TOPOLOGY_H */
+diff --git a/arch/x86/kernel/Makefile b/arch/x86/kernel/Makefile
+index 74077694da7..3d54a1a3e2d 100644
+--- a/arch/x86/kernel/Makefile
++++ b/arch/x86/kernel/Makefile
+@@ -152,6 +152,8 @@ obj-$(CONFIG_X86_CET)			+= cet.o
+ 
+ obj-$(CONFIG_X86_USER_SHADOW_STACK)	+= shstk.o
+ 
++obj-$(CONFIG_IPC_CLASSES)		+= sched_ipcc.o
++
+ ###
+ # 64 bit specific files
+ ifeq ($(CONFIG_X86_64),y)
+diff --git a/arch/x86/kernel/cpu/common.c b/arch/x86/kernel/cpu/common.c
+index 5c1e6d6be26..946fd002072 100644
+--- a/arch/x86/kernel/cpu/common.c
++++ b/arch/x86/kernel/cpu/common.c
+@@ -57,6 +57,7 @@
+ #include <asm/mce.h>
+ #include <asm/msr.h>
+ #include <asm/cacheinfo.h>
++#include <asm/hreset.h>
+ #include <asm/memtype.h>
+ #include <asm/microcode.h>
+ #include <asm/intel-family.h>
+@@ -397,6 +398,35 @@ static __always_inline void setup_umip(struct cpuinfo_x86 *c)
+ 	cr4_clear_bits(X86_CR4_UMIP);
+ }
+ 
++static u32 hardware_history_features __ro_after_init;
++
++
++void reset_hardware_history(void)
++{
++	asm_inline volatile (ALTERNATIVE("", __ASM_HRESET, X86_FEATURE_HRESET)
++			     : : "a" (hardware_history_features) : "memory");
++}
++
++EXPORT_SYMBOL(reset_hardware_history);
++
++static __always_inline void setup_hreset(struct cpuinfo_x86 *c)
++{
++	if (!cpu_feature_enabled(X86_FEATURE_HRESET))
++		return;
++
++	/*
++	 * Use on all CPUs the hardware history features that the boot
++	 * CPU supports.
++	 */
++	if (c == &boot_cpu_data)
++		hardware_history_features = cpuid_ebx(0x20);
++
++	if (!hardware_history_features)
++		return;
++
++	wrmsrl(MSR_IA32_HW_HRESET_ENABLE, hardware_history_features);
++}
++
+ /* These bits should not change their value after CPU init is finished. */
+ static const unsigned long cr4_pinned_mask = X86_CR4_SMEP | X86_CR4_SMAP | X86_CR4_UMIP |
+ 					     X86_CR4_FSGSBASE | X86_CR4_CET | X86_CR4_FRED;
+@@ -1826,10 +1856,11 @@ static void identify_cpu(struct cpuinfo_x86 *c)
+ 	/* Disable the PN if appropriate */
+ 	squash_the_stupid_serial_number(c);
+ 
+-	/* Set up SMEP/SMAP/UMIP */
++	/* Set up SMEP/SMAP/UMIP/HRESET */
+ 	setup_smep(c);
+ 	setup_smap(c);
+ 	setup_umip(c);
++	setup_hreset(c);
+ 
+ 	/* Enable FSGSBASE instructions if available. */
+ 	if (cpu_has(c, X86_FEATURE_FSGSBASE)) {
+diff --git a/arch/x86/kernel/cpu/cpuid-deps.c b/arch/x86/kernel/cpu/cpuid-deps.c
+index b7174209d85..f5a0f486cce 100644
+--- a/arch/x86/kernel/cpu/cpuid-deps.c
++++ b/arch/x86/kernel/cpu/cpuid-deps.c
+@@ -81,6 +81,7 @@ static const struct cpuid_dep cpuid_deps[] = {
+ 	{ X86_FEATURE_XFD,			X86_FEATURE_XSAVES    },
+ 	{ X86_FEATURE_XFD,			X86_FEATURE_XGETBV1   },
+ 	{ X86_FEATURE_AMX_TILE,			X86_FEATURE_XFD       },
++	{ X86_FEATURE_ITD,			X86_FEATURE_HFI       },
+ 	{ X86_FEATURE_SHSTK,			X86_FEATURE_XSAVES    },
+ 	{ X86_FEATURE_FRED,			X86_FEATURE_LKGS      },
+ 	{ X86_FEATURE_FRED,			X86_FEATURE_WRMSRNS   },
+diff --git a/arch/x86/kernel/process_32.c b/arch/x86/kernel/process_32.c
+index 0917c7f2572..9044bb198f5 100644
+--- a/arch/x86/kernel/process_32.c
++++ b/arch/x86/kernel/process_32.c
+@@ -52,6 +52,7 @@
+ #include <asm/switch_to.h>
+ #include <asm/vm86.h>
+ #include <asm/resctrl.h>
++#include <asm/hreset.h>
+ #include <asm/proto.h>
+ 
+ #include "process.h"
+@@ -213,6 +214,8 @@ __switch_to(struct task_struct *prev_p, struct task_struct *next_p)
+ 	/* Load the Intel cache allocation PQR MSR. */
+ 	resctrl_sched_in(next_p);
+ 
++	reset_hardware_history();
++
+ 	return prev_p;
+ }
+ 
+diff --git a/arch/x86/kernel/process_64.c b/arch/x86/kernel/process_64.c
+index 7062b84dd46..10f78001f96 100644
+--- a/arch/x86/kernel/process_64.c
++++ b/arch/x86/kernel/process_64.c
+@@ -54,6 +54,7 @@
+ #include <asm/xen/hypervisor.h>
+ #include <asm/vdso.h>
+ #include <asm/resctrl.h>
++#include <asm/hreset.h>
+ #include <asm/unistd.h>
+ #include <asm/fsgsbase.h>
+ #include <asm/fred.h>
+@@ -709,6 +710,8 @@ __switch_to(struct task_struct *prev_p, struct task_struct *next_p)
+ 	/* Load the Intel cache allocation PQR MSR. */
+ 	resctrl_sched_in(next_p);
+ 
++	reset_hardware_history();
++
+ 	return prev_p;
+ }
+ 
+diff --git a/arch/x86/kernel/sched_ipcc.c b/arch/x86/kernel/sched_ipcc.c
+new file mode 100644
+index 00000000000..dd73fc8be49
+--- /dev/null
++++ b/arch/x86/kernel/sched_ipcc.c
+@@ -0,0 +1,93 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Intel support for scheduler IPC classes
++ *
++ * Copyright (c) 2023, Intel Corporation.
++ *
++ * Author: Ricardo Neri <ricardo.neri-calderon@linux.intel.com>
++ *
++ * On hybrid processors, the architecture differences between types of CPUs
++ * lead to different number of retired instructions per cycle (IPC). IPCs may
++ * differ further by classes of instructions.
++ *
++ * The scheduler assigns an IPC class to every task with arch_update_ipcc()
++ * from data that hardware provides. Implement this interface for x86.
++ *
++ * See kernel/sched/sched.h for details.
++ */
++
++#include <linux/sched.h>
++
++#include <asm/intel-family.h>
++#include <asm/topology.h>
++
++#define CLASS_DEBOUNCER_SKIPS 4
++
++/**
++ * debounce_and_update_class() - Process and update a task's classification
++ *
++ * @p:		The task of which the classification will be updated
++ * @new_ipcc:	The new IPC classification
++ *
++ * Update the classification of @p with the new value that hardware provides.
++ * Only update the classification of @p if it has been the same during
++ * CLASS_DEBOUNCER_SKIPS consecutive ticks.
++ */
++static void debounce_and_update_class(struct task_struct *p, u8 new_ipcc)
++{
++	u16 debounce_skip;
++
++	/* The class of @p changed. Only restart the debounce counter. */
++	if (p->ipcc_tmp != new_ipcc) {
++		p->ipcc_cntr = 1;
++		goto out;
++	}
++
++	/*
++	 * The class of @p did not change. Update it if it has been the same
++	 * for CLASS_DEBOUNCER_SKIPS user ticks.
++	 */
++	debounce_skip = p->ipcc_cntr + 1;
++	if (debounce_skip < CLASS_DEBOUNCER_SKIPS)
++		p->ipcc_cntr++;
++	else
++		p->ipcc = new_ipcc;
++
++out:
++	p->ipcc_tmp = new_ipcc;
++}
++
++static bool classification_is_accurate(u8 hfi_class, bool smt_siblings_idle)
++{
++	switch (boot_cpu_data.x86_model) {
++	case INTEL_FAM6_ALDERLAKE:
++	case INTEL_FAM6_ALDERLAKE_L:
++	case INTEL_FAM6_RAPTORLAKE:
++	case INTEL_FAM6_RAPTORLAKE_P:
++	case INTEL_FAM6_RAPTORLAKE_S:
++		if (hfi_class == 3 || hfi_class == 2 || smt_siblings_idle)
++			return true;
++
++		return false;
++
++	default:
++		return false;
++	}
++}
++
++void intel_update_ipcc(struct task_struct *curr)
++{
++	u8 hfi_class;
++	bool idle;
++
++	if (intel_hfi_read_classid(&hfi_class))
++		return;
++
++	/*
++	 * 0 is a valid classification for Intel Thread Director. A scheduler
++	 * IPCC class of 0 means that the task is unclassified. Adjust.
++	 */
++	idle = sched_smt_siblings_idle(task_cpu(curr));
++	if (classification_is_accurate(hfi_class, idle))
++		debounce_and_update_class(curr, hfi_class + 1);
++}
+diff --git a/drivers/thermal/intel/Kconfig b/drivers/thermal/intel/Kconfig
+index a31f2f32996..ca6be8d7bde 100644
+--- a/drivers/thermal/intel/Kconfig
++++ b/drivers/thermal/intel/Kconfig
+@@ -107,6 +107,7 @@ config INTEL_HFI_THERMAL
+ 	depends on CPU_SUP_INTEL
+ 	depends on X86_THERMAL_VECTOR
+ 	select THERMAL_NETLINK
++	select IPC_CLASSES
+ 	help
+ 	  Select this option to enable the Hardware Feedback Interface. If
+ 	  selected, hardware provides guidance to the operating system on
+diff --git a/drivers/thermal/intel/intel_hfi.c b/drivers/thermal/intel/intel_hfi.c
+index 40d664a66cd..1dda5c759e5 100644
+--- a/drivers/thermal/intel/intel_hfi.c
++++ b/drivers/thermal/intel/intel_hfi.c
+@@ -30,9 +30,12 @@
+ #include <linux/kernel.h>
+ #include <linux/math.h>
+ #include <linux/mutex.h>
++#include <linux/percpu.h>
+ #include <linux/percpu-defs.h>
+ #include <linux/printk.h>
+ #include <linux/processor.h>
++#include <linux/sched/topology.h>
++#include <linux/seqlock.h>
+ #include <linux/slab.h>
+ #include <linux/spinlock.h>
+ #include <linux/suspend.h>
+@@ -41,6 +44,7 @@
+ #include <linux/topology.h>
+ #include <linux/workqueue.h>
+ 
++#include <asm/hfi.h>
+ #include <asm/msr.h>
+ 
+ #include "intel_hfi.h"
+@@ -48,32 +52,20 @@
+ 
+ #include "../thermal_netlink.h"
+ 
+-/* Hardware Feedback Interface MSR configuration bits */
+-#define HW_FEEDBACK_PTR_VALID_BIT		BIT(0)
+-#define HW_FEEDBACK_CONFIG_HFI_ENABLE_BIT	BIT(0)
+ 
+ /* CPUID detection and enumeration definitions for HFI */
+ 
+ #define CPUID_HFI_LEAF 6
+ 
+-union hfi_capabilities {
++union hfi_thread_feedback_char_msr {
+ 	struct {
+-		u8	performance:1;
+-		u8	energy_efficiency:1;
+-		u8	__reserved:6;
++		u64	classid : 8;
++		u64	__reserved : 55;
++		u64	valid : 1;
+ 	} split;
+-	u8 bits;
++	u64 full;
+ };
+ 
+-union cpuid6_edx {
+-	struct {
+-		union hfi_capabilities	capabilities;
+-		u32			table_pages:4;
+-		u32			__reserved:4;
+-		s32			index:16;
+-	} split;
+-	u32 full;
+-};
+ 
+ /**
+  * struct hfi_cpu_data - HFI capabilities per CPU
+@@ -81,32 +73,17 @@ union cpuid6_edx {
+  * @ee_cap:		Energy efficiency capability
+  *
+  * Capabilities of a logical processor in the HFI table. These capabilities are
+- * unitless.
++ * unitless and specific to each HFI class.
+  */
+ struct hfi_cpu_data {
+ 	u8	perf_cap;
+ 	u8	ee_cap;
+ } __packed;
+ 
+-/**
+- * struct hfi_hdr - Header of the HFI table
+- * @perf_updated:	Hardware updated performance capabilities
+- * @ee_updated:		Hardware updated energy efficiency capabilities
+- *
+- * Properties of the data in an HFI table.
+- */
+-struct hfi_hdr {
+-	u8	perf_updated;
+-	u8	ee_updated;
+-} __packed;
+ 
+ /**
+  * struct hfi_instance - Representation of an HFI instance (i.e., a table)
+- * @local_table:	Base of the local copy of the HFI table
+- * @timestamp:		Timestamp of the last update of the local table.
+- *			Located at the base of the local table.
+- * @hdr:		Base address of the header of the local table
+- * @data:		Base address of the data of the local table
++ * @local_table:	Local copy of HFI table for this instance
+  * @cpus:		CPUs represented in this HFI table instance
+  * @hw_table:		Pointer to the HFI table of this instance
+  * @update_work:	Delayed work to process HFI updates
+@@ -116,12 +93,7 @@ struct hfi_hdr {
+  * A set of parameters to parse and navigate a specific HFI table.
+  */
+ struct hfi_instance {
+-	union {
+-		void			*local_table;
+-		u64			*timestamp;
+-	};
+-	void			*hdr;
+-	void			*data;
++	struct hfi_table	local_table;
+ 	cpumask_var_t		cpus;
+ 	void			*hw_table;
+ 	struct delayed_work	update_work;
+@@ -129,20 +101,6 @@ struct hfi_instance {
+ 	raw_spinlock_t		event_lock;
+ };
+ 
+-/**
+- * struct hfi_features - Supported HFI features
+- * @nr_table_pages:	Size of the HFI table in 4KB pages
+- * @cpu_stride:		Stride size to locate the capability data of a logical
+- *			processor within the table (i.e., row stride)
+- * @hdr_size:		Size of the table header
+- *
+- * Parameters and supported features that are common to all HFI instances
+- */
+-struct hfi_features {
+-	size_t		nr_table_pages;
+-	unsigned int	cpu_stride;
+-	unsigned int	hdr_size;
+-};
+ 
+ /**
+  * struct hfi_cpu_info - Per-CPU attributes to consume HFI data
+@@ -159,6 +117,7 @@ struct hfi_cpu_info {
+ static DEFINE_PER_CPU(struct hfi_cpu_info, hfi_cpu_info) = { .index = -1 };
+ 
+ static int max_hfi_instances;
++static int hfi_clients_nr;
+ static struct hfi_instance *hfi_instances;
+ 
+ static struct hfi_features hfi_features;
+@@ -168,6 +127,139 @@ static struct workqueue_struct *hfi_updates_wq;
+ #define HFI_UPDATE_INTERVAL		HZ
+ #define HFI_MAX_THERM_NOTIFY_COUNT	16
+ 
++/*
++ * A task may be unclassified if it has been recently created, spend most of
++ * its lifetime sleeping, or hardware has not provided a classification.
++ *
++ * Most tasks will be classified as scheduler's IPC class 1 (HFI class 0)
++ * eventually. Meanwhile, the scheduler will place classes of tasks with higher
++ * IPC scores on higher-performance CPUs.
++ *
++ * IPC class 1 is a reasonable choice. It matches the performance capability
++ * of the legacy, classless, HFI table.
++ */
++#define HFI_UNCLASSIFIED_DEFAULT 1
++
++/* A cache of the HFI perf capabilities for lockless access. */
++static int __percpu *hfi_ipcc_scores;
++/* Sequence counter for hfi_ipcc_scores */
++static seqcount_t hfi_ipcc_seqcount = SEQCNT_ZERO(hfi_ipcc_seqcount);
++
++static int alloc_hfi_ipcc_scores(void)
++{
++	if (!cpu_feature_enabled(X86_FEATURE_ITD))
++		return 0;
++
++	hfi_ipcc_scores = __alloc_percpu(sizeof(*hfi_ipcc_scores) *
++					 hfi_features.nr_classes,
++					 sizeof(*hfi_ipcc_scores));
++
++	return hfi_ipcc_scores ? 0 : -ENOMEM;
++}
++
++unsigned long intel_hfi_get_ipcc_score(unsigned short ipcc, int cpu)
++{
++	int *scores, score;
++	unsigned long seq;
++
++	scores = per_cpu_ptr(hfi_ipcc_scores, cpu);
++	if (!scores)
++		return -ENODEV;
++
++	if (cpu < 0 || cpu >= nr_cpu_ids)
++		return -EINVAL;
++
++	if (ipcc == IPC_CLASS_UNCLASSIFIED)
++		ipcc = HFI_UNCLASSIFIED_DEFAULT;
++
++	/*
++	 * Scheduler IPC classes start at 1. HFI classes start at 0.
++	 * See note intel_hfi_update_ipcc().
++	 */
++	if (ipcc >= hfi_features.nr_classes + 1)
++		return -EINVAL;
++
++	/*
++	 * The seqcount implies load-acquire semantics to order loads with
++	 * lockless stores of the write side in set_hfi_ipcc_score(). It
++	 * also implies a compiler barrier.
++	 */
++	do {
++		seq = read_seqcount_begin(&hfi_ipcc_seqcount);
++		/* @ipcc is never 0. */
++		score = scores[ipcc - 1];
++	} while (read_seqcount_retry(&hfi_ipcc_seqcount, seq));
++
++	return score;
++}
++
++static void set_hfi_ipcc_scores(struct hfi_instance *hfi_instance)
++{
++	int cpu;
++
++	if (!cpu_feature_enabled(X86_FEATURE_ITD))
++		return;
++
++	/*
++	 * Serialize with writes to the HFI table. It also protects the write
++	 * loop against seqcount readers running in interrupt context.
++	 */
++	raw_spin_lock_irq(&hfi_instance->table_lock);
++	/*
++	 * The seqcount implies store-release semantics to order stores with
++	 * lockless loads from the seqcount read side in
++	 * intel_hfi_get_ipcc_score(). It also implies a compiler barrier.
++	 */
++	write_seqcount_begin(&hfi_ipcc_seqcount);
++	for_each_cpu(cpu, hfi_instance->cpus) {
++		int c, *scores;
++		s16 index;
++
++		index = per_cpu(hfi_cpu_info, cpu).index;
++		scores = per_cpu_ptr(hfi_ipcc_scores, cpu);
++
++		for (c = 0;  c < hfi_features.nr_classes; c++) {
++			struct hfi_cpu_data *caps;
++
++			caps = hfi_instance->local_table.data +
++			       index * hfi_features.cpu_stride +
++			       c * hfi_features.class_stride;
++			scores[c] = caps->perf_cap;
++		}
++	}
++
++	write_seqcount_end(&hfi_ipcc_seqcount);
++	raw_spin_unlock_irq(&hfi_instance->table_lock);
++}
++
++/**
++ * intel_hfi_read_classid() - Read the currrent classid
++ * @classid:	Variable to which the classid will be written.
++ *
++ * Read the classification that Intel Thread Director has produced when this
++ * function is called. Thread classification must be enabled before calling
++ * this function.
++ *
++ * Return: 0 if the produced classification is valid. Error otherwise.
++ */
++int intel_hfi_read_classid(u8 *classid)
++{
++	union hfi_thread_feedback_char_msr msr;
++
++	/* We should not be here if ITD is not supported. */
++	if (!cpu_feature_enabled(X86_FEATURE_ITD)) {
++		pr_warn_once("task classification requested but not supported!");
++		return -ENODEV;
++	}
++
++	rdmsrl(MSR_IA32_HW_FEEDBACK_CHAR, msr.full);
++	if (!msr.split.valid)
++		return -EINVAL;
++
++	*classid = msr.split.classid;
++	return 0;
++}
++
+ static void get_hfi_caps(struct hfi_instance *hfi_instance,
+ 			 struct thermal_genl_cpu_caps *cpu_caps)
+ {
+@@ -179,7 +271,7 @@ static void get_hfi_caps(struct hfi_instance *hfi_instance,
+ 		s16 index;
+ 
+ 		index = per_cpu(hfi_cpu_info, cpu).index;
+-		caps = hfi_instance->data + index * hfi_features.cpu_stride;
++		caps = hfi_instance->local_table.data + index * hfi_features.cpu_stride;
+ 		cpu_caps[i].cpu = cpu;
+ 
+ 		/*
+@@ -235,6 +327,8 @@ static void update_capabilities(struct hfi_instance *hfi_instance)
+ 		thermal_genl_cpu_capability_event(cpu_count, &cpu_caps[i]);
+ 
+ 	kfree(cpu_caps);
++
++	set_hfi_ipcc_scores(hfi_instance);
+ out:
+ 	mutex_unlock(&hfi_instance_lock);
+ }
+@@ -296,7 +390,7 @@ void intel_hfi_process_event(__u64 pkg_therm_status_msr_val)
+ 	 * where a lagging CPU entered the locked region.
+ 	 */
+ 	new_timestamp = *(u64 *)hfi_instance->hw_table;
+-	if (*hfi_instance->timestamp == new_timestamp) {
++	if (*hfi_instance->local_table.timestamp == new_timestamp) {
+ 		thermal_clear_package_intr_status(PACKAGE_LEVEL, PACKAGE_THERM_STATUS_HFI_UPDATED);
+ 		raw_spin_unlock(&hfi_instance->event_lock);
+ 		return;
+@@ -308,7 +402,7 @@ void intel_hfi_process_event(__u64 pkg_therm_status_msr_val)
+ 	 * Copy the updated table into our local copy. This includes the new
+ 	 * timestamp.
+ 	 */
+-	memcpy(hfi_instance->local_table, hfi_instance->hw_table,
++	memcpy(hfi_instance->local_table.base_addr, hfi_instance->hw_table,
+ 	       hfi_features.nr_table_pages << PAGE_SHIFT);
+ 
+ 	/*
+@@ -337,17 +431,18 @@ static void init_hfi_cpu_index(struct hfi_cpu_info *info)
+ }
+ 
+ /*
+- * The format of the HFI table depends on the number of capabilities that the
+- * hardware supports. Keep a data structure to navigate the table.
++ * The format of the HFI table depends on the number of capabilities and classes
++ * that the hardware supports. Keep a data structure to navigate the table.
+  */
+ static void init_hfi_instance(struct hfi_instance *hfi_instance)
+ {
+ 	/* The HFI header is below the time-stamp. */
+-	hfi_instance->hdr = hfi_instance->local_table +
+-			    sizeof(*hfi_instance->timestamp);
++	hfi_instance->local_table.hdr = hfi_instance->local_table.base_addr +
++					sizeof(*hfi_instance->local_table.timestamp);
+ 
+ 	/* The HFI data starts below the header. */
+-	hfi_instance->data = hfi_instance->hdr + hfi_features.hdr_size;
++	hfi_instance->local_table.data = hfi_instance->local_table.hdr +
++					 hfi_features.hdr_size;
+ }
+ 
+ /* Caller must hold hfi_instance_lock. */
+@@ -356,8 +451,13 @@ static void hfi_enable(void)
+ 	u64 msr_val;
+ 
+ 	rdmsrl(MSR_IA32_HW_FEEDBACK_CONFIG, msr_val);
+-	msr_val |= HW_FEEDBACK_CONFIG_HFI_ENABLE_BIT;
++	msr_val |= HW_FEEDBACK_CONFIG_HFI_ENABLE;
++
++	if (cpu_feature_enabled(X86_FEATURE_ITD))
++		msr_val |= HW_FEEDBACK_CONFIG_ITD_ENABLE;
++
+ 	wrmsrl(MSR_IA32_HW_FEEDBACK_CONFIG, msr_val);
++
+ }
+ 
+ static void hfi_set_hw_table(struct hfi_instance *hfi_instance)
+@@ -366,7 +466,7 @@ static void hfi_set_hw_table(struct hfi_instance *hfi_instance)
+ 	u64 msr_val;
+ 
+ 	hw_table_pa = virt_to_phys(hfi_instance->hw_table);
+-	msr_val = hw_table_pa | HW_FEEDBACK_PTR_VALID_BIT;
++	msr_val = hw_table_pa | HW_FEEDBACK_PTR_VALID;
+ 	wrmsrl(MSR_IA32_HW_FEEDBACK_PTR, msr_val);
+ }
+ 
+@@ -377,7 +477,11 @@ static void hfi_disable(void)
+ 	int i;
+ 
+ 	rdmsrl(MSR_IA32_HW_FEEDBACK_CONFIG, msr_val);
+-	msr_val &= ~HW_FEEDBACK_CONFIG_HFI_ENABLE_BIT;
++	msr_val &= ~HW_FEEDBACK_CONFIG_HFI_ENABLE;
++
++	if (cpu_feature_enabled(X86_FEATURE_ITD))
++		msr_val &= ~HW_FEEDBACK_CONFIG_ITD_ENABLE;
++
+ 	wrmsrl(MSR_IA32_HW_FEEDBACK_CONFIG, msr_val);
+ 
+ 	/*
+@@ -396,6 +500,30 @@ static void hfi_disable(void)
+ 	}
+ }
+ 
++static void hfi_enable_itd_classification(void)
++{
++	u64 msr_val;
++
++	if (!cpu_feature_enabled(X86_FEATURE_ITD))
++		return;
++
++	rdmsrl(MSR_IA32_HW_FEEDBACK_THREAD_CONFIG, msr_val);
++	msr_val |= HW_FEEDBACK_THREAD_CONFIG_ENABLE;
++	wrmsrl(MSR_IA32_HW_FEEDBACK_THREAD_CONFIG, msr_val);
++}
++
++static void hfi_disable_itd_classification(void)
++{
++	u64 msr_val;
++
++	if (!cpu_feature_enabled(X86_FEATURE_ITD))
++		return;
++
++	rdmsrl(MSR_IA32_HW_FEEDBACK_THREAD_CONFIG, msr_val);
++	msr_val &= ~HW_FEEDBACK_THREAD_CONFIG_ENABLE;
++	wrmsrl(MSR_IA32_HW_FEEDBACK_THREAD_CONFIG, msr_val);
++}
++
+ /**
+  * intel_hfi_online() - Enable HFI on @cpu
+  * @cpu:	CPU in which the HFI will be enabled
+@@ -436,6 +564,8 @@ void intel_hfi_online(unsigned int cpu)
+ 
+ 	init_hfi_cpu_index(info);
+ 
++	hfi_enable_itd_classification();
++
+ 	/*
+ 	 * Now check if the HFI instance of the package/die of @cpu has been
+ 	 * initialized (by checking its header). In such case, all we have to
+@@ -443,7 +573,7 @@ void intel_hfi_online(unsigned int cpu)
+ 	 * if needed.
+ 	 */
+ 	mutex_lock(&hfi_instance_lock);
+-	if (hfi_instance->hdr)
++	if (hfi_instance->local_table.hdr)
+ 		goto enable;
+ 
+ 	/*
+@@ -463,9 +593,9 @@ void intel_hfi_online(unsigned int cpu)
+ 	 * Allocate memory to keep a local copy of the table that
+ 	 * hardware generates.
+ 	 */
+-	hfi_instance->local_table = kzalloc(hfi_features.nr_table_pages << PAGE_SHIFT,
+-					    GFP_KERNEL);
+-	if (!hfi_instance->local_table)
++	hfi_instance->local_table.base_addr = kzalloc(hfi_features.nr_table_pages << PAGE_SHIFT,
++						      GFP_KERNEL);
++	if (!hfi_instance->local_table.base_addr)
+ 		goto free_hw_table;
+ 
+ 	init_hfi_instance(hfi_instance);
+@@ -477,11 +607,23 @@ void intel_hfi_online(unsigned int cpu)
+ enable:
+ 	cpumask_set_cpu(cpu, hfi_instance->cpus);
+ 
+-	/* Enable this HFI instance if this is its first online CPU. */
+-	if (cpumask_weight(hfi_instance->cpus) == 1) {
++	/*
++	 * Enable this HFI instance if this is its first online CPU and
++	 * there are user-space clients of thermal events.
++	 */
++	if (cpumask_weight(hfi_instance->cpus) == 1 && hfi_clients_nr > 0) {
+ 		hfi_set_hw_table(hfi_instance);
+ 		hfi_enable();
+ 	}
++	/*
++	 * We have all we need to support IPC classes. Task classification is
++	 * now working.
++	 *
++	 * All class scores are zero until after the first HFI update. That is
++	 * OK. The scheduler queries these scores at every load balance.
++	 */
++	if (cpu_feature_enabled(X86_FEATURE_ITD))
++		sched_enable_ipc_classes();
+ 
+ unlock:
+ 	mutex_unlock(&hfi_instance_lock);
+@@ -516,9 +658,11 @@ void intel_hfi_offline(unsigned int cpu)
+ 	if (!hfi_instance)
+ 		return;
+ 
+-	if (!hfi_instance->hdr)
++	if (!hfi_instance->local_table.hdr)
+ 		return;
+ 
++	hfi_disable_itd_classification();
++
+ 	mutex_lock(&hfi_instance_lock);
+ 	cpumask_clear_cpu(cpu, hfi_instance->cpus);
+ 
+@@ -557,44 +701,133 @@ static __init int hfi_parse_features(void)
+ 	/* The number of 4KB pages required by the table */
+ 	hfi_features.nr_table_pages = edx.split.table_pages + 1;
+ 
++	/*
++	 * Capability fields of an HFI class are grouped together. Classes are
++	 * contiguous in memory.  Hence, use the number of supported features to
++	 * locate a specific class.
++	 */
++	hfi_features.class_stride = nr_capabilities;
++
++	if (cpu_feature_enabled(X86_FEATURE_ITD)) {
++		union cpuid6_ecx ecx;
++
++		ecx.full = cpuid_ecx(CPUID_HFI_LEAF);
++		hfi_features.nr_classes = ecx.split.nr_classes;
++	} else {
++		hfi_features.nr_classes = 1;
++	}
++
+ 	/*
+ 	 * The header contains change indications for each supported feature.
+ 	 * The size of the table header is rounded up to be a multiple of 8
+ 	 * bytes.
+ 	 */
+-	hfi_features.hdr_size = DIV_ROUND_UP(nr_capabilities, 8) * 8;
++	hfi_features.hdr_size = DIV_ROUND_UP(nr_capabilities *
++					     hfi_features.nr_classes, 8) * 8;
+ 
+ 	/*
+ 	 * Data of each logical processor is also rounded up to be a multiple
+ 	 * of 8 bytes.
+ 	 */
+-	hfi_features.cpu_stride = DIV_ROUND_UP(nr_capabilities, 8) * 8;
++	hfi_features.cpu_stride = DIV_ROUND_UP(nr_capabilities *
++					       hfi_features.nr_classes, 8) * 8;
+ 
+ 	return 0;
+ }
+ 
+-static void hfi_do_enable(void)
++/*
++ * If concurrency is not prevented by other means, the HFI enable/disable
++ * routines must be called under hfi_instance_lock."
++ */
++static void hfi_enable_instance(void *ptr)
++{
++	hfi_set_hw_table(ptr);
++	hfi_enable();
++}
++
++static void hfi_disable_instance(void *ptr)
++{
++	hfi_disable();
++}
++
++static void hfi_syscore_resume(void)
+ {
+ 	/* This code runs only on the boot CPU. */
+ 	struct hfi_cpu_info *info = &per_cpu(hfi_cpu_info, 0);
+ 	struct hfi_instance *hfi_instance = info->hfi_instance;
+ 
+ 	/* No locking needed. There is no concurrency with CPU online. */
+-	hfi_set_hw_table(hfi_instance);
+-	hfi_enable();
++	if (hfi_clients_nr > 0) {
++		hfi_set_hw_table(hfi_instance);
++		hfi_enable_instance(hfi_instance);
++		hfi_enable_itd_classification();
++	}
+ }
+ 
+-static int hfi_do_disable(void)
++static int hfi_syscore_suspend(void)
+ {
+ 	/* No locking needed. There is no concurrency with CPU offline. */
++
++	hfi_disable_itd_classification();
++
+ 	hfi_disable();
+ 
+ 	return 0;
+ }
+ 
+ static struct syscore_ops hfi_pm_ops = {
+-	.resume = hfi_do_enable,
+-	.suspend = hfi_do_disable,
++	.resume = hfi_syscore_resume,
++	.suspend = hfi_syscore_suspend,
++};
++
++static int hfi_thermal_notify(struct notifier_block *nb, unsigned long state,
++			      void *_notify)
++{
++	struct thermal_genl_notify *notify = _notify;
++	struct hfi_instance *hfi_instance;
++	smp_call_func_t func = NULL;
++	unsigned int cpu;
++	int i;
++
++	if (notify->mcgrp != THERMAL_GENL_EVENT_GROUP)
++		return NOTIFY_DONE;
++
++	if (state != THERMAL_NOTIFY_BIND && state != THERMAL_NOTIFY_UNBIND)
++		return NOTIFY_DONE;
++
++	mutex_lock(&hfi_instance_lock);
++
++	switch (state) {
++	case THERMAL_NOTIFY_BIND:
++		if (++hfi_clients_nr == 1)
++			func = hfi_enable_instance;
++		break;
++	case THERMAL_NOTIFY_UNBIND:
++		if (--hfi_clients_nr == 0)
++			func = hfi_disable_instance;
++		break;
++	}
++
++	if (!func)
++		goto out;
++
++	for (i = 0; i < max_hfi_instances; i++) {
++		hfi_instance = &hfi_instances[i];
++		if (cpumask_empty(hfi_instance->cpus))
++			continue;
++
++		cpu = cpumask_any(hfi_instance->cpus);
++		smp_call_function_single(cpu, func, hfi_instance, true);
++	}
++
++out:
++	mutex_unlock(&hfi_instance_lock);
++
++	return NOTIFY_OK;
++}
++
++static struct notifier_block hfi_thermal_nb = {
++	.notifier_call = hfi_thermal_notify,
+ };
+ 
+ void __init intel_hfi_init(void)
+@@ -628,10 +861,28 @@ void __init intel_hfi_init(void)
+ 	if (!hfi_updates_wq)
+ 		goto err_nomem;
+ 
++	/*
++	 * Both thermal core and Intel HFI can not be build as modules.
++	 * As kernel build-in drivers they are initialized before user-space
++	 * starts, hence we can not miss BIND/UNBIND events when applications
++	 * add/remove thermal multicast group to/from a netlink socket.
++	 */
++	if (thermal_genl_register_notifier(&hfi_thermal_nb))
++		goto err_nl_notif;
++
+ 	register_syscore_ops(&hfi_pm_ops);
+ 
++	if (alloc_hfi_ipcc_scores())
++		goto err_ipcc;
++
+ 	return;
+ 
++err_nl_notif:
++	destroy_workqueue(hfi_updates_wq);
++
++err_ipcc:
++	destroy_workqueue(hfi_updates_wq);
++
+ err_nomem:
+ 	for (j = 0; j < i; ++j) {
+ 		hfi_instance = &hfi_instances[j];
+diff --git a/drivers/thermal/thermal_netlink.c b/drivers/thermal/thermal_netlink.c
+index 76a231a2965..bef14ce69ec 100644
+--- a/drivers/thermal/thermal_netlink.c
++++ b/drivers/thermal/thermal_netlink.c
+@@ -7,17 +7,13 @@
+  * Generic netlink for thermal management framework
+  */
+ #include <linux/module.h>
++#include <linux/notifier.h>
+ #include <linux/kernel.h>
+ #include <net/genetlink.h>
+ #include <uapi/linux/thermal.h>
+ 
+ #include "thermal_core.h"
+ 
+-enum thermal_genl_multicast_groups {
+-	THERMAL_GENL_SAMPLING_GROUP = 0,
+-	THERMAL_GENL_EVENT_GROUP = 1,
+-};
+-
+ static const struct genl_multicast_group thermal_genl_mcgrps[] = {
+ 	[THERMAL_GENL_SAMPLING_GROUP] = { .name = THERMAL_GENL_SAMPLING_GROUP_NAME, },
+ 	[THERMAL_GENL_EVENT_GROUP]  = { .name = THERMAL_GENL_EVENT_GROUP_NAME,  },
+@@ -74,11 +70,12 @@ struct param {
+ 
+ typedef int (*cb_t)(struct param *);
+ 
+-static struct genl_family thermal_gnl_family;
++static struct genl_family thermal_genl_family;
++static BLOCKING_NOTIFIER_HEAD(thermal_genl_chain);
+ 
+ static int thermal_group_has_listeners(enum thermal_genl_multicast_groups group)
+ {
+-	return genl_has_listeners(&thermal_gnl_family, &init_net, group);
++	return genl_has_listeners(&thermal_genl_family, &init_net, group);
+ }
+ 
+ /************************** Sampling encoding *******************************/
+@@ -95,7 +92,7 @@ int thermal_genl_sampling_temp(int id, int temp)
+ 	if (!skb)
+ 		return -ENOMEM;
+ 
+-	hdr = genlmsg_put(skb, 0, 0, &thermal_gnl_family, 0,
++	hdr = genlmsg_put(skb, 0, 0, &thermal_genl_family, 0,
+ 			  THERMAL_GENL_SAMPLING_TEMP);
+ 	if (!hdr)
+ 		goto out_free;
+@@ -108,7 +105,7 @@ int thermal_genl_sampling_temp(int id, int temp)
+ 
+ 	genlmsg_end(skb, hdr);
+ 
+-	genlmsg_multicast(&thermal_gnl_family, skb, 0, THERMAL_GENL_SAMPLING_GROUP, GFP_KERNEL);
++	genlmsg_multicast(&thermal_genl_family, skb, 0, THERMAL_GENL_SAMPLING_GROUP, GFP_KERNEL);
+ 
+ 	return 0;
+ out_cancel:
+@@ -282,7 +279,7 @@ static int thermal_genl_send_event(enum thermal_genl_event event,
+ 		return -ENOMEM;
+ 	p->msg = msg;
+ 
+-	hdr = genlmsg_put(msg, 0, 0, &thermal_gnl_family, 0, event);
++	hdr = genlmsg_put(msg, 0, 0, &thermal_genl_family, 0, event);
+ 	if (!hdr)
+ 		goto out_free_msg;
+ 
+@@ -292,7 +289,7 @@ static int thermal_genl_send_event(enum thermal_genl_event event,
+ 
+ 	genlmsg_end(msg, hdr);
+ 
+-	genlmsg_multicast(&thermal_gnl_family, msg, 0, THERMAL_GENL_EVENT_GROUP, GFP_KERNEL);
++	genlmsg_multicast(&thermal_genl_family, msg, 0, THERMAL_GENL_EVENT_GROUP, GFP_KERNEL);
+ 
+ 	return 0;
+ 
+@@ -593,7 +590,7 @@ static int thermal_genl_cmd_dumpit(struct sk_buff *skb,
+ 	int ret;
+ 	void *hdr;
+ 
+-	hdr = genlmsg_put(skb, 0, 0, &thermal_gnl_family, 0, cmd);
++	hdr = genlmsg_put(skb, 0, 0, &thermal_genl_family, 0, cmd);
+ 	if (!hdr)
+ 		return -EMSGSIZE;
+ 
+@@ -625,7 +622,7 @@ static int thermal_genl_cmd_doit(struct sk_buff *skb,
+ 		return -ENOMEM;
+ 	p.msg = msg;
+ 
+-	hdr = genlmsg_put_reply(msg, info, &thermal_gnl_family, 0, cmd);
++	hdr = genlmsg_put_reply(msg, info, &thermal_genl_family, 0, cmd);
+ 	if (!hdr)
+ 		goto out_free_msg;
+ 
+@@ -645,6 +642,27 @@ static int thermal_genl_cmd_doit(struct sk_buff *skb,
+ 	return ret;
+ }
+ 
++static int thermal_genl_bind(int mcgrp)
++{
++	struct thermal_genl_notify n = { .mcgrp = mcgrp };
++
++	if (WARN_ON_ONCE(mcgrp > THERMAL_GENL_MAX_GROUP))
++		return -EINVAL;
++
++	blocking_notifier_call_chain(&thermal_genl_chain, THERMAL_NOTIFY_BIND, &n);
++	return 0;
++}
++
++static void thermal_genl_unbind(int mcgrp)
++{
++	struct thermal_genl_notify n = { .mcgrp = mcgrp };
++
++	if (WARN_ON_ONCE(mcgrp > THERMAL_GENL_MAX_GROUP))
++		return;
++
++	blocking_notifier_call_chain(&thermal_genl_chain, THERMAL_NOTIFY_UNBIND, &n);
++}
++
+ static const struct genl_small_ops thermal_genl_ops[] = {
+ 	{
+ 		.cmd = THERMAL_GENL_CMD_TZ_GET_ID,
+@@ -673,12 +691,14 @@ static const struct genl_small_ops thermal_genl_ops[] = {
+ 	},
+ };
+ 
+-static struct genl_family thermal_gnl_family __ro_after_init = {
++static struct genl_family thermal_genl_family __ro_after_init = {
+ 	.hdrsize	= 0,
+ 	.name		= THERMAL_GENL_FAMILY_NAME,
+ 	.version	= THERMAL_GENL_VERSION,
+ 	.maxattr	= THERMAL_GENL_ATTR_MAX,
+ 	.policy		= thermal_genl_policy,
++	.bind		= thermal_genl_bind,
++	.unbind		= thermal_genl_unbind,
+ 	.small_ops	= thermal_genl_ops,
+ 	.n_small_ops	= ARRAY_SIZE(thermal_genl_ops),
+ 	.resv_start_op	= THERMAL_GENL_CMD_CDEV_GET + 1,
+@@ -686,12 +706,22 @@ static struct genl_family thermal_gnl_family __ro_after_init = {
+ 	.n_mcgrps	= ARRAY_SIZE(thermal_genl_mcgrps),
+ };
+ 
++int thermal_genl_register_notifier(struct notifier_block *nb)
++{
++	return blocking_notifier_chain_register(&thermal_genl_chain, nb);
++}
++
++int thermal_genl_unregister_notifier(struct notifier_block *nb)
++{
++	return blocking_notifier_chain_unregister(&thermal_genl_chain, nb);
++}
++
+ int __init thermal_netlink_init(void)
+ {
+-	return genl_register_family(&thermal_gnl_family);
++	return genl_register_family(&thermal_genl_family);
+ }
+ 
+ void __init thermal_netlink_exit(void)
+ {
+-	genl_unregister_family(&thermal_gnl_family);
++	genl_unregister_family(&thermal_genl_family);
+ }
+diff --git a/drivers/thermal/thermal_netlink.h b/drivers/thermal/thermal_netlink.h
+index 93a927e144d..e01221e8816 100644
+--- a/drivers/thermal/thermal_netlink.h
++++ b/drivers/thermal/thermal_netlink.h
+@@ -10,6 +10,19 @@ struct thermal_genl_cpu_caps {
+ 	int efficiency;
+ };
+ 
++enum thermal_genl_multicast_groups {
++	THERMAL_GENL_SAMPLING_GROUP = 0,
++	THERMAL_GENL_EVENT_GROUP = 1,
++	THERMAL_GENL_MAX_GROUP = THERMAL_GENL_EVENT_GROUP,
++};
++
++#define THERMAL_NOTIFY_BIND	0
++#define THERMAL_NOTIFY_UNBIND	1
++
++struct thermal_genl_notify {
++	int mcgrp;
++};
++
+ struct thermal_zone_device;
+ struct thermal_trip;
+ struct thermal_cooling_device;
+@@ -18,6 +31,9 @@ struct thermal_cooling_device;
+ #ifdef CONFIG_THERMAL_NETLINK
+ int __init thermal_netlink_init(void);
+ void __init thermal_netlink_exit(void);
++int thermal_genl_register_notifier(struct notifier_block *nb);
++int thermal_genl_unregister_notifier(struct notifier_block *nb);
++
+ int thermal_notify_tz_create(const struct thermal_zone_device *tz);
+ int thermal_notify_tz_delete(const struct thermal_zone_device *tz);
+ int thermal_notify_tz_enable(const struct thermal_zone_device *tz);
+@@ -48,6 +64,16 @@ static inline int thermal_notify_tz_create(const struct thermal_zone_device *tz)
+ 	return 0;
+ }
+ 
++static inline int thermal_genl_register_notifier(struct notifier_block *nb)
++{
++	return 0;
++}
++
++static inline int thermal_genl_unregister_notifier(struct notifier_block *nb)
++{
++	return 0;
++}
++
+ static inline int thermal_notify_tz_delete(const struct thermal_zone_device *tz)
+ {
+ 	return 0;
+diff --git a/include/linux/sched.h b/include/linux/sched.h
+index 3c2abbc587b..98332f2061f 100644
+--- a/include/linux/sched.h
++++ b/include/linux/sched.h
+@@ -137,6 +137,8 @@ struct user_event_mm;
+ 					 __TASK_TRACED | EXIT_DEAD | EXIT_ZOMBIE | \
+ 					 TASK_PARKED)
+ 
++#define IPC_CLASS_UNCLASSIFIED		0
++
+ #define task_is_running(task)		(READ_ONCE((task)->__state) == TASK_RUNNING)
+ 
+ #define task_is_traced(task)		((READ_ONCE(task->jobctl) & JOBCTL_TRACED) != 0)
+@@ -301,7 +303,7 @@ enum {
+ 	TASK_COMM_LEN = 16,
+ };
+ 
+-extern void scheduler_tick(void);
++extern void scheduler_tick(bool user_tick);
+ 
+ #define	MAX_SCHEDULE_TIMEOUT		LONG_MAX
+ 
+@@ -1550,6 +1552,24 @@ struct task_struct {
+ 	struct user_event_mm		*user_event_mm;
+ #endif
+ 
++#ifdef CONFIG_IPC_CLASSES
++	/*
++	 * A hardware-defined classification of task that reflects but is
++	 * not identical to the number of instructions per cycle.
++	 */
++	unsigned int			ipcc : 9;
++	/*
++	 * A candidate classification that arch-specific implementations
++	 * qualify for correctness.
++	 */
++	unsigned int			ipcc_tmp : 9;
++	/*
++	 * Counter to filter out transient candidate classifications
++	 * of a task.
++	 */
++	unsigned int			ipcc_cntr : 14;
++#endif
++
+ 	/*
+ 	 * New fields for task_struct should be added above here, so that
+ 	 * they are included in the randomized portion of task_struct.
+@@ -2187,4 +2207,6 @@ static inline int sched_core_idle_cpu(int cpu) { return idle_cpu(cpu); }
+ 
+ extern void sched_set_stop_task(int cpu, struct task_struct *stop);
+ 
++extern bool sched_smt_siblings_idle(int cpu);
++
+ #endif
+diff --git a/include/linux/sched/topology.h b/include/linux/sched/topology.h
+index 18572c9ea72..e988762cb25 100644
+--- a/include/linux/sched/topology.h
++++ b/include/linux/sched/topology.h
+@@ -298,4 +298,10 @@ static inline int task_node(const struct task_struct *p)
+ 	return cpu_to_node(task_cpu(p));
+ }
+ 
++#ifdef CONFIG_IPC_CLASSES
++extern void sched_enable_ipc_classes(void);
++#else
++static inline void sched_enable_ipc_classes(void) { }
++#endif
++
+ #endif /* _LINUX_SCHED_TOPOLOGY_H */
+diff --git a/init/Kconfig b/init/Kconfig
+index 3037a76a232..51bfe3bb7fb 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -849,6 +849,18 @@ config UCLAMP_BUCKETS_COUNT
+ 
+ 	  If in doubt, use the default value.
+ 
++config IPC_CLASSES
++	bool "IPC classes of tasks"
++	depends on SMP
++	help
++	  If selected, each task is assigned a classification value that
++	  reflects the type of instructions that the task executes. This
++	  classification reflects but is not equal to the number of
++	  instructions retired per cycle.
++
++	  The scheduler uses the classification value to improve the placement
++	  of tasks.
++
+ endmenu
+ 
+ #
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index 7019a40457a..d48c87ffa49 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -4524,6 +4524,11 @@ int wake_up_state(struct task_struct *p, unsigned int state)
+  */
+ static void __sched_fork(unsigned long clone_flags, struct task_struct *p)
+ {
++#ifdef CONFIG_IPC_CLASSES
++	p->ipcc				= IPC_CLASS_UNCLASSIFIED;
++	p->ipcc_tmp			= IPC_CLASS_UNCLASSIFIED;
++	p->ipcc_cntr			= 0;
++#endif
+ 	p->on_rq			= 0;
+ 
+ 	p->se.on_rq			= 0;
+@@ -5662,7 +5667,7 @@ static inline u64 cpu_resched_latency(struct rq *rq) { return 0; }
+  * This function gets called by the timer code, with HZ frequency.
+  * We call it with interrupts disabled.
+  */
+-void scheduler_tick(void)
++void scheduler_tick(bool user_tick)
+ {
+ 	int cpu = smp_processor_id();
+ 	struct rq *rq = cpu_rq(cpu);
+@@ -5674,6 +5679,9 @@ void scheduler_tick(void)
+ 	if (housekeeping_cpu(cpu, HK_TYPE_TICK))
+ 		arch_scale_freq_tick();
+ 
++	if (sched_ipcc_enabled() && user_tick)
++		arch_update_ipcc(curr);
++
+ 	sched_clock_tick();
+ 
+ 	rq_lock(rq, &rf);
+diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
+index f095767ea81..62d64c33ae5 100644
+--- a/kernel/sched/fair.c
++++ b/kernel/sched/fair.c
+@@ -1306,7 +1306,14 @@ update_stats_curr_start(struct cfs_rq *cfs_rq, struct sched_entity *se)
+  * Scheduling class queueing methods:
+  */
+ 
+-static inline bool is_core_idle(int cpu)
++/**
++ * sched_smt_siblings_idle - Check whether SMT siblings of a CPU are idle
++ * @cpu:	The CPU to check
++ *
++ * Returns true if all the SMT siblings of @cpu are idle or @cpu does not have
++ * SMT siblings. The idle state of @cpu is not considered.
++ */
++bool sched_smt_siblings_idle(int cpu)
+ {
+ #ifdef CONFIG_SCHED_SMT
+ 	int sibling;
+@@ -2015,7 +2022,7 @@ static inline int numa_idle_core(int idle_core, int cpu)
+ 	 * Prefer cores instead of packing HT siblings
+ 	 * and triggering future load balancing.
+ 	 */
+-	if (is_core_idle(cpu))
++	if (sched_smt_siblings_idle(cpu))
+ 		idle_core = cpu;
+ 
+ 	return idle_core;
+@@ -9460,6 +9467,13 @@ struct sg_lb_stats {
+ 	unsigned int nr_numa_running;
+ 	unsigned int nr_preferred_running;
+ #endif
++#ifdef CONFIG_IPC_CLASSES
++	unsigned long min_score; /* Min(score(rq->curr->ipcc)) */
++	unsigned short min_ipcc; /* Class of the task with the minimum IPCC score in the rq */
++	unsigned long sum_score; /* Sum(score(rq->curr->ipcc)) */
++	long ipcc_score_after; /* Prospective IPCC score after load balancing */
++	unsigned long ipcc_score_before; /* IPCC score before load balancing */
++#endif
+ };
+ 
+ /*
+@@ -9738,6 +9752,248 @@ group_type group_classify(unsigned int imbalance_pct,
+ 	return group_has_spare;
+ }
+ 
++#ifdef CONFIG_IPC_CLASSES
++static void init_rq_ipcc_stats(struct sg_lb_stats *sgs)
++{
++	/* All IPCC stats have been set to zero in update_sg_lb_stats(). */
++	sgs->min_score = ULONG_MAX;
++}
++
++static int rq_last_task_ipcc(int dst_cpu, struct rq *rq, unsigned short *ipcc)
++{
++	struct list_head *tasks = &rq->cfs_tasks;
++	struct task_struct *p;
++	struct rq_flags rf;
++	int ret = -EINVAL;
++
++	rq_lock_irqsave(rq, &rf);
++	if (list_empty(tasks))
++		goto out;
++
++	p = list_last_entry(tasks, struct task_struct, se.group_node);
++	if (p->flags & PF_EXITING || is_idle_task(p) ||
++	    !cpumask_test_cpu(dst_cpu, p->cpus_ptr))
++		goto out;
++
++	ret = 0;
++	*ipcc = p->ipcc;
++out:
++	rq_unlock(rq, &rf);
++	return ret;
++}
++
++/* Called only if cpu_of(@rq) is not idle and has tasks running. */
++static void update_sg_lb_ipcc_stats(int dst_cpu, struct sg_lb_stats *sgs,
++				    struct rq *rq)
++{
++	unsigned short ipcc;
++	unsigned long score;
++
++	if (!sched_ipcc_enabled())
++		return;
++
++	if (rq_last_task_ipcc(dst_cpu, rq, &ipcc))
++		return;
++
++	score = arch_get_ipcc_score(ipcc, cpu_of(rq));
++
++	/*
++	 * Ignore tasks with invalid scores. When finding the busiest group, we
++	 * prefer those with higher sum_score. This group will not be selected.
++	 */
++	if (IS_ERR_VALUE(score))
++		return;
++
++	sgs->sum_score += score;
++
++	if (score < sgs->min_score) {
++		sgs->min_score = score;
++		sgs->min_ipcc = ipcc;
++	}
++}
++
++static void update_sg_lb_stats_scores(struct sg_lb_stats *sgs,
++				      struct sched_group *sg,
++				      struct lb_env *env)
++{
++	unsigned long score_on_dst_cpu, before;
++	int busy_cpus;
++	long after;
++
++	if (!sched_ipcc_enabled())
++		return;
++
++	/*
++	 * IPCC scores are only useful during idle load balancing. For now,
++	 * only asym_packing uses IPCC scores.
++	 */
++	if (!(env->sd->flags & SD_ASYM_PACKING) ||
++	    env->idle == CPU_NOT_IDLE)
++		return;
++
++	/*
++	 * IPCC scores are used to break ties only between these types of
++	 * groups.
++	 */
++	if (sgs->group_type != group_fully_busy &&
++	    sgs->group_type != group_asym_packing)
++		return;
++
++	busy_cpus = sgs->group_weight - sgs->idle_cpus;
++
++	/* No busy CPUs in the group. No tasks to move. */
++	if (!busy_cpus)
++		return;
++
++	score_on_dst_cpu = arch_get_ipcc_score(sgs->min_ipcc, env->dst_cpu);
++
++	/*
++	 * Do not use IPC scores. sgs::ipcc_score_{after, before} will be zero
++	 * and not used.
++	 */
++	if (IS_ERR_VALUE(score_on_dst_cpu))
++		return;
++
++	before = sgs->sum_score;
++	after = before - sgs->min_score;
++
++	/* SMT siblings share throughput. */
++	if (busy_cpus > 1 && sg->flags & SD_SHARE_CPUCAPACITY) {
++		before /= busy_cpus;
++		/* One sibling will become idle after load balance. */
++		after /= busy_cpus - 1;
++	}
++
++	sgs->ipcc_score_after = after + score_on_dst_cpu;
++	sgs->ipcc_score_before = before;
++}
++
++/**
++ * sched_asym_ipcc_prefer - Select a sched group based on its IPCC score
++ * @a:	Load balancing statistics of a sched group
++ * @b:	Load balancing statistics of a second sched group
++ *
++ * Returns: true if @a has a higher IPCC score than @b after load balance.
++ * False otherwise.
++ */
++static bool sched_asym_ipcc_prefer(struct sg_lb_stats *a,
++				   struct sg_lb_stats *b)
++{
++	if (!sched_ipcc_enabled())
++		return false;
++
++	/* @a increases overall throughput after load balance. */
++	if (a->ipcc_score_after > b->ipcc_score_after)
++		return true;
++
++	/*
++	 * If @a and @b yield the same overall throughput, pick @a if
++	 * its current throughput is lower than that of @b.
++	 */
++	if (a->ipcc_score_after == b->ipcc_score_after)
++		return a->ipcc_score_before < b->ipcc_score_before;
++
++	return false;
++}
++
++/**
++ * sched_asym_ipcc_pick - Select a sched group based on its IPCC score
++ * @a:		A scheduling group
++ * @b:		A second scheduling group
++ * @a_stats:	Load balancing statistics of @a
++ * @b_stats:	Load balancing statistics of @b
++ *
++ * Returns: true if @a has the same priority and @a has tasks with IPC classes
++ * that yield higher overall throughput after load balance. False otherwise.
++ */
++static bool sched_asym_ipcc_pick(struct sched_group *a,
++				 struct sched_group *b,
++				 struct sg_lb_stats *a_stats,
++				 struct sg_lb_stats *b_stats)
++{
++	/*
++	 * Only use the class-specific preference selection if both sched
++	 * groups have the same priority.
++	 */
++	if (arch_asym_cpu_priority(a->asym_prefer_cpu) !=
++	    arch_asym_cpu_priority(b->asym_prefer_cpu))
++		return false;
++
++	return sched_asym_ipcc_prefer(a_stats, b_stats);
++}
++
++/**
++ * ipcc_score_delta - Get the IPCC score delta wrt the load balance's dst_cpu
++ * @rq:		A runqueue
++ * @env:	Load balancing environment
++ *
++ * Returns: The IPCC score delta that the last task enqueued in @rq would get
++ * if placed in the destination CPU of @env. LONG_MIN to indicate that the
++ * delta should not be used.
++ */
++static long ipcc_score_delta(struct rq *rq, struct lb_env *env)
++{
++	unsigned long score_src, score_dst;
++	unsigned short ipcc;
++
++	if (!sched_ipcc_enabled())
++		return LONG_MIN;
++
++	/* Only asym_packing uses IPCC scores at the moment. */
++	if (!(env->sd->flags & SD_ASYM_PACKING))
++		return LONG_MIN;
++
++	if (rq_last_task_ipcc(env->dst_cpu, rq, &ipcc))
++		return LONG_MIN;
++
++	score_dst = arch_get_ipcc_score(ipcc, env->dst_cpu);
++	if (IS_ERR_VALUE(score_dst))
++		return LONG_MIN;
++
++	score_src = arch_get_ipcc_score(ipcc, cpu_of(rq));
++	if (IS_ERR_VALUE(score_src))
++		return LONG_MIN;
++
++	return score_dst - score_src;
++}
++
++#else /* CONFIG_IPC_CLASSES */
++static void update_sg_lb_ipcc_stats(int dst_cpu, struct sg_lb_stats *sgs,
++				    struct rq *rq)
++{
++}
++
++static void init_rq_ipcc_stats(struct sg_lb_stats *sgs)
++{
++}
++
++static void update_sg_lb_stats_scores(struct sg_lb_stats *sgs,
++				      struct sched_group *sg,
++				      struct lb_env *env)
++{
++}
++
++static bool sched_asym_ipcc_prefer(struct sg_lb_stats *a,
++				   struct sg_lb_stats *b)
++{
++	return false;
++}
++
++static bool sched_asym_ipcc_pick(struct sched_group *a,
++				 struct sched_group *b,
++				 struct sg_lb_stats *a_stats,
++				 struct sg_lb_stats *b_stats)
++{
++	return false;
++}
++
++static long ipcc_score_delta(struct rq *rq, struct lb_env *env)
++{
++	return LONG_MIN;
++}
++
++#endif /* CONFIG_IPC_CLASSES */
++
+ /**
+  * sched_use_asym_prio - Check whether asym_packing priority must be used
+  * @sd:		The scheduling domain of the load balancing
+@@ -9757,7 +10013,7 @@ static bool sched_use_asym_prio(struct sched_domain *sd, int cpu)
+ 	if (!sched_smt_active())
+ 		return true;
+ 
+-	return sd->flags & SD_SHARE_CPUCAPACITY || is_core_idle(cpu);
++	return sd->flags & SD_SHARE_CPUCAPACITY || sched_smt_siblings_idle(cpu);
+ }
+ 
+ static inline bool sched_asym(struct sched_domain *sd, int dst_cpu, int src_cpu)
+@@ -9891,6 +10147,7 @@ static inline void update_sg_lb_stats(struct lb_env *env,
+ 	int i, nr_running, local_group;
+ 
+ 	memset(sgs, 0, sizeof(*sgs));
++	init_rq_ipcc_stats(sgs);
+ 
+ 	local_group = group == sds->local;
+ 
+@@ -9940,6 +10197,8 @@ static inline void update_sg_lb_stats(struct lb_env *env,
+ 			if (sgs->group_misfit_task_load < load)
+ 				sgs->group_misfit_task_load = load;
+ 		}
++
++		update_sg_lb_ipcc_stats(env->dst_cpu, sgs, rq);
+ 	}
+ 
+ 	sgs->group_capacity = group->sgc->capacity;
+@@ -9957,6 +10216,9 @@ static inline void update_sg_lb_stats(struct lb_env *env,
+ 
+ 	sgs->group_type = group_classify(env->sd->imbalance_pct, group, sgs);
+ 
++	if (!local_group)
++		update_sg_lb_stats_scores(sgs, group, env);
++
+ 	/* Computing avg_load makes sense only when group is overloaded */
+ 	if (sgs->group_type == group_overloaded)
+ 		sgs->avg_load = (sgs->group_load * SCHED_CAPACITY_SCALE) /
+@@ -10025,6 +10287,22 @@ static bool update_sd_pick_busiest(struct lb_env *env,
+ 	case group_asym_packing:
+ 		/* Prefer to move from lowest priority CPU's work */
+ 		return sched_asym_prefer(sds->busiest->asym_prefer_cpu, sg->asym_prefer_cpu);
++		if (sched_asym_prefer(sg->asym_prefer_cpu, sds->busiest->asym_prefer_cpu))
++			return false;
++		break;
++		if (sched_asym_prefer(sg->asym_prefer_cpu, sds->busiest->asym_prefer_cpu))
++			return false;
++
++		/*
++		 * Unlike other callers of sched_asym_prefer(), here both @sg
++		 * and @sds::busiest have tasks running. When they have equal
++		 * priority, their IPC class scores can be used to select a
++		 * better busiest.
++		 */
++		if (sched_asym_ipcc_pick(sds->busiest, sg, &sds->busiest_stat, sgs))
++			return false;
++
++		break;
+ 
+ 	case group_misfit_task:
+ 		/*
+@@ -10062,10 +10340,21 @@ static bool update_sd_pick_busiest(struct lb_env *env,
+ 		if (sgs->avg_load == busiest->avg_load) {
+ 			/*
+ 			 * SMT sched groups need more help than non-SMT groups.
+-			 * If @sg happens to also be SMT, either choice is good.
+ 			 */
+-			if (sds->busiest->flags & SD_SHARE_CPUCAPACITY)
+-				return false;
++			if (sds->busiest->flags & SD_SHARE_CPUCAPACITY) {
++				if (!(sg->flags & SD_SHARE_CPUCAPACITY))
++					return false;
++
++				/*
++				 * Between two SMT groups, use IPCC scores to pick the
++				 * one that would improve throughput the most (only
++				 * asym_packing uses IPCC scores for now).
++				 */
++				if (sched_ipcc_enabled() &&
++				    env->sd->flags & SD_ASYM_PACKING &&
++				    sched_asym_ipcc_prefer(busiest, sgs))
++					return false;
++			}
+ 		}
+ 
+ 		break;
+@@ -10975,6 +11264,7 @@ static struct rq *find_busiest_queue(struct lb_env *env,
+ {
+ 	struct rq *busiest = NULL, *rq;
+ 	unsigned long busiest_util = 0, busiest_load = 0, busiest_capacity = 1;
++	long busiest_ipcc_delta = LONG_MIN;
+ 	unsigned int busiest_nr = 0;
+ 	int i;
+ 
+@@ -11088,6 +11378,26 @@ static struct rq *find_busiest_queue(struct lb_env *env,
+ 			if (busiest_nr < nr_running) {
+ 				busiest_nr = nr_running;
+ 				busiest = rq;
++
++				/*
++				 * Remember the IPCC score of the busiest
++				 * runqueue. We may need it to break a tie with
++				 * other queues with equal nr_running.
++				 */
++				busiest_ipcc_delta = ipcc_score_delta(busiest, env);
++			/*
++			 * For ties, select @rq if doing would give its last
++			 * queued task a bigger IPC boost when migrated to
++			 * dst_cpu.
++			 */
++			} else if (busiest_nr == nr_running) {
++				long delta = ipcc_score_delta(rq, env);
++
++				if (busiest_ipcc_delta < delta) {
++					busiest_ipcc_delta = delta;
++					busiest_nr = nr_running;
++					busiest = rq;
++				}
+ 			}
+ 			break;
+ 
+@@ -11218,7 +11528,7 @@ static int should_we_balance(struct lb_env *env)
+ 		 * balancing cores, but remember the first idle SMT CPU for
+ 		 * later consideration.  Find CPU on an idle core first.
+ 		 */
+-		if (!(env->sd->flags & SD_SHARE_CPUCAPACITY) && !is_core_idle(cpu)) {
++		if (!(env->sd->flags & SD_SHARE_CPUCAPACITY) && !sched_smt_siblings_idle(cpu)) {
+ 			if (idle_smt == -1)
+ 				idle_smt = cpu;
+ 			/*
+diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
+index d2242679239..3c5b44b7765 100644
+--- a/kernel/sched/sched.h
++++ b/kernel/sched/sched.h
+@@ -2622,6 +2622,72 @@ void arch_scale_freq_tick(void)
+ }
+ #endif
+ 
++#ifdef CONFIG_IPC_CLASSES
++DECLARE_STATIC_KEY_FALSE(sched_ipcc);
++
++static inline bool sched_ipcc_enabled(void)
++{
++	return static_branch_unlikely(&sched_ipcc);
++}
++
++#ifndef arch_update_ipcc
++/**
++ * arch_update_ipcc() - Update the IPC class of the current task
++ * @curr:		The current task
++ *
++ * Request that the IPC classification of @curr is updated.
++ *
++ * Returns: none
++ */
++static __always_inline
++void arch_update_ipcc(struct task_struct *curr)
++{
++}
++#endif
++
++#ifndef arch_get_ipcc_score
++
++#define SCHED_IPCC_SCORE_SCALE (1L << SCHED_FIXEDPOINT_SHIFT)
++/**
++ * arch_get_ipcc_score() - Get the IPC score of a class of task
++ * @ipcc:	The IPC class
++ * @cpu:	A CPU number
++ *
++ * The IPC performance scores reflects (but it is not identical to) the number
++ * of instructions retired per cycle for a given IPC class. It is a linear and
++ * abstract metric. Higher scores reflect better performance.
++ *
++ * The IPC score can be normalized with respect to the class, i, with the
++ * highest IPC score on the CPU, c, with highest performance:
++ *
++ *            IPC(i, c)
++ *  ------------------------------------ * SCHED_IPCC_SCORE_SCALE
++ *     max(IPC(i, c) : (i, c))
++ *
++ * Scheduling schemes that want to use the IPC score along with other
++ * normalized metrics for scheduling (e.g., CPU capacity) may need to normalize
++ * it.
++ *
++ * Other scheduling schemes (e.g., asym_packing) do not need normalization.
++ *
++ * Returns the performance score of an IPC class, @ipcc, when running on @cpu.
++ * Error when either @ipcc or @cpu are invalid.
++ */
++static __always_inline
++unsigned long arch_get_ipcc_score(unsigned short ipcc, int cpu)
++{
++	return SCHED_IPCC_SCORE_SCALE;
++}
++#endif
++#else /* CONFIG_IPC_CLASSES */
++
++#define arch_get_ipcc_score(ipcc, cpu) (-EINVAL)
++#define arch_update_ipcc(curr)
++
++static inline bool sched_ipcc_enabled(void) { return false; }
++
++#endif /* CONFIG_IPC_CLASSES */
++
+ #ifndef arch_scale_freq_capacity
+ /**
+  * arch_scale_freq_capacity - get the frequency scale factor of a given CPU.
+diff --git a/kernel/sched/topology.c b/kernel/sched/topology.c
+index 99ea5986038..247e8aa94b9 100644
+--- a/kernel/sched/topology.c
++++ b/kernel/sched/topology.c
+@@ -677,6 +677,15 @@ DEFINE_PER_CPU(struct sched_domain __rcu *, sd_asym_cpucapacity);
+ DEFINE_STATIC_KEY_FALSE(sched_asym_cpucapacity);
+ DEFINE_STATIC_KEY_FALSE(sched_cluster_active);
+ 
++#ifdef CONFIG_IPC_CLASSES
++DEFINE_STATIC_KEY_FALSE(sched_ipcc);
++
++void sched_enable_ipc_classes(void)
++{
++	static_branch_enable_cpuslocked(&sched_ipcc);
++}
++#endif
++
+ static void update_top_cache_domain(int cpu)
+ {
+ 	struct sched_domain_shared *sds = NULL;
+diff --git a/kernel/time/timer.c b/kernel/time/timer.c
+index dee29f1f5b7..2271bdce67a 100644
+--- a/kernel/time/timer.c
++++ b/kernel/time/timer.c
+@@ -2488,7 +2488,7 @@ void update_process_times(int user_tick)
+ 	if (in_irq())
+ 		irq_work_tick();
+ #endif
+-	scheduler_tick();
++	scheduler_tick(user_tick);
+ 	if (IS_ENABLED(CONFIG_POSIX_TIMERS))
+ 		run_posix_cpu_timers();
+ }
+-- 
+2.44.0
+
+
+From edf7b3779003fe0a753cc8c5b6ba83c42f1a4202 Mon Sep 17 00:00:00 2001
+From: Laio Oriel Seman <laioseman@gmail.com>
+Date: Thu, 28 Mar 2024 19:13:06 -0300
+Subject: [PATCH 2/2] ITD fixes
+
+---
+ kernel/sched/fair.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
+index 62d64c33ae5..15eebd220c2 100644
+--- a/kernel/sched/fair.c
++++ b/kernel/sched/fair.c
+@@ -10286,10 +10286,6 @@ static bool update_sd_pick_busiest(struct lb_env *env,
+ 
+ 	case group_asym_packing:
+ 		/* Prefer to move from lowest priority CPU's work */
+-		return sched_asym_prefer(sds->busiest->asym_prefer_cpu, sg->asym_prefer_cpu);
+-		if (sched_asym_prefer(sg->asym_prefer_cpu, sds->busiest->asym_prefer_cpu))
+-			return false;
+-		break;
+ 		if (sched_asym_prefer(sg->asym_prefer_cpu, sds->busiest->asym_prefer_cpu))
+ 			return false;
+ 
+-- 
+2.44.0
+

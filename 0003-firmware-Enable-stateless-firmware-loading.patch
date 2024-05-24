@@ -1,0 +1,30 @@
+From 7e775accee3419bbb779d22e6adc75dc4165d4dd Mon Sep 17 00:00:00 2001
+From: William Douglas <william.douglas@intel.com>
+Date: Wed, 20 Jun 2018 17:23:21 +0000
+Subject: [PATCH 3/5] firmware: Enable stateless firmware loading
+
+Prefer the order of specific version before generic and /etc before
+/lib to enable the user to give specific overrides for generic
+firmware and distribution firmware.
+
+Signed-off-by: Alexandre Frade <kernel@xanmod.org>
+---
+ drivers/base/firmware_loader/main.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/base/firmware_loader/main.c b/drivers/base/firmware_loader/main.c
+index da8ca01d011c..682027d2fd26 100644
+--- a/drivers/base/firmware_loader/main.c
++++ b/drivers/base/firmware_loader/main.c
+@@ -471,6 +471,8 @@ static int fw_decompress_xz(struct device *dev, struct fw_priv *fw_priv,
+ static char fw_path_para[256];
+ static const char * const fw_path[] = {
+ 	fw_path_para,
++	"/etc/firmware/" UTS_RELEASE,
++	"/etc/firmware",
+ 	"/lib/firmware/updates/" UTS_RELEASE,
+ 	"/lib/firmware/updates",
+ 	"/lib/firmware/" UTS_RELEASE,
+-- 
+2.43.0
+
