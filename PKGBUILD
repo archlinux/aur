@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=speedata-publisher
-pkgver=4.19.3
+pkgver=4.19.5
 pkgrel=1
 pkgdesc='a database publishing software that creates high-quality layouted PDFs fully automatically'
 arch=(x86_64)
@@ -19,7 +19,7 @@ provides=(libsplib.so
           luaglue.so)
 _archive="${pkgname#*-}-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('06e99977355363bdef00ce68cef4781856572372a99548b591250af44da7c92e')
+sha256sums=('603b12b18eab4e543c72d449e5ada486f5baff9a2baeae79dbf3b88f8f434002')
 
 prepare() {
 	cd "$_archive"
