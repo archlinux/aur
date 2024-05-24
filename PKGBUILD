@@ -9,14 +9,13 @@ pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
 url='https://rptools.net/tools/maptool'
 license=('AGPL3')
-depends=('java-runtime=21' 'java-openjfx=21')
-makedepends=('git' 'dpkg' 'java-environment=21' 'gradle' 'xdg-utils' 'rpm-tools')
-optdepends=()
+depends=()
+makedepends=('git' 'dpkg' 'jdk21-openjdk' 'gradle' 'xdg-utils' 'rpm-tools')
 source=(
 	"git+https://github.com/RPTools/${pkgname}.git#tag=${pkgver}"
 	"${pkgname}.sh")
-sha256sums=('SKIP'
-            '746ab40aa2226355f33135eb748bdc4c5653c8239574683b508510e0a0becf0a')
+sha256sums=('6c7ba98ffb42566e26f802f7dc59b46352ce08a44749fa397f540d240a711c33'
+            'c1b1977801cfd84514359f405b5cb3fbeb56b1466d8cabc2ab87c41f79a590f9')
 install="${pkgname}.install"
 
 _prefix="opt/$pkgname"
@@ -42,6 +41,8 @@ check() {
 }
 
 package() {
+	depends+=('java-runtime=21' 'java-openjfx=21')
+	
 	cd "${pkgdir}"
 	
 	dpkg-deb -x "${srcdir}/${pkgname}/releases/"*.deb .

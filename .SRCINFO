@@ -8,15 +8,15 @@ pkgbase = maptool
 	license = AGPL3
 	makedepends = git
 	makedepends = dpkg
-	makedepends = java-environment=21
+	makedepends = jdk21-openjdk
 	makedepends = gradle
 	makedepends = xdg-utils
 	makedepends = rpm-tools
-	depends = java-runtime=21
-	depends = java-openjfx=21
 	source = git+https://github.com/RPTools/maptool.git#tag=1.14.3
 	source = maptool.sh
-	sha256sums = SKIP
-	sha256sums = 746ab40aa2226355f33135eb748bdc4c5653c8239574683b508510e0a0becf0a
+	sha256sums = 6c7ba98ffb42566e26f802f7dc59b46352ce08a44749fa397f540d240a711c33
+	sha256sums = c1b1977801cfd84514359f405b5cb3fbeb56b1466d8cabc2ab87c41f79a590f9
 
 pkgname = maptool
+	depends = java-runtime=21
+	depends = java-openjfx=21

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-MAP_TOOL_JAVA="${MAP_TOOL_JAVA:-/usr/lib/jvm/default-runtime}"
+MAP_TOOL_JAVA="${MAP_TOOL_JAVA:-/usr/lib/jvm/java-21-openjdk}"
 JAVAFX_PATH="${JAVAFX_PATH:-$MAP_TOOL_JAVA/lib}"
 
 _javajx_classes="$(ls -U1 "$JAVAFX_PATH/javafx"*.jar | tr '\n' ':')"
