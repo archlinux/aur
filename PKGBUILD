@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=sunshine-git
-pkgver=nightly.dev.r830.gcacadc4
+pkgver=2024.524.163829.r1.gdd8aee2
 pkgrel=1
 pkgdesc="Game Stream server for Moonlight, latest git"
 arch=('x86_64')
@@ -13,8 +13,10 @@ depends=(
 avahi
 boost-libs
 curl
+libayatana-appindicator
 libevdev
 libmfx
+libnotify
 libpulse
 libva
 libvdpau
@@ -47,7 +49,7 @@ provides=(sunshine)
 conflicts=(sunshine sunshine-nox)
 
 source=(
-git+https://github.com/LizardByte/Sunshine.git#branch=nightly
+git+https://github.com/LizardByte/Sunshine.git#branch=master
 git+https://github.com/moonlight-stream/moonlight-common-c.git
 git+https://gitlab.com/eidheim/Simple-Web-Server.git
 git+https://github.com/LizardByte/Virtual-Gamepad-Emulation-Client.git
