@@ -1,0 +1,35 @@
+pkgbase = google-chrome-bin-wayland-vulkan
+	pkgdesc = The popular web browser by Google (Stable Channel) with a binary patch to enable support for Vulkan with --ozone-platform=wayland.
+	pkgver = 125.0.6422.112
+	pkgrel = 1
+	url = https://www.google.com/chrome
+	install = google-chrome-bin-wayland-vulkan.install
+	arch = x86_64
+	license = custom:chrome
+	makedepends = radare2
+	depends = alsa-lib
+	depends = gtk3
+	depends = libcups
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = ttf-liberation
+	depends = xdg-utils
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	optdepends = kdialog: for file dialogs in KDE
+	optdepends = gnome-keyring: for storing passwords in GNOME keyring
+	optdepends = kwallet: for storing passwords in KWallet
+	provides = google-chrome
+	conflicts = google-chrome
+	options = !emptydirs
+	options = !strip
+	source = https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_125.0.6422.112-1_amd64.deb
+	source = eula_text.html
+	source = google-chrome-stable.sh
+	source = r2-binary-patch-script
+	sha512sums = f6e22ae7b327266c0b68cad16eb3705ce4dd800f6aecb648c24ce82d26024d7c85103fac1689afb96ee3ef42626c4094f0a53c2629c173720814f78ca2bbc946
+	sha512sums = a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396
+	sha512sums = de02b498a4b5b93e21622c8dba57befe795d733a04656be911cc38e28bfef0e20470450f44be523bbde8d4de28f79c10434846ca01fc2a2f4e67707b79332f94
+	sha512sums = 8b9bdff20112a996a39ba53bc220390b78484de20c440b1182f933e04661d86c55b5cf05a2f24601eed145d7a2c93becdd954478354705ad2482c7d7fb8169fa
+
+pkgname = google-chrome-bin-wayland-vulkan

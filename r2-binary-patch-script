@@ -1,0 +1,8 @@
+# find 4889430841c70604000000 which is 'mov qword [rbx + 8], rax; mov dword [r14], 4'
+/x 4889430841c70604000000
+# seek to the first hit
+s hit0_0
+# seek to the "04" which is ANGLEImplementation::kOpenGLES
+s+7
+# Overwrite the "04" with "07" which is ANGLEImplementation::kVulkan
+w1+2
