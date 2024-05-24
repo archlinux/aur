@@ -2,7 +2,7 @@
 _UpstreamPkgName=NVEnc
 pkgname=${_UpstreamPkgName,,}
 pkgver=7.53
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA Video Codec based command line encoder"
 arch=('x86_64')
 url="https://github.com/rigaya/$_UpstreamPkgName"
@@ -28,7 +28,7 @@ build() {
 	git submodule init
 	git config --local submodule.cppcodec "$srcdir/cppcodec"
         git submodule update cppcodec
-	./configure --prefix=/usr
+	CXX=g++-13 ./configure --prefix=/usr
 	make
 }
 
