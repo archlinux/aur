@@ -4,7 +4,7 @@ pkgname="${_pkgname//_/-}-bin"
 _appname="SWC Minecraft Launcher"
 pkgver=1.1.12
 _electronversion=28
-pkgrel=3
+pkgrel=4
 pkgdesc="Quickly and easily launch Software City's Minecraft-Modpacks through this beautiful and custom Minecraft Launcher!"
 arch=('x86_64')
 url="https://projects.software-city.org/p/mc-launcher"
@@ -22,12 +22,13 @@ source=(
 )
 sha256sums=('de1ec724f3d00717d3354232399602b68eaec067deb9a842c12d7a35e50d6d23'
             '2fc239445e58117449b5049215f6540a4f37dd25e4ed79a7325b57e1406c1437'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_appname}/${_pkgname}\"|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
