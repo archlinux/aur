@@ -1,17 +1,17 @@
 pkgbase = postcat-bin
 	pkgdesc = Postcat 是一个可扩展的 API 工具平台。集合基础的 API 管理和测试功能，并且可以通过插件简化你的 API 开发工作，让你可以更快更好地创建 API。An extensible API tool.
 	pkgver = 0.5.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.postcat.com/
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron22
-	depends = hicolor-icon-theme
+	depends = nodejs
 	provides = postcat=0.5.1
 	conflicts = postcat
 	source = postcat-0.5.1.AppImage::https://github.com/Postcatlab/postcat/releases/download/v0.5.1/Postcat-0.5.1.AppImage
 	source = postcat.sh
 	sha256sums = 9a1a3928d64df829b151d9aac4a69a4a8a0db6427f478c8af1cead260383e1ae
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = postcat-bin
