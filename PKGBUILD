@@ -3,15 +3,15 @@
 _pkgname=mimic
 _pkgbase=$_pkgname-bpf
 pkgname=($_pkgbase $_pkgbase-dkms)
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="eBPF UDP -> TCP obfuscator"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/hack3ric/$_pkgname"
 license=('GPL-2.0-only')
 makedepends=('git' 'clang' 'bpf' 'ruby-ronn-ng' 'libbpf' 'libffi')
-source=("https://github.com/hack3ric/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('6ebb1d477b71d5cb52064f460cb78636ad82249531b9eff33066dd5438feceb94c16341bd7e32a28684e1ba4b0ad134205246b469deb32eda9dba1bafeab0561')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/hack3ric/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('f2c7816fd8b087a7c72277fd220f5147c20d9676486ce3255d5275de3717d46c261ac679573bfc7694620964f6e8a7b9d263a0ee378ade8859678f6fbe5e7af8')
 
 prepare() {
   cd $_pkgname-$pkgver
