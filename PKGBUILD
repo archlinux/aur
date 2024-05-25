@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour-git
-pkgver=0.4.4.r4421.df4a80b5
+pkgver=0.4.4.r4453.2aa9cac7
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
@@ -12,6 +12,7 @@ depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-declarative' 'qt6-mu
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
              'python' 'range-v3' 'fmt' 'microsoft-gsl' 'catch2'
              'clang' 'llvm')
+optdepends=('ncurses: for contour terminfo database')
 source=("${pkgname}::git+https://github.com/contour-terminal/contour.git")
 sha512sums=('SKIP')
 provides=('contour')
@@ -71,6 +72,9 @@ package() {
 
   cd "${srcdir}/build"
   DESTDIR="${pkgdir}" cmake --build . --target install
+
+  # provided by ncurses now
+  rm -rf "${pkgdir}/usr/share/terminfo"
 
   cd "${srcdir}/${pkgname}"
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
