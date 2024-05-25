@@ -1,0 +1,20 @@
+pkgbase = singlefileextractor-git
+	pkgdesc = A tool for extracting contents (assemblies, configuration, etc.) from a single-file dotnet application.
+	pkgver = r21.eadc323
+	pkgrel = 1
+	url = https://github.com/Droppers/SingleFileExtractor
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-6.0
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	provides = singlefileextractor
+	conflicts = singlefileextractor
+	options = !strip
+	options = !debug
+	source = singlefileextractor-git::git+https://github.com/Droppers/SingleFileExtractor.git
+	sha256sums = SKIP
+
+pkgname = singlefileextractor-git
