@@ -4,7 +4,7 @@
 # Contributor: Thiago Franco de Moraes <totonixsame@gmail.com>
 
 pkgname=gdcm
-pkgver=3.0.23
+pkgver=3.0.24
 pkgrel=1
 pkgdesc="C++ library for DICOM medical files"
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(cmake python swig)
 optdepends=('python: python bindings')
 provides=(libgdcmMEXD.so libgdcmDSED.so libgdcmMSFF.so)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/malaterre/GDCM/archive/v${pkgver}.tar.gz")
-sha512sums=('a1c45434e925ddac293993014686865aecf1b6745013ed6a141b6ee1bdbe7ddef6abcfc2491583e63f33f4292617ee65412da4c41f38731409df9149903a8772')
+sha512sums=('2fe28444cee171a536d63f26c1ad7308a03b946e79dc8b7d648b5c7e6f4a8f52c0c32ec9cf463d95b876db31becc81541638b97fc7f15b79ae04de5988d6941e')
 
 build() {
   pysitepackages=$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')
