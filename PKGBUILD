@@ -7,13 +7,13 @@
 _pkgname=audacious
 pkgname=$_pkgname-gtk3
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, advanced audio player focused on audio quality"
 arch=('i686' 'x86_64')
 url="https://audacious-media-player.org/"
 license=('BSD')
 depends=('gtk3' 'glib2')
-makedepends=('python') # for gdbus-codegen
+makedepends=('python-packaging') # for gdbus-codegen
 optdepends=('unzip: zipped skins support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
