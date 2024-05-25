@@ -4,7 +4,7 @@ _pkgroot=navigation2
 _pkgname=nav2_dwb_controller/costmap_queue
 pkgname=ros2-humble-costmap-queue
 pkgver=1.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="The costmap_queue package"
 url="https://index.ros.org/p/costmap_queue/"
 arch=('any')
@@ -23,6 +23,7 @@ build() {
     cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
+        -DBUILD_SHARED_LIBS=ON \
         -Wno-dev
     
     cmake --build build
