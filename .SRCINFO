@@ -1,7 +1,7 @@
 pkgbase = python-pytest-shell-utilities
 	pkgdesc = Pytest plugin providing fixtures and code to help with running shell commands on tests
 	pkgver = 1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/saltstack/pytest-shell-utilities
 	arch = any
 	license = Apache-2.0
@@ -20,7 +20,6 @@ pkgbase = python-pytest-shell-utilities
 	depends = python-pytest-helpers-namespace
 	depends = python-pytest-skip-markers
 	depends = python-psutil
-	depends = python-typing_extensions
 	source = python-pytest-shell-utilities-1.9.0.tar.gz::https://github.com/saltstack/pytest-shell-utilities/archive/refs/tags/1.9.0.tar.gz
 	sha256sums = d4b4f22395cf180056e49d537a8374537b1c7287ccdddefc0e7be5cbdbd0b46c
 	b2sums = e17b3903b8b3b9c2a8b3d708a1031c5b18beb4741006cec5cf2b8586fb1a86c0034e374927f09786dd036d01ae8811f4eacdaa28053d3205d19bb122211b6437

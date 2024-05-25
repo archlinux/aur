@@ -3,7 +3,7 @@
 _name=pytest-shell-utilities
 pkgname=python-pytest-shell-utilities
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Pytest plugin providing fixtures and code to help with running shell commands on tests"
 arch=(any)
 url="https://github.com/saltstack/pytest-shell-utilities"
@@ -16,7 +16,6 @@ depends=(
   python-pytest-helpers-namespace
   python-pytest-skip-markers
   python-psutil
-  python-typing_extensions
 )
 makedepends=(
   python-build
