@@ -6,7 +6,7 @@
 
 pkgname=tupitube
 pkgver=0.2.18
-pkgrel=5
+pkgrel=6
 pkgdesc='Design and authoring tool for digital artists interested in 2D animation'
 arch=('x86_64')
 url='https://tupitube.com/'
@@ -33,6 +33,7 @@ prepare() {
 
 build() {
   cd $pkgname.desk
+  CFLAGS+=" -Wno-implicit-function-declaration" \
   ./configure --prefix=/usr --libdir=/usr/lib --without-debug
   make
 }

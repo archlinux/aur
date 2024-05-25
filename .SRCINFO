@@ -1,0 +1,21 @@
+pkgbase = tupitube
+	pkgdesc = Design and authoring tool for digital artists interested in 2D animation
+	pkgver = 0.2.18
+	pkgrel = 6
+	url = https://tupitube.com/
+	arch = x86_64
+	license = GPL2
+	makedepends = ruby-rexml
+	depends = ffmpeg
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = quazip
+	replaces = tupitube.desk
+	source = https://downloads.sourceforge.net/tupi2d/tupitube.desk-0.2.18.tar.gz
+	source = tupitube.appdata.xml
+	source = ffmpeg5.patch
+	sha256sums = b765e39426531c383cc88cda62c5331efe5f965d02ec079e55eddd077749a4aa
+	sha256sums = 99fbafe0b359130d53278db3cada052f8245c325dcb82ce33997322dd750707a
+	sha256sums = b08c12db5f9c66128f31c398ae5a50d96b4fdfd895b47c62fe0d3dab9325f45a
+
+pkgname = tupitube
