@@ -3,7 +3,7 @@
 # Contributor: Zhaofeng Li <hello@zhaofeng.li>
 
 pkgname=gortr
-pkgver=0.14.8
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="The RPKI-to-Router server used at Cloudflare"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   'gortr.sysusers'
 )
 
-sha512sums=('2d1793948783c40f4156f35e7b0ceb7422a09fe2d23f5d12373c8d3442688530329e1552c35ce63f6aef3b31efba10737095fde1e35e2bbb8a08fe4cbc1c311e'
+sha512sums=('08a082324ba8aafe8aa5785aeb3b90c12c679da40960337f4468d6941f280c7761c0aefbae38555721418874c7c4f16dd159785e1360f7fbc0f58facba378497'
             '3b48c5aa6e4ee074df4e7087f664a114f9fd9b5d586f17cad9cc5af6a6bff788f46012dbec37b5c08e5b858bcbe7f59d7fc65e013104a57a5606e1c3d0b9ee61'
             'c5a1bfb1957ef42d73811d087151c565beaec46b0d533dcd27661304e26e394040f0c4f3d75b1eedd6728e3c4a27c07db5a626cb8d8e8fe99bc6851f858df955'
             'be46844e548f7eaf46c7f7b07db42b192c88f7c2cb980ab0dca952838ad0c80854f21414f12d47f62f51128ddd5d971e243a8846eece604228c2a4d13d64f1d7')
