@@ -1,7 +1,7 @@
 pkgbase = vimscripts-autoclose
 	pkgdesc = plugin that automatically closes quote, parentheses, brackets, braces, etc
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vim-scripts/AutoClose
 	arch = any
 	license = unknown
@@ -13,4 +13,3 @@ pkgbase = vimscripts-autoclose
 	md5sums = 8eb8630367d6978f3e2696df27eff4eb
 
 pkgname = vimscripts-autoclose
-
