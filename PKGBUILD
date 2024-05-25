@@ -1,7 +1,7 @@
 # Maintainer: Andre Schneider <andre.schneider@outlook.at>
 
 pkgname=tapps2
-pkgver=1.20
+pkgver=1.21.1
 _pkgname=tapps2-$pkgver
 pkgrel=1
 pkgdesc="A vector-based drawing program which was developed for planning and programming of
