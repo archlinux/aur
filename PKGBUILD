@@ -1,8 +1,9 @@
 # Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
 pkgname=ros2-humble-slam-toolbox
+_pkgname=slam_toolbox
 pkgver=2.6.4
-pkgrel=4
+pkgrel=5
 pkgdesc="This package provides a sped up improved slam karto with updated SDK and visualization and modification toolsets"
 url="https://index.ros.org/p/slam_toolbox/"
 arch=('any')
