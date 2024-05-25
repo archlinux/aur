@@ -5,21 +5,24 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=glances-git
-pkgver=3.4.0.r541.g1de207e
+pkgver=3.4.0.5.r724.gc187c14
 pkgrel=1
 pkgdesc='CLI curses-based monitoring tool (git)'
 arch=(any)
 url=https://github.com/nicolargo/glances
-license=(LGPL-3.0-only)
+license=(LGPL-3.0-or-later)
 makedepends=(python-setuptools python-build python-installer python-wheel git)
-depends=(python python-psutil python-future python-defusedxml python-ujson python-pytz python-pydantic)
+depends=(python python-psutil python-future python-defusedxml python-ujson python-pydantic python-packaging python-orjson)
 optdepends=('hddtemp: HDD temperature monitoring support'
-            'python-bottle: web server support'
+            'uvicorn: for WebUI / RestFull API'
+            'python-jinja: for WebUI / RestFull API'
+            'python-fastapi: for WebUI / RestFull API'
             'python-docker: for the Docker monitoring support'
             'python-matplotlib: for graphical/chart support'
             'python-netifaces: for the IP plugin'
             'python-zeroconf: for the autodiscover mode'
-            'python-pystache: templating engine')
+            'python-pystache: templating engine'
+            'python-prometheus_client: for the Prometheus export module')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=(git+"${url}".git
