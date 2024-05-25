@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gee
-_pkgver=4.13-26
+_pkgver=4.13-27
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Generalized Estimation Equation Solver"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0dfe58c9fb7b6f6627d0b501eb3ba15e')
-b2sums=('e077fe84c3ca1d32784a893a68e4ed8e301f80b7a6dce3232b64f08cdc230978fb22af216f449b0e7c9002f23eafc7430e07e78eba93e3a6988ddab24cdf040b')
+md5sums=('c8c12b0d5dcbd8480ad4def6f1523991')
+b2sums=('ad94f8bc35863b72c9a5c2cb540a80470f79d584b4cb53b7eb301cea14f1cd360f19cf91e25f32ae7dd274b1cf81b1235cb8e8b0ac4825a57fd5d2112cf25b04')
 
 build() {
   mkdir build
