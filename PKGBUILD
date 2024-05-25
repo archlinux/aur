@@ -3,12 +3,12 @@
 _pkgname='vector'
 pkgname="python-${_pkgname}"
 pkgver='1.3.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for 2D, 3D, and Lorentz vectors, especially arrays of vectors, to solve common physics problems in a NumPy-like way."
 arch=('any')
 url='https://github.com/scikit-hep/vector'
 license=('MIT')
-depends=('python-numpy' 'python-packaging' 'python-importlib-metadata' 'python-typing_extensions')
+depends=('python-numpy' 'python-packaging' 'python-importlib-metadata')
 optdepends=('python-awkward: Awkward array support')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
 checkdepends=('python-pytest' 'python-awkward' 'python-papermill' 'python-fsspec')
