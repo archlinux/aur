@@ -1,72 +1,105 @@
-# Maintainer: zhullyb <zhullyb [at] outlook dot com>
+# Maintainer: detiam <dehe_tian [at] outlook dot com>
+# Contributor: zhullyb <zhullyb [at] outlook dot com>
 # Contributor: weearc <q19981121 [at] 163 dot com>
 # Contributor: JimMoen <LnJimMoen [at] outlook dot com>
-pkgname=motrix
+
+pkgname=motrix-electron
 _pkgname=Motrix
 pkgver=1.8.19
-pkgrel=3
-epoch=
-pkgdesc="A full-featured download manager (release version)"
+pkgrel=1
+pkgdesc="A full-featured download manager (use extra/electron)"
 arch=("x86_64")
-url="https://github.com/agalwood/Motrix"
+url="https://github.com/detiam/Motrix"
 license=('MIT')
-groups=()
-depends=('gtk3' 'libxcb' 'electron22')
-makedepends=('npm' 'yarn' 'nodejs' 'python')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=('motrix-git')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("motrix.desktop"
-    "motrix"
-    "https://github.com/agalwood/Motrix/archive/v${pkgver}.tar.gz")
-noextract=()
-sha256sums=('c5f185162cdb83c387399e314be355585837a9efcd8ac35425656e4d24f7a5b3'
-            'bb1432adbac2120ef5c59d718f1cd48ef5fc920d3d1231ba32390c700465f3a5'
-            'd2a48692549d426e9dfa0fad9897dddf200b7b82198d59e64819d419114a10d8')
-validpgpkeys=()
+depends=('electron') # tested work with electron 30
+makedepends=('volta' 'jq' 'gendesk')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+replaces=("$_pkgname")
+commit=630419471e2ce48759743ed2390e8b19e453eeb4
+source=("$_pkgname-$commit.tar.gz::${url}/archive/${commit}.tar.gz")
+sha1sums=('7b9c27baaae0f7e5a0b5e04acd6219392d39b7b8')
 
-#_ensure_local_nvm() {
-    # let's be sure we are starting clean
-#    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-#    export NVM_DIR="${srcdir}/.nvm"
+_install_dir="/usr/lib/${pkgname}"
 
-    # The init script returns 3 if version specified
-    # in ./.nvrc is not (yet) installed in $NVM_DIR
-    # but nvm itself still gets loaded ok
-#    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-#}
+_use_srcdir() {
+    # for not influence user home
+    HOME="$srcdir"
+    VOLTA_HOME="$HOME/.volta"
+    PATH="$VOLTA_HOME/bin:$PATH"
+}
 
-#prepare() {
-#    _ensure_local_nvm
-#    nvm install 14
-#}
+prepare() {
+    cd "$_pkgname-$commit"
+    _use_srcdir
+    volta run yarn
+}
 
 build() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
-#    _ensure_local_nvm
-    export YARN_CACHE_FOLDER="${srcdir}/yarn_cache"
-    yarn
-    yarn run build:dir
+    cd "$_pkgname-$commit"
+    _use_srcdir
+    yarn run build:github
+    mkdir app
+    cp -a dist app
+    jq '{
+            name,
+            version,
+            description,
+            homepage,
+            author,
+            copyright,
+            license,
+            main,
+            dependencies,
+            volta
+         }' package.json > app/package.json
+    yarn install \
+        --cwd=app \
+        --prod \
+        --no-lockfile \
+        --non-interactive
 }
 
 package() {
+    cd "$_pkgname-$commit"
 
-    install -Dm 644 ${srcdir}/${_pkgname}-${pkgver}/release/linux-unpacked/resources/app.asar ${pkgdir}/usr/lib/${pkgname}/app.asar
-    install -Dm 755 ${srcdir}/${_pkgname}-${pkgver}/release/linux-unpacked/resources/engine/aria2c ${pkgdir}/usr/lib/${pkgname}/engine/aria2c
-    install -Dm 644 ${srcdir}/${_pkgname}-${pkgver}/release/linux-unpacked/resources/engine/aria2.conf ${pkgdir}/usr/lib/${pkgname}/engine/aria2.conf
+    # copy file
+    install -dm755 "$pkgdir/$_install_dir"
+    cp -a extra/linux/x64/engine/ "$pkgdir/$_install_dir"
+    cp -a app "$pkgdir/$_install_dir"
 
     # binary wrapper
-    install -Dm 775 ${srcdir}/motrix ${pkgdir}/usr/bin/${pkgname}
-
-    # desktop enrty
-    install -Dm 644 ${srcdir}/motrix.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    install -Dm755 <(cat <<- SCRIPT
+	#!/usr/bin/env sh
+	export ELECTRON_IS_DEV=true
+	export ELECTRON_FORCE_IS_PACKAGED=true
+	exec electron $_install_dir/app "\$@"
+	
+	SCRIPT
+    ) "${pkgdir}/usr/bin/${pkgname}"
 
     # icons
-    install -Dm 644 ${srcdir}/${_pkgname}-${pkgver}/build/256x256.png ${pkgdir}/usr/share/icons/${pkgname}.png
+    install -dm755 "${pkgdir}/usr/share/pixmaps"
+    install -dm755 "${pkgdir}"/usr/share/hicolor/{256x256,512x512}/apps
+    ln -sf \
+        "$_install_dir/app/dist/electron/static/512x512.png" \
+        "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    ln -sf \
+        "$_install_dir/app/dist/electron/static/512x512.png" \
+        "${pkgdir}/usr/share/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 \
+        build/256x256.png \
+        "${pkgdir}/usr/share/hicolor/256x256/apps/${pkgname}.png"
+    
+    # desktop enrty
+    _pkgdesc="$(jq -r '.description' package.json)"
+    install -dm755 "${pkgdir}/usr/share/applications"
+    cd "${pkgdir}/usr/share/applications"
+    gendesk --pkgname="$pkgname" \
+            --pkgdesc="$_pkgdesc" \
+            --icon="$pkgname" \
+            --exec="$pkgname %U" \
+            --categories="Network;FileTransfer" \
+            --mimetypes="application/x-bittorrent" \
+            --startupnotify=true -n --name="$_pkgname"
 }
