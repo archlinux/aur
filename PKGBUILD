@@ -2,7 +2,7 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 
 pkgname=pwman3
-pkgver=0.11.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="A console based password management application written in Python"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python-colorama' 'xsel' 'python-cryptography')
 optdepends=('python-psycopg2: PostgreSQL support', 'python-pymysql: MySQL support', 'python-pymongo: MongoDB support')
 source=(https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('3b0c0e30481c1117c6687e02de280e337c884a4ff8117c2e8556252e1754d356')
+sha256sums=('ef85e0da15a11a19b9cfdff81d5cd4ff7d5d8e940afe0a3ceed1f8295c1f00dc')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
