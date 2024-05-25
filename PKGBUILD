@@ -5,15 +5,44 @@
 
 pkgbase=postgresql-git
 pkgname=('postgresql-libs-git' 'postgresql-docs-git' 'postgresql-git')
-pkgver=16.beta2.r1571.gf160bf06f7
+pkgver=17.beta1.r20.g53785d2a2a
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS (Git version)'
 url='https://www.postgresql.org/'
 arch=('x86_64')
-license=('custom:PostgreSQL')
-makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl' 'openssl'
-             'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang' 'libxslt'
-             'util-linux' 'git' 'docbook-xml' 'docbook-xsl')
+license=('PostgreSQL')
+depends=(
+  'bash'
+  'gcc-libs'
+  'glibc'
+  'icu'
+  'krb5'
+  'libldap'
+  'libxml2'
+  'libxslt'
+  'llvm-libs'
+  'lz4'
+  'openssl'
+  'pam'
+  'readline'
+  'systemd-libs'
+  'util-linux-libs'
+  'zlib'
+  'zstd'
+)
+makedepends=(
+  'clang'
+  'docbook-xml'
+  'docbook-xsl'
+  'git'
+  'llvm'
+  'perl'
+  'perl-ipc-run'
+  'python'
+  'systemd'
+  'tcl'
+  'util-linux'
+)
 source=(git+https://git.postgresql.org/git/postgresql.git
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
@@ -28,10 +57,10 @@ sha512sums=('SKIP'
             '524bafe0efd9ba9dc23af38deb3bfbf24c60368ad7cd89f525c3891dfe0beeb6aadd52a0465c64d70c841f7b554e35032d1ba1f461fd452b1dd73a0e4e75b400'
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
             '9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8'
-            'ee0c010be07e8b5396cfd89c1d077b7c5573753d0210ea4e330e314c2759e25fbee9071e663f871855d65cc8ac75162af9e793dd10892f50f515e7a89cc8d6a0'
+            'c8350510e73dd6af9e4779ce68ba26991d11ecde17dee61143c3baa858f7931b3a3980114b3c74cffc57309f636fcb7b9205ce95f96ba68a107c2dba55e7dbb5'
             '07ff44ce5d64b7d1e992a1829d44b00f8e04577b31686e9a4e9f32f249facc00b5415187e19f78dd3207b751adc852dc4fa2f4ab71f6de9167c28a131be60011'
-            '36f7a5d38370fdc4d4267fd5a8a8330f152a1077bf0f065b89d4a7b8112ccd42be2c46c863791b77de02013f28275a42219f4236e7cb837c3f8cfd5fcc7d3373'
-            '5fe81d716d56d515ee4ae1aac56652b7bf20346ea8413482fd9fdb79f0485d8c5ed099f4d2cc460cbe37686488f1354dec433905ce005da8fec772e783addc70')
+            'c809e1d6307e0686f9e063adc582bcc0bba865f26610be4d8e65ee1b4ddc7908aab6696cd511ccbc54c3ba5963b4640a60e2e5d3e1859239cdb4f3fbaafd8cb2'
+            '819faa16edb45a01500c3f5d307528648fffe6d22ba4734b8c1951a2a9491962188413f24e754c922830acef0635720ca355459b65142cd4acb29df08d9c222e')
 
 pkgver() {
   cd postgresql
@@ -68,8 +97,10 @@ build() {
     --with-libxslt
     --with-lz4
     --with-zstd
-    --enable-nls
     --disable-rpath
+    --enable-nls
+    --enable-tap-tests
+    --enable-thread-safety
   )
 
   # Fix static libs
@@ -88,7 +119,7 @@ _postgres_check() {
 }
 
 check() {
-  export LANG=C
+  export LANG=C LC_ALL=C
   cd postgresql
   _postgres_check check
   _postgres_check check-world
@@ -96,7 +127,16 @@ check() {
 
 package_postgresql-libs-git() {
   pkgdesc="Libraries for use with PostgreSQL"
-  depends=('krb5' 'openssl' 'readline' 'zlib' 'libldap')
+  depends=(
+    'glibc'
+    'krb5'
+    'libldap'
+    'lz4'
+    'openssl'
+    'readline'
+    'zlib'
+    'zstd'
+  )
   provides=('postgresql-libs' 'libpq.so' 'libecpg.so' 'libecpg_compat.so' 'libpgtypes.so')
   conflicts=('postgresql-libs')
 
@@ -136,6 +176,7 @@ package_postgresql-libs-git() {
 
 package_postgresql-docs-git() {
   pkgdesc="HTML documentation for PostgreSQL"
+  depends=()
   provides=('postgresql-docs')
   conflicts=('postgresql-docs')
   options+=('docs')
@@ -155,9 +196,7 @@ package_postgresql-docs-git() {
 package_postgresql-git() {
   pkgdesc='Sophisticated object-relational DBMS'
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
-  depends=("postgresql-libs-git" 'krb5' 'libxml2' 'readline'
-           'openssl' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs'
-           'libxslt' 'lz4' 'zstd')
+  depends+=('postgresql-libs-git')
   optdepends=('python: for PL/Python 3 support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support'

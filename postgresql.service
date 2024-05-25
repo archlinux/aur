@@ -1,6 +1,8 @@
 [Unit]
 Description=PostgreSQL database server
-After=network.target
+Documentation=man:postgres(1)
+After=network.target network-online.target
+Wants=network-online.target
 
 [Service]
 Type=notify
