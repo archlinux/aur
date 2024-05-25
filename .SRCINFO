@@ -12,6 +12,6 @@ pkgbase = vapoursynth-plugin-adjust-git
 	source = adjust::git+https://github.com/dubhater/vapoursynth-adjust.git
 	source = COPYING
 	sha256sums = SKIP
-	sha256sums = f35c5131f9303be7a6d0333ba9952042b5360f48ad1e72018608529941e432de
+	sha256sums = 7637386b5f81e8a719ca336233149005e5fa28b5e6054ea7b67de49355b0ad40
 
 pkgname = vapoursynth-plugin-adjust-git

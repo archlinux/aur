@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'f35c5131f9303be7a6d0333ba9952042b5360f48ad1e72018608529941e432de'
+  '7637386b5f81e8a719ca336233149005e5fa28b5e6054ea7b67de49355b0ad40'
 )
 
 _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
