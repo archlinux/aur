@@ -119,6 +119,10 @@ package() {
     install -m750 -d "${pkgdir}/var/lib/platypush"
     install -m755 -d "${pkgdir}/usr/lib/systemd/system"
     install -m755 -d "${pkgdir}/usr/lib/systemd/user"
+    install -m750 -d "${pkgdir}/etc/platypush/scripts"
+    install -m755 -d "${pkgdir}/usr/lib/sysusers.d"
+    install -m755 -d "${pkgdir}/usr/lib/tmpfiles.d"
+
     install -m644 "${srcdir}/platypush/platypush/config/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/user/platypush.service"
     install -m644 "${srcdir}/platypush/platypush/config/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/system/platypush.service"
     sed -i "${pkgdir}/usr/lib/systemd/system/platypush.service" -r \
@@ -129,8 +133,6 @@ Group=platypush\
 WorkingDirectory=\/var\/lib\/platypush\
 Environment="PLATYPUSH_CONFIG=\/etc\/platypush\/config.yaml"\
 Environment="PLATYPUSH_WORKDIR=\/var\/lib\/platypush"/'
-    install -m750 -d "${pkgdir}/etc/platypush"
-    install -m750 -d "${pkgdir}/etc/platypush/scripts"
     install -m644 "${srcdir}/platypush/platypush/config/config.yaml" "${pkgdir}/etc/platypush/config.yaml"
     install -Dm644 "${srcdir}/platypush/platypush/config/systemd/platypush-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/platypush.conf"
     install -Dm644 "${srcdir}/platypush/platypush/config/systemd/platypush-tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/platypush.conf"
