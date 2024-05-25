@@ -1,7 +1,7 @@
 pkgbase = valveresourceformat
 	pkgdesc = Valve's Source 2 resource file format parser, decompiler, and exporter.
 	pkgver = 9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ValveResourceFormat/ValveResourceFormat
 	install = valveresourceformat.install
 	arch = x86_64
@@ -18,8 +18,6 @@ pkgbase = valveresourceformat
 	options = !strip
 	options = !debug
 	source = valveresourceformat::git+https://github.com/ValveResourceFormat/ValveResourceFormat.git#tag=9.2
-	source = https://github.com/ValveResourceFormat/ValveResourceFormat/releases/download/9.2/Source2Viewer.exe
-	sha256sums = SKIP
-	sha256sums = 37ac9e6f99e2f8e72ca2275f9da4da6f539f58c683744ef5c7655a56d935eb24
+	sha256sums = 47a753963dec9d981ff81480a2aa5e49ccfd6ef17d2c17f6af8881c33c9adad8
 
 pkgname = valveresourceformat

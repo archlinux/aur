@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=valveresourceformat
 pkgver=9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
@@ -10,15 +10,16 @@ depends=('glibc' 'gcc-libs' 'zlib' 'wine' 'bash' 'hicolor-icon-theme')
 makedepends=('dotnet-sdk' 'git')
 options=(!strip !debug)
 install=$pkgname.install
-source=("$pkgname::git+$url.git#tag=$pkgver"
-	"$url/releases/download/$pkgver/Source2Viewer.exe")
-sha256sums=('SKIP'
-            '37ac9e6f99e2f8e72ca2275f9da4da6f539f58c683744ef5c7655a56d935eb24')
+source=("$pkgname::git+$url.git#tag=$pkgver")
+sha256sums=('47a753963dec9d981ff81480a2aa5e49ccfd6ef17d2c17f6af8881c33c9adad8')
 
 
 build() {
 	cd "$srcdir/$pkgname/Decompiler"
 	dotnet publish -r linux-x64
+
+	cd "$srcdir/$pkgname/GUI"
+	dotnet publish -r win-x64 --sc true -p:EnableWindowsTargeting=true
 }
 
 package() {
@@ -31,7 +32,7 @@ package() {
 	mkdir -p "$pkgdir/usr/bin/"
 	ln -s /usr/lib/$pkgname/Decompiler "$pkgdir/usr/bin/$pkgname-decompiler"
 
-	install -Dm644 "$srcdir/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/Source2Viewer.exe"
+	install -Dm644 "$srcdir/$pkgname/GUI/bin/Release/win-x64/publish/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/Source2Viewer.exe"
 	cat >> "$pkgdir/usr/bin/$pkgname-source2viewer" <<-EOF
 #!/bin/bash
 export WINEPREFIX="\$HOME/.$pkgname/wine"
