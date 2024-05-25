@@ -63,10 +63,8 @@ check() {
 }
 
 package() {
-    # install binaries and libraries
     cmake --install "$srcdir/$pkgname-$pkgver-build" --prefix "$pkgdir"
 
-    # install license file and documentation
     install -m 644 -D -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname-$pkgver/LICENSE"
 
     install -m 644 -D -t "$pkgdir/usr/share/doc/$pkgname" "$srcdir/$pkgname-$pkgver/README.md"
