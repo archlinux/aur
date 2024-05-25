@@ -1,0 +1,11 @@
+## .gitignore for AUR package 'sysget-git'
+
+# ignore built packages (regardless of compression method used)
+*.pkg.*
+
+# ignore intermediate packaging and build directories
+pkg/
+src/
+
+# ignore local makepkg mirror of source git repository
+sysget/

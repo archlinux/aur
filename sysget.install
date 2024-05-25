@@ -1,0 +1,11 @@
+
+## create a configuration file to initially set pacman as the default target package manager
+## (This enable immediate utilisation of this utility by non-root users for operations not requiring root permissions
+##  as otherwise the utility attempts to create this directory and configuration file within '/etc' on first run.)
+post_install() {
+  if [ ! -e /etc/sysget/sysget ]; then
+    echo -e "\n  == Creating initial sysget configuration file to pre-select pacman as the default target package manager ...\n"
+    mkdir -p /etc/sysget
+    echo "pacman" > /etc/sysget/sysget
+  fi
+}

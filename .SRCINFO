@@ -1,0 +1,13 @@
+pkgbase = sysget-git
+	pkgdesc = A front-end providing a bridge to enable a unified syntax for the majority of unix-based operating system package managers - git version
+	pkgver = 2.3.r19.g3d972d1
+	pkgrel = 1
+	url = https://github.com/emilengler/sysget
+	install = sysget.install
+	arch = any
+	license = GPL
+	makedepends = git
+	source = sysget::git+https://github.com/emilengler/sysget
+	sha512sums = SKIP
+
+pkgname = sysget-git
