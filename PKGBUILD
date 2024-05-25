@@ -17,7 +17,7 @@ license=('Apache-2.0')
 groups=()
 
 depends=('glibc' 'gcc-libs' 'openssl' 'libyaml' 'systemd-libs')
-makedepends=('cmake' 'postgresql-libs' 'python' 'valgrind')
+makedepends=('cmake' 'postgresql-libs' 'python')
 checkdepends=('gtest' 'doxygen' 'graphviz')
 optdepends=()
 

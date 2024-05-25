@@ -13,7 +13,6 @@ pkgbase = fluent-bit
 	makedepends = cmake
 	makedepends = postgresql-libs
 	makedepends = python
-	makedepends = valgrind
 	depends = glibc
 	depends = gcc-libs
 	depends = openssl
