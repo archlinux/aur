@@ -16,7 +16,7 @@ unset _pkgtype
 # basic info
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3.r0.g966ff37
+pkgver=2.3.2.r99.ge85fa82
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
@@ -36,7 +36,7 @@ _main_package() {
     'python'
   )
 
-  if [[ "${_build_clang::1}" == "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]]; then
     makedepends+=(
       'clang'
       'lld'
@@ -44,7 +44,7 @@ _main_package() {
     )
   fi
 
-  if [ "${_build_git::1}" != "t" ] ; then
+  if [ "${_build_git::1}" != "t" ]; then
     _main_stable
   else
     _main_git
@@ -97,12 +97,15 @@ _main_git() {
 # submodules
 _source_flycast() {
   source+=(
+    'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
+    'flyinghead.discord-rpc'::'git+https://github.com/flyinghead/discord-rpc.git'
     'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'
     'google.oboe'::'git+https://github.com/google/oboe.git'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
     'khronosgroup.glslang'::'git+https://github.com/KhronosGroup/glslang.git'
     'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
     'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'
+    'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
     'rtissera.libchdr'::'git+https://github.com/rtissera/libchdr.git'
     'vinniefalco.luabridge'::'git+https://github.com/vinniefalco/LuaBridge.git'
     'vkedwardli.spout2'::'git+https://github.com/vkedwardli/Spout2.git'
@@ -119,21 +122,27 @@ _source_flycast() {
     'SKIP'
     'SKIP'
     'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
   )
 
   _prepare_flycast() (
     cd "$srcdir/$_pkgsrc"
-    local -A _submodules=(
-      ['flyinghead.mingw-breakpad']='core/deps/breakpad'
-      ['google.oboe']='core/deps/oboe'
-      ['gpuopen-librariesandsdks.vulkanmemoryallocator']='core/deps/VulkanMemoryAllocator'
-      ['khronosgroup.glslang']='core/deps/glslang'
-      ['khronosgroup.vulkan-headers']='core/deps/Vulkan-Headers'
-      ['libsdl-org.sdl']='core/deps/SDL'
-      ['rtissera.libchdr']='core/deps/libchdr'
-      ['vinniefalco.luabridge']='core/deps/luabridge'
-      ['vkedwardli.spout2']='core/deps/Spout'
-      ['vkedwardli.syphon-framework']='core/deps/Syphon'
+    local _submodules=(
+      'bylaws.libadrenotools'::'core/deps/libadrenotools'
+      'flyinghead.discord-rpc'::'core/deps/discord-rpc'
+      'flyinghead.mingw-breakpad'::'core/deps/breakpad'
+      'google.oboe'::'core/deps/oboe'
+      'gpuopen-librariesandsdks.vulkanmemoryallocator'::'core/deps/VulkanMemoryAllocator'
+      'khronosgroup.glslang'::'core/deps/glslang'
+      'khronosgroup.vulkan-headers'::'core/deps/Vulkan-Headers'
+      'libsdl-org.sdl'::'core/deps/SDL'
+      'retroachievements.rcheevos'::'core/deps/rcheevos'
+      'rtissera.libchdr'::'core/deps/libchdr'
+      'vinniefalco.luabridge'::'core/deps/luabridge'
+      'vkedwardli.spout2'::'core/deps/Spout'
+      'vkedwardli.syphon-framework'::'core/deps/Syphon'
     )
     _submodule_update
   )
@@ -150,8 +159,8 @@ _source_vinniefalco_luabridge() {
   _prepare_vinniefalco_luabridge() (
     cd "$srcdir/$_pkgsrc"
     cd 'core/deps/luabridge'
-    local -A _submodules=(
-      ['google.googletest']='third_party/gtest'
+    local _submodules=(
+      'google.googletest'::'third_party/gtest'
     )
     _submodule_update
   )
@@ -160,16 +169,16 @@ _source_vinniefalco_luabridge() {
 # common functions
 prepare() {
   _submodule_update() {
-    local key;
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    local _module
+    for _module in "${_submodules[@]}"; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
   apply-patch() {
-    if patch -Np1 -F100 --dry-run -i "$1" &>/dev/null ; then
+    if patch -Np1 -F100 --dry-run -i "$1" &> /dev/null; then
       printf '\nApplying patch: %s\n' "$1"
       patch -Np1 -F100 -i "$1"
     else
@@ -195,13 +204,13 @@ build() {
     -Wno-dev
   )
 
-  if [[ "${_build_clang::1}" == "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]]; then
     export CC=clang
     export CXX=clang++
     export LDFLAGS+=" -fuse-ld=lld"
   fi
 
-  if [[ "${_build_avx::1}" == "t" ]] ; then
+  if [[ "${_build_avx::1}" == "t" ]]; then
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
     export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
@@ -222,7 +231,7 @@ package() {
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
-  if [[ "${_autoupdate::1}" != "t" ]] ; then
+  if [[ "${_autoupdate::1}" != "t" ]]; then
     return
   fi
 
@@ -236,7 +245,7 @@ _update_version() {
   local _pkgver_new="${_tag#v}"
 
   # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
     _pkgver="$_pkgver_new"
   fi
 }
