@@ -2,11 +2,11 @@
 
 pkgname=python-vipaccess
 pkgver=0.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free software implementation of Symantec's VIP Access application and protocol"
 arch=('any')
 url="https://github.com/dlenski/python-vipaccess"
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('python-setuptools')
 checkdepends=('python-nose2')
 depends=('python-pycryptodome' 'python-lxml' 'python-oath' 'python-requests')
