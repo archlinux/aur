@@ -49,14 +49,14 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
         -DSYSTEMD_UNITDIR=/usr/lib/systemd/system \
-        -DFLB_TESTS_INTERNAL=Yes \
+        -DFLB_TESTS_INTERNAL=1 \
         -DFLB_IN_MQTT=Yes \
         -DFLB_TLS=Yes \
-        -DFLB_ALL=Yes \
+        -DFLB_ALL=1 \
         -DFLB_OUT_NATS=Yes \
         -DFLB_HTTP_SERVER=Yes \
-        -DMBEDTLS_FATAL_WARNINGS=Off \
-        -DLUAJIT_BUILD_EXE=Off \
+        -DMBEDTLS_FATAL_WARNINGS=0 \
+        -DLUAJIT_BUILD_EXE=0 \
         ;
 
     cmake --build "$srcdir/$pkgname-$pkgver-build"
