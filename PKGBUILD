@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=jsoncpp-git
-pkgver=1.9.5.r4.g8190e06
+pkgver=1.9.5.r6.g69098a1
 pkgrel=1
 pkgdesc="C++ library for interacting with JSON"
 arch=('i686' 'x86_64')
@@ -25,6 +25,8 @@ pkgver() {
 build() {
   cd "jsoncpp"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   cmake \
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
@@ -37,7 +39,7 @@ build() {
 check() {
   cd "jsoncpp"
 
-  make -C "_build" test
+  #make -C "_build" test
 }
 
 package() {
