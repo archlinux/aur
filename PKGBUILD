@@ -3,7 +3,7 @@
 
 _crate="rtthost"
 pkgname="rtthost"
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='RTT (Real-Time Transfer) client'
 url='https://crates.io/crates/rtthost'
@@ -13,22 +13,22 @@ depends=('gcc-libs' 'systemd-libs')
 makedepends=('cargo')
 optdepends=('probe-rs: Other probe-rs binaries')
 
-source=("$_crate-0.23.0.tar.gz::https://crates.io/api/v1/crates/rtthost/0.23.0/download")
-sha512sums=('1402297c5f1d2c198abc89b8f813a38e7869bdca510d32ecc05fe0c08bfa1f4ace64297022eb67c53505c40a5f7cb138cbd329d7b1656d8f2905b1f1afa8f801')
+source=("$_crate-0.24.0.tar.gz::https://crates.io/api/v1/crates/rtthost/0.24.0/download")
+sha512sums=('582d6e2ab2be759f89d6ca77e7211fa12d91da04ddc90002e0b43faa9bd5b7908c2a865d274abb8332e11032f1a830072da8f3562099fb6818cbcd34445fb06b')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-0.23.0"
+	cd "$srcdir/$_crate-0.24.0"
 
 	export RUSTUP_TOOLCHAIN=stable
 
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$srcdir/$_crate-0.23.0"
+	cd "$srcdir/$_crate-0.24.0"
 	
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -42,6 +42,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-0.23.0"
+	cd "$srcdir/$_crate-0.24.0"
 	install -Dm755 "target/release/rtthost" -t "$pkgdir/usr/bin"
 }
