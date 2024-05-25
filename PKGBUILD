@@ -8,7 +8,7 @@ license=('Zlib')
 depends=('perl' 'perl-file-readbackwards' 'curl')
 makedepends=('make')
 source=("https://code.ortegas.org/nortega/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0d393a32769fa9d4f268ad33b02c05e322d53a22355b88b60134b7d54857a67d')
+sha256sums=('58898bfdc9ed75fd8fbf4072906e086cd0e9d5b33014be631d9cadc684487e71')
 
 build() {
 	cd "$pkgname"
