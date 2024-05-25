@@ -6,7 +6,8 @@
 
 pkgname=appimagelauncher
 pkgver=2.2.0
-pkgrel=7
+_pkgver=0f91801
+pkgrel=8
 pkgdesc='Helper for running and integrating AppImages'
 #arch=(x86_64)
 arch=(x86_64 aarch64)
@@ -15,64 +16,24 @@ license=(MIT)
 depends=(cairo desktop-file-utils hicolor-icon-theme libappimage libbsd libxpm qt5-base shared-mime-info)
 makedepends=(boost cmake git gtest python qt5-tools)
 #source=("$pkgname-$pkgver.tag.gz::$url/archive/refs/tags/v2.2.0.tar.gz"
-source=("git+https://github.com/TheAssassin/AppImageLauncher.git#tag=v$pkgver"
-         git+https://github.com/AppImageCommunity/AppImageUpdate.git
-         #git+https://github.com/libcpr/cpr.git
-         "AppImage-cpr::git+https://github.com/AppImage/cpr.git"
-         git+https://github.com/AppImageCommunity/libappimage.git
-         git+https://github.com/Taywee/args.git
-         git+https://github.com/AppImageCommunity/zsync2
-         git+https://github.com/arsenm/sanitizers-cmake.git
-         git+https://github.com/google/googletest.git
-         appimage-binfmt-remove.hook)
-sha256sums=('7970aba671787ebc33cbb7a291fcef147509f8134d7d894215f9999e1467435a'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+#source=("git+https://github.com/TheAssassin/AppImageLauncher.git#tag=v$pkgver"
+source=("$pkgname-$pkgver-$_pkgver.tar.xz::$url/releases/download/v$pkgver/appimagelauncher-$_pkgver.source.tar.xz"
+        appimage-binfmt-remove.hook)
+sha256sums=('2ef58ed3233912677522620bbb1162bedd41206a786d93cbd5e0ff682aed8a75'
             '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
 
 # Workaround for newer GCC
 CFLAGS="$CFLAGS -Wno-deprecated-declarations -Wno-discarded-qualifiers -Wno-implicit-function-declaration -Wno-incompatible-pointer-types"
 
 prepare() {
-  cd AppImageLauncher
-  git submodule init
-  git config submodule.lib/AppImageUpdate.url "$srcdir/AppImageUpdate"
-  git config submodule.lib/libappimage.url "$srcdir/libappimage"
-  git -c protocol.file.allow=always submodule update
+  cd $pkgname-$_pkgver.source
 
-  cd "$srcdir/AppImageLauncher/lib/AppImageUpdate"
-  git submodule init
-  git config submodule.lib/zsync2.url "$srcdir/zsync2"
-  git config submodule.lib/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
-  git config submodule.lib/libappimage.url "$srcdir/libappimage"
-  git -c protocol.file.allow=always submodule update
-
-  cd "$srcdir/AppImageLauncher/lib/AppImageUpdate/lib/libappimage"
-  git submodule init
-  git config submodule.lib/gtest.url "$srcdir/googletest"
-  git -c protocol.file.allow=always submodule update
-
-  cd "$srcdir/AppImageLauncher/lib/AppImageUpdate/lib/zsync2"
-  git submodule init
-  #git config submodule.lib/cpr.url "$srcdir/cpr"
-  git config submodule.lib/cpr.url "$srcdir/AppImage-cpr"
-  git config submodule.lib/args.url "$srcdir/args"
-  git config submodule.lib/gtest.url "$srcdir/googletest"
-  git -c protocol.file.allow=always submodule update
-
-  cd "$srcdir/AppImageLauncher/lib/libappimage"
-  git submodule init
-  git config submodule.lib/gtest.url "$srcdir/googletest"
-  git -c protocol.file.allow=always submodule update
+  # Optional: avoid 'fatal' git messages for a cleaner build output
+  sed -i 's/COMMAND git rev-parse --short HEAD/COMMAND echo 0/' lib/AppImageUpdate/{CMakeLists.txt,lib/zsync2/CMakeLists.txt}
 }
 
 build() {
-  cd AppImageLauncher
+  cd $pkgname-$_pkgver.source
 
   cmake . \
     -DCMAKE_BUILD_TYPE=None \
@@ -88,8 +49,9 @@ build() {
 }
 
 package() {
-  make -C AppImageLauncher DESTDIR="$pkgdir" install
-
-  install -Dm644 AppImageLauncher/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 appimage-binfmt-remove.hook -t "$pkgdir/usr/share/libalpm/hooks"
+
+  cd $pkgname-$_pkgver.source
+  make DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
 }
