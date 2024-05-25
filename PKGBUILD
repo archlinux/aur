@@ -1,6 +1,6 @@
 pkgname=etlegacy-omnibot
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (omni-bot files)"
 arch=('i686' 'x86_64')
 url="http://omni-bot.invisionzone.com"
@@ -13,7 +13,4 @@ package() {
     # omni-bot
     mkdir -p $pkgdir/usr/lib/etlegacy/legacy
     mv omni-bot $pkgdir/usr/lib/etlegacy/legacy
-
-    # writable user config
-    chmod 666 $pkgdir/usr/lib/etlegacy/legacy/omni-bot/et/user/omni-bot.cfg
 }
