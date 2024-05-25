@@ -51,7 +51,6 @@ build() {
         -DSYSTEMD_UNITDIR=/usr/lib/systemd/system \
         -DFLB_TESTS_INTERNAL=1 \
         -DFLB_ALL=1 \
-        -DFLB_HTTP_SERVER=Yes \
         -DMBEDTLS_FATAL_WARNINGS=0 \
         -DLUAJIT_BUILD_EXE=0 \
         ;
