@@ -1,6 +1,6 @@
 pkgbase = typstyle-git
 	pkgdesc = Beautiful and reliable typst code formatter
-	pkgver = v0.11.15.r6.a61d03e
+	pkgver = v0.11.23.r1.e9ceade
 	pkgrel = 1
 	url = https://github.com/Enter-tainer/typstyle
 	arch = aarch64
@@ -9,6 +9,8 @@ pkgbase = typstyle-git
 	license = Apache-2.0
 	makedepends = git
 	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
 	optdepends = typst: For typst compilation
 	provides = typstyle
 	conflicts = typstyle
