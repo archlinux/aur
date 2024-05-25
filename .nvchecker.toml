@@ -1,0 +1,5 @@
+[python-pypdns]
+source = "github"
+github = "CIRCL/PyPDNS"
+use_latest_release = "true"
+prefix = "v"

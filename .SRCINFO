@@ -1,16 +1,16 @@
 pkgbase = python-pypdns
 	pkgdesc = Python API for PDNS
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/CIRCL/PyPDNS
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
 	depends = python-requests-cache
 	depends = python-dnspython
-	source = PyPDNS-2.2.2.tar.gz::https://github.com/CIRCL/PyPDNS/archive/v2.2.2.tar.gz
-	sha512sums = d2bf43a030c3daea4a1f7a8d3f86d5853737c80a29b8fb02500ab805a4f218feac740a2867e9311b272fa4857d208487dd38573d4c2c630683a5a691f18322fa
+	source = PyPDNS-2.2.3.tar.gz::https://github.com/CIRCL/PyPDNS/archive/v2.2.3.tar.gz
+	sha512sums = 40cef46e7ea44674f920055a7632f1fdd0ebc382096433ae6da86573f45a44ba4c527213b5ca449942b0ea444ddaaf7e2d478aba5a05901d7e9807759591de70
 
 pkgname = python-pypdns
