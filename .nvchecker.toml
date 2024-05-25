@@ -1,0 +1,4 @@
+[selenoid-bin]
+source = "github"
+github = "aerokube/selenoid"
+use_latest_release = "true"
