@@ -10,6 +10,6 @@ pkgbase = pacundo
 	depends = perl-file-readbackwards
 	depends = curl
 	source = https://code.ortegas.org/nortega/pacundo/archive/v1.1.tar.gz
-	sha256sums = 0d393a32769fa9d4f268ad33b02c05e322d53a22355b88b60134b7d54857a67d
+	sha256sums = 58898bfdc9ed75fd8fbf4072906e086cd0e9d5b33014be631d9cadc684487e71
 
 pkgname = pacundo
