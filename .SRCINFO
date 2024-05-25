@@ -1,6 +1,6 @@
 pkgbase = fluent-bit
 	pkgdesc = Collect data/logs from different sources, unify and send them to multiple destinations
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://fluentbit.io/
 	arch = x86_64
@@ -18,14 +18,14 @@ pkgbase = fluent-bit
 	depends = openssl
 	depends = libyaml
 	depends = systemd-libs
-	noextract = fluent-bit-3.0.4.tar.gz
+	noextract = fluent-bit-3.0.5.tar.gz
 	backup = etc/fluent-bit/fluent-bit.conf
 	backup = etc/fluent-bit/parsers.conf
-	source = fluent-bit-3.0.4.tar.gz::https://releases.fluentbit.io/3.0/source-3.0.4.tar.gz
+	source = fluent-bit-3.0.5.tar.gz::https://releases.fluentbit.io/3.0/source-3.0.5.tar.gz
 	source = pr-8901.patch
-	md5sums = fe796a645a2ab6d43e167461342bbd3c
+	md5sums = 0e18d15b868f99a6e921f44a93a71cdb
 	md5sums = SKIP
-	sha256sums = 6427c98b7e6f5a6befa322ea90016b1d1176fc70c00934c5a0afe9c5858fac26
+	sha256sums = c60291a8c4cec15f686ae2222bcb8f76eef7ca76d7c73cbf01430e67cb5cd2cc
 	sha256sums = SKIP
 
 pkgname = fluent-bit
