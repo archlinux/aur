@@ -2,3 +2,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!rocket.desktop
+!rocket.png

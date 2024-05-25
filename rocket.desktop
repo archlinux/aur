@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Rocket
+Exec=/usr/bin/rocket
+Icon=rocket
+Type=Application
+Comment=A sync-tracker for demoscene productions
+Categories=Graphics
+Terminal=false
