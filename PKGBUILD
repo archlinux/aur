@@ -1,6 +1,6 @@
 # Maintainer: OpenSorcerer <alex cat opensourcery dog eu>
 pkgname=offen-bin
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Offen Fair Web Analytics"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -15,7 +15,7 @@ source=("https://github.com/offen/offen/releases/download/v$pkgver/offen-v$pkgve
 		"offen.sysusers"
 		"offen.tmpfiles")
 noextract=('*.asc' 'offen-darwin*' 'offen-windows*')
-sha256sums=('25054591405749e7e102de8410384339a8e562f6a66b8054cf5a3e04cb21552b'
+sha256sums=('373b0e06eaca13dfb36b211754abe82d4a4ec91f3f10168c159f53d911cb1cf1'
             'd47828c1b98920a24dfdb3d0b806af7c5a44f8159a74c389809e08f3302794c3'
             '1f7912b9993baf719dc1a1b9ef6cd72540a3d4e3ac3ecd3bd4998753061c37fe'
             '537e9e5cc3cce7afea6e5ed7ca1d6590d522eca14c8c399085c8655289f8af80'
