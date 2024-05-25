@@ -2,8 +2,8 @@
 # Contributor: calegria  <calegria "at" gmail {dot} com>
 pkgname=cgal-ipelets
 pkgver=5.6
-pkgrel=1
-_ipever=7.2.28
+pkgrel=2
+_ipever=7.2.29
 pkgdesc="Ipelets from CGAL"
 arch=('i686' 'x86_64')
 url="http://www.cgal.org"
