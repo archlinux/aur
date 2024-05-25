@@ -1,4 +1,4 @@
-pkgbase = geogebra-6
+pkgbase = geogebra-6-bin
 	pkgdesc = Dynamic mathematics software with interactive graphics, algebra and spreadsheet
 	pkgver = 6.0.804.0
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = geogebra-6
 	source = https://download.geogebra.org/installers/6.0/GeoGebra-Linux64-Portable-6-0-804-0.zip
 	sha256sums = 114e537fad9322e1ae8ebdf8aa734e473b3c66a9f1d98c5a1ec5fa55d6ea9bd7
 
-pkgname = geogebra-6
+pkgname = geogebra-6-bin
