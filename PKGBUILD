@@ -16,7 +16,7 @@
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.13.2
+pkgver=11.13.3
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -103,7 +103,6 @@ _main_package() {
     !strip
   )
 
-  _patch_commit="27ecdfd"
 
   _pkgsrc="Floorp"
   source=(
@@ -111,22 +110,24 @@ _main_package() {
     "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
     "floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
     "$_pkgname.desktop"
-
-    "patch-python3.12-bug1831512-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1831512.patch?h=firedragon&id=$_patch_commit"
-    "patch-python3.12-bug1860051-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1860051.patch?h=firedragon&id=$_patch_commit"
-    "patch-python3.12-bug1866829-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1866829.patch?h=firedragon&id=$_patch_commit"
-    "patch-python3.12-bug1874280-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1874280.patch?h=firedragon&id=$_patch_commit"
   )
   sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
+  )
 
-    '9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3'
-    '168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455'
-    'df27ed1e0da5b192224978dc2a593a97e18e6e22062c611fc32b277500324e62'
-    'cf1c69fd3338fd8f5e482f55b669160b08dfb021f2348b620f0a85dd9dee8150'
+  _patch_commit="24a6ea8"
+  source+=(
+    "18d19413472f-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=$_patch_commit"
+    "6af7194e2778-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=$_patch_commit"
+    "b1cc62489fae-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit"
+  )
+  sha256sums+=(
+    '3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18'
+    '6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e'
+    'f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117'
   )
 
   if [[ "${_build_private::1}" == "t" ]]; then
@@ -301,6 +302,10 @@ build() {
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
+  # Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
 
   # LTO/PGO needs more open files
   ulimit -n 4096
