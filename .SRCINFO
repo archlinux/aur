@@ -1,6 +1,6 @@
 pkgbase = python-ginga
 	pkgdesc = A viewer for astronomical data FITS (Flexible Image Transport System) files.
-	pkgver = 5.0.1
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://ejeschke.github.io/ginga
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-ginga
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-5.0.1.tar.gz
-	md5sums = a0824e37667507a432bfc377cf1caf63
+	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-5.1.0.tar.gz
+	md5sums = ff19fe6445cbd9b012af3d685a764024
 
 pkgname = python-ginga
 	depends = python-astropy>=5.0
