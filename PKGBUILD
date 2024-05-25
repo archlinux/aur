@@ -2,7 +2,7 @@
 _name='vim-hug-neovim-rpc'
 pkgname="${_name}-git"
 pkgver=r118.93ae387
-pkgrel=2
+pkgrel=3
 pkgdesc="trying to build a compatibility layer for neovim rpc client working on vim8"
 arch=('any')
 url="https://github.com/roxma/vim-hug-neovim-rpc"
@@ -13,7 +13,7 @@ optdepends=('nvim-yarp')
 makedepends=('git') 
 provides=('vim-hug-neovim-rpc')
 conflicts=()
-replaces=('')
+replaces=()
 backup=()
 options=()
 # maybe at some point there will be helptags to update
