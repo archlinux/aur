@@ -1,6 +1,6 @@
 pkgbase = sccache-bin
 	pkgdesc = Shared compilation cache
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/mozilla/sccache
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = sccache-bin
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
-	provides = sccache=0.8.0
+	provides = sccache=0.8.1
 	conflicts = sccache
-	source_aarch64 = https://github.com/mozilla/sccache/releases/download/v0.8.0/sccache-v0.8.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 23d6920bf5a21a2269833ca5ef387e59c8dce69c03770b7aa44be4b130b07511
-	source_armv7h = https://github.com/mozilla/sccache/releases/download/v0.8.0/sccache-v0.8.0-armv7-unknown-linux-musleabi.tar.gz
-	sha256sums_armv7h = d042ccf1ba968e08676eb4ce3d3c8790994d7641c0689ac790966f5e51c43048
-	source_i686 = https://github.com/mozilla/sccache/releases/download/v0.8.0/sccache-v0.8.0-i686-unknown-linux-musl.tar.gz
-	sha256sums_i686 = 4881b8c3bb8946a0caa461fd523ed9114822ca733b24796d532622a365747b67
-	source_x86_64 = https://github.com/mozilla/sccache/releases/download/v0.8.0/sccache-v0.8.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 2e0e7df61bc7dcf61fd65c1b345d05cd1f832598a15c6f42e7e21f86b8d39b1f
+	source_aarch64 = https://github.com/mozilla/sccache/releases/download/v0.8.1/sccache-v0.8.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 452cef732b24415493a7c6bca6e13536eb9464593fa87c753b6b7cb4733e9c50
+	source_armv7h = https://github.com/mozilla/sccache/releases/download/v0.8.1/sccache-v0.8.1-armv7-unknown-linux-musleabi.tar.gz
+	sha256sums_armv7h = 95547ad9541827fb4b24be7469be8a1950708f875c7797a4c443f566c68c1173
+	source_i686 = https://github.com/mozilla/sccache/releases/download/v0.8.1/sccache-v0.8.1-i686-unknown-linux-musl.tar.gz
+	sha256sums_i686 = 1d4b6b13b811273c8ade0e3bf2fd0a2357794767fe4ebe89057e03925e0a067d
+	source_x86_64 = https://github.com/mozilla/sccache/releases/download/v0.8.1/sccache-v0.8.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = e0ee621fb16b6940666cd770b091c62cadafd3e062dd12e3a49d9caaff3b795f
 
 pkgname = sccache-bin
