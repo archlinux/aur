@@ -50,7 +50,6 @@ build() {
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
         -DSYSTEMD_UNITDIR=/usr/lib/systemd/system \
         -DFLB_TESTS_INTERNAL=1 \
-        -DFLB_IN_MQTT=Yes \
         -DFLB_TLS=Yes \
         -DFLB_ALL=1 \
         -DFLB_OUT_NATS=Yes \
