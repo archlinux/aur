@@ -34,7 +34,12 @@ build() {
 }
 
 package() {
-
+	if [ "${CARCH}" == 'arm64' ]; then
+		_appimage="CheatBreaker-ARM64.AppImage"
+	else
+		_appimage="CheatBreaker.AppImage"
+	fi
+ 
 	# AppImage
 	install -Dm755 \
 		"${srcdir}/${_appimage}" \
