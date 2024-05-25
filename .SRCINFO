@@ -1,7 +1,7 @@
 pkgbase = jetbrains-fleet
 	pkgdesc = JetBrains IDE for any language
 	pkgver = 1.35.115
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/fleet/
 	arch = x86_64
 	arch = aarch64

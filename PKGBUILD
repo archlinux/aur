@@ -4,7 +4,7 @@
 
 pkgname=jetbrains-fleet
 pkgver=1.35.115
-pkgrel=1
+pkgrel=2
 pkgdesc="JetBrains IDE for any language"
 arch=('x86_64' 'aarch64')
 url="https://www.jetbrains.com/fleet/"
@@ -21,6 +21,7 @@ sha256sums_aarch64=('0a0c22dcc19f0bfe4159e1a652626fa1452476f7c5ed0205fb9564bfcd4
 package() {
   install -dm 755 "${pkgdir}/opt/${pkgname}"
   cp -a "Fleet/." "${pkgdir}/opt/${pkgname}"
+  chmod -R 775 "${pkgdir}/opt/${pkgname}/lib/app/code-cache"
 
   install -dm 755 "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/bin/Fleet" "${pkgdir}/usr/bin/${pkgname}"
