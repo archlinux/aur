@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Website Auditing Tool
+Exec=/opt/website-auditing-tool/website-audit
+Terminal=false
+Type=Application
+Icon=website-auditing-tool
+Comment=Tool to collect evidence, analyse them and generate reports regarding trackers that are being used by websites
+Categories=Network;WebBrowser;Profiling;
