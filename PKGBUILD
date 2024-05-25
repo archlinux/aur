@@ -1,16 +1,16 @@
-# Contributor: Axper Jan <483ken _at_ gmail _dot_ com
-# Contributor: Daniel Kirchner <ekpyron at lavabit dot com>
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
+# Contributor: Axper Jan <483ken _at_ gmail _dot_ com
+# Contributor: Daniel Kirchner <ekpyron at lavabit dot com>
 
 _pkgbase=glfw
 pkgname=glfw-git
-pkgver=3.3.r470.g56a4cb0a
+pkgver=3.4.r17.gb35641f4
 pkgrel=1
 pkgdesc="Free, open source, portable framework for OpenGL application development (git version)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="http://www.glfw.org/"
-license=('custom:ZLIB')
+license=('Zlib')
 depends=('libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'wayland' 'libxkbcommon')
 makedepends=('git' 'cmake' 'ninja' 'doxygen' 'wayland-protocols' 'mesa')
 conflicts=('glfw' 'glfw-x11' 'glfw-wayland')
