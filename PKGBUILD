@@ -13,7 +13,7 @@ epoch=
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations'
 arch=(x86_64 aarch64 armv7h)
 url='https://fluentbit.io/'
-license=('Apache')
+license=('Apache-2.0')
 groups=()
 
 depends=('glibc' 'gcc-libs' 'openssl' 'libyaml' 'systemd-libs')
