@@ -1,0 +1,15 @@
+pkgbase = cyberdropdownloader-git
+	pkgdesc = Bulk Gallery Downloader for Cyberdrop.me and Other Sites
+	pkgver = r2021.dfb6c14
+	pkgrel = 1
+	url = https://github.com/Jules-WinnfieldX/CyberDropDownloader
+	arch = any
+	license = GPL3
+	makedepends = python-poetry
+	makedepends = python-pip
+	depends = python
+	provides = cyberdropdownloader
+	source = cyberdropdownloader::git+https://github.com/Jules-WinnfieldX/CyberDropDownloader
+	sha256sums = SKIP
+
+pkgname = cyberdropdownloader-git
