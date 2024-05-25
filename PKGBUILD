@@ -2,24 +2,19 @@
 # Contributor: Mark Pustjens <pustjens@dds.nl>
 
 pkgname=quill
-pkgver=3.9.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Asynchronous Low Latency C++ Logging Library"
-arch=("x86_64")
+arch=("any")
 url="https://github.com/odygrd/quill"
 license=("MIT")
-depends=("fmt")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/odygrd/quill/archive/v${pkgver}.tar.gz")
-b2sums=("919ac644e4788316a1dfcad97627d1b04b3236682b72a0e3eefa76639854b1198a375133e95239a7625b06bc19e9734a833550ef2c2bce5b82b455656323f586")
+b2sums=("8243ba477779a86658b278ae4ec4565cee81ed8232493c2bf514c11e66075d76d2fbae3dce6296f0e8bd69ee3283a4ee2ef7579768d499524b7bb88386fae22d")
 
 build() {
   cmake -B "build/" -S "${pkgname}-${pkgver}" \
-    -D QUILL_FMT_EXTERNAL:BOOL="ON" \
     -D QUILL_PKGCONFIG_DIR:PATH="/usr/lib/pkgconfig/" \
-    -D BUILD_SHARED_LIBS:BOOL="ON" \
-    -D CMAKE_BUILD_TYPE:STRING="Release" \
-    -D CMAKE_CXX_FLAGS_RELEASE:STRING="-DNDEBUG" \
     -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
     -Wno-dev
 
