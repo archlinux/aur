@@ -1,14 +1,13 @@
 pkgbase = audacious-plugins-gtk3
 	pkgdesc = Plugins for Audacious
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audacious-media-player.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	license = GPL
-	makedepends = glib2
-	makedepends = python
+	makedepends = python-packaging
 	depends = audacious-gtk3>=4.3.1
 	depends = alsa-lib
 	depends = curl
