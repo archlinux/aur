@@ -1,24 +1,25 @@
+# Maintainer: Frederik Leonhardt <frederik at leonhardt dot co dot nz>
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jesse Jaara <jesse.jaara@gmail.com>
 
 pkgname=ldraw-parts-library
-pkgver=20231103
+pkgver=20240405
 pkgrel=1
 pkgdesc="A collection of LDraw-format CAD files representing many of LEGO bricks produced"
 arch=(any)
-url="http://www.ldraw.org/parts/latest-parts.html"
+url="https://library.ldraw.org/updates"
 license=('CCPL: cc-by-2.0')
 options=(!strip)
-source=(ldraw-parts.zip::https://www.ldraw.org/library/updates/complete.zip
-        LDConfig.ldr::https://www.ldraw.org/library/official/LDConfig.ldr
-        "ldraw-parts-library.sh" "license")
-sha256sums=('a164a0bf1885213ff6c6ae90dd5805097d57ea858ccfae3129792b65f10f5aa9'
-            'd7b17215287600f0fee0b2dd3f5c37391ed06e6a1c9e3b3785882a493c9b750a'
+source=("ldraw-parts.zip::https://library.ldraw.org/library/updates/complete.zip"
+        "ldraw-parts-library.sh"
+        "license")
+sha256sums=('fc735449d2a86da9b43dabb8d096ce94bd02042f297ec91626391119b0c94bcd'
             '7cbd598861cc678e86ce07da220e97d0f9d27f2b8d0d03b794400b999fd6fc42'
             '783990d0de8daf6b0e18b1c06578438f7d70e106a1a351686872d8d6eeeba7ac')
 
 pkgver() {
-  echo $(date -uI|sed 's,-,,g')
+  local version=$(grep -oP '^0 !LDRAW_ORG Configuration UPDATE \K.+$' "$srcdir/ldraw/LDConfig.ldr")
+  echo ${version//[^0-9]/}
 }
 
 package() {
@@ -26,7 +27,7 @@ package() {
 
   # Install data
   mkdir -p                      "${pkgdir}/usr/share/ldraw"
-  cp ../LDConfig.ldr            "${pkgdir}/usr/share/ldraw/"
+  mv LDConfig.ldr               "${pkgdir}/usr/share/ldraw/"
   mv p                          "${pkgdir}/usr/share/ldraw/"
   mv parts                      "${pkgdir}/usr/share/ldraw/"
 
