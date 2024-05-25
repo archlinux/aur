@@ -29,10 +29,10 @@ build() {
 }
 
 package() {
-	if [ "${CARCH}" == 'x86_64' ]; then
-		_appimage="CheatBreaker.AppImage"
-	elif [ "${CARCH}" == 'arm64' ]; then
+	if [ "${CARCH}" == 'arm64' ]; then
 		_appimage="CheatBreaker-ARM64.AppImage"
+	else
+		_appimage="CheatBreaker.AppImage"
 	fi
 
 	# AppImage
