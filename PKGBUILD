@@ -2,22 +2,24 @@
 # Contributor: Hugo Lobo
 
 pkgname=binkplayer-bin
-pkgver=2024.01
+pkgver=2024.05
 pkgrel=1
 pkgdesc="Bink Video Player"
 url="http://www.radgametools.com/bnkmain.htm"
 arch=('x86_64')
+provides=("binkplayer")
+conflicts=("binkplayer")
 depends=('libgl' 'openal')
 # AUR helpers get confused with cached versions if the file name never changes.
 source=("BinkLinuxPlayer-$pkgver.7z::http://www.radgametools.com/down/Bink/BinkLinuxPlayer.7z"
         "x-binkvideo.xml"
         "binkplayer.desktop")
-sha256sums=('7a092bf587f0d93f27b17a35936428ea2deba076c6c4009bdf75aead32eed5d6'
+sha256sums=('91ca7d864b36b8f9fc8f71a8339d0f915b409c9d823ebc5ade5b71e7d464c0a6'
             '880fcb3a4435750a2990af7b38dc26d81170487ae3f8ecb526aad5a17673a454'
             '1e3ac358afeff5d0f87ae4430d4d5ec21b2d45f9ac6ae6340d14b1e4280c18e6')
 # License is unobtainable from their website - only custom contracts/license
 # agreements seem to be available.
-license=('custom')
+license=('LicenseRef-proprietary')
 
 package() {
     install -Dm755 BinkPlayer64 "$pkgdir/usr/bin/binkplayer"
