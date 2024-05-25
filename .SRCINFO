@@ -7,6 +7,7 @@ pkgbase = autofirma-bin
 	license = GPL
 	license = custom:EUPL
 	depends = java-runtime=11
+	provides = autofirma
 	conflicts = autofirma
 	conflicts = autofirma-git
 	source = autofirma-bin-1.8.2.zip::https://estaticos.redsara.es/comunes/autofirma/1/8/2/AutoFirma_Linux_Debian.zip

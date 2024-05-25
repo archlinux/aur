@@ -9,6 +9,7 @@ url='https://firmaelectronica.gob.es/'
 license=('GPL' 'custom:EUPL')
 depends=('java-runtime=11')
 conflicts=('autofirma' 'autofirma-git')
+provides=('autofirma')
 source=("${pkgname}-${pkgver}.zip::https://estaticos.redsara.es/comunes/autofirma/${pkgver//.//}/AutoFirma_Linux_Debian.zip"
         "autofirma"
         "autofirma.desktop"
