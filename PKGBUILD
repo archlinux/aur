@@ -16,7 +16,7 @@ pkgname=(
   java8-openjfx-src
 )
 pkgver=8.u202
-pkgrel=9
+pkgrel=10
 pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX)'
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -89,6 +89,8 @@ build() {
 
   # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   CFLAGS+=' -fcommon'
+  # fix errors when compiling gstreamer-lite
+  CFLAGS+=' -Wno-incompatible-pointer-types -Wno-int-conversion'
   # build against ffmpeg4.4
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
   # ensure jdk 8 is used when building

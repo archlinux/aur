@@ -1,7 +1,7 @@
 pkgbase = java8-openjfx
 	pkgdesc = Java OpenJFX 8 client application platform (open-source implementation of JavaFX)
 	pkgver = 8.u202
-	pkgrel = 9
+	pkgrel = 10
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
 	license = GPL
