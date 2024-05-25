@@ -1,0 +1,15 @@
+post_install() {
+	echo << EOF
+====================================================
+All binaries are prefixed with valveresourceformat-*
+====================================================
+EOF
+}
+
+post_upgrade() {
+	echo << EOF
+====================================================
+All binaries are prefixed with valveresourceformat-*
+====================================================
+EOF
+}
