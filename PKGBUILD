@@ -42,7 +42,7 @@ sha512sums=('c48a04df9c59518f7325b8119bf943436e29ccbfaecff3f7b96162e77fa2012df3f
 prepare() {
   cd mastodon-$pkgver
   # HUGE HACK: manual Gemfile.lock editing time!
-  # Only the latest version supports overriding C++ std: https://github.com/brianmario/charlock_holmes/commit/48e4e2db61f1f4133c0f36e476cc4af09566ebce
+  # Only the latest version from git supports overriding C++ std: https://github.com/brianmario/charlock_holmes/commit/48e4e2db61f1f4133c0f36e476cc4af09566ebce
   sed -i "s/gem 'charlock_holmes', '~> 0.7.7'/gem 'charlock_holmes', github: 'brianmario\/charlock_holmes'/g" Gemfile
   sed -i '/charlock_holmes (0.7.7)/d' Gemfile.lock
   sed -i 's/charlock_holmes (~> 0.7.7)/charlock_holmes!/g' Gemfile.lock
