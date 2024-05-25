@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=googleVis
-_pkgver=0.7.1
+_pkgver=0.7.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="R Interface to Google Charts"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-shiny
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8a48cbc976f069a073979cf228fe082a')
-b2sums=('95bfe78ed25df54b0403de4b81e6563d0bee0b8e9d33e14f4870362073e1f30f00adbec8416a5dcbacc23f35f2c7bc5dd9d9a8fb9650265bc05c152082af2891')
+md5sums=('bbd9349617e56abd1513a73f4238af09')
+b2sums=('89cc4b20e369356bd0d6b3ea727f5f4d797268612e476f88fee12c62db145e6780ffd4927af9e0a02b2a0540ee4631fdea8b9e54d0dff954e8bbbb3d188c896b')
 
 build() {
   mkdir build
