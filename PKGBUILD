@@ -1,17 +1,17 @@
-# Maintainer: Jonathan Funke <jonathan@funke-kaiser.at>
+# Maintainer: Cysec <cysec@msn.com>
 
 pkgname=lutris-world-of-warcraft-dependencies-nvidia
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 arch=(any)
 url='https://github.com/lutris/lutris/wiki/Game:-World-of-Warcraft'
-pkgdesc='Dependencies package for World of Warcraft using lutris. Nivida version'
+pkgdesc='Dependencies package for World of Warcraft using lutris. Nivida version. Updated for 2024 and using mainstream wine'
 depends=(lib32-gnutls
 	 lib32-libldap
 	 lib32-libgpg-error
 	 lib32-sqlite
 	 lib32-libpulse
-	 wine-staging
+	 wine
 	 giflib
 	 lib32-giflib
 	 libpng

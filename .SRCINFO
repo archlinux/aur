@@ -1,6 +1,6 @@
 pkgbase = lutris-world-of-warcraft-dependencies-nvidia
-	pkgdesc = Dependencies package for World of Warcraft using lutris. Nivida version
-	pkgver = 1.0
+	pkgdesc = Dependencies package for World of Warcraft using lutris. Nivida version. Updated for 2024 and using mainstream wine
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/lutris/lutris/wiki/Game:-World-of-Warcraft
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = lutris-world-of-warcraft-dependencies-nvidia
 	depends = lib32-libgpg-error
 	depends = lib32-sqlite
 	depends = lib32-libpulse
-	depends = wine-staging
+	depends = wine
 	depends = giflib
 	depends = lib32-giflib
 	depends = libpng
@@ -65,4 +65,3 @@ pkgbase = lutris-world-of-warcraft-dependencies-nvidia
 	depends = lib32-vulkan-icd-loader
 
 pkgname = lutris-world-of-warcraft-dependencies-nvidia
-
