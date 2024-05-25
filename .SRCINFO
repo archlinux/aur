@@ -1,7 +1,7 @@
 pkgbase = nvim-yarp-git
 	pkgdesc = (an) attempt (at) writing a remote plugin framework without :UpdateRemotePlugins.
 	pkgver = r59.bb5f5e0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roxma/nvim-yarp
 	install = nvim-yarp.install
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = nvim-yarp-git
 	depends = vim
 	depends = python-neovim
 	provides = nvim-yarp
-	replaces = 
 	source = nvim-yarp::git+https://github.com/roxma/nvim-yarp
 	md5sums = SKIP
 

@@ -2,7 +2,7 @@
 _name='nvim-yarp'
 pkgname="${_name}-git"
 pkgver=r59.bb5f5e0
-pkgrel=1
+pkgrel=2
 pkgdesc="(an) attempt (at) writing a remote plugin framework without :UpdateRemotePlugins."
 arch=('any')
 url="https://github.com/roxma/nvim-yarp"
@@ -12,7 +12,7 @@ depends=('vim' 'python-neovim')
 makedepends=('git') 
 provides=('nvim-yarp')
 conflicts=()
-replaces=('')
+replaces=()
 backup=()
 options=()
 # maybe at some point there will be helptags to update
