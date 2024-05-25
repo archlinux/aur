@@ -17,8 +17,7 @@ license=('Apache-2.0')
 groups=()
 
 depends=('glibc' 'gcc-libs' 'openssl' 'libyaml' 'systemd-libs')
-# PostgreSQL_TYPE_INCLUDE_DIR is provided by postgresql, this is currently a bug
-makedepends=('cmake' 'postgresql-libs' 'postgresql' 'python' 'valgrind')
+makedepends=('cmake' 'postgresql-libs' 'python' 'valgrind')
 checkdepends=('gtest' 'doxygen' 'graphviz')
 optdepends=()
 
@@ -51,6 +50,7 @@ build() {
         -DSYSTEMD_UNITDIR=/usr/lib/systemd/system \
         -DFLB_TESTS_INTERNAL=1 \
         -DFLB_ALL=1 \
+        -DFLB_OUT_PGSQL=1 \
         -DMBEDTLS_FATAL_WARNINGS=0 \
         -DLUAJIT_BUILD_EXE=0 \
         ;

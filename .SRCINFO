@@ -12,7 +12,6 @@ pkgbase = fluent-bit
 	checkdepends = graphviz
 	makedepends = cmake
 	makedepends = postgresql-libs
-	makedepends = postgresql
 	makedepends = python
 	makedepends = valgrind
 	depends = glibc
