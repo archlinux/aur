@@ -2,7 +2,7 @@
 
 pkgname=ipe
 _dirver=7.2
-pkgver=7.2.28
+pkgver=7.2.29
 pkgrel=1
 pkgdesc="The extensible drawing editor"
 url="http://ipe.otfried.org/"
@@ -64,7 +64,7 @@ package() {
 }
 
 # vim: ft=sh syn=sh et ts=2 sw=2
-md5sums=('c0ec4896cfcb06a61ab018986e727c89'
+md5sums=('db37450f4dfd8b8a6e3daad0145088ce'
          '694f0d5402655901be385647e5d8d6e3'
          '9b8ef63e12862f93ab8907a5763fb683'
          '19fd2cac2564125afa0149105d00d3dd')
