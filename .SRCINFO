@@ -1,7 +1,7 @@
 pkgbase = tetris-rs
 	pkgdesc = Terminal based tetris game written in rust.
 	pkgver = 0.1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://crates.io/crates/tetris-rs
 	arch = x86_64
 	license = MIT

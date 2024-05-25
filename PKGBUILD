@@ -2,7 +2,7 @@
 
 pkgname=tetris-rs
 pkgver=0.1.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Terminal based tetris game written in rust.'
 url='https://crates.io/crates/tetris-rs'
 arch=('x86_64')
@@ -23,12 +23,12 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  cargo build --frozen --release
+  RUSTFLAGS='-C link-args=-Wl,-z,shstk' cargo build --frozen --release
 }
 
 check() {
   cd $pkgname-$pkgver
-  cargo test --frozen
+  RUSTFLAGS='-C link-args=-Wl,-z,shstk' cargo test --frozen
 }
 
 package() {
