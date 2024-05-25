@@ -1,6 +1,6 @@
 pkgbase = bubblejail-git
 	pkgdesc = Bubblewrap based sandboxing utility
-	pkgver = 0.8.RC2.r473.150c1e8
+	pkgver = 0.8.3.r534.fd731b2
 	pkgrel = 1
 	url = https://github.com/igo95862/bubblejail
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = bubblejail-git
 	makedepends = meson
 	makedepends = python-jinja
 	makedepends = scdoc
+	makedepends = gcc
+	makedepends = linux-headers
 	depends = python
 	depends = python-pyxdg
 	depends = bubblewrap
@@ -24,6 +26,8 @@ pkgbase = bubblejail-git
 	provides = bubblejail
 	conflicts = bubblejail
 	source = bubblejail-git::git+https://github.com/igo95862/bubblejail
+	source = python-lxns::git+https://github.com/igo95862/python-lxns
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = bubblejail-git
