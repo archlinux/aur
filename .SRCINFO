@@ -1,0 +1,13 @@
+pkgbase = python-buckaroo
+	pkgdesc = Buckaroo - GUI Data wrangling for pandas
+	pkgver = 0.6.11
+	pkgrel = 1
+	url = https://github.com/paddymul/buckaroo
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/py3/b/buckaroo/buckaroo-0.6.11-py3-none-any.whl
+	sha256sums = c749e6591930c42084a0ea59d61254a0c66fe42f3a8c0498d8a565cab4aab9fe
+
+pkgname = python-buckaroo
