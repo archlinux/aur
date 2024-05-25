@@ -1,6 +1,6 @@
 # Maintainer: Stefanos Mitropoulos stefmitropoulos@gmail.com
 _pkgname="blueblack"
-pkgname="${_pkgname}-git"
+pkgname="blueblack-git"
 pkgver=1.0.2.r2.gf1006edd
 pkgrel=1
 pkgdesc="Automatically switch between light/dark mode"
