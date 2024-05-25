@@ -22,7 +22,7 @@ pkgbase = vapoursynth-git
 	source = wtfpl.txt
 	sha256sums = SKIP
 	sha256sums = 8e51579547d20cd7cb9618a47b3ac508423d09d76649bf038d0ab9acb850b068
-	sha256sums = 0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5
+	sha256sums = 7637386b5f81e8a719ca336233149005e5fa28b5e6054ea7b67de49355b0ad40
 
 pkgname = vapoursynth-git
 	depends = zimg-git
