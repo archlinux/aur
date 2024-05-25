@@ -1,8 +1,8 @@
 pkgname='pacundo'
 pkgver='1.0.1'
-pkgrel=1
-pkgdesc='A time machine to rollback ArchLinux machine to a working state.'
-arch=('any')
+pkgrel=2
+pkgdesc='A time machine to rollback your ArchLinux machine to a working state.'
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://code.ortegas.org/nortega/pacundo'
 license=('Zlib')
 depends=('perl' 'perl-file-readbackwards')
