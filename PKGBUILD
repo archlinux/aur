@@ -1,17 +1,17 @@
 # Maintainer: Jacob Lucas <jtljac2 at gmail dot com>
 pkgname="rimsort-bin"
-pkgver="alpha_v1.0.6.2_hf"
+pkgver="v1.0.7"
 pkgrel="1"
 pkgdesc="A Mod Manager For Rimworld game"
 arch=("x86_64")
 url="https://github.com/oceancabbage/RimSort"
 license=("GPL3")
-source=("$pkgname-${pkgver//_/-}.zip::https://github.com/oceancabbage/RimSort/releases/download/${pkgver//_/-}/RimSort-${pkgver//_/-}_Linux_x86_64.zip"
+source=("$pkgname-${pkgver//_/-}.zip::https://github.com/oceancabbage/RimSort/releases/download/${pkgver}/RimSort-${pkgver}-Ubuntu-24.04_x86_64.zip"
         "RimSort.desktop"
         "launch-script.sh")
-sha512sums=("69bec7d1b448f96bbc99cd0b5b59dd560d1f799fd1b6fd019b8669ec47349c683adef4b37750c4a21ae894fa08714ea61ea0618c3a6266b18acdff2dc8dc67ca"
-            "99c94e26aedc457bcb4ecfa6f3a3826177cdc93fcedf9826080d23f040d99af7185ea81b9b0144d8c5bbd3b655dfb59eec5c769de5f44088f4ed8f3681e36f96"
-            "6d4ffba79de38bc652710d0fb22bc61706b410a70d652362e5da02657a6d7643f8419e66237e5f21e3b6192b97fa46cb0230a660a516584dc5c7b750813653ed")
+sha512sums=("8b05c4d93b5bec05203b428abafbc53035f5e010f18c89e579a7c1a10af303aee16762afe28bd10ecd267fe892765137a94b53d243775f5e5da10d9c60d80876"
+            "43aa5e5d28ec832f3a54434d66e4724c9a8fdde5098b2910911faf62a80823896a9b6d455dbe749150adf11e44126f6851bcd4cd937a3e00bb9b7f95699ca96e"
+            "b737900aa332b202ae7cf48bd2f345b8e2af7fecaf0bd606768d26d8c632843b325f173f9c39879ef8ff0e1dafebd0bbdcb28d4be6d35c3532fba807b0ac86fd")
 
 OPTIONS=(!strip)
 
@@ -22,7 +22,7 @@ package() {
     cp -r "./RimSort"/* "$pkgdir/opt/rimsort/"
     
     # Icon
-    install -Dm644 "$srcdir/RimSort/data/AppIcon_a.png" "$pkgdir/usr/share/pixmaps/RimSort.png"
+    install -Dm644 "$srcdir/RimSort/themes/default-icons/AppIcon_a.png" "$pkgdir/usr/share/pixmaps/RimSort.png"
     
     # Desktop File
     install -Dm644 "$srcdir/RimSort.desktop" "$pkgdir/usr/share/applications/RimSort.desktop"
