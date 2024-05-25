@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=valveresourceformat-git
 pkgver=9.2.r91.g0486309
-pkgrel=1
+pkgrel=2
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'zlib')
-makedepends=('dotnet-sdk')
+makedepends=('dotnet-sdk' 'git')
 options=(!strip !debug)
 provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
