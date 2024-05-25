@@ -1,0 +1,5 @@
+[python-pyevtk]
+source = "github"
+github = "pyscience-projects/pyevtk"
+use_max_tag = "true"
+prefix = "v"
