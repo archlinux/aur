@@ -3,7 +3,7 @@
 # Contributor: Felipe Hommen <felibank at gmail dot com>
 # Contributor: moostik <mooostik at gmail dot com>
 
-pkgname=geogebra-6
+pkgname=geogebra-6-bin
 pkgver=6.0.804.0
 pkgrel=1
 pkgdesc='Dynamic mathematics software with interactive graphics, algebra and spreadsheet'
