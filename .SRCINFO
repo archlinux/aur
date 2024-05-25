@@ -20,6 +20,7 @@ pkgbase = fluent-bit
 	depends = openssl
 	depends = libyaml
 	depends = systemd-libs
+	noextract = fluent-bit-3.0.2.tar.gz
 	backup = etc/fluent-bit/fluent-bit.conf
 	backup = etc/fluent-bit/parsers.conf
 	source = fluent-bit-3.0.2.tar.gz::https://releases.fluentbit.io/3.0/source-3.0.2.tar.gz

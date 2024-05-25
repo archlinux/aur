@@ -33,16 +33,19 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://releases.fluentbit.io/${pkgver%.*}/source-$pkgver.tar.gz"
         pr-8901.patch)
-noextract=()
+noextract=("$pkgname-$pkgver.tar.gz")
 validpgpkeys=()
 
 prepare() {
-    patch -p1 < pr-8901.patch
+    tar xf "$pkgname-$pkgver.tar.gz" --one-top-level
+
+    patch -p1 -d "$pkgname-$pkgver" < pr-8901.patch
 }
 
 build() {
-    cd "$srcdir/build"
     cmake \
+        -S "$srcdir/$pkgname-$pkgver" \
+        -B "$srcdir/$pkgname-$pkgver-build" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
         -DSYSTEMD_UNITDIR=/usr/lib/systemd/system \
@@ -54,25 +57,23 @@ build() {
         -DFLB_HTTP_SERVER=Yes \
         -DMBEDTLS_FATAL_WARNINGS=Off \
         -DLUAJIT_BUILD_EXE=Off \
-        ..
-    make
+        ;
+
+    cmake --build "$srcdir/$pkgname-$pkgver-build"
 }
 
 check() {
-    cd "$srcdir/build"
-    make test || true
+    make -C "$srcdir/$pkgname-$pkgver-build" test || true
 }
 
 package() {
-    cd "$srcdir/build"
-
     # install binaries and libraries
-    make DESTDIR="$pkgdir/" install
+    cmake --install "$srcdir/$pkgname-$pkgver-build" --prefix "$pkgdir"
 
     # install license file and documentation
-    cd "$srcdir"
-    install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm 644 *.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    install -m 644 -D -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname-$pkgver/LICENSE"
+
+    install -m 644 -D -t "$pkgdir/usr/share/doc/$pkgname" "$srcdir/$pkgname-$pkgver/README.md"
 }
 
 # r!. %; curl -s https://releases.fluentbit.io/${pkgver\%.*}/source-$pkgver.tar.gz.{md5,sha256} | awk '{print $1}'
