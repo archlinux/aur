@@ -1,0 +1,27 @@
+pkgbase = cuda-12.2
+	pkgdesc = NVIDIA's GPU programming toolkit (Last CUDA version for 535 driver)
+	pkgver = 12.2.2
+	pkgrel = 1
+	url = https://developer.nvidia.com/cuda-zone
+	install = cuda.install
+	arch = x86_64
+	license = custom:NVIDIA
+	makedepends = zstd
+	makedepends = tar
+	depends = gcc12
+	depends = opencl-nvidia>=535.104
+	depends = nvidia-utils>=535.104
+	optdepends = gdb: for cuda-gdb
+	optdepends = glu: required for some profiling tools in CUPTI
+	provides = cuda-toolkit
+	provides = cuda-sdk
+	conflicts = cuda
+	replaces = cuda-toolkit
+	replaces = cuda-sdk
+	replaces = cuda-static
+	options = !strip
+	options = staticlibs
+	source = https://archive.archlinux.org/packages/c/cuda/cuda-12.2.2-1-x86_64.pkg.tar.zst
+	sha256sums = 95ec5134e03042c71de670738f82143b8185d6fbd4993086374b855bc299dbb8
+
+pkgname = cuda-12.2
