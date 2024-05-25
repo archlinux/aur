@@ -1,31 +1,22 @@
 pkgbase = rio
 	pkgdesc = A hardware-accelerated GPU terminal emulator powered by WebGPU
 	pkgver = 0.0.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raphamorim/rio
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = desktop-file-utils
+	makedepends = libxcb
+	makedepends = libxkbcommon
+	makedepends = python
 	depends = gcc-libs
 	depends = fontconfig
 	depends = freetype2
-	depends = libxcb
-	depends = libxkbcommon
-	depends = python
+	depends = glibc
+	depends = hicolor-icon-theme
 	source = rio-0.0.37.tar.gz::https://github.com/raphamorim/rio/archive/refs/tags/v0.0.37.tar.gz
 	sha512sums = 3f705e345e444022fbdead9db30242abb6ebbe4f0fd8820fbd2762c233f7f0efe0d5c8e0444bf40a238a904a59b9be8cf2cf495a9f7cee2567473ec9040f0a3d
 
 pkgname = rio
-	depends = gcc-libs
-	depends = fontconfig
-	depends = freetype2
-	depends = libxcb
-	depends = libxkbcommon
-	depends = python
-	depends = rio-terminfo
-
-pkgname = rio-terminfo
-	pkgdesc = Terminfo for rio, a hardware-accelerated GPU terminal emulator powered by WebGPU
-	depends = ncurses

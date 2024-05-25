@@ -2,61 +2,54 @@
 # Contributor: bbx0 <39773919+bbx0@users.noreply.github.com>
 # Contributor: Raphael Amorim <rapha850@gmail.com>
 
-pkgbase=rio
-pkgname=('rio' 'rio-terminfo')
+pkgname=rio
 pkgver=0.0.37
-pkgrel=1
+pkgrel=2
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64')
-url="https://github.com/raphamorim/${pkgbase}"
+url="https://github.com/raphamorim/rio"
 license=('MIT')
 # https://raphamorim.io/rio/install/#arch-linux
 depends=(
   'gcc-libs'
   'fontconfig'
   'freetype2'
+  'glibc'
+  'hicolor-icon-theme'
+)
+makedepends=(
+  'cargo'
+  'cmake'
+  'desktop-file-utils'
   'libxcb'
   'libxkbcommon'
   'python'
 )
-makedepends=('cargo' 'cmake' 'desktop-file-utils')
-source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('3f705e345e444022fbdead9db30242abb6ebbe4f0fd8820fbd2762c233f7f0efe0d5c8e0444bf40a238a904a59b9be8cf2cf495a9f7cee2567473ec9040f0a3d')
 
 prepare() {
-  cd "${pkgbase}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${pkgbase}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "${pkgbase}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   cargo test --frozen --workspace
 }
 
-package_rio() {
-  depends+=('rio-terminfo')
-
-  cd "${pkgbase}-${pkgver}"
-  install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgbase}"
-  install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgbase}/" "README.md"
-  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgbase}/" "LICENSE"
-  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "misc/${pkgbase}.desktop"
-  install -Dm0644 "docs/static/assets/${pkgbase}-logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgbase}.svg"
-}
-
-package_rio-terminfo() {
-  pkgdesc="Terminfo for rio, a hardware-accelerated GPU terminal emulator powered by WebGPU"
-  depends=('ncurses')
-
-  cd "${pkgbase}-${pkgver}"
-  install -d "${pkgdir}/usr/share/terminfo"
-  tic -x -o "${pkgdir}/usr/share/terminfo" "misc/rio.terminfo"
-  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgbase}-terminfo/" "LICENSE"
+package() {
+  cd "${pkgname}-${pkgver}"
+  install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
+  install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname}/" "README.md"
+  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "LICENSE"
+  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "misc/${pkgname}.desktop"
+  install -Dm0644 "docs/static/assets/${pkgname}-logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 }
 
 # vim: ts=2 sw=2 et:
