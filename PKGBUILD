@@ -2,11 +2,11 @@
 # Contributor: Jan Oliver Oelerich <janoliver@oelerich.org>
 pkgname=uwsgitop-git
 pkgver=20240401
-pkgrel=1
+pkgrel=2
 pkgdesc="uWSGI stats viewer"
 arch=('any')
 url="http://github.com/unbit/uwsgitop.git"
-license=('GPL')
+license=('MIT')
 depends=('python2')
 makedepends=('git' 'python2-distribute')
 source=("git+https://github.com/unbit/uwsgitop.git")
