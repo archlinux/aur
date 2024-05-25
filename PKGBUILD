@@ -20,7 +20,7 @@ optdepends=('pkgfile: for faster retrieval of package files'
 			'xterm: preconfigured terminal emulator (default)'
 			)
 source=(https://gitlab.com/AndyM48/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('ef24e7a909bb32029bdf4a7a47196d17')
+md5sums=('05bf2ec76191ff3ed002bcfce94b578f')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
