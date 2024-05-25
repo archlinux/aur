@@ -1,31 +1,47 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
-_pipname=nbclassic
-pkgname=jupyter-$_pipname
-pkgver=1.0.0
-pkgrel=2
+_pyname=nbclassic
+pkgname=jupyter-$_pyname
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Jupyter Notebook as a Jupyter Server Extension'
 arch=(any)
 url='https://jupyter.org/'
-license=(custom)
-depends=(python-jupyter-server-terminals jupyter-notebook-shim mathjax2)
-makedepends=(python-build python-installer python-jupyter-packaging)
-checkdepends=(python-pytest-tornasync python-pytest-jupyter)
-source=(https://pypi.io/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz)
-sha256sums=('0ae11eb2319455d805596bf320336cda9554b41d99ab9a3c31bf8180bffa30e3')
+license=(BSD-3-Clause)
+depends=(jupyter-nbconvert
+         jupyter-nbformat
+         jupyter-notebook-shim
+         jupyter-server
+         mathjax2
+         python
+         python-ipython-genutils
+         python-jupyter-core
+         python-jupyter-server-terminals
+         python-tornado
+         python-traitlets)
+makedepends=(bower
+             git
+             npm
+             python-build
+             python-installer
+             python-jupyter-packaging)
+checkdepends=(python-pytest-jupyter
+              python-pytest-tornasync)
+source=(git+https://github.com/jupyter/nbclassic#tag=v$pkgver)
+sha256sums=('508fce5019a08ab4d553477acad8714a0fa4601314568e00a85aa4b286920e62')
 
 build() {
-  cd $_pipname-$pkgver
+  cd $_pyname
   python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
-  cd $_pipname-$pkgver
+  cd $_pyname
   pytest -v
 }
 
 package() {
-  cd $_pipname-$pkgver
+  cd $_pyname
   python -m installer --destdir="$pkgdir" dist/*.whl
   mv "$pkgdir"/{usr/,}etc
 # Unbundle mathjax
