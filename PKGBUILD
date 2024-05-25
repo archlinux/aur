@@ -5,10 +5,12 @@
 # https://www.libreoffice.org/
 # https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/
 
+: ${_pkgtype:="-dev-bin"}
+
 ## basic info
 _pkgname="libreoffice"
-pkgname="${_pkgname}-dev-bin"
-pkgver=24.2.4.1
+pkgname="${_pkgname}${_pkgtype:-}"
+pkgver=24.8.0.0.alpha1
 pkgrel=1
 pkgdesc="LibreOffice development branch"
 url="https://www.libreoffice.org/"
@@ -26,10 +28,14 @@ provides=(
   'libreoffice-en-US'
 )
 
-_pkgnamefmt=LibreOffice
-
 _dl_url="https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64"
+
+#_pkgnamefmt=LibreOffice
+#source=("$_dl_url/${_pkgnamefmt}_${pkgver}_Linux_x86-64_rpm.tar.gz"{,.asc})
+
+_pkgnamefmt=LibreOfficeDev
 source=("$_dl_url/${_pkgnamefmt}_${pkgver}_Linux_x86-64_rpm.tar.gz"{,.asc})
+
 sha256sums=('SKIP' 'SKIP')
 validpgpkeys=(
   C2839ECAD9408FBE9531C3E9F434A1EFAFEEAEA3 # LibreOffice Build Team (CODE SIGNING KEY) <build@documentfoundation.org>
