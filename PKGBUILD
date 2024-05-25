@@ -11,6 +11,7 @@ license=('GPL-2.0-or-later AND EUPL-1.1')
 depends=('java-runtime=11')
 makedepends=('git' 'java-environment=11' 'maven')
 conflicts=('autofirma' 'autofirma-bin')
+provides=('autofirma')
 source=("${_pkgname}::git+https://github.com/ctt-gob-es/${_pkgname}.git"
         "${_pkgname}-external::git+https://github.com/ctt-gob-es/${_pkgname}-external.git"
         "autofirma"

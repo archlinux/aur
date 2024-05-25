@@ -9,6 +9,7 @@ pkgbase = autofirma-git
 	makedepends = java-environment=11
 	makedepends = maven
 	depends = java-runtime=11
+	provides = autofirma
 	conflicts = autofirma
 	conflicts = autofirma-bin
 	source = clienteafirma::git+https://github.com/ctt-gob-es/clienteafirma.git
