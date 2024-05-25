@@ -1,28 +1,60 @@
-# Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 pkgname=adw-gtk3-git
-pkgver=1.0.r2.a2a0114
+pkgver=5.3.r2.gd8cb661
 pkgrel=1
-pkgdesc='The theme from libadwaita ported to GTK-3'
-arch=(any)
-url=https://github.com/lassekongo83/adw-gtk3
-license=(LGPL2.1)
-makedepends=(git meson sassc)
+pkgdesc="The theme from libadwaita ported to GTK-3"
+arch=('any')
+url="https://github.com/lassekongo83/adw-gtk3"
+license=('LGPL-2.1-or-later')
+makedepends=('git' 'meson' 'sassc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git")
-md5sums=(SKIP)
+_adw_commit=986687b442fcb5d7627b7135c9be6d6614268abc  # tags/1.5.1^0
+source=("git+https://github.com/lassekongo83/adw-gtk3.git"
+        "git+https://gitlab.gnome.org/GNOME/libadwaita.git#commit=${_adw_commit}")
+sha256sums=('SKIP'
+            'fdc6885be414d6c1cfb30a01657d58d7b824c9732edb56f6c61d614e0c3bfcf9')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "${pkgname%-git}"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	arch-meson "${pkgname%-git}" build
-	meson compile -C build
+
+  # Update GTK4 theme: .github/workflows/update-gtk4-theme.yml
+
+  # Compile scss
+  pushd libadwaita/src/stylesheet
+  sassc -a -M -t compact base.scss libadwaita.css
+  sassc -a -M -t compact defaults-light.scss gtk.css
+  sassc -a -M -t compact defaults-dark.scss gtk-dark.css
+  popd
+
+  # Copy css files
+  cp libadwaita/src/stylesheet/libadwaita.css "${pkgname%-git}/gtk/src/${pkgname%-git}/gtk-3.0/libadwaita.css"
+  cp libadwaita/src/stylesheet/gtk.css "${pkgname%-git}/gtk/src/${pkgname%-git}/gtk-4.0/gtk.css"
+  cp libadwaita/src/stylesheet/gtk-dark.css "${pkgname%-git}/gtk/src/${pkgname%-git}/gtk-4.0/gtk-dark.css"
+  cp libadwaita/src/stylesheet/gtk-dark.css "${pkgname%-git}/gtk/src/${pkgname%-git}-dark/gtk-4.0/gtk.css"
+  cp libadwaita/src/stylesheet/gtk-dark.css "${pkgname%-git}/gtk/src/${pkgname%-git}-dark/gtk-4.0/gtk-dark.css"
+
+  # Add libadwaita to the gtk.css files
+  pushd "${pkgname%-git}"
+  echo "@import '../gtk-3.0/libadwaita.css';" >> ./"gtk/src/${pkgname%-git}/gtk-4.0/gtk.css"
+  echo "@import '../gtk-3.0/libadwaita-tweaks.css';" >> ./"gtk/src/${pkgname%-git}/gtk-4.0/gtk.css"
+  echo "@import '../gtk-3.0/libadwaita.css';" >> ./"gtk/src/${pkgname%-git}/gtk-4.0/gtk-dark.css"
+  echo "@import '../gtk-3.0/libadwaita-tweaks.css';" >> ./"gtk/src/${pkgname%-git}/gtk-4.0/gtk-dark.css"
+  echo "@import '../gtk-3.0/libadwaita.css';" >> ./"gtk/src/${pkgname%-git}-dark/gtk-4.0/gtk.css"
+  echo "@import '../gtk-3.0/libadwaita-tweaks.css';" >> ./"gtk/src/${pkgname%-git}-dark/gtk-4.0/gtk.css"
+  echo "@import '../gtk-3.0/libadwaita.css';" >> ./gtk/src/"${pkgname%-git}-dark/gtk-4.0/gtk-dark.css"
+  echo "@import '../gtk-3.0/libadwaita-tweaks.css';" >> ./"gtk/src/${pkgname%-git}-dark/gtk-4.0/gtk-dark.css"
+  popd
+
+  arch-meson "${pkgname%-git}" build
+  meson compile -C build
 }
 
 package() {
-	meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir "$pkgdir"
 }
