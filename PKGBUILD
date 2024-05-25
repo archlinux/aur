@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC2034 disable=SC2164
 pkgname=maa-assistant-arknights
-_pkgver=v5.3.0-beta.3
+_pkgver=v5.3.0
 pkgver=${_pkgver//-/}
 pkgver=${pkgver#v}
 pkgrel=1
@@ -16,7 +16,7 @@ _fastdeploy_ref=d0b018ac6c3daa22c7b55b555dc927a5c734d430
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         "https://github.com/MaaAssistantArknights/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${pkgname}.install"
-md5sums=('9df434e63650dd57b921c9dce323a798'
+md5sums=('e2b76d5fe3ae8609b24f646d0944b436'
          '93190bbc6785e35e231af5cd4931f16a')
 
 if ((WITH_GPU)); then
@@ -24,26 +24,8 @@ if ((WITH_GPU)); then
 fi
 
 prepare() {
-    cd "${srcdir:?}"/MaaAssistantArknights-${_pkgver#v}
-    sed -e 's/RUNTIME\sDESTINATION\s\./ /g' \
-        -e 's/LIBRARY\sDESTINATION\s\./ /g' \
-        -e 's/PUBLIC_HEADER\sDESTINATION\s\./ /g' -i CMakeLists.txt
-    sed -e 's/find_package(asio /# find_package(asio /g' \
-        -e 's/find_package(MaaDerpLearning/# find_package(MaaDerpLearning/g' \
-        -e 's/asio::asio/ /g' -i CMakeLists.txt
-    sed -i "7i""add_subdirectory(\${SOURCE_DIR_FASTDEPLOY} \${BINARY_DIR_FASTDEPLOY} EXCLUDE_FROM_ALL SYSTEM) \\
-        include_directories(SYSTEM \${SOURCE_DIR_FASTDEPLOY}) \\
-        install(TARGETS MaaDerpLearning) \\
-        message(\${CMAKE_CURRENT_LIST_FILE})" CMakeLists.txt
-
-    shopt -s globstar nullglob
-    sed -i 's/onnxruntime\/core\/session\///g' src/MaaCore/**/{*.h,*.cpp,*.hpp,*.cc}
-
-    cp -v "$srcdir"/FastDeploy-"$_fastdeploy_ref"/cmake/Findonnxruntime.cmake cmake
-    sed -i 's/ONNXRuntime/onnxruntime/g' CMakeLists.txt
-
-    cd "$srcdir/FastDeploy-$_fastdeploy_ref"
-    sed -i 's/fastdeploy_ppocr/MaaDerpLearning/g' CMakeLists.txt # git revert -n 0ef77d332
+    cd "${srcdir:?}"/MaaAssistantArknights-"${_pkgver#v}"
+    sed -i '108s/fastdeploy/fastdeploy_ppocr/g' CMakeLists.txt
 }
 
 build() {
@@ -54,12 +36,13 @@ build() {
         -DUSE_MAADEPS=OFF
         -DINSTALL_RESOURCE=ON
         -DINSTALL_PYTHON=ON
+        -DINSTALL_FLATTEN=OFF
         -DBUILD_SHARED_LIBS=ON
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr
         -DMAA_VERSION="$_pkgver"
-        -DSOURCE_DIR_FASTDEPLOY="$srcdir"/FastDeploy-"$_fastdeploy_ref"
-        -DBINARY_DIR_FASTDEPLOY="$srcdir"/build-FastDeploy
+        -Dfastdeploy_SOURCE_DIR="$srcdir"/FastDeploy-"$_fastdeploy_ref"
+        -Dfastdeploy_BINARY_DIR="$srcdir"/build-FastDeploy
     )
 
     if ((WITH_GPU)); then
@@ -67,17 +50,13 @@ build() {
     fi
 
     CXXFLAGS+=" -fmacro-prefix-map=$srcdir=${DBGSRCDIR:-/usr/src/debug}/${pkgbase:?}"
-    CXXFLAGS+=" -isystem /usr/include/onnxruntime/core/session" # in case onnxruntime<=1.15
-
-    CXXFLAGS+=" -DASST_WITH_EMULATOR_EXTRAS=0"
 
     cmake -B build -S "MaaAssistantArknights-${_pkgver#v}" "${_cmake_flags[@]}"
     cmake --build build
 }
 
 package() {
-    cd "$srcdir"
-    cmake --install build --prefix "$pkgdir"/usr
+    cmake --install "$srcdir"/build --prefix "$pkgdir"/usr
 
     cd "$pkgdir"/usr/
     mkdir -p share/"$pkgname"
