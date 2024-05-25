@@ -1,0 +1,5 @@
+[python-ray]
+source = "github"
+github = "ray-project/ray"
+use_latest_release = "true"
+prefix = "ray-"
