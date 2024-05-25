@@ -1,6 +1,6 @@
 pkgbase = altus-appimage
 	pkgdesc = WhatsApp client with themes and multiple account support
-	pkgver = 5.1.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://gitlab.com/amanharwara/altus
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = altus-appimage
 	depends = zlib
 	depends = hicolor-icon-theme
 	conflicts = altus
-	noextract = Altus-5.1.0.AppImage
+	noextract = Altus-5.2.0.AppImage
 	options = !strip
-	source = https://github.com/amanharwara/altus/releases/download/5.1.0/Altus-5.1.0.AppImage
-	sha256sums = 62f68922aefcdf58981b766d1d3c77a344e7c34edfc5e8ff590b9b06e6b53fab
+	source = https://github.com/amanharwara/altus/releases/download/5.2.0/Altus-5.2.0.AppImage
+	sha256sums = 472322bb3e1eb10a775f92c69ea21ec52aee6b9d2733c6fd50454a51868b779a
 
 pkgname = altus-appimage
