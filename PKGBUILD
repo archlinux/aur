@@ -1,6 +1,6 @@
 pkgname='pacundo'
 pkgver='1.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='A time machine to rollback your ArchLinux machine to a working state.'
 arch=('any')
 url='https://code.ortegas.org/nortega/pacundo'
