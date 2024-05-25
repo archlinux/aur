@@ -1,19 +1,19 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=elastix
 pkgname=${_pkgname}-bin
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Toolbox for rigid and nonrigid registration of images'
 arch=('x86_64')
-url='http://elastix.isi.uu.nl/'
+url='https://github.com/SuperElastix/elastix'
 license=('apache')
 provides=('elastix')
 depends=()
 makedepends=()
 optdepends=()
 conflicts=('elastix-git' 'elastix')
-source=("https://github.com/SuperElastix/elastix/releases/download/${pkgver}/elastix-${pkgver}-linux.tar.bz2")
-sha256sums=('7c6bdc7667aaf736b1f5bd70ad496288f737106fd1cb22c019f0bae0363d8b5c')
+source=("https://github.com/SuperElastix/elastix/releases/download/${pkgver}/elastix-${pkgver}-linux.zip")
+sha256sums=('b333f2a911c23ba978c4a249722c8dfb29f81d190ab69553ce1622fae39c3cf9')
 
 package() {
 	cd "${srcdir}"
