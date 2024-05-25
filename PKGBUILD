@@ -15,6 +15,11 @@ md5sums_x86_64=('d900ded3ebaed39927a1365811652b11')
 md5sums_arm64=('d4c935b349cfa17879202e70a2faae30')
 
 prepare() {
+	if [ "${CARCH}" == 'arm64' ]; then
+		_appimage="CheatBreaker-ARM64.AppImage"
+	else
+		_appimage="CheatBreaker.AppImage"
+	fi
 	chmod +x "${_appimage}"
 	./"${_appimage}" --appimage-extract
 }
@@ -29,11 +34,6 @@ build() {
 }
 
 package() {
-	if [ "${CARCH}" == 'arm64' ]; then
-		_appimage="CheatBreaker-ARM64.AppImage"
-	else
-		_appimage="CheatBreaker.AppImage"
-	fi
 
 	# AppImage
 	install -Dm755 \
