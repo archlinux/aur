@@ -1,0 +1,14 @@
+pkgbase = antman
+	pkgdesc = A Nonsensical Toolchain Manager used to download/sync, upgrade and manage neutron toolchain builds.
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://github.com/Neutron-Toolchains/antman
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	depends = zstd
+	depends = wget
+	source = antman-2.4.tar.gz::https://github.com/Neutron-Toolchains/antman/archive/refs/tags/v2.4.tar.gz
+	sha256sums = cb3455d5318ffad8c50fe17ea65282287d3fc203b44be26950d636fd2dcdf556
+
+pkgname = antman
