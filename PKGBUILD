@@ -1,6 +1,6 @@
 # Maintainer: Vhou-Atroph <vhouatroph@proton.me>
 pkgname="tt-damage-calculator"
-pkgver="4.3.0_dev.4"
+pkgver="4.3.0"
 pkgrel=2
 epoch=
 pkgdesc="A damage calculator for Toontown Rewritten"
