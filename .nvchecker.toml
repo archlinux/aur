@@ -1,0 +1,4 @@
+[rio]
+source = "git"
+git = "https://github.com/raphamorim/rio"
+prefix = "v"
