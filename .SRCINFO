@@ -1,6 +1,6 @@
 pkgbase = crystal-nightly
 	pkgdesc = The Crystal Programming Language, nightly binaries
-	pkgver = 20240524
+	pkgver = 20240525
 	pkgrel = 1
 	url = http://crystal-lang.org
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = crystal-nightly
 	provides = shards
 	conflicts = crystal
 	conflicts = shards
-	noextract = crystal-nightly-20240524.tar.gz
+	noextract = crystal-nightly-20240525.tar.gz
 	options = !strip
-	source = crystal-nightly-20240524.tar.gz::https://artifacts.crystal-lang.org/dist/crystal-nightly-linux-x86_64.tar.gz
-	sha256sums = 8737d659d12297cb23a653786a6d7256b12c3c5510c508f9cf8dca28b80e9488
+	source = crystal-nightly-20240525.tar.gz::https://artifacts.crystal-lang.org/dist/crystal-nightly-linux-x86_64.tar.gz
+	sha256sums = 4d63517d8b1387d513ff5d99d37a05d1e23ed2bcbaa90ac3826ac213977aaf1e
 
 pkgname = crystal-nightly
