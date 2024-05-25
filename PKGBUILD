@@ -1,7 +1,7 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=procertum-diagnostic
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Diagnostic tool for proCertum cards."
 arch=(x86_64)
@@ -41,4 +41,7 @@ package() {
 	# install desktop file
 	mkdir -p "$pkgdir/usr/share/applications"
 	cp -R -a "$USER_DESKTOP_FILE" "$pkgdir/usr/share/applications/"
+
+	# install license
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$INSTALL_DIR"/licenses/*
 }
