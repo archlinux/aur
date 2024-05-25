@@ -3,14 +3,14 @@
 _pkgname='mplhep'
 pkgname="python-${_pkgname}"
 pkgver='0.3.46'
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of helpers for matplotlib to more easily produce plots typically needed in HEP."
 arch=('any')
 url='https://github.com/scikit-hep/mplhep'
 license=('MIT')
 depends=('python-numpy' 'python-matplotlib' 'python-mplhep_data' 'python-uhi' 'python-packaging')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-mock' 'python-importlib-metadata' 'python-boost-histogram' 'python-scipy' 'python-uproot' 'python-scikit-hep-testdata' 'python-hist' 'python-fsspec')
+checkdepends=('python-pytest' 'python-pytest-mock' 'python-boost-histogram' 'python-scipy' 'python-uproot' 'python-scikit-hep-testdata' 'python-hist' 'python-fsspec')
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
 sha256sums=('SKIP')
 
