@@ -1,12 +1,12 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=procertum-cardmanager
 pkgver=2.2.12
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Management of certificate profiles installed on the cryptoCertum card."
 arch=(x86_64)
 url="https://www.support.certum.eu/en/cert-offer-card-manager/"
-license=(unknown)
+license=("custom:procertum-cardmanager-software-license")
 provides=()
 source=(
 	"https://files.certum.eu/software/proCertumCardManager/Linux-Ubuntu/${pkgver}/proCertumCardManager-${pkgver}-${CARCH}-ubuntu.bin"
@@ -75,4 +75,7 @@ package() {
 	# install desktop file
 	mkdir -p "$pkgdir/usr/share/applications"
 	cp -R -a "$USER_DESKTOP_FILE" "$pkgdir/usr/share/applications/"
+
+	# install license
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$INSTALL_DIR"/proCertumCardManager_*_licence.rtf
 }
