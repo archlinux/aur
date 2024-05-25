@@ -2,8 +2,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: mickele <mimocciola@yahoo.com>
 pkgname=(gmsh gmsh-docs)
-pkgver=4.13.0
-pkgrel=3
+pkgver=4.13.1
+pkgrel=1
 pkgdesc="An automatic 3D finite element mesh generator with pre and post-processing facilities"
 arch=(x86_64)
 url="https://gmsh.info"
@@ -12,7 +12,7 @@ makedepends=(cmake desktop-file-utils sed swig texlive-meta voro++ fltk
   med-openmpi opencascade cairo metis alglib ann glu cgns lapack)
 options=(!emptydirs)
 source=("${url}/src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
-sha256sums=('c85f056ee549a433e814a61c385c97952bbfe514b442b999f6149fffb1e54f64'
+sha256sums=('77972145f431726026d50596a6a44fb3c1c95c21255218d66955806b86edbe8d'
             '43a8ca33ac917ee7196fdae305ff2c8cb9ae1072569ee546c0ce8ff580c966ae'
             '11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef')
 
