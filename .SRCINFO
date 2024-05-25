@@ -1,7 +1,7 @@
 pkgbase = kwin
 	pkgdesc = An easy to use, but flexible, composited Window Manager
-	pkgver = 6.0.4.1
-	pkgrel = 2
+	pkgver = 6.0.5
+	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	install = kwin.install
 	arch = x86_64
@@ -75,13 +75,13 @@ pkgbase = kwin
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	optdepends = maliit-keyboard: virtual keyboard for kwin-wayland
-	source = https://download.kde.org/stable/plasma/6.0.4/kwin-6.0.4.1.tar.xz
-	source = https://download.kde.org/stable/plasma/6.0.4/kwin-6.0.4.1.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/6.0.5/kwin-6.0.5.tar.xz
+	source = https://download.kde.org/stable/plasma/6.0.5/kwin-6.0.5.tar.xz.sig
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 56ffb37fa36e10f058ec5499c6858f6b21105b56ac7d70407921f063bc4bcb36
+	sha256sums = 242e7d210529ec631bc5fe3fe0a117a3d1d4edb1dd3a644aafd5089312f8b0d7
 	sha256sums = SKIP
 
 pkgname = kwin
