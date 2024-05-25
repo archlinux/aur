@@ -12,7 +12,6 @@ arch=(any)
 url=https://github.com/mastodon/mastodon
 license=(AGPL3)
 depends=(ffmpeg
-         gcc
          git
          imagemagick
          libidn
@@ -20,7 +19,6 @@ depends=(ffmpeg
          libxml2
          libxslt
          libyaml
-         make
          nodejs
          postgresql
          protobuf
@@ -41,6 +39,21 @@ sha512sums=('c48a04df9c59518f7325b8119bf943436e29ccbfaecff3f7b96162e77fa2012df3f
             '4ee4210bde391e6dc782cb7c14f2cb968c95ad541aa0efcf843a811f8cc5f0d1067ee3c8346bb412aa9fd1dd5a8bd05a4524df7dc4a106957009853dd237074a'
             '27c4eb01d462c525b59e5808a3b2501b63a34425752128388fbde82f7eb5944b20d2f8d8b1be8ed8adb165cab4cfb8e13f90215f20989ca671a0422ffa37001f')
 
+prepare() {
+  cd mastodon-$pkgver
+  # HUGE HACK: manual Gemfile.lock editing time!
+  # Only the latest version supports overriding C++ std: https://github.com/brianmario/charlock_holmes/commit/48e4e2db61f1f4133c0f36e476cc4af09566ebce
+  sed -i "s/gem 'charlock_holmes', '~> 0.7.7'/gem 'charlock_holmes', github: 'brianmario\/charlock_holmes'/g" Gemfile
+  sed -i '/charlock_holmes (0.7.7)/d' Gemfile.lock
+  sed -i 's/charlock_holmes (~> 0.7.7)/charlock_holmes!/g' Gemfile.lock
+  echo "GIT
+  remote: https://github.com/brianmario/charlock_holmes.git
+  revision: 3f4f57cfbee6dcd11941f54f9d4da0ebc1402421
+  specs:
+    charlock_holmes (0.7.7)
+$(cat Gemfile.lock)" > Gemfile.lock
+}
+
 build() {
   cd mastodon-$pkgver
   sed -i '/husky install/d' package.json # Stop husky from hijacking git hooks
@@ -49,6 +62,7 @@ build() {
   bundle config with 'pam_authentication'
   bundle config build.cbor --with-cflags="-Wno-incompatible-pointer-types"
   bundle config build.posix-spawn --with-cflags="-Wno-incompatible-pointer-types"
+  bundle config build.charlock_holmes --with-cxxflags="-std=c++17"
   bundle install -j$(getconf _NPROCESSORS_ONLN)
   yarn install --pure-lockfile
 }
