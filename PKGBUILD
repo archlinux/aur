@@ -45,7 +45,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd k3s
-  git describe --long --tags orig_head | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
+  git describe --long --tags orig_head | sed 's/^v//;s/-rc/rc/;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
