@@ -4,7 +4,7 @@ _pkgroot=navigation2
 _pkgname=nav2_simple_commander
 pkgname=ros2-humble-nav2-simple-commander
 pkgver=1.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="An importable library for writing mobile robot applications in python3"
 url="https://index.ros.org/p/nav2_simple_commander/"
 arch=('any')
@@ -18,16 +18,12 @@ sha256sums=('1d89dc1ad7c75d4d1645c882a5aee037ca965908344a158bb9669ad80a85196b')
 
 
 build() {
+    cd $_pkgroot-$pkgver/$_pkgname
     source /opt/ros/humble/setup.bash
-
-    cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
-        -DCMAKE_BUILD_TYPE='None' \
-        -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
-        -Wno-dev
-    
-    cmake --build build
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+    cd $_pkgroot-$pkgver/$_pkgname
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
