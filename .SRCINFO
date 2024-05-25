@@ -1,6 +1,6 @@
 pkgbase = gcompris-qt
 	pkgdesc = Educational software suite comprising of numerous activities for children aged 2 to 10
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://gcompris.net/
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = gcompris-qt
 	depends = hicolor-icon-theme
 	replaces = gcompris
 	replaces = gcompris-data
-	source = https://download.kde.org/stable/gcompris/qt/src/gcompris-qt-4.0.tar.xz
-	source = https://download.kde.org/stable/gcompris/qt/src/gcompris-qt-4.0.tar.xz.sig
+	source = https://download.kde.org/stable/gcompris/qt/src/gcompris-qt-4.1.tar.xz
+	source = https://download.kde.org/stable/gcompris/qt/src/gcompris-qt-4.1.tar.xz.sig
 	validpgpkeys = D2FAAB621F618D42685B427B63D7264C05687D7E
-	sha256sums = c1c4ea9caec44affa3587af96ac79d964439ad957d895e0f2d2f32424bee0eb6
+	sha256sums = 3f3d1c3b205f89ec4a1d4b075e6d7c670d852aeedbeef56ec32e15bb875a0685
 	sha256sums = SKIP
 
 pkgname = gcompris-qt
