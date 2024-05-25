@@ -12,7 +12,7 @@ makedepends=('git' 'cargo')
 optdepends=("typst: For typst compilation")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/Enter-tainer/typstyle.git")
+source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
