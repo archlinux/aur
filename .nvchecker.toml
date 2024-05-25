@@ -1,0 +1,5 @@
+[cloud-nuke]
+source = "github"
+github = "gruntwork-io/cloud-nuke"
+use_latest_release = "true"
+prefix = "v"

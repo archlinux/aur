@@ -1,6 +1,6 @@
 pkgbase = cloud-nuke-bin
-	pkgdesc = A tool for cleaning up your cloud accounts by nuking (deleting) all resources within it.
-	pkgver = 0.29.5
+	pkgdesc = AWS cloud account cleaning tool
+	pkgver = 0.36.0
 	pkgrel = 1
 	url = https://github.com/gruntwork-io/cloud-nuke
 	arch = x86_64
@@ -8,10 +8,12 @@ pkgbase = cloud-nuke-bin
 	arch = aarch64
 	license = MIT
 	provides = cloud-nuke
-	source_x86_64 = cloud-nuke-bin::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.29.5/cloud-nuke_linux_amd64
-	sha256sums_x86_64 = 94d8fa868581fe1738864b3f38851f5a58a403ae2f5100e43a0aa5ac8503b6b7
-	source_i386 = cloud-nuke-bin::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.29.5/cloud-nuke_linux_386
-	sha256sums_i386 = 0563f505a0dc66b5181c29688af58ac20ca0a340eb960ab0b51c8ae70395bf10
-	sha256sums_aarch64 = 4c8fb4ecbaf5e7f132e5588d8588d0089f217e87bd78c3f0b5cb759d732c0f95
+	conflicts = cloud-nuke
+	source_x86_64 = cloud-nuke-0.36.0-x86_64::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.36.0/cloud-nuke_linux_amd64
+	sha512sums_x86_64 = 6d723fb65c207ce169872e00aaf61291320f063c71feada8fc0b52beaef8b52eb37cba83704d252f4df4b5362736aaafd9119a573428a3bd05faaaa5a995491d
+	source_i386 = cloud-nuke-0.36.0-i386::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.36.0/cloud-nuke_linux_386
+	sha512sums_i386 = 0fec0fc3bc26eae6007b7fe0419008b9712d1ae530d777cdaae305410c49d1942ba484732e1382133f1763a33327b528738bb2de3270948d6b693c67e1631218
+	source_aarch64 = cloud-nuke-0.36.0-aarch64::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.36.0/cloud-nuke_linux_arm64
+	sha512sums_aarch64 = bb8571e2d2328f118f847513fedd800b20db8c0af832b23245a7e9c5706c161efaae7cde4cf08e4dc7f9abdb1b3a679ac980fa1d20f0d3dcc4bcbf23f611a5a1
 
 pkgname = cloud-nuke-bin
