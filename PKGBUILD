@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=valveresourceformat
 pkgver=9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
@@ -36,9 +36,9 @@ package() {
 	cat >> "$pkgdir/usr/bin/$pkgname-source2viewer" <<-EOF
 #!/bin/bash
 export WINEPREFIX="\$HOME/.$pkgname/wine"
-if [ ! -d "$HOME"/.$pkgname ];
+if [ ! -d "\$HOME"/.$pkgname ];
 then
-	mkdir -p "$HOME/.$pkgname/wine"
+	mkdir -p "\$HOME/.$pkgname/wine"
 	wineboot -u
 fi
 cd "\$HOME/.$pkgname"
