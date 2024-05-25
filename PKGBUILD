@@ -2,7 +2,7 @@
 
 pkgname=gz-sim8
 pkgver=8.3.0
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Open source robotics simulator"
@@ -47,7 +47,8 @@ prepare() {
 
 build() {
   export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/ffmpeg4.4/pkgconfig"
-  cmake -B build -S "$srcdir/${_pkgbase}" \  # ${_pkgbase}-${pkgname}_${pkgver}
+  # ${_pkgbase}-${pkgname}_${pkgver}
+  cmake -B build -S "$srcdir/${_pkgbase}" \
            -DCMAKE_BUILD_TYPE='None' \
            -DCMAKE_INSTALL_PREFIX='/usr' \
            -DBUILD_TESTING=OFF \
