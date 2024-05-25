@@ -6,7 +6,6 @@
 
 pkgname=appimagelauncher
 pkgver=2.2.0
-_commit=0f918015fa418affec32435d1c61c6ae473f2af5
 pkgrel=7
 pkgdesc='Helper for running and integrating AppImages'
 #arch=(x86_64)
@@ -16,12 +15,13 @@ license=(MIT)
 depends=(cairo desktop-file-utils hicolor-icon-theme libappimage libbsd libxpm qt5-base shared-mime-info)
 makedepends=(boost cmake git gtest python qt5-tools)
 #source=("$pkgname-$pkgver.tag.gz::$url/archive/refs/tags/v2.2.0.tar.gz"
-source=("git+https://github.com/TheAssassin/AppImageLauncher.git#commit=$_commit"
+source=("git+https://github.com/TheAssassin/AppImageLauncher.git#tag=v$pkgver"
          git+https://github.com/AppImageCommunity/AppImageUpdate.git
-         git+https://github.com/AppImageCommunity/cpr.git
+         #git+https://github.com/libcpr/cpr.git
+         "AppImage-cpr::git+https://github.com/AppImage/cpr.git"
          git+https://github.com/AppImageCommunity/libappimage.git
          git+https://github.com/Taywee/args.git
-         git+https://github.com/TheAssassin/zsync2.git
+         git+https://github.com/AppImageCommunity/zsync2
          git+https://github.com/arsenm/sanitizers-cmake.git
          git+https://github.com/google/googletest.git
          appimage-binfmt-remove.hook)
@@ -59,7 +59,8 @@ prepare() {
 
   cd "$srcdir/AppImageLauncher/lib/AppImageUpdate/lib/zsync2"
   git submodule init
-  git config submodule.lib/cpr.url "$srcdir/cpr"
+  #git config submodule.lib/cpr.url "$srcdir/cpr"
+  git config submodule.lib/cpr.url "$srcdir/AppImage-cpr"
   git config submodule.lib/args.url "$srcdir/args"
   git config submodule.lib/gtest.url "$srcdir/googletest"
   git -c protocol.file.allow=always submodule update
@@ -74,14 +75,12 @@ build() {
   cd AppImageLauncher
 
   cmake . \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DUSE_SYSTEM_LIBAPPIMAGE='ON' \
-    -DUSE_SYSTEM_GTEST='ON' \
-    -DBUILD_TESTING='OFF' \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_SYSTEM_LIBAPPIMAGE=ON \
+    -DUSE_SYSTEM_GTEST=ON \
+    -DBUILD_TESTING=OFF \
     -Wno-dev
-
-  # See https://github.com/TheAssassin/AppImageLauncher/issues/251
   make libappimageupdate libappimageupdate-qt
 
   cmake .
