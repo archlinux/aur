@@ -1,0 +1,15 @@
+pkgbase = geogebra-6
+	pkgdesc = Dynamic mathematics software with interactive graphics, algebra and spreadsheet
+	pkgver = 6.0.804.0
+	pkgrel = 1
+	url = https://www.geogebra.org/
+	arch = x86_64
+	license = GPL3
+	license = CCPL:by-sa
+	license = CCPL:by-nc
+	depends = electron
+	conflicts = geogebra
+	source = https://download.geogebra.org/installers/6.0/GeoGebra-Linux64-Portable-6-0-804-0.zip
+	sha256sums = 114e537fad9322e1ae8ebdf8aa734e473b3c66a9f1d98c5a1ec5fa55d6ea9bd7
+
+pkgname = geogebra-6
