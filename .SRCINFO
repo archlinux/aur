@@ -1,6 +1,6 @@
 pkgbase = fw-fanctrl-git
 	pkgdesc = A simple systemd service to better control Framework Laptop's fan
-	pkgver = r37.fb4c933
+	pkgver = r38.f0d8d77
 	pkgrel = 1
 	url = https://github.com/TamtamHero/fw-fanctrl
 	arch = any

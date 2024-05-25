@@ -1,6 +1,6 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl-git
-pkgver=r37.fb4c933
+pkgver=r38.f0d8d77
 pkgrel=1
 pkgdesc="A simple systemd service to better control Framework Laptop's fan"
 arch=(any)
@@ -33,5 +33,6 @@ package() {
 		--prefix-dir "/usr" \
 		--sysconf-dir "/etc" \
 		--no-ectool \
+		--no-pre-uninstall \
 		--no-post-install
 }
