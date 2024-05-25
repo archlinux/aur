@@ -40,11 +40,9 @@ pkgver() {
   printf '%s.r%s.c%s' "$_ver" "$_rev" "$_cnt"
 }
 
-prepare() {
-  sed -E -e 's&^(#include.*)$&\1\n\nextern void gnome_encfs_manager_on_logout();&' -i "$_pkgsrc/src/tools.c"
-}
-
 build() {
+  CFLAGS+=" -Wno-error=implicit-function-declaration"
+
   cd "$_pkgsrc"
   ./autogen.sh
   ./configure --prefix=/usr --disable-appindicator
