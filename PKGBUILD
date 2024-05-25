@@ -1,22 +1,25 @@
-pkgname=gpt4all-chat
-pkgver=2.7.5
-pkgrel=2
+pkgbase=gpt4all-chat
+pkgname=(gpt4all-chat gpt4all-chat-cuda)
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
 url="https://gpt4all.io"
 license=("MIT")
 depends=(
-    "python" "qt6-base" "qt6-httpserver" "qt6-5compat" "qt6-quickcontrols2" "qt6-shadertools"
-    "qt6-svg" "qt6-wayland" "qt6-webengine" "fmt")
-makedepends=("cmake" "shaderc" "vulkan-tools" "vulkan-headers")
+    "gcc-libs" "glibc" "qt6-base" "qt6-httpserver" "qt6-5compat" "qt6-quickcontrols2" 
+    "qt6-webengine")
+makedepends=(
+    "cmake" "shaderc" "vulkan-tools" "vulkan-headers" "cuda" "rocm-hip-sdk"
+    "qt6-shadertools" "qt6-svg" "qt6-wayland" "fmt")
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/nomic-ai/gpt4all/archive/refs/tags/v$pkgver.tar.gz"
     "001-change-binary-name.diff"
     "002-fix-include-algorithm.diff"
 )
 declare -rAg _modules_name_map=(
-    [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/a3f03b7e793ee611c4918235d4532ee535a9530d.tar.gz
-    [gpt4all-backend/llama.cpp-mainline/kompute]=https://github.com/nomic-ai/kompute/archive/d1e3b0953cf66acc94b2e29693e221427b2c1f3f.tar.gz
+    [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/fadf1135a54e80188d644df42ad6a53bf986e8b0.tar.gz
+    [gpt4all-backend/llama.cpp-mainline/kompute]=https://github.com/nomic-ai/kompute/archive/c339310f6ff914c5b94fb2353f01a33dfc35f64f.tar.gz
 )
 declare _uri _name _commit _source_str
 for _uri in "${_modules_name_map[@]}"
@@ -34,11 +37,11 @@ do
         source+=("$_source_str")
     fi
 done
-sha256sums=('6849bfa2956019a3f24e350984fe9114b0c6e71932665640f770549d20721243'
-            'c9f1242ff0dfd7367387d5e7d228b808cdb7f6a0a368ba37e326afb21c603a44'
+sha256sums=('f9ea0a3520bb20a1e3dcb0186af83292d52ebddd29b80a42e569acc5b10443fc'
+            '3c20ca28a9ce2bcf603bad18c68e432e6707c7cdaa8a006addf0af64fccb3674'
             '33353c4d0d7a5da7862c4965cf4e69452dda68d2dca184c38208cd6d20746913'
-            'b47b1d8154a99304a406d564dfaad6dc91332b8bccc4ef15f1b2d2cce332b84b'
-            '2fef47fc74c8ccc32b33b8c83f9833b6a4c02e09da8d688abb6ee35167652ea9')
+            '0c1ee9121d00d989750416a1ad4f1cfb035946f5acfe5fb7259bb1fb8b62dc66'
+            'e6937be610b41128f99a3591bb7949ef44c082fad63519c143679a83a997bd06')
 
 prepare() {
     cd "$srcdir/gpt4all-$pkgver"
@@ -74,15 +77,24 @@ build() {
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DKOMPUTE_OPT_BUILD_SHADERS=ON \
         -DKOMPUTE_OPT_DISABLE_VULKAN_VERSION_CHECK=ON \
         -DKOMPUTE_OPT_USE_BUILT_IN_FMT=OFF \
         -DKOMPUTE_OPT_USE_BUILT_IN_VULKAN_HEADER=OFF \
-        -DKOMPUTE_OPT_USE_BUILT_IN_SPDLOG=OFF
+        -DKOMPUTE_OPT_USE_BUILT_IN_SPDLOG=OFF \
+        -DLLMODEL_KOMPUTE=ON \
+        -DLLMODEL_VULKAN=ON \
+        -DLLMODEL_CUDA=ON \
+        -DLLMODEL_ROCM=ON
     cmake --build build-chat
 }
 package_gpt4all-chat() {
+    depends+=("hicolor-icon-theme")
+
     DESTDIR="$pkgdir" cmake --install build-chat
+    # CUDA support is splited into gpt4all-chat-cuda package
+    mv "$pkgdir"/usr/lib/libllamamodel-mainline-cuda*.so .
     install -Dm644 "$srcdir/gpt4all-$pkgver/gpt4all-chat/flatpak-manifest/io.gpt4all.gpt4all.desktop" \
         "$pkgdir/usr/share/applications/io.gpt4all.gpt4all.desktop"
     sed -i 's/Exec=chat/Exec=gpt4all-chat/' "$pkgdir/usr/share/applications/io.gpt4all.gpt4all.desktop"
@@ -97,9 +109,15 @@ package_gpt4all-chat() {
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.gpt4all.gpt4all.svg"
     install -Dm644 "$srcdir/gpt4all-$pkgver/LICENSE.txt" \
         "$pkgdir/usr/share/licenses/gpt4all-chat/LICENSE.txt"
-    install -Dm644 "$srcdir/gpt4all-$pkgver/LICENSE_SOM.txt" \
-        "$pkgdir/usr/share/licenses/gpt4all-chat/LICENSE_SOM.txt"
     install -Dm644 "$srcdir/gpt4all-$pkgver/gpt4all-chat/LICENSE" \
         "$pkgdir/usr/share/licenses/gpt4all-chat/LICENSE_chat.txt"
+}
+
+package_gpt4all-chat-cuda() {
+    depends=("cuda" "gpt4all-chat")
+    pkgdesc="CUDA support for gpt4all-chat."
+
+    mkdir -p "$pkgdir/usr/lib"
+    mv libllamamodel-mainline-cuda*.so "$pkgdir/usr/lib"
 }
 
