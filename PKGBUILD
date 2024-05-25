@@ -5,13 +5,13 @@
 
 pkgname=keepassx2-twofish
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross Platform Password Manager (with unofficial patches for Twofish and unlock on auto-type)"
 arch=('i686' 'x86_64')
 url="https://www.keepassx.org/dev/"
 license=('GPL2' 'GPL3')
-depends=('shared-mime-info' 'libxtst' 'qt4')
-makedepends=('intltool' 'cmake')
+depends=('qt4' 'glibc' 'libxi' 'libgcrypt' 'hicolor-icon-theme' 'libx11' 'libxtst' 'zlib' 'gcc-libs')
+makedepends=('cmake')
 conflicts=('keepassx' 'keepassx2-git' 'keepassx2')
 options=(!emptydirs !debug)
 install=keepassx2.install
