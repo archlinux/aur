@@ -1,6 +1,6 @@
 pkgbase = frzr-sk
 	pkgdesc = A deployment and update system for read-only btrfs subvolume based operating systems
-	pkgver = r232.ec2433b
+	pkgver = 0.15.1.sk1.r0.g7109155
 	pkgrel = 1
 	url = https://github.com/honjow/frzr
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = frzr-sk
 	depends = dmidecode
 	depends = zstd
 	depends = xz
+	depends = aria2
 	provides = frzr
 	conflicts = frzr
-	backup = etc/github_cdn.conf
 	backup = etc/frzr-sk.conf
 	source = git+https://github.com/honjow/frzr#branch=dev
 	md5sums = SKIP
