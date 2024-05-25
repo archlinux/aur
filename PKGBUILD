@@ -3,16 +3,16 @@
 # All my PKGBUILDs are managed at https://github.com/thomaseizinger/pkgbuilds
 
 pkgname=photoprism-bin
-pkgver="240420"
-commit="ef5f14bc4"
+pkgver="240523"
+_commit="923ee0cf7"
 pkgrel=0
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
 arch=(x86_64 aarch64)
 url="https://github.com/photoprism/photoprism"
-license=('GPLv3')
+license=('AGPL-3.0-only')
 groups=()
-depends=(icu)
+depends=(icu glib2 glibc gcc-libs libvips)
 makedepends=()
 checkdepends=()
 optdepends=("darktable: for RAW to JPEG conversion"
@@ -27,8 +27,8 @@ backup=("etc/photoprism/options.yml")
 options=()
 install=
 changelog=
-source_x86_64=("https://github.com/photoprism/photoprism/releases/download/${pkgver}-${commit}/photoprism_${pkgver}-${commit}-linux-amd64.tar.gz")
-source_aarch64=("https://github.com/photoprism/photoprism/releases/download/${pkgver}-${commit}/photoprism_${pkgver}-${commit}-linux-arm64.tar.gz")
+source_x86_64=("https://github.com/photoprism/photoprism/releases/download/${pkgver}-${_commit}/photoprism_${pkgver}-${_commit}-linux-amd64.tar.gz")
+source_aarch64=("https://github.com/photoprism/photoprism/releases/download/${pkgver}-${_commit}/photoprism_${pkgver}-${_commit}-linux-arm64.tar.gz")
 source=("photoprism.service"
         "photoprism.sysusers"
         "defaults.yml"
@@ -41,8 +41,8 @@ sha256sums=('18fb59d0ee09f6b9d95666e8c6fdd1b151fae985c18befb11b86e0fc1884b7d7'
             'ec6f438c9818f982fb2aaa1895a8b07abb41a3c2befd1c3baa2fecbc2d6cc721'
             '76de44acbdfd3f818b9549b77daf187fb740ceccd3c01d42d8308d5edcf49d6c'
             'ca4bfbddf0a550f215f28e31de56eb9ac60777f65aa7b89433155aa7998388e8')
-sha256sums_x86_64=('48aece4907e6acd356894882278c5afd11c03968ae900de57e7590932a988c57')
-sha256sums_aarch64=('0cfe382ba6500fb486429ea26ce64729aa2941ebfa12a23890c5f331e4731e0b')
+sha256sums_x86_64=('e56bbb615f859902a9a7a5fa155ee44fa20a25a0bebfe03f21b7825f2db2609e')
+sha256sums_aarch64=('8e66ebb6ac16cb8df8dbed4d6ff97aec54896e0035d3c233f05f8f70d850bac2')
 noextract=()
 validpgpkeys=()
 
