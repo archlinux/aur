@@ -1,0 +1,14 @@
+pkgbase = paclogger
+	pkgdesc = A Pacman hook written in C++ that logs all of the updates and downgrades every day.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/alexlnkp/paclogger
+	arch = x86_64
+	license = Unlicense
+	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
+	source = paclogger-1.2.1.tar.gz::https://github.com/alexlnkp/paclogger/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = fc0d02b95756ebd051ff759d5ee6adc6e68055600af2d35c09a3626807f6b754
+
+pkgname = paclogger
