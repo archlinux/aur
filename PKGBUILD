@@ -10,7 +10,7 @@ pkgver=3.0.2
 pkgrel=2
 epoch=
 
-pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
+pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations'
 arch=(x86_64 aarch64 armv7h)
 url='https://fluentbit.io/'
 license=('Apache')
