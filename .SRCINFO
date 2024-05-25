@@ -1,21 +1,21 @@
 pkgbase = drawio-desktop
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 24.4.0
+	pkgver = 24.4.8
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio-desktop
 	arch = any
 	license = Apache-2.0
 	makedepends = yarn
 	makedepends = nodejs>=12
-	depends = electron28
+	depends = electron30
 	depends = libnotify
 	depends = shared-mime-info
 	options = !strip
-	source = drawio-24.4.0.tar.gz::https://github.com/jgraph/drawio/archive/v24.4.0.tar.gz
-	source = drawio-desktop-24.4.0.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v24.4.0.tar.gz
+	source = drawio-24.4.8.tar.gz::https://github.com/jgraph/drawio/archive/v24.4.8.tar.gz
+	source = drawio-desktop-24.4.8.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v24.4.8.tar.gz
 	source = drawio.xml
-	sha512sums = a8f64cb501f8fa9179ff92ccd0aa6321d1c6ff4b09b6936f4a85fc467f534c175cfaf7d7486c33da5f576f898f4325fcaeae2f79988a2093dd9e1e0b8c666ee4
-	sha512sums = 85e0a7e9548bbb737d33514c6c8eade62b19cbddefa3b284310e93149bf25b7d855786ab76f38a96bf51abe6ec02ba9291b7403b4ef007af978b53f342e4604d
+	sha512sums = c6d48e8bee55b9330d4239fab23a304d2ad3dfd3be7c4dc220a5abc1859c4b74f2c0ad001105893fe84404b720ca9c102929674d12165ffb6fed971f7cce757b
+	sha512sums = a3a0cc35b4f7f7361b3bd4207fe9fd06752760778e028016a54a28cdbde9f3dc6670cb9b42eac375d199cec9ae7cf75f3098a766269a8407b3157d80a943d249
 	sha512sums = 8899108b4112f065173a077ca68d4d915780bcc993c69924098e134fa05338a20cb0391720b7b45c27071f789fbe5a6a02228dd633570e91fb4482082c480539
 
 pkgname = drawio-desktop
