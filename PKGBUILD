@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia
 _pkgname=gamescope
-pkgver=3.14.16
+pkgver=3.14.18
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -16,7 +16,6 @@ install="$_pkgname.install"
 depends=(
   'libpipewire'
   'libcap'
-  'libliftoff'
   'libxcomposite'
   'libxdamage'
   'libxkbcommon'
@@ -32,7 +31,7 @@ depends=(
   'xorg-xwayland')
 makedepends=(
   'git'
-  'glm=1.0.0'
+  'glm' # tested work version v1.0.1
   'glslang'
   'meson'
   'cmake'
@@ -45,12 +44,14 @@ conflicts=("$_pkgname")
 source=(
   "$_pkgname::git+https://github.com/ValveSoftware/gamescope.git#tag=$pkgver"
   "reshade::git+https://github.com/Joshua-Ashton/reshade.git#commit=9fdbea6892f9959fdc18095d035976c574b268b7"
+  "libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8d45eeae7f17459d4ca85680832df0a875b5f64b"
   "vkroots::git+https://github.com/Joshua-Ashton/vkroots.git#commit=5106d8a0df95de66cc58dc1ea37e69c99afc9540"
   "wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=a5c9826e6d7d8b504b07d1c02425e6f62b020791"
   "stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9"
   "reverts-bd722f7.patch")
-sha1sums=('30904f8ef824cc32e8d57d369ce986d3b0d05313'
+sha1sums=('d882752b1c5e7551e9c7d8f33b20dbf1b5fae670'
           '5860b457b6bb00d1fdfd6dd068516604e87a6466'
+          'be898234c5a442acbc34a04641715c13fd6c983a'
           'fc042f50602b41be8a7c6be0a85c14cc70da761b'
           '0e6ccd1ec72dc3471594568097c922bec551fc3c'
           'e89ef3e6ee66abf807ce78bb269809eb0a0ff63a'
@@ -81,7 +82,7 @@ prepare() {
       -c submodule.thirdparty/SPIRV-Headers.update=none \
       -c submodule.subprojects/openvr.update=none \
       -c submodule.subprojects/libdisplay-info.update=none \
-      -c submodule.subprojects/libliftoff.update=none \
+      -c submodule.subprojects/libliftoff.url="$srcdir/libliftoff" \
       -c protocol.file.allow=always submodule update --init --progress
 
   msg2 'Retrieving meson build dependencies...'
