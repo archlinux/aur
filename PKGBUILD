@@ -1,17 +1,19 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=valveresourceformat
 pkgver=9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
-license=('MIT')
-depends=('glibc' 'gcc-libs' 'zlib')
-makedepends=('dotnet-sdk')
+license=('MIT' 'CC-BY-2.5')
+depends=('glibc' 'gcc-libs' 'zlib' 'wine' 'bash' 'hicolor-icon-theme')
+makedepends=('dotnet-sdk' 'git')
 options=(!strip !debug)
 install=$pkgname.install
-source=("$pkgname::git+$url.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url.git#tag=$pkgver"
+	"$url/releases/download/$pkgver/Source2Viewer.exe")
+sha256sums=('SKIP'
+            '37ac9e6f99e2f8e72ca2275f9da4da6f539f58c683744ef5c7655a56d935eb24')
 
 
 build() {
@@ -28,4 +30,34 @@ package() {
 
 	mkdir -p "$pkgdir/usr/bin/"
 	ln -s /usr/lib/$pkgname/Decompiler "$pkgdir/usr/bin/$pkgname-decompiler"
+
+	install -Dm644 "$srcdir/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/Source2Viewer.exe"
+	cat >> "$pkgdir/usr/bin/$pkgname-source2viewer" <<-EOF
+#!/bin/bash
+export WINEPREFIX="\$HOME/.$pkgname/wine"
+if [ ! -d "$HOME"/.$pkgname ];
+then
+	mkdir -p "$HOME/.$pkgname/wine"
+	wineboot -u
+fi
+cd "\$HOME/.$pkgname"
+DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/Source2Viewer.exe "\$@"
+EOF
+	chmod 755 "$pkgdir/usr/bin/$pkgname-source2viewer"
+
+	mkdir -p "$pkgdir/usr/share/applications"
+	cat >> "$pkgdir/usr/share/applications/source2viewer.desktop" <<-EOF
+[Desktop Entry]
+Version=$pkgver
+Name=Source 2 Viewer
+Comment=Valve's Source 2 resource file format parser, decompiler, and exporter
+Exec=$pkgname-source2viewer %f
+Icon=$pkgname-source2viewer
+Terminal=false
+Type=Application
+Categories=Development;Utility;Wine;
+PrefersNonDefaultGPU=true
+EOF
+
+	install -Dm644 "$srcdir/$pkgname/Misc/Icons/source2viewer.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname-source2viewer.png"
 }
