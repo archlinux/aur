@@ -2,12 +2,12 @@
 
 pkgname=ncspot-bin
 _pkgname=ncspot
-pkgver=1.1.0
-pkgrel=1
+pkgver=1.1.1
+pkgrel=2
 pkgdesc="Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes."
 arch=('x86_64')
 url="https://github.com/hrkfdn/ncspot"
-license=('BSD')
+license=('BSD-2-Clause')
 provides=('ncspot')
 conflicts=('ncspot' 'ncspot-git')
 depends=('openssl-1.1')
@@ -16,12 +16,12 @@ source=(
 	"${url}/releases/download/v${pkgver}/ncspot-v${pkgver}-linux-x86_64.tar.gz"
 	"${url}/raw/main/LICENSE"
 )
-sha512sums=('e03610a50836acf874c3921e5b05c2384c9e4dd1986d515eb8de98ccd37af0f3e3a03464e636e320ce3d832669a6e17c6f5161e12b32b6ddd78cfe44d3dad6f4'
+sha512sums=('0209ab57a6abfbf44d57232459cc9301c781ed334925021c3e0531d82859d803e92869a74319a74e603a9761bd8588a05df40215a79bf301f830895a4cbfdc40'
             '5704429acf132bc3d66071eb9d5b3ba82e3cc960fb691a786fe8c0ce1526e4fb4a1ce36059501c9c37eca8d47ba67dfd0d0d4c673f7dfbb15f486a93a2c91bdf')
 
 package() {
 	cd "$srcdir"
 
-    install -Dm 755 $_pkgname		"${pkgdir}/usr/bin/${_pkgname}"
-	install -Dm 755 LICENSE 		"${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm 755 $_pkgname		"${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
