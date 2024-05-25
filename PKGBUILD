@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=127.0a1+20240430.1+h650dda918743
+pkgver=128.0a1+20240525.1+hbc46b838c113
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -175,6 +175,10 @@ build() {
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
+  # Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
   # LTO needs more open files
   ulimit -n 4096
 
@@ -183,7 +187,7 @@ build() {
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate=cross
 END
-  ./mach build
+  ./mach build --priority normal
 
   echo "Profiling instrumented browser..."
   ./mach package
@@ -199,7 +203,7 @@ END
   test -s jarlog
 
   echo "Removing instrumented browser..."
-  ./mach clobber
+  ./mach clobber objdir
 
   echo "Building optimized browser..."
   cat >.mozconfig ../mozconfig - <<END
@@ -208,7 +212,7 @@ ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
-  ./mach build
+  ./mach build --priority normal
 
   echo "Building symbol archive..."
   ./mach buildsymbols
