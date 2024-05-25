@@ -1,4 +1,4 @@
-# Maintainer: Arturo Penen <apenen@gmail.com>
+# Maintainer: Matt M <numbernine dot archlinux at complexnumber dot net>
 
 pkgname=kops
 pkgver=1.28.5
