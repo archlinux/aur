@@ -5,7 +5,7 @@
 # Contributor: Kurnevsky Evgeny <kurnevsky@gmail.com>
 # Contributor: Victor Dmitriyev <mrvvitek@gmail.com>
 pkgname=scilab
-pkgver=2024.0.0
+pkgver=2024.1.0
 pkgrel=1
 pkgdesc="A scientific software package for numerical computations"
 arch=(i686 x86_64)
@@ -31,7 +31,7 @@ makedepends=(ant
 )
 source=(https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 # hdf5-api.patch ${pkgname}-strict-jar.patch ${pkgname}-LD_LIBRARY_PATH.patch ${pkgname}-num.patch
-sha512sums=('cae64d34612ab6924c405f418c5566163931b33523702e5a3d4c300ad71c42aea2f29677d47369a70a56b670510ee5a2d450b5725db1cb25c3604a5c8acfdb07')
+sha512sums=('9c28109ec9b9e2c8cddf2d0a0201e30a6a32320ea1ab4d884d7485a9e573ea14dc2c69cee0da039fb59fa49b58efaf68b6ba32c908f6d734128c1c720bc83973')
 
 # prepare() {
 #   cd ${pkgname}-${pkgver}
