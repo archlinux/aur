@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-webchannel
 	pkgdesc = Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (android)
-	pkgver = 6.7.0
+	pkgver = 6.7.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = android-aarch64-qt6-webchannel
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.7/6.7.0/submodules/qtwebchannel-everywhere-src-6.7.0.tar.xz
-	sha256sums = 26bfbd404e0c82bfbeeaef81796eb7a7cf931c5c1a5e942a315ca7126322efff
+	source = https://download.qt.io/official_releases/qt/6.7/6.7.1/submodules/qtwebchannel-everywhere-src-6.7.1.tar.xz
+	sha256sums = b9d995edfce90bce04635305936e49a8ae61196d74bcce0f09d26b285d2dcc6f
 
 pkgname = android-aarch64-qt6-webchannel
