@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC1090,SC2207
 pkgname=pince-git
-pkgver=r1517.8f5b416
+pkgver=r1547.823b213
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
@@ -19,7 +19,7 @@ source=("$pkgname::git+$url.git" 'PINCE.desktop')
 install="note.install"
 sha1sums=('SKIP' '719d18d69abc299f739cc04041967e9d05a34104')
 _installpath='/usr/share/PINCE'
-_installsh='install_pince.sh'
+_installsh='install.sh'
 
 pkgver() {
 	cd "$pkgname" || exit 1
@@ -30,8 +30,8 @@ pkgver() {
 
 prepare() {
 	# Remove ".venv/PINCE" exist check
-	sed -e '/^if \[ ! -d "\.venv\/PINCE" \]; /,/activate$/ s/^/# /' \
-		-e 's|.venv/PINCE/bin/python3|python3|' \
+	sed -e '/^if \[ ! -d .*.venv.* \]; /,/venv.*activate$/ s/^/# /' \
+		-e 's|[^ ]*python3|python3|' \
 		-i "./$pkgname/PINCE.sh"
 
 	# Create a start script
@@ -70,10 +70,12 @@ build() {
 	. <(sed -n '/^compile_translations() /,/^}/p' $_installsh)
 	. <(sed -n '/^compile_libscanmem() /,/^}/p' $_installsh)
 	. <(sed -n '/^install_libscanmem() /,/^}/p' $_installsh)
+	. <(sed -n '/^install_libptrscan() /,/^}/p' $_installsh)
 
 	# Execute functions
 	set_install_vars "Arch Linux" || exit_on_error
 	install_libscanmem || exit_on_error
+	install_libptrscan || exit_on_error
 	compile_translations || exit_on_error
 
 	# Exports for later
