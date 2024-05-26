@@ -1,0 +1,15 @@
+post_install() {
+	cat << EOF
+====================================================
+All binaries are prefixed with valveresourceformat-*
+====================================================
+EOF
+}
+
+post_upgrade() {
+	cat << EOF
+====================================================
+All binaries are prefixed with valveresourceformat-*
+====================================================
+EOF
+}
