@@ -18,12 +18,14 @@ build() {
 }
 
 package() {
+  install -d "$pkgdir/etc/dnrs/dns"
+
   cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "target/release/$pkgname" "$pkgdir/etc/dnrs/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
-  install -d "$pkgdir/etc/dnrs/dns"
+  install -Dm644 dnrs.service "$pkgdir/usr/lib/systemd/system/dnrs.service"
 }
 
 post_install() {
