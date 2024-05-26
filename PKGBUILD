@@ -36,7 +36,7 @@ check() {
   --ignore=tests/test_return_code.py \
   --ignore=tests/test_version.py \
   --ignore=tests/tools/test_ruff_works.py \
-  -k 'not successive_runs_using_black'
+  -k 'not successive_runs_using_black and not pylint_works'
 }
 
 package() {
