@@ -2,7 +2,7 @@
 
 pkgname=whosonfirst-sqlite-features-index
 _pkgname="go-${pkgname}"
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Go package for indexing Who’s On First features in SQLite databases"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-  '7f23fdfdff1b56f02f3c75e45c883875450d5c65289431b53ff980ef080f4a8703abfae2cd8e5c75b71c5879c32f7000e2262d9a5355de4773eef88dd3c1944d'
+  '15fa3a0a1c0780ecdc9b90337b65653f3c3196a4e189b1225c2014398d933aadccc2a9e5e739b5b0dc5d128c83cf650f840b7222cb7beab0bded66599a11d7ac'
 )
 
 prepare() {
