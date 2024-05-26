@@ -12,10 +12,13 @@
 # Robert Ancell: <https://salsa.debian.org/gnome-team/gnome-control-center>
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
-pkgname=gnome-control-center-x11-scaling
-_pkgname=gnome-control-center
+pkgbase=gnome-control-center-x11-scaling
+pkgname=(
+  gnome-control-center-x11-scaling
+  gnome-keybindings
+)
 pkgver=46.1
-pkgrel=3
+pkgrel=4
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL-2.0-or-later)
@@ -38,6 +41,7 @@ depends=(
   gnome-desktop-4
   gnome-online-accounts
   gnome-settings-daemon
+  gnome-shell
   gnutls
   graphene
   gsettings-desktop-schemas
@@ -87,26 +91,6 @@ checkdepends=(
   python-gobject
   xorg-server-xvfb
 )
-optdepends=(
-  'fwupd: device security panel'
-  'gnome-remote-desktop: screen sharing'
-
-  # Cannot be a depend because when gnome-shell checkdepends on
-  # gnome-control-center depends on gnome-shell depends on libmutter-12.so, it
-  # makes building gnome-shell against libmutter-13.so impossible
-  'gnome-shell: multitasking panel'
-
-  'gnome-user-share: WebDAV file sharing'
-  'malcontent: application permission control'
-  'networkmanager: network settings'
-  'openssh: remote login'
-  'power-profiles-daemon: power profiles'
-  'rygel: media sharing'
-  'system-config-printer: printer settings'
-)
-groups=(gnome)
-conflicts=($_pkgname)
-provides=($_pkgname)
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-control-center.git?signed#tag=$pkgver"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
@@ -122,7 +106,7 @@ validpgpkeys=(
 )
 
 prepare() {
-  cd $_pkgname
+  cd gnome-control-center
 
   git submodule init subprojects/gvc
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
@@ -135,12 +119,12 @@ prepare() {
 
 build() {
   local meson_options=(
-    -D documentation=true
+    -D documentation=false
     -D location-services=enabled
     -D malcontent=true
   )
 
-  arch-meson $_pkgname build "${meson_options[@]}"
+  arch-meson gnome-control-center build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -149,6 +133,50 @@ check() {
     meson test -C build --print-errorlogs
 }
 
-package() {
-  meson install -C build --destdir "$pkgdir"
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
 }
+
+package_gnome-control-center-x11-scaling() {
+  conflicts=(gnome-control-center)
+  provides=(gnome-control-center)
+
+  depends+=(gnome-keybindings)
+  optdepends=(
+    'fwupd: device security panel'
+    'gnome-remote-desktop: screen sharing'
+    'gnome-user-share: WebDAV file sharing'
+    'malcontent: application permission control'
+    'networkmanager: network settings'
+    'openssh: remote login'
+    'power-profiles-daemon: power profiles'
+    'rygel: media sharing'
+    'system-config-printer: printer settings'
+  )
+  groups=(gnome)
+
+  meson install -C build --destdir "$pkgdir"
+
+  cd "$pkgdir"
+  _pick gkb usr/share/gettext/its/gnome-keybindings.*
+  _pick gkb usr/share/gnome-control-center/keybindings
+  _pick gkb usr/share/pkgconfig/gnome-keybindings.pc
+}
+
+package_gnome-keybindings() {
+  conflicts=(gnome-keybindings)
+  provides=(gnome-keybindings)
+  
+  pkgdesc="Keybindings configuration for GNOME applications"
+  depends=()
+
+  mv gkb/* "$pkgdir"
+}
+
+# vim:set sw=2 sts=-1 et:
