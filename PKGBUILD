@@ -1,5 +1,4 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
-
 _gemname="timeout"
 pkgname="ruby-${_gemname}"
 pkgver=0.4.1
@@ -11,14 +10,10 @@ license=("Ruby" "BSD-2-Clause")
 depends=("ruby")
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
-
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
-
 	gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
-
 	rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 	install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
-
 sha256sums=('6f1f4edd4bca28cffa59501733a94215407c6960bd2107331f0280d4abdebb9a')
