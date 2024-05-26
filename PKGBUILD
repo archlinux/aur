@@ -7,7 +7,7 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=A26.r1323.g7998bc697f
+pkgver=A26.r1364.gd3e513ba42
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'python311' 'git'
              'sdl2' 'wxwidgets-gtk3' 'which')
 options=('!lto' '!debug') # lto breaks spidermonkey linking (https://bugs.gentoo.org/746947)
 source=("git+https://github.com/0ad/0ad.git" "patch.patch")
-md5sums=('SKIP' 'dcbd62e1fb4669c24318c8fe66143c4f')
+md5sums=('SKIP' '0c789b7aa65258125a488c857e3fb74b')
 
 pkgver() {
   cd ${_pkgname}
@@ -28,9 +28,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-  # fix for error:
-  # source/ps/Util.cpp:27:1: note: ‘std::setfill’ is defined in header ‘<iomanip>’; did you forget to ‘#include <iomanip>’?
-  patch -p1 -i ../patch.patch
+  patch -p1 -i ../patch.patch # Fix build with GCC 14
 
 }
 
