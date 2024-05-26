@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arrow
-_pkgver=15.0.1
+_pkgver=16.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -62,9 +62,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('f5e2d244a409b3272d5539f77c40f2c3'
+md5sums=('25fcb98f5dfcdc191a351eb80f591a35'
          '905a328d53b0b7591f769e07c29c3937')
-b2sums=('ea2549aa18a68dcb87a2241f904def216035cb19d080cf97b2343565894040d16f2a88fd3c4706c314e55d82b3c9779bc76d394ae4191b294cf79e903782d0e7'
+b2sums=('1953b029a525e8ddee6ef682f21a6a8025cf0cd49825284ba537020310664adaf5e4cb8d10163a11003ac0aefdf888b59a0f53fcb5c5d331a89525fe0919b97a'
         '6feffc1a3ff38014a9f644de778f0056f0f48787ce9a4d40bff8d27d8e42df2b05f258638150cadbd5b1a18d4697f35bf07cb8d9a78ba6357b8d94ef9d714874')
 
 prepare() {
