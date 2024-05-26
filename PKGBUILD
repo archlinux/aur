@@ -10,7 +10,7 @@ depends=('libadwaita' 'python-gobject' 'python-requests')
 makedepends=('git' 'gobject-introspection' 'meson')
 checkdepends=('appstream-glib')
 source=(${url}/archive/refs/tags/v${pkgver}.zip)
-sha256sums=("6f0b7b6774324b9ba0e3cf2d2877d0210cc384e6f3d2fb7ce5fead30b30a43a6")
+sha256sums=("ba9aea4aef6b59d5cf57dc2310fd4513ccb16d791464c4336aaed61bd9e25521")
 
 
 build() {
