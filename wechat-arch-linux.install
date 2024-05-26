@@ -1,0 +1,118 @@
+post_install() {
+
+	CHANNEL=beta
+	case $CHANNEL in
+	  stable )
+	    # Good enough to be the default.
+	    PRIORITY=200
+	    ;;
+	  beta )
+	    # Almost good enough to be the default. (Firefox stable should arguably be
+	    # higher than this, but since that's below the "Epiphany threshold", we're
+	    # not setting our priority below it. Anyone want to poke Firefox to raise
+	    # their priority?)
+	    PRIORITY=150
+	    ;;
+	  unstable )
+	    # Unstable, give it the "lowest" priority.
+	    PRIORITY=120
+	    ;;
+	  * )
+	    PRIORITY=0
+	    ;;
+	esac
+
+	ln -snf "/opt/wechat/wechat" "/usr/bin/wechat" 
+#修改发行版id以绕过发行版验证
+    cp /etc/lsb-release /etc/lsb-release.back
+    sed -i '1i DISTRIB_ID=Kylin' /etc/lsb-release
+    sed -i '2i DISTRIB_CODENAME=kylin'  /etc/lsb-release
+	# Add icons to the system icons
+	#XDG_ICON_RESOURCE="`command -v xdg-icon-resource 2> /dev/null || true`"
+	#if [ ! -x "$XDG_ICON_RESOURCE" ]; then
+	#  echo "Error: Could not find xdg-icon-resource" >&2
+	#  exit 1
+	#fi
+	#for icon in ; do
+	#  size="$(echo ${icon} | sed 's/[^0-9]//g')"
+	#  "$XDG_ICON_RESOURCE" install --size "${size}" "/opt/wechat-beta/${icon}" \
+	#    "wechat-beta"
+	#done
+
+	#UPDATE_MENUS="`command -v update-mime-database usr/share/mime &> /dev/null 2> /dev/null || true`"
+	#if [ -x "$UPDATE_MENUS" ]; then
+	#  update-mime-database usr/share/mime &> /dev/null
+	#fi
+
+	# Update cache of .desktop file MIME types. Non-fatal since it's just a cache.
+	#update-desktop-database > /dev/null 2>&1 || true
+
+	# Updates defaults.list file if present.
+	update_defaults_list() {
+	  # $1: name of the .desktop file
+
+	  local DEFAULTS_LIST="/usr/share/applications/defaults.list"
+
+	  if [ ! -f "${DEFAULTS_LIST}" ]; then
+	    return
+	  fi
+
+	  # Split key-value pair out of MimeType= line from the .desktop file,
+	  # then split semicolon-separated list of mime types (they should not contain
+	  # spaces).
+	  mime_types="$(grep MimeType= /usr/share/applications/${1} |
+	                cut -d '=' -f 2- |
+	                tr ';' ' ')"
+	  for mime_type in ${mime_types}; do
+	    if egrep -q "^${mime_type}=" "${DEFAULTS_LIST}"; then
+	      if ! egrep -q "^${mime_type}=.*${1}" "${DEFAULTS_LIST}"; then
+	        default_apps="$(grep ${mime_type}= "${DEFAULTS_LIST}" |
+	                        cut -d '=' -f 2-)"
+	        egrep -v "^${mime_type}=" "${DEFAULTS_LIST}" > "${DEFAULTS_LIST}.new"
+	        echo "${mime_type}=${default_apps};${1}" >> "${DEFAULTS_LIST}.new"
+	        mv "${DEFAULTS_LIST}.new" "${DEFAULTS_LIST}"
+	      fi
+	    else
+	      # If there's no mention of the mime type in the file, add it.
+	      echo "${mime_type}=${1};" >> "${DEFAULTS_LIST}"
+	    fi
+	  done
+	}
+
+	update_defaults_list "wechat.desktop"
+
+	update-mime-database /usr/share/mime || true
+	update-desktop-database /usr/share/applications || true
+
+	#  /usr/bin/wechat-beta $PRIORITY
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	#
+
+	action="$1"
+	if [ "$2" = "in-favour" ]; then
+	  # Treat conflict remove as an upgrade.
+	  action="upgrade"
+	fi
+
+}
+
+post_remove() {
+
+	#uninstall
+	 rm -f '/usr/bin/wechat'
+   rm -f /usr/lib/libactivation.so
+    rm -f /usr/share/applications/wechat.desktop
+    rm -f /usr/share/icons/hicolor/256x256/apps/Wechat-universal.png
+    rm -f /etc/lsb-release
+    rm -f /usr/lib/libactivation.so
+    rm -f /etc/LICENSE
+    rm -f /etc/.kyact
+    mv /etc/lsb-release.back /etc/lsb-release
+
+}
