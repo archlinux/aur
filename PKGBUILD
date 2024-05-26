@@ -15,7 +15,7 @@ conflicts=('accel-ppp-git')
 install='accel-ppp.install'
 options=('docs')
 backup=('etc/accel-ppp.conf' 'etc/accel-ppp.lua' 'etc/snmp/accel-ppp.conf' 'usr/share/accel-ppp/radius/dictionary')
-source=("https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz"
 	'accel-ppp.logrotate'
 	'accel-ppp.lua'
 	'accel-ppp.tmpfiles'
