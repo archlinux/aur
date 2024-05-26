@@ -8,7 +8,7 @@
 _pkgbase=vlc
 pkgname=vlc-nox
 pkgver=3.0.20
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
@@ -216,7 +216,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
 
-  export CFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects"
+  export CFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects -Wno-incompatible-pointer-types"
   export CPPFLAGS+=" -I/usr/include/samba-4.0"
   export CXXFLAGS+=" -std=c++17"
   export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig"
