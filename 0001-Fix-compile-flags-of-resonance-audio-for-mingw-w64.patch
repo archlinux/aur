@@ -1,4 +1,4 @@
-From a45903dae4583433f476591def1d91e5f9311585 Mon Sep 17 00:00:00 2001
+From d121488366459dbd6b7312a3740a8f455518f7aa Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 1 Oct 2022 17:43:07 +0200
 Subject: [PATCH] Fix compile flags of resonance-audio for mingw-w64
@@ -30,5 +30,5 @@ index 6af0b3fb3..d94beb0ed 100644
      set(CMAKE_CXX_FLAGS "-fPIC -O3 -Wno-vla -msse -msse2 -msse3 -mfpmath=sse")
  endif ()
 -- 
-2.44.0
+2.45.1
 
