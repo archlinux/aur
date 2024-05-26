@@ -11,7 +11,6 @@ arch=('x86_64')
 url="https://github.com/TaylanUB/scheme-bytestructures"
 license=('GPL-3.0-or-later')
 depends=('guile')
-makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TaylanUB/scheme-${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('fd5787a4bfa463a1efb736adf969b291abc0333c1d477e0de61c58e528c33950')
 
