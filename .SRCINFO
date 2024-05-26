@@ -1,7 +1,7 @@
 pkgbase = koboldcpp-cuda
 	pkgdesc = An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)
 	pkgver = 1.66.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LostRuins/koboldcpp
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -16,6 +16,6 @@ pkgbase = koboldcpp-cuda
 	provides = koboldcpp=1.66.1
 	conflicts = koboldcpp
 	source = koboldcpp-cuda-1.66.1.tar.gz::https://github.com/LostRuins/koboldcpp/archive/318d5b87fc1602ef16d8271bfdd937ef416a8182.zip
-	sha256sums = 921baff506759f0472fe3ff01eba8c7c236d6ad0eff13c74c18cfe812710a6e8
+	sha256sums = 0387d4099a166bdbc95a8e0e755d40b12a37b615422a75db885a7dfa249c31c3
 
 pkgname = koboldcpp-cuda

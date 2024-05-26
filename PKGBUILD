@@ -3,7 +3,7 @@
 # Author: LostRuins (concedo)
 pkgname=koboldcpp-cuda
 pkgver=1.66.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -25,7 +25,7 @@ conflicts=('koboldcpp')
 #source=("$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz")
 # v1.66.1 doesn't have a tag release
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/318d5b87fc1602ef16d8271bfdd937ef416a8182.zip")
-sha256sums=('921baff506759f0472fe3ff01eba8c7c236d6ad0eff13c74c18cfe812710a6e8')
+sha256sums=('0387d4099a166bdbc95a8e0e755d40b12a37b615422a75db885a7dfa249c31c3')
 
 build() {
   cd "$srcdir/koboldcpp-$pkgver"
