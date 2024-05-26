@@ -1,2 +1,5 @@
-補全原始字型 IPAexMincho 包含的 JIS 第一～四水準漢字，以及「jf 7000 當務字集」基本包所收錄的漢字，[詳情按此查看](https://github.com/lxgw/LxgwZhiSong/blob/main/documentation/changelog/20240519.md)。
-新增以下符號：℉⍻☑☒✗。
+調整以下字形：氹。
+MN 版調整以下字形：噸。
+上一版更新日誌：
+    新增 425 字，[詳情按此查看](https://github.com/lxgw/LxgwZhiSong/blob/main/documentation/changelog/20240524.md)。
+    CL 版調整「綌」的寫法。
