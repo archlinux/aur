@@ -1,12 +1,12 @@
 # Maintainer: Diego Parra <diegoparranava@protonmail.com>
 pkgname='waypaper-engine-git'
 pkgver=2.0.0.r4.dbb8b6d
-pkgrel=2
+pkgrel=3
 pkgdesc="A pleasant gui frontend for swww with batteries included!"
 arch=('x86_64')
 url="https://github.com/0bCdian/Waypaper-Engine"
 license=('GLP')
-depends=('swww' 'nodejs' 'socat' 'hicolor-icon-theme' 'fzf' 'jq')
+depends=('swww' 'nodejs' 'socat' 'hicolor-icon-theme' 'fzf' 'jq' 'wlr-randr')
 makedepends=('npm' 'git')
 conflicts=('waypaper-engine')
 provides=('waypaper-engine')
