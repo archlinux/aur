@@ -1,6 +1,6 @@
 pkgbase = portproton
 	pkgdesc = Software for playing Microsoft Windows games and launchers
-	pkgver = 1.5.2
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://linux-gaming.ru
 	arch = x86_64
@@ -35,6 +35,7 @@ pkgbase = portproton
 	depends = lib32-libx11
 	depends = lib32-libxss
 	depends = lib32-alsa-plugins
+	depends = lib32-pipewire
 	depends = lib32-libgpg-error
 	depends = lib32-gnutls
 	depends = lib32-freetype2
@@ -49,7 +50,7 @@ pkgbase = portproton
 	optdepends = lib32-gamemode: 32-bit support for Feral GameMode
 	optdepends = gamescope: Support for Gamescope
 	optdepends = icoextract: For proper icon creation in GNOME
-	source = git+https://github.com/Castro-Fidel/PortProton_ALT.git#commit=1a1eff6
+	source = git+https://github.com/Castro-Fidel/PortProton_ALT.git#commit=8532a12
 	sha256sums = SKIP
 
 pkgname = portproton

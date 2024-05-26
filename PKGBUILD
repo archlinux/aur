@@ -1,7 +1,7 @@
 # Maintainer: LINUX-GAMING.RU (tergoevm@gmail.com)
 
 pkgname=portproton
-pkgver=1.5.2
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Software for playing Microsoft Windows games and launchers"
 arch=('x86_64')
@@ -11,13 +11,13 @@ depends=('bash' 'icoutils' 'yad' 'bubblewrap' 'zstd' 'cabextract' 'gzip'
          'tar' 'openssl' 'openssl-1.1' 'desktop-file-utils' 'curl' 'dbus' 'freetype2' 'xdg-utils'
          'gdk-pixbuf2' 'ttf-font' 'nss' 'xorg-xrandr' 'lsof' 'mesa-utils' 'imagemagick'
          'vulkan-driver' 'vulkan-icd-loader' 'lib32-libgl' 'lib32-gcc-libs' 'vulkan-tools'
-         'lib32-libx11' 'lib32-libxss' 'lib32-alsa-plugins' 'lib32-libgpg-error' 'lib32-gnutls' 'lib32-freetype2'
+         'lib32-libx11' 'lib32-libxss' 'lib32-alsa-plugins' 'lib32-pipewire' 'lib32-libgpg-error' 'lib32-gnutls' 'lib32-freetype2'
          'lib32-nss' 'lib32-vulkan-driver' 'lib32-vulkan-icd-loader' 'lib32-openssl' 'lib32-openssl-1.1' 'lib32-mesa-utils' 'python-pillow')
 optdepends=('gamemode: Support for Feral GameMode'
             'lib32-gamemode: 32-bit support for Feral GameMode'
             'gamescope: Support for Gamescope'
             'icoextract: For proper icon creation in GNOME')
-_commit=1a1eff6
+_commit=8532a12
 source=("git+https://github.com/Castro-Fidel/PortProton_ALT.git#commit=$_commit")
 sha256sums=('SKIP')
 _gitname=PortProton_ALT
