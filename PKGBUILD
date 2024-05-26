@@ -11,7 +11,7 @@
 
 _android_arch=aarch64
 pkgname=android-aarch64-qt6-base
-_qtver=6.7.0
+_qtver=6.7.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -43,26 +43,24 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0013-Fix-errors-due-to-disabled-exceptions-with-cpp_winrt.patch'
         '0014-Fix-setting-exception-flags-of-plugin-targets.patch'
         '0015-Link-corelib-correctly-against-runtimeobject-when-co.patch'
-        '0016-Workaround-linker-error-about-missing-symbol-__sync_.patch'
-        '0017-Fix-wrong-cpp-conditional-in-qspan.h.patch')
-sha256sums=('11b2e29e2e52fb0e3b453ea13bbe51a10fdff36e1c192d8868c5a40233b8b254'
-            'e25f83ddf9e3f9eefcb833751cff8957f32cb2f13f5a1f033679b45d2c9e544e'
-            'ae4a20f41df34eefc960ed5cb2cf54afb421573f08545d5492882edd18e00a3c'
-            '5d329d722365c07a28b85a9d1ba9c6c53ad19124662aa1825cdd78ece82c47f3'
-            '86dd06b2a1bd7b050763346d2bd16a63c914c516782df64a3c6c78268ea33e06'
-            '4390d712d64d50e2cd8d0cea3a53317cda4e7a21bd99a346f1bd82d18514b6f5'
-            '73c2780b8efe19f32ea433d2254e0ceeb503f77004812048e3fcef5da363fd31'
-            '272db976e1a219063d87b8ef21537fbe8959c87acbb34de4cbe5b995bc2eb46a'
-            '43c5a589616a200ded1a2c81b2d4c09919dc96b7ed0df50dea97148f373db147'
-            '1fbc2aecb48912ef1f4563f5eb4a1d3f5fad0767052a763cebe72d631cdf1e77'
-            'e7f591f23724529b6f45182352f0a4274d4c09f0a2686d7f6588857c3d81df08'
-            '313ae6611f91ce7c12366035f0271a1bd1fa787f68a652de95f2fd55a71b4e1f'
-            '7de102a3e66bf6aafeb3c0cd0ae49b344e166b902d4d29fd33366883b11f1d5d'
-            '5e9b7c818bd972c694075a0a01d0f44a9d6d6aaf9e3b36174702b8839f30b76b'
-            'b707bf9d69cf866dd776e5c07235161186747607dc24264320784e1222272fcc'
-            '04811ea7c29e15a9d5c63c6f483804ec2538e8e826c3c06019b78a98435b56b2'
-            'ce7dc86c30f160e6d565c579a84e0b0f799b1afa751ebe0748a0e80f8408cb7f'
-            '55959f673e409ea952661cbddfb8b046bec7cda3d8b05686bed82ace4246e273')
+        '0016-Workaround-linker-error-about-missing-symbol-__sync_.patch')
+sha256sums=('b7338da1bdccb4d861e714efffaa83f174dfe37e194916bfd7ec82279a6ace19'
+            '305745c1effeb20fd63411342cf308d7f518b63f8e14b2c55d1ba31c45ae068f'
+            '6113d9c8392f0e7a34e8220bbfb01d6af63543e260e7ed4f65029fd859212b0f'
+            '220f32dc67cd256f706a135b072f639d88440ad8d5943ec7b311510eb7531cb7'
+            '2b6e95199698bc1af539ea39c37620b1170ddf77fa45c9120c3f0a59f58d8af1'
+            'ccb04d5ca4b09cc8c19fab5427dcee8b4de6aaa4489f99e323830f66207318f6'
+            'a8c1636dbf1480cbb3c56227e8b53dfd309293576cacefe689894dd6aaa8b597'
+            '48f6b23b2f34ce6158132b7b7ee6e7e527d65b26ec950777592dc0b80d1b96b0'
+            'd2441d85329e70205532f8483a3e30b346861e44949b9803849677e61af496dd'
+            '3dd924f235a129e8c008d6fe4d92dbeb1875eed74db0add801538584438e6629'
+            '5721ddde57dc808f99183cfca29491a014ff29b0bd6ed1397d189c3af3c20198'
+            'bf658085615d03333bb44e30ba11760e27556844d5731b3f92a17bb6e5ff1c42'
+            '5c8b7919222b3df5c5ff92a4baebb2130100ddc11c0d6743816347cc2509597b'
+            '1b2dad7aaabdc9922be87e2e90e49a270690c5935818efa8a7bd15a54de7cd73'
+            '863b60f362f477a48a2be440563f0f547db7102d8c79961fd9fa2295d35f2b0a'
+            '29af07b430f2a416b8fd0a8241c07205232cb4eb31626c9444256d03ebdba92c'
+            'd1cbb46c443c64fe477fe5a6d9e0fd450e3f5c9f9423ce75c310659caef4d8db')
 
 prepare () {
   cd $_pkgfqn

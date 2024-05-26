@@ -1,7 +1,7 @@
-From d4755a76385f7168f2571be3e10604579c51e505 Mon Sep 17 00:00:00 2001
+From 23900fb9e7b62120bffe4bc99dd77b12ab272124 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 26 Apr 2022 20:16:31 +0200
-Subject: [PATCH 10/17] Allow using properties of PkgConfig targets for glib2
+Subject: [PATCH 10/16] Allow using properties of PkgConfig targets for glib2
  to handle deps of static glib2
 
 Change-Id: I37d20256d17ae9cc0775e32aa479f1e433ece908
@@ -70,5 +70,5 @@ index a6a16b494fd..a5da57824c9 100644
  set_package_properties(GLIB2 PROPERTIES
    URL "https://wiki.gnome.org/Projects/GLib"
 -- 
-2.44.0
+2.45.1
 

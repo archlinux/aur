@@ -1,7 +1,7 @@
-From 7e76f866f256a65e49dab374c90366f98bcb2415 Mon Sep 17 00:00:00 2001
+From 31d36a1103e08bd695d05a240fd760a5ef6f9185 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:13:19 +0100
-Subject: [PATCH 03/17] Fix using static PCRE2 and DBus-1
+Subject: [PATCH 03/16] Fix using static PCRE2 and DBus-1
 
 When making a static build of Qt we're using the static version of these
 libraries and must define the corresponding macros.
@@ -44,5 +44,5 @@ index 78b7e049ef3..d06a3b04aac 100644
  #  include <dbus/dbus.h>
  #else
 -- 
-2.44.0
+2.45.1
 

@@ -1,7 +1,7 @@
-From 7ac1996bcf302e058b3537c1fa09b443523fe4e3 Mon Sep 17 00:00:00 2001
+From ad906387f486d196bfe083bd98dcfe7b1359594c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 21:39:39 +0100
-Subject: [PATCH 15/17] Link corelib correctly against runtimeobject when
+Subject: [PATCH 15/16] Link corelib correctly against runtimeobject when
  compiling for Windows
 
 This library is included by mingw-w64 and also needs to be linked against
@@ -9,12 +9,11 @@ for code in `qlocale_win.cpp` enabled via the `cpp_winrt` feature flag.
 
 Change-Id: I9f06f3845165afaf305a0fc7771a1093cba08811
 ---
- src/corelib/CMakeLists.txt                                     | 3 +--
- .../networkinformation/networklistmanager/CMakeLists.txt       | 2 +-
- 2 files changed, 2 insertions(+), 3 deletions(-)
+ src/corelib/CMakeLists.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
-index bf24eec2cfb..7816b9e37b0 100644
+index bbe8ba84890..06ede966852 100644
 --- a/src/corelib/CMakeLists.txt
 +++ b/src/corelib/CMakeLists.txt
 @@ -819,8 +819,7 @@ qt_internal_extend_target(Core CONDITION WASM
@@ -27,19 +26,6 @@ index bf24eec2cfb..7816b9e37b0 100644
      LIBRARIES
          runtimeobject
  )
-diff --git a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
-index f15eedf866b..acd3754f4e5 100644
---- a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
-+++ b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
-@@ -14,7 +14,7 @@ qt_internal_add_plugin(QNLMNIPlugin
-         Qt::NetworkPrivate
- )
- 
--qt_internal_extend_target(QNLMNIPlugin CONDITION MSVC
-+qt_internal_extend_target(QNLMNIPlugin CONDITION WIN32
-     LIBRARIES
-         runtimeobject
-         oleaut32
 -- 
-2.44.0
+2.45.1
 

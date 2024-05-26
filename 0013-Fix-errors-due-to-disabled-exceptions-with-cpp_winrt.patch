@@ -1,7 +1,7 @@
-From 4c0319dc229bec434f0ac6df9eff6826d3d06f91 Mon Sep 17 00:00:00 2001
+From f838b97cceb50456b7140e24559aaee7c0eb0ab7 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 20:31:12 +0100
-Subject: [PATCH 13/17] Fix errors due to disabled exceptions with cpp_winrt
+Subject: [PATCH 13/16] Fix errors due to disabled exceptions with cpp_winrt
  support
 
 The winrt headers use exceptions so code using them must be compiled
@@ -25,5 +25,5 @@ index ea119bfb1e2..4cc9b87ced7 100644
          main.cpp
          qtwindowsglobal.h
 -- 
-2.44.0
+2.45.1
 
