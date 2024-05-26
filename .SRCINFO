@@ -1,6 +1,6 @@
 pkgbase = r-sesame
 	pkgdesc = SEnsible Step-wise Analysis of DNA MEthylation BeadChips
-	pkgver = 1.22.0
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sesame
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = r-sesame
 	optdepends = r-scales
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sesame_1.22.0.tar.gz
-	sha256sums = 04827b6d3031224776e7ea854e00c5056fbd669df8bfc88925ffb3183edce463
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sesame_1.22.1.tar.gz
+	sha256sums = 967004785a22ae8c95f950b6cda3af56bd0c0ad1214e573b1c6147371279871d
 
 pkgname = r-sesame
