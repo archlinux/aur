@@ -1,4 +1,4 @@
-# Maintainer: 'Radiolin' <anton.osi2011@gmail.com>
+# Maintainer: 'Radiolin' 'Nebulosa' <anton.osi2011@gmail.com> 
 pkgname=cassette-git
 pkgver=0.2.0.r585.g9e51c83
 pkgrel=1
