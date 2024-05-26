@@ -4,7 +4,7 @@
 _pkgname=zigpy-znp
 pkgname=python-$_pkgname
 pkgver=0.12.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Zigpy support for common Texas Instruments ZNP radio modules'
 url='https://github.com/zigpy/zigpy-znp'
 arch=('any')
@@ -27,6 +27,13 @@ makedepends=(
 checkdepends=('python-pytest-asyncio' 'python-pytest-mock')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/zigpy/zigpy-znp/archive/v$pkgver.tar.gz")
 b2sums=('b81aff9f06c71feab7306a92ead2279028dc6a08550a630703a076f9e26f0dbfbd95c47c6c26aed058a91f059d388d8ddf15ebef68f85cbef5d835281520face')
+
+prepare() {
+  cd $_pkgname-$pkgver
+  #no real reason for <2 / see https://github.com/zigpy/zigpy-znp/issues/247
+  sed -i 's/<2//g' pyproject.toml
+}
+
 
 build() {
   cd $_pkgname-$pkgver
