@@ -1,0 +1,14 @@
+pkgbase = pe-set-laa-git
+	pkgdesc = Set LARGE_ADDRESS_AWARE flag to PE executable files
+	pkgver = r2.5b9a561
+	pkgrel = 1
+	url = https://github.com/randomstuff/pe-set-laa
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	depends = glibc
+	source = pe-set-laa-git::git+https://github.com/randomstuff/pe-set-laa.git
+	md5sums = SKIP
+
+pkgname = pe-set-laa-git
