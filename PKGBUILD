@@ -1,3 +1,4 @@
+#!/bin/bash
 # Maintainer: Kimiblock Moe
 
 pkgname=(cinny-web)
@@ -9,18 +10,22 @@ arch=(any)
 license=(AGPL-3.0-or-later)
 depends=(nodejs-vite)
 url=https://github.com/cinnyapp/cinny
-makedepends=(npm git yarn)
-source=("git+https://github.com/cinnyapp/cinny#tag=v${pkgver}")
-sha512sums=('SKIP')
+#makedepends=(npm git yarn)
+makedepends=(npm yarn)
+#source=("git+https://github.com/cinnyapp/cinny#tag=v${pkgver}")
+source=(
+	cinny-${pkgver}.tar.gz::"https://github.com/cinnyapp/cinny/archive/refs/tags/v${pkgver}.tar.gz"
+)
+sha512sums=('04f247e6a5685471c5819dffd4f18a3159768586433f25c9e298827cbf0c0bd00e0aa435e5b8a5f035724f83fb27dc345e427d01ea7e7f835c84b940926f2997')
 
 function prepare() {
 	NODE_OPTIONS="--max_old_space_size=4096"
-	cd "cinny"
+	cd "cinny-${pkgver}"
 	yarn
 }
 
 build() {
-	cd "cinny"
+	cd "cinny-${pkgver}"
 	NODE_OPTIONS="--max_old_space_size=4096"
 	#npm install --legacy-peer-deps
 	#yarn dist
@@ -31,7 +36,7 @@ package_cinny-web() {
 	url=https://github.com/cinnyapp/cinny
 	NODE_OPTIONS="--max_old_space_size=4096"
 	backup=('etc/webapps/cinny/config.json')
-	cd "cinny"
+	cd "cinny-${pkgver}"
 	install -d "$pkgdir/usr/share/webapps/$pkgbase"
 	cp -r dist/* "$pkgdir/usr/share/webapps/$pkgbase"
 	install -d "$pkgdir/etc/webapps/$pkgbase"
