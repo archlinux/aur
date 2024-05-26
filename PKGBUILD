@@ -2,8 +2,8 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze-git
-pkgver=1.6pre+2012+g003382654
-pkgrel=2
+pkgver=1.11pre+9+gf3cad8426
+pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech (git version)'
 arch=('x86_64')
 url='https://github.com/coelckers/Raze'
@@ -15,7 +15,7 @@ depends=('gtk3'
          'libvpx'
          'openal'
          'sdl2'
-         'zmusic>=1.1.8')
+         'zmusic>=1.1.13')
 makedepends=('cmake'
              'desktop-file-utils'
              'git')
@@ -24,6 +24,7 @@ optdepends=('gxmessage: crash dialog (GNOME)'
             'xorg-xmessage: crash dialog (other)')
 provides=('raze')
 conflicts=('raze')
+options=('!lto')
 source=("Raze::git+https://github.com/coelckers/Raze"
         'raze.desktop')
 sha256sums=('SKIP'
