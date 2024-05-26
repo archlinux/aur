@@ -4,10 +4,16 @@
 # Contributor: mortzu
 pkgname=netkit-rwho-debian
 pkgver=0.17
-pkgrel=8
+pkgrel=9
 _debrev=15
 arch=('i686' 'x86_64' 'arm' 'aarch64')
-license=('BSD')
+license=('BSD-4-Clause-UC')
+depends=('glibc')
+optdepends=(
+	'systemd: to run daemon, and optionally delete old /var/spool/rwho files monthly'
+	'cron: alternate way to monthly delete old /var/spool/rwho files'
+	'bash: to execute cron script'
+)
 pkgdesc='Remote who client and server (with Debian patches)'
 url='https://tracker.debian.org/pkg/netkit-rwho'
 backup=('etc/conf.d/rwhod')
