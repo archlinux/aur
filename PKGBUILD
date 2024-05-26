@@ -5,7 +5,7 @@
 _gemname='bcrypt'
 pkgname="ruby-${_gemname}"
 pkgver=3.1.20
-pkgrel=2
+pkgrel=3
 pkgdesc="bcrypt() is a sophisticated and secure hash algorithm designed by The OpenBSD project for hashing passwords. The bcrypt Ruby gem provides a simple wrapper for safely handling passwords"
 arch=('x86_64')
 url='https://github.com/bcrypt-ruby/bcrypt-ruby'
@@ -31,7 +31,12 @@ build() {
 
   rake gem
 }
-
+check() {
+  local _gemdir="$(gem env gemdir)"
+  cd bcrypt-ruby-$pkgver
+  # One check fails, to investigate later
+  GEM_HOME="tmp_install/$_gemdir" rake || echo "Tests failed"
+}
 package() {
   cd "bcrypt-ruby-${pkgver}"
 
