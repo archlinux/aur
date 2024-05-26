@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/lib/duckstation/duckstation-qt "$@"
+LD_LIBRARY_PATH=/usr/lib/duckstation:$LD_LIBRARY_PATH /usr/lib/duckstation/duckstation-qt "$@"
