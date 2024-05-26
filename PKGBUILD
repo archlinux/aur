@@ -4,7 +4,7 @@
 _pkgname="vala-panel"
 pkgname="$_pkgname"
 pkgver=24.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Panel for compositing window managers"
 url="https://gitlab.com/vala-panel-project/vala-panel"
 license=('LGPL-3.0-only')
@@ -29,6 +29,18 @@ makedepends=(
   'meson'
   'vala'
   'gobject-introspection'
+)
+
+conflicts=(
+  'appmenu-glib-translator-git'
+  'vala-panel-appmenu-budgie-git'
+  'vala-panel-appmenu-common-git'
+  'vala-panel-appmenu-jayatana-git'
+  'vala-panel-appmenu-mate-git'
+  'vala-panel-appmenu-registrar-git'
+  'vala-panel-appmenu-valapanel-git'
+  'vala-panel-appmenu-xfce-git'
+  'vala-panel-git'
 )
 
 _pkgsrc="$_pkgname"
