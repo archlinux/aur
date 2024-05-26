@@ -1,16 +1,15 @@
 pkgbase = ruby-cfpropertylist
 	pkgdesc = Read, write and manipulate both binary and XML property lists as defined by apple.
 	pkgver = 3.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ckruse/CFPropertyList
 	arch = any
 	license = MIT
 	depends = ruby-base64
 	depends = ruby-nkf
 	depends = ruby-rexml
-	noextract = CFPropertyList-3.0.7.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/CFPropertyList-3.0.7.gem
-	sha256sums = c45721614aca8d5eb6fa216f2ec28ec38de1a94505e9766a20e98745492c3c4c
+	source = https://github.com/ckruse/CFPropertyList/archive/cfpropertylist-3.0.7/CFPropertyList-3.0.7.tar.gz
+	sha256sums = 65062aded620058d19a2f1eb77085986d046922881fe2f5fe2b2ef7fd3124330
 
 pkgname = ruby-cfpropertylist
