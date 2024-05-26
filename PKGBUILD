@@ -1,10 +1,11 @@
-# Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
+# Maintainer: Kino <cybao292261@163.com>
+# Contributor: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
 _pkgroot=vision_opencv
 _pkgname=cv_bridge
 pkgname=ros2-humble-cv-bridge
 pkgver=3.2.1
-pkgrel=8
+pkgrel=9
 pkgdesc="This contains CvBridge, which converts between ROS Image messages and OpenCV images."
 url="https://index.ros.org/p/cv_bridge/"
 license=('Apache-2.0' 'BSD-3-Clause')
@@ -20,6 +21,10 @@ prepare() {
   cd $srcdir/build
   source /opt/ros/humble/setup.bash
   python -m venv venv/opt/ros/humble --system-site-packages
+
+  # JASPER is enabled by default on Arch Linux.
+  sed -i "s/'tiff'\]/'tiff', 'jp2'\]/g" $srcdir/$_pkgroot-$pkgver/$_pkgname/test/conversions.py
+
 }
 
 build() {
