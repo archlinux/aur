@@ -2,7 +2,7 @@
 # Contributor: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 pkgname=markdownlint-cli
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="MarkdownLint Command Line Interface"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(nodejs)
 makedepends=(npm)
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('2919296cbdbce0de23dea9177d7da930db3b818026dbaa9f3f0d263c6675930a')
+sha256sums=('1014bdf5901d5e41388722547bb64d596a8d456f08699f61e32ed6d22476f213')
 
 package() {
   npm install -g \
