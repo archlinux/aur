@@ -5,7 +5,7 @@
 
 pkgname=elvish-git
 _pkgname=elvish
-pkgver=0.20.0.dev.r112.g1c0cffb
+pkgver=0.21.0.dev.r161.g06979ef
 pkgrel=1
 pkgdesc="A friendly and expressive Unix shell"
 arch=('x86_64')
@@ -49,7 +49,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" \
     -X github.com/elves/elvish/pkg/buildinfo.Reproducible=true \
     -X github.com/elves/elvish/pkg/buildinfo.Version=$pkgver" \
     -o build \
