@@ -7,7 +7,7 @@ pkgver=2012.09.09
 pkgrel=2
 pkgdesc="Songs for UltraStar Deluxe (USDX)"
 arch=('any')
-url="http://ultrastardeluxe.org/"
+url="https://usdx.eu/"
 license=(
   'CC-BY-NC-ND-2.0' # pornophonique
   'CC-BY-NC-SA-2.0' # shearer
