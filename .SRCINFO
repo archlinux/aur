@@ -24,4 +24,3 @@ pkgbase = binutils-2.35.2
 	sha256sums = a8c541025b77cd932355f7abaa679c34c41f503cccdb8eab8145f2e1a1fb2efd
 
 pkgname = binutils-2.35.2
-
