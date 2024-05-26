@@ -1,9 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=sentry-native
-pkgver=0.7.2
-_commit=0f1d664759cba187a846a562f9d55f3c62dffaa3
-pkgrel=2
+pkgver=0.7.4
+pkgrel=1
 pkgdesc="Sentry SDK for C, C++ and native applications"
 arch=(x86_64)
 url="https://github.com/getsentry/sentry-native"
@@ -24,7 +23,7 @@ checkdepends=(
   python-pytest-httpserver
 )
 source=(
-  "git+$url.git#commit=$_commit"
+  "git+$url.git#tag=$pkgver"
   "git+https://github.com/getsentry/libunwindstack-ndk.git"
   "git+https://github.com/getsentry/breakpad.git"
   "git+https://chromium.googlesource.com/linux-syscall-support.git"
@@ -33,7 +32,7 @@ source=(
   "git+https://chromium.googlesource.com/chromium/src/third_party/zlib.git"
 )
 sha256sums=(
-  '48003098c6dc2e4737315a83961b2da18737c196c39eaa222cec683ba3d82065'
+  '62c7701118479faa520b9073e3c4e105aa9677621d1220adb275c0a19cf6fe3c'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -81,7 +80,7 @@ build() {
 check() {
   cd "$_archive"
 
-  # Deselct failing tests - unsure why they fail.
+  # Deselect failing tests - unsure why they fail.
   pytest \
     --deselect 'tests/test_unit.py::test_unit[build_id_parser]' \
     --deselect 'tests/test_unit.py::test_unit[fuzz_json]' \
