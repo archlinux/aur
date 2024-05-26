@@ -12,11 +12,8 @@
 # Robert Ancell: <https://salsa.debian.org/gnome-team/gnome-control-center>
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
-pkgbase=gnome-control-center-x11-scaling
-pkgname=(
-  gnome-control-center-x11-scaling
-  gnome-keybindings
-)
+pkgname=gnome-control-center-x11-scaling
+_pkgname=gnome-control-center
 pkgver=46.1
 pkgrel=4
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
@@ -106,7 +103,7 @@ validpgpkeys=(
 )
 
 prepare() {
-  cd gnome-control-center
+  cd $_pkgname
 
   git submodule init subprojects/gvc
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
@@ -124,7 +121,7 @@ build() {
     -D malcontent=true
   )
 
-  arch-meson gnome-control-center build "${meson_options[@]}"
+  arch-meson $_pkgname build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -133,19 +130,9 @@ check() {
     meson test -C build --print-errorlogs
 }
 
-_pick() {
-  local p="$1" f d; shift
-  for f; do
-    d="$srcdir/$p/${f#$pkgdir/}"
-    mkdir -p "$(dirname "$d")"
-    mv "$f" "$d"
-    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
-  done
-}
-
-package_gnome-control-center-x11-scaling() {
-  conflicts=(gnome-control-center)
-  provides=(gnome-control-center)
+package() {
+  conflicts=($_pkgname)
+  provides=($_pkgname)
 
   depends+=(gnome-keybindings)
   optdepends=(
@@ -162,21 +149,4 @@ package_gnome-control-center-x11-scaling() {
   groups=(gnome)
 
   meson install -C build --destdir "$pkgdir"
-
-  cd "$pkgdir"
-  _pick gkb usr/share/gettext/its/gnome-keybindings.*
-  _pick gkb usr/share/gnome-control-center/keybindings
-  _pick gkb usr/share/pkgconfig/gnome-keybindings.pc
 }
-
-package_gnome-keybindings() {
-  conflicts=(gnome-keybindings)
-  provides=(gnome-keybindings)
-  
-  pkgdesc="Keybindings configuration for GNOME applications"
-  depends=()
-
-  mv gkb/* "$pkgdir"
-}
-
-# vim:set sw=2 sts=-1 et:

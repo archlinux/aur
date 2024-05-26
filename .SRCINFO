@@ -144,9 +144,3 @@ pkgname = gnome-control-center-x11-scaling
 	optdepends = system-config-printer: printer settings
 	provides = gnome-control-center
 	conflicts = gnome-control-center
-
-pkgname = gnome-keybindings
-	pkgdesc = Keybindings configuration for GNOME applications
-	depends = 
-	provides = gnome-keybindings
-	conflicts = gnome-keybindings
