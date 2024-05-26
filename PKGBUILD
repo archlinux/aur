@@ -12,10 +12,14 @@
 # Robert Ancell: <https://salsa.debian.org/gnome-team/gnome-control-center>
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
-pkgname=gnome-control-center-x11-scaling
+pkgbase=gnome-control-center-x11-scaling
+pkgname=(
+  gnome-control-center-x11-scaling
+  gnome-keybindings-x11-scaling
+)
 _pkgname=gnome-control-center
 pkgver=46.1
-pkgrel=4
+pkgrel=5
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL-2.0-or-later)
@@ -130,7 +134,17 @@ check() {
     meson test -C build --print-errorlogs
 }
 
-package() {
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
+
+package_gnome-control-center-x11-scaling() {
   conflicts=($_pkgname)
   provides=($_pkgname)
 
@@ -149,4 +163,19 @@ package() {
   groups=(gnome)
 
   meson install -C build --destdir "$pkgdir"
+
+  cd "$pkgdir"
+  _pick gkb usr/share/gettext/its/gnome-keybindings.*
+  _pick gkb usr/share/gnome-control-center/keybindings
+  _pick gkb usr/share/pkgconfig/gnome-keybindings.pc
+}
+
+package_gnome-keybindings-x11-scaling() {
+  conflicts=(gnome-keybindings)
+  provides=(gnome-keybindings)
+  
+  pkgdesc="Keybindings configuration for GNOME applications"
+  depends=()
+
+  mv gkb/* "$pkgdir"
 }

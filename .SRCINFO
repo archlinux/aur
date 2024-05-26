@@ -1,7 +1,7 @@
 pkgbase = gnome-control-center-x11-scaling
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch
 	pkgver = 46.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -144,3 +144,9 @@ pkgname = gnome-control-center-x11-scaling
 	optdepends = system-config-printer: printer settings
 	provides = gnome-control-center
 	conflicts = gnome-control-center
+
+pkgname = gnome-keybindings-x11-scaling
+	pkgdesc = Keybindings configuration for GNOME applications
+	depends = 
+	provides = gnome-keybindings
+	conflicts = gnome-keybindings
