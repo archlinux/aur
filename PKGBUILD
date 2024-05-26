@@ -3,8 +3,8 @@
 
 pkgname=bnc-bin
 _debianver=12
-pkgver=2.13.0
-pkgrel=3.01
+pkgver=2.13.1
+pkgrel=1
 pkgdesc="The BKG Ntrip Client(BNC) is an multi-stream client designed for real-time GNSS applications."
 arch=('x86_64')
 url="https://igs.bkg.bund.de/root_ftp/NTRIP/documentation/BNC_BNS_RTNET_Concept.ppt"
@@ -29,7 +29,7 @@ source=(
   "bnc.desktop"
 )
 sha256sums=(
-  'dc920787d64bc0ea4af45cce164d7cad4b7262692076af5af3319887d54523da'
+  'd2f3cbe5aab9de0c5e6078addab18020894196176d32aaacd0d6c0c442526338'
   '97a17bead249ff7186992ff9518ce9a30df1ecaf8a7ba075adf783b836beee10'
   'cd3972e41c76ece121ef73c51fbab93b53da697c42e2329c289f0d36d820cba3'
   '1fe01654d266fce5cd00b48be12cbd5712652e1b1d3830f7bb5d3493657d0605'
