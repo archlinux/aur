@@ -1,7 +1,7 @@
 # Maintainer: Veroni zoubheir@gmail.com
 
 pkgname="dnrs"
-pkgver="1.1.2"
+pkgver="1.1.3"
 pkgrel=1
 pkgdesc="Light dns server written in rust"
 arch=('x86_64')
