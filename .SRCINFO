@@ -1,14 +1,18 @@
 pkgbase = xsynth-dssi
 	pkgdesc = An analog-style (VCOs-VCF-VCA) synth plugin for DSSI
 	pkgver = 0.9.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://dssi.sourceforge.net/download.html#Xsynth-DSSI
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = ladspa
 	depends = gtk2
-	depends = liblo>=0.22
+	depends = liblo
+	depends = glib2
+	depends = cairo
+	depends = bash
+	depends = glibc
 	depends = dssi
 	options = !libtool
 	source = http://downloads.sourceforge.net/project/dssi/xsynth-dssi/0.9.4/xsynth-dssi-0.9.4.tar.gz

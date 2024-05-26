@@ -3,12 +3,12 @@
 # Contributor:  Thomas Karmann <thomas@karmann-paf.de>
 pkgname=xsynth-dssi
 pkgver=0.9.4
-pkgrel=4
+pkgrel=5
 pkgdesc="An analog-style (VCOs-VCF-VCA) synth plugin for DSSI"
 arch=('i686' 'x86_64')
 url="http://dssi.sourceforge.net/download.html#Xsynth-DSSI"
 license=('GPL-2.0-or-later')
-depends=('gtk2' 'liblo>=0.22' 'dssi')
+depends=('gtk2' 'liblo' 'glib2' 'cairo' 'bash' 'glibc' 'dssi')
 makedepends=('ladspa')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/project/dssi/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz
