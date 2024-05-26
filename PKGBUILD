@@ -2,7 +2,7 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo)
 pkgname=koboldcpp
-pkgver=1.66
+pkgver=1.66.1
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
@@ -19,7 +19,9 @@ optdepends=(
   'customtkinter: for GUI launcher'
   'python-psutil: increasing the process CPU priority'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz")
+#source=("$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz")
+# v1.66.1 doesn't have a tag release
+source=("$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/318d5b87fc1602ef16d8271bfdd937ef416a8182.zip")
 sha256sums=('921baff506759f0472fe3ff01eba8c7c236d6ad0eff13c74c18cfe812710a6e8')
 
 build() {
