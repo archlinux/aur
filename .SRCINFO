@@ -1,6 +1,6 @@
 pkgbase = clash-verge-rev-bin
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = clash-verge-rev-bin
 	conflicts = clash-nyanpasu-bin
 	conflicts = clash-nyanpasu-git
 	conflicts = clash-meta
-	source_x86_64 = clash-verge-rev-1.6.2-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.6.2/clash-verge_1.6.2_amd64.deb
-	sha512sums_x86_64 = 848138871988882bf127c381627d09ee8cff034414d532c3c57654c394cc11a27ea13a5e685e6e2f9cb610cbe929ef67610195871321a084c7ae64c8a6d88161
-	source_aarch64 = clash-verge-rev-1.6.2-aarch64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.6.2/clash-verge_1.6.2_arm64.deb
-	sha512sums_aarch64 = 92abc6ef55424133ec2f8bf81f7190baa145ca1d5795ce93ffc90d64021affe1c4c77c0c5a12d16169f7c99013d825ff3c828785e655b00c46a94540f5952279
+	source_x86_64 = clash-verge-rev-1.6.3-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.6.3/clash-verge_1.6.3_amd64.deb
+	sha512sums_x86_64 = a64ee694587557503531d62ed129a1b163c7a51e77bdae09e70d577ecea07354801e4becd7e0b99cf554ed7d9ea35db9e5bffd8433786b0d5283d2b24c0553a4
+	source_aarch64 = clash-verge-rev-1.6.3-aarch64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.6.3/clash-verge_1.6.3_arm64.deb
+	sha512sums_aarch64 = dcac87574e4a7d7dea755cdf1cdea3485e8d7fc026bf035fd2176f8fc16876e242044c3735fd33dbe0a399be085f551cb9eb138afab225bc85f5ff7aee15c7f1
 
 pkgname = clash-verge-rev-bin
