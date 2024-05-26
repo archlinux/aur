@@ -9,7 +9,7 @@ license=('LGPL2.1')
 makedepends=('go')
 optdepends=('xdg-utils: Allows for opening directories in default file manager')
 source=("cli-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a43c918d07a14a87f01947399be927e48c8e2afa0f1da504329d8769858c06f6')
+sha256sums=('fbe93ffb908226074dae32fd5dd8ddad4a2fab0b9f4ce701a713b788dd34ef4d')
 
 build() {
   cd "cli-$pkgver"
