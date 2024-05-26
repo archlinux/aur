@@ -1,33 +1,62 @@
 # Maintainer: 'Radiolin' <anton.osi2011@gmail.com>
 gitname=cassette
 pkgname=cassette-dev
-pkgver=0.2.0.20240519
+pkgver=0.2.0.20240526
 pkgrel=1
-pkgdesc="GTK4/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux."
-arch=('x86_64' 'aarch64')
-url="https://github.com/rirusha/${gitname}"
-license=('GPL3')
-depends=('glib2' 'gtk4' 'libgee' 'libadwaita' 'libsoup3' 'json-glib' 'sqlite3' 'libxml2' 'gstreamer' 'webkitgtk-6.0' 'gst-plugins-good' ) 
-optdepends=()
-makedepends=('meson' 'ninja' 'cmake' 'blueprint-compiler' 'gcc' 'git' 'vala'  'appstream-glib' 'python-packaging')
-provides=("$gitname")
-conflicts=("$gitname")
-source=("git+${url}.git")
-md5sums=('SKIP')
-options=('strip')
+pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
+arch=(aarch64 x86_64)
+url="https://github.com/rirusha/${pkgname%-git}"
+license=(GPL-3.0-only)
+depends=(
+  cairo
+  dconf
+  gdk-pixbuf2
+  glibc
+  glib2
+  gtk4
+  gst-plugins-good
+  gstreamer
+  hicolor-icon-theme
+  json-glib
+  libadwaita
+  libgee
+  libsoup3
+  libxml2
+  sqlite3
+  webkitgtk-6.0
+) 
+makedepends=(
+  appstream-glib
+  blueprint-compiler
+  cmake
+  gcc13
+  git
+  meson
+  ninja
+  python-packaging
+  vala
+)
+provides=(${gitname%-git})
+conflicts=(${gitname%-git})
+options=(!debug)
+source=(${pkgname%-git}::git+$url.git)
+b2sums=(SKIP)
+
+pkgver() {
+  git -C ${pkgname%-git} describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^ver.//'
+}
 
 build() {
-    cd "${gitname}/"
-    sudo pacman -Ud --noconfirm https://archive.archlinux.org/packages/g/gcc-libs/gcc-libs-13.2.1-6-x86_64.pkg.tar.zst
-    sudo pacman -Ud --noconfirm https://archive.archlinux.org/packages/g/gcc/gcc-13.2.1-6-x86_64.pkg.tar.zst
-    meson . builddir --prefix=/usr
-    meson configure -Dprofile=development builddir
-    meson compile -C builddir
+  cd ${pkgname%-git}
+  export CC=gcc-13
+  export CXX=g++-13
+  meson . builddir --prefix=/usr
+  meson configure -Dprofile=development builddir
+  meson compile -C builddir
 }
 
 package() {
-    cd "${gitname}/"
-    meson install -C builddir --destdir "$pkgdir"
-    sudo pacman -S --noconfirm  gcc-libs gcc
+  cd ${pkgname%-git}
+  meson install -C builddir --destdir "$pkgdir"
 }
 
