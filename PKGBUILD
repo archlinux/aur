@@ -2,8 +2,8 @@
 
 _pkgname=perl-geo-proj4
 pkgname="${_pkgname}-git"
-pkgver=1.10.0.2+r25.20210515.g417cc66
-pkgrel=3
+pkgver=1.10.0.3+r26.20240507.g1978ddf
+pkgrel=1
 pkgdesc='One location on the globe, in any coordinate system. This package tries to hide the maths and the coordinate system in which the point is represented.'
 arch=(
   'arm'
