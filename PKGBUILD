@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.9.1.arch1
+pkgver=6.9.2.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -21,7 +21,7 @@ makedepends=(
   python
   tar
   xz
-#  modprobed-db
+  modprobed-db
 )
 options=('!strip' '!debug')
 _srcname=linux-${pkgver%.*}
@@ -30,7 +30,7 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/$_srcname.tar.{xz,sign}
   $_url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config         # the main kernel config file
-#  modprobed.db
+  modprobed.db
   "choose-gcc-optimization.sh"
 
   "sys-kernel_arch-sources-g14-6.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-6.8-rc4%2B.patch"
@@ -44,10 +44,14 @@ source=(
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
   0035-Add_quirk_for_polling_the_KBD_port.patch
   
-  0001-hid-asus-use-hid-for-brightness-control-on-keyboard.patch
+  "0001-sched-ext.patch"::"https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.9/sched/0001-sched-ext.patch"
 
-#  "0001-sched-ext.patch"::"https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.8/sched/0001-sched-ext.patch"
-
+  0001-ALSA-PCI-HDA-Adjust-G814JZR-to-use-SPI-init-for-amp.patch
+  0002-hid-asus-use-hid-for-brightness-control-on-keyboard.patch
+  0003-Debugging.patch
+  0004-asus-wmi-don-t-error-out-if-platform_profile-already.patch
+  0005-hid-asus-add-USB_DEVICE_ID_ASUSTEK_DUO_KEYBOARD.patch
+  
   0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
 
@@ -75,8 +79,6 @@ source=(
   0003-HID-asus-add-ROG-Ally-N-Key-ID-and-keycodes.patch
   0004-HID-asus-add-ROG-Z13-lightbar.patch
   
-  #0060-ALSA_hda-realtek_Add_quirks_for_ASUS_Laptops_using_CS35L56.patch
-  
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
 )
@@ -86,18 +88,24 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('01b414ba98fd189ecd544435caf3860ae2a790e3ec48f5aa70fdf42dc4c5c04a'
+sha256sums=('d46c5bdf2c5961cc2a4dedefe0434d456865e95e4a7cd9f93fff054f9090e5f9'
             'SKIP'
-            '8cb3d0a2769d1471c38fb5f1bdd1395333790453a399767c3af8673bc6a714b5'
+            'be5cb9b693a965be2b0c54e4d1b9339c18524a45accd8ce6837b61a8d903b0fb'
             'SKIP'
-            '5f8a4de3f17d6d1b624e70514327b05fafffe8af913f95829b9c6830b4a8a4e3'
+            'ccb010f9cf043f07dd2a2aba56cf2b7a82654dc7ee0b12a4984fcfed05d3e8ec'
+            '4628e6757e5fd6c61dc2f28efaeb94c2e1f1e8d69431a6250ad6390479142338'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'f4e7fcd011f2691840d2c8c2361dca850a78ea33cc5c24d2e27c3e0294fd1dc5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
-            'dfa24a178cf3d533e09892bdae9365784771bf10fa7f771f559f54026dee92e4'
+            '6003eb7821c5df01af93386d82425bb49a0c70c92a8f6eddcdbd625a38b45754'
+            '9152af5811a61dd196c520ac39792aebee325fda093ecf9acd19f80819cf8d7c'
+            '567efcbb400bf2dc7327a790839d2a441bd7ca9fb7f5b2b07591c4abc63554bf'
+            '6ab14523be3cadf4d495dd13b0ed12a1241118d93d8313f47a8dea6b1bf16df6'
+            'c9835e39798d97ba0ca48c0d2353d1182715d4bfc99964051993dacc8f59ba83'
+            '423380be1902da29e695cb201516751759050fc0a50914a0459f05e1f4614087'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             '9f98765b43f5f31b33ed05f3611508113b02518e680ee82b251de80dae2e141d'
@@ -131,10 +139,10 @@ sha256sums=('01b414ba98fd189ecd544435caf3860ae2a790e3ec48f5aa70fdf42dc4c5c04a'
 # 98, Intel Native = CONFIG_MNATIVE_INTEL
 # 99, AMD Native = CONFIG_MNATIVE_AMD
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=93
+  _microarchitecture=15
 fi
 if [ -z ${Microarchitecture+x} ]; then
-  Microarchitecture='CONFIG_GENERIC_CPU3'
+  Microarchitecture='CONFIG_MZEN3'
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -169,7 +177,7 @@ prepare() {
   ## Make use of modprobed-db, if installed
   ## To do this, you need to copy the database into this directory and enable the relevant lines 
   ## at the top of this file!
-  # make LSMOD=../modprobed.db localmodconfig 
+  make LSMOD=../modprobed.db localmodconfig 
 
   ## let user choose microarchitecture optimization in GCC  
   ## this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist

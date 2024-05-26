@@ -1,0 +1,34 @@
+From 1e9971b55db184efe938c2dc42a4e7340de17b36 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Fri, 24 May 2024 10:54:36 +1200
+Subject: [PATCH 4/5] asus-wmi: don't error out if platform_profile already
+ registered
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-wmi.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index c79e766d1922..1def9035c165 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -3825,8 +3825,14 @@ static int platform_profile_setup(struct asus_wmi *asus)
+ 		asus->platform_profile_handler.choices);
+ 
+ 	err = platform_profile_register(&asus->platform_profile_handler);
+-	if (err)
++	switch (err) {
++	case -EEXIST:
++		pr_warn("%s, a platform_profile handler is already registered\n", __func__);
++		return 0;
++	default:
++		pr_err("%s, failed at platform_profile_register: %d\n", __func__, err);
+ 		return err;
++	}
+ 
+ 	asus->platform_profile_support = true;
+ 	return 0;
+-- 
+2.45.1
+
