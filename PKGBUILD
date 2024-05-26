@@ -1,10 +1,11 @@
+
 # Maintainer: dreieck
 
 _depends="android-studio-beta"
 _provides="android-studio"
 _pkgname="${_depends}-${_provides}-provides"
 pkgname="${_pkgname}"
-pkgver=2023.2.1.1
+pkgver=2024.1.1.8
 pkgrel=1
 pkgdesc="Dummy/ meta package that symlinks '${_depends}' to '${_provides}', and satisfies '${_provides}' dependencies."
 url="https://aur.archlinux.org/packages/${_depends}"
