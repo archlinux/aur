@@ -53,6 +53,7 @@ updpkgsums
 # makechrootpkg -c -r "${CHROOT}" "$@"
 
 # or clean-chroot-manager (AUR)
+sudo ccm u
 sudo ccm s
 
 # sync repos afterwards (again)

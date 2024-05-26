@@ -21,7 +21,7 @@ makedepends=(
   python
   tar
   xz
-  modprobed-db
+#  modprobed-db
 )
 options=('!strip' '!debug')
 _srcname=linux-${pkgver%.*}
@@ -30,7 +30,7 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/$_srcname.tar.{xz,sign}
   $_url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config         # the main kernel config file
-  modprobed.db
+#  modprobed.db
   "choose-gcc-optimization.sh"
 
   "sys-kernel_arch-sources-g14-6.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-6.8-rc4%2B.patch"
@@ -93,7 +93,6 @@ sha256sums=('d46c5bdf2c5961cc2a4dedefe0434d456865e95e4a7cd9f93fff054f9090e5f9'
             'be5cb9b693a965be2b0c54e4d1b9339c18524a45accd8ce6837b61a8d903b0fb'
             'SKIP'
             'ccb010f9cf043f07dd2a2aba56cf2b7a82654dc7ee0b12a4984fcfed05d3e8ec'
-            '4628e6757e5fd6c61dc2f28efaeb94c2e1f1e8d69431a6250ad6390479142338'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'f4e7fcd011f2691840d2c8c2361dca850a78ea33cc5c24d2e27c3e0294fd1dc5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
@@ -139,10 +138,10 @@ sha256sums=('d46c5bdf2c5961cc2a4dedefe0434d456865e95e4a7cd9f93fff054f9090e5f9'
 # 98, Intel Native = CONFIG_MNATIVE_INTEL
 # 99, AMD Native = CONFIG_MNATIVE_AMD
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=15
+  _microarchitecture=93
 fi
 if [ -z ${Microarchitecture+x} ]; then
-  Microarchitecture='CONFIG_MZEN3'
+  Microarchitecture='CONFIG_GENERIC_CPU3'
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -177,7 +176,7 @@ prepare() {
   ## Make use of modprobed-db, if installed
   ## To do this, you need to copy the database into this directory and enable the relevant lines 
   ## at the top of this file!
-  make LSMOD=../modprobed.db localmodconfig 
+  # make LSMOD=../modprobed.db localmodconfig 
 
   ## let user choose microarchitecture optimization in GCC  
   ## this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist
