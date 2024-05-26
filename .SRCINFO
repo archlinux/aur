@@ -1,5 +1,5 @@
 pkgbase = emacs-moonscript-mode
-	pkgdesc = Emacs major mode for the MoonScript programming language
+	pkgdesc = An Emacs mode for moonscript
 	pkgver = r39.56f9047
 	pkgrel = 1
 	url = https://github.com/k2052/moonscript-mode
