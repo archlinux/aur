@@ -9,8 +9,7 @@ url="https://github.com/Ancurio/rgss_script_editor"
 arch=('any')
 license=('MIT')
 depends=('qscintilla-qt5')
-optdepends=()
-makedepends=('qscintilla-qt5' 'cmake' 'git')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/Ancurio/rgss_script_editor.git")
 md5sums=('SKIP')
 

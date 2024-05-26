@@ -5,7 +5,6 @@ pkgbase = rgss_script_editor-git
 	url = https://github.com/Ancurio/rgss_script_editor
 	arch = any
 	license = MIT
-	makedepends = qscintilla-qt5
 	makedepends = cmake
 	makedepends = git
 	depends = qscintilla-qt5
