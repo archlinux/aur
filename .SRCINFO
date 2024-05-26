@@ -1,0 +1,25 @@
+pkgbase = python-sushy
+	pkgdesc = Small Python library to communicate with Redfish based systems
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://opendev.org/openstack/sushy
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-coverage
+	checkdepends = python-stestr
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = tar
+	depends = python
+	depends = python-setuptools
+	depends = python-pbr
+	depends = python-requests
+	depends = python-dateutil
+	depends = python-stevedore
+	depends = python-urllib3
+	depends = python-oslotest
+	source = python-sushy-5.1.0.tar.gz::https://opendev.org/openstack/sushy/archive/5.1.0.tar.gz
+	b2sums = a34742969013b2698dad9e4de5de7776b924f02b264f44727511b8219b75432ce1d6adb81e287a15a28f3dda84de7d16621f5491898eb3d422606e98cdf69c38
+
+pkgname = python-sushy
