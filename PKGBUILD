@@ -3,7 +3,7 @@
 _plug=muxtools
 pkgname=python-${_plug}-git
 pkgver=0.1.0.7.g4b1ca0d
-pkgrel=2
+pkgrel=3
 pkgdesc="Python Package: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/muxtools'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(
     'python-requests'
     # 'python-fontcollector' # package doesn't exist
-    # 'python-ass' # package is broken
+    'python-ass'
     'python-wget'
     'python-py7zr'
     'python-pymediainfo'
