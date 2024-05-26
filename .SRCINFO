@@ -1,13 +1,13 @@
 pkgbase = opentofu-provider-hcloud
 	pkgver = v1.47.0
-	pkgrel = 2
-	url = https://github.com/hetznercloud/opentofu-provider-hcloud
+	pkgrel = 3
+	url = https://github.com/hetznercloud/terraform-provider-hcloud
 	arch = x86_64
 	license = MPL-2.0
 	checkdepends = go
 	makedepends = git
 	makedepends = go
-	source = terraform-provider-hcloud-v1.47.0.tar.gz::https://github.com/hetznercloud/opentofu-provider-hcloud/archive/refs/tags/v1.47.0.tar.gz
+	source = terraform-provider-hcloud-v1.47.0.tar.gz::https://github.com/hetznercloud/terraform-provider-hcloud/archive/refs/tags/v1.47.0.tar.gz
 	sha256sums = 6d8b71b527314d83e132dd67b8c92950f9adf2528d755d7f4211949e38686997
 
 pkgname = opentofu-provider-hcloud
