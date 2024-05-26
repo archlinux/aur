@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=smooth-git
-pkgver=0.9.8.r17.g4d48e854
-pkgrel=2
+pkgver=0.9.10.r20.g9a6a0edc
+pkgrel=1
 pkgdesc="An object oriented C++ class library"
 arch=('x86_64')
 url="http://www.smooth-project.org"
@@ -19,7 +19,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "{pkgname%-git}"
+  cd "${pkgname%-git}"
   find . -type f -exec sed -i 's|/usr/local|/usr|g' {} \;
 }
 
@@ -31,6 +31,4 @@ build() {
 package() {
   cd "${pkgname%-git}"
   make DESTDIR="$pkgdir/" install
-
-  ln -s "/usr/lib/libsmooth-${pkgver%.*}.so" "${pkgdir}/usr/lib/libsmooth.so"
 }
