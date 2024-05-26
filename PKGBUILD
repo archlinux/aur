@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc='Fork of legacy versions of the GZDoom source port for older hardware; cutting edge Git version'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
-license=('BSD' 'GPL3' 'LGPL3')
+license=('GPL-3.0')
 depends=('gtk3'
          'hicolor-icon-theme'
          'libgl'
