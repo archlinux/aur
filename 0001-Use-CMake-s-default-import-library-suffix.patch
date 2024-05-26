@@ -1,7 +1,7 @@
-From 5ab173c6ee597e09eecf53411ec3726c19a40ce5 Mon Sep 17 00:00:00 2001
+From b98455fa6cb955beb32c560768bf15ef02b4b8c2 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 22:08:10 +0100
-Subject: [PATCH 01/17] Use CMake's default import library suffix
+Subject: [PATCH 01/16] Use CMake's default import library suffix
 
 Change-Id: I3dbedaec74683e5bfd008f7f2fd1e046dfb921b2
 ---
@@ -13,7 +13,7 @@ Change-Id: I3dbedaec74683e5bfd008f7f2fd1e046dfb921b2
  5 files changed, 21 insertions(+), 6 deletions(-)
 
 diff --git a/cmake/QtPriHelpers.cmake b/cmake/QtPriHelpers.cmake
-index f1d45cdcf6c..32ca0589699 100644
+index 0151fcb77b0..94c96be0397 100644
 --- a/cmake/QtPriHelpers.cmake
 +++ b/cmake/QtPriHelpers.cmake
 @@ -523,9 +523,13 @@ QT.${config_module_name}_private.disabled_features = ${disabled_private_features
@@ -31,7 +31,7 @@ index f1d45cdcf6c..32ca0589699 100644
              ${CMAKE_EXTRA_SHARED_LIBRARY_SUFFIXES}
              ${CMAKE_STATIC_LIBRARY_SUFFIX})
          if(MSVC)
-@@ -976,9 +980,13 @@ CONFIG += ${private_config_joined}
+@@ -991,9 +995,13 @@ CONFIG += ${private_config_joined}
          list(APPEND inputs "${preliminary_pri_root}/${cfg}/${pri_data_cmake_file}")
      endforeach()
  
@@ -98,7 +98,7 @@ index 24ed125f12b..73ebe453d3d 100644
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}$${debug_suffix}.lib
          CMAKE_WINMAIN_FILE_LOCATION_RELEASE = qtmain$${QT_LIBINFIX}.lib
 diff --git a/src/corelib/Qt6CoreMacros.cmake b/src/corelib/Qt6CoreMacros.cmake
-index 8a0d07feac7..17d7b8fc123 100644
+index 31a1f1da030..023fb51c53c 100644
 --- a/src/corelib/Qt6CoreMacros.cmake
 +++ b/src/corelib/Qt6CoreMacros.cmake
 @@ -550,7 +550,6 @@ function(_qt_internal_apply_win_prefix_and_suffix target)
@@ -110,5 +110,5 @@ index 8a0d07feac7..17d7b8fc123 100644
              get_target_property(target_type ${target} TYPE)
              if(target_type STREQUAL "STATIC_LIBRARY")
 -- 
-2.44.0
+2.45.1
 

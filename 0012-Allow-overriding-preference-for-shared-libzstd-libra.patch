@@ -1,7 +1,7 @@
-From 76d4c957cc1bc010b95a1fd755edd8d5a9b0b5ca Mon Sep 17 00:00:00 2001
+From 7287405108f6ef2f33dd7c47898de3dd58d575bc Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 7 Nov 2023 23:58:54 +0100
-Subject: [PATCH 12/17] Allow overriding preference for shared libzstd library
+Subject: [PATCH 12/16] Allow overriding preference for shared libzstd library
 
 As of 3f45905953d57e0174059d7d9d6bc75c3c1c406c Qt prefers the shared zstd
 library. This breaks static builds. With this change the static library is
@@ -34,5 +34,5 @@ index fb424236b89..12a3178518e 100644
      if(NOT TARGET WrapZSTD::WrapZSTD)
          add_library(WrapZSTD::WrapZSTD INTERFACE IMPORTED)
 -- 
-2.44.0
+2.45.1
 
