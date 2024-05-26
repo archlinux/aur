@@ -1,7 +1,7 @@
 pkgbase = waybar-crypto
 	pkgdesc = A Waybar module for displaying cryptocurrency market information from CoinMarketCap.
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chadsr/waybar-crypto
 	arch = any
 	license = MIT

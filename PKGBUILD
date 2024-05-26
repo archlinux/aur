@@ -2,7 +2,7 @@
 
 pkgname=waybar-crypto
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Waybar module for displaying cryptocurrency market information from CoinMarketCap.'
 arch=('any')
 url='https://github.com/chadsr/waybar-crypto'
@@ -21,10 +21,10 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 
     cd "$pkgdir"
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-    ln -s "${site_packages:1}"/waybar_crypto.py /usr/bin/waybar-crypto 
-
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s /"${site_packages:1}"/waybar_crypto.py "${pkgdir}/usr/bin/waybar-crypto"
 }
