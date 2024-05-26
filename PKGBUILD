@@ -1,24 +1,30 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=playdate-sdk
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='SDK for the Playdate console with Lua and C APIs, docs, and a simulator'
 arch=('x86_64')
 url='https://play.date/dev/'
 license=('LicenseRef-SdkLicense')
 depends=(
+  'bash'
   'cairo'
+  'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
+  'glibc'
   'gtk3'
   'hicolor-icon-theme'
   'libpng'
+  'libx11'
   'libxkbcommon'
   'pango'
+  'python'
   'systemd-libs'
   'webkit2gtk'
   'xdg-utils'
+  'zlib'
 )
 makedepends=('curl' 'jq')
 optdepends=(
@@ -38,7 +44,7 @@ source=(
 )
 
 sha512sums=(
-  'bb6b6fb1acd56e290feb194e0b73894528e1fa948e38c6bf940a44dabedf206a37ef116a02ff6bfe345c05dfba2eaea46394b26c18a1c0a778cf0b05ce23dc75'
+  '97c5a1d9cbe389c090d0dbff844cc0839ac57c4b5f1a1f14fc547fca2cd8bf347eabd3b811a7e6e7a05be79ccf20aca36dbc5dafadba178d96c056c8831dab7a'
   '7286f35bff63253ff430860ce6a3ce52dfd88bcd90e6dd6cfcbeb90a76b38d2341d4fc428259d00eac7b67c2b94e0319e3d438a67e76e8016d8cd36be1123677'
   'ed30d6745f686e985bd54cd23c5a8e9bee95bad7209d065871bf461dc8321dea032583d6a3da9fa9909efca2969dde0954777a55ba42b4974c49ed1993101c92'
   '2a909f7d290489e23a5dd1648269e8575e3912057d03649d898fa23a6ff74185bd1080c6366db1b840bce4cb72482c72e218f88bb1aac4d91eec6f89205573cb'
