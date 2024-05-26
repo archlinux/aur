@@ -31,7 +31,7 @@ makedepends=('python-build'
 checkdepends=('python-coverage'
               'python-stestr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d14b08637130b6dd7aae93526a01fb7d6e968ec20a57a43bde32e9d0b092cbc8')
+b2sums=('ddbe35962d08c16a07bc4ba528097c9e4d2b64070d6279c1d11cfa55cf80187f63858bb60a01b3072d32df33b46e4927bd74787bf352cc01d4dab6893b08b258')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
