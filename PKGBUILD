@@ -11,7 +11,7 @@ license=(AGPL-3.0-or-later)
 depends=()
 url=https://github.com/cinnyapp/cinny
 #makedepends=(npm git yarn)
-makedepends=(npm yarn nodejs-vite)
+makedepends=(npm yarn bubblewrap)
 #source=("git+https://github.com/cinnyapp/cinny#tag=v${pkgver}")
 source=(
 	cinny-${pkgver}.tar.gz::"https://github.com/cinnyapp/cinny/archive/refs/tags/v${pkgver}.tar.gz"
@@ -21,15 +21,15 @@ sha512sums=('04f247e6a5685471c5819dffd4f18a3159768586433f25c9e298827cbf0c0bd00e0
 function prepare() {
 	NODE_OPTIONS="--max_old_space_size=4096"
 	cd "cinny-${pkgver}"
-	yarn
+	#yarn
+	npm install --legacy-peer-deps
 }
 
 build() {
 	cd "cinny-${pkgver}"
 	NODE_OPTIONS="--max_old_space_size=4096"
-	#npm install --legacy-peer-deps
 	#yarn dist
-	yarn run build
+	npm run build
 }
 
 package_cinny-web() {

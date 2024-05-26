@@ -7,7 +7,7 @@ pkgbase = cinny
 	license = AGPL-3.0-or-later
 	makedepends = npm
 	makedepends = yarn
-	makedepends = nodejs-vite
+	makedepends = bubblewrap
 	source = cinny-3.2.0.tar.gz::https://github.com/cinnyapp/cinny/archive/refs/tags/v3.2.0.tar.gz
 	sha512sums = 04f247e6a5685471c5819dffd4f18a3159768586433f25c9e298827cbf0c0bd00e0aa435e5b8a5f035724f83fb27dc345e427d01ea7e7f835c84b940926f2997
 
