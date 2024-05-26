@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DAPAR
-_pkgver=1.36.0
+_pkgver=1.36.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -64,8 +64,8 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('036ffb5bb1bdbb3a845e72d65ba22d3c')
-b2sums=('3ca2d6f2092a8b2d8e19e6d18d931b741e31797e7bb6010df452e54fbe2ba7ccbf2b0345565b2055e2b21fca597d446b49218157558ddf0766bae73bbf44dcd1')
+md5sums=('aedb38a076bd024ffc20b71f8e41bb25')
+b2sums=('62efeb6734b4f02c82be3e8d1fb7b012e900a848b8108717761111e3d5bd19b9c73278be0c93b933eee290db5d9e694bea818ab018d54fbafdeba065aa479c79')
 
 build() {
   mkdir build
