@@ -1,0 +1,17 @@
+pkgbase = waybar-crypto
+	pkgdesc = A Waybar module for displaying cryptocurrency market information from CoinMarketCap.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/chadsr/waybar-crypto
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	provides = waybar-crypto
+	source = https://github.com/chadsr/waybar-crypto/archive/v1.5.0.tar.gz
+	sha512sums = 6360b9684d55bf071bd3ba3185b8b112c0df376950f0054037801c5fef5f12c5cf9b5a95d491987e84125ec55bf8069ab41c2665c672bafe35c88dc4df4923cf
+
+pkgname = waybar-crypto
