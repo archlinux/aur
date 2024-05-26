@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.1.32
+pkgver=7.1.1.33
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -29,13 +29,13 @@ makedepends=(
         'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
         'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'gperftools'
-        'autotrace'
+        'autotrace-nomagick'
     # AUR:
         'dmalloc' 'flif' 'libfpx' 'libultrahdr-git' 'libumem-git' 'magickcache-git'
 )
 source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('e7a6b98f105e6b0f4f1b1e1d72f002262cc1a375b8c05b5f9e8dd2be438897d2'
+sha256sums=('c021effec02d18df2e55fbbe68b10b95366c1869143b08d7e8e16f471a0ddea1'
             'SKIP'
             '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
@@ -133,7 +133,7 @@ package_imagemagick-full() {
             'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'gperftools'
-            'autotrace'
+            'autotrace-nomagick'
         # AUR:
             'dmalloc' 'flif' 'libfpx' 'libultrahdr-git' 'libumem-git' 'magickcache-git'
     )
