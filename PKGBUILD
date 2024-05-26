@@ -8,10 +8,10 @@ pkgrel=1
 pkgdesc='Yet another matrix client — web version'
 arch=(any)
 license=(AGPL-3.0-or-later)
-depends=(nodejs-vite)
+depends=()
 url=https://github.com/cinnyapp/cinny
 #makedepends=(npm git yarn)
-makedepends=(npm yarn)
+makedepends=(npm yarn nodejs-vite)
 #source=("git+https://github.com/cinnyapp/cinny#tag=v${pkgver}")
 source=(
 	cinny-${pkgver}.tar.gz::"https://github.com/cinnyapp/cinny/archive/refs/tags/v${pkgver}.tar.gz"
