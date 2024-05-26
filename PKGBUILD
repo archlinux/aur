@@ -92,7 +92,7 @@ build() {
 
     cmake -B build-shaderc -S shaderc \
         -G Ninja \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_C_COMPILER=clang \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
@@ -110,7 +110,7 @@ build() {
 
     cmake -B build -S duckstation \
         -G Ninja \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_C_COMPILER=clang \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_FLAGS="$CFLAGS -Wno-error=format-security" \
