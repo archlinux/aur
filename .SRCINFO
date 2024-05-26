@@ -1,76 +1,121 @@
 pkgbase = vala-panel-appmenu
-	pkgdesc = AppMenu (Global Menu) plugin
-	pkgver = 0.7.6
-	pkgrel = 3
+	pkgdesc = Global Menu (AppMenu) plugin
+	pkgver = 24.02
+	pkgrel = 1
 	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
 	arch = i686
 	arch = x86_64
-	license = LGPL3
+	license = LGPL-3.0-or-later
+	makedepends = mate-panel
+	makedepends = xfce4-panel
+	makedepends = xfconf
+	makedepends = vala-panel
+	makedepends = budgie-desktop
+	makedepends = git
 	makedepends = meson
 	makedepends = vala
-	makedepends = gtk3
-	makedepends = libwnck3
-	makedepends = bamf>=0.5.0
-	makedepends = git
-	makedepends = mate-panel
-	makedepends = xfce4-panel>=4.11.2
-	makedepends = xfconf
-	makedepends = vala-panel>=0.4.50
-	source = git+https://gitlab.com/vala-panel-project/vala-panel-appmenu.git#tag=0.7.6
+	makedepends = gobject-introspection
+	depends = glib2
+	source = vala-panel-appmenu::git+https://gitlab.com/vala-panel-project/vala-panel-appmenu.git#commit=0c914bb8
 	sha256sums = SKIP
 
-pkgname = vala-panel-appmenu-common
-	pkgdesc = Translations and common files for Global Menu
-	arch = any
-	optdepends = vala-panel-appmenu-xfce
-	optdepends = vala-panel-appmenu-valapanel
-	optdepends = vala-panel-appmenu-mate
-	optdepends = vala-panel-appmenu-budgie
+pkgname = vala-panel-appmenu
+	pkgdesc = metapackage - vala panel appmenu collection
+	depends = vala-panel-appmenu-registrar
+	depends = vala-panel-appmenu-mate
+	depends = vala-panel-appmenu-xfce
+	depends = vala-panel-appmenu-valapanel
+	depends = vala-panel-appmenu-budgie
+	conflicts = appmenu-glib-translator-git
+	conflicts = vala-panel-git
+	conflicts = vala-panel-appmenu-budgie-git
 	conflicts = vala-panel-appmenu-common-git
-	replaces = vala-panel-appmenu-translations-git
+	conflicts = vala-panel-appmenu-jayatana-git
+	conflicts = vala-panel-appmenu-mate-git
+	conflicts = vala-panel-appmenu-registrar-git
+	conflicts = vala-panel-appmenu-valapanel-git
+	conflicts = vala-panel-appmenu-xfce-git
+
+pkgname = vala-panel-appmenu-common
+	pkgdesc = Translations and common files
+	depends = gdk-pixbuf2
+	depends = dconf
+	conflicts = appmenu-glib-translator-git
+	conflicts = appmenu-glib-translator-git
+	conflicts = vala-panel-git
+	conflicts = vala-panel-appmenu-budgie-git
+	conflicts = vala-panel-appmenu-common-git
+	conflicts = vala-panel-appmenu-jayatana-git
+	conflicts = vala-panel-appmenu-mate-git
+	conflicts = vala-panel-appmenu-registrar-git
+	conflicts = vala-panel-appmenu-valapanel-git
+	conflicts = vala-panel-appmenu-xfce-git
+
+pkgname = vala-panel-appmenu-registrar
+	pkgdesc = Small utility to hold DBusMenu menus
+	conflicts = appmenu-glib-translator-git
+	conflicts = vala-panel-git
+	conflicts = vala-panel-appmenu-budgie-git
+	conflicts = vala-panel-appmenu-common-git
+	conflicts = vala-panel-appmenu-jayatana-git
+	conflicts = vala-panel-appmenu-mate-git
+	conflicts = vala-panel-appmenu-registrar-git
+	conflicts = vala-panel-appmenu-valapanel-git
+	conflicts = vala-panel-appmenu-xfce-git
 
 pkgname = vala-panel-appmenu-mate
-	pkgdesc = AppMenu (Global Menu) plugin for mate-panel
-	depends = gtk3
-	depends = bamf>=0.5.0
+	pkgdesc = Global Menu (AppMenu) plugin for mate-panel
 	depends = mate-panel
-	depends = libwnck3
 	depends = vala-panel-appmenu-common
-	optdepends = gtk2-ubuntu: for hiding gtk2 menus
-	optdepends = unity-gtk-module: for gtk2/gtk3 menus
-	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
-	optdepends = jayatana: for Java applications support
-	optdepends = appmenu-qt4: for qt4 menus
-	optdepends = appmenu-qt5: for qt5 menus
+	conflicts = appmenu-glib-translator-git
+	conflicts = vala-panel-git
+	conflicts = vala-panel-appmenu-budgie-git
+	conflicts = vala-panel-appmenu-common-git
+	conflicts = vala-panel-appmenu-jayatana-git
 	conflicts = vala-panel-appmenu-mate-git
+	conflicts = vala-panel-appmenu-registrar-git
+	conflicts = vala-panel-appmenu-valapanel-git
+	conflicts = vala-panel-appmenu-xfce-git
 
 pkgname = vala-panel-appmenu-xfce
-	pkgdesc = AppMenu (Global Menu) plugin for xfce4-panel
-	depends = gtk3
-	depends = bamf>=0.5.0
-	depends = xfce4-panel>=4.11.2
+	pkgdesc = Global Menu (AppMenu) plugin for xfce4-panel
+	depends = xfce4-panel
 	depends = xfconf
-	depends = libwnck3
 	depends = vala-panel-appmenu-common
-	optdepends = gtk2-ubuntu: for hiding gtk2 menus
-	optdepends = unity-gtk-module: for gtk2/gtk3 menus
-	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
-	optdepends = jayatana: for Java applications support
-	optdepends = appmenu-qt4: for qt4 menus
-	optdepends = appmenu-qt5: for qt5 menus
+	conflicts = appmenu-glib-translator-git
+	conflicts = vala-panel-git
+	conflicts = vala-panel-appmenu-budgie-git
+	conflicts = vala-panel-appmenu-common-git
+	conflicts = vala-panel-appmenu-jayatana-git
+	conflicts = vala-panel-appmenu-mate-git
+	conflicts = vala-panel-appmenu-registrar-git
+	conflicts = vala-panel-appmenu-valapanel-git
 	conflicts = vala-panel-appmenu-xfce-git
 
 pkgname = vala-panel-appmenu-valapanel
-	pkgdesc = AppMenu (Global Menu) plugin for vala-panel
-	depends = gtk3
-	depends = bamf>=0.5.0
+	pkgdesc = Global Menu (AppMenu) plugin for vala-panel
 	depends = vala-panel
-	depends = libwnck3
 	depends = vala-panel-appmenu-common
-	optdepends = gtk2-ubuntu: for hiding gtk2 menus
-	optdepends = unity-gtk-module: for gtk2/gtk3 menus
-	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
-	optdepends = jayatana: for Java applications support
-	optdepends = appmenu-qt4: for qt4 menus
-	optdepends = appmenu-qt5: for qt5 menus
+	conflicts = appmenu-glib-translator-git
+	conflicts = vala-panel-git
+	conflicts = vala-panel-appmenu-budgie-git
+	conflicts = vala-panel-appmenu-common-git
+	conflicts = vala-panel-appmenu-jayatana-git
+	conflicts = vala-panel-appmenu-mate-git
+	conflicts = vala-panel-appmenu-registrar-git
 	conflicts = vala-panel-appmenu-valapanel-git
+	conflicts = vala-panel-appmenu-xfce-git
+
+pkgname = vala-panel-appmenu-budgie
+	pkgdesc = Global Menu (AppMenu) plugin for budgie-panel
+	depends = budgie-desktop
+	depends = vala-panel-appmenu-common
+	conflicts = appmenu-glib-translator-git
+	conflicts = vala-panel-git
+	conflicts = vala-panel-appmenu-budgie-git
+	conflicts = vala-panel-appmenu-common-git
+	conflicts = vala-panel-appmenu-jayatana-git
+	conflicts = vala-panel-appmenu-mate-git
+	conflicts = vala-panel-appmenu-registrar-git
+	conflicts = vala-panel-appmenu-valapanel-git
+	conflicts = vala-panel-appmenu-xfce-git
