@@ -1,6 +1,6 @@
 pkgbase = python-mov-cli-test
 	pkgdesc = A mov-cli v4 plugin to test mov-cli's capabilities.
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/mov-cli/mov-cli-test
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-mov-cli-test
 	depends = python
 	depends = python-pytubefix
 	provides = mov-cli-test
-	source = python-mov-cli-test-1.1.5.zip::https://github.com/mov-cli/mov-cli-test/archive/refs/tags/1.1.5.zip
+	source = python-mov-cli-test-1.1.6.zip::https://github.com/mov-cli/mov-cli-test/archive/refs/tags/1.1.6.zip
 	md5sums = SKIP
 
 pkgname = python-mov-cli-test
