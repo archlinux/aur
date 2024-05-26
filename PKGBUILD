@@ -3,12 +3,12 @@
 _gemname=nkf
 pkgname=ruby-$_gemname
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Ruby extension for Network Kanji Filter'
 arch=(x86_64)
 url='https://github.com/ruby/nkf'
 license=(Ruby BSD-2-Clause)
-depends=('ruby')
+depends=('glibc' 'ruby' 'bash')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
