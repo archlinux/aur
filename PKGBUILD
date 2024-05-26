@@ -24,7 +24,7 @@ _gitname=OpenTTD-patches
 source=("git+https://github.com/JGRennison/$_gitname.git$_fragment"
         "http://cdn.openttd.org/latest.yaml")
 sha256sums=('SKIP'
-            '05825a0a2fb0336203b67a4cb93d3e9d25e16fe7c0734ec3b399ed4a6077a95c')
+            'SKIP')
 
 pkgver() {
     cd "$_gitname"
