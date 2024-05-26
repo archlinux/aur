@@ -4,6 +4,11 @@ post_install() {
   cat <<EOF
 
 -----------------------------------------------------------------------------
+oama version 0.13
+
+redirect_uri can be configured on a per service basis.
+The default is http://localhost:8080
+
 -----------------------------------------------------------------------------
 
 EOF
