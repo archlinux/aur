@@ -1,5 +1,5 @@
 pkgbase = emacs-haxe
-	pkgdesc = Emacs major mode for the haXe programming language
+	pkgdesc = Major mode for editing Haxe files.
 	pkgver = 0.3.3
 	pkgrel = 2
 	url = http://haxe.org/com/ide

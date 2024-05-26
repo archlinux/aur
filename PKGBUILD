@@ -4,7 +4,7 @@
 pkgname=emacs-haxe
 pkgver=0.3.3
 pkgrel=2
-pkgdesc="Emacs major mode for the haXe programming language"
+pkgdesc="Major mode for editing Haxe files."
 arch=('any')
 url="http://haxe.org/com/ide"
 license=('GPL-3.0-or-later')
