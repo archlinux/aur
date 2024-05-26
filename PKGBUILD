@@ -1,17 +1,25 @@
-# Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
-# Contributor:
+# Maintainer:  dreieck
+# Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 _gitname=hourglass
 _author=sgpthomas
 pkgname=("${_gitname}-git")
-pkgver=r73.f7cd686
-pkgrel=1
+pkgver=r287.09d8011
+pkgrel=2
 pkgdesc="A simple clock application that provides stopwatches, alarms, and timers designed for Pantheon Shell"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
-license=('GPL3')
-depends=('gtk3' 'granite' 'glib2' 'libcanberra' 'libgee' 'libnotify')
-optdepends=('')
+license=('GPL-3.0-or-later')
+depends=(
+  'gtk4'
+  'glib2'
+  'glibc'
+  'libgee'
+  'libgranite-7.so'
+  'libportal-gtk4'
+  'libportal'
+)
+optdepends=()
 makedepends=('git' 'meson' 'vala')
 provides=("${_gitname}")
 conflicts=("${_gitname}")

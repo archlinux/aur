@@ -1,25 +1,24 @@
 pkgbase = hourglass-git
 	pkgdesc = A simple clock application that provides stopwatches, alarms, and timers designed for Pantheon Shell
-	pkgver = r73.f7cd686
-	pkgrel = 1
+	pkgver = r287.09d8011
+	pkgrel = 2
 	url = https://github.com/sgpthomas/hourglass
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
-	depends = gtk3
-	depends = granite
+	depends = gtk4
 	depends = glib2
-	depends = libcanberra
+	depends = glibc
 	depends = libgee
-	depends = libnotify
-	optdepends = 
+	depends = libgranite-7.so
+	depends = libportal-gtk4
+	depends = libportal
 	provides = hourglass
 	conflicts = hourglass
 	source = git+https://github.com/sgpthomas/hourglass.git
 	md5sums = SKIP
 
 pkgname = hourglass-git
-
