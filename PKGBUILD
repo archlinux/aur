@@ -1,7 +1,7 @@
 # Maintainer: Veroni zoubheir@gmail.com
 
 pkgname="dnrs"
-pkgver="1.1.0"
+pkgver="1.1.1"
 pkgrel=1
 pkgdesc="Light dns server written in rust"
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=('glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/VeroniDeev/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
+install=dnrs.install
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
