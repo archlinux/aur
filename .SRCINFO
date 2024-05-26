@@ -1,0 +1,23 @@
+pkgbase = redumper-git
+	pkgdesc = Low level CD dumper utility
+	pkgver = r514.493a4df
+	pkgrel = 1
+	url = https://github.com/superg/redumper
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = base-devel
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = llvm
+	makedepends = clang
+	makedepends = lld
+	depends = gcc-libs
+	depends = glibc
+	depends = libc++
+	depends = libc++abi
+	provides = redumper
+	conflicts = redumper
+	source = git+https://github.com/superg/redumper.git
+	sha256sums = SKIP
+
+pkgname = redumper-git
