@@ -1,0 +1,19 @@
+pkgbase = topmem-cpp-git
+	pkgdesc = It shows the top 10 processes using RAM and SWAP
+	pkgver = r41.83500b8
+	pkgrel = 1
+	url = https://github.com/develux44/topmem-cpp
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = gcc
+	makedepends = git
+	provides = topmem-cpp=r41.83500b8
+	conflicts = topmem-cpp
+	options = strip
+	options = !docs
+	options = !debug
+	options = lto
+	source = git+https://github.com/develux44/topmem-cpp.git
+	sha256sums = SKIP
+
+pkgname = topmem-cpp-git
