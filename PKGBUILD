@@ -1,6 +1,6 @@
 # Maintainer: 'Radiolin' <anton.osi2011@gmail.com>
 pkgname=cassette-git
-pkgver=0.1.4.r585.g9e51c83
+pkgver=0.2.0.r585.g9e51c83
 pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
