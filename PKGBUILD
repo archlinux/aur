@@ -11,7 +11,7 @@ license=(AGPL-3.0-or-later)
 depends=()
 url=https://github.com/cinnyapp/cinny
 #makedepends=(npm git yarn)
-makedepends=(npm yarn bubblewrap)
+makedepends=(npm yarn)
 #source=("git+https://github.com/cinnyapp/cinny#tag=v${pkgver}")
 source=(
 	cinny-${pkgver}.tar.gz::"https://github.com/cinnyapp/cinny/archive/refs/tags/v${pkgver}.tar.gz"
