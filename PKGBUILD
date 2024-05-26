@@ -2,7 +2,7 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.2.6
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -36,9 +36,11 @@ checkdepends=(
 optdepends=(
   'python-anthropic: support for Anthropic models'
   'python-cohere: support for Cohere models'
+  # Not packaged:
+  # 'python-google-generativeai: support for Google Gemini models'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b0fd74983a8f4f79303c21c74b828dba0c249b4a357292433e11393ebc33e5cb')
+sha256sums=('761ed4180a9bc9838d524fd221d1300b27e9acf0c265423130789ea0cc45da1d')
 
 _archive="$_pkgname-$pkgver"
 
@@ -57,12 +59,15 @@ check() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH"
   # Deselect/ignore tests requiring valid API keys to OpenAI or Anthropic,
-  # below is a mock one.
+  # below is a mock one. Also ignore Gemini tests, the SDK is not packaged
+  # yet.
   export OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
   pytest \
     --deselect tests/dsl/test_partial.py \
     --deselect tests/llm/test_anthropic/evals/test_simple.py \
+    --deselect tests/llm/test_anthropic/test_stream.py \
     --deselect tests/llm/test_new_client.py \
+    --ignore tests/llm/test_gemini \
     --ignore tests/llm/test_openai
 }
 
