@@ -2,8 +2,8 @@
 pkgname=ente-server-git
 _pkgname_alt=museum
 _pkg_git_src=https://github.com/ente-io/ente.git
-pkgver=r1.7490199
-pkgrel=5
+pkgver=r1.c5aa536
+pkgrel=6
 pkgdesc="Self hosted server for Ente (mobile) clients"
 arch=(x86_64)
 url="https://github.com/ente-io"
@@ -28,19 +28,21 @@ source=(
     "${pkgname%-git}.yaml"
     "http_security_headers.conf"
     "https_security_headers.conf"
+    "minio-server-nginx.conf"
     "usr.bin.${pkgname%-git}"
 )
 sha256sums=(
     "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
     "f3624560a2c332724967e1e64689f8549a936fb85fc557ccc4bcbb7e57e373e8"
-    "9151cd1072cf33f88c355761ce931346a58555da49cb6241e9498b4c1dd0b87b"
+    "513de8be26c5e2e1fca7ff9562bddd6a1740ce1622c14edfe766287556385cf6"
     "2d5221aaa83f32bbc8c75c2d7c70f9ff8021d451b544f230c99fe29b84fcba75"
     "72c23c4ba9d3468a1b089d182917123cb15b8bf8b52b3955b98a0357d29b5cbd"
     "6ba953245f2a285dbd82ce65635d19410eab1dcd92821c398bdf7ffba9451a9b"
     "f5ae64093463a66fa66ecc4627f603ff0f9e17841e1d681dbcc68b1bad95100e"
-    "c3e54eacff7f6b4a406dff4b871120c6a97dc5dca179347055514a19d10cfb72"
+    "77b1b7aa5057e8ee8756bcc3a8415ce801f7b935b8f60c4934d4f4648dc5a92c"
     "405365bd47efa25b8bcefc93a5c0535fd50cce22b5d8dcea070098aa432ff87e"
     "a1149c57e233f7be2f12668f5ef0f03409bd5ad37b1a223bb56d2ae865cf6358"
+    "863d111071bb32c8b5f8baa34731a94861940d2d276ffadf9426d3fc492588b6"
     "297bc7d90c473758c9054aaaa6155b4e7232d0dfea761a4e55ed8b743f289f86"
 )
 
@@ -121,6 +123,7 @@ package() {
   install -Dvm644 'configurations/local.yaml' -t "${pkgdir}/usr/lib/${pkgname%-git}/"
   install -Dvm640 "$srcdir/${pkgname%-git}.yaml" "${pkgdir}/etc/${pkgname%-git}/local.yaml"
   install -Dvm644 "$srcdir/${pkgname%-git}-nginx.conf" -t "${pkgdir}/usr/lib/${pkgname%-git}/"
+  install -Dvm644 "$srcdir/minio-server-nginx.conf" -t "${pkgdir}/usr/lib/${pkgname%-git}/"
   install -Dvm644 "$srcdir/usr.bin.${pkgname%-git}" -t "${pkgdir}/usr/lib/${pkgname%-git}/"
 
   # systemd

@@ -41,7 +41,7 @@ To get the Ente server running a working PostgreSQL database (to store Ente obje
         MINIO_VOLUMES="/srv/minio/data"
         MINIO_ROOT_USER=minio
         MINIO_ROOT_PASSWORD='<YOUR-STRONG-MINIO-ROOT-PASSWORD>'
-        MINIO_OPTS="--address <your_public_domain.tld>:3200 --console-address 127.0.0.1:3201"
+        MINIO_OPTS="--address 127.0.0.1:43200 --console-address 127.0.0.1:43201"
     ```
 - Start on boot and right now:
     ```
@@ -92,7 +92,7 @@ To get the Ente server running a working PostgreSQL database (to store Ente obje
        b2-eu-cen:
            key: minio
            secret: "<YOUR-STRONG-MINIO-ROOT-PASSWORD>"
-           endpoint: <your_public_domain.tld>:3200
+           endpoint: https://<your_public_domain.tld>:3200
            region: eu-central-2
            bucket: ente-server
     ```
@@ -123,10 +123,11 @@ To get the Ente server running a working PostgreSQL database (to store Ente obje
 
 **Configuring Nginx proxy**:
 
-- Copy the example Nginx config and the accompanying  HTTP(S) security header config files to the Nginx configuration directory:
+- Copy the example the MinIO and Ente server Nginx config and the accompanying HTTP(S) security header config files to the Nginx configuration directory:
     ```
         sudo cp -v /usr/lib/ente-server/ente-server-nginx.conf /etc/nginx/
         sudo cp -v /usr/lib/ente-server/http*security_headers.conf /etc/nginx/
+        sudo cp -v /usr/lib/ente-server/minio-server-nginx.conf /etc/nginx/
     ```
 - Edit this example config, and replace <your_public_domain.tld> with your actual public domain name
 - Request a letsencrypt ceritifacte (or a SSL ceritifacte from another provider) if not already done so:
@@ -224,8 +225,8 @@ An AppArmor profile has been provided for those that wish to limit the access th
 If a host firewall like iptables or nftables has been enabled and configured, make sure the following is allowed:
 
 - Traffic on localhost
-- Traffic from your Ente (mobile) client to TCP port 443 to reach Nginx
-- Traffic from your Ente (mobile) client to TCP port 3200 to reach the MinIO API port
+- Traffic from your Ente (mobile) client to TCP port 443 to reach the Ente server via Nginx
+- Traffic from your Ente (mobile) client to TCP port 3200 to reach the MinIO server via Nginx
 
 FILES
 -----

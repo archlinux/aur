@@ -46,7 +46,7 @@ s3:
     b2-eu-cen:
         key: minio
         secret: "<YOUR-STRONG-MINIO-ROOT-PASSWORD>"
-        endpoint: <your_public_domain.tld>:3200
+        endpoint: https://<your_public_domain.tld>:3200
         region: eu-central-2
         bucket: ente-server
 
