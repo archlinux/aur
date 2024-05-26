@@ -8,7 +8,9 @@ pkgbase = prayer-times
 	arch = armv6h
 	arch = armv7h
 	license = MIT
-	makedepends = cargo
+	makedepends = rust
+	options = !debug
+	options = !lto
 	source = prayer-times-0.3.1.tar.gz::https://github.com/Yasso9/prayer-times/archive/v0.3.1.tar.gz
 	sha256sums = SKIP
 
