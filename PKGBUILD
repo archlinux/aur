@@ -1,14 +1,14 @@
 # Maintainer: Nathan Reiner <nathan@nathanreiner.xyz>
 pkgname=webtray-git
-pkgver=c1c4472
+pkgver=8e7551e
 pkgrel=1
 pkgdesc="Attach Web-Applications to Tray"
 arch=(x86_64)
-_tag=c1c4472567a8fa3f73b4372854c110c449e2dbdc
+_tag=8e7551e9fe64012b3c7ca3f643fb780d9b30dbd9
 url="https://git.nathanreiner.xyz/webtray"
 license=('GPL')
 groups=()
-depends=(qt6-webengine)
+depends=(qt6-webengine imagemagick)
 makedepends=()
 optdepends=()
 provides=()
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(git+${url}#tag=${_tag})
 noextract=()
-sha256sums=('7d3cb5d0940d664b972020974d8d7d14c2b8b50e181f1b35d8351f82dd2cbe79')
+sha256sums=('8f30cbafcd6da1919ee142ac41fb961f065a6ce8081e8811823c4978b3d1738d')
 
 build() {
   cd "webtray"
