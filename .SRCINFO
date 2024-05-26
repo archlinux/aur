@@ -1,0 +1,16 @@
+pkgbase = hoerbert-appimage
+	pkgdesc = Desktop application to manage audio files on the Hoerbert childrens music player (AppImage version)
+	pkgver = 3.1.3
+	pkgrel = 1
+	url = https://en.hoerbert.com/
+	arch = x86_64
+	license = GPL3
+	provides = hoerbert-appimage=3.1.3
+	options = !strip
+	options = !debug
+	source = https://en.hoerbert.com/downloads/3.1.3/hoerbert-3.1.3-x86_64.AppImage
+	source = hoerbert.sh
+	sha256sums = c8cac37e3c39b2e8d8a1a74856af931044b7ab334038d19dd875a10fcbe32eb2
+	sha256sums = 147e441743c73e9fed89b175cfb1a8f47ebaa91c59945b6e7a773f31531035b3
+
+pkgname = hoerbert-appimage
