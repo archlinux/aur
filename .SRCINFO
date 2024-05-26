@@ -1,0 +1,19 @@
+pkgbase = safesign-lib
+	pkgdesc = Smart card PKCS#11 provider - library only
+	pkgver = 4.0.0.0
+	pkgrel = 1
+	url = https://certificaat.kpn.com/installatie-en-gebruik/installatie/pas-usb-stick/linux/
+	arch = x86_64
+	license = custom:copyright
+	depends = pcsclite
+	depends = openssl-1.1
+	depends = gdbm
+	optdepends = ccid: Generic support for CCID devices,
+	optdepends = acsccid: ACS CCID PC/SC driver,
+	optdepends = scmccid: binary driver for the SCM Smart Card Readers
+	conflicts = safesignidentityclient
+	options = !debug
+	source_x86_64 = https://certificaat.kpn.com/files/drivers/SafeSign/SafeSign%20IC%20Standard%20Linux%204.0.0.0-AET.000%20ub2204%20x86_64.deb
+	sha256sums_x86_64 = 2fc29e0e5dfc3e62d36ae49f3225c721ce9a7762eca3765fb32742bc17226df8
+
+pkgname = safesign-lib
