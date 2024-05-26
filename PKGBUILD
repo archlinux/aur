@@ -1,19 +1,35 @@
 # Contributor: Doron Behar <doron.behar@gmail.com>
-# Maintainer: hexchain <i@hexchain.org>
+# Maintainer: groctel <aur@taxorubio.org>
+# shellcheck disable=SC2034,SC2154,SC2164
 
 pkgname=compiledb
 pkgver=0.10.1
 pkgrel=2
 pkgdesc="Tool for generating Clang's JSON Compilation Database file for GNU make-based build systems"
-arch=('any')
-url="https://github.com/nickdiego/compiledb-generator"
-license=('GPL3')
-depends=('python' 'python-click' 'python-bashlex' 'python-shutilwhich' 'python-setuptools')
-replaces=(compiledb-generator)
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
-package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
-}
+replaces=(compiledb-generator)
+
+arch=("any")
+url="https://github.com/nickdiego/compiledb-generator"
+license=("GPL3")
+
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('3f288e4897e2b17b4dd8070d3ad9e9fc627961faa4d0be29a78f6c619e055f36')
+
+depends=(
+    "python"
+    "python-click"
+    "python-bashlex"
+    "python-shutilwhich"
+)
+makedepends=(
+    "python-build"
+    "python-installer"
+    "python-setuptools"
+    "python-wheel"
+)
+
+package () {
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}

@@ -5,14 +5,16 @@ pkgbase = compiledb
 	url = https://github.com/nickdiego/compiledb-generator
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-click
 	depends = python-bashlex
 	depends = python-shutilwhich
-	depends = python-setuptools
 	replaces = compiledb-generator
 	source = compiledb-0.10.1.tar.gz::https://github.com/nickdiego/compiledb-generator/archive/v0.10.1.tar.gz
 	sha256sums = 3f288e4897e2b17b4dd8070d3ad9e9fc627961faa4d0be29a78f6c619e055f36
 
 pkgname = compiledb
-
