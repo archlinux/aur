@@ -7,7 +7,7 @@
 # Check for new Linux releases in: http://googlechromereleases.blogspot.com/search/label/Stable%20updates
 # or use: $ curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A1 "Package: google-chrome-stable" | awk '/Version/{print $2}' | cut -d '-' -f1
 
-pkgname=google-chrome-bin-wayland-vulkan
+pkgname=google-chrome-wayland-vulkan
 pkgver=125.0.6422.112
 pkgrel=1
 pkgdesc="The popular web browser by Google (Stable Channel) with a binary patch to enable support for Vulkan with --ozone-platform=wayland."
@@ -45,7 +45,7 @@ source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_cha
 sha512sums=('f6e22ae7b327266c0b68cad16eb3705ce4dd800f6aecb648c24ce82d26024d7c85103fac1689afb96ee3ef42626c4094f0a53c2629c173720814f78ca2bbc946'
             'a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
             'de02b498a4b5b93e21622c8dba57befe795d733a04656be911cc38e28bfef0e20470450f44be523bbde8d4de28f79c10434846ca01fc2a2f4e67707b79332f94'
-            '8b9bdff20112a996a39ba53bc220390b78484de20c440b1182f933e04661d86c55b5cf05a2f24601eed145d7a2c93becdd954478354705ad2482c7d7fb8169fa')
+            '06f2639dd1cabdcf4019985612c04f72fcbe57aaa33464ba0b490b13c85eb6eb6f952f783bb19abfaf3756041efa3cf7ac143444f28147e84b0d85b17e265b20')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
