@@ -1,7 +1,7 @@
 pkgbase = ollama-nogpu-git
 	pkgdesc = Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).
-	pkgver = 0.1.39+rc1+4.r2773.20240522.955c317c
-	pkgrel = 2
+	pkgver = 0.1.39+2.r2790.20240525.0165ba16
+	pkgrel = 1
 	url = https://github.com/jmorganca/ollama
 	arch = armv7h
 	arch = aarch64
@@ -35,8 +35,8 @@ pkgname = ollama-generic-git
 	depends = glibc
 	depends = openssl
 	optdepends = 
-	provides = ollama=0.1.39+rc1+4.r2773.20240522.955c317c
-	provides = ollama-git=0.1.39+rc1+4.r2773.20240522.955c317c
+	provides = ollama=0.1.39+2.r2790.20240525.0165ba16
+	provides = ollama-git=0.1.39+2.r2790.20240525.0165ba16
 	conflicts = ollama
 
 pkgname = ollama-openmpi-git
@@ -45,8 +45,8 @@ pkgname = ollama-openmpi-git
 	depends = glibc
 	depends = openssl
 	optdepends = 
-	provides = ollama=0.1.39+rc1+4.r2773.20240522.955c317c
-	provides = ollama-git=0.1.39+rc1+4.r2773.20240522.955c317c
+	provides = ollama=0.1.39+2.r2790.20240525.0165ba16
+	provides = ollama-git=0.1.39+2.r2790.20240525.0165ba16
 	conflicts = ollama
 
 pkgname = ollama-openblas-git
@@ -55,8 +55,8 @@ pkgname = ollama-openblas-git
 	depends = glibc
 	depends = openssl
 	optdepends = 
-	provides = ollama=0.1.39+rc1+4.r2773.20240522.955c317c
-	provides = ollama-git=0.1.39+rc1+4.r2773.20240522.955c317c
+	provides = ollama=0.1.39+2.r2790.20240525.0165ba16
+	provides = ollama-git=0.1.39+2.r2790.20240525.0165ba16
 	conflicts = ollama
 
 pkgname = ollama-vulkan-git
@@ -65,6 +65,6 @@ pkgname = ollama-vulkan-git
 	depends = glibc
 	depends = openssl
 	optdepends = 
-	provides = ollama=0.1.39+rc1+4.r2773.20240522.955c317c
-	provides = ollama-git=0.1.39+rc1+4.r2773.20240522.955c317c
+	provides = ollama=0.1.39+2.r2790.20240525.0165ba16
+	provides = ollama-git=0.1.39+2.r2790.20240525.0165ba16
 	conflicts = ollama
