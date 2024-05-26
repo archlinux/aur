@@ -45,4 +45,8 @@ package_cinny-web() {
 	ln -sfr "${pkgdir}/etc/webapps/$pkgbase/config.json" \
 		"${pkgdir}/usr/share/webapps/$pkgbase/config.json"
 	#install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	if [[ $(pacman -Q cinny-web | cut -c 11-) =~ 3.1.0 ]]; then
+		echo "[Warn] Configuration directory is changed! Consult the pinned AUR comment for more information."
+		sleep 5s
+	fi
 }
