@@ -5,13 +5,13 @@ _use_acid_binvariant=win # Valid values: "osx", "win", "linux". The "linux"-vari
 _pkgname="chdk-acid"
 pkgname="${_pkgname}-bin"
 pkgver=1.16_2007
-pkgrel=4
+pkgrel=5
 epoch=0
 pkgdesc="Tool to identify camera type and firmware version of several Canon compact cameras, and to automatically download the proper CHDK build."
 arch=(
   any
 )
-url="http://www.zenoshrdlu.com/acid/acid.html"
+url="http://web.archive.org/web/20240321062036/http://www.zenoshrdlu.com/acid/acid.html"
 license=(
   'LicenseRef-custom:freeware'
 )

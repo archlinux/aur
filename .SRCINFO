@@ -1,9 +1,9 @@
 pkgbase = chdk-acid-bin
 	pkgdesc = Tool to identify camera type and firmware version of several Canon compact cameras, and to automatically download the proper CHDK build.
 	pkgver = 1.16_2007
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 0
-	url = http://www.zenoshrdlu.com/acid/acid.html
+	url = http://web.archive.org/web/20240321062036/http://www.zenoshrdlu.com/acid/acid.html
 	arch = any
 	groups = chdk
 	license = LicenseRef-custom:freeware
@@ -11,7 +11,7 @@ pkgbase = chdk-acid-bin
 	depends = java-runtime
 	provides = chdk-acid=1.16_2007
 	conflicts = chdk-acid
-	source = chdk-acid_1.16_2007.html::http://www.zenoshrdlu.com/acid/acid.html
+	source = chdk-acid_1.16_2007.html::http://web.archive.org/web/20240321062036/http://www.zenoshrdlu.com/acid/acid.html
 	source = acid.sh
 	source = LICENCE_1.16_2007.txt::https://github.com/Brainpowered/ACID/raw/master/LICENCE.txt
 	source = acid_1.16_2007.zip::http://web.archive.org/web/20160528170535if_/http://www.zenoshrdlu.com/acid/acid.zip
