@@ -21,7 +21,7 @@ unset _pkgtype
 _pkgname="vala-panel-appmenu"
 pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=24.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Global Menu (AppMenu) plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 license=('LGPL-3.0-or-later')
@@ -75,6 +75,10 @@ _main_git() {
 }
 
 # common functions
+prepare() {
+  sed -e 's&^.*if mate_found or vala_panel_found or budgie_found.*$&if true&' -i vala-panel-appmenu/data/meson.build
+}
+
 _build_registrar() {
   [ "${_build_registrar::1}" != "t" ] && return
   local _reg_path="subprojects/registrar"

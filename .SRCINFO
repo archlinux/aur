@@ -1,7 +1,7 @@
 pkgbase = vala-panel-appmenu
 	pkgdesc = Global Menu (AppMenu) plugin
 	pkgver = 24.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
 	arch = i686
 	arch = x86_64
