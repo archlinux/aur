@@ -19,4 +19,3 @@ pkgbase = antlr3-3.1.2
 	sha256sums = d838ce44d24e8815c9dcd123af045161d7db7157873907b85b1c7fe9f1c2d5db
 
 pkgname = antlr3-3.1.2
-
