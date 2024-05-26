@@ -5,7 +5,7 @@ _gitname=hourglass
 _author=sgpthomas
 pkgname=("${_gitname}-git")
 pkgver=r287.09d8011
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple clock application that provides stopwatches, alarms, and timers designed for Pantheon Shell"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
@@ -43,5 +43,7 @@ build() {
 package() {
     cd "${_gitname}/"
     DESTDIR="${pkgdir}" ninja -C _build install
+
+    ln -svr "${pkgdir}/usr/bin/com.github.sgpthomas.hourglass" "${pkgdir}/usr/bin/hourglass"
 }
 
