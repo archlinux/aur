@@ -2,7 +2,7 @@
 # Contributor: zwindl on AUR
 
 pkgname=python-pypugjs
-pkgver=5.10.1
+pkgver=5.11.0
 pkgrel=1
 pkgdesc='PugJS syntax adapter for Django, Jinja2 and Mako templates'
 url='https://github.com/kakulukia/pypugjs'
@@ -13,13 +13,12 @@ checkdepends=(python-pytest)
 license=(MIT)
 arch=(any)
 source=("https://github.com/kakulukia/pypugjs/archive/v$pkgver/pypugjs-$pkgver.tar.gz")
-sha256sums=('201a2fa2d0298ae81ff8e01405b4e6812061b0e4052169c04a94672376676a3e')
+sha256sums=('869232738796078bcbe609a7822f5c94527b1bc9c198898fb5d85c04bf7c658d')
 
 prepare() {
   cd pypugjs-$pkgver
 
-  # avoid using upstream pyproject.toml as it seems unmaintained
-  # out-dated version= value, missing metadata fields, excessive dependencies
+  # not using upstream pyproject.toml as it pins older dependencies
   rm -v pyproject.toml
 }
 
