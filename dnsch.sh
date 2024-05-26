@@ -13,7 +13,7 @@ fi
 
 # Function to print usage instructions
 usage() {
-    echo "Usage: $0 {g|sh|ag|cf|403|bg|rd|el} [-c|--clear] [-s|--set] [-p|--ping]" # TODO: make this use the dnsList?
+    echo "Usage: $0 {g|sh|ag|cf|403|bg|rd|el} [-c|--clear] [-s|--set] [-p|--ping] [-r|--restore]" # TODO: make this use the dnsList?
     exit 1
 }
 
@@ -52,6 +52,10 @@ if [[ $1 == "-s" || $1 == "--set" ]]; then
     fi
     # Set the nameservers based on provided IP addresses
     nameservers=("nameserver $2" "nameserver $3")
+elif [[ $1 == "-r" || $1 == "--restore" ]]; then
+    cp /etc/resolv.conf.bak /etc/resolv.conf # Restors the backup.
+    echo "Restored the resolv.conf to what it was before the dnsch."
+    exit 0
 elif [[ $1 == "-p" || $1 == "--ping" ]]; then
     # Declare an array to hold each dns (bash is stupid).
     echo "this command may take a few minutes please wait ... "
