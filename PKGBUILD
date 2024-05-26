@@ -1,7 +1,7 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=bita
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Differential file synchronization over http"
 arch=(x86_64)
@@ -18,9 +18,8 @@ makedepends=(
   protobuf
 )
 options=(!lto)
-
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('579291e0eab5afe46ef360f989996a2e8a96746e09f4958497b71c9be1b4fd33')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('ccaf3987e6a2d0489f53ff92833835b288d6acc64b3fc36884234c5d9e061c84')
 
 _archive="$pkgname-$pkgver"
 
@@ -49,6 +48,6 @@ check() {
 package() {
   cd "$_archive"
 
-  install -Dm755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+  install -Dm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
