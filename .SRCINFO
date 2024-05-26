@@ -1,7 +1,7 @@
 pkgbase = lib32-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
-	pkgver = 6.1.1
-	pkgrel = 2
+	pkgver = 7.0
+	pkgrel = 1
 	epoch = 2
 	url = http://ffmpeg.org
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = lib32-ffmpeg
 	makedepends = nasm
 	makedepends = opencl-headers
 	makedepends = vulkan-headers
-	depends = ffmpeg>=2:6.1.1
+	depends = ffmpeg>=2:7.0
 	depends = lib32-alsa-lib
 	depends = lib32-aom
 	depends = lib32-bzip2
@@ -33,6 +33,8 @@ pkgbase = lib32-ffmpeg
 	depends = lib32-libbs2b
 	depends = lib32-libdav1d
 	depends = lib32-libdrm
+	depends = lib32-libdvdnav
+	depends = lib32-libdvdread
 	depends = lib32-freetype2
 	depends = lib32-libglvnd
 	depends = lib32-harfbuzz
@@ -82,10 +84,10 @@ pkgbase = lib32-ffmpeg
 	provides = libswscale.so
 	conflicts = lib32-libffmpeg
 	replaces = lib32-libffmpeg
-	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=6f4048827982a8f48f71f551a6e1ed2362816eec
+	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=fa053f314a0150bebe073438867e454182909c53
 	source = add-av_stream_get_first_dts-for-chromium.patch
 	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
-	b2sums = SKIP
+	b2sums = 4b2057fb68a0137bf149779beee3b7066835216a830896d4de4d31d0c00c2ab13419d4a3f0ccba1ab6d0cb063bdc91f2fc35d5916ddd65288c327880cbdefc41
 	b2sums = 555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de
 
 pkgname = lib32-ffmpeg

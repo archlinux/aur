@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename")
-pkgver=6.1.1
-pkgrel=2
+pkgver=7.0
+pkgrel=1
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -36,7 +36,9 @@ depends=(
   'lib32-libbluray'
   'lib32-libbs2b'
   'lib32-libdav1d'
-  'lib32-libdrm' 
+  'lib32-libdrm'
+  'lib32-libdvdnav'
+  'lib32-libdvdread'
   'lib32-freetype2'
   'lib32-libglvnd'
   'lib32-harfbuzz'
@@ -67,6 +69,7 @@ depends=(
   'lib32-libxext'
   'lib32-libxml2'
   'lib32-libxv'
+#  'lib32-mbedtls'
   'lib32-xvidcore'
   'lib32-zimg'
   'lib32-ocl-icd'
@@ -120,14 +123,14 @@ provides=(
 options=(
 #  debug
 )
-_tag=6f4048827982a8f48f71f551a6e1ed2362816eec
+_tag=fa053f314a0150bebe073438867e454182909c53
 source=(
   "git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
   "add-av_stream_get_first_dts-for-chromium.patch"
 )
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 b2sums=(
-  'SKIP'
+  '4b2057fb68a0137bf149779beee3b7066835216a830896d4de4d31d0c00c2ab13419d4a3f0ccba1ab6d0cb063bdc91f2fc35d5916ddd65288c327880cbdefc41'
   '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
 )
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
@@ -136,33 +139,7 @@ prepare() {
   cd ${_pkgbasename}
 
   # Patching if needed
-  # FS#79281: fix assembling with binutil as >= 2.41
-  git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb
-
-  # FS#77813: fix playing ogg files with mplayer
-  git cherry-pick -n cbcc817353a019da4332ad43deb7bbc4e695d02a
-
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch  # https://crbug.com/1251779
-
-  # use non-deprecated nvenc GUID for conftest
-  git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
-  git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
-
-  # Fix VDPAU vo
-  git cherry-pick -n e9c93009fc34ca9dfcf0c6f2ed90ef1df298abf7
-
-  # Fix bug in av_fft_end
-  git cherry-pick -n a562cfee2e214252f8b3f516527272ae32ef9532
-  git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
-
-  # Fix build with latest vulkan headers
-  git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e
-
-  # avcodec/nvenc: stop using long deprecated format specifiers 
-  git cherry-pick -n 43b417d516b0fabbec1f02120d948f636b8a018e
-
-  # avcodec/nvenc: support SDK 12.2 bit depth API 
-  git cherry-pick -n 06c2a2c425f22e7dba5cad909737a631cc676e3f
 }
 
 pkgver() {
@@ -172,6 +149,8 @@ pkgver() {
 
 build() {
   cd ${_pkgbasename}
+
+  export CFLAGS="${CFLAGS} -Wno-error=incompatible-pointer-types -Wno-error=int-conversion"
 
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
@@ -199,6 +178,8 @@ build() {
     --enable-libbs2b \
     --enable-libdav1d \
     --enable-libdrm \
+    --enable-libdvdnav \
+    --enable-libdvdread \
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
@@ -251,6 +232,7 @@ build() {
 #    --enable-libuavs3d
 #    --enable-libvidstab \
 #    --enable-libvpl \
+#    --enable-mbedtls \
 #    --enable-vapoursynth \
 
   make
