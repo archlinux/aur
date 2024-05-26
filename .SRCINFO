@@ -1,0 +1,18 @@
+pkgbase = lfy
+	pkgdesc = 翻译软件，使用adwaita和python原生开发，免费支持谷歌、必应、百度、腾讯翻译。A translation app by gtk4 and adwaita. Support Google, Bing, Baidu, Tencent Translate for free.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/ldrfy/lfy
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-requests
+	source = https://github.com/ldrfy/lfy/archive/refs/tags/v0.0.6.zip
+	sha256sums = 6f0b7b6774324b9ba0e3cf2d2877d0210cc384e6f3d2fb7ce5fead30b30a43a6
+
+pkgname = lfy
