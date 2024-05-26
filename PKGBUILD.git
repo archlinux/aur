@@ -37,12 +37,14 @@ build() {
 }
 
 check() {
-  meson test -C $pkgname/build
+  cd $pkgname
+  meson test -C build
 }
 
 package() {
-  meson install -C $pkgname/build --destdir="$pkgdir"
-  install -Dm644 $pkgname/README.md "$pkgdir"/usr/share/doc/pkcs11-provider/README.md
+  cd $pkgname
+  meson install -C build --destdir="$pkgdir"
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/pkcs11-provider/README.md
 }
 
 # vim: ts=2:sw=2:et
