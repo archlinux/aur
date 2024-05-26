@@ -3,21 +3,40 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=128.0a1+20240525.1+hbc46b838c113
+pkgver=128.0a1+20240526.1+h277ccd163bbc
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 url="https://www.mozilla.org/firefox/channel/#nightly"
 arch=(x86_64)
 license=(MPL-2.0)
 depends=(
+  alsa-lib
+  at-spi2-core
+  bash
+  cairo
   dbus
   ffmpeg
+  fontconfig
+  freetype2
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
   gtk3
+  hicolor-icon-theme
   libpulse
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxrandr
   libxss
   libxt
   mime-types
   nss
+  pango
   ttf-font
 )
 makedepends=(
@@ -49,7 +68,7 @@ optdepends=(
   'hunspell-en_US: Spell checking, American English'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
-  'pulseaudio: Audio support'
+  'python: DMD (Dark Matter Detector) heap profiling'
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
