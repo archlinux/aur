@@ -1,0 +1,22 @@
+pkgbase = r-minty
+	pkgdesc = Minimal Type Guesser
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=minty
+	arch = x86_64
+	license = MIT
+	checkdepends = r-hms
+	checkdepends = r-testthat
+	makedepends = r-cpp11
+	depends = r-tzdb
+	optdepends = r-hms
+	optdepends = r-knitr
+	optdepends = r-readr
+	optdepends = r-stringi
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/minty_0.0.1.tar.gz
+	md5sums = 309f8abcb23fa366a5777bcd4900b235
+	b2sums = 6cb0691e1c6c494a5b9c63e7ecfcbc4b108bea6bcd2fc845ca73c0d060a4af784c00bdc73b7234db0b64aa90382d3a0ad136b383eb844b1220da697c2646a09c
+
+pkgname = r-minty
