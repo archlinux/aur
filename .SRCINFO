@@ -1,6 +1,6 @@
 pkgbase = dnrs
 	pkgdesc = Light dns server written in rust
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/VeroniDeev/dnrs
 	install = dnrs.install
@@ -8,7 +8,7 @@ pkgbase = dnrs
 	license = MIT
 	makedepends = cargo
 	depends = glibc
-	source = dnrs-1.1.1.tar.gz::https://github.com/VeroniDeev/dnrs/archive/v1.1.1.tar.gz
+	source = dnrs-1.1.2.tar.gz::https://github.com/VeroniDeev/dnrs/archive/v1.1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = dnrs
