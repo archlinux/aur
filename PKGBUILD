@@ -2,7 +2,7 @@
 
 pkgname=simplex-desktop-bin
 pkgver=5.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The first messaging network operating without user identifiers of any kind"
 arch=(x86_64)
 url="https://simplex.chat"
@@ -14,9 +14,11 @@ options=('!strip')
 package() {
     cd "$srcdir"
 
-    tar --zstd -xvf data.tar.zst
-    cp -a opt "$pkgdir"
+    tar --zstd -xvf data.tar.zst -C "$pkgdir"
 
     mkdir -p "$pkgdir/usr/share/applications"
     ln -s /opt/simplex/lib/simplex-simplex.desktop "$pkgdir/usr/share/applications/simplex.desktop"
+
+    mkdir -p "$pkgdir/usr/bin"
+    ln -s /opt/simplex/bin/simplex "$pkgdir/usr/bin/simplex-desktop"
 }
