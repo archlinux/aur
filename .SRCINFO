@@ -1,7 +1,7 @@
 pkgbase = simplex-desktop-bin
 	pkgdesc = The first messaging network operating without user identifiers of any kind
 	pkgver = 5.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://simplex.chat
 	arch = x86_64
 	license = AGPL-3.0
