@@ -1,15 +1,14 @@
 pkgbase = ruby-xmlrpc
 	pkgdesc = XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP.
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ruby/xmlrpc
 	arch = any
 	license = Ruby
 	license = BSD-2-Clause
 	depends = ruby-webrick
-	noextract = xmlrpc-0.3.3.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/xmlrpc-0.3.3.gem
-	sha256sums = ec3d46bc63a44920ac2d67c49399fd493295ff98cb96adf25e59eaa718b38e3b
+	source = https://github.com/ruby/xmlrpc/archive/v0.3.3/xmlrpc-0.3.3.tar.gz
+	sha256sums = 083d41fef7b553d8532ff1cf5a7dbe8baf1ef659e8374e1095206dc939dced19
 
 pkgname = ruby-xmlrpc
