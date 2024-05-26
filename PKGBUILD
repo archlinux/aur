@@ -1,31 +1,22 @@
-# Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
+# Maintainer: database64128 <free122448@hotmail.com>
 
 pkgname=f34-backgrounds
 pkgver=34.0.1
-pkgrel=4
-_relnum=34
-pkgdesc="Fedora $_relnum backgrounds"
+pkgrel=1
+pkgdesc="Desktop backgrounds of the Fedora 34 default theme for GNOME, KDE, Mate and Xfce desktops"
 arch=('any')
-url="https://fedoraproject.org/wiki/F${_relnum}_Artwork"
-license=('custom')
-source=("https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/$pkgname-$pkgver-$pkgrel.fc37.src.rpm")
-sha256sums=('c1db448f3018e47bc02ddbdaea3b6c2103fe045e7df37ad19b56b49d5ee765cb')
-
-prepare() {
-    tar -xvJf ./$pkgname-$pkgver.tar.xz
-    rm -r ./$pkgname-$pkgver.tar.xz
-    rm -r ./$pkgname.spec
-}
+url="https://github.com/fedoradesign/backgrounds"
+license=('CC-BY-SA-4.0')
+replaces=("f34-backgrounds-fedoradesign")
+source=("https://github.com/fedoradesign/backgrounds/releases/download/v34.0.1/f34-backgrounds-34.0.1.tar.xz")
+b2sums=('22295e9eb8e9d9d3ae73b6ebcc2766d5f9a0975614ffa3c01d7328cd25dc5927b01c3d58e182c07fa0627ca899437072467bdcda7b8e06edbee413c40261e009')
 
 build() {
-    cd ./$pkgname
+    cd $pkgname
     make
 }
 
 package() {
-    cd ./$pkgname
+    cd $pkgname
     make install DESTDIR="$pkgdir"
-    install -Dm 644 CC-BY-SA-4.0 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-#vim: syntax=sh
