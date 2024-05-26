@@ -2,7 +2,7 @@
 pkgname=ente-desktop-git
 _pkg_git_src=https://github.com/ente-io/ente.git
 pkgver=1.7.0_rc
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for (self hosted) Ente server"
 arch=(x86_64)
 url="https://github.com/ente-io"
@@ -52,8 +52,15 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname%-*-*}/desktop"
   yarn install 2>&1 | grep -v 'warning'
-  # build ente web as requirement of ente desktop
+
+  # build ente web as requirement of ente desktopA
   yarn build-renderer 2>&1 | grep -v 'warning'
+
+  # disable telemetry
+  cd "${srcdir}/${pkgname%-*-*}/web"
+  yarn next telemetry disable
+  cd -
+
   # build ente desktop as directory structure
   yarn build-main --x64 --linux dir
 

@@ -1,7 +1,7 @@
 pkgbase = ente-desktop-git
 	pkgdesc = Desktop client for (self hosted) Ente server
 	pkgver = 1.7.0_rc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ente-io
 	arch = x86_64
 	license = AGPL-3.0-only
