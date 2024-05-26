@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 46.1
+	pkgver = 46.2
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
@@ -35,9 +35,9 @@ pkgbase = gnome-shell-performance
 	depends = mutter
 	depends = unzip
 	depends = upower
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=0d0aadf013f78a7f7f1dc984d0d812971864b934
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=568152c22247efbb66cd13c15a638bf2d36bfadb
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
-	b2sums = 7aa8e21a0135a1c5536d19877747a86b1cfa1024b6c378db2364033d2a6b3a3e30875a08176423cc41c7c3a87bb76b5b67df5177aa6d209a726f0f3a3c15dd6a
+	b2sums = dbc32a609c1ee2f59ce777f2af4a541b376d5e53bded7d4b6ddfa0a913db503fc429fa0f9b8c8068b9e00382383e669ea6cbf553caa2348666cdc33bee8ad4ad
 	b2sums = SKIP
 
 pkgname = gnome-shell-performance
@@ -73,8 +73,8 @@ pkgname = gnome-shell-performance
 	optdepends = python-simplejson: gnome-shell-test-tool performance tester
 	optdepends = switcheroo-control: Multi-GPU support
 	provides = gnome-shell
-	provides = gnome-shell=46.1
-	provides = gnome-shell=1:46.1
+	provides = gnome-shell=46.2
+	provides = gnome-shell=1:46.2
 	conflicts = gnome-shell
 
 pkgname = gnome-shell-performance-docs
