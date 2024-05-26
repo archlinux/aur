@@ -6,7 +6,7 @@
 
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
-pkgver=46.1
+pkgver=46.2
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -74,25 +74,17 @@ makedepends=(
   gi-docgen
   git
   gobject-introspection
-  gtk3
   meson
+  python-packaging
   sysprof
   wayland-protocols
-  xorg-server
-  xorg-server-xvfb
-)
-_checkdepends=(
-  gnome-session
-  python-dbusmock
-  wireplumber
-  zenity
 )
 source=(
   # Mutter tags use SSH signatures which makepkg doesn't understand
   "$pkgname::git+$url.git#tag=${pkgver/[a-z]/.&}"
   'mr1441.patch'
 )
-b2sums=('4acd4a192455890b12b2fc9b6553ed65bd2176307cd6c6683fc2ab476b7fa88f4b5e507a1209b3e900c68d94768f3cf749b4f5d87d25300b33a112182c8a62a7'
+b2sums=('4b474f4bbb5ed15db053cba509c3f4b0d112a74359597dc1ab9af118b0e1360a20ccc6af89af3b248895e5dd95193c039cd3396b0fd2c71a0deadc3ff4e15920'
         '1730136643b4158d6e0a0f642aa5976854017104cade4b8b64f6b94f7c9e1d20dbe8d5daee0178a9af8880d05e724c40d8615b67d265079d443777bff224724c')
 
 prepare() {
@@ -106,8 +98,8 @@ build() {
     -D egl_device=true
     -D installed_tests=false
     -D libdisplay_info=enabled
-    -D wayland_eglstream=true
     -D tests=false
+    -D wayland_eglstream=true
   )
 
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
@@ -116,24 +108,6 @@ build() {
   arch-meson "$pkgname" build "${meson_options[@]}"
   meson compile -C build
 }
-
-_check() (
-  export XDG_RUNTIME_DIR="$PWD/rdir" GSETTINGS_SCHEMA_DIR="$PWD/build/data"
-  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
-  glib-compile-schemas "$GSETTINGS_SCHEMA_DIR"
-
-  export NO_AT_BRIDGE=1 GTK_A11Y=none
-  export MUTTER_DEBUG_DUMMY_MODE_SPECS="800x600@10.0"
-
-  # Tests fail:
-  # mutter:cogl+cogl/conform / cogl-test-offscreen-texture-formats-gles2
-  # mutter:core+mutter/stacking / fullscreen-maximize
-  ## https://gitlab.gnome.org/GNOME/mutter/-/issues/3343
-  xvfb-run -s '-nolisten local +iglx -noreset' \
-    mutter/src/tests/meta-dbus-runner.py --launch=pipewire --launch=wireplumber \
-    meson test -C build --no-suite 'mutter/kvm' --no-rebuild \
-    --print-errorlogs --timeout-multiplier 10 --setup plain ||:
-)
 
 _pick() {
   local p="$1" f d; shift
