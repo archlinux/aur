@@ -1,0 +1,3 @@
+[aider-chat]
+source = "pypi"
+pypi = "aider_chat"
