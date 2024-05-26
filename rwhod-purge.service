@@ -1,0 +1,5 @@
+[Unit]
+Description=rwhod host purge
+
+[Service]
+ExecStart=/usr/bin/find /var/spool/rwho -mindepth 1 -mtime +30 -delete

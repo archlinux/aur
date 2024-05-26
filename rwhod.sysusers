@@ -1,0 +1,2 @@
+g rwhod - -
+u rwhod - "Remote who daemon" /var/spool/rwho -
