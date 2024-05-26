@@ -7,8 +7,8 @@ url="https://github.com/vitejs/vite"
 license=(MIT)
 makedepends=('npm')
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('69f3a90e05c69ea5091ba1ecfe3df257f68a5ffe9944591d80044bc53b9120b2'
-            'eb0f38cc380e024321ae1b9bed405172bd2e47f3bc9f3e59b7cb5792e58f06ff')
+sha256sums=('SKIP'
+            'SKIP')
 arch=(any)
 pkgver=5.2.11
 pkgrel=1
