@@ -2,7 +2,7 @@
 
 pkgname=lazydocker-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.23.1
+pkgver=0.23.3
 pkgrel=1
 pkgdesc='A simple terminal UI for docker and docker-compose, written in Go with the gocui library.'
 url="https://github.com/jesseduffield/${_pkgname}"
@@ -16,10 +16,10 @@ source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x8
 source_armv7h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv7.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
 
-sha256sums_aarch64=('c9813ea54c6ffc7d16dd86979da8ac2dbc90e70875e8aea723a6e0f84bd928fd')
-sha256sums_armv7h=('1d13ca39ad4177cab6605d1e08544718277e5fd3f87595d234839f74e365f6f5')
-sha256sums_i686=('fdef4a058c68550c79062f668e958e354d5dbecd42def79ef1dd3abc936978de')
-sha256sums_x86_64=('9759f1350eb5e7a417bdd4df65d866a8175a137bbe5bc3ef611ecd70aaaa9d3a')
+sha256sums_aarch64=('ae7bed0309289396d396b8502b2d78d153a4f8ce8add042f655332241e7eac31')
+sha256sums_armv7h=('9962c7d9cb3b5922c52c3f123ab972ae7bda8a29928084ab4719a94a2f4f1e6f')
+sha256sums_i686=('567a3c28708ee68f8816031dd64ea77eb70eeb64a48ff920fa81548bf87a416e')
+sha256sums_x86_64=('1f3c7037326973b85cb85447b2574595103185f8ed067b605dd43cc201bc8786')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
