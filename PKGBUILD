@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.57.r0.g303468f2
+pkgver=1.2.59.r1.g01e8f4dc
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -53,6 +53,7 @@ optdepends=(
     'soapyuhd: interfacing with UHD / USRP devices'
     'soapyfcdpp-git: interfacing with the Funcube Dongle Pro+'
     'soapybladerf: interfacing with Blade RF devices'
+    'soapymiri-git: interfacing with Mirics-based hardware (MSi001 + MSi2500)'
 )
 makedepends=('git')
 source=(
