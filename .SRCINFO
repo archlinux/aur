@@ -1,10 +1,11 @@
 pkgbase = flyingcarpet-cli
 	pkgdesc = Cross-platform AirDrop
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spieglt/FlyingCarpet
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
+	depends = glibc
 	noextract = flyingcarpet_cli_linux
 	source = https://github.com/spieglt/FlyingCarpet/releases/download/v6.0/flyingcarpet_cli_linux
 	md5sums = 1019ba7298571456475f1b71f88ff6be
