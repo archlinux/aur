@@ -1,6 +1,6 @@
 pkgbase = dprint-plugin-markdown
 	pkgdesc = Markdown code formatting plugin for dprint.
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/dprint/dprint-plugin-markdown
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = dprint-plugin-markdown
 	makedepends = rust
 	makedepends = rust-wasm
 	depends = dprint
-	source = dprint-plugin-markdown-v0.17.0.tar.gz::https://github.com/dprint/dprint-plugin-markdown/archive/refs/tags/0.17.0.tar.gz
-	sha512sums = 2d73b3f23829fc8de969cbd165710a55753d2f3b811b29ecad4408edc6e6fbc17986a2255d87b3bdfda5ba1ab45192dddd47a7e934e3bec2bcbf5754f2e528f2
+	source = dprint-plugin-markdown-v0.17.1.tar.gz::https://github.com/dprint/dprint-plugin-markdown/archive/refs/tags/0.17.1.tar.gz
+	sha512sums = a41525da4ac4acd871fac6e041fccf22e3c01c6bc572846266187b63737980152ff9bfd31b8bc4c76bcdb86f877eb42cde3a79e9e2af794ff59bd55566ec7832
 
 pkgname = dprint-plugin-markdown
