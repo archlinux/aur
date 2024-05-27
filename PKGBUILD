@@ -1,8 +1,10 @@
-# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
+# Maintainer: Matrix <thysupremematrix atttttttttt tuta dottttttt io>
+# Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=gimp-ofnuts-tools
-pkgver=0.1
-pkgrel=5
+pkgver=20240416T073402Z # To get timestamp go to <https://sourceforge.net/p/gimp-tools/activity/?page=0&limit=100#661e29ea83f8c45370ac9815>, inspect element the date (e.g. "2 months ago"), it should be in the attribute "datetime". Use ISO 8601 format <https://en.wikipedia.org/wiki/ISO_8601>.
+pkgrel=1
+epoch=1
 pkgdesc="Ofnuts' Gimp Tools"
 arch=(any)
 url='http://gimp-tools.sourceforge.net/'
@@ -10,10 +12,20 @@ license=('GPL')
 depends=('gimp<2.99' python2-gimp)
 options=(!strip)
 _base_source='https://sourceforge.net/projects/gimp-tools/files/scripts/'
+# To get sources, you can do the command "curl "https://sourceforge.net/projects/gimp-tools/rss?path=/scripts" | grep "<link>.*</link>" | sed 's|<link>||;s|</link>||' | while read url; do url=`echo $url | sed 's|/download$||'`; echo $url ; done" then find and replace "https://sourceforge.net/projects/gimp-tools/files/scripts" with nothing.
 _source=(
-ofn-autoscale-layer.zip
-ofn-export-layers.zip
 ofn-move-copy-layers.zip
+ofn-color-input.zip
+ofn-unlink-all.zip
+ofn-unlock-all.zip
+ofn-layer-decompose.zip
+ofn-brush-to-layer.zip
+ofn-random-pattern.zip
+readme.md
+ofn-luminosity-tiler.zip
+ofn-export-layers.zip
+ofn-metadata-to-text.zip
+ofn-autoscale-layer.zip
 ofn-crop-grid.zip
 ofn-shred-layer.zip
 ofn-flatten-cylinder.zip
@@ -23,7 +35,6 @@ ofn-centered-autocrop.zip
 ofn-color-select.zip
 ofn-random-fill.zip
 ofn-export-layers-cumulative.zip
-ofn-layer-decompose.zip
 ofn-export-sizes.zip
 ofn-preset-guides.zip
 ofn-export-layers-combinations.zip
@@ -93,14 +104,23 @@ mirror-layers-0.1.py
 autocrop-linked-layers-0.2.py
 clear-layers-0.2.py
 random-ellipses-0.3.py
-)
+) 
 source=(
   "$pkgname-$pkgver-readme.md::${_base_source}/readme.md"
   "${_source[@]/#/${_base_source}}")
-sha256sums=('ffa804449dad16f98dc11db39f1fd2e86cf3fccb04ae89a02516e55168b4529c'
+sha256sums=('3b3367511bb6797117135a298015e127c1b5db08fee12750e97c94afdd352f3a'
+            '9c50a7543a0c89749203bf97ac5ffdc60df9cd3a0513098fe4e7e70f08a95608'
+            '9f4927233fd9a0adb3520e81d0f493f02b17c519266f9c38b58d9b87184d9738'
+            '25082202fcac973451e5d64c28c347b58fc8dfed102dd76fddda29bbef0c1f29'
+            'd5fd9c63e4e3aaf9d739c0a7658b1d98a118b841280c0062ad53b391efc11400'
+            '020bbea73694ad0f2d7805d32de01cfb66cb8e7c72badc26752d1729d6637ff5'
+            '1cecb03df421f86367ed7ed4e3fe628521309bb2b7c4cf1681413e8398165119'
+            'dbf7bb2e682afdac42be29cdc0a79d615d2d03e939eaa09e19936971cea4c20d'
+            '3b3367511bb6797117135a298015e127c1b5db08fee12750e97c94afdd352f3a'
+            '736edb313672027557bd4d19dbf8095bba5864b7c8215bba6937718bbac873dd'
+            'a3d5edb2151a0cee6a6ad4c39b9a9a214c2488f243ff86ef42fbc6560b9ae002'
+            '37f7af1fc6b1d562f4f1e00d2c247c39371176e763931337a122c1aeefff097f'
             '67ee643984d28dbf7a353e0bed4391a5e503111ea75165bc751048f8f29808f7'
-            '179aec2f8e1268d0f94eee4221165c57764be71f8eaffc7bf8f6f4cc44cbf1f0'
-            '18bad0c83027d4fe0cef4179cf75dabdbaf58d5df1dfd010a4f99e4f6219f1ca'
             '29e281e321ae93ab91b2bbc0fd4d17acdaea84af876a7dd14d091af03e2c3a08'
             '8ab00911c61f982a220823770eacab827f759589587e8665d59d9628fc3fd69a'
             '7b1d31ea6d574e2c72e8245e1500311cadef19d870944c3977a46cd1566b781d'
@@ -110,7 +130,6 @@ sha256sums=('ffa804449dad16f98dc11db39f1fd2e86cf3fccb04ae89a02516e55168b4529c'
             '774234fa50232be93a770e2d2f1470cd3cf7ec7680bb789d291f9023348ad000'
             '5dcda79e1871a4a6acfe3c5a9cbea24bfdd84b31ac9423447e1236b8e0a5db21'
             '25399ad0c26b757fa0ed3cf93f5cb4f4c61f3a6e1cea5b4ce37850ef220833bc'
-            '5c31028746bf03da179c941d7455559d45346c3ec797c9d611e3b61c268a337f'
             '0301dd87a93105cea7a771b4b15862fbc6ac54a85c3f4f2487c5301886457dcf'
             '2f9d773313521bf1890d8df504410486bf60f85fa621aacc5d822921f3473cf9'
             '51114672276c27c4766e7944ff9de24a46566981dc06fd48434187aff5c17390'
