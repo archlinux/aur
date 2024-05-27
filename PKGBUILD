@@ -2,14 +2,14 @@
 
 pkgname=pyfa-appimage
 pkgver=2.58.3
-pkgrel=1
+pkgrel=2
 _distname="Pyfa-${pkgver}"
 pkgdesc="EVE Online Fitting Assistant"
 arch=('any')
 url="https://github.com/pyfa-org/Pyfa"
 license=('GPL3')
 conflicts=('pyfa')
-depends=('fuse2' 'wxwidgets-gtk3' 'webkit2gtk-4.1')
+depends=('fuse2' 'wxwidgets-gtk3' 'webkit2gtk')
 # wxwidgets-gtk3 is not directly required, but too many dependencies of it are 
 # due to the dynamic nature of the appimage, so we take this short-cut
 options=(!strip)
