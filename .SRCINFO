@@ -1,0 +1,18 @@
+pkgbase = ngrrram-git
+	pkgdesc = A TUI tool to help you type faster and learn new layouts. Includes a free cat.
+	pkgver = 1.0.3.r2.gac122c3
+	pkgrel = 1
+	url = https://github.com/wintermute-cell/ngrrram
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = ngrrram
+	conflicts = ngrrram
+	source = ngrrram-git::git+https://github.com/wintermute-cell/ngrrram.git
+	md5sums = SKIP
+
+pkgname = ngrrram-git
