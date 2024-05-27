@@ -18,4 +18,3 @@ pkgbase = python-condconfigparser
 	sha256sums = 21a9781c0276e8deeb39569abc1b5e2154909471050f386e135062413c051eb6
 
 pkgname = python-condconfigparser
-
