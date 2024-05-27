@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=p3x-onenote-bin
 _pkgname=P3X-OneNote
-pkgver=2024.4.177
+pkgver=2024.4.188
 _electronversion=30
 pkgrel=1
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote.Use system-wide electron."
@@ -26,14 +26,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
-sha256sums_aarch64=('7b5a3d4a56c06fa4616cd0fde635dff99a6b9c8341da1be78207a28c20a6d1ed')
-sha256sums_armv7h=('3ace8425955404d69f196befcda8006ec1425269d89ffd5a3175bffc220d5a67')
-sha256sums_x86_64=('581beb81f04da1969c87f4ee430b99263190e78b5f8efde2ee2927a3c33f7fcc')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums_aarch64=('cbd2fd43e5538bf81d2dc0ea20f746eb211991df3270060dc257cbaff63b0a3e')
+sha256sums_armv7h=('f306fae3abadc13aa8bcd5ff1ece775e8622fe84f33dd37ab5c1367cde220bbf')
+sha256sums_x86_64=('03c8a997e1b39ccdb08e791c5026edb95b63cbee35a5b4ed17acd05b5e296005')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
