@@ -3,7 +3,7 @@
 
 pkgname=lime3ds
 pkgver=2114
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
@@ -29,7 +29,6 @@ build() {
     	-DCMAKE_C_FLAGS="-O2"
     cd build
     ninja
-    strip -s bin/Release/*
 }
 
 package() {   
