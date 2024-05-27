@@ -12,6 +12,7 @@ pkgbase = 2s2h-bin
 	depends = sdl2_net
 	depends = libpng
 	depends = libzip
+	depends = zenity
 	source_x86_64 = git+https://gitlab.com/linuxbombay/2s2h/2s2h-pkg
 	source_x86_64 = https://gitlab.com/linuxbombay/2s2h/binaries/1.0.0/-/raw/main/2s2h-linux-x64.tar.xz
 	sha256sums_x86_64 = SKIP

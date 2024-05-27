@@ -7,7 +7,7 @@ pkgdesc="Ship of Harkinian Reimplimentation engine"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://gitlab.com/linuxbombay/2s2h"
 license=('GPL')
-depends=('sdl2' 'sdl2_net' 'libpng' 'libzip')
+depends=('sdl2' 'sdl2_net' 'libpng' 'libzip' 'zenity')
 makedepends=('unzip')
 sha256sums_x86_64=('SKIP'
                    '6be86c64f35e3cf86decb560cfa6d12d3a6ea0a9dca23fea49975bd3fb7cb137')
