@@ -6,8 +6,8 @@ _pkgname='fdpp'
 _gitname='dosemu2'
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.7+140.r1583.20240326.5e68fbe
-pkgrel=2
+pkgver=1.7+146.r1589.20240510.a6902e7
+pkgrel=1
 pkgdesc='64 bit FreeDOS++ for dosemu2. Latest git checkout.'
 arch=(
   'x86_64'
