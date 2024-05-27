@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.enlightenment.org/"
 license=('BSD')
 depends=('efl' 'libdbus')
-source=("https://download.enlightenment.org/att/releases/e_dbus-1.7.10.tar.bz2")
+source=("https://download.enlightenment.org/__old/att/releases/e_dbus-1.7.10.tar.bz2")
 sha256sums=('b93f778a4bf50ce044b4798e08a03f62e9b890c47305f9d5839989481f38ddd4')
 
 build() {
