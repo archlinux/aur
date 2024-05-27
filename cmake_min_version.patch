@@ -1,0 +1,8 @@
+--- a/cpp/CMakeLists.txt
++++ b/cpp/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5.0)
+ PROJECT(polyclipping)
+ 
+ SET(CMAKE_BUILD_TYPE "Release" CACHE STRING "Release type")
