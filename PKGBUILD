@@ -3,33 +3,28 @@
 # Contributor: Musikolo <musikolo at protonmail dot com>
 
 _pkgname=clienteafirma
-# FIX: https://github.com/ctt-gob-es/clienteafirma/issues/223
-_jmulticard_commit=f35e2e100f1d54a675fe0df3fb67b1b97f78d6ab
-# FIX: end 223
 # FIX: https://github.com/ctt-gob-es/clienteafirma/issues/320
-_clienteafirma_external_commit=7236a386b59559f377cd530934f050cca9ebbd0a
+_clienteafirma_external_commit=c674ad5b07c66907994f63ba73ca61c9c49c8d2c
 # FIX: end 320
 pkgname=autofirma
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='Cliente de firma electrónica ofrecido por la Administración Pública'
 arch=('any')
 url='https://firmaelectronica.gob.es/'
-license=('GPL' 'custom:EUPL')
+license=('GPL-2.0-or-later AND EUPL-1.1')
 depends=('java-runtime=11')
 makedepends=('java-environment=11' 'maven')
 conflicts=('autofirma-bin' 'autofirma-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ctt-gob-es/${_pkgname}/archive/v${pkgver}.tar.gz"
-        "jmulticard-${_jmulticard_commit}.tar.gz::https://github.com/ctt-gob-es/jmulticard/archive/${_jmulticard_commit}.tar.gz"
         "clienteafirma-external-${_clienteafirma_external_commit}.tar.gz::https://github.com/ctt-gob-es/clienteafirma-external/archive/${_clienteafirma_external_commit}.tar.gz"
         "autofirma"
         "autofirma.desktop"
         "autofirma.js"
         "autofirma.svg"
         "eupl-1.1.txt")
-b2sums=('5548c86311fc9fa019bb9d02c86af59861f718e06f6c60da843f98fefa822f84986033b428cacd74edb83ebe98a5f19e53379e6ce8ba830530ea1f7828067b6e'
-        '652385cdc2f36083bb93df092a56375eea86726e94bcce21ebddc4fd70e3eeba6080f8415909183d8097464c5006f273a6346926fdf2247e9c2e95efdc8207d6'
-        'ddaa0230b9a7fb66e28108d0cf77874ae9ebc7fe45755eae0ed0bd4a00c4eb856b47fe6704befc1e5607ee68cf89f16742d72a6e580fe1cdbfdec58b103b44da'
+b2sums=('62565adb87c54a2dee07526e0f664e51b6cf72ca47fb84c0af14ea0fe209d0f78b2a5d19b94882ab76dbe40c76c02537cb6706e1b6e44d7db6f2a4a377aa8768'
+        'c54e6744df088b8aa906517a398035253a5d44532b8d5bfaf71fce04569fa5eb193e8159c368ee5bcfc1a308944b35bdb0d6edfb7c0c1503b4469752f563f737'
         '2eca1245aa7e44228fac9fbb871b90d765402ebdfeaa476fa807e7bdaedb039353980c5fdfaf560ecc943386bbee90d4ae048b85b516b4653bf699328d10fc87'
         'cbedb1aff6ea64e44569d4a3249bd3707a5bc2fadf956ab27f62a71198cfed3f07170f40965bbbd2b4b9a587d165fe8b6a19c3f85aa87eaf8c5897d899d9b6e8'
         '835597fed89382057b48f01537dacc43aeef342372678fbeb6d486c6cded7ee41911b910e200e7c1c34bd1cbb0e25854e6e56dea68115bcde759b84d2d0a6147'
@@ -38,11 +33,6 @@ b2sums=('5548c86311fc9fa019bb9d02c86af59861f718e06f6c60da843f98fefa822f84986033b
 
 prepare() {
   export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
-  # FIX: https://github.com/ctt-gob-es/clienteafirma/issues/223
-  cd "jmulticard-${_jmulticard_commit}"
-  mvn clean install -Dmaven.test.skip=true
-  # FIX: end 223
-  cd ..
   # FIX: https://github.com/ctt-gob-es/clienteafirma/issues/320
   cd "clienteafirma-external-${_clienteafirma_external_commit}"
   mvn clean install -Dmaven.test.skip=true
