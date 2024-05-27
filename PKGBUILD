@@ -10,7 +10,7 @@ license=(MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('d10cc64098796e358d36181193b2c57080ebcf383635f88ae1d106815cc06849199f44a6da48d34211eb35aff5ce34f9d1372b73187103bffbbde742f3f00dbf')
+b2sums=('75d12623ce0b457d41291e34e4953cba67f3884a53ac9016e67b881a8a62abe87d9b66838fb4037503c8dc5f31bee2d1f48a4087ad0114d02f998fe70ecb4c88')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
