@@ -17,7 +17,7 @@ source=("${pkgbase}::git+${url}.git#tag=v${pkgver}"
         "${pkgbase}-browser.service"
         "${pkgbase}-workers.service")
 sha256sums=('d863c41bdaab0ad697c94a75678308c6b692a402958658f4e2882f82a77e14af'
-            '846524b921499db2e2f49ea05c4d88a5c92376a13905ee677be0681a8be4c5ab'
+            '02ba5c278843be0dc98a172a16e172dd5f2245dd7e91608fc3a53f9e5be2ee7a'
             'bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e'
             '2ed8abfab0df920e19bf2847afa0138bf9fa2dc6e9daa395cfdf72a9318df456'
             '743b1d08eaa1c38fab3561c7e5010e1de3db3e1984abf0f04ef415f941ff0bf6'
@@ -69,7 +69,7 @@ package_hoarder() {
 
 package_hoarder-cli() {
     pkgdesc="${_pkgdesc} (cli tool)"
-    depends=("nodejs" "${pkgbase}")
+    depends=("nodejs")
     provides=("${pkgbase}-cli")
 
     install -Dm755 "${pkgbase}/apps/cli/dist/index.mjs" "${pkgdir}/usr/share/${pkgbase}/apps/cli/index.mjs"
