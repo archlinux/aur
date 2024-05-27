@@ -1,17 +1,21 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
-_pkgname=galene
-pkgname=$_pkgname-git
-pkgver=0.4.r0.gd33e4de
+pkgname=galene-git
+pkgver=0.9.r1.g90a0a2e
 pkgrel=1
 pkgdesc="A videoconferencing server"
 arch=('x86_64' 'i686')
 url='https://galene.org'
+groups=()
 license=('MIT')
-provides=("$_pkgname")
-install='galene.install'
 depends=('go')
 makedepends=('git' 'pandoc')
-source=("git://github.com/jech/galene.git"
+provides=("${pkgname%-VCS}")
+conflicts=("${pkgname%-VCS}")
+replaces=()
+backup=()
+options=()
+install='galene.install'
+source=('galene::git+https://github.com/jech/galene.git'
         'galene.service'
         'galene.sysusers'
         'galene.tmpfiles')
@@ -21,7 +25,7 @@ sha256sums=('SKIP'
             '85680da8ab202280b92b6dd32e920906570fb8070db06b2ef0275462d0f5a16d')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "${pkgname%-git}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/^galene-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -29,12 +33,12 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "${pkgname%-git}"
   mkdir -p _build
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "${pkgname%-git}"
   export CGO_ENABLED=0
   go build \
      -trimpath \
@@ -47,7 +51,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$_pkgname"
+  cd "${pkgname%-git}"
   go test ./...
 }
 
@@ -57,7 +61,7 @@ package() {
   install -Dm644 galene.sysusers "$pkgdir/usr/lib/sysusers.d/galene.conf"
   install -Dm644 galene.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/galene.conf"
 
-  cd "$_pkgname"
+  cd "${pkgname%-git}"
 
   install -dm755 "${pkgdir}/usr/bin"
   install -m755 "_build/galene" "_build/galene-password-generator" "${pkgdir}/usr/bin"
