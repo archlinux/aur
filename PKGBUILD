@@ -35,6 +35,7 @@ build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
     export GOPATH="${srcdir}"
 
     go build \
@@ -42,7 +43,7 @@ build() {
         -trimpath \
         -mod=readonly \
         -modcacherw \
-        -ldflags "-linkmode external -X main.version=v${pkgver} -extldflags ${LDFLAGS}" \
+        -ldflags "-linkmode external -X main.version=v${pkgver} -extldflags \"${LDFLAGS}\"" \
         -o ntfy-alertmanager
 }
 
