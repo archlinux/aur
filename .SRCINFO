@@ -1,6 +1,6 @@
 pkgbase = jre-jetbrains
-	pkgdesc = OpenJDK Java 17 runtime with some fixes and enhancements by JetBrains
-	pkgver = 17.0.10b1186.1
+	pkgdesc = OpenJDK Java 21 runtime with some fixes and enhancements by JetBrains
+	pkgver = 21.0.3b458.1
 	pkgrel = 1
 	url = https://github.com/JetBrains/JetBrainsRuntime
 	install = jre-jetbrains.install
@@ -9,16 +9,16 @@ pkgbase = jre-jetbrains
 	depends = java-runtime-common
 	depends = ca-certificates-java
 	depends = java-environment-common
-	provides = java-runtime=17
-	provides = java-runtime-headless=17
-	provides = java-environment=17
-	provides = java-runtime-openjdk=17
-	provides = java-runtime-headless-jre=17
-	provides = java-environment-openjdk=17
+	provides = java-runtime=21
+	provides = java-runtime-headless=21
+	provides = java-environment=21
+	provides = java-runtime-openjdk=21
+	provides = java-runtime-headless-jre=21
+	provides = java-environment-openjdk=21
 	provides = jetbrains-jre
 	conflicts = jetbrains-jre
 	replaces = jetbrains-jre
-	source = https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-17.0.10-linux-x64-b1186.1.tar.gz
-	b2sums = db42c36f4985f1efbbe5556a68fa13187d1a1ec24960b65e2a17a47b26daf8462f2d3246746f58aa6fa2134ba2282b564b73df1d83f3d8ad459605eb4317c9d0
+	source = https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-21.0.3-linux-x64-b458.1.tar.gz
+	b2sums = f9ba8e11c5d694a146dfc63f3464d8c838926abcd49b9258b176db08b619fb4c2a488aa0c048829820f579a8d8cc14d0316b9a77e80a25d615838bdfc68a52aa
 
 pkgname = jre-jetbrains

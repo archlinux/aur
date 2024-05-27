@@ -1,10 +1,10 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 # shellcheck disable=SC2034,2154
 pkgname=jre-jetbrains
-_major=17
+_major=21
 _minor=0
-_patch=10
-_build=1186.1
+_patch=3
+_build=458.1
 pkgver="${_major}.${_minor}.${_patch}b${_build}"
 pkgrel=1
 pkgdesc="OpenJDK Java $_major runtime with some fixes and enhancements by JetBrains"
@@ -19,7 +19,7 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-environme
 _zipname="jbr_jcef-$_major.$_minor.$_patch-linux-x64-b$_build.tar.gz"
 install=$pkgname.install
 source=("https://cache-redirector.jetbrains.com/intellij-jbr/${_zipname}")
-b2sums=('db42c36f4985f1efbbe5556a68fa13187d1a1ec24960b65e2a17a47b26daf8462f2d3246746f58aa6fa2134ba2282b564b73df1d83f3d8ad459605eb4317c9d0')
+b2sums=('f9ba8e11c5d694a146dfc63f3464d8c838926abcd49b9258b176db08b619fb4c2a488aa0c048829820f579a8d8cc14d0316b9a77e80a25d615838bdfc68a52aa')
 
 package() {
     rm "$srcdir/$_zipname"
