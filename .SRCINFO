@@ -1,6 +1,6 @@
 pkgbase = db-wifi-login-woice-compat
 	pkgdesc = Makes 'db-wifi-login' a drop-in replacement for '/usr/bin/woice' by providing an appropriate symlink.
-	pkgver = 0.1_20220708.01
+	pkgver = 0.1_20220904.1
 	pkgrel = 1
 	epoch = 0
 	url = https://aur.archlinux.org/pkgbase/db-wifi-login
