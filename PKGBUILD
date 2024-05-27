@@ -1,7 +1,7 @@
 # Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 
 pkgname=return-to-the-roots-maps-git
-pkgver=r5.20220122.ad6d25a
+pkgver=r8.20240404.dfb9923
 pkgrel=1
 pkgdesc="Maps from the Return to the Roots-Project."
 arch=("any")

@@ -1,6 +1,6 @@
 pkgbase = return-to-the-roots-maps-git
 	pkgdesc = Maps from the Return to the Roots-Project.
-	pkgver = r5.20220122.ad6d25a
+	pkgver = r8.20240404.dfb9923
 	pkgrel = 1
 	url = https://siedler25.org/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = return-to-the-roots-maps-git
 	makedepends = git
 	optdepends = return-to-the-roots: To play the maps in the native engine.
 	optdepends = widelands-maps-rttr: To play the maps in widelands (some things might not completely work).
-	provides = return-to-the-roots-maps=r5.20220122.ad6d25a
-	provides = s25rttr-maps=r5.20220122.ad6d25a
+	provides = return-to-the-roots-maps=r8.20240404.dfb9923
+	provides = s25rttr-maps=r8.20240404.dfb9923
 	conflicts = return-to-the-roots-maps
 	conflicts = s25rttr-maps
 	options = emptydirs
