@@ -1,6 +1,6 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
-pkgver=8fd3c9b
+pkgver=ece5d09
 pkgrel=1
 _module=emprint
 _pkgname=moksha-modules-extra
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}/${_module}"
+  cd "${srcdir}/${_pkgname}/lib/${_module}"
   msg2 "Building $_module"
   ./autogen.sh \
     --prefix=/usr
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/${_module}"
+  cd "${srcdir}/${_pkgname}/lib/${_module}"
   msg2 "Installing $_module"
   make DESTDIR="${pkgdir}" install
 
