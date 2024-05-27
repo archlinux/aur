@@ -1,6 +1,6 @@
 pkgbase = hardinfo2
 	pkgdesc = System Information and Benchmark for Linux Systems.
-	pkgver = 2.1.5
+	pkgver = 2.1.8
 	pkgrel = 1
 	url = https://www.hardinfo2.org
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = hardinfo2
 	optdepends = xdg-utils: open your browser for bugs, homepage & links
 	provides = hardinfo
 	conflicts = hardinfo
-	source = hardinfo2-2.1.5.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-2.1.5.tar.gz
-	sha256sums = 5a4245ca1f3f68607b6ac559ac4475faeab8ec3682853d0d78b29cc089f5dd7e
+	source = hardinfo2-2.1.8.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-2.1.8.tar.gz
+	sha256sums = a32949b59308933ed4473b4d5b65e96b7deeeef223651add206ebf532802acae
 
 pkgname = hardinfo2
