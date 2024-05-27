@@ -1,14 +1,14 @@
 pkgbase = raplcap
 	pkgdesc = RAPL power capping C interface with multiple implementations.
-	pkgver = 0.9.0
-	pkgrel = 3
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/powercap/raplcap
 	arch = x86_64
-	license = custom:BSD
+	license = BSD-3-Clause
 	makedepends = cmake
 	depends = glibc
 	depends = powercap
-	source = https://github.com/powercap/raplcap/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = 645f12be75d731b2ce847356a0d32e9c8c0a44791b8337185a383656ffc92121
+	source = raplcap-0.9.1.tar.gz::https://github.com/powercap/raplcap/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = bf832e304da1c083770339cd149c5c08ca35fab3369ed2ecbcd6be6590950b95
 
 pkgname = raplcap

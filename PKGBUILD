@@ -3,12 +3,12 @@
 
 _pkgname=raplcap
 pkgname="${_pkgname}"
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="RAPL power capping C interface with multiple implementations."
 arch=('x86_64')
 url="https://github.com/powercap/raplcap"
-license=('custom:BSD')
+license=('BSD-3-Clause')
 depends=(
   'glibc'
   'powercap'
@@ -17,10 +17,10 @@ makedepends=(
   'cmake'
 )
 source=(
-  "https://github.com/powercap/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+  "${_pkgname}-${pkgver}.tar.gz::https://github.com/powercap/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '645f12be75d731b2ce847356a0d32e9c8c0a44791b8337185a383656ffc92121'
+  'bf832e304da1c083770339cd149c5c08ca35fab3369ed2ecbcd6be6590950b95'
 )
 
 build() {
