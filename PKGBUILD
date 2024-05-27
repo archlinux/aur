@@ -1,8 +1,8 @@
 # Maintainer: bastidest <bastidest at mailbox dot org>
 
 pkgname=email-to-pdf-converter
-pkgver=2.6.0
-pkgrel=2
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="Converts email files (eml, msg) to pdf"
 arch=('any')
 url="https://github.com/nickrussler/${pkgname}"
@@ -11,17 +11,22 @@ depends=('java-runtime<=21' 'wkhtmltopdf')
 makedepends=('java-environment<=21' 'gradle')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "java-version-and-build-version.patch")
-sha256sums=('5dd4107a4aa337ee05d584549d36db95ec31a8cef942ef86410433631ee7ec97'
-            '5c007032df5b81eaa10ebbef8f3011031ea983c97575783a318640fc8a4b35bc')
+sha256sums=('dd3263084c511a4a07467caf5461606fc975d421e6d9f761ceb30cf3c6ff46c5'
+            'd5e15425d9c6f8b0f403fc4353500cf6a9da3ccfd3188924689bea63772649c8')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/java-version-and-build-version.patch" build.gradle
+    patch --forward --strip=1 --input="${srcdir}/some.patch" build.gradle
+}
+
+_get_matching_java_version() {
+  local max_version="$1"
+  cat <(archlinux-java get) <(archlinux-java status | grep -oe 'java-[0-9]*-[a-z]*' | sort -Vr) | awk -F- '{if($2+0<='"${max_version}"'){print $0;exit 0}}'
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  BUILD_VERSION="${pkgver}" gradle shadowJar
+  JAVA_HOME="/usr/lib/jvm/$(_get_matching_java_version 21)" BUILD_VERSION="${pkgver}" gradle shadowJar
 }
 
 package() {

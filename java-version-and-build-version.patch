@@ -1,8 +1,7 @@
-diff --git a/build.gradle b/build.gradle
-index 5c8d228..125c0e3 100644
---- a/build.gradle
-+++ b/build.gradle
-@@ -7,27 +7,24 @@ plugins {
+diff -u --label \#\<buffer\ build.gradle.orig\> --label \#\<buffer\ build.gradle\> /tmp/buffer-content-drlQHV /tmp/buffer-content-A9SB0J
+--- #<buffer build.gradle.orig>
++++ #<buffer build.gradle>
+@@ -7,16 +7,13 @@
  
      id 'jacoco'
  
@@ -20,7 +19,9 @@ index 5c8d228..125c0e3 100644
 -version = gitVersionDetails.lastTag
 +version = "${System.env.BUILD_VERSION}"
  
- jar {
+ compileJava.options.encoding = "UTF-8"
+ compileTestJava.options.encoding = "UTF-8"
+@@ -25,12 +22,12 @@
      manifest {
          attributes 'Main-Class': 'cli.Main',
                  'Implementation-Title': 'Email to PDF Converter',
@@ -35,3 +36,5 @@ index 5c8d228..125c0e3 100644
  }
  
  repositories {
+
+Diff finished.  Mon May 27 21:53:32 2024
