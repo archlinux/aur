@@ -2,7 +2,7 @@
 
 _pkgname=labwc
 pkgname=labwc-wlroots-018-git
-pkgver=0.7.1.r172.g657c7596
+pkgver=0.7.2.r49.g44fd9295
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox (git version) (Highly experimental bleeding edge wlroots version)'
 url="https://github.com/labwc/labwc"
@@ -22,6 +22,7 @@ prepare() {
   cd "$_pkgname"
   git fetch origin pull/1641/head:chase/0.18
   git checkout chase/0.18
+  git cherry-pick 21f079e306bc1362a9cb62e656ba6d32ee003941
   patch -Np1 -i "${srcdir}/labwc-atomic-modesetting-tearing.patch"
 }
 
