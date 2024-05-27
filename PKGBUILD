@@ -3,7 +3,7 @@
 _pkgname=perl-extutils-makemaker-dist-zilla-develop
 pkgname="${_pkgname}"
 pkgver=0.03
-pkgrel=2
+pkgrel=3
 pkgdesc='create bare-bones Makefile.PL files for use with dzil.'
 arch=(
   'any'
@@ -45,12 +45,15 @@ sha256sums=(
 prepare() {
   cd "${srcdir}"
 
+  mkdir -p build
+
+  cd build
   ## Make local filenames similar to upstream filenames
   for _s in Develop.pm Changes LICENSE MANIFEST META.json META.yml Makefile.PL README dist.ini ; do
     if [ -e "${_s}" ]; then
       rm -f "${_s}"
     fi
-    ln -s "${_pkgname}-${_s}" "${_s}"
+    ln -s "../${_pkgname}-${_s}" "${_s}"
   done
 
   mkdir -p lib/ExtUtils/MakeMaker/Dist/Zilla/
@@ -59,19 +62,19 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}"
+  cd "${srcdir}/build"
 
   make
 }
 
 check() {
-  cd "${srcdir}"
+  cd "${srcdir}/build"
 
   make test
 }
 
 package() {
-  cd "${srcdir}"
+  cd "${srcdir}/build"
 
   make DESTDIR="${pkgdir}" install
 
