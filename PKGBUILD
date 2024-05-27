@@ -8,7 +8,7 @@ url="https://github.com/CyanoHao/Resource-Han-Rounded"
 license=('custom:OFL')
 source=(
     "https://github.com/CyanoHao/Resource-Han-Rounded/releases/download/v${pkgver}/RHR-TTF-${pkgver}.7z"
-    "https://raw.githubusercontent.com/CyanoHao/Resource-Han-Rounded/master/LICENSE.txt"
+    "https://raw.githubusercontent.com/CyanoHao/Resource-Han-Rounded/v0.990/LICENSE.txt"
 )
 sha256sums=(
     '7bff6f66daf1501e8eca73fb347d99defac771d876aabe5db3552c00a0d0d86c'
