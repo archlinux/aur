@@ -1,7 +1,7 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 post_install() {
-  echo "Please add /var/lib/baikal to open_basedir in your /etc/php.ini."
+  echo "Please add /var/lib/baikal to open_basedir in your /etc/php/php.ini."
   echo
   echo "You also need to set up your webserver for baikal, there are example"
   echo "configs for Apache/nginx at http://sabre.io/baikal/install/."
