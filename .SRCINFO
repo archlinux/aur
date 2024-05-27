@@ -1,12 +1,13 @@
 pkgbase = openrocket-beta-bin
 	pkgdesc = A free and fully featured rocket flight simulator - 6 degrees of freedom, prerelease
 	pkgver = 23.09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openrocket.info/
-	arch = x86_64
-	license = GPL3
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = desktop-file-utils
 	depends = java-runtime=17
-	depends = desktop-file-utils
+	depends = bash
 	provides = openrocket
 	conflicts = openrocket
 	noextract = OpenRocket-23.09.jar
