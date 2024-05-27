@@ -13,6 +13,7 @@ conflicts=("${_pkgname}" "${pkgname}-git")
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aome510/spotify-player/archive/v${pkgver}.tar.gz")
 sha512sums=('36eeb32d93ec78981b7caa0f0fdcd9d56706003c9e0d7959d80c501b3823d80925d11c523cc961e0c447242c399ff6226a86939cbc181c9356a3edaaf145db94')
+options=('!lto')
 
 build() {
 	cd "${_pkgname}-${pkgver}"

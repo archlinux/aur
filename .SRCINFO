@@ -14,6 +14,7 @@ pkgbase = spotify-player-full
 	depends = libsixel
 	conflicts = spotify-player
 	conflicts = spotify-player-full-git
+	options = !lto
 	source = spotify-player-full-0.18.2.tar.gz::https://github.com/aome510/spotify-player/archive/v0.18.2.tar.gz
 	sha512sums = 36eeb32d93ec78981b7caa0f0fdcd9d56706003c9e0d7959d80c501b3823d80925d11c523cc961e0c447242c399ff6226a86939cbc181c9356a3edaaf145db94
 
