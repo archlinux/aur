@@ -9,7 +9,7 @@ pkgname="${_pkgname}-2022"
 epoch=0
 _pkgver='2022_04_05'
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Links for additional information on Czech trains and railway stations, to be used with the timetable search engines by CHAPS. Data from 2022."
 arch=('any')
 license=('custom')
@@ -54,7 +54,7 @@ source=(
 )
 
 sha256sums=(
-  'SKIP'
+  '1fe20538307d911d6edcec6590da51bf782cda64877f7dfabe742f11f618a657'
   "SKIP"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
 )
