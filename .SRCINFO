@@ -1,21 +1,20 @@
 pkgbase = superfile-bin
 	pkgdesc = Pretty fancy and modern file manager in terminal file manager
-	pkgver = 1.1.2
-	pkgrel = 2
+	pkgver = 1.1.3
+	pkgrel = 1
 	url = https://github.com/MHNightCat/superfile
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = perl-image-exiftool
 	optdepends = perl-archive-zip: Support for zip files, including epub
 	optdepends = perl-io-compress-brotli: Support for brotli-compressed metadata
-	provides = superfile=1.1.2
+	provides = superfile=1.1.3
 	conflicts = superfile
-	source = LICENSE-1.1.2::https://raw.githubusercontent.com/MHNightCat/superfile/v1.1.2/LICENSE
+	source = LICENSE-1.1.3::https://raw.githubusercontent.com/MHNightCat/superfile/v1.1.3/LICENSE
 	sha256sums = cd6016ddc3148470a63564380bca1d4499ecc5fa3a89574c6a4cf4053dfcc1e4
-	source_aarch64 = superfile-1.1.2-aarch64.tar.gz::https://github.com/MHNightCat/superfile/releases/download/v1.1.2/superfile-linux-v1.1.2-arm64.tar.gz
-	sha256sums_aarch64 = 79c2dec8114766dfd3df7f58d096a6601eb53d8792c539dd8f72a8968cc5e84c
-	source_x86_64 = superfile-1.1.2-x86-64.tar.gz::https://github.com/MHNightCat/superfile/releases/download/v1.1.2/superfile-linux-v1.1.2-amd64.tar.gz
-	sha256sums_x86_64 = b542e3d1de014e7fdef41a4975d50cbf76004a9cfe46526c661c5c184d9bd0c2
+	source_aarch64 = superfile-1.1.3-aarch64.tar.gz::https://github.com/MHNightCat/superfile/releases/download/v1.1.3/superfile-linux-v1.1.3-arm64.tar.gz
+	sha256sums_aarch64 = ee2e88b57a213088da0af41d6d3d748ba62e1c65082ee249fc7c96bc69c0b51f
+	source_x86_64 = superfile-1.1.3-x86-64.tar.gz::https://github.com/MHNightCat/superfile/releases/download/v1.1.3/superfile-linux-v1.1.3-amd64.tar.gz
+	sha256sums_x86_64 = 5ec0e3fd1413fa657dddab0fbdecd09cdedee70db33acf3467c4540da4600c8f
 
 pkgname = superfile-bin
