@@ -1,0 +1,20 @@
+pkgbase = git-fame
+	pkgdesc = Pretty-print git repository collaborators sorted by contributions
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/casperdcl/git-fame
+	arch = any
+	license = MPL-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-argopt
+	depends = python-tqdm
+	depends = python-tabulate
+	provides = git-fame
+	source = git-fame::git+https://github.com/casperdcl/git-fame#tag=v2.0.1
+	sha256sums = SKIP
+
+pkgname = git-fame
