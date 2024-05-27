@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=(APACHE MIT)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('9caaf162ef45b55a5091b2d02551eee785281f52d303d06f29bb1de14e5e11cdf3248c599335f80e820908cd2cdd84180f6751da48a191bcd17b3442bf3b03a1')
+b2sums=('8405a7b8989e6e46408b2bd26a6ca92937efecae84dbea9f33166254559d55191adcb717f77172aa1bdc36221749299a1b6a12b3c0e835ded2fe0b7468070f58')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
