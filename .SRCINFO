@@ -1,0 +1,12 @@
+pkgbase = tinyfetch
+	pkgdesc = A fetch for the minimalists
+	pkgver = r2.b7a5799
+	pkgrel = 1
+	url = https://github.com/nikitarevenco/tinyfetch
+	arch = any
+	license = MIT
+	makedepends = git
+	source = tinyfetch::git+https://github.com/nikitarevenco/tinyfetch.git
+	sha256sums = SKIP
+
+pkgname = tinyfetch
