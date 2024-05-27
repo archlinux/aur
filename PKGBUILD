@@ -10,8 +10,8 @@
 
 _pkgname=kate
 pkgname="${_pkgname}-root"
-pkgver=24.02.2
-pkgrel=4
+pkgver=24.05.0
+pkgrel=1
 arch=(
   'x86_64'
   'i686'
