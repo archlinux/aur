@@ -1,5 +1,6 @@
-# Maintainer: buckket <buckket@cock.li>
-# Co-maintainer: leothrix <ty at tjll dot net>
+# Maintainer:  dreieck
+# Contributor: buckket <buckket@cock.li>
+# Contributor: leothrix <ty at tjll dot net>
 # Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Richard Weber <old-box at outlook dot com>
 # Contributor: Benjamin Hedrich <kiwisauce at pagenotfound dot de>
