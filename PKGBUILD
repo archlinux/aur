@@ -1,27 +1,38 @@
-# Maintainer: Denis A. Altoé Falqueto <denisfalqueto@gmail.com>
+# Maintainer: Pedro Henrique Quitete Barreto <pedrohqb@gmail.com>
 # Contributor: Geyslan G. Bem <geyslan@gmail.com>
 pkgname=safesignidentityclient
 pkgver=4.0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart card PKCS#11 provider and token manager"
 arch=('x86_64')
-url="https://safesign.gdamericadosul.com.br/download"
+url="https://certificaat.kpn.com/installatie-en-gebruik/installatie/pas-usb-stick/linux/"
 license=('custom:copyright')
+conflicts=('safesign-lib')
+makedepends=('wget')
+options=(!debug)
 depends=('gcc-libs' 'glib2' 'glibc' 'hicolor-icon-theme' 'pcsclite' 'libsm' 'libx11' 'cairo' 'pango'
          'gdk-pixbuf2' 'at-spi2-core' 'gtk3' 'libxxf86vm' 'openssl-1.1' 'gdbm')
 optdepends=('ccid: Generic support for CCID devices',
             'acsccid: ACS CCID PC/SC driver',
             'scmccid: binary driver for the SCM Smart Card Readers')
-_aet_version="AET.000_ub2004"
-source_x86_64=("https://certificaat.kpn.com/files/drivers/SafeSign/SafeSign%20IC%20Standard%20Linux%204.0.0.0-AET.000%20redhat8%20x86_64.rpm")
-sha256sums_x86_64=('d78e8757afb61cc19424f2379c9cc7a7f187a096cc5ebb3445ccff3402403776')
+source_x86_64=("https://certificaat.kpn.com/files/drivers/SafeSign/SafeSign%20IC%20Standard%20Linux%204.0.0.0-AET.000%20redhat9%20x86_64.rpm")
+sha256sums_x86_64=('638d6e21b3d7155ca9c624c288b31ca7c6132811f740d0eb2edef8a725e48df0')
+
+prepare() {
+  wget https://certificaat.kpn.com/files/drivers/SafeSign/SafeSign%20IC%20Standard%20Linux%204.0.0.0-AET.000%20ub2204%20x86_64.deb -O safesign.deb
+  ar x safesign.deb
+  mkdir safesign-deb
+  tar xvf data.tar.zst -C safesign-deb
+  rm -rf ${srcdir}/usr/lib64
+  mv ${srcdir}/safesign-deb/usr/lib/ ${srcdir}/usr/lib64 
+}
 
 package() {
   install -d ${pkgdir}/usr
   cp -R ${srcdir}/usr/{bin,share} ${pkgdir}/usr/
 
   install -d ${pkgdir}/usr/lib
-  install -m 744 ${srcdir}/usr/lib64/* ${pkgdir}/usr/lib/
+  cp -R ${srcdir}/usr/lib64/. ${pkgdir}/usr/lib/
 
   install -d ${pkgdir}/usr/share/licenses/${pkgname}
   install -m 644 ${srcdir}/usr/share/doc/${pkgname}/copyright ${pkgdir}/usr/share/licenses/${pkgname}/copyright
