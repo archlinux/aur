@@ -1,0 +1,17 @@
+pkgbase = mojozork-git
+	pkgdesc = A simple Z-Machine implementation in a single C file
+	pkgver = r220.5c8d81f
+	pkgrel = 1
+	url = https://github.com/icculus/mojozork
+	arch = x86_64
+	license = Zlib
+	makedepends = git
+	makedepends = cmake
+	depends = sqlite
+	depends = glibc
+	provides = mojozork
+	conflicts = mojozork
+	source = mojozork::git+https://github.com/icculus/mojozork.git#branch=main
+	sha256sums = SKIP
+
+pkgname = mojozork-git
