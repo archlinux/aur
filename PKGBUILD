@@ -2,8 +2,8 @@
 
 _name=backends
 pkgname=lib32-sane
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Scanner Access Now Easy (32-bit)"
 arch=(x86_64)
 url="https://gitlab.com/sane-project/backends"
@@ -40,11 +40,10 @@ optdepends=(
 )
 provides=(libsane.so)
 source=(
-  #$url/-/archive/$pkgver/$_name-$pkgver.tar.gz
-  https://archive.org/download/backends-1.3.0.tar/backends-1.3.0.tar.gz
+  $url/-/archive/$pkgver/$_name-$pkgver.tar.gz
 )
-sha512sums=('e1b139d2588dee2d4478b4b3001c1d164ef293bf268720c73b001fdfd5b18b0a2052c692b9af55a09c06ec4242de6a0006c7956a7da4253fc5fd1e560d3b528b')
-b2sums=('f6413f374f2d05bec08c3490c03ff6d69e0b902b5907acd6d96aa6ae255865adb9d3dd68b774795d33a8a19c27b5fe337af29e239e4178e1f3882f302d6bcdd2')
+sha512sums=('2b6e0ffe64386aa5856a7e4f2b1c536ad9a6376fbf10c954dcc714c1792566a2a8a85a33a947b148ef3d23c1fbfeb5d114e5a99febe0e316ff78e3ab17a4beaf')
+b2sums=('5939d8e7df6056b3fd4641dca325c36f8bf01d7edc2d372f920252ecc9dde5da02fa65a47ef2763d8ded00d39056619167d18acb73a475ef902c49d4d1afdcf6')
 
 prepare() {
   # extract custom license exception
