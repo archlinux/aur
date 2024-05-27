@@ -3,14 +3,14 @@
 _pkgname=perl-extutils-makemaker-dist-zilla-develop
 pkgname="${_pkgname}"
 pkgver=0.03
-pkgrel=1
+pkgrel=2
 pkgdesc='create bare-bones Makefile.PL files for use with dzil.'
 arch=(
   'any'
 )
 url='https://metacpan.org/pod/ExtUtils::MakeMaker::Dist::Zilla::Develop'
 license=(
-  'PerlArtistic'
+  'LicenseRef-PerlArtistic'
 )
 depends=(
   'perl'
@@ -18,17 +18,17 @@ depends=(
 )
 makedepends=()
 checkdepends=()
-options=('!emptydirs')
+options+=('!emptydirs')
 source=(
-  Develop.pm::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-"${pkgver}"/lib/ExtUtils/MakeMaker/Dist/Zilla/Develop.pm
-  Changes::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-"${pkgver}"/raw/Changes?download=1
-  LICENSE::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-"${pkgver}"/raw/LICENSE?download=1
-  MANIFEST::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-"${pkgver}"/raw/MANIFEST?download=1
-  META.json::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-"${pkgver}"/raw/META.json?download=1
-  META.yml::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-"${pkgver}"/raw/META.yml?download=1
-  Makefile.PL::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-"${pkgver}"/raw/Makefile.PL?download=1
-  README::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-"${pkgver}"/raw/README?download=1
-  dist.ini::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-"${pkgver}"/raw/dist.ini?download=1
+  "${_pkgname}-Develop.pm::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/lib/ExtUtils/MakeMaker/Dist/Zilla/Develop.pm"
+  "${_pkgname}-Changes::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/Changes?download=1"
+  "${_pkgname}-LICENSE::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/LICENSE?download=1"
+  "${_pkgname}-MANIFEST::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/MANIFEST?download=1"
+  "${_pkgname}-META.json::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/META.json?download=1"
+  "${_pkgname}-META.yml::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/META.yml?download=1"
+  "${_pkgname}-Makefile.PL::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/Makefile.PL?download=1"
+  "${_pkgname}-README::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/README?download=1"
+  "${_pkgname}-dist.ini::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/dist.ini?download=1"
 )
 sha256sums=(
   '022bbb3e3cb73e8a9b0e57bcd6c38a0ae80192ff4e8a7cb274d3e773b8f786c8'
@@ -44,6 +44,14 @@ sha256sums=(
 
 prepare() {
   cd "${srcdir}"
+
+  ## Make local filenames similar to upstream filenames
+  for _s in Develop.pm Changes LICENSE MANIFEST META.json META.yml Makefile.PL README dist.ini ; do
+    if [ -e "${_s}" ]; then
+      rm -f "${_s}"
+    fi
+    ln -s "${_pkgname}-${_s}" "${_s}"
+  done
 
   mkdir -p lib/ExtUtils/MakeMaker/Dist/Zilla/
   cat Develop.pm > lib/ExtUtils/MakeMaker/Dist/Zilla/Develop.pm
