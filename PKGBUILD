@@ -4,7 +4,7 @@ _pkgname=jalgo
 pkgname="${_pkgname}-doc-git"
 pkgver=r484.20190207.51652be
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Algorithm visualization tool written in Java developed at TU Dresden: Documentation."
 arch=('any')
 url="https://github.com/tud-fop/j-Algo"
@@ -21,7 +21,7 @@ conflicts=(
   'jalgo-doc'
 )
 source=(
-  "${_pkgname}::git://github.com/tud-fop/j-Algo.git"
+  "${_pkgname}::https://github.com/tud-fop/j-Algo.git"
 )
 sha256sums=(
   'SKIP'
