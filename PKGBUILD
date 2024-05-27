@@ -2,9 +2,9 @@
 
 _pkgname=jalgo
 pkgname="${_pkgname}-doc-git"
-pkgver=r484.20190207.51652be
+pkgver=r524.20201117.f59fbbd
 epoch=1
-pkgrel=3
+pkgrel=1
 pkgdesc="Algorithm visualization tool written in Java developed at TU Dresden: Documentation."
 arch=('any')
 url="https://github.com/tud-fop/j-Algo"
