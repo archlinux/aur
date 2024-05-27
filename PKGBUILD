@@ -7,7 +7,7 @@
 
 _target="powerpc64-linux-gnu"
 pkgname=${_target}-gcc-stage2
-pkgver=13.2.0
+pkgver=14.1.0
 _majorver=${pkgver}
 _islver=0.26
 pkgrel=2
@@ -23,12 +23,14 @@ replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1=${pkgver}" $_target-gcc)
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
         https://libisl.sourceforge.io/isl-$_islver.tar.xz)
-sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
+sha256sums=('99ddc87d06832f80444970e63b9e7072dcd7e6c5e7cc45926d9aac912378a800'
             'SKIP'
             'a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504')
-validpgpkeys=(D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
-              33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
-              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
+validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
+              86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
+              D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
+
 
 prepare() {
   cd gcc-${pkgver}
