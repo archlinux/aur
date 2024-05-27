@@ -31,7 +31,7 @@ build() {
      -buildmode=pie \
      -mod=readonly \
      -modcacherw \
-     -ldflags "-s -w -linkmode external -extldflags \"${LDFLAGS}\"" \
+     -ldflags "-s -w" \
      -o _build \
      ./...
 }
