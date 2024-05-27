@@ -11,6 +11,7 @@ license=('unknown')
 provides=('nvidia-utils-nvlax')
 replaces=('nvidia-utils-nvlax')
 conflicts=('nvidia-utils-nvlax')
+makedepends=('git')
 source=("git+$url.git")
 sha1sums=('SKIP')
 
@@ -31,13 +32,13 @@ pkgver() {
 package() {
 	depends=("nvidia-utils=$pkgver")
 
-    # libnvidia-encode.so
-    . <(sed -n '/.*patch_list=($/,/^)$/p' $pkgname/patch.sh)
-    # libnvidia-fbc.so
-    . <(sed -n '/.*patch_list=($/,/^)$/p' $pkgname/patch-fbc.sh | sed 's|patch_list|fbc_patch_list|')
-    
-    [ -z "${patch_list[$pkgver]}" ] && error "Upstream haven't update !" && exit 2
-    [ -z "${fbc_patch_list[$pkgver]}" ] && error "Upstream haven't update !" && exit 2
+	# libnvidia-encode.so
+	. <(sed -n '/.*patch_list=($/,/^)$/p' $pkgname/patch.sh)
+	# libnvidia-fbc.so
+	. <(sed -n '/.*patch_list=($/,/^)$/p' $pkgname/patch-fbc.sh | sed 's|patch_list|fbc_patch_list|')
+
+	[ -z "${patch_list[$pkgver]}" ] && error "Upstream haven't update !" && exit 2
+	[ -z "${fbc_patch_list[$pkgver]}" ] && error "Upstream haven't update !" && exit 2
 
 	mkdir -p "$pkgdir/usr/share/libalpm/hooks/"
 	cat <<- EOF > "$pkgdir/usr/share/libalpm/hooks/nvidia-patch.hook"
