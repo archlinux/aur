@@ -1,0 +1,16 @@
+[Unit]
+Description = hoarder workers
+Wants = network-online.target redis.service hoarder-browser.service
+After = network-online.target redis.service hoarder-browser.service
+
+[Service]
+User = hoarder
+Restart = on-failure
+Environment = DATA_DIR=/var/lib/hoarder
+EnvironmentFile = -/etc/hoarder/hoarder.env
+WorkingDirectory = /usr/share/hoarder/apps/workers
+ExecStart = /usr/bin/pnpm run start:prod
+TimeoutStopSec = 5
+
+[Install]
+WantedBy = multi-user.target
