@@ -1,0 +1,14 @@
+pkgbase = plasma6-wallpapers-smart-video-wallpaper-reborn
+	pkgdesc = Mouse gestures for the KDE Plasma Panel, drag window, run any shortcut, command, application with configurable mouse actions!
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/luisbocanegra/plasma-smart-video-wallpaper-reborn
+	arch = any
+	license = GPL3
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = qt6-multimedia
+	source = plasma-smart-video-wallpaper-reborn-0.2.0.tar.gz::https://github.com/luisbocanegra/plasma-smart-video-wallpaper-reborn/archive/v0.2.0/plasma-smart-video-wallpaper-reborn-0.2.0.tar.gz
+	sha256sums = c58a7806ac207bbf4d6f467a66662a0938520dba982bfe18d48eb6f91d05bba7
+
+pkgname = plasma6-wallpapers-smart-video-wallpaper-reborn
