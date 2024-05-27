@@ -1,15 +1,15 @@
 # Maintainer: Hendrik Wolff <hendrik.wolff@agdsn.me>
 
 pkgname=shikane
-pkgver=0.2.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Dynamic output configuration tool for Wayland compositors"
+pkgdesc="deterministic dynamic output configuration tool for Wayland compositors"
 arch=('x86_64')
 url="https://gitlab.com/w0lff/shikane"
 license=('MIT')
 makedepends=('cargo' 'pandoc')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('a5d91c1d946e17cf963428548b8eb7b36857afede26cf28145eaf1ece9c59ab43311b33da6da778ea8567a4c546f89efd0a58e2860ce0f26a2d43fd6b303763c')
+sha512sums=('490e730f9028e2341bed9e62ca743f28e6e525d0dbb4b72b3c719d6c1e9770abb5060ce03504d99d2e3e7a360ab8c82a7eb7b3e536234c3b9c65904f10f33477')
 
 prepare() {
     cd $pkgname-$pkgver
@@ -24,13 +24,18 @@ build() {
 
     # build man pages
     ./scripts/build-docs.sh man
+    ./scripts/build-docs.sh html
 }
 
 package() {
     cd $pkgname-$pkgver
-    install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/shikane"
-    install -Dm644 build/shikane.1.gz "$pkgdir/usr/share/man/man1/shikane.1.gz"
-    install -Dm644 build/shikane.5.gz "$pkgdir/usr/share/man/man5/shikane.5.gz"
+    install -Dm755 target/release/shikane "$pkgdir/usr/bin/shikane"
+    install -Dm755 target/release/shikanectl "$pkgdir/usr/bin/shikanectl"
+    install -Dm644 build/man/shikane.1.gz "$pkgdir/usr/share/man/man1/shikane.1.gz"
+    install -Dm644 build/man/shikane.5.gz "$pkgdir/usr/share/man/man5/shikane.5.gz"
+    install -Dm644 build/man/shikanectl.1.gz "$pkgdir/usr/share/man/man1/shikanectl.1.gz"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/html/" build/html/*
 }
