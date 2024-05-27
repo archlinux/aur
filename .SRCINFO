@@ -1,6 +1,6 @@
 pkgbase = dropbox
 	pkgdesc = A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
-	pkgver = 197.4.7571
+	pkgver = 199.4.6287
 	pkgrel = 1
 	url = https://www.dropbox.com
 	arch = i686
@@ -30,13 +30,13 @@ pkgbase = dropbox
 	sha256sums = 46364021c9d63e228de58584a09eaf5bd47a5d2080586eae98935357faebfc5f
 	sha256sums = 6c67a9c8c95c08fafafd2f1d828074b13e3347b05d2e4f4bf4e62746115d7477
 	sha256sums = 98581e65a91ae1f19ed42edcdaaa52e102298b5da0d71b50089393d364474d3d
-	source_i686 = https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-197.4.7571.tar.gz
-	source_i686 = https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-197.4.7571.tar.gz.asc
-	sha256sums_i686 = e9e77fbf167564ad299f1b3e204bd05cf1796d2fdabef94ad6ed712929b0c6f2
+	source_i686 = https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-199.4.6287.tar.gz
+	source_i686 = https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-199.4.6287.tar.gz.asc
+	sha256sums_i686 = 83e69241b94e4b59fc18764079709770bfdf3e70499003582b3d738c8c1820a4
 	sha256sums_i686 = SKIP
-	source_x86_64 = https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-197.4.7571.tar.gz
-	source_x86_64 = https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-197.4.7571.tar.gz.asc
-	sha256sums_x86_64 = 24145744f9bd0aeba3e36ed869009acabca0a58568823814c3325070a397b7e8
+	source_x86_64 = https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-199.4.6287.tar.gz
+	source_x86_64 = https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-199.4.6287.tar.gz.asc
+	sha256sums_x86_64 = 464239711efe4082a65fb1f7d170b7221daa4f00e4fad572be5c3fba6d264b4e
 	sha256sums_x86_64 = SKIP
 
 pkgname = dropbox
