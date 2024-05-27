@@ -8,16 +8,11 @@
 # options
 : ${_build_tg_owt:=true}
 
-: ${_build_git:=true}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
 # basic info
 _pkgname="kotatogram-desktop"
-pkgname="$_pkgname${_pkgtype:-}"
+pkgname="$_pkgname-git"
 pkgver=1.4.14.r4897.g0c4ceba
-pkgrel=2
+pkgrel=3
 pkgdesc='Experimental fork of Telegram Desktop'
 url="https://github.com/kotatogram/kotatogram-desktop"
 license=('GPL-3.0-only')
@@ -37,7 +32,7 @@ _main_package() {
     'kcoreaddons'
     'kimageformats'
     'libdispatch'
-    'libjpeg-turbo'
+    'libjpeg.so' # 'libjpeg-turbo' ????
     'libpipewire'
     'libsigc++'
     'libvpx'
@@ -72,7 +67,6 @@ _main_package() {
     'git'
     'meson'
     'microsoft-gsl'
-    'mold'
     'ninja'
     'pipewire'
     'plasma-wayland-protocols'
@@ -100,13 +94,12 @@ _main_package() {
   sha256sums+=('SKIP')
 
   _source_kotatogram_desktop
-  _source_ericniebler_range_v3
   _source_telegramdesktop_libtgvoip
 
   _source_desktop_app_cmake_helpers
   _source_mnauw_cppgir
 
-  if [[ "${_build_tg_owt::1}" == "t" ]] ; then
+  if [[ "${_build_tg_owt::1}" == "t" ]]; then
     _source_kotatogram_tg_owt
   else
     makedepends+=('libtg_owt-git')
@@ -163,7 +156,6 @@ _source_kotatogram_desktop() {
     'desktop-app.lib_webview'::'git+https://github.com/desktop-app/lib_webview.git'
     'desktop-app.libprisma'::'git+https://github.com/desktop-app/libprisma.git'
     'desktop-app.rlottie'::'git+https://github.com/desktop-app/rlottie.git'
-    'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
     'fcitx.fcitx5-qt'::'git+https://github.com/fcitx/fcitx5-qt.git'
     'gitlab-freedesktop-mirrors.wayland'::'git+https://github.com/gitlab-freedesktop-mirrors/wayland.git'
     'gitlab-freedesktop-mirrors.wayland-protocols'::'git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git'
@@ -183,7 +175,6 @@ _source_kotatogram_desktop() {
     'telegrammessenger.tgcalls'::'git+https://github.com/TelegramMessenger/tgcalls.git'
   )
   sha256sums+=(
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -238,7 +229,6 @@ _source_kotatogram_desktop() {
       'desktop-app.lib_webview'::'Telegram/lib_webview'
       'desktop-app.libprisma'::'Telegram/ThirdParty/libprisma'
       'desktop-app.rlottie'::'Telegram/ThirdParty/rlottie'
-      'ericniebler.range-v3'::'Telegram/ThirdParty/range-v3'
       'fcitx.fcitx5-qt'::'Telegram/ThirdParty/fcitx5-qt'
       'gitlab-freedesktop-mirrors.wayland'::'Telegram/ThirdParty/wayland'
       'gitlab-freedesktop-mirrors.wayland-protocols'::'Telegram/ThirdParty/wayland-protocols'
@@ -256,24 +246,6 @@ _source_kotatogram_desktop() {
       'tartanllama.expected'::'Telegram/ThirdParty/expected'
       'telegramdesktop.libtgvoip'::'Telegram/ThirdParty/libtgvoip'
       'telegrammessenger.tgcalls'::'Telegram/ThirdParty/tgcalls'
-    )
-    _submodule_update
-  )
-}
-
-_source_ericniebler_range_v3() {
-  source+=(
-    'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
-  )
-  sha256sums+=(
-    'SKIP'
-  )
-
-  _prepare_ericniebler_range_v3() (
-    cd "$srcdir/$_pkgsrc"
-    cd "Telegram/ThirdParty/range-v3"
-    local _submodules=(
-      'ericniebler.range-v3'::'doc/gh-pages'
     )
     _submodule_update
   )
@@ -361,7 +333,7 @@ _build_kotatogram() (
     -DTDESKTOP_API_TEST=ON
   )
 
-  if [[ "${_build_tg_owt::1}" == "t" ]] ; then
+  if [[ "${_build_tg_owt::1}" == "t" ]]; then
     _cmake_options+=(-Dtg_owt_DIR="$srcdir/build-tg_owt")
   fi
 
@@ -382,8 +354,8 @@ pkgver() {
 
 prepare() {
   _submodule_update() {
-    local _module;
-    for _module in "${_submodules[@]}" ; do
+    local _module
+    for _module in "${_submodules[@]}"; do
       git submodule init "${_module##*::}"
       git submodule set-url "${_module##*::}" "$srcdir/${_module%%::*}"
       git -c protocol.file.allow=always submodule update "${_module##*::}"
@@ -395,12 +367,11 @@ prepare() {
     patch -Np1 -F100 -i "$1"
   }
 
-  if [[ "${_build_tg_owt::1}" == "t" ]] ; then
+  if [[ "${_build_tg_owt::1}" == "t" ]]; then
     _prepare_kotatogram_tg_owt
   fi
 
   _prepare_kotatogram_desktop
-  _prepare_ericniebler_range_v3
   _prepare_telegramdesktop_libtgvoip
 
   _prepare_desktop_app_cmake_helpers
@@ -409,9 +380,8 @@ prepare() {
 
 build() {
   export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
-  export LDFLAGS+=" -fuse-ld=mold"
 
-  if [[ "${_build_tg_owt::1}" == "t" ]] ; then
+  if [[ "${_build_tg_owt::1}" == "t" ]]; then
     _build_tg_owt
   fi
 
