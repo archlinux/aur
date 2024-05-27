@@ -1,43 +1,45 @@
 # Maintainer: Catppuccin <releases@catppuccin.com>
 
 pkgname=catppuccin-gtk-theme-macchiato
-pkgver=0.7.5 # renovate: datasource=github-tags depName=catppuccin/gtk
-pkgrel=2
-pkgdesc='Soothing pastel theme for GTK3 - Macchiato'
+pkgver=1.0.0 # renovate: datasource=github-tags depName=catppuccin/gtk
+pkgrel=1
+pkgdesc='Soothing pastel theme for GTK - Macchiato'
 arch=('any')
 license=('GPL3')
 url='https://github.com/catppuccin/gtk'
-source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Blue-Dark.zip"
-        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Flamingo-Dark.zip"
-        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Green-Dark.zip"
-        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Lavender-Dark.zip"
-        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Maroon-Dark.zip"
-        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Mauve-Dark.zip"
-        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Peach-Dark.zip"
-        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Pink-Dark.zip"
-        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Red-Dark.zip"
-        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Rosewater-Dark.zip"
-        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Sapphire-Dark.zip"
-        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Sky-Dark.zip"
-        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Teal-Dark.zip"
-        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Yellow-Dark.zip")
+source=(
+	"$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-blue-standard+default.zip"
+	"$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-flamingo-standard+default.zip"
+	"$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-green-standard+default.zip"
+	"$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-lavender-standard+default.zip"
+	"$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-maroon-standard+default.zip"
+	"$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-mauve-standard+default.zip"
+	"$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-peach-standard+default.zip"
+	"$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-pink-standard+default.zip"
+	"$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-red-standard+default.zip"
+	"$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-rosewater-standard+default.zip"
+	"$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-sapphire-standard+default.zip"
+	"$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-sky-standard+default.zip"
+	"$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-teal-standard+default.zip"
+	"$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-yellow-standard+default.zip"
+)
 
-sha256sums=('0b7abe8604e9aacc9f2afc92f354000daf60ccf294e6f0b3fe6418de40949d95'
-            '88e6b70ce2035c83f1aa5857013637b79e4926d3cc6fc747d5054e2d73bf410b'
-            'a1c7c3de5725e327262147715f4dcb3cf35bbc2bc830adab1209689f9bd66790'
-            '5a66b0349b243776f0a82cd4569866be6577c2d5907feb474cfb069f6c18395d'
-            '40bab01a58f34b0243efef926a0dd1eb19ef06e37c201781334229a5f53252de'
-            'b9d0e024ad34036ad99162dacbb49321cb386c0abab0582238b57343ae069193'
-            'e01b2958a0bb24bf496b8dce689ab2fd25eb9fd3446bbf211938b90e945119d6'
-            'd26da74a5b80d97acdd5d67950e1b920f49c1f93ff2decf178d7c4ef15f0e9e9'
-            '5293d168d43520575923b30864683ad0f86b9f520341859ec86973db6b17b700'
-            '784814bbbae4af62a57888b6d31d4783303f68144f5681b89ce3e51ff3cef66b'
-            '05f74d914789749be21a1e5b1967faa63ed4cdd9a1a3136ef7eb296c5929a7a6'
-            '7fa14e3310025406271cb804ed4a8bb624210da8f413e4ffb4a90451ca30ca5f'
-            'b3c4da4813cd02e26cb175d16d7d161dd4257989c5a751e5e83b133619ea08f1'
-            'f582ff54a1987956f16a73db0c76ab523875e96df97d65c14df88448862315b6')
+sha256sums=('284bd641ca9c2ecbdbb49a265692f3c9a1999c7636c53e5ea7e889501f4a2939'
+            '49e5619b15a20c8533e348a23ad731b58d301d95ba54ff893a15eca6f4aadcba'
+            '9b31da79375c08c52697df2303716ee9dd7463c2d28901950bb845ef84405f7b'
+            '5ad7a48472f8e653dde38ff82b40968e7c97fd083d190177f5891edbf9b56dc5'
+            'f4670e4b0c1c4949ec9841189306dd88f3cd24185246903778cae274868ec52a'
+            '60faf5c1092df518152f1ff08050b0599761ceeaefba4c468454167513e6a538'
+            '028f43af7e0a9c04ce268f9541d7a7e07abba81523ea195c26f88db822927e26'
+            '1689b98419d4baa7873ac803fc83ec6c213d6432ba1caeaeea87389e6dcee9d1'
+            '33aa8c84143ba1d43d14915c919fa7057160da9e277849bc4198ae112f195aee'
+            'a5c1dad0499e891e6cb7d11e48b9117e5660fd7e1a66229014e0d4ca418cf879'
+            'eb7c09b76984ee46fa29fa95be2d1a3cd782c7b939e1c4319bda475e57ce2011'
+            'e7ac6d72a2e5897e9097faccc79a6899aab3632c166d7b141efdd62a3d4a8f00'
+            'a55455083a5d3ea965abbcf00a98ea4106c997e438c0b944a8cd7292e362e3e8'
+            'c9ecda10b6820609df433ba3d69c3cf0ba77871a4f0534e0284799adc256e28e')
 package() {
-  install -d "$pkgdir/usr/share/themes/"
-  cp -r -a --no-preserve=ownership \
-    Catppuccin-Macchiato-* "$pkgdir/usr/share/themes"
+	install -d "$pkgdir/usr/share/themes/"
+	cp -r -a --no-preserve=ownership \
+		catppuccin-macchiato-* "$pkgdir/usr/share/themes"
 }
