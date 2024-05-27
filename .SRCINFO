@@ -1,0 +1,15 @@
+pkgbase = liquidsoap-prettier
+	pkgdesc = Prettier plugin for liquidsoap script
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/savonet/liquidsoap-prettier
+	arch = any
+	license = unknown
+	makedepends = npm
+	depends = node
+	provides = liquidsoap-prettier
+	noextract = liquidsoap-prettier-1.5.1.tar.gz
+	source = https://registry.npmjs.org/liquidsoap-prettier/-/liquidsoap-prettier-1.5.1.tgz
+	sha256sums = SKIP
+
+pkgname = liquidsoap-prettier
