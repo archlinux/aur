@@ -3,7 +3,7 @@
 _projectname="cito"
 _pkgname="${_projectname}"
 pkgname="${_pkgname}-git"
-pkgver=3.1.2+50.r2508.20240323.0490a98
+pkgver=3.2.4+1.r2575.20240523.a383426
 pkgrel=1
 pkgdesc="The Ć Programming Language. A programming language which can be translated automatically to C, C++, C#, D, Java, JavaScript, Python, Swift, TypeScript and OpenCL C."
 arch=(
