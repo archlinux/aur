@@ -9,7 +9,7 @@ url="http://github.com/ipazc/mtcnn"
 license=("MIT")
 epoch=0
 pkgver=0.1.0+r55.20210114.8efabec
-pkgrel=1
+pkgrel=2
 arch=(
   'any'
 )
@@ -33,7 +33,7 @@ conflicts=(
 )
 optdepends=()
 source=(
-  "${_pymodule}::git+git://github.com/ipazc/mtcnn.git"
+  "${_pymodule}::git+https://github.com/ipazc/mtcnn.git"
 )
 sha256sums=(
   'SKIP'

@@ -1,7 +1,7 @@
 pkgbase = python-mtcnn-git
 	pkgdesc = Implementation of the MTCNN face detector for Keras. Written from scratch, using as a reference the implementation of MTCNN from David Sandberg (FaceNet’s MTCNN) in Facenet. Based on the paper Zhang, K et al. (2016)
 	pkgver = 0.1.0+r55.20210114.8efabec
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://github.com/ipazc/mtcnn
 	arch = any
@@ -16,8 +16,7 @@ pkgbase = python-mtcnn-git
 	provides = python3-mtcnn=0.1.0+r55.20210114.8efabec
 	conflicts = python-mtcnn
 	conflicts = python3-mtcnn
-	source = mtcnn::git+git://github.com/ipazc/mtcnn.git
+	source = mtcnn::git+https://github.com/ipazc/mtcnn.git
 	sha256sums = SKIP
 
 pkgname = python-mtcnn-git
-
