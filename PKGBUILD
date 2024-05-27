@@ -2,12 +2,12 @@
 # Contributor: 2ion <dev@2ion.de>
 pkgname=bunsen-common-git
 pkgver=r143.1f382a8
-pkgrel=2
+pkgrel=3
 pkgdesc="Shared shell scripts commonly used in BunsenLabs Linux projects"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-common"
 license=('GPL-3.0-or-later')
-depends=('bash' 'ncurses')
+depends=('hicolor-icon-theme')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
