@@ -1,0 +1,18 @@
+pkgbase = brother-mfc-l5755dw
+	pkgdesc = Brother cups and lpd driver for L5755DW
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = tcsh
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	source = https://download.brother.com/welcome/dlf102716/mfcl5755dwlpr-3.5.1-1.i386.deb
+	source = https://download.brother.com/welcome/dlf102717/mfcl5755dwcupswrapper-3.5.1-1.i386.deb
+	sha256sums = 42ef5ac00e12eb12fbb4f48e8bb936fb48d7ff8ec9883f7396847357ec061999
+	sha256sums = 80853e12ff00bbb3693e5037656ce20ce78291eb7dcfd20c52e231696233011d
+
+pkgname = brother-mfc-l5755dw
