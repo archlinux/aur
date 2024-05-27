@@ -22,11 +22,12 @@ arch=('x86_64')
 license=('GPL-3.0-only')
 
 depends=(
+  'glslang'
   'libwebp'
   'libxrandr'
   'qt6-base'
   'sdl2'
-  'shaderc'
+  'spirv-tools'
 
   ## implicit
   #curl
@@ -38,17 +39,26 @@ depends=(
   #systemd-libs
   #zlib
   #zstd
+
+  ## AUR
+  'libbacktrace'
 )
 makedepends=(
   'clang'
   'cmake'
   'extra-cmake-modules'
   'git'
+  'lld'
   'llvm'
-  'mold'
   'ninja'
+  'python'
   'qt6-tools'
+  'qt6-wayland'
+  'spirv-headers'
 )
+
+source=("google.shaderc"::"git+https://github.com/google/shaderc.git")
+sha256sums=('SKIP')
 
 if [ "${_build_git::1}" != "t" ]; then
   _commit=26917f14c568a8133721bb21614c08bd6fe1efce
@@ -61,21 +71,12 @@ if [ "${_build_git::1}" != "t" ]; then
     cd "$_pkgsrc"
     git describe --tag | sed -E 's/^[^0-9]*//;s/-/./g'
   }
-
-  _prepare() {
-    # remove shaderc semantic debug
-    sed -e '/vk_khr_shader_non_semantic_info/d' \
-      -e '/SetEmitNonSemanticDebugInfo/d' \
-      -i "$_pkgsrc/src/util/vulkan_pipeline.cpp"
-  }
 else
   provides=("$_pkgname")
   conflicts=("$_pkgname")
 
-  _commit=0e2204e9289e5173ef7bb0f793575110a709a79e
-
   _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#commit=_commit")
+  source+=("$_pkgsrc"::"git+$url.git")
   sha256sums+=('SKIP')
 
   pkgver() {
@@ -87,29 +88,55 @@ else
 
     printf "%s.r%s.g%s" "${_pkgver:?}" "${_revision:?}" "${_commit:?}"
   }
-
-  _prepare() {
-    # remove shaderc semantic debug
-    sed -e '/shaderc_compile_options_set_emit_non_semantic_debug_info/d' \
-      -i "$_pkgsrc/src/util/gpu_device.cpp"
-  }
 fi
 
 prepare() {
-  _prepare
+  cd "google.shaderc"
+  # apply duckstation patch
+  git apply "$srcdir/$_pkgname/scripts/shaderc-changes.patch"
+
+  # de-vendor libs and disable git versioning
+  sed '/examples/d;/third_party/d' -i CMakeLists.txt
+  sed '/build-version/d' -i glslc/CMakeLists.txt
+  cat <<- EOF > glslc/src/build-version.inc
+"${pkgver}\\n"
+"$(pacman -Q spirv-tools | cut -d \  -f 2 | sed 's/-.*//')\\n"
+"$(pacman -Q glslang | cut -d \  -f 2 | sed 's/-.*//')\\n"
+EOF
 }
 
 build() {
   export CC CXX CFLAGS CXXFLAGS LDFLAGS LTOFLAGS
   CC="clang"
   CXX="clang++"
-  LDFLAGS+=" -fuse-ld=mold"
+  LDFLAGS+=" -fuse-ld=lld"
   LTOFLAGS="-flto=thin"
 
   if [[ "${_build_avx::1}" == "t" ]]; then
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
     export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
+
+  echo "Building shaderc..."
+
+  local _cmake_shaderc=(
+    -B build_shaderc
+    -S "google.shaderc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DSHADERC_SKIP_TESTS=ON
+    -DSHADERC_SKIP_EXAMPLES=ON
+    -DSHADERC_SKIP_COPYRIGHT_CHECK=ON
+    -Dglslang_SOURCE_DIR=/usr/include/glslang
+    -Wno-dev
+  )
+
+  cmake "${_cmake_shaderc[@]}"
+  cmake --build build_shaderc
+  DESTDIR="$srcdir/deps" cmake --install build_shaderc
+
+  echo "Building duckstation..."
 
   local _cmake_options=(
     -B build
@@ -118,6 +145,8 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DBUILD_NOGUI_FRONTEND=OFF
     -DBUILD_QT_FRONTEND=ON
+    -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
+    -DCMAKE_SKIP_RPATH=ON
     -Wno-dev
   )
 
@@ -129,25 +158,28 @@ package() {
   install -dm755 "$pkgdir/opt/$_pkgname/"
   cp --reflink=auto -r build/bin/{resources,translations,duckstation-qt} "$pkgdir/opt/$_pkgname/"
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/duckstation-qt" << END
+  # bundled shaderc
+  install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so.1" -t "$pkgdir/opt/$_pkgname/"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/duckstation" << END
 #!/usr/bin/env bash
 exec /opt/$_pkgname/duckstation-qt "\$@"
 END
 
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/duckstation-qt.desktop" << END
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/duckstation.desktop" << END
 [Desktop Entry]
 Type=Application
 Name=DuckStation
 GenericName=PlayStation Emulator
 Comment=PlayStation emulator
-Icon=duckstation-qt
-TryExec=duckstation-qt
-Exec=duckstation-qt %f
+Icon=duckstation
+TryExec=duckstation
+Exec=duckstation %f
 Categories=Game;Emulator;Qt;
 END
 
   install -dm755 "$pkgdir/usr/share/pixmaps/"
-  ln -sf "$pkgdir/opt/$_pkgname/resources/images/duck.png" "$pkgdir/usr/share/pixmaps/duckstation-qt.png"
+  ln -sf "$pkgdir/opt/$_pkgname/resources/images/duck.png" "$pkgdir/usr/share/pixmaps/duckstation.png"
 
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }

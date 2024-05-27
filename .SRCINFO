@@ -9,16 +9,23 @@ pkgbase = duckstation
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = lld
 	makedepends = llvm
-	makedepends = mold
 	makedepends = ninja
+	makedepends = python
 	makedepends = qt6-tools
+	makedepends = qt6-wayland
+	makedepends = spirv-headers
+	depends = glslang
 	depends = libwebp
 	depends = libxrandr
 	depends = qt6-base
 	depends = sdl2
-	depends = shaderc
+	depends = spirv-tools
+	depends = libbacktrace
+	source = google.shaderc::git+https://github.com/google/shaderc.git
 	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=26917f14c568a8133721bb21614c08bd6fe1efce
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = duckstation
