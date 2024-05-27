@@ -7,14 +7,14 @@ _archivever="23_rc6"
 
 pkgname=ambertools
 pkgver=23.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=(GPL LGPL)
 arch=(x86_64)
-depends=(blas boost bzip2 fftw gcc12-fortran lapack netcdf python-mpi4py
+depends=(blas boost bzip2 fftw lapack netcdf python-mpi4py
          python-scipy readline tk zlib)
-makedepends=(cmake cuda openmpi cython)
+makedepends=(cmake cuda openmpi cython gcc13-fortran)
 optdepends=('cuda: GPU acceleration support'
             'openmpi: MPI support')
 options=(!buildflags)
@@ -24,8 +24,8 @@ source=("https://ambermd.org/downloads/AmberTools${_archivever}.tar.bz2"
         "0002-Allow-using-newer-CUDA.patch"
         "50-ambertools.conf")
 sha256sums=('debb52e6ef2e1b4eaa917a8b4d4934bd2388659c660501a81ea044903bf9ee9d'
-            '40bcd26bea736f489205910f8854727042c140d7136b15bc090e8ee7b40e4dd9'
-            '617972864da99545f751f2bfe0b59a81237b2f2fd63792c5f6499b9a05459570'
+            'e9b5548061e836eda0bf4213c13fb31e7b20f20167524bf8014fa2c6c9e42f62'
+            '3883d78b6d3b641395928ba4330d94f997c2d2c88035eca5bfea7bda568d2ef3'
             '38835459f9710fc33bf2a96f4dfa26aef08d21754aec2e297032c214c4e781ef')
 
 prepare() {
@@ -51,8 +51,8 @@ build() {
   mkdir -p build
   cd build
 
-  CC=gcc-12 CXX=g++-12 FC=gfortran-12 MPICH_CC=gcc-12 \
-    MPICH_CXX=g++-12 MPICH_F90=gfortran-12 MPICH_FC=gfortran-12 \
+  CC=gcc-13 CXX=g++-13 FC=gfortran-13 MPICH_CC=gcc-13 \
+    MPICH_CXX=g++-13 MPICH_F90=gfortran-13 MPICH_FC=gfortran-13 \
     cmake .. -DCMAKE_INSTALL_PREFIX=/opt/amber \
     -DCOMPILER=MANUAL -DCUDA=TRUE -DMPI=TRUE \
     -DDOWNLOAD_MINICONDA=FALSE -DBUILD_GUI=TRUE \

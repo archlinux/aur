@@ -1,8 +1,8 @@
---- a/pytraj/core/c_dict.cpp	2023-06-01 01:42:18.849155346 +0200
-+++ b/pytraj/core/c_dict.cpp	2023-06-01 01:41:36.897435811 +0200
-@@ -452,6 +452,12 @@
-   #define PyMem_RawRealloc(p, n)       PyMem_Realloc(p, n)
-   #define PyMem_RawFree(p)             PyMem_Free(p)
+--- a/pytraj/core/c_dict.cpp	2024-05-27 10:18:32.433771939 +0200
++++ b/pytraj/core/c_dict.cpp	2024-05-27 10:21:04.189619778 +0200
+@@ -850,6 +850,12 @@
+   #define PyObject_Free(p)     PyMem_Free(p)
+   #define PyObject_Realloc(p)  PyMem_Realloc(p)
  #endif
 +#if PY_VERSION_HEX >= 0x030b00a6
 +  #ifndef Py_BUILD_CORE
@@ -10,6 +10,6 @@
 +  #endif
 +  #include "internal/pycore_frame.h"
 +#endif
- #if CYTHON_COMPILING_IN_PYSTON
-   #define __Pyx_PyCode_HasFreeVars(co)  PyCode_HasFreeVars(co)
-   #define __Pyx_PyFrame_SetLineNumber(frame, lineno) PyFrame_SetLineNumber(frame, lineno)
+ #if CYTHON_COMPILING_IN_LIMITED_API
+   #define __Pyx_PyCode_HasFreeVars(co)  (PyCode_GetNumFree(co) > 0)
+   #define __Pyx_PyFrame_SetLineNumber(frame, lineno)
