@@ -9,7 +9,7 @@ license=('GPL3')
 makedepends=('readline')
 depends=('util-linux' 'coreutils' 'sudo')
 optdepends=('ccd2iso: BIN/IMG conversion support' 'mdf2iso: MDF/MDS conversion support')
-md5sums=('7eb6f2d8dd9b9087a76e037118b933f2')
+md5sums=('a5e96363b88aacf6030a5bec70eb89e4')
 
 source=("https://github.com/siyia2/iso-commander/archive/v${pkgver}.tar.gz")
 
