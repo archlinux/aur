@@ -1,0 +1,18 @@
+pkgbase = netns-exec-git
+	pkgdesc = Run commands in a network namespace as a normal user
+	pkgver = 4.aa346fd
+	pkgrel = 1
+	url = https://github.com/pekman/netns-exec
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	optdepends = socat: for dbus proxy
+	provides = netns-exec
+	conflicts = netns-exec
+	source = git+https://github.com/pekman/netns-exec.git
+	source = git+https://git.kernel.org/pub/scm/network/iproute2/iproute2.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = netns-exec-git
