@@ -33,7 +33,7 @@ prepare() {
 
   git submodule init
   git config --local submodule.telepathy-account-widgets.url "$srcdir/telepathy-account-widgets"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   patch -Np1 -i ../enchant-2.patch
 
