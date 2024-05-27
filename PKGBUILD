@@ -10,7 +10,7 @@ license=(MIT)
 depends=(fontconfig gcc-libs freetype2 libxcursor libxi libxrandr oniguruma)
 makedepends=(cargo libxcb libxkbcommon wayland)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('9a2b5090020ba2cd54692790c4a97d294f6420b92195a642a72ba8bd2f34679d15a2ec6b8ee19b5e58e229122bb5aeaee41d8434bbff8a59661053655385d744')
+b2sums=('b8cc799c06c6224c31420c871dc76522b63bcc2c12b8ca57589ce2dc79b8c996985daa1ba9de5d08b404a0b35b0fc985e82cb486124eede422c091d98fb453a8')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -38,6 +38,7 @@ package() {
 
   # Generate and install completions
   install -Dm644 "completions/inlyne.bash" "${pkgdir}/usr/share/bash-completion/completions/inlyne.bash"
+  install -Dm644 "completions/inlyne.elv" "${pkgdir}/usr/share/elvish/lib/inlyne.elv"
   install -Dm644 "completions/inlyne.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/inlyne.fish"
   install -Dm644 "completions/_inlyne"  "${pkgdir}/usr/share/zsh/site-functions/_inlyne"
 

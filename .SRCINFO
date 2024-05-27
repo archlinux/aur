@@ -17,6 +17,6 @@ pkgbase = inlyne
 	depends = libxrandr
 	depends = oniguruma
 	source = inlyne-0.4.2.tar.gz::https://static.crates.io/crates/inlyne/inlyne-0.4.2.crate
-	sha512sums = 9a2b5090020ba2cd54692790c4a97d294f6420b92195a642a72ba8bd2f34679d15a2ec6b8ee19b5e58e229122bb5aeaee41d8434bbff8a59661053655385d744
+	b2sums = b8cc799c06c6224c31420c871dc76522b63bcc2c12b8ca57589ce2dc79b8c996985daa1ba9de5d08b404a0b35b0fc985e82cb486124eede422c091d98fb453a8
 
 pkgname = inlyne
