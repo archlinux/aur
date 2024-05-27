@@ -3,7 +3,7 @@
 
 pkgname=lime3ds
 pkgver=2114
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
@@ -19,7 +19,7 @@ build() {
     # Fix to help cmake find libusb
     CXXFLAGS+=" -I/usr/lib/libusb-1.0"
     
-    cmake -B build -S "$pkgname-$_pkgname" -G Ninja \
+    cmake -B build -S "$pkgname-unified-source-$pkgver" -G Ninja \
 	-DCMAKE_BUILD_TYPE=Release \
     	-DCMAKE_CXX_COMPILER=clang++ \
     	-DCMAKE_C_COMPILER=clang \
