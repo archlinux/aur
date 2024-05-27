@@ -1,0 +1,14 @@
+pkgbase = pongoterm-git
+	pkgdesc = Interactive shell client for PongoOS from checkra1n.
+	pkgver = 2.5.1.r28.g4c9b754
+	pkgrel = 1
+	url = https://checkra.in/
+	arch = any
+	license = MIT
+	optdepends = checkra1n-cli: semi-tethered jailbreak
+	provides = pongoterm
+	conflicts = pongoterm
+	source = pongoterm-git::git+https://github.com/checkra1n/PongoOS.git
+	b2sums = SKIP
+
+pkgname = pongoterm-git
