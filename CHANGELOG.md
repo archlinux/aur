@@ -1,3 +1,54 @@
+# [5.8.0](https://github.com/olets/zsh-abbr/compare/v5.7.1...v5.8.0) (2024-05-23)
+
+
+### Bug Fixes
+
+* **abbr-expand-and-accept:** redefine accept-line, for auto zsh-autosuggestions support [[#91](https://github.com/olets/zsh-abbr/issues/91)] ([04b9b83](https://github.com/olets/zsh-abbr/commit/04b9b83fdf453e465cb1fd43ee829bfb608a5cbc))
+
+### Features
+
+* **abbr-expand-and-accept:** respect user-defined accept-line widget ([3bac1fc](https://github.com/olets/zsh-abbr/commit/3bac1fc57e2b7a73a9bb1e47364becbe2715d150))
+* **init:** do not choke if user sources zshrc in interactive shell ([f59b7aa](https://github.com/olets/zsh-abbr/commit/f59b7aadefda4947a22407cdf666b8e2a7194bf5))
+
+
+
+# [5.7.1](https://github.com/olets/zsh-abbr/compare/v5.7.0...v5.7.1) (2024-05-18)
+
+* **completions:** correct version number ([fa4ca0e](https://github.com/olets/zsh-abbr/commit/fa4ca0e1436e60548ee0c1b637e1fc250c168a7b))
+
+
+
+# [5.7.0](https://github.com/olets/zsh-abbr/compare/v5.6.0...v5.7.0) (2024-05-17)
+
+
+### Features
+
+* **changelog:** script ([e3235c9](https://github.com/olets/zsh-abbr/commit/e3235c96289fc6a6a8f52f313e196f66ae8975f4))
+* **tmpdir:** new internal var instead of mutating user config var ([d42a692](https://github.com/olets/zsh-abbr/commit/d42a69256296ddca39706e15993a60578d05ba5f))
+
+
+
+# [5.6.0](https://github.com/olets/zsh-abbr/compare/v5.5.0...v5.6.0) (2024-05-16)
+
+
+### Bug Fixes
+
+* missing quotation mark ([a19f0b2](https://github.com/olets/zsh-abbr/commit/a19f0b2e155c3eece602d8c24a26eb22c0bbc4fa))
+
+
+### Features
+
+* **ABBR_TMPDIR:** distinct paths for un/privileged users [[#54](https://github.com/olets/zsh-abbr/issues/54)] ([b740b01](https://github.com/olets/zsh-abbr/commit/b740b0166d50f339e19dcde6c240cd8761e5df8d))
+* **ABBR_TMPDIR:** support configurations without trailing slash. Thanks to @ealap ([7103519](https://github.com/olets/zsh-abbr/commit/71035198f805e947eb0434faeed772bc6d6d15ac))
+
+
+
+# [5.5.0](https://github.com/olets/zsh-abbr/compare/v5.4.1...v5.5.0) (2024-05-16)
+
+**⚠️ Yanked ⚠️**
+
+
+
 # [5.4.1](https://github.com/olets/zsh-abbr/compare/v5.4.0...v5.4.1) (2024-03-08)
 
 
