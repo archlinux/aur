@@ -1,14 +1,13 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('azote')
-pkgver=1.12.7
+pkgver=1.12.8
 pkgrel=1
 pkgdesc="Wallpaper & color manager for wlroots-based compositors and some X11 WMs"
 arch=('any')
 url="https://github.com/nwg-piotr/azote"
 license=('GPL3')
-provides=('azote')
-conflicts=('azote' 'azote-git')
 depends=('python' 'python-setuptools' 'python-gobject' 'python-pillow' 'gtk3' 'python-cairo' 'python-send2trash')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('imagemagick: for screen color picker'
             'grim: for screen color picker on wlroots'
 			'slurp: for screen color picker on wlroots'
@@ -20,20 +19,24 @@ optdepends=('imagemagick: for screen color picker'
 			'xorg-xrandr: for checking outputs on X11-based WMs'
 			'wlr-randr-git: for checking outputs on wlroots-based compositors other than sway and Hyprland')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/$pkgname/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v"$pkgver".tar.gz")
 
-md5sums=('ac564a7a10af6375dcbd1ec064f1e5cf')
+md5sums=('7f1e67843a166d4ce70a1f04dd86ec3f')
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  install -D -m 755 "$pkgname"-"$pkgver"/dist/azote "$pkgdir"/usr/bin/azote
   install -D -t "$pkgdir"/usr/share/pixmaps "$pkgname"-"$pkgver"/dist/azote.svg
   install -D -t "$pkgdir"/usr/share/"$pkgname" "$pkgname"-"$pkgver"/dist/indicator*.png
   install -D -t "$pkgdir"/usr/share/applications "$pkgname"-"$pkgver"/dist/azote.desktop
   install -Dm 644 "$pkgname"-"$pkgver"/LICENSE-COLORTHIEF "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-COLORTHIEF"
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
   install -D -t "$pkgdir"/usr/share/licenses/"$pkgname" LICENSE
   install -D -t "$pkgdir"/usr/share/doc/"$pkgname" README.md
   
-  /usr/bin/python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
