@@ -1,6 +1,6 @@
 pkgname=gpt4all-chat
 pkgver=2.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
 url="https://gpt4all.io"
@@ -9,11 +9,8 @@ depends=(
     "gcc-libs" "glibc" "qt6-base" "qt6-httpserver" "qt6-5compat" "qt6-quickcontrols2" 
     "qt6-webengine")
 makedepends=(
-    "cmake" "shaderc" "vulkan-tools" "vulkan-headers" "cuda" "rocm-hip-sdk"
-    "qt6-shadertools" "qt6-svg" "qt6-wayland" "fmt")
-optdepends=(
-    "cuda: llmodel: use CUDA"
-)
+    "cmake" "shaderc" "vulkan-tools" "vulkan-headers" "qt6-shadertools" "qt6-svg" 
+    "qt6-wayland" "fmt")
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/nomic-ai/gpt4all/archive/refs/tags/v$pkgver.tar.gz"
     "001-change-binary-name.diff"
@@ -87,8 +84,8 @@ build() {
         -DKOMPUTE_OPT_USE_BUILT_IN_SPDLOG=OFF \
         -DLLMODEL_KOMPUTE=ON \
         -DLLMODEL_VULKAN=ON \
-        -DLLMODEL_CUDA=ON \
-        -DLLMODEL_ROCM=ON
+        -DLLMODEL_CUDA=OFF \
+        -DLLMODEL_ROCM=OFF
     cmake --build build-chat
 }
 package_gpt4all-chat() {
