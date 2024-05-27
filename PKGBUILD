@@ -10,7 +10,7 @@ fi
 # basic info
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=1.7.5804
+pkgver=1.7.5843
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
