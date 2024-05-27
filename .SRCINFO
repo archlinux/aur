@@ -1,10 +1,11 @@
 pkgbase = favicon-to-png-upload
 	pkgdesc = Downloads the 'favicon.ico' from a given URL and uploads it's PNG-version to imgur.com. The imgut.com-URL is printed on stdout and pushed to the clipboard. Also supports markdown-output.
 	pkgver = 0.3b_2021_02_20
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
+	url = https://aur.archlinux.org/packages/favicon-to-png-upload
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = awk
 	depends = bash
 	depends = coreutils
@@ -19,4 +20,3 @@ pkgbase = favicon-to-png-upload
 	sha256sums = 90752f70f43c8b57197cad6e3f0d6361f6a7ae69d804e47bce769b258f4c1010
 
 pkgname = favicon-to-png-upload
-

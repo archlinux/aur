@@ -6,11 +6,13 @@ pkgname="${_pkgname}"
 _pkgver="latest"
 epoch=0
 pkgver=0.3b_2021_02_20 # NOTE!, the version get's specified via 'pkgver()'. Version changes must be made in the 'favicon-to-png-upload' bash script itself.
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Downloads the 'favicon.ico' from a given URL and uploads it's PNG-version to imgur.com. The imgut.com-URL is printed on stdout and pushed to the clipboard. Also supports markdown-output."
 
-license=('GPL3')
+url="https://aur.archlinux.org/packages/favicon-to-png-upload"
+
+license=('GPL-3.0-or-later')
 
 arch=(
   'any'
