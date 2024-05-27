@@ -10,9 +10,9 @@ license=('GPL')
 depends=('sdl2' 'sdl2_net' 'libpng' 'libzip')
 makedepends=('unzip')
 sha256sums_x86_64=('SKIP'
-                   '5f3f84281c634289a68a31735ba96bcd9fc64b8147efb8265f368eaf4f7359f8')
+                   '6be86c64f35e3cf86decb560cfa6d12d3a6ea0a9dca23fea49975bd3fb7cb137')
 sha256sums_aarch64=('SKIP'
-                    'a36ac89fd36cb4e19afa1ca902df34081666252dc4bdb2d13a1cd0bebdad5979')
+                    '9831aad0abfbca98ca2b148d1420feaab3d40f42c25a06b5934723be451c8087')
 sha256sums_i686=('SKIP'
                  '1e55f16d8400c78f7ce5dafb8447bacdabed4160a32756175af49bc5b0625bf3')
 source_x86_64=("git+https://gitlab.com/linuxbombay/2s2h/2s2h-pkg" "$url/binaries/$pkgver/-/raw/main/2s2h-linux-x64.tar.xz")
