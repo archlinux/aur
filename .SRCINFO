@@ -1,10 +1,9 @@
 pkgbase = binutils-2.35.2
 	pkgdesc = A set of programs to assemble and manipulate binary and object files. Version 2.35.2.
 	pkgver = 2.35.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
-	groups = base-devel
 	license = GPL
 	makedepends = elfutils
 	depends = elfutils

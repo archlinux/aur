@@ -10,14 +10,14 @@ _pkgname="binutils"
 _pkgver=2.35.2
 pkgname="${_pkgname}-${_pkgver}"
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs to assemble and manipulate binary and object files. Version ${_pkgver}."
 arch=(
   'x86_64'
 )
 url='https://www.gnu.org/software/binutils/'
 license=("GPL")
-groups=("base-devel")
+groups=()
 depends=(
   "elfutils"
   "glibc"
