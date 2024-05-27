@@ -1,0 +1,16 @@
+pkgbase = knotidx
+	pkgdesc = Fast object indexer
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/shtirlic/knotidx
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = knotidx-0.0.1.tar.gz::https://github.com/shtirlic/knotidx/archive/v0.0.1.tar.gz
+	sha256sums = 7b04e092392ad0596075252e091281a6865971d3cdf8e1520ab0c3b7b1bea29f
+
+pkgname = knotidx
