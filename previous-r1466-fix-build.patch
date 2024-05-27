@@ -1,0 +1,20 @@
+diff --unified --recursive --text previous/src/ioMemTabNEXT.c previous-new/src/ioMemTabNEXT.c
+--- previous/src/ioMemTabNEXT.c	2024-05-27 12:04:38.493507639 +0200
++++ previous-new/src/ioMemTabNEXT.c	2024-05-27 12:26:54.843722955 +0200
+@@ -312,5 +312,5 @@
+ 	{ 0x0201a002, 0x0001e003, SIZE_BYTE, IoMem_ReadWithoutInterception, IoMem_WriteWithoutInterceptionButTrace },
+ 	{ 0x0201a003, 0x0001e003, SIZE_BYTE, IoMem_ReadWithoutInterception, IoMem_WriteWithoutInterceptionButTrace },
+ 
+-	{ 0, 0, NULL, NULL }
++	{ 0, 0, 0, NULL, NULL }
+ };
+diff --unified --recursive --text previous/src/ioMemTabTurbo.c previous-new/src/ioMemTabTurbo.c
+--- previous/src/ioMemTabTurbo.c	2024-05-27 12:04:38.493507639 +0200
++++ previous-new/src/ioMemTabTurbo.c	2024-05-27 12:28:38.718446720 +0200
+@@ -233,5 +233,5 @@
+ 	{ 0x0201c002, 0x0001e003, SIZE_BYTE, RAMDAC_Read, RAMDAC_Write },
+ 	{ 0x0201c003, 0x0001e003, SIZE_BYTE, RAMDAC_Read, RAMDAC_Write },
+ 	
+-	{ 0, 0, NULL, NULL }
++	{ 0, 0, 0, NULL, NULL }
+ };
