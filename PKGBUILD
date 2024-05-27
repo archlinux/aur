@@ -10,7 +10,7 @@
 # AUR не выполняет оба этих пункта. Поэтому перед выполнением makepkg
 # необходимо скачивать СКЗИ самостоятельно с сайта производителя. Ссылка:
 #
-# https://cryptopro.ru/sites/default/files/private/csp/50/12900/linux-amd64.tgz
+# https://cryptopro.ru/sites/default/files/private/csp/50/13000/linux-amd64.tgz
 #
 # Данный PKGBUILD старается следовать последней не-сертифицированной версии CSP (не RC).
 #
@@ -20,15 +20,15 @@
 # accessing it requires logging in. Please download the archive manually
 # and place alongside the PKGBUILD before building. Link:
 #
-# https://cryptopro.ru/sites/default/files/private/csp/50/12900/linux-amd64.tgz
+# https://cryptopro.ru/sites/default/files/private/csp/50/13000/linux-amd64.tgz
 #
 # This PKGBUILD tracks the latest not-certified version of CSP (not RC).
 
 pkgname="cryptopro-csp-k1"
-pkgver=5.0.12900
-pkgrel=3
+pkgver=5.0.13000
+pkgrel=1
 _pkgver_patch="7"
-_cades_version="2.0.14892"
+_cades_version="2.0.15000"
 _pkgver="$pkgver-$_pkgver_patch"
 pkgdesc='CryptoPro CSP 5.0'
 arch=('x86_64')
@@ -55,9 +55,9 @@ makedepends=(
     'libarchive'
 )
 source=(
-    'linux-amd64.tgz::local://linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/12900/linux-amd64.tgz
+    'linux-amd64.tgz::local://linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/12300/linux-amd64.tgz
 )
-sha256sums=('075c0198eb6e5bcdcec0758f1c6e4d1203fdd789ae71fadb80c478fcbe3f2c01')
+sha256sums=('2e524a9ceb9884cd41161d69a38231762882aa0e440d9e0e44a16a026d73f5b1')
 install=cryptopro-csp-k1.install
 options=(!strip)
 
@@ -79,7 +79,7 @@ package() {
     bsdtar -xf "cprocsp-rdr-cloud-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "lsb-cprocsp-devel-${_pkgver}.noarch.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-curl-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
-    
+
     # browser plugin
     bsdtar -xf "cprocsp-pki-cades-64-${_cades_version}-1.amd64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-pki-plugin-64-${_cades_version}-1.amd64.rpm" -C "$pkgdir"

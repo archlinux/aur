@@ -114,9 +114,10 @@ post_install() {
     cpconfig -ini '\config\apppath' -add string libssp.so /opt/cprocsp/lib/amd64/libssp.so
     cpconfig -ini '\config\apppath' -add string libcapi20.so /opt/cprocsp/lib/amd64/libcapi20.so
     # create several local machine stores if they don't exist
+    /opt/cprocsp/bin/amd64/csptest -keyset -verifycontext > /dev/null 2>&1
     /opt/cprocsp/bin/amd64/certmgr -list -crl -store mMy > /dev/null 2>&1
     /opt/cprocsp/bin/amd64/certmgr -list -crl -store mCryptoProTrustedStore > /dev/null 2>&1
-    /opt/cprocsp/bin/amd64/csptest -keyset -verifycontext > /dev/null 2>&1
+    /opt/cprocsp/bin/amd64/certmgr -list -crl -store mClientAuthIssuer > /dev/null 2>&1
     if test $? -eq 0; then
         # create several local machine stores if they don't exist
         /opt/cprocsp/bin/amd64/certmgr -list -crl -store mMy > /dev/null 2>&1
@@ -164,7 +165,7 @@ post_install() {
     cpconfig -ini '\config\apppath' -add string libxcpui.so /opt/cprocsp/lib/amd64/libfgcpui.so
     cpconfig -ini '\config\apppath' -add string xcpui_app /opt/cprocsp/sbin/amd64/xcpui_app
     cpconfig -ini '\config\Random\Bio_gui' -add string DLL librdrrndmbio_gui_fgtk.so
-    cpconfig -hardware rndm -add bio_gui -name 'rndm GUI GTK' -level 4 >/dev/null 2>/dev/null
+    cpconfig -hardware rndm -add bio_gui -name 'rndm GUI GTK' -level 4 >/dev/null
 
     # cprocsp-rdr-pcsc-64
     cpconfig -ini '\config\parameters' -add long dynamic_readers 1
@@ -297,14 +298,15 @@ post_install() {
                         ccid_reg.sh -add $pList 0x23a0 0x0008 "BIFIT ANGARA - CP"
                         ccid_reg.sh -add $pList 0x1fc9 0x7479 "ISBC ESMART reader - CP"
                         ccid_reg.sh -add $pList 0x2ce4 0x7479 "ESMART Token - CP"
-                        ccid_reg.sh -add $pList 0x24DC 0x0101 "Aladdin R.D. JaCarta"
-                        ccid_reg.sh -add $pList 0x24DC 0x0402 "Aladdin R.D. JaCarta"
-                        ccid_reg.sh -add $pList 0x24DC 0x0406 "Aladdin JaCarta SF GOST"
-                        ccid_reg.sh -add $pList 0x24DC 0x0409 "Aladdin JaCarta-2 SF"
-                        ccid_reg.sh -add $pList 0x24DC 0x040D "Aladdin JaCarta SF"
-                        ccid_reg.sh -add $pList 0x24DC 0x04FF "Aladdin JaCarta SF GOST"
-                        ccid_reg.sh -add $pList 0x24DC 0x100F "Aladdin R.D. JaCarta Flash"
-                        ccid_reg.sh -add $pList 0x0529 0x0620 "eToken PRO Java 72K OS755"
+                        ccid_reg.sh -add $pList 0x24DC 0x0101 "Aladdin R.D. JaCarta - CP"
+                        ccid_reg.sh -add $pList 0x24DC 0x0402 "Aladdin R.D. JaCarta - CP"
+                        ccid_reg.sh -add $pList 0x24DC 0x0406 "Aladdin JaCarta SF GOST - CP"
+                        ccid_reg.sh -add $pList 0x24DC 0x0409 "Aladdin JaCarta-2 SF - CP"
+                        ccid_reg.sh -add $pList 0x24DC 0x040D "Aladdin JaCarta SF - CP"
+                        ccid_reg.sh -add $pList 0x24DC 0x04FF "Aladdin JaCarta SF GOST - CP"
+                        ccid_reg.sh -add $pList 0x24DC 0x100F "Aladdin R.D. JaCarta Flash - CP"
+                        ccid_reg.sh -add $pList 0x0529 0x0620 "eToken PRO Java 72K OS755 - CP"
+                        ccid_reg.sh -add $pList 0x2BB1 0xF8CF "MOPNIEI RUSToken-L1 - CP"
                     done
                 fi
             fi
@@ -534,6 +536,9 @@ post_install() {
 
     # cprocsp-rdr-cryptoki
     cpconfig -ini '\config\apppath' -add string librdrcryptoki.so /opt/cprocsp/lib/amd64/librdrcryptoki.so
+    cpconfig -ini '\config\apppath' -add string librtpkcs11ecp.so librtpkcs11ecp.so
+    cpconfig -ini '\config\apppath' -add string libisbc_pkcs11_main.so libisbc_pkcs11_main.so
+    cpconfig -ini '\config\apppath' -add string libjcPKCS11-2.so libjcPKCS11-2.so
     cpconfig -ini '\config\KeyDevices\cryptoki_rutoken' -add long Group 1
     cpconfig -ini '\config\KeyDevices\cryptoki_rutoken' -add string DLL librdrcryptoki.so
     cpconfig -ini '\config\KeyDevices\cryptoki_rutoken\PNP cryptoki\Default' -add string pkcs11_dll librtpkcs11ecp.so
@@ -562,17 +567,22 @@ post_install() {
             cpconfig -ini '\config\apppath\backup' -add string libcurl.so "${libcurl_so_backup}"
         fi
         cpconfig -ini '\config\apppath' -add string libcurl.so /opt/cprocsp/lib/amd64/libcpcurl.so
-        query_status=`cpconfig -ini '\local\query_success' -view 2> /dev/null`
+        query_status=`cpconfig -ini '\config\parameters\query_success' -view 2> /dev/null`
         status="$?"
         if test "${status}" -ne 0 || test "${query_status}" -ne "1"; then
+            cpconfig -ini '\config\parameters\query_time' -delparam 2> /dev/null
             cpinstance > /dev/null 2>&1
-        fi    
+        fi
     fi
     /sbin/ldconfig -f /etc/ld.so.conf
 
     # cprocsp-pki-cades-64
-    /opt/cprocsp/bin/amd64/ocsputil license -s 0A202-U0030-00ECW-RRLMF-UU2WK
-    /opt/cprocsp/bin/amd64/tsputil license -s TA200-G0030-00ECW-RRLNE-BTDVV
+    if /opt/cprocsp/bin/amd64/ocsputil license 2>&1 | grep -q 0x8007064A &> /dev/null; then
+        /opt/cprocsp/bin/amd64/ocsputil license -s 0A202-U0030-00ECW-RRLMF-UU2WK
+    fi
+    if /opt/cprocsp/bin/amd64/tsputil license 2>&1 | grep -q 0x8007064A &> /dev/null; then
+        /opt/cprocsp/bin/amd64/tsputil license -s TA200-G0030-00ECW-RRLNE-BTDVV
+    fi
 
     cpconfig -ini '\config\apppath' -add string libcades.so /opt/cprocsp/lib/amd64/libcades.so.2
     cpconfig -ini '\config\apppath' -add string libpkivalidator.so /opt/cprocsp/lib/amd64/libpkivalidator.so.2
@@ -590,6 +600,7 @@ post_install() {
     [ -d /usr/lib64/mozilla/plugins ] && cp -rvf /opt/cprocsp/lib/amd64/libnpcades.so.2.0.0 /usr/lib64/mozilla/plugins/libnpcades.so
     [ -d /usr/lib/browser-plugins ] && cp -rvf /opt/cprocsp/lib/amd64/libnpcades.so.2.0.0 /usr/lib/browser-plugins/libnpcades.so
     [ -d /usr/lib64/browser-plugins ] && cp -rvf /opt/cprocsp/lib/amd64/libnpcades.so.2.0.0 /usr/lib64/browser-plugins/libnpcades.so
+    [ -d /usr/lib64 ] && mkdir -p /usr/lib64/mozilla/native-messaging-hosts/ && cp /usr/lib/mozilla/native-messaging-hosts/ru.cryptopro.nmcades.json /usr/lib64/mozilla/native-messaging-hosts/
 
     #if we have clean CSP install, users will not have my.sto. Plugin can open only existed stores. Create empty stores for all users with id above 1000
     USERNAMES=( `cat /etc/passwd | cut -d ":" -f 1` )
