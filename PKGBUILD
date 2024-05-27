@@ -1,10 +1,10 @@
 # Maintainer: Maxim Baz <archlinux at maximbaz dot com>
 # Contributor: Conor Anderson <conor@conr.ca>
 
-_electron=electron27
+_electron=electron29
 pkgname=wire-desktop
-pkgver=3.34.3307
-pkgrel=2
+pkgver=3.35.3348
+pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
 url='https://wire.com/'
@@ -15,7 +15,7 @@ optdepends=('emoji-font: colorful emoji')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${pkgname}/archive/linux/${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/wireapp/${pkgname}/releases/download/linux%2F${pkgver}/${pkgver}.tar.gz.sig"
         "${pkgname}.desktop")
-b2sums=('233682548480ed18626c4f835875b026bb4cbf8fbd37824601c16f01e5945fb6be24cac8141dfa3d8bd745d5ef767d62ff9afcff33bc4e42531e66692ca6bade'
+b2sums=('f8cfb6881c34711706e36ed802ae0797002220edc1989e4a8d44bacedba87f4211686ba2a36bfcf474071f0e42cb3de8ea0b1787ffb18e054059e826eb548321'
         'SKIP'
         '63ec6be507993c3bfffbae86841a9f34151ef8ba9249f32dd3fa758921e1adbcaa22c59e575e8079edb796a64395e26da311302658b62c3819fd6c7946b357c0')
 validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1')
