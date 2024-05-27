@@ -2,7 +2,7 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=printrun
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 epoch=1
 _projectname='Printrun'
@@ -13,16 +13,15 @@ url='https://github.com/kliment/Printrun'
 license=('GPL')
 provides=('printrun-git')
 conflicts=('printrun-git')
-depends=('python-pyserial' 'python-wxpython' 'python-pyglet' 'python-numpy' 'python-appdirs')
+depends=('python-pyserial' 'python-wxpython' 'python-pyglet' 'python-numpy' 'python-platformdirs')
 optdepends=(
   'python-cairo: to use Projector feature'
-  'python-cairosvg: to use Projector feature'
   'python-dbus: to inhibit sleep when printing'
   'python-psutil: to increase process priority when printing')
 makedepends=('cython' 'python-setuptools')
 source=("https://github.com/kliment/${_projectname}/archive/${_gittag}.tar.gz"
         "python312.diff")
-sha256sums=('883d83f1b110d9248f30ea29f5a198f4261a2c1fc05d5b0e7fcbe4f06412ded2'
+sha256sums=('cc9c9fcf95b1eef1fb77e5fcb22b0bc2fb82a240ce075c39a82283a84855e381'
             'c99237af701a3743d887db17fd5cacdf6423b1c6e4f23aa5bb56354cba9f3135')
 
 prepare() {
