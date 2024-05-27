@@ -1,6 +1,6 @@
 pkgbase = helmsman-git
 	pkgdesc = Helmsman upstream
-	pkgver = 3.8.1
+	pkgver = 3.8.1.r2.g2371260
 	pkgrel = 1
 	url = https://github.com/Praqma/helmsman
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = helmsman-git
 	makedepends = go
 	provides = helmsman-git
 	conflicts = helmsman-git
-	source = helmsman::git://github.com/Praqma/helmsman
+	source = helmsman::https://github.com/Praqma/helmsman
 	md5sums = SKIP
 
 pkgname = helmsman-git
