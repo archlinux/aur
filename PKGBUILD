@@ -9,7 +9,7 @@ pkgname="${_pkgname}-2022"
 epoch=0
 _pkgver='2022_04_05'
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Links for additional information on Czech trains and railway stations, to be used with the timetable search engines by CHAPS. Data from 2022."
 arch=('any')
 license=('custom')
@@ -31,7 +31,7 @@ replaces=(
   "${_pkgname}-latest<2023" # In 2023, this data seems to have vanished from `https://chaps.cz/eng/download/idos/zip#kotvainf`. So this package here is to replace the `-latest` package which is deprecated and is about to be deleted.
 )
 
-options=('!strip')
+options+=('!strip')
 
 provides=(
   "${_pkgname}=${pkgver}"
