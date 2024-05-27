@@ -1,7 +1,7 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=iso-commander
 pkgver=3.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/iso-commander"
@@ -9,7 +9,7 @@ license=('GPL3')
 makedepends=('readline')
 depends=('util-linux' 'coreutils' 'sudo')
 optdepends=('ccd2iso: BIN/IMG conversion support' 'mdf2iso: MDF/MDS conversion support')
-md5sums=('717582ca4a378f0727b7cee33b629a7e')
+md5sums=('2134bbcd2f1d1860893fea123af7434f')
 
 source=("https://github.com/siyia2/iso-commander/archive/v${pkgver}.tar.gz")
 
