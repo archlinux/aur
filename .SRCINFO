@@ -1,0 +1,19 @@
+pkgbase = 2s2h-bin
+	pkgdesc = Ship of Harkinian Reimplimentation engine
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/2s2h
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = sdl2
+	depends = sdl2_net
+	depends = libpng
+	depends = libzip
+	source_x86_64 = https://gitlab.com/linuxbombay/2s2h/1.0.0/-/raw/main/2s2h-linux-x64.tar.xz
+	sha256sums_x86_64 = 5f3f84281c634289a68a31735ba96bcd9fc64b8147efb8265f368eaf4f7359f8
+	source_aarch64 = https://gitlab.com/linuxbombay/2s2h/1.0.0/-/raw/main/2s2h-linux-arm64.tar.xz
+	sha256sums_aarch64 = a36ac89fd36cb4e19afa1ca902df34081666252dc4bdb2d13a1cd0bebdad5979
+
+pkgname = 2s2h-bin
