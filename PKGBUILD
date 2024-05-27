@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imfile
 _pkgname=imFile
-pkgver=1.0.9
+pkgver=1.1.0
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -34,7 +34,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('ac1ec083e172fe1b9ccb1b152fad5fda0f2c797af15d7a80b5eae4d92fd5ec5b'
+sha256sums=('5ec9fb0a02b92ad48a5c2cc2be798842d547bb640d00d813744d84b44b3ff7d4'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
