@@ -2,12 +2,28 @@
 # Contributor: 2ion <dev@2ion.de>
 pkgname=bunsen-utilities-git
 pkgver=r741.28dd596
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of utility scripts"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-utilities"
 license=('GPL3')
-depends=('bunsen-common' 'gtk3' 'libnotify' 'python3' 'python-gobject' 'python-lxml' 'python-psutil' 'python-xdg' 'python-xlib' 'wmctrl' 'xdotool' 'yad')
+depends=(
+# upstream
+'bunsen-common'
+'gtk3'
+'libnotify'
+'python3'
+'python-gobject'
+'python-lxml'
+'python-psutil'
+'python-xdg'
+'python-xlib'
+'wmctrl'
+'xdotool'
+'yad'
+#namcap
+'bash'
+)
 optdepends=(\
   'upower: Required for bl-exit' \
   'zenity: Required bl-conkyzen and bl-tint2edit')

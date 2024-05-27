@@ -1,7 +1,7 @@
 pkgbase = bunsen-utilities-git
 	pkgdesc = Collection of utility scripts
 	pkgver = r741.28dd596
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BunsenLabs/bunsen-utilities
 	arch = any
 	license = GPL3
@@ -18,6 +18,7 @@ pkgbase = bunsen-utilities-git
 	depends = wmctrl
 	depends = xdotool
 	depends = yad
+	depends = bash
 	optdepends = upower: Required for bl-exit
 	optdepends = zenity: Required bl-conkyzen and bl-tint2edit
 	provides = bunsen-utilities
