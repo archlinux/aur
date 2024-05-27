@@ -1,0 +1,57 @@
+From 62331ee4498d527d12691cd805a029c7486e9a31 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 26 May 2024 00:24:51 +1200
+Subject: [PATCH 08/12] asus-wmi: add panel-fhd
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-wmi.c            | 6 ++++++
+ include/linux/platform_data/x86/asus-wmi.h | 1 +
+ 2 files changed, 7 insertions(+)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index c3d0538ae0b5..f955ee56ce6a 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -798,6 +798,9 @@ WMI_ATTR_SIMPLE_RW(boot_sound, 0, 1, ASUS_WMI_DEVID_BOOT_SOUND);
+ /* Charging mode, 1=Barrel, 2=USB ******************************************/
+ WMI_ATTR_SIMPLE_RO(charge_mode, ASUS_WMI_DEVID_CHARGE_MODE);
+ 
++/* Panel FHD mode **********************************************************/
++WMI_ATTR_SIMPLE_RO(panel_fhd, ASUS_WMI_DEVID_PANEL_FHD);
++
+ /* Tablet mode ****************************************************************/
+ 
+ static void asus_wmi_tablet_mode_get_state(struct asus_wmi *asus)
+@@ -4060,6 +4063,7 @@ static struct attribute *platform_attributes[] = {
+ 	&dev_attr_mcu_powersave.attr,
+ 	&dev_attr_boot_sound.attr,
+ 	&dev_attr_panel_od.attr,
++	&dev_attr_panel_fhd.attr,
+ 	&dev_attr_mini_led_mode.attr,
+ 	&dev_attr_available_mini_led_mode.attr,
+ 	NULL
+@@ -4131,6 +4135,8 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+ 		devid = ASUS_WMI_DEVID_BOOT_SOUND;
+ 	else if (attr == &dev_attr_panel_od.attr)
+ 		devid = ASUS_WMI_DEVID_PANEL_OD;
++	else if (attr == &dev_attr_panel_fhd.attr)
++		devid = ASUS_WMI_DEVID_PANEL_FHD;
+ 	else if (attr == &dev_attr_mini_led_mode.attr)
+ 		ok = asus->mini_led_dev_id != 0;
+ 	else if (attr == &dev_attr_available_mini_led_mode.attr)
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index c596b6feb2d4..f131887f1efa 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -72,6 +72,7 @@
+ #define ASUS_WMI_DEVID_LID_FLIP_ROG	0x00060077
+ #define ASUS_WMI_DEVID_MINI_LED_MODE	0x0005001E
+ #define ASUS_WMI_DEVID_MINI_LED_MODE2	0x0005002E
++#define ASUS_WMI_DEVID_PANEL_FHD	0x0005001C
+ 
+ /* Storage */
+ #define ASUS_WMI_DEVID_CARDREADER	0x00080013
+-- 
+2.45.1
+

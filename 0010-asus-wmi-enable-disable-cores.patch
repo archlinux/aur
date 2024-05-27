@@ -1,0 +1,152 @@
+From e790146b27c2ca863771027fe1a4569fdf54d973 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 26 May 2024 10:45:52 +1200
+Subject: [PATCH 10/12] asus-wmi: enable/disable cores
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ .../ABI/testing/sysfs-platform-asus-wmi       | 19 +++++
+ drivers/platform/x86/asus-wmi.c               | 69 +++++++++++++++++++
+ include/linux/platform_data/x86/asus-wmi.h    |  5 ++
+ 3 files changed, 93 insertions(+)
+
+diff --git a/Documentation/ABI/testing/sysfs-platform-asus-wmi b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+index 28144371a0f1..b4f18c2e1707 100644
+--- a/Documentation/ABI/testing/sysfs-platform-asus-wmi
++++ b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+@@ -212,3 +212,22 @@ Description:
+ 		Set if the MCU can go in to low-power mode on system sleep
+ 			* 0 - False,
+ 			* 1 - True
++
++What:		/sys/devices/platform/<platform>/cores_enabled
++Date:		Jun 2024
++KernelVersion:	6.11
++Contact:	"Luke Jones" <luke@ljones.dev>
++Description:
++		Enable/disable efficiency and performance cores. The format is
++		0x[E][P] where [E] is the efficiency core count, and [P] is
++		the perfromance core count. If the core count is a single digit
++		it is preceded by a 0 such as 0x0406; E=4, P=6, 0x1006; E=10, P=6
++
++What:		/sys/devices/platform/<platform>/cores_max
++Date:		Jun 2024
++KernelVersion:	6.11
++Contact:	"Luke Jones" <luke@ljones.dev>
++Description:
++		Show the maximum performance and efficiency core countin format
++		0x[E][P] where [E] is the efficiency core count, and [P] is
++		the perfromance core count.
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 5cdb61f2dcc8..c5997e0907f7 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -801,6 +801,70 @@ WMI_ATTR_SIMPLE_RO(charge_mode, ASUS_WMI_DEVID_CHARGE_MODE);
+ /* Panel FHD mode **********************************************************/
+ WMI_ATTR_SIMPLE_RO(panel_fhd, ASUS_WMI_DEVID_PANEL_FHD);
+ 
++/* Efficency and Performance core control **********************************/
++static ssize_t cores_enabled_show(struct device *dev,
++				 struct device_attribute *attr, char *buf)
++{
++	struct asus_wmi *asus = dev_get_drvdata(dev);
++	int err;
++	u32 ret;
++
++	err = asus_wmi_get_devstate(asus, ASUS_WMI_DEVID_CORES_SET, &ret);
++	if (err < 0)
++		return err;
++
++	return sysfs_emit(buf, "0x%x\n", ret & ~ASUS_WMI_DSTS_PRESENCE_BIT);
++}
++
++static ssize_t cores_enabled_store(struct device *dev,
++				    struct device_attribute *attr,
++				    const char *buf, size_t count)
++{
++	struct asus_wmi *asus = dev_get_drvdata(dev);
++	int result, err;
++	u32 cores, max;
++
++	result = kstrtou32(buf, 16, &cores);
++	if (result)
++		return result;
++
++	err = asus_wmi_get_devstate(asus, ASUS_WMI_DEVID_CORES_MAX, &max);
++	if (err < 0)
++		return err;
++
++	if (cores > max) {
++		pr_warn("Core count 0x%x exceeds max: 0x%x\n", cores, max);
++		return -EIO;
++	}
++
++	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_CORES_SET, cores, &result);
++	if (err) {
++		pr_warn("Failed to set cores_enabled: %d\n", err);
++		return err;
++	}
++
++	pr_info("Enabled core count changed, reboot required\n");
++	sysfs_notify(&asus->platform_device->dev.kobj, NULL, "cores_enabled");
++
++	return count;
++}
++static DEVICE_ATTR_RW(cores_enabled);
++
++static ssize_t cores_max_show(struct device *dev,
++				 struct device_attribute *attr, char *buf)
++{
++	struct asus_wmi *asus = dev_get_drvdata(dev);
++	int err;
++	u32 ret;
++
++	err = asus_wmi_get_devstate(asus, ASUS_WMI_DEVID_CORES_MAX, &ret);
++	if (err < 0)
++		return err;
++
++	return sysfs_emit(buf, "0x%x\n", ret & ~ASUS_WMI_DSTS_PRESENCE_BIT);
++}
++static DEVICE_ATTR_RO(cores_max);
++
+ /* Tablet mode ****************************************************************/
+ 
+ static void asus_wmi_tablet_mode_get_state(struct asus_wmi *asus)
+@@ -4042,6 +4106,8 @@ static struct attribute *platform_attributes[] = {
+ 	&dev_attr_boot_sound.attr,
+ 	&dev_attr_panel_od.attr,
+ 	&dev_attr_panel_fhd.attr,
++	&dev_attr_cores_enabled.attr,
++	&dev_attr_cores_max.attr,
+ 	&dev_attr_mini_led_mode.attr,
+ 	&dev_attr_available_mini_led_mode.attr,
+ 	NULL
+@@ -4115,6 +4181,9 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+ 		devid = ASUS_WMI_DEVID_PANEL_OD;
+ 	else if (attr == &dev_attr_panel_fhd.attr)
+ 		devid = ASUS_WMI_DEVID_PANEL_FHD;
++	else if (attr == &dev_attr_cores_enabled.attr
++		|| attr == &dev_attr_cores_max.attr)
++		ok = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_CORES_SET);
+ 	else if (attr == &dev_attr_mini_led_mode.attr)
+ 		ok = asus->mini_led_dev_id != 0;
+ 	else if (attr == &dev_attr_available_mini_led_mode.attr)
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index f131887f1efa..c4f9e1f2f08e 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -116,6 +116,11 @@
+ /* Charging mode - 1=Barrel, 2=USB */
+ #define ASUS_WMI_DEVID_CHARGE_MODE	0x0012006C
+ 
++/* Intel E-core and P-core configuration in a format 0x0[E]0[P] */
++#define ASUS_WMI_DEVID_CORES_SET	0x001200D2
++ /* Maximum Intel E-core and P-core availability */
++#define ASUS_WMI_DEVID_CORES_MAX	0x001200D3
++
+ /* MCU powersave mode */
+ #define ASUS_WMI_DEVID_MCU_POWERSAVE   0x001200E2
+ 
+-- 
+2.45.1
+

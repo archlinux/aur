@@ -1,7 +1,7 @@
-From 3885da3bcaa9de4d31623ab7ea53bdbbbea1d47c Mon Sep 17 00:00:00 2001
+From fa9c3c9138d014cd99f77a68d8df24382542a076 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Fri, 24 May 2024 10:58:17 +1200
-Subject: [PATCH 5/5] hid-asus: add USB_DEVICE_ID_ASUSTEK_DUO_KEYBOARD
+Subject: [PATCH 03/12] hid-asus: add USB_DEVICE_ID_ASUSTEK_DUO_KEYBOARD
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---

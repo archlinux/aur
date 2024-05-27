@@ -1,0 +1,179 @@
+From f463b041b8971eda13547c8048f701c46a7170e5 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 26 May 2024 11:39:47 +1200
+Subject: [PATCH 11/12] asus-wmi: apu_mem setting
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ .../ABI/testing/sysfs-platform-asus-wmi       |   8 ++
+ drivers/platform/x86/asus-wmi.c               | 109 ++++++++++++++++++
+ include/linux/platform_data/x86/asus-wmi.h    |   3 +
+ 3 files changed, 120 insertions(+)
+
+diff --git a/Documentation/ABI/testing/sysfs-platform-asus-wmi b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+index b4f18c2e1707..53ab182e753c 100644
+--- a/Documentation/ABI/testing/sysfs-platform-asus-wmi
++++ b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+@@ -231,3 +231,11 @@ Description:
+ 		Show the maximum performance and efficiency core countin format
+ 		0x[E][P] where [E] is the efficiency core count, and [P] is
+ 		the perfromance core count.
++
++What:		/sys/devices/platform/<platform>/apu_mem
++Date:		Jun 2024
++KernelVersion:	6.11
++Contact:	"Luke Jones" <luke@ljones.dev>
++Description:
++		Set the maximum available system memory for the APU.
++		  * Min=0, Max=8
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index c5997e0907f7..8fef31c6bc6f 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -865,6 +865,112 @@ static ssize_t cores_max_show(struct device *dev,
+ }
+ static DEVICE_ATTR_RO(cores_max);
+ 
++/* Device memory available to APU */
++
++static ssize_t apu_mem_show(struct device *dev,
++				 struct device_attribute *attr, char *buf)
++{
++	struct asus_wmi *asus = dev_get_drvdata(dev);
++	int err;
++	u32 mem;
++
++	err = asus_wmi_get_devstate(asus, ASUS_WMI_DEVID_APU_MEM, &mem);
++	if (err < 0)
++		return err;
++
++	switch (mem)
++        {
++        case 256:
++	        mem = 0;
++	        break;
++        case 258:
++	        mem = 1;
++	        break;
++        case 259:
++	        mem = 2;
++	        break;
++        case 260:
++	        mem = 3;
++	        break;
++        case 261:
++	        mem = 4;
++	        break;
++        case 262:
++	        mem = 8;
++	        break;
++        case 263:
++	        mem = 5;
++	        break;
++        case 264:
++	        mem = 6;
++	        break;
++        case 265:
++	        mem = 7;
++	        break;
++        default:
++	        mem = 4;
++	        break;
++        }
++
++	return sysfs_emit(buf, "%d\n", mem);
++}
++
++static ssize_t apu_mem_store(struct device *dev,
++				    struct device_attribute *attr,
++				    const char *buf, size_t count)
++{
++	struct asus_wmi *asus = dev_get_drvdata(dev);
++	int result, err;
++	u32 mem;
++
++	result = kstrtou32(buf, 10, &mem);
++	if (result)
++		return result;
++
++	switch (mem)
++        {
++        case 0:
++	        mem = 0;
++	        break;
++        case 1:
++	        mem = 258;
++	        break;
++        case 2:
++	        mem = 259;
++	        break;
++        case 3:
++	        mem = 260;
++	        break;
++        case 4:
++	        mem = 261;
++	        break;
++        case 5:
++	        mem = 263;
++	        break;
++        case 6:
++	        mem = 264;
++	        break;
++        case 7:
++	        mem = 265;
++	        break;
++        case 8:
++	        mem = 262;
++	        break;
++        }
++
++	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_APU_MEM, mem, &result);
++	if (err) {
++		pr_warn("Failed to set apu_mem: %d\n", err);
++		return err;
++	}
++
++	pr_info("APU memory changed, reboot required\n");
++	sysfs_notify(&asus->platform_device->dev.kobj, NULL, "apu_mem");
++
++	return count;
++}
++static DEVICE_ATTR_RW(apu_mem);
++
+ /* Tablet mode ****************************************************************/
+ 
+ static void asus_wmi_tablet_mode_get_state(struct asus_wmi *asus)
+@@ -4108,6 +4214,7 @@ static struct attribute *platform_attributes[] = {
+ 	&dev_attr_panel_fhd.attr,
+ 	&dev_attr_cores_enabled.attr,
+ 	&dev_attr_cores_max.attr,
++	&dev_attr_apu_mem.attr,
+ 	&dev_attr_mini_led_mode.attr,
+ 	&dev_attr_available_mini_led_mode.attr,
+ 	NULL
+@@ -4184,6 +4291,8 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+ 	else if (attr == &dev_attr_cores_enabled.attr
+ 		|| attr == &dev_attr_cores_max.attr)
+ 		ok = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_CORES_SET);
++	else if (attr == &dev_attr_apu_mem.attr)
++		ok = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_APU_MEM);
+ 	else if (attr == &dev_attr_mini_led_mode.attr)
+ 		ok = asus->mini_led_dev_id != 0;
+ 	else if (attr == &dev_attr_available_mini_led_mode.attr)
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index c4f9e1f2f08e..30a3a4fdd43e 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -121,6 +121,9 @@
+  /* Maximum Intel E-core and P-core availability */
+ #define ASUS_WMI_DEVID_CORES_MAX	0x001200D3
+ 
++/* Set the memory available to the APU */
++#define ASUS_WMI_DEVID_APU_MEM		0x000600C1
++
+ /* MCU powersave mode */
+ #define ASUS_WMI_DEVID_MCU_POWERSAVE   0x001200E2
+ 
+-- 
+2.45.1
+

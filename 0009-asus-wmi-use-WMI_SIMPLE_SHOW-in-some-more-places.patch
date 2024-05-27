@@ -1,0 +1,57 @@
+From 57db1cf06c182ce1feda105df6ca6335a3fdd4b6 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 26 May 2024 00:34:22 +1200
+Subject: [PATCH 09/12] asus-wmi: use WMI_SIMPLE_SHOW in some more places
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-wmi.c | 26 ++------------------------
+ 1 file changed, 2 insertions(+), 24 deletions(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index f955ee56ce6a..5cdb61f2dcc8 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -816,18 +816,7 @@ static void asus_wmi_tablet_mode_get_state(struct asus_wmi *asus)
+ }
+ 
+ /* dGPU ********************************************************************/
+-static ssize_t dgpu_disable_show(struct device *dev,
+-				   struct device_attribute *attr, char *buf)
+-{
+-	struct asus_wmi *asus = dev_get_drvdata(dev);
+-	int result;
+-
+-	result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_DGPU);
+-	if (result < 0)
+-		return result;
+-
+-	return sysfs_emit(buf, "%d\n", result);
+-}
++WMI_SIMPLE_SHOW(dgpu_disable, ASUS_WMI_DEVID_DGPU);
+ 
+ /*
+  * A user may be required to store the value twice, typcial store first, then
+@@ -881,18 +870,7 @@ static ssize_t dgpu_disable_store(struct device *dev,
+ static DEVICE_ATTR_RW(dgpu_disable);
+ 
+ /* eGPU ********************************************************************/
+-static ssize_t egpu_enable_show(struct device *dev,
+-				   struct device_attribute *attr, char *buf)
+-{
+-	struct asus_wmi *asus = dev_get_drvdata(dev);
+-	int result;
+-
+-	result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_EGPU);
+-	if (result < 0)
+-		return result;
+-
+-	return sysfs_emit(buf, "%d\n", result);
+-}
++WMI_SIMPLE_SHOW(egpu_enable, ASUS_WMI_DEVID_EGPU);
+ 
+ /* The ACPI call to enable the eGPU also disables the internal dGPU */
+ static ssize_t egpu_enable_store(struct device *dev,
+-- 
+2.45.1
+

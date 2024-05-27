@@ -1,7 +1,7 @@
-From 0c8131397cf7a5e42adc3d89a50273f68b2ae0c4 Mon Sep 17 00:00:00 2001
+From cf35cef6e224cd4c113e3c9ca8cdc6f31180faa0 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Tue, 21 May 2024 18:17:17 +1200
-Subject: [PATCH 3/5] Debugging
+Subject: [PATCH 04/12] Debugging
 
 sudo mount -t debugfs none /sys/kernel/debug
 echo 'file asus-wmi.c +p' |sudo tee /sys/kernel/debug/dynamic_debug/control
@@ -14,29 +14,21 @@ sudo modprobe hid-asus
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
- drivers/platform/x86/asus-wmi.c | 47 ++++++++++++++++++++++++++-------
- 1 file changed, 37 insertions(+), 10 deletions(-)
+ drivers/platform/x86/asus-wmi.c | 46 ++++++++++++++++++++++++++-------
+ 1 file changed, 36 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index a58df18a70ad..c79e766d1922 100644
+index a58df18a70ad..02a97301ca2e 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
-@@ -11,6 +11,7 @@
-  * Copyright (C) 2005 Dmitry Torokhov <dtor@mail.ru>
-  */
- 
-+//#include <cerrno>
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
- 
- #include <linux/acpi.h>
-@@ -334,20 +335,26 @@ static int asus_wmi_evaluate_method3(u32 method_id,
+@@ -334,20 +334,26 @@ static int asus_wmi_evaluate_method3(u32 method_id,
  	status = wmi_evaluate_method(ASUS_WMI_MGMT_GUID, 0, method_id,
  				     &input, &output);
  
 -	if (ACPI_FAILURE(status))
 +	pr_debug("%s called (0x%08x) with args: 0x%08x, %x, %x\n", __func__, method_id, arg0, arg1, arg2);
 +	if (ACPI_FAILURE(status)) {
-+		pr_err("%s, (0x%08x), arg 0x%08x failed: %d\n", __func__, method_id, arg0, -EIO);
++		pr_debug("%s, (0x%08x), arg 0x%08x failed: %d\n", __func__, method_id, arg0, -EIO);
  		return -EIO;
 +	}
  
@@ -52,20 +44,20 @@ index a58df18a70ad..c79e766d1922 100644
  
 -	if (tmp == ASUS_WMI_UNSUPPORTED_METHOD)
 +	if (tmp == ASUS_WMI_UNSUPPORTED_METHOD) {
-+		pr_err("%s, (0x%08x), arg 0x%08x failed: %d\n", __func__, method_id, arg0, -ENODEV);
++		pr_debug("%s, (0x%08x), arg 0x%08x failed: %d\n", __func__, method_id, arg0, -ENODEV);
  		return -ENODEV;
 +	}
  
  	return 0;
  }
-@@ -377,20 +384,26 @@ static int asus_wmi_evaluate_method5(u32 method_id,
+@@ -377,20 +383,26 @@ static int asus_wmi_evaluate_method5(u32 method_id,
  	status = wmi_evaluate_method(ASUS_WMI_MGMT_GUID, 0, method_id,
  				     &input, &output);
  
 -	if (ACPI_FAILURE(status))
 +	pr_debug("%s called (0x%08x) with args: 0x%08x, %x, %x, %x, %x\n", __func__, method_id, arg0, arg1, arg2, arg3, arg4);
 +	if (ACPI_FAILURE(status)) {
-+		pr_err("%s, (0x%08x), arg 0x%08x failed: %d\n", __func__, method_id, arg0, -EIO);
++		pr_debug("%s, (0x%08x), arg 0x%08x failed: %d\n", __func__, method_id, arg0, -EIO);
  		return -EIO;
 +	}
  
@@ -81,38 +73,38 @@ index a58df18a70ad..c79e766d1922 100644
  
 -	if (tmp == ASUS_WMI_UNSUPPORTED_METHOD)
 +	if (tmp == ASUS_WMI_UNSUPPORTED_METHOD) {
-+		pr_err("%s, (0x%08x), arg 0x%08x failed: %d\n", __func__, method_id, arg0, -ENODEV);
++		pr_debug("%s, (0x%08x), arg 0x%08x failed: %d\n", __func__, method_id, arg0, -ENODEV);
  		return -ENODEV;
 +	}
  
  	return 0;
  }
-@@ -416,8 +429,11 @@ static int asus_wmi_evaluate_method_buf(u32 method_id,
+@@ -416,8 +428,11 @@ static int asus_wmi_evaluate_method_buf(u32 method_id,
  	status = wmi_evaluate_method(ASUS_WMI_MGMT_GUID, 0, method_id,
  				     &input, &output);
  
 -	if (ACPI_FAILURE(status))
 +	pr_debug("%s called (0x%08x) with args: 0x%08x, %x\n", __func__, method_id, arg0, arg1);
 +	if (ACPI_FAILURE(status)) {
-+		pr_err("%s, (0x%08x), arg 0x%08x failed: %d\n", __func__, method_id, arg0, -EIO);
++		pr_debug("%s, (0x%08x), arg 0x%08x failed: %d\n", __func__, method_id, arg0, -EIO);
  		return -EIO;
 +	}
  
  	obj = (union acpi_object *)output.pointer;
  
-@@ -453,8 +469,10 @@ static int asus_wmi_evaluate_method_buf(u32 method_id,
+@@ -453,8 +468,10 @@ static int asus_wmi_evaluate_method_buf(u32 method_id,
  
  	kfree(obj);
  
 -	if (err)
 +	if (err) {
-+		pr_err("%s, (0x%08x), arg 0x%08x failed: %d\n", __func__, method_id, arg0, err);
++		pr_debug("%s, (0x%08x), arg 0x%08x failed: %d\n", __func__, method_id, arg0, err);
  		return err;
 +	}
  
  	return 0;
  }
-@@ -542,6 +560,7 @@ static bool asus_wmi_dev_is_present(struct asus_wmi *asus, u32 dev_id)
+@@ -542,6 +559,7 @@ static bool asus_wmi_dev_is_present(struct asus_wmi *asus, u32 dev_id)
  {
  	u32 retval;
  	int status = asus_wmi_get_devstate(asus, dev_id, &retval);
@@ -120,7 +112,7 @@ index a58df18a70ad..c79e766d1922 100644
  
  	return status == 0 && (retval & ASUS_WMI_DSTS_PRESENCE_BIT);
  }
-@@ -3559,18 +3578,24 @@ static int asus_wmi_custom_fan_curve_init(struct asus_wmi *asus)
+@@ -3559,18 +3577,24 @@ static int asus_wmi_custom_fan_curve_init(struct asus_wmi *asus)
  
  	err = fan_curve_check_present(asus, &asus->cpu_fan_curve_available,
  				      ASUS_WMI_DEVID_CPU_FAN_CURVE);
@@ -148,7 +140,7 @@ index a58df18a70ad..c79e766d1922 100644
  
  	if (!asus->cpu_fan_curve_available
  		&& !asus->gpu_fan_curve_available
-@@ -4398,8 +4423,10 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+@@ -4398,8 +4422,10 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
  	else if (attr == &dev_attr_available_mini_led_mode.attr)
  		ok = asus->mini_led_dev_id != 0;
  
