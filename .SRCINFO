@@ -1,6 +1,6 @@
 pkgbase = aeolus-next
 	pkgver = 0.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Archie3d/aeolus_plugin
 	arch = x86_64
 	license = GPL
