@@ -1,9 +1,8 @@
-# Maintainer: Senge Dev <sengedev at gmail dot com>
+# Maintainer: 
 # Contributor: Senge Dev <sengedev at gmail dot com>
 
-
 pkgname=1panel-bin
-pkgver=1.10.1_lts
+pkgver=1.10.9_lts
 pkgrel=1
 pkgdesc="1Panel is a modern and open source Linux panel."
 arch=('x86_64' 'aarch64')
@@ -25,14 +24,12 @@ optdepends=(
     'docker'            # Docker image manager
     'docker-compose'    # Docker compose plugin, make sure 1Panel app store works.
 )
-conflicts=(
-    '1panel-dev-bin'
-    '1panel-git'
-)
+provides=(1panel)
+conflicts=(1panel)
 source_aarch64=("${pkgname}-${pkgver//_/-}-arm64.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v${pkgver//_/-}/release/1panel-v${pkgver//_/-}-linux-arm64.tar.gz")
 source_x86_64=("${pkgname}-${pkgver//_/-}-amd64.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v${pkgver//_/-}/release/1panel-v${pkgver//_/-}-linux-amd64.tar.gz")
-sha256sums_x86_64=("5804421c5432eabf99eb28f8f6de3d02fac3f9b6d2abadba8b2b575cc09e2437")
-sha256sums_aarch64=("fa7f9d0486a23ecc79aa50b54e4ba0bfe3e53939166a926483e22d1ae0747710")
+sha256sums_x86_64=('a5b23b46017c179d189b9ac30ae0b14bf113ad67159d6fcd01eba1c8a6f87533')
+sha256sums_aarch64=('a44bbae01b90b5ae04a10a058f441bc431fb096c866fe4b32018e6a0ea8f7b51')
 
 build() {
     _1panel_port=`expr $RANDOM % 55535 + 10000`
