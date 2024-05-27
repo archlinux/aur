@@ -3,7 +3,7 @@
 
 pkgname=megazeux
 pkgver=2.93
-pkgrel=1
+pkgrel=2
 pkgdesc="Game creation system"
 arch=('i686' 'x86_64')
 url="https://www.digitalmzx.com/"
@@ -42,7 +42,8 @@ build() {
 	  --platform unix \
 	  --prefix /usr \
 	  --bindir /usr/lib/megazeux \
-	  --gamesdir /usr/bin
+	  --gamesdir /usr/bin \
+	  --enable-release
 
   echo 'RAWLIBDIR=lib' >> platform.inc
   echo 'LIBDIR=/usr/lib' >> platform.inc
