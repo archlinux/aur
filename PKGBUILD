@@ -3,7 +3,7 @@
 
 _target=powerpc64-linux-gnu
 pkgname=$_target-glibc
-pkgver=2.38
+pkgver=2.39
 pkgrel=1
 pkgdesc="GNU C Library PPC64 target"
 arch=(any)
@@ -14,14 +14,18 @@ conflicts=($_target-glibc-headers)
 provides=($_target-glibc-headers)
 makedepends=(python)
 options=(!buildflags !strip staticlibs)
-source=(https://ftp.gnu.org/gnu/libc/glibc-$pkgver.tar.xz{,.sig})
-sha256sums=('fb82998998b2b29965467bc1b69d152e9c307d2cf301c9eafb4555b770ef3fd2'
-            'SKIP')
+source=(https://ftp.gnu.org/gnu/libc/glibc-$pkgver.tar.xz{,.sig}
+        PATCH-nscd-Do-not-rebuild-getaddrinfo-bug-30709.patch)
+sha256sums=('f77bd47cf8170c57365ae7bf86696c118adb3b120d3259c64c502d3dc1e2d926'
+            'SKIP'
+            'e749a59ef980a77cf6433c87ed7b5020d65c7a3e2900c577b8a7880386ec670f')
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # "Carlos O'Donell <carlos@systemhalted.org>"
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
 
 prepare() {
   mkdir -p glibc-build
+  cd glibc-$pkgver
+  patch -Np1 < ../PATCH-nscd-Do-not-rebuild-getaddrinfo-bug-30709.patch
 }
 
 build() {
@@ -32,11 +36,9 @@ build() {
   echo 'sbindir=/bin' >> configparms
   echo 'rootsbindir=/bin' >> configparms
 
-  # remove hardening options for building libraries
   export CFLAGS="-U_FORTIFY_SOURCE -mbig-endian -O2"
   export CPPFLAGS="-U_FORTIFY_SOURCE -O2"
   unset LD_LIBRARY_PATH
-
   export BUILD_CC=gcc
   export CC=${_target}-gcc
   export CXX=${_target}-g++
