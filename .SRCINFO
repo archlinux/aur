@@ -12,4 +12,3 @@ pkgbase = pdf-reverse
 	sha512sums = b0eabc7662e8c8f3d86753b13937df5684e70dc8ee53e2ab852d5311a5f7c4e8ac02f03e13ccef94770d3ca691282d9323945a27cd5bb4e83f91369ba8e8e569
 
 pkgname = pdf-reverse
-
