@@ -3,35 +3,35 @@
 # Maintainer: Vedran Miletic <vedran AT miletic DOT net>
 
 pkgname=gromacs
-pkgver=2024.1
-pkgrel=2
+pkgver=2024.2
+pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('x86_64')
-depends=('lapack' 'zlib' 'hwloc' 'gcc12')
+depends=('lapack' 'zlib' 'hwloc' 'gcc13-libs' 'libxml2')
 optdepends=('cuda: Nvidia GPU support'
             'vmd: Accesibility to other trajectory formats (ONLY WHEN COMPILING)'
             'perl: needed for demux.pl and xplor2gmx.pl'
             'opencl-clover-mesa: OpenCL support for AMD/Intel GPU'
             'opencl-rusticl-mesa: OpenCL support for AMD/Intel GPU'
             'opencl-nvidia: OpenCL support for Nvidia GPU')
-makedepends=('cmake' 'libxml2' 'hwloc')
+makedepends=('cmake' 'gcc13')
 options=('!libtool')
 source=(https://gitlab.com/gromacs/gromacs/-/archive/v${pkgver}/gromacs-v${pkgver}.tar.gz)
 
-sha256sums=('b215e25ab4b99ab0b037770a3108c0d4a7917311a8345524a4fd5423f91c7e46')
+sha256sums=('46335abe0683448f51e7f1aa7c79ea383fd6ca0f842e30d77d7a5e6acb7d569e')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format).
 
-# For CUDA (12+) support, compiling with GCC 12 is required.
+# For CUDA (12+) support, compiling with GCC 13 is required.
 # If you not need CUDA support, uncomment the next two lines
 # and install cuda and gcc12 packages.
-export CC=gcc-12
-export CXX=g++-12
+export CC=gcc-13
+export CXX=g++-13
 
 build() {
   mkdir -p ${srcdir}/{single,double}
