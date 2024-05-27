@@ -1,6 +1,6 @@
 # Maintainer: David Grimm < david[dot]grimm [replace this with the swirly a sign] vegri[dot]net >
 pkgname=ov-client
-pkgver="0.21.1"
+pkgver="0.23.1"
 pkgrel=1
 epoch=
 pkgdesc="Client to share and receive spatial realtime Audio"
@@ -71,7 +71,7 @@ prepare() {
 		cd ..
 	fi
 	cd ov-client
-	git checkout -q 442a95c5f5f62332eee251bafc04531219e074d9
+	git checkout -q 68cd064433dbeb863497e31c4763ccea49e60f7f
 	git submodule update --init --recursive
 }
 
@@ -98,6 +98,6 @@ To use OV-Client, please create an account at https://box.orlandoviols.com
 To use a different server, start with the option \"-s [URL]\"
 
 For minimal stuttering, please enable realtime privileges:
-$ usermod -a -G realtime \$USER
+\$ usermod -a -G realtime \$USER
 "
 }

@@ -5,8 +5,9 @@ then
 fi
 cd ov-client
 git checkout master
-git pull
 make gitupdate
+git checkout $(git describe --tags --candidates 1)
+
 VER=$(make -s ver | sed 's/\([^-]*\)-.*/\1/')
 COMMIT=$(git show | grep -e "^commit" | sed 's/commit //' | sed 's/ .*$//')
 echo "$COMMIT"
