@@ -2,7 +2,7 @@
 # Contributor: Hayate Nakamura <is01.njb at gmail dot com>
 _pkgname="pacup-arch"
 pkgname="${_pkgname}-git"
-pkgver=r76.cccbe90
+pkgver=r78.aacece1
 pkgrel=1
 pkgdesc="Simplify Pacman, Flatpak Snap, and AUR package updating."
 arch=('any')

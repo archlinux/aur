@@ -1,6 +1,6 @@
 pkgbase = pacup-arch-git
 	pkgdesc = Simplify Pacman, Flatpak Snap, and AUR package updating.
-	pkgver = r76.cccbe90
+	pkgver = r78.aacece1
 	pkgrel = 1
 	url = https://github.com/7ritn/pacup-arch
 	arch = any
