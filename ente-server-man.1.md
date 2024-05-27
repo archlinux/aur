@@ -160,21 +160,24 @@ To get the Ente server running a working PostgreSQL database (to store Ente obje
 - Add ente-cli config:
     ```
         mkdir -p ~/.ente/export
-        echo -e 'endpoint:\n  api: "<https://your_public_domain.tld>"' > ~/.ente/config.yaml
+        echo -e 'endpoint:\n  api: "https://<your_public_domain.tld>"' > ~/.ente/config.yaml
     ```
-- Add a user account via the photos app or web app, using a custom endpoint:
+- Add a user account via the photos mobile, desktop or web app, using a custom endpoint:
     - In the photos app:
         - click 7 times on the main screen to enable developers mode
-        - define your custom end point URL: '`<https://your_public_domain.tld>`'
+        - define your custom end point URL: '`https://<your_public_domain.tld>`'
     - In the web app:
     ```
           git clone https://github.com/ente-io/ente.git
           cd ente/web
           git submodule update --init --recursive
           yarn install
-          NEXT_PUBLIC_ENTE_ENDPOINT=<https://your_public_domain.tld> yarn dev:photos
+          NEXT_PUBLIC_ENTE_ENDPOINT=https://<your_public_domain.tld> yarn dev:photos
     ```
-- Follow the photos app or web app <http://localhost:3000> instructions to create a new user
+    - Using the desktop app:
+        - use 'NEXT_PUBLIC_ENTE_ENDPOINT=https://<your_public_domain.tld>' before building the desktop app
+        - Build and install the app using: `yay -S ente-desktop-git`
+- Follow the photos, desktop or web app <http://localhost:3000> instructions to create a new user
 - Obtain the OTP code:
     - Via email:
         - Configure the `smtp` section in '`/etc/ente-server/local.yaml`'
@@ -182,7 +185,7 @@ To get the Ente server running a working PostgreSQL database (to store Ente obje
         - Wait for the mail to arrive and copy the OTP code
     - Via the ente-server log:
     ```
-        sudo journalctl -u ente-server | grep SendEmailOTT | tail -n 1
+        sudo journalctl -au ente-server | grep SendEmailOTT | tail -n 1
     ```
 - Obtain the new users account ID:
     ```

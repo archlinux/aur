@@ -5,6 +5,7 @@ Requires=postgresql.service minio.service
 
 [Service]
 ExecStart=/usr/bin/ente-server
+Restart=on-failure
 Type=exec
 KillMode=control-group
 SyslogLevel=err
