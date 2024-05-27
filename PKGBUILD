@@ -3,7 +3,7 @@
 _pkgbasename=net-snmp
 pkgname=lib32-${_pkgbasename}
 pkgver=5.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6 (32-bit)'
 arch=('x86_64')
 url='http://www.net-snmp.org/'
