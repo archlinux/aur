@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imagefanreloaded-avalonia-bin
 _pkgname=ImageFanReloaded
-pkgver=1.2024.05.10
+pkgver=1.2024.05.25
 pkgrel=1
 pkgdesc="ImageFan Reloaded is a light-weight image viewer, supporting multi-core processing."
 arch=(
@@ -24,20 +24,20 @@ depends=(
     'dotnet-runtime>=8'
 )
 makedepends=(
-    'imagemagick'
+    'imagemagick>=7'
     'gendesk'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/${pkgver}/${_pkgname}_Linux_arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/${pkgver}/${_pkgname}_Linux_x64.zip")
 source=("${pkgname%-bin}.sh")
 sha256sums=('eb4bbf2fb5bc7e9d5c1378958c931f11ad6db6746d7f697331a98be5e572dae7')
-sha256sums_aarch64=('a9ad919d051547f7c61a83764cd648c34fb02e84064c6c5fdc2ee5258c851289')
-sha256sums_x86_64=('d784ed842f0e2098de388284f25fe6d3e67c12893c5036a8eb130986c945fe5f')
+sha256sums_aarch64=('edac007ecb4b4ac73f9731877f03f283c3681cbed218449bc2abbf78ff8f6dc9')
+sha256sums_x86_64=('76d0d993c8d2e15ac2b57384bb07e401a0e7ba41b27d43fc224fdb60ba7b66f4')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    convert "${srcdir}/${_pkgname}_Linux_"*/ApplicationIcon.ico "${srcdir}/${pkgname%-bin}.png"
+    magick "${srcdir}/${_pkgname}_Linux_"*/ApplicationIcon.ico "${srcdir}/${pkgname%-bin}.png"
     gendesk -q -f -n --categories="Graphics" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
