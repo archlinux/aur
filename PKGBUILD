@@ -4,7 +4,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-secondaryscroll-clear
 pkgver=9.31
-pkgrel=3
+pkgrel=4
 pkgdesc="Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support, secondary wheel scrolling, and VTE-like clear"
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -53,6 +53,7 @@ source=(
     'popup-menu-hang.diff'
     'noinc.diff'
     'searchable-scrollback-color.patch'
+    'cursorstyle.patch'
 )
 
 prepare() {
@@ -91,6 +92,8 @@ prepare() {
     # https://gist.githubusercontent.com/emonkak/28bbc5474697695321452b6d9bf1d0bd/raw/a888c37ae10376598e663cf989132648f89219c0/rxvt-unicode-9.22-improve-font-endering.patch
     # patch rewritten to work with version ≥ 9.29
     patch -p0 -i ../improve-font-rendering.patch
+
+    patch -p1 -i ../cursorstyle.patch
 }
 
 build() {
@@ -179,4 +182,5 @@ sha256sums=('aaa13fcbc149fe0f3f391f933279580f74a96fd312d6ed06b8ff03c2d46672e8'
             '26bcc874e17db6ab676649dab12f6afd308754fb77673df5e6b5a74d0b89efc7'
             '64afd103527ce2cb2a8c51fefd815615afd0a63bbb810f2fb5ea38f6280def03'
             '0ee0434eb84b3ce1f62a4e02c0ba6d0940f4c62477e8982eb9219186feb393e3'
-            '9445f5c1e0d823c5ecbc31a8532fdb80c318903113a8a507034d52b04bd247dc')
+            '9445f5c1e0d823c5ecbc31a8532fdb80c318903113a8a507034d52b04bd247dc'
+            'e73592406d90cee0d062154464d9a5678c6812a55ee1e31ac4d02c503f4b2ebe')

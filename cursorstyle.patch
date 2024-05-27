@@ -1,0 +1,78 @@
+diff --git a/doc/rxvt.1.pod b/doc/rxvt.1.pod
+index 3c8d31e..8ee48f2 100644
+--- a/doc/rxvt.1.pod
++++ b/doc/rxvt.1.pod
+@@ -270,6 +270,10 @@ Turn on/off scrolling with the scrollback buffer as new lines appear.
+ This only takes effect if B<-si> is also given; resource
+ B<scrollWithBuffer>.
+ 
++=item B<-cs> I<style>
++
++Default cursor style ranging from 1 to 6 (default 1); resource B<defaultCursorStyle>.    
++
+ =item B<-ptab>|B<+ptab>
+ 
+ If enabled (default), "Horizontal Tab" characters are being stored as
+@@ -921,6 +926,16 @@ try to show the same lines) and B<scrollTtyOutput> is False; option
+ B<-sw>. B<False>: do not scroll with scrollback buffer when tty receives
+ new lines; option B<+sw>.
+ 
++=item B<defaultCursorStyle:> I<style>
++
++Default cursor style ranging from 1 to 6, using the 0 value for DECSCUSR
++1 -> blinking block (default).
++2 -> steady block.
++3 -> blinking underline.
++4 -> steady underline.
++5 -> blinking bar.
++6 -> steady bar.
++
+ =item B<scrollTtyKeypress:> I<boolean>
+ 
+ B<True>: scroll to bottom when a non-special key is pressed. Special keys
+diff --git a/src/command.C b/src/command.C
+index 1fbf5bd..9fa7b3d 100644
+--- a/src/command.C
++++ b/src/command.C
+@@ -4191,8 +4191,16 @@ rxvt_term::set_cursor_style (int style)
+   if (!IN_RANGE_INC (style, 0, 6))
+     return;
+ 
+-  if (style == 0)
+-    style = 1;
++  if (style == 0) {
++    style = 1; // xterm default for DECSCUSR
++
++    if (rs[Rs_defaultCursorStyle]) {
++      long int cstyle = strtol(rs[Rs_defaultCursorStyle], NULL, 10);
++
++      if (errno != ERANGE && IN_RANGE_INC (cstyle, 1, 6)) 
++        style = cstyle;
++    } 
++  }
+ 
+   cursor_type = (style - 1) / 2;
+   set_option (Opt_cursorUnderline, cursor_type == 1);
+diff --git a/src/rsinc.h b/src/rsinc.h
+index 8203880..e2765c1 100644
+--- a/src/rsinc.h
++++ b/src/rsinc.h
+@@ -1,5 +1,5 @@
+ // all resource indices, used by rxvt.h and rxvtperl.xs
+-
++  def (defaultCursorStyle)
+   def (display_name)
+   def (term_name)
+   def (iconName)
+diff --git a/src/xdefaults.C b/src/xdefaults.C
+index 296e379..a7b68fa 100644
+--- a/src/xdefaults.C
++++ b/src/xdefaults.C
+@@ -115,6 +115,7 @@ optList[] = {
+               BOOL (Rs_scrollTtyOutput, NULL, "si",  Opt_scrollTtyOutput, Optflag_Reverse, "scroll-on-tty-output inhibit"),
+               BOOL (Rs_scrollTtyKeypress, "scrollTtyKeypress", "sk", Opt_scrollTtyKeypress, 0, "scroll-on-keypress"),
+               BOOL (Rs_scrollWithBuffer, "scrollWithBuffer", "sw", Opt_scrollWithBuffer, 0, "scroll-with-buffer"),
++              STRG (Rs_defaultCursorStyle, "defaultCursorStyle", "cs", "number", "default cursor style 1-6 (default 1)"),
+ #if OFF_FOCUS_FADING
+               STRG (Rs_fade, "fading", "fade", "number", "fade colors by number % when losing focus"),
+               STRG (Rs_color + Color_fade, "fadeColor", "fadecolor", "color", "target color for off-focus fading"),
