@@ -1,0 +1,15 @@
+readfp has been deprecated since 3.2 and read_file is a drop-in replacement.
+https://github.com/python/cpython/blob/dd0e8a62df8be2a09ef6035b4c92bd9a68a7b918/Lib/configparser.py#L757-L764
+
+diff -ur a/printrun/pronterface.py b/printrun/pronterface.py
+--- a/printrun/pronterface.py	2024-05-26 10:46:50.000000000 -0700
++++ b/printrun/pronterface.py	2024-05-27 11:27:56.990514601 -0700
+@@ -2559,7 +2559,7 @@
+                 import itertools
+                 return itertools.chain([self.header], iter(self.f))
+ 
+-        parser.readfp(add_header(open(configfile)), configfile)
++        parser.read_file(add_header(open(configfile)), configfile)
+         return parser
+ 
+     def set_slic3r_config(self, configfile, cat, file):

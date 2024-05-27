@@ -20,8 +20,15 @@ optdepends=(
   'python-dbus: to inhibit sleep when printing'
   'python-psutil: to increase process priority when printing')
 makedepends=('cython' 'python-setuptools')
-source=("https://github.com/kliment/${_projectname}/archive/${_gittag}.tar.gz")
-sha256sums=('883d83f1b110d9248f30ea29f5a198f4261a2c1fc05d5b0e7fcbe4f06412ded2')
+source=("https://github.com/kliment/${_projectname}/archive/${_gittag}.tar.gz"
+        "python312.diff")
+sha256sums=('883d83f1b110d9248f30ea29f5a198f4261a2c1fc05d5b0e7fcbe4f06412ded2'
+            'c99237af701a3743d887db17fd5cacdf6423b1c6e4f23aa5bb56354cba9f3135')
+
+prepare() {
+  cd "${srcdir}/${_projectname}-${_gittag}"
+  patch -p1 < "${srcdir}/python312.diff"
+}
 
 build() {
   cd "${srcdir}/${_projectname}-${_gittag}"
