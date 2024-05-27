@@ -1,14 +1,21 @@
 pkgbase = python-asphalt
+	pkgdesc = Asphalt application framework (core)
 	pkgver = 4.12.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/asphalt-framework/asphalt
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
+	depends = python-ruamel-yaml
+	depends = python-click
+	depends = python-async_generator
+	depends = python-asyncio_extras
+	depends = python-async-timeout
 	source = https://files.pythonhosted.org/packages/source/a/asphalt/asphalt-4.12.0.tar.gz
 	sha256sums = 21e2b323aba833ecd1ea84746b55d486de5027f119987528ddb7b20c0272d10e
 
