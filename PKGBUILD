@@ -11,7 +11,7 @@ source=("$url/releases/download/v$pkgver/inlyne-v$pkgver-x86_64-unknown-linux-gn
 depends=(fontconfig gcc-libs freetype2 libxcursor libxi libxrandr openssl)
 conflicts=('inlyne')
 provides=('inlyne')
-sha256sums=('c79833798309aa0a29944ae37a627c2b90da4e7fbb7f7821cbfac1b630118398')
+b2sums=('d1951ea2f1b11d10c8b96642f8a8806ca06380feeb51433d33e1aad5ae0f6cafd3b4fe6eb0d5878d39f121817bdfa56030685920643298a26245faf24da669a1')
 
 package() {
   cd "$srcdir/inlyne-v$pkgver-x86_64-unknown-linux-gnu"
