@@ -3,7 +3,7 @@
 _pkgname=sast-evento
 
 pkgname="${_pkgname}"-appimage
-pkgver="1.1.0525"
+pkgver="1.1.0527"
 pkgrel=1
 pkgdesc="An event management system developed and used by NJUPT SAST"
 arch=('x86_64')
@@ -23,7 +23,7 @@ sha256sums=(
     'dd961254a4f3599af88f965689f9e75674a300267df4e2110028c56724338a12'
 )
 sha256sums_x86_64=(
-    '2d45e214ea197ff892f9bae50ecc365b7d1e45e333c438fc3419b46df3b5ca20'
+    '4d0bad15452d7116ee405ed8a3d6bbbf794e315a10c8706a13b36e69f5a3794c'
 )
 
 prepare() {
