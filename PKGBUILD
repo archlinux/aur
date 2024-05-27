@@ -18,6 +18,8 @@ options=('!lto')
 build() {
 	cd "${_pkgname}-${pkgver}"
 
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 	cargo build --release --locked --no-default-features \
 		 --features lyric-finder,notify,pulseaudio-backend,media-control,daemon,image,sixel
 }
