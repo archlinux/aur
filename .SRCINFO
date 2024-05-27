@@ -1,7 +1,7 @@
 pkgbase = python-jsonpath-ng
 	pkgdesc = JSONPath for Python that aims to be standard compliant
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/h2non/jsonpath-ng
 	arch = any
 	license = Apache
