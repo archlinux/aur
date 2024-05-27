@@ -22,7 +22,7 @@ prepare() {
   cd "$_pkgname"
   git fetch origin pull/1641/head:chase/0.18
   git checkout chase/0.18
-  git cherry-pick 21f079e306bc1362a9cb62e656ba6d32ee003941
+  git cherry-pick -n 21f079e306bc1362a9cb62e656ba6d32ee003941
   patch -Np1 -i "${srcdir}/labwc-atomic-modesetting-tearing.patch"
 }
 
