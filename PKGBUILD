@@ -150,7 +150,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.9
-_minor=1
+_minor=2
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -160,7 +160,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE + Cachy Sauce scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -179,7 +179,7 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=550.78
+_nv_ver=555.42.02
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="open-gpu-kernel-modules-${_nv_ver}"
 source=(
@@ -202,14 +202,12 @@ fi
 # NVIDIA pre-build module support
 if [ -n "$_build_nvidia" ]; then
     source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run"
-             "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch"
-             "${_patchsource}/misc/nvidia/0001-NVIDIA-take-modeset-ownership-early.patch")
+             "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch")
 fi
 
 if [ -n "$_build_nvidia_open" ]; then
     source+=("nvidia-open-${_nv_ver}.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${_nv_ver}.tar.gz"
              "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch"
-             "${_patchsource}/misc/nvidia/0001-NVIDIA-take-modeset-ownership-early.patch"
              "${_patchsource}/misc/nvidia/nvidia-open-gcc-ibt-sls.patch")
 fi
 
@@ -256,7 +254,6 @@ prepare() {
         src="${src##*/}"
         src="${src%.zst}"
         [[ $src = make-modeset-fbdev-default.patch ]] && continue
-        [[ $src = 0001-NVIDIA-take-modeset-ownership-early.patch ]] && continue
         [[ $src = nvidia-open-gcc-ibt-sls.patch ]] && continue
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
@@ -508,13 +505,10 @@ prepare() {
 
         # Use fbdev and modeset as default
         patch -Np1 -i "${srcdir}/make-modeset-fbdev-default.patch" -d "${srcdir}/${_nv_pkg}/kernel"
-        patch -Np2 --no-backup-if-mismatch -i "${srcdir}/0001-NVIDIA-take-modeset-ownership-early.patch" -d "${srcdir}/${_nv_pkg}/kernel"
     fi
 
     if [ -n "$_build_nvidia_open" ]; then
         patch -Np1 -i "${srcdir}/make-modeset-fbdev-default.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
-        patch -Np2 --no-backup-if-mismatch -i "${srcdir}/0001-NVIDIA-take-modeset-ownership-early.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
-
         # Fix for https://bugs.archlinux.org/task/74886
         patch -Np1 --no-backup-if-mismatch -i "${srcdir}/nvidia-open-gcc-ibt-sls.patch" -d "${srcdir}/${_nv_open_pkg}"
     fi
@@ -732,8 +726,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('388af1d13e78a424f72a961697f4b0b6a234e54ce1e4a2532fc73717301e048c6f4a6251b6e3c4541179d1382566c3f411baa6883818a10d178ef27d036b5379'
-        '2e008839b9466532b887066cb8772bde09f80c5ef11ae3b6bf2c45441278df79bbe70ffddc0010b48a62592849393dded00461ef741bfcd6b82e738d706713ff'
+b2sums=('ae19877e19239c2b521cdf04d182c0ee849228c9ecb4c9dddb626d85ed51faaa5215cc70b5c1ad203c346df85197cd5512894a27eba1c1fd6add9cd2fbaa2a3e'
+        '1e1cd103f3dc091c68bcc6570f808bc24f4a548897f0941fa66a4c304508ec35c358a4db9423e9f9011d784c26d60d183ef3632ecc276402b22ce4dc1cfcdb0b'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        'f7c64bdfd1afc521e32cbe2d025aa9df201c7ee1462b921447cf5df5abdbfce4a555fe4569773dbc6e0ad77965cc64a685eb866f882a9917a764861089505a76'
+        '0d56c5abf5486f5b948e1fcb49ac96c1eb42f9842a0c09ae26429ed6bba68bb114e24da986a9c8146d30595cb2faf3c4e86c1c79abab2e665bae94a57ba3dfec'
         '4e57dfcf72b57fb049b6ff3b3b842704b0025df3f816ac9c01d6a6fc68e31813bcc400bbd6a713c5fdd939657e35fde074ef3234848f15c7e58651e46d285d7e')
