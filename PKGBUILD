@@ -3,7 +3,7 @@
 # Contributor: onestep_ua <onestep at ukr dot net>
 
 pkgname=libg15render
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="A small graphics library optimised for drawing on an LCD"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://gitlab.com/menelkir/libg15render"
 license=('GPL')
 depends=('libg15')
 source=(https://gitlab.com/menelkir/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('f11470b4c8709b7cab8747d8eca4d55ddf88f6dd0a46f11de78612d6070c8b5ea7188ec1ea0236edbb0e5904e6dffd7c75831d5e00564b3cebf8b9dc58b0100e')
+sha512sums=('a4e3e361a2934d862a2c9ce8692205b220d41b7a6bdca249eb9a620cb229dceba48f9a022c471cf405d20ba9cda604a46b8694f548e5391db21ad779f1268007')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
