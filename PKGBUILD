@@ -3,7 +3,7 @@
 pkgname=alvr-bin
 _pkgname=${pkgname%-bin}
 pkgver=20.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -61,7 +61,6 @@ package() {
 	cp -ar icons/* "$pkgdir/usr/share/icons/"
 
 	# Firewall
-	install -Dm644 libexec/alvr/alvr-firewalld.xml "$pkgdir/usr/lib/firewalld/services/${_pkgname}.xml"
 	install -Dm644 libexec/alvr/ufw-alvr -t "$pkgdir/etc/ufw/applications.d/"
 
 	install -Dm755 libexec/alvr/alvr_fw_config.sh -t "$pkgdir/usr/libexec/alvr/"
