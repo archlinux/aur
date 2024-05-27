@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altus-bin
 _pkgname=Altus
-pkgver=5.1.0
+pkgver=5.2.0
 _electronversion=28
 pkgrel=1
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support"
@@ -18,6 +18,7 @@ makedepends=(
     'fuse2'
 )
 options=(
+    '!strip'
     '!emptydirs'
 )
 source=(
@@ -25,12 +26,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 options=('!strip')
-sha256sums=('62f68922aefcdf58981b766d1d3c77a344e7c34edfc5e8ff590b9b06e6b53fab'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('472322bb3e1eb10a775f92c69ea21ec52aee6b9d2733c6fd50454a51868b779a'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
