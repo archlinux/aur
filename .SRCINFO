@@ -1,7 +1,7 @@
 pkgbase = gtkterm
 	pkgdesc = A gtk+ based serial port communication program
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://github.com/Jeija/gtkterm
 	install = gtkterm.install
 	arch = i686
@@ -14,9 +14,7 @@ pkgbase = gtkterm
 	depends = vte3
 	depends = libgudev
 	conflicts = gtkterm
-	source = gtkterm-1.3.0.tar.gz::https://github.com/Jeija/gtkterm/archive/refs/tags/1.3.0.tar.gz
-	source = fix_pointer.patch
-	sha256sums = cd311605633cabd5759adee7eebc2fbd8d8f1de627f377a17a28498279ee5caa
-	sha256sums = 450de640bcf4cea3e546c3b9a6388537748f7ebdeae31b54fdde1d1f8e2f4d26
+	source = gtkterm-1.3.1.tar.gz::https://github.com/Jeija/gtkterm/archive/refs/tags/1.3.1.tar.gz
+	sha256sums = 47e39011067ccaa5e965308225d8f80ea4e1793ca884d7f32600fa1fb9ae6628
 
 pkgname = gtkterm
