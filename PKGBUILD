@@ -22,5 +22,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dt "$pkgdir/usr/bin" src/sgfc
-	install -Dm644 -t "$pkgdir/usr/share/license/$pkgname" COPYING
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
 }
