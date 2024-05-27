@@ -1,8 +1,8 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 pkgname=sgfc
 pkgver=2.0
-pkgrel=1
-pkgdesc="SGF Syntax Checker & Converter"
+pkgrel=2
+pkgdesc="Smart Game Format Syntax Checker & Converter"
 arch=('x86_64')
 url="https://bitbucket.org/arnoh/sgfc"
 license=('BSC-3-Clause')
