@@ -16,7 +16,7 @@ arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=17
+pkgrel=18
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
   'ffmpeg'      # To convert the Making Of-movie to smaller filesize.
@@ -84,7 +84,7 @@ package_riven() {
   pkgdesc="'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion."
   # url='https://wiki.scummvm.org/index.php/Riven:_The_Sequel_to_Myst'
   url='https://cyan.com/games/riven/'
-  license=('GPL3')
+  license=('GPL-3.0-or-later')
   depends=(
     'riven-data'
     'scummvm'
@@ -102,7 +102,7 @@ package_riven() {
 
   install -d -v -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
   cd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -sv "../common/GPL3/license.txt" "Riven-startscript-license.txt"
+  ln -sv "../spdx/GPL-3.0-or-later.txt" "Myst4-startscript-license.txt"
 }
 
 package_riven-data() {
