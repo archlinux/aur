@@ -1,13 +1,13 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=dtree
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Command line program to draw trees"
 arch=('x86_64')
 url="https://strahinja.srht.site/dtree"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/dtree/archive/v$pkgver.tar.gz")
-md5sums=('8203b3d78dec09522fdbb69b10c92f3a')
+md5sums=('901c4eb6e88923882fa16aa76629a4e1')
 
 build() {
 	cd "${pkgname}-v$pkgver"
