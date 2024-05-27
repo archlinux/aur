@@ -3,7 +3,7 @@
 _pkgname=nyu-hpc-opencl-demo
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=20150501+6cf0f31
+pkgver=20190220+fc16a6b
 pkgrel=1
 pkgdesc="OpenCL demo and OpenCL print devices from the NYU HPC lecture."
 arch=('i386' 'i686' 'x86_64')
@@ -20,7 +20,7 @@ provides=(
 )
 conflicts=("${_pkgname}")
 source=(
-  "${_pkgname}::git+git://github.com/hpc12/tools/"
+  "${_pkgname}::git+https://github.com/hpc12/tools/"
   'license.txt'
 )
 sha256sums=(

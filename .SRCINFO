@@ -1,6 +1,6 @@
 pkgbase = nyu-hpc-opencl-demo-git
 	pkgdesc = OpenCL demo and OpenCL print devices from the NYU HPC lecture.
-	pkgver = 20150501+6cf0f31
+	pkgver = 20190220+fc16a6b
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/hpc12/tools/
@@ -10,13 +10,12 @@ pkgbase = nyu-hpc-opencl-demo-git
 	license = custom
 	makedepends = git
 	depends = opencl-icd-loader
-	provides = nyu-hpc-opencl-demo=20150501+6cf0f31
+	provides = nyu-hpc-opencl-demo=20190220+fc16a6b
 	provides = cl-demo
 	conflicts = nyu-hpc-opencl-demo
-	source = nyu-hpc-opencl-demo::git+git://github.com/hpc12/tools/
+	source = nyu-hpc-opencl-demo::git+https://github.com/hpc12/tools/
 	source = license.txt
 	sha256sums = SKIP
 	sha256sums = 67586be98c23bf64f949659d889ee74d04b7cc3c3c2e172ffaf9b65bb6d7ee53
 
 pkgname = nyu-hpc-opencl-demo-git
-
