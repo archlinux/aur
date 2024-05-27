@@ -4,7 +4,7 @@
 
 _pkgname=gnome-directory-thumbnailer
 pkgname="${_pkgname}-git"
-pkgver=0.1.11+17.r105.20240315.6eeca7e
+pkgver=0.1.11+18.r106.20240422.03c05b2
 pkgrel=1
 pkgdesc="GNOME thumbnailer to generate thumbnails for directories. Latest git checkout."
 arch=(
