@@ -5,12 +5,14 @@ _pkgname="${_pkgorigname}"
 pkgname="${_pkgname}-git"
 pkgdesc="A CartoCSS map style processor that generates Mapnik XML and MapServer map files. Writte in go."
 epoch=1
-pkgver=0.0.0_dev+r580.20210517.28e903c
+pkgver=1.4.0+2+r592.20240516.36df7ed
 pkgrel=1
-arch=('u686' 'x86_64')
-license=('apache')
+arch=('i686' 'x86_64')
+license=('Apache-2.0')
 url="http://github.com/omniscale/magnacarto"
 depends=(
+  'gcc-libs'
+  'glibc'
 )
 makedepends=(
   'boost'
@@ -29,25 +31,29 @@ conflicts=(
   "${_pkgname}"
 )
 source=(
-  # "${_pkgorigname}::git+git://github.com/omniscale/${_pkgorigname}.git" # fetched in prepare()!
+  "${_pkgorigname}::git+${url}.git"
 )
 sha256sums=(
-  # 'SKIP'
+  'SKIP'
 )
 
 prepare() {
+  cd "${srcdir}/${_pkgorigname}"
+
   export GOPATH="${srcdir}/go"
   mkdir -p "${GOPATH}"
   msg2 "Fetching sources ..."
-  GO111MODULE=off go get -v -d "github.com/omniscale/magnacarto"
+  go get ...
 }
 
 pkgver() {
-  export GOPATH="${srcdir}/go"
-  cd "${GOPATH}/src/github.com/omniscale/magnacarto"
+  cd "${srcdir}/${_pkgorigname}"
 
-  _ver="$(sed 's|//.*$||g' version.go | grep -E -e '[[:space:]]*[Vv]ersion[[:space:]]*=' | sed 's|//.*$||' | awk -F '=' '{print $2}' | tr -d [[:space:]]\"\' | tr '-' '_')"
-  _additionalver="$(grep -E '^[[:space:]]*BUILD_VERSION[[:space:]]*=' Makefile | awk -F '=' '{print $2}' | sed -E 's|-*\$.*$||g' | tr -d [[:space:]]\"\')"
+  export GOPATH="${srcdir}/go"
+
+  #_ver="$(sed 's|//.*$||g' version.go | grep -E -e '[[:space:]]*[Vv]ersion[[:space:]]*=' | sed 's|//.*$||' | awk -F '=' '{print $2}' | tr -d [[:space:]]\"\' | tr '-' '_')"
+  #_additionalver="$(grep -E '^[[:space:]]*BUILD_VERSION[[:space:]]*=' Makefile | awk -F '=' '{print $2}' | sed -E 's|-*\$.*$||g' | tr -d [[:space:]]\"\')"
+  _ver="$(git describe  --tags | sed 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _hash="$(git rev-parse --short HEAD)"
   _date="$(git log -n 1 --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
@@ -58,23 +64,27 @@ pkgver() {
 }
 
 build() {
+  cd "${srcdir}/${_pkgorigname}"
+
   export GOPATH="${srcdir}/go"
-  cd "${GOPATH}/src/github.com/omniscale/magnacarto"
 
   make cmds
+  make
 }
 
 check() {
+  cd "${srcdir}/${_pkgorigname}"
+
   export GOPATH="${srcdir}/go"
-  cd "${GOPATH}/src/github.com/omniscale/magnacarto"
 
   make test
   # make test-full # needs 'mapserver' in the $PATH
 }
 
 package() {
+  cd "${srcdir}/${_pkgorigname}"
+
   export GOPATH="${srcdir}/go"
-  cd "${GOPATH}/src/github.com/omniscale/magnacarto"
 
   for _bin in magnacarto magnacarto-mapnik magnaserv; do
     install -D -v -m755 "${_bin}" "${pkgdir}/usr/bin/${_bin}"
