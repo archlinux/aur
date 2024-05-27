@@ -2,12 +2,12 @@
 
 pkgname=terraform-ls-git
 _pkgname=terraform-ls
-pkgver=v0.7.0.r0.ga6b5551
+pkgver=v0.30.1.r417.g985e4a61
 pkgrel=1
 pkgdesc='Terraform Language Server'
 arch=('x86_64')
 url='https://github.com/hashicorp/terraform-ls'
-license=('custom:MPL2')
+license=('MPL-2.0')
 makedepends=('go' 'git')
 conflicts=('terraform-ls')
 provides=('terraform-ls')
@@ -18,7 +18,7 @@ pkgver() {
     cd "$_pkgname"
     (
         set -o pipefail
-        git describe --long 2> /dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }

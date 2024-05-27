@@ -1,10 +1,10 @@
 pkgbase = terraform-ls-git
 	pkgdesc = Terraform Language Server
-	pkgver = v0.7.0.r0.ga6b5551
+	pkgver = v0.30.1.r417.g985e4a61
 	pkgrel = 1
 	url = https://github.com/hashicorp/terraform-ls
 	arch = x86_64
-	license = custom:MPL2
+	license = MPL-2.0
 	makedepends = go
 	makedepends = git
 	provides = terraform-ls
@@ -13,4 +13,3 @@ pkgbase = terraform-ls-git
 	sha256sums = SKIP
 
 pkgname = terraform-ls-git
-
