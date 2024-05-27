@@ -9,7 +9,7 @@
 : ${_build_pgo:=try}
 
 : ${_build_clang:=true}
-: ${_build_mold:=true}
+: ${_build_mold:=false}
 : ${_build_git_tools:=false}
 
 : ${_build_instrumented:=false}
@@ -28,7 +28,7 @@ unset _pkgtype
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5720.r0.g6d8a906
+pkgver=1.7.5843.r0.g9187e7e
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -103,6 +103,7 @@ _main_package() {
   )
 
   _source_pcsx2
+  _source_shaderc
 
   _source_biojppm_rapidyaml
   _source_biojppm_c4core
@@ -115,14 +116,14 @@ _source_pcsx2() {
     'fmtlib.fmt'::'git+https://github.com/fmtlib/fmt.git'
     'google.googletest'::'git+https://github.com/google/googletest.git'
     'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-    'microsoft.wil'::'git+https://github.com/microsoft/wil.git'
+    #'microsoft.wil'::'git+https://github.com/microsoft/wil.git'
   )
   sha256sums+=(
     'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
+    #'SKIP'
   )
 
   _prepare_pcsx2() (
@@ -132,7 +133,7 @@ _source_pcsx2() {
       'fmtlib.fmt'::'3rdparty/fmt/fmt'
       'google.googletest'::'3rdparty/gtest'
       'khronosgroup.vulkan-headers'::'3rdparty/vulkan-headers'
-      'microsoft.wil'::'3rdparty/wil'
+      #'microsoft.wil'::'3rdparty/wil'
     )
     _submodule_update
   )
@@ -181,6 +182,63 @@ _source_biojppm_c4core() {
   )
 }
 
+_source_shaderc() {
+  depends+=(
+    glslang
+    spirv-tools
+  )
+  makedepends+=(
+    spirv-headers
+  )
+
+  source+=(
+    "google.shaderc"::"git+https://github.com/google/shaderc.git"
+    #"khronosgroup.glslang"::"git+https://github.com/KhronosGroup/glslang.git"
+    #"khronosgroup.spirv-headers"::"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+    #"khronosgroup.spirv-tools"::"git+https://github.com/KhronosGroup/SPIRV-Tools.git"
+  )
+  sha256sums+=(
+    'SKIP'
+    #'SKIP'
+    #'SKIP'
+    #'SKIP'
+  )
+
+  _prepare_shaderc() (
+    cd "$srcdir/google.shaderc"
+    git apply "$srcdir/$_pkgsrc/.github/workflows/scripts/common/shaderc-changes.patch"
+
+    # de-vendor libs and disable git versioning
+    sed '/examples/d;/third_party/d' -i CMakeLists.txt
+    sed '/build-version/d' -i glslc/CMakeLists.txt
+    cat <<- EOF > glslc/src/build-version.inc
+"${pkgver}\\n"
+"$(pacman -Q spirv-tools | cut -d \  -f 2 | sed 's/-.*//')\\n"
+"$(pacman -Q glslang | cut -d \  -f 2 | sed 's/-.*//')\\n"
+EOF
+  )
+
+  _build_shaderc() {
+    local _cmake_shaderc=(
+      -B build_shaderc
+      -S google.shaderc
+      -G Ninja
+      -DCMAKE_BUILD_TYPE=None
+      -DCMAKE_INSTALL_PREFIX=/usr
+      -DSHADERC_SKIP_TESTS=ON
+      -DSHADERC_SKIP_EXAMPLES=ON
+      -DSHADERC_SKIP_COPYRIGHT_CHECK=ON
+      -Dglslang_SOURCE_DIR=/usr/include/glslang
+      -Wno-dev
+    )
+
+    cmake "${_cmake_shaderc[@]}"
+    cmake --build build_shaderc
+    DESTDIR="$srcdir/deps" cmake --install build_shaderc
+  }
+
+}
+
 _build_pcsx2() {
   local _cmake_pcsx2
 
@@ -188,7 +246,9 @@ _build_pcsx2() {
     -S "$_pkgsrc"
     -B build_pcsx2
     -G Ninja
-    -DCMAKE_BUILD_TYPE="Release"
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
+    -DCMAKE_SKIP_RPATH=ON
   )
 
   if [[ "${_build_debug::1}" == "t" ]]; then
@@ -242,6 +302,7 @@ prepare() {
   }
 
   _prepare_pcsx2
+  _prepare_shaderc
 
   _prepare_biojppm_rapidyaml
   _prepare_biojppm_c4core
@@ -249,11 +310,6 @@ prepare() {
   # prevent march=native
   sed -E -e 's@^(\s*)(add_compile_options\(.*march=native.*\))@\1message("skip: march=native")@' \
     -i "$_pkgsrc/cmake/BuildParameters.cmake"
-
-  # remove shaderc semantic debug
-  sed -e '/vk_khr_shader_non_semantic_info/d' \
-    -e '/SetEmitNonSemanticDebugInfo/d' \
-    -i "$_pkgsrc/pcsx2/GS/Renderers/Vulkan/VKShaderCache.cpp"
 }
 
 pkgver() {
@@ -281,6 +337,7 @@ build() {
     CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
+  _build_shaderc
   _build_pcsx2
 
   cd pcsx2_patches
@@ -290,6 +347,9 @@ build() {
 package() {
   install -Dm644 patches.zip -t "$pkgdir/opt/$_pkgname/resources/"
   cp --reflink=auto -r build_pcsx2/bin/* "$pkgdir/opt/$_pkgname/"
+
+  # bundled shaderc
+  install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so.1" -t "$pkgdir/opt/$_pkgname/"
 
   install -Dm644 "$_pkgsrc/bin/resources/icons/AppIconLarge.png" \
     "$pkgdir/usr/share/pixmaps/$_pkgname.png"
