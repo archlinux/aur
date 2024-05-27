@@ -1,12 +1,12 @@
 # Contributor: solarbaron
 pkgname=feishin-git
-pkgver=v0.7.1.r3.g168153b
+pkgver=v0.7.1.r9.gaa89c5e
 pkgdesc='Modern music player with support for navidrome servers.'
 pkgrel=1
 arch=('x86_64' 'aarch64')
 license=('GPL3')
-depends=('mpv')
-makedepends=('yarn' 'npm')
+optdepends=('mpv: Alternative audio backend')
+makedepends=('npm')
 url='https://github.com/jeffvli/feishin'
 provides=("${pkgname%-git}")
 conflicts=("feishin" "feishin-bin")
@@ -23,8 +23,8 @@ pkgver() {
 
 build() {
   cd $pkgname 
-  yarn install --frozen-lockfile
-  yarn package
+  npm install --force
+  npm run package
 }
 
 package() {
