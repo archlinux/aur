@@ -3,12 +3,12 @@
 
 pkgname=ocaml-xml-light
 pkgver=2.5
-pkgrel=2
+pkgrel=3
 license=('LGPL-2.1-or-later')
 arch=('i686' 'x86_64')
 pkgdesc="Objective Caml lightweight xml parser"
 url="http://tech.motion-twin.com/xmllight.html"
-depends=('ocaml')
+depends=('glibc' 'ocaml')
 makedepends=('dune')
 options=('!strip' '!makeflags' 'staticlibs')
 source=("https://github.com/ncannasse/xml-light/releases/download/${pkgver}/xml-light-${pkgver}.tbz"
