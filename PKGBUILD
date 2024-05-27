@@ -1,6 +1,6 @@
 # Maintainer: Sergey Kovalenko <seryoga.engineering@gmail.com>
 
-pkgname=advanced-linux-system-cleaning-bin
+pkgname=advanced-linux-system-cleaning
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Advanced system cleaning and privacy"
