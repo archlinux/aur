@@ -1,7 +1,7 @@
 # Maintainer: Javier Domingo Cansino <javierdo1@gmail.com>
 pkgname=helmsman-git
 pkgrel=1
-pkgver=3.8.1
+pkgver=3.8.1.r2.g2371260
 pkgdesc="Helmsman upstream"
 arch=('x86_64')
 url="https://github.com/Praqma/helmsman"
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('git' 'go')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
-source=('helmsman::git://github.com/Praqma/helmsman')
+source=('helmsman::https://github.com/Praqma/helmsman')
 md5sums=('SKIP')
 _gourl=github.com/Praqma/helmsman
 
