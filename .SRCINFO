@@ -1,14 +1,15 @@
 pkgbase = ruby-rack-cache
 	pkgdesc = Real HTTP Caching for Ruby Web Apps
-	pkgver = 1.13.0
+	pkgver = 1.17.0
 	pkgrel = 1
-	url = https://github.com/rtomayko/rack-cache
+	url = https://github.com/rack/rack-cache
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-rack
 	options = !emptydirs
-	source = https://github.com/rtomayko/rack-cache/archive/v1.13.0/ruby-rack-cache-1.13.0.tar.gz
-	sha512sums = 049302994663703ea593e01194e1c5c3b95afc889e628906e65302dd1fe64fc280bac9d26855db2fc7af1e287201a47c7f6a52329a3151b3efc775c0585d837c
+	source = https://github.com/rack/rack-cache/archive/v1.17.0/ruby-rack-cache-1.17.0.tar.gz
+	sha512sums = 41b3d28c577f241c57c74623f37ef36efcc059f9b8499cdc2c08d15ab68fbd06b736140594c6860708e0fa6590027b0e64ab539d2d2ae243d1a1150e7e64959f
+	b2sums = 935e9d539dd130d62486326ef4f6b4ed2576a13262af40914a4de5251601872e29fc68134fe04f8f5eed656d17957257d8a502e02853838a30772a354ff8f921
 
 pkgname = ruby-rack-cache

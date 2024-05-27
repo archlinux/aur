@@ -2,16 +2,17 @@
 
 _gemname='rack-cache'
 pkgname="ruby-${_gemname}"
-pkgver=1.13.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Real HTTP Caching for Ruby Web Apps"
 arch=('any')
-url='https://github.com/rtomayko/rack-cache'
+url='https://github.com/rack/rack-cache'
 license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-rack')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('049302994663703ea593e01194e1c5c3b95afc889e628906e65302dd1fe64fc280bac9d26855db2fc7af1e287201a47c7f6a52329a3151b3efc775c0585d837c')
+sha512sums=('41b3d28c577f241c57c74623f37ef36efcc059f9b8499cdc2c08d15ab68fbd06b736140594c6860708e0fa6590027b0e64ab539d2d2ae243d1a1150e7e64959f')
+b2sums=('935e9d539dd130d62486326ef4f6b4ed2576a13262af40914a4de5251601872e29fc68134fe04f8f5eed656d17957257d8a502e02853838a30772a354ff8f921')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
@@ -26,18 +27,53 @@ prepare() {
 build() {
   cd "${_gemname}-${pkgver}"
 
-  gem build "${_gemname}"
+  local _gemdir="$(gem env gemdir)"
+
+  gem build --verbose "${_gemname}.gemspec"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "tmp_install${_gemdir}" \
+    --bindir "tmp_install/usr/bin" \
+    "${_gemname}-${pkgver}.gem"
+
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install${_gemdir}/cache/" \
+    "tmp_install${_gemdir}/gems/${_gemname}-${pkgver}/vendor/" \
+    "tmp_install${_gemdir}/doc/${_gemname}-${pkgver}/ri/ext/"
+
+  find "tmp_install${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
 }
 
 package() {
   cd "${_gemname}-${pkgver}"
 
-  local _gemdir="$(gem env gemdir)"
+  cp --archive --verbose tmp_install/* "${pkgdir}"
 
-  gem install --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
-
-  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
-
-  install -Dm 644 MIT-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 CHANGES README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
+  install --verbose -D --mode=0644 MIT-LICENSE --target-directory "${pkgdir}/usr/share/licenses/${pkgname}"
+  install --verbose -D --mode=0644 CHANGES *.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
 }
+
+# vim: tabstop=2 shiftwidth=2 expandtab:
