@@ -22,7 +22,7 @@ unset _pkgtype
 _pkgname="vala-panel-appmenu"
 pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=24.05
-pkgrel=2
+pkgrel=3
 pkgdesc="Global Menu plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 license=('LGPL-3.0-or-later')
@@ -69,12 +69,13 @@ _main_git() {
   }
 }
 
-_path_reg="subprojects/registrar"
-_path_trans="subprojects/translator"
-
 # common functions
 prepare() {
-  sed -e 's&^.*if mate_found or vala_panel_found or budgie_found.*$&if true&' -i vala-panel-appmenu/data/meson.build
+  sed -e 's&^.*if mate_found or vala_panel_found or budgie_found.*$&if true&' \
+    -i "$_pkgsrc/data/meson.build"
+
+  sed -E -e "s&(importer_dep = dependency)\('appmenu-glib-translator'&\1('_appmenu_glib_translator_'&" \
+    -i "$_pkgsrc/lib/meson.build"
 }
 
 build() {
@@ -90,6 +91,7 @@ build() {
 
 _build_registrar() {
   [ "${_build_registrar::1}" != "t" ] && return
+  local _path_reg="subprojects/registrar"
   arch-meson "$_pkgsrc/$_path_reg" build_registrar
   meson compile -C build_registrar
 }
