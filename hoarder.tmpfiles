@@ -1,1 +1,2 @@
-d /var/lib/hoarder 0755 hoarder hoarder -
+d /var/lib/hoarder       0755 hoarder hoarder -
+d /var/lib/hoarder/cache 0755 hoarder hoarder -

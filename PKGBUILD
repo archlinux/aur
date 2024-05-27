@@ -3,7 +3,7 @@
 pkgbase=hoarder
 pkgname=("${pkgbase}" "${pkgbase}-cli")
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 _pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64")
 url="https://github.com/${pkgbase}-app/${pkgbase}"
@@ -19,7 +19,7 @@ source=("${pkgbase}::git+${url}.git#tag=v${pkgver}"
 sha256sums=('d863c41bdaab0ad697c94a75678308c6b692a402958658f4e2882f82a77e14af'
             '02ba5c278843be0dc98a172a16e172dd5f2245dd7e91608fc3a53f9e5be2ee7a'
             'bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e'
-            '2ed8abfab0df920e19bf2847afa0138bf9fa2dc6e9daa395cfdf72a9318df456'
+            'cd2b58e13dd928925db21819a74052b98c4dd82cf6353f6b9181b41cc93e8848'
             '743b1d08eaa1c38fab3561c7e5010e1de3db3e1984abf0f04ef415f941ff0bf6'
             '7f7859fd9b5a8e5843163de5ba842260c781db4e137b922ed586a38beb1aacab'
             '750941fb711f95239b4aacf278a42d9c75b80ef75c730ecc99940510b2b57cda')
@@ -65,6 +65,8 @@ package_hoarder() {
     cp -r --preserve=mode "${pkgbase}/workers"                   "${pkgdir}/usr/share/${pkgbase}/apps/workers"
     cp -r --preserve=mode "${pkgbase}/apps/web/.next/static"     "${pkgdir}/usr/share/${pkgbase}/apps/web/.next/static"
     cp -r --preserve=mode "${pkgbase}/apps/web/public"           "${pkgdir}/usr/share/${pkgbase}/apps/web/public"
+
+    ln -s "/var/lib/${pkgbase}/cache" "${pkgdir}/usr/share/${pkgbase}/apps/web/.next/cache"
 }
 
 package_hoarder-cli() {
