@@ -13,8 +13,8 @@ pkgbase="${_pkgbase}-git"
 pkgname=(
   "${_pkgbare}-common-git"
 )
-pkgver=0.0.alpha_3+263.r438.20240326.06cacf9
-pkgrel=2
+pkgver=0.0.alpha_3+298.r473.20240517.db1977b
+pkgrel=1
 pkgdesc="32 and 64 bit DOS command interpreters ('command.com'), e.g. for fdpp and dosemu2. Latest git checkout."
 arch=('any')
 url='https://github.com/dosemu2/comcom64'
