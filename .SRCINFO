@@ -1,0 +1,12 @@
+pkgbase = sgfc
+	pkgdesc = SGF Syntax Checker & Converter
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://bitbucket.org/arnoh/sgfc/src/master
+	arch = x86_64
+	license = BSC-3-Clause
+	depends = glibc
+	source = sgfc-2.0.tar.gz::https://bitbucket.org/arnoh/sgfc/get/c8f75dccedfc92355975ef06458070e96cdf9871.tar.gz
+	sha256sums = 0bd31bd2163e370113e3561a6c77669b5740a395e7a949983e30f61429dbd574
+
+pkgname = sgfc
