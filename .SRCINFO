@@ -1,0 +1,19 @@
+pkgbase = libtrash-git
+	pkgdesc = A shared, preloaded library that implements a trash can under Linux
+	pkgver = 3.9+7.r31.20240325.5c0725e
+	pkgrel = 1
+	url = https://github.com/pete4abw/libtrash
+	install = libtrash.install
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = autoconf
+	depends = glibc
+	provides = libtrash=3.9+7.r31.20240325.5c0725e
+	conflicts = libtrash
+	source = libtrash::git+https://github.com/pete4abw/libtrash.git
+	source = libtrash.install
+	sha256sums = SKIP
+	sha256sums = 64fa677e8ee51caf6030283304bd8f437615adaf8a318db9f7ff4a31a435d13a
+
+pkgname = libtrash-git

@@ -1,0 +1,14 @@
+post_install() {
+  echo ">> To enable libtrash:"
+  echo ">>   export LD_PRELOAD=/usr/lib/libtrash.so"
+  echo ">> To disable libtrash:"
+  echo ">>   unset LD_PRELOAD"
+  echo ">> WARNING: a few programs might not work while libtrash is enable"
+  echo ">>          currently known: fakeroot, chromium and firefox"
+  echo ">>          disable libtrash before using any of them."
+}
+
+post_upgrade() {
+  post_install
+}
+
