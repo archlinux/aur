@@ -10,23 +10,31 @@ exec_prefix="${prefix}"
 datarootdir="/usr/share"
 datadir="${datarootdir}"
 
+if [ -r "${datadir}/grub/grub-mkconfig_lib" ]; then
 . "${datadir}/grub/grub-mkconfig_lib"
+else
+  printf '%s\n' "ERROR: Cannot source file '${datadir}/grub/grub-mkconfig_lib'." > /dev/stderr
+  exit 1
+fi
 
 PLPBT_IMAGE="/boot/plop/plpbt.bin"
 CLASS="--class plop --class plpbt --class tool"
 
 if [ -e "${PLPBT_IMAGE}" ] && is_path_readable_by_grub "${PLPBT_IMAGE}" ; then
     ## image exists, create menu entry
-    echo "Found Plop Boot Manager image: ${PLPBT_IMAGE}" >&2
+    echo "Found Plop Boot Manager 5 image: ${PLPBT_IMAGE}" >&2
     _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${PLPBT_IMAGE})"
     _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${PLPBT_IMAGE})"
     _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${PLPBT_IMAGE})"
     cat << EOF
-if [ "\${grub_platform}" == "pc" ]; then
-    menuentry "Plop Boot Manager" ${CLASS} {
+#if [ "\${grub_platform}" == "pc" ]; then
+### NOTE: On UEFI-only systems which do not support BIOS emulation anymore Plop Boot Manager 5 might not work at all.
+    menuentry "Plop Boot Manager 5" ${CLASS} {
+        insmod part_gpt
+        insmod fat
         search --fs-uuid --no-floppy --set=root ${_GRUB_PLOP_HINTS_STRING} ${_GRUB_PLOP_FS_UUID}
         linux16 ${_GRUB_PLOP_REL_PATH} ${GRUB_CMDLINE_PLPBT}
     }
-fi
+#fi
 EOF
 fi
