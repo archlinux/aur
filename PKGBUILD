@@ -3,8 +3,8 @@ pkgbase=libastal-git
 pkgname=("libastal-git" "python-libastal-git" 
          "lua-libastal-git" "lua51-${pkgbase}" "lua53-${pkgbase}")
 _pkgname=libastal
-pkgver=r4.913738c
-pkgrel=2
+pkgver=r18.efa11df
+pkgrel=1
 pkgdesc="Building blocks for building desktop shells."
 arch=("x86_64")
 license=("GPL-3")
@@ -50,20 +50,22 @@ package_python-libastal-git() {
 
 _package_lua() {
   cd $srcdir/$_pkgname/lua
-	depends=("libastal-git" "${pkgname%-*-git}" "${pkgname%-*-git}-lgi")
 	luarocks --lua-version $1 --tree "$pkgdir/usr/" \
 		make --deps-mode none --no-manifest -- "$_rockname"
 }
 
 package_lua-libastal-git() {
+	depends=("libastal-git" "${pkgname%-*-git}" "${pkgname%-*-git}-lgi")
   _package_lua 5.4
 }
 
 package_lua51-libastal-git() {
+	depends=("libastal-git" "${pkgname%-*-git}" "${pkgname%-*-git}-lgi")
   _package_lua 5.1
 }
 
 
 package_lua53-libastal-git() {
+	depends=("libastal-git" "${pkgname%-*-git}" "${pkgname%-*-git}-lgi")
   _package_lua 5.3
 }

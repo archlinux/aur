@@ -1,7 +1,7 @@
 pkgbase = libastal-git
 	pkgdesc = Building blocks for building desktop shells.
-	pkgver = r4.913738c
-	pkgrel = 2
+	pkgver = r18.efa11df
+	pkgrel = 1
 	url = https://github.com/astal-sh/libastal
 	arch = x86_64
 	license = GPL-3
@@ -34,7 +34,16 @@ pkgname = python-libastal-git
 	depends = python-gobject
 
 pkgname = lua-libastal-git
+	depends = libastal-git
+	depends = lua
+	depends = lua-lgi
 
 pkgname = lua51-libastal-git
+	depends = libastal-git
+	depends = lua51
+	depends = lua51-lgi
 
 pkgname = lua53-libastal-git
+	depends = libastal-git
+	depends = lua53
+	depends = lua53-lgi
