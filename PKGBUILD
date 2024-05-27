@@ -4,7 +4,7 @@
 
 _pkgname=armory
 pkgname="${_pkgname}"-cli
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="ARMORY 是翼辉信息自主研发的软件包管理工具."
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,11 @@ license=('custom')
 options=(!strip !debug)
 depends=('glibc')
 provides=('armory')
-_srcname="${_pkgname}-v${pkgver}-${CARCH}"
-source=("${_srcname}.tar.gz::${url}/v1/packages/@${_pkgname}/${pkgname}/v/${pkgver}/p/Linux/a/${CARCH}")
-sha256sums=('SKIP')
+_srcname="${_pkgname}-v${pkgver}"
+source_x86_64=("${_srcname}-x86_64.tar.gz::${url}/v1/packages/@${_pkgname}/${pkgname}/v/${pkgver}/p/Linux/a/x86-64")
+source_aarch64=("${_srcname}-aarch64.tar.gz::${url}/v1/packages/@${_pkgname}/${pkgname}/v/${pkgver}/p/Linux/a/aarch64")
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 package() {
     # AppImage
