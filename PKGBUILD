@@ -2,7 +2,7 @@
 pkgname=losslesscut-git
 _pkgname=LosslessCut
 _appname="no.mifi.${pkgname%-git}"
-pkgver=3.61.0.r2.g2599c4c
+pkgver=3.61.1.r0.g0f3e2eb
 _electronversion=27
 _nodeversion=18
 pkgrel=1
@@ -21,7 +21,6 @@ depends=(
     'ffmpeg>6'
 )
 makedepends=(
-    'gendesk'
     'git'
     'nvm'
     'npm'
