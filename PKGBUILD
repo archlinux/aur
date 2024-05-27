@@ -2,8 +2,8 @@
 _gitname=plasma-smart-video-wallpaper-reborn
 pkgname=plasma6-wallpapers-smart-video-wallpaper-reborn
 pkgver=0.2.0
-pkgrel=1
-pkgdesc="Mouse gestures for the KDE Plasma Panel, drag window, run any shortcut, command, application with configurable mouse actions!"
+pkgrel=2
+pkgdesc="Smart KDE Plasma 6 Wallpaper plugin to play videos on your Desktop/Lock Screen"
 arch=('any')
 url="https://github.com/luisbocanegra/$_gitname"
 license=('GPL3')
