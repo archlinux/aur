@@ -22,7 +22,11 @@ pkgver() {
 	encver=$(echo "$encso" | grep -oP '\d+\.\d+')
 	fbcver=$(echo "$fbcso" | grep -oP '\d+\.\d+')
 	if [ "$encver" == "$fbcver" ]; then
-		echo "$encver"
+		if [[ -z $force_nvutils_ver ]]; then
+			echo "$encver"
+		else
+			echo "$force_nvutils_ver"
+		fi
 	else
 		echo 'broken system!!!' >&2
 		exit 1
