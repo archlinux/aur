@@ -2,7 +2,7 @@
 _pkgname=esp-idf-helper
 pkgname="${_pkgname}-git"
 pkgver=v2.0.1.r0.1064108
-pkgrel=2
+pkgrel=3
 pkgdesc="Helper for installing various esp-idf versions"
 arch=("x86_64")
 url="https://gitlab.com/dnlmsr/${_pkgname}"

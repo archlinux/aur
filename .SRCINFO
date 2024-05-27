@@ -1,12 +1,13 @@
 pkgbase = esp-idf-helper-git
 	pkgdesc = Helper for installing various esp-idf versions
 	pkgver = v2.0.1.r0.1064108
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.com/dnlmsr/esp-idf-helper
 	arch = x86_64
 	license = GPL
 	depends = git
 	provides = esp-idf-helper
+	provides = esp-idf
 	conflicts = esp-idf-helper
 	source = git+https://gitlab.com/dnlmsr/esp-idf-helper.git
 	sha256sums = SKIP
