@@ -1,0 +1,15 @@
+pkgbase = scan-s2-git
+	pkgdesc = A channels scanning tool for the Linux DVB S2 API
+	pkgver = r58.725d42d
+	pkgrel = 1
+	url = https://github.com/crazycat69/scan-s2
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	provides = scan-s2
+	conflicts = scan-s2
+	source = scan-s2-git::git+https://github.com/crazycat69/scan-s2.git
+	sha256sums = SKIP
+
+pkgname = scan-s2-git
