@@ -1,0 +1,13 @@
+pkgbase = ruby-soap4r-ng
+	pkgdesc = Soap4R-ng is Soap4R for Ruby 1.8 thru 2.4 and Beyond
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/rubyjedi/soap4r
+	arch = any
+	license = RUBY
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/rubyjedi/soap4r/archive/96aa5490a74fb9e2b7d06e3f16ee61fc1d755234.zip
+	sha256sums = 22c1aa1e4a7aa53363c783958fbca388325425d91ac07e6d2b677c002d99f73e
+
+pkgname = ruby-soap4r-ng
