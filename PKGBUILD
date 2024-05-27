@@ -2,8 +2,8 @@
 # Contributor: iFlygo
 pkgname=figma-linux-git
 _pkgname=Figma-linux
-pkgver=0.11.3.r3.gb33dd1d
-_electronversion=29
+pkgver=0.11.4.r0.g0ff07fb
+_electronversion=30
 _nodeversion=18
 pkgrel=1
 arch=("any")
