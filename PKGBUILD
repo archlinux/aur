@@ -22,16 +22,13 @@ unset _pkgtype
 _pkgname="vala-panel-appmenu"
 pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=24.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Global Menu plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 license=('LGPL-3.0-or-later')
 arch=('i686' 'x86_64')
 
 _main_package() {
-  depends+=(
-    'glib2'
-  )
   makedepends+=(
     'git'
     'meson'
@@ -99,6 +96,7 @@ _build_registrar() {
 
 _package_vala-panel-appmenu-registrar() {
   pkgdesc="Small utility to hold DBusMenu menus"
+  depends=('glib2')
   meson install -C build_registrar --destdir "$pkgdir"
 }
 
@@ -119,14 +117,20 @@ _package_appmenu-glib-translator() {
 
 _package_vala-panel-appmenu() {
   pkgdesc="metapackage - vala panel appmenu collection"
-  depends=("${_depends_meta[@]}")
+  arch=('any')
+  depends=(
+    "${_depends_meta[@]}"
+    "vala-panel-appmenu-locale${_pkgtype:-}"
+  )
 }
 
 _package_vala-panel-appmenu-locale() {
   pkgdesc="Translations for vala-panel-appmenu"
+  arch=('any')
+  depends=()
   conflicts+=('vala-panel-appmenu-common')
 
-  install -dm755 "$pkgdir"/usr/lib
+  install -dm755 "$pkgdir"/usr/share
   mv "$srcdir"/fakeinstall/usr/share/locale "$pkgdir"/usr/share/
 }
 
@@ -204,28 +208,28 @@ fi
 if [[ "${_build_mate::1}" == "t" ]]; then
   _opts+=(-Dmate=enabled)
   pkgname+=("vala-panel-appmenu-mate${_pkgtype:-}")
-  makedepends+=('mate-panel')
+  depends+=('mate-panel')
   _depends_meta+=("vala-panel-appmenu-mate${_pkgtype:-}")
 fi
 
 if [[ "${_build_xfce::1}" == "t" ]]; then
   _opts+=(-Dxfce=enabled)
   pkgname+=("vala-panel-appmenu-xfce${_pkgtype:-}")
-  makedepends+=('xfce4-panel' 'xfconf')
+  depends+=('xfce4-panel' 'xfconf')
   _depends_meta+=("vala-panel-appmenu-xfce${_pkgtype:-}")
 fi
 
 if [[ "${_build_vala::1}" == "t" ]]; then
   _opts+=(-Dvalapanel=enabled)
   pkgname+=("vala-panel-appmenu-valapanel${_pkgtype:-}")
-  makedepends+=("vala-panel${_pkgtype:-}")
+  depends+=("vala-panel${_pkgtype:-}")
   _depends_meta+=("vala-panel-appmenu-valapanel${_pkgtype:-}")
 fi
 
 if [[ "${_build_budgie::1}" == "t" ]]; then
   _opts+=(-Dbudgie=enabled)
   pkgname+=("vala-panel-appmenu-budgie${_pkgtype:-}")
-  makedepends+=('budgie-desktop')
+  depends+=('budgie-desktop')
   _depends_meta+=("vala-panel-appmenu-budgie${_pkgtype:-}")
 fi
 
