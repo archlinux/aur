@@ -6,7 +6,7 @@
 _pkgname='folks'
 _pkgfeature='telepathy'
 pkgname="${_pkgname}-${_pkgfeature}-git"
-pkgver=0.15.9.1+r3042.20240323.1c3a0baa
+pkgver=0.15.9.3+r3044.20240512.eefac557
 pkgrel=1
 pkgdesc="Library to aggregates people into metacontacts. Variant of 'folks' with telepathy backend compiled in. Latest git checkout."
 arch=(
