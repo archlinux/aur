@@ -5,28 +5,29 @@
 # options
 : ${_build_tg_owt:=true}
 
-: ${_pkgtype:=git}
-
 # basic info
 _pkgname="telegram-desktop"
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=4.12.2.r10.g3adbfb1fb
+pkgname="$_pkgname-git"
+pkgver=5.0.2.r2.g0033ad7
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 # main package
 _main_package() {
   depends+=(
-    abseil-cpp
+    #abseil-cpp
     ffmpeg
     glibmm-2.68
     hunspell
+    jemalloc
+    kcoreaddons
     libdispatch
     libsigc++-3.0
     libvpx
+    libxdamage
     minizip
     openal
     openh264
@@ -36,7 +37,9 @@ _main_package() {
     qt6-declarative
     qt6-svg
     qt6-wayland
+    range-v3
     rnnoise
+    tl-expected
     xcb-util-keysyms
     xxhash
 
@@ -45,12 +48,11 @@ _main_package() {
     #glib2
     #glibc
     #hicolor-icon-theme
-    #libjpeg-turbo
+    #libjpeg.so # libjpeg-turbo
     #libpipewire
     #libx11
     #libxcb
     #libxcomposite
-    #libxdamage
     #libxext
     #libxfixes
     #libxrandr
@@ -61,13 +63,13 @@ _main_package() {
     #zlib
   )
   makedepends+=(
-    'boost'
-    'cmake'
-    'extra-cmake-modules'
-    'fmt'
-    'git'
-    'gobject-introspection'
-    'ninja'
+    boost
+    cmake
+    extra-cmake-modules
+    fmt
+    git
+    gobject-introspection
+    ninja
   )
   optdepends+=(
     'webkit2gtk: embedded browser features'
@@ -82,13 +84,12 @@ _main_package() {
   sha256sums+=('SKIP')
 
   _source_telegram_desktop
-  _source_ericniebler_range_v3
   _source_telegramdesktop_libtgvoip
 
   _source_desktop_app_cmake_helpers
   _source_mnauw_cppgir
 
-  if [[ x"${_build_tg_owt::1}" == "xt" ]] ; then
+  if [[ "${_build_tg_owt::1}" == "t" ]]; then
     _source_tg_owt
   else
     makedepends+=(
@@ -119,17 +120,16 @@ _source_telegram_desktop() {
     'desktop-app.lib_webview'::'git+https://github.com/desktop-app/lib_webview.git'
     'desktop-app.libprisma'::'git+https://github.com/desktop-app/libprisma.git'
     'desktop-app.rlottie'::'git+https://github.com/desktop-app/rlottie.git'
-    'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
+    #'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
     'fcitx.fcitx5-qt'::'git+https://github.com/fcitx/fcitx5-qt.git'
-    'gitlab-freedesktop-mirrors.wayland'::'git+https://github.com/gitlab-freedesktop-mirrors/wayland.git'
-    'gitlab-freedesktop-mirrors.wayland-protocols'::'git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git'
+    'flatpak.xdg-desktop-portal'::'git+https://github.com/flatpak/xdg-desktop-portal.git'
     'google.cld3'::'git+https://github.com/google/cld3.git'
     'hamonikr.nimf'::'git+https://github.com/hamonikr/nimf.git'
     'hime-ime.hime'::'git+https://github.com/hime-ime/hime.git'
     'hunspell'::'git+https://github.com/hunspell/hunspell.git'
+    #'jemalloc'::'git+https://github.com/jemalloc/jemalloc.git'
     'kde.kcoreaddons'::'git+https://github.com/KDE/kcoreaddons.git'
     'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'
-    'kde.plasma-wayland-protocols'::'git+https://github.com/KDE/plasma-wayland-protocols.git'
     'lz4'::'git+https://github.com/lz4/lz4.git'
     'nayuki.qr-code-generator'::'git+https://github.com/nayuki/QR-Code-generator.git'
     'tartanllama.expected'::'git+https://github.com/TartanLlama/expected.git'
@@ -137,9 +137,8 @@ _source_telegram_desktop() {
     'telegrammessenger.tgcalls'::'git+https://github.com/TelegramMessenger/tgcalls.git'
   )
   sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
+    #'SKIP'
+    #'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -175,59 +174,40 @@ _source_telegram_desktop() {
 
   _prepare_telegram_desktop() (
     cd "${srcdir:?}/$_pkgsrc"
-    local -A _submodules=(
-      ['apple.swift-corelibs-libdispatch']='Telegram/ThirdParty/dispatch'
-      ['cyan4973.xxhash']='Telegram/ThirdParty/xxHash'
-      ['desktop-app.cmake_helpers']='cmake'
-      ['desktop-app.codegen']='Telegram/codegen'
-      ['desktop-app.gsl']='Telegram/ThirdParty/GSL'
-      ['desktop-app.lib_base']='Telegram/lib_base'
-      ['desktop-app.lib_crl']='Telegram/lib_crl'
-      ['desktop-app.lib_lottie']='Telegram/lib_lottie'
-      ['desktop-app.lib_qr']='Telegram/lib_qr'
-      ['desktop-app.lib_rpl']='Telegram/lib_rpl'
-      ['desktop-app.lib_spellcheck']='Telegram/lib_spellcheck'
-      ['desktop-app.lib_storage']='Telegram/lib_storage'
-      ['desktop-app.lib_tl']='Telegram/lib_tl'
-      ['desktop-app.lib_ui']='Telegram/lib_ui'
-      ['desktop-app.lib_webrtc']='Telegram/lib_webrtc'
-      ['desktop-app.lib_webview']='Telegram/lib_webview'
-      ['desktop-app.libprisma']='Telegram/ThirdParty/libprisma'
-      ['desktop-app.rlottie']='Telegram/ThirdParty/rlottie'
-      ['ericniebler.range-v3']='Telegram/ThirdParty/range-v3'
-      ['fcitx.fcitx5-qt']='Telegram/ThirdParty/fcitx5-qt'
-      ['gitlab-freedesktop-mirrors.wayland']='Telegram/ThirdParty/wayland'
-      ['gitlab-freedesktop-mirrors.wayland-protocols']='Telegram/ThirdParty/wayland-protocols'
-      ['google.cld3']='Telegram/ThirdParty/cld3'
-      ['hamonikr.nimf']='Telegram/ThirdParty/nimf'
-      ['hime-ime.hime']='Telegram/ThirdParty/hime'
-      ['hunspell']='Telegram/ThirdParty/hunspell'
-      ['kde.kcoreaddons']='Telegram/ThirdParty/kcoreaddons'
-      ['kde.kimageformats']='Telegram/ThirdParty/kimageformats'
-      ['kde.plasma-wayland-protocols']='Telegram/ThirdParty/plasma-wayland-protocols'
-      ['lz4']='Telegram/ThirdParty/lz4'
-      ['nayuki.qr-code-generator']='Telegram/ThirdParty/QR'
-      ['tartanllama.expected']='Telegram/ThirdParty/expected'
-      ['telegramdesktop.libtgvoip']='Telegram/ThirdParty/libtgvoip'
-      ['telegrammessenger.tgcalls']='Telegram/ThirdParty/tgcalls'
-    )
-    _submodule_update
-  )
-}
-
-_source_ericniebler_range_v3() {
-  source+=(
-    'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
-  )
-  sha256sums+=(
-    'SKIP'
-  )
-
-  _prepare_ericniebler_range_v3() (
-    cd "${srcdir:?}/$_pkgsrc"
-    cd "Telegram/ThirdParty/range-v3"
-    local -A _submodules=(
-      ['ericniebler.range-v3']='doc/gh-pages'
+    local _submodules=(
+      'apple.swift-corelibs-libdispatch'::'Telegram/ThirdParty/dispatch'
+      'cyan4973.xxhash'::'Telegram/ThirdParty/xxHash'
+      'desktop-app.cmake_helpers'::'cmake'
+      'desktop-app.codegen'::'Telegram/codegen'
+      'desktop-app.gsl'::'Telegram/ThirdParty/GSL'
+      'desktop-app.lib_base'::'Telegram/lib_base'
+      'desktop-app.lib_crl'::'Telegram/lib_crl'
+      'desktop-app.lib_lottie'::'Telegram/lib_lottie'
+      'desktop-app.lib_qr'::'Telegram/lib_qr'
+      'desktop-app.lib_rpl'::'Telegram/lib_rpl'
+      'desktop-app.lib_spellcheck'::'Telegram/lib_spellcheck'
+      'desktop-app.lib_storage'::'Telegram/lib_storage'
+      'desktop-app.lib_tl'::'Telegram/lib_tl'
+      'desktop-app.lib_ui'::'Telegram/lib_ui'
+      'desktop-app.lib_webrtc'::'Telegram/lib_webrtc'
+      'desktop-app.lib_webview'::'Telegram/lib_webview'
+      'desktop-app.libprisma'::'Telegram/ThirdParty/libprisma'
+      'desktop-app.rlottie'::'Telegram/ThirdParty/rlottie'
+      #'ericniebler.range-v3'::'Telegram/ThirdParty/range-v3'
+      'fcitx.fcitx5-qt'::'Telegram/ThirdParty/fcitx5-qt'
+      'flatpak.xdg-desktop-portal'::'Telegram/ThirdParty/xdg-desktop-portal'
+      'google.cld3'::'Telegram/ThirdParty/cld3'
+      'hamonikr.nimf'::'Telegram/ThirdParty/nimf'
+      'hime-ime.hime'::'Telegram/ThirdParty/hime'
+      'hunspell'::'Telegram/ThirdParty/hunspell'
+      #'jemalloc'::'Telegram/ThirdParty/jemalloc'
+      'kde.kcoreaddons'::'Telegram/ThirdParty/kcoreaddons'
+      'kde.kimageformats'::'Telegram/ThirdParty/kimageformats'
+      'lz4'::'Telegram/ThirdParty/lz4'
+      'nayuki.qr-code-generator'::'Telegram/ThirdParty/QR'
+      'tartanllama.expected'::'Telegram/ThirdParty/expected'
+      'telegramdesktop.libtgvoip'::'Telegram/ThirdParty/libtgvoip'
+      'telegrammessenger.tgcalls'::'Telegram/ThirdParty/tgcalls'
     )
     _submodule_update
   )
@@ -244,8 +224,8 @@ _source_telegramdesktop_libtgvoip() {
   _prepare_telegramdesktop_libtgvoip() (
     cd "${srcdir:?}/$_pkgsrc"
     cd "Telegram/ThirdParty/libtgvoip"
-    local -A _submodules=(
-      ['desktop-app.cmake_helpers']='cmake'
+    local _submodules=(
+      'desktop-app.cmake_helpers'::'cmake'
     )
     _submodule_update
   )
@@ -264,9 +244,9 @@ _source_desktop_app_cmake_helpers() {
   _prepare_desktop_app_cmake_helpers() (
     cd "${srcdir:?}/$_pkgsrc"
     cd "cmake"
-    local -A _submodules=(
-      ['mnauw.cppgir']='external/glib/cppgir'
-      ['yugr.implib.so']='external/Implib.so'
+    local _submodules=(
+      'mnauw.cppgir'::'external/glib/cppgir'
+      'yugr.implib.so'::'external/Implib.so'
     )
     _submodule_update
   )
@@ -284,8 +264,8 @@ _source_mnauw_cppgir() {
     cd "${srcdir:?}/$_pkgsrc"
     cd "cmake"
     cd "external/glib/cppgir"
-    local -A _submodules=(
-      ['martinmoene.expected-lite']='expected-lite'
+    local _submodules=(
+      'martinmoene.expected-lite'::'expected-lite'
     )
     _submodule_update
   )
@@ -303,16 +283,8 @@ _source_tg_owt() {
   )
 
   _pkgsrc_tgowt="telegram-tg_owt"
-  source+=(
-    "$_pkgsrc_tgowt"::"git+https://github.com/desktop-app/tg_owt.git"
-    "https://patch-diff.githubusercontent.com/raw/desktop-app/tg_owt/pull/101.patch"
-    "tg_owt-fix.patch"
-  )
-  sha256sums+=(
-    'SKIP'
-    'f4d26c1048a7fd1ac3419042009c3b52c001458e44309a765d42d7df9f45f1ef'
-    '8d3a1c4b2e40eef7a4cc8e6f498c416af47a91b878ec3762b51476e89695cb13'
-  )
+  source+=("$_pkgsrc_tgowt"::"git+https://github.com/desktop-app/tg_owt.git")
+  sha256sums+=('SKIP')
 
   # submodules - tg_owt
   source+=(
@@ -330,16 +302,13 @@ _source_tg_owt() {
 
   _prepare_desktop_app_tg_owt() (
     cd "${srcdir:?}/$_pkgsrc_tgowt"
-    local -A _submodules=(
-      ['abseil.abseil-cpp']='src/third_party/abseil-cpp'
-      ['chromiumsrc.libyuv']='src/third_party/libyuv'
-      ['cisco.libsrtp']='src/third_party/libsrtp'
-      ['google.crc32c']='src/third_party/crc32c/src'
+    local _submodules=(
+      'abseil.abseil-cpp'::'src/third_party/abseil-cpp'
+      'chromiumsrc.libyuv'::'src/third_party/libyuv'
+      'cisco.libsrtp'::'src/third_party/libsrtp'
+      'google.crc32c'::'src/third_party/crc32c/src'
     )
     _submodule_update
-
-    apply-patch "${srcdir:?}/101.patch"
-    apply-patch "${srcdir:?}/tg_owt-fix.patch"
   )
 }
 
@@ -351,20 +320,19 @@ prepare() {
   }
 
   _submodule_update() {
-    local key
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    local _module
+    for _module in "${_submodules[@]}"; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
-  if [[ x"${_build_tg_owt::1}" == "xt" ]] ; then
+  if [[ "${_build_tg_owt::1}" == "t" ]]; then
     _prepare_desktop_app_tg_owt
   fi
 
   _prepare_telegram_desktop
-  _prepare_ericniebler_range_v3
   _prepare_telegramdesktop_libtgvoip
 
   _prepare_desktop_app_cmake_helpers
@@ -373,23 +341,41 @@ prepare() {
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
-    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]+//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 _build_tg_owt() (
-  local _cmake_options=(
-    -B "build-tg_owt"
+  local _cmake_crc32=(
+    -B "build_crc32"
+    -S "$srcdir/google.crc32c"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCRC32C_BUILD_TESTS=OFF
+    -DCRC32C_BUILD_BENCHMARKS=OFF
+    -DCRC32C_USE_GLOG=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_crc32[@]}"
+  cmake --build "build_crc32"
+  DESTDIR="$srcdir/deps_crc32" cmake --install "build_crc32"
+
+  local _cmake_tg_owt=(
+    -B "build_tg_owt"
     -S "$_pkgsrc_tgowt"
     -G Ninja
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=None
     -DCMAKE_POSITION_INDEPENDENT_CODE=ON
     -DBUILD_SHARED_LIBS=OFF
     -DTG_OWT_PACKAGED_BUILD=ON
+    -DCMAKE_PREFIX_PATH="$srcdir/deps_crc32/usr"
+    -Wno-dev
   )
 
-  cmake "${_cmake_options[@]}"
-  cmake --build "build-tg_owt"
+  cmake "${_cmake_tg_owt[@]}"
+  cmake --build "build_tg_owt"
 )
 
 _build_telegram() (
@@ -401,8 +387,8 @@ _build_telegram() (
     -B build
     -S "$_pkgsrc"
     -G Ninja
-    -DCMAKE_BUILD_TYPE=Release
-    -DCMAKE_INSTALL_PREFIX="/usr"
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
     -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON
     -DTDESKTOP_API_TEST=ON
     -DTDESKTOP_API_ID=611335
@@ -411,8 +397,11 @@ _build_telegram() (
     -Wno-dev
   )
 
-  if [[ x"${_build_tg_owt::1}" == "xt" ]] ; then
-    _cmake_options+=(-Dtg_owt_DIR="${srcdir:?}/build-tg_owt")
+  if [[ "${_build_tg_owt::1}" == "t" ]]; then
+    _cmake_options+=(
+      -Dtg_owt_DIR="${srcdir:?}/build_tg_owt"
+      -DCMAKE_PREFIX_PATH="$srcdir/deps_crc32/usr"
+    )
   fi
 
   cmake "${_cmake_options[@]}"
@@ -420,7 +409,9 @@ _build_telegram() (
 )
 
 build() {
-  if [[ x"${_build_tg_owt::1}" == "xt" ]] ; then
+  export LDFLAGS+=" -Wl,--copy-dt-needed-entries"
+
+  if [[ "${_build_tg_owt::1}" == "t" ]]; then
     _build_tg_owt
   fi
 
