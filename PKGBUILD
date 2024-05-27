@@ -5,10 +5,10 @@
 
 pkgname=gkleds
 pkgver=0.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Gkrellm plugin to monitor the CapsLock, NumLock, and ScrollLock keys"
 arch=(i686 x86_64)
-source=("https://ftp.fau.de/gentoo/distfiles/${pkgname}-${pkgver}.tar.gz")
+source=("https://ftp.fau.de/gentoo/distfiles/96/${pkgname}-${pkgver}.tar.gz")
 depends=('gkrellm' 'gtk2')
 license=('GPL')
 url="http://web.archive.org/web/20190209043134/http://freshmeat.sourceforge.net/projects/gkleds/"
