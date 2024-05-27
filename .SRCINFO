@@ -1,6 +1,6 @@
 pkgbase = discord-chat-exporter-plus-cli
 	pkgdesc = Exports Discord chat logs to a file (without the political bloat)
-	pkgver = 2.43.2
+	pkgver = 2.43.3
 	pkgrel = 1
 	url = https://github.com/nulldg/DiscordChatExporterPlus
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = discord-chat-exporter-plus-cli
 	depends = dotnet-runtime-8.0
 	conflicts = discord-chat-exporter-cli
 	options = !strip
-	source = discord-chat-exporter-plus-cli-2.43.2.tar.gz::https://github.com/nulldg/DiscordChatExporterPlus/archive/refs/tags/2.43.2.tar.gz
+	source = discord-chat-exporter-plus-cli-2.43.3.tar.gz::https://github.com/nulldg/DiscordChatExporterPlus/archive/refs/tags/2.43.3.tar.gz
 	source = discord-chat-exporter-plus-cli
-	b2sums = 0feec9ab2daedf2f18246c417cd91d0f8558ccbf0ae8481481e666028ff397e56677d23a306c159e707a86ecdf8275fcd6e9bb4d0b9d0e6eef06a1357609d613
+	b2sums = 63b4743740ba1c50ab1b0ad10b4f66ec8d22ae9e8162d6bba3f1700a41cd834e34d754bfafbf8b78ddbeaa800a58fa8dcc6676292b8301ebbd4af8c0b1b44131
 	b2sums = f04af622af8aee1c08beb6444aa7e46db9c55180a7cd87f0fceb2dce9d27052883be6322074a8944ff51af142e8d104d5ae89c2b54e79700769d1dabc38328e0
 
 pkgname = discord-chat-exporter-plus-cli
