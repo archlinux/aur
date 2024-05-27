@@ -1,1 +1,5 @@
-*.gz
+*.deb
+*.rpm
+*.tar.gz
+*.tar.zst
+*.zip
