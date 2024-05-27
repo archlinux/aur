@@ -1,7 +1,7 @@
 pkgbase = fooyin-bin
 	pkgdesc = A customisable music player
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ludouzi/fooyin
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,7 +9,7 @@ pkgbase = fooyin-bin
 	depends = qt6-svg
 	depends = qt6-tools
 	depends = alsa-lib
-	depends = taglib
+	depends = taglib1
 	depends = ffmpeg
 	depends = kdsingleapplication
 	optdepends = sdl2: For the SDL2 audio output plugin

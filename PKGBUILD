@@ -3,7 +3,7 @@ pkgname=fooyin-bin
 _pkgname=Fooyin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A customisable music player"
 arch=('x86_64')
 url="https://github.com/ludouzi/fooyin"
@@ -15,7 +15,7 @@ depends=(
     'qt6-svg'
     'qt6-tools'
     'alsa-lib'
-    'taglib'
+    'taglib1'
     'ffmpeg'
     'kdsingleapplication'
 )
@@ -38,7 +38,6 @@ package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/"*.so* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/plugins/"*.so -t "${pkgdir}/usr/lib/${pkgname%-bin}/plugins"
-    ln -sf "/usr/lib/libtag.so" "${pkgdir}/usr/lib/${pkgname%-bin}/libtag.so.1"
     for _icons in 16x16 22x22 32x32 48x48 64x64 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
