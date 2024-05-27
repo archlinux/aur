@@ -4,7 +4,7 @@
 pkgname=bnc-bin
 _debianver=12
 pkgver=2.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The BKG Ntrip Client(BNC) is an multi-stream client designed for real-time GNSS applications."
 arch=('x86_64')
 url="https://igs.bkg.bund.de/root_ftp/NTRIP/documentation/BNC_BNS_RTNET_Concept.ppt"
@@ -37,7 +37,7 @@ sha256sums=(
 
 
 package() {
-  cd "${srcdir}/bnc-${pkgver}-debian${_debianver}"
+  cd "${srcdir}/packages/bnc-${pkgver}-debian${_debianver}"
 
   install -Dvm755 "bnc-${pkgver}" "${pkgdir}/usr/bin/bnc"
   install -Dvm644 "${srcdir}/ntrip-logo.png" "${pkgdir}/usr/share/pixmaps/bnc.png"
