@@ -1,6 +1,6 @@
 pkgbase = dilidili-git
 	pkgdesc = A bilibili BV downloader.bilibli + download = dilidili
-	pkgver = 1.0.7.r1.gb7019f8
+	pkgver = 1.0.10.r0.g0009c60
 	pkgrel = 1
 	url = https://github.com/Darcrandex/dilidili
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = dilidili-git
 	makedepends = curl
 	depends = electron30
 	depends = nodejs
-	provides = dilidili=1.0.7
+	provides = dilidili=1.0.10
 	conflicts = dilidili
 	source = dilidili.git::git+https://github.com/Darcrandex/dilidili.git
 	source = dilidili.sh
 	sha256sums = SKIP
-	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = dilidili-git
