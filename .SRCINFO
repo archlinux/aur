@@ -1,0 +1,21 @@
+pkgbase = hades2-savefile-editor
+	pkgdesc = Savefile Editor for the game Hades II
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jakobhellermann/hades2-tools
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = gendesk
+	makedepends = imagemagick
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = gcc-libs
+	source = https://github.com/jakobhellermann/hades2-tools/archive/refs/tags/v1.0.0/hades2-tools-1.0.0.tar.gz
+	sha256sums = f1bfbbcfa5827ab02f1b773b777c81e859caebfa8f40d4b98bd0f6337f8f4134
+
+pkgname = hades2-savefile-editor
