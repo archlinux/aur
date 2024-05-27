@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.19.0
+pkgver=1.19.1
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -14,6 +14,7 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
+    'scrcpy'
 )
 makedepends=(
     'gendesk'
@@ -26,8 +27,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('0c8dce7786e7edd3651ce3a535a19bd40d80c1ee844f83ed7ee5e083344aa2dc'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('fa55517f321b43cc8a350dd9f775d13c204d3288b3128bf858b52d2b71b479f6'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -42,7 +43,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
