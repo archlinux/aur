@@ -10,6 +10,7 @@ arch=('any')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('21e2b323aba833ecd1ea84746b55d486de5027f119987528ddb7b20c0272d10e')
 
 build() {
 	cd "$_name-$pkgver"
@@ -19,8 +20,6 @@ build() {
 package() {
 	cd "$_name-$pkgver"
 	python -m installer --destdir="$pkgdir/" dist/*.whl
-	Install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('21e2b323aba833ecd1ea84746b55d486de5027f119987528ddb7b20c0272d10e')
 
