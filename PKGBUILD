@@ -2,7 +2,7 @@
 
 pkgname=hut-git
 _pkgname=hut
-pkgver=r244.ed21e0c
+pkgver=v0.5.0.r8.gf1ff707
 pkgrel=1
 pkgdesc='A CLI tool for sr.ht (sourcehut)'
 arch=('x86_64' 'aarch64')

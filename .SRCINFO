@@ -1,6 +1,6 @@
 pkgbase = hut-git
 	pkgdesc = A CLI tool for sr.ht (sourcehut)
-	pkgver = r244.ed21e0c
+	pkgver = v0.5.0.r8.gf1ff707
 	pkgrel = 1
 	url = https://sr.ht/~xenrox/hut
 	arch = x86_64
