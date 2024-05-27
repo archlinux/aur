@@ -20,10 +20,8 @@ pkgbase = labwc-wlroots-018-git
 	provides = labwc
 	conflicts = labwc
 	source = git+https://github.com/labwc/labwc.git
-	source = labwc-atomic-modesetting-tearing.patch
 	source = wlroots-versioning.patch
 	md5sums = SKIP
-	md5sums = 63792a6012b41b164e3a9194d522f9ac
 	md5sums = 08fbcfe45cc237356bb87cead53a5e28
 
 pkgname = labwc-wlroots-018-git

@@ -14,10 +14,8 @@ optdepends=("bemenu: default launcher via Alt+F3")
 conflicts=(labwc)
 provides=(labwc)
 source=("git+https://github.com/labwc/${_pkgname}.git"
-        'labwc-atomic-modesetting-tearing.patch'
         'wlroots-versioning.patch')
 md5sums=('SKIP'
-         '63792a6012b41b164e3a9194d522f9ac'
          '08fbcfe45cc237356bb87cead53a5e28')
 
 prepare() {
@@ -25,7 +23,6 @@ prepare() {
   git fetch origin pull/1641/head:chase/0.18
   git checkout chase/0.18
   git cherry-pick -n 21f079e306bc1362a9cb62e656ba6d32ee003941
-  patch -Np1 -i "${srcdir}/labwc-atomic-modesetting-tearing.patch"
   patch -Np1 -i "${srcdir}/wlroots-versioning.patch"
 }
 
