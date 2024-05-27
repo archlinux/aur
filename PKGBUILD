@@ -3,7 +3,7 @@
 _pkgname=normalmap
 pkgname="${_pkgname}-git"
 pkgver=r20.20200602.fb90c69
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows to create a RGB normal map from a heightmap. The output picture is RGBA and you can store various combination of the height in the Alpha channel."
 arch=(
   'i686'
@@ -26,7 +26,7 @@ conflicts=(
   "${_pkgname}"
 )
 source=(
-  "${_pkgname}::git+git://github.com/eatdust/normalmap.git"
+  "${_pkgname}::git+https://github.com/eatdust/normalmap.git"
 )
 sha256sums=(
   'SKIP'
