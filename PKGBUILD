@@ -2,12 +2,12 @@
 _pkgname=esp-idf-helper
 pkgname="${_pkgname}-git"
 pkgver=v2.0.1.r0.1064108
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper for installing various esp-idf versions"
 arch=("x86_64")
 url="https://gitlab.com/dnlmsr/${_pkgname}"
 license=("GPL")
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}" "esp-idf")
 conflicts=("${pkgname%-git}")
 depends=("git")
 source=("git+${url}.git")
