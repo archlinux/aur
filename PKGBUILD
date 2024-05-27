@@ -1,7 +1,8 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: João Vitor S. Anjos <jvanjos at protonmail dot com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=tern
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A standalone migration tool for PostgreSQL'
 arch=('x86_64')
@@ -11,9 +12,9 @@ depends=('glibc')
 makedepends=('git' 'go')
 optdepends=('postgresql: for local instance of PostgreSQL')
 options=('!lto')
-_commit='3b4b9b73743467e62d1214c28b8ce7d952ca14de'
+_commit='bc02ac511a0c2ae3a3bd261302085adddc46bfa9'
 source=("$pkgname::git+$url.git#commit=$_commit")
-b2sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -24,17 +25,13 @@ pkgver() {
 prepare() {
   cd "$pkgname"
 
-  # create directory for build output
-  mkdir build
-
-  # download dependencies
+  mkdir -p build
   go mod download
 }
 
 build() {
   cd "$pkgname"
 
-  # set Go flags
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -44,7 +41,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
+    -ldflags "-linkmode external" \
     -o build \
     .
 }
@@ -52,12 +49,8 @@ build() {
 package() {
   cd "$pkgname"
 
-  # binary
-  install -vDm755 -t "$pkgdir/usr/bin" build/tern
+  install -Dm755 -t "$pkgdir/usr/bin" build/tern
 
-  # documentation
-  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.markdown
-
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.markdown
 }
