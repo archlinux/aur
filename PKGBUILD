@@ -6,8 +6,8 @@ _pkgname=naturalearth-data-raster
 pkgname="${_pkgname}-latest"
 epoch=1
 _pkgver=latest
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="A public domain map dataset, tightly integrated vector and raster data, to make maps.
 This package provides the raster data in 1:10mio and 1:50mio scale, converted to jpeg compressed tiff.
 WARNING: Build needs ca. 2.5 GiB space, install ca. 350 MiB big."
