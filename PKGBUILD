@@ -3,8 +3,8 @@
 pkgname=leavesmc-git
 _pkgname=leavesmc
 _pkgver=1.20.6
-_build=e8b229b
-_buildid=209
+_build=dafcfaf
+_buildid=210
 pkgver="${_pkgver}+${_buildid}"
 pkgrel=1
 pkgdesc="Fork of Paper aimed at repairing broken vanilla properties."
