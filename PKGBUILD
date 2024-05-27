@@ -8,7 +8,7 @@
 
 _target="powerpc64-linux-gnu"
 pkgname=${_target}-glibc-headers
-pkgver=2.38
+pkgver=2.39
 pkgrel=1
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
@@ -19,26 +19,18 @@ makedepends=("${_target}-gcc-stage1>=8.1.0-1")
 provides=(${_target}-glibc)
 conflicts=(${_target}-glibc)
 options=(!buildflags !strip staticlibs)
-source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig})
-sha256sums=('fb82998998b2b29965467bc1b69d152e9c307d2cf301c9eafb4555b770ef3fd2'
-            'SKIP')
+source=(https://ftp.gnu.org/gnu/libc/glibc-$pkgver.tar.xz{,.sig}
+        PATCH-nscd-Do-not-rebuild-getaddrinfo-bug-30709.patch)
+sha256sums=('f77bd47cf8170c57365ae7bf86696c118adb3b120d3259c64c502d3dc1e2d926'
+            'SKIP'
+            'e749a59ef980a77cf6433c87ed7b5020d65c7a3e2900c577b8a7880386ec670f')
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # "Carlos O'Donell <carlos@systemhalted.org>"
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
 
 prepare() {
   mkdir -p glibc-build
-
-  [[ -d glibc-$pkgver ]] && ln -s glibc-$pkgver glibc
-  cd glibc
-
-  local i; for i in ${source[@]}; do
-    case ${i%::*} in
-      *.patch)
-        msg2 "Applying ${i}"
-        patch -p1 -i "$srcdir/${i}"
-        ;;
-    esac
-  done
+  cd glibc-$pkgver
+  patch -Np1 < ../PATCH-nscd-Do-not-rebuild-getaddrinfo-bug-30709.patch
 }
 
 build() {
@@ -61,9 +53,6 @@ build() {
   echo "rtlddir=/lib" >> configparms
   echo "sbindir=/bin" >> configparms
   echo "rootsbindir=/bin" >> configparms
-
-  # remove fortify for building libraries
-  CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
   # build failure
   CFLAGS=${CFLAGS/-Werror=format-security/}
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
@@ -74,7 +63,7 @@ build() {
   export AR=${_target}-ar
   export RANLIB=${_target}-ranlib
 
-  "$srcdir/glibc/configure" \
+  ${srcdir}/glibc-$pkgver/configure \
       --libdir=/lib \
       --libexecdir=/lib \
       ${_configure_flags[@]} \
