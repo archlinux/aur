@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qca-qt5
 	pkgdesc = Qt Cryptographic Architecture (mingw-w64)
-	pkgver = 2.3.4
+	pkgver = 2.3.8
 	pkgrel = 1
 	url = https://userbase.kde.org/QCA
 	arch = any
@@ -13,13 +13,10 @@ pkgbase = mingw-w64-qca-qt5
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.kde.org/stable/qca/2.3.4/qca-2.3.4.tar.xz
-	source = https://download.kde.org/stable/qca/2.3.4/qca-2.3.4.tar.xz.sig
-	source = 0001-Avoid-calling-setChildProcessModifier-on-Windows.patch
-	source = 0002-Fix-types-in-socket-notifier-to-fix-x86_64-Windows-b.patch
+	source = https://download.kde.org/stable/qca/2.3.8/qca-2.3.8.tar.xz
+	source = https://download.kde.org/stable/qca/2.3.8/qca-2.3.8.tar.xz.sig
 	validpgpkeys = CB9387521E1EE0127DA804843FDBB55084CC5D84
-	sha256sums = 6b695881a7e3fd95f73aaee6eaeab96f6ad17e515e9c2b3d4b3272d7862ff5c4
-	sha256sums = SKIP
+	sha256sums = 48759ca86a0202461d908ba66134380cc3bb7d20fed3c031b9fc0289796a8264
 	sha256sums = SKIP
 
 pkgname = mingw-w64-qca-qt5

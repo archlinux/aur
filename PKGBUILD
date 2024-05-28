@@ -6,7 +6,7 @@
 
 pkgbase=mingw-w64-qca-qt5
 pkgname=(mingw-w64-qca-qt5 mingw-w64-qca-qt6)
-pkgver=2.3.4
+pkgver=2.3.8
 pkgrel=1
 pkgdesc='Qt Cryptographic Architecture (mingw-w64)'
 arch=('any')
@@ -14,21 +14,13 @@ url='https://userbase.kde.org/QCA'
 license=(LGPL)
 makedepends=('mingw-w64-cmake' 'mingw-w64-qt5-base' 'mingw-w64-qt6-5compat' 'qt6-base' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs')
-source=(https://download.kde.org/stable/qca/$pkgver/qca-$pkgver.tar.xz{,.sig}
-        0001-Avoid-calling-setChildProcessModifier-on-Windows.patch
-	0002-Fix-types-in-socket-notifier-to-fix-x86_64-Windows-b.patch)
-sha256sums=('6b695881a7e3fd95f73aaee6eaeab96f6ad17e515e9c2b3d4b3272d7862ff5c4'
-            'SKIP' 'SKIP')
+source=(https://download.kde.org/stable/qca/$pkgver/qca-$pkgver.tar.xz{,.sig})
+sha256sums=('48759ca86a0202461d908ba66134380cc3bb7d20fed3c031b9fc0289796a8264'
+            'SKIP')
 validpgpkeys=(CB9387521E1EE0127DA804843FDBB55084CC5D84) # Harald Sitter <sitter@kde.org>
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-
-prepare() {
-  cd qca-$pkgver
-  for p in "$srcdir"/*.patch ; do
-    patch -p1 -i "$p"
-  done
-}
+_architectures_qt6=(${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32})
 
 build() {
   for _arch in ${_architectures}; do
@@ -36,7 +28,9 @@ build() {
       -DQCA_INSTALL_IN_QT_PREFIX=ON \
       -DBUILD_TESTS=OFF
     VERBOSE=1 cmake --build build-qt5-$_arch
+  done
 
+  for _arch in ${_architectures_qt6}; do
     ${_arch}-cmake -G Ninja -B build-qt6-${_arch} -S qca-$pkgver \
       -DQT6=ON \
       -DQCA_INSTALL_IN_QT_PREFIX=ON \
@@ -82,7 +76,7 @@ package_mingw-w64-qca-qt5() {
 package_mingw-w64-qca-qt6() {
   depends=(mingw-w64-qt6-5compat)
 
-  for _arch in ${_architectures}; do
+  for _arch in ${_architectures_qt6}; do
     DESTDIR="$pkgdir" cmake --install build-qt6-$_arch
     _cleanup $_arch
   done
