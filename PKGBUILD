@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2
-pkgver=2.1.8
+pkgver=2.1.11
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
 provides=('hardinfo')
 conflicts=('hardinfo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-$pkgver.tar.gz")
-sha256sums=('a32949b59308933ed4473b4d5b65e96b7deeeef223651add206ebf532802acae')
+sha256sums=('13ab1292786a739be0017088708ed2becbb1af7ecbc431392f3554101c2b41f2')
 
 build() {
   cmake -B build -S "$pkgname-release-$pkgver" \
