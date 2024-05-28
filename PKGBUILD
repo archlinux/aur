@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_stable'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Stable types conversions generator'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppxlib>=0.28.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppxlib>=0.28.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('bbc40494718d99228e194f766be75c67a657cb50fe6090d05ba30606be40406c93323b64ae3d2400ab6a1563c3e9fa04c2ba82da7db47b7c1cfec103f75d19cb')
+b2sums=('7197c96be025f61cfec88b9157f03dc76b38099d18b81f884352ca5f4cbc8cac2bf42d3a37dcda974dbfc73aacbc83a68eb158c5d7dea6a637e603057d2dc728')
 
 _sourcedirectory="$_projectname-$pkgver"
 
