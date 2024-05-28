@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=RMariaDB
-_cranver=1.3.1
+_cranver=1.3.2
 pkgname=r-${_cranname,,}
 pkgdesc="Database Interface and MariaDB Driver"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -52,7 +52,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("32abe9160950e9a46ec17b2d0de29c0c7a689612dbaa275ea02e519291c0ada4e5d9c6c6ffbb7eb6f48a9c0facbcc67b80f285bf4dd35156882fdb206f1db731")
+b2sums=("a7a9cfe33f7c66d2a860821db7e739b942b3371e4ebdb1f5a17c0ac17cc13f208617378c8c82dba624433ee6e6861e2255754e8918eba79cff639d53e1249566")
 
 build() {
     mkdir -p "${srcdir}/build/"
