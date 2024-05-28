@@ -11,7 +11,9 @@ license=('GPL2')
 groups=('pro-audio')
 makedepends=('mesa')
 depends=('jack' 'sdl_image' 'libglvnd')
-source=("http://plugin.org.uk/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+_original_url="http://plugin.org.uk/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+_alternative_url="https://distfiles.gentoo.org/distfiles/29/meterbridge-0.9.3.tar.gz"
+source=("$_alternative_url"
         "${pkgname}-${pkgver}-asneeded.patch"
         "${pkgname}-${pkgver}-cflags.patch"
         "${pkgname}-${pkgver}-gcc41.patch"
