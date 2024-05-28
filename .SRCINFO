@@ -14,7 +14,7 @@ pkgbase = serialportassistant-bin
 	conflicts = serialportassistant
 	source = serialportassistant-0.5.23.deb::https://github.com/KangLin/SerialPortAssistant/releases/download/v0.5.23/serialportassistant_0.5.23_amd64.deb
 	source = serialportassistant.sh
-	sha256sums = d619da466a771ef764951b7df9a2db7141cb054ed5d9b4dad54ffc7f250c608f
+	sha256sums = b67ab6778af3410c7868ed08207a54a3fb2c8c437b93f50e8cdf36045e37d590
 	sha256sums = 188630492eeef70242520d03097cf200ad1746b41de33f713f410139b6c6c82d
 
 pkgname = serialportassistant-bin

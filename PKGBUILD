@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d619da466a771ef764951b7df9a2db7141cb054ed5d9b4dad54ffc7f250c608f'
+sha256sums=('b67ab6778af3410c7868ed08207a54a3fb2c8c437b93f50e8cdf36045e37d590'
             '188630492eeef70242520d03097cf200ad1746b41de33f713f410139b6c6c82d')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
