@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_cold'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Expands [@Cold] into [@inline never][@specialise never][@Local never]'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('816358747bf4e4d92b6d5fa7bc31691897f6fb88336000a5e40b86250911b2efa203f6465d77b24f0147312bfd779de49822c5ea7a2a87df49d754b8c6e30821')
+b2sums=('549c86b0452779380046c6167e048a302924cb1d2fff90577be2c52244b40c89eb0036214a4ad85b1bc9b658e6a31cccebe11d62d3b94728f63a0725e61d97aa')
 
 _sourcedirectory="$_projectname-$pkgver"
 
