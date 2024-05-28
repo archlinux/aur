@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-webglplugin
-_basever=5.15.13
+_basever=5.15.14
 pkgver=5.15.13
 pkgrel=1
-_commit=80257933d3bf3a026455d71106e6b3e70dead765
+_commit=3681356904277e055759693551357e7e488d1be9
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -15,7 +15,7 @@ makedepends=(git)
 groups=(qt5)
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('SKIP')
+sha256sums=('67b5e853bd1d0fc61a87940512ae91990a42628eca1e20e108866c34df258b93')
 
 pkgver() {
   cd kde-$_pkgfqn
