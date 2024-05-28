@@ -1,33 +1,25 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=ffmpeg-dektec
-pkgver=2023.09.0
-pkgrel=5
+pkgver=2024.05.0
+pkgrel=1
 _sdkver=2024.04.0
 pkgdesc="FFmpeg Integration for DekTec Devices"
-arch=(x86_64)
+arch=('x86_64')
 url="https://www.dektec.com/products/SDK/ffmpeg/"
 license=('custom: nonfree and unredistributable')
-depends=(dektec-drivers-dkms)
-makedepends=(
-	yasm
-	sdl2
-	gcc13
-)
+depends=('dektec-drivers-dkms')
+makedepends=('sdl2' 'yasm')
 source=("FFmpeg_v${pkgver}.tar.gz::https://www.dektec.com/products/SDK/ffmpeg/linux/downloads/FFmpeg_v${pkgver}.tar.gz"
-	"LinuxSDK_v${_sdkver}.tar.gz::https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz"
-	"070-ffmpeg-binutils2.41-fix.patch::https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/effadce6c756247ea8bae32dc13bb3e6f464f0eb")
+	"LinuxSDK_v${_sdkver}.tar.gz::https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz")
 noextract=("FFmpeg_v${pkgver}.tar.gz")
-sha256sums=('18d5f0fc4ded9ccc28978fcf345125d4a91a765eb503e7e61ddacd6ede9be003'
-            'feef9fd6310f1903edff87a510db3a78e9a79067006ee659b37d3dd34fa277e6'
-            'fec03e133521486ca258ae34ddf093eb6aab23f848c4332c367aadbfeaefda04')
+sha256sums=('c07d952c210967896bb3ab87753e15191936a87b68840034a876b850f423cbf6'
+            'feef9fd6310f1903edff87a510db3a78e9a79067006ee659b37d3dd34fa277e6')
 
 prepare() {
 	# Extract all files from DekTec upstream
-	mkdir -p ${pkgname}-${pkgver}
-	bsdtar -xf FFmpeg_v${pkgver}.tar.gz -C ${pkgname}-${pkgver}
-	# FS#79281: fix assembling with binutil as >= 2.41
-	patch -d ${pkgname}-${pkgver} -Np1 -i "$srcdir"/070-ffmpeg-binutils2.41-fix.patch
+	mkdir -p "${pkgname}-${pkgver}"
+	bsdtar -xf "FFmpeg_v${pkgver}.tar.gz" -C "${pkgname}-${pkgver}"
 }
 
 build() {
@@ -37,7 +29,6 @@ build() {
 	# Build
 	./configure \
 		--prefix='/usr' \
-		--cc=gcc-13 \
 		--disable-shared \
 		--disable-doc \
 		--disable-asm \
@@ -54,10 +45,10 @@ build() {
 
 package() {
 	# Custom standalone installation
-	install -Dvm 755 ${pkgname}-${pkgver}/ffmpeg "$pkgdir"/usr/bin/ffmpeg-dektec
-	install -Dvm 755 ${pkgname}-${pkgver}/ffplay "$pkgdir"/usr/bin/ffplay-dektec
+	install -Dvm 755 "${pkgname}-${pkgver}/ffmpeg" "$pkgdir/usr/bin/ffmpeg-dektec"
+	install -Dvm 755 "${pkgname}-${pkgver}/ffplay" "$pkgdir/usr/bin/ffplay-dektec"
 
 	# Standard installation method
 	#make -C "${pkgname}-${pkgver}" DESTDIR="$pkgdir" install install-man
-	#install -Dvm755 "${pkgname}-${pkgver}/tools/qt-faststart" -t "${pkgdir}/usr/bin"
+	#install -Dm 755 "${pkgname}-${pkgver}/tools/qt-faststart" -t "${pkgdir}/usr/bin"
 }
