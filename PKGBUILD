@@ -2,7 +2,7 @@
 # Maintainer: 
 # Contributor: 
 pkgname=rosary-tauri
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A Bible App developed with tauri"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/RoseBlume/Rosary/releases/download/v$pkgver/rosary_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('SKIP')
+sha256sums_x86_64=('778d2fc4a1bdd376c4944dc2b9d1369657c2f7ef2ac8c0691291a94c56d00359')
 package(){
 
 	# Extract package data
