@@ -1,22 +1,31 @@
 pkgbase = ocaml-ppx_log
 	pkgdesc = Ppx_sexp_message-like extension nodes for lazily rendering log messages
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/janestreet/ppx_log
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = dune>=2.0.0
-	depends = ocaml>=4.14.0
-	depends = ocaml-base>=0.16.0
-	depends = ocaml-ppx_here>=0.16.0
-	depends = ocaml-ppx_sexp_conv>=0.16.0
-	depends = ocaml-ppx_sexp_message>=0.16.0
-	depends = ocaml-sexplib>=0.16.0
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-base>=0.17.0
+	depends = ocaml-ppx_compare>=0.17.0
+	depends = ocaml-ppx_enumerate>=0.17.0
+	depends = ocaml-ppx_expect>=0.17.0
+	depends = ocaml-ppx_fields_conv>=0.17.0
+	depends = ocaml-ppx_here>=0.17.0
+	depends = ocaml-ppx_let>=0.17.0
+	depends = ocaml-ppx_sexp_conv>=0.17.0
+	depends = ocaml-ppx_sexp_message>=0.17.0
+	depends = ocaml-ppx_sexp_value>=0.17.0
+	depends = ocaml-ppx_string>=0.17.0
+	depends = ocaml-ppx_variants_conv>=0.17.0
+	depends = ocaml-sexplib>=0.17.0
+	depends = ocaml-stdio>=0.17.0
 	depends = ocaml-ppxlib>=0.28.0
 	depends = zstd
 	options = !strip
-	source = ocaml-ppx_log-0.16.0.tar.gz::https://github.com/janestreet/ppx_log/archive/v0.16.0.tar.gz
-	sha512sums = 6560720e4c329d8859850f06aa9c80f9446f361221ce57223ee2872944928079898bb644bf762d4907673368a18857390346a94d450ba4d2787abac77dea9e87
+	source = ocaml-ppx_log-0.17.0.tar.gz::https://github.com/janestreet/ppx_log/archive/v0.17.0.tar.gz
+	b2sums = 357b9ea6743e887d2b156a4374bd88d4bf598ea85ca3d3391155b15dab2e8d0aeaddfd6745e5e46f53588e0065456ee4e06a5cfe3c049e7e78771d487b1fce56
 
 pkgname = ocaml-ppx_log
