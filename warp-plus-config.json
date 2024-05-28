@@ -12,5 +12,6 @@
   "cache-dir": "/etc/warp-plus",
   "tun-experimental": false,
   "fwmark": "0x1375",
-  "wgconf": ""
+  "wgconf": "",
+  "reserved": ""
 }
