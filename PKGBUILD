@@ -2,17 +2,17 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='parsexp'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='S-expression parsing library'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-sexplib0>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0's 'ocaml-sexplib0>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('54a59c12ef9cafe69f5dab79d51a7115205f0becef97db1d0051cb50c3ff004a56e43e9607a3869e4928f8653df5a2b9e3366e4ac0d8d7483752fa5287352791')
+b2sums=('8ef9d71707f76aaade8a21f42282461f3ad3ba3f3b25eadda4708177857b702372a4d11b89c6e8c0c739244b4d3a46008d90d15a1b2f5f353801c04b58d08158')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -20,6 +20,8 @@ build() {
 	cd "$srcdir/$_sourcedirectory/"
 	dune build --release --verbose
 }
+
+# No tests available
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
