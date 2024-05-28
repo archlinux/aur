@@ -12,7 +12,7 @@
 _pkgname="theseus-ship"
 pkgname="$_pkgname"
 pkgver=6.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Wayland and X11 Compositor for the KDE Plasma desktop (formerly kwinft)"
 url="https://github.com/winft/theseus-ship"
 license=("LGPL-2.1-only")
@@ -77,7 +77,7 @@ provides=(
 conflicts=(
   "como"
   "kwin"
-  "kwinft"
+  #"kwinft"
   "theseus-ship"
 )
 
