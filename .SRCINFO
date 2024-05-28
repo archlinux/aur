@@ -1,6 +1,6 @@
 pkgbase = nzbhydra2-nojava-bin
 	pkgdesc = Search aggregator for newznab and torznab indexers.
-	pkgver = 6.2.1
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/theotherp/nzbhydra2
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = nzbhydra2-nojava-bin
 	sha256sums = a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003
 	sha256sums = 8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a
 	sha256sums = d1c40c40c1ec75d37e8dec0b250179f6a88fedb49ad335ae53625e159a730019
-	source_x86_64 = https://github.com/theotherp/nzbhydra2/releases/download/v6.2.1/nzbhydra2-6.2.1-amd64-linux.zip
-	sha256sums_x86_64 = 05baf21b0472d121c77fc3676e0629ea05d16107a0002d9170750eb427ea61b4
-	source_aarch64 = https://github.com/theotherp/nzbhydra2/releases/download/v6.2.1/nzbhydra2-6.2.1-arm64-linux.zip
-	sha256sums_aarch64 = 9421037d1292ffff01432b3e0a187b6cd49a690616189d849ad777cc70c1680f
+	source_x86_64 = https://github.com/theotherp/nzbhydra2/releases/download/v7.1.0/nzbhydra2-7.1.0-amd64-linux.zip
+	sha256sums_x86_64 = fd93681efdb8bdc6e3118a6ebc51a9980f1073011d024f741a226e0d255ec0d7
+	source_aarch64 = https://github.com/theotherp/nzbhydra2/releases/download/v7.1.0/nzbhydra2-7.1.0-arm64-linux.zip
+	sha256sums_aarch64 = 59b0916ccfe583d2c98665dc0416eb7cffed26c06b36805afb4646b991dc2594
 
 pkgname = nzbhydra2-nojava-bin
