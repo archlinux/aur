@@ -89,20 +89,7 @@ options=(
 )
 archlinuxpath=https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/$commit
 source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
-        ${archlinuxpath}/config
-        # Arch patches
-        0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-        0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
-        0003-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch
-        # BABY CPU Scheduler
-        0001-initial-baby-6.7.y-commit-Thu-Mar-21-04-32-59-PM-03-.patch
-        0002-added-yield-from-tt.patch
-        0003-added-lat_sensitive.patch
-        0004-added-entity_end_min_slice-with-min-slice-7us.patch
-        0005-fix-update-candidate-to-pick-cfs_rq-head.patch
-        0006-make-quota-for-preempted-task-preserved.patch
-        0007-change-bs_shared_quota-to-105us.patch
-        0008-port-select_task_fair-from-TT.patch)
+        ${archlinuxpath}/config)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -347,18 +334,7 @@ _package-headers(){
 }
 
 sha256sums=('a9b99fb376f9fcd699c7c252aeef3bb5ba26280eb049711ac091b2eb2b487c03'
-            '04143712e593d45a597661fe00f89cf92d52c62df3468c68a46c952c2ef4db64'
-            '416609986399d3046811bcc2344f4ee0833b6c92e305da3925a6e193f810dad2'
-            'b4c85f49a0c0fe6d6ac1f55165c2c897000a7c6c0c30f258693d66223c0389fd'
-            'd9c0e2b3fa16f02abfd95d4c00747a43dd761e5cd622d40ab908155c5957759b'
-            'cb872671e44a0193fa6a3137fb3aa4f2d44a29e26f3e91c4b730ccb5ba070e5a'
-            'ad65d01b3d5f6038a63d4cac5baf280a799b706360f78ef5f94f9190939c90bf'
-            '3b2e9621b8ef6ec6aa6eb04cbc8bc443385490bb8931610c7da760d998544844'
-            '1c5cc109be5f65e34dc62dbfcd31c4c23faa5dd53d706d32948db324a1daf716'
-            'd487d5807bcadcab6f006108a01c165a15552fd96b7ace49eaa3c152cdb1575f'
-            '7aa0cf548617d42a2624280506df3c39de72ac50cb50926e22d2371d25a7785b'
-            '9383e9e71bd007fb69e5e6c43be34b2094fb3de6628cd62117d891a5fe7ecf3c'
-            '0e92700ac29a173bfc0b3a633308984ad0dd65391db4d3e223eb7e7212c04fe6')
+            '04143712e593d45a597661fe00f89cf92d52c62df3468c68a46c952c2ef4db64')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
