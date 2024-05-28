@@ -2,7 +2,7 @@
 _projectname='mdx'
 pkgname="ocaml-$_projectname"
 pkgver='2.4.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Executable code blocks inside markdown files for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/realworldocaml/$_projectname"
@@ -15,6 +15,13 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('c4b645b656d7f0319972c752d711c0297befcd909c57e0988e779a1156655f17881d6d78a27878d6b630608e70c3c6644af6cc84b850bf12eac7b1641270da17')
 
 _sourcedirectory="$_projectname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Replace version watermarks
+	find . -type f -exec sed -i "s/%%VERSION%%/$pkgver/g" {} +
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"

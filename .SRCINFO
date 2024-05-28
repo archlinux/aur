@@ -1,7 +1,7 @@
 pkgbase = ocaml-mdx
 	pkgdesc = Executable code blocks inside markdown files for OCaml
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/realworldocaml/mdx
 	arch = x86_64
 	arch = aarch64
