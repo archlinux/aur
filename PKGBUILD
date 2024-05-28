@@ -176,6 +176,39 @@ prepare(){
     plain ""
   fi
 
+  # Setup ECHO
+  # https://github.com/hamadmarri/ECHO-CPU-Scheduler?tab=readme-ov-file#defaults-and-sysctls
+  msg "Setup ECHO"
+
+  # Enable ECHO
+  msg2 "Enable ECHO CPU Scheduler"
+  scripts/config --enable CONFIG_ECHO_SCHED
+
+  sleep 2s
+
+  msg2 "Enable CONFIG_HZ_625"
+  scripts/config --disable CONFIG_HZ_300
+  scripts/config --enable CONFIG_HZ_625
+
+  sleep 2s
+
+  msg2 "Disable CONFIG_FAIR_GROUP_SCHED"
+  scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+
+  sleep 2s
+
+  msg2 "Disable CONFIG_SCHED_AUTOGROUP"
+  scripts/config --disable CONFIG_SCHED_AUTOGROUP
+
+  sleep 2s
+
+  msg2 "Disable CONFIG_SCHED_CORE"
+  scripts/config --disable CONFIG_SCHED_CORE
+
+  sleep 2s
+
+  plain ""
+
   # Supress depmod
   msg "Supress depmod..."
   sed -i '2iexit 0' scripts/depmod.sh
