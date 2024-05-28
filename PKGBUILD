@@ -2,7 +2,7 @@
 pkgname=redis-gui-bin
 pkgver=2.3.0
 _electronversion=19
-pkgrel=5
+pkgrel=6
 pkgdesc="Modern graphical user interface to peek into redis database (unofficial)"
 arch=('x86_64')
 url="https://github.com/ekvedaras/redis-gui"
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -22,11 +22,12 @@ source=(
 )
 sha256sums=('a6867340661adc15b95b569c5bd0a82fb3dd61c9e76677d368f06367ce7d97ef'
             'ac76bfd52440815cb3e8ec5ea00f1f9b82c9b404219814f2f05c3fe44a9446c5'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
