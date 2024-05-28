@@ -1,0 +1,14 @@
+pkgbase = defoldsdk-headers
+	pkgdesc = Headers for Defold SDK
+	pkgver = 1.8.0.r9141d9d
+	pkgrel = 1
+	url = https://defold.com/
+	install = defoldsdk-headers.install
+	arch = x86_64
+	license = custom
+	makedepends = curl
+	makedepends = jq
+	source = LICENSE
+	sha256sums = be6e9921ba01445d200ba3dc09b5cab149a58d57a76ca98376b52af87d817a7a
+
+pkgname = defoldsdk-headers

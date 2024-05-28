@@ -1,0 +1,7 @@
+post_install() {
+    echo "Add /usr/include/defoldsdk to your include path."
+}
+
+post_upgrade() {
+    echo "Add /usr/include/defoldsdk to your include path."
+}
