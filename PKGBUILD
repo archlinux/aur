@@ -1,7 +1,6 @@
 # Maintainer: kompowiec2 <diasp@o2.pl>
 pkgname=ai-horde-worker-regen-git
-pkgver=0.1.0
-pkgrel=1
+pkgver=7.0.1
 pkgdesc="generating images and text using your GPU and earning kudos."
 arch=('x86_64')
 url="https://github.com/Haidra-Org/horde-worker-reGen"
