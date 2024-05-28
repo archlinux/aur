@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_bin_prot'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Generation of bin_prot readers and writers from types'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-bin_prot>=0.16.0' 'ocaml-ppx_here>=0.16.0' 'ocaml-ppxlib>=0.28.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-bin_prot>=0.17.0' 'ocaml-ppx_here>=0.17.0' 'ocaml-ppxlib_jane>=0.17.0' 'ocaml-ppxlib>=0.28.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b6e4f1a1ea1dfcfb2c23f34b0842097ad85535a22a767b2f47aa3a5812a112a60768c7b94bfce2602721f165b8ffec1e5282e83a008b2c6684bb102093467f3c')
+b2sums=('f74d2517266a4d59ad72110bd86585201753ef776f5c43b81d6c8bbeca1a3c239432262fc35b0a4ee7ec460dede997957278dbdd79f2e7ccbdcee75431f07a87')
 
 _sourcedirectory="$_projectname-$pkgver"
 
