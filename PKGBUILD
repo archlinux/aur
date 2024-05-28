@@ -3,8 +3,8 @@
 
 _pkgname=nautilus-admin
 pkgname=$_pkgname-gtk4
-pkgver=1.1.9.f736e9d
-pkgrel=3
+pkgver=1.2.0.r0.g3cad8df
+pkgrel=1
 pkgdesc="Extension for Nautilus to do administrative operations"
 arch=('any')
 url="https://github.com/MacTavishAO/$pkgname"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "1.1.9.%s" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
