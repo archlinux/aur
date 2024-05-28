@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_tydi'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Let expressions, inferring pattern type from expression'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('83e72699901af6dfb786f1f0a381f4a2eec6c5d51c98ec2ab76f0f107d87da7c406278a9e71c09fc7a43b8cd19cd97f87f3ba7adea2efe55fb882cd65b81d60b')
+b2sums=('dd2a9070723373e0100a8124f627e739557e178251a8531539c30d40db4afd9b2f40e00b92733362614866b3c9ca8d7f5424d7da3a294c9f2a83eda206ceadb6')
 
 _sourcedirectory="$_projectname-$pkgver"
 
