@@ -2,34 +2,29 @@
 # Contributor:  Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-variable-ar
-pkgver=20220502
-_commit=d70330618e34283444ef864bcdd82362701f390c
+pkgver=24.5.1
 pkgrel=1
+epoch=1
 pkgdesc="Google Noto TTF variable fonts for Arabic Scripts"
 arch=(any)
 url="https://www.google.com/get/noto/"
 license=(custom:SIL)
 optdepends=('noto-fonts-emoji: Emoji characters')
-_url="https://github.com/googlefonts/noto-fonts/raw/${_commit}"
-source=("${_url}"/unhinted/variable-ttf/NotoKufiArabic-VF.ttf
-        "${_url}"/unhinted/variable-ttf/Noto{Naskh,Sans}Arabic{,UI}-VF.ttf
-        "${_url}"/LICENSE
-        70-noto-ar.conf)
-sha256sums=('b49761a09c4910e5bfff7667ecbecd5766b679761d988cc45a96c32fbdbd1854'
-            '04b2d1843cb5f83bfddace0bdde2696ee4ccafdcdad77419279e1971b6534d9c'
-            '3eda34aba1c8fb30f2a9dc8e38c8f183c28efcaf851607e746ef4960bb44cddb'
-            'f37d1410cef1c92913cc119e8369f36e6e935b7e38f635774898210c0f9d12ff'
-            '5757c1b8e2083ea51e96e70c3755dd5fcf645ef6a987472fea82b0b052082674'
-            '0dab92d0544f7b233403f14b84a663bdbfa746982eda629e7f4f9ffe1b036feb'
-            'e9eac74b4b261bea372d464e8a04ab225aa2faba0ba1f9e85ab63bf1222e8b8b')
+conflicts=('noto-fonts-ar')
+_url="https://github.com/notofonts/notofonts.github.io/raw/noto-monthly-release-${pkgver}/fonts"
+sha256sums=('c9a324c6535df8714b46bfa8fadf99e97f330edc3139e1e60a3456487ba6112c'
+            '6131da7130789be7ff7befe9dee2ec1cbcc22f1be60ab6f0d39fa6b988329d49'
+            'c759aa0457c5f848b2a8cf439aec48c6b0a201ebec76fa8f3315ef43880abc57'
+            'f2095b08bed08b23a6fe26112fcd679a2bee3f002eef077eb05d215ed1051bd8'
+            'f69d3162da2d927bd158501531e04775d890361bc79d1d4ab77c3ad34e866650')
 
 package() {
-  install -d "${pkgdir}/usr/share/fonts/TTF"
-  install -Dm644 "$srcdir"/*.ttf "$pkgdir/usr/share/fonts/TTF"
+  install -Dm644 "$srcdir"/Noto*.ttf -t "$pkgdir"/usr/share/fonts/"$pkgname"
   install -Dm644 "$srcdir"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # Install fontconfig file (sets Noto Sans Arabic UI as default for ar_AR locale)
-  install -Dm644 "$srcdir"/*.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
-  install -d "$pkgdir"/usr/share/fontconfig/conf.default
-  ln -rs "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default
+  # Install fontconfig preset
+  install -Dm644 "$srcdir"/*.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail
+
+  # To enable the included preset (sets Noto Sans Arabic as default for ar_AR locale) run:
+  #ln -s /usr/share/fontconfig/conf.avail/66-noto-ar.conf /etc/fonts/conf.d
 }
