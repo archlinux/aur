@@ -1,5 +1,5 @@
 pkgbase = ocaml-ppxlib
-	pkgdesc = Standard infrastructure for ppx rewriters
+	pkgdesc = Utilities for working with Jane Street AST constructs
 	pkgver = 0.32.1
 	pkgrel = 1
 	url = https://github.com/ocaml-ppx/ppxlib
