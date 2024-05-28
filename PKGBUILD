@@ -3,7 +3,7 @@
 pkgbase=hoarder
 pkgname=("${pkgbase}" "${pkgbase}-cli")
 pkgver=0.14.0
-pkgrel=3
+pkgrel=4
 _pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64")
 url="https://github.com/${pkgbase}-app/${pkgbase}"
@@ -20,12 +20,16 @@ sha256sums=('d863c41bdaab0ad697c94a75678308c6b692a402958658f4e2882f82a77e14af'
             '02ba5c278843be0dc98a172a16e172dd5f2245dd7e91608fc3a53f9e5be2ee7a'
             'bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e'
             'cd2b58e13dd928925db21819a74052b98c4dd82cf6353f6b9181b41cc93e8848'
-            '743b1d08eaa1c38fab3561c7e5010e1de3db3e1984abf0f04ef415f941ff0bf6'
+            '2364decec460b4bb27e8eb8a3b99b3364f4b95b8cdc51876261faa5de24ad027'
             'f91a01baa9953fa163534371fa515d680dcfc46184ea80e0fd7ac82723e56d4c'
             '750941fb711f95239b4aacf278a42d9c75b80ef75c730ecc99940510b2b57cda')
 
 build() {
     export COREPACK_ENABLE_STRICT=0
+    export SERVER_VERSION="$pkgver"
+    # export NODE_ENV="production"
+    export NEXT_TELEMETRY_DISABLED=1
+    export PUPPETEER_SKIP_DOWNLOAD="true"
 
     # build web
     cd "${pkgbase}"
@@ -66,7 +70,8 @@ package_hoarder() {
     cp -r --preserve=mode "${pkgbase}/apps/web/.next/static"     "${pkgdir}/usr/share/${pkgbase}/apps/web/.next/static"
     cp -r --preserve=mode "${pkgbase}/apps/web/public"           "${pkgdir}/usr/share/${pkgbase}/apps/web/public"
 
-    ln -s "/var/lib/${pkgbase}/cache" "${pkgdir}/usr/share/${pkgbase}/apps/web/.next/cache"
+    ln -s                 "/var/lib/${pkgbase}/cache"            "${pkgdir}/usr/share/${pkgbase}/apps/web/.next/cache"
+    echo "SERVER_VERSION=$pkgver" >                              "${pkgdir}/usr/share/${pkgbase}/version"
 }
 
 package_hoarder-cli() {
