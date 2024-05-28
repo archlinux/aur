@@ -8,8 +8,9 @@ arch=('any')
 url='https://github.com/jgraph/drawio-desktop'
 license=('Apache-2.0')
 _electronver=30
+_nodever=20
 depends=("electron$_electronver" libnotify shared-mime-info)
-makedepends=(yarn 'nodejs>=12')
+makedepends=(yarn "nodejs>=$_nodever")
 options=('!strip')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz"
@@ -29,6 +30,10 @@ build() {
   # Electron version compatibility check
   echo "Checking electron version"
   grep -qF "\"electron\": \"$_electronver." 'package.json'
+
+  # Node version compatibility check
+  echo "Checking nodejs version"
+  grep -qozP  "\"engines\":\s*\{\n\s*\"node\":\s*\">=$_nodever\"" package.json
 
   # disable updater
   sed -e '/electron-updater/d' -i 'package.json'
