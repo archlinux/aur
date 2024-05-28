@@ -18,13 +18,16 @@ build() {
 	cd "$srcdir/${pkgname}_${pkgver}_build"
 
 	cmake "../${pkgname}_${pkgver}" \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DPROC_TARGET_NUMBER="2" \
-	-DWITH_LTO="ON" \
-	-DENABLE_LIBRAW="ON" \
-	-DENABLE_OCIO="ON" \
- 	-DBUILD_SHARED="ON"
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DPROC_TARGET_NUMBER=2 \
+		-DWITH_LTO="ON" \
+		-DENABLE_LIBRAW="ON" \
+		-DENABLE_OCIO="ON" \
+		-DOPTION_OMP="ON" \
+		-DBUILD_SHARED="ON" \
+		-DENABLE_CTL="ON" \
+		-DCTL_INCLUDE_DIR="/usr/include/CTL"
 
 	make
 }
