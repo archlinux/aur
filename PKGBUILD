@@ -2,7 +2,7 @@
 
 pkgname='git-fame'
 pkgver='2.0.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Pretty-print git repository collaborators sorted by contributions'
 arch=('any')
 url="https://github.com/casperdcl/$pkgname"
@@ -11,7 +11,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python
 depends=('python-argopt' 'python-tqdm' 'python-tabulate')
 provides=('git-fame')
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('7efd52f1e7c8813a5395e866b29377e3c5f47cdf3dff78774656cb7d9733e65f')
 
 build() {
     cd "$srcdir/$pkgname"
