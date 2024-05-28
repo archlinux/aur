@@ -34,8 +34,8 @@ fi
 ###################################################################################
 
 pkgbase=linux-baby
-pkgver=6.7.10
-_pkgver=6.7.10
+pkgver=6.7.12
+_pkgver=6.7.12
 pkgrel=1
 major=6.7
 commit=0bd29eb1601f9b1d256cf8b402ba7d5e2a04b441
@@ -89,7 +89,22 @@ options=(
 )
 archlinuxpath=https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/$commit
 source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
-        ${archlinuxpath}/config)
+        ${archlinuxpath}/config
+        # Arch patches
+        0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+        0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
+        0003-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch
+        # BABY CPU Scheduler
+        0001-initial-baby-6.7.y-commit-Thu-Mar-21-04-32-59-PM-03-.patch
+        0002-added-yield-from-tt.patch
+        0003-added-lat_sensitive.patch
+        0004-added-entity_end_min_slice-with-min-slice-7us.patch
+        0005-fix-update-candidate-to-pick-cfs_rq-head.patch
+        0006-make-quota-for-preempted-task-preserved.patch
+        0007-change-bs_shared_quota-to-105us.patch
+        0008-port-select_task_fair-from-TT.patch
+        0009-Fix-missing-sched_idle_cpu-when-enabling-NUMA.patch
+        0010-fair_group-and-autogroup-must-be-disabled-by-default.patch)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -160,14 +175,6 @@ prepare(){
     sleep 2s
     plain ""
   fi
-
-  # Fix Disable NUMA
-  msg "Disable NUMA"
-  scripts/config --disable CONFIG_NUMA
-
-  sleep 2s
-
-  plain ""
 
   # Supress depmod
   msg "Supress depmod..."
@@ -290,7 +297,7 @@ _package-headers(){
   # https://bugs.archlinux.org/task/71392
   install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
-  msg "Installing KConfig files..."
+  msg "Installing Kconfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
   msg "Removing unneeded architectures..."
@@ -333,8 +340,21 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('a9b99fb376f9fcd699c7c252aeef3bb5ba26280eb049711ac091b2eb2b487c03'
-            '04143712e593d45a597661fe00f89cf92d52c62df3468c68a46c952c2ef4db64')
+sha256sums=('6c2979e3948806a0dbacba193f8453ea42c179c1eb9f6136e3c35d87e5707984'
+            '04143712e593d45a597661fe00f89cf92d52c62df3468c68a46c952c2ef4db64'
+            'aeb197c66194491abac9c25fea4d10d2475a54d192ed99b91bc25b2881a22dd3'
+            '45f9a013518e1fab0abaeddb3c65cc767fc8816809d44158009bc2ac969216e7'
+            'f58ac52150003e61210a8254b2235fc8a0e9bc5a91621e9407f3a6b841b0a964'
+            'd33e3f8781ce2ff5ab381129b20eb8f0cc3cbf4171655af6945d75f2a2231f83'
+            '3d7b8d1e9d677210b365da6193e6ee3ec294092ee0a6bae025bfb4bb967b0950'
+            '585f895a260a53bcfb02b39e059fbb23627c3002aaf8a9ea6b333560dd244d22'
+            '4b17bbd832f37f29900abd1bd6e143157714424beb8f2e719d634a2808bdbd08'
+            'ef22fb9d816770f7186b594ff067560ab07a44986f713ab48be131d6a3ebf3eb'
+            'c279015e0ed1ce30026c7ec4d7119cf7a14bde8a9ef94fced9b9f25f44c96154'
+            '4e5fd316f0ea661254ef29a5f23c611f3e6bbb73983a10ba22731da574a8c63a'
+            '0fbf457173232f9f31e0bb5ab4a48b6f48bb45830994ac0b88c7327c34b26291'
+            'bf440d4290a80ac267ee04790e9ec545facb4564f6bb6ff89b1ff983b1cfe287'
+            '09271c58da92d0cb5792461ae1a17fbf7ae5ae422592866ab0ab7898da538764')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
