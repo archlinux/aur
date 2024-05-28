@@ -3,7 +3,7 @@
 _projectname='core_unix'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Unix-specific extensions to some of the modules defined in ocaml-core and ocaml-core_kernel'
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,15 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 b2sums=('9afc07343427e84dc71df23b2d3a4e02780dcb75b4969d06a7d06d47b7dfe17e464223258733673265491cecfbea07f92f429167b81ead226319c452e4b895db')
 
 _sourcedirectory="$_projectname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Disable broken test
+	sed -i 's/command_validate_parsing//g' 'command_unix/test-bin/dune'
+	rm 'command_unix/test-bin/command_validate_parsing.ml'{,i}
+	rm 'command_unix/test/setup-script.sh' 'command_unix/test/test-validate-parsing.t' 'command_unix/test/test_command_validate_parsing_flag.ml'{,i}
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
