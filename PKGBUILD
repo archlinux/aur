@@ -1,14 +1,14 @@
 # Maintainer: Bobby Hamblin <hamblingreen@hotmail.com>
 pkgname=dotool
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="Command to simulate input anywhere"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://git.sr.ht/~geb/dotool"
 license=('GPL3')
-makedepends=('go>=1.19' 'libxkbcommon' 'scdoc')
+makedepends=('go' 'libxkbcommon' 'scdoc')
 source=("$url/archive/$pkgver.tar.gz" "dotoold.service")
-sha512sums=('9bf735365f6b5dd41473134cca1efaecf702b8733ca5026ac1b568ff4e2168c9120d35c3da5296002d16bd5d2af9910c0011a501d3628059f77221e3de51e362'
+sha512sums=('f37c88984c1f87c4a9220d155498a79e63db12909325da6d673aeb9e872264473a18a67a7b2ac106fe36593bc7a5d34250716f675f517154de78023061faee7f'
             '81ea5294babc32a3d7df40ecebad50a5cb0fa0f94b054c60e9717e86721fe72c65db5f3e08d5af89fdeef1d71ec1ecf86fc19c9ed3b876eeb32aedd15556d2a2')
 
 build() {
