@@ -3,7 +3,7 @@
 
 pkgname=qt5-serialbus
 _basever=5.15.14
-pkgver=5.15.13
+pkgver=5.15.14
 pkgrel=1
 _commit=616bc5b962cdcacb1c1ba985d7236392e9cadb8c
 arch=('x86_64')
