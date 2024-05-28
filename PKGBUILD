@@ -3,7 +3,7 @@
 _pkgname="como"
 pkgname="$_pkgname"
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Library collection to easily create Wayland and X11 compositors'
 url="https://github.com/winft/como"
 license=('LGPL-2.1-only')
@@ -21,6 +21,7 @@ depends=(
   kservice
   ksvg
   libepoxy
+  libplasma
   libqaccessibilityclient-qt6
   qt6-5compat
   qt6-declarative
@@ -31,7 +32,6 @@ depends=(
   wrapland
 
   ## implicit
-  #hicolor-icon-theme
   #kcolorscheme
   #kconfig
   #kcoreaddons
@@ -40,7 +40,6 @@ depends=(
   #kwidgetsaddons
   #kwindowsystem
   #libinput
-  #libplasma
   #libx11
   #libxcb
   #libxkbcommon
@@ -51,6 +50,7 @@ depends=(
 )
 makedepends=(
   breeze
+  clang
   extra-cmake-modules
   git
   kcrash
@@ -60,6 +60,8 @@ makedepends=(
   knotifications
   kscreenlocker
   kxmlgui
+  lld
+  llvm
   microsoft-gsl
   ninja
   qt6-multimedia
@@ -79,6 +81,10 @@ sha256sums=(
 )
 
 build() {
+  export CC=clang
+  export CXX=clang++
+  export LDFLAGS+=" -fuse-ld=lld"
+
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
@@ -86,7 +92,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_INSTALL_LIBDIR='lib'
-    -DCMAKE_INSTALL_LIBEXECDIR="lib/$_pkgname"
+    -DCMAKE_INSTALL_LIBEXECDIR="lib"
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
@@ -96,5 +102,9 @@ build() {
 }
 
 package() {
+  depends+=(
+    hicolor-icon-theme
+  )
+
   DESTDIR="$pkgdir" cmake --install build
 }
