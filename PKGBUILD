@@ -2,17 +2,17 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_let'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Monadic let-bindings'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_here>=0.16.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppx_here>=0.17.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('d81c98f4f87c2af2f8121ce42bd5de8910ff4d588eb1bc3a18a9594c070f261b7c7a173bb86a5fbcd67d09ad8ba436df9a210577ac05c6a98625a0bc553fb4ad')
+b2sums=('7e6c333a2b53a6633a79745885008b5984ccf84304f03d720c609647a0bc4c12028a72fa3a521cbce62ff36def634fc9af6d8b04bed52bf616dcaecbbde759aa')
 
 _sourcedirectory="$_projectname-$pkgver"
 
