@@ -12,6 +12,11 @@ license=(custom:SIL)
 optdepends=('noto-fonts-emoji: Emoji characters')
 conflicts=('noto-fonts-ar')
 _url="https://github.com/notofonts/notofonts.github.io/raw/noto-monthly-release-${pkgver}/fonts"
+source=("${_url}/NotoKufiArabic/full/variable/NotoKufiArabic[wght].ttf"
+        "${_url}/NotoNaskhArabic/full/variable/NotoNaskhArabic[wght].ttf"
+        "${_url}/NotoSansArabic/full/variable/NotoSansArabic[wdth,wght].ttf"
+        "${_url}/LICENSE"
+        66-noto-ar.conf)
 sha256sums=('c9a324c6535df8714b46bfa8fadf99e97f330edc3139e1e60a3456487ba6112c'
             '6131da7130789be7ff7befe9dee2ec1cbcc22f1be60ab6f0d39fa6b988329d49'
             'c759aa0457c5f848b2a8cf439aec48c6b0a201ebec76fa8f3315ef43880abc57'
