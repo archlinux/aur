@@ -3,13 +3,13 @@
 _pkgname=open-av4ms
 pkgname="${_pkgname}-git"
 pkgver=1.5+1.r7.20181017.e7ac570
-pkgrel=4
+pkgrel=5
 pkgdesc="Log and monitor the serial output of the MiMH/ NiCd battery chargers 'AV4m+'/ 'AV4ms'."
 url='https://gitlab.com/corbolais/open-av4ms'
 arch=(
   'any'
 )
-license=('GPL3')
+license=('GPL-3.0-or-later')
 provides=(
   "${_pkgname}=${pkgver}"
   "av4ms-server=${pkgver}"
