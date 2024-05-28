@@ -1,42 +1,36 @@
-# Maintainer:  Kyle Keen <keenerd at gmail>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Kyle Keen <keenerd at gmail>
 # Contributor: evr <evanroman at gmail>
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 
 pkgname=weather
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
-pkgdesc="CLI tool which shows weather forecasts from METAR data"
+pkgdesc="A command-line utility intended to provide quick access to current weather conditions and forecasts"
+url="http://fungi.yuggoth.org/weather"
+license=('ISC')
 arch=('any')
-url="http://fungi.yuggoth.org/weather/"
 depends=('python')
-license=("custom:BSD2")
-source=("http://fungi.yuggoth.org/weather/src/$pkgname-$pkgver.tar.xz")
-md5sums=('8e765b7df7963a312e7183e32707f9e9')
+source=("http://fungi.yuggoth.org/weather/src/weather-$pkgver.tar.xz")
+sha256sums=('c27ddca607eb96a9ed308895161e37d7b0eb6c6810e18467173dca1d769c4f0e')
+backup=("etc/weatherrc")
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  # set up correlation sets
+  cd weather-$pkgver
+# set up correlation sets
   sed -i 's| else: default_setpath = ".:~/.weather|&:/usr/share/weather-util|' weather.py
   sed -i 's|elif searchtype is |elif searchtype == |' weather.py
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm644 airports "$pkgdir/usr/share/weather-util/airports"
-  install -Dm644 places   "$pkgdir/usr/share/weather-util/places"
-  install -Dm644 stations "$pkgdir/usr/share/weather-util/stations"
-  install -Dm644 zctas    "$pkgdir/usr/share/weather-util/zctas"
-  install -Dm644 zones    "$pkgdir/usr/share/weather-util/zones"
+  cd weather-$pkgver
+  install -Dm644 airports places stations zctas zones -t "$pkgdir/usr/share/weather-util"
+  install -Dm644 weatherrc -t "$pkgdir/etc"
+  install -Dm644 weather.1 -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 weatherrc.5 -t "$pkgdir/usr/share/man/man5"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/weather"
 
   _python_path=$(python3 -c "import sys ; print([p for p in sys.path if p.startswith('/usr/lib/python3.')][0])")
-  install -Dm755 weather    "$pkgdir/usr/bin/weather-report"
-  install -Dm644 weather.py "$pkgdir/$_python_path/weather.py"
-
-  install -Dm644 weatherrc "$pkgdir/etc/weatherrc"
-
-  install -Dm644 weather.1   "$pkgdir/usr/share/man/man1/weather.1"
-  install -Dm644 weatherrc.5 "$pkgdir/usr/share/man/man5/weatherrc.5"
-
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/BSD2"
+  install -Dm644 weather.py -t "$pkgdir/$_python_path"
+  install -Dm755 weather -t "$pkgdir/usr/bin"
 }
-
