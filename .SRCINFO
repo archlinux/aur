@@ -1,7 +1,7 @@
 pkgbase = git-of-theseus
 	pkgdesc = Plot stats on Git repositories
 	pkgver = 0.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/erikbern/git-of-theseus
 	arch = any
 	license = Apache-2.0
@@ -27,7 +27,7 @@ pkgbase = git-of-theseus
 	source = git-of-theseus-survival-plot.1
 	source = git-of-theseus-stack-plot.1
 	source = git-of-theseus-line-plot.1
-	sha256sums = SKIP
+	sha256sums = a5797542b105fa7e8ffe84ed491e97462f5f1752ebbe7eac30dd174b2c69d891
 	sha256sums = a681587c1282efc8180d987d27f1a97dfda02aa3957096eeab1a7b43b8c304ea
 	sha256sums = 4cd91120902468ed85007e993a1688d9f0d38bcf528e08df090a05733d9314a7
 	sha256sums = c796f1ef82329fb2e2c7fcbe3c6ac750544090a6e36825bf4a0487cca90ab6e4

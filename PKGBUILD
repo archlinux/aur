@@ -2,7 +2,7 @@
 
 pkgname='git-of-theseus'
 pkgver='0.3.4'
-pkgrel=2
+pkgrel=3
 pkgdesc='Plot stats on Git repositories'
 arch=('any')
 url="https://github.com/erikbern/$pkgname"
@@ -26,7 +26,7 @@ source=("$pkgname::git+$url#commit=$_commit"
     'git-of-theseus-survival-plot.1'
     'git-of-theseus-stack-plot.1'
     'git-of-theseus-line-plot.1')
-sha256sums=('SKIP'
+sha256sums=('a5797542b105fa7e8ffe84ed491e97462f5f1752ebbe7eac30dd174b2c69d891'
             'a681587c1282efc8180d987d27f1a97dfda02aa3957096eeab1a7b43b8c304ea'
             '4cd91120902468ed85007e993a1688d9f0d38bcf528e08df090a05733d9314a7'
             'c796f1ef82329fb2e2c7fcbe3c6ac750544090a6e36825bf4a0487cca90ab6e4'
