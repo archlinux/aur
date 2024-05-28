@@ -6,7 +6,7 @@ url="https://github.com/marcologous/hanken-grotesk"
 license=("OFL")
 _commit="1ab416e82130b2d3ddb7710abf7ceabf07156a13"
 pkgver=20240130
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 makedepends=(

@@ -1,7 +1,7 @@
 pkgbase = otf-hanken-grotesk
 	pkgdesc = sans serif typeface inspired by the classic grotesques
 	pkgver = 20240130
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marcologous/hanken-grotesk
 	arch = any
 	license = OFL
