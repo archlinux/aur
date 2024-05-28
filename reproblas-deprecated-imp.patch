@@ -1,0 +1,36 @@
+*** scripts/cogapp/cogapp.py	2018-08-16 22:51:39.000000000 +0200
+--- scripts/cogapp/cogapp.py	2024-05-27 18:07:37.289826398 +0200
+***************
+*** 6,12 ****
+  
+  from __future__ import absolute_import, print_function
+  
+! import copy, getopt, hashlib, imp, os, re, shlex, sys, traceback
+  from .backward import PY3, StringIO, string_types, to_bytes
+  
+  __all__ = ['Cog', 'CogUsageError']
+--- 6,12 ----
+  
+  from __future__ import absolute_import, print_function
+  
+! import copy, getopt, hashlib, os, re, shlex, sys, traceback, types
+  from .backward import PY3, StringIO, string_types, to_bytes
+  
+  __all__ = ['Cog', 'CogUsageError']
+***************
+*** 347,353 ****
+          """ Magic mumbo-jumbo so that imported Python modules
+              can say "import cog" and get our state.
+          """
+!         self.cogmodule = imp.new_module('cog')
+          self.cogmodule.path = []
+          sys.modules['cog'] = self.cogmodule
+  
+--- 347,353 ----
+          """ Magic mumbo-jumbo so that imported Python modules
+              can say "import cog" and get our state.
+          """
+!         self.cogmodule = types.ModuleType('cog')
+          self.cogmodule.path = []
+          sys.modules['cog'] = self.cogmodule
+  
