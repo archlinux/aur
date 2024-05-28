@@ -1,6 +1,6 @@
 pkgbase = cobib
 	pkgdesc = Console Bibliography
-	pkgver = 5.0.1
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://gitlab.com/cobib/cobib
 	arch = any
@@ -23,9 +23,10 @@ pkgbase = cobib
 	depends = python-markdown-it-py
 	depends = python-mdit_py_plugins
 	depends = python-linkify-it-py
+	optdepends = python-regex
 	provides = cobib
 	conflicts = cobib
-	source = https://gitlab.com/cobib/cobib/-/archive/v5.0.1/cobib-v5.0.1.tar.gz
-	sha512sums = 454c7bb10435af510c9379332ca46edfd014d698619674f9d24540e3175a1d1875733fb0a917213dfff803e4cdff9b93291801707e4f59a87a8c19ce7ebe228d
+	source = https://gitlab.com/cobib/cobib/-/archive/v5.1.0/cobib-v5.1.0.tar.gz
+	sha512sums = 6e2591396022cc367a5d82bb9ca81c480281d0ecd1ce94129ae676996d0d824567f35be515cc34386c9d0ca29945e62fb489b1eea12925158ecb0be7fbca0807
 
 pkgname = cobib
