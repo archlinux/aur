@@ -1,18 +1,18 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='sexplib'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Library for serializing OCaml values to and from S-expressions'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT' 'BSD-3-Clause')
-depends=('ocaml>=4.14.0' 'ocaml-num' 'ocaml-parsexp>=0.16.0' 'ocaml-sexplib0>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-parsexp>=0.17.0' 'ocaml-sexplib0>=0.17.0' 'ocaml-num')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f924d92ddf11f12be51073a3dfca45486d90b05533f29804518ee86b93386b8ff8d7e692c71d77b11347b78e9f6f6dcf7d79b71540efe54b013fa09b3bab414a')
+b2sums=('feff6594ce144e1f25efec60009874210e71ba19fff5edffe46e25510a73a235ce28333888c2bc6839c5cffb901a70b2463853b4ca02cf93d89aaa6a15f154b7')
 
 _sourcedirectory="$_projectname-$pkgver"
 
