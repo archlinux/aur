@@ -2,7 +2,7 @@
 
 pkgname=surface-uefi-firmware-git
 _repo=surface-uefi-firmware
-pkgver=r11.ad1a6ae
+pkgver=r52.47a687f
 pkgrel=1
 pkgdesc="Scripts to prepare UEFI firmware updates for Microsoft Surface"
 arch=('any')
@@ -26,8 +26,5 @@ pkgver() {
 
 package() {
     cd ${srcdir}/$_repo
-    install -d ${pkgdir}/usr/{bin,share/$_repo}
-    install -m755 prep.sh ${pkgdir}/usr/bin/surface-firmware-prep
-    install -m755 repack.sh ${pkgdir}/usr/bin/surface-firmware-repack
-    install -m644 template.metainfo.xml ${pkgdir}/usr/share/$_repo
+    install -Dm755 repack.sh ${pkgdir}/usr/bin/surface-firmware-repack
 }
