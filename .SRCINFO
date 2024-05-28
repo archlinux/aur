@@ -1,0 +1,21 @@
+pkgbase = python-ypywidgets_textual
+	pkgdesc = Textual widgets for ypywidgets
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/davidbrochart/ypywidgets-textual
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-ypywidgets
+	depends = python-textual
+	depends = python-pyte
+	depends = python-textual_plotext
+	source = https://files.pythonhosted.org/packages/source/y/ypywidgets_textual/ypywidgets_textual-0.4.1.tar.gz
+	sha256sums = c6ae12ceab65413d16e902f8934e057f13ed93239d01b2b77ab3688991f85274
+
+pkgname = python-ypywidgets_textual
