@@ -232,7 +232,7 @@ main() {
 			$use_i3lock && unlock_screen
 			$control_player && pause_player
 			$dmenu_nag && dmenu_nagscreen
-			$focus_anki && focus_window anki
+			$focus_anki && focus_window Anki
 		fi
 
 		if [[ ${mode,,} == "long break" ]]; then
