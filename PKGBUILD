@@ -3,7 +3,7 @@
 
 pkgname=noto-fonts-variable-ar
 pkgver=24.5.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Google Noto TTF variable fonts for Arabic Scripts"
 arch=(any)
@@ -12,14 +12,14 @@ license=(custom:SIL)
 optdepends=('noto-fonts-emoji: Emoji characters')
 conflicts=('noto-fonts-ar')
 _url="https://github.com/notofonts/notofonts.github.io/raw/noto-monthly-release-${pkgver}/fonts"
-source=("${_url}/NotoKufiArabic/full/variable/NotoKufiArabic[wght].ttf"
-        "${_url}/NotoNaskhArabic/full/variable/NotoNaskhArabic[wght].ttf"
-        "${_url}/NotoSansArabic/full/variable/NotoSansArabic[wdth,wght].ttf"
+source=("${_url}/NotoKufiArabic/googlefonts/variable/NotoKufiArabic[wght].ttf"
+        "${_url}/NotoNaskhArabic/googlefonts/variable/NotoNaskhArabic[wght].ttf"
+        "${_url}/NotoSansArabic/googlefonts/variable/NotoSansArabic[wdth,wght].ttf"
         "${_url}/LICENSE"
         66-noto-ar.conf)
-sha256sums=('c9a324c6535df8714b46bfa8fadf99e97f330edc3139e1e60a3456487ba6112c'
-            '6131da7130789be7ff7befe9dee2ec1cbcc22f1be60ab6f0d39fa6b988329d49'
-            'c759aa0457c5f848b2a8cf439aec48c6b0a201ebec76fa8f3315ef43880abc57'
+sha256sums=('494f6b61469d7a02a2d63f0fc4930bb007388d8cfe551de5eb98354e100889f3'
+            '02d9310b6b55b3bf8a5084fced9106ccd914650d730cbe8ff3b57f691d2931f6'
+            '63111b5b2e074dd48cc67692e0a2726d86ee94c1c37fe8598257b7b4e87e869e'
             'f2095b08bed08b23a6fe26112fcd679a2bee3f002eef077eb05d215ed1051bd8'
             'f69d3162da2d927bd158501531e04775d890361bc79d1d4ab77c3ad34e866650')
 
