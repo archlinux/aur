@@ -1,7 +1,7 @@
 # Maintainer: Viačasłaŭ Chalikin <viachaslavic'at'outlook'dot'com>
 
 pkgname='hunspell-be-tarask'
-pkgver=0.60
+pkgver=0.60.1
 pkgrel=1
 pkgdesc="Belarusian hunspell dictionary (classic orthography)"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('hunspell: the spell checking libraries and apps')
 provides=('hunspell-dictionary')
 conflicts=('hunspell-be')
 source=("$pkgname::git+$url.git#commit=v${pkgver}")
-b2sums=('1cc0bfb1ecf3ae3ff148d564006b1a07965f5648cc1649b7f454db7545eba7179f736cfb955869380b5a916ed5cb6674ffae4a7c642cb059a9bce83eb0a41d8e')
+b2sums=('b0beea19daf82f42454995f5bb90bea4964b6d774a2d10085f3db1f1df05197e1dc6e618d14e6165167ca85b70d4cc0d2e1343a76ae2c073d32b6522968c8e0c')
 
 build() {
   cd ${srcdir}/${pkgname}
