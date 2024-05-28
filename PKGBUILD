@@ -2,8 +2,8 @@
 # Contributor: Florian Lindner <florian.lindner@xgm.de>
 
 pkgname=hotspot
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 epoch=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('x86_64')
@@ -34,17 +34,26 @@ optdepends=(
     'kgraphviewer: Call graph in the caller/callee tab'
     'rustc-demangle>=0.1.18-2: Demangling of Rust symbols'
 )
-source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-b2sums=('930f256fbe94068145d9366c1c7d0a1a75fca955d70d1acd9d698a888c7249404a832e579883f1bf18268578a664e10fdbb870ef328b51d55e8d1b59cb830da4')
+source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz"
+        "$url/releases/download/v$pkgver/$pkgname-perfparser-v$pkgver.tar.gz"
+        "$url/releases/download/v$pkgver/$pkgname-PrefixTickLabels-v$pkgver.tar.gz")
+b2sums=('1751e115213af409210d7fd35a4113d1d528a9bb04be12fa7b05ce56523c447e7c12b21651a863e00734f2fed65403000d889e3005d083e37dc71a025e61a0cb'
+        '6967ce1cfec531d8cb19656fcd71a0891e3ba15f93ea15eaf4ff93983415773a27bf7c47c551f9b45e85a155b3ac3002498083c7088816d1286fcdba3ad675d3'
+        '915ad463c5f088b8945e0038bd61beff77ca8283b4b31a4ee1e7042619f6e7adc9471c3e601e7bdb6c9e4a85cdb1b87ebb085a523a2f3756367504e8ae6ef3dc')
+
+prepare() {
+    ln -s perfparser       $pkgname/3rdparty/perfparser
+    ln -s PrefixTickLabels $pkgname/3rdparty/PrefixTickLabels
+}
 
 build() {
-    cd $pkgname-v$pkgver
+    cd $pkgname
     cmake -DBUILD_TESTING=off -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DQT6_BUILD=on .
     cmake --build .
 }
 
 package() {
-    cd $pkgname-v$pkgver
+    cd $pkgname
     DESTDIR="$pkgdir" cmake --install .
     desktop-file-install com.kdab.hotspot.desktop --dir="$pkgdir/usr/share/applications/"
 }
