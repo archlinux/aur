@@ -1,10 +1,11 @@
 pkgbase = python-minesight-git
 	pkgdesc = Minecraft OSINT tool
 	pkgver = r1.c22400c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gobutsu/MineSight
-	arch = x86_64
-	license = AGPL
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -13,6 +14,8 @@ pkgbase = python-minesight-git
 	depends = python-rich
 	depends = python-beautifulsoup4
 	depends = python-jsonpath-ng
+	depends = python-importlib-metadata
+	depends = python-setuptools
 	provides = minesight
 	source = minesight::git+https://github.com/Gobutsu/MineSight.git#branch=master
 	sha256sums = SKIP
