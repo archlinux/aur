@@ -6,8 +6,8 @@
 
 pkgbase=lazarus-beta
 pkgname=('lazarus-beta' 'lazarus-beta-gtk3' 'lazarus-beta-qt6')
-_lazarus_tag=3_0
-pkgver=3.0.0
+_lazarus_tag=3_4
+pkgver=3.4.0
 pkgrel=1
 url='https://www.lazarus-ide.org/'
 license=('GPL2' 'MPL' 'custom:modifiedLGPL')
@@ -21,7 +21,7 @@ makedepends=(
 )
 options=(!makeflags libtool staticlibs !strip)
 source=("https://gitlab.com/freepascal.org/lazarus/lazarus/-/archive/lazarus_${_lazarus_tag}/lazarus-lazarus_${_lazarus_tag}.tar.bz2")
-sha512sums=('131cc6ffc31fdc98a8ae3a9edd75d2e1d4e5cf1b963a5849c3e42aafea9ea1ae78ba0eaffd38c4ea6848cc58a024ebd878ae1771f2af65de7355f43a1b9b766c')
+sha512sums=('4cca953741f024fa6ca9a34491940937cc617ae8914606d300a4426c8dadbe9e71b9742a66f6aad9ae3176a4e6caf34a58ef594a179d573d7976e5894fa502d7')
 
 build() {
   cd lazarus-lazarus_${_lazarus_tag}
