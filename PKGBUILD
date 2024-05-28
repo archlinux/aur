@@ -3,7 +3,7 @@ pkgname=pikatorrent-bin
 _pkgname=PikaTorrent
 pkgver=0.9.0
 _electronversion=27
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern, open source and electric BitTorrent app for mobile, desktop & server."
 arch=(
     'aarch64'
