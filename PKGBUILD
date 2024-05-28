@@ -1,13 +1,14 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=codevis-db-git
-pkgver=r259.f8ca242
+pkgver=r654.7cd6ba2
 pkgrel=1
 pkgdesc="an analysis and visualization tool designed to assist in code maintenance for C++ codebases"
 arch=('x86_64')
 url="https://invent.kde.org/sdk/codevis"
 license=('Apache')
 depends=('soci' 'qt5-base' 'lcov' 'clang' 'boost-libs' 'qt5-webengine' 'python' 'qt5-svg' 'llvm-libs' 'kparts5' 'knotifications5' 'kcrash5' 'kxmlgui5' 'ktexteditor5' 'karchive5' 'knewstuff5' 'kconfigwidgets5' 'kcoreaddons5' 'kcmutils5' 'kconfig5' 'ki18n5' 'kwidgetsaddons5' 'python-jinja-time')
-makedepends=('git' 'cmake' 'llvm' 'boost' 'extra-cmake-modules' 'kdoctools5' 'catch2' 'backward-cpp')
+makedepends=('git' 'cmake' 'llvm' 'boost' 'extra-cmake-modules' 'kdoctools5' 'backward-cpp')
+checkdepends=('catch2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://invent.kde.org/sdk/codevis.git')
