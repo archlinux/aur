@@ -1,8 +1,8 @@
 pkgbase = ttf-glass-tty
 	pkgdesc = Hacking with style: ttf VT220
 	pkgver = 1
-	pkgrel = 4
-	url = http://sensi.org/~svo/glasstty/
+	pkgrel = 5
+	url = https://caglrc.cc/~svo/glasstty/
 	arch = any
 	license = Unlicense
 	source = http://www.spacerogue.net/images/Glass_TTY_VT220.ttf
