@@ -1,6 +1,6 @@
 pkgbase = lime3ds-appimage
-	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger, GUI version, already compiled
-	pkgver = 2112
+	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger, GUI version, AppImage version
+	pkgver = 2114.1
 	pkgrel = 1
 	epoch = 1
 	url = https://lime3ds.github.io/
@@ -9,10 +9,12 @@ pkgbase = lime3ds-appimage
 	depends = ffmpeg
 	depends = sdl2
 	provides = lime3ds
+	conflicts = lime3ds-git
+	conflicts = lime3ds
 	options = !strip
-	source = https://github.com/Lime3DS/Lime3DS/releases/download/2112/lime3ds-2112-linux-appimage.tar.gz
-	source = lime3ds.desktop
-	b2sums = d83ea3eaa1ce2b8413af7e1925b348eb13cf0137d6edc4cb32953a9359467f5aec56d69c9a795e19a387cd69ac9018f635e906490fbd24433abb20f7ee914a1c
+	source = https://github.com/Lime3DS/Lime3DS/releases/download/2114.1/lime3ds-2114.1-linux-appimage.tar.gz
+	source = https://raw.githubusercontent.com/Lime3DS/Lime3DS/master/dist/lime3ds-gui.desktop
+	b2sums = e9bba18374eb91d62b9b112cf9dca24706094c354ed6de2f8d14ea573873c55085419d9f61b55f1cc6adb279012d1078277ed6d3896aa4239674a98263be411b
 	b2sums = be5cbb996af3fdd28b955d3a32171138a696753edd73d5d7b4de645f22f4e49bb5b51dab12309962189ac32d0913dde1dc9f15f50437ee2f621803a6b1e0edd4
 
 pkgname = lime3ds-appimage
