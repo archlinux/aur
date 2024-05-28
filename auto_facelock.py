@@ -31,6 +31,19 @@ def load_known_faces(known_faces_dir):
     logger.info(f"Loaded {len(known_faces)} known face(s) from {known_faces_dir}")
     return known_faces, known_names
 
+# Function to calculate the average brightness of an image
+def calculate_brightness(image):
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    brightness = np.mean(hsv[:, :, 2])
+    return brightness
+
+# Function to adjust the brightness and contrast of an image
+def adjust_lighting(image, target_brightness=130):
+    brightness = calculate_brightness(image)
+    ratio = target_brightness / brightness
+    adjusted = cv2.convertScaleAbs(image, alpha=ratio, beta=0)
+    return adjusted
+
 # Function to capture an image
 def capture_image():
     video_capture = cv2.VideoCapture(0)
@@ -44,7 +57,8 @@ def capture_image():
         logger.error("Failed to capture image")
         return None
 
-    return frame
+    adjusted_frame = adjust_lighting(frame)
+    return adjusted_frame
 
 # Function to save image with an incremented filename in a temporary directory
 def save_image_with_increment(tmp_dir, base_filename, image):
