@@ -1,23 +1,23 @@
 pkgbase = ocaml-ppx_assert
 	pkgdesc = Assert-like extension nodes that raise useful errors on failure
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/ppx_assert
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = dune>=2.0.0
-	depends = ocaml>=4.14.0
-	depends = ocaml-base>=0.16.0
-	depends = ocaml-ppx_cold>=0.16.0
-	depends = ocaml-ppx_compare>=0.16.0
-	depends = ocaml-ppx_here>=0.16.0
-	depends = ocaml-ppx_sexp_conv>=0.16.0
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-base>=0.17.0
+	depends = ocaml-ppx_cold>=0.17.0
+	depends = ocaml-ppx_compare>=0.17.0
+	depends = ocaml-ppx_here>=0.17.0
+	depends = ocaml-ppx_sexp_conv>=0.17.0
 	depends = ocaml-ppxlib>=0.28.0
 	depends = zstd
 	options = !strip
-	source = ocaml-ppx_assert-0.16.0.tar.gz::https://github.com/janestreet/ppx_assert/archive/v0.16.0.tar.gz
-	sha512sums = cceddea9172535ca72990fabe455b503a28a5b7519dc635ba1e6e3aff9d0c5f71a794f3ce05466165bab843b7385c23b0d879917d15589ad9b9592718dd46063
+	source = ocaml-ppx_assert-0.17.0.tar.gz::https://github.com/janestreet/ppx_assert/archive/v0.17.0.tar.gz
+	b2sums = 26195d4829fb954539446591d52848fa5f0c2a30fcf9a6f73da2e7c5bbf2f147ac9a4a94859f0a6b901562ebe18daf57ddec7d3409001896e8d77ab63c885799
 
 pkgname = ocaml-ppx_assert

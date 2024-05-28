@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_assert'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Assert-like extension nodes that raise useful errors on failure'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_cold>=0.16.0' 'ocaml-ppx_compare>=0.16.0' 'ocaml-ppx_here>=0.16.0' 'ocaml-ppx_sexp_conv>=0.16.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppx_cold>=0.17.0' 'ocaml-ppx_compare>=0.17.0' 'ocaml-ppx_here>=0.17.0' 'ocaml-ppx_sexp_conv>=0.17.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('cceddea9172535ca72990fabe455b503a28a5b7519dc635ba1e6e3aff9d0c5f71a794f3ce05466165bab843b7385c23b0d879917d15589ad9b9592718dd46063')
+b2sums=('26195d4829fb954539446591d52848fa5f0c2a30fcf9a6f73da2e7c5bbf2f147ac9a4a94859f0a6b901562ebe18daf57ddec7d3409001896e8d77ab63c885799')
 
 _sourcedirectory="$_projectname-$pkgver"
 
