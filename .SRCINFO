@@ -1,6 +1,6 @@
 pkgbase = glib2-selinux
 	pkgdesc = Low level core library
-	pkgver = 2.79.1
+	pkgver = 2.80.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = glib2-selinux
 	depends = libsysprof-capture
 	options = debug
 	options = staticlibs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=143cb92c350bd1cb5411570600b8db2408c9d61d
+	source = git+https://gitlab.gnome.org/GNOME/glib.git#tag=2.80.2
 	source = git+https://gitlab.gnome.org/GNOME/gvdb.git
 	source = noisy-glib-compile-schemas.diff
 	source = glib-compile-schemas.hook
@@ -50,7 +50,7 @@ pkgname = glib2-selinux
 	provides = libgmodule-2.0.so
 	provides = libgobject-2.0.so
 	provides = libgthread-2.0.so
-	provides = glib2=2.79.1
+	provides = glib2=2.80.2
 	conflicts = glib2
 
 pkgname = glib2-selinux-docs

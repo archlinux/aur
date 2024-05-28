@@ -4,7 +4,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgbase=glib2-selinux
 pkgname=(glib2-selinux glib2-selinux-docs)
-pkgver=2.79.1
+pkgver=2.80.2
 pkgrel=1
 pkgdesc="Low level core library"
 url="https://wiki.gnome.org/Projects/GLib"
@@ -17,8 +17,8 @@ options=(
   debug
   staticlibs
   )
-_commit=143cb92c350bd1cb5411570600b8db2408c9d61d  # tags/2.79.1^0
-source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
+
+source=("git+https://gitlab.gnome.org/GNOME/glib.git#tag=$pkgver"
         "git+https://gitlab.gnome.org/GNOME/gvdb.git"
         noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook gio-querymodules.hook
