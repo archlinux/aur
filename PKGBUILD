@@ -3,7 +3,7 @@
 
 pkgname=qt5-datavis3d
 _basever=5.15.14
-pkgver=5.15.13
+pkgver=5.15.14
 pkgrel=1
 _commit=79cd0fb6cafcd42e4037ae1363fda3bc2cec934a
 arch=('x86_64')
