@@ -8,13 +8,11 @@
 # options
 : ${_pkgver_como:=0.1.0}
 
-unset _pkgtype
-
 # basic info
 _pkgname="theseus-ship"
-pkgname="$_pkgname${_pkgtype:-}"
+pkgname="$_pkgname"
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland and X11 Compositor for the KDE Plasma desktop (formerly kwinft)"
 url="https://github.com/winft/theseus-ship"
 license=("LGPL-2.1-only")
@@ -53,12 +51,15 @@ depends=(
 )
 makedepends=(
   breeze
+  clang
   extra-cmake-modules
   git
   kdeclarative
   kdoctools
   knotifications
   kxmlgui
+  lld
+  llvm
   microsoft-gsl
   ninja
   xorg-xwayland
@@ -95,6 +96,10 @@ sha256sums=(
 )
 
 build() {
+  export CC=clang
+  export CXX=clang++
+  export LDFLAGS+=" -fuse-ld=lld"
+
   local _cmake_options
 
   # como
