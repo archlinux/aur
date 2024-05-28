@@ -1,17 +1,17 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 # Contributer: Térence Clastres <t dot clastres at gmail dot com>
-
 pkgname=gnome-shell-extension-gsconnect-git
-pkgver=54.r11.ga7c3fef6
+pkgver=57.r5.g883a8f62
 pkgrel=1
 pkgdesc="KDE Connect implementation with GNOME Shell integration"
 arch=('any')
 url="https://github.com/GSConnect/gnome-shell-extension-gsconnect"
 license=('GPL')
 depends=('gnome-shell')
-optdepends=('folks: Contacts integration (Evolution)'
+optdepends=('evolution-data-server: Contacts integration (Evolution)'
             'libgdata: Contacts integration (GNOME Online Accounts)'
             'python-nautilus: Nautilus integration'
+            'nemo-python: Nemo integration'
             'gsound: Themed sound effects')
 makedepends=('git' 'meson' 'eslint')
 provides=("${pkgname%-git}")
@@ -34,7 +34,7 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
-  arch-meson check 
+  arch-meson check
 }
 
 package() {
