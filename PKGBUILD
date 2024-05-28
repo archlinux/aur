@@ -9,16 +9,16 @@ _gitcommit=3ada7c6
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}-${_versuffix}
-_nodever=18.19.1
 _pandocver="current"
+_sociver="4.0.3"
 _quarto="FALSE"
 
-pkgrel=3
+pkgrel=4
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('r>=3.3.0' 'boost-libs' 'qt5-sensors' 'qt5-svg' 'qt5-webengine' 'qt5-xmlpatterns' 'postgresql-libs' 'sqlite3' 'soci' 'clang' 'hunspell-en_US' 'mathjax2' 'pandoc' 'yaml-cpp')
+depends=('r>=3.3.0' 'boost-libs' 'qt5-sensors' 'qt5-svg' 'qt5-webengine' 'qt5-xmlpatterns' 'postgresql-libs' 'sqlite3' 'clang' 'hunspell-en_US' 'mathjax2' 'pandoc' 'yaml-cpp')
 makedepends=('git' 'cmake>=3.29' 'boost' 'desktop-file-utils' 'jdk8-openjdk' 'apache-ant' 'unzip' 'openssl' 'libcups' 'pam' 'patchelf' 'wget' 'yarn')
 optdepends=('git: for git support'
             'subversion: for subversion support'
@@ -26,21 +26,33 @@ optdepends=('git: for git support'
             'quarto: for Quarto projects support')
 
 source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v${_vermajor}.${_verminor}.${_verpatch}+${_versuffix}.tar.gz"
-        "https://github.com/quarto-dev/quarto/archive/refs/heads/release/rstudio-cherry-blossom.zip"
-        "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
+        "git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cherry-blossom"
+        "https://github.com/SOCI/soci/archive/refs/tags/v${_sociver}.tar.gz"
         "qt.conf"
-        "pandoc_version.patch")
+        "0001-pandoc_version.patch"  
+        "0002-allow_system_node.patch"
+        "0003-fortify_source.patch")
 
 sha256sums=('5c1190ae22e3a25740727ff1f341ef568f47359a0d1358958ec22f7e5b59b75b'
-            'df3a040f0cf4ce1892519082dd6822a8ca433e9e4f02d9394ab2931733f7e5a6'
-            '724802c45237477dbe5777923743e6c77906830cae03a82b5653ebd75b301dda'
+            'SKIP'
+            '4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
+            '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e'
+            'ad4bd3076ff2bff7d075e3928a7e55c618fa744e3bf5d3d387bf70e01ff96c2f'
+            'c657f75f26f95c5dae3a3f5605305af2f47954a9d266de8ffc8fc2f0b47e8bd4')
+
+options=('!emptydirs' '!debug')
 
 prepare() {
     cd ${srcdir}/${_srcname}
     # Do not use outdated version name of pandoc
-    patch -p1 < ${srcdir}/pandoc_version.patch
+    patch -p1 < ${srcdir}/0001-pandoc_version.patch
+
+    # Add option to use system node
+    patch -p3 < ${srcdir}/0002-allow_system_node.patch
+
+    # Suppress _FORTIFY_SOURCE mismatch warnings
+    patch -p3 < ${srcdir}/0003-fortify_source.patch
 
     cd "${srcdir}/${_srcname}/dependencies/common"
     install -d pandoc/${_pandocver}
@@ -50,18 +62,19 @@ prepare() {
     ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/pandoc
 
     # Nodejs
-    install -d node/${_nodever}
-    cp -r "${srcdir}/node-v${_nodever}-linux-x64/"* node/${_nodever}
+    ##install -d node/${_nodever}
+    ##cp -r "${srcdir}/node-v${_nodever}-linux-x64/"* node/${_nodever}
 
     # Fix links for src/cpp/session/CMakeLists.txt
     cd "${srcdir}/${_srcname}/dependencies"
     ln -sfT /usr/share/myspell/dicts dictionaries
     ln -sfT /usr/share/mathjax2 mathjax-27
+    # Bundled SOCI libs
+    ln -sfT "${srcdir}/soci-${_sociver}" "soci-${_sociver}"
 
     # Panmirror is picked up now from Quarto repo
-    # Ideally: git clone --branch release/rstudio-cherry-blossom https://github.com/quarto-dev/quarto.git "${srcdir}/${_srcname}/src/gwt/lib/quarto"
-    mkdir -p "${srcdir}/${_srcname}/src/gwt/lib/quarto"
-    cp -r "${srcdir}/quarto-release-rstudio-cherry-blossom/"* "${srcdir}/${_srcname}/src/gwt/lib/quarto"
+    ln -sfT "${srcdir}/quarto" "${srcdir}/${_srcname}/src/gwt/lib/quarto"
+
 }
 
 build() {
@@ -81,8 +94,34 @@ build() {
         ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/bin/tools/pandoc
     fi
 
-    cd ${srcdir}
+    cd "${srcdir}/${_srcname}/dependencies/soci-${_sociver}"
+    msg "Buildind SOCI libs"
+    mkdir build
+    cd build
 
+    cmake                                               \
+    -DCMAKE_POLICY_DEFAULT_CMP0063="NEW"                \
+    -DCMAKE_POLICY_DEFAULT_CMP0074="NEW"                \
+    -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true         \
+    -DCMAKE_CXX_VISIBILITY_PRESET="$COMPILE_VISIBILITY" \
+    -DSOCI_TESTS=OFF                                    \
+    -DSOCI_CXX11=ON                                     \
+    -DSOCI_EMPTY=OFF                                    \
+    -DWITH_BOOST=ON                                     \
+    -DWITH_POSTGRESQL=ON                                \
+    -DWITH_SQLITE3=ON                                   \
+    -DWITH_DB2=OFF                                      \
+    -DWITH_MYSQL=OFF                                    \
+    -DWITH_ORACLE=OFF                                   \
+    -DWITH_FIREBIRD=OFF                                 \
+    -DWITH_ODBC=OFF                                     \
+    ..
+
+    cmake --build . --target all
+
+    export LDFLAGS="${LDFLAGS} -L${srcdir}/${_srcname}/dependencies/soci-${_sociver}/build/lib"
+
+    cd ${srcdir}
     msg "Downloading and installing R packages..."
     export R_LIBS_USER="${srcdir}/${_srcname}/dependencies/R"
     _JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || _JOBS="1"
@@ -94,6 +133,8 @@ build() {
     done
 
     export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:${PATH}
+    export RSTUDIO_TOOLS_ROOT="${srcdir}/${_srcname}/dependencies"
+    export RSTUDIO_NODE_PATH=/usr/
     export RSTUDIO_VERSION_MAJOR=${_vermajor}
     export RSTUDIO_VERSION_MINOR=${_verminor}
     export RSTUDIO_VERSION_PATCH=${_verpatch}
@@ -113,6 +154,7 @@ build() {
     # which results as empty '/usr/local/bin' in package
     # Following override works for cmake >3.29
     export CMAKE_INSTALL_PREFIX=/usr/lib/rstudio
+    
 
     cmake -S "${srcdir}/${_srcname}" -B build \
           -DRSTUDIO_TARGET=Desktop \
@@ -121,14 +163,11 @@ build() {
           -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake \
           -DBoost_NO_BOOST_CMAKE=ON \
           -DQUARTO_ENABLED=${_quarto} \
-          -DRSTUDIO_USE_SYSTEM_SOCI=yes \
+          -DRSTUDIO_USE_SYSTEM_NODE=yes \
           -DRSTUDIO_BUNDLE_QT=FALSE
 }
 
 package() {
-
-    # Should work for cmake >3.29
-    export CMAKE_INSTALL_PREFIX=/usr/lib/rstudio
 
     # Install the program
     make -C build DESTDIR="${pkgdir}" install

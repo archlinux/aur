@@ -1,0 +1,97 @@
+diff -ru rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/conf/rsession-dev.conf rstudio-desktop/src/rstudio-2024.04.1-748/src/cpp/conf/rsession-dev.conf
+--- rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/conf/rsession-dev.conf	2024-05-07 06:31:08.000000000 +1200
++++ rstudio-desktop/src/rstudio-2024.04.1-748/src/cpp/conf/rsession-dev.conf	2024-05-21 19:32:00.206198890 +1200
+@@ -39,7 +39,7 @@
+ external-pandoc-path=${RSTUDIO_DEPENDENCIES_PANDOC_DIR}
+ external-quarto-path=${RSTUDIO_DEPENDENCIES_QUARTO_DIR}
+ external-libclang-path=${RSTUDIO_DEPENDENCIES_DIR}/common/libclang
+-external-node-path=${RSTUDIO_DEPENDENCIES_DIR}/common/node/18.18.2/bin/node
++external-node-path=/usr/bin/node
+ 
+ # enable copilot
+ copilot-enabled=1
+diff -ru rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/session/CMakeLists.txt rstudio-desktop/src/rstudio-2024.04.1-748/src/cpp/session/CMakeLists.txt
+--- rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/session/CMakeLists.txt	2024-05-07 06:31:08.000000000 +1200
++++ rstudio-desktop/src/rstudio-2024.04.1-748/src/cpp/session/CMakeLists.txt	2024-05-21 10:33:50.351362947 +1200
+@@ -697,10 +697,12 @@
+            DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
+ 
+    # install node
+-   install(
+-      DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/node/${RSTUDIO_INSTALLED_NODE_VERSION}/"
+-      DESTINATION "${RSTUDIO_INSTALL_BIN}/node"
+-      USE_SOURCE_PERMISSIONS)
++   if(NOT RSTUDIO_USE_SYSTEM_NODE)
++      install(
++         DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/node/${RSTUDIO_INSTALLED_NODE_VERSION}/"
++         DESTINATION "${RSTUDIO_INSTALL_BIN}/node"
++         USE_SOURCE_PERMISSIONS)
++   endif()
+ 
+    # install quarto (or pandoc if quarto disabled)
+    if(QUARTO_ENABLED)
+diff -ru rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/session/SessionOptions.cpp rstudio-desktop/src/rstudio-2024.04.1-748/src/cpp/session/SessionOptions.cpp
+--- rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/session/SessionOptions.cpp	2024-05-07 06:31:08.000000000 +1200
++++ rstudio-desktop/src/rstudio-2024.04.1-748/src/cpp/session/SessionOptions.cpp	2024-05-21 19:33:46.308996710 +1200
+@@ -709,7 +709,7 @@
+                               std::string* pPath)
+ {
+ #if defined(__linux__) && !defined(RSTUDIO_PACKAGE_BUILD)
+-   FilePath dependenciesPath = resourcePath.completePath("../../dependencies/common/node/18.18.2");
++   FilePath dependenciesPath = resourcePath.completePath("/usr");
+    resolvePath(dependenciesPath, pPath);
+ #else
+    resolvePath(resourcePath, pPath);
+diff -ru rstudio-desktop.original/src/rstudio-2024.04.1-748/src/gwt/build.xml rstudio-desktop/src/rstudio-2024.04.1-748/src/gwt/build.xml
+--- rstudio-desktop.original/src/rstudio-2024.04.1-748/src/gwt/build.xml	2024-05-07 06:31:08.000000000 +1200
++++ rstudio-desktop/src/rstudio-2024.04.1-748/src/gwt/build.xml	2024-05-21 19:28:10.023896075 +1200
+@@ -85,8 +85,8 @@
+ 
+    <!-- panmirror typescript library -->
+    <!-- ensure version matches RSTUDIO_NODE_VERSION -->
+-   <property name="node.version" value="18.18.2"/>
+-   <property name="node.dir" value="../../dependencies/common/node/${node.version}"/>
++   <property name="node.version" value="Current"/>
++   <property name="node.dir" value="/usr"/>
+    <!-- use yarn from system but will prefer yarn from dependencies if available -->
+    <condition property="yarn.bin" value="yarn">
+      <not>
+diff -ru rstudio-desktop.original/src/rstudio-2024.04.1-748/src/node/CMakeNodeTools.txt rstudio-desktop/src/rstudio-2024.04.1-748/src/node/CMakeNodeTools.txt
+--- rstudio-desktop.original/src/rstudio-2024.04.1-748/src/node/CMakeNodeTools.txt	2024-05-07 06:31:08.000000000 +1200
++++ rstudio-desktop/src/rstudio-2024.04.1-748/src/node/CMakeNodeTools.txt	2024-05-21 19:28:34.497148803 +1200
+@@ -19,7 +19,7 @@
+ 
+ # set the node version
+ if(NOT DEFINED RSTUDIO_NODE_VERSION)
+-   set(RSTUDIO_NODE_VERSION "18.18.2")
++   set(RSTUDIO_NODE_VERSION "Current")
+ endif()
+ if(DEFINED ENV{RSTUDIO_NODE_VERSION})
+    set(RSTUDIO_NODE_VERSION $ENV{RSTUDIO_NODE_VERSION})
+@@ -45,7 +45,7 @@
+       NO_DEFAULT_PATH PATH_SUFFIXES "bin"
+       PATHS "/opt/rstudio-tools/dependencies/common/node/${RSTUDIO_NODE_VERSION}"
+       "c:/rstudio-tools/dependencies/common/node/${RSTUDIO_NODE_VERSION}"
+-      "${CMAKE_CURRENT_LIST_DIR}/../../dependencies/common/node/${RSTUDIO_NODE_VERSION}")
++      "/usr")
+ 
+    find_program(NPM
+       NAMES npm
+@@ -53,7 +53,7 @@
+       NO_DEFAULT_PATH 
+       PATHS "/opt/rstudio-tools/dependencies/common/node/${RSTUDIO_NODE_VERSION}"
+       "c:/rstudio-tools/dependencies/common/node/${RSTUDIO_NODE_VERSION}"
+-      "${CMAKE_CURRENT_LIST_DIR}/../../dependencies/common/node/${RSTUDIO_NODE_VERSION}")
++      "/usr")
+ 
+    find_program(NPX
+       NAMES npx
+@@ -61,7 +61,7 @@
+       NO_DEFAULT_PATH 
+       PATHS "/opt/rstudio-tools/dependencies/common/node/${RSTUDIO_NODE_VERSION}"
+       "c:/rstudio-tools/dependencies/common/node/${RSTUDIO_NODE_VERSION}"
+-      "${CMAKE_CURRENT_LIST_DIR}/../../dependencies/common/node/${RSTUDIO_NODE_VERSION}")
++      "/usr")
+ 
+ endif()
+    
