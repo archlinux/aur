@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_pipebang'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='A ppx rewriter that inlines reverse application operators |> and |!'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b333d189c2705b3c7175af5636bd63c38ed434b3828227c7db8d2cb0fe9bd4caa05975d5d28d8fb4d61656bd3d7a15e2db2b36a1672107c1557c5012c19cb445')
+b2sums=('339014da374a108675b4efbf1c81b9c30ad811b291061cfc601f34c89baa3042d6e47713b475dab00aeb24edef9c3d76c7243d2c121839dc94360942cbce96cb')
 
 _sourcedirectory="$_projectname-$pkgver"
 
