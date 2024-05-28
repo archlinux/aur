@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='int_repr'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Integers of various widths'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_jane>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppx_jane>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('1b395d2c5c2322a8948f09e2b1c53382902edb1a390bc4659baf8eb87d085c90e551ede171a0d4d4b3c6fec18210ff100b02565461b42cabaedc446551c79841')
+b2sums=('482001315db80c0f267569ba9b0221de0ccd01f13fb5634dec3ebf5855dfbad72e216b414022e894a3ba7cdb30e197ec94b2084195a0f97891b191037551e6c9')
 
 _sourcedirectory="$_projectname-$pkgver"
 
