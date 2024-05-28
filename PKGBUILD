@@ -3,7 +3,7 @@
 
 pkgname=qt5-quick3d
 _basever=5.15.14
-pkgver=5.15.13+kde+r1
+pkgver=5.15.14+kde+r1
 pkgrel=1
 _commit=ad229f0c135f74801fba2bcd22c78abc0e3cf1d2
 arch=('x86_64')
