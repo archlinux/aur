@@ -1,0 +1,14 @@
+pkgbase = tally-counter
+	pkgdesc = Minimalistic tally counter for terminal written in rust
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/danielzierl/tally-counter
+	arch = x86_64
+	license = Apache
+	depends = rust
+	depends = cargo
+	options = !debug
+	source = git+https://gitlab.com/danielzierl/tally-counter.git
+	sha256sums = SKIP
+
+pkgname = tally-counter
