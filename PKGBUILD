@@ -1,15 +1,37 @@
 # Maintainer: Relwi <theofficialdork@hotmail.com>
-pkgname=oxidizebot-bin
+_pkgname=oxidize
+pkgname="${_pkgname}bot-bin"
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='High performance Twitch bot in Rust'
-url='https://github.com/udoprog/OxidizeBot'
-source=("https://github.com/udoprog/OxidizeBot/releases/download/$pkgver/oxidize-$pkgver-x86_64-linux.zip")
-arch=(x86_64)
-license=(Apache)
-sha256sums=('e069aa146c1adeefeb8d446ed598d77039c6a18827527443165b4dfb4a4a5818')
-
+arch=('x86_64')
+url="https://setbac.tv/"
+_ghurl="https://github.com/udoprog/OxidizeBot"
+license=(
+    'Apache-2.0'
+    'MIT'
+)
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    'openssl'
+    'gcc-libs'
+    'zlib'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-amd64.deb"
+    "LICENSE-APACHE-${pkgver}::https://raw.githubusercontent.com/udoprog/OxidizeBot/${pkgver}/LICENSE-APACHE"
+    "LICENSE-MIT-${pkgver}::https://raw.githubusercontent.com/udoprog/OxidizeBot/${pkgver}/LICENSE-MIT"
+)
+sha256sums=('4e7f57c62f454497e403c79c58c5a919510cada2631beac881697f13561129a2'
+            'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
+            'a3b5190576facfdaa65b9e7be47b5713612a2fa8180d83a666a2572993d36542')
+build() {
+    chmod 644 "${srcdir}/data."*
+    bsdtar -xf "${srcdir}/data."*
+}
 package() {
-  cd "$srcdir"
-  install -Dm755 oxidize "${pkgdir}/usr/bin/oxidize"
+    install -Dm755 "${srcdir}/usr/bin/${_pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/LICENSE-APACHE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
+    install -Dm644 "${srcdir}/LICENSE-MIT-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
 }
