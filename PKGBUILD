@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='base_bigstring'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='String type based on Bigarray, for use in I/O and C-bindings'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-int_repr>=0.16.0' 'ocaml-ppx_jane>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-int_repr>=0.17.0' 'ocaml-ppx_jane>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('95297f201ed8229feb974e6389f2aa955391d4716d6bc81b9b8ea06daf2722a950bd623fd35267fcbcde064ec49a5e06f51ef5b12f5c30793da937ca1c3c8bf5')
+b2sums=('453ce6b9f794b013a8456fccd1d5ada237e88aac558d996c546cefb1318b33081da9ef76e08a95083a1e42192463e87ea8345be33d84bee83bc85bdf75f9a611')
 
 _sourcedirectory="$_projectname-$pkgver"
 
