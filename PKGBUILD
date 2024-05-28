@@ -4,8 +4,8 @@
 
 pkgname=tapecalc-add-compat
 epoch=1
-pkgver=latest
-pkgrel=2
+pkgver=t20240110
+pkgrel=1
 
 pkgdesc="Provides compatibility: Makes 'tapecalc' available also under it's original name 'add'."
 url="http://aur.archlinux.org/packages/tapecalc/"
