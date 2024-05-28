@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: RadioactiveRadio <barraiser59@gmail.com>
 pkgname=blue-recorder-git
-_app_id=sa.sy.bluerecorder.desktop
+_app_id=sa.sy.bluerecorder
 pkgver=r179.77d0c8a
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Screen Recorder written in Rust based on Green Recorder"
 arch=('x86_64')
 url="https://github.com/xlmnxp/blue-recorder"
@@ -12,7 +12,7 @@ depends=(
   'ffmpeg'
   'gtk4'
   'libappindicator-gtk3'
-  'pulse-native-provider'
+  'pulseaudio'
   'xorg-xwininfo'
 )
 makedepends=(
@@ -22,7 +22,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=('!lto')
+#options=('!lto')  # gettext-sys crate fails with LTO enabled
 source=('git+https://github.com/xlmnxp/blue-recorder.git')
 sha256sums=('SKIP')
 
@@ -40,7 +40,8 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-#  CFLAGS+=" -ffat-lto-objects"  ## gettext-sys crate fails
+  CFLAGS+=" -ffat-lto-objects"
+  export GETTEXT_SYSTEM=true
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
