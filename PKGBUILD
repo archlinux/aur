@@ -8,7 +8,7 @@ _pkgname=jenkinsapi
 pkgbase=python-${_pkgname}-git
 pkgname=("python-${_pkgname}-git")
 pkgver=0.3.11.r30.g4494278
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python API for accessing resources on a Jenkins continuous-integration server."
 arch=('any')
 url="https://github.com/${_gituser}/${_pkgname}"
@@ -30,7 +30,7 @@ build() {
 }
 
 package_python-jenkinsapi-git() {
-  depends=("python-setuptools" "python-requests" "python-pytz")
+  depends=("python" "python-urllib3" "python-setuptools" "python-requests" "python-pytz")
   optdepends=("python-requests-kerberos: for Kerberos support")
   conflicts=("python-${_pkgname}")
   provides=("python-${_pkgname}")
