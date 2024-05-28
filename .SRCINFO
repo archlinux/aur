@@ -1,0 +1,22 @@
+pkgbase = ocaml-ppx_diff
+	pkgdesc = A PPX rewriter that generates the implementation of [Ldiffable.S]
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/janestreet/ppx_diff
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-base>=0.17.0
+	depends = ocaml-gel>=0.17.0
+	depends = ocaml-ppx_compare>=0.17.0
+	depends = ocaml-ppx_enumerate>=0.17.0
+	depends = ocaml-ppx_jane>=0.17.0
+	depends = ocaml-ppxlib_jane>=0.17.0
+	depends = ocaml-ppxlib>=0.28.0
+	options = !strip
+	source = ocaml-ppx_diff-0.17.0.tar.gz::https://github.com/janestreet/ppx_diff/archive/v0.17.0.tar.gz
+	b2sums = 0ff71cade9b94b9a4352958c5d288d910676cc43524bf060b25a0d63ed75ac9b8241ecfeae7f928806269a0fbe961ddc6f60388bd134bc609bebd12971ce13e6
+
+pkgname = ocaml-ppx_diff
