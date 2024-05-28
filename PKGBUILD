@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='protocol_version_header'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Protocol aware version negotiation library for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-core>=0.16.0' 'ocaml-ppx_jane>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-core>=0.17.0' 'ocaml-ppx_jane>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('ac11dd81f4afb47ad670919e2b3ea49a7e05d193e45369f145711b2266fc54c8eea180cba285effecdc2a59e1cff65c59acd182fa3d88191e9813855dea370c7')
+b2sums=('cff78b7fa842b2642a6b3f997cab8072868c51898a920792ba644dfdbadb28933b663d71ed7c6ddfc586b65b0cd9c1b90f554c82a2742435d39ed025e286f1c3')
 
 _sourcedirectory="$_projectname-$pkgver"
 
