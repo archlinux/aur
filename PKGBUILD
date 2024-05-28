@@ -1,21 +1,27 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
-pkgname=('nwg-hello')
-pkgver=0.1.10
-pkgrel=2
+pkgname=nwg-hello
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="GTK3-based greeter for greetd written in python"
-arch=('any')
 url="https://github.com/nwg-piotr/nwg-hello"
+arch=('any')
 license=('MIT')
 depends=('greetd' 'python' 'python-gobject' 'gtk3' 'gtk-layer-shell' 'gnome-themes-extra')
-makedepends=('python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('sway: this or hyprland must be installed'
             'hyprland: this or sway must be installed')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-hello/archive/v"$pkgver".tar.gz")
+md5sums=('15208fba5ef8bc3afcbc011794528b1a')
 
-md5sums=('c92985de4468818004d8b4d205efb124')
+build() {
+        cd "${pkgname}-${pkgver}"
+        python -m build --wheel --no-isolation
+}
 
 package() {
   cd "${pkgname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  
   install -D -m 644 -t "$pkgdir"/etc/nwg-hello/ nwg-hello-default.json
   install -D -m 644 -t "$pkgdir"/etc/nwg-hello/ nwg-hello-default.css
   install -D -m 644 -t "$pkgdir"/etc/nwg-hello/ hyprland.conf
@@ -29,6 +35,4 @@ package() {
   
   install -D -t "$pkgdir"/usr/share/licenses/"$pkgname" LICENSE
   install -D -t "$pkgdir"/usr/share/doc/"$pkgname" README.md
-  
-  python setup.py install --root="${pkgdir}" --optimize=1
 }
