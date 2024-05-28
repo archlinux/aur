@@ -3,7 +3,7 @@
 # Contributor: fnord0 (https://aur.archlinux.org/account/fnord0)
 
 pkgname=voiphopper-git
-pkgver=2.04+1kali5.r27.20230409.8542bd8
+pkgver=2.04+1kali6+1.r31.20240514.7367693
 pkgrel=1
 pkgdesc="A security validation tool that tests to see if a PC can mimic the behavior of an IP Phone. It rapidly automates a VLAN Hop into the Voice VLAN."
 arch=(
