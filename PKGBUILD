@@ -1,6 +1,6 @@
 # Maintainer: Mattias Cockburn <mattias.cockburn@iits-consulting.de>
 pkgname=stackit-cli
-_pkgver=0.6.0
+_pkgver=0.7.0
 pkgver=$(tr -d '-' <<<${_pkgver})
 pkgrel=1
 epoch=
@@ -35,4 +35,4 @@ package() {
   install -m 0755 stackit "${pkgdir}/usr/bin/"
 }
 
-sha256sums=('795f334dffbd6329b7ef04090c17c5923d6bc8dd0d6692a89bdc4066fa2c0e5f')
+sha256sums=('c5858770cb4d6afe2e82afcde78611beb884405dd805e253728e9db4c2a71535')
