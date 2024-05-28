@@ -1,28 +1,32 @@
-# Maintainer: YeahSure <lapdogpdx.yahoo.com>
+# Contributor: YeahSure <lapdogpdx.yahoo.com>
 
 pkgname=colout-git
-_pkgname=colout
-pkgver=r247.438838d
+pkgver=1.1.r7.g6a8fe89
 pkgrel=1
 pkgdesc="Reads text on stdin and produces colorized and stylized output"
 arch=('any')
-url="http://nojhan.github.com/colout/"
-license=('GPL')
-depends=('python' 'python-pip')
-optdepends=('python-pygments' 'python-babel')
-makedepends=('git')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=('colout::git://github.com/nojhan/colout.git')
-md5sums=('SKIP')
+url="https://github.com/nojhan/colout"
+license=('GPL-3.0-or-later')
+depends=('python-pygments' 'python-babel')
+makedepends=('git' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
+provides=('colout')
+conflicts=('colout')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'
+}
+
+build() {
+  cd ${pkgname%-git}
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	python setup.py install --root="$pkgdir/" --optimize=1
+  cd ${pkgname%-git}
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
+# vim: set ts=2 sw=2 et:
