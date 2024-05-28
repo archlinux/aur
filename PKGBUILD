@@ -2,7 +2,7 @@
 # Contributor: Legacy Installer <contact dot legacyinstaller at gmail dot com>
 # Contributor: oscareczek <oscareczek at gmail dot com>
 pkgname=pcbox-qt5-git
-pkgver=r14123.g339f7411a
+pkgver=r14275.86b6d80
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones (Built with qt5)'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
@@ -27,7 +27,8 @@ source=("${pkgname}::git+https://github.com/PCBox/PCBox.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    echo ${pkgver}
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -46,6 +47,8 @@ package() {
     for i in 48x48 64x64 72x72 96x96 128x128 192x192 256x256 512x512; do
         install -Dm644 "$srcdir/$pkgname/src/unix/assets/$i/net.86box.86Box.png" -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
     done
-    mkdir "$pkgdir/usr/share/applications"
-    sed 's/^Exec.*/Exec=PCBox -P .local\/share\/PCBox/' "$srcdir/$pkgname/src/unix/assets/net.86box.86Box.desktop" > "$pkgdir/usr/share/applications/net.pcbox.PCBox.desktop"
+    mkdir "${pkgdir}/usr/share/applications"
+    install -Dm644 "$srcdir/$pkgname/src/unix/assets/net.86box.86Box.desktop" "${pkgdir}/share/applications/net.pcbox.PCBox.desktop"
+    sed -i 's#Name=86Box#Name=PCBox#g' "${pkgdir}/share/applications/net.pcbox.PCBox.desktop"
+    sed -i 's#Exec=86Box#Exec=PCBox -P .local/share/PCBox#g' "${pkgdir}/share/applications/net.pcbox.PCBox.desktop"
 }
