@@ -1,0 +1,18 @@
+pkgbase = art-rawconverter-ctlscripts
+	pkgdesc = add on for ART raw converter to support more image formats
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://bitbucket.org/agriggio/art-ctlscripts/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = fakeroot
+	depends = art-rawconverter
+	depends = ctl
+	source = art-rawconverter-ctlscripts_1.0.1::git+https://bitbucket.org/agriggio/art-ctlscripts.git#tag=1.0.1
+	sha256sums = SKIP
+
+pkgname = art-rawconverter-ctlscripts
