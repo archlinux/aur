@@ -9,6 +9,7 @@ pkgbase = cvise
 	makedepends = cmake
 	makedepends = llvm>9.0.0
 	depends = clang>9.0.0
+	depends = flex
 	depends = python-chardet
 	depends = python-pebble
 	depends = python-psutil
