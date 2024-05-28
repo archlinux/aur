@@ -1,0 +1,19 @@
+pkgbase = abra-bin
+	pkgdesc = the flagship client & command-line for Co-op Cloud
+	pkgver = 0.9.0_beta
+	pkgrel = 1
+	url = https://docs.coopcloud.tech/abra/
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	provides = abra
+	conflicts = abra
+	source_x86_64 = https://git.coopcloud.tech/coop-cloud/abra/releases/download/0.9.0-beta/abra_0.9.0-beta_linux_amd64.tar.gz
+	sha256sums_x86_64 = f80cc607f1da56b9cf230c4bc2475016e75ed41ae7fb6c765feff0f58abbb99c
+	source_aarch64 = https://git.coopcloud.tech/coop-cloud/abra/releases/download/0.9.0-beta/abra_0.9.0-beta_linux_arm64.tar.gz
+	sha256sums_aarch64 = a66ee9eeae56013b0ba50fa08227510923c8f4358262be7569952cb086e3d56d
+	source_armv7h = https://git.coopcloud.tech/coop-cloud/abra/releases/download/0.9.0-beta/abra_0.9.0-beta_linux_armv7.tar.gz
+	sha256sums_armv7h = a1c158f1ac942e90d897bad5d125e39b32fc8f85b82896527ec5564560ff852b
+
+pkgname = abra-bin
