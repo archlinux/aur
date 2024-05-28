@@ -1,0 +1,4 @@
+[python-splines]
+source = "github"
+github = "AudioSceneDescriptionFormat/splines"
+use_latest_release = "true"
