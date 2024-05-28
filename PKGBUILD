@@ -1,7 +1,7 @@
 # Maintainer: Răzvan Cojocaru <rzvncj@gmail.com>
 
 pkgname=gdbuspp-git
-pkgver=makepkg_2bdab8188fe5a0c4
+pkgver=master_2bdab8188fe5a0c4
 pkgrel=1
 pkgdesc="glib2 D-Bus C++ interface"
 arch=('x86_64')
@@ -26,10 +26,10 @@ build() {
   meson compile -C build
 }
 
-# check() {
-#   cd "$srcdir/$pkgname"
-#   meson test -C build
-# }
+check() {
+  cd "$srcdir/$pkgname"
+  meson test -C build
+}
 
 package() {
   cd "$srcdir/$pkgname/"
