@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='fieldslib'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='OCaml record fields as first class values'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('73a6d9fdd921eddbe766e933ef3dbb2d3866bf454a79a260c81406e069e0c1db689676e070214b38190ee1ddb369d0edd704a474186aec44eeabc8b0adee0f86')
+b2sums=('56acfc888521b2a541f763b7073b32f3dc2d91e3009d09c3dc4b67955ee7a69bffc25952de7e4597db01019e98094bc415342765aadeb1a6263e5f39fcbfd06f')
 
 _sourcedirectory="$_projectname-$pkgver"
 
