@@ -3,8 +3,8 @@
 
 _pyname=nbstripout
 pkgname=python-$_pyname
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc='Strips outputs from Jupyter and IPython notebooks'
 url="https://pypi.python.org/pypi/$_pyname/"
 depends=('python' 'jupyter-nbformat')
@@ -12,10 +12,8 @@ checkdepends=('python-pytest' 'python-pytest-cram')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz"
-"https://raw.githubusercontent.com/kynan/nbstripout/master/LICENSE.txt")
-sha256sums=('86ab50136998d62c9fa92478d2eb9ddc4137e51a28568f78fa8f24a6fbb6a7d8'
-            'cceb6581e12b4e46f8291d138b15731e8b77e6e1eee9dca23be2297e2c48fe29')
+source=("https://pypi.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
+sha256sums=('2aad3454dc13e356f2fc94917856bc44f2bed3add77e8ba9f3a78003074bcd84')
 
 prepare() {
   cd $_pyname-$pkgver
@@ -29,8 +27,8 @@ build() {
 }
 
 package() {
-  install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cd $_pyname-$pkgver
+  install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
