@@ -2,17 +2,17 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='splittable_random'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='PRNG that can be split into independent streams'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_assert>=0.16.0' 'ocaml-ppx_bench>=0.16.0' 'ocaml-ppx_inline_test>=0.16.0' 'ocaml-ppx_sexp_message>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppx_assert>=0.17.0' 'ocaml-ppx_bench>=0.17.0' 'ocaml-ppx_inline_test>=0.17.0' 'ocaml-ppx_sexp_message>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('eeb58de6cf8ee6fda61997ad06e9a3d807eb4e296320b2fcb17bf2ce41dc9ca4dc75ff1caf257dcbb94bd6f205ea2f9b1e2d91a42cf4ee34964ba91f8a0bebd3')
+b2sums=('46b498628c187410f58f6537d6711e3e75c05fb06b1acda74cb0a11ad0c1bf62db1b2bd75033101b3dd07eca379dc5e97c92d792784995a6593ac19bad610f8f')
 
 _sourcedirectory="$_projectname-$pkgver"
 
