@@ -1,8 +1,8 @@
 # Maintainer: Wasabi <wasabithumbs@gmail.com>
-pkgbase="justin"
-pkgname="${pkgbase}-bin"
+_name="justin"
+pkgname="${_name}-bin"
 pkgver="0.0.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal AUR helper written in C with support for installation of legacy versions. Pre-compiled."
 arch=('any')
 url="https://github.com/WasabiThumb/justin"
@@ -12,6 +12,8 @@ makedepends=()
 source=("https://github.com/WasabiThumb/justin/releases/download/${pkgver}/justin" "https://raw.githubusercontent.com/WasabiThumb/justin/${pkgver}/LICENSE.txt" "https://raw.githubusercontent.com/WasabiThumb/justin/${pkgver}/README.md")
 md5sums=("bb371d120fa7623bb69b90e11d206a4d" "2ee41112a44fe7014dce33e26468ba93" "SKIP")
 options=(!strip)
+provides=("${_name}")
+conflicts=("${_name}")
 
 package() {
 	cd "$srcdir"
