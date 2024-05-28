@@ -11,15 +11,13 @@ arch=("x86_64")
 url="https://github.com/johnfanv2/LenovoLegionLinux"
 license=('GPL')
 makedepends=("git"
-		"dkms"
 		"lm_sensors"
 		"i2c-tools" 
 		"dmidecode"
 		"lenovolegionlinux-git"
 )
-depends=(lenovolegionlinux-git)
-conflicts=(
-  legion-fan-utils-linux-git
+depends=("dkms"
+    "lenovolegionlinux-git"
 )
 source=("${_pkgname}::git+https://github.com/johnfanv2/LenovoLegionLinux")
 sha256sums=('SKIP')
