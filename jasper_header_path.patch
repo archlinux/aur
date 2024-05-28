@@ -1,5 +1,3 @@
-diff --git a/willuslib/bmp.c b/willuslib/bmp.c
-index cc79ab3..fb7f6ee 100644
 --- a/willuslib/bmp.c
 +++ b/willuslib/bmp.c
 @@ -37,7 +37,7 @@
