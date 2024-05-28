@@ -59,7 +59,7 @@ index 43c431f07b..4a47e900cd 100644
      bool initializeEgl();
      bool initRenderingContext();
 diff --git a/src/backends/drm/drm_gpu.cpp b/src/backends/drm/drm_gpu.cpp
-index c5d258a2d7..7141ed8bea 100644
+index 4f9803ea7c..98101396a5 100644
 --- a/src/backends/drm/drm_gpu.cpp
 +++ b/src/backends/drm/drm_gpu.cpp
 @@ -76,6 +76,9 @@ DrmGpu::DrmGpu(DrmBackend *backend, const QString &devNode, int fd, dev_t device
@@ -85,7 +85,7 @@ index c5d258a2d7..7141ed8bea 100644
  {
      return m_isI915;
 diff --git a/src/backends/drm/drm_gpu.h b/src/backends/drm/drm_gpu.h
-index 0cc6b2126a..c8dbde47af 100644
+index b5a42b32ba..e06b78cd8b 100644
 --- a/src/backends/drm/drm_gpu.h
 +++ b/src/backends/drm/drm_gpu.h
 @@ -77,6 +77,7 @@ public:
@@ -96,7 +96,7 @@ index 0cc6b2126a..c8dbde47af 100644
      bool isI915() const;
      bool isNVidia() const;
      bool isVmwgfx() const;
-@@ -146,6 +147,7 @@ private:
+@@ -147,6 +148,7 @@ private:
      bool m_isRemoved = false;
      bool m_isActive = true;
      bool m_forceModeset = false;
@@ -105,7 +105,7 @@ index 0cc6b2126a..c8dbde47af 100644
      gbm_device *m_gbmDevice;
      FileDescriptor m_gbmFd;
 diff --git a/src/compositor_wayland.cpp b/src/compositor_wayland.cpp
-index f63ead7796..69916e9d34 100644
+index e8f112c4d7..7d795ec220 100644
 --- a/src/compositor_wayland.cpp
 +++ b/src/compositor_wayland.cpp
 @@ -86,7 +86,7 @@ bool WaylandCompositor::attemptOpenGLCompositing()
@@ -806,7 +806,7 @@ index 41ee1c5581..9d2add111f 100644
  
 diff --git a/src/wayland/linux_drm_syncobj_v1.cpp b/src/wayland/linux_drm_syncobj_v1.cpp
 new file mode 100644
-index 0000000000..589ccd78c3
+index 0000000000..5fb4b734cd
 --- /dev/null
 +++ b/src/wayland/linux_drm_syncobj_v1.cpp
 @@ -0,0 +1,190 @@
@@ -973,7 +973,7 @@ index 0000000000..589ccd78c3
 +bool LinuxDrmSyncObjSurfaceV1::maybeEmitProtocolErrors()
 +{
 +    const auto priv = SurfaceInterfacePrivate::get(m_surface);
-+    if (!priv->pending->bufferIsSet && !priv->pending->acquirePoint.timeline && !priv->pending->releasePoint) {
++    if ((!priv->pending->bufferIsSet || !priv->pending->buffer) && !priv->pending->acquirePoint.timeline && !priv->pending->releasePoint) {
 +        return false;
 +    }
 +    if (!priv->pending->acquirePoint.timeline) {

@@ -1,7 +1,7 @@
 pkgbase = kwin-explicit-sync
 	pkgdesc = An easy to use composited Window Manager with explicit sync patches
 	pkgver = 6.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	install = kwin.install
 	arch = x86_64
@@ -80,6 +80,6 @@ pkgbase = kwin-explicit-sync
 	source = git+https://invent.kde.org/plasma/kwin.git#tag=v6.0.5
 	source = explicit-sync.patch
 	sha256sums = SKIP
-	sha256sums = c10925e401fe53507d0ada6d9955cb33114fcec7db9b83fbc34338dd31e1f19b
+	sha256sums = 4b4079d70a7383872b99b8db39a7db6e40163c57857eb0ab8b15b859a9d293fd
 
 pkgname = kwin-explicit-sync

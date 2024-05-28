@@ -7,7 +7,7 @@ pkgname=kwin-explicit-sync
 _pkgname=kwin
 pkgver=6.0.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use composited Window Manager with explicit sync patches'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -88,7 +88,7 @@ source=(
   "explicit-sync.patch"
 )
 install=$_pkgname.install
-sha256sums=('SKIP' 'c10925e401fe53507d0ada6d9955cb33114fcec7db9b83fbc34338dd31e1f19b')
+sha256sums=('SKIP' '4b4079d70a7383872b99b8db39a7db6e40163c57857eb0ab8b15b859a9d293fd')
 
 prepare() {
   cd "$srcdir/$_pkgname"
