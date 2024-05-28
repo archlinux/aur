@@ -1,7 +1,7 @@
 # Maintainer: Serg Podtynnyi <serg@podtynnyi.com>
 pkgname=knotidx
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast object indexer"
 arch=('x86_64' 'armv7h' 'armv6h' 'aarch64')
 _base_path="github.com/shtirlic"
@@ -10,7 +10,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 _soruce_dir=""
 license=("MIT")
 depends=("glibc")
-makedepends=("go")
+makedepends=("go" "protobuf")
 sha256sums=('7b04e092392ad0596075252e091281a6865971d3cdf8e1520ab0c3b7b1bea29f')
 _commit="f0c6abf861040edd2442aeb5da0f154f3cc1db6d"
 
