@@ -2,22 +2,19 @@
 # Contributor: Alexis Janon <kardyne -at- gmail -dot- com>
 _pkgname=fluentui-system-icons
 pkgname="ttf-${_pkgname}"
-pkgver=1.1.223
-pkgrel=2
+pkgver=1.1.240
+pkgrel=1
 pkgdesc="A collection of familiar, friendly and modern icons from Microsoft."
 arch=("any")
 conflicts=("${pkgname}")
 url="https://aka.ms/fluentui-system-icons"
 _ghurl="https://github.com/microsoft/fluentui-system-icons"
 license=('MIT')
-makedepends=(
-    'git'
-)
 source=(
-    "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('ae9dea00dc7e7d8b202f07a84b7f398931c5132baf5485eff04459b7e35a1165')
 package() {
-    install -Dm644 "${srcdir}/${pkgname}.git/fonts/"*.ttf -t "${pkgdir}/usr/share/fonts/TTF"
-    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/fonts/"*.ttf -t "${pkgdir}/usr/share/fonts/TTF"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
