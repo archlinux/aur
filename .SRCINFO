@@ -1,0 +1,20 @@
+pkgbase = ocaml-ppx_string_conv
+	pkgdesc = Ppx extension for generating of_string & to_string
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/janestreet/ppx_string_conv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-base>=0.17.0
+	depends = ocaml-capitalization>=0.17.0
+	depends = ocaml-ppx_let>=0.17.0
+	depends = ocaml-ppx_string>=0.17.0
+	depends = ocaml-ppxlib>=0.28.0
+	options = !strip
+	source = ocaml-ppx_string_conv-0.17.0.tar.gz::https://github.com/janestreet/ppx_string_conv/archive/v0.17.0.tar.gz
+	b2sums = 5db1a9edfb3c7dfc3c7d58f61d98f946a9071b25f2b506e2cc5963bf4af60633d9ef22bdc2cf5d639195fdaeb56d4882a1d7ed9d041afcd8f96f29e3924117ee
+
+pkgname = ocaml-ppx_string_conv
