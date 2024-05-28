@@ -1,13 +1,12 @@
 pkgbase = xword-dl-git
 	pkgdesc = Command-line tool to download .puz files for online crossword puzzles
-	pkgver = 2023.1.31.r0.gf926a73
+	pkgver = 2023.12.2.r24.gabb8754
 	pkgrel = 1
 	url = https://github.com/thisisparker/xword-dl
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python-argparse
 	depends = python-beautifulsoup4
 	depends = python-dateparser
 	depends = python-html2text

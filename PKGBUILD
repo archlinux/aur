@@ -1,14 +1,13 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=xword-dl-git
-pkgver=2023.1.31.r0.gf926a73
+pkgver=2023.12.2.r24.gabb8754
 pkgrel=1
 pkgdesc='Command-line tool to download .puz files for online crossword puzzles'
 arch=(any)
 url='https://github.com/thisisparker/xword-dl'
 license=(MIT)
 depends=(
-	python-argparse
 	python-beautifulsoup4
 	python-dateparser
 	python-html2text
