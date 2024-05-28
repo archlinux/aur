@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='core_kernel'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc="Industrial strength alternative to OCaml's standard library (system-independent part)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-core>=0.16.0' 'ocaml-int_repr>=0.16.0' 'ocaml-ppx_jane>=0.16.0' 'ocaml-ppx_optcomp>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-core>=0.17.0' 'ocaml-int_repr>=0.17.0' 'ocaml-ppx_jane>=0.17.0' 'ocaml-ppx_optcomp>=0.17.0' 'ocaml-uopt>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('a6cf486694514ea4393aa6b2bf688b4a21fd97238d22ddfa99af30ee478be23255d67f87c16115df03ceb3a7bf4726e92d0c01be0abb2308f36c027a5ab4bc04')
+b2sums=('d49d6e987502a3830a1b49d67ae3a05779298b6d2cbd3537dc9f9f0941298c0f4c9b76722678f32a4808fde95909d83afa45126f36853346f247a70841448226')
 
 _sourcedirectory="$_projectname-$pkgver"
 

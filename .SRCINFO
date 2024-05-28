@@ -1,21 +1,22 @@
 pkgbase = ocaml-core_kernel
 	pkgdesc = Industrial strength alternative to OCaml's standard library (system-independent part)
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/core_kernel
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = dune>=2.0.0
-	depends = ocaml>=4.14.0
-	depends = ocaml-base>=0.16.0
-	depends = ocaml-core>=0.16.0
-	depends = ocaml-int_repr>=0.16.0
-	depends = ocaml-ppx_jane>=0.16.0
-	depends = ocaml-ppx_optcomp>=0.16.0
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-base>=0.17.0
+	depends = ocaml-core>=0.17.0
+	depends = ocaml-int_repr>=0.17.0
+	depends = ocaml-ppx_jane>=0.17.0
+	depends = ocaml-ppx_optcomp>=0.17.0
+	depends = ocaml-uopt>=0.17.0
 	options = !strip
-	source = ocaml-core_kernel-0.16.0.tar.gz::https://github.com/janestreet/core_kernel/archive/v0.16.0.tar.gz
-	sha512sums = a6cf486694514ea4393aa6b2bf688b4a21fd97238d22ddfa99af30ee478be23255d67f87c16115df03ceb3a7bf4726e92d0c01be0abb2308f36c027a5ab4bc04
+	source = ocaml-core_kernel-0.17.0.tar.gz::https://github.com/janestreet/core_kernel/archive/v0.17.0.tar.gz
+	b2sums = d49d6e987502a3830a1b49d67ae3a05779298b6d2cbd3537dc9f9f0941298c0f4c9b76722678f32a4808fde95909d83afa45126f36853346f247a70841448226
 
 pkgname = ocaml-core_kernel
