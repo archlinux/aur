@@ -3,7 +3,7 @@
 pkgbase=hoarder
 pkgname=("${pkgbase}" "${pkgbase}-cli")
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 _pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64")
 url="https://github.com/${pkgbase}-app/${pkgbase}"
@@ -21,7 +21,7 @@ sha256sums=('d863c41bdaab0ad697c94a75678308c6b692a402958658f4e2882f82a77e14af'
             'bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e'
             'cd2b58e13dd928925db21819a74052b98c4dd82cf6353f6b9181b41cc93e8848'
             '743b1d08eaa1c38fab3561c7e5010e1de3db3e1984abf0f04ef415f941ff0bf6'
-            '7f7859fd9b5a8e5843163de5ba842260c781db4e137b922ed586a38beb1aacab'
+            'f91a01baa9953fa163534371fa515d680dcfc46184ea80e0fd7ac82723e56d4c'
             '750941fb711f95239b4aacf278a42d9c75b80ef75c730ecc99940510b2b57cda')
 
 build() {
@@ -48,7 +48,7 @@ build() {
 package_hoarder() {
     pkgdesc="${_pkgdesc}"
     backup=("etc/${pkgbase}/${pkgbase}.env")
-    depends=("google-chrome" "nodejs" "pnpm" "redis")
+    depends=("chromium" "nodejs" "pnpm" "redis")
     provides=("${pkgbase}")
     optdepends=("meilisearch: for full text search"
                 "ollama: for automatic tagging"

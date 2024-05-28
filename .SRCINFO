@@ -1,6 +1,6 @@
 pkgbase = hoarder
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hoarder-app/hoarder
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -18,12 +18,12 @@ pkgbase = hoarder
 	sha256sums = bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e
 	sha256sums = cd2b58e13dd928925db21819a74052b98c4dd82cf6353f6b9181b41cc93e8848
 	sha256sums = 743b1d08eaa1c38fab3561c7e5010e1de3db3e1984abf0f04ef415f941ff0bf6
-	sha256sums = 7f7859fd9b5a8e5843163de5ba842260c781db4e137b922ed586a38beb1aacab
+	sha256sums = f91a01baa9953fa163534371fa515d680dcfc46184ea80e0fd7ac82723e56d4c
 	sha256sums = 750941fb711f95239b4aacf278a42d9c75b80ef75c730ecc99940510b2b57cda
 
 pkgname = hoarder
 	pkgdesc = A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
-	depends = google-chrome
+	depends = chromium
 	depends = nodejs
 	depends = pnpm
 	depends = redis
