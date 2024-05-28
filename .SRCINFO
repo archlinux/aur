@@ -1,22 +1,16 @@
 pkgbase = defold
 	pkgdesc = Defold is a completely free to use game engine for development of desktop, mobile and web games.
-	pkgver = 1.8.0
-	pkgrel = 2
+	pkgver = 1.8.0.r33118cd
+	pkgrel = 1
 	url = https://defold.com/
 	arch = x86_64
 	license = custom
+	makedepends = gendesk
+	makedepends = curl
+	makedepends = jq
 	depends = glu
-	noextract = bob.jar
-	source = https://github.com/defold/defold/releases/download/1.8.0/Defold-x86_64-linux.tar.gz
-	source = https://github.com/defold/defold/releases/download/1.8.0/defoldsdk_headers.zip
-	source = https://github.com/defold/defold/releases/download/1.8.0/bob.jar
-	source = Defold.desktop
 	source = LICENSE
 	source = logo.zip
-	sha256sums = 3df316f1cd946d07698f543cd381fa67f5ca6cc0f6f93ff45df3e525b3489a19
-	sha256sums = 2f0b876fec08bf0eab5f3c8038979df2abb55836f3b0535eeeaf3f07096bd8b6
-	sha256sums = 452b84eabf5cff5cc70b3a411c8d6e46a74fe06142d7f02f87c36a730285bd9c
-	sha256sums = 9725d96324da56845f78a74352340e72366efa448d7ad05af3d5ed8a22ab873a
 	sha256sums = be6e9921ba01445d200ba3dc09b5cab149a58d57a76ca98376b52af87d817a7a
 	sha256sums = 3b8caea5c51ed35d0b192b621e55102c7336904d5bc096d801cbbe700ebf17ca
 
