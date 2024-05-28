@@ -3,7 +3,7 @@
 _pkgname="sdm-assist"
 pkgname="${_pkgname}-bin"
 pkgver=2.20A_201702
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Application designed to make the process of installing SDM Version 2.1 on your Canon camera as simple as possible."
 arch=(
@@ -57,7 +57,7 @@ source=(
 noextract=()
 sha256sums=(
   '402cc7b2670075408513391f19433deaa57206f8ab1944602036ac239ea56753'
-  '50d70ed8affac1fa4074cb6f7b4796e7553d3bcbb1fcf5755ee09efd53cd7c9b'
+  'b1aa85ac7ae86ef697b2674641c45936ed5de70d5c365222f791ca07e420ef47'
   'baf3b7e722d7bc587db2e1e35cedf03bd8d8ba8d4d1ec4a2b55998ce742b8619'
   '2e67004a334a528f098117bdb640b7be17444e0ba810761968588d057208a1df'
   '31b8a98e1393054115438369f55d0f6776ecac503b57d38e748f38dc2378f868'
