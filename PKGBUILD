@@ -1,11 +1,11 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=RPostgres
-_cranver=1.4.6
+_cranver=1.4.7
 pkgname=r-${_cranname,,}
-pkgdesc="Rcpp Interface to PostgreSQL"
+pkgdesc="Fully DBI-compliant C++-backed interface to PostgreSQL"
 url="https://cran.r-project.org/package=${_cranname}"
-license=("GPL3")
+license=("GPL-3.0-only")
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 
@@ -14,7 +14,7 @@ depends=(
     "libpq.so"
     "r-bit64"
     "r-blob>=1.2.0"
-    "r-dbi>=1.1.0"
+    "r-dbi>=1.2.0"
     "r-hms>=1.1.0"
     "r-lubridate"
     "r-plogr>=0.0.2"
@@ -22,11 +22,15 @@ depends=(
     "r-withr"
     "r>=3.1.0"
 )
+makedepends=(
+    "r-decor"
+)
 optdepends=(
     "r-callr"
     "r-covr"
-    "r-dbitest>=1.7.2.9001"
+    "r-dbitest>=1.7.3"
     "r-knitr"
+    "r-rlang"
     "r-rmarkdown"
 )
 
@@ -50,7 +54,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("acd6f9b62940f4c2671e4bd7a7aefe0ad6e7ea388ae630c11f03ede942431f15c29f9faa1bd94761b0591a9e426b1302c2fe73b90ba93c2d51f7fb60fa8e1a8b")
+b2sums=("45a98d058d5b8699b5c82e696fe6f8b1e92b4bf5129d8893befe92b3d08fadc661fce8466df145ca2e835212d267da6a8b5681d9892255adf9c4ce4b450b9c87")
 
 build() {
     mkdir -p "${srcdir}/build/"
