@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=4.2.3
+pkgver=4.3.0
 _electronversion=21
 _nodeversion=16
 pkgrel=1
@@ -13,6 +13,7 @@ conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
     'mecab'
+    'java-runtime'
 )
 makedepends=(
     'npm'
@@ -31,8 +32,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('342f91f2bf41b1be1e85d32a1c4536d4f07817b90aac7afac713b0e4bdeb9126'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('a38dbed86458f8a610bb26ba79d17c88f6610ed1b96fe9301b25482631e9c970'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -47,7 +48,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
