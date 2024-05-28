@@ -43,21 +43,17 @@ sha256sums=(
 pkgver() {
   cd "${_pkgname}"
 
-  _descr="$(git describe --tags --long)"
-  _ver="$(echo "${_descr}" | awk -F '-' '{print $1}' | sed 's|^v||')"
-  _rev="$(echo "${_descr}" | awk -F '-' '{print $3}')"
-  
+  _ver="$(git describe --tags | sed 's|^[vV]||' | sed 's|-[^-]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
   if [ -z "${_ver}" ]; then
-    msg "Error while executing function pkgver: Could not determine version of software. Aborting." > /dev/stderr
-    exit 11
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
   fi
-  
-  if [ -z "${_rev}" ]; then
-    msg "Error while executing function pkgver: Could not determine VCS-revision of current checkout. Aborting." > /dev/stderr
-    exit 12
-  fi
-  
-  echo "${_ver}+g${_rev}"
 }
 
 build() {
