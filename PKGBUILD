@@ -6,13 +6,18 @@ _pkgvariant=nosystemd
 pkgname="${_pkgname}-${_pkgvariant}-git"
 _pkgver=latest
 pkgver=2.0.0.6.r437.d20240515.c6705fa
-pkgrel=2
+pkgrel=3
 pkgdesc="sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++. This package is without systemd dependencies; it will have it's own static libsystemd baked in."
 url="https://github.com/Kistler-Group/sdbus-cpp"
 arch=('i686' 'x86_64')
-license=('LGPL2.1' 'custom:sdbus-c++ LGPL Exception 1.0')
+license=(
+  'LGPL-2.1-or-later'
+  'LicenseRef-sdbus-c++_LGPL_Exception_1.0'
+)
 depends=(
   'expat'
+  'gcc-libs'
+  'glibc'
   'libcap'
 )
 makedepends=(
@@ -64,7 +69,7 @@ prepare() {
 build() {
   cd "${srcdir}/build"
 
-  cmake "${srcdir}/${_pkgname}" \
+  cmake -S "${srcdir}/${_pkgname}" -B . \
     -DCMAKE_INSTALL_PREFIX=/ \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
@@ -74,17 +79,17 @@ build() {
     -DBUILD_DOXYGEN_DOC=ON
 
   msg2 "Copying libsystemd source files into place ..."
-  _libsystemd_version="$(grep -E '^[[:space:]]*LIBSYSTEMD_VERSION(:[a-zA-Z]*|)[[:space:]]*=.+' CMakeCache.txt | tail -n 1 | awk -F'=' '{print $2}')"
+  _libsystemd_version="$(grep -E '^[[:space:]]*set\(SDBUSCPP_LIBSYSTEMD_VERSION[[:space:]]+["]?[^"]+' "${srcdir}/${_pkgname}/CMakeLists.txt" | tail -n1 | sed -E -e 's|^[[:space:]]*set\(SDBUSCPP_LIBSYSTEMD_VERSION[[:space:]]+["]?([0-9a-zA-Z\._-]*)["]?[[:space:]]+.*$|\1|')"
   mkdir -p "${srcdir}/build/libsystemd-v${_libsystemd_version}/src/LibsystemdBuildProject"
 
   pushd "${srcdir}/systemd-stable" > /dev/null
   GIT_WORK_TREE="${srcdir}/build/libsystemd-v${_libsystemd_version}/src/LibsystemdBuildProject" git checkout "v${_libsystemd_version}-stable" -f
   popd > /dev/null
 
-  git submodule update --recursive --init
+  #git submodule update --recursive --init
 
   make
-  make doc
+  #make doc
 }
 
 package() {
