@@ -1,12 +1,11 @@
 pkgbase = sqlectron-gui-bin
 	pkgdesc = A simple and lightweight SQL client desktop with cross database and platform support.
 	pkgver = 1.38.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://sqlectron.github.io/
 	arch = x86_64
 	license = MIT
-	depends = electron12-bin
-	depends = hicolor-icon-theme
+	depends = electron12
 	provides = sqlectron-gui=1.38.0
 	conflicts = sqlectron-gui
 	source = sqlectron-gui-1.38.0.pacman::https://github.com/sqlectron/sqlectron-gui/releases/download/v1.38.0/sqlectron-1.38.0.pacman
@@ -14,6 +13,6 @@ pkgbase = sqlectron-gui-bin
 	source = sqlectron-gui.sh
 	sha256sums = 17eb28d4f4e34f619471f71edc68de5768791549e3313295d98f4cd2a991b6ff
 	sha256sums = 87b56cd5c7ac2bbf995ae64079519a228e20d86b15a16a75fa109c7611bb1e19
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = sqlectron-gui-bin
