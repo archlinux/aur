@@ -1,17 +1,18 @@
 pkgbase = ocaml-ppx_globalize
 	pkgdesc = A ppx rewriter that generates functions to copy local values to the global heap
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/janestreet/ppx_globalize
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = dune>=2.0.0
-	depends = ocaml>=4.14.0
-	depends = ocaml-base>=0.16.0
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-base>=0.17.0
+	depends = ocaml-ppxlib_jane>=0.17.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_globalize-0.16.0.tar.gz::https://github.com/janestreet/ppx_globalize/archive/v0.16.0.tar.gz
-	sha512sums = 76618dc1cc436c437e7911a2b793233f9bdd559dc37419df6f94143548bcfe09a0f29eafc3a36e97a5f8fb886aa94ca641f10f56078a8558f642a2cf564e4c75
+	source = ocaml-ppx_globalize-0.17.0.tar.gz::https://github.com/janestreet/ppx_globalize/archive/v0.17.0.tar.gz
+	b2sums = 8b849b260ef3527cc3db9a35cabb46c08b5f4c3fa9eaa204a807fc7e12407241d5edf9f834fecd6304c3e271a573edbeba3a6fe60c482e84173f14bf4060a7b3
 
 pkgname = ocaml-ppx_globalize
