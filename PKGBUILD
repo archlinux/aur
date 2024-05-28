@@ -2,18 +2,18 @@
 # Maintainer: Lance Roy <ldr709@gmail.com>
 _projectname='timezone'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Time-zone handling for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-core>=0.16.0' 'ocaml-ppx_jane>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-core>=0.17.0' 'ocaml-ppx_jane>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('d01f9d0b0cca379a6741d0af35e39860d97e620cd2a064d5498b724319a88e8088bdad5df52b2972a234b59678d99821edce4400c889d98857023a8c54149889')
+b2sums=('64bf7ebc1d06c224637c33a63f6b402aeecdafc3c627ef91e52241178d8312a39dc7821e6acd578993b5fa203465e62b60f0765b9bd82728c9334763dc76e4e6')
 
 _sourcedirectory="$_projectname-$pkgver"
 
