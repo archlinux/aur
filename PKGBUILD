@@ -3,7 +3,7 @@
 
 pkgname=hotspot
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('x86_64')
@@ -42,8 +42,8 @@ b2sums=('1751e115213af409210d7fd35a4113d1d528a9bb04be12fa7b05ce56523c447e7c12b21
         '915ad463c5f088b8945e0038bd61beff77ca8283b4b31a4ee1e7042619f6e7adc9471c3e601e7bdb6c9e4a85cdb1b87ebb085a523a2f3756367504e8ae6ef3dc')
 
 prepare() {
-    mv perfparser       $pkgname/3rdparty/perfparser
-    mv PrefixTickLabels $pkgname/3rdparty/PrefixTickLabels
+    mv perfparser/*       $pkgname/3rdparty/perfparser
+    mv PrefixTickLabels/* $pkgname/3rdparty/PrefixTickLabels
 }
 
 build() {
