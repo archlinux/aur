@@ -4,18 +4,18 @@
 # Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=roxterm
-pkgver=3.14.3
+pkgver=3.15.0
 pkgrel=1
 pkgdesc='Tabbed, VTE-based terminal emulator'
 arch=('x86_64')
 url='https://github.com/realh/roxterm'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('dbus-glib' 'vte3' 'hicolor-icon-theme')
 makedepends=('docbook-xsl' 'xmlto' 'po4a' 'cmake' 'libsm'
              'imagemagick' 'librsvg' 'itstool')
-optdepend=('vte3-kinetic: Kinetic Scrolling in Terminal')
-source=("https://github.com/realh/roxterm/archive/${pkgver}.tar.gz")
-sha512sums=('0e5473ec7c394d5d50d39a2ebe594c6ecd158c8ac24f6a40d93ec8941a95322ba2aed14827500d736d88f827a439eab843bb6c98315e621683ba708beabc139c')
+optdepends=('vte3-kinetic: Kinetic Scrolling in Terminal')
+source=("roxterm-${pkgver}.tar.gz::https://github.com/realh/roxterm/archive/${pkgver}.tar.gz")
+sha512sums=('f3326d777f29dc02c40b60f17f4581df21b6b16fb61e73826eefc719682ee81c42d1e70b301f747c7566a8b63db2fa5fe01cd524b310459496ff9ab29aed75a8')
 
 build() {
   cd "${srcdir}/roxterm-${pkgver}"
