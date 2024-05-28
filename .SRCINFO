@@ -1,13 +1,16 @@
 pkgbase = kdisplay
 	pkgdesc = Display management app and daemon (kwinft)
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/winft/kdisplay
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-2.1-only
+	makedepends = clang
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = lld
+	makedepends = llvm
 	makedepends = ninja
 	depends = kdeclarative
 	depends = layer-shell-qt

@@ -3,7 +3,7 @@
 _pkgname="kdisplay"
 pkgname="$_pkgname"
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Display management app and daemon (kwinft)'
 url="https://github.com/winft/kdisplay"
 license=('LGPL-2.1-only')
@@ -33,8 +33,11 @@ depends=(
   #qt6-declarative
 )
 makedepends=(
+  clang
   extra-cmake-modules
   git
+  lld
+  llvm
   ninja
 )
 
@@ -47,6 +50,10 @@ source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
 sha256sums=('b1da715f9eb0cffb116ea9d0f756668da96848db562b4a2de5a524f321759537')
 
 build() {
+  export CC=clang
+  export CXX=clang++
+  export LDFLAGS+=" -fuse-ld=lld"
+
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
