@@ -1,13 +1,14 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Andras Czigany <andras dot czigany dot 'thirteen with digits' at gmail dot com>
 
 pkgname=xorg-xgc
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Xaw-based graphics demo that shows/tests various features of the X11 core protocol graphics primitives."
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
 license=('custom')
-depends=('libxaw')
+depends=('libxt' 'glibc' 'libxaw' 'libx11')
 makedepends=('xorg-util-macros')
 groups=('xorg-apps' 'xorg')
 source=(http://xorg.freedesktop.org/archive/individual/app/xgc-${pkgver}.tar.gz)
