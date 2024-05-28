@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sofie-chef-bin
 _appname=SofieChef
-pkgver=0.3.3
+pkgver=0.3.4
 _electronversion=26
-pkgrel=4
+pkgrel=1
 pkgdesc="Disrupting the industry & stirring pots"
 arch=('x86_64')
 url="https://github.com/nrkno/sofie-chef"
@@ -21,13 +21,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nrkno/sofie-chef/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('913f848d292ab514b0f241d63e3e7c6ff7968fbf096977f821aea39193d0d9e2'
+sha256sums=('20bb65e00c6be652279480d92b4bf7b93883cf152689c9b21cdeb287930bc42c'
             'ac26e60681c9ba6ec5eddf9b1afa3442d8ada9d77fe42b4515c42a2a15392c44'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
