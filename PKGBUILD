@@ -2,7 +2,7 @@
 
 pkgname=mcmap
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pixel-art map visualizer for Minecraft. Maps are drawn from an isometric perspective. "
 arch=('x86_64')
 url="https://github.com/spoutn1k/${pkgname}"
@@ -16,7 +16,7 @@ CFLAGS=('${CFLAGS} -U_GLIBCXX_ASSERTIONS')
 CXXFLAGS=('${CXXFLAGS} -U_GLIBCXX_ASSERTIONS')
 source=("${pkgname}::git+https://github.com/spoutn1k/${pkgname}.git#tag=v${pkgver}"
         "${pkgname}.desktop")
-sha256sums=('SKIP'
+sha256sums=('510bf2218bebce145eca02289c7a740a2ef70783601596a61689f9f99a38b804'
             '67dff6174f3ef3c072560b6b2c161470d5f76a6282bf9bf6afa9d14750459714')
 
 build() {
