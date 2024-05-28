@@ -37,7 +37,7 @@ optdepends_x86_64=('vulkan-driver: Vulkan renderer'
 provides=('lzdoom')
 conflicts=('lzdoom' 'lzdoom-bin')
 # WIP: set back to 'master' once g3.3mgw is merged
-source=('gzdoom::git://github.com/drfrag666/gzdoom.git#branch=g3.3mgw'
+source=('gzdoom::git+https://github.com/drfrag666/gzdoom.git#branch=g3.3mgw'
         'lzdoom.desktop')
 sha256sums=('SKIP'
             'd65aabafadf1d466cc6cc635b4765b069dce2cef628d4d1c33878297af509d60')

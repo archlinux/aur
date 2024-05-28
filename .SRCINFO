@@ -35,7 +35,7 @@ pkgbase = lzdoom-git
 	provides = lzdoom
 	conflicts = lzdoom
 	conflicts = lzdoom-bin
-	source = gzdoom::git://github.com/drfrag666/gzdoom.git#branch=g3.3mgw
+	source = gzdoom::git+https://github.com/drfrag666/gzdoom.git#branch=g3.3mgw
 	source = lzdoom.desktop
 	sha256sums = SKIP
 	sha256sums = d65aabafadf1d466cc6cc635b4765b069dce2cef628d4d1c33878297af509d60
