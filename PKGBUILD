@@ -7,8 +7,8 @@ pkgdesc="3D wayland compositor extra plugins"
 arch=('any')
 url="https://github.com/WayfireWM/wayfire-plugins-extra"
 license=('MIT')
-depends=('wayfire-git' 'glibmm' 'iio-sensor-proxy')
-makedepends=('git' 'meson' 'ninja')
+depends=('wayfire-git' 'glibmm' 'iio-sensor-proxy' 'wayland-protocols' 'glm')
+makedepends=('git' 'meson' 'ninja' 'libdisplay-info' 'nlohmann-json' 'glm')
 optdepends=('wcm: GTK3-based configuration tool for the Wayfire compositor')
 provides=("${pkgname}" "wayfire-plugins-extra")
 conflicts=("wayfire-plugins-extra")
@@ -30,14 +30,11 @@ pkgver() {
 }
 
 build() {
-        cd "$srcdir/wayfire-plugins-extra/"
-  rm -rf build
-  arch-meson build
+  arch-meson wayfire-plugins-extra build
   ninja -C build
 }
 
 
 package() {
-        cd "$srcdir/wayfire-plugins-extra"
         DESTDIR="$pkgdir/" ninja -C build install
 }

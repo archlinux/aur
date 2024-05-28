@@ -9,9 +9,14 @@ pkgbase = wayfire-plugins-extra-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = libdisplay-info
+	makedepends = nlohmann-json
+	makedepends = glm
 	depends = wayfire-git
 	depends = glibmm
 	depends = iio-sensor-proxy
+	depends = wayland-protocols
+	depends = glm
 	optdepends = wcm: GTK3-based configuration tool for the Wayfire compositor
 	provides = wayfire-plugins-extra-git
 	provides = wayfire-plugins-extra
@@ -20,4 +25,3 @@ pkgbase = wayfire-plugins-extra-git
 	sha256sums = SKIP
 
 pkgname = wayfire-plugins-extra-git
-
