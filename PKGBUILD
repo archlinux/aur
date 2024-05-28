@@ -4,7 +4,7 @@
 
 pkgname=voiphopper-git
 pkgver=2.04+1kali6+1.r31.20240514.7367693
-pkgrel=1
+pkgrel=2
 pkgdesc="A security validation tool that tests to see if a PC can mimic the behavior of an IP Phone. It rapidly automates a VLAN Hop into the Voice VLAN."
 arch=(
   'i686'
@@ -65,6 +65,19 @@ pkgver() {
 
 build() {
   cd "${srcdir}/voiphopper"
+
+  _NOGCCWARNINGS="implicit-function-declaration return-mismatch implicit-int int-conversion"
+  _fixwerror=""
+  _silencewarnings=""
+  for _gccwarning in ${_NOGCCWARNINGS}; do
+    _fixwerror+=" -Wno-error=${_gccwarning}"
+    _silencewarnings+=" -Wno-${_gccwarning}"
+  done
+  _CFLAGSADDITIONS="${_fixwerror} ${_silencewarnings}"
+  CFLAGS+="${_CFLAGSADDITIONS}"
+  CXXFLAGS+="${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
 
   ./configure \
     --prefix=/usr \

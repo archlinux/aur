@@ -1,7 +1,7 @@
 pkgbase = voiphopper-git
 	pkgdesc = A security validation tool that tests to see if a PC can mimic the behavior of an IP Phone. It rapidly automates a VLAN Hop into the Voice VLAN.
 	pkgver = 2.04+1kali6+1.r31.20240514.7367693
-	pkgrel = 1
+	pkgrel = 2
 	url = http://voiphopper.sourceforge.net/
 	arch = i686
 	arch = x86_64
