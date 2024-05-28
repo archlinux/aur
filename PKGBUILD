@@ -13,7 +13,7 @@ depends=(gcab msitools dos2unix)
 optdepends=()
 provides=('surface-uefi-firmware')
 source=("git+${url}.git")
-md5sums=(SKIP)
+b2sums=(SKIP)
 
 prepare() {
     sed -i "s/DIR=\$(readlink -f \$(dirname \$0))/DIR=\/usr\/share\/$_repo/" ${srcdir}/$_repo/repack.sh

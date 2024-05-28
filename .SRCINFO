@@ -11,6 +11,6 @@ pkgbase = surface-uefi-firmware-git
 	depends = dos2unix
 	provides = surface-uefi-firmware
 	source = git+https://github.com/linux-surface/surface-uefi-firmware.git
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = surface-uefi-firmware-git
