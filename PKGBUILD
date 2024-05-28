@@ -9,6 +9,7 @@ url="https://github.com/marxin/cvise"
 license=('custom:University of Illinois')
 depends=(
     'clang>9.0.0'
+    'flex'
     'python-chardet'
     'python-pebble'
     'python-psutil'
