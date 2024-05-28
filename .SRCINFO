@@ -1,5 +1,5 @@
 pkgbase = art-rawconverter-ctlscripts
-	pkgdesc = add on for ART raw converter to support more image formats
+	pkgdesc = add on for ART raw converter with various CTL scripts
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art-ctlscripts/

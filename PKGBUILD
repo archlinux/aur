@@ -2,7 +2,7 @@
 pkgname=art-rawconverter-ctlscripts
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="add on for ART raw converter to support more image formats"
+pkgdesc="add on for ART raw converter with various CTL scripts"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://bitbucket.org/agriggio/art-ctlscripts/"
 license=('GPL3')
