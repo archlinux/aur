@@ -2,8 +2,8 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=oauth2c
-pkgver=1.13.0
-pkgrel=3
+pkgver=1.14.0
+pkgrel=1
 pkgdesc='User-friendly CLI for OAuth2'
 arch=('x86_64' 'arm64' 'armv6')
 url="https://github.com/cloudentity/oauth2c"
@@ -21,4 +21,4 @@ package() {
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
 
-sha256sums=('f5545e9aca8c79042080e8510ec77ac66ed3ac4acf976a8bbeb53e04fae02630')
+sha256sums=('6f2de82541aef816763d6458eea06ec93d788309d2563974931221a0e2cb4286')
