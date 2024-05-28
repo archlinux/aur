@@ -1,0 +1,20 @@
+pkgbase = python-textual_imageview
+	pkgdesc = A simple terminal-based image viewer.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/adamviola/textual-imageview
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-pillow
+	depends = python-rich
+	depends = python-textual
+	source = https://files.pythonhosted.org/packages/source/t/textual_imageview/textual_imageview-0.1.1.tar.gz
+	sha256sums = 4299d8ed677db0adb8fe945687470cf1421dcafd2a5dddab54b6ee8ef2ab3320
+
+pkgname = python-textual_imageview
