@@ -4,15 +4,17 @@
 
 _pkgname=clover-efi
 pkgname="${_pkgname}"
-pkgver=5157
-pkgrel=3
+pkgver=5158
+pkgrel=1
 pkgdesc='Bootloader for macOS, Windows and Linux in UEFI and in legacy mode'
 arch=(
   'x86_64'
 )
 url='https://github.com/CloverHackyColor/CloverBootloader'
-license=('BSD')
-depends=()
+license=('BSD-2-Clause')
+depends=(
+  'bash'
+)
 makedepends=()
 optdepends=()
 checkdepends=()
@@ -29,9 +31,9 @@ noextract=(
   "Clover-${pkgver}-X64.iso.7z"  # We are going to manually extract some file from the iso.7z.
 )
 sha256sums=(
-  'a13904da4a33fae39e5e1061df939904169db4fb29e7bc5d188caeae2fd9f50f'  # Clover-${pkgver}-X64.iso.7z
+  '3c201ab6aa4b394ff71c4f782f3e2595ceb8e5ad81b6d14bdab116ae531aefbd'  # Clover-${pkgver}-X64.iso.7z
   '9ad38268029f8604cdadb30d598d42f67697cddb738a962250bc966bda2edcd2'  # Clover-LICENSE.txt"
-  '2729e87d17f1c467f7589b0f3dc8b246efccfdb8224c87a1cd81e1abc3dd53b1' #  80_cloverboot
+  '2729e87d17f1c467f7589b0f3dc8b246efccfdb8224c87a1cd81e1abc3dd53b1'  #  80_cloverboot
 )
 
 prepare() {
