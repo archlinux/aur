@@ -1,0 +1,17 @@
+pkgbase = ocaml-capitalization
+	pkgdesc = Defines case conventions and functions to rename identifiers according to them
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/janestreet/capitalization
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-base>=0.17.0
+	depends = ocaml-ppx_base>=0.17.0
+	options = !strip
+	source = ocaml-capitalization-0.17.0.tar.gz::https://github.com/janestreet/capitalization/archive/v0.17.0.tar.gz
+	b2sums = 3245c2faf1616957745aa54590f59a4934032b17577da7f4c1d14314259df43cc719edcfd4ddf1b3db68a93da36d62cc01f0b1b44fdc0371611ec43f1c8d1156
+
+pkgname = ocaml-capitalization
