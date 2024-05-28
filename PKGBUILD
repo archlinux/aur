@@ -2,10 +2,10 @@
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=241.17011.2
+_buildver=242.10180.25
 _veryear=2024
 _verrelease=1
-_verextra=1
+_verextra=2
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
