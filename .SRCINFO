@@ -1,7 +1,7 @@
 pkgbase = 2s2h-bin
 	pkgdesc = Ship of Harkinian Reimplimentation engine
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/linuxbombay/2s2h
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,8 @@ pkgbase = 2s2h-bin
 	depends = libpng
 	depends = libzip
 	depends = zenity
+	depends = tinyxml2
+	depends = spdlog
 	source_x86_64 = git+https://gitlab.com/linuxbombay/2s2h/2s2h-pkg
 	source_x86_64 = https://gitlab.com/linuxbombay/2s2h/binaries/1.0.0/-/raw/main/2s2h-linux-x64.tar.xz
 	sha256sums_x86_64 = SKIP

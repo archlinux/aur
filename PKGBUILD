@@ -1,13 +1,13 @@
 pkgname=2s2h-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 pkgdesc="Ship of Harkinian Reimplimentation engine"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://gitlab.com/linuxbombay/2s2h"
 license=('GPL')
-depends=('sdl2' 'sdl2_net' 'libpng' 'libzip' 'zenity')
+depends=('sdl2' 'sdl2_net' 'libpng' 'libzip' 'zenity' 'tinyxml2' 'spdlog')
 makedepends=('unzip')
 sha256sums_x86_64=('SKIP'
                    '6be86c64f35e3cf86decb560cfa6d12d3a6ea0a9dca23fea49975bd3fb7cb137')
