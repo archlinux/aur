@@ -3,7 +3,7 @@ pkgname=tilde-podcast-bin
 _pkgname=Tilde
 pkgver=1.0.0
 _electronversion=10
-pkgrel=7
+pkgrel=8
 pkgdesc="Podcast client to listen to all you favorite podcasts"
 arch=('x86_64')
 url="https://github.com/paologiua/tilde"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('36d92737e95db21231d580de2dd28b8d970f0872dec4f4f8e2e7143742f83702'
             'f1492bf906d1183083c07f5074b51ea36dc616136bf76d9f87e9a535a5345080'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
