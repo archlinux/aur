@@ -1,10 +1,10 @@
-pkgbase = ai-horde-worker-regen
+pkgbase = ai-horde-worker-regen-git
 	pkgdesc = generating images and text using your GPU and earning kudos.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/Haidra-Org/horde-worker-reGen
 	arch = x86_64
-	license = MIT
+	license = AGPLv3
 	makedepends = git
 	makedepends = python-virtualenv
 	depends = python
@@ -13,4 +13,4 @@ pkgbase = ai-horde-worker-regen
 	source = git+https://github.com/Haidra-Org/horde-worker-reGen.git
 	sha256sums = SKIP
 
-pkgname = ai-horde-worker-regen
+pkgname = ai-horde-worker-regen-git
