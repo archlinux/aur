@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_fixed_literal'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Simpler notation for fixed point literals'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('9d83d578fb34b3fb2c5351c3934d5f35e509f66a72ba75126a44362b7e4de07c4d43a33b4eb8630999a7010410a8300c7740cc79bf16609ce1144ad90fc38751')
+b2sums=('c0530e93e396d79a4220d9a727876c02b5168c20cf1627751e1ed3fb588074f0344b9900b9d5376b15bc607c162b17ea7511a22b8974a0ae58262fb220f313f0')
 
 _sourcedirectory="$_projectname-$pkgver"
 
