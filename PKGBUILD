@@ -2,11 +2,11 @@
 
 pkgname=garbage
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line interface to the FreeDesktop Trash can'
 url='https://git.sr.ht/~mzhang/garbage'
-arch=('any')
-license=('GPL3')
+arch=('x86_64')
+license=('GPL-3.0-or-later')
 makedepends=('cargo')
 source=("https://git.sr.ht/~mzhang/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('c4b2c671f259b3091e0f86f58629cc655893c5f3f8e8f1d18845213e1eefc0df')
