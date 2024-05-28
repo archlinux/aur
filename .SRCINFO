@@ -1,0 +1,17 @@
+pkgbase = ocaml-uopt
+	pkgdesc = An [option]-like type that incurs no allocation, without requiring a reserved value in the underlying type
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/janestreet/uopt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-base>=0.17.0
+	depends = ocaml-ppx_jane>=0.17.0
+	options = !strip
+	source = ocaml-uopt-0.17.0.tar.gz::https://github.com/janestreet/uopt/archive/v0.17.0.tar.gz
+	b2sums = d1e18fafad21ad98d7d5a7f2c39121c6b097a3f295616a6ebc33c438452f2c35e1d6040a5bf893d3d4e889e3783283f36c7571b3b676f5dd81517b2a2ede49a3
+
+pkgname = ocaml-uopt
