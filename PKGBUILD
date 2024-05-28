@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_ignore_instrumentation'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Ignore Jane Street specific instrumentation extensions'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3ec3a706b2c0d8d170860d2a6fb24f6f95dc7d1b28e88d292f536302ef005158d76e4c586721f924e3c7c5098981e3d9569e28300dabaf0348585b56c62bb245')
+b2sums=('0502380f0d26f740f8f2bebeb1dd16087e6f10041468fb805e4d5062cf0dd0583278b5f5ba75c834f40a90735c9c723f70a1fa479836819bd0cc60e969ec45fb')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -19,6 +19,8 @@ build() {
 	cd "$srcdir/$_sourcedirectory/"
 	dune build --release --verbose
 }
+
+# No tests available
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
