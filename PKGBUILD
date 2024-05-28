@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname='warp-plus-git'
-pkgver=1.1.3.r1.69977d9
+pkgver=1.2.1.r1.b674937
 pkgrel=1
 pkgdesc="An open-source implementation of Cloudflare's Warp, enhanced with Psiphon integration (GitHub Version)."
 arch=('x86_64')
@@ -22,7 +22,8 @@ pkgver() {
 
 prepare() {
     cd "${pkgname%-git}"
-    sed -i 's|"gool": false|"gool": true|' example_config.json
+    sed -i 's|"gool".*|"gool": true,|' example_config.json
+    sed -i 's|"cache-dir".*|"cache-dir": "/etc/warp-plus",|' example_config.json
     go mod tidy
 }
 
