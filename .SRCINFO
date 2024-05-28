@@ -1,27 +1,27 @@
 pkgbase = ocaml-core_unix
 	pkgdesc = Unix-specific extensions to some of the modules defined in ocaml-core and ocaml-core_kernel
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/core_unix
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = dune>=2.0.0
-	depends = ocaml>=4.14.0
-	depends = ocaml-core>=0.16.0
-	depends = ocaml-core_kernel>=0.16.0
-	depends = ocaml-expect_test_helpers_core>=0.16.0
-	depends = ocaml-intrinsics>=0.16.0
-	depends = ocaml-jane-street-headers>=0.16.0
-	depends = ocaml-jst-config>=0.16.0
-	depends = ocaml-ppx_jane>=0.16.0
-	depends = ocaml-ppx_optcomp>=0.16.0
-	depends = ocaml-sexplib>=0.16.0
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-core>=0.17.0
+	depends = ocaml-core_kernel>=0.17.0
+	depends = ocaml-expect_test_helpers_core>=0.17.0
+	depends = ocaml-jane-street-headers>=0.17.0
+	depends = ocaml-jst-config>=0.17.0
+	depends = ocaml-ppx_jane>=0.17.0
+	depends = ocaml-ppx_optcomp>=0.17.0
+	depends = ocaml-sexplib>=0.17.0
+	depends = ocaml-timezone>=0.17.0
+	depends = ocaml-uopt>=0.17.0
 	depends = ocaml-spawn>=0.15.0
-	depends = ocaml-timezone>=0.16.0
 	options = !strip
-	source = ocaml-core_unix-0.16.0.tar.gz::https://github.com/janestreet/core_unix/archive/v0.16.0.tar.gz
-	sha512sums = e38a126af832360f0e0079919b930f3fa99b02935c35372b1ed8c7e174af335de2f4dcb8da90be8f9f524542752dd5c62ec6192eb327d7cc6313b7402b0f7f65
+	source = ocaml-core_unix-0.17.0.tar.gz::https://github.com/janestreet/core_unix/archive/v0.17.0.tar.gz
+	b2sums = 9afc07343427e84dc71df23b2d3a4e02780dcb75b4969d06a7d06d47b7dfe17e464223258733673265491cecfbea07f92f429167b81ead226319c452e4b895db
 
 pkgname = ocaml-core_unix
