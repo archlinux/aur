@@ -6,7 +6,7 @@ pkgbase = ooniprobe-desktop-bin
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = fuse2
-	depends = electron12-bin
+	depends = electron12
 	provides = ooniprobe-desktop=3.9.6
 	conflicts = ooniprobe-desktop
 	source = ooniprobe-desktop-3.9.6.AppImage::https://github.com/ooni/probe-desktop/releases/download/v3.9.6/OONI-Probe-3.9.6.AppImage
