@@ -2,7 +2,7 @@
 # Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=bisq2
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="The Decentralized Trading Platform"
 arch=('any')
