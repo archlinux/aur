@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_inline_test'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.1'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Syntax extension for writing in-line tests in ocaml code'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-time_now>=0.16.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
-makedepends=('dune>=3.8.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-time_now>=0.17.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f82d6d9fe6d84b837d69eb35cc92e2a0b6d0802079437e291aa350b89af1df54a996d6c7843019d488a3afe1e635da070f7ca80595dfdfd8257b2d0722725bf9')
+b2sums=('886829ae6ca97cfc4df7590bd43382760d10234c09e0fc6dcef65a3e74f0ab5e1a280d750d62904d95627946bacff3c03f9b4efcf7a241ea29979821e77852f9')
 
 _sourcedirectory="$_projectname-$pkgver"
 
