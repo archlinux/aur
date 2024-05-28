@@ -3,7 +3,7 @@
 
 pkgname=qt5-sensors
 _basever=5.15.14
-pkgver=5.15.13
+pkgver=5.15.14
 pkgrel=1
 _commit=bf0b718cd0b6c7823e9d2037d3bdece44185f444
 arch=('x86_64')
