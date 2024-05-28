@@ -1,6 +1,6 @@
 pkgbase = ocaml-bin_prot
 	pkgdesc = A binary protocol generator
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/bin_prot
@@ -8,18 +8,18 @@ pkgbase = ocaml-bin_prot
 	arch = aarch64
 	license = MIT
 	license = BSD-3-Clause
-	makedepends = dune>=2.0.0
-	depends = ocaml>=4.14.0
-	depends = ocaml-base>=0.16.0
-	depends = ocaml-ppx_compare>=0.16.0
-	depends = ocaml-ppx_custom_printf>=0.16.0
-	depends = ocaml-ppx_fields_conv>=0.16.0
-	depends = ocaml-ppx_optcomp>=0.16.0
-	depends = ocaml-ppx_sexp_conv>=0.16.0
-	depends = ocaml-ppx_stable_witness>=0.16.0
-	depends = ocaml-ppx_variants_conv>=0.16.0
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-base>=0.17.0
+	depends = ocaml-ppx_compare>=0.17.0
+	depends = ocaml-ppx_custom_printf>=0.17.0
+	depends = ocaml-ppx_fields_conv>=0.17.0
+	depends = ocaml-ppx_optcomp>=0.17.0
+	depends = ocaml-ppx_sexp_conv>=0.17.0
+	depends = ocaml-ppx_stable_witness>=0.17.0
+	depends = ocaml-ppx_variants_conv>=0.17.0
 	options = !strip
-	source = ocaml-bin_prot-0.16.0.tar.gz::https://github.com/janestreet/bin_prot/archive/v0.16.0.tar.gz
-	sha512sums = e6e2b4c2984fc89fc7ceb57cae7b7f796e6a0441e4d37da1b6bc1f167d8900b1c4bc0174d5d9de5669b7539d9256293365242e9875ef78fccbda226635c63b5d
+	source = ocaml-bin_prot-0.17.0.tar.gz::https://github.com/janestreet/bin_prot/archive/v0.17.0.tar.gz
+	b2sums = bad3203bc42f6f95550a29392fe419d3159614743736ee3bf5855765330c2549575d7af8d42f3534be37fb346d43aa56667d71af328c7ea8ba6c4a64006f695a
 
 pkgname = ocaml-bin_prot

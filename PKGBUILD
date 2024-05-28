@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='bin_prot'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='A binary protocol generator'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT' 'BSD-3-Clause')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_compare>=0.16.0' 'ocaml-ppx_custom_printf>=0.16.0' 'ocaml-ppx_fields_conv>=0.16.0' 'ocaml-ppx_optcomp>=0.16.0' 'ocaml-ppx_sexp_conv>=0.16.0' 'ocaml-ppx_stable_witness>=0.16.0' 'ocaml-ppx_variants_conv>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppx_compare>=0.17.0' 'ocaml-ppx_custom_printf>=0.17.0' 'ocaml-ppx_fields_conv>=0.17.0' 'ocaml-ppx_optcomp>=0.17.0' 'ocaml-ppx_sexp_conv>=0.17.0' 'ocaml-ppx_stable_witness>=0.17.0' 'ocaml-ppx_variants_conv>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('e6e2b4c2984fc89fc7ceb57cae7b7f796e6a0441e4d37da1b6bc1f167d8900b1c4bc0174d5d9de5669b7539d9256293365242e9875ef78fccbda226635c63b5d')
+b2sums=('bad3203bc42f6f95550a29392fe419d3159614743736ee3bf5855765330c2549575d7af8d42f3534be37fb346d43aa56667d71af328c7ea8ba6c4a64006f695a')
 
 _sourcedirectory="$_projectname-$pkgver"
 
