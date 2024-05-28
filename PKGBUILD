@@ -2,8 +2,8 @@
 # The pkgbuild is based on the original pkgbuild for citra.
 
 pkgname=lime3ds
-pkgver=2114
-pkgrel=3
+pkgver=2114.1
+pkgrel=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gc
 conflicts=('lime3ds-appimage' 'lime3ds-git' 'citra')
 options=('lto' '!buildflags')
 source=("lime3ds::https://github.com/Lime3DS/Lime3DS/releases/download/$pkgver/$pkgname-unified-source-$pkgver.tar.xz")
-md5sums=('4994df73fb31366475703a4da5698134')
+md5sums=('9b27950839f132814407bd2609e46f7b')
 
 build() {
     # Fix to help cmake find libusb
