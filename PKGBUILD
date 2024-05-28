@@ -3,13 +3,14 @@
 # Contributor: Sandro Munda <munda.sandro@gmail.com>
 
 pkgname=python-watchdog-git
-pkgver=4.0.1.r1464.b92b6fa
-pkgrel=2
+pkgver=4.0.2.r1466.9f23b59
+pkgrel=1
 pkgdesc='Python 3 library to monitor filesystem events.'
 arch=('any')
 url='https://github.com/gorakhargosh/watchdog'
 license=('Apache-2.0')
 depends=('python')
+optdepends=('python-yaml: for watchmedo')
 source=('git+https://github.com/gorakhargosh/watchdog.git')
 sha256sums=('SKIP')
 makedepends=('git' 'python-setuptools')
