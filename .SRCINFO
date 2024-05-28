@@ -1,0 +1,18 @@
+pkgbase = mergen
+	pkgdesc = Deobfuscation via optimization with usage of LLVM IR and parsing assembly
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/NaC-L/Mergen
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	depends = llvm
+	provides = mergen
+	conflicts = mergen
+	source = https://github.com/NaC-L/Mergen/archive/refs/tags/0.5.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = mergen
