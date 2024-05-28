@@ -1,6 +1,6 @@
 pkgbase = warp-plus-git
 	pkgdesc = An open-source implementation of Cloudflare's Warp, enhanced with Psiphon integration (GitHub Version).
-	pkgver = 1.2.1.r1.b674937
+	pkgver = 1.2.2.r0.dc4f281
 	pkgrel = 1
 	url = https://github.com/bepass-org/warp-plus
 	install = warp-plus.install
