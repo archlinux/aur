@@ -1,0 +1,17 @@
+pkgbase = hudkit
+	pkgdesc = Transparent click-through web browser overlay, using WebKit
+	pkgver = 4.1.0
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/anko/hudkit
+	arch = x86_64
+	license = ISC
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = gcc
+	depends = gtk3
+	depends = webkit2gtk
+	source = hudkit::git+https://github.com/anko/hudkit.git#tag=v4.1.0
+	sha256sums = SKIP
+
+pkgname = hudkit
