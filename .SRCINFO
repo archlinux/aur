@@ -1,6 +1,6 @@
 pkgbase = photoprism-bin
 	pkgdesc = Personal Photo Management powered by Go and Google TensorFlow
-	pkgver = 240523
+	pkgver = 240528
 	pkgrel = 0
 	url = https://github.com/photoprism/photoprism
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = photoprism-bin
 	sha256sums = ec6f438c9818f982fb2aaa1895a8b07abb41a3c2befd1c3baa2fecbc2d6cc721
 	sha256sums = 76de44acbdfd3f818b9549b77daf187fb740ceccd3c01d42d8308d5edcf49d6c
 	sha256sums = ca4bfbddf0a550f215f28e31de56eb9ac60777f65aa7b89433155aa7998388e8
-	source_x86_64 = https://github.com/photoprism/photoprism/releases/download/240523-923ee0cf7/photoprism_240523-923ee0cf7-linux-amd64.tar.gz
-	sha256sums_x86_64 = e56bbb615f859902a9a7a5fa155ee44fa20a25a0bebfe03f21b7825f2db2609e
-	source_aarch64 = https://github.com/photoprism/photoprism/releases/download/240523-923ee0cf7/photoprism_240523-923ee0cf7-linux-arm64.tar.gz
-	sha256sums_aarch64 = 8e66ebb6ac16cb8df8dbed4d6ff97aec54896e0035d3c233f05f8f70d850bac2
+	source_x86_64 = https://github.com/photoprism/photoprism/releases/download/240528-977d6c0de/photoprism_240528-977d6c0de-linux-amd64.tar.gz
+	sha256sums_x86_64 = 459879b4c25094e157f34a423ca9e0550207a9819308cf58bf198f50b1203e98
+	source_aarch64 = https://github.com/photoprism/photoprism/releases/download/240528-977d6c0de/photoprism_240528-977d6c0de-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3792c8b5e3e2e5aa34c50b29348a8a3160d6d4d577145eb155a46098fda1d8fc
 
 pkgname = photoprism-bin
