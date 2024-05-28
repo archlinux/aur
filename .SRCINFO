@@ -1,13 +1,13 @@
 pkgbase = shikane
 	pkgdesc = deterministic dynamic output configuration tool for Wayland compositors
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://gitlab.com/w0lff/shikane
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = pandoc
-	source = shikane-1.0.0.tar.gz::https://static.crates.io/crates/shikane/shikane-1.0.0.crate
-	sha512sums = 490e730f9028e2341bed9e62ca743f28e6e525d0dbb4b72b3c719d6c1e9770abb5060ce03504d99d2e3e7a360ab8c82a7eb7b3e536234c3b9c65904f10f33477
+	source = shikane-1.0.1.tar.gz::https://static.crates.io/crates/shikane/shikane-1.0.1.crate
+	sha512sums = 55e1038390c547003d2e048aa678155ceb36c4cfcd216d3aefbc798832f9c7abfe386704fb6233279c5fcc3c7d64d05d50f1ddf110b72cfae8c1f2bd80379189
 
 pkgname = shikane
