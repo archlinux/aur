@@ -21,7 +21,6 @@ makedepends=(
     'gendesk'
     'curl'
     'icoutils'
-    'base-devel'
     'gcc'
 )
 optdepends=(

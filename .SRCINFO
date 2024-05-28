@@ -10,7 +10,6 @@ pkgbase = miteiru
 	makedepends = gendesk
 	makedepends = curl
 	makedepends = icoutils
-	makedepends = base-devel
 	makedepends = gcc
 	depends = electron21
 	depends = mecab
