@@ -1,0 +1,17 @@
+pkgbase = python-declare
+	pkgdesc = Declare attributes
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/declare/#description
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/declare/declare-1.0.1.tar.gz
+	sha256sums = 4c3c35ed96dcbdf45f4beeeb14554582a04d49d0094a8ec9fd61d10a0f9aa7fb
+
+pkgname = python-declare
