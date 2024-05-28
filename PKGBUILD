@@ -3,7 +3,7 @@
 # Contributor: 網軍總司令
 
 pkgname=librime
-pkgver=1.11.0
+pkgver=1.11.1
 _octagramcommit=bd12863f45fbbd5c7db06d5ec8be8987b10253bf
 _luacommit=7be6974b6d81c116bba39f6707dc640f6636fa4e
 _charcodecommit=55e7f563e999802d41a13ba02657c1be4b2011b4
@@ -23,7 +23,7 @@ source=("git+https://github.com/rime/librime.git#tag=$pkgver"
         "git+https://github.com/rime/librime-charcode.git#commit=$_charcodecommit"
         "git+https://github.com/lotem/librime-proto.git#commit=$_protocommit"
         "git+https://github.com/rime/librime-predict.git#commit=$_predictcommit")
-sha512sums=('c644e6823f8288b410fbcd23cd5f705a797d708cf0b272e23e1a43ee89bdfde7b096367ec09dbc6694c0ecb46e2f249075c63b329299e0cd38d401d7b1e1635b'
+sha512sums=('69cacb28789c91446216dd8b99e6b5ca9643e478fcfb8ae0f8e6a6ea054c33c0610ec6e853b27598865d46b240205630a69ea69bb9f8e3ce6fc6528b59fd4e39'
             '3949507608cd0d840560f36fac5b4ed85a9d3f0622f6ccc412111fe0c4448e6a948a134690d75cdae8dd21adae1bc6cbc93f98e8509f524805dcd79593ab4eac'
             'c4236c5bc7faffc9b0a2eabb1dea0f70d0685699d66bf8cb389eb348be74e19b2fb72ae4c5aec46cf6ecfb33dc1ea3461d7581f1287b03dc92bbac0621b141ff'
             'c21a1384f7eba77afdcda4bd0cffcdfa1bc6989e009f02c685160de443f8fc658bee7def57fe93162b3d5f31d366b48271d7204b4f6e7dd057facb2787703a15'
