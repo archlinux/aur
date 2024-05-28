@@ -10,11 +10,11 @@ noextract=("${_pkgname}-${pkgver}.tgz")
 sha256sums=('SKIP'
             'SKIP')
 arch=(any)
-pkgver=5.2.11
+pkgver=5.2.12
 pkgrel=1
 source=(
 	"${_pkgname}-${pkgver}.tgz"::"https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
-	LICENSE::"https://github.com/vitejs/vite"
+	LICENSE::"https://github.com/vitejs/vite/raw/main/LICENSE"
 )
 function package() {
 	npm i -g --prefix "${pkgdir}/usr" "${srcdir}/${_pkgname}-${pkgver}.tgz"
