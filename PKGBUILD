@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='typerep'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='A library for runtime types'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('1a93552b3ba83d0b1fee155a083cf929949089372dc21419a62a0f3ef0ea0171b6294833e3ff06cc718e2cfd761072f1c835f5026a17bb3fb17a0dfc7a23718e')
+b2sums=('52548d976d9580acc3b31a39fd6ce1fdeb543a32ae6453537d5e5fbf4f31293ad15312c768a95c3d998eef54efa45bfab2a2bf36e2baef98588e34270efa370e')
 
 _sourcedirectory="$_projectname-$pkgver"
 
