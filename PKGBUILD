@@ -3,7 +3,7 @@
 _pkgname=vfrflight
 pkgname="${_pkgname}-bin"
 pkgver=2.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Tool for VFR flight planning developed by real world private pilot. Can be used for real world flight planning and trainings in FSX / FSX:SE / Prepar3D / X-Plane 10/11 and FlightGear."
 arch=(
   'any'
@@ -26,13 +26,12 @@ conflicts=(
   "${_pkgname}"
 )
 source=(
-  #"http://web.archive.org/web/20210125074739/http://vfrflight.org/files/VfrFlight-${pkgver}.zip"
-  "http://web.archive.org/web/20231214121430/http://vfrflight.org/files/VfrFlight-${pkgver}.zip"
+  "https://www.huwig.de/aur/VfrFlight-${pkgver}.zip"
   "vfrflight.sh"
   "TERMS_OF_USE.txt"
 )
 sha256sums=(
-  'ba005989c01d09f6d802510e327b997d811557d08e2988f7441df8d7f52c4b76'
+  '4248c8da66b109e2145c8cb7542eaa6dca25174cf40cba06762762787c40ddbf'
   '6e11fbcdbfbf7d7e3ebba164513b201a8935745230c2e3c6e279f85de1f0a6af'
   '62322af524e2448f04ea289d9881a31ed87e4ba4dbca22e643ec4b2c831c17dd'
 )
