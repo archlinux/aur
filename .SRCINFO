@@ -1,0 +1,13 @@
+pkgbase = saytime
+	pkgdesc = speaks the current time through your sound card
+	pkgver = 1.0
+	pkgrel = 35
+	url = http://www.acme.com/software/saytime/
+	arch = x86_64
+	license = GPL
+	depends = sox
+	source = http://deb.debian.org/debian/pool/main/s/saytime/saytime_1.0.orig.tar.gz
+	source = https://ftp.debian.org/debian/pool/main/s/saytime/saytime_1.0-35.debian.tar.xz
+	md5sums = 9e251909ca6c38757a6da4f24c608b6e
+	md5sums = 26692aba8640aeac5cd9a27591b167bb
+pkgname = saytime
