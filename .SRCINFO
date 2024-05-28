@@ -1,6 +1,6 @@
 pkgbase = trgui-ng-git
-	pkgdesc = Transmission torrent daemon remote GUI. Remote control GUI for Transmission torrent daemon
-	pkgver = r373.d4a10c6
+	pkgdesc = Remote GUI for Transmission torrent daemon
+	pkgver = r390.6178ade
 	pkgrel = 1
 	url = https://github.com/openscopeproject/TrguiNG
 	arch = x86_64
