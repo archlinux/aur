@@ -1,4 +1,4 @@
-# Maintainer: username227 <username [at] gmail [dot] com> 
+# Maintainer: username227 <gfrank227 [at] gmail [dot] com> 
 
 pkgname=sudachi-bin
 _pkgver=v1.0.2
