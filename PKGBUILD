@@ -1,7 +1,7 @@
 # Maintainer: Gianmarco Gargiulo <me@gianmarco.gg>
 pkgname=harmony2
-pkgver=2.0.1
-pkgrel=1
+pkgver=2.0.2
+pkgrel=2
 pkgdesc="Dream Sounds: Harmony 2 sound theme for KDE Plasma"
 arch=(any)
 url="https://gianmarco.gg/other/harmony2/"
