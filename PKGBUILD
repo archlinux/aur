@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='time_now'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Reports the current time'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-jane-street-headers>=0.16.0' 'ocaml-jst-config>=0.16.0' 'ocaml-ppx_base>=0.16.0' 'ocaml-ppx_optcomp>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-jane-street-headers>=0.17.0' 'ocaml-jst-config>=0.17.0' 'ocaml-ppx_base>=0.17.0' 'ocaml-ppx_optcomp>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('59c380bc89ac5185e344ef051180270bad62ccc7ad60aec4279aba5f71bae8dae6ac29136a6ca85ad7b24e204615fd84cd7db0901b6550de490e8992301c0ac2')
+b2sums=('49f9af322194582c37961ac4f386a757e317563461e0a04c141bcb1abcc3b4f5d4a7f49f5d5aec0580db19c38d980de9e5ad8d3b1e4d573e12a7476e99bbb260')
 
 _sourcedirectory="$_projectname-$pkgver"
 
