@@ -13,7 +13,7 @@ pkgrel=1
 
 pkgdesc="Fixed-point calculator as a fullscreen editor. You may edit at any position in the expression list. Supports basic arithmetic, interest and sales tax computation. Designed for use as a checkbook or expense-account balancing tool. Formerly known as 'add'."
 url="http://invisible-island.net/add/add.html"
-license=('custom: free software')
+license=('LicenseRef-OpenSource_with_conditions')
 
 arch=(
   'i686'
@@ -23,6 +23,7 @@ arch=(
 )
 
 depends=(
+  'glibc'
   'ncurses'
   'libncursesw.so'
 )
@@ -63,11 +64,11 @@ prepare() {
   cd "$(_latestdir "${srcdir}")"
 
   # The make system's renaming does not change the executable name in 'x+', so we do it by hand here:
-  msg "Fixing executable name in 'x+' ..."
+  msg "Fixing executable name in 'xterm.sh' ..."
   sed -E "s|([[:space:]])add([[:space:]])|\1${_pkgname}\2|" -i "xterm.sh"
 
   # The way specifiyng a font size is a bit broken. Changing it ...
-  msg "Changing the way to specify fontsize in 'x+' ..."
+  msg "Changing the way to specify fontsize in 'xterm.sg' ..."
   sed -E "s|([[:space:]])\-fn[[:space:]]+[0-9]+x[0-9]+([[:space:]])|\1-xrm 'xterm*font:*-fixed-*-*-*-20-*'\2|" -i "xterm.sh"
 }
 
