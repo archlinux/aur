@@ -1,6 +1,6 @@
 pkgbase = qt5-charts
 	pkgdesc = Provides a set of easy to use chart components
-	pkgver = 5.15.13
+	pkgver = 5.15.14
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = qt5-charts
 	makedepends = git
 	depends = qt5-base
 	optdepends = qt5-declarative: QML bindings
-	source = git+https://invent.kde.org/qt/qt/qtcharts#commit=3f3f14d69a509c3e8027bfb5d7ffca9b4f3ef003
-	sha256sums = SKIP
+	source = kde-qtcharts::git+https://invent.kde.org/qt/qt/qtcharts#commit=7315c48bcec88014e78165bbda54abfcd557e0af
+	sha256sums = 222e7f3fa95314e9e25e202ed02d92b67fae320762c0d6fc5734ff8c1c98bbdf
 
 pkgname = qt5-charts
