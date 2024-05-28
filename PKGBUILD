@@ -1,8 +1,10 @@
-# Maintainer: David P. <megver83@parabola.nu>
+# Maintainer:  Ben Schneider    <ben@bens.haus>
+# Contributor: Patrick D. Lloyd <archlinux.org@pdlloyd.com>
+# Contributor: David P.         <megver83@parabola.nu>
 
 _target=arm-linux-gnueabi
 pkgname=$_target-gcc
-_pkgver=13.2.0
+_pkgver=14.1.0
 pkgver=$_pkgver
 _islver=0.26
 pkgrel=1
@@ -14,7 +16,7 @@ depends=($_target-binutils libmpc zlib)
 makedepends=(gmp mpfr)
 options=(!emptydirs !strip)
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgver/gcc-$_pkgver.tar.xz{,.sig}
-        https://libisl.sourceforge.io/isl-$_islver.tar.bz2)
+        https://libisl.sourceforge.io/isl-$_islver.tar.xz)
 validpgpkeys=(D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62)  # Jakub Jelinek <jakub@redhat.com>
 
 if [ -n "$_snapshot" ]; then
@@ -96,7 +98,7 @@ package() {
   # Remove files that conflict with host gcc package
   rm -r "$pkgdir/usr/share/"{man/man7,info}
 }
-sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
+sha512sums=('e9e224f2b26646fcf038d28dfa08b94c623bc57941f99894a321d01c600f7c68aff6b8837fd25e73e540de1f8de5606e98694a62cdcdfb525ce768b3ef6879ea'
             'SKIP'
-            '5eac8664e9d67be6bd0bee5085d6840b8baf738c06814df47eaf4166d9776436')
+            '9b5ec16d14e48f9ac9bf9cd379d3022959cfc617ade9e0d4caf2862299564fecba09d67dbdf1a4071f2f743a4fd0fabd0b0c3d15f5cddfe7226cdd5d6c2a0c66')
 
