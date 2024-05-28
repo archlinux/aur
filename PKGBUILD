@@ -35,10 +35,10 @@ fi
 ###################################################################################
 
 pkgbase=linux-rc
-pkgver=6.9rc1
-_pkgver=6.9-rc1
+pkgver=6.10rc1
+_pkgver=6.10-rc1
 pkgrel=1
-commit=abef9db380deca88617f7014b683667ef6fc81e4
+commit=1e29f0ecf2221b2fbf580752f42ab5040d88b5e0
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -285,7 +285,7 @@ _package-headers(){
   # https://bugs.archlinux.org/task/71392
   install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
-  msg "Installing KConfig files..."
+  msg "Installing Kconfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
   msg "Removing unneeded architectures..."
@@ -328,9 +328,9 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('a0239424e10e45c43252d5decc6978a3fa58e0d4d631d0855db57fa209f53165'
-            'c2b00c84c4b543db431e06604d939a62f93107d18369f4d9860dc8062b01ab45'
-            '416609986399d3046811bcc2344f4ee0833b6c92e305da3925a6e193f810dad2')
+sha256sums=('102823885970d7d7bcf05a9b55dbe851ef95d99ba4b2d779e3e6343bdd4b6ecc'
+            '5f8a4de3f17d6d1b624e70514327b05fafffe8af913f95829b9c6830b4a8a4e3'
+            'e3ff7450ac5ce41729febf471cba26446f88c3e711808cb01a012ed4d9f8d345')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
