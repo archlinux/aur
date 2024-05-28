@@ -2,9 +2,9 @@
 # Contributor:  Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-variable-lite
-pkgver=20220607
-_commit=3b4605e3125ff121bdfb65eecc6f891c0b347cb4
+pkgver=24.5.1
 pkgrel=1
+epoch=1
 pkgdesc="Google Noto TTF variable fonts (lite version)"
 arch=(any)
 url="https://www.google.com/get/noto/"
@@ -13,17 +13,20 @@ optdepends=('noto-fonts-emoji: Emoji characters'
             'noto-fonts-variable-ar: Fonts for Arabic Script')
 provides=(ttf-font noto-fonts noto-fonts-extra)
 conflicts=(noto-fonts noto-fonts-extra)
-_url="https://github.com/googlefonts/noto-fonts/raw/${_commit}"
-source=("${_url}"/unhinted/variable-ttf/NotoSans{-Italic-VF,-VF,Mono-VF}.ttf
-        "${_url}"/unhinted/variable-ttf/NotoSerif-{Italic-VF,VF}.ttf
-        "${_url}"/LICENSE
+_url="https://github.com/notofonts/notofonts.github.io/raw/noto-monthly-release-${pkgver}/fonts"
+source=("${_url}/NotoSans/googlefonts/variable/NotoSans-Italic[wdth,wght].ttf"
+        "${_url}/NotoSans/googlefonts/variable/NotoSans[wdth,wght].ttf"
+        "${_url}/NotoSansMono/googlefonts/variable/NotoSansMono[wdth,wght].ttf"
+        "${_url}/NotoSerif/googlefonts/variable/NotoSerif-Italic[wdth,wght].ttf"
+        "${_url}/NotoSerif/googlefonts/variable/NotoSerif[wdth,wght].ttf"
+        "${_url}/LICENSE"
         {46,66}-noto-{mono,serif,sans}.conf)
-sha256sums=('79fbb24b91750e3ada1a5a5a30a8c6fcd1a88574515d77fcb541d4289e0c2f86'
-            '2af0393ceff5554cbcd6a51a017046f624525046cb0a218f5c7f94fe2324d673'
-            '92243cb284614c1f2589f53d8ba516a9bbca654772c1b3a032e289814906873f'
-            'a1a1d326d4ff86d89df0169e49b14056689791e784a4b43a95565533e1b61b7c'
-            'b278fb545d310982fb9dc0165925c98e4ff5a6dc14dfd0e6dd085c0c8b89d000'
-            '0dab92d0544f7b233403f14b84a663bdbfa746982eda629e7f4f9ffe1b036feb'
+sha256sums=('977f2f82ba421c81c7b4965e9ec9bd8119fc5afab0c743f74f8ca9c68201820e'
+            'e0890ec6da515d47b9d7cdb8b4ded1d9255fc4e5254ae03f9a579da6cb354717'
+            '2cb2adb378a8f574213e23df697050b83c54c27df465a2015552740b2769a081'
+            'e87acbc6c0efd0d9a20d6a8cbbda2b266c14be3a3a6f5af8ec9d7b2460570ad1'
+            '5a49f655b847e95a499f9f5c6b1b0695d25fe38af970302ee38cd65874d7f861'
+            'f2095b08bed08b23a6fe26112fcd679a2bee3f002eef077eb05d215ed1051bd8'
             'f5c09b37280d7569b6c99a78511639be4ae25b8c5406464422fe0421fe13a884'
             'c94368b24506770767d003e5bcba589a8e402e489c240ee52453bf3ac7e9b5fa'
             '83a8faf6a47954075f97a2d555048e2a6689c38603b2ca00150157bf645f4593'
@@ -32,11 +35,10 @@ sha256sums=('79fbb24b91750e3ada1a5a5a30a8c6fcd1a88574515d77fcb541d4289e0c2f86'
             '52684bebf6447be22618d2a04ff37623ec92f9d8ccf6b6f972e5bcbcfee90d69')
 
 package() {
-  install -d "${pkgdir}/usr/share/fonts/TTF"
-  install -Dm644 "$srcdir"/*.ttf "$pkgdir/usr/share/fonts/TTF"
+  install -Dm644 "$srcdir"/Noto*.ttf -t "$pkgdir"/usr/share/fonts/"$pkgname"
   install -Dm644 "$srcdir"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # Install fontconfig files
+  # Install fontconfig presets
   install -Dm644 "$srcdir"/*.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
   install -d "$pkgdir"/usr/share/fontconfig/conf.default
   ln -rs "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default
