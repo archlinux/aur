@@ -20,6 +20,8 @@ build() {
 	dune build --release --verbose
 }
 
+# No tests available
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
