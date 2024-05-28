@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_stable_witness'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Ppx extension for deriving a witness that a type is intended to be stable'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppxlib>=0.28.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppxlib>=0.28.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('386688f6b9bed1fa481030f881b124681c18a49c8a1933233a7cd90dff5ddb4f1739cfb2d1c5262b2e7c2c2e593c9f141af6565a5596547c1770e19e2422ea36')
+b2sums=('6bce85ffbf42f85a8084da54bc5b78512bc834492dcf21a5379d8a89dcc80240de407a7e6e8d67e2661663c8c6bc68adc54ab5e8092e3984f2aec4b78a40490b')
 
 _sourcedirectory="$_projectname-$pkgver"
 
