@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='async_rpc_kernel'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Platform-independent core of Async RPC library for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-async_kernel>=0.16.0' 'ocaml-core>=0.16.0' 'ocaml-ppx_jane>=0.16.0' 'ocaml-protocol_version_header>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-async_kernel>=0.17.0' 'ocaml-core>=0.17.0' 'ocaml-core_kernel>=0.17.0' 'ocaml-gel>=0.17.0' 'ocaml-ppx_jane>=0.17.0' 'ocaml-protocol_version_header>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('62381da44300df9f2c422fb1e439fe00316a5017963c2a3fb5d8b52f6268944cc52ec4b6b2cd694798717eaee2282e3bb10c59a7dc76ac41b2d319595e658e0f')
+b2sums=('21a47425457a9d62a64664bb87cae64623eaf9c449d1cff06b0260e2938b65e69cc7cad63f74522e205ece01a3f884baab49543a007d792ca6216dda45c0c9bc')
 
 _sourcedirectory="$_projectname-$pkgver"
 

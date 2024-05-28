@@ -1,19 +1,21 @@
 pkgbase = ocaml-async_rpc_kernel
 	pkgdesc = Platform-independent core of Async RPC library for OCaml
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/janestreet/async_rpc_kernel
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = dune>=2.0.0
-	depends = ocaml>=4.14.0
-	depends = ocaml-async_kernel>=0.16.0
-	depends = ocaml-core>=0.16.0
-	depends = ocaml-ppx_jane>=0.16.0
-	depends = ocaml-protocol_version_header>=0.16.0
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-async_kernel>=0.17.0
+	depends = ocaml-core>=0.17.0
+	depends = ocaml-core_kernel>=0.17.0
+	depends = ocaml-gel>=0.17.0
+	depends = ocaml-ppx_jane>=0.17.0
+	depends = ocaml-protocol_version_header>=0.17.0
 	options = !strip
-	source = ocaml-async_rpc_kernel-0.16.0.tar.gz::https://github.com/janestreet/async_rpc_kernel/archive/v0.16.0.tar.gz
-	sha512sums = 62381da44300df9f2c422fb1e439fe00316a5017963c2a3fb5d8b52f6268944cc52ec4b6b2cd694798717eaee2282e3bb10c59a7dc76ac41b2d319595e658e0f
+	source = ocaml-async_rpc_kernel-0.17.0.tar.gz::https://github.com/janestreet/async_rpc_kernel/archive/v0.17.0.tar.gz
+	b2sums = 21a47425457a9d62a64664bb87cae64623eaf9c449d1cff06b0260e2938b65e69cc7cad63f74522e205ece01a3f884baab49543a007d792ca6216dda45c0c9bc
 
 pkgname = ocaml-async_rpc_kernel
