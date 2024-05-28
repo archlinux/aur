@@ -4,18 +4,17 @@ pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
 pkgver=1.89.1
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements."
 arch=('x86_64')
 url="https://github.com/RubisetCie/vscodius"
 license=('MIT')
 provides=(
     "${pkgname%-bin}=${pkgver}"
-    'code'
+    "code=${pkgver}"
 )
 conflicts=(
     "${pkgname%-bin}"
-    'code'
 )
 depends=(
     "electron${_electronversion}"
@@ -40,7 +39,7 @@ build() {
         -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -f -n -q --pkgname="vs${_appname}-bin" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    gendesk -f -n -q --pkgname="${pkgname}%-bin" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

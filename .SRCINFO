@@ -1,7 +1,7 @@
 pkgbase = vscodius-bin
 	pkgdesc = Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements.
 	pkgver = 1.89.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RubisetCie/vscodius
 	arch = x86_64
 	license = MIT
@@ -9,9 +9,8 @@ pkgbase = vscodius-bin
 	depends = electron28
 	depends = libxkbfile
 	provides = vscodius=1.89.1
-	provides = code
+	provides = code=1.89.1
 	conflicts = vscodius
-	conflicts = code
 	options = !strip
 	source = vscodius-1.89.1.zip::https://github.com/RubisetCie/vscodius/releases/download/v1.89.1/VSCodius-Linux-x64-1.89.1.zip
 	source = LICENSE-1.89.1.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v1.89.1/LICENSE.txt
