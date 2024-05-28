@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=splines
 pkgname=python-${_base}
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Splines in Euclidean Space and Beyond"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/AudioSceneDescriptionFormat/${_base}/archive/${pkgver}.tar.gz)
-sha512sums=('08cd84fbb68c9953e6297b67767741fdd724db613af493c723f080697037c4661af86c1e8cbe19764000ae7a71f0e8074ff78f9deb4ebdb9d0cc7d77ffd11b93')
+sha512sums=('3434b963df0e609810875e784c17a6d07e8131e5ed8ecfd6259fab168dc79357c5bebce729d776633e91f901620eaefc7f9e45f9e9d9899a0b1279f638080088')
 
 build() {
   cd ${_base}-${pkgver}
