@@ -2,14 +2,42 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-git
-pkgver=2.9.0.dev.r6744.g3d15470d
+pkgver=2.9.0.dev.r6977.g5a449a38
 pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('x86_64')
 url='http://www.krusader.org'
 license=('GPL')
-depends=('kparts5' 'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'kdoctools5' 'git')
+depends=(acl
+         gcc-libs
+         glibc
+         karchive5
+         kbookmarks5
+         kcodecs5
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kguiaddons5
+         ki18n5
+         kiconthemes5
+         kio5
+         kitemviews5
+         kjobwidgets5
+         knotifications5
+         kparts5
+         kservice5
+         ktextwidgets5
+         kwallet5
+         kwidgetsaddons5
+         kwindowsystem5
+         kxmlgui5
+         qt5-base
+         solid5
+         zlib)
+makedepends=(extra-cmake-modules
+             kdoctools5
+             git)
 optdepends=('xz: LZMA and XZ archive support'
             'unzip: ZIP decompression support'
             'zip: ZIP archive support'
@@ -41,7 +69,7 @@ pkgver() {
 
 build() {
   cmake -B build -S krusader \
-    -DKDESU_PATH="/usr/lib/kf5/kdesu"
+    -DKDESU_PATH="/usr/lib/kf6/kdesu"
   cmake --build build
 }
 
