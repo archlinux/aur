@@ -1,23 +1,23 @@
 pkgbase = ocaml-ppx_base
 	pkgdesc = Base set of ppx rewriters
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/janestreet/ppx_base
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = dune>=2.0.0
-	depends = ocaml>=4.14.0
-	depends = ocaml-ppx_cold>=0.16.0
-	depends = ocaml-ppx_compare>=0.16.0
-	depends = ocaml-ppx_enumerate>=0.16.0
-	depends = ocaml-ppx_globalize>=0.16.0
-	depends = ocaml-ppx_hash>=0.16.0
-	depends = ocaml-ppx_sexp_conv>=0.16.0
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-ppx_cold>=0.17.0
+	depends = ocaml-ppx_compare>=0.17.0
+	depends = ocaml-ppx_enumerate>=0.17.0
+	depends = ocaml-ppx_globalize>=0.17.0
+	depends = ocaml-ppx_hash>=0.17.0
+	depends = ocaml-ppx_sexp_conv>=0.17.0
 	depends = ocaml-ppxlib>=0.28.0
 	depends = zstd
 	options = !strip
-	source = ocaml-ppx_base-0.16.0.tar.gz::https://github.com/janestreet/ppx_base/archive/v0.16.0.tar.gz
-	sha512sums = 110b03434f0ef7c82b8728c60ac03f56ec0bc2a292d9cc39bbca0102a976c34fb4a18311a7a1ff6755f7f61c2aa677d0413da36635f98336cc59eef962b8abb3
+	source = ocaml-ppx_base-0.17.0.tar.gz::https://github.com/janestreet/ppx_base/archive/v0.17.0.tar.gz
+	b2sums = 9f18ed75e332ca6ef548da02962a7b75cad8bebb62fff6d9a56642a9a4c4c847051e4d6d7088fcfd363069d8af68765a098d40c3bbed7b77c54cf446f70ff045
 
 pkgname = ocaml-ppx_base

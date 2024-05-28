@@ -2,17 +2,17 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_base'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Base set of ppx rewriters'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-ppx_cold>=0.16.0' 'ocaml-ppx_compare>=0.16.0' 'ocaml-ppx_enumerate>=0.16.0' 'ocaml-ppx_globalize>=0.16.0' 'ocaml-ppx_hash>=0.16.0' 'ocaml-ppx_sexp_conv>=0.16.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-ppx_cold>=0.17.0' 'ocaml-ppx_compare>=0.17.0' 'ocaml-ppx_enumerate>=0.17.0' 'ocaml-ppx_globalize>=0.17.0' 'ocaml-ppx_hash>=0.17.0' 'ocaml-ppx_sexp_conv>=0.17.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('110b03434f0ef7c82b8728c60ac03f56ec0bc2a292d9cc39bbca0102a976c34fb4a18311a7a1ff6755f7f61c2aa677d0413da36635f98336cc59eef962b8abb3')
+b2sums=('9f18ed75e332ca6ef548da02962a7b75cad8bebb62fff6d9a56642a9a4c4c847051e4d6d7088fcfd363069d8af68765a098d40c3bbed7b77c54cf446f70ff045')
 
 _sourcedirectory="$_projectname-$pkgver"
 
