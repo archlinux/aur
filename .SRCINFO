@@ -6,7 +6,7 @@ pkgbase = sofie-chef-bin
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
-	depends = electron26-bin
+	depends = electron26
 	provides = sofie-chef=0.3.4
 	conflicts = sofie-chef
 	source = sofie-chef-0.3.4.AppImage::https://github.com/nrkno/sofie-chef/releases/download/v0.3.4/SofieChef-0.3.4-Linux-Executable.AppImage
