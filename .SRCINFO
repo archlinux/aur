@@ -1,23 +1,22 @@
 pkgbase = ocaml-ppx_expect
 	pkgdesc = Cram like framework for OCaml
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/ppx_expect
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = dune>=2.0.0
-	depends = ocaml>=4.14.0
-	depends = ocaml-base>=0.16.0
-	depends = ocaml-ppx_here>=0.16.0
-	depends = ocaml-ppx_inline_test>=0.16.0
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-base>=0.17.0
+	depends = ocaml-ppx_here>=0.17.0
+	depends = ocaml-ppx_inline_test>=0.17.0
+	depends = ocaml-stdio>=0.17.0
 	depends = ocaml-ppxlib>=0.28.0
-	depends = ocaml-re>=1.8.0
-	depends = ocaml-stdio>=0.16.0
 	depends = zstd
 	options = !strip
-	source = ocaml-ppx_expect-0.16.0.tar.gz::https://github.com/janestreet/ppx_expect/archive/v0.16.0.tar.gz
-	sha512sums = fdc8cb76afc9c9b436cbf8627b0c6543ae64fc51e92bf25db99ace10646aef3be3d1a3659dedb3e888494ab4e380e387b92557a584fa3e1eca79e19751a0b950
+	source = ocaml-ppx_expect-0.17.0.tar.gz::https://github.com/janestreet/ppx_expect/archive/v0.17.0.tar.gz
+	b2sums = f9d503b2e6cca52ee66572e0d6e415b4840c3cabed45be034c7ef8265645d0a8916275b314c1042df32a2a126464e944bfbe5982dfbf136ecea0ff8dfd422bac
 
 pkgname = ocaml-ppx_expect

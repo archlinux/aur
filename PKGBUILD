@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_expect'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Cram like framework for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_here>=0.16.0' 'ocaml-ppx_inline_test>=0.16.0' 'ocaml-ppxlib>=0.28.0' 'ocaml-re>=1.8.0' 'ocaml-stdio>=0.16.0' 'zstd')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppx_here>=0.17.0' 'ocaml-ppx_inline_test>=0.17.0' 'ocaml-stdio>=0.17.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fdc8cb76afc9c9b436cbf8627b0c6543ae64fc51e92bf25db99ace10646aef3be3d1a3659dedb3e888494ab4e380e387b92557a584fa3e1eca79e19751a0b950')
+b2sums=('f9d503b2e6cca52ee66572e0d6e415b4840c3cabed45be034c7ef8265645d0a8916275b314c1042df32a2a126464e944bfbe5982dfbf136ecea0ff8dfd422bac')
 
 _sourcedirectory="$_projectname-$pkgver"
 
