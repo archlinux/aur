@@ -3,12 +3,12 @@
 
 pkgname=libdmx
 pkgver=1.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='X11 Distributed Multihead extension library'
 arch=('x86_64' 'i686')
 license=('MIT')
 url='https://xorg.freedesktop.org/'
-depends=('libxext')
+depends=(libx11 glibc xorgproto libxext)
 makedepends=('xorg-util-macros')
 source=("https://www.x.org/releases/individual/lib/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('070e82cc1daa1b21ee1339aef56a909eab04cbe7d430fabfbb01ecd21b2dd9f3')
