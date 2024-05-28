@@ -1,7 +1,7 @@
 pkgbase = btrustbiss
 	pkgdesc = Browser independent signing service.
-	pkgver = 3.32
-	pkgrel = 2
+	pkgver = 3.34
+	pkgrel = 1
 	url = https://www.b-trust.org
 	install = btrustbiss.install
 	arch = x86_64
@@ -16,6 +16,6 @@ pkgbase = btrustbiss
 	options = !emptydirs
 	options = !makeflags
 	source = https://www.b-trust.org/attachments/BtrustPrivateFile/24/docs/B-TrustBISS.tar
-	sha256sums = 172d8bbcc496c3a1265b5bbc1995ff071cc9916601eea1fb230933bac2a0b407
+	sha256sums = f720964235f17ad253adc1d75671998c84842b213eec87e5d44353db0a46c686
 
 pkgname = btrustbiss
