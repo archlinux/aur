@@ -14,6 +14,8 @@ makedepends=(
     "gftools"
     "git"
     "python-fontmake"
+
+    # these next two deps should be dependencies of gftools (but are not)
     "python-networkx"
     "python-ninja"
 )
