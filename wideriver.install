@@ -34,6 +34,9 @@ post_install() {
 	printf "  $(issue '#4'): add inner, outer and smart gaps by $(author '@kyechou') in $(pr '#8')\n"
 	printf "$(section "Bug Fixes:")\n"
 	printf "  $(issue '#9'): ensure border-width 0 is always applied at startup by $(author '@alex-courtis') in $(pr '#10')\n"
+	printf "$(title '1.2.0')\n"
+	printf "$(section 'New Features:')\n"
+	printf "  $(issue '#11'): add --border-width-smart-gaps by $(author '@kyechou') in $(pr '#12')\n"
 }
 
 post_upgrade() {
