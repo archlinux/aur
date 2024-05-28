@@ -2,7 +2,7 @@
 
 pkgname=qt5-quicktimeline
 _basever=5.15.14
-pkgver=5.15.13
+pkgver=5.15.14
 pkgrel=1
 _commit=bf6c73064c82b07fcb1f7e72c263b249e137e224
 arch=('x86_64')
