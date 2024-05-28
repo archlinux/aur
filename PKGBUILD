@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_sexp_value'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='A ppx rewriter that simplifies building s-expressions from ocaml values'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_here>=0.16.0' 'ocaml-ppx_sexp_conv>=0.16.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppx_here>=0.17.0' 'ocaml-ppx_sexp_conv>=0.17.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f38c6045dc9d5136fcfaad00039fb7f0caf34ca1fb2031145fedb0b5d4c39b13c58c8d744ca77ebe291526b9f0b995d6f0d0f4cd18136b92e1125fb30e2ae2bd')
+b2sums=('b36d6c2af4cfc8eba8327e209d10e783fed0c852e161269826810c95626db675fbd1ae9f00934b5c15994f2d7241872c3cf18bc8b26aeaf4b54c4c410ec27188')
 
 _sourcedirectory="$_projectname-$pkgver"
 
