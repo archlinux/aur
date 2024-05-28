@@ -2,17 +2,17 @@
 # Maintainer: Lance Roy <ldr709@gmail.com>
 _projectname='ocaml_intrinsics'
 pkgname='ocaml-intrinsics'
-pkgver='0.16.1'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Library of intrinsics for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-ocaml_intrinsics_kernel>=0.17.0' 'dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('62986ffbcac6822ada73ae187c667de1059c398b1c64234d6a887111509e92159a20a560b1846577aced07e82adbb34ef0e8bfd46919f6a2ba79fce45ecf1849')
+b2sums=('db536481d58851dbb96a1dc9070cc680fd558279c88ddce0176d168660be6dc8ee1bb7b67f877132163077c96773dad4b4c36c25db664511e833e0d5563ef4f9')
 
 _sourcedirectory="$_projectname-$pkgver"
 
