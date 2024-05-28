@@ -1,7 +1,7 @@
 pkgbase = gtk-theme-clearlooks-compact
 	pkgdesc = A compact clearlooks theme for GTK2, GTK3, Metacity, Xfwm4.
 	pkgver = 2019.01.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnome-look.org/p/1284820/
 	arch = any
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = gtk-theme-clearlooks-compact
 	optdepends = xfwm4: To use the theme in Xfwm4.
 	provides = gtk-clearlooks-compact
 	conflicts = gtk-clearlooks-compact
-	source = https://files04.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1NDcyODQ3OTYiLCJ1IjpudWxsLCJsdCI6ImZpbGVwcmV2aWV3IiwicyI6IjgwZjg1NmRlZmI3NWYzODczNzdkOTNiMWViNzc0NTA0ZTI1MDNhODlkZTZhNzI2NmRiZGE4YTliNjgzNmM1NDcyNTk5ZTFiZjc0ZGM2YmQwYWIwYTJkYTljMjJhMTFhMDcxZTU2NjA2M2ZkMjhlYmU3ZTY4NTVlYjg2NDhmMDNmIiwidCI6MTcxNjgzNTAxOSwic3RmcCI6bnVsbCwic3RpcCI6bnVsbH0.Aq_Kz8maUFpIIMWisoNudly_lQPzi2yBqMJILMb1uL8/Clearlooks-compact.tar.bz2
+	source = https://files04.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1NDcyODQ3OTYiLCJ1IjpudWxsLCJsdCI6ImZpbGVwcmV2aWV3IiwicyI6Ijg5NDVjODYyYTJhNmUzN2UxZGYzOWYyZGQzMzJjZGI1YjcxYzEyZmZhYWY2ZjE3MGNlMTUyN2I0Yzg0MjYzN2I1NmZmMjkzZjkxYTZhZTcyMjQwNzAxOTQ0YTQyM2U0ZTFjZWQ3YmFjMTU3YjI0MjAzN2IzNDUxM2NkOTQ2ZjFkIiwidCI6MTcxNjkwMTE3Nywic3RmcCI6bnVsbCwic3RpcCI6bnVsbH0.nxHq3-h-7phQ7bQ0u3xcYrORKP5Rz41uqjxBigjUjZM/Clearlooks-compact.tar.bz2
 	sha256sums = 8fe98112eb5bc2c675ed6656869932f56b9b59312c89aafd61d9ac53fd1ec976
 
 pkgname = gtk-theme-clearlooks-compact
