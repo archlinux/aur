@@ -2,9 +2,9 @@
 pkgname=panelcleaner
 _module='PanelCleaner'
 _pkgname_pypi='pcleaner'
-pkgver='2.6.1'
+pkgver='2.7.0'
 # Sometimes I need to issue a hotfix to the pypi package without updating other releases, so pkgver is the official version.
-_pypiver='2.6.1'
+_pypiver='2.7.0'
 pkgrel=1
 pkgdesc="An AI-powered tool to clean manga panels. Provides both a CLI (pcleaner) and GUI (Qt-based)"
 url="https://github.com/VoxelCubes/PanelCleaner"
@@ -13,7 +13,8 @@ makedepends=('python-setuptools' 'python-pip' 'desktop-file-utils')
 optdepends=('python-pytorch-opt: Faster, but requires a newer CPU with AVX2 support'
             'python-pytorch-cuda: Even faster, but requires a CUDA-compatible GPU'
             'python-pytorch-opt-cuda: Fastest, but requires a newer CPU with AVX2 support and a CUDA-compatible GPU'
-            'python-torchvision-cuda: Faster, but requires a CUDA-compatible GPU')
+            'python-torchvision-cuda: Faster, but requires a CUDA-compatible GPU'
+            'tesseract: English text OCR')
 license=('GPL')
 arch=('any')
 source=("https://github.com/VoxelCubes/PanelCleaner/archive/refs/tags/${pkgver}.tar.gz")
