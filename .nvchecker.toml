@@ -1,0 +1,5 @@
+[python-jacobi]
+source = "github"
+github = "HDembinski/jacobi"
+use_latest_release = "true"
+prefix = "v"
