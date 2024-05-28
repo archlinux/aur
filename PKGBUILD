@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-caio
 _name=${pkgname#python-}
-pkgver=0.9.13
+pkgver=0.9.17
 pkgrel=1
 pkgdesc="Linux AIO c python bindings"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 #checkdepends=('python-aiomisc-pytest' 'python-pytest-cov')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('dbf4248d60e5381369950990199322c24d0ea172490324773033a2536da23ed3')
+sha256sums=('af63a39624b36bdc838b8bfe4c02995a047ce36728e98db4e574b4dceb6eba81')
 
 build() {
   cd "$_name-$pkgver"
