@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='async_kernel'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Monadic concurrency library for OCaml (core data structures)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-core>=0.16.0' 'ocaml-core_kernel>=0.16.0' 'ocaml-ppx_jane>=0.16.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-core>=0.17.0' 'ocaml-core_kernel>=0.17.0' 'ocaml-ppx_jane>=0.17.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('8fb53e1802d5992698dcc8ce56b04e898bc3c9402a04462a63854754a7d2900a0760d09c5526e92114fc5eca3857757613deb9ef88552c020f04a1956590f13a')
+b2sums=('c279604cd201ed77c3c00320e7f6bbb9272c581d13612bd878a72f6d8de51c4b7b7f6c73c962e77e55154a864f6b5a326e4e7d049b9c4a377a4cfe8ef30b717e')
 
 _sourcedirectory="$_projectname-$pkgver"
 
