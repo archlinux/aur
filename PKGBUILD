@@ -17,7 +17,7 @@ unset _pkgtype
 # basic info
 _pkgname="wine"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=9.8.r57.gae9bdbda
+pkgver=9.9.r137.g5f7b9a5b
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://gitlab.winehq.org/wine/wine"
@@ -192,9 +192,9 @@ prepare() {
 
 build() {
   # Apply flags for cross-compilation
-  export CROSSCFLAGS="${CFLAGS/-Werror=format-security/}"
-  export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
-  export CROSSLDFLAGS="${LDFLAGS//-Wl,-z*([^[:space:]])/}"
+  export CROSSCFLAGS="-O2 -pipe"
+  export CROSSCXXFLAGS="-O2 -pipe"
+  export CROSSLDFLAGS="-Wl,-O1"
 
   local _configure_options=(
     --disable-tests
