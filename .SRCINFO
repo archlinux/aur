@@ -1,0 +1,21 @@
+pkgbase = justin
+	pkgdesc = A minimal AUR helper written in C with support for installation of legacy versions. Pre-compiled.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/WasabiThumb/justin
+	arch = any
+	license = Apache-2.0
+	depends = sudo
+	depends = libgit2
+	depends = curl
+	depends = pacman
+	depends = json-c
+	options = !strip
+	source = https://github.com/WasabiThumb/justin/releases/download/0.0.1/justin
+	source = https://raw.githubusercontent.com/WasabiThumb/justin/0.0.1/LICENSE.txt
+	source = https://raw.githubusercontent.com/WasabiThumb/justin/0.0.1/README.md
+	md5sums = bb371d120fa7623bb69b90e11d206a4d
+	md5sums = 2ee41112a44fe7014dce33e26468ba93
+	md5sums = SKIP
+
+pkgname = justin-bin
