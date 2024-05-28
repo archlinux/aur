@@ -3,20 +3,20 @@
 _pkgname=python-blobfile
 pkgname="${_pkgname}-git"
 pkgver=2.1.0+11.r640.20240516.dd9459f
-pkgrel=1
+pkgrel=2
 pkgdesc="A library that provides a Python-like interface for reading local and remote files (only from blob storage), with an API similar to open() as well as some of the os.path and shutil functions."
 arch=(
   'any'
 )
 url="https://github.com/christopher-hesse/blobfile"
-license=('custom: public domain')
+license=('LicenseRef-public_domain')
 depends=(
   'python>=3'
   'python-filelock>=3.0'
   'python-lxml>=4.9'
   'python-numpy'
   'python-pycryptodomex>=3.8'
-  'python-pytest'
+  # 'python-pytest' # Not needed even if `namcap` complains; see https://aur.archlinux.org/packages/python-blobfile-git#comment-940009.
   'python-typing_extensions'
   'python-urllib3>=1.25.3' 'python-urllib3<3'
   'python-xmltodict'
