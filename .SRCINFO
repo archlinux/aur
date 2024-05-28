@@ -1,13 +1,14 @@
 pkgbase = gz-physics7
 	pkgdesc = Abstract physics interface designed to support simulation and rapid development of robot applications.
 	pkgver = 7.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-physics
 	arch = any
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
+	makedepends = git
 	depends = eigen
 	depends = gz-common=5
 	depends = gz-math=7
@@ -17,7 +18,7 @@ pkgbase = gz-physics7
 	depends = bullet
 	depends = libdart
 	provides = gz-physics=7
-	source = https://github.com/gazebosim/gz-physics/archive/gz-physics7_7.2.0.tar.gz
-	sha256sums = 085e07afd4e5f563ac9e4329e3a152551fcbde67890e49c04755c8683e1e026d
+	source = git+https://github.com/gazebosim/gz-physics.git#tag=gz-physics7_7.2.0
+	sha256sums = SKIP
 
 pkgname = gz-physics7

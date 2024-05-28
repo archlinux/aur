@@ -2,7 +2,7 @@
 
 pkgname=gz-physics7
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Abstract physics interface designed to support simulation and rapid development of robot applications."
@@ -23,16 +23,23 @@ makedepends=(
   'cmake'
   'doxygen'
   'gz-cmake=3'
+  'git'
   )
 optdepends=(
   #'libdart: DARTsim physics plugin'
   #'bullet: bullet physics plugin'
 )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('085e07afd4e5f563ac9e4329e3a152551fcbde67890e49c04755c8683e1e026d')
+#source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
+source=("git+https://github.com/gazebosim/${_pkgbase}.git#tag=${pkgname}_${pkgver}")
+sha256sums=('SKIP')
 
-_build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
+#_build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
+_build_dir="${_pkgbase}/build"
+
+prepare() {
+  git -C "$srcdir/$_pkgbase" cherry-pick -n a74dae4b732e9c7932a037bc931956956ba4f6ea
+}
 
 build() {
   mkdir -p "$srcdir/$_build_dir" && cd $_
