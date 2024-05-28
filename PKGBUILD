@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_typerep_conv'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Generation of runtime types from type declarations'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-typerep>=0.16.0' 'ocaml-ppxlib>=0.28.0')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-typerep>=0.17.0' 'ocaml-ppxlib>=0.28.0')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('842f3caeb22b7d1feb1de9f599ffe2474365704e7ce9c05366b9714bcbf165791eda8b16d420a3a64ccc8ea44a9b2178ffddaa8e3ad005c6536c3559f2da295a')
+b2sums=('61f7c0d203a0838874086023cfa94223e0388b0baff5c51d4074b88c4687ce6c55e663f309e8aec7ac49cec9dfd10407f3e8cc2c0c0dffe074ebcd8ac7309222')
 
 _sourcedirectory="$_projectname-$pkgver"
 
