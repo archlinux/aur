@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_string'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 pkgdesc='Ppx extension for string interpolation'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_base>=0.16.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppx_base>=0.17.0' 'ocaml-ppxlib>=0.28.0' 'zstd')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b1310551e1548fee5b99e64635139189139791f2ea2da93a4751b04c78a5519c5f3833c515d93a25e9d7aa23945414cbe690e5cd3f34630cdca4819c3d8ec1bc')
+b2sums=('9cce35c53a9b51b20d5ff54b693956d3eaa1c18cae501ccd115de01fba17ff09afa3dff8e571c8bd5148bf2f4cb6c621c575eca09b4a2f879edd49a6b93df952')
 
 _sourcedirectory="$_projectname-$pkgver"
 
