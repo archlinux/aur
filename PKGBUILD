@@ -3,7 +3,7 @@
 
 pkgname=qt5-scxml
 _basever=5.15.14
-pkgver=5.15.13
+pkgver=5.15.14
 pkgrel=1
 _commit=6834b183966d08d9f061642ee7ea2d482cbbf073
 arch=('x86_64')
