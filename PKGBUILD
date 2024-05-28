@@ -31,7 +31,7 @@ check() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make BIN_DIR="${pkgdir}/usr/bin" LIB_DIR="${pkgdir}/usr/lib" INC_DIR="${pkgdir}/usr/include" DOC_DIR="${pkgdir}/usr/share/doc/reproblas2" install
+    make BIN_DIR="${pkgdir}/usr/bin" LIB_DIR="${pkgdir}/usr/lib" INC_DIR="${pkgdir}/usr/include" DOC_DIR="${pkgdir}/usr/share/doc/reproblas" install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "../../${pkgname}.pc" "$pkgdir/usr/lib/pkgconfig/${pkgname}.pc"
 }
