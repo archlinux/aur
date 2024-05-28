@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='5.0.r21539.g50386c4e39'
+pkgver='5.0.r21606.g8ac22378a1'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -18,8 +18,8 @@ url="https://$_mainpkgname.org"
 license=('GPL-2.0-or-later')
 depends=(
 	'alsa-lib' 'bluez-libs' 'bzip2' 'hidapi' 'libevdev' 'libgl' 'libpulse' 'libx11'
-	'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'pugixml' 'sfml' 'speexdsp' 'xz' 'zstd'
-	'cubeb' 'zlib-ng'
+	'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml' 'sfml' 'speexdsp'
+	'xz' 'zstd' 'cubeb' 'zlib-ng'
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
 	'libminiupnpc.so' 'libsfml-network.so' 'libsfml-system.so' 'libspng.so'
 	'libswscale.so' 'libudev.so' 'libusb-1.0.so' 'libxxhash.so'
@@ -85,7 +85,6 @@ build() {
 	# USE_SYSTEM_LIBS - we want to use system libs where possible
 	# USE_SYSTEM_LIBMGBA - the current version of mgba in the repos is not compatible with Dolphin
 	# USE_SYSTEM_ENET - the current version of enet in the repos is not compatible with Dolphin
-	# USE_SYSTEM_MINIZIP - the current version of minizip-ng in the repos is not compatible with Dolphin
 	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
@@ -94,7 +93,6 @@ build() {
 		-DUSE_SYSTEM_LIBS=ON \
 		-DUSE_SYSTEM_LIBMGBA=OFF \
 		-DUSE_SYSTEM_ENET=OFF \
-		-DUSE_SYSTEM_MINIZIP=OFF \
 		-Wno-dev
 	cmake --build 'build/'
 }
