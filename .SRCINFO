@@ -1,14 +1,18 @@
 pkgbase = mc-solarized-git
 	pkgdesc = Solarized color scheme for Midnight Commander
-	pkgver = 2
+	pkgver = r2.20120123.cd9eddb
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/nkulikov/mc-solarized-skin
 	arch = any
-	license = unknown
+	license = LicenseRef-unknown
 	makedepends = git
 	depends = mc
-	source = git://github.com/nkulikov/mc-solarized-skin.git
+	provides = mc-solarized=r2.20120123.cd9eddb
+	provides = mc-solarized-skin=r2.20120123.cd9eddb
+	conflicts = mc-solarized
+	conflicts = mc-solarized-skin
+	source = mc-solarized-skin::git+https://github.com/nkulikov/mc-solarized-skin.git
 	md5sums = SKIP
 
 pkgname = mc-solarized-git
-
