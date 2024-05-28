@@ -1,6 +1,6 @@
 pkgbase = qt5-gamepad
 	pkgdesc = Adds support for getting events from gamepad devices
-	pkgver = 5.15.13
+	pkgver = 5.15.14
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = qt5-gamepad
 	depends = qt5-base
 	depends = sdl2
 	optdepends = qt5-declarative: QML bindings
-	source = git+https://invent.kde.org/qt/qt/qtgamepad#commit=44255e2ae53a14e9a3fb671da0782ec5d396220a
-	sha256sums = SKIP
+	source = kde-qtgamepad::git+https://invent.kde.org/qt/qt/qtgamepad#commit=b1c2f272f69e222a532485e6f820776c220b3535
+	sha256sums = 87abfd163b30583e2e50d5df7a3716b5684838ced32ffbdd82e0fc730c3354bf
 
 pkgname = qt5-gamepad
