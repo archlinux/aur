@@ -4,18 +4,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='textutils'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.17.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Text output utilities for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-core>=0.16.0' 'ocaml-core_kernel>=0.16.0' 'ocaml-core_unix>=0.16.0' 'ocaml-ppx_jane>=0.16.0' 'ocaml-textutils_kernel>=0.16.0' 'ocaml-uutf>=1.0.2')
-makedepends=('dune>=2.0.0')
+depends=('ocaml>=5.1.0' 'ocaml-core>=0.17.0' 'ocaml-core_kernel>=0.17.0' 'ocaml-core_unix>=0.17.0' 'ocaml-ppx_jane>=0.17.0' 'ocaml-uutf>=1.0.2')
+makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('860448856cf99388a7c297271c59450d3ebef38fcc0826986f0add442cd633528f4e2b6a4babee567c250716e3fa9535c024550e58d0a082f6677a6378d99760')
+b2sums=('e124050bb628964d1a064f8914952def2f58fd826f404a293e675c8e50eb31d198061df31a78e5c864601078c36bbad7c04400ff98d67cf51289990a7bea940f')
 
 _sourcedirectory="$_projectname-$pkgver"
 
