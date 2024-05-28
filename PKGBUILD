@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pedax-bin
-pkgver=6.50.0_146
+pkgver=6.51.0
+_subver=147
 pkgrel=1
 pkgdesc="Reversi Board with edax, which is the strongest reversi engine."
 arch=("x86_64")
@@ -17,10 +18,10 @@ makedepends=(
 )
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/${pkgver//_/%2B}/${pkgname%-bin}-Linux.zip"
+    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/${pkgver}%2B${_subver}/${pkgname%-bin}-ubuntu-latest.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('da92ac86c21a4d82fd15e299ffec930e87ebbf77b90abceeb51fa698bfea03f6'
+sha256sums=('7fc09fab5b33498ccec171bd0e393c772475383020ca4f35e5c4af52ef0936a6'
             '840eb0ad528d294064aa09b2b6df7a0e4a800249f43305c756cf78bee627fe1d')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
