@@ -2,7 +2,7 @@
 
 pkgname=gliderlabs-sigil
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone string interpolator and template processor'
 arch=('x86_64')
 url='https://github.com/gliderlabs/sigil'
@@ -22,7 +22,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-asmflags=-trimpath=/src -gcflags=-trimpath=/src"
-  go build -a -ldflags "-s -w -X main.Version=${pkgver}" -o "${pkgname}-build" .
+  go build -a -ldflags "-s -w -X main.Version=${pkgver}" -o "${pkgname}-build" cmd/sigil.go
 }
 
 package() {
