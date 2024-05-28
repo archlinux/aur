@@ -10,7 +10,7 @@ arch=('x86_64'
 	  'aarch64'
 	 )
 url="https://ovbox.de"
-license=('GPL')
+license=('GPL-3.0-only')
 groups=()
 depends=('jack2'
 		 'liblo'
