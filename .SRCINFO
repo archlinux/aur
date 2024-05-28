@@ -1,13 +1,12 @@
 pkgbase = linvam-git
 	pkgdesc = Linux voice activated macros
-	pkgver = v0.6.4.r0.g915687c
+	pkgver = v0.7.0
 	pkgrel = 1
 	url = https://github.com/stele95/LinVAM
 	install = linvam.install
 	arch = x86_64
 	license = GPL3
 	makedepends = python
-	makedepends = nuitka-git
 	makedepends = git
 	depends = xorg-xinput
 	depends = python

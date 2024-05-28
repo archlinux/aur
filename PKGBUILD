@@ -1,7 +1,7 @@
 # Maintainer: Stefan Dimitrijevic <stefanstele95@hotmail.com>
 
 pkgname='linvam-git'
-pkgver=v0.6.4.r0.g915687c
+pkgver=v0.7.0
 pkgrel=1
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
@@ -10,7 +10,6 @@ arch=('x86_64')
 license=('GPL3')
 makedepends=(
   'python'
-  'nuitka-git'
   'git'
 )
 depends=(
@@ -43,21 +42,18 @@ pkgver() {
 }
 
 build() {
-  current_CFLAGS=$CFLAGS
-  export CFLAGS=''
-  cd LinVAM/scripts
-  source ./build.sh
-  export CFLAGS=$current_CFLAGS
+  cd "${srcdir}/LinVAM"
+  python setup.py build
 }
 
 package_linvam-git() {
   pkgdesc+=' (GIT version)'
-
-  install LinVAM/src/LinVAM.desktop -Dm644 "$pkgdir/usr/share/applications/LinVAM.desktop"
-  install LinVAM/scripts/linvam -Dm755 "$pkgdir/usr/bin/linvam"
-  install LinVAM/scripts/linvamrun -Dm755 "$pkgdir/usr/bin/linvamrun"
-  install LinVAM/LICENSE.txt -Dm644 "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-  # install LinVAM/rules/12-input.rules -Dm644 "$pkgdir/etc/udev/rules.d/12-input.rules"
-  # install LinVAM/rules/50-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/50-uinput.rules"
-  install LinVAM/rules/80-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/80-uinput.rules"
+  cd "${srcdir}/LinVAM"
+  export PYTHONHASHSEED=0
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install LinVAM.desktop -Dm644 "$pkgdir/usr/share/applications/LinVAM.desktop"
+  install LICENSE.txt -Dm644 "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  # install rules/12-input.rules -Dm644 "$pkgdir/etc/udev/rules.d/12-input.rules"
+  # install rules/50-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/50-uinput.rules"
+  install rules/80-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/80-uinput.rules"
 }
