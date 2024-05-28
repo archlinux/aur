@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 pkgname=gnome-shell-extension-one-thing-git
-pkgver=5.0.0.r0.gc4b6e72
+pkgver=13.0.0.r12.g31d061b
 pkgrel=1
 pkgdesc="Put a single task or goal in your GNOME Shell top bar (Github version)."
 arch=('any')
@@ -19,15 +19,10 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-    cd "${srcdir}/${pkgname%-git}"
-    make
-}
-
 package() {
     install -d "${pkgdir}/usr/share/gnome-shell/extensions/"
     cd "${srcdir}/${pkgname%-git}"
-    rm -rf Makefile .git* readme.md
+    rm -rf .git* README.md .eslintrc.yml lint package*.json
     cd "${srcdir}"
     cp -r ${pkgname%-git} "${pkgdir}/usr/share/gnome-shell/extensions/one-thing@github.com"
 }

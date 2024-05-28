@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-one-thing-git
 	pkgdesc = Put a single task or goal in your GNOME Shell top bar (Github version).
-	pkgver = 5.0.0.r0.gc4b6e72
+	pkgver = 13.0.0.r12.g31d061b
 	pkgrel = 1
 	url = https://github.com/dantehemerson/one-thing
 	install = gnome-shell-extension-one-thing.install
