@@ -1,7 +1,7 @@
 pkgbase = pcbox-roms-git
 	pkgdesc = ROMs for the PCBox emulator
 	pkgver = r684.gd34078ba9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PCBox/roms
 	arch = any
 	license = custom

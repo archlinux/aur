@@ -2,7 +2,7 @@
 # Contributor: Lili1228 <aur at lili dot lgbt>
 pkgname=pcbox-roms-git
 pkgver=r684.gd34078ba9
-pkgrel=1
+pkgrel=2
 pkgdesc='ROMs for the PCBox emulator'
 arch=('any')
 url='https://github.com/PCBox/roms'
@@ -15,7 +15,8 @@ source=("${pkgname}::git+https://github.com/PCBox/roms.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  echo ${pkgver}
+    cd "${srcdir}/${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
