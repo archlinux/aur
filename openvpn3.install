@@ -1,0 +1,4 @@
+post_install() {
+  sudo openvpn3-admin init-config --write-configs
+  sudo systemctl reload dbus
+}
