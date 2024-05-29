@@ -1,15 +1,34 @@
 pkgbase = jpterm
-	pkgdesc = JMESPath Terminal
-	pkgver = 0.2.1
-	pkgrel = 2
-	url = https://github.com/jmespath/jmespath.terminal
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = https://davidbrochart.github.io/jpterm/
 	arch = any
-	license = ASL 2.0
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python-jmespath
-	depends = python-pygments
-	depends = python-urwid
-	source = https://github.com/jmespath/jmespath.terminal/archive/0.2.1.tar.gz
-	sha256sums = 811d87d408ea4d3ab63a88226e09fd0b55a33b07ec7c1ef1434e8f7a647510b9
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.10
+	depends = python-rich-click
+	depends = python-asphalt
+	depends = python-asyncio_extras
+	depends = jupyterlab>=4
+	depends = jupyter-collaboration>=2
+	source = jpterm-0.2.12.tar.gz::https://github.com/davidbrochart/jpterm/archive/refs/tags/v0.2.12.tar.gz
+	sha256sums = d7c8863db4004c721a8334e49055b4ce6f3af970ab98e346723eb6ed1cf6dc71
 
-pkgname = python-jpterm
+pkgname = jpterm
+	pkgdesc = Jupyter in the terminal.
+	depends = python-txl=0.2.12
+
+pkgname = python-txl
+	pkgdesc = The plugin system for jpterm
+	depends = python-asphalt
+	depends = python-textual
+	depends = python-pycrdt
+	depends = python-jupyter-ydoc
+	depends = python-pycrdt
+	depends = python-anyio
+	depends = python-textual_imageview
+	depends = python-ypywidgets_textual
