@@ -2,7 +2,7 @@
 
 _pyname=eventkit
 pkgname=python-$_pyname
-pkgver=1.0.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Event-driven data pipelines'
 arch=(any)
@@ -11,8 +11,8 @@ license=(BSD)
 depends=(python-numpy)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 checkdepends=(python-pytest)
-source=(https://files.pythonhosted.org/packages/5e/aa/b8f33fefa6761d3cd006588f183cd7cda136668b34534a05d3a387777f63/$_pyname-$pkgver.tar.gz)
-sha256sums=('c9c4bb8a9685e4131e845882512a630d6a57acee148f38af286562a76873e4a9')
+source=($url/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('567ebad6a3d05483a6091d46e1716716465ea2c237be2c44778160c5eb30602b')
 
 build() {
   cd "$srcdir/$_pyname-$pkgver"
