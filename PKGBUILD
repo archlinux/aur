@@ -3,12 +3,12 @@
 _reponame=2ship2harkinian
 pkgbase=2s2h-git
 pkgname=(2s2h-git 2s2h-otr-exporter-git)
-pkgver=1.0.0.r6.g01ae001de
+pkgver=1.0.0.r7.g291973fff
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 #url="https://shipofharkinian.com/"
 url="https://github.com/HarbourMasters/${_reponame}"
-_depends_2s2h=("sdl2" "sdl2_net" "glew" "zenity" "libzip" "libpng")
+_depends_2s2h=("sdl2" "zenity" "libzip" "libpng")
 _depends_2s2h_otr_exporter=("libpng")
 _depends_lus=("fmt" "spdlog" "tinyxml2")
 depends=("${_depends_2s2h[@]}" "${_depends_2s2h_otr_exporter[@]}" "${_depends_lus[@]}")
@@ -86,8 +86,8 @@ build() {
     -GNinja \
     -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
     -DNON_PORTABLE=On \
-    -DCMAKE_INSTALL_PREFIX=$SHIP_PREFIX \
-    -DBUILD_REMOTE_CONTROL=1
+    -DCMAKE_INSTALL_PREFIX=$SHIP_PREFIX
+    #-DBUILD_REMOTE_CONTROL=1
 
   cmake --build build --target ZAPD --config $BUILD_TYPE $NINJAFLAGS
   cmake --build build --target Generate2ShipOtr --config $BUILD_TYPE $NINJAFLAGS
