@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=titlecase
-pkgver=2.2.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='A tool for making text title case'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=()
 conflicts=('titlecase-git')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2f70634e9860200b87a3318ad12074c8ae4f14ac868cc6d1d6cbc068a7c4864d')
+sha256sums=('3f67c5140ff17b6ae19291a519fd2f532a2c8916aa48934476ee2eaf8f9523bc')
 
 build() {
   cd "$pkgname-$pkgver"
