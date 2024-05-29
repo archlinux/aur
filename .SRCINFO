@@ -1,0 +1,14 @@
+pkgbase = bindump-git
+	pkgdesc = Display binary contents of file
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://github.com/Raphadoodle/bindump-git.git
+	arch = x86_64
+	arch = arm64
+	license = GPL
+	depends = xxd
+	depends = python3
+	source = git+https://github.com/Raphadoodle/bindump-git.git
+	sha256sums = SKIP
+
+pkgname = bindump-git
