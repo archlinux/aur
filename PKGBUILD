@@ -8,8 +8,8 @@ url="https://gitlab.com/linuxbombay/supermarioworld"
 license=('GPL')
 depends=('smw-bin' 'yad')
 makedepends=('unzip')
-sha256sums=('161f7a1c0fa4c961a5def6be28068dc4355c7d1787cedcc678b6d0bae02f8cc2')
-source=("$url/-/archive/$pkgver-$pkgrel/smw-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('d5a57f96406eece546b29735c9bf29ff10f7f43c27a4656b8b8881a388292565')
+source=("$url/-/archive/$pkgver/supermarioworld-$pkgver.tar.bz2")
  
 package() {
    install -dm755 "$pkgdir/usr/share/games/$_pkgname"

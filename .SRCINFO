@@ -9,7 +9,7 @@ pkgbase = supermarioworld
 	makedepends = unzip
 	depends = smw-bin
 	depends = yad
-	source = https://gitlab.com/linuxbombay/supermarioworld/-/archive/1.0.0-2/smw-1.0.0-2.tar.bz2
-	sha256sums = 161f7a1c0fa4c961a5def6be28068dc4355c7d1787cedcc678b6d0bae02f8cc2
+	source = https://gitlab.com/linuxbombay/supermarioworld/-/archive/1.0.0/supermarioworld-1.0.0.tar.bz2
+	sha256sums = d5a57f96406eece546b29735c9bf29ff10f7f43c27a4656b8b8881a388292565
 
 pkgname = supermarioworld
