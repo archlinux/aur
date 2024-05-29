@@ -2,19 +2,30 @@
 _projectname='markup.ml'
 pkgname="ocaml-markup"
 pkgver='1.0.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Error-recovering streaming HTML5 and XML parsers for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/aantron/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.03.0' 'ocaml-lwt' 'ocaml-uchar' 'ocaml-uutf>=1.0.0')
+depends=('ocaml>=4.03.0' 'ocaml-lwt' 'ocaml-uutf>=1.0.0')
 makedepends=('dune>=2.7.0')
 checkdepends=('ocaml-ounit>=2.0.0')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('1bb030fa2d79f7a7ac2d04c07c72a39e83620757b1d7d8a33eea1ec9b4c32883a67de45d1eea9bfa6533ae8076009fab9af5f180ad2be9c1fef66e3e5937048a')
+source=(
+	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+	'remove-uchar-dep.diff'
+)
+b2sums=('71e6719c83ea0b456bb72ac469f11f8aab849098728431cf65e63f3484d98957250cec95a6c78e1bb586768f07fdf91bd4a8dc8195815b0bee836ce7c59fd2c8'
+        'f817eabda3bac376b96cde7a0d4de00fc47d345889db0f60dd7488392e19ff33564d95dfe8cf61ab99bdc726caf2890b55164ff3c35d44b2558f8b10bf67d14c')
 
 _sourcedirectory="$_projectname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Remove uchar dependency, as we're always running on OCaml >= 4.03.0
+	patch --forward -p1 < '../remove-uchar-dep.diff'
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"

@@ -1,0 +1,12 @@
+diff --git a/markup.opam b/markup.opam
+index 073f164..3196b52 100644
+--- a/markup.opam
++++ b/markup.opam
+@@ -14,7 +14,6 @@ dev-repo: "git+https://github.com/aantron/markup.ml.git"
+ depends: [
+   "dune" {>= "2.7.0"}
+   "ocaml" {>= "4.03.0"}
+-  "uchar"
+   "uutf" {>= "1.0.0"}
+ 
+   "bisect_ppx" {dev & >= "2.5.0"}
