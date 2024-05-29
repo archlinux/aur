@@ -1,4 +1,5 @@
-# Maintainer: Serge K <arch@phnx47.net>
+# Maintainer:
+# Contributor: Serge K <arch@phnx47.net>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
 _appname=ledger-live-desktop
