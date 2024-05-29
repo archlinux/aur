@@ -1,0 +1,15 @@
+diff --unified --recursive --text ccl/lib/method-combination.lisp ccl.new/lib/method-combination.lisp
+--- ccl/lib/method-combination.lisp	2023-08-08 23:20:12.000000000 -0400
++++ ccl.new/lib/method-combination.lisp	2024-05-29 07:08:15.094772121 -0400
+@@ -570,10 +570,7 @@
+         (:arguments
+          (when args-specified? (error ":ARGUMENTS specified twice"))
+          (setq arguments (cdr (pop forms))
+-               args-specified? t)
+-         (do ((args arguments (cdr args)))
+-             ((null args))
+-           (setf (car args) (require-type (car args) 'symbol))))
++               args-specified? t))
+         (:generic-function
+          (when gf-symbol-specified? (error ":GENERIC-FUNCTION specified twice"))
+          (setq generic-fn-symbol
