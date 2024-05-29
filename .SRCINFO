@@ -1,22 +1,20 @@
 pkgbase = wai-chat-desktop
 	pkgdesc = An electron project for chatgpt wai chat bot
 	pkgver = 1.1.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/ptp-build/wai-chat-desktop
 	arch = any
 	license = GPL-3.0-only
 	makedepends = npm
 	makedepends = gendesk
 	makedepends = nvm
-	makedepends = git
-	makedepends = base-devel
+	makedepends = curl
 	makedepends = gcc
-	depends = electron24-bin
-	depends = hicolor-icon-theme
+	depends = electron24
 	conflicts = wai-chat-desktop
-	source = wai-chat-desktop.git::git+https://github.com/ptp-build/wai-chat-desktop.git#tag=v1.1.2
+	source = wai-chat-desktop-1.1.2.tar.gz::https://github.com/ptp-build/wai-chat-desktop/archive/refs/tags/v1.1.2.tar.gz
 	source = wai-chat-desktop.sh
-	sha256sums = df5d501a594b216472c5dd9130bceb6474370af339db54443a0a1c4524e40d65
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 7f69542f9d0fccf9e2cd26ed495580731fbc9a45658576ab8c65a9c0537c89ab
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = wai-chat-desktop
