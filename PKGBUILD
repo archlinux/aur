@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='core'
 pkgname="ocaml-$_projectname"
-pkgver='0.17.0'
+pkgver='0.17.1'
 pkgrel='1'
 epoch='1'
 pkgdesc="Industrial strength alternative to OCaml's standard library"
@@ -13,7 +13,7 @@ depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-base_bigstring>=0.17.0' 'oca
 makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('f684214800d7dce298b05408e6c5b22f588cdc55571ee12eeef927aa682f7d08c47dd678b8762270ce239173b129f4ab0c2550bdb49a9ecd56e9aa6939e89803')
+b2sums=('88a1c7b4c1ce5e8ca9713a1e92e4ea141aab1b5926427e78855f403449e3104052afca6f66a19d8b4a9b6d5dbac510d0844ace7e74ee7a7a5d6b89528412c94f')
 
 _sourcedirectory="$_projectname-$pkgver"
 
