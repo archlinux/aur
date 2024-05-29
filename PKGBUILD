@@ -1,8 +1,8 @@
 # Maintainer: Konstantin Shurukhin <kshurukhin (at) gmail (dot) com 
 pkgname=snx-rs-git
 _pkgname=snx-rs
-pkgver=2.2.0.r339.g8569428
-pkgrel=3
+pkgver=2.2.1.r350.g0cf63a9
+pkgrel=4
 pkgdesc="Open source VPN client for Checkpoint security gateways (git version)"
 arch=(x86_64)
 url=https://github.com/ancwrd1/snx-rs
@@ -44,6 +44,8 @@ package() {
   cd ${srcdir}/${_pkgname}
   install -Dm0755 -t "$pkgdir/usr/bin/" target/release/{snx-rs,snxctl,snx-rs-gui}
   sed -i -re 's/^ExecStart.+/ExecStart=snx-rs -m command -l info/g' assets/snx-rs.service
+  sed -i -re 's/\/opt\/snx-rs\///g' assets/snx-rs-gui.desktop
   install -Dm0644 -t "$pkgdir/usr/lib/systemd/system/" assets/snx-rs.service
+  install -Dm0644 -t "$pkgdir/usr/share/applications/" assets/snx-rs-gui.desktop
   install -Dm0644 -t "$pkgdir/usr/share/snx-rs/" assets/snx-rs.conf
 }
