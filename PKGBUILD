@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisk-bin
 _pkgname=Brisk
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Fast, multithreaded, cross-platform download manager"
 arch=('x86_64')
@@ -21,15 +21,15 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.tar.gz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f7152da947a0771634fd5c4df2e46042e6ad653aac5254975261c75d61c7f9fc'
+sha256sums=('b0a456142ab0fac2ec3330c0da4d3de75872a7f82c593150092723a61ae0bc5a'
             '840eb0ad528d294064aa09b2b6df7a0e4a800249f43305c756cf78bee627fe1d')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
-    mv "${srcdir}/${_pkgname}-v${pkgver}-linux-fedora-${CARCH}/"* "${srcdir}/opt/${pkgname%-bin}"
-    gendesk -f -n -q --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    mv "${srcdir}/${_pkgname}-v${pkgver}-linux-${CARCH}/"* "${srcdir}/opt/${pkgname%-bin}"
+    gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
