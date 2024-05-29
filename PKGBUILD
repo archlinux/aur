@@ -18,8 +18,8 @@ pkgname=(
   gnome-keybindings-x11-scaling
 )
 _pkgname=gnome-control-center
-pkgver=46.1
-pkgrel=5
+pkgver=46.2
+pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL-2.0-or-later)
@@ -98,7 +98,7 @@ source=(
   "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/4f2e5597f3af2694ed48d439d6c0cdd95d9e0315/display-Allow-fractional-scaling-to-be-enabled.patch"
   "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/4f2e5597f3af2694ed48d439d6c0cdd95d9e0315/display-Support-UI-scaled-logical-monitor-mode.patch"
 )
-b2sums=('f066316f436f7d58b9341daa346bb173fbeee2a302a7b3f1b0db878aabd2deb20c736b5a08beef7612f4366bbc84a82a2fee12dc1ff39344cc5f493e2b099677'
+b2sums=('28366d2ed77825b80e5956791a5ac375ed6d1b9dcddac5683f00645294279cfcab46648fe0efb7c3062bff1d82471fd323c3e3101ece1c7d74ed11551178167e'
         'SKIP'
         'aa18237b6d8133405dc67740dd995a80b57f474e0976c7fd0d69883223c04d12673d452cf90be39232363abeff827beaf57b1183da4d15768df7b331a144c5ff'
         'ffb66f54504ffb81d32a07383527864fb4ee7ad3b5d7af55682607f3c09addec08485156bda7bac56088304d20720914958103cd492f270b59fcad47875b3a5b')
@@ -148,7 +148,7 @@ package_gnome-control-center-x11-scaling() {
   conflicts=($_pkgname)
   provides=($_pkgname)
 
-  depends+=(gnome-keybindings)
+  depends+=(gnome-keybindings-x11-scaling)
   optdepends=(
     'fwupd: device security panel'
     'gnome-remote-desktop: screen sharing'
