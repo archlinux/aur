@@ -3,7 +3,7 @@ pkgname=calmly-writer-bin
 _pkgname="Calmly Writer"
 pkgver=2.0.54
 _electronversion=17
-pkgrel=7
+pkgrel=8
 pkgdesc="An editor designed to focus on what you want to tell, with a simple, unobtrusive and ease-to-use user interface."
 arch=(
     'aarch64'
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 options=('!strip')
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source_aarch64=("${pkgname%-bin}_${pkgver}-aarch64.deb::${url}/releases/linux/deb/arm64/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}_${pkgver}-x86_64.deb::${url}/releases/linux/deb/x64/${pkgname%-bin}_${pkgver}_amd64.deb")
@@ -24,13 +24,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('79f277c107ca3402d156db2ced6ea619a966216097c8d4d17692bada193b3edb'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_aarch64=('dd7606298580fbf26c3882cdf83286db563680c9ef757cdceba6a605d8bbf11e')
 sha256sums_x86_64=('91432bec316b83ef3a0e47815c4db9ec38903704e19c61e29f32782f327a3897')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
