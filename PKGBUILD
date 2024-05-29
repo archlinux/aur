@@ -1,46 +1,80 @@
-# Mantainer: PumpkinCheshire <me@pumpkincheshire.top>
+# Mantainer:
+# Contributor: PumpkinCheshire <me@pumpkincheshire.top>
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Mitch Bigelow <ipha00@gmail.com>
 # Contributor: Utkan Güngördü <utkan@freeconsole.org>
 
-pkgname=waifu2x-ncnn-vulkan-git
-pkgver=20210521.r0.g4981ffc
+_pkgname="waifu2x-ncnn-vulkan"
+pkgname="$_pkgname-git"
+pkgver=20220728.r0.g93ed2bc
 pkgrel=1
-pkgdesc='waifu2x converter ncnn version, runs fast on intel / amd / nvidia GPU with vulkan'
+pkgdesc="ncnn implementation of waifu2x converter"
+url="https://github.com/nihui/waifu2x-ncnn-vulkan"
 arch=('i686' 'x86_64' 'aarch64')
-url=https://github.com/nihui/waifu2x-ncnn-vulkan
-license=(MIT)
-depends=('vulkan-icd-loader' 'libwebp')
-makedepends=('git' 'cmake' 'glslang-git' 'vulkan-headers' 'ncnn')
-conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
-provides=("${pkgname%-git}")
-source=(git+"${url}".git)
-md5sums=('SKIP')
+license=('MIT')
+
+depends=(
+  'libwebp'
+  'ncnn'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'glslang'
+  'ninja'
+  'vulkan-headers'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc"::"git+$url.git"
+  "0001-glslang.patch"
+)
+sha256sums=(
+  'SKIP'
+  'd0a08ac4673d84c956e7114385678ebe024ab63e048f0214a01d5cb76666eeeb'
+)
 
 pkgver() {
-    git -C ${pkgname%-git} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-    # Fix default model path
-    sed -i 's|path_t model = PATHSTR("models-cunet")|path_t model = PATHSTR("/usr/share/waifu2x-ncnn-vulkan/models-cunet")|' "${pkgname%-git}"/src/main.cpp
-    sed -i 's|return get_executable_directory() + path;|return "/usr/share/waifu2x-ncnn-vulkan/" + path;|' "${pkgname%-git}"/src/main.cpp
+  cd "$_pkgsrc"
+
+  patch -Np1 -F100 -i "../0001-glslang.patch"
+
+  # Fix default model path
+  sed -i 's|path_t model = PATHSTR("models-cunet")|path_t model = PATHSTR("/usr/share/waifu2x-ncnn-vulkan/models-cunet")|' src/main.cpp
 }
 
 build() {
-    cmake -B build -S "${pkgname%-git}"/src \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DGLSLANG_TARGET_DIR=/usr/lib/cmake \
-        -DUSE_SYSTEM_NCNN=on \
-        -DUSE_SYSTEM_WEBP=on
-    cmake --build build
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc/src"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DUSE_SYSTEM_NCNN=ON
+    -DUSE_SYSTEM_WEBP=ON
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-    install -Dm755 -t "${pkgdir}/usr/bin" build/${pkgname%-git}
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${pkgname%-git}/LICENSE
-    cd "${srcdir}/${pkgname%-git}/models"
-    for f in models-*/*; do
-        install -Dm 644 "$f" ${pkgdir}/usr/share/${pkgname%-git}/"$f"
-    done
+  install -Dm755 build/waifu2x-ncnn-vulkan -t "$pkgdir/usr/bin/"
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  cd "$_pkgsrc/models"
+  for f in models-*/*; do
+    install -Dm644 "$f" "$pkgdir/usr/share/$_pkgname/$f"
+  done
 }
