@@ -1,0 +1,36 @@
+diff --git a/dune-project b/dune-project
+index 827bd71..33211e8 100644
+--- a/dune-project
++++ b/dune-project
+@@ -28,8 +28,6 @@ cursor management facilities.")
+   (ocaml
+    (>= 4.02.3))
+   react
+-  result
+-  uchar
+   uutf
+   (uucp
+    (>= 2.0.0))
+diff --git a/src/dune b/src/dune
+index 6899c01..a371d54 100644
+--- a/src/dune
++++ b/src/dune
+@@ -4,4 +4,4 @@
+  (wrapped false)
+  (flags
+   (:standard -safe-string))
+- (libraries react result uchar uutf uucp uuseg))
++ (libraries react uutf uucp uuseg))
+diff --git a/zed.opam b/zed.opam
+index 5329c93..8d548d7 100644
+--- a/zed.opam
++++ b/zed.opam
+@@ -18,8 +18,6 @@ depends: [
+   "dune" {>= "3.0"}
+   "ocaml" {>= "4.02.3"}
+   "react"
+-  "result"
+-  "uchar"
+   "uutf"
+   "uucp" {>= "2.0.0"}
+   "uuseg"

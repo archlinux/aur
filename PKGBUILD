@@ -5,19 +5,30 @@
 _projectname='zed'
 pkgname="ocaml-$_projectname"
 pkgver='3.2.3'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Abstract engine for text edition in OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD-3-Clause')
-depends=('ocaml>=4.02.3' 'ocaml-react' 'ocaml-result' 'ocaml-uchar' 'ocaml-uuseg' 'ocaml-uucp>=2.0.0' 'ocaml-uutf')
+depends=('ocaml>=4.03.0' 'ocaml-react' 'ocaml-uuseg' 'ocaml-uucp>=2.0.0' 'ocaml-uutf')
 makedepends=('dune>=3.0.0')
 checkdepends=('ocaml-alcotest')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('637f75129550f6459417549d44bed16bdc62721d2e9e0c6bb5bfab30c5bc6478de15faece8c091b56f238375cb79a7bc176375400e543120bb31d7ea626b7c5b')
+source=(
+	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+	'remove-shim-deps.diff'
+)
+b2sums=('d013d1d3341f04ec7aa141abaa175d3db9e57e3966c5a8adef7efb416e7ec3ae0800f554b0d943fa55cd8bbb6bfe069e6b5d7d23d2a38bf7f1e55f7cafe52943'
+        '69913ea6b6f7164ada7bee97391dda26814fed55754d7e7a08eda73fec904be9e8a1437309c1f4232e540cf892705c173665e751c95b2155ac49fb565fe6a91f')
 
 _sourcedirectory="$_projectname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Remove result and uchar dependencies, as we're always running on OCaml >= 4.03.0
+	patch --forward -p1 < '../remove-shim-deps.diff'
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"

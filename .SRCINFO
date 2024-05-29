@@ -1,22 +1,22 @@
 pkgbase = ocaml-zed
 	pkgdesc = Abstract engine for text edition in OCaml
 	pkgver = 3.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocaml-community/zed
 	arch = x86_64
 	arch = aarch64
 	license = BSD-3-Clause
 	checkdepends = ocaml-alcotest
 	makedepends = dune>=3.0.0
-	depends = ocaml>=4.02.3
+	depends = ocaml>=4.03.0
 	depends = ocaml-react
-	depends = ocaml-result
-	depends = ocaml-uchar
 	depends = ocaml-uuseg
 	depends = ocaml-uucp>=2.0.0
 	depends = ocaml-uutf
 	options = !strip
 	source = ocaml-zed-3.2.3.tar.gz::https://github.com/ocaml-community/zed/archive/3.2.3.tar.gz
-	sha512sums = 637f75129550f6459417549d44bed16bdc62721d2e9e0c6bb5bfab30c5bc6478de15faece8c091b56f238375cb79a7bc176375400e543120bb31d7ea626b7c5b
+	source = remove-shim-deps.diff
+	b2sums = d013d1d3341f04ec7aa141abaa175d3db9e57e3966c5a8adef7efb416e7ec3ae0800f554b0d943fa55cd8bbb6bfe069e6b5d7d23d2a38bf7f1e55f7cafe52943
+	b2sums = 69913ea6b6f7164ada7bee97391dda26814fed55754d7e7a08eda73fec904be9e8a1437309c1f4232e540cf892705c173665e751c95b2155ac49fb565fe6a91f
 
 pkgname = ocaml-zed
