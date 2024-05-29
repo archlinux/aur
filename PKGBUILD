@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=csbooks-bin
 _pkgname=csBooks
-pkgver=7.5.0
-_electronversion=21
-pkgrel=9
+pkgver=8.2.2
+_electronversion=13
+pkgrel=1
 pkgdesc="A smart book management and reading software,also a PDF reader, EPUB reader, MOBI reader and DJVU file reader."
 arch=('x86_64')
 url="https://caesiumstudio.com/csbooks/"
@@ -12,20 +12,21 @@ license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname}-${pkgver}.pacman::${_ghurl}/releases/download/latest/${_pkgname}-${pkgver}.pacman"
     "LICENSE-${pkgver}.html::https://caesiumstudio.com/eula/license"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b1dfc2d6b137580b7bba60da5d97886369170f6b38b3154ad919847b9eca7afc'
-            'e3b3003f395da5789a53b25e32f44d649524de7aad73cb79a1f48694f93ae8d5'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('a6f544e1b9a6546701a304b651b9ab6f34b20866ad832f88378085bcc666a95e'
+            '258c68aa1cfa6963640aaf3776001ff55fe13df586726af039cc31c03c06f300'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
