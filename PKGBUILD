@@ -85,8 +85,9 @@ source=(
 
   "0006-Drop-toggle-shaded-since-it-s-no-longer-included-in-.patch"
   "0007-64-bit-time-t-compat.patch"
-  "1001-releasing-package-compiz-version-1-0.9.14.2-22.10.20.patch"
-  "1002-releasing-package-compiz-version-1-0.9.14.2-22.10.20.patch"
+
+  #"1001-releasing-package-compiz-version-1-0.9.14.2-22.10.20.patch"
+  #"1002-releasing-package-compiz-version-1-0.9.14.2-22.10.20.patch"
 )
 sha256sums=(
   'cfa061e93b032275ff9e7041f582a8f6d5ae271cf8a89e6bc74e3d3635999d3c'
@@ -97,8 +98,8 @@ sha256sums=(
   '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a'
   '9b9e92a7174f2255f408d340dcb7b765211777cd92fe9ed17b5888ff13578291'
   '90969b7beba107a7146b11c3a60969b62c2be7a3e891d7dee913504ec6de759c'
-  '3c7ed442af8ec99ab521afbd64cb97fc0ae5d2ec6b6506a8e79c7b65fda342c0'
-  'f68b6ada12a720853d6abe04a623448e31bf2dae6c3a66d935c937bcf374cd19'
+  #'3c7ed442af8ec99ab521afbd64cb97fc0ae5d2ec6b6506a8e79c7b65fda342c0'
+  #'f68b6ada12a720853d6abe04a623448e31bf2dae6c3a66d935c937bcf374cd19'
 )
 
 prepare() {
