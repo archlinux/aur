@@ -4,6 +4,10 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+echo "Cleaning up ..."
+rm -rf pkg src
+rm ecal-*
+
 echo "Trying to auto-update this package to version ${1} ..."
 sed -ri 's/pkgver=([0-9]+\.[0-9]+\.[0-9]+\.{0,1}[0-9]*)/pkgver='"${1}"'/' PKGBUILD 
 if [ "$?" -ne 0 ]; then
