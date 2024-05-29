@@ -52,7 +52,7 @@ source=(
 )
 sha256sums=(
   "835db6543d5cb2e801675958965be96877f66d6907bb521954b598b785deae5e"
-  "312ed6a25f3fbfb3832b01ef3958df0b387b59d142fdf5db10ccf8bb112348e3"
+  "7147adc842aa9607936bf5c1a8631cda44dd1dc2cd4ff460c4b223ea9df3cf47"
 #  "1cf456d2d02afb52378ad6882b1901329ae6437989ecef4ebe1333d116efc3e2"
 )
 install="geant4-full.install"
@@ -138,4 +138,7 @@ package() {
   cd "${srcdir}"/build
   make DESTDIR="${pkgdir}" install
   ln -s /opt/Geant4/Geant4-v${pkgver}/lib "${pkgdir}"/opt/Geant4/Geant4-v${pkgver}/lib64
+  ln -s /opt/Geant4/Geant4-v${pkgver}/include/Geant4 "${pkgdir}"/usr/lib/include/Geant4
+  ln -s /opt/Geant4/Geant4-v${pkgver}/include/Geant4/CLHEP "${pkgdir}"/usr/lib/include/CLHEP
+  ln -s /opt/Geant4/Geant4-v${pkgver}/include/Geant4/PTL "${pkgdir}"/usr/lib/include/PTL
 }

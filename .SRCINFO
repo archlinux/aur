@@ -41,6 +41,6 @@ pkgbase = geant4-full
 	source = http://geant4-data.web.cern.ch/releases/geant4-v11.2.1.tar.gz
 	source = geant4-full.install
 	sha256sums = 835db6543d5cb2e801675958965be96877f66d6907bb521954b598b785deae5e
-	sha256sums = 312ed6a25f3fbfb3832b01ef3958df0b387b59d142fdf5db10ccf8bb112348e3
+	sha256sums = 7147adc842aa9607936bf5c1a8631cda44dd1dc2cd4ff460c4b223ea9df3cf47
 
 pkgname = geant4-full
