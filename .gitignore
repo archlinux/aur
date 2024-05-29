@@ -1,5 +1,5 @@
 /pkg
 /src
 
-/garbage-*-any.pkg.tar.zst
+/*.pkg.tar.zst
 /v*.tar.gz
