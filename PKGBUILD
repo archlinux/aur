@@ -10,18 +10,29 @@
 _projectname='ounit'
 pkgname="ocaml-$_projectname"
 pkgver='2.2.7'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Unit testing framework for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/gildor478/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.0' 'ocaml-lwt>=2.5.2' 'ocaml-seq' 'ocaml-stdlib-shims')
+depends=('ocaml>=4.08.0' 'ocaml-lwt>=2.5.2')
 makedepends=('dune>=3.0.0' 'ocaml-findlib')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b2cefed53127f724c099391eefe1bce3b43cad5d6b629b5f1e9446b58892639de758f5dbcbd5efb6c409ce77ed01d06693989a3ba909cf79c36c2554c1473396')
+source=(
+	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+	'remove-shim-deps.diff'
+)
+b2sums=('6fb43eccf33a02d3fbbbec1fd00b2901ae69bb55e9c94790ebcfed68f676bc0a9a573f4e03edc8c542e195b68c77deae0426c884ea81ceef1149548f6b760673'
+        '529b83b0c45bbe08637bbb12ce5884433a33439f32f212e0614a7e290abb84bd301a5752d89a695378a8c1d2276866f9bf60759a24842a483713f4ea6e8bf969')
 
 _sourcedirectory="$_projectname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Remove seq and stdlib-shims dependencies, as we're always running on OCaml >= 4.08.0
+	patch --forward -p1 < '../remove-shim-deps.diff'
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
