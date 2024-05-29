@@ -1,16 +1,16 @@
 pkgname=supermarioworld
 _pkgname=SuperMarioWorld
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Super Mario World powered by smw"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/supermarioworld"
 license=('GPL')
-depends=('smw-bin')
+depends=('smw-bin' 'yad')
 makedepends=('unzip')
 sha256sums=('161f7a1c0fa4c961a5def6be28068dc4355c7d1787cedcc678b6d0bae02f8cc2')
 source=("$url/-/archive/$pkgver-$pkgrel/smw-$pkgver-$pkgrel.tar.bz2")
-
+ 
 package() {
    install -dm755 "$pkgdir/usr/share/games/$_pkgname"
    install -dm755 "$pkgdir/usr/share/pixmaps"

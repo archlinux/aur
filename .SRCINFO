@@ -1,14 +1,15 @@
 pkgbase = supermarioworld
 	pkgdesc = Super Mario World powered by smw
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/supermarioworld
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
 	depends = smw-bin
-	source = https://gitlab.com/linuxbombay/supermarioworld/-/archive/1.0.0-1/smw-1.0.0-1.tar.bz2
+	depends = yad
+	source = https://gitlab.com/linuxbombay/supermarioworld/-/archive/1.0.0-2/smw-1.0.0-2.tar.bz2
 	sha256sums = 161f7a1c0fa4c961a5def6be28068dc4355c7d1787cedcc678b6d0bae02f8cc2
 
 pkgname = supermarioworld
