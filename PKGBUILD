@@ -10,7 +10,7 @@ url="http://www.eterna.com.au/bozohttpd/"
 license=('BSD')
 depends=('openssl' 'lua')
 optdepends=('php-cgi')
-source=("http://www.eterna.com.au/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
+source=("https://web.archive.org/web/20231024192659/${url}/${pkgname}-${pkgver}.tar.bz2"
 	'bozohttpd.service'
 	'bozohttpd_ssl.service'
 	'bozohttpd.install'
