@@ -1,7 +1,7 @@
 pkgbase = govarnam-ibus-bin
 	pkgdesc = IBus engine for GoVarnam providing Indian language input method
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.varnamproject.com
 	arch = x86_64
 	license = AGPL3

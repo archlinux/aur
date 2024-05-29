@@ -4,7 +4,7 @@ _base=govarnam-ibus
 _pkgname=varnam-ibus-engine
 pkgname=${_base}-bin
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="IBus engine for GoVarnam providing Indian language input method"
 arch=('x86_64')
 url="https://www.varnamproject.com"
@@ -14,6 +14,18 @@ depends=('govarnam' 'ibus')
 provides=('govarnam-ibus')
 source=("https://github.com/varnamproject/${_base}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}.zip")
 sha256sums=('228763d4a5fea4067932fa4e1998178bb28f265d753146e91bbef2f117d8a3f3')
+
+prepare() {
+	cd "${_pkgname}"-"${pkgver}"-"${arch}"
+	sed -i 's#/usr/local/#/usr/#g' "component/varnam-bn.xml"
+	sed -i 's#/usr/local/#/usr/#g' "component/varnam-hi.xml"
+	sed -i 's#/usr/local/#/usr/#g' "component/varnam-ka.xml"
+	sed -i 's#/usr/local/#/usr/#g' "component/varnam-ml-inscript.xml"
+	sed -i 's#/usr/local/#/usr/#g' "component/varnam-ml.xml"
+	sed -i 's#/usr/local/#/usr/#g' "component/varnam-ne.xml"
+	sed -i 's#/usr/local/#/usr/#g' "component/varnam-ta.xml"
+	sed -i 's#/usr/local/#/usr/#g' "component/varnam-te.xml"
+}
 
 package() {
 	cd "${_pkgname}"-"${pkgver}"-"${arch}"
