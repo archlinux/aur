@@ -44,8 +44,8 @@ package_jpterm() {
 package_python-txl() {
 	pkgdesc="The plugin system for jpterm"
 	depends=('python-asphalt' 'python-textual' 'python-pycrdt' 'python-jupyter-ydoc' 'python-pycrdt' 'python-anyio' 'python-textual_imageview' 'python-ypywidgets_textual')
-	cd "$pkgbase-$pkgver"/txl
 
+	cd "$pkgbase-$pkgver"/txl
 	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python -m installer --destdir="$pkgdir/" dist/*.whl
 
