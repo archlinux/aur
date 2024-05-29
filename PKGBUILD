@@ -3,7 +3,7 @@
 
 _pyname=flask-jwt-extended
 pkgname=python-$_pyname
-pkgver=4.5.3
+pkgver=4.6.0
 pkgrel=1
 arch=(any)
 pkgdesc='A Flask extension that provides JWT support (with batteries included)!'
@@ -13,7 +13,7 @@ depends=(python-flask python-pyjwt)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 checkdepends=(python-pytest python-dateutil python-cryptography)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('fc90b317d72546b17c20c8013219870dec174cf2d0d10424b435e11f36b25d07')
+sha256sums=('d7415d24049c72a8ad340a653d3202ee31a2db9ceba73d77ab05fdd9cc2e34e4')
 
 build() {
   cd "$srcdir/$_pyname-$pkgver"
