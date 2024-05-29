@@ -6,6 +6,7 @@ pkgbase = pipeline-gtk
 	arch = x86_64
 	arch = aarch64
 	license = GPL
+	makedepends = blueprint-compiler
 	makedepends = rust
 	makedepends = meson
 	depends = libadwaita
