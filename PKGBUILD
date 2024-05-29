@@ -4,7 +4,7 @@ pkgname="${_pkgname//_/-}-bin"
 _appname="YT Downloader"
 pkgver=0.1.35
 _electronversion=28
-pkgrel=3
+pkgrel=4
 pkgdesc="Download and convert Videos from YouTube and other sites with thumbnail and metadata support"
 arch=("x86_64")
 url="https://projects.software-city.org/p/yt-downloader"
@@ -22,11 +22,12 @@ source=(
 )
 sha256sums=('1f953b115ff947dc13df8bcc61be85ef1e274b7f0554b951653f67edf8069ec4'
             '6c05069775fad84e1ae33b25f8dee3ec183ea8bf2270df24485de616237443bd'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*

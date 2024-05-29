@@ -1,7 +1,7 @@
 pkgbase = swc-ytdownloader-bin
 	pkgdesc = Download and convert Videos from YouTube and other sites with thumbnail and metadata support
 	pkgver = 0.1.35
-	pkgrel = 3
+	pkgrel = 4
 	url = https://projects.software-city.org/p/yt-downloader
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = swc-ytdownloader-bin
 	source = swc-ytdownloader.sh
 	sha256sums = 1f953b115ff947dc13df8bcc61be85ef1e274b7f0554b951653f67edf8069ec4
 	sha256sums = 6c05069775fad84e1ae33b25f8dee3ec183ea8bf2270df24485de616237443bd
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = swc-ytdownloader-bin
