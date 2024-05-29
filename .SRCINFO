@@ -1,7 +1,7 @@
 pkgbase = polyglot-ai-bin
 	pkgdesc = Based on ChatGPT and Azure artificial intelligence language models as underlying services, aiming to provide an easy-to-use language practice platform for multilingual speaking practice
 	pkgver = 0.3.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://polyglotai.xyz/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,6 +12,6 @@ pkgbase = polyglot-ai-bin
 	source = polyglot-ai-0.3.6.AppImage::https://github.com/liou666/polyglot/releases/download/v0.3.6/Polyglot_0.3.6.AppImage
 	source = polyglot-ai.sh
 	sha256sums = caa949bfcd271169813269e0a9540586170ea295640989a0d1668fa821b01c46
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = polyglot-ai-bin
