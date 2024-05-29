@@ -2,17 +2,13 @@
 pkgname=snx-rs-git
 _pkgname=snx-rs
 pkgver=2.2.1.r350.g0cf63a9
-pkgrel=4
+pkgrel=5
 pkgdesc="Open source VPN client for Checkpoint security gateways (git version)"
 arch=(x86_64)
 url=https://github.com/ancwrd1/snx-rs
 license=(AGPL-3.0-only)
 depends=(gcc-libs glibc glib2 openssl gdk-pixbuf2 gtk3 webkit2gtk-4.1 systemd iproute2)
 makedepends=(cargo sed git)
-optdepends=(
-  'zenity: libadwaita systray dialogues (takes precedence over kdialog)'
-  'kdialog: qt systray dialogues'
-)
 conflicts=(snx-rs)
 source=(
   "git+https://github.com/ancwrd1/snx-rs.git"
