@@ -2,9 +2,9 @@
 _appname=ting_en
 pkgname="eusoft-${_appname//_/-}-bin"
 _zhname="每日英语听力"
-pkgver=9.7.0
+pkgver=9.7.4
 _electronversion=11
-pkgrel=5
+pkgrel=6
 pkgdesc="听力统计、笔记同步、语音高亮跟随，让您轻松愉快学英语"
 arch=('x86_64')
 url="http://dict.eudic.net/ting"
@@ -14,20 +14,21 @@ conflicts=(
     "eudic-${_appname}"
 )
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://static.frdic.com/pkg/${_appname}/${_appname}.deb"
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('47b4bd3aa25299fa835f7141e370aa679f938ce573a367418ad2d4ac2aa3a99c'
+sha256sums=('5806324c371d9115f7e7f46ead8816a3a2ba5e797403369cd40ae49111c4f5fc'
             '17651cf7ae49b0372b6b6812d8b3b066203892c9fbe0b04b25efec0ab038c12b'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
