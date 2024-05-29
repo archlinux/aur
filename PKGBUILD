@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=earthly
-pkgver=0.8.12
+pkgver=0.8.13
 pkgrel=1
 pkgdesc='A build automation tool that executes in containers'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('docker')
 makedepends=('git' 'go')
 BUILDENV+=('!check')
 source=("git+https://github.com/earthly/earthly.git#tag=v${pkgver}")
-sha256sums=('9e930263b5eab0932c2369862852dfd4ff67e023e6606533b0b8dff176d4b80d')
+sha256sums=('ee04e5e215772987ec6f2f35c53118415d11b6caf082df5ae367b7c91485dc96')
 
 prepare() {
     mkdir -p earthly/build
