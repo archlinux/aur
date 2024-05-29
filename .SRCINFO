@@ -1,6 +1,6 @@
 pkgbase = jailbox-git
 	pkgdesc = Torify the system with multiple tor exit nodes and load balance
-	pkgver = 0.3.0.r0.g8a67dd2
+	pkgver = v0.5.0.r0.gd82c0be
 	pkgrel = 1
 	url = https://github.com/jamazi/jailbox.git
 	arch = any
