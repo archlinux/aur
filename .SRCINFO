@@ -1,16 +1,18 @@
 pkgbase = amulet-map-editor
 	pkgdesc = The new age Minecraft world editor and converter that supports every version since Java 1.12 and Bedrock 1.7
-	pkgver = 0.10.29
+	pkgver = 0.10.30a0
 	pkgrel = 1
 	url = https://www.amuletmc.com/
 	arch = any
-	license = custom
+	license = LicenseRef-none
+	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-cython-lint
 	makedepends = python-versioneer
 	makedepends = git
+	makedepends = python-packaging
 	depends = python
 	depends = python-numpy
 	depends = python-wxpython
@@ -21,9 +23,13 @@ pkgbase = amulet-map-editor
 	depends = python-amulet-core
 	depends = python-lz4
 	depends = python-amulet-leveldb
+	depends = python-pillow
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = python-platformdirs
 	source = amulet.desktop
 	source = icon.png
-	source = git+https://github.com/Amulet-Team/Amulet-Map-Editor.git#tag=0.10.29
+	source = git+https://github.com/Amulet-Team/Amulet-Map-Editor.git#tag=0.10.30a0
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
