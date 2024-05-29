@@ -16,6 +16,7 @@ pkgbase = forticlient-vpn
 	depends = org.freedesktop.secrets
 	depends = libappindicator-gtk2
 	depends = gzip
+	depends = iptables
 	optdepends = mate-polkit: for polkit authentication for the MATE
 	optdepends = polkit-gnome: for polkit authentication for the GNOME
 	optdepends = polkit-kde-agent: for polkit authentication for the KDE
