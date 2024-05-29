@@ -2,7 +2,7 @@
 # Contributor: Fixed Torres <aur_linuxero@outlook.com>
 
 pkgname=sayonara-player-git
-pkgver=1.8.0.beta1.r38.g3d444b4a
+pkgver=1.10.0.stable1.r1.g555e238d3
 pkgrel=1
 pkgdesc="Small, clear and fast audio player for Linux written in C++, supported by the Qt framework. It uses Gstreamer as audio backend."
 arch=(x86_64 i686 aarch64)
@@ -10,6 +10,7 @@ url="https://sayonara-player.com/"
 license=(GPL3)
 depends=(qt5-base qt5-svg gst-plugins-base taglib python)
 makedepends=(cmake git qt5-tools)
+checkdepends=(xorg-server-xvfb gst-plugins-good)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-good: additional codecs'
             'gst-plugins-bad: additional codecs'
@@ -28,23 +29,24 @@ prepare() {
   cd "${srcdir}/sayonara-player"
   [[ -d build ]] || mkdir build
 }
- 
+
 build() {
-  cd "${srcdir}/sayonara-player/build"
-  cmake .. \
+  cd "${srcdir}/sayonara-player"
+  cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Debug \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DWITH_TESTS=1
-  make
+
+  cmake --build build
 }
 
 check() {
-  cd "${srcdir}/sayonara-player/build"
-  make test || true
+  cd "${srcdir}/sayonara-player"
+  xvfb-run -s '-screen 0 1920x1080x24 -nolisten local' ctest --test-dir build --output-on-failure
 }
- 
+
 package() {
-  cd "${srcdir}/sayonara-player/build"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/sayonara-player"
+  DESTDIR="$pkgdir" cmake --install build
 }
 
