@@ -6,7 +6,7 @@ pkgbase = logwarn
 	arch = i686
 	arch = x86_64
 	license = APACHE
-	source = https://github.com/archiecobbs/logwarn/archive/refs/tags/1.0.17.tar.gz
+	source = logwarn-1.0.17.tar.gz::https://github.com/archiecobbs/logwarn/archive/refs/tags/1.0.17.tar.gz
 	sha256sums = e928522045dee389862dce8031fb45e4db2a17ab94062427c1d00c54d1e5d29f
 
 pkgname = logwarn
