@@ -1,5 +1,5 @@
 # Maintainer: kompowiec2 <diasp@o2.pl>
-pkgname=tabletop-club
+pkgname=tabletop-club-bin
 pkgver=0.1.2
 pkgrel=1
 pkgdesc="A virtual tabletop game for playing board games with friends"

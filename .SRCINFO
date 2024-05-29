@@ -1,4 +1,4 @@
-pkgbase = tabletop-club
+pkgbase = tabletop-club-bin
 	pkgdesc = A virtual tabletop game for playing board games with friends
 	pkgver = 0.1.2
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = tabletop-club
 	source = https://github.com/drwhut/tabletop-club/releases/download/v0.1.2/TabletopClub_v0.1.2_Linux_64.zip
 	sha512sums = 9ea5f908f7d3a9c83b075db29d10cb1068c4ece11b938b4f3a2ad031178ecd36a176721e022d4f24f6045c4df08634eec2678248f7c4e48439e70eda8a5ec514
 
-pkgname = tabletop-club
+pkgname = tabletop-club-bin
