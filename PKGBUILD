@@ -3,12 +3,13 @@
 pkgname=jailbox-git
 _pkgname=jailbox
 pkgver=v0.5.0.r0.gd82c0be
-pkgrel=1
+pkgrel=2
 pkgdesc="Torify the system with multiple tor exit nodes and load balance"
 url="https://github.com/jamazi/jailbox.git"
 license=("MIT")
-depends=(tor iptables)
+depends=(tor iptables iproute2 bash)
 makedepends=("git")
+optdepends=("obfs4proxy: obfuscating pluggable transport proxy")
 arch=("any")
 source=("git+https://github.com/jamazi/${_pkgname}.git")
 backup=(etc/${_pkgname}/{torrc,config})
