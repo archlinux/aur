@@ -1,0 +1,15 @@
+pkgbase = dnstrack-git
+	pkgdesc = A dns-query tracking tool written in go. dnstrack helps to track all dns query on your machine in real time.
+	pkgver = r5.g4739707
+	pkgrel = 1
+	url = https://github.com/chenjiandongx/dnstrack
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = dnstrack
+	conflicts = dnstrack
+	source = dnstrack::git+https://github.com/chenjiandongx/dnstrack.git
+	sha256sums = SKIP
+
+pkgname = dnstrack-git
