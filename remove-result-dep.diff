@@ -1,0 +1,23 @@
+diff --git a/mew.opam b/mew.opam
+index a12a0ec..5362848 100644
+--- a/mew.opam
++++ b/mew.opam
+@@ -10,7 +10,6 @@ build: [
+ ]
+ depends: [
+   "ocaml" {>= "4.02.3"}
+-  "result"
+   "trie"
+   "dune" {>= "1.1.0"}
+ ]
+diff --git a/src/dune b/src/dune
+index 3725251..fd967c6 100644
+--- a/src/dune
++++ b/src/dune
+@@ -1,5 +1,5 @@
+ (library
+   (name mew)
+   (public_name mew)
+-  (libraries result trie)
++  (libraries trie)
+   (flags (:standard -safe-string)))
