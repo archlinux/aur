@@ -2,7 +2,7 @@
 # Contributor: Jove Yu <yushijun110@126.com>
 pkgname=netease-cloud-music-gtk-bin
 _appname=com.gitee.gmg137.NeteaseCloudMusicGtk4
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器"
 arch=('x86_64')
@@ -26,12 +26,11 @@ optdepends=(
     'gst-plugins-ugly: extra media codecs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
-    "${pkgname%-bin}-lang-${pkgver}.rpm::${url}/releases/download/${pkgver}/${pkgname%-bin}-lang-${pkgver}.noarch.rpm"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}-ubuntu22.04_${pkgver}-1_amd64.deb"
 )
-sha256sums=('ea582a92f916d6b74626c8600d1f34c2608c871faa8c55fbbc279d9c6d768d04'
-            '94fc997f3cbcfe8d250d555ed5a67cb76c34b658492912fad7e6270c6b86664c')
+sha256sums=('3461de75b7e7675e6d27e221a96c8e117b40b04a88751ceda834b97d45bf17cf')
 build() {
+    bsdtar -xf "${srcdir}/data."*
     sed "s|${pkgname%-bin}4|${pkgname%-bin}|g;s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
     sed "s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/metainfo/${_appname}.metainfo.xml"
 }
