@@ -1,7 +1,7 @@
 pkgbase = python-symbolica
 	pkgdesc = Symbolica is a blazing fast and modern computer algebra system which aims to handle huge expressions. It can easily be incorporated into existing projects using its Python, Rust or C++ bindings.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/benruijl/symbolica
 	arch = x86_64
 	license = Custome

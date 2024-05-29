@@ -4,7 +4,7 @@
 pkgbase="python-symbolica"
 pkgname=("python-symbolica")
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Symbolica is a blazing fast and modern computer algebra system which aims to handle huge expressions. It can easily be incorporated into existing projects using its Python, Rust or C++ bindings."
 arch=('x86_64')
 makedepends=('python-wheel')
