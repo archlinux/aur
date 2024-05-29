@@ -16,6 +16,7 @@ depends=(
 )
 makedepends=(
     'fuse2'
+    'asar'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::https://files.astrofox.io/download/${_pkgname}-${pkgver}.AppImage"
