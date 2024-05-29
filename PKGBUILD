@@ -15,7 +15,7 @@ source=("https://raw.githubusercontent.com/bitscoper/Bitscoper_USB_Logger/main/B
 sha256sums=("SKIP")
 arch=("x86_64")
 pkgver=1
-pkgrel=1
+pkgrel=2
 
 build() {
   gcc ./Bitscoper_USB_Logger.c -o ./Bitscoper_USB_Logger -ludev
