@@ -1,7 +1,7 @@
 pkgbase = vcmi
 	pkgdesc = Open-source engine for Heroes of Might and Magic III
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vcmi.eu
 	install = vcmi.install
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = vcmi
 	makedepends = git
 	makedepends = ccache
 	makedepends = qt5-tools
+	makedepends = minizip
 	depends = boost-libs
 	depends = ffmpeg
 	depends = sdl2_image
@@ -32,7 +33,7 @@ pkgbase = vcmi
 	optdepends = unzip: required by vcmibuilder
 	provides = vcmi
 	conflicts = vcmi
-	source = https://github.com/vcmi/vcmi/archive/1.5.1.tar.gz
-	sha256sums = 3f9f120204e7676a41641970f5b1a9f9c6f8c2967ed8da9c98dc8e3fec01c249
+	source = vcmi-1.5.1.tar.gz::https://github.com/vcmi/vcmi/releases/download/1.5.1/VCMI-Sources.tar.gz
+	sha256sums = 359fdb066516a355ee62a4cc5b10c5f75971909e2000312fa03e2396514c108d
 
 pkgname = vcmi
