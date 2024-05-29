@@ -7,9 +7,9 @@ pkgname=palemoon-gtk3
 _pkgname=palemoon
 _repo=Pale-Moon
 epoch=1
-pkgver=33.1.0
+pkgver=33.1.1
 # Commit can be found at https://repo.palemoon.org/MoonchildProductions/Pale-Moon/tags
-_commit=1d5a6adf5f
+_commit=d91782a997
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ provides=('palemoon')
 conflicts=('palemoon')
 depends=('gtk3' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'alsa-lib'
          'startup-notification')
-makedepends=('python2' 'autoconf2.13' 'unzip' 'zip' 'yasm'
+makedepends=('python2' 'unzip' 'zip' 'yasm'
              'libpulse' 'gtk2' 'git')
 optdepends=('libpulse: PulseAudio audio driver'
             'ffmpeg: various video and audio support')
@@ -39,6 +39,10 @@ prepare() {
   git submodule init
   git config submodule.platform.url "${srcdir}/UXP"
   git submodule--helper update
+  cd platform
+  git cherry-pick -n 6cbb2c372b208902e765aa577539c018d76ba1b8
+  git cherry-pick -n e484c9d31136fc7e197bb0d686463a6555897784
+  git cherry-pick -n acb34c35dbc3452101318cbb3cccf50b1a1c90b2
 }
 
 build() {
