@@ -1,14 +1,14 @@
 # Maintainer: LevitatingBusinessMan <me@levitati.ng>
 pkgname=rrd2html
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A tool for generating html pages from rrd data'
 arch=(any)
 url='https://github.com/LevitatingBusinessMan/rrd2html.rb'
 license=('MIT')
 depends=('ruby' 'rrdtool' 'ruby-tomlrb')
 backup=('etc/rrd2html.toml')
-_commit='1dbc0143ad1e8275638983468e36949245f5a5b5'
+_commit='8eaf291adfa5a754aac27d0daff56bb9230d34e1'
 source=("$pkgname-$pkgrel::git+https://github.com/LevitatingBusinessMan/rrd2html.rb.git#commit=$_commit")
 sha256sums=('SKIP')
 
