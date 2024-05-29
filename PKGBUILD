@@ -3,7 +3,7 @@
 
 pkgname=iwant-bin
 _pkgname=iwant
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Install applications what I WANT"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('paru: AUR support'
             'flatpak: flathub support'
             'npm: npm support')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$arch-unknown-linux-gnu.tar.gz")
-sha256sums=('717f395b521f8e2e14ba7312c471eda1e5d20556c3cdf824f5211d0909ed34f4')
+sha256sums=('1c11c2ec28a46285c5b6b86dde12ebac9617ebfc3ff6ccc9f6dd2d881ba9745e')
 
 package() {
   install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin"
