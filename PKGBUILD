@@ -1,6 +1,6 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 pkgname=libliftoff-git
-pkgver=0.4.0.r11.g29a06ad
+pkgver=0.5.0.r1.g07fbf14
 pkgrel=1
 pkgdesc="Lightweight KMS plane library (git development version)"
 arch=('x86_64')
