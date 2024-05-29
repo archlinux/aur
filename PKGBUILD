@@ -27,7 +27,7 @@ build() {
   cd "$srcdir/drawio-desktop-$pkgver"/drawio/
   rm -fv src/main/webapp/js/app.min.js src/main/webapp/js/extensions.min.js src/main/webapp/js/stencils.min.js
   cd "$srcdir/drawio-desktop-$pkgver"/drawio/etc/build
-  ant app
+  LC_ALL=C.UTF-8 ant app
 
   # clean unused files up
   cd "$srcdir/drawio-desktop-$pkgver"/drawio/
