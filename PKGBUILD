@@ -2,8 +2,8 @@
 
 pkgname=fselect-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.8.6
+pkgrel=1
 pkgdesc='Find files with SQL-like queries'
 url="https://github.com/jhspetersson/${_pkgname}"
 license=('MIT')
@@ -19,9 +19,9 @@ source_x86_64=(
     "${_pkgname}-${pkgver}-usage.md::https://raw.githubusercontent.com/jhspetersson/${_pkgname}/${pkgver}/docs/usage.md"
 )
 
-sha256sums_x86_64=('e4616412c88bf159e211d955aab6c45eec7f0ade5ca1ce1e5199b090031c90e7'
-                   'bb4b4ee7c2bf4ef481815f5e5310edad9c932acb92efcb9dcf02681458fb370a'
-                   'ce7fa0c9a52176c5e7af21616f5aa02a95193720a57b2cd631dc8fd82f6c600b')
+sha256sums_x86_64=('443cf775d8415e1ffa7b22604412d6152c9bf791451cdf173fd1518df654b2e1'
+                   '73f8f0680a0eeeb25248c591d4ba79bb0143679e66499997b936d461ff03b64e'
+                   'f4b0f9dbde8924c143537273a40d27bb90098748ee4fbc22e4133ab3197a7d60')
 
 
 package() {
