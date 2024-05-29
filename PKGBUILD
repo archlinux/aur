@@ -3,18 +3,29 @@
 _projectname='visitors'
 pkgname="ocaml-$_projectname"
 pkgver='20210608'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='An OCaml syntax extension for generating visitor classes'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.inria.fr/fpottier/$_projectname"
 license=('LGPL-2.1-only')
-depends=('ocaml>=4.05.0' 'ocaml-ppx_deriving>=5.0' 'ocaml-ppxlib>=0.22.0' 'ocaml-result')
+depends=('ocaml>=4.05.0' 'ocaml-ppx_deriving>=5.0' 'ocaml-ppxlib>=0.22.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_projectname-$pkgver.tar.gz")
-sha512sums=('3abecb822dd37511421264d98868c937b7e81f209391e70cc66b7a4663aa059848a3f0ffe9de15408cb0b2112828118ef477a8b2ebf78d6323a4775eff31c055')
+source=(
+	"$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_projectname-$pkgver.tar.gz"
+	'remove-result-dep.diff'
+)
+b2sums=('43cbfd6a9a4f462e4c196ae736b9944e1dd6d14608a0339ebbc079692a4c28766fae1c3df7d36b6c83aabf07f916a5b7eb017f56d21b76935c4ef1df7bff49a0'
+        '077604788344f2462910ceb4496ebab84e81bbc744226ea2c448574d8884549171b9f3cba2287230524f7d8976403ea8b465df94e6e23607d4f65ae9380f0a3f')
 
 _sourcedirectory="$_projectname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Remove result dependency, as we're always running on OCaml >= 4.03.0
+	patch --forward -p1 < '../remove-result-dep.diff'
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"

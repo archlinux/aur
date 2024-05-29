@@ -1,0 +1,36 @@
+diff --git a/runtime/dune b/runtime/dune
+index 75112ef..b9df4a3 100644
+--- a/runtime/dune
++++ b/runtime/dune
+@@ -2,6 +2,5 @@
+   (name VisitorsRuntime)
+   (public_name visitors.runtime)
+   (synopsis "Runtime support for the generated visitors")
+-  (libraries result)
+   (wrapped false)
+ )
+diff --git a/src/dune b/src/dune
+index 89914ca..0143998 100644
+--- a/src/dune
++++ b/src/dune
+@@ -3,7 +3,7 @@
+   (public_name visitors.ppx)
+   (synopsis "Compile-time support for generating visitors")
+   (kind ppx_deriver)
+-  (libraries result compiler-libs.common ppxlib ppx_deriving.api)
++  (libraries compiler-libs.common ppxlib ppx_deriving.api)
+   (ppx_runtime_libraries visitors.runtime)
+ )
+ 
+diff --git a/visitors.opam b/visitors.opam
+index bf77582..58d81ec 100644
+--- a/visitors.opam
++++ b/visitors.opam
+@@ -13,7 +13,6 @@ depends: [
+   "ocaml" {>= "4.05.0"}
+   "ppxlib" {>= "0.22.0"}
+   "ppx_deriving" {>= "5.0"}
+-  "result"
+   "dune" {>= "2.0"}
+ ]
+ synopsis: "An OCaml syntax extension for generating visitor classes"
