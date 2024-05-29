@@ -21,5 +21,5 @@ sha256sums_x86_64=('5da1b7abf0782117ada51e343014391e6b66e4daf09c86fc3d53352f46ea
 sha256sums_aarch64=('fffdfe4f593e38ac41e9faf2ce26fd2c5e24196efb28d612db30b21ba0119e37')
 
 package() {
-    install -Dm755 e1s $pkgdir/usr/bin/e1s
+    install -Dm755 e1s $pkgdir/usr/bin/e1s 
 }
