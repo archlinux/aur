@@ -1,0 +1,5 @@
+[petsc-git]
+source = "gitlab"
+gitlab = "petsc/petsc"
+use_max_tag = true
+prefix = "v"

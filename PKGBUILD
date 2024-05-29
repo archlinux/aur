@@ -6,40 +6,32 @@
 
 _base=petsc
 pkgname=${_base}-git
-pkgver=3.18.1.r24.g1f6a6395d11
+pkgver=3.21.1.r89.g70699e4d17e
 pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
 #_config=linux-c-debug
 pkgdesc="Portable, extensible toolkit for scientific computation"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="https://${_base}.org"
-license=('custom:BSD-2-clause')
+license=(BSD-2-Clause)
 options=(staticlibs)
-depends=('openmpi' 'lapack' 'fftw' 'zlib' 'python-mpi4py' 'python-numpy' 'eigen')
-makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' 'pkgconf' 'git' 'cython' 'chrpath' 'hypre')
-optdepends=(
-  "boost: Free peer-reviewed portable C++ source libraries"
-  "cgns: Recording and recovering computer data"
-  "eigen: Lightweight C++ template library for vector and matrix math"
-  "fftw: Fast-Fourier Transform"
-  "gdb: Debugging"
-  "hdf5: large files"
-  "hwloc: Portable Hardware Locality (abstraction of hierarchical architectures)"
-  "med>=4.0: Data Modelization and Exchanges (meshes)"
-  "metis: Partitioning library (for meshes)"
-  "mumps: Sparse solver library"
-  "netcdf-openmpi: Management of array-data"
-  "opencl-headers: for opencl (GPU computing)"
-  "opencl: GPU computing"
-  "openmp: Parallel distributed tasks"
-  "libpng"
-  "scalapack: Parallel memory linear algebra"
-  "scotch: Partitioning with sparse matrices"
-  "suitesparse: Sparse matrix library"
-  "superlu: Subroutines for sparsse linear systems"
-  "libyaml: configuration files")
+depends=(hdf5-openmpi fftw-openmpi gsl lapack libjpeg-turbo libyaml netcdf-openmpi
+  python-numpy python-mpi4py superlu suitesparse zlib)
+makedepends=(cmake cython gcc gcc-fortran python-setuptools git)
+optdepends=('hypre: support for the hypre sparse system solver'
+  'kokkos: support for Kokkos'
+  'metis: support for metis graph partitioning library'
+  'mumps: support for the mumps sparse solver'
+  'parmetis: support for parmetis parallel graph partitioning library'
+  'pastix: support for the pastix solver'
+  'scalapack: support for ScaLAPACK'
+  'scotch: support for Scotch'
+  'superlu_dist: support for the superlu_dist sparse solver'
+  'triangle: support for the two-dimensional quality mesh generator and Delaunay triangulator'
+  'valgrind: support for valgrind to help find memory-management problems in programs'
+  'zoltan: support for zoltan')
 source=(git+https://gitlab.com/${_base}/${_base}.git#branch=release
   test_optdepends.sh)
 sha512sums=('SKIP'
@@ -106,8 +98,6 @@ opt_flags="${generic_flags} -O3"
 generic_flags="${generic_flags} -O2"
 
 export LANG=C
-export OMPI_MCA_opal_cuda_support=0
-export OMPI_MCA_mpi_oversubscribe=0
 unset PETSC_DIR
 export PETSC_ARCH=${_config}
 
