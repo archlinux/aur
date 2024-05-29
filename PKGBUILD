@@ -3,12 +3,12 @@
 pkgname=python-amulet-leveldb-git
 pkgdesc="A Cython wrapper for Mojang's modified LevelDB library."
 url="https://github.com/Amulet-Team/Amulet-LevelDB"
-license=(unknown)
+license=("LicenseRef-Amulet-Team-License")
 arch=(any)
-pkgver=1.0.0b5.r2.g11aa86c1
+pkgver=1.0.2.r1.g47c490e8
 pkgrel=1
-makedepends=(python-setuptools git)
-depends=(python python-versioneer python-portalocker python-leveldb)
+makedepends=(python-setuptools git python-versioneer)
+depends=(python python-portalocker python-leveldb cython gcc-libs glibc zlib)
 source=(
 	"git+https://github.com/Amulet-Team/Amulet-LevelDB.git"
 )
@@ -37,4 +37,5 @@ function build() {
 function package() {
 	cd "${srcdir}/Amulet-LevelDB"
 	python setup.py install --root="$pkgdir" --optimize=1
+	install -Dm644 "${srcdir}/Amulet-LevelDB/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
