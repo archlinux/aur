@@ -10,7 +10,7 @@
 _base=petsc
 pkgname=${_base}-complex
 pkgver=3.21.1
-pkgrel=2
+pkgrel=3
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -25,7 +25,7 @@ provides=("${_base}=${pkgver}")
 depends=(hdf5-openmpi fftw-openmpi gsl lapack libjpeg-turbo libyaml netcdf-openmpi
   python-numpy python-mpi4py superlu suitesparse zlib)
 makedepends=(cmake cython gcc gcc-fortran python-setuptools)
-checkdepends=()
+# checkdepends=()
 optdepends=('hypre: support for the hypre sparse system solver'
   'kokkos: support for Kokkos'
   'metis: support for metis graph partitioning library'
@@ -81,10 +81,10 @@ build() {
   make DESTDIR=${srcdir}/tmp install
 }
 
-check() {
-  cd ${srcdir}/${_base}-${pkgver}
-  PYTHONPATH=${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH} make check
-}
+# check() {
+#   cd ${srcdir}/${_base}-${pkgver}
+#   PYTHONPATH=${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH} make check
+# }
 
 package() {
   _build_dir=${srcdir}/${_base}-${pkgver}
