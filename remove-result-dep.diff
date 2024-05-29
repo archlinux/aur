@@ -1,0 +1,47 @@
+diff --git a/dune-project b/dune-project
+index c641a2db..10bd1295 100644
+--- a/dune-project
++++ b/dune-project
+@@ -38,7 +38,6 @@
+    (>= 2.3.0))
+   (lwt :with-test)
+   camlp-streams
+-  result
+   (alcotest :with-test))
+  (conflicts
+    (result (< 1.5))))
+diff --git a/lib/block.mli b/lib/block.mli
+index b023265d..47e69a3f 100644
+--- a/lib/block.mli
++++ b/lib/block.mli
+@@ -129,7 +129,7 @@ val mk_include :
+ (** [mk_include] builds an include block from a comment [<!-- $MDX ... -->]
+     that is not followed by a code block [``` ... ```]. *)
+ 
+-val from_raw : Raw.t -> (t, [ `Msg of string ] list) Result.result
++val from_raw : Raw.t -> (t, [ `Msg of string ] list) Result.t
+ 
+ (** {2 Printers} *)
+ 
+diff --git a/mdx.opam b/mdx.opam
+index 833e964d..ac54c944 100644
+--- a/mdx.opam
++++ b/mdx.opam
+@@ -31,7 +31,6 @@ depends: [
+   "ocaml-version" {>= "2.3.0"}
+   "lwt" {with-test}
+   "camlp-streams"
+-  "result"
+   "alcotest" {with-test}
+   "odoc" {with-doc}
+ ]
+diff --git a/vendor/odoc-parser/src/dune b/vendor/odoc-parser/src/dune
+index 52caaaf2..12396b3e 100644
+--- a/vendor/odoc-parser/src/dune
++++ b/vendor/odoc-parser/src/dune
+@@ -5,4 +5,4 @@
+  (package mdx)
+  (flags
+   (:standard -w -50))
+- (libraries astring result camlp-streams))
++ (libraries astring camlp-streams))

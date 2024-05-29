@@ -1,7 +1,7 @@
 pkgbase = ocaml-mdx
 	pkgdesc = Executable code blocks inside markdown files for OCaml
 	pkgver = 2.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/realworldocaml/mdx
 	arch = x86_64
 	arch = aarch64
@@ -19,11 +19,12 @@ pkgbase = ocaml-mdx
 	depends = ocaml-fmt>=0.8.7
 	depends = ocaml-logs>=0.7.0
 	depends = ocaml-re>=1.7.2
-	depends = ocaml-result
 	depends = ocaml-ocaml-version>=2.3.0
 	depends = zstd
 	options = !strip
 	source = ocaml-mdx-2.4.1.tar.gz::https://github.com/realworldocaml/mdx/archive/2.4.1.tar.gz
-	sha512sums = c4b645b656d7f0319972c752d711c0297befcd909c57e0988e779a1156655f17881d6d78a27878d6b630608e70c3c6644af6cc84b850bf12eac7b1641270da17
+	source = remove-result-dep.diff
+	b2sums = 3c80e6b5223eacea90727d23ecd454e1b31f7fbbdb6a0d588e66162f3fa8bbbae32221b8d8819b46c75ae12facaaf9ab213384f0cc36b80f18cf58c5314821bc
+	b2sums = 92ed0828fb3dd6e166dd14f3c109eaf62c06b59ad3819c44c411f192930d070e5a62ceae3219fcf8abd5f65ce4e84cb6ed51eba3c1ebe776d3ad8a260f95f7b3
 
 pkgname = ocaml-mdx
