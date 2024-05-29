@@ -17,5 +17,5 @@ package() {
 	install -Dm755 rrd2html.rb "$pkgdir/usr/bin/rrd2html.rb"
 	install -Dm755 README.adoc "$pkgdir/usr/share/rrd2html/README.adoc"
 	install -Dm644 rrd2html.slim "$pkgdir/usr/share/rrd2html/rrd2html.slim"
-    install -Dm644 rrd2html.toml "$pkgdir/etc/rrd2html.toml"
+	install -Dm644 rrd2html.toml "$pkgdir/etc/rrd2html.toml"
 }
