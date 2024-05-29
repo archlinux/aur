@@ -1,10 +1,13 @@
 pkgbase = nwg-displays
 	pkgdesc = Output management utility for sway and Hyprland Wayland compositors
-	pkgver = 0.3.19
+	pkgver = 0.3.20
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-displays
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-gobject
@@ -14,7 +17,7 @@ pkgbase = nwg-displays
 	provides = nwg-displays
 	conflicts = nwg-displays
 	conflicts = nwg-displays-git
-	source = nwg-displays-0.3.19.tar.gz::https://github.com/nwg-piotr/nwg-displays/archive/v0.3.19.tar.gz
-	md5sums = 8ddcf48c9f98ec1ce64e3fb62d95397d
+	source = nwg-displays-0.3.20.tar.gz::https://github.com/nwg-piotr/nwg-displays/archive/v0.3.20.tar.gz
+	md5sums = 9a1714fd61c794f45ac8e049c5f13ed0
 
 pkgname = nwg-displays
