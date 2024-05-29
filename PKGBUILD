@@ -7,14 +7,14 @@
 pkgname=palemoon
 _repo=Pale-Moon
 epoch=1
-pkgver=33.1.0
+pkgver=33.1.1
 # Commit ID can be found at https://repo.palemoon.org/MoonchildProductions/Pale-Moon/tags
-_commit=1d5a6adf5f
+_commit=d91782a997
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="https://www.palemoon.org/"
-license=('MPL' 'GPL' 'LGPL')
+license=('MPL-2.0')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'alsa-lib'
          'startup-notification')
 makedepends=('python2' 'autoconf2.13' 'unzip' 'zip' 'yasm'
