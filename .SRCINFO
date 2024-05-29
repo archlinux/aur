@@ -1,6 +1,6 @@
 pkgbase = intel-oneapi-hpckit
 	pkgdesc = Intel oneAPI Base and HPC Toolkit for Linux
-	pkgver = 2024.0.1
+	pkgver = 2024.1.0
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	install = intel-oneapi-hpckit.install
@@ -39,13 +39,13 @@ pkgbase = intel-oneapi-hpckit
 	provides = intel-oneapi-vtune
 	provides = intel-oneapi-fpga-group
 	conflicts = intel-oneapi-basekit
-	noextract = l_BaseKit_p_2024.0.1.46_offline.sh
-	noextract = l_HPCKit_p_2024.0.1.38_offline.sh
+	noextract = l_BaseKit_p_2024.1.0.596_offline.sh
+	noextract = l_HPCKit_p_2024.1.0.560_offline.sh
 	options = !strip
 	options = staticlibs
-	source = https://registrationcenter-download.intel.com/akdlm/IRC_NAS/163da6e4-56eb-4948-aba3-debcec61c064/l_BaseKit_p_2024.0.1.46_offline.sh
-	source = https://registrationcenter-download.intel.com/akdlm/IRC_NAS/67c08c98-f311-4068-8b85-15d79c4f277a/l_HPCKit_p_2024.0.1.38_offline.sh
-	sha384sums = 7b9d71a0b412c65efe0b6083c6a48a64ffeeb9070f4e2af125333314e8e897490ec566e1d0c2c3cdb3c4aa0820ea44b4
-	sha384sums = df6509544dfc38cd0f58862545c98853b9a254c52eba105d988b98740cf987412872f9695584ba6985429d1a0b50a9e4
+	source = https://registrationcenter-download.intel.com/akdlm/IRC_NAS/fdc7a2bc-b7a8-47eb-8876-de6201297144/l_BaseKit_p_2024.1.0.596_offline.sh
+	source = https://registrationcenter-download.intel.com/akdlm/IRC_NAS/7f096850-dc7b-4c35-90b5-36c12abd9eaa/l_HPCKit_p_2024.1.0.560_offline.sh
+	sha384sums = a10da9bc38c5fbab801c5097d267c5368d06494bbab075f48ceb64154079643568f2f5fe700e7d7250828328fd217980
+	sha384sums = b7d751889d46d8d1b38d9ec60dfa314f6f10bdd9c2a82456bc2d8388f9e4ceb6a00d51828bd5892609cc4b49cc19b73e
 
 pkgname = intel-oneapi-hpckit
