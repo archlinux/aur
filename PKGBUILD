@@ -1,8 +1,8 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=xwayland-satellite
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc="Xwayland outside your Wayland"
 arch=(x86_64)
 url="https://github.com/Supreeeme/$pkgname"
@@ -20,7 +20,7 @@ makedepends=(
 )
 options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('fe06ce1428fb45ba12a622aa5d869f7aa1e5b496669d7c23f0da3b3b04f3ce6b853af9a0c846b21e6cb1651cf05d5c06e8d84f2081d896fbad5a5102c0b855be')
+b2sums=('7ce0fe4d8611881f788d7c253d584700c9eb733af8a66a7602e1e78efdeac1f33af04a23a1ba6b674e07e2a8eac2ed15876aa2e39fa946bd2da4412f5eb45229')
 
 prepare() {
   cd $pkgname-$pkgver
