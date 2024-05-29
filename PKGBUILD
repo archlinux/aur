@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=casdoor
-pkgver=1.618.0
+pkgver=1.623.0
 pkgrel=1
 pkgdesc="An open-source UI-first Identity and Access Management (IAM) / Single-Sign-On (SSO) platform"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/casbin/casdoor/archive/refs
         "casdoor.service"
         "casdoor.sysusers"
         "casdoor.tmpfiles")
-sha512sums=('d54f003ea9cca0e911a552565304bee62f7692fb2679797933f59a568bc7c5f1f46ce44edfc62161fb2d9e15181a72ec7ec76111eb3a4fd4aaa459ac71f343f0'
+sha512sums=('9f8cdbeadc6eda72f9e695002463381234bddf6dbc56481d36002fd530ccc7068e4f25dd49837af037cafeddb0a37ea13b86f24d99e2f100754aa02afd2ea478'
             'c4f2d91aaab7b024fe5618054f90cb37660b59c1822f01c02817fb204cc23deb1c885da19e3424a44e89bab41a4e0765086ed4cd27bf5ad6558fd1448088dc1e'
             '2f5ec975f0b121d356f282b3101856dc1ba1ca6d3aa9b65c0ccb66d85b793472d868dda4d51f7e7cf72e7dfa4a1e1a2f90c406f6cad94ddb9dc5a81d04bc2615'
             '6a128bb89359188b8e9198acd053a4cd713a1b61a5e61b5300fa9494a38c15e8ac7e647c9dc910d51fcc77b4c9d2b24d19d00173c949b53e92964e5ed157c9ec')
