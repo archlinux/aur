@@ -4,27 +4,32 @@ pkgname="eusoft-${_pkgname//_/-}-bin"
 _zhsname="每日法语听力"
 pkgver=9.7.0
 _electronversion=11
-pkgrel=5
+pkgrel=6
 pkgdesc="听力统计、笔记同步、语音高亮跟随，让您轻松愉快学法语"
 arch=('x86_64')
 url="https://www.frdic.com/ting"
 license=('LicenseRef-custom')
-conflicts=("${pkgname%-bin}" "eudic-${_pkgname}" "${_pkgname}")
+conflicts=(
+    "${pkgname%-bin}"
+    "eudic-${_pkgname}"
+    "${_pkgname}"
+)
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://static.frdic.com/pkg/${_pkgname}/${_pkgname}.deb"
     "LICENSE.html::https://www.eudic.net/v4/en/home/privacy"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('efbf72d55838f72fe4992330092473416476bb32ab6a0d03135aff64f99e74c9'
-            '12ec1b3e4be99eee9c2d5fb55c196d2294c1b112e137927c61f81efb0e308f75'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('cdf9d08b640518a101e875a9d2b5c4e92e32258c78f0e98017020031803a4a93'
+            '26a42e8de81b308e2dd5200f3d827b4dde3e443bf18e849dcc4d35a2acc173dc'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
