@@ -5,7 +5,7 @@ _appname="Fireblocks Recovery Utility"
 pkgver=0.4.1
 _fileversion="${pkgver}"
 _electronversion=21
-pkgrel=4
+pkgrel=5
 pkgdesc="Recover Fireblocks assets and keys in a disaster, verify a Recovery Kit, or generate keys to set up a new Recovery Kit."
 arch=('x86_64')
 url="https://www.fireblocks.com/"
@@ -14,7 +14,7 @@ license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -24,11 +24,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b9829b24391a674403451c6c2c79cd536047325b77e303439cd0a69e00b754da'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${_appname}-${_fileversion}.AppImage"
