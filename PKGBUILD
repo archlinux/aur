@@ -1,10 +1,13 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Kelvie Wong <kelvie@kelvie.ca>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
-pkgname=kdeconnect
+_pkgname=kdeconnect
+pkgname=kdeconnect-no-mdns
+provides=($_pkgname)
 pkgver=24.05.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 url='https://kdeconnect.kde.org/'
 arch=(x86_64)
@@ -54,16 +57,13 @@ optdepends=('python-nautilus: Nautilus integration'
             'sshfs: remote filesystem browser')
 groups=(kde-applications
         kde-network)
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig})
-sha256sums=('b05f5ee164160a7ffaa1269a27fd2a55006dd009f66c6bf10530bce2d9d980cd'
-            'SKIP')
-validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
-              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
-              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-kde-$pkgver.tar.xz)
+sha256sums=('b05f5ee164160a7ffaa1269a27fd2a55006dd009f66c6bf10530bce2d9d980cd')
 
 build() {
-  cmake -B build -S $pkgname-kde-$pkgver \
+  cmake -B build -S $_pkgname-kde-$pkgver \
     -DBUILD_TESTING=OFF \
+    -DMDNS_ENABLED=OFF \
     -DBLUETOOTH_ENABLED=OFF # https://bugs.kde.org/show_bug.cgi?id=481870
   cmake --build build
 }
