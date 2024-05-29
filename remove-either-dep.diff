@@ -1,0 +1,37 @@
+diff --git a/containers.opam b/containers.opam
+index 50acf25a..de68c511 100644
+--- a/containers.opam
++++ b/containers.opam
+@@ -12,7 +12,6 @@ bug-reports: "https://github.com/c-cube/ocaml-containers/issues"
+ depends: [
+   "dune" {>= "2.9"}
+   "ocaml" {>= "4.08"}
+-  "either"
+   "dune-configurator"
+   "qcheck-core" {>= "0.18" & with-test}
+   "yojson" {with-test}
+diff --git a/dune-project b/dune-project
+index d05d4b37..8ff0e000 100644
+--- a/dune-project
++++ b/dune-project
+@@ -15,7 +15,6 @@
+   (tags (stdlib containers iterators list heap queue))
+   (depends
+     (ocaml (>= 4.08))
+-    either
+     dune-configurator
+     (qcheck-core (and (>= 0.18) :with-test))
+     (yojson :with-test)
+diff --git a/src/core/dune b/src/core/dune
+index cc17ce83..38cd1d5b 100644
+--- a/src/core/dune
++++ b/src/core/dune
+@@ -6,7 +6,7 @@
+   (action
+    (run %{project_root}/src/core/cpp/cpp.exe %{input-file})))
+  (flags :standard -nolabels -open CCMonomorphic)
+- (libraries either containers.monomorphic))
++ (libraries containers.monomorphic))
+ 
+ (ocamllex
+  (modules CCSexp_lex))
