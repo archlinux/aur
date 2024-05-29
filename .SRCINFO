@@ -1,6 +1,6 @@
 pkgbase = etcd
 	pkgdesc = A highly-available key value store for shared configuration and service discovery.
-	pkgver = 3.5.13
+	pkgver = 3.5.14
 	pkgrel = 1
 	url = https://github.com/etcd-io/etcd
 	install = etcd.install
@@ -12,10 +12,10 @@ pkgbase = etcd
 	makedepends = git
 	options = !lto
 	backup = etc/conf.d/etcd
-	source = etcd-3.5.13.tar.gz::https://github.com/etcd-io/etcd/archive/v3.5.13.tar.gz
+	source = etcd-3.5.14.tar.gz::https://github.com/etcd-io/etcd/archive/v3.5.14.tar.gz
 	source = 10-EnvironmentFile.conf
 	source = etcd.env
-	b2sums = be7a46af3978108b7e25adabe736ac111a01ab7fcb8e142b75c0c87aa33905d42d10b721ebc982e834110388669d028e6a612c9745e2f5c93210dd05ffccba7d
+	b2sums = 5f4f36ed6d1828a0db52d8eea1f7a65f40823d84ecae01337f1765bed6e4d7d4da0e6cf262c1909119445849404b853943362413edc7f623aa26cc59ab32c7de
 	b2sums = 754d5e84506b9aff7629b9b08743e609d8e9db5926d5dd1ef22366a2eeffd4b9e56903284c3b6081bc2a3035e75922a009174aa612517d93e0f6a48fd6345729
 	b2sums = 71f207c4ef1643dc70eecea6bdba4dcd7226626813d2a9f3330059f1b9f78ea2d3607b8b15b67b1afec0d201b01c10f6db3267695118732621a05f967a56a65a
 
