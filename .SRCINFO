@@ -1,0 +1,17 @@
+pkgbase = e1s
+	pkgdesc = E1S - Easily Manage AWS ECS Resources in Terminal
+	pkgver = 1.0.36
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/keidarcy/e1s
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = e1s
+	conflicts = e1s-git
+	source_x86_64 = e1s-1.0.36-x86_64.zip::https://github.com/keidarcy/e1s/releases/download/v1.0.36/e1s_1.0.36_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5da1b7abf0782117ada51e343014391e6b66e4daf09c86fc3d53352f46ea123c
+	source_aarch64 = e1s-1.0.36-aarch64.zip::https://github.com/keidarcy/e1s/releases/download/v1.0.36/e1s_1.0.36_linux_arm64.tar.gz
+	sha256sums_aarch64 = fffdfe4f593e38ac41e9faf2ce26fd2c5e24196efb28d612db30b21ba0119e37
+
+pkgname = e1s
