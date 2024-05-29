@@ -3,7 +3,7 @@ pkgname=xiguavideo-bin
 _zhsname="西瓜视频"
 pkgver=1.0.9
 _electronversion=20
-pkgrel=2
+pkgrel=3
 pkgdesc="XiGua Video use system-wide electron.西瓜视频Windows移植版,使用系统electron."
 arch=("x86_64")
 url="https://www.ixigua.com"
@@ -15,12 +15,13 @@ conflicts=(
     "deepin-wine-${pkgname%-bin}"
 )
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
     'asar'
     'npm'
+    'curl'
 )
 noextract=("${pkgname%-bin}-${pkgver}.exe")
 source=(
@@ -30,19 +31,21 @@ source=(
 )
 sha256sums=('555761bb662ca4268c737e198937de1a3ba722b44707a6f5ce605445cfaa09c2'
             'bd956769c0d43acd95075a4a95c2ffe5b31f404b4c8675c481e95d0307e82bf1'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_zhsname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="AudioVideo" --name="${_zhsname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_zhsname}" --exec="${pkgname%-bin} %U"
     install -Dm755 -d "${srcdir}/tmp"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.exe" -C "${srcdir}/tmp"
     asar e "${srcdir}/tmp/resources/app.asar" "${srcdir}/app.asar.unpacked"
     cd "${srcdir}/app.asar.unpacked"
     sed '/tron-client/d' -i package.json
+    export npm_config_registry=https://registry.npmmirror.com
     npm install
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
