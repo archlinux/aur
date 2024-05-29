@@ -4,8 +4,8 @@
 
 _name=imbalanced-learn
 pkgname=python-${_name,,}
-pkgver=0.12.2
-pkgrel=2
+pkgver=0.12.3
+pkgrel=1
 pkgdesc='Toolbox for imbalanced dataset in machine learning'
 arch=('any')
 url="https://github.com/scikit-learn-contrib/imbalanced-learn"
@@ -20,7 +20,7 @@ optdepends=('python-keras: for dealing with Keras models'
 makedepends=('python-installer' 'python-wheel')
 _whl="${_name//-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('8523b3ee6c10c1d25f6bebe3faa73a0bca28d1fed55e0435b49af22802cdc259')
+sha256sums=(0e83e8226cb27dd567dff6aef0136bde0f54922ea1bd9d5f38f62701dc51a152)
 
 noextract=("$_whl")
 package() {
