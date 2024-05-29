@@ -2,20 +2,22 @@
 
 pkgname=libcmatrix
 pkgver=3.11.0
-pkgrel=8
+pkgrel=9
 pkgdesc="A library designed for numerical studies of problems in NMR"
 arch=(x86_64)
 url="https://community.dur.ac.uk/solids.nmr/software/pnmrsim"
-license=(GPL)
-depends=(openmpi)
+license=(MIT)
+depends=(gcc-libs)
 makedepends=(root cblas lapacke)
 source=(${pkgname}R3_lite-$pkgver.tar.gz::https://community.dur.ac.uk/paul.hodgkinson/pNMRsim/libcmatrixR3_lite.tar.gz
+        LICENSE
         $pkgname-3.11.0-gcc5.2.patch
         $pkgname-3.11.0-shared.patch
         $pkgname-3.2.1-gcc4.7.patch
         $pkgname-3.9.0-atlas.patch
         $pkgname-3.11.0-sse.patch)
 sha256sums=('0cd4b1f921235ea64d7fbd8d814fbe639bf9ddb23e4a6d3182cf2788cc23f8b8'
+            'SKIP'
             '58a1278a8f1323bd201979cdce8ecdc390ce8825f58a1d143264455d5bc0f80c'
             'e52c2adb42f5a2836db1e71e4ae2f3235e58bc5c92b04594069548201fd821cf'
             'bc4eec9967be3d9ad520d1750abb23f5b6732b8352c7ad61f54c78fb7c9d6312'
@@ -45,12 +47,12 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure \
     --prefix=/usr \
-    --includedir=/usr/include/libcmatrix \
+    --includedir=/usr/include/$pkgname \
     --with-sse \
     --with-atlas \
     --with-minuit \
-    --with-mpi \
-    CXX=mpic++ \
+    --without-mpi \
+    CXX=g++ \
     CXXFLAGS="$CXXFLAGS -DHAVE_LIBLAPACK -I/usr/include/openblas -I/usr/include/openblas64" \
     ATLAS_CFLAGS='-I/usr/include' \
     ATLAS_LIBS='-lcblas' \
@@ -60,11 +62,14 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -dm 755 "$pkgdir"/usr/{include/libcmatrix,lib}
-  install -m755 include/*.h "$pkgdir/usr/include/libcmatrix"
-  install -m755 lib/libcmatrix.so.$pkgver "$pkgdir/usr/lib"
+  install -dm 755 "$pkgdir"/usr/{include/$pkgname,lib}
+  install -m755 include/*.h "$pkgdir/usr/include/$pkgname"
+  install -m755 lib/$pkgname.so.$pkgver "$pkgdir/usr/lib"
 
   cd "$pkgdir/usr/lib"
-  ln -sf libcmatrix.so.$pkgver libcmatrix.so.3
-  ln -sf libcmatrix.so.3 libcmatrix.so
+  ln -sf $pkgname.so.$pkgver $pkgname.so.3
+  ln -sf $pkgname.so.3 $pkgname.so
+
+  install -Dm755 "$srcdir/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
