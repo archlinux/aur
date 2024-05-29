@@ -1,7 +1,7 @@
 # Maintainer: Sol Bekic <s+aur at s-ol dot nu>
 
 pkgname="velocidrone"
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="a fast paced multi-player and single player FPV drone racing simulator"
 url="https://www.velocidrone.com/"
