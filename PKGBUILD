@@ -1,6 +1,6 @@
 # Maintainer: Eugene Gershnik <gershnik@hotmail.com>
 pkgname='wsdd-native'
-pkgver='1.13'
+pkgver='1.14'
 pkgrel=1
 pkgdesc='WS-Discovery Host Daemon. Makes your machine visible in Network view of Windows Explorer'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake>=3.25' 'make' 'gcc>=11.3' 'git' 'patch' 'libsystemd')
 conflicts=('wsdd')
 backup=('etc/wsddn.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gershnik/wsdd-native/archive/v$pkgver.tar.gz")
-sha256sums=('da126e5678ff8a8f4b0bb5d28b855974edd06d1841ac352a3675546a3973f50b')
+sha256sums=('b5b4a73edd811374b400bceb53a99f362f86640099d14c088e7efecfdd9dc8ee')
 
 
 build() {
