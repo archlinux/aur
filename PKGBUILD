@@ -2,7 +2,7 @@
 # Contributor: Fixed Torres <aur_linuxero@outlook.com>
 
 pkgname=sayonara-player
-_pkgver=1.9.0-stable1
+_pkgver=1.10.0-stable1
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Small, clear and fast audio player for Linux written in C++, supported by the Qt framework. It uses Gstreamer as audio backend."
