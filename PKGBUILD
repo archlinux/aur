@@ -16,10 +16,10 @@ _quarto="FALSE"
 pkgrel=4
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
-url="https://www.rstudio.com/products/rstudio/"
-license=('AGPL3')
+url="https://github.com/rstudio/rstudio"
+license=('AGPL-3.0-only')
 depends=('r>=3.3.0' 'boost-libs' 'qt5-sensors' 'qt5-svg' 'qt5-webengine' 'qt5-xmlpatterns' 'postgresql-libs' 'sqlite3' 'clang' 'hunspell-en_US' 'mathjax2' 'pandoc' 'yaml-cpp')
-makedepends=('git' 'cmake>=3.29' 'boost' 'desktop-file-utils' 'jdk8-openjdk' 'apache-ant' 'unzip' 'openssl' 'libcups' 'pam' 'patchelf' 'wget' 'yarn')
+makedepends=('git' 'cmake>=3.29' 'boost' 'ninja' 'desktop-file-utils' 'jdk8-openjdk' 'apache-ant' 'unzip' 'openssl' 'libcups' 'pam' 'patchelf' 'wget' 'yarn')
 optdepends=('git: for git support'
             'subversion: for subversion support'
             'openssh-askpass: for a git ssh access'
@@ -29,30 +29,26 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cherry-blossom"
         "https://github.com/SOCI/soci/archive/refs/tags/v${_sociver}.tar.gz"
         "qt.conf"
-        "0001-pandoc_version.patch"  
-        "0002-allow_system_node.patch"
-        "0003-fortify_source.patch")
+        "0002-allow_system_node.patch")
 
 sha256sums=('5c1190ae22e3a25740727ff1f341ef568f47359a0d1358958ec22f7e5b59b75b'
             'SKIP'
             '4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e'
-            'ad4bd3076ff2bff7d075e3928a7e55c618fa744e3bf5d3d387bf70e01ff96c2f'
-            'c657f75f26f95c5dae3a3f5605305af2f47954a9d266de8ffc8fc2f0b47e8bd4')
+            'ad4bd3076ff2bff7d075e3928a7e55c618fa744e3bf5d3d387bf70e01ff96c2f')
 
 options=('!emptydirs' '!debug')
 
 prepare() {
     cd ${srcdir}/${_srcname}
-    # Do not use outdated version name of pandoc
-    patch -p1 < ${srcdir}/0001-pandoc_version.patch
+    msg "Do not use outdated version name of pandoc"
+    sed -i '/PANDOC_VERSION/s/2.18/current/' "${srcdir}/${_srcname}/CMakeGlobals.txt"
+
+    msg "Suppress _FORTIFY_SOURCE mismatch warnings"
+    sed -i 's/D_FORTIFY_SOURCE=2/D_FORTIFY_SOURCE=3/' "${srcdir}/${_srcname}/src/cpp/CMakeLists.txt"
 
     # Add option to use system node
     patch -p3 < ${srcdir}/0002-allow_system_node.patch
-
-    # Suppress _FORTIFY_SOURCE mismatch warnings
-    patch -p3 < ${srcdir}/0003-fortify_source.patch
 
     cd "${srcdir}/${_srcname}/dependencies/common"
     install -d pandoc/${_pandocver}
@@ -61,20 +57,16 @@ prepare() {
     ln -sfT /usr/share/mathjax2 mathjax-27
     ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/pandoc
 
-    # Nodejs
-    ##install -d node/${_nodever}
-    ##cp -r "${srcdir}/node-v${_nodever}-linux-x64/"* node/${_nodever}
-
     # Fix links for src/cpp/session/CMakeLists.txt
     cd "${srcdir}/${_srcname}/dependencies"
     ln -sfT /usr/share/myspell/dicts dictionaries
     ln -sfT /usr/share/mathjax2 mathjax-27
+
     # Bundled SOCI libs
     ln -sfT "${srcdir}/soci-${_sociver}" "soci-${_sociver}"
 
-    # Panmirror is picked up now from Quarto repo
+    # Panmirror is picked up from Quarto repo
     ln -sfT "${srcdir}/quarto" "${srcdir}/${_srcname}/src/gwt/lib/quarto"
-
 }
 
 build() {
@@ -95,29 +87,28 @@ build() {
     fi
 
     cd "${srcdir}/${_srcname}/dependencies/soci-${_sociver}"
-    msg "Buildind SOCI libs"
-    mkdir build
-    cd build
+    msg "Building SOCI libs..."
 
-    cmake                                               \
-    -DCMAKE_POLICY_DEFAULT_CMP0063="NEW"                \
-    -DCMAKE_POLICY_DEFAULT_CMP0074="NEW"                \
-    -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true         \
-    -DCMAKE_CXX_VISIBILITY_PRESET="$COMPILE_VISIBILITY" \
-    -DSOCI_TESTS=OFF                                    \
-    -DSOCI_CXX11=ON                                     \
-    -DSOCI_EMPTY=OFF                                    \
-    -DWITH_BOOST=ON                                     \
-    -DWITH_POSTGRESQL=ON                                \
-    -DWITH_SQLITE3=ON                                   \
-    -DWITH_DB2=OFF                                      \
-    -DWITH_MYSQL=OFF                                    \
-    -DWITH_ORACLE=OFF                                   \
-    -DWITH_FIREBIRD=OFF                                 \
-    -DWITH_ODBC=OFF                                     \
-    ..
+    local _CMAKE_SOCI_OPTIONS=(
+      -DCMAKE_POLICY_DEFAULT_CMP0063="NEW"
+      -DCMAKE_POLICY_DEFAULT_CMP0074="NEW"
+      -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true
+      -DCMAKE_CXX_VISIBILITY_PRESET="$COMPILE_VISIBILITY"
+      -DSOCI_TESTS=OFF
+      -DSOCI_CXX11=ON
+      -DSOCI_EMPTY=OFF
+      -DWITH_BOOST=ON
+      -DWITH_POSTGRESQL=ON
+      -DWITH_SQLITE3=ON
+      -DWITH_DB2=OFF
+      -DWITH_MYSQL=OFF
+      -DWITH_ORACLE=OFF
+      -DWITH_FIREBIRD=OFF
+      -DWITH_ODBC=OFF
+    )
 
-    cmake --build . --target all
+    cmake -G Ninja -S "${srcdir}/${_srcname}/dependencies/soci-${_sociver}" -B build "${_CMAKE_SOCI_OPTIONS[@]}"
+    cmake --build build --target all
 
     export LDFLAGS="${LDFLAGS} -L${srcdir}/${_srcname}/dependencies/soci-${_sociver}/build/lib"
 
@@ -155,22 +146,24 @@ build() {
     # Following override works for cmake >3.29
     export CMAKE_INSTALL_PREFIX=/usr/lib/rstudio
     
-
-    cmake -S "${srcdir}/${_srcname}" -B build \
-          -DRSTUDIO_TARGET=Desktop \
-          -DCMAKE_BUILD_TYPE=Release \
-          -DRSTUDIO_USE_SYSTEM_BOOST=yes \
-          -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake \
-          -DBoost_NO_BOOST_CMAKE=ON \
-          -DQUARTO_ENABLED=${_quarto} \
-          -DRSTUDIO_USE_SYSTEM_NODE=yes \
-          -DRSTUDIO_BUNDLE_QT=FALSE
+    local _CMAKE_RSTUDIO_OPTIONS=(
+      -DRSTUDIO_TARGET=Desktop
+      -DCMAKE_BUILD_TYPE=Release
+      -DRSTUDIO_USE_SYSTEM_BOOST=yes
+      -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake
+      -DBoost_NO_BOOST_CMAKE=ON
+      -DQUARTO_ENABLED=${_quarto}
+      -DRSTUDIO_USE_SYSTEM_NODE=yes
+      -DRSTUDIO_BUNDLE_QT=FALSE
+    )
+    cmake -G Ninja -S "${srcdir}/${_srcname}" -B build "${_CMAKE_RSTUDIO_OPTIONS[@]}"
+    cmake --build build
 }
 
 package() {
 
     # Install the program
-    make -C build DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" cmake --install build
 
     # Install the license
     install -Dm 644 "${srcdir}/${_srcname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"

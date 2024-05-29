@@ -2,12 +2,13 @@ pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
 	pkgver = 2024.04.1.748
 	pkgrel = 4
-	url = https://www.rstudio.com/products/rstudio/
+	url = https://github.com/rstudio/rstudio
 	arch = x86_64
-	license = AGPL3
+	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = cmake>=3.29
 	makedepends = boost
+	makedepends = ninja
 	makedepends = desktop-file-utils
 	makedepends = jdk8-openjdk
 	makedepends = apache-ant
@@ -41,15 +42,11 @@ pkgbase = rstudio-desktop
 	source = git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cherry-blossom
 	source = https://github.com/SOCI/soci/archive/refs/tags/v4.0.3.tar.gz
 	source = qt.conf
-	source = 0001-pandoc_version.patch
 	source = 0002-allow_system_node.patch
-	source = 0003-fortify_source.patch
 	sha256sums = 5c1190ae22e3a25740727ff1f341ef568f47359a0d1358958ec22f7e5b59b75b
 	sha256sums = SKIP
 	sha256sums = 4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928
 	sha256sums = 723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921
-	sha256sums = 286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e
 	sha256sums = ad4bd3076ff2bff7d075e3928a7e55c618fa744e3bf5d3d387bf70e01ff96c2f
-	sha256sums = c657f75f26f95c5dae3a3f5605305af2f47954a9d266de8ffc8fc2f0b47e8bd4
 
 pkgname = rstudio-desktop
