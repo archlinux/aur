@@ -1,0 +1,18 @@
+pkgbase = python-terminaltexteffects-git
+	pkgdesc = TerminalTextEffects (TTE) is a terminal visual effects engine.
+	pkgver = d9a1ecea9ceadad4921662569220d8db042b7f96
+	pkgrel = 1
+	url = https://github.com/ChrisBuilds/terminaltexteffects
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-terminaltexteffects
+	conflicts = python-terminaltexteffects
+	source = git+https://github.com/ChrisBuilds/terminaltexteffects.git
+	sha256sums = SKIP
+
+pkgname = python-terminaltexteffects-git
