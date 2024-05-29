@@ -5,10 +5,10 @@ pkgbase = gcc49
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = LGPL
-	license = FDL
-	license = custom
+	license = GPL-3.0-or-later
+	license = LGPL-3.0+
+	license = GFDL-1.3
+	license = LicenseRef-custom
 	checkdepends = dejagnu
 	checkdepends = inetutils
 	makedepends = binutils>=2.25

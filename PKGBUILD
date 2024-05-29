@@ -12,7 +12,7 @@ pkgrel='3'
 pkgdesc="The GNU Compiler Collection (${_pkgver}.x)"
 arch=('i686' 'x86_64')
 url='http://gcc.gnu.org'
-license=('GPL' 'LGPL' 'FDL' 'custom')
+license=('GPL-3.0-or-later' 'LGPL-3.0+' 'GFDL-1.3' 'LicenseRef-custom')
 depends=('zlib')
 makedepends=('binutils>=2.25' 'libmpc' 'doxygen')
 checkdepends=('dejagnu' 'inetutils')
@@ -52,6 +52,9 @@ if [ -n "${_snapshot:-}" ]; then
 else
   _basedir="gcc-${pkgver}"
 fi
+
+_CHOST="${CHOST}" # https://bbs.archlinux.org/viewtopic.php?pid=2174541
+_MAKEFLAGS="${MAKEFLAGS}"
 
 #_libdir="usr/lib/gcc/${CHOST}/${pkgver}"
 
@@ -107,6 +110,8 @@ prepare() {
 }
 
 build() {
+  export MAKEFLAGS="${_MAKEFLAGS}"
+  export CHOST="${_CHOST}"
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -164,6 +169,8 @@ build() {
 }
 
 package() {
+  export MAKEFLAGS="${_MAKEFLAGS}"
+  export CHOST="${_CHOST}"
   set -u
   cd "${_basedir}/gcc-build"
 
