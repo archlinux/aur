@@ -1,7 +1,7 @@
 # Maintainer: Thomas Letan <lthms@soap.coffee>
 
 pkgname=octez-node
-pkgver=20.0_rc1
+pkgver=20.0
 pkgrel=1
 pkgdesc='Unofficial binary release for the octez-node from Octez'
 url=https://gitlab.com/tezos/tezos
@@ -14,17 +14,15 @@ makedepends=(
   'systemd'
 )
 source=(
-  "$pkgname-$pkgver-$pkgrel::https://gitlab.com/tezos/tezos/-/package_files/121917448/download"
+  "$pkgname-$pkgver-$pkgrel::https://gitlab.com/tezos/tezos/-/package_files/130339583/download"
   "$pkgname.sysusers"
   "$pkgname.tmpfiles"
   "$pkgname@.service"
 )
-sha512sums=(
-  'c1bf3f24386beb683b63e338db58c48abb66477f49e3db0c86c0602a6e24c569ff675bc2260c82a986151bbae7c4b68b7b68e7d1acd6ba69ed1e8e768db69bdc'
-  '4c7f574d08436ac8e5acbfc47a5a895c0401b44e96391bf6489fe80174e04982a6fd618a45db47c4994f30d3db95827417d849b98f02cb9b27266897cd64cf31'
-  '1bfdc8af0663d18abcda427995198bd1948bb85c3b05f1e769a02530d70e0858d3a5d2d5d1d21294bb8a7a68cac023ca6f8ee13440fabc79dcb40dde8761ee56'
-  '7c5527c270194accbc31b7eedba8e24c4fac501cd0a6559cec43b3c77658804b85d6f20e6e216d520a6e3189a08b29c8cba73f79e28da47b76dc513e1aa43aca'
-)
+sha512sums=('e324b9eceaa4ccfe868ff83cca799923d486875f65d7d9f136531906402e70d353f9f61cdbf60da89495104402e7572ab84b314346cdcd5c583cd69319f54574'
+            '4c7f574d08436ac8e5acbfc47a5a895c0401b44e96391bf6489fe80174e04982a6fd618a45db47c4994f30d3db95827417d849b98f02cb9b27266897cd64cf31'
+            '1bfdc8af0663d18abcda427995198bd1948bb85c3b05f1e769a02530d70e0858d3a5d2d5d1d21294bb8a7a68cac023ca6f8ee13440fabc79dcb40dde8761ee56'
+            '7c5527c270194accbc31b7eedba8e24c4fac501cd0a6559cec43b3c77658804b85d6f20e6e216d520a6e3189a08b29c8cba73f79e28da47b76dc513e1aa43aca')
 
 build() {
   cd "$srcdir"
