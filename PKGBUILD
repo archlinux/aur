@@ -4,17 +4,20 @@
 # 
 
 pkgname=idris2
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Functional Programming Language with Dependent Types"
 url="https://idris-lang.github.io/"
-license=('custom')
+license=('BSD-3-Clause')
 arch=('x86_64')
 depends=('chez-scheme')
 optdepends=('nodejs: for the node backend'
             'racket: for the racket backend')
-source=("https://www.idris-lang.org/idris2-src/idris2-${pkgver}.tgz")
-sha256sums=('4db59312ed954778d135c78d8e41701bb37b1c4911a8f414a2074e87b246a153')
+# TODO: Revert to this? Depends on https://github.com/idris-lang/Idris2/issues/3173
+#       which is likely to be open for a while (again, no full-time devs).
+# source=("https://www.idris-lang.org/idris2-src/idris2-${pkgver}.tgz")
+source=("https://github.com/idris-lang/Idris2/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('7a8612a1cd9f1f737893247260c6942bf93f193375d4b3df0148f7abf74d6e14')
 
 _srcname="Idris2-$pkgver"
 
@@ -27,10 +30,9 @@ build() {
     mkdir -p "$srcdir/bootstrap"
     PREFIX="$srcdir/bootstrap" make bootstrap
     PREFIX="$srcdir/bootstrap" make install
-    make clean
+    make distclean
 
     PATH="$srcdir/bootstrap/bin:$PATH" \
-        LD_LIBRARY_PATH="$srcdir/bootstrap/lib:$LD_LIBRARY_PATH" \
         PREFIX=/usr/lib \
         make all
 }
@@ -41,9 +43,13 @@ check() {
     unset MAKEFLAGS
     export SCHEME=chez
 
-    # TODO: next Idris2 release, when #2754 has been merged, re-enable all tests
+    # The refc backend tests contains a bunch of unused variables, presumably
+    # they're actually used for FFI things and this is just impossible to
+    # statically spot.
+    export CFLAGS="-Wno-error=unused-variable ${CFLAGS}"
+
     PATH="$srcdir/$_srcname/build/exec:$PATH" \
-        make test INTERACTIVE="" except="base/system_info001"
+        make test INTERACTIVE=""
 }
 
 package() {
@@ -68,17 +74,15 @@ package() {
     done
     install_lib idris2api
 
-    # Clean up install
-    mkdir -p "$pkgdir/usr/bin"
-    mv "$pkgdir/usr/lib/bin/idris2_app/idris2.so" "$pkgdir/usr/bin/idris2"
-    rm -r "$pkgdir/usr/lib/bin"
-    mv "$pkgdir"/usr/lib/{lib/,}libidris2_support.so
-    rmdir "$pkgdir"/usr/lib/lib
-
     # Fix permissions
     find "$pkgdir" -type d -exec chmod 755 {} \;
 
     install -Dm644 <("$IDRIS2_BINARY" --bash-completion-script idris2) \
         "$pkgdir/usr/share/bash-completion/completions/idris2"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Put a symlink to executable in the expected place
+    # (see: man 7 file-hierarchy)
+    mkdir "$pkgdir/usr/bin"
+    ln -s "$pkgdir/usr/lib/bin/idris2" "$pkgdir/usr/bin/idris2"
 }
