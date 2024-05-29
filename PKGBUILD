@@ -2,9 +2,9 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
-pkgver=2.0.2
+pkgver=2.0.3
 babashka_version="1.3.189"
-pkgrel=3
+pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
 url="https://penpot.app"
@@ -49,7 +49,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '52b3e81d2032055f3d845e2e6db03ba266d159532939e26347ba340f20515337'
+  '8b0e05e238d1167b4d67f5a772834a98e0fd34d21c73b15a7b2407e1daa784ad'
   '228e8ccee724ba8d66c66d8672161b991bb00b00e538e7aecd0b902330e5a712'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
