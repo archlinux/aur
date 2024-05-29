@@ -1,0 +1,10 @@
+[Unit]
+Description=Rootless Xwayland integration for Wayland compositors
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/xwayland-satellite
+Restart=on-failure
+
