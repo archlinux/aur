@@ -26,7 +26,7 @@ conflicts=($_pkgname)
 options=(!debug)
 source=(git+$url.git xwayland-satellite.service)
 b2sums=('SKIP'
-        '408c93c7c12e359e0ba48c08aea3f8a132452bcf2ad400a029115eb5fb4897e07e286bb9191d50835a26404ccf6496aeeb81d232d6222ae1af02750d0e6c4a39')
+        '3fffedae358d637670366a8cafe0edbcaa482e3eb108f8af8e1520864e845980ea649b62d2c6fdff141cc28716a1dcfcf40cfbf83f4f2b0906f12cba6ff66f4b')
 
 pkgver() {
   cd $_pkgname

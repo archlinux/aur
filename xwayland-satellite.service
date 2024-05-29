@@ -7,4 +7,3 @@ Requisite=graphical-session.target
 [Service]
 ExecStart=/usr/bin/xwayland-satellite
 Restart=on-failure
-
