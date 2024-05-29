@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=hdr10plus_tool-git
-pkgver=1.5.2.r0.g478be3d
+pkgver=1.6.0.r11.gcfa5c36
 pkgrel=1
 pkgdesc='CLI utility to work with HDR10+ in HEVC files'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd hdr10plus_tool
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --match "[0-9]*" --long HEAD --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
