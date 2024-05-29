@@ -1,7 +1,7 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
 pkgname=cloud-sql-proxy
-pkgver=2.11.2
+pkgver=2.11.3
 pkgrel=1
 pkgdesc='Cloud SQL Auth Proxy'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache)
 depends=(fuse3)
 makedepends=(go)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=(5c1ba977bfd68be192bbd765dffa6eb3c388993694ff85e9ed4affd635f0242dadd810e0a2362bfba562aed616821a488d4117ee422c166d8ae598138bb356fe)
+b2sums=(7eb1833ee223eaf3dbb7dc715e0ace9445ae8aedbf2c777cf9eb74c4378b7f59d5527ca566d15c8f6088385dc0f0c12c79e364ebaef13636c0cd918283b7886a)
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -26,8 +26,8 @@ build() {
 
 package() {
   cd ${pkgname}-${pkgver}
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm755 out/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
+  install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}
+  install -Dm755 out/${pkgname} -t "${pkgdir}"/usr/bin
 }
 
 # vim: ts=2 sw=2 et:
