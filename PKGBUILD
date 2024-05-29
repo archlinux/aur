@@ -27,7 +27,7 @@ set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
 pkgname+="-git"
-pkgver=1.2.4.r9083.ge9d9a65
+pkgver=1.2.5.r9318.g74c24ca
 pkgrel=1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
@@ -128,8 +128,12 @@ _prepare_vc() {
   msg '_prepare_vc'
   set -u
   if [ "${_opt_SYS_VCPKG}" -ne 0 ] && [ ! -d 'vcpkg' ]; then
-    set +u; msg2 'Copy /opt/vcpkg'; set -u
-    cp -pr '/opt/vcpkg' .
+    local _vcp='/opt/vcpkg'
+    if [ ! -d "${_vcp}" ]; then
+      _vcp='/usr/lib/vcpkg'
+    fi
+    set +u; msg2 "Copy ${_vcp}"; set -u
+    cp -pr "${_vcp}" .
   fi
   mkdir -p 'vcpkg/downloads'
   cp -p "${_vcs[@]}" 'vcpkg/downloads'
@@ -274,6 +278,16 @@ prepare() {
   cd "${_srcdir}"
   _flutter_check
   _mod_py
+
+  local _pt
+  for _pt in "${source[@]}"; do
+    if [[ "${_pt}" =~ *@(*).patch ]]; then
+      set +u; msg2 "Patch ${_pt}"; set -u
+      patch -d "${BASH_REMATCH[1]}" -Nup1 -i "${srcdir}/${_p}"
+    fi
+  done
+  #cd ..; cp -pr 'rustdesk' 'a'; ln -s 'rustdesk' 'b'; false
+  # diff -pNaru5 'a' 'b' > 0000-$RANDOM@foobar.patch
   set +u
 }
 
@@ -312,14 +326,17 @@ build() {
       nice ./build.py --hwcodec --flutter
     else
       git checkout src/ui/common.tis
-      nice cargo build --features hwcodec,flutter,flutter_texture_render --lib --release
-      #ain't there no more
-      #sed -i "s/ffi.NativeFunction<ffi.Bool Function(DartPort/ffi.NativeFunction<ffi.Uint8 Function(DartPort/g" flutter/lib/generated_bridge.dart
+      if ! \
+      nice cargo build --features hwcodec,flutter --lib --release
+      then
+        set +u; msg2 'Move patch, get out the way (dynamic fix for unnecessary __builtin_va_list)'; set -u
+        sed -E -e '/__builtin_va_list/ s:^:// :g' -i target/release/build/pam-sys-*/out/bindings.rs
+        nice cargo build --features hwcodec,flutter --lib --release
+      fi
       pushd flutter
-      nice flutter build linux --release # || :
+      nice flutter build linux --release
       popd
     fi
-    #pushd flutter && flutter build linux --release && popd
     set +x
   fi
   set +u

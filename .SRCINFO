@@ -1,6 +1,6 @@
 pkgbase = rustdesk-git
 	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!
-	pkgver = 1.2.4.r9083.ge9d9a65
+	pkgver = 1.2.5.r9318.g74c24ca
 	pkgrel = 1
 	url = https://rustdesk.com/
 	install = rustdesk-git.install
@@ -40,7 +40,7 @@ pkgbase = rustdesk-git
 	depends = hicolor-icon-theme
 	depends = xdg-utils
 	depends = xdg-user-dirs
-	provides = rustdesk=1.2.4
+	provides = rustdesk=1.2.5
 	conflicts = rustdesk
 	noextract = cmake-3.18.4-Linux-x86_64.tar.gz
 	noextract = ninja-linux-1.10.1.zip
