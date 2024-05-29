@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=7.96i
+pkgver=7.96j
 pkgrel=0
 epoch=60
 pkgdesc="Segger JLink software & documentation pack for Linux"
@@ -10,11 +10,11 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64' )
 license=('custom' 'GPLv2')
 groups=('jlink')
 depends=('glibc' 'libudev0-shim' 'patch')
-source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_x86_64.tgz")
-source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_i386.tgz")
-source_armv7h=("JLink_Linux_${pkgver/./}_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm.tgz")
-source_aarch64=("JLink_Linux_${pkgver/./}_arm64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm64.tgz")
-source=("99-jlink.rules.patch" "99-jlink-cmsis-dap.rules" "JLink.svg")
+source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_x86_64.deb")
+source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_i386.deb")
+source_armv7h=("JLink_Linux_${pkgver/./}_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm.deb")
+source_aarch64=("JLink_Linux_${pkgver/./}_arm64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm64.deb")
+source=("99-jlink.rules.patch" "JLink.svg")
 desktops=(
         "JFlashExe.desktop"
         "JFlashLiteExe.desktop"
@@ -37,13 +37,12 @@ desktops=(
         "JTAGLoadExe.desktop"
 )
 source+=(${desktops[@]})
-md5sums_x86_64=('6ee77840da56401ce7dab97b37e104ec')
-md5sums_i686=('e791d54ab4184604710f754ed4493af3')
-md5sums_aarch64=('99f1d5b19a9c0597ec7872d1616ae563')
-md5sums_armv7h=('919e1eca9734523ce775a370e758ef3c')
+md5sums_x86_64=('38ed3a9504abbe086593bbf80123d3ff')
+md5sums_i686=('897c386cba7f01582c98c69186368a53')
+md5sums_aarch64=('238e06e4ee37c9a23df413a458e73a02')
+md5sums_armv7h=('a80c52ba70509c6c88e2a140842d9561')
 
 md5sums=("a57d93b791581c1f36e4c672303bb85d"
-         "02c4941650a2bd345b03dd958313d4c5"
          "83a136d31b296dd8f0e23bc21f9d8e19"
          "7b0897db15242f4130f4d38ffe17a329"
          "79491f5eaac8d23cc604e727b6c33878"
@@ -73,29 +72,11 @@ replaces=("j-link-software-and-documentation")
 DLAGENTS=("https::/usr/bin/env curl -o %o -d accept_license_agreement=accepted -d non_emb_ctr=confirmed")
 options=(!strip)
 
-prepare() {
-    # Change src path name
-    if [ ${CARCH} = "i686" ]; then
-        mv JLink_Linux_V${pkgver/./}_i386 JLink
-    fi
-    if [ ${CARCH} = "x86_64" ]; then
-        mv JLink_Linux_V${pkgver/./}_x86_64 JLink
-    fi
-    if [ ${CARCH} = "armv7h" ]; then
-        mv JLink_Linux_V${pkgver/./}_arm JLink
-    fi
-    if [ ${CARCH} = "aarch64" ]; then
-       mv JLink_Linux_V${pkgver/./}_arm64 JLink
-    fi
-}
-
 package(){
-    # Match package placement from their .deb, in /opt
-    install -dm755 "${pkgdir}/opt/SEGGER/JLink" \
-            "${pkgdir}/usr/share/licenses/${pkgname}" \
-            "${pkgdir}/usr/lib/" \
-            "${pkgdir}/usr/bin/" \
-            "${pkgdir}/etc/" \
+    bsdtar -xf data.tar.xz -C "$pkgdir/"
+    chmod -R 0755 "$pkgdir/"
+
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}" \
             "${pkgdir}/usr/lib/udev/rules.d/" \
             "${pkgdir}/usr/share/doc/${pkgname}/" \
             "${pkgdir}/usr/share/pixmaps" \
@@ -108,34 +89,13 @@ package(){
     done
     install -Dm644 "JLink.svg" "${pkgdir}/usr/share/pixmaps/JLink.svg"
 
-    cd "${srcdir}/JLink"
-
-    # Bulk copy everything
-    if [ ${CARCH} = "armv7h" ]; then
-        cp --preserve=mode -r J* README.txt GDBServer Firmwares lib* "${pkgdir}/opt/SEGGER/JLink"
-    else cp --preserve=mode -r J* Doc Samples ETC README.txt Firmwares GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
-    fi
-    if [ ${CARCH} = "x86_64" ]; then
-        cp --preserve=mode -r x86 "${pkgdir}/opt/SEGGER/JLink"
-    fi
-
-    # Copy ETC/JFlash at the right place
-    rm -f ${pkgdir}/etc/JFlash
-    cp --preserve=mode -r ETC/JFlash "${pkgdir}/etc/"
-
     # Create links where needed
     ln -s /opt/SEGGER/JLink/Doc/LicenseIncGUI.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
-    sed -i 's/0x//g' 99-jlink.rules
-    patch -i "${srcdir}/99-jlink.rules.patch" 99-jlink.rules
-    install -Dm644 99-jlink.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
-    install -Dm644 "${srcdir}/99-jlink-cmsis-dap.rules" -t "${pkgdir}/usr/lib/udev/rules.d/"
-    rm -f "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
+    # Patch udev file
+    sed -i 's/0x//g' "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
+    patch -i "${srcdir}/99-jlink.rules.patch" "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
+    mv "${pkgdir}/etc/udev/rules.d/99-jlink.rules" "${pkgdir}/usr/lib/udev/rules.d/"
 
-    for f in J*; do
-        ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/bin"
-    done
+    ln -s "${pkgdir}/JLink/Doc" "${pkgdir}/usr/share/doc/${pkgname}"
 
-    for f in Doc/*; do
-        ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/share/doc/${pkgname}"
-    done
 }
