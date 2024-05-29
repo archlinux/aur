@@ -2,7 +2,7 @@
 
 gemname=ruby-livesync
 pkgname=ruby-livesync
-pkgver=1.0.0.beta5
+pkgver=1.0.0.rc1
 pkgrel=1
 pkgdesc='Live sync solution using ssh + rsync'
 url=https://github.com/brauliobo/ruby-livesync
@@ -20,7 +20,7 @@ if [ "$LOCAL" == "1" ]; then
   source=("${pkgname}-${pkgver}.gem")
 else
   source=("https://rubygems.org/downloads/${pkgname}-${pkgver}.gem")
-sha256sums=('76dd4e8077e1cf3dbd22589a8d91533858e1e6233d68aeaa7796f55763940af6')
+sha256sums=('3d4b1f17e519e3ad374e4d5f583191f17463a4cb9e354b4227711212a43524de')
 fi
 noextract=("${pkgname}-${pkgver}.gem")
 
