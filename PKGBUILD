@@ -22,7 +22,6 @@ pkgver() {
 }
 
 build() {
-  pppd_version=(`pppd --version 2>&1 | awk '{print $3}'`)
   local build_flags=(
     --prefix=/usr 
     --sysconfdir=/etc
