@@ -3,7 +3,7 @@
 
 pkgname=ollama-rocm-git
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
-pkgver=0.1.30.gc2712b55
+pkgver=0.1.39.g96bc232b
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/jmorganca/ollama'
@@ -49,9 +49,18 @@ build() {
   export CFLAGS="-march=native -mtune=generic -O2 -pipe -fno-plt"
   export CXXFLAGS="$CFLAGS"
   export CGO_CFLAGS="$CFLAGS" CGO_CPPFLAGS="$CPPFLAGS" CGO_CXXFLAGS="$CXXFLAGS" CGO_LDFLAGS="$LDFLAGS"
+  export CFLAGS+=' -w'
+  export CXXFLAGS+=' -w'
+
+  local goflags="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  local ldflags="-linkmode=external -buildid= -X github.com/ollama/ollama/version.Version=${pkgver}"
+
+  export CUDA_LIB_DIR=/disabled
+  export ONEAPI_ROOT=/disabled
+  export OLLAMA_CUSTOM_CPU_DEFS="-DLLAMA_AVX=on -DLLAMA_AVX2=on -DLLAMA_F16C=on -DLLAMA_FMA=on"
+
   go generate ./...
-  go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external \
-    -ldflags=-buildid='' -ldflags="-X=github.com/jmorganca/ollama/version.Version=$pkgver"
+  go build $goflags -ldflags="$ldflags"
 }
 
 check() {
