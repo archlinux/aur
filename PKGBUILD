@@ -19,6 +19,7 @@ makedepends=('cmake' 'git' 'zlib' 'xz' 'mariadb-libs' 'protobuf' 'qt6-svg' 'qt6-
 checkdepends=('gtest' 'valgrind')
 source=("git+https://github.com/cockatrice/cockatrice")
 sha256sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "${_pkgbase}" || exit 1
