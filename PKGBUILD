@@ -2,9 +2,10 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=grinplusplus-bin
 _pkgname=GrinPlusPlus
+_appname="Grin++"
 pkgver=1.2.8
 _electronversion=11
-pkgrel=8
+pkgrel=9
 pkgdesc='A C++ Grin Node & Wallet For Linux'
 arch=('x86_64')
 url="https://grinplusplus.github.io"
@@ -13,7 +14,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'nodejs'
     'openssl-1.1'
 )
@@ -28,11 +29,12 @@ source=(
 options=('!strip')
 sha256sums=('9d331477bec4bf78a54e0169ca862d5a269ca5e62ec27fc2897a0e6916d5621a'
             'a5e9383c3cb97aa3034e5e4bf1c94a71db0c59b3a7ec1fbf198232fb9dcc5e53'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
@@ -40,7 +42,7 @@ build() {
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname//Plus/+}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed "s|if (isDevMode)|if (!isDevMode)|g" -i "${srcdir}/app.asar.unpacked/build/electron-starter.js"
-    sed "s|.\/app.asar.unpacked|.\/..\/..\/${pkgname%-bin}\/app.asar.unpacked|g" -i "${srcdir}/app.asar.unpacked/build/static/js/main.d30268e7.chunk.js"
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g;s|\"Grin\"|\"GrinNode\"|g" -i "${srcdir}/app.asar.unpacked/build/static/js/main.d30268e7.chunk.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
