@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde
-_pkgver=6.0.14
+_pkgver=6.0.15
 pkgver=G${_pkgver}
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
@@ -19,7 +19,7 @@ replaces=("waterfox-g4-kpe" "waterfox-g3-kpe" "waterfox-g-kpe")
 options=('!emptydirs' '!makeflags' 'zipman' '!lto')
 _filesrev=1e1c4654756af73031f4ac3d568253b9ca302a52
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-kde
-source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$_pkgver"
+source=("git+https://github.com/BrowserWorks/Waterfox.git#tag=G$_pkgver"
         "waterfox.desktop::$_filesurl/waterfox.desktop"
         "distribution.ini::$_filesurl/distribution.ini"
         "vendor.js::$_filesurl/vendor.js"
@@ -36,7 +36,6 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$_pkgver"
         "mach-depends.patch::$_filesurl/patches/mach-depends.patch"
         "rust-1.78.patch::$_filesurl/patches/rust-1.78.patch"
         "rust-1.78_p2.patch::$_filesurl/patches/rust-1.78_p2.patch"
-        "pgo_py12.patch::$_filesurl/patches/pgo_py12.patch"
         )
 sha256sums=('SKIP'
             'ec32cbe949ed23bf7a61eef468a70a2e00e9fc448e4912c1200d110f5538d63a'
@@ -54,8 +53,7 @@ sha256sums=('SKIP'
             '10714e2363c05bf611eec927807101a5babc94a0ab9b584ce8204a89d4f8b73a'
             '105fa659e4242c1b08bda0457bfddc28762bdd4a33e9bda05940ab38d26b334c'
             'ada7f4258fa82d16f900d804cb362db6dfc156f35b0b0cfada864131d813d0db'
-            '95fd4efcf1d98193a5707892d15d4a1bb1debdbea4846ca9128fad64ad978686'
-            '1f55e6ff5a45b3510eb218d1f1874374f0c1abacbd4e2a5319c9dee438f92846')
+            '95fd4efcf1d98193a5707892d15d4a1bb1debdbea4846ca9128fad64ad978686')
 
 prepare() {
 
@@ -72,7 +70,6 @@ prepare() {
   patch -Np1 -i ../mach-depends.patch
   patch -Np1 -i ../rust-1.78.patch
   patch -Np1 -i ../rust-1.78_p2.patch
-  patch -Np1 -i ../pgo_py12.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-alsa
