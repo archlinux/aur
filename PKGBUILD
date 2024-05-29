@@ -4,7 +4,7 @@ _name="Astor"
 pkgname=${_name,,}
 pkgver=7.5.6
 _jarfile="${_name}-${pkgver}-jar-with-dependencies.jar"
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical Tango control system administration tool"
 arch=("any")
 url="https://gitlab.com/tango-controls/${_name}"
@@ -13,19 +13,17 @@ depends=(java-runtime=17 sh hicolor-icon-theme)
 makedepends=(maven jre17-openjdk)
 source=(
   https://gitlab.com/tango-controls/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz
-  launcher pom.patch astor.desktop
+  launcher astor.desktop
 )
 sha256sums=(
   "38c320b9a551c64007438071beecaf19092be70e3e0af4adfcc171ba7b66dee0"
   "49f16c646996c55fa65f66b8eb8c948950834a93e9a75c71c9fd1b110d401eee"
-  "3a7b2553d8af4cba8562fe9b4a66800d54f6eedeb117f4625224a45f3fe73102"
   "af5373fa86149fe10becc1effe6f82df250f8d48b71135412319c8701b304bb3"
 )
 
 prepare() {
   sed -i "s/jar_file/${_jarfile}/" launcher
   sed -i "s/package_name/${pkgname}/" launcher
-  patch --directory="${_name}-${pkgver}" --forward --strip=1 --input="${srcdir}/pom.patch"
 }
 
 build() {
