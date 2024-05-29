@@ -1,5 +1,5 @@
 pkgbase = kdeconnect-no-mdns
-	pkgdesc = Adds communication between KDE and your smartphone
+	pkgdesc = Adds communication between KDE and your smartphone. Version without MDNS support, for KDE bug 487719.
 	pkgver = 24.05.0
 	pkgrel = 1
 	url = https://kdeconnect.kde.org/
