@@ -8,15 +8,12 @@ pkgbase = inko-git
 	license = MPL2
 	makedepends = cargo
 	makedepends = make
-	depends = llvm15
+	depends = llvm16
 	depends = git
 	depends = base-devel
 	provides = inko
 	conflicts = inko
-	options = strip
-	options = !docs
-	options = !libtool
-	options = !staticlibs
+	options = !lto
 	source = inko::git+https://github.com/inko-lang/inko.git
 	sha256sums = SKIP
 
