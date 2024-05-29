@@ -1,0 +1,63 @@
+diff --git a/alcotest.opam b/alcotest.opam
+index afefbd7..e946488 100644
+--- a/alcotest.opam
++++ b/alcotest.opam
+@@ -25,9 +25,7 @@ depends: [
+   "astring"
+   "cmdliner" {>= "1.1.0"}
+   "re" {>= "1.7.2"}
+-  "stdlib-shims"
+   "uutf" {>= "1.0.1"}
+-  "ocaml-syntax-shims"
+   "odoc" {with-doc}
+ ]
+ conflicts: [
+diff --git a/dune-project b/dune-project
+index 68f54b3..cc95020 100644
+--- a/dune-project
++++ b/dune-project
+@@ -29,9 +29,7 @@ tests to run.
+   astring
+   (cmdliner (>= 1.1.0))
+   (re (>= 1.7.2))
+-  stdlib-shims
+-  (uutf (>= 1.0.1))
+-  ocaml-syntax-shims)
++  (uutf (>= 1.0.1)))
+  (conflicts
+   (result (< 1.5)) ;; Ensure `Result.result` = `Stdlib.result` when possible
+   ))
+diff --git a/src/alcotest-engine/dune b/src/alcotest-engine/dune
+index 5dbe572..197e0ef 100644
+--- a/src/alcotest-engine/dune
++++ b/src/alcotest-engine/dune
+@@ -25,6 +25,4 @@
+   cmdliner
+   fmt.cli
+   re
+-  stdlib-shims
+-  uutf)
+- (preprocess future_syntax))
++  uutf))
+diff --git a/src/alcotest-stdlib-ext/dune b/src/alcotest-stdlib-ext/dune
+index 868e052..ab3f37f 100644
+--- a/src/alcotest-stdlib-ext/dune
++++ b/src/alcotest-stdlib-ext/dune
+@@ -1,5 +1,4 @@
+ (library
+  (name alcotest_stdlib_ext)
+  (public_name alcotest.stdlib_ext)
+- (libraries astring cmdliner uutf)
+- (preprocess future_syntax))
++ (libraries astring cmdliner uutf))
+diff --git a/src/alcotest/dune b/src/alcotest/dune
+index 8e1841f..baa7bf5 100644
+--- a/src/alcotest/dune
++++ b/src/alcotest/dune
+@@ -5,5 +5,4 @@
+   (language c)
+   (names alcotest_stubs))
+  (js_of_ocaml
+-  (javascript_files runtime.js))
+- (preprocess future_syntax))
++  (javascript_files runtime.js)))

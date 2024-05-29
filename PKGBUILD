@@ -2,20 +2,22 @@
 _projectname='alcotest'
 pkgname="ocaml-$_projectname"
 pkgver='1.7.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Lightweight and colourful test framework for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/mirage/$_projectname"
 license=('ISC')
-depends=('ocaml>=4.11.0' 'ocaml-astring' 'ocaml-async>=0.15.0' 'ocaml-async_kernel' 'ocaml-async_unix>=0.15.0' 'ocaml-base' 'ocaml-cmdliner>=1.1.0' 'ocaml-core>=v0.15.0' 'ocaml-core_unix>=0.15.0' 'ocaml-duration' 'ocaml-fmt>=0.8.7' 'ocaml-js_of_ocaml>=3.11.0' 'ocaml-logs' 'ocaml-lwt' 'ocaml-mirage-clock>=2.0.0' 'ocaml-re>=1.7.2' 'ocaml-stdlib-shims' 'ocaml-syntax-shims' 'ocaml-uutf>=1.0.1')
+depends=('ocaml>=4.11.0' 'ocaml-astring' 'ocaml-async>=0.15.0' 'ocaml-async_kernel' 'ocaml-async_unix>=0.15.0' 'ocaml-base' 'ocaml-cmdliner>=1.1.0' 'ocaml-core>=v0.15.0' 'ocaml-core_unix>=0.15.0' 'ocaml-duration' 'ocaml-fmt>=0.8.7' 'ocaml-js_of_ocaml>=3.11.0' 'ocaml-logs' 'ocaml-lwt' 'ocaml-mirage-clock>=2.0.0' 'ocaml-re>=1.7.2' 'ocaml-uutf>=1.0.1')
 makedepends=('dune>=3.0.0')
 options=('!strip')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'fix-time_unix-deprecation.diff'
+	'remove-shim-deps.diff'
 )
-sha512sums=('6e29cc39109f5d83a175578f48ff1b48fdf13913b7cdd332823a660c681ab0cd5dec41b10322226102b023d7c74620decf964458926abed56ae835e4e565014e'
-            '1655ef9f2aff1380d86ecee62853174b4a6ef331151477b6afeacc6fd8af69c3b90c14993cdbea6659107432c1fe543096b73d19c148b3fdd76eb3afd84f1b9f')
+b2sums=('83a9b1bb3a6d9ec09de739e77a6e1085bbca328f5be39f6ab28931a7bc16d223d571917f924598ddcc399910f986df95eb72ae61f28512221d9de6174ffe3988'
+        '7f991edd57b4eb3ccdab617fa5e4246f01e27d1ba0533927c02ca7a9097c9f5d6a8a553fdb2438f55b46a6b7df07bb03cd76ce8fe691a4613c4fd5956270c704'
+        '428401f907f9cde71f52bb9fda40fd680913d3cd415a0d8653b9402737125e2f511b854fc3a00729e90241d91642cd64b982fada22a861f7ef49e8e18210cf21')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -24,6 +26,9 @@ prepare() {
 
 	# Fix core_unix.time_unix deprecation (based on https://github.com/mirage/alcotest/commit/289e52b8b2e1df8ca2034ba0d0e855b9f01edf51)
 	patch --forward -p1 < '../fix-time_unix-deprecation.diff'
+
+	# Remove stdlib-shims and syntax-shims dependencies, as we're always running on OCaml >= 4.08.0
+	patch --forward -p1 < '../remove-shim-deps.diff'
 }
 
 build() {
