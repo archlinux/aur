@@ -1,0 +1,6 @@
+post_remove() {
+    echo "
+        >>> Please remember to remove plugins from your kakrc file
+        >>> and from your bundle_path directory!
+    "
+}
