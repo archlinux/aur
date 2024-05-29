@@ -10,7 +10,7 @@ license=('Apache-2.0')
 _electronver=30
 _nodever=20
 depends=("electron$_electronver" libnotify shared-mime-info)
-makedepends=(yarn "nodejs>=$_nodever")
+makedepends=(yarn ant "nodejs>=$_nodever")
 options=('!strip')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz"
@@ -22,6 +22,13 @@ sha512sums=('c6d48e8bee55b9330d4239fab23a304d2ad3dfd3be7c4dc220a5abc1859c4b74f2c
 build() {
   rm -rf "$srcdir/drawio-desktop-$pkgver/drawio"
   mv "$srcdir/drawio-$pkgver" "$srcdir/drawio-desktop-$pkgver/drawio"
+
+  # rebuild min.js
+  cd "$srcdir/drawio-desktop-$pkgver"/drawio/
+  rm -fv src/main/webapp/js/app.min.js src/main/webapp/js/extensions.min.js src/main/webapp/js/stencils.min.js
+  cd "$srcdir/drawio-desktop-$pkgver"/drawio/etc/build
+  ant app
+
   cd "$srcdir/drawio-desktop-$pkgver"
 
   # clean unused files up
