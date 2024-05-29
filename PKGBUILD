@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.2.3
+pkgver=4.2.4
 _electronversion=26
 _nodeversion=16
 pkgrel=1
@@ -25,15 +25,14 @@ makedepends=(
 	'graphicsmagick'
 	'xz'
 	'curl'
-	'base-devel'
 	'gcc'
 )
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.sh"
 )
-sha256sums=('bcb019b501ac013df55908d8369598511b792a443ebbef5e4fd41031c06d7589'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('1989d15008e67628fa6d5cef6369b85b2f6001589a08ad20083146327df5bf5d'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -48,8 +47,7 @@ build() {
 		-e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
 	_ensure_local_nvm
-	gendesk -q -f -n --pkgname="${pkgname}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
 	export npm_config_build_from_source=true
 	#export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	#export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -66,6 +64,7 @@ build() {
 	else
 		echo "Your network is OK."
 	fi
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	sed "s|deb|dir|g" -i vue.config.js
 	yarn install --cache-folder "${srcdir}/.yarn_cache"
 	yarn global add xvfb-maybe @vue/cli
