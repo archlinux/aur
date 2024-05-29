@@ -3,16 +3,16 @@
 
 pkgname=midisport-firmware
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Firmware for some (legacy) m-audio midi devices"
 url="http://usb-midi-fw.sourceforge.net/"
 arch=('any')
 depends=('alsa-lib' 'fxload' 'udev')
-license=('gpl')
+license=('GPL-2.0-or-later')
 source=("http://downloads.sourceforge.net/project/usb-midi-fw/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"
         "midisport_udev_rules.patch")
 md5sums=('b1e4976b68f396a50e92491caa6f36bc'
-         '46fdfedc6fc7ca7a257dfbd401c204e0')
+         'b740f29541e719e44780d5a573573f6d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
