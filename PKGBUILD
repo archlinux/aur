@@ -1,7 +1,8 @@
-# Maintainer: Douglas Iuri Medeiros Cabral <douglasimcabral at zohomail dot com>
+# Maintainer: Meowser <edward dot o dot holmes at gmail dot com>
+# Contributor: Douglas Iuri Medeiros Cabral <douglasimcabral at zohomail dot com>
 pkgname=forticlient-vpn
-pkgver=7.0.7.0246
-pkgrel=2
+pkgver=7.2.2.0753
+pkgrel=1
 pkgdesc="Build through the official package of FortiClient VPN only"
 arch=("x86_64")
 url="https://www.fortinet.com/support/product-downloads"
@@ -19,7 +20,7 @@ provides=('fortivpn' 'FortiClient')
 conflicts=('forticlient') 
 install='forticlient-vpn.install'
 source=("https://filestore.fortinet.com/forticlient/forticlient_vpn_${pkgver}_amd64.deb")
-sha256sums=('482f245df302417ab19b6501525acae6c62a022eec80baf5ad285a0fb1f5323e')
+sha256sums=('9ec6f07da10142417f154bbe83a247b8422e05dfd505766527b039a1089858bf')
 
 
 package() {
