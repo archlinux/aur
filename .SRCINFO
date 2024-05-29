@@ -4,7 +4,6 @@ pkgbase = libfprint-goodix-60c2
 	pkgrel = 2
 	url = https://fprint.freedesktop.org/
 	arch = x86_64
-	groups = fprint
 	license = LGPL-2.1-or-later
 	checkdepends = cairo
 	checkdepends = umockdev
