@@ -1,11 +1,12 @@
 pkgbase = opengist-bin
 	pkgdesc = Opengist Server
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thomiceli/opengist
 	arch = x86_64
 	license = MIT
 	optdepends = nginx
+	backup = etc/opengist/config.yml
 	source = https://github.com/thomiceli/opengist/releases/download/v1.7.2/opengist1.7.2-linux-amd64.tar.gz
 	source = opengist.service
 	source = sysusers.conf

@@ -2,12 +2,13 @@
 pkgname=opengist-bin
 _pkgname=opengist
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Opengist Server"
 arch=('x86_64')
 url="https://github.com/thomiceli/opengist"
 license=('MIT')
 optdepends=('nginx')
+backup=("etc/$_pkgname/config.yml")
 
 if [ "$CARCH" == 'x86_64' ]; then
     _arch='amd64'
@@ -41,4 +42,4 @@ package() {
 sha256sums=('3c581df49019b54f616e7132996a950a8c27b2d0b9504322d411a56b8003c25f'
             '9e1e296ae4106c6b1f4d91a7c570d540624791c5666d42e4dfe83ccb6f5784dc'
             '5c6642f718fdf5f4550fc9c63d5b0d3e862a34c8b2a7a72652b119dccd4862bb'
-            '8742a60b809d23af4606ecad3140168fd5a79fac983a9b31c97253c3078d0326')
+            '18db5c2f8db7e2e4961a97527431eaaabfffda4e2a3364a13dd6f1ddcf4091c1')
