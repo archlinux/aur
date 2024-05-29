@@ -1,14 +1,11 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
-# For Issues, Pull Requests
-# https://github.com/phnx47/pkgbuilds
-
 _appname=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-git"
 pkgdesc="Maintain your Ledger devices (git-main)"
 _electron='electron28'
-pkgver=2.78.0.r0.g62823eb
+pkgver=2.81.2.r0.g6f2bc1a
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
@@ -37,6 +34,7 @@ build() {
 
   _nvm_install
 
+  export UV_USE_IO_URING=0
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld
 
