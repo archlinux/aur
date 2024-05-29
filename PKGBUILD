@@ -1,8 +1,9 @@
+# Maintainer: 435qb <52435qb@gmail.com>
 # Maintainer: meanlint <meanlint@outlook.com>
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 # Maintainer: Shi Liang <shiliang2008@msn.com>
 pkgname=caddy-naiveproxy-bin
-pkgver=2.6.4
+pkgver=2.7.6
 pkgrel=1
 pkgdesc="Caddy web server"
 arch=("x86_64")
@@ -11,7 +12,7 @@ license=('Apache-2.0')
 provides=("caddy")
 conflicts=("caddy")
 source=(
-  "https://github.com/klzgrad/forwardproxy/releases/download/v${pkgver}-caddy2-naive/caddy-forwardproxy-naive.tar.xz"
+  "https://github.com/klzgrad/forwardproxy/releases/download/v${pkgver}-naive2/caddy-forwardproxy-naive.tar.xz"
   "Caddyfile"
   "caddy.service"
   "caddy.sysusers"
