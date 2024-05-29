@@ -3,7 +3,7 @@ pkgname=ppet3-bin
 _pkgname=PPet3
 pkgver=3.3.0
 _electronversion=16
-pkgrel=10
+pkgrel=11
 pkgdesc="Put a cute girl on your desk for more fun.在你的桌面放一个萌妹子，多一点乐趣"
 arch=('x86_64')
 url="https://github.com/zenghongtu/PPet"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'asar'
@@ -23,15 +23,16 @@ source=(
 )
 sha256sums=('cc2f126958fcf15aea6913c684126fef1bf3dd3a3eebfff3cd2c7648c029a00e'
             '4c34d72ca8a05bdc5568a82327063da521dfc431737c448fafeb97c7f98e006a'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin} --no-sandbox %U|g;s|Development|Utility|g" \
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|Development|Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed "s|ghproxy.com|mirror.ghproxy.com|g" -i "${srcdir}/app.asar.unpacked/dist/renderer/assets/index.0740fb43.js"
