@@ -3,15 +3,15 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=8.0.5.r181.g725670d99
+pkgver=8.0.5.r207.g53efc22a2
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
-_depends_soh=("sdl2" "sdl2_net" "glew" "zenity" "libzip")
+_depends_soh=("sdl2" "sdl2_net" "zenity" "libzip" "libpng")
 _depends_soh_otr_exporter=("libpng")
-_depends_lus=("spdlog" "tinyxml2")  # libzip could be placed here, but ZAPD.out didn't made to use it
+_depends_lus=("fmt" "spdlog" "tinyxml2")  # libzip could be placed here, but ZAPD.out didn't made to use it
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}" "${_depends_lus[@]}")
-makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu" "boost" "nlohmann-json")
+makedepends=("git" "cmake" "ninja" "python" "curl" "lsb-release" "boost" "nlohmann-json")
 source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "git+https://github.com/Kenix3/libultraship.git"
         "git+https://github.com/HarbourMasters/OTRExporter.git"
