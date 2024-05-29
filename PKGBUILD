@@ -29,10 +29,16 @@ build() {
   cd "$srcdir/drawio-desktop-$pkgver"/drawio/etc/build
   ant app
 
-  cd "$srcdir/drawio-desktop-$pkgver"
-
   # clean unused files up
-  rm -rfv drawio/src/main/webapp/META-INF drawio/src/main/webapp/WEB-INF
+  cd "$srcdir/drawio-desktop-$pkgver"/drawio/
+  rm -rfv src/main/webapp/META-INF src/main/webapp/WEB-INF
+  rm -rfv etc src/main/java src/main/mxgraph src/main/webapp/connect src/main/webapp/shapes src/main/webapp/stencils src/main/webapp/service-worker* src/main/webapp/workbox-*
+  cd src/main/webapp/js
+  cp diagramly/DesktopLibrary.js diagramly/ElectronApp.js .
+  rm -rfv atlas-viewer.min.js atlas.min.js cryptojs deflate diagramly dropbox embed* freehand grapheditor integrate.min.js jquery jscolor onedrive orgchart reader.min.js rough sanitizer shapes.min.js simplepeer spin viewer-static.min.js viewer.min.js
+  mkdir diagramly
+  mv DesktopLibrary.js ElectronApp.js diagramly
+  cd "$srcdir/drawio-desktop-$pkgver"/
 
   # Electron version compatibility check
   echo "Checking electron version"
