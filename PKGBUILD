@@ -1,16 +1,16 @@
 # Maintainer: Bao Trinh <qubidt at gmail dot com>
 
 pkgname=neonmodem
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Neon Modem Overdrive is a BBS-style, multi-backend discussion board TUI"
 arch=('x86_64')
 url="https://github.com/mrusme/neonmodem"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8af5151395bcc7080d32d9a921b79b1b3e862de6df92412285f3f21eb0771109')
+sha256sums=('b0c998e5d3ccaaecdc2c5826a280aecffe5b791bf0535a3377fb133db636d6cf')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
