@@ -33,9 +33,6 @@ post_upgrade(){
 }
 
 post_install(){
-  ln -s /usr/include/Geant4/CLHEP /usr/include/CLHEP
-  ln -s /usr/include/Geant4/PTL /usr/include/PTL
-
 #the following should not run when in PKGBUILD  geant4-full conflicts with geant4-full-debug
 #  if [[ "$( pacman -Qq geant4-full )" == "geant4-full" ]]
 #  echo "you have installed both geant4-full and geant4-full-debug"
@@ -49,6 +46,4 @@ pre_remove(){
 }
 
 post_remove(){
-  rm /usr/include/CLHEP
-  rm /usr/include/PTL
 }
