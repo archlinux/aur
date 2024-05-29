@@ -1,0 +1,14 @@
+pkgbase = e1s-git
+	pkgdesc = A package for running e1s application
+	pkgver = v1.0.36.r2.g11f9cd7
+	pkgrel = 1
+	url = https://github.com/keidarcy/e1s
+	arch = x86_64
+	license = MIT
+	depends = go
+	provides = e1s
+	conflicts = e1s
+	source = git+https://github.com/keidarcy/e1s
+	sha256sums = SKIP
+
+pkgname = e1s-git
