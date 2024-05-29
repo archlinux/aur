@@ -1,20 +1,22 @@
 pkgbase = cubytext-bin
 	pkgdesc = An open-source knowledge management app.
 	pkgver = 0.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vincentdchan/CubyText
 	arch = x86_64
 	license = MIT
-	depends = electron19-bin
+	depends = electron19
 	depends = nodejs
 	provides = cubytext=0.0.4
 	conflicts = cubytext
 	options = !strip
+	options = !emptydirs
+	options = !staticlibs
 	source = cubytext-0.0.4.deb::https://github.com/vincentdchan/CubyText/releases/download/0.0.4/cubytext_0.0.4_amd64.deb
 	source = LICENSE-0.0.4::https://raw.githubusercontent.com/vincentdchan/CubyText/0.0.4/LICENSE.txt
 	source = cubytext.sh
 	sha256sums = bd0ff4fdbbeaa30ab532d7efb00b7dc9962eaa87826fa7ee80727cf518a36566
 	sha256sums = db7050c50a29912ab18366ac4d340da6359df6e8ad1c31bc019af5b707a69aee
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = cubytext-bin
