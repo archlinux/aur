@@ -8,7 +8,7 @@ url="https://gianmarco.gg/other/harmony2/"
 license=('CC-BY-SA-4.0')
 optdepends=('plasma-desktop: the desktop this theme was intended for')
 source=("https://git.gianmarco.gg/gianmarco/harmony2/releases/download/$pkgver/ds-harmony2-$pkgver.tar.gz")
-sha256sums=(c51920987a7e4c0a97dc2973c765a5c493e6e618854a7285d485004406943f19)
+sha256sums=(2088278d44b9dacf9aa61c12705fc2498d6c93217d8e0e8b6611b2729e2de20e)
 
 package() {
 	mkdir -p "$pkgdir/usr/share/sounds/harmony2"
