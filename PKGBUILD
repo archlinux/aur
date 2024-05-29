@@ -2,7 +2,7 @@
 
 pkgname=drawio-desktop
 pkgver=24.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Diagram drawing application built on web technology'
 arch=('any')
 url='https://github.com/jgraph/drawio-desktop'
