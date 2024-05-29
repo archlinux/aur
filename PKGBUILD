@@ -1,6 +1,8 @@
-# Maintainer: 'Radiolin' 'Nebulosa' <anton.osi2011@gmail.com> 
+# Maintainer: Radiolin <anton.osi2011@gmail.com>
+# Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
+
 pkgname=cassette-git
-pkgver=0.1.4.r593.g1b2cbca
+pkgver=0.1.4.r596.g56537a9
 pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
@@ -25,18 +27,14 @@ depends=(
   webkitgtk-6.0
 ) 
 makedepends=(
-  appstream-glib
   blueprint-compiler
-  cmake
   gcc13
   git
   meson
-  ninja
-  python-packaging
   vala
 )
-provides=(${gitname%-git})
-conflicts=(${gitname%-git})
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 options=(!debug)
 source=(${pkgname%-git}::git+$url.git)
 b2sums=(SKIP)
@@ -46,15 +44,12 @@ pkgver() {
 }
 
 build() {
-  cd ${pkgname%-git}
   export CC=gcc-13
   export CXX=g++-13
-  meson . builddir --prefix=/usr
-  meson configure -Dprofile=development builddir
-  meson compile -C builddir
+  arch-meson ${pkgname%-git} build
+  meson compile -C build
 }
 
 package() {
-  cd ${pkgname%-git}
-  meson install -C builddir --destdir "$pkgdir"
+  DESTDIR="$pkgdir" meson install -C build
 }
