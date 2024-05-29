@@ -7,19 +7,30 @@
 # Contributor: crave <crave@infinity>
 pkgname='ocaml-fileutils'
 pkgver='0.6.4'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='OCaml API to manipulate real files and filenames'
 arch=('x86_64' 'aarch64')
 url="https://github.com/gildor478/$pkgname"
 license=('LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception')
-depends=('ocaml>=4.03.0' 'ocaml-seq' 'ocaml-stdlib-shims')
+depends=('ocaml>=4.08.0')
 makedepends=('dune>=1.11.0')
 checkdepends=('ocaml-ounit>=2.0.0')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fed41c0c98bd9a2dde18335f0c7fd721b609f936001424eff200bca058146af55134f1d245b143bd211ece37bc036b3308528b193a6b578735b27891181f07e1')
+source=(
+	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+	'remove-shim-deps.diff'
+)
+b2sums=('9acb26570fca578cb24436864765a9e4f7fe5fbdae43417eb543cef9849c94173cd20a4833ae43d8971a4e43f75f62c309cc0e176b1c4487a1c65955b588b6f1'
+        'c45474edb4c620def55ab241a073b3bfa74352072c67492384ca3a22dbe9246d5fea647922e673e696f29fb10b251fe0a202f932ceeb7eddd142e2dff144f003')
 
 _sourcedirectory="$pkgname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Remove seq and stdlib-shims dependencies, as we're always running on OCaml >= 4.08.0
+	patch --forward -p1 < '../remove-shim-deps.diff'
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
