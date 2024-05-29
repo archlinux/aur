@@ -1,6 +1,6 @@
 pkgbase = opticpu
 	pkgdesc = A utility for optimizing CPU usage and enhancing system performance on Linux.
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/felipealfonsog/OptiCPU
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = opticpu
 	depends = glibc
 	depends = libutil-linux
 	depends = coreutils
-	source = https://github.com/felipealfonsog/OptiCPU/archive/refs/tags/v0.0.5.tar.gz
-	sha256sums = 4d93e59046b926710b0a9139192f2c375f13280394e0f0230d1a430897632503
+	depends = sysstat
+	depends = cpupower
+	source = https://github.com/felipealfonsog/OptiCPU/archive/refs/tags/v0.0.6.tar.gz
+	sha256sums = 939e1524edda8773745c816514371d1dd5f70610654ec09c2cd72d0aeaa867eb
 
 pkgname = opticpu
