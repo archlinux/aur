@@ -13,7 +13,7 @@ pkgver=1.13.5_2
 _electronversion=21
 epoch=5
 pkgrel=1
-pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client'
+pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client.Binary version.Use system-wide electron.'
 arch=(
     'aarch64'
     'x86_64'

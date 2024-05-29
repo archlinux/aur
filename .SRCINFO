@@ -1,5 +1,5 @@
 pkgbase = bilibili-bin
-	pkgdesc = 哔哩哔哩官方客户端linux移植版。Bilibili official desktop client
+	pkgdesc = 哔哩哔哩官方客户端linux移植版。Bilibili official desktop client.Binary version.Use system-wide electron.
 	pkgver = 1.13.5_2
 	pkgrel = 1
 	epoch = 5
