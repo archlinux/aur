@@ -1,7 +1,7 @@
 pkgbase = jellything-git
 	pkgdesc = Jellything media streaming server
-	pkgver = r617.0f17a9c
-	pkgrel = 3
+	pkgver = r622.07fc74f
+	pkgrel = 1
 	url = https://codeberg.org/metamuffin/jellything
 	install = jellything.install
 	arch = i686
@@ -17,7 +17,6 @@ pkgbase = jellything-git
 	makedepends = ninja
 	makedepends = cmake
 	makedepends = mdbook
-	makedepends = clang
 	depends = dav1d
 	depends = libavif
 	depends = zstd

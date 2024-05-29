@@ -1,15 +1,15 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=jellything-git
-pkgver=r617.0f17a9c
-pkgrel=3
+pkgver=r622.07fc74f
+pkgrel=1
 pkgdesc="Jellything media streaming server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://codeberg.org/metamuffin/jellything"
 license=('AGPL-3.0-only')
 depends=('dav1d' 'libavif' 'zstd')
 optdepends=('ffmpeg: Transcoding')
-makedepends=('rustup' 'esbuild' 'nasm' 'meson' 'ninja' 'cmake' 'mdbook' 'clang')
+makedepends=('rustup' 'esbuild' 'nasm' 'meson' 'ninja' 'cmake' 'mdbook')
 backup=('etc/jellything.yaml' 'etc/jellything_secrets.yaml')
 install='jellything.install'
 source=("git+https://codeberg.org/metamuffin/jellything.git"
@@ -23,24 +23,26 @@ sha256sums=("SKIP"
             "SKIP"
             "SKIP")
 
+if test "$CARCH" = $(uname -m); then
+    _target=target
+else
+    _target=target/$CHOST
+fi
 
+pkgver() {
+    cd "jellything"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 prepare() {
     cd "jellything"
     git submodule init
     git submodule update
-}
-pkgver() {
-  cd "jellything"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cargo +nightly fetch --locked --target "$CHOST"
 }
 build() {
     cd "jellything"
-    rustup default nightly
-    # todo: aarch64 works by default, x86 requires clang, untested on i686 and arm
-    CFLAGS+=" -ffat-lto-objects"
-    CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=clang cargo +nightly build --release
-    strip -s target/release/jellything
-    strip -s target/release/jellytool
+    cargo +nightly build --frozen --release --target "$CHOST"
+    cargo +nightly build --frozen --release --bin generate_completions
     ./target/release/generate_completions completions
     mdbook build doc
 }
@@ -49,8 +51,8 @@ check() {
     cargo test --release
 }
 package() {
-    install -Dm755 jellything/target/release/jellything "$pkgdir/usr/bin/jellything"
-    install -Dm755 jellything/target/release/jellytool "$pkgdir/usr/bin/jellytool"
+    install -Dm755 jellything/$_target/release/jellything "$pkgdir/usr/bin/jellything"
+    install -Dm755 jellything/$_target/release/jellytool "$pkgdir/usr/bin/jellytool"
     install -Dm644 jellything/completions/jellytool.fish "$pkgdir/usr/share/fish/completions/jellytool.fish"
     install -Dm644 jellything/completions/jellytool.bash "$pkgdir/usr/share/bash-completion/completions/jellytool"
     install -Dm644 jellything/completions/_jellytool "$pkgdir/usr/share/zsh/site-functions/_jellytool"
