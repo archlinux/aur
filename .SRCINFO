@@ -18,6 +18,7 @@ pkgbase = cockatrice-client-git
 	makedepends = qt6-tools
 	makedepends = qt6-multimedia
 	makedepends = qt6-websockets
+	options = !lto
 	source = git+https://github.com/cockatrice/cockatrice
 	sha256sums = SKIP
 
