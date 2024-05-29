@@ -1,7 +1,7 @@
 pkgbase = rrd2html
 	pkgdesc = A tool for generating html pages from rrd data
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LevitatingBusinessMan/rrd2html.rb
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = rrd2html
 	depends = rrdtool
 	depends = ruby-tomlrb
 	backup = etc/rrd2html.toml
-	source = rrd2html-1::git+https://github.com/LevitatingBusinessMan/rrd2html.rb.git#commit=3be8e56cab7ec5ccbfcd6b31ab73e4255871ff2d
+	source = rrd2html-2::git+https://github.com/LevitatingBusinessMan/rrd2html.rb.git#commit=3be8e56cab7ec5ccbfcd6b31ab73e4255871ff2d
 	sha256sums = SKIP
 
 pkgname = rrd2html
