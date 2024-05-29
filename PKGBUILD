@@ -7,11 +7,11 @@
 pkgname=svg2tikz-git
 _gitname="svg2tikz"
 pkgver=3.1.0+1.r532.20240519.c14dcde
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of tools for converting SVG graphics to TikZ/PGF code."
 arch=('any')
 url="https://github.com/kjellmf/svg2tikz"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=(
   'python>=3'
   'python-inkex'
@@ -33,6 +33,7 @@ makedepends=(
   'texlive-bin'            # For building the documentation.
 )
 checkdepends=(
+  'python-inkex'
   'python-pytest'
 )
 provides=(
