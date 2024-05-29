@@ -31,7 +31,6 @@ checkdepends=(
 )
 provides=("libfprint" libfprint-2.so)
 conflicts=("libfprint")
-groups=(fprint)
 source=("git+https://gitlab.freedesktop.org/libfprint/libfprint.git?signed#tag=v$pkgver")
 b2sums=('9859f976227452dc3ea9f8fbde9022809214a4eed0c994d8cb5330d0d7d7fbf19baf066518a72c8345ae01b0f34b7e32b135a4494a48db17bc6186b571f41fe6')
 validpgpkeys=(
