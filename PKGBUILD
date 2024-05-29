@@ -176,15 +176,9 @@ prepare(){
     plain ""
   fi
 
-  # Setup ECHO
+  # Setup Baby
   # https://github.com/hamadmarri/ECHO-CPU-Scheduler?tab=readme-ov-file#defaults-and-sysctls
-  msg "Setup ECHO"
-
-  # Enable ECHO
-  msg2 "Enable ECHO CPU Scheduler"
-  scripts/config --enable CONFIG_ECHO_SCHED
-
-  sleep 2s
+  msg "Setup Baby"
 
   msg2 "Enable CONFIG_HZ_625"
   scripts/config --disable CONFIG_HZ_300
