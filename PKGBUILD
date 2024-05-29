@@ -1,6 +1,6 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=opendeck
-pkgver=r68.9180971
+pkgver=v2.0.0_beta.7
 pkgrel=1
 pkgdesc="OpenDeck is a desktop application that provides Stream Deck-like functionality, implementing the Elgato Stream Deck SDK for cross-compatibility."
 arch=('x86_64')
@@ -18,10 +18,6 @@ source=(
 sha256sums=('49eb9c271cbc761f4d9050bc8ab409f55fcef92a4bdf788914af4306f05cec90'
             '9e15b85f84cbe38444b47439670877f77f3a5b3908687b5169731eef730e258e')
 
-pkgver() {
-	cd "$srcdir/${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 prepare() {
 	cd "$srcdir/${pkgname}/src-tauri"
 	export RUSTUP_TOOLCHAIN=stable
