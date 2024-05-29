@@ -3,7 +3,7 @@
 
 pkgname=e1s
 pkgver=1.0.36
-pkgrel=1
+pkgrel=1.01
 epoch=1
 pkgdesc='E1S - Easily Manage AWS ECS Resources in Terminal'
 arch=(x86_64 aarch64)

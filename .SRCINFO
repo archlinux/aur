@@ -1,7 +1,7 @@
 pkgbase = e1s
 	pkgdesc = E1S - Easily Manage AWS ECS Resources in Terminal
 	pkgver = 1.0.36
-	pkgrel = 1
+	pkgrel = 1.01
 	epoch = 1
 	url = https://github.com/keidarcy/e1s
 	arch = x86_64
