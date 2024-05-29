@@ -1,6 +1,6 @@
 pkgbase = mousemode-git
 	pkgdesc = An intuitive, home-row mouse replacement
-	pkgver = 1.0.r23.aa3aed0
+	pkgver = 1.0.r26.d28ca67
 	pkgrel = 1
 	url = https://github.com/randoragon/mousemode
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = mousemode-git
 	md5sums = SKIP
 
 pkgname = mousemode-git
-

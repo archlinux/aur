@@ -1,7 +1,7 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=mousemode-git
-pkgver=1.0.r23.aa3aed0
+pkgver=1.0.r26.d28ca67
 pkgrel=1
 epoch=
 pkgdesc="An intuitive, home-row mouse replacement"
