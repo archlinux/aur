@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=2.5.6
+pkgver=2.6.1
 _electronversion=28
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter."
@@ -25,15 +25,16 @@ source=(
     "LICENSE-${pkgver}.html::${url}/cgu.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e79cd1e77f956b560f95918d4737baa7be8f3660fe15edcb6ac4a3cab39121a9'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('05cecab95411c0a15678d761e4f5d9ffc0c570505eb0a230b036842dbc01ee88')
-sha256sums_x86_64=('da0aaab6997e2a28e3efbc086c954db046f8fd13feb93cd020886d0cc900fdb1')
+sha256sums=('75dc789b93f199ec03bf5c33d6afafd459b292ce1f71d30ec825f639ad8521fc'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums_aarch64=('8ce9577dd3ade7dd58f338777f3a075d86db0a90a033a2209f05efcfc053f49d')
+sha256sums_x86_64=('49b150b7ed90602656c3ed58f71ee1601414c4761b5ea948e4b81515afa92728')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
