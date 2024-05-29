@@ -3,7 +3,7 @@ pkgname=requestly-bin
 _pkgname=Requestly
 pkgver=1.6.0
 _electronversion=23
-pkgrel=3
+pkgrel=4
 pkgdesc="Debug your network request across all platforms and browsers using a single app"
 arch=('x86_64')
 url="https://requestly.io/"
@@ -12,7 +12,6 @@ license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     "electron${_electronversion}"
     'python>3'
     'java-runtime'
@@ -29,18 +28,19 @@ source=(
 )
 sha256sums=('6948609fa41e08772cdf28b528acf0fb2394b9c6d339e36a39b4d865390aaabb'
             '458836a4541233742fec5da1bf75b151cc0b1f879b0574f362ae793d055a233d'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    cp -r "${srcdir}/squashfs-root/resources/assets" "${srcdir}/app.asar.unpacked"
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/app.asar.unpacked/dist/main/main.js"
     install -Dm644 "${srcdir}/index.html-${pkgver}" "${srcdir}/app.asar.unpacked/dist/loadingScreen/index.html"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
