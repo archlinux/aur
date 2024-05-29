@@ -1,0 +1,23 @@
+diff --git a/gen.opam b/gen.opam
+index 51dce22..0cc4ba1 100644
+--- a/gen.opam
++++ b/gen.opam
+@@ -12,7 +12,6 @@ build: [
+ ]
+ depends: [
+   "dune" {>= "1.1"}
+-  "seq"
+   "odoc" {with-doc}
+   "qcheck" {with-test}
+   "qtest" {with-test}
+diff --git a/src/dune b/src/dune
+index 919fb24..3e408d7 100644
+--- a/src/dune
++++ b/src/dune
+@@ -19,5 +19,4 @@
+   (wrapped false)
+   (modules Gen GenLabels GenM GenClone GenMList GenM_intf Gen_intf GenLabels_intf GenShims_)
+   (flags :standard -warn-error -a+8 -safe-string -nolabels)
+-  (ocamlopt_flags :standard (:include flambda.flags))
+-  (libraries seq))
++  (ocamlopt_flags :standard (:include flambda.flags)))
