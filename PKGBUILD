@@ -3,7 +3,7 @@
 _pkgname=asfa
 pkgname=${_pkgname}-bin
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='share files by upload via ssh and generation of a non-guessable link (pre-built)'
 url="https://github.com/obreitwi/asfa"
 license=("MIT")
@@ -11,9 +11,10 @@ arch=("x86_64")
 provides=("asfa")
 conflicts=("asfa")
 depends=('gcc-libs' 'openssl' 'zlib')
+_archive_name_rerelease="${_pkgname}-v$pkgver.1-x86_64-unknown-linux-gnu"
 _archive_name="${_pkgname}-v$pkgver-x86_64-unknown-linux-gnu"
-source=("https://github.com/obreitwi/asfa/releases/download/v$pkgver/${_archive_name}.tar.gz")
-sha256sums=("81bd9cf708704890ad361c8887464364b65daddc74915d89828dfb0451578f09")
+source=("https://github.com/obreitwi/asfa/releases/download/v$pkgver.1/${_archive_name_rerelease}.tar.gz")
+sha256sums=("23c7c089486cb71d244b8b620bcd6e388bba32de0ad32c3e30392ff7da73e408")
 
 
 package() {
@@ -23,4 +24,7 @@ package() {
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     find man/man1 -type f -print0 \
         | xargs -0 install -Dm644 -t "$pkgdir/usr/share/man/man1"
+    find example-config -type f -print0 \
+        | xargs -0 install -Dm644 -t "$pkgdir/usr/share/doc/asfa/example-config"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/asfa/README.md"
 }
