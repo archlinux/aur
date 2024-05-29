@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=jirust
-pkgver=1.1.7
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Jira terminal UI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('d9c7b219b467a5c605da1d68469ea2eecad391d3ae01fbf7f147fb525fd48bc7596b966a6b75971f79f8c96e15d0658f7f0a3f2428d6a0415503df61db1c6e37')
+sha512sums=('3ef45afafa094ed1da5651ce4560243da870605e0d2a57521aa458baece6a774fd53062f9c1926d9505acd253fe9439d9187bdad39387e6601b738b0d4e597b8')
 options=('!lto')
 
 prepare() {
