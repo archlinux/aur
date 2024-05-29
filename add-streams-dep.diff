@@ -1,8 +1,8 @@
 diff --git a/flow_parser.opam b/flow_parser.opam
-index 229c86fb9..563541782 100644
+index 861d46164..3d77ccab2 100644
 --- a/flow_parser.opam
 +++ b/flow_parser.opam
-@@ -14,6 +14,7 @@ depends: [
+@@ -16,6 +16,7 @@ depends: [
    "ppx_deriving" {build}
    "ppx_gen_rec" {build}
    "wtf8"
