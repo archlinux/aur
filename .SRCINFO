@@ -1,5 +1,5 @@
 pkgbase = lime3ds-appimage
-	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger, GUI version, AppImage version
+	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger, AppImage version
 	pkgver = 2114.1
 	pkgrel = 1
 	epoch = 1
