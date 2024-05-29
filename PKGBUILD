@@ -2,7 +2,7 @@
 # Maintainer: Xavier Portilla Edo <xavierportillaedo at gmail dot com>
 
 pkgname='cxcli-bin'
-pkgver=1.208.0
+pkgver=1.209.0
 pkgrel=1
 pkgdesc='The missing CLI for your Dialogflow CX projects'
 url='https://cxcli.xavidop.me'
@@ -11,17 +11,17 @@ license=('Apache-2.0')
 provides=('dialogflow-cx-cli')
 conflicts=('dialogflow-cx-cli')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/xavidop/dialogflow-cx-cli/releases/download/v1.208.0/cxcli_Linux_arm64.tar.gz")
-sha256sums_aarch64=('93820085a8cb3be529ce5011737051127e9c53dd452150280ff27af26706e308')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/xavidop/dialogflow-cx-cli/releases/download/v1.209.0/cxcli_Linux_arm64.tar.gz")
+sha256sums_aarch64=('e039068d5508a1f0f2c4668dd7946f6b8cee88676f52969810c453fd1b217e00')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/xavidop/dialogflow-cx-cli/releases/download/v1.208.0/cxcli_Linux_armv7.tar.gz")
-sha256sums_armv7h=('d5280f604ed600b99d4c47e8d19498874cd4db90b68508ff19205de3e55a1b3f')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/xavidop/dialogflow-cx-cli/releases/download/v1.209.0/cxcli_Linux_armv7.tar.gz")
+sha256sums_armv7h=('072cc3dd242b64f603631ca49c9d4c208cf15ab7be7861f78db3ff23c15736b6')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/xavidop/dialogflow-cx-cli/releases/download/v1.208.0/cxcli_Linux_i386.tar.gz")
-sha256sums_i686=('7a62c5b7f428fd9ba7234b08f0adf8e0479817d878a981e49e36b47b2df2399c')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/xavidop/dialogflow-cx-cli/releases/download/v1.209.0/cxcli_Linux_i386.tar.gz")
+sha256sums_i686=('add8c78d64d7fa0a22990c9877d30a18e65522c5ccf02bff16d16dfd255ce1e6')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/xavidop/dialogflow-cx-cli/releases/download/v1.208.0/cxcli_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d4a1960fd321328ef5f419a331fed1048407584b56dce3fef2bce73f9629b2e8')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/xavidop/dialogflow-cx-cli/releases/download/v1.209.0/cxcli_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('63fb596a07dd0334d980af4fc8794a66970aac7bcef3970aa09de84af3d0e671')
 
 package() {
   # bin
