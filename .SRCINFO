@@ -1,6 +1,6 @@
 pkgbase = muffon-git
 	pkgdesc = Music streaming browser,retrieves audio, video and metadata from various Internet sources.
-	pkgver = 2.0.3.r26.g8952bb89
+	pkgver = 2.0.3.r36.gfeb7c1a
 	pkgrel = 1
 	url = https://muffon.netlify.app/
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = muffon-git
 	makedepends = base-devel
 	makedepends = gcc
 	makedepends = curl
-	depends = electron29
+	depends = electron30
 	provides = muffon=2.0.3
 	conflicts = muffon
 	source = muffon.git::git+https://github.com/staniel359/muffon.git
 	source = muffon.sh
 	sha256sums = SKIP
-	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = muffon-git
