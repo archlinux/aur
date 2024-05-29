@@ -1,15 +1,24 @@
 pkgbase = hauppauge-usb-git
 	pkgdesc = A wrapper around the Hauppauge HDPVR2/Colossus2 Linux driver
-	pkgver = 16.9.26
+	pkgver = 0.6.r42.20230628.eda9313
 	pkgrel = 1
+	epoch = 1
+	url = https://github.com/jpoet/HauppaugeUSB
 	arch = x86_64
+	license = GPL-3.0-or-later
 	makedepends = boost
 	makedepends = git
+	makedepends = xxd
 	depends = boost-libs
-	source = https://s3.amazonaws.com/hauppauge/linux/hauppauge_hdpvr2_157321_patched_2016-09-26.tar.gz
+	depends = gcc-libs
+	depends = glibc
+	depends = libusb
+	provides = hauppauge-usb=0.6.r42.20230628.eda9313
+	conflicts = hauppauge-usb
+	backup = etc/haupauge-usb/sample.conf
 	source = git+https://github.com/jpoet/HauppaugeUSB.git
-	md5sums = 2e071cc1f471e2ca29fa63cc4e0c7245
-	md5sums = SKIP
+	source = https://s3.amazonaws.com/hauppauge/linux/hauppauge_hdpvr2_157321_patched_2016-09-26.tar.gz
+	sha256sums = SKIP
+	sha256sums = feba404e549a5dfcabd5fa7311419e4ecf4e0bec90b48ac21977fea9a0e73f5b
 
 pkgname = hauppauge-usb-git
-
