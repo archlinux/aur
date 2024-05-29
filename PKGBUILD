@@ -12,7 +12,7 @@ _depends_2s2h=("sdl2" "zenity" "libzip" "libpng")
 _depends_2s2h_otr_exporter=("libpng")
 _depends_lus=("fmt" "spdlog" "tinyxml2")
 depends=("${_depends_2s2h[@]}" "${_depends_2s2h_otr_exporter[@]}" "${_depends_lus[@]}")
-makedepends=("git" "cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu" "boost" "nlohmann-json")
+makedepends=("git" "cmake" "ninja" "python" "curl" "lsb-release" "boost" "nlohmann-json")
 source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "git+https://github.com/Kenix3/libultraship.git"
         #"git+https://github.com/HarbourMasters/OTRExporter.git"
