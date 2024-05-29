@@ -32,6 +32,7 @@ build() {
   # clean unused files up
   cd "$srcdir/drawio-desktop-$pkgver"/drawio/
   rm -rfv src/main/webapp/META-INF src/main/webapp/WEB-INF
+  # copied from https://github.com/jgraph/drawio-desktop/blob/5bab12f0829768748d25dec0a4f8e9ae4b3db090/.github/workflows/electron-builder.yml#L53
   rm -rfv etc src/main/java src/main/mxgraph src/main/webapp/connect src/main/webapp/shapes src/main/webapp/stencils src/main/webapp/service-worker* src/main/webapp/workbox-*
   cd src/main/webapp/js
   cp diagramly/DesktopLibrary.js diagramly/ElectronApp.js .
