@@ -1,0 +1,36 @@
+diff --git a/dune-project b/dune-project
+index 0decfd1b..7c2c2a3f 100644
+--- a/dune-project
++++ b/dune-project
+@@ -80,6 +80,5 @@
+   (alcotest :with-test)
+   (re
+    (>= 1.5.0))
+-   seq
+   (uutf
+    (>= 1.0.0))))
+diff --git a/lib/dune b/lib/dune
+index cfe3e47d..9b819fb4 100644
+--- a/lib/dune
++++ b/lib/dune
+@@ -5,7 +5,7 @@
+  (modules_without_implementation
+   Xml_sigs Html_sigs Svg_sigs Html_types Svg_types)
+  (synopsis "Statically correct HTML and SVG documents (Functor version)")
+- (libraries uutf re seq)
++ (libraries uutf re)
+  (flags (:standard
+          -safe-string))
+ )
+diff --git a/tyxml.opam b/tyxml.opam
+index d6384fd8..f45114ca 100644
+--- a/tyxml.opam
++++ b/tyxml.opam
+@@ -14,7 +14,6 @@ depends: [
+   "ocaml" {>= "4.04"}
+   "alcotest" {with-test}
+   "re" {>= "1.5.0"}
+-  "seq"
+   "uutf" {>= "1.0.0"}
+   "odoc" {with-doc}
+ ]
