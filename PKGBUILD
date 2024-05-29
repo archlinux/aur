@@ -4,10 +4,10 @@
 pkgbase="python-symbolica"
 pkgname=("python-symbolica")
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Symbolica is a blazing fast and modern computer algebra system which aims to handle huge expressions. It can easily be incorporated into existing projects using its Python, Rust or C++ bindings."
 arch=('x86_64')
-makedepends=('python-wheel')
+makedepends=()
 license=('Custome')
 url=https://github.com/benruijl/symbolica
 
@@ -19,7 +19,9 @@ source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/$_wheel
 package() {
     cd $srcdir
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-	wheel unpack --dest=$pkgdir/$site_packages $_wheel
+    local _folder=$pkgdir/${site_packages%site-packages}
+	wheel unpack --dest=$_folder $_wheel
+    mv $_folder/$_name-$pkgver $_folder/site-packages
 }
 
 sha256sums=('0508b996ba4f72981510a9f27bdb3ad01489fa82748772712232d6a08810bada')
