@@ -1,7 +1,7 @@
 pkgbase = goxlr-utility-ui
 	pkgdesc = A UI Wrapper for the GoXLR Utility
 	pkgver = 0.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/frostycoolslug/goxlr-utility-ui
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,8 @@ pkgbase = goxlr-utility-ui
 	depends = libsoup-3.0.so
 	depends = libgdk_pixbuf-2.0.so
 	depends = libpango-1.0.so
+	depends = gstreamer
+	depends = gst-plugins-good
 	depends = goxlr-utility>=0.12.0
 	source = goxlr-utility-ui-0.0.5.tar.gz::https://github.com/frostycoolslug/goxlr-utility-ui/archive/refs/tags/v0.0.5.tar.gz
 	sha512sums = f01a5d22b4dc775001aae18ac9cd12a9af5d1a84edd7f746e6c56b57804189f22836b905c53ca5acb4820e1e8e81ed46e7c43fd38925a2a6ab71c9d25fdfa547

@@ -1,7 +1,7 @@
 # Maintainer: Craig McLure <craig@mclure.net>
 pkgname=goxlr-utility-ui
 pkgver=0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A UI Wrapper for the GoXLR Utility"
 arch=('x86_64')
 url="https://github.com/frostycoolslug/goxlr-utility-ui"
@@ -18,6 +18,8 @@ depends=(
 	'libsoup-3.0.so'
 	'libgdk_pixbuf-2.0.so'
 	'libpango-1.0.so'
+	'gstreamer'
+	'gst-plugins-good'
 	'goxlr-utility>=0.12.0'
 )
 makedepends=('cargo' 'pkgconf' 'clang')
