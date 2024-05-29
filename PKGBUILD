@@ -1,4 +1,5 @@
 # Maintainer: Stanislav T
+# Contributor: Sergey Kokorin 
 
 pkgname=libfprint-goodix-60c2
 pkgver=1.94.7
@@ -31,14 +32,19 @@ checkdepends=(
 )
 provides=("libfprint" libfprint-2.so)
 conflicts=("libfprint")
-source=("git+https://gitlab.freedesktop.org/libfprint/libfprint.git?signed#tag=v$pkgver")
-b2sums=('9859f976227452dc3ea9f8fbde9022809214a4eed0c994d8cb5330d0d7d7fbf19baf066518a72c8345ae01b0f34b7e32b135a4494a48db17bc6186b571f41fe6')
+source=(
+  "git+https://gitlab.freedesktop.org/libfprint/libfprint.git?signed#tag=v$pkgver"
+  "enable-goodix-60c2.patch"
+)
+b2sums=('9859f976227452dc3ea9f8fbde9022809214a4eed0c994d8cb5330d0d7d7fbf19baf066518a72c8345ae01b0f34b7e32b135a4494a48db17bc6186b571f41fe6'
+        '7cf36a276e05dc8e5c1615762ca531beb47e15f870b9231132621c7ad163445fbf1c9efb4a362b48029603aa744a37b8306330fc6e7271e606a9e14a38d4f861')
 validpgpkeys=(
   D4C501DA48EB797A081750939449C2F50996635F # Marco Trevisan (Treviño) <mail@3v1n0.net>
 )
 
 prepare() {
   cd $pkgname
+  # TODO apply the patch
 }
 
 build() {

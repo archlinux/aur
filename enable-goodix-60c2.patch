@@ -1,0 +1,32 @@
+diff --git a/data/autosuspend.hwdb b/data/autosuspend.hwdb
+index bc8b916..0027f82 100644
+--- a/data/autosuspend.hwdb
++++ b/data/autosuspend.hwdb
+@@ -189,6 +189,7 @@ usb:v27C6p609C*
+ usb:v27C6p60A2*
+ usb:v27C6p60A4*
+ usb:v27C6p60BC*
++usb:v27C6p60C2*
+ usb:v27C6p6304*
+ usb:v27C6p631C*
+ usb:v27C6p633C*
+diff --git a/libfprint/drivers/goodixmoc/goodix.c b/libfprint/drivers/goodixmoc/goodix.c
+index f8a4be0..0301298 100644
+--- a/libfprint/drivers/goodixmoc/goodix.c
++++ b/libfprint/drivers/goodixmoc/goodix.c
+@@ -1365,6 +1365,7 @@ gx_fp_probe (FpDevice *device)
+     case 0x6094:
+     case 0x609C:
+     case 0x60BC:
++    case 0x60C2:
+     case 0x6304:
+     case 0x631C:
+     case 0x633C:
+@@ -1615,6 +1616,7 @@ static const FpIdEntry id_table[] = {
+   { .vid = 0x27c6,  .pid = 0x60A2,  },
+   { .vid = 0x27c6,  .pid = 0x60A4,  },
+   { .vid = 0x27c6,  .pid = 0x60BC,  },
++  { .vid = 0x27c6,  .pid = 0x60C2,  },
+   { .vid = 0x27c6,  .pid = 0x6304,  },
+   { .vid = 0x27c6,  .pid = 0x631C,  },
+   { .vid = 0x27c6,  .pid = 0x633C,  },
