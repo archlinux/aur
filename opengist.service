@@ -1,0 +1,13 @@
+[Unit]
+Description=opengist Server
+After=network.target
+
+[Service]
+Type=simple
+User=opengist
+Group=opengist
+ExecStart=opengist --config /etc/opengist/config.yml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
