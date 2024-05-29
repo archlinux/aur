@@ -3,7 +3,7 @@
 # Contributor: Jordan Klassen <forivall@gmail.com>
 _pkgname='flow'
 pkgname="$_pkgname-bin"
-pkgver='0.236.0'
+pkgver='0.237.0'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript - binary version'
 arch=('x86_64' 'aarch64')
@@ -23,12 +23,12 @@ source=(
 	"$pkgname-$pkgver-bash-completion::https://github.com/facebook/$_pkgname/raw/v$pkgver/resources/shell/bash-completion"
 	"$pkgname-$pkgver-LICENSE::https://github.com/facebook/$_pkgname/raw/v$pkgver/LICENSE"
 )
-sha512sums=('50dd81cc39c67bc463e51a2d492119a2533548cb7e3f765e02cf9ada999397710351a1c4deadc4ffc59f4c2347b2e6ba2d4c42cbb63026ef48d50a2f2f5ee87a'
-            '3b8288e5dac996da44bd81b0eb1d96905c4b90ad9154f3d29d073c96890b75cd281fa03af0b77f331dbec239d341363b5f9b328bafea0d4b8d0a3e900d150f80')
-sha512sums_x86_64=('094e6af4b825a5c0405fc3783ace273e8f23af325e3098e7db1a065db4188337d2addec1a3b84a5db5114d887ecd2296852037a470cf05736e4b3ed9a2be42c9'
-                   '2c6ef0c5b40e9cf199886733f619b73c96c18809c130f4a12641adcda801f113c48d7e9d7f36887d2e00a49c7371e0273188668626ca04e1d09d4945b762f63e')
-sha512sums_aarch64=('1a3e4c706b8442787c42eef308c0485675c48a73e685af29f2c80e0398d9620736f0b1b810c918406092c0f671c0b53ea61bf31a5733314efc5acfcc4f23cec5'
-                    '061e1ae5935c474b1bb4a2474f87ae2fedca3448c64c0cd6b55c3cc4951a5385344ec52abc7b1177001c7c904d396a87a6691587f2503be8414447b1b6a08c2e')
+b2sums=('31a3133c70ea57e8fd8025add5701b9be627020d4f82655e7911853b33e3197eb53893fd119348112839d877a8d668aedfa15c7bb214de8f573b8453f69c4cc3'
+        '20291e21101540292f47589798cc1264fd5fc496b556ccdb1264381ff093a6be8677270fa7b3d342a42d78758b1f2d41fb4a759d3a590c41cefd0b375b8d8b70')
+b2sums_x86_64=('cd90302d033fef7381b5aea2ebd8e8cc24d873bacc9921ebe35d3fa806f9cc593d6efc9013c2f3499499ba217fde6aba338d0d6ac27d4da1fa8d9fa20cd3ec68'
+               '40d4a196673380117c182867fba06ef69c62358a321682199502bbd03d7ec93f306872990eb463c005440c98746202749586039337fba4f5892bcc30c0a2248f')
+b2sums_aarch64=('5d6e10de2ebd59b9018e697ab88aecbd945b8074a32b4a478c40126b10da3ee177c001d93351a1227b66254339cc011f637f1377a56b13d63b826cc610fdf96b'
+                'ddd26d690fd5b69312492c7edc9a2839435292cd828aae05e93ccbe34d3f7091a345c350d3bb905954bc28868a6b62bad93a9884d5982cb76dfc5090507cb8f5')
 
 check() {
 	"$srcdir/$_pkgname/$_pkgname" --version | tee '/dev/stderr' | grep -q "version $pkgver$"
