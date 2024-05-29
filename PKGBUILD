@@ -1,7 +1,7 @@
 # Maintainer: 'Radiolin' 'Nebulosa' <anton.osi2011@gmail.com> 
 pkgname=cassette-git
-pkgver=0.1.4.17fedef
-pkgrel=2
+pkgver=0.1.4.r593.g1b2cbca
+pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
 url="https://github.com/rirusha/${pkgname%-git}"
