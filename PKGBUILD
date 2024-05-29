@@ -2,8 +2,8 @@
 
 pkgname=factorio-yafc-ce-git
 pkgdesc="Yet Another Factorio Calculator (Community Edition): Powerful calculator/analyser that works with mods"
-pkgver=0.6.4.16.g3519230
-pkgrel=2
+pkgver=0.7.0.0.g6391bb6
+pkgrel=1
 arch=(x86_64)
 url=https://github.com/have-fun-was-taken/yafc-ce
 license=(GPL)
