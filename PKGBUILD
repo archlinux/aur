@@ -9,13 +9,13 @@
 pkgbase=nginx-without-server-header
 _pkgbase=nginx
 pkgname=($pkgbase $pkgbase'-src')
-pkgver=1.26.0
-pkgrel=3
+pkgver=1.26.1
+pkgrel=1
 _prefix_relative='etc/nginx'
 _prefix_full='/'$_prefix_relative
 arch=(x86_64)
 url='https://nginx.org'
-license=(custom)
+license=(BSD-2-Clause)
 makedepends=(pcre2 zlib openssl geoip mailcap libxcrypt)
 checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
               memcached ffmpeg)
@@ -36,9 +36,9 @@ validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdouni
               '43387825DDB1BB97EC36BA5D007C8D7C15D87369'  # Roman Arutyunyan <r.arutyunyan@f5.com>
               'D6786CE303D9A9022998DC6CC8464D549AF75C0A'  # Sergey Kandaurov <s.kandaurov@f5.com>
               '13C82A63B603576156E30A4EA0EA981B66B0D967') # Konstantin Pavlov <thresh@nginx.com>
-sha512sums=('1f604a4a29f1b74eb56de7f1d8b0e5610fa055280b4ad2d3550c56926460de24da81b17485cffb358d8814061d4a9db1e0e5079af7921f1dc329e283e2775791'
+sha512sums=('dfaadde78eb5cf8c8c3a43ead9ac49fc852c8de3e70e69754e3ffafc88c50c8bc08cdac0cc0ba8a9d8c155bdb334865e2e6c7dc1144c79959c426a9e087b3e37'
             'SKIP'
-            'ca7d8666177d31b6c4924e9ab44ddf3d5b596b51da04d38da002830b03bd176d49354bbdd2a496617d57f44111ad59833296af87d03ffe3fca6b99327a7b4c3c'
+            '490e973fac48c0b27d35c722d190c1103fc0e6f71362580739f47eea4373f2a7206a8722866c740c916a4be7e789db80d4ce56a67e751f1183e420cb314a32d8'
             '25b1054176b694dda940528df45432bdc80191ad9dd6f11b7bb02da43b3c38c592448664774ccde779bb6953f9d32a4fd55349dbad9b43a7db38a1410a47dc24'
             '67c5961fdc2b94f909127aaec2d8eb82b8d94efde24ea9c2d00311d692bc8c5265bd365032cb3be4b301602b945d2a627fab231398f4897175b43488e3ce92b8'
             'c699cc4b828f410efa1ba15a4ebd619ff8ff6869366efdf7a9d87c16781d9c2039ac9acc3cf17e28baa81d37621a388b999674763110678fae30c9ce6230b6b6'
@@ -80,9 +80,6 @@ _common_flags=(
   --with-threads
 )
 
-_stable_flags=(
-)
-
 prepare() {
   ### START PATCHING ###
   local patch_src
@@ -119,8 +116,7 @@ build() {
     --modules-path=/usr/lib/nginx/modules \
     --with-cc-opt="$CFLAGS $CPPFLAGS" \
     --with-ld-opt="$LDFLAGS" \
-    "${_common_flags[@]}" \
-    "${_stable_flags[@]}"
+    "${_common_flags[@]}"
 
   make
 }
@@ -185,8 +181,8 @@ package_nginx-without-server-header() {
 
 package_nginx-without-server-header-src() {
   pkgdesc='Source code of patched NGINX '$pkgver', useful for building modules'
-  depends=()
-  backup=()
   install -d $pkgdir'/usr/src/'
-  cp -r $_pkgbase'-'$pkgver'-src' $pkgdir'/usr/src/nginx'
+  cp -r $_pkgbase'-'$pkgver'-src' $pkgdir'/usr/src/'$_pkgbase
+  install -Dm644 $_pkgbase'-'$pkgver'-src/LICENSE' \
+    $pkgdir'/usr/share/licenses/'$_pkgbase'-src/LICENSE'
 }
