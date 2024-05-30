@@ -1,6 +1,6 @@
 # Maintainer: Olivier Le Moal <mail@olivierlemoal.fr>
 pkgname=python-pycrate
-pkgver=0.6.0
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Python library for manipulating various digital formats in an easy way."
 arch=(any)
@@ -11,8 +11,8 @@ optdepends=('python-lxml: The pycrate_diameter part uses lxml as optional depend
             'python-cryptomobile: The pycrate_corenet part requires CryptoMobile to run. The pycrate_mobile/TS24301_EMM and pycrate_mobile/TS24501_FGMM modules use CryptoMobile as optional dependency to cipher / decipher LTE and 5G NAS messages.')
 url="https://github.com/P1sec/pycrate"
 license=('LGPL2.1')
-source=(https://github.com/P1sec/pycrate/archive/${pkgver}.tar.gz)
-md5sums=('f17ac5c4aaf2cec54134fa27b6eb02d2')
+source=(https://github.com/pycrate-org/pycrate/archive/${pkgver}.tar.gz)
+md5sums=('1289f2aa9572183a7d0987bc677963aa')
 
 package() {
     cd pycrate-${pkgver}
