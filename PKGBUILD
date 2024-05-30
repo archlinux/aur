@@ -40,7 +40,7 @@ makedepends=(
 optdepends=(
 	'xorg-xwayland: enable X11 support'
 )
-provides=("${pkgname%-git}-${pkgver%.*.*.*}.so")
+provides=("lib${pkgname%-git}-${pkgver%.*.*.*}.so")
 source=("${pkgname}::git+${url}.git")
 b2sums=('SKIP')
 _builddir="build"
