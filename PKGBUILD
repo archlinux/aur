@@ -1,10 +1,10 @@
 # Maintainer: Olivier Le Moal <mail@olivierlemoal.fr>
 pkgname='python-pycrate-git'
 pkgver=r524.5be4c81
-pkgrel=2
+pkgrel=1
 pkgdesc="Python library for manipulating various digital formats in an easy way."
 arch=(any)
-url="https://github.com/P1sec/pycrate"
+url="https://github.com/pycrate-org/pycrate"
 license=('LGPL2.1')
 makedepends=('git')
 depends=('python')
