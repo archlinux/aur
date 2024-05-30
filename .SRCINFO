@@ -1,7 +1,7 @@
 pkgbase = transmissionic-bin
 	pkgdesc = Remote for Transmission Daemon
 	pkgver = 1.8.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/6c65726f79/Transmissionic
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = transmissionic-bin
 	source = transmissionic.sh
 	sha256sums = cbda3a7a49bfdc54a84763bdda7c159b83607b660fa1e66d06d2cda1a9578532
 	sha256sums = 61a59d5ee8c459b5171700485c769d9efb67bf00cb2be4b6fe5561dcdef10191
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = transmissionic-bin
