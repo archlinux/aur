@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=kanban-desktop
 pkgname="live2d-${_pkgname}"
-pkgver=2.8.0
+pkgver=2.8.1
 _electronversion=22
-_nodeversion=16
-pkgrel=4
+_nodeversion=20
+pkgrel=1
 pkgdesc="An AI Based live2d Kanban for Desktop Users Using Electron.基于Electron制作的桌面看板娘，支持日程提醒、小窗模式、ChatGPT集成、网页搜索、本地moc模型加载与独立设置界面等"
 arch=('any')
 url="http://studio.zerolite.cn/post/338/waifuproject2-live2d-kanban-desktop/"
@@ -19,16 +19,16 @@ makedepends=(
     'gendesk'
     'npm'
     'nvm'
-    'git'
+    'curl'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "live2dcubismcore.min-${pkgver}.js::https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"
     "${pkgname}.sh"
 )
-sha256sums=('a3868997ee7906a1edcf87ed718ff119a18ad3c3955142107906a6b20f5c7fa7'
+sha256sums=('15cbc825b72f57dda3681f8eeba8a39bbf1bbf3496f0aff285514c710b58a1de'
             '942783587666a3a1bddea93afd349e26f798ed19dcd7a52449d0ae3322fcff7c'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -43,11 +43,11 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="live2d-${_pkgname}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    export npm_config_build_from_source=true
+    #export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     #export ELECTRONVERSION="${_electronversion}"
@@ -61,8 +61,9 @@ build() {
         echo "Your network is OK."
     fi
     cp assets/applogo256.png assets/applogo.png
+    sed "s|AppImage|dir|g" -i package.json
     npm install --no-package-lock
-    npm run pack
+    npm run pack-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
