@@ -1,7 +1,7 @@
 pkgbase = tuner
 	pkgdesc = Minimalist radio station player. Geared towards RadioBrowser
 	pkgver = 1.5.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/louis77/tuner
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = tuner
 	makedepends = vala
 	depends = granite
 	depends = libsoup
+	depends = gst-plugins-good
 	depends = gst-plugins-bad-libs
 	depends = geoclue
 	depends = geocode-glib
