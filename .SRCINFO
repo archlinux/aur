@@ -1,0 +1,19 @@
+pkgbase = ttf-joypixels
+	pkgdesc = Emoji as a Service (formerly EmojiOne)
+	pkgver = 8.0.0
+	pkgrel = 2
+	url = https://www.joypixels.com/download
+	install = ttf-joypixels.install
+	arch = any
+	license = custom
+	provides = emoji-font
+	conflicts = ttf-emojione
+	replaces = ttf-emojione
+	source = joypixels-linux-8.0.0.ttf::https://cdn.joypixels.com/arch-linux/font/8.0.0/joypixels-android.ttf
+	source = license-free-8.0.0-2.pdf::https://cdn.joypixels.com/free-license.pdf
+	source = license-appendix-8.0.0-2.pdf::https://cdn.joypixels.com/arch-linux/appendix/joypixels-license-appendix.pdf
+	sha256sums = 7c95040bebcb69676e81963ee0a82e4138f342ee85b5b8dbbad7d05d1f657eae
+	sha256sums = f70f4927455b310b02caf0140592800a8357c8cdaea30493f909067212ea74ae
+	sha256sums = 05084e4ddbbb0c241bb0ff4e307853a9e6236fa1c617b7cba44af31b6bfc5e2d
+
+pkgname = ttf-joypixels
