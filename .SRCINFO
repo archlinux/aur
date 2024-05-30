@@ -1,7 +1,7 @@
 pkgbase = python-zenmoney
 	pkgdesc = Python library for ZenMoney API
 	pkgver = 0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Felixoid/python-zenmoney
 	arch = any
 	license = MIT

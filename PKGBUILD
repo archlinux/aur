@@ -2,7 +2,7 @@
 
 pkgname=python-zenmoney
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Python library for ZenMoney API'
 arch=('any')
 url="https://github.com/Felixoid/python-zenmoney"
