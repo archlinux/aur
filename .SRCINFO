@@ -10,6 +10,7 @@ pkgbase = qgnomeplatform-git
 	makedepends = gtk3
 	makedepends = qt5-wayland
 	makedepends = qt6-wayland
+	makedepends = qt5-quickcontrols2
 	makedepends = adwaita-qt5
 	makedepends = adwaita-qt6
 	options = !emptydirs
