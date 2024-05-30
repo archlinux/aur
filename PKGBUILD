@@ -2,14 +2,16 @@
 _pkgname=dnstrack
 pkgname=${_pkgname}-git
 pkgver=r7.gc4dbcb1
-pkgrel=1
+pkgrel=2
 pkgdesc="A dns-query tracking tool written in go. dnstrack helps to track all dns query on your machine in real time."
 arch=(x86_64)
 url='https://github.com/chenjiandongx/dnstrack'
 license=('MIT')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
+replaces=(${_pkgname})
 depends=()
+install=dnstrack.install
 makedepends=('git' 'go')
 source=("${_pkgname}::git+https://github.com/chenjiandongx/dnstrack.git")
 sha256sums=('SKIP')
