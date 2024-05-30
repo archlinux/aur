@@ -12,8 +12,10 @@ pkgbase = restic-browser-bin
 	source = restic-browser-0.3.1.zip::https://github.com/emuell/restic-browser/releases/download/v0.3.1/Restic-Browser-v0.3.1-linux.zip
 	source = restic-browser.png::https://raw.githubusercontent.com/emuell/restic-browser/master/src-tauri/icons/icon.png
 	source = restic-browser.desktop
+	source = https://raw.githubusercontent.com/emuell/restic-browser/master/LICENSE
 	sha256sums = 230f590bb9837c84e6757a03236a50727e3636b593f8368c8d713561987f8450
 	sha256sums = 3a9f06e4bc146fb3231d58b726dfdc0965809996411523b8edcb37289980b744
 	sha256sums = 74e63083d076cdd3f5de3917e5c242b40e61119fbc3aaac013607b63824a8f71
+	sha256sums = 126dd1280b1326514b22d0ef4d2020bdea66fd6d64f455c73ae29ac94a04e2da
 
 pkgname = restic-browser-bin
