@@ -2,19 +2,20 @@
 # Maintainer: Ista Zahn <istazahn@gmail.com>
 
 pkgname=python-glue-vispy-viewers
-_pyname=glue-vispy-viewers
-pkgver=1.1.0
+_pyname=glue_vispy_viewers
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="3-d data viewers for glue based on VisPy"
 arch=('any')
 url="http://docs.glueviz.org/en/stable/gui_guide/3d_viewers.html"
-license=('BSD')
-depends=('python' 'python-numpy' 'python-opengl' 'python-qtpy' 'python-scipy' 'python-glue-core>=1.13.1' 'python-glue-qt>=0.1.0' 'python-vispy')
+license=('BSD-2-Clause')
 makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest'
-              'python-mock')
+              'python-glue-core'
+              'python-opengl'
+              'python-vispy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('88e16f27cc024796e1ed2828158e8c7ce4a4f4170f5a41a28d1de799a60b5d70')
+sha256sums=('40609ebc703ba84dd43c2200d12afc394593098173c3875792a47d9f63d8ccf8')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -29,6 +30,11 @@ check() {
 }
 
 package() {
+    depends=('python>=3.8' 'python-matplotlib' 'python-opengl' 'python-scipy' 'python-glue-core>=1.13.1' 'python-vispy>=0.9.1' 'python-glfw' 'python-imageio')
+    optdepends=('python-qtpy: pyqt, pyside'
+                'python-glue-qt: pyqt, pyside'
+                'python-pyqt6: pyqt'
+                'pyside6: pyside')
     cd "${srcdir}/${_pyname}-${pkgver}"
 
     python setup.py install -O1 --root="${pkgdir}"
