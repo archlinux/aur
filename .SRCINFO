@@ -1,6 +1,10 @@
 pkgbase = profex
 	pkgdesc = A program for Rietveld refinement of powder X-ray diffraction data.
+<<<<<<< Updated upstream
 	pkgver = 5.2.8
+=======
+	pkgver = 5.2.9
+>>>>>>> Stashed changes
 	pkgrel = 1
 	url = https://profex.doebelin.org
 	arch = i686
@@ -13,9 +17,15 @@ pkgbase = profex
 	optdepends = bgmn: the needed backend for the program, not required to build or start the program
 	provides = profex
 	conflicts = profex
+<<<<<<< Updated upstream
 	source = https://www.profex-xrd.org/wp-content/uploads/2024/03/profex-5.2.8.tar.gz
 	source = profex.desktop
 	sha256sums = 9e7b0fb4db882d786f802405c13fdfcf14690eb01bfd746f64c5c33745e23924
+=======
+	source = https://www.profex-xrd.org/wp-content/uploads/2024/05/profex-5.2.9.tar.gz
+	source = profex.desktop
+	sha256sums = 954ce7b92ff05e1b2601348d9b11060935f0e7c2fa87419862351dfabfb5c1e5
+>>>>>>> Stashed changes
 	sha256sums = 8d4e73987458eb9d1453c3bfe839a90ea1f5c15a0872ea5a35d0b532231d9194
 
 pkgname = profex
