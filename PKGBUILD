@@ -1,66 +1,62 @@
-# Maintainer: zhullyb <zhullyb@outlook.com>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: zhullyb <zhullyb@outlook.com>
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=castellan
-pkgname=python-$_pyname
-pkgver=4.0.0
+pkgname=python-castellan
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Generic Key Manager interface for OpenStack"
 arch=(any)
 url="https://opendev.org/openstack/castellan"
-license=(Apache)
-depends=(
-	python
-	python-pbr
-	python-cryptography
-	python-barbicanclient
-	python-oslo-config
-	python-oslo-context
-	python-oslo-i18n
-	python-oslo-log
-	python-oslo-utils
-	python-stevedore
-	python-keystoneauth1
-	python-requests
-)
-checkdepends=(
-	python-hacking
-	python-pyflakes
-	python-coverage
-	python-barbicanclient
-	python-subunit
-	python-oslotest
-	python-stestr
-	python-fixtures
-	python-testscenarios
-	python-testtools
-	bandit
-	python-pifpaf
-	python-pre-commit
-)
-makedepends=(
-	python
-	python-pbr
-)
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('b8a55d74db0c06288eb0bdf5f20deecc')
-sha256sums=('11e2245e31f42ff850745d05be662baf836f75ed7f67020059335f410cd503a4')
-sha512sums=('af6266808a8125bcb80fb6a3b527e3511b51c952687c3920bfcae5ef6952dae6b4cfd52bda31dda13ccf45fc233604eb03d3e417d9a8af53e8bfeaf9e0d860e4')
+license=(Apache-2.0)
+depends=('python'
+         'python-pbr'
+         'python-cryptography'
+         'python-barbicanclient'
+         'python-oslo-config'
+         'python-oslo-context'
+         'python-oslo-i18n'
+         'python-oslo-log'
+         'python-oslo-utils'
+         'python-stevedore'
+         'python-keystoneauth1'
+         'python-requests'
+         'python-requests-mock'
+         'python-oslotest'
+         'python-testtools')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+             'tar')
+checkdepends=('python-coverage'
+              'python-subunit'
+              'python-stestr'
+              'python-fixtures'
+              'python-testscenarios'
+              'pifpaf')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('df274243bfa6522f9022822ed7163bdfbe4338854f019bbb5a19468a7d31ddc02586f779511ee87d753879a2205a23e3806491aca8f0c9ced548452f25712f18')
 
-export PBR_VERSION=$pkgver
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	pushd $_pyname-$pkgver
-	python setup.py build
+    cd "$pkgname-$pkgver"
+    PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 check(){
-	pushd $_pyname-$pkgver
-	stestr run
+    cd "$pkgname-$pkgver"
+    stestr run
 }
 
 package(){
-	cd $_pyname-$pkgver
-	python setup.py install --root "$pkgdir" --optimize=1
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 HACKING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
