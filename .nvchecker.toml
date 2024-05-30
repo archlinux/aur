@@ -1,0 +1,5 @@
+[fvm-bin]
+source = "github"
+github = "leoafarias/fvm"
+use_max_tag = true
+prefix = "v"
