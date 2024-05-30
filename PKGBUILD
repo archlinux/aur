@@ -23,16 +23,15 @@ source=("$_pkgname::git://git.codemadness.org/sfeed")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "$_pkgname" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   # To change the theme for sfeed_curses you can set SFEED_THEME. See the themes directory for the theme names.
-  make SFEED_CPPFLAGS="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700" SFEED_THEME="mono" -C "${pkgname%-git}"
+  make SFEED_CPPFLAGS="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700" SFEED_THEME="mono" -C "$_pkgname"
 }
 
 package() {
   make DESTDIR="$pkgdir" PREFIX='/usr' MANPREFIX='/usr/share/man' -C "$_pkgname" install
-  install -Dvm644 "$_pkgname/LICENSE" -t "${pkgdir}/usr/share/licenses/$_pkgname"
+  install -Dvm644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
