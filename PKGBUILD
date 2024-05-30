@@ -1,12 +1,12 @@
 # Maintainer: Kain Huang <iblader@gmail.com>
 pkgname=netbeans-bin
 pkgver=22
-pkgrel=1
+pkgrel=2
 pkgdesc='IDE for Java, HTML5, PHP, Groovy, C and C++'
 arch=('any')
 url='https://netbeans.apache.org/'
 license=('Apache')
-source=('https://downloads.apache.org/netbeans/netbeans/${pkgver}/netbeans-${pkgver}-bin.zip')
+source=('https://downloads.apache.org/netbeans/netbeans/22/netbeans-22-bin.zip')
 makedepends=('gendesk')
 depends=('ttf-font' 'which' 'java-environment>=11')
 optdepends=('php: for developing programs in php'
