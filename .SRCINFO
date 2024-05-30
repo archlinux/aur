@@ -1,6 +1,6 @@
 pkgbase = hyprland-nosystemd-git
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o systemd)
-	pkgver = 0.34.0.r95.cf1886ca
+	pkgver = 0.39.1.r105.5e6f7b1c
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
@@ -15,11 +15,15 @@ pkgbase = hyprland-nosystemd-git
 	makedepends = vulkan-headers
 	makedepends = pkgconf
 	makedepends = xorgproto
+	makedepends = hyprwayland-scanner-git
 	depends = cairo
+	depends = cpio
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
 	depends = glslang
+	depends = hyprlang
+	depends = hyprcursor
 	depends = libdisplay-info
 	depends = libdrm
 	depends = libglvnd
@@ -50,10 +54,10 @@ pkgbase = hyprland-nosystemd-git
 	depends = xorg-xinput
 	depends = xorg-xwayland
 	depends = libdisplay-info.so
-	provides = hyprland=0.34.0
+	provides = hyprland=0.39.1
 	conflicts = hyprland
 	source = hyprland-nosystemd-git::git+https://github.com/hyprwm/Hyprland.git
-	source = git+https://gitlab.freedesktop.org/wlroots/wlroots.git
+	source = git+https://github.com/hyprwm/wlroots-hyprland.git
 	source = git+https://github.com/hyprwm/hyprland-protocols.git
 	source = git+https://github.com/canihavesomecoffee/udis86.git
 	source = git+https://github.com/wolfpld/tracy.git
