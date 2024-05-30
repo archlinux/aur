@@ -1,13 +1,13 @@
 pkgbase = smbmap
 	pkgdesc = SMB enumeration tool
-	pkgver = 1.10.3
+	pkgver = 1.10.4
 	pkgrel = 1
 	url = https://github.com/ShawnDEvans/smbmap
 	arch = any
 	license = GPL
 	checkdepends = python
 	depends = impacket
-	source = https://github.com/ShawnDEvans/smbmap/archive/v1.10.3.tar.gz
-	sha256sums = e322eddf1c22e38f6a86a10c915527db80ceb14e994899d5e066111f0e70c1fc
+	source = https://github.com/ShawnDEvans/smbmap/archive/v1.10.4.tar.gz
+	sha256sums = c42f83a71fc006ebfe3bb9f2a368c619d90732361a10e656bdb5028a9b0cd731
 
 pkgname = smbmap
