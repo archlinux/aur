@@ -1,7 +1,7 @@
 # Maintainer: Thibaut Sautereau (thithib) <thibaut at sautereau dot fr>
 
 pkgname=hardened_malloc
-pkgver=11
+pkgver=12
 pkgrel=1
 pkgdesc="Hardened allocator designed for modern systems"
 arch=('x86_64')
@@ -11,9 +11,8 @@ depends=('gcc-libs')
 makedepends=('git')
 checkdepends=('python')
 provides=('libhardened_malloc.so' 'libhardened_malloc-light.so')
-source=("git+https://github.com/GrapheneOS/$pkgname#tag=$pkgver?signed")
-sha256sums=('SKIP')
-validpgpkeys=('65EEFE022108E2B708CBFCF7F9E712E59AF5F22A') # Daniel Micay <danielmicay@gmail.com>
+source=("git+https://github.com/GrapheneOS/$pkgname#tag=$pkgver")
+sha256sums=('0e683c105fe17ccd23060ad3f5f3ce62b989cb80ef8ce95f70efc63bf63974d6')
 
 build() {
   cd "$pkgname"
