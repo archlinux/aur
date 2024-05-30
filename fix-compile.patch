@@ -1,5 +1,5 @@
---- xmrig-cuda-6.15.1/src/crypto/common/Algorithm.h	2021-09-18 15:16:03.000000000 +0200
-+++ xmrig-cuda-6.15.1/src/crypto/common/Algorithm.h	2021-09-18 16:44:27.677847874 +0200
+--- a/src/crypto/common/Algorithm.h	2021-09-18 15:16:03.000000000 +0200
++++ b/src/crypto/common/Algorithm.h	2021-09-18 16:44:27.677847874 +0200
 @@ -22,6 +22,7 @@
 
 
@@ -7,4 +7,25 @@
 +#include <cstddef>
  #include <vector>
 
+
+--- a/cmake/CUDA.cmake	2024-05-30 16:05:48.178822318 +0200
++++ b/cmake/CUDA.cmake	2024-05-30 16:05:09.742396651 +0200
+@@ -134,6 +134,7 @@
+         list(APPEND CUDA_NVRTC_LIB_HINTS "${CUDA_TOOLKIT_ROOT_DIR}/lib")
+     else()
+         set(LIB_HINTS
++            "${CUDA_TOOLKIT_ROOT_DIR}/targets/x86_64-linux/lib/stubs"
+             "${CUDA_TOOLKIT_ROOT_DIR}/lib64"
+             "${CUDA_TOOLKIT_ROOT_DIR}/lib/x64"
+             "/usr/lib64"
+@@ -143,8 +144,8 @@
+         list(APPEND CUDA_NVRTC_LIB_HINTS ${LIB_HINTS})
+         unset(LIB_HINTS)
+     endif()
+-    find_library(CUDA_LIB libcuda cuda HINTS ${CUDA_LIB_HINTS})
+-    find_library(CUDA_NVRTC_LIB libnvrtc nvrtc HINTS ${CUDA_NVRTC_LIB_HINTS})
++    find_library(CUDA_LIB libcuda.so cuda.so HINTS ${CUDA_LIB_HINTS} REQUIRED)
++    find_library(CUDA_NVRTC_LIB libnvrtc.so nvrtc.so HINTS ${CUDA_NVRTC_LIB_HINTS} REQUIRED)
+     unset(CUDA_LIB_HINTS)
+     unset(CUDA_NVRTC_LIB_HINTS)
 
