@@ -1,13 +1,13 @@
 pkgbase = hsh
 	pkgdesc = better shell
-	pkgver = 0.0.2.89.g72a18d2
+	pkgver = 0.0.2.97.g38846e6
 	pkgrel = 1
 	url = https://github.com/GrayHatter/hsh
 	arch = x86_64
 	license = unknown
 	makedepends = zig
 	makedepends = git
-	source = hsh::git+https://github.com/GrayHatter/hsh#commit=72a18d2221c214d6e7f36c78628f1bcc04affc92
+	source = hsh::git+https://github.com/GrayHatter/hsh#commit=38846e68eba7a77cce2ae88e7c1ba1741546debf
 	sha256sums = SKIP
 
 pkgname = hsh
