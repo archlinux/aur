@@ -6,7 +6,7 @@ pkgbase = python-periodictable
 	arch = any
 	license = public domain
 	makedepends = python-setuptools
-	source = https://github.com/pkienzle/periodictable/archive/v1.7.0.tar.gz
+	source = python-periodictable-1.7.0.tar.gz::https://github.com/pkienzle/periodictable/archive/v1.7.0.tar.gz
 	md5sums = 54c58bb8e591a6f9c80b43465fb283f0
 
 pkgname = python-periodictable
