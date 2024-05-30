@@ -1,6 +1,6 @@
 pkgbase = bindump-git
 	pkgdesc = Display binary contents of file
-	pkgver = 1.00
+	pkgver = 1.01
 	pkgrel = 1
 	url = https://github.com/Raphadoodle/bindump-git.git
 	arch = x86_64

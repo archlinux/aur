@@ -1,6 +1,6 @@
 # Maintainer: Raphael Tittel <raphaeltittel@gmail.com>
 pkgname="bindump-git"
-pkgver=1.00	
+pkgver=1.01	
 pkgrel=1
 pkgdesc="Display binary contents of file"
 arch=("x86_64" "arm64")
