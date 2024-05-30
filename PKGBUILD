@@ -5,7 +5,7 @@
 _pkgname="vdhcoapp"
 pkgname="$_pkgname"
 pkgver=2.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion application for Video DownloadHelper browser add-on"
 url="https://github.com/aclap-dev/vdhcoapp"
 license=('GPL-2.0-or-later')
@@ -20,13 +20,13 @@ makedepends=(
   'nvm'
 )
 
-options=(!strip emptydirs)
+options=('emptydirs' '!strip' '!debug')
 install="$_pkgname.install"
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
-source+=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums+=('2fedba42f5d1f207c92938e99cd3fcf0af351820e88ab0df5fcbf7b68ae51d23')
+source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
+sha256sums=('2fedba42f5d1f207c92938e99cd3fcf0af351820e88ab0df5fcbf7b68ae51d23')
 
 # filepicker
 depends+=(
@@ -46,9 +46,21 @@ source+=("$_filepicker_pkgsrc"::"git+$_filepicker_url.git")
 sha256sums+=('SKIP')
 
 _cargo_env() {
-  export CARGO_HOME="${CARGO_HOME:-$SRCDEST/cargo-home}"
-  export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
+  export CARGO_HOME="$SRCDEST/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+}
+
+_nvm_env() {
+  : ${_nodeversion:=18}
+
+  export HOME="$SRCDEST/node-home"
+  export NVM_DIR="$SRCDEST/node-nvm"
+
+  # set up nvm
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  nvm install $_nodeversion
+  nvm use $_nodeversion
 }
 
 _filepicker_prepare() {
@@ -77,7 +89,7 @@ prepare() {
   tomlq . ./config.toml \
     | jq '.target.os = "linux"' \
     | jq '.target.arch = "amd64"' \
-    > src/config.json
+      > src/config.json
 
   # fix path to config.json
   sed -E -i src/main.js src/native-autoinstall.js \
@@ -87,15 +99,7 @@ prepare() {
 }
 
 build() {
-  : ${_nodeversion:=18}
-
-  export HOME="$srcdir/node-home"
-  export NVM_DIR="${SRCDEST:-${startdir:-$srcdir}}/node-nvm"
-
-  # set up nvm
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-  nvm install $_nodeversion
-  nvm use $_nodeversion
+  _nvm_env
 
   # build
   cd "$_pkgsrc"
