@@ -2,7 +2,7 @@
 pkgbase=vpkedit
 pkgname=(vpkedit libvpkeditc)
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -10,21 +10,19 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'git' 'gcc' 'qt6-tools')
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
-		"argparse::git+https://github.com/p-ranav/argparse.git"
-		"vtflib::git+https://github.com/StrataSource/VTFLib.git"
-		"saap::git+https://github.com/Trico-Everfire/SteamAppPathProvider.git"
-		"speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git"
-		"bufferstream::git+https://github.com/craftablescience/BufferStream.git"
-		"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git"
-		"sourcepp::git+https://github.com/craftablescience/sourcepp.git"
-		"miniaudio::git+https://github.com/mackron/miniaudio.git"
-		"discord::git+https://github.com/craftablescience/discord-rpc-clean.git"
-		"indicators::git+https://github.com/p-ranav/indicators.git"
-		"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
-		#Submodule for submodules
-		"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
+	"argparse::git+https://github.com/p-ranav/argparse.git"
+	"vtflib::git+https://github.com/StrataSource/VTFLib.git"
+	"saap::git+https://github.com/craftablescience/SteamAppPathProvider.git"
+	"speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git"
+	"sourcepp::git+https://github.com/craftablescience/sourcepp.git"
+	"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git"
+	"miniaudio::git+https://github.com/mackron/miniaudio.git"
+	"discord::git+https://github.com/craftablescience/discord-rpc-clean.git"
+	"indicators::git+https://github.com/p-ranav/indicators.git"
+	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
+	#Submodule for submodules
+	"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
 sha256sums=('69ef696017d96d30695fa6ee0221a3393a5aa8dc39ddc7575ea41c49f710c3fb'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
