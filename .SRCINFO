@@ -1,16 +1,16 @@
 pkgbase = iso-commander
 	pkgdesc = The Fastest ISO Manager on the Planet, written in C++
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/siyia2/iso-commander
 	arch = x86_64
 	license = GPL3
-	makedepends = readline
-	depends = util-linux
 	depends = coreutils
+	depends = readline
+	depends = util-linux
 	optdepends = ccd2iso: BIN/IMG conversion support
 	optdepends = mdf2iso: MDF/MDS conversion support
-	source = https://github.com/siyia2/iso-commander/archive/v3.2.0.tar.gz
-	md5sums = d7c67737ccfa13ef04cab1f95c0634ce
+	source = https://github.com/siyia2/iso-commander/archive/v3.2.1.tar.gz
+	md5sums = e70de0a0079235d66c4a4ca0f4386302
 
 pkgname = iso-commander
