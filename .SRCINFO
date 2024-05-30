@@ -1,0 +1,23 @@
+pkgbase = sideloader-bin
+	pkgdesc = Open-source cross-platform iOS app sideloader
+	pkgver = 1.0_pre3
+	pkgrel = 1
+	url = https://github.com/Dadoum/Sideloader
+	arch = x86_64
+	arch = aarch64
+	license = SSPL-1.0
+	makedepends = unzip
+	depends = libimobiledevice
+	depends = libplist
+	depends = openssl
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = util-linux-libs
+	noextract = sideloader-gtk-linux-x86_64-1.0_pre3.zip
+	source_x86_64 = sideloader-gtk-linux-x86_64-1.0_pre3.zip::https://github.com/Dadoum/Sideloader/releases/download/1.0-pre3/sideloader-gtk-linux-x86_64.zip
+	sha256sums_x86_64 = cd9e4ab4e5ef8b63f89528849d26476d5c665243df97cb7ac60da3d273b812b8
+	source_aarch64 = sideloader-gtk-linux-aarch64-1.0_pre3.zip::https://github.com/Dadoum/Sideloader/releases/download/1.0-pre3/sideloader-gtk-linux-aarch64.zip
+	sha256sums_aarch64 = ff905d4d90b9c93f82ce5c6807cf8108e74d4a26d26a09f667a2f55be4f4186b
+
+pkgname = sideloader-bin
