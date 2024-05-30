@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggwordcloud
-_pkgver=0.6.1
+_pkgver=0.6.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A Word Cloud Geom for 'ggplot2'"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -34,8 +34,8 @@ optdepends=(
   r-wordcloud2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7ba9894b559065f9141fac1dc964eceb')
-b2sums=('2e0e8740580dc75c8986f08c4071499faf97f47ed9ac5af11bf4ec993725aca5b03baf3e3240d4caeb0d2284086fb6a870ec8b8743118a43d8af53c103306ac0')
+md5sums=('a10c84c635d64ba9de6ef08845c7bc23')
+b2sums=('fa0a1b4da2dd63c1485c2528f61e7f195201cf9b1afb6ee41c1fde0fa5ef62de0f9ad74b342f08a7bc262be38dd6c41bb77d35fba31dbb309b508ad10470a1fc')
 
 build() {
   mkdir build
