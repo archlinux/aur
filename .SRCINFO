@@ -15,6 +15,6 @@ pkgbase = colorway
 	depends = libgee
 	depends = libhelium
 	source = git+https://github.com/lainsce/colorway.git#commit=b7ff8cf47032251b62e55798c6808f226bd21392
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = colorway

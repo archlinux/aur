@@ -13,7 +13,7 @@ depends=('json-glib' 'libadwaita' 'libgee' 'libhelium')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
 source=("git+$url.git#commit=$_commit")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 build() {
   arch-meson colorway build
