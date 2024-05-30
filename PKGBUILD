@@ -3,7 +3,7 @@ pkgname=dockit-bin
 _pkgname=DocKit
 pkgver=0.3.1
 _electronversion=28
-pkgrel=1
+pkgrel=3
 pkgdesc="GUI clients for elasticsearch, opensearch and etc"
 arch=(
     'aarch64'
@@ -23,8 +23,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('699ecb280901bb0fe101f765ffcc5435074c1434e001384946cb7f8f46a5485f')
-sha256sums_x86_64=('c02326a4b2203e2b309a4d4dca2c07a3bdc04a9d80b6371b622fbb69f8f0d0c2')
+sha256sums_aarch64=('61b5032ea83da33d23e4b70a66b540d821f733eacd8d8f09275fab4a2d138e85')
+sha256sums_x86_64=('982dbd3a62aba3693e89d946ce36bf6a931bab25f18c8222ed6bdcb25b5612cb')
 build() { 
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
