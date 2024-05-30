@@ -1,7 +1,7 @@
 pkgbase = vdhcoapp-git
 	pkgdesc = Companion application for Video DownloadHelper browser add-on
 	pkgver = 2.0.19.r4.g0b40d3e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aclap-dev/vdhcoapp
 	install = vdhcoapp.install
 	arch = x86_64
@@ -18,8 +18,9 @@ pkgbase = vdhcoapp-git
 	depends = pango
 	provides = vdhcoapp=2.0.19
 	conflicts = vdhcoapp
-	options = !strip
 	options = emptydirs
+	options = !strip
+	options = !debug
 	source = vdhcoapp::git+https://github.com/aclap-dev/vdhcoapp.git
 	source = vdhcoapp-filepicker::git+https://github.com/paulrouget/static-filepicker.git
 	sha256sums = SKIP

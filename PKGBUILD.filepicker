@@ -1,14 +1,7 @@
 # Maintainer:
 
-# options
-: ${_build_git:=false}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-# basic info
 _pkgname=vdhcoapp-filepicker
-pkgname="$_pkgname${_pkgtype:-}"
+pkgname="$_pkgname"
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="Filepicker for VDHCoApp" # added in 2.0.16
