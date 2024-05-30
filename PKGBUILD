@@ -20,6 +20,7 @@ makedepends=('npm')
 build() {
 	cd $pkgname-$pkgver
 	npm install
+	npm run gulp
 
 	if [[ "$CARCH" == "i686" ]]; then
 		./node_modules/.bin/gulp --platform=linux32 release
