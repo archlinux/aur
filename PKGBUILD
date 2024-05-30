@@ -2,26 +2,27 @@
 pkgbase=python-astrocut
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Tools for making image cutouts from sets of TESS full frame images"
 arch=('any')
 url="https://astrocut.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-astropy'
              'python-sphinx_rtd_theme'
-             'python-astropy'
-             'python-scipy')
+             'python-matplotlib'
+             'python-gwcs'
+             'python-scipy'
+             'python-s3fs')
 checkdepends=('python-pytest-doctestplus'
               'python-astroquery'
-              'python-fsspec'
-              'python-pillow')   # scipy already in makedepends; 'python-s3fs' test all deselected
+              'python-pillow')   # gwcs, scipy, s3fs already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('5a73196f25266dc32536f9b4a22985b4')
+md5sums=('f116d01bb82e4b518705c2b4124093c0')
 
 #get_pyver() {
 #    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -49,11 +50,11 @@ check() {
         --deselect=astrocut/tests/test_make_cube.py::test_invalid_inputs \
         --deselect=astrocut/tests/test_cube_cut.py::test_s3_cube_cut \
         --deselect=astrocut/tests/test_cube_cut.py::test_multithreading \
-        --deselect=astrocut/tests/test_cutouts.py::test_fits_cut || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+        --deselect=astrocut/tests/test_cutouts.py::test_fits_cut || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
 }
 
 package_python-astrocut() {
-    depends=('python>=3.8' 'python-astropy' 'python-fsspec' 'python-s3fs' 'python-scipy' 'python-pillow')
+    depends=('python>=3.9' 'python-asdf>=2.15.0' 'python-astropy' 'python-fsspec' 'python-s3fs' 'python-scipy' 'python-pillow' 'python-roman-datamodels>=0.17.0')
     optdepends=('python-astrocut-doc: Documentation for astrocut')
     cd ${srcdir}/${_pyname}-${pkgver}
 
