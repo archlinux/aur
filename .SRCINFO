@@ -1,7 +1,7 @@
 pkgbase = krdc-xfreerdp
 	pkgdesc = Remote Desktop Client(old version with xfreerdp)
 	pkgver = 23.08.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apps.kde.org/krdc/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -27,7 +27,7 @@ pkgbase = krdc-xfreerdp
 	depends = qt5-base
 	optdepends = libvncserver: VNC support
 	optdepends = libssh: VNC support
-	optdepends = freerdp: RDP support
+	optdepends = freerdp2: RDP support
 	optdepends = keditbookmarks: to edit bookmarks
 	provides = krdc
 	conflicts = krdc
